@@ -185,8 +185,10 @@ void intapunts3view::cargarcursor(int numasiento) {
     QString textcantapunt = "";
     QString textnombreasiento= "";
     QString textejercicio="";
+    int ordenasiento=0;
     
-    fprintf(stderr,"Ejercicio: %s    - IdAsiento: %d\n", EjercicioActual.ascii(), numasiento);
+    if (numasiento > 0) ordenasiento =atoi(ORDENASIENTO);
+    fprintf(stderr,"Ejercicio: %s, IdAsiento: %d, OrdenAsiento: %d \n", EjercicioActual.ascii(), numasiento, ordenasiento);
     
     cantapunt = filt->cantidadapunte->text();
     saldototal = filt->saldoasiento->text();
@@ -231,7 +233,8 @@ void intapunts3view::cargarcursor(int numasiento) {
     }// end if
     if (numasiento > 0 && (cursorasientos->numregistros() != 0)) {
         cursorasientos->ultimoregistro();
-        while (!cursorasientos->bof() && atoi(cursorasientos->valor("idasiento").ascii())>numasiento) {
+        //while (!cursorasientos->bof() && atoi(cursorasientos->valor("idasiento").ascii())>numasiento) {
+        while (!cursorasientos->bof() && atoi(cursorasientos->valor("ordenasiento").ascii())>ordenasiento) {
             cursorasientos->registroanterior();
         }// end while
         //Si el asiento no existe porque acabamos de borrarlo, entonces nos situamos sobre el primer registro
@@ -389,7 +392,6 @@ void intapunts3view::repinta(int numasiento) {
         return;
     }// end if
     */
-    fprintf(stderr,"repinta: idasiento %d\n",numasiento);
     //   float debe,haber;
     //   float totaldebe=0, totalhaber=0;
     //vaciarapuntes();
@@ -1744,15 +1746,15 @@ void intapunts3view::return_numasiento() {
 //**************************************************************/
 void intapunts3view::boton_cargarasiento() {
     QString query;
-    int numasiento = atoi( (char *) idasiento1->text().ascii());
+    int IdAsien=0;
     conexionbase->begin();
-    query.sprintf("SELECT idasiento FROM asiento where ordenasiento = %d",numasiento);
+    query.sprintf("SELECT idasiento FROM asiento WHERE ordenasiento = %d AND EXTRACT(YEAR FROM fecha)=%s ",idasiento1->text().toInt(),EjercicioActual.ascii());
     cursor2 *curs = conexionbase->cargacursor(query, "micursor");
     conexionbase->commit();
     if (!curs->eof()) {
-        numasiento = atoi(curs->valor("idasiento").ascii());
-        cargarcursor(numasiento);
-        muestraasiento(numasiento);
+        IdAsien = atoi(curs->valor("idasiento").ascii());
+        cargarcursor(IdAsien);
+        muestraasiento(IdAsien);
     }// end if
     delete curs;
 }// end boton_cargarasiento
