@@ -16,7 +16,7 @@ unix{
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
-  bulmafact_install_script.path = .
-  bulmafact_install_script.extra = ./install_bulmafact
+  bulmafact_install_script.path = ../installbulmafact
+  bulmafact_install_script.extra = install_bulmafact
   INSTALLS += bulmafact_install_script
 }
