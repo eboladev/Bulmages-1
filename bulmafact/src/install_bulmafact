@@ -16,7 +16,7 @@ su - postgres -c "dropdb bfestruct"
 su - postgres -c "createdb bfdemo2004"
 su - postgres -c "createdb bfestruct"
 
-su - postgres -c "psql bfdemo2004 " < bfdemo.pgdump
-su - postgres -c "psql bfestruct "  < bfestruct.pgdump 
+su - postgres -c "psql bfdemo2004 " < bfdemo.pgdump 2>> ../errores.txt
+su - postgres -c "psql bfestruct "  < bfestruct.pgdump  2>> ../errores.txt
 
 echo "Fin Instalación Bulmafact ********************"
