@@ -101,7 +101,7 @@ void providerslist::inicializa() {
    m_list->setSorting( TRUE );
    m_list->setSelectionMode( QTable::SingleRow );
    m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(16);
+   m_list->setNumCols(15);
    m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr( "Código" ) );
    m_list->horizontalHeader()->setLabel( COL_NOMPROVEEDOR, tr( "Nombre Fiscal" ) );
    m_list->horizontalHeader()->setLabel( COL_NOMALTPROVEEDOR, tr( "Nombre Comercial" ) );
