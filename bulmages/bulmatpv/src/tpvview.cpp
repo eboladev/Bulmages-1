@@ -23,7 +23,9 @@
 tpvview::tpvview(QWidget *parent, const char *name)
  : tpvdlg(parent, name)
 {
-   display->display(45.67);
+	/*
+		esto es una prueba de victor*/
+   display->display();
 }
 
 
