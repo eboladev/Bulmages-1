@@ -1,0 +1,575 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>provedit_base</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>provedit_base</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>580</width>
+            <height>453</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Proveedor</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLayoutWidget" row="0" column="0">
+            <property name="name">
+                <cstring>layout6</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image0</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_3_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>150</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout1</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Nombre</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>lineEdit1</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QTabWidget" row="1" column="0">
+            <property name="name">
+                <cstring>tabWidget2</cstring>
+            </property>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Datos Generales</string>
+                </attribute>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout23</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout19</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Código</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>lineEdit3</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout20</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2_5</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>CIF</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>lineEdit3_5</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout21</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2_3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Nuestro código de cliente</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>lineEdit3_3</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout18</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>textLabel2_2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Nombre</string>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit">
+                                <property name="name">
+                                    <cstring>lineEdit3_2</cstring>
+                                </property>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout17</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>textLabel2_4</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Nombre comercial</string>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit">
+                                <property name="name">
+                                    <cstring>lineEdit3_4</cstring>
+                                </property>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout24</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout14</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2_6</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Dirección</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>lineEdit3_6</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout13</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2_7</cstring>
+                                        </property>
+                                        <property name="sizePolicy">
+                                            <sizepolicy>
+                                                <hsizetype>5</hsizetype>
+                                                <vsizetype>5</vsizetype>
+                                                <horstretch>0</horstretch>
+                                                <verstretch>0</verstretch>
+                                            </sizepolicy>
+                                        </property>
+                                        <property name="text">
+                                            <string>CP</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>lineEdit3_7</cstring>
+                                        </property>
+                                        <property name="sizePolicy">
+                                            <sizepolicy>
+                                                <hsizetype>0</hsizetype>
+                                                <vsizetype>0</vsizetype>
+                                                <horstretch>0</horstretch>
+                                                <verstretch>0</verstretch>
+                                            </sizepolicy>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout25</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout15</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2_8</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Teléfono</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>lineEdit3_8</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout12</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2_8_4</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>WEB</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>lineEdit3_8_4</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout26</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout16</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2_8_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Fax</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>lineEdit3_8_2</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout11</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2_8_3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Email</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>lineEdit3_8_3</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout10</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout9</cstring>
+                                </property>
+                                <vbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2_4_2_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Comentarios</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QTextEdit">
+                                        <property name="name">
+                                            <cstring>textEdit1_2</cstring>
+                                        </property>
+                                    </widget>
+                                </vbox>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout8</cstring>
+                                </property>
+                                <vbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel2_4_2</cstring>
+                                        </property>
+                                        <property name="sizePolicy">
+                                            <sizepolicy>
+                                                <hsizetype>0</hsizetype>
+                                                <vsizetype>5</vsizetype>
+                                                <horstretch>0</horstretch>
+                                                <verstretch>0</verstretch>
+                                            </sizepolicy>
+                                        </property>
+                                        <property name="maximumSize">
+                                            <size>
+                                                <width>32766</width>
+                                                <height>32767</height>
+                                            </size>
+                                        </property>
+                                        <property name="text">
+                                            <string>Datos eComercio</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QTextEdit">
+                                        <property name="name">
+                                            <cstring>textEdit1</cstring>
+                                        </property>
+                                        <property name="sizePolicy">
+                                            <sizepolicy>
+                                                <hsizetype>5</hsizetype>
+                                                <vsizetype>7</vsizetype>
+                                                <horstretch>0</horstretch>
+                                                <verstretch>0</verstretch>
+                                            </sizepolicy>
+                                        </property>
+                                    </widget>
+                                </vbox>
+                            </widget>
+                        </hbox>
+                    </widget>
+                </vbox>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>TabPage</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Divisiones</string>
+                </attribute>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Productos Suministrados</string>
+                </attribute>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>TabPage</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Contratos</string>
+                </attribute>
+            </widget>
+        </widget>
+        <widget class="QLayoutWidget" row="2" column="0">
+            <property name="name">
+                <cstring>layout3</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>351</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Cerrar</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </grid>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="1054">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000003e549444154789ccd97b18b254510c67f2b2fa88617ccc00aef81c26d60b081c169749b7968a08281fe198291a1e199991bf9279c1789d91a08a7d16ab41728ec81c25b70a11bee41154cc333e89a793db3bb6f79896b27cdf4d4547dfdd557d53d079bcd86fb1cafdd6bf4ff0380d974e1e9b3e71b32981a32132c1b64305300a2f9f3b06e403f0b3abc57c890cc883191ae2267bf7d77b013c00fcf9e6f3e7aff6408d6be1e0038ff634540508c8070f456bbd72e4f7f3e870c8fdffb7273fad3372310230006a475c40c34db00e0dd4f9eb0380c04116406673f3ed90bc08b8b8466e3f1878f582e3fdbac564f071063000a20684e800ceb2270f2f63132179687c2de231b819226998dbf9f4d0d87dce604b40e20d01c0acba641e6fbc757d7444aeeff360096eb798b7479d870b45812e6b0689bfd1164c5d646b438f27b0d00592b156f917efac1438e8f17b4f380c8fe2948c988eb5444763703e2f46fc7575f7cbc77d07ec47fb404ef373529fc0903557d67e5e2afe88805cda504d59d582e649abfefed8cbe2f28f1ca48af12e63b3763b706d40c01522e7de0fccf953b73a7ae11ccc3748cde6b56c88194226636a4b3881bac3364a7066a67ded97ac45310a67d500840b422345b5fbaeafb4ed9fb8ddb2abb0dc0b69dea0dc1ab67eded226458ad0d9c5ecd95bd6dd351ece18e2a284e8ce27079d8969e3e17b417a81936134c132201332534fd1920a40c64294ce5a299cbbf4b4ac87a571fb00108c0c9a3a391b1bec29d30116c99359b071f1f485f7ffbfdc0e0ce4e687eead9a40fd0415c6b958e2dcd98a1d53a168140f2030d33e88cd80b71c2c0f83e9001026443b223d5125c7a673ec92478795fbe371bdb6bb6c17edac6c665980d758a4d13aaf0cbaf174eaf12e869aeaaa1ab3ba70c60cc4b79f166eb3b8f58b57e730a7a76bab21b5b2bc70f1acfa90bb1a2b1a8bb1dee0fa3d2cd32802383e4fe340cb703206b51b919711d01585da5cae97607ba2df03265838e895d80b961ee57ef64c0698d29ba6fc3d685be3ae850055d0de2269091a5b49e162f5576320069ed6af536ba7c43867a26072fad7e962a3d5509762d968dc6050910fd80dbcd803a8dd5917cf6fb6adbf3871d5e8e98d05c951c323066661c3d682043c810b3eed68065f39e5de8d60ccb8554c19bebcda6836668bbc1ef759510cdd0d14d6bccc0a80f14958791c0641e60068db4c80c8208cca0f50b6a13ca21dcf8b348b19759b1eb99146fcf3bfb0066c4ab15e9728565e3c5cb0b4c75d0c7b804b7a7e11084f21f201341da552ccf561de93e0ea6ff86ef3cfc7c1353b9c184798f777229c1bc29419839887af44d8a02e6e5e5aa342760d39d8efe0bae01f8afc7bdff1bde3b807f01f2ab787fd900d95f0000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="1379">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000052a49444154789cb5975d681c5518869f9453fc46b73a836dd985a0bb1a4b57ad741714f6c29f96881aff688a2001050b5e68bd2b4534f44a446fbc5214945e095e351504ab82096a4b02a24611dda2b4ae12334b2999b11df77c34a3e3c5d9ddb469928dd11c18de393367be9f73bef39e77fae8d1f63db1ef95a187879e112368aa2c8956918d426c637ccf47e795fac9faa9432f1d1a04a295ec9b5e01047e70f5dec7f65ed36b5cb759c083c36f1f2e025bff730022f2774fa7f36dd4369e0731f217d0d7ebd30dbd0668aa2bbeb7d63a4c1c86490806628d7b995e5d00bef8cbbf9c07cf78a00ead5a7ce36313bbf277ff2680385d3a93a53257943871e3d7770696c91cc5ed0ad5ff6f0616d740afccc3245cf2bb35072046e6bb9d55641e980055458c64b84db9f600460f8dde11e4831bbb0f36b67113582c9e78288a885c8618ae181a1cba77dfd3fbb6ade463d97d3a3c38bc6bf4c5d163efbdff9e94b7971123c41a23468834223001914678c623d208413a9913a731d14cc4cdb7de4ca5529979f09107ef8993f8d4527e9625a272adfc6475575582fe004188d2b6d37491f324724e93f8128c928852be04427f7967f9f1a913532faf3a80caceca406d47ad0650baa9044081c2e5380f254a908035164d5ce1a92a254a4449848747b9541e9c3a317518682ebb04c38f0de74bf9d2def2cef2a3b54aad561a28e5bc4dde7213b4d0e6818d6e7778c6c3a6b65ba01d2485a96fa7ce4c1e9ffcece84747c7a6bf9afe10f8b36b239fcf6f1bff60fcd76c2e5bff762ecb460f8d1e07168862e48991d7b32ccbc667c7b3916f46b223a78fac6b0cadb95656de5e7e0edc36f4871f1ede0b8e44420d574d226b6d5ee031b267e47140280e141f983d3dbb10ddb996bbb990ad2b1e397aa425466edb501da856fd9cef8ac982b7c95be0af75c4ea40d5cbe7f3950df952fe7a45099b215112118621562d511c410a51f2dfd1a6ce9e55dbf5638da5902fdc60825c70150960406375622289415c4d8838e643204a23d74f7a2306420dbb0c8a691f500634510209c07095d154ff5694288ef0c4c3268ee36d6cbb4ce799f673d37e2e3df0223e88d2688117daf603714c0af4199bd83f3a8cd5712e08beef3b6ecf0928f8b945fdce7b7f99fea2f122e2926c27450aaafaa799ae4f9f2275d3e58bcf2f33bf30f6fe58f760e96ec994ee348a9155f7c161617381913d235d3ff5993a6133fcd58433e197f5463d2bf797fb628db189e5cdb7de5ccbf6beb49976d0ed56ec2fb27bd76efc9cd30f71189f6f369b75d36834a69bf5e68f85cd855b04213e7fa9967be3b537a8542a8471482041772d238d16fa9d23d9b89f13c1e9827026e4e0f30781b646548889f1733e132726be034e1aa035f6d1d8bb95db2baf62a0b0a5c08183079c9154d9fff47e109c1869ff745c828685024d2c6a144ddc32846743e2b3319a2a7ecec7a69642ae40fde73a93c7273f00e63aa7e1a6f2f6f2feda9db53dd59dd55b6b95da95aa4a617381d28ed2ca53dd166c562d1e0be224563713d327a7f17d9ff06c48e3fbc6f989af267e983c3ef949b3d97c07f87db1b9ad6264b0582c1e7cf6a9673f6f9d69ad7caa5c685fe7dcd59a6d65ad33ad6ceef45c36fbdb6c36fbd36cf6f5175f6743f70f8d17fb8b2f000f01d77191145c2c48ce68aa9f361a8d4f83fee0166f8b77d78ad95fa403227524146becb4617b1964b3007cdf9869bcb29489251591e464ebeedaeefbc27a0886ac5370aa8ec93a9ad0aa23f78e56ec6ac2e422ed980bfa2a95caddc73e3e760df0c7625fcb89521123f700d72afa57a7aad7881bc488aaea0470d9efd23f141b8e28c185bed40000000049454e44ae426082</data>
+    </image>
+</images>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
