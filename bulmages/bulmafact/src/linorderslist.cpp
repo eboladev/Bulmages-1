@@ -234,13 +234,15 @@ void linorderslist::accept() {
       companyact->commit();
 	}
 
+	saveOrderLines();
+	
 	close();
 }
 
 
 void linorderslist::neworderlin() {
 	m_list->setNumRows( m_list->numRows()+1 );
-}
+} // end neworderlin
 
 
 linorderslist::~linorderslist() {
@@ -276,12 +278,66 @@ void linorderslist::providerChanged(QString idProvider) {
 		m_cifprovider->setText(cur2->valor("cifproveedor"));
 		m_nomproveedor->setText(cur2->valor("nomproveedor"));
 	}
-}
+} //end providerChanged
+
+void linorderslist::saveOrderLines() {
+	int i = 0;
+	while (i < m_list->numRows()) {
+   	if (m_list->text(i,COL_NUMLPEDIDO)!="") {
+			QString SQLQuery = "UPDATE lpedido SET desclpedido='"+m_list->text(i,COL_DESCLPEDIDO)+"'";
+      	SQLQuery += " , cantlpedido="+ m_list->text(i,COL_CANTLPEDIDO);
+      	SQLQuery += " , pvdlpedido="+m_list->text(i,COL_PVDLPEDIDO);
+      	SQLQuery += " , prevlpedido='"+m_list->text(i,COL_PREVLPEDIDO)+"'";
+      	SQLQuery += " , idarticulo="+m_list->text(i,COL_IDARTICULO);
+      	SQLQuery += " WHERE idpedido ="+idpedido+" AND numlpedido="+m_list->text(i,COL_NUMLPEDIDO);
+      	companyact->begin();
+      	companyact->ejecuta(SQLQuery);
+      	companyact->commit();
+			
+		} else {
+			char buffer [50];
+			sprintf(buffer, "%d", lastOrderLine()+10);
+			QString newLine(buffer);
+			QString SQLQuery = "INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo)";
+			SQLQuery += " VALUES (";
+			SQLQuery += newLine;
+			SQLQuery += ", '"+m_list->text(i,COL_DESCLPEDIDO)+"'";
+			SQLQuery += " , "+m_list->text(i,COL_CANTLPEDIDO);
+      	SQLQuery += " , "+m_list->text(i,COL_PVDLPEDIDO);
+      	SQLQuery += " , '"+m_list->text(i,COL_PREVLPEDIDO)+"'";
+      	SQLQuery += " , "+idpedido;
+      	SQLQuery += " , "+m_list->text(i,COL_IDARTICULO);
+      	SQLQuery += " ) ";
+      	companyact->begin();
+      	companyact->ejecuta(SQLQuery);
+      	companyact->commit();
+		}
+		i ++;
+   }
+} // end saveOrderLines
 
 void linorderslist::orderDateLostFocus() {
    fprintf(stderr, "orderDate Lost Focus");
    m_fechapedido->setText(normalizafecha(m_fechapedido->text()).toString("dd/MM/yyyy"));
 }// end neworder
 
+int linorderslist::lastOrderLine() {
+	bool ok;
+	char buffer [10];
+	
+	companyact->begin();
+   cursor2 * cur= companyact->cargacursor("SELECT max(numlpedido) as lastLine FROM lpedido WHERE idpedido="+idpedido,"unquery");
+   companyact->commit();
+   if (!cur->eof()) {
+		return cur->valor(0).toInt(&ok, 10);
+   } else {
+		return 0;
+	}
+   delete cur;
+}
 
-
+void linorderslist::valueOrderLineChanged(int row, int col) {
+	if (col == COL_PREVLPEDIDO) {
+		m_list->setText(row, COL_PREVLPEDIDO,normalizafecha(m_list->text(row, col)).toString("dd/MM/yyyy"));
+	}
+}

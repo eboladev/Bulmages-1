@@ -48,6 +48,8 @@ public:
 	 void cargarcombodivision(QString, QString);
 	 void cargarcomboalmacen(QString);
 	 void providerChanged(QString);
+	 void saveOrderLines();
+	 int linorderslist::lastOrderLine();
     
 public slots:
     virtual void activated(int);
@@ -57,6 +59,7 @@ public slots:
     virtual void neworderlin();
     virtual void searchProvider();
 	 virtual void orderDateLostFocus();
+	 virtual void valueOrderLineChanged(int, int);
 };
 
 #endif

@@ -780,6 +780,12 @@
         <receiver>linorderslistbase</receiver>
         <slot>orderDateLostFocus()</slot>
     </connection>
+    <connection>
+        <sender>m_list</sender>
+        <signal>valueChanged(int,int)</signal>
+        <receiver>linorderslistbase</receiver>
+        <slot>valueOrderLineChanged(int,int)</slot>
+    </connection>
 </connections>
 <slots>
     <slot>activated( int )</slot>
@@ -788,6 +794,7 @@
     <slot>searchProvider()</slot>
     <slot>accept()</slot>
     <slot>orderDateLostFocus()</slot>
+    <slot>valueOrderLineChanged(int, int)</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
