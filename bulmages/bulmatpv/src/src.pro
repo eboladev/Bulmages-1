@@ -6,7 +6,7 @@
 TEMPLATE = app 
 CONFIG += release \
           warn_on 
-TARGET = ../bin/bulmatpv 
+TARGET = ../../installbulmages/bulmatpv 
 INCLUDEPATH = ../src \
               /usr/include/qt 
 LIBS += -lqt-mt 
