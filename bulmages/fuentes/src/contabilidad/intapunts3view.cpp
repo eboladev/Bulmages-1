@@ -1438,9 +1438,9 @@ void intapunts3view::cambiadasubcuenta(int row) {
     QString subcuenta = tapunts->text(row,COL_SUBCUENTA);
     if (subcuenta == "") {
         // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1();
+        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
         listcuentas->modo=1;
-        listcuentas->inicializa(conexionbase);
+        listcuentas->inicializa();
         listcuentas->exec();
         tapunts->setText(row,COL_SUBCUENTA,listcuentas->codcuenta);
         tapunts->setText(row,COL_IDCUENTA,listcuentas->idcuenta);
@@ -1468,9 +1468,9 @@ void intapunts3view::cambiadasubcuenta(int row) {
 void intapunts3view::buscacontrapartida(int row) {
     QString subcuenta = tapunts->text(row,COL_CONTRAPARTIDA);
     // Hacemos aparecer la ventana de cuentas
-    listcuentasview1 *listcuentas = new listcuentasview1();
+    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
     listcuentas->modo=1;
-    listcuentas->inicializa(conexionbase);
+    listcuentas->inicializa();
     listcuentas->exec();
     tapunts->setText(row,COL_CONTRAPARTIDA,listcuentas->codcuenta);
     tapunts->setText(row,COL_IDCONTRAPARTIDA,listcuentas->idcuenta);
@@ -1543,8 +1543,8 @@ void intapunts3view::boton_inteligente() {
         numasiento = 0;
     }// end if
     //  int idasiento = atoi(cursorasientos->valor("idasiento").c_str());
-    aplinteligentesview *nueva=new aplinteligentesview(0,"");
-    nueva->inicializa(conexionbase, numasiento, this);
+    aplinteligentesview *nueva=new aplinteligentesview(empresaactual, 0,"");
+    nueva->inicializa(numasiento, this);
     nueva->exec();
     //  numasiento = nueva->numasiento;
     //  if (numasiento != 0)

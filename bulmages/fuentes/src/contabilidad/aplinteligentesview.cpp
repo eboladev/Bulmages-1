@@ -16,6 +16,7 @@
 #include "aplinteligentesview.h"
 #include "images/find.xpm"
 #include "calendario.h"
+#include "empresa.h"
 
 #define TIPO_CTA 0
 #define TIPO_FECHA 1
@@ -32,7 +33,9 @@
 #define VAR_PRED_FECHAACTUAL 0
 #define VAR_PRED_FECHAASIENTO 1
 
-aplinteligentesview::aplinteligentesview(QWidget *parent, const char *name ) : aplinteligentesdlg(parent,name) {
+aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent, const char *name ) : aplinteligentesdlg(parent,name) {
+    empresaactual = emp;
+    conexionbase = emp->bdempresa();
     // iniciamos los contadores de variables para que no haya problemas.
     indvariablescta=0;
     indvariablesfecha=0;
@@ -50,11 +53,10 @@ aplinteligentesview::~aplinteligentesview() {
 }// end aplinteligentesview
 
 
-void aplinteligentesview::inicializa(postgresiface2 *con, int idasiento, intapunts3view *inta) {
+void aplinteligentesview::inicializa(int idasiento, intapunts3view *inta) {
     intapunts = inta;
     int i=0;
     numasiento = idasiento;
-    conexionbase = con;
     inicializavariables();
     QString query;
     //Cargamos el combobox con la lista de asientos inteligentes.
@@ -208,9 +210,9 @@ void aplinteligentesview::boton_buscacuenta() {
             lineaeditada = varcta[i];
         }// end if
     }// end for
-    listcuentasview1 *listcuentas = new listcuentasview1();
+    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
     listcuentas->modo=1;
-    listcuentas->inicializa(conexionbase);
+    listcuentas->inicializa();
     listcuentas->exec();
     if (lineaeditada != NULL)
         lineaeditada->setText(listcuentas->codcuenta);
@@ -773,9 +775,9 @@ void aplinteligentesview::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1();
+        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
         listcuentas->modo=1;
-        listcuentas->inicializa(conexionbase);
+        listcuentas->inicializa();
         listcuentas->exec();
         codigo->setText(listcuentas->codcuenta);
         delete listcuentas;

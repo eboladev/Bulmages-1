@@ -46,9 +46,9 @@ void filtrarextractosview::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1();
+        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
         listcuentas->modo=1;
-        listcuentas->inicializa(conexionbase);
+        listcuentas->inicializa();
         listcuentas->exec();
         codigo->setText(listcuentas->codcuenta);
         delete listcuentas;
@@ -56,9 +56,9 @@ void filtrarextractosview::codigo_textChanged(const QString &texto) {
 }// end codigo_textChanged
 
 void filtrarextractosview::boton_buscacontrapartida() {
-   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    codigocontrapartida->setText(listcuentas->codcuenta);
    delete listcuentas;

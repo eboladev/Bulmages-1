@@ -171,8 +171,8 @@ int empresa::inicializa(QString *DB) {
   Esta funcion abre la ventana que presenta las cuentas contables
 *******************************************************************/
 int empresa::muestracuentas() 	{
-  listcuentasview1 *nuevae = new listcuentasview1(0,"mostracuentas",true);
-  nuevae->inicializa(conexionbase2);
+  listcuentasview1 *nuevae = new listcuentasview1(this, 0,"mostracuentas",true);
+  nuevae->inicializa();
   nuevae->exec();
   delete nuevae;
   return(0);
@@ -181,8 +181,8 @@ int empresa::muestracuentas() 	{
 
 void empresa::SegCuentas() {
 // Aprovechamos para empezar a trabajar con estadisticas a ver que tal van.
-   resmensualview *rmen = new resmensualview(0,0);
-   rmen->inicializa(conexionbase2);
+   resmensualview *rmen = new resmensualview(this,0,0);
+   rmen->inicializa();
    rmen->exec();
    delete rmen;   
 }// end SegCuentas

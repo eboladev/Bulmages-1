@@ -406,10 +406,10 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
       QString cant= table1->text(row, COL_CUOTA);
       fprintf(stderr,"Cuota: %s\n", cant.ascii());
       int numasiento = 0; //El asiento debe ser uno nuevo.
-      aplinteligentesview *nueva=new aplinteligentesview(0,"");
+      aplinteligentesview *nueva=new aplinteligentesview(empresaactual,0,"");
       QString cuenta = ctaactivo->text();
       QString cuentaamort = ctaamortizacion->text();
-      nueva->inicializa(conexionbase, numasiento, empresaactual->intapuntsempresa());
+      nueva->inicializa(numasiento, empresaactual->intapuntsempresa());
       nueva->muestraplantilla(idainteligente.toInt());
       nueva->setvalores("$cuenta$",cuentaamort);
       nueva->setvalores("$cuentabien$",cuenta);
@@ -494,9 +494,9 @@ void amortizacionview::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1();
+        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
         listcuentas->modo=1;
-        listcuentas->inicializa(conexionbase);
+        listcuentas->inicializa();
         listcuentas->exec();
         codigo->setText(listcuentas->codcuenta);
         delete listcuentas;
@@ -505,9 +505,9 @@ void amortizacionview::codigo_textChanged(const QString &texto) {
 
 
 void amortizacionview::buscactaactivo() {
-    listcuentasview1 *listcuentas = new listcuentasview1();
+    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
     listcuentas->modo=1;
-    listcuentas->inicializa(conexionbase);
+    listcuentas->inicializa();
     listcuentas->exec();
     ctaactivo->setText(listcuentas->codcuenta);
     delete listcuentas;
@@ -515,9 +515,9 @@ void amortizacionview::buscactaactivo() {
 
 
 void amortizacionview::buscactaamortizacion() {
-    listcuentasview1 *listcuentas = new listcuentasview1();
+    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
     listcuentas->modo=1;
-    listcuentas->inicializa(conexionbase);
+    listcuentas->inicializa();
     listcuentas->exec();
     ctaamortizacion->setText(listcuentas->codcuenta);
     delete listcuentas;

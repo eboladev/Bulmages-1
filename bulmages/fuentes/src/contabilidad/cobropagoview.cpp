@@ -199,8 +199,8 @@ void cobropagoview::s_creaPago() {
 	
       /// Se va a generar el asiento
       int numasiento = 0; 
-      aplinteligentesview *nueva=new aplinteligentesview(0,"");
-      nueva->inicializa(conexionbase, numasiento, empresaactual->intapuntsempresa());
+      aplinteligentesview *nueva=new aplinteligentesview(empresaactual, 0,"");
+      nueva->inicializa(numasiento, empresaactual->intapuntsempresa());
       nueva->muestraplantilla(idainteligente.toInt());
 /*      nueva->setvalores("$cuenta$",cuentaamort);
       nueva->setvalores("$cuentabien$",cuenta);
@@ -222,9 +222,9 @@ void cobropagoview::s_actualizar() {
   * \brief SOLT que responde a la pulsación de la busqueda de una cuenta.
   */
 void cobropagoview::s_searchAccount() {
-   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    m_cuenta->setText(listcuentas->codcuenta);
    delete listcuentas;   

@@ -350,9 +350,9 @@ void ivaview::calculaTotales() {
   * \brief SLOT que se ejecuta al pulsar sobre el boton de buscar una cuenta determinada
   */
 void ivaview::boton_buscacuenta() {
-    listcuentasview1 *listcuentas = new listcuentasview1();
+    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
     listcuentas->modo=1;
-    listcuentas->inicializa(conexionbase);
+    listcuentas->inicializa();
     listcuentas->exec();
     contrapartida->setText(listcuentas->codcuenta);
     returnContrapartida();
@@ -367,9 +367,9 @@ void ivaview::cambiadacontrapartida() {
     QString texto = contrapartida->text();
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1();
+        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
         listcuentas->modo=1;
-        listcuentas->inicializa(conexionbase);
+        listcuentas->inicializa();
         listcuentas->exec();
         codigo->setText(listcuentas->codcuenta);
         delete listcuentas;
@@ -925,9 +925,9 @@ void ivaview::cambiadasubcuenta(int row) {
     QString subcuenta = m_listPrevision->text(row,COL_PREV_CODCUENTA);
     if (subcuenta == "") {
         // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1();
+        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
         listcuentas->modo=1;
-        listcuentas->inicializa(conexionbase);
+        listcuentas->inicializa();
         listcuentas->exec();
         m_listPrevision->setText(row,COL_PREV_CODCUENTA,listcuentas->codcuenta);
         m_listPrevision->setText(row,COL_PREV_IDCUENTA,listcuentas->idcuenta);

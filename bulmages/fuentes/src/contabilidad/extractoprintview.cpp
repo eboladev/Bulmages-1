@@ -135,8 +135,8 @@ void ExtractoPrintView::presentakugar() {
 			fitxersortidatxt << " ordenasiento=\""<< ordenasiento.c_str() <<"\""; 
 			fitxersortidatxt << " debe=\""<< debe <<"\""; 
 			fitxersortidatxt << " haber=\""<< haber <<"\"\n" ; 
-			fitxersortidatxt << " codcontrapartida=\""<< codcontrapartida <<"\"\n" ; 		
-			fitxersortidatxt << " desccontrapartida=\""<< desccontrapartida <<"\"/>\n" ; 		
+			fitxersortidatxt << " codcontrapartida=\""<< codcontrapartida <<"\"\n" ;
+			fitxersortidatxt << " desccontrapartida=\""<< desccontrapartida <<"\"/>\n" ;
 	       }// end if
                if (txt) {
                   //presentació txt normal
@@ -151,7 +151,7 @@ void ExtractoPrintView::presentakugar() {
 			fitxersortidatxt << " haber=\""<< haber <<"\"\n" ; 
 			fitxersortidatxt << " codcontrapartida=\""<< codcontrapartida <<"\"\n" ; 
 			fitxersortidatxt << " desccontrapartida=\""<< desccontrapartida <<"\"/>\n" ; 
-               }
+               }// end if
 	       codigoant = codigo;
          }// end for
          delete cursoraux;
@@ -388,18 +388,18 @@ void ExtractoPrintView::presentar(char *tipus) {
 
 
 void ExtractoPrintView::boton_codinicial() {
-   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    codigoinicial->setText(listcuentas->codcuenta);
    delete listcuentas;
 }// end boton_codinicial
 
 void ExtractoPrintView::boton_codfinal() {
-   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    codigofinal->setText(listcuentas->codcuenta);
    delete listcuentas;

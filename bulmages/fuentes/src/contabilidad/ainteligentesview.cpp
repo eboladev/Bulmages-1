@@ -615,9 +615,9 @@ void ainteligentesview::accept() {
 
 
 void ainteligentesview::boton_cuentas() {
-   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    if (pestanas->currentPageIndex() == 0) {
      tapunts->setText(tapunts->currentRow(), tapunts->currentColumn(), listcuentas->codcuenta);

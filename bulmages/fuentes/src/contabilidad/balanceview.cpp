@@ -450,9 +450,9 @@ void balanceview::return_codigofinal() {
 
 
 void balanceview::boton_buscacuentainicial() {
-   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    codigoinicial->setText(listcuentas->codcuenta);
    delete listcuentas;
@@ -460,9 +460,9 @@ void balanceview::boton_buscacuentainicial() {
 
 
 void balanceview::boton_buscacuentafinal() {
-   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    codigofinal->setText(listcuentas->codcuenta);
    delete listcuentas;
@@ -531,9 +531,9 @@ void balanceview::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1();
+        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
         listcuentas->modo=1;
-        listcuentas->inicializa(conexionbase);
+        listcuentas->inicializa();
         listcuentas->exec();
         codigo->setText(listcuentas->codcuenta);
         delete listcuentas;

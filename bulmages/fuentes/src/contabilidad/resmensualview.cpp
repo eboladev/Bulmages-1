@@ -39,10 +39,13 @@
 #include "qobject.h"
 #include "listcuentasview1.h"
 #include "mpatrimonialesview.h"
+#include "empresa.h"
 
 
-resmensualview::resmensualview(QWidget *parent, const char *name ) : resmensualdlg(parent,name) {
+resmensualview::resmensualview(empresa *emp, QWidget *parent, const char *name ) : resmensualdlg(parent,name) {
 
+empresaactual = emp;
+conexionbase = emp->bdempresa();
 // Inicializamos los valores de las masas patrimoniales.
 idmpatrimonial1 = "";
 idmpatrimonial2 = "";
@@ -52,8 +55,7 @@ idmpatrimonial3 = "";
 resmensualview::~resmensualview(){
 }
 
-int resmensualview::inicializa(postgresiface2 *conexion) {
-    conexionbase = conexion;
+int resmensualview::inicializa() {
 //    presentar();
 //    pie->show();
     return(0);
@@ -140,9 +142,9 @@ void resmensualview::presentar() {
 }// end presentar
 
 void resmensualview::buscacodigocta() {
-   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    cod1->setText(listcuentas->codcuenta);
    delete listcuentas;   
@@ -150,17 +152,17 @@ void resmensualview::buscacodigocta() {
 
 
 void resmensualview::buscacodigocta1() {
-   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    cod2->setText(listcuentas->codcuenta);
    delete listcuentas;}// end buscacodigocta
 
 void resmensualview::buscacodigocta2() {
-   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    cod3->setText(listcuentas->codcuenta);
    delete listcuentas;

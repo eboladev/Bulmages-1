@@ -23,10 +23,28 @@
 #include "images/cgastos.xpm"
 
 #include "cuentaview.h"
+#include "empresa.h"
 
-listcuentasview1::listcuentasview1(QWidget *parent, const char *name, bool modal) : listcuentasdlg1(parent,name, modal) {
+listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : listcuentasdlg1(parent,name, modal) {
     modo=0;
-    conexionbase= NULL;
+    conexionbase= emp->bdempresa();
+        ccuenta=ListView1->addColumn("código cuenta",-1);
+        cdesccuenta=ListView1->addColumn("nombre cuenta",-1);
+        cidcuenta = ListView1->addColumn("id cuenta",0);
+        cbloqueada = ListView1->addColumn("bloqueada",0);
+        cnodebe = ListView1->addColumn("nodebe",0);
+        cnohaber = ListView1->addColumn("nohaber",0);
+        cregularizacion = ListView1->addColumn("regularizacion",0);
+        cimputacion = ListView1->addColumn("imputacion",0);
+        cgrupo = ListView1->addColumn("grupo",0);
+        ctipocuenta = ListView1->addColumn("tipo cuenta",0);
+    tablacuentas->setNumCols(3);
+    tablacuentas->horizontalHeader()->setLabel( 0, tr( "CODIGO" ) );
+    tablacuentas->horizontalHeader()->setLabel( 1, tr( "NOMBRE" ) );
+
+    tablacuentas->hideColumn(2);
+    tablacuentas->setColumnWidth(1,400);
+    tablacuentas->setColumnWidth(0,100);	
 }// end listcuentasview
 
 
@@ -38,32 +56,20 @@ listcuentasview1::~listcuentasview1() {}// end ~listcuentasview
  * Se llama asi y no desde el constructor pq asi la podemos llamar desde dentro
  * de la misma clase, etc etc etc
  *************************************************************/
-int listcuentasview1::inicializa(postgresiface2 *conn ) {
+int listcuentasview1::inicializa( ) {
     QListViewItem * it;
-    QListViewItem *Lista[10000];
+    QListViewItem *Lista[100000];
     int idcuenta;
     int padre;
     int idcuenta1;
     cursor2 *cursoraux1, *cursoraux2;
 
     ListView1->clear();
-    if (conexionbase == NULL) {
-        ccuenta=ListView1->addColumn("código cuenta",-1);
-        cdesccuenta=ListView1->addColumn("nombre cuenta",-1);
-        cidcuenta = ListView1->addColumn("id cuenta",0);
-        cbloqueada = ListView1->addColumn("bloqueada",0);
-        cnodebe = ListView1->addColumn("nodebe",0);
-        cnohaber = ListView1->addColumn("nohaber",0);
-        cregularizacion = ListView1->addColumn("regularizacion",0);
-        cimputacion = ListView1->addColumn("imputacion",0);
-        cgrupo = ListView1->addColumn("grupo",0);
-        ctipocuenta = ListView1->addColumn("tipo cuenta",0);
-    }// end if
-    conexionbase = conn;
-    conexionbase->begin();
-    cursoraux1=conexionbase->cargacuentas(0);
-    conexionbase->commit();
 
+    QString query = "SELECT * FROM cuenta where padre ISNULL ORDER BY padre";
+    conexionbase->begin();
+    cursoraux1 = conexionbase->cargacursor(query,"elquery2");
+    conexionbase->commit();
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").ascii());
         idcuenta1 = atoi( cursoraux1->valor("idcuenta").ascii());
@@ -73,11 +79,11 @@ int listcuentasview1::inicializa(postgresiface2 *conn ) {
         it->setText(cdesccuenta,cursoraux1->valor("descripcion"));
         idcuenta = atoi(cursoraux1->valor("idcuenta").ascii());
         it->setText(cidcuenta,cursoraux1->valor("idcuenta"));
-        it->setText(cbloqueada,cursoraux1->valor(5));
-        it->setText(cnodebe,cursoraux1->valor(10));
-        it->setText(cnohaber,cursoraux1->valor(11));
-        it->setText(cregularizacion,cursoraux1->valor(12));
-        it->setText(cimputacion,cursoraux1->valor(3));
+        it->setText(cbloqueada,cursoraux1->valor("bloqueada"));
+        it->setText(cnodebe,cursoraux1->valor("nodebe"));
+        it->setText(cnohaber,cursoraux1->valor("nohaber"));
+        it->setText(cregularizacion,cursoraux1->valor("regularizacion"));
+        it->setText(cimputacion,cursoraux1->valor("imputacion"));
         it->setText(cgrupo,cursoraux1->valor("idgrupo"));
 
         // Ponemos los iconos para que la cosa parezca mas guay.
@@ -97,14 +103,18 @@ int listcuentasview1::inicializa(postgresiface2 *conn ) {
         it->setOpen(true);
         cursoraux1->siguienteregistro ();
     }// end while
-
+    delete cursoraux1;
+    
+    
 	 conexionbase->begin();
-    cursoraux2=conexionbase->cargacuentas(-2);
+//    cursoraux2=conexionbase->cargacuentas(-2);
+    	query = "SELECT * FROM cuenta WHERE padre IS NOT NULL ORDER BY padre";
+	cursoraux2 = conexionbase->cargacursor(query, "cursor2");
 	 conexionbase->commit();
     //   cursoraux1->ultimoregistro();
     while (!cursoraux2->eof()) {
         padre = atoi(cursoraux2->valor(4).ascii());
-        idcuenta1 = atoi(cursoraux2->valor(0).ascii());
+        idcuenta1 = atoi(cursoraux2->valor("idcuenta").ascii());
 		  fprintf(stderr,"Cuentas de subnivel:%d",padre);
         if (padre != 0) {
             it = new QListViewItem(Lista[padre]);
@@ -114,11 +124,11 @@ int listcuentasview1::inicializa(postgresiface2 *conn ) {
             it->setText(cdesccuenta, cursoraux2->valor("descripcion"));
             idcuenta = atoi(cursoraux2->valor("idcuenta").ascii());
             it->setText(cidcuenta,cursoraux2->valor("idcuenta"));
-            it->setText(cbloqueada,cursoraux2->valor(5));
-            it->setText(cnodebe,cursoraux2->valor(10));
-            it->setText(cnohaber,cursoraux2->valor(11));
-            it->setText(cregularizacion,cursoraux2->valor(12));
-            it->setText(cimputacion,cursoraux2->valor(3));
+            it->setText(cbloqueada,cursoraux2->valor("bloqueada"));
+            it->setText(cnodebe,cursoraux2->valor("nodebe"));
+            it->setText(cnohaber,cursoraux2->valor("nohaber"));
+            it->setText(cregularizacion,cursoraux2->valor("regularizacion"));
+            it->setText(cimputacion,cursoraux2->valor("imputacion"));
             it->setText(cgrupo,cursoraux2->valor("idgrupo"));
 
             // Ponemos los iconos para que la cosa parezca mas guay.
@@ -138,15 +148,13 @@ int listcuentasview1::inicializa(postgresiface2 *conn ) {
         cursoraux2->siguienteregistro();
     }// end while
     delete cursoraux2;
-    delete cursoraux1;
     // Vamos a cargar el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
-    QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
+    query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
     conexionbase->begin();
     cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
     conexionbase->commit();
-    numdigitos=cursoraux1->valor(2).length();
+    numdigitos=cursoraux1->valor("valor").length();
     delete cursoraux1;
-    fprintf(stderr,"las cuentas tienen %d digitos\n",numdigitos);
     inicializatabla();
     return(0);
 }// end inicializa
@@ -154,24 +162,19 @@ int listcuentasview1::inicializa(postgresiface2 *conn ) {
 
 
 void listcuentasview1::inicializatabla()  {
+	QString query;
     //  tablacuentas->clear();
-    tablacuentas->setNumCols(3);
-    tablacuentas->horizontalHeader()->setLabel( 0, tr( "CODIGO" ) );
-    tablacuentas->horizontalHeader()->setLabel( 1, tr( "NOMBRE" ) );
-
-    tablacuentas->hideColumn(2);
-    tablacuentas->setColumnWidth(1,400);
-    tablacuentas->setColumnWidth(0,100);
 
     conexionbase->begin();
-    cursor2 *cursoraux1=conexionbase->cargacuentas(-1);
+    query = "SELECT * FROM cuenta ORDER BY padre";
+    cursor2 *cursoraux1 = conexionbase->cargacursor(query,"elquery");
     conexionbase->commit();
     tablacuentas->setNumRows(cursoraux1->numregistros());
     int i=0;
     while (!cursoraux1->eof()) {
         tablacuentas->setText(i,0,cursoraux1->valor("codigo"));
         tablacuentas->setText(i,1,cursoraux1->valor("descripcion"));
-        tablacuentas->setText(i,2,cursoraux1->valor(0));
+        tablacuentas->setText(i,2,cursoraux1->valor("idcuenta"));
 
 
         // Ponemos los iconos para que la cosa parezca mas guay.
@@ -186,7 +189,7 @@ void listcuentasview1::inicializatabla()  {
         else if (cursoraux1->valor("tipocuenta") == "5")
             tablacuentas->setPixmap(i,0, QPixmap(cgastos));
 
-        QString codigo = cursoraux1->valor(1);
+        QString codigo = cursoraux1->valor("codigo");
         if (codigo.length() != numdigitos) {
             tablacuentas->hideRow(i);
         }// end if
@@ -289,7 +292,7 @@ void listcuentasview1::listdblpulsada(QListViewItem *it) {
         nuevae->inicializa(conexionbase);
         nuevae->cargacuenta(atoi(idcuenta.ascii()));
         nuevae->exec();
-        inicializa(conexionbase);
+        inicializa();
         delete nuevae;
         // Para no perder el foco del elemento, al mismo tiempo que se
         // actualizan los cambios luego buscamos y enfocamos el item
@@ -329,7 +332,7 @@ void listcuentasview1::nuevacuenta()  {
     nuevae->exec();
     fprintf(stderr,"Ya volvemos de cuentaview\n");
 
-    inicializa(conexionbase);
+    inicializa();
     idcuenta = nuevae->idcuenta;
     cadena= Ttos(idcuenta);
     // Para no perder el foco del elemento, al mismo tiempo que se
@@ -361,7 +364,7 @@ void listcuentasview1::editarcuenta()  {
     nuevae->inicializa(conexionbase);
     nuevae->cargacuenta(atoi(idcuenta.ascii()));
     nuevae->exec();
-    inicializa(conexionbase);
+    inicializa();
     // Para no perder el foco del elemento, al mismo tiempo que se
     // actualizan los cambios luego buscamos y enfocamos el item
     it = ListView1->findItem(idcuenta, cidcuenta, Qt::ExactMatch);
@@ -387,7 +390,7 @@ void listcuentasview1::borrarcuenta()  {
             QListViewItem *ot = it->itemAbove();
             if (ot)
                 idcuenta =atoi((char *) ot->text(cidcuenta).ascii());
-            inicializa(conexionbase);
+            inicializa();
             QString cadena;;
 				cadena.sprintf("%d",idcuenta);
             it = ListView1->findItem(cadena, cidcuenta, Qt::ExactMatch);

@@ -34,9 +34,9 @@ filtrardiarioview::~filtrardiarioview(){
 
 
 void filtrardiarioview::buscacontrapartida() {
-  listcuentasview1 *listcuentas = new listcuentasview1();
+  listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->modo=1;
-   listcuentas->inicializa(conexionbase);
+   listcuentas->inicializa();
    listcuentas->exec();
    contrapartida->setText(listcuentas->codcuenta);
    delete listcuentas;

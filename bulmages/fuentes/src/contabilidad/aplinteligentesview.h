@@ -36,11 +36,13 @@
 #include "postgresiface2.h"
 #include "intapunts3view.h"
 
+class empresa;
 /** *@author Tomeu Borrás Riera */
 
 class aplinteligentesview : public aplinteligentesdlg  {
    Q_OBJECT
 private:
+  empresa *empresaactual;
   postgresiface2 *conexionbase;
   QString variablescta[100][3];
   QString variablesfecha[100][3];
@@ -79,9 +81,9 @@ private:
   int idainteligente;
   unsigned int numdigitos;
 public: 
-  aplinteligentesview(QWidget *parent=0, const char *name=0);
+  aplinteligentesview(empresa *, QWidget *parent=0, const char *name=0);
   ~aplinteligentesview();
-  void inicializa(postgresiface2 *, int, intapunts3view *);
+  void inicializa(int, intapunts3view *);
   void mostrarplantilla();
   void recogevalores();
   void creaasiento();

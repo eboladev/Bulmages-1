@@ -30,6 +30,8 @@
 #include "listcuentasdlg1.h"
 /*** @author Tomeu Borrás Riera */
 
+class empresa;
+
 class listcuentasview1 : public listcuentasdlg1  {
 Q_OBJECT
 
@@ -44,12 +46,12 @@ QString idcuenta;
 postgresiface2 *conexionbase;
 
 public:
-   listcuentasview1(QWidget *parent=0, const char *name=0, bool modal=true);
+   listcuentasview1(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);
    ~listcuentasview1();
    void arbolcuentas(QListViewItem *, int );
    void listpulsada(QListViewItem *);
    void listdblpulsada(QListViewItem *);
-   int inicializa(postgresiface2 *);
+   int inicializa();
    void inicializatabla();
 public slots:
    virtual void dbtabla(int, int, int, const QPoint &);

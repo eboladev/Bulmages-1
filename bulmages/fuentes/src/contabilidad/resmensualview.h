@@ -32,18 +32,20 @@
 #include "resmensualdlg1.h"
 #endif
 
+class empresa;
 
-
-/***@author Tomeu Borrás Riera   */
+/** *@author Tomeu Borrás Riera   */
 
 class resmensualview : public resmensualdlg  {
    Q_OBJECT
-public: 
+private:
+   empresa *empresaactual;
    postgresiface2 *conexionbase;
+public: 
    string idmpatrimonial1, idmpatrimonial2, idmpatrimonial3;
 
-   int inicializa(postgresiface2 *);
-	resmensualview(QWidget *parent=0, const char *name=0);
+   int inicializa();
+	resmensualview(empresa *, QWidget *parent=0, const char *name=0);
 	~resmensualview();
    void presentar();
    void presentarpie();
