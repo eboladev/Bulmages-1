@@ -95,6 +95,7 @@ CREATE TABLE lpresupuesto (
 #define COL_IDPRESUPUESTO 8
 #define COL_REMOVE 9
 #define COL_TASATIPO_IVA 10
+#define COL_TIPO_IVA 11
 
 #define COL_DESCUENTO_IDDPRESUPUESTO 0
 #define COL_DESCUENTO_CONCEPTDPRESUPUESTO 1
@@ -141,7 +142,7 @@ void Budget::inicialize() {
 	m_list->setSorting( TRUE );
 	m_list->setSelectionMode( QTable::SingleRow );
 	m_list->setColumnMovingEnabled( TRUE );
-	m_list->setNumCols(11);
+	m_list->setNumCols(12);
 	m_list->horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "Nº Línea" ) );
 	m_list->horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripción" ) );
 	m_list->horizontalHeader()->setLabel( COL_CANTLPRESUPUESTO, tr( "Cantidad" ) );
@@ -152,6 +153,7 @@ void Budget::inicialize() {
 	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
 	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
 	m_list->horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
+	m_list->horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
    
 	m_list->setColumnWidth(COL_IDLPRESUPUESTO,100);
 	m_list->setColumnWidth(COL_DESCLPRESUPUESTO,300);
@@ -163,6 +165,7 @@ void Budget::inicialize() {
 	m_list->setColumnWidth(COL_CODARTICULO,100);
 	m_list->setColumnWidth(COL_NOMARTICULO,300);
 	m_list->setColumnWidth(COL_TASATIPO_IVA,50);
+	m_list->setColumnWidth(COL_TIPO_IVA,50);
 
 	
 	m_list->hideColumn(COL_IDLPRESUPUESTO);
@@ -170,6 +173,7 @@ void Budget::inicialize() {
 	m_list->hideColumn(COL_IDARTICULO);
 	m_list->hideColumn(COL_REMOVE);
 	m_list->hideColumn(COL_TASATIPO_IVA);
+	m_list->hideColumn(COL_TIPO_IVA);
 	
 	m_list->setNumRows(10);
 	
@@ -315,6 +319,7 @@ void Budget::chargeBudgetLines(QString idbudget) {
 		m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
 		m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
 		m_list->setText(i,COL_TASATIPO_IVA,cur->valor("tasatipo_iva"));
+		m_list->setText(i,COL_TIPO_IVA,cur->valor("idtipo_iva"));
 		i++;
 		cur->siguienteregistro();
 	}// end while
@@ -521,6 +526,7 @@ void Budget::manageArticle(int row) {
 		m_list->setText(row, COL_NOMARTICULO, "");
 		m_list->setText(row, COL_IDARTICULO, "");
 		m_list->setText(row, COL_TASATIPO_IVA, "");
+		m_list->setText(row, COL_TIPO_IVA, "");
 		
 		companyact->begin();
 		cursor2 * cur2= companyact->cargacursor("SELECT * FROM articulo WHERE codarticulo="+m_list->text(row, COL_CODARTICULO),"unquery");
@@ -534,6 +540,7 @@ void Budget::manageArticle(int row) {
 			companyact->commit();
 			if (!cur3->eof()) {
 				m_list->setText(row, COL_TASATIPO_IVA, cur3->valor("tasatipo_iva"));
+				m_list->setText(row, COL_TIPO_IVA, cur3->valor("tipo_iva"));
 			}
 			delete cur3;
 		}
@@ -1034,8 +1041,31 @@ void Budget::presentaOpenReports() {
 	string preciolinea;
 	string descuentolinea;
 	string importelinea;
-	cursor2 *cursoraux;
+	
+	string cif;
+	string fecha;
+	string numero;
+	string observaciones;
+	
+	string nombre;
+	string direccion;
+	string poblacion;
+	string cp;
+	string telefono;
+	string fax;
+	
+	float bases [99];
+	float tasas [99];
+	for (int i=0;i<100;i++) {
+		bases[i]=0;
+		tasas[i]=0;
+	}
+	
 
+	cif = m_cifclient->text().ascii();
+	fecha = m_fpresupuesto->text().ascii();
+	numero = m_numpresupuesto->text().ascii();
+	observaciones = m_comentpresupuesto->text().ascii();
 	
 	ifstream filestr((confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml").c_str());
 	string a;
@@ -1053,14 +1083,37 @@ void Budget::presentaOpenReports() {
 		}
 	}// end while
 	fitxersortidatxt << "<story>\n" ;
-	// aquí falten les dades del client
 	
+	// dades del client
+	QString query = "SELECT * FROM cliente WHERE idcliente="+m_idclient;
+	companyact->begin();
+	cursor2 * cur= companyact->cargacursor(query, "querypresupuesto");
+	companyact->commit(); 
+	if (!cur->eof()) {
+		nombre = cur->valor("nomcliente").ascii();	
+		direccion = cur->valor("dircliente").ascii();
+		poblacion = cur->valor("poblcliente").ascii();
+		cp = cur->valor("cpcliente").ascii();
+		telefono = cur->valor("telcliente").ascii();
+		fax = cur->valor("faxcliente").ascii();
+    }// end if
+	 delete cur;
+	
+	fitxersortidatxt << "<para style=\"name\">" << nombre.c_str() << "</para>\n" ;
+	fitxersortidatxt << "<para>" << direccion.c_str() << "</para>\n" ;
+	fitxersortidatxt << "<para>" << cp.c_str() << " " << poblacion.c_str() << "</para>\n" ;
+	fitxersortidatxt << "<para>" << "Tfno: " << telefono.c_str() << "  Fax: " << fax.c_str() << "</para>\n" ;
 	fitxersortidatxt << "\t<nextFrame/>\n" ;
 	
 	// Dades capcelera pressupost
 	fitxersortidatxt << "\t<blockTable colWidths=\"2.5cm, 2.5cm, 2.5cm, 2.5cm\" style=\"datoscabecera\">\n" ;
 	fitxersortidatxt << "\t\t<tr><td>NIF/CIF</td><td>Cod. Clien.</td><td>Fecha</td><td>N. Presup</td></tr>\n" ;
-	fitxersortidatxt << "\t\t<tr><td>43084545</td><td>28</td><td>25/01/2005</td><td>2</td></tr>\n" ;
+	fitxersortidatxt << "\t\t<tr>\n" ;
+	fitxersortidatxt << "\t\t\t<td>" << cif.c_str() << "</td>\n" ;
+	fitxersortidatxt << "\t\t\t<td></td>\n" ;
+	fitxersortidatxt << "\t\t\t<td>" << fecha << "</td>\n" ;
+	fitxersortidatxt << "\t\t\t<td>" << numero << "</td>\n" ;
+	fitxersortidatxt << "\t\t</tr>\n" ;
 	fitxersortidatxt << "\t</blockTable>\n" ;
 	fitxersortidatxt << "\t<nextFrame/>\n";
 	
@@ -1070,29 +1123,38 @@ void Budget::presentaOpenReports() {
 	fitxersortidatxt << "\t<blockTable colWidths=\"1.5cm, 10cm, 2cm, 2cm, 1.5cm, 2cm\" style=\"products\">" ;
 	fitxersortidatxt << "\t<tr><td>Código</td><td>Descripción</td><td>Cantidad</td><td>Precio</td><td>%Desc</td><td>Importe</td></tr>\n" ;
 
-	companyact->begin();
-	cursoraux = companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN  lpresupuesto ON presupuesto.idpresupuesto = lpresupuesto.idpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presupuesto.idpresupuesto="+m_idpresupuesto+" ORDER BY idlpresupuesto ASC","elquery");
-	companyact->commit();
-	for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
-		codigoarticulo = cursoraux->valor("codarticulo").ascii();
-		descripcionarticulo = cursoraux->valor("nomarticulo").ascii();
-		preciolinea = cursoraux->valor("pvplpresupuesto").ascii();
-		cantidadlinea = cursoraux->valor("cantlpresupuesto").ascii();
-		descuentolinea = cursoraux->valor("descuentolpresupuesto").ascii();
-		importelinea = "";
+	int i = 0;
+	int error = 0;
+	while (i < m_list->numRows() && error==0) {
+		if (m_list->text(i,COL_REMOVE)!="S") {
+			if (m_list->text(i,COL_IDARTICULO)!="" || m_list->text(i,COL_NOMARTICULO)!="") {
+				codigoarticulo = m_list->text(i,COL_CODARTICULO).ascii();
+				descripcionarticulo = m_list->text(i,COL_NOMARTICULO).ascii();
+				preciolinea = m_list->text(i,COL_PVPLPRESUPUESTO).ascii();
+				cantidadlinea = m_list->text(i,COL_CANTLPRESUPUESTO).ascii();
+				descuentolinea = m_list->text(i,COL_DESCUENTOLPRESUPUESTO).ascii();
+				float importe = m_list->text(i, COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i, COL_CANTLPRESUPUESTO).toFloat();
+				importe -=  (importe*m_list->text(i, COL_DESCUENTOLPRESUPUESTO).toFloat())/100;
+				importelinea = QString().sprintf("%0.2f",importe).ascii();
+				bases[m_list->text(i,COL_TIPO_IVA).toInt()]+=importe;
+				tasas[m_list->text(i,COL_TIPO_IVA).toInt()]=m_list->text(i,COL_TASATIPO_IVA).toFloat();
 		
-		if (txt) {
-			//presentació txt normal
-			fitxersortidatxt << "\t<tr>" ;
-			fitxersortidatxt << "\t\t<td>" << codigoarticulo.c_str() << "</td>\n" ;
-			fitxersortidatxt << "\t\t<td><para>" << descripcionarticulo.c_str() << "</para></td>\n" ; 
-			fitxersortidatxt << "\t\t<td>" << preciolinea.c_str() << "</td>\n" ; 
-			fitxersortidatxt << "\t\t<td>" << cantidadlinea.c_str() << "</td>\n" ; 
-			fitxersortidatxt << "\t\t<td>" << descuentolinea.c_str() << "</td>\n" ; 
-			fitxersortidatxt << "\t\t<td>" << importelinea.c_str() << "</td>\n" ; 
-			fitxersortidatxt << "\t</tr>" ;
+				if (txt) {
+					//presentació txt normal
+					fitxersortidatxt << "\t<tr>" ;
+					fitxersortidatxt << "\t\t<td>" << codigoarticulo.c_str() << "</td>\n" ;
+					fitxersortidatxt << "\t\t<td><para>" << descripcionarticulo.c_str() << "</para></td>\n" ;
+					fitxersortidatxt << "\t\t<td>" << cantidadlinea.c_str() << "</td>\n" ; 
+					fitxersortidatxt << "\t\t<td>" << preciolinea.c_str() << "</td>\n" ;  
+					fitxersortidatxt << "\t\t<td>" << descuentolinea.c_str() << "</td>\n" ; 
+					fitxersortidatxt << "\t\t<td>" << importelinea.c_str() << "</td>\n" ; 
+					fitxersortidatxt << "\t</tr>" ;
+				}
+			}
 		}
-	}// end for
+		i ++;
+   } //end while
+
 	fitxersortidatxt << "\t</blockTable>\n" ;
 	
 	
@@ -1102,21 +1164,29 @@ void Budget::presentaOpenReports() {
 	
 	fitxersortidatxt << "\t<blockTable colWidths=\"2.5cm, 2.5cm, 2.5cm, 2.5cm\" style=\"products2\">\n" ;
 	fitxersortidatxt << "\t<tr><td>NETO</td><td>CUOTA IVA</td><td>IVA</td><td>TOTAL</td></tr>\n" ;
-	fitxersortidatxt << "\t<tr>\n" ;
-	fitxersortidatxt << "\t\t<td>324,09</td>\n" ;
-	fitxersortidatxt << "\t\t<td>16%</td>\n" ;
-	fitxersortidatxt << "\t\t<td>51,85</td>\n" ;
-	fitxersortidatxt << "\t\t<td>375,94</td>\n" ;
-	fitxersortidatxt << "\t</tr>\n" ;
+	
+	for (int i=0;i<100;i++) {
+		if (bases[i]!=0 && bases[i]!=NULL) {
+			string base = QString().sprintf("%0.2f",bases[i]).ascii();
+			string tasa = QString().sprintf("%0.2f",tasas[i]).ascii();
+			string cuota = QString().sprintf("%0.2f",(bases[i]*tasas[i])/100).ascii();
+			string total = QString().sprintf("%0.2f",(bases[i] + (bases[i]*tasas[i])/100)).ascii();
+			fitxersortidatxt << "\t<tr>\n" ;
+			fitxersortidatxt << "\t\t<td>" << base.c_str() << "</td>\n" ;
+			fitxersortidatxt << "\t\t<td>" << tasa.c_str() << "</td>\n" ;
+			fitxersortidatxt << "\t\t<td>" << cuota.c_str() << "</td>\n" ;
+			fitxersortidatxt << "\t\t<td>" << total.c_str() << "</td>\n" ;
+			fitxersortidatxt << "\t</tr>\n" ;
+		}
+	} //end for
+	
 	fitxersortidatxt << "\t</blockTable>\n" ;
 	fitxersortidatxt << "\t<spacer length=\"2cm\" width=\"1mm\"/>\n" ;
 	fitxersortidatxt << "\t<para style=\"payment\">\n" ;
-	fitxersortidatxt << "\t- Lineas para obserbaciones -\n" ;
+	fitxersortidatxt << "\t" << observaciones.c_str() << "\n" ;
 	fitxersortidatxt << "\t</para>\n" ;
 	fitxersortidatxt << "</story>\n" ;
 	fitxersortidatxt << "</document>\n" ;
-
-	delete cursoraux;
 	
 	fitxersortidatxt.close();
    filestr.close();
@@ -1168,7 +1238,7 @@ void Budget::presentakugar() {
 		codigoarticulo = cursoraux->valor("codarticulo").ascii();
 		descripcionarticulo = cursoraux->valor("nomarticulo").ascii();
 		preciolinea = cursoraux->valor("pvplpresupuesto").ascii();
-		cantidadlinea = cursoraux->valor("cantlpresupuesto").ascii();
+		cantidadlinea = QString().sprintf("%0.3f",cursoraux->valor("cantlpresupuesto").toFloat()).ascii(); //cursoraux->valor("cantlpresupuesto").ascii();
 		descuentolinea = cursoraux->valor("descuentolpresupuesto").ascii();
 		importelinea = "";
 		

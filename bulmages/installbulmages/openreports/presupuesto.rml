@@ -18,10 +18,11 @@
 		<frame id="address" x1="11.2cm" y1="195mm" width="9.5cm" height="3cm"/>
 		<frame id="cabecerapresup" x1="10cm" y1="180mm" width="10.5cm" height="2cm"/>
 		<frame id="column" x1="2.0cm" y1="2cm" width="17cm" height="16.5cm"/>
+		
 	</pageTemplate>
 	<pageTemplate id="others">
 		<pageGraphics>
-			<image x="5mm" y="240mm" width="200mm" height="50mm" file="logo.jpg"/>
+			<image x="5mm" y="240mm" width="200mm" height="50mm" file="/usr/share/bulmages/openreports/logo.jpg"/>
 
 			<setFont name="Helvetica" size="10"/>
 			<fill color="(0,0,0)"/>
@@ -75,84 +76,3 @@
 		<blockBackground colorName="(0.85,0.85,0.85)" start="0,0" stop="-1,0"/>
 	</blockTableStyle>
 </stylesheet>
-
-<!-- A PARTIR DE AQUI LO RELLENA EL PROGRAMA -->
-
-<!-- <story>
-	<para style="name">Bartolome Borras Riera</para>
-	<para>C/Gessami, 19</para>
-	<para>07008 Palma de Mallorca (Balears)</para>
-	<para>Telf.: 971 xx xx xx Fax: 971 yy yy yy</para>
-	
-	<nextFrame/>
-
-	<blockTable colWidths="2.5cm, 2.5cm, 2.5cm, 2.5cm" style="datoscabecera">
-	<tr>
-		<td>NIF/CIF</td><td>Cod. Clien.</td><td>Fecha</td><td>N. Presup</td>
-	</tr><tr>
-		<td>43084545</td><td>28</td><td>25/01/2005</td><td>2</td>
-	</tr>
-	</blockTable>
-	
-	<nextFrame/>
-	
-	<setNextTemplate name="others"/>
-	<spacer length="0.5cm" width="1mm"/>
-	<blockTable colWidths="1.5cm, 10cm, 2cm, 2cm, 1.5cm, 2cm" style="products">
-	<tr>
-		<td>Código</td><td>Descripción</td><td>Cantidad</td><td>Precio</td><td>%Desc</td><td>Importe</td>
-	</tr>
-	<tr>
-		<td>00001</td>
-		<td><para>Articulo 1</para></td>
-		<td>2</td>
-		<td>3,45</td>
-		<td>0,5%</td>
-		<td>6,xx</td>
-	</tr>
-	<tr>
-		<td>00002</td>
-		<td><para>Articulo 2</para></td>
-		<td>2</td>
-		<td>3,45</td>
-		<td>0,5%</td>
-		<td>6,xx</td>
-	</tr>
-	<tr>
-		<td><para></para></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td><para></para></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td><para></para></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td><para></para></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td><para></para></td>
-		<td></td>
-	</tr>
-	</blockTable>
-	
-	<spacer length="2cm" width="50mm"/>
-	
-	<blockTable colWidths="2.5cm, 2.5cm, 2.5cm, 2.5cm" style="products2">
-	<tr>
-		<td>NETO</td><td>CUOTA IVA</td><td>IVA</td><td>TOTAL</td>
-	</tr><tr>
-		<td>324,09</td><td>16%</td><td>51,85</td><td>375,94</td>
-	</tr>
-	</blockTable>
-	<spacer length="2cm" width="1mm"/>
-	<para style="payment">
-		- Lineas para obserbaciones -
-	</para>
-
-</story>
-</document> -->
