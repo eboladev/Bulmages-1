@@ -168,6 +168,12 @@ void amortizacionview::cambiofecha1cuota() {
 }// end cambiofechacompra
 
 
+
+// Datos para el asiento de amortización.
+//El asiento inteligente debe llamarse como el parametro Amortizacion de confpr.
+// $cuenta$ Cuenta de Amortización.
+// $cuentabien$ Cuenta del Bien.
+// $cuota$ Cuota a pagar.
 void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin) {
    QPopupMenu *popup;
    popup = new QPopupMenu;
@@ -175,10 +181,11 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
    popup->insertItem(tr("Generar Asiento"),4);
    popup->insertSeparator();
    popup->insertItem(tr("Ver Asiento"),1);
-   popup->insertItem(tr("--"),6);
+/*   popup->insertItem(tr("--"),6);
    popup->insertSeparator();
    popup->insertItem(tr("--"),2);
    popup->insertItem(tr("--"),3);
+*/
    opcion = popup->exec(poin);
    delete popup;
    
@@ -188,12 +195,16 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
       QString cant= table1->text(row, COL_CUOTA);
       fprintf(stderr,"Cuota: %s\n", cant.ascii());
       int numasiento = 0; //El asiento debe ser uno nuevo.
-    aplinteligentesview *nueva=new aplinteligentesview(0,"");
-    nueva->inicializa(conexionbase, numasiento, empresaactual->intapuntsempresa());
-    nueva->muestraplantilla(idainteligente.toInt());
-    nueva->setvalores("$cuenta$","19000");
-    nueva->exec();
-    delete nueva;
+      aplinteligentesview *nueva=new aplinteligentesview(0,"");
+      nueva->inicializa(conexionbase, numasiento, empresaactual->intapuntsempresa());
+      nueva->muestraplantilla(idainteligente.toInt());
+      nueva->setvalores("$cuenta$","19000");
+      nueva->setvalores("$cuentabien$","999999");
+      nueva->setvalores("$cuota$", "900");
+      nueva->setvalores("$fechaasiento$",table1->text(row,COL_FECHA));
+      nueva->setvalores("$cuota$",table1->text(row,COL_CUOTA));    
+      nueva->exec();
+      delete nueva;
    }// end if
 }// end contextMenuRequested
 
