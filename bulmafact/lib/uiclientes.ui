@@ -1,0 +1,191 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>UIClientes</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>UIClientes</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>520</width>
+            <height>386</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Clientes</string>
+    </property>
+    <property name="icon">
+        <pixmap>kdmconfig.png</pixmap>
+    </property>
+    <widget class="QTabWidget">
+        <property name="name">
+            <cstring>tabWidget2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>10</y>
+                <width>490</width>
+                <height>320</height>
+            </rect>
+        </property>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>General</string>
+            </attribute>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lineEdit33</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>89</x>
+                        <y>85</y>
+                        <width>210</width>
+                        <height>17</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>29</x>
+                        <y>85</y>
+                        <width>47</width>
+                        <height>16</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Telefono</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lineEdit32</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>89</x>
+                        <y>55</y>
+                        <width>220</width>
+                        <height>17</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lineEdit31</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>89</x>
+                        <y>25</y>
+                        <width>220</width>
+                        <height>17</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>19</x>
+                        <y>55</y>
+                        <width>51</width>
+                        <height>16</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Direccion</string>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>29</x>
+                        <y>25</y>
+                        <width>44</width>
+                        <height>16</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Nombre</string>
+                </property>
+                <property name="scaledContents">
+                    <bool>true</bool>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Facturacion</string>
+            </attribute>
+        </widget>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton42</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>340</x>
+                <y>340</y>
+                <width>80</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Cancelar</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton43</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>429</x>
+                <y>340</y>
+                <width>80</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Aplicar</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton41</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>249</x>
+                <y>340</y>
+                <width>80</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Aceptar</string>
+        </property>
+    </widget>
+</widget>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

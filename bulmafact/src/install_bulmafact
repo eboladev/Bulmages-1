@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Iniciando Instalación Bulmafact **************"
+
+mkdir -p /usr/local/lib/bulmages
+
+cp -f ../bin/bulmafact /usr/local/bin/bulmafact
+rm -f /usr/local/lib/bulmages/libbulmafact*
+cp ../lib/libbulmafact.so.0.1.0 /usr/local/lib/bulmages
+ln -s /usr/local/lib/bulmages/libbulmafact.so.0.1.0  /usr/local/lib/bulmages/libbulmafact.so
+ln -s /usr/local/lib/bulmages/libbulmafact.so.0.1.0  /usr/local/lib/bulmages/libbulmafact.so.0
+ln -s /usr/local/lib/bulmages/libbulmafact.so.0.1.0  /usr/local/lib/bulmages/libbulmafact.so.0.1
+
+echo "Fin Instalación Bulmafact ********************"

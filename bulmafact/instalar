@@ -1,0 +1,44 @@
+###############################################################################
+# Guia rápida para instalar BulmaFact.                                        #
+###############################################################################
+###############################################################################
+# BulmaFact es el modulo de Facturación de la suite de Gestión BulmaGes.      #
+#                                                                             #
+# BulmaGes está mantenido por la asociación IGLUES.                           #
+###############################################################################
+
+Si estas leyendo esto probablemente ya tengas las fuentes en tu ordenador.
+En este caso el proceso de instalación es muy simple:
+
+Ejecuta en este orden:
+        qmake
+        make
+        make install (como root)
+
+El ejecutable se instala en /usr/local/bin/
+Las librerías dinámicas se instalan en /usr/local/lib/bulmages/
+
+Para iniciar la aplicación ejecuta:
+        bulmafact
+
+Para entrar en la aplicación:
+       Usuario: bulmages
+       Passwd:  bulmages
+
+
+Si algo falla:
+
+El software bulmafact basa todo su funcionamiento gráfico en las librerías QT (http://www.trolltech.com). 
+En consecuencia es imprescindible que tengas QT instalado en tu sistema.
+La base de datos es postgreSQL (http://www.postgresql.org/).
+Bulmafact no puede funcionar si no tienes un servidor postgresql correctamente 
+instalado y funcionando en tu sistema. 
+
+Mas información en el manual y en la pagina web:
+http://www.bulmages.org
+
+
+
+
+El equipo de desarrollo de BulmaGes.
+

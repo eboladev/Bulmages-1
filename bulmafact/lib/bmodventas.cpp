@@ -1,0 +1,126 @@
+/***************************************************************************
+ *   Copyright (C) 2003 by Josep Burcion                                   *
+ *   josep@burcion.com                                                     *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ ***************************************************************************/
+#include "bmodventas.h"
+
+#include <qmessagebox.h>
+
+//BModVentas::BModVentas(QWidget * ref, QWidget * parent, const char * name, WFlags f)
+BModVentas::BModVentas(QString* usuario, QString* passwd, QString* dataBase, QWidget * parent, const char * name, WFlags f)
+ : UIVentas(parent,name,f)
+{
+    //PunteroAlSelector=ref;
+    QVBox* vb = new QVBox( this );
+    vb->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
+    zona0 = new QWorkspace (vb);
+    zona0->setScrollBarsEnabled( TRUE );
+    setCentralWidget( vb );  
+    Usuario = usuario;
+    Password = passwd;
+    if (Password==NULL) Password = new QString("");
+    DataBase = dataBase;
+    if (DataBase == NULL) DataBase = new QString("NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR");
+    //*DataBase = "josep";
+    intentosFallidosPassword=0;
+    cargaUsuario();
+}
+
+
+BModVentas::~BModVentas() {
+}
+
+/*****************************************************************************/
+/* Muestra el dialogo para entrar el nombre de usuario y la contraseña       */
+/*****************************************************************************/
+void BModVentas::cargaUsuario(){
+    if (++intentosFallidosPassword > 3) close();
+    else {
+        if (Usuario==NULL) {
+            Usuario = new QString("NOMBRE_USUARIO_SIN_DETERMINAR");
+            Password = new QString("CONTRASEÑA_SIN_DETERMINAR");
+            (new BPasswd(Usuario, Password,this,"userBox",TRUE,0))->exec();
+        }
+        seleccionaEmpresa();
+    }
+ }
+
+/*****************************************************************************/
+/* Comprueba en que empresas puede entrar el usuario y las muestra.          */
+/*****************************************************************************/
+void BModVentas::seleccionaEmpresa(){
+    BfEmpresa* miEmpresa = new BfEmpresa();
+    BfCursor* cursorEmpresas=miEmpresa->pg_database(Usuario, Password);
+    if (cursorEmpresas) {
+        if (*DataBase!="NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR") {
+            while (!cursorEmpresas->eof() && *DataBase !=cursorEmpresas->valor(0)) cursorEmpresas->siguienteregistro();
+            if (!cursorEmpresas->eof()) cursorEmpresas->primerregistro();
+            else cursorEmpresas=NULL;
+        } else {
+            (new BVisorEmpresas(DataBase,cursorEmpresas,this,"VisorEmpresas"))->exec();
+            if (*DataBase=="NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR") cursorEmpresas=NULL;
+        }
+    
+    }
+    
+    if (cursorEmpresas==NULL){
+        Usuario = NULL;
+        cargaUsuario();
+    }
+    
+    setCaption(QString("BulmaFact - ") + DataBase->ascii()); //debug....
+    delete miEmpresa;
+}
+
+//Abro la ficha de mantenimiento de los clientes
+void BModVentas::fichaClientes() {
+    (new BClientes(zona0,"cliente"))->show();
+}
+
+//Abro la ficha de mantenimiento de los articulos
+void BModVentas::fichaArticulos() {
+    (new BArticulos(zona0,"articulo"))->show();
+}
+
+//Abro la ventana de los albaranes de Venta.
+void BModVentas::albaranes() {
+    (new BAlbaVenta(zona0,"albaran"))->show();
+}
+
+//Abro la ventana de los pedidos de Venta.
+void BModVentas::pedidos() {
+    (new BPediVenta(zona0,"pedido"))->show();
+}
+
+//Emite una señal que se puede conectar a un SLOT
+void BModVentas::mostrar_selector() {
+    emit clickEnlace();
+}
+
+/********************************************************************************************/
+
+/********************************************************************************************/
+/* Punto de unión de la libreria libbulmafact.so con el mundo exterior.                     */
+/********************************************************************************************/
+extern "C" {
+    BModVentas* enlace (QWorkspace * parent, int modo) {
+        BModVentas * bulmafact=0;
+        switch (modo) {
+            case 0: //Modo entorno ventanas independientes
+                bulmafact = new BModVentas(NULL,NULL,NULL,parent,"ModuloVentas", Qt::WDestructiveClose); break;
+            case 1: //Modo entorno MDI-CHILD
+                bulmafact = new BModVentas(NULL,NULL,NULL,parent, "ModuloVentas",Qt::WStyle_Customize | Qt::WStyle_NoBorder | Qt::WDestructiveClose); break;
+        }
+        return bulmafact;
+    }
+}
