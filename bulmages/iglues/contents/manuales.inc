@@ -15,17 +15,20 @@ $body = '
 <P>Manual introductorio al uso del sistema de mensajería instantánea Jabber, orientado a aquellas personas que nunca hayan usado este sistema de mensajería.</P>
 <A HREF="./documentos/manualjabber.pdf" TARGET="nueva">Versión PDF</A>
 <br>
+<br>
 </td>
 </tr>
 <tr><td><br></td></tr>
 <tr>
 <td>
-<a name="cvs"></a><A HREF="./documentos/cvs.pdf" TARGET="nueva">CVS como herramienta de desarrollo compartido</A><BR>
+<a name="cvs"></a><A href="./manuales/manual cvs/index.html" TARGET="nueva">CVS como herramienta de desarrollo compartido</A><BR>
 <P>Manual básico de uso del sistema de control de versiones CVS a partir del cliente gráfico Cervisia. El manual usa como ejemplo la estructura del CVS de BulmaGés, para aquellos desarrolladores interesados en el proyecto.</P>
-
+<A HREF="./documentos/cvs.pdf" TARGET="nueva">Versión PDF</A>
+<br>
 <br>
 </td>
 </tr>
+<tr><td><br></td></tr>
 <tr>
 <td>
 <a name="doxmanual"></a><A HREF="./manuales/doxmanual/html/" TARGET="nueva">Manual de Doxigen</A><BR>

@@ -45,7 +45,7 @@ bulmafact::bulmafact() : bulmafactbase( 0, "bulmafact", WDestructiveClose ) {
     m_company.setWorkspace(pWorkspace);
 //    m_company.setWorkspace(this);
     statusBar()->message( tr("Ready"), 2000 );
-    resize( 450, 600 );
+   resize( 450, 600 );
     
     
   QDockWindow *doc  = new  QDockWindow(this,"Corrector");
@@ -56,8 +56,9 @@ bulmafact::bulmafact() : bulmafactbase( 0, "bulmafact", WDestructiveClose ) {
   doc->setWidget(m_listBox);
   doc->setResizeEnabled(TRUE);
   doc->setMovingEnabled(TRUE);
-  moveDockWindow(doc,Left);
+  moveDockWindow(doc, Bottom);
 //  doc->hide();      
+showMaximized();
 }
 
 

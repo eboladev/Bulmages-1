@@ -267,6 +267,8 @@ void linorderslist::accept() {
 
 void linorderslist::neworderlin() {
 	m_list->setNumRows( m_list->numRows()+1 );
+	//m_list->setCurrentCell(m_list->numRows()-1, COL_CODARTICULO);
+	m_list->editCell(m_list->numRows()-1, COL_CODARTICULO);
 } // end neworderlin
 
 
