@@ -272,60 +272,79 @@ void balance1view::presentar() {
 
       // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
 		// Causar problemas con el motor de base de datos.
-      conexionbase->begin();
 		query.sprintf( "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.latin1(), ffinal.latin1(), finicial.latin1() );
+      conexionbase->begin();
       conexionbase->ejecuta(query);
+      conexionbase->commit();
       query.sprintf("UPDATE balancetemp SET padre=0 WHERE padre ISNULL");
+      conexionbase->begin();
       conexionbase->ejecuta(query);
+      conexionbase->commit();
       query.sprintf("DELETE FROM balancetemp WHERE debe=0 AND haber =0");
+      conexionbase->begin();
       conexionbase->ejecuta(query);
-
+		conexionbase->commit();
 
       // Vamos a implementar el tema del código
       if (cinicial != "") {
          query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'",cinicial.latin1());
+         conexionbase->begin();
          conexionbase->ejecuta(query);
+         conexionbase->commit();
       }// end if
       if (cfinal != "") {
          query.sprintf("DELETE FROM balancetemp WHERE codigo > '%s'",cfinal.latin1());
+         conexionbase->begin();
          conexionbase->ejecuta(query);
+         conexionbase->commit();
       }// end if
       
 
       // Para evitar problemas con los nulls hacemos algunos updates
       query.sprintf("UPDATE balancetemp SET tsaldo=0 WHERE tsaldo ISNULL");
-      conexionbase->ejecuta(query);
-      query.sprintf("UPDATE balancetemp SET tdebe=0 WHERE tdebe ISNULL");
-      conexionbase->ejecuta(query);
-      query.sprintf("UPDATE balancetemp SET thaber=0 WHERE thaber ISNULL");
-      conexionbase->ejecuta(query);
-      query.sprintf("UPDATE balancetemp SET asaldo=0 WHERE asaldo ISNULL");
+      conexionbase->begin();
       conexionbase->ejecuta(query);
       conexionbase->commit();
+      query.sprintf("UPDATE balancetemp SET tdebe=0 WHERE tdebe ISNULL");
       conexionbase->begin();
+      conexionbase->ejecuta(query);
+      conexionbase->commit();
+      query.sprintf("UPDATE balancetemp SET thaber=0 WHERE thaber ISNULL");
+      conexionbase->begin();
+      conexionbase->ejecuta(query);
+      conexionbase->commit();
+      query.sprintf("UPDATE balancetemp SET asaldo=0 WHERE asaldo ISNULL");
+      conexionbase->begin();
+      conexionbase->ejecuta(query);
+      conexionbase->commit();
 		query.sprintf( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC");
+      conexionbase->begin();
 		cursorapt = conexionbase->cargacursor(query,"Balance1view");
+      conexionbase->commit();
 		while (!cursorapt->eof())  {
          query.sprintf("SELECT * FROM balancetemp WHERE idcuenta=%s",cursorapt->valor("idcuenta").latin1());
+         conexionbase->begin();
          cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
+         conexionbase->commit();
          if (!mycur->eof()) {
             query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").latin1()), atof(mycur->valor("tdebe").latin1()), atof(mycur->valor("thaber").latin1()),atof(mycur->valor("asaldo").latin1()),  atoi(mycur->valor("padre").latin1()));
    //			fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
+   		 	conexionbase->begin();
             conexionbase->ejecuta(query);
+            conexionbase->commit();
    		}// end if
          delete mycur;
 			cursorapt->siguienteregistro();
 		}// end while
 		delete cursorapt;
       
-      conexionbase->commit();
-      conexionbase->begin();
 		
       query.sprintf("SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre");
-		fprintf(stderr,"%s\n",query.latin1());
+      conexionbase->begin();
 		cursorapt = conexionbase->cargacursor(query,"mycursor");
+      conexionbase->commit();
 		query.sprintf("DROP TABLE balancetemp");
-		fprintf(stderr,"%s\n",query.latin1());
+      conexionbase->begin();
 		conexionbase->ejecuta(query);
       conexionbase->commit();
       // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
