@@ -708,7 +708,7 @@
                             </widget>
                             <widget class="QLineEdit">
                                 <property name="name">
-                                    <cstring>lineEdit1_2_3_3</cstring>
+                                    <cstring>numcuotas</cstring>
                                 </property>
                                 <property name="maximumSize">
                                     <size>
@@ -794,7 +794,7 @@
                             </widget>
                             <widget class="QLineEdit">
                                 <property name="name">
-                                    <cstring>lineEdit1_2_3_3_2</cstring>
+                                    <cstring>valorcompra</cstring>
                                 </property>
                             </widget>
                         </hbox>
@@ -817,7 +817,7 @@
                             </widget>
                             <widget class="QLineEdit">
                                 <property name="name">
-                                    <cstring>lineEdit1_2_3</cstring>
+                                    <cstring>fechacompra</cstring>
                                 </property>
                             </widget>
                             <spacer>
@@ -847,7 +847,7 @@
                             </widget>
                             <widget class="QLineEdit">
                                 <property name="name">
-                                    <cstring>lineEdit1_2_3_2</cstring>
+                                    <cstring>fecha1cuota</cstring>
                                 </property>
                             </widget>
                         </hbox>

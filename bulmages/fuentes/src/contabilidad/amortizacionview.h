@@ -25,11 +25,12 @@ Q_OBJECT
 public:
 empresa *empresaactual;
 postgresiface2 *conexionbase;
+QString idamortizacion;  // Esta variable indica cual es la amortizacion que se està enseñando. Si no tiene valor es que no se esta mostrando ninguna.
 public:
     amortizacionview::amortizacionview(empresa *, QWidget *, const char *, bool );
     ~amortizacionview();
+    void inicializa(QString);
 public slots:
 	virtual void accept();
 };
-
 #endif

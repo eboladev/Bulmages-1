@@ -65,10 +65,10 @@ void amortizacionesview::dbtabla(int row, int colummn, int button,const QPoint &
   fprintf(stderr,"Se ha hecho doble click sobre la tabla\n");
   // Dependiendo del modo hacemos una cosa u otra
   if (modo == 0) {
-     idamortizacion = listado->text(row,COL_CODIGO).latin1();
+     idamortizacion = listado->text(row,COL_CODIGO);
      // Creamos el objeto mpatrimonialview, y lo lanzamos.
      amortizacionview *amor=new amortizacionview(empresaactual, 0,"", true);
-//     bal->inicializa1(idbalance);
+     amor->inicializa(idamortizacion);
      amor->exec();
      delete amor;
      // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado

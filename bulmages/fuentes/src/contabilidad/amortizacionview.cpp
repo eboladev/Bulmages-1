@@ -14,6 +14,7 @@ amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *na
 : amortizaciondlg(parent,name,flag,0) {
 	empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
+   idamortizacion = "";
 }
 
 void amortizacionview::accept() {
@@ -28,3 +29,22 @@ void amortizacionview::accept() {
 
 amortizacionview::~amortizacionview() {
 }
+
+void amortizacionview::inicializa(QString idamortiza) {
+	idamortizacion = idamortiza;
+	fprintf(stderr,"Inicializamos el formulario %s\n", idamortizacion.latin1());
+   QString query = "SELECT * FROM amortizacion WHERE idamortizacion="+idamortizacion;
+   
+   conexionbase->begin();
+   cursor2 *curs=conexionbase->cargacursor(query,"unquery");
+   conexionbase->commit();
+   
+   // Si existe el registro que se pasa como parámetro.
+   if (!curs->eof()) {
+   	nomamortizacion->setText(curs->valor("nomamortizacion"));
+      valorcompra->setText(curs->valor("valorcompra"));
+      numcuotas->setText(curs->valor("numcuotas"));
+   }// end if
+   delete curs;
+}// end inicializa
+
