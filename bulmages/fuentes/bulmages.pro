@@ -3,9 +3,8 @@
 # Subdir relative project main directory: .
 # Target is a subdirs project 
 
-TEMPLATE = subdirs
-CONFIG += release \
-warn_on \
-qt
 SUBDIRS += src \
            src/estadisticas 
+TEMPLATE = subdirs 
+CONFIG += release \
+          warn_on 
