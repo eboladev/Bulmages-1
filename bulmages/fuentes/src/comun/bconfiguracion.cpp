@@ -422,11 +422,14 @@ void BConfiguracion::BotonB_1Aplicar(){
   usuarios_borrados.clear();
   //Actualizamos la tabla usuario_empresa
   DBConn->begin();
-  query.sprintf("SELECT idusuario,idempresa FROM usuario, empresa WHERE nombredb='%s'",PunteroAlSelector->NombreBaseDatos.ascii());
+  query.sprintf("SELECT login,idusuario,idempresa FROM usuario, empresa WHERE nombredb='%s'",PunteroAlSelector->NombreBaseDatos.ascii());
   cursor2 * usuaris = DBConn->cargacursor(query,"usuaris"); 
   while (! usuaris->eof() ) {
       bucle_usuarios=coleccion_usuarios.begin();
-      while (( usuaris->valor("idusuario") != (bucle_usuarios->second).find("idusuario")->second) && (bucle_usuarios != coleccion_usuarios.end())) { ++bucle_usuarios;}
+      while ( bucle_usuarios != coleccion_usuarios.end() ) { 
+          if ( usuaris->valor("login") != (bucle_usuarios->second).find("login")->second  )  ++bucle_usuarios;
+          else break; 
+      }
       if (bucle_usuarios != coleccion_usuarios.end()) {
           query.sprintf("DELETE FROM usuario_empresa WHERE idempresa IN (SELECT idempresa FROM empresa WHERE nombredb='%s') AND idusuario='%s'",PunteroAlSelector->NombreBaseDatos.ascii(),usuaris->valor("idusuario").ascii());
           DBConn->ejecuta(query);
@@ -437,9 +440,9 @@ void BConfiguracion::BotonB_1Aplicar(){
           if ( (bucle_usuarios->second).find("prv1000")->second == "V") { //Solo Lectura
               query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES ('%s','%s','%s')", usuaris->valor("idusuario").ascii(), usuaris->valor("idempresa").ascii(),"2");
               DBConn->ejecuta(query);
-          }
+         } 
       }
-      usuaris->siguienteregistro();
+     usuaris->siguienteregistro();
   }
   DBConn->commit();
 }
