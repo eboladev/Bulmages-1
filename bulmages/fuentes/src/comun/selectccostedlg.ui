@@ -1,0 +1,30 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>selectccostedlg</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>selectccostedlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>498</width>
+            <height>350</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Selector de Centros de Coste</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QListView" row="0" column="0">
+            <property name="name">
+                <cstring>listView1</cstring>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
