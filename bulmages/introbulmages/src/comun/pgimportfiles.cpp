@@ -762,7 +762,6 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
     /// Inserción de IVA's dentro del registro de IVA
     if (qName == "RIVA") {
     	QString query1 = "SELECT idtipoiva FROM tipoiva WHERE nombretipoiva = '"+m_nombreTipoIva+"'";
-	
 	conexionbase->begin();
 	cursor2 * cur = conexionbase->cargacursor(query1,"elqueryd");
 	if ( !cur->eof() ) {

@@ -14,7 +14,7 @@ function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog --title "Desinstalacion de BulmaGes v4.1" --backtitle "Asociación Iglues" --msgbox "$1" 10 60
+      dialog --title "Desinstalacion de BulmaGes v 0.4.7" --backtitle "Asociación Iglues" --msgbox "$1" 10 60
    fi
 }
 
@@ -23,7 +23,7 @@ function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog  --title "Desinstalacion de BulmaGes v4.1" --backtitle "Asociación Iglues" --infobox "$1" 10 60
+      dialog  --title "Desinstalacion de BulmaGes v 0.4.7" --backtitle "Asociación Iglues" --infobox "$1" 10 60
    fi
 }
 

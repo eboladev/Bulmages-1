@@ -57,8 +57,8 @@ CREATE TABLE cuenta (
     bloqueada boolean NOT NULL DEFAULT FALSE,
     idgrupo integer NOT NULL REFERENCES grupo(idgrupo),
     msg character varying(500),
-    debe double precision NOT NULL DEFAULT 0,
-    haber double precision NOT NULL DEFAULT 0,
+    debe numeric(12,2) NOT NULL DEFAULT 0,
+    haber numeric(12,2) NOT NULL DEFAULT 0,
     nodebe boolean NOT NULL DEFAULT FALSE,
     nohaber boolean NOT NULL DEFAULT FALSE,
     regularizacion boolean,
@@ -94,8 +94,8 @@ CREATE TABLE c_coste (
     codigo character(3),
     padre integer,
     imputacion boolean,
-    debe double precision DEFAULT 0,
-    haber double precision DEFAULT 0
+    debe numeric(12,2) DEFAULT 0,
+    haber numeric(12,2) DEFAULT 0
 );
 
 
@@ -103,8 +103,8 @@ CREATE TABLE acumulado_c_coste (
     idacumulado_c_coste serial PRIMARY KEY,
     idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
     idc_coste integer NOT NULL REFERENCES c_coste(idc_coste),
-    debe double precision DEFAULT 0,
-    haber double precision DEFAULT 0
+    debe numeric(12,2) DEFAULT 0,
+    haber numeric(12,2) DEFAULT 0
 );
 
 
@@ -112,8 +112,8 @@ CREATE TABLE acumulado_canal (
     idacumulado_canal serial PRIMARY KEY,
     idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
     idcanal integer NOT NULL REFERENCES canal(idcanal),
-    debe double precision DEFAULT 0,
-    haber double precision DEFAULT 0
+    debe numeric(12,2) DEFAULT 0,
+    haber numeric(12,2) DEFAULT 0
 );
 
 
@@ -238,8 +238,8 @@ CREATE TABLE fpago (
 -- Porcentajetipoiva: El porcentaje que corresponde con este tipo.
 CREATE TABLE tipoiva (
     idtipoiva serial PRIMARY KEY,
-    nombretipoiva character varying(25),
-    porcentajetipoiva float,
+    nombretipoiva character varying(25) UNIQUE,
+    porcentajetipoiva numeric(12,2),
     idcuenta integer NOT NULL REFERENCES cuenta(idcuenta)
 );
 
@@ -253,8 +253,8 @@ CREATE TABLE tipoiva (
 CREATE TABLE registroiva (
     idregistroiva serial PRIMARY KEY,
     contrapartida integer REFERENCES cuenta(idcuenta),
-    baseimp double precision,
-    iva double precision,
+    baseimp numeric(12,2),
+    iva numeric(12,2),
     ffactura date,
     factura character varying(70),
     idborrador integer,
@@ -289,8 +289,8 @@ CREATE TABLE prevcobro (
     idfpago integer REFERENCES fpago(idfpago),
     idcuenta integer REFERENCES cuenta(idcuenta),
     idasiento integer REFERENCES asiento(idasiento),
-    cantidadprevistaprevcobro double precision,
-    cantidadprevcobro  double precision,
+    cantidadprevistaprevcobro numeric(12,2),
+    cantidadprevcobro  numeric(12,2),
     idregistroiva integer NOT NULL REFERENCES registroiva(idregistroiva),
     tipoprevcobro boolean,
     docprevcobro character varying(50)
@@ -303,7 +303,7 @@ CREATE TABLE iva (
    idiva serial PRIMARY KEY,
    idtipoiva integer NOT NULL REFERENCES tipoiva (idtipoiva),
    idregistroiva integer NOT NULL REFERENCES registroiva(idregistroiva),
-   baseiva double precision DEFAULT 0
+   baseiva numeric(12,2) DEFAULT 0
 );
 
 \echo "Se ha creado la tabla iva"
@@ -358,7 +358,7 @@ CREATE TABLE mpatrimonial (
     descmpatrimonial character varying(150),
     orden integer,
     tabulacion integer,
-    saldo double precision,
+    saldo numeric(12,2),
     opdesc integer
 );
 
@@ -374,7 +374,7 @@ CREATE TABLE compmasap (
     idcuenta integer REFERENCES cuenta(idcuenta),
     idmpatrimonial integer,
     masaperteneciente integer,
-    saldo double precision,
+    saldo numeric(12,2),
     signo boolean,
     nombre character varying(150)
 );
@@ -644,11 +644,11 @@ DECLARE
     apt RECORD;
     aptasien RECORD;
     cont RECORD;
-    descuadre FLOAT;
+    descuadre numeric(12,2);
     apmaxdebe INTEGER;
     apmaxhaber INTEGER;
-    maxdebe FLOAT;
-    maxhaber FLOAT;
+    maxdebe numeric(12,2);
+    maxhaber numeric(12,2);
     salida BOOLEAN;
     salidadebe BOOLEAN;
     salidahaber BOOLEAN;
@@ -794,7 +794,7 @@ END;
 -- Name: saldompatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION saldompatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS double precision
+CREATE FUNCTION saldompatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
     identmpatrimonial ALIAS FOR $1;
@@ -831,7 +831,7 @@ END;
 -- Name: debempatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION debempatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS double precision
+CREATE FUNCTION debempatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
     identmpatrimonial ALIAS FOR $1;
@@ -868,7 +868,7 @@ END;
 -- Name: habermpatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION habermpatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS double precision
+CREATE FUNCTION habermpatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
     identmpatrimonial ALIAS FOR $1;
@@ -905,7 +905,7 @@ END;
 -- Name: saldototal(character varying, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION saldototal(character varying, timestamp without time zone, timestamp without time zone) RETURNS double precision
+CREATE FUNCTION saldototal(character varying, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
     codcuenta ALIAS FOR $1;
@@ -940,7 +940,7 @@ END;
 -- Name: debetotal(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION debetotal(integer, timestamp without time zone, timestamp without time zone) RETURNS double precision
+CREATE FUNCTION debetotal(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
     mcuenta ALIAS FOR $1;
@@ -976,7 +976,7 @@ END;
 -- Name: debetotal1(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION debetotal1(integer) RETURNS double precision
+CREATE FUNCTION debetotal1(integer) RETURNS numeric(12,2)
     AS '
 DECLARE
     mcuenta ALIAS FOR $1;
@@ -1009,7 +1009,7 @@ END;
 -- Name: habertotal(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION habertotal(integer, timestamp without time zone, timestamp without time zone) RETURNS double precision
+CREATE FUNCTION habertotal(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
     mcuenta ALIAS FOR $1;
@@ -1044,7 +1044,7 @@ END;
 -- Name: habertotal1(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION habertotal1(integer) RETURNS double precision
+CREATE FUNCTION habertotal1(integer) RETURNS numeric(12,2)
     AS '
 DECLARE
     mcuenta ALIAS FOR $1;
@@ -1077,7 +1077,7 @@ END;
 -- Name: recalculasaldos(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION recalculasaldos() RETURNS double precision
+CREATE FUNCTION recalculasaldos() RETURNS numeric(12,2)
     AS '
 DECLARE
     cta RECORD;
@@ -1337,8 +1337,8 @@ END;
 CREATE FUNCTION propagaacumuladocuenta() RETURNS "trigger"
     AS '
 DECLARE
-   incdebe FLOAT8;
-   inchaber FLOAT8;
+   incdebe numeric(12,2);
+   inchaber numeric(12,2);
 BEGIN
    incdebe = NEW.debe - OLD.debe;
    inchaber = NEW.haber - OLD.haber;
@@ -1360,8 +1360,8 @@ END;
 CREATE FUNCTION propagaacumuladoccoste() RETURNS "trigger"
     AS '
 DECLARE
-   incdebe FLOAT8;
-   inchaber FLOAT8;
+   incdebe numeric(12,2);
+   inchaber numeric(12,2);
 BEGIN
    incdebe = NEW.debe - OLD.debe;
    inchaber = NEW.haber - OLD.haber;
@@ -1382,8 +1382,8 @@ END;
 CREATE FUNCTION acumulados_canal() RETURNS "trigger"
     AS '
 DECLARE
-   incdebe  FLOAT8;
-   inchaber FLOAT8;
+   incdebe  numeric(12,2);
+   inchaber numeric(12,2);
    cuentar  RECORD;
 BEGIN
 --   RAISE NOTICE '' Ha entrado el trigger acumulados_canal() '';
@@ -1545,7 +1545,7 @@ CREATE TABLE amortizacion (
     nomamortizacion character varying(200),
     fechacompra date,
     fecha1cuota date,
-    valorcompra double precision,
+    valorcompra numeric(12,2),
     periodicidad integer,
     numcuotas integer,
     metodo integer,
@@ -1568,7 +1568,7 @@ CREATE TABLE linamortizacion (
     idasiento integer REFERENCES asiento(idasiento),
     ejercicio integer,
     fechaprevista date,
-    cantidad double precision
+    cantidad numeric(12,2)
 );
 
 

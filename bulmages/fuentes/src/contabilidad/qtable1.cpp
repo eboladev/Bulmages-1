@@ -71,6 +71,10 @@ bool QTable1::eventFilter( QObject *obj, QEvent *event ) {
         if (key == 4129) { // el Control
             ctrlpulsado = TRUE;
         }// end if
+	if (key == 47) {  // El dividir /
+	   emit pulsadomas(currentRow(), currentColumn(), key);
+	   return TRUE;
+	}// end if
     }// end if
     if (event->type() == QEvent::KeyRelease) {
         QKeyEvent *keyEvent = (QKeyEvent *) event;

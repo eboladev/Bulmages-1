@@ -36,7 +36,6 @@
 
 BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * name, WFlags f=0) : UIconfiguracion(parent,name,f) {
    PunteroAlSelector=ref;
-   comboBoxFuente->insertStringList( (new QFontDatabase)->families() );
    if (PunteroAlSelector->m_tipoempresa == "BulmaCont") {
       cargarFichaBulmages();
       m_tab->setTabEnabled(m_tab->page(1),FALSE);
@@ -56,16 +55,7 @@ BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * n
 BConfiguracion::~BConfiguracion() {
 }
 
-void BConfiguracion::cerrar() {
-  //Cargo el nuevo Idioma
-  string archivo;
-  switch (comboBoxIdioma->currentItem()) {
-      case 0: archivo = "bulmages_ca.qm"; break;
-      case 1: archivo = "bulmages_es.qm"; break;
-      case 2: archivo = "bulmages_fr.qm"; break;
-      case 3: archivo = "bulmages_en.qm"; break;
-  }// end switch
-  
+void BConfiguracion::cerrar() {  
   // Guardamos la configuración.
    for (int i =0;i<1000;i++) {
       if (confpr->nombre(i) != "") {
@@ -106,39 +96,17 @@ void BConfiguracion::tablaconfiguracion() {
 /* BLOQUE UTILIDADES                                                                          */
 /**********************************************************************************************/
 void BConfiguracion::cargarFichaBulmages() {
-//Carga idioma y fuente de la aplicacion 
-  if (confpr->valor(CONF_TRADUCCION)=="ca") comboBoxIdioma->setCurrentItem(0);
-  if (confpr->valor(CONF_TRADUCCION)=="es") comboBoxIdioma->setCurrentItem(1);
-  if (confpr->valor(CONF_TRADUCCION)=="fr") comboBoxIdioma->setCurrentItem(2);
-  if (confpr->valor(CONF_TRADUCCION)=="en") comboBoxIdioma->setCurrentItem(3);
   lineEditA_1->setText(PunteroAlSelector->nombreempresa->text());
-  int i=0;
-  while ( comboBoxFuente->text(i) != confpr->valor(CONF_FONTFAMILY_BULMAGES).c_str() &&  i < comboBoxFuente->count()) ++i;
-  comboBoxFuente->setCurrentItem(i);
-  spinBoxFuente->setValue(atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).c_str()));
 }// end cargarFichaBulmages
 
 
-void BConfiguracion::FontChanged(const QString & fuente) {
-   muestra->setFont(QFont(fuente,spinBoxFuente->value()));
+void BConfiguracion::FontChanged(const QString & ) {
 }// end FontChanged
 
-void BConfiguracion::FontSizeChanged(int tamano) {
-   muestra->setFont(QFont(comboBoxFuente->currentText(),tamano));
+void BConfiguracion::FontSizeChanged(int ) {
 }// end FontSizeChanged
 
 void BConfiguracion::BotonA_10aceptar() {
-//Salvar en la base de datos las preferencias del usuario: Idioma, Fuente, ...
-  string codigoPais;
-  switch (comboBoxIdioma->currentItem()) {
-      case 0: codigoPais = "ca"; break;
-      case 1: codigoPais = "es"; break;
-      case 2: codigoPais = "fr"; break;
-      case 3: codigoPais = "en"; break;
-  }// end switch
-  confpr->setValor(CONF_TRADUCCION,codigoPais);
-  confpr->setValor(CONF_FONTFAMILY_BULMAGES,comboBoxFuente->currentText().ascii());
-  confpr->setValor(CONF_FONTSIZE_BULMAGES,spinBoxFuente->text().ascii());
 }// BotonA_10aceptar
 
 
@@ -151,6 +119,7 @@ void BConfiguracion::BotonContaplus() {
 	importContaplus *import= new importContaplus(DBconn,0,0,0);
 	import->exec();
 	delete import;
+	delete DBconn;
 }// end BotonContaplus
 
 
@@ -371,63 +340,6 @@ void BConfiguracion::BotonA_4restaurarEmpresa(){
 /**********************************************************************************************/
 
 void BConfiguracion::cargarFichaUsuarios() {
-/*
-#ifndef WIN32
-
-//Carga los Usuarios de la Base de Datos
-   campos_usuario datos_usuario;   
-   QString query;
-   postgresiface2 * conexionDB;
-   conexionDB = new postgresiface2();
-   conexionDB->inicializa(confpr->valor(CONF_METABASE).c_str());
-   cursor2 *recordSet, *privilegios=NULL;
-   QString acceso;
-   QListViewItem *it=NULL;
-   conexionDB->begin();
-   recordSet=conexionDB->cargacursor("SELECT * from usuario","recordSet");
-   conexionDB->commit();
-   coleccion_usuarios.clear();
-   usuarios_borrados.clear();
-   listView1->clear();
-//   listView1->hideColumn(1);
-   listView1->setColumnWidth(0,155);
-//   (listView2->header())->setResizeEnabled (false);
-   listView2->setColumnWidth(0,60);
-   listView2->setColumnWidth(1,330);
-//   listView2->hideColumn(2);
-   listView2->setSorting(2,true);
-   while (!recordSet->eof()) {
-         it =new QListViewItem(listView1);
-         datos_usuario.insert(make_pair("idusuario",recordSet->valor("idusuario")));
-         datos_usuario.insert(make_pair("login",recordSet->valor("login")));
-         datos_usuario.insert(make_pair("password",recordSet->valor("password")));
-         datos_usuario.insert(make_pair("nombre",recordSet->valor("nombre")));
-         datos_usuario.insert(make_pair("apellido1",recordSet->valor("apellido1")));	 
-         datos_usuario.insert(make_pair("apellido2",recordSet->valor("apellido2")));
-         datos_usuario.insert(make_pair("coment","Id. Usuario: " + recordSet->valor("idusuario")));
-         query.sprintf("SELECT * from usuario_empresa WHERE idempresa IN (SELECT idempresa FROM empresa WHERE nombredb='%s') AND idusuario=%i",PunteroAlSelector->empresabd.ascii(),recordSet->valor("idusuario").toInt());
-         conexionDB->begin();
-         privilegios=conexionDB->cargacursor(query,"privilegios");
-         conexionDB->commit();
-         if ( !privilegios->eof() ) {
-             privilegios->valor("permisos") == "1" ? acceso="S" : acceso="V";
-             datos_usuario.insert(make_pair("prv1000",acceso));
-         } else {
-             datos_usuario.insert(make_pair("prv1000","N"));
-         }
-         coleccion_usuarios.insert(make_pair(recordSet->valor("login"),datos_usuario));
-         datos_usuario.clear();
-         it->setText(0,recordSet->valor("login"));
-         it->setText(1,recordSet->valor("idusuario"));
-         recordSet->siguienteregistro();
-   }// end while
-   listView1->setCurrentItem(it);
-   if (privilegios) delete privilegios;
-   delete recordSet;
-   delete conexionDB;
-#endif
-
-*/
 }
 
 
@@ -461,65 +373,7 @@ void BConfiguracion::cloneUser() {
 
 //Salvamos los usuarios en la base de datos
 void BConfiguracion::BotonB_1Aplicar(){
-/*
-#ifndef WIN32
-  campos_usuario datos_usuario;
-  std::map<QString,campos_usuario>::iterator bucle_usuarios;
-  postgresiface2 *DBConn = new postgresiface2();
-  DBConn->inicializa(confpr->valor(CONF_METABASE).c_str());
-  QString query;
-  DBConn->begin();
-  //Introducioms los cambios en la base de datos
-  bucle_usuarios=coleccion_usuarios.begin();
-  while (bucle_usuarios != coleccion_usuarios.end()) {
-      datos_usuario = bucle_usuarios->second;  
-      if ( datos_usuario.find("idusuario")->second == "-1" ) {
-        query.sprintf("INSERT INTO usuario(nombre,apellido1,apellido2,login,password) VALUES('%s','%s','%s','%s','%s')", (datos_usuario.find("nombre")->second).ascii(), (datos_usuario.find("apellido1")->second).ascii(), (datos_usuario.find("apellido2")->second).ascii(), (datos_usuario.find("login")->second).ascii(), (datos_usuario.find("password")->second).ascii());
-      } else {
-        query.sprintf("UPDATE usuario SET nombre='%s', apellido1='%s', apellido2='%s', login='%s', password='%s' WHERE idusuario=%s", (datos_usuario.find("nombre")->second).ascii(), (datos_usuario.find("apellido1")->second).ascii(), (datos_usuario.find("apellido2")->second).ascii(), (datos_usuario.find("login")->second).ascii(), (datos_usuario.find("password")->second).ascii(),(datos_usuario.find("idusuario")->second).ascii());
-      }
-      DBConn->ejecuta(query);
-      ++bucle_usuarios;
-  }
-  //Borramos los usuarios que hemos eliminado
-  std::set<QString>::iterator id_borrados;
-  id_borrados=usuarios_borrados.begin();
-  while ( id_borrados != usuarios_borrados.end() ) {
-      query.sprintf("DELETE FROM usuario_empresa WHERE idusuario='%s'",id_borrados->ascii());
-      DBConn->ejecuta(query);
-      query.sprintf("DELETE FROM usuario WHERE idusuario='%s'",id_borrados->ascii());
-      DBConn->ejecuta(query);
-      ++id_borrados;
-  }
-  DBConn->commit();
-  usuarios_borrados.clear();
-  //Actualizamos la tabla usuario_empresa
-  DBConn->begin();
-  query.sprintf("SELECT login,idusuario,idempresa FROM usuario, empresa WHERE nombredb='%s'",PunteroAlSelector->empresabd.ascii());
-  cursor2 * usuaris = DBConn->cargacursor(query,"usuaris"); 
-  while (! usuaris->eof() ) {
-      bucle_usuarios=coleccion_usuarios.begin();
-      while ( bucle_usuarios != coleccion_usuarios.end() ) { 
-          if ( usuaris->valor("login") != (bucle_usuarios->second).find("login")->second  )  ++bucle_usuarios;
-          else break; 
-      }
-      if (bucle_usuarios != coleccion_usuarios.end()) {
-          query.sprintf("DELETE FROM usuario_empresa WHERE idempresa IN (SELECT idempresa FROM empresa WHERE nombredb='%s') AND idusuario='%s'",PunteroAlSelector->empresabd.ascii(),usuaris->valor("idusuario").ascii());
-          DBConn->ejecuta(query);
-          if ( (bucle_usuarios->second).find("prv1000")->second  == "S") { //Lectura Escritura
-              query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES ('%s','%s','%s')", usuaris->valor("idusuario").ascii(), usuaris->valor("idempresa").ascii(),"1");
-              DBConn->ejecuta(query);
-          }
-          if ( (bucle_usuarios->second).find("prv1000")->second == "V") { //Solo Lectura
-              query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES ('%s','%s','%s')", usuaris->valor("idusuario").ascii(), usuaris->valor("idempresa").ascii(),"2");
-              DBConn->ejecuta(query);
-         } 
-      }
-     usuaris->siguienteregistro();
-  }
-  DBConn->commit();
-#endif
-*/
+
 }
 
 //Desacemos los cambios que hemos hecho (UNDO).
@@ -527,38 +381,10 @@ void BConfiguracion::BotonB_2Desacer(){
 cargarFichaUsuarios();
 }
 
-void BConfiguracion::listView2_clickBotonDerecho(QListViewItem* item,const QPoint& coord ,int col){
-   QPopupMenu *popup;
-   popup = new QPopupMenu;
-        popup->insertItem(tr("S - Acceso Permitido"),101);
-        popup->insertItem(tr("N - Acceso Denegado"),102);
-        popup->insertItem(tr("V - Acceso Restringido"),103);
-        //popup->insertSeparator();
-   col = popup->exec(coord);
-   delete popup;
-   item=listView2->firstChild();
-   while (item != 0) {
-       if ( item->isSelected() ) {
-           switch(col) {
-               case 101: item->setText(0,"S"); break;
-               case 102: item->setText(0,"N"); break;
-               case 103: item->setText(0,"V"); break;
-          }
-       }       
-       item = item->itemBelow();
-   }
-users_info_changed();
+void BConfiguracion::listView2_clickBotonDerecho(QListViewItem* ,const QPoint&  ,int ){
 }
 
 
 //Por conveniencia (Bug QT??) 
-void BConfiguracion::listiView2_clickMouse(int button,QListViewItem * item,const QPoint& pos,int col){
-//   (listView2->header())->setResizeEnabled (false);
-   button=1; //elimina warning
-   pos.isNull(); //elimina warning
-   item->text(col); //elimina warning
-   listView2->setColumnWidth(0,60);
-   listView2->setColumnWidth(1,330);
-//   listView2->hideColumn(2);
-   listView2->setSorting(2,true);
+void BConfiguracion::listiView2_clickMouse(int,QListViewItem * ,const QPoint& ,int ){
 }

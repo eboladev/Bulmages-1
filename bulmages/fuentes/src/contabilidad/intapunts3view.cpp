@@ -1094,6 +1094,10 @@ void intapunts3view::guardaborrador(int row) {
             delete cur;
         }// end if
     }// end if
+    
+    /// Ponemos el Saldo de Cuenta sin valor para que no haya problemas.
+    m_saldoCuenta->setText("");
+    
 }// end guardaborrador
 
 
@@ -1143,6 +1147,21 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
     if (abierto) {
         //Siempre teniendo en cuenta que el asiento este abierto.
         switch (caracter) {
+	case 47:  // El signo de dividir /
+                tdebe = m_saldoCuenta->text().toFloat();
+                if (tdebe < 0) {
+                    tdebe = -tdebe;
+                    QString cadena;
+                    cadena.sprintf("%2.2f",tdebe);
+                    tapunts->setText(row,COL_DEBE, cadena);
+		    tapunts->setText(row,COL_HABER, "0.00");
+                    calculadescuadre();
+                } else {
+                    tapunts->setText(row, COL_HABER, descuadre->text());
+		    tapunts->setText(row,COL_DEBE,"0.00");
+                    calculadescuadre();
+                }// end if	
+		break;
         case '+':
             switch(col) {
             case COL_FECHA: {
@@ -1256,11 +1275,9 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
             }// end switch
             break;
         case '*':
-            fprintf(stderr,"Se ha pulsado el *\n");
             duplicar(col);
             break;
-        case 4100:
-            fprintf(stderr,"Se ha pulsado el enter\n");
+        case 4100:  // El ENTER
             switch (col) {
             case COL_FECHA:
                         tapunts->setText(row,col,normalizafecha(tapunts->text(row,col)).toString("dd/MM/yyyy"));
@@ -1330,6 +1347,8 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
             break;
         }// end switch
     }// end if
+    delete menucoste;
+    delete menucanal;
 }// end pulsadomas
 
 
@@ -1350,13 +1369,16 @@ void intapunts3view::cambiadasubcuenta(int row) {
     if (cad != "") {
         cad = extiendecodigo(cad,numdigitos);
         conexionbase->begin();
-        cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
+	QString  query= "SELECT codigo, descripcion, idcuenta, debe - haber AS saldo FROM cuenta WHERE codigo="+cad;
+	cursor2 *cursorcta = conexionbase->cargacursor(query,"querycuenta");
+        //cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
         conexionbase->commit();
         int num = cursorcta->numregistros();
         if (num >0) {
             tapunts->setText(row,COL_SUBCUENTA,cursorcta->valor("codigo"));
             tapunts->setText(row,COL_NOMCUENTA,cursorcta->valor("descripcion"));
             tapunts->setText(row,COL_IDCUENTA,cursorcta->valor("idcuenta"));
+	    m_saldoCuenta->setText(cursorcta->valor("saldo"));
         } else {
 	    int valor;
             valor = QMessageBox::warning( 0, tr("No existe cuenta"), tr("No existe una cuenta con el codigo proporcionado, desea crear una?."), QMessageBox::Yes, QMessageBox::No);

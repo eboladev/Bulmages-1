@@ -47,7 +47,7 @@ function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$2" "$1"  "$3"
    else
-      dialog --title "Instalacion de BulmaGes v4.1" --backtitle "Asociacion Iglues" --msgbox "$1" 10 60
+      dialog --title "Instalacion de BulmaGes v0.4.7" --backtitle "Asociacion Iglues" --msgbox "$1" 10 60
    fi
 }
 
@@ -56,7 +56,7 @@ function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e  "$2" "$1"  "$3"
    else
-      dialog  --title "Instalacion de BulmaGes v4.1" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
+      dialog  --title "Instalacion de BulmaGes v0.4.7" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
    fi
 }
 
@@ -67,7 +67,7 @@ function lee() {
     read user
     su - postgres -c "createuser --adduser --createdb $user"
   else
-    dialog --title "Instalacion de BulmaGes v4.1" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes" 10 60  2>/tmp/dialog.ans
+    dialog --title "Instalacion de BulmaGes v4.7" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes" 10 60  2>/tmp/dialog.ans
     if [ $? = 1 ]; then
        clear
        exit 0
@@ -267,8 +267,6 @@ cp -r openreports /usr/share/bulmages
 
    info "Creando bases de datos del sistema y empresas de ejemplo. \n"
    tiempo
-#Creamos las bases de datos para la metabase.
-#   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto metabd 3"
 
 # Creamos las bases de datos para bulmacont.
    su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bulmages 2 Bulmages 2004 metabd"

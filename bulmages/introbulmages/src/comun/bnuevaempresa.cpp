@@ -32,5 +32,27 @@ void BNuevaEmpresa::accept() {
   QString cadena = confpr->valor(CONF_PROGDATA);
   cadena += "dbmodels/creabulmages --texto "+nombredb+" 1 "+nombreEmp+" "+ ejercicioempresa->text().stripWhiteSpace()+" "+"";  
   system(cadena.ascii());
+  
+	postgresiface2 *DBconn = new postgresiface2();
+	DBconn->inicializa(nombredb, confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+	QString query = "UPDATE configuracion SET valor='"+nombreEmp+"' WHERE nombre='NombreEmpresa'";
+	DBconn->begin();
+	DBconn->ejecuta(query);
+	
+	/// Creamos el ejercicio
+      for (int x=0; x<=12; x++) {
+            query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')",ejercicioempresa->text().ascii(),x);
+            DBconn->ejecuta(query);
+      }	
+	
+	DBconn->commit();
+	
+	
+	
+	
+	delete DBconn;  
+  
+  
+  
   close();
 }// end accept

@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>701</width>
-            <height>519</height>
+            <height>379</height>
         </rect>
     </property>
     <property name="caption">
@@ -186,171 +186,26 @@
                             <cstring>pushButton32</cstring>
                         </property>
                         <property name="text">
-                            <string>Importar desde ContaPlus</string>
+                            <string>Importar / Exportar Datos</string>
                         </property>
                     </widget>
-                    <widget class="QGroupBox">
+                    <spacer>
                         <property name="name">
-                            <cstring>groupBoxA_1</cstring>
+                            <cstring>spacer8</cstring>
                         </property>
-                        <property name="title">
-                            <string>Generalidades</string>
+                        <property name="orientation">
+                            <enum>Vertical</enum>
                         </property>
-                        <widget class="QComboBox">
-                            <item>
-                                <property name="text">
-                                    <string>Català</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>Castellano</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>Français</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>English</string>
-                                </property>
-                            </item>
-                            <property name="name">
-                                <cstring>comboBoxIdioma</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>10</x>
-                                    <y>40</y>
-                                    <width>140</width>
-                                    <height>22</height>
-                                </rect>
-                            </property>
-                            <property name="editable">
-                                <bool>false</bool>
-                            </property>
-                        </widget>
-                        <widget class="QSpinBox">
-                            <property name="name">
-                                <cstring>spinBoxFuente</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>150</x>
-                                    <y>90</y>
-                                    <width>30</width>
-                                    <height>20</height>
-                                </rect>
-                            </property>
-                            <property name="specialValueText">
-                                <string></string>
-                            </property>
-                            <property name="minValue">
-                                <number>1</number>
-                            </property>
-                            <property name="value">
-                                <number>12</number>
-                            </property>
-                        </widget>
-                        <widget class="QComboBox">
-                            <property name="name">
-                                <cstring>comboBoxFuente</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>10</x>
-                                    <y>90</y>
-                                    <width>120</width>
-                                    <height>22</height>
-                                </rect>
-                            </property>
-                        </widget>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel1_2</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>10</x>
-                                    <y>20</y>
-                                    <width>70</width>
-                                    <height>16</height>
-                                </rect>
-                            </property>
-                            <property name="text">
-                                <string>Idioma:</string>
-                            </property>
-                            <property name="alignment">
-                                <set>AlignVCenter|AlignLeft</set>
-                            </property>
-                        </widget>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel1_3</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>10</x>
-                                    <y>70</y>
-                                    <width>70</width>
-                                    <height>16</height>
-                                </rect>
-                            </property>
-                            <property name="text">
-                                <string>Fuente:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel2_2</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>140</x>
-                                    <y>70</y>
-                                    <width>50</width>
-                                    <height>16</height>
-                                </rect>
-                            </property>
-                            <property name="text">
-                                <string>Tamaño:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>muestra</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>9</x>
-                                    <y>126</y>
-                                    <width>181</width>
-                                    <height>31</height>
-                                </rect>
-                            </property>
-                            <property name="paletteBackgroundColor">
-                                <color>
-                                    <red>170</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                            </property>
-                            <property name="frameShape">
-                                <enum>Box</enum>
-                            </property>
-                            <property name="frameShadow">
-                                <enum>Sunken</enum>
-                            </property>
-                            <property name="text">
-                                <string>Muestra 0123...</string>
-                            </property>
-                            <property name="scaledContents">
-                                <bool>false</bool>
-                            </property>
-                        </widget>
-                    </widget>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>21</width>
+                                <height>41</height>
+                            </size>
+                        </property>
+                    </spacer>
                 </vbox>
             </widget>
             <widget class="QWidget">
@@ -677,168 +532,23 @@
                             </widget>
                         </hbox>
                     </widget>
-                    <widget class="QGroupBox">
+                    <spacer>
                         <property name="name">
-                            <cstring>groupBoxA_1_3</cstring>
+                            <cstring>spacer9</cstring>
                         </property>
-                        <property name="title">
-                            <string>Generalidades</string>
+                        <property name="orientation">
+                            <enum>Vertical</enum>
                         </property>
-                        <widget class="QComboBox">
-                            <item>
-                                <property name="text">
-                                    <string>Català</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>Castellano</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>Français</string>
-                                </property>
-                            </item>
-                            <item>
-                                <property name="text">
-                                    <string>English</string>
-                                </property>
-                            </item>
-                            <property name="name">
-                                <cstring>comboBoxIdioma_3</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>10</x>
-                                    <y>40</y>
-                                    <width>140</width>
-                                    <height>22</height>
-                                </rect>
-                            </property>
-                            <property name="editable">
-                                <bool>false</bool>
-                            </property>
-                        </widget>
-                        <widget class="QSpinBox">
-                            <property name="name">
-                                <cstring>spinBoxFuente_3</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>150</x>
-                                    <y>90</y>
-                                    <width>30</width>
-                                    <height>20</height>
-                                </rect>
-                            </property>
-                            <property name="specialValueText">
-                                <string></string>
-                            </property>
-                            <property name="minValue">
-                                <number>1</number>
-                            </property>
-                            <property name="value">
-                                <number>12</number>
-                            </property>
-                        </widget>
-                        <widget class="QComboBox">
-                            <property name="name">
-                                <cstring>comboBoxFuente_3</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>10</x>
-                                    <y>90</y>
-                                    <width>120</width>
-                                    <height>22</height>
-                                </rect>
-                            </property>
-                        </widget>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel1_2_3</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>10</x>
-                                    <y>20</y>
-                                    <width>70</width>
-                                    <height>16</height>
-                                </rect>
-                            </property>
-                            <property name="text">
-                                <string>Idioma:</string>
-                            </property>
-                            <property name="alignment">
-                                <set>AlignVCenter|AlignLeft</set>
-                            </property>
-                        </widget>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel1_3_3</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>10</x>
-                                    <y>70</y>
-                                    <width>70</width>
-                                    <height>16</height>
-                                </rect>
-                            </property>
-                            <property name="text">
-                                <string>Fuente:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel2_2_3</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>140</x>
-                                    <y>70</y>
-                                    <width>50</width>
-                                    <height>16</height>
-                                </rect>
-                            </property>
-                            <property name="text">
-                                <string>Tamaño:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>muestra_3</cstring>
-                            </property>
-                            <property name="geometry">
-                                <rect>
-                                    <x>9</x>
-                                    <y>126</y>
-                                    <width>181</width>
-                                    <height>31</height>
-                                </rect>
-                            </property>
-                            <property name="paletteBackgroundColor">
-                                <color>
-                                    <red>170</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                            </property>
-                            <property name="frameShape">
-                                <enum>Box</enum>
-                            </property>
-                            <property name="frameShadow">
-                                <enum>Sunken</enum>
-                            </property>
-                            <property name="text">
-                                <string>Muestra 0123...</string>
-                            </property>
-                            <property name="scaledContents">
-                                <bool>false</bool>
-                            </property>
-                        </widget>
-                    </widget>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>51</width>
+                                <height>71</height>
+                            </size>
+                        </property>
+                    </spacer>
                 </vbox>
             </widget>
             <widget class="QWidget">
@@ -1020,578 +730,6 @@
             </widget>
             <widget class="QWidget">
                 <property name="name">
-                    <cstring>tab</cstring>
-                </property>
-                <attribute name="title">
-                    <string>Usuarios</string>
-                </attribute>
-                <vbox>
-                    <property name="name">
-                        <cstring>unnamed</cstring>
-                    </property>
-                    <widget class="QLayoutWidget">
-                        <property name="name">
-                            <cstring>layout24</cstring>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QListView">
-                                <column>
-                                    <property name="text">
-                                        <string>Lista de Usuarios</string>
-                                    </property>
-                                    <property name="clickable">
-                                        <bool>false</bool>
-                                    </property>
-                                    <property name="resizable">
-                                        <bool>true</bool>
-                                    </property>
-                                </column>
-                                <column>
-                                    <property name="text">
-                                        <string>idusuario</string>
-                                    </property>
-                                    <property name="clickable">
-                                        <bool>false</bool>
-                                    </property>
-                                    <property name="resizable">
-                                        <bool>true</bool>
-                                    </property>
-                                </column>
-                                <property name="name">
-                                    <cstring>listView1</cstring>
-                                </property>
-                                <property name="frameShape">
-                                    <enum>GroupBoxPanel</enum>
-                                </property>
-                                <property name="frameShadow">
-                                    <enum>Sunken</enum>
-                                </property>
-                                <property name="lineWidth">
-                                    <number>1</number>
-                                </property>
-                                <property name="margin">
-                                    <number>1</number>
-                                </property>
-                                <property name="midLineWidth">
-                                    <number>0</number>
-                                </property>
-                                <property name="resizePolicy">
-                                    <enum>Manual</enum>
-                                </property>
-                                <property name="vScrollBarMode">
-                                    <enum>Auto</enum>
-                                </property>
-                                <property name="hScrollBarMode">
-                                    <enum>AlwaysOff</enum>
-                                </property>
-                                <property name="allColumnsShowFocus">
-                                    <bool>false</bool>
-                                </property>
-                                <property name="showSortIndicator">
-                                    <bool>false</bool>
-                                </property>
-                                <property name="itemMargin">
-                                    <number>1</number>
-                                </property>
-                                <property name="rootIsDecorated">
-                                    <bool>false</bool>
-                                </property>
-                                <property name="resizeMode">
-                                    <enum>NoColumn</enum>
-                                </property>
-                                <property name="defaultRenameAction">
-                                    <enum>Reject</enum>
-                                </property>
-                            </widget>
-                            <widget class="QLayoutWidget">
-                                <property name="name">
-                                    <cstring>layout23</cstring>
-                                </property>
-                                <vbox>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <widget class="QGroupBox">
-                                        <property name="name">
-                                            <cstring>groupBox2</cstring>
-                                        </property>
-                                        <property name="title">
-                                            <string>Datos Usuario</string>
-                                        </property>
-                                        <vbox>
-                                            <property name="name">
-                                                <cstring>unnamed</cstring>
-                                            </property>
-                                            <widget class="QLayoutWidget">
-                                                <property name="name">
-                                                    <cstring>layout21</cstring>
-                                                </property>
-                                                <hbox>
-                                                    <property name="name">
-                                                        <cstring>unnamed</cstring>
-                                                    </property>
-                                                    <widget class="QLayoutWidget">
-                                                        <property name="name">
-                                                            <cstring>layout16</cstring>
-                                                        </property>
-                                                        <hbox>
-                                                            <property name="name">
-                                                                <cstring>unnamed</cstring>
-                                                            </property>
-                                                            <widget class="QLabel">
-                                                                <property name="name">
-                                                                    <cstring>textLabel1</cstring>
-                                                                </property>
-                                                                <property name="text">
-                                                                    <string>Login:</string>
-                                                                </property>
-                                                            </widget>
-                                                            <widget class="QLineEdit">
-                                                                <property name="name">
-                                                                    <cstring>lineEdit1</cstring>
-                                                                </property>
-                                                                <property name="paletteBackgroundColor">
-                                                                    <color>
-                                                                        <red>255</red>
-                                                                        <green>255</green>
-                                                                        <blue>0</blue>
-                                                                    </color>
-                                                                </property>
-                                                                <property name="readOnly">
-                                                                    <bool>false</bool>
-                                                                </property>
-                                                            </widget>
-                                                        </hbox>
-                                                    </widget>
-                                                    <widget class="QLayoutWidget">
-                                                        <property name="name">
-                                                            <cstring>layout17</cstring>
-                                                        </property>
-                                                        <hbox>
-                                                            <property name="name">
-                                                                <cstring>unnamed</cstring>
-                                                            </property>
-                                                            <widget class="QLabel">
-                                                                <property name="name">
-                                                                    <cstring>textLabel2</cstring>
-                                                                </property>
-                                                                <property name="text">
-                                                                    <string>Password:</string>
-                                                                </property>
-                                                            </widget>
-                                                            <widget class="QLineEdit">
-                                                                <property name="name">
-                                                                    <cstring>lineEdit2</cstring>
-                                                                </property>
-                                                                <property name="echoMode">
-                                                                    <enum>Password</enum>
-                                                                </property>
-                                                            </widget>
-                                                        </hbox>
-                                                    </widget>
-                                                </hbox>
-                                            </widget>
-                                            <widget class="QLayoutWidget">
-                                                <property name="name">
-                                                    <cstring>layout18</cstring>
-                                                </property>
-                                                <hbox>
-                                                    <property name="name">
-                                                        <cstring>unnamed</cstring>
-                                                    </property>
-                                                    <widget class="QLabel">
-                                                        <property name="name">
-                                                            <cstring>textLabel3</cstring>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string>Nombre:</string>
-                                                        </property>
-                                                    </widget>
-                                                    <widget class="QLineEdit">
-                                                        <property name="name">
-                                                            <cstring>lineEdit3</cstring>
-                                                        </property>
-                                                    </widget>
-                                                </hbox>
-                                            </widget>
-                                            <widget class="QLayoutWidget">
-                                                <property name="name">
-                                                    <cstring>layout19</cstring>
-                                                </property>
-                                                <hbox>
-                                                    <property name="name">
-                                                        <cstring>unnamed</cstring>
-                                                    </property>
-                                                    <widget class="QLabel">
-                                                        <property name="name">
-                                                            <cstring>textLabel4</cstring>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string>Apellido 1º:</string>
-                                                        </property>
-                                                    </widget>
-                                                    <widget class="QLineEdit">
-                                                        <property name="name">
-                                                            <cstring>lineEdit4</cstring>
-                                                        </property>
-                                                    </widget>
-                                                </hbox>
-                                            </widget>
-                                            <widget class="QLayoutWidget">
-                                                <property name="name">
-                                                    <cstring>layout20</cstring>
-                                                </property>
-                                                <hbox>
-                                                    <property name="name">
-                                                        <cstring>unnamed</cstring>
-                                                    </property>
-                                                    <widget class="QLabel">
-                                                        <property name="name">
-                                                            <cstring>textLabel5</cstring>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string>Apellido 2º:</string>
-                                                        </property>
-                                                    </widget>
-                                                    <widget class="QLineEdit">
-                                                        <property name="name">
-                                                            <cstring>lineEdit5</cstring>
-                                                        </property>
-                                                    </widget>
-                                                </hbox>
-                                            </widget>
-                                            <widget class="QTextEdit">
-                                                <property name="name">
-                                                    <cstring>textEdit1</cstring>
-                                                </property>
-                                            </widget>
-                                        </vbox>
-                                    </widget>
-                                    <widget class="QListView">
-                                        <column>
-                                            <property name="text">
-                                                <string>Privilegio</string>
-                                            </property>
-                                            <property name="clickable">
-                                                <bool>false</bool>
-                                            </property>
-                                            <property name="resizable">
-                                                <bool>false</bool>
-                                            </property>
-                                        </column>
-                                        <column>
-                                            <property name="text">
-                                                <string>Recurso</string>
-                                            </property>
-                                            <property name="clickable">
-                                                <bool>false</bool>
-                                            </property>
-                                            <property name="resizable">
-                                                <bool>false</bool>
-                                            </property>
-                                        </column>
-                                        <column>
-                                            <property name="text">
-                                                <string>idprv</string>
-                                            </property>
-                                            <property name="clickable">
-                                                <bool>false</bool>
-                                            </property>
-                                            <property name="resizable">
-                                                <bool>false</bool>
-                                            </property>
-                                        </column>
-                                    <item>
-                                        <property name="text">
-                                            <string>N</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>Login Empresa</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>prv1000</string>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                    </item>
-                                    <item>
-                                        <property name="text">
-                                            <string>S</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>Apuntes Contables</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>prv1001</string>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                    </item>
-                                    <item>
-                                        <property name="text">
-                                            <string>V</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>Balance de Cuentas</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>prv1002</string>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                    </item>
-                                    <item>
-                                        <property name="text">
-                                            <string>V</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>Extracto de Cuentas</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>prv1003</string>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                    </item>
-                                    <item>
-                                        <property name="text">
-                                            <string>V</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>Diario</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>prv1004</string>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                    </item>
-                                    <item>
-                                        <property name="text">
-                                            <string>S</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>Registro de IVA</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>prv1005</string>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                    </item>
-                                    <item>
-                                        <property name="text">
-                                            <string>S</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>Listados</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>prv1006</string>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                    </item>
-                                    <item>
-                                        <property name="text">
-                                            <string>S</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>Amortizaciones</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>prv1007</string>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                    </item>
-                                    <item>
-                                        <property name="text">
-                                            <string>S</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>Substituir Cuentas</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>prv1008</string>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                    </item>
-                                    <item>
-                                        <property name="text">
-                                            <string>S</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>Plan Contable</string>
-                                        </property>
-                                        <property name="text">
-                                            <string>prv1009</string>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                        <property name="pixmap">
-                                            <pixmap></pixmap>
-                                        </property>
-                                    </item>
-                                        <property name="name">
-                                            <cstring>listView2</cstring>
-                                        </property>
-                                        <property name="frameShape">
-                                            <enum>GroupBoxPanel</enum>
-                                        </property>
-                                        <property name="lineWidth">
-                                            <number>1</number>
-                                        </property>
-                                        <property name="margin">
-                                            <number>1</number>
-                                        </property>
-                                        <property name="midLineWidth">
-                                            <number>0</number>
-                                        </property>
-                                        <property name="resizePolicy">
-                                            <enum>Manual</enum>
-                                        </property>
-                                        <property name="vScrollBarMode">
-                                            <enum>AlwaysOn</enum>
-                                        </property>
-                                        <property name="hScrollBarMode">
-                                            <enum>AlwaysOff</enum>
-                                        </property>
-                                        <property name="dragAutoScroll">
-                                            <bool>false</bool>
-                                        </property>
-                                        <property name="selectionMode">
-                                            <enum>Extended</enum>
-                                        </property>
-                                        <property name="allColumnsShowFocus">
-                                            <bool>true</bool>
-                                        </property>
-                                        <property name="showSortIndicator">
-                                            <bool>false</bool>
-                                        </property>
-                                        <property name="itemMargin">
-                                            <number>0</number>
-                                        </property>
-                                        <property name="rootIsDecorated">
-                                            <bool>false</bool>
-                                        </property>
-                                        <property name="resizeMode">
-                                            <enum>NoColumn</enum>
-                                        </property>
-                                    </widget>
-                                </vbox>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget">
-                        <property name="name">
-                            <cstring>layout22</cstring>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonB_3</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Nuevo</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonB_4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Borrar</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonB_1</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Aplicar</string>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                </vbox>
-            </widget>
-            <widget class="QWidget">
-                <property name="name">
                     <cstring>TabPage</cstring>
                 </property>
                 <attribute name="title">
@@ -1687,136 +825,10 @@
 </widget>
 <connections>
     <connection>
-        <sender>comboBoxFuente</sender>
-        <signal>activated(const QString&amp;)</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>FontChanged(const QString&amp;)</slot>
-    </connection>
-    <connection>
-        <sender>lineEdit1</sender>
-        <signal>lostFocus()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
-    </connection>
-    <connection>
-        <sender>lineEdit2</sender>
-        <signal>lostFocus()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
-    </connection>
-    <connection>
-        <sender>lineEdit3</sender>
-        <signal>lostFocus()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
-    </connection>
-    <connection>
-        <sender>lineEdit4</sender>
-        <signal>lostFocus()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
-    </connection>
-    <connection>
-        <sender>lineEdit5</sender>
-        <signal>lostFocus()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
-    </connection>
-    <connection>
-        <sender>listView1</sender>
-        <signal>currentChanged(QListViewItem*)</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>listView1_currentChanged(QListViewItem*)</slot>
-    </connection>
-    <connection>
-        <sender>listView2</sender>
-        <signal>rightButtonClicked(QListViewItem*,const QPoint&amp;,int)</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>listView2_clickBotonDerecho(QListViewItem*,const QPoint&amp;,int)</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_1</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>nuevaEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>m_borrarempresa</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>borrarEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_5</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>nuevoEjercicio()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_6</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonA_6nombreEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonB_1</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonB_1Aplicar()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonB_3</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>newUser()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonB_4</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>deleteUser()</slot>
-    </connection>
-    <connection>
         <sender>pushButtonF_X</sender>
         <signal>clicked()</signal>
         <receiver>UIconfiguracion</receiver>
         <slot>cerrar()</slot>
-    </connection>
-    <connection>
-        <sender>spinBoxFuente</sender>
-        <signal>valueChanged(int)</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>FontSizeChanged(int)</slot>
-    </connection>
-    <connection>
-        <sender>textEdit1</sender>
-        <signal>textChanged()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
-    </connection>
-    <connection>
-        <sender>listView2</sender>
-        <signal>mouseButtonClicked(int,QListViewItem*,const QPoint&amp;,int)</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>listiView2_clickMouse(int,QListViewItem*,const QPoint&amp;,int)</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_4</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonA_4restaurarEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_61</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonA_61clonarEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>m_backup</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>salvarEmpresa()</slot>
     </connection>
     <connection>
         <sender>pushButtonA_1_2</sender>
@@ -1830,27 +842,55 @@
         <receiver>UIconfiguracion</receiver>
         <slot>BotonContaplus()</slot>
     </connection>
+    <connection>
+        <sender>pushButtonA_4</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_4restaurarEmpresa()</slot>
+    </connection>
+    <connection>
+        <sender>m_borrarempresa</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>borrarEmpresa()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_1</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>nuevaEmpresa()</slot>
+    </connection>
+    <connection>
+        <sender>m_backup</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>salvarEmpresa()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_61</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_61clonarEmpresa()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_5</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>nuevoEjercicio()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_6</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_6nombreEmpresa()</slot>
+    </connection>
 </connections>
 <tabstops>
-    <tabstop>lineEdit1</tabstop>
-    <tabstop>lineEdit2</tabstop>
-    <tabstop>lineEdit3</tabstop>
-    <tabstop>lineEdit4</tabstop>
-    <tabstop>lineEdit5</tabstop>
-    <tabstop>textEdit1</tabstop>
-    <tabstop>listView2</tabstop>
-    <tabstop>listView1</tabstop>
-    <tabstop>pushButtonB_3</tabstop>
-    <tabstop>pushButtonB_4</tabstop>
-    <tabstop>pushButtonB_1</tabstop>
     <tabstop>pushButtonA_5</tabstop>
     <tabstop>pushButtonA_1</tabstop>
     <tabstop>m_borrarempresa</tabstop>
     <tabstop>m_backup</tabstop>
     <tabstop>pushButtonA_4</tabstop>
-    <tabstop>comboBoxIdioma</tabstop>
-    <tabstop>comboBoxFuente</tabstop>
-    <tabstop>spinBoxFuente</tabstop>
     <tabstop>m_tab</tabstop>
     <tabstop>pushButtonF_X</tabstop>
     <tabstop>pushButtonA_6</tabstop>
@@ -1858,10 +898,6 @@
 </tabstops>
 <slots>
     <slot>cerrar()</slot>
-    <slot>listView1_currentChanged(QListViewItem *)</slot>
-    <slot>listView2_clickBotonDerecho(QListViewItem*,const QPoint&amp;,int)</slot>
-    <slot>FontChanged(const QString &amp;)</slot>
-    <slot>FontSizeChanged(int)</slot>
     <slot>BotonA_10aceptar()</slot>
     <slot>BotonA_11rechazar()</slot>
     <slot>nuevaEmpresa()</slot>
@@ -1874,7 +910,6 @@
     <slot>cloneUser()</slot>
     <slot>BotonB_1Aplicar()</slot>
     <slot>BotonB_2Desacer()</slot>
-    <slot>listiView2_clickMouse(int,QListViewItem *,const QPoint&amp;,int)</slot>
     <slot>salvarEmpresa()</slot>
     <slot>BotonA_4restaurarEmpresa()</slot>
     <slot>BotonA_61clonarEmpresa()</slot>
