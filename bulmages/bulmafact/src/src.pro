@@ -11,7 +11,7 @@ qt debug
 LIBS += ../../bulmalib/libbulmalib.a \
 -lpq
 INCLUDEPATH += ../../bulmalib
-TARGET = ../bin/bulmafact
+TARGET = ../../installbulmages/bulmafact
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
