@@ -172,7 +172,9 @@ void QmcDateNav::paintEvent( QPaintEvent * ) {
 
     // If we set this in init(), the widget is black before the first paint event, which is not cool.
     // Once we've done the initial paint, this will reduce flicker.
-    setBackgroundMode( NoBackground );
+    
+//Esto se ha comentado para evitar que el calendario parpadee
+//     setBackgroundMode( NoBackground );
 }
 
 

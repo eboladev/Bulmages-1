@@ -48,39 +48,39 @@ void calendario::init() {
 
     dn = new QmcDateNav( this, "dn" );
 
-    optionsDialog = new QTabDialog( this, "optionsDialog", true );
-    optionsDialog->setCaption( "QmcDateNav Options" );
-
-    generalOptions = new QVBox( this, "generalOptions" );
-    generalOptions->setMargin( 6 );
-
-    optionsDialog->addTab( generalOptions, tr( "General" ) );
-
-    qcbOutlook = new QCheckBox( "Outlook Mode", generalOptions, "qcbOutlook" );
-    qcbOutlook->setChecked( dn->outlook() );
-
-    qcbFrame = new QCheckBox( "Draw Frame", generalOptions, "qcbFrame" );
-    qcbFrame->setChecked( dn->frame() );
-
-    nwdOptions = new QVBox( this, "nwdOptions" );
-    nwdOptions->setMargin( 6 );
-
-    optionsDialog->addTab( nwdOptions, tr( "Non-working Days" ) );
-
-    qcbWorkMon = new QCheckBox( tr( "Monday" ), nwdOptions, "qcbWorkMon" );
-    qcbWorkMon->setChecked( nonWorkDays[1] );
-    qcbWorkTue = new QCheckBox( tr( "Tuesday" ), nwdOptions, "qcbWorkTue" );
-    qcbWorkTue->setChecked( nonWorkDays[2] );
-    qcbWorkWed = new QCheckBox( tr( "Wednesday" ), nwdOptions, "qcbWorkWed" );
-    qcbWorkWed->setChecked( nonWorkDays[3] );
-    qcbWorkThu = new QCheckBox( tr( "Thursday" ), nwdOptions, "qcbWorkThu" );
-    qcbWorkThu->setChecked( nonWorkDays[4] );
-    qcbWorkFri = new QCheckBox( tr( "Friday" ), nwdOptions, "qcbWorkFri" );
-    qcbWorkFri->setChecked( nonWorkDays[5] );
-    qcbWorkSat = new QCheckBox( tr( "Saturday" ), nwdOptions, "qcbWorkSat" );
-    qcbWorkSat->setChecked( nonWorkDays[6] );
-    qcbWorkSun = new QCheckBox( tr( "Sunday" ), nwdOptions, "qcbWorkSun" );
-    qcbWorkSun->setChecked( nonWorkDays[7] );
+//     optionsDialog = new QTabDialog( this, "optionsDialog", true );
+//     optionsDialog->setCaption( "QmcDateNav Options" );
+// 
+//     generalOptions = new QVBox( this, "generalOptions" );
+//     generalOptions->setMargin( 6 );
+// 
+//     optionsDialog->addTab( generalOptions, tr( "General" ) );
+// 
+//     qcbOutlook = new QCheckBox( "Outlook Mode", generalOptions, "qcbOutlook" );
+//     qcbOutlook->setChecked( dn->outlook() );
+// 
+//     qcbFrame = new QCheckBox( "Draw Frame", generalOptions, "qcbFrame" );
+//     qcbFrame->setChecked( dn->frame() );
+// 
+//     nwdOptions = new QVBox( this, "nwdOptions" );
+//     nwdOptions->setMargin( 6 );
+// 
+//     optionsDialog->addTab( nwdOptions, tr( "Non-working Days" ) );
+// 
+//     qcbWorkMon = new QCheckBox( tr( "Monday" ), nwdOptions, "qcbWorkMon" );
+//     qcbWorkMon->setChecked( nonWorkDays[1] );
+//     qcbWorkTue = new QCheckBox( tr( "Tuesday" ), nwdOptions, "qcbWorkTue" );
+//     qcbWorkTue->setChecked( nonWorkDays[2] );
+//     qcbWorkWed = new QCheckBox( tr( "Wednesday" ), nwdOptions, "qcbWorkWed" );
+//     qcbWorkWed->setChecked( nonWorkDays[3] );
+//     qcbWorkThu = new QCheckBox( tr( "Thursday" ), nwdOptions, "qcbWorkThu" );
+//     qcbWorkThu->setChecked( nonWorkDays[4] );
+//     qcbWorkFri = new QCheckBox( tr( "Friday" ), nwdOptions, "qcbWorkFri" );
+//     qcbWorkFri->setChecked( nonWorkDays[5] );
+//     qcbWorkSat = new QCheckBox( tr( "Saturday" ), nwdOptions, "qcbWorkSat" );
+//     qcbWorkSat->setChecked( nonWorkDays[6] );
+//     qcbWorkSun = new QCheckBox( tr( "Sunday" ), nwdOptions, "qcbWorkSun" );
+//     qcbWorkSun->setChecked( nonWorkDays[7] );
 
     eDays = new QList<QDate>;
     nwDays = new QList<QDate>;
@@ -93,13 +93,13 @@ void calendario::init() {
     updateNWDs( QDate::currentDate().year() );
     updateEventDays( QDate::currentDate().year() );
 
-    optionsWidget = new QWidget( this, "optionsWidget" );
+//      optionsWidget = new QWidget( this, "optionsWidget" );
 
     mainLayout = new QHBoxLayout( this, 4, 4, "mainLayout" );
     mainLayout->addWidget( dn );
     //    mainLayout->addWidget( optionsWidget );
 
-    optionsButton = new QPushButton( "&Options...", optionsWidget, "optionsButton" );
+//      optionsButton = new QPushButton( "&Options...", optionsWidget, "optionsButton" );
 
     connect( dn, SIGNAL( yearChanged( int ) ), this, SLOT( updateNWDs( int ) ) );
     connect( dn, SIGNAL( yearChanged( int ) ), this, SLOT( updateEventDays( int ) ) );
@@ -107,7 +107,8 @@ void calendario::init() {
     //   connect( optionsButton, SIGNAL( clicked() ), this, SLOT( showOptions() ) );
 }
 
-
+/** \todo Hacer que el programa importe de un fichero los dias no laborables oficiales
+*/
 void calendario::updateNWDs( int yr ) {
     // Note that there are a maximum of 10 days from the previous and next years that you need to cater for,
     // I don't worry about those here, but you should.
@@ -138,7 +139,8 @@ void calendario::updateNWDs( int yr ) {
     dn->forceUpdate();
 }
 
-
+/** \todo Hacer que el programa importe de un fichero los eventos (como plazos de entrega de declaraciones, etc.)
+*/
 void calendario::updateEventDays( int yr ) {
     eDays->clear();
     eDays->append( new QDate( yr, 1, 1 ) );

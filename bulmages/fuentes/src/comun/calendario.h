@@ -33,7 +33,8 @@ class QPushButton;
 class QCheckBox;
 class QVBox;
 
-
+/** \bug Se produce una violacion de segmento si nos desplazamos con los cursores hacia otro mes.
+*/
 class calendario: public QDialog
 {
     Q_OBJECT
