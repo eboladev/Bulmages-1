@@ -491,6 +491,14 @@
             </column>
             <column>
                 <property name="text">
+                    <string>Importe</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </column>
+            <column>
+                <property name="text">
                     <string>Contrato</string>
                 </property>
                 <property name="pixmap">
@@ -536,7 +544,7 @@
                 <number>4</number>
             </property>
             <property name="numCols">
-                <number>6</number>
+                <number>7</number>
             </property>
         </widget>
         <widget class="QLayoutWidget">
