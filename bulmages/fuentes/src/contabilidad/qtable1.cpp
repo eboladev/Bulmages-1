@@ -61,8 +61,8 @@ bool QTable1::eventFilter( QObject *obj, QEvent *event ) {
                 emit pulsadomas(currentRow(), currentColumn(), key);
         }// end if
         if (key == Qt::Key_Delete) {
-            emit pulsadomas(currentRow(), currentColumn(), key);
-            return TRUE;
+            if (ctrlpulsado)   // Solo en combinacion con el ctrl
+                emit pulsadomas(currentRow(), currentColumn(), key);
         }// end if
         if (key == 4117) {// La tecla hacia arriba
             if (ctrlpulsado)   // Solo en combinacion con el ctrl

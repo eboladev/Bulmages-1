@@ -1236,6 +1236,7 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
             }// end switch
             break;
         case Qt::Key_Delete:  //Tecla Supr
+            fprintf(stderr,"Se ha pulsado el Supr\n");
             borraborrador(row);
             break;
         case 4115: //Tecla Control + UP
