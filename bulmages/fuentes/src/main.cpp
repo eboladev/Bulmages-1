@@ -28,16 +28,20 @@
 #include "configuracion.h"
 
 #include "qtextcodec.h"
-
+#include "log.h"
 
 QApplication * theApp;
 QTranslator * traductor;
+bitacora *ctllog;
 
 int main(int argc, char *argv[]) {
+
    int valorsalida=0;
    // Leemos la configuracion que luego podremos usar siempre
   confpr = new configuracion();
+   
 
+   
   QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
     
   
@@ -56,7 +60,11 @@ if (confpr->valor(CONF_TRADUCCION) == "locales") {
    traductor->load(archivo.c_str(),confpr->valor(CONF_DIR_TRADUCCION).c_str());
 }// end if
   mainApp->installTranslator( traductor );
+
+  ctllog = new bitacora();
+  ctllog->add("Iniciacion del programa\n");
   
+    
   Splash *splashScr = new Splash();
   delete splashScr;
   

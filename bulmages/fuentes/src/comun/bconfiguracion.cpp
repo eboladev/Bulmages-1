@@ -287,7 +287,7 @@ void BConfiguracion::cargarFichaUsuarios() {
    (listView2->header())->setResizeEnabled (false);
    listView2->setColumnWidth(0,60);
    listView2->setColumnWidth(1,330);
-   listView2->hideColumn(2);
+//   listView2->hideColumn(2);
    listView2->setSorting(2,true);
    while (!recordSet->eof()) {
          it =new QListViewItem(listView1);
@@ -480,6 +480,6 @@ void BConfiguracion::listiView2_clickMouse(int button,QListViewItem * item,const
    item->text(col); //elimina warning
    listView2->setColumnWidth(0,60);
    listView2->setColumnWidth(1,330);
-   listView2->hideColumn(2);
+//   listView2->hideColumn(2);
    listView2->setSorting(2,true);
 }
