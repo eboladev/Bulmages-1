@@ -2,7 +2,7 @@
 //
 // C++ Interface: $MODULE$
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borr? Riera <tborras@conetxia.com>, (C) 2003
@@ -74,6 +74,7 @@ using std::string;
 #define CONF_DIR_TRADUCCION 306
 #define CONF_ARCHIVO_LOG 307
 #define CONF_DIR_REPORTS 308
+#define CONF_DIR_KUGAR   309
 
 #define CONF_FONTFAMILY_BULMAGES  310
 #define CONF_FONTSIZE_BULMAGES    311
@@ -104,13 +105,13 @@ class configuracion {
         void setValor(int, string);
         void leeconfig(char *);
         void saveconfig();
-        void cargarEntorno(QString);   
+        void cargarEntorno(QString);
         string nombre(int);
 };
 
 
 // ATENCION.- Este es un objeto global, y va a existir durante toda la aplicacion asi que
-// Se va a llamar muy a menudo a este objeto en los demás archivos. 
+// Se va a llamar muy a menudo a este objeto en los demás archivos.
 extern configuracion *confpr;
 extern QApplication *theApp;
 extern QTranslator * traductor;

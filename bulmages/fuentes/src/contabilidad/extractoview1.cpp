@@ -372,8 +372,15 @@ void extractoview1::presentar() {
       QString ccanales = scanal->cadcanal();
       if (ccanales != "") 
          ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.ascii());
-            
-     query.sprintf("SELECT * FROM apunte, asiento where asiento.idasiento = apunte.idasiento AND  idcuenta=%d AND apunte.fecha>='%s' AND apunte.fecha<='%s' %s %s %s ORDER BY apunte.fecha, ordenasiento, orden",idcuenta, (char *) finicial.ascii(),(char *) ffinal.ascii(), ccostes.ascii(), ccanales.ascii(), tipopunteo.ascii());  
+
+	 QString tabla;
+	 if (filt->m_asAbiertos->isChecked()) {
+	 	tabla= "borrador";
+	 } else {
+		tabla = "apunte";
+	 }// end if	 
+	             
+     query="SELECT * FROM "+tabla+", asiento where asiento.idasiento = "+tabla+".idasiento AND  idcuenta="+QString::number(idcuenta)+" AND "+tabla+".fecha>='"+finicial+"' AND "+tabla+".fecha<='"+ffinal+"' "+ccostes+" "+ccanales+" "+tipopunteo+" ORDER BY "+tabla+".fecha, ordenasiento, orden";  
       
       fprintf(stderr,"%s\n",query.ascii());
       conexionbase->begin();
@@ -455,16 +462,18 @@ void extractoview1::presentar() {
             }// end if
             delete cursorcanal;
 
-            // Sacamos la contrapartida
-            query.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursorapt->valor("contrapartida").ascii());
-            fprintf(stderr,"%s\n",query.ascii());
-            conexionbase->begin();
-            cursoraux1=conexionbase->cargacursor(query,"contrapartida");
-            conexionbase->commit();
-            if (!cursoraux1->eof()) {
-              listado->setText(j,CONTRAPARTIDA,cursoraux1->valor("codigo"));
-            }// end if
-            delete cursoraux1;
+            // Sacamos la contrapartida Solo en el caso de que no sea a partir de borrador
+	    if (!filt->m_asAbiertos->isChecked()) {
+		query.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursorapt->valor("contrapartida").ascii());
+		fprintf(stderr,"%s\n",query.ascii());
+		conexionbase->begin();
+		cursoraux1=conexionbase->cargacursor(query,"contrapartida");
+		conexionbase->commit();
+		if (!cursoraux1->eof()) {
+		listado->setText(j,CONTRAPARTIDA,cursoraux1->valor("codigo"));
+		}// end if
+		delete cursoraux1;
+	    }// end if
 
 
             

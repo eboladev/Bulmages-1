@@ -2,7 +2,7 @@
 //
 // C++ Implementation: $MODULE$
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borrás Riera <tborras@conetxia.com>, (C) 2003
@@ -32,8 +32,8 @@ configuracion::configuracion() {
 #ifndef WIN32
     /// Solo cambiamos de directorio si no es windows
    chdir (dir.c_str());
-#endif    
-   
+#endif
+
    /// Primero leemos la configuracion global
    leeconfig (CONFGLOBAL);
    /// Y  luego añadimos la configuracion local, asi los valores por defecto son los globales
@@ -47,7 +47,7 @@ configuracion::configuracion() {
    setValor(CONF_ALERTAS_DB, "Yes");
    setValor(CONF_LOGIN_USER, "");
    setValor(CONF_PASSWORD_USER, "");
-      
+
 }// end configuracion
 
 configuracion::~configuracion() {
@@ -99,6 +99,7 @@ if (i== CONF_TRADUCCION) return "CONF_TRADUCCION";
 if (i== CONF_DIR_TRADUCCION) return "CONF_DIR_TRADUCCION";
 if (i== CONF_ARCHIVO_LOG) return "CONF_ARCHIVO_LOG";
 if (i== CONF_DIR_REPORTS) return "CONF_DIR_REPORTS";
+if (i== CONF_DIR_KUGAR) return "CONF_DIR_KUGAR";
 
 if (i== CONF_FONTFAMILY_BULMAGES) return "CONF_FONTFAMILY_BULMAGES";
 if (i== CONF_FONTSIZE_BULMAGES) return "CONF_FONTSIZE_BULMAGES";
@@ -129,16 +130,16 @@ void configuracion::saveconfig() {
 void configuracion::leeconfig(char *fich) {
    ifstream filestr(fich);
   string a;
-	while (filestr.good()) {
+        while (filestr.good()) {
                filestr >> a;
                for (int i=0;i<500;i++) {
                   if (a==nombre(i)) {
                      filestr >> a;
                      valores[i] = a;
                   }// end if
-               }// end for              
-		fprintf(stderr,"%s\n",a.c_str());
-	}// end while  
+               }// end for
+                fprintf(stderr,"%s\n",a.c_str());
+        }// end while
    filestr.close();
 
 }// end leeconfig
@@ -157,7 +158,7 @@ void configuracion::cargarEntorno(QString baseDatos) {
 
 
 string configuracion::valor(int i) {
-	return (valores[i]);
+        return (valores[i]);
 }// end valor
 
 

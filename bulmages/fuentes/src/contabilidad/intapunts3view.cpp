@@ -1049,6 +1049,7 @@ void intapunts3view::guardaborrador(int row) {
     QString idc_coste;
     int datos=0;
     fprintf(stderr,"guardaborrador: row:%d rowactual:%d\n",row, row);
+    // Si no hay asiento lo calculamos.
     if (idasiento==-1) idasiento=atoi(IDASIENTO);
     // Hacemos la recoleccion de datos.
     if ( !tapunts->text(row, COL_IDBORRADOR).isEmpty()) {
@@ -1695,156 +1696,165 @@ int intapunts3view::inicializa1(extractoview1 *ext, diarioview1 *diar, balancevi
 }// end inicializa1
 
 
-
+/** Esta función genera el asiento de cierre de la empresa.
+    Debe haber un asiento abierto para que se realize la operación.
+  */
 void intapunts3view::asiento_cierre() {
-    int idcuenta;
-    int numasiento;
-    double diferencia;
-    double nuevodebe, nuevohaber;
-    QString nfecha = fechaasiento1->text();
-    nfecha.sprintf("31/12/%s",empresaactual->ejercicioactual().ascii());
-    asientoview *nuevoasiento = new asientoview(empresaactual);
-    nuevoasiento->inicializa(conexionbase);
-    numasiento = nuevoasiento->creaasiento( "Asiento de Cierre" ,nfecha ,0, 99); //99=>Cierre.
-    QString query ="SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE idgrupo=6 OR idgrupo=7) GROUP BY idcuenta ORDER BY saldito";
-    conexionbase->begin();
-    cursor2 *cursor=conexionbase->cargacursor(query, "cursor");
-    conexionbase->commit();
-    while (! cursor->eof()) {
-        idcuenta = atoi(cursor->valor("idcuenta").ascii());
-        diferencia = atof(cursor->valor("sumdebe").ascii())-atof(cursor->valor("sumhaber").ascii());
-        if (diferencia > 0) {
-            nuevohaber = diferencia;
-            nuevodebe= 0;
-        } else {
-            nuevodebe = -diferencia;
-            nuevohaber=0;
-        }// end if
-        if (nuevodebe != nuevohaber) {
-            conexionbase->nuevoborrador(idcuenta, numasiento,"Asiento de Cierre","", nuevodebe, nuevohaber,  nfecha, 0, 1, 0, 0);
-        }// end if
-        cursor->siguienteregistro();
-    }// end while
-    delete nuevoasiento;
-    conexionbase->begin();
-    conexionbase->cierraasiento(numasiento);
-    conexionbase->commit();
-    cargarcursor(numasiento);
-    muestraasiento(numasiento);
+	/// El asiento debe estar abierto para poder realizar el asiento de cierre.
+	if (abierto) {
+		int idcuenta;
+		double diferencia;
+		double nuevodebe, nuevohaber;  
+		// Si no hay asiento lo calculamos.
+		if (idasiento==-1) idasiento=atoi(IDASIENTO);
+		QString query ="SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE idgrupo=6 OR idgrupo=7)  AND fecha < '"+fechaasiento1->text()+"' GROUP BY idcuenta ORDER BY saldito";
+		conexionbase->begin();
+		cursor2 *cursor=conexionbase->cargacursor(query, "cursor");
+		conexionbase->commit();
+		int orden=0;
+		QString concepto="Asiento de Cierre";
+		QString fecha = fechaasiento1->text();
+		while (! cursor->eof()) {
+			orden++;
+			idcuenta = atoi(cursor->valor("idcuenta").ascii());
+			diferencia = atof(cursor->valor("sumdebe").ascii())-atof(cursor->valor("sumhaber").ascii());
+			if (diferencia > 0) {
+			nuevohaber = diferencia;
+			nuevodebe= 0;
+			} else {
+			nuevodebe = -diferencia;
+			nuevohaber=0;
+			}// end if
+			if (nuevodebe != nuevohaber) {
+		// Inserción de Borrador
+			// El borrador no existe, por lo que hay que hacer un insert
+			query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%f,%f,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta,nuevodebe,nuevohaber,idasiento);
+			conexionbase->begin();
+			conexionbase->ejecuta(query);
+			conexionbase->commit();
+		// Fin de la inserción de Borrador
+			}// end if
+			cursor->siguienteregistro();
+		}// end while
+		delete cursor;
+		muestraasiento(idasiento);
+	} else {
+			QMessageBox::warning( 0, tr("Asiento Cerrado"), tr("Debe abrir un asiento primero.."), QMessageBox::Ok,0);
+	}// end if
 }// end asiento_cierre
 
-
+/// La creación de un asiento de apertura debe basarse en un asiento de cierre.
 void intapunts3view::asiento_apertura() {
-  cursor2 *cur=NULL;
-  int idcuenta;
-  int numasiento=0;
-  double nuevodebe, nuevohaber;
-  QString nfecha = normalizafecha("02/01/"+empresaactual->ejercicioactual()).toString("dd/MM/yyyy");
-  asientoview *nuevoasiento = new asientoview(empresaactual,this,"apertura");
-  //Buscamos en la tabla ejercicios si existe un ejercicio anterior, si no existe usaremos la metaDB.
-  QString query;
-  postgresiface2 * DBconnEjActual = new postgresiface2();
-  DBconnEjActual->inicializa(empresaactual->nombreDB);
-  DBconnEjActual->begin();
-  query.sprintf("SELECT * FROM ejercicios WHERE periodo='0' AND ejercicio='%d'",empresaactual->ejercicioactual().toInt()-1);
-  cur = DBconnEjActual->cargacursor(query,"EjAnterior");
-  DBconnEjActual->commit();
-  if (!cur->eof()) { //Tenemos el Ejercicio anterior en la misma base de datos que el ejercicio actual
-      DBconnEjActual->begin();
-      query.sprintf("SELECT idasiento FROM asiento WHERE clase='99' AND EXTRACT(YEAR FROM fecha)='%d'",empresaactual->ejercicioactual().toInt()-1);
-      cur = DBconnEjActual->cargacursor(query, "asiento99");
-      query = "SELECT * FROM borrador WHERE idasiento =" + cur->valor("idasiento");
-      cur = DBconnEjActual->cargacursor(query, "cierre");
-      DBconnEjActual->commit();
-      if (cur->eof()) cur=NULL;
-      //El asiento de cierre del ejercicio anterior lo tenemos en "cur"  
-  }// end if
-  if (cur != NULL) {  
-  //Comprovamos si ya existe un asiento de apertura i la borramos
-  DBconnEjActual->begin();
-  query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='0'",empresaactual->ejercicioactual().ascii());
-  cursor2 *aux = DBconnEjActual->cargacursor(query,"aux");
-  if (!aux->eof()) {
-      numasiento = aux->valor(0).toInt();
-      query.sprintf("DELETE FROM apunte where idasiento=%d",numasiento);
-      DBconnEjActual->ejecuta(query);
-      query.sprintf("DELETE FROM borrador where idasiento=%d",numasiento);
-      DBconnEjActual->ejecuta(query);
-      DBconnEjActual->borrarasiento(numasiento);
-  }
-  delete aux;
-  // Creamos un nuevo asiento, que sera el asiento de apertura.
-     nuevoasiento->inicializa(DBconnEjActual);
-     numasiento = nuevoasiento->creaasiento( "Asiento de Apertura", nfecha,0,0); //0=> Apertura
-     while (!cur->eof()) {
-         nuevodebe= cur->valor("haber").toDouble();
-         nuevohaber = cur->valor("debe").toDouble();
-         idcuenta = cur->valor("idcuenta").toInt();
-         DBconnEjActual->nuevoborrador(idcuenta, numasiento,"Asiento de Apertura","", nuevodebe, nuevohaber, nfecha, 0, 1, 0, 0);
-         cur->siguienteregistro();
-     }// end while
-     DBconnEjActual->begin();
-     DBconnEjActual->cierraasiento(numasiento);
-     DBconnEjActual->commit();
-     cargarcursor(numasiento);
-     muestraasiento(numasiento);
-  } else {
-       QMessageBox::information( this, tr("Asiento de Apertura"), tr("No se ha podido encontrar el ejercicio anterior.\n\r El Asiento de Apertura tendrá que ser entrado manualmente."), QMessageBox::Ok);
-  }// end if
-  
-  delete cur;
-  delete DBconnEjActual;
+	/// Preparamos los datos.
+	QString concepto="Asiento de Apertura";
+	QString fecha = fechaasiento1->text();
+	if (idasiento==-1) idasiento=atoi(IDASIENTO);
+	QString idasientocierre;
+	
+	if (abierto) {
+	/// Buscamos el asiento anterior a este.
+		QString SQLQuery = "SELECT * FROM asiento WHERE fecha <= '"+fecha+"' AND idasiento <> "+QString::number(idasiento)+" ORDER BY fecha DESC, ordenasiento DESC";
+		conexionbase->begin();
+		cursor2 *cur=conexionbase->cargacursor(SQLQuery, "elquery");
+		conexionbase->commit();
+		if (!cur->eof()) {
+			idasientocierre=cur->valor("idasiento");
+		}// end if
+		delete cur;
+	/// Seleccionamos todos sus registros de borrador.
+		QString SQLQuery1 = "SELECT * FROM borrador WHERE idasiento="+idasientocierre;
+		conexionbase->begin();
+		cur = conexionbase->cargacursor(SQLQuery1, "masquery");
+		conexionbase->commit();
+		while (!cur->eof()) {
+			QString orden=cur->valor("orden");
+			QString idcuenta = cur->valor("idcuenta");
+			QString totaldebe = cur->valor("debe");
+			QString totalhaber = cur->valor("haber");
+			
+			SQLQuery1.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%f,%f,%d)",orden.toInt(),concepto.ascii(),fecha.ascii(),idcuenta.toInt(),totalhaber.toFloat(),totaldebe.toFloat(),idasiento);
+			conexionbase->begin();
+			conexionbase->ejecuta(SQLQuery1);
+			conexionbase->commit();
+			cur->siguienteregistro();
+		}// end while
+		delete cur;
+		muestraasiento(idasiento);
+	} else {
+			QMessageBox::warning( 0, tr("Asiento Cerrado"), tr("Debe abrir un asiento primero.."), QMessageBox::Ok,0);		
+	}// end if
 }// end asiento_apertura
 
 
 void intapunts3view::asiento_regularizacion() {
-    int idcuenta;
-    int idcuenta1;
-    int numasiento=0;
-    double diferencia;
-    double totaldebe, totalhaber;
-    double totaldebe1 =0, totalhaber1=0;
-    QString nfecha = fechaasiento1->text();
-    nfecha.sprintf("31/12/%s",empresaactual->ejercicioactual().ascii());
-    asientoview *nuevoasiento = new asientoview(empresaactual);
-    nuevoasiento->inicializa(conexionbase);
-    numasiento = nuevoasiento->creaasiento(tr("Asiento de Regularización") ,nfecha,0,98); //98=regularizacion
-    QString query = "SELECT * FROM cuenta where codigo ='129'";
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");
-    conexionbase->commit();
-    idcuenta1 = atoi(cur->valor("idcuenta").ascii());
-    delete cur;
-    query = "SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito from apunte WHERE idcuenta IN (SELECT idcuenta FROM cuenta where idgrupo=6 OR idgrupo=7) GROUP BY idcuenta ORDER BY saldito";
-    fprintf(stderr,"%s\n",query.ascii());
-    conexionbase->begin();
-    cur = conexionbase->cargacursor(query,"cursor");
-    conexionbase->commit();
-    while (!cur->eof()) {
-        idcuenta = atoi(cur->valor("idcuenta").ascii());
-        //    totaldebe = atof(cur->valor("sumdebe").c_str());
-        //    totalhaber = atof(cur->valor("sumhaber").c_str());
-        diferencia = atof(cur->valor("sumdebe").ascii())-atof(cur->valor("sumhaber").ascii());
-        if (diferencia > 0) {
-            totalhaber = diferencia;
-            totaldebe= 0;
-        } else {
-            totaldebe = -diferencia;
-            totalhaber=0;
-        }// end if
-        totaldebe1 += totaldebe;
-        totalhaber1 += totalhaber;
-        conexionbase->nuevoborrador(idcuenta, numasiento,tr("Asiento de Regularizacion"),"", totaldebe, totalhaber,  nfecha, 0, 1, 0, 0);
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
-    conexionbase->nuevoborrador(idcuenta1, numasiento,tr("Asiento de Regularizacion"),"", 0, totaldebe1,  nfecha, 0, 1, 0, 0);
-    conexionbase->nuevoborrador(idcuenta1, numasiento,tr("Asiento de Regularizacion"),"", totalhaber1, 0, nfecha, 0, 1, 0, 0);
-    conexionbase->begin();
-    conexionbase->cierraasiento(numasiento);
-    conexionbase->commit();
-    cargarcursor(numasiento);
-    muestraasiento(numasiento);
+	/// Para poder generar un asiento de regularización debemos tener un asiento abierto.
+	/// Sino no merece la pena hacerlo.
+	if (abierto) {
+		int idcuenta;
+		int idcuenta1;
+		double diferencia;
+		double totaldebe, totalhaber;
+		double totaldebe1 =0, totalhaber1=0;
+		QString concepto="Asiento de Regularización";
+		QString fecha = fechaasiento1->text();
+		
+		// Si no hay asiento lo calculamos.
+		if (idasiento==-1) idasiento=atoi(IDASIENTO);
+		
+		/// Calculamos cual va a ser la cuenta de regularización.	
+		QString query = "SELECT * FROM cuenta where codigo ='129'";
+		conexionbase->begin();
+		cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");
+		conexionbase->commit();
+		idcuenta1 = atoi(cur->valor("idcuenta").ascii());
+		delete cur;
+		
+		query = "SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito from apunte WHERE idcuenta IN (SELECT idcuenta FROM cuenta where idgrupo=6 OR idgrupo=7) AND fecha < '"+fechaasiento1->text()+"' GROUP BY idcuenta ORDER BY saldito";
+		
+		
+		conexionbase->begin();
+		cur = conexionbase->cargacursor(query,"cursor");
+		conexionbase->commit();
+		int orden=0;
+		while (!cur->eof()) {
+			orden++;
+			idcuenta = atoi(cur->valor("idcuenta").ascii());
+			diferencia = atof(cur->valor("sumdebe").ascii())-atof(cur->valor("sumhaber").ascii());
+			if (diferencia > 0) {
+			totalhaber = diferencia;
+			totaldebe= 0;
+			} else {
+			totaldebe = -diferencia;
+			totalhaber=0;
+			}// end if
+			totaldebe1 += totaldebe;
+			totalhaber1 += totalhaber;	
+			// Inserción de Borrador
+			// El borrador no existe, por lo que hay que hacer un insert
+			query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%f,%f,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta,totaldebe,totalhaber,idasiento);
+			conexionbase->begin();
+			conexionbase->ejecuta(query);
+			conexionbase->commit();
+			// Fin de la inserción de Borrador	
+			cur->siguienteregistro();
+		}// end while
+		delete cur;
+		if (totaldebe1 > 0) {
+			query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,0,%f,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta1,totaldebe1,idasiento);
+			conexionbase->begin();
+			conexionbase->ejecuta(query);
+			conexionbase->commit();
+		} // end if
+		if (totalhaber1 > 0) {
+			query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%f,0,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta1,totalhaber1,idasiento);
+			conexionbase->begin();
+			conexionbase->ejecuta(query);
+			conexionbase->commit();
+		}// end if		
+		muestraasiento(idasiento);
+	} else {
+			QMessageBox::warning( 0, tr("Asiento Cerrado"), tr("Debe abrir un asiento primero.."), QMessageBox::Ok,0);
+	}// end if
 }// end asiento_regularizacion
 
 

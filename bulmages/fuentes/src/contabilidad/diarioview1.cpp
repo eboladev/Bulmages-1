@@ -312,9 +312,16 @@ void diarioview1::presentar() {
       if (ccanales != "") 
          ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.ascii());
    
+	 QString tabla;
+	 if (filt->m_asAbiertos->isChecked()) {
+	 	tabla= "borrador";
+	 } else {
+		tabla = "apunte";
+	 }// end if
+	 
    // Fin de consideraciones para centros de coste y canales
    
-      query.sprintf( "SELECT asiento.ordenasiento, apunte.contrapartida, apunte.fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, apunte.conceptocontable,apunte.descripcion AS descapunte, apunte.debe, apunte.haber, cuenta.idcuenta, asiento.idasiento, apunte.idc_coste, apunte.idcanal, cuenta.codigo FROM asiento, apunte, cuenta WHERE asiento.idasiento=apunte.idasiento AND apunte.idcuenta = cuenta.idcuenta AND apunte.fecha >= '%s' AND apunte.fecha <= '%s' %s %s ORDER BY apunte.fecha, asiento.idasiento, apunte.orden", finicial.ascii(), ffinal.ascii(), ccostes.ascii(), ccanales.ascii() );  
+      query= "SELECT asiento.ordenasiento, "+tabla+".contrapartida, "+tabla+".fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, "+tabla+".conceptocontable,"+tabla+".descripcion AS descapunte, "+tabla+".debe, "+tabla+".haber, cuenta.idcuenta, asiento.idasiento, "+tabla+".idc_coste, "+tabla+".idcanal, cuenta.codigo FROM asiento, "+tabla+", cuenta WHERE asiento.idasiento="+tabla+".idasiento AND "+tabla+".idcuenta = cuenta.idcuenta AND "+tabla+".fecha >= '"+finicial+"' AND "+tabla+".fecha <= '"+ffinal+"' "+ccostes+" "+ccanales+" ORDER BY "+tabla+".fecha, asiento.idasiento, "+tabla+".orden";
    
    conexionbase->begin();
    cursoraux = conexionbase->cargacursor(query,"cursorapuntes");

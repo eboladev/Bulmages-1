@@ -121,20 +121,16 @@ void DiarioPrintView::accept() {
 }// end accept
 
 void DiarioPrintView::presentakugar() {
-   int txt, html, txtapren, htmlapren;
-   int error;
-   int pid;
+   int txt=1;
    float debe, haber;
-   int idcuenta;
    int idasiento;
-   char data[15];
    string fecha;
    string fechaasiento;
    string descripcion;
    string concepto;
    string codigocuenta;
    string cad;
-   cursor2 *cursoraux, *cursoraux1, *cursoraux2;
+   cursor2 *cursoraux;
 
    // Cogemos los valores del formulario.
    QString finicial = fechainicial1->text();
@@ -164,8 +160,8 @@ void DiarioPrintView::presentakugar() {
 	    fitxersortidatxt << "\t\tdebe CDATA #REQUIRED\n";
 	    fitxersortidatxt << "\t\thaber CDATA #REQUIRED>\n";
 	    fitxersortidatxt << "]>\n\n";	 
-	    fitxersortidatxt << "<KugarData Template=\"./diari.kut\">\n";
-      }
+	    fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).c_str()<<"diari.kut\">\n";
+      }// end if
 
          conexionbase->begin();
          cursoraux = conexionbase->cargacursor("SELECT * FROM apunte LEFT JOIN  cuenta ON apunte.idcuenta = cuenta.idcuenta LEFT JOIN asiento ON apunte.idasiento= asiento.idasiento ORDER BY ordenasiento ASC","elquery");
@@ -194,21 +190,8 @@ void DiarioPrintView::presentakugar() {
          delete cursoraux;
 	 fitxersortidatxt <<"</KugarData>\n";
          fitxersortidatxt.close();
-/*
-      if ((pid=fork()) < 0) {
-         perror ("Fork failed");
-         exit(errno);
-      }
 
-      if (txt) {
-         //presentació txt normal
-         if (!pid) {
-            error = execvp(confpr->valor(CONF_EDITOR).c_str(),argstxt);
-         }
-      }   
-*/
       system("kugar diari.kud");
-   
 }// end presentakugar
 
 
