@@ -743,15 +743,18 @@ void extractoview1::fecha_textChanged(const QString &texto) {
     }// end if
     if (texto=="*")
         fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-   
 }// end fecha_textChanged
 
+// cuando pulsamos el boton de la fecha
+// es como si escribiesemos un + en el texto
 void extractoview1::boton_fechainicial() {
 	fechainicial1->setText("+");
    fechainicial1->selectAll();
    fechainicial1->setFocus();
 }// end boton_fechainicial
 
+// cuando pulsamos el boton de la fecha
+// es como si escribiesemos un + en el texto
 void extractoview1::boton_fechafinal() {
 	fechafinal1->setText("+");
    fechafinal1->selectAll();
