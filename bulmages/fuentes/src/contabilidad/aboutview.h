@@ -27,7 +27,6 @@
  * \brief Se encarga de presentar el About del programa
  *  
  * Esta clase muestra el dialogo de About. No tiene mayor funcionalidad que la presentación de los créditos del programa.
- Hereda \ref aboutdlg
  */
 
 class aboutview : public aboutdlg  {

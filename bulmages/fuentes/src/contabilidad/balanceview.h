@@ -32,39 +32,57 @@ class diarioview1;
 class extractoview1;
 class empresa;
 
-/** *@author Tomeu Borrás Riera */
+/**
+ * \author Tomeu Borrás Riera
+ * \class balanceview balanceview.h
+ * \brief Balance de Sumas y Saldos plano
+ * \todo Hay que eliminar el ccostes[200] y cambiarlo por un cursor
+ * 
+ * Clase que muestra un balance de sumas y saldos de la empresa abierta. 
+ Esta clase  genera el balance de sumas y saldos y lo muestra por pantalla en una
+ ventana diseñada específicamente para ello.
+ */
 
 class balanceview : public balancedlg  {
   Q_OBJECT
-public:
+private:
+/// Empresa con la que se ha inicializado la clase
+  empresa *empresaactual;
+/// Base de datos con la que trabaja la conexión
+  postgresiface2* conexionbase;
+/// Estas tres clases deben ser sustituidas por algo en la clase empresa
   intapunts3view *introapunts;
   diarioview1 *diario;
   extractoview1 *extracto;
-  postgresiface2* conexionbase;
+/// Cursor para recorrer las cuentas
   cursor2 *cursorcta;
+/// El número de dígitos que tienen las cuentas de la empresa
   int numdigitos;
+/// Array que almacena los identificadores de los centros de coste
   int ccostes[200];
+/// En esta tabla se sustituye el listado que tiene de QTDesigner por este de aqui
   QTable1 *listado;
-  empresa *empresaactual;
 public: 
   balanceview(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
   void inicializa1(QString, QString, QString, QString, int);
-  ~balanceview();
   void inicializa2(intapunts3view *, diarioview1 *, extractoview1 *);
+  ~balanceview();
   void cargacostes();
+private:
   void boton_extracto1(int);
   void boton_asiento();
   void boton_diario1(int);
-  void accept();
   void presentar();
 public slots:
+  virtual void accept();
+  virtual void boton_imprimir();
+private slots:
   virtual void return_fechafinal();
   virtual void return_fechainicial();
   virtual void return_codigoinicial();
   virtual void return_codigofinal();
   virtual void boton_buscacuentainicial();
   virtual void boton_buscacuentafinal();
-  virtual void boton_imprimir();
   virtual void boton_fechainicial();
   virtual void boton_fechafinal();
   virtual void contextmenu(int , int , const QPoint &);

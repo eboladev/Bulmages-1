@@ -42,7 +42,7 @@ class empresa;
  * \class intapunts3view intapunts3view.h
  * \brief Se encarga de controlar la ventana de introducción de apuntes.
  * Esta es una de las clases más complejas del programa ya que controla toda la acción y casi toda la interactuación del usuario con el programa. El intento es conseguir una interficia que resulte muy rápida y cómodo para el usuario que introduzca datos.
- Hereda \ref intapunts3dlg  
+ Hereda intapunts3dlg  
 */
 
 class intapunts3view : public intapunts3dlg  {

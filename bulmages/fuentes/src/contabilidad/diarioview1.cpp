@@ -52,10 +52,10 @@
 #define COL_NUMASIENTO 10
 
 diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int  ) : diariodlg1(parent,name) {
-	empresaactual = emp;
+   empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    
-  delete listado1;
+   delete listado1;
    listado = new QTable1(this,"");
    listado->setSorting( FALSE );
    listado->setSelectionMode( QTable::SingleRow );
@@ -63,9 +63,8 @@ diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int  )
 
    // Trabajamos con las fuentes
     QFont listado_font(  listado->font() );
-//    tapunts_font.setPointSize( 9 );
-	 listado_font.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).c_str()));
-	 listado_font.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).c_str());
+    listado_font.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).c_str()));
+    listado_font.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).c_str());
     listado->setFont( listado_font );   
 
    listado->setColumnMovingEnabled( TRUE );

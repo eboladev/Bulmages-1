@@ -124,7 +124,7 @@ ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *
    
 }// end ainteligentesview
 
-/** \Brief Se encarga de cargar el combo box m_ainteligente
+/** \brief Se encarga de cargar el combo box m_ainteligente
   */
 void ainteligentesview::cargacombo() {
    m_ainteligente->clear();
