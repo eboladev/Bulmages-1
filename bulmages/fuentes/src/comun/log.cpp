@@ -65,6 +65,6 @@ void bitacora::add (int tipoLog, int nivellog, QString logdebug , QString qsTxt 
     //", DB:" << empresaactual.nombreDB.ascii()
     
    } else {
-    *archivolog << tipoLog <<  ", " << horastr.ascii() << ", "  << ", "  <<  ", " << qsTxt.ascii() << endl;
+    *archivolog << tipoLog <<  ", " << nivellog << ", " << logdebug << ", " << horastr.ascii() << ", "  << ", "  <<  ", " << qsTxt.ascii() << endl;
    }// end if
 }

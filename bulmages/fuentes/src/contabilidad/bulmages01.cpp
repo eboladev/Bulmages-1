@@ -84,7 +84,7 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
   // Le indicamos al sistema de log cual va a ser la empresa.
   
   ctllog->setempresa(&empresaactual);
-  ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario a entrado en la empresa"); //: --"+empresaactual.nomuserempresa()+"-- ha entrado en la empresa(DB): --"+empresaactual.nombreDB);
+  ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario a entrado en bulmages01"); //: --"+empresaactual.nomuserempresa()+"-- ha entrado en la empresa(DB): --"+empresaactual.nombreDB);
 }// end Bulmages01
 
 
@@ -142,7 +142,7 @@ Bulmages01::~Bulmages01() {
   //Al destruir la clase empresa no podemos seguir apuntando a un objeto que ya no existe.
   //es necesario eliminar la referencia a este objeto, por ejemplo aquí:
   //justo antes logeo la salida del usuario (René)
-  ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgDtt002","El usuario cierra empresa y sale." ); 
+  ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgDtt017","El usuario sale de bulmages01." ); 
   ctllog->setempresa(NULL);
 }
 

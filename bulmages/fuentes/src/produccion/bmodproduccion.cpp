@@ -23,6 +23,7 @@
 BModProduccion::BModProduccion(BSelector * ref, QWidget * parent, const char * name, WFlags f)
  : UIproduccion(parent,name,f)
 {
+ctllog->add(LOG_SEG | LOG_TRA, 2,"PrdCtt009","El usuario entra en el Módulo de Producción." );
 PunteroAlSelector=ref;
 QVBox* vb = new QVBox( this );
 vb->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
@@ -34,6 +35,7 @@ setCentralWidget( vb );
 
 BModProduccion::~BModProduccion()
 {
+ctllog->add(LOG_SEG | LOG_TRA, 2,"PrdDtt010","El usuario sale   del  Módulo de Producción." );
 PunteroAlSelector->ModuloVentas=NULL;
 PunteroAlSelector->showNormal();
 }

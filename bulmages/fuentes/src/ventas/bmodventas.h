@@ -28,6 +28,7 @@
 #include <qworkspace.h>
 #include <qvbox.h>
 #include <qframe.h>
+#include "log.h"
 
 /**
 @author Josep Burcion

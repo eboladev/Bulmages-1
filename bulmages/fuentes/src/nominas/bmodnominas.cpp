@@ -23,6 +23,7 @@
 BModNominas::BModNominas(BSelector * ref, QWidget * parent, const char * name, WFlags f)
  : UInominas(parent,name,f)
 {
+ctllog->add(LOG_SEG | LOG_TRA, 2,"NmnCtt011","El usuario entra en el Módulo de Nóminas." );
 PunteroAlSelector=ref;
 QVBox* vb = new QVBox( this );
 vb->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
@@ -34,6 +35,7 @@ setCentralWidget( vb );
 
 BModNominas::~BModNominas()
 {
+ctllog->add(LOG_SEG | LOG_TRA, 2,"NmnCtt012","El usuario sale   del  Módulo de Nóminas." );
 PunteroAlSelector->ModuloNominas=NULL;
 PunteroAlSelector->showNormal();
 }

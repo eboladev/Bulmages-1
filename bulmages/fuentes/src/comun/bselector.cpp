@@ -44,6 +44,7 @@ BSelector::~BSelector()
 
 //Boton Salir
 void BSelector::salir_clicked() {
+ctllog->add(LOG_SEG | LOG_TRA, 1,"BslSld002","---Saliendo de la aplicación---" );
     close();
 }
 

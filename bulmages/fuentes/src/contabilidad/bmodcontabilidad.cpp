@@ -23,12 +23,14 @@
 BModContabilidad::BModContabilidad(BSelector * ref, QWidget * parent, const char * name, WFlags f) 
 : Bulmages01(parent,name,f,&ref->NombreBaseDatos,&ref->NombreUsuario,&ref->PasswordUsuario,&ref->ejercicioMetaDB) 
 {
+ctllog->add(LOG_SEG | LOG_TRA, 2,"CntCtt013","El usuario entra en el Módulo de Contabilidad." );
   PunteroAlSelector=ref;
 }
 
 
 BModContabilidad::~BModContabilidad()
 {
+ctllog->add(LOG_SEG | LOG_TRA, 2,"CntCtt014","El usuario sale   del  Módulo de Contabilidad." );
   PunteroAlSelector->ModuloContabilidad=NULL;
   PunteroAlSelector->showNormal();
 }

@@ -23,6 +23,7 @@
 BModCompras::BModCompras(BSelector * ref, QWidget * parent, const char * name, WFlags f)
  : UIcompras(parent,name,f)
 {
+ctllog->add(LOG_SEG | LOG_TRA, 2,"CmpCtt015","El usuario entra en el Módulo de Compras." );
 PunteroAlSelector=ref;
 QVBox* vb = new QVBox( this );
 vb->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
@@ -34,6 +35,7 @@ setCentralWidget( vb );
 
 BModCompras::~BModCompras()
 {
+ctllog->add(LOG_SEG | LOG_TRA, 2,"CmpDtt016","El usuario sale   del  Módulo de Compras." );
 PunteroAlSelector->ModuloCompras=NULL;
 PunteroAlSelector->showNormal();
 }

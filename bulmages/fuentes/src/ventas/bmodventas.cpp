@@ -23,6 +23,7 @@
 BModVentas::BModVentas(BSelector * ref, QWidget * parent, const char * name, WFlags f)
  : UIventas(parent,name,f)
 {
+ctllog->add(LOG_SEG | LOG_TRA, 2,"VntCtt007","El usuario entra en el Módulo de Ventas." );
 PunteroAlSelector=ref;
 QVBox* vb = new QVBox( this );
 vb->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
@@ -34,6 +35,7 @@ setCentralWidget( vb );
 
 BModVentas::~BModVentas()
 {
+ctllog->add(LOG_SEG | LOG_TRA, 2,"VntDtt008","El usuario sale   del  Módulo de Ventas." );
 PunteroAlSelector->ModuloVentas=NULL;
 PunteroAlSelector->showNormal();
 }
