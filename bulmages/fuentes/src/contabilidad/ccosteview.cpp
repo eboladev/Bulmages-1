@@ -72,10 +72,6 @@ void ccosteview::pintar() {
     col_nom_coste = listcoste->addColumn("nom_coste",-1);
     col_desc_coste = listcoste->addColumn("desc_coste",-1);
     
-//    listcoste->hideColumn(col_idc_coste);
-//    listcoste->setColumnWidth(col_idc_coste,0);
-    
-    
     conexionbase->begin();
     cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY padre","centroscoste");
 ///    cursoraux1=conexionbase->cargacuentas(0);
@@ -104,15 +100,14 @@ void ccosteview::pintar() {
         padre = atoi(cursoraux2->valor("padre").ascii());
         idc_coste = atoi(cursoraux2->valor("idc_coste").ascii());
         fprintf(stderr,"Cuentas de subnivel:%d",padre);
-        if (padre != 0) {
+ //       if (padre != 0) {
             it = new QListViewItem(Lista[padre]);
             Lista[idc_coste]=it;
             it->setText(col_idc_coste,cursoraux2->valor("idc_coste"));
             it->setText(col_desc_coste,cursoraux1->valor("descripcion"));
             it->setText(col_nom_coste,cursoraux1->valor("nombre"));
-
             it->setOpen(true);
-        }// end if
+//        }// end if
         cursoraux2->siguienteregistro();
     }// end while
     delete cursoraux2;
