@@ -17,28 +17,29 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef ORDERSLIST_H
-#define ORDERSLIST_H
+#ifndef LINORDERSLIST_H
+#define LINORDERSLIST_H
 
-#include "orderslistbase.h"
+#include "linorderslistbase.h"
 
 
 class company;
 
 
-class orderslist : public orderslistbase
+class linorderslist : public linorderslistbase
 {
  Q_OBJECT
 public:
    company *companyact;
+   QString idpedido;
    
 public:
-    orderslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
-    ~orderslist();
-    void inicializa();
+    linorderslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
+    ~linorderslist();
+    
 
-public slots:
-    virtual void dobleclick(int, int, int, const QPoint &);
+public:
+    void chargelinorders(QString);
 };
 
 #endif

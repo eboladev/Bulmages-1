@@ -37,6 +37,7 @@ CREATE TABLE pedido (
 #include "orderslist.h"
 #include <qtable.h>
 #include "company.h"
+#include "linorderslist.h"
 
 #define COL_IDPEDIDO 0
 #define COL_NUMPEDIDO 1
@@ -45,10 +46,14 @@ CREATE TABLE pedido (
 #define COL_DESCPEDIDO 4
 #define COL_IDPROVEEDOR 5
 
-
 orderslist::orderslist(company *comp, QWidget *parent, const char *name, int flag)
  : orderslistbase(parent, name, flag) {
       companyact = comp;
+      inicializa();
+      showMaximized();
+}// end orderslist
+
+void orderslist::inicializa() {
    m_list->setNumRows( 0 );
    m_list->setNumCols( 0 );
    m_list->setSelectionMode( QTable::SingleRow );
@@ -91,9 +96,20 @@ orderslist::orderslist(company *comp, QWidget *parent, const char *name, int fla
        }// end while
       
       delete cur;
-      
-      showMaximized();
 }// end orderslist
+
+
+void orderslist::dobleclick(int a, int b, int c, const QPoint &d) {
+   QString idpedido = m_list->text(a, COL_IDPEDIDO);
+   fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
+   linorderslist *linea = new linorderslist(companyact,0,theApp->translate("Detalle Pedido", "company"));
+   linea->chargelinorders(idpedido);
+//   linea->exec();
+   delete linea;
+   inicializa();
+}
+
+
 
 orderslist::~orderslist() {
 }// end ~orderslist
