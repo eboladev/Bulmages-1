@@ -30,7 +30,7 @@ void BNuevaEmpresa::accept() {
   nombredb = bdempresa->text().stripWhiteSpace()+ejercicioempresa->text().stripWhiteSpace();
   nombreEmp = nombreempresa->text().stripWhiteSpace();
   QString cadena = confpr->valor(CONF_PROGDATA);
-  cadena += "dbmodels/creabulmages --texto "+nombredb+" 1 "+nombreEmp+" "+ ejercicioempresa->text().stripWhiteSpace()+" "+confpr->valor(CONF_METABASE);  
+  cadena += "dbmodels/creabulmages --texto "+nombredb+" 1 "+nombreEmp+" "+ ejercicioempresa->text().stripWhiteSpace()+" "+"";  
   system(cadena.ascii());
   close();
 }// end accept

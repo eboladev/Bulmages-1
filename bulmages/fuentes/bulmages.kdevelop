@@ -68,7 +68,7 @@
   </kdevdebugger>
   <kdevtrollproject>
     <run>
-      <mainprogram>../installbulmages/bulmacont</mainprogram>
+      <mainprogram/>
       <programargs/>
       <directoryradio>executable</directoryradio>
       <customdirectory>/</customdirectory>
@@ -77,7 +77,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir></activedir>
+      <activedir>src</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
@@ -167,4 +167,11 @@
     <appskde>false</appskde>
     <url/>
   </dist>
+  <kdevdocumentation>
+    <projectdoc>
+      <docsystem/>
+      <docurl/>
+      <usermanualurl/>
+    </projectdoc>
+  </kdevdocumentation>
 </kdevelop>

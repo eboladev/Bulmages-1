@@ -1765,39 +1765,8 @@ void intapunts3view::asiento_apertura() {
       cur = DBconnEjActual->cargacursor(query, "cierre");
       DBconnEjActual->commit();
       if (cur->eof()) cur=NULL;
-      //El asiento de cierre del ejercicio anterior lo tenemos en "cur"
-  }
-  else { //No hemos encontrado el ejercicio anterior en la tabla ejercicios
-         //Buscamos el nombre de la base de datos que contiene el ejercicio anterior en metaDB
-      postgresiface2 *metabase = new postgresiface2();
-      metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
-      metabase->begin();
-      query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",empresaactual->nombreDB.ascii());
-      cur = metabase->cargacursor(query,"empresa");
-      metabase->commit();
-      delete metabase;
-      if (!cur->eof()) {
-          if (cur->valor("ejant") != "") {
-              //**************************************************************
-              //Cargamos en un cursor el asiento de cierre del ejercicio anterior, que se supone es el ultimo asiento introducido.
-              //***************************************************************
-              postgresiface2 * DBconnEjAnt = new postgresiface2();
-              DBconnEjAnt->inicializa(cur->valor("ejant"));
-              DBconnEjAnt->begin();
-              query="SELECT max(idasiento) as ultimo FROM asiento";
-              cur = DBconnEjAnt->cargacursor(query, "max");
-              query = "SELECT * FROM borrador WHERE idasiento ="+cur->valor("ultimo");
-              cur = DBconnEjAnt->cargacursor(query, "cierre");
-              DBconnEjAnt->commit();
-              delete DBconnEjAnt;
-              //**************************************************************
-              //Fin de la connexión con el ejercicio anterior,
-              //El asiento de cierre del ejercicio anterior lo tenemos en "cur"
-              //***************************************************************
-          }
-          else cur=NULL; 
-      }
-  }
+      //El asiento de cierre del ejercicio anterior lo tenemos en "cur"  
+  }// end if
   if (cur != NULL) {  
   //Comprovamos si ya existe un asiento de apertura i la borramos
   DBconnEjActual->begin();

@@ -24,21 +24,6 @@ BVisorEmpresas::BVisorEmpresas(QString * ptrRetorno, QWidget * parent, const cha
    listView1->setColumnWidth(1,listView1->width() - listView1->columnWidth(0)-20);
 //   listView1->hideColumn(2);
    QListViewItem *linea;
-   
-   postgresiface2 *DBconn = new postgresiface2();
-   DBconn->inicializa( confpr->valor(CONF_METABASE).c_str() );
-   DBconn->begin();
-   cursor2 * recordSet=DBconn->cargaempresas();
-   DBconn->commit();
-   while (!recordSet->eof()) {
-         linea =new QListViewItem(listView1);
-         linea->setText(0,recordSet->valor(1));
-         linea->setText(1,recordSet->valor(2));
-         linea->setText(2,recordSet->valor(3));
-         recordSet->siguienteregistro();
-   }// end while
-   delete recordSet;
-   delete DBconn;
 }
 
 

@@ -33,7 +33,7 @@ void BNuevaEmpresa::accept() {
   //Creamos una base de datos a imagen y semejanza de bgplangcont.
   postgresiface2 *conexionbase;
   conexionbase = new postgresiface2();
-  conexionbase->inicializa(confpr->valor(CONF_METABASE).c_str());
+  conexionbase->inicializa("template1");
   //conexionbase->ejecuta("DROP DATABASE " + nombredb);
   conexionbase->ejecuta("CREATE DATABASE " + nombredb + " WITH TEMPLATE=bgplangcont");
   

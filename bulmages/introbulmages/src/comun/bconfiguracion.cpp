@@ -169,14 +169,14 @@ if (lineEditA_1->isReadOnly() ) { //Activa el line edit para que pueda ser edita
     lineEditA_1->setReadOnly(true);  
     lineEditA_1->setPaletteBackgroundColor(QColor(255,255,0));
     
-    postgresiface2 *DBconn = new postgresiface2();
-    DBconn->inicializa(confpr->valor(CONF_METABASE).c_str());
-    DBconn->begin();
-    QString query;
-    query.sprintf("UPDATE empresa SET nombre='%s' WHERE nombre='%s'",lineEditA_1->text().ascii(),PunteroAlSelector->nombreempresa->text().ascii());
-    DBconn->ejecuta(query);
-    DBconn->commit();
-    delete DBconn;
+//    postgresiface2 *DBconn = new postgresiface2();
+//    DBconn->inicializa(confpr->valor(CONF_METABASE).c_str());
+//    DBconn->begin();
+//    QString query;
+//    query.sprintf("UPDATE empresa SET nombre='%s' WHERE nombre='%s'",lineEditA_1->text().ascii(),PunteroAlSelector->nombreempresa->text().ascii());
+//    DBconn->ejecuta(query);
+//    DBconn->commit();
+//    delete DBconn;
     PunteroAlSelector->nombreempresa->setText(lineEditA_1->text());
   }// end if
 }// end BotonA_6nombreEmpresa
@@ -235,28 +235,10 @@ void BConfiguracion::borrarEmpresa() {
          fprintf(stderr,"VAmos a borrar\n");
                //Despues de evaluar algunos detalles, procedemos a eliminar la base de datos.
                   postgresiface2 *DBconn = new postgresiface2();
-                  DBconn->inicializa( confpr->valor(CONF_METABASE).c_str() );
+                  DBconn->inicializa( "template1", confpr->valor(CONF_LOGIN_USER), confpr->valor(CONF_PASSWORD_USER) );
                   DBconn->begin();
-                  QString query;
-                  query.sprintf("SELECT idempresa, nombre, ano from empresa where nombredb='%s'",dbEmpresa.ascii());
-                  cursor2 * recordSet = DBconn->cargacursor(query,"recordSet");
-                  DBconn->commit();
-                  idEmpresa=recordSet->valor("idempresa");
-                  nombreEmpresa=recordSet->valor("nombre");
-                  ejercicio=recordSet->valor("ano");
-                  if (QMessageBox::Yes == QMessageBox::critical( this, tr("Peligro"), tr("Se perdera toda la información de la empresa seleccionada. \n\r. ESTAS SEGURO DE QUE DESEAS ELIMINAR LA EMPRESA?\n\r   "+ nombreEmpresa + " - Ejercicio: " +ejercicio) , QMessageBox::Yes,QMessageBox::No)) {
-                     //Borramos...
-                     DBconn->begin();
-                     query.sprintf("DELETE FROM usuario_empresa WHERE idempresa='%s'",idEmpresa.ascii());
-                     DBconn->ejecuta(query);
-                     DBconn->commit();
-                     DBconn->begin();
-                     query.sprintf("DELETE FROM  empresa WHERE nombredb='%s'",dbEmpresa.ascii());
-                     DBconn->ejecuta(query);
-                     DBconn->commit();
-                     DBconn->ejecuta("DROP DATABASE " + dbEmpresa);
-                  }// end if
-                  delete recordSet;
+                  DBconn->ejecuta("DROP DATABASE " + dbEmpresa);
+		  DBconn->commit();
                   delete DBconn;
       }// end if  
    }// end if
@@ -294,49 +276,16 @@ void BConfiguracion::nuevoEjercicio() {
       DBconn->commit();
       QMessageBox::information( this, tr("Nuevo Ejercicio"), "El ejercicio ("+ ejer + ") ha sido creado con exito" , "&Aceptar");
    } else {  
-      postgresiface2 *metabase = new postgresiface2();
-      metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
-      metabase->begin();
-      query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",PunteroAlSelector->empresabd.ascii());
-      cursor2 *cur = metabase->cargacursor(query,"empresa");
-      metabase->commit();
-      if (!cur->eof()) {
-         QString campoIdEmpresa = cur->valor("idempresa");
+/*
+	 QString campoIdEmpresa = cur->valor("idempresa");
          QString nuevo_nombre = cur->valor("nombre");
          QString nuevo_anodb = QString::number(cur->valor("ano").toInt()+1);
          QString nombredb = cur->valor("nombredb");
          QString nuevo_nombredb = nombredb.left(nombredb.length()-4)+nuevo_anodb;
          if ( (nombredb!="bgplangcont") && (QMessageBox::Yes == QMessageBox::information( this, tr("Nuevo Ejercicio"), tr("Este proceso generará un nuevo ejercicio. \n\r.  Empresa:   "+ nuevo_nombre + "\n\r.  Ejercicio: "+nuevo_anodb) , QMessageBox::Yes,QMessageBox::No)) ) { 
             //Comprovamos que no exista ya la base de datos que queremos crear.
-            metabase->begin();
-            query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",nuevo_nombredb.ascii());
-            cursor2 *cur = metabase->cargacursor(query,"empresa");
-            metabase->commit();
-            if (cur->eof()) {//No existe aun el ejercicio que pretendemos crear, entonces a por el !!
                // Creamos la base de datos...
                query.sprintf("CREATE DATABASE %s WITH TEMPLATE=%s",nuevo_nombredb.ascii(),nombredb.ascii());
-               if ( ! metabase->ejecuta(query) ) {
-                     //Creamos la entrada en la metabd
-                     metabase->begin();
-                     query.sprintf("INSERT INTO empresa ( nombre, nombredb, ano, ejant) VALUES ('%s','%s',%d,'%s')", nuevo_nombre.ascii(), nuevo_nombredb.ascii(), nuevo_anodb.toInt(),nombredb.ascii());
-                     metabase->ejecuta(query);
-            
-                     query.sprintf("SELECT last_value AS idempresa FROM empresa_idempresa_seq");
-                     cursor2 *cur2=metabase->cargacursor(query,"idempresa");
-                  
-                     query.sprintf("SELECT * FROM usuario_empresa WHERE idempresa = %s", campoIdEmpresa.ascii());
-                     cursor2 *cur1=metabase->cargacursor(query,"us_emp");
-                     while (!cur1->eof()) {
-                        query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES (%s,%s,%s)", cur1->valor("idusuario").ascii(), cur2->valor("idempresa").ascii(), cur1->valor("permisos").ascii());
-                        metabase->ejecuta(query);
-                        cur1->siguienteregistro();
-                     }// end while
-                     metabase->commit();
-                     delete cur1;
-                     delete cur2; 
-                     delete cur;
-                     delete metabase;
-               
                      // Borramos los asientos que hemos heredado del ejercicio anterior.
                      int resultado;
                      postgresiface2 *DBconn = new postgresiface2();
@@ -355,7 +304,6 @@ void BConfiguracion::nuevoEjercicio() {
                         DBconn->rollback();
                      } else {
                         DBconn->commit();
-                  }// end if
                   delete DBconn;
                } else {
                   QMessageBox::information( this, tr("Nuevo Ejercicio"), tr("No se ha podido crear un nuevo ejercicio. \n\r Posiblemente hay alguna conexión abierta  \n\r.  Empresa: ")+nombredb , QMessageBox::Ok); 
@@ -365,7 +313,7 @@ void BConfiguracion::nuevoEjercicio() {
                QMessageBox::information( this, tr("Nuevo Ejercicio"), tr("No se puede crear un nuevo ejercicio. \n\r El ejercicio que pretende crear ya existe.") , QMessageBox::Ok,0); 
             }//end if
          }//end if QMessageBox
-      }// end if  
+*/
    }// end if
 }//Fin nuevoEjercicio
 
@@ -430,7 +378,7 @@ void BConfiguracion::BotonA_4restaurarEmpresa(){
 /**********************************************************************************************/
 
 void BConfiguracion::cargarFichaUsuarios() {
-
+/*
 #ifndef WIN32
 
 //Carga los Usuarios de la Base de Datos
@@ -485,6 +433,8 @@ void BConfiguracion::cargarFichaUsuarios() {
    delete recordSet;
    delete conexionDB;
 #endif
+
+*/
 }
 
 
@@ -567,6 +517,7 @@ void BConfiguracion::cloneUser() {
 
 //Salvamos los usuarios en la base de datos
 void BConfiguracion::BotonB_1Aplicar(){
+/*
 #ifndef WIN32
   campos_usuario datos_usuario;
   std::map<QString,campos_usuario>::iterator bucle_usuarios;
@@ -624,6 +575,7 @@ void BConfiguracion::BotonB_1Aplicar(){
   }
   DBConn->commit();
 #endif
+*/
 }
 
 //Desacemos los cambios que hemos hecho (UNDO).

@@ -70,6 +70,7 @@ int propiedadesempresa::inicializa(postgresiface2 *conn, QString nomdb) {
     // Recordatorio de permisos:
     // 1.- Total
     // 2.- Lectura.
+/*    
     QListViewItem * it;
     postgresiface2 *metabase;
     cursor2 *cursoraux;
@@ -120,14 +121,14 @@ int propiedadesempresa::inicializa(postgresiface2 *conn, QString nomdb) {
 
     
     delete metabase;     
-    
+*/    
    //Este bloque de código realiza la consulta para obtener los datos fiscales de la empresa 
     QString empresa, ano;
    
 
   query="select nombre,valor from configuracion";//Tiene que usar la empresa elegida, no bulmages!!!! TODO
 
-  metabase = new postgresiface2();
+  postgresiface2 *metabase = new postgresiface2();
   metabase->inicializa("bulmages");//[TODO] CAMBIAR!!!
   metabase->begin();
       
@@ -199,43 +200,8 @@ void propiedadesempresa::accept() {
       conexionbase->commit();
       i++;
     }// end while
-    
-   postgresiface2 *metabase;
-   cursor2 *cursoraux;
-
-   metabase = new postgresiface2();
-   metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
-   metabase->begin();
-   query.sprintf("DELETE FROM usuario_empresa WHERE idempresa IN (SELECT idempresa FROM empresa WHERE nombredb='%s')",nombredb.ascii());
-   metabase->ejecuta(query);
-
-   query.sprintf("SELECT idempresa from empresa WHERE nombredb='%s'",nombredb.ascii());
-   cursoraux = metabase->cargacursor(query,"cursorempresa");
-   int idempresa = atoi(cursoraux->valor(0).ascii());
-   delete cursoraux;
-
-   
-   // Hacemos la lectura de las listas de usuarios y los metemos en la base de datos.
-   QListViewItem *item;
-   int idusuario;
-   item = usuarioslectura->firstChild();
-   while (item) {
-     idusuario = atoi(item->text(0).ascii()   );
-     query.sprintf("INSERT INTO usuario_empresa(idusuario,idempresa,permisos) VALUES (%d,%d,2)",idusuario,idempresa);
-     metabase->ejecuta(query);
-     item = item->nextSibling();
-   }// end while
-   item = usuariostotal->firstChild();
-   while (item) {
-     idusuario = atoi(item->text(0).ascii()   );
-     query.sprintf("INSERT INTO usuario_empresa(idusuario,idempresa,permisos) VALUES (%d,%d,1)",idusuario,idempresa);
-     metabase->ejecuta(query);
-     item = item->nextSibling();
-   }// end while
 
 
-   metabase->commit();
-   delete metabase;
 
    //Este bloque de codigo guarda los datos fiscales en la tabla configuracion
    

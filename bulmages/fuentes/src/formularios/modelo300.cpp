@@ -48,7 +48,6 @@ Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
 
   postgresiface2 *metabase = new postgresiface2();
    metabase->inicializa("bulmages");//[TODO] CAMBIAR!!!!
-//metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
   metabase->begin();
   fprintf(stderr,"%s\n",query.ascii());
   cursor2 *cur = metabase->cargacursor(query,"bancos");
