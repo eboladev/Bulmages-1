@@ -478,7 +478,9 @@ END;
 -- TOC entry 88 (OID 1346050)
 -- Name: bcontrapartida(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
-
+-- Dado un apunte nos retorna el apunte que ejerce de contrapartida. (no la cuenta si no el apunte).
+-- Esta funcion puede variar con la funcion ccontrapartida ya que en ccontrapartida el calculo es distinto y puede ser erroneo.
+-- Esta funcion esta mucho mas perfeccionada con lo que es menos probable un error. Por tanto se sugiere la migracion a esta nueva funcion
 CREATE FUNCTION bcontrapartida(integer) RETURNS integer
     AS '
 DECLARE
@@ -495,9 +497,7 @@ DECLARE
     salidadebe BOOLEAN;
     salidahaber BOOLEAN;
 BEGIN
--- Dado un apunte nos retorna el apunte que ejerce de contrapartida. (no la cuenta si no el apunte).
--- Esta funcion puede variar con la funcion ccontrapartida ya que en ccontrapartida el calculo es distinto y puede ser erroneo.
--- Esta funcion esta mucho mas perfeccionada con lo que es menos probable un error. Por tanto se sugiere la migracion a esta nueva funcion
+
     RAISE NOTICE ''Em pezamos'';
     SELECT INTO apt * FROM apunte WHERE idapunte=midapunte;
     IF apt.contrapartida ISNULL THEN
@@ -561,7 +561,9 @@ END;
 -- TOC entry 89 (OID 1346051)
 -- Name: bcontrapartidaborr(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
-
+-- Dado un apunte nos retorna el apunte que ejerce de contrapartida. (no la cuenta si no el apunte).
+-- Esta funcion puede variar con la funcion ccontrapartida ya que en ccontrapartida el calculo es distinto y puede ser erroneo.
+-- Esta funcion esta mucho mas perfeccionada con lo que es menos probable un error. Por tanto se sugiere la migracion a esta nueva funcion
 CREATE FUNCTION bcontrapartidaborr(integer) RETURNS integer
     AS '
 DECLARE
@@ -578,9 +580,7 @@ DECLARE
     salidadebe BOOLEAN;
     salidahaber BOOLEAN;
 BEGIN
--- Dado un apunte nos retorna el apunte que ejerce de contrapartida. (no la cuenta si no el apunte).
--- Esta funcion puede variar con la funcion ccontrapartida ya que en ccontrapartida el calculo es distinto y puede ser erroneo.
--- Esta funcion esta mucho mas perfeccionada con lo que es menos probable un error. Por tanto se sugiere la migracion a esta nueva funcion
+
     RAISE NOTICE ''Em pezamos'';
     SELECT INTO apt * FROM borrador WHERE idborrador=midapunte;
     IF apt.contrapartida ISNULL THEN

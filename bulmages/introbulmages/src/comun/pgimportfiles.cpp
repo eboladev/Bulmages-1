@@ -1,8 +1,23 @@
+/***************************************************************************
+ *   Copyright (C) 2003 by Santiago Capel                                  *
+ *   Santiago Capel Torres (GestiONG)                                      *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ ***************************************************************************/
 #include <qdatetime.h>
 #include "pgimportfiles.h"
 #include <qtextstream.h>
 #include <qobject.h>
 #include <qstring.h>
+#include <qdatetime.h>
 
 #define EURO  166.386
 
@@ -58,6 +73,9 @@ pgimportfiles::pgimportfiles(postgresiface2 *con, void (*func)(int,int), void (*
 	conexionbase = con;
 	alerta = func;
 	mensajeria = func1;
+	m_fInicial="";
+	m_fFinal="";
+
 	setModoNormal();
 }// end pgimportfiles
 
@@ -93,23 +111,76 @@ int pgimportfiles::bulmages2Contaplus(QFile &subcuentas, QFile &asientos) {
 		curcta->siguienteregistro();
 	}// end while
 	delete curcta;
+
 	
-	query = "SELECT * FROM asiento, apunte, cuenta WHERE asiento.idasiento = apunte.idasiento AND cuenta.idcuenta = apunte.idcuenta";
+	// Algunas pruebas para ver el archivo
+/*
+		QString cadena="";
+		QString linea = "";
+		linea += (cadena.fill('1',100)).right(LEN_ASIEN);
+		linea += (cadena.fill('2',100)).left(LEN_FECHA);
+		linea += (cadena.fill('3',100)).left(LEN_SUBCTA);
+		linea += (cadena.fill('4',100)).left(LEN_CONTRA);
+		linea += (cadena.fill('5',100)).right(LEN_PTADEBE);
+		linea += (cadena.fill('6',100)).left(LEN_CONCEPTO);
+		linea += (cadena.fill('7',100)).right(LEN_PTAHABER);
+		linea += (cadena.fill('8',100)).left(LEN_FACTURA);
+		linea += (cadena.fill('9',100)).left(LEN_BASEIMPO);
+		linea += (cadena.fill('0',100)).left(LEN_IVA);
+		linea += (cadena.fill('A',100)).left(LEN_RECEQUIV);
+		linea += (cadena.fill('B',100)).left(LEN_DOCUMENTO);
+		linea += (cadena.fill('C',100)).left(LEN_DEPARTA);
+		linea += (cadena.fill('D',100)).left(LEN_CLAVE);
+		linea += (cadena.fill('E',100)).left(LEN_ESTADO);
+		linea += (cadena.fill('F',100)).left(LEN_NCASADO);
+		linea += (cadena.fill('G',100)).left(LEN_TCASADO);
+		linea += (cadena.fill('H',100)).left(LEN_TRANS);
+		linea += (cadena.fill('I',100)).left(LEN_CAMBIO);
+		linea += (cadena.fill('J',100)).left(LEN_DEBEME);
+		linea += (cadena.fill('K',100)).left(LEN_HABERME);
+		linea += (cadena.fill('L',100)).left(LEN_AUXILIAR);
+		linea += (cadena.fill('M',100)).left(LEN_SERIE);
+		linea += (cadena.fill('N',100)).left(LEN_SUCURSAL);
+		linea += (cadena.fill('O',100)).left(LEN_CODDIVISA);
+		linea += (cadena.fill('P',100)).left(LEN_IMPAUXME);
+		linea += (cadena.fill('Q',100)).left(LEN_MONEDAUSO);
+		linea += (cadena.fill('R',100)).left(LEN_EURODEBE);
+		linea += (cadena.fill('S',100)).left(LEN_EUROHABER);
+		linea += (cadena.fill('T',100)).left(LEN_BASEEURO);
+		linea += (cadena.fill('U',100)).left(LEN_NOCONV);
+		linea += (cadena.fill('V',100)).left(LEN_NUMEROINV);
+		linea += "\n";
+		streamas << linea;
+*/
+	// Fin de algunas pruebas para ver los archivos
+	
+		
+	query = "SELECT * FROM asiento, apunte, cuenta WHERE asiento.idasiento = apunte.idasiento AND cuenta.idcuenta = apunte.idcuenta ";
+	if (m_fInicial != "") 
+		query += " AND asiento.fecha >= '"+m_fInicial+"'";
+	if (m_fFinal != "") 
+		query += " AND asiento.fecha <= '"+m_fFinal+"'";
+	query +=" ORDER BY asiento.idasiento ";
 	conexionbase->begin();
 	cursor2 *curas = conexionbase->cargacursor(query, "masquery");
 	conexionbase->commit();
+	int i =0;
+	int numreg = curas->numregistros()+1;
 	while (!curas->eof()) {
+		alerta(i++,numreg);    
 		QString linea = "";
-		linea += (curas->valor("numorden")        +strblancomax).left(LEN_ASIEN);
+		linea += (strblancomax + curas->valor("ordenasiento")).right(LEN_ASIEN);
 		QString fecha = curas->valor("fecha");
 		fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
 		linea += (fecha                            +strblancomax).left(LEN_FECHA);
-		linea += (curas->valor("numorden")         +strblancomax).left(LEN_ASIEN);
 		linea += (curas->valor("codigo")           +strblancomax).left(LEN_SUBCTA);
 		linea += (                                  strblancomax).left(LEN_CONTRA);
-		linea += (                                  strblancomax).left(LEN_PTADEBE);
+		QString cadaux;
+		cadaux.sprintf("%2.2f", curas->valor("debe").toFloat());
+		linea += (strblancomax + cadaux).right(LEN_PTADEBE);
 		linea += (curas->valor("conceptocontable") +strblancomax).left(LEN_CONCEPTO);
-		linea += (                                  strblancomax).left(LEN_PTAHABER);
+		cadaux.sprintf("%2.2f", curas->valor("haber").toFloat());
+		linea += (strblancomax + cadaux).right(LEN_PTAHABER);
 		linea += (                                  strblancomax).left(LEN_FACTURA);
 		linea += (                                  strblancomax).left(LEN_BASEIMPO);
 		linea += (                                  strblancomax).left(LEN_IVA);
@@ -122,24 +193,28 @@ int pgimportfiles::bulmages2Contaplus(QFile &subcuentas, QFile &asientos) {
 		linea += (                                  strblancomax).left(LEN_TCASADO);
 		linea += (                                  strblancomax).left(LEN_TRANS);
 		linea += (                                  strblancomax).left(LEN_CAMBIO);
-		linea += (                                  strblancomax).left(LEN_DEBEME);
-		linea += (                                  strblancomax).left(LEN_HABERME);
+		linea += (strblancomax+"0.00").right(LEN_DEBEME);
+		linea += (strblancomax+"0.00").right(LEN_HABERME);
 		linea += (                                  strblancomax).left(LEN_AUXILIAR);
 		linea += (                                  strblancomax).left(LEN_SERIE);
 		linea += (                                  strblancomax).left(LEN_SUCURSAL);
 		linea += (                                  strblancomax).left(LEN_CODDIVISA);
 		linea += (                                  strblancomax).left(LEN_IMPAUXME);
-		linea += (                                  strblancomax).left(LEN_MONEDAUSO);
-		linea += (curas->valor("debe")             +strblancomax).left(LEN_EURODEBE);
-		linea += (curas->valor("haber")            +strblancomax).left(LEN_EUROHABER);
-		linea += (                                  strblancomax).left(LEN_BASEEURO);
-		linea += (                                  strblancomax).left(LEN_NOCONV);
+		linea += ("2"                              +strblancomax).left(LEN_MONEDAUSO);
+		cadaux.sprintf("%2.2f", curas->valor("debe").toFloat());
+		linea += (strblancomax+cadaux).right(LEN_EURODEBE);
+		cadaux.sprintf("%2.2f", curas->valor("haber").toFloat());
+		linea += (strblancomax+cadaux).right(LEN_EUROHABER);
+		linea += (strblancomax+"0.00").right(LEN_BASEEURO);
+		linea += ( "F"+strblancomax).left(LEN_NOCONV);
 		linea += (                                  strblancomax).left(LEN_NUMEROINV);
 		linea += "\n";
+		mensajeria("Exportando :"+curas->valor("codigo")+"--"+fecha+"\n");
 		streamas << linea;
 		curas->siguienteregistro();
 	}// end while
 	delete curas;
+	alerta (100,100);
 	return 0;
 }// end if
 
@@ -148,59 +223,66 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
     QString lopd_str, cuenta_str;
     QString debe, haber;
     QString query;
+    QDate fecha1;
+    QDate fechain(1,1,1);
+    QDate fechafi(2999,12,31);
+    if (m_fInicial != "")
+    	fechain.setYMD(m_fInicial.mid(6,4).toInt(), m_fInicial.mid(3,2).toInt(), m_fInicial.mid(0,2).toInt());
+    if (m_fFinal != "")
+    	fechafi.setYMD(m_fFinal.mid(6,4).toInt(), m_fFinal.mid(3,2).toInt(), m_fFinal.mid(0,2).toInt());
 
-    // Subcuentas
-    QTextStream stream( &subcuentas );
-    while( !subcuentas.atEnd() ) {
-        		alerta(subcuentas.at()+asientos.at(),subcuentas.size()+asientos.size());    
-			QString line = stream.readLine();
-			if( line.length()<2 )
-	  		break;
-			int pos = 0;
-			QString cod = line.mid(pos,LEN_CODIGO_CUENTA).stripWhiteSpace();
-			pos += LEN_CODIGO_CUENTA;
-			QString titulo = line.mid(pos,LEN_TITULO).stripWhiteSpace();
-			pos += LEN_TITULO;
-			QString nif = line.mid(pos,LEN_NIF).stripWhiteSpace();
-			pos += LEN_NIF;
-			QString domicilio = line.mid(pos,LEN_DOMICILIO).stripWhiteSpace();
-			pos += LEN_DOMICILIO;
-			QString poblacion = line.mid(pos,LEN_POBLACION).stripWhiteSpace();
-			pos += LEN_POBLACION;
-			QString provincia = line.mid(pos,LEN_PROVINCIA).stripWhiteSpace();
-			pos += LEN_PROVINCIA;
-			QString codpostal = line.mid(pos,LEN_CODPOSTAL).stripWhiteSpace();
-			pos += LEN_CODPOSTAL;
-			QString divisa = line.mid(pos,LEN_DIVISA).stripWhiteSpace();
-			pos += LEN_DIVISA;
-			QString cta_coddivisa = line.mid(pos,LEN_CTA_CODDIVISA).stripWhiteSpace();
-			pos += LEN_CTA_CODDIVISA;
-			QString cta_documento = line.mid(pos,LEN_CTA_DOCUMENTO).stripWhiteSpace();
-			pos += LEN_CTA_DOCUMENTO;
-			QString ajustame = line.mid(pos,LEN_AJUSTAME).stripWhiteSpace();
-			pos += LEN_AJUSTAME;
-			QString tipoiva = line.mid(pos,LEN_TIPOIVA).stripWhiteSpace();
-			pos += LEN_TIPOIVA;
-			/// Antes de hacer una inserción comprobamos que la cuenta no exista ya en el sistema.
-			QString query = "SELECT * FROM cuenta WHERE codigo = '"+cod+"'";
-			conexionbase->begin();
-			cursor2 *cursaux=conexionbase->cargacursor(query,"hol");
-			conexionbase->commit();
-			if (cursaux->eof()) {
-				if( !cod.isEmpty() ) {
-					QString padre = searchParent(cod);
-					QString idgrupo = cod.left(1);
-					query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, idgrupo, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (TRUE, TRUE, 1,'"+cod+"', '"+titulo+"', '"+nif+"', "+padre+", "+idgrupo+", 'importada de ContaPlus','"+domicilio + poblacion+ provincia+codpostal+"','','','','','')";
-					conexionbase->begin();
-					conexionbase->ejecuta(query);
-					conexionbase->commit();
-					mensajeria("<LI>Se ha insertado la cuenta "+cod+"</LI>\n");
-				}// end if
-			} else {
-				mensajeria("<LI>Ya hay una cuenta con el código "+cod+"</LI>\n");
+	// Subcuentas
+	QTextStream stream( &subcuentas );
+	while( !subcuentas.atEnd() ) {
+		alerta(subcuentas.at()+asientos.at(),subcuentas.size()+asientos.size());    
+		QString line = stream.readLine();
+		if( line.length()<2 )
+		break;
+		int pos = 0;
+		QString cod = line.mid(pos,LEN_CODIGO_CUENTA).stripWhiteSpace();
+		pos += LEN_CODIGO_CUENTA;
+		QString titulo = line.mid(pos,LEN_TITULO).stripWhiteSpace();
+		pos += LEN_TITULO;
+		QString nif = line.mid(pos,LEN_NIF).stripWhiteSpace();
+		pos += LEN_NIF;
+		QString domicilio = line.mid(pos,LEN_DOMICILIO).stripWhiteSpace();
+		pos += LEN_DOMICILIO;
+		QString poblacion = line.mid(pos,LEN_POBLACION).stripWhiteSpace();
+		pos += LEN_POBLACION;
+		QString provincia = line.mid(pos,LEN_PROVINCIA).stripWhiteSpace();
+		pos += LEN_PROVINCIA;
+		QString codpostal = line.mid(pos,LEN_CODPOSTAL).stripWhiteSpace();
+		pos += LEN_CODPOSTAL;
+		QString divisa = line.mid(pos,LEN_DIVISA).stripWhiteSpace();
+		pos += LEN_DIVISA;
+		QString cta_coddivisa = line.mid(pos,LEN_CTA_CODDIVISA).stripWhiteSpace();
+		pos += LEN_CTA_CODDIVISA;
+		QString cta_documento = line.mid(pos,LEN_CTA_DOCUMENTO).stripWhiteSpace();
+		pos += LEN_CTA_DOCUMENTO;
+		QString ajustame = line.mid(pos,LEN_AJUSTAME).stripWhiteSpace();
+		pos += LEN_AJUSTAME;
+		QString tipoiva = line.mid(pos,LEN_TIPOIVA).stripWhiteSpace();
+		pos += LEN_TIPOIVA;
+		/// Antes de hacer una inserción comprobamos que la cuenta no exista ya en el sistema.
+		QString query = "SELECT * FROM cuenta WHERE codigo = '"+cod+"'";
+		conexionbase->begin();
+		cursor2 *cursaux=conexionbase->cargacursor(query,"hol");
+		conexionbase->commit();
+		if (cursaux->eof()) {
+			if( !cod.isEmpty() ) {
+				QString padre = searchParent(cod);
+				QString idgrupo = cod.left(1);
+				query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, idgrupo, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (TRUE, TRUE, 1,'"+cod+"', '"+titulo+"', '"+nif+"', "+padre+", "+idgrupo+", 'importada de ContaPlus','"+domicilio + poblacion+ provincia+codpostal+"','','','','','')";
+				conexionbase->begin();
+				conexionbase->ejecuta(query);
+				conexionbase->commit();
+				mensajeria("<LI>Se ha insertado la cuenta "+cod+"</LI>\n");
 			}// end if
-			delete cursaux;
-	  }
+		} else {
+			mensajeria("<LI>Ya hay una cuenta con el código "+cod+"</LI>\n");
+		}// end if
+		delete cursaux;
+	}// end while
 
     QTextStream stream2( &asientos );
     QString lastasiento="0";
@@ -214,6 +296,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 			QString asiento = line.mid(pos,LEN_ASIEN).stripWhiteSpace();
 			pos += LEN_ASIEN;
 			QString fecha = line.mid(pos,LEN_FECHA).stripWhiteSpace();
+			fecha1.setYMD(fecha.mid(0,4).toInt() ,fecha.mid(4,2).toInt() ,fecha.mid(6,2).toInt());
 			fecha = fecha.mid(0,4) + "-" + fecha.mid(4,2) + "-" + fecha.mid(6,2);
 			pos += LEN_FECHA;
 			QString subcta = line.mid(pos,LEN_SUBCTA).stripWhiteSpace();
@@ -287,21 +370,23 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 						delete cur;
 					}// end if
 				}// end if
-				query="INSERT INTO asiento (fecha, comentariosasiento, clase) VALUES ('"+fecha+"','Importado de Contaplus', 1 )";
-				if (!modoTest()) {
+				if (fecha1 >= fechain && fecha1 <= fechafi) {
+					query="INSERT INTO asiento (fecha, comentariosasiento, clase) VALUES ('"+fecha+"','Importado de Contaplus', 1 )";
+					if (!modoTest()) {
+						conexionbase->begin();
+						conexionbase->ejecuta(query);
+						conexionbase->commit();
+					}// end if
+					query = "SELECT max(idasiento) as idasiento FROM asiento";
 					conexionbase->begin();
-					conexionbase->ejecuta(query);
+					cursor2 *cur=conexionbase->cargacursor(query,"lolailo");
+					idasiento = cur->valor("idasiento");
 					conexionbase->commit();
+					delete cur;
+					napunte = 0;
+					lastasiento = asiento;
+					mensajeria("<LI>Inserción de Asiento" + idasiento+"</LI>\n");
 				}// end if
-				query = "SELECT max(idasiento) as idasiento FROM asiento";
-				conexionbase->begin();
-				cursor2 *cur=conexionbase->cargacursor(query,"lolailo");
-				idasiento = cur->valor("idasiento");
-				conexionbase->commit();
-				delete cur;
-				napunte = 0;
-				lastasiento = asiento;
-				mensajeria("<LI>Inserción de Asiento" + idasiento+"</LI>\n");
 			}// end if
 			napunte++;
 			if( monedauso == "1" ) { // Ptas
@@ -316,13 +401,17 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 			cursor2 *cur=conexionbase->cargacursor(query,"elquery");
 			conexionbase->commit();
 			if (!cur->eof()) {
-				if(!modoTest()) {
-					query="INSERT INTO borrador (idasiento,idcuenta,fecha, conceptocontable, debe, haber) VALUES ("+idasiento+",id_cuenta('"+subcta+"'), '"+fecha+"','"+concepto+"',"+debe+","+haber+" )";
-					conexionbase->begin();
-					conexionbase->ejecuta(query);
-					conexionbase->commit();
+				if (fecha1 >= fechain && fecha1 <= fechafi) {
+					if (!modoTest() ) {
+						query="INSERT INTO borrador (idasiento,idcuenta,fecha, conceptocontable, debe, haber) VALUES ("+idasiento+",id_cuenta('"+subcta+"'), '"+fecha+"','"+concepto+"',"+debe+","+haber+" )";
+						conexionbase->begin();
+						conexionbase->ejecuta(query);
+						conexionbase->commit();
+					}// end if
+					mensajeria("<LI>Inserción de Apunte"+subcta+","+concepto+"</LI>\n");
+				} else {
+					mensajeria("<LI>Apunte fuera de fecha</LI>\n");
 				}// end if
-				mensajeria("<LI>Inserción de Apunte"+subcta+","+concepto+"</LI>\n");
 			}// end if
 	}// end while
 	if (lastasiento != "0") {
@@ -345,7 +434,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
   * if there are not parent returns NULL
   */
 QString pgimportfiles::searchParent(QString cod) {
-	int lencod = cod.length();
+//	int lencod = cod.length();
 	QString padre="NULL"; //almacena el padre de la cuenta.
 	QString query;
 	int i = 2;

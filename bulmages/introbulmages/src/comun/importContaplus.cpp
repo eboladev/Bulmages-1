@@ -22,6 +22,9 @@
 #include <qtextbrowser.h>
 #include <qcheckbox.h>
 
+#include <qtoolbutton.h>
+
+#include "calendario.h"
 
 QProgressBar *progress;
 QTextBrowser *mensajes;
@@ -34,6 +37,7 @@ void realizado(int a, int b) {
 void publicamensaje(QString mensaje) {
 	mensajein+=mensaje;
 	mensajes->setText(mensajein);
+	mensajes->scrollBy(0,400);
 }// end publicamensaje
 
 
@@ -54,6 +58,8 @@ void importContaplus::botonBuscarDiario() {
 }// end botonBuscarDiario	
 
 void importContaplus::botonImportar() {
+QString finicial = m_fInicial->text();
+QString ffinal = m_fFinal->text();
 
 	void (*func) (int,int);
 	func = realizado;
@@ -65,6 +71,8 @@ void importContaplus::botonImportar() {
 	filecont.open(IO_ReadOnly);
 	fileasie.open(IO_ReadOnly);
 	pgimportfiles *importacion = new pgimportfiles(conexionbase,func, func1);
+	importacion->setFInicial(finicial);
+	importacion->setFFinal(ffinal);	
 	if (m_test->isChecked() ) {
 		importacion->setModoTest();
 	}// end if
@@ -77,6 +85,8 @@ void importContaplus::botonImportar() {
 }// end botonImportar 
 
 void importContaplus::botonExportar() {
+QString finicial = m_fInicial->text();
+QString ffinal = m_fFinal->text();
 
 	void (*func) (int,int);
 	func = realizado;
@@ -88,6 +98,8 @@ void importContaplus::botonExportar() {
 	filecont.open(IO_WriteOnly);
 	fileasie.open(IO_WriteOnly);
 	pgimportfiles *importacion = new pgimportfiles(conexionbase,func, func1);
+	importacion->setFInicial(finicial);
+	importacion->setFFinal(ffinal);
 	if (m_test->isChecked() ) {
 		importacion->setModoTest();
 	}// end if
@@ -98,3 +110,27 @@ void importContaplus::botonExportar() {
 	
 	mensajein="";
 }// end botonExportar
+
+
+/** \brief SLOT que responde a la búsqueda de la fecha inicial
+  */
+void importContaplus::botonBuscarFInicial() {
+        QList<QDate> a;
+        calendario *cal = new calendario(0,0);
+        cal->exec();
+        a = cal->dn->selectedDates();
+        m_fInicial->setText(a.first()->toString("dd/MM/yyyy"));
+        delete cal;
+}// end botonBuscarFInicial
+
+/** \brief SLOT quer esponde a la busqueda de la fecha final
+  */
+void importContaplus::botonBuscarFFinal() {
+        QList<QDate> a;
+        calendario *cal = new calendario(0,0);
+        cal->exec();
+        a = cal->dn->selectedDates();
+        m_fFinal->setText(a.first()->toString("dd/MM/yyyy"));
+        delete cal;
+}// end botonBuscarFFinal
+

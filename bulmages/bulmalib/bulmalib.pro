@@ -8,13 +8,17 @@ HEADERS += postgresiface2.h \
            numerocuenta.h  \
 	   funcaux.h \
 	   logpass.h \
-	   abreempresaview.h
+	   abreempresaview.h \
+	   calendario.h \
+	   qmcdatenav.h
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp  \
 	   funcaux.cpp \
 	   logpass.cpp \
-	   abreempresaview.cpp
+	   abreempresaview.cpp \
+	   calendario.cpp \
+	   qmcdatenav.cpp
 IDLS += logpassbase.ui \
 	abreempresadlg.ui
 FORMS += logpassbase.ui \

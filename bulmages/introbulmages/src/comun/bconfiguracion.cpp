@@ -146,17 +146,11 @@ void BConfiguracion::BotonA_10aceptar() {
 #include "importContaplus.h"
 /// Responde a la pusación de importar datos de Contaplus a BulmaGés
 void BConfiguracion::BotonContaplus() {
-	
-	
-	fprintf(stderr,"Importar desde Contaplus\n");
 	postgresiface2 *DBconn = new postgresiface2();
-	DBconn->inicializa(PunteroAlSelector->empresabd);
-	
+	DBconn->inicializa(PunteroAlSelector->empresabd, confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
 	importContaplus *import= new importContaplus(DBconn,0,0,0);
 	import->exec();
 	delete import;
-	
-
 }// end BotonContaplus
 
 

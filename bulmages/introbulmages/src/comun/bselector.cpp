@@ -84,7 +84,7 @@ void BSelector::seleccionaempresa_clicked() {
 }// end seleccionaempresa_clicked
 
 
-// Boton para entrar en el modulo de CONTABILIDAD 
+/// Boton para entrar en el modulo de CONTABILIDAD 
 void BSelector::contabilidad_clicked() {
    if (tipo != "BulmaGés" ) {
       abreempresaview *empcont = new abreempresaview(0,1, "abreempresa", true);

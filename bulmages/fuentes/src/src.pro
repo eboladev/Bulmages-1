@@ -111,8 +111,6 @@ QMAKE_CLEAN += Makefile
 LANGUAGE = C++
 SOURCES += main.cpp \
            comun/splashscreen.cpp \
-           comun/calendario.cpp \
-           comun/qmcdatenav.cpp \
            contabilidad/bulmages01.cpp \
            contabilidad/aboutview.cpp \
            contabilidad/empresa.cpp \
@@ -169,8 +167,6 @@ SOURCES += main.cpp \
            contabilidad/cobropagoview.cpp \
 	   contabilidad/bbloqfecha.cpp
 HEADERS += comun/splashscreen.h \
-           comun/calendario.h \
-           comun/qmcdatenav.h \
            contabilidad/bulmages01.h \
            contabilidad/aboutview.h \
            contabilidad/empresa.h \

@@ -32,6 +32,8 @@ public slots:
 	virtual void botonBuscarDiario();
 	virtual void botonImportar();
 	virtual void botonExportar();
+	virtual void botonBuscarFInicial();
+	virtual void botonBuscarFFinal();
 
 };
 
