@@ -17,47 +17,48 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef COMPANY_H
-#define COMPANY_H
+#ifndef BUDGETSLIST_H
+#define BUDGETSLIST_H
 
-#include <qworkspace.h>
-#include "postgresiface2.h"
-#include <qobject.h>
+// Listado de presupuestos.
 
-/**
-Company class gives the application something like a standard interface to access each company in the same way.
-@author Tomeu Borrás
-*/
+#include "budgetslistbase.h"
 
-class providerslist;
-class clientslist;
-class articleslist;
-class orderslist;
-class delivnoteslist;
-class BudgetsList;
 
-class company : public postgresiface2 {
+class company;
+
+
+class BudgetsList : public BudgetsListBase {
+Q_OBJECT
 private:
-   providerslist *m_providerslist;
-   clientslist *m_clientslist;
-   articleslist *m_articleslist;
-   orderslist *m_orderslist;
-   delivnoteslist *m_delivnoteslist;
-   BudgetsList *m_budgetsList;
+   company *companyact;
+   int m_modo; // == 0 es modo edición
+            // ==1 es modo selector.
+   QString m_idprovider;
+   QString m_cifprovider;
+   
 public:
-   QWidget *m_pWorkspace;
-public:
-   company();
-   ~company();
-   void listproviders();
-   void listclients();
-   void listarticles();
-   void listorders();
-   void listdelivnotes();
-   void listBudgets();
-   void setWorkspace(QWidget *qw) {m_pWorkspace=qw;createMainWindows();}
-   void newBudget();
-   void createMainWindows();
+    BudgetsList(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
+    ~BudgetsList();
+    void inicializa();
+    void modoseleccion() {m_modo=1;};
+    void modoedicion() {m_modo=0;};
+    QString idprovider() {return m_idprovider;};
+    QString cifprovider() {return m_cifprovider;};
+    
+public slots:
+    virtual void doubleclicked(int, int, int, const QPoint &);
+    virtual void contextMenu(int, int, const QPoint &);
+    virtual void newprovider();
+    
+    /*
+    virtual void boton_editar();
+    
+    virtual void boton_duplicar();
+    virtual void boton_borrar();
+    virtual void boton_imprimir();
+    virtual void boton_filtrar();
+*/
 };
 
 #endif

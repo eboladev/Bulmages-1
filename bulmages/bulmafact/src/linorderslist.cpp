@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+// Para laura con cariño
+// Esta línea en honor a bruli y a la asociación de jovenes empresarios de Valencia
+ 
  /*
 -- Linea de pedido
 -- Numero: Número de línia.

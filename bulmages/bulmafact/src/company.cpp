@@ -30,6 +30,7 @@
 #include "articleslist.h"
 #include "orderslist.h"
 #include "delivnoteslist.h"
+#include "budgetslist.h"
 
 company::company(){
 //       inicializa(confpr->valor(CONF_METABASE).c_str());
@@ -42,6 +43,8 @@ void company::createMainWindows() {
    m_articleslist = new articleslist(this, m_pWorkspace,theApp->translate("Listado de Artículos","company"));
    m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Listado de Pedidos","company"));
    m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Listado de Albaranes","company"));   
+   m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos","company"));   
+   
 }// end createMainWindows
 
 
@@ -78,6 +81,12 @@ void company::listdelivnotes () {
    m_delivnoteslist->show();
    m_delivnoteslist->setActiveWindow();
 }
+
+void company::listBudgets() {
+   m_budgetsList->hide();
+   m_budgetsList->show();
+   m_budgetsList->setActiveWindow();
+}// end listbudgets
 
 
 void company::newBudget() {
