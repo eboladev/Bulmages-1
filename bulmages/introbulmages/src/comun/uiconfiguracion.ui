@@ -66,14 +66,6 @@
                                     <string>Nombre de la empresa</string>
                                 </property>
                             </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_6</cstring>
-                                </property>
-                                <property name="text">
-                                    <string></string>
-                                </property>
-                            </widget>
                             <spacer>
                                 <property name="name">
                                     <cstring>spacer2</cstring>
@@ -95,12 +87,25 @@
                     </widget>
                     <widget class="QLayoutWidget">
                         <property name="name">
-                            <cstring>layout2</cstring>
+                            <cstring>layout17</cstring>
                         </property>
                         <hbox>
                             <property name="name">
                                 <cstring>unnamed</cstring>
                             </property>
+                            <widget class="QLineEdit">
+                                <property name="name">
+                                    <cstring>m_ejercicio</cstring>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy>
+                                        <hsizetype>0</hsizetype>
+                                        <vsizetype>0</vsizetype>
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                            </widget>
                             <widget class="QPushButton">
                                 <property name="name">
                                     <cstring>pushButtonA_5</cstring>
@@ -112,34 +117,62 @@
                                     <string>Crea un nuevo ejercicio contable</string>
                                 </property>
                             </widget>
-                            <widget class="QPushButton">
+                            <spacer>
                                 <property name="name">
-                                    <cstring>pushButtonA_61</cstring>
+                                    <cstring>spacer10</cstring>
                                 </property>
-                                <property name="text">
-                                    <string>Clonar Empresa</string>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
                                 </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Crea una nueva empresa identica a otra existente</string>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
                                 </property>
-                            </widget>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>201</width>
+                                        <height>21</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout15</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
                             <widget class="QPushButton">
                                 <property name="name">
                                     <cstring>m_backup</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Copia de Seguridad
+                                    <string>Hacer copia de Seguridad
  (BACKUP)</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
                                     <string>Guarda una copia de seguridad de una empresa</string>
                                 </property>
                             </widget>
+                            <widget class="QPushButton">
+                                <property name="name">
+                                    <cstring>pushButtonA_4</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Restaurar copia
+ (RESTORE)</string>
+                                </property>
+                                <property name="toolTip" stdset="0">
+                                    <string>Restaura la copia de seguridad de una empresa</string>
+                                </property>
+                            </widget>
                         </hbox>
                     </widget>
                     <widget class="QLayoutWidget">
                         <property name="name">
-                            <cstring>layout3</cstring>
+                            <cstring>layout16</cstring>
                         </property>
                         <hbox>
                             <property name="name">
@@ -167,18 +200,6 @@
                                     <string>Borra por completo una empresa</string>
                                 </property>
                             </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Restaurar copia
- (RESTORE)</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Restaura la copia de seguridad de una empresa</string>
-                                </property>
-                            </widget>
                         </hbox>
                     </widget>
                     <widget class="QPushButton">
@@ -202,7 +223,7 @@
                         <property name="sizeHint">
                             <size>
                                 <width>21</width>
-                                <height>41</height>
+                                <height>20</height>
                             </size>
                         </property>
                     </spacer>
@@ -867,22 +888,10 @@
         <slot>salvarEmpresa()</slot>
     </connection>
     <connection>
-        <sender>pushButtonA_61</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonA_61clonarEmpresa()</slot>
-    </connection>
-    <connection>
         <sender>pushButtonA_5</sender>
         <signal>clicked()</signal>
         <receiver>UIconfiguracion</receiver>
         <slot>nuevoEjercicio()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_6</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonA_6nombreEmpresa()</slot>
     </connection>
 </connections>
 <tabstops>
@@ -893,7 +902,6 @@
     <tabstop>pushButtonA_4</tabstop>
     <tabstop>m_tab</tabstop>
     <tabstop>pushButtonF_X</tabstop>
-    <tabstop>pushButtonA_6</tabstop>
     <tabstop>lineEditA_1</tabstop>
 </tabstops>
 <slots>

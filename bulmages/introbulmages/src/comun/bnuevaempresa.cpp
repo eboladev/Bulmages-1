@@ -15,44 +15,33 @@
 #include "bnuevaempresa.h"
 
 
-BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, WFlags f) : nuevaempresadlg(parent,name,f) {
-}// end BNuevaEmpresa
+BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, WFlags f) : nuevaempresadlg(parent,name,f) {}// end BNuevaEmpresa
 
 
-BNuevaEmpresa::~BNuevaEmpresa() {
-}
+BNuevaEmpresa::~BNuevaEmpresa() {}
 
 void BNuevaEmpresa::accept() {
-// Falta comprobar que tengas permisos para crear nuevas empresas.
-  QString nombredb;
-  QString nombreEmp;
+    // Falta comprobar que tengas permisos para crear nuevas empresas.
+    QString nombredb;
+    QString nombreEmp;
 
-  nombredb = bdempresa->text().stripWhiteSpace()+ejercicioempresa->text().stripWhiteSpace();
-  nombreEmp = nombreempresa->text().stripWhiteSpace();
-  QString cadena = confpr->valor(CONF_PROGDATA);
-  cadena += "dbmodels/creabulmages --texto "+nombredb+" 1 "+nombreEmp+" "+ ejercicioempresa->text().stripWhiteSpace()+" "+"";  
-  system(cadena.ascii());
-  
-	postgresiface2 *DBconn = new postgresiface2();
-	DBconn->inicializa(nombredb, confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
-	QString query = "UPDATE configuracion SET valor='"+nombreEmp+"' WHERE nombre='NombreEmpresa'";
-	DBconn->begin();
-	DBconn->ejecuta(query);
-	
-	/// Creamos el ejercicio
-      for (int x=0; x<=12; x++) {
-            query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')",ejercicioempresa->text().ascii(),x);
-            DBconn->ejecuta(query);
-      }	
-	
-	DBconn->commit();
-	
-	
-	
-	
-	delete DBconn;  
-  
-  
-  
-  close();
+    nombredb = bdempresa->text().stripWhiteSpace()+ejercicioempresa->text().stripWhiteSpace();
+    nombreEmp = nombreempresa->text().stripWhiteSpace();
+    QString cadena = confpr->valor(CONF_PROGDATA);
+    cadena += "dbmodels/creabulmages --texto "+nombredb+" 1 "+nombreEmp+" "+ ejercicioempresa->text().stripWhiteSpace()+" "+"";
+    system(cadena.ascii());
+    postgresiface2 *DBconn = new postgresiface2();
+    DBconn->inicializa(nombredb, confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+    QString query = "UPDATE configuracion SET valor='"+nombreEmp+"' WHERE nombre='NombreEmpresa'";
+    DBconn->begin();
+    DBconn->ejecuta(query);
+
+    /// Creamos el ejercicio
+    for (int x=0; x<=12; x++) {
+        query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')",ejercicioempresa->text().ascii(),x);
+        DBconn->ejecuta(query);
+    }// end for
+    DBconn->commit();
+    delete DBconn;
+    close();
 }// end accept
