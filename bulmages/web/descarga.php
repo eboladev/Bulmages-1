@@ -86,16 +86,24 @@
                           <br> <table width="97%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#999999">
                             <tr> 
                               <td height="24"><div align="justify"> 
-                                  <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Existe 
-                                    un CVS con el c&oacute;digo fuente del programa:</font></p>
+                                  <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif">El 
+                                    CVS con el c&oacute;digo fuente del programa 
+                                    esta en:</font></p>
                                   <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>cvs 
                                     -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/bulmages 
                                     login <br>
                                     <br>
                                     cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/bulmages 
                                     co bulmages</strong></font></p>
+                                  <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Si 
+                                    eres desarrollador del programa (Debes estar 
+                                    de alta en <a href="http://sourceforge.net">sourceforge</a>):</font></p>
                                   <p></p>
-                                </div></td>
+                                  <font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>export 
+                                  CVS_RSH=ssh <br>
+                                  <br>
+                                  cvs -z3 -d:ext:developername@cvs.sourceforge.net:/cvsroot/bulmages 
+                                  co modulename </strong></font></div></td>
                             </tr>
                           </table>
                           <p>&nbsp;</p></td>
