@@ -1748,7 +1748,7 @@ void intapunts3view::boton_cargarasiento() {
     QString query;
     int IdAsien=0;
     conexionbase->begin();
-    query.sprintf("SELECT idasiento FROM asiento WHERE ordenasiento = %d AND EXTRACT(YEAR FROM fecha)=%s ",idasiento1->text().toInt(),EjercicioActual.ascii());
+    query.sprintf("SELECT idasiento FROM asiento WHERE ordenasiento<=%d AND EXTRACT(YEAR FROM fecha)=%s ORDER BY ordenasiento DESC",idasiento1->text().toInt(),EjercicioActual.ascii());
     cursor2 *curs = conexionbase->cargacursor(query, "micursor");
     conexionbase->commit();
     if (!curs->eof()) {
