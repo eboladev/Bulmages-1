@@ -409,6 +409,8 @@ void BConfiguracion::BotonA_4restaurarEmpresa(){
   QString dbEmpresa; 
   QString PGserver;
   PGserver = confpr->valor(CONF_SERVIDOR).c_str();
+  QString usuario;
+  
   dbEmpresa = PunteroAlSelector->empresabd;
   if (dbEmpresa!="") {
      fprintf(stderr,"Restaurar empresa cargamos fichero\n");

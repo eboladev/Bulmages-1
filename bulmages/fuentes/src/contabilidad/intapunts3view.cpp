@@ -32,6 +32,7 @@
 #include "listcuentasview1.h"
 #include "cuentaview.h"
 #include "duplicarasientoview.h"
+#include "adocumental.h"
 
 
 #define COL_FECHA       0
@@ -134,6 +135,7 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
 intapunts3view::~intapunts3view() {
     delete filt;
 }// end ~intapunts3view
+
 
 /******************************************************************
  * Esta funcion se encarga de inicializar el formulario. Carga los apuntes
@@ -1968,6 +1970,13 @@ void intapunts3view::boton_duplicarasiento() {
 void intapunts3view::boton_fecha() {
     fechaasiento1->setText("+");
 }// end boton_fecha
+
+void intapunts3view::boton_adjuntar(){
+   adocumental *adoc= new adocumental(empresaactual,0,"adjuntar documento");
+   adoc->exec();
+   delete adoc;
+}// end boton_adjuntar
+
 
 
 void intapunts3view::boton_nuevoasientodocumental(){

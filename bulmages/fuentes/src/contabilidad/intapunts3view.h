@@ -124,6 +124,7 @@ public slots:
     virtual void boton_fecha();
     
     virtual void boton_nuevoasientodocumental();
+    virtual void boton_adjuntar();
 
 };
 

@@ -817,6 +817,8 @@ void empresa::reemplazacuentaenasientos() {
     ctac->exec();
 }// end reemplazacuentasenasientos
 
+
+// Esta función recalcula los saldos parciales del plan contable.
 void empresa::recalculasaldos() {
    conexionbase2->begin();
    conexionbase2->ejecuta("SELECT recalculasaldos()");
