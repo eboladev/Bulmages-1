@@ -804,7 +804,7 @@ DECLARE
     aptrest RECORD;
     smpatrimonialsum RECORD;
     smpatrimonialres RECORD;
-    saldo DOUBLE PRECISION;
+    saldo NUMERIC(12,2);
 BEGIN
     -- Esta funcion calcula el saldo de una masa patrimonial entre dos fechas.
     saldo := 0;
@@ -841,7 +841,7 @@ DECLARE
     aptrest RECORD;
     smpatrimonialsum RECORD;
     smpatrimonialres RECORD;
-    debe DOUBLE PRECISION;
+    debe NUMERIC(12,2);
 BEGIN
     -- Esta funcion calcula el debe de una masa patrimonial entre dos fechas.
     debe := 0;
@@ -878,7 +878,7 @@ DECLARE
     aptrest RECORD;
     smpatrimonialsum RECORD;
     smpatrimonialres RECORD;
-    haber DOUBLE PRECISION;
+    haber NUMERIC(12,2);
 BEGIN
     -- Esta funcion calcula el saldo de una masa patrimonial entre dos fechas.
     haber := 0;
@@ -915,7 +915,7 @@ DECLARE
     apt1 RECORD;
     apt2 RECORD;
          cta RECORD;
-    saldo DOUBLE PRECISION;
+    saldo NUMERIC(12,2);
 BEGIN
 --    SELECT INTO apt * FROM apunte WHERE id_cuenta(codcuenta) = apunte.idcuenta;
          SELECT INTO cta * FROM  cuenta WHERE codigo = codcuenta;
@@ -950,7 +950,7 @@ DECLARE
     apt1 RECORD;
     apt2 RECORD;
          cta RECORD;
-    debet DOUBLE PRECISION;
+    debet NUMERIC(12,2);
 BEGIN
 --    SELECT INTO apt * FROM apunte WHERE cuenta = apunte.idcuenta;
 --    RAISE NOTICE '' Calculando debetotal de % entre % y % '', cuenta, fechain, fechafin;
@@ -984,7 +984,7 @@ DECLARE
     apt1 RECORD;
     apt2 RECORD;
          cta RECORD;
-    debet DOUBLE PRECISION;
+    debet NUMERIC(12,2);
 BEGIN
 --    SELECT INTO apt * FROM apunte WHERE id_cuenta(codcuenta) = apunte.idcuenta;
     debet := 0;
@@ -1019,7 +1019,7 @@ DECLARE
     apt1 RECORD;
     apt2 RECORD;
          cta RECORD;
-    habert DOUBLE PRECISION;
+    habert NUMERIC(12,2);
 BEGIN
 --    SELECT INTO apt * FROM apunte WHERE id_cuenta(codcuenta) = apunte.idcuenta;
         habert := 0;
@@ -1052,7 +1052,7 @@ DECLARE
     apt1 RECORD;
     apt2 RECORD;
          cta RECORD;
-    habert DOUBLE PRECISION;
+    habert NUMERIC(12,2);
 BEGIN
 --    SELECT INTO apt * FROM apunte WHERE id_cuenta(codcuenta) = apunte.idcuenta;
         habert := 0;
