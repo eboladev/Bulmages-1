@@ -327,11 +327,11 @@ SOURCES += main.cpp \
            comun/selectccosteview.cpp \
            comun/selectcanalview.cpp \
            formularios/modelosps.cpp 
-TARGETDEPS += ../bulmalib/libbulmalib.a
-LIBS += ../bulmalib/libbulmalib.a \
+TARGETDEPS += ../../bulmalib/libbulmalib.a
+LIBS += ../../bulmalib/libbulmalib.a \
 -lqt-mt \
 -lpq
-INCLUDEPATH = ../bulmalib \
+INCLUDEPATH = ../../bulmalib \
 ../src \
 compras \
 comun \

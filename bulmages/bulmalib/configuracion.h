@@ -78,6 +78,8 @@ using std::string;
 #define CONF_FONTFAMILY_BULMAGES  310
 #define CONF_FONTSIZE_BULMAGES    311
 
+#define CONF_PROGDATA            320
+
 #define PRIVILEGIOS_USUARIO    420
 
 

@@ -3,8 +3,7 @@
 # Subdir relative project main directory: .
 # Target is a subdirs project 
 
-SUBDIRS += bulmalib \
-           src 
+SUBDIRS += src 
 TEMPLATE = subdirs
 CONFIG += release \
 warn_on
@@ -15,7 +14,7 @@ exists(src/gdchart){
   SUBDIRS += src/gdchart
 }
 exists(src/reports){
-  SUBDIRS= +src/reports/rtkserver/src
+  SUBDIRS= src/reports/rtkserver/src
 }
 exists(src/estadisticas){
   SUBDIRS += src/estadisticas

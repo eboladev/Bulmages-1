@@ -161,6 +161,10 @@ void configuracion::leeconfig(char *fich) {
 		} else if (a == "CONF_ARCHIVO_LOG") {
 				filestr >> a;
 				valores[CONF_ARCHIVO_LOG] = a;
+  		} else if (a == "CONF_PROGDATA") {
+				filestr >> a;
+				valores[CONF_PROGDATA] = a;
+
 		}// end if
 		fprintf(stderr,"%s\n",a.c_str());
 	}// end while  
