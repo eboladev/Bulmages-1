@@ -96,7 +96,7 @@
 						  <br><br>
                           <table width="97%" border="0" align="center" cellpadding="0" cellspacing="3" bgcolor="#CCCCCC">
                             <tr> 
-                              <td width="96%" height="19"><font color="#FF0000" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>&nbsp;&nbsp;&nbsp;<font color="#333333">BulmaG&eacute;s 
+                              <td width="96%" height="19"><font color="#FF0000" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>&nbsp;&nbsp;&nbsp;<font color="#990000">BulmaG&eacute;s 
                                 Code Parties</font></strong></font></td>
                             </tr>
                           </table>
@@ -116,28 +116,6 @@
                                         o confirmar tu asistencia escribe a la 
                                         lista de distribuci&oacute;n del proyecto. 
                                         Vamos... &iquest;a qu&eacute; esperas?</font></p></td>
-                                  </tr>
-                                </table></td>
-                            </tr>
-                          </table>
-						  <BR><br>
-                          <table width="97%" border="0" align="center" cellpadding="0" cellspacing="3" bgcolor="#CCCCCC">
-                            <tr> 
-                              <td width="96%" height="19"><font color="#FF0000" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>&nbsp;&nbsp;&nbsp;<font color="#990000">Presentaci&oacute;n 
-                                de BulmaG&eacute;s en Manresa</font></strong></font></td>
-                            </tr>
-                          </table>
-                          <table width="97%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
-                            <tr> 
-                              <td><strong><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
-                                </font></strong> <table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
-                                  <tr> 
-                                    <td width="96%" height="19"><p align="justify"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Se 
-                                        ha presentado BulmaG&eacute;s en las <a href="http://jornadespl.upc.es">III 
-                                        JornadesPL</a> de Manresa. En la web tienes 
-                                        la ponencia y algunas fotos de como fu&eacute; 
-                                        la presentaci&oacute;n del programa.</font></p>
-                                      </td>
                                   </tr>
                                 </table></td>
                             </tr>

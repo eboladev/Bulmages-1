@@ -4,6 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="description" content="FW MX DW MX HTML">
 <link href="styles/miestilo.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.Estilo2 {color: #000000}
+-->
+</style>
 </head>
 <body bgcolor="#cdd5d8">
 <div align="center">
@@ -41,24 +46,24 @@
                               </font><font color="#333333" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong><a href="http://bulmalug.net"><img src="img/bulma_small.jpg" width="250" height="44" border="0"></a></strong></font></p>
                             <p><font color="#333333" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong> 
                               Programmers</strong></font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"><br>
-                              Tomeu Borr&agrave;s <a href="mailto:tborras@conetxia.com">tborras 
-                              at conetxia.com</a> <br>
-                              Toni Mirabete <a href="mailto:amirabet@biada.org">amirabet</a><a href="mailto:tborras@conetxia.com"> 
-                              at </a><a href="mailto:amirabet@biada.org">biada.org</a> 
-                              <br>
-                              Oscar Serna <a href="mailto:oserna@regamallorca.com">oserna at regamallorca.com</a> 
-                              <br>
-                              Celso Gonz&aacute;lez <a href="mailto:mitago@ono.com">mitago at ono.com</a> 
-                              <br>
-                              Santiago Capel Torres <a href="mailto:scapel@sierradigital.es">scapel 
-                              at sierradigital.es</a> 
-                              <br>
-                              Josep Burción <a href="mailto:josep@burcion.com">josep 
-                              at burcion.com</a><BR>
-							  Jean René Mèrou <BR>
-							  Fco. Javier M.C. <BR>
-							  Victor G. Marimón	
-                              </font></p>
+                              </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><span class="Estilo2">Tomeu
+                              Borr&agrave;s</span></font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"> tborras
+                              at conetxia.com<br>
+                              <span class="Estilo2">Toni Mirabete </span>amirabet
+                              at biada.org<br>
+                              </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><span class="Estilo2">Oscar
+                              Serna</span></font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"> oserna
+                              at regamallorca.com<br>
+                              </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><span class="Estilo2">Celso
+                              Gonz&aacute;lez</span></font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"> mitago
+                              at ono.com<br>
+                              <span class="Estilo2">Santiago Capel Torres</span> scapel
+                              at sierradigital.es<br>
+                              <span class="Estilo2">Josep Burci&oacute;n</span> josep
+                              at burcion.com<br>
+                              <span class="Estilo2">Jean Ren&eacute; M&egrave;rou<br>
+Fco. Javier M.C.</span><BR>
+<span class="Estilo2">Victor G. Marim&oacute;n</span></font></p>
                             <p><font color="#333333" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong> 
                               CVS</strong></font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"><br>
                               Sourceforge <a href="http://www.sourceforge.net">http://www.sourceforge.net</a></font></p>
@@ -66,42 +71,45 @@
 							  
                             <p><font color="#333333" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Debug 
                               and manuals</strong></font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"><br>
-                              Cristina Marco <a href="mailto:cmarco@conetxia.com">cmarco
-                              at conetxia.com</a></font><BR>
-                              <font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
-                              Alberto Caso <a href="alberto.caso@adaptia.net">alberto.caso at adaptia.net</a></font>
-							  <br>							   
-							  <font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"> Josep
-							  Burción <a href="mailto:josep@burcion.com">josep
-							  at burcion.com</a></font><br>
+                              <span class="Estilo2">Cristina
+                              Marco</span> cmarco at conetxia.com</font><BR>
+                              <font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <span class="Estilo2">Alberto
+                              Caso</span> alberto.caso at adaptia.net</font><br>
+                              <font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"> <span class="Estilo2">Josep
+                              Burci&oacute;n</span> josep at burcion.com</font>
 
 						    </p>							  
 							  
                             <p><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
                               <font color="#333333" size="2"><strong>WebMaster</strong></font><br>
-                              Cristina Marco <a href="mailto:cmarco@conetxia.com">cmarco at conetxia.com</a></font></p>
-							  
+                              <span class="Estilo2">Cristina Marco</span> cmarco
+                              at conetxia.com</font></p>
                             <p><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"> 
                               <font color="#333333" size="2"><strong>Catalan Traslations</strong></font><br>
-                              Josep Antoni Ruiz <a href="mailto:josep@eivissaweb.net">josep 
-                              at eivissaweb.net</a></font></p>
+                              </font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif">(web
+                              &amp; manual) <span class="Estilo2">Josep Antoni Ruiz</span> josep
+                              at eivissaweb.net</font><br>
+                               <font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif">(software)<span class="Estilo2"> Antoni
+                              Villalonga i Noceras</span> webmaster at friki.org </font></p>
                             <p><font color="#333333" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Mailing 
                               List</strong></font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"><br>
-                              Tomeu Borr&aacute;s <a href="mailto:tborras@conetxia.com">tborras 
-                              at conetxia.com</a><BR>
-                              Xisco Lladó <a href="mailto:xisco@bulma.net">xisco at bulma.net</a></font></p>
+                              <span class="Estilo2">Tomeu Borr&agrave;s</span> tborras
+                              at conetxia.com<BR>
+                               <span class="Estilo2">Xisco Llad&oacute; </span>xisco
+                              at bulma.net</font></p>
 							  
                             <p><font color="#333333" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Domain 
                               bulmages.bulma.net</strong></font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"><br>
-                              Xisco Lladó <a href="mailto:xisco@bulma.net">xisco 
-                              at bulma.net</a></font></p>							  
+                              <span class="Estilo2">Xisco Llad&oacute;</span> xisco
+                              at bulma.net</font></p>							  
 							  
                             <p><font color="#333333" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><font size="2">Advising</font></strong></font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"><br>
-                              Antoni Aloy<a href="mailto:aloy@ctv.es"> aloy 
-                              at ctv.es</a><br>
-                              M&ordf; Dolores Hern&aacute;ndez <a href="mailto:mdhernandez@conetxia.com">mdhernandez at conetxia.com</a><br>
-                              Fco. Javier M. C. <a href="mailto:fcojavmc@todo-redes.com">fcojavmc at todo-redes.com</a>
-                              </font></p>
+                                <span class="Estilo2">Antoni</span> Aloy aloy
+                                at ctv.es <br>
+                              <span class="Estilo2">M&ordf; Dolores Hern&aacute;ndez</span> mdhernandez
+                              at conetxia.com<br>
+                              <span class="Estilo2">Fco. Javier MC</span> </font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"> fcojavmc
+                              at todo-redes.com</font></p>
                             <p><font color="#333333" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong><font size="2">Other 
                               people libraries</font></strong></font><font color="#666666" size="1" face="Verdana, Arial, Helvetica, sans-serif"><br>
                               Proyecto Tora<br>

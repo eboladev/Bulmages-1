@@ -25,7 +25,7 @@
                           BulmaGes</strong></font></td>
                       </tr>
                       <tr> 
-                        <td><a href="http://mail.bulmages.bulma.net/mailman/listinfo/bulmages_bulmages.bulma.net" target="_blank"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Lista 
+                        <td><a href="http://llistes.bulma.net/mailman/listinfo/bulmages" target="_blank"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Lista 
                           de ditribuci&oacute;n de BulmaG&eacute;s</font></a></td>
                       </tr>
                       <tr> 
