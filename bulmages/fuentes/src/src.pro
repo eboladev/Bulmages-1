@@ -71,10 +71,10 @@ SOURCES += main.cpp \
            nominas/bmodnominas.cpp \
            contabilidad/amortizacionesview.cpp \
            contabilidad/bbloqfecha.cpp \
-           comun/log.cpp
-	
-	   
-	   
+           comun/log.cpp \
+           comun/selectccosteview.cpp 
+
+
 HEADERS += comun/bselector.h \
            comun/configuracion.h \
            comun/abreempresaview.h \
@@ -140,7 +140,10 @@ HEADERS += comun/bselector.h \
            nominas/bmodnominas.h \
            contabilidad/amortizacionesview.h \
            contabilidad/bbloqfecha.h \
-           comun/log.h 
+           comun/log.h \
+           comun/selectccosteview.h 
+
+
 IDLS += contabilidad/about.ui \
         contabilidad/int_apunts3.ui \
         contabilidad/aplinteligentesdlg.ui \
@@ -187,6 +190,7 @@ IDLS += contabilidad/about.ui \
         contabilidad/correctorwdt.ui \
         contabilidad/amortizacionesdlg.ui \
         contabilidad/uibloqfecha.ui 
+
 IMAGES += images/kate.png \
           images/kfind.png \
           images/clock.png \
@@ -278,6 +282,7 @@ TRANSLATIONS += contabilidad/bulmages_es.ts \
                 contabilidad/bulmages_ca.ts \
                 contabilidad/bulmages_en.ts \
                 contabilidad/bulmages_fr.ts 
+
 FORMS += comun/uiselector.ui \
          comun/abreempresadlg.ui \
          comun/uiconfiguracion.ui \
@@ -326,7 +331,9 @@ FORMS += comun/uiselector.ui \
          nominas/uinominas.ui \
          contabilidad/amortizacionesdlg.ui \
          comun/uivisorempresas.ui \
-         contabilidad/uibloqfecha.ui 
+         contabilidad/uibloqfecha.ui \
+         comun/selectccostedlg.ui 
+
 TEMPLATE = app 
 contabilidad/about.ui.target = contabilidad/about.ui 
 contabilidad/about.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/about.ui.target 
@@ -400,8 +407,10 @@ contabilidad/amortizacionesdlg.ui.target = contabilidad/amortizacionesdlg.ui
 contabilidad/amortizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/amortizacionesdlg.ui.target 
 contabilidad/uibloqfecha.ui.target = contabilidad/uibloqfecha.ui 
 contabilidad/uibloqfecha.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/uibloqfecha.ui.target 
+
 CONFIG += release \
-          warn_on 
+          warn_on
+
 TARGET = ../bin/bulmages 
 
 INCLUDEPATH = ../src \
@@ -412,59 +421,27 @@ INCLUDEPATH = ../src \
               nominas \
               produccion \
               ventas \
-              /usr/include/qt 
+              /usr/include/qt
 
 LIBS += -lqt-mt \
         -lpq 
-
-
-#LAS LIBRERIAS DE ESTADISTICAS TORA
-exists (estadisticas) {
-LIBS += ../src/estadisticas/libestadisticas.lib.a
-INCLUDEPATH += estadisticas    
-contabilidad/estadisticasdlg.ui.target = contabilidad/estadisticasdlg.ui 
-contabilidad/estadisticasdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg.ui.target 
-contabilidad/resmensualdlg.ui.target = contabilidad/resmensualdlg.ui 
-contabilidad/resmensualdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg.ui.target 
-
-DEFINES += ESTADISTICAS
-IDLS += contabilidad/estadisticasdlg.ui \
-        contabilidad/resmensualdlg.ui \
-
-FORMS += contabilidad/estadisticasdlg.ui \
-	 contabilidad/resmensualdlg.ui
-
-}	
 	
+exists (estadisticas){
+  LIBS += ../src/estadisticas/libestadisticas.lib.a
+  INCLUDEPATH += estadisticas
+  
+  contabilidad/estadisticasdlg.ui.target = contabilidad/estadisticasdlg.ui
+  contabilidad/estadisticasdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg.ui.target
+  contabilidad/resmensualdlg.ui.target = contabilidad/resmensualdlg.ui
+  contabilidad/resmensualdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg.ui.target
 
-# LAS GDCHART
-# Si queremos compilar con GDCHART debemos descomentar este trozo.
-
-#exists (gdcchart) {
-#INCLUDEPATH +=  ../src/gdcchart/gdcchart
-	     
-#HEADERS += gdcchart/gdc.h \
-#		gdcchart/gdchart.h \
-#		gdcchart/gdcpie.h 
-
-#LIBS += ../src/gdcchart/libgdcchart.lib.a \
-#	../src/gdcchart/gd1.3/libgd.lib.a
-	
-
-#IDLS += contabilidad/estadisticasdlg1.ui \
-#	contabilidad/resmensualdlg1.ui
-	
-#FORMS += contabilidad/estadisticasdlg1.ui \
-#         contabilidad/resmensualdlg1.ui
-
-#contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui 
-#contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target 
-#contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui 
-#contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target 
-
-#DEFINES += GDCHART
-#}
-
+  DEFINES += ESTADISTICAS
+  IDLS += contabilidad/estadisticasdlg.ui \
+  contabilidad/resmensualdlg.ui
+  
+  FORMS += contabilidad/estadisticasdlg.ui \
+  contabilidad/resmensualdlg.ui
+}
 
 unix{
   UI_DIR = .ui
@@ -485,6 +462,7 @@ unix{
     DEFINES += DISTRO_NO_SE_QUE
   }
 }
+
 win32{
   DEFINES += WIN32
   INCLUDEPATH += lpqwin32/include

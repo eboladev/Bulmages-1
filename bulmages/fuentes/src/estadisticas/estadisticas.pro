@@ -24,7 +24,7 @@ CONFIG += release \
 TARGET = estadisticas.lib 
 INCLUDEPATH = ../../src/estadisticas \
               ../../src \
-              /usr/include/qt 
+              /usr/include/qt
 LIBS += -lqt-mt 
 
 win32 {

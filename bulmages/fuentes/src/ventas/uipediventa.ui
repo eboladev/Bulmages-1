@@ -498,12 +498,6 @@
         <property name="alignment">
             <set>AlignAuto</set>
         </property>
-        <property name="checkable">
-            <bool>false</bool>
-        </property>
-        <property name="checked">
-            <bool>false</bool>
-        </property>
         <widget class="QScrollBar">
             <property name="name">
                 <cstring>scrollBar1</cstring>

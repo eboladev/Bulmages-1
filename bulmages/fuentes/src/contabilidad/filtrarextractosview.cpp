@@ -17,9 +17,11 @@
 #include "filtrarextractosview.h"
 #include "empresa.h"
 
+
 filtrarextractosview::filtrarextractosview(empresa *emp,QWidget *parent, const char *name ) : filtrarextractosdlg(parent,name) {
-	fprintf(stderr,"Constructor de filtrarextractosview\n");
-	empresaactual = emp;
+   
+   fprintf(stderr,"Constructor de filtrarextractosview\n");
+   empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
 
@@ -30,8 +32,13 @@ filtrarextractosview::filtrarextractosview(empresa *emp,QWidget *parent, const c
    
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
    cargacostes();
-
+   
+   selccostes=new selectccosteview(0,0);
+   selccostes->show();
+//   selccostes->exec();
+   
    fprintf(stderr,"Fin del constructor de fitrarextractosview\n");
+
 }// end filtrarextractosview
 
 
@@ -87,7 +94,7 @@ void filtrarextractosview::cargacostes() {
     }// end while
     delete cursoraux1;
 
-    // Una vez que hemnos puesto los centros de coste padre, todo lo demás es una
+    // Una vez que hemos puesto los centros de coste padre, todo lo demás es una
     // Tarea de ir colocando centros de coste a sus respectivos padres. El algoritmo
     // deja de ser recursivo y pasa a ser lineal.
     conexionbase->begin();

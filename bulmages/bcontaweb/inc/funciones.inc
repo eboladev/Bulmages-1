@@ -43,24 +43,35 @@ if ($logincookie != "") {
 if ($autentificado == 0) {
 	header("Location: index.php?error=1");
 } else {
-	if ($idempresa != "") {
-		$SQLQuery = "SELECT * FROM empresa WHERE idempresa='$idempresa'";
-		$empresa = pg_exec($metabd, $SQLQuery);
-		$filas = pg_NumRows($empresa);
-		if ($filas--) {
-			setcookie("idempresa",$idempresa);
-		} else {
-//			header("Location:selectempresa.php");
+		$idempresaform= $HTTP_POST_VARS["idempresa"];
+		if ($idempresaform != "") {
+			$idempresa = $idempresaform;
 		}// end if
-	} else {
-		// header("Location:selectempresa.php");
-	}// end if
-
+		setcookie("idempresa",$idempresa);
+		if ($idempresa != "") {
+			$SQLQuery = "SELECT * FROM empresa WHERE idempresa='$idempresa'";
+			$empresa = pg_exec($metabd, $SQLQuery);
+			$filas = pg_NumRows($empresa);
+			if ($filas--) {
+				$nomempresa = pg_result($empresa,$filas,"nombredb");
+				$empresabd=pg_connect("dbname=$nomempresa user=tborras");
+				// Establecemos el tipo de fecha para la base de datos.
+				$SQLQuery1 = "SET DateStyle TO 'SQL'";
+				$result1 = pg_exec($empresabd,$SQLQuery1);  
+				$SQLQuery1 = "SET DateStyle TO 'European'";
+				$result1 = pg_exec($empresabd,$SQLQuery1);  
+				setcookie("idempresa",$idempresa);
+			} else {
+				if ($selempresa != 0) 
+					header("Location:selectempresa.php");
+			}// end if
+		}// end if
 }// end if
 
 if ($DEBUG==1) {
-	if ($idempresa!= "") 
+	if ($idempresa!= "" && $selempresa !="0") {
 		echo pg_result($empresa,0,"nombre");
+	}// end if
 	echo "<BR>";
 	echo pg_result($usuario,0,"nombre");
 }// end if

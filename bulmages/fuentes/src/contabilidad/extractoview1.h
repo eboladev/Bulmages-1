@@ -27,6 +27,8 @@
 #include <qlayout.h>
 #include <qpopupmenu.h>
 
+
+#include "filtrarextractosview.h"
 #include "extractodlg1.h"
 #include "listcuentasview1.h"
 #include "diarioview1.h"
@@ -34,7 +36,7 @@
 #include "postgresiface2.h"
 #include "intapunts3view.h"
 #include "balanceview.h"
-#include "filtrarextractosview.h"
+
 
 class intapunts3view;
 class diarioview1;

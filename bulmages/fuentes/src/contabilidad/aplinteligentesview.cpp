@@ -555,7 +555,8 @@ void aplinteligentesview::creaasiento() {
 }// end creaasiento
 
 
-
+// Esta funcion busca variables en una cadena de texto y la coloca en los arrays de variables que forman el asiento 
+// inteligente.
 void aplinteligentesview::recogevariables(QString texto, int tipo) {
     int posinicial,posfinal, posaux, posaux1;
     QString cadena=texto;

@@ -1,4 +1,4 @@
-<table><TR><TD>
+<table bgcolor="#AAAAAA"><TR><TD>
 <A HREF="index.php">
 Cambio de usuario
 </A>
@@ -9,8 +9,17 @@ Seleccionar Empresa
 <BR>
 Balances
 <BR>
+<A HREF="ainteligentes.php">
 Asientos Inteligentes
+</A>
 <BR>
 Balance de Sumas y Saldos
+<BR>
+<A HREF="diario.php">
+Diario
+</A>
+<BR>
+<A HREF="mayor.php">
+Mayor</A>
 <BR>
 </TD></TR></table>
