@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>607</width>
-            <height>364</height>
+            <height>366</height>
         </rect>
     </property>
     <property name="sizePolicy">
@@ -88,14 +88,6 @@
         <separator/>
         <action name="herramientasSelectorAction"/>
         <separator/>
-        <action name="herramientasModulos_BulmaGesAction"/>
-        <item text="Modulos BulmaGes" name="herramientasModulos_BulmaGesMenu" accel="">
-            <action name="herramientasModulos_BulmaGesConfiguracionAction"/>
-            <separator/>
-            <action name="herramientasModulos_BulmaGesContabilidadAction"/>
-            <action name="herramientasModulos_BulmaGesComprasAction"/>
-            <action name="herramientasModulos_BulmaGesProduccionAction"/>
-        </item>
     </item>
     <separator/>
     <item text="A&amp;yuda" name="AyudaMenu">
@@ -429,6 +421,22 @@
         </property>
         <property name="text">
             <string>Producción</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>herramientasnew_itemAction</cstring>
+        </property>
+        <property name="text">
+            <string>new item</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action</cstring>
+        </property>
+        <property name="text">
+            <string>Unnamed</string>
         </property>
     </action>
 </actions>

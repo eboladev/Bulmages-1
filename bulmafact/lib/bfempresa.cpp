@@ -303,29 +303,3 @@ int pgIface::ejecuta(QString Query) {
     return(0);
 }// end ejecuta
 
-/*
-int pgIface::inicializa(QString nomdb) {
-    dbName=nomdb;
-    pghost = "localhost";     // host name of the backend server 
-    pgport = "5432";          // port of the backend server 
-    pgoptions = "";           // special options to start up the backend server 
-    pgtty = "";               // debugging tty for the backend server 
-    QString conexion;
-
-    if (pghost == "localhost") {
-       conexion.sprintf("dbname=%s",dbName.ascii());
-    } else {
-       conexion.sprintf("hostaddr=%s port=%s dbname=%s",pghost.ascii(),pgport.ascii(), dbName.ascii());
-    }// end if   
-    fprintf(stderr,"%s\n",conexion.ascii());
-    
-    conn = PQconnectdb(conexion);
-    if (PQstatus(conn) == CONNECTION_BAD)  {
-        fprintf(stderr, "Connection to database '%s' failed.\n", dbName.ascii());
-        fprintf(stderr, "%s", PQerrorMessage(conn));
-        return(1);
-    }// end if
-    formatofecha();
-    return(0);
-}// end inicializa
-*/

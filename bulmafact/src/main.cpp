@@ -58,5 +58,6 @@ int main(int argc, char *argv[])
       valorsalida = mainApp->exec();
   }
 
+  fprintf(stderr,"** Fin de la aplicación **\n"); 
   return valorsalida;
 }

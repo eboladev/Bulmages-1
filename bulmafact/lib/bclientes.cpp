@@ -21,3 +21,14 @@ BClientes::BClientes(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const c
 
 BClientes::~BClientes(){
 }
+
+void BClientes::iniciarBusqueda() {
+    QString Retorno("resultado");
+    QString tabla("clientes");
+    QString* arg1 = new QString("campo01");
+    QString* arg2 = new QString("campo02");
+    QString* arg3 = new QString("campo03");
+    QString* arg4 = new QString("campo04");
+    (new Bbuscador(this, "buscaCli",WType_TopLevel,EmpresaTrabajo,&Retorno,&tabla, arg1,arg2,arg3,arg4,0))->show();
+}
+

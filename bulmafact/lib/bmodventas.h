@@ -50,7 +50,7 @@ public slots:
     
 private:
     void cargaUsuario();   
-    void seleccionaEmpresa();   
+    int seleccionaEmpresa();   
     QWorkspace * zona0; 
     QString * Usuario;
     QString * Password;

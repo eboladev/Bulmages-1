@@ -19,7 +19,15 @@ BPasswd::BPasswd(QString * usuario, QString * passwd, QWidget * parent, const ch
 
     Usuario = usuario;
     Password = passwd;
- 
+    userLine->setText(*Usuario);
+}
+
+void BPasswd::returnPressedOnUser() {
+    passwdLine->setFocus();
+}
+
+void BPasswd::returnPressedOnPasswd() {
+    validar();
 }
 
 void BPasswd::validar() {

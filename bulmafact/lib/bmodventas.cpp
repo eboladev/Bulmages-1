@@ -28,10 +28,11 @@ BModVentas::BModVentas(QString* usuario, QString* passwd, QString* dataBase, QWi
     zona0->setScrollBarsEnabled( TRUE );
     setCentralWidget( vb );  
     Usuario = usuario;
+    if (Usuario==NULL) Usuario = new QString(""); //NOMBRE_USUARIO_SIN_DETERMINAR
     Password = passwd;
-    if (Password==NULL) Password = new QString("");
+    if (Password==NULL) Password = new QString(""); //CONTRASEÑA_SIN_DETERMINAR
     DataBase = dataBase;
-    if (DataBase == NULL) DataBase = new QString("NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR");
+    if (DataBase == NULL) DataBase = new QString(""); //NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR
     intentosFallidosPassword=0;
     cargaUsuario();
 }
@@ -44,41 +45,34 @@ BModVentas::~BModVentas() {
 /* Muestra el dialogo para entrar el nombre de usuario y la contraseña       */
 /*****************************************************************************/
 void BModVentas::cargaUsuario(){
-    if (++intentosFallidosPassword > 3) close();
-    else {
-        if (Usuario==NULL) {
-            Usuario = new QString("NOMBRE_USUARIO_SIN_DETERMINAR");
-            Password = new QString("CONTRASEÑA_SIN_DETERMINAR");
-            (new BPasswd(Usuario, Password,this,"userBox",TRUE,0))->exec();
-        }
-        seleccionaEmpresa();
+    while (seleccionaEmpresa() && (intentosFallidosPassword++ < 3)) {
+        (new BPasswd(Usuario, Password,this,"userBox",TRUE,0))->exec();
+        if (*Usuario=="") intentosFallidosPassword=10;
     }
+ if (intentosFallidosPassword > 3) close();
  }
 
 /*****************************************************************************/
 /* Comprueba en que empresas puede entrar el usuario y las muestra.          */
 /*****************************************************************************/
-void BModVentas::seleccionaEmpresa(){
+int BModVentas::seleccionaEmpresa(){
     BfCursor* cursorEmpresas=empresaTrabajo->pg_database(Usuario, Password);
     if (cursorEmpresas) {
-        if (*DataBase!="NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR") {
+        if (*DataBase!= "") { 
             while (!cursorEmpresas->eof() && *DataBase !=cursorEmpresas->valor(0)) cursorEmpresas->siguienteregistro();
             if (!cursorEmpresas->eof()) cursorEmpresas->primerregistro();
             else cursorEmpresas=NULL;
         } else {
             (new BVisorEmpresas(DataBase,cursorEmpresas,this,"VisorEmpresas"))->exec();
-            if (*DataBase=="NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR") cursorEmpresas=NULL;
+            if (*DataBase=="") cursorEmpresas=NULL;
         }
-    
     }
     
-    if (cursorEmpresas==NULL){
-        Usuario = NULL;
-        cargaUsuario();
-    }
+    if (cursorEmpresas==NULL) return 1; //El usuario no tiene acceso a ninguna base de datos.
     
     setCaption(QString("BulmaFact - ") + DataBase->ascii()); //debug....
     empresaTrabajo->cargaEmpresa(DataBase);
+    return 0;
 }
 
 //Abro la ficha de mantenimiento de los clientes

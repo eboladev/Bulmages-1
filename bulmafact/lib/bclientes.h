@@ -19,6 +19,7 @@
 #include ".ui/uiclientes.h"
 
 #include "bfempresa.h"
+#include "bbuscador.h"
 
 /**
 @author Josep Burcion
@@ -29,9 +30,12 @@ class BClientes : public UIClientes
 public:
     BClientes(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0);
     ~BClientes();
+
 private:
     BfEmpresa* EmpresaTrabajo;
-    
+
+private slots:
+    virtual void iniciarBusqueda();
 
 };
 

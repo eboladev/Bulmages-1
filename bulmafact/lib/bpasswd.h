@@ -27,12 +27,16 @@ class BPasswd : public UIPassword
 public:
     BPasswd(QString * usuario, QString * passwd, QWidget * parent=0, const char * name=0, bool modal=FALSE, WFlags f=0);
     ~BPasswd();
-    
+
+        
 private:
-    virtual void validar();
     QString * Usuario;
     QString * Password;
 
+private slots:
+    virtual void validar();
+    virtual void returnPressedOnUser();
+    virtual void returnPressedOnPasswd();
 
 };
 

@@ -21,7 +21,8 @@ SOURCES += balbaventa.cpp \
            bclientes.cpp \
            bpasswd.cpp \
            bvisorempresas.cpp \
-           bfempresa.cpp 
+           bfempresa.cpp \
+           bbuscador.cpp 
 HEADERS += balbaventa.h \
            bmodventas.h \
            bpediventa.h \
@@ -29,11 +30,13 @@ HEADERS += balbaventa.h \
            bclientes.h \
            bpasswd.h \
            bvisorempresas.h \
-           bfempresa.h 
+           bfempresa.h \
+           bbuscador.h 
 IDLS += uiclientes.ui \
         uiarticulos.ui \
         uipassword.ui \
-        uivisorempresas.ui 
+        uivisorempresas.ui \
+        uibuscador.ui 
 IMAGES += images/kate.png \
           images/kfind.png \
           images/clock.png \
@@ -87,7 +90,8 @@ FORMS += uialbaventa.ui \
          uiclientes.ui \
          uiarticulos.ui \
          uipassword.ui \
-         uivisorempresas.ui 
+         uivisorempresas.ui \
+         uibuscador.ui 
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

@@ -28,7 +28,7 @@ BVisorEmpresas::BVisorEmpresas(QString * ptrRetorno, BfCursor* recordSet, QWidge
    while (!recordSet->eof()) {
       linea =new QListViewItem(listView1);
       linea->setText(0,recordSet->valor(1)); //Nombre Empresa
-      linea->setText(1,recordSet->valor(0)); //Ejercicio ??
+      linea->setText(1,recordSet->valor(0)); // ??
       linea->setText(2,recordSet->valor(0)); //Nombre base datos
       recordSet->siguienteregistro();
    }// end while
@@ -46,6 +46,6 @@ close();
 
 void BVisorEmpresas::botonCancelar()
 {
-*seleccion ="NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR";
+*seleccion =""; //"NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR";
 close();
 }

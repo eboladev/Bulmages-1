@@ -1,0 +1,62 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>UIbuscador</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>UIbuscador</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>571</width>
+            <height>348</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Buscar Datos</string>
+    </property>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>16</y>
+                <width>101</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Codigo</string>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>codigo</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>40</y>
+                <width>141</width>
+                <height>20</height>
+            </rect>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>codigo</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>UIbuscador</receiver>
+        <slot>llenarTabla(const QString&amp;)</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>llenarTabla(const QString &amp;)</slot>
+    <slot>pulsadoEnter(int, int)</slot>
+</slots>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
