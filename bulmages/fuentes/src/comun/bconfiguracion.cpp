@@ -300,9 +300,11 @@ void BConfiguracion::nuevoEjercicio() {
 /* Creamos una copia de seguridad de una base de datos                                                   */
 /*********************************************************************************************************/
 void BConfiguracion::BotonA_3salvarEmpresa() {
-  char *args[4];
+  char *args[5];
   int pid;
   QString dbEmpresa; 
+  QString PGserver;
+  PGserver = "-h "+ confpr->valor(CONF_SERVIDOR);
   (new BVisorEmpresas(& dbEmpresa, this,"Backup",true))->exec();
   if (dbEmpresa!="") {
       QString fn = QFileDialog::getSaveFileName(0, "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
@@ -310,9 +312,10 @@ void BConfiguracion::BotonA_3salvarEmpresa() {
          if (fn.right(7)!= ".pgdump") fn = fn +".pgdump";
          fprintf(stderr,"Vamos a guardar la empresa en el fichero %s\n",fn.ascii());
          args[0]=(char *) "guardaemp";
-         args[1]=(char *) dbEmpresa.ascii();
-         args[2]=(char *) fn.ascii();
-         args[3]=NULL;
+         args[1]=(char *) PGserver.ascii(); //Necesario para conectar a un host remoto.
+         args[2]=(char *) dbEmpresa.ascii();
+         args[3]=(char *) fn.ascii();
+         args[4]=NULL;
          if ((pid=fork()) == -1) {
            perror ("Fork failed");
            exit(errno);
@@ -342,7 +345,7 @@ void BConfiguracion::BotonA_4restaurarEmpresa(){
       QString fn = QFileDialog::getOpenFileName(0, theApp->translate("empresa","Empresas (*.pgdump)",""), 0,theApp->translate("empresa","Cargar Empresa",""),theApp->translate("emrpesa","Elige el fichero a cargar.",""));
       if (!fn.isEmpty()) {
          args[0]=(char *) "cargaemp";
-         args[1]=(char *) PGserver.ascii();
+         args[1]=(char *) PGserver.ascii(); //Necesario para conectar a un host remoto.
          args[2]=(char *) dbEmpresa.ascii();
          args[3]=(char *) fn.ascii();
          args[4]=NULL;
