@@ -67,11 +67,9 @@
 Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd,QString *ejercicioMetaDB) 
 : QMainWindow(parent,name,f) {
   //Si no existe un ejercicio en la tabla "ejercicios" entonces usamos el ejercicio de la MetaDB
-  Ejercicio = confpr->valor(EJERCICIO_ACTUAL).c_str();
-  if (Ejercicio =="") Ejercicio = *ejercicioMetaDB;
-  setCaption(tr("BulmaGés ") + Ejercicio);
+  if (EjercicioActual =="") EjercicioActual = *ejercicioMetaDB;
+  setCaption(tr("BulmaGés ") + EjercicioActual);
   DBName=*DB;
-  confpr->setValor(EJERCICIO_ACTUAL,Ejercicio.ascii());
   empresaactual.inicializa(DB,User,Passwd);
   initView();
   initActions();
@@ -597,9 +595,8 @@ void Bulmages01::initMenuBar() {
   DBconn->commit();
   while (!curEjer->eof()) {
       aux=curEjer->valor(0);
-//      a = new QAction(aux,0,anys,aux);
-      a = new QAction(this,0);
-
+      a = new QAction(aux,0,anys,aux);
+      //a = new QAction(this,0);
       a->setToggleAction(true);
       a->addTo(menuEjercicios);
       curEjer->siguienteregistro();
@@ -745,7 +742,7 @@ void Bulmages01::slotAmortizaciones() {
 
 
 void Bulmages01::slotBloqFechas() {
-(new BbloqFecha(this))->exec();
+(new BbloqFecha(&DBName, this))->exec();
 }
 
 void Bulmages01::slotEditCut()  {
@@ -900,9 +897,8 @@ void Bulmages01::slotPropiedadesEmpresa()  {
 }// end slotPropiedadesEmpresa
 
 void Bulmages01::setCurrentEjercicio(QAction *a)  {
-Ejercicio=a->text();
-setCaption(tr("BulmaGés ") + Ejercicio);
-confpr->setValor(EJERCICIO_ACTUAL,Ejercicio.ascii());
+EjercicioActual=a->text();
+setCaption(tr("BulmaGés ") + EjercicioActual);
 empresaactual.cambioejercicio();
 }// end setCurrentEjercicio
 
@@ -1048,7 +1044,7 @@ void Bulmages01::slotAbrirasientos() {
 }// end slotAbrirasientos
 
 void Bulmages01::slotOrdenarasientos() {
-  empresaactual.Ordenarasientos(Ejercicio.toInt());
+  empresaactual.Ordenarasientos(EjercicioActual.toInt());
 }// end slotOrdenarasientos
 
 

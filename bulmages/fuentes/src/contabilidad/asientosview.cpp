@@ -97,8 +97,8 @@ void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
      textnombreasiento += " asiento.idasiento in (SELECT idasiento FROM apunte WHERE conceptocontable LIKE '%"+nombreasiento+"%' )";
      pand = 1;
    }// end if
-  if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ (QString) confpr->valor(EJERCICIO_ACTUAL).c_str() +"'";
-  else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ (QString) confpr->valor(EJERCICIO_ACTUAL).c_str() +"'";
+  if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ EjercicioActual +"'";
+  else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ EjercicioActual +"'";
   query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha,  totaldebe, totalhaber, numap, numborr   from asiento  LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) as foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT sum(debe) as totaldebe, sum(haber) as totalhaber, count(idapunte) as numap, idasiento from apunte group by idasiento) as fula ON asiento.idasiento = fula.idasiento   "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY asiento.ordenasiento";
   conexionbase->begin();
   cursor2 *cursoraux= conexionbase->cargacursor(query, "query");

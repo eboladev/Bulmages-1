@@ -11,7 +11,6 @@ SOURCES += main.cpp \
            comun/abreempresaview.cpp \
            comun/splashscreen.cpp \
            comun/postgresiface2.cpp \
-           comun/usuariosview.cpp \
            comun/calendario.cpp \
            comun/qmcdatenav.cpp \
            comun/funcaux.cpp \
@@ -81,7 +80,6 @@ HEADERS += comun/bselector.h \
            comun/funcaux.h \
            comun/calendario.h \
            comun/qmcdatenav.h \
-           comun/usuariosview.h \
            comun/bconfiguracion.h \
            comun/bnuevaempresa.h \
            comun/bvisorempresas.h \
@@ -182,7 +180,6 @@ IDLS += contabilidad/about.ui \
         contabilidad/filtrarextractosdlg.ui \
         contabilidad/extractoprintdlg.ui \
         contabilidad/diarioprintdlg.ui \
-        comun/usuariosdlg.ui \
         contabilidad/actualizacionesdlg.ui \
         contabilidad/diarioprintdlg.ui \
         contabilidad/diarioprintdlg.ui \
@@ -281,7 +278,6 @@ TRANSLATIONS += contabilidad/bulmages_es.ts \
                 contabilidad/bulmages_en.ts \
                 contabilidad/bulmages_fr.ts 
 FORMS += comun/uiselector.ui \
-         comun/usuariosdlg.ui \
          comun/abreempresadlg.ui \
          comun/uiconfiguracion.ui \
          contabilidad/about.ui \
@@ -399,8 +395,6 @@ contabilidad/filtrarextractosdlg.ui.target = contabilidad/filtrarextractosdlg.ui
 contabilidad/filtrarextractosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/filtrarextractosdlg.ui.target 
 contabilidad/extractoprintdlg.ui.target = contabilidad/extractoprintdlg.ui 
 contabilidad/extractoprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/extractoprintdlg.ui.target 
-comun/usuariosdlg.ui.target = comun/usuariosdlg.ui 
-comun/usuariosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$comun/usuariosdlg.ui.target 
 contabilidad/actualizacionesdlg.ui.target = contabilidad/actualizacionesdlg.ui 
 contabilidad/actualizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/actualizacionesdlg.ui.target 
 contabilidad/diarioprintdlg.ui.target = contabilidad/diarioprintdlg.ui 
@@ -435,7 +429,7 @@ unix{
   bulmages_install_script.extra = echo; echo "**************************"; echo Para Instalar BULMAGES ejecute el script de instalación; echo "installbulmages"; echo que encontrara en la carpeta installbulmages.; echo Gracias.; echo "(El equipo de Bulmages)"; echo "**************************"; echo;
 }
 exists(/usr/include/postgresql/libpq-fe.h){
-  DEFINES += DISTRO_DEVIAN
+  DEFINES += DISTRO_DEBIAN
 }
 exists(/usr/include/pgsql/libpq-fe.h){
   DEFINES += DISTRO_RED_HAT

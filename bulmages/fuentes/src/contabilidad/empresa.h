@@ -39,10 +39,9 @@
 
 class empresa {
 private:
-  char *nombre;
-  char nombredb[20];
-    int ano;
-  char *contrasenya;
+  QString nombre;
+  int ano;
+  QString contrasenya;
   QWorkspace *pWorkspace;
 //  postgresiface1 *conexionbase; // LA conexion con la base de datos
   postgresiface2 *conexionbase2;  // Usaremos la nueva versión de postgresiface, durante un tiempo deberá convivir con la version anterior.

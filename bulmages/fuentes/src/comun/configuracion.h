@@ -78,8 +78,6 @@ using std::string;
 #define CONF_FONTSIZE_BULMAGES    311
 
 #define PRIVILEGIOS_USUARIO    420
-#define EJERCICIO_ACTUAL    500
-
 
 
 class configuracion {
@@ -102,5 +100,6 @@ class configuracion {
 extern configuracion *confpr;
 extern QApplication *theApp;
 extern QTranslator * traductor;
+extern QString EjercicioActual;
 
 #endif

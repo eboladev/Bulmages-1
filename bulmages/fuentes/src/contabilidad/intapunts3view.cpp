@@ -186,7 +186,7 @@ void intapunts3view::cargarcursor(int numasiento) {
     QString textnombreasiento= "";
     QString textejercicio="";
     
-    fprintf(stderr,"Ejercicio: %s    - IdAsiento: %d\n", confpr->valor(EJERCICIO_ACTUAL).c_str(), numasiento);
+    fprintf(stderr,"Ejercicio: %s    - IdAsiento: %d\n", EjercicioActual.ascii(), numasiento);
     
     cantapunt = filt->cantidadapunte->text();
     saldototal = filt->saldoasiento->text();
@@ -214,8 +214,8 @@ void intapunts3view::cargarcursor(int numasiento) {
         textnombreasiento += " idasiento in (SELECT idasiento FROM apunte WHERE conceptocontable LIKE '%"+nombreasiento+"%' )";
         pand = 1;
     }// end if
-    if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ (QString) confpr->valor(EJERCICIO_ACTUAL).c_str() +"'";
-    else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ (QString) confpr->valor(EJERCICIO_ACTUAL).c_str() +"'";
+    if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ EjercicioActual +"'";
+    else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ EjercicioActual +"'";
     if ((numasiento != 0) && (numasiento != -1)) {
         //query = "SELECT * FROM asiento ORDER BY ordenasiento";
         query = "SELECT * FROM asiento" + textejercicio + " ORDER BY ordenasiento";
@@ -639,7 +639,7 @@ void intapunts3view::iniciar_asiento_nuevo() {
     nuevoasiento->inicializa(conexionbase);
     idasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0,1);
     delete nuevoasiento;
-    if ( normalizafecha(fechaasiento1->text()).year() == atoi(confpr->valor(EJERCICIO_ACTUAL).c_str()) ) {
+    if ( normalizafecha(fechaasiento1->text()).year() == EjercicioActual.toInt() ) {
         cargarcursor(idasiento);
         muestraasiento(idasiento);
     } else flashAsiento(idasiento);
@@ -1553,7 +1553,7 @@ void intapunts3view::asiento_cierre() {
     double diferencia;
     double nuevodebe, nuevohaber;
     QString nfecha = fechaasiento1->text();
-    nfecha.sprintf("31/12/%s",confpr->valor(EJERCICIO_ACTUAL).c_str());
+    nfecha.sprintf("31/12/%s",EjercicioActual.ascii());
     asientoview *nuevoasiento = new asientoview;
     nuevoasiento->inicializa(conexionbase);
     numasiento = nuevoasiento->creaasiento( "Asiento de Cierre" ,nfecha ,0, 99); //99=>Cierre.
@@ -1586,64 +1586,97 @@ void intapunts3view::asiento_cierre() {
 
 
 void intapunts3view::asiento_apertura() {
+  cursor2 *cur=NULL;
   int idcuenta;
-  int numasiento;
+  int numasiento=0;
   double nuevodebe, nuevohaber;
-  QString nfecha = normalizafecha("02/01").toString("dd/MM/yyyy");
+  QString nfecha = normalizafecha("02/01/"+EjercicioActual).toString("dd/MM/yyyy");
   asientoview *nuevoasiento = new asientoview(this,"apertura");
-  //Buscamos el nombre de la base de datos que contiene el ejercicio anterior
+  //Buscamos en la tabla ejercicios si existe un ejercicio anterior, si no existe usaremos la metaDB.
   QString query;
-  postgresiface2 *metabase = new postgresiface2();
-  metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
-  metabase->begin();
-  query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",empresaactual->nombreDB.ascii());
-  cursor2 *cur = metabase->cargacursor(query,"empresa");
-  metabase->commit();
-  delete metabase;
-  if (!cur->eof()) {
-      QString anteriorDB = cur->valor("ejant");
-      if (anteriorDB != "") {
-          //**************************************************************
-          //Cargamos en un cursor el asiento de cierre del ejercicio anterior, que se supone es el ultimo asiento introducido.
-          //***************************************************************
-          postgresiface2 * DBconnEjAnt = new postgresiface2();
-          DBconnEjAnt->inicializa(anteriorDB);
-          DBconnEjAnt->begin();
-          query="SELECT max(idasiento) as ultimo FROM asiento";
-          cur = DBconnEjAnt->cargacursor(query, "max");
-          query = "SELECT * FROM borrador WHERE idasiento ="+cur->valor("ultimo");
-          cur = DBconnEjAnt->cargacursor(query, "cierre");
-          DBconnEjAnt->commit();
-          delete DBconnEjAnt;
-          //**************************************************************
-          //Fin de la connexión con el ejercicio anterior,
-          //El asiento de cierre del ejercicio anterior lo tenemos en "cur"
-          //***************************************************************
-
-          // Creamos un nuevo asiento, que sera el asiento de apertura.
-          postgresiface2 * DBconnEjActual = new postgresiface2();
-          DBconnEjActual->inicializa(empresaactual->nombreDB);
-          nuevoasiento->inicializa(DBconnEjActual);
-          numasiento = nuevoasiento->creaasiento( "Asiento de Apertura", nfecha,0,0); //0=> Apertura
-          while (!cur->eof()) {
-              nuevodebe= cur->valor("haber").toDouble();
-              nuevohaber = cur->valor("debe").toDouble();
-              idcuenta = cur->valor("idcuenta").toInt();
-              DBconnEjActual->nuevoborrador(idcuenta, numasiento,"Asiento de Apertura","", nuevodebe, nuevohaber, nfecha, 0, 1, 0, 0);
-              cur->siguienteregistro();
-          }// end while
-          DBconnEjActual->begin();
-          DBconnEjActual->cierraasiento(numasiento);
-          DBconnEjActual->commit();
-          delete DBconnEjActual;
-          cargarcursor(numasiento);
-          muestraasiento(numasiento);
-      }
-      else {
-        QMessageBox::information( this, tr("Asiento de Apertura"), tr("No se ha podido encontrar el ejercicio anterior.\n\r El Asiento de Apertura tendrá que ser entrado manualmente."), QMessageBox::Ok);
+  postgresiface2 * DBconnEjActual = new postgresiface2();
+  DBconnEjActual->inicializa(empresaactual->nombreDB);
+  DBconnEjActual->begin();
+  query.sprintf("SELECT * FROM ejercicios WHERE periodo='0' AND ejercicio='%d'",EjercicioActual.toInt()-1);
+  cur = DBconnEjActual->cargacursor(query,"EjAnterior");
+  DBconnEjActual->commit();
+  if (!cur->eof()) { //Tenemos el Ejercicio anterior en la misma base de datos que el ejercicio actual
+      DBconnEjActual->begin();
+      query.sprintf("SELECT idasiento FROM asiento WHERE clase='99' AND EXTRACT(YEAR FROM fecha)='%d'",EjercicioActual.toInt()-1);
+      cur = DBconnEjActual->cargacursor(query, "asiento99");
+      query = "SELECT * FROM borrador WHERE idasiento =" + cur->valor("idasiento");
+      cur = DBconnEjActual->cargacursor(query, "cierre");
+      DBconnEjActual->commit();
+      if (cur->eof()) cur=NULL;
+      //El asiento de cierre del ejercicio anterior lo tenemos en "cur"
+  }
+  else { //No hemos encontrado el ejercicio anterior en la tabla ejercicios
+         //Buscamos el nombre de la base de datos que contiene el ejercicio anterior en metaDB
+      postgresiface2 *metabase = new postgresiface2();
+      metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
+      metabase->begin();
+      query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",empresaactual->nombreDB.ascii());
+      cur = metabase->cargacursor(query,"empresa");
+      metabase->commit();
+      delete metabase;
+      if (!cur->eof()) {
+          if (cur->valor("ejant") != "") {
+              //**************************************************************
+              //Cargamos en un cursor el asiento de cierre del ejercicio anterior, que se supone es el ultimo asiento introducido.
+              //***************************************************************
+              postgresiface2 * DBconnEjAnt = new postgresiface2();
+              DBconnEjAnt->inicializa(cur->valor("ejant"));
+              DBconnEjAnt->begin();
+              query="SELECT max(idasiento) as ultimo FROM asiento";
+              cur = DBconnEjAnt->cargacursor(query, "max");
+              query = "SELECT * FROM borrador WHERE idasiento ="+cur->valor("ultimo");
+              cur = DBconnEjAnt->cargacursor(query, "cierre");
+              DBconnEjAnt->commit();
+              delete DBconnEjAnt;
+              //**************************************************************
+              //Fin de la connexión con el ejercicio anterior,
+              //El asiento de cierre del ejercicio anterior lo tenemos en "cur"
+              //***************************************************************
+          }
+          else cur=NULL; 
       }
   }
+  if (cur != NULL) {  
+  //Comprovamos si ya existe un asiento de apertura i la borramos
+  DBconnEjActual->begin();
+  query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='0'",EjercicioActual.ascii());
+  cursor2 *aux = DBconnEjActual->cargacursor(query,"aux");
+  if (!aux->eof()) {
+      numasiento = aux->valor(0).toInt();
+      query.sprintf("DELETE FROM apunte where idasiento=%d",numasiento);
+      DBconnEjActual->ejecuta(query);
+      query.sprintf("DELETE FROM borrador where idasiento=%d",numasiento);
+      DBconnEjActual->ejecuta(query);
+      DBconnEjActual->borrarasiento(numasiento);
+  }
+  delete aux;
+  // Creamos un nuevo asiento, que sera el asiento de apertura.
+     nuevoasiento->inicializa(DBconnEjActual);
+     numasiento = nuevoasiento->creaasiento( "Asiento de Apertura", nfecha,0,0); //0=> Apertura
+     while (!cur->eof()) {
+         nuevodebe= cur->valor("haber").toDouble();
+         nuevohaber = cur->valor("debe").toDouble();
+         idcuenta = cur->valor("idcuenta").toInt();
+         DBconnEjActual->nuevoborrador(idcuenta, numasiento,"Asiento de Apertura","", nuevodebe, nuevohaber, nfecha, 0, 1, 0, 0);
+         cur->siguienteregistro();
+     }// end while
+     DBconnEjActual->begin();
+     DBconnEjActual->cierraasiento(numasiento);
+     DBconnEjActual->commit();
+     cargarcursor(numasiento);
+     muestraasiento(numasiento);
+  }      
+  else {
+       QMessageBox::information( this, tr("Asiento de Apertura"), tr("No se ha podido encontrar el ejercicio anterior.\n\r El Asiento de Apertura tendrá que ser entrado manualmente."), QMessageBox::Ok);
+  }
+  
   delete cur;
+  delete DBconnEjActual;
 }// end asiento_apertura
 
 
@@ -1655,10 +1688,10 @@ void intapunts3view::asiento_regularizacion() {
     double totaldebe, totalhaber;
     double totaldebe1 =0, totalhaber1=0;
     QString nfecha = fechaasiento1->text();
-    nfecha.sprintf("31/12/%s",confpr->valor(EJERCICIO_ACTUAL).c_str());
+    nfecha.sprintf("31/12/%s",EjercicioActual.ascii());
     asientoview *nuevoasiento = new asientoview;
     nuevoasiento->inicializa(conexionbase);
-    numasiento = nuevoasiento->creaasiento("Asiento de Regularización" ,nfecha,0,98); //98=regularizacion
+    numasiento = nuevoasiento->creaasiento(tr("Asiento de Regularización") ,nfecha,0,98); //98=regularizacion
     QString query = "SELECT * FROM cuenta where codigo ='129'";
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");

@@ -18,7 +18,7 @@
 
 #include <stdio.h>
 
-#ifdef DISTRO_DEVIAN
+#ifdef DISTRO_DEBIAN
     #include <postgresql/libpq-fe.h>
 #elif  DISTRO_RED_HAT
     #include <pgsql/libpq-fe.h>

@@ -171,8 +171,8 @@ void configuracion::cargarEntorno(QString baseDatos) {
     query="SELECT MAX(ejercicio) AS ejercicio FROM ejercicios WHERE periodo=0";
     recordSet = DBConn.cargacursor(query,"recordSet");
     DBConn.commit();
-    if (!recordSet->eof()) valores[EJERCICIO_ACTUAL]=recordSet->valor("ejercicio").ascii();
-    else valores[EJERCICIO_ACTUAL]="";
+    if (!recordSet->eof()) EjercicioActual=recordSet->valor("ejercicio");
+    else EjercicioActual="";
 }
 
 

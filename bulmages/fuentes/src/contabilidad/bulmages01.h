@@ -173,7 +173,6 @@ public:
     void windowMenuAboutToShow();    
     
   private:
-    QString Ejercicio;
     QString DBName;
     /** initializes all QActions of the application */
     void initActions();

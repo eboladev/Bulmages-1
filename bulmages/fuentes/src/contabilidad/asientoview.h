@@ -23,6 +23,7 @@
 #include <qdatetime.h>
 #include <qdatetimeedit.h>
 #include <qcombobox.h>
+#include <qmessagebox.h>
 #include <qtextedit.h>
 #include "postgresiface2.h"
 

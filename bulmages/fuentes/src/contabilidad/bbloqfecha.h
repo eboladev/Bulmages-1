@@ -28,7 +28,7 @@ class BbloqFecha : public UIbloqFecha
 {
 
 public:
-    BbloqFecha(QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
+    BbloqFecha(QString * NombreBaseDatos=0, QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
     ~BbloqFecha();
 
 

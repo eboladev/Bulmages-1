@@ -18,6 +18,7 @@
 #include "asientoview.h"
 #include "funcaux.h"
 
+
 asientoview::asientoview(QWidget *parent, const char *name, bool modal) : asientodlg(parent,name,modal) {
 ordenasiento_mostrado=0;
 }
@@ -95,29 +96,57 @@ int asientoview::creaasiento(QString texto, QString fecha, int numasiento, int c
 
 int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, QString notas, QString orden) {
   QString query;
-  int val;
+  QString valorClaseAsiento="1";
+  QString cadenaAux="";
   // Si ya existe un asiento con el orden que intentamos asignar debemos desplazar los asientos posteriores.
   //Solamente desplazamos si ordenasiento ha cambiado, en caso contrario No
-  query.sprintf("SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND ordenasiento=%s",confpr->valor(EJERCICIO_ACTUAL).c_str(),orden.ascii());
+  query.sprintf("SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND ordenasiento=%s",EjercicioActual.ascii(),orden.ascii());
   conexionbase->begin();
   cursor2 *cur = conexionbase->cargacursor(query,"micursor");
-  conexionbase->commit();
+
   if (!cur->eof() && (orden.toInt() != ordenasiento_mostrado) ) {
      query.sprintf("UPDATE asiento set ordenasiento = ordenasiento+1 WHERE ordenasiento >= %s", orden.ascii());
      conexionbase->ejecuta(query);
   }// end if
   
-  /*
-  //Queda pendiente salvar la clase del asiento.
-  //Ojo, Controlar que no se dupliquen los asientos de apertura, regularización y cierre
-  query.sprintf("SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='0'",confpr->valor(EJERCICIO_ACTUAL).c_str());
-  if (!cur->eof() ) { 
-      QMessageBox:: ... Ya existe un asiento de apertura ...
+  //Controlamos que no se dupliquen los asientos de apertura, regularización y cierre
+  if (claseAsiento->currentItem()==0 ) { //El asiento es de Apertura
+      valorClaseAsiento="0";
+      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='0' AND idasiento<>'%d'",EjercicioActual.ascii(), numasiento);
+      cur = conexionbase->cargacursor(query,"clase0");
+      if (!cur->eof() ) { 
+          cadenaAux =cur->valor(1);
+          QMessageBox::warning( 0, tr("Atención"), tr("El Asiento ") + cadenaAux + tr(" ya es de Apertura."), QMessageBox::Ok,0);
+          valorClaseAsiento="1";
+      }
   }
-  */
-  query.sprintf("UPDATE asiento SET descripcion='%s', fecha='%s', comentariosasiento='%s', ordenasiento=%s WHERE idasiento=%d",texto.ascii(),fecha.ascii(),notas.ascii(),orden.ascii(), numasiento);
-  conexionbase->begin();
-  val = conexionbase->ejecuta(query);
+  if (claseAsiento->currentItem()==1) { //El asiento es normal, entonces no hacemos nada!
+      valorClaseAsiento="1";
+  }
+  if (claseAsiento->currentItem()==2) { //El asiento es de Regularización
+      valorClaseAsiento="98";
+      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='98' AND idasiento<>'%d'",EjercicioActual.ascii(), numasiento);
+      cur = conexionbase->cargacursor(query,"clase98");
+      if (!cur->eof() ) { 
+          cadenaAux =cur->valor(1);
+          QMessageBox::warning( 0, tr("Atencion"), tr("El Asiento ") + cadenaAux + tr(" ya es de Regularizacion."), QMessageBox::Ok,0);
+          valorClaseAsiento="1";
+      }
+  }
+  if (claseAsiento->currentItem()==3) { //El asiento es de Cierre
+      valorClaseAsiento="99";
+      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='99' AND idasiento<>'%d'",EjercicioActual.ascii(), numasiento);
+      cur = conexionbase->cargacursor(query,"clase99");
+      if (!cur->eof() ) { 
+          cadenaAux =cur->valor(1);
+          QMessageBox::warning( 0, tr("Atencion"), tr("El Asiento ") + cadenaAux + tr(" ya es de Cierre."), QMessageBox::Ok,0);
+          valorClaseAsiento="1";
+      }
+  }
+  
+  query.sprintf("UPDATE asiento SET descripcion='%s', fecha='%s', comentariosasiento='%s', ordenasiento=%s, clase=%s WHERE idasiento=%d",texto.ascii(),fecha.ascii(),notas.ascii(),orden.ascii(), valorClaseAsiento.ascii(), numasiento);
+
+  conexionbase->ejecuta(query);
   conexionbase->commit();
   return(numasiento);
 }// end modificaasiento
@@ -125,3 +154,4 @@ int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, Q
 void asientoview::return_fecha() {
   fechaasiento1->setText(normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
 }// end return_fecha
+

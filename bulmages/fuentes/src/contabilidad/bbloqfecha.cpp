@@ -15,13 +15,13 @@
  ***************************************************************************/
 #include "bbloqfecha.h"
 
-BbloqFecha::BbloqFecha(QWidget * parent, const char * name, WFlags f) : UIbloqFecha(parent,name,f) {
+BbloqFecha::BbloqFecha(QString *NombreBaseDatos, QWidget * parent, const char * name, WFlags f) : UIbloqFecha(parent,name,f) {
   QListViewItem *listMain, *listAux=0;
   QString query;
   listView1->setSorting(-1);
   
   postgresiface2 *DBconn = new postgresiface2();
-  DBconn->inicializa( "bulmages2003" );
+  DBconn->inicializa( *NombreBaseDatos );
   DBconn->begin();
   query.sprintf("SELECT * FROM ejercicios WHERE periodo=0 ORDER BY ejercicio DESC");
   cursor2 *curPeri,*curEjer = DBconn->cargacursor(query,"curEjer");

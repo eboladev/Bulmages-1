@@ -47,7 +47,7 @@ empresa::empresa(){
  balance1 = NULL;
  balance = NULL; 
  introapunts1 = NULL;
- nombre = NULL;
+ nombre = "";
  conexionbase2 = new postgresiface2();
  conexionanterior2 = NULL;
 
@@ -80,7 +80,7 @@ int empresa::inicializa1(QWorkspace *space) {
    fprintf(stderr,"EMPRESA::inicializa1()\n");
   pWorkspace = space;
   fprintf(stderr,"conexionbase->inicializa\n");
-  conexionbase2->inicializa(nombredb);
+  conexionbase2->inicializa(nombreDB.ascii());
   fprintf(stderr,"fin de conexionbase->inicializa\n");
 
   
@@ -150,12 +150,9 @@ int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
     */
     
     //salto el dialeg de login. Ja tinc el nom d'usuari, password i el nom de la base de dades.
-    nombre = (char *) User->ascii();
-    contrasenya = (char *) Passwd->ascii();
-    strcpy(nombredb,DB->ascii());
-    nombreDB = QString(DB->ascii()); //variable redundante nombreDB = nombredb 
-            //nombredb es un vector[20] privado de caracteres de la clase empresa.
-            //nombreDB es un QString publico de la clase empresa
+    nombre = *User;
+    contrasenya = *Passwd;
+    nombreDB = *DB;
     //fi del salt
     
     // Buscamos la empresa anterior y hacemos lo que corresponda.
@@ -165,7 +162,7 @@ int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
     metabase = new postgresiface2();
     metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
     metabase->begin();
-    sprintf(query,"SELECT * FROM EMPRESA WHERE nombredb='%s'\n",nombredb);
+    sprintf(query,"SELECT * FROM EMPRESA WHERE nombredb='%s'\n",nombreDB.ascii());
     cursor2 *cursoraux = metabase->cargacursor(query,"cursorempresa");
     sprintf(query,"SELECT * FROM EMPRESA WHERE nombre='%s' AND ano<%s ORDER BY ano DESC\n",cursoraux->valor("nombre").ascii(), cursoraux->valor("ano").ascii());
     cursor2 *cursoraux2 = metabase->cargacursor(query,"cursorempresa1");
@@ -321,7 +318,7 @@ int empresa::muestraasientos() {
 
 int empresa::propiedadempresa() {
    propiedadesempresa * nuevae = new propiedadesempresa(0,"",true);
-   nuevae->inicializa(conexionbase2, nombredb);
+   nuevae->inicializa(conexionbase2, nombreDB.ascii());
    nuevae->exec();
    delete nuevae;
    return(0);
@@ -530,7 +527,7 @@ void empresa::Ordenarasientos(int ejercicio) {
 }// end Abrirasientos
 
 int empresa::registroiva() {
-   listivaview *perd = new listivaview(confpr->valor(EJERCICIO_ACTUAL).c_str());
+   listivaview *perd = new listivaview(EjercicioActual.ascii());
    perd->inicializa(conexionbase2, introapunts1);
    perd->exec();
    delete perd;
@@ -538,7 +535,7 @@ int empresa::registroiva() {
 }// end registroiva
 
 int empresa::modelo347() {
-   BModelo347 *dlg347 = new BModelo347(conexionbase2,confpr->valor(EJERCICIO_ACTUAL).c_str());
+   BModelo347 *dlg347 = new BModelo347(conexionbase2,EjercicioActual.ascii());
    //dlg347->inicializa(conexionbase2, introapunts1);
    dlg347->exec();
    delete dlg347;
@@ -552,8 +549,8 @@ int empresa::guardarempresa() {
   QString fn = QFileDialog::getSaveFileName(0, "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
   if (!fn.isEmpty()) {
      fprintf(stderr,"Vamos a guardar la empresa en el fichero %s\n",fn.ascii());
-     args[0]=nombredb;
-     args[1]=nombredb;
+     args[0]=(char *) nombreDB.ascii();
+     args[1]=(char *) nombreDB.ascii();
      args[2]=(char *) fn.ascii();
      args[3]=NULL;
      if ((pid=fork()) < 0) {
@@ -581,8 +578,8 @@ int empresa::cargarempresa() {
   int error;
   QString fn = QFileDialog::getOpenFileName(0, theApp->translate("empresa","Empresas (*.pgdump)",""), 0,theApp->translate("empresa","Cargar Empresa",""),theApp->translate("emrpesa","Elige el fichero a cargar.",""));
   if (!fn.isEmpty()) {
-     args[0]=nombredb;
-     args[1]=nombredb;
+     args[0]=(char *) nombreDB.ascii();
+     args[1]=(char *) nombreDB.ascii();
      args[2]=(char *) fn.ascii();
      args[3]=NULL;
 //     defaultDB->close();
