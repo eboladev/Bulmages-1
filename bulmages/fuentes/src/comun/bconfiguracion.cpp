@@ -269,10 +269,12 @@ void BConfiguracion::nuevoEjercicio() {
 void BConfiguracion::cargarFichaUsuarios() {
 //Carga los Usuarios de la Base de Datos   
    campos_usuario datos_usuario;   
+   QString query;
    postgresiface2 * conexionDB;
    conexionDB = new postgresiface2();
    conexionDB->inicializa(confpr->valor(CONF_METABASE).c_str());
-   cursor2 * recordSet;
+   cursor2 *recordSet, *privilegios;
+   QString acceso;
    QListViewItem *it;
    conexionDB->begin();
    recordSet=conexionDB->cargacursor("SELECT * from usuario","recordSet");
@@ -282,6 +284,11 @@ void BConfiguracion::cargarFichaUsuarios() {
    listView1->clear();
    listView1->hideColumn(1);
    listView1->setColumnWidth(0,155);
+   (listView2->header())->setResizeEnabled (false);
+   listView2->setColumnWidth(0,60);
+   listView2->setColumnWidth(1,330);
+   listView2->hideColumn(2);
+   listView2->setSorting(2,true);
    while (!recordSet->eof()) {
          it =new QListViewItem(listView1);
          datos_usuario.insert(make_pair("idusuario",recordSet->valor("idusuario")));
@@ -291,7 +298,16 @@ void BConfiguracion::cargarFichaUsuarios() {
          datos_usuario.insert(make_pair("apellido1",recordSet->valor("apellido1")));	 
          datos_usuario.insert(make_pair("apellido2",recordSet->valor("apellido2")));
          datos_usuario.insert(make_pair("coment","Id. Usuario: " + recordSet->valor("idusuario")));
-         //coleccion_usuarios.insert(make_pair(recordSet->valor("idusuario"),datos_usuario));
+         query.sprintf("SELECT * from usuario_empresa WHERE idempresa IN (SELECT idempresa FROM empresa WHERE nombredb='%s') AND idusuario=%i",PunteroAlSelector->NombreBaseDatos.ascii(),recordSet->valor("idusuario").toInt());
+         conexionDB->begin();
+         privilegios=conexionDB->cargacursor(query,"privilegios");
+         conexionDB->commit();
+         if ( !privilegios->eof() ) {
+             privilegios->valor("permisos") == "1" ? acceso="S" : acceso="V";
+             datos_usuario.insert(make_pair("prv1000",acceso));
+         } else {
+             datos_usuario.insert(make_pair("prv1000","N"));
+         }
          coleccion_usuarios.insert(make_pair(recordSet->valor("login"),datos_usuario));
          datos_usuario.clear();
          it->setText(0,recordSet->valor("login"));
@@ -299,6 +315,7 @@ void BConfiguracion::cargarFichaUsuarios() {
          recordSet->siguienteregistro();
    }// end while
    listView1->setCurrentItem(it);
+   delete privilegios;
    delete recordSet;
    delete conexionDB;   
 }
@@ -307,14 +324,15 @@ void BConfiguracion::cargarFichaUsuarios() {
 void BConfiguracion::listView1_currentChanged(QListViewItem *it) {
   campos_usuario datos_usuario;
   
-  datos_usuario=( coleccion_usuarios.find(it->text(0)) )->second;  
-  lineEdit1->setText(( datos_usuario.find("login")     )->second);
-  lineEdit2->setText(( datos_usuario.find("password")  )->second);
-  lineEdit3->setText(( datos_usuario.find("nombre")    )->second);
-  lineEdit4->setText(( datos_usuario.find("apellido1") )->second);
-  lineEdit5->setText(( datos_usuario.find("apellido2") )->second);
-  textEdit1->setText(( datos_usuario.find("coment")    )->second);
-}// end listView1_currentChanged
+  datos_usuario = coleccion_usuarios.find(it->text(0))->second;  
+  listView2->findItem("prv1000",2)->setText( 0,datos_usuario.find("prv1000")->second );
+  lineEdit1->setText( datos_usuario.find("login")->second );
+  lineEdit2->setText( datos_usuario.find("password")->second );
+  lineEdit3->setText( datos_usuario.find("nombre")->second );
+  lineEdit4->setText( datos_usuario.find("apellido1")->second );
+  lineEdit5->setText( datos_usuario.find("apellido2")->second );
+  textEdit1->setText( datos_usuario.find("coment")->second );
+  }// end listView1_currentChanged
 
 void BConfiguracion::users_info_changed() {
   campos_usuario datos_usuario;
@@ -327,6 +345,7 @@ void BConfiguracion::users_info_changed() {
   datos_usuario.insert(make_pair("apellido2",lineEdit5->text()));
   datos_usuario.insert(make_pair("coment",textEdit1->text()));
   datos_usuario.insert(make_pair("idusuario",listView1->currentItem()->text(1)));
+  datos_usuario.insert(make_pair("prv1000",listView2->findItem("prv1000",2)->text(0)));
   if ( (coleccion_usuarios.find(lineEdit1->text())) != coleccion_usuarios.end() ) {
       QMessageBox::warning( 0, "Nuevo Usuario", "Ya existe otro usuario con este login.", QMessageBox::Ok,0);
       lineEdit1->setText(listView1->currentItem()->text(0));
@@ -352,6 +371,7 @@ void BConfiguracion::newUser() {
   datos_usuario.insert(make_pair("apellido2",""));
   datos_usuario.insert(make_pair("coment",""));
   datos_usuario.insert(make_pair("idusuario","-1"));
+  datos_usuario.insert(make_pair("prv1000","N"));
   coleccion_usuarios.insert(make_pair(nombreInicial,datos_usuario));
   listView1->setCurrentItem(it);
 }
@@ -372,11 +392,12 @@ void BConfiguracion::cloneUser() {
 void BConfiguracion::BotonB_1Aplicar(){
   campos_usuario datos_usuario;
   std::map<QString,campos_usuario>::iterator bucle_usuarios;
-  bucle_usuarios=coleccion_usuarios.begin();
   postgresiface2 *DBConn = new postgresiface2();
   DBConn->inicializa(confpr->valor(CONF_METABASE).c_str());
   QString query;
   DBConn->begin();
+  //Introducioms los cambios en la base de datos
+  bucle_usuarios=coleccion_usuarios.begin();
   while (bucle_usuarios != coleccion_usuarios.end()) {
       datos_usuario = bucle_usuarios->second;  
       if ( datos_usuario.find("idusuario")->second == "-1" ) {
@@ -387,19 +408,43 @@ void BConfiguracion::BotonB_1Aplicar(){
       DBConn->ejecuta(query);
       ++bucle_usuarios;
   }
-  
+  //Borramos los usuarios que hemos eliminado
   std::set<QString>::iterator id_borrados;
   id_borrados=usuarios_borrados.begin();
   while ( id_borrados != usuarios_borrados.end() ) {
+      query.sprintf("DELETE FROM usuario_empresa WHERE idusuario='%s'",id_borrados->ascii());
+      DBConn->ejecuta(query);
       query.sprintf("DELETE FROM usuario WHERE idusuario='%s'",id_borrados->ascii());
       DBConn->ejecuta(query);
       ++id_borrados;
   }
   DBConn->commit();
   usuarios_borrados.clear();
+  //Actualizamos la tabla usuario_empresa
+  DBConn->begin();
+  query.sprintf("SELECT idusuario,idempresa FROM usuario, empresa WHERE nombredb='%s'",PunteroAlSelector->NombreBaseDatos.ascii());
+  cursor2 * usuaris = DBConn->cargacursor(query,"usuaris"); 
+  while (! usuaris->eof() ) {
+      bucle_usuarios=coleccion_usuarios.begin();
+      while (( usuaris->valor("idusuario") != (bucle_usuarios->second).find("idusuario")->second) && (bucle_usuarios != coleccion_usuarios.end())) { ++bucle_usuarios;}
+      if (bucle_usuarios != coleccion_usuarios.end()) {
+          query.sprintf("DELETE FROM usuario_empresa WHERE idempresa IN (SELECT idempresa FROM empresa WHERE nombredb='%s') AND idusuario='%s'",PunteroAlSelector->NombreBaseDatos.ascii(),usuaris->valor("idusuario").ascii());
+          DBConn->ejecuta(query);
+          if ( (bucle_usuarios->second).find("prv1000")->second  == "S") { //Lectura Escritura
+              query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES ('%s','%s','%s')", usuaris->valor("idusuario").ascii(), usuaris->valor("idempresa").ascii(),"1");
+              DBConn->ejecuta(query);
+          }
+          if ( (bucle_usuarios->second).find("prv1000")->second == "V") { //Solo Lectura
+              query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES ('%s','%s','%s')", usuaris->valor("idusuario").ascii(), usuaris->valor("idempresa").ascii(),"2");
+              DBConn->ejecuta(query);
+          }
+      }
+      usuaris->siguienteregistro();
+  }
+  DBConn->commit();
 }
 
-//Desacemos los cambios que hemos hecho.
+//Desacemos los cambios que hemos hecho (UNDO).
 void BConfiguracion::BotonB_2Desacer(){
 cargarFichaUsuarios();
 }
@@ -424,5 +469,17 @@ void BConfiguracion::listView2_clickBotonDerecho(QListViewItem* item,const QPoin
        }       
        item = item->itemBelow();
    }
+users_info_changed();
 }
 
+//Por conveniencia (Bug QT??) 
+void BConfiguracion::listiView2_clickMouse(int button,QListViewItem * item,const QPoint& pos,int col){
+   (listView2->header())->setResizeEnabled (false);
+   button=1; //elimina warning
+   pos.isNull(); //elimina warning
+   item->text(col); //elimina warning
+   listView2->setColumnWidth(0,60);
+   listView2->setColumnWidth(1,330);
+   listView2->hideColumn(2);
+   listView2->setSorting(2,true);
+}

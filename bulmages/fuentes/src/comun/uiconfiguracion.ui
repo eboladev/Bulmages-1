@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>600</width>
-            <height>501</height>
+            <height>503</height>
         </rect>
     </property>
     <property name="caption">
@@ -440,19 +440,6 @@
                         <enum>Password</enum>
                     </property>
                 </widget>
-                <widget class="QTextEdit">
-                    <property name="name">
-                        <cstring>textEdit1</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>10</x>
-                            <y>110</y>
-                            <width>380</width>
-                            <height>50</height>
-                        </rect>
-                    </property>
-                </widget>
                 <widget class="QLineEdit">
                     <property name="name">
                         <cstring>lineEdit5</cstring>
@@ -582,6 +569,19 @@
                         <bool>false</bool>
                     </property>
                 </widget>
+                <widget class="QTextEdit">
+                    <property name="name">
+                        <cstring>textEdit1</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>110</y>
+                            <width>380</width>
+                            <height>50</height>
+                        </rect>
+                    </property>
+                </widget>
             </widget>
             <widget class="QPushButton">
                 <property name="name">
@@ -650,203 +650,6 @@
                     <string>Nuevo</string>
                 </property>
             </widget>
-            <widget class="QListView">
-                <column>
-                    <property name="text">
-                        <string>Privilegio</string>
-                    </property>
-                    <property name="clickable">
-                        <bool>false</bool>
-                    </property>
-                    <property name="resizable">
-                        <bool>false</bool>
-                    </property>
-                </column>
-                <column>
-                    <property name="text">
-                        <string>Recurso</string>
-                    </property>
-                    <property name="clickable">
-                        <bool>false</bool>
-                    </property>
-                    <property name="resizable">
-                        <bool>false</bool>
-                    </property>
-                </column>
-            <item>
-                <property name="text">
-                    <string>S</string>
-                </property>
-                <property name="text">
-                    <string>Apuntes Contables</string>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-            </item>
-            <item>
-                <property name="text">
-                    <string>S</string>
-                </property>
-                <property name="text">
-                    <string>Balance de Cuentas</string>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-            </item>
-            <item>
-                <property name="text">
-                    <string>S</string>
-                </property>
-                <property name="text">
-                    <string>Extracto de Cuentas</string>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-            </item>
-            <item>
-                <property name="text">
-                    <string>S</string>
-                </property>
-                <property name="text">
-                    <string>Diario</string>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-            </item>
-            <item>
-                <property name="text">
-                    <string>N</string>
-                </property>
-                <property name="text">
-                    <string>Registro de IVA</string>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-            </item>
-            <item>
-                <property name="text">
-                    <string>V</string>
-                </property>
-                <property name="text">
-                    <string>Listados</string>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-            </item>
-            <item>
-                <property name="text">
-                    <string>V</string>
-                </property>
-                <property name="text">
-                    <string>Amortizaciones</string>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-            </item>
-            <item>
-                <property name="text">
-                    <string>N</string>
-                </property>
-                <property name="text">
-                    <string>Substituir Cuentas</string>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-            </item>
-            <item>
-                <property name="text">
-                    <string>V</string>
-                </property>
-                <property name="text">
-                    <string>Plan Contable</string>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-                <property name="pixmap">
-                    <pixmap></pixmap>
-                </property>
-            </item>
-                <property name="name">
-                    <cstring>listView2</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>169</x>
-                        <y>186</y>
-                        <width>400</width>
-                        <height>200</height>
-                    </rect>
-                </property>
-                <property name="frameShape">
-                    <enum>GroupBoxPanel</enum>
-                </property>
-                <property name="lineWidth">
-                    <number>1</number>
-                </property>
-                <property name="margin">
-                    <number>1</number>
-                </property>
-                <property name="midLineWidth">
-                    <number>0</number>
-                </property>
-                <property name="resizePolicy">
-                    <enum>Manual</enum>
-                </property>
-                <property name="vScrollBarMode">
-                    <enum>AlwaysOn</enum>
-                </property>
-                <property name="hScrollBarMode">
-                    <enum>AlwaysOff</enum>
-                </property>
-                <property name="selectionMode">
-                    <enum>Extended</enum>
-                </property>
-                <property name="allColumnsShowFocus">
-                    <bool>true</bool>
-                </property>
-                <property name="itemMargin">
-                    <number>0</number>
-                </property>
-                <property name="rootIsDecorated">
-                    <bool>false</bool>
-                </property>
-                <property name="resizeMode">
-                    <enum>LastColumn</enum>
-                </property>
-            </widget>
             <widget class="QPushButton">
                 <property name="name">
                     <cstring>pushButtonB_1</cstring>
@@ -891,7 +694,7 @@
                         <bool>false</bool>
                     </property>
                     <property name="resizable">
-                        <bool>false</bool>
+                        <bool>true</bool>
                     </property>
                 </column>
                 <column>
@@ -957,6 +760,294 @@
                 </property>
                 <property name="defaultRenameAction">
                     <enum>Reject</enum>
+                </property>
+            </widget>
+            <widget class="QListView">
+                <column>
+                    <property name="text">
+                        <string>Privilegio</string>
+                    </property>
+                    <property name="clickable">
+                        <bool>false</bool>
+                    </property>
+                    <property name="resizable">
+                        <bool>false</bool>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Recurso</string>
+                    </property>
+                    <property name="clickable">
+                        <bool>false</bool>
+                    </property>
+                    <property name="resizable">
+                        <bool>false</bool>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>idprv</string>
+                    </property>
+                    <property name="clickable">
+                        <bool>false</bool>
+                    </property>
+                    <property name="resizable">
+                        <bool>false</bool>
+                    </property>
+                </column>
+            <item>
+                <property name="text">
+                    <string>N</string>
+                </property>
+                <property name="text">
+                    <string>Login Empresa</string>
+                </property>
+                <property name="text">
+                    <string>prv1000</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>S</string>
+                </property>
+                <property name="text">
+                    <string>Apuntes Contables</string>
+                </property>
+                <property name="text">
+                    <string>prv1001</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>V</string>
+                </property>
+                <property name="text">
+                    <string>Balance de Cuentas</string>
+                </property>
+                <property name="text">
+                    <string>prv1002</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>V</string>
+                </property>
+                <property name="text">
+                    <string>Extracto de Cuentas</string>
+                </property>
+                <property name="text">
+                    <string>prv1003</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>V</string>
+                </property>
+                <property name="text">
+                    <string>Diario</string>
+                </property>
+                <property name="text">
+                    <string>prv1004</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>S</string>
+                </property>
+                <property name="text">
+                    <string>Registro de IVA</string>
+                </property>
+                <property name="text">
+                    <string>prv1005</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>S</string>
+                </property>
+                <property name="text">
+                    <string>Listados</string>
+                </property>
+                <property name="text">
+                    <string>prv1006</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>S</string>
+                </property>
+                <property name="text">
+                    <string>Amortizaciones</string>
+                </property>
+                <property name="text">
+                    <string>prv1007</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>S</string>
+                </property>
+                <property name="text">
+                    <string>Substituir Cuentas</string>
+                </property>
+                <property name="text">
+                    <string>prv1008</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>S</string>
+                </property>
+                <property name="text">
+                    <string>Plan Contable</string>
+                </property>
+                <property name="text">
+                    <string>prv1009</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+                <property name="name">
+                    <cstring>listView2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>169</x>
+                        <y>186</y>
+                        <width>400</width>
+                        <height>200</height>
+                    </rect>
+                </property>
+                <property name="frameShape">
+                    <enum>GroupBoxPanel</enum>
+                </property>
+                <property name="lineWidth">
+                    <number>1</number>
+                </property>
+                <property name="margin">
+                    <number>1</number>
+                </property>
+                <property name="midLineWidth">
+                    <number>0</number>
+                </property>
+                <property name="resizePolicy">
+                    <enum>Manual</enum>
+                </property>
+                <property name="vScrollBarMode">
+                    <enum>AlwaysOn</enum>
+                </property>
+                <property name="hScrollBarMode">
+                    <enum>AlwaysOff</enum>
+                </property>
+                <property name="dragAutoScroll">
+                    <bool>false</bool>
+                </property>
+                <property name="selectionMode">
+                    <enum>Extended</enum>
+                </property>
+                <property name="allColumnsShowFocus">
+                    <bool>true</bool>
+                </property>
+                <property name="showSortIndicator">
+                    <bool>false</bool>
+                </property>
+                <property name="itemMargin">
+                    <number>0</number>
+                </property>
+                <property name="rootIsDecorated">
+                    <bool>false</bool>
+                </property>
+                <property name="resizeMode">
+                    <enum>NoColumn</enum>
                 </property>
             </widget>
         </widget>
@@ -1072,10 +1163,124 @@
 </widget>
 <connections>
     <connection>
+        <sender>comboBoxFuente</sender>
+        <signal>activated(const QString&amp;)</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>FontChanged(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>lineEdit1</sender>
+        <signal>lostFocus()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>users_info_changed()</slot>
+    </connection>
+    <connection>
+        <sender>lineEdit2</sender>
+        <signal>lostFocus()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>users_info_changed()</slot>
+    </connection>
+    <connection>
+        <sender>lineEdit3</sender>
+        <signal>lostFocus()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>users_info_changed()</slot>
+    </connection>
+    <connection>
+        <sender>lineEdit4</sender>
+        <signal>lostFocus()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>users_info_changed()</slot>
+    </connection>
+    <connection>
+        <sender>lineEdit5</sender>
+        <signal>lostFocus()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>users_info_changed()</slot>
+    </connection>
+    <connection>
+        <sender>listView1</sender>
+        <signal>currentChanged(QListViewItem*)</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>listView1_currentChanged(QListViewItem*)</slot>
+    </connection>
+    <connection>
+        <sender>listView2</sender>
+        <signal>rightButtonClicked(QListViewItem*,const QPoint&amp;,int)</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>listView2_clickBotonDerecho(QListViewItem*,const QPoint&amp;,int)</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_1</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>nuevaEmpresa()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_10</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_10aceptar()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_11</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_11rechazar()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_2</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>borrarEmpresa()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_5</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>nuevoEjercicio()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_6</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_6nombreEmpresa()</slot>
+    </connection>
+    <connection>
         <sender>pushButtonA_X</sender>
         <signal>clicked()</signal>
         <receiver>UIconfiguracion</receiver>
         <slot>cerrar()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonB_1</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonB_1Aplicar()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonB_2</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonB_2Desacer()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonB_3</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>newUser()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonB_4</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>deleteUser()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonB_5</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>cloneUser()</slot>
     </connection>
     <connection>
         <sender>pushButtonB_X</sender>
@@ -1108,88 +1313,10 @@
         <slot>cerrar()</slot>
     </connection>
     <connection>
-        <sender>listView1</sender>
-        <signal>currentChanged(QListViewItem*)</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>listView1_currentChanged(QListViewItem*)</slot>
-    </connection>
-    <connection>
-        <sender>listView2</sender>
-        <signal>rightButtonClicked(QListViewItem*,const QPoint&amp;,int)</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>listView2_clickBotonDerecho(QListViewItem*,const QPoint&amp;,int)</slot>
-    </connection>
-    <connection>
-        <sender>comboBoxFuente</sender>
-        <signal>activated(const QString&amp;)</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>FontChanged(const QString&amp;)</slot>
-    </connection>
-    <connection>
         <sender>spinBoxFuente</sender>
         <signal>valueChanged(int)</signal>
         <receiver>UIconfiguracion</receiver>
         <slot>FontSizeChanged(int)</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_10</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonA_10aceptar()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_11</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonA_11rechazar()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_1</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>nuevaEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_2</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>borrarEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_5</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>nuevoEjercicio()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonA_6</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonA_6nombreEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>lineEdit1</sender>
-        <signal>lostFocus()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
-    </connection>
-    <connection>
-        <sender>lineEdit2</sender>
-        <signal>lostFocus()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
-    </connection>
-    <connection>
-        <sender>lineEdit3</sender>
-        <signal>lostFocus()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
-    </connection>
-    <connection>
-        <sender>lineEdit4</sender>
-        <signal>lostFocus()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
     </connection>
     <connection>
         <sender>textEdit1</sender>
@@ -1198,40 +1325,10 @@
         <slot>users_info_changed()</slot>
     </connection>
     <connection>
-        <sender>lineEdit5</sender>
-        <signal>lostFocus()</signal>
+        <sender>listView2</sender>
+        <signal>mouseButtonClicked(int,QListViewItem*,const QPoint&amp;,int)</signal>
         <receiver>UIconfiguracion</receiver>
-        <slot>users_info_changed()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonB_3</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>newUser()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonB_4</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>deleteUser()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonB_5</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>cloneUser()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonB_1</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonB_1Aplicar()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonB_2</sender>
-        <signal>clicked()</signal>
-        <receiver>UIconfiguracion</receiver>
-        <slot>BotonB_2Desacer()</slot>
+        <slot>listiView2_clickMouse(int,QListViewItem*,const QPoint&amp;,int)</slot>
     </connection>
 </connections>
 <tabstops>
@@ -1286,6 +1383,7 @@
     <slot>cloneUser()</slot>
     <slot>BotonB_1Aplicar()</slot>
     <slot>BotonB_2Desacer()</slot>
+    <slot>listiView2_clickMouse(int,QListViewItem *,const QPoint&amp;,int)</slot>
 </slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>

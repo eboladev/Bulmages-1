@@ -50,6 +50,7 @@ private slots:
   virtual void cerrar();
   virtual void listView1_currentChanged(QListViewItem *);
   virtual void listView2_clickBotonDerecho(QListViewItem*,const QPoint&,int);
+  virtual void listiView2_clickMouse(int,QListViewItem *,const QPoint&,int);
   virtual void FontChanged(const QString &);
   virtual void FontSizeChanged(int);
   virtual void BotonA_10aceptar();
