@@ -27,10 +27,11 @@
 #include "numerocuenta.h"
 #include <qcheckbox.h>
 /**
- * \class QmcDateNav qmcdatenav.h
+ * \class Mod300ps modelo300.h
  * \brief Modelo 300 del IVA
+ * 
  * Clase para generar el modelo 300 de declaración de IVA trimestral en formato postscript.
-Utiliza los formularios oficiales obtenidos de \ref www.aeat.es convertidos de pdf a postscript.
+Utiliza los formularios oficiales obtenidos de la <a href="http://www.aeat.es">Agencia Tributaria</a> convertidos de pdf a postscript.
 Hereda de \ref Modgenps */
 class Mod300ps: public Modgenps, public mod300dlg
   {
