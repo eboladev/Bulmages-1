@@ -30,6 +30,7 @@ public slots:
     virtual void recibirfactura();
     virtual void listclients();
     virtual void listarticles();
+    virtual void listorders();
     void about();
     void aboutQt();
 /*

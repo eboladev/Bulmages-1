@@ -71,6 +71,12 @@ void bulmafact::listarticles()
    m_company.listarticles();
 }// end listararticlesaction
 
+void bulmafact::listorders()
+{
+   fprintf(stderr,"listordersaction activado \n");
+   m_company.listorders();
+}// end listordersaction
+
 void bulmafact::proveedores() {
    fprintf(stderr,"provideraction activado \n");
    m_company.provideraction();

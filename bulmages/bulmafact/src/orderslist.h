@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
- *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2004 by J. M. Estopa Rey                                *
+ *   pepma@telefonica.net                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,29 +17,24 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef COMPANY_H
-#define COMPANY_H
+#ifndef ORDERSLIST_H
+#define ORDERSLIST_H
 
-#include <qworkspace.h>
-#include "postgresiface2.h"
-#include <qobject.h>
-/**
-Company class gives the application something like a standard interface to access each company in the same way.
-@author Tomeu Borrás
-*/
+#include "orderslistbase.h"
 
-class company : public postgresiface2 {
-private:
-   QWidget *m_pWorkspace;
+
+class company;
+
+
+class orderslist : public orderslistbase
+{
+ Q_OBJECT
 public:
-   company();
-   ~company();
-   void listproviders();
-   void listclients();
-   void listarticles();
-   void listorders();
-   void setWorkspace(QWidget *qw) {m_pWorkspace=qw;}
-   void provideraction();
+   company *companyact;
+   
+public:
+    orderslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
+    ~orderslist();
 };
 
 #endif

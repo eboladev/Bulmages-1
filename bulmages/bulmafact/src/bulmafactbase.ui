@@ -23,6 +23,7 @@
     <item text="Ventas" name="Ventas">
     </item>
     <item text="Compras" name="Compras">
+        <action name="AListOrders"/>
     </item>
     <item text="Clientes" name="Clientes">
         <action name="AClientes"/>
@@ -232,6 +233,17 @@
             <string>Listado de Artículos</string>
         </property>
     </action>
+    <action>
+        <property name="name">
+            <cstring>AListOrders</cstring>
+        </property>
+        <property name="text">
+            <string>Listado de Pedidos</string>
+        </property>
+        <property name="menuText">
+            <string>Listado de Pedidos</string>
+        </property>
+    </action>
 </actions>
 <images>
     <image name="image0">
@@ -314,6 +326,12 @@
         <receiver>bulmafactbase</receiver>
         <slot>listarticles()</slot>
     </connection>
+    <connection>
+        <sender>AListOrders</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>listorders()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>fileNew()</slot>
@@ -338,6 +356,7 @@
     <slot>recibirfactura()</slot>
     <slot>listclients()</slot>
     <slot>listarticles()</slot>
+    <slot>listorders()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
