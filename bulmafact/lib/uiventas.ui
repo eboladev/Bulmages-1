@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>669</width>
-            <height>369</height>
+            <width>785</width>
+            <height>397</height>
         </rect>
     </property>
     <property name="sizePolicy">
@@ -41,7 +41,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>669</width>
+            <width>785</width>
             <height>22</height>
         </rect>
     </property>
@@ -60,8 +60,8 @@
             <action name="archivoArticulosCatalogosAction"/>
             <action name="archivoArticulosGarantiaAction"/>
             <item text="Garantias" name="archivoArticulosGarantiaAction_2" accel="">
-                <action name="archivoArticulosGarantiaModalidadAction"/>
-                <action name="archivoArticulosGarantiaCondicionesAction_2"/>
+                <action name="archivoArticulosGarantiaModalidad_gAction"/>
+                <action name="archivoArticulosGarantiaCond_garantiaAction"/>
             </item>
             <action name="archivoArticulosAlmacenesAction"/>
             <action name="archivoArticulosMarcasAction"/>
@@ -80,22 +80,19 @@
             <separator/>
             <action name="archivosVentasOfertasAction"/>
         </item>
-        <action name="archivoSeries_de_DocumentosAction"/>
-        <separator/>
         <action name="archivoTipos_ivaAction"/>
         <action name="archivoFamilias"/>
         <separator/>
         <action name="archivosCerrarAction"/>
-        <separator/>
     </item>
     <item text="&amp;Ventas" name="VentasMenu">
         <action name="ventasPresupuestosAction"/>
         <action name="ventasPedidosAction"/>
         <action name="ventasAlbaranesAction"/>
     </item>
-    <item text="Compras" name="unnamed">
-        <action name="comprasPedidoAction"/>
+    <item text="Compras" name="ComprasMenu">
         <action name="comprasAlbaranes_CompraAction"/>
+        <action name="comprasPedidoAction"/>
         <action name="comprasFacturas_ProveedoresAction"/>
     </item>
     <item text="&amp;Facturacion" name="FacturacionMenu">
@@ -143,8 +140,9 @@
         </property>
         <action name="herramientasSelectorAction"/>
         <separator/>
-        <action name="archivoClientesAction"/>
-        <action name="archivoArticulosAction"/>
+        <action name="archivoClientesClientesAction"/>
+        <action name="archivoArticulosArticulosAction"/>
+        <action name="archivoProveedoresProveedoresAction"/>
         <separator/>
         <action name="ventasPedidosAction"/>
         <action name="ventasAlbaranesAction"/>
@@ -242,17 +240,6 @@
         </property>
         <property name="visible">
             <bool>true</bool>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>archivoSeries_de_DocumentosAction</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>kcmkwm.png</iconset>
-        </property>
-        <property name="text">
-            <string>Series de Documentos</string>
         </property>
     </action>
     <action>
@@ -425,61 +412,10 @@
     </action>
     <action>
         <property name="name">
-            <cstring>herramientasModulos_BulmaGesAction</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset></iconset>
-        </property>
-        <property name="text">
-            <string>Modulos BulmaGes</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>herramientasModulos_BulmaGesContabilidadAction</cstring>
-        </property>
-        <property name="text">
-            <string>Contabilidad</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>herramientasModulos_BulmaGesComprasAction</cstring>
-        </property>
-        <property name="text">
-            <string>Compras</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>herramientasModulos_BulmaGesConfiguracionAction</cstring>
-        </property>
-        <property name="text">
-            <string>Configuración</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>herramientasModulos_BulmaGesProduccionAction</cstring>
-        </property>
-        <property name="text">
-            <string>Producción</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>herramientasnew_itemAction</cstring>
-        </property>
-        <property name="text">
-            <string>new item</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
             <cstring>archivoProveedoresAction</cstring>
         </property>
         <property name="iconSet">
-            <iconset>hwinfo.png</iconset>
+            <iconset>2rightarrow.png</iconset>
         </property>
         <property name="text">
             <string>Proveedores</string>
@@ -501,7 +437,7 @@
             <cstring>archivoFamilias</cstring>
         </property>
         <property name="iconSet">
-            <iconset>help.png</iconset>
+            <iconset>identity.png</iconset>
         </property>
         <property name="text">
             <string>Familias</string>
@@ -509,43 +445,10 @@
     </action>
     <action>
         <property name="name">
-            <cstring>comprasPedidoAction</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>kate.png</iconset>
-        </property>
-        <property name="text">
-            <string>Pedidos</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>comprasFacturas_ProveedoresAction</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>kfind.png</iconset>
-        </property>
-        <property name="text">
-            <string>Facturas Proveedores</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>comprasAlbaranes_CompraAction</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>edit.png</iconset>
-        </property>
-        <property name="text">
-            <string>Albaranes Compra</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
             <cstring>archivoProveedoresProveedoresAction</cstring>
         </property>
         <property name="iconSet">
-            <iconset>hwinfo.png</iconset>
+            <iconset>2rightarrow.png</iconset>
         </property>
         <property name="text">
             <string>Proveedores</string>
@@ -619,7 +522,7 @@
     </action>
     <action>
         <property name="name">
-            <cstring>archivoArticulosGarantiaModalidadAction</cstring>
+            <cstring>archivoArticulosGarantiaModalidad_gAction</cstring>
         </property>
         <property name="iconSet">
             <iconset>package_settings.png</iconset>
@@ -630,12 +533,15 @@
     </action>
     <action>
         <property name="name">
-            <cstring>archivoArticulosGarantiaCondicionesAction_2</cstring>
+            <cstring>archivoArticulosGarantiaCond_garantiaAction</cstring>
         </property>
         <property name="iconSet">
             <iconset>package_settings.png</iconset>
         </property>
         <property name="text">
+            <string>Condiciones Garantia</string>
+        </property>
+        <property name="menuText">
             <string>Condiciones</string>
         </property>
     </action>
@@ -654,6 +560,9 @@
         <property name="name">
             <cstring>archivosVentasCondiciones_VentaAction</cstring>
         </property>
+        <property name="iconSet">
+            <iconset>button_ok.png</iconset>
+        </property>
         <property name="text">
             <string>Condiciones Venta</string>
         </property>
@@ -661,6 +570,9 @@
     <action>
         <property name="name">
             <cstring>archivosVentasFormas_de_PagoAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>button_ok.png</iconset>
         </property>
         <property name="text">
             <string>Formas de Pago</string>
@@ -670,6 +582,9 @@
         <property name="name">
             <cstring>archivosVentasTerminios_de_PagoAction</cstring>
         </property>
+        <property name="iconSet">
+            <iconset>button_ok.png</iconset>
+        </property>
         <property name="text">
             <string>Terminios de Pago</string>
         </property>
@@ -677,6 +592,9 @@
     <action>
         <property name="name">
             <cstring>archivosVentasOfertasAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>find.png</iconset>
         </property>
         <property name="text">
             <string>Ofertas</string>
@@ -704,20 +622,41 @@
             <string>Marcas</string>
         </property>
     </action>
+    <action>
+        <property name="name">
+            <cstring>comprasAlbaranes_CompraAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>edit.png</iconset>
+        </property>
+        <property name="text">
+            <string>Albaranes Compra</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>comprasFacturas_ProveedoresAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>finish.png</iconset>
+        </property>
+        <property name="text">
+            <string>Facturas Proveedores</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>comprasPedidoAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>forward.png</iconset>
+        </property>
+        <property name="text">
+            <string>Pedidos</string>
+        </property>
+    </action>
 </actions>
 <connections>
-    <connection>
-        <sender>ventasAlbaranesAction</sender>
-        <signal>activated()</signal>
-        <receiver>UIVentas</receiver>
-        <slot>albaranes()</slot>
-    </connection>
-    <connection>
-        <sender>ventasPedidosAction</sender>
-        <signal>activated()</signal>
-        <receiver>UIVentas</receiver>
-        <slot>pedidos()</slot>
-    </connection>
     <connection>
         <sender>herramientasSelectorAction</sender>
         <signal>activated()</signal>
@@ -731,45 +670,151 @@
         <slot>close()</slot>
     </connection>
     <connection>
-        <sender>archivoClientesClientesAction</sender>
+        <sender>archivoArticulosAlmacenesAction</sender>
         <signal>activated()</signal>
         <receiver>UIVentas</receiver>
-        <slot>fichaClientes()</slot>
+        <slot>abrirFormAlmacenes()</slot>
     </connection>
     <connection>
         <sender>archivoArticulosArticulosAction</sender>
         <signal>activated()</signal>
         <receiver>UIVentas</receiver>
-        <slot>fichaArticulos()</slot>
+        <slot>abrirFormArticulos()</slot>
     </connection>
     <connection>
-        <sender>ventasPresupuestosAction</sender>
+        <sender>archivoArticulosCatalogosAction</sender>
         <signal>activated()</signal>
         <receiver>UIVentas</receiver>
-        <slot>presupuestos()</slot>
+        <slot>abrirFormCatalogos()</slot>
     </connection>
     <connection>
-        <sender>archivoProveedoresProveedoresAction</sender>
+        <sender>archivoArticulosGarantiaCond_garantiaAction</sender>
         <signal>activated()</signal>
         <receiver>UIVentas</receiver>
-        <slot>fichaProveedores()</slot>
+        <slot>abrirFormCond_garantia()</slot>
+    </connection>
+    <connection>
+        <sender>archivoArticulosGarantiaModalidad_gAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormModalidades_g()</slot>
     </connection>
     <connection>
         <sender>archivoArticulosMarcasAction</sender>
         <signal>activated()</signal>
         <receiver>UIVentas</receiver>
-        <slot>fichaMarcas()</slot>
+        <slot>abrirFormMarcas()</slot>
+    </connection>
+    <connection>
+        <sender>archivoClientesClientesAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormClientes()</slot>
+    </connection>
+    <connection>
+        <sender>archivoClientesSucursalesAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormSucursales()</slot>
+    </connection>
+    <connection>
+        <sender>archivoFamilias</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormFamilias()</slot>
+    </connection>
+    <connection>
+        <sender>archivoProveedoresDivisionesAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormDivisiones()</slot>
+    </connection>
+    <connection>
+        <sender>archivoProveedoresProveedoresAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormProveedores()</slot>
+    </connection>
+    <connection>
+        <sender>archivosVentasCondiciones_VentaAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormCondiciones_v()</slot>
+    </connection>
+    <connection>
+        <sender>archivosVentasFormas_de_PagoAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormFormas_pago()</slot>
+    </connection>
+    <connection>
+        <sender>archivosVentasOfertasAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormOfertas()</slot>
+    </connection>
+    <connection>
+        <sender>archivosVentasTerminios_de_PagoAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormTerminios_fp()</slot>
+    </connection>
+    <connection>
+        <sender>archivoTipos_ivaAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormTipos_iva()</slot>
+    </connection>
+    <connection>
+        <sender>comprasAlbaranes_CompraAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormAlbaranes_prov()</slot>
+    </connection>
+    <connection>
+        <sender>ventasAlbaranesAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormAlbaranes()</slot>
+    </connection>
+    <connection>
+        <sender>ventasPedidosAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormPedidos()</slot>
+    </connection>
+    <connection>
+        <sender>ventasPresupuestosAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormPresupuestos()</slot>
     </connection>
 </connections>
+<includes>
+    <include location="local" impldecl="in implementation">uiventas.ui.h</include>
+</includes>
 <slots>
-    <slot>pedidos()</slot>
-    <slot>albaranes()</slot>
     <slot>mostrar_selector()</slot>
-    <slot>fichaClientes()</slot>
-    <slot>fichaArticulos()</slot>
-    <slot>presupuestos()</slot>
-    <slot>fichaProveedores()</slot>
-    <slot>fichaMarcas()</slot>
+    <slot>abrirFormAlbaranes()</slot>
+    <slot>abrirFormPresupuestos()</slot>
+    <slot>abrirFormPedidos()</slot>
+    <slot>abrirFormClientes()</slot>
+    <slot>abrirFormProveedores()</slot>
+    <slot>abrirFormArticulos()</slot>
+    <slot>abrirFormMarcas()</slot>
+    <slot>abrirFormTipos_iva()</slot>
+    <slot>abrirFormFamilias()</slot>
+    <slot>abrirFormCatalogos()</slot>
+    <slot>abrirFormDivisiones()</slot>
+    <slot>abrirFormSucursales()</slot>
+    <slot>abrirFormAlbaranes_prov()</slot>
+    <slot>abrirFormModalidades_g()</slot>
+    <slot>abrirFormCond_garantia()</slot>
+    <slot>abrirFormCondiciones_v()</slot>
+    <slot>abrirFormOfertas()</slot>
+    <slot>abrirFormFormas_pago()</slot>
+    <slot>abrirFormTerminios_fp()</slot>
+    <slot>abrirFormAlmacenes()</slot>
 </slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
