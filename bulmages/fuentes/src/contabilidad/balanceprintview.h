@@ -31,6 +31,9 @@
 //#include "qlayout.h"
 #include "postgresiface2.h"
 
+
+class empresa;
+
 /***@author Tomeu Borrás Riera */
 
 class BalancePrintView : public BalancePrintDlg  {
@@ -39,8 +42,9 @@ public:
    char *fichero;
    int ccostes[200];
    postgresiface2 *conexionbase;   
+   empresa *empresaactual;
 public: 
-	BalancePrintView(QWidget *parent=0, const char *name=0);
+	BalancePrintView(empresa *emp, QWidget *parent=0, const char *name=0);
 	~BalancePrintView();
    int inicializa(postgresiface2 *);
    void inicializa1(QString, QString, QString, QString, bool);

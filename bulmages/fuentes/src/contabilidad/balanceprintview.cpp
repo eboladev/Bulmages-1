@@ -31,8 +31,15 @@
 #include <unistd.h>
 #endif
 
-BalancePrintView::BalancePrintView(QWidget *parent, const char *name ) : BalancePrintDlg(parent,name) {
+#ifdef REPORTS
+#include "rtkinputbges.h"
+using namespace RTK;
+#endif
+
+
+BalancePrintView::BalancePrintView(empresa *emp,QWidget *parent, const char *name ) : BalancePrintDlg(parent,name) {
    fichero = NULL;
+   empresaactual=emp;
  // Inicializamos la tabla de nivel
    combonivel->insertItem("2",0);
    combonivel->insertItem("3",1);
@@ -71,39 +78,13 @@ void BalancePrintView::inicializa2(char *fich) {
  * Se ha pulsado sobre el boton aceptar del formulario
  **************************************************************/
 void BalancePrintView::accept() {
-
-// Versió per si només permetem escollir una opció
-
-//   if (radionormal->isChecked()){
-      if (radiotexto->isChecked()) presentar("txt");
-      else presentar("html");
-/*   } else {
-      if (radiotexto->isChecked()) presentar("txtapren");
-      else presentar("htmlapren");
-   } */
-
-}
-
-
-// Versió per si decidim que es poden escollir vàries opcions
-
-/*
-
-   if (radionormal->isChecked()){
-      if (radiotexto->isChecked()) presentar("txt");
-      if (!(radiotexto->isChecked())) presentar("html");
-   }
-   if (!(radionormal->isChecked())){
-      if (radiotexto->isChecked()) presentar("txtapren");
-      if (!(radiotexto->isChecked())) presentar("htmlapren");
-   }
-}
-
-*/
-
-
-
-
+      if (radiotexto->isChecked())
+         presentar("txt");
+      
+      if(radiohtml->isChecked()) presentar("html");
+       
+      if (radiopropietario->isChecked()) presentar("rtk");
+}// end accept
 
 
 void BalancePrintView::boton_codigoinicial() {
@@ -130,7 +111,7 @@ void BalancePrintView::boton_codigofinal() {
  **************************************************************/
 void BalancePrintView::presentar(char *tipus){
 #ifndef WIN32
-   int txt, html, txtapren, htmlapren;
+   int rtk, txt, html, txtapren, htmlapren;
    int error;
    int pid;
 
@@ -140,6 +121,7 @@ void BalancePrintView::presentar(char *tipus){
    cursor2 *cursorapt;
 
 // tipus de presentació
+   rtk=!strcmp(tipus,"rtk");
    txt=!strcmp(tipus,"txt");
    html=!strcmp(tipus,"html");
    txtapren=!strcmp(tipus,"txtapren");
@@ -151,7 +133,7 @@ void BalancePrintView::presentar(char *tipus){
    QString cinicial = codigoinicial->text();
    QString cfinal = codigofinal->text();
 
-   if (txt | html) {
+   if (txt | html | rtk) {
 
       char *argstxt[]={"balanç.txt","balanç.txt",NULL};      //presentació txt normal
       char *argshtml[]={"balanç.html","balanç.html",NULL};   //presentació html normal
@@ -162,7 +144,7 @@ void BalancePrintView::presentar(char *tipus){
       if (!fitxersortidatxt) txt=0;    // verifiquem que s'hagin creat correctament els fitxers
       if (!fitxersortidahtml) html=0;  // es pot millorar el tractament d'errors
 
-      if (txt | html) {                // només continuem si hem pogut crear algun fitxer
+      if (txt | html | rtk) {                // només continuem si hem pogut crear algun fitxer
 
 
          // Hacemos la consulta de los apuntes a listar en la base de datos.
@@ -170,66 +152,88 @@ void BalancePrintView::presentar(char *tipus){
          // Causar problemas con el motor de base de datos.
          fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
          conexionbase->begin();
-         query. sprintf( "CREATE TEMPORARY TABLE balance AS SELECT 0 AS hoja, cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
+         query. sprintf( "CREATE TEMPORARY TABLE balancetmp AS SELECT 0 AS hoja, cuenta.idcuenta AS idcuenta, codigo AS codigo, nivel(codigo) AS nivel, cuenta.descripcion AS descripcion, padre AS padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
          fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
-         query.sprintf("UPDATE BALANCE SET padre=0 WHERE padre ISNULL");
+         query.sprintf("UPDATE balancetmp SET padre=0 WHERE padre ISNULL");
          fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
-         query.sprintf("DELETE FROM balance WHERE debe=0 AND haber =0");
+         query.sprintf("DELETE FROM balancetmp WHERE debe=0 AND haber =0");
          fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
 
          // Para evitar problemas con los nulls hacemos algunos updates
-         query.sprintf("UPDATE BALANCE SET tsaldo=0 WHERE tsaldo ISNULL");
+         query.sprintf("UPDATE balancetmp SET tsaldo=0 WHERE tsaldo ISNULL");
          fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
-         query.sprintf("UPDATE BALANCE SET tdebe=0 WHERE tdebe ISNULL");
+         query.sprintf("UPDATE balancetmp SET tdebe=0 WHERE tdebe ISNULL");
          fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
-         query.sprintf("UPDATE BALANCE SET thaber=0 WHERE thaber ISNULL");
+         query.sprintf("UPDATE balancetmp SET thaber=0 WHERE thaber ISNULL");
          fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
-         query.sprintf("UPDATE BALANCE SET asaldo=0 WHERE asaldo ISNULL");
+         query.sprintf("UPDATE balancetmp SET asaldo=0 WHERE asaldo ISNULL");
          fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
 
-         query.sprintf( "SELECT idcuenta FROM balance ORDER BY padre DESC");
+         query.sprintf( "SELECT idcuenta FROM balancetmp ORDER BY padre DESC");
          fprintf(stderr,"%s\n",query.ascii());
          cursorapt = conexionbase->cargacursor(query,"Balance1view");
          while (!cursorapt->eof())  {
-            query.sprintf("SELECT * FROM balance WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
+            query.sprintf("SELECT * FROM balancetmp WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
             cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
-            query.sprintf("UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
+            query.sprintf("UPDATE balancetmp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
             //			fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
             conexionbase->ejecuta(query);
             delete mycur;
             cursorapt->siguienteregistro();
-         }
+         }// end while
          delete cursorapt;
          // Borramos todo lo que no es de este nivel
 
          // Borramos Los niveles inferiores
-         query.sprintf(query,"DELETE FROM balance where nivel(codigo)>%s",combonivel->text(combonivel->currentItem()).ascii());
+         query.sprintf(query,"DELETE FROM balancetmp where nivel(codigo)>%s",combonivel->text(combonivel->currentItem()).ascii());
          conexionbase->ejecuta(query);
 
          // No hay que incluir los niveles superiores.
          if (!checksuperiores->isChecked()) {
-            //Borramos todo lo que tiene un hijo en el balance
-            query.sprintf("DELETE FROM balance WHERE idcuenta IN (SELECT padre FROM balance)");
+            //Borramos todo lo que tiene un hijo en el balancetmp
+            query.sprintf("DELETE FROM balancetmp WHERE idcuenta IN (SELECT padre FROM balancetmp)");
             conexionbase->ejecuta(query);
          } else {
             // Si hay que incluir los niveles superiores
-            query.sprintf("UPDATE balance SET hoja=1 WHERE idcuenta NOT IN (SELECT padre FROM balance)");
+            query.sprintf("UPDATE balancetmp SET hoja=1 WHERE idcuenta NOT IN (SELECT padre FROM balancetmp)");
             conexionbase->ejecuta(query);
          }
 
-         query.sprintf("SELECT * FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo");
-         fprintf(stderr,"%s\n",query.ascii());
+         // Hacemos la consulta.
+         query.sprintf("SELECT * FROM balancetmp WHERE debe <> 0  OR haber <> 0 ORDER BY codigo");
          cursorapt = conexionbase->cargacursor(query,"mycursor");
          // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
          num1 = cursorapt->numregistros();
 
+         if(rtk) {
+            // Ahora vamos a hacer la presentacion como si fuese de RTK.
+            #ifdef REPORTS            
+            RTK::Report unReport;
+            unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"balance.rtk");
+            InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
+            inp->set(InputBGes::diario, empresaactual, cursorapt);
+            OutputQPainter *salida = new OutputQPainter(A4, dots, 57, 59, 0,0,20,20,20,20);
+            unReport.print(*salida);
+            QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
+            mViewer->setCaption(tr("Balance", "Informe: "));
+            mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
+            mViewer->setPageCollection(salida->getPageCollection());
+            mViewer->show();
+            mViewer->slotFirstPage();
+            #else
+               fprintf(stderr,"No existe soporte para REPORTS \n");
+            #endif             
+            // FIN DE LA PRESENTACION CON RTK.
+         }// end if
+
+                  
          if (txt) {
             //presentació txt normal
 
@@ -240,7 +244,7 @@ void BalancePrintView::presentar(char *tipus){
             fitxersortidatxt << "Data Inicial: " << finicial.ascii() << "   Data Final: " << ffinal.ascii() << endl;
             fitxersortidatxt << "lcuenta           ldenominacion                      lsaldoant      ldebe     lhaber     lsaldo    ldebeej    haberej   lsaldoej\n" ;
             fitxersortidatxt << "________________________________________________________________________________________________________________________________\n";
-         }
+         }// end if
          if (html) {
             //presentació html normal
 
@@ -258,7 +262,7 @@ void BalancePrintView::presentar(char *tipus){
             fitxersortidahtml << "<table><tr><td colspan=\"9\" class=titolbalanc> Balanç <hr></td></tr>\n\n";
             fitxersortidahtml << "<tr><td colspan=\"9\" class=periodebalanc> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
             fitxersortidahtml << "<tr><td class=titolcolumnabalanc>lcuenta</td><td class=titolcolumnabalanc> ldenominacion</td><td class=titolcolumnabalanc>lsaldoant</td><td class=titolcolumnabalanc>ldebe</td><td class=titolcolumnabalanc>lhaber</td><td class=titolcolumnabalanc>lsaldo</td><td class=titolcolumnabalanc> ldebeej  </td><td class=titolcolumnabalanc> lhaberej </td><td class=titolcolumnabalanc> lsaldoej </td></tr>\n";
-         }
+         }// end if
 
 
 
@@ -286,22 +290,21 @@ void BalancePrintView::presentar(char *tipus){
 	    if (txt) {
                //presentació txt normal
                fitxersortidatxt << setiosflags(ios::left) << setw(10) <<  lcuenta.ascii() << " " << setw(40) <<  ldenominacion.ascii() << " " << resetiosflags(ios::left) << setw(10) <<  lsaldoant << " " << setw(10) <<  ldebe << " " << setw(10) <<  lhaber << " " << setw(10) <<  lsaldo << " " << setw(10) <<  ldebeej << " " << setw(10) <<  lhaberej << " " << setw(10) <<  lsaldoej << " " << setw(10) <<  endl;
-            }
+            }// end if
             if (html) {
                //presentació html normal
                fitxersortidahtml << "<tr><td class=comptebalanc>" << lcuenta.ascii() << "</td><td class=assentamentbalanc>" <<  ldenominacion.ascii() << "</td><td class=dosdecimals>" << lsaldoant << "</td><td class=dosdecimals>" << ldebe << "</td><td class=dosdecimals>" << lhaber << "</td><td class=dosdecimals>" << lsaldo << "</td><td class=dosdecimals>" << ldebeej << "</td><td class=dosdecimals>" << lhaberej << "</td><td class=dosdecimals>" << lsaldoej << endl;
-            }
+            }// end if
 
             // Calculamos la siguiente cuenta registro y finalizamos el bucle
             cursorapt->siguienteregistro();
-         }
+         }// end while
 
          // Vaciamos el cursor de la base de datos.
          delete cursorapt;
 
          // Borramos la tabla temporal y demás cosas.
-         query.sprintf("DROP TABLE balance");
-         fprintf(stderr,"%s\n",query.ascii());
+         query.sprintf("DROP TABLE balancetmp");
          conexionbase->ejecuta(query);
          conexionbase->commit();
          
