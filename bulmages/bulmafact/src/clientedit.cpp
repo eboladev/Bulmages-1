@@ -221,32 +221,32 @@ void ClientEdit::saveClient() {
    
    if (clientId != "0") {
       SQLQuery = "UPDATE cliente SET ";
-      SQLQuery += " urlcliente='"+m_clientUrl->text()+"'";
-      SQLQuery += " , nomcliente='"+m_clientName->text()+"'";
-      SQLQuery += " , nomaltcliente='"+m_altClientName->text()+"'";
-      SQLQuery += " , cifcliente='"+m_clientCif->text()+"'";
-      SQLQuery += " , bancocliente='"+m_clientBankAccount->text()+"'";
-      SQLQuery += " , dircliente='"+m_clientAddress->text()+"'";
-      SQLQuery += " , poblcliente='"+m_clientCity->text()+"'";
-      SQLQuery += " , cpcliente='"+m_clientZipCode->text()+"'";
-      SQLQuery += " , telcliente='"+m_clientPhone->text()+"'";
-      SQLQuery += " , faxcliente='"+m_clientFax->text()+"'";
-      SQLQuery += " , mailcliente='"+m_clientEmail->text()+"'";
+      SQLQuery += " urlcliente='"+companyact->sanearCadena(m_clientUrl->text())+"'";
+      SQLQuery += " , nomcliente='"+companyact->sanearCadena(m_clientName->text())+"'";
+      SQLQuery += " , nomaltcliente='"+companyact->sanearCadena(m_altClientName->text())+"'";
+      SQLQuery += " , cifcliente='"+companyact->sanearCadena(m_clientCif->text())+"'";
+      SQLQuery += " , bancocliente='"+companyact->sanearCadena(m_clientBankAccount->text())+"'";
+      SQLQuery += " , dircliente='"+companyact->sanearCadena(m_clientAddress->text())+"'";
+      SQLQuery += " , poblcliente='"+companyact->sanearCadena(m_clientCity->text())+"'";
+      SQLQuery += " , cpcliente='"+companyact->sanearCadena(m_clientZipCode->text())+"'";
+      SQLQuery += " , telcliente='"+companyact->sanearCadena(m_clientPhone->text())+"'";
+      SQLQuery += " , faxcliente='"+companyact->sanearCadena(m_clientFax->text())+"'";
+      SQLQuery += " , mailcliente='"+companyact->sanearCadena(m_clientEmail->text())+"'";
       SQLQuery += " WHERE idcliente ="+clientId;
    } else {
       SQLQuery = " INSERT INTO cliente (nomcliente, nomaltcliente, cifcliente, bancocliente, dircliente, poblcliente, cpcliente, telcliente, faxcliente, urlcliente, mailcliente)";
       SQLQuery += " VALUES (";
-      SQLQuery += "'"+m_clientName->text()+"'";
-      SQLQuery += ",'"+m_altClientName->text()+"'";
-      SQLQuery += ",'"+m_clientCif->text()+"'";
-      SQLQuery += ",'"+m_clientBankAccount->text()+"'";
-      SQLQuery += ",'"+m_clientAddress->text()+"'";
-      SQLQuery += ",'"+m_clientCity->text()+"'";
-      SQLQuery += ",'"+m_clientZipCode->text()+"'";
-      SQLQuery += ",'"+m_clientPhone->text()+"'";
-      SQLQuery += ",'"+m_clientFax->text()+"'";
-      SQLQuery += ",'"+m_clientUrl->text()+"'";
-      SQLQuery += ",'"+m_clientEmail->text()+"'";
+      SQLQuery += "'"+companyact->sanearCadena(m_clientName->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_altClientName->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_clientCif->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_clientBankAccount->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_clientAddress->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_clientCity->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_clientZipCode->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_clientPhone->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_clientFax->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_clientUrl->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_clientEmail->text())+"'";
       SQLQuery += ")";
    }// end if
    
@@ -268,10 +268,11 @@ void ClientEdit::saveClient() {
 void ClientEdit::deleteClient() {
    QMessageBox::information(this,tr("Edición de clientes"),
          tr("Qué peligro tienes, majete!\n"
-            "De momento no hago nada, pero tendría que borrarlo"),
+            "En vez de salir este mensaje tendría que borrar el cliente."),
          QMessageBox::Yes | QMessageBox::Default,
          QMessageBox::No,
          QMessageBox::Cancel | QMessageBox::Escape);
+   emptyForm();
 }// end deleteClient()
 
 

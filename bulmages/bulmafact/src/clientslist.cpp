@@ -80,7 +80,7 @@ CREATE TABLE cliente (
 #define COL_COMENTCLIENTE 14
 #define COL_IDRECARGO 15
 
-
+#define EDIT_MODE 0
 
 ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int flag)
  : ClientsListBase(parent, name, flag) {
@@ -88,7 +88,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
    m_idclient="";
    m_cifclient="";
    m_nomclient="";
-   m_mode=0;
+   m_mode = EDIT_MODE;
  
    m_clientList->setNumRows( 0 );
    m_clientList->setSelectionMode( QTable::SingleRow );
@@ -151,10 +151,10 @@ void ClientsList::initClients() {
        int i=0;
        while (!cur->eof()) {
          m_clientList->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
-	 m_clientList->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
+         m_clientList->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
          m_clientList->setText(i,COL_NOMALTCLIENTE,cur->valor("nomaltcliente"));
          m_clientList->setText(i,COL_CIFCLIENTE,cur->valor("cifcliente"));
-	 m_clientList->setText(i,COL_BANCOCLIENTE,cur->valor("bancocliente"));
+         m_clientList->setText(i,COL_BANCOCLIENTE,cur->valor("bancocliente"));
          m_clientList->setText(i,COL_DIRCLIENTE,cur->valor("dircliente"));
          m_clientList->setText(i,COL_POBLCLIENTE,cur->valor("poblcliente"));
          m_clientList->setText(i,COL_CPCLIENTE,cur->valor("cpcliente"));
@@ -194,7 +194,7 @@ void ClientsList::m_clientList_doubleClicked(int a, int , int , const QPoint &) 
    m_idclient = m_clientList->text(a,COL_IDCLIENTE);
    m_cifclient = m_clientList->text(a,COL_CIFCLIENTE);
    m_nomclient = m_clientList->text(a, COL_NOMCLIENTE);
-   if (m_mode ==0 ) {
+   if (m_mode == EDIT_MODE ) {
       ClientEdit *cli = new ClientEdit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Clientes", "company"));
       cli->loadClient(m_idclient);
       cli->show();
