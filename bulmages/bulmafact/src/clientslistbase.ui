@@ -1,6 +1,6 @@
 <!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>clientslistbase</class>
-<author>Joan Miquel Torres Rigo</author>
+<author>Josep Maria Estopà Rey</author>
 <widget class="QWidget">
     <property name="name">
         <cstring>clientslistbase</cstring>

@@ -36,6 +36,9 @@
         <separator/>
     </item>
     <separator/>
+    <item text="Artículos" name="Artculos">
+        <action name="AListArticles"/>
+    </item>
 </menubar>
 <toolbars>
     <toolbar dock="2">
@@ -212,18 +215,21 @@
     </action>
     <action>
         <property name="name">
-            <cstring>Action</cstring>
-        </property>
-        <property name="text">
-            <string>Action</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
             <cstring>AListClients</cstring>
         </property>
         <property name="text">
             <string>Listado de clientes</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>AListArticles</cstring>
+        </property>
+        <property name="text">
+            <string>Listado de Artículos</string>
+        </property>
+        <property name="menuText">
+            <string>Listado de Artículos</string>
         </property>
     </action>
 </actions>
@@ -302,6 +308,12 @@
         <receiver>bulmafactbase</receiver>
         <slot>listclients()</slot>
     </connection>
+    <connection>
+        <sender>AListArticles</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>listarticles()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>fileNew()</slot>
@@ -325,6 +337,7 @@
     <slot>emitirfactura()</slot>
     <slot>recibirfactura()</slot>
     <slot>listclients()</slot>
+    <slot>listarticles()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

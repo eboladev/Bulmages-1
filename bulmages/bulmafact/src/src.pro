@@ -18,20 +18,24 @@ SOURCES += bulmafact.cpp \
            providerslist.cpp \
            provedit.cpp \
 	   splashscreen.cpp \
-	   clientslist.cpp
+	   clientslist.cpp \
+           articleslist.cpp
 HEADERS += bulmafact.h \
            company.h \
            providerslist.h \
            provedit.h \
 	   splashscreen.h \
-	   clientslist.h
+	   clientslist.h \
+           articleslist.h
 IDLS += providerslistbase.ui \
         provedit_base.ui \
-	clientslistbase.ui
+	clientslistbase.ui \
+	articleslistbase.ui
 FORMS += bulmafactbase.ui \
          providerslistbase.ui \
          provedit_base.ui \
-	 clientslistbase.ui 
+	 clientslistbase.ui \
+	 articleslistbase.ui
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

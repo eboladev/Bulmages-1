@@ -26,6 +26,7 @@
 #include "provedit.h"
 #include "qobject.h"
 #include "clientslist.h"
+#include "articleslist.h"
 
 company::company(){
 //       inicializa(confpr->valor(CONF_METABASE).c_str());
@@ -45,6 +46,11 @@ void company::listproviders () {
 void company::listclients () {
    clientslist *m_clielist = new clientslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
    m_clielist->show();
+}
+
+void company::listarticles () {
+   articleslist *m_artilist = new articleslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
+   m_artilist->show();
 }
 
 void company::provideraction() {

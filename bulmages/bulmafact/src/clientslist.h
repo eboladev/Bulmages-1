@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef CLIENTSLIST_H
-#define CLIENTSLIST_H
+#ifndef clientslist_H
+#define clientslist_H
 
 #include "clientslistbase.h"
 

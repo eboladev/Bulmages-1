@@ -36,6 +36,7 @@ public:
    ~company();
    void listproviders();
    void listclients();
+   void listarticles();
    void setWorkspace(QWidget *qw) {m_pWorkspace=qw;}
    void provideraction();
 };
