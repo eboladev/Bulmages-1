@@ -537,6 +537,12 @@ void Bulmages01::initActions() {
   SelectorAction->setIconSet( QIconSet( QPixmap::fromMimeSource( "tux1.png" ) ) );
   connect( SelectorAction, SIGNAL( activated() ), this, SLOT( mostrar_selector() ) );      
 
+  
+  
+  cobPag = new QAction(tr("Cobros y Pagos"), tr("&Cobros y Pagos"), 0, this);
+  cobPag->setStatusTip(tr("Cobros y Pagos"));
+  cobPag->setWhatsThis(tr("Cobros y Pagos"));
+  connect(cobPag, SIGNAL(activated()), this, SLOT(slotCobPag()));  
 }
 
 
@@ -608,7 +614,6 @@ void Bulmages01::initMenuBar() {
 
   // El menu de Herramientas
   pHerramientasMenu = new QPopupMenu();
-  //usuarioaction->addTo(pHerramientasMenu);
   amortiz->addTo(pHerramientasMenu);
   SCuentas->addTo(pHerramientasMenu);
   bloqaction->addTo(pHerramientasMenu);
@@ -619,7 +624,8 @@ void Bulmages01::initMenuBar() {
   RecSald->addTo(pHerramientasMenu);
   pHerramientasMenu->insertSeparator();
   ArchDoc->addTo(pHerramientasMenu);
-  
+  pHerramientasMenu->insertSeparator();
+  cobPag->addTo(pHerramientasMenu);  
   
   //El menu de empresa
   pEmpresaMenu = new QPopupMenu();
@@ -731,6 +737,8 @@ void Bulmages01::initToolBar() {
   reloadaction->addTo(navegacionToolbar);
   navegacionToolbar->addSeparator();
   filtro->addTo(navegacionToolbar);
+  navegacionToolbar->addSeparator();
+  cobPag->addTo(navegacionToolbar);
   
 
   // Vamos a probar con un docwindow.
@@ -1059,10 +1067,14 @@ void Bulmages01::slotBalanceGrafico() {
   empresaactual.BalanceGrafico();
 }// end slotOrdenarasientos
 
+void Bulmages01::slotCobPag() {
+   empresaactual.cobPag();
+}// end cobPag
+
+
 void Bulmages01::slotFiltro() {
    empresaactual.Filtro();
 }// end slotFiltro
-
 
 void Bulmages01::windowMenuAboutToShow()  {
 /*

@@ -41,9 +41,6 @@
 // include files de la aplicacion
 #include "empresa.h"
 #include "bbloqfecha.h"
-//#include "usuariosview.h"
-//#include "pruebaview.h"
-
 #include "configuracion.h"
 
 /**
@@ -161,6 +158,7 @@ public:
     void slotCanalDef();
     void slotRecSald();
     void slotArchDoc();
+    void slotCobPag();
        
 
     /** toggle the toolbar*/
@@ -309,6 +307,8 @@ public:
     
     QAction *RecSald;
     QAction *ArchDoc;
+    
+    QAction *cobPag;
 };
 #endif
 

@@ -32,6 +32,8 @@
 #include "amortizacionesview.h"
 #include "adocumental.h"
 
+#include "cobropagoview.h"
+
 
 #include <qobject.h>
 #ifndef WIN32
@@ -838,3 +840,12 @@ void empresa::archDoc() {
    adoc->exec();
    delete adoc;
 }// archDoc
+
+
+/** Esta función se dispara para poner en marcha la gestión de cobros y pagos
+  */
+void empresa::cobPag() {
+   cobropagoview *adoc= new cobropagoview(this,0,"hola");
+   adoc->exec();
+   delete adoc;
+}// cobPag

@@ -284,7 +284,7 @@ CREATE TABLE prevcobro (
     idprevcobro serial PRIMARY KEY,
     fprevistaprevcobro date,
     fcobroprevcobro date,
-    fpagoprevcobro integer,
+    idfpago integer REFERENCES fpago(idfpago),
     idcuenta integer REFERENCES cuenta(idcuenta),
     idasiento integer REFERENCES asiento(idasiento),
     cantidadprevistaprevcobro double precision,

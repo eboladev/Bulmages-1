@@ -71,7 +71,6 @@ public slots:
   virtual void boton_generarPrevisiones();
   virtual void boton_fecha();
   virtual void returnContrapartida();
-//  virtual void currentIvaChanged(int, int);
 
 private slots:
   virtual void tcambiaseleccion();
