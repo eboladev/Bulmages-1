@@ -3,14 +3,14 @@
    <balance>
       <nombrebalance>Balance Abreviado</nombrebalance>
       <mpatrimonial>
-         <idmasa>99</idmasa>
+         <idmasa>50</idmasa>
          <descmpatrimonial>A) Accionistas (socios) por desembolsos no exigidos</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>99</masaperteneciente>
+            <masaperteneciente>50</masaperteneciente>
             <codigo>195</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -18,7 +18,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>99</masaperteneciente>
+            <masaperteneciente>50</masaperteneciente>
             <codigo>191</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -26,7 +26,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>99</masaperteneciente>
+            <masaperteneciente>50</masaperteneciente>
             <codigo>192</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -34,7 +34,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>99</masaperteneciente>
+            <masaperteneciente>50</masaperteneciente>
             <codigo>193</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -42,7 +42,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>99</masaperteneciente>
+            <masaperteneciente>50</masaperteneciente>
             <codigo>194</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -50,7 +50,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>99</masaperteneciente>
+            <masaperteneciente>50</masaperteneciente>
             <codigo>195</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -58,7 +58,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>99</masaperteneciente>
+            <masaperteneciente>50</masaperteneciente>
             <codigo>196</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -67,14 +67,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>101</idmasa>
+         <idmasa>51</idmasa>
          <descmpatrimonial>I. Gastos de establecimiento</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>101</masaperteneciente>
+            <masaperteneciente>51</masaperteneciente>
             <codigo>20</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -83,14 +83,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>104</idmasa>
+         <idmasa>52</idmasa>
          <descmpatrimonial>IV. Inmovilizaciones financieras</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>240</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -98,7 +98,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>241</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -106,7 +106,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>242</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -114,7 +114,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>243</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -122,7 +122,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>244</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -130,7 +130,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>245</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -138,7 +138,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>246</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -146,7 +146,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>247</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -154,7 +154,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>250</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -162,7 +162,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>251</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -170,7 +170,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>252</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -178,7 +178,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>253</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -186,7 +186,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>254</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -194,7 +194,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>256</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -202,7 +202,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>257</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -210,7 +210,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>258</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -218,7 +218,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>26</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -226,7 +226,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>293</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -234,7 +234,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>294</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -242,7 +242,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>295</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -250,7 +250,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>296</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -258,7 +258,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>297</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -266,7 +266,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>104</masaperteneciente>
+            <masaperteneciente>52</masaperteneciente>
             <codigo>298</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -275,14 +275,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>103</idmasa>
+         <idmasa>53</idmasa>
          <descmpatrimonial>III. Gastos de establecimiento</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>103</masaperteneciente>
+            <masaperteneciente>53</masaperteneciente>
             <codigo>22</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -290,7 +290,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>103</masaperteneciente>
+            <masaperteneciente>53</masaperteneciente>
             <codigo>23</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -298,7 +298,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>103</masaperteneciente>
+            <masaperteneciente>53</masaperteneciente>
             <codigo>282</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -306,7 +306,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>103</masaperteneciente>
+            <masaperteneciente>53</masaperteneciente>
             <codigo>292</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -315,14 +315,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>102</idmasa>
+         <idmasa>54</idmasa>
          <descmpatrimonial>II. Gastos de establecimiento</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>102</masaperteneciente>
+            <masaperteneciente>54</masaperteneciente>
             <codigo>21</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -330,7 +330,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>102</masaperteneciente>
+            <masaperteneciente>54</masaperteneciente>
             <codigo>281</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -338,7 +338,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>102</masaperteneciente>
+            <masaperteneciente>54</masaperteneciente>
             <codigo>291</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -347,14 +347,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>105</idmasa>
+         <idmasa>55</idmasa>
          <descmpatrimonial>V. Acciones propias</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>105</masaperteneciente>
+            <masaperteneciente>55</masaperteneciente>
             <codigo>198</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -363,14 +363,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>106</idmasa>
+         <idmasa>56</idmasa>
          <descmpatrimonial>C) Gastos a distribuir en varios ejercicios</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>106</masaperteneciente>
+            <masaperteneciente>56</masaperteneciente>
             <codigo>27</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -379,62 +379,62 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>100</idmasa>
+         <idmasa>57</idmasa>
          <descmpatrimonial>B) Inmovilizado</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>100</masaperteneciente>
+            <masaperteneciente>57</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>101</idmpatrimonial>
+            <idmpatrimonial>51</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>100</masaperteneciente>
+            <masaperteneciente>57</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>102</idmpatrimonial>
+            <idmpatrimonial>54</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>100</masaperteneciente>
+            <masaperteneciente>57</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>103</idmpatrimonial>
+            <idmpatrimonial>53</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>100</masaperteneciente>
+            <masaperteneciente>57</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>104</idmpatrimonial>
+            <idmpatrimonial>52</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>100</masaperteneciente>
+            <masaperteneciente>57</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>105</idmpatrimonial>
+            <idmpatrimonial>55</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>108</idmasa>
+         <idmasa>58</idmasa>
          <descmpatrimonial>I. Accionistas por desembolso exigidos</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>108</masaperteneciente>
+            <masaperteneciente>58</masaperteneciente>
             <codigo>558</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -443,222 +443,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>109</idmasa>
-         <descmpatrimonial>II. Existencias</descmpatrimonial>
-         <orden></orden>
-         <tabulacion></tabulacion>
-         <saldo></saldo>
-         <opdesc></opdesc>
-         <compmasap>
-            <masaperteneciente>109</masaperteneciente>
-            <codigo>31</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>109</masaperteneciente>
-            <codigo>31</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>109</masaperteneciente>
-            <codigo>32</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>109</masaperteneciente>
-            <codigo>33</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>109</masaperteneciente>
-            <codigo>34</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>109</masaperteneciente>
-            <codigo>35</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>109</masaperteneciente>
-            <codigo>36</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>109</masaperteneciente>
-            <codigo>39</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>109</masaperteneciente>
-            <codigo>407</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-      </mpatrimonial>
-      <mpatrimonial>
-         <idmasa>111</idmasa>
-         <descmpatrimonial>III. Deudores</descmpatrimonial>
-         <orden></orden>
-         <tabulacion></tabulacion>
-         <saldo></saldo>
-         <opdesc></opdesc>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>430</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>431</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>432</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>433</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>435</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>44</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>460</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>470</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>471</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>472</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>474</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>544</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>551</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>552</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>111</masaperteneciente>
-            <codigo>553</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-      </mpatrimonial>
-      <mpatrimonial>
-         <idmasa>113</idmasa>
+         <idmasa>61</idmasa>
          <descmpatrimonial>V. Acciones propias a corto plazo</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>113</masaperteneciente>
+            <masaperteneciente>61</masaperteneciente>
             <codigo>566</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -666,7 +458,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>113</masaperteneciente>
+            <masaperteneciente>61</masaperteneciente>
             <codigo>59</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -675,14 +467,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>112</idmasa>
+         <idmasa>62</idmasa>
          <descmpatrimonial>IV. Inversiones financieras temporales</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>53</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -690,7 +482,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>540</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -698,7 +490,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>541</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -706,7 +498,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>542</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -714,7 +506,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>543</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -722,7 +514,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>545</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -730,7 +522,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>546</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -738,7 +530,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>547</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -746,7 +538,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>548</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -754,7 +546,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>549</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -762,7 +554,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>112</masaperteneciente>
+            <masaperteneciente>62</masaperteneciente>
             <codigo>565</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -771,14 +563,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>114</idmasa>
+         <idmasa>63</idmasa>
          <descmpatrimonial>VI. Tesoreria</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>114</masaperteneciente>
+            <masaperteneciente>63</masaperteneciente>
             <codigo>57</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -787,14 +579,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>115</idmasa>
+         <idmasa>64</idmasa>
          <descmpatrimonial>VII. Ajuste por periodificación</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>115</masaperteneciente>
+            <masaperteneciente>64</masaperteneciente>
             <codigo>480</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -802,7 +594,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>115</masaperteneciente>
+            <masaperteneciente>64</masaperteneciente>
             <codigo>580</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -811,126 +603,118 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>107</idmasa>
+         <idmasa>65</idmasa>
          <descmpatrimonial>D) Activo circulante</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>107</masaperteneciente>
+            <masaperteneciente>65</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>108</idmpatrimonial>
+            <idmpatrimonial>58</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>107</masaperteneciente>
+            <masaperteneciente>65</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>109</idmpatrimonial>
+            <idmpatrimonial>59</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>107</masaperteneciente>
+            <masaperteneciente>65</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>111</idmpatrimonial>
+            <idmpatrimonial>60</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>107</masaperteneciente>
+            <masaperteneciente>65</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>112</idmpatrimonial>
+            <idmpatrimonial>62</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>107</masaperteneciente>
+            <masaperteneciente>65</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>113</idmpatrimonial>
+            <idmpatrimonial>61</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>107</masaperteneciente>
+            <masaperteneciente>65</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>114</idmpatrimonial>
+            <idmpatrimonial>63</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>107</masaperteneciente>
+            <masaperteneciente>65</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>115</idmpatrimonial>
+            <idmpatrimonial>64</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>116</idmasa>
+         <idmasa>66</idmasa>
          <descmpatrimonial>TOTAL GENERAL (A + B + C + D)</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>116</masaperteneciente>
+            <masaperteneciente>66</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>99</idmpatrimonial>
+            <idmpatrimonial>50</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>116</masaperteneciente>
+            <masaperteneciente>66</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>100</idmpatrimonial>
+            <idmpatrimonial>57</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>116</masaperteneciente>
+            <masaperteneciente>66</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>106</idmpatrimonial>
+            <idmpatrimonial>56</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>116</masaperteneciente>
+            <masaperteneciente>66</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>107</idmpatrimonial>
+            <idmpatrimonial>65</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>117</idmasa>
-         <descmpatrimonial>A) Fondos propios</descmpatrimonial>
-         <orden></orden>
-         <tabulacion></tabulacion>
-         <saldo></saldo>
-         <opdesc></opdesc>
-      </mpatrimonial>
-      <mpatrimonial>
-         <idmasa>118</idmasa>
+         <idmasa>68</idmasa>
          <descmpatrimonial>I. Capital suscrito</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>118</masaperteneciente>
+            <masaperteneciente>68</masaperteneciente>
             <codigo>10</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -939,14 +723,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>119</idmasa>
+         <idmasa>69</idmasa>
          <descmpatrimonial>II. Prima de emisión</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>119</masaperteneciente>
+            <masaperteneciente>69</masaperteneciente>
             <codigo>110</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -955,14 +739,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>120</idmasa>
+         <idmasa>70</idmasa>
          <descmpatrimonial>III. Reserva de revalorización</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>120</masaperteneciente>
+            <masaperteneciente>70</masaperteneciente>
             <codigo>111</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -971,14 +755,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>121</idmasa>
+         <idmasa>71</idmasa>
          <descmpatrimonial>IV. Reserva</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>121</masaperteneciente>
+            <masaperteneciente>71</masaperteneciente>
             <codigo>112</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -986,7 +770,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>121</masaperteneciente>
+            <masaperteneciente>71</masaperteneciente>
             <codigo>113</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -994,7 +778,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>121</masaperteneciente>
+            <masaperteneciente>71</masaperteneciente>
             <codigo>114</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1002,7 +786,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>121</masaperteneciente>
+            <masaperteneciente>71</masaperteneciente>
             <codigo>115</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1010,7 +794,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>121</masaperteneciente>
+            <masaperteneciente>71</masaperteneciente>
             <codigo>116</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1018,7 +802,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>121</masaperteneciente>
+            <masaperteneciente>71</masaperteneciente>
             <codigo>117</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1026,7 +810,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>121</masaperteneciente>
+            <masaperteneciente>71</masaperteneciente>
             <codigo>118</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1035,30 +819,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>124</idmasa>
-         <descmpatrimonial>V. Resultados de ejercicios anteriores</descmpatrimonial>
-         <orden></orden>
-         <tabulacion></tabulacion>
-         <saldo></saldo>
-         <opdesc></opdesc>
-         <compmasap>
-            <masaperteneciente>124</masaperteneciente>
-            <codigo>122</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-      </mpatrimonial>
-      <mpatrimonial>
-         <idmasa>125</idmasa>
+         <idmasa>73</idmasa>
          <descmpatrimonial>VI. Perdidas y ganancias (Beneficio o pérdida)</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>125</masaperteneciente>
+            <masaperteneciente>73</masaperteneciente>
             <codigo>129</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1067,14 +835,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>126</idmasa>
+         <idmasa>74</idmasa>
          <descmpatrimonial>VII. Dividendo a cuenta entregado en el ejercicio</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>126</masaperteneciente>
+            <masaperteneciente>74</masaperteneciente>
             <codigo>557</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1083,14 +851,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>127</idmasa>
+         <idmasa>75</idmasa>
          <descmpatrimonial>B) Ingresos a distribuir en varios ejercicios</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>127</masaperteneciente>
+            <masaperteneciente>75</masaperteneciente>
             <codigo>13</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1099,14 +867,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>128</idmasa>
+         <idmasa>76</idmasa>
          <descmpatrimonial>C) Provisiones para riesgos y gastos</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>128</masaperteneciente>
+            <masaperteneciente>76</masaperteneciente>
             <codigo>14</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1115,14 +883,14 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>129</idmasa>
+         <idmasa>77</idmasa>
          <descmpatrimonial>D) Acreedores a largo plazo</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>129</masaperteneciente>
+            <masaperteneciente>77</masaperteneciente>
             <codigo>15</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1130,7 +898,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>129</masaperteneciente>
+            <masaperteneciente>77</masaperteneciente>
             <codigo>16</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1138,7 +906,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>129</masaperteneciente>
+            <masaperteneciente>77</masaperteneciente>
             <codigo>17</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1146,7 +914,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>129</masaperteneciente>
+            <masaperteneciente>77</masaperteneciente>
             <codigo>18</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1154,7 +922,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>129</masaperteneciente>
+            <masaperteneciente>77</masaperteneciente>
             <codigo>248</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1162,7 +930,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>129</masaperteneciente>
+            <masaperteneciente>77</masaperteneciente>
             <codigo>249</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1170,7 +938,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>129</masaperteneciente>
+            <masaperteneciente>77</masaperteneciente>
             <codigo>259</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1179,142 +947,158 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>130</idmasa>
-         <descmpatrimonial>E) Acreedores a corto plazo</descmpatrimonial>
+         <idmasa>79</idmasa>
+         <descmpatrimonial>TOTAL GENERAL</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>400</codigo>
+            <masaperteneciente>79</masaperteneciente>
+            <codigo></codigo>
+            <idmpatrimonial>67</idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>79</masaperteneciente>
+            <codigo></codigo>
+            <idmpatrimonial>75</idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>79</masaperteneciente>
+            <codigo></codigo>
+            <idmpatrimonial>76</idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>79</masaperteneciente>
+            <codigo></codigo>
+            <idmpatrimonial>77</idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>79</masaperteneciente>
+            <codigo></codigo>
+            <idmpatrimonial>78</idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+      </mpatrimonial>
+      <mpatrimonial>
+         <idmasa>60</idmasa>
+         <descmpatrimonial>III. Deudores</descmpatrimonial>
+         <orden></orden>
+         <tabulacion></tabulacion>
+         <saldo></saldo>
+         <opdesc></opdesc>
+         <compmasap>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>430</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>401</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>431</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>402</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>432</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>403</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>433</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>41</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>435</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>437</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>44</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>465</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>460</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>475</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>470</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>476</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>471</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>477</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>472</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>479</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>474</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>485</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>544</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>499</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>50</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>51</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>52</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>130</masaperteneciente>
+            <masaperteneciente>60</masaperteneciente>
             <codigo>551</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1322,7 +1106,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
+            <masaperteneciente>60</masaperteneciente>
             <codigo>552</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1330,7 +1114,7 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
+            <masaperteneciente>60</masaperteneciente>
             <codigo>553</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
@@ -1338,48 +1122,24 @@
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>555</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>436</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>556</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>490</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>560</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>561</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>585</codigo>
-            <idmpatrimonial></idmpatrimonial>
-            <saldo></saldo>
-            <signo>t</signo>
-            <nombre></nombre>
-         </compmasap>
-         <compmasap>
-            <masaperteneciente>130</masaperteneciente>
-            <codigo>406</codigo>
+            <masaperteneciente>60</masaperteneciente>
+            <codigo>494</codigo>
             <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
@@ -1387,231 +1147,567 @@
          </compmasap>
       </mpatrimonial>
       <mpatrimonial>
-         <idmasa>131</idmasa>
-         <descmpatrimonial>TOTAL GENERAL</descmpatrimonial>
+         <idmasa>67</idmasa>
+         <descmpatrimonial>A) Fondos propios</descmpatrimonial>
          <orden></orden>
          <tabulacion></tabulacion>
          <saldo></saldo>
          <opdesc></opdesc>
          <compmasap>
-            <masaperteneciente>131</masaperteneciente>
+            <masaperteneciente>67</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>117</idmpatrimonial>
+            <idmpatrimonial>68</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>131</masaperteneciente>
+            <masaperteneciente>67</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>127</idmpatrimonial>
+            <idmpatrimonial>69</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>131</masaperteneciente>
+            <masaperteneciente>67</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>128</idmpatrimonial>
+            <idmpatrimonial>70</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>131</masaperteneciente>
+            <masaperteneciente>67</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>129</idmpatrimonial>
+            <idmpatrimonial>71</idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
          <compmasap>
-            <masaperteneciente>131</masaperteneciente>
+            <masaperteneciente>67</masaperteneciente>
             <codigo></codigo>
-            <idmpatrimonial>130</idmpatrimonial>
+            <idmpatrimonial>72</idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>67</masaperteneciente>
+            <codigo></codigo>
+            <idmpatrimonial>73</idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>67</masaperteneciente>
+            <codigo></codigo>
+            <idmpatrimonial>74</idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+      </mpatrimonial>
+      <mpatrimonial>
+         <idmasa>72</idmasa>
+         <descmpatrimonial>V. Resultados de ejercicios anteriores</descmpatrimonial>
+         <orden></orden>
+         <tabulacion></tabulacion>
+         <saldo></saldo>
+         <opdesc></opdesc>
+         <compmasap>
+            <masaperteneciente>72</masaperteneciente>
+            <codigo>122</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>72</masaperteneciente>
+            <codigo>121</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+      </mpatrimonial>
+      <mpatrimonial>
+         <idmasa>59</idmasa>
+         <descmpatrimonial>II. Existencias</descmpatrimonial>
+         <orden></orden>
+         <tabulacion></tabulacion>
+         <saldo></saldo>
+         <opdesc></opdesc>
+         <compmasap>
+            <masaperteneciente>59</masaperteneciente>
+            <codigo>30</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>59</masaperteneciente>
+            <codigo>31</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>59</masaperteneciente>
+            <codigo>31</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>59</masaperteneciente>
+            <codigo>32</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>59</masaperteneciente>
+            <codigo>33</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>59</masaperteneciente>
+            <codigo>34</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>59</masaperteneciente>
+            <codigo>35</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>59</masaperteneciente>
+            <codigo>36</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>59</masaperteneciente>
+            <codigo>39</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>59</masaperteneciente>
+            <codigo>407</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+      </mpatrimonial>
+      <mpatrimonial>
+         <idmasa>78</idmasa>
+         <descmpatrimonial>E) Acreedores a corto plazo</descmpatrimonial>
+         <orden></orden>
+         <tabulacion></tabulacion>
+         <saldo></saldo>
+         <opdesc></opdesc>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>400</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>401</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>402</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>403</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>406</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>41</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>437</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>465</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>475</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>476</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>477</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>479</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>485</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>499</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>50</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>51</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>52</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>551</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>552</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>553</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>555</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>556</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>560</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>561</codigo>
+            <idmpatrimonial></idmpatrimonial>
+            <saldo></saldo>
+            <signo>t</signo>
+            <nombre></nombre>
+         </compmasap>
+         <compmasap>
+            <masaperteneciente>78</masaperteneciente>
+            <codigo>585</codigo>
+            <idmpatrimonial></idmpatrimonial>
             <saldo></saldo>
             <signo>t</signo>
             <nombre></nombre>
          </compmasap>
       </mpatrimonial>
       <compbalance>
-         <idmpatrimonial>99</idmpatrimonial>
+         <idmpatrimonial>50</idmpatrimonial>
          <concepto>A) Accionistas (socios) por desembolsos no exigidos</concepto>
          <orden>1</orden>
          <tabulacion>0</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>101</idmpatrimonial>
+         <idmpatrimonial>51</idmpatrimonial>
          <concepto>I. Gastos de establecimiento</concepto>
          <orden>3</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>104</idmpatrimonial>
+         <idmpatrimonial>52</idmpatrimonial>
          <concepto>IV. Inmovilizaciones financieras</concepto>
          <orden>6</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>103</idmpatrimonial>
+         <idmpatrimonial>53</idmpatrimonial>
          <concepto>III. Inmovilizaciones materiales</concepto>
          <orden>5</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>102</idmpatrimonial>
+         <idmpatrimonial>54</idmpatrimonial>
          <concepto>II. Inmovilizaciones inmateriales</concepto>
          <orden>4</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>105</idmpatrimonial>
+         <idmpatrimonial>55</idmpatrimonial>
          <concepto>V. Acciones propias</concepto>
          <orden>7</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>106</idmpatrimonial>
+         <idmpatrimonial>56</idmpatrimonial>
          <concepto>C) Gastos a distribuir en varios ejercicios</concepto>
          <orden>8</orden>
          <tabulacion>0</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>100</idmpatrimonial>
+         <idmpatrimonial>57</idmpatrimonial>
          <concepto>B) Inmovilizado</concepto>
          <orden>2</orden>
          <tabulacion>0</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>108</idmpatrimonial>
+         <idmpatrimonial>58</idmpatrimonial>
          <concepto>I. Accionistas por desembolso exigidos</concepto>
          <orden>10</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>109</idmpatrimonial>
-         <concepto>II. Existencias</concepto>
-         <orden>11</orden>
-         <tabulacion>1</tabulacion>
-      </compbalance>
-      <compbalance>
-         <idmpatrimonial>111</idmpatrimonial>
-         <concepto>III. Deudores</concepto>
-         <orden>12</orden>
-         <tabulacion>1</tabulacion>
-      </compbalance>
-      <compbalance>
-         <idmpatrimonial>112</idmpatrimonial>
+         <idmpatrimonial>62</idmpatrimonial>
          <concepto>IV. Inversiones financieras temporales</concepto>
          <orden>13</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>113</idmpatrimonial>
+         <idmpatrimonial>61</idmpatrimonial>
          <concepto>V. Acciones propias a corto plazo</concepto>
          <orden>14</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>114</idmpatrimonial>
+         <idmpatrimonial>63</idmpatrimonial>
          <concepto>VI. Tesoreria</concepto>
          <orden>15</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>115</idmpatrimonial>
+         <idmpatrimonial>64</idmpatrimonial>
          <concepto>VII. Ajuste por periodificación</concepto>
          <orden>16</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>107</idmpatrimonial>
+         <idmpatrimonial>65</idmpatrimonial>
          <concepto>D) Activo circulante</concepto>
          <orden>9</orden>
          <tabulacion>0</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>116</idmpatrimonial>
+         <idmpatrimonial>66</idmpatrimonial>
          <concepto>TOTAL GENERAL (A + B + C + D)</concepto>
          <orden>17</orden>
          <tabulacion>0</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>117</idmpatrimonial>
-         <concepto>A) Fondos propios</concepto>
-         <orden>18</orden>
-         <tabulacion>0</tabulacion>
-      </compbalance>
-      <compbalance>
-         <idmpatrimonial>118</idmpatrimonial>
+         <idmpatrimonial>68</idmpatrimonial>
          <concepto>I. Capital suscrito</concepto>
          <orden>19</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>119</idmpatrimonial>
+         <idmpatrimonial>69</idmpatrimonial>
          <concepto>II. Prima de emisión</concepto>
          <orden>20</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>120</idmpatrimonial>
+         <idmpatrimonial>70</idmpatrimonial>
          <concepto>III. Reserva de revalorización</concepto>
          <orden>21</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>121</idmpatrimonial>
+         <idmpatrimonial>71</idmpatrimonial>
          <concepto>IV. Reserva</concepto>
          <orden>22</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>124</idmpatrimonial>
-         <concepto>V. Resultados de ejercicios anteriores</concepto>
-         <orden>23</orden>
-         <tabulacion>1</tabulacion>
-      </compbalance>
-      <compbalance>
-         <idmpatrimonial>125</idmpatrimonial>
+         <idmpatrimonial>73</idmpatrimonial>
          <concepto>VI. Perdidas y ganancias (Beneficio o pérdida)</concepto>
          <orden>24</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>126</idmpatrimonial>
+         <idmpatrimonial>74</idmpatrimonial>
          <concepto>VII. Dividendo a cuenta entregado en el ejercicio</concepto>
          <orden>25</orden>
          <tabulacion>1</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>127</idmpatrimonial>
+         <idmpatrimonial>75</idmpatrimonial>
          <concepto>B) Ingresos a distribuir en varios ejercicios</concepto>
          <orden>26</orden>
          <tabulacion>0</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>128</idmpatrimonial>
+         <idmpatrimonial>76</idmpatrimonial>
          <concepto>C) Provisiones para riesgos y gastos</concepto>
          <orden>27</orden>
          <tabulacion>0</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>129</idmpatrimonial>
+         <idmpatrimonial>77</idmpatrimonial>
          <concepto>D) Acreedores a largo plazo</concepto>
          <orden>28</orden>
          <tabulacion>0</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>130</idmpatrimonial>
-         <concepto>E) Acreedores a corto plazo</concepto>
-         <orden>29</orden>
+         <idmpatrimonial>79</idmpatrimonial>
+         <concepto>TOTAL GENERAL</concepto>
+         <orden>30</orden>
          <tabulacion>0</tabulacion>
       </compbalance>
       <compbalance>
-         <idmpatrimonial>131</idmpatrimonial>
-         <concepto>TOTAL GENERAL</concepto>
-         <orden>30</orden>
+         <idmpatrimonial>60</idmpatrimonial>
+         <concepto>III. Deudores</concepto>
+         <orden>12</orden>
+         <tabulacion>1</tabulacion>
+      </compbalance>
+      <compbalance>
+         <idmpatrimonial>67</idmpatrimonial>
+         <concepto>A) Fondos propios</concepto>
+         <orden>18</orden>
+         <tabulacion>0</tabulacion>
+      </compbalance>
+      <compbalance>
+         <idmpatrimonial>72</idmpatrimonial>
+         <concepto>V. Resultados de ejercicios anteriores</concepto>
+         <orden>23</orden>
+         <tabulacion>1</tabulacion>
+      </compbalance>
+      <compbalance>
+         <idmpatrimonial>59</idmpatrimonial>
+         <concepto>II. Existencias</concepto>
+         <orden>11</orden>
+         <tabulacion>1</tabulacion>
+      </compbalance>
+      <compbalance>
+         <idmpatrimonial>78</idmpatrimonial>
+         <concepto>E) Acreedores a corto plazo</concepto>
+         <orden>29</orden>
          <tabulacion>0</tabulacion>
       </compbalance>
    </balance>
