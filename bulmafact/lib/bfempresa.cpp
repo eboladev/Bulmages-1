@@ -64,6 +64,24 @@ BfCursor* BfEmpresa::pg_database(QString* usuario, QString* passwd) {
     else return lista;
 }
 
+void BfEmpresa::cargaEmpresa(QString *NombreDB) {
+NombreDB=NombreDB;
+}
+
+/************************************************************************************/
+/* Esta función convierte un numero con decimales a un entero. Usando la regla      */
+/* que si el el primer decimal es mayor o igual  a 5 se devuelve el entero superior.*/
+/***********************************************************************************/
+int BfEmpresa::roundI(double valor) {
+    int retorno;
+    double mayor=floor(valor);
+    if ((mayor-valor) >= 0.5)  retorno=(int)mayor-1;
+    else retorno= (int)mayor;
+    return retorno;
+}
+
+
+
 /*******************************************************************************/
 /* Clase BfCursor                                                                */
 /*******************************************************************************/

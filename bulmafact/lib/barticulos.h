@@ -18,6 +18,8 @@
 
 #include ".ui/uiarticulos.h"
 
+#include "bfempresa.h"
+
 /**
 @author Josep Burcion
 */
@@ -26,10 +28,12 @@ class BArticulos : public UIArticulos
     Q_OBJECT
     
 public:
-    BArticulos(QWidget * parent = 0, const char * name = 0, WFlags f=0);
+    BArticulos(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0, WFlags f=0);
     ~BArticulos();
 
-
+private:
+    BfEmpresa* EmpresaTrabajo;
+    
 };
 
 #endif

@@ -15,7 +15,8 @@
 
 #include "barticulos.h"
 
-BArticulos::BArticulos(QWidget * parent, const char * name, WFlags f) : UIArticulos(parent, name, f) {
+BArticulos::BArticulos(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIArticulos(parent, name, f) {
+    EmpresaTrabajo=punteroEmpresaTrabajo;
 }
 
 

@@ -14,8 +14,8 @@
  ***************************************************************************/
 #include "bclientes.h"
 
-BClientes::BClientes(QWidget * parent, const char * name) : UIClientes(parent, name)
-{
+BClientes::BClientes(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name) : UIClientes(parent, name) {
+    EmpresaTrabajo=punteroEmpresaTrabajo;
 }
 
 

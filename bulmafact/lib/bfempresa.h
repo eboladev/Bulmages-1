@@ -37,9 +37,12 @@ class BfEmpresa{
 public:
     BfEmpresa();
     ~BfEmpresa();
+     void cargaEmpresa(QString*);
      BfCursor* pg_database(QString* usuario=0, QString* passwd=0);
+     int roundI(double);
 
 //private:
+    
 
     
 };

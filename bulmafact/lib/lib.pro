@@ -17,7 +17,6 @@ INCLUDEPATH = ../src \
 SOURCES += balbaventa.cpp \
            bmodventas.cpp \
            bpediventa.cpp \
-           funcaux.cpp \
            barticulos.cpp \
            bclientes.cpp \
            bpasswd.cpp \
@@ -26,7 +25,6 @@ SOURCES += balbaventa.cpp \
 HEADERS += balbaventa.h \
            bmodventas.h \
            bpediventa.h \
-           funcaux.h \
            barticulos.h \
            bclientes.h \
            bpasswd.h \

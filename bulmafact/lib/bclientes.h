@@ -18,6 +18,8 @@
 
 #include ".ui/uiclientes.h"
 
+#include "bfempresa.h"
+
 /**
 @author Josep Burcion
 */
@@ -25,9 +27,11 @@ class BClientes : public UIClientes
 {
     Q_OBJECT
 public:
-    BClientes(QWidget * parent = 0, const char * name = 0);
+    BClientes(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0);
     ~BClientes();
-
+private:
+    BfEmpresa* EmpresaTrabajo;
+    
 
 };
 

@@ -21,6 +21,7 @@ BModVentas::BModVentas(QString* usuario, QString* passwd, QString* dataBase, QWi
  : UIVentas(parent,name,f)
 {
     //PunteroAlSelector=ref;
+    empresaTrabajo = new BfEmpresa();
     QVBox* vb = new QVBox( this );
     vb->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     zona0 = new QWorkspace (vb);
@@ -31,7 +32,6 @@ BModVentas::BModVentas(QString* usuario, QString* passwd, QString* dataBase, QWi
     if (Password==NULL) Password = new QString("");
     DataBase = dataBase;
     if (DataBase == NULL) DataBase = new QString("NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR");
-    //*DataBase = "josep";
     intentosFallidosPassword=0;
     cargaUsuario();
 }
@@ -59,8 +59,7 @@ void BModVentas::cargaUsuario(){
 /* Comprueba en que empresas puede entrar el usuario y las muestra.          */
 /*****************************************************************************/
 void BModVentas::seleccionaEmpresa(){
-    BfEmpresa* miEmpresa = new BfEmpresa();
-    BfCursor* cursorEmpresas=miEmpresa->pg_database(Usuario, Password);
+    BfCursor* cursorEmpresas=empresaTrabajo->pg_database(Usuario, Password);
     if (cursorEmpresas) {
         if (*DataBase!="NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR") {
             while (!cursorEmpresas->eof() && *DataBase !=cursorEmpresas->valor(0)) cursorEmpresas->siguienteregistro();
@@ -79,27 +78,27 @@ void BModVentas::seleccionaEmpresa(){
     }
     
     setCaption(QString("BulmaFact - ") + DataBase->ascii()); //debug....
-    delete miEmpresa;
+    empresaTrabajo->cargaEmpresa(DataBase);
 }
 
 //Abro la ficha de mantenimiento de los clientes
 void BModVentas::fichaClientes() {
-    (new BClientes(zona0,"cliente"))->show();
+    (new BClientes(empresaTrabajo, zona0,"cliente"))->show();
 }
 
 //Abro la ficha de mantenimiento de los articulos
 void BModVentas::fichaArticulos() {
-    (new BArticulos(zona0,"articulo"))->show();
+    (new BArticulos(empresaTrabajo, zona0,"articulo"))->show();
 }
 
 //Abro la ventana de los albaranes de Venta.
 void BModVentas::albaranes() {
-    (new BAlbaVenta(zona0,"albaran"))->show();
+    (new BAlbaVenta(empresaTrabajo, zona0,"albaran"))->show();
 }
 
 //Abro la ventana de los pedidos de Venta.
 void BModVentas::pedidos() {
-    (new BPediVenta(zona0,"pedido"))->show();
+    (new BPediVenta(empresaTrabajo, zona0,"pedido"))->show();
 }
 
 //Emite una señal que se puede conectar a un SLOT

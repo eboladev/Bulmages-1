@@ -16,7 +16,7 @@
 #define BALBAVENTA_H
 
 #include ".ui/uialbaventa.h"
-#include "funcaux.h"
+#include "bfempresa.h"
 
 #include <qlineedit.h>
 #include <qlabel.h>
@@ -32,10 +32,13 @@
 class BAlbaVenta : public UIAlbaVenta
 {
 public:
-    BAlbaVenta(QWidget * parent = 0, const char * name = 0);
+    BAlbaVenta(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0);
     ~BAlbaVenta();
 
 
+private:
+    BfEmpresa* EmpresaTrabajo;
+    
 private slots:    
     virtual void ScrollCabeceraV(int valor=0);
     virtual void ScrollCabeceraH(int valor=0);

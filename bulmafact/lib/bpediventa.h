@@ -17,7 +17,7 @@
 #define BPediVenta_H
 
 #include ".ui/uipediventa.h"
-#include "funcaux.h"
+#include "bfempresa.h"
 
 #include <qlineedit.h>
 #include <qlabel.h>
@@ -35,9 +35,11 @@ class BPediVenta : public UIPediVenta
     Q_OBJECT
     
 public:
-    BPediVenta(QWidget * parent = 0, const char * name = 0);
+    BPediVenta(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0);
     ~BPediVenta();
 
+private:
+    BfEmpresa* EmpresaTrabajo;
 
 private slots:    
     virtual void ScrollCabeceraV(int valor=0);

@@ -56,6 +56,7 @@ private:
     QString * Password;
     QString * DataBase;
     int intentosFallidosPassword;
+    BfEmpresa* empresaTrabajo;
 
 signals:
     virtual void clickEnlace();

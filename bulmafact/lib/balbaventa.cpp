@@ -16,8 +16,9 @@
 #include "balbaventa.h"
 
 
-BAlbaVenta::BAlbaVenta(QWidget * parent, const char * name) : UIAlbaVenta(parent, name)
+BAlbaVenta::BAlbaVenta(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name) : UIAlbaVenta(parent, name)
 {
+EmpresaTrabajo=punteroEmpresaTrabajo;
 //FrameCabeceraLeft = FrameCabecera->pos().x();
 //FrameCabeceraTop = FrameCabecera->pos().y();
 //FrameCabeceraWidth = FrameCabecera->width();
@@ -52,7 +53,7 @@ FrameCabecera->setGeometry(- valor, FrameCabecera->pos().y() , FrameCabecera->wi
 void BAlbaVenta::resizeEvent(QResizeEvent * evento)
 {
 //recuadro exterior de la cabezera. (Verticalmente ocupa un 30% del espacio disponible)
-contenedorCabecera->setGeometry(70,10,evento->size().width()-75, roundI((evento->size().height()-140)  * 0.4) ); 
+contenedorCabecera->setGeometry(70,10,evento->size().width()-75, EmpresaTrabajo->roundI((evento->size().height()-140)  * 0.4) ); 
 
 //Barras de Scroll Vertical i Horizontal
 scrollBar1->setGeometry(contenedorCabecera->width()-20,7,20,contenedorCabecera->height()-25);
@@ -68,7 +69,7 @@ baseScrollCabecera->setGeometry(5,10,contenedorCabecera->width()-30,contenedorCa
 //FrameCabecera->setGeometry(0,0,baseScrollCabecera->width(),FrameCabecera->frameRect().height()); 
 
 //recuadro exterior de las lineas. (Verticalmente ocupa un 50% del espacio disponible)
-contenedorLineas->setGeometry(70,10+roundI((evento->size().height()-140) * 0.4),evento->size().width()-75, roundI((evento->size().height()-140)* 0.6) ); 
+contenedorLineas->setGeometry(70,10+EmpresaTrabajo->roundI((evento->size().height()-140) * 0.4),evento->size().width()-75, EmpresaTrabajo->roundI((evento->size().height()-140)* 0.6) ); 
 //Tabla Lineas
 tablaLineas->setGeometry(10,20,contenedorLineas->width()-20,contenedorLineas->height()-70); 
 //Botones de la zona de lineas
