@@ -72,6 +72,8 @@ cp bulmages /usr/local/bin
 cp cargaemp /usr/local/bin
 cp nuevaemp /usr/local/bin
 cp borraremp /usr/local/bin
+cp guardaemp /usr/local/bin
+cp cargaemp /usr/local/bin
 
 cp rev-* /usr/share/bulmages
    
