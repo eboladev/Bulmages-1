@@ -23,9 +23,10 @@ canalview::canalview(QWidget *parent, const char *name, bool modal ) : canaldlg(
 canalview::~canalview(){
 }// end ~canalview
 
+// Inicializamos la clase con la base de datos
+// Es necesario inicializar la clase antes de utilizarla.
 void canalview::inicializa(postgresiface2 *conn) {
   conexionbase= conn;
-
   // Vamos a inicializar el combo de los canales
   QString query = "SELECT * from canal ORDER BY nombre";
   conexionbase->begin();
