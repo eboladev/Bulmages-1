@@ -7,20 +7,12 @@
 #include <qevent.h>
 
 Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
-//  QPixmap image0( logofx );
-	QPixmap image0;
-	image0.load(confpr->valor(CONF_SPLASH_BULMAFACT).c_str());
+   QPixmap image0;
+   image0.load(confpr->valor(CONF_SPLASH_BULMAFACT).c_str());
    l = new QLabel( this );
    l->setPixmap( image0 );
-//	fprintf(stderr,"ancho: %d, alto: %d\n", image0.width(), image0.height());
    l->setGeometry ( 0, 0, image0.width(), image0.height() );
 
-// QVBoxLayout *vb = new QVBoxLayout(this);
-// this->addLayout( vb );
-
-
- // Add Product name/Main message
-// if(mmsg != 0) {
   QLabel *l1 = new QLabel( this );
   l1->setAlignment( AlignVCenter|AlignHCenter );
   l1->setFont( QFont( "Arial", 20, QFont::Bold ) );
@@ -58,32 +50,30 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   l2->setPaletteForegroundColor(QColor("#000066"));
   l2->setPaletteBackgroundColor(QColor("#DDDDDD"));
 
-  QTimer *timer = new QTimer(this);
-  connect( timer, SIGNAL(timeout()), SLOT(close()) );
-  timer->start( 30000 ); //timer->start( 10000);
+  QTimer timer(this); // = new QTimer(this);
+  connect( &timer, SIGNAL(timeout()), SLOT(close()) );
+  timer.start( 30000 ); //timer->start( 10000);
 
-  QTimer *timer1 = new QTimer(this);
-  connect( timer1, SIGNAL(timeout()), SLOT(paint()) );
-  timer1->start( 1750 ); //timer1->start( 1750);
-  
-//  connect(this, SIGNAL(clicked()),this,  SLOT(close()) );
-//  connect(this, SIGNAL(returnPressed()),this,  SLOT(close()) );
-//  connect((QObject *) &image0, SIGNAL(clicked(int, int)),this, SLOT(close()) );
-  
+  QTimer timer1(this); // = new QTimer(this);
+  connect( &timer1, SIGNAL(timeout()), SLOT(paint()) );
+  timer1.start( 1750 ); //timer1->start( 1750);  
   exec();
   delete l1;
 }// end splash
 
 Splash::~Splash() {
- delete l;
- delete l2;
+   delete l;
+   delete l2;
 }
 
 bool Splash::event( QEvent *evt) {
 	if (evt->type() == QEvent::KeyPress) {
 		close();
 	}// end if
-	return QWidget::event( evt);
+	if (evt->type() == QEvent::MouseButtonPress) {
+		close();
+	}// end if
+	return QDialog::event( evt);
 }// end event
 
 void Splash::paint() {

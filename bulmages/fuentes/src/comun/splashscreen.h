@@ -29,7 +29,7 @@ public:
    Splash();
    ~Splash();
 public slots:
-   void paint();
-
+   virtual void paint();
+   virtual bool event( QEvent *);
 };
 #endif // _SPLASH_H

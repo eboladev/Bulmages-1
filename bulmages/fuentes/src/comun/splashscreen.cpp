@@ -56,13 +56,13 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   l2->setPaletteForegroundColor(QColor("#000066"));
   l2->setPaletteBackgroundColor(QColor("#DDDDDD"));
 
-  QTimer *timer = new QTimer(this);
-  connect( timer, SIGNAL(timeout()), SLOT(close()) );
-  timer->start( 1000 ); //timer->start( 10000);
+  QTimer timer(this);
+  connect( &timer, SIGNAL(timeout()), SLOT(close()) );
+  timer.start( 150000 ); //timer->start( 10000);
 
-  QTimer *timer1 = new QTimer(this);
-  connect( timer1, SIGNAL(timeout()), SLOT(paint()) );
-  timer1->start( 150 ); //timer1->start( 1750);
+  QTimer timer1(this);
+  connect( &timer1, SIGNAL(timeout()), SLOT(paint()) );
+  timer1.start( 1750 ); //timer1->start( 1750);
   exec();
   delete l1;
 }// end splash
@@ -70,7 +70,19 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
 Splash::~Splash() {
  delete l;
  delete l2;
+// delete timer;
+// delete timer1;
 }
+
+bool Splash::event( QEvent *evt) {
+	if (evt->type() == QEvent::KeyPress) {
+		close();
+	}// end if
+	if (evt->type() == QEvent::MouseButtonPress) {
+		close();
+	}// end if
+	return QDialog::event( evt);
+}// end event
 
 
 void Splash::paint() {
