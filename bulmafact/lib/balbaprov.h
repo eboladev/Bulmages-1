@@ -13,13 +13,28 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#include "bproveedor.h"
+#ifndef Balbaprov_H
+#define Balbaprov_H
 
-Bproveedor::Bproveedor(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIProveedor(parent, name, f) {
-    EmpresaTrabajo=punteroEmpresaTrabajo;
-}
+#include ".ui/uialbaprov.h"
 
+#include "bfempresa.h"
 
-Bproveedor::~Bproveedor(){
-}
+/**
+@author Josep Burcion
+*/
+class BAlbaProv : public UIAlbaProv
+{
+    Q_OBJECT
+    
+public:
+    BAlbaProv(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0, WFlags f=0);
+    ~BAlbaProv();
+
+private:
+    BfEmpresa* EmpresaTrabajo;
+    
+};
+
+#endif
 

@@ -13,13 +13,17 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#include "bproveedor.h"
+/**************************************************************************/
+/* Clase Contratos de compra.                                             */
+/**************************************************************************/
 
-Bproveedor::Bproveedor(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIProveedor(parent, name, f) {
+#include "bcontrcompra.h"
+
+BContrCompra::BContrCompra(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIContrCompra(parent, name, f) {
     EmpresaTrabajo=punteroEmpresaTrabajo;
 }
 
 
-Bproveedor::~Bproveedor(){
+BContrCompra::~BContrCompra(){
 }
 

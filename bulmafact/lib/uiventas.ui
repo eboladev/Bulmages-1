@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>UIVentas</class>
 <widget class="QMainWindow">
     <property name="name">
@@ -50,16 +50,16 @@
     </property>
     <item text="&amp;Archivos" name="ArchivosMenu">
         <action name="archivoClientesAction"/>
-        <item text="Clientes" name="archivoClientesAction_2" accel="Ctrl+Shift+C">
+        <item text="Clientes" name="popupMenu" accel="Ctrl+Shift+C">
             <action name="archivoClientesClientesAction"/>
             <action name="archivoClientesSucursalesAction"/>
         </item>
         <action name="archivoArticulosAction"/>
-        <item text="Articulos" name="archivoArticulosAction_2" accel="Ctrl+Shift+A">
+        <item text="Articulos" name="popupMenu_4" accel="Ctrl+Shift+A">
             <action name="archivoArticulosArticulosAction"/>
             <action name="archivoArticulosCatalogosAction"/>
             <action name="archivoArticulosGarantiaAction"/>
-            <item text="Garantias" name="archivoArticulosGarantiaAction_2" accel="">
+            <item text="Garantias" name="popupMenu_7" accel="">
                 <action name="archivoArticulosGarantiaModalidad_gAction"/>
                 <action name="archivoArticulosGarantiaCond_garantiaAction"/>
             </item>
@@ -67,13 +67,15 @@
             <action name="archivoArticulosMarcasAction"/>
         </item>
         <action name="archivoProveedoresAction"/>
-        <item text="Proveedores" name="Action_2Item" accel="">
+        <item text="Proveedores" name="popupMenu_12" accel="">
             <action name="archivoProveedoresProveedoresAction"/>
             <action name="archivoProveedoresDivisionesAction"/>
+            <separator/>
+            <action name="archivoProveedoresListado_ProveedoresAction"/>
         </item>
         <separator/>
         <action name="archivosVentasAction"/>
-        <item text="Ventas" name="archivoVentasMenu" accel="">
+        <item text="Ventas" name="popupMenu_18" accel="">
             <action name="archivosVentasCondiciones_VentaAction"/>
             <action name="archivosVentasFormas_de_PagoAction"/>
             <action name="archivosVentasTerminios_de_PagoAction"/>
@@ -94,6 +96,9 @@
         <action name="comprasAlbaranes_CompraAction"/>
         <action name="comprasPedidoAction"/>
         <action name="comprasFacturas_ProveedoresAction"/>
+        <separator/>
+        <action name="comprasListado_PedidosAction"/>
+        <action name="comprasListado_AlbaranesAction"/>
     </item>
     <item text="&amp;Facturacion" name="FacturacionMenu">
         <action name="facturacionFacturacion_AutomaticaAction"/>
@@ -252,6 +257,9 @@
         <property name="text">
             <string>Cerrar</string>
         </property>
+        <property name="menuText">
+            <string>Cerrar</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -261,6 +269,9 @@
             <iconset>kcmsystem.png</iconset>
         </property>
         <property name="text">
+            <string>Facturacion Automatica</string>
+        </property>
+        <property name="menuText">
             <string>Facturacion Automatica</string>
         </property>
     </action>
@@ -274,12 +285,18 @@
         <property name="text">
             <string>Ver Factura...</string>
         </property>
+        <property name="menuText">
+            <string>Ver Factura...</string>
+        </property>
     </action>
     <action>
         <property name="name">
             <cstring>listadosListado_de_PedidosAction</cstring>
         </property>
         <property name="text">
+            <string>Listado de Pedidos</string>
+        </property>
+        <property name="menuText">
             <string>Listado de Pedidos</string>
         </property>
     </action>
@@ -290,12 +307,18 @@
         <property name="text">
             <string>Pendientes de Traspasar</string>
         </property>
+        <property name="menuText">
+            <string>Pendientes de Traspasar</string>
+        </property>
     </action>
     <action>
         <property name="name">
             <cstring>listadosListado_de_AlbaranesAction</cstring>
         </property>
         <property name="text">
+            <string>Listado de Albaranes</string>
+        </property>
+        <property name="menuText">
             <string>Listado de Albaranes</string>
         </property>
     </action>
@@ -306,12 +329,18 @@
         <property name="text">
             <string>Pendientes de Entregar</string>
         </property>
+        <property name="menuText">
+            <string>Pendientes de Entregar</string>
+        </property>
     </action>
     <action>
         <property name="name">
             <cstring>listadosListado_de_FacturasAction</cstring>
         </property>
         <property name="text">
+            <string>Listado de Facturas</string>
+        </property>
+        <property name="menuText">
             <string>Listado de Facturas</string>
         </property>
     </action>
@@ -322,12 +351,18 @@
         <property name="text">
             <string>Listado de Tarifas</string>
         </property>
+        <property name="menuText">
+            <string>Listado de Tarifas</string>
+        </property>
     </action>
     <action>
         <property name="name">
             <cstring>listadosListado_de_OfertasAction</cstring>
         </property>
         <property name="text">
+            <string>Listado de Ofertas</string>
+        </property>
+        <property name="menuText">
             <string>Listado de Ofertas</string>
         </property>
     </action>
@@ -338,6 +373,9 @@
         <property name="text">
             <string>Presupuestos</string>
         </property>
+        <property name="menuText">
+            <string>Presupuestos</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -346,12 +384,21 @@
         <property name="text">
             <string>Garantias</string>
         </property>
+        <property name="menuText">
+            <string>Garantias</string>
+        </property>
     </action>
     <action>
         <property name="name">
             <cstring>controlContratos_MantenimientoAction</cstring>
         </property>
+        <property name="iconSet">
+            <iconset>edit.png</iconset>
+        </property>
         <property name="text">
+            <string>Contratos Mantenimiento</string>
+        </property>
+        <property name="menuText">
             <string>Contratos Mantenimiento</string>
         </property>
     </action>
@@ -365,6 +412,9 @@
         <property name="text">
             <string>Selector</string>
         </property>
+        <property name="menuText">
+            <string>Selector</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -374,6 +424,9 @@
             <iconset>bulmages.png</iconset>
         </property>
         <property name="text">
+            <string>Acerca de...</string>
+        </property>
+        <property name="menuText">
             <string>Acerca de...</string>
         </property>
     </action>
@@ -387,6 +440,9 @@
         <property name="text">
             <string>Ayuda</string>
         </property>
+        <property name="menuText">
+            <string>Ayuda</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -396,6 +452,9 @@
             <iconset>pda_blue.png</iconset>
         </property>
         <property name="text">
+            <string>Calculadora</string>
+        </property>
+        <property name="menuText">
             <string>Calculadora</string>
         </property>
     </action>
@@ -409,6 +468,9 @@
         <property name="text">
             <string>Agenda</string>
         </property>
+        <property name="menuText">
+            <string>Agenda</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -418,6 +480,9 @@
             <iconset>2rightarrow.png</iconset>
         </property>
         <property name="text">
+            <string>Proveedores</string>
+        </property>
+        <property name="menuText">
             <string>Proveedores</string>
         </property>
     </action>
@@ -431,6 +496,9 @@
         <property name="text">
             <string>Tipos de Iva</string>
         </property>
+        <property name="menuText">
+            <string>Tipos de Iva</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -440,6 +508,9 @@
             <iconset>identity.png</iconset>
         </property>
         <property name="text">
+            <string>Familias</string>
+        </property>
+        <property name="menuText">
             <string>Familias</string>
         </property>
     </action>
@@ -453,6 +524,9 @@
         <property name="text">
             <string>Proveedores</string>
         </property>
+        <property name="menuText">
+            <string>Proveedores</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -462,6 +536,9 @@
             <iconset>lo32-app-bulmages01.png</iconset>
         </property>
         <property name="text">
+            <string>Divisiones</string>
+        </property>
+        <property name="menuText">
             <string>Divisiones</string>
         </property>
     </action>
@@ -475,6 +552,9 @@
         <property name="text">
             <string>Clientes</string>
         </property>
+        <property name="menuText">
+            <string>Clientes</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -484,6 +564,9 @@
             <iconset>package_settings.png</iconset>
         </property>
         <property name="text">
+            <string>Sucursales</string>
+        </property>
+        <property name="menuText">
             <string>Sucursales</string>
         </property>
     </action>
@@ -497,6 +580,9 @@
         <property name="text">
             <string>Articulos</string>
         </property>
+        <property name="menuText">
+            <string>Articulos</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -506,6 +592,9 @@
             <iconset>kcmkwm.png</iconset>
         </property>
         <property name="text">
+            <string>Catalogos</string>
+        </property>
+        <property name="menuText">
             <string>Catalogos</string>
         </property>
     </action>
@@ -519,6 +608,9 @@
         <property name="text">
             <string>Garantias</string>
         </property>
+        <property name="menuText">
+            <string>Garantias</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -528,6 +620,9 @@
             <iconset>package_settings.png</iconset>
         </property>
         <property name="text">
+            <string>Modalidad</string>
+        </property>
+        <property name="menuText">
             <string>Modalidad</string>
         </property>
     </action>
@@ -555,6 +650,9 @@
         <property name="text">
             <string>Ventas</string>
         </property>
+        <property name="menuText">
+            <string>Ventas</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -564,6 +662,9 @@
             <iconset>button_ok.png</iconset>
         </property>
         <property name="text">
+            <string>Condiciones Venta</string>
+        </property>
+        <property name="menuText">
             <string>Condiciones Venta</string>
         </property>
     </action>
@@ -577,6 +678,9 @@
         <property name="text">
             <string>Formas de Pago</string>
         </property>
+        <property name="menuText">
+            <string>Formas de Pago</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -586,6 +690,9 @@
             <iconset>button_ok.png</iconset>
         </property>
         <property name="text">
+            <string>Terminios de Pago</string>
+        </property>
+        <property name="menuText">
             <string>Terminios de Pago</string>
         </property>
     </action>
@@ -599,6 +706,9 @@
         <property name="text">
             <string>Ofertas</string>
         </property>
+        <property name="menuText">
+            <string>Ofertas</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -608,6 +718,9 @@
             <iconset>window_new.png</iconset>
         </property>
         <property name="text">
+            <string>Almacenes</string>
+        </property>
+        <property name="menuText">
             <string>Almacenes</string>
         </property>
     </action>
@@ -621,6 +734,9 @@
         <property name="text">
             <string>Marcas</string>
         </property>
+        <property name="menuText">
+            <string>Marcas</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -630,6 +746,9 @@
             <iconset>edit.png</iconset>
         </property>
         <property name="text">
+            <string>Albaranes Compra</string>
+        </property>
+        <property name="menuText">
             <string>Albaranes Compra</string>
         </property>
     </action>
@@ -643,6 +762,9 @@
         <property name="text">
             <string>Facturas Proveedores</string>
         </property>
+        <property name="menuText">
+            <string>Facturas Proveedores</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -653,6 +775,65 @@
         </property>
         <property name="text">
             <string>Pedidos</string>
+        </property>
+        <property name="menuText">
+            <string>Pedidos</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>comprasContratosAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>edit.png</iconset>
+        </property>
+        <property name="text">
+            <string>Contratos</string>
+        </property>
+        <property name="menuText">
+            <string>Contratos</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>comprasListado_AlbaranesAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>lo32-app-bulmages01.png</iconset>
+        </property>
+        <property name="text">
+            <string>Listado Albaranes</string>
+        </property>
+        <property name="menuText">
+            <string>Listado Albaranes</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>comprasListado_PedidosAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>xclipboard.png</iconset>
+        </property>
+        <property name="text">
+            <string>Listado Pedidos</string>
+        </property>
+        <property name="menuText">
+            <string>Listado Pedidos</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>archivoProveedoresListado_ProveedoresAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>compfile.png</iconset>
+        </property>
+        <property name="text">
+            <string>Listado Proveedores</string>
+        </property>
+        <property name="menuText">
+            <string>Listado Proveedores</string>
         </property>
     </action>
 </actions>
@@ -789,10 +970,43 @@
         <receiver>UIVentas</receiver>
         <slot>abrirFormPresupuestos()</slot>
     </connection>
+    <connection>
+        <sender>comprasPedidoAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormPedidos_prov()</slot>
+    </connection>
+    <connection>
+        <sender>controlContratos_MantenimientoAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormContratosCompra()</slot>
+    </connection>
+    <connection>
+        <sender>comprasListado_AlbaranesAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormListAlbProv()</slot>
+    </connection>
+    <connection>
+        <sender>comprasListado_PedidosAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormListPediProv()</slot>
+    </connection>
+    <connection>
+        <sender>archivoProveedoresListado_ProveedoresAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormListadoProveed()</slot>
+    </connection>
+    <connection>
+        <sender>ayudaAcerca_deAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>abrirFormAbout()</slot>
+    </connection>
 </connections>
-<includes>
-    <include location="local" impldecl="in implementation">uiventas.ui.h</include>
-</includes>
 <slots>
     <slot>mostrar_selector()</slot>
     <slot>abrirFormAlbaranes()</slot>
@@ -815,6 +1029,12 @@
     <slot>abrirFormFormas_pago()</slot>
     <slot>abrirFormTerminios_fp()</slot>
     <slot>abrirFormAlmacenes()</slot>
+    <slot>abrirFormPedidos_prov()</slot>
+    <slot>abrirFormContratosCompra()</slot>
+    <slot>abrirFormListAlbProv()</slot>
+    <slot>abrirFormListPediProv()</slot>
+    <slot>abrirFormListadoProveed()</slot>
+    <slot>abrirFormAbout()</slot>
 </slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>

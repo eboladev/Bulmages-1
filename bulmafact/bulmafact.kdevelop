@@ -22,6 +22,7 @@
       <group pattern="*.png" name="Icons" />
       <group pattern="*" name="Others" />
       <hidenonprojectfiles>false</hidenonprojectfiles>
+      <hidenonlocation>false</hidenonlocation>
     </groups>
     <tree>
       <hidepatterns></hidepatterns>
@@ -75,7 +76,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir></activedir>
+      <activedir>lib</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

@@ -13,13 +13,28 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#include "bproveedor.h"
+#ifndef BAbout_H
+#define BAbout_H
 
-Bproveedor::Bproveedor(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIProveedor(parent, name, f) {
-    EmpresaTrabajo=punteroEmpresaTrabajo;
-}
+#include ".ui/uiabout.h"
 
+#include "bfempresa.h"
 
-Bproveedor::~Bproveedor(){
-}
+/**
+@author Josep Burcion
+*/
+class BAbout : public UIAbout
+{
+    Q_OBJECT
+    
+public:
+    BAbout(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0, WFlags f=0);
+    ~BAbout();
+
+private:
+    BfEmpresa* EmpresaTrabajo;
+    
+};
+
+#endif
 

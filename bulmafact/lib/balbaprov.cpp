@@ -13,13 +13,17 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#include "bdivision.h"
+/**************************************************************************/
+/* Clase Albaranes a proveedores                                          */
+/**************************************************************************/
 
-Bdivision::Bdivision(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIdivision(parent, name, f) {
+#include "balbaprov.h"
+
+BAlbaProv::BAlbaProv(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIAlbaProv(parent, name, f) {
     EmpresaTrabajo=punteroEmpresaTrabajo;
 }
 
 
-Bdivision::~Bdivision(){
+BAlbaProv::~BAlbaProv(){
 }
 

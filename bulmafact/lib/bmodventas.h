@@ -24,21 +24,27 @@
 #include "bpediventa.h"
 #include "bclientes.h"
 #include "bproveedor.h"
+#include "bprovlist.h"
 #include "barticulos.h"
 #include "bmarca.h"
 #include "btipo_iva.h"
 #include "bfamilia.h"
 #include "bcatalogo.h"
-#include "bdivision.h"
+#include "bprovdiv.h"
 #include "bsucursal.h"
-#include "balb_pro.h"
+#include "balbaprov.h"
+#include "bpedicompra.h"
+#include "balbprolist.h"
+#include "bpedicomlist.h"
 #include "bmodalidad_g.h"
 #include "bcond_garantia.h"
 #include "bcondiciones_v.h"
+#include "bcontrcompra.h"
 #include "boferta.h"
 #include "bforma_pago.h"
 #include "btermino_fp.h"
 #include "balmacen.h"
+#include "babout.h"
 
 
 #include "bpasswd.h"
@@ -65,6 +71,7 @@ public slots:
     virtual void abrirFormPedidos();
     virtual void abrirFormClientes();
     virtual void abrirFormProveedores();
+    virtual void abrirFormListadoProveed();
     virtual void abrirFormArticulos();
     virtual void abrirFormMarcas();
     virtual void abrirFormTipos_iva();
@@ -73,15 +80,23 @@ public slots:
     virtual void abrirFormDivisiones();
     virtual void abrirFormSucursales();
     virtual void abrirFormAlbaranes_prov();
+    virtual void abrirFormPedidos_prov();
+    virtual void abrirFormListAlbProv();
+    virtual void abrirFormListPediProv();
     virtual void abrirFormModalidades_g();
     virtual void abrirFormCond_garantia();
     virtual void abrirFormCondiciones_v();
+    virtual void abrirFormContratosCompra();
     virtual void abrirFormOfertas();
     virtual void abrirFormFormas_pago();
     virtual void abrirFormTerminios_fp();
     virtual void abrirFormAlmacenes();
+    virtual void abrirFormAbout();
     
     virtual void mostrar_selector();
+
+private slots:
+    virtual void closeEvent(QCloseEvent * e);
     
 private:
     void cargaUsuario();   

@@ -13,13 +13,28 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#include "balb_pro.h"
+#ifndef BPediCompra_H
+#define BPediCompra_H
 
-Balb_pro::Balb_pro(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIalb_pro(parent, name, f) {
-    EmpresaTrabajo=punteroEmpresaTrabajo;
-}
+#include ".ui/uipedicompra.h"
 
+#include "bfempresa.h"
 
-Balb_pro::~Balb_pro(){
-}
+/**
+@author Josep Burcion
+*/
+class BPediCompra : public UIPediCompra
+{
+    Q_OBJECT
+    
+public:
+    BPediCompra(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0, WFlags f=0);
+    ~BPediCompra();
+
+private:
+    BfEmpresa* EmpresaTrabajo;
+    
+};
+
+#endif
 

@@ -3,87 +3,36 @@
 # Subdir relative project main directory: ./lib
 # Target is a library:  bulmafact
 
-VERSION = 0.1
-TARGET = bulmafact
-OBJECTS_DIR = .obj
-UI_DIR = .ui
-MOC_DIR = .moc
-TEMPLATE =lib
-CONFIG += release warn_on dll
-INCLUDEPATH += ../src /usr/include/qt
-LANGUAGE = C++
-SOURCES += balbaventa.cpp \
-           bmodventas.cpp \
-           bpediventa.cpp \
-           barticulos.cpp \
-           bclientes.cpp \
-           bpasswd.cpp \
-           bvisorempresas.cpp \
-           bfempresa.cpp \
-           bbuscador.cpp \
-           balb_pro.cpp \
-           bcatalogo.cpp \
-           bcond_garantia.cpp \
-           bcondiciones_v.cpp \
-           bdivision.cpp \
-           bfamilia.cpp \
-           bforma_pago.cpp \
-           bmarca.cpp \
-           bmodalidad_g.cpp \
-           boferta.cpp \
-           bpresupuesto.cpp \
-           bproveedor.cpp \
-           bsucursal.cpp \
-           btermino_fp.cpp \
-           btipo_iva.cpp \
-           balmacen.cpp 
-HEADERS += balbaventa.h \
-           bmodventas.h \
-           bpediventa.h \
-           barticulos.h \
-           bclientes.h \
-           bpasswd.h \
-           bvisorempresas.h \
-           bfempresa.h \
-           bbuscador.h \
-           balb_pro.h \
-           bcatalogo.h \
-           bcond_garantia.h \
-           bcondiciones_v.h \
-           bdivision.h \
-           bfamilia.h \
-           bforma_pago.h \
-           bmarca.h \
-           bmodalidad_g.h \
-           boferta.h \
-           bpresupuesto.h \
-           bproveedor.h \
-           bsucursal.h \
-           btermino_fp.h \
-           btipo_iva.h \
-           balmacen.h 
-IDLS += uiclientes.ui \
-        uiarticulos.ui \
-        uipassword.ui \
-        uivisorempresas.ui \
-        uibuscador.ui \
-        uialb_pro.ui \
-        uialmacen.ui \
-        uicatalogo.ui \
-        uicond_garantia.ui \
-        uicondiciones_v.ui \
-        uidivision.ui \
-        uifamilia.ui \
-        uiforma_pago.ui \
-        uimarca.ui \
-        uimodalidad_g.ui \
-        uioferta.ui \
-        uipresupuesto.ui \
-        uiproveedores.ui \
-        uisucursal.ui \
-        uitermino_fp.ui \
-        uitipo_iva.ui \
-        uiproveedor.ui 
+FORMS += uialbaventa.ui \
+         uipediventa.ui \
+         uiventas.ui \
+         uiclientes.ui \
+         uiarticulos.ui \
+         uipassword.ui \
+         uivisorempresas.ui \
+         uibuscador.ui \
+         uimarca.ui \
+         uialbaprov.ui \
+         uialmacen.ui \
+         uicatalogo.ui \
+         uicond_garantia.ui \
+         uicondiciones_v.ui \
+         uiprovdiv.ui \
+         uifamilia.ui \
+         uiforma_pago.ui \
+         uimodalidad_g.ui \
+         uioferta.ui \
+         uipresupuesto.ui \
+         uisucursal.ui \
+         uitermino_fp.ui \
+         uitipo_iva.ui \
+         uiproveedor.ui \
+         uipedicompra.ui \
+         uialbprolist.ui \
+         uicontrcompra.ui \
+         uiprovlist.ui \
+         uipedicomlist.ui \
+         uiabout.ui 
 IMAGES += images/kate.png \
           images/kfind.png \
           images/clock.png \
@@ -131,30 +80,105 @@ IMAGES += images/kate.png \
           images/tux1.png \
           images/filetypes.png \
           images/edit.png 
-FORMS += uialbaventa.ui \
-         uipediventa.ui \
-         uiventas.ui \
-         uiclientes.ui \
-         uiarticulos.ui \
-         uipassword.ui \
-         uivisorempresas.ui \
-         uibuscador.ui \
-         uimarca.ui \
-         uialb_pro.ui \
-         uialmacen.ui \
-         uicatalogo.ui \
-         uicond_garantia.ui \
-         uicondiciones_v.ui \
-         uidivision.ui \
-         uifamilia.ui \
-         uiforma_pago.ui \
-         uimodalidad_g.ui \
-         uioferta.ui \
-         uipresupuesto.ui \
-         uisucursal.ui \
-         uitermino_fp.ui \
-         uitipo_iva.ui \
-         uiproveedor.ui 
+IDLS += uiclientes.ui \
+        uiarticulos.ui \
+        uipassword.ui \
+        uivisorempresas.ui \
+        uibuscador.ui \
+        uialbaprov.ui \
+        uialmacen.ui \
+        uicatalogo.ui \
+        uicond_garantia.ui \
+        uicondiciones_v.ui \
+        uiprovdiv.ui \
+        uifamilia.ui \
+        uiforma_pago.ui \
+        uimarca.ui \
+        uimodalidad_g.ui \
+        uioferta.ui \
+        uipresupuesto.ui \
+        uiproveedores.ui \
+        uisucursal.ui \
+        uitermino_fp.ui \
+        uitipo_iva.ui \
+        uiproveedor.ui \
+        uipedicompra.ui \
+        uialbprolist.ui \
+        uicontrcompra.ui \
+        uiprovlist.ui \
+        uipedicomlist.ui \
+        uiabout.ui 
+HEADERS += balbaventa.h \
+           bmodventas.h \
+           bpediventa.h \
+           barticulos.h \
+           bclientes.h \
+           bpasswd.h \
+           bvisorempresas.h \
+           bfempresa.h \
+           bbuscador.h \
+           balbaprov.h \
+           bcatalogo.h \
+           bcond_garantia.h \
+           bcondiciones_v.h \
+           bprovdiv.h \
+           bfamilia.h \
+           bforma_pago.h \
+           bmarca.h \
+           bmodalidad_g.h \
+           boferta.h \
+           bpresupuesto.h \
+           bproveedor.h \
+           bsucursal.h \
+           btermino_fp.h \
+           btipo_iva.h \
+           balmacen.h \
+           bpedicompra.h \
+           bcontrcompra.h \
+           balbprolist.h \
+           bpedicomlist.h \
+           bprovlist.h \
+           babout.h 
+SOURCES += balbaventa.cpp \
+           bmodventas.cpp \
+           bpediventa.cpp \
+           barticulos.cpp \
+           bclientes.cpp \
+           bpasswd.cpp \
+           bvisorempresas.cpp \
+           bfempresa.cpp \
+           bbuscador.cpp \
+           balbaprov.cpp \
+           bcatalogo.cpp \
+           bcond_garantia.cpp \
+           bcondiciones_v.cpp \
+           bprovdiv.cpp \
+           bfamilia.cpp \
+           bforma_pago.cpp \
+           bmarca.cpp \
+           bmodalidad_g.cpp \
+           boferta.cpp \
+           bpresupuesto.cpp \
+           bproveedor.cpp \
+           bsucursal.cpp \
+           btermino_fp.cpp \
+           btipo_iva.cpp \
+           balmacen.cpp \
+           bpedicompra.cpp \
+           bcontrcompra.cpp \
+           balbprolist.cpp \
+           bpedicomlist.cpp \
+           bprovlist.cpp \
+           babout.cpp 
+TEMPLATE = lib
+LANGUAGE = C++
+CONFIG += release warn_on dll
+INCLUDEPATH += ../src /usr/include/qt
+VERSION = 0.1
+TARGET = bulmafact
+OBJECTS_DIR = .obj
+UI_DIR = .ui
+MOC_DIR = .moc
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

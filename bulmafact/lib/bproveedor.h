@@ -23,7 +23,7 @@
 /**
 @author Josep Burcion
 */
-class Bproveedor : public UIproveedor
+class Bproveedor : public UIProveedor
 {
     Q_OBJECT
     

@@ -13,13 +13,17 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#include "bproveedor.h"
+/**************************************************************************/
+/* Clase Listado pedidos de compra a proveedores.                         */
+/**************************************************************************/
 
-Bproveedor::Bproveedor(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIProveedor(parent, name, f) {
+#include "bpedicomlist.h"
+
+BPediComList::BPediComList(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIPediComList(parent, name, f) {
     EmpresaTrabajo=punteroEmpresaTrabajo;
 }
 
 
-Bproveedor::~Bproveedor(){
+BPediComList::~BPediComList(){
 }
 

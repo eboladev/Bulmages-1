@@ -43,6 +43,16 @@ BModVentas::~BModVentas() {
 }
 
 /*****************************************************************************/
+/* Pide confirmaciòn antes de cerrar la aplicación                           */
+/*****************************************************************************/
+void BModVentas::closeEvent(QCloseEvent * e) {
+  int exit=QMessageBox::information(this, "Cerrar...","Realmente deseas Salir?",QMessageBox::Ok, QMessageBox::Cancel);
+  if (exit==1) e->accept();
+  else e->ignore();
+}
+
+
+/*****************************************************************************/
 /* Muestra el dialogo para entrar el nombre de usuario y la contraseña       */
 /*****************************************************************************/
 void BModVentas::cargaUsuario(){
@@ -84,21 +94,27 @@ void BModVentas::abrirFormPresupuestos()   { (new Bpresupuesto(empresaTrabajo, z
 void BModVentas::abrirFormPedidos()        { (new BPediVenta(empresaTrabajo, zona0,"pedidoVenta"))->show(); }
 void BModVentas::abrirFormClientes()       { (new BClientes(empresaTrabajo, zona0,"cliente"))->show(); }
 void BModVentas::abrirFormProveedores()    { (new Bproveedor(empresaTrabajo, zona0,"proveedor"))->show(); }
+void BModVentas::abrirFormListadoProveed() { (new BProvList(empresaTrabajo, zona0,"proveedlist"))->show(); }
 void BModVentas::abrirFormArticulos()      { (new BArticulos(empresaTrabajo, zona0,"articulo"))->show(); }
 void BModVentas::abrirFormMarcas()         { (new Bmarca(empresaTrabajo, zona0,"marca"))->show(); }
 void BModVentas::abrirFormTipos_iva()      { (new Btipo_iva(empresaTrabajo, zona0,"tipo_iva"))->show(); }
 void BModVentas::abrirFormFamilias()       { (new Bfamilia(empresaTrabajo, zona0,"familia"))->show(); }
 void BModVentas::abrirFormCatalogos()      { (new Bcatalogo(empresaTrabajo, zona0,"catalogo"))->show(); }
-void BModVentas::abrirFormDivisiones()     { (new Bdivision(empresaTrabajo, zona0,"division"))->show(); }
+void BModVentas::abrirFormDivisiones()     { (new BProvDiv(empresaTrabajo, zona0,"ProvDiv"))->show(); }
 void BModVentas::abrirFormSucursales()     { (new Bsucursal(empresaTrabajo, zona0,"sucursal"))->show(); }
-void BModVentas::abrirFormAlbaranes_prov() { (new Balb_pro(empresaTrabajo, zona0,"alb_pro"))->show(); }
+void BModVentas::abrirFormAlbaranes_prov() { (new BAlbaProv(empresaTrabajo, zona0,"alba_pro"))->show(); }
+void BModVentas::abrirFormPedidos_prov()   { (new BPediCompra(empresaTrabajo, zona0,"pedi_compra"))->show(); }
+void BModVentas::abrirFormListAlbProv()    { (new BAlbProList(empresaTrabajo, zona0,"albprolist"))->show(); }
+void BModVentas::abrirFormListPediProv()   { (new BPediComList(empresaTrabajo, zona0,"pedicomlist"))->show(); }
 void BModVentas::abrirFormModalidades_g()  { (new Bmodalidad_g(empresaTrabajo, zona0,"modalidad_g"))->show(); }
 void BModVentas::abrirFormCond_garantia()  { (new Bcond_garantia(empresaTrabajo, zona0,"cond_garantia"))->show(); }
 void BModVentas::abrirFormCondiciones_v()  { (new Bcondiciones_v(empresaTrabajo, zona0,"condiciones_v"))->show(); }
+void BModVentas::abrirFormContratosCompra(){ (new BContrCompra(empresaTrabajo, zona0,"contratos_compra"))->show(); }
 void BModVentas::abrirFormOfertas()        { (new Boferta(empresaTrabajo, zona0,"oferta"))->show(); }
 void BModVentas::abrirFormFormas_pago()    { (new Bforma_pago(empresaTrabajo, zona0,"forma_pago"))->show(); }
 void BModVentas::abrirFormTerminios_fp()   { (new Btermino_fp(empresaTrabajo, zona0,"termino_fp"))->show(); }
 void BModVentas::abrirFormAlmacenes()      { (new Balmacen(empresaTrabajo, zona0,"almacen"))->show(); }
+void BModVentas::abrirFormAbout()          { (new BAbout(empresaTrabajo, zona0,"acerca_de"))->show(); }
 
 //Emite una señal que se puede conectar a un SLOT.
 void BModVentas::mostrar_selector() { emit clickEnlace(); }

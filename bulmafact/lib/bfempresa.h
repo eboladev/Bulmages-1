@@ -25,6 +25,7 @@
     #include <libpq-fe.h>
 #endif
 
+#include <math.h>
 #include <qstring.h>
 #include <qmessagebox.h>
 

@@ -13,28 +13,17 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#ifndef Balb_pro_H
-#define Balb_pro_H
+/**************************************************************************/
+/* Clase Listado albaranes proveedores.                                   */
+/**************************************************************************/
 
-#include ".ui/uialb_pro.h"
+#include "balbprolist.h"
 
-#include "bfempresa.h"
+BAlbProList::BAlbProList(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIAlbProList(parent, name, f) {
+    EmpresaTrabajo=punteroEmpresaTrabajo;
+}
 
-/**
-@author Josep Burcion
-*/
-class Balb_pro : public UIalb_pro
-{
-    Q_OBJECT
-    
-public:
-    Balb_pro(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0, WFlags f=0);
-    ~Balb_pro();
 
-private:
-    BfEmpresa* EmpresaTrabajo;
-    
-};
-
-#endif
+BAlbProList::~BAlbProList(){
+}
 

@@ -13,13 +13,17 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#include "bproveedor.h"
+/***************************************************************************/
+/* Clase: Divisiones Proveedores                                           */
+/***************************************************************************/
 
-Bproveedor::Bproveedor(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIProveedor(parent, name, f) {
+#include "bprovdiv.h"
+
+BProvDiv::BProvDiv(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIProvDiv(parent, name, f) {
     EmpresaTrabajo=punteroEmpresaTrabajo;
 }
 
 
-Bproveedor::~Bproveedor(){
+BProvDiv::~BProvDiv(){
 }
 

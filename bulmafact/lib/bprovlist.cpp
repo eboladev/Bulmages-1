@@ -13,13 +13,17 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#include "bproveedor.h"
+/**************************************************************************/
+/* Clase Listado de Proveedores.                                          */
+/**************************************************************************/
 
-Bproveedor::Bproveedor(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIProveedor(parent, name, f) {
+#include "bprovlist.h"
+
+BProvList::BProvList(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIProvList(parent, name, f) {
     EmpresaTrabajo=punteroEmpresaTrabajo;
 }
 
 
-Bproveedor::~Bproveedor(){
+BProvList::~BProvList(){
 }
 

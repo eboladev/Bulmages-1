@@ -13,23 +13,23 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#ifndef Bdivision_H
-#define Bdivision_H
+#ifndef BAlbProList_H
+#define BAlbProList_H
 
-#include ".ui/uidivision.h"
+#include ".ui/uialbprolist.h"
 
 #include "bfempresa.h"
 
 /**
 @author Josep Burcion
 */
-class Bdivision : public UIdivision
+class BAlbProList : public UIAlbProList
 {
     Q_OBJECT
     
 public:
-    Bdivision(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0, WFlags f=0);
-    ~Bdivision();
+    BAlbProList(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0, WFlags f=0);
+    ~BAlbProList();
 
 private:
     BfEmpresa* EmpresaTrabajo;

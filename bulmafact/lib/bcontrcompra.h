@@ -13,13 +13,28 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#include "bproveedor.h"
+#ifndef BContrCompra_H
+#define BcontrCompra_H
 
-Bproveedor::Bproveedor(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIProveedor(parent, name, f) {
-    EmpresaTrabajo=punteroEmpresaTrabajo;
-}
+#include ".ui/uicontrcompra.h"
 
+#include "bfempresa.h"
 
-Bproveedor::~Bproveedor(){
-}
+/**
+@author Josep Burcion
+*/
+class BContrCompra : public UIContrCompra
+{
+    Q_OBJECT
+    
+public:
+    BContrCompra(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0, WFlags f=0);
+    ~BContrCompra();
+
+private:
+    BfEmpresa* EmpresaTrabajo;
+    
+};
+
+#endif
 
