@@ -20,16 +20,18 @@ nuevafact::nuevafact(QWidget * parent, const char * name, WFlags f) : nuevafactb
 
 
 nuevafact::~nuevafact() {
-}
+}// ~nuevafact
+
 
 void nuevafact::accept() {
-// Falta comprobar que tengas permisos para crear nuevas empresas.
+  // Falta comprobar que tengas permisos para crear nuevas empresas.
   QString nombredb;
   QString nombreEmp;
 
   nombredb = bdempresa->text().stripWhiteSpace()+ejercicioempresa->text().stripWhiteSpace();
   nombreEmp = nombreempresa->text().stripWhiteSpace();
-  QString cadena = "/usr/share/bulmages/dbmodels/creabulmages --texto "+nombredb+" 1 "+nombreEmp+" "+ ejercicioempresa->text().stripWhiteSpace()+" "+confpr->valor(CONF_METABASE);
+  QString cadena = confpr->valor(CONF_PROGDATA);
+  cadena +="dbmodels/creabulmafact --texto "+nombredb+" 1 "+nombreEmp+" "+ ejercicioempresa->text().stripWhiteSpace()+" "+confpr->valor(CONF_METABASE);
   
   system(cadena.ascii());
   close();
