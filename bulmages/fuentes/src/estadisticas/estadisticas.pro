@@ -5,8 +5,8 @@
 
 SOURCES += tobarchart.cpp \
            tolinechart.cpp \
-           topiechart.cpp \
-           tomain.cpp 
+           topiechart.cpp
+#           tomain.cpp 
 HEADERS += tobarchart.h \
            topiechart.h \
            tolinechart.h 

@@ -4,7 +4,7 @@
 ** Generated from reading image files: 
 **      print.xpm
 **
-** Created: dom nov 16 21:08:36 2003
+** Created: lun mar 8 23:54:08 2004
 **      by: The User Interface Compiler ($Id$)
 **
 ** WARNING! All changes made in this file will be lost!
