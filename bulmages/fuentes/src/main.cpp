@@ -32,6 +32,19 @@
 #include "qtextcodec.h"
 #include "log.h"
 
+
+#ifdef REPORTS
+#include "rtkinputbges.h"
+using namespace RTK;
+Input *InputBGesCreator(const String &name, const String &driver) {
+   return new InputBGes(name, driver);
+}
+
+void registraInputBGes() {
+RTK::Report::registerInput("sqlbulmages", &InputBGesCreator);
+}
+#endif
+
 QApplication * theApp;
 QTranslator * traductor;
 // QString EjercicioActual="";
@@ -42,6 +55,11 @@ int main(int argc, char *argv[]) {
    int valorsalida=0;
    // Leemos la configuracion que luego podremos usar siempre
   confpr = new configuracion();
+  
+#ifdef REPORTS
+// Esta llamada que se hace aqui sólo hay que hacerla una vez al principio de la aplicacion
+registraInputBGes();
+#endif
   
   QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
   QApplication * mainApp = new QApplication (argc, argv);
