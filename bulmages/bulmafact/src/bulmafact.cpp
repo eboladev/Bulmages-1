@@ -98,6 +98,11 @@ void bulmafact::listBudgets()
 }
 
 
+void bulmafact::listClientDelivNotes()
+{
+   m_company.listClientDelivNotes();
+}
+
 void bulmafact::listarticles()
 {
    fprintf(stderr,"listarticlesaction activado \n");

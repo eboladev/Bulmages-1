@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>bulmafactbase</class>
 <widget class="QMainWindow">
     <property name="name">
@@ -25,12 +25,16 @@
             <x>0</x>
             <y>0</y>
             <width>598</width>
-            <height>25</height>
+            <height>23</height>
         </rect>
     </property>
     <item text="Ventas" name="Ventas">
         <action name="ABudget"/>
         <action name="a_listBudgets"/>
+        <separator/>
+        <action name="ventasNuevo_AlbarnAction"/>
+        <action name="a_clientDelivNotesList"/>
+        <separator/>
         <action name="AFacturar"/>
         <separator/>
         <action name="ANewParte"/>
@@ -487,6 +491,28 @@
             <string>Listado de Presupuestos</string>
         </property>
     </action>
+    <action>
+        <property name="name">
+            <cstring>a_clientDelivNotesList</cstring>
+        </property>
+        <property name="text">
+            <string>Listado de Albaranes</string>
+        </property>
+        <property name="menuText">
+            <string>Listado de Albaranes</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>ventasNuevo_AlbarnAction</cstring>
+        </property>
+        <property name="text">
+            <string>Nuevo Albarán</string>
+        </property>
+        <property name="menuText">
+            <string>Nuevo Albarán</string>
+        </property>
+    </action>
 </actions>
 <images>
     <image name="image0">
@@ -635,6 +661,12 @@
         <receiver>bulmafactbase</receiver>
         <slot>newOrder()</slot>
     </connection>
+    <connection>
+        <sender>a_clientDelivNotesList</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>listClientDelivNotes()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>fileNew()</slot>
@@ -664,6 +696,7 @@
     <slot>newBudget()</slot>
     <slot>listBudgets()</slot>
     <slot>newClient()</slot>
+    <slot>listClientDelivNotes()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

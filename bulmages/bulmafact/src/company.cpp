@@ -32,6 +32,7 @@
 #include "orderslist.h"
 #include "delivnoteslist.h"
 #include "budgetslist.h"
+#include "clientdelivnoteslist.h"
 #include "linorderslist.h"
 
 
@@ -48,7 +49,7 @@ void company::createMainWindows() {
    m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Listado de Pedidos","company"));
    m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Listado de Albaranes","company"));   
    m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos","company"));  
-   
+   m_clientDelivNotesList = new ClientDelivNotesList(this, m_pWorkspace,theApp->translate("Listado de Albaranes de Clientes","company"));
      
 }// end createMainWindows
 
@@ -126,3 +127,20 @@ void company::newBudget() {
 void company::refreshBudgets() {
    m_budgetsList->inicializa();
 }// end refreshBudgets
+
+
+void company::listClientDelivNotes() {
+   m_clientDelivNotesList->hide();
+   m_clientDelivNotesList->show();
+   m_clientDelivNotesList->setActiveWindow();
+}// end listbudgets
+
+/*void company::newClientDelivNote() {
+   Budget *bud = new Budget(this,m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
+   bud->show();
+}// end bud */
+
+void company::refreshClientDelivNotes() {
+   m_clientDelivNotesList->inicializa();
+}// end refreshClientDelivNotes
+

@@ -77,3 +77,10 @@ INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) V
 INSERT INTO prfp (idpresupuesto, idforma_pago) VALUES (1, 1);
 INSERT INTO prfp (idpresupuesto, idforma_pago) VALUES (2, 2);
 INSERT INTO prfp (idpresupuesto, idforma_pago) VALUES (3, 3);
+
+INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago) VALUES (1, '01/01/2005', 1, 1, 1);
+INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago) VALUES (2, '02/01/2005', 1, 1, 2);
+INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago) VALUES (3, '03/01/2005', 1, 2, 3);
+INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago) VALUES (4, '01/01/2005', 1, 2, 4);
+INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago) VALUES (5, '02/01/2005', 1, 3, 2);
+INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago) VALUES (6, '03/01/2005', 1, 4, 1);

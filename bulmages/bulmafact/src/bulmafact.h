@@ -36,6 +36,7 @@ public slots:
     virtual void newBudget();
     virtual void listBudgets();
 	 virtual void newOrder();
+	 virtual void listClientDelivNotes();
     void about();
     void aboutQt();
 /*

@@ -13,63 +13,67 @@ LIBS += ../../bulmalib/libbulmalib.a \
 INCLUDEPATH += ../../bulmalib
 TARGET = ../../installbulmages/bulmafact
 SOURCES += bulmafact.cpp \
-           main.cpp \
-           company.cpp \
-           providerslist.cpp \
-           provedit.cpp \
-	   splashscreen.cpp \
-	   clientslist.cpp \
-	   clientedit.cpp \
-           articleslist.cpp \
-	   orderslist.cpp \
-	   linorderslist.cpp \
-	   delivnoteslist.cpp \
-	   division.cpp \
-	   budget.cpp \
-	   budgetslist.cpp \
-		articleedit.cpp \
-		EventHandler.cpp 
+	main.cpp \
+	company.cpp \
+	providerslist.cpp \
+	provedit.cpp \
+	splashscreen.cpp \
+	clientslist.cpp \
+	clientedit.cpp \
+	articleslist.cpp \
+	orderslist.cpp \
+	linorderslist.cpp \
+	delivnoteslist.cpp \
+	division.cpp \
+	budget.cpp \
+	budgetslist.cpp \
+	articleedit.cpp \
+	EventHandler.cpp \
+	clientdelivnoteslist.cpp 
 HEADERS += bulmafact.h \
-		company.h \
-		providerslist.h \
-		provedit.h \
-		splashscreen.h \
-		clientslist.h \
-		clientedit.h \
-		articleslist.h \
-		orderslist.h \
-		linorderslist.h \
-		delivnoteslist.h \
-		division.h \
-		budget.h \
-		budgetslist.h \
-		articleedit.h \
-		EventHandler.h
+	company.h \
+	providerslist.h \
+	provedit.h \
+	splashscreen.h \
+	clientslist.h \
+	clientedit.h \
+	articleslist.h \
+	orderslist.h \
+	linorderslist.h \
+	delivnoteslist.h \
+	division.h \
+	budget.h \
+	budgetslist.h \
+	articleedit.h \
+	EventHandler.h \
+	clientdelivnoteslist.h
 IDLS += providerslistbase.ui \
-		provedit_base.ui \
-		clientslistbase.ui \
-		clienteditbase.ui \  
-		articleslistbase.ui \
-		orderslistbase.ui \
-		linorderslistbase.ui \
-		delivnoteslistbase.ui  \
-		divisionbase.ui \
-		budgetbase.ui \
-		budgetslistbase.ui \
-		articleeditbase.ui
+	provedit_base.ui \
+	clientslistbase.ui \
+	clienteditbase.ui \  
+	articleslistbase.ui \
+	orderslistbase.ui \
+	linorderslistbase.ui \
+	delivnoteslistbase.ui  \
+	divisionbase.ui \
+	budgetbase.ui \
+	budgetslistbase.ui \
+	articleeditbase.ui \
+	clientdelivnoteslistbase.ui
 FORMS += bulmafactbase.ui \
-		providerslistbase.ui \
-		provedit_base.ui \
-		clientslistbase.ui \
-		clienteditbase.ui \
-		articleslistbase.ui \
-		orderslistbase.ui \
-		linorderslistbase.ui \
-		delivnoteslistbase.ui \
-		divisionbase.ui \
-		budgetbase.ui \
-		budgetslistbase.ui \
-		articleeditbase.ui
+	providerslistbase.ui \
+	provedit_base.ui \
+	clientslistbase.ui \
+	clienteditbase.ui \
+	articleslistbase.ui \
+	orderslistbase.ui \
+	linorderslistbase.ui \
+	delivnoteslistbase.ui \
+	divisionbase.ui \
+	budgetbase.ui \
+	budgetslistbase.ui \
+	articleeditbase.ui \
+	clientdelivnoteslistbase.ui
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
