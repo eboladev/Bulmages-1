@@ -257,6 +257,7 @@ cp -r reports /usr/share/bulmages
 cp -r css /usr/share/bulmages
 cp -r icons /usr/share/bulmages
 cp -r traducciones /usr/share/bulmages
+cp -r formularios /usr/share/bulmages
 
 info "Realizando la instalacion de BContaWeb. \n"
 tiempo
