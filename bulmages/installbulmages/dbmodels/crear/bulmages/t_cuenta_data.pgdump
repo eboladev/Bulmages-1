@@ -1,0 +1,661 @@
+--
+-- PostgreSQL database dump
+--
+
+SET client_encoding = 'SQL_ASCII';
+SET check_function_bodies = false;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for TOC entry 2 (OID 1345955)
+-- Name: cuenta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) FROM stdin;
+93	101	Fondo social	\N	88	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+354	46	PERSONAL	\N	\N	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+94	102	Capital	t	88	t	1	\N	0	0	\N	\N	\N	t									3
+755	1000034	una cuenta rara	t	88	t	1	\N	0	0	\N	\N	\N	t									1
+96	110	Prima de emision de acciones	t	95	t	1	\N	0	0	\N	\N	\N	t									2
+97	111	Reservas de revalorizacion	t	95	t	1	\N	0	0	\N	\N	\N	t									2
+103	116	Reservas Estatutarias	t	95	t	1	\N	0	0	\N	\N	\N	t									2
+104	117	Reservas voluntarias	t	95	t	1	\N	0	0	\N	\N	\N	t									2
+105	118	Reservas por capital amortizado	t	95	t	1	\N	0	0	\N	\N	\N	t									2
+100	114	Reservas para acciones de la sociedad dominante	t	95	t	1	\N	0	0	\N	\N	\N	t									2
+102	115	Reservas para acciones propias	t	95	t	1	\N	0	0	\N	\N	\N	t									2
+99	113	Reservas especiales	t	95	t	1	\N	0	0	\N	\N	\N	t									2
+109	122	Aportaciones de socios para compensacion de perdidas	t	106	t	1	\N	0	0	\N	\N	\N	t									2
+108	121	Resultados negativos de ejercicios anteriores	t	106	t	1	\N	0	0	\N	\N	\N	t									2
+107	1200000	Remanente	t	106	t	1	\N	0	0	\N	\N	\N	t									2
+117	131	Subvenciones de capital	t	113	t	1	\N	0	0	\N	\N	\N	t									2
+118	135	Ingresos por interes diferidos	t	113	t	1	\N	0	0	\N	\N	\N	t									2
+119	136	Diferencias positivas en moneda extranjera	t	113	t	1	\N	0	0	\N	\N	\N	t									2
+114	130	Subvenciones oficiales de capital	t	113	t	1	\N	0	0	\N	\N	\N	t									2
+115	1300	Subvenciones del Estado	t	114	t	1	\N	0	0	\N	\N	\N	t									2
+116	1301	Subvenciones de Otras Administraciones P´ublicas	t	114	t	1	\N	0	0	\N	\N	\N	t									2
+121	140	Provisiones para pensiones y obligaciones similares	t	120	t	1	\N	0	0	\N	\N	\N	t									2
+122	141	Provision para impuestos	t	120	t	1	\N	0	0	\N	\N	\N	t									2
+123	142	Provision para responsabilidades	t	120	t	1	\N	0	0	\N	\N	\N	t									2
+124	143	Provision para grandes reparaciones	t	120	t	1	\N	0	0	\N	\N	\N	t									2
+125	144	Fondo de reversion	t	120	t	1	\N	0	0	\N	\N	\N	t									2
+127	150	Obligaciones y bonos	\N	126	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+134	151	Obligaciones y bonos convertibles	\N	126	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+135	155	Deudas representadas en otro valores negociables	\N	126	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+128	1500	Obligaciones y bonos simples	\N	127	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+129	1501	Obligaciones y bonos garantizados	\N	127	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+130	1502	Obligaciones y bonos subordinados	\N	127	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+131	1503	Obligaciones y bonos cupon cero	\N	127	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+132	1504	Obligaciones y bonos con opci´on de adquisicion de acciones	\N	127	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+133	1505	Obligaciones y bonos con participacion de beneficios	t	127	t	1	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+137	160	Deudas a largo plazo con empresas del grupo	\N	136	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+140	161	Deudas a largo plazo con empresas asociadas	\N	136	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+141	162	Deudas a largo plazo con entidades de credito del grupo	t	136	t	1	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+142	163	Deudas a largo plazo con entidades de credito asociadas	\N	136	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+143	164	Proveedores de inmovilizado a largo plazo, empresas del grupo	\N	136	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+144	165	proveedores de inmovilizado a largo plazo, empresas asociadas	\N	136	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+138	1600	Prestamos a largo plazo de empresas del grupo	\N	137	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+139	1609	Otras deudas a largo plazo con empresas del grupo	\N	137	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+146	170	Deudas a largo plazo con entidades de credito	t	145	t	1	\N	0	0	\N	\N	\N	t									2
+149	171	Deudas a largo plazo	t	145	t	1	\N	0	0	\N	\N	\N	t									2
+150	172	Deudas a largo plazo transformables en subvenciones	t	145	t	1	\N	0	0	\N	\N	\N	t									2
+151	173	Proveedores de inmovilizado a largo plazo	t	145	t	1	\N	0	0	\N	\N	\N	t									2
+152	174	Efectos a pagar a largo plazo	t	145	t	1	\N	0	0	\N	\N	\N	t									2
+147	1700	Prestamos a largo plazo de entidades de credito	t	146	t	1	\N	0	0	\N	\N	\N	t									2
+148	1709	Otras deudas a largo plazo con entidades de credito	t	146	t	1	\N	0	0	\N	\N	\N	t									2
+154	180	Fianzas recibidas a largo plazo	\N	153	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+155	185	Depositos recibidos a largo plazo	\N	153	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+158	191	Accionistas por desembolsos no exigidos, empresas del grupo	\N	156	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+160	193	Accionistas por aportaciones no dinerarias pendientes	\N	156	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+161	194	Accionistas por aportaciones no dinerarias pendientes, empresas del grupo	\N	156	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+162	195	Accionistas por aportaciones no dinerarias pendientes, empresas asociadas	\N	156	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+163	196	Socios, parte no desembolsada	\N	156	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+164	198	Acciones propias en situaciones especiales	\N	156	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+165	199	Acciones propias para reducci´on del capital	\N	156	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+159	192	Accionistas por desembolsos no exigidos, empresas asociadas	\N	156	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+157	190	Accionistas por desembolsos no exigidos	\N	156	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+167	200	Gastos de constitucion	t	166	t	2	\N	0	0	\N	\N	\N	t									5
+168	201	Gastos de primer establecimiento	t	166	t	2	\N	0	0	\N	\N	\N	t									5
+169	202	Gastos de ampliacion de capital	t	166	t	2	\N	0	0	\N	\N	\N	t									5
+174	211	Concesiones administrativas	\N	170	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+179	217	Derechos sobre bienes en regimen de arrendamientos financieros	\N	170	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+180	219	Anticipos para inmovilizaciones inmateriales	\N	170	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+177	214	Derechos de traspase	\N	170	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+176	213	Fondo de comercio	\N	170	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+171	210	Gastos de investigacion y desarrollo	t	170	t	2	\N	0	0	\N	\N	\N	t									5
+178	215	Aplicaciones informaticas	t	170	t	2	\N	0	0	\N	\N	\N	t									5
+172	2100	Gastos de investigacion y desarrollo en proyectos no terminados	t	171	t	2	\N	0	0	\N	\N	\N	t									5
+173	2101	Gastos de investigacion y desarrollo en proyectos terminados	t	171	t	2	\N	0	0	\N	\N	\N	t									5
+184	222	Instalaciones tecnicas	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+190	228	Elementos de transporte	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+189	227	Equipos para proceso de informacion	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+188	226	Mobiliario	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+186	224	Utillaje	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+191	229	Otro inmovilizado material	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+187	225	Otras instalaciones	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+726	2250002	INMOVILIZADO CASA	t	187	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+727	2270001	INMOVILIZADO COMPONENTES ORDENADOR	t	189	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+193	230	Adaptacion de terrenos y de bienes naturales	\N	192	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+194	231	Construcciones en curso	\N	192	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+195	232	Instalaciones tecnicas en montaje	\N	192	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+196	233	Maquinaria en montaje	\N	192	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+197	237	Equipos para procesos de informacion en montaje	\N	192	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+198	239	Anticipos para inmovilizaciones materiales	\N	192	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+200	240	Participaciones en empresas del grupo	\N	199	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+201	241	Participaciones en empresas asociadas	\N	199	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+202	242	Valores de renta fija de empresas del grupo	t	199	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+203	243	Valores de renta fija de empresas asociadas	\N	199	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+204	244	Creditos a largo plazo a empresas del grupo	\N	199	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+205	245	Creditos a largo plazo a empresas asociadas	\N	199	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+206	246	Intereses a largo plazo de inversiones financieras en empresas del grupo	\N	199	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+207	247	Intereses a largo plazo de inversiones financieras en empresas asociadas	\N	199	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+208	248	Desembolsos pendientes sobre acciones de empresas del grupo	t	199	t	2	\N	0	0	\N	\N	\N	t									2
+209	249	Desembolsos pendientes sobre acciones de empresas asociadas	t	199	t	2	\N	0	0	\N	\N	\N	t									2
+211	250	Inversiones financieras permanentes en capital	\N	210	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+215	251	Valores de renta fija	t	210	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+216	252	Creditos a largo plazo	\N	210	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+217	253	Creditos a largo plazo por enajenacion de inmovilizado	\N	210	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+218	254	Creditos a largo plazo al personal	\N	210	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+219	256	Intereses a largo plazo de valores de renta fija	\N	210	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+221	258	Imposiciones a largo plazo	\N	210	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+222	259	Desembolsos pendientes sobre acciones	t	210	t	2	\N	0	0	\N	\N	\N	t									2
+212	2500	Inversiones financieras permanentes en acciones con cotizacion en un mercado secundario organizado	\N	211	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+213	2501	Inversiones financieras permanentes en acciones sin cotizacion en un mercado secundario organizado	\N	211	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+214	2502	Otras inversiones financieras en capital	\N	211	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+220	257	Intereses a largo plazo de creditos	\N	219	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+224	260	Fianzas constituidas a largo plazo	\N	223	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+225	261	Depositos constituidos a largo plazo	\N	223	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+227	270	Gastos de formalizacion de deudas	\N	226	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+228	271	Gastos por intereses diferidos en valores negociables	\N	226	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+229	272	Gastos por intereses diferidos	\N	226	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+232	2810	Amortizacion acumulada de gastos de investigacion y desarrollo	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+233	2811	Amortizacion acumulada de concesiones administrativas	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+234	2812	Amortizacion acumulada de propiedad industrial	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+235	2813	Amortizacion acumulada de fondo de comercio	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+236	2814	Amortizacion acumulada de derechos de traspaso	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+237	2815	Amortizacion acumulada de aplicaciones informaticas	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+238	2817	Amortizacion acumulada de derechos sobre bienes en regimen de arrendamiento financiero	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+240	2821	Amortizacion acumulada de construcciones	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+241	2822	Amortizacion acumulada de instalaciones tecnicas	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+242	2823	Amortizacion acumulada de maquinaria	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+243	2824	Amortizacion acumulada de utillaje	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+244	2825	Amortizacion acumulada de otras instalaciones	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+245	2826	Amortizacion acumulada de mobiliario	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+246	2827	Amortizacion acumulada de equipos para proceso de informacion	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+247	2828	Amortizacion acumulada de elementos de transporte	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+248	2829	Amortizacion acumulada de otro inmovilizado material	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+250	291	Provision por depreciacion del inmovilizado inmaterial	\N	249	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+252	293	Provision por depreciacion de valores de renta fija a largo plazo de empresas del grupo	t	249	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+254	294	Provision por depreciacion de valores de renta fija a largo plazo de empresas asociadas	\N	249	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+258	297	Provision para insolvencias de valores negociables a largo plazo	t	249	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+259	296	Provision para insolvencias de creditos a largo plazo a empresas asociadas	\N	249	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+257	295	Provision para insolvencias de creditos a largo plazo a empresas del grupo	t	249	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+260	298	Provision para insolvencias de creditos a largo plazo	\N	249	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+253	2935	Provision por depreciacion de valores negociables a largo plazo en empresas del grupo	\N	252	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+255	2941	Provision por depreciacion de participaciones en capital a largo plazo en empresas asociadas	\N	254	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+256	2946	Provision por depreciacion de valores negociables a largo plazo en empresas asociadas	\N	254	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+263	301	Mercaderias B	\N	261	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+265	310	Materias primas A	\N	264	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+266	311	Materias primas B	\N	264	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+268	320	Elementos y conjuntos incorporables	\N	267	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+269	321	Combustibles	\N	267	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+270	322	Repuestos	\N	267	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+271	325	Materiales diversos	\N	267	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+273	327	Envases	\N	267	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+274	328	Material de oficina	\N	267	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+272	326	Embalajes	\N	267	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+276	330	Productos en curso A	\N	275	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+277	331	Productos en curso B	\N	275	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+279	340	Productos semiterminados A	\N	278	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+280	341	Productos semiterminados B	\N	278	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+282	350	Productos terminados A	\N	281	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+283	351	Productos terminados B	\N	281	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+285	360	Subproductos A	\N	284	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+286	361	Subproductos B	\N	284	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+287	365	Residuos A	\N	284	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+288	366	Residuos B	\N	284	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+289	368	Materiales recuperados A	\N	284	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+290	369	Materiales recuperados B	\N	284	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+293	391	Provision por depreciacion de materias primas	\N	291	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+294	392	Provision por depreciacion de otros aprovisionamientos	\N	291	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+295	393	Provision por depreciacion de productos en curso	\N	291	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+296	394	Provision por depreciacion de productos semiterminados	\N	291	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+297	395	Provision por depreciacion de productos terminados	\N	291	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+298	396	Provision por depreciacion de subproductos, residuos y materiales recuperados	\N	291	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+313	407	Anticipos a proveedores	\N	299	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+304	402	Proveedores, empresas del grupo	t	299	t	4	\N	0	0	\N	\N	\N	t									2
+311	403	Proveedores, empresas asociadas	t	299	t	4	\N	0	0	\N	\N	\N	t									2
+312	406	Embases y embalajes a devolver a proveedores	t	299	t	4	\N	0	0	\N	\N	\N	t									2
+305	4009	Proveedores, facturas pendientes de recibir o de formalizar	t	300	t	4	\N	0	0	\N	\N	\N	t									2
+306	4020	Proveedores, empresas del grupo	t	304	t	4	\N	0	0	\N	\N	\N	t									2
+307	4021	Efectos comerciales a pagar, empresas del grupo	t	304	t	4	\N	0	0	\N	\N	\N	t									2
+308	4024	Proveedores, empresas del grupo (moneda extranjera)	t	304	t	4	\N	0	0	\N	\N	\N	t									2
+309	4026	Envases y embalajes a devolver a proveedores, empresas del grupo	t	304	t	4	\N	0	0	\N	\N	\N	t									2
+310	4029	Proveedores, empresas del grupo, facturas pendientes de recibir o de formalizar	t	304	t	4	\N	0	0	\N	\N	\N	t									2
+321	411	Acreedores, efectos comerciales a pagar	t	314	t	4	\N	0	0	\N	\N	\N	t									2
+322	419	Acreedores por operaciones en comun	t	314	t	4	\N	0	0	\N	\N	\N	t									2
+319	4104	Acreedores por prestaciones de servicios (moneda extranjera)	t	315	t	4	\N	0	0	\N	\N	\N	t									2
+320	4109	Acreedores por prestaciones de servicios, facturas pendientes de recibir o de formalizar	t	315	t	4	\N	0	0	\N	\N	\N	t									2
+333	432	Clientes, empresas del grupo	\N	323	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+339	433	Clientes, empresas asociadas	\N	323	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+341	436	Envases y embalajes a devolver por clientes	\N	323	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+342	437	Anticipos de clientes	t	323	t	4	\N	0	0	\N	\N	\N	t									2
+326	4304	Clientes (Moneda extranjera)	t	324	t	4	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+327	4309	Clientes, facturas pendientes de formalizar	\N	324	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+329	4310	Efectos comerciales en cartera	\N	328	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+330	4311	Efectos comerciales descontados	\N	328	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+331	4312	Efectos comerciales en gestion de cobro	\N	328	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+332	4315	Efectos comerciales impagados	\N	328	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+334	4320	Clientes, empresas del grupo	\N	333	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+335	4321	Efectos comerciales a cobrar, empresas del grupo	\N	333	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+336	4324	Clientes, empresas del grupo (moneda extranjera)	\N	333	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+337	4326	Envases y embalajes a devolver a clientes, empresas del grupo	\N	333	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+338	4329	Clientes, empresas del grupo, facturas	\N	333	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+344	440	Deudores	\N	343	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+348	441	Deudores, efectos comerciales a cobrar	\N	343	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+352	445	Deudores de dudoso cobro	\N	343	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+353	449	Deudores por operaciones en comun	\N	343	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+345	4400	Deudores	\N	344	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+346	4404	Deudores (moneda extranjera)	t	344	t	4	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+347	4409	Deudores, facturas pendientes de formalizar	\N	344	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+349	4410	Deudores, efectos comerciales en cartera	\N	348	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+350	4412	Deudores, efectos comerciales en gestion de cobro	t	348	t	4	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+351	4415	Deudores, efectos comerciales impagados	\N	348	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+355	460	Anticipos de remuneraciones	\N	354	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+356	465	Remuneraciones pendientes de pago	t	354	t	4	\N	0	0	\N	\N	\N	t									2
+358	470	Hacienda Publica, deudor por diversos conceptos	\N	357	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+362	471	Organismos de la Seguridad Social, deudores	\N	357	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+364	473	Hacienda Publica, retenciones y pagos a cuenta	\N	357	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+365	474	Impuesto sobre beneficios anticipado y compensacion de perdidas	\N	357	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+375	479	Impuesto sobre beneficios diferido	t	357	t	4	\N	0	0	\N	\N	\N	t									2
+359	4700	Hacienda Publica, deudor por IVA	\N	358	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+360	4708	Hacienda Publica, deudor por subvenciones conseguidas	\N	358	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+361	4709	Hacienda Publica, deudor por devolucion de impuestos	\N	358	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+743	4720004	IVA SOPORTADO 4% COMPRAS	\N	363	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+366	4740	Impuesto sobre beneficios anticipado	\N	365	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+367	4746	Credito por perdidas a compensar del ejercicio	\N	365	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+371	4752	Hacienda Publica, acreedor por impuestos sobre sociedades	t	368	t	4	\N	0	0	\N	\N	\N	t									2
+372	4758	Hacienda Publica, acreedor por subvenciones a reintegrar	t	368	t	4	\N	0	0	\N	\N	\N	t									2
+748	4770016	IVA 16% VENTAS	\N	374	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+378	485	Ingresos anticipados	t	376	t	4	\N	0	0	\N	\N	\N	t									2
+381	491	Provision para insolvencias de trafico de empresas del grupo	\N	379	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+382	494	Provision para insolvencias de trafico de empresas asociadas	\N	379	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+383	499	Provision para otras insolvencias de trafico	t	379	t	4	\N	0	0	\N	\N	\N	t									2
+385	500	Obligaciones y bonos a corto plazo	\N	384	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+386	501	Obligaciones y bonos convertibles a corto plazo	\N	384	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+387	505	Deudas representadas en otros valores negociables a corto plazo	\N	384	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+389	509	Valores negociables amortizados	\N	384	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+388	506	Intereses de empresitos y otras emisiones analogas	\N	384	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+390	5090	Obligaciones y bonos amortizados	\N	389	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+391	5091	Obligaciones y bonos convertibles amortizados	\N	389	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+392	5095	Otros valores negociables amortizados	\N	389	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+394	510	Deudas a corto plazo con empresas del grupo	\N	393	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+397	511	Deudas a corto plazo con empresas asociadas	\N	393	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+402	513	Deudas a corto plazo con entidades de credito asociadas	\N	393	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+403	514	Proveedores de inmovilizado a corto plazo, empresas del grupo	\N	393	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+404	515	Proveedores de inmovilizado a corto plazo, empresas asociadas	\N	393	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+405	516	Intereses a corto plazo de deudas con empresas del grupo	\N	393	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+406	517	Intereses a corto plazo de deudas con empresas asociadas	\N	393	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+398	512	Deudas a corto plazo con entidades de credito del grupo	\N	393	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+395	5100	Prestamos a corto plazo de empresas del grupo	\N	394	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+396	5109	Otras deudas a corto plazo con empresas del grupo	\N	394	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+400	5128	Deudas por efectos descontados en entidades de credito del grupo	\N	398	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+401	5129	Otras deudas a corto plazo con entidades de credito del grupo	\N	398	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+399	5120	Prestamos a corto plazo de entidades de credito del grupo	\N	398	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+417	527	Intereses a corto plazo de deudas	\N	407	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+416	526	Intereses a corto plazo de deudas con entidades de credito	\N	407	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+415	525	Dividendo activo a pagar	\N	407	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+408	520	Deudas a corto plazo con entidades de credito	t	407	t	5	\N	0	0	\N	\N	\N	t									2
+412	521	Deudas a corto plazo	t	407	t	5	\N	0	0	\N	\N	\N	t									2
+413	523	Proveedores de inmovilizado a corto plazo	t	407	t	5	\N	0	0	\N	\N	\N	t									2
+414	524	Efectos a pagar a corto plazo	t	407	t	5	\N	0	0	\N	\N	\N	t									2
+410	5201	Deudas a corto plazo por credito dispuesto	t	408	t	5	\N	0	0	\N	\N	\N	t									2
+409	5201	Prestamos a corto plazo de entidades de credito	t	408	t	5	\N	0	0	\N	\N	\N	t									2
+411	5208	Deudas por efectos descontados	t	408	t	5	\N	0	0	\N	\N	\N	t									2
+419	530	Participaciones a corto plazo en empresas del grupo	\N	418	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+420	531	Participaciones a corto plazo en empresas asociadas	\N	418	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+421	532	Valores de renta fija a corto plazo de empresas del grupo	\N	418	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+422	533	Valores de renta fija a corto plazo de empresas asociadas	\N	418	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+423	534	Creditos a corto plazo a empresas del grupo	\N	418	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+424	535	Creditos a corto plazo a empresas asociadas	\N	418	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+425	536	Intereses a corto plazo de inversiones financieras en empresas del grupo	\N	418	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+428	537	Intereses a corto plazo de inversiones financieras en empresas asociadas	\N	418	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+429	538	Desembolsos pendientes sobre acciones a corto plazo de empresas del grupo	\N	418	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+430	539	Desembolsos sobre acciones a corto plazo de empresas asociadas	\N	418	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+426	5360	Intereses a corto plazo de valores de renta fija de empresas del grupo	\N	425	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+427	5361	Intereses a corto plazo de creditos a empresas del grupo	\N	425	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+436	541	Valores de renta fija a corto plazo	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+437	542	Creditos a corto plazo	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+438	543	Creditos a corto plazo por enajenacion del mobiliario	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+439	544	Creditos a corto plazo al personal	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+440	545	Dividendo a cobrar	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+441	546	Intereses a corto plazo de valores de renta fija	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+442	547	Intereses a corto plazo de creditos	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+443	548	Imposiciones a corto plazo	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+444	549	Desembolsos pendientes sobre acciones a corto plazo	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+433	5400	Inversiones financieras temporales en acciones con cotizacion en un mercado secundario	\N	432	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+434	5401	Inversiones financieras temporales en acciones sin cotizacion en un mercado secundario	\N	432	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+435	5409	Otras inversiones financieras temporales en capital	\N	432	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+455	557	Dividendo activo a pagar	\N	445	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+456	558	Accionista por desembolsos exigidos	\N	445	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+447	551	Cuenta corriente con empresas del grupo	t	445	t	5	\N	0	0	\N	\N	\N	t									2
+448	552	Cuenta corriente con empresas asociadas	t	445	t	5	\N	0	0	\N	\N	\N	t									2
+449	553	Cuenta corriente con socios y administradores	t	445	t	5	\N	0	0	\N	\N	\N	t									2
+450	555	Partidas pendientes de aplicacion	t	445	t	5	\N	0	0	\N	\N	\N	t									2
+451	556	Desembolsos exigidos sobre acciones	t	445	t	5	\N	0	0	\N	\N	\N	t									2
+446	550	Titular de explotacion	t	445	t	5	\N	0	0	\N	\N	\N	t									3
+452	5560	Desembolsos exigidos sobre acciones de empresas del grupo	\N	451	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+453	5561	Desembolsos exigidos sobre acciones de empresas asociadas	\N	451	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+454	5562	Desembolsos exigidos sobre acciones de otras empresas	\N	451	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+460	565	Fianzas constituidas a corto plazo	\N	457	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+458	560	Fianzas recibidas a corto plazo	t	457	t	5	\N	0	0	\N	\N	\N	t									2
+459	561	Depositos recibidos a corto plazo	t	457	t	5	\N	0	0	\N	\N	\N	t									2
+461	566	Depostios constituidos a corto plazo	\N	460	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+468	575	Bancos e instituciones de credito, cuentas de ahorro, moneda extranjera	\N	462	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+467	574	Bancos e instituciones de credito cuentas de ahorro	\N	462	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+470	580	Intereses pagados por anticipado	\N	469	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+471	585	Intereses cobrados por anticipado	t	469	t	5	\N	0	0	\N	\N	\N	t									2
+473	593	Provision por depreciacion de valores negociables a corto plazo de empresas del grupo	\N	472	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+474	594	Provision por depreciacion de valores negociables a corto plazo de empresas asociadas	\N	472	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+475	595	Provision para insolvencias de creditos a corto plazo a empresas del grupo	\N	472	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+476	596	Provision para insolvencias de creditos a corto plazo a empresas asociadas	\N	472	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+478	598	Provision para insolvencias de creditos a corto plazo	\N	472	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+482	602	Compras de otros aprovisionamientos	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+484	608	Devoluciones de compras y operaciones similares	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+487	6082	Devoluciones de compras de otros aprovisionamientos	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+489	6090	Rappels por compras de mercaderias	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+490	6091	Rappels por compras de materias primas	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+491	6092	Rappels por compras de otros aprovisionamientos	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+483	607	Trabajos realizados por otras empresas	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+481	601	Compras de materias primas	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+485	6080	Devoluciones de compras de mercaderias	\N	484	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+486	6081	Devoluciones de compras de materias primas	\N	484	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+494	611	Variacion de existencias de materias primas	\N	492	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+495	612	Variacion de existencias de otros aprovisionamientos	\N	492	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+497	620	Gastos en investigacion y desarrollo del ejercicio	\N	496	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+500	623	Servicios de profesionales independientes	\N	496	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+502	625	Primas de seguros	\N	496	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+506	629	Otros servicios	t	496	t	6	\N	0	0	\N	\N	\N	t									5
+745	6292001	SERVICIOS DE ASESORIA	t	506	t	6	\N	0	0	\N	\N	\N	t									5
+742	6296000	MATERIAL DE OFICINA	t	506	t	6	\N	0	0	\N	\N	\N	t									5
+508	630	Impuestos sobre beneficios	\N	507	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+509	631	Otros tributos	\N	507	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+510	633	Ajustes negativos en la imposicion sobre beneficios	\N	507	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+511	634	Ajustes negativos en la imposicion indirecta	\N	507	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+514	636	Devolucion de impuestos	\N	507	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+515	638	Ajustes positivos en la imposicion sobre beneficios	\N	507	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+516	639	Ajustes positivos en la imposicion indirecta	t	507	t	6	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+512	6341	Ajustes negativos en IVA de circulante	\N	511	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+513	6342	Ajustes negativos en IVA de inversiones	\N	511	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+517	6391	Ajustes positivos en IVA de circulante	\N	516	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+518	6392	Ajustes positivos en IVA de inversiones	\N	516	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+521	641	Indemnizaciones	\N	519	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+523	643	Aportaciones a sistemas complementarios de pensiones	\N	519	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+524	649	Otros gastos sociales	\N	519	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+527	651	Resultados de operaciones en comun	\N	525	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+530	659	Otras perdidas en gestion corriente	\N	525	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+528	6510	Beneficio transferido (Gestor)	\N	527	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+529	6511	Perdida soportada (participe o asociado no gestor)	\N	527	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+532	661	Intereses de obligaciones y bonos	\N	531	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+541	662	Intereses de deudas a largo plazo	\N	531	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+546	663	Intereses de deudas a corto plazo	\N	531	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+551	664	Intereses por descuento de efectos	\N	531	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+555	665	Descuento sobre ventas por pronto pago	\N	531	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+559	666	Perdidas procedentes de valores negociables	\N	531	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+566	667	Perdidas de creditos	\N	531	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+573	668	Diferencias negativas de cambio	\N	531	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+574	669	Otros gastos financieros	\N	531	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+534	6610	Intereses de obligaciones y bonos a largo plazo en empresas del grupo	\N	532	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+535	6611	Intereses de obligaciones y bonos a largo plazo en empresas asociadas	\N	532	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+536	6613	Intereses de obligaciones y bonos a largo plazo en otras empresas	\N	532	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+537	6615	Intereses de obligaciones y bonos a corto plazo en empresas del grupo	\N	532	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+539	6616	Intereses de obligaciones y bonos a corto plazo en empresas asociadas	\N	532	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+540	6618	Intereses de obligaciones y bonos a corto plazo en otras empresas	\N	532	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+542	6620	Intereses de deudas a largo plazo con empresas del grupo	\N	541	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+543	6621	Intereses de deudas a largo plazo con empresas asociadas	\N	541	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+544	6622	Intereses de deudas a largo plazo con entidades de credito	\N	541	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+545	6623	Intereses de deudas a largo plazo con otras empresas	\N	541	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+547	6630	Intereses de deudas a corto plazo con empresas del grupo	\N	546	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+548	6631	Intereses de deudas a corto plazo con empresas asociadas	\N	546	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+549	6632	Intereses de deudas a corto plazo con entidades de credito	\N	546	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+550	6633	Intereses de deudas a corto plazo con otras empresas	\N	546	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+552	6640	Intereses por descuento de efectos en entidades de credito del grupo	\N	551	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+553	6641	Intereses por descuento de efectos en entidades de credito asociadas	\N	551	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+554	6643	Intereses por descuento de efectos en otras entidades de credito	\N	551	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+556	6650	Descuento sobre ventas por pronto pago a empresas del grupo	\N	555	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+557	6651	Descuento sobre ventas por pronto pago a empresas asociadas	\N	555	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+558	6653	Descuento sobre ventas por pronto pago a otras empresas	\N	555	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+560	6660	Perdidas en valores negociables a largo plazo de empresas del grupo	\N	559	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+561	6661	Perdidas en valores negociables a largo plazo de empresas asociadas	\N	559	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+562	6663	Perdidas en valores negociables a largo plazo de otras empresas	\N	559	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+563	6665	Perdidas en valores negociables a corto plazo de empresas del grupo	\N	559	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+564	6666	Perdidas en valores negociables a corto plazo de empresas asociadas	\N	559	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+565	6668	Perdidas en valores negociables a corto plazo de otras empresas	\N	559	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+567	6670	Perdidas de creditos a largo plazo a empresas del grupo	\N	566	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+568	6671	Perdidas de creditos a largo plazo a empresas asociadas	\N	566	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+569	6673	Perdidas de creditos a largo plazo a otras empresas	\N	566	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+570	6675	Perdidas de creditos a corto plazo a empresas del grupo	\N	566	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+571	6676	Perdidas de creditos a corto plazo a empresas asociadas	\N	566	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+572	6678	Perdidas de creditos a corto plazo a otras empresas	\N	566	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+581	678	Gastos extraordinarios	\N	575	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+576	670	Perdidas procedentes del inmovilizado inmaterial	\N	575	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+577	671	Perdidas procedentes del inmovilizado material	\N	575	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+578	672	Perdidas procedentes de participaciones en capital a largo plazo en empresas del grupo	\N	575	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+579	673	Perdidas procedentes de participaciones en capital a largo plazo en empresas asociadas	\N	575	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+580	674	Perdidas por operaciones con acciones y obligaciones propias	\N	575	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+582	679	Gastos y perdidas de ejercicios anteriores	\N	575	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+584	680	Amortizacion de gastos de establecimiento	\N	583	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+588	690	Dotacion al fondo de reversion	\N	587	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+589	691	Dotacion a la provision del inmovilizado inmaterial	\N	587	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+591	692	Dotacion a la provision del inmovilizado material	\N	587	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+593	695	Dotacion a la provision para otras operaciones de trafico	\N	587	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+594	696	Dotacion a la provision para valores negociables a largo plazo	\N	587	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+601	697	Dotacion a la provision para insolvencias de creditos a largo plazo	\N	587	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+609	699	Dotacion a la provision para insolvencias de creditos a corto plazo	t	587	t	6	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+595	6960	Dotacion a la provision para participaciones en capital a largo plazo en empresas del grupo	\N	594	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+596	6961	Dotacion a la provision para participaciones en capital a largo plazo en empresas asociadas	\N	594	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+598	6963	Dotacion a la provision para valores negociables a largo plazo en otras empresas	\N	594	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+599	6965	Dotacion a la provision para valores de renta fija a largo plazo en empresas del grupo	\N	594	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+600	6966	Dotacion a la provision para valores de renta fija a largo plazo en empresas asociadas	\N	594	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+602	6970	Dotacion a la provision para insolvencias de creditos a largo plazo a empresas del grupo	\N	601	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+603	6971	Dotacion a la provision para insolvencias de creditos a largo plazo a empresas asociadas	\N	601	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+604	6973	Dotacion a la provision para insolvencias de creditos a largo plazo a otras empresas	\N	601	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+606	6980	Dotacion a la provision para valores negociables a corto plazo de empresas del grupo	t	605	t	6	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+607	6981	Dotacion a la provision para valores negociables a corto plazo de empresas asociadas	\N	605	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+608	6983	Dotacion a la provision para valores negociables a corto plazo de otras empresas	\N	605	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+610	6990	Dotacion a la provision para insolvencias de creditos a corto plazo a empresas del grupo	\N	609	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+611	6991	Dotacion a la provision para insolvencias de creditos a corto plazo a empresas asociadas	\N	609	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+612	6993	Dotacion a la provision para insolvencias de creditos a corto plazo a otras empresas	\N	609	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+626	709	Rappels sobre ventas	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+615	701	Ventas de productos terminados	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+616	702	Ventas de productos semiterminados	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+617	703	Ventas de subproductos y residuos	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+618	704	Ventas de embases y embalajes	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+621	7080	Devoluciones de ventas de mercaderias	\N	620	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+622	7081	Devoluciones de ventas de productos terminados	\N	620	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+623	7082	Devoluciones de ventas de productos semiterminados	\N	620	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+624	7083	Devoluciones de ventas de subproductos y residuos	\N	620	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+625	7084	Devoluciones de ventas de envases y embalajes	\N	620	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+627	7090	Rappels sobre ventas de mercaderia	\N	626	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+628	7091	Rappels sobre ventas de productos terminados	\N	626	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+629	7092	Rappels sobre ventas de productos semiterminados	\N	626	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+630	7093	Rappels sobre ventas de subproductos y residuos	\N	626	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+631	7094	Rappels sobre ventas de envases y embalajes	\N	626	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+633	710	Variacion de existencias de productos en curso	\N	632	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+634	711	Variacion de existencias de productos semiterminados	\N	632	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+635	712	Variacion de existencias de productos terminados	\N	632	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+636	713	Variacion de existencias de subproductos, residuos y materiales recuperados	\N	632	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+638	730	Incorporacion al activo de gastos de establecimiento	\N	637	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+640	732	Trabajos realizados para el inmovilizado material	\N	637	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+641	733	Trabajos realizados para el inmovilizado material en curso	\N	637	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+642	737	Incorporacion al activo de gastos de formalizacion de deudas	\N	637	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+639	731	Trabajos realizados para el inmovilizado inmaterial	\N	637	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+644	740	Subvenciones oficiales a la explotacion	\N	643	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+645	741	Otras subvenciones a la explotacion	\N	643	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+647	751	Resultados de operaciones en comun	\N	646	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+650	752	Ingresos por arrendamientos	\N	646	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+651	753	Ingresos de propiedad industrial cedida en explotacion	\N	646	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+652	754	Ingresos por comisiones	\N	646	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+653	755	Ingresos por servicios al personal	\N	646	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+654	759	Ingresos por servicios diversos	\N	646	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+648	7510	Perdida transferida (gestor)	\N	647	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+649	7511	Beneficio atribuido (participe o asociado no gestor)	\N	647	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+656	760	Ingresos de participaciones en capital	\N	655	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+660	761	Ingresos de valores de renta fija	\N	655	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+668	763	Ingresos de creditos a corto plazo	\N	655	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+664	762	Ingresos de creditos a largo plazo	t	655	t	7	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+672	765	Descuentos sobre compras por pronto pago	\N	655	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+684	769	Otros ingresos financieros	\N	655	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+683	768	Diferencias positivas de cambio	\N	655	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+658	7601	Ingresos de participaciones en capital de empresas asociadas	\N	656	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+657	7600	Ingresos de participaciones en capital de empresas del grupo	t	656	t	7	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+659	7603	Ingresos de participaciones en capital de otras empresas	\N	656	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+661	7610	Ingresos de creditos de renta fija de empresas del grupo	\N	660	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+662	7611	Ingresos de creditos de renta fija de empresas asociadas	\N	660	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+663	7613	Ingresos de creditos de renta fija de otras empresas	\N	660	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+665	7621	Ingresos de creditos a largo plazo a empresas asociadas	\N	664	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+666	7620	Ingresos de creditos a largo plazo a empresas del grupo	\N	664	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+667	7623	Ingresos de creditos a largo plazo a otras empresas	\N	664	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+669	7631	Ingresos de creditos a corto plazo a empresas asociadas	\N	668	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+670	7630	Ingresos de creditos a corto plazo a empresas del grupo	\N	668	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+671	7633	Ingresos de creditos a corto plazo a otras empresas	\N	668	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+673	7650	Descuentos sobre compras por pronto pago de empresas del grupo	\N	672	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+674	7651	Descuentos sobre compras por pronto pago de empresas asociadas	\N	672	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+675	7653	Descuentos sobre compras por pronto pago de otras empresas	\N	672	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+677	7660	Beneficios en valores negociables a largo plazo de empresas del grupo	\N	676	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+678	7661	Beneficios en valores negociables a largo plazo de empresas asociadas	\N	676	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+679	7663	Beneficios en valores negociables a largo plazo de otras empresas	\N	676	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+680	7665	Beneficios en valores negociables a corto plazo de empresas del grupo	\N	676	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+681	7666	Beneficios en valores negociables a corto plazo de empresas asociadas	\N	676	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+682	7668	Beneficios en valores negociables a corto plazo de otras empresas	\N	676	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+686	770	Beneficios procedentes de inmovilizado inmaterial	\N	685	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+689	773	Beneficios procedentes de participaciones en capital a largo plazo en empresas asociadas	\N	685	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+690	774	Beneficios por operaciones con acciones y obligaciones propias	\N	685	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+691	775	Subvenciones de capital traspasadas al resultado del ejercicio 	\N	685	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+692	778	Ingresos extraordinarios	\N	685	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+693	779	Ingresos y beneficios de ejercicios anteriores	\N	685	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+688	772	Beneficios procedentes de participaciones en capital a largo plazo en empresas del grupo	\N	685	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+696	791	Exceso de provisión del inmovilizado inmaterial	\N	694	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+697	792	Exceso de provisión del inmovilizado material	\N	694	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+695	790	Exceso de provision para riesgos y gastos	t	694	t	7	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+701	795	Provision para otras operaciones de trafico aplicada	\N	694	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+702	796	Exceso de provision para valores negociables a largo plazo	\N	694	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+708	797	Exceso de provision para insolvencias de creditos a largo plazo	\N	694	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+712	798	Exceso de provision para valores negociables a corto plazo 	\N	694	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+716	799	Exceso de provision para insolvencias de creditos a corto plazo	\N	694	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+703	7960	Exceso de provision para participaciones en capital a largo plazo en empresas del grupo	\N	702	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+704	7961	Exceso de provision para participaciones en capital a largo plazo en empresas asociadas	\N	702	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+705	7963	Exceso de provision para valores negociables a largo plazo en otras empresas	\N	702	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+706	7965	Exceso de provision para valores de renta fija a largo plazo de empresas del grupo	\N	702	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+707	7966	Exceso de provision para valores de renta fija a largo plazo de empresas asociadas	\N	702	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+709	7970	Exceso de provision para insolvencias de creditos a largo plazo de empresas del grupo 	\N	708	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+710	7971	Exceso de provision para insolvencias de creditos a largo plazo de empresas asociadas	\N	708	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+711	7973	Exceso de provision para insolvencias de creditos a largo plazo de otras empresas	\N	708	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+713	7980	Exceso de provision para valores negociables a corto plazo de empresas del grupo 	\N	712	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+714	7981	Exceso de provision para valores negociables a corto plazo de empresas asociadas	\N	712	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+715	7983	Exceso de provision para valores negociables a corto plazo de otras empresas	\N	712	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+717	7990	Exceso de provision para insolvencias de creditos a corto plazo de empresas del grupo	\N	716	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+718	7991	Exceso de provision para insolvencias de creditos a corto plazo de empresas asociadas	\N	716	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+719	7993	Exceso de provision para insolvencias de creditos a corto plazo de otras empresas	\N	716	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+769	4300003	Restaurante Neirol	t	766	t	4	\N	0	0	\N	\N	\N	t									1
+210	25	OTRAS INVERSIONES FINANCIERAS	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+126	15	EMPRESITOS Y OTRAS EMISIONES ANALOGAS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
+192	23	INMOVILIZACIONES MATERIALES EN CURSO	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+507	63	TRIBUTOS	\N	\N	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+199	24	INVERSIONES FINANCIERAS EN EMPRESAS DEL GRUPO Y ASOCIADAS	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+223	26	FIANZAS Y DEPOSITOS CONSTITUIDOS A LARGO PLAZO	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+226	27	GASTOS A DISTRIBUIR EN VARIOS EJERCICIOS	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+264	31	MATERIAS PRIMAS	\N	\N	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+275	33	PRODUCTOS EN CURSO	\N	\N	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+284	36	PRODUCTOS, RESIDUOS Y MATERIALES RECUPERADOS	\N	\N	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+343	44	DEUDORES VARIOS	\N	\N	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+418	53	INVERSIONES FINANCIERAS A CORTO PLAZO EN EMPRESAS DEL GRUPO Y ASOCIADAS	t	\N	t	5	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
+445	55	OTRAS CUENTAS NO BANCARIAS	\N	\N	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+457	56	FIANZAS Y DEPOSITOS RECIBIDOS Y CONSTITUIDOS A CORTO PLAZO	t	\N	t	5	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
+469	58	AJUSTES POR PERIODIFICACION	\N	\N	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+531	66	GASTOS FINANCIEROS	\N	\N	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+575	67	PERDIDAS PROCEDENTES DEL INMOVILIZADO Y GASTOS EXCEPCIONALES	\N	\N	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+643	74	SUBVENCIONES A LA EXPLOTACION	\N	\N	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+646	75	OTROS INGRESOS DE GESTION	\N	\N	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+281	35	PRODUCTOS TERMINADOS	\N	\N	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+278	34	PRODUCTOS SEMITERMINADOS	\N	\N	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+632	71	VARIACION DE EXISTENCIAS	\N	\N	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+637	73	TRABAJOS REALIZADOS PARA LA EMPRESA	\N	\N	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+267	32	OTROS APROVISIONAMIENTOS	\N	\N	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+166	20	GASTOS DE ESTABLECIMIENTO	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+120	14	PROVISIONES PARA RIESGOS Y GASTOS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
+136	16	DEUDAS A LARGO PLAZO CON EMPRESAS DEL GRUPO Y ASOCIADAS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
+145	17	DEUDAS A LARGO PLAZO POR PRESTAMOS RECIBIDOS Y OTROS CONCEPTOS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
+153	18	FIANZAS Y DEPOSITOS RECIBIDOS A LARGO PLAZO	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
+384	50	EMPRESITOS Y OTRAS EMISIONES ANALOGAS A CORTO PLAZO	t	\N	t	5	\N	0	0	\N	\N	\N	t									0
+393	51	DEUDAS A CORTO PLAZO CON EMPRESAS DEL GRUPO Y ASOCIADAS	t	\N	t	5	\N	0	0	\N	\N	\N	t									0
+407	52	DEUDAS A CORTO PLAZO POR PRESTAMOS RECIBIDOS Y OTROS CONCEPTOS	t	\N	t	5	\N	0	0	\N	\N	\N	t									0
+113	13	INGRESOS A DISTRIBUIR EN VARIOS EJERCICIOS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
+156	19	SITUACIONES TRANSITORIAS DE FINANCIACION	\N	\N	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+762	4000002	Maquinaria Industrial S.A.	t	301	t	4	\N	0	0	\N	\N	\N	t									2
+752	6280005	Telefonica tef	t	505	t	6	\N	0	0	\N	\N	\N	t									5
+314	41	ACREEDORES VARIOS	t	\N	t	4	\N	200	0	\N	\N	\N	t									0
+328	431	Clientes, efectos comerciales a pagar	\N	323	\N	4	\N	5709.6099999999997	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+251	292	Provision por depreciacion del inmovilizado material	\N	249	\N	2	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+175	212	Propiedad industrial	\N	170	\N	2	\N	12020.24	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+182	220	Terrenos y bienes naturales	\N	181	\N	2	\N	6010.1199999999999	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+183	221	Construcciones	\N	181	\N	2	\N	18030.360000000001	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+98	112	Reserva legal	t	95	t	1	\N	1200	7210.1199999999999	\N	\N	\N	t									2
+756	5730001	SA NOSTRA	t	466	t	5	\N	0	655.46000000000004	\N	\N	\N	t									4
+340	435	Clientes de dudoso cobro	\N	323	\N	4	\N	1803.04	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+380	490	Provision para insolvencias de trafico	\N	379	\N	4	\N	1803.04	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+324	430	Clientes	\N	323	\N	4	\N	12214.580000000002	2601.2199999999998	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+370	4751	Hacienda Publica, acreedor por retenciones practicadas	t	368	t	4	\N	0	901.51999999999998	\N	\N	\N	t									2
+373	476	Organismos de la Seguridad Social, acreedores	t	357	t	4	\N	0	1111.8699999999999	\N	\N	\N	t									2
+377	480	Gastos anticipados	\N	376	\N	4	\N	210.36000000000001	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+463	570	Caja	t	462	t	5	\N	9856.6000000000004	627.46000000000004	\N	\N	\N	t									1
+185	223	Maquinaria	\N	181	\N	2	\N	6010.1199999999999	3005.0599999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+432	540	Inversiones financieras temporales en capital	\N	431	\N	5	\N	270.44999999999999	135.22999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+303	401	Proveedores, efectos comerciales a pagar	t	299	t	4	\N	1803.04	601.00999999999999	\N	\N	\N	t									2
+262	300	Mercaderias A	\N	261	\N	3	\N	22237.450000000001	10818.219999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+239	282	Amortizacion acumulada del inmovilizado material	\N	230	\N	2	\N	601.00999999999999	5108.6000000000004	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+231	281	Amortizacion acumulada del inmovilizado inmaterial	\N	230	\N	2	\N	0	2163.6399999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+477	597	Provision por depreciacion de valores negociables a corto plazo	\N	472	\N	5	\N	0	120.2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+761	4000001	Ganaderias Alfredo	t	301	t	4	\N	116	100	\N	\N	\N	t									2
+292	390	Provision por depreciacion de mercaderias	\N	291	\N	3	\N	1803.04	601.00999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+374	477	Hacienda Publica, IVA repercutido	t	357	t	4	\N	2224.9899999999998	2223.9899999999998	\N	\N	\N	t									2
+363	472	Hacienda Publica, IVA soportado	\N	357	\N	4	\N	1341.8899999999999	604.50999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+369	4750000	Hacienda Publica, acreedor por IVA	t	368	t	4	\N	0	1563.3499999999999	\N	\N	\N	t									2
+746	6280004	SUMINISTRO ADSL	t	505	t	6	\N	0	116	\N	\N	\N	t									5
+687	771	Beneficios procedentes de inmovilizado material	\N	685	\N	7	\N	2139.5999999999999	2139.5999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+504	6270000	Publicidad, propaganda y relaciones publicas	t	496	t	6	\N	420.70999999999998	420.70999999999998	\N	\N	\N	t									1
+480	6000000	Compras de mercaderias	t	479	t	6	\N	1682.8299999999999	1682.8299999999999	\N	\N	\N	t									1
+498	621	Arrendamiento y canones	\N	496	\N	6	\N	643.08000000000004	643.08000000000004	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+620	708	Devoluciones de ventas y operaciones similares	\N	613	\N	7	\N	601.00999999999999	601.00999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+522	642	Seguridad Social a cargo de la empresa	\N	519	\N	6	\N	661.11000000000001	661.11000000000001	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+590	693	Dotacion a la provision de existencias	\N	587	\N	6	\N	601.00999999999999	601.00999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+499	622	Reparaciones y conservaciones	\N	496	\N	6	\N	570.96000000000004	570.96000000000004	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+520	640	Sueldos	\N	519	\N	6	\N	6010.1199999999999	6010.1199999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+586	682	Amortizacion del inmovilizado material	\N	583	\N	6	\N	2113.54	2113.54	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+111	129	Perdidas y ganancias	t	106	t	1	\N	17534.52	15028.309999999999	\N	\N	\N	t									2
+592	694	Dotacion a la provision para insolvencias de trafico	\N	587	\N	6	\N	1803.04	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+614	7000000	Ventas de mercaderias	t	613	t	7	\N	8490.7999999999993	8490.7999999999993	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+503	6260000	Servicios bancarios y similares	t	496	t	6	\N	3.0099999999999998	3.0099999999999998	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+698	793	Provision de existencias aplicada	t	694	t	7	\N	1803.04	1803.04	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+501	624	Transportes	\N	496	\N	6	\N	360.61000000000001	360.61000000000001	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+526	650	Perdidas de creditos comerciales incobrables	t	525	t	6	\N	1202.03	1202.03	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+466	573	Bancos e instituciones de credito c/c vista, moneda extranjera	t	462	t	5	\N	9788.9800000000014	9283.0999999999985	\N	\N	\N	t									1
+585	681	Amortizacion del inmovilizado inmaterial	\N	583	\N	6	\N	961.62	961.62	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+605	698	Dotacion a la provision para valores negociables a corto plazo	\N	587	\N	6	\N	120.2	120.2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+488	609	Rappels por compras	\N	479	\N	6	\N	150.25	150.25	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+676	766	Beneficios en valores negociables	\N	655	\N	7	\N	40.57	40.57	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+493	610	Variacion de existencias de mercaderias	\N	492	\N	6	\N	11419.23	11419.23	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+771	7940000	Provision para insolvencias de trafico aplicada.	t	699	t	7	\N	1803.04	1803.04	f	f	\N	t									1
+249	29	PROVISIONES DE INMOVILIZADO	\N	\N	\N	2	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+170	21	INMOVILIZACIONES INMATERIALES	t	\N	t	2	\N	12020.24	0	\N	\N	\N	t									0
+95	11	RESERVAS	t	\N	t	1	\N	1200	7210.1199999999999	\N	\N	\N	t									0
+379	49	PROVISIONES POR OPERACIONES DE TRAFICO	\N	\N	\N	4	\N	1803.04	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+376	48	AJUSTES POR PERIODIFICACION	\N	\N	\N	4	\N	210.36000000000001	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+181	22	INMOVILIZACIONES MATERIALES	\N	\N	\N	2	\N	30050.599999999995	3005.0599999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+431	54	OTRAS INVERSIONES FINANCIERAS TEMPORALES	t	\N	t	5	\N	270.44999999999999	135.22999999999999	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
+261	30	COMERCIALES	\N	\N	\N	3	\N	22237.450000000001	10818.219999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+230	28	AMORTIZACION ACUMULADA DEL INMOVILIZADO	\N	\N	\N	2	\N	601.00999999999999	7272.2399999999998	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+472	59	PROVISIONES FINANCIERAS	\N	\N	\N	5	\N	0	120.2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+291	39	PROVISIONES POR DEPRECIACION DE EXISTENCIAS	\N	\N	\N	3	\N	1803.04	601.00999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+368	475	Hacienda Publica, acreedor por conceptos fiscales	t	357	t	4	\N	0	2464.8699999999999	\N	\N	\N	t									2
+505	628	Suministros	t	496	t	6	\N	0	116	\N	\N	\N	t									5
+685	77	BENEFICIOS PROCEDENTES DEL INMOVILIZADO E INGRESOS EXCEPCIONALES	\N	\N	\N	7	\N	2139.5999999999999	2139.5999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+323	43	CLIENTES	\N	\N	\N	4	\N	19727.230000000003	4404.2600000000002	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+519	64	GASTOS DE PERSONAL	\N	\N	\N	6	\N	6671.2299999999996	6671.2299999999996	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+106	12	RESULTADOS PENDIENTES DE APLICACION	t	\N	t	1	\N	17534.52	15028.309999999999	\N	\N	\N	t									0
+525	65	OTROS GASTOS DE GESTION	\N	\N	\N	6	\N	1202.03	1202.03	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+587	69	DOTACIONES A LAS PROVISIONES	\N	\N	\N	6	\N	2524.25	2524.25	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+479	60	COMPRAS	t	\N	t	6	\N	1833.0799999999999	1833.0799999999999	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
+655	76	INGRESOS FINANCIEROS	\N	\N	\N	7	\N	40.57	40.57	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+492	61	VARIACION DE EXISTENCIAS	t	\N	t	6	\N	11419.23	11419.23	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
+699	794	Provision para insolvencias de trafico aplicada	t	694	t	7	\N	1803.04	1803.04	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+496	62	SERVICIOS EXTERIORES	\N	\N	\N	6	\N	1998.3699999999999	2114.3699999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+613	70	VENTAS DE MERCADERIAS DE PRODUCCION PROPIA, DE SERVICIOS, ETC.	\N	\N	\N	7	\N	9091.8099999999995	9191.8099999999995	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+694	79	EXCESOS Y APLICACIONES DE PROVISIONES	\N	\N	\N	7	\N	3606.0799999999999	3606.0799999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+772	4000004	Adelaida	\N	301	\N	4	\N	12	0	f	f	\N	\N									2
+462	57	TESORERIA	t	\N	t	5	\N	19645.579999999998	9910.5600000000013	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
+774	4720007	IVA SOPORTADO 7% COMPRAS	\N	363	\N	4	\N	12.119999999999999	0	f	f	\N	\N									1
+773	4000005	Hotel restaurant els NOGUERS	\N	301	\N	4	\N	173.13	285.25	f	f	\N	\N									2
+768	4300002	SYP - Consum	t	766	t	4	\N	0	0	t	t	\N	t		9225665f							1
+301	4000	Proveedores	t	300	t	4	\N	301.13	619.25	\N	\N	\N	t									2
+764	4000003	Imprenta Sa Taulera	t	301	t	4	\N	0	234	\N	\N	\N	t									2
+583	68	DOTACIONES A LAS PROVISIONES	\N	\N	\N	6	\N	3075.1599999999999	3075.1599999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+300	400	Proveedores	t	299	t	4	\N	475.41999999999996	3604.1100000000001	\N	\N	\N	t									2
+302	4004	Proveedores (moneda extranjera)	t	300	t	4	\N	0	100	\N	\N	\N	t									2
+747	4100002	YACOM INTERNET FACTORY	t	318	t	4	\N	200	0	\N	\N	\N	t									2
+318	4100	Acreedores por prestaciones de servicios	t	315	t	4	\N	200	0	\N	\N	\N	t									2
+299	40	PROVEEDORES	t	\N	t	3	\N	2278.46	4205.1199999999999	\N	\N	\N	t									0
+315	410	Acreedores por prestaciones de servicios	t	314	t	4	\N	200	0	\N	\N	\N	t									2
+767	4300001	Carniceria Sibuna	t	766	t	4	\N	562.21000000000004	100	t	t	\N	t	Carniceria Sibuna	9225665F	C/ Sa Torreta, 25	971.36.35.68	Pago en efectivo.\nHoras de Reparto:\nL,MX, J : de 16:00 a 19:00	325.2658.35.3565885			1
+619	705	Prestaciones de servicios	\N	613	\N	7	\N	0	100	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+775	1000001	asdfasdf	\N	724	\N	1	\N	500	0	f	f	\N	\N									3
+776	1000002	asdfasdfasd	\N	724	\N	1	\N	0	1500	f	f	\N	\N									3
+766	4300	Clientes	t	324	t	4	\N	562.21000000000004	100	\N	\N	\N	t									1
+740	4720016	IVA SOPORTADO 16% COMPRAS	\N	363	\N	4	\N	741.25	16	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+357	47	ADMINISTRACIONES PUBLICAS	\N	\N	\N	4	\N	3566.8800000000001	6405.2399999999998	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+770	1000000	Capitan Socializado	t	724	t	1	\N	29032	28142	t	t	\N	t									3
+724	100	Capital Social	t	88	t	1	\N	29532	89743.209999999992	\N	\N	\N	t	Nombre para capital social	A07898990	Jazmín algo	45 89 09	Pocos comentarios para esta cuenta	2051 21 35 12345678	info@algo.com	http://www.algo.com	3
+88	10	CAPITAL	t	\N	t	1	\N	29535	89746.209999999992	\N	\N	\N	t									0
+\.
+
+

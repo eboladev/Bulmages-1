@@ -1,0 +1,44 @@
+--
+-- PostgreSQL database dump
+--
+
+SET client_encoding = 'SQL_ASCII';
+SET check_function_bodies = false;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for TOC entry 2 (OID 1346111)
+-- Name: ejercicios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY ejercicios (ejercicio, periodo, bloqueado) FROM stdin;
+2003	0	f
+2003	1	f
+2003	2	f
+2003	3	f
+2003	4	f
+2003	5	f
+2003	6	f
+2003	7	f
+2003	8	f
+2003	9	f
+2003	10	f
+2003	11	f
+2003	12	f
+2004	0	f
+2004	1	f
+2004	2	f
+2004	3	f
+2004	4	f
+2004	5	f
+2004	6	f
+2004	7	f
+2004	8	f
+2004	9	f
+2004	10	f
+2004	11	f
+2004	12	f
+\.
+
+

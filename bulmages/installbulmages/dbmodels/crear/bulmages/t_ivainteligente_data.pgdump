@@ -1,0 +1,27 @@
+--
+-- PostgreSQL database dump
+--
+
+SET client_encoding = 'SQL_ASCII';
+SET check_function_bodies = false;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for TOC entry 3 (OID 1346024)
+-- Name: ivainteligente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY ivainteligente (idivainteligente, idainteligente, idbinteligente, contrapartida, baseimp, iva, factura, idborrador, incregistro, regularizacion, plan349, numorden, cif) FROM stdin;
+55	9	1165	$cod$	100	16	gtty	1	f	asd	fa	sdf	$cifcuenta$
+\.
+
+
+--
+-- TOC entry 2 (OID 1346022)
+-- Name: ivainteligente_idivainteligente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('ivainteligente_idivainteligente_seq', 55, true);
+
+

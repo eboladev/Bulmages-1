@@ -1,0 +1,22 @@
+--
+-- PostgreSQL database dump
+--
+
+SET client_encoding = 'SQL_ASCII';
+SET check_function_bodies = false;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for TOC entry 2 (OID 1346011)
+-- Name: ainteligente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY ainteligente (idainteligente, descripcion, comentariosasiento) FROM stdin;
+13	pruebas con un nuevo asiento inteligente.	Un asiento inteligente para que ????
+11	Capital Social	Tiene esto un aire que no se que decirte macho.
+9	Cobro de Facturas	Estoy confundido
+14	Amortizacion	asdfasdf
+\.
+
+

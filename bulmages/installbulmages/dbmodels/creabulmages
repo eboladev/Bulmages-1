@@ -1,0 +1,123 @@
+#!/bin/bash
+
+# Este script se encarga de crear bases de datos de bulmages.
+# para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos que será)
+# Este script no se encarga de hacer las inserciones oportunas en la metabd.
+# Aunque es una tarea muy sencilla que puede hacer posteriormente.
+# PARAMETROS:
+#               $1 Nombre Base de Datos
+#               $2  Tipo: 0.- Base (Vacia)
+#			  1.- Plan Contable.
+#			  2.- Juego de prueba de bulmages
+#                         3.- La metabase
+#
+# Este script debe ser ejecutado como ROOT
+# ----------------------------------------------------------------------------------------
+
+rm errores.txt
+touch errores.txt
+
+echo -e "Creamos la base de datos:$1 $2"
+echo -e "----------------------------"
+
+
+
+su - postgres -c "dropdb  $1" 2>> error.txt > /dev/null
+su - postgres -c "createdb $1" 2>> errores.txt > /dev/null
+
+echo -e "Comprobamos la existencia de PLPGSQL"
+ENC="0"
+if [ -e /usr/lib/postgresql/lib/plpgsql.so ]; then
+   echo -e "PostgreSQL esta bien instalado, la distribución parece una Debian."
+   su - postgres -c "psql $1" < crear/bulmages/bulmages_debian.pgdump 2>> errores.txt > /dev/null
+   ENC="1"
+fi
+
+if [ -e /usr/lib/pgsql/plpgsql.so ]; then
+   echo -e "PostgreSQL esta bien instalado, la distribucion parece una Mandrake."
+   su -postgres -c "psql $1" < crear/bulmages/bulmages_mandrake.pgdump 2>> errores.txt > /dev/null
+   ENC="1"
+fi
+
+if [ "$ENC" = "0" ]; then
+   echo -e "PostgreSQL no esta bien instalado o la distribucion no es Debian."
+   echo -e "No se ha encontrado la libreria plpgsql.so necesaria para instalar las bases de datos"
+   echo -e "Por favor, localicela e intente una instalación manual"
+   LANG=`locate plpgsql.so`
+   if [ $LANG ]; then
+      echo -e "Puede que el archivo que busca este en $LANG"
+   fi
+   exit 1
+fi
+
+
+#Ya que estamos vamos a echar un vistacillo al pg_hba.conf
+if [ -e /etc/postgresql/pg_hba.conf ]; then
+   echo -e "El archivo pg_hba.conf esta en su sitio"
+   PGA=`cat /etc/postgresql/pg_hba.conf | grep reject`
+   if [ ! $cat ]; then
+      echo -e "Alerta: Revise el archivo /etc/postgresql/pg_hba.conf, ya que puede tener restricciones de permisos"
+   fi
+else
+   echo -e "No se encuentra el archivo de configuracion de postgresql."
+   echo -e "Esto puede ser debido a que no este instalado o a que no sea una distribucion Debian Sid."
+   echo -e "Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
+fi
+
+
+# Creamos la base
+if [ "a$2" = "a1" -o "a$2" = "a2" ]; then
+   echo -e "Importamos el esquema de base de datos de una empresa"
+   su - postgres -c "psql $1" < crear/bulmages/bulmages_schema.pgdump 2>> errores.txt > /dev/null
+else
+   echo -e "Importamos el esquema de la metabd"
+   su - postgres -c "psql $1" < crear/metabd/metabd_schema.pgdump 2>> errores.txt > /dev/null
+fi
+
+
+if [ "a$2" = "a3" ]; then
+   # Cargamos la metabase
+   echo -e "Cargamos la metabase"
+   su - postgres -c "psql $1" < crear/metabd/metabd_data.pgdump 2>> errores.txt > /dev/null
+fi
+
+
+if [ "a$2" = "a1" -o "a$2" = "a2" ]; then
+   # Cargamos lo minimo
+   echo -e "Cargamos lo minimo"
+   su - postgres -c "psql $1" < crear/bulmages/t_configuracion_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_tiposiva_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_grupo_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_cuenta_data.pgdump 2>> errores.txt > /dev/null
+fi
+
+
+if [ "$2" = "2" ]; then
+   # Cargamos todas las tablas que son de ejemplo.
+   echo -e "Cargamos el resto"
+   su - postgres -c "psql $1" < crear/bulmages/t_canal_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_c_coste_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_diario_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_asiento_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_apunte_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_borrador_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_registroiva_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_ainteligente_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_binteligente_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_ivainteligente_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_compmasap_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_compbalance_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_balance_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_amortizacion_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_linamortizacion_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $1" < crear/bulmages/t_ejercicios_data.pgdump 2>> errores.txt > /dev/null
+fi
+
+DBS=`cat errores.txt | grep ERROR`
+if [ "$DBS" ]; then
+   echo -e "Se han producido errores"
+   source ../deinstallbulmages
+   exit 1
+else
+   echo -e "La instalacion de la base de datos $1 ha sido un éxito"
+fi

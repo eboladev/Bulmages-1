@@ -1,0 +1,22 @@
+--
+-- PostgreSQL database dump
+--
+
+SET client_encoding = 'SQL_ASCII';
+SET check_function_bodies = false;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for TOC entry 2 (OID 1345946)
+-- Name: tiposiva; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tiposiva (idtipoiva, nombretipoiva, porcentajetipoiva) FROM stdin;
+4	Iva normalizado	16
+3	Iva reducido 4%	4
+1	--	0
+2	Exento	0
+\.
+
+

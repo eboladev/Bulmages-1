@@ -1,0 +1,22 @@
+--
+-- PostgreSQL database dump
+--
+
+SET client_encoding = 'SQL_ASCII';
+SET check_function_bodies = false;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for TOC entry 2 (OID 1345962)
+-- Name: canal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY canal (idcanal, descripcion, nombre) FROM stdin;
+1	Tipo A, Blanco Purisimo	Canal A
+4	Toma ya canal C	Canal C
+10	El canal B	Canal B
+9	A que jode que un nuevo canal nos haga la puñeta Ehhh !!!!!	Canal D
+\.
+
+
