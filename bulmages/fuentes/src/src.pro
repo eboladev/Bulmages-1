@@ -3,6 +3,97 @@
 # Subdir relative project main directory: ./src
 # Target is an application:  ../bin/bulmages
 
+TARGETDEPS += ../bulmalib/libbulmalib.a 
+LIBS += ../bulmalib/libbulmalib.a \
+        -lqt-mt \
+        -lpq 
+INCLUDEPATH = ../bulmalib \
+              ../src \
+              compras \
+              comun \
+              contabilidad \
+              images \
+              nominas \
+              produccion \
+              ventas \
+              formularios \
+              /usr/include/qt 
+TARGET = ../bin/bulmages 
+CONFIG += release \
+          warn_on 
+contabilidad/uibloqfecha.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/uibloqfecha.ui.target 
+contabilidad/uibloqfecha.ui.target = contabilidad/uibloqfecha.ui 
+contabilidad/amortizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/amortizacionesdlg.ui.target 
+contabilidad/amortizacionesdlg.ui.target = contabilidad/amortizacionesdlg.ui 
+contabilidad/correctorwdt.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/correctorwdt.ui.target 
+contabilidad/correctorwdt.ui.target = contabilidad/correctorwdt.ui 
+contabilidad/diarioprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/diarioprintdlg.ui.target 
+contabilidad/diarioprintdlg.ui.target = contabilidad/diarioprintdlg.ui 
+contabilidad/actualizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/actualizacionesdlg.ui.target 
+contabilidad/actualizacionesdlg.ui.target = contabilidad/actualizacionesdlg.ui 
+contabilidad/extractoprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/extractoprintdlg.ui.target 
+contabilidad/extractoprintdlg.ui.target = contabilidad/extractoprintdlg.ui 
+contabilidad/filtrarextractosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/filtrarextractosdlg.ui.target 
+contabilidad/filtrarextractosdlg.ui.target = contabilidad/filtrarextractosdlg.ui 
+contabilidad/propiedemp.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/propiedemp.ui.target 
+contabilidad/propiedemp.ui.target = contabilidad/propiedemp.ui 
+contabilidad/nuevaempresadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/nuevaempresadlg.ui.target 
+contabilidad/nuevaempresadlg.ui.target = contabilidad/nuevaempresadlg.ui 
+contabilidad/ainteligentesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ainteligentesdlg.ui.target 
+contabilidad/ainteligentesdlg.ui.target = contabilidad/ainteligentesdlg.ui 
+contabilidad/ccostedlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ccostedlg.ui.target 
+contabilidad/ccostedlg.ui.target = contabilidad/ccostedlg.ui 
+contabilidad/canaldlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/canaldlg.ui.target 
+contabilidad/canaldlg.ui.target = contabilidad/canaldlg.ui 
+contabilidad/balancesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancesdlg.ui.target 
+contabilidad/balancesdlg.ui.target = contabilidad/balancesdlg.ui 
+contabilidad/balancesprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancesprintdlg.ui.target 
+contabilidad/balancesprintdlg.ui.target = contabilidad/balancesprintdlg.ui 
+contabilidad/balanceprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balanceprintdlg.ui.target 
+contabilidad/balanceprintdlg.ui.target = contabilidad/balanceprintdlg.ui 
+contabilidad/mpatrimonialesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/mpatrimonialesdlg.ui.target 
+contabilidad/mpatrimonialesdlg.ui.target = contabilidad/mpatrimonialesdlg.ui 
+contabilidad/mpatrimonialdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/mpatrimonialdlg.ui.target 
+contabilidad/mpatrimonialdlg.ui.target = contabilidad/mpatrimonialdlg.ui 
+contabilidad/compbalancedlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/compbalancedlg.ui.target 
+contabilidad/compbalancedlg.ui.target = contabilidad/compbalancedlg.ui 
+contabilidad/ivadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ivadlg.ui.target 
+contabilidad/ivadlg.ui.target = contabilidad/ivadlg.ui 
+contabilidad/regivaprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/regivaprintdlg.ui.target 
+contabilidad/regivaprintdlg.ui.target = contabilidad/regivaprintdlg.ui 
+contabilidad/listivadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/listivadlg.ui.target 
+contabilidad/listivadlg.ui.target = contabilidad/listivadlg.ui 
+contabilidad/asientosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/asientosdlg.ui.target 
+contabilidad/asientosdlg.ui.target = contabilidad/asientosdlg.ui 
+contabilidad/filtrarasientosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/filtrarasientosdlg.ui.target 
+contabilidad/filtrarasientosdlg.ui.target = contabilidad/filtrarasientosdlg.ui 
+contabilidad/aplinteligentesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/aplinteligentesdlg.ui.target 
+contabilidad/aplinteligentesdlg.ui.target = contabilidad/aplinteligentesdlg.ui 
+contabilidad/asientodlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/asientodlg.ui.target 
+contabilidad/asientodlg.ui.target = contabilidad/asientodlg.ui 
+contabilidad/int_apunts3.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/int_apunts3.ui.target 
+contabilidad/int_apunts3.ui.target = contabilidad/int_apunts3.ui 
+contabilidad/balancedlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancedlg.ui.target 
+contabilidad/balancedlg.ui.target = contabilidad/balancedlg.ui 
+contabilidad/balance1dlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balance1dlg.ui.target 
+contabilidad/balance1dlg.ui.target = contabilidad/balance1dlg.ui 
+contabilidad/extractodlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/extractodlg1.ui.target 
+contabilidad/extractodlg1.ui.target = contabilidad/extractodlg1.ui 
+contabilidad/filtrardiariodlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/filtrardiariodlg.ui.target 
+contabilidad/filtrardiariodlg.ui.target = contabilidad/filtrardiariodlg.ui 
+contabilidad/diariodlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/diariodlg1.ui.target 
+contabilidad/diariodlg1.ui.target = contabilidad/diariodlg1.ui 
+contabilidad/cuentadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/cuentadlg.ui.target 
+contabilidad/cuentadlg.ui.target = contabilidad/cuentadlg.ui 
+contabilidad/listcuentasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/listcuentasdlg1.ui.target 
+contabilidad/listcuentasdlg1.ui.target = contabilidad/listcuentasdlg1.ui 
+contabilidad/mantComptes.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/mantComptes.ui.target 
+contabilidad/mantComptes.ui.target = contabilidad/mantComptes.ui 
+contabilidad/listadocuentas1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/listadocuentas1.ui.target 
+contabilidad/listadocuentas1.ui.target = contabilidad/listadocuentas1.ui 
+contabilidad/about.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/about.ui.target 
+contabilidad/about.ui.target = contabilidad/about.ui 
+TEMPLATE = app 
 FORMS += comun/uiselector.ui \
          comun/abreempresadlg.ui \
          comun/uiconfiguracion.ui \
@@ -328,97 +419,6 @@ SOURCES += main.cpp \
            formularios/modelosps.cpp 
 QMAKE_CLEAN += Makefile
 LANGUAGE = C++
-TEMPLATE = app
-contabilidad/about.ui.target = contabilidad/about.ui
-contabilidad/about.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/about.ui.target
-contabilidad/listadocuentas1.ui.target = contabilidad/listadocuentas1.ui
-contabilidad/listadocuentas1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/listadocuentas1.ui.target
-contabilidad/mantComptes.ui.target = contabilidad/mantComptes.ui
-contabilidad/mantComptes.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/mantComptes.ui.target
-contabilidad/listcuentasdlg1.ui.target = contabilidad/listcuentasdlg1.ui
-contabilidad/listcuentasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/listcuentasdlg1.ui.target
-contabilidad/cuentadlg.ui.target = contabilidad/cuentadlg.ui
-contabilidad/cuentadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/cuentadlg.ui.target
-contabilidad/diariodlg1.ui.target = contabilidad/diariodlg1.ui
-contabilidad/diariodlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/diariodlg1.ui.target
-contabilidad/filtrardiariodlg.ui.target = contabilidad/filtrardiariodlg.ui
-contabilidad/filtrardiariodlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/filtrardiariodlg.ui.target
-contabilidad/extractodlg1.ui.target = contabilidad/extractodlg1.ui
-contabilidad/extractodlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/extractodlg1.ui.target
-contabilidad/balance1dlg.ui.target = contabilidad/balance1dlg.ui
-contabilidad/balance1dlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balance1dlg.ui.target
-contabilidad/balancedlg.ui.target = contabilidad/balancedlg.ui
-contabilidad/balancedlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancedlg.ui.target
-contabilidad/int_apunts3.ui.target = contabilidad/int_apunts3.ui
-contabilidad/int_apunts3.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/int_apunts3.ui.target
-contabilidad/asientodlg.ui.target = contabilidad/asientodlg.ui
-contabilidad/asientodlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/asientodlg.ui.target
-contabilidad/aplinteligentesdlg.ui.target = contabilidad/aplinteligentesdlg.ui
-contabilidad/aplinteligentesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/aplinteligentesdlg.ui.target
-contabilidad/filtrarasientosdlg.ui.target = contabilidad/filtrarasientosdlg.ui
-contabilidad/filtrarasientosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/filtrarasientosdlg.ui.target
-contabilidad/asientosdlg.ui.target = contabilidad/asientosdlg.ui
-contabilidad/asientosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/asientosdlg.ui.target
-contabilidad/listivadlg.ui.target = contabilidad/listivadlg.ui
-contabilidad/listivadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/listivadlg.ui.target
-contabilidad/regivaprintdlg.ui.target = contabilidad/regivaprintdlg.ui
-contabilidad/regivaprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/regivaprintdlg.ui.target
-contabilidad/ivadlg.ui.target = contabilidad/ivadlg.ui
-contabilidad/ivadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ivadlg.ui.target
-contabilidad/compbalancedlg.ui.target = contabilidad/compbalancedlg.ui
-contabilidad/compbalancedlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/compbalancedlg.ui.target
-contabilidad/mpatrimonialdlg.ui.target = contabilidad/mpatrimonialdlg.ui
-contabilidad/mpatrimonialdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/mpatrimonialdlg.ui.target
-contabilidad/mpatrimonialesdlg.ui.target = contabilidad/mpatrimonialesdlg.ui
-contabilidad/mpatrimonialesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/mpatrimonialesdlg.ui.target
-contabilidad/balanceprintdlg.ui.target = contabilidad/balanceprintdlg.ui
-contabilidad/balanceprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balanceprintdlg.ui.target
-contabilidad/balancesprintdlg.ui.target = contabilidad/balancesprintdlg.ui
-contabilidad/balancesprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancesprintdlg.ui.target
-contabilidad/balancesdlg.ui.target = contabilidad/balancesdlg.ui
-contabilidad/balancesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancesdlg.ui.target
-contabilidad/canaldlg.ui.target = contabilidad/canaldlg.ui
-contabilidad/canaldlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/canaldlg.ui.target
-contabilidad/ccostedlg.ui.target = contabilidad/ccostedlg.ui
-contabilidad/ccostedlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ccostedlg.ui.target
-contabilidad/ainteligentesdlg.ui.target = contabilidad/ainteligentesdlg.ui
-contabilidad/ainteligentesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ainteligentesdlg.ui.target
-contabilidad/nuevaempresadlg.ui.target = contabilidad/nuevaempresadlg.ui
-contabilidad/nuevaempresadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/nuevaempresadlg.ui.target
-contabilidad/propiedemp.ui.target = contabilidad/propiedemp.ui
-contabilidad/propiedemp.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/propiedemp.ui.target
-contabilidad/filtrarextractosdlg.ui.target = contabilidad/filtrarextractosdlg.ui
-contabilidad/filtrarextractosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/filtrarextractosdlg.ui.target
-contabilidad/extractoprintdlg.ui.target = contabilidad/extractoprintdlg.ui
-contabilidad/extractoprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/extractoprintdlg.ui.target
-contabilidad/actualizacionesdlg.ui.target = contabilidad/actualizacionesdlg.ui
-contabilidad/actualizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/actualizacionesdlg.ui.target
-contabilidad/diarioprintdlg.ui.target = contabilidad/diarioprintdlg.ui
-contabilidad/diarioprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/diarioprintdlg.ui.target
-contabilidad/correctorwdt.ui.target = contabilidad/correctorwdt.ui
-contabilidad/correctorwdt.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/correctorwdt.ui.target
-contabilidad/amortizacionesdlg.ui.target = contabilidad/amortizacionesdlg.ui
-contabilidad/amortizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/amortizacionesdlg.ui.target
-contabilidad/uibloqfecha.ui.target = contabilidad/uibloqfecha.ui
-contabilidad/uibloqfecha.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/uibloqfecha.ui.target
-CONFIG += release \
-warn_on \
-debug
-TARGET = ../bin/bulmages
-INCLUDEPATH = ../src \
-compras \
-comun \
-contabilidad \
-images \
-nominas \
-produccion \
-ventas \
-formularios \
-/usr/include/qt \
-../../bulmalib
-LIBS += -lqt-mt \
--lpq \
-../../bulmalib/libbulmalib.a
 exists (estadisticas){
   LIBS += ../src/estadisticas/libestadisticas.lib.a
   INCLUDEPATH += estadisticas
