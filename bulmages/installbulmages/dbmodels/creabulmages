@@ -135,6 +135,7 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    psql $2 < crear/bulmages/t_tiposiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_grupo_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_fpago_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    
    # Hacemos las entradas oportunas para que funcione el ejercicio.
    echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 0, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null

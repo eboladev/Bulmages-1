@@ -309,6 +309,33 @@ CREATE TABLE borrador (
 
 
 
+
+
+-- La tabla fpago lleva las formas de pago existentes
+-- idfpago Identificador de la forma de pago
+-- nomfpago Nombre de la forma de pago
+-- nplazosfpago Numero de plazos de la forma de pago
+-- plazoprimerpagofpago El plazo hasta el primer cobro/pago.
+-- tipoplazoprimerpagofpago Tipo del plazo de la forma de pago
+--			0 - dias
+--			1 - semanas
+--			2 - meses
+--			3 - años
+-- plazoentrerecibofpago numero de plazos en los siguientes recibos
+-- tipoplazoentrerecibofpago (Igual que tipoplazoprimerpagofpago)
+
+CREATE TABLE fpago (
+    idfpago serial PRIMARY KEY,
+    nomfpago character varying(50),
+    nplazosfpago integer,
+    plazoprimerpagofpago integer,
+    tipoplazoprimerpagofpago integer,
+    plazoentrerecibofpago integer,
+    tipoplazoentrerecibofpago integer
+);
+
+
+
 --
 -- TOC entry 40 (OID 1346006)
 -- Name: registroiva; Type: TABLE; Schema: public; Owner: postgres
@@ -327,10 +354,9 @@ CREATE TABLE registroiva (
     regularizacion boolean,
     plan349 boolean,
     numorden character varying(50),
-    cif character varying(25)
+    cif character varying(25),
+    idfpago integer REFERENCES fpago(idfpago)
 );
-
-
 
 -- La tabla prevcobro es prevision de cobros / pagos para facturas.
 -- Esta tabla proporciona las formas de pago de cada factura que se pasa a un cliente o que recibimos de un proveedor.
@@ -357,14 +383,9 @@ CREATE TABLE prevcobro (
     cantidadprevistaprevcobro double precision,
     cantidadprevcobro         double precision,
     idregistroiva integer NOT NULL REFERENCES registroiva(idregistroiva),
-    tipoprevcobro boolean
+    tipoprevcobro boolean,
+    docprevcobro character varying(50)
 );
-
-
-
-
-
-
 
 
 

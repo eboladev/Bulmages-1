@@ -1904,9 +1904,10 @@ void intapunts3view::borrar_asiento(bool confirmarBorrado) {
     }// end if
 } //fin borrar_asiento
 
-/******************************************************************
-* Esta se encarga de la edicion de asientos.                      *
-****************************************************************/
+
+/**
+  * Esta se encarga de la edicion de asientos.
+  */
 void intapunts3view::editarasiento() {
     guardaborrador(rowactual);
     asientoview *nuevoasiento= new asientoview(empresaactual,0,"",true);
@@ -1947,7 +1948,7 @@ void intapunts3view::fechaasiento1_textChanged( const QString & texto ) {
         a = cal->dn->selectedDates();
         fechaasiento1->setText(a.first()->toString("dd/MM/yyyy"));
         delete cal;
-    }
+    }// end if
     if (texto=="*")
         fechaasiento1->setText(QDate::currentDate().toString("dd/MM/yyyy") );
 }//fin fechaasiento1_textChanged

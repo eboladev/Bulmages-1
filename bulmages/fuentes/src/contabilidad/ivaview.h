@@ -32,7 +32,9 @@ class empresa;
   
 class ivaview : public ivadlg  {
   Q_OBJECT
-
+private:
+   cursor2 *m_cursorFPago;   // Cursor para las formas de pago.
+   
 public:
   empresa *empresaactual;
   postgresiface2 *conexionbase;
@@ -47,6 +49,9 @@ public:
   void guardaprevpago(int );
   void guardaprevpago();
   void cambiadasubcuenta(int);
+  void cargacobros();
+private:
+  void cargarComboFPago(QString);
 
 public slots:
   virtual void accept();
@@ -56,6 +61,7 @@ public slots:
   virtual void iva_changed();
   virtual void importeiva_changed();
   virtual void baseiva_lostfocus();
+  virtual void boton_generarPrevisiones();
 
 private slots:
   virtual void setSoportadoRepercutido(int);

@@ -8,15 +8,13 @@ SET check_function_bodies = false;
 SET search_path = public, pg_catalog;
 
 --
--- Data for TOC entry 2 (OID 1345946)
+-- Data for TOC entry 2 (OID 3347528)
 -- Name: tiposiva; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY tiposiva (idtipoiva, nombretipoiva, porcentajetipoiva) FROM stdin;
-4	Iva normalizado	16
-3	Iva reducido 4%	4
-1	--	0
-2	Exento	0
-\.
+INSERT INTO tiposiva (idtipoiva, nombretipoiva, porcentajetipoiva) VALUES (4, 'Iva normalizado', '16');
+INSERT INTO tiposiva (idtipoiva, nombretipoiva, porcentajetipoiva) VALUES (3, 'Iva reducido 4%', '4');
+INSERT INTO tiposiva (idtipoiva, nombretipoiva, porcentajetipoiva) VALUES (1, '--', '0');
+INSERT INTO tiposiva (idtipoiva, nombretipoiva, porcentajetipoiva) VALUES (2, 'Exento', '0');
 
 

@@ -15,6 +15,28 @@
  ***************************************************************************/
 
 /**
+--
+-- TOC entry 40 (OID 1346006)
+-- Name: registroiva; Type: TABLE; Schema: public; Owner: postgres
+--
+-- ffactura fecha de la factura.
+
+CREATE TABLE registroiva (
+    idregistroiva serial PRIMARY KEY,
+    contrapartida integer REFERENCES cuenta(idcuenta),
+    baseimp double precision,
+    iva double precision,
+    ffactura date,
+    factura character varying(70),
+    idborrador integer,
+    incregistro boolean,
+    regularizacion boolean,
+    plan349 boolean,
+    numorden character varying(50),
+    cif character varying(25),
+    idfpago integer REFERENCES fpago(idfpago)
+);
+
 -- La tabla prevcobro es prevision de cobros / pagos para facturas.
 -- Esta tabla proporciona las formas de pago de cada factura que se pasa a un cliente o que recibimos de un proveedor.
 
@@ -43,10 +65,31 @@ CREATE TABLE prevcobro (
     tipoprevcobro boolean
 );
 
+
+-- La tabla fpago lleva las formas de pago existentes
+-- idfpago Identificador de la forma de pago
+-- nomfpago Nombre de la forma de pago
+-- nplazosfpago Numero de plazos de la forma de pago
+-- plazoprimerpagofpago El plazo hasta el primer cobro/pago.
+-- tipoplazoprimerpagofpago Tipo del plazo de la forma de pago
+			0 - dias
+			1 - semanas
+			2 - meses
+			3 - años
+-- plazoentrerecibofpago numero de plazos en los siguientes recibos
+-- tipoplazoentrerecibofpago (Igual que tipoplazoprimerpagofpago)
+
+CREATE TABLE fpago (
+    idfpago serial PRIMARY KEY,
+    nomfpago character varying(50),
+    nplazosfpago integer,
+    plazoprimerpagofpago integer,
+    tipoplazoprimerpagofpago integer,
+    plazoentrerecibofpago integer,
+    tipoplazoentrerecibofpago integer
+);
+
 */
- 
- 
- 
  
 #include "ivaview.h"
 #include "listcuentasview1.h"
@@ -64,8 +107,9 @@ CREATE TABLE prevcobro (
 #define COL_PREV_NOMCUENTA 5
 #define COL_PREV_CANTIDADPREVISTAPREVCOBRO 6
 #define COL_PREV_CANTIDADPREVCOBRO 7
-#define COL_PREV_FPAGOPREVCOBRO 8
-#define COL_PREV_IDREGISTROIVA 9
+// #define COL_PREV_FPAGOPREVCOBRO 8
+#define COL_PREV_IDREGISTROIVA 8
+#define COL_PREV_DOCPREVCOBRO 9
 
 
 
@@ -78,21 +122,22 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
   
    m_listPrevision->setNumCols(10);
    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDPREVCOBRO, tr( "IDPREVCOBRO") );
-   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FPREVISTAPREVCOBRO, tr( "COL_PREV_FPREVISTAPREVCOBRO") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FPREVISTAPREVCOBRO, tr( "FPREVISTAPREVCOBRO") );
    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FCOBROPREVCOBRO, tr( "FCOBROPREVCOBRO") );
    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDCUENTA, tr( "IDCUENTA") );
    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CODCUENTA, tr( "CODCUENTA") );
    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_NOMCUENTA, tr( "NOMCUENTA") );
-   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CANTIDADPREVISTAPREVCOBRO, tr( "COL_PREV_CANTIDADPREVISTAPREVCOBRO") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CANTIDADPREVISTAPREVCOBRO, tr( "CANTIDADPREVISTAPREVCOBRO") );
    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CANTIDADPREVCOBRO, tr( "CANTIDADPREVCOBRO") );
-   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FPAGOPREVCOBRO, tr( "FPAGOPREVCOBRO") );
+//   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FPAGOPREVCOBRO, tr( "FPAGOPREVCOBRO") );
    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDREGISTROIVA, tr( "IDREGISTROIVA") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_DOCPREVCOBRO, tr( "DOCPREVCOBRO") );
    m_listPrevision->setColumnWidth(COL_PREV_FPREVISTAPREVCOBRO,90);
    m_listPrevision->setColumnWidth(COL_PREV_FCOBROPREVCOBRO,90);
    m_listPrevision->setColumnWidth(COL_PREV_CODCUENTA,75);
    m_listPrevision->setColumnWidth(COL_PREV_CANTIDADPREVISTAPREVCOBRO,75);
    m_listPrevision->setColumnWidth(COL_PREV_CANTIDADPREVCOBRO,75);
-   m_listPrevision->setColumnWidth(COL_PREV_FPAGOPREVCOBRO,75);
+//   m_listPrevision->setColumnWidth(COL_PREV_FPAGOPREVCOBRO,75);
    
    // Ocultamos las columnas que son de un tipo específico.
    m_listPrevision->hideColumn(COL_PREV_IDCUENTA);
@@ -100,10 +145,41 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
    m_listPrevision->hideColumn(COL_PREV_IDREGISTROIVA);
    
    m_listPrevision->setNumRows(50);
+   
+   // CAlculamos las formas de pago.
+   m_cursorFPago = NULL;
+   cargarComboFPago("NULL");
 }// end ivaview
 
+/**
+  * \brief Carga el combo de las formas de pago
+  * 
+  Esta función se encarga de cargar la tabla de formas de pago en el combo box correspondiente.
+  Usa un cursor de clase (m_cursorFPago) que es construido al usar esta funcion y destruido en el destructor de clase.
+  Esta función se llama con la inicialización de clase y cuando se quieren cargar datos.
+*/
+void ivaview::cargarComboFPago(QString idfpago) {
+	conexionbase->begin();
+  	if (m_cursorFPago != NULL) delete m_cursorFPago;
+   	m_cursorFPago = conexionbase->cargacursor("SELECT * FROM fpago","unquery");
+   	conexionbase->commit();
+   	int i = 0;
+   	int i1 = 0;
+   	while (!m_cursorFPago->eof()) {
+   		i ++;
+                if (m_cursorFPago->valor("idfpago") == idfpago) {
+                     i1 = i;
+                }// end if
+   		m_fPago->insertItem(m_cursorFPago->valor("nomfpago"));
+                m_cursorFPago->siguienteregistro();
+   	}// end while
+	if (i1 != 0 ) {
+   		m_fPago->setCurrentItem(i1-1);
+ 	}// end if
+}// end cargarComboFPago
 
 ivaview::~ivaview(){
+   delete m_cursorFPago;
 }// end ~ivaview
 
 
@@ -130,10 +206,10 @@ void ivaview::accept() {
     int idcuenta= atoi(cursorcuenta->valor("idcuenta").ascii());
     if (idregistroiva !=0) {
           // Se trata de una inserción, ya que no hay registros de iva introducidos.
-         query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%2.2f, iva=%2.0f, contrapartida=%d, factura='%s', numorden='%s', cif='%s' WHERE idregistroiva=%d", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), idregistroiva);
+         query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%2.2f, iva=%2.0f, contrapartida=%d, factura='%s', numorden='%s', cif='%s', ffactura='%s' WHERE idregistroiva=%d", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), m_ffactura->text().ascii(), idregistroiva);
     } else {
           // Se trata de una modificacion, ya que hay registros de iva introducidos.
-         query.sprintf("INSERT INTO registroiva (idborrador, baseimp, iva, contrapartida, factura, numorden, cif) VALUES (%d,%2.2f, %2.0f, %d, '%s', '%s', '%s')", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii());
+         query.sprintf("INSERT INTO registroiva (idborrador, baseimp, iva, contrapartida, factura, numorden, cif, ffactura) VALUES (%d,%2.2f, %2.0f, %d, '%s', '%s', '%s', '%s')", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), m_ffactura->text().ascii());
     }// end if
     fprintf(stderr,"%s\n",query.ascii());
     conexionbase->begin();
@@ -202,6 +278,7 @@ void ivaview::inicializa1(int idapunte1) {
     factura->setText(cursoriva->valor("factura"));
     numorden->setText(cursoriva->valor("numorden"));
     cif->setText(cursoriva->valor("cif"));
+    m_ffactura->setText(cursoriva->valor("ffactura"));
     query.sprintf ("SELECT * from borrador, asiento, cuenta WHERE borrador.idborrador=%d AND borrador.idasiento=asiento.idasiento AND borrador.idcuenta=cuenta.idcuenta",idborrador);
     conexionbase->begin();
     cursor2 * cursorapunte = conexionbase->cargacursor(query,"cursorapunte");
@@ -242,7 +319,6 @@ void ivaview::inicializa1(int idapunte1) {
 	// Atención a este SELECT que tiene tela,
 	// Si se hace un SELECT * FROM ..... WHERE borrador.idborrador = bcontrapartidaborr(%d) el rendimiento cae en picado.
         query.sprintf("SELECT * FROM borrador,cuenta WHERE borrador.idcuenta = cuenta.idcuenta AND borrador.idborrador IN  (SELECT bcontrapartidaborr(%d))",idborrador);
-        fprintf(stderr,"%s\n",query.ascii());
         conexionbase->begin();
         cursor2 *cursorcontrapartida = conexionbase->cargacursor(query,"contrapartida");
         conexionbase->commit();
@@ -336,7 +412,14 @@ void ivaview::inicializa1(int idapunte1) {
   }// end if
   delete cursoriva;
   
-  
+  // Hacemos la carga de los cobros.
+   cargacobros();
+}// end inicializa1
+
+/**
+  * \brief Se encarga de cargar la rejilla de los cobros
+  */
+void ivaview::cargacobros () {
   // Cargamos las formas de pago correspondientes y las ponemos como toca.
   QString SQLQuery;
   SQLQuery.sprintf("SELECT * FROM prevcobro LEFT JOIN cuenta ON prevcobro.idcuenta = cuenta.idcuenta WHERE idregistroiva=%d", idregistroiva);
@@ -353,25 +436,25 @@ void ivaview::inicializa1(int idapunte1) {
       m_listPrevision->setText(i, COL_PREV_NOMCUENTA,curprevcobros->valor("descripcion"));
       m_listPrevision->setText(i, COL_PREV_CANTIDADPREVISTAPREVCOBRO,curprevcobros->valor("cantidadprevistaprevcobro"));
       m_listPrevision->setText(i, COL_PREV_CANTIDADPREVCOBRO,curprevcobros->valor("cantidadprevcobro"));
-      m_listPrevision->setText(i, COL_PREV_FPAGOPREVCOBRO,curprevcobros->valor("fpagoprevcobro"));
+      m_listPrevision->setText(i, COL_PREV_DOCPREVCOBRO,curprevcobros->valor("docprevcobro"));
       m_listPrevision->setText(i, COL_PREV_IDREGISTROIVA,curprevcobros->valor("idregistroiva"));
       i++;
       curprevcobros->siguienteregistro(); 
   }// end while
   delete curprevcobros;
-  
-}// end inicializa1
+}// end cargacobros
 
-
-//El usuario cambia el % de IVA
-//Entonces recalculamos el importe de IVA
+/** El usuario cambia el % de IVA
+  * Entonces recalculamos el importe de IVA
+  */
 void ivaview::iva_changed() {
     importeiva->setText(QString::number(((baseimponible->text().toFloat()) *(iva->text().toFloat()))/100,'f',2));
 }
 
-//El usuario cambia el importe del IVA
-//Entonces recalculamos la base
-//Controlamos que IVA no tenga valor ZERO para evitar "DIVISION POR ZERO!!"
+/** El usuario cambia el importe del IVA
+  * Entonces recalculamos la base
+  * Controlamos que IVA no tenga valor ZERO para evitar "DIVISION POR ZERO!!"
+  */
 void ivaview::importeiva_changed() {
     if (iva->text().toFloat() != 0) {
         baseimponible->setText(QString::number((importeiva->text().toFloat() * 100) / iva->text().toFloat(),'f',2));
@@ -400,6 +483,7 @@ void ivaview::guardaprevpago() {
    while (m_listPrevision->text(i,COL_PREV_FPREVISTAPREVCOBRO) != "") {
       guardaprevpago(i++);
    }// end while
+   cargacobros();
 }// end guardaprevpago
 
 /**
@@ -417,12 +501,23 @@ void ivaview::guardaprevpago (int numrow) {
       SQLQuery += " , fcobroprevcobro = '"+m_listPrevision->text(numrow, COL_PREV_FCOBROPREVCOBRO)+"' ";
       SQLQuery += " , cantidadprevistaprevcobro = "+m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVISTAPREVCOBRO)+" ";
       SQLQuery += " , cantidadprevcobro = "+m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVCOBRO)+" ";
+      SQLQuery += " , docprevcobro = '"+m_listPrevision->text(numrow, COL_PREV_DOCPREVCOBRO)+"' ";
       SQLQuery += " WHERE idprevcobro="+idprevpago;
-      fprintf (stderr,"%s\n", SQLQuery.ascii());
       conexionbase->begin();
       conexionbase->ejecuta(SQLQuery);
       conexionbase->commit();
-   } else {                      // Hay que hacer un INSERT
+   } else {                    // Hay que hacer un INSERT   
+      QString SQLQuery = "INSERT INTO prevcobro (idcuenta, fprevistaprevcobro, fcobroprevcobro, cantidadprevistaprevcobro, cantidadprevcobro, docprevcobro, idregistroiva) VALUES (";
+      SQLQuery += m_listPrevision->text(numrow, COL_PREV_IDCUENTA) + " , ";
+      SQLQuery += "'"+m_listPrevision->text(numrow, COL_PREV_FPREVISTAPREVCOBRO)+"', ";
+      SQLQuery += "'"+m_listPrevision->text(numrow, COL_PREV_FCOBROPREVCOBRO)+"', ";
+      SQLQuery += m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVISTAPREVCOBRO)+", ";
+      SQLQuery += m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVCOBRO)+", ";
+      SQLQuery += "'"+m_listPrevision->text(numrow, COL_PREV_DOCPREVCOBRO)+"'";
+      SQLQuery += ","+QString::number(idregistroiva)  +") ";
+      conexionbase->begin();
+      conexionbase->ejecuta(SQLQuery);
+      conexionbase->commit();
    }// end if
 }// end guardaprevpago
 
@@ -460,6 +555,40 @@ void ivaview::cambiadogrid(int row, int col) {
    }// end switch
 }// end apuntecambiadogrid
 
+
+/**
+  * \brief SLOT que se activa al pulsar sobre el botón de generar previsiones.
+  *
+  1.- Vacia la lista de Prevision de Cobros
+  2.- Calcula la fecha inicial a partir de la fecha de factura y la forma de pago.
+  3.- Itera para cada plazo en la forma de pago calculando el nuevo plazo.
+  */
+void ivaview::boton_generarPrevisiones() {
+   QString snumpagos = m_cursorFPago->valor("nplazosfpago",m_fPago->currentItem());
+   QString splazoprimerpago = m_cursorFPago->valor("plazoprimerpagofpago",m_fPago->currentItem());
+   QString splazoentrerecibo = m_cursorFPago->valor("plazoentrerecibofpago",m_fPago->currentItem());
+   
+   float totalfactura = baseimponible->text().toFloat() + importeiva->text().toFloat();
+   int plazoentrerecibo = splazoentrerecibo.toInt();
+   int plazoprimerpago = splazoprimerpago.toInt();
+   int numpagos = snumpagos.toInt();
+   float totalplazo = totalfactura / numpagos;
+   
+   // Vaciamos la lista de prevision para que no haga cosas raras
+   m_listPrevision->setNumRows(0);
+   m_listPrevision->setNumRows(50);
+   
+   QDate ffactura = normalizafecha(m_ffactura->text());
+   QDate fpcobro = ffactura.addDays(plazoprimerpago);
+   
+   for (int i =0; i< numpagos; i++) {
+      m_listPrevision->setText(i,COL_PREV_FPREVISTAPREVCOBRO,fpcobro.toString("dd/MM/yyyy"));
+      m_listPrevision->setText(i, COL_PREV_CANTIDADPREVISTAPREVCOBRO, QString::number(totalplazo));
+      fpcobro = fpcobro.addDays(plazoentrerecibo);
+   }// end for
+}// end boton_generarPrevisiones
+
+
 /**
   * \brief SLOT que captura la pulsación de determinadas telcas especiales para la aplicacion
   * Se emite cuando se han pulsado determinadas teclas en la edición de la tabla de cobros/pagos.
@@ -467,7 +596,6 @@ void ivaview::cambiadogrid(int row, int col) {
   */
 void ivaview::pulsadomas(int row, int col, int caracter) { 
    QString query, fecha;
-   QPopupMenu *menucoste = new QPopupMenu( this );
    calendario *cal;
    int dia, mes, ano;
    QList<QDate> a;
@@ -499,15 +627,6 @@ void ivaview::pulsadomas(int row, int col, int caracter) {
                fprintf(stderr,"Se ha pulsado:%s\n", cadena.ascii());
                m_listPrevision->setText(row, COL_PREV_FCOBROPREVCOBRO, cadena);
                delete cal;
-            break;
-            
-            case COL_PREV_FPAGOPREVCOBRO:
-               /** Montamos el menu que se va a presentar */
-               menucoste->insertItem(tr("Ninguno"), 1000);
-               opcion = menucoste->exec();
-               delete menucoste;
-                if (opcion == 1000) {
-                }// end if
             break;
          }// end switch
       case '*':
