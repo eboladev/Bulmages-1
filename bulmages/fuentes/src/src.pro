@@ -71,7 +71,10 @@ SOURCES += main.cpp \
            nominas/bmodnominas.cpp \
            contabilidad/amortizacionesview.cpp \
            contabilidad/bbloqfecha.cpp \
-           comun/log.cpp 
+           comun/log.cpp
+	
+	   
+	   
 HEADERS += comun/bselector.h \
            comun/configuracion.h \
            comun/abreempresaview.h \
@@ -170,8 +173,6 @@ IDLS += contabilidad/about.ui \
         contabilidad/balanceprintdlg.ui \
         contabilidad/balancesprintdlg.ui \
         contabilidad/balancesdlg.ui \
-        contabilidad/estadisticasdlg.ui \
-        contabilidad/resmensualdlg.ui \
         contabilidad/canaldlg.ui \
         contabilidad/ccostedlg.ui \
         contabilidad/ainteligentesdlg.ui \
@@ -302,8 +303,6 @@ FORMS += comun/uiselector.ui \
          contabilidad/balanceprintdlg.ui \
          contabilidad/balancesprintdlg.ui \
          contabilidad/balancesdlg.ui \
-         contabilidad/estadisticasdlg.ui \
-         contabilidad/resmensualdlg.ui \
          contabilidad/canaldlg.ui \
          contabilidad/ccostedlg.ui \
          contabilidad/ainteligentesdlg.ui \
@@ -377,10 +376,6 @@ contabilidad/balancesprintdlg.ui.target = contabilidad/balancesprintdlg.ui
 contabilidad/balancesprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancesprintdlg.ui.target 
 contabilidad/balancesdlg.ui.target = contabilidad/balancesdlg.ui 
 contabilidad/balancesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancesdlg.ui.target 
-contabilidad/estadisticasdlg.ui.target = contabilidad/estadisticasdlg.ui 
-contabilidad/estadisticasdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg.ui.target 
-contabilidad/resmensualdlg.ui.target = contabilidad/resmensualdlg.ui 
-contabilidad/resmensualdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg.ui.target 
 contabilidad/canaldlg.ui.target = contabilidad/canaldlg.ui 
 contabilidad/canaldlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/canaldlg.ui.target 
 contabilidad/ccostedlg.ui.target = contabilidad/ccostedlg.ui 
@@ -408,19 +403,65 @@ contabilidad/uibloqfecha.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilid
 CONFIG += release \
           warn_on 
 TARGET = ../bin/bulmages 
+
 INCLUDEPATH = ../src \
               compras \
               comun \
               contabilidad \
-              estadisticas \
               images \
               nominas \
               produccion \
               ventas \
               /usr/include/qt 
-LIBS += ../src/estadisticas/libestadisticas.lib.a \
-        -lqt-mt \
+
+LIBS += -lqt-mt \
         -lpq 
+
+
+#LAS LIBRERIAS DE ESTADISTICAS TORA
+exists (estadisticas) {
+LIBS += ../src/estadisticas/libestadisticas.lib.a
+INCLUDEPATH += estadisticas    
+contabilidad/estadisticasdlg.ui.target = contabilidad/estadisticasdlg.ui 
+contabilidad/estadisticasdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg.ui.target 
+contabilidad/resmensualdlg.ui.target = contabilidad/resmensualdlg.ui 
+contabilidad/resmensualdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg.ui.target 
+
+DEFINES += ESTADISTICAS
+IDLS += contabilidad/estadisticasdlg.ui \
+        contabilidad/resmensualdlg.ui \
+
+FORMS += contabilidad/estadisticasdlg.ui \
+	 contabilidad/resmensualdlg1.ui
+
+}	
+	
+# LAS GDCHART
+exists (gdcchart) {
+INCLUDEPATH +=  ../src/gdcchart/gdcchart
+	     
+HEADERS += gdcchart/gdc.h \
+		gdcchart/gdchart.h \
+		gdcchart/gdcpie.h 
+
+LIBS += ../src/gdcchart/libgdcchart.lib.a \
+	../src/gdcchart/gd1.3/libgd.lib.a
+	
+
+IDLS += contabilidad/estadisticasdlg1.ui \
+	contabilidad/resmensualdlg1.ui
+	
+FORMS += contabilidad/estadisticasdlg1.ui \
+         contabilidad/resmensualdlg1.ui
+
+contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui 
+contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target 
+contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui 
+contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target 
+
+DEFINES += GDCHART
+}
+
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
@@ -440,9 +481,7 @@ unix{
     DEFINES += DISTRO_NO_SE_QUE
   }
 }
-
 win32{
-   DEFINES += WIN32
-   INCLUDEPATH += lpqwin32/include
+  DEFINES += WIN32
+  INCLUDEPATH += lpqwin32/include
 }
-

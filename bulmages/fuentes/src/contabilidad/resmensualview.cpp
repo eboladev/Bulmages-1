@@ -15,8 +15,12 @@
  ***************************************************************************/
 
 #include "resmensualview.h"
+// Si se va a compilar con el modulo de estadisticas se ponen las estadisticas
+#ifdef ESTADISTICAS
 #include "estadisticas/tolinechart.h"
 #include "estadisticas/topiechart.h"
+#endif
+
 #include "qdatetime.h"
 #include "qstring.h"
 #include "qlineedit.h"
@@ -104,6 +108,7 @@ void resmensualview::presentar() {
          fecha1 = fecha1.addMonths(1);
       }// end for
    }// end for
+#ifdef ESTADISTICAS
    line->clear();   
    line->showGrid(12);
    line->setTitle(tr("Progresion de saldos"));
@@ -116,6 +121,7 @@ void resmensualview::presentar() {
       line->addValues(milistas[i],mes[i]);
       line1->addValues(milistad[i],mes[i]);
    }// end for
+#endif
 }// end presentar
 
 void resmensualview::buscacodigocta() {
@@ -234,7 +240,9 @@ void resmensualview::presentarpie() {
 
          // Vaciamos el cursor de la base de datos.
          delete cursorapt;
+#ifdef ESTADISTICAS         
          pies[i]->setValues(valores,labels);
+#endif
       }// end for      
 }// end presentarpie
 

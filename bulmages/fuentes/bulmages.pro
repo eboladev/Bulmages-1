@@ -3,8 +3,16 @@
 # Subdir relative project main directory: .
 # Target is a subdirs project 
 
-SUBDIRS += src/estadisticas \
-	   src
+
+exists(src/gdcchart) {
+    SUBDIRS += src/gdcchart
+}
+exists(src/estadisticas) {
+    SUBDIRS += src/estadisticas
+}
+
+SUBDIRS += src
+
 TEMPLATE = subdirs 
 CONFIG += release \
           warn_on 
