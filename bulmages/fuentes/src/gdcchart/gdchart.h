@@ -80,9 +80,9 @@ EXTERND char				*GDC_ylabel_fmt		DEFAULTO( NULL );		/* printf fmt'ing, e.g.: "%.
 EXTERND char				*GDC_ylabel2_fmt	DEFAULTO( NULL );		/* default: "%.0f" future: fractions */
 EXTERND short				GDC_xlabel_spacing	DEFAULTO( 5 );			/* pixels  MAXSHORT means force all */
 EXTERND char				GDC_ylabel_density	DEFAULTO( 80 );			/* % */
-EXTERND float				GDC_requested_ymin	DEFAULTO( GDC_NOVALUE );
-EXTERND float				GDC_requested_ymax	DEFAULTO( GDC_NOVALUE );
-EXTERND float				GDC_requested_yinterval	DEFAULTO( GDC_NOVALUE );
+EXTERND float				GDC_requested_ymin	DEFAULTO( 0 );
+EXTERND float				GDC_requested_ymax	DEFAULTO( 0 );
+EXTERND float				GDC_requested_yinterval	DEFAULTO( 0 );
 EXTERND char				GDC_0Shelf			DEFAULTO( TRUE );		/* if applicable */
 EXTERND char				GDC_grid			DEFAULTO( TRUE );
 EXTERND char				GDC_xaxis			DEFAULTO( TRUE );
@@ -101,7 +101,8 @@ EXTERND int					GDC_num_scatter_pts	DEFAULTO( 0 );
 EXTERND GDC_SCATTER_T		*GDC_scatter		DEFAULTO( (GDC_SCATTER_T*)NULL );
 EXTERND char				GDC_thumbnail		DEFAULTO( FALSE );
 EXTERND char				*GDC_thumblabel;
-EXTERND float				GDC_thumbval		DEFAULTO( -MAXFLOAT );
+// No estaba definidio MAXFLOAT
+EXTERND float				GDC_thumbval		DEFAULTO( -100000 );
 EXTERND char				GDC_border			DEFAULTO( TRUE );
 EXTERND unsigned long		GDC_BGColor			DEFAULTO( 0x000000L );	 /* black */
 EXTERND unsigned long		GDC_GridColor		DEFAULTO( 0xA0A0A0L );	 /* gray */
@@ -153,7 +154,7 @@ EXTERND void				*GDC_image			DEFAULTO( (void*)NULL );	/* in/out */
 #define clrshdallocate( im, rawclr )	_clrshdallocate( im, rawclr, GDC_BGColor )
 #endif
 
-int GDC_out_graph( short		gifwidth,
+int out_graph( short		gifwidth,
 				   short		gifheight,  
 				   FILE			*gif_fptr,		/* open file pointer (gif out) */
 				   GDC_CHART_T	type,

@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>716</width>
-            <height>589</height>
+            <width>544</width>
+            <height>488</height>
         </rect>
     </property>
     <property name="caption">
@@ -19,7 +19,13 @@
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
-        <widget class="QLayoutWidget" row="2" column="0">
+        <property name="margin">
+            <number>0</number>
+        </property>
+        <property name="spacing">
+            <number>0</number>
+        </property>
+        <widget class="QLayoutWidget" row="3" column="0">
             <property name="name">
                 <cstring>layout5</cstring>
             </property>
@@ -120,102 +126,97 @@
                 </spacer>
             </hbox>
         </widget>
-        <widget class="QLayoutWidget" row="1" column="0">
+        <widget class="QGroupBox" row="2" column="0">
             <property name="name">
-                <cstring>layout11</cstring>
+                <cstring>groupBox1</cstring>
             </property>
-            <hbox>
+            <property name="title">
+                <string>Contenido del Centro de Coste</string>
+            </property>
+            <grid>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="QListView">
+                <widget class="QLayoutWidget" row="0" column="0">
                     <property name="name">
-                        <cstring>listcoste</cstring>
+                        <cstring>layout3</cstring>
                     </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Nombre</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>nomcentro</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
                 </widget>
-                <widget class="QLayoutWidget">
+                <widget class="QLayoutWidget" row="1" column="0">
                     <property name="name">
-                        <cstring>layout10</cstring>
+                        <cstring>layout7</cstring>
                     </property>
                     <vbox>
                         <property name="name">
                             <cstring>unnamed</cstring>
                         </property>
-                        <widget class="QLayoutWidget">
+                        <widget class="QLabel">
                             <property name="name">
-                                <cstring>layout2</cstring>
+                                <cstring>textLabel1_2</cstring>
                             </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel2</cstring>
-                                    </property>
-                                    <property name="text">
-                                        <string>Centro de coste</string>
-                                    </property>
-                                </widget>
-                                <widget class="QComboBox">
-                                    <property name="name">
-                                        <cstring>combocoste</cstring>
-                                    </property>
-                                </widget>
-                            </hbox>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>5</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="text">
+                                <string>Descripcion</string>
+                            </property>
                         </widget>
-                        <widget class="QGroupBox">
+                        <widget class="QTextEdit">
                             <property name="name">
-                                <cstring>groupBox1</cstring>
+                                <cstring>desccoste</cstring>
                             </property>
-                            <property name="title">
-                                <string>Contenido del Centro de Coste</string>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>7</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
                             </property>
-                            <grid>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel" row="1" column="0">
-                                    <property name="name">
-                                        <cstring>textLabel1_2</cstring>
-                                    </property>
-                                    <property name="text">
-                                        <string>Descripcion</string>
-                                    </property>
-                                </widget>
-                                <widget class="QTextEdit" row="2" column="0">
-                                    <property name="name">
-                                        <cstring>desccoste</cstring>
-                                    </property>
-                                </widget>
-                                <widget class="QLayoutWidget" row="0" column="0">
-                                    <property name="name">
-                                        <cstring>layout3</cstring>
-                                    </property>
-                                    <hbox>
-                                        <property name="name">
-                                            <cstring>unnamed</cstring>
-                                        </property>
-                                        <widget class="QLabel">
-                                            <property name="name">
-                                                <cstring>textLabel1</cstring>
-                                            </property>
-                                            <property name="text">
-                                                <string>Nombre</string>
-                                            </property>
-                                        </widget>
-                                        <widget class="QLineEdit">
-                                            <property name="name">
-                                                <cstring>nomcentro</cstring>
-                                            </property>
-                                        </widget>
-                                    </hbox>
-                                </widget>
-                            </grid>
                         </widget>
                     </vbox>
                 </widget>
-            </hbox>
+            </grid>
+        </widget>
+        <widget class="QListView" row="1" column="0">
+            <property name="name">
+                <cstring>listcoste</cstring>
+            </property>
+            <property name="focusPolicy">
+                <enum>NoFocus</enum>
+            </property>
+            <property name="allColumnsShowFocus">
+                <bool>true</bool>
+            </property>
+            <property name="showSortIndicator">
+                <bool>true</bool>
+            </property>
+            <property name="rootIsDecorated">
+                <bool>true</bool>
+            </property>
         </widget>
     </grid>
 </widget>
@@ -236,12 +237,6 @@
         <signal>clicked()</signal>
         <receiver>ccostedlg</receiver>
         <slot>close()</slot>
-    </connection>
-    <connection>
-        <sender>combocoste</sender>
-        <signal>activated(int)</signal>
-        <receiver>ccostedlg</receiver>
-        <slot>cambiacombo(int)</slot>
     </connection>
     <connection>
         <sender>toolButton1_2_5</sender>

@@ -35,6 +35,7 @@ public:
 	~resmensualview();
    void presentar();
    void presentarpie();
+   void generargrafico();
 public slots:
    virtual void accept();
    virtual void buscacodigocta();

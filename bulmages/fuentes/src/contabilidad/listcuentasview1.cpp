@@ -62,8 +62,7 @@ int listcuentasview1::inicializa(postgresiface2 *conn ) {
     conexionbase = conn;
     conexionbase->begin();
     cursoraux1=conexionbase->cargacuentas(0);
-	 conexionbase->commit();
-    //   cursoraux1->ultimoregistro();
+    conexionbase->commit();
 
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").ascii());
@@ -266,14 +265,6 @@ void listcuentasview1::codigocambiado(const QString &string1) {
     // De esta forma podemos hacer búsquedas del tipo 1.3 para buscar 1000003
    QString cod = extiendecodigo(string1, numdigitos);
 
-    /*if (cod.length() < numdigitos) {
-      string str7 (numdigitos-cod.length()+1,'0');
-      int pos = cod.find(".",0);
-      if (pos > 0) {
-        cod.replace(pos,1,str7);
-      }// end if
-    }// end if
-    */
     it = ListView1->findItem(cod, ccuenta, Qt::BeginsWith);
     if (it != 0) {
         ListView1->setCurrentItem(it);

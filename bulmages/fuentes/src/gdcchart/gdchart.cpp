@@ -31,11 +31,13 @@
                                                                                 
  
                                                                                 
-#define EXTERND                                                                                                                                                                
+#define EXTERND                                                                                                                                                            
 EXTERND char				*GDC_ytitle;
 EXTERND char				*GDC_xtitle;
 EXTERND char				*GDC_ytitle2;		/* ostesibly: volume label */
 EXTERND char				*GDC_title;			/* NLs ok here */
+
+#define EXTERND extern                                                                          
 EXTERND enum GDC_font_size	GDC_title_size		DEFAULTO( GDC_MEDBOLD );
 EXTERND enum GDC_font_size	GDC_ytitle_size		DEFAULTO( GDC_MEDBOLD );
 EXTERND enum GDC_font_size	GDC_xtitle_size		DEFAULTO( GDC_MEDBOLD );
