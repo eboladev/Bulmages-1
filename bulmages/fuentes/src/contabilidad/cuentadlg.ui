@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>cuentadlg</class>
 <widget class="QDialog">
     <property name="name">
@@ -993,243 +993,307 @@
                 <attribute name="title">
                     <string>Otros Datos</string>
                 </attribute>
-                <grid>
+                <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>unnamed</cstring>
+                        <cstring>layout33</cstring>
                     </property>
-                    <widget class="QLayoutWidget" row="1" column="0">
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>125</y>
+                            <width>588</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <hbox>
                         <property name="name">
-                            <cstring>Layout10</cstring>
+                            <cstring>unnamed</cstring>
                         </property>
-                        <hbox>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
                             <property name="name">
-                                <cstring>unnamed</cstring>
+                                <cstring>TextLabel4_2</cstring>
                             </property>
-                            <property name="margin">
-                                <number>0</number>
+                            <property name="text">
+                                <string>Página Web</string>
                             </property>
-                            <property name="spacing">
-                                <number>6</number>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>web</cstring>
                             </property>
-                            <widget class="QLabel">
-                                <property name="name">
-                                    <cstring>TextLabel2_2</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Direccion</string>
-                                </property>
-                            </widget>
-                            <widget class="QLineEdit">
-                                <property name="name">
-                                    <cstring>direccion</cstring>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget" row="0" column="0">
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout32</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>153</y>
+                            <width>588</width>
+                            <height>100</height>
+                        </rect>
+                    </property>
+                    <vbox>
                         <property name="name">
-                            <cstring>layout35</cstring>
+                            <cstring>unnamed</cstring>
                         </property>
-                        <hbox>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
                             <property name="name">
-                                <cstring>unnamed</cstring>
+                                <cstring>TextLabel5_2</cstring>
                             </property>
-                            <property name="margin">
-                                <number>0</number>
+                            <property name="text">
+                                <string>Comentarios</string>
                             </property>
-                            <property name="spacing">
-                                <number>0</number>
+                        </widget>
+                        <widget class="QTextEdit">
+                            <property name="name">
+                                <cstring>coments</cstring>
                             </property>
-                            <widget class="QLayoutWidget">
+                        </widget>
+                    </vbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>Layout12</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>97</y>
+                            <width>588</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel4</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Cuenta Bancaria</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>banco</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout35</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>10</y>
+                            <width>588</width>
+                            <height>24</height>
+                        </rect>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>Layout7</cstring>
+                            </property>
+                            <hbox>
                                 <property name="name">
-                                    <cstring>Layout7</cstring>
+                                    <cstring>unnamed</cstring>
                                 </property>
-                                <hbox>
+                                <property name="margin">
+                                    <number>0</number>
+                                </property>
+                                <property name="spacing">
+                                    <number>6</number>
+                                </property>
+                                <widget class="QLabel">
                                     <property name="name">
-                                        <cstring>unnamed</cstring>
+                                        <cstring>TextLabel1</cstring>
                                     </property>
-                                    <property name="margin">
-                                        <number>0</number>
+                                    <property name="text">
+                                        <string>Nombre</string>
                                     </property>
-                                    <property name="spacing">
-                                        <number>6</number>
-                                    </property>
-                                    <widget class="QLabel">
-                                        <property name="name">
-                                            <cstring>TextLabel1</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>Nombre</string>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit">
-                                        <property name="name">
-                                            <cstring>nombreent</cstring>
-                                        </property>
-                                    </widget>
-                                </hbox>
-                            </widget>
-                            <widget class="QLayoutWidget">
-                                <property name="name">
-                                    <cstring>Layout8</cstring>
-                                </property>
-                                <hbox>
+                                </widget>
+                                <widget class="QLineEdit">
                                     <property name="name">
-                                        <cstring>unnamed</cstring>
+                                        <cstring>nombreent</cstring>
                                     </property>
-                                    <property name="margin">
-                                        <number>0</number>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>Layout8</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <property name="margin">
+                                    <number>0</number>
+                                </property>
+                                <property name="spacing">
+                                    <number>6</number>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>TextLabel1_2</cstring>
                                     </property>
-                                    <property name="spacing">
-                                        <number>6</number>
+                                    <property name="text">
+                                        <string>CIF</string>
                                     </property>
-                                    <widget class="QLabel">
-                                        <property name="name">
-                                            <cstring>TextLabel1_2</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>CIF</string>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit">
-                                        <property name="name">
-                                            <cstring>cif</cstring>
-                                        </property>
-                                    </widget>
-                                </hbox>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget" row="2" column="0">
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>cif</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout34</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>69</y>
+                            <width>588</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <hbox>
                         <property name="name">
-                            <cstring>layout34</cstring>
+                            <cstring>unnamed</cstring>
                         </property>
-                        <hbox>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
                             <property name="name">
-                                <cstring>unnamed</cstring>
+                                <cstring>TextLabel3_3</cstring>
                             </property>
-                            <property name="margin">
-                                <number>0</number>
+                            <property name="text">
+                                <string>Teléfono</string>
                             </property>
-                            <property name="spacing">
-                                <number>0</number>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>telf</cstring>
                             </property>
-                            <widget class="QLabel">
-                                <property name="name">
-                                    <cstring>TextLabel3_3</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Teléfono</string>
-                                </property>
-                            </widget>
-                            <widget class="QLineEdit">
-                                <property name="name">
-                                    <cstring>telf</cstring>
-                                </property>
-                            </widget>
-                            <widget class="QLabel">
-                                <property name="name">
-                                    <cstring>TextLabel3_3_2</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Correo Electrónico</string>
-                                </property>
-                            </widget>
-                            <widget class="QLineEdit">
-                                <property name="name">
-                                    <cstring>email</cstring>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget" row="3" column="0">
+                        </widget>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel3_3_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Correo Electrónico</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>email</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout34_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>40</y>
+                            <width>588</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <hbox>
                         <property name="name">
-                            <cstring>Layout12</cstring>
+                            <cstring>unnamed</cstring>
                         </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <property name="margin">
-                                <number>0</number>
-                            </property>
-                            <property name="spacing">
-                                <number>0</number>
-                            </property>
-                            <widget class="QLabel">
-                                <property name="name">
-                                    <cstring>TextLabel4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Cuenta Bancaria</string>
-                                </property>
-                            </widget>
-                            <widget class="QLineEdit">
-                                <property name="name">
-                                    <cstring>banco</cstring>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget" row="4" column="0">
-                        <property name="name">
-                            <cstring>layout33</cstring>
+                        <property name="margin">
+                            <number>0</number>
                         </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <property name="margin">
-                                <number>0</number>
-                            </property>
-                            <property name="spacing">
-                                <number>0</number>
-                            </property>
-                            <widget class="QLabel">
-                                <property name="name">
-                                    <cstring>TextLabel4_2</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Página Web</string>
-                                </property>
-                            </widget>
-                            <widget class="QLineEdit">
-                                <property name="name">
-                                    <cstring>web</cstring>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget" row="5" column="0">
-                        <property name="name">
-                            <cstring>layout32</cstring>
+                        <property name="spacing">
+                            <number>0</number>
                         </property>
-                        <vbox>
+                        <widget class="QLabel">
                             <property name="name">
-                                <cstring>unnamed</cstring>
+                                <cstring>TextLabel3_3_3</cstring>
                             </property>
-                            <property name="margin">
-                                <number>0</number>
+                            <property name="text">
+                                <string>Dirección</string>
                             </property>
-                            <property name="spacing">
-                                <number>0</number>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>direccion</cstring>
                             </property>
-                            <widget class="QLabel">
-                                <property name="name">
-                                    <cstring>TextLabel5_2</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Comentarios</string>
-                                </property>
-                            </widget>
-                            <widget class="QTextEdit">
-                                <property name="name">
-                                    <cstring>coments</cstring>
-                                </property>
-                            </widget>
-                        </vbox>
-                    </widget>
-                </grid>
+                        </widget>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel3_3_2_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>C.P.</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>cp</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>5</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
             </widget>
         </widget>
     </grid>
@@ -1267,6 +1331,7 @@
     </connection>
 </connections>
 <tabstops>
+    <tabstop>TabWidget2</tabstop>
     <tabstop>codigo</tabstop>
     <tabstop>codigopadre</tabstop>
     <tabstop>descripcion</tabstop>
@@ -1276,15 +1341,24 @@
     <tabstop>nodebe</tabstop>
     <tabstop>nohaber</tabstop>
     <tabstop>regularizacion</tabstop>
+    <tabstop>cuentaactivo</tabstop>
+    <tabstop>cuentapasivo</tabstop>
+    <tabstop>cuentaneto</tabstop>
+    <tabstop>cuentaingreso</tabstop>
+    <tabstop>cuentagasto</tabstop>
+    <tabstop>cuentasintipo</tabstop>
     <tabstop>debe</tabstop>
     <tabstop>haber</tabstop>
-    <tabstop>PushButton2</tabstop>
-    <tabstop>TabWidget2</tabstop>
     <tabstop>nombreent</tabstop>
+    <tabstop>cif</tabstop>
     <tabstop>direccion</tabstop>
-    <tabstop>banco</tabstop>
+    <tabstop>cp</tabstop>
     <tabstop>telf</tabstop>
+    <tabstop>email</tabstop>
+    <tabstop>banco</tabstop>
+    <tabstop>web</tabstop>
     <tabstop>coments</tabstop>
+    <tabstop>PushButton2</tabstop>
     <tabstop>botonaceptar</tabstop>
 </tabstops>
 <slots>

@@ -166,12 +166,12 @@ void cuentaview::aceptar() {
    // una insercion insertamos.
    if (idcuenta != 0) {
       conexionbase->begin();
-      conexionbase->modificacuenta(idcuenta,descripcion->text() ,codigo->text(), imputacion->isChecked(), bloqueada->isChecked(),idgrupos[combogrupos->currentItem()],TRUE, nombreent->text(), cif->text(), direccion->text(), telf->text(), coments->text(), banco->text(),  email->text(),  web->text(), tipocuenta , nodebe->isChecked(), nohaber->isChecked());
+      conexionbase->modificacuenta(idcuenta,descripcion->text() ,codigo->text(), imputacion->isChecked(), bloqueada->isChecked(),idgrupos[combogrupos->currentItem()],TRUE, nombreent->text(), cif->text(), direccion->text(), cp->text(), telf->text(), coments->text(), banco->text(),  email->text(),  web->text(), tipocuenta , nodebe->isChecked(), nohaber->isChecked());
       conexionbase->commit();
    } else {
       //QMessageBox::information( 0, "Se va a dar de alta una nueva cuenta", "Unable to find the user preferences file.\n""The factory default will be used instead." );
       conexionbase->begin();
-      conexionbase->nuevacuenta( descripcion->text(), codigo->text(), idpadre, idgrupos[combogrupos->currentItem()],nombreent->text(),  cif->text(), direccion->text(),  telf->text(),coments->text(), banco->text(), email->text(), web->text(), tipocuenta, nodebe->isChecked(), nohaber->isChecked() );
+      conexionbase->nuevacuenta( descripcion->text(), codigo->text(), idpadre, idgrupos[combogrupos->currentItem()],nombreent->text(),  cif->text(), direccion->text(), cp->text(), telf->text(),coments->text(), banco->text(), email->text(), web->text(), tipocuenta, nodebe->isChecked(), nohaber->isChecked() );
       QString query = "SELECT max(idcuenta) from cuenta";
       cursoraux = conexionbase->cargacursor(query, "maxidcuenta");
       idcuenta = atoi(cursoraux->valor(0).ascii());
@@ -288,6 +288,7 @@ int cuentaview::cargacuenta(int idcuenta1){
   nombreent->setText(cursorcuenta->valor("nombreent_cuenta"));
   cif->setText(cursorcuenta->valor("cifent_cuenta"));
   direccion->setText(cursorcuenta->valor("dirent_cuenta"));
+  cp->setText(cursorcuenta->valor("cpent_cuenta"));
   telf->setText(cursorcuenta->valor("telent_cuenta"));
   coments->setText(cursorcuenta->valor("coment_cuenta"));
   banco->setText(cursorcuenta->valor("bancoent_cuenta"));
