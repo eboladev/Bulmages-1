@@ -25,9 +25,12 @@ class numerocuenta
     bool cuentaesvalida(){return((getdc()==dc));};
 ///Devuelve el CCC separando sus miembros por la cadena \c sep    
     QString getcodigo(QString sep=""){return(banco+sep+entidad+sep+dc+sep+numcuenta);};
-    QString getnumcuenta(){return(numcuenta);};///Devuelve el número de cuenta
-    QString getbanco(){return(banco);};///Devuelve el número de banco
-    QString getentidad(){return(entidad);};///Devuelve el número de entidad
+    ///Devuelve el número de cuenta
+    QString getnumcuenta(){return(numcuenta);};
+    ///\brief Devuelve el número de banco
+    QString getbanco(){return(banco);};
+    ///Devuelve el número de entidad
+    QString getentidad(){return(entidad);};
  
 /**\brief Fija el número de cuenta
 
