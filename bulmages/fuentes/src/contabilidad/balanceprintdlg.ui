@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>BalancePrintDlg</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,11 +9,11 @@
             <x>0</x>
             <y>0</y>
             <width>600</width>
-            <height>340</height>
+            <height>264</height>
         </rect>
     </property>
     <property name="caption">
-        <string>Impresión del Balance</string>
+        <string>Impresión del Balance de Sumas y Saldos</string>
     </property>
     <grid>
         <property name="name">
@@ -250,8 +250,8 @@
                                     <property name="text">
                                         <string></string>
                                     </property>
-                                    <property name="pixmap">
-                                        <pixmap>image0</pixmap>
+                                    <property name="iconSet">
+                                        <iconset>image0</iconset>
                                     </property>
                                 </widget>
                             </hbox>
@@ -290,8 +290,8 @@
                                     <property name="text">
                                         <string></string>
                                     </property>
-                                    <property name="pixmap">
-                                        <pixmap>image0</pixmap>
+                                    <property name="iconSet">
+                                        <iconset>image0</iconset>
                                     </property>
                                 </widget>
                             </hbox>
@@ -313,7 +313,7 @@
                         <cstring>buttonGroup1</cstring>
                     </property>
                     <property name="title">
-                        <string>buttonGroup1</string>
+                        <string>Formato</string>
                     </property>
                     <hbox>
                         <property name="name">

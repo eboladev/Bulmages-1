@@ -138,3 +138,9 @@ void extractodlg1::boton_fechafinal()
 {
 
 }
+
+
+void extractodlg1::boton_borrapunteo()
+{
+
+}

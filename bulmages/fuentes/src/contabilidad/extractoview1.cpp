@@ -691,26 +691,39 @@ void extractoview1::boton_guardarpunteo() {
   }// end if   
 }// end boton_guardarpunteo
 
+// Esta función se activa justo cuando se pulsa sobre el botón de resetear el punteo.
+// Por supuesto cuando se pulsa dicho boton se borra el punteo.
+void extractoview1::boton_borrapunteo() {
+   int valor = QMessageBox::warning( 0, tr("Borrar Punteo"), "Se dispone a borrar el punteo. Este cambio es irrecuperable si no ha guardado su el punte. ¿Desea continuar?", QMessageBox::Yes, QMessageBox::No);
+   if (valor == QMessageBox::Yes) {
+      conexionbase->begin();
+      conexionbase->ejecuta("UPDATE apunte SET punteo=FALSE");
+      conexionbase->commit();
+      presentar();
+   }// end if
+}// end boton_cargarpunteo
+
+
 
 void extractoview1::boton_cargarpunteos() {
-  QString fn = QFileDialog::getOpenFileName(0, tr("Punteos (*.pto)"), 0,tr("Cargar Punteo"),tr("Elige el nombre de archivo"));
-  conexionbase->begin();
-  conexionbase->ejecuta("UPDATE apunte SET punteo=FALSE");
-  conexionbase->commit();
-  if (!fn.isEmpty()) {
-    ifstream filestr((char *) fn.ascii());
-    string a;
-    while (filestr.good()) {
-        filestr >> a;
-        QString query;
-        query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",a.c_str());
-        conexionbase->begin();
-        conexionbase->ejecuta(query);
-        conexionbase->commit();
-     }// end while
-     filestr.close();
-  }// end if
-  presentar();
+   QString fn = QFileDialog::getOpenFileName(0, tr("Punteos (*.pto)"), 0,tr("Cargar Punteo"),tr("Elige el nombre de archivo"));
+   if (!fn.isEmpty()) {
+      ifstream filestr((char *) fn.ascii());
+      string a;
+      conexionbase->begin();
+      conexionbase->ejecuta("UPDATE apunte SET punteo=FALSE");
+      conexionbase->commit();
+      while (filestr.good()) {
+         filestr >> a;
+         QString query;
+         query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",a.c_str());
+         conexionbase->begin();
+         conexionbase->ejecuta(query);
+         conexionbase->commit();
+      }// end while
+      filestr.close();
+   }// end if
+   presentar();
 }// end boton_cargarpunteo
 
 

@@ -113,6 +113,8 @@ public:
   int amortizaciones();
   void reemplazacuentaenasientos();
   int cambioejercicio();
+  void centrocostedefecto(){}
+  void canaldefecto() {}
   QString nombreDB;
 };
 #endif

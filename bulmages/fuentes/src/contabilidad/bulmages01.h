@@ -158,6 +158,8 @@ public:
     void slotAmortizaciones();
     void slotBloqFechas();
     void slotSCuentas();
+    void slotCCosteDef();
+    void slotCanalDef();
        
 
     /** toggle the toolbar*/
@@ -300,6 +302,9 @@ public:
     QAction *amortiz;
     QAction *bloqaction;
     QAction * SelectorAction;
+    
+    QAction *CCosteDef;
+    QAction *CanalDef;
 };
 #endif
 

@@ -493,12 +493,21 @@ void Bulmages01::initActions() {
   CompBalance->setWhatsThis(tr("Balances"));
   connect(CompBalance, SIGNAL(activated()), this, SLOT(slotCompBalance()));
 
-
   SCuentas = new QAction(tr("Sustituir Cuentas"), tr("&Sustituir Cuentas"), 0, this);
   SCuentas->setStatusTip(tr("Sustituir Cuentas"));
   SCuentas->setWhatsThis(tr("Sustituir Cuentas"));
   connect(SCuentas, SIGNAL(activated()), this, SLOT(slotSCuentas()));
+
+  CanalDef = new QAction(tr("Canal por Defecto"), tr("&Canal por Defecto"), 0, this);
+  CanalDef->setStatusTip(tr("Canal por Defecto"));
+  CanalDef->setWhatsThis(tr("Canal por Defecto"));
+  connect(CanalDef, SIGNAL(activated()), this, SLOT(slotCanalDef()));
   
+  CCosteDef = new QAction(tr("Centro de Coste por Defecto"), tr("&Centro de Coste por Defecto"), 0, this);
+  CCosteDef->setStatusTip(tr("Centro de Coste por Defecto"));
+  CCosteDef->setWhatsThis(tr("Centro de Coste por Defecto"));
+  connect(CCosteDef, SIGNAL(activated()), this, SLOT(slotCCosteDef()));
+      
   SelectorAction = new QAction( this, "SelectorAction" );
   SelectorAction->setIconSet( QIconSet( QPixmap::fromMimeSource( "tux1.png" ) ) );
   connect( SelectorAction, SIGNAL( activated() ), this, SLOT( mostrar_selector() ) );      
@@ -578,6 +587,9 @@ void Bulmages01::initMenuBar() {
   amortiz->addTo(pHerramientasMenu);
   SCuentas->addTo(pHerramientasMenu);
   bloqaction->addTo(pHerramientasMenu);
+  pHerramientasMenu->insertSeparator();
+  CCosteDef->addTo(pHerramientasMenu);
+  CanalDef->addTo(pHerramientasMenu);
    
   //El menu de empresa
   pEmpresaMenu = new QPopupMenu();
@@ -1127,6 +1139,14 @@ void Bulmages01::slotAyudai() {
 
 void Bulmages01::slotSCuentas() {
    empresaactual.reemplazacuentaenasientos();
+}// end slotNEjercicio
+
+
+void Bulmages01::slotCCosteDef() {
+   empresaactual.centrocostedefecto();
+}// end slotNEjercicio
+void Bulmages01::slotCanalDef() {
+   empresaactual.canaldefecto();
 }// end slotNEjercicio
 
 void  Bulmages01::mostrar_selector() {

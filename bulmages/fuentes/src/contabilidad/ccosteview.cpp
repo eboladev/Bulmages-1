@@ -22,6 +22,10 @@ ccosteview::ccosteview(empresa *emp, QWidget *parent, const char *name, bool mod
 	empresaactual = emp;
 	conexionbase=empresaactual->bdempresa();
 	idc_coste=0;
+        
+        
+        
+        
 	pintar();
 }// end ccosteview
 
@@ -52,6 +56,62 @@ void ccosteview::pintar() {
     idc_coste = ccostes[combocoste->currentItem()];
     mostrarplantilla();
   }// end if
+  
+  
+  //=====================
+  
+      QListViewItem * it;
+    QListViewItem *Lista[10000];
+    int idcuenta;
+    int padre;
+    int idcuenta1;
+    cursor2 *cursoraux1, *cursoraux2;
+    int ccuenta;
+
+    listcoste->clear();
+    if (conexionbase == NULL) {
+        ccuenta=listcoste->addColumn("código cuenta",-1);
+    }// end if
+    conexionbase->begin();
+    cursoraux1=conexionbase->cargacuentas(0);
+    conexionbase->commit();
+    //   cursoraux1->ultimoregistro();
+
+    while (!cursoraux1->eof()) {
+        padre = atoi( cursoraux1->valor("padre").ascii());
+        idcuenta1 = atoi( cursoraux1->valor("idcuenta").ascii());
+        it =new QListViewItem(listcoste);
+        Lista[idcuenta1]=it;
+        it->setText(ccuenta, cursoraux1->valor("codigo"));
+        idcuenta = atoi(cursoraux1->valor("idcuenta").ascii());
+
+        it->setOpen(true);
+        cursoraux1->siguienteregistro ();
+    }// end while
+
+	 conexionbase->begin();
+    cursoraux2=conexionbase->cargacuentas(-2);
+	 conexionbase->commit();
+    //   cursoraux1->ultimoregistro();
+    while (!cursoraux2->eof()) {
+        padre = atoi(cursoraux2->valor(4).ascii());
+        idcuenta1 = atoi(cursoraux2->valor(0).ascii());
+		  fprintf(stderr,"Cuentas de subnivel:%d",padre);
+        if (padre != 0) {
+            it = new QListViewItem(Lista[padre]);
+            Lista[idcuenta1]=it;
+
+            it->setText(ccuenta,cursoraux2->valor("codigo"));
+            idcuenta = atoi(cursoraux2->valor("idcuenta").ascii());
+
+
+            it->setOpen(true);
+        }// end if
+        cursoraux2->siguienteregistro();
+    }// end while
+    delete cursoraux2;
+    delete cursoraux1;
+  
 }// end pintar
 
 /*****************************************************

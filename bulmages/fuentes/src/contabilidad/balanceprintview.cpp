@@ -185,7 +185,7 @@ void BalancePrintView::presentar(char *tipus){
 
          // Hacemos la consulta de los apuntes a listar en la base de datos.
          int idc_coste;
-			idc_coste = ccostes[combocoste->currentItem()];
+         idc_coste = ccostes[combocoste->currentItem()];
 
          // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
          // Causar problemas con el motor de base de datos.
@@ -248,10 +248,6 @@ void BalancePrintView::presentar(char *tipus){
          query.sprintf("SELECT * FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo");
          fprintf(stderr,"%s\n",query.ascii());
          cursorapt = conexionbase->cargacursor(query,"mycursor");
-         query.sprintf("DROP TABLE balance");
-         fprintf(stderr,"%s\n",query.ascii());
-         conexionbase->ejecuta(query);
-         conexionbase->commit();
          // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
          num1 = cursorapt->numregistros();
 
@@ -324,6 +320,13 @@ void BalancePrintView::presentar(char *tipus){
          // Vaciamos el cursor de la base de datos.
          delete cursorapt;
 
+         // Borramos la tabla temporal y demás cosas.
+         query.sprintf("DROP TABLE balance");
+         fprintf(stderr,"%s\n",query.ascii());
+         conexionbase->ejecuta(query);
+         conexionbase->commit();
+         
+         
          // Hacemos la actualizacion de los saldos totales
          QString totalsaldoant = QString::number(tsaldoant,'f',2);
          QString totaldebe = QString::number(tdebe,'f',2);
