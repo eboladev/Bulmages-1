@@ -709,6 +709,58 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
+CREATE FUNCTION recalculasaldos2() RETURNS integer
+    AS '
+DECLARE
+   niveles RECORD;
+   cta RECORD;
+BEGIN
+   -- De momento, la haremos funcionar para un sistema de cuentas xxxxyyy
+   SELECT INTO niveles strpos(valor, ''y'')-1 AS numx FROM configuracion WHERE nombre=''CodCuenta'';
+   IF niveles.numx <> 4 THEN
+   	RAISE NOTICE ''Lo siento, pero esta función sólo funciona de momento con 4 niveles de cuentas'';
+	RETURN -1;
+   END IF;
+   
+   -- Creamos la tabla con el árbol de cuentas y sus valores (se ha considerado hasta nivel 4)
+   CREATE TEMPORARY TABLE temp4 AS (SELECT n1.codigo AS cod1, n1.debe AS debe1, n1.haber AS haber1, n2.codigo AS cod2, n2.debe AS debe2, n2.haber AS haber2, n3.codigo AS cod3, n3.debe AS debe3, n3.haber AS haber3, n4.codigo AS cod4, n4.debe AS debe4, n4.haber AS haber4 FROM (SELECT idcuenta, codigo, debe, haber FROM cuenta WHERE padre IS NULL) AS n1 INNER JOIN (SELECT idcuenta, padre, codigo, debe, haber FROM cuenta) AS n2 ON n1.idcuenta=n2.padre INNER JOIN (SELECT idcuenta, padre, codigo, debe, haber FROM cuenta) AS n3 ON n2.idcuenta=n3.padre LEFT JOIN (SELECT padre, codigo, debe, haber FROM cuenta) AS n4 ON n3.idcuenta=n4.padre);
+   
+   -- Ahora iremos actualizando las ramas desde las hojas hasta las raíces
+   -- Primero, tendremos en cuenta aquellas cuentas que están en un nivel 4, calculamos la suma de su nivel y subimos el dato al nivel 3
+   CREATE TEMPORARY TABLE temp3 AS (SELECT cod1,cod2,cod3,sum(debe4) AS debe3,sum(haber4) AS haber3 FROM temp4 WHERE debe4 IS NOT NULL group by cod1,cod2,cod3 order by cod3);
+   -- Seguidamente, añadimos las hojas del nivel 3 que descartamos en la acción anterior porque no tenían cuentas hijas en el nivel 4
+   INSERT INTO temp3 SELECT cod1,cod2,cod3,debe3,haber3 FROM temp4 WHERE debe4 IS NULL;
+   -- Se calculan las sumas del nivel 3 y les pasamos el dato a las cuentas padre del nivel 2
+   CREATE TEMPORARY TABLE temp2 AS (SELECT cod1,cod2,sum(debe3) AS debe2,sum(haber3) AS haber2 FROM temp3 group by cod1,cod2 order by cod2);
+   -- Y finalmente, hacemos lo mismo con el nivel 2 y subimos las sumas al nivel 1
+   CREATE TEMPORARY TABLE temp1 AS (SELECT cod1,sum(debe2) AS debe1,sum(haber2) AS haber1 FROM temp2 group by cod1 order by cod1);
+
+   -- Ahora vamos a eliminar de las tablas aquellas cuentas que no será necesario actualizar por ya estar con los valores correctos
+   CREATE TEMPORARY TABLE nivel1 AS (SELECT t1.cod1,t1.debe1,t1.haber1 FROM (SELECT * FROM temp1) AS t1 INNER JOIN (SELECT codigo,debe,haber FROM cuenta) AS t2 ON t1.cod1=t2.codigo WHERE t1.debe1<>t2.debe OR t1.haber1<>t2.haber);
+   CREATE TEMPORARY TABLE nivel2 AS (SELECT t1.cod2,t1.debe2,t1.haber2 FROM (SELECT * FROM temp2) AS t1 INNER JOIN (SELECT codigo,debe,haber FROM cuenta) AS t2 ON t1.cod2=t2.codigo WHERE t1.debe2<>t2.debe OR t1.haber2<>t2.haber);
+   CREATE TEMPORARY TABLE nivel3 AS (SELECT t1.cod3,t1.debe3,t1.haber3 FROM (SELECT * FROM temp3) AS t1 INNER JOIN (SELECT codigo,debe,haber FROM cuenta) AS t2 ON t1.cod3=t2.codigo WHERE t1.debe3<>t2.debe OR t1.haber3<>t2.haber);
+   
+   -- Como colofón, hay que introducir los valores actualizados en las cuentas padre.
+   FOR cta IN SELECT * FROM nivel1 ORDER BY cod1 LOOP
+	RAISE NOTICE ''Cuenta %	-> debe: %	haber: %'',cta.cod1,cta.debe1,cta.haber1;
+	UPDATE cuenta SET debe=cta.debe1, haber=cta.haber1 WHERE idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo=cta.cod1);
+	RAISE NOTICE ''Cuenta % actualizada'',cta.cod1;
+   END LOOP;
+   FOR cta IN SELECT * FROM nivel2 ORDER BY cod2 LOOP
+        RAISE NOTICE ''Cuenta %	-> debe: %     haber: %'',cta.cod2,cta.debe2,cta.haber2;
+        UPDATE cuenta SET debe=cta.debe2, haber=cta.haber2 WHERE idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo=cta.cod2);
+        RAISE NOTICE ''Cuenta % actualizada'',cta.cod2;
+   END LOOP;
+   FOR cta IN SELECT * FROM nivel3 WHERE length(cod3)=niveles.numx ORDER BY cod3 LOOP
+   	RAISE NOTICE ''Cuenta %	-> debe: %     haber: %'',cta.cod3,cta.debe3,cta.haber3;
+	UPDATE cuenta SET debe=cta.debe3, haber=cta.haber3 WHERE idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo=cta.cod3);
+	RAISE NOTICE ''Cuenta % actualizada'',cta.cod3;
+   END LOOP;   
+   
+   RETURN 0;
+END;
+'    LANGUAGE plpgsql;
+
 DROP FUNCTION propagaacumuladocuenta() CASCADE;
 CREATE FUNCTION propagaacumuladocuenta() RETURNS "trigger"
     AS '
