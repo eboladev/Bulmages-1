@@ -227,7 +227,7 @@ int Contaplus2Fugit(QFile &fugitfile, QFile &subcuentas, QFile &asientos)
 			    fugit <<
 				"\t\t<FIELD name='debe'>" + QString::number((eurodebe.toDouble()) ) + "</FIELD>\n"
 				"\t\t<FIELD name='haber'>" + QString::number((eurohaber.toDouble()) ) + "</FIELD>\n";
-			}
+			}// end if
 			fugit <<  "\t</APUNTE>\n";
     }
     if( !lastasiento.isEmpty() )

@@ -58,56 +58,69 @@ void importContaplus::botonBuscarDiario() {
 }// end botonBuscarDiario	
 
 void importContaplus::botonImportar() {
-QString finicial = m_fInicial->text();
-QString ffinal = m_fFinal->text();
+	QString finicial = m_fInicial->text();
+	QString ffinal = m_fFinal->text();
+	void (*func) (int,int);
+	func = realizado;
+	void (*func1) (QString);
+	func1 = publicamensaje;
+	pgimportfiles *importacion = new pgimportfiles(conexionbase,func, func1);
+	if (m_subCta->text() != "") {
+		QFile filecont (m_subCta->text());
+		QFile fileasie (m_diario->text());
+		filecont.open(IO_ReadOnly);
+		fileasie.open(IO_ReadOnly);
+		importacion->setFInicial(finicial);
+		importacion->setFFinal(ffinal);	
+		if (m_test->isChecked() ) {
+			importacion->setModoTest();
+		}// end if
+		importacion->contaplus2Bulmages(filecont, fileasie);
+		filecont.close();
+		fileasie.close();
+		delete importacion;
+	} else {
+		QFile filexml (m_XML->text());
+		filexml.open(IO_ReadOnly);
+		importacion->XML2Bulmages(filexml);
+		filexml.close();
+	}// end if
+	mensajein="";
+}// end botonImportar 
+
+
+/** \brief SLOT que responde a la pulsación del botón de exportar
+  */
+void importContaplus::botonExportar() {
+	QString finicial = m_fInicial->text();
+	QString ffinal = m_fFinal->text();
 
 	void (*func) (int,int);
 	func = realizado;
 	void (*func1) (QString);
 	func1 = publicamensaje;
-	QFile filecont (m_subCta->text());
-	QFile fileasie (m_diario->text());
-
-	filecont.open(IO_ReadOnly);
-	fileasie.open(IO_ReadOnly);
 	pgimportfiles *importacion = new pgimportfiles(conexionbase,func, func1);
 	importacion->setFInicial(finicial);
 	importacion->setFFinal(ffinal);	
 	if (m_test->isChecked() ) {
 		importacion->setModoTest();
+	}// end if	
+	if (m_subCta->text() != "") {
+		QFile filecont (m_subCta->text());
+		QFile fileasie (m_diario->text());
+		filecont.open(IO_WriteOnly);
+		fileasie.open(IO_WriteOnly);
+		importacion->bulmages2Contaplus(filecont, fileasie);
+		filecont.close();
+		fileasie.close();
+	} // end if
+	if (m_XML->text() != "") {
+		QFile filexml (m_XML->text());
+		filexml.open(IO_WriteOnly);
+		importacion->bulmages2XML(filexml);
+		filexml.close();
 	}// end if
-	importacion->contaplus2Bulmages(filecont, fileasie);
-	filecont.close();
-	fileasie.close();
 	delete importacion;
-	
-	mensajein="";
-}// end botonImportar 
-
-void importContaplus::botonExportar() {
-QString finicial = m_fInicial->text();
-QString ffinal = m_fFinal->text();
-
-	void (*func) (int,int);
-	func = realizado;
-	void (*func1) (QString);
-	func1 = publicamensaje;
-	QFile filecont (m_subCta->text());
-	QFile fileasie (m_diario->text());
-
-	filecont.open(IO_WriteOnly);
-	fileasie.open(IO_WriteOnly);
-	pgimportfiles *importacion = new pgimportfiles(conexionbase,func, func1);
-	importacion->setFInicial(finicial);
-	importacion->setFFinal(ffinal);
-	if (m_test->isChecked() ) {
-		importacion->setModoTest();
-	}// end if
-	importacion->bulmages2Contaplus(filecont, fileasie);
-	filecont.close();
-	fileasie.close();
-	delete importacion;
-	
 	mensajein="";
 }// end botonExportar
 

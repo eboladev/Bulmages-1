@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Santiago Capel                                  *
  *   Santiago Capel Torres (GestiONG)                                      *
+ *   Tomeu Borrás Riera                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,6 +19,8 @@
 #include <qobject.h>
 #include <qstring.h>
 #include <qdatetime.h>
+#include <stdio.h>
+#include <qstring.h>
 
 #define EURO  166.386
 
@@ -422,7 +425,6 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 			conexionbase->commit();
 			delete cur;
 		}// end if
-;
 	}// end if
 	mensajeria("<LI>Terminado</LI>\n");
     alerta(subcuentas.size()+asientos.size(),subcuentas.size()+asientos.size());    
@@ -455,4 +457,112 @@ QString pgimportfiles::searchParent(QString cod) {
 	return padre;
 }// end searchParent
 
+
+
+
+/** \brief Esta función se encarga de pasar los datos de BulmaGés a Contaplus.
+  */
+int pgimportfiles::bulmages2XML(QFile &xmlfile) {
+	QString codigo, descripcion;
+	QString strblancomax;
+	QTextStream stream( &xmlfile );
+	stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
+	"<!DOCTYPE FUGIT>\n"
+	"<FUGIT version='0.3.1' origen='contaplus'"
+        " date='" << QDate().toString(Qt::ISODate) << "'>\n";
+	    
+	/// Sólo se van a exportar las cuentas utilizadas, Ya que contaplus no hace ordenación en árbol.
+	QString query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre WHERE idcuenta IN (SELECT DISTINCT idcuenta FROM apunte)";
+	conexionbase->begin();
+	cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
+	conexionbase->commit();
+	while (!curcta->eof()) {
+		QString linea="";
+		stream << "<CUENTA>";
+		stream << "\t<IDCUENTA>"       << curcta->valor("idcuenta")      << "</IDCUENTA>\n";
+		stream << "\t<CODIGO>"         << curcta->valor("codigo")        << "</CODIGO>\n";
+		stream << "\t<DESCRIPCION>"    << curcta->valor("descripcion")   << "</DESCRIPCION>\n";
+		stream << "\t<CIFENT_CUENTA>"  << curcta->valor("cifent_cuenta") << "</CIFENT_CUENTA>\n";
+		stream << "\t<DIRENT_CUENTA>"  << curcta->valor("dirent_cuenta") << "</DIRENT_CUENTA>\n";
+		stream << "\t<CODPADRE>"       << curcta->valor("codpadre")      << "</CODPADRE>\n";
+		stream << "</CUENTA>";
+		curcta->siguienteregistro();
+	}// end while
+	delete curcta;
+	
+	query = "SELECT * FROM asiento WHERE 1=1 ";
+	if (m_fInicial != "") 
+		query += " AND asiento.fecha >= '"+m_fInicial+"'";
+	if (m_fFinal != "") 
+		query += " AND asiento.fecha <= '"+m_fFinal+"'";
+	query +=" ORDER BY asiento.fecha, asiento.idasiento ";	
+	conexionbase->begin();
+	cursor2 *curas = conexionbase->cargacursor(query, "masquery");
+	conexionbase->commit();
+	int i =0;
+	int numreg = curas->numregistros()+1;	
+	while (!curas->eof()) {
+		stream << "<ASIENTO>\n";
+		stream << "\t<ORDENASIENTO>" << curas->valor("ordenasiento") << "</ORDENASIENTO>\n";
+		QString fechas = curas->valor("fecha");
+		fechas = fechas.mid(6,4)+fechas.mid(3,2)+fechas.mid(0,2);
+		stream << "\t\t<FECHA>" << fechas << "</FECHA>\n";
+		query = "SELECT * FROM apunte, cuenta WHERE "+curas->valor("idasiento")+"= apunte.idasiento AND cuenta.idcuenta = apunte.idcuenta ";
+		conexionbase->begin();
+		cursor2 *curap = conexionbase->cargacursor(query, "masquery1");
+		conexionbase->commit();
+		while (!curap->eof()) {   
+			stream << "\t<APUNTE>\n";
+			QString fecha = curap->valor("fecha");
+			fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
+			stream << "\t\t<FECHA>"    << fecha << "</FECHA>\n";
+			stream << "\t\t<CODIGO>"   << curap->valor("codigo")  << "</CODIGO>\n";
+			stream << "\t\t<DEBE>"     << curap->valor("debe")    << "</DEBE>\n";
+			stream << "\t\t<HABER>"    << curap->valor("haber")   << "</HABER>\n";
+			mensajeria("Exportando :"   + curap->valor("codigo")   + "--" +fecha+"\n");
+			curap->siguienteregistro();
+			stream << "\t</APUNTE>\n";
+		}// end while
+		delete curap;
+		stream << "</ASIENTO>\n";
+		curas->siguienteregistro();
+	}// end while
+	delete curas;
+	stream << "</FUGIT>\n";
+	alerta (100,100);
+	return 0;
+}// end if
+
+
+
+int pgimportfiles::XML2Bulmages (QFile &fichero) {
+        StructureParser handler;
+        QXmlInputSource source( &fichero );
+        QXmlSimpleReader reader;
+        reader.setContentHandler( &handler );
+        reader.parse( source );
+}// end XML2Bulmages
+
+bool StructureParser::startDocument() {
+    indent = "";
+    return TRUE;
+}// end startDocument
+
+bool StructureParser::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& ) {
+    printf( "%s<%s>", (const char*)indent, (const char*)qName);
+    indent += "..";
+    return TRUE;
+}// end startElement
+
+bool StructureParser::endElement( const QString&, const QString&, const QString& qName) {
+    indent.remove( (uint)0, 2 );
+    printf( "<\\%s>\n", (const char*)qName);
+    return TRUE;
+}// end endElement
+
+
+bool StructureParser::characters( const QString& n1) {
+    printf( "[%s]", (const char*)n1);
+    return TRUE;
+}// end endElement
 

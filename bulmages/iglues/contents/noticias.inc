@@ -6,6 +6,24 @@ $body = '
 <div id="noticies">
 
 <h1>Noticias</h1>
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
+<td width=100>31/01/2005</td>
+<td><center><b>1ª Convención Igluera (2005)</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Se celebra la primera convención internacional de Iglues que tendrá lugar en Palma de Mallorca los dias 5 y 6 de Marzo:<br>
+Ya han confirmado su asistencia los Iglues de Castellón y Londres  con 3 y 1 representantes.<BR>
+La convención es una toma de contacto entre los distintos miembros de la Asociación y en el planing se incluye paseo marchoso por la ciudad
+y degustación de platos típicos.<BR>
+<BR>
+Para asisistir a la convención es preciso confirmar previamente la asistencia a través de la lista.
+
+</td>
+</tr>
+</table>
+
+<br>
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
@@ -14,14 +32,14 @@ $body = '
 </tr>
 <tr>
 <td colspan=2>Estamos muy contentos de poder comunicar que vamos a participar como ponentes en diversos eventos informáticos, jornadas de sofware libre y lan-parties. El calendario actualmente es el siguiente:<br>
-	<ul>
-		<li>Del 17 al 20 de Febrero: <A href="http://www.clubibosim.org" TARGET="nueva">Feria de Informática y Nuevas Tecnologías</A></li>
-		<li>Dias 5, 11 al 12 de Marzo:  <A href="http://linuxcordoba.org" TARGET="nueva">Jornadas Temáticas de Software Libre de Córdoba</A></li>
-		<li>Del 14 al 16 de Marzo: <A href="http://asturlinux.org/jornadas2005/index.php" TARGET="nueva">V Jornadas de Software Libre en Asturias</A></li>
-		<li>Del 18 al 20 de Marzo: <A href="http://reuslanparty.org/index_es.htm" TARGET="nueva">Reus-Lan-Party</A></li>
-	</ul>
-	Gracias a todos por contar con nosotros :-) .
-	
+        <ul>
+                <li>Del 17 al 20 de Febrero: <A href="http://www.clubibosim.org" TARGET="nueva">Feria de Informática y Nuevas Tecnologías</A></li>
+                <li>Dias 5, 11 al 12 de Marzo:  <A href="http://linuxcordoba.org" TARGET="nueva">Jornadas Temáticas de Software Libre de Córdoba</A></li>
+                <li>Del 14 al 16 de Marzo: <A href="http://asturlinux.org/jornadas2005/index.php" TARGET="nueva">V Jornadas de Software Libre en Asturias</A></li>
+                <li>Del 18 al 20 de Marzo: <A href="http://reuslanparty.org/index_es.htm" TARGET="nueva">Reus-Lan-Party</A></li>
+        </ul>
+        Gracias a todos por contar con nosotros :-) .
+
 </td>
 </tr>
 </table>
@@ -77,7 +95,7 @@ Más información en:
 <td><center><b>Junta Directiva de IGLUES</b></center></td>
 </tr>
 <tr>
-<td colspan=2>El pasado domingo 28 de noviembre tuvo lugar la primera reunión de la nueva Junta Directiva. Cabe destacar la gran participación por parte de los soci@s tanto en asistencia como en el debate de los temas que se discutieron. En líneas generales se trataron los temas siguientes: 
+<td colspan=2>El pasado domingo 28 de noviembre tuvo lugar la primera reunión de la nueva Junta Directiva. Cabe destacar la gran participación por parte de los soci@s tanto en asistencia como en el debate de los temas que se discutieron. En líneas generales se trataron los temas siguientes:
 <ul>
 <li>Creación de un inventario de proyectos en de la asociación con las personas que los integran.</li>
 <li>Documentación orientada a presentar el software libre en general y el nuestro en particular a las empresas, en forma tanto de arículos como de presentacones.</li>
@@ -124,7 +142,7 @@ Más información en:
 </tr>
 <tr>
 <td colspan=2>Damos por concluido el concurso de icono y que tras la votación el ganador ha sido Raül. (Aunque con un margen muy muy estrecho !!!)<br>
-Enhorabuena!!!!!!!!!! 
+Enhorabuena!!!!!!!!!!
 </td>
 </tr>
 </table>
@@ -176,7 +194,7 @@ Enhorabuena!!!!!!!!!!
 <td><center><b>Concurso para crear la iconografía de BulmaFact</b></center></td>
 </tr>
 <tr>
-<td colspan=2>Ante la necesidad de realizar la iconografía para BulmaFact, se convoca un concurso consistente en 
+<td colspan=2>Ante la necesidad de realizar la iconografía para BulmaFact, se convoca un concurso consistente en
 la realización de los iconos para el programa de facturación. El <A href="./img/pegatinaypin.jpg" TARGET="nueva">premio</A>, el hecho de que los iconos se utilizarán en el programa,
 una pegatina y un pin de la Free Software Foundation.<br>
 Los iconos a realizar son: proveedores, clientes, compras ventas, artículos, caja, bancos, facturas y partes de trabajo.</p>
@@ -188,7 +206,7 @@ Las normas del concurso son:
         <li>Si son libres se pueden copiar o coger de otra parte.</li>
         <li>Cada participante puede presentar tantos iconos como crea oportuno.</li>
         <li>El jurado, como viene siendo habitual, será la votación popular.</li>
-	<li>El plazo de presentación es el dia 11/11/2004</li>
+        <li>El plazo de presentación es el dia 11/11/2004</li>
 </ol>
 <p>
 Se puede leer el anuncio oficial en <A HREF="http://llistes.bulma.net/pipermail/bulmages/2004-October/001201.html" TARGET="nueva">nuestra lista de correo<A>
@@ -304,6 +322,6 @@ Dicha Junta se compone por los siguientes cargos:<BR><BR>
 </div>
 
 
-'; 
+';
 // =================================================
 </script>
