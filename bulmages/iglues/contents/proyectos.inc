@@ -11,7 +11,7 @@ $body = '
 
 <h4>BULMAGES</h4>
 
-<a href="http://bulmages.bulma.net">Página web del proyecto</a><BR>
+<a href="http://www.sourceforge.net/projects/bulmages">Página web del proyecto</a><BR>
 
 <p>Este programa es, de momento, la estrella de la asociación. Pués es el programa bajo el que nace toda la asociación. Su misión es dotar al sistema GNU/LINUX de un programa de contabilidad (Open Source) que pueda competir con los programas comerciales existentes.</p>
 
