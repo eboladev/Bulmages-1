@@ -4,7 +4,6 @@ $title = "Noticias";
 $body = '
 
 <div id="noticies">
-<img src="">
 
 <h1>Noticias</h1>
 
