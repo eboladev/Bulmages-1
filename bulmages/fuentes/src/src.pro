@@ -458,12 +458,30 @@ exists (reports) {
    HEADERS += rtkinputbges.h
 }
 
-
+# GDCHART con GD 1.8(tiene BUGS y no funciona)
 exists (gdchart) {
  LIBS += ../src/gdchart/libgdchart.a \
  -lgd
   
   INCLUDEPATH += ../src/gdchart
+  contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui
+  contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target
+  contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui
+  contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target
+
+  DEFINES += GDCHART
+  IDLS += contabilidad/estadisticasdlg1.ui \
+  contabilidad/resmensualdlg1.ui
+  
+  FORMS += contabilidad/estadisticasdlg1.ui \
+  contabilidad/resmensualdlg1.ui
+}
+
+#GDCHART con GD 1.3
+exists (gdcchart) {
+ LIBS += ../src/gdcchart/libgdcchart.lib.a
+  
+  INCLUDEPATH += ../src/gdcchart
   contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui
   contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target
   contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui

@@ -7,6 +7,10 @@ exists(src/gdcchart) {
     SUBDIRS += src/gdcchart
 }
 
+exists(src/gdchart) {
+    SUBDIRS += src/gdchart
+}
+
 exists(src/reports) {
    SUBDIRS= src/reports/rtkserver/src
 }

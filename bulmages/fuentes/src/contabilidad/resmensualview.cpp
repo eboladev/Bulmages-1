@@ -408,13 +408,14 @@ char cbuf[80];
       
   fprintf(stderr,"resmensualview::generargrafico DISLIN version. \n");
       
-    metafl("XWIN");
+  metafl("XWIN");
   setpag("da4p");
   disini();
   pagera();
   hwfont();
 
-  titlin("3-D Bar Graph / 3-D Pie Chart", 2);
+//  titlin("3-D Bar Graph / 3-D Pie Chart", 2);
+  titlin("Resumen", 2);
   htitle(40);
 
   shdpat(16);
@@ -429,9 +430,10 @@ char cbuf[80];
   graf(0.,12.,0.,2.,0.,5.,0.,1.);
   title();
   color("red");
-  bars(xray,y1ray,y2ray,5);
+//  bars(xray,y1ray,y2ray,5);
+   bars(h1, h1, h1,5);
   endgrf();
-
+/*
   shdpat(16);
   labels("data","pie");
   labclr(255,"pie");
@@ -440,6 +442,7 @@ char cbuf[80];
   pietyp("3d");
   axspos(300,2700);
   piegrf(cbuf,0,y2ray,5);       
+*/
   disfin();
 }// end resmensualview
 #endif
