@@ -338,7 +338,11 @@ void ivaview::calculaTotales() {
     long int base=0;
     long int iva=0;
     for (int i=0;i< m_listIva->numRows(); i++) {
-        base += m_listIva->text(i,COL_IVA_BASEIVA).replace(".","").toInt() * 10000 / m_listIva->text(i,COL_IVA_PORCENTAJETIPOIVA).replace(".","").toInt();
+    	if (m_listIva->text(i,COL_IVA_PORCENTAJETIPOIVA).toInt() != 0) {
+	        base += m_listIva->text(i,COL_IVA_BASEIVA).replace(".","").toInt() * 10000 / m_listIva->text(i,COL_IVA_PORCENTAJETIPOIVA).replace(".","").toInt();
+	} else {
+		base = 0;
+	}// end if
         iva += m_listIva->text(i,COL_IVA_BASEIVA).replace(".","").toInt();
     }// end for
     QString numberstr = QString::number(base);

@@ -1808,6 +1808,40 @@ CREATE TRIGGER restriccionesasientotrigger
    FOR EACH ROW
    EXECUTE PROCEDURE restriccionesasiento();
     
+   
+-- Propaga los acumulados de IVA 
+CREATE FUNCTION inserttipoiva () RETURNS "trigger"
+AS '
+DECLARE
+   mrecord RECORD;
+BEGIN
+      FOR mrecord IN SELECT * FROM registroiva LOOP
+         INSERT INTO iva (idregistroiva, idtipoiva,baseiva) VALUES(mrecord.idregistroiva, NEW.idtipoiva,0);
+      END LOOP;
+      RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER nuevotipoiva
+   AFTER INSERT ON tipoiva
+   FOR EACH ROW
+   EXECUTE PROCEDURE inserttipoiva();
+
+CREATE FUNCTION deletetipoiva () RETURNS "trigger"
+    AS '
+DECLARE
+   mrecord RECORD;
+BEGIN
+        DELETE FROM iva WHERE idtipoiva=OLD.idtipoiva;
+        RETURN OLD;
+END;
+'    LANGUAGE plpgsql;
+
+CREATE TRIGGER borratipoiva
+   BEFORE DELETE ON tipoiva
+   FOR EACH ROW
+   EXECUTE PROCEDURE deletetipoiva();
+   
 -- ******************************************************
 -- FIN DEL APARTADO DE COMPROBACIONES.
 -- ******************************************************

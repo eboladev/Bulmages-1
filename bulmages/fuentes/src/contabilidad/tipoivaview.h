@@ -29,16 +29,19 @@ Q_OBJECT
 private:
    empresa *empresaactual;
    postgresiface2 *conexionbase;
-   QString m_idtipoiva;
+//   QString m_idtipoiva;
    cursor2 *m_curtipoiva;
 public:
     tipoivaview(empresa *, QWidget *parent = 0, const char *name = 0);
     ~tipoivaview();
 private:
-    void pintar();
-    void mostrarplantilla();
+    void pintar(QString idtipoiva="");
+    void mostrarplantilla(int pos=0);
 private slots:
     virtual void cambiacombo(int);
+    virtual void s_saveTipoIVA();
+    virtual void s_newTipoIVA();
+    virtual void s_deleteTipoIVA();
 };
 
 #endif

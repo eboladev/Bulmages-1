@@ -831,4 +831,39 @@ CREATE TRIGGER acumulados_canal_fk
     FOR EACH ROW
     EXECUTE PROCEDURE acumulados_canal();
 
+    
+    
+CREATE OR REPLACE FUNCTION inserttipoiva () RETURNS "trigger"
+AS '
+DECLARE
+   mrecord RECORD;
+BEGIN
+      FOR mrecord IN SELECT * FROM registroiva LOOP
+         INSERT INTO iva (idregistroiva, idtipoiva,baseiva) VALUES(mrecord.idregistroiva, NEW.idtipoiva,0);
+      END LOOP;
+      RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER nuevotipoiva
+   AFTER INSERT ON tipoiva
+   FOR EACH ROW
+   EXECUTE PROCEDURE inserttipoiva();
+
+CREATE OR REPLACE FUNCTION deletetipoiva() RETURNS "trigger"
+    AS '
+DECLARE
+   mrecord RECORD;
+BEGIN
+        DELETE FROM iva WHERE idtipoiva=OLD.idtipoiva;
+        RETURN OLD;
+END;
+'    LANGUAGE plpgsql;
+
+CREATE TRIGGER borratipoiva
+   BEFORE DELETE ON tipoiva
+   FOR EACH ROW
+   EXECUTE PROCEDURE deletetipoiva();
+    
+    
 COMMIT;

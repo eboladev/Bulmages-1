@@ -25,7 +25,7 @@
 #include <qlineedit.h>
 #include <qtextedit.h>
 #include "postgresiface2.h"
-/***@author Tomeu Borrás Riera */
+/** *@author Tomeu Borrás Riera */
 
 class empresa;
 
