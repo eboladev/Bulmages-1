@@ -78,7 +78,7 @@ void asientoview::acceptar() {
 int asientoview::creaasiento(QString texto, QString fecha, int numasiento) {
    int val;
    conexionbase->begin();
-   val = conexionbase->nuevoasiento(texto, fecha, numasiento);
+   val = conexionbase->nuevoasiento(texto, fecha, numasiento,1);
    conexionbase->commit();
    return(val);
 }// end creaasiento

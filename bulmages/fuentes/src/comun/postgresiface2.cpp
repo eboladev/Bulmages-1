@@ -524,10 +524,12 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
     return(ejecuta(query));
 }// end nuevacuenta
 
-int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento) {
+int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento, int clase) {
+    // clase => 0=Apertura, 1=Normal, 98=Regularización 99=Cierre
     QString query="";
     int val;
     int ordenasiento;
+    //0=Apertura, 1=Normal, 98=Regularización 99=Cierre
     if (numasiento == 0) {
       query="SELECT max(idasiento) FROM asiento";
       cursor2 *cur=cargacursor(query,"cargaasientoseq");
@@ -538,13 +540,13 @@ int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento) 
     } else {
       val = numasiento;
     }// end if
-    query="SELECT max(ordenasiento) FROM asiento";
+    query.sprintf("SELECT MAX(ordenasiento) FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s'",fecha.right(4).ascii());
     cursor2 *cur=cargacursor(query,"cargaasientos");
     if (!cur->eof()) ordenasiento = atoi(cur->valor(0).ascii());
     else ordenasiento=0;
     ordenasiento++;
     delete cur;
-    query.sprintf("INSERT INTO asiento (idasiento,descripcion, fecha, ordenasiento) VALUES (%d,'%s','%s', %d)",val,nombre.ascii(), fecha.ascii(), ordenasiento);
+    query.sprintf("INSERT INTO asiento (idasiento,descripcion, fecha, ordenasiento, clase) VALUES (%d,'%s','%s', %d, %d)",val,nombre.ascii(), fecha.ascii(), ordenasiento, clase);
     ejecuta(query);
     return(val);
 }// end nuevoasiento
