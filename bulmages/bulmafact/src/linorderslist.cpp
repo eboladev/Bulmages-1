@@ -498,8 +498,8 @@ void linorderslist::calculateImports() {
 	float taxImport = 0;
 	while (i < m_list->numRows()) {
 		if (m_list->text(i,COL_PVDLPEDIDO)!="" and m_list->text(i,COL_CANTLPEDIDO)!="") {
-			netImport += m_list->text(i,COL_PVDLPEDIDO).toFloat() * m_list->text(i,COL_CANTLPEDIDO).toInt();
-			taxImport += (m_list->text(i,COL_PVDLPEDIDO).toFloat() * m_list->text(i,COL_CANTLPEDIDO).toInt() * m_list->text(i,COL_TASATIPO_IVA).toInt())/100;
+			netImport += m_list->text(i,COL_PVDLPEDIDO).toFloat() * m_list->text(i,COL_CANTLPEDIDO).toFloat();
+			taxImport += (m_list->text(i,COL_PVDLPEDIDO).toFloat() * m_list->text(i,COL_CANTLPEDIDO).toFloat() * m_list->text(i,COL_TASATIPO_IVA).toFloat())/100;
 		}
 		i ++;
    }

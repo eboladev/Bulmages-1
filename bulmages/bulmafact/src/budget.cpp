@@ -88,8 +88,10 @@ CREATE TABLE lpresupuesto (
 #define COL_REMOVE 9
 #define COL_TASATIPO_IVA 10
 
-#define COL_DESCUENTO_CONCEPTDPRESUPUESTO 0
-#define COL_DESCUENTO_PROPORCIONDPRESUPUESTO 1
+#define COL_DESCUENTO_IDDPRESUPUESTO 0
+#define COL_DESCUENTO_CONCEPTDPRESUPUESTO 1
+#define COL_DESCUENTO_PROPORCIONDPRESUPUESTO 2
+#define COL_DESCUENTO_REMOVE 3
 
 Budget::Budget(company *comp, QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) {
    companyact = comp;
@@ -133,6 +135,7 @@ void Budget::inicialize() {
 	m_list->setColumnWidth(COL_NOMARTICULO,300);
 	m_list->setColumnWidth(COL_TASATIPO_IVA,50);
 
+	
 	m_list->hideColumn(COL_IDLPRESUPUESTO);
 	m_list->hideColumn(COL_IDPRESUPUESTO);
 	m_list->hideColumn(COL_IDARTICULO);
@@ -156,12 +159,16 @@ void Budget::inicialize() {
 	m_listDiscounts->setSorting( TRUE );
 	m_listDiscounts->setSelectionMode( QTable::SingleRow );
 	m_listDiscounts->setColumnMovingEnabled( TRUE );
-	m_listDiscounts->setNumCols(2);
+	m_listDiscounts->setNumCols(4);
+	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_IDDPRESUPUESTO, tr( "id" ) );
 	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_CONCEPTDPRESUPUESTO, tr( "Concepto" ) );
 	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_PROPORCIONDPRESUPUESTO, tr( "Proporción" ) );
    
+	m_listDiscounts->setColumnWidth(COL_DESCUENTO_IDDPRESUPUESTO,100);
 	m_listDiscounts->setColumnWidth(COL_DESCUENTO_CONCEPTDPRESUPUESTO,500);
 	m_listDiscounts->setColumnWidth(COL_DESCUENTO_PROPORCIONDPRESUPUESTO,100);
+	m_listDiscounts->hideColumn(COL_DESCUENTO_IDDPRESUPUESTO);
+	m_listDiscounts->hideColumn(COL_DESCUENTO_REMOVE);
 	
 	m_listDiscounts->setNumRows(10);
 
@@ -230,6 +237,7 @@ void Budget::chargeBudgetLines(QString idbudget) {
 		i++;
 		cur->siguienteregistro();
 	}// end while
+	if (i>0) m_list->setNumRows(i);
 	
 	delete cur;
 }// end chargeBudgetLines
@@ -242,11 +250,13 @@ void Budget::chargeBudgetDiscounts(QString idbudget) {
 	companyact->commit();
 	int i=0;
 	while (!cur->eof()) {
-		m_list->setText(i,COL_DESCUENTO_CONCEPTDPRESUPUESTO,cur->valor("conceptdpresupuesto"));
-		m_list->setText(i,COL_DESCUENTO_PROPORCIONDPRESUPUESTO,cur->valor("proporciondpresupuesto"));
+		m_listDiscounts->setText(i,COL_DESCUENTO_IDDPRESUPUESTO,cur->valor("iddpresupuesto"));
+		m_listDiscounts->setText(i,COL_DESCUENTO_CONCEPTDPRESUPUESTO,cur->valor("conceptdpresupuesto"));
+		m_listDiscounts->setText(i,COL_DESCUENTO_PROPORCIONDPRESUPUESTO,cur->valor("proporciondpresupuesto"));
 		i++;
 		cur->siguienteregistro();
 	}// end while
+	if (i>0) m_listDiscounts->setNumRows(i);
 	
 	delete cur;
 }// end chargeBudgetDiscounts
@@ -324,6 +334,42 @@ void Budget::valueBudgetLineChanged(int row, int col) {
 } //end valueBudgetLineChanged
 
 
+void Budget::newBudgetDiscountLine() {
+	m_listDiscounts->setNumRows( m_listDiscounts->numRows()+1 );
+	m_listDiscounts->editCell(m_listDiscounts->numRows()-1, COL_DESCUENTO_CONCEPTDPRESUPUESTO);
+	
+}
+
+
+void Budget::removeBudgetDiscountLine() {
+	if (m_listDiscounts->currentRow() >= 0) {
+		int row = m_listDiscounts->currentRow();
+		m_listDiscounts->setText(row, COL_DESCUENTO_REMOVE, "S");
+		m_listDiscounts->hideRow(row);
+	}
+}
+
+
+void Budget::valueBudgetDiscountLineChanged(int row, int col) {
+	/*	switch (col) {
+		case COL_DESCUENTOLPRESUPUESTO: {
+			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, m_list->text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
+		}
+		case COL_CODARTICULO: {
+			manageArticle(row);
+			calculateImports();
+		}
+		case COL_CANTLPRESUPUESTO: {
+			m_list->setText(row, COL_CANTLPRESUPUESTO, m_list->text(row, COL_CANTLPRESUPUESTO).replace(",","."));
+			calculateImports();
+		}
+		case COL_PVPLPRESUPUESTO: {
+			m_list->setText(row, COL_PVPLPRESUPUESTO, m_list->text(row, COL_PVPLPRESUPUESTO).replace(",","."));
+			calculateImports();
+		}
+	} */
+} //end valueBudgetDiscountLineChanged
+
 void Budget::manageArticle(int row) {
 	QString articleCode = m_list->text(row, COL_CODARTICULO);
 	if (articleCode == "+") {
@@ -382,15 +428,11 @@ void Budget::accept() {
 	fprintf(stderr,"accept button activated\n");
 	
 	companyact->begin();
-	if (saveBudget()!=0){
-		companyact->rollback();
+	if (saveBudget()==0 && saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
+		companyact->commit();
+		close();
 	} else {
-		if (saveBudgetLines()==0) {
-			companyact->commit();
-			close();
-		} else {
-			companyact->rollback();
-		}
+		companyact->rollback();
 	}	
 } //end accept
 
@@ -445,6 +487,29 @@ int Budget::saveBudgetLines() {
 } // end saveBudgetLines
 
 
+int Budget::saveBudgetDiscountLines() {
+	int i = 0;
+	int error = 0;
+	while (i < m_listDiscounts->numRows() && error==0) {
+		if (m_listDiscounts->text(i,COL_DESCUENTO_REMOVE)=="S") {
+			if (m_listDiscounts->text(i,COL_DESCUENTO_IDDPRESUPUESTO)!="") {
+				error = deleteBudgetDiscountLine(i);
+			}
+		} else {
+			if (m_listDiscounts->text(i,COL_DESCUENTO_CONCEPTDPRESUPUESTO)!="" || m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDPRESUPUESTO)!="") {
+				if (m_listDiscounts->text(i,COL_DESCUENTO_IDDPRESUPUESTO)!="") {
+					error = updateBudgetDiscountLine(i);
+				} else {
+					error = insertBudgetDiscountLine(i);
+				}
+			}
+		}
+		i ++;
+   }
+	return error;
+} // end saveBudgetDiscountLines
+
+
 int Budget::updateBudgetLine(int i) {
 	QString SQLQuery = "UPDATE lpresupuesto SET desclpresupuesto='"+m_list->text(i,COL_DESCLPRESUPUESTO)+"'";
 	SQLQuery += " , cantlpresupuesto="+ m_list->text(i,COL_CANTLPRESUPUESTO);
@@ -477,6 +542,31 @@ int Budget::deleteBudgetLine(int line) {
 } //end deleteBudgetLine
 
 
+int Budget::updateBudgetDiscountLine(int i) {
+	QString SQLQuery = "UPDATE dpresupuesto SET conceptdpresupuesto='"+m_listDiscounts->text(i,COL_DESCUENTO_CONCEPTDPRESUPUESTO)+"'";
+	SQLQuery += " , proporciondpresupuesto="+ m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDPRESUPUESTO);
+	SQLQuery += " WHERE idpresupuesto ="+m_idpresupuesto+" AND iddpresupuesto="+m_listDiscounts->text(i,COL_DESCUENTO_IDDPRESUPUESTO);
+	return companyact->ejecuta(SQLQuery);
+} //end updateBudgetDiscountLine
+
+
+int Budget::insertBudgetDiscountLine(int i) {
+	QString SQLQuery ="";
+	SQLQuery = "INSERT INTO dpresupuesto (conceptdpresupuesto, proporciondpresupuesto, idpresupuesto)";
+	SQLQuery += " VALUES (";
+	SQLQuery += "'"+m_listDiscounts->text(i,COL_DESCUENTO_CONCEPTDPRESUPUESTO)+"'";
+	SQLQuery += " , "+m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDPRESUPUESTO);
+	SQLQuery += " , "+m_idpresupuesto;
+	SQLQuery += " ) ";
+	return companyact->ejecuta(SQLQuery);
+} //end insertBudgetDiscountLine
+
+
+int Budget::deleteBudgetDiscountLine(int line) {
+	QString SQLQuery = "DELETE FROM dpresupuesto WHERE iddpresupuesto ="+m_listDiscounts->text(line,COL_DESCUENTO_IDDPRESUPUESTO);
+	return companyact->ejecuta(SQLQuery);
+} //end deleteBudgetDiscountLine
+
 void Budget::cancel() {
 	close();
 }//end cancel
@@ -489,9 +579,9 @@ void Budget::calculateImports() {
 	float discountImport = 0;
 	while (i < m_list->numRows()) {
 		if (m_list->text(i,COL_PVPLPRESUPUESTO)!="" and m_list->text(i,COL_CANTLPRESUPUESTO)!="") {
-			netImport += m_list->text(i,COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i,COL_CANTLPRESUPUESTO).toInt();
-			taxImport += (m_list->text(i,COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i,COL_CANTLPRESUPUESTO).toInt() * m_list->text(i,COL_TASATIPO_IVA).toInt())/100;
-			discountImport += (m_list->text(i,COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i,COL_CANTLPRESUPUESTO).toInt() * m_list->text(i,COL_DESCUENTOLPRESUPUESTO).toInt())/100;
+			netImport += m_list->text(i,COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i,COL_CANTLPRESUPUESTO).toFloat();
+			taxImport += (m_list->text(i,COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i,COL_CANTLPRESUPUESTO).toFloat() * m_list->text(i,COL_TASATIPO_IVA).toFloat())/100;
+			discountImport += (m_list->text(i,COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i,COL_CANTLPRESUPUESTO).toFloat() * m_list->text(i,COL_DESCUENTOLPRESUPUESTO).toFloat())/100;
 		}
 		i ++;
    }

@@ -821,16 +821,22 @@
 </images>
 <connections>
     <connection>
-        <sender>toolButton1</sender>
-        <signal>clicked()</signal>
+        <sender>m_fpresupuesto</sender>
+        <signal>textChanged(const QString&amp;)</signal>
         <receiver>BudgetBase</receiver>
-        <slot>searchClient()</slot>
+        <slot>budgetDateLostFocus()</slot>
     </connection>
     <connection>
-        <sender>m_vencpresupuesto</sender>
-        <signal>lostFocus()</signal>
+        <sender>m_list</sender>
+        <signal>valueChanged(int,int)</signal>
         <receiver>BudgetBase</receiver>
-        <slot>budgetExpiryLostFocus()</slot>
+        <slot>valueBudgetLineChanged(int,int)</slot>
+    </connection>
+    <connection>
+        <sender>m_listDiscounts</sender>
+        <signal>valueChanged(int,int)</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>valueBudgetDiscountLineChanged(int,int)</slot>
     </connection>
     <connection>
         <sender>m_newBudgetLine</sender>
@@ -839,10 +845,28 @@
         <slot>newBudgetLine()</slot>
     </connection>
     <connection>
+        <sender>m_newBudgetLine_2</sender>
+        <signal>clicked()</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>newBudgetDiscountLine()</slot>
+    </connection>
+    <connection>
         <sender>m_removeBudgetLine</sender>
         <signal>clicked()</signal>
         <receiver>BudgetBase</receiver>
         <slot>removeBudgetLine()</slot>
+    </connection>
+    <connection>
+        <sender>m_removeBudgetLine_2</sender>
+        <signal>clicked()</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>removeBudgetDiscountLine()</slot>
+    </connection>
+    <connection>
+        <sender>m_vencpresupuesto</sender>
+        <signal>lostFocus()</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>budgetExpiryLostFocus()</slot>
     </connection>
     <connection>
         <sender>pushButton1</sender>
@@ -857,16 +881,10 @@
         <slot>cancel()</slot>
     </connection>
     <connection>
-        <sender>m_fpresupuesto</sender>
-        <signal>textChanged(const QString&amp;)</signal>
+        <sender>toolButton1</sender>
+        <signal>clicked()</signal>
         <receiver>BudgetBase</receiver>
-        <slot>budgetDateLostFocus()</slot>
-    </connection>
-    <connection>
-        <sender>m_list</sender>
-        <signal>valueChanged(int,int)</signal>
-        <receiver>BudgetBase</receiver>
-        <slot>valueBudgetLineChanged(int,int)</slot>
+        <slot>searchClient()</slot>
     </connection>
 </connections>
 <slots>
@@ -878,6 +896,9 @@
     <slot>valueBudgetLineChanged(int,  int)</slot>
     <slot>accept()</slot>
     <slot>cancel()</slot>
+    <slot>newBudgetDiscountLine()</slot>
+    <slot>removeBudgetDiscountLine()</slot>
+    <slot>valueBudgetDiscountLineChanged(int, int)</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

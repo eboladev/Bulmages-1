@@ -47,11 +47,15 @@ public:
 	
 	 
 private:
-	int saveBudgetLines();
 	int saveBudget();
+	int saveBudgetLines();
+	int saveBudgetDiscountLines();
 	int insertBudgetLine(int);
 	int updateBudgetLine(int);
 	int deleteBudgetLine(int);
+	int insertBudgetDiscountLine(int);
+	int updateBudgetDiscountLine(int);
+	int deleteBudgetDiscountLine(int);
 	void nextCell(QObject *);
 	void duplicateCell(QObject *);
 	void calculateImports();
@@ -65,7 +69,10 @@ public slots:
 	virtual void budgetExpiryLostFocus();
 	virtual void newBudgetLine();
 	virtual void removeBudgetLine();
+	virtual void newBudgetDiscountLine();
+	virtual void removeBudgetDiscountLine();
 	virtual void valueBudgetLineChanged(int, int);
+	virtual void valueBudgetDiscountLineChanged(int, int);
 	virtual void accept();
 	virtual void cancel();
 
