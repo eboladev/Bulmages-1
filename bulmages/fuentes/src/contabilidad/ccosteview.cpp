@@ -13,6 +13,7 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+#include <qlistview.h>
 #include "ccosteview.h"
 #include "empresa.h"
 
@@ -60,58 +61,61 @@ void ccosteview::pintar() {
   
   //=====================
   
-      QListViewItem * it;
+    QListViewItem * it;
     QListViewItem *Lista[10000];
-    int idcuenta;
     int padre;
-    int idcuenta1;
+    int idc_coste;
     cursor2 *cursoraux1, *cursoraux2;
-    int ccuenta;
 
     listcoste->clear();
-    if (conexionbase == NULL) {
-        ccuenta=listcoste->addColumn("código cuenta",-1);
-    }// end if
+    col_idc_coste=listcoste->addColumn("idc_coste",0);
+    col_nom_coste = listcoste->addColumn("nom_coste",-1);
+    col_desc_coste = listcoste->addColumn("desc_coste",-1);
+    
+//    listcoste->hideColumn(col_idc_coste);
+//    listcoste->setColumnWidth(col_idc_coste,0);
+    
+    
     conexionbase->begin();
-    cursoraux1=conexionbase->cargacuentas(0);
+    cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY padre","centroscoste");
+///    cursoraux1=conexionbase->cargacuentas(0);
     conexionbase->commit();
     //   cursoraux1->ultimoregistro();
 
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").ascii());
-        idcuenta1 = atoi( cursoraux1->valor("idcuenta").ascii());
+        idc_coste = atoi( cursoraux1->valor("idc_coste").ascii());
         it =new QListViewItem(listcoste);
-        Lista[idcuenta1]=it;
-        it->setText(ccuenta, cursoraux1->valor("codigo"));
-        idcuenta = atoi(cursoraux1->valor("idcuenta").ascii());
-
+        Lista[idc_coste]=it;
+        it->setText(col_idc_coste, cursoraux1->valor("idc_coste"));
+        it->setText(col_desc_coste,cursoraux1->valor("descripcion"));
+        it->setText(col_nom_coste, cursoraux1->valor("nombre"));
         it->setOpen(true);
         cursoraux1->siguienteregistro ();
     }// end while
+    delete cursoraux1;
 
-	 conexionbase->begin();
-    cursoraux2=conexionbase->cargacuentas(-2);
-	 conexionbase->commit();
+    conexionbase->begin();
+    cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY padre","mascostes");
+//    cursoraux2=conexionbase->cargacuentas(-2);
+    conexionbase->commit();
     //   cursoraux1->ultimoregistro();
     while (!cursoraux2->eof()) {
-        padre = atoi(cursoraux2->valor(4).ascii());
-        idcuenta1 = atoi(cursoraux2->valor(0).ascii());
-		  fprintf(stderr,"Cuentas de subnivel:%d",padre);
+        padre = atoi(cursoraux2->valor("padre").ascii());
+        idc_coste = atoi(cursoraux2->valor("idc_coste").ascii());
+        fprintf(stderr,"Cuentas de subnivel:%d",padre);
         if (padre != 0) {
             it = new QListViewItem(Lista[padre]);
-            Lista[idcuenta1]=it;
-
-            it->setText(ccuenta,cursoraux2->valor("codigo"));
-            idcuenta = atoi(cursoraux2->valor("idcuenta").ascii());
-
+            Lista[idc_coste]=it;
+            it->setText(col_idc_coste,cursoraux2->valor("idc_coste"));
+            it->setText(col_desc_coste,cursoraux1->valor("descripcion"));
+            it->setText(col_nom_coste,cursoraux1->valor("nombre"));
 
             it->setOpen(true);
         }// end if
         cursoraux2->siguienteregistro();
     }// end while
     delete cursoraux2;
-    delete cursoraux1;
-  
 }// end pintar
 
 /*****************************************************
@@ -123,24 +127,29 @@ void ccosteview::cambiacombo(int numcombo) {
   mostrarplantilla();
 }// end cambiacombo              
 
+void ccosteview::seleccionado(QListViewItem *it) {
+   idc_coste = atoi(it->text(col_idc_coste).ascii());
+   mostrarplantilla();
+}// end seleccionado
+
+
 void ccosteview::mostrarplantilla() {
   fprintf(stderr,"mostramos la plantilla");
-  int i;
-  char cadena[300];
-  sprintf(cadena,"%d", idc_coste);
   QString query;
   query.sprintf("SELECT * from c_coste WHERE idc_coste=%d",idc_coste);
   conexionbase->begin();
   cursor2 *cursorcoste = conexionbase->cargacursor(query,"costes1");
   conexionbase->commit();
   if (!cursorcoste->eof()) {
-    nomcentro->setText(cursorcoste->valor(2));
-    desccoste->setText(cursorcoste->valor(1));
+    nomcentro->setText(cursorcoste->valor("nombre"));
+    desccoste->setText(cursorcoste->valor("descripcion"));
   }// end if
-  i=0;
-  while (ccostes[i] != idc_coste)
-    i++;
-  combocoste->setCurrentItem(i);
+  
+  delete cursorcoste;
+//  i=0;
+//  while (ccostes[i] != idc_coste)
+//    i++;
+//  combocoste->setCurrentItem(i);
 }// end mostrarplantilla
 
 

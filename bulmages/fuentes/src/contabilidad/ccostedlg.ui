@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>716</width>
-            <height>587</height>
+            <height>589</height>
         </rect>
     </property>
     <property name="caption">
@@ -129,25 +129,6 @@
                     <cstring>unnamed</cstring>
                 </property>
                 <widget class="QListView">
-                    <column>
-                        <property name="text">
-                            <string>Column 1</string>
-                        </property>
-                        <property name="clickable">
-                            <bool>true</bool>
-                        </property>
-                        <property name="resizable">
-                            <bool>true</bool>
-                        </property>
-                    </column>
-                <item>
-                    <property name="text">
-                        <string>New Item</string>
-                    </property>
-                    <property name="pixmap">
-                        <pixmap></pixmap>
-                    </property>
-                </item>
                     <property name="name">
                         <cstring>listcoste</cstring>
                     </property>
@@ -280,12 +261,19 @@
         <receiver>ccostedlg</receiver>
         <slot>boton_borrar()</slot>
     </connection>
+    <connection>
+        <sender>listcoste</sender>
+        <signal>currentChanged(QListViewItem*)</signal>
+        <receiver>ccostedlg</receiver>
+        <slot>seleccionado(QListViewItem*)</slot>
+    </connection>
 </connections>
 <slots>
     <slot>cambiacombo(int)</slot>
     <slot>boton_guardar()</slot>
     <slot>boton_nuevo()</slot>
     <slot>boton_borrar()</slot>
+    <slot>seleccionado(QListViewItem *)</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

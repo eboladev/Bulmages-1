@@ -35,7 +35,9 @@ public:
   int ccostes[100];
   int idc_coste;    // Indica cual es el centro de coste que se esta visualizando
                     // Si su valor es 0 entonces es que no se está visualizando ningun centro de coste.
-	empresa *empresaactual;
+  empresa *empresaactual;
+  
+  int col_idc_coste, col_desc_coste, col_nom_coste; // Los indices de las columnas de los items.
 public:
   ccosteview(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);
   ~ccosteview();
@@ -47,6 +49,7 @@ public slots:
   void boton_guardar();
   void boton_nuevo();
   void boton_borrar();
+  void seleccionado(QListViewItem *);
 };
 
 #endif
