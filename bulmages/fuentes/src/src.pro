@@ -72,7 +72,9 @@ SOURCES += main.cpp \
            contabilidad/amortizacionesview.cpp \
            contabilidad/bbloqfecha.cpp \
            comun/log.cpp \
-           comun/selectccosteview.cpp 
+           comun/selectccosteview.cpp \
+	   comun/selectcanalview.cpp
+	   
 
 
 HEADERS += comun/bselector.h \
@@ -141,7 +143,8 @@ HEADERS += comun/bselector.h \
            contabilidad/amortizacionesview.h \
            contabilidad/bbloqfecha.h \
            comun/log.h \
-           comun/selectccosteview.h 
+           comun/selectccosteview.h \
+	   comun/selectcanalview.h
 
 
 IDLS += contabilidad/about.ui \
@@ -332,7 +335,8 @@ FORMS += comun/uiselector.ui \
          contabilidad/amortizacionesdlg.ui \
          comun/uivisorempresas.ui \
          contabilidad/uibloqfecha.ui \
-         comun/selectccostedlg.ui 
+         comun/selectccostedlg.ui \
+	 comun/selectcanaldlg.ui
 
 TEMPLATE = app 
 contabilidad/about.ui.target = contabilidad/about.ui 

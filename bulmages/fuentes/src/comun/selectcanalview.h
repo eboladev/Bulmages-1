@@ -17,22 +17,22 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SELECTCCOSTEVIEW_H
-#define SELECTCCOSTEVIEW_H
+#ifndef SELECTCANALVIEW_H
+#define SELECTCANALVIEW_H
 
-#include "selectccostedlg.h"
+#include "selectcanaldlg.h"
 #include "postgresiface2.h"
 #include <qlistview.h>
 
 class empresa;
 /**@author Tomeu Borras*/
-class selectccosteview : public selectccostedlg
+class selectcanalview : public selectcanaldlg
 {
 Q_OBJECT
 public:
-    selectccosteview(empresa *emp, QWidget *parent = 0, const char *name = 0);
+    selectcanalview(empresa *emp, QWidget *parent = 0, const char *name = 0);
 
-    ~selectccosteview();
+    ~selectcanalview();
 private:
    empresa *empresaactual;
    int m_colNomCoste;
@@ -45,10 +45,9 @@ private:
    QListViewItemIterator* m_iterador;
 
 public:
-   void cargacostes();
-   int firstccoste();
-   int nextccoste();
-   
+   void cargacanales();
+   int firstcanal();
+   int nextcanal();
 };
 
 #endif

@@ -25,15 +25,13 @@ filtrarextractosview::filtrarextractosview(empresa *emp,QWidget *parent, const c
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
 
-   m_colNomCoste = m_listCostes->addColumn("nom_coste",-1);
-   m_colDescCoste = m_listCostes->addColumn("desc_coste",-1);
-   m_colStatusCoste = m_listCostes->addColumn("Status",-1);
-   m_colIdCoste = m_listCostes->addColumn("idc_coste",0);
 
    selccostes=new selectccosteview(empresaactual,0,0);   
+   selcanales=new selectcanalview(empresaactual,0,0);
    
    // Hacemos la carga de los centros de coste. Rellenamos el combobox
-   cargacostes();
+   // Esto es obsoleto pq hay un formulario que se encarga de ello.
+   // cargacostes();
  
    fprintf(stderr,"Fin del constructor de fitrarextractosview\n");
 
@@ -46,6 +44,23 @@ filtrarextractosview::~filtrarextractosview(){
 void filtrarextractosview::boton_ccostes() {
    fprintf(stderr,"Boton ccostes\n");
    selccostes->exec();
+   
+   fprintf(stderr,"---------------INICIO---------------------\n");
+   selccostes->firstccoste();
+   while (selccostes->nextccoste());
+   fprintf(stderr,"-----------------FIN---------------------\n");
+//   selccostes->show();
+}// end boton_ccostes
+
+
+void filtrarextractosview::boton_canales() {
+   fprintf(stderr,"Boton canales\n");
+   selcanales->exec();
+   
+   fprintf(stderr,"---------------INICIO---------------------\n");
+   selcanales->firstcanal();
+   while (selcanales->nextcanal());
+   fprintf(stderr,"-----------------FIN---------------------\n");
 //   selccostes->show();
 }// end boton_ccostes
 
@@ -69,56 +84,6 @@ void filtrarextractosview::cargacostes() {
    }// end while
    delete cursorcoste;
    fprintf(stderr,"Terminada la carga de los centros de coste en el combobox\n");
-   
-// Rellenamnos la listbox que va a sustituir al combobox correspondiente.
-// Para que en los listados puedan salir más cosas de las que se dicen.   
-   fprintf(stderr,"Ahora nos toca rellenar las listas.\n");
-   
-    QListViewItem * it;
-    QListViewItem *Lista[10000];
-    int padre;
-    int idc_coste=0;
-    cursor2 *cursoraux1, *cursoraux2;
-
-    // Cogemos los centros de coste principales y los ponemos donde toca.
-    m_listCostes->clear();
-    conexionbase->begin();
-    cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste","centroscoste");
-    conexionbase->commit();
-    while (!cursoraux1->eof()) {
-        padre = atoi( cursoraux1->valor("padre").ascii());
-        idc_coste = atoi( cursoraux1->valor("idc_coste").ascii());
-        it =new QListViewItem(m_listCostes);
-        Lista[idc_coste]=it;
-        it->setText(m_colIdCoste, cursoraux1->valor("idc_coste"));
-        it->setText(m_colDescCoste,cursoraux1->valor("descripcion"));
-        it->setText(m_colNomCoste, cursoraux1->valor("nombre"));
-        it->setOpen(true);
-        cursoraux1->siguienteregistro ();
-    }// end while
-    delete cursoraux1;
-
-    // Una vez que hemos puesto los centros de coste padre, todo lo demás es una
-    // Tarea de ir colocando centros de coste a sus respectivos padres. El algoritmo
-    // deja de ser recursivo y pasa a ser lineal.
-    conexionbase->begin();
-    cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste","mascostes");
-    conexionbase->commit();
-    while (!cursoraux2->eof()) {
-        padre = atoi(cursoraux2->valor("padre").ascii());
-        idc_coste = atoi(cursoraux2->valor("idc_coste").ascii());
-        fprintf(stderr,"Cuentas de subnivel:%d",padre);
-            it = new QListViewItem(Lista[padre]);
-            Lista[idc_coste]=it;
-            it->setText(m_colIdCoste,cursoraux2->valor("idc_coste"));
-            it->setText(m_colDescCoste,cursoraux1->valor("descripcion"));
-            it->setText(m_colNomCoste,cursoraux1->valor("nombre"));
-            it->setOpen(true);
-        cursoraux2->siguienteregistro();
-    }// end while
-    delete cursoraux2;
-   
-   
    
 }// end cargacostes
 

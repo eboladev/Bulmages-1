@@ -1,19 +1,19 @@
 <!DOCTYPE UI><UI version="3.2" stdsetdef="1">
-<class>selectccostedlg</class>
+<class>selectcanaldlg</class>
 <widget class="QDialog">
     <property name="name">
-        <cstring>selectccostedlg</cstring>
+        <cstring>selectcanaldlg</cstring>
     </property>
     <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
             <width>498</width>
-            <height>360</height>
+            <height>362</height>
         </rect>
     </property>
     <property name="caption">
-        <string>Selector de Centros de Coste</string>
+        <string>Selector de Canales</string>
     </property>
     <grid>
         <property name="name">
@@ -21,7 +21,7 @@
         </property>
         <widget class="QListView" row="0" column="0">
             <property name="name">
-                <cstring>m_listCostes</cstring>
+                <cstring>m_listCanales</cstring>
             </property>
             <property name="resizePolicy">
                 <enum>Manual</enum>
@@ -102,7 +102,7 @@
     <connection>
         <sender>pushButton1</sender>
         <signal>clicked()</signal>
-        <receiver>selectccostedlg</receiver>
+        <receiver>selectcanaldlg</receiver>
         <slot>close()</slot>
     </connection>
 </connections>

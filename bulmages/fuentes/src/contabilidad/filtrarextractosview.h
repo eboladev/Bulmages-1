@@ -15,22 +15,6 @@
  *                                                                         *
  ***************************************************************************/
 
-/*
-#ifndef RESMENSUALVIEW_H
-#define RESMENSUALVIEW_H
-
-#include <qwidget.h>
-#ifdef ESTADISTICAS
-#include "resmensualdlg.h"
-#endif
-
-#ifdef GDCHART
-#include "resmensualdlg1.h"
-#endif
-
-#include "postgresiface2.h"
-
-*/
 
 #ifndef FILTRAREXTRACTOSVIEW_H
 #define FILTRAREXTRACTOSVIEW_H
@@ -42,35 +26,9 @@
 #include "filtrarextractosdlg.h"
 #include "postgresiface2.h"
 #include "selectccosteview.h"
+#include "selectcanalview.h"
 
 class empresa;
-
-/*
-class resmensualview : public resmensualdlg  {
-   Q_OBJECT
-public: 
-   postgresiface2 *conexionbase;
-   string idmpatrimonial1, idmpatrimonial2, idmpatrimonial3;
-
-   int inicializa(postgresiface2 *);
-	resmensualview(QWidget *parent=0, const char *name=0);
-	~resmensualview();
-   void presentar();
-   void presentarpie();
-   void generargrafico(float *, char **);
-public slots:
-   virtual void accept();
-   virtual void buscacodigocta();
-   virtual void buscacodigocta1();
-   virtual void buscacodigocta2();
-   virtual void buscampatrimonial1();
-   virtual void buscampatrimonial2();
-   virtual void buscampatrimonial3();
-};
-
-
-*/
-
 
 /***@ author Tomeu Borrás Riera  */
 
@@ -83,6 +41,7 @@ public:
   int ccostes[200];
   empresa *empresaactual;   
   selectccosteview *selccostes;
+  selectcanalview* selcanales;
 public:
 
   filtrarextractosview(empresa *, QWidget *parent=0, const char *name=0);
@@ -99,6 +58,7 @@ public slots:
   virtual void boton_buscacontrapartida();
   virtual void return_codigo();
   virtual void boton_ccostes();
+  virtual void boton_canales();
 };
 
 #endif
