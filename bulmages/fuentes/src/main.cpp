@@ -85,11 +85,24 @@ if (confpr->valor(CONF_TRADUCCION) == "locales") {
   Splash *splashScr = new Splash();
   delete splashScr;
   
-  BSelector * SelectorAplicaciones = new BSelector(0,"SelectorAplicaciones");  
-
-  mainApp->setMainWidget(SelectorAplicaciones);
-  
-  valorsalida = mainApp->exec();
+//  BSelector * SelectorAplicaciones = new // BSelector(0,"SelectorAplicaciones");  
+fprintf(stderr,"argc: %d\n",argc);
+for (int i=0;i<argc;i++) fprintf(stderr,"argv:%d, %s\n",i,argv[i]);
+if (argc == 5) {
+   QString db= argv[2];
+   QString us=argv[3];
+   QString pass=argv[4];
+   QString ej="";
+   Bulmages01 * bges = new Bulmages01(NULL, "bulmages",0, &db, &us, &pass, &ej);
+   mainApp->setMainWidget(bges);
+   valorsalida = mainApp->exec();
+} else {
+   fprintf(stderr,"numero de parametros incorrecto\n");
+   Bulmages01 * bges = new Bulmages01(NULL, "bulmages",0, NULL, NULL, NULL, NULL);
+   fprintf(stderr,"la empresa se ha inicializado bien\n");
+   mainApp->setMainWidget(bges);
+   valorsalida = mainApp->exec();
+}// end if
   
   delete confpr;
   return valorsalida;
