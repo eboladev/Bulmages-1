@@ -39,17 +39,24 @@ int main(int argc, char *argv[])
     
  
   QLibrary ptr(libFileName);
-  if (! ptr.load()) fprintf(stderr,"Error al cargar la libreria: " libFileName  "\n");
+  if (! ptr.load()) {
+      fprintf(stderr,"Error al cargar la libreria: " libFileName  "\n");
+      valorsalida++;
+  }
   else {
       FuncRef = (BgFuncPtr) ptr.resolve("enlace");
       if (FuncRef) BulmaFact=FuncRef(0,0);
-      else fprintf(stderr,"Error al ejecutar el enlace.\n"); 
+      else { 
+          fprintf(stderr,"Error al ejecutar el enlace.\n"); 
+          valorsalida++;
+      }
   }
   
- 
-  mainApp->setMainWidget(BulmaFact);
-  BulmaFact->showMaximized();
-  valorsalida = mainApp->exec();
+  if (!valorsalida) {
+      mainApp->setMainWidget(BulmaFact);
+      BulmaFact->showMaximized();
+      valorsalida = mainApp->exec();
+  }
 
   return valorsalida;
 }
