@@ -394,7 +394,7 @@
                         </widget>
                         <widget class="QDateEdit">
                             <property name="name">
-                                <cstring>dateEdit10_2</cstring>
+                                <cstring>m_previsionDate</cstring>
                             </property>
                         </widget>
                     </hbox>
@@ -792,6 +792,12 @@
         <receiver>linorderslistbase</receiver>
         <slot>removeOrderLin()</slot>
     </connection>
+    <connection>
+        <sender>m_previsionDate</sender>
+        <signal>valueChanged(const QDate&amp;)</signal>
+        <receiver>linorderslistbase</receiver>
+        <slot>updatePrevDate(const QDate&amp;)</slot>
+    </connection>
 </connections>
 <slots>
     <slot>activated( int )</slot>
@@ -803,6 +809,7 @@
     <slot>valueOrderLineChanged(int, int)</slot>
     <slot>removeOrderLin()</slot>
     <slot>cancelOrderLinChanges()</slot>
+    <slot>updatePrevDate(const QDate&amp;)</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

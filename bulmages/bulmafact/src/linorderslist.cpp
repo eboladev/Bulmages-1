@@ -50,6 +50,7 @@ CREATE TABLE lpedido (
 #include <qcombobox.h>
 #include <qwidget.h>
 #include <qmessagebox.h>
+#include <qdatetimeedit.h>
 #include "company.h"
 #include "funcaux.h"
 
@@ -64,6 +65,7 @@ CREATE TABLE lpedido (
 #define COL_IDPEDIDO 8
 #define COL_IDALB_PRO 9
 #define COL_REMOVE 10
+#define COL_TASATIPO_IVA 11
 
 linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, int flag)
  : linorderslistbase(parent, name, flag) {
@@ -78,7 +80,7 @@ void linorderslist::chargeorder(QString idpedido_) {
    QString idalmacen;
 	
 	idpedido = idpedido_;
-   
+   m_previsionDate->setDate(QDate::currentDate());
    if (idpedido != "0") {
    	companyact->begin();
    	cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido, division WHERE idpedido="+idpedido+" and pedido.iddivision=division.iddivision","unquery");
@@ -110,7 +112,7 @@ void linorderslist::chargelinorders(QString idpedido) {
 	m_list->setSorting( TRUE );
 	m_list->setSelectionMode( QTable::SingleRow );
 	m_list->setColumnMovingEnabled( TRUE );
-	m_list->setNumCols(11);
+	m_list->setNumCols(12);
 	m_list->horizontalHeader()->setLabel( COL_NUMLPEDIDO, tr( "Nº Línea" ) );
 	m_list->horizontalHeader()->setLabel( COL_DESCLPEDIDO, tr( "Descripción" ) );
 	m_list->horizontalHeader()->setLabel( COL_CANTLPEDIDO, tr( "Cantidad" ) );
@@ -121,6 +123,7 @@ void linorderslist::chargelinorders(QString idpedido) {
 	m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
 	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
 	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
+	m_list->horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
    
 	m_list->setColumnWidth(COL_NUMLPEDIDO,100);
 	m_list->setColumnWidth(COL_DESCLPEDIDO,300);
@@ -132,11 +135,13 @@ void linorderslist::chargelinorders(QString idpedido) {
 	m_list->setColumnWidth(COL_IDARTICULO,100);
 	m_list->setColumnWidth(COL_CODARTICULO,100);
 	m_list->setColumnWidth(COL_NOMARTICULO,300);
+	m_list->setColumnWidth(COL_TASATIPO_IVA,50);
 
 	m_list->hideColumn(COL_NUMLPEDIDO);
 	m_list->hideColumn(COL_IDPEDIDO);
 	m_list->hideColumn(COL_IDARTICULO);
 	m_list->hideColumn(COL_REMOVE);
+	m_list->hideColumn(COL_TASATIPO_IVA);
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
 // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
@@ -146,7 +151,7 @@ void linorderslist::chargelinorders(QString idpedido) {
 	m_list->setReadOnly(FALSE);        
 	 
 	companyact->begin();
-	cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedido, articulo WHERE idpedido="+idpedido+" AND articulo.idarticulo=lpedido.idarticulo","unquery");
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedido, articulo, tipo_iva WHERE idpedido="+idpedido+" AND articulo.idarticulo=lpedido.idarticulo and articulo.idtipo_iva = tipo_iva.idtipo_iva","unquery");
 	companyact->commit();
 	m_list->setNumRows( cur->numregistros() );
 	int i=0;
@@ -161,6 +166,7 @@ void linorderslist::chargelinorders(QString idpedido) {
 		m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
 		m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
 		m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
+		m_list->setText(i,COL_TASATIPO_IVA,cur->valor("tasatipo_iva"));
 		i++;
 		cur->siguienteregistro();
 	}// end while
@@ -408,15 +414,23 @@ void linorderslist::manageArticle(int row) {
 	
 	bool ok;
 	if (articleCode.toInt(&ok, 10)>0) {
+		m_list->setText(row, COL_NOMARTICULO, "");
+		m_list->setText(row, COL_IDARTICULO, "");
+		m_list->setText(row, COL_TASATIPO_IVA, "");
+		
 		companyact->begin();
 		cursor2 * cur2= companyact->cargacursor("SELECT * FROM articulo WHERE codarticulo="+m_list->text(row, COL_CODARTICULO),"unquery");
 		companyact->commit();
 		if (!cur2->eof()) {
 			m_list->setText(row, COL_NOMARTICULO, cur2->valor("nomarticulo"));
 			m_list->setText(row, COL_IDARTICULO, cur2->valor("idarticulo"));
-		} else {
-			m_list->setText(row, COL_NOMARTICULO, cur2->valor(""));
-			m_list->setText(row, COL_IDARTICULO, cur2->valor(""));
+			QString taxType = cur2->valor("idtipo_iva");
+			companyact->begin();
+			cursor2 * cur3= companyact->cargacursor("SELECT * FROM tipo_iva WHERE idtipo_iva="+taxType,"unquery");
+			companyact->commit();
+			if (!cur3->eof()) {
+				m_list->setText(row, COL_TASATIPO_IVA, cur3->valor("tasatipo_iva"));
+			}
 		}
 	}
 } //end manageArticle
@@ -471,6 +485,7 @@ void linorderslist::calculateImports() {
 	while (i < m_list->numRows()) {
 		if (m_list->text(i,COL_PVDLPEDIDO)!="" and m_list->text(i,COL_CANTLPEDIDO)!="") {
 			netImport += m_list->text(i,COL_PVDLPEDIDO).toFloat() * m_list->text(i,COL_CANTLPEDIDO).toInt();
+			taxImport += (m_list->text(i,COL_PVDLPEDIDO).toFloat() * m_list->text(i,COL_CANTLPEDIDO).toInt() * m_list->text(i,COL_TASATIPO_IVA).toInt())/100;
 		}
 		i ++;
    }
@@ -484,3 +499,19 @@ void linorderslist::calculateImports() {
 	m_taxImport->setText(qstTaxImport);
 	m_totalImport->setText(qstTotalImport);
 } // end calculateImports
+
+
+void linorderslist::updatePrevDate(const QDate &) {
+	char stPrevDate [50];
+	QDate previsionDate=m_previsionDate->date();
+	sprintf(stPrevDate, "%02d/%02d/%02d", previsionDate.day(), previsionDate.month(), previsionDate.year());
+	QString qstPrevDate(stPrevDate);
+	
+	
+	int i = 0;
+	
+	while (i < m_list->numRows()) {
+		m_list->setText(i, COL_PREVLPEDIDO, qstPrevDate);
+		i ++;
+   }
+} // end updatePrevDate

@@ -71,6 +71,7 @@ public slots:
 	 virtual void orderDateLostFocus();
 	 virtual void valueOrderLineChanged(int, int);
 	 virtual void removeOrderLin();
+	 virtual void updatePrevDate(const QDate &);
 };
 
 #endif
