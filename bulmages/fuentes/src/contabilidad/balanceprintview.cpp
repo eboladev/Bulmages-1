@@ -27,6 +27,8 @@
 #include <qtable.h>
 #include <qtoolbutton.h>
 
+#include "empresa.h"
+
 #ifndef WIN32
 #include <unistd.h>
 #endif
@@ -39,8 +41,8 @@ using namespace RTK;
 
 
 BalancePrintView::BalancePrintView(empresa *emp,QWidget *parent, const char *name ) : BalancePrintDlg(parent,name) {
-   fichero = NULL;
    empresaactual=emp;
+   conexionbase = emp->bdempresa();
  // Inicializamos la tabla de nivel
    combonivel->insertItem("2",0);
    combonivel->insertItem("3",1);
@@ -53,12 +55,14 @@ BalancePrintView::BalancePrintView(empresa *emp,QWidget *parent, const char *nam
 BalancePrintView::~BalancePrintView(){
 }
 
-int BalancePrintView::inicializa(postgresiface2 *conn ) {
-    conexionbase = conn;
-    return(0);
-}// end inicializa
-
-
+/** \brief inicializa la clase para que tenga parametros por defecto (no es obligatorio)
+  * codinicial, codfinal, finicial, ffinal, arbol)
+  * codinicial indica el código inicial para mostrar el balance
+  * cofinal indica el codigo de cuenta para no mostrar más balances
+  * finicial indica la fecha a partir de la cual comenzar los saldos
+  * ffinal indica la fecha para terminar de contar los saldos
+  * arbol indica si hay que representar el balance en forma de árbol o no.
+  */
 void BalancePrintView::inicializa1(QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1, bool arbol) {
    fechainicial1->setText(finicial1);
    fechafinal1->setText(ffinal1);
@@ -68,22 +72,13 @@ void BalancePrintView::inicializa1(QString codinicial1, QString codfinal1, QStri
 }// end if
 
 
-void BalancePrintView::inicializa2(char *fich) {
-   fichero = fich;
-}// end inicializa2
-
-
-
-
 /**************************************************************
  * Se ha pulsado sobre el boton aceptar del formulario
  **************************************************************/
 void BalancePrintView::accept() {
       if (radiotexto->isChecked())
          presentar("txt");
-      
       if(radiohtml->isChecked()) presentar("html");
-       
       if (radiopropietario->isChecked()) presentar("rtk");
 }// end accept
 

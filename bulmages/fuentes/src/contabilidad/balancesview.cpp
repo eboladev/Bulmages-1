@@ -31,8 +31,7 @@
 balancesview::balancesview(empresa *emp, QWidget *parent, const char *name ) : balancesdlg(parent,name) {
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
-   numdigitos = empresaactual->numdigitosempresa();
-   modo = 0;
+   m_modo = 0;
    inicializatabla();
 }// end balancesview
 
@@ -110,7 +109,7 @@ void balancesview::borrar() {
 void balancesview::dbtabla(int row, int colummn, int button,const QPoint &mouse) {
   fprintf(stderr,"Se ha hecho doble click sobre la tabla\n");
   // Dependiendo del modo hacemos una cosa u otra
-  if (modo == 0) {
+  if (m_modo == 0) {
      string idbalance = listado->text(row,COL_CODIGO).ascii();
      // Creamos el objeto mpatrimonialview, y lo lanzamos.
      compbalanceview *bal=new compbalanceview(empresaactual,this,0);
@@ -120,8 +119,8 @@ void balancesview::dbtabla(int row, int colummn, int button,const QPoint &mouse)
      // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
      inicializatabla();
    } else {
-      idbalance = listado->text(listado->currentRow(),COL_CODIGO).ascii();
-      nombalance = listado->text(listado->currentRow(),COL_NOMBRE).ascii();
+      m_idBalance = listado->text(listado->currentRow(),COL_CODIGO).ascii();
+      m_nomBalance = listado->text(listado->currentRow(),COL_NOMBRE).ascii();
       close();
    }// end if
    

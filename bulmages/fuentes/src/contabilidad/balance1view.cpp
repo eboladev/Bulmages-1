@@ -28,31 +28,18 @@
 #include "images/cingresos.xpm"
 #include "images/cgastos.xpm"
 
-#define CUENTA           ccuenta
-#define DENOMINACION     cdenominacion
-#define SALDO_ANT        csaldo_ant
-#define DEBE            cdebe
-#define HABER           chaber
-#define SALDO           csaldo
-#define DEBEEJ				cdebeej
-#define HABEREJ			chaberej
-#define SALDOEJ			csaldoej
-#define IDCUENTA        cidcuenta
-#define NIVEL           cnivel
-#define PADRE           cpadre
-
-int ccuenta;
-int cdenominacion;
-int csaldo_ant;
-int cdebe;
-int chaber;
-int csaldo;
-int cdebeej;
-int chaberej;
-int csaldoej;
-int cidcuenta;
-int cnivel;
-int cpadre;
+#define CUENTA           m_ccuenta
+#define DENOMINACION     m_cdenominacion
+#define SALDO_ANT        m_csaldo_ant
+#define DEBE            m_cdebe
+#define HABER           m_chaber
+#define SALDO           m_csaldo
+#define DEBEEJ		m_cdebeej
+#define HABEREJ		m_chaberej
+#define SALDOEJ		m_csaldoej
+#define IDCUENTA        m_cidcuenta
+#define NIVEL           m_cnivel
+#define PADRE           m_cpadre
 
 
 balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int  ) : balance1dlg(parent,name) {
@@ -64,24 +51,21 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
    cargacostes();
    
       
-   // Date cuenta que el tema de los defines funciona de chiripa, pq no es correcto dado
-   // Que en teoria el identificador lo devuelve la funcion addColumn.
    listado->clear();
-//   listado->setTreeStepSize(200);
-  //    if (conexionbase == NULL) {
-         CUENTA = listado->addColumn("código cuenta",150);
-         DENOMINACION = listado->addColumn("nombre cuenta",350);
-         SALDO_ANT = listado->addColumn("Saldo Anterior",90);
-         DEBE = listado->addColumn("Debe",90);
-         HABER = listado->addColumn("Haber",90);
-         SALDO = listado->addColumn("Saldo Periodo",90);
-         DEBEEJ = listado->addColumn("Debe Ejercicio",90);
-         HABEREJ =  listado->addColumn("Haber Ejercicio", 90);
-         SALDOEJ = listado->addColumn("Saldo Ejercicio",90);
-         NIVEL = listado->addColumn("nivel",0);
-         IDCUENTA = listado->addColumn("idcuenta",0);
-         PADRE = listado->addColumn("padre",0);
-  //    }// end if   
+
+	CUENTA = listado->addColumn("código cuenta",150);
+	DENOMINACION = listado->addColumn("nombre cuenta",350);
+	SALDO_ANT = listado->addColumn("Saldo Anterior",90);
+	DEBE = listado->addColumn("Debe",90);
+	HABER = listado->addColumn("Haber",90);
+	SALDO = listado->addColumn("Saldo Periodo",90);
+	DEBEEJ = listado->addColumn("Debe Ejercicio",90);
+	HABEREJ =  listado->addColumn("Haber Ejercicio", 90);
+	SALDOEJ = listado->addColumn("Saldo Ejercicio",90);
+	NIVEL = listado->addColumn("nivel",0);
+	IDCUENTA = listado->addColumn("idcuenta",0);
+	PADRE = listado->addColumn("padre",0);
+ 
       listado->setColumnAlignment(CUENTA,Qt::AlignLeft);
       listado->setColumnAlignment(DENOMINACION,Qt::AlignLeft);
       listado->setColumnAlignment(SALDO_ANT,Qt::AlignRight);
@@ -107,7 +91,6 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
       combonivel->insertItem("7",5);
    
    
-//   connect( listado, SIGNAL( contextMenuRequested( QListViewItem *, const QPoint & , int ) ), this, SLOT( contextmenu( QListViewItem *, const QPoint &, int) ) );
    connect( listado, SIGNAL( contextMenuRequested( QListViewItem *, const QPoint &, int) ), this, SLOT( contextmenu(QListViewItem *, const QPoint &, int) ) );
 
    // Iniciamos los componentes de la fecha para que al principio aparezcan
@@ -117,7 +100,6 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
    fechainicial1->setText(cadena);
    cadena.sprintf("%2.2d/%2.2d/%4.4d",31, 12, QDate::currentDate().year());
    fechafinal1->setText(cadena);
-//   cursorcta=NULL;
    fprintf(stderr,"FIN de balance1view: Constructor\n");
 
 }
@@ -433,7 +415,6 @@ void balance1view::return_codigoinicial() {
       int num = cursorcta->numregistros();
       if (num >0) {
          codigoinicial->setText(cursorcta->valor(1));
-//         codigofinal->setText(cursorcta->valor(1).c_str());
          codigofinal->selectAll();
          // Simulamos la pulsacion del boton recargar.
          accept();
@@ -550,12 +531,12 @@ void balance1view::contextmenu( QListViewItem * item, const QPoint & poin, int c
    col=0;
 }// end contextmenu
 
-
+/** \BRIEF SLOT que responde a la pulsación del botón de imprimir
+  * Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del balance y lo ejecuta en modo Modal.
+  */
 void balance1view::boton_imprimir() {
    BalancePrintView *balan = new BalancePrintView(empresaactual,0,0);
-	balan->inicializa(conexionbase);
-	fprintf(stderr,"balance1view esta inicializando  a BalancePrintView\n");
-	balan->inicializa1(codigoinicial->text(), codigofinal->text(), fechainicial1->text(), fechafinal1->text(), TRUE);
+   balan->inicializa1(codigoinicial->text(), codigofinal->text(), fechainicial1->text(), fechafinal1->text(), TRUE);
    balan->exec();
 }// end boton_imprimir.
 

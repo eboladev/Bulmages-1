@@ -37,12 +37,24 @@
 #include "intapunts3view.h"
 
 class empresa;
-/** *@author Tomeu Borrás Riera */
+/** 
+  * @author Tomeu Borrás Riera 
+  * \class aplinteligentesview aplinteligentesview.h
+  * \brief Formularió para la introducción de asientos mediante las plantillas.
+  * Clase que sirve para introducir asientos en el sistema mediante el uso de plantillas predefinidas, o asientos plantilla (\ref ainteligentesview).
+  
+ A partir de la plantilla se genera el formulario de forma dinámica. Y una vez introducidos los datos se hacen calculos en un bucle resolvedor de incognitas recursivas. Si no hay bucles infinitos al final se obtienen todos los campos necesarios para hacer la introducción de asientos y esta se efectua.
+ 
+ 	La clase tiene dos modos de actuar dependiendo de si estamos trabajando con un asiento abierto o con uno cerrado. En el primer caso el comportamiento es de todo lo introducido al asiento abierto.
+	En el segundo caso se genera un asiento nuevo por cada introducción de plantilla.
+  */
 
 class aplinteligentesview : public aplinteligentesdlg  {
    Q_OBJECT
 private:
+/// LA empresa del programa.
   empresa *empresaactual;
+/// La base de datos con la que trabaja la clase.
   postgresiface2 *conexionbase;
   QString variablescta[100][3];
   QString variablesfecha[100][3];

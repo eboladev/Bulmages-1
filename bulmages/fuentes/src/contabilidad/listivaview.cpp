@@ -62,7 +62,7 @@
 
 
 Mod300ps *modelo;
-listivaview::listivaview(empresa * emp, QString ejerActual, QWidget *parent, const char *name ) : listivadlg(parent,name) {
+listivaview::listivaview(empresa * emp, QString, QWidget *parent, const char *name ) : listivadlg(parent,name) {
    empresaactual = emp;
    conexionbase = emp->bdempresa();
   finicial->setText(normalizafecha("01/01").toString("dd/MM/yyyy"));
@@ -79,16 +79,13 @@ listivaview::~listivaview(){
  * Al hacer doble click sobre la tabla de ivas se accede al asiento *
  * que tiene dicha entrada                                          *
  ********************************************************************/
-void listivaview::doble_click_soportado(int a, int b, int c, const QPoint &punto) {
+void listivaview::doble_click_soportado(int a, int, int, const QPoint &punto) {
   int idasiento;
   idasiento = atoi(tablasoportado->text(a,S_COL_IDASIENTO).ascii());
-  //introapunts->muestraasiento(idasiento);
   introapunts->flashAsiento(idasiento);
   introapunts->show();
   introapunts->setFocus();
   done(1);
-  // Para quitar el warnings
-  b=c=0;
   punto.isNull();
 }// end doble_click_soportado
 

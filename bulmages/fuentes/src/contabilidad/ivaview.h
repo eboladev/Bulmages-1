@@ -29,6 +29,9 @@
   * @author Tomeu Borrás Riera 
   * \class ivaview ivaview.h
   * \brief Formulario de introducción y/o visión de una factura emitida o recibida.
+  * Clase que sirve para introducir toda la información relacionada con facturas emitidas o soportadas.
+  Con la finalidad de almacenar la información necesaria para cumplimentar determinados documentos fiscales y
+  también para almacenar toda la gestión de cobros y pagos.
   */
 
 class empresa;  
@@ -36,7 +39,7 @@ class empresa;
 class ivaview : public ivadlg  {
   Q_OBJECT
 private:
-   /// Cursor para las formas de pago.
+/// Cursor para las formas de pago.
    cursor2 *m_cursorFPago;
 public:
 /// Empresa con la que se trabaja

@@ -66,9 +66,7 @@
 ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *name, bool modal ) : ainteligentesdlg(parent,name, modal) {
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
-   numdigitos = empresaactual->numdigitosempresa();
-   oldrow=-2;
-   oldcol=-2;
+   m_oldRow=-2;
 
    tapunts->setNumCols(16);
    tapunts->setNumRows(100);
@@ -116,37 +114,38 @@ ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *
 
    
    // El cursor que recorre los asientos inteligentes debe iniciarse a NULL
-   cainteligentes = NULL;
+   m_cAInteligentes = NULL;
    
    // Hacemos la inicialización inicial.
-   oldrow=-1;
-   oldcol=-1;
+   m_oldRow=-1;
    cargacombo();
    // Llamamos a boton_fin para que la pantalla aparezca con un asiento inteligente inicial.
    boton_fin();
    
 }// end ainteligentesview
 
+/** \Brief Se encarga de cargar el combo box m_ainteligente
+  */
 void ainteligentesview::cargacombo() {
    m_ainteligente->clear();
-   if (cainteligentes != NULL) {
-      delete cainteligentes;
+   if (m_cAInteligentes != NULL) {
+      delete m_cAInteligentes;
    }// end if
    // Vamos a cargar el comboBox para que la cosa pinte mejor.
    QString SQLQuery = "SELECT * FROM ainteligente";
    conexionbase->begin();
-   cainteligentes = conexionbase->cargacursor(SQLQuery,"uncursormas");
+   m_cAInteligentes = conexionbase->cargacursor(SQLQuery,"uncursormas");
    conexionbase->commit();
-   while (!cainteligentes->eof()) {
-      m_ainteligente->insertItem(cainteligentes->valor("idainteligente")+cainteligentes->valor("descripcion"));
-      cainteligentes->siguienteregistro();
+   while (!m_cAInteligentes->eof()) {
+      m_ainteligente->insertItem(m_cAInteligentes->valor("idainteligente")+m_cAInteligentes->valor("descripcion"));
+      m_cAInteligentes->siguienteregistro();
    }// end while
 }// end if
 
 
 void ainteligentesview::comboActivated(const QString &) {
-   QString idasiento = cainteligentes->valor("idainteligente",m_ainteligente->currentItem());
-   idasientointeligente=idasiento.toInt();
+   QString idasiento = m_cAInteligentes->valor("idainteligente",m_ainteligente->currentItem());
+   m_idAsientoInteligente=idasiento.toInt();
    repinta();
 }// end comboActivated
 
@@ -159,11 +158,11 @@ void ainteligentesview::cargacanales() {
    cursor2 *cursorcanals = conexionbase->cargacursor(query1.c_str(),"canales");
    conexionbase->commit();
    combocanal->insertItem("--",-1);
-   ccanales[0]=0;
+   m_cCanales[0]=0;
    int j = 1;
    while (!cursorcanals->eof()) {
       combocanal->insertItem((cursorcanals->valor(2)),-1);
-      ccanales[j++] = atoi(cursorcanals->valor(0).ascii());
+      m_cCanales[j++] = atoi(cursorcanals->valor(0).ascii());
       cursorcanals->siguienteregistro();
    }// end while
    delete cursorcanals;
@@ -178,11 +177,11 @@ void ainteligentesview::cargacostes() {
    cursor2 *cursorcoste = conexionbase->cargacursor(query.c_str(),"costes");
    conexionbase->commit();
    combocoste->insertItem("--",0);
-   ccostes[0]=0;
+   m_cCostes[0]=0;
    int i=1;
    while (!cursorcoste->eof()) {
       combocoste->insertItem(cursorcoste->valor(2),-1);
-      ccostes[i++] = atoi(cursorcoste->valor(0).ascii());
+      m_cCostes[i++] = atoi(cursorcoste->valor(0).ascii());
       cursorcoste->siguienteregistro();
    }// end while
    delete cursorcoste;
@@ -190,8 +189,8 @@ void ainteligentesview::cargacostes() {
 
 
 ainteligentesview::~ainteligentesview(){
-   if (cainteligentes != NULL) {
-      delete cainteligentes;
+   if (m_cAInteligentes != NULL) {
+      delete m_cAInteligentes;
    }// end if
 }// end ~ainteligentesview
 
@@ -199,7 +198,7 @@ ainteligentesview::~ainteligentesview(){
 void ainteligentesview::return_asiento() {
   QString cadena;
   cadena = idainteligenteedit->text();
-  idasientointeligente = atoi(cadena.ascii());
+  m_idAsientoInteligente = atoi(cadena.ascii());
   repinta();
 }// end return_asiento
 
@@ -219,7 +218,7 @@ void ainteligentesview::boton_nuevo() {
   conexionbase->commit();
   if (!aux->eof()) {
     cargacombo();
-    idasientointeligente= atoi(aux->valor(0).ascii());
+    m_idAsientoInteligente= atoi(aux->valor(0).ascii());
     repinta();
   }// end if
   delete aux;
@@ -233,7 +232,7 @@ void ainteligentesview::boton_inicio() {
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
   conexionbase->commit();
   if (atoi(cur->valor(0).ascii()) != 0) {
-    idasientointeligente = atoi(cur->valor(0).ascii());
+    m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
   }// end if
 }// end boton_inicio
@@ -246,7 +245,7 @@ void ainteligentesview::boton_fin() {
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
   conexionbase->commit();
   if (atoi(cur->valor(0).ascii()) != 0) {
-    idasientointeligente = atoi(cur->valor(0).ascii());
+    m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
   }// end if
 }// end boton_inicio
@@ -254,12 +253,12 @@ void ainteligentesview::boton_fin() {
 
 void ainteligentesview::boton_siguiente() {
   QString query;
-  query.sprintf("SELECT MIN(idainteligente) AS id FROM ainteligente WHERE idainteligente > %d",idasientointeligente);
+  query.sprintf("SELECT MIN(idainteligente) AS id FROM ainteligente WHERE idainteligente > %d",m_idAsientoInteligente);
   conexionbase->begin();
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
   conexionbase->commit();
   if (atoi(cur->valor(0).ascii()) != 0) {
-    idasientointeligente = atoi(cur->valor(0).ascii());
+    m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
   }// end if
 }// end boton_siguiente
@@ -267,12 +266,12 @@ void ainteligentesview::boton_siguiente() {
 
 void ainteligentesview::boton_anterior() {
   QString query;
-  query.sprintf("SELECT MAX(idainteligente) AS id FROM ainteligente WHERE idainteligente < %d",idasientointeligente);
+  query.sprintf("SELECT MAX(idainteligente) AS id FROM ainteligente WHERE idainteligente < %d",m_idAsientoInteligente);
   conexionbase->begin();
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
   conexionbase->commit();
   if (atoi(cur->valor(0).ascii()) != 0) {
-    idasientointeligente = atoi(cur->valor(0).ascii());
+    m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
   }// end if
 }// end boton_anterior
@@ -285,11 +284,11 @@ void ainteligentesview::boton_anterior() {
 void ainteligentesview::boton_borrar() {
   fprintf(stderr,"Boton de Borrar\n");
   QString query;
-  query.sprintf("DELETE FROM binteligente WHERE idainteligente=%d",idasientointeligente);
+  query.sprintf("DELETE FROM binteligente WHERE idainteligente=%d",m_idAsientoInteligente);
   fprintf(stderr,"%s\n",query.ascii());
   conexionbase->begin();
   conexionbase->ejecuta(query);
-  query.sprintf("DELETE FROM ainteligente WHERE idainteligente=%d",idasientointeligente);
+  query.sprintf("DELETE FROM ainteligente WHERE idainteligente=%d",m_idAsientoInteligente);
   conexionbase->ejecuta(query);
   conexionbase->commit();
   fprintf(stderr,"%s\n",query.ascii());
@@ -352,15 +351,15 @@ void ainteligentesview::boton_save() {
   cursor2 *cur;
 
   conexionbase->begin();
-  sprintf(query,"SELECT * FROM ainteligente WHERE idainteligente=%d",idasientointeligente);
+  sprintf(query,"SELECT * FROM ainteligente WHERE idainteligente=%d",m_idAsientoInteligente);
   cursor2 *asiento = conexionbase->cargacursor(query,"micursor");
   conexionbase->commit();
   if (asiento->eof()) {
-      sprintf(query,"INSERT INTO ainteligente (idainteligente,descripcion, comenatiosasiento) VALUES   (%d,'%s', '%s')",idasientointeligente,descasiento->text().ascii(), comainteligente->text().ascii());
+      sprintf(query,"INSERT INTO ainteligente (idainteligente,descripcion, comenatiosasiento) VALUES   (%d,'%s', '%s')",m_idAsientoInteligente,descasiento->text().ascii(), comainteligente->text().ascii());
       fprintf(stderr,"%s\n",query);
       conexionbase->ejecuta(query);
   } else {
-    sprintf(query,"UPDATE ainteligente SET descripcion='%s', comentariosasiento='%s' WHERE idainteligente=%d",descasiento->text().ascii(),comainteligente->text().ascii(), idasientointeligente);
+    sprintf(query,"UPDATE ainteligente SET descripcion='%s', comentariosasiento='%s' WHERE idainteligente=%d",descasiento->text().ascii(),comainteligente->text().ascii(), m_idAsientoInteligente);
     fprintf(stderr,"%s\n",query);
     conexionbase->ejecuta(query);
   }// end if
@@ -368,7 +367,7 @@ void ainteligentesview::boton_save() {
   
 
   // Hacemos la grabacion de los apuntes (tapunts)
-  sprintf(query,"DELETE FROM binteligente WHERE idainteligente=%d", idasientointeligente);
+  sprintf(query,"DELETE FROM binteligente WHERE idainteligente=%d", m_idAsientoInteligente);
   conexionbase->ejecuta(query);
   conexionbase->commit();
   // Cambiamos el foco de tapunts para que coja el ultimo cambio realizado.
@@ -438,7 +437,7 @@ void ainteligentesview::boton_save() {
            else
              sprintf(iddiario,"NULL");
 
-           sprintf(query,"INSERT INTO binteligente (idainteligente, codcuenta, descripcion, fecha, conceptocontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario) VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",idasientointeligente, cod, desc, fecha,concontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario);
+           sprintf(query,"INSERT INTO binteligente (idainteligente, codcuenta, descripcion, fecha, conceptocontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario) VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",m_idAsientoInteligente, cod, desc, fecha,concontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario);
            conexionbase->begin();
            conexionbase->ejecuta(query);
            sprintf(query,"SELECT max(idbinteligente) AS id FROM binteligente");
@@ -459,29 +458,28 @@ void ainteligentesview::boton_save() {
  * Repintado del asiento inteligente                     *
  *********************************************************/
 void ainteligentesview::repinta() {
-  int idainteligente = idasientointeligente;
+  int idainteligente = m_idAsientoInteligente;
   char query[300];
   char cadena[300];
   cursor2 *cur1;
 
   
   // Hacemos el que combo Box apunte al registo que se pasa.
-  cainteligentes->primerregistro();
-  while (!cainteligentes->eof() && cainteligentes->valor("idainteligente").toInt() != idainteligente ) {
-    cainteligentes->siguienteregistro();
+  m_cAInteligentes->primerregistro();
+  while (!m_cAInteligentes->eof() && m_cAInteligentes->valor("idainteligente").toInt() != idainteligente ) {
+    m_cAInteligentes->siguienteregistro();
   }// end while
-  m_ainteligente->setCurrentItem(cainteligentes->regactual());
+  m_ainteligente->setCurrentItem(m_cAInteligentes->regactual());
   
   
   // Como se va a perder el centro actual hacemos que no se intente hacer un delete del mismo.
-  if (oldrow != -1) {
-    tapunts->clearCellWidget(oldrow,COL_NOMCOSTE);
-    tapunts->clearCellWidget(oldrow,COL_NOMCANAL);
+  if (m_oldRow != -1) {
+    tapunts->clearCellWidget(m_oldRow,COL_NOMCOSTE);
+    tapunts->clearCellWidget(m_oldRow,COL_NOMCANAL);
     delete combocoste;
     delete combocanal;
   }// end if
-  oldrow=-2;
-  oldcol=-2;
+  m_oldRow=-2;
   // Hacemos un vaciado completo de todos los datos
   tapunts->setNumRows(0);
   tapunts->setNumRows(100);
@@ -540,33 +538,32 @@ void ainteligentesview::repinta() {
     i++;
   }// end while
   delete cur;
-  oldrow=-1;
-  oldcol=-1;
+  m_oldRow=-1;
 }// end repinta
 
 
 
-void ainteligentesview::currentChanged(int row, int col) {
+void ainteligentesview::currentChanged(int row, int) {
   char cadena[50];
   int  coste, canal;
   int i;
   
-  if (oldrow != -2) {
-     if (oldrow != row ) {
-       if (oldrow != -1) {
+  if (m_oldRow != -2) {
+     if (m_oldRow != row ) {
+       if (m_oldRow != -1) {
          coste = combocoste->currentItem();
-         fprintf(stderr,"pos:%d ,idcentrocoste: %d \n",coste, ccostes[coste]);
-         sprintf(cadena,"%d",ccostes[coste]);
-         tapunts->setText(oldrow, COL_IDC_COSTE, cadena);
+         fprintf(stderr,"pos:%d ,idcentrocoste: %d \n",coste, m_cCostes[coste]);
+         sprintf(cadena,"%d",m_cCostes[coste]);
+         tapunts->setText(m_oldRow, COL_IDC_COSTE, cadena);
          
          canal = combocanal->currentItem();
-         sprintf(cadena,"%d",ccanales[canal]);
-         tapunts->setText(oldrow, COL_CANAL, cadena);
+         sprintf(cadena,"%d",m_cCanales[canal]);
+         tapunts->setText(m_oldRow, COL_CANAL, cadena);
                            
-         tapunts->clearCellWidget(oldrow,COL_NOMCOSTE);
-         tapunts->clearCellWidget(oldrow,COL_NOMCANAL);
-         tapunts->setText(oldrow,COL_NOMCOSTE,combocoste->currentText());
-         tapunts->setText(oldrow,COL_NOMCANAL,combocanal->currentText());
+         tapunts->clearCellWidget(m_oldRow,COL_NOMCOSTE);
+         tapunts->clearCellWidget(m_oldRow,COL_NOMCANAL);
+         tapunts->setText(m_oldRow,COL_NOMCOSTE,combocoste->currentText());
+         tapunts->setText(m_oldRow,COL_NOMCANAL,combocanal->currentText());
          delete combocoste;
          delete combocanal;
        }// end if
@@ -581,7 +578,7 @@ void ainteligentesview::currentChanged(int row, int col) {
        if (!tapunts->text(row,COL_IDC_COSTE).isNull()) {
          coste = atoi(tapunts->text(row,COL_IDC_COSTE).ascii());
          i=0;
-         while (ccostes[i] != coste && i < 100)
+         while (m_cCostes[i] != coste && i < 100)
            i++;
          if (i < 100)
           combocoste->setCurrentItem(i);
@@ -590,15 +587,14 @@ void ainteligentesview::currentChanged(int row, int col) {
        if (!tapunts->text(row,COL_CANAL).isNull()) {
           canal = atoi(tapunts->text(row,COL_CANAL).ascii());
           i=0;
-          while (ccanales[i] != canal && i < 100)
+          while (m_cCanales[i] != canal && i < 100)
             i++;
           if (i < 100)
             combocanal->setCurrentItem(i);
        }// end if
          
      }// end if
-     oldrow=row;
-     oldcol=col;
+     m_oldRow=row;
   }// end if
 }// end currentChanged
 
@@ -632,7 +628,7 @@ void ainteligentesview::boton_exportar() {
       mifile = fopen((char *) fn.ascii(),"wt");
       if (mifile != NULL) {
           QString SQlQuery;
-          SQlQuery.sprintf("SELECT * FROM ainteligente WHERE idainteligente=%d", idasientointeligente);
+          SQlQuery.sprintf("SELECT * FROM ainteligente WHERE idainteligente=%d", m_idAsientoInteligente);
          conexionbase->begin();
          cursor2 *cursp = conexionbase->cargacursor(SQlQuery,"asiento");
          conexionbase->commit();
@@ -643,7 +639,7 @@ void ainteligentesview::boton_exportar() {
             fprintf(mifile,"      <descripcion>%s</descripcion>\n", XMLProtect(cursp->valor("descripcion")).ascii());
             fprintf(mifile,"      <comentariosasiento>%s</comentariosasiento>\n", XMLProtect(cursp->valor("comentariosasiento")).ascii());
             QString SQlQuery1;
-            SQlQuery1.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d", idasientointeligente);
+            SQlQuery1.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d", m_idAsientoInteligente);
             conexionbase->begin();
             cursor2 *cursp1 = conexionbase->cargacursor(SQlQuery1,"a1siento");
             conexionbase->commit();

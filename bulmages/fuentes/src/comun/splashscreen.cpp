@@ -1,34 +1,27 @@
 #include "splashscreen.h"
 #include "configuracion.h"
-#include "qdialog.h"
-#include "qlayout.h"
-#include "qcolor.h"
+#include <qdialog.h>
+#include <qlayout.h>
+#include <qcolor.h>
+#include <qtimer.h>
 
 Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
-//  QPixmap image0( logofx );
-	QPixmap image0;
-	image0.load(confpr->valor(CONF_SPLASH).c_str());
+   QPixmap image0;
+   image0.load(confpr->valor(CONF_SPLASH).c_str());
    l = new QLabel( this );
    l->setPixmap( image0 );
-//	fprintf(stderr,"ancho: %d, alto: %d\n", image0.width(), image0.height());
    l->setGeometry ( 0, 0, image0.width(), image0.height() );
 
-// QVBoxLayout *vb = new QVBoxLayout(this);
-// this->addLayout( vb );
-
-
- // Add Product name/Main message
-// if(mmsg != 0) {
   QLabel *l1 = new QLabel( this );
   l1->setAlignment( AlignVCenter|AlignHCenter );
   l1->setFont( QFont( "Arial", 20, QFont::Bold ) );
   l1->setPaletteForegroundColor(QColor("#333388"));
-  l1->setText( tr("BulmaGés") );
+  l1->setText( tr("BulmaCont") );
   l1->setGeometry(10,10,150,25);
   l1->setBackgroundOrigin(QWidget::ParentOrigin);
   l1->setBackgroundPixmap(image0);
 
- 
+
   QLabel *l0 = new QLabel( this );
   l0->setPaletteForegroundColor(QColor("#FF0000"));
   l0->setAlignment( AlignVCenter );
@@ -51,7 +44,7 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   l2->setVScrollBarMode(QScrollView::AlwaysOff);
   l2->setAlignment( AlignBottom );
   l2->setFont( QFont( "helvetica", 11, QFont::Normal ) );
-  l2->setText( tr("BULMAGÉS") );
+  l2->setText( tr("BULMACONT") );
   l2->setGeometry(0,image0.height()-38,image0.width(),58);
   l2->setPaletteForegroundColor(QColor("#000066"));
   l2->setPaletteBackgroundColor(QColor("#DDDDDD"));
@@ -70,8 +63,6 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
 Splash::~Splash() {
  delete l;
  delete l2;
-// delete timer;
-// delete timer1;
 }
 
 bool Splash::event( QEvent *evt) {
@@ -103,11 +94,11 @@ void Splash::paint() {
                     tr("Permutando las tablas de partición del sistema operativo"),
 		    tr("Crackeando BulmaGés")};
   if (a) {
-   cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";
+    cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";
   }// end if
-   cad= cad+" "+mensajes[a];
+  cad= cad+" "+mensajes[a];
   if(a >10) a=0;
   a++;
   l2->setText( cad );
   l2->scrollBy(0,400);
-}
+}// end paint

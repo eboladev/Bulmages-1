@@ -518,10 +518,11 @@ void balanceview::nivelactivated (int nivel) {
    nivel =0;
 }// end nivelactivated1
 
-
+/** \BRIEF SLOT que responde a la pulsación del botón de imprimir
+  * Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del balance y lo ejecuta en modo Modal.
+  */
 void balanceview::boton_imprimir() {
    BalancePrintView * balan = new BalancePrintView(empresaactual,0,0);
-	balan->inicializa(conexionbase);
 	balan->inicializa1(codigoinicial->text(), codigofinal->text(), fechainicial1->text(), fechafinal1->text(), FALSE);
    balan->exec();
 }// end boton_imprimir.

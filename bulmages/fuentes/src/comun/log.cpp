@@ -22,7 +22,7 @@
 
 #include <qdatetime.h>
 
-
+/// Esta variable global es el objeto del sistema de debug del programa
 bitacora *ctllog;
 
 bitacora::bitacora() {

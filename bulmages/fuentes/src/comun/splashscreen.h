@@ -1,30 +1,25 @@
 #ifndef _SPLASH_H
 #define _SPLASH_H
 
-#include <qdialog.h>
-#include <qpixmap.h>
-#include <qstring.h>
-#include <qprogressbar.h>
 #include <qlabel.h>
-#include <stdio.h>
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qprogressbar.h>
-#include <qmessagebox.h>
-#include <qpixmap.h>
-#include <stdlib.h>
-#include <qtimer.h>
-
-
 #include <qtextbrowser.h>
+#include <qdialog.h>
+#include <qtextbrowser.h>
+
+
+/** 
+  * @author Tomeu Borrás Riera 
+  * \class splashscreen splashscreen.h
+  * \brief Pantalla de bienvenida
+  * Clase muestra la imagen del splasy y algunos mensajes chorras
+  */
 
 class Splash : public QDialog
 {
   Q_OBJECT
 private:
  QLabel *l;
-// QLabel *l2;
-QTextBrowser *l2;
+ QTextBrowser *l2;
 public:
    Splash();
    ~Splash();

@@ -19,39 +19,58 @@
 
 #include <qwidget.h>
 #include "ainteligentesdlg.h"
-
 #include "postgresiface2.h"
 
 
-/*** @author Tomeu Borrás Riera */
+/**
+ * \author Tomeu Borrás Riera
+ * \class ainteligentesview ainteligentesview.h
+ * \brief Edición de Asientos Inteligentes
+ * \todo Cambiar el array de centros de coste por un cursor
+ * \todo Cambiar el array de canales por un cursor
+ * 
+ * Clase que sirve para editar y crear asientos plantilla (inteligentes)
+ * Los asientos intelignetes son un mecanismo mediante el cual podemos hacer la introducción de asientos de una forma mucho más rápida que la convencional.
+ */
 class empresa;
 
 
 class ainteligentesview : public ainteligentesdlg  {
    Q_OBJECT
 private:
-   cursor2 *cainteligentes;
+/// La clase carga un cursor con todos los asientos inteligentes disponibles para hacer una navegación sobre éstos.
+   cursor2 *m_cAInteligentes;
+/// La empresa con la que esta trabajando la clase.   
    empresa *empresaactual;
-   int numdigitos;
-   
-private:
-  postgresiface2 *conexionbase;
-  int idasientointeligente;
-  int ccostes[100];
-  int ccanales[100];
-  QComboBox *combocoste, *combocanal;
-  int oldrow,oldcol;
+/// La base de datos con la que esta trabajando la clase.   
+   postgresiface2 *conexionbase;
+/// El identificador del asiento inteligente con el que estamos trabajando.   
+   int m_idAsientoInteligente;
+/// Listado de los centros de coste disponibles    
+   int m_cCostes[100];
+/// Listado de los canales disponibles   
+   int m_cCanales[100];
+/// Para la generación de los centros de coste y canales en el listado hacen falta estos dos campos   
+   QComboBox *combocoste;
+   QComboBox *combocanal;
+/// Indica cual es la columna anterior con la que se ha tratado   
+   int m_oldRow;
   
 public: 
   ainteligentesview(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);
   ~ainteligentesview();
+private:
+/// Función que inicializa todos los controles del formulario a los valores adecuados
   void repinta();
   void return_asiento();
+/// Función que se encarga de rellenar los canales disponibles y el array \ref m_cCanales  
   void cargacanales();
+/// Se encarga de rellenar los centros de coste y el array \ref m_cCostes
   void cargacostes();
+/// Rellena el combobox m_ainteligente
   void cargacombo();
   
-public slots:
+private slots:
   virtual void boton_nuevo();
   virtual void boton_save();
   virtual void boton_borrar();

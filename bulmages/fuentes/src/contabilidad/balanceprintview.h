@@ -19,41 +19,39 @@
 #define BALANCEPRINTVIEW_H
 
 #include <errno.h>
-
 #include "balanceprintdlg.h"
-
-
-//#include "listcuentasview1.h"
-//#include "libromayorprint.h"
-
-//#include "intapunts3view.h"
-//#include "diarioview1.h"
-//#include "extractoview1.h"
-//#include "qtable1.h"
-//#include "qlayout.h"
 #include "postgresiface2.h"
 
 
 class empresa;
 
-/***@author Tomeu Borrás Riera */
+/** 
+  * @author Tomeu Borrás Riera 
+  * \class BalancePrintView balanceprintview.h
+  * \brief Formulario introducción de datos para la impresión del balance de sumas y saldos.
+  * \todo Hay que cambiar el array de ccostes por un cursor
+  *
+  * Clase que permite introducir los datos necesarios para la generación del balance (Fechas y rangos) y que se encarga de generar el balance en los formatos de impresión indicados.
+  */
 
 class BalancePrintView : public BalancePrintDlg  {
    Q_OBJECT
-public:
-   char *fichero;
-   int ccostes[200];
+private:
+/// La base de datos con la que la clase está trabajando   
    postgresiface2 *conexionbase;   
+/// La empresa con la que la clase está trabajando   
    empresa *empresaactual;
+   
 public: 
-	BalancePrintView(empresa *emp, QWidget *parent=0, const char *name=0);
-	~BalancePrintView();
-   int inicializa(postgresiface2 *);
+   BalancePrintView(empresa *emp, QWidget *parent=0, const char *name=0);
+   ~BalancePrintView();
    void inicializa1(QString, QString, QString, QString, bool);
-   void inicializa2(char *);
+   
+private:   
    void accept();
    void presentar(char *tipus);
-public slots:
+   
+private slots:
    virtual void boton_codigoinicial();
    virtual void boton_codigofinal();
 };

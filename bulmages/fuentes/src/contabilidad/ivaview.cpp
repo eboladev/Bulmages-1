@@ -477,6 +477,7 @@ int ivaview::buscaborradoriva(int idborrador) {
 /** \brief busca la cuenta del servicio
   *
   * Si hay varios servicios entonces tb deben pasarse en forma de lista. Aunque sólo se necesite uno.
+  * \todo Los servicios no son todos los del grupo 6 y 7 son los 6x y 7x esto provoca que aparezca la ventana más veces de las deseadas.
   */
 int ivaview::buscaborradorservicio(int idborrador) {
     QString SQLQuery;
