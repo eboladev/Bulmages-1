@@ -37,6 +37,7 @@ public:
    cursor2 *m_cursorcombo2;
    QString  m_idprovider;
 	QString m_idArticle;
+	int m_saveError;
    
 public:
     linorderslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);

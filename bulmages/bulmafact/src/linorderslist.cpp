@@ -231,21 +231,20 @@ void linorderslist::almacenactivated(int a) {
 
 void linorderslist::accept() {
 	fprintf(stderr,"accept button activated\n");
-	QDate orderDate = normalizafecha(m_fechapedido->text());
+	
+	m_saveError = 0;
+	QString SQLQuery;
 	
 	if (idpedido != "0") {
-		QString SQLQuery = "UPDATE pedido SET numpedido='"+m_numpedido->text()+"'";
+		SQLQuery = "UPDATE pedido SET numpedido='"+m_numpedido->text()+"'";
       SQLQuery += " , anopedido="+ m_fechapedido->text().right(4);
       SQLQuery += " , fechapedido='"+m_fechapedido->text()+"'";
       SQLQuery += " , descpedido='"+m_descpedido->text()+"'";
       SQLQuery += " , iddivision="+m_cursorcombo->valor("iddivision",m_combodivision->currentItem());
       SQLQuery += " , idalmacen="+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem());
       SQLQuery += " WHERE idpedido ="+idpedido;
-      companyact->begin();
-      companyact->ejecuta(SQLQuery);
-      companyact->commit();
 	} else {
-		QString SQLQuery = "INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen)";
+		SQLQuery = "INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen)";
 		SQLQuery += " VALUES (";
 		SQLQuery += "'"+m_numpedido->text()+"'";
 		SQLQuery += " , "+m_fechapedido->text().right(4);
@@ -254,14 +253,20 @@ void linorderslist::accept() {
       SQLQuery += " , "+m_cursorcombo->valor("iddivision",m_combodivision->currentItem());
       SQLQuery += " , "+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem());
       SQLQuery += " ) ";
-      companyact->begin();
-      companyact->ejecuta(SQLQuery);
-      companyact->commit();
 	}
-
-	saveOrderLines();
+	companyact->begin();
+	if (companyact->ejecuta(SQLQuery)!=0){
+		companyact->rollback();
+	} else {
+		saveOrderLines();
+		if (m_saveError == 0) {
+			companyact->commit();
+			close();
+		} else {
+			companyact->rollback();
+		}
+	}
 	
-	close();
 } //end accept
 
 
@@ -311,7 +316,7 @@ void linorderslist::providerChanged(QString idProvider) {
 
 void linorderslist::saveOrderLines() {
 	int i = 0;
-	while (i < m_list->numRows()) {
+	while (i < m_list->numRows() && m_saveError==0) {
 		if (m_list->text(i,COL_REMOVE)=="S") {
 			if (m_list->text(i,COL_NUMLPEDIDO)!="") {
 				deleteOrderLine(i);
@@ -344,9 +349,7 @@ void linorderslist::updateOrderLine(int i) {
 		SQLQuery += " , idalb_pro="+m_list->text(i,COL_IDALB_PRO);
 	}
 	SQLQuery += " WHERE idpedido ="+idpedido+" AND numlpedido="+m_list->text(i,COL_NUMLPEDIDO);
-	companyact->begin();
-	companyact->ejecuta(SQLQuery);
-	companyact->commit();
+	m_saveError = companyact->ejecuta(SQLQuery);
 } //end updateOrderLine
 
 
@@ -368,17 +371,13 @@ void linorderslist::insertOrderLine(int i) {
 		SQLQuery += " , "+m_list->text(i,COL_IDALB_PRO);
 	}
 	SQLQuery += " ) ";
-	companyact->begin();
-	companyact->ejecuta(SQLQuery);
-	companyact->commit();
+	m_saveError = companyact->ejecuta(SQLQuery);
 } //end insertOrderLine
 
 
 void linorderslist::deleteOrderLine(int line) {
 	QString SQLQuery = "DELETE FROM lpedido WHERE numlpedido ="+m_list->text(line,COL_NUMLPEDIDO);
-	companyact->begin();
-	companyact->ejecuta(SQLQuery);
-	companyact->commit();
+	m_saveError = companyact->ejecuta(SQLQuery);
 } //end deleteOrderLine
 
 
