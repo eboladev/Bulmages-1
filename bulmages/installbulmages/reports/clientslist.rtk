@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding = "iso-8859-1"?>
+<!DOCTYPE REPORT  
+    [
+    <!ELEMENT REPORT ( ( STYLE* | INPUT* | OUTPUT* | SECTION* )+ )>
+<!-- <<<<<REPORT -->
+	<!ATTLIST REPORT
+		units	CDATA	#IMPLIED
+		name	ID	#REQUIRED
+		title	CDATA	#IMPLIED
+		value	CDATA	#IMPLIED
+		posx	CDATA	#IMPLIED
+		posy	CDATA	#IMPLIED
+		sizex	CDATA	#IMPLIED
+		sizey	CDATA	#IMPLIED
+		tag	CDATA	#IMPLIED
+	>
+<!-- >>>>>REPORT -->
+    <!ELEMENT INPUT  (INPUTFIELD+)>
+<!-- <<<<<INPUT -->
+	<!ATTLIST INPUT
+		name	ID	#REQUIRED
+		driver	CDATA	""
+		from	CDATA	""
+	>
+<!-- >>>>>INPUT -->
+    <!ELEMENT STYLE (#PCDATA)>
+<!-- <<<<<STYLE -->
+	<!ATTLIST STYLE
+		name	ID	#REQUIRED
+		fontfamily	CDATA	""
+		fontsize	CDATA	"12"
+		fontweight	CDATA	"0"
+		fontitalic	CDATA	#IMPLIED
+		mask	CDATA	""
+		format	CDATA	""
+		halignment	CDATA	#IMPLIED
+		valignment	CDATA	#IMPLIED
+		maxlines	CDATA	"0"
+		minfontsize	CDATA	"8"
+		adjustment	CDATA	#IMPLIED
+		textcolor	CDATA	#IMPLIED
+		backcolor	CDATA	#IMPLIED
+	>
+<!-- >>>>>STYLE -->
+    <!ELEMENT OUTPUT  (#PCDATA)>
+    <!ELEMENT SECTION  (OBJECT*)>
+<!-- <<<<<SECTION -->
+	<!ATTLIST SECTION
+		type	CDATA	#IMPLIED
+		groupname	CDATA	""
+		pagebefore	CDATA	#IMPLIED
+		pageafter	CDATA	#IMPLIED
+		resetnpage	CDATA	#IMPLIED
+		supifblank	CDATA	#IMPLIED
+		repeatheader	CDATA	#IMPLIED
+	>
+<!-- >>>>>SECTION -->
+    <!ELEMENT OBJECT  (#PCDATA)>
+<!-- <<<<<OBJECT -->
+	<!ATTLIST OBJECT
+		name	ID	#REQUIRED
+		value	CDATA	#IMPLIED
+		posx	CDATA	#IMPLIED
+		posy	CDATA	#IMPLIED
+		sizex	CDATA	#IMPLIED
+		sizey	CDATA	#IMPLIED
+		marginleft	CDATA	#IMPLIED
+		marginright	CDATA	#IMPLIED
+		margintop	CDATA	#IMPLIED
+		marginbottom	CDATA	#IMPLIED
+		unitposx	CDATA	#IMPLIED
+		unitposy	CDATA	#IMPLIED
+		unitsizex	CDATA	#IMPLIED
+		unitsizey	CDATA	#IMPLIED
+		unitmarginleft	CDATA	#IMPLIED
+		unitmarginright	CDATA	#IMPLIED
+		unitmargintop	CDATA	#IMPLIED
+		unitmarginbottom	CDATA	#IMPLIED
+		style	CDATA	""
+		borderstyle	CDATA	""
+		httplink	CDATA	""
+		visible	CDATA	#IMPLIED
+		supressed	CDATA	#IMPLIED
+		image	CDATA	#IMPLIED
+		fontfamily	CDATA	""
+		fontsize	CDATA	"12"
+		fontweight	CDATA	"0"
+		fontitalic	CDATA	#IMPLIED
+		mask	CDATA	""
+		format	CDATA	""
+		halignment	CDATA	#IMPLIED
+		valignment	CDATA	#IMPLIED
+		maxlines	CDATA	"0"
+		minfontsize	CDATA	"8"
+		adjustment	CDATA	#IMPLIED
+		textcolor	CDATA	#IMPLIED
+		backcolor	CDATA	#IMPLIED
+	>
+<!-- >>>>>OBJECT -->
+
+    <!ELEMENT INPUTFIELD  (#PCDATA)>
+<!-- <<<<<INPUTFIELD -->
+	<!ATTLIST INPUTFIELD
+		name	ID	#REQUIRED
+		dataname	CDATA	""
+	>
+<!-- >>>>>INPUTFIELD -->
+
+    <!ENTITY rtkstyles SYSTEM "bulma-styles.xml">
+    ]
+>
+
+
+<REPORT name="Cuentas.rtk" title="Listado de Cuentas" tag="Diario" units="chars" 
+  sizex="80" sizey="60" fontsize="6" valingment="middle" fontitalic="true">
+  
+&rtkstyles;
+
+<IMAGE name="encabezado" url="/home/tborras/bulmages/installbulmages/reports/logo.jpg" mime-type="image/jpg"></IMAGE>
+
+
+  <!--INPUT name="default" driver="sqlbulmages" 
+  sqldriver="QPSQL7" database="bulmages" user="tborras"-->
+  <INPUT name="default" driver="sql" 
+  sqldriver="QPSQL7" database="bulmages" user="tborras" from="cliente" orderby="nomcliente">
+    <INPUTFIELD name="nomcliente" source="cliente.nomcliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="nomaltcliente" source="cliente.nomaltcliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="cifcliente" source="cliente.cifcliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="dircliente" source="cliente.dircliente" type="text"></INPUTFIELD>
+  </INPUT>
+
+<!-- Encabezado de página -->
+  <SECTION name="pageheader" type="page-header" sizey="9" backgroundimage="encabezado" PrintInFirstPage="true">
+
+    <OBJECT name="header-numasiento" fontsize="8"
+      posx="0" posy="8" sizex="0" sizey="1" adjustment="none" 
+      value="Cuenta" 
+      ></OBJECT>
+    <OBJECT name="header-apunte-descripcion"  fontsize="8"
+      posx="31" posy="8" sizex="10" sizey="1"
+      value="Concepto" 
+      ></OBJECT>
+    <OBJECT name="header-debe" fontsize="8"
+      posx="44" posy="8" sizex="12" sizey="1" 
+      value="Debe"    
+      halignment="right"
+      ></OBJECT>
+    <OBJECT name="header-haber" fontsize="8"
+      posx="56" posy="8" sizex="12" sizey="1" 
+      value="Haber"
+      halignment="right"
+      ></OBJECT>
+  </SECTION>
+
+<!-- Detalles -->
+  <SECTION name="details" type="details" style="normal-text"
+    sizey="1" 
+    fontsize="10" marginleft="2"
+    printinfirstpage="TRUE">
+    <OBJECT name="cuenta-codigo"
+      posx="1"
+      sizex="10"
+      value="input.nomcliente" style="text" textcolor="blue"
+      halignment="left"
+      ></OBJECT>
+    <OBJECT name="cuenta-descripcion"
+      posx="12" sizex="40"
+      value="input.nomaltcliente" textcolor="blue"
+      ></OBJECT>
+    <OBJECT name="cuenta-debe"
+      posx="55" sizex="8" sizey="1" 
+      value="input.cifcliente" textcolor="black"
+      style="text"
+      ></OBJECT>
+    <OBJECT name="acuenta-haber"
+      posx="65" sizex="8" 
+      value="input.dircliente"  textcolor="black"
+      style="currency"
+      ></OBJECT>        
+  </SECTION>
+  
+    
+</REPORT>
