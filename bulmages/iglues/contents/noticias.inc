@@ -18,7 +18,9 @@ $body = '
 Más información en:
 <ul>
 <li><a href="http://proinnova.hispalinux.es/">Proinnova</a> [ES]
-</li><li><a href="http://demo.ffii.org/">Acciones en la Red</a>
+</li>
+<li><a href="http://bulma.net/body.phtml?nIdNoticia=2132">Bulma.net</a> [ES]</li>
+<li><a href="http://demo.ffii.org/">Acciones en la Red</a>
 </li><li><a href="http://swpat.ffii.org/letter/cons0406/index.es.html">Petici&oacute;n Urgente</a> [ES]
 
 </li><li><a href="http://kwiki.ffii.org/ConsRevers04En">Revirtamos la Decisi&oacute;n del Consejo del 18 de mayo</a>
@@ -27,7 +29,6 @@ Más información en:
 <li><a href="http://swpat.ffii.org/">FFII: Patentes de Programas en Europa</a>
 <li><a href="http://www.nosoftwarepatents.com/es/m/intro/index.html">NoSoftwarePatents.com</a> [ES]</li>
 <li><a href="http://barrapunto.com/article.pl?sid=04/12/19/0825236">Barrapunto.com</a> [ES]</li>
-<li><a href="http://bulma.net/body.phtml?nIdNoticia=2132">Bulma.net</a> [ES]</li>
 </ul>
 </td>
 </tr>
