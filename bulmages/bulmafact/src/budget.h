@@ -36,7 +36,7 @@ private:
    QString m_idclient;
 	
 public:
-    Budget(company *emp, QWidget *parent = 0, const char *name = 0);
+    Budget(company *, QWidget *, const char *);
     ~Budget();
     void chargeBudget(QString);
 	 void chargeBudgetLines(QString);
@@ -51,11 +51,11 @@ private:
 	int insertBudgetLine(int);
 	int updateBudgetLine(int);
 	int deleteBudgetLine(int);
-	void nextCell(QObject *obj);
-	void duplicateCell(QObject *obj);
+	void nextCell(QObject *);
+	void duplicateCell(QObject *);
 	
-protected:
-	bool eventFilter( QObject *obj, QEvent *ev );
+//protected:
+//	bool eventFilter( QObject *, QEvent *);
 	 
 public slots:
    virtual void searchClient();

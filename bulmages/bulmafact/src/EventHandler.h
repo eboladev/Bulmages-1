@@ -5,12 +5,10 @@
 
 
 class EventHandler : public QObject {
-
-	Q_OBJECT
-
+Q_OBJECT
 public:
-	EventHandler(QWidget *);
-	~EventHandler();
+	EventHandler(QWidget *){};
+	~EventHandler(){};
 	bool eventFilter( QObject *obj, QEvent *ev );
 	
 
