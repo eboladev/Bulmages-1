@@ -19,6 +19,8 @@
 #ifndef EXTRACTOPRINTVIEW_H
 #define EXTRACTOPRINTVIEW_H
 
+#include <errno.h>
+
 #include <qwidget.h>
 #include <extractoprintdlg.h>
 #include <qlineedit.h>

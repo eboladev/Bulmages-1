@@ -17,6 +17,8 @@
 #ifndef BULMAGES01_H
 #define BULMAGES01_H
 
+#include <errno.h>
+
 // include files for QT
 #include <qvbox.h>
 #include <qapp.h>

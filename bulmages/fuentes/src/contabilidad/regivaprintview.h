@@ -19,6 +19,8 @@
 #ifndef REGIVAPRINTVIEW_H
 #define REGIVAPRINTVIEW_H
 
+#include <errno.h>
+
 #include <qwidget.h>
 #include <regivaprintdlg.h>
 #include <qlineedit.h>

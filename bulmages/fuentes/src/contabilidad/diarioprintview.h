@@ -18,6 +18,8 @@
 #ifndef DIARIOPRINTVIEW_H
 #define DIARIOPRINTVIEW_H
 
+#include <errno.h>
+
 #include <qwidget.h>
 #include "diarioprintdlg.h"
 #include "postgresiface2.h"

@@ -18,6 +18,8 @@
 #ifndef BALANCEPRINTVIEW_H
 #define BALANCEPRINTVIEW_H
 
+#include <errno.h>
+
 #include "balanceprintdlg.h"
 
 
