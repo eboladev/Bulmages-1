@@ -48,7 +48,7 @@ public:
   ~cuentaview();
   int inicializa();
   int nuevacuenta(QString, int);
-  QString cuentanueva(QString);
+  void cuentanueva(QString);
   int cargacuenta(int);
   void cambiapadre( const QString &);
 public slots:

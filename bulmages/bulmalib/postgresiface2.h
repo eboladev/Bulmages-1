@@ -108,7 +108,8 @@ public:
   
   static QString sanearCadena(QString cadena);
   void terminar();
-QString propiedadempresa(QString );
+  QString propiedadempresa(QString );
+  QString searchParent(QString);
 private:
   int formatofecha();
 };

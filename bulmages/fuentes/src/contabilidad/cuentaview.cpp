@@ -26,8 +26,76 @@ cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int fl):
 
 /** Saca el formulario, crea una cuenta y devuelve su identificador
   */
-QString cuentaview::cuentanueva(QString cod) {
-
+void cuentaview::cuentanueva(QString cod) {
+	codigo->setText(cod);
+	/// VAmos a buscar el posible padre de una cuenta y lo pondremos como toca.
+	QString cpadre = conexionbase->searchParent(cod);
+	codigopadre->setText(cpadre);
+	/// También buscaremos el grupo y lo pondremos como toca
+	QString query = "SELECT * FROM cuenta WHERE codigo = '"+cpadre+"'";
+	conexionbase->begin();
+	cursor2 *cur = conexionbase->cargacursor(query,"elquery");
+	conexionbase->commit();
+	/// Y también buscaremos los tipos y los usaremos.
+	if (!cur->eof()) {
+	
+		descripcion->setText(cur->valor("descripcion"));
+		debe->setText("0");
+		haber->setText("0");
+		if (cur->valor("bloqueada") != "f") {
+			bloqueada->setChecked(true);
+		} else {
+			bloqueada->setChecked(false);
+		}// end if
+		if (cur->valor("imputacion")!= "f") {
+			imputacion->setChecked(true);
+		} else {
+			imputacion->setChecked(false);
+		}// end if
+		if (cur->valor("nodebe") != "f") {
+			nodebe->setChecked(true);
+		} else {
+			nodebe->setChecked(false);
+		}// end if
+		if (cur->valor("nohaber") != "f") {
+			nohaber->setChecked(true);
+		} else {
+			nohaber->setChecked(false);
+		}// end if
+		if (cur->valor("regularizacion") != "f") {
+			regularizacion->setChecked(true);
+		} else {
+			regularizacion->setChecked(false);
+		}// end if
+		// Vamos a hacer la carga del tipocuenta
+		int tipocuenta = atoi(cur->valor("tipocuenta").ascii());
+		switch(tipocuenta) {
+		case 0:
+		cuentasintipo->setChecked(TRUE);
+			break;
+		case 1:
+		cuentaactivo->setChecked(TRUE);
+		break;
+		case 2:
+		cuentapasivo->setChecked(TRUE);
+		break;
+		case 3:
+		cuentaneto->setChecked(TRUE);
+		break;
+		case 4:
+		cuentaingreso->setChecked(TRUE);
+		break;
+		case 5:
+		cuentagasto->setChecked(TRUE);
+		break;
+		}// end switch
+		// Vamos a hacer la carga del grupo
+		int idgrupo = atoi(cur->valor(6).ascii());
+		int i=0;
+		while (idgrupos[i]!=idgrupo && i<100) i++;
+		combogrupos->setCurrentItem(i);
+		delete cur;	
+	}// end if
 }// end cuentanueva
 
 

@@ -276,6 +276,34 @@ int postgresiface2::ejecuta(QString Query) {
 }// end ejecuta
 
 
+
+/**
+  * This function search in the database the account parent of the account selected
+  * if there are not parent returns NULL
+  * else returns the code of the parent account
+  */
+QString postgresiface2::searchParent(QString cod) {
+	QString padre="NULL"; //almacena el padre de la cuenta.
+	QString query;
+	int i = 2;
+	int fin=0;
+	while (!fin) {
+		query = "SELECT * FROM cuenta WHERE codigo = '"+cod.left(i)+"'";
+		begin();
+		cursor2 *cur = cargacursor(query,"unquery");
+		commit();
+		if (!cur->eof()) {
+			padre = cur->valor("codigo");
+		} else {
+			fin=1;
+		}// end if
+		delete cur;
+		i++;
+	}// end while
+	return padre;
+}// end searchParent
+
+
 int postgresiface2::nuevoborrador(int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal) {
     QString query="";
     QString textcuenta;

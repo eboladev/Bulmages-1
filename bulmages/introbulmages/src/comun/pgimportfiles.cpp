@@ -396,7 +396,6 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
   * if there are not parent returns NULL
   */
 QString pgimportfiles::searchParent(QString cod) {
-//	int lencod = cod.length();
 	QString padre="NULL"; //almacena el padre de la cuenta.
 	QString query;
 	int i = 2;

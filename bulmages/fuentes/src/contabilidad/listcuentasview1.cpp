@@ -403,13 +403,11 @@ void listcuentasview1::borrarcuenta()  {
 
 
 void listcuentasview1::dbtabla(int row, int colummn, int button,const QPoint &mouse) {
-    fprintf(stderr,"Se ha hecho doble click sobre la tabla\n");
     string idcuenta = tablacuentas->text(row,2).ascii();
     QListViewItem *it = ListView1->findItem(idcuenta.c_str(), cidcuenta, Qt::ExactMatch);
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);
     listdblpulsada(it);
-    
     //PAra quitar el warning
     colummn=button=0;
     mouse.isNull();

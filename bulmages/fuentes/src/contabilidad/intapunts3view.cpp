@@ -1361,10 +1361,14 @@ void intapunts3view::cambiadasubcuenta(int row) {
 	    int valor;
             valor = QMessageBox::warning( 0, tr("No existe cuenta"), tr("No existe una cuenta con el codigo proporcionado, desea crear una?."), QMessageBox::Yes, QMessageBox::No);
 	    if (valor == QMessageBox::Yes) {
-	    	cuentaview *cta = new cuentaview(empresaactual,this,0,0);
-		cta->cuentanueva(subcuenta);
+	    	cuentaview *cta = new cuentaview(empresaactual,0,0,true);
+		/// Preparamos la clase para una inserción de una nueva cuenta.
+		cta->cuentanueva(cad);
+		fprintf(stderr,"Vamos a ejecutar la ventana de nueva cuenta\n");
 		cta->exec();
 		delete cta;
+		/// PAra no hacer rollos rellamamos a la función ya que se supone que ya se ha hecho la inserción.
+		cambiadasubcuenta(row);
 	    }// end if
         }// end if
         delete cursorcta;
