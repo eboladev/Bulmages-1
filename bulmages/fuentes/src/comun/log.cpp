@@ -19,6 +19,8 @@
 #include "log.h"
 #include "configuracion.h"
 
+bitacora *ctllog;
+
 bitacora::bitacora() {
     // abre archivo Log.
     archivolog = new ofstream(confpr->valor(CONF_ARCHIVO_LOG).c_str(),ios::out |

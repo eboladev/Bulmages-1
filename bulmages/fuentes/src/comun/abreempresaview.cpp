@@ -72,6 +72,8 @@ void abreempresaview::accept() {
        DBConn.commit();
        confpr->setValor(PRIVILEGIOS_USUARIO, recordSet->valor(0,0));
        fprintf(stderr, "Entrando Usuario: %s, con Permisos tipo: %s\n",nombre.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str());
+       
+       ctllog->add("Entrando Usuario: "+nombre);
        delete this;
    }//end if
    if ((intentos+=1)>3) padre->close();

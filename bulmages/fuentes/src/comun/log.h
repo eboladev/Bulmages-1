@@ -24,6 +24,8 @@
 #include <fstream>
 using namespace std;
 
+
+
 /**
 We want to log everything
 @author Fco. Javier MC, Jean René Mérou, Víctor G. Marimón
@@ -40,5 +42,7 @@ public:
 
     ~bitacora();
 };
+
+extern bitacora *ctllog;
 
 #endif

@@ -32,7 +32,7 @@
 
 QApplication * theApp;
 QTranslator * traductor;
-bitacora *ctllog;
+
 
 int main(int argc, char *argv[]) {
 

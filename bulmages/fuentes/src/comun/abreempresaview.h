@@ -32,6 +32,8 @@
 #include "postgresiface2.h"
 #include "configuracion.h"
 #include "bselector.h"
+#include "log.h"
+
 
 class BSelector;
 /** @author Tomeu Borrás Riera */
