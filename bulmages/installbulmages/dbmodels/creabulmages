@@ -23,7 +23,7 @@ echo -e "----------------------------"
 
 
 su - postgres -c "dropdb  $1" 2>> error.txt > /dev/null
-su - postgres -c "createdb $1" 2>> errores.txt > /dev/null
+su - postgres -c "createdb -E SQL_ASCII $1" 2>> errores.txt > /dev/null
 
 echo -e "Comprobamos la existencia de PLPGSQL"
 ENC="0"

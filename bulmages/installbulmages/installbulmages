@@ -19,6 +19,12 @@ fi
 rm errores.txt
 touch errores.txt
 
+#Comprobamos que estamos en el directorio adecuado
+if [ ! -e ./installbulmages ]; then
+ echo -e "Directorio incorrecto"
+ exit 1
+fi
+
 
 # Distinguimos entre una instalación y una actualización
 echo -e "\033[32mComprobando versiones anteriores\033[0m\n"

@@ -1,3 +1,5 @@
+
+
 -- La tabla de configuración.
 -- En esta tabla se guardan parametros que el programa va a utilizar. 
 -- Como por ejemplo el numero de dígitos por defecto de las cuentas o el asiento inteligente que se enlaza con 
