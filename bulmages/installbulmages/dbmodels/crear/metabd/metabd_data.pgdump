@@ -1,6 +1,5 @@
 
-INSERT INTO usuario ( nombre, apellido1, apellido2, login, password) VALUES ('Bulmages', 'Bulmages', 'Bulmages', 'bulmages', 'bulmages');
-INSERT INTO usuario ( nombre, apellido1, apellido2, login, password) VALUES ('Tomeu', 'Borras', 'Riera', 'tborras', 'tborras');
+INSERT INTO usuario ( nombre, apellido1, apellido2, login, password) VALUES ('Bulmages', 'Bulmages', 'Bulmages', 'bulmages', 'bulmages');INSERT INTO usuario ( nombre, apellido1, apellido2, login, password) VALUES ('Tomeu', 'Borras', 'Riera', 'tborras', 'tborras');
 
 
 --INSERT INTO empresa (nombre, ano, nombredb, password, ejant) VALUES ('BulmaGes', 2004, 'bulmages', 'bulmages', 2003);

@@ -24,10 +24,10 @@ SET search_path = public, pg_catalog;
 
 CREATE TABLE usuario (
     idusuario serial PRIMARY KEY,
-    nombre character varying(25),
+    nombre character varying(25) UNIQUE,
     apellido1 character varying(35),
     apellido2 character varying(35),
-    login character varying(35),
+    login character varying(35) UNIQUE,
     "password" character varying(35)
 );
 
@@ -42,7 +42,7 @@ CREATE TABLE empresa (
     idempresa serial PRIMARY KEY,
     nombre character varying(50),
     ano character varying(10),
-    nombredb character varying(15),
+    nombredb character varying(15) UNIQUE,
     "password" character varying(15),
     ejant character varying(15)
 );

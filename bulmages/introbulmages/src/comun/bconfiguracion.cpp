@@ -552,9 +552,11 @@ void BConfiguracion::newUser() {
 //Borramos un usuario
 void BConfiguracion::deleteUser() {
 #ifndef WIN32
-coleccion_usuarios.erase(listView1->currentItem()->text(0));  
-usuarios_borrados.insert(listView1->currentItem()->text(1));
-listView1->takeItem(listView1->currentItem());
+	QListViewItem *it = listView1->currentItem();
+	coleccion_usuarios.erase(it->text(0));  
+	usuarios_borrados.insert(it->text(1));
+	listView1->takeItem(it);
+	delete it;
 #endif
 }
 
