@@ -1,3 +1,7 @@
+INSERT INTO almacen (nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES ('La Botica del Abuelo', 'Camí Vell de Bunyola', 'Palma de Mallorca', '07009', '971434343', '971434344');
+INSERT INTO almacen (nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES ('Colmado de Mateo', 'Joan Maura', 'Palma de Mallorca', '07005', '971467911', '971776776');
+INSERT INTO almacen (nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES ('Almacén Norte', 'Polígono homogeneo', 'Alcudia', '07012', '971167911', '971111776');
+
 
 INSERT INTO proveedor (nomproveedor, cifproveedor, cpproveedor) VALUES ('Tomeu', '45678098D', '07008');
 INSERT INTO proveedor (nomproveedor, cifproveedor, cpproveedor) VALUES ('Cristina', '45679998D', '07008');
@@ -30,10 +34,10 @@ INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idline
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('3', 'Yogurt', 'Pack 4 unidades yogures sabores', 1, 1);
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('4', 'Nestcafé', 'Bote 400 gramos café soluble natural', 1, 1);
 
-INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor) VALUES(1, 2004, '25/10/2004', 'Pedido semanal de carne y pescado', 1);
-INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor) VALUES(2, 2004, '30/10/2004', 'Pedido especial noche halloween', 2);
-INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor) VALUES(3, 2004, '02/11/2004', 'Frutos secos de temporada', 3);
-INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor) VALUES(4, 2004, '02/10/2004', 'Pedido semanal de lencería', 2);
+INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor, idalmacen) VALUES('P-1', 2004, '25/10/2004', 'Pedido semanal de carne y pescado', 1, 1);
+INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor, idalmacen) VALUES('P-2', 2004, '30/10/2004', 'Pedido especial noche halloween', 2, 3);
+INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor, idalmacen) VALUES('P-3', 2004, '02/11/2004', 'Frutos secos de temporada', 3, 2);
+INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor, idalmacen) VALUES('P-4', 2004, '02/10/2004', 'Pedido semanal de lencería', 2, 1);
 
 INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (10, ' ', 10, 1.2, '30/10/2004', 1, 1);
 INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (20, ' ', 100, 2.23, '02/11/2004', 1, 2);
@@ -48,7 +52,7 @@ INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedi
 INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (20, ' ', 10, 8.59, '10/11/2004', 4, 2);
 INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (30, ' ', 6, 6.15, '25/11/2004', 4, 3);
 
-INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro) VALUES(2004, 1, 123, '01/12/2004', '30/11/2004', 'Albarán nº 123');
-INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro) VALUES(2004, 2, 2323, '15/11/2004', '10/11/2004', 'Albarán nº 2323');
-INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro) VALUES(2004, 3, 34, '23/11/2004', '23/11/2004', 'Albarán nº 34');
+INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(2004, 1, '123', '01/12/2004', '30/11/2004', 'Albarán nº 123', 2);
+INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(2004, 2, '2323', '15/11/2004', '10/11/2004', 'Albarán nº 2323', 1);
+INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(2004, 3, '34', '23/11/2004', '23/11/2004', 'Albarán nº 34', 3);
 

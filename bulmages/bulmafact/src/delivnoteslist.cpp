@@ -36,6 +36,7 @@ CREATE TABLE alb_pro (
    comentalb_pro character varying(2000),
    
    idfra_pro integer REFERENCES fra_pro(idfra_pro)
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
 */
 
@@ -52,6 +53,7 @@ CREATE TABLE alb_pro (
 #define COL_FRECEPALB_PRO 5
 #define COL_COMENTALB_PRO 6
 #define COL_IDFRA_PRO 7
+#define COL_IDALMACEN 8
 
 delivnoteslist::delivnoteslist(company *comp, QWidget *parent, const char *name, int flag)
  : delivnoteslistbase(parent, name, flag) {
@@ -67,7 +69,7 @@ void delivnoteslist::inicializa() {
    m_list->setSorting( TRUE );
    m_list->setSelectionMode( QTable::SingleRow );
    m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(8);
+   m_list->setNumCols(9);
    m_list->horizontalHeader()->setLabel( COL_IDALB_PRO, tr( "Identificador" ) );
    m_list->horizontalHeader()->setLabel( COL_ANOALB_PRO, tr( "Año" ) );
    m_list->horizontalHeader()->setLabel( COL_NCOMPRAALB_PRO, tr( "Nº Compra" ) );
@@ -76,15 +78,17 @@ void delivnoteslist::inicializa() {
    m_list->horizontalHeader()->setLabel( COL_FRECEPALB_PRO, tr( "Fecha Recepción" ) );
    m_list->horizontalHeader()->setLabel( COL_COMENTALB_PRO, tr( "Observaciones" ) );
    m_list->horizontalHeader()->setLabel( COL_IDFRA_PRO, tr( "Factura" ) );
+   m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr( "Almacén" ) );
    
    m_list->setColumnWidth(COL_IDALB_PRO,100);
    m_list->setColumnWidth(COL_ANOALB_PRO,100);
    m_list->setColumnWidth(COL_NCOMPRAALB_PRO,100);
-   m_list->setColumnWidth(COL_NALBALB_PRO,100);
+   m_list->setColumnWidth(COL_NALBALB_PRO,200);
    m_list->setColumnWidth(COL_FCREALB_PRO,100);
    m_list->setColumnWidth(COL_FRECEPALB_PRO,100);
    m_list->setColumnWidth(COL_COMENTALB_PRO,300);
    m_list->setColumnWidth(COL_IDFRA_PRO,100);
+   m_list->setColumnWidth(COL_IDALMACEN,100);
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
@@ -104,6 +108,7 @@ void delivnoteslist::inicializa() {
          m_list->setText(i,COL_FRECEPALB_PRO,cur->valor("frecepalb_pro"));
 	 m_list->setText(i,COL_COMENTALB_PRO,cur->valor("comentalb_pro"));
 	 m_list->setText(i,COL_IDFRA_PRO,cur->valor("idfra_pro"));
+	 m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
          i++;
          cur->siguienteregistro();
        }// end while

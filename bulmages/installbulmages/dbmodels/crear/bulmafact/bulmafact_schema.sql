@@ -24,6 +24,25 @@ CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
 -- Los campos de clave automatica empiezan por id    
 -- Los enums se simulan (normalmente) con campos numericos, el significado de los valores debe estar
 -- explicado en este archivo.
+
+
+-- Codi: Clau artificial.
+-- Nom: Nom identificatiu del magatzem.
+-- Adr: Adreça.
+-- Pobl: Població.
+-- CProv: Codi de provincia (dos primers dígits del codi postal).
+-- sCP: Tres darrers dígits del codi postal.
+-- Telf: Telèfon.
+-- Fax: Fax.
+CREATE TABLE almacen (
+ idalmacen serial PRIMARY KEY,
+ nomalmacen character varying(50),
+ diralmacen character varying(150),
+ poblalmacen character varying(50),
+ cpalmacen character varying(20),
+ telalmacen character varying(20),
+ faxalmacen character varying(20)
+);
     
 
 
@@ -298,12 +317,13 @@ CREATE TABLE sucursal (
 -- Data: Data d'emisió de la comanda.
 CREATE TABLE pedido (
    idpedido serial PRIMARY KEY,
-   numpedido integer,
+   numpedido character varying(60),
    anopedido integer,
    fechapedido date,
    descpedido character varying(500),
    
-   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor)
+   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
+	idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
 
 
@@ -318,7 +338,7 @@ CREATE TABLE pedido (
 CREATE TABLE fra_pro (
    idfra_pro serial PRIMARY KEY,
    anofra_pro integer,
-   numfra_pro integer,
+   numfra_pro character varying(60),
    fcrefra_pro date,
    comentfra_pro character varying(2000)
 );
@@ -336,13 +356,13 @@ CREATE TABLE alb_pro (
    idalb_pro serial PRIMARY KEY,
    anoalb_pro integer,
    ncompraalb_pro integer,
-   nalbalb_pro integer,
+   nalbalb_pro character varying(60),
    fcrealb_pro date,
    frecepalb_pro date,
    comentalb_pro character varying(2000),
    
-   idfra_pro integer REFERENCES fra_pro(idfra_pro)
---   idalmacen integer REFERENCES almacen(idalmacen)
+   idfra_pro integer REFERENCES fra_pro(idfra_pro),
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
 
 
@@ -440,25 +460,6 @@ CREATE TABLE termino_fp (
    idtermino_fp serial PRIMARY KEY,
    proportermino_fp float,
    diastermino_fp integer
-);
-
-
--- Codi: Clau artificial.
--- Nom: Nom identificatiu del magatzem.
--- Adr: Adreça.
--- Pobl: Població.
--- CProv: Codi de provincia (dos primers dígits del codi postal).
--- sCP: Tres darrers dígits del codi postal.
--- Telf: Telèfon.
--- Fax: Fax.
-CREATE TABLE almacen (
- idalmacen serial PRIMARY KEY,
- nomalmacen character varying(50),
- diralmacen character varying(150),
- poblalmacen character varying(50),
- cpalmacen character varying(20),
- telalmacen character varying(20),
- faxalmacen character varying(20)
 );
 
 

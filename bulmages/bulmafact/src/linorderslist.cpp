@@ -57,6 +57,7 @@ CREATE TABLE lpedido (
 linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, int flag)
  : linorderslistbase(parent, name, flag) {
       m_cursorcombo = NULL;
+      m_cursorcombo2 = NULL;
       companyact = comp;
 }// end linorderslist
 
@@ -82,12 +83,20 @@ void linorderslist::chargeorder(QString idpedido) {
    companyact->begin();
    
    if (m_cursorcombo != NULL) delete m_cursorcombo;
-   //cursor2 * cur2= companyact->cargacursor("SELECT * FROM division WHERE idproveedor="+idproveedor,"unquery");
-   m_cursorcombo = companyact->cargacursor("SELECT * FROM division","unquery");
+   m_cursorcombo = companyact->cargacursor("SELECT * FROM division where idproveedor="+idproveedor,"unquery");
    companyact->commit();
    while (!m_cursorcombo->eof()) {
    	m_combodivision->insertItem(m_cursorcombo->valor("descdivision"));
 	m_cursorcombo->siguienteregistro();
+   }
+   
+   companyact->begin();
+   if (m_cursorcombo2 != NULL) delete m_cursorcombo2;
+   m_cursorcombo2 = companyact->cargacursor("SELECT * FROM almacen","unquery");
+   companyact->commit();
+   while (!m_cursorcombo2->eof()) {
+   	m_comboalmacen->insertItem(m_cursorcombo2->valor("nomalmacen"));
+	m_cursorcombo2->siguienteregistro();
    }
    
 }
@@ -152,6 +161,9 @@ void linorderslist::activated(int a) {
 fprintf(stderr,"id:%s\n", m_cursorcombo->valor("iddivision",a-1).ascii());
 }
 
+void linorderslist::almacenactivated(int a) {
+fprintf(stderr,"id:%s\n", m_cursorcombo2->valor("idalmacen",a-1).ascii());
+}
 
 linorderslist::~linorderslist() {
 }// end ~linorderslist
