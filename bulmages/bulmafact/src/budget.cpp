@@ -68,6 +68,7 @@ CREATE TABLE lpresupuesto (
 #include "division.h"
 #include "clientslist.h"
 #include "articleslist.h"
+#include "configuracion.h"
 
 #include <qlineedit.h>
 #include <qtextedit.h>
@@ -218,17 +219,25 @@ void Budget::inicialize() {
 		if (!cur0->eof()) {
 			if (cur0->valor("valor")!="") {
 				m_codigoalmacen->setText(cur0->valor("valor"));
+			}
 		}
 		delete cur0;
 	}
 	
-	/*			m_codigoalmacen->hide();
-				m_buscaralmacen->hide();
-				m_lblalmacen->hide();
-				m_nomalmacen->hide(); */
-//				m_numpresupuesto->setReadOnly(true);
-
+	if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
+		m_codigoalmacen->setDisabled(true);
+		m_buscaralmacen->setDisabled(true);
+		m_lblalmacen->setDisabled(true);
+		m_nomalmacen->setDisabled(true);
 	}
+	
+	if (confpr->valor(CONF_NUM_AUT_PRESUP)=="YES") {
+		m_numpresupuesto->setReadOnly(true);
+		if (m_idpresupuesto!="0") {
+		  	m_codigoalmacen->setReadOnly(true);
+		}
+	}
+
 }// end inicialize
 
 
