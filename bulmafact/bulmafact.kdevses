@@ -1,32 +1,12 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="5" >
-  <Doc0 NumberOfViews="1" URL="file:/home/josep/projects/fuentes/bulmafact/lib/bmodventas.cpp" >
-   <View0 line="104" Type="???" >
-    <AdditionalSettings Top="1" Width="730" Attach="1" Height="399" Left="1" MinMaxMode="0" />
+ <DocsAndViews NumberOfDocuments="1" >
+  <Doc0 NumberOfViews="1" URL="file:/home/josep/projects/fuentes/bulmafact/src/main.cpp" >
+   <View0 line="0" Type="???" >
+    <AdditionalSettings Top="1" Width="732" Attach="1" Height="426" Left="1" MinMaxMode="0" />
    </View0>
   </Doc0>
-  <Doc1 NumberOfViews="1" URL="file:/home/josep/projects/fuentes/bulmafact/lib/bvisorempresas.cpp" >
-   <View0 line="27" Type="???" >
-    <AdditionalSettings Top="1" Width="730" Attach="1" Height="399" Left="1" MinMaxMode="0" />
-   </View0>
-  </Doc1>
-  <Doc2 NumberOfViews="1" URL="file:/home/josep/projects/fuentes/bulmafact/lib/bfempresa.cpp" >
-   <View0 line="62" Type="???" >
-    <AdditionalSettings Top="1" Width="730" Attach="1" Height="399" Left="1" MinMaxMode="0" />
-   </View0>
-  </Doc2>
-  <Doc3 NumberOfViews="1" URL="file:/home/josep/projects/fuentes/bulmafact/lib/bfempresa.h" >
-   <View0 line="35" Type="???" >
-    <AdditionalSettings Top="1" Width="730" Attach="1" Height="399" Left="1" MinMaxMode="0" />
-   </View0>
-  </Doc3>
-  <Doc4 NumberOfViews="1" URL="file:/home/josep/projects/fuentes/bulmafact/lib/bvisorempresas.h" >
-   <View0 line="38" Type="???" >
-    <AdditionalSettings Top="1" Width="730" Attach="1" Height="399" Left="1" MinMaxMode="0" />
-   </View0>
-  </Doc4>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>
