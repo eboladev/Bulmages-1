@@ -16,7 +16,7 @@
  *
  */
 /*>>>>>COPYRIGHT*/
-
+#ifdef REPORTS
 
 //#include <stdio.h>
 
@@ -66,4 +66,6 @@ Variant InputBGes::getValue(char *s) const {
    return Variant(consulta->valor(s));
 }// end getValue
 
+
+#endif
 

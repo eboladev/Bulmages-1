@@ -32,6 +32,9 @@
 
 class ainteligentesview : public ainteligentesdlg  {
    Q_OBJECT
+private:
+   cursor2 *cainteligentes;
+   
 public:
   postgresiface2 *conexionbase;
   int idasientointeligente;
@@ -48,6 +51,7 @@ public:
   void return_asiento();
   void cargacanales();
   void cargacostes();
+  void cargacombo();
   
 public slots:
   virtual void boton_nuevo();
@@ -57,11 +61,14 @@ public slots:
   virtual void boton_fin();
   virtual void boton_siguiente();
   virtual void boton_anterior();
+  virtual void boton_exportar();
+  virtual void boton_importar();
   virtual void currentChanged(int, int);
   virtual void selectionChanged();
   virtual void boton_igualant();
   virtual void boton_cuentas();
   virtual void accept();
+  virtual void comboActivated (const QString &);
 };
 
 #endif

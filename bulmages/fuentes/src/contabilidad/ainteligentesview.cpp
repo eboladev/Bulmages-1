@@ -16,6 +16,7 @@
 
 #include "ainteligentesview.h"
 #include <listcuentasview1.h>
+#include <qfiledialog.h>
 
 // Estas son las columnas que van con la talba de apuntes.
 #define COL_IDBINTELIGENTE 0
@@ -121,8 +122,31 @@ ainteligentesview::ainteligentesview(QWidget *parent, const char *name, bool mod
    tiva->hideColumn(COL_IDAINTELIGENTEIVA);
    tiva->hideColumn(COL_IDBINTELIGENTE);
    
+   // El cursor que recorre los asientos inteligentes debe iniciarse a NULL
+   cainteligentes = NULL;
 }// end ainteligentesview
 
+void ainteligentesview::cargacombo() {
+   if (cainteligentes != NULL) {
+      delete cainteligentes;
+   }// end if
+   // Vamos a cargar el comboBox para que la cosa pinte mejor.
+   QString SQLQuery = "SELECT * FROM ainteligente";
+   conexionbase->begin();
+   cainteligentes = conexionbase->cargacursor(SQLQuery,"uncursormas");
+   conexionbase->commit();
+   while (!cainteligentes->eof()) {
+      m_ainteligente->insertItem(cainteligentes->valor("idainteligente")+cainteligentes->valor("descripcion"));
+      cainteligentes->siguienteregistro();
+   }// end while
+}// end if
+
+
+void ainteligentesview::comboActivated(const QString &texto) {
+   QString idasiento = cainteligentes->valor("idainteligente",m_ainteligente->currentItem());
+   idasientointeligente=idasiento.toInt();
+   repinta();
+}// end comboActivated
 
 void ainteligentesview::cargacanales() {
    // Hacemos la carga de los canales. Rellenamos el combobox correspondiente.
@@ -163,10 +187,10 @@ void ainteligentesview::cargacostes() {
 }// end cargacostes
 
 
-
-
-
 ainteligentesview::~ainteligentesview(){
+   if (cainteligentes != NULL) {
+      delete cainteligentes;
+   }// end if
 }// end ~ainteligentesview
 
 
@@ -174,7 +198,7 @@ void ainteligentesview::inicializa(postgresiface2 *conn) {
   conexionbase = conn;
   oldrow=-1;
   oldcol=-1;
-  
+  cargacombo();
   // Llamamos a boton_fin para que la pantalla aparezca con un asiento inteligente inicial.
   boton_fin();
 }// end inicializa
@@ -525,6 +549,15 @@ void ainteligentesview::repinta() {
   char cadena[300];
   cursor2 *cur1;
 
+  
+  // Hacemos el que combo Box apunte al registo que se pasa.
+  cainteligentes->primerregistro();
+  while (!cainteligentes->eof() && cainteligentes->valor("idainteligente").toInt() != idainteligente ) {
+    cainteligentes->siguienteregistro();
+  }// end while
+  m_ainteligente->setCurrentItem(cainteligentes->regactual());
+  
+  
   // Como se va a perder el centro actual hacemos que no se intente hacer un delete del mismo.
   if (oldrow != -1) {
     tapunts->clearCellWidget(oldrow,COL_NOMCOSTE);
@@ -708,4 +741,35 @@ void ainteligentesview::boton_cuentas() {
    delete listcuentas;  
 }// end boton_cuentas
 
+void ainteligentesview::boton_exportar() {
+   QString fn = QFileDialog::getSaveFileName(0, tr("AInteligente (*.xml)"), 0,tr("Guardar Asiento Inteligente"),tr("Elige el nombre de archivo"));
+   if (!fn.isEmpty()) {
+      QString SQlQuery;
+      SQlQuery.sprintf("SELECT * FROM ainteligente WHERE idainteligente=%d", idasientointeligente);
+      fprintf(stderr,"SQLQuery = %s\n", SQlQuery.ascii());
+      QMessageBox::warning( this,"BulmaGés", SQlQuery, "OK",  "No OK", 0, 0, 1 );
+      
+   }// end if    
+    
+}// end boton_exportar
 
+void ainteligentesview::boton_importar() {
+    switch( QMessageBox::warning( this, "Application name",
+        "Could not connect to the <mumble> server.\n"
+        "This program can't function correctly "
+        "without the server.\n\n",
+        "Retry",
+        "Quit", 0, 0, 1 ) ) {
+    case 0: // The user clicked the Retry again button or pressed Enter
+        // try again
+        break;
+    case 1: // The user clicked the Quit or pressed Escape
+        // exit
+        break;
+    }
+   QString fn = QFileDialog::getOpenFileName(0, tr("Punteos (*.pto)"), 0,tr("Cargar Punteo"),tr("Elige el nombre de archivo"));
+   if (!fn.isEmpty()) {
+      ifstream filestr((char *) fn.ascii());
+   }// end if
+    
+}// end boton_importar

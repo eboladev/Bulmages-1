@@ -20,7 +20,6 @@
 #include <qwidget.h>
 #include <qlineedit.h>
 #include <qdatetimeedit.h>
-#include <qfiledialog.h>
 #include <qwidget.h>
 #include <qtable.h>
 #include <qtoolbutton.h>

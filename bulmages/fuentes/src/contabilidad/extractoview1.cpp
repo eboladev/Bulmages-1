@@ -18,7 +18,7 @@
 #include "libromayorprint.h"
 #include "calendario.h"
 #include "empresa.h"
-
+#include <qfiledialog.h>
 
 #define PUNTEO          0
 #define FECHA           1
@@ -87,8 +87,6 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
     if (confpr->valor(CONF_CCOSTE_EXTRACTO) != "YES")
        listado->hideColumn(C_COSTE);
 
-
-
    // Hacemos editables o no los campos segun nos convenga. El unico que se edita de momento es el campo de punteo.
    listado->setColumnReadOnly(PUNTEO,FALSE);
    listado->setColumnReadOnly(FECHA,TRUE);
@@ -152,10 +150,6 @@ void extractoview1::accept() {
   QString codfinal = codigofinal->text();
   QString query;
   
- // Como el filtrado de centros de coste ya no se hace asi, esta linea
- // Va a cambiar.  
-//  idc_coste = filt->ccostes[filt->combocoste->currentItem()];
-
    query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >='"+codinicial+"' AND codigo <= '"+codfinal+"'  ORDER BY codigo";
 
   if (cursorcta != NULL) {

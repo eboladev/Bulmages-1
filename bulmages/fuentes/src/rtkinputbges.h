@@ -16,6 +16,9 @@
  *
  */
 /*>>>>>COPYRIGHT*/
+
+#ifdef REPORTS
+
 #ifndef RTKINPUTBGES_H
 #define RTKINPUTBGES_H
 
@@ -95,4 +98,4 @@ protected:
 
 #endif
 
-
+#endif

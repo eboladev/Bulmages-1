@@ -52,6 +52,7 @@ public:
    int registroanterior();
    int primerregistro();
    int ultimoregistro();
+   int regactual () {return registroactual;};
    void cerrar();
    QString nomcampo(int);
    int numcampo(QString);
