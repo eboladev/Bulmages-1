@@ -59,7 +59,7 @@ void BSelector::m_iglues_clicked() {
 //Boton para entrar en el modulo de TPV
 void BSelector::m_bulmatpv_clicked() {
    if (m_tipoempresa != "BulmaFact" ) {
-      abreempresaview *empcont = new abreempresaview(0,"bulmatpv", "abreempresa", true);
+      abreempresaview *empcont = new abreempresaview(0,"BulmaFact", "abreempresa", true);
       empcont->exec();
       m_empresabd = empcont->nomDB();
 //      tipo = empcont->tipo;
