@@ -28,6 +28,8 @@ $body = '
 <h4>BULMAFACT</h4>
 <p>Este proyecto aun está arrancando, hay muchas ideas, una base de datos modelada y algunas pantallas. Hay algunas iniciativas y gestiones en marcha para poder hacer que este montón de buenas ideas se conviertan en una realidad, pero de momento aun esta algo verde.</p>
 
+<A HREF="http://www.iglues.org/img/bulmafact1.png" BORDER="0"><IMG SRC="http://www.iglues.org/img/bulmafact1t.png" BORDER="0"></A>
+
 
 <h4>REPORTS</h4>
 
