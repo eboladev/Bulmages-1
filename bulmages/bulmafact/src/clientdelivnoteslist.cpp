@@ -47,17 +47,19 @@ CREATE TABLE albaran (
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 
-#define COL_NUMALBARAN 0
-#define COL_FECHAALBARAN 1
-#define COL_NOMCLIENTE 2
-#define COL_IDFORMA_PAGO 3
-#define COL_DESCFORMA_PAGO 4
-#define COL_NUMFACTURA 5
-#define COL_NUMNOFACTURA 6
-#define COL_IDUSUARIO 7
-#define COL_IDCLIENTE 8
-#define COL_IDALBARAN 9
-#define COL_COMENTALBARAN 10
+#define COL_CODIGOALMACEN 0
+#define COL_NUMALBARAN 1
+#define COL_FECHAALBARAN 2
+#define COL_NOMCLIENTE 3
+#define COL_IDFORMA_PAGO 4
+#define COL_DESCFORMA_PAGO 5
+#define COL_NUMFACTURA 6
+#define COL_NUMNOFACTURA 7
+#define COL_IDUSUARIO 8
+#define COL_IDCLIENTE 9
+#define COL_IDALBARAN 10
+#define COL_COMENTALBARAN 11
+#define COL_IDALMACEN 12
 
 ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const char *name, int flag)
  : ClientDelivNotesListBase(parent, name, flag) {
@@ -77,7 +79,8 @@ void ClientDelivNotesList::inicializa() {
    m_list->setSorting( TRUE );
    m_list->setSelectionMode( QTable::SingleRow );
    m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(11);
+   m_list->setNumCols(13);
+	m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
 	m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
    m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "Nº Albarán" ) );
    m_list->horizontalHeader()->setLabel( COL_FECHAALBARAN, tr( "Fecha" ) );
@@ -89,6 +92,7 @@ void ClientDelivNotesList::inicializa() {
 	m_list->horizontalHeader()->setLabel( COL_IDALBARAN, tr("COL_IDALBARAN") );
 	m_list->horizontalHeader()->setLabel( COL_COMENTALBARAN, tr("Comentario") );
 	m_list->horizontalHeader()->setLabel( COL_DESCFORMA_PAGO, tr("Forma de Pago") );
+	m_list->setColumnWidth(COL_CODIGOALMACEN,75);
    m_list->setColumnWidth(COL_NUMALBARAN,75);
    m_list->setColumnWidth(COL_FECHAALBARAN,100);
    m_list->setColumnWidth(COL_IDFORMA_PAGO,75);
@@ -104,14 +108,19 @@ void ClientDelivNotesList::inicializa() {
 	m_list->hideColumn(COL_IDCLIENTE);
 	m_list->hideColumn(COL_IDALBARAN);
 	m_list->hideColumn(COL_IDFORMA_PAGO);
+	m_list->hideColumn(COL_IDALMACEN);
 	//m_list->hideColumn(COL_IDUSUARI);
+		 
+	if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
+		m_list->hideColumn(COL_CODIGOALMACEN);
+	}
          
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");   
     m_list->setReadOnly(TRUE);        
     companyact->begin();
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran, cliente where albaran.idcliente=cliente.idcliente","queryalbaran");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran, cliente, almacen where albaran.idcliente=cliente.idcliente AND albaran.idalmacen=almacen.idalmacen","queryalbaran");
     companyact->commit();
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -126,6 +135,8 @@ void ClientDelivNotesList::inicializa() {
 		m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
 		m_list->setText(i,COL_IDALBARAN,cur->valor("idalbaran"));
 		m_list->setText(i,COL_COMENTALBARAN,cur->valor("comentalbaran"));
+		m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
+		m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
 		
 		companyact->begin();
 		cursor2 * cur2= companyact->cargacursor("SELECT * FROM forma_pago where idforma_pago="+cur->valor("idforma_pago"),"qryforma_pago");
