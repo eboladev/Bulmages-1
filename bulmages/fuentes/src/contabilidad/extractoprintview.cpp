@@ -276,9 +276,10 @@ void ExtractoPrintView::presentar(char *tipus) {
     int idcuenta;
     int idasiento;
     int contrapartida;
+    int codcontrapartida;
     int activo;
     string cad;
-    cursor2 *cursoraux, *cursoraux1, *cursoraux2;
+    cursor2 *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
 
     QString finicial = fechainicial1->text();
     QString ffinal = fechafinal1->text();
@@ -309,8 +310,8 @@ void ExtractoPrintView::presentar(char *tipus) {
                 ;
             fitxersortidatxt.precision(2);
 
-            fitxersortidatxt << "                                    MAJOR \n" ;
-            fitxersortidatxt << "Data Inicial: " << finicial.ascii() << "   Data Final: " << ffinal.ascii() << endl;
+            fitxersortidatxt << "                                    MAYOR \n" ;
+            fitxersortidatxt << "Fecha Inicial: " << finicial.ascii() << "   Fecha Final: " << ffinal.ascii() << endl;
             fitxersortidatxt << "_________________________________________________________________________________________________________\n";
         }
         if (html) {
@@ -327,37 +328,37 @@ void ExtractoPrintView::presentar(char *tipus) {
             fitxersortidahtml << "  <title> Major </title>\n";
             fitxersortidahtml << "</head>\n";
             fitxersortidahtml << "<body>\n";
-            fitxersortidahtml << "<table><tr><td colspan=\"6\" class=titolmajor> Major <hr></td></tr>\n\n";
-            fitxersortidahtml << "<tr><td colspan=\"6\" class=periodemajor> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
+            fitxersortidahtml << "<table><tr><td colspan=\"6\" class=titolmajor> Mayor <hr></td></tr>\n\n";
+            fitxersortidahtml << "<tr><td colspan=\"6\" class=periodemajor> Fecha Inicial: " << finicial.ascii() << " -  Fecha Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
         }
         conexionbase->begin();
         cursoraux = conexionbase->cargacuentascodigo(-1,cinicial, cfinal);
         conexionbase->commit();
         while(!cursoraux->eof()) {
-            idcuenta = atoi(cursoraux->valor(0).ascii());
+            idcuenta = atoi(cursoraux->valor("idcuenta").ascii());
             conexionbase->begin();
             cursoraux1 = conexionbase->cargaapuntesctafecha(idcuenta, finicial.ascii(), ffinal.ascii());
             conexionbase->commit();
 
             if (!cursoraux1->eof()) {
-                activo = strcmp((char *) cursoraux->valor(13).ascii() , "f");
+                activo = strcmp((char *) cursoraux->valor("activo").ascii() , "f");
 
                 if (txt) {
-                    fitxersortidatxt << "\n\n" << setw(12) << cursoraux->valor(1).ascii() << setw(50) << cursoraux->valor(2).ascii() << endl;
+                    fitxersortidatxt << "\n\n" << setw(12) << cursoraux->valor("codigo").ascii() << setw(50) << cursoraux->valor("descripcion").ascii() << endl;
                     if (activo) {
-                        fitxersortidatxt << " Compte d'Actiu";
+                        fitxersortidatxt << " Cuenta de activo";
                     } else {
-                        fitxersortidatxt << " Compte de Passiu";
+                        fitxersortidatxt << " Cuenta de pasivo";
                     }
 
                 }
 
                 if (html) {
-                    fitxersortidahtml << "<tr><td colspan=\"6\" class=comptemajor>" << cursoraux->valor(1).ascii() << " "<< cursoraux->valor(2).ascii() << "</td></tr>\n";
+                    fitxersortidahtml << "<tr><td colspan=\"6\" class=comptemajor>" << cursoraux->valor("codigo").ascii() << " "<< cursoraux->valor("descripcion").ascii() << "</td></tr>\n";
                     if (activo) {
-                        fitxersortidahtml << "<tr><td colspan=\"6\" class=tipuscomptemajor> Compte d'Actiu </td></tr>\n";
+                        fitxersortidahtml << "<tr><td colspan=\"6\" class=tipuscomptemajor> Cuenta de activo </td></tr>\n";
                     } else {
-                        fitxersortidahtml << "<tr><td colspan=\"6\" class=tipuscomptemajor> Compte de Passiu </td></tr>\n";
+                        fitxersortidahtml << "<tr><td colspan=\"6\" class=tipuscomptemajor> Cuenta de pasivo </td></tr>\n";
                     }
 
                 }
@@ -365,8 +366,8 @@ void ExtractoPrintView::presentar(char *tipus) {
                 cursoraux2 = conexionbase->cargasaldoscuentafecha(idcuenta, (char *)finicial.ascii());
                 conexionbase->commit();
                 if (!cursoraux2->eof()) {
-                    debeinicial = atof(cursoraux2->valor(0).ascii());
-                    haberinicial = atof(cursoraux2->valor(1).ascii());
+                    debeinicial = atof(cursoraux2->valor("tdebe").ascii());
+                    haberinicial = atof(cursoraux2->valor("thaber").ascii());
                     if (activo) {
                         saldoinicial = debeinicial - haberinicial;
                     } else {
@@ -391,10 +392,14 @@ void ExtractoPrintView::presentar(char *tipus) {
                     haberfinal = haberinicial;
 
                     for(;!cursoraux1->eof();cursoraux1->siguienteregistro()) {
-                        idasiento=atoi(cursoraux1->valor(2).ascii());
-                        contrapartida = atoi(cursoraux1->valor(10).ascii());
-                        debe=atof(cursoraux1->valor(8).ascii());
-                        haber=atof(cursoraux1->valor(9).ascii());
+                        idasiento=atoi(cursoraux1->valor("idasiento").ascii());
+                        contrapartida = atoi(cursoraux1->valor("contrapartida").ascii());
+			conexionbase->begin();
+			cursoraux3 = conexionbase->cargacuenta(contrapartida);
+			codcontrapartida = atoi(cursoraux3->valor("codigo").ascii());;
+			conexionbase->commit(); 
+                        debe=atof(cursoraux1->valor("debe").ascii());
+                        haber=atof(cursoraux1->valor("haber").ascii());
 
                         if (activo) {
                             saldo += debe - haber;
@@ -404,13 +409,13 @@ void ExtractoPrintView::presentar(char *tipus) {
 
                         debefinal += debe;
                         haberfinal += haber;
-                        cad = cursoraux1->valor(4).ascii();
+                        cad = cursoraux1->valor("fecha").ascii();
                         //presentació txt
                         if (txt)
-                            fitxersortidatxt <<  setw(5) << idasiento << setw(14) << cad.substr(0,10).c_str() << setw(10) << contrapartida << "  " << setw(40)  << setiosflags(ios::left) << cursoraux1->valor(5).ascii() << setw(10) << resetiosflags(ios::left) << debe << setw(10) << haber << setw(10) << saldo << endl;
+                            fitxersortidatxt <<  setw(5) << idasiento << setw(14) << cad.substr(0,10).c_str() << setw(10) << codcontrapartida << "  " << setw(40)  << setiosflags(ios::left) << cursoraux1->valor("conceptocontable").ascii() << setw(10) << resetiosflags(ios::left) << debe << setw(10) << haber << setw(10) << saldo << endl;
                         //presentació html
                         if (html)
-                            fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(0,10).c_str() << " </td><td class=contrapartidamajor> " << contrapartida << " </td><td> " << cursoraux1->valor(5).ascii() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
+                            fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(0,10).c_str() << " </td><td class=contrapartidamajor> " << codcontrapartida << " </td><td> " << cursoraux1->valor("conceptocontable").ascii() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
                     }
 
                     if (activo) {
