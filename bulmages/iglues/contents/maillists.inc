@@ -7,7 +7,7 @@ $body = '
 
 <P>En estos momentos la asociación dispone de una lista de correo donde se concentra todo el desarrollo de proyectos.</P>
 
-<P>Esa lista es la de BulmaGés. Para escribir en la lista uno debe inscribirse previamente</P>
+<P>Nuestra lista es BulmaGés. Para escribir en la lista uno debe inscribirse previamente</P>
 
 <A HREF="http://llistes.bulma.net/mailman/listinfo/bulmages" >http://llistes.bulma.net/mailman/listinfo/bulmages</A>
 

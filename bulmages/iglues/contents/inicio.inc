@@ -1,5 +1,5 @@
 <script language="php">
-$title = "";
+$title = "Bienvenido a nuestra web";
 // =================================================
 $body = '
 <div id="noticies">

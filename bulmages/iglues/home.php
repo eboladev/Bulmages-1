@@ -20,7 +20,11 @@ if (is_file($section = "contents/" . $_GET['go'] . ".inc")) {
 <html>
 
 <head>
-  <title>IGLUES</title>
+<?php
+echo "<title>IGLUES - $title</title>";
+?>
+
+<!--  <title>IGLUES</title> -->
   <meta name="GENERATOR" content="Quanta Plus">
   <?php
   ($stylesheet = $_GET['css']) || $stylesheet = "iglues.css";
