@@ -5,7 +5,6 @@
 
 
   TEMPLATE = subdirs
-  SUBDIRS += fuentes/src/estadisticas 
   SUBDIRS += bulmalib
   SUBDIRS += fuentes
   SUBDIRS += bulmafact
