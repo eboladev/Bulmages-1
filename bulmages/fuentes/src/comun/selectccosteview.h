@@ -20,18 +20,30 @@
 #ifndef SELECTCCOSTEVIEW_H
 #define SELECTCCOSTEVIEW_H
 
-#include <selectccostedlg.h>
+#include "selectccostedlg.h"
+#include "postgresiface2.h"
 
-/**
-@author Tomeu Borras
-*/
+class empresa;
+/**@author Tomeu Borras*/
 class selectccosteview : public selectccostedlg
 {
 Q_OBJECT
 public:
-    selectccosteview(QWidget *parent = 0, const char *name = 0);
+    selectccosteview(empresa *emp, QWidget *parent = 0, const char *name = 0);
 
     ~selectccosteview();
+private:
+   empresa *empresaactual;
+   int m_colNomCoste;
+   int m_colDescCoste;
+   int m_colIdCoste;
+   int m_colStatusCoste;  
+   postgresiface2* conexionbase;
+   int numdigitos;
+public:
+   void cargacostes();
+   
+   
 };
 
 #endif

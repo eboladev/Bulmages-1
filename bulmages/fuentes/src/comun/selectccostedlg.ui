@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>498</width>
-            <height>350</height>
+            <height>352</height>
         </rect>
     </property>
     <property name="caption">
@@ -21,7 +21,7 @@
         </property>
         <widget class="QListView" row="0" column="0">
             <property name="name">
-                <cstring>listView1</cstring>
+                <cstring>m_listCostes</cstring>
             </property>
         </widget>
     </grid>

@@ -29,14 +29,12 @@ filtrarextractosview::filtrarextractosview(empresa *emp,QWidget *parent, const c
    m_colDescCoste = m_listCostes->addColumn("desc_coste",-1);
    m_colStatusCoste = m_listCostes->addColumn("Status",-1);
    m_colIdCoste = m_listCostes->addColumn("idc_coste",0);
+
+   selccostes=new selectccosteview(empresaactual,0,0);   
    
-   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
+   // Hacemos la carga de los centros de coste. Rellenamos el combobox
    cargacostes();
-   
-   selccostes=new selectccosteview(0,0);
-   selccostes->show();
-//   selccostes->exec();
-   
+ 
    fprintf(stderr,"Fin del constructor de fitrarextractosview\n");
 
 }// end filtrarextractosview
@@ -44,6 +42,12 @@ filtrarextractosview::filtrarextractosview(empresa *emp,QWidget *parent, const c
 
 filtrarextractosview::~filtrarextractosview(){
 }
+
+void filtrarextractosview::boton_ccostes() {
+   fprintf(stderr,"Boton ccostes\n");
+   selccostes->exec();
+//   selccostes->show();
+}// end boton_ccostes
 
 
 void filtrarextractosview::cargacostes() {

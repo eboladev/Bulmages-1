@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>619</width>
-            <height>513</height>
+            <height>519</height>
         </rect>
     </property>
     <property name="caption">
@@ -404,6 +404,12 @@
         <receiver>pushButton2</receiver>
         <slot>toggle()</slot>
     </connection>
+    <connection>
+        <sender>pushButton3</sender>
+        <signal>clicked()</signal>
+        <receiver>filtrarextractosdlg</receiver>
+        <slot>boton_ccostes()</slot>
+    </connection>
 </connections>
 <tabstops>
     <tabstop>punteotodos</tabstop>
@@ -420,6 +426,7 @@
     <slot>codigo_textChanged(const QString &amp;)</slot>
     <slot>boton_buscacontrapartida()</slot>
     <slot>return_codigo()</slot>
+    <slot>boton_ccostes()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

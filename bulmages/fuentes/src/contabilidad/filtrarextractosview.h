@@ -98,6 +98,7 @@ public slots:
   virtual void codigo_textChanged(const QString &);
   virtual void boton_buscacontrapartida();
   virtual void return_codigo();
+  virtual void boton_ccostes();
 };
 
 #endif
