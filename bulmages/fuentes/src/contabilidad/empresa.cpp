@@ -516,9 +516,11 @@ void empresa::Abrirasientos() {
 }// end Abrirasientos
 
 
-void empresa::Ordenarasientos() {
+void empresa::Ordenarasientos(int ejercicio) {
    conexionbase2->begin();
-   conexionbase2->ejecuta("SELECT reordenaasientos()");
+   QString query;
+   query.sprintf("SELECT reordenaasientos(%i)",ejercicio);
+   conexionbase2->ejecuta(query);
    conexionbase2->commit();
    introapunts1->cargarcursor(0);
    introapunts1->boton_fin();

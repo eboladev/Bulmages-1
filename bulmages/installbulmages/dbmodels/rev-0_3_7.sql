@@ -59,18 +59,19 @@ CREATE TABLE linamortizacion (
     REFERENCES "asiento" ("idasiento")
 );    
     
-ALTER TABLE asiento ADD COLUMN clase int4;
+ALTER TABLE asiento ADD COLUMN clase smallint;
 
 DROP FUNCTION reordenaasientos();
 
-CREATE FUNCTION reordenaasientos() RETURNS integer
+CREATE FUNCTION reordenaasientos(integer) RETURNS integer
     AS '
 DECLARE
+    ejercicio ALIAS FOR $1;
     as RECORD;
     cont integer;
 BEGIN
     cont := 1;
-    FOR as IN SELECT * from asiento ORDER BY clase,fecha,ordenasiento LOOP
+    FOR as IN SELECT * from asiento WHERE EXTRACT(YEAR FROM fecha)=ejercicio ORDER BY fecha,clase,ordenasiento LOOP
 	IF (cont <> as.ordenasiento) THEN
 	    UPDATE asiento SET ordenasiento = cont WHERE idasiento = as.idasiento;
 	END IF;

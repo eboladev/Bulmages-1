@@ -61,7 +61,7 @@ public:
     empresa empresaactual;  
     QDockWindow *doc;
 public:
-    Bulmages01(QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel, QString * DB=0, QString * User=0, QString * Passwd=0);
+    Bulmages01(QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel, QString * DB=0, QString * User=0, QString * Passwd=0,QString * ejercicio=0);
     ~Bulmages01();
 
   protected:
@@ -169,7 +169,7 @@ public:
     void windowMenuAboutToShow();    
     
   private:
-
+    QString Ejercicio;
     /** initializes all QActions of the application */
     void initActions();
     /** initMenuBar creates the menu_bar and inserts the menuitems */

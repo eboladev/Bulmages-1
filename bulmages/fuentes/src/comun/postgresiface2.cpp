@@ -531,7 +531,8 @@ int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento) 
     if (numasiento == 0) {
       query="SELECT max(idasiento) FROM asiento";
       cursor2 *cur=cargacursor(query,"cargaasientoseq");
-      val = atoi(cur->valor(0).ascii());
+      if (!cur->eof()) val = atoi(cur->valor(0).ascii());
+      else val=0;
       val++;
       delete cur;
     } else {
@@ -539,7 +540,8 @@ int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento) 
     }// end if
     query="SELECT max(ordenasiento) FROM asiento";
     cursor2 *cur=cargacursor(query,"cargaasientos");
-    ordenasiento = atoi(cur->valor(0).ascii());
+    if (!cur->eof()) ordenasiento = atoi(cur->valor(0).ascii());
+    else ordenasiento=0;
     ordenasiento++;
     delete cur;
     query.sprintf("INSERT INTO asiento (idasiento,descripcion, fecha, ordenasiento) VALUES (%d,'%s','%s', %d)",val,nombre.ascii(), fecha.ascii(), ordenasiento);

@@ -21,7 +21,7 @@
 
 
 BModContabilidad::BModContabilidad(BSelector * ref, QWidget * parent, const char * name, WFlags f) 
-: Bulmages01(parent,name,f,&ref->NombreBaseDatos,&ref->NombreUsuario,&ref->PasswordUsuario) 
+: Bulmages01(parent,name,f,&ref->NombreBaseDatos,&ref->NombreUsuario,&ref->PasswordUsuario,&ref->ejercicio->text()) 
 {
   PunteroAlSelector=ref;
 }
