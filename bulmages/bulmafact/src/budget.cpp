@@ -75,6 +75,7 @@ CREATE TABLE lpresupuesto (
 #include <qlabel.h>
 #include <qtable.h>
 #include <qwidget.h>
+#include <qobjectlist.h>
 
 #include "funcaux.h"
 
@@ -107,10 +108,14 @@ Budget::~Budget() {
 
 void Budget::inicialize() {
 
-	installEventFilter( this );
 	m_modified = false;
-
-// Inicializamos la tabla de lineas de presupuesto
+	installEventFilter(this);
+	
+	installEventFilters("QTable");
+	installEventFilters("QLineEdit");
+	installEventFilters("QTextEdit");
+	
+// Inicializamos la tabla de lineas de presupuestoil
 	m_list->setNumRows( 0 );
 	m_list->setNumCols( 0 );
 	m_list->setSelectionMode( QTable::SingleRow );
@@ -603,20 +608,22 @@ bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
 	if ( ev->type() == QEvent::KeyPress ) {
 		m_modified = true;
 	}
+	
 	if ( obj->isA("QTable")) {
 		QTable *t = (QTable *)obj;
-		if ( ev->type() == QEvent::KeyPress ) {
+		if ( ev->type() == QEvent::KeyRelease ) {
 			QKeyEvent *k = (QKeyEvent *)ev;
+			qDebug( "Widget = %s",obj->name());
 			switch (k->key()) {
 				case Qt::Key_Enter:  {
-					if (obj->name() == "m_list") {
+					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
 						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
 					}
 					nextCell(obj);
 					return TRUE;
 				}
 				case Qt::Key_Return: {
-					if (obj->name() == "m_list") {
+					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
 						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
 					}
 					nextCell(obj);
@@ -624,7 +631,7 @@ bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
 				}
 				case Qt::Key_Asterisk: {
 					duplicateCell(obj);
-					if (obj->name() == "m_list") {
+					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
 						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
 					}
 					return TRUE;
@@ -683,4 +690,18 @@ void Budget::duplicateCell(QObject *obj) {
 	}
 }
 
+
+void Budget::installEventFilters(QString qsWidget) {
+	QObjectList *l = queryList( qsWidget );
+	QObjectListIt it( *l ); // iterate over the buttons
+	QObject *obj;
+
+    while ( (obj = it.current()) != 0 ) {
+		// for each found object...
+		++it;
+		qDebug("Widget = %s", ((QWidget*)obj)->name());
+		((QWidget*)obj)->installEventFilter(this);
+    }
+    delete l; // delete the list, not the objects
+}
 

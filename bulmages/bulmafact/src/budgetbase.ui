@@ -827,18 +827,6 @@
         <slot>budgetDateLostFocus()</slot>
     </connection>
     <connection>
-        <sender>m_list</sender>
-        <signal>valueChanged(int,int)</signal>
-        <receiver>BudgetBase</receiver>
-        <slot>valueBudgetLineChanged(int,int)</slot>
-    </connection>
-    <connection>
-        <sender>m_listDiscounts</sender>
-        <signal>valueChanged(int,int)</signal>
-        <receiver>BudgetBase</receiver>
-        <slot>valueBudgetDiscountLineChanged(int,int)</slot>
-    </connection>
-    <connection>
         <sender>m_newBudgetLine</sender>
         <signal>clicked()</signal>
         <receiver>BudgetBase</receiver>

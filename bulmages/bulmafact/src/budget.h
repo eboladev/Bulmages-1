@@ -60,6 +60,7 @@ private:
 	void nextCell(QObject *);
 	void duplicateCell(QObject *);
 	void calculateImports();
+	void installEventFilters(QString);
 		
 protected:
 	bool eventFilter( QObject *, QEvent *);
