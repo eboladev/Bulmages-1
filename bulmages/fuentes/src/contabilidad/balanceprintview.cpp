@@ -129,11 +129,12 @@ void BalancePrintView::presentar(char *tipus){
    QString ffinal = fechafinal1->text();
    QString cinicial = codigoinicial->text();
    QString cfinal = codigofinal->text();
+   int nivel = combonivel->currentItem()+2;
 
    if (txt | html | rtk) {
 
-      char *argstxt[]={"balanç.txt","balanç.txt",NULL};      //presentació txt normal
-      char *argshtml[]={"balanç.html","balanç.html",NULL};   //presentació html normal
+      char *argstxt[]={"balance.txt","balance.txt",NULL};      //presentació txt normal
+      char *argshtml[]={"balance.html","balance.html",NULL};   //presentació html normal
 
       ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
       ofstream fitxersortidahtml(argshtml[0]);
@@ -188,8 +189,8 @@ void BalancePrintView::presentar(char *tipus){
          delete cursorapt;
          // Borramos todo lo que no es de este nivel
 
-         // Borramos Los niveles inferiores
-         query.sprintf(query,"DELETE FROM balancetmp where nivel(codigo)>%s",combonivel->text(combonivel->currentItem()).ascii());
+         // Borramos los niveles inferiores
+         query.sprintf("DELETE FROM balancetmp where nivel(codigo)>%d",nivel);
          conexionbase->ejecuta(query);
 
          // No hay que incluir los niveles superiores.
@@ -235,10 +236,10 @@ void BalancePrintView::presentar(char *tipus){
             //presentació txt normal
             fitxersortidatxt.setf(ios::fixed);
             fitxersortidatxt.precision(2);
-            fitxersortidatxt << "                                        Balanç \n" ;
-            fitxersortidatxt << "Data Inicial: " << finicial.ascii() << "   Data Final: " << ffinal.ascii() << endl;
-            fitxersortidatxt << "lcuenta           ldenominacion                      lsaldoant      ldebe     lhaber     lsaldo    ldebeej    haberej   lsaldoej\n" ;
-            fitxersortidatxt << "________________________________________________________________________________________________________________________________\n";
+            fitxersortidatxt << "                                        Balance \n" ;
+            fitxersortidatxt << "Fecha Inicial: " << finicial.ascii() << "   Fecha Final: " << ffinal.ascii() << endl;
+            fitxersortidatxt << "Cuenta            Denominación                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
+            fitxersortidatxt << "______________________________________________________________________________________________________________________________________________\n";
          }// end if
          if (html) {
             //presentació html normal
@@ -276,7 +277,7 @@ void BalancePrintView::presentar(char *tipus){
 
 	    if (txt) {
                //presentació txt normal
-               fitxersortidatxt << setiosflags(ios::left) << setw(10) <<  lcuenta.ascii() << " " << setw(40) <<  ldenominacion.ascii() << " " << resetiosflags(ios::left) << setw(10) <<  lsaldoant << " " << setw(10) <<  ldebe << " " << setw(10) <<  lhaber << " " << setw(10) <<  lsaldo << " " << setw(10) <<  ldebeej << " " << setw(10) <<  lhaberej << " " << setw(10) <<  lsaldoej << " " << setw(10) <<  endl;
+               fitxersortidatxt << setiosflags(ios::left) << setw(10) <<  lcuenta.ascii() << " " << setw(40) <<  ldenominacion.ascii() << " " << resetiosflags(ios::left) << setw(12) <<  lsaldoant << " " << setw(12) <<  ldebe << " " << setw(12) <<  lhaber << " " << setw(12) <<  lsaldo << " " << setw(12) <<  ldebeej << " " << setw(12) <<  lhaberej << " " << setw(12) <<  lsaldoej << " " << setw(12) <<  endl;
             }// end if
             if (html) {
                //presentació html normal
@@ -304,7 +305,8 @@ void BalancePrintView::presentar(char *tipus){
 
          if (txt) {
             //presentació txt normal
-            fitxersortidatxt << "                                             Totals " << setw(10) <<  totalsaldoant.ascii() << " " << setw(10) <<  totaldebe.ascii() << " " << setw(10) <<  totalhaber.ascii() << " " << setw(10) <<  totalsaldo.ascii() << endl;
+	    fitxersortidatxt << "                                            ___________________________________________________________\n";
+            fitxersortidatxt << "                                            Totales " << setw(12) <<  totalsaldoant.ascii() << " " << setw(12) <<  totaldebe.ascii() << " " << setw(12) <<  totalhaber.ascii() << " " << setw(12) <<  totalsaldo.ascii() << endl;
          }
          if (html) {
             //presentació html normal
