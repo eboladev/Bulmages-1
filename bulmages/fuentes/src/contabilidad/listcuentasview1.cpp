@@ -141,11 +141,11 @@ int listcuentasview1::inicializa(postgresiface2 *conn ) {
     delete cursoraux2;
     delete cursoraux1;
     // Vamos a cargar el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
-    conexionbase->begin();
     QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
+    conexionbase->begin();
     cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
-    numdigitos=cursoraux1->valor(2).length();
     conexionbase->commit();
+    numdigitos=cursoraux1->valor(2).length();
     delete cursoraux1;
     fprintf(stderr,"las cuentas tienen %d digitos\n",numdigitos);
     inicializatabla();

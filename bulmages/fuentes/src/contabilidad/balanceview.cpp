@@ -270,10 +270,8 @@ void balanceview::presentar() {
 		fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET padre=0 WHERE padre ISNULL");
-      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("DELETE FROM balancetemp WHERE debe=0 AND haber =0");
-      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
 
       // Vamos a implementar el tema del código
@@ -288,34 +286,26 @@ void balanceview::presentar() {
 
       // Para evitar problemas con los nulls hacemos algunos updates
       query.sprintf("UPDATE balancetemp SET tsaldo=0 WHERE tsaldo ISNULL");
-      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET tdebe=0 WHERE tdebe ISNULL");
-      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET thaber=0 WHERE thaber ISNULL");
-      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET asaldo=0 WHERE asaldo ISNULL");
-      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
-		conexionbase->commit();
-      conexionbase->begin();
-		query.sprintf( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC");
-		fprintf(stderr,"%s\n",query.ascii());
-		cursorapt = conexionbase->cargacursor(query,"Balance1view");
-		while (!cursorapt->eof())  {
+      query.sprintf( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC");
+      cursorapt = conexionbase->cargacursor(query,"Balance1view");
+      while (!cursorapt->eof())  {
          query.sprintf("SELECT * FROM balancetemp WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
          cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
          if (!mycur->eof()) {
             query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
-   //			fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
             conexionbase->ejecuta(query);
-   		}// end if
+         }// end if
          delete mycur;
-			cursorapt->siguienteregistro();
-		}// end while
-		delete cursorapt;
+         cursorapt->siguienteregistro();
+      }// end while
+      delete cursorapt;
 
       conexionbase->commit();
       conexionbase->begin();
@@ -329,15 +319,8 @@ void balanceview::presentar() {
       //Borramos todo lo que tiene un hijo en el balance
       query.sprintf("DELETE FROM balancetemp WHERE idcuenta IN (SELECT padre FROM balancetemp)");
       conexionbase->ejecuta(query);
-		query.sprintf("SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY codigo");
-		fprintf(stderr,"%s\n",query.ascii());
-		cursorapt = conexionbase->cargacursor(query,"mycursor");
-      
-		query.sprintf("DROP TABLE balancetemp");
-		fprintf(stderr,"%s\n",query.ascii());
-		conexionbase->ejecuta(query);
-      conexionbase->commit();
-
+      query.sprintf("SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY codigo");
+      cursorapt = conexionbase->cargacursor(query,"mycursor");
       
       // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
       num1 = cursorapt->numregistros();
@@ -383,6 +366,11 @@ void balanceview::presentar() {
       // Vaciamos el cursor de la base de datos.
       delete cursorapt;
 
+      query.sprintf("DROP TABLE balancetemp");
+      conexionbase->ejecuta(query);
+      conexionbase->commit();
+      
+      
       // Hacemos la actualizacion de los saldos totales
       totalsaldoant->setText(QString::number(tsaldoant,'f',2));
       totaldebe->setText(QString::number(tdebe,'f',2));

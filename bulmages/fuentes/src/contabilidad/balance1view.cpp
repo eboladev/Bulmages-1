@@ -268,92 +268,62 @@ void balance1view::presentar() {
 
       // Hacemos la consulta de los apuntes a listar en la base de datos.
       int idc_coste;
-		idc_coste = ccostes[combocoste->currentItem()];
+      idc_coste = ccostes[combocoste->currentItem()];
 
       // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
-		// Causar problemas con el motor de base de datos.
-		query.sprintf( "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
+      // Causar problemas con el motor de base de datos.
+      query.sprintf( "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
       conexionbase->begin();
       conexionbase->ejecuta(query);
-      conexionbase->commit();
       query.sprintf("UPDATE balancetemp SET padre=0 WHERE padre ISNULL");
-      conexionbase->begin();
-      conexionbase->ejecuta(query);
-      conexionbase->commit();
-      query.sprintf("DELETE FROM balancetemp WHERE debe=0 AND haber =0");
-      conexionbase->begin();
-      conexionbase->ejecuta(query);
-		conexionbase->commit();
 
+      conexionbase->ejecuta(query);
+      query.sprintf("DELETE FROM balancetemp WHERE debe=0 AND haber =0");
+      conexionbase->ejecuta(query);
       // Vamos a implementar el tema del código
       if (cinicial != "") {
          query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'",cinicial.ascii());
-         conexionbase->begin();
          conexionbase->ejecuta(query);
-         conexionbase->commit();
       }// end if
       if (cfinal != "") {
          query.sprintf("DELETE FROM balancetemp WHERE codigo > '%s'",cfinal.ascii());
-         conexionbase->begin();
          conexionbase->ejecuta(query);
-         conexionbase->commit();
       }// end if
       
 
       // Para evitar problemas con los nulls hacemos algunos updates
       query.sprintf("UPDATE balancetemp SET tsaldo=0 WHERE tsaldo ISNULL");
-      conexionbase->begin();
       conexionbase->ejecuta(query);
-      conexionbase->commit();
       query.sprintf("UPDATE balancetemp SET tdebe=0 WHERE tdebe ISNULL");
-      conexionbase->begin();
       conexionbase->ejecuta(query);
-      conexionbase->commit();
       query.sprintf("UPDATE balancetemp SET thaber=0 WHERE thaber ISNULL");
-      conexionbase->begin();
       conexionbase->ejecuta(query);
-      conexionbase->commit();
       query.sprintf("UPDATE balancetemp SET asaldo=0 WHERE asaldo ISNULL");
-      conexionbase->begin();
       conexionbase->ejecuta(query);
-      conexionbase->commit();
-		query.sprintf( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC");
-      conexionbase->begin();
-		cursorapt = conexionbase->cargacursor(query,"Balance1view");
-      conexionbase->commit();
-		while (!cursorapt->eof())  {
+      query.sprintf( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC");
+      cursorapt = conexionbase->cargacursor(query,"Balance1view");
+      while (!cursorapt->eof())  {
          query.sprintf("SELECT * FROM balancetemp WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
-         conexionbase->begin();
          cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
-         conexionbase->commit();
          if (!mycur->eof()) {
             query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
-   //			fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
-   		 	conexionbase->begin();
             conexionbase->ejecuta(query);
-            conexionbase->commit();
-   		}// end if
-         delete mycur;
-			cursorapt->siguienteregistro();
-		}// end while
-		delete cursorapt;
+   	}// end if
+        delete mycur;
+        cursorapt->siguienteregistro();
+      }// end while
+      delete cursorapt;
       
 		
       query.sprintf("SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY padre");
-      conexionbase->begin();
-		cursorapt = conexionbase->cargacursor(query,"mycursor");
-      conexionbase->commit();
-		query.sprintf("DROP TABLE balancetemp");
-      conexionbase->begin();
-		conexionbase->ejecuta(query);
-      conexionbase->commit();
+      cursor2 *cursorapt1 = conexionbase->cargacursor(query,"mycursor");
       // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
-      num1 = cursorapt->numregistros();
+      num1 = cursorapt1->numregistros();
 //      listado->setNumRows(num1);
       j=0;
       listado->clear();
-      while (!cursorapt->eof()) {
-         QString padre1 = cursorapt->valor("padre");
+      while (!cursorapt1->eof()) {
+         QString padre1 = cursorapt1->valor("padre");
          fprintf(stderr,"buscamos el item: %s\n", padre1.ascii());
          QListViewItem *padre = listado->findItem(padre1, IDCUENTA, CaseSensitive);
 
@@ -363,45 +333,53 @@ void balance1view::presentar() {
          } else {
             it = new QListViewItem1(listado);
          }// end if
-         it->setTipo(atoi(cursorapt->valor("nivel").ascii()));
+         it->setTipo(atoi(cursorapt1->valor("nivel").ascii()));
                         
          // Acumulamos los totales para al final poder escribirlos
-         tsaldoant += atof(cursorapt->valor("asaldo").ascii());
-         tsaldo += atof(cursorapt->valor("tsaldo").ascii());
-         tdebe += atof(cursorapt->valor("tdebe").ascii());
-         thaber += atof(cursorapt->valor("thaber").ascii());
+         tsaldoant += atof(cursorapt1->valor("asaldo").ascii());
+         tsaldo += atof(cursorapt1->valor("tsaldo").ascii());
+         tdebe += atof(cursorapt1->valor("tdebe").ascii());
+         thaber += atof(cursorapt1->valor("thaber").ascii());
 
-         it->setText(CUENTA, cursorapt->valor("codigo"));
-         if (cursorapt->valor("tipocuenta") == "1") 
+         it->setText(CUENTA, cursorapt1->valor("codigo"));
+         if (cursorapt1->valor("tipocuenta") == "1") 
             it->setPixmap(CUENTA, QPixmap(cactivo));
-         else if (cursorapt->valor("tipocuenta") == "2")
+         else if (cursorapt1->valor("tipocuenta") == "2")
             it->setPixmap(CUENTA, QPixmap(cpasivo));
-         else if (cursorapt->valor("tipocuenta") == "3")
+         else if (cursorapt1->valor("tipocuenta") == "3")
             it->setPixmap(CUENTA, QPixmap(cneto));
-         else if (cursorapt->valor("tipocuenta") == "4")
+         else if (cursorapt1->valor("tipocuenta") == "4")
             it->setPixmap(CUENTA, QPixmap(cingresos));
-         else if (cursorapt->valor("tipocuenta") == "5")
+         else if (cursorapt1->valor("tipocuenta") == "5")
             it->setPixmap(CUENTA, QPixmap(cgastos));
          
-         it->setText(DENOMINACION, cursorapt->valor("descripcion"));
-         it->setText(SALDO_ANT,QString::number(atof(cursorapt->valor("asaldo")),'f',2));
-         it->setText(DEBE,QString::number(atof(cursorapt->valor("tdebe")),'f',2));
-         it->setText(HABER,QString::number(atof(cursorapt->valor("thaber")),'f',2));
-         it->setText(SALDO,QString::number(atof(cursorapt->valor("tsaldo")),'f',2));
-         it->setText(DEBEEJ,QString::number(atof(cursorapt->valor("debe")),'f',2));
-         it->setText(HABEREJ,QString::number(atof(cursorapt->valor("haber")),'f',2));
-         it->setText(SALDOEJ,QString::number(atof(cursorapt->valor("saldo")),'f',2));
-         it->setText(NIVEL, cursorapt->valor("nivel"));
-         it->setText(IDCUENTA, cursorapt->valor("idcuenta"));
-         it->setText(PADRE, cursorapt->valor("padre"));
+         it->setText(DENOMINACION, cursorapt1->valor("descripcion"));
+         it->setText(SALDO_ANT,QString::number(atof(cursorapt1->valor("asaldo")),'f',2));
+         it->setText(DEBE,QString::number(atof(cursorapt1->valor("tdebe")),'f',2));
+         it->setText(HABER,QString::number(atof(cursorapt1->valor("thaber")),'f',2));
+         it->setText(SALDO,QString::number(atof(cursorapt1->valor("tsaldo")),'f',2));
+         it->setText(DEBEEJ,QString::number(atof(cursorapt1->valor("debe")),'f',2));
+         it->setText(HABEREJ,QString::number(atof(cursorapt1->valor("haber")),'f',2));
+         it->setText(SALDOEJ,QString::number(atof(cursorapt1->valor("saldo")),'f',2));
+         it->setText(NIVEL, cursorapt1->valor("nivel"));
+         it->setText(IDCUENTA, cursorapt1->valor("idcuenta"));
+         it->setText(PADRE, cursorapt1->valor("padre"));
          it->setOpen(true);
-         cursorapt->siguienteregistro();
+         cursorapt1->siguienteregistro();
          j++;
       }// end while
 
       // Vaciamos el cursor de la base de datos.
-      delete cursorapt;
+      delete cursorapt1;
 
+      // Eliminamos la tabla temporal y cerramos la transacción.
+///      conexionbase->commit();
+///      conexionbase->begin();
+      query.sprintf("DROP TABLE balancetemp");
+      conexionbase->ejecuta(query);
+      conexionbase->commit();
+      
+      
       // Hacemos la actualizacion de los saldos totales
       totalsaldoant->setText(QString::number(tsaldoant,'f',2));
       totaldebe->setText(QString::number(tdebe,'f',2));

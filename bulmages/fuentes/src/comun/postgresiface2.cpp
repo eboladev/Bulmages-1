@@ -50,6 +50,7 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery){
 
       
 cursor2::~cursor2(){
+    cerrar();
 }
 
 void cursor2::cerrar() {
@@ -199,6 +200,7 @@ int postgresiface2::formatofecha() {
 int postgresiface2::begin() {
    PGresult   *res;
    res = PQexec(conn, "BEGIN");
+   fprintf(stderr,"-- BEGIN TRANSACTION --\n");
    if (!res || PQresultStatus(res) != PGRES_COMMAND_OK)  {
        fprintf(stderr, "BEGIN command failed\n");
        PQclear(res);
@@ -210,6 +212,7 @@ int postgresiface2::begin() {
 
 void postgresiface2::commit() {
     PGresult   *res;
+    fprintf(stderr,"-- COMMIT TRANSACTION --\n");
     res = PQexec(conn, "COMMIT");
     PQclear(res);
 }// end commit
@@ -235,7 +238,8 @@ int postgresiface2::ejecuta(QString Query) {
     result = PQexec(conn, Query.ascii());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
         fprintf(stderr, "SQL command failed: %s\n", Query.ascii());
-        QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la Base de Datos:\n"+Query,""), theApp->translate("postgresiface","Aceptar",""));
+        fprintf(stderr,"%s\n", PQerrorMessage(conn));
+        QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la Base de Datos:\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
         PQclear(result);
         return(1);
     }// end if
@@ -453,7 +457,9 @@ cursor2 *postgresiface2::cargacuentascodigo(int padre, QString codigoinicial, QS
 int postgresiface2::cierraasiento(int idasiento) {
     QString query="";
     query.sprintf("SELECT cierraasiento(%d)",idasiento);
-    return(ejecuta(query));
+    cursor2 *cur=cargacursor(query,"abreasientos");
+    delete cur;
+    return(1);
 }// end cierraasiento
 
 
@@ -495,9 +501,15 @@ int postgresiface2::borrarcuenta(int idcuenta) {
  * correspondiente.
  ***********************************************************************/
 int postgresiface2::abreasiento(int idasiento) {
+    fprintf(stderr,"Funcion abreasiento\n");
     QString query="";
+    
     query.sprintf("SELECT abreasiento(%d)",idasiento);
-    return(ejecuta(query));
+    cursor2 *cur=cargacursor(query,"abreasientos");
+    delete cur;
+    return(1);
+
+//    return(ejecuta(query));
 }// end abreasiento
 
 
