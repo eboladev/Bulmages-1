@@ -86,6 +86,10 @@ CREATE TABLE lpresupuesto (
 #define COL_DESCUENTOLPRESUPUESTO 7
 #define COL_IDPRESUPUESTO 8
 #define COL_REMOVE 9
+#define COL_TASATIPO_IVA 10
+
+#define COL_DESCUENTO_CONCEPTDPRESUPUESTO 0
+#define COL_DESCUENTO_PROPORCIONDPRESUPUESTO 1
 
 Budget::Budget(company *comp, QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) {
    companyact = comp;
@@ -105,7 +109,7 @@ void Budget::inicialize() {
 	m_list->setSorting( TRUE );
 	m_list->setSelectionMode( QTable::SingleRow );
 	m_list->setColumnMovingEnabled( TRUE );
-	m_list->setNumCols(9);
+	m_list->setNumCols(11);
 	m_list->horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "Nº Línea" ) );
 	m_list->horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripción" ) );
 	m_list->horizontalHeader()->setLabel( COL_CANTLPRESUPUESTO, tr( "Cantidad" ) );
@@ -131,12 +135,34 @@ void Budget::inicialize() {
 	m_list->hideColumn(COL_IDARTICULO);
 	m_list->hideColumn(COL_REMOVE);
 	
-   
+	m_list->setNumRows(1000);
+	
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
 	m_list->setColumnReadOnly(COL_NOMARTICULO,true);
 	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
 	m_list->setPaletteBackgroundColor("#AFFAFA");   
-	m_list->setReadOnly(FALSE);        
+	m_list->setReadOnly(FALSE);
+	
+// Inicializamos la tabla de descuentos del presupuesto
+	m_listDiscounts->setNumRows( 0 );
+	m_listDiscounts->setNumCols( 0 );
+	m_listDiscounts->setSelectionMode( QTable::SingleRow );
+	m_listDiscounts->setSorting( TRUE );
+	m_listDiscounts->setSelectionMode( QTable::SingleRow );
+	m_listDiscounts->setColumnMovingEnabled( TRUE );
+	m_listDiscounts->setNumCols(2);
+	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_CONCEPTDPRESUPUESTO, tr( "Concepto" ) );
+	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_PROPORCIONDPRESUPUESTO, tr( "Proporción" ) );
+   
+	m_listDiscounts->setColumnWidth(COL_DESCUENTO_CONCEPTDPRESUPUESTO,500);
+	m_listDiscounts->setColumnWidth(COL_DESCUENTO_PROPORCIONDPRESUPUESTO,100);
+	
+	m_listDiscounts->setNumRows(100);
+
+//   listado->setPaletteBackgroundColor(QColor(150,230,230));
+	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
+	m_listDiscounts->setPaletteBackgroundColor("#AFFAFA");   
+	m_listDiscounts->setReadOnly(FALSE);    
 	
 }// end inicialize
 
@@ -162,6 +188,7 @@ void Budget::chargeBudget(QString idbudget) {
 		m_cifclient->setText(cur->valor("cifcliente"));
    
 		chargeBudgetLines(idbudget);
+		chargeBudgetDiscounts(idbudget);
     }// end if
      delete cur;   
 }// end chargeBudget
@@ -172,10 +199,9 @@ void Budget::chargeBudgetLines(QString idbudget) {
 	companyact->begin();
 	cursor2 * cur= companyact->cargacursor("SELECT * FROM lpresupuesto, articulo WHERE idpresupuesto="+idbudget+" AND articulo.idarticulo=lpresupuesto.idarticulo","unquery");
 	companyact->commit();
-	m_list->setNumRows( cur->numregistros() );
 	int i=0;
 	while (!cur->eof()) {
-		m_list->setText(i,COL_IDLPRESUPUESTO,cur->valor("numlpresupuesto"));
+		m_list->setText(i,COL_IDLPRESUPUESTO,cur->valor("idlpresupuesto"));
 		m_list->setText(i,COL_DESCLPRESUPUESTO,cur->valor("desclpresupuesto"));
 		m_list->setText(i,COL_CANTLPRESUPUESTO,cur->valor("cantlpresupuesto"));
 		m_list->setText(i,COL_PVPLPRESUPUESTO,cur->valor("pvplpresupuesto"));
@@ -189,7 +215,24 @@ void Budget::chargeBudgetLines(QString idbudget) {
 	}// end while
 	
 	delete cur;
-}
+}// end chargeBudgetLines
+
+
+// Carga líneas descuentos presupuesto
+void Budget::chargeBudgetDiscounts(QString idbudget) {
+	companyact->begin();
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto="+idbudget,"unquery");
+	companyact->commit();
+	int i=0;
+	while (!cur->eof()) {
+		m_list->setText(i,COL_DESCUENTO_CONCEPTDPRESUPUESTO,cur->valor("conceptdpresupuesto"));
+		m_list->setText(i,COL_DESCUENTO_PROPORCIONDPRESUPUESTO,cur->valor("proporciondpresupuesto"));
+		i++;
+		cur->siguienteregistro();
+	}// end while
+	
+	delete cur;
+}// end chargeBudgetDiscounts
 
 
 // Búsqueda de Clientes.
@@ -317,3 +360,107 @@ QString Budget::searchArticle() {
 	
 	return idArticle;
 }// end searchArticle
+
+
+void Budget::accept() {
+	fprintf(stderr,"accept button activated\n");
+	
+	companyact->begin();
+	if (saveBudget()!=0){
+		companyact->rollback();
+	} else {
+		if (saveBudgetLines()==0) {
+			companyact->commit();
+			close();
+		} else {
+			companyact->rollback();
+		}
+	}	
+} //end accept
+
+
+int Budget::saveBudget() {
+	QString SQLQuery;
+	
+	if (m_idpresupuesto != "0") {
+		SQLQuery = "UPDATE presupuesto  SET numpresupuesto="+m_numpresupuesto->text();
+      SQLQuery += " , fpresupuesto='"+ m_fpresupuesto->text()+"'";
+      SQLQuery += " , contactpresupuesto='"+m_contactpresupuesto->text()+"'";
+      SQLQuery += " , telpresupuesto='"+m_telpresupuesto->text()+"'";
+      SQLQuery += " , vencpresupuesto='"+m_vencpresupuesto->text()+"'";
+      SQLQuery += " , comentpresupuesto='"+m_comentpresupuesto->text()+"'";
+		SQLQuery += " , idcliente="+m_idclient;
+      SQLQuery += " WHERE idpresupuesto ="+m_idpresupuesto;
+	} else {
+		SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, vencpresupuesto, comentpresupuesto, idcliente)";
+		SQLQuery += " VALUES (";
+		SQLQuery += m_numpresupuesto->text();
+		SQLQuery += " , '"+m_fpresupuesto->text()+"'";
+      SQLQuery += " , '"+m_contactpresupuesto->text()+"'";
+      SQLQuery += " , '"+m_vencpresupuesto->text()+"'";
+      SQLQuery += " , '"+m_comentpresupuesto->text()+"'";
+		SQLQuery += " , "+m_idclient;
+      SQLQuery += " ) ";
+	}
+	return companyact->ejecuta(SQLQuery);
+} //end saveBudget
+
+
+int Budget::saveBudgetLines() {
+	int i = 0;
+	int error = 0;
+	while (i < m_list->numRows() && error==0) {
+		if (m_list->text(i,COL_REMOVE)=="S") {
+			if (m_list->text(i,COL_IDLPRESUPUESTO)!="") {
+				error = deleteBudgetLine(i);
+			}
+		} else {
+			if (m_list->text(i,COL_IDARTICULO)!="" || m_list->text(i,COL_NOMARTICULO)!="") {
+				if (m_list->text(i,COL_IDLPRESUPUESTO)!="") {
+					error = updateBudgetLine(i);
+				} else {
+					error = insertBudgetLine(i);
+				}
+			}
+		}
+		i ++;
+   }
+	return error;
+} // end saveBudgetLines
+
+
+int Budget::updateBudgetLine(int i) {
+	QString SQLQuery = "UPDATE lpresupuesto SET desclpresupuesto='"+m_list->text(i,COL_DESCLPRESUPUESTO)+"'";
+	SQLQuery += " , cantlpresupuesto="+ m_list->text(i,COL_CANTLPRESUPUESTO);
+	SQLQuery += " , pvplpresupuesto="+m_list->text(i,COL_PVPLPRESUPUESTO);
+	SQLQuery += " , descuentolpresupuesto="+m_list->text(i,COL_DESCUENTOLPRESUPUESTO);
+	SQLQuery += " , idarticulo="+m_list->text(i,COL_IDARTICULO);
+	SQLQuery += " WHERE idpresupuesto ="+m_idpresupuesto+" AND idlpresupuesto="+m_list->text(i,COL_IDLPRESUPUESTO);
+	return companyact->ejecuta(SQLQuery);
+} //end updateBudgetLine
+
+
+int Budget::insertBudgetLine(int i) {
+	QString SQLQuery ="";
+	SQLQuery = "INSERT INTO lpresupuesto (desclpresupuesto, cantlpresupuesto, pvplpresupuesto, descuentolpresupuesto, idpresupuesto, idarticulo)";
+	SQLQuery += " VALUES (";
+	SQLQuery += "'"+m_list->text(i,COL_DESCLPRESUPUESTO)+"'";
+	SQLQuery += " , "+m_list->text(i,COL_CANTLPRESUPUESTO);
+	SQLQuery += " , "+m_list->text(i,COL_PVPLPRESUPUESTO);
+	SQLQuery += " , "+m_list->text(i,COL_DESCUENTOLPRESUPUESTO);
+	SQLQuery += " , "+m_idpresupuesto;
+	SQLQuery += " , "+m_list->text(i,COL_IDARTICULO);
+	SQLQuery += " ) ";
+	return companyact->ejecuta(SQLQuery);
+} //end insertBudgetLine
+
+
+int Budget::deleteBudgetLine(int line) {
+	QString SQLQuery = "DELETE FROM lpresupuesto WHERE idlpresupuesto ="+m_list->text(line,COL_IDLPRESUPUESTO);
+	return companyact->ejecuta(SQLQuery);
+} //end deleteBudgetLine
+
+
+void Budget::cancel() {
+	close();
+}

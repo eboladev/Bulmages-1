@@ -40,9 +40,17 @@ public:
     ~Budget();
     void chargeBudget(QString);
 	 void chargeBudgetLines(QString);
+	 void chargeBudgetDiscounts(QString);
 	 void inicialize();
 	 void manageArticle(int);
 	 QString searchArticle();
+	 
+private:
+	int saveBudgetLines();
+	int saveBudget();
+	int insertBudgetLine(int);
+	int updateBudgetLine(int);
+	int deleteBudgetLine(int);
 	 
 public slots:
    virtual void searchClient();
@@ -51,6 +59,8 @@ public slots:
 	virtual void newBudgetLine();
 	virtual void removeBudgetLine();
 	virtual void valueBudgetLineChanged(int, int);
+	virtual void accept();
+	virtual void cancel();
 
 };
 
