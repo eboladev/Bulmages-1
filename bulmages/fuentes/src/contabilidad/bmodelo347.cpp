@@ -33,7 +33,10 @@ void BModelo347::click_boto3() {
   int i =0;
   QString query;
   //A por la tabla de Ventas...pedazo de consulta SQL
-  query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, importe FROM (SELECT  registroiva.contrapartida, SUM(baseimp+(baseimp*iva*0.01)) AS importe FROM registroiva, borrador WHERE borrador.idborrador=registroiva.idborrador AND borrador.fecha >= '")+finicial->text() + QString("' AND borrador.fecha <= '") + ffinal->text() + QString("' GROUP BY registroiva.contrapartida) AS parcial, cuenta WHERE parcial.contrapartida=cuenta.idcuenta AND cuenta.codigo LIKE '430%%' AND importe >='") + importe->text() + QString("'");
+  
+  //query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, importe FROM (SELECT  registroiva.contrapartida, SUM(baseimp+(baseimp*iva*0.01)) AS importe FROM registroiva, borrador WHERE borrador.idborrador=registroiva.idborrador AND borrador.fecha >= '")+finicial->text() + QString("' AND borrador.fecha <= '") + ffinal->text() + QString("' GROUP BY registroiva.contrapartida) AS parcial, cuenta WHERE parcial.contrapartida=cuenta.idcuenta AND cuenta.codigo LIKE '430%%' AND importe >='") + importe->text() + QString("'");
+  
+  query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, importe FROM cuenta INNER JOIN (SELECT idcuenta, sum(apunte.debe) as importe FROM apunte WHERE idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta WHERE (codigo='4770016' OR codigo='4770007' OR codigo='4770004')) AS iva INNER JOIN apunte USING (idcuenta) WHERE fecha<='")+ffinal->text()+QString("' AND fecha>='")+finicial->text()+QString("' GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '430%') GROUP BY idcuenta) AS facturado USING(idcuenta) WHERE importe>")+importe->text()+QString(" ORDER BY descripcion");
   DBConn->begin();
   cursor2 *recordSet = DBConn->cargacursor(query,"recordSet");
   DBConn->commit();
@@ -50,7 +53,10 @@ void BModelo347::click_boto3() {
   }
 
   //A por la tabla de Compras...
-  query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, importe FROM (SELECT  registroiva.contrapartida, SUM(baseimp+(baseimp*iva*0.01)) AS importe FROM registroiva, borrador WHERE borrador.idborrador=registroiva.idborrador AND borrador.fecha >= '")+finicial->text() + QString("' AND borrador.fecha <= '") + ffinal->text() + QString("' GROUP BY registroiva.contrapartida) AS parcial, cuenta WHERE parcial.contrapartida=cuenta.idcuenta AND cuenta.codigo LIKE '400%%' AND importe >='") + importe->text() + QString("'");
+  
+  //query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, importe FROM (SELECT  registroiva.contrapartida, SUM(baseimp+(baseimp*iva*0.01)) AS importe FROM registroiva, borrador WHERE borrador.idborrador=registroiva.idborrador AND borrador.fecha >= '")+finicial->text() + QString("' AND borrador.fecha <= '") + ffinal->text() + QString("' GROUP BY registroiva.contrapartida) AS parcial, cuenta WHERE parcial.contrapartida=cuenta.idcuenta AND cuenta.codigo LIKE '400%%' AND importe >='") + importe->text() + QString("'");
+  
+  query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, importe FROM cuenta INNER JOIN (SELECT idcuenta, sum(apunte.haber) as importe FROM apunte WHERE idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta WHERE (codigo='4720016' OR codigo='4720007' OR codigo='4720004')) AS iva INNER JOIN apunte USING (idcuenta) WHERE fecha<='")+ffinal->text()+QString("' AND fecha>='")+finicial->text()+QString("' GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo SIMILAR TO '4(0|1)0%') GROUP BY idcuenta) AS facturado USING(idcuenta) WHERE importe>")+importe->text()+QString(" ORDER BY descripcion");
   DBConn->begin();
   recordSet = DBConn->cargacursor(query,"recordSet");
   DBConn->commit();
