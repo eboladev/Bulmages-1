@@ -23,6 +23,7 @@
 #include <qstring.h>
 
 #define EURO  166.386
+#define S_EURO  "166.386"
 
 #define LEN_CODIGO_CUENTA 12
 #define LEN_TITULO  40
@@ -203,9 +204,12 @@ int pgimportfiles::bulmages2Contaplus(QFile &subcuentas, QFile &asientos) {
 		linea += (                                  strblancomax).left(LEN_CODDIVISA);
 		linea += (                                  strblancomax).left(LEN_IMPAUXME);
 		linea += ("2"                              +strblancomax).left(LEN_MONEDAUSO);
+		/// Para evitar redondeos usamos el valor devuelto en forma de texto por la base de datos que ya opera ella en punto fijo
 		cadaux.sprintf("%2.2f", curas->valor("debe").toFloat());
+		cadaux=curas->valor("debe");
 		linea += (strblancomax+cadaux).right(LEN_EURODEBE);
 		cadaux.sprintf("%2.2f", curas->valor("haber").toFloat());
+		cadaux = curas->valor("haber");
 		linea += (strblancomax+cadaux).right(LEN_EUROHABER);
 		linea += (strblancomax+"0.00").right(LEN_BASEEURO);
 		linea += ( "F"+strblancomax).left(LEN_NOCONV);
@@ -392,11 +396,12 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 			}// end if
 			napunte++;
 			if( monedauso == "1" ) { // Ptas
-				debe = QString::number((ptahaber.toDouble()) / EURO);
-				haber = QString::number((ptadebe.toDouble()) / EURO);
+			/// Aqui está el peor error cometido, usar punto flotante
+				debe = ptahaber +"/"+S_EURO;
+				haber = ptadebe+"/"+S_EURO;
 			} else {
-				debe = QString::number(eurodebe.toDouble());
-				haber = QString::number(eurohaber.toDouble());
+				debe = eurodebe;
+				haber = eurohaber;
 			}// end if	
 			query = "SELECT * FROM cuenta WHERE codigo='"+subcta+"'";
 			conexionbase->begin();

@@ -53,6 +53,7 @@
 #define COL_IDCCOSTE        15
 
 #define IDASIENTO cursorasientos->valor("idasiento").ascii()
+#define QS_IDASIENTO cursorasientos->valor("idasiento")
 #define ORDENASIENTO cursorasientos->valor("ordenasiento").ascii()
 #define ROWACTUAL tapunts->currentRow()
 /// Define el número de filas que va a tener la tabla de apuntes.
@@ -489,9 +490,7 @@ void intapunts3view::repinta(int numasiento) {
     }// end while
 
     idasiento1->setText(ordenAsiento);
-
     QDate * aux = new QDate();
-    //si  datestyle = 'sql, european'
     aux->setYMD(fechaasiento2.mid(6,4).toInt(),fechaasiento2.mid(3,2).toInt(),fechaasiento2.mid(0,2).toInt());
 
     fechaasiento1->setText(aux->toString("dd/MM/yyyy"));
@@ -567,8 +566,8 @@ void intapunts3view::boton_cerrarasiento() {
         return;
     }// end if
 
-    // Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.    
-    // Esta versión se basa en la base de datos pq es mejor ya que así somos más eficaces.
+    /// Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.    
+    /// Esta versión se basa en la base de datos pq es mejor ya que así somos más eficaces.
     QString SQLQuery = "SELECT * FROM borrador, cuenta where borrador.idcuenta = cuenta.idcuenta AND idasiento="+QString::number(atoi(IDASIENTO));
     conexionbase->begin();
     cursor2 *cursborr= conexionbase->cargacursor(SQLQuery, "queryborrador");
@@ -600,14 +599,14 @@ void intapunts3view::boton_cerrarasiento() {
     }// end while
     delete cursborr;
 
-    // Realizamos la operación en la base de datos.
+    /// Realizamos la operación en la base de datos.
     if (idasiento==-1) idasiento=atoi(IDASIENTO);
     conexionbase->begin();
     conexionbase->cierraasiento(idasiento);
     conexionbase->commit();
     asientocerradop();
 
-    // Como pueden haber cambiado cosas, hacemos un repintado para que se actualizen
+    /// Como pueden haber cambiado cosas, hacemos un repintado para que se actualizen
     repinta(idasiento);
     fechaasiento1->selectAll();
     fechaasiento1->setFocus();
@@ -963,27 +962,19 @@ void intapunts3view::duplicar(int col) {
 }// end duplicar
 
 
+/** \brief Calcula el desucadre del asiento que se está viendo
+  * Esta función se conecta a la base de datos y calcula los descuadres basandose en la tabla de borradores.
+  */
 void intapunts3view::calculadescuadre() {
-    double desc=0;
-    double deb=0;
-    double hab=0;
-    QString cadena;
-    for (int i=0;i<100;i++) {
-        if (!tapunts->text(i,COL_DEBE).isNull()) {
-            desc += atof(tapunts->text(i,COL_DEBE).ascii());
-            deb  += atof(tapunts->text(i,COL_DEBE).ascii());
-        }// end if
-        if (!tapunts->text(i,COL_HABER).isNull()) {
-            desc-= atof(tapunts->text(i,COL_HABER).ascii());
-            hab += atof(tapunts->text(i,COL_HABER).ascii());
-        }// end if
-    }// end for
-    cadena.sprintf("%2.2f",desc);
-    descuadre->setText(cadena);
-    cadena.sprintf("%2.2f",hab);
-    totalhaber1->setText(cadena);
-    cadena.sprintf("%2.2f",deb);
-    totaldebe1->setText(cadena);
+	QString query = "SELECT sum(debe) as tdebe, sum(haber) AS thaber, sum(debe)-sum(haber) AS desc FROM borrador WHERE idasiento="+QS_IDASIENTO;
+	conexionbase->begin();
+	cursor2 * cur = conexionbase->cargacursor(query,"descuadres");
+	conexionbase->commit();
+
+	descuadre->setText(cur->valor("desc"));
+	totalhaber1->setText(cur->valor("thaber"));
+	totaldebe1->setText(cur->valor("tdebe"));
+	delete cur;
 }// end calculadescuadre
 
 
@@ -995,7 +986,8 @@ void intapunts3view::borraborrador(int row) {
         QString idborrador = tapunts->text(row, COL_IDBORRADOR);
         QString query = "DELETE FROM borrador WHERE idborrador="+idborrador;
         conexionbase->begin();
-        if (conexionbase->ejecuta(query)==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
+        if (conexionbase->ejecuta(query)==42501) 
+		QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
         query = "DELETE FROM registroiva WHERE idborrador="+idborrador;
         conexionbase->ejecuta(query);
         conexionbase->commit();
@@ -1125,85 +1117,20 @@ void intapunts3view::duplicarapunte() {
 }// end duplicarapunte
 
 
+/** \brief SLOT que responde a la pulsación del botón de iva.
+  * Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se presente con los datos ya introducidos.
+  * La clase ivaview hace una inserción o una modificación segun exista o no una entrada de iva para dicho borrador.
+  */
 void intapunts3view::boton_iva() {
-//   QString codcuenta("xxx");
    guardaborrador(ROWACTUAL);
    // Si ya hay una entrada de borrador, no vamos a preguntar nada.
    // Directamente vamos a editar dicho registro.
    int idborrador = tapunts->text(ROWACTUAL,COL_IDBORRADOR).toInt();
-//    if (tapunts->text(ROWACTUAL,COL_IVA) != "") {
    ivaview *nuevae=new ivaview(empresaactual, 0,"");
    nuevae->inicializa1(idborrador);
    nuevae->exec();
    delete nuevae;
    return;
-//    }// end if
-    
-
-/*      
-    // Miramos que haya un row seleccionado.
-    tapunts->currentRow() >=0 ? i=rowactual : i=0;
-
-    // Buscamos una cuenta de IVA a partir de la posicion actual o a partir del principio si no hay otra candidata.
-    while (codcuenta != "472" && codcuenta != "477" && codcuenta != "") 
-        codcuenta = tapunts->text(i++,COL_SUBCUENTA).left(3);
-    if (codcuenta == "" && rowactual > 0) {
-        i=0;
-        codcuenta="xxx";
-        while (codcuenta != "472" && codcuenta != "477" && codcuenta != "")
-            codcuenta = tapunts->text(i++,COL_SUBCUENTA).left(3);
-    }
-    if (codcuenta != "") {
-        tapunts->setCurrentCell(rowactual=i-1,COL_SUBCUENTA);
-        codcuenta = tapunts->text(rowactual,COL_SUBCUENTA);
-        codcuenta = codcuenta.left(3);
-        int es_iva = (codcuenta == "472") + ((codcuenta == "477") * 2);
-        int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
-        if (idborrador != 0) {
-              ivaview *nuevae=new ivaview(empresaactual,0,"");
-              nuevae->inicializa(es_iva);
-              nuevae->inicializa1(idborrador);
-              nuevae->exec();
-              delete nuevae;
-        }// end if
-        repinta(atoi(IDASIENTO));
-    } else {
-           // Como no hay candidatos en cuentas de IVA, preguntamos si va a ser  una entrada
-           // Exenta de IVA.
-           sinIVA = QMessageBox::information(this, tr("Registro de IVA"),
-                                          tr("Desea Gestionar una entrada EXENTA de IVA en el registro?"),
-                                              QMessageBox::Yes,QMessageBox::No);
-        if (sinIVA==QMessageBox::Yes) {
-            //Creamos una entrada exenta de iva en el registro de IVA.
-            i=0;
-            codcuenta="xxx";
-            // Si no hay involucrada una cuenta de grupos 6 o 7 no es compra / venta y por tanto
-            // Esta descartada la posibilidad de que pueda haber un registro de IVA, sea de la clase que sea.
-            // Asi que buscamos cuentas del grupo 6 o 7, si las encontramos hacemos la entrada de IVA si no las encontramos damos un mensaje de error.
-            while (codcuenta != "6" && codcuenta != "7" && codcuenta != "") 
-                codcuenta = tapunts->text(i++,COL_SUBCUENTA).left(1);
-            if (codcuenta != "") {
-                --i;
-                int idborrador = tapunts->text(i,COL_IDBORRADOR).toInt(); 
-                codcuenta = tapunts->text(i,COL_SUBCUENTA);
-                codcuenta = codcuenta.left(1);
-                // Una forma "compleja" de indicar si es una compra o una venta.
-                int es_iva = (codcuenta == "6") + ((codcuenta == "7") * 2);
-                if (idborrador != 0) {
-                     ivaview *nuevae=new ivaview(empresaactual,0,"");
-                     nuevae->inicializa(es_iva);
-                     nuevae->inicializa1(idborrador);
-                     nuevae->exec();
-                     delete nuevae;
-                }// end if
-                repinta(atoi(IDASIENTO));
-            } else 
-                QMessageBox::information(this, tr("Registro de IVA"),
-                                          tr("Este Asiento no es de Compra ni Venta"),
-                                              QMessageBox::Ok);
-        }// end if
-    }// end if
-*/
 }// end boton_iva
 
 
