@@ -82,6 +82,7 @@ void BSelector::seleccionaempresa_clicked() {
 
 // Boton para entrar en el modulo de CONTABILIDAD 
 void BSelector::contabilidad_clicked() {
+/*   
    int pid;
    int error;
    //Abro Bulmages (contabilidad) con el nombre de la base de datos, Usuario y password
@@ -106,6 +107,10 @@ void BSelector::contabilidad_clicked() {
    if (pid) {
       waitpid (pid, NULL, 0);
    }// end if  
+  */ 
+   char cadena[300];
+   sprintf(cadena,"bulmages bulmages %s %s %s", empresabd.ascii(), loggin.ascii(), password.ascii());
+   system (cadena);
 }// end contabilidad_clicked
 
 
@@ -113,11 +118,15 @@ void BSelector::contabilidad_clicked() {
 void BSelector::produccion_clicked() {
 //Al crear un nuevo modulo, le paso como primer parametro un puntero al selector.
 //De este modo puedo acceder facilmente al selector desde el modulo.
+   system("mozilla http://localhost/galopin/");
 }
 
 
 //Boton para entrar en el modulo de STOCKS Y ALMACENES
 void BSelector::almacen_clicked() {
+   fprintf(stderr,"SE ha pulsado sobre la opción del BContawev");
+   system("mozilla http://localhost/bcontaweb/");
+//   system("netscape http://localhost/bcontaweb/");
 }
 
 
