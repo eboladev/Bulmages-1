@@ -54,7 +54,7 @@
 
 #define IDASIENTO cursorasientos->valor("idasiento").ascii()
 #define ORDENASIENTO cursorasientos->valor("ordenasiento").ascii()
-
+#define ROWACTUAL tapunts->currentRow()
 
 intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, int  ) : intapunts3dlg(parent,name) {
    fprintf(stderr,"Constructor de intapunts3view\n");
@@ -560,8 +560,6 @@ void intapunts3view::boton_cerrarasiento() {
                 int idborrador = atoi(tapunts->text(i,COL_IDBORRADOR).ascii());
                 if (idborrador != 0) {
                     ivaview *regivaview=new ivaview(empresaactual,0,"");
-                    if (codcuenta == "477") regivaview->inicializa(2); //IVA Repercutido (Ventas)
-                    else regivaview->inicializa(1); //IVA Soportado (Compras)
                     regivaview->inicializa1(idborrador);
                     regivaview->exec();
                     delete regivaview;
@@ -1111,23 +1109,23 @@ void intapunts3view::duplicarapunte() {
 
 
 void intapunts3view::boton_iva() {
-    QString codcuenta("xxx");
-    int i;
-    int sinIVA=0;
-    guardaborrador(rowactual);
-    // Si ya hay una entrada de borrador, no vamos a preguntar nada.
-    // Directamente vamos a editar dicho registro.
-    int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
-    if (tapunts->text(rowactual,COL_IVA) != "") {
-       ivaview *nuevae=new ivaview(empresaactual, 0,"");
-       nuevae->inicializa(0);
-       nuevae->inicializa1(idborrador);
-       nuevae->exec();
-       delete nuevae;
-       return;
-    }// end if
+//   QString codcuenta("xxx");
+   int i;
+   int sinIVA=0;
+   guardaborrador(ROWACTUAL);
+   // Si ya hay una entrada de borrador, no vamos a preguntar nada.
+   // Directamente vamos a editar dicho registro.
+   int idborrador = tapunts->text(ROWACTUAL,COL_IDBORRADOR).toInt();
+//    if (tapunts->text(ROWACTUAL,COL_IVA) != "") {
+   ivaview *nuevae=new ivaview(empresaactual, 0,"");
+   nuevae->inicializa1(idborrador);
+   nuevae->exec();
+   delete nuevae;
+   return;
+//    }// end if
     
-      
+
+/*      
     // Miramos que haya un row seleccionado.
     tapunts->currentRow() >=0 ? i=rowactual : i=0;
 
@@ -1190,6 +1188,7 @@ void intapunts3view::boton_iva() {
                                               QMessageBox::Ok);
         }// end if
     }// end if
+*/
 }// end boton_iva
 
 

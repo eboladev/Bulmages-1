@@ -289,11 +289,11 @@ CREATE SEQUENCE borrador_idborrador_seq
 CREATE TABLE borrador (
     idborrador integer DEFAULT nextval('"borrador_idborrador_seq"'::text) NOT NULL,
     codigoborrador integer,
-    idasiento integer REFERENCES asiento(idasiento),
+    idasiento integer NOT NULL REFERENCES asiento(idasiento),
     iddiario integer REFERENCES diario(iddiario),
     fecha timestamp with time zone,
     conceptocontable character varying(50),
-    idcuenta integer REFERENCES cuenta(idcuenta),
+    idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
     descripcion character varying(100),
     debe double precision,
     haber double precision,

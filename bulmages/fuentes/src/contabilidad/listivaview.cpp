@@ -373,7 +373,7 @@ void listivaview::menu_contextual(int row, int , const QPoint &poin) {
            int idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
            if (idborrador != 0) {
                ivaview *nuevae=new ivaview(empresaactual,0,"");
-               nuevae->inicializa(1); //el "1" indica IVA Soportado
+//               nuevae->inicializa(1); //el "1" indica IVA Soportado
                nuevae->inicializa1(idborrador);
                nuevae->exec();
                delete nuevae;
@@ -407,7 +407,7 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
            int idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
            if (idborrador != 0) {
                ivaview *nuevae=new ivaview(empresaactual, 0,"");
-               nuevae->inicializa(2); //el "2" indica IVA Repercutido
+//               nuevae->inicializa(2); //el "2" indica IVA Repercutido
                nuevae->inicializa1(idborrador);
                nuevae->exec();
                delete nuevae;
