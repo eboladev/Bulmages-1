@@ -1497,37 +1497,64 @@ void intapunts3view::asiento_cierre() {
 
 
 void intapunts3view::asiento_apertura() {
-    int idcuenta;
-    int idasiento;
-    double nuevodebe, nuevohaber;
-    QString nfecha = fechaasiento1->text();
-    asientoview *nuevoasiento = new asientoview;
-    // Buscamos el asiento de cierre, que se supone es el ultimo asiento introducido.
-    QString query= "SELECT max(idasiento) as id FROM asiento";
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(query, "max");
-    conexionbase->commit();
-    query = "SELECT * FROM borrador WHERE idasiento ="+cur->valor("id");
-    delete cur;
-    // Creamos un nuevo asiento, que sera el asientode apertura.
-    nuevoasiento->inicializa(conexionbase);
-    idasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0);
-    conexionbase->begin();
-    cur = conexionbase->cargacursor(query,"myquery");
-    conexionbase->commit();
-    while (!cur->eof()) {
-        nuevodebe= atof(cur->valor("haber").latin1());
-        nuevohaber = atof(cur->valor("debe").latin1());
-        idcuenta = atoi(cur->valor("idcuenta").latin1());
-        conexionbase->nuevoborrador(idcuenta, idasiento,"Asiento de Apertura","", nuevodebe, nuevohaber, nfecha, 0, 1, 0, 0);
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
-    conexionbase->begin();
-    conexionbase->cierraasiento(idasiento);
-    conexionbase->commit();
-    cargarcursor(idasiento);
-    muestraasiento(idasiento);
+  int idcuenta;
+  int idasiento;
+  double nuevodebe, nuevohaber;
+  QString nfecha = normalizafecha("02/01").toString("dd/MM/yyyy");
+  asientoview *nuevoasiento = new asientoview(this,"apertura");
+  //Buscamos el nombre de la base de datos que contiene el ejercicio anterior
+  QString query;
+  postgresiface2 *metabase = new postgresiface2();
+  metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
+  metabase->begin();
+  query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",empresaactual->nombreDB.latin1());
+  cursor2 *cur = metabase->cargacursor(query,"empresa");
+  metabase->commit();
+  delete metabase;
+  if (!cur->eof()) {
+      QString anteriorDB = cur->valor("ejant");
+      if (anteriorDB != "") {
+          //**************************************************************
+          //Cargamos en un cursor el asiento de cierre del ejercicio anterior, que se supone es el ultimo asiento introducido.
+          //***************************************************************
+          postgresiface2 * DBconnEjAnt = new postgresiface2();
+          DBconnEjAnt->inicializa(anteriorDB);
+          DBconnEjAnt->begin();
+          query="SELECT max(idasiento) as ultimo FROM asiento";
+          cur = DBconnEjAnt->cargacursor(query, "max");
+          query = "SELECT * FROM borrador WHERE idasiento ="+cur->valor("ultimo");
+          cur = DBconnEjAnt->cargacursor(query, "cierre");
+          DBconnEjAnt->commit();
+          delete DBconnEjAnt;
+          //**************************************************************
+          //Fin de la connexión con el ejercicio anterior,
+          //El asiento de cierre del ejercicio anterior lo tenemos en "cur"
+          //***************************************************************
+
+          // Creamos un nuevo asiento, que sera el asiento de apertura.
+          postgresiface2 * DBconnEjActual = new postgresiface2();
+          DBconnEjActual->inicializa(empresaactual->nombreDB);
+          nuevoasiento->inicializa(DBconnEjActual);
+          idasiento = nuevoasiento->creaasiento( "Asiento de Apertura", nfecha,0);
+          while (!cur->eof()) {
+              nuevodebe= cur->valor("haber").toDouble();
+              nuevohaber = cur->valor("debe").toDouble();
+              idcuenta = cur->valor("idcuenta").toInt();
+              DBconnEjActual->nuevoborrador(idcuenta, idasiento,"Asiento de Apertura","", nuevodebe, nuevohaber, nfecha, 0, 1, 0, 0);
+              cur->siguienteregistro();
+          }// end while
+          DBconnEjActual->begin();
+          DBconnEjActual->cierraasiento(idasiento);
+          DBconnEjActual->commit();
+          delete DBconnEjActual;
+          cargarcursor(idasiento);
+          muestraasiento(idasiento);
+      }
+      else {
+        QMessageBox::information( this, tr("Asiento de Apertura"), tr("No se ha podido encontrar el ejercicio anterior.\n\r El Asiento de Apertura tendrá que ser entrado manualmente."), QMessageBox::Ok);
+      }
+  }
+  delete cur;
 }// end asiento_apertura
 
 

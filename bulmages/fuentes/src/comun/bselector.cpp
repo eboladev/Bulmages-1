@@ -82,7 +82,7 @@ void BSelector::compras_clicked() {
 }
 
 
-// Boton para entrar en el modulo de CONTABILIDAD BulmaGés 0.3.5
+// Boton para entrar en el modulo de CONTABILIDAD 
 void BSelector::contabilidad_clicked() {
 //Abro Bulmages (contabilidad) con el nombre de la base de datos, Usuario y password
 //que han sido introducidos al principio al cargar el selector de modulos.

@@ -233,52 +233,72 @@ void BConfiguracion::nuevoEjercicio() {
  cursor2 *cur = metabase->cargacursor(query,"empresa");
  metabase->commit();
  if (!cur->eof()) {
-    metabase->begin();
+    QString campoIdEmpresa = cur->valor("idempresa");
     QString nuevo_nombre = cur->valor("nombre");
     QString nuevo_anodb = QString::number(cur->valor("ano").toInt()+1);
     QString nombredb = cur->valor("nombredb");
     QString nuevo_nombredb = nombredb.left(nombredb.length()-4)+nuevo_anodb;
-    if (QMessageBox::Yes == QMessageBox::information( this, tr("Nuevo Ejercicio"), tr("Este proceso generará un nuevo ejercicio. \n\r.  Empresa:   "+ nuevo_nombre + "\n\r.  Ejercicio: "+nuevo_anodb) , QMessageBox::Yes,QMessageBox::No)) { 
-    //Creamos la entrada en la metabd
-    query.sprintf("INSERT INTO empresa ( nombre, nombredb, ano) VALUES ('%s','%s',%d)", nuevo_nombre.latin1(), nuevo_nombredb.latin1(), nuevo_anodb.toInt());
-    metabase->ejecuta(query);
+    if ( (nombredb!="bgplangcont") && (QMessageBox::Yes == QMessageBox::information( this, tr("Nuevo Ejercicio"), tr("Este proceso generará un nuevo ejercicio. \n\r.  Empresa:   "+ nuevo_nombre + "\n\r.  Ejercicio: "+nuevo_anodb) , QMessageBox::Yes,QMessageBox::No)) ) { 
+      //Comprovamos que no exista ya la base de datos que queremos crear.
+      metabase->begin();
+      query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",nuevo_nombredb.latin1());
+      cursor2 *cur = metabase->cargacursor(query,"empresa");
+      metabase->commit();
+      if (cur->eof()) {//No existe aun el ejercicio que pretendemos crear, entonces a por el !!
+        // Creamos la base de datos...
+        query.sprintf("CREATE DATABASE %s WITH TEMPLATE=%s",nuevo_nombredb.latin1(),nombredb.latin1());
+        if ( ! metabase->ejecuta(query) ) {
+            //Creamos la entrada en la metabd
+            metabase->begin();
+            query.sprintf("INSERT INTO empresa ( nombre, nombredb, ano, ejant) VALUES ('%s','%s',%d,'%s')", nuevo_nombre.latin1(), nuevo_nombredb.latin1(), nuevo_anodb.toInt(),nombredb.latin1());
+            metabase->ejecuta(query);
     
-    query.sprintf("SELECT last_value AS idempresa FROM empresa_idempresa_seq");
-    cursor2 *cur2=metabase->cargacursor(query,"idempresa");
+            query.sprintf("SELECT last_value AS idempresa FROM empresa_idempresa_seq");
+            cursor2 *cur2=metabase->cargacursor(query,"idempresa");
            
-    query.sprintf("SELECT * FROM usuario_empresa WHERE idempresa = %s", cur->valor("idempresa").latin1());
-    cursor2 *cur1=metabase->cargacursor(query,"us_emp");
-    while (!cur1->eof()) {
-       query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES (%s,%s,%s)", cur1->valor("idusuario").latin1(), cur2->valor("idempresa").latin1(), cur1->valor("permisos").latin1());
-       metabase->ejecuta(query);
-       cur1->siguienteregistro();
-    }// end while
-    delete cur1;
-    delete cur2; 
-    metabase->commit();
-    // Creamos la base de datos...
-    query.sprintf("CREATE DATABASE %s WITH TEMPLATE=%s",nuevo_nombredb.latin1(),nombredb.latin1());
-    metabase->ejecuta(query);
-    delete cur;
-    delete metabase;
-    
-// Borramos los asientos que hemos heredado del ejercicio anterior.
-   int resultado;
-   postgresiface2 *DBconn = new postgresiface2();
-   DBconn->inicializa(nuevo_nombredb.latin1());
-   DBconn->begin();
-   query.sprintf("DELETE FROM apunte WHERE idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
-   resultado = DBconn->ejecuta(query);
-   query.sprintf("DELETE FROM borrador WHERE idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
-   resultado += DBconn->ejecuta(query);
-   query.sprintf("DELETE FROM asiento WHERE idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
-   resultado += DBconn->ejecuta(query);
-   if (resultado != 0) {
-       DBconn->rollback();
-   } else {
-       DBconn->commit();
-   }// end if
-  }//end if QMessageBox
+            query.sprintf("SELECT * FROM usuario_empresa WHERE idempresa = %s", campoIdEmpresa.latin1());
+            cursor2 *cur1=metabase->cargacursor(query,"us_emp");
+            while (!cur1->eof()) {
+               query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES (%s,%s,%s)", cur1->valor("idusuario").latin1(), cur2->valor("idempresa").latin1(), cur1->valor("permisos").latin1());
+               metabase->ejecuta(query);
+               cur1->siguienteregistro();
+            }// end while
+            metabase->commit();
+            delete cur1;
+            delete cur2; 
+            delete cur;
+            delete metabase;
+        
+            // Borramos los asientos que hemos heredado del ejercicio anterior.
+            int resultado;
+            postgresiface2 *DBconn = new postgresiface2();
+            DBconn->inicializa(nuevo_nombredb.latin1());
+            DBconn->begin();
+            //query.sprintf("DELETE FROM apunte WHERE idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
+            query.sprintf("DELETE FROM apunte *");
+            resultado = DBconn->ejecuta(query);
+            //query.sprintf("DELETE FROM borrador WHERE idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
+            query.sprintf("DELETE FROM borrador *");
+            resultado += DBconn->ejecuta(query);
+            //query.sprintf("DELETE FROM asiento WHERE idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
+            query.sprintf("DELETE FROM asiento *");
+            resultado += DBconn->ejecuta(query);
+            if (resultado != 0) {
+               DBconn->rollback();
+            } else {
+               DBconn->commit();
+           }// end if
+           delete DBconn;
+       } //end if error al crear nuevo ejercicio
+       else {
+           QMessageBox::information( this, tr("Nuevo Ejercicio"), tr("No se ha podido crear un nuevo ejercicio. \n\r Posiblemente hay alguna conexión abierta  \n\r.  Empresa: ")+nombredb , QMessageBox::Ok); 
+       }
+     }//end if ejercicio ya existe
+     else {
+     //Si el ejercicio ya ha sido creado con anterioridad se lo decimos al usuario.
+     QMessageBox::information( this, tr("Nuevo Ejercicio"), tr("No se puede crear un nuevo ejercicio. \n\r El ejercicio que pretende crear ya existe.") , QMessageBox::Ok,0); 
+     }//end else
+    }//end if QMessageBox
 }// end if   
 }//Fin nuevoEjercicio
 

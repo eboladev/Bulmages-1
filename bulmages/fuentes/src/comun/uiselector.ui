@@ -99,6 +99,182 @@
             <string>Salir</string>
         </property>
     </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>seleccionaempresa</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>240</y>
+                <width>70</width>
+                <height>51</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string></string>
+        </property>
+        <property name="pixmap">
+            <pixmap>password.png</pixmap>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Seleccionar Empresa</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>contabilidad</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>250</x>
+                <y>10</y>
+                <width>120</width>
+                <height>90</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string></string>
+        </property>
+        <property name="pixmap">
+            <pixmap>kate.png</pixmap>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Contabilidad</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>almacen</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>130</x>
+                <y>100</y>
+                <width>121</width>
+                <height>90</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string></string>
+        </property>
+        <property name="pixmap">
+            <pixmap>hwinfo.png</pixmap>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Stock Almacen</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>nominas</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>250</x>
+                <y>100</y>
+                <width>120</width>
+                <height>90</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string></string>
+        </property>
+        <property name="pixmap">
+            <pixmap>kdmconfig.png</pixmap>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Nominas</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>configura</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>90</x>
+                <y>240</y>
+                <width>70</width>
+                <height>50</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string></string>
+        </property>
+        <property name="pixmap">
+            <pixmap>package_settings.png</pixmap>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Configuración</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>compras</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>130</x>
+                <y>10</y>
+                <width>121</width>
+                <height>90</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string></string>
+        </property>
+        <property name="pixmap">
+            <pixmap>kfind.png</pixmap>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Gestion Compras</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>produccion</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>100</y>
+                <width>120</width>
+                <height>90</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string></string>
+        </property>
+        <property name="pixmap">
+            <pixmap>clock.png</pixmap>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Producción</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>ventas</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>120</width>
+                <height>90</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string></string>
+        </property>
+        <property name="pixmap">
+            <pixmap>filetypes.png</pixmap>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Gestion Ventas</string>
+        </property>
+    </widget>
     <widget class="QLineEdit">
         <property name="name">
             <cstring>nombreempresa</cstring>
@@ -110,7 +286,7 @@
             <rect>
                 <x>70</x>
                 <y>210</y>
-                <width>290</width>
+                <width>230</width>
                 <height>20</height>
             </rect>
         </property>
@@ -378,180 +554,44 @@
             <bool>true</bool>
         </property>
     </widget>
-    <widget class="QPushButton">
+    <widget class="QLabel">
         <property name="name">
-            <cstring>seleccionaempresa</cstring>
+            <cstring>ejercicio</cstring>
         </property>
         <property name="geometry">
             <rect>
-                <x>10</x>
-                <y>240</y>
+                <x>310</x>
+                <y>210</y>
                 <width>70</width>
-                <height>51</height>
+                <height>20</height>
             </rect>
+        </property>
+        <property name="paletteForegroundColor">
+            <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+            </color>
+        </property>
+        <property name="font">
+            <font>
+                <pointsize>18</pointsize>
+            </font>
+        </property>
+        <property name="frameShape">
+            <enum>NoFrame</enum>
         </property>
         <property name="text">
             <string></string>
         </property>
-        <property name="pixmap">
-            <pixmap>password.png</pixmap>
+        <property name="textFormat">
+            <enum>AutoText</enum>
+        </property>
+        <property name="alignment">
+            <set>AlignCenter</set>
         </property>
         <property name="toolTip" stdset="0">
-            <string>Seleccionar Empresa</string>
-        </property>
-    </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>contabilidad</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>250</x>
-                <y>10</y>
-                <width>120</width>
-                <height>90</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap>kate.png</pixmap>
-        </property>
-        <property name="toolTip" stdset="0">
-            <string>Contabilidad</string>
-        </property>
-    </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>almacen</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>130</x>
-                <y>100</y>
-                <width>121</width>
-                <height>90</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap>hwinfo.png</pixmap>
-        </property>
-        <property name="toolTip" stdset="0">
-            <string>Stock Almacen</string>
-        </property>
-    </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>nominas</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>250</x>
-                <y>100</y>
-                <width>120</width>
-                <height>90</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap>kdmconfig.png</pixmap>
-        </property>
-        <property name="toolTip" stdset="0">
-            <string>Nominas</string>
-        </property>
-    </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>configura</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>90</x>
-                <y>240</y>
-                <width>70</width>
-                <height>50</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap>package_settings.png</pixmap>
-        </property>
-        <property name="toolTip" stdset="0">
-            <string>Configuración</string>
-        </property>
-    </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>compras</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>130</x>
-                <y>10</y>
-                <width>121</width>
-                <height>90</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap>kfind.png</pixmap>
-        </property>
-        <property name="toolTip" stdset="0">
-            <string>Gestion Compras</string>
-        </property>
-    </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>produccion</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>100</y>
-                <width>120</width>
-                <height>90</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap>clock.png</pixmap>
-        </property>
-        <property name="toolTip" stdset="0">
-            <string>Producción</string>
-        </property>
-    </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>ventas</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>10</y>
-                <width>120</width>
-                <height>90</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap>filetypes.png</pixmap>
-        </property>
-        <property name="toolTip" stdset="0">
-            <string>Gestion Ventas</string>
+            <string>Ejercicio Actual</string>
         </property>
     </widget>
 </widget>
@@ -623,9 +663,6 @@
     <tabstop>configura</tabstop>
     <tabstop>nombreempresa</tabstop>
 </tabstops>
-<includes>
-    <include location="local" impldecl="in implementation">uiselector.ui.h</include>
-</includes>
 <slots>
     <slot>salir_clicked()</slot>
     <slot>seleccionaempresa_clicked()</slot>

@@ -62,19 +62,21 @@ void abreempresaview::accept() {
    QListViewItem *it;
    int num;
    it = empresas->currentItem();
-    nombre=login->text();
-    contrasena=password->text();
-    empresabd= it->text(2);
-    nombreempresa= it->text(0);
-    num = apuestatealgo.cargaempresa(empresabd, nombre, contrasena);
-    if (num >0) {
+   nombre=login->text();
+   contrasena=password->text();
+   empresabd= it->text(2);
+   QString ejercicio = it->text(1);
+   nombreempresa= it->text(0);
+   num = apuestatealgo.cargaempresa(empresabd, nombre, contrasena);
+   if (num >0) {
        padre->NombreUsuario = nombre;
        padre->PasswordUsuario = contrasena;
        padre->NombreBaseDatos = empresabd;
        padre->nombreempresa->setText(nombreempresa);
+       padre->ejercicio->setText(ejercicio.latin1());
        delete this;
-    }//end if
-    if ((intentos+=1)>3) padre->close();
+   }//end if
+   if ((intentos+=1)>3) padre->close();
 }// end accept
 
 

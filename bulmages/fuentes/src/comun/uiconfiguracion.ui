@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>600</width>
-            <height>495</height>
+            <height>497</height>
         </rect>
     </property>
     <property name="caption">
@@ -187,22 +187,6 @@
                         <string>Rechazar</string>
                     </property>
                 </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButtonA_10</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>10</x>
-                            <y>330</y>
-                            <width>60</width>
-                            <height>31</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>Aceptar</string>
-                    </property>
-                </widget>
                 <widget class="QLabel">
                     <property name="name">
                         <cstring>muestra</cstring>
@@ -233,6 +217,22 @@
                     </property>
                     <property name="scaledContents">
                         <bool>false</bool>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButtonA_10</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>330</y>
+                            <width>60</width>
+                            <height>31</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Salvar</string>
                     </property>
                 </widget>
             </widget>

@@ -105,6 +105,7 @@ public:
   int compbalance();
   int amortizaciones();
   void reemplazacuentaenasientos();
+  QString nombreDB;
 
 };
 #endif

@@ -159,6 +159,9 @@ int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
     nombre = (char *) User->latin1();
     contrasenya = (char *) Passwd->latin1();
     strcpy(nombredb,DB->latin1());
+    nombreDB = QString(DB->latin1()); //variable redundante nombreDB = nombredb 
+            //nombredb es un vector[20] privado de caracteres de la clase empresa.
+            //nombreDB es un QString publico de la clase empresa
     //fi del salt
     
     // Buscamos la empresa anterior y hacemos lo que corresponda.
