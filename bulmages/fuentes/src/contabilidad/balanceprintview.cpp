@@ -219,7 +219,7 @@ void BalancePrintView::presentar(char *tipus){
             unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"balance.rtk");
             InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
             inp->set(InputBGes::diario, empresaactual, cursorapt);
-            OutputQPainter *salida = new OutputQPainter(A4, dots, 57, 59, 0,0,20,20,20,20);
+            OutputQPainter *salida = new OutputQPainter(57, 59, A4, dots, 0,0,20,20,20,20);
             unReport.print(*salida);
             QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
             mViewer->setCaption(tr("Balance", "Informe: "));
