@@ -1,125 +1,22 @@
---
--- PostgreSQL database dump
---
 
-SET client_encoding = 'SQL_ASCII';
-SET check_function_bodies = false;
-
-SET search_path = public, pg_catalog;
-
---
--- Data for TOC entry 5 (OID 927479)
--- Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY usuario (idusuario, nombre, apellido1, apellido2, login, "password") FROM stdin;
-1	Tomeu	Borras	Riera	tborras	tborras
-2	Bulmages	Bulma	Bulmita	bulmages	bulmages
-\.
+INSERT INTO usuario ( nombre, apellido1, apellido2, login, password) VALUES ('Bulmages', 'Bulmages', 'Bulmages', 'bulmages', 'bulmages');
+INSERT INTO usuario ( nombre, apellido1, apellido2, login, password) VALUES ('Tomeu', 'Borras', 'Riera', 'tborras', 'tborras');
 
 
---
--- Data for TOC entry 6 (OID 927484)
--- Name: empresa; Type: TABLE DATA; Schema: public; Owner: postgres
---
+INSERT INTO empresa (nombre, ano, nombredb, password, ejant) VALUES ('BulmaGes', 2004, 'bulmages', 'bulmages', 2003);
+INSERT INTO empresa (nombre, ano, nombredb, password, ejant) VALUES ('Empresa vacia', 2004, 'bgplangcont', 'bgplangcont', 2003);
+
+INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (2,2,1);
+INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (1,2,1);
+INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (2,1,1);
+INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (2,2,1);
 
 
---
--- Data for TOC entry 8 (OID 927492)
--- Name: pga_queries; Type: TABLE DATA; Schema: public; Owner: postgres
---
 
-COPY pga_queries (queryname, querytype, querycommand, querytables, querylinks, queryresults, querycomments) FROM stdin;
-\.
+INSERT INTO empresafact (nombre, ano, nombredb, password, ejant) VALUES ('Bulmafact', 2004, 'bulmafact', 'bulmafact', 2003);
+INSERT INTO empresafact (nombre, ano, nombredb, password, ejant) VALUES ('Empresa vacia', 2004, 'bulmaprueba', 'bulmaprueba', 2003);
 
-
---
--- Data for TOC entry 9 (OID 927497)
--- Name: pga_forms; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY pga_forms (formname, formsource) FROM stdin;
-\.
-
-
---
--- Data for TOC entry 10 (OID 927502)
--- Name: pga_scripts; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY pga_scripts (scriptname, scriptsource) FROM stdin;
-\.
-
-
---
--- Data for TOC entry 11 (OID 927507)
--- Name: pga_reports; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY pga_reports (reportname, reportsource, reportbody, reportprocs, reportoptions) FROM stdin;
-\.
-
-
---
--- Data for TOC entry 12 (OID 927512)
--- Name: pga_layout; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY pga_layout (tablename, nrcols, colnames, colwidth) FROM stdin;
-empresa	5	idempresa nombre ano nombredb password	150 150 150 150 150
-usuario	6	idusuario nombre 1apellido 2apellido login password	150 150 150 150 150 150
-usuario_empresa	4	idusuarioempresa idempresa idusuario permisos	150 150 150 150
-\.
-
-
---
--- Data for TOC entry 13 (OID 927517)
--- Name: pga_graphs; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY pga_graphs (graphname, graphsource, graphcode) FROM stdin;
-\.
-
-
---
--- Data for TOC entry 14 (OID 927522)
--- Name: pga_diagrams; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY pga_diagrams (diagramname, diagramtables, diagramlinks) FROM stdin;
-\.
-
-
---
--- Data for TOC entry 15 (OID 927527)
--- Name: pga_images; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY pga_images (imagename, imagesource) FROM stdin;
-\.
-
-
---
--- TOC entry 2 (OID 927477)
--- Name: usuario_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('usuario_idusuario_seq', 13, true);
-
-
---
--- TOC entry 3 (OID 927482)
--- Name: empresa_idempresa_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('empresa_idempresa_seq', 23, true);
-
-
---
--- TOC entry 4 (OID 927487)
--- Name: usuario_empre_idusuarioempr_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('usuario_empre_idusuarioempr_seq', 50, true);
-
-
+INSERT INTO usuario_empresafact (idempresafact, idusuario, permisos) VALUES (2,2,1);
+INSERT INTO usuario_empresafact (idempresafact, idusuario, permisos) VALUES (1,2,1);
+INSERT INTO usuario_empresafact (idempresafact, idusuario, permisos) VALUES (2,1,1);
+INSERT INTO usuario_empresafact (idempresafact, idusuario, permisos) VALUES (2,2,1);

@@ -16,17 +16,6 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 SET search_path = public, pg_catalog;
 
---
--- TOC entry 5 (OID 927477)
--- Name: usuario_idusuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE usuario_idusuario_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
 
 --
 -- TOC entry 8 (OID 927479)
@@ -34,7 +23,7 @@ CREATE SEQUENCE usuario_idusuario_seq
 --
 
 CREATE TABLE usuario (
-    idusuario integer DEFAULT nextval('"usuario_idusuario_seq"'::text) NOT NULL,
+    idusuario serial PRIMARY KEY,
     nombre character varying(25),
     apellido1 character varying(35),
     apellido2 character varying(35),
@@ -43,17 +32,6 @@ CREATE TABLE usuario (
 );
 
 
---
--- TOC entry 6 (OID 927482)
--- Name: empresa_idempresa_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE empresa_idempresa_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
 
 --
 -- TOC entry 9 (OID 927484)
@@ -61,7 +39,7 @@ CREATE SEQUENCE empresa_idempresa_seq
 --
 
 CREATE TABLE empresa (
-    idempresa integer DEFAULT nextval('"empresa_idempresa_seq"'::text) NOT NULL,
+    idempresa serial PRIMARY KEY,
     nombre character varying(50),
     ano character varying(10),
     nombredb character varying(15),
@@ -69,6 +47,14 @@ CREATE TABLE empresa (
     ejant character varying(15)
 );
 
+CREATE TABLE empresafact (
+    idempresafact serial PRIMARY KEY,
+    nombre character varying(50),
+    ano character varying(10),
+    nombredb character varying(15),
+    "password" character varying(15),
+    ejant character varying(15)
+);
 
 --
 -- TOC entry 7 (OID 927487)
@@ -91,6 +77,15 @@ CREATE TABLE usuario_empresa (
     idusuarioempresa integer DEFAULT nextval('"usuario_empre_idusuarioempr_seq"'::text) NOT NULL,
     idempresa integer,
     idusuario integer,
+    permisos integer
+);
+
+
+
+CREATE TABLE usuario_empresafact (
+    idusuarioempresafact serial PRIMARY KEY,
+    idempresafact integer REFERENCES empresafact(idempresafact),
+    idusuario integer REFERENCES usuario(idusuario),
     permisos integer
 );
 
@@ -266,23 +261,6 @@ CREATE TABLE pga_images (
 REVOKE ALL ON TABLE pga_images FROM PUBLIC;
 GRANT ALL ON TABLE pga_images TO PUBLIC;
 
-
---
--- TOC entry 27 (OID 927548)
--- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY usuario
-    ADD CONSTRAINT usuario_pkey PRIMARY KEY (idusuario);
-
-
---
--- TOC entry 28 (OID 927550)
--- Name: empresa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY empresa
-    ADD CONSTRAINT empresa_pkey PRIMARY KEY (idempresa);
 
 
 --
