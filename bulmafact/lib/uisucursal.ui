@@ -1,0 +1,226 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>UIsucursal</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>UIsucursal</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>438</width>
+            <height>303</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Tabla: sucursal</string>
+    </property>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel4</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>110</y>
+                <width>69</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Poblacion</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel4_3</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>130</x>
+                <y>20</y>
+                <width>69</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Telefono</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel4_4</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>130</x>
+                <y>50</y>
+                <width>69</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Fax</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel4_5</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>130</x>
+                <y>70</y>
+                <width>69</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>e-mail</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel4_6</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>130</x>
+                <y>110</y>
+                <width>69</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>URL</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>20</y>
+                <width>44</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Numero</string>
+        </property>
+    </widget>
+    <widget class="QTextEdit">
+        <property name="name">
+            <cstring>textEdit13</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>180</x>
+                <y>160</y>
+                <width>240</width>
+                <height>54</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel4_7</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>190</x>
+                <y>140</y>
+                <width>69</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Comentarios</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton26_2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>310</x>
+                <y>250</y>
+                <width>80</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Cancelar</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton26</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>220</x>
+                <y>250</y>
+                <width>80</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Aceptar</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel4_2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>150</y>
+                <width>69</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Cod. Postal</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel3</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>80</y>
+                <width>51</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Direccion</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>50</y>
+                <width>44</width>
+                <height>16</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Nombre</string>
+        </property>
+    </widget>
+</widget>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

@@ -12,57 +12,42 @@
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
-#ifndef BMODVENTAS_H
-#define BMODVENTAS_H
 
-#include ".ui/uiventas.h"
+#ifndef Bpresupuesto_H
+#define Bpresupuesto_H
 
+#include ".ui/uipresupuesto.h"
 
 #include "bfempresa.h"
-#include "balbaventa.h"
-#include "bpresupuesto.h"
-#include "bpediventa.h"
-#include "bclientes.h"
-#include "barticulos.h"
-#include "bpasswd.h"
-#include "bvisorempresas.h"
+#include <qlineedit.h>
+#include <qlabel.h>
+#include <qscrollbar.h>
+#include <qgroupbox.h>
+#include <qtable.h>
+#include <qrect.h>
+#include <qlayout.h>
 
-#include <qworkspace.h>
-#include <qvbox.h>
-#include <qframe.h>
-
-class BfCursor;
-
-class BModVentas : public UIVentas
+/**
+@author Josep Burcion
+*/
+class Bpresupuesto : public UIpresupuesto
 {
     Q_OBJECT
-
+    
 public:
-    BModVentas(QString* usuario, QString* passwd, QString* dataBase, QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
-    ~BModVentas();
-    
-   
-public slots:    
-    virtual void albaranes();
-    virtual void presupuestos();
-    virtual void pedidos();
-    virtual void fichaClientes();
-    virtual void fichaArticulos();
-    virtual void mostrar_selector();
-    
+    Bpresupuesto(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0, WFlags f=0);
+    ~Bpresupuesto();
+
 private:
-    void cargaUsuario();   
-    int seleccionaEmpresa();   
-    QWorkspace * zona0; 
-    QString * Usuario;
-    QString * Password;
-    QString * DataBase;
-    int intentosFallidosPassword;
-    BfEmpresa* empresaTrabajo;
+    BfEmpresa* EmpresaTrabajo;
 
-signals:
-    virtual void clickEnlace();
-
+private slots:    
+    virtual void ScrollCabeceraV(int valor=0);
+    virtual void ScrollCabeceraH(int valor=0);
+    virtual void resizeEvent (QResizeEvent * evento=0);
+    
+    
 };
 
 #endif
+

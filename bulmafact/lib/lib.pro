@@ -3,17 +3,15 @@
 # Subdir relative project main directory: ./lib
 # Target is a library:  bulmafact
 
-TEMPLATE = lib
 VERSION = 0.1
-CONFIG += release \
-warn_on \
-dll
 TARGET = bulmafact
 OBJECTS_DIR = .obj
 UI_DIR = .ui
 MOC_DIR = .moc
-INCLUDEPATH = ../src \
-/usr/include/qt
+TEMPLATE =lib
+CONFIG += release warn_on dll
+INCLUDEPATH += ../src /usr/include/qt
+LANGUAGE = C++
 SOURCES += balbaventa.cpp \
            bmodventas.cpp \
            bpediventa.cpp \
@@ -22,7 +20,22 @@ SOURCES += balbaventa.cpp \
            bpasswd.cpp \
            bvisorempresas.cpp \
            bfempresa.cpp \
-           bbuscador.cpp 
+           bbuscador.cpp \
+           balb_pro.cpp \
+           bcatalogo.cpp \
+           bcond_garantia.cpp \
+           bcondiciones_v.cpp \
+           bdivision.cpp \
+           bfamilia.cpp \
+           bforma_pago.cpp \
+           bmarca.cpp \
+           bmodalidad_g.cpp \
+           boferta.cpp \
+           bpresupuesto.cpp \
+           bproveedor.cpp \
+           bsucursal.cpp \
+           btermino_fp.cpp \
+           btipo_iva.cpp 
 HEADERS += balbaventa.h \
            bmodventas.h \
            bpediventa.h \
@@ -31,12 +44,44 @@ HEADERS += balbaventa.h \
            bpasswd.h \
            bvisorempresas.h \
            bfempresa.h \
-           bbuscador.h 
+           bbuscador.h \
+           balb_pro.h \
+           bcatalogo.h \
+           bcond_garantia.h \
+           bcondiciones_v.h \
+           bdivision.h \
+           bfamilia.h \
+           bforma_pago.h \
+           bmarca.h \
+           bmodalidad_g.h \
+           boferta.h \
+           bpresupuesto.h \
+           bproveedor.h \
+           bsucursal.h \
+           btermino_fp.h \
+           btipo_iva.h 
 IDLS += uiclientes.ui \
         uiarticulos.ui \
         uipassword.ui \
         uivisorempresas.ui \
-        uibuscador.ui 
+        uibuscador.ui \
+        uialb_pro.ui \
+        uialmacen.ui \
+        uicatalogo.ui \
+        uicond_garantia.ui \
+        uicondiciones_v.ui \
+        uidivision.ui \
+        uifamilia.ui \
+        uiforma_pago.ui \
+        uimarca.ui \
+        uimodalidad_g.ui \
+        uioferta.ui \
+        uipresupuesto.ui \
+        uiproveedores.ui \
+        uisucursal.ui \
+        uitermino_fp.ui \
+        uitipo_iva.ui \
+        uiproveedor.ui 
 IMAGES += images/kate.png \
           images/kfind.png \
           images/clock.png \
@@ -91,7 +136,23 @@ FORMS += uialbaventa.ui \
          uiarticulos.ui \
          uipassword.ui \
          uivisorempresas.ui \
-         uibuscador.ui 
+         uibuscador.ui \
+         uimarca.ui \
+         uialb_pro.ui \
+         uialmacen.ui \
+         uicatalogo.ui \
+         uicond_garantia.ui \
+         uicondiciones_v.ui \
+         uidivision.ui \
+         uifamilia.ui \
+         uiforma_pago.ui \
+         uimodalidad_g.ui \
+         uioferta.ui \
+         uipresupuesto.ui \
+         uisucursal.ui \
+         uitermino_fp.ui \
+         uitipo_iva.ui \
+         uiproveedor.ui 
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

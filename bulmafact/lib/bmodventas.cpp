@@ -90,6 +90,11 @@ void BModVentas::albaranes() {
     (new BAlbaVenta(empresaTrabajo, zona0,"albaran"))->show();
 }
 
+//Abro la ventana de los presupuestos de Venta.
+void BModVentas::presupuestos() {
+    (new Bpresupuesto(empresaTrabajo, zona0,"presupuesto"))->show();
+}
+
 //Abro la ventana de los pedidos de Venta.
 void BModVentas::pedidos() {
     (new BPediVenta(empresaTrabajo, zona0,"pedido"))->show();

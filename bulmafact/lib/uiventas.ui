@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>607</width>
-            <height>366</height>
+            <height>368</height>
         </rect>
     </property>
     <property name="sizePolicy">
@@ -477,6 +477,12 @@
         <receiver>UIVentas</receiver>
         <slot>fichaArticulos()</slot>
     </connection>
+    <connection>
+        <sender>ventasPresupuestosAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIVentas</receiver>
+        <slot>presupuestos()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>pedidos()</slot>
@@ -484,6 +490,7 @@
     <slot>mostrar_selector()</slot>
     <slot>fichaClientes()</slot>
     <slot>fichaArticulos()</slot>
+    <slot>presupuestos()</slot>
 </slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>

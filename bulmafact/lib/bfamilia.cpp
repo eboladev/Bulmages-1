@@ -12,57 +12,14 @@
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
-#ifndef BMODVENTAS_H
-#define BMODVENTAS_H
 
-#include ".ui/uiventas.h"
+#include "bfamilia.h"
+
+Bfamilia::Bfamilia(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIfamilia(parent, name, f) {
+    EmpresaTrabajo=punteroEmpresaTrabajo;
+}
 
 
-#include "bfempresa.h"
-#include "balbaventa.h"
-#include "bpresupuesto.h"
-#include "bpediventa.h"
-#include "bclientes.h"
-#include "barticulos.h"
-#include "bpasswd.h"
-#include "bvisorempresas.h"
+Bfamilia::~Bfamilia(){
+}
 
-#include <qworkspace.h>
-#include <qvbox.h>
-#include <qframe.h>
-
-class BfCursor;
-
-class BModVentas : public UIVentas
-{
-    Q_OBJECT
-
-public:
-    BModVentas(QString* usuario, QString* passwd, QString* dataBase, QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
-    ~BModVentas();
-    
-   
-public slots:    
-    virtual void albaranes();
-    virtual void presupuestos();
-    virtual void pedidos();
-    virtual void fichaClientes();
-    virtual void fichaArticulos();
-    virtual void mostrar_selector();
-    
-private:
-    void cargaUsuario();   
-    int seleccionaEmpresa();   
-    QWorkspace * zona0; 
-    QString * Usuario;
-    QString * Password;
-    QString * DataBase;
-    int intentosFallidosPassword;
-    BfEmpresa* empresaTrabajo;
-
-signals:
-    virtual void clickEnlace();
-
-};
-
-#endif

@@ -1,0 +1,333 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>UIalmacen</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>UIalmacen</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>397</width>
+            <height>342</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Tabla: almacen</string>
+    </property>
+    <widget class="QLayoutWidget">
+        <property name="name">
+            <cstring>layout53</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>180</x>
+                <y>290</y>
+                <width>168</width>
+                <height>32</height>
+            </rect>
+        </property>
+        <hbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButton1</cstring>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>80</width>
+                        <height>30</height>
+                    </size>
+                </property>
+                <property name="maximumSize">
+                    <size>
+                        <width>80</width>
+                        <height>30</height>
+                    </size>
+                </property>
+                <property name="text">
+                    <string>Aceptar</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButton2</cstring>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>80</width>
+                        <height>30</height>
+                    </size>
+                </property>
+                <property name="maximumSize">
+                    <size>
+                        <width>80</width>
+                        <height>30</height>
+                    </size>
+                </property>
+                <property name="text">
+                    <string>Cancelar</string>
+                </property>
+            </widget>
+        </hbox>
+    </widget>
+    <widget class="QTabWidget">
+        <property name="name">
+            <cstring>tabWidget10</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>370</width>
+                <height>270</height>
+            </rect>
+        </property>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Datos Almacen</string>
+            </attribute>
+            <widget class="QLayoutWidget">
+                <property name="name">
+                    <cstring>layout92</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>30</y>
+                        <width>320</width>
+                        <height>171</height>
+                    </rect>
+                </property>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QLineEdit" row="3" column="2">
+                        <property name="name">
+                            <cstring>lineEdit87</cstring>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="1" column="2" rowspan="2" colspan="1">
+                        <property name="name">
+                            <cstring>lineEdit86</cstring>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="5" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>textLabel4_2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Cod. Postal</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="4" column="2">
+                        <property name="name">
+                            <cstring>lineEdit88</cstring>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="2" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>textLabel2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Nombre</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="5" column="2">
+                        <property name="name">
+                            <cstring>lineEdit89</cstring>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="7" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>textLabel4_4</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Fax</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="6" column="2">
+                        <property name="name">
+                            <cstring>lineEdit90</cstring>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="7" column="2">
+                        <property name="name">
+                            <cstring>lineEdit91</cstring>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="4" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>textLabel4</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Poblacion</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="6" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>textLabel4_3</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Telefono</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="3" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>textLabel3</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Direccion</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="0" column="0" rowspan="2" colspan="1">
+                        <property name="name">
+                            <cstring>textLabel1</cstring>
+                        </property>
+                        <property name="text">
+                            <string>codigo</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="0" column="2">
+                        <property name="name">
+                            <cstring>lineEdit85</cstring>
+                        </property>
+                    </widget>
+                </grid>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Articulos Almacen</string>
+            </attribute>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel12</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>20</y>
+                        <width>273</width>
+                        <height>27</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Tabla con un listado de articulos presentes en este 
+almacen con su estoc actual, maximo y minimo.</string>
+                </property>
+            </widget>
+            <widget class="QTable">
+                <column>
+                    <property name="text">
+                        <string>codigo</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap></pixmap>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Articulo</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap></pixmap>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Descripcion</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap></pixmap>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Stock</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap></pixmap>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Max stk</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap></pixmap>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>min stk</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap></pixmap>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>precio</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap></pixmap>
+                    </property>
+                </column>
+                <row>
+                    <property name="text">
+                        <string>1</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap></pixmap>
+                    </property>
+                </row>
+                <row>
+                    <property name="text">
+                        <string>2</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap></pixmap>
+                    </property>
+                </row>
+                <row>
+                    <property name="text">
+                        <string>3</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap></pixmap>
+                    </property>
+                </row>
+                <property name="name">
+                    <cstring>table34</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>60</y>
+                        <width>350</width>
+                        <height>170</height>
+                    </rect>
+                </property>
+                <property name="numRows">
+                    <number>3</number>
+                </property>
+                <property name="numCols">
+                    <number>7</number>
+                </property>
+            </widget>
+        </widget>
+    </widget>
+</widget>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
