@@ -13,6 +13,13 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+ /** \file funcaux.h
+  * Fichero de definición de funciones auxiliares que no es preciso encapsular<BR>
+  * <P>En este fichero se definen todas aquellas funciones que por su brevedad o aislamiento son
+  * utilizadas de forma regular en el programa. Implementadas en \ref funcaux.cpp </P>
+  * <P>Dichas funciones normalmente son de uso general, por lo que es normal ver este archivo incluido
+  * en la práctica totalidad de los demás ficheros</P>
+  */
 #ifndef FUNCAUX_H
 #define FUNCAUX_H
 
@@ -20,27 +27,27 @@
 #include <stdio.h>
 #include <sstream>
 #include <string>
+using std::string;
 #include <math.h>
 #include <qstring.h>
 
-using std::string;
+
+/** \author Tomeu Borras */
 
 
-// Esta funcion es utilizada para extender la introduccion de codigos
-// Asi se convierten cadenas del estilo 1.3 en 10000003
-// Los parametros que acepta son el string inicial y el numero de digitos
-// Que debe tener la cadena resultante.
+/** \brief Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.  */
 string extiendecodigo (string , unsigned int );
+/** \brief Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.  */
 QString extiendecodigo (QString, unsigned int);
+/** \brief Redondeo de numeros en punto flotante. */
 float fround(float, unsigned);
+/** \brief Esta función convierte un numero con decimales a un entero. */
 int roundI(double);
+/** \brief Procesa el string pasado como parametro y devuelve una estructura del tipo QDate */
 QDate normalizafecha(QString);
-
+/** \brief Proteje cadenas de texto pasandoles una sustitución de codigos especiales de XML  */
 QString XMLProtect( const QString& );
 
-//string modificafecha(string);
-//QString modificafecha(QString);
-//QDate devuelvefecha(string);
 
 template <typename T>
 std::string Ttos(T arg) {

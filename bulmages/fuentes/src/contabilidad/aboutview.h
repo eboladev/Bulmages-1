@@ -24,16 +24,17 @@
 /**
   *@author Tomeu Borrás Riera
  * \class aboutview aboutview.h
- * \brief Se encarga de presentar el About del programa
+ * \brief Presentar el About del programa
  *  
- * Esta clase muestra el dialogo de About. No tiene mayor funcionalidad que la presentación de los créditos del programa.
+ * Esta clase muestra el dialogo de About. Presentan los créditos del programa.
+ * this class presents the about of the program.
  */
 
 class aboutview : public aboutdlg  {
    Q_OBJECT
 public: 
-	aboutview(QWidget *parent=0, const char *name=0);
-	~aboutview();
+	aboutview(QWidget *parent=0, const char *name=0);	/// Constructor de la clase
+	~aboutview();						/// Destructor de la clase
 };
 
 #endif

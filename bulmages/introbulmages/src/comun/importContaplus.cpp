@@ -49,16 +49,18 @@ importContaplus::importContaplus(postgresiface2 * con, QWidget * parent, const c
 
 /// Se ha pulsado sobre el botón de búsqueda de una subcuenta.
 void importContaplus::botonBuscarXML() {
-	m_XML->setText( QFileDialog::getOpenFileName("","Contaplus (*.xml)", this, "open file dialo", "Elija el Archivo"));
+	m_XML->setText( QFileDialog::getSaveFileName("","Contaplus (*.xml)", this, "select file", "Elija el Archivo"));
 }// end botonBuscarSubCta
 
 /// Se ha pulsado sobre el botón de búsqueda de una subcuenta.
 void importContaplus::botonBuscarSubCta() {
-	m_subCta->setText( QFileDialog::getOpenFileName("","Contaplus (*.txt)", this, "open file dialo", "Elija el Archivo"));
+	m_subCta->setText( QFileDialog::getSaveFileName("","Contaplus (*.txt)", this, "select file", "Elija el Archivo"));
 }// end botonBuscarSubCta
 
+/** \brief SLOT que responde a la pulsación de selección de archivo.
+  */
 void importContaplus::botonBuscarDiario() {
-	m_diario->setText( QFileDialog::getOpenFileName("","Contaplus (*.txt)", this, "open file dialo", "Elija el Archivo"));
+	m_diario->setText( QFileDialog::getSaveFileName("","Contaplus (*.txt)", this, "select file", "Elija el Archivo"));
 }// end botonBuscarDiario	
 
 void importContaplus::botonImportar() {
@@ -94,13 +96,23 @@ void importContaplus::botonImportar() {
 
 
 /** \brief SLOT que responde a la pulsación del botón de exportar
+  * 
+  * Se ha pulsado sobre el botón de exportar. Lee los campos del formulario
+  * mira si la opción de exportación es XML o contaplus y llama a las funciones apropiadas
+  * de la clase \ref pgimportfiles 
+  * Esta función utiliza los punteros a función para inicializar \ref pgimportfiles con las funciones que se van a
+  * encargar de presentación del estado de la importación.
+  * \todo Los punteros a función deberían ser reemplazados por funciones virtuales y haciendo derivar esta clase de pgimportfiles.
   */
 void importContaplus::botonExportar() {
+	/// Leemos las fechas entre las que tiene que ser el listado.
 	QString finicial = m_fInicial->text();
 	QString ffinal = m_fFinal->text();
-
+	
+	/// función de completitud. \ref pgimportfiles llamará a esta función para indicar el progreso de la exportación.
 	void (*func) (int,int);
 	func = realizado;
+	/// Función de mensajeria. \ref pgimportfiles llamará a esta función para presentar mensajes.
 	void (*func1) (QString);
 	func1 = publicamensaje;
 	pgimportfiles *importacion = new pgimportfiles(conexionbase,func, func1);

@@ -827,6 +827,7 @@ void Bulmages01::slotPropiedadesEmpresa()  {
   empresaactual.propiedadempresa();
 }// end slotPropiedadesEmpresa
 
+/*
 void Bulmages01::setCurrentEjercicio(QAction *a)  {
 fprintf(stderr,"Cambio de ejercicio\n");
 setCaption(tr("BulmaGés ") + a->text());
@@ -841,6 +842,7 @@ setCaption(tr("BulmaGés ") + a->text());
 empresaactual.setejactual(a->text());
 empresaactual.cambioejercicio();
 }// end setCurrentEjercicio
+*/
 
 void Bulmages01::slotLibroMayor()
 {

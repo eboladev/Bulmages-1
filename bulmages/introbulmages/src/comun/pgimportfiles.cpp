@@ -422,6 +422,7 @@ QString pgimportfiles::searchParent(QString cod) {
 
 
 /** \brief Esta función se encarga de pasar los datos de BulmaGés a XML
+  *
   * Los datos pasados de esta forma son mucho más sencillos de pasar.
   */
 int pgimportfiles::bulmages2XML(QFile &xmlfile) {
@@ -434,8 +435,8 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	"<FUGIT version='0.3.1' origen='BulmaGés'"
         " date='" << QDate().toString(Qt::ISODate) << "'>\n";
 	
-	/// Sólo se van a exportar las cuentas utilizadas
-	query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre ORDER BY codpadre";
+	/// Se exporta todo el plan contable
+	query = "SELECT * FROM cuenta WHERE padre ISNULL ORDER BY codigo";
 	conexionbase->begin();
 	cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
 	conexionbase->commit();
@@ -446,7 +447,28 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 		stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
 		stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
 		stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
+		stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
+		stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
+		stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
+		stream << "</CUENTA>\n";
+		curcta->siguienteregistro();
+	}// end while
+	delete curcta;	
+	query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre WHERE padre IS NOT NULL ORDER BY idpadre";
+	conexionbase->begin();
+	curcta = conexionbase->cargacursor(query,"elquery");
+	conexionbase->commit();
+	while (!curcta->eof()) {
+		stream << "<CUENTA>\n";
+		stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
+		stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
+		stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
+		stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
+		stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
 		stream << "\t<CODPADRE>"       << XMLProtect(curcta->valor("codpadre"))      << "</CODPADRE>\n";
+		stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
+		stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
+		stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
 		stream << "</CUENTA>\n";
 		curcta->siguienteregistro();
 	}// end while
@@ -463,7 +485,7 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 		stream << "\t<IDTIPOIVA>"       << XMLProtect(curtiva->valor("idtipoiva"))      << "</IDTIPOIVA>\n";
 		stream << "\t<NOMBRETIPOIVA>"   << XMLProtect(curtiva->valor("nombretipoiva"))      << "</NOMBRETIPOIVA>\n";
 		stream << "\t<PORCENTAJETIPOIVA>"       << XMLProtect(curtiva->valor("porcentajetipoiva"))      << "</PORCENTAJETIPOIVA>\n";
-		stream << "\t<CUENTA>"       << XMLProtect(curtiva->valor("codigo"))      << "</CUENTA>\n";
+		stream << "\t<CUENTATIPOIVA>"       << XMLProtect(curtiva->valor("codigo"))      << "</CUENTATIPOIVA>\n";
 
 		stream << "</TIPOIVA>\n";
 		curtiva->siguienteregistro();
@@ -575,8 +597,9 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 
 
 /** \brief Función para pasar de un archivo XML a Bulmagés
-  * Crea un objeto del tipo \ref StructureParser y lo invoca para que haga la imporación del
-  * archivo XML
+  *
+  * Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX) y lo ejecuta para 
+  * que haga la imporación del archivo XML
   */
 int pgimportfiles::XML2Bulmages (QFile &fichero) {
         StructureParser handler(conexionbase, alerta);
@@ -592,10 +615,10 @@ int pgimportfiles::XML2Bulmages (QFile &fichero) {
 StructureParser::StructureParser(postgresiface2 *con,void (*func)(int,int) ) {
 	alerta = func;
 	conexionbase = con;
-	QString query = "INSERT INTO cuenta (codigo, descripcion, idgrupo) VALUES ('AUX','Una descripcion', 1)";
-	conexionbase->begin();
+	QString query = "INSERT INTO cuenta (codigo, descripcion, idgrupo) VALUES ('AUX','Una descripcion auxiliar de cuenta', 1)";
+//	conexionbase->begin();
 	conexionbase->ejecuta(query);
-	conexionbase->commit();	
+//	conexionbase->commit();	
 	for (int i=0; i<=12;i++) {
 		QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, "+QString::number(i)+", FALSE)";
 		conexionbase->begin();
@@ -606,9 +629,9 @@ StructureParser::StructureParser(postgresiface2 *con,void (*func)(int,int) ) {
 
 StructureParser::~StructureParser() {
 	QString query = "DELETE FROM cuenta WHERE codigo='AUX'";
-	conexionbase->begin();
+//	conexionbase->begin();
 	conexionbase->ejecuta(query);
-	conexionbase->commit();
+//	conexionbase->commit();
 }// end StructureParser
 
 
@@ -674,7 +697,8 @@ bool StructureParser::startElement( const QString&, const QString&, const QStrin
 bool StructureParser::endElement( const QString&, const QString&, const QString& qName) {
     indent.remove( (uint)0, 2 );
     fprintf( stderr,"<\\%s>\n", (const char*)qName);
-/// VAmos a ir distinguiendo casos y actuando segun cada caso. En la mayoría de casos iremos actuando en consecuencia.    
+/// VAmos a ir distinguiendo casos y actuando segun cada caso. En la mayoría de casos iremos actuando en consecuencia.  
+    /// Ha terminado un asiento, por tanto hacemos el update de los campos de éste.  
     if (qName == "ASIENTO") {
     	fprintf(stderr,"Fin de Asiento");
 	QString query = "UPDATE asiento set fecha='"+fechaasiento+"' WHERE idasiento="+idasiento;
@@ -687,9 +711,9 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
 /// Si es una punte hacemos su inserción.
     if (qName == "APUNTE") {
     	QString query = "UPDATE borrador SET debe = "+debeapunte+", haber="+haberapunte+", idcuenta=id_cuenta('"+codigocuentaapunte+"'), fecha='"+fechaapunte+"', conceptocontable='"+conceptocontableapunte+"' WHERE idborrador="+idborrador;
-	conexionbase->begin();
+//	conexionbase->begin();
 	conexionbase->ejecuta(query);
-	conexionbase->commit();
+//	conexionbase->commit();
     }// end if
     if (qName == "FECHA" && tagpadre == "ASIENTO")
     	fechaasiento = cadintermedia;
@@ -704,22 +728,29 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
     if (qName == "CONCEPTOCONTABLE" && tagpadre == "APUNTE")
     	conceptocontableapunte = cadintermedia;
  
-/// Si es una cuenta la tratamos.
     if (qName == "CUENTA" ) {
+	/// Ha terminado una cuenta, por tanto hacemos la inserción de la misma.
+	/// Podemos hacer la inserción y no un sistema de update pq la cuenta no tiene hijos en el XML
+	/// Nuevo Socio M.Mezo
     	QString idgrupo = codigocuenta.left(1);
-	fprintf(stderr,"codigocuenta [%s], primer caracter [%s] \n", codigocuenta.ascii(), idgrupo.ascii());
-	/// Primero debemos determinar si existe o no dicha cuenta para hacer la inserción o no.
+	/// Primero debemos determinar si existe o no dicha cuenta para hacer la inserción o la modificación.
 	QString query = "SELECT * FROM cuenta WHERE codigo='"+codigocuenta+"'";
 	conexionbase->begin();
 	cursor2 *cur = conexionbase->cargacursor(query, "elquery23");
+	conexionbase->commit();
 	if (cur->eof()) {
-		QString query = "INSERT INTO cuenta (codigo, descripcion, padre, idgrupo) VALUES ('"+codigocuenta+"','"+descripcioncuenta+"', id_cuenta('"+codigopadre+"'), "+idgrupo+")";
+		QString query = "INSERT INTO cuenta (codigo, descripcion, padre, idgrupo, bloqueada, nodebe, nohaber) VALUES ('"+codigocuenta+"','"+descripcioncuenta+"', id_cuenta('"+codigopadre+"'), "+idgrupo+", '"+m_bloqueadaCuenta+"','"+m_nodebeCuenta+"','"+m_nohaberCuenta+"')";
 		conexionbase->ejecuta(query);
-		codigocuenta = "";
-		descripcioncuenta = "";
-		codigopadre = "";
+	} else {
+		QString query = "UPDATE cuenta SET bloqueada='"+m_bloqueadaCuenta+"', nodebe='"+m_nodebeCuenta+"', nohaber='"+m_nohaberCuenta+"' WHERE codigo='"+codigocuenta+"'";
+		conexionbase->ejecuta(query);
 	}//end if
-	conexionbase->commit();	
+	codigocuenta = "";
+	descripcioncuenta = "";
+	codigopadre = "";
+	m_bloqueadaCuenta = "";
+	m_nodebeCuenta="";
+	m_nohaberCuenta="";	
 	delete cur;
     }// end if
     if (qName == "CODIGO" && tagpadre == "CUENTA")
@@ -728,6 +759,13 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
     	descripcioncuenta = cadintermedia;
     if (qName == "CODPADRE" && tagpadre == "CUENTA")
     	codigopadre = cadintermedia;
+    if (qName == "BLOQUEADA" && tagpadre == "CUENTA")
+    	m_bloqueadaCuenta = cadintermedia;
+    if (qName == "NODEBE" && tagpadre == "CUENTA")
+    	m_nodebeCuenta = cadintermedia;
+    if (qName == "NOHABER" && tagpadre == "CUENTA")
+    	m_nohaberCuenta = cadintermedia;
+	
     
     /// Si es un registro de iva vamos a por el
     if (qName == "REGISTROIVA") {
@@ -738,9 +776,9 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
 	if (m_rIvaIva != "") 
 		query +=", iva="+m_rIvaIva;
 	query +="  WHERE idregistroiva="+m_idRegistroIva;
-	conexionbase->begin();
+//	conexionbase->begin();
 	conexionbase->ejecuta(query);
-	conexionbase->commit();
+//	conexionbase->commit();
     }// end if    
     if (qName == "CONTRAPARTIDA" && tagpadre == "REGISTROIVA")
     	m_rIvaContrapartida = cadintermedia;

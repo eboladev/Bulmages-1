@@ -89,6 +89,7 @@ int main(int argc, char *argv[]) {
     }// end if
     mainApp->installTranslator( traductor );
 
+    /// Iniciamos el sistema de log del programa para que se pueda seguir la ejecución del mismo.
     ctllog = new bitacora();
     ctllog->add(LOG_SEG, 1,"MaiMai003", "---- Iniciación del programa ----");
 

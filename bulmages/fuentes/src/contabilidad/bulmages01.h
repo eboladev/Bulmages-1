@@ -101,9 +101,6 @@ public:
     void slotListarApuntes();
     /** Slot para las propiedades de la empresa */
     void slotPropiedadesEmpresa();
-    /** Slot para cambiar de Ejercicio */
-    void setCurrentEjercicio(QAction *a);
-    void setCurrentEjercicio();
     /** Slot para el libro mayor */
     void slotLibroMayor();
     void slotLibroDiario();

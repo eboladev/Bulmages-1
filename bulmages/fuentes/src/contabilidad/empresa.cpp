@@ -459,7 +459,8 @@ void empresa::Ordenarasientos() {
 
 
 int empresa::registroiva() {
-   listivaview *perd = new listivaview(this, EjercicioActual.ascii());
+//   listivaview *perd = new listivaview(this, EjercicioActual.ascii());
+   listivaview *perd = new listivaview(this, "0");
    perd->inicializa(introapunts1);
    perd->exec();
    delete perd;
@@ -467,83 +468,13 @@ int empresa::registroiva() {
 }// end registroiva
 
 int empresa::modelo347() {
-   BModelo347 *dlg347 = new BModelo347(conexionbase2,EjercicioActual.ascii());
+//   BModelo347 *dlg347 = new BModelo347(conexionbase2,EjercicioActual.ascii());
+   BModelo347 *dlg347 = new BModelo347(conexionbase2,"0");
    //dlg347->inicializa(conexionbase2, introapunts1);
    dlg347->exec();
    delete dlg347;
    return(0);
 }// end modelo347
-
-/*
-int empresa::guardarempresa() {
-  char *args[4];
-  int pid;
-  int error;
-  QString fn = QFileDialog::getSaveFileName(0, "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
-  if (!fn.isEmpty()) {
-     fprintf(stderr,"Vamos a guardar la empresa en el fichero %s\n",fn.ascii());
-     args[0]=(char *) nombreDB.ascii();
-     args[1]=(char *) nombreDB.ascii();
-     args[2]=(char *) fn.ascii();
-     args[3]=NULL;
-#ifndef WIN32
-     if ((pid=fork()) < 0) {
-       perror ("Fork failed");
-       exit(errno);
-     }// end if
-     if (!pid) {
-        string argumentos = confpr->valor(CONF_EJECUTABLES) + "guardaemp";
-        error = execvp(argumentos.c_str(),args);
-     }// end if
-     if (pid) {
-        waitpid (pid, NULL, 0);
-     }// end if
-#endif
-  }// end if
-  return(0);  
-}// end guardarempresa
-*/
-
-/*************************************************************
- * Esta funcion carga una empresa previamente guardada
- *************************************************************/
- /*
-int empresa::cargarempresa() {
-  char *args[4];
-  int pid;
-  int error;
-  QString fn = QFileDialog::getOpenFileName(0, theApp->translate("empresa","Empresas (*.pgdump)",""), 0,theApp->translate("empresa","Cargar Empresa",""),theApp->translate("emrpesa","Elige el fichero a cargar.",""));
-  if (!fn.isEmpty()) {
-     args[0]=(char *) nombreDB.ascii();
-     args[1]=(char *) nombreDB.ascii();
-     args[2]=(char *) fn.ascii();
-     args[3]=NULL;
-//     defaultDB->close();
-     // Para cargar la empresa debe estar sin ningun usuario dentro de ella.
-     delete conexionbase2;
-     conexionbase2 = new postgresiface2();
-#ifndef WIN32
-     if ((pid=fork()) < 0) {
-       perror ("Fork failed");
-       exit(errno);
-     }// end if
-     if (!pid) {
-        string argumentos = confpr->valor(CONF_EJECUTABLES) + "cargaemp";
-        fprintf(stderr,"Ejecutamos el cargaemp\n");
-        error = execvp(argumentos.c_str(),args);
-        fprintf(stderr,"Fin del cargaemp\n");
-     }// end if
-     if (pid) {
-        waitpid (pid, NULL, 0);
-     }// end if
-     inicializa();
-     inicializa1(pWorkspace);
-     maximiza();
-#endif
-  }// end if
-  return(0);
-}// end cargarempresa
-*/
 
 /*************************************************************
  * Esta funcion borra la empresa actual

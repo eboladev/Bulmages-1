@@ -17,7 +17,17 @@
 
 #include "aboutview.h"
 
+/** \brief Constructor de la clase
+  *
+  * En realidad no hace nada pq el dialogo sólo requiere visualización y no realiza acciones.
+  */
 aboutview::aboutview(QWidget *parent, const char *name ) : aboutdlg(parent,name,false,0) {
 }
+
+/** \brief Destructor de la clase
+  *
+  * En realidad no hace nada pq el dialogo sólo requiere visualización y no realiza acciones.
+  */
+
 aboutview::~aboutview(){
 }

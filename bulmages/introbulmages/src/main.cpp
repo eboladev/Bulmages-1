@@ -5,9 +5,17 @@
 #include "postgresiface2.h"
 #include <qtextcodec.h>
 
+/// Instancia de la aplicación. Usada en algunos casos para acceder a determinadas funcionalidades como la traducción.
 QApplication *theApp;
+/// Instancia de la traducción que se carga en tiempo de ejecución y que se usa de forma global.
 QTranslator * traductor;
-
+/** \author Tomeu Borrás Riera
+  * \fn main
+  * \brief Función principal del programa BulmaGés
+  *
+  * Crea el objeto base y lo lanza, también comprueba si se ha lanzado la
+  * aplicación con parametros o sin ellos
+  */
 int main( int argc, char ** argv ) {
     confpr = new configuracion();
     QApplication a( argc, argv );

@@ -84,6 +84,9 @@ private:
 	QString descripcioncuenta;
 	QString codigocuenta;
 	QString codigopadre;
+	QString m_bloqueadaCuenta;
+	QString m_nodebeCuenta;
+	QString m_nohaberCuenta;
 	/// Variables usadas para almacenar los datos del registro de IVA
     	QString m_idRegistroIva;   
     	QString m_rIvaContrapartida;

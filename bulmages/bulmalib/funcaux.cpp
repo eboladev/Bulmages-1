@@ -13,9 +13,21 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+/** \file funcaux.cpp
+  * Fichero de implementación de funciones auxiliares que no es preciso encapsular<BR>
+  * <P>En este fichero se implementan todas aquellas funciones que por su brevedad o aislamiento son
+  * utilizadas de forma regular en el programa. Definidas en \ref funcaux.h </P>
+  * <P>Dichas funciones normalmente son de uso general, por lo que es normal ver este archivo incluido
+  * en la práctica totalidad de los demás ficheros</P>
+  */
+
 #include "funcaux.h"
 #include <qstring.h>
 
+/** Proteje cadenas de texto pasandoles una sustitución de codigos especiales de XML
+  * \param string cadena que se va a proteger.
+  * \return cadena en formato protegido.
+  */
 QString XMLProtect( const QString& string ) {
     QString s = string;
     s.replace( "&", "&amp;" );
@@ -26,6 +38,11 @@ QString XMLProtect( const QString& string ) {
     return s;
 }
 
+/** Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
+  * \param cad Cadena inicial
+  * \param num1 Numero de dígitos totales de la cuenta.
+  * \return Devuelve un string con el código de cuenta extendido al número de dígitos indicado.
+  */
 string extiendecodigo (string cad, unsigned int num1) {
    string cod=cad;
    unsigned int num=num1;
@@ -41,6 +58,11 @@ string extiendecodigo (string cad, unsigned int num1) {
    return(cod);
 }
 
+/** Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
+  * \param cad Cadena inicial
+  * \param num1 Numero de dígitos totales de la cuenta.
+  * \return Devuelve un QString con la cuenta extendida al número de dígitos indicado.
+  */
 QString extiendecodigo (QString cad, unsigned int num1) {
    QString cod=cad;
    unsigned int num=num1;
@@ -57,16 +79,20 @@ QString extiendecodigo (QString cad, unsigned int num1) {
 }
 
 
-// Redondeo de numeros en punto flotante.
-//---------------------------------------
+/** Redondeo de numeros en punto flotante.
+  * \param n Numero a redondear
+  * \param d Numero de decimales
+  * \return Numero redondeado
+  */
 float fround(float n, unsigned d) {
   return floor(n*pow(10., d) + .5) / pow (10., d);
 }// end fround
 
-/************************************************************************************/
-/* Esta función convierte un numero con decimales a un entero. Usando la regla      */
-/* que si el el primer decimal es mayor o igual  a 5 se devuelve el entero superior.*/
-/***********************************************************************************/
+
+/** Esta función convierte un numero con decimales a un entero. Usando la regla
+  * que si el el primer decimal es mayor o igual  a 5 se devuelve el entero superior.
+  * \param valor Numero a convertir
+  */
 int roundI(double valor) {
     int retorno;
     double mayor=floor(valor);
@@ -75,10 +101,11 @@ int roundI(double valor) {
     return retorno;
 }
 
-/********************************************************
- * Esta funcion extiende la fecha pasada como parametro *
- * QString y devuelve la fecha en formato QDate.        *
- ********************************************************/
+/** Procesa el string pasado como parámetro y devuelve una estructura del tipo QDate
+ * Esta funcion extiende la fecha pasada como parametro 
+ * QString y devuelve la fecha en formato QDate.
+ * \param fechaintro string con la fecha a ser normalizada.
+ */
 QDate normalizafecha(QString fechaintro) {
   QDate fecharesult;
   int d, M, y;
@@ -125,97 +152,3 @@ QDate normalizafecha(QString fechaintro) {
   return(fecharesult);
 }// end normalizafecha
 
-
-/********************************************************
- * Esta funcion extiende la fecha pasada como parametro *
- * Y devuelve la fecha en formato extendido.            *
- ********************************************************/
-/*
-string modificafecha(string fechaintro) {
-  string fecharesult;
-  string sano;
-  char cadena[10];
-  int longitud = fechaintro.size();
-  int ano = QDate::currentDate().year();
-  sprintf (cadena,"%d",ano);
-  sano = cadena;
-  switch(longitud) {
-     case 4: // fecha tipo ddMM, sin // y sin año.
-        fecharesult = fechaintro.substr(0,2)+"/"+fechaintro.substr(2,2)+"/"+sano;
-     break;
-     case 5:// fecha tipo dd/MM
-        fecharesult = fechaintro+"/"+sano;
-     break;
-     case 6: // fecha tipo yyMMyy
-        fecharesult = fechaintro.substr(0,2)+"/"+fechaintro.substr(2,2)+"/20"+fechaintro.substr(4,2);
-     break;
-     case 8:
-        if(fechaintro.rfind("/",0)==string::npos) {
-            // fecha tipo  ddMMyyyy
-            fecharesult = fechaintro.substr(0,2)+"/"+fechaintro.substr(2,2)+"/"+fechaintro.substr(4,4);
-        } else {
-            // o bien tipo dd/MM/yy
-            fecharesult = fechaintro.substr(0,5)+"/20"+fechaintro.substr(6,2);
-        }// end if
-     break;
-     case 10: // fecha tipo dd/MM/yyyy
-     default:
-        fecharesult = fechaintro;
-  }// end switch
-  return(fecharesult);
-}// end modificafecha
-*/
-
-
-/********************************************************
- * Esta funcion extiende la fecha pasada como parametro *
- * Y devuelve la fecha en formato extendido.            *
- ********************************************************/
-/*
-QString modificafecha(QString fechaintro) {
-  QString fecharesult;
-  QString sano;
-  QString cadena;
-  int longitud = fechaintro.length();
-  int ano = QDate::currentDate().year();
-  cadena.sprintf ("%d",ano);
-  sano = cadena;
-  switch(longitud) {
-     case 4: // fecha tipo ddMM, sin // y sin año.
-        fecharesult = fechaintro.mid(0,2)+"/"+fechaintro.mid(2,2)+"/"+sano;
-     break;
-     case 5:// fecha tipo dd/MM
-        fecharesult = fechaintro+"/"+sano;
-     break;
-     case 6: // fecha tipo yyMMyy
-        fecharesult = fechaintro.mid(0,2)+"/"+fechaintro.mid(2,2)+"/20"+fechaintro.mid(4,2);
-     break;
-     case 8:
-        if(fechaintro.find("/",0)==-1) {
-            // fecha tipo  ddMMyyyy
-            fecharesult = fechaintro.mid(0,2)+"/"+fechaintro.mid(2,2)+"/"+fechaintro.mid(4,4);
-        } else {
-            // o bien tipo dd/MM/yy
-            fecharesult = fechaintro.mid(0,5)+"/20"+fechaintro.mid(6,2);
-        }// end if
-     break;
-     case 10: // fecha tipo dd/MM/yyyy
-     default:
-        fecharesult = fechaintro;
-  }// end switch
-  return(fecharesult);
-}// end modificafecha
-
-*/
-// Dada una fecha en formato de string, y normalizada a la forma dd/mm/yyyy se devuelve un QDate con el valor de la fecha.
-//------------------------------------------------------------------------------------------------------------------------
-/*
-QDate devuelvefecha(string fechaintro) {
-	int dia, mes, ano;
-	dia = atoi(fechaintro.substr(0,2).c_str());
-	mes = atoi(fechaintro.substr(3,2).c_str());
-	ano = atoi(fechaintro.substr(6,4).c_str());
-// 	fprintf(stderr,"devuelvefecha dia %d, mes %d, ano %d\n", dia, mes, ano);
-	return QDate(ano,mes,dia);
-}// end devuelvefecha
-*/

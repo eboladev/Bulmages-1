@@ -25,37 +25,51 @@
 #include <qlistview.h>
 
 class empresa;
-/**@author Tomeu Borras*/
-class selectccosteview : public selectccostedlg
-{
-Q_OBJECT
-public:
-    selectccosteview(empresa *emp, QWidget *parent = 0, const char *name = 0);
+/** @author Tomeu Borras
+  * @brief Maneja la ventana de selector de centros de coste.
+  *
+  * Esta clase es instanciada en la clase empresa y a partir de entonces se utiliza siempre una
+  * única instancia de ésta en todo el programa \ref selccostes de este modo evitamos tener que andar
+  * reconstruyendo la clase e introducirle los datos.
+  * También se utiliza para establecer el centro de coste por defecto, utlidad que permite introducir
+  * asientos directamente en un centro de coste sin tener que teclearlo en cada apunte.
+  */
 
-    ~selectccosteview();
+
+
+class selectccosteview : public selectccostedlg {
+    Q_OBJECT
 private:
-   empresa *empresaactual;
-   int m_colNomCoste;
-   int m_colDescCoste;
-   int m_colIdCoste;
-   int m_colStatusCoste;  
-   int m_colCheck;
-   postgresiface2* conexionbase;
-   int numdigitos;
-   QListViewItemIterator* m_iterador;
+    /// Empresa con la que se inicizlia la clase.
+    empresa *empresaactual;
+    int m_colNomCoste;		///Indice de la columna que pone el nombre del centro de coste en la lista del formulario
+    int m_colDescCoste;		/// Indice de la columna que indica la descripcion del centro de coste en la lista del formulario
+    int m_colIdCoste;		/// Indice de la columna que indica el identificador del centro de coste en la lista del formulario
+    int m_colStatusCoste;	/// Indica la columna del status del centro de coste.
+    int m_colCheck;		/// Indica la columna que tiene el checkbos para el centro de coste.
+    /// Base de datos que va a utilizar la clase.
+    postgresiface2* conexionbase;
+    /// Numero de dígitos que tienen, por defecto, las cuentas
+    int numdigitos;
+    /// Iterador de la lista que se presenta en este formulario.
+    QListViewItemIterator* m_iterador;
 
 public:
-   void cargacostes();
-   int firstccoste();
-   int nextccoste();
-   QString cadcoste();
-   QString nomcoste();
-   
+    /// \brief Constructor de la clase que recibe el parametro de empresa y que inicializa la base de datos a utilizar.
+    selectccosteview(empresa *emp, QWidget *parent = 0, const char *name = 0);
+    /// \brief Destructor de la clase
+    ~selectccosteview();
+    void cargacostes();
+    int firstccoste();
+    int nextccoste();
+    QString cadcoste();
+    QString nomcoste();
+
 public slots:
-   void boton_todo();
-   void boton_nada();
-   void boton_invertir();
-   
+    void boton_todo();
+    void boton_nada();
+    void boton_invertir();
+
 };
 
 #endif

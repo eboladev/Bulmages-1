@@ -13,23 +13,36 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#include "abreempresaview.h"
-#include "postgresiface2.h"
-
-// Este es el archivo en el que se almacenan las empresas que existen.
-// Es un archivo separado por comas.
-#define LISTEMPRESAS "listempresas.lst"
-
+ /** \file abreempresaview.cpp
+   * Contiene la implementación de la clase \ref abreempresaview y sus métodos.
+   * \author Tomeu Borrás Riera
+   */
+   
 #include <fstream>
 using namespace std;
+#include <qlineedit.h>
+#include <qstring.h>
+#include <stdio.h>
+#include <qlistview.h>
+#include <qmessagebox.h>
+#include "abreempresaview.h"
+#include "postgresiface2.h"
+#include "configuracion.h"
 
 
+/// \brief Este es el archivo en el que se almacenan las empresas que existen. Es un archivo separado por comas, que se suele alojar en el <i>home/.bulmages</i> del usuario.
+#define LISTEMPRESAS "listempresas.lst"
+/// \brief Número de columna para el nombre en la lista.
 #define ABRE_NOMBRE  0
+/// \brief Número de columna que almacena el ejercicio de la empresa.
 #define ABRE_ANO     1
+/// \brief Número de columna que almacena el nombre de la base de datos de la empresa.
 #define ABRE_ARCHIVO 2
+/// \brief Número de columna que almacena el tipo de datos al que hace referencia la linea (bulmacont o bulmafact).
 #define ABRE_TIPO    3
 
-/** \brief se encarga de intentar abrir una nueva empresa
+/** Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la presentación.
+  * Llama a la funcion \ref cargaArchivo
   * @param parent La ventana que hace la llamada
   * @param tipo   String que indica si es contabilidad o facturacion (bulmacont, bulmafact)
   * @param name nombre de la ventana
@@ -46,10 +59,11 @@ abreempresaview::~abreempresaview(){
 }// end ~abreempresaview
 
 
-/** \brief Inserta una compañia en el QList empresas del dialogo
+/** Inserta una compañia en el QList empresas definido en el diálogo
+  * Crea un objeto QListViewItem para la QListView \ref empresas y rellena sus columnas con los datos pasados al método.
   * @param nombre Nombre de la empresa
   * @param ano Ejercicio de la empresa (aunque pueden ser varios)
-  * @param archivos Nombre de la base de datos
+  * @param archivo Nombre de la base de datos
   * @param tipo Tipo de base de datos (BulmaCont o BulmaFact)
   */
 void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo, QString tipo) {
@@ -61,7 +75,7 @@ void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo
 }// end insertCompany
 
 
-/** \brief Se ha pulsado sobre el botón de aceptar con lo que iniciamos la variables y cerramos esta ventana ya que ha cumplico con su cometido
+/** Se ha pulsado sobre el botón de aceptar con lo que iniciamos la variables y cerramos esta ventana ya que ha cumplico con su cometido
   */
 void abreempresaview::accept() {
    QListViewItem *it;
@@ -72,13 +86,14 @@ void abreempresaview::accept() {
    close();
 }// end accept
 
-
+/** Realiza la misma acción que el \ref accept
+  */
 void abreempresaview::closeEvent(QCloseEvent * e) {
     e->accept();
-}
+}// end closeEvent
 
 
-/** \brief carga del archivo de empresas las empresas disponibles.
+/** Carga del archivo de empresas las empresas disponibles.
   */
 void abreempresaview::cargaArchivo() {
    QString dir1 = getenv("HOME");
@@ -100,7 +115,7 @@ void abreempresaview::cargaArchivo() {
    filestr.close();
 }// end cargaArchivo
 
-/** \brief Guarda en el archivo de empresas las empresas disponibles
+/** Guarda en el archivo de empresas las empresas disponibles
   * También actualiza el listado de empresas visibles.
   */
 void abreempresaview::guardaArchivo() {
@@ -162,7 +177,9 @@ void abreempresaview::guardaArchivo() {
 	filestr.close();
 }// end guardaArchivo
 
-
+/** Recarga la lista de empresas haciendo las gestiones necesarios con el motor de Base de Datos.
+  * Al mismo tiempo guarda el archivo de bases de datos en el archivo \ref LISTEMPRESAS
+  */
 void abreempresaview::s_reloadButton() {
 	empresas->clear();
 	guardaArchivo();

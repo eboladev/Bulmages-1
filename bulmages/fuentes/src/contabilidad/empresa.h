@@ -44,11 +44,15 @@
  * \brief Soporte principal para cada empresa contable
  *  
  * Clase que soporta todas las funciones de la empresa contable. Supuestamente el programa podrá tener múltiples empresas abiertas al mismo tiempo.
+ * Esta clase es el corazón del programa donde acaban confluyendo todos los demás objetos.
+ * Se encarga de instanciar los objetos necesarios, inicializarlos e invocarlos cuando es preciso.
+ * También debe servir como punto de comunicación entre los diferentes objetos de modo que éstos sólo tengan referencias a esta clase y haciendo el flujo del código más fácil de entender.
+ * \todo proporcionar la funcionalidad de comunicación entre las otras clases.
  */
 class empresa {
 private:
   QString nombre;
-  QString EjercicioActual;     // Indica cual es el ejercicio actual de la base de datos.
+//  QString EjercicioActual;     // Indica cual es el ejercicio actual de la base de datos.
   int ano;
   QString contrasenya;
   QWorkspace *pWorkspace;
@@ -72,14 +76,14 @@ public:
 public:
   empresa();
   ~empresa();
-  /// Returns a pointer to the database class \ref postgresiface2
+  /// Returns a pointer to the database class
   postgresiface2 *bdempresa() {return (conexionbase2);}
   intapunts3view *intapuntsempresa() {return(introapunts1);}
   int numdigitosempresa() { return(numdigitos);}
   QString nomuserempresa() { return(nombre);}
   QString nombreempresa() {return(nombre);}
-  QString ejercicioactual() {return(EjercicioActual);}
-  void setejactual(QString ej) {EjercicioActual=ej;}
+//  QString ejercicioactual() {return(EjercicioActual);}
+//  void setejactual(QString ej) {EjercicioActual=ej;}
 //  int inicializa(QString * DB=0);
 //  int idcCosteDef() const {return m_idcCosteDef;}
 //  int idCanalDef() const {return m_idCanalDef;}

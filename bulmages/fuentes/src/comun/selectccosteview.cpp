@@ -31,7 +31,6 @@ selectccosteview::selectccosteview(empresa *emp,QWidget *parent, const char
    conexionbase = empresaactual->bdempresa();
 
    numdigitos = empresaactual->numdigitosempresa();
-//   m_iterador = new QListViewItemIterator (m_listCostes, 0x00001000);
    m_iterador = new QListViewItemIterator (m_listCostes);
 
    m_colNomCoste = m_listCostes->addColumn("nom_coste",-1);

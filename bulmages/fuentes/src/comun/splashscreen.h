@@ -11,7 +11,9 @@
   * @author Tomeu Borrás Riera 
   * \class splashscreen splashscreen.h
   * \brief Pantalla de bienvenida
-  * Clase muestra la imagen del splasy y algunos mensajes chorras
+  *
+  * Clase que muestra la imagen del splash y algunos mensajes chorras. 
+  * Esta clase no tiene mucha utilidad, se utiliza para dar mayor apariencia al programa.
   */
 
 class Splash : public QDialog
