@@ -53,6 +53,8 @@ public:
     BfCursor* pg_database(QString* usuario=0, QString* passwd=0);
     QString fechaPresente();
     int roundI(double);
+    
+    //int ventanas;
 
 private:
     QString * nombreDB;

@@ -23,3 +23,13 @@ Bproveedor::Bproveedor(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const
 Bproveedor::~Bproveedor(){
 }
 
+void Bproveedor::cerrarVentana() {
+    delete this;
+}
+
+void Bproveedor::closeEvent(QCloseEvent * e) {
+    //int exit=0;
+    //if (exit==1) e->accept();
+    //else e->ignore();
+   cerrarVentana();    
+}

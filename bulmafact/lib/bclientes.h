@@ -41,6 +41,9 @@ private slots:
     virtual void salvarCliente();
     virtual void clienteReturnPressed();
     virtual void cerrarVentana();
+    virtual void closeEvent(QCloseEvent * e);
+
+    
 
 };
 

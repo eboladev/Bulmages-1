@@ -31,7 +31,8 @@ void BClientes::iniciarBusqueda() {
     QString* arg3 = new QString("telcliente");
     QString* arg4 = new QString("idcliente");
     (new Bbuscador(this, "buscaCli",WType_TopLevel,EmpresaTrabajo,&Retorno,&tabla, arg1,arg2,arg3,arg4,0))->exec();
-    nombre0_cli->setText(Retorno);
+    codigo_cli->setText(Retorno);
+    clienteReturnPressed();
 }
 
 //Pulsado Boton Nuevo Cliente
@@ -63,4 +64,11 @@ void BClientes::clienteReturnPressed() {
 
 void BClientes::cerrarVentana() {
     delete this;
+}
+
+void BClientes::closeEvent(QCloseEvent * e) {
+    //int exit=0;
+    //if (exit==1) e->accept();
+    //else e->ignore();
+   cerrarVentana();    
 }

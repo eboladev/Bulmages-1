@@ -196,17 +196,17 @@ BfCursor* BfEmpresa::pg_database(QString* usuario, QString* passwd) {
 /* Busca en la tabla clientes nombres parecidos A ...                               */
 /************************************************************************************/
 BfCursor* BfEmpresa::buscarParecidos(QString tabla, QString argumentoBusqueda, QString opcionesBusqueda) {
-    QString query;
-    BfCursor* recordset;
+    QString query("");
+    BfCursor* recordset=NULL;
     pgIface * connexionDB = new pgIface(*nombreDB);
     connexionDB->begin();
-    query.sprintf(""); 
-    if (tabla=="cliente") query.sprintf("SELECT * FROM cliente WHERE nomcliente %s%s%%' ORDER BY nomcliente",opcionesBusqueda.ascii(), argumentoBusqueda.ascii());    
+    if (tabla=="cliente") query.sprintf("SELECT * FROM cliente WHERE nomcliente %s%s%%' ORDER BY nomcliente",opcionesBusqueda.ascii(), argumentoBusqueda.ascii()) ;    
     if (tabla=="proveedor") query.sprintf("SELECT * FROM proveedor WHERE nomproveedor %s%s%%' ORDER BY nomproveedor",opcionesBusqueda.ascii(),argumentoBusqueda.ascii());    
     if (tabla=="articulo") query.sprintf("SELECT * FROM articulo WHERE nomarticulo %s%s%%' ORDER BY nomarticulo",opcionesBusqueda.ascii(),argumentoBusqueda.ascii());    
+    fprintf(stderr, "Debug: %s\n",tabla.ascii());
     recordset = connexionDB->cargaCursor(query,"cargaClientes");
     connexionDB->commit();
-    if (connexionDB) delete connexionDB;
+    delete connexionDB;
     return recordset;
 }
 

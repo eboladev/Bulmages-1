@@ -33,22 +33,6 @@
         <property name="frameShadow">
             <enum>Raised</enum>
         </property>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>textLabel1</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>8</x>
-                    <y>8</y>
-                    <width>98</width>
-                    <height>13</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Campo busqueda</string>
-            </property>
-        </widget>
         <widget class="QCheckBox">
             <property name="name">
                 <cstring>checkMayMin</cstring>
@@ -81,6 +65,22 @@
                 <string>Activar búsqueda intermedia</string>
             </property>
         </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel1</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>8</x>
+                    <y>8</y>
+                    <width>98</width>
+                    <height>13</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Campo busqueda</string>
+            </property>
+        </widget>
         <widget class="QLineEdit">
             <property name="name">
                 <cstring>codigo</cstring>
@@ -103,10 +103,21 @@
         <receiver>UIbuscador</receiver>
         <slot>llenarTabla(const QString&amp;)</slot>
     </connection>
+    <connection>
+        <sender>codigo</sender>
+        <signal>returnPressed()</signal>
+        <receiver>UIbuscador</receiver>
+        <slot>aceptarBusqueda()</slot>
+    </connection>
 </connections>
+<tabstops>
+    <tabstop>codigo</tabstop>
+    <tabstop>checkBuscarIntermedio</tabstop>
+    <tabstop>checkMayMin</tabstop>
+</tabstops>
 <slots>
     <slot>llenarTabla(const QString &amp;)</slot>
-    <slot>pulsadoEnter(int, int)</slot>
+    <slot>aceptarBusqueda()</slot>
 </slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>

@@ -25,11 +25,13 @@ BVisorEmpresas::BVisorEmpresas(QString * ptrRetorno, BfCursor* recordSet, QWidge
    //listView1->hideColumn(2);
    QListViewItem *linea;
   
-   while (!recordSet->eof()) {
-      linea =new QListViewItem(listView1);
-      linea->setText(0,recordSet->valor(1)); //Nombre Empresa
-      linea->setText(1,recordSet->valor(0)); // ??
-      linea->setText(2,recordSet->valor(0)); //Nombre base datos
+   while (!recordSet->eof()) {                            //No muestra la base de datos que serive de plantilla
+      if (recordSet->valor(1) != "Template_Data_Base") {  //para crear nuevas empresas bulmaFact.
+          linea =new QListViewItem(listView1);           
+          linea->setText(0,recordSet->valor(1)); //Nombre Empresa
+          linea->setText(1,recordSet->valor(0)); // ??
+          linea->setText(2,recordSet->valor(0)); //Nombre base datos
+      }
       recordSet->siguienteregistro();
    }// end while
 }

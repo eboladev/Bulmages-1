@@ -34,8 +34,9 @@ Bbuscador::Bbuscador(QWidget* parent, const char* name, WFlags f,BfEmpresa* punt
     
     EmpresaTrabajo=punteroEmpresaTrabajo;
     cadRetorno=cadenaRet;
+    tablaBusqueda = *tabla; //Tabla Base de Datos
     tablaResultados=new MyQTable(this,"tablaResultados");
-    tablaResultados->setGeometry(10,82,550,260);
+    tablaResultados->setGeometry(10,80,550,260);
     tablaResultados->setNumCols(i);
     textLabel1->setText(taula[0]);
     for (int k=0; k<i; k++){
@@ -45,7 +46,7 @@ Bbuscador::Bbuscador(QWidget* parent, const char* name, WFlags f,BfEmpresa* punt
     tablaResultados->setReadOnly(TRUE);
     llenarTabla("");
     connect(tablaResultados, SIGNAL(keyEnterPressed(int, int)), this, SLOT(pulsadoEnter(int, int)));
-    tablaBusqueda = *tabla;
+    connect(tablaResultados, SIGNAL(doubleClicked(int, int, int, const QPoint&)), this, SLOT(dblClickRaton(int, int, int, const QPoint&)));
     setCaption("Buscar en la Tabla: " + tablaBusqueda);
    
 }
@@ -67,33 +68,40 @@ void Bbuscador::llenarTabla(const QString &cadena) {
     i=0;
     BfCursor* recordset;
     recordset = EmpresaTrabajo->buscarParecidos(tablaBusqueda,cadena,condicionBusqueda);
-    if (recordset) {
-        while (! recordset->eof() ) { 
-            tablaResultados->insertRows(i);
-            if (tablaBusqueda=="cliente") {
-                tablaResultados->setText(i,0,recordset->valor("nomcliente"));
-                tablaResultados->setText(i,1,recordset->valor("poblcliente"));
-                tablaResultados->setText(i,2,recordset->valor("telcliente"));
-                tablaResultados->setText(i,3,recordset->valor("idcliente"));
-            }
-            if (tablaBusqueda=="proveedor") {
-                tablaResultados->setText(i,0,recordset->valor("nomproveedor"));
-                tablaResultados->setText(i,1,recordset->valor("poblproveedor"));
-                tablaResultados->setText(i,2,recordset->valor("telproveedor"));
-                tablaResultados->setText(i,3,recordset->valor("idproveedor"));
-            }
-            i++;
-            recordset->siguienteregistro();
+    while (! recordset->eof() ) { 
+        tablaResultados->insertRows(i);
+        if (tablaBusqueda=="cliente") {
+            tablaResultados->setText(i,0,recordset->valor("nomcliente"));
+            tablaResultados->setText(i,1,recordset->valor("poblcliente"));
+            tablaResultados->setText(i,2,recordset->valor("telcliente"));
+            tablaResultados->setText(i,3,recordset->valor("idcliente"));
         }
-        delete recordset;
+        if (tablaBusqueda=="proveedor") {
+            tablaResultados->setText(i,0,recordset->valor("nomproveedor"));
+            tablaResultados->setText(i,1,recordset->valor("poblproveedor"));
+            tablaResultados->setText(i,2,recordset->valor("telproveedor"));
+            tablaResultados->setText(i,3,recordset->valor("idproveedor"));
+        }
+        i++;
+        recordset->siguienteregistro();
     }
 }
 
+void Bbuscador::aceptarBusqueda() {
+    tablaResultados->setFocus();
+}
+
+void Bbuscador::keyPressEvent(QKeyEvent * e) {
+    if (e->key() == Qt::Key_Down) aceptarBusqueda();
+}
+
+void Bbuscador::dblClickRaton(int row,int col,int button,const QPoint & mousePos) {
+    pulsadoEnter(row, col);
+}
 
 void Bbuscador::pulsadoEnter(int fila, int columna){
-    columna=0;
+    columna=3; //idcliente
     *cadRetorno = tablaResultados->text(fila,columna);
     delete this;
 }
-
 

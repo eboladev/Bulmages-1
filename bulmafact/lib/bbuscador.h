@@ -45,8 +45,11 @@ private:
     QString tablaBusqueda;
 
 private slots:
-    void llenarTabla(const QString &);
-    void pulsadoEnter(int, int);
+    virtual void llenarTabla(const QString &);
+    virtual void pulsadoEnter(int, int);
+    virtual void dblClickRaton(int row,int col,int button,const QPoint & mousePos);
+    virtual void aceptarBusqueda();
+    virtual void keyPressEvent(QKeyEvent * e);
 
 
 };
@@ -78,4 +81,5 @@ public:
   }
 signals:
     void keyEnterPressed(int, int);
+    
 };

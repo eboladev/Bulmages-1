@@ -46,8 +46,16 @@ BModVentas::~BModVentas() {
 /* Pide confirmaciòn antes de cerrar la aplicación                           */
 /*****************************************************************************/
 void BModVentas::closeEvent(QCloseEvent * e) {
-  int exit=1;
-  if (intentosFallidosPassword < 3) exit=QMessageBox::information(this, "Cerrar...","Realmente deseas Salir?",QMessageBox::Ok, QMessageBox::Cancel);
+  int exit=0;
+  exit=intentosFallidosPassword > 3;
+  
+  if ((zona0->windowList()).count() > 0) { 
+      QMessageBox::information(this, "No puede cerrar","Cierre todos los dialogos abieros \nantes de salir de la aplicación ",QMessageBox::Ok,0);
+      //exit=2; //No permite cerrar si hay dialogos abiertos
+  }
+  
+  
+  if (exit==0) exit=QMessageBox::information(this, "Cerrar...","Realmente deseas Salir?",QMessageBox::Ok, QMessageBox::Cancel);
   if (exit==1) e->accept();
   else e->ignore();
 }
@@ -94,9 +102,9 @@ void BModVentas::abrirFormAlbaranes()      { (new BAlbaVenta(empresaTrabajo, zon
 void BModVentas::abrirFormPresupuestos()   { (new Bpresupuesto(empresaTrabajo, zona0,"presupuesto"))->show(); }
 void BModVentas::abrirFormPedidos()        { (new BPediVenta(empresaTrabajo, zona0,"pedidoVenta"))->show(); }
 void BModVentas::abrirFormClientes()       { (new BClientes(empresaTrabajo, zona0,"cliente"))->showMaximized(); }
-void BModVentas::abrirFormProveedores()    { (new Bproveedor(empresaTrabajo, zona0,"proveedor"))->show(); }
+void BModVentas::abrirFormProveedores()    { (new Bproveedor(empresaTrabajo, zona0,"proveedor"))->showMaximized(); }
 void BModVentas::abrirFormListadoProveed() { (new BProvList(empresaTrabajo, zona0,"proveedlist"))->show(); }
-void BModVentas::abrirFormArticulos()      { (new BArticulos(empresaTrabajo, zona0,"articulo"))->show(); }
+void BModVentas::abrirFormArticulos()      { (new BArticulos(empresaTrabajo, zona0,"articulo"))->showMaximized(); }
 void BModVentas::abrirFormMarcas()         { (new Bmarca(empresaTrabajo, zona0,"marca"))->show(); }
 void BModVentas::abrirFormTipos_iva()      { (new Btipo_iva(empresaTrabajo, zona0,"tipo_iva"))->show(); }
 void BModVentas::abrirFormFamilias()       { (new Bfamilia(empresaTrabajo, zona0,"familia"))->show(); }
