@@ -71,8 +71,8 @@ void DiarioPrintView::pruebasRTK() {
    QString ffinal = fechafinal1->text();
 
     QString query;
-    query.sprintf("SELECT asiento.ordenasiento, cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta, asiento WHERE  cuenta.idcuenta=apunte.idcuenta AND apunte.idasiento=asiento.idasiento ANd apunte.fecha >='%s' AND apunte.fecha<='%s'  ORDER BY ordenasiento, apunte.fecha", finicial.latin1(), ffinal.latin1());
-    myinput.setQuery(query.latin1());
+    query.sprintf("SELECT asiento.ordenasiento, cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta, asiento WHERE  cuenta.idcuenta=apunte.idcuenta AND apunte.idasiento=asiento.idasiento ANd apunte.fecha >='%s' AND apunte.fecha<='%s'  ORDER BY ordenasiento, apunte.fecha", finicial.ascii(), ffinal.ascii());
+    myinput.setQuery(query.ascii());
 
     unReport.insertInput(&myinput);
 
@@ -195,7 +195,7 @@ void DiarioPrintView::presentar(char * tipus){
             fitxersortidatxt.precision(2);
 
             fitxersortidatxt << "                                        LLIBRE DIARI \n" ;
-            fitxersortidatxt << "Data Inicial: " << finicial.latin1() << "   Data Final: " << ffinal.latin1() << endl;
+            fitxersortidatxt << "Data Inicial: " << finicial.ascii() << "   Data Final: " << ffinal.ascii() << endl;
             fitxersortidatxt << "ASIENTO   FECHA    SUBCUENTA   DESCRIPCION                                   DEBE     HABER \n" ;
             fitxersortidatxt << "_______________________________________________________________________________________________\n";
          }
@@ -217,32 +217,32 @@ void DiarioPrintView::presentar(char * tipus){
             fitxersortidahtml << "</head>\n";
             fitxersortidahtml << "<body>\n";
             fitxersortidahtml << "<table><tr><td colspan=\"6\" class=titoldiari> Llibre diari <hr></td></tr>\n\n";
-            fitxersortidahtml << "<tr><td colspan=\"6\" class=periodediari> Data Inicial: " << finicial.latin1() << " -  Data Final: " << ffinal.latin1() << "<hr></td></tr>\n\n";
+            fitxersortidahtml << "<tr><td colspan=\"6\" class=periodediari> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
             fitxersortidahtml << "<tr><td class=titolcolumnadiari>Assentament</td><td class=titolcolumnadiari>Data</td><td class=titolcolumnadiari>Subcompte</td><td class=titolcolumnadiari>Descripció</td><td class=titolcolumnadiari>Deure</td><td class=titolcolumnadiari>Haver</td></tr>\n";
          }
 
          conexionbase->begin();
-         cursoraux = conexionbase->cargaasientosfecha((char *)finicial.latin1(),(char *)ffinal.latin1());
+         cursoraux = conexionbase->cargaasientosfecha((char *)finicial.ascii(),(char *)ffinal.ascii());
 
          for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
-            fechaasiento = cursoraux->valor(2).latin1();
-            idasiento = atoi(cursoraux->valor(0).latin1());
+            fechaasiento = cursoraux->valor(2).ascii();
+            idasiento = atoi(cursoraux->valor(0).ascii());
             cursoraux1 = conexionbase->cargaapuntes(idasiento);
 
             for(;!cursoraux1->eof();cursoraux1->siguienteregistro()) {
-               fecha = cursoraux1->valor(4).latin1();
-               descripcion = cursoraux1->valor(5).latin1();
-               concepto = cursoraux->valor(1).latin1();
-               debe = atof(cursoraux1->valor(8).latin1());
-               haber = atof(cursoraux1->valor(9).latin1());
-               idcuenta = atoi(cursoraux1->valor(6).latin1());
+               fecha = cursoraux1->valor(4).ascii();
+               descripcion = cursoraux1->valor(5).ascii();
+               concepto = cursoraux->valor(1).ascii();
+               debe = atof(cursoraux1->valor(8).ascii());
+               haber = atof(cursoraux1->valor(9).ascii());
+               idcuenta = atoi(cursoraux1->valor(6).ascii());
 
                strncpy(data,fecha.c_str(),10);
                data[10]='\0';
 
                cursoraux2 = conexionbase->cargacuenta(idcuenta, NULL);
                if (!cursoraux2->eof()) {
-                  codigocuenta = cursoraux2->valor(1).latin1();
+                  codigocuenta = cursoraux2->valor(1).ascii();
                }
                cursoraux2->cerrar();
                delete cursoraux2;
@@ -313,7 +313,7 @@ void DiarioPrintView::presentar(char * tipus){
             fitxersortidatxt.precision(2);
 
             fitxersortidatxt << "                                                      LLIBRE DIARI \n" ;
-            fitxersortidatxt << "Data Inicial: " << finicial.latin1() << "   Data Final: " << ffinal.latin1() << endl;
+            fitxersortidatxt << "Data Inicial: " << finicial.ascii() << "   Data Final: " << ffinal.ascii() << endl;
             fitxersortidatxt << "___________________________________________________________________________________________________________________________________\n";
 
          }
@@ -332,13 +332,13 @@ void DiarioPrintView::presentar(char * tipus){
             fitxersortidahtml << "</head>\n";
             fitxersortidahtml << "<body>\n";
             fitxersortidahtml << "<table><tr><td colspan=\"7\" class=titoldiariapren> Llibre diari <hr></td></tr>\n\n";
-            fitxersortidahtml << "<tr><td colspan=\"7\" class=periodediariapren> Data Inicial: " << finicial.latin1() << " -  Data Final: " << ffinal.latin1() << "<hr></td></tr>\n\n";
+            fitxersortidahtml << "<tr><td colspan=\"7\" class=periodediariapren> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
          }
          conexionbase->begin();
-         cursoraux = conexionbase->cargaasientosfecha((char *)finicial.latin1(),(char *)ffinal.latin1());
+         cursoraux = conexionbase->cargaasientosfecha((char *)finicial.ascii(),(char *)ffinal.ascii());
 
          for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
-            int idasiento=atoi(cursoraux->valor("idasiento").latin1());
+            int idasiento=atoi(cursoraux->valor("idasiento").ascii());
 
             if (txtapren) {
                //presentació txt format aprenentatge
@@ -360,12 +360,12 @@ void DiarioPrintView::presentar(char * tipus){
 
                if (txtapren) {
                   //presentació txt format aprenentatge
-                  sprintf(codicompte,"( %s )",cursasiento->valor("codigo").latin1());
-                  fitxersortidatxt << setw(12) << atof(cursasiento->valor("debe").latin1()) << "  " << setw(10) << codicompte << "  " << cursasiento->valor("nomcuenta").latin1() << endl;
+                  sprintf(codicompte,"( %s )",cursasiento->valor("codigo").ascii());
+                  fitxersortidatxt << setw(12) << atof(cursasiento->valor("debe").ascii()) << "  " << setw(10) << codicompte << "  " << cursasiento->valor("nomcuenta").ascii() << endl;
                }
                if (htmlapren) {
                   //presentació html format aprenentatge
-                  fitxersortidahtml << " <tr><td class=deurediariapren> " << atof(cursasiento->valor("debe").latin1()) << " </td><td class=codidiariapren> ( " << cursasiento->valor("codigo").latin1() << " ) </td><td class=nomcomptediariapren> " << cursasiento->valor("nomcuenta").latin1() << " </td><td> </td><td> </td><td> </td><td> </td></tr>\n";
+                  fitxersortidahtml << " <tr><td class=deurediariapren> " << atof(cursasiento->valor("debe").ascii()) << " </td><td class=codidiariapren> ( " << cursasiento->valor("codigo").ascii() << " ) </td><td class=nomcomptediariapren> " << cursasiento->valor("nomcuenta").ascii() << " </td><td> </td><td> </td><td> </td><td> </td></tr>\n";
                }
                cursasiento->siguienteregistro();
 
@@ -381,12 +381,12 @@ void DiarioPrintView::presentar(char * tipus){
 
                if (txtapren) {
                   //presentació txt format aprenentatge
-                  sprintf(codicompte,"( %s )",cursasiento->valor("codigo").latin1());
-                  fitxersortidatxt << "                                                                 a  " << setw(30) << cursasiento->valor("nomcuenta").latin1() << "  " << setw(10) << codicompte << "  " << setw(12) <<  atof(cursasiento->valor("haber").latin1()) <<endl;
+                  sprintf(codicompte,"( %s )",cursasiento->valor("codigo").ascii());
+                  fitxersortidatxt << "                                                                 a  " << setw(30) << cursasiento->valor("nomcuenta").ascii() << "  " << setw(10) << codicompte << "  " << setw(12) <<  atof(cursasiento->valor("haber").ascii()) <<endl;
                }
                if (htmlapren) {
                   //presentació html format aprenentatge
-                  fitxersortidahtml << " <tr><td> </td><td> </td><td> </td><td class=adiariapren>  a  </td><td class=nomcomptediariapren> " << cursasiento->valor("nomcuenta").latin1() << " </td><td class=codidiariapren> ( " << cursasiento->valor("codigo").latin1() << " ) </td><td class=haverdiariapren> " <<  atof(cursasiento->valor("haber").latin1()) << " </td></tr>\n";
+                  fitxersortidahtml << " <tr><td> </td><td> </td><td> </td><td class=adiariapren>  a  </td><td class=nomcomptediariapren> " << cursasiento->valor("nomcuenta").ascii() << " </td><td class=codidiariapren> ( " << cursasiento->valor("codigo").ascii() << " ) </td><td class=haverdiariapren> " <<  atof(cursasiento->valor("haber").ascii()) << " </td></tr>\n";
                }
                cursasiento->siguienteregistro();
             }

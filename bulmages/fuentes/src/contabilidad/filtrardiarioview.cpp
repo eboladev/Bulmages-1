@@ -44,7 +44,7 @@ void filtrardiarioview::cargacostes() {
    int i=1;
    while (!cursorcoste->eof()) {
       combocoste->insertItem(cursorcoste->valor(2),-1);
-      ccostes[i++] = atoi(cursorcoste->valor(0).latin1());
+      ccostes[i++] = atoi(cursorcoste->valor(0).ascii());
       cursorcoste->siguienteregistro();
    }// end while
    delete cursorcoste;

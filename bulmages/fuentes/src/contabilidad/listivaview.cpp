@@ -69,7 +69,7 @@ listivaview::~listivaview(){
  ********************************************************************/
 void listivaview::doble_click_soportado(int a, int b, int c, const QPoint &punto) {
   int idasiento;
-  idasiento = atoi(tablasoportado->text(a,S_COL_IDASIENTO).latin1());
+  idasiento = atoi(tablasoportado->text(a,S_COL_IDASIENTO).ascii());
   introapunts->muestraasiento(idasiento);
   introapunts->show();
   introapunts->setFocus();
@@ -86,7 +86,7 @@ void listivaview::doble_click_soportado(int a, int b, int c, const QPoint &punto
  ********************************************************************/
 void listivaview::doble_click_repercutido(int a, int b, int c, const QPoint &punto) {
   int idasiento;
-  idasiento = atoi(tablarepercutido->text(a,R_COL_IDASIENTO).latin1());
+  idasiento = atoi(tablarepercutido->text(a,R_COL_IDASIENTO).ascii());
   introapunts->muestraasiento(idasiento);
   introapunts->show();
   introapunts->setFocus();
@@ -140,7 +140,7 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     tablasoportado->horizontalHeader()->setLabel( S_COL_IDASIENTO, tr( "ID ASIENTO" ) );
     tablasoportado->horizontalHeader()->setLabel( S_COL_CUENTA_IVA, tr( "CUENTA IVA" ) );
 
-    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND cuenta.codigo LIKE '472%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().latin1(), ffinal->text().latin1());
+    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND cuenta.codigo LIKE '472%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
     conexionbase->begin();
     cursor2 *cursorreg = conexionbase->cargacursor(query,"cmquery");
     conexionbase->commit();
@@ -148,7 +148,7 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     cursor2 *cursorcontra;
     tablasoportado->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
-      query.sprintf("select * from cuenta where cuenta.idcuenta=%s",cursorreg->valor("contrapartida").latin1());
+      query.sprintf("select * from cuenta where cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
       conexionbase->begin();
       cursorcontra = conexionbase->cargacursor(query,"contra");
       conexionbase->commit();
@@ -161,12 +161,12 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
       tablasoportado->setText(i,S_COL_CUENTA_IVA,cursorreg->valor("codigo"));
 
       sbaseimp = cursorreg->valor("baseimp");
-      fbaseimp = atof(sbaseimp.latin1());
+      fbaseimp = atof(sbaseimp.ascii());
       cbaseimp.sprintf("%2.2f",fbaseimp);
       tablasoportado->setText(i,S_COL_BASEIMP,cbaseimp);
       siva = cursorreg->valor("iva");
-      fiva = atof(siva.latin1());
-      switch (atoi(siva.latin1())) {
+      fiva = atof(siva.ascii());
+      switch (atoi(siva.ascii())) {
         case 16:
           ivas16 += fbaseimp*fiva/100;
           bases16 += fbaseimp;
@@ -209,14 +209,14 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     tablarepercutido->horizontalHeader()->setLabel( R_COL_IDBORRADOR, tr( "ID BORRADOR") );
     tablarepercutido->horizontalHeader()->setLabel( R_COL_IDASIENTO, tr( "ID ASIENTO" ) );
     tablarepercutido->horizontalHeader()->setLabel( R_COL_CUENTA_IVA, tr( "CUENTA IVA" ) );
-    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND cuenta.codigo LIKE '477%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().latin1(), ffinal->text().latin1());
+    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND cuenta.codigo LIKE '477%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
     conexionbase->begin();
     cursorreg = conexionbase->cargacursor(query,"cmquery");
     conexionbase->commit();
     i =0;
     tablarepercutido->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
-      query.sprintf("select * from cuenta where cuenta.idcuenta=%s",cursorreg->valor("contrapartida").latin1());
+      query.sprintf("select * from cuenta where cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
       conexionbase->begin();
       cursorcontra = conexionbase->cargacursor(query,"contra");
       conexionbase->commit();
@@ -228,12 +228,12 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
       tablarepercutido->setText(i,R_COL_FECHA,cursorreg->valor("fecha").mid(0,10));
       tablarepercutido->setText(i,R_COL_CUENTA_IVA,cursorreg->valor("codigo"));
       sbaseimp = cursorreg->valor("baseimp");
-      fbaseimp = atof(sbaseimp.latin1());
+      fbaseimp = atof(sbaseimp.ascii());
       cbaseimp.sprintf("%2.2f",fbaseimp);
       tablarepercutido->setText(i,R_COL_BASEIMP,cbaseimp);
       siva = cursorreg->valor("iva");
-      fiva = atof(siva.latin1());
-      switch (atoi(siva.latin1())) {
+      fiva = atof(siva.ascii());
+      switch (atoi(siva.ascii())) {
         case 16:
           ivar16 += fbaseimp*fiva/100;
           baser16 += fbaseimp;
@@ -314,14 +314,14 @@ void listivaview::menu_contextual(int row, int col, const QPoint &poin) {
 		  switch(opcion) {
 		  		case 0:
                int idasiento;
-               idasiento = atoi(tablarepercutido->text(row,S_COL_IDASIENTO).latin1());
+               idasiento = atoi(tablarepercutido->text(row,S_COL_IDASIENTO).ascii());
                introapunts->muestraasiento(idasiento);
                introapunts->show();
                introapunts->setFocus();
                done(1);
 				break;
             case 101:
-               int idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).latin1());
+               int idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
                if (idborrador != 0) {
                    ivaview *nuevae=new ivaview(0,"");
                    nuevae->inicializa(conexionbase,1); //el "1" indica IVA Soportado
@@ -349,14 +349,14 @@ void listivaview::menu_contextual1(int row, int col, const QPoint &poin) {
 		  switch(opcion) {
 		  		case 0:
                int idasiento;
-               idasiento = atoi(tablarepercutido->text(row,R_COL_IDASIENTO).latin1());
+               idasiento = atoi(tablarepercutido->text(row,R_COL_IDASIENTO).ascii());
                introapunts->muestraasiento(idasiento);
                introapunts->show();
                introapunts->setFocus();
                done(1);
   				break;
             case 101:
-               int idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).latin1());
+               int idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
                if (idborrador != 0) {
                    ivaview *nuevae=new ivaview(0,"");
                    nuevae->inicializa(conexionbase,2); //el "2" indica IVA Repercutido

@@ -137,7 +137,7 @@ void ainteligentesview::cargacanales() {
    int j = 1;
    while (!cursorcanals->eof()) {
       combocanal->insertItem((cursorcanals->valor(2)),-1);
-      ccanales[j++] = atoi(cursorcanals->valor(0).latin1());
+      ccanales[j++] = atoi(cursorcanals->valor(0).ascii());
       cursorcanals->siguienteregistro();
    }// end while
    delete cursorcanals;
@@ -156,7 +156,7 @@ void ainteligentesview::cargacostes() {
    int i=1;
    while (!cursorcoste->eof()) {
       combocoste->insertItem(cursorcoste->valor(2),-1);
-      ccostes[i++] = atoi(cursorcoste->valor(0).latin1());
+      ccostes[i++] = atoi(cursorcoste->valor(0).ascii());
       cursorcoste->siguienteregistro();
    }// end while
    delete cursorcoste;
@@ -183,7 +183,7 @@ void ainteligentesview::inicializa(postgresiface2 *conn) {
 void ainteligentesview::return_asiento() {
   QString cadena;
   cadena = idainteligenteedit->text();
-  idasientointeligente = atoi(cadena.latin1());
+  idasientointeligente = atoi(cadena.ascii());
   fprintf(stderr,"%d\n",idasientointeligente);
   repinta();
 }// end return_asiento
@@ -195,15 +195,15 @@ void ainteligentesview::return_asiento() {
  *****************************************************************/
 void ainteligentesview::boton_nuevo() {
   QString query;
-  query.sprintf("INSERT INTO ainteligente (descripcion) VALUES ('%s')",tr("Nuevo Asiento Inteligente").latin1());
-  fprintf(stderr,query.latin1());
+  query.sprintf("INSERT INTO ainteligente (descripcion) VALUES ('%s')",tr("Nuevo Asiento Inteligente").ascii());
+  fprintf(stderr,query.ascii());
   conexionbase->begin();
   conexionbase->ejecuta(query);
   query.sprintf("SELECT max(idainteligente) AS id FROM ainteligente");
   cursor2 *aux = conexionbase->cargacursor(query,"querysupersuper");
   conexionbase->commit();
   if (!aux->eof()) {
-    idasientointeligente= atoi(aux->valor(0).latin1());
+    idasientointeligente= atoi(aux->valor(0).ascii());
     repinta();
   }// end if
   delete aux;
@@ -216,8 +216,8 @@ void ainteligentesview::boton_inicio() {
   conexionbase->begin();
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
   conexionbase->commit();
-  if (atoi(cur->valor(0).latin1()) != 0) {
-    idasientointeligente = atoi(cur->valor(0).latin1());
+  if (atoi(cur->valor(0).ascii()) != 0) {
+    idasientointeligente = atoi(cur->valor(0).ascii());
     repinta();
   }// end if
 }// end boton_inicio
@@ -229,8 +229,8 @@ void ainteligentesview::boton_fin() {
   conexionbase->begin();
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
   conexionbase->commit();
-  if (atoi(cur->valor(0).latin1()) != 0) {
-    idasientointeligente = atoi(cur->valor(0).latin1());
+  if (atoi(cur->valor(0).ascii()) != 0) {
+    idasientointeligente = atoi(cur->valor(0).ascii());
     repinta();
   }// end if
 }// end boton_inicio
@@ -242,8 +242,8 @@ void ainteligentesview::boton_siguiente() {
   conexionbase->begin();
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
   conexionbase->commit();
-  if (atoi(cur->valor(0).latin1()) != 0) {
-    idasientointeligente = atoi(cur->valor(0).latin1());
+  if (atoi(cur->valor(0).ascii()) != 0) {
+    idasientointeligente = atoi(cur->valor(0).ascii());
     repinta();
   }// end if
 }// end boton_siguiente
@@ -255,8 +255,8 @@ void ainteligentesview::boton_anterior() {
   conexionbase->begin();
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
   conexionbase->commit();
-  if (atoi(cur->valor(0).latin1()) != 0) {
-    idasientointeligente = atoi(cur->valor(0).latin1());
+  if (atoi(cur->valor(0).ascii()) != 0) {
+    idasientointeligente = atoi(cur->valor(0).ascii());
     repinta();
   }// end if
 }// end boton_anterior
@@ -270,13 +270,13 @@ void ainteligentesview::boton_borrar() {
   fprintf(stderr,"Boton de Borrar\n");
   QString query;
   query.sprintf("DELETE FROM binteligente WHERE idainteligente=%d",idasientointeligente);
-  fprintf(stderr,"%s\n",query.latin1());
+  fprintf(stderr,"%s\n",query.ascii());
   conexionbase->begin();
   conexionbase->ejecuta(query);
   query.sprintf("DELETE FROM ainteligente WHERE idainteligente=%d",idasientointeligente);
   conexionbase->ejecuta(query);
   conexionbase->commit();
-  fprintf(stderr,"%s\n",query.latin1());
+  fprintf(stderr,"%s\n",query.ascii());
   repinta();
 }// end boton_borrar
 
@@ -347,11 +347,11 @@ void ainteligentesview::boton_save() {
   cursor2 *asiento = conexionbase->cargacursor(query,"micursor");
   conexionbase->commit();
   if (asiento->eof()) {
-      sprintf(query,"INSERT INTO ainteligente (idainteligente,descripcion, comenatiosasiento) VALUES   (%d,'%s', '%s')",idasientointeligente,descasiento->text().latin1(), comainteligente->text().latin1());
+      sprintf(query,"INSERT INTO ainteligente (idainteligente,descripcion, comenatiosasiento) VALUES   (%d,'%s', '%s')",idasientointeligente,descasiento->text().ascii(), comainteligente->text().ascii());
       fprintf(stderr,"%s\n",query);
       conexionbase->ejecuta(query);
   } else {
-    sprintf(query,"UPDATE ainteligente SET descripcion='%s', comentariosasiento='%s' WHERE idainteligente=%d",descasiento->text().latin1(),comainteligente->text().latin1(), idasientointeligente);
+    sprintf(query,"UPDATE ainteligente SET descripcion='%s', comentariosasiento='%s' WHERE idainteligente=%d",descasiento->text().ascii(),comainteligente->text().ascii(), idasientointeligente);
     fprintf(stderr,"%s\n",query);
     conexionbase->ejecuta(query);
   }// end if
@@ -366,66 +366,66 @@ void ainteligentesview::boton_save() {
   tapunts->setCurrentCell(0,0);
   for (i=0;i<tapunts->numRows();i++) {
     if (!tapunts->text(i,COL_CODCUENTA).isNull()) {
-        codigocta = tapunts->text(i,COL_CODCUENTA).latin1();
+        codigocta = tapunts->text(i,COL_CODCUENTA).ascii();
         if (codigocta.length() != 0) {
            if (!tapunts->text(i,COL_DESCRIPCION).isNull())
-             sprintf(desc,"'%s'",tapunts->text(i,COL_DESCRIPCION).latin1());
+             sprintf(desc,"'%s'",tapunts->text(i,COL_DESCRIPCION).ascii());
            else
              sprintf(desc,"NULL");
              
            if (!tapunts->text(i,COL_CODCUENTA).isNull())
-             sprintf(cod,"'%s'",tapunts->text(i,COL_CODCUENTA).latin1());
+             sprintf(cod,"'%s'",tapunts->text(i,COL_CODCUENTA).ascii());
            else
              sprintf(cod,"NULL");
            
            if (!tapunts->text(i,COL_FECHA).isNull())
-             sprintf(fecha,"'%s'",tapunts->text(i,COL_FECHA).latin1());
+             sprintf(fecha,"'%s'",tapunts->text(i,COL_FECHA).ascii());
            else
              sprintf(fecha,"NULL");
            
            if (!tapunts->text(i,COL_CONCEPTOCONTABLE).isNull())
-             sprintf(concontable,"'%s'",tapunts->text(i,COL_CONCEPTOCONTABLE).latin1());
+             sprintf(concontable,"'%s'",tapunts->text(i,COL_CONCEPTOCONTABLE).ascii());
            else
              sprintf(concontable,"NULL");
              
            if (!tapunts->text(i,COL_DEBE).isNull())
-             sprintf(debe,"'%s'",tapunts->text(i,COL_DEBE).latin1());
+             sprintf(debe,"'%s'",tapunts->text(i,COL_DEBE).ascii());
            else
              sprintf(debe,"NULL");
              
            if (!tapunts->text(i,COL_HABER).isNull())
-             sprintf(haber,"'%s'",tapunts->text(i,COL_HABER).latin1());
+             sprintf(haber,"'%s'",tapunts->text(i,COL_HABER).ascii());
            else
              sprintf(haber,"NULL");
            
            if (!tapunts->text(i,COL_CONTRAPARTIDA).isNull())
-             sprintf(contrapartida,"'%s'",tapunts->text(i,COL_CONTRAPARTIDA).latin1());
+             sprintf(contrapartida,"'%s'",tapunts->text(i,COL_CONTRAPARTIDA).ascii());
            else
              sprintf(contrapartida,"NULL");
 
            if (!tapunts->text(i,COL_COMENTARIO).isNull())
-             sprintf(comentario,"'%s'",tapunts->text(i,COL_COMENTARIO).latin1());
+             sprintf(comentario,"'%s'",tapunts->text(i,COL_COMENTARIO).ascii());
            else
              sprintf(comentario,"NULL");
 
-           if (!tapunts->text(i,COL_CANAL).isNull() && (string) tapunts->text(i,COL_CANAL).latin1() != "0")
-             sprintf(canal,"'%s'",tapunts->text(i,COL_CANAL).latin1());
+           if (!tapunts->text(i,COL_CANAL).isNull() && (string) tapunts->text(i,COL_CANAL).ascii() != "0")
+             sprintf(canal,"'%s'",tapunts->text(i,COL_CANAL).ascii());
            else
              sprintf(canal,"NULL");
            
            if (!tapunts->text(i,COL_MARCACONCILIACION).isNull())
-             sprintf(marcaconciliacion,"'%s'",tapunts->text(i,COL_MARCACONCILIACION).latin1());
+             sprintf(marcaconciliacion,"'%s'",tapunts->text(i,COL_MARCACONCILIACION).ascii());
            else
              sprintf(marcaconciliacion,"NULL");
 
-           if (!tapunts->text(i,COL_IDC_COSTE).isNull() && (string) tapunts->text(i,COL_IDC_COSTE).latin1() != "0")
-             sprintf(idc_coste,"'%s'",tapunts->text(i,COL_IDC_COSTE).latin1());
+           if (!tapunts->text(i,COL_IDC_COSTE).isNull() && (string) tapunts->text(i,COL_IDC_COSTE).ascii() != "0")
+             sprintf(idc_coste,"'%s'",tapunts->text(i,COL_IDC_COSTE).ascii());
            else
              sprintf(idc_coste,"NULL");
 
            
            if (!tapunts->text(i,COL_IDDIARIO).isNull())
-             sprintf(iddiario,"'%s'",tapunts->text(i,COL_IDDIARIO).latin1());
+             sprintf(iddiario,"'%s'",tapunts->text(i,COL_IDDIARIO).ascii());
            else
              sprintf(iddiario,"NULL");
 
@@ -435,7 +435,7 @@ void ainteligentesview::boton_save() {
 
            sprintf(query,"SELECT max(idbinteligente) AS id FROM binteligente");
            cur = conexionbase->cargacursor(query,"identificador");
-           if (atoi(cur->valor(0).latin1()) != 0) 
+           if (atoi(cur->valor(0).ascii()) != 0) 
              tapunts->setText(i,COL_IDBINTELIGENTE, cur->valor(0));
            delete cur;
            conexionbase->commit();
@@ -451,57 +451,57 @@ void ainteligentesview::boton_save() {
   // Cambiamos el foco de tapunts para que coja el ultimo cambio realizado.
   tiva->setCurrentCell(0,0);
   for (i=0;i<tiva->numRows();i++) {
-    if (!tiva->text(i,COL_CONTRAPARTIDAIVA).isNull() && ( (string) tiva->text(i,COL_CONTRAPARTIDAIVA).latin1() != "") ) {
-        contrapartidaiva = "'"+(string) tiva->text(i,COL_CONTRAPARTIDAIVA).latin1()+"'";
+    if (!tiva->text(i,COL_CONTRAPARTIDAIVA).isNull() && ( (string) tiva->text(i,COL_CONTRAPARTIDAIVA).ascii() != "") ) {
+        contrapartidaiva = "'"+(string) tiva->text(i,COL_CONTRAPARTIDAIVA).ascii()+"'";
         if (contrapartidaiva.length() != 0) {
 
           
            if (!tiva->text(i,COL_BASEIMPIVA).isNull())
-             baseimp = "'"+(string) tiva->text(i,COL_BASEIMPIVA).latin1()+"'";
+             baseimp = "'"+(string) tiva->text(i,COL_BASEIMPIVA).ascii()+"'";
            else
              baseimp="NULL";
 
            if (!tiva->text(i,COL_IVAIVA).isNull())
-             iva = "'"+(string) tiva->text(i,COL_IVAIVA).latin1()+"'";
+             iva = "'"+(string) tiva->text(i,COL_IVAIVA).ascii()+"'";
            else
              iva= "NULL";
 
            if (!tiva->text(i,COL_FACTURAIVA).isNull())
-             factura = "'"+(string)tiva->text(i,COL_FACTURAIVA).latin1()+"'";
+             factura = "'"+(string)tiva->text(i,COL_FACTURAIVA).ascii()+"'";
            else
              factura = "NULL";
 
            if (!tiva->text(i,COL_IDBORRADORIVA).isNull())
-             idborrador = "'"+(string)tiva->text(i,COL_IDBORRADORIVA).latin1()+"'";
+             idborrador = "'"+(string)tiva->text(i,COL_IDBORRADORIVA).ascii()+"'";
            else
              idborrador = "NULL";
 
-           int algo = atoi(tiva->text(i,COL_IDBORRADORIVA).latin1());
+           int algo = atoi(tiva->text(i,COL_IDBORRADORIVA).ascii());
            tiva->setText(i,COL_IDBINTELIGENTEIVA,tapunts->text(algo,COL_IDBINTELIGENTE));
-           int idbinteligente = atoi(tiva->text(i,COL_IDBINTELIGENTEIVA).latin1());
+           int idbinteligente = atoi(tiva->text(i,COL_IDBINTELIGENTEIVA).ascii());
 
            if (!tiva->text(i,COL_INCREGISTROIVA).isNull())
-             incregistro = "'"+(string)tiva->text(i,COL_INCREGISTROIVA).latin1()+"'";
+             incregistro = "'"+(string)tiva->text(i,COL_INCREGISTROIVA).ascii()+"'";
            else
              incregistro = "NULL";
              
            if (!tiva->text(i,COL_REGULARIZACIONIVA).isNull())
-             regularizacion = "'"+(string)tiva->text(i,COL_REGULARIZACIONIVA).latin1()+"'";
+             regularizacion = "'"+(string)tiva->text(i,COL_REGULARIZACIONIVA).ascii()+"'";
            else
              regularizacion = "NULL";
 
            if (!tiva->text(i,COL_PLAN349IVA).isNull())
-             plan349 = "'"+(string)tiva->text(i,COL_PLAN349IVA).latin1()+"'";
+             plan349 = "'"+(string)tiva->text(i,COL_PLAN349IVA).ascii()+"'";
            else
              plan349 = "NULL";
                           
            if (!tiva->text(i,COL_NUMORDENIVA).isNull())
-             numorden = "'"+(string)tiva->text(i,COL_NUMORDENIVA).latin1()+"'";
+             numorden = "'"+(string)tiva->text(i,COL_NUMORDENIVA).ascii()+"'";
            else
              numorden = "NULL";
 
            if (!tiva->text(i,COL_CIFIVA).isNull())
-             cif = "'"+(string)tiva->text(i,COL_CIFIVA).latin1()+"'";
+             cif = "'"+(string)tiva->text(i,COL_CIFIVA).ascii()+"'";
            else
              cif = "NULL";
                           
@@ -660,7 +660,7 @@ void ainteligentesview::currentChanged(int row, int col) {
        tapunts->setCellWidget(row,COL_NOMCANAL,combocanal);
 
        if (!tapunts->text(row,COL_IDC_COSTE).isNull()) {
-         coste = atoi(tapunts->text(row,COL_IDC_COSTE).latin1());
+         coste = atoi(tapunts->text(row,COL_IDC_COSTE).ascii());
          i=0;
          while (ccostes[i] != coste && i < 100)
            i++;
@@ -669,7 +669,7 @@ void ainteligentesview::currentChanged(int row, int col) {
        }// end if
 
        if (!tapunts->text(row,COL_CANAL).isNull()) {
-          canal = atoi(tapunts->text(row,COL_CANAL).latin1());
+          canal = atoi(tapunts->text(row,COL_CANAL).ascii());
           i=0;
           while (ccanales[i] != canal && i < 100)
             i++;

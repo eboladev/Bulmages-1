@@ -76,24 +76,24 @@ void resmensualview::presentar() {
          QString finicial = fecha.toString("dd/MM/yyyy");
          QString ffinal = fecha1.toString("dd/MM/yyyy");
          QString query;
-         string cod = codigo[j].latin1();
-         string cod1 = codigomasa[j].latin1();
+         string cod = codigo[j].ascii();
+         string cod1 = codigomasa[j].ascii();
          if (cod != "") {
-            query.sprintf( "SELECT debetotal(id_cuenta('%s'),'%s','%s') as tdebe, habertotal(id_cuenta('%s'),'%s','%s') as thaber",codigo[j].latin1(),(char *)finicial.latin1(),(char *)ffinal.latin1(), codigo[j].latin1(),(char *)finicial.latin1(),(char *)ffinal.latin1());
+            query.sprintf( "SELECT debetotal(id_cuenta('%s'),'%s','%s') as tdebe, habertotal(id_cuenta('%s'),'%s','%s') as thaber",codigo[j].ascii(),(char *)finicial.ascii(),(char *)ffinal.ascii(), codigo[j].ascii(),(char *)finicial.ascii(),(char *)ffinal.ascii());
 //         } else if (cod1 != "" ) {
          } else {
-            query.sprintf( "SELECT debempatrimonial(%s,'%s','%s') as tdebe, habermpatrimonial(%s,'%s','%s') as thaber",codigomasa[j].latin1(),(char *)finicial.latin1(),(char *)ffinal.latin1(), codigomasa[j].latin1(),(char *)finicial.latin1(),(char *)ffinal.latin1());
+            query.sprintf( "SELECT debempatrimonial(%s,'%s','%s') as tdebe, habermpatrimonial(%s,'%s','%s') as thaber",codigomasa[j].ascii(),(char *)finicial.ascii(),(char *)ffinal.ascii(), codigomasa[j].ascii(),(char *)finicial.ascii(),(char *)ffinal.ascii());
          }// end if
-         fprintf(stderr,"%s\n",query.latin1());
+         fprintf(stderr,"%s\n",query.ascii());
          conexionbase->begin();
          cursor2 *curs = conexionbase->cargacursor(query,"midursor");
          conexionbase->commit();
          if (!curs->eof()) {
-            milistad[i].push_back(movant + atof(curs->valor("tdebe").latin1()) +atof(curs->valor("thaber").latin1()));
-            milistas[i].push_back(saldoant + atof(curs->valor("tdebe").latin1()) - atof(curs->valor("thaber").latin1()));
-            saldoant = saldoant + atof(curs->valor("tdebe").latin1()) - atof(curs->valor("thaber").latin1());
-            movant = movant +  atof(curs->valor("tdebe").latin1()) + atof(curs->valor("thaber").latin1());
-            fprintf(stderr,"metido en el gráfico%s\n", curs->valor("tdebe").latin1());
+            milistad[i].push_back(movant + atof(curs->valor("tdebe").ascii()) +atof(curs->valor("thaber").ascii()));
+            milistas[i].push_back(saldoant + atof(curs->valor("tdebe").ascii()) - atof(curs->valor("thaber").ascii()));
+            saldoant = saldoant + atof(curs->valor("tdebe").ascii()) - atof(curs->valor("thaber").ascii());
+            movant = movant +  atof(curs->valor("tdebe").ascii()) + atof(curs->valor("thaber").ascii());
+            fprintf(stderr,"metido en el gráfico%s\n", curs->valor("tdebe").ascii());
          } else {
             milistad[i].push_back(movant);
 //            milistad[i].push_back(0);
@@ -199,7 +199,7 @@ void resmensualview::presentarpie() {
 
       for (int i=0; i<3; i++) {      
          conexionbase->begin();
-   		sprintf(query,"SELECT sum(debe) as tdebe, sum(haber) as thaber, contrapartida FROM apunte WHERE apunte.idcuenta=id_cuenta('%s') GROUP BY contrapartida", codigo[i].latin1());
+   		sprintf(query,"SELECT sum(debe) as tdebe, sum(haber) as thaber, contrapartida FROM apunte WHERE apunte.idcuenta=id_cuenta('%s') GROUP BY contrapartida", codigo[i].ascii());
    		cursorapt = conexionbase->cargacursor(query,"mycursor");
          conexionbase->commit();
          // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
@@ -209,7 +209,7 @@ void resmensualview::presentarpie() {
          while (!cursorapt->eof()) {
             QString nomcuenta;
             // Acumulamos los totales para al final poder escribirlos
-            sprintf(query,"SELECT * FROM cuenta WHERE idcuenta = %s",cursorapt->valor("contrapartida").latin1());
+            sprintf(query,"SELECT * FROM cuenta WHERE idcuenta = %s",cursorapt->valor("contrapartida").ascii());
             conexionbase->begin();
             cursor2 *micurs= conexionbase->cargacursor(query,"mioldcursor");
             if (!micurs->eof()) {
@@ -217,15 +217,15 @@ void resmensualview::presentarpie() {
             }// end if
             delete micurs;
 
-            float valor =  atof(cursorapt->valor("tdebe").latin1()) + atof(cursorapt->valor("thaber").latin1());
+            float valor =  atof(cursorapt->valor("tdebe").ascii()) + atof(cursorapt->valor("thaber").ascii());
             if (valor > 0) {
    //                  pie->addValue(valor,nomcuenta.substr(0,25).c_str());
                      valores.push_back(valor);
-                     labels.push_back(nomcuenta.mid(0,25).latin1());
+                     labels.push_back(nomcuenta.mid(0,25).ascii());
             } else {
    //                  pie->addValue(-valor,nomcuenta.substr(0,25).c_str());
                      valores.push_back(-valor);
-                     labels.push_back(nomcuenta.mid(0,25).latin1());
+                     labels.push_back(nomcuenta.mid(0,25).ascii());
             }// end if
 
             // Calculamos la siguiente cuenta registro y finalizamos el bucle

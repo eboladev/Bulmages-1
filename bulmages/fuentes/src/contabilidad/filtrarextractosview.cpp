@@ -49,7 +49,7 @@ void filtrarextractosview::cargacostes() {
    fprintf(stderr,"Vamos a iterear\n");
    while (!cursorcoste->eof()) {
       combocoste->insertItem(cursorcoste->valor(2),-1);
-      ccostes[i++] = atoi(cursorcoste->valor(0).latin1());
+      ccostes[i++] = atoi(cursorcoste->valor(0).ascii());
       cursorcoste->siguienteregistro();
    }// end while
    delete cursorcoste;

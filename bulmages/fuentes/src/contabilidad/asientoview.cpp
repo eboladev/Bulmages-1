@@ -87,16 +87,16 @@ int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, Q
   QString query;
   int val;
   // Si ya existe un asiento con el orden que intentamos asignar debemos desplazar los asientos posteriores.
-  query.sprintf("SELECT * FROM asiento WHERE ordenasiento=%s",orden.latin1());
+  query.sprintf("SELECT * FROM asiento WHERE ordenasiento=%s",orden.ascii());
   conexionbase->begin();
   cursor2 *cur = conexionbase->cargacursor(query,"micursor");
   conexionbase->commit();
   if (!cur->eof()) {
-     query.sprintf("UPDATE asiento set ordenasiento = ordenasiento+1 WHERE ordenasiento >= %s", orden.latin1());
+     query.sprintf("UPDATE asiento set ordenasiento = ordenasiento+1 WHERE ordenasiento >= %s", orden.ascii());
      conexionbase->ejecuta(query);
   }// end if
   
-  query.sprintf("UPDATE asiento SET descripcion='%s', fecha='%s', comentariosasiento='%s', ordenasiento=%s WHERE idasiento=%d",texto.latin1(),fecha.latin1(),notas.latin1(),orden.latin1(), numasiento);
+  query.sprintf("UPDATE asiento SET descripcion='%s', fecha='%s', comentariosasiento='%s', ordenasiento=%s WHERE idasiento=%d",texto.ascii(),fecha.ascii(),notas.ascii(),orden.ascii(), numasiento);
   conexionbase->begin();
   val = conexionbase->ejecuta(query);
   conexionbase->commit();

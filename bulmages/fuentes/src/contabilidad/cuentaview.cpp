@@ -66,7 +66,7 @@ void cuentaview::aceptar() {
       conexionbase->begin();
       cursoraux = conexionbase->cargacuenta(0,codigocuenta);
       conexionbase->commit();
-      idpadre = atoi(cursoraux->valor(0).latin1());
+      idpadre = atoi(cursoraux->valor(0).ascii());
       delete cursoraux;
    }// end if
    // Recogemos el valor de tipocuenta
@@ -95,7 +95,7 @@ void cuentaview::aceptar() {
       conexionbase->nuevacuenta( descripcion->text(), codigo->text(), idpadre, idgrupos[combogrupos->currentItem()],nombreent->text(),  cif->text(), direccion->text(),  telf->text(),coments->text(), banco->text(), email->text(), web->text(), tipocuenta, nodebe->isChecked(), nohaber->isChecked() );
       QString query = "SELECT max(idcuenta) from cuenta";
       cursoraux = conexionbase->cargacursor(query, "maxidcuenta");
-      idcuenta = atoi(cursoraux->valor(0).latin1());
+      idcuenta = atoi(cursoraux->valor(0).ascii());
       conexionbase->commit();
       delete cursoraux;
    }// end if
@@ -168,7 +168,7 @@ int cuentaview::cargacuenta(int idcuenta1){
      regularizacion->setChecked(false);
   }// end if
   // Vamos a hacer la carga del tipocuenta
-  int tipocuenta = atoi(cursorcuenta->valor("tipocuenta").latin1());
+  int tipocuenta = atoi(cursorcuenta->valor("tipocuenta").ascii());
   switch(tipocuenta) {
     case 0:
       cuentasintipo->setChecked(TRUE);
@@ -190,13 +190,13 @@ int cuentaview::cargacuenta(int idcuenta1){
     break;
   }// end switch
   // Vamos a hacer la carga del grupo
-  int idgrupo = atoi(cursorcuenta->valor(6).latin1());
+  int idgrupo = atoi(cursorcuenta->valor(6).ascii());
   int i=0;
   while (idgrupos[i]!=idgrupo && i<100) i++;
   combogrupos->setCurrentItem(i);
   // Vamos a coger el código del padre de la cuenta para que también
   // aparezca en el formulario.
-  cpadre = atoi( cursorcuenta->valor(4).latin1());
+  cpadre = atoi( cursorcuenta->valor(4).ascii());
   if (cpadre != 0) {
      conexionbase->begin();
      cursorpadre = conexionbase->cargacuenta(cpadre);
@@ -227,11 +227,11 @@ int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
 	// que le corresponda.
 	 QString cpadreaux;
 	 QString query;
-	 query.sprintf("SELECT max(codigo) as maximo FROM cuenta WHERE padre = id_cuenta('%s')",codpadre.latin1());
+	 query.sprintf("SELECT max(codigo) as maximo FROM cuenta WHERE padre = id_cuenta('%s')",codpadre.ascii());
 	 conexionbase->begin();
 	 cursor2 *cur = conexionbase->cargacursor(query,"uncursor");
 	 conexionbase->commit();
-	 long int valor = atol(cur->valor("maximo").latin1());
+	 long int valor = atol(cur->valor("maximo").ascii());
 	 valor ++;
 	 cpadreaux.setNum(valor);
 	 codigo->setText(cpadreaux);

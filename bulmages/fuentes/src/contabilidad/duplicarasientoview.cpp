@@ -73,15 +73,15 @@ void duplicarasientoview::accept() {
 	CONEXIONBASE->begin();
 	cursor2 *cur = CONEXIONBASE->cargacursor(query,"hola");
 	if (!cur->eof()) {
-		ordeninicial = atoi(cur->valor("orden").latin1())+1;
+		ordeninicial = atoi(cur->valor("orden").ascii())+1;
 	}// end if
 	delete cur;
 
 	query1 = "SELECT max(idasiento) AS maxim FROM asiento";
 	cursor2 *cursaux = CONEXIONBASE->cargacursor(query1,"maximo");
 	if (!cursaux->eof()) {
-		idasiento = atoi(cursaux->valor("maxim").latin1());
-		idasientoinicial = atoi(cursaux->valor("maxim").latin1())+1;
+		idasiento = atoi(cursaux->valor("maxim").ascii());
+		idasientoinicial = atoi(cursaux->valor("maxim").ascii())+1;
 	}// end if
 	delete cursaux;
 

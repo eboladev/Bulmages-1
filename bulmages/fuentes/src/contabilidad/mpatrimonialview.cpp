@@ -134,8 +134,8 @@ void mpatrimonialview::inicializa1(string idmpatrimonial1) {
 void mpatrimonialview::nuevasuma() {
    QListViewItem *it;
    // Lo primero de todo es coger el código de cuenta.
-   string codcuenta = codigocta1->text().latin1();
-   string masapatrimonial = mpatrimonial->text().latin1();
+   string codcuenta = codigocta1->text().ascii();
+   string masapatrimonial = mpatrimonial->text().ascii();
 
     // Leemos las cuentas y las metemos en la lista que corresponda.
     conexionbase->begin();
@@ -181,8 +181,8 @@ void mpatrimonialview::borrasuma() {
 void mpatrimonialview::nuevaresta() {
    QListViewItem *it;
    // Lo primero de todo es coger el código de cuenta.
-   string codcuenta = codigocta1->text().latin1();
-   string masapatrimonial = mpatrimonial->text().latin1();
+   string codcuenta = codigocta1->text().ascii();
+   string masapatrimonial = mpatrimonial->text().ascii();
 
     // Leemos las cuentas y las metemos en la lista que corresponda.
     conexionbase->begin();
@@ -238,44 +238,44 @@ void mpatrimonialview::accept() {
    if (idmpatrimonial == "") {
       conexionbase->begin();
       query.sprintf("INSERT INTO mpatrimonial (descmpatrimonial) VALUES ('nueva masa')");
-      conexionbase->ejecuta(query.latin1());
+      conexionbase->ejecuta(query.ascii());
       query.sprintf("SELECT MAX(idmpatrimonial) as id FROM mpatrimonial");
       cursor2 *curs = conexionbase->cargacursor(query,"cargaid");
       conexionbase->commit();
-      idmpatrimonial = curs->valor("id").latin1();
+      idmpatrimonial = curs->valor("id").ascii();
    }// end if
    
    // Ponemos los datos correctos sobre la masa patrimonial.
    QString text = descmpatrimonial->text();
-   query.sprintf("UPDATE mpatrimonial SET descmpatrimonial='%s' WHERE idmpatrimonial =%s", text.latin1(), idmpatrimonial.c_str());
+   query.sprintf("UPDATE mpatrimonial SET descmpatrimonial='%s' WHERE idmpatrimonial =%s", text.ascii(), idmpatrimonial.c_str());
    conexionbase->ejecuta(query);
    
    query.sprintf("DELETE FROM compmasap WHERE masaperteneciente=%s", idmpatrimonial.c_str());
    conexionbase->ejecuta(query);
    item = componentessuma->firstChild();
    while (item) {
-     string id = item->text(0).latin1();
-     string tipo = item->text(3).latin1();
+     string id = item->text(0).ascii();
+     string tipo = item->text(3).ascii();
      if (tipo == "cuenta") {
         query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (%s,NULL,%s,true)",id.c_str(), idmpatrimonial.c_str() );
      } else {
         query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (NULL,%s,%s,true)",id.c_str(), idmpatrimonial.c_str() );
      }// end if        
-     fprintf(stderr,"%s\n",query.latin1());
+     fprintf(stderr,"%s\n",query.ascii());
      conexionbase->ejecuta(query);
      item = item->nextSibling();
    }// end while
 
    item = componentesresta->firstChild();
    while (item) {
-     string id = item->text(0).latin1();
-     string tipo = item->text(3).latin1();
+     string id = item->text(0).ascii();
+     string tipo = item->text(3).ascii();
      if (tipo == "cuenta") {
         query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (%s,NULL,%s,false)",id.c_str(), idmpatrimonial.c_str() );
      } else {
         query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (NULL,%s,%s,false)",id.c_str(), idmpatrimonial.c_str() );
      }// end if   
-     fprintf(stderr,"%s\n",query.latin1());
+     fprintf(stderr,"%s\n",query.ascii());
      conexionbase->ejecuta(query);
      item = item->nextSibling();
    }// end while
@@ -283,6 +283,6 @@ void mpatrimonialview::accept() {
 }// end accept
 
 string mpatrimonialview::getnommasa() {
-   return descmpatrimonial->text().latin1();
+   return descmpatrimonial->text().ascii();
 }
 

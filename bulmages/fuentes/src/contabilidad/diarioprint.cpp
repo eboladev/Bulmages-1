@@ -73,20 +73,20 @@ void diarioprint::accept() {
       cursoraux = conexionbase->cargaasientosfecha(finicial,ffinal);
       for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
          fprintf(stderr,"bucle\n");
-         fechaasiento = cursoraux->valor(2).latin1();
-         idasiento = atoi(cursoraux->valor(0).latin1());
+         fechaasiento = cursoraux->valor(2).ascii();
+         idasiento = atoi(cursoraux->valor(0).ascii());
          cursoraux1 = conexionbase->cargaapuntes(idasiento);
          for(;!cursoraux1->eof();cursoraux1->siguienteregistro()) {
-            fecha = cursoraux1->valor(4).latin1();
-            descripcion = cursoraux1->valor(5).latin1();
-            concepto = cursoraux->valor(1).latin1();
-            debe = atof(cursoraux1->valor(8).latin1());
-            haber = atof(cursoraux1->valor(9).latin1());
-            idcuenta = atoi(cursoraux1->valor(6).latin1());
+            fecha = cursoraux1->valor(4).ascii();
+            descripcion = cursoraux1->valor(5).ascii();
+            concepto = cursoraux->valor(1).ascii();
+            debe = atof(cursoraux1->valor(8).ascii());
+            haber = atof(cursoraux1->valor(9).ascii());
+            idcuenta = atoi(cursoraux1->valor(6).ascii());
 
             cursoraux2 = conexionbase->cargacuenta(idcuenta, NULL);
             if (!cursoraux2->eof()) {
-               codigocuenta = cursoraux2->valor(1).latin1();
+               codigocuenta = cursoraux2->valor(1).ascii();
             }// end if
             cursoraux2->cerrar();
             delete cursoraux2;

@@ -53,8 +53,8 @@
 #define COL_IDCANAL         14
 #define COL_IDCCOSTE        15
 
-#define IDASIENTO cursorasientos->valor("idasiento").latin1()
-#define ORDENASIENTO cursorasientos->valor("ordenasiento").latin1()
+#define IDASIENTO cursorasientos->valor("idasiento").ascii()
+#define ORDENASIENTO cursorasientos->valor("ordenasiento").ascii()
 
 
 intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name ) : intapunts3dlg(parent,name) {
@@ -225,7 +225,7 @@ void intapunts3view::cargarcursor(int numasiento) {
     }// end if
     if (numasiento > 0 && (cursorasientos->numregistros() != 0)) {
         cursorasientos->ultimoregistro();
-        while (!cursorasientos->bof() && atoi(cursorasientos->valor("idasiento").latin1())>numasiento) {
+        while (!cursorasientos->bof() && atoi(cursorasientos->valor("idasiento").ascii())>numasiento) {
             cursorasientos->registroanterior();
         }// end while
     }// end if
@@ -234,7 +234,7 @@ void intapunts3view::cargarcursor(int numasiento) {
 void intapunts3view::boton_inicio() {
     if (cursorasientos->numregistros() != 0) {
         cursorasientos->primerregistro();
-        muestraasiento(atoi(cursorasientos->valor("idasiento").latin1()));
+        muestraasiento(atoi(cursorasientos->valor("idasiento").ascii()));
     } else {
         vaciarapuntes();
     }// end if
@@ -244,7 +244,7 @@ void intapunts3view::boton_inicio() {
 void intapunts3view::boton_fin() {
     if (cursorasientos->numregistros() != 0 ) {
         cursorasientos->ultimoregistro();
-        muestraasiento(atoi(cursorasientos->valor("idasiento").latin1()));
+        muestraasiento(atoi(cursorasientos->valor("idasiento").ascii()));
     } else {
         vaciarapuntes();
     }// end if
@@ -255,7 +255,7 @@ void intapunts3view::boton_siguiente() {
     //  muestraasiento(idasiento+1);
     if (!cursorasientos->esultimoregistro() && (cursorasientos->numregistros() != 0)) {
         cursorasientos->siguienteregistro();
-        muestraasiento(atoi(cursorasientos->valor("idasiento").latin1()));
+        muestraasiento(atoi(cursorasientos->valor("idasiento").ascii()));
     }// end if
 }
 
@@ -263,7 +263,7 @@ void intapunts3view::boton_siguiente() {
 void intapunts3view::boton_anterior() {
     if (!cursorasientos->esprimerregistro() && (cursorasientos->numregistros() != 0)) {
         cursorasientos->registroanterior();
-        muestraasiento(atoi(cursorasientos->valor("idasiento").latin1()));
+        muestraasiento(atoi(cursorasientos->valor("idasiento").ascii()));
     } else {
         //vaciarapuntes();
     }// end if
@@ -393,7 +393,7 @@ void intapunts3view::repinta() {
     tapunts->setNumRows(100);
     i=0;
     while (!cursorasiento->eof()) {
-        cadena.sprintf("%10.10s",cursorasiento->valor("borrfecha").latin1());
+        cadena.sprintf("%10.10s",cursorasiento->valor("borrfecha").ascii());
         // AQUI HAY UN BUEN EJEMPLO
         //         tapunts->setItem(i,COL_FECHA, new QTableItem1(tapunts, QTableItem::OnTyping,cadena,0));
         tapunts->setText(i,COL_FECHA,cadena);
@@ -402,16 +402,16 @@ void intapunts3view::repinta() {
         tapunts->setText(i,COL_SUBCUENTA,cursorasiento->valor("codigo"));
         //         debe = atof(cursorasiento->valor("debe").c_str());
         //         totaldebe += debe;
-        cadena.sprintf("%2.2f",atof(cursorasiento->valor("debe").latin1()));
+        cadena.sprintf("%2.2f",atof(cursorasiento->valor("debe").ascii()));
         tapunts->setText(i,COL_DEBE,cadena);
         //         haber = atof(cursorasiento->valor("haber").c_str());
         //         totalhaber += haber;
-        cadena.sprintf("%2.2f",atof(cursorasiento->valor("haber").latin1()));
+        cadena.sprintf("%2.2f",atof(cursorasiento->valor("haber").ascii()));
         tapunts->setText(i,COL_HABER,cadena);
         tapunts->setText(i,COL_CONCEPTO,cursorasiento->valor("conceptocontable"));
         tapunts->setText(i,COL_IDBORRADOR,cursorasiento->valor("idborrador"));
         // Vamos a mirar si existe registro de iva para este apunte y lo anotamos.
-        query.sprintf("SELECT * FROM registroiva WHERE idborrador=%s",cursorasiento->valor("idborrador").latin1());
+        query.sprintf("SELECT * FROM registroiva WHERE idborrador=%s",cursorasiento->valor("idborrador").ascii());
         conexionbase->begin();
         cursoriva = conexionbase->cargacursor(query,"cursoriva0");
         conexionbase->commit();
@@ -423,7 +423,7 @@ void intapunts3view::repinta() {
         // Carga del centro de coste.
         if (cursorasiento->valor("idc_coste") != "") {
             tapunts->setText(i, COL_IDCCOSTE, cursorasiento->valor("idc_coste"));
-            query.sprintf("SELECT nombre FROM c_coste WHERE idc_coste=%s",cursorasiento->valor("idc_coste").latin1());
+            query.sprintf("SELECT nombre FROM c_coste WHERE idc_coste=%s",cursorasiento->valor("idc_coste").ascii());
             conexionbase->begin();
             cursoriva = conexionbase->cargacursor(query,"cursorccoste");
             conexionbase->commit();
@@ -436,7 +436,7 @@ void intapunts3view::repinta() {
         // Carga del centro del canal
         if (cursorasiento->valor("idcanal") != "") {
             tapunts->setText(i,COL_IDCANAL, cursorasiento->valor("idcanal"));
-            query.sprintf("SELECT nombre FROM canal WHERE idcanal=%s",cursorasiento->valor("idcanal").latin1());
+            query.sprintf("SELECT nombre FROM canal WHERE idcanal=%s",cursorasiento->valor("idcanal").ascii());
             conexionbase->begin();
             cursoriva = conexionbase->cargacursor(query,"cursorcanal");
             conexionbase->commit();
@@ -448,13 +448,13 @@ void intapunts3view::repinta() {
 
 
         // Vamos a cargar la contrapartida, que aunque no aparece hay que ponerla para que se pueda usar.
-        query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%s",cursorasiento->valor("contrapartida").latin1());
-        fprintf(stderr,"%s\n",query.latin1());
+        query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%s",cursorasiento->valor("contrapartida").ascii());
+        fprintf(stderr,"%s\n",query.ascii());
         conexionbase->begin();
         cursor2 *cursorcontrapartida = conexionbase->cargacursor(query,"cursorcontrapartida");
         conexionbase->commit();
         if (!cursorcontrapartida->eof()) {
-            fprintf(stderr,"%s\n", cursorcontrapartida->valor("codigo").latin1());
+            fprintf(stderr,"%s\n", cursorcontrapartida->valor("codigo").ascii());
             tapunts->setText(i,COL_CONTRAPARTIDA,cursorcontrapartida->valor("codigo"));
             tapunts->setText(i,COL_IDCONTRAPARTIDA,cursorcontrapartida->valor("idcuenta"));
         }// end if
@@ -552,11 +552,11 @@ void intapunts3view::boton_cerrarasiento() {
     while (!tapunts->text(i,COL_IDBORRADOR).isNull()) {
         if (tapunts->text(i,COL_IVA).isNull()) {
             QString codcuenta = tapunts->text(i,COL_SUBCUENTA);
-            fprintf(stderr,"%s\n",codcuenta.latin1());
+            fprintf(stderr,"%s\n",codcuenta.ascii());
             codcuenta = codcuenta.mid(0,3);
             if (codcuenta == "477" || codcuenta == "472") {
-                fprintf(stderr,"%s\n",codcuenta.latin1());
-                int idborrador = atoi(tapunts->text(i,COL_IDBORRADOR).latin1());
+                fprintf(stderr,"%s\n",codcuenta.ascii());
+                int idborrador = atoi(tapunts->text(i,COL_IDBORRADOR).ascii());
                 if (idborrador != 0) {
 
                     ivaview *nuevae=new ivaview(0,"");
@@ -640,7 +640,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
             menucanal->insertItem(tr("Ninguno"), 1000);
             conexionbase->commit();
             while (!cur->eof()) {
-                menucanal->insertItem(cur->valor("nombre"),1000+atoi(cur->valor("idcanal").latin1()));
+                menucanal->insertItem(cur->valor("nombre"),1000+atoi(cur->valor("idcanal").ascii()));
                 cur->siguienteregistro();
             }// end while
             delete cur;
@@ -653,7 +653,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
             menucoste->insertItem(tr("Ninguno"), 1000);
             conexionbase->commit();
             while (!cur->eof()) {
-                menucoste->insertItem(cur->valor("nombre"), 1000+atoi(cur->valor("idc_coste").latin1()));
+                menucoste->insertItem(cur->valor("nombre"), 1000+atoi(cur->valor("idc_coste").ascii()));
                 cur->siguienteregistro();
             }// end while
             delete cur;
@@ -714,7 +714,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
                     mes = a.first()->month();
                     ano = a.first()->year();
                     cadena.sprintf("%2.2d/%2.2d/%d",dia, mes, ano);
-                    fprintf(stderr,"Se ha pulsado:%s\n", cadena.latin1());
+                    fprintf(stderr,"Se ha pulsado:%s\n", cadena.ascii());
                     tapunts->setText(row, COL_FECHA, cadena);
                     delete cal;
                     break;
@@ -751,7 +751,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
                     opcion -= 1000;
                     query1.sprintf("SELECT * FROM canal WHERE idcanal=%d", opcion);
                     conexionbase->begin();
-                    cur = conexionbase->cargacursor(query1.latin1(),"canales1");
+                    cur = conexionbase->cargacursor(query1.ascii(),"canales1");
                     conexionbase->commit();
                     if (!cur->eof()) {
                         tapunts->setText(row,COL_CANAL, cur->valor("nombre"));
@@ -770,7 +770,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
                     opcion -= 1000;
                     query1.sprintf("SELECT * FROM c_coste WHERE idc_coste=%d", opcion);
                     conexionbase->begin();
-                    cur = conexionbase->cargacursor(query1.latin1(),"canales1");
+                    cur = conexionbase->cargacursor(query1.ascii(),"canales1");
                     conexionbase->commit();
                     if (!cur->eof()) {
                         tapunts->setText(row,COL_CCOSTE, cur->valor("nombre"));
@@ -840,7 +840,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
              	idcuenta = tapunts->text(row,COL_IDCONTRAPARTIDA);
             cuentaview *nuevae = new cuentaview(0,"",true);
             nuevae->inicializa(conexionbase);
-            nuevae->cargacuenta(atoi(idcuenta.latin1()));
+            nuevae->cargacuenta(atoi(idcuenta.ascii()));
             nuevae->exec();
             delete nuevae;
             repinta();
@@ -919,12 +919,12 @@ void intapunts3view::calculadescuadre() {
     QString cadena;
     for (int i=0;i<100;i++) {
         if (!tapunts->text(i,COL_DEBE).isNull()) {
-            desc += atof(tapunts->text(i,COL_DEBE).latin1());
-            deb  += atof(tapunts->text(i,COL_DEBE).latin1());
+            desc += atof(tapunts->text(i,COL_DEBE).ascii());
+            deb  += atof(tapunts->text(i,COL_DEBE).ascii());
         }// end if
         if (!tapunts->text(i,COL_HABER).isNull()) {
-            desc-= atof(tapunts->text(i,COL_HABER).latin1());
-            hab += atof(tapunts->text(i,COL_HABER).latin1());
+            desc-= atof(tapunts->text(i,COL_HABER).ascii());
+            hab += atof(tapunts->text(i,COL_HABER).ascii());
         }// end if
     }// end for
     cadena.sprintf("%2.2f",desc);
@@ -1035,14 +1035,14 @@ void intapunts3view::guardaborrador(int row) {
         if (idborrador != "") {
             // El borrador existe, por lo que solo hay que hacer un update
             query = "UPDATE borrador SET orden="+rowtext+", conceptocontable="+concepto+", fecha="+fecha+", debe="+debe+",haber="+haber+", idcuenta="+idcuenta+", contrapartida="+contrapartida+", idcanal="+idcanal+", idc_coste="+idc_coste+" WHERE idborrador="+idborrador;
-            fprintf(stderr,"%s\n",query.latin1());
+            fprintf(stderr,"%s\n",query.ascii());
             conexionbase->begin();
             conexionbase->ejecuta(query);
             conexionbase->commit();
         } else {
             // El borrador no existe, por lo que hay que hacer un insert
             query = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES ("+rowtext+","+concepto+", "+fecha+","+idcuenta+","+debe+","+haber+","+IDASIENTO+","+contrapartida+","+idcanal+","+idc_coste+")";
-            fprintf(stderr,"%s\n",query.latin1());
+            fprintf(stderr,"%s\n",query.ascii());
             conexionbase->begin();
             conexionbase->ejecuta(query);
             query = "SELECT MAX (idborrador) AS id from borrador";
@@ -1074,7 +1074,7 @@ void intapunts3view::duplicarapunte() {
 void intapunts3view::boton_iva() {
 	  // Miramos que haya un row seleccionado.
 	  if(tapunts->currentRow() >=0) {
-			//int idborrador = atoi(tapunts->text(rowactual,COL_IDBORRADOR).latin1());
+			//int idborrador = atoi(tapunts->text(rowactual,COL_IDBORRADOR).ascii());
 			int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
 			QString codcuenta = tapunts->text(rowactual,COL_SUBCUENTA);
 			codcuenta = codcuenta.left(3);
@@ -1116,7 +1116,7 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
                     mes = a.first()->month();
                     ano = a.first()->year();
                     cadena.sprintf( "%2.2d/%2.2d/%d",dia, mes, ano);
-                    fprintf(stderr,"Se ha pulsado:%s\n", cadena.latin1());
+                    fprintf(stderr,"Se ha pulsado:%s\n", cadena.ascii());
                     tapunts->setText(row, COL_FECHA, cadena);
                     delete cal;
                     break;
@@ -1266,7 +1266,7 @@ void intapunts3view::cambiadodebe(int row) {
     float ndebe;
     debe =  tapunts->text(row,COL_DEBE);
     if (debe != "") {
-        ndebe =atof(debe.latin1());
+        ndebe =atof(debe.ascii());
         if (ndebe > 0.01) {
             tapunts->setText(row,COL_HABER,"0.00");
         }// end if
@@ -1283,7 +1283,7 @@ void intapunts3view::cambiadohaber(int row) {
     float nhaber;
     haber =  tapunts->text(row,COL_HABER);
     if (haber != "") {
-        nhaber =atof(haber.latin1());
+        nhaber =atof(haber.ascii());
         if (nhaber > 0.01) {
             tapunts->setText(row,COL_DEBE,"0.00");
         }// end if
@@ -1378,8 +1378,8 @@ void intapunts3view::boton_diario1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         }// end switch
-        fprintf(stderr,"la fecha actual vale:%s\n", fechaact.toString("dd/MM/yyyy").latin1());
-        fprintf(stderr,"el diario va a ir de %s a %s\n",fecha1.toString("dd/MM/yyyy").latin1(), fecha2.toString("dd/MM/yyyy").latin1());
+        fprintf(stderr,"la fecha actual vale:%s\n", fechaact.toString("dd/MM/yyyy").ascii());
+        fprintf(stderr,"el diario va a ir de %s a %s\n",fecha1.toString("dd/MM/yyyy").ascii(), fecha2.toString("dd/MM/yyyy").ascii());
         diario->inicializa1( fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
     diario->accept();
@@ -1438,8 +1438,8 @@ void intapunts3view::return_fechaasiento() {
     fechaasiento1->setText(normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
     if (abierto) { //cambiar la fecha del asiento
         conexionbase->begin();
-        query.sprintf("UPDATE asiento SET fecha='%s' WHERE idasiento='%s'",fechaasiento1->text().latin1(),IDASIENTO);
-        fprintf(stderr,"%s\n",query.latin1());
+        query.sprintf("UPDATE asiento SET fecha='%s' WHERE idasiento='%s'",fechaasiento1->text().ascii(),IDASIENTO);
+        fprintf(stderr,"%s\n",query.ascii());
         resultado = conexionbase->ejecuta(query);
         if (resultado != 0) {
             conexionbase->rollback();
@@ -1473,8 +1473,8 @@ void intapunts3view::asiento_cierre() {
     cursor2 *cursor=conexionbase->cargacursor(query, "cursor");
     conexionbase->commit();
     while (! cursor->eof()) {
-        idcuenta = atoi(cursor->valor("idcuenta").latin1());
-        diferencia = atof(cursor->valor("sumdebe").latin1())-atof(cursor->valor("sumhaber").latin1());
+        idcuenta = atoi(cursor->valor("idcuenta").ascii());
+        diferencia = atof(cursor->valor("sumdebe").ascii())-atof(cursor->valor("sumhaber").ascii());
         if (diferencia > 0) {
             nuevohaber = diferencia;
             nuevodebe= 0;
@@ -1507,7 +1507,7 @@ void intapunts3view::asiento_apertura() {
   postgresiface2 *metabase = new postgresiface2();
   metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
   metabase->begin();
-  query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",empresaactual->nombreDB.latin1());
+  query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",empresaactual->nombreDB.ascii());
   cursor2 *cur = metabase->cargacursor(query,"empresa");
   metabase->commit();
   delete metabase;
@@ -1573,18 +1573,18 @@ void intapunts3view::asiento_regularizacion() {
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");
     conexionbase->commit();
-    idcuenta1 = atoi(cur->valor("idcuenta").latin1());
+    idcuenta1 = atoi(cur->valor("idcuenta").ascii());
     delete cur;
     query = "SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito from apunte WHERE idcuenta IN (SELECT idcuenta FROM cuenta where idgrupo=6 OR idgrupo=7) GROUP BY idcuenta ORDER BY saldito";
-    fprintf(stderr,"%s\n",query.latin1());
+    fprintf(stderr,"%s\n",query.ascii());
     conexionbase->begin();
     cur = conexionbase->cargacursor(query,"cursor");
     conexionbase->commit();
     while (!cur->eof()) {
-        idcuenta = atoi(cur->valor("idcuenta").latin1());
+        idcuenta = atoi(cur->valor("idcuenta").ascii());
         //    totaldebe = atof(cur->valor("sumdebe").c_str());
         //    totalhaber = atof(cur->valor("sumhaber").c_str());
-        diferencia = atof(cur->valor("sumdebe").latin1())-atof(cur->valor("sumhaber").latin1());
+        diferencia = atof(cur->valor("sumdebe").ascii())-atof(cur->valor("sumhaber").ascii());
         if (diferencia > 0) {
             totalhaber = diferencia;
             totaldebe= 0;
@@ -1621,13 +1621,13 @@ void intapunts3view::return_numasiento() {
 //**************************************************************/
 void intapunts3view::boton_cargarasiento() {
     QString query;
-    int numasiento = atoi( (char *) idasiento1->text().latin1());
+    int numasiento = atoi( (char *) idasiento1->text().ascii());
     conexionbase->begin();
     query.sprintf("SELECT idasiento FROM asiento where ordenasiento = %d",numasiento);
     cursor2 *curs = conexionbase->cargacursor(query, "micursor");
     conexionbase->commit();
     if (!curs->eof()) {
-        numasiento = atoi(curs->valor("idasiento").latin1());
+        numasiento = atoi(curs->valor("idasiento").ascii());
         cargarcursor(numasiento);
         muestraasiento(numasiento);
     }// end if

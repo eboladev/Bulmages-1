@@ -41,7 +41,7 @@ QString extiendecodigo (QString cad, unsigned int num1) {
        cod.replace(pos,1,str7.c_str());
      }// end if
    }// end if
-   fprintf(stderr,"Cadena resultante:%s\n",cod.latin1());
+   fprintf(stderr,"Cadena resultante:%s\n",cod.ascii());
    return(cod);
 }
 

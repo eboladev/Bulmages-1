@@ -103,7 +103,7 @@ void estadisticasview::presentar() {
 		// Causar problemas con el motor de base de datos.
 		fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
       conexionbase->begin();
-		query.sprintf("CREATE TEMPORARY TABLE balance AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.latin1(), ffinal.latin1(), finicial.latin1() );
+		query.sprintf("CREATE TEMPORARY TABLE balance AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE BALANCE SET padre=0 WHERE padre ISNULL");
       conexionbase->ejecuta(query);
@@ -131,12 +131,12 @@ void estadisticasview::presentar() {
       conexionbase->begin();
 
       while (!cursorapt->eof())  {
-         query.sprintf("SELECT * FROM balance WHERE idcuenta=%s",cursorapt->valor("idcuenta").latin1());
+         query.sprintf("SELECT * FROM balance WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
          cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
 			conexionbase->commit();
 	      conexionbase->begin();
 
-         query.sprintf("UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").latin1()), atof(mycur->valor("tdebe").latin1()), atof(mycur->valor("thaber").latin1()),atof(mycur->valor("asaldo").latin1()),  atoi(mycur->valor("padre").latin1()));
+         query.sprintf("UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
 //			fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
 			conexionbase->ejecuta(query);
          delete mycur;
@@ -171,11 +171,11 @@ void estadisticasview::presentar() {
       while (!cursorapt->eof()) {
          // Acumulamos los totales para al final poder escribirlos
 
-         float valor =  atof(cursorapt->valor("tsaldo").latin1());
+         float valor =  atof(cursorapt->valor("tsaldo").ascii());
          if (valor > 0)
-                  pie->addValue(valor,cursorapt->valor("descripcion").mid(0,25).latin1());
+                  pie->addValue(valor,cursorapt->valor("descripcion").mid(0,25).ascii());
          else
-                  pie->addValue(-valor,cursorapt->valor("descripcion").mid(0,25).latin1());
+                  pie->addValue(-valor,cursorapt->valor("descripcion").mid(0,25).ascii());
          // end if
 
          // Calculamos la siguiente cuenta registro y finalizamos el bucle

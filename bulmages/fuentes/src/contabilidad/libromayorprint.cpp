@@ -73,11 +73,11 @@ void libromayorprint::accept() {
       conexionbase->begin();
       cursoraux = conexionbase->cargacuentascodigo(-1,codinicial,codfinal);
       while(!cursoraux->eof()) {
-         idcuenta = atoi(cursoraux->valor(0).latin1());
+         idcuenta = atoi(cursoraux->valor(0).ascii());
          cursoraux1 = conexionbase->cargaapuntesctafecha(idcuenta, finicial, ffinal);
          if (!cursoraux1->eof()) {
-            activo = strcmp((char *) cursoraux->valor(13).latin1() , "f");
-            fprintf(mifile,"\n\n%12s %50s",cursoraux->valor(1).latin1(), cursoraux->valor(2).latin1());
+            activo = strcmp((char *) cursoraux->valor(13).ascii() , "f");
+            fprintf(mifile,"\n\n%12s %50s",cursoraux->valor(1).ascii(), cursoraux->valor(2).ascii());
             if (activo) {
                fprintf(mifile," Cuenta de Activo\n");
             } else {
@@ -85,8 +85,8 @@ void libromayorprint::accept() {
             }// end if
             cursoraux2 = conexionbase->cargasaldoscuentafecha(idcuenta, finicial);
             if (!cursoraux2->eof()) {
-               debeinicial = atof(cursoraux2->valor(0).latin1());
-               haberinicial = atof(cursoraux2->valor(1).latin1());
+               debeinicial = atof(cursoraux2->valor(0).ascii());
+               haberinicial = atof(cursoraux2->valor(1).ascii());
                if (activo) {
                   saldoinicial = debeinicial - haberinicial;
                } else {
@@ -100,10 +100,10 @@ void libromayorprint::accept() {
             debefinal = debeinicial;
             haberfinal = haberinicial;
             for(;!cursoraux1->eof();cursoraux1->siguienteregistro()) {
-               idasiento=atoi(cursoraux1->valor(2).latin1());
-               textasiento = (char *) cursoraux1->valor(5).latin1();
-               debe=atof(cursoraux1->valor(8).latin1());
-               haber=atof(cursoraux1->valor(9).latin1());
+               idasiento=atoi(cursoraux1->valor(2).ascii());
+               textasiento = (char *) cursoraux1->valor(5).ascii();
+               debe=atof(cursoraux1->valor(8).ascii());
+               haber=atof(cursoraux1->valor(9).ascii());
                if (activo) {
                   saldo += debe - haber;
                } else {
@@ -111,8 +111,8 @@ void libromayorprint::accept() {
                }// end if
                debefinal += debe;
                haberfinal += haber;
-               cad = cursoraux1->valor(4).latin1();
-               fprintf(mifile,"%5.5d %10.10s %10.10s %-40.40s %10.2f %10.2f %10.2f\n",idasiento, cad.substr(1,10).c_str(),textasiento, cursoraux1->valor(5).latin1(),debe,haber,saldo);
+               cad = cursoraux1->valor(4).ascii();
+               fprintf(mifile,"%5.5d %10.10s %10.10s %-40.40s %10.2f %10.2f %10.2f\n",idasiento, cad.substr(1,10).c_str(),textasiento, cursoraux1->valor(5).ascii(),debe,haber,saldo);
             }// end for
             if (activo) {
                saldofinal = debefinal - haberfinal;

@@ -107,7 +107,7 @@ int propiedadesempresa::inicializa(postgresiface2 *conn, QString nomdb) {
     // Leemos los usuarios que pertenecen a esta empresa, son de acceso total. y los introducimos.
     metabase->begin();
     query = "SELECT * FROM usuario WHERE idusuario IN (SELECT idusuario FROM usuario_empresa, empresa WHERE usuario_empresa.idempresa=empresa.idempresa AND empresa.nombredb ='"+nombredb+"' AND permisos=1)";
-    fprintf(stderr,"%s\n",query.latin1());
+    fprintf(stderr,"%s\n",query.ascii());
     cursoraux = metabase->cargacursor(query,"cursorusuario");
     metabase->commit();
     while (!cursoraux->eof()) {
@@ -131,9 +131,9 @@ void propiedadesempresa::accept() {
    char *cadena;
    postgresiface *piface = new postgresiface();
    piface->inicializa(empresadb);
-   piface->modificaconfiguracion("CodCuenta",(char *)modcodigo->text().latin1());
+   piface->modificaconfiguracion("CodCuenta",(char *)modcodigo->text().ascii());
    fprintf(stderr,"accept;Pulsado\n");
-   cadena =  (char *) modcodigo->text().latin1();
+   cadena =  (char *) modcodigo->text().ascii();
    modificacodcuenta(cadena);
    delete piface;
    done(1);
@@ -146,12 +146,12 @@ void propiedadesempresa::accept() {
    metabase = new postgresiface2();
    metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
    metabase->begin();
-   query.sprintf("DELETE FROM usuario_empresa WHERE idempresa IN (SELECT idempresa FROM empresa WHERE nombredb='%s')",nombredb.latin1());
+   query.sprintf("DELETE FROM usuario_empresa WHERE idempresa IN (SELECT idempresa FROM empresa WHERE nombredb='%s')",nombredb.ascii());
    metabase->ejecuta(query);
 
-   query.sprintf("SELECT idempresa from empresa WHERE nombredb='%s'",nombredb.latin1());
+   query.sprintf("SELECT idempresa from empresa WHERE nombredb='%s'",nombredb.ascii());
    cursoraux = metabase->cargacursor(query,"cursorempresa");
-   int idempresa = atoi(cursoraux->valor(0).latin1());
+   int idempresa = atoi(cursoraux->valor(0).ascii());
    delete cursoraux;
 
    
@@ -160,14 +160,14 @@ void propiedadesempresa::accept() {
    int idusuario;
    item = usuarioslectura->firstChild();
    while (item) {
-     idusuario = atoi(item->text(0).latin1()   );
+     idusuario = atoi(item->text(0).ascii()   );
      query.sprintf("INSERT INTO usuario_empresa(idusuario,idempresa,permisos) VALUES (%d,%d,2)",idusuario,idempresa);
      metabase->ejecuta(query);
      item = item->nextSibling();
    }// end while
    item = usuariostotal->firstChild();
    while (item) {
-     idusuario = atoi(item->text(0).latin1()   );
+     idusuario = atoi(item->text(0).ascii()   );
      query.sprintf("INSERT INTO usuario_empresa(idusuario,idempresa,permisos) VALUES (%d,%d,1)",idusuario,idempresa);
      metabase->ejecuta(query);
      item = item->nextSibling();

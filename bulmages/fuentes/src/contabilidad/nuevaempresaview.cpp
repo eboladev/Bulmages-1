@@ -63,9 +63,9 @@ void nuevaempresaview::accept() {
  ***************************************************************/
 void nuevaempresaview::crearempresa() {
   char *args[4];
-  string nombredb=bdempresa->text().latin1();
-  string nombre=nombreempresa->text().latin1();
-  int ano=atoi(ejercicioempresa->text().latin1());
+  string nombredb=bdempresa->text().ascii();
+  string nombre=nombreempresa->text().ascii();
+  int ano=atoi(ejercicioempresa->text().ascii());
 
   args[0]="nuevaemp";
   args[1]=(char *) nombredb.c_str();
@@ -96,21 +96,21 @@ void nuevaempresaview::crearempresa() {
    metabase->ejecuta(query);
    sprintf(query,"SELECT max(idempresa) from empresa");
    cursoraux = metabase->cargacursor(query,"cursorempresa");
-   int idempresa = atoi(cursoraux->valor(0).latin1());
+   int idempresa = atoi(cursoraux->valor(0).ascii());
 
    // Hacemos la lectura de las listas de usuarios y los metemos en la base de datos.
    QListViewItem *item;
    int idusuario;
    item = usuarioslectura->firstChild();
    while (item) {
-     idusuario = atoi(item->text(0).latin1()   );
+     idusuario = atoi(item->text(0).ascii()   );
      sprintf(query,"INSERT INTO usuario_empresa(idusuario,idempresa,permisos) VALUES (%d,%d,2)",idusuario,idempresa);
      metabase->ejecuta(query);
      item = item->nextSibling();
    }// end while
    item = usuariostotal->firstChild();
    while (item) {
-     idusuario = atoi(item->text(0).latin1()   );
+     idusuario = atoi(item->text(0).ascii()   );
      sprintf(query,"INSERT INTO usuario_empresa(idusuario,idempresa,permisos) VALUES (%d,%d,1)",idusuario,idempresa);
      metabase->ejecuta(query);
      item = item->nextSibling();

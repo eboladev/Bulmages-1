@@ -27,6 +27,9 @@
 #include "splashscreen.h"
 #include "configuracion.h"
 
+#include "qtextcodec.h"
+
+
 QApplication * theApp;
 QTranslator * traductor;
 
@@ -35,6 +38,9 @@ int main(int argc, char *argv[]) {
    // Leemos la configuracion que luego podremos usar siempre
   confpr = new configuracion();
 
+  QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
+    
+  
   QApplication * mainApp = new QApplication (argc, argv);
   theApp = mainApp;
   //mainApp->setFont(QFont("helvetica", 11));

@@ -97,7 +97,7 @@ void balancesview::nuevo() {
    
    compbalanceview * nuevae = new compbalanceview(0,"compbalance");
    nuevae->inicializa(conexionbase);
-   nuevae->inicializa1(cursoraux->valor("idbalance").latin1());
+   nuevae->inicializa1(cursoraux->valor("idbalance").ascii());
    nuevae->exec();
    delete nuevae;   
    delete cursoraux;
@@ -112,9 +112,9 @@ void balancesview::borrar() {
    QString idbalance = listado->text(listado->currentRow(), COL_CODIGO);
    QString query;
    conexionbase->begin();
-   query.sprintf("DELETE FROM compbalance WHERE idbalance=%s", idbalance.latin1());
-   conexionbase->ejecuta(query.latin1());
-   query.sprintf("DELETE FROM balance WHERE idbalance=%s",idbalance.latin1());
+   query.sprintf("DELETE FROM compbalance WHERE idbalance=%s", idbalance.ascii());
+   conexionbase->ejecuta(query.ascii());
+   query.sprintf("DELETE FROM balance WHERE idbalance=%s",idbalance.ascii());
    conexionbase->ejecuta(query);
    conexionbase->commit();
    inicializatabla();
@@ -125,7 +125,7 @@ void balancesview::dbtabla(int row, int colummn, int button,const QPoint &mouse)
   fprintf(stderr,"Se ha hecho doble click sobre la tabla\n");
   // Dependiendo del modo hacemos una cosa u otra
   if (modo == 0) {
-     string idbalance = listado->text(row,COL_CODIGO).latin1();
+     string idbalance = listado->text(row,COL_CODIGO).ascii();
      // Creamos el objeto mpatrimonialview, y lo lanzamos.
      compbalanceview *bal=new compbalanceview(this,0);
      bal->inicializa(conexionbase);
@@ -135,8 +135,8 @@ void balancesview::dbtabla(int row, int colummn, int button,const QPoint &mouse)
      // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
      inicializatabla();
    } else {
-      idbalance = listado->text(listado->currentRow(),COL_CODIGO).latin1();
-      nombalance = listado->text(listado->currentRow(),COL_NOMBRE).latin1();
+      idbalance = listado->text(listado->currentRow(),COL_CODIGO).ascii();
+      nombalance = listado->text(listado->currentRow(),COL_NOMBRE).ascii();
       close();
    }// end if
    
@@ -146,7 +146,7 @@ void balancesview::dbtabla(int row, int colummn, int button,const QPoint &mouse)
 }// end dbtabla
 
 void balancesview::imprimir() {
-   string idbalance = listado->text(listado->currentRow(),COL_CODIGO).latin1();
+   string idbalance = listado->text(listado->currentRow(),COL_CODIGO).ascii();
    balancesprintview *b = new balancesprintview(0,0);
    b->inicializa(conexionbase);
    b->setidbalance(idbalance);

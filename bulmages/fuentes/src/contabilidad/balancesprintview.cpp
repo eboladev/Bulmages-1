@@ -42,8 +42,8 @@ void balancesprintview::accept() {
    int error;
    int pid;
    string cad;
-   string fechainicial = fechain->text().latin1();
-   string fechafinal = fechafin->text().latin1();
+   string fechainicial = fechain->text().ascii();
+   string fechafinal = fechafin->text().ascii();
    
    FILE *mifile;
    mifile = fopen(args[0],"wt");
@@ -64,12 +64,12 @@ void balancesprintview::accept() {
                 conexionbase->commit();
                 int i=0;
                 while (!mycursor->eof()) {
-                   int orden = atoi (cursor->valor("tabulacion").latin1());
+                   int orden = atoi (cursor->valor("tabulacion").ascii());
                    QString texto = "";
                    for (int j=0; j<orden; j++)
                       texto += "   ";
                    texto += cursor->valor("concepto");
-                   fprintf(mifile, "%-50.50s %10s\n", texto.latin1(), mycursor->valor("saldot").latin1());
+                   fprintf(mifile, "%-50.50s %10s\n", texto.ascii(), mycursor->valor("saldot").ascii());
                     i++;
                    mycursor->siguienteregistro();
                 }// end while

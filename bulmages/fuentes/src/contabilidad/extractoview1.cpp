@@ -160,9 +160,9 @@ void extractoview1::accept() {
   idc_coste = filt->ccostes[filt->combocoste->currentItem()];
   
   if (idc_coste != 0) {
-    query.sprintf("SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte WHERE idc_coste=%d) AND codigo >='%s' AND codigo <= '%s' ORDER BY codigo",idc_coste,codinicial.latin1(), codfinal.latin1());
+    query.sprintf("SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte WHERE idc_coste=%d) AND codigo >='%s' AND codigo <= '%s' ORDER BY codigo",idc_coste,codinicial.ascii(), codfinal.ascii());
   } else {
-    query.sprintf("SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >='%s' AND codigo <= '%s' ORDER BY codigo",codinicial.latin1(), codfinal.latin1());
+    query.sprintf("SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >='%s' AND codigo <= '%s' ORDER BY codigo",codinicial.ascii(), codfinal.ascii());
   }// end if
   if (cursorcta != NULL) {
     delete cursorcta;
@@ -178,7 +178,7 @@ void extractoview1::accept() {
 void extractoview1::boton_asiento() {
   if (listado->currentRow()!= -1) {
     QString text = listado->text(listado->currentRow(),NUM_ASIENTO);
-    int numasiento = atoi((char *)text.latin1());
+    int numasiento = atoi((char *)text.ascii());
     if (numasiento != 0) {
       introapunts->muestraasiento(numasiento);
     }// end if
@@ -211,7 +211,7 @@ void extractoview1::boton_diario1(int tipo) {
                 fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         }// end switch
-    diario->inicializa1((char *) fecha1.toString("dd/MM/yyyy").latin1(),(char *) fecha2.toString("dd/MM/yyyy").latin1(), 0);
+    diario->inicializa1((char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
     }// end if
    diario->accept();
    diario->show();
@@ -296,11 +296,11 @@ void extractoview1::boton_guardar() {
   QString fn = QFileDialog::getSaveFileName(0, tr("Diarios (*.txt)"), 0,tr("Guardar Libro Diario"),tr("Elige el nombre de archivo"));
   if (!fn.isEmpty()) {
      libromayorprint libromayor;
-     QString finicial = fechainicial1->text().latin1();
-     QString ffinal = fechafinal1->text().latin1();
+     QString finicial = fechainicial1->text().ascii();
+     QString ffinal = fechafinal1->text().ascii();
      libromayor.inicializa(conexionbase);
      libromayor.inicializa1(codigoinicial->text(), codigofinal->text(), finicial, ffinal);
-     libromayor.inicializa2((char *) fn.latin1());
+     libromayor.inicializa2((char *) fn.ascii());
      libromayor.accept();
   }// end if
 }// end boton_guardar
@@ -362,7 +362,7 @@ void extractoview1::presentar() {
 
    fprintf(stderr,"Vamos a presentar\n");
    if (!cursorcta->eof() && !cursorcta->bof()) {
-      idcuenta = atoi(cursorcta->valor("idcuenta").latin1());
+      idcuenta = atoi(cursorcta->valor("idcuenta").ascii());
       // Escribimos el nombre de la cuenta y el código de la misma.
       codigocuenta->setText(cursorcta->valor("codigo"));
       nombrecuenta->setText(cursorcta->valor("descripcion"));
@@ -370,11 +370,11 @@ void extractoview1::presentar() {
       QString query="";
       idc_coste = filt->ccostes[filt->combocoste->currentItem()];    
 		if (idc_coste != 0) {
-        query.sprintf("SELECT * FROM apunte, asiento where asiento.idasiento = apunte.idasiento AND  idcuenta=%d AND apunte.fecha>='%s' AND apunte.fecha<='%s' AND idc_coste=%d  %s ORDER BY apunte.fecha, ordenasiento, orden",idcuenta, (char *) finicial.latin1(),(char *) ffinal.latin1(), idc_coste, tipopunteo.latin1());
+        query.sprintf("SELECT * FROM apunte, asiento where asiento.idasiento = apunte.idasiento AND  idcuenta=%d AND apunte.fecha>='%s' AND apunte.fecha<='%s' AND idc_coste=%d  %s ORDER BY apunte.fecha, ordenasiento, orden",idcuenta, (char *) finicial.ascii(),(char *) ffinal.ascii(), idc_coste, tipopunteo.ascii());
       } else {
-        query.sprintf("SELECT * FROM apunte, asiento where asiento.idasiento = apunte.idasiento AND idcuenta=%d AND apunte.fecha>='%s' AND  apunte.fecha<='%s'  %s ORDER BY apunte.fecha, ordenasiento, orden",idcuenta,(char *) finicial.latin1(),(char *) ffinal.latin1(), tipopunteo.latin1());
+        query.sprintf("SELECT * FROM apunte, asiento where asiento.idasiento = apunte.idasiento AND idcuenta=%d AND apunte.fecha>='%s' AND  apunte.fecha<='%s'  %s ORDER BY apunte.fecha, ordenasiento, orden",idcuenta,(char *) finicial.ascii(),(char *) ffinal.ascii(), tipopunteo.ascii());
       }// end if
-      fprintf(stderr,"%s\n",query.latin1());
+      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->begin();
       cursorapt=conexionbase->cargacursor(query,"cargasaldoscuentafecha");
       conexionbase->commit();
@@ -386,12 +386,12 @@ void extractoview1::presentar() {
          // Cargamos los saldos iniciales.
          cursor2* cursoraux;
          conexionbase->begin();
-         query.sprintf("SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta=%d AND fecha <'%s'",idcuenta, finicial.latin1());
+         query.sprintf("SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta=%d AND fecha <'%s'",idcuenta, finicial.ascii());
          cursoraux = conexionbase->cargacursor(query, "saldos iniciales");
          conexionbase->commit();
          if (!cursoraux->eof()) {
-            debeinicial = atof(cursoraux->valor("tdebe").latin1());
-            haberinicial = atof(cursoraux->valor("thaber").latin1());
+            debeinicial = atof(cursoraux->valor("tdebe").ascii());
+            haberinicial = atof(cursoraux->valor("thaber").ascii());
                saldoinicial = debeinicial - haberinicial;
          }// end if
          delete cursoraux;
@@ -410,8 +410,8 @@ void extractoview1::presentar() {
          while (!cursorapt->eof()) {
             fprintf(stderr,"Iteramos para cada apunte de la cuenta \n");
             listado->setText(j,IDAPUNTE, cursorapt->valor("idapunte"));
-            idasiento=atoi(cursorapt->valor("idasiento").latin1());
-            int ordenasiento = atoi(cursorapt->valor("ordenasiento").latin1());
+            idasiento=atoi(cursorapt->valor("idasiento").ascii());
+            int ordenasiento = atoi(cursorapt->valor("ordenasiento").ascii());
 
 
             // Aqui vamos a poner el tema del Punteo, por lo menos la presentación.
@@ -423,40 +423,40 @@ void extractoview1::presentar() {
 
 
             
-            debe=atof(cursorapt->valor(8).latin1());
-            haber=atof(cursorapt->valor(9).latin1());
+            debe=atof(cursorapt->valor(8).ascii());
+            haber=atof(cursorapt->valor(9).ascii());
             saldo += debe - haber;
             debefinal += debe;
             haberfinal += haber;
             cad = cursorapt->valor(4);
             // Sacamos el centro de coste
             QString query;
-            int ccoste = atoi(cursorapt->valor("idc_coste").latin1());
+            int ccoste = atoi(cursorapt->valor("idc_coste").ascii());
             query.sprintf( "SELECT * FROM c_coste WHERE idc_coste=%d",ccoste);
             conexionbase->begin();
             cursorcoste=conexionbase->cargacursor(query,"ccoste");
             conexionbase->commit();
             if (!cursorcoste->eof()) {
-              cadaux.sprintf("%s",cursorcoste->valor("nombre").latin1());
+              cadaux.sprintf("%s",cursorcoste->valor("nombre").ascii());
               listado->setText(j,C_COSTE,cadaux);
             }// end if
             delete cursorcoste;
 
             // Sacamos el canal
-            int canal = atoi(cursorapt->valor("idcanal").latin1());
+            int canal = atoi(cursorapt->valor("idcanal").ascii());
             query.sprintf( "SELECT * FROM canal WHERE idcanal=%d",canal);
             conexionbase->begin();
             cursorcanal=conexionbase->cargacursor(query,"canal");
             conexionbase->commit();
             if (!cursorcanal->eof()) {
-              cadaux.sprintf("%s",cursorcanal->valor("nombre").latin1());
+              cadaux.sprintf("%s",cursorcanal->valor("nombre").ascii());
               listado->setText(j,CANAL,cadaux);
             }// end if
             delete cursorcanal;
 
             // Sacamos la contrapartida
-            query.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursorapt->valor("contrapartida").latin1());
-            fprintf(stderr,"%s\n",query.latin1());
+            query.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursorapt->valor("contrapartida").ascii());
+            fprintf(stderr,"%s\n",query.ascii());
             conexionbase->begin();
             cursoraux1=conexionbase->cargacursor(query,"contrapartida");
             conexionbase->commit();
@@ -629,12 +629,12 @@ void extractoview1::apuntecambiadogrid(int row,int col) {
    QCheckTableItem *check =(QCheckTableItem *) listado->item(row,col);
    QString query;
    if (check->isChecked()) {
-       query.sprintf("UPDATE APUNTE SET punteo = TRUE WHERE idapunte=%s",listado->text(row,IDAPUNTE).latin1());
+       query.sprintf("UPDATE APUNTE SET punteo = TRUE WHERE idapunte=%s",listado->text(row,IDAPUNTE).ascii());
    } else {
-       query.sprintf("UPDATE APUNTE SET punteo = FALSE WHERE idapunte=%s",listado->text(row,IDAPUNTE).latin1());
+       query.sprintf("UPDATE APUNTE SET punteo = FALSE WHERE idapunte=%s",listado->text(row,IDAPUNTE).ascii());
    }// end if
    conexionbase->begin();
-   conexionbase->ejecuta(query.latin1());
+   conexionbase->ejecuta(query.ascii());
    conexionbase->commit();
 }// end if
 
@@ -645,20 +645,20 @@ void extractoview1::boton_filtrar() {
 
 void extractoview1::boton_casacion() {
    QString query;
-   query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND haber <>0  AND idcuenta=%s ORDER BY fecha",cursorcta->valor("idcuenta").latin1());
+   query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND haber <>0  AND idcuenta=%s ORDER BY fecha",cursorcta->valor("idcuenta").ascii());
    conexionbase->begin();
    cursor2 *curshaber = conexionbase->cargacursor(query, "curshaber");
    conexionbase->commit();
    while (!curshaber->eof()) {
-      query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor("haber").latin1(), cursorcta->valor("idcuenta").latin1());
+      query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor("haber").ascii(), cursorcta->valor("idcuenta").ascii());
       conexionbase->begin();
-      cursor2 *cursdebe = conexionbase->cargacursor(query.latin1(), "cursdebe");
+      cursor2 *cursdebe = conexionbase->cargacursor(query.ascii(), "cursdebe");
       conexionbase->commit();
       if (!cursdebe->eof()) {
-         query.sprintf("UPDATE apunte set punteo=TRUE WHERE idapunte=%s",curshaber->valor("idapunte").latin1());
+         query.sprintf("UPDATE apunte set punteo=TRUE WHERE idapunte=%s",curshaber->valor("idapunte").ascii());
          conexionbase->begin();
          conexionbase->ejecuta(query);
-         query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",cursdebe->valor("idapunte").latin1());
+         query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",cursdebe->valor("idapunte").ascii());
          conexionbase->ejecuta(query);
          conexionbase->commit();
       }// end if
@@ -673,7 +673,7 @@ void extractoview1::boton_guardarpunteo() {
   QString fn = QFileDialog::getSaveFileName(0, tr("Punteos (*.pto)"), 0,tr("Guardar Punteo"),tr("Elige el nombre de archivo"));
   if (!fn.isEmpty()) {
     FILE *mifile;
-    mifile = fopen((char *) fn.latin1(),"wt");
+    mifile = fopen((char *) fn.ascii(),"wt");
     if (mifile != NULL) {
      
         QString query;
@@ -682,7 +682,7 @@ void extractoview1::boton_guardarpunteo() {
         cursor2 *cursp = conexionbase->cargacursor(query,"punteos");
         conexionbase->commit();
         while (!cursp->eof()) {
-           fprintf(mifile,"%s\n", cursp->valor("idapunte").latin1());
+           fprintf(mifile,"%s\n", cursp->valor("idapunte").ascii());
            cursp->siguienteregistro();
         }// end while
         delete cursp;
@@ -698,7 +698,7 @@ void extractoview1::boton_cargarpunteos() {
   conexionbase->ejecuta("UPDATE apunte SET punteo=FALSE");
   conexionbase->commit();
   if (!fn.isEmpty()) {
-    ifstream filestr((char *) fn.latin1());
+    ifstream filestr((char *) fn.ascii());
     string a;
     while (filestr.good()) {
         filestr >> a;

@@ -22,7 +22,7 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery){
     nregistros=0;
     registroactual=0;
     QString Query = "DECLARE "+nomcursor+" CURSOR FOR "+SQLQuery;
-    result = PQexec(conn, Query.latin1());
+    result = PQexec(conn, Query.ascii());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
         fprintf(stderr, "DECLARE CURSOR command failed\n");
         PQclear(result);
@@ -30,7 +30,7 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery){
     }// end if
     PQclear(result);
     QString fech = "FETCH ALL in "+nomcursor;
-    result = PQexec(conn, fech.latin1());
+    result = PQexec(conn, fech.ascii());
     if (!result || PQresultStatus(result) != PGRES_TUPLES_OK) {
         fprintf(stderr, "FETCH ALL command didn't return tuples properly\n");
         PQclear(result);
@@ -150,18 +150,18 @@ int postgresiface2::inicializa(QString nomdb) {
 //    sprintf(conexion, "dbname=%s user=%s", dbName, "ubulmages");
 
     if (pghost == "localhost") {
-       conexion.sprintf("dbname=%s",dbName.latin1());
+       conexion.sprintf("dbname=%s",dbName.ascii());
     } else {
-       conexion.sprintf("hostaddr=%s port=%s dbname=%s",pghost.latin1(),pgport.latin1(), dbName.latin1());
+       conexion.sprintf("hostaddr=%s port=%s dbname=%s",pghost.ascii(),pgport.ascii(), dbName.ascii());
     }// end if   
-    fprintf(stderr,"%s\n",conexion.latin1());
+    fprintf(stderr,"%s\n",conexion.ascii());
 
 //    fprintf(stderr,"Inicializamos la nueva definicion de la base de datos\n");
 //    fprintf(stderr,"-----------------------------------------------------\n");
 //    conn = PQsetdb(pghost, pgport, pgoptions, pgtty, dbName);
     conn = PQconnectdb(conexion);
     if (PQstatus(conn) == CONNECTION_BAD)  {
-        fprintf(stderr, "Connection to database '%s' failed.\n", dbName.latin1());
+        fprintf(stderr, "Connection to database '%s' failed.\n", dbName.ascii());
         fprintf(stderr, "%s", PQerrorMessage(conn));
         return(1);
     }// end if
@@ -179,7 +179,7 @@ int postgresiface2::formatofecha() {
     PGresult   *res;
     begin();
     query.sprintf("SET DateStyle TO 'SQL'");
-    res = PQexec(conn, query.latin1());
+    res = PQexec(conn, query.ascii());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         fprintf(stderr, "DECLARE CURSOR command failed\n");
     }// end if
@@ -214,17 +214,17 @@ void postgresiface2::rollback() {
 }// end rollback
 
 cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
-	fprintf(stderr,"%s\n",Query.latin1());
+	fprintf(stderr,"%s\n",Query.ascii());
   cursor2 *cur=new cursor2(nomcursor,conn,Query);
   return(cur);
 }// end cargacursor
 
 int postgresiface2::ejecuta(QString Query) {
     PGresult *result;
-	 fprintf(stderr,"%s\n",Query.latin1());
-    result = PQexec(conn, Query.latin1());
+	 fprintf(stderr,"%s\n",Query.ascii());
+    result = PQexec(conn, Query.ascii());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "SQL command failed: %s\n", Query.latin1());
+        fprintf(stderr, "SQL command failed: %s\n", Query.ascii());
         PQclear(result);
         return(1);
     }// end if
@@ -259,8 +259,8 @@ int postgresiface2::nuevoborrador(int idcuenta, int idasiento, QString concepto,
     } else {
       textidcanal.sprintf("%d",idcanal);
     }// end if
-    query.sprintf("INSERT INTO borrador (idcuenta,idasiento,conceptocontable, descripcion, debe, haber, fecha, contrapartida, idtipoiva, idc_coste, idcanal) VALUES (%s, %d,'%s','%s', %2.2f, %2.2f,'%s', %s, %d, %s, %s)",textcuenta.latin1(), idasiento, concepto.latin1(), descripcion.latin1(), debe, haber, fecha.latin1(), textcontrapartida.latin1(), idtipoiva, textidccoste.latin1(), textidcanal.latin1());
-    fprintf(stderr,"%s\n",query.latin1());
+    query.sprintf("INSERT INTO borrador (idcuenta,idasiento,conceptocontable, descripcion, debe, haber, fecha, contrapartida, idtipoiva, idc_coste, idcanal) VALUES (%s, %d,'%s','%s', %2.2f, %2.2f,'%s', %s, %d, %s, %s)",textcuenta.ascii(), idasiento, concepto.ascii(), descripcion.ascii(), debe, haber, fecha.ascii(), textcontrapartida.ascii(), idtipoiva, textidccoste.ascii(), textidcanal.ascii());
+    fprintf(stderr,"%s\n",query.ascii());
     return(ejecuta(query));
 }// end nuevoborrador
 
@@ -290,8 +290,8 @@ int postgresiface2::modificaborrador(int idborrador, int idcuenta, float idebe, 
       textocanal.sprintf("%d",idcanal);
     }// end if
 
-    query.sprintf("UPDATE borrador SET idcuenta=%d, debe=%2.2f, haber=%2.2f, conceptocontable='%s', fecha='%s', contrapartida=%s, idtipoiva=%d, idc_coste=%s, idcanal=%s WHERE idborrador=%d",idcuenta,idebe,ihaber,concepto.latin1(),fecha.latin1(),textcontrapartida.latin1(),idtipoiva,textidccoste.latin1(),textocanal.latin1(), idborrador);
-    fprintf(stderr,"%s\n",query.latin1());
+    query.sprintf("UPDATE borrador SET idcuenta=%d, debe=%2.2f, haber=%2.2f, conceptocontable='%s', fecha='%s', contrapartida=%s, idtipoiva=%d, idc_coste=%s, idcanal=%s WHERE idborrador=%d",idcuenta,idebe,ihaber,concepto.ascii(),fecha.ascii(),textcontrapartida.ascii(),idtipoiva,textidccoste.ascii(),textocanal.ascii(), idborrador);
+    fprintf(stderr,"%s\n",query.ascii());
     return(ejecuta(query));
 }// end modificaborrador
 
@@ -306,7 +306,7 @@ cursor2 *postgresiface2::cargacuenta(int idcuenta, QString ccuenta) {
     if ( idcuenta != 0) {
        query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%d",idcuenta);
     }  else  {
-       query.sprintf("SELECT * FROM cuenta WHERE codigo LIKE '%s' ORDER BY codigo",ccuenta.latin1());
+       query.sprintf("SELECT * FROM cuenta WHERE codigo LIKE '%s' ORDER BY codigo",ccuenta.ascii());
     }// end if
     cursor2 *cur=cargacursor(query,"cargacuenta");
     return(cur);
@@ -387,7 +387,7 @@ cursor2 *postgresiface2::cargagrupos() {
  *****************************************************************/
 cursor2 *postgresiface2::cargaapuntesctafecha(int tidcuenta, QString fechainicial, QString fechafinal) {
     QString query="";
-    query.sprintf("SELECT * FROM apunte where idcuenta=%d AND fecha>='%s' AND fecha<='%s' ORDER BY fecha",tidcuenta, fechainicial.latin1(), fechafinal.latin1());
+    query.sprintf("SELECT * FROM apunte where idcuenta=%d AND fecha>='%s' AND fecha<='%s' ORDER BY fecha",tidcuenta, fechainicial.ascii(), fechafinal.ascii());
     cursor2 *cur=cargacursor(query,"cargasaldoscuentafecha");
     return(cur);
 }// end cargaapuntesctafecha
@@ -399,7 +399,7 @@ cursor2 *postgresiface2::cargaapuntesctafecha(int tidcuenta, QString fechainicia
  ************************************************************/
 cursor2 *postgresiface2::cargasaldoscuentafecha(int idcuenta, QString fecha) {
     QString query="";
-    query.sprintf("SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta=%d AND fecha <'%s'",idcuenta, fecha.latin1());
+    query.sprintf("SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta=%d AND fecha <'%s'",idcuenta, fecha.ascii());
     cursor2 *cur=cargacursor(query,"cargasaldoscuentafecha");
     return(cur);
 }// end cargasaldoscuentafecha
@@ -410,7 +410,7 @@ cursor2 *postgresiface2::cargasaldoscuentafecha(int idcuenta, QString fecha) {
  *******************************************************/
 cursor2 *postgresiface2::cargaasientosfecha(QString fechini, QString fechfin) {
     QString query="";
-    query.sprintf("SELECT * FROM asiento WHERE fecha >= '%s' AND fecha <= '%s' ORDER BY fecha", fechini.latin1(),fechfin.latin1());
+    query.sprintf("SELECT * FROM asiento WHERE fecha >= '%s' AND fecha <= '%s' ORDER BY fecha", fechini.ascii(),fechfin.ascii());
     cursor2 *cur=cargacursor(query,"cargaasientosfecha");
     return(cur);
 }// end cargaasientosfecha
@@ -427,11 +427,11 @@ cursor2 *postgresiface2::cargaasientosfecha(QString fechini, QString fechfin) {
 cursor2 *postgresiface2::cargacuentascodigo(int padre, QString codigoinicial, QString codigofinal) {
    QString query="";
    if (padre!=0 && padre != -1) {
-      query.sprintf("SELECT * FROM cuenta WHERE padre=%d AND codigo>='%s' AND codigo <='%s' ORDER BY codigo",padre, codigoinicial.latin1(), codigofinal.latin1());
+      query.sprintf("SELECT * FROM cuenta WHERE padre=%d AND codigo>='%s' AND codigo <='%s' ORDER BY codigo",padre, codigoinicial.ascii(), codigofinal.ascii());
    } else if (padre== 0) {
-      query.sprintf("SELECT * FROM cuenta WHERE padre isnull AND codigo>='%s' AND codigo <='%s' ORDER BY codigo",codigoinicial.latin1(), codigofinal.latin1());
+      query.sprintf("SELECT * FROM cuenta WHERE padre isnull AND codigo>='%s' AND codigo <='%s' ORDER BY codigo",codigoinicial.ascii(), codigofinal.ascii());
    } else if (padre ==-1){
-      query.sprintf("SELECT * FROM cuenta WHERE codigo>='%s' AND codigo <='%s' ORDER BY codigo",codigoinicial.latin1(), codigofinal.latin1());
+      query.sprintf("SELECT * FROM cuenta WHERE codigo>='%s' AND codigo <='%s' ORDER BY codigo",codigoinicial.ascii(), codigofinal.ascii());
    }// end if
    cursor2 *cur=cargacursor(query,"cargasaldoscuentafecha");
    return(cur);
@@ -499,8 +499,8 @@ int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString cod
     QString imputacion = cimputacion ?  "TRUE" :  "FALSE";
 	 QString nodebe = cnodebe ? "TRUE" : "FALSE";
 	 QString nohaber = cnohaber ? "TRUE" : "FALSE";
-    query.sprintf("UPDATE cuenta SET descripcion='%s', codigo='%s', imputacion=%s, bloqueada=%s, idgrupo=%d, activo=%s, nombreent_cuenta='%s', cifent_cuenta='%s', dirent_cuenta='%s', telent_cuenta='%s', coment_cuenta='%s', bancoent_cuenta='%s', emailent_cuenta='%s', webent_cuenta='%s', tipocuenta=%d, nodebe=%s, nohaber = %s WHERE idcuenta=%d\n",desccuenta.latin1(),codigo.latin1(),imputacion.latin1(),bloqueada.latin1(),idgrupo,activo.latin1(),nombreent.latin1(), cifent.latin1(),dir.latin1(), tel.latin1(), comm.latin1(),banco.latin1(), email.latin1(), web.latin1(),tipocuenta,nodebe.latin1(), nohaber.latin1(), idcuenta);
-    fprintf(stderr,"%s\n",query.latin1());
+    query.sprintf("UPDATE cuenta SET descripcion='%s', codigo='%s', imputacion=%s, bloqueada=%s, idgrupo=%d, activo=%s, nombreent_cuenta='%s', cifent_cuenta='%s', dirent_cuenta='%s', telent_cuenta='%s', coment_cuenta='%s', bancoent_cuenta='%s', emailent_cuenta='%s', webent_cuenta='%s', tipocuenta=%d, nodebe=%s, nohaber = %s WHERE idcuenta=%d\n",desccuenta.ascii(),codigo.ascii(),imputacion.ascii(),bloqueada.ascii(),idgrupo,activo.ascii(),nombreent.ascii(), cifent.ascii(),dir.ascii(), tel.ascii(), comm.ascii(),banco.ascii(), email.ascii(), web.ascii(),tipocuenta,nodebe.ascii(), nohaber.ascii(), idcuenta);
+    fprintf(stderr,"%s\n",query.ascii());
     return(ejecuta(query));  
 }// end modificacuenta
 
@@ -516,8 +516,8 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
 	 	QString nodebe = cnodebe ? "TRUE" : "FALSE";
 		QString nohaber = cnohaber ? "TRUE" : "FALSE";
 
-    query.sprintf("INSERT INTO cuenta (descripcion, padre,codigo, idgrupo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta, nodebe, nohaber) VALUES('%s',%s,'%s',%d, '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %s, %s)",desccuenta.latin1(),tpadre.latin1(), codigo.latin1(), idgrupo, nombreent.latin1(), cifent.latin1(), dir.latin1(), tel.latin1() ,comm.latin1(), banco.latin1(), email.latin1(), web.latin1(), tipocuenta, nodebe.latin1(), nohaber.latin1() );
-    fprintf(stderr,"%s\n",query.latin1());
+    query.sprintf("INSERT INTO cuenta (descripcion, padre,codigo, idgrupo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta, nodebe, nohaber) VALUES('%s',%s,'%s',%d, '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %s, %s)",desccuenta.ascii(),tpadre.ascii(), codigo.ascii(), idgrupo, nombreent.ascii(), cifent.ascii(), dir.ascii(), tel.ascii() ,comm.ascii(), banco.ascii(), email.ascii(), web.ascii(), tipocuenta, nodebe.ascii(), nohaber.ascii() );
+    fprintf(stderr,"%s\n",query.ascii());
     return(ejecuta(query));
 }// end nuevacuenta
 
@@ -528,7 +528,7 @@ int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento) 
     if (numasiento == 0) {
       query="SELECT max(idasiento) FROM asiento";
       cursor2 *cur=cargacursor(query,"cargaasientoseq");
-      val = atoi(cur->valor(0).latin1());
+      val = atoi(cur->valor(0).ascii());
       val++;
       delete cur;
     } else {
@@ -536,10 +536,10 @@ int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento) 
     }// end if
     query="SELECT max(ordenasiento) FROM asiento";
     cursor2 *cur=cargacursor(query,"cargaasientos");
-    ordenasiento = atoi(cur->valor(0).latin1());
+    ordenasiento = atoi(cur->valor(0).ascii());
     ordenasiento++;
     delete cur;
-    query.sprintf("INSERT INTO asiento (idasiento,descripcion, fecha, ordenasiento) VALUES (%d,'%s','%s', %d)",val,nombre.latin1(), fecha.latin1(), ordenasiento);
+    query.sprintf("INSERT INTO asiento (idasiento,descripcion, fecha, ordenasiento) VALUES (%d,'%s','%s', %d)",val,nombre.ascii(), fecha.ascii(), ordenasiento);
     ejecuta(query);
     return(val);
 }// end nuevoasiento
@@ -569,7 +569,7 @@ int postgresiface2::cargaempresa(QString nomempresa, QString login, QString pass
     conn = PQconnectdb(conexion);
 
     if (PQstatus(conn) == CONNECTION_BAD) {
-        fprintf(stderr, "Connection to database '%s' failed.\n", dbName.latin1());
+        fprintf(stderr, "Connection to database '%s' failed.\n", dbName.ascii());
         fprintf(stderr, "%s", PQerrorMessage(conn));
     }// end if
     begin();
@@ -578,8 +578,8 @@ int postgresiface2::cargaempresa(QString nomempresa, QString login, QString pass
      * fetch rows from the pg_database, the system catalog of
      * databases
      */
-    query.sprintf("DECLARE mycursor CURSOR FOR SELECT * FROM empresa, usuario, usuario_empresa where usuario.idusuario=usuario_empresa.idusuario AND empresa.idempresa=usuario_empresa.idempresa AND usuario.login='%s' AND empresa.nombredb='%s' AND usuario.password='%s'",login.latin1(), nomempresa.latin1(), password.latin1());
-    res = PQexec(conn, query.latin1());
+    query.sprintf("DECLARE mycursor CURSOR FOR SELECT * FROM empresa, usuario, usuario_empresa where usuario.idusuario=usuario_empresa.idusuario AND empresa.idempresa=usuario_empresa.idempresa AND usuario.login='%s' AND empresa.nombredb='%s' AND usuario.password='%s'",login.ascii(), nomempresa.ascii(), password.ascii());
+    res = PQexec(conn, query.ascii());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         fprintf(stderr, "DECLARE CURSOR command failed\n");
         PQclear(res);

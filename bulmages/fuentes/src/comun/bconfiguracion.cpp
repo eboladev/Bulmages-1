@@ -29,7 +29,7 @@ BConfiguracion::~BConfiguracion()
 }
 
 void BConfiguracion::listView1_currentChanged(QListViewItem *it) {
-  lineEdit1->setText(it->text(0).latin1());
+  lineEdit1->setText(it->text(0).ascii());
   lineEdit2->setText("login");
   lineEdit3->setText("login");
   lineEdit4->setText("login");
@@ -79,8 +79,8 @@ void BConfiguracion::BotonA_10aceptar() {
       case 3: codigoPais = "en"; break;
   }
   confpr->setValor(CONF_TRADUCCION,codigoPais);
-  confpr->setValor(CONF_FONTFAMILY_BULMAGES,comboBoxFuente->currentText().latin1());
-  confpr->setValor(CONF_FONTSIZE_BULMAGES,spinBoxFuente->text().latin1());
+  confpr->setValor(CONF_FONTFAMILY_BULMAGES,comboBoxFuente->currentText().ascii());
+  confpr->setValor(CONF_FONTSIZE_BULMAGES,spinBoxFuente->text().ascii());
 
 }
 
@@ -102,8 +102,8 @@ else { //Y guarda el nuevo nombre de empresa.
     DBconn->inicializa(confpr->valor(CONF_METABASE).c_str());
     DBconn->begin();
     QString query;
-    query.sprintf("UPDATE empresa SET nombre='%s' WHERE nombre='%s'",lineEditA_1->text().latin1(),PunteroAlSelector->nombreempresa->text().latin1());
-    //DBconn->ejecuta((new QString)->sprintf("UPDATE empresa SET nombre=%s WHERE nombre='%s'",lineEditA_1->text().latin1(),PunteroAlSelector->nombreempresa->text().latin1()));
+    query.sprintf("UPDATE empresa SET nombre='%s' WHERE nombre='%s'",lineEditA_1->text().ascii(),PunteroAlSelector->nombreempresa->text().ascii());
+    //DBconn->ejecuta((new QString)->sprintf("UPDATE empresa SET nombre=%s WHERE nombre='%s'",lineEditA_1->text().ascii(),PunteroAlSelector->nombreempresa->text().ascii()));
     DBconn->ejecuta(query);
     DBconn->commit();
     delete DBconn;
@@ -197,7 +197,7 @@ void BConfiguracion::borrarEmpresa() {
                DBconn->inicializa( confpr->valor(CONF_METABASE).c_str() );
                DBconn->begin();
                QString query;
-               query.sprintf("SELECT idempresa, nombre, ano from empresa where nombredb='%s'",dbEmpresa.latin1());
+               query.sprintf("SELECT idempresa, nombre, ano from empresa where nombredb='%s'",dbEmpresa.ascii());
                cursor2 * recordSet = DBconn->cargacursor(query,"recordSet");
                DBconn->commit();
                idEmpresa=recordSet->valor(0,0);
@@ -206,9 +206,9 @@ void BConfiguracion::borrarEmpresa() {
                if (QMessageBox::Yes == QMessageBox::critical( this, tr("Peligro"), tr("Se perdera toda la información de la empresa seleccionada. \n\r. ESTAS SEGURO DE QUE DESEAS ELIMINAR LA EMPRESA?\n\r   "+ nombreEmpresa + " - Ejercicio: " +ejercicio) , QMessageBox::Yes,QMessageBox::No)) {
                    //Borramos...
                    DBconn->begin();
-                   query.sprintf("DELETE FROM usuario_empresa WHERE idempresa='%s'",idEmpresa.latin1());
+                   query.sprintf("DELETE FROM usuario_empresa WHERE idempresa='%s'",idEmpresa.ascii());
                    DBconn->ejecuta(query);
-                   query.sprintf("DELETE FROM  empresa WHERE nombredb='%s'",dbEmpresa.latin1());
+                   query.sprintf("DELETE FROM  empresa WHERE nombredb='%s'",dbEmpresa.ascii());
                    DBconn->ejecuta(query);
                    DBconn->commit();
                    DBconn->ejecuta("DROP DATABASE " + dbEmpresa);
@@ -229,7 +229,7 @@ void BConfiguracion::nuevoEjercicio() {
  postgresiface2 *metabase = new postgresiface2();
  metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
  metabase->begin();
- query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",PunteroAlSelector->NombreBaseDatos.latin1());
+ query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",PunteroAlSelector->NombreBaseDatos.ascii());
  cursor2 *cur = metabase->cargacursor(query,"empresa");
  metabase->commit();
  if (!cur->eof()) {
@@ -241,25 +241,25 @@ void BConfiguracion::nuevoEjercicio() {
     if ( (nombredb!="bgplangcont") && (QMessageBox::Yes == QMessageBox::information( this, tr("Nuevo Ejercicio"), tr("Este proceso generará un nuevo ejercicio. \n\r.  Empresa:   "+ nuevo_nombre + "\n\r.  Ejercicio: "+nuevo_anodb) , QMessageBox::Yes,QMessageBox::No)) ) { 
       //Comprovamos que no exista ya la base de datos que queremos crear.
       metabase->begin();
-      query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",nuevo_nombredb.latin1());
+      query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",nuevo_nombredb.ascii());
       cursor2 *cur = metabase->cargacursor(query,"empresa");
       metabase->commit();
       if (cur->eof()) {//No existe aun el ejercicio que pretendemos crear, entonces a por el !!
         // Creamos la base de datos...
-        query.sprintf("CREATE DATABASE %s WITH TEMPLATE=%s",nuevo_nombredb.latin1(),nombredb.latin1());
+        query.sprintf("CREATE DATABASE %s WITH TEMPLATE=%s",nuevo_nombredb.ascii(),nombredb.ascii());
         if ( ! metabase->ejecuta(query) ) {
             //Creamos la entrada en la metabd
             metabase->begin();
-            query.sprintf("INSERT INTO empresa ( nombre, nombredb, ano, ejant) VALUES ('%s','%s',%d,'%s')", nuevo_nombre.latin1(), nuevo_nombredb.latin1(), nuevo_anodb.toInt(),nombredb.latin1());
+            query.sprintf("INSERT INTO empresa ( nombre, nombredb, ano, ejant) VALUES ('%s','%s',%d,'%s')", nuevo_nombre.ascii(), nuevo_nombredb.ascii(), nuevo_anodb.toInt(),nombredb.ascii());
             metabase->ejecuta(query);
     
             query.sprintf("SELECT last_value AS idempresa FROM empresa_idempresa_seq");
             cursor2 *cur2=metabase->cargacursor(query,"idempresa");
            
-            query.sprintf("SELECT * FROM usuario_empresa WHERE idempresa = %s", campoIdEmpresa.latin1());
+            query.sprintf("SELECT * FROM usuario_empresa WHERE idempresa = %s", campoIdEmpresa.ascii());
             cursor2 *cur1=metabase->cargacursor(query,"us_emp");
             while (!cur1->eof()) {
-               query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES (%s,%s,%s)", cur1->valor("idusuario").latin1(), cur2->valor("idempresa").latin1(), cur1->valor("permisos").latin1());
+               query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES (%s,%s,%s)", cur1->valor("idusuario").ascii(), cur2->valor("idempresa").ascii(), cur1->valor("permisos").ascii());
                metabase->ejecuta(query);
                cur1->siguienteregistro();
             }// end while
@@ -272,7 +272,7 @@ void BConfiguracion::nuevoEjercicio() {
             // Borramos los asientos que hemos heredado del ejercicio anterior.
             int resultado;
             postgresiface2 *DBconn = new postgresiface2();
-            DBconn->inicializa(nuevo_nombredb.latin1());
+            DBconn->inicializa(nuevo_nombredb.ascii());
             DBconn->begin();
             //query.sprintf("DELETE FROM apunte WHERE idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
             query.sprintf("DELETE FROM apunte *");

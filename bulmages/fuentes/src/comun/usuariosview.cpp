@@ -70,11 +70,11 @@ void usuariosview::inicializa() {
 
 void usuariosview::listusuarios_currentChanged(QListViewItem *it) {
   semaforo=1;
-  nombreedit->setText(it->text(COL_NOMBRE).latin1());
-  apellido1edit->setText(it->text(COL_APELLIDO1).latin1());
-  apellido2edit->setText(it->text(COL_APELLIDO2).latin1());
-  loginedit->setText(it->text(COL_LOGIN).latin1());
-  passwordedit->setText(it->text(COL_PASSWORD).latin1());
+  nombreedit->setText(it->text(COL_NOMBRE).ascii());
+  apellido1edit->setText(it->text(COL_APELLIDO1).ascii());
+  apellido2edit->setText(it->text(COL_APELLIDO2).ascii());
+  loginedit->setText(it->text(COL_LOGIN).ascii());
+  passwordedit->setText(it->text(COL_PASSWORD).ascii());
   semaforo=0;
 }// end listusuarios_currentChanged
 
@@ -88,8 +88,8 @@ void usuariosview::accept() {
    fprintf(stderr,"Aceptamos\n");
    it = listusuarios->firstChild();
    while (it != 0) {
-      query.sprintf("UPDATE usuario SET nombre='%s', apellido1='%s', apellido2='%s', login='%s', password='%s' WHERE idusuario=%s", it->text(COL_NOMBRE).latin1(), it->text(COL_APELLIDO1).latin1(), it->text(COL_APELLIDO2).latin1(), it->text(COL_LOGIN).latin1(), it->text(COL_PASSWORD).latin1(), it->text(COL_IDUSUARIO).latin1());
-//      sprintf(cadena,"UPDATE usuario SET nombre='%s', 1apellido='%s' WHERE idusuario=%s", it->text(COL_NOMBRE).latin1(), it->text(COL_1APELLIDO).latin1(),it->text(COL_IDUSUARIO).latin1());
+      query.sprintf("UPDATE usuario SET nombre='%s', apellido1='%s', apellido2='%s', login='%s', password='%s' WHERE idusuario=%s", it->text(COL_NOMBRE).ascii(), it->text(COL_APELLIDO1).ascii(), it->text(COL_APELLIDO2).ascii(), it->text(COL_LOGIN).ascii(), it->text(COL_PASSWORD).ascii(), it->text(COL_IDUSUARIO).ascii());
+//      sprintf(cadena,"UPDATE usuario SET nombre='%s', 1apellido='%s' WHERE idusuario=%s", it->text(COL_NOMBRE).ascii(), it->text(COL_1APELLIDO).ascii(),it->text(COL_IDUSUARIO).ascii());
       apuestatealgo->begin();
       apuestatealgo->ejecuta(query);
       apuestatealgo->commit();
@@ -110,7 +110,7 @@ void usuariosview::datos_textChanged(const QString &st) {
       it->setText(COL_LOGIN, loginedit->text());
       it->setText(COL_PASSWORD, passwordedit->text());
       QString cadena;
-      cadena.sprintf("%s %s",(char *) apellido1edit->text().latin1(), (char *) apellido2edit->text().latin1());
+      cadena.sprintf("%s %s",(char *) apellido1edit->text().ascii(), (char *) apellido2edit->text().ascii());
       it->setText(COL_APELLIDOS, cadena);
    }// end if
    // Para quitar el warning
@@ -121,7 +121,7 @@ void usuariosview::datos_textChanged(const QString &st) {
 void usuariosview::nuevo_usuario() {
    fprintf(stderr,"Nuevo usuario\n");
    QString query;
-   query.sprintf("INSERT INTO usuario (nombre) VALUES ('%s')",tr("Nuevo Usuario").latin1());
+   query.sprintf("INSERT INTO usuario (nombre) VALUES ('%s')",tr("Nuevo Usuario").ascii());
    postgresiface2 *apuestatealgo;
    apuestatealgo = new postgresiface2();
    apuestatealgo->inicializa(confpr->valor(CONF_METABASE).c_str());
@@ -136,7 +136,7 @@ void usuariosview::nuevo_usuario() {
 void usuariosview::borrar_usuario() {
    QListViewItem *it = listusuarios->currentItem();
    QString query;
-   query.sprintf("DELETE FROM usuario WHERE idusuario=%s",it->text(COL_IDUSUARIO).latin1());
+   query.sprintf("DELETE FROM usuario WHERE idusuario=%s",it->text(COL_IDUSUARIO).ascii());
    postgresiface2 *apuestatealgo;
    apuestatealgo = new postgresiface2();
    apuestatealgo->inicializa(confpr->valor(CONF_METABASE).c_str());

@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>722</width>
-            <height>509</height>
+            <height>511</height>
         </rect>
     </property>
     <property name="caption">
@@ -764,7 +764,7 @@
                                     </property>
                                 </item>
                                 <property name="name">
-                                    <cstring>comboBox1</cstring>
+                                    <cstring>periodicidad</cstring>
                                 </property>
                             </widget>
                             <spacer>
@@ -870,7 +870,7 @@
                             </widget>
                             <widget class="QLineEdit">
                                 <property name="name">
-                                    <cstring>lineEdit1_2</cstring>
+                                    <cstring>ctaactivo</cstring>
                                 </property>
                             </widget>
                             <widget class="QToolButton">
@@ -911,7 +911,7 @@
                             </widget>
                             <widget class="QLineEdit">
                                 <property name="name">
-                                    <cstring>lineEdit1_2_2</cstring>
+                                    <cstring>ctaamortizacion</cstring>
                                 </property>
                             </widget>
                             <widget class="QToolButton">

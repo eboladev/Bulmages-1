@@ -79,7 +79,7 @@ void BalancePrintView::cargacostes() {
    int i=1;
    while (!cursorcoste->eof()) {
       combocoste->insertItem(cursorcoste->valor(2),-1);
-      ccostes[i++] = atoi(cursorcoste->valor(0).latin1());
+      ccostes[i++] = atoi(cursorcoste->valor(0).ascii());
       cursorcoste->siguienteregistro();
    }// end while
    delete cursorcoste;
@@ -191,37 +191,37 @@ void BalancePrintView::presentar(char *tipus){
          // Causar problemas con el motor de base de datos.
          fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
          conexionbase->begin();
-         query. sprintf( "CREATE TEMPORARY TABLE balance AS SELECT 0 AS hoja, cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.latin1(), ffinal.latin1(), finicial.latin1() );
-         fprintf(stderr,"%s\n",query.latin1());
+         query. sprintf( "CREATE TEMPORARY TABLE balance AS SELECT 0 AS hoja, cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
+         fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
          query.sprintf("UPDATE BALANCE SET padre=0 WHERE padre ISNULL");
-         fprintf(stderr,"%s\n",query.latin1());
+         fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
          query.sprintf("DELETE FROM balance WHERE debe=0 AND haber =0");
-         fprintf(stderr,"%s\n",query.latin1());
+         fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
 
          // Para evitar problemas con los nulls hacemos algunos updates
          query.sprintf("UPDATE BALANCE SET tsaldo=0 WHERE tsaldo ISNULL");
-         fprintf(stderr,"%s\n",query.latin1());
+         fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
          query.sprintf("UPDATE BALANCE SET tdebe=0 WHERE tdebe ISNULL");
-         fprintf(stderr,"%s\n",query.latin1());
+         fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
          query.sprintf("UPDATE BALANCE SET thaber=0 WHERE thaber ISNULL");
-         fprintf(stderr,"%s\n",query.latin1());
+         fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
          query.sprintf("UPDATE BALANCE SET asaldo=0 WHERE asaldo ISNULL");
-         fprintf(stderr,"%s\n",query.latin1());
+         fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
 
          query.sprintf( "SELECT idcuenta FROM balance ORDER BY padre DESC");
-         fprintf(stderr,"%s\n",query.latin1());
+         fprintf(stderr,"%s\n",query.ascii());
          cursorapt = conexionbase->cargacursor(query,"Balance1view");
          while (!cursorapt->eof())  {
-            query.sprintf("SELECT * FROM balance WHERE idcuenta=%s",cursorapt->valor("idcuenta").latin1());
+            query.sprintf("SELECT * FROM balance WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
             cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
-            query.sprintf("UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").latin1()), atof(mycur->valor("tdebe").latin1()), atof(mycur->valor("thaber").latin1()),atof(mycur->valor("asaldo").latin1()),  atoi(mycur->valor("padre").latin1()));
+            query.sprintf("UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
             //			fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
             conexionbase->ejecuta(query);
             delete mycur;
@@ -231,7 +231,7 @@ void BalancePrintView::presentar(char *tipus){
          // Borramos todo lo que no es de este nivel
 
          // Borramos Los niveles inferiores
-         query.sprintf(query,"DELETE FROM balance where nivel(codigo)>%s",combonivel->text(combonivel->currentItem()).latin1());
+         query.sprintf(query,"DELETE FROM balance where nivel(codigo)>%s",combonivel->text(combonivel->currentItem()).ascii());
          conexionbase->ejecuta(query);
 
          // No hay que incluir los niveles superiores.
@@ -246,10 +246,10 @@ void BalancePrintView::presentar(char *tipus){
          }
 
          query.sprintf("SELECT * FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo");
-         fprintf(stderr,"%s\n",query.latin1());
+         fprintf(stderr,"%s\n",query.ascii());
          cursorapt = conexionbase->cargacursor(query,"mycursor");
          query.sprintf("DROP TABLE balance");
-         fprintf(stderr,"%s\n",query.latin1());
+         fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
          conexionbase->commit();
          // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
@@ -262,7 +262,7 @@ void BalancePrintView::presentar(char *tipus){
             fitxersortidatxt.precision(2);
 
             fitxersortidatxt << "                                        Balanç \n" ;
-            fitxersortidatxt << "Data Inicial: " << finicial.latin1() << "   Data Final: " << ffinal.latin1() << endl;
+            fitxersortidatxt << "Data Inicial: " << finicial.ascii() << "   Data Final: " << ffinal.ascii() << endl;
             fitxersortidatxt << "lcuenta           ldenominacion                      lsaldoant      ldebe     lhaber     lsaldo    ldebeej    haberej   lsaldoej\n" ;
             fitxersortidatxt << "________________________________________________________________________________________________________________________________\n";
          }
@@ -281,7 +281,7 @@ void BalancePrintView::presentar(char *tipus){
             fitxersortidahtml << "</head>\n";
             fitxersortidahtml << "<body>\n";
             fitxersortidahtml << "<table><tr><td colspan=\"9\" class=titolbalanc> Balanç <hr></td></tr>\n\n";
-            fitxersortidahtml << "<tr><td colspan=\"9\" class=periodebalanc> Data Inicial: " << finicial.latin1() << " -  Data Final: " << ffinal.latin1() << "<hr></td></tr>\n\n";
+            fitxersortidahtml << "<tr><td colspan=\"9\" class=periodebalanc> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
             fitxersortidahtml << "<tr><td class=titolcolumnabalanc>lcuenta</td><td class=titolcolumnabalanc> ldenominacion</td><td class=titolcolumnabalanc>lsaldoant</td><td class=titolcolumnabalanc>ldebe</td><td class=titolcolumnabalanc>lhaber</td><td class=titolcolumnabalanc>lsaldo</td><td class=titolcolumnabalanc> ldebeej  </td><td class=titolcolumnabalanc> lhaberej </td><td class=titolcolumnabalanc> lsaldoej </td></tr>\n";
          }
 
@@ -291,30 +291,30 @@ void BalancePrintView::presentar(char *tipus){
 
          while (!cursorapt->eof()) {
             // Acumulamos los totales para al final poder escribirlos
-            tsaldoant += atof(cursorapt->valor("asaldo").latin1());
-            tsaldo += atof(cursorapt->valor("tsaldo").latin1());
-            tdebe += atof(cursorapt->valor("tdebe").latin1());
-            thaber += atof(cursorapt->valor("thaber").latin1());
+            tsaldoant += atof(cursorapt->valor("asaldo").ascii());
+            tsaldo += atof(cursorapt->valor("tsaldo").ascii());
+            tdebe += atof(cursorapt->valor("tdebe").ascii());
+            thaber += atof(cursorapt->valor("thaber").ascii());
 
 
             QString lcuenta = cursorapt->valor("codigo");
             QString ldenominacion = cursorapt->valor("descripcion");
-            double lsaldoant = atof(cursorapt->valor("asaldo").latin1());
-            double ldebe = atof(cursorapt->valor("tdebe").latin1());
-            double lhaber = atof(cursorapt->valor("thaber").latin1());
-            double lsaldo = atof(cursorapt->valor("tsaldo").latin1());
-            double ldebeej = atof(cursorapt->valor("debe").latin1());
-            double lhaberej = atof(cursorapt->valor("haber").latin1());
-            double lsaldoej = atof(cursorapt->valor("saldo").latin1());
+            double lsaldoant = atof(cursorapt->valor("asaldo").ascii());
+            double ldebe = atof(cursorapt->valor("tdebe").ascii());
+            double lhaber = atof(cursorapt->valor("thaber").ascii());
+            double lsaldo = atof(cursorapt->valor("tsaldo").ascii());
+            double ldebeej = atof(cursorapt->valor("debe").ascii());
+            double lhaberej = atof(cursorapt->valor("haber").ascii());
+            double lsaldoej = atof(cursorapt->valor("saldo").ascii());
             ldenominacion = ldenominacion.left(40);
 
 	    if (txt) {
                //presentació txt normal
-               fitxersortidatxt << setiosflags(ios::left) << setw(10) <<  lcuenta.latin1() << " " << setw(40) <<  ldenominacion.latin1() << " " << resetiosflags(ios::left) << setw(10) <<  lsaldoant << " " << setw(10) <<  ldebe << " " << setw(10) <<  lhaber << " " << setw(10) <<  lsaldo << " " << setw(10) <<  ldebeej << " " << setw(10) <<  lhaberej << " " << setw(10) <<  lsaldoej << " " << setw(10) <<  endl;
+               fitxersortidatxt << setiosflags(ios::left) << setw(10) <<  lcuenta.ascii() << " " << setw(40) <<  ldenominacion.ascii() << " " << resetiosflags(ios::left) << setw(10) <<  lsaldoant << " " << setw(10) <<  ldebe << " " << setw(10) <<  lhaber << " " << setw(10) <<  lsaldo << " " << setw(10) <<  ldebeej << " " << setw(10) <<  lhaberej << " " << setw(10) <<  lsaldoej << " " << setw(10) <<  endl;
             }
             if (html) {
                //presentació html normal
-               fitxersortidahtml << "<tr><td class=comptebalanc>" << lcuenta.latin1() << "</td><td class=assentamentbalanc>" <<  ldenominacion.latin1() << "</td><td class=dosdecimals>" << lsaldoant << "</td><td class=dosdecimals>" << ldebe << "</td><td class=dosdecimals>" << lhaber << "</td><td class=dosdecimals>" << lsaldo << "</td><td class=dosdecimals>" << ldebeej << "</td><td class=dosdecimals>" << lhaberej << "</td><td class=dosdecimals>" << lsaldoej << endl;
+               fitxersortidahtml << "<tr><td class=comptebalanc>" << lcuenta.ascii() << "</td><td class=assentamentbalanc>" <<  ldenominacion.ascii() << "</td><td class=dosdecimals>" << lsaldoant << "</td><td class=dosdecimals>" << ldebe << "</td><td class=dosdecimals>" << lhaber << "</td><td class=dosdecimals>" << lsaldo << "</td><td class=dosdecimals>" << ldebeej << "</td><td class=dosdecimals>" << lhaberej << "</td><td class=dosdecimals>" << lsaldoej << endl;
             }
 
             // Calculamos la siguiente cuenta registro y finalizamos el bucle
@@ -333,11 +333,11 @@ void BalancePrintView::presentar(char *tipus){
 
          if (txt) {
             //presentació txt normal
-            fitxersortidatxt << "                                             Totals " << setw(10) <<  totalsaldoant.latin1() << " " << setw(10) <<  totaldebe.latin1() << " " << setw(10) <<  totalhaber.latin1() << " " << setw(10) <<  totalsaldo.latin1() << endl;
+            fitxersortidatxt << "                                             Totals " << setw(10) <<  totalsaldoant.ascii() << " " << setw(10) <<  totaldebe.ascii() << " " << setw(10) <<  totalhaber.ascii() << " " << setw(10) <<  totalsaldo.ascii() << endl;
          }
          if (html) {
             //presentació html normal
-            fitxersortidahtml << "<tr><td></td><td class=totalbalanc>Totals</td><td class=dosdecimals>" <<  totalsaldoant.latin1() << "</td><td class=dosdecimals>" << totaldebe.latin1() << "</td><td class=dosdecimals>" << totalhaber.latin1() << "</td><td class=dosdecimals>" << totalsaldo.latin1() << "</td></tr>\n</table>\n</body>\n</html>\n";
+            fitxersortidahtml << "<tr><td></td><td class=totalbalanc>Totals</td><td class=dosdecimals>" <<  totalsaldoant.ascii() << "</td><td class=dosdecimals>" << totaldebe.ascii() << "</td><td class=dosdecimals>" << totalhaber.ascii() << "</td><td class=dosdecimals>" << totalsaldo.ascii() << "</td></tr>\n</table>\n</body>\n</html>\n";
          }
 
          if (txt) {

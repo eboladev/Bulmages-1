@@ -108,7 +108,7 @@ void ExtractoPrintView::presentar(char *tipus) {
          fitxersortidatxt.precision(2);
 
          fitxersortidatxt << "                                    MAJOR \n" ;
-         fitxersortidatxt << "Data Inicial: " << finicial.latin1() << "   Data Final: " << ffinal.latin1() << endl;
+         fitxersortidatxt << "Data Inicial: " << finicial.ascii() << "   Data Final: " << ffinal.ascii() << endl;
          fitxersortidatxt << "_________________________________________________________________________________________________________\n";
       }
 
@@ -127,21 +127,21 @@ void ExtractoPrintView::presentar(char *tipus) {
          fitxersortidahtml << "</head>\n";
          fitxersortidahtml << "<body>\n";
          fitxersortidahtml << "<table><tr><td colspan=\"6\" class=titolmajor> Major <hr></td></tr>\n\n";
-         fitxersortidahtml << "<tr><td colspan=\"6\" class=periodemajor> Data Inicial: " << finicial.latin1() << " -  Data Final: " << ffinal.latin1() << "<hr></td></tr>\n\n";
+         fitxersortidahtml << "<tr><td colspan=\"6\" class=periodemajor> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
       }
 
       conexionbase->begin();
-      cursoraux = conexionbase->cargacuentascodigo(-1,(char *) cinicial.latin1(), (char *)cfinal.latin1());
+      cursoraux = conexionbase->cargacuentascodigo(-1,(char *) cinicial.ascii(), (char *)cfinal.ascii());
 
       while(!cursoraux->eof()) {
-         idcuenta = atoi(cursoraux->valor(0).latin1());
-         cursoraux1 = conexionbase->cargaapuntesctafecha(idcuenta,(char *) finicial.latin1(), (char *)ffinal.latin1());
+         idcuenta = atoi(cursoraux->valor(0).ascii());
+         cursoraux1 = conexionbase->cargaapuntesctafecha(idcuenta,(char *) finicial.ascii(), (char *)ffinal.ascii());
 
          if (!cursoraux1->eof()) {
-            activo = strcmp((char *) cursoraux->valor(13).latin1() , "f");
+            activo = strcmp((char *) cursoraux->valor(13).ascii() , "f");
 
             if (txt) {
-               fitxersortidatxt << "\n\n" << setw(12) << cursoraux->valor(1).latin1() << setw(50) << cursoraux->valor(2).latin1() << endl;
+               fitxersortidatxt << "\n\n" << setw(12) << cursoraux->valor(1).ascii() << setw(50) << cursoraux->valor(2).ascii() << endl;
                if (activo) {
                   fitxersortidatxt << " Compte d'Actiu";
                } else {
@@ -151,7 +151,7 @@ void ExtractoPrintView::presentar(char *tipus) {
             }
 
             if (html) {
-               fitxersortidahtml << "<tr><td colspan=\"6\" class=comptemajor>" << cursoraux->valor(1).latin1() << " "<< cursoraux->valor(2).latin1() << "</td></tr>\n";
+               fitxersortidahtml << "<tr><td colspan=\"6\" class=comptemajor>" << cursoraux->valor(1).ascii() << " "<< cursoraux->valor(2).ascii() << "</td></tr>\n";
                if (activo) {
                   fitxersortidahtml << "<tr><td colspan=\"6\" class=tipuscomptemajor> Compte d'Actiu </td></tr>\n";
                } else {
@@ -160,10 +160,10 @@ void ExtractoPrintView::presentar(char *tipus) {
 
             }
 
-            cursoraux2 = conexionbase->cargasaldoscuentafecha(idcuenta, (char *)finicial.latin1());
+            cursoraux2 = conexionbase->cargasaldoscuentafecha(idcuenta, (char *)finicial.ascii());
             if (!cursoraux2->eof()) {
-               debeinicial = atof(cursoraux2->valor(0).latin1());
-               haberinicial = atof(cursoraux2->valor(1).latin1());
+               debeinicial = atof(cursoraux2->valor(0).ascii());
+               haberinicial = atof(cursoraux2->valor(1).ascii());
                if (activo) {
                   saldoinicial = debeinicial - haberinicial;
                } else {
@@ -188,10 +188,10 @@ void ExtractoPrintView::presentar(char *tipus) {
                haberfinal = haberinicial;
 
                for(;!cursoraux1->eof();cursoraux1->siguienteregistro()) {
-                  idasiento=atoi(cursoraux1->valor(2).latin1());
-                  contrapartida = atoi(cursoraux1->valor(10).latin1());
-                  debe=atof(cursoraux1->valor(8).latin1());
-                  haber=atof(cursoraux1->valor(9).latin1());
+                  idasiento=atoi(cursoraux1->valor(2).ascii());
+                  contrapartida = atoi(cursoraux1->valor(10).ascii());
+                  debe=atof(cursoraux1->valor(8).ascii());
+                  haber=atof(cursoraux1->valor(9).ascii());
 
                   if (activo) {
                      saldo += debe - haber;
@@ -201,11 +201,11 @@ void ExtractoPrintView::presentar(char *tipus) {
 
                debefinal += debe;
                haberfinal += haber;
-               cad = cursoraux1->valor(4).latin1();
+               cad = cursoraux1->valor(4).ascii();
                //presentació txt
-               if (txt) fitxersortidatxt <<  setw(5) << idasiento << setw(14) << cad.substr(1,10).c_str() << setw(10) << contrapartida << "  " << setw(40)  << setiosflags(ios::left) << cursoraux1->valor(5).latin1() << setw(10) << resetiosflags(ios::left) << debe << setw(10) << haber << setw(10) << saldo << endl;
+               if (txt) fitxersortidatxt <<  setw(5) << idasiento << setw(14) << cad.substr(1,10).c_str() << setw(10) << contrapartida << "  " << setw(40)  << setiosflags(ios::left) << cursoraux1->valor(5).ascii() << setw(10) << resetiosflags(ios::left) << debe << setw(10) << haber << setw(10) << saldo << endl;
                //presentació html
-               if (html) fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(1,10).c_str() << " </td><td class=contrapartidamajor> " << contrapartida << " </td><td> " << cursoraux1->valor(5).latin1() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
+               if (html) fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(1,10).c_str() << " </td><td class=contrapartidamajor> " << contrapartida << " </td><td> " << cursoraux1->valor(5).ascii() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
             }
 
             if (activo) {

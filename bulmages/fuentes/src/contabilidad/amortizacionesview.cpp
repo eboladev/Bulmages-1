@@ -44,7 +44,7 @@ void amortizacionesview::inicializatabla()  {
   listado->hideColumn(2);
   listado->hideColumn(0);
   listado->setColumnWidth(1,400);
-  string query = "SELECT * FROM amortizacion";
+  string query = "SELECT * FROM amortizacion ORDER BY nomamortizacion";
   conexionbase->begin();
   cursor2 *cursoraux1=conexionbase->cargacursor(query.c_str(),"elquery");
   conexionbase->commit();

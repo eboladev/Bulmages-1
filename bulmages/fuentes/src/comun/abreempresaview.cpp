@@ -73,7 +73,7 @@ void abreempresaview::accept() {
        padre->PasswordUsuario = contrasena;
        padre->NombreBaseDatos = empresabd;
        padre->nombreempresa->setText(nombreempresa);
-       padre->ejercicio->setText(ejercicio.latin1());
+       padre->ejercicio->setText(ejercicio.ascii());
        delete this;
    }//end if
    if ((intentos+=1)>3) padre->close();

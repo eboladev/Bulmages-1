@@ -43,8 +43,8 @@ int ivaview::inicializa(postgresiface2 *conn, int sop_rep=0) {
 // Si se trata de una insercion insertamos.
 void ivaview::accept() {
   QString query;
-  float baseimponible1=atof(baseimponible->text().latin1());
-  float iva1 = atof(iva->text().latin1());
+  float baseimponible1=atof(baseimponible->text().ascii());
+  float iva1 = atof(iva->text().ascii());
   QString factura1= factura->text();
   QString numorden1 = numorden->text();
   QString cif1 = cif->text();
@@ -52,15 +52,15 @@ void ivaview::accept() {
   cursor2 *cursorcuenta =conexionbase->cargacuenta(0,contrapartida->text());
   conexionbase->commit();
   if (!cursorcuenta->eof()) {
-    int idcuenta= atoi(cursorcuenta->valor("idcuenta").latin1());
+    int idcuenta= atoi(cursorcuenta->valor("idcuenta").ascii());
     if (idregistroiva !=0) {
           // Se trata de una inserción, ya que no hay registros de iva introducidos.
-         query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%2.2f, iva=%2.0f, contrapartida=%d, factura='%s', numorden='%s', cif='%s' WHERE idregistroiva=%d", idborrador, baseimponible1, iva1, idcuenta, factura1.latin1(), numorden1.latin1(), cif1.latin1(), idregistroiva);
+         query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%2.2f, iva=%2.0f, contrapartida=%d, factura='%s', numorden='%s', cif='%s' WHERE idregistroiva=%d", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden1.ascii(), cif1.ascii(), idregistroiva);
     } else {
           // Se trata de una modificacion, ya que hay registros de iva introducidos.
-         query.sprintf("INSERT INTO registroiva (idborrador, baseimp, iva, contrapartida, factura, numorden, cif) VALUES (%d,%2.2f, %2.0f, %d, '%s', '%s', '%s')", idborrador, baseimponible1, iva1, idcuenta, factura1.latin1(), numorden1.latin1(), cif1.latin1());
+         query.sprintf("INSERT INTO registroiva (idborrador, baseimp, iva, contrapartida, factura, numorden, cif) VALUES (%d,%2.2f, %2.0f, %d, '%s', '%s', '%s')", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden1.ascii(), cif1.ascii());
     }// end if
-    fprintf(stderr,"%s\n",query.latin1());
+    fprintf(stderr,"%s\n",query.ascii());
     conexionbase->begin();
     conexionbase->ejecuta(query);
     conexionbase->commit();
@@ -116,7 +116,7 @@ void ivaview::inicializa1(int idapunte1) {
   conexionbase->commit();
   if (!cursoriva->eof()) {
     // Se trata de un registro que ya ha sido introducido
-    idregistroiva=atoi(cursoriva->valor("idregistroiva").latin1());
+    idregistroiva=atoi(cursoriva->valor("idregistroiva").ascii());
     contrapartida->setText(cursoriva->valor("codigo"));
     empfactura->setText(cursoriva->valor("nombreent_cuenta"));
     baseimponible->setText(cursoriva->valor("baseimp"));
@@ -125,12 +125,12 @@ void ivaview::inicializa1(int idapunte1) {
     numorden->setText(cursoriva->valor("numorden"));
     cif->setText(cursoriva->valor("cif"));
     query.sprintf ("SELECT * from borrador, asiento, cuenta WHERE borrador.idborrador=%d AND borrador.idasiento=asiento.idasiento AND borrador.idcuenta=cuenta.idcuenta",idborrador);
-    fprintf(stderr,"%s\n",query.latin1());
+    fprintf(stderr,"%s\n",query.ascii());
     conexionbase->begin();
     cursor2 * cursorapunte = conexionbase->cargacursor(query,"cursorapunte");
     conexionbase->commit();
     if (!cursorapunte->eof()) {
-      fprintf(stderr,"Asiento %s\n",cursorapunte->valor("idasiento").latin1());
+      fprintf(stderr,"Asiento %s\n",cursorapunte->valor("idasiento").ascii());
       numasiento->setText(cursorapunte->valor("ordenasiento")); //Josep Burción
       cuentaiva->setText(cursorapunte->valor("codigo"));
     }// end if
@@ -138,27 +138,27 @@ void ivaview::inicializa1(int idapunte1) {
   } else {
       // Aun no se ha metido ningun registro de este estilo
       query.sprintf ("SELECT * from borrador, asiento, cuenta WHERE borrador.idborrador=%d AND borrador.idasiento=asiento.idasiento AND borrador.idcuenta=cuenta.idcuenta",idborrador); //Josep Burción
-      fprintf(stderr,"%s\n",query.latin1());
+      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->begin();
       cursor2 * cursorapunte = conexionbase->cargacursor(query,"cursorapunte");
       conexionbase->commit();
       if (!cursorapunte->eof()) {
-        fprintf(stderr,"Asiento %s\n",cursorapunte->valor("idasiento").latin1());
+        fprintf(stderr,"Asiento %s\n",cursorapunte->valor("idasiento").ascii());
         numasiento->setText(cursorapunte->valor("ordenasiento"));
         cuentaiva->setText(cursorapunte->valor("codigo"));
-        fprintf(stderr,"Cuenta usuario %s\n", cursorapunte->valor("conceptocontable").latin1());
-        debe = atof(cursorapunte->valor("debe").latin1());
-        haber = atof(cursorapunte->valor("haber").latin1());
+        fprintf(stderr,"Cuenta usuario %s\n", cursorapunte->valor("conceptocontable").ascii());
+        debe = atof(cursorapunte->valor("debe").ascii());
+        haber = atof(cursorapunte->valor("haber").ascii());
         // Vamos a intentar calcular la contrapartida sin usar el campo contrapartida ya
         // que dicho campo podría desaparecer.
         if (debe < haber) { //Venta
           setSoportadoRepercutido(IVA_REPERCUTIDO);
-          query.sprintf("SELECT * from borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.haber=0 ORDER BY borrador.debe DESC",atoi(cursorapunte->valor("idasiento").latin1()));
+          query.sprintf("SELECT * from borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.haber=0 ORDER BY borrador.debe DESC",atoi(cursorapunte->valor("idasiento").ascii()));
         } else { //Compra
           setSoportadoRepercutido(IVA_SOPORTADO);
-          query.sprintf("SELECT * from borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.debe=0 ORDER BY borrador.haber DESC",atoi(cursorapunte->valor("idasiento").latin1()));
+          query.sprintf("SELECT * from borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.debe=0 ORDER BY borrador.haber DESC",atoi(cursorapunte->valor("idasiento").ascii()));
         }// end if
-        fprintf(stderr,"%s\n",query.latin1());
+        fprintf(stderr,"%s\n",query.ascii());
         conexionbase->begin();
         cursor2 *cursorcontrapartida = conexionbase->cargacursor(query,"contrapartida");
         conexionbase->commit();
@@ -168,14 +168,14 @@ void ivaview::inicializa1(int idapunte1) {
           empfactura->setText(cursorcontrapartida->valor("nombreent_cuenta"));
           contrapartida->setText(cursorcontrapartida->valor("codigo"));
           cif->setText(cursorcontrapartida->valor("cifent_cuenta"));
-          double total_factura= atof(cursorcontrapartida->valor("debe").latin1());
+          double total_factura= atof(cursorcontrapartida->valor("debe").ascii());
           if (total_factura == 0) {
-            total_factura = atof(cursorcontrapartida->valor("haber").latin1());
+            total_factura = atof(cursorcontrapartida->valor("haber").ascii());
           }// end if
           fprintf(stderr,"total factura %2.2f\n",total_factura);
-          double iva1 = atof(cursorapunte->valor("debe").latin1());
+          double iva1 = atof(cursorapunte->valor("debe").ascii());
           if (iva1 == 0) {
-            iva1 = atof(cursorapunte->valor("haber").latin1());
+            iva1 = atof(cursorapunte->valor("haber").ascii());
           }// end if
           double baseimponible1 = total_factura - iva1;
           double porcentiva = total_factura/baseimponible1 -1;
@@ -196,7 +196,7 @@ void ivaview::inicializa1(int idapunte1) {
               recordset = conexionbase->cargacursor(query,"recordset");
               conexionbase->commit();
               if (!recordset->eof()) {
-                  int numfact = 1 + atoi(recordset->valor("factura").latin1());
+                  int numfact = 1 + atoi(recordset->valor("factura").ascii());
                   cadena.sprintf("%i",numfact);
                   factura->setText(cadena);
               }
@@ -207,7 +207,7 @@ void ivaview::inicializa1(int idapunte1) {
               recordset = conexionbase->cargacursor(query,"recordset");
               conexionbase->commit();
               if (!recordset->eof()) {
-                  int numord = 1 + atoi(recordset->valor("numorden").latin1());
+                  int numord = 1 + atoi(recordset->valor("numorden").ascii());
                   cadena.sprintf("%i",numord);
                   numorden->setText(cadena);
              }

@@ -52,9 +52,9 @@ void aplinteligentesview::inicializa(postgresiface2 *con, int idasiento, intapun
     cursor2 *cur = conexionbase->cargacursor(query,"unsuperquery");
     conexionbase->commit();
     while (!cur->eof()) {
-        fprintf(stderr,"%2.2s %s\n",cur->valor("idainteligente").latin1(), cur->valor("descripcion").latin1());
-        comboainteligentes->insertItem(cur->valor("descripcion").latin1(),-1);
-        listasientos[i++]= atoi(cur->valor("idainteligente").latin1());
+        fprintf(stderr,"%2.2s %s\n",cur->valor("idainteligente").ascii(), cur->valor("descripcion").ascii());
+        comboainteligentes->insertItem(cur->valor("descripcion").ascii(),-1);
+        listasientos[i++]= atoi(cur->valor("idainteligente").ascii());
         cur->siguienteregistro();
     }// end while
     delete cur;
@@ -79,7 +79,7 @@ void aplinteligentesview::inicializavariables() {
     variablespredefinidas[indvariablespredefinidas][0]="$fechaactual$";
     variablespredefinidas[indvariablespredefinidas++][1]=subcadena;
     buffer.sprintf("SELECT * FROM asiento WHERE idasiento=%d",numasiento);
-    fprintf(stderr,"%s\n",buffer.latin1());
+    fprintf(stderr,"%s\n",buffer.ascii());
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(buffer,"cargaasiento");
     conexionbase->commit();
@@ -98,19 +98,19 @@ void aplinteligentesview::inicializavariablesapunte(int idborrador) {
     variablesapunte[0][0] ="$cifcuenta$";
     QString query;
     query.sprintf("SELECT * FROM borrador WHERE idborrador=%d",idborrador);
-    fprintf(stderr,"%s\n",query.latin1());
+    fprintf(stderr,"%s\n",query.ascii());
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(query,"cursor");
     conexionbase->commit();
     if (!cur->eof()) {
-        query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%s",cur->valor("idcuenta").latin1());
-        fprintf(stderr,"%s\n", query.latin1());
+        query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%s",cur->valor("idcuenta").ascii());
+        fprintf(stderr,"%s\n", query.ascii());
         conexionbase->begin();
         cursor2 *cur1 = conexionbase->cargacursor(query,"cursor2");
         conexionbase->commit();
         variablesapunte[0][0] ="$cifcuenta$";
         variablesapunte[0][1] = cur1->valor("cifent_cuenta");
-        fprintf(stderr,"variable de APUNTE %s\n",cur1->valor("cifent_cuenta").latin1());
+        fprintf(stderr,"variable de APUNTE %s\n",cur1->valor("cifent_cuenta").ascii());
         delete cur1;
     }// end if
     delete cur;
@@ -143,7 +143,7 @@ void aplinteligentesview::return_cta() {
     QLineEdit *cuenta;
     cuenta = (QLineEdit *) sender();
     fprintf(stderr,"Se ha pulsado return sobre una cuenta\n");
-    fprintf(stderr,"Texto de la cuenta: %s\n",cuenta->text().latin1());
+    fprintf(stderr,"Texto de la cuenta: %s\n",cuenta->text().ascii());
 
 	 // Buscamos el label correspondiente para esta cuenta.
 	 int i;
@@ -169,7 +169,7 @@ void aplinteligentesview::return_cta() {
 void aplinteligentesview::return_numero() {
     QLineEdit *numero;
     numero = (QLineEdit *) sender();
-    fprintf (stderr,"Se ha pulsado return sobre el número: %s\n",numero->text().latin1());
+    fprintf (stderr,"Se ha pulsado return sobre el número: %s\n",numero->text().ascii());
     selectsiguiente(numero);
 }// end return_numero
 
@@ -177,7 +177,7 @@ void aplinteligentesview::return_numero() {
 void aplinteligentesview::return_texto() {
     QLineEdit *texto;
     texto = (QLineEdit *) sender();
-    fprintf (stderr,"Se ha pulsado return sobre el texto: %s\n",texto->text().latin1());
+    fprintf (stderr,"Se ha pulsado return sobre el texto: %s\n",texto->text().ascii());
     selectsiguiente(texto);
 }// end return_numero
 
@@ -224,7 +224,7 @@ void aplinteligentesview::boton_crear() {
         // Asi que debemos facilitar las cosas al máximo.
         intapunts->fechaasiento1->setText(fechaasiento->text());
         intapunts->return_fechaasiento();
-        numasiento=atoi( intapunts->cursorasientos->valor("idasiento").latin1() );
+        numasiento=atoi( intapunts->cursorasientos->valor("idasiento").ascii() );
         recogevalores();
         creaasiento();
         intapunts->boton_cerrarasiento();
@@ -359,19 +359,19 @@ void aplinteligentesview::recogevalores() {
     int i=0;
     for (i=0;i<indvariablestexto;i++) {
         variablestexto[i][1]=vartexto[i]->text();
-        fprintf(stderr,"%s=%s\n",variablestexto[i][0].latin1(),variablestexto[i][1].latin1());
+        fprintf(stderr,"%s=%s\n",variablestexto[i][0].ascii(),variablestexto[i][1].ascii());
     }// end for
     for (i=0;i<indvariablesnumero;i++) {
         variablesnumero[i][1]=varnumero[i]->text();
-        fprintf(stderr,"%s=%s\n",variablesnumero[i][0].latin1(),variablesnumero[i][1].latin1());
+        fprintf(stderr,"%s=%s\n",variablesnumero[i][0].ascii(),variablesnumero[i][1].ascii());
     }// end for
     for (i=0;i<indvariablesfecha;i++) {
         variablesfecha[i][1]=varfecha[i]->text();
-        fprintf(stderr,"%s=%s\n",variablesfecha[i][0].latin1(),variablesfecha[i][1].latin1());
+        fprintf(stderr,"%s=%s\n",variablesfecha[i][0].ascii(),variablesfecha[i][1].ascii());
     }// end for
     for (i=0;i<indvariablescta;i++) {
         variablescta[i][1]=varcta[i]->text();
-        fprintf(stderr,"%s=%s\n",variablescta[i][0].latin1(),variablescta[i][1].latin1());
+        fprintf(stderr,"%s=%s\n",variablescta[i][0].ascii(),variablescta[i][1].ascii());
     }// end for
 }// end recogevalores
 
@@ -407,16 +407,16 @@ void aplinteligentesview::creaasiento() {
     conexionbase->commit();
     while (!cur->eof()) {
         codcuenta = aplicavariable(cur->valor("codcuenta"));
-        query.sprintf("SELECT * FROM cuenta where codigo='%s'",codcuenta.latin1());
+        query.sprintf("SELECT * FROM cuenta where codigo='%s'",codcuenta.ascii());
         conexionbase->begin();
         cur1 = conexionbase->cargacursor(query,"buscacodigo");
         conexionbase->commit();
         if (!cur1->eof()) {
-            idcuenta = atoi(cur1->valor("idcuenta").latin1());
+            idcuenta = atoi(cur1->valor("idcuenta").ascii());
         }// end if
         delete cur1;
         contrapartida = aplicavariable(cur->valor("contrapartida"));
-        query.sprintf("SELECT * FROM cuenta where codigo='%s'",contrapartida.latin1());
+        query.sprintf("SELECT * FROM cuenta where codigo='%s'",contrapartida.ascii());
         conexionbase->begin();
         cur1 = conexionbase->cargacursor(query,"buscacodigo");
         conexionbase->commit();
@@ -431,14 +431,14 @@ void aplinteligentesview::creaasiento() {
         fecha = aplicavariable(cur->valor("fecha"));
         conceptocontable = aplicavariable(cur->valor("conceptocontable"));
         descripcion = aplicavariable(cur->valor("descripcion"));
-        query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s')",numasiento,idcuenta,idcontrapartida.latin1(), debe.latin1(), haber.latin1(), fecha.latin1(), conceptocontable.latin1(), descripcion.latin1());
+        query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s')",numasiento,idcuenta,idcontrapartida.ascii(), debe.ascii(), haber.ascii(), fecha.ascii(), conceptocontable.ascii(), descripcion.ascii());
         conexionbase->begin();
         conexionbase->ejecuta(query);
         //    conexionbase->commit();
 
         // Miramos si existe una entrada en iva para este apunte y la creamos
-        query.sprintf("SELECT * from ivainteligente WHERE idbinteligente=%s",cur->valor("idbinteligente").latin1());
-        fprintf(stderr,"%s\n",query.latin1());
+        query.sprintf("SELECT * from ivainteligente WHERE idbinteligente=%s",cur->valor("idbinteligente").ascii());
+        fprintf(stderr,"%s\n",query.ascii());
         conexionbase->begin();
         cursor2 *curiva = conexionbase->cargacursor(query,"ivas");
         conexionbase->commit();
@@ -448,7 +448,7 @@ void aplinteligentesview::creaasiento() {
             conexionbase->begin();
             cur1 = conexionbase->cargacursor(query,"borrador");
             conexionbase->commit();
-            int idborrador = atoi(cur1->valor("id").latin1());
+            int idborrador = atoi(cur1->valor("id").ascii());
             delete cur1;
 
             //Inicializamos las variables de apunte
@@ -457,7 +457,7 @@ void aplinteligentesview::creaasiento() {
 
             // Luego buscamos la contrapartida
             contrapartida = aplicavariable(curiva->valor("contrapartida"));
-            query.sprintf("SELECT * FROM cuenta where codigo='%s'",contrapartida.latin1());
+            query.sprintf("SELECT * FROM cuenta where codigo='%s'",contrapartida.ascii());
             conexionbase->begin();
             cur1 = conexionbase->cargacursor(query,"buscacodigo");
             conexionbase->commit();
@@ -466,7 +466,7 @@ void aplinteligentesview::creaasiento() {
             } else {
                 idcontrapartida = "NULL";
             }// end if
-            cifcuenta(atoi(idcontrapartida.latin1()));
+            cifcuenta(atoi(idcontrapartida.ascii()));
             delete cur1;
 
 
@@ -491,8 +491,8 @@ void aplinteligentesview::creaasiento() {
                 cif = "NULL";
 
 
-            query.sprintf("INSERT INTO registroiva (idborrador, contrapartida, iva, factura, baseimp, numorden, cif) VALUES (%d, %s, %s, %s, %s, %s, %s)",idborrador, idcontrapartida.latin1(), iva.latin1(), factura.latin1(), baseimp.latin1(), numorden.latin1(), cif.latin1());
-            fprintf(stderr,"Registro de iva: %s",query.latin1());
+            query.sprintf("INSERT INTO registroiva (idborrador, contrapartida, iva, factura, baseimp, numorden, cif) VALUES (%d, %s, %s, %s, %s, %s, %s)",idborrador, idcontrapartida.ascii(), iva.ascii(), factura.ascii(), baseimp.ascii(), numorden.ascii(), cif.ascii());
+            fprintf(stderr,"Registro de iva: %s",query.ascii());
             conexionbase->begin();
             conexionbase->ejecuta(query);
             conexionbase->commit();
@@ -524,7 +524,7 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
             if (posaux != -1) {
                 posaux1 = subcadena.find("$",posaux+1);
                 descvar = subcadena.mid(posaux+1,posaux1-posaux-1);
-                fprintf (stderr,"desc:%s<-->size %d\n",descvar.latin1(), posaux1);
+                fprintf (stderr,"desc:%s<-->size %d\n",descvar.ascii(), posaux1);
                 nomvar = subcadena.mid(0,posaux+1);
                 // Si hay un comentario lo debemos borrar tras considerarlo para que no estorbe.
                 nomvar.replace (nomvar.length()-1,nomvar.length(),"$");
@@ -544,8 +544,8 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
             }// end while
 
             if (j == indvariablespredefinidas && d== indvariablesapunte) {
-                fprintf(stderr,"%d,%d, sub:%s\n",indvariablespredefinidas, j,subcadena.latin1());
-                fprintf(stderr,"nom:%s\n",nomvar.latin1());
+                fprintf(stderr,"%d,%d, sub:%s\n",indvariablespredefinidas, j,subcadena.ascii());
+                fprintf(stderr,"nom:%s\n",nomvar.ascii());
                 switch(tipo) {
                 case TIPO_CTA:
                     for(j=0;j<indvariablescta && variablescta[j][0] != nomvar;j++)
@@ -607,7 +607,7 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
 // Se hace un repaso que hace que se aplique una variable.
 QString aplinteligentesview::aplicavariable(QString texto) {
     QString cadena=texto;
-    fprintf(stderr,"Aplicavariable: texto: %s\n",texto.latin1());
+    fprintf(stderr,"Aplicavariable: texto: %s\n",texto.ascii());
     int posinicial, posfinal;
     int i;
     int fin = 0;

@@ -162,11 +162,11 @@ void diarioview1::inicializa1(QString finicial, QString ffinal, int idc_coste) {
 
    s1= finicial;
    s2=s1.mid(0,2);
-   dia = atoi(s2.latin1());
+   dia = atoi(s2.ascii());
    s2=s1.mid(3,2);
-   mes = atoi(s2.latin1());
+   mes = atoi(s2.ascii());
    s2=s1.mid(6,4);
-   ano = atoi(s2.latin1());
+   ano = atoi(s2.ascii());
    fecha1aux.setYMD(ano,mes,dia);
    QString cadena2;
    cadena2.sprintf("%2.2d/%2.2d/%4.4d",fecha1aux.day(), fecha1aux.month(), fecha1aux.year());
@@ -175,11 +175,11 @@ void diarioview1::inicializa1(QString finicial, QString ffinal, int idc_coste) {
 
    s1= ffinal;
    s2=s1.mid(0,2);
-   dia = atoi(s2.latin1());
+   dia = atoi(s2.ascii());
    s2=s1.mid(3,2);
-   mes = atoi(s2.latin1());
+   mes = atoi(s2.ascii());
    s2=s1.mid(6,4);
-   ano = atoi(s2.latin1());
+   ano = atoi(s2.ascii());
    fecha1aux.setYMD(ano,mes,dia);
    cadena2.sprintf("%2.2d/%2.2d/%4.4d",fecha1aux.day(), fecha1aux.month(), fecha1aux.year());
    fechafinal1->setText(cadena2);
@@ -212,8 +212,8 @@ void diarioview1::boton_guardar() {
      QString finicial = fechainicial1->text();
      QString ffinal = fechafinal1->text();
      diariop.inicializa(conexionbase);
-     diariop.inicializa1((char *) finicial.latin1(), (char *)ffinal.latin1());
-     diariop.inicializa2((char *) fn.latin1());
+     diariop.inicializa1((char *) finicial.ascii(), (char *)ffinal.ascii());
+     diariop.inicializa2((char *) fn.ascii());
      diariop.accept();
   }// end if
 }// end boton_guardar
@@ -248,7 +248,7 @@ void diarioview1::boton_extracto1(int tipo) {
 				fecha2.setYMD(fechaact.year(), 12, 31);
 			break;
 		}// end switch
-//		extracto->inicializa1((char *) tapunts->text(rowactual, COL_SUBCUENTA).latin1(), (char *)tapunts->text(rowactual, COL_SUBCUENTA).latin1(),(char *) fecha1.toString("dd/MM/yyyy").latin1(),(char *) fecha2.toString("dd/MM/yyyy").latin1(), 0);
+//		extracto->inicializa1((char *) tapunts->text(rowactual, COL_SUBCUENTA).ascii(), (char *)tapunts->text(rowactual, COL_SUBCUENTA).ascii(),(char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
 	   extracto->inicializa1(listado->text(listado->currentRow(),COL_CUENTA),listado->text(listado->currentRow(),COL_CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"),  filt->ccostes[filt->combocoste->currentItem()]);
    }// end if
    extracto->accept();
@@ -291,7 +291,7 @@ void diarioview1::boton_balance1(int tipo) {
 void diarioview1::boton_asiento() {
   if (listado->currentRow()!= -1) {
     QString text = listado->text(listado->currentRow(),COL_NUMASIENTO);
-    int numasiento = atoi((char *)text.latin1());
+    int numasiento = atoi((char *)text.ascii());
     if (numasiento != 0) {
       introapunts->muestraasiento(numasiento);
     }// end if
@@ -329,9 +329,9 @@ void diarioview1::presentar() {
    idc_coste = filt->ccostes[filt->combocoste->currentItem()];
    conexionbase->begin();
    if (idc_coste!= 0) {
-     query.sprintf( "SELECT asiento.ordenasiento, apunte.contrapartida, apunte.fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, apunte.conceptocontable,apunte.descripcion AS descapunte, apunte.debe, apunte.haber, cuenta.idcuenta, asiento.idasiento, apunte.idc_coste, apunte.idcanal, cuenta.codigo FROM asiento, apunte, cuenta WHERE apunte.idc_coste=%d AND asiento.idasiento=apunte.idasiento AND apunte.idcuenta = cuenta.idcuenta AND apunte.fecha >= '%s' AND apunte.fecha <= '%s' ORDER BY apunte.fecha, asiento.idasiento, apunte.orden", idc_coste, finicial.latin1(), ffinal.latin1() );
+     query.sprintf( "SELECT asiento.ordenasiento, apunte.contrapartida, apunte.fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, apunte.conceptocontable,apunte.descripcion AS descapunte, apunte.debe, apunte.haber, cuenta.idcuenta, asiento.idasiento, apunte.idc_coste, apunte.idcanal, cuenta.codigo FROM asiento, apunte, cuenta WHERE apunte.idc_coste=%d AND asiento.idasiento=apunte.idasiento AND apunte.idcuenta = cuenta.idcuenta AND apunte.fecha >= '%s' AND apunte.fecha <= '%s' ORDER BY apunte.fecha, asiento.idasiento, apunte.orden", idc_coste, finicial.ascii(), ffinal.ascii() );
    } else {
-     query.sprintf("SELECT asiento.ordenasiento, apunte.contrapartida, apunte.fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, apunte.conceptocontable,apunte.descripcion AS descapunte, apunte.debe, apunte.haber, cuenta.idcuenta, asiento.idasiento, apunte.idc_coste, apunte.idcanal, cuenta.codigo FROM asiento, apunte, cuenta WHERE  asiento.idasiento=apunte.idasiento AND apunte.idcuenta = cuenta.idcuenta AND apunte.fecha >= '%s' AND apunte.fecha <= '%s' ORDER BY apunte.fecha, asiento.idasiento, apunte.orden", finicial.latin1(), ffinal.latin1());
+     query.sprintf("SELECT asiento.ordenasiento, apunte.contrapartida, apunte.fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, apunte.conceptocontable,apunte.descripcion AS descapunte, apunte.debe, apunte.haber, cuenta.idcuenta, asiento.idasiento, apunte.idc_coste, apunte.idcanal, cuenta.codigo FROM asiento, apunte, cuenta WHERE  asiento.idasiento=apunte.idasiento AND apunte.idcuenta = cuenta.idcuenta AND apunte.fecha >= '%s' AND apunte.fecha <= '%s' ORDER BY apunte.fecha, asiento.idasiento, apunte.orden", finicial.ascii(), ffinal.ascii());
    }// end if
    cursoraux = conexionbase->cargacursor(query,"cursorapuntes");
    conexionbase->commit();
@@ -342,8 +342,8 @@ void diarioview1::presentar() {
    int asientoanterior = 0;
    for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
       fechaasiento = cursoraux->valor("fechaasiento");
-      int ordenasiento = atoi(cursoraux->valor("ordenasiento").latin1());
-      idasiento = atoi(cursoraux->valor("idasiento").latin1());
+      int ordenasiento = atoi(cursoraux->valor("ordenasiento").ascii());
+      idasiento = atoi(cursoraux->valor("idasiento").ascii());
       // Manejamos el sistema de colorines.
       if (idasiento != asientoanterior) {
          modo = (modo) ? 0 : 1;
@@ -352,9 +352,9 @@ void diarioview1::presentar() {
       fecha = cursoraux->valor("fecha");
       descripcion = cursoraux->valor("conceptocontable");
       concepto = cursoraux->valor("descapunte");
-      debe = atof(cursoraux->valor("debe").latin1());
-      haber = atof(cursoraux->valor("haber").latin1());
-      idcuenta = atoi(cursoraux->valor("idcuenta").latin1());
+      debe = atof(cursoraux->valor("debe").ascii());
+      haber = atof(cursoraux->valor("haber").ascii());
+      idcuenta = atoi(cursoraux->valor("idcuenta").ascii());
       totaldebe1+=debe;
       totalhaber1+=haber;
       codigocuenta = cursoraux->valor("codigo");
@@ -384,7 +384,7 @@ void diarioview1::presentar() {
 
        // Sacamos la contrapartida
        QString querycontrapartida;
-       querycontrapartida.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursoraux->valor("contrapartida").latin1());
+       querycontrapartida.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursoraux->valor("contrapartida").ascii());
        conexionbase->begin();
        cursoraux1=conexionbase->cargacursor(querycontrapartida,"contrapartida");
        conexionbase->commit();
@@ -396,7 +396,7 @@ void diarioview1::presentar() {
 
                                                                 
       // Insercion de listados.
-      cadaux.sprintf("%10.10s",fecha.latin1());
+      cadaux.sprintf("%10.10s",fecha.ascii());
       listado->setItem(i,0, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
 
       cadaux.sprintf("%d",idasiento);

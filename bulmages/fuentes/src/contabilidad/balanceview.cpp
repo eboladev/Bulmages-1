@@ -175,7 +175,7 @@ void balanceview::boton_extracto1(int tipo) {
 				fecha2.setYMD(fechaact.year(), 12, 31);
 			break;
 		}// end switch
- //     extracto->inicializa1((char *)codigoinicial->text().latin1(),(char *)codigofinal->text().latin1() ,(char *) fecha1.toString("dd/MM/yyyy").latin1(),(char *)fecha2.toString("dd/MM/yyyy").latin1(),  ccostes[combocoste->currentItem()]);
+ //     extracto->inicializa1((char *)codigoinicial->text().ascii(),(char *)codigofinal->text().ascii() ,(char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *)fecha2.toString("dd/MM/yyyy").ascii(),  ccostes[combocoste->currentItem()]);
  		  extracto->inicializa1( listado->text(listado->currentRow(), CUENTA), listado->text(listado->currentRow(), CUENTA),fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"),  ccostes[combocoste->currentItem()]);
    }// end if
    extracto->accept();
@@ -266,49 +266,49 @@ void balanceview::presentar() {
 		// Causar problemas con el motor de base de datos.
 		fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
       conexionbase->begin();
-		query.sprintf("CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.latin1(), ffinal.latin1(), finicial.latin1() );
-		fprintf(stderr,"%s\n",query.latin1());
+		query.sprintf("CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
+		fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET padre=0 WHERE padre ISNULL");
-      fprintf(stderr,"%s\n",query.latin1());
+      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("DELETE FROM balancetemp WHERE debe=0 AND haber =0");
-      fprintf(stderr,"%s\n",query.latin1());
+      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
 
       // Vamos a implementar el tema del código
       if (cinicial != "") {
-         query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'",cinicial.latin1());
+         query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'",cinicial.ascii());
          conexionbase->ejecuta(query);
       }// end if
       if (cfinal != "") {
-         query.sprintf("DELETE FROM balancetemp WHERE codigo > '%s'",cfinal.latin1());
+         query.sprintf("DELETE FROM balancetemp WHERE codigo > '%s'",cfinal.ascii());
          conexionbase->ejecuta(query);
       }// end if      
 
       // Para evitar problemas con los nulls hacemos algunos updates
       query.sprintf("UPDATE balancetemp SET tsaldo=0 WHERE tsaldo ISNULL");
-      fprintf(stderr,"%s\n",query.latin1());
+      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET tdebe=0 WHERE tdebe ISNULL");
-      fprintf(stderr,"%s\n",query.latin1());
+      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET thaber=0 WHERE thaber ISNULL");
-      fprintf(stderr,"%s\n",query.latin1());
+      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET asaldo=0 WHERE asaldo ISNULL");
-      fprintf(stderr,"%s\n",query.latin1());
+      fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
 		conexionbase->commit();
       conexionbase->begin();
 		query.sprintf( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC");
-		fprintf(stderr,"%s\n",query.latin1());
+		fprintf(stderr,"%s\n",query.ascii());
 		cursorapt = conexionbase->cargacursor(query,"Balance1view");
 		while (!cursorapt->eof())  {
-         query.sprintf("SELECT * FROM balancetemp WHERE idcuenta=%s",cursorapt->valor("idcuenta").latin1());
+         query.sprintf("SELECT * FROM balancetemp WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
          cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
          if (!mycur->eof()) {
-            query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").latin1()), atof(mycur->valor("tdebe").latin1()), atof(mycur->valor("thaber").latin1()),atof(mycur->valor("asaldo").latin1()),  atoi(mycur->valor("padre").latin1()));
+            query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
    //			fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
             conexionbase->ejecuta(query);
    		}// end if
@@ -322,7 +322,7 @@ void balanceview::presentar() {
       
       
       // Borramos todo lo que no es de este nivel
-      query.sprintf("DELETE FROM balancetemp where nivel(codigo)>%s",combonivel->text(combonivel->currentItem()).latin1());
+      query.sprintf("DELETE FROM balancetemp where nivel(codigo)>%s",combonivel->text(combonivel->currentItem()).ascii());
       conexionbase->ejecuta(query);
       
 
@@ -330,11 +330,11 @@ void balanceview::presentar() {
       query.sprintf("DELETE FROM balancetemp WHERE idcuenta IN (SELECT padre FROM balancetemp)");
       conexionbase->ejecuta(query);
 		query.sprintf("SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY codigo");
-		fprintf(stderr,"%s\n",query.latin1());
+		fprintf(stderr,"%s\n",query.ascii());
 		cursorapt = conexionbase->cargacursor(query,"mycursor");
       
 		query.sprintf("DROP TABLE balancetemp");
-		fprintf(stderr,"%s\n",query.latin1());
+		fprintf(stderr,"%s\n",query.ascii());
 		conexionbase->ejecuta(query);
       conexionbase->commit();
 
@@ -346,21 +346,21 @@ void balanceview::presentar() {
       j=0;
       while (!cursorapt->eof()) {
          // Acumulamos los totales para al final poder escribirlos
-         tsaldoant += atof(cursorapt->valor("asaldo").latin1());
-         tsaldo += atof(cursorapt->valor("tsaldo").latin1());
-         tdebe += atof(cursorapt->valor("tdebe").latin1());
-         thaber += atof(cursorapt->valor("thaber").latin1());
+         tsaldoant += atof(cursorapt->valor("asaldo").ascii());
+         tsaldo += atof(cursorapt->valor("tsaldo").ascii());
+         tdebe += atof(cursorapt->valor("tdebe").ascii());
+         thaber += atof(cursorapt->valor("thaber").ascii());
       
          // Hacemos la insercion de los campos en la tabla.
          listado->setText(j,CUENTA,cursorapt->valor("codigo"));
          listado->setText(j,DENOMINACION,cursorapt->valor("descripcion"));
-         listado->setText(j,SALDO_ANT,QString::number(atof(cursorapt->valor("asaldo").latin1()),'f',2));
-         listado->setText(j,DEBE,QString::number(atof(cursorapt->valor("tdebe").latin1()),'f',2));
-         listado->setText(j,HABER,QString::number(atof(cursorapt->valor("thaber").latin1()),'f',2));
-         listado->setText(j,SALDO,QString::number(atof(cursorapt->valor("tsaldo").latin1()),'f',2));
-         listado->setText(j, DEBEEJ,QString::number(atof(cursorapt->valor("debe").latin1()),'f',2));
-         listado->setText(j, HABEREJ,QString::number(atof(cursorapt->valor("haber").latin1()),'f',2));
-         listado->setText(j, SALDOEJ,QString::number(atof(cursorapt->valor("saldo").latin1()),'f',2));
+         listado->setText(j,SALDO_ANT,QString::number(atof(cursorapt->valor("asaldo").ascii()),'f',2));
+         listado->setText(j,DEBE,QString::number(atof(cursorapt->valor("tdebe").ascii()),'f',2));
+         listado->setText(j,HABER,QString::number(atof(cursorapt->valor("thaber").ascii()),'f',2));
+         listado->setText(j,SALDO,QString::number(atof(cursorapt->valor("tsaldo").ascii()),'f',2));
+         listado->setText(j, DEBEEJ,QString::number(atof(cursorapt->valor("debe").ascii()),'f',2));
+         listado->setText(j, HABEREJ,QString::number(atof(cursorapt->valor("haber").ascii()),'f',2));
+         listado->setText(j, SALDOEJ,QString::number(atof(cursorapt->valor("saldo").ascii()),'f',2));
 
 
          // Ponemos los iconos para que la cosa parezca mas guay.

@@ -78,7 +78,7 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button,const QPoint &
   fprintf(stderr,"Se ha hecho doble click sobre la tabla\n");
   // Dependiendo del modo hacemos una cosa u otra
   if (modo == 0) {
-     string idmpatrimonial = tabla->text(row,0).latin1();
+     string idmpatrimonial = tabla->text(row,0).ascii();
      // Creamos el objeto mpatrimonialview, y lo lanzamos.
      mpatrimonialview *masa=new mpatrimonialview(this,0);
      masa->inicializa(conexionbase);
@@ -88,8 +88,8 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button,const QPoint &
      // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
      inicializatabla();
    } else {
-      idmasa = tabla->text(tabla->currentRow(),0).latin1();
-      nommasa = tabla->text(tabla->currentRow(),1).latin1();
+      idmasa = tabla->text(tabla->currentRow(),0).ascii();
+      nommasa = tabla->text(tabla->currentRow(),1).ascii();
       close();
    }// end if  
    
@@ -110,7 +110,7 @@ void mpatrimonialesview::editarmasa() {
 void mpatrimonialesview::borrarmasa() {
    int row;
 	row = tabla->currentRow();
-   idmasa = tabla->text(tabla->currentRow(),0).latin1();
+   idmasa = tabla->text(tabla->currentRow(),0).ascii();
    QString query;
    query.sprintf("DELETE FROM compmasap WHERE idmpatrimonial   = %s",idmasa.c_str());
    conexionbase->begin();

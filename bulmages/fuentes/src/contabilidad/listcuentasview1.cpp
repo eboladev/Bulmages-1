@@ -66,13 +66,13 @@ int listcuentasview1::inicializa(postgresiface2 *conn ) {
     //   cursoraux1->ultimoregistro();
 
     while (!cursoraux1->eof()) {
-        padre = atoi( cursoraux1->valor("padre").latin1());
-        idcuenta1 = atoi( cursoraux1->valor("idcuenta").latin1());
+        padre = atoi( cursoraux1->valor("padre").ascii());
+        idcuenta1 = atoi( cursoraux1->valor("idcuenta").ascii());
         it =new QListViewItem(ListView1);
         Lista[idcuenta1]=it;
         it->setText(ccuenta, cursoraux1->valor("codigo"));
         it->setText(cdesccuenta,cursoraux1->valor("descripcion"));
-        idcuenta = atoi(cursoraux1->valor("idcuenta").latin1());
+        idcuenta = atoi(cursoraux1->valor("idcuenta").ascii());
         it->setText(cidcuenta,cursoraux1->valor("idcuenta"));
         it->setText(cbloqueada,cursoraux1->valor(5));
         it->setText(cnodebe,cursoraux1->valor(10));
@@ -104,8 +104,8 @@ int listcuentasview1::inicializa(postgresiface2 *conn ) {
 	 conexionbase->commit();
     //   cursoraux1->ultimoregistro();
     while (!cursoraux2->eof()) {
-        padre = atoi(cursoraux2->valor(4).latin1());
-        idcuenta1 = atoi(cursoraux2->valor(0).latin1());
+        padre = atoi(cursoraux2->valor(4).ascii());
+        idcuenta1 = atoi(cursoraux2->valor(0).ascii());
 		  fprintf(stderr,"Cuentas de subnivel:%d",padre);
         if (padre != 0) {
             it = new QListViewItem(Lista[padre]);
@@ -113,7 +113,7 @@ int listcuentasview1::inicializa(postgresiface2 *conn ) {
 
             it->setText(ccuenta,cursoraux2->valor("codigo"));
             it->setText(cdesccuenta, cursoraux2->valor("descripcion"));
-            idcuenta = atoi(cursoraux2->valor("idcuenta").latin1());
+            idcuenta = atoi(cursoraux2->valor("idcuenta").ascii());
             it->setText(cidcuenta,cursoraux2->valor("idcuenta"));
             it->setText(cbloqueada,cursoraux2->valor(5));
             it->setText(cnodebe,cursoraux2->valor(10));
@@ -212,9 +212,9 @@ void listcuentasview1::arbolcuentas(QListViewItem *itempadre, int padre ) {
     while (!cursoraux->eof()) {
         it =new QListViewItem(itempadre);
         it->setText(cdesccuenta,cursoraux->valor(2));
-        idcuenta = atoi(cursoraux->valor(1).latin1());
+        idcuenta = atoi(cursoraux->valor(1).ascii());
         it->setText(ccuenta,cursoraux->valor(1));
-        it->setText(cidcuenta,cursoraux->valor(0).latin1());
+        it->setText(cidcuenta,cursoraux->valor(0).ascii());
         it->setText(cbloqueada,cursoraux->valor(5));
         it->setText(cnodebe,cursoraux->valor(10));
         it->setText(cnohaber,cursoraux->valor(11));
@@ -296,7 +296,7 @@ void listcuentasview1::listdblpulsada(QListViewItem *it) {
 	 
         cuentaview *nuevae = new cuentaview(0,"",true);
         nuevae->inicializa(conexionbase);
-        nuevae->cargacuenta(atoi(idcuenta.latin1()));
+        nuevae->cargacuenta(atoi(idcuenta.ascii()));
         nuevae->exec();
         inicializa(conexionbase);
         delete nuevae;
@@ -330,8 +330,8 @@ void listcuentasview1::nuevacuenta()  {
     cuentaview *nuevae = new cuentaview(0,0,true);
     nuevae->inicializa(conexionbase);
     it = ListView1->currentItem();
-    codigo = (string) it->text(ccuenta).latin1();
-    cadena = (string) it->text(cgrupo).latin1();
+    codigo = (string) it->text(ccuenta).ascii();
+    cadena = (string) it->text(cgrupo).ascii();
     idgrupo = atoi (cadena.c_str());
     nuevae->nuevacuenta((char *) codigo.c_str(),idgrupo);
     fprintf(stderr,"Llamamos a cuentaview\n");
@@ -368,7 +368,7 @@ void listcuentasview1::editarcuenta()  {
     idcuenta = it->text(cidcuenta);
     cuentaview *nuevae = new cuentaview(0,"",true);
     nuevae->inicializa(conexionbase);
-    nuevae->cargacuenta(atoi(idcuenta.latin1()));
+    nuevae->cargacuenta(atoi(idcuenta.ascii()));
     nuevae->exec();
     inicializa(conexionbase);
     // Para no perder el foco del elemento, al mismo tiempo que se
@@ -390,12 +390,12 @@ void listcuentasview1::borrarcuenta()  {
     int valor = QMessageBox::warning( 0, "Borrar Cuenta", "Se procedera a borrar la cuenta.", QMessageBox::Yes, QMessageBox::No);
     if (valor ==  QMessageBox::Yes) {
         it = ListView1->currentItem();
-        int idcuenta =atoi((char *) it->text(cidcuenta).latin1());
+        int idcuenta =atoi((char *) it->text(cidcuenta).ascii());
         conexionbase->begin();
         if (conexionbase->borrarcuenta(idcuenta) == 0) {
             QListViewItem *ot = it->itemAbove();
             if (ot)
-                idcuenta =atoi((char *) ot->text(cidcuenta).latin1());
+                idcuenta =atoi((char *) ot->text(cidcuenta).ascii());
             inicializa(conexionbase);
             QString cadena;;
 				cadena.sprintf("%d",idcuenta);
@@ -412,7 +412,7 @@ void listcuentasview1::borrarcuenta()  {
 
 void listcuentasview1::dbtabla(int row, int colummn, int button,const QPoint &mouse) {
     fprintf(stderr,"Se ha hecho doble click sobre la tabla\n");
-    string idcuenta = tablacuentas->text(row,2).latin1();
+    string idcuenta = tablacuentas->text(row,2).ascii();
     QListViewItem *it = ListView1->findItem(idcuenta.c_str(), cidcuenta, Qt::ExactMatch);
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);

@@ -149,17 +149,17 @@ int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
     abreempresaview *nuevae = new abreempresaview(0,"abrirempresa",true );
     nuevae->exec();
     retorno = nuevae->result();
-    nombre=(char *) nuevae->nombre.latin1();
-    contrasenya= (char *) nuevae->contrasena.latin1();
-    strcpy(nombredb,nuevae->empresabd.latin1());
+    nombre=(char *) nuevae->nombre.ascii();
+    contrasenya= (char *) nuevae->contrasena.ascii();
+    strcpy(nombredb,nuevae->empresabd.ascii());
     delete nuevae;
     */
     
     //salto el dialeg de login. Ja tinc el nom d'usuari, password i el nom de la base de dades.
-    nombre = (char *) User->latin1();
-    contrasenya = (char *) Passwd->latin1();
-    strcpy(nombredb,DB->latin1());
-    nombreDB = QString(DB->latin1()); //variable redundante nombreDB = nombredb 
+    nombre = (char *) User->ascii();
+    contrasenya = (char *) Passwd->ascii();
+    strcpy(nombredb,DB->ascii());
+    nombreDB = QString(DB->ascii()); //variable redundante nombreDB = nombredb 
             //nombredb es un vector[20] privado de caracteres de la clase empresa.
             //nombreDB es un QString publico de la clase empresa
     //fi del salt
@@ -173,7 +173,7 @@ int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
     metabase->begin();
     sprintf(query,"SELECT * FROM EMPRESA WHERE nombredb='%s'\n",nombredb);
     cursor2 *cursoraux = metabase->cargacursor(query,"cursorempresa");
-    sprintf(query,"SELECT * FROM EMPRESA WHERE nombre='%s' AND ano<%s ORDER BY ano DESC\n",cursoraux->valor("nombre").latin1(), cursoraux->valor("ano").latin1());
+    sprintf(query,"SELECT * FROM EMPRESA WHERE nombre='%s' AND ano<%s ORDER BY ano DESC\n",cursoraux->valor("nombre").ascii(), cursoraux->valor("ano").ascii());
     cursor2 *cursoraux2 = metabase->cargacursor(query,"cursorempresa1");
     if (!cursoraux2->eof()) {
        conexionanterior2 = new postgresiface2();
@@ -273,8 +273,8 @@ int empresa::cambiarempresa() {
   retorno = nuevae->result();
   fprintf(stderr,"cambiarempresa result:%d",retorno);
   if (retorno) {
-    nombre = (char *)nuevae->nombre.latin1();
-    contrasenya = (char *)nuevae->contrasena.latin1();
+    nombre = (char *)nuevae->nombre.ascii();
+    contrasenya = (char *)nuevae->contrasena.ascii();
     strcpy(nombredb,nuevae->empresabd);
     inicializa1(pWorkspace);
   }// end if
@@ -541,10 +541,10 @@ int empresa::guardarempresa() {
   int error;
   QString fn = QFileDialog::getSaveFileName(0, "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
   if (!fn.isEmpty()) {
-     fprintf(stderr,"Vamos a guardar la empresa en el fichero %s\n",fn.latin1());
+     fprintf(stderr,"Vamos a guardar la empresa en el fichero %s\n",fn.ascii());
      args[0]=nombredb;
      args[1]=nombredb;
-     args[2]=(char *) fn.latin1();
+     args[2]=(char *) fn.ascii();
      args[3]=NULL;
      if ((pid=fork()) < 0) {
        perror ("Fork failed");
@@ -573,7 +573,7 @@ int empresa::cargarempresa() {
   if (!fn.isEmpty()) {
      args[0]=nombredb;
      args[1]=nombredb;
-     args[2]=(char *) fn.latin1();
+     args[2]=(char *) fn.ascii();
      args[3]=NULL;
 //     defaultDB->close();
      // Para cargar la empresa debe estar sin ningun usuario dentro de ella.
@@ -622,7 +622,7 @@ int empresa::borrarempresa() {
   metabase->begin();
   sprintf(query,"SELECT * FROM EMPRESA WHERE nombredb='%s'\n",nombredb);
   cursoraux = metabase->cargacursor(query,"cursorempresa");
-  sprintf(query,"DELETE FROM usuario_empresa WHERE idempresa=%s\n",cursoraux->valor(0).latin1());
+  sprintf(query,"DELETE FROM usuario_empresa WHERE idempresa=%s\n",cursoraux->valor(0).ascii());
   metabase->ejecuta(query);
   sprintf(query,"DELETE FROM  empresa WHERE nombredb='%s'\n",nombredb);
   metabase->ejecuta(query);
@@ -660,7 +660,7 @@ void empresa::nuevoejercicio() {
     metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
     metabase->begin();
     query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",nombredb);
-    fprintf(stderr,"%s\n",query.latin1());
+    fprintf(stderr,"%s\n",query.ascii());
     cursor2 *cur = metabase->cargacursor(query,"empresa");
     if (!cur->eof()) {
        QString nnombre = cur->valor("nombre");
@@ -673,17 +673,17 @@ void empresa::nuevoejercicio() {
        QString nanodb2;
        nanodb2.setNum(inanodb,10);
        nnombredb += nanodb2;
-       query.sprintf("INSERT INTO EMPRESA ( nombre, nombredb, ano) VALUES ('%s','%s',%d)", nnombre.latin1(), nnombredb.latin1(), inanodb);
-       fprintf(stderr,"%s\n",query.latin1());
+       query.sprintf("INSERT INTO EMPRESA ( nombre, nombredb, ano) VALUES ('%s','%s',%d)", nnombre.ascii(), nnombredb.ascii(), inanodb);
+       fprintf(stderr,"%s\n",query.ascii());
        metabase->ejecuta(query);
 
        query.sprintf("SELECT last_value AS idempresa FROM empresa_idempresa_seq");
        cursor2 *cur2=metabase->cargacursor(query,"idempresa");
               
-       query.sprintf("SELECT * FROM usuario_empresa WHERE idempresa = %s", cur->valor("idempresa").latin1());
+       query.sprintf("SELECT * FROM usuario_empresa WHERE idempresa = %s", cur->valor("idempresa").ascii());
        cursor2 *cur1=metabase->cargacursor(query,"us_emp");
        while (!cur1->eof()) {
-          query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES (%s,%s,%s)", cur1->valor("idusuario").latin1(), cur2->valor("idempresa").latin1(), cur1->valor("permisos").latin1());
+          query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES (%s,%s,%s)", cur1->valor("idusuario").ascii(), cur2->valor("idempresa").ascii(), cur1->valor("permisos").ascii());
           metabase->ejecuta(query);
           cur1->siguienteregistro();
        }// end whiel
@@ -708,8 +708,8 @@ void empresa::nuevoejercicio() {
        }// end if
 
        // Cargamos la empresa guardada
-       args[0]=(char *)nnombredb.latin1();
-       args[1]=(char *)nnombredb.latin1();
+       args[0]=(char *)nnombredb.ascii();
+       args[1]=(char *)nnombredb.ascii();
        args[2]="/tmp/bulmacop.pgdump";
        args[3]=NULL;
   //     defaultDB->close();
@@ -725,7 +725,7 @@ void empresa::nuevoejercicio() {
           waitpid (pid, NULL, 0);
        }// end if
 
-       strcpy(nombredb,nnombredb.latin1());
+       strcpy(nombredb,nnombredb.ascii());
     }// end if
     delete cur;
     metabase->commit();

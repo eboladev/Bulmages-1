@@ -141,7 +141,7 @@ void Splash::paint() {
 //   cad.sprintf("%s <FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>",cad.utf8());
    cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";
   }// end if
-//   cad.sprintf("%s %s",cad.latin1(),mensajes[a].utf8());
+//   cad.sprintf("%s %s",cad.ascii(),mensajes[a].utf8());
    cad= cad+" "+mensajes[a];
   if(a >9) a=0;
   a++;

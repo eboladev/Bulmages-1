@@ -148,7 +148,7 @@ void balance1view::cargacostes() {
    int i=1;
    while (!cursorcoste->eof()) {
       combocoste->insertItem(cursorcoste->valor(2),-1);
-      ccostes[i++] = atoi(cursorcoste->valor(0).latin1());
+      ccostes[i++] = atoi(cursorcoste->valor(0).ascii());
       cursorcoste->siguienteregistro();
    }// end while
    delete cursorcoste;
@@ -186,7 +186,7 @@ void balance1view::boton_extracto1(int tipo) {
 				fecha2.setYMD(fechaact.year(), 12, 31);
 			break;
 		}// end switch
- //     extracto->inicializa1((char *)codigoinicial->text().latin1(),(char *)codigofinal->text().latin1() ,(char *) fecha1.toString("dd/MM/yyyy").latin1(),(char *)fecha2.toString("dd/MM/yyyy").latin1(),  ccostes[combocoste->currentItem()]);
+ //     extracto->inicializa1((char *)codigoinicial->text().ascii(),(char *)codigofinal->text().ascii() ,(char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *)fecha2.toString("dd/MM/yyyy").ascii(),  ccostes[combocoste->currentItem()]);
  		  extracto->inicializa1( listado->currentItem()->text(CUENTA),  listado->currentItem()->text(CUENTA), fecha1.toString("dd/MM/yyyy"),fecha2.toString("dd/MM/yyyy"),  ccostes[combocoste->currentItem()]);
    }// end if
    extracto->accept();
@@ -272,7 +272,7 @@ void balance1view::presentar() {
 
       // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
 		// Causar problemas con el motor de base de datos.
-		query.sprintf( "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.latin1(), ffinal.latin1(), finicial.latin1() );
+		query.sprintf( "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
       conexionbase->begin();
       conexionbase->ejecuta(query);
       conexionbase->commit();
@@ -287,13 +287,13 @@ void balance1view::presentar() {
 
       // Vamos a implementar el tema del código
       if (cinicial != "") {
-         query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'",cinicial.latin1());
+         query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'",cinicial.ascii());
          conexionbase->begin();
          conexionbase->ejecuta(query);
          conexionbase->commit();
       }// end if
       if (cfinal != "") {
-         query.sprintf("DELETE FROM balancetemp WHERE codigo > '%s'",cfinal.latin1());
+         query.sprintf("DELETE FROM balancetemp WHERE codigo > '%s'",cfinal.ascii());
          conexionbase->begin();
          conexionbase->ejecuta(query);
          conexionbase->commit();
@@ -322,12 +322,12 @@ void balance1view::presentar() {
 		cursorapt = conexionbase->cargacursor(query,"Balance1view");
       conexionbase->commit();
 		while (!cursorapt->eof())  {
-         query.sprintf("SELECT * FROM balancetemp WHERE idcuenta=%s",cursorapt->valor("idcuenta").latin1());
+         query.sprintf("SELECT * FROM balancetemp WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
          conexionbase->begin();
          cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
          conexionbase->commit();
          if (!mycur->eof()) {
-            query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").latin1()), atof(mycur->valor("tdebe").latin1()), atof(mycur->valor("thaber").latin1()),atof(mycur->valor("asaldo").latin1()),  atoi(mycur->valor("padre").latin1()));
+            query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
    //			fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
    		 	conexionbase->begin();
             conexionbase->ejecuta(query);
@@ -354,7 +354,7 @@ void balance1view::presentar() {
       listado->clear();
       while (!cursorapt->eof()) {
          QString padre1 = cursorapt->valor("padre");
-         fprintf(stderr,"buscamos el item: %s\n", padre1.latin1());
+         fprintf(stderr,"buscamos el item: %s\n", padre1.ascii());
          QListViewItem *padre = listado->findItem(padre1, IDCUENTA, CaseSensitive);
 
          // Si hemos encontrado el padre de la lista lo ponemos, si no lo hemos encontrado no lo ponemos.
@@ -363,13 +363,13 @@ void balance1view::presentar() {
          } else {
             it = new QListViewItem1(listado);
          }// end if
-         it->setTipo(atoi(cursorapt->valor("nivel").latin1()));
+         it->setTipo(atoi(cursorapt->valor("nivel").ascii()));
                         
          // Acumulamos los totales para al final poder escribirlos
-         tsaldoant += atof(cursorapt->valor("asaldo").latin1());
-         tsaldo += atof(cursorapt->valor("tsaldo").latin1());
-         tdebe += atof(cursorapt->valor("tdebe").latin1());
-         thaber += atof(cursorapt->valor("thaber").latin1());
+         tsaldoant += atof(cursorapt->valor("asaldo").ascii());
+         tsaldo += atof(cursorapt->valor("tsaldo").ascii());
+         tdebe += atof(cursorapt->valor("tdebe").ascii());
+         thaber += atof(cursorapt->valor("thaber").ascii());
 
          it->setText(CUENTA, cursorapt->valor("codigo"));
          if (cursorapt->valor("tipocuenta") == "1") 
@@ -492,7 +492,7 @@ void balance1view::boton_buscacuentafinal() {
 
 
 void balance1view::nivelactivated(int nivel) {
-   int nivel1 = atoi(combonivel->text(nivel).latin1());
+   int nivel1 = atoi(combonivel->text(nivel).ascii());
    fprintf(stderr,"CAmbio de nivel %d\n", nivel);
    nivelactivated1(nivel1, listado->firstChild());
 }// end nivelactivated
@@ -500,8 +500,8 @@ void balance1view::nivelactivated(int nivel) {
 
 void balance1view::nivelactivated1 (int nivel, QListViewItem *ot) {
    if (ot) {
-      fprintf(stderr,"Calculo de nivel para la cuenta %s\n", ot->text(CUENTA).latin1());
-     if (atoi(ot->text(NIVEL).latin1()) <= nivel) {
+      fprintf(stderr,"Calculo de nivel para la cuenta %s\n", ot->text(CUENTA).ascii());
+     if (atoi(ot->text(NIVEL).ascii()) <= nivel) {
         ot->setOpen(true);
         ot->setVisible(true);
      } else {

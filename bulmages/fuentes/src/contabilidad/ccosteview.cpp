@@ -39,7 +39,7 @@ void ccosteview::pintar() {
   combocoste->clear();
   while (!cursorcoste->eof()) {
     combocoste->insertItem(cursorcoste->valor(2), -1);
-    ccostes[i++] = atoi (cursorcoste->valor(0).latin1());
+    ccostes[i++] = atoi (cursorcoste->valor(0).ascii());
     cursorcoste->siguienteregistro();
   }// end while
   delete cursorcoste;
@@ -88,7 +88,7 @@ void ccosteview::boton_guardar() {
   QString nom = nomcentro->text();
   QString desc = desccoste->text();
   QString query;
-  query.sprintf ("UPDATE c_coste SET nombre='%s', descripcion='%s' WHERE idc_coste=%d",nom.latin1(), desc.latin1(), idc_coste);
+  query.sprintf ("UPDATE c_coste SET nombre='%s', descripcion='%s' WHERE idc_coste=%d",nom.ascii(), desc.ascii(), idc_coste);
   conexionbase->begin();
   conexionbase->ejecuta(query);
   conexionbase->commit();
@@ -104,7 +104,7 @@ void ccosteview::boton_nuevo() {
   conexionbase->ejecuta(query);
   query.sprintf("SELECT MAX(idc_coste) AS id_coste FROM c_coste");
   cursor2 *cur = conexionbase->cargacursor(query,"queryy");
-  idc_coste= atoi(cur->valor("id_coste").latin1());
+  idc_coste= atoi(cur->valor("id_coste").ascii());
   delete cur;
   conexionbase->commit();
   pintar();

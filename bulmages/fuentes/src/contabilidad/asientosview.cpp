@@ -51,7 +51,7 @@ asientosview::~asientosview(){
 
 void asientosview::pulsado(int a, int b, int c,const QPoint &punto) {
   int idasiento;
-  idasiento = atoi(tablaasientos->text(a,COL_IDASIENTO).latin1());
+  idasiento = atoi(tablaasientos->text(a,COL_IDASIENTO).ascii());
   introapunts->cargarcursor(idasiento);
   introapunts->muestraasiento(idasiento);
   introapunts->show();
@@ -68,9 +68,9 @@ void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
    conexionbase = conn;
    // Hacemos que tengan los dos el mismo filtro asi son compatibles uno con otro.
    filt = inta->filt;
-   string cantapunt = filt->cantidadapunte->text().latin1();
-   string saldototal = filt->saldoasiento->text().latin1();
-   string nombreasiento = filt->nombreasiento->text().latin1();
+   string cantapunt = filt->cantidadapunte->text().ascii();
+   string saldototal = filt->saldoasiento->text().ascii();
+   string nombreasiento = filt->nombreasiento->text().ascii();
    string query;
    string cadwhere;
    string textsaldototal = "";
@@ -109,7 +109,7 @@ void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     tablaasientos->setText(i,COL_FECHA,cursoraux->valor("fecha").mid(0,10));
     tablaasientos->setText(i,COL_DEBE,cursoraux->valor("totaldebe"));
     tablaasientos->setText(i,COL_HABER,cursoraux->valor("totalhaber"));
-    if (atoi(cursoraux->valor("totaldebe").latin1()) == atoi(cursoraux->valor("totalhaber").latin1()) ) {
+    if (atoi(cursoraux->valor("totaldebe").ascii()) == atoi(cursoraux->valor("totalhaber").ascii()) ) {
       tablaasientos->setText(i,COL_CERRADO,tr("Si"));
     } else {
       tablaasientos->setText(i,COL_CERRADO,tr("No"));
@@ -130,6 +130,6 @@ void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
 void asientosview::boton_filtrar() {
 //   char *cadena;
    filt->exec();
-//   cadena = (char *) filt->cantidadapunte->text().latin1();
+//   cadena = (char *) filt->cantidadapunte->text().ascii();
    inicializa(conexionbase, introapunts);
 }// end boton_filtrar

@@ -26,14 +26,14 @@ correctorwidget::~correctorwidget() {
 }
 
 void correctorwidget::link(const QString &linker) {
-	fprintf(stderr,"Link Pulsado: %s\n", linker.latin1());
+	fprintf(stderr,"Link Pulsado: %s\n", linker.ascii());
 }// end link
 
 
 // Esta función se encarga de procesar las pulsaciones sobre el QTextBrowser, para
 // Saber de que va la cosa.
 void correctorwidget::alink(const QString &linker, const QString &l) {
-	fprintf(stderr,"Anchor pulsado: %s, %s\n", linker.latin1(), l.latin1());
+	fprintf(stderr,"Anchor pulsado: %s, %s\n", linker.ascii(), l.ascii());
 	if (linker == "ver") {
 		empresaactual->muestracuentas();
 	} else if (linker== "asiento") {
@@ -85,14 +85,14 @@ void correctorwidget::corregir() {
 	// Calculo de asientos abiertos
 	QString query;
 	query.sprintf("SELECT * FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS borr ON borr.idasiento=asiento.idasiento LEFT JOIN (SELECT count(idapunte) AS numap, idasiento  FROM apunte GROUP BY idasiento) AS apunt ON apunt.idasiento=asiento.idasiento WHERE apunt.numap <> borr.numborr OR numap ISNULL");
-	fprintf(stderr,"%s\n",query.latin1());
+	fprintf(stderr,"%s\n",query.ascii());
 	conexionbase->begin();
 	cur = conexionbase->cargacursor(query,"hola");
 	conexionbase->commit();
 	while (!cur->eof()) {
 		QString cadena;
-		cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> está abierto, esto causa que el asiento no modifique el estado de las cuentas.</FONT>", cur->valor("ordenasiento").latin1());
-		agregarError(cadena, "asiento",cur->valor("idasiento").latin1());
+		cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> está abierto, esto causa que el asiento no modifique el estado de las cuentas.</FONT>", cur->valor("ordenasiento").ascii());
+		agregarError(cadena, "asiento",cur->valor("idasiento").ascii());
 		cur->siguienteregistro();
 	}// end while
 	delete(cur);
@@ -100,14 +100,14 @@ void correctorwidget::corregir() {
 	// Calculo de inserción en cuentas intermedias (con hijos)
 	//--------------------------------------------------------
 	query.sprintf("SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.idcuenta IN (SELECT padre FROM cuenta) AND apunte.idasiento=asiento.idasiento");
-		fprintf(stderr,"%s\n",query.latin1());
+		fprintf(stderr,"%s\n",query.ascii());
 	conexionbase->begin();
 	cur = conexionbase->cargacursor(query,"hola");
 	conexionbase->commit();
 	while (!cur->eof()) {
 		QString cadena;
-		cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene un apunte con la cuenta <B>%s</B> no hija..</FONT>", cur->valor("ordenasiento").latin1(), cur->valor("codigo").latin1());
-		agregarError(cadena, "asiento",cur->valor("idasiento").latin1());
+		cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene un apunte con la cuenta <B>%s</B> no hija..</FONT>", cur->valor("ordenasiento").ascii(), cur->valor("codigo").ascii());
+		agregarError(cadena, "asiento",cur->valor("idasiento").ascii());
 		cur->siguienteregistro();
 	}// end while
 	delete(cur);
@@ -133,8 +133,8 @@ query += " ORDER BY ordenasiento";
 		net = cur->valor("netos").toFloat();
 	if (-act-gas-pas-net+ing>0.01) {
 			QString cadena;
-			cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> no cumple la ecuación fundamental.%2.2f+%2.2f=%2.2f+%2.2f+%2.2f</FONT>", cur->valor("ordenasiento").latin1(), act,gas,pas,net,ing);
-			agregarError(cadena, "asiento",cur->valor("idasiento").latin1());
+			cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> no cumple la ecuación fundamental.%2.2f+%2.2f=%2.2f+%2.2f+%2.2f</FONT>", cur->valor("ordenasiento").ascii(), act,gas,pas,net,ing);
+			agregarError(cadena, "asiento",cur->valor("idasiento").ascii());
 	}// end if
 		cur->siguienteregistro();
 	}// end while
@@ -143,14 +143,14 @@ query += " ORDER BY ordenasiento";
 		// Calculo de cuentas con insercion en el debe que lo tienen bloqueado
 	//-----------------------------------------------------------------------
 	query.sprintf("SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.nodebe AND apunte.idasiento=asiento.idasiento AND apunte.debe <> 0");
-		fprintf(stderr,"%s\n",query.latin1());
+		fprintf(stderr,"%s\n",query.ascii());
 	conexionbase->begin();
 	cur = conexionbase->cargacursor(query,"hola1");
 	conexionbase->commit();
 	while (!cur->eof()) {
 		QString cadena;
-		cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene una inserción en el debe de la cuenta <B>%s</B> que no permite inserciones en el debe de dicha cuenta.</FONT>", cur->valor("ordenasiento").latin1(), cur->valor("codigo").latin1());
-		agregarError(cadena, "asiento",cur->valor("idasiento").latin1());
+		cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene una inserción en el debe de la cuenta <B>%s</B> que no permite inserciones en el debe de dicha cuenta.</FONT>", cur->valor("ordenasiento").ascii(), cur->valor("codigo").ascii());
+		agregarError(cadena, "asiento",cur->valor("idasiento").ascii());
 		cur->siguienteregistro();
 	}// end while
 	delete(cur);
@@ -164,8 +164,8 @@ query += " ORDER BY ordenasiento";
 	conexionbase->commit();
 	while (!cur->eof()) {
 		QString cadena;
-		cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene una inserción en el haber de la cuenta <B>%s</B> que no permite inserciones en el haber de dicha cuenta.</FONT>", cur->valor("ordenasiento").latin1(), cur->valor("codigo").latin1());
-		agregarError(cadena, "asiento",cur->valor("idasiento").latin1());
+		cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene una inserción en el haber de la cuenta <B>%s</B> que no permite inserciones en el haber de dicha cuenta.</FONT>", cur->valor("ordenasiento").ascii(), cur->valor("codigo").ascii());
+		agregarError(cadena, "asiento",cur->valor("idasiento").ascii());
 		cur->siguienteregistro();
 	}// end while
 	delete(cur);

@@ -37,7 +37,7 @@ void canalview::pintar() {
   combocanal->clear();
   while (!cursorcanal->eof()) {
     combocanal->insertItem(cursorcanal->valor(2), -1);
-    canales[i++] = atoi (cursorcanal->valor(0).latin1());
+    canales[i++] = atoi (cursorcanal->valor(0).ascii());
     cursorcanal->siguienteregistro();
   }// end while
   delete cursorcanal;
@@ -90,7 +90,7 @@ void canalview::boton_guardar() {
   QString nom = nomcanal->text();
   QString desc = desccanal->text();
   QString query;
-  query.sprintf ("UPDATE canal SET nombre='%s', descripcion='%s' WHERE idcanal=%d",nom.latin1(), desc.latin1(), idcanal);
+  query.sprintf ("UPDATE canal SET nombre='%s', descripcion='%s' WHERE idcanal=%d",nom.ascii(), desc.ascii(), idcanal);
   conexionbase->begin();
   conexionbase->ejecuta(query);
   conexionbase->commit();
@@ -105,7 +105,7 @@ void canalview::boton_nuevo() {
   conexionbase->ejecuta(query);
   query.sprintf("SELECT MAX(idcanal) AS id FROM canal");
   cursor2 *cur = conexionbase->cargacursor(query,"queryy");
-  idcanal= atoi(cur->valor("id").latin1());
+  idcanal= atoi(cur->valor("id").ascii());
   delete cur;
   conexionbase->commit();
   pintar();

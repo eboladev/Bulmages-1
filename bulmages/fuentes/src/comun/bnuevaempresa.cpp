@@ -44,11 +44,11 @@ void BNuevaEmpresa::accept()
    QString query;
    cursor2 *cursoraux;
    conexionbase->begin();
-   query.sprintf("INSERT INTO  empresa (nombre, ano, nombredb) VALUES('%s',%d,'%s')",nombreEmp.latin1(),ejercicio,nombredb.latin1());
+   query.sprintf("INSERT INTO  empresa (nombre, ano, nombredb) VALUES('%s',%d,'%s')",nombreEmp.ascii(),ejercicio,nombredb.ascii());
    conexionbase->ejecuta(query);
    // Agregamos el SUPERUSUARIO "BULMAGES" en la nueva empresa.
    //Los demas usuarios tendran que ser entrados manualmente por el SUPERUSUARIO.
-   query.sprintf("SELECT idempresa from empresa where nombredb='%s'",nombredb.latin1());
+   query.sprintf("SELECT idempresa from empresa where nombredb='%s'",nombredb.ascii());
    cursoraux = conexionbase->cargacursor(query,"cursoraux");
    int idempresa = cursoraux->valor(0).toInt();
    query.sprintf("SELECT idusuario from usuario where login='bulmages'");
