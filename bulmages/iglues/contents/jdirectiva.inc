@@ -13,7 +13,7 @@ $body = '
 <LI> Secretario: <b>Cristina Marco Hernández</b><br>Correo: <i>secretario at iglues.org</i><br></LI>
 
 <LI> Tesorero: <b>Tomeu Borrás Riera</b><br>Correo: <i>tesorero at iglues.org</i><br> </LI>
-<LI> Vocales: <b>Joan Miquel Torres, Santiago Capel, Laura Edo, Pablo Braulio, Josep Maria Estopà</b></LI>
+<LI> Vocales: <b>Santiago Capel, Laura Edo, Pablo Braulio, Josep Maria Estopà</b></LI>
 
 </OL>
 

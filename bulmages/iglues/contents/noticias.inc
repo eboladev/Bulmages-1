@@ -10,6 +10,19 @@ $body = '
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
 <td width=100>11/11/2004</td>
+<td><center><b>Reunión Junta Directiva domingo 21 de noviembre</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Se convoca reunión de la Junta Directiva para el próximo domingo 21 de noviembre a las 17:00 horas en primera convocatoria y a las 17:30 en segunda convocatoria. La reunión tratará de formalizar las responsabilidades y trazar objetivos. Podeis ver el correo de la convocatoria en la <A href="http://llistes.bulma.net/pipermail/bulmages/2004-November/001401.html">lista</A>. Sólo recordar que que por decisión en Asamblea General todos los socios son vocales de la Junta.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
+<td width=100>11/11/2004</td>
 <td><center><b>IGLUES: Somos asociación con todas las de la Ley</b></center></td>
 </tr>
 <tr>
