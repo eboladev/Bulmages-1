@@ -35,6 +35,15 @@ el código.</P>
 <br>
 </td>
 </tr>
+<tr>
+<td>
+<A HREF="./documentos/guia_de_estilo.pdf" TARGET="nueva">Guia de Estilo para Desarrollo de BulmaGés</A><BR>
+<P>Directivas para homogeneizar el código desarrollado en BulmaGés.</P>
+
+<br>
+</td>
+</tr>
+
 </table>
 
 '; 
