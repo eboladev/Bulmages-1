@@ -64,7 +64,8 @@ CREATE TABLE empresa (
     nombre character varying(50),
     ano character varying(10),
     nombredb character varying(15),
-    "password" character varying(15)
+    "password" character varying(15),
+    ejant character varying(15)
 );
 
 
