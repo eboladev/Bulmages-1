@@ -65,6 +65,7 @@ CREATE TABLE proveedor (
 #include "providerslist.h"
 #include <qtable.h>
 #include "company.h"
+#include "provedit.h"
 
 #define COL_IDPROVEEDOR 0
 #define COL_NOMPROVEEDOR 1
@@ -150,4 +151,9 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
 providerslist::~providerslist() {
 }// end ~providerslist
 
-
+void providerslist::dobleclick(int a, int b, int c, const QPoint &d) {
+fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
+   provedit *prov = new provedit(0,theApp->translate("Edicion de Proveedores", "company"));
+   prov->exec();
+   delete prov;
+}
