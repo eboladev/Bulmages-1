@@ -359,40 +359,46 @@ void diarioview1::presentar() {
       totalhaber1+=haber;
       codigocuenta = cursoraux->valor("codigo");
       nomcuenta = cursoraux->valor("descripcion");
-      // Sacamos el centro de coste
-      QString query1;
-      query1 = "SELECT * FROM c_coste WHERE idc_coste=" + cursoraux->valor("idc_coste");
-      conexionbase->begin();
-      cursorcoste=conexionbase->cargacursor(query1,"ccoste");
-      conexionbase->commit();
-      if (!cursorcoste->eof()) {
-        listado->setItem(i,COL_CCOSTE, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
-        listado->setText(i,COL_CCOSTE,cursorcoste->valor("nombre"));
+      // Sacamos el centro de coste si existe.
+      if (cursoraux->valor("idc_coste") != "") {
+         QString query1;
+         query1 = "SELECT * FROM c_coste WHERE idc_coste=" + cursoraux->valor("idc_coste");
+         conexionbase->begin();
+         cursorcoste=conexionbase->cargacursor(query1,"ccoste");
+         conexionbase->commit();
+         if (!cursorcoste->eof()) {
+         listado->setItem(i,COL_CCOSTE, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
+         listado->setText(i,COL_CCOSTE,cursorcoste->valor("nombre"));
+         }// end if
+         delete cursorcoste;
       }// end if
-      delete cursorcoste;
 
-      // Sacamos el canal
-      QString query2 = "SELECT * FROM canal WHERE idcanal=" + cursoraux->valor("idcanal");
-      conexionbase->begin();
-      cursorcanal=conexionbase->cargacursor(query2,"canal");
-      conexionbase->commit();
-      if (!cursorcanal->eof()) {
-        listado->setItem(i,COL_CANAL, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
-        listado->setText(i,COL_CANAL,cursorcanal->valor("nombre"));
+      // Sacamos el canal si existe
+      if (cursoraux->valor("idcanal") != "") {
+         QString query2 = "SELECT * FROM canal WHERE idcanal=" + cursoraux->valor("idcanal");
+         conexionbase->begin();
+         cursorcanal=conexionbase->cargacursor(query2,"canal");
+         conexionbase->commit();
+         if (!cursorcanal->eof()) {
+         listado->setItem(i,COL_CANAL, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
+         listado->setText(i,COL_CANAL,cursorcanal->valor("nombre"));
+         }// end if
+         delete cursorcanal;
       }// end if
-      delete cursorcanal;
 
-       // Sacamos la contrapartida
-       QString querycontrapartida;
-       querycontrapartida.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursoraux->valor("contrapartida").ascii());
-       conexionbase->begin();
-       cursoraux1=conexionbase->cargacursor(querycontrapartida,"contrapartida");
-       conexionbase->commit();
-       if (!cursoraux1->eof()) {
-         listado->setItem(i,COL_CONTRAPARTIDA, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
-         listado->setText(i,COL_CONTRAPARTIDA,cursoraux1->valor("codigo"));
+       // Sacamos la contrapartida si existe.
+       if (cursoraux->valor("contrapartida") != "") {
+         QString querycontrapartida;
+         querycontrapartida.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursoraux->valor("contrapartida").ascii());
+         conexionbase->begin();
+         cursoraux1=conexionbase->cargacursor(querycontrapartida,"contrapartida");
+         conexionbase->commit();
+         if (!cursoraux1->eof()) {
+            listado->setItem(i,COL_CONTRAPARTIDA, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
+            listado->setText(i,COL_CONTRAPARTIDA,cursoraux1->valor("codigo"));
+         }// end if
+         delete cursoraux1;
        }// end if
-       delete cursoraux1;
 
                                                                 
       // Insercion de listados.

@@ -12,6 +12,7 @@
 #include "funcaux.h"
 #include "aplinteligentesview.h"
 #include <qpushbutton.h>
+#include <qradiobutton.h>
 
 
 #define COL_FECHA                  0
@@ -207,25 +208,106 @@ void amortizacionview::calculaamortizacion() {
    QDate f1cuota = normalizafecha(fecha1cuota->text());
    int ncuotas = numcuotas->text().toInt();
    QString periodicidadtxt = periodicidad->currentText();
-   table1->setNumRows(ncuotas);
-   double valcuota = valorcompra->text().toDouble() / ncuotas;
+   double valcuota;
    QString valcuotastr ;
-   valcuotastr.sprintf("%10.2f",valcuota);
-   for (int i = 0; i<ncuotas; i++) {
-      fprintf(stderr,"calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").ascii());
-      table1->setText(i,0,f1cuota.toString("dd/MM/yyyy"));
-      table1->setText(i,1,valcuotastr);
-      // Dependiendo de la periodicidad actualizamos la fecha.
-      if (periodicidadtxt == tr("Anual")) {
-         f1cuota = f1cuota.addYears(1);
-      } else if (periodicidadtxt == tr("Mensual")) {
-         f1cuota = f1cuota.addMonths(1);
-      } else if (periodicidadtxt == tr("Semestral")) {
-         f1cuota = f1cuota.addMonths(6);
-      } else if (periodicidadtxt == tr("Trimestral")) {
-         f1cuota = f1cuota.addMonths(3);
-      }// end if
-   }// end for
+   table1->setNumRows(ncuotas);
+   
+   
+   // Si usamos el método lineal:
+   if (metodolineal->isChecked()) {
+      valcuota = valorcompra->text().toDouble() / ncuotas;
+      valcuotastr.sprintf("%10.2f",valcuota);
+      for (int i = 0; i<ncuotas; i++) {
+         fprintf(stderr,"calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").ascii());
+         table1->setText(i,0,f1cuota.toString("dd/MM/yyyy"));
+         table1->setText(i,1,valcuotastr);
+         // Dependiendo de la periodicidad actualizamos la fecha.
+         if (periodicidadtxt == tr("Anual")) {
+            f1cuota = f1cuota.addYears(1);
+         } else if (periodicidadtxt == tr("Mensual")) {
+            f1cuota = f1cuota.addMonths(1);
+         } else if (periodicidadtxt == tr("Semestral")) {
+            f1cuota = f1cuota.addMonths(6);
+         } else if (periodicidadtxt == tr("Trimestral")) {
+            f1cuota = f1cuota.addMonths(3);
+         }// end if
+      }// end for
+   } else if (metodoincremental->isChecked()) {
+      // El metodo de amortizacion es el incremental.
+      double total=0;
+      for (int j=1;j<=ncuotas;j++) {
+         total = total+j;
+      }// end for
+      for (int i=1; i<=ncuotas; i++) {
+         valcuota = valorcompra->text().toDouble()*i/total;
+         valcuotastr.sprintf("%10.2f",valcuota);
+         fprintf(stderr,"calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").ascii());
+         table1->setText(i-1,0,f1cuota.toString("dd/MM/yyyy"));
+         table1->setText(i-1,1,valcuotastr);
+         // Dependiendo de la periodicidad actualizamos la fecha.
+         if (periodicidadtxt == tr("Anual")) {
+            f1cuota = f1cuota.addYears(1);
+         } else if (periodicidadtxt == tr("Mensual")) {
+            f1cuota = f1cuota.addMonths(1);
+         } else if (periodicidadtxt == tr("Semestral")) {
+            f1cuota = f1cuota.addMonths(6);
+         } else if (periodicidadtxt == tr("Trimestral")) {
+            f1cuota = f1cuota.addMonths(3);
+         }// end if 
+      }// end for
+   } else if (metododecremental->isChecked()) {
+      // El metodo de amortizacion es el incremental.
+      double total=0;
+      for (int j=1;j<=ncuotas;j++) {
+         total = total+j;
+      }// end for
+      for (int i=0; i<ncuotas; i++) {
+         valcuota = valorcompra->text().toDouble()*(ncuotas-i)/total;
+         valcuotastr.sprintf("%10.2f",valcuota);
+         fprintf(stderr,"calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").ascii());
+         table1->setText(i,0,f1cuota.toString("dd/MM/yyyy"));
+         table1->setText(i,1,valcuotastr);
+         // Dependiendo de la periodicidad actualizamos la fecha.
+         if (periodicidadtxt == tr("Anual")) {
+            f1cuota = f1cuota.addYears(1);
+         } else if (periodicidadtxt == tr("Mensual")) {
+            f1cuota = f1cuota.addMonths(1);
+         } else if (periodicidadtxt == tr("Semestral")) {
+            f1cuota = f1cuota.addMonths(6);
+         } else if (periodicidadtxt == tr("Trimestral")) {
+            f1cuota = f1cuota.addMonths(3);
+         }// end if 
+      }// end for
+   } else if (metodoporcentual->isChecked()) {
+      // El metodo de amortizacion es el incremental.
+      double porcent=(double) 1/ (double) ncuotas;
+      fprintf(stderr,"El coeficiente es: %10.2f\n",porcent);
+      double total=0;
+      for (int i=0; i<ncuotas; i++) {
+         if (i < ncuotas-1) {
+            valcuota = (valorcompra->text().toDouble()-total)*porcent;
+            total += valcuota;
+            fprintf(stderr,"cuota: %10.2f -- total: %10.2f\n",valcuota, total);
+
+         } else {
+            valcuota = valorcompra->text().toDouble()-total;
+         }// end if
+         valcuotastr.sprintf("%10.2f",valcuota);
+         fprintf(stderr,"calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").ascii());
+         table1->setText(i,0,f1cuota.toString("dd/MM/yyyy"));
+         table1->setText(i,1,valcuotastr);
+         // Dependiendo de la periodicidad actualizamos la fecha.
+         if (periodicidadtxt == tr("Anual")) {
+            f1cuota = f1cuota.addYears(1);
+         } else if (periodicidadtxt == tr("Mensual")) {
+            f1cuota = f1cuota.addMonths(1);
+         } else if (periodicidadtxt == tr("Semestral")) {
+            f1cuota = f1cuota.addMonths(6);
+         } else if (periodicidadtxt == tr("Trimestral")) {
+            f1cuota = f1cuota.addMonths(3);
+         }// end if 
+      }// end for
+   }// end if
 }// end calculaamortizacion
 
 

@@ -816,6 +816,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
         popup->insertSeparator();
         if (col == COL_NOMCUENTA || col == COL_CONTRAPARTIDA || col == COL_SUBCUENTA) {
             popup->insertItem(tr("Editar Cuenta"),130);
+            popup->insertItem(tr("Substituir Cuenta"), 140);
         }// end if
         opcion = popup->exec(poin);
         switch(opcion) {
@@ -847,6 +848,10 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
         case 124:
             boton_balance1(2);
             break;
+        case 140:
+           // Aun no esta implementada la sustitución de cuentas desde el menu contextual.
+           fprintf(stderr,"Aun no esta implementada la sustitución de cuentas desde el menu contextual\n");
+           break;            
         case 130:
             // Se ha elegido la opción de editar cuenta.
             // Abrimos la ventana de edición de cuentas.
@@ -861,6 +866,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
             nuevae->exec();
             delete nuevae;
             repinta(atoi(IDASIENTO));
+            break;
         }// end switch
         delete popup;
     }// end if

@@ -27,15 +27,18 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery){
     QString Query = "DECLARE "+nomcursor+" CURSOR FOR "+SQLQuery;
     result = PQexec(conn, Query.ascii());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "DECLARE CURSOR command failed\n");
-        QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la carga de un query de la base de datos",SQLQuery), theApp->translate("postgresiface","Aceptar",""));
-        PQclear(result);
-        return;
-    }// end if
+//      if (!result || PQresultStatus(result) == PGRES_FATAL_ERROR || PQresultStatus(result) == PGRES_NONFATAL_ERROR ) {
+         fprintf(stderr,"%s\n", PQerrorMessage(conn));
+         fprintf(stderr, "DECLARE CURSOR command failed\n");
+         QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la carga de un query de la base de datos\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
+         PQclear(result);
+         return;
+      }// end if
     PQclear(result);
     QString fech = "FETCH ALL in "+nomcursor;
     result = PQexec(conn, fech.ascii());
     if (!result || PQresultStatus(result) != PGRES_TUPLES_OK) {
+        fprintf(stderr,"%s\n", PQerrorMessage(conn));
         fprintf(stderr, "FETCH ALL command didn't return tuples properly\n");
         PQclear(result);
         return;
@@ -232,7 +235,7 @@ int postgresiface2::ejecuta(QString Query) {
     result = PQexec(conn, Query.ascii());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
         fprintf(stderr, "SQL command failed: %s\n", Query.ascii());
-        QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la Base de Datos",Query), theApp->translate("postgresiface","Aceptar",""));
+        QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la Base de Datos:\n"+Query,""), theApp->translate("postgresiface","Aceptar",""));
         PQclear(result);
         return(1);
     }// end if

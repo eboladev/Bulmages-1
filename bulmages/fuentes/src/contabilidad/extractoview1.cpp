@@ -386,8 +386,8 @@ void extractoview1::presentar() {
          // Cargamos los saldos iniciales.
          cursor2* cursoraux;
          conexionbase->begin();
-         query.sprintf("SELECT sum(debe) as tdebe, sum(haber)as thaber FROM apunte WHERE idcuenta=%d AND fecha <'%s'",idcuenta, finicial.ascii());
-         cursoraux = conexionbase->cargacursor(query, "saldos iniciales");
+         query.sprintf("SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta=%d AND fecha <'%s'",idcuenta, finicial.ascii());
+         cursoraux = conexionbase->cargacursor(query, "saldos_iniciales");
          conexionbase->commit();
          if (!cursoraux->eof()) {
             debeinicial = atof(cursoraux->valor("tdebe").ascii());

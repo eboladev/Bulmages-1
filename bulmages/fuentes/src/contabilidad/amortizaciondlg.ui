@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>722</width>
-            <height>531</height>
+            <height>533</height>
         </rect>
     </property>
     <property name="caption">
@@ -917,7 +917,7 @@
                             </property>
                             <widget class="QRadioButton" row="0" column="1">
                                 <property name="name">
-                                    <cstring>radioButton2</cstring>
+                                    <cstring>metodoincremental</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Incremental</string>
@@ -925,7 +925,7 @@
                             </widget>
                             <widget class="QRadioButton" row="0" column="0">
                                 <property name="name">
-                                    <cstring>radioButton1</cstring>
+                                    <cstring>metodolineal</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Lineal</string>
@@ -933,7 +933,7 @@
                             </widget>
                             <widget class="QRadioButton" row="0" column="2">
                                 <property name="name">
-                                    <cstring>radioButton3</cstring>
+                                    <cstring>metododecremental</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Decremental</string>
@@ -941,7 +941,7 @@
                             </widget>
                             <widget class="QRadioButton" row="0" column="3">
                                 <property name="name">
-                                    <cstring>radioButton3_2</cstring>
+                                    <cstring>metodoporcentual</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Porcentual</string>
@@ -1162,6 +1162,8 @@
     </connection>
 </connections>
 <tabstops>
+    <tabstop>nomamortizacion</tabstop>
+    <tabstop>agrupacion</tabstop>
     <tabstop>ctaactivo</tabstop>
     <tabstop>ctaamortizacion</tabstop>
     <tabstop>fechacompra</tabstop>
@@ -1169,19 +1171,18 @@
     <tabstop>numcuotas</tabstop>
     <tabstop>periodicidad</tabstop>
     <tabstop>valorcompra</tabstop>
-    <tabstop>radioButton1</tabstop>
+    <tabstop>metodolineal</tabstop>
+    <tabstop>metodoincremental</tabstop>
+    <tabstop>metododecremental</tabstop>
+    <tabstop>metodoporcentual</tabstop>
     <tabstop>botoncalcular</tabstop>
     <tabstop>table1</tabstop>
     <tabstop>pushButton1_3</tabstop>
     <tabstop>pushButton1</tabstop>
     <tabstop>pushButton1_2</tabstop>
-    <tabstop>nomamortizacion</tabstop>
     <tabstop>tabWidget3</tabstop>
     <tabstop>amortizado</tabstop>
     <tabstop>pendiente</tabstop>
-    <tabstop>radioButton2</tabstop>
-    <tabstop>radioButton3</tabstop>
-    <tabstop>radioButton3_2</tabstop>
 </tabstops>
 <slots>
     <slot>cambiofechacompra()</slot>
