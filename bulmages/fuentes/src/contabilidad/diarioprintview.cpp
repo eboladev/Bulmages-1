@@ -43,25 +43,27 @@ using namespace RTK;
 // *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
 void DiarioPrintView::pruebasRTK() {
 #ifdef REPORTS
-    cursor2 *cursoraux;
-    conexionbase->begin();
-    //   cursoraux=conexionbase->cargacursor("SELECT  cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY fecha", "unquery");
-    cursoraux=conexionbase->cargacursor("SELECT ordenasiento, asiento.idasiento AS idasiento, cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY ordenasiento", "unquery");
-
-    conexionbase->commit();
-    RTK::Report unReport;
-    unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"diario.rtk");
-    InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
-    inp->set
-    (InputBGes::diario, empresaactual, cursoraux);
-    OutputQPainter *salida = new OutputQPainter(57, 59, A4, dots, 800,600,20,20,20,20);
-    unReport.print(*salida);
-    QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
-    mViewer->setCaption(tr("Extracto de Cuentas", "Informe: "));
-    mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
-    mViewer->setPageCollection(salida->getPageCollection());
-    mViewer->show();
-    mViewer->slotFirstPage();
+    	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
+	QString cadena;
+	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.
+	cadena = "cp /home/tborras/bulmages/installbulmages/reports/bulma-styles.xml   /tmp/bulma-styles.xml" ;
+	system (cadena.ascii());	
+	cadena = "cp /home/tborras/bulmages/installbulmages/reports/diario.rtk   /tmp/diario.rtk" ;
+	system (cadena.ascii());
+	cadena = " sed -e \"s&###fechainicial###&"+fechainicial1->text()+"&g\"  /tmp/diario.rtk > /tmp/diario1.rtk";
+	system (cadena.ascii());
+	cadena = " sed -e \"s&###fechafinal###&"+fechafinal1->text()+"&g\"  /tmp/diario1.rtk > /tmp/diario.rtk";
+	system (cadena.ascii());
+	
+	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
+	cadena += conexionbase->nameDB()+" ";
+	// OJO QUE LA LINEA BUENA ES LA QUE ESTA COMENTADA
+//	cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
+	// ESTA LINEA ES PARA HACER PRUEBAS
+//	cadena += "/home/tborras/bulmages/installbulmages/reports/extracto1.rtk &";
+	cadena += "/tmp/diario.rtk &";
+	fprintf(stderr,"%s\n",cadena.ascii());
+	system (cadena.ascii()); 
 #endif
 }// end pruebasRTK
 

@@ -119,13 +119,11 @@
 <IMAGE name="encabezado" url="/home/tborras/bulmages/installbulmages/reports/logo.jpg" mime-type="image/jpg"></IMAGE>
 
 
-  <!--INPUT name="default" driver="sqlbulmages" 
-  sqldriver="QPSQL7" database="bulmages" user="tborras"-->
   <INPUT name="default" driver="sql" 
-  sqldriver="QPSQL7" database="bulmages" user="tborras" from="apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta LEFT JOIN asiento ON asiento.idasiento = apunte.idasiento" orderby="fecha">
+  sqldriver="QPSQL7" database="bulmages" user="tborras" from="apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta LEFT JOIN asiento ON asiento.idasiento = apunte.idasiento WHERE cuenta.codigo &gt;= '###codigoinicial###' AND cuenta.codigo &lt;= '###codigofinal###' AND apunte.fecha &gt;= '###fechainicial###' AND apunte.fecha &lt;= '###fechafinal###'" orderby="cuenta.codigo , fecha">
     <INPUTFIELD name="descripcion" source="cuenta.descripcion" type="text"></INPUTFIELD>
-    <INPUTFIELD name="debe" source="apunte.debe" type="number"></INPUTFIELD>
-    <INPUTFIELD name="haber" source="apunte.haber" type="number"></INPUTFIELD>
+    <INPUTFIELD name="debe" source="apunte.debe" type="text"></INPUTFIELD>
+    <INPUTFIELD name="haber" source="apunte.haber" type="text"></INPUTFIELD>
     <INPUTFIELD name="concepto" source="apunte.conceptocontable" type="text"></INPUTFIELD>
     <INPUTFIELD name="idc_coste" source="apunte.idc_coste" type="number"></INPUTFIELD>xt
     <INPUTFIELD name="codigo" source="cuenta.codigo" type="text"></INPUTFIELD>
@@ -135,44 +133,40 @@
   </INPUT>
 
 <!-- Encabezado de página -->
-  <SECTION name="pageheader" type="page-header" sizey="6" backgroundimage="encabezado">
-  <OBJECT name="titulo" style="title" value="Plan Contable - Ejercicio 2005" sizey="2"></OBJECT>
-  <OBJECT name="empresa" style="empresa" value="GestiONG ONG" posy="2" sizey="2"></OBJECT>
+  <SECTION name="pageheader" type="page-header" sizey="9" backgroundimage="encabezado">
+  <OBJECT name="titulo" style="title" value="Libro Mayor" sizey="2"></OBJECT>
+  <OBJECT name="empresa" style="empresa" value="###empresa###" posy="2" sizey="2"></OBJECT>
   <OBJECT name="seleccion" style="detail" halignment="right"
-	value="Listado de mayor"
- 	posy="4" sizey="1"></OBJECT>
-  <OBJECT name="seleccion" style="detail" halignment="right"
-	value="Listado 01/01/2005 al 06/04/2005"
- 	posy="5" sizey="1"></OBJECT>
-      
+	value="Listado ###fechainicial### al ###fechafinal###"
+ 	posy="6" posx="0" sizey="1"></OBJECT>
     <OBJECT name="header-numasiento" fontsize="8"
-      posx="0" posy="2" sizex="0" sizey="1" adjustment="none" 
-      value="D/Asiento/Ap." 
+      posx="0" posy="8" sizex="0" sizey="1" adjustment="none" 
+      value="Asiento" 
       ></OBJECT>
     <OBJECT name="header-fecha" fontsize="8"
-      posx="12" posy="2" sizex="8" sizey="1"  
+      posx="12" posy="8" sizex="8" sizey="1"  
       value="Fecha"
       ></OBJECT>
     <OBJECT name="header-numdocumento" fontsize="8"
-      posx="21" posy="2" sizex="10" sizey="1"
+      posx="21" posy="8" sizex="10" sizey="1"
       value="Documento"
       ></OBJECT>
     <OBJECT name="header-apunte-descripcion"  fontsize="8"
-      posx="31" posy="2" sizex="10" sizey="1"
+      posx="31" posy="8" sizex="10" sizey="1"
       value="Concepto" 
       ></OBJECT>
     <OBJECT name="header-debe" fontsize="8"
-      posx="44" posy="2" sizex="12" sizey="1" 
+      posx="44" posy="8" sizex="12" sizey="1" 
       value="Debe"    
       halignment="right"
       ></OBJECT>
     <OBJECT name="header-haber" fontsize="8"
-      posx="56" posy="2" sizex="12" sizey="1" 
+      posx="56" posy="8" sizex="12" sizey="1" 
       value="Haber"
       halignment="right"
       ></OBJECT>
     <OBJECT name="header-saldo" fontsize="8"
-      posx="68" posy="2" sizex="12" sizey="1" 
+      posx="68" posy="8" sizex="12" sizey="1" 
       value="Saldo" fontsize="6" 
       halignment="right"
       ></OBJECT>

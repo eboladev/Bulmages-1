@@ -461,7 +461,10 @@ void listcuentasview1::s_PrintCuentas() {
 	QString cadena;
 	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
 	cadena += conexionbase->nameDB()+" ";
-	cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
+	// OJO QUE LA LINEA BUENA ES LA QUE ESTA COMENTADA
+//	cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
+	// ESTA LINEA ES PARA HACER PRUEBAS
+	cadena += "/home/tborras/bulmages/installbulmages/reports/cuentas.rtk &";
 	fprintf(stderr,"%s\n",cadena.ascii());
 	system (cadena.ascii());
 #endif
