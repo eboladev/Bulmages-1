@@ -60,8 +60,8 @@ listivaview::listivaview(QString ejerActual, QWidget *parent, const char *name )
   //ffinal->setText(buffer);
   finicial->setText(normalizafecha("01/01/"+ejerActual).toString("dd/MM/yyyy"));
   ffinal->setText(normalizafecha("31/12/"+ejerActual).toString("dd/MM/yyyy"));
-  Mod300ps *tem=new Mod300ps(this);
-  modelo=tem;
+  modelo=new Mod300ps(this->parentWidget());
+
 }// end listivaview
 
 

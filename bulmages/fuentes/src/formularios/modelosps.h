@@ -24,6 +24,7 @@
 #define MOD300_H
 #include "mod300dlg.h"
 #include <fstream.h>
+#include "numerocuenta.h"
 class Modgenps
   {
     /** Clase base para modelos de declaracin de la agencia tributaria en formato postscript.
@@ -62,7 +63,8 @@ class Mod300ps: public Modgenps, public mod300dlg
   public:
     Mod300ps(QWidget *parent);
     ~Mod300ps()
-    {}
+    {//cout << "Modelo 300 destruido\n";
+    }
     ;
 
     void accept();
@@ -90,7 +92,7 @@ class Mod300ps: public Modgenps, public mod300dlg
   private:
     QString *nombresccc;
     QString *numerccc;
-    QString ccc;
+    numerocuenta *ccc;
   public slots:
     virtual void personalButtonPressed();
 protected:

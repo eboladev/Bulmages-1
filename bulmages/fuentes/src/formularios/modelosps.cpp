@@ -30,30 +30,31 @@
 #include "configuracion.h"
 #include "postgresiface2.h"
 
+#include <qmessagebox.h>
 
 
 Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
 {
   //Realizo una consulta para obtener las cuentas bancarias
 
- QString query="select descripcion,bancoent_cuenta,codigo from cuenta where codigo like '572%%' and codigo>572";
+  QString query="select descripcion,bancoent_cuenta,codigo from cuenta where codigo like '572%%' and codigo>572";
 
-   postgresiface2 *metabase = new postgresiface2();
-    metabase->inicializa("bulmages");//[TODO] CAMBIAR!!!!
-    metabase->begin();
-   fprintf(stderr,"%s\n",query.ascii());
-   cursor2 *cur = metabase->cargacursor(query,"bancos");
- 
-   
-   
-   int nTuples=cur->numregistros();
+  postgresiface2 *metabase = new postgresiface2();
+  metabase->inicializa("bulmages");//[TODO] CAMBIAR!!!!
+  metabase->begin();
+  fprintf(stderr,"%s\n",query.ascii());
+  cursor2 *cur = metabase->cargacursor(query,"bancos");
+
+
+
+  int nTuples=cur->numregistros();
   nombresccc=new QString[nTuples];
 
   numerccc=new QString[nTuples];
 
 
   for (int i=0;i<nTuples;i++)
-  //while (!cur->eof()) 
+    //while (!cur->eof())
     {
       nombresccc[i]=cur->valor("descripcion");
       nombresccc[i]+="  ";
@@ -64,28 +65,28 @@ Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
       combocuentas->insertItem(nombresccc[i]);
       cur->siguienteregistro();
     }
-       delete cur;
-       delete metabase;
+  delete cur;
+  delete metabase;
 
   //Ahora realizo otra consulta para obtener datos sobre la empresa
-  
- query="select nombre,ano from empresa where nombredb='bulmages'";
 
-   metabase = new postgresiface2();
-    metabase->inicializa("metabd");//[TODO] CAMBIAR!!!
-    metabase->begin();
-   fprintf(stderr,"%s\n",query.ascii());
-   cur = metabase->cargacursor(query,"datos");
-   
-    if (cur->numregistros()>1) 
+  query="select nombre,ano from empresa where nombredb='bulmages'";
+
+  metabase = new postgresiface2();
+  metabase->inicializa("metabd");//[TODO] CAMBIAR!!!
+  metabase->begin();
+  fprintf(stderr,"%s\n",query.ascii());
+  cur = metabase->cargacursor(query,"datos");
+
+  if (cur->numregistros()>1)
     {
-    cout << "ERROR: Empresa duplicada!!\n";
+      cout << "ERROR: Empresa duplicada!!\n";
     }
-    
-    empresa=cur->valor("nombre");
-    ano=cur->valor("ano");
-    
-  
+
+  empresa=cur->valor("nombre");
+  ano=cur->valor("ano");
+
+
   cout << "Para " << empresa << ", " << ano << "\n";
 
 
@@ -97,23 +98,42 @@ void Mod300ps::accept()
 
   if (cuentaButton->isChecked())
     {
-      ccc=numerccc[combocuentas->currentItem()];
-      ccc.remove("-");//Elimina los guiones del numero de cuenta
+      ccc=new numerocuenta(numerccc[combocuentas->currentItem()]);
     }
   else
-    ccc=banco->text()+entidad->text()+dc->text()+cuenta->text();
+    ccc=new numerocuenta(banco->text(),entidad->text(),dc->text(),cuenta->text());
 
-  cout << "Elegida cuenta numero "<< ccc << "\n";
+  cout << "Elegida cuenta numero "<< ccc->getcodigo("-") << "\n";
 
+  cout << "dc="<< ccc->getdc()<<"\n";
+  if (!ccc->cuentaesvalida())
+    {
+      switch( QMessageBox::warning( this, tr("Formulario 300"),
+                                    tr("Aviso: El número de cuenta bancario introducido\n"
+                                       "no se corresponde con un CCC correcto."),
+                                    tr("Generar de todas formas"), tr("Volver"), 0,
+                                    0, 1 ))
+        {
+        case 0: // Try again or Enter
+          generaps();
+          break;
+        case 1: // Quit or Escape
 
-  generaps();
+          break;
+        }
+    }
+  else
+    generaps();
+
 }
-
 
 void Mod300ps::generaps()
 {
 
   QString psname,cad1;
+
+
+
 
   cout << "Elegido trimestre" << trimestre->currentItem() << "\n";
 
@@ -276,15 +296,16 @@ void Mod300ps::escribe_cuenta_bancaria(int x,int y)
 
   const int steps[]=
     {
-      0,11,11,11,12,11,11,11,12,11,12,11,11,11,12,11,11,11,12,11
+      0,11,11,11,12,11,11,11,12,11,12,11,11,11,12,11,11,11,12,11,11
     };
   //76,32 para devolver
   //338,73 para pagar
   int acum=x;//coordenada x de la primera casilla a rellenar
-  for (int i=0;i<19;i++)
+  QString tem=ccc->getcodigo();
+  for (int i=0;i<20;i++)
     {
       acum+=steps[i];
-      marca_casilla(QString(ccc[i]),acum,y);
+      marca_casilla(QString(tem[i]),acum,y);
     }
 }
 
@@ -293,7 +314,8 @@ void Mod300ps::escribe_cuenta_bancaria(int x,int y)
     \fn Mod300ps::rellena_identificacion()
  */
 void Mod300ps::rellena_identificacion()
-{QString cad1;
+{
+  QString cad1;
 
 
 
@@ -304,13 +326,14 @@ void Mod300ps::rellena_identificacion()
   marca_casilla(cad1,452,690);
   marca_casilla("T",467,690);
 
-  
-  
 
 
-escrder(empresa,209,601);
-//(453,706)+(14,0)
-for (int i=0;i<4;i++) marca_casilla(QString(ano[i]),453+i*14,706);
+
+
+  escrder(empresa,209,601);
+  //(453,706)+(14,0)
+  for (int i=0;i<4;i++)
+    marca_casilla(QString(ano[i]),453+i*14,706);
 
 
 }
@@ -348,24 +371,24 @@ void Mod300ps::rellena_liquidacion()
 void Mod300ps::rellena_compensacion()
 {
 
-  
+
   if (cas34<0)
     {
       escrizqder(-cas34,248,145);//Casilla a compensar si la 34 sale negativa
-      
+
       if (trimestre->currentItem()==3) //si estamos en el cuarto trimestre...
-      escribe_cuenta_bancaria(76,32);//ponemos la cuenta bancaria si hay que devolver
+        escribe_cuenta_bancaria(76,32);//ponemos la cuenta bancaria si hay que devolver
     }
   else
     {
       if (trimestre->currentItem()==3) //si estamos en el cuarto trimestre...
-    {
-      //marca_casilla("X",396,134);//Casilla de pago en efectivo
-      marca_casilla("X",464,134);//Casilla de adeudo en cuenta
-      //76,32 para devolver
-      //338,73 para pagar
-      escribe_cuenta_bancaria(338,73);
-      }
+        {
+          //marca_casilla("X",396,134);//Casilla de pago en efectivo
+          marca_casilla("X",464,134);//Casilla de adeudo en cuenta
+          //76,32 para devolver
+          //338,73 para pagar
+          escribe_cuenta_bancaria(338,73);
+        }
     }
 
 
