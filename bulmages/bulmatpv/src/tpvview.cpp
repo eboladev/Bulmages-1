@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2004 by Bulmages Developer Team                         *
  *   info@bulmages.org                                                     *
+ *   Created by Fco. Javier M. C. <fcojavmc@todo-redes.com>                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -33,3 +34,78 @@ tpvview::~tpvview()
 }
 
 
+void tpvview::pseudo_teclado(int valor)
+{   
+   display_2->display((display_2->value()*10) + valor);
+}
+
+void tpvview::pseudo_teclado_si()
+{
+
+}
+
+void tpvview::pseudo_teclado_atras()
+{
+
+}
+
+void tpvview::pseudo_teclado_borrar()
+{
+   display_2->display(0);
+}
+
+void tpvview::pseudo_teclado_00()
+{
+   pseudo_teclado(0);
+   pseudo_teclado(0);
+}
+
+void tpvview::pseudo_teclado_0()
+{
+   pseudo_teclado(0);
+}
+
+void tpvview::pseudo_teclado_1()
+{
+   pseudo_teclado(1);
+}
+
+void tpvview::pseudo_teclado_2()
+{
+   pseudo_teclado(2);
+}
+
+void tpvview::pseudo_teclado_3()
+{
+   pseudo_teclado(3);
+}
+
+void tpvview::pseudo_teclado_4()
+{
+   pseudo_teclado(4);
+}
+
+void tpvview::pseudo_teclado_5()
+{
+   pseudo_teclado(5);
+}
+
+void tpvview::pseudo_teclado_6()
+{
+   pseudo_teclado(6);
+}
+
+void tpvview::pseudo_teclado_7()
+{
+   pseudo_teclado(7);
+}
+
+void tpvview::pseudo_teclado_8()
+{
+   pseudo_teclado(8);
+}
+
+void tpvview::pseudo_teclado_9()
+{
+   pseudo_teclado(9);
+}

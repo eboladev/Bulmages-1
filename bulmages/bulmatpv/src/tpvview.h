@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2004 by Bulmages Developer Team                         *
  *   info@bulmages.org                                                     *
+ *   Modified by Fco. Javier M. C. <fcojavmc@todo-redes.com>               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -33,6 +34,25 @@ public:
 
     ~tpvview();
 
+public slots:
+   virtual void pseudo_teclado_00();
+   virtual void pseudo_teclado_0();
+   virtual void pseudo_teclado_1();
+   virtual void pseudo_teclado_2();
+   virtual void pseudo_teclado_3();
+   virtual void pseudo_teclado_4();
+   virtual void pseudo_teclado_5();
+   virtual void pseudo_teclado_6();
+   virtual void pseudo_teclado_7();
+   virtual void pseudo_teclado_8();
+   virtual void pseudo_teclado_9();
+   virtual void pseudo_teclado_atras();
+   virtual void pseudo_teclado_si();
+   virtual void pseudo_teclado_borrar();
+
+
+private:
+   void pseudo_teclado(int);       
 };
 
 #endif
