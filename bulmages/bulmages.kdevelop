@@ -77,7 +77,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>introbulmages/src</activedir>
+      <activedir></activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

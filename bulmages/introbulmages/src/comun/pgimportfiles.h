@@ -22,16 +22,26 @@
 
 #include "postgresiface2.h"
 
+
+/** @autor Tomeu Borrás Riera
+  * @class pgimportifles pgimportifles.h
+  * @brief Clase para importación y exportación a distintos formatos
+  */
 class pgimportfiles {
 private:
+	/// Base de datos con la que trabaja la clase y de la que se hace importación / exportación
 	postgresiface2 *conexionbase;
+	/// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero a función.
 	void (*alerta)(int,int);
+	/// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un puntero de función.
 	void (*mensajeria) (QString);
+	/// La clase puede hacer una simulación o no dependiendo del valor de esta variable
 	bool m_modoTest;
+	/// Las importaciones y exportaciones pueden ser entre dos fechas, m_fInicial indica la fecha inicial a partir de la que hacer la importación
 	QString m_fInicial;
+	/// Las importaciones y exportaciones pueden ser entre dos fechas, m_fFinal indica la fecha final a partir de la que hacer la importación
 	QString m_fFinal;
 public:
-
 	void setFInicial(QString f) {m_fInicial = f;};
 	void setFFinal(QString f) {m_fFinal = f;};
 	void setModoTest() {m_modoTest=TRUE;};
@@ -41,7 +51,9 @@ public:
 	~pgimportfiles(){};
 	int contaplus2Bulmages(QFile &, QFile &);
 	int bulmages2Contaplus(QFile &, QFile &);
+	/// Esta función pasa datos de una empresa al formato XML.
 	int bulmages2XML(QFile &);
+	/// Esta función pasa datos de XML a bulmagés.
 	int XML2Bulmages(QFile &);
 	QString searchParent(QString);
 };

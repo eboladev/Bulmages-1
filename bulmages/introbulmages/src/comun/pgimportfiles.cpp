@@ -114,50 +114,6 @@ int pgimportfiles::bulmages2Contaplus(QFile &subcuentas, QFile &asientos) {
 		curcta->siguienteregistro();
 	}// end while
 	delete curcta;
-
-	
-	// Algunas pruebas para ver el archivo
-/*
-		QString cadena="";
-		QString linea = "";
-		linea += (cadena.fill('1',100)).right(LEN_ASIEN);
-		linea += (cadena.fill('2',100)).left(LEN_FECHA);
-		linea += (cadena.fill('3',100)).left(LEN_SUBCTA);
-		linea += (cadena.fill('4',100)).left(LEN_CONTRA);
-		linea += (cadena.fill('5',100)).right(LEN_PTADEBE);
-		linea += (cadena.fill('6',100)).left(LEN_CONCEPTO);
-		linea += (cadena.fill('7',100)).right(LEN_PTAHABER);
-		linea += (cadena.fill('8',100)).left(LEN_FACTURA);
-		linea += (cadena.fill('9',100)).left(LEN_BASEIMPO);
-		linea += (cadena.fill('0',100)).left(LEN_IVA);
-		linea += (cadena.fill('A',100)).left(LEN_RECEQUIV);
-		linea += (cadena.fill('B',100)).left(LEN_DOCUMENTO);
-		linea += (cadena.fill('C',100)).left(LEN_DEPARTA);
-		linea += (cadena.fill('D',100)).left(LEN_CLAVE);
-		linea += (cadena.fill('E',100)).left(LEN_ESTADO);
-		linea += (cadena.fill('F',100)).left(LEN_NCASADO);
-		linea += (cadena.fill('G',100)).left(LEN_TCASADO);
-		linea += (cadena.fill('H',100)).left(LEN_TRANS);
-		linea += (cadena.fill('I',100)).left(LEN_CAMBIO);
-		linea += (cadena.fill('J',100)).left(LEN_DEBEME);
-		linea += (cadena.fill('K',100)).left(LEN_HABERME);
-		linea += (cadena.fill('L',100)).left(LEN_AUXILIAR);
-		linea += (cadena.fill('M',100)).left(LEN_SERIE);
-		linea += (cadena.fill('N',100)).left(LEN_SUCURSAL);
-		linea += (cadena.fill('O',100)).left(LEN_CODDIVISA);
-		linea += (cadena.fill('P',100)).left(LEN_IMPAUXME);
-		linea += (cadena.fill('Q',100)).left(LEN_MONEDAUSO);
-		linea += (cadena.fill('R',100)).left(LEN_EURODEBE);
-		linea += (cadena.fill('S',100)).left(LEN_EUROHABER);
-		linea += (cadena.fill('T',100)).left(LEN_BASEEURO);
-		linea += (cadena.fill('U',100)).left(LEN_NOCONV);
-		linea += (cadena.fill('V',100)).left(LEN_NUMEROINV);
-		linea += "\n";
-		streamas << linea;
-*/
-	// Fin de algunas pruebas para ver los archivos
-	
-		
 	query = "SELECT * FROM asiento, apunte, cuenta WHERE asiento.idasiento = apunte.idasiento AND cuenta.idcuenta = apunte.idcuenta ";
 	if (m_fInicial != "") 
 		query += " AND asiento.fecha >= '"+m_fInicial+"'";
@@ -435,7 +391,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
    return 1;
 }
 
-/** **********************************************
+/**
   * This function search in the database the account parent of the account selected
   * if there are not parent returns NULL
   */
@@ -464,7 +420,8 @@ QString pgimportfiles::searchParent(QString cod) {
 
 
 
-/** \brief Esta función se encarga de pasar los datos de BulmaGés a Contaplus.
+/** \brief Esta función se encarga de pasar los datos de BulmaGés a XML
+  * Los datos pasados de esta forma son mucho más sencillos de pasar.
   */
 int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	QString codigo, descripcion;
@@ -475,7 +432,7 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	"<FUGIT version='0.3.1' origen='BulmaGés'"
         " date='" << QDate().toString(Qt::ISODate) << "'>\n";
 	    
-	/// Sólo se van a exportar las cuentas utilizadas, Ya que contaplus no hace ordenación en árbol.
+	/// Sólo se van a exportar las cuentas utilizadas
 	QString query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre WHERE idcuenta IN (SELECT DISTINCT idcuenta FROM apunte)";
 	conexionbase->begin();
 	cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
@@ -494,6 +451,7 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	}// end while
 	delete curcta;
 	
+	/// Hacemos la exportación de asientos
 	query = "SELECT * FROM asiento WHERE 1=1 ";
 	if (m_fInicial != "") 
 		query += " AND asiento.fecha >= '"+m_fInicial+"'";
@@ -533,7 +491,54 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 			stream << "\t\t<IDC_COSTE>"    << curap->valor("idc_coste")   << "</IDC_COSTE>\n";	
 			stream << "\t\t<C_COSTE>"      << curap->valor("nc_coste")    << "</C_COSTE>\n";
 			stream << "\t\t<PUNTEO>"       << curap->valor("punteo")      << "</PUNTEO>\n";
+			stream << "\t\t<ORDEN>"        << curap->valor("orden")       << "</ORDEN>\n";
 			stream << "\t\t<CONTRAPARTIDA>"<< curap->valor("codcontrapartida")<< "</CONTRAPARTIDA>\n";
+			
+			
+			/// Hacemos la exportación de registros de IVA
+			query  = "SELECT * FROM registroiva";
+			query += " LEFT JOIN (SELECT codigo, idcuenta FROM cuenta) AS t1 ON registroiva.contrapartida = t1.idcuenta ";
+			query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento="+curas->valor("idasiento")+" AND orden = "+curap->valor("orden")+")";
+			conexionbase->begin();
+			cursor2 *curreg = conexionbase->cargacursor(query, "queryregiva");
+			conexionbase->commit();
+			while (!curreg->eof()) {
+				stream << "\t\t<REGISTROIVA>\n";
+				stream << "\t\t\t<CONTRAPARTIDA>"  << curreg->valor("contrapartida")  << "</CONTRAPARTIDA>\n";
+				stream << "\t\t\t<BASEIMP>"        << curreg->valor("baseimp")        << "</BASEIMP>\n";
+				stream << "\t\t\t<IVA>"            << curreg->valor("iva")            << "</IVA>\n";
+				stream << "\t\t\t<FFACTURA>"       << curreg->valor("ffactura")       << "</FFACTURA>\n";
+				stream << "\t\t\t<FACTURA>"        << curreg->valor("factura")        << "</FACTURA>\n";
+				stream << "\t\t\t<NUMORDEN>"       << curreg->valor("numorden")       << "</NUMORDEN>\n";
+				stream << "\t\t\t<CIF>"            << curreg->valor("cif")            << "</CIF>\n";
+				stream << "\t\t\t<IDFPAGO>"        << curreg->valor("idfpago")        << "</idfpago>\n";
+				stream << "\t\t\t<RECTIFICAAREGISTROIVA>"        << curreg->valor("rectificaaregistroiva")        << "</RECTIFICAAREGISTROIVA>\n";
+				
+				
+				/// Hacemos la exportación deIVAs
+				query  = "SELECT * FROM iva";
+				query += " WHERE idregistroiva = "+curreg->valor("idregistroiva");
+				conexionbase->begin();
+				cursor2 *curiva = conexionbase->cargacursor(query, "queryiva");
+				conexionbase->commit();
+				while (!curiva->eof()) {
+					stream << "\t\t\t<RIVA>\n";
+					stream << "\t\t\t\t<IDTIPOIVA>"        << curiva->valor("idtipoiva")        << "</IDTIPOIVA>\n";
+					stream << "\t\t\t\t<BASEIVA>"          << curiva->valor("baseiva")        << "</baseiva>\n";
+					stream << "\t\t\t</RIVA>\n";
+					curiva->siguienteregistro();
+				}// end while
+				delete curiva;	
+					
+				
+				stream << "\t\t</REGISTROIVA>\n";
+				curreg->siguienteregistro();
+			}// end while
+			delete curreg;	
+			
+			
+			
+			
 			mensajeria("Exportando :"   + curap->valor("codigo")   + "--" +fecha+"\n");
 			curap->siguienteregistro();
 			stream << "\t</APUNTE>\n";
@@ -543,6 +548,11 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 		curas->siguienteregistro();
 	}// end while
 	delete curas;
+	
+	
+
+	
+	
 	stream << "</FUGIT>\n";
 	alerta (numreg,numreg);
 	return 0;

@@ -193,9 +193,10 @@ CREATE TABLE borrador (
     idcanal integer REFERENCES canal(idcanal),
     marcaconciliacion character(12),
     idc_coste integer REFERENCES c_coste(idc_coste),
+ -- El campo idapunte no se utiliza, existe la combinacion idasiento, orden que lo sustituye.
     idapunte integer,
     idtipoiva integer,
-    orden integer
+    orden integer NOT NULL
 );
 
 
@@ -1668,6 +1669,7 @@ AS '
 DECLARE
         cta RECORD;
 	ej RECORD;
+	ord RECORD;
 BEGIN
         SELECT INTO cta * FROM cuenta WHERE idcuenta = NEW.idcuenta;
 	IF FOUND THEN
@@ -1689,6 +1691,10 @@ BEGIN
 		RAISE EXCEPTION '' Cuenta inexistente '';
         END IF;
 	
+	SELECT INTO ord * FROM borrador WHERE idasiento = NEW.idasiento AND orden=NEW.orden AND idborrador <> NEW.idborrador;
+	IF FOUND THEN
+		RAISE EXCEPTION '' El campo orden está duplicado '';
+	END IF;
 	
 	SELECT INTO  ej  * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo =0;
 	IF FOUND THEN
