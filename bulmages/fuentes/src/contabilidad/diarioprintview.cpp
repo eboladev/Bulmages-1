@@ -35,28 +35,19 @@ DiarioPrintView::~DiarioPrintView(){
 #ifdef REPORTS
 #include "rtkinputbges.h"
 using namespace RTK;
-Input *InputBGesCreator(const String &name, const String &driver) {
-   return new InputBGes(name, driver);
-}
-
-void registraInputBGes() {
-RTK::Report::registerInput("sqlbulmages", &InputBGesCreator);
-}
-
-
 #endif
+
 // *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
 void DiarioPrintView::pruebasRTK() {
 #ifdef REPORTS
 cursor2 *cursoraux;
 conexionbase->begin();
 //cursoraux=conexionbase->cargacursor("SELECT * FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY ordenasiento", "unquery");
-cursoraux=conexionbase->cargacursor("SELECT ordenasiento, asiento.idasiento AS idasiento, cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha, * FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY ordenasiento", "unquery");
+cursoraux=conexionbase->cargacursor("SELECT ordenasiento, asiento.idasiento AS idasiento, cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY ordenasiento", "unquery");
 
 conexionbase->commit();
 
-// Esta llamada que se hace aqui sólo hay que hacerla una vez al principio de la aplicacion
-registraInputBGes();
+
 
 RTK::Report unReport;
 unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"extracto.rtk");

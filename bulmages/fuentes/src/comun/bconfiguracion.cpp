@@ -13,7 +13,6 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 #include "bconfiguracion.h"
-
 #include <qmessagebox.h>
 #include <errno.h>
 
@@ -31,24 +30,21 @@ std::set<QString> usuarios_borrados;
 #endif
 
 BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * name, WFlags f)
- : UIconfiguracion(parent,name,f)
-{
+ : UIconfiguracion(parent,name,f) {
 PunteroAlSelector=ref;
 comboBoxFuente->insertStringList( (new QFontDatabase)->families() );
 cargarFichaUtilidades();
 cargarFichaUsuarios();
 }
 
-BConfiguracion::~BConfiguracion()
-{
+BConfiguracion::~BConfiguracion() {
 #ifndef WIN32
 coleccion_usuarios.clear();
 usuarios_borrados.clear();
 #endif
 }
 
-void BConfiguracion::cerrar()
-{
+void BConfiguracion::cerrar() {
   //Cargo el nuevo Idioma
   string archivo;
   theApp->removeTranslator( traductor );
@@ -60,10 +56,8 @@ void BConfiguracion::cerrar()
   }
   traductor->load(archivo.c_str(),confpr->valor(CONF_DIR_TRADUCCION).c_str());
   theApp->installTranslator( traductor );
-  
   //Cargo la nueva fuente
   theApp->setFont(QFont(comboBoxFuente->currentText(),spinBoxFuente->value()), TRUE);
-  
   //Cierro la ventana de Configuración
   delete(this);
 }

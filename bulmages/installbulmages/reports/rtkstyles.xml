@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding = "iso-8859-1"?>
 
   <STYLE name="header" 
-    fontfamily="Chancery I" fontsize="12" fontweight="bold" 
+    fontfamily="Chancery I" fontsize="10" fontweight="bold" 
     halignment="left"
     textcolor="blue" backcolor="grey"/>
   <STYLE name="title-text" halignment="center"
-    fontfamily="Caption" fontsize="14" fontweight="bold" 
+    fontfamily="Caption" fontsize="12" fontweight="bold" 
     textcolor="red"/>
 
   <STYLE name="normal-text" 

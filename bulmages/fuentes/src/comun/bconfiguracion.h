@@ -34,9 +34,7 @@
 #include <sys/wait.h>
 #endif
 
-/**
-@author Josep Burcion
-*/
+/** @author Josep Burcion */
 
 class BConfiguracion : public UIconfiguracion
 {

@@ -22,6 +22,11 @@
 #include "selectcanalview.h"
 #include "empresa.h"
 
+#ifdef REPORTS
+#include "rtkinputbges.h"
+using namespace RTK;
+#endif
+
 ExtractoPrintView::ExtractoPrintView(empresa *emp, QWidget *parent=0, const char *name=0 ) : ExtractoPrintDlg(parent,name) {
    fichero=NULL;
    empresaactual=emp;
@@ -46,10 +51,37 @@ void ExtractoPrintView::accept() {
 // Versió per si només permetem escollir una opci
 
    if (radiotexto->isChecked()) presentar("txt");
-   else presentar("html");
+   else if (radiohtml->isChecked()) presentar("html");
+   else pruebasRTK();
 
 }
 
+
+// *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
+void ExtractoPrintView::pruebasRTK() {
+#ifdef REPORTS
+cursor2 *cursoraux;
+conexionbase->begin();
+
+cursoraux=conexionbase->cargacursor("SELECT ordenasiento, asiento.idasiento AS idasiento, cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY ordenasiento", "unquery");
+
+conexionbase->commit();
+
+
+RTK::Report unReport;
+unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"extracto1.rtk");
+InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
+inp->set(InputBGes::diario, empresaactual, cursoraux);
+OutputQPainter *salida = new OutputQPainter(A4, dots, 57, 59, 0,0,20,20,20,20);
+unReport.print(*salida);
+QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
+mViewer->setCaption(tr("GongReport", "Informe: "));
+mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
+mViewer->setPageCollection(salida->getPageCollection());
+mViewer->show();
+mViewer->slotFirstPage();
+#endif 
+}// end pruebasRTK
 
 // Versió per si decidim que es poden escollir vàries opcions
 

@@ -44,6 +44,7 @@ public:
    ExtractoPrintView(empresa *, QWidget *, const char *);
    void presentar(char *tipus);
    ~ExtractoPrintView();
+   void pruebasRTK();
 public slots:
    virtual void accept();
    virtual void boton_codinicial();
