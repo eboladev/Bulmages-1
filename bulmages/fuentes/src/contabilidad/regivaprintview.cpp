@@ -18,7 +18,7 @@
 
 #include "regivaprintview.h"
 #include "listivaview.h"
-#include "modelosps.h"
+#include "modelo300.h"
 #ifndef WIN32
 #include <unistd.h>
 #endif

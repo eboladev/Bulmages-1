@@ -17,7 +17,7 @@
 #include "listivaview.h"
 #include "regivaprintview.h"
 #include "ivaview.h"
-#include "modelosps.h"
+#include "modelo300.h"
 
 //Tabla Soportado
 #define  S_COL_FECHA 0
@@ -345,8 +345,7 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     modelo->baser4=baser4;
     modelo->baser7=baser7;
     modelo->baser16=baser16;
-    
-    
+
     
 }// end inicializa
 
