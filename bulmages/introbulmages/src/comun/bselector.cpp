@@ -58,14 +58,16 @@ void BSelector::configura_clicked() {
     delete VentanaConfiguracion;
 }
 
-//Boton para entrar en el modulo de VENTAS
-void BSelector::ventas_clicked() {
+//Boton para entrar en la ventana de Iglues
+void BSelector::m_iglues_clicked() {
+   system("mozilla http://www.iglues.org");
 }
 
 //Boton para entrar en el modulo de COMPRAS
-void BSelector::compras_clicked() {
+void BSelector::m_bulmatpv_clicked() {
 //Al crear un nuevo modulo, le paso como primer parametro un puntero al selector.
 //De este modo puedo acceder facilmente al selector desde el modulo.
+   system("bulmatpv");
 }
 
 
@@ -89,7 +91,7 @@ void BSelector::contabilidad_clicked() {
       seleccionaempresa_clicked();
    }// end while
    char cadena[300];
-   sprintf(cadena,"bulmages bulmages %s %s %s", empresabd.ascii(), loggin.ascii(), password.ascii());
+   sprintf(cadena,"bulmacont bulmacont %s %s %s", empresabd.ascii(), loggin.ascii(), password.ascii());
    system (cadena);
 }// end contabilidad_clicked
 
@@ -111,6 +113,7 @@ void BSelector::almacen_clicked() {
 
 
 //Boton para entrar en el modulo de NOMINAS
-void BSelector::nominas_clicked() {
+void BSelector::m_bulmafact_clicked() {
+   system("bulmafact");
 }
 

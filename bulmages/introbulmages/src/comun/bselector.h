@@ -48,19 +48,12 @@ public slots:
 private slots:
   virtual void salir_clicked();
   virtual void configura_clicked();
-  virtual void ventas_clicked();
-  virtual void compras_clicked();
+  virtual void m_iglues_clicked();
+  virtual void m_bulmatpv_clicked();
   virtual void contabilidad_clicked();
   virtual void produccion_clicked();
   virtual void almacen_clicked();
-  virtual void nominas_clicked();
-/*
-public:
-    QString NombreUsuario;
-    QString PasswordUsuario;
-    QString NombreBaseDatos;
-    QString ejercicioMetaDB;
-*/ 
+  virtual void m_bulmafact_clicked();
 };
 
 #endif
