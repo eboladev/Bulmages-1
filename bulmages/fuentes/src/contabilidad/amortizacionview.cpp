@@ -51,6 +51,10 @@ void amortizacionview::accept() {
                 //Iteramos para cada linea en el subformulario.
                 for(int i=0; i<table1->numRows(); i++) {
                    //Insertamos en la base de datos cada linea de amortizacion.
+                   query.sprintf("INSERT INTO linamortizacion (idamortizacion, fechaprevista, cantidad) VALUES (%s, %s, %s)", idamortizacion.ascii(), table1->text(i,COL_FECHA).ascii(), table1->text(i, COL_CUOTA).ascii());
+                   conexionbase->begin();
+                   conexionbase->ejecuta(query);
+                   conexionbase->commit();
                 }// end for
 		done(1);
 	} else {
@@ -60,6 +64,18 @@ void amortizacionview::accept() {
 		conexionbase->begin();
 		conexionbase->ejecuta(query);
 		conexionbase->commit();
+                conexionbase->begin();
+                conexionbase->ejecuta("DELETE FROM linamortizacion WHERE idamortizacion="+idamortizacion);
+                conexionbase->commit();
+                //Iteramos para cada linea en el subformulario.
+                for(int i=0; i<table1->numRows(); i++) {
+                   //Insertamos en la base de datos cada linea de amortizacion.
+                   query.sprintf("INSERT INTO linamortizacion (idamortizacion, fechaprevista, cantidad) VALUES (%s, '%s', %s)", idamortizacion.ascii(), table1->text(i,COL_FECHA).ascii(), table1->text(i, COL_CUOTA).ascii());
+                   conexionbase->begin();
+                   conexionbase->ejecuta(query);
+                   conexionbase->commit();
+                }// end for
+                
 		done(1);
 	}// end if
 }// end accept
@@ -88,6 +104,17 @@ void amortizacionview::inicializa(QString idamortiza) {
       fecha1cuota->setText(cadena);
    }// end if
    delete curs;
+   
+   query = "SELECT * FROM linamortizacion WHERE idamortizacion ="+idamortizacion;
+   conexionbase->begin();
+   curs = conexionbase->cargacursor(query, "otroquery");
+   conexionbase->commit();
+   table1->setNumRows(curs->numregistros());
+   for (int i=0; i<curs->numregistros(); i++) {
+      table1->setText(i,COL_FECHA,curs->valor("fechaprevista"));
+      table1->setText(i,COL_CUOTA, curs->valor("cantidad"));
+      curs->siguienteregistro();
+   }// end for
 }// end inicializa
 
 

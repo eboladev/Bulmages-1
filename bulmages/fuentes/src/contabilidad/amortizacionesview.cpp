@@ -36,6 +36,7 @@ amortizacionesview::amortizacionesview(empresa *emp,QWidget *parent, const char 
 amortizacionesview::~amortizacionesview() {
 }// end ~amortizacionesview
 
+
 void amortizacionesview::inicializatabla()  {
   listado->setNumRows(0);
   listado->setNumCols(2);
@@ -83,3 +84,29 @@ void amortizacionesview::dbtabla(int row, int colummn, int button,const QPoint &
    colummn=button=0;
    mouse.isNull();
 }// end dbtabla
+
+void amortizacionesview::nuevo() {
+  amortizacionview *amor=new amortizacionview(empresaactual, 0,"", true);
+     amor->exec();
+     delete amor;
+     // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
+     inicializatabla();
+}// end nuevo   
+
+// Esta función se encarga de borrar una amortización
+// La que está seleccionada en el listado.
+void amortizacionesview::borrar() {
+   QString codigo = listado->text(listado->currentRow(),COL_CODIGO);
+   if (codigo != "") {
+      QString query = "DELETE FROM linamortizacion WHERE idamortizacion ="+codigo;
+      conexionbase->begin();
+      conexionbase->ejecuta(query);
+      conexionbase->commit();
+      query = "DELETE FROM amortizacion WHERE idamortizacion="+codigo;
+      conexionbase->begin();
+      conexionbase->ejecuta(query);
+      conexionbase->commit();
+      inicializatabla();
+   }// end if
+}// end borrar
+

@@ -43,6 +43,8 @@ public:
    
 public slots:
    virtual void dbtabla(int, int, int, const QPoint &);
+   virtual void nuevo();
+   virtual void borrar();
 
 };
 
