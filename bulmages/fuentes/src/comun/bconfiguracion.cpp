@@ -304,7 +304,8 @@ void BConfiguracion::BotonA_3salvarEmpresa() {
   int pid;
   QString dbEmpresa; 
   QString PGserver;
-  PGserver = "-h "+ confpr->valor(CONF_SERVIDOR);
+  PGserver = "-h ";
+  PGserver += confpr->valor(CONF_SERVIDOR).c_str();
   (new BVisorEmpresas(& dbEmpresa, this,"Backup",true))->exec();
   if (dbEmpresa!="") {
       QString fn = QFileDialog::getSaveFileName(0, "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
@@ -339,10 +340,11 @@ void BConfiguracion::BotonA_4restaurarEmpresa(){
   int error;
   QString dbEmpresa; 
   QString PGserver;
-  PGserver = "-h "+ confpr->valor(CONF_SERVIDOR);
+  PGserver = "-h ";
+  PGserver += confpr->valor(CONF_SERVIDOR).c_str();
   (new BVisorEmpresas(& dbEmpresa, this,"Restore",true))->exec();
-  if (dbEmpresa!="") {
-      QString fn = QFileDialog::getOpenFileName(0, theApp->translate("empresa","Empresas (*.pgdump)",""), 0,theApp->translate("empresa","Cargar Empresa",""),theApp->translate("emrpesa","Elige el fichero a cargar.",""));
+  if (!dbEmpresa.isEmpty()) {
+     QString fn = QFileDialog::getOpenFileName(0, theApp->translate("empresa","Empresas (*.pgdump)",""), 0,theApp->translate("empresa","Cargar Empresa",""),theApp->translate("emrpesa","Elige el fichero a cargar.",""));
       if (!fn.isEmpty()) {
          args[0]=(char *) "cargaemp";
          args[1]=(char *) PGserver.ascii(); //Necesario para conectar a un host remoto.
@@ -354,9 +356,10 @@ void BConfiguracion::BotonA_4restaurarEmpresa(){
            exit(errno);
          }// end if
          if (!pid) {
-            string argumentos = confpr->valor(CONF_EJECUTABLES) + "cargaemp";
+            QString argumentos = confpr->valor(CONF_EJECUTABLES).c_str();
+	    argumentos  +=  "cargaemp";
             fprintf(stderr,"Ejecutamos el cargaemp\n");
-            error = execvp(argumentos.c_str(),args);
+            error = execvp(argumentos.ascii(),args);
             fprintf(stderr,"Fin del cargaemp\n");
             exit(error);
          }// end if
