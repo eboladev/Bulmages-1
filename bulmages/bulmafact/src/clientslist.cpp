@@ -58,8 +58,10 @@ CREATE TABLE cliente (
 */
 
 #include "clientslist.h"
-#include <qtable.h>
+#include "clientedit.h"
 #include "company.h"
+
+#include <qtable.h>
 
 #define COL_IDCLIENTE 0
 #define COL_NOMCLIENTE 1
@@ -84,12 +86,13 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
  : ClientsListBase(parent, name, flag) {
    companyact = comp;
    m_idclient="";
+   m_cifclient="";
+   m_nomclient="";
+   m_mode=0;
  
    m_clientList->setNumRows( 0 );
-   m_clientList->setNumCols( 0 );
    m_clientList->setSelectionMode( QTable::SingleRow );
    m_clientList->setSorting( TRUE );
-   m_clientList->setSelectionMode( QTable::SingleRow );
    m_clientList->setColumnMovingEnabled( TRUE );
    m_clientList->setNumCols(16);
    m_clientList->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "Código" ) );
@@ -129,6 +132,18 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_clientList->setPaletteBackgroundColor("#DDDDFF");   
     m_clientList->setReadOnly(TRUE);        
+    
+   initClients();
+}// end clientslist
+
+ClientsList::~ClientsList() {
+}// end ~clientslist
+
+
+/****************************************************************
+   Iniciamos los clientes.
+*****************************************************************/
+void ClientsList::initClients() {
        companyact->begin();
        cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente","unquery");
        companyact->commit();
@@ -155,10 +170,8 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
          cur->siguienteregistro();
        }// end while
       delete cur;
-}// end clientslist
+}// end initClients
 
-ClientsList::~ClientsList() {
-}// end ~clientslist
 
 void ClientsList::selectClient(int a, int , int , const QPoint &) {
    m_idclient = m_clientList->text(a,COL_IDCLIENTE);
@@ -173,3 +186,19 @@ void ClientsList::editClient() {
    //newClient();
    //noSeQueObjeto->loadClient(m_idclient);
 }
+
+/*********************************************************************
+   Se ha hecho un doble click sobre la tabla de Clientes.
+**********************************************************************/
+void ClientsList::doubleClicked(int a, int , int , const QPoint &) {
+   m_idclient = m_clientList->text(a,COL_IDCLIENTE);
+   m_cifclient = m_clientList->text(a,COL_CIFCLIENTE);
+   m_nomclient = m_clientList->text(a, COL_NOMCLIENTE);
+   if (m_mode ==0 ) {
+      ClientEdit *cli = new ClientEdit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Clientes", "company"));
+      cli->loadClient(m_idclient);
+      cli->show();
+   } else {
+      close();
+   }// end if
+}// end doubleClicked

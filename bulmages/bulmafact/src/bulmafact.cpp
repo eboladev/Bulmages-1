@@ -21,13 +21,16 @@
 
 #include <qworkspace.h>
 #include <qvbox.h>
+
+
+#include <qlistbox.h>
+#include <qdockwindow.h>
 /*
 #include "filesave.xpm"
 #include "fileopen.xpm"
 #include "fileprint.xpm"
 */
-bulmafact::bulmafact()
-    : bulmafactbase( 0, "bulmafact", WDestructiveClose ) {
+bulmafact::bulmafact() : bulmafactbase( 0, "bulmafact", WDestructiveClose ) {
 
   QPixmap fondo;
   view_back = new QVBox( this);
@@ -43,6 +46,18 @@ bulmafact::bulmafact()
 //    m_company.setWorkspace(this);
     statusBar()->message( tr("Ready"), 2000 );
     resize( 450, 600 );
+    
+    
+  QDockWindow *doc  = new  QDockWindow(this,"Corrector");
+  QListBox *m_listBox = new QListBox( doc );
+  m_listBox->setCaption( theApp->translate( "Opened windows", "company" ) );
+  doc->setGeometry(100,100,100,500);
+  doc->setFixedExtentWidth(200);
+  doc->setWidget(m_listBox);
+  doc->setResizeEnabled(TRUE);
+  doc->setMovingEnabled(TRUE);
+  moveDockWindow(doc,Left);
+//  doc->hide();      
 }
 
 
