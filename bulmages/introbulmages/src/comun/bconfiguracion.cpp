@@ -203,10 +203,7 @@ void BConfiguracion::borrarEmpresa() {
    QString nombreEmpresa;
    QString idEmpresa;
    QString ejercicio;
-   
-   // Avisamos de que estamos en esta opcion
-   fprintf(stderr,"borrarEmpresa\n");
-   
+      
    // Siempre se borra la empresa actual.
    dbEmpresa = PunteroAlSelector->empresabd;
    // (new BVisorEmpresas(& dbEmpresa, this,"Eliminador",true))->exec();
@@ -239,11 +236,11 @@ void BConfiguracion::borrarEmpresa() {
                      DBconn->ejecuta(query);
                      DBconn->commit();
                      DBconn->ejecuta("DROP DATABASE " + dbEmpresa);
-                  }
+                  }// end if
                   delete recordSet;
                   delete DBconn;
-      }   
-   }
+      }// end if  
+   }// end if
    close();
    PunteroAlSelector->seleccionaempresa_clicked();
 }//Fin borrarEmpresa
@@ -254,122 +251,6 @@ void BConfiguracion::borrarEmpresa() {
 /*********************************************************************************************************/
 // Esta función es la que se encarga de cerrar al empresa
 // Y de crear un nuevo ejercicio para dicha empresa
-
-/*  
-void empresa::nuevoejercicio() {
-//Para crear un nuevo ejercicio se tiene que hacer desde el selector.
-
-  char *args[4];
-  int pid;
-  int error;
-   QString query;
-    postgresiface2 *metabase;
-    metabase = new postgresiface2();
-    metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
-    metabase->begin();
-    query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",nombredb);
-    fprintf(stderr,"%s\n",query.ascii());
-    cursor2 *cur = metabase->cargacursor(query,"empresa");
-    if (!cur->eof()) {
-       QString nnombre = cur->valor("nombre");
-       QString nnombredb = cur->valor("nombredb");
-       QString nanodb = cur->valor("ano");
-       nnombredb = nnombredb.left(nnombredb.length()-4);
-       bool ok;
-       int inanodb = nanodb.toInt(&ok,10);
-       inanodb++;
-       QString nanodb2;
-       nanodb2.setNum(inanodb,10);
-       nnombredb += nanodb2;
-       query.sprintf("INSERT INTO EMPRESA ( nombre, nombredb, ano) VALUES ('%s','%s',%d)", nnombre.ascii(), nnombredb.ascii(), inanodb);
-       fprintf(stderr,"%s\n",query.ascii());
-       metabase->ejecuta(query);
-
-       query.sprintf("SELECT last_value AS idempresa FROM empresa_idempresa_seq");
-       cursor2 *cur2=metabase->cargacursor(query,"idempresa");
-              
-       query.sprintf("SELECT * FROM usuario_empresa WHERE idempresa = %s", cur->valor("idempresa").ascii());
-       cursor2 *cur1=metabase->cargacursor(query,"us_emp");
-       while (!cur1->eof()) {
-          query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES (%s,%s,%s)", cur1->valor("idusuario").ascii(), cur2->valor("idempresa").ascii(), cur1->valor("permisos").ascii());
-          metabase->ejecuta(query);
-          cur1->siguienteregistro();
-       }// end whiel
-       delete cur1;
-       delete cur2;
-
-       // Guardamos la Empresa
-       args[0]=nombredb;
-       args[1]=nombredb;
-       args[2]="/tmp/bulmacop.pgdump";
-       args[3]=NULL;
-#ifndef WIN32
-       if ((pid=fork()) < 0) {
-         perror ("Fork failed");
-         exit(errno);
-       }// end if
-       if (!pid) {
-          string argumentos = confpr->valor(CONF_EJECUTABLES) + "guardaemp";
-          error = execvp(argumentos.c_str(),args);
-       }// end if
-       if (pid) {
-          waitpid (pid, NULL, 0);
-       }// end if
-
-       // Cargamos la empresa guardada
-       args[0]=(char *)nnombredb.ascii();
-       args[1]=(char *)nnombredb.ascii();
-       args[2]="/tmp/bulmacop.pgdump";
-       args[3]=NULL;
-  //     defaultDB->close();
-       if ((pid=fork()) < 0) {
-         perror ("Fork failed");
-         exit(errno);
-       }// end if
-       if (!pid) {
-          string argumentos = confpr->valor(CONF_EJECUTABLES) + "cargaemp";
-          error = execvp(argumentos.c_str(),args);
-       }// end if
-       if (pid) {
-          waitpid (pid, NULL, 0);
-       }// end if
-#endif
-       strcpy(nombredb,nnombredb.ascii());
-    }// end if
-    delete cur;
-    metabase->commit();
-    delete metabase;
-    inicializa();
-    inicializa1(pWorkspace);
-    abreempresa();
-
-
-
-// Borramos los asientos anteriores
-   char query1[500];
-   int valor;
-   int resultado;
-   valor = QMessageBox::warning( 0, theApp->translate("empresa","Borrar Asiento",""), theApp->translate("empresa","Se procedera a borrar el asiento.",""), QMessageBox::Yes, QMessageBox::No);
-   if (valor ==  QMessageBox::Yes) {
-       conexionbase2->begin();
-       sprintf(query1,"DELETE FROM apunte where idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
-       resultado = conexionbase2->ejecuta(query1);
-       sprintf(query1,"DELETE FROM borrador where idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
-       resultado += conexionbase2->ejecuta(query1);
-       sprintf(query1,"DELETE FROM asiento WHERE idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
-       resultado += conexionbase2->ejecuta(query1);
-       if (resultado != 0) {
-           conexionbase2->rollback();
-       } else {
-           conexionbase2->commit();
-       }// end if
-       Ordenarasientos();
-//       introapunts1->repinta();
-   }// end if
-
-}// end nuevoejercicio
-
-*/
 
 void BConfiguracion::nuevoEjercicio() {
    QString query;
@@ -467,31 +348,42 @@ void BConfiguracion::nuevoEjercicio() {
 }//Fin nuevoEjercicio
 
 
+
+
 /*********************************************************************************************************/
 /* Creamos una copia de seguridad de una base de datos                                                   */
 /*********************************************************************************************************/
-void BConfiguracion::BotonA_3salvarEmpresa() {
+void BConfiguracion::salvarEmpresa() {
   char *args[5];
   int pid;
   QString dbEmpresa; 
   QString PGserver;
-  PGserver = "-h ";
-  PGserver += confpr->valor(CONF_SERVIDOR).c_str();
+//  PGserver = "-h ";
+  
+  PGserver = confpr->valor(CONF_SERVIDOR).c_str();
   dbEmpresa = PunteroAlSelector->empresabd;
+  fprintf(stderr,"VAmos a guardar la empresa %s\n", dbEmpresa.ascii());
 
 //  (new BVisorEmpresas(& dbEmpresa, this,"Backup",true))->exec();
   if (dbEmpresa!="") {
+      fprintf(stderr,"VAmos a guardar la empresa\n");
       QString fn = QFileDialog::getSaveFileName(0, "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
       if (!fn.isEmpty()) {
          if (fn.right(7)!= ".pgdump") fn = fn +".pgdump";
          fprintf(stderr,"Vamos a guardar la empresa en el fichero %s\n",fn.ascii());
+/*         
          args[0]=(char *) "guardaemp";
          args[1]=(char *) PGserver.ascii(); //Necesario para conectar a un host remoto.
          args[2]=(char *) dbEmpresa.ascii();
          args[3]=(char *) fn.ascii();
          args[4]=NULL;
-
-#ifndef WIN32
+*/         
+         char cadena[300];
+         sprintf(cadena,"%sguardaemp %s %s %s", confpr->valor(CONF_EJECUTABLES).c_str(), PGserver.ascii(), dbEmpresa.ascii(), fn.ascii() );
+         fprintf(stderr,"%s\n", cadena);
+         system(cadena);       
+#ifndef WIN32b
+/*         
          if ((pid=fork()) == -1) {
            perror ("Fork failed");
            exit(errno);
@@ -501,10 +393,11 @@ void BConfiguracion::BotonA_3salvarEmpresa() {
             exit(execvp(argumentos.c_str(),args));
          }// end if
          if (pid) waitpid (pid, NULL, 0);
+*/
 #endif
-     }
-  }
-}
+     }// end if
+  }// end if
+}// end salvarEmpresa
 
 /*********************************************************************************************************/
 /* Restauramos una copia de seguridad de una base de datos                                               */
@@ -627,6 +520,7 @@ void BConfiguracion::listView1_currentChanged(QListViewItem *it) {
 #endif
 }// end listView1_currentChanged
 
+
 void BConfiguracion::users_info_changed() {
 #ifndef WIN32
   campos_usuario datos_usuario;
@@ -646,8 +540,7 @@ void BConfiguracion::users_info_changed() {
   } else {
       coleccion_usuarios.insert(make_pair(lineEdit1->text(),datos_usuario));
       listView1->currentItem()->setText(0,lineEdit1->text());
-      
-  }
+  }// end if
 #endif
 }
 

@@ -55,7 +55,7 @@ private slots:
   virtual void listiView2_clickMouse(int,QListViewItem *,const QPoint&,int);
   virtual void FontChanged(const QString &);
   virtual void FontSizeChanged(int);
-  virtual void BotonA_3salvarEmpresa();
+  virtual void salvarEmpresa();
   virtual void BotonA_4restaurarEmpresa();
   virtual void BotonA_10aceptar();
   virtual void BotonA_11rechazar();

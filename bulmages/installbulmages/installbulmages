@@ -226,8 +226,6 @@ info "Instalando ejecutable del programa y scripts auxiliares. \n"
 tiempo
 cp bulmages /usr/local/bin
 cp cargaemp /usr/local/bin
-cp nuevaemp /usr/local/bin
-cp borraremp /usr/local/bin
 cp guardaemp /usr/local/bin
 cp cargaemp /usr/local/bin
 cp bulmafact /usr/local/bin
