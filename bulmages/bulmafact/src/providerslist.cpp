@@ -142,7 +142,7 @@ void providerslist::inicializa() {
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).c_str());   
     m_list->setReadOnly(TRUE);        
     companyact->begin();
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor","unquery");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor","unquery12");
     companyact->commit();
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -172,9 +172,8 @@ void providerslist::inicializa() {
 
 
 void providerslist::dobleclick(int a, int b, int c, const QPoint &d) {
-QString idprov = m_list->text(a, COL_IDPROVEEDOR);
-
-fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
+   QString idprov = m_list->text(a, COL_IDPROVEEDOR);
+   fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
    provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
    prov->chargeprovider(idprov);
    prov->exec();
@@ -191,4 +190,23 @@ void providerslist::contextMenuRequested(int a, int b, const QPoint &d) {
    delete prov;
    inicializa();
 }// end contextMenuRequested
+
+
+void providerslist::boton_crear() {
+   fprintf(stderr,"Iniciamos el boton_crear\n");
+   provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
+   fprintf(stderr,"Ejecutamos el objeto que hemos creado\n");
+   prov->exec();
+   delete prov;
+   fprintf(stderr,"Recargamos el formulario\n");
+   inicializa();
+}// end boton_crear
+
+
+void providerslist::boton_editar() {}
+void providerslist::boton_duplicar() {}
+void providerslist::boton_borrar() {}
+void providerslist::boton_imprimir() {}
+void providerslist::boton_filtrar() {}
+
 

@@ -26,8 +26,7 @@
 class company;
 
 
-class providerslist : public providerslistbase
-{
+class providerslist : public providerslistbase {
  Q_OBJECT
 public:
    company *companyact;
@@ -40,6 +39,12 @@ public:
 public slots:
     virtual void dobleclick(int, int, int, const QPoint &);
     virtual void contextMenuRequested(int, int, const QPoint &);
+    virtual void boton_crear();
+    virtual void boton_editar();
+    virtual void boton_duplicar();
+    virtual void boton_borrar();
+    virtual void boton_imprimir();
+    virtual void boton_filtrar();
 };
 
 #endif

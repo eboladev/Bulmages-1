@@ -341,7 +341,8 @@ HEADERS += comun/abreempresaview.h \
            comun/log.h \
            comun/selectccosteview.h \
            comun/selectcanalview.h \
-           formularios/modelosps.h 
+           formularios/modelosps.h \
+           formularios/modelo300.h
 SOURCES += main.cpp \
            comun/abreempresaview.cpp \
            comun/splashscreen.cpp \
@@ -406,7 +407,7 @@ SOURCES += main.cpp \
            comun/log.cpp \
            comun/selectccosteview.cpp \
            comun/selectcanalview.cpp \
-           formularios/modelosps.cpp 
+           formularios/modelosps.cpp
 QMAKE_CLEAN += Makefile
 LANGUAGE = C++
 exists (estadisticas){

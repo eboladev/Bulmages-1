@@ -82,32 +82,35 @@ provedit::~provedit() {
 * la ventana de edición en modo de inserción                            *
 *************************************************************************/
 void provedit::chargeprovider(QString idprov) {
-   QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+idprov;
-   companyact->begin();
-   cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
-   companyact->commit();
-   if (!cur->eof()) {
-      idprovider = idprov;
-      m_idproveedor->setText(cur->valor("idproveedor"));
-      m_nomproveedor->setText(cur->valor("nomproveedor"));
-      m_nomaltproveedor->setText(cur->valor("nomaltproveedor"));
-      m_cifproveedor->setText(cur->valor("cifproveedor"));
-      m_codicliproveedor->setText(cur->valor("codicliproveedor"));
-      m_cbancproveedor->setText(cur->valor("cbancproveedor"));
-//      m_comentproveedor->setText(cur->valor("comentproveedor"));
-      m_dirproveedor->setText(cur->valor("dirproveedor"));
-      m_poblproveedor->setText(cur->valor("poblproveedor"));
-      m_cpproveedor->setText(cur->valor("cpproveedor"));
-      m_telproveedor->setText(cur->valor("telproveedor"));
-      m_faxproveedor->setText(cur->valor("faxproveedor"));
-      m_emailproveedor->setText(cur->valor("emailproveedor"));
-      m_urlproveedor->setText(cur->valor("urlproveedor"));
-//      m_clavewebproveedor->setText(cur->valor("clavewebproveedor"));
-      m_iddivision->setText(cur->valor("iddivision"));    
-   } else {
-      idprovider="0";
+   fprintf(stderr,"chargeprovider activado \n");
+   if (idprovider != "") {
+      QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+idprov;
+      companyact->begin();
+      cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
+      companyact->commit();
+      if (!cur->eof()) {
+         idprovider = idprov;
+         m_idproveedor->setText(cur->valor("idproveedor"));
+         m_nomproveedor->setText(cur->valor("nomproveedor"));
+         m_nomaltproveedor->setText(cur->valor("nomaltproveedor"));
+         m_cifproveedor->setText(cur->valor("cifproveedor"));
+         m_codicliproveedor->setText(cur->valor("codicliproveedor"));
+         m_cbancproveedor->setText(cur->valor("cbancproveedor"));
+   //      m_comentproveedor->setText(cur->valor("comentproveedor"));
+         m_dirproveedor->setText(cur->valor("dirproveedor"));
+         m_poblproveedor->setText(cur->valor("poblproveedor"));
+         m_cpproveedor->setText(cur->valor("cpproveedor"));
+         m_telproveedor->setText(cur->valor("telproveedor"));
+         m_faxproveedor->setText(cur->valor("faxproveedor"));
+         m_emailproveedor->setText(cur->valor("emailproveedor"));
+         m_urlproveedor->setText(cur->valor("urlproveedor"));
+   //      m_clavewebproveedor->setText(cur->valor("clavewebproveedor"));
+         m_iddivision->setText(cur->valor("iddivision"));    
+      } else {
+         idprovider="0";
+      }// end if
+      delete cur;
    }// end if
-   delete cur;
 }// end chargeprovider
 
 /************************************************************************
