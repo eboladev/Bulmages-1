@@ -14,13 +14,19 @@
 #define AMORTIZACIONDLGAMORTIZACIONVIEW_H
 
 #include "amortizaciondlg.h"
+#include "postgresiface2.h"
+
+class empresa;
 
 /**@author Tomeu Borras*/
 class amortizacionview : public amortizaciondlg
 {
 Q_OBJECT
 public:
-    amortizacionview::amortizacionview(QWidget *, const char *, bool );
+empresa *empresaactual;
+postgresiface2 *conexionbase;
+public:
+    amortizacionview::amortizacionview(empresa *, QWidget *, const char *, bool );
     ~amortizacionview();
 };
 

@@ -29,7 +29,6 @@
 #include "ainteligentesview.h"
 #include "nuevaempresaview.h"
 #include "propiedadesempresa.h"
-#include "amortizacionview.h"
 #include "cambiactaview.h"
 #include "amortizacionesview.h"
 
@@ -321,12 +320,7 @@ int empresa::propiedadempresa() {
 int empresa::amortizaciones(){
     amortizacionesview * amors = new amortizacionesview(this,0,"",true);
     amors->exec();
-	 fprintf(stderr,"Vamos a borrar amortizacionesview \n");
     delete amors;
-	 fprintf(stderr,"Ya hemos borrado amortizacionesview Amortizaciones \n");
-    amortizacionview * amor = new amortizacionview(0,"",true);
-    amor->exec();
-    delete amor;
     return(0);
 }// end amortizaciones
 
