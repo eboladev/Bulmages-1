@@ -19,6 +19,19 @@ if [ -e /etc/bulmages.conf ]; then
       done
       echo -e "-----------------\n"
    done
+
+   echo -e "Tratamos la metabase"
+   for y in `ls dbmodels/revmeta-*.sql | sort`
+   do
+      echo -e "Evaluamos: " $y
+      if [ ! -e /usr/share/bulmages/$y ]; then
+         su - postgres -c "psql metabd " < $y 2>> errores.txt >> errores.txt
+	 echo -e "Actualizamos la version $y"
+      fi
+   done
+   echo -e "------------------\n"
+
+
    cp /etc/bulmages.conf bulmages.conf.old
 
    for j in `ls rev-bulmages*.conf | sort`

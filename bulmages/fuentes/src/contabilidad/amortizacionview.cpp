@@ -9,6 +9,7 @@
 //
 #include "amortizacionview.h"
 #include "empresa.h"
+#include "funcaux.h"
 
 amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *name, bool flag ) 
 : amortizaciondlg(parent,name,flag,0) {
@@ -72,4 +73,12 @@ void amortizacionview::inicializa(QString idamortiza) {
    }// end if
    delete curs;
 }// end inicializa
+
+void amortizacionview::cambiofechacompra() {
+  fechacompra->setText(normalizafecha(fechacompra->text()).toString("dd/MM/yyyy"));
+}// end cambiofechacompra
+
+void amortizacionview::cambiofecha1cuota() {
+  fecha1cuota->setText(normalizafecha(fecha1cuota->text()).toString("dd/MM/yyyy"));
+}// end cambiofechacompra
 

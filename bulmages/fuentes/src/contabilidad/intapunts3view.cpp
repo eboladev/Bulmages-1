@@ -1173,8 +1173,7 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
 //                tapunts->setText(row+1,COL_FECHA,normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
                 tapunts->setText(row+1,COL_FECHA,normalizafecha(tapunts->text(row,COL_FECHA)).toString("dd/MM/yyyy"));
 //                Se ha verificado que es más cómodo poder cambiar la fecha o dar al enter
-//                tapunts->setCurrentCell(row+1, COL_SUBCUENTA);
-//                Aunque también podría interesar poner la fecha de arriba.
+                tapunts->setCurrentCell(row+1, COL_FECHA);
 
                 break;
             case COL_CONCEPTO:

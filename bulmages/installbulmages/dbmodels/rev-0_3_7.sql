@@ -48,15 +48,15 @@ CREATE TABLE amortizacion (
 CREATE TABLE linamortizacion (
     idlinamortizacion 		serial,
     idamortizacion		int4,
-    idborrador			int4,
+    idasiento			int4,
     ejercicio			int4,
     fechaprevista		date,
     cantidad			float8,
     PRIMARY KEY ("idlinamortizacion"),
     CONSTRAINT "linamoritzacion_amortizacion_fk" FOREIGN KEY ("idamortizacion")
     REFERENCES "amortizacion" ("idamortizacion"),
-    CONSTRAINT "linamortizacion_borrador_fk" FOREIGN KEY ("idborrador")
-    REFERENCES "borrador" ("idborrador")
+    CONSTRAINT "linamortizacion_asiento_fk" FOREIGN KEY ("idasiento")
+    REFERENCES "asiento" ("idasiento")
 );    
     
 
