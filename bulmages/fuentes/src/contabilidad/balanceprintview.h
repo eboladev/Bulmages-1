@@ -54,6 +54,8 @@ private:
 private slots:
    virtual void boton_codigoinicial();
    virtual void boton_codigofinal();
+   virtual void boton_canales();
+   virtual void boton_ccostes();
 };
 
 #endif

@@ -31,10 +31,17 @@
 #include <qtoolbutton.h>
 #include <qradiobutton.h>
 
-#include "postgresiface2.h"
-/** *@author Tomeu Borrás Riera*/
-class empresa;
 
+#include "filtrarextractosview.h"
+#include "postgresiface2.h"
+/** @author Tomeu Borrás Riera
+  * \class ExtractoPrintView extractoprintview.h
+  * \brief Clase que corresponde con la ventana de impresión de extractos.
+  * \todo Falta hacer que en los campos se haga el autocompletado.
+  * \todo Falta incluir el filtrado en el extracto.
+*/
+
+class empresa;
 
 class ExtractoPrintView : public ExtractoPrintDlg  {
    Q_OBJECT
@@ -42,18 +49,24 @@ public:
    char *fichero;
    postgresiface2 *conexionbase;
    empresa *empresaactual;
+   filtrarextractosview *m_filt;
+   
+   void setFiltro(filtrarextractosview *filtro) {m_filt = filtro;};
    void inicializa1(QString , QString , QString , QString );
    ExtractoPrintView(empresa *, QWidget *, const char *);
    void presentar(char *tipus);
    ~ExtractoPrintView();
    void pruebasRTK();
    void presentakugar();
+private:
+   QString montaQuery();
 public slots:
    virtual void accept();
    virtual void boton_codinicial();
    virtual void boton_codfinal();
    virtual void boton_ccostes();
    virtual void boton_canales();
+   virtual void s_botonFiltrar();
 };
 
 #endif

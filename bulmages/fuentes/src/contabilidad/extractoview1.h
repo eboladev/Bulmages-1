@@ -41,7 +41,10 @@ class intapunts3view;
 class diarioview1;
 class balanceview;
 class empresa;
-/** *@author Tomeu Borrás Riera */
+/** @author Tomeu Borrás Riera 
+  * @brief Esta clase Mantiene la generación de extractos contables
+  * @class extractoview1 extractoview1.h
+  */
 
 class extractoview1 : public extractodlg1  {
    Q_OBJECT

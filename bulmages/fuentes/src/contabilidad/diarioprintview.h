@@ -31,33 +31,46 @@
 #include <qtoolbutton.h>
 #include <qradiobutton.h>
 
-#include "empresa.h"
+#include "filtrardiarioview.h"
 
-/***@author Tomeu Borrás Riera */
+/** @author Tomeu Borrás Riera
+  * @brief Ventana de impresión de diario
+  * @class DiarioPrintView diarioprintview.h
+  * Es la ventana de impresión de diarios.
+ */
+ 
+/// Declaramos la clase empresa como amiga para que la compilación no sea complicada.
+class empresa;
 
 class DiarioPrintView : public DiarioPrintDlg  {
    Q_OBJECT
 public:
-   char *fichero;
+   /// La base de datos con la que trabaja esta clase
    postgresiface2 *conexionbase;  
+   /// La empresa con la que trabaja esta clase.
    empresa *empresaactual;
    int numdigitos;
+   /// Puntero al filtrado de datos
+   filtrardiarioview *m_filt;
    
 public:
-   int inicializa(postgresiface2 *);
-	void inicializa1(QString, QString);
-	DiarioPrintView(empresa *emp, QWidget *parent, const char *name);
-	~DiarioPrintView();
+   /// Establece cual es la ventana de filtro de diario. Es imprescindible inicializar el filtro antes de mostrar la ventana o el botón de filtro no funcionará.
+   void setFiltro(filtrardiarioview *filtro) {m_filt = filtro;};
+   void inicializa1(QString, QString);
+   DiarioPrintView(empresa *emp, QWidget *parent, const char *name);
+   ~DiarioPrintView();
    void presentar(char *tipus="html");
    // OJO con esta función que es una funcion para probar el Report Tool Kit
    void pruebasRTK();
    void pruebasRTKoo();
    void presentakugar();
+private:
+   QString montaQuery();
 public slots:
    virtual void accept();
    virtual void boton_canales();
    virtual void boton_ccostes();
-   
+   virtual void s_botonFiltrar();
 };
 
 #endif

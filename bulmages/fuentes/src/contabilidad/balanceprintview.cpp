@@ -232,10 +232,8 @@ void BalancePrintView::presentar(char *tipus){
                   
          if (txt) {
             //presentació txt normal
-
             fitxersortidatxt.setf(ios::fixed);
             fitxersortidatxt.precision(2);
-
             fitxersortidatxt << "                                        Balanç \n" ;
             fitxersortidatxt << "Data Inicial: " << finicial.ascii() << "   Data Final: " << ffinal.ascii() << endl;
             fitxersortidatxt << "lcuenta           ldenominacion                      lsaldoant      ldebe     lhaber     lsaldo    ldebeej    haberej   lsaldoej\n" ;
@@ -243,10 +241,8 @@ void BalancePrintView::presentar(char *tipus){
          }// end if
          if (html) {
             //presentació html normal
-
             fitxersortidahtml.setf(ios::fixed);
             fitxersortidahtml.precision(2);
-
             fitxersortidahtml << "<html>\n";
             fitxersortidahtml << "<head>\n";
             fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
@@ -260,18 +256,12 @@ void BalancePrintView::presentar(char *tipus){
             fitxersortidahtml << "<tr><td class=titolcolumnabalanc>lcuenta</td><td class=titolcolumnabalanc> ldenominacion</td><td class=titolcolumnabalanc>lsaldoant</td><td class=titolcolumnabalanc>ldebe</td><td class=titolcolumnabalanc>lhaber</td><td class=titolcolumnabalanc>lsaldo</td><td class=titolcolumnabalanc> ldebeej  </td><td class=titolcolumnabalanc> lhaberej </td><td class=titolcolumnabalanc> lsaldoej </td></tr>\n";
          }// end if
 
-
-
-
-
          while (!cursorapt->eof()) {
             // Acumulamos los totales para al final poder escribirlos
             tsaldoant += atof(cursorapt->valor("asaldo").ascii());
             tsaldo += atof(cursorapt->valor("tsaldo").ascii());
             tdebe += atof(cursorapt->valor("tdebe").ascii());
             thaber += atof(cursorapt->valor("thaber").ascii());
-
-
             QString lcuenta = cursorapt->valor("codigo");
             QString ldenominacion = cursorapt->valor("descripcion");
             double lsaldoant = atof(cursorapt->valor("asaldo").ascii());
@@ -303,8 +293,7 @@ void BalancePrintView::presentar(char *tipus){
          query.sprintf("DROP TABLE balancetmp");
          conexionbase->ejecuta(query);
          conexionbase->commit();
-         
-         
+
          // Hacemos la actualizacion de los saldos totales
          QString totalsaldoant = QString::number(tsaldoant,'f',2);
          QString totaldebe = QString::number(tdebe,'f',2);
@@ -347,3 +336,23 @@ void BalancePrintView::presentar(char *tipus){
    }
 #endif
 }
+
+/** \brief SLOT que responde a la pulsación del botón de selección de canal.
+  * Presenta la ventana de selección de canales \ref selectcanalview
+  */
+void BalancePrintView::boton_canales() {
+    selectcanalview *selcanales = empresaactual->getselcanales();
+    selcanales->exec();
+    selcanales->firstcanal();
+}// end boton_canales
+
+
+/** \brief SLOT que responde a la pulsación del botón de selección de centros de coste.
+  * Presenta la ventana de selección de centros de coste \ref selectccosteview
+  */
+void BalancePrintView::boton_ccostes() {
+    selectccosteview *selccostes = empresaactual->getselccostes();
+    selccostes->exec();
+    selccostes->firstccoste();
+}// end boton_ccostes
+

@@ -168,13 +168,13 @@ void diarioview1::inicializa1(QString finicial, QString ffinal, int ) {
 }// end inicializa1
 
 
-/**************************************************************
- * Se ha pulsado sobre el boton imprimir del formulario
- **************************************************************/
+/** \brief SLOT que responde a la pulsación del botón de imprimir.
+ * Muestra el formulario de impresión de diario y lo ejecuta \ref DiarioPrintView
+ */
 void diarioview1::boton_imprimir() {
    DiarioPrintView *print = new DiarioPrintView(empresaactual,0,0);
-   print->inicializa(conexionbase);
-	print->inicializa1(fechainicial1->text(), fechafinal1->text());
+   print->setFiltro(filt);
+   print->inicializa1(fechainicial1->text(), fechafinal1->text());
    print->exec();
 }// end boton_imprimir
 

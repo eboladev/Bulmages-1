@@ -283,6 +283,7 @@ void extractoview1::boton_fin() {
 void extractoview1::boton_imprimir() {
    ExtractoPrintView *print = new ExtractoPrintView(empresaactual, 0,0);
    print->inicializa1(fechainicial1->text(), fechafinal1->text(), codigoinicial->text(), codigofinal->text());
+   print->setFiltro(filt);
    print->exec();
 }// end if
 
@@ -316,6 +317,8 @@ void extractoview1::ajustes() {
 }// end ajustes
 
 
+/** \brief Esta función se encarga de montar el query que va a hacer la consulta en la base de datos
+  */
 void extractoview1::presentar() {
    fprintf(stderr,"Presentar\n");
    int j,num1;

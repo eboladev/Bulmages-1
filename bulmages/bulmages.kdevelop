@@ -77,7 +77,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>src</activedir>
+      <activedir>fuentes/src</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
@@ -110,6 +110,9 @@
       <argumentsHintDelay>400</argumentsHintDelay>
       <headerCompletionDelay>250</headerCompletionDelay>
     </codecompletion>
+    <designerintegration>
+      <qtdesigner/>
+    </designerintegration>
   </kdevcppsupport>
   <cppsupportpart>
     <filetemplates>
