@@ -59,3 +59,25 @@ CREATE TABLE linamortizacion (
     REFERENCES "borrador" ("idborrador")
 );    
     
+
+DROP FUNCTION reordenaasientos();
+
+CREATE FUNCTION reordenaasientos() RETURNS integer
+    AS '
+DECLARE
+    as RECORD;
+    cont integer;
+BEGIN
+    cont := 1;
+    FOR as IN SELECT * from asiento ORDER BY fecha,ordenasiento LOOP
+	IF (cont <> as.ordenasiento) THEN
+	    UPDATE asiento SET ordenasiento = cont WHERE idasiento = as.idasiento;
+	END IF;
+	cont := cont + 1;
+    END LOOP;
+    RETURN 0;
+END;
+'
+    LANGUAGE plpgsql;
+
+
