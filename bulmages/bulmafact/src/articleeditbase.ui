@@ -923,12 +923,33 @@
         <receiver>articleeditbase</receiver>
         <slot>accept()</slot>
     </connection>
+    <connection>
+        <sender>m_articleDiscount</sender>
+        <signal>lostFocus()</signal>
+        <receiver>articleeditbase</receiver>
+        <slot>articleDiscountLostFocus()</slot>
+    </connection>
+    <connection>
+        <sender>m_articleOverCost</sender>
+        <signal>lostFocus()</signal>
+        <receiver>articleeditbase</receiver>
+        <slot>articleOverCostLostFocus()</slot>
+    </connection>
+    <connection>
+        <sender>m_articleMargin</sender>
+        <signal>lostFocus()</signal>
+        <receiver>articleeditbase</receiver>
+        <slot>articleMarginLostFocus()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>boton_nuevo()</slot>
     <slot>boton_borrar()</slot>
     <slot>boton_newdivision()</slot>
     <slot>accept()</slot>
+    <slot>articleDiscountLostFocus()</slot>
+    <slot>articleOverCostLostFocus()</slot>
+    <slot>articleMarginLostFocus()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

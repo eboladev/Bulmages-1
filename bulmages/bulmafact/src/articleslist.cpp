@@ -75,7 +75,8 @@ CREATE TABLE articulo (
 #define COL_SOBRECOSTEARTICULO 12
 #define COL_MODELOARTICULO 13
 #define COL_IDTIPO_IVA 14
-#define COL_IDLINEA_PROD 15
+#define COL_DESCTIPO_IVA 15
+#define COL_IDLINEA_PROD 16
 
 
 
@@ -94,7 +95,7 @@ void articleslist::inicializa() {
    m_list->setSorting( TRUE );
    m_list->setSelectionMode( QTable::SingleRow );
    m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(16);
+   m_list->setNumCols(17);
    m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Identificador" ) );
    m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código" ) );
    m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción" ) );
@@ -110,6 +111,7 @@ void articleslist::inicializa() {
    m_list->horizontalHeader()->setLabel( COL_SOBRECOSTEARTICULO, tr("Sobrecoste") );
    m_list->horizontalHeader()->setLabel( COL_MODELOARTICULO, tr("Modelo") );
    m_list->horizontalHeader()->setLabel( COL_IDTIPO_IVA, tr("Tipo de IVA") );
+	m_list->horizontalHeader()->setLabel( COL_DESCTIPO_IVA, tr("Tipo de IVA") );
    m_list->horizontalHeader()->setLabel( COL_IDLINEA_PROD, tr("Línea de Producción") );
    
    m_list->setColumnWidth(COL_IDARTICULO,100);
@@ -127,14 +129,17 @@ void articleslist::inicializa() {
    m_list->setColumnWidth(COL_SOBRECOSTEARTICULO,75);
    m_list->setColumnWidth(COL_MODELOARTICULO,200);
    m_list->setColumnWidth(COL_IDTIPO_IVA,50);
+	m_list->setColumnWidth(COL_DESCTIPO_IVA,50);
    m_list->setColumnWidth(COL_IDLINEA_PROD,50);
    
 	//listado->setPaletteBackgroundColor(QColor(150,230,230));
 	// Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
 	m_list->setPaletteBackgroundColor("#FAAFFA");   
 	m_list->setReadOnly(TRUE);        
+	m_list->hideColumn(COL_IDARTICULO);
+	m_list->hideColumn(COL_IDTIPO_IVA);
 	companyact->begin();
-	cursor2 * cur= companyact->cargacursor("SELECT * FROM articulo","unquery");
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM articulo, tipo_iva where articulo.idtipo_iva = tipo_iva.idtipo_iva","unquery");
 	companyact->commit();
 	m_list->setNumRows( cur->numregistros() );
 	int i=0;
@@ -154,6 +159,7 @@ void articleslist::inicializa() {
 		m_list->setText(i,COL_SOBRECOSTEARTICULO,cur->valor("sobrecostearticulo"));
 		m_list->setText(i,COL_MODELOARTICULO,cur->valor("modeloarticulo"));
 		m_list->setText(i,COL_IDTIPO_IVA,cur->valor("idtipo_iva"));
+		m_list->setText(i,COL_DESCTIPO_IVA,cur->valor("desctipo_iva"));
 		m_list->setText(i,COL_IDLINEA_PROD,cur->valor("idlinea_prod"));
 		i++;
 		cur->siguienteregistro();

@@ -379,7 +379,7 @@
         </widget>
         <widget class="QTable">
             <property name="name">
-                <cstring>table1</cstring>
+                <cstring>m_list</cstring>
             </property>
             <property name="numRows">
                 <number>3</number>
@@ -480,9 +480,23 @@
         <receiver>BudgetBase</receiver>
         <slot>searchClient()</slot>
     </connection>
+    <connection>
+        <sender>m_fpresupuesto</sender>
+        <signal>lostFocus()</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>budgetDateLostFocus()</slot>
+    </connection>
+    <connection>
+        <sender>m_vencpresupuesto</sender>
+        <signal>lostFocus()</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>budgetExpiryLostFocus()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>searchClient()</slot>
+    <slot>budgetDateLostFocus()</slot>
+    <slot>budgetExpiryLostFocus()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

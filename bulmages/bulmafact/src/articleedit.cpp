@@ -268,3 +268,17 @@ void articleedit::boton_borrar() {
    }// end if
 }// end boton_borrar
 
+
+void articleedit::articleDiscountLostFocus() {
+	m_articleDiscount->setText(m_articleDiscount->text().replace(",","."));
+}
+
+
+void articleedit::articleMarginLostFocus() {
+	m_articleMargin->setText(m_articleMargin->text().replace(",","."));
+}
+
+
+void articleedit::articleOverCostLostFocus() {
+	m_articleOverCost->setText(m_articleOverCost->text().replace(",","."));
+}

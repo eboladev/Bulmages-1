@@ -515,7 +515,7 @@ CREATE TABLE lpresupuesto (
    descuentolpresupuesto float,
    
    idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
-   idarituclo integer REFERENCES articulo(idarticulo)
+   idarticulo integer REFERENCES articulo(idarticulo)
 );
 
 

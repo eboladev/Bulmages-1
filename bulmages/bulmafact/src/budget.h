@@ -34,12 +34,18 @@ private:
    company *companyact;
    QString m_idpresupuesto;
    QString m_idclient;
+	
 public:
     Budget(company *emp, QWidget *parent = 0, const char *name = 0);
     ~Budget();
     void chargeBudget(QString);
+	 void chargeBudgetLines(QString);
+	 void inicialize();
+	 
 public slots:
    virtual void searchClient();
+	virtual void budgetDateLostFocus();
+	virtual void budgetExpiryLostFocus();
 
 };
 
