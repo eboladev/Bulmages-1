@@ -527,6 +527,11 @@ void Bulmages01::initActions() {
   RecSald->setWhatsThis(tr("Recalcular Saldos Iniciales"));
   connect(RecSald, SIGNAL(activated()), this, SLOT(slotRecSald()));
 
+  ArchDoc = new QAction(tr("Archivo Documental"), tr("&Archivo Documental"), 0, this);
+  ArchDoc->setStatusTip(tr("Archivo Documental"));
+  ArchDoc->setWhatsThis(tr("Archivo Documental"));
+  connect(ArchDoc, SIGNAL(activated()), this, SLOT(slotArchDoc()));
+  
        
   SelectorAction = new QAction( this, "SelectorAction" );
   SelectorAction->setIconSet( QIconSet( QPixmap::fromMimeSource( "tux1.png" ) ) );
@@ -612,6 +617,9 @@ void Bulmages01::initMenuBar() {
   CanalDef->addTo(pHerramientasMenu);
   pHerramientasMenu->insertSeparator();
   RecSald->addTo(pHerramientasMenu);
+  pHerramientasMenu->insertSeparator();
+  ArchDoc->addTo(pHerramientasMenu);
+  
   
   //El menu de empresa
   pEmpresaMenu = new QPopupMenu();
@@ -1124,6 +1132,10 @@ void Bulmages01::slotCCosteDef() {
 void Bulmages01::slotCanalDef() {
    empresaactual.canaldefecto();
 }// end slotNEjercicio
+
+void Bulmages01::slotArchDoc() {
+   empresaactual.archDoc();
+}
 
 void  Bulmages01::mostrar_selector() {
 }

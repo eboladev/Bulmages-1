@@ -122,6 +122,8 @@ public slots:
     virtual void editarasiento();
     virtual void boton_duplicarasiento();
     virtual void boton_fecha();
+    
+    virtual void boton_nuevoasientodocumental();
 
 };
 

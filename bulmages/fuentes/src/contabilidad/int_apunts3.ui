@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>intapunts3dlg</class>
 <comment>Este formulario sirve para la introducción de Apuntes Contables en la contabilidad.
 </comment>
@@ -29,688 +29,11 @@
     <property name="icon">
         <pixmap>image0</pixmap>
     </property>
-    <grid>
+    <vbox>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
-        <widget class="QLayoutWidget" row="2" column="0">
-            <property name="name">
-                <cstring>layout20</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>0</number>
-                </property>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>nomcuenta</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>true</bool>
-                    </property>
-                    <property name="paletteBackgroundColor">
-                        <color>
-                            <red>221</red>
-                            <green>221</green>
-                            <blue>221</blue>
-                        </color>
-                    </property>
-                    <property name="mouseTracking">
-                        <bool>false</bool>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>NoFocus</enum>
-                    </property>
-                    <property name="acceptDrops">
-                        <bool>false</bool>
-                    </property>
-                    <property name="echoMode">
-                        <enum>Normal</enum>
-                    </property>
-                    <property name="dragEnabled">
-                        <bool>false</bool>
-                    </property>
-                    <property name="readOnly">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>TextLabel1_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Totales</string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>totaldebe1</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>false</bool>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>1</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="maximumSize">
-                        <size>
-                            <width>300</width>
-                            <height>32767</height>
-                        </size>
-                    </property>
-                    <property name="palette">
-                        <palette>
-                            <active>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>197</red>
-                                    <green>194</green>
-                                    <blue>197</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>226</red>
-                                    <green>224</green>
-                                    <blue>226</blue>
-                                </color>
-                                <color>
-                                    <red>98</red>
-                                    <green>96</green>
-                                    <blue>98</blue>
-                                </color>
-                                <color>
-                                    <red>131</red>
-                                    <green>129</green>
-                                    <blue>131</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>127</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </active>
-                            <disabled>
-                                <color>
-                                    <red>128</red>
-                                    <green>128</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>197</red>
-                                    <green>194</green>
-                                    <blue>197</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>226</red>
-                                    <green>222</green>
-                                    <blue>226</blue>
-                                </color>
-                                <color>
-                                    <red>98</red>
-                                    <green>96</green>
-                                    <blue>98</blue>
-                                </color>
-                                <color>
-                                    <red>131</red>
-                                    <green>129</green>
-                                    <blue>131</blue>
-                                </color>
-                                <color>
-                                    <red>128</red>
-                                    <green>128</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>128</red>
-                                    <green>128</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>127</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>0</green>
-                                    <blue>255</blue>
-                                </color>
-                            </disabled>
-                            <inactive>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>197</red>
-                                    <green>194</green>
-                                    <blue>197</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>226</red>
-                                    <green>222</green>
-                                    <blue>226</blue>
-                                </color>
-                                <color>
-                                    <red>98</red>
-                                    <green>96</green>
-                                    <blue>98</blue>
-                                </color>
-                                <color>
-                                    <red>131</red>
-                                    <green>129</green>
-                                    <blue>131</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>127</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>0</green>
-                                    <blue>255</blue>
-                                </color>
-                            </inactive>
-                        </palette>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignRight</set>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>totalhaber1</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>false</bool>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>1</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="maximumSize">
-                        <size>
-                            <width>350</width>
-                            <height>32767</height>
-                        </size>
-                    </property>
-                    <property name="paletteBackgroundColor">
-                        <color>
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
-                        </color>
-                    </property>
-                    <property name="palette">
-                        <palette>
-                            <active>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>197</red>
-                                    <green>194</green>
-                                    <blue>197</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>226</red>
-                                    <green>224</green>
-                                    <blue>226</blue>
-                                </color>
-                                <color>
-                                    <red>98</red>
-                                    <green>96</green>
-                                    <blue>98</blue>
-                                </color>
-                                <color>
-                                    <red>131</red>
-                                    <green>129</green>
-                                    <blue>131</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>127</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                            </active>
-                            <disabled>
-                                <color>
-                                    <red>128</red>
-                                    <green>128</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>197</red>
-                                    <green>194</green>
-                                    <blue>197</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>226</red>
-                                    <green>222</green>
-                                    <blue>226</blue>
-                                </color>
-                                <color>
-                                    <red>98</red>
-                                    <green>96</green>
-                                    <blue>98</blue>
-                                </color>
-                                <color>
-                                    <red>131</red>
-                                    <green>129</green>
-                                    <blue>131</blue>
-                                </color>
-                                <color>
-                                    <red>128</red>
-                                    <green>128</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>128</red>
-                                    <green>128</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>127</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>0</green>
-                                    <blue>255</blue>
-                                </color>
-                            </disabled>
-                            <inactive>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>197</red>
-                                    <green>194</green>
-                                    <blue>197</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>226</red>
-                                    <green>222</green>
-                                    <blue>226</blue>
-                                </color>
-                                <color>
-                                    <red>98</red>
-                                    <green>96</green>
-                                    <blue>98</blue>
-                                </color>
-                                <color>
-                                    <red>131</red>
-                                    <green>129</green>
-                                    <blue>131</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>127</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>128</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>255</blue>
-                                </color>
-                                <color>
-                                    <red>255</red>
-                                    <green>0</green>
-                                    <blue>255</blue>
-                                </color>
-                            </inactive>
-                        </palette>
-                    </property>
-                    <property name="alignment">
-                        <set>AlignRight</set>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
-        <widget class="QTable" row="1" column="0">
-            <property name="name">
-                <cstring>tapunts3</cstring>
-            </property>
-            <property name="sizePolicy">
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>7</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                </sizepolicy>
-            </property>
-            <property name="paletteBackgroundColor">
-                <color>
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                </color>
-            </property>
-            <property name="font">
-                <font>
-                </font>
-            </property>
-            <property name="mouseTracking">
-                <bool>true</bool>
-            </property>
-            <property name="focusPolicy">
-                <enum>WheelFocus</enum>
-            </property>
-            <property name="acceptDrops">
-                <bool>true</bool>
-            </property>
-            <property name="frameShadow">
-                <enum>Plain</enum>
-            </property>
-            <property name="resizePolicy">
-                <enum>Default</enum>
-            </property>
-            <property name="dragAutoScroll">
-                <bool>true</bool>
-            </property>
-            <property name="numRows">
-                <number>0</number>
-            </property>
-            <property name="numCols">
-                <number>0</number>
-            </property>
-            <property name="rowMovingEnabled">
-                <bool>true</bool>
-            </property>
-            <property name="columnMovingEnabled">
-                <bool>true</bool>
-            </property>
-            <property name="sorting">
-                <bool>true</bool>
-            </property>
-            <property name="selectionMode">
-                <enum>SingleRow</enum>
-            </property>
-            <property name="focusStyle">
-                <enum>FollowStyle</enum>
-            </property>
-        </widget>
-        <widget class="QLayoutWidget" row="0" column="0">
+        <widget class="QLayoutWidget">
             <property name="name">
                 <cstring>layout19</cstring>
             </property>
@@ -1375,56 +698,748 @@
                 </widget>
             </hbox>
         </widget>
-    </grid>
+        <widget class="QTable1">
+            <property name="name">
+                <cstring>tapunts3</cstring>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout7</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>m_adocumental</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image11</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Asientos Inteligentes</string>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>m_nadjunto</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image12</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Nuevo Asiento</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>180</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>nomcuenta</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="paletteBackgroundColor">
+                        <color>
+                            <red>221</red>
+                            <green>221</green>
+                            <blue>221</blue>
+                        </color>
+                    </property>
+                    <property name="mouseTracking">
+                        <bool>false</bool>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="acceptDrops">
+                        <bool>false</bool>
+                    </property>
+                    <property name="echoMode">
+                        <enum>Normal</enum>
+                    </property>
+                    <property name="dragEnabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>TextLabel1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Totales</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>totaldebe1</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="maximumSize">
+                        <size>
+                            <width>300</width>
+                            <height>32767</height>
+                        </size>
+                    </property>
+                    <property name="palette">
+                        <palette>
+                            <active>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>197</red>
+                                    <green>194</green>
+                                    <blue>197</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>226</red>
+                                    <green>224</green>
+                                    <blue>226</blue>
+                                </color>
+                                <color>
+                                    <red>98</red>
+                                    <green>96</green>
+                                    <blue>98</blue>
+                                </color>
+                                <color>
+                                    <red>131</red>
+                                    <green>129</green>
+                                    <blue>131</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>127</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                            </active>
+                            <disabled>
+                                <color>
+                                    <red>128</red>
+                                    <green>128</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>197</red>
+                                    <green>194</green>
+                                    <blue>197</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>226</red>
+                                    <green>222</green>
+                                    <blue>226</blue>
+                                </color>
+                                <color>
+                                    <red>98</red>
+                                    <green>96</green>
+                                    <blue>98</blue>
+                                </color>
+                                <color>
+                                    <red>131</red>
+                                    <green>129</green>
+                                    <blue>131</blue>
+                                </color>
+                                <color>
+                                    <red>128</red>
+                                    <green>128</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>128</red>
+                                    <green>128</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>127</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>0</green>
+                                    <blue>255</blue>
+                                </color>
+                            </disabled>
+                            <inactive>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>197</red>
+                                    <green>194</green>
+                                    <blue>197</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>226</red>
+                                    <green>222</green>
+                                    <blue>226</blue>
+                                </color>
+                                <color>
+                                    <red>98</red>
+                                    <green>96</green>
+                                    <blue>98</blue>
+                                </color>
+                                <color>
+                                    <red>131</red>
+                                    <green>129</green>
+                                    <blue>131</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>127</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>0</green>
+                                    <blue>255</blue>
+                                </color>
+                            </inactive>
+                        </palette>
+                    </property>
+                    <property name="alignment">
+                        <set>AlignRight</set>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>totalhaber1</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="maximumSize">
+                        <size>
+                            <width>350</width>
+                            <height>32767</height>
+                        </size>
+                    </property>
+                    <property name="paletteBackgroundColor">
+                        <color>
+                            <red>255</red>
+                            <green>255</green>
+                            <blue>255</blue>
+                        </color>
+                    </property>
+                    <property name="palette">
+                        <palette>
+                            <active>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>197</red>
+                                    <green>194</green>
+                                    <blue>197</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>226</red>
+                                    <green>224</green>
+                                    <blue>226</blue>
+                                </color>
+                                <color>
+                                    <red>98</red>
+                                    <green>96</green>
+                                    <blue>98</blue>
+                                </color>
+                                <color>
+                                    <red>131</red>
+                                    <green>129</green>
+                                    <blue>131</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>127</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                            </active>
+                            <disabled>
+                                <color>
+                                    <red>128</red>
+                                    <green>128</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>197</red>
+                                    <green>194</green>
+                                    <blue>197</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>226</red>
+                                    <green>222</green>
+                                    <blue>226</blue>
+                                </color>
+                                <color>
+                                    <red>98</red>
+                                    <green>96</green>
+                                    <blue>98</blue>
+                                </color>
+                                <color>
+                                    <red>131</red>
+                                    <green>129</green>
+                                    <blue>131</blue>
+                                </color>
+                                <color>
+                                    <red>128</red>
+                                    <green>128</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>128</red>
+                                    <green>128</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>127</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>0</green>
+                                    <blue>255</blue>
+                                </color>
+                            </disabled>
+                            <inactive>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>197</red>
+                                    <green>194</green>
+                                    <blue>197</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>226</red>
+                                    <green>222</green>
+                                    <blue>226</blue>
+                                </color>
+                                <color>
+                                    <red>98</red>
+                                    <green>96</green>
+                                    <blue>98</blue>
+                                </color>
+                                <color>
+                                    <red>131</red>
+                                    <green>129</green>
+                                    <blue>131</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>127</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>0</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>128</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>255</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>0</red>
+                                    <green>0</green>
+                                    <blue>255</blue>
+                                </color>
+                                <color>
+                                    <red>255</red>
+                                    <green>0</green>
+                                    <blue>255</blue>
+                                </color>
+                            </inactive>
+                        </palette>
+                    </property>
+                    <property name="alignment">
+                        <set>AlignRight</set>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
 </widget>
+<customwidgets>
+    <customwidget>
+        <class>QTable1</class>
+        <header location="local">/home/tborras/bulmages/fuentes/src/contabilidad/qtable1.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>1</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image13</pixmap>
+        <signal>valueChanged(int, int)</signal>
+        <signal>selectionChanged()</signal>
+        <signal>contextMenuRequested(int, int, const QPoint &amp;)</signal>
+    </customwidget>
+</customwidgets>
 <images>
     <image name="image0">
-        <data format="XPM.GZ" length="1271">789c8dd2cb0ac2301005d07dbf227476455a1fd48df8098a4b415ca4a345172af85888f8ef2696b679dc11872c7293c364162932b55e2d545624b7bbbe1f59f1415f55b67b9c4ecfcd76fe4ad2c9589955aa513a48d25cb15a5ece7bbb27b3a7e1b76c641bb9e469132b1bebbabdd54db407df3e4291d69aaaaafa615af2c3748444d3132d198748c62582f108363ec1339347726402824c48806987e9486c621219404283083011090c24bec1c4332e118c441c2392dec8c431640d228e61897486b83321710d13269e310a91de98b29d00090cff6190f00d7e09fef9d8bc67c9070d031089</data>
+        <data format="PNG" length="398">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000155494441545885c5973d0ec3200c851f1503f789d421397f3244e23e0c4874284e5d02293f56e30559023f3ef3a0a9b2bb053c000d38ef60b411cd97790921e008a50096e2e1bcfb5a2c99ff120780072da29d4be535e28a3a7007b9021042ecc01de43447d403ade2a21ee8113f3a700739cd93f14052b4567cdd5635ec81e9391df4ade2469b310f8c8ac30f78808be7e29738d5ebf2402a9ed2d79053bd660f8c8aa7f59a3c2049dee781a4f00879b307f8632341dee481692e5fb75ef26a0fb49253d476f6d203ade434cfee56d5deaea2077ac849bce55dc97ae01fe4971ea082271141f24b0f00c0ba7dd34b9353ae735f367603a0cf6292e4450f00883960f73779e9ae8f9053aed39d016f71a301c44d381f8f23c89153aef9cea803cbfc215db7b8197c8c49e47c5def787a07d2e09d3842f07f44b6033ce838a667f9cc47c6ac0778f0e390242f7a80ff8aa5a324398d2f199bec3e4103f9eb0000000049454e44ae426082</data>
     </image>
     <image name="image1">
-        <data format="XPM.GZ" length="5646">789c8d974973e3480e85eff52b1c855bc5045aa4488a8c8e3978dff7dd137340929437c99be47562fe7b27130f6cdbb255ed2c9af5198987978b92d41fbf664e7636677efdf1633496f16539535ec8c3ccafea71387cfdcf7ffffdbf1f3fbbf18cff1747c94cfcf35f3f7eee8e67ca99addb9bba01160fd4093f0d936b38caa33c56ae1a8e3b71d28d023f062ee2bc5b047e6bb81b753b89c6c72d4bd08fc109e2f72d87b87b085cc49d48eb5d2977738dd3c8380de665abe1248a13edefc660ef38d45b57ee96c8ef1b6b3eef28271d657a6839f497c5c0627af2022eb51eef2a2789f6276e388dd34ea67c6ddceb06be01a73d17f48681a59ba8be1b19eb7c4b05ce51af50f6f9aaf7d472d023e8a5451ee27cd17016a795f6e7bd96b5ffb931fa6f2b6711e2a531e27360ab970696a483f9d93656ff7cac9ca5c8cfc0451ef2390257caf2da70af6bf9b2d472d85fb20cb6f9596859f7df11d8d6bfab6cfa24c64512f84eb917c1cf89b1c679039c2a4bd8df3d67f5e4069c836fc125fc90b2e5f37ecb65e03b7081f87ccb214e0370a52ccf0de75dd3975a39c57cd11638055f28e711ea8d8d45ebdd83536509f5729716aacfb3ca16e7737001be6c59f5fbe00a71d7b2fa0ff122317dcac015eae5ca85f9a39655bf367621ee82ffa24c0b5d6fea296711f496958b14f94760f37b00ae544fc27e97244be1ef180cbfd253eea5384f9e950b8c8f136531bf4bc6aacf55cb5560d493549934bfec99ff4d6511f4bf322ed3d03fec5797587fda06c33fdf2a4b8dfeb5b28b512f9c7faeead97a1c82b11e14fc97696e7eb6945d5daa9f15e53286fe2d380387f3b3ac729bcf657081e7c78bb2efaf7a1db054219f53b0d55b3346fcb4e5f0fca2b05fab3437fff3ca85f93f54b67c7a55ae32e88d5a0e7a2e8ca7aa7b6947cfe721b8005f832b3c7f2e95f3087c0e4ec135b80097e00ae7bf281711f6f39c31c6b360acf3e7189ce2fccd9525c2f3187e6c3c7c635c678157c182f8b5b1c65d389feaac1dff0dd8fc0fc036fe2be576fc17601b7f1f8ccfababc0367ea76ce37704c6792605b8c0f9b6a2ecea4c9fe78bca558df12db4ace37b55ae63c41f5ad678d88fbe73063e030bf8d1b8aff96f60d30fe741df6723fea4dc8f95253c8ffafdbcd0f72bc95ad6f58bc015e271cb1a3f56f6d3aff1d396357e04c67ac926d8f40f8d753d64036cfaf3c688abffbe603de5118cf594eb9635df8105f171cb1aef806bbcdf755bd6b828bb18bc0ecec0a931f6c31ed8f4f78d11df05d7e0917219834f8cf13eb90a36fdb596f5fc9f030bf8cc18f9072debfbe315b846ff1d63c41363ddbf72af5c59bd0763fdbccb8a31f2090c3f141be37c3d30d6f76d993546fe25b886fe85721d83ef8cd51f1560f3c32dabdf7363f4c77ad735cea3dc18efc7d8effd18f133637c3fc07af6a14fbbc6785f3f35c6fb6dcfb8df0f71ec8f3ec64f9bc678ff5b6d599fd74363e4e3f3e13f81fafeb86e8cfcb596357f60acf9bbe3698dc93761f9bec7f71a3ed385fc922baeb9cfe77cf1b5d2771a7ce9db155ff320b421dff0add7bcfbcad1d71a7ceffb3f20bf51d0fbe86b95af3478ec7d3f86ac277ee617df5ef92d28bdf22ccf7d5699d4e0795f6b21547fe3455ee2653f274bbcc2ab9e07bce6e3eb1f55bed0d8e0cde0e18db7fcffb7798777798ff7f9800fbdaf011ff1f16f354ef8d4f73ce30e471c37bd438bb9cb09a73e72c8d9740d1fcf7cbf9ed7c8b968157cf3cb4c7e44cffc46426e9a06957ed686def32b47546976d06e544aaafdac3cf31df5df3b99d038a70baff1c28b74feb782aaf8bf2474e97d105d4dd5b8f6d50634f0b5861f357cecc66bdcf20bddd1fd340d5fed814634a67b7afcbc0fe8899ec9ef15af319eaef1b17df4e857a6d927d1748dcf2a9f7df00a353edebed3a0599aa3795af0d7efefb3b4683a7f6bd0122dd30aadd21aadd34668dfdf377dcf45da5295771adbb4e3f377698ff6ffc17540877434a1714c27744a67d4a1c85fd3ef317529a1744223a31ee55408ffee1212ffb5c77fd7a93e6b887ffd9273b990cbdf5c5741e15a06329cd0b8915bb9937b79987a8d642c8fbe3dc9b3bc4c68bcca9bccfa2adfb739efc014e66541162734966459566455d6fcb53a711fc9ba1f4193fd241b5e61d3579c585bd9f67fdd915db451f8bd27fb3e57fc2a74c31c3c05078dc2e6b73e0ebcdbdd77d921df67db089e7ceea11cf976fca58f663e4e3e2aa0fea4c2a96fdff9380b0aa1beffe90485f773b019f22389a5fbed7c2441216d04be9883c3505f15b22f7d6c7b1f3dc9a570ecc88973ae7495ab5ddf9dbb0b77e9aedcb51bb8a1bb71b7eeceddcb9b7bf8acc1e247b3e0bdfcc3cb8dec8479afd13459f46dcb8d656bfafdfd29f5f3ff7ffef80b8625ab80</data>
+        <data format="PNG" length="1300">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000004db494441545885ad963f681c5710c67f67d6f0165cec420a1dc8e0031b22c5292427015b292c411a912e551257f95304a70ba91cd28914c1ad9b603701ab081106c3b9d3196cdd05d9e74b2174060b5660c11e58f01e686107f4e052ecdedeeeeddd59b6b3cd30bbefbd99ef9befcd6ca5bddd060b382056508e3ab1df6a057de528bebbfe39005bcdadca9bec172b54b69a5b2847651fa7d9ee13ddd756f01d8520ccbc5745ac2006b40dc12aba3b2deefc79334be675e73a79070b93fc4e4bf7632bcc5da8b178b146f5824ff61c43b8af79b613e02a4575b6c6d295a53e407bbb5d9976fe8918d86c847da5e0db2f57f1ab2e85e718383d7477bb01f507bb98c37dd67efb91d124466de5751a6836c23e8e70fdfbaf7107a08f12134771b24e04e5295ce5c269d02f3577d73779b6d7e1ce1f6ba524f2e73bd390d7ef077d30fcf4c3375970ad3544506f342102638519cfa75a53d4666b284fe19ff5b9fcd91ca111963f5da5f1b8cea54f2ef5c731315503620dcb9717f0cf26b4c73a26d809b97bbf416c34dd171d7cc7c3ab56a9cdce513daf59f9781edff1595c98a7f3a48b98651a8feb49f663343095016515d573d504f92b4d7860b8fd579d56ab4ee769a32085858f96598dbea0e9083131f31fceb372799167ff06c345b9320feca949eadc58eff4b56816176a1027df1b8f9ac8a1290507e83c6dd07db94bf0dc2046e008666667f095cfcccc3980b14c9f122ba5cc7040479ada6c2d51396022c3ee5ec8e6937a21f05673abd2de6e570036eedd22e8859848087a01aee38212e6ce2f02b07465a93f1aefd4440d906880d3109b38f18db0bfd7c982b79bedacd90c925028c257210a456cd37d56b23d27d6404ff710e0975f6f030aac41ac2af23ec25c7bbb5d59fb7da3af500487010bde02463462875bc6de82b11ab87793e5ab5f1174c1880147215138443fa1c37999f592fee0b8c9bdcf31905f3f910180c6c3bb25b14d4232b026368915836f7db4c453f74dd4c0a0a6939e49cc79ae370c2282af5c202eec9b3a0bd4a36b7ddf010df8283482cfffe05b40e0831b5d6038ba8bb3e0c1b5be77c6a3ba3087bfbc92ec80f4b80112ffcdfd6341ffb34bf0a8c1e64ecccfebfb5912050d48043d31cc2faf40bc01ae8658c055ef6cfd19e80af474f14a16341046246cc49d04fd60b19604c9dbfa2f0c3cef26e70fe38325e98479068243c0c660c2241923a97d4bffc0c05e0822104128b90c1c8ab3203c8ac12a88d2459100efe01f18d8d3d9fb2002956b66a55920e2120c68cb9098116427f4f734eceba40cc7402cc811f4720c94fe0744623cc74d32b62aa1cd21b527f4010e52fa63497ed7e221a63c03e559808b19ac8e34382e489c0689a7fb519c246052c483f62b6959ace001da16355098059a982a3e0c6e43162c398368106c8058a74118329106cbf6e5983280ef4cd1808b8b410ff972c89a545168a9b539ff6858ebd2f7d4aa1106cab380188f5403def0efb554f32847afa386b51e5d6ff3201432c240a90f641a38f31ae48320c729729bb383755266609c064e8d6ac0c307bc915a53ae2939865284096235ec76560aefc769a0700b000c9abfd77b2c5eace24988b182874a2d184bce1ff73effddcbd66d1c78288a9db0d4076e3ddce7c6d5395a9d806e476170f1703180878f210d461ae40dfdc0685afba6a08112036b0f9379bdfafe0c00718e46d7516fed379ef7283d0efc0732a290dc071c30fc0000000049454e44ae426082</data>
     </image>
     <image name="image2">
-        <data format="XPM.GZ" length="5454">789ca5d7d972db3a1206e0fb3c852b7d979ac21129ae756a2ebcef8bbc3b5373d12041cb8bbc48b26c796adefdb4d03f78e244b633356158f6a7267e022048ca7f7c5b383fd85df8f6c797d198c757d542d5e7e1c2b7fa693098feebdffffccf97afdd7841fec71dd9bffee3cbd7de78a15ad8bbbf73331827a08eff37b3edcf1c159daa53f8fab93a4a226f1accdc8dba9d24f2aee12461ef2bef32d82cc2851e6f8e5b6b7d387312752b38572749ea6d2b6f8e0b3dbf29d44991f9c1d0e5cc699ca6b9f5f51b6f4ed34cfbd35aebe4e012c75fc0b5dafabc2cee16b1ce470d576aaad4695d747dfb33751621df046b9db8b59eaf0ba75ab78d37877c6bd549476df4fc9c85f1ed06e3fc7b700947adf5f86db856b3afe7dd906f5debd2d72770a2757e6aedeb66479d4765e2c7d78753356b9e6ddb0f5a6bfe2d5c206f499d9765e57d04d7f0ebcc453798485d44a88f82d99fdfdcc2a99a4a6f9ba638dfb53ad44d0597f07e6bcd67b856939fbf32496be4256aa96b7bdb5adb93ba8cd0deafdfb2ca22cc47accea3ae370d61e9b06fbfa52e437f1ee1dafaf359df3f4ed212f767479d95e8dfb23a1c6f4ed41ca9e9d4bbca301e7a56e725fa335117a9de8f66a0e6d4d6de5398e175d8a9c9cfa74d72cc3f2dc325d677a36657a5de63b58d2bdfdefaf9b3759646ba9e4ab8545bd3da8f9f0bb88673751ec1299cc25930d66b02a37fb4d25aaf57575de0fad1b5da6618af85c37cc4c118df5a6b3dde5fdf2a6df35e60cc179faacb12f35faa6d98afefea2a860f5aebf95338d33afbf551b5f343dbea22eaeaf37c15c6786949cd69aecfb33b75e590bf115cebf9af5afbf70bf9fbb74e8bb0bea6c138df83bac4f8cda5ba6d7fabae63e4afb6f675f6ebb97679aaef2bde876b78455d44583f3730d60f2daacb30fe473855f3819a713fd21accfabee255d8e9f5a127b58df579cc777086fa3818ef87462d1744dfc79b3063fcf730e6830f6776595e633c5bea767c6338dc0fb5bac4faa71c0eeb7f5bcd8cfe6dc20ee33b0ad63a3fab6d0c37b0c3fb78148cf78d5157b1d64d4f5d3b9779f75bebf833b58b51efc0999afc7a77aeac717f9ea819e3a10d7595a13f7b30c3ebad75bc67ea3af4ef412de7d3fe1cc20c4fe0d0dfbbe046fbe7d74b93d58cf7f1b33ad4cd8aba89e1533853b31f5fd314a97e1fe30bb8c47a3e866bd47badb5bea796e5adde84c3fd711e8cf5b20187fce560d497e0903f0a46fd5acd61fd5570c85f6fadedaf60c6fd97b5d6fa0eecd07eb7b5d6d7d436c6f54ee10cf56130d607e6cf86fcc5603cef5fe1903f0d46fd455dc5f059309e0f8f30cec7fdd6fafc7e8019be871d7ca9ae63d8c219f21966986087e755ac76e80f2530da53b7b53e7fb17e1cc3580fcec147ea26867bc1f8be7f0867f83eff14dc34de98af86d584ebd734787fec04e3fbdb7db01edf1bff7fdb4719866463bf5b5399dab8ff35c3b76ccca5e9cb7625bf59736d6ee6e5cccf90a36fcdc0dc99fb1fb607f3289f0e7f4d99976146b28dd1f2c94cccb3ec2f5e53f36a167f4e999bb164967d8b1569bd6ad6ccbad9309bd28fd9675b66dbb8b729bf66981dc9b8f3090f329f4b66d7ecc967fbe6c0f4e4d34373648edfa6cccd3891634fe5e85b7366ce67c7cb762169df4dc7f7e4ecd38c48fa3f3b5f2cbfb91fb6ae494c2a9503e9d9e719cf3293995c9b5c5bfb4f9d29a452caec6692f6490619b9062b26237a3b6ee388c9ca9c4c883fcda8246122d7e188ea9f321c596acc21b94f332e652c1db3497dba7a7bac645c4b46f61b193792d0a35bc918fc947129fdb8a37b39cb0719f4408f34a4118de98926f44c2f34a557f9f49516651fd2927c3e969fcbb4f277ce8f19b42ac7add13a6d7cba6fca915b21e54dc6b6d47768f7b7b6bd7732f6e9807a7448479feec77442fb73334ee98ccea5fed97e4c17f49d3a733322e9614c5dd9930f7ec6945246391573334a364ccc1fee7696207fbbd554cecb60c70d5f7eb8f5f94ab66bd96ef8766ec680eff89e1fded91f79c857d28759c288c7fc343763c2cffcf2c336f5fb945f791123a87cc2122ff30a0fdee9c7aa1c7de1db4de5e7ac65ca6bbc2673384b58f7091b92b0c95beff6635b5a204132a435eff0ae1f41e5473092840d49d8e3fd77fb71f0771f7cc2ee2f09cb3ea1c787eff6e308634fb50f3fcdc1a66fbfc7c79271f26e3f4ef94cda0f7f4918f98473245cf077eebcd38f485262eeca9f4689fc3931db33ce652bfc5e70698d25bf334fac9d97612bf9dbd8d9e6b7f64bdb9f97f1e64df09b9bcff8ef9f5ffe02bb80829e</data>
+        <data format="PNG" length="1272">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000004bf494441545885bd96bf6b1c4714c73f27d6300b0eec80037760810ed49c49918b50e14b65750ea4494893387f44489922455019d2b931768a805c98a831288104a930ba138a4fe722e40416ac20863dd0c10edcc23cf0c0a5d8ddbbbd9f1612649bc77776f6fdf8beefbcd952fbb80d0ef0409ca03cf5bf622f5fbcac6db5c2a142113b417b9945113b4378d6e5e1a36ddac7edd265fd95dac7ed4b67beff221c6a4f515ed5dc59af12dc0cc083b06f306f22baaf4370d07cb9cfceb387b49bedd2bb98b81403cd83682808f5b52a8dfb75b4f6293e7ad5877a85bb1735769eef53fb708b7bd1391b8d8de161f3b0f44e069655de3c8886e284c6669dadfb77c651df824d2cbee7639dc52f24f5ebb326613764f7b7c7b48e0e9632b1224e26824f6393186ab72ba3e076606100ff9c86745e85fcfae73ee19b1ee1eb107b6101f8fc8b06baaca86f7e02c0466363b8c8ff520dec3c6d0d839b01df7ef315be060660c5f2e4e91e715f887a21be52e0f9546faf7177b34a75ad825ed5d8d8b2fdd30efb7fecd13ada0598cbc4720da0a8ae07f81aacb5e0e0c747bb84675df69e3fa6d7ef8d68fff2ebef88fb86adfb869aaaa1dfd7d46e97896a355a47d9a629a695a758c933292ee6389698c6e647e9c702ad971d4ccff0e4e7ed89e0003bbf6c13f643ba9d88f02c04a05aaba05530da33edff9d1a00289703780b26319cfc1571d26d4e043e6c1e96dac7ed1240efdf9093d3f428c6714c6dbd4a9cf901e66a60655ee5a3644452754bbe6e9064ecb0dd6c8f8e58fbb85ddafbfd09381f230612504aa1d0e36ce730bdb2489de2049cc20e2c168b490c383562665e4f014c128d4e4f8e17eef758ae0123061f1f49648403d4c29ee64367c458f6dd9535a0802889d29e2631a0302e5eda5323022afd4e90142fd93f770ea8d683a156017b67153efb740bc982373b1d94846865a8dc0cc019506005b40a103134fb756a1f54a8e83220ecbfe812d0447b9a8f7fe88c849bc72b1d360f27e93f7830d41eb05aa5bcbe8688a094ba96a5df237a1d22096c7cdf9d48c29bee49e002caf7eaf89b0da0838f06e49a56a33a6b749e1fccb463661286c670e75615068f410122a0d4f5ac03e98648323e920be7000e6c92d28491825557c30e7819a29c224ac62772e11c38efa749604cc1995c0d3b81a3101230894061842c9c033885e4998e2ab90216e055945a9b1fe94906e66a20ba88c7cebca2e5f25880f328c583cc5d2298c12403f3ef826cf281823ce384cb6163a167b3e02a0deea52d0d3c85b8590dcc3060b0e9b035f1546536b5fd3416fd0ce7c9f6e311dd50b092b6d524c2f8629e6260620ea01149b326bff972f1e4d8482ab09ceebe8c83df184fd4d491022704de582a450dccdc0586386520c9ce71d1995748a268bd2cb8030632957c8a8d48e11a5ba281001fb102c174f0ace75ec688a7c6eb39ddf97e97ade73dcf3530c5c0dc3960b0a8f752dae6569adf6e0381b7858aa55079d14afe9f30ab81b9732040134680aa8c2b94a99e5a811bc58a19f57a5479ce042953d6057335307b0a5cccdeb30e9dd3805aa011b128f2f741f69f905b1007cacb6cbe2f7f9fed8f9380d685c23a3ba3016f5a03614f086e81741427cea23d9fd859b457217631dad353387faf17bc4f310e76ffee4d3030770eec9ee69bce997cae8b279f3cde7f92c99935058ae4180000000049454e44ae426082</data>
     </image>
     <image name="image3">
-        <data format="XPM.GZ" length="1797">789c9dd05d6f9b301480e1fbfc0a14eea2897634895a4dbb4868433fd8d4cb49d32e8c7d9c0025103e4ad36aff7db68f8d1209ac6a562ef2c86f8f4f7a31737e3dff70661793ba214d421dba239533636d9e1f7ffff9fe31995ef98ef8cc2f9dafd32f93a9e750e767b107f97d2dbebb97ea48ae24afaf6e16f15c9248de5042e842722f49e604903b64ec23df15690c4c4d3e4ac673ea23df3497c83b43584ade2a3273db6a12bc7dd10464294917862e92f9c86d4f35ea559131fd50d053ddde6b12e4a321577128c916e676a309c8cc10e30e093e922b8261adb9441e7a72c9074dfd6ed353dd3e49c2d2fc6daaa963e8a9e24213909522183224f791b9a65e239114d0a49a7a72a4c991b12237f43ccf3d3fc43b3da689fb43c57f6ebbb337094bb3977c6f9f9317bc4c0e7b5b132755edc6d54934d050269a98353b6b03ad588a67c4d224d52bc133da885f56a45df9767c5fad471bca8a3a68dbdb3b5b93179bad5b96ad750e0f83c075b7e38df8eddd26bc0f8260b4a1d543cdbb6c13868f638d5838ad6b5565234dc2aaa20055f16eb849929c3111412dabc186d224971160343c47464c3d074ff561b4d1519aa6cd58a322dcdbd6305c1b869b28a2fd462980f52d39e733cde85b3231fba4c373a2d39dffab893ed1ac06cf59e3ad87cf59633bd3bfdf26ff000f13e44b</data>
+        <data format="PNG" length="760">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002bf494441545885b597b18a14411086bf5d7aa11a1466c0e00e4c36d374b8408c8ce52263dfc06730f3197c031f41f005ce40b83330301136116e03612758e886695883eadee99ddddb9b3ddb4e8a9a61baabfef9ff7f6a26d7dfae210006bccc3762e8f30063f39fbf16cccffc448c64f73df7e5265dd408cdf39a31cb757a70bbd6e881dbdf8bcd79a545ecee7b779ce60961d4d90058f46031b0f27aedf5ab86db3fb2c9f71bee3fcca7794598f1053800d1ce6b0182c71a682efa2272d8efcaa7bb959d80c00c6c802a162d223083b347f0f2623c12d3ddcac617a0552802e97900fb18aa0a9a170db7edfd483c98030074ca010108020e9c03bf0609d03c6b582c8f23b1a78293d60cdd5440c4f3e9cbcd41b62f96b249121dde370fe5405ad6800b307f7acefcc9396d80d572451b3c2eaae3fb8f1bdebeb9dc5c7dbd9a94e500510dd1943cb06a57c473551d064445fb1f3880aa413707bf768080814a0431422d82d732cbfac016814e63dbc643f0542278bcb2d340b4adb23e0040b2e316301607d422005452014225427c51657dc075e03c2cd74ebb0c0e2b5a841545a28e4e599e03b1731fa032364ad122402d1687c58a7ed46ab16539e09ccace7bb413d407c0c5dc29fb7188589c62a20f1fe0c0693ee07add8bb0fdaeebf336e63d2204a88da508075ca78db8344cc48eface86798fc8310e98b11cb033a0039b1a32808f1391326d3b1f24447c8ac538308b48a4b14c62e7d9ebd87e1d71485441391fe87ae7b346e701d9eb3c43202154cc071202b38c0b991a722ef8589c0f857d60870b03042421408f44155f0750c80712026ebf639f7232150428cf814e3970f8dd33f00528e303d07380031c088723a5386073041883401f8b706007815c056362090eec20308a03593cc281bda9f8c3c7cf08c93ed5774be43907f6a6e26d65ed62f2fedde5e66e1cfe71ddff5f20a4d179ecdfed2971c80131c25f59f6e56edf225bf20000000049454e44ae426082</data>
     </image>
     <image name="image4">
-        <data format="XPM.GZ" length="5294">789ca5975b531b471085dff91514fde64ab5d14abbdaad541e00713308242e4290ca436b2f20c41d492052f9ef999d3ebdb613c9018761457d9e9d33677a7a7ae4cf9f96fb9df6f2a7cf4bcf63190fd3e5f44a9e963f6593dbdbd9ef7ffcf6e7d24a3d5876bfb524580e567e595a61f7caf2c1fd5dee61db01adfa9f92e5aee2d8f39671cdf7535cb1efa773e340c7f74a6ed6e3501a9e373d0f2a7e0127927abe0567ca342c39ae27e140df4f3c0f8c89c009f8a9e2ccbfdf28396944b5d02f5656c159289e6b9ed3388c077efd03659134f45cabd8ebf159c9d2901cfd0f9ed3bac52b546e2691d7e72be54180f75f4b1e341ab1c68f5795a344fdf1a172b3a6fe3856b6f1c4e03cf3fb253ede83ac69eb0b94e3b059f7e313e534ca233ffe0a2ce047700ebe2c390d63cc2f47e050d72391728278d183b2e41a7f16e52c503da68a35bf7cfea499fb078dd79e7202bf921ac7ca67e044fb092cb544f3a305b67c9a2adbfcdd71c51aaf53b0c56356b1ef27f8cb047c5072164659bde6f955b99934341e13e538437c8e95b300fb73608cf9db60cccfbd8ab5ff046cfbd3a958fd6c1b17da7f08ced1bf698c7e9fff59de4cea899fef465972e4d79372e60e849fffc258e7971618fab26facfa5257ce6d7f2f8d317fb3e2c273088ed0dfafd8f7b37f3f8fa204e7e354b95943be5c2b27358d3fdf8333e4cfba722688ff48d9fc5104c67c82f972c49347156bff0d38877f9dcfc553eb9dac292738bf72a82c767eefc0b9e633bf290f04e7b3a39c06c8f70d659b9f0b30e6e75cb9403cf9116cebf1f951442e7dd4cfabf220527f2460d178f2ae721a697de71763d4df0b70aee75d32e52c48f4bcef28e7c807be56363f3c045b3c6370817e7f3e8a220e359e7c024ee02f0267b85f0ae5a416f87ca60d63e4771b1ce27e7a01277a7ef9029ca1ffce187a3d65417e510e16ccbf6eacf351db18f9780ccef53ee07de541a04c5363cc573746beec81238cdf30c67908c1a2fb459931d6736a8cfbe4196c7ece2bd6f1b7c6589ff9cd11afbe721ae0fc0d8d518f5330fcd19a31eae5b331e2d332c6791954acf5736c0cfd23b0205e7bc61a7fb937c67a6f8d719f63bf52ac9f0263ecef8e31eaf79b7153c76f1a23dfe127b3fd9c186b7ce8c4b8e1d72f5cb1ea5f1963bdcfc6a85f5f8c315f608cfb4dc016bf4b633def64e32d3e4fc6dacf0db0edffc818f5ecd1187e768d71fefbc6f83ed355ce110fae57acfa37c6c8af9a31ead1b531f4903fb9e5ffd818eb298c51df768cb55e31d69f0bf667608cfc343dd43f7a3346be4f8cd58fd8fa44ef47423cf21ce7ffd818fb9d1be3fbdfd418f76ba762bd8f56950bc44366c6f87ed535c67d4c605bff83b1e62b25c6a8c7a667f709ea85d5dfee98c93db2e0ef80d31f37af299ccd6d39177cc9c457ffade1e69aa730e46b1e398d1bbee53bbee7879ff2f1e87c3cf1338f79c2537ee1d70ffbc878e656f3c66bbcce1bdce24ddee2ed0ffb18f20eeff217dee37d6ef3011f2ed658e823e30e77f9c8291cf3099f728fcf7ec247dfade4dc695c3817ab6e976bf376fa873e02ae738343178d889b1c73424cf4eff5fcc807090d28a58c722ae892ae38712ac3f91af37dd0358de886fb744b77744f0f5c9a78a4a78ff8a0671ad3c4694ce9855e694633f71e7dc8c79426f4466baeadd306b56893b668db297d201eb443bbf485f6689fda74c09774e8543aee79b70fead2111dd389d338a51e9d398d3e6dbacfcdefe341e774bec8075dd02ad52870ad4e0d0a29a2d09dbe4b6a9a8f7234c5faccf34189b090943f03aa4bca05453cf24afd321e7efcf95795793ec4fd67470ab9942b19cab58c782437cec7a8f422b77287d1559be743eee5411ee5499e652c1377fe0ba71151877b329517af117ffbccf5f12a33a7f1286fb226ebb2212deab8d1ae75c7b2295bdf7a58e8639ba7b223bbf245f664dfed6847dadec381d3f8a78f78818f43e93895ae1cc9b19c940aee3995b64c69263da7513990b22a6dcff571e614fa722e17d22ad7019569158f6ab46f73f34356a52681d4bf57287d3815b72f5f472fce53f735399491d4dd4e42857beef3d067097d3b7ae1799949244d37dafbf0f168b1cf91f2f303e776e86afad0b5f2962a3877e38b52c169bcb77e98c2b56bb929c88d7377b3d887c4ef52d9403ce6fa105727dffb2cd048abdd7a5f9baff1bfdaca5fbf2efd0d5f6c1f6a</data>
+        <data format="PNG" length="1171">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000045a494441545885b5973d685c471485bf3523b8035bcc800b2da8d0828b6c4820b2c0244a13db950d291275769910701c57b24ba74a3a87544e11ecce7197a4092aed4a524890d7e4471158b08288ec2b16de8096cc050d6c8a79bb96fcb7ab581e580e17dede3bf7cc993333b53f37fe1d6802311092e28c3069bcf6479bb959a99100039a1431c261e2daca6fff0c16de6c30e9287741802244ca3e74b6da34a7a5364c7e583ce68c9bb8387be00554418ca5b1f9318b336d5a3bcb83d6a3e541e793f9c1fee42418171f0b294c3e812928138880860d1ac7efc2f477d8f7cee3dfbfc0e2b73fd1fdfcec6812fb697f5e7c3806006f334e1777e104d05b839fcfc2d69760b669361cf3a72667c26406ecc413887bf9eb285f6531ec0004f87519c23d3aee0cb0fd8a3400d829880fbfc0ce6a551c50401d654f78fdd22deefcb0f28a343064c0dcce41a8b654e94095b69ee4dec336e0686febe09568c06e7d0f330524c99d8b8320948512cf2dd19a6de19c477775a485173171780676ae425d6047c04866c178fe3a7e1e3fd34293e2eb42a91160ec6e308762e0ef07d8d714fa4256a042f4c4a244def9088c204e08aa78f1c0516ba0b89e4da05fadbd7a50a1e0249c98cbfe90024e8452cb110347a381dd0ec8069806040fe2a1ef2039e21b17f0758f028d7a0301bcd8110347a381ad1b30db801e150b80f16c6c06fce98bc454e2c5125389addb8935301903bb25b096959f2afa69c12ef0f61224f0753fc29878a106e64f2d0ede5db8382031a1136edf8613cddcb52a888502ba9b25f6ca87d5511d11b1688a78b14f6960fed4e220275386029e5f581c8cdf057b00f7416661a780bacbcb6084eecc795a758bf6c18945b5c2f45803ef2e5c1c1c4c28072631560371f326ccce424fc1b8fc5f9a741f15343f5822285087a01191cc044037945591e1d07d3f4638560336ad82f190aa4b8b69028ad242c4e20448e08c25f422f4a1db2b91a78a0fe383389e8142010749411ad97b7eef20e72e0350f44a4288748a2e3129a5862c3c0d3ca69be7e2040c4c832e42fd342407d2a4939a197b311751c58bcb6b6f5c56bbb817763e1c631928cb903ddf34c12db2fae303ece9254aed620d440d204299025ea04c0104820ef33eab73050aa0187f167453139f4ae82bab5f5fa779e956f67c9377a41547ac1888fd8ca52a4e9eccabc0c166d757d76b637de0fec30eed62990605ad6b775055c440a98a3542d4801547d90f78114a0d7939461d1707f2adacaed4f63be258064441fa1de6aedcc8ef01f1a0b12a961940c1d71d11684e67076c38cf90f6f5d5f5da93ef8289cf82d65b739cb97693a095876b09064a0d5893a975d316a95b1ac76d2e69189d052bab2bb597ba0f2c7c7a35bf07bccfae386589bbe0b0f94c1839e0f0bd403e138eea3e10f780a97d18c156b7b1acf6ead956ed384d1184a3bb0fd829606f1fda6187199d80568866474427bf0f98900237bf59a32422589488c71e49fc2403cf4223daad7d76f9ece03904bcf418a701a34959ff65fd7fbf6e5f16ff0361ac491672c173520000000049454e44ae426082</data>
     </image>
     <image name="image5">
-        <data format="XPM.GZ" length="2007">789c85925d6fda301885eff91511b9aba6766510094dbba01f097440bf3fa75dc4768cdd9014487069a6fdf7d97e6d376d43e7108947e7f8e4f84df676bcbbb389b7b3d72acab8e4d8c32c5e793b649d652fbf7efff8d36a7feb78f2d7eb7afbed2fadf6ae87bde9539ea8ff6bf9dfffaa97c25b857ddcefc75d85070ae36e9fc458610118ef23ad960e894264b0079868c4162f0d26b0f7d1a1569f005107f7145e2b445d6b1e01a20ee08543bd776511f61e190cc03cd448246af34f8b58e39dc118d47b85b88712883a04c401d1f8a290f4482709140e0c0680a71a138b1b877aceb1c11854dfa1566f0c26a03e3bd4ea5c611258f3954163ce1d6af50430312523875aad2c52ad8e0d9a924b8ba03e684cecde8941630e2d8259188c01a70ea9c26383a624b108e6738534b0e6cca051b943ad2e00a9390273a8d599c100f04c23b56a6ad0a8d4a0792e36480177ffb3b4c78f7ddfde689b07bb25dfea671e3a6384c5fcf14352dd4353c6e759fef43ea9fe2c4a17ccc764b942db3d384d392a921215eb4f721823e279f382b67bb02a54f903bf3c389ccb49cccb26cf8c2d7329a2a3633d075e34f461228caabc2a8611659cfb6455bef5a8a30b112da32a42a348d697b3f257c5bbf9a41917220ca3b01c9ea833ce318b7e96754fca32463221c661888e2654762b90bad6af1ef924c6994c9a86bc184e24732eaac1a6a87b58ba9016224221d048e790ea7433a8e7a4e94c25e99c72389647e0619efb79f9ea91fba4453692b589ee4344543de7792d87ea9c3399732e38cc479d300a6b7da401fa642a67142d64de582cc3f1db1c261f46a0cf45ac9aa9694d6b7d60d2d06a862eafb86ea6ce683cfa9ba9dfd737a99b95f1ecae5fd7edf06e34ba8f6c3797535f87d9e4e16a92c1ace455367864b7f4cdac9a3dd4cd5ccdaad93373ef6e4b1ff7ddc2eba14d7d50f1ee6af0d4e700abc1f371b5ff7e6ffd0337ea2565</data>
+        <data format="PNG" length="1111">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000041e494441545885bd97b16b243714c67f6b647882318c20060fa459c8150bd7380e47e2eb4cba5c73f5fd65290329af0c570537e66cf065ef0229369d9b80d369c00b7a60c1a69034b3ebf3ecedae2182e5f1663592de37dff7491a4dafa71001031a1531f2bfe646a3323e3a5e686c1153779dd6e51f3fcc68c68cd2f3f2ff6e7134bd9ed2d49345f3ccb249bbbd09d4b5e5fcf74b9aaf65f45424f6342a98e109430002781f2080c6166b408d7273a38be58a9607df34dfeb56f658bb079b81716241a136354438fbee073800ff0f0b222bb06e93af47603f2d020b21061068a382032a38fbfe1484272161d622501611c08a85397cfc73c6e595a7b68e368058d0e87979fa6a31bd9c8eb645c27c89031d02776005ce7e3c46b0fcdb7a240a5e5b667fe5be0f2add246e86c07d9a1c05672cbe0541f05171558d4678fbcb6f6894c5e4688266b6a78ae1ddc5272613196dcf81a545843ce8ed3cc942a3e2a454027208c7cfc7b8b1a5796669726ca3f2e6f529b3d9ede2310eac574169012c10e6509b248bba72488e1a3dce38b4cdfdeff2cfa74a4384e6b06136d3c5430e0c2370df4f0ee0e7010cb4ea412c1afb28c6e1d5a77102201931e97d63fccd98e6503e4362980345820698271f089a2a4641c4a11aa8c5a1111a7110351947005ba5f76a53c3018c8da31641fe1666b376513831ac825c79d080158bd780cb51c4d2aacf9307c4808f1e11e955131271df5d9c2357ae43aac49317278be9f574f43802a572cdfad7de093b242421e1aaf4191ae3d238453519b937af7f22286884b6f58811ceafced33c831cd887a0e55b26070c9a38e0638aaae9b9d7b0ca817b7ad548ea9f26bf458ce0638b1897e619dc0b327cc48cc05274264559424423b8cc850e019b1094684103755503d064df00067ca0f3feb4c2a02586ae222ba0b1cf3b0e2c21e07d20d0aba68d8a089d6f00033e50bcdf14049690c84e18b447c219dbfb80e6f7eff2ff852b31705425d88b6f0c722084472a37ab1cb0d2732121d07320dc25f9782dbba7472a4b1bb37ab20a063960ed52e5baca81107b04c4f48868046b1c3a576c4126bfd754491d75ce8b6f0c7380c401f681839c1fa4d55a07c180ad735ea75c0c78f588f4eae990d255d514df281c306284f38b73ea3f96f6f7f060bfff521e3d4d46c265077ce81b9d6ab26f140e188dca64d28c4e5e9c2cd8b0fdfaf35beca1e2be12fcdce32a8b8820229d73060d5863f171d5418b6f140e744e38bd9eaeecd7eb4fb36ef1edf331619e08a7aa4825e9fb2f73675935d2c74739b0cd99ae393a8203b08dc5d61637765059a8867dc3ebb26a7a0eeced729a5df10dcb4ebe5138b0b7cb69f633dfb0eb7d63250e71605b243a00f2bdc166c9da7d9bf60297a2dbcfe783ec1bd6ad72c0ec72a7bbfcf009bd5adddfb78d2b3eb02d079ab18e5e9ebeda58b683adf8c02eb7daf797ef9f7c3bc6c07ff757ea0655ec2b850000000049454e44ae426082</data>
     </image>
     <image name="image6">
-        <data format="XPM.GZ" length="8078">789cbdd7596f22491207f0f7fe1456c7db6895c351149456fbe0dbd8068c6f7bb50f91916030870fc0d768bffb2619ffa83e3c2bedcc483b8cddfdebaa8c8c8c3caaf8f5978deb93cec62fbf7e592c7939960d19f1f3c62f61359bbdfff35ffff8edcbd77a6d63fd7f9e6fd4befeedcbd7fe724336ba0ff3c11a2edebf4195f4dfda52875bf5626d3f54572b5975edb0656ea460be05676ab980a5594ff7cf4afb747f30b324bf9a7d962c6669247b75ada2d7f9d28ceb2fa5c3dad48033ed8fafcd2dedffcccc295e18944ef98453b3f62733b3f647964f4be3c9dcacf1fc69e9148fad7d4be3857ee994af7f336b7c3e80a5d0fabc9b353e5f95d6f87b66d4af593ac5e77d33f247fff58ac6a71d33da0f4a6b7ee5fd41dbdfc35991eea74db3e647dba535bfb919fd63fdd46dfc5d33e62f836d3c2766bd1e102fcbd40ef96718afe7e4560df7fb95ba9e21ff0f18f321e730dacbd48cf63d7348fbc5ebfa6a65586f3e370ff294cf2e9c21dec4acfdfbba59eff719dc1ae87edc86d1bf8cccb8aef56b356c7ec666adafdb346b7f525ed7fee4de3cd47cdfe186b69754cfeab7f92118eb279ca8339b4f33e6cfd7cc9a2fb561ab67c78cf19caacbfe1d5cc0fb661d8ffb80839ad379538df5d7f9095318f9c99619edcf608c2f6cab2d9edca9f32aea95aed7e27835be6cc282f95baa637df5fa07dc407e0146fe7e61d6fbc3833aafe23c3b36a3ff37b3ce5718c20dac8f77b35ef7d5d2c3d4ff0d5c20df737513f1796ad6f694f64fadc870fe849e3ace87ce9f33637e2fd5963fb5601b7f515aebb30b17f0031c10ffd9acf9531a5fbdda68e0fcecc001f377a4b6fe7c01078c6fd7ace3e356e914dfdfa99b55b4ff30a35e4f66bddf697f45dd9e6f6d75cc5ff7c7b119e3f7ea6615f3f56a463e68df6c20df66693d6fd05f13f5964cddaa6afdf8c88c7c2b66cd37a4f335abda7a097b6acb27ec9bb17f7660dccf6cd6eb94c358cfe1a0b4e6f360d67c6817b6f93837637e0fd596bf4be75dc68d0aeaabd7d9f2a3058c783451b7307fae62c67529adf51b9a319fc730eacdb919f54bfbb751cbb1de58d4e5f8ba6aeb9f7a66ccc7168cf9f387668d2f8f70407e0333f6f34369ddcf0d7561eb670cdbf53b35dbf8d2f9d1e0bc8af79d5db5e5c704dbfa73b0e5fb68c67c1530f2a5baba407fbe0ddb79b409a35ebca3b6fc7802a3de94f67f5ecb1bfafee06ee102ef176318fb8d076acb973ab0e577a42e30ff5483515f09a5359f337599df296ce7e90866cc5f7affcce3f8907f13b6f9bb2daded337519ff1e463cde567b9852fc66bdc0f946c77081f873b5e527025bbc437880f5a0f64d9cb7ceab5b553d5f1dc1386f5d0bc6f398ded4859d474fb0addf869ab13efd3e8cfea9aaf639f23b8191af4beb3dbe9ee179e2cee102f984d29affbd19e37984b15fdd9d19f57b551776be1ea8cbfa7975cc4fd76bbdb4e6db872d5f586a703a5f5bbeecffc98cfc9ed585bdefacd41eedfd0d8cfec86cf5aba8ad3f8ffe04f7bb745e175981f3ddbdc2e85f966a8bef6730e2fba9ba8cbf0bdb7a477cb1f594f65f21859dbf6318cf0f2233aeefc3f6fcf8507355f73bdd99d1fe4ced6b68df84918fdf560be64b16a5b55eb7b0ed871e8cfc433a9f382bb09ea4a6663cefc21bccbafe68090ff07cbf554b0dcf8f4d33d6ff4569cde71ab67cd05f594fbd3f8e1fcfbb396ccfdf7d98e127b5d5878630239f7775ec4ff3b986d11f57d5c1ea7905e3ba907a80fc438ae7637db07ecfd4be86f7891738c7fa3f30e3fc7f55c7fef5f93953075b6f3bb0cddf156cf5eac2b61f066acbcfe530da07ed2ff81cfb6162c6fb751f1e207fbb6ef3fbac8e5f57b49e1f6acb9757b09d175ba5f5fa10b6fd35525bbeb207637c219d3fd2b0fee5562d98dfb084311ee99991ef93baccef0db67cd03e603df0a3daeae532d8e63fad0f09713d69bd4ed571bdebf791159c63bf108cf5e96eccd89f1d7880eb4333dea71eccc8ef455dd6ef5e5de67b02dbfe69a887b65ed3f330c4fa20ff13d8c65329adf9338cf996421d305e5a9911ff19c6f8e5c88cf8d766acf783d2ba7ef7d4b61efc04b6f5de51db785c15b6f59dea1106717cdaff0d8cf148571d703eb9c28cef930bd8f26dc2a80f9d9b317f6dd8f643c58c7c11af9c9f9abaccbf07dbf53a6ceb3fbd7f0e72ab979b97d6f5780c5b3eb97a60e3bb34a3de23d8ea3f555bff740adbf3bc030f914f7a9e0dbe8dbf05637dca5569cdef505d9e9777b08df705b6fd775c5adb1fc016ff596df5f397b0e51f60cb378d779897fd3fc1f67cbc2cadf92c607bdfbc80edf9f8a81ea29eeebab4b6bf822d5e17463ea4ed87d61f39d8eadd866dff4ed565fc156cf197b0b59fc1e8afbffc6b9fff6f0c478e9d77e2e4cfc670c10ddcd0ddb9d1e728ff4b0c3776f76ee2a66ee6e6eee18fc7708feec93dbb855bba957b89515edddbcf5134867b771f6e337eb6e2cf76fcd971bbeb3bdd9edb7707b1e52ac668c7dfedf8f74377f46314c4388ed766aee3baae177f9fb8be3b7567eedc5db8cbf8ef57f1e73ae5318d7fbf71b7bf1ba312efaac6d6355777996bb8dc355dcb1529f2f25b1ee4d6552122a6ef664863905088111a2942950634a4bbd8ce227c97078de29f9734a6fb4f312631fa54a3d08ce6f490dacf7e2f0f7a8cf73ed1f3a7180be451a5659cc5eb9f229479d08a5ee835febcd13b7dd0266dd136ed20c6aed683f668ffbbf63fe54107d4a6433aa263eac49f6efcdda313ea5b0c3ac548cee8fc538494075dd065acdb155dd30ddd5285aa54a33a65d4408cdc75b51ed4a416153461470b26caa9c74cbbf12b717ca9e078705095ef78c463bee7094f79c673271a831fd2ba68f0a37be7277ee6052f698f57fcc2affcc6effcc19bbcc543dee69d18631c7f26bccb7bbccf07658c76ac69ac071ff2919bf171da1bb3f86f35ee7037b6edc5cf09f7f934f63fe6333ee78b98c3255ff1f5b718dc4979dcf0ed7a96b912db7763d45efc9e53e3fafafb05e7dce41617de79f2ecbd97f55ba71f5a0c7f17e764ea477e9cead8f5f77e12233dfaa99ff979fc3cf847ffe49ffdc22ffdcaaf78dfbff857ffe6dfd7ab04313ee29c74fca6df4a31eaaeeab7fd8edff57b7edf1ff8b63ff447dcf2c7bee3bbbee74f7c3f46107feacf7e88b16e77ee2fdccc5f72c75fc531f4fd75fcb9e1ccdf72ee2bbeea6bbe1edff21bf1bdbf9ff268fad677310a97f991b858cf5815218aef27ae2fde4f45d6ef7a32943b19c958ee6512dfd4a7eb3c6426f3743e2086c4b99547799267d7f31377b29e0b59c892ebb2f2b7f222aff1f326eff2219bb225dbb213ab8a91943176654ff6f9f5bbf51977ad1cc45d36a20b69cba11cc9b174a42b3d3991be9cca999ccb85ee3b8be167eb91fcf059effdb69bcaa55bc8558c721da3dcc428b75291aad4642ef51f6348268d4fbbed3aee967866481ea334a5254570810287f8f523c437601d89c50843f711ee7e67bf4ed399d10e23b90c6369c5f62edcc7df93300d333b4110631e1e3e65310b8f6e15dfe79fc273588465588597f01adec27bf8089bfe2c6c7d8ab11d76c2ee7a8f86bdf8cd713f1c8476380c47e138744237f4c2095fc5f570ea9b320ffd18e1d446529ec9f2673f7f3dc61f7d66fff7cfd77ffffdcb7f007442fb5a</data>
+        <data format="PNG" length="1757">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000006a4494441545885bd9741881c5919c77f133af00a7ae01574a00b12c83be4501d859d4e023bede69068609d4470231ed6a0207b5aa2978daca0bb7ad8040f4b8ede965cc4bdc826a2493c64d373d84db788d30d6a5705b7c96b4c48153bc5544137530f52501e5ecdf4644cc68331dfe5f5575deffbeaffaffff77daf16468311184080310621c44bf5f76526030199c91042f0b2fd85d160f4c2907dfc275dfa8d16611c70e597e700180d460b7beddff7a2905cbf13974bf536fe0981a8b759f9f625008eb68f967bed5ff85f35a043b70c135839d1a47ddc8145c843b8f6c7801ffdf4a865a1375a78e11ab8be1a97ddbe5b6a13f1dedb8af66b3679ba9ee3f840c3f0bd1fdeb42c748e967b6ae0d8afb252488559a7b210f0a13050139822441889f9f418001f5ebd8b6af8880392b3df7420071c2005dcf9fade2f34ddd5dfd2fffcfde73251cb4cc6e9573adcfa994d1d011e1e3a87a603610ab7c71e573fec215f5fe3e2a988766309ff94c03be490e7e038904fc1712d03aeb4d7dffaae224a14fdcf2b5c157229e4f65a934242612104392807d229c84518a6e0d561e9207cf4e30ec37e8f8b6f9cc53d52057c62939383b36891bb071c58074782fa2aac1c3f4dffdc4784632bc82d26a4903b3480438a4d1e4e81458b5cb910c4e08c21d3032ebfdb792a39fb21afe8cfa796f6743d0709519203d039235956cb50376cdb0e0dec934202012e1689bf087a0abe0b83bf83f3d7145987b77ed0e629dbbf070319780d0722f00e39ac9c814bcbfef656630c52c8b906289648015131e02dc2ed1b01be54f8df706df0ddb68381dd1a3099c3d5df05285a680244ad4537d68857ef610acdb177282942283cab81bc126f5031903d04afe6d13ee53c23f3de0c989943eb1dcdd249452a40c9163a81f3e7ce329c04a8c6057492d3edbb6471774b03103d996b401c024d44faf0f9f99fa901015fffa047e784e2d21b0ee74fd9582b674028f04fb648458e900ed92c8099deaa028db7bf455e31104e414f5b7ced838853af784c9280c3b2c524c9392c214c344a2a7462400a4c12e24b9feefd8cefbcda61e55b309840ffa115725f837fc06aab377698dcb8057505e3739506589ad7fd144401577fdf63ed4a877896b274b84598e428e9546b8b20ce51d2adfc36619c73f1fb1e19f0c923fb1a01f43a50b3c9c33fc364f516d414983e8065c01496fe2d0dbc7f03968e2fd13a02ada96bcbe988d58377c0219d42fb2b0e8347a00e3a0c63900d87eb63f004980a79b80e6ad15653f8594a1cf7c028a887761eb055054030b5378753f8e44ecee5370de010d54064c0e25ca8de22f4beb04cddbe0fd13ac4598e993974b314635cfa46c34cd17dd8c3641e661640a180d03290fc04c0f6015368d4a2553306e268c8859316b9e78006ccb4129c818f3f0393c0eab0ba3f81260e5102192e6902f9ba427f11618cc210012d4043dd8722846cd53e806540d90ee8c0d51b112bcb9d6db1eb27e07970fb1f39c31856c790d7218c410161944301c3388502f224229bc2241e8010181159c44540b5038cdc8e5f75424bbfcea137919c5faefecd41003d6ddf75770c7edda25712820294743005205d520359e4614c8e906da86944adea80b58a819a82ecdafc016c27b4bddfcc209b0cb970d26a42d7a017db8114268084de244749eb9b02c2d832a0ef47c4111671dda910577483f585b27e72fd69060c21be0b577e033f3fd781aa1d8b0cda0d4867b0dc04af00251c7402beb4ecf80d87348376d3a379009a873c9afb039a42216b995d4588902da88550cce907e05eef1efedb1be5dd2fcb52bef9b8bc39d82c9f69d5e58d0dfbe3f1e3cdb2dc2ccb070f36caf2cbb21c058fcbcd7f95e5dae041b9f1cfb2bcd71b958fffb659deedae950ffeb259defcc35a295e5b2b3978a9044aa01c0d46730d446300cdd9a5e7f4ffaae7bbae036935ed32500d1766d06a78e819f80d0519f88d163ad3f88d366440a130490849b81d72c779007e7d4773f1f5ceb393ef7888edb99fe5d080284ba1013a8b6849bb8a06e84ca31a2d7412201a706d75088507e6f676b8edf3405e68c24782cb67f6cecf936aea4d77ce7db762c29b339159264406aad922cc34bdb009a6bb1d6a34182d6c9f0726dae3f0216d0b7e2fdb0ff934c75974881ea678759760a2f14493f07e882714c178882714d7c701ea89222c429a46114f4298cde97ffa4c08989ae2f4bb03fc864f584d399210257d74664082494254dd274c32840413775152112631d1ba208bbb80826250359f21f3525490cdcb6feb4c6867c1a74789811858dd057ab7dfdfe50fffcb5b7b9efd07032fd3d67a6b0b4f7d178c06a385dde7f5ffe7baf5852485e4df1c5e70a600c918ce0000000049454e44ae426082</data>
     </image>
     <image name="image7">
-        <data format="XPM.GZ" length="3870">789ca5d45953e3381486e17b7e450add5153a7e335714dcd0501c24e43af744fcd852cc99040086461eb9aff3eb2ce2793d029e23088be78cae9d73a96c9878dc6f9e97163e3c3da7822273dd5509772d4d8d0d3c1e0e9ef7ffefab5b61e850dfb1b34a346b8fec7dafad9a4a11a27c31b53823a16a2e97e9c374bb7a32cc96367593a5352aac4f9a6b48ca5812fd979083f3babdc68ee3f95ce6315c28f700aef789bd479db5957d7a7b0c4f56bd8b085ebabc4ef5f3cc231e6b965fbcf9360eb10bea8ecee27c6cebaa9d01bb103dfbf81dbf0841d35c3ccf5eed9dacfb35599e7f906cb82f73f28ad93c0dfafc70efdfd2e61cc2386ec48f1fd449f1dc7f0163bc912e9fccc6e07eddcddff909de98ccff7135b2692fd95ad25f61bc206bef2e6fdd303db8498a77036a19fc7b0233f8f64c7ed907d01fb7976d9599629e70eacd914b06580fda795f9f35376b57fecc7ef8fc6700adf552e9c27b084bf943669e4dfa73318f3d1293bf6f35db35b3a757f6ce281edf7476d38c17eef60091fb255a8b4f315db3f7f91b38d7f5f15ece7e9c378bfc854e67986b0813f3a9bd8cf7702e3fda663769234dbce4def80e7dd61a74114386fc2199b0ed8ad20e2f3bd654b8379bbec3cc4f3f9c9563277f3d33e5be379d0885ded5fb38b101ec0fe3c93d2451afbf38ad989ffbe8be004e727e08ce7a31fec5682f9eed9ed2471e74b193bf7f3ecb3758af323d8c07bec02e7473dd8ef57c1382f710017b87eee5c2419f6ff1dd6f0113b0de0cfec96c679ecb2db382f6ab1957ffe5d38c53c9a5ded7f9b5ded7f0ff6df6f398cfd9e4d66178937979cff74b91636f2054b912643055dd0e5bb1b3ddbe8d3155dd3806edebd8f010ded3e6e6ded6ebe52bb51ee6444637775345f59a1513e9131ae6a9abc3c97151b86a67832857d36f21d8d729a7b92b36bc5069fcdd0eee1c13ed9477aa267daa4ce8a0de51a63dab2134d699b766a34bab44b7bafce779f0ee8d07ee6d6aee9d246978eec9aad285b38a613fae82ac2beb36f37b8305b79299cd2197db2136dd56e1cd1675b992f7cb18daff4ade62c47f49dcee907fda4e64c21b06f4768ffd579a65c8828a664a690dab329ec7aa875b6ad0585b62df02a6abe1fd96f056397afd46ad823142f0521456edf325b11ca16eeea34849e2b1851880b57e9bb3559de5850b8143dd1175776277dbb8fa58d57856b1406e2460c5dc52c6bbc2adc921277288cc4584cc4d455de6edccf17ecdf7d4f3ca0f0289ec4f3f206ed89cd99826bd0407450d8aa338bddc9b6d8b1856e5528bf81b4d8ad0afda5fb282b7b625f1cb886f20d5b39e437a45ec3757e6bd8428d86fd7fffbb61afd45f0b1bb6d259652d6eacbad6fffd73ed3f2ca2ef5b</data>
+        <data format="PNG" length="1032">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000003cf494441545885ad97cf6b1b4714c73f362b78032dec420e16f450410f754ea99c421d11688e0ea134bdd94d0ba9da5e820f8196d09438246dc829b7babd6ce921f5b5b742ff01b95093b81023156a902106f950d0820d33b003ea6166ad552cc9fae107627656ecbceff7bbdff76676e6d95fcfc00201186b9040ba7329752420f73f8c3a6fec3629cd99999ef55e5ddf1a82ec66ff11caf311a3844e5de2e4c88d0668ed373bc5d081189467363fc1c2abf35143817f1edac6ddbbfa7e99d67fd219b6fe6c1e515ea66c3e6a680071cc2301ac410550bed805d16ffdd941c8dc7c0c050aa02c841eb4884001e65e834b17072b313b0859e681b1423905b2e701d4eb1086507eaf4c2b39a9c499790080d4794000ac8006adc11c815828bf5da679d0abc4a955305614702404440c1b7f3cefbb6ef3403a59890667e5812c5400da42e98d22a57345120bed83368935685f1ddb2f9e73e3a36b9dda666de66c3d80af06df940cd04edaf8bcae3a021057b4137a606b031e9621d5fd1528b8313ca8133ebe44b4f51b04108a2081108960f0cf8eed81ad0df8e986bb7e5c816f6a5050bd0aa4c05e1d737f013934842ffe040bad77afbad2b4e0dbd6987d204b9e81dadf7620f24aa4c06e1d7c72ac6319fef239c57f36012114c95ed4987dc0d7f5f16bb1c0de367ce740e814f4ae63cea1711ef03f0ce8d410f94e39990716abf045dc5520c881f8b6023b9b70bfd2c31c0b62c0acfe80bafc310091a81e0f8cb7172c56e166ecae8d5b401be0df6d58abc061728279b21ac3d22d4023a2d0e8093dd00f840595d2c338cf9cdb31b254f5cdc9258d0235a107f271b98abe1943ea9a8eceb1ce989bdb312c558f991aabdd889eb20ff8506f2d820afb3237e7de44aeacf8246e6f0803e5d79fc60359bcaca3ef54d0ed3eefdc02fb7b245f2e80d1dddd118df82a98ce032feb70a702ede42473eb763d63809d06ad4f179023dd656efc9971620f0c616e963e03eb8f63de17ec3468ad7825fc2e69eca47d600873b91b537cf833b216a3b2e41e187f37687eb0005e89d0bf8eb13da09fdeebcb9cbb31ea7a15ad21fab08a3c88dda9d82b917810eda7ebc7bbe4441e505fff0aa5774e308fae572175e7002c84cb55a24731e2938b85687985e2ea57c7df039379a0a0504f6a0e8401d63cf3d42b947d6c1807423d7120647985707dc391f120f31e08c6ea034a11add760af01f365c7bc408f02d997d1dc2755c2f945b8701e4cf7be4cea813c08e6cb6e8982dfff0b3905f2e385f3bdf3693c7002070c5560e898f3c0a927a2ef7ffc1d216b9f6e23398bf9681e489a33f76e5deb0cd661ca38fd4c28d4366b43bf6ea71909e07f88b4902051f63e740000000049454e44ae426082</data>
     </image>
     <image name="image8">
-        <data format="XPM.GZ" length="1226">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523236520022230543251d2e253d856405bffcbc54105b19c856360003b01401405535ca6000a4e0c220169c8b5d8d32a61a744165aaa9d1c3a5062e0ad501e3625303b54a8f72357ac4a951264e0d8c8f450dcc2af2d52005a53215d440c3481916d2986a10a143400d4a6892ae061eba24a881d0186a94912201b71a3d026ad09332420d22288854a387ac06cca26b99506bcd05004a79cde0</data>
+        <data format="PNG" length="494">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001b5494441545885c597c10e83200c860be1e0fb9078d0e7c78349df8703893b6cb8525b405d5c2f8651b0a5dffe8ac115011200388098220c6e78746c638ac5e4d3639b7fcc913d3d76314598a77903c17045e347bf0100842518ba587aced3bc51bfbc2fae68b475767083f46e00781f53b65626f965747eb7ca49b898e21ea114310da696b9e4b79bd3d7970cb04d207df7a8d5945a6b3fbede4a11535a8b72283453665afbf1f5b655335cd100bc6bac6622644acbe247bf690c58299343a4954cf2bf443ab91cfc810d5507949a4927c319e1f3794c83bbc440f56408236109a690db8f3f4dea12032d9a79d0b42c3d3a729b01b1c6c43f2cc1009420fe8c012ed3d41f57343d0cdd63a0e2dfcb501703b860718c357fda137a18ea6340a159f26f31c119707768cfb59674416af17ef41bf7ef62400a8efed56a0ac88dfbbbb38a57eb92bb2ca7e3c9f8c91fbe176e31c0c75718ead601a92bf2725d62e80c037c5eac6965bda6887dbd80cdf3164cfb3f55c01e45ed66a098ff5806edec97d32506a8224a9968356eed2fde0b6adff3853514903fa5209bf7028d664d01c5cc93de9a4d58821af113cfbfdf0d4b1df8c32df905431b0a33dec2627c0000000049454e44ae426082</data>
     </image>
     <image name="image9">
-        <data format="XPM.GZ" length="3597">789cbd94db52db481040dff90a17f3466d7574b7545b79082124219840ae406a1f461ac9376ce30b09626bff7d7ba6bb05ae102c67abd6836a7446dd677ada16cff63ae7a7bdcedeb39de54aaf8645a718e84567cfdc4c26f5b7bf9effbdb31b061dfc4b934eb0fbc7ceeed9aa53744e66d3d282d208cac34f553936c47ec13c250e52e6257124f17de2c4672e1da771cc6c3753be9766cc0bcb8197497cee380b525d381e1067923fb21cfaa9611e5b8eb496fc6bcb71104419e557c449961bc733c75a6b8ebfb29c049929e9fc73c7daf362d71c5510875ee2187a96d3d076c83d1f12770df9e1c2712ecf21b69c450d7f705cf811f389655d04f2fcd2727e1fff9a384879bf89631378a1ef9ebf210e0b8ecf2c1771e3fbe8d8c4c2ef9933f681655336fb85cc52df17e288f787c4729934f1117128ec392e7de1aee5ea3e3e250ed8af94e3aa79fe95d897fdce891bbf4fdc9c87f39398396036cc73e2d467d6cc7c7e18314bfc27e24c7c25b3c40f9825be4facc55f304bfe5b66cdfc99b964ae88f38079c89c305f314bbc212e247ec12cfe57cc12bf2436123f634ef8f753334bfe11b3e49f0afba9e33be2527c9386e9f9b170ac1d8f99e53cef84d9b712a6f70d0e8513caffce2cf5ec1357413777fc4398de7778c12cfbdd08e791e397cc9a3967ae387e2accfd3913e67a0e840b7adf6f854decf8bae192feb9feb7d1c6010a14cf1a72bcd4c3d5ffcb81b105189b71ef70c3e0ba6aed28a1c2d187010cd131c4b9ef56cab60e6719c118ae70e7094cf132783fc6b52dfa819612c718c70caef1b277b8d2fe7b71679fc30296b0821b74dce0bc449e4b579f76b8fc024f6ee03b66fe805b74dce2bc4236b85ed888160e0335dcc10bd8879770808e039cf791ef70dd6c763c384b0dafe0100d761ce27dddf62cec780d6fe02d1cc13b3846c331ce47c87a0b470f4ee03dee6cc7299ce145f72dbf5bccefc107f888bfaa1a733e61668ed7671c35aecd5b7d2fd6f105fb5f63dd5fe17cedb75ee3fa4607e65fc02578e043808610a23587de5c071a623424d0c5fc14e74bc8b6796fdd19b0060cc30f7415a0e1027a8feff684036b50eee36ae8fdcaf0b8436ac0fd9d826ad8c6a1b4ca5561fb604fe16a887f9dffb303f3b532aa54559b3e3ce1e8ab811ab6e9c3630e57435f8dd4585da165b2a90f3f3bd030c5530cd030c36ba0aed57c73febda3e9c302f3ad6184f518a5db18d61cb60f33370678afdb1ac8f1a00fd6b0c07accd68ee55a1f4aec4bebfcc6b1fabd3eac3966bfd787471c5bf7a171fcf3e7cebff148ede1</data>
+        <data format="PNG" length="961">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000388494441545885bd973f6813511cc73f57aef004852ba49040040f2aa462a1c949b0178752eaa04e76772852172751dcdc9c84e2e4546807d1b12eda0e6a2b4862295e142c545088432101030d18f0c0837378effe242d6dfed1b7fcf8bd5cdeeff7fdf37e9768ceb6031ea083ebb9085d9c68ae079bbdc6dc92e50394e68b5a988f010f8127c04f282f389aebb9d82b051fa25ce882a1f86178d06d8e0ec0813c5c71e4edb9075ab154ec99017ba5e0330d98c04aac681b03e19a072ac0878831bd57e4212217a8033781dfaad0a88a134032b65757cf139d37e47a6e0b2ddde4e50547630bf8014c2a264c6052005919c33df5dcd6803d505e70344e03eb8afa0cd01807dec89851fbebc0e9d6e283f100401ab8260b60cc41e22e0c9bf0af02f567d05885a66a624f4ad09707724b968f0e4c0323aa700668cec906864d40c07052e600e955a97f13d807fb79c1c7a3470f80bc72a6a2774c5d3f631c7403f81bb94d37c0c8cacf83674df57d4073b69d9e275ac84412b8053480f47d18bd1f5dbddf8bb0b70806f01ca811792760a05bf7c79978b309a5b7c0672001782fa0fa4032507d20f384fa5c44c883f386fa99038f97641de3acf2401da8d7c0dd009ec958afc9fd8c924987f2bca3f53507366ccb5fcb5bbe9980d4245c9855e836818f40b3062ccaf853395f206548426ec5f283f3f49ee6803a6fe612a4ee28633d055e293f349153701df8a5685f07ee1136149cd7f5db702d6ff90218078c2dd5c95959bc5a970da4882d2f165f4597a385814e91afe52d3fa540dac0a906b005ecc07e0dca40aad1d6800ee55b8e864e786ba40764131d4dc2925df003dac7811c5191bfeaf695815d05f0fa76346e8f8b9d792056dc460ebf60b94714ef84d963e7405cf39c6a245855a0142b2ee8fead7aa407ac7ccecf665e332556b9fd75b905f9be425eeb1179901f7a0b0ab61dbee576276e60264618f9ba3c10cd3bf240b8ae827919b27beec0343fd603563ee79306e6217b114c019573533c7ef49ed2b96cdf9a1fe9012b9ff3c9809890c853029267a0f6e7149fd2337cd1ef62b281c1cbbe9107b9562c155b34175390bc02764a0e91c61f39e1beec006f813d70b6cb3d6b7ea8070e683e02725241c585dd1dc29fddf1e2fd200f3d7098e6a8e2a52a54de29e48109fbd4bc3dd798f67d310ae6ac2c2e3597c82befc0fd067c3f887c60ff0d8d6b6008493bba2c5ead2bda3f0d5ef3031e983b2fe93e29cd0f990327ab797bfe1fd1db2cf6baf42fe30000000049454e44ae426082</data>
     </image>
     <image name="image10">
-        <data format="XPM.GZ" length="6814">789c9597c96ee3481286eff51446c7ad31c8162952223198836d79dfb7f23298434492926579b7e4458d79f74966fcc1b6abd4d368b068d5a7cc8c8ce5cf20f5dbaf4b17877b4bbffef6ed65cad3b15ff2d7fcbcf46b35bbbbfbf8f77ffef5fbb75fbae952f89716fda5f4977f7cfbe568bae497f61feeeb06fc4a00ea74924ec60df3be72ea4bdfb0cb2317e1ea344c372d1771fd14ecc1efca89ef96d1de8772b7902aaebf6c38e9d87a7701b6f5afc649dccfcf949b2bcebf076789ce7f0317691ce78e72b7d3ef469e2b67becae3fcd5c885ad7715b8006f813decad28675999457e007b8ef9e147e5bca3f65dcc5fda69ae387ea09c1512d7fb0fb0d77cf04be4322b0af577cf18f69f95f31cf39fc0a5dae3a1722fc1f8b2b18fece3fa6e635fe2f8bb725e6a7df95ab997e87e9481731fe3a12eb85276fd86b324cb542f541be7515cbe52ce2dff87c61a1fad47e6acd0f9942bf74ae4f71e8cfd78a4dc4faaa8573a00231f942a17c9b017f79f83f3e1308e6f369ca7799e477f6555b997a83ffe4139d88bfb53a21c04a07a790497b017f39f735ef5a2ffacf682ffa847a5dccf59edad2817b9fa2f6bcaa5f917ebd34bb3a2a7e76facdcabb41efe45b99f68bdfcb231f6ab958ba48ef113c64bec477bc6ba9f1c822d9ea89f5ef05feb251e5ca9ffbcabdc47bee4116cf1ed2b9749adf12560ece7055c697de4a965f527aeef77fb95ead3df2b17b9ea9756c115ea83f1b2d478e5085c81cf234b6afd69a2dc377deb7c2972e4f30e5c6a3cfeb665ed7fb057a01e3436567dc8b332e71a3fc5fa877697683c521ac3dea57209bd102b7382fed103e7d0f375cb9aafd83f0a493bdaafe44e39cbb4dfb842b9805ee8025c81315eda78690c3dc15e89fcd0a1b1d6c31d832b9c3fafcce817922a4b0a7d45fd86f6037b7c05c67a9719a3df3c28b39df739d8e28ffdb9f4fd44cf9fe87c5fa21ff81b30eac78931fc7f0143df6e4d9913e8f90d8cfcd34439c4a3fa8ae789b37e8ef3ef942d7f7406b6f81e94cdbe7b6a59f3bbab6cf649c00cbe6b59f3f9a1ec53e8ed16dcd3718ecf63f6259e07b406467fe3a396f579710386bf8cf98cf55218a3ff9f1843af472d477ff80d6c7aa89425c5797e0433ea7166acf6645dd9e2919d8625cb4bbc7ff494430356bd0c5a8efb3b0faee1df9eb2a4e8bf23704ff3215d30233e63acf7acec6bd43ff61fa918f974cfe01aeb1f9543bccaefe01ef2b30966e8e3ce18fedf2a7bcc7764acfbbb4330e6938d432f12f5e4f32cd37cc94cb96fcfbf4cd9f4cfdf9599918f4de5b63e18f7a6ff53700ff5752dab5eae8ce15f078cfaba045ce379f56a0c7def285729faf976e4aa5f6649649d5f85d7057d5e625c6add9f8f957d0afdae18435fcb60d49bbb2debfca931e6bf18ab3feed458f3c1f0c7dbfe67c6d00f19233ef85bf5d41e53cb5aef5763ccff0ec6f997a8a72a2fca34be5fcb857289e72717cac2789fc278abe771cb5a9f0de5566f628ce74f0d46bc2e05e33cf044b9427edd8e31e6bfb5acfd2907f730bf36c6fc8f9635fe1198353fbe651d77cbe01af9db3446ff3c6959df4786cab5e939d6abaaa5c6f362a0ec619f37c0c897cc952bf433e91943af0363ec3f6b59fd65b0c5e7c0b6df2dd8ead337c6fbd5a5726dfbd52d6bfc37c688af03467e25eaa90eafdb7afee55699f13ce59eb24f351f921be33c0cc1380fde83a12f3e51b67cb85d63e8f71a0cfdbbd218f93806dbf3cfe6dbf9992ad7a6a77530ecd17bcb9a8f761cf11fb7acf53800db7ef17cd76d3d84c0a6af5563f873ae6cfe88802dbe8931f4f704869e69cb18f6aec0566f36c6f9e8b4acfe6b7eeaa1ed1fcfdbb057e6e80f6365a9f1fcef2bfb54dfc7e4068ce721ef2857e8cfb2d1b2fad337467f702d6b3d44d9f4e7b65bd6f153b0d5e3a0651dcfc0d66f365ad6786760db6f4b7968fb0dc156df2bb09daf58afe1b042bf9309d8ce7f690c3d5f2ad7d03fb331fa9f6f59edcfc0b6ff146c7a3a015b3d575ad6f90365aba71b83cdde1c6cf1a4e021ec8d5a8ee347d3cf9723c74ec2bdf8d3bbeaebfca3e9021bb51bbad14fd7b51bbb1b3771b7eeceddffa50d092b1edca37b0ab77e3ebb97f0ddd4cddcab7b0b9fef5f7d5960e323faf1f0e97e897ecce1c7dc2d7fb5b2301feafd43fcfb18eee7b06ee4564234ab21277337089f777f58f9d37c7cf6632ddccd77eb6e23f8d1fc7fec368395adbf918fc76865103cd8763bd19fed10d5aedb73fbff371f3f5ecd770721ab87eec81dbb9370c7cfbfc8c78f57e3c734fc6d7c1077eacedc7777ee2e7eb6e12eff441f57e1ee448d6cb8c4a5ae1bad642e5fe8472fccfcba7eecfaae88dfae043f4a72442162095a59e80731097972a106ad0daaa8a6a16a954674ed92307e1baa7c4b63ba59606342b77447f7f4408f5115237aa267d7a797e041a38f897ba529cd822fafc1d2023fe88dde5d873e684ecbb442ab14f2486bb44e1bb4196c2cd3168ddc84b683951dbaa69d45f908b9503d12edd21eedd3011dd251f06340c7a11e333a711b744a67f49dcee982a6ee9c2ebfda200e9e5f21071d774409a5d4a58c72ea853d07a12633ea072b059574c18e89c63ffa41bbccc18798050e3f0ee898c32b190f79c4d73c0e8a6ab43173db7c13f2d258da0a7e7cc9698c63c013ad21dfaa4f7cc7f7fcc08ffcc4cffc4283e0c78c0a9e465f465ff341bb71f759b87df0a1b1b412feffdaa893dff89d3f78cecbbcc2ab3ce0b5989b22a8ed4b3e9a5cf07a58376f3e798337832f5bbcadd9e11ddee53ddee7033e74a7c18fa3c617b7f9391f8d36f9984fc27908aae4d3e8c3197fe773d5295f04bee42bee7012f2617ecc3ee783de380dfb764314b71c7ebb62f71ef7b9e0529c90043f45c44ba5f5913a58d8fc231f340976c7d27496500f19c975e38f8ce54626722b77721f389c14799047370b39437da21f6d3ee4499ee525eebdce27dc0dfb4e6526aff226eff22173379165599155198473643a997dcd4773c99aacbb55d9e0cba6c6b2295bb22d3bb22b7b9a13d90f9e37fe1e7cf1e3a73327877224c79cca8984bcca997c9773b9e0ad10d9258fe52a58e82ccec7d7fe2189a4d2455667e1d77c1e7eeff7a59032ac9efee187775ff3f1f9f21444f6e49bce3cf25e2e837673de6e7ec9857e3a6ef2d1f8d0dc7ef8f379f9d44fa77e2487feda8f63171bf81b3f09fbcf17f8b1a00735cf177feb327fe7effd837f9470eefd937ff62f34d6ef7ff85cd8d7fd8c6efcd4bf86fbcdbffb0f3ff7cb7e25f24fb7bbf0ab8b6dfcbd2bd8f8ef3fbffd0fd5f8cd69</data>
+        <data format="PNG" length="1984">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000787494441545885ad975f8814d915c67f2d2ddc825ea8821ea88219b040c12a22d8850b4e8310dbf5c5491654f621761888c306129f42e625ac2490e88b191302eb4be2b8449d11169d40764783663a10b55d62a67b89769584654b1cb18a9dc62a328355ac0d370f55f34f67c685e4be1c4ef7e59e73befb9defdc2a745a1d480101699a228458f6c3d496151dd210840eed10bea9efc701478f3bcc5c9f296c747e9aa614ee36efa20a95388d5fb3a65e95aa0e8ac21b57b400da5be0cf25982585c6231fb5a772e088cddd9b3385f5ce57854aa1d3eaac9b9910022db5a53108131727b08c0a5ee06119165ed05ef1fb2cda419b91e37598074ad07a0c46110c155a0f23868ed91b22b1254e638410c4690c02d6f83a2409d487eb78419bfaf0d1dcaef84bc1a305a00ffc6e82a383d7f5a10fc436989e743970e8807ced7c015b54a1420aaa5049d394d5be17aec05f1fae33717182fa701d00cba80050312af032839f08cc010562a8e826bc04bb5fc3d9a631fd7196c4abf1b6ac5b79ee5b3902c072f0898b130078411b80f67c1bb6e6fb34088204cad00efdecf71e6082e8175912ef0ead41e27fe780917360b80e0bc05bc01c042918e52c29e6326e244fa11d46d47fe8303d355d20e5ffd7054992ed0be6138c9242e3a10f9e4aabd7c6295ab47a1e4eb1b2ec8b1d7e61b90b36d381dae09b832faf2504e6011508b3ca83479096a015ba58aacde4ed6b9cfbc5f799b979b7b02107a6eefb723507de88c0cb2c781491754398800acdc701a8e0765d1cddc68b5d2c2cd25e56ec96f5d89fa62947de360be3f7be19fcb583434cfef61a24a06964dda02b244fc12a1b788be06cb3118b50dd66e3e1218a6fd081a907c8ca008c4d3689e67276afb34efd720c10b41edf0325534434701f47a082d70da8e8e0853e62491fb0487b6cae0396611317c11aa872fa4642e34ecab55bad35c1ebc323c4f76220a5ba7d107239c607bbace1c550e937325de83773df043c44918d75c0f36d59fd56447d37c444544a0a8df998a9fb26a3bf99a63919c14b18d93b8287c7c499cb4c7d3605025c3f8232b8dd2857c420ab3cce9188833773c0030c438314eafb340c138eec3011aa86280d71faf336e3977c1ab1878585b15de3f2d90908c1d635dc6e66e942d00ef062a8ea06e7ae8c53d18d8c03641c28bedaff530f902787218a22344dcb483608cdfb2ef592c1b9c71e946a8c7fde847410cd4c697e12c02ea8ee34f0c3045b57f0c30853d7f0ba6dbc1b298d9e8755b4f0ba51c601d2f53950316c98230bfe72e5beabdb6c6afb352effa08aba3841b5bf42dc0b51d5638cfeb5c9d4258fb14b0d4c5d812e98ba063138e50aa3dfad32fa7e765d4ebf067880789d03d77d470e1d0474701fb8b075a9c9c15ff46100d252c4c4993a7a6912b3a4d378d0c08faa5c7f9a70e12f2af6bba768de8ef0c38c0bad6e9bc6272dc63e1a072cdc30c2c20272d1ebb43acc3667f9f4a65c59cf72fb444af995949d7f7532ff7966665bb3527e2da5fc5aca99a98e1cfcde7929f6ce4af53bcfa4f5a32fa5fece87f2c73fb92b9fff43ca998f67b3735e48f9ebdf9d97f23f527e70f6aa5485909d66674507da810b401064cac54b6000825e80513468dc6a80806421414bb50c9dad503b6cd33c7b8ce383d7317a1edeed06a258c1f31bc4025a418ec01fc671a8e07693351ca0d3eaf0ab89bcb2bfcfc817ff7e21e55739022ff2aa972befc8ce9fef4ae93e97abd7b3460ed9938ebc7c6e56aabb7f2aaffef14b299fac83c08b0c0121849c6dce660858f9453b7b6a78b10780effbd0033774b3910a38151b4d0d60b1817beb1c0401cd7b2d8c9d065194c080cda1c306c7f6ed072d021dccbd1694c1ef468cbe3f821b266b38b02558accaa3fb0014928709cedb0ef481593299be338d29cc6cba01fc6d1aa3644019ccd8676cb88a0853288226145880c68d0044ccd1779cbc1bf2ae2867ba60ebca5a1d304acdc2895b55a98988915d02338f15f4026adb6b785d0f4738b4eebb881b93a4db639c9e8fbf08da1729da760145683d6ca2613279e73ae77f7692204e30ca0a7e9860965774c10dd772a0a80a9513965b40c0c9dbb61ce9414d05431820dc0c910510a9c2bd9ea0160aa61f7998f320de3b8eb9cbc9aee7ed2aa33f1fe3c89e2368023014087204c25c17720436d4810f06dd82489b85915b307a232029d9990814212e068c9c1e877dc7a87dfb53269f0a6a3b2d92856c4afa730151ec60561418003f7f1bfa61b2cc01cabcc681e27ab3e0c4ae564108c1e815433a3b14749a0c1dac0260ee3f0a3be158e92aea80431a82d205ff9f116639a2baa706f360be8a4059cb6785c2e42a0e6cfa5d30ba1ff472c2f5b92a272eacbc07923840d9e7a0ec35087a3e7ee8736af20223878f12c409f4adbc8e9714d1ef665df1aa0e1437fb2ef063181a5418ea87205518f93d387d70441598fb3548c0de6e33fed1350e5987b257709f02f3602c23a0bd86c06a0ebc360d575b4b879367ae6553acd746eb55697ce1d2280f610511a7ded388e288f13fc55856ccc92b2e2c4dbd5e1b8a950d7d8a6ccc8125df7634d234eb73812025459474d2e2695abb3fa4fd58c35af4b8f7d914de9d66f6ffd2be4d2cacc4db1401c8b25c5a1971620431f19d0334ef40936c742c25b9bc6f130b82b49771e0bf1e7e05d7d87464fb0000000049454e44ae426082</data>
+    </image>
+    <image name="image11">
+        <data format="PNG" length="533">89504e470d0a1a0a0000000d4948445200000018000000180806000000e0773df8000001dc494441544889b596314fdb4014c77f41443a16c8c892efc0c2c4c0408776cf44c582d4a5dfa0420c116262e8c0c044909a86a555593aa32e36525093c9307628120c94581d2e2725d2ebe03b174776c859f096d33d3dffdeff7fcf3a1b4a848848d4d3022c02d569b57365e057fd21a75ffa007560a18cc84278d4d3b2f3211060c3ed7f86b3b9791ade9d80dbfdce6e2441f820c072a92645cadd1e58df6b46ce895f935c7837035f259945dddb49a1f2dd0cdcc1aac0f2413392601627d3cefc31dce581451191207c90edadaf02ac900cde43791ebca7657bebb324702defdf7d7735f90d729517c1bb5a365378aa7cf2e89e55f9ebe9708f33cf51ee097f29e5c0aa883c8f728022a507cd488075a05e4ab98df9d81898af018c813be00f406c62a2aefe118f0d579743f60fbfd1f9f496f062c0f1d139ad76e38dadfd6dd7516e839a523036d802ed0a95aa717ad667703fc098d8c287744ec299e1a90385ca242b95ca12c9fdb264e714f82acf3830c493f9a105dc89c87d19e5190776068f63e41e0e2f6e393e0a69b51baf80bf3ef0d4016343d4d3416ca0a6000328880d744ece69b51b6b16e8054f1ddcdefc62ffe3350a85c164560bd7fc7fc366860354486ebc74a039511aee1a5449fe0c8a3e0e2392a17bc301fe0184796b5cd6c3c03c0000000049454e44ae426082</data>
+    </image>
+    <image name="image12">
+        <data format="PNG" length="775">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002ce494441545885b597316bdb4014803f0719eee00227f0606d0db4439c25944ea1ffa0a5537f527f43ff45c76e5de3319d4cc774283883e10e62b8073e70873b39b2623b72a2dcf278b225bdfbf4dd3b6930bb9981000a7c71b6b68a875ca06bfee7ef2dd5c80facb28ddf3d4fe5457dd08bc78e60f24ed36584156860ee41019e0a77c71a52115bd73d104f9a09d2e9de00e8619ab955305f822a149f3e4e70deae9bd76b5fbf9d9f342b42752f20ac8053f0112a03221e344c2e1f8a6862df979f6c577624810095022258630138b37075d99dc4c97665dd0b4855808b6cceaf8f9523987c98e0964f9378b60300aca054a022282c84742c78b0c0fbb713e68bc3241ead82a3c61042006d80c2f3e3d7ed4edb59d835a3ddaba378ae03f5d01ab887f33715e7a30a0fb87f018fe0967056544c7f4ff9fae5f3fa7a7a3de8d701f26ac84d490a982f1c528044a13210104a4a80577080bc1a62ea07e2411525028c8d45a1a88cc5e1d29ffbec035b040ab85b042840a2a3321a1f3d18100432815efb0000b91dbb0528a571112a534284ca5448d429cf047aed03610544b8f5011488044a032e069481101d55cefb7720cf3c088c954e33321a15a1328944b921a1fb75208414dd92349308ca80c490f390f6864cc2c5c021078eeb0321affb00a561b3afa7f3f5763429564ad38b036105e84ca0b107c8662f68e70f440e39507475400f49cfbe26903b60a98025606a12298e95463291fe1c18b6489c82937473a95fb36a02d9011fa1bf3eb0da41e234cdacdcb8c0c60559e6bcb73e501318365cb84f33732d17bca4d5e1857e1ca8c74e024d175a24c68a9efb409b40c80404424da068ac0281d77540b3d70104545f0e0438ec40e3d96ff585271ce8bc17e87d04d43e020fb11707f61290c3047a73e025040e39f0e8adf8dbf79f9494195b7a99e8236f3ad08c83d9cd6cabb28bab8bf57e0e2f1bb3e96cd0fe4a2eda15d5afce5dbf6e8f896d07acb2fc0788a9108c8d3bf3d30000000049454e44ae426082</data>
+    </image>
+    <image name="image13">
+        <data format="PNG" length="953">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000038049444154388db5954f681c7514c73fb319eb1b49e53798c20e44d985409393ace025d843725cec610511f5d414a4205eea456c2908b5a2bd09c5433420a4c941680f427a08989e361731814a47487057589d8144e67728ceabdd763cfc667793d4bf071ffc1876f6cde77de7bd37ef7945513030cff32ac018e00315c02bcfdf59519e47401f785814c5236f00bef8fec5a767a667ce596b1792343999ddcbfe81e7cc5a4b67a7b3bbf9ede60a7dbe007e05eefb03a5cb5f2e9f8b9ee56353cfa9a1685f114aedbe8304e535ef9754df69ec7698d245b9b4755b03e053202b5d19b3d62e987a4e6ad7c8b20ea00481923f10d29e90ed2b20841350af2b320e5a0690e31045b005af01d7878a013f49939335b4845a8240b87bc7b0f1b525deb68096ae426d5a986f1966e780bebb2f02c0734078507125bb97a17d1d42db1bb0f259ea1e1a17ead306f121e929dd1f94a58f52d2aee18d337220a8cb18706c00f69c160802b87b474aa832f77295664b084f00a2a846b46fe5ac2ca6acada654ab359aaf86801d80c700af72108c0ff90361e3a61d42df7c4b08230b62c9f6846f6e66345b010bef5401e1c6aac5ee8f0a5cb2bcd1cf129cf684f87b8b3186664bc0b7e0835ac3d25525deb6647b70f67cc8e6baf38d6397a68356e188b9ea2b51ad7cfd127aed8a2ba299105e382588c99969b88a255d2d13f91760d7a7ce41c4e5344b0cd7ae28f1b60b2802f5c9c0fdef0f607230157fae389c708e9d9ea21ab2791ba7d408d5aa21ed592e5f4888b742921dd70d512d388a391c27efbbe6af4d09dd5da57d2ba7f97a40b667983d25449301972f40dab57cf8760755c54c088d464ed23bd4728f2b967168b60c002b8b29edf59cb3e7431a73506b64bcfb411d5335586bd1be32dfaa124d3d26f86866dc673a3b0769cf70633565e96acae6ba3033232090ec24e8be0e9ffc6ec3d2391d21fee10f65002eacb52338ca2b670453adb1f695eb86787b14dc4c08cd568df686c5aaa20ad60ea105500cc19d9dce6eb7c314c747f0664b989d8b886343d275f7a3c980c68b39d114cc9f8e9c483f23de52805f808740e1154581e779013eef355e924b5154b65a9fe1c894411b1e4a9c22be602dc45b4a922a36e53af039f023e5a07f0237993e017e62b415feedf91958065ac0f3c08981e20a6e2a85c033e535a01c28470b7cc48af2f57320c36d906cb89a3ccff3812781a74ae831fedbcefbbd84ff06dcf7feaf65fa072f36954b9888b3c20000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
-    <connection>
-        <sender>tapunts3</sender>
-        <signal>valueChanged(int,int)</signal>
-        <receiver>intapunts3dlg</receiver>
-        <slot>apuntecambiadogrid(int,int)</slot>
-    </connection>
-    <connection>
-        <sender>tapunts3</sender>
-        <signal>selectionChanged()</signal>
-        <receiver>intapunts3dlg</receiver>
-        <slot>tcambiaseleccion()</slot>
-    </connection>
     <connection>
         <sender>botonabrirasiento</sender>
         <signal>clicked()</signal>
@@ -1486,12 +1501,6 @@
         <slot>boton_inteligente()</slot>
     </connection>
     <connection>
-        <sender>tapunts3</sender>
-        <signal>contextMenuRequested(int,int,const QPoint&amp;)</signal>
-        <receiver>intapunts3dlg</receiver>
-        <slot>contextmenu(int,int,const QPoint&amp;)</slot>
-    </connection>
-    <connection>
         <sender>fechaasiento1</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>intapunts3dlg</receiver>
@@ -1509,11 +1518,16 @@
         <receiver>intapunts3dlg</receiver>
         <slot>boton_fecha()</slot>
     </connection>
+    <connection>
+        <sender>m_nadjunto</sender>
+        <signal>clicked()</signal>
+        <receiver>intapunts3dlg</receiver>
+        <slot>boton_nuevoasientodocumental()</slot>
+    </connection>
 </connections>
 <tabstops>
     <tabstop>idasiento1</tabstop>
     <tabstop>descuadre</tabstop>
-    <tabstop>tapunts3</tabstop>
     <tabstop>totaldebe1</tabstop>
     <tabstop>totalhaber1</tabstop>
 </tabstops>
@@ -1556,6 +1570,10 @@
     <slot>fechaasiento1_textChanged( const QString &amp; )</slot>
     <slot>boton_duplicarasiento()</slot>
     <slot>boton_fecha()</slot>
+    <slot>boton_nuevoasientodocumental()</slot>
 </slots>
 <layoutdefaults spacing="0" margin="0"/>
+<includehints>
+    <includehint>qtable1.h</includehint>
+</includehints>
 </UI>

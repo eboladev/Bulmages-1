@@ -59,10 +59,9 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
    fprintf(stderr,"Constructor de intapunts3view\n");
     empresaactual = emp;
     idasiento=-1;
-    tapunts = new QTable1(this,"");
-    tapunts->setGeometry( QRect( 10, 75, 693, 260 ) );
-    tapunts->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)1, 0, 0, tapunts->sizePolicy().hasHeightForWidth() ) );
+    tapunts= tapunts3;
     QFont tapunts_font(  tapunts->font() );
+
     tapunts_font.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_APUNTES).c_str()));
     tapunts_font.setFamily(confpr->valor(CONF_FONTFAMILY_APUNTES).c_str());
     tapunts->setFont( tapunts_font );
@@ -73,11 +72,8 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
     tapunts->setColumnMovingEnabled( TRUE );
     tapunts->setSorting( TRUE );
     tapunts->setSelectionMode( QTable::SingleRow );
-    intapunts3dlgLayout->addWidget( tapunts, 1, 0 );
 
-    connect( tapunts, SIGNAL( valueChanged(int,int) ), this, SLOT( apuntecambiadogrid(int,int) ) );
-    connect( tapunts, SIGNAL( selectionChanged() ), this, SLOT( tcambiaseleccion() ) );
-    connect( tapunts, SIGNAL( contextMenuRequested(int,int,const QPoint&) ), this, SLOT( contextmenu(int,int,const QPoint&) ) );
+    
     connect( tapunts, SIGNAL( pulsadomas(int, int, int)), this, SLOT(pulsadomas(int, int, int)));
 
     tapunts->setNumCols(16);
@@ -136,7 +132,6 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
 }
 
 intapunts3view::~intapunts3view() {
-    delete tapunts;
     delete filt;
 }// end ~intapunts3view
 
@@ -1973,4 +1968,9 @@ void intapunts3view::boton_duplicarasiento() {
 void intapunts3view::boton_fecha() {
     fechaasiento1->setText("+");
 }// end boton_fecha
+
+
+void intapunts3view::boton_nuevoasientodocumental(){
+   fprintf(stderr,"boton_nuevoasientodocumental\n");
+}// end boton_nuevoasientodocumental
 

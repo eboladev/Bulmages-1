@@ -55,8 +55,7 @@ int propiedadesempresa::inicializa(postgresiface2 *conn, QString nomdb) {
     curs = conexionbase->cargacursor(query,"queryconf");
     conexionbase->commit();
     num=curs->numregistros();
-    // Hacemos que no haya ningún apunte como preestablecido.
-    tpropiedades->setNumRows(num);
+    tpropiedades->setNumRows(100);
     i=0;
     while (!curs->eof()) {
       tpropiedades->setText(i,0,curs->valor("nombre"));
@@ -127,21 +126,22 @@ int propiedadesempresa::inicializa(postgresiface2 *conn, QString nomdb) {
 
 
 void propiedadesempresa::accept() {
-/*
-   char *cadena;
-   postgresiface *piface = new postgresiface();
-   piface->inicializa(empresadb);
-   piface->modificaconfiguracion("CodCuenta",(char *)modcodigo->text().ascii());
-   fprintf(stderr,"accept;Pulsado\n");
-   cadena =  (char *) modcodigo->text().ascii();
-   modificacodcuenta(cadena);
-   delete piface;
-   done(1);
-*/
-
+    QString query = "DELETE FROM configuracion";
+    conexionbase->begin();
+    conexionbase->ejecuta(query);
+    conexionbase->commit();
+    int i=0;
+    while (tpropiedades->text(i,0) != "") {
+      QString SQLQuery;
+      SQLQuery.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (%d,'%s','%s')",i,tpropiedades->text(i,0).ascii(),tpropiedades->text(i,1).ascii());
+      conexionbase->begin();
+      conexionbase->ejecuta(SQLQuery);
+      conexionbase->commit();
+      i++;
+    }// end while
+    
    postgresiface2 *metabase;
    cursor2 *cursoraux;
-   QString query;
 
    metabase = new postgresiface2();
    metabase->inicializa(confpr->valor(CONF_METABASE).c_str());

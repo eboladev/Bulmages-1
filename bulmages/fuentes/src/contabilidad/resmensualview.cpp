@@ -312,7 +312,7 @@ generargrafico(p, label);
 
 #ifdef ESTADISTICAS
 // Si se compila con las librerias de estadisticas se supone que no se va a llamar a esta función, por tanto no hace nada.
-void resmensualview::generargrafico(float *h1, char**t2) {
+void resmensualview::generargrafico(float *, char**) {
 }// end resmensualview
 #endif
 

@@ -87,6 +87,7 @@ contabilidad/listadocuentas1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contab
 contabilidad/listadocuentas1.ui.target = contabilidad/listadocuentas1.ui 
 contabilidad/about.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/about.ui.target 
 contabilidad/about.ui.target = contabilidad/about.ui 
+contabilidad/adocumentalbase.ui.target = contabilidad/adocumentalbase.ui 
 TEMPLATE = app 
 FORMS += comun/uiselector.ui \
          comun/abreempresadlg.ui \
@@ -126,6 +127,7 @@ FORMS += comun/uiselector.ui \
          contabilidad/amortizaciondlg.ui \
          contabilidad/uimodelo347.ui \
          contabilidad/amortizacionesdlg.ui \
+         contabilidad/adocumentalbase.ui \
          comun/uivisorempresas.ui \
          contabilidad/uibloqfecha.ui \
          comun/selectccostedlg.ui \
@@ -266,6 +268,7 @@ IDLS += contabilidad/about.ui \
         contabilidad/diarioprintdlg.ui \
         contabilidad/correctorwdt.ui \
         contabilidad/amortizacionesdlg.ui \
+        contabilidad/adocumentalbase.ui \
         contabilidad/uibloqfecha.ui 
 HEADERS += comun/abreempresaview.h \
            comun/splashscreen.h \
@@ -318,6 +321,7 @@ HEADERS += comun/abreempresaview.h \
            contabilidad/bmodelo347.h \
            contabilidad/amortizacionesview.h \
            contabilidad/bbloqfecha.h \
+           contabilidad/adocumental.h \
            comun/log.h \
            comun/selectccosteview.h \
            comun/selectcanalview.h \
@@ -377,6 +381,7 @@ SOURCES += main.cpp \
            contabilidad/bmodelo347.cpp \
            contabilidad/amortizacionesview.cpp \
            contabilidad/bbloqfecha.cpp \
+           contabilidad/adocumental.cpp \
            comun/log.cpp \
            comun/selectccosteview.cpp \
            comun/selectcanalview.cpp \

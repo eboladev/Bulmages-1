@@ -119,7 +119,6 @@ QString selectcanalview::cadcanal() {
 
 // Esta función devuelve el nombre de un canal determinado
 QString selectcanalview::nomcanal() {
-   int idcanal=0;
    QCheckListItem *item;
    (*m_iterador)--;
    item = (QCheckListItem *) m_iterador->current();

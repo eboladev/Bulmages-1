@@ -376,8 +376,6 @@ void BConfiguracion::nuevoEjercicio() {
 /* Creamos una copia de seguridad de una base de datos                                                   */
 /*********************************************************************************************************/
 void BConfiguracion::salvarEmpresa() {
-  char *args[5];
-  int pid;
   QString dbEmpresa; 
   QString PGserver;
 //  PGserver = "-h ";
@@ -393,30 +391,11 @@ void BConfiguracion::salvarEmpresa() {
       if (!fn.isEmpty()) {
          if (fn.right(7)!= ".pgdump") fn = fn +".pgdump";
          fprintf(stderr,"Vamos a guardar la empresa en el fichero %s\n",fn.ascii());
-/*         
-         args[0]=(char *) "guardaemp";
-         args[1]=(char *) PGserver.ascii(); //Necesario para conectar a un host remoto.
-         args[2]=(char *) dbEmpresa.ascii();
-         args[3]=(char *) fn.ascii();
-         args[4]=NULL;
-*/         
+        
          char cadena[300];
          sprintf(cadena,"%sguardaemp %s %s %s", confpr->valor(CONF_EJECUTABLES).c_str(), PGserver.ascii(), dbEmpresa.ascii(), fn.ascii() );
          fprintf(stderr,"%s\n", cadena);
          system(cadena);       
-#ifndef WIN32b
-/*         
-         if ((pid=fork()) == -1) {
-           perror ("Fork failed");
-           exit(errno);
-         }// end if
-         if (!pid) {
-            string argumentos = confpr->valor(CONF_EJECUTABLES) + "guardaemp";
-            exit(execvp(argumentos.c_str(),args));
-         }// end if
-         if (pid) waitpid (pid, NULL, 0);
-*/
-#endif
      }// end if
   }// end if
 }// end salvarEmpresa
@@ -426,42 +405,22 @@ void BConfiguracion::salvarEmpresa() {
 /*********************************************************************************************************/
 // Para cargar la empresa debe estar sin ningun usuario dentro de ella.
 void BConfiguracion::BotonA_4restaurarEmpresa(){
-  char *args[5];
-  int pid;
-  int error;
+   fprintf(stderr,"Restaurar empresa \n");
   QString dbEmpresa; 
   QString PGserver;
-  PGserver = "-h ";
-  PGserver += confpr->valor(CONF_SERVIDOR).c_str();
+  PGserver = confpr->valor(CONF_SERVIDOR).c_str();
   dbEmpresa = PunteroAlSelector->empresabd;
+  if (dbEmpresa!="") {
+     fprintf(stderr,"Restaurar empresa cargamos fichero\n");
+//     QString fn = QFileDialog::getOpenFileName(0, theApp->translate("empresa","Empresas (*.pgdump)",""), 0,theApp->translate("empresa","Cargar Empresa",""),theApp->translate("emrpesa","Elige el fichero a cargar.",""));
+     QString fn = QFileDialog::getOpenFileName(0, "Empresas (*.pgdump)", 0,"Cargar Empresa","Elige el fichero a cargar.");
 
-//  (new BVisorEmpresas(& dbEmpresa, this,"Restore",true))->exec();
-  if (!dbEmpresa.isEmpty()) {
-     QString fn = QFileDialog::getOpenFileName(0, theApp->translate("empresa","Empresas (*.pgdump)",""), 0,theApp->translate("empresa","Cargar Empresa",""),theApp->translate("emrpesa","Elige el fichero a cargar.",""));
       if (!fn.isEmpty()) {
-         args[0]=(char *) "cargaemp";
-         args[1]=(char *) PGserver.ascii(); //Necesario para conectar a un host remoto.
-         args[2]=(char *) dbEmpresa.ascii();
-         args[3]=(char *) fn.ascii();
-         args[4]=NULL;
-
-#ifndef WIN32
-         if ((pid=fork())== -1) {
-           perror ("Fork failed");
-           exit(errno);
-         }// end if
-         if (!pid) {
-            QString argumentos = confpr->valor(CONF_EJECUTABLES).c_str();
-	    argumentos  +=  "cargaemp";
-            fprintf(stderr,"Ejecutamos el cargaemp\n");
-            error = execvp(argumentos.ascii(),args);
-            fprintf(stderr,"Fin del cargaemp\n");
-            exit(error);
-         }// end if
-         if (pid) waitpid (pid, NULL, 0);
-#endif
+         QString comando= "cargaemp "+PGserver+" "+dbEmpresa+" "+fn;
+         fprintf(stderr,"%s\n", comando.ascii());
+         system (comando.ascii());
       }// end if
-    }
+    }// end if
   }
 
 /**********************************************************************************************/

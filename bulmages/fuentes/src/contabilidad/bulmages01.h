@@ -163,6 +163,7 @@ public:
     void slotCCosteDef();
     void slotCanalDef();
     void slotRecSald();
+    void slotArchDoc();
        
 
     /** toggle the toolbar*/
@@ -310,6 +311,7 @@ public:
     QAction *CanalDef;
     
     QAction *RecSald;
+    QAction *ArchDoc;
 };
 #endif
 
