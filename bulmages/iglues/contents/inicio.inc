@@ -8,6 +8,26 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>28/11/2004</td>
+<td><center><b>Junta Directiva de IGLUES</b></center></td>
+</tr>
+<tr>
+<td colspan=2>El pasado domingo 28 de noviembre tuvo lugar la primera reunión de la nueva Junta Directiva. Cabe destacar la gran participación por parte de los soci@s tanto en asistencia como en el debate de los temas que se discutieron. En líneas generales se trataron los temas siguientes: 
+<ul>
+<li>Creación de un inventario de proyectos en de la asociación con las personas que los integran.</li>
+<li>Documentación orientada a presentar el software libre en general y el nuestro en particular a las empresas, en forma tanto de arículos como de presentacones.</li>
+<li>Presentación de la asociación y de BulmaGés al Ayuntamiento de Benicarló y a AJOVE (Asociación de Jóvenes Empresarios de Castellón).</li>
+<li>Realización de manuales de las aplicaciones.</li>
+<li>Documentación técnica con DOXIGEN.</li>
+</ul>
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>22/11/2004</td>
 <td><center><b>Primer Screenshot de Bulmafact</b></center></td>
 </tr>
