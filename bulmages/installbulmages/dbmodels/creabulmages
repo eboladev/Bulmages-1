@@ -7,15 +7,15 @@
 # Este script no se encarga de hacer las inserciones oportunas en la metabd.
 # Aunque es una tarea muy sencilla que puede hacer posteriormente.
 # PARAMETROS:
-#		$1 Tipo: Texto o dialogo
+#               $1 Tipo: Texto o dialogo
 #               $2 Nombre Base de Datos
 #               $3 Tipo:  0.- Base (Vacia)
-#			  1.- Plan Contable.
-#			  2.- Juego de prueba de bulmages
+#                         1.- Plan Contable.
+#                         2.- Juego de prueba de bulmages
 #                         3.- La metabase
-#		$4 Nombre de la Empresa.
-#		$5 Ejercicio (ano)
-#		$6 La metabase en la que se mete la empresa.
+#               $4 Nombre de la Empresa.
+#               $5 Ejercicio (ano)
+#               $6 La metabase en la que se mete la empresa.
 #
 # La diferencia entre este script y el anterior es que este no hace falta que se ejecute como ROOT
 # ------------------------------------------------------------------------------------------------
@@ -80,14 +80,14 @@ ENC="0"
 if [ -e /usr/lib/postgresql/lib/plpgsql.so ]; then
    info "PostgreSQL esta bien instalado, la distribucion parece una Debian."
    tiempo
-   psql $2 < crear/bulmages/bulmages_debian.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/bulmages_debian.sql 2>> /tmp/errores1.txt > /dev/null
    ENC="1"
 fi
 
 if [ -e /usr/lib/pgsql/plpgsql.so ]; then
    info "PostgreSQL esta bien instalado, la distribucion parece una Mandrake."
    tiempo
-   psql $2 < crear/bulmages/bulmages_mandrake.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/bulmages_mandrake.sql 2>> /tmp/errores1.txt > /dev/null
    ENC="1"
 fi
 
@@ -96,13 +96,13 @@ if [ "$ENC" = "0" ]; then
    LANG=`locate plpgsql.so`
    if [ $LANG ]; then
       LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
-      mensaje "No se ha encontrado plpgsql.o en los sitios mas usuales, se ha encontrado dicho archivo en $LANG. Intentando la instalacion con dicho archivo" 
+      mensaje "No se ha encontrado plpgsql.o en los sitios mas usuales, se ha encontrado dicho archivo en $LANG. Intentando la instalacion con dicho archivo"
       tiempo
-      cat crear/bulmages/bulmages_generica.pgdump | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.pgdump      
+      cat crear/bulmages/bulmages_generica.sql | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.sql
    else
       mensaje "PostgreSQL no esta bien instalado o la distribucion no es una \n de las soportadas por el instalador. \
-   No se ha encontrado la libreria plpgsql.so necesaria para instalar las \n bases de datos 
-   Por favor, localicela e intente una instalacion manual\n" 
+   No se ha encontrado la libreria plpgsql.so necesaria para instalar las \n bases de datos
+   Por favor, localicela e intente una instalacion manual\n"
       exit 1
    fi
 fi
@@ -111,7 +111,7 @@ fi
 if [ "$3" = "1" -o "$3" = "2" ]; then
    info "Importamos el esquema de base de datos de una empresa. \n"
    tiempo
-   psql $2 < crear/bulmages/bulmages_schema.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/bulmages_schema.sql 2>> /tmp/errores1.txt > /dev/null
 else
    info "Importamos el esquema de la metabd. \n"
    tiempo
@@ -131,12 +131,12 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo
    info "Cargamos el conjunto minimo de datos. \n"
    tiempo
-   psql $2 < crear/bulmages/t_configuracion_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-#   psql $2 < crear/bulmages/t_tiposiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_grupo_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_cuenta_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_fpago_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_tipoiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null   
+   psql $2 < crear/bulmages/t_configuracion_data.sql 2>> /tmp/errores1.txt > /dev/null
+#   psql $2 < crear/bulmages/t_tiposiva_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_grupo_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_cuenta_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_fpago_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_tipoiva_data.sql 2>> /tmp/errores1.txt > /dev/null
 fi
 
 
@@ -144,22 +144,22 @@ if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
    info "Cargamos datos adicionales. \n"
    tiempo
-   psql $2 < crear/bulmages/t_ejercicios_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_cuenta_data1.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_canal_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_c_coste_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_diario_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_asiento_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_apunte_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_borrador_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_registroiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_ainteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_binteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_compmasap_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_compbalance_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_balance_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_amortizacion_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_linamortizacion_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_ejercicios_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_cuenta_data1.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_canal_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_c_coste_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_diario_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_asiento_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_apunte_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_borrador_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_registroiva_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_ainteligente_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_binteligente_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_compmasap_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_compbalance_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_balance_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_amortizacion_data.sql 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_linamortizacion_data.sql 2>> /tmp/errores1.txt > /dev/null
 fi
 
 
@@ -178,8 +178,8 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
       echo -e "\\pset tuples_only \n select idusuario FROM usuario ;" | psql metabd > /tmp/listuser.lst
       for y in `tail +2 /tmp/listuser.lst`
       do
-	    echo "INSERT INTO usuario_empresa (idusuario,idempresa, permisos) VALUES ($y, $x, 1)" | psql $6   2>> /tmp/errores1.txt >> /tmp/errores1.txt
-	    info "Damos permisos a $y, $x. \n"
+            echo "INSERT INTO usuario_empresa (idusuario,idempresa, permisos) VALUES ($y, $x, 1)" | psql $6   2>> /tmp/errores1.txt >> /tmp/errores1.txt
+            info "Damos permisos a $y, $x. \n"
       done
       linea
    done
