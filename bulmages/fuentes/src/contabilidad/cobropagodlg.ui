@@ -290,10 +290,17 @@
         <receiver>cobropagodlg</receiver>
         <slot>s_actualizar()</slot>
     </connection>
+    <connection>
+        <sender>toolButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>cobropagodlg</receiver>
+        <slot>s_searchAccount()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>s_creaPago()</slot>
     <slot>s_actualizar()</slot>
+    <slot>s_searchAccount()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

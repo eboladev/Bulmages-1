@@ -56,6 +56,10 @@ CREATE TABLE prevcobro (
 #define COL_TIPOPREVCOBRO              14
 #define COL_DOCPREVCOBRO               15
 
+
+/**
+  * \brief Inicia los encabezados de la tabla y llama a la presentación del listado.
+  */
 cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) : cobropagodlg(parent, name) {
     conexionbase = emp->bdempresa();
     empresaactual = emp;
@@ -212,5 +216,17 @@ void cobropagoview::s_actualizar() {
 	fprintf(stderr,"actualizar \n");
 }// end s_actualizar
 
+
+/**
+  * \brief SOLT que responde a la pulsación de la busqueda de una cuenta.
+  */
+void cobropagoview::s_searchAccount() {
+   listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentas->modo=1;
+   listcuentas->inicializa(conexionbase);
+   listcuentas->exec();
+   m_cuenta->setText(listcuentas->codcuenta);
+   delete listcuentas;   
+}// end s_searchAccount
 
 
