@@ -58,6 +58,7 @@ private:
 	int updateBudgetDiscountLine(int);
 	int deleteBudgetDiscountLine(int);
 	void nextCell(QObject *);
+	void antCell(QObject *);
 	void duplicateCell(QObject *);
 	void calculateImports();
 	void installEventFilters(QString);
@@ -77,6 +78,7 @@ public slots:
 	virtual void valueBudgetDiscountLineChanged(int, int);
 	virtual void accept();
 	virtual void cancel();
+	virtual void s_saveBudget();
 
 };
 

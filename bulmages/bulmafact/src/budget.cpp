@@ -111,7 +111,7 @@ void Budget::inicialize() {
 	m_modified = false;
 	installEventFilter(this);
 	
-	installEventFilters("QTable");
+	//installEventFilters("QTable");
 	installEventFilters("QLineEdit");
 	installEventFilters("QTextEdit");
 	
@@ -305,7 +305,8 @@ void Budget::budgetExpiryLostFocus() {
 
 void Budget::newBudgetLine() {
 	m_list->setNumRows( m_list->numRows()+1 );
-	m_list->editCell(m_list->numRows()-1, COL_CODARTICULO);
+	//m_list->installEventFilter( this );
+	m_list->setCurrentCell(m_list->numRows()-1, COL_CODARTICULO);
 	
 }
 
@@ -432,6 +433,17 @@ QString Budget::searchArticle() {
 	
 	return idArticle;
 }// end searchArticle
+
+
+void Budget::s_saveBudget() {
+	companyact->begin();
+	if (saveBudget()==0 && saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
+		companyact->commit();
+		m_modified = false;
+	} else {
+		companyact->rollback();
+	}	
+}
 
 
 void Budget::accept() {
@@ -613,22 +625,21 @@ bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
 		QTable *t = (QTable *)obj;
 		if ( ev->type() == QEvent::KeyRelease ) {
 			QKeyEvent *k = (QKeyEvent *)ev;
-			qDebug( "Widget = %s",obj->name());
 			switch (k->key()) {
+				//esta linea ha sido modificada por Javier
+				case Qt::Key_Return:
 				case Qt::Key_Enter:  {
+					// Esto se hace porque en la última linea del qtable tiene un comportamiento raro. Se reportará como bug a trolltech.
+					if (t->currentRow()==t->numRows()-1) {
+						antCell(obj);
+					}
 					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
 						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
 					}
 					nextCell(obj);
 					return TRUE;
 				}
-				case Qt::Key_Return: {
-					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
-						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
-					}
-					nextCell(obj);
-					return TRUE;
-				}
+				
 				case Qt::Key_Asterisk: {
 					duplicateCell(obj);
 					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
@@ -680,6 +691,31 @@ void Budget::nextCell(QObject *obj) {
 	}
 }
 
+
+void Budget::antCell(QObject *obj) {
+	QTable *t = (QTable *)obj;
+	int row = t->currentRow();
+	int col = t->currentColumn();
+	int lastCol = t->numCols()-1;
+	if (t->isReadOnly()==FALSE) {
+		//qDebug( "Fila, Columna = %d, %d", row, col);
+		col--;
+		while (true) {
+			if (col < 0) {
+				col = lastCol;
+				
+			} else {
+				if (t->isColumnHidden(col) || t->isRowHidden(row) ) {
+					col--;
+				} else {
+					t->setCurrentCell(row, col);
+					//t->editCell(row, col);
+					break;
+				}
+			}
+		}
+	}
+}
 
 void Budget::duplicateCell(QObject *obj) {
 	QTable *t = (QTable *)obj;

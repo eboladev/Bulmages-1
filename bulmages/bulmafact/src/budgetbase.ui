@@ -874,6 +874,12 @@
         <receiver>BudgetBase</receiver>
         <slot>searchClient()</slot>
     </connection>
+    <connection>
+        <sender>toolButton1_2_2</sender>
+        <signal>clicked()</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>s_saveBudget()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>searchClient()</slot>
@@ -887,6 +893,7 @@
     <slot>newBudgetDiscountLine()</slot>
     <slot>removeBudgetDiscountLine()</slot>
     <slot>valueBudgetDiscountLineChanged(int, int)</slot>
+    <slot>s_saveBudget()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
