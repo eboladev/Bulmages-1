@@ -396,7 +396,8 @@ DROP FUNCTION convierteanumeric_linamortizacion();
 -- deben ser también implementadas de nuevo.
 -- Ver 'dbmodels/crear/bulmages/bulmages_schema.sql' para más información
 --
-DROP FUNCTION contraasiento(integer);
+
+SELECT drop_if_exists_proc ('contraasiento','integer');
 CREATE FUNCTION contraasiento(integer) RETURNS NUMERIC(12,2)
    AS '
 DECLARE
@@ -455,8 +456,7 @@ BEGIN
 END;
    ' LANGUAGE plpgsql;
 
-
-DROP FUNCTION saldototalmpatrimonial(integer);
+SELECT drop_if_exists_proc ('saldototalmpatrimonial','integer');
 CREATE FUNCTION saldototalmpatrimonial(integer) RETURNS NUMERIC(12,2)
     AS '
 DECLARE
@@ -488,7 +488,7 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-DROP FUNCTION saldompatrimonial(integer, timestamp without time zone, timestamp without time zone);
+SELECT drop_if_exists_proc ('saldompatrimonial','integer, timestamp without time zone, timestamp without time zone');
 CREATE FUNCTION saldompatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -520,7 +520,7 @@ END;
 '    LANGUAGE plpgsql;
 
 
-DROP FUNCTION debempatrimonial(integer, timestamp without time zone, timestamp without time zone);
+SELECT drop_if_exists_proc ('debempatrimonial','integer, timestamp without time zone, timestamp without time zone');
 CREATE FUNCTION debempatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -551,7 +551,7 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-DROP FUNCTION habermpatrimonial(integer, timestamp without time zone, timestamp without time zone);
+SELECT drop_if_exists_proc ('habermpatrimonial','integer, timestamp without time zone, timestamp without time zone');
 CREATE FUNCTION habermpatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -582,7 +582,8 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-DROP FUNCTION saldototal(character varying, timestamp without time zone, timestamp without time zone);
+
+SELECT drop_if_exists_proc ('saldototal','character varying, timestamp without time zone, timestamp without time zone');
 CREATE FUNCTION saldototal(character varying, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -611,7 +612,9 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-DROP FUNCTION debetotal(integer, timestamp without time zone, timestamp without time zone);
+
+
+SELECT drop_if_exists_proc ('debetotal','integer, timestamp without time zone, timestamp without time zone');
 CREATE FUNCTION debetotal(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -641,7 +644,8 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-DROP FUNCTION debetotal1(integer);
+
+SELECT drop_if_exists_proc ('debetotal1','integer');
 CREATE FUNCTION debetotal1(integer) RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -668,7 +672,9 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-DROP FUNCTION habertotal(integer, timestamp without time zone, timestamp without time zone);
+
+
+SELECT drop_if_exists_proc ('habertotal','integer, timestamp without time zone, timestamp without time zone');
 CREATE FUNCTION habertotal(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -697,7 +703,9 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-DROP FUNCTION habertotal1(integer);
+
+
+SELECT drop_if_exists_proc ('habertotal1','integer');
 CREATE FUNCTION habertotal1(integer) RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -724,7 +732,9 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-DROP FUNCTION recalculasaldos();
+
+
+SELECT drop_if_exists_proc ('recalculasaldos','');
 CREATE FUNCTION recalculasaldos() RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -740,6 +750,7 @@ BEGIN
     RETURN 0;
 END;
 '    LANGUAGE plpgsql;
+
 
 CREATE OR REPLACE FUNCTION recalculasaldos2() RETURNS integer
     AS '
@@ -793,7 +804,9 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-DROP FUNCTION propagaacumuladocuenta() CASCADE;
+
+
+SELECT drop_if_exists_proc ('propagaacumuladocuenta','');
 CREATE FUNCTION propagaacumuladocuenta() RETURNS "trigger"
     AS '
 DECLARE
@@ -815,7 +828,10 @@ CREATE TRIGGER propaga_acumulado_cuenta
     FOR EACH ROW
     EXECUTE PROCEDURE propagaacumuladocuenta();
 
-DROP FUNCTION propagaacumuladoccoste() CASCADE;
+
+
+
+SELECT drop_if_exists_proc ('propagaacumuladoccoste','');
 CREATE FUNCTION propagaacumuladoccoste() RETURNS "trigger"
     AS '
 DECLARE
@@ -838,7 +854,9 @@ CREATE TRIGGER propaga_acumulado_ccoste
 
 \echo "Creado el trigger propaga_acumulado_ccoste"
     
-DROP FUNCTION acumulados_canal() CASCADE;
+
+
+SELECT drop_if_exists_proc ('acumulados_canal','');
 CREATE OR REPLACE FUNCTION acumulados_canal() RETURNS "trigger"
     AS '
 DECLARE
@@ -869,7 +887,7 @@ CREATE TRIGGER acumulados_canal_fk
 
 \echo "Creado el trigger de propagación de acumulados del canal"
     
-DROP FUNCTION inserttipoiva() CASCADE;
+SELECT drop_if_exists_proc ('inserttipoiva','');
 CREATE OR REPLACE FUNCTION inserttipoiva () RETURNS "trigger"
 AS '
 DECLARE
@@ -887,7 +905,9 @@ CREATE TRIGGER nuevotipoiva
    FOR EACH ROW
    EXECUTE PROCEDURE inserttipoiva();
 
-DROP FUNCTION deletetipoiva() CASCADE;
+
+
+SELECT drop_if_exists_proc ('deletetipoiva','');
 CREATE OR REPLACE FUNCTION deletetipoiva() RETURNS "trigger"
     AS '
 DECLARE
