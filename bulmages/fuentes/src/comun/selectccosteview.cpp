@@ -25,9 +25,8 @@
 
 
 selectccosteview::selectccosteview(empresa *emp,QWidget *parent, const char
-*name)
- : selectccostedlg(parent, name)
-{
+*name) : selectccostedlg(parent, name) {
+   fprintf(stderr,"Constructor de selectccosteview\n");
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
 
@@ -42,6 +41,8 @@ selectccosteview::selectccosteview(empresa *emp,QWidget *parent, const char
    m_colCheck = m_listCostes->addColumn("Seleccion",-1);
 
    cargacostes();
+   fprintf(stderr,"FIN de Constructor de selectccosteview\n");
+
 }// end selectccsotedlg
 
 

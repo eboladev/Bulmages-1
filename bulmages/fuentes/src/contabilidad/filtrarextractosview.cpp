@@ -17,24 +17,17 @@
 #include "filtrarextractosview.h"
 #include "empresa.h"
 
-
 filtrarextractosview::filtrarextractosview(empresa *emp,QWidget *parent, const char *name ) : filtrarextractosdlg(parent,name) {
-   
    fprintf(stderr,"Constructor de filtrarextractosview\n");
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
-
-
-   selccostes=new selectccosteview(empresaactual,0,0);   
-   selcanales=new selectcanalview(empresaactual,0,0);
    
    // Hacemos la carga de los centros de coste. Rellenamos el combobox
    // Esto es obsoleto pq hay un formulario que se encarga de ello.
    // cargacostes();
  
    fprintf(stderr,"Fin del constructor de fitrarextractosview\n");
-
 }// end filtrarextractosview
 
 
@@ -43,8 +36,8 @@ filtrarextractosview::~filtrarextractosview(){
 
 void filtrarextractosview::boton_ccostes() {
    fprintf(stderr,"Boton ccostes\n");
+   selectccosteview *selccostes = empresaactual->getselccostes();
    selccostes->exec();
-   
    fprintf(stderr,"---------------INICIO---------------------\n");
    selccostes->firstccoste();
    while (selccostes->nextccoste());
@@ -55,8 +48,8 @@ void filtrarextractosview::boton_ccostes() {
 
 void filtrarextractosview::boton_canales() {
    fprintf(stderr,"Boton canales\n");
+   selectcanalview *selcanales = empresaactual->getselcanales();
    selcanales->exec();
-   
    fprintf(stderr,"---------------INICIO---------------------\n");
    selcanales->firstcanal();
    while (selcanales->nextcanal());

@@ -26,6 +26,7 @@ selectcanalview::selectcanalview(empresa *emp,QWidget *parent, const char
 *name)
  : selectcanaldlg(parent, name)
 {
+   fprintf(stderr,"Inicializacion del selector de canales\n");
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
 
@@ -40,6 +41,7 @@ selectcanalview::selectcanalview(empresa *emp,QWidget *parent, const char
    m_colCheck = m_listCanales->addColumn("Seleccion",-1);
 
    cargacanales();
+   fprintf(stderr,"Fin del Inicializacion del selector de canales\n");
 }// end selectccsotedlg
 
 
@@ -57,9 +59,8 @@ void selectcanalview::cargacanales() {
 //    QListViewItem *Lista[10000];
    QCheckListItem *it;
    QCheckListItem *Lista[10000];
-    int padre;
     int idcanal=0;
-    cursor2 *cursoraux1, *cursoraux2;
+    cursor2 *cursoraux1;
 
     // Cogemos los centros de coste principales y los ponemos donde toca.
     m_listCanales->clear();

@@ -35,7 +35,8 @@
 
 
 extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, int flags ) : extractodlg1(parent,name,flags) {
-	empresaactual = emp;
+   fprintf(stderr,"Constructor de extractoview1\n");
+   empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
   

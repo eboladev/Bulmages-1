@@ -49,8 +49,7 @@
 
 
 balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int flags ) : balancedlg(parent,name,flags) {
-
-	fprintf(stderr,"Inicializacion de balanceview\n");
+   fprintf(stderr,"Inicializacion de balanceview\n");
 	empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
@@ -74,9 +73,9 @@ balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int fl
    listado->horizontalHeader()->setLabel( DEBE, tr( "Debe Periodo" ) );
    listado->horizontalHeader()->setLabel( HABER, tr( "Haber Periodo" ) );
    listado->horizontalHeader()->setLabel( SALDO, tr( "Saldo Periodo" ) );
-	listado->horizontalHeader()->setLabel( DEBEEJ, tr("Debe Ejercicio") );
-	listado->horizontalHeader()->setLabel( HABEREJ, tr("Haber Ejercicio") );
-	listado->horizontalHeader()->setLabel( SALDOEJ, tr("Saldo Ejercicio") );
+   listado->horizontalHeader()->setLabel( DEBEEJ, tr("Debe Ejercicio") );
+   listado->horizontalHeader()->setLabel( HABEREJ, tr("Haber Ejercicio") );
+   listado->horizontalHeader()->setLabel( SALDOEJ, tr("Saldo Ejercicio") );
 
    listado->setColumnWidth(CUENTA,75);
    listado->setColumnWidth(DENOMINACION,300);
@@ -109,7 +108,9 @@ balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int fl
    fechainicial1->setText(cadena);
    cadena.sprintf("%2.2d/%2.2d/%4.4d",31, 12, QDate::currentDate().year());
    fechafinal1->setText(cadena);
-//   cursorcta=NULL;
+
+   fprintf(stderr,"FIN de Inicializacion de balanceview\n");
+
 }// end balanceview
 
 balanceview::~balanceview(){

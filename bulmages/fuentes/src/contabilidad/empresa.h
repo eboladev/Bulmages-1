@@ -34,6 +34,8 @@
 #include "bmodelo347.h"
 #include "postgresiface2.h"
 #include "log.h"
+#include "selectccosteview.h"
+#include "selectcanalview.h"
 
 
 /** * @author Tomeu Borrás Riera */
@@ -57,8 +59,12 @@ private:
   balanceview *balance;
   intapunts3view *introapunts1; // introapunts.  
   int numdigitos;  // El numero de digitos que tienen las cuentas.
+  
+  // Hay unos selectores generales, que van a ser estos y que indican con que se trabaja, luego
+  // Estos selectores generales se podran invocar desde distintas partes.
+  selectccosteview *selccostes;
+  selectcanalview *selcanales;
 
-private:
   int m_idcCosteDef;  // El centro de coste por defecto.
   int m_idCanalDef; // El canal por defecto.
 
@@ -122,8 +128,11 @@ public:
   int amortizaciones();
   void reemplazacuentaenasientos();
   int cambioejercicio();
-  void centrocostedefecto(){}
-  void canaldefecto() {}
+  void centrocostedefecto(){   selccostes->exec();}
+  void canaldefecto() {   selcanales->exec();}
+  selectccosteview * getselccostes() {return selccostes;}
+  selectcanalview *getselcanales() {return selcanales;}
+
   QString nombreDB;
 };
 #endif

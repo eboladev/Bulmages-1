@@ -17,6 +17,7 @@
 #include "filtrarasientosview.h"
 
 filtrarasientosview::filtrarasientosview(QWidget *parent, const char *name ) : filtrarasientosdlg(parent,name) {
+   fprintf(stderr,"constructor de filtrarasientosview\n");
 }
 
 filtrarasientosview::~filtrarasientosview(){

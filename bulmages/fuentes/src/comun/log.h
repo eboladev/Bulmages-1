@@ -34,8 +34,6 @@ using namespace std;
 // ... 8 bits -> ocho tipos de logs que se pueden complementar
 
 
-
-
 /**
 We want to log everything
 @authors:
@@ -55,7 +53,6 @@ public:
     bitacora();
     void add(int , int, QString ,QString);
     void setempresa(empresa *emp) {empresaactual=emp;}
-
     ~bitacora();
 };
 

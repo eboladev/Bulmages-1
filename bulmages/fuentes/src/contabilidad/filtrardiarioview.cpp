@@ -27,6 +27,7 @@ filtrardiarioview::filtrardiarioview(empresa *emp, QWidget *parent, const char *
    
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
    cargacostes();
+   fprintf(stderr,"Fin del CONSTRUCTOR de filtrardiarioview\n");
 
 }// end filtrardiarioview
 

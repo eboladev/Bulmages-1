@@ -56,7 +56,7 @@ int cpadre;
 
 
 balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int flags ) : balance1dlg(parent,name, flags) {
-   fprintf(stderr,"BALANCE1VIEW: Constructor\n");
+   fprintf(stderr,"balance1view: Constructor\n");
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
@@ -118,6 +118,8 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
    cadena.sprintf("%2.2d/%2.2d/%4.4d",31, 12, QDate::currentDate().year());
    fechafinal1->setText(cadena);
 //   cursorcta=NULL;
+   fprintf(stderr,"FIN de balance1view: Constructor\n");
+
 }
 
 

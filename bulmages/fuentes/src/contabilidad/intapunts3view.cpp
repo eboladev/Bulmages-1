@@ -58,6 +58,7 @@
 
 
 intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name ) : intapunts3dlg(parent,name) {
+   fprintf(stderr,"Constructor de intapunts3view\n");
     empresaactual = emp;
     idasiento=-1;
     tapunts = new QTable1(this,"");
@@ -133,7 +134,8 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name ) 
 
     // Consideramos que no hay row actual
     rowactual = -1;
-
+   
+   fprintf(stderr,"FIN del Constructor de intapunts3view\n");
 }
 
 intapunts3view::~intapunts3view() {

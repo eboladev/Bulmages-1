@@ -1,3 +1,4 @@
+
 /***************************************************************************
                           filtrarextractosview.h  -  description
                              -------------------
@@ -5,7 +6,6 @@
     copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
- 
 /***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -14,8 +14,6 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-
-
 #ifndef FILTRAREXTRACTOSVIEW_H
 #define FILTRAREXTRACTOSVIEW_H
 
@@ -33,26 +31,23 @@ class empresa;
 /***@ author Tomeu Borrás Riera  */
 
 class filtrarextractosview : public filtrarextractosdlg  {
-
-   Q_OBJECT
-public:
+Q_OBJECT
+private:
   postgresiface2* conexionbase;
   int numdigitos;
-  int ccostes[200];
   empresa *empresaactual;   
-  selectccosteview *selccostes;
-  selectcanalview* selcanales;
-public:
-
-  filtrarextractosview(empresa *, QWidget *parent=0, const char *name=0);
-  ~filtrarextractosview();
-  void cargacostes();
-  void setccoste(int);
-private:
    int m_colNomCoste;
    int m_colDescCoste;
    int m_colIdCoste;
    int m_colStatusCoste;  
+public:
+  filtrarextractosview(empresa *, QWidget *parent=0, const char *name=0);
+  ~filtrarextractosview();
+public:
+  void cargacostes();
+  void setccoste(int);
+  int ccostes[200];
+
 public slots:
   virtual void codigo_textChanged(const QString &);
   virtual void boton_buscacontrapartida();

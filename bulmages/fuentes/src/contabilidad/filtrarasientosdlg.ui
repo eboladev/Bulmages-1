@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>filtrarasientosdlg</class>
 <widget class="QDialog">
     <property name="name">
@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>600</width>
-            <height>179</height>
+            <width>448</width>
+            <height>193</height>
         </rect>
     </property>
     <property name="caption">
@@ -18,11 +18,60 @@
     <property name="icon">
         <pixmap>image0</pixmap>
     </property>
-    <grid>
+    <vbox>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
-        <widget class="QLayoutWidget" row="0" column="0">
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout6</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image2</iconset>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>511</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget">
             <property name="name">
                 <cstring>layout4</cstring>
             </property>
@@ -45,7 +94,7 @@
                 </widget>
             </vbox>
         </widget>
-        <widget class="QLayoutWidget" row="1" column="0">
+        <widget class="QLayoutWidget">
             <property name="name">
                 <cstring>layout7</cstring>
             </property>
@@ -101,7 +150,24 @@
                 </widget>
             </hbox>
         </widget>
-        <widget class="QLayoutWidget" row="2" column="0">
+        <spacer>
+            <property name="name">
+                <cstring>spacer3</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Vertical</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>31</width>
+                    <height>60</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="QLayoutWidget">
             <property name="name">
                 <cstring>layout8</cstring>
             </property>
@@ -147,11 +213,17 @@
                 </widget>
             </hbox>
         </widget>
-    </grid>
+    </vbox>
 </widget>
 <images>
     <image name="image0">
         <data format="XPM.GZ" length="965">789c4dd3c94ec3301006e07b9f22eadc2a14a02abe200ea5ec9b3822210e8e97a6c0b84dd30005f1ee78661cd3b4aafc657edbe346d91f154f8ff7c5687fd06ef466610a53eb7531b21de2f6f9e5e467303c5445fc4e0e8ac3e1de605817a678580647638c6338e08b7841ac26da6943bc66da6a5c4d8867894ab8261a5bb9ca12af88f6c8287344fc643ae30c573742ab84cb9e96db38273a15c9732f13b5b065ba18e7f097d029a7882693ab6f89da7be207d12b3796f03431cd7dcfe4b937895aaab34caebef6f45cbd4d74523ded29d57926b7f12df463a14b5442cff4fd53b813f6fb6e139d74b5c8e46a29f463a1ee296dd84cdea84a4ce7859e125e65723824a6f376995c6d12bdb004284143a58d8d479ed7dc69bc459fc5ab7b7b47b917733ade82b0c478ade6ff3968d6d8361b5cd579bd0088a1838f9d1cb4f8d940195aacfb5c0c7d3554dacd6d8116a0dcf73caf273dc2144f67bbfd718f58c14e7fd22382cefb6a5a2dccce1052ae99c661e8cee331e2bafc8795177819e00ae36f8873f8158ad52e20de940dafcb2fdd6d6c57239477dc230c7f8f077f8e5eef5b</data>
+    </image>
+    <image name="image1">
+        <data format="XPM.GZ" length="1316">789cbd92bb0e82301486f73e45433762406421313e82c6d1c438f442a3039a280ec6f8ee727a91168840bcfced70bee4cb3985360ef166bdc4618c2e252d0f1cf33d3de3505c8be2b6dd2dee284867b8da194e82090a22ccf1ea74cca166554da62a80d262960252c02cb5c8356689c61c50e4b00009a094b695d00851437bd2e510fa99434d882d68db21cd74398d196d47cd708c9a6bc7edeef33827f21587879f99b9897c360ee36e98cfcc3aa28e72f2577ee348e938fa4e9b8e3492eb50df91b6937160cebf9c8e334b93777df4777fcb016984d3f99f7befabfffd0c79873d19e43ce6e809541f63dc</data>
+    </image>
+    <image name="image2">
+        <data format="XPM.GZ" length="1331">789c8d93cb4ec3301045f7f90a2bde45287d5896a8109f006289845838e34ce8a220b5658110ff8e67d2244e9d497a9d85af743c77fcc8aa50af2f4faa5865a7b33bef41c1873baac27f1f0e3f6fef8fbf596eb62a7c3bb5c9efb2bc54a09ebf3e6b9aeb30d76b1659d7d97b4316c99a8d591b5ed890b5ceeeac235b93050bdb762d90f5350db29e2c6257b96a2d2258ee6141b7333a51c2e874ad4e1977a549a6aae4bc9e99c98b18316fcc4ce7450c809017334ec8ebf71e18ca83482233d49099aad732e3e7187f416618ef7d8b240c1dc4a84ec2f0fbe133bcf4c3c5ae18ae4379e2be6a0ca3cd13cf901044ce93ef62b8c079867ea50506bb9ea4b751960d62d793f0c6163462704a63867b4a06c6cc3412a0816944ddd4f3df43f60f035c42c5</data>
     </image>
 </images>
 <connections>

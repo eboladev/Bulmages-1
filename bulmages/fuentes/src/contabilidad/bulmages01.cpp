@@ -83,9 +83,13 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
 //  viewCorrector->setOn(true);
   
   // Le indicamos al sistema de log cual va a ser la empresa.
+  fprintf(stderr,"HEMOS INICIALIZADO \n");
   
+  // OJO QUE AQUI ESTA FALLANDO ESTO.
   ctllog->setempresa(&empresaactual);
   ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario a entrado en bulmages01"); //: --"+empresaactual.nomuserempresa()+"-- ha entrado en la empresa(DB): --"+empresaactual.nombreDB);
+  fprintf(stderr,"HEMOS INICIALIZADO POR COMPLETO\n");
+
 }// end Bulmages01
 
 
@@ -589,8 +593,8 @@ void Bulmages01::initMenuBar() {
   SCuentas->addTo(pHerramientasMenu);
   bloqaction->addTo(pHerramientasMenu);
   pHerramientasMenu->insertSeparator();
-//  CCosteDef->addTo(pHerramientasMenu);
-//  CanalDef->addTo(pHerramientasMenu);
+  CCosteDef->addTo(pHerramientasMenu);
+  CanalDef->addTo(pHerramientasMenu);
    
   //El menu de empresa
   pEmpresaMenu = new QPopupMenu();

@@ -26,12 +26,10 @@
 
 class empresa;
 /**@author Tomeu Borras*/
-class selectcanalview : public selectcanaldlg
-{
+class selectcanalview : public selectcanaldlg {
 Q_OBJECT
 public:
     selectcanalview(empresa *emp, QWidget *parent = 0, const char *name = 0);
-
     ~selectcanalview();
 private:
    empresa *empresaactual;
@@ -43,7 +41,6 @@ private:
    postgresiface2* conexionbase;
    int numdigitos;
    QListViewItemIterator* m_iterador;
-
 public:
    void cargacanales();
    int firstcanal();

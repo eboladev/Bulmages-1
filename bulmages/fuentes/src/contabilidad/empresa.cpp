@@ -48,6 +48,8 @@ empresa::empresa(){
  balance1 = NULL;
  balance = NULL; 
  introapunts1 = NULL;
+ selccostes  = NULL;
+ selcanales = NULL;
  nombre = "";
  conexionbase2 = new postgresiface2();
  conexionanterior2 = NULL;
@@ -68,6 +70,9 @@ empresa::~empresa(){
   if (introapunts1) delete introapunts1;
   if (conexionbase2) delete conexionbase2;
   if (conexionanterior2) delete conexionanterior2; //Segmentation Fault!! si destruimos un objeto que no existe. 
+  if (selccostes) delete selccostes;
+  if (selcanales) delete selcanales;
+  
 }// end ~empresa
 
 
@@ -81,48 +86,50 @@ void empresa::testnewdb() {
 
 
 int empresa::inicializa1(QWorkspace *space) {
-
-
    fprintf(stderr,"EMPRESA::inicializa1()\n");
-  pWorkspace = space;
-  fprintf(stderr,"conexionbase->inicializa\n");
-  conexionbase2->inicializa(nombreDB.ascii());
-  fprintf(stderr,"fin de conexionbase->inicializa\n");
+   pWorkspace = space;
+   fprintf(stderr,"conexionbase->inicializa\n");
+   conexionbase2->inicializa(nombreDB.ascii());
+   fprintf(stderr,"fin de conexionbase->inicializa\n");
 
   
   // Calculamos el número de dígitos que tiene el nivel último de la empresa. 
-    conexionbase2->begin();
-    QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-    cursor2 *cursoraux1 = conexionbase2->cargacursor(query,"codcuenta");
-    conexionbase2->commit();
-    numdigitos=cursoraux1->valor(2).length();
-    delete cursoraux1;  
+   conexionbase2->begin();
+   QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
+   cursor2 *cursoraux1 = conexionbase2->cargacursor(query,"codcuenta");
+   conexionbase2->commit();
+   numdigitos=cursoraux1->valor(2).length();
+   delete cursoraux1;  
     
     
     //Buscamos el último ejercicio en la tabla "ejercicios"
-    query="SELECT MAX(ejercicio) AS ejercicio FROM ejercicios WHERE periodo=0";
-    conexionbase2->begin();
-    cursor2 *recordSet = conexionbase2->cargacursor(query,"recordSet");
-    conexionbase2->commit();
-    if (!recordSet->eof()) EjercicioActual=recordSet->valor("ejercicio");
-    else EjercicioActual="";
-    delete recordSet;
+   query="SELECT MAX(ejercicio) AS ejercicio FROM ejercicios WHERE periodo=0";
+   conexionbase2->begin();
+   cursor2 *recordSet = conexionbase2->cargacursor(query,"recordSet");
+   conexionbase2->commit();
+   if (!recordSet->eof()) EjercicioActual=recordSet->valor("ejercicio");
+   else EjercicioActual="";
+   delete recordSet;    
+   if (extracto != NULL) {
+         delete extracto;
+         delete diario;
+         delete balance;
+         delete balance1;
+         delete introapunts1;
+         delete selccostes;
+         delete selcanales;
+   }// end if  
 
-    
-  if (extracto != NULL) {
-    delete extracto;
-    delete diario;
-   delete balance;
-    delete balance1;
-   delete introapunts1;
-  }// end if  
+  // Inicializamos los selectores de centros de coste y canales
+  selccostes=new selectccosteview(this,0,"selccostes");   
+  selcanales=new selectcanalview(this,0,"selcanales");
 
+  
   extracto = new extractoview1(this, pWorkspace,"extracto");
-//  extracto->inicializa(conexionbase2);
   fprintf(stderr,"Vamos a inicializar el diarioview1\n");
   diario = new diarioview1(this,pWorkspace,"diario");
   balance = new balanceview(this, pWorkspace,"balance");
-  balance1 = new balance1view(this, pWorkspace,"Super");
+  balance1 = new balance1view(this, pWorkspace,"balance2");
   
   // Empezamos las iniciaciones de introapunts1 que es la nueva parte de lo nuevo
   introapunts1 = new intapunts3view(this, pWorkspace,"introapunts2");
@@ -130,12 +137,16 @@ int empresa::inicializa1(QWorkspace *space) {
   
   // Pasamos parametros a las ventanas para que puedan coordinarse entre si.
   introapunts1->inicializa1(extracto, diario, balance);
+  fprintf(stderr,"empresa inicializa extracto\n");
   extracto->inicializa2(introapunts1, diario, balance);
+  fprintf(stderr,"empresa inicializa diario\n");
   diario->inicializa2(introapunts1,extracto, balance);
+  fprintf(stderr,"empresa inicializa balance\n");
   balance->inicializa2(introapunts1, diario, extracto);
+  fprintf(stderr,"empresa inicializa balance1\n");
   balance1->inicializa2(introapunts1, diario, extracto);  
   
-  
+
   return(0);
 }// end inicializa1
 
