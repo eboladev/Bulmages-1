@@ -155,7 +155,7 @@ void providerslist::inicializa() {
          m_list->setText(i,COL_COMENTPROVEEDOR,cur->valor("comentproveedor"));
          m_list->setText(i,COL_DIRPROVEEDOR,cur->valor("dirproveedor"));
          m_list->setText(i,COL_POBLPROVEEDOR,cur->valor("poblproveedor"));
-	 m_list->setText(i,COL_CPPROVEEDOR,cur->valor("cpproveedor"));
+			m_list->setText(i,COL_CPPROVEEDOR,cur->valor("cpproveedor"));
          m_list->setText(i,COL_TELPROVEEDOR,cur->valor("telproveedor"));
          m_list->setText(i,COL_FAXPROVEEDOR,cur->valor("faxproveedor"));
          m_list->setText(i,COL_EMAILPROVEEDOR,cur->valor("emailproveedor"));

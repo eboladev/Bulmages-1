@@ -67,11 +67,6 @@
                             </property>
                         </widget>
                         <widget class="QComboBox">
-                            <item>
-                                <property name="text">
-                                    <string>(ninguno)</string>
-                                </property>
-                            </item>
                             <property name="name">
                                 <cstring>m_comboalmacen</cstring>
                             </property>
@@ -244,11 +239,6 @@
                             </property>
                         </widget>
                         <widget class="QComboBox">
-                            <item>
-                                <property name="text">
-                                    <string>(ninguna)</string>
-                                </property>
-                            </item>
                             <property name="name">
                                 <cstring>m_combodivision</cstring>
                             </property>
@@ -790,6 +780,7 @@
     <slot>almacenactivated( int )</slot>
     <slot>neworderlin()</slot>
     <slot>searchProvider()</slot>
+    <slot>accept()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

@@ -168,7 +168,7 @@ void linorderslist::cargarcomboalmacen(QString idalmacen) {
 		m_cursorcombo2->siguienteregistro();
    }
    if (i1 != 0 ) {
-   	m_comboalmacen->setCurrentItem(i1);
+   	m_comboalmacen->setCurrentItem(i1-1);
    }
 }
 
@@ -189,27 +189,28 @@ void linorderslist::cargarcombodivision(QString idproveedor, QString iddivision)
 			m_cursorcombo->siguienteregistro();
    	}
 	if (i1 != 0 ) {
-   		m_combodivision->setCurrentItem(i1);
+   		m_combodivision->setCurrentItem(i1-1);
  	} 
 }
 
 
 void linorderslist::activated(int a) {
-	fprintf(stderr,"id:%s\n", m_cursorcombo->valor("iddivision",a-1).ascii());
+	fprintf(stderr,"id:%s\n", m_cursorcombo->valor("iddivision",a).ascii());
 }
 
 void linorderslist::almacenactivated(int a) {
-	fprintf(stderr,"id:%s\n", m_cursorcombo2->valor("idalmacen",a-1).ascii());
+	fprintf(stderr,"id:%s\n", m_cursorcombo2->valor("idalmacen",a).ascii());
 }
 
 void linorderslist::accept() {
+	fprintf(stderr,"accept button activated\n");
 	if (idpedido != "0") {
 		QString SQLQuery = "UPDATE pedido SET numpedido='"+m_numpedido->text()+"'";
  //     SQLQuery += " , anopedido='"+m_fechapedido->text()+"'";
       SQLQuery += " , fechapedido='"+m_fechapedido->text()+"'";
       SQLQuery += " , descpedido='"+m_descpedido->text()+"'";
-      SQLQuery += " , iddivision="+m_cursorcombo->valor("iddivision",m_combodivision->currentItem()-1);
-      SQLQuery += " , idalmacen="+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem()-1);
+      SQLQuery += " , iddivision="+m_cursorcombo->valor("iddivision",m_combodivision->currentItem());
+      SQLQuery += " , idalmacen="+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem());
       SQLQuery += " WHERE idpedido ="+idpedido;
       companyact->begin();
       companyact->ejecuta(SQLQuery);
@@ -221,14 +222,14 @@ void linorderslist::accept() {
  //     SQLQuery += " , anopedido='"+m_fechapedido->text()+"'";
       SQLQuery += " , '"+m_fechapedido->text()+"'";
       SQLQuery += " , '"+m_descpedido->text()+"'";
-      SQLQuery += " , "+m_cursorcombo->valor("iddivision",m_combodivision->currentItem()-1);
-      SQLQuery += " , "+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem()-1);
+      SQLQuery += " , "+m_cursorcombo->valor("iddivision",m_combodivision->currentItem());
+      SQLQuery += " , "+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem());
       SQLQuery += " ) ";
       companyact->begin();
       companyact->ejecuta(SQLQuery);
       companyact->commit();
 	}
-	fprintf(stderr,"accept button activated\n");
+
 	close();
 }
 
