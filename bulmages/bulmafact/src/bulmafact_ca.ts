@@ -257,6 +257,10 @@
         <source>Proporci&#xf3;n</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Eliminar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ClientDelivNoteBase</name>
@@ -365,6 +369,10 @@
     </message>
     <message>
         <source>Forma de Pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eliminar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -693,6 +701,84 @@ De momento no hago nada, pero tendr&#xed;a que borrarlo</source>
     </message>
     <message>
         <source>Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ClientInvoicesList</name>
+    <message>
+        <source>Cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N&#xba; Presupuesto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IDFORMA_PAGO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N&#xba; Factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N&#xba; No Fra.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IDUSUARIO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IDCLIENTE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IDALBARAN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comentario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forma de Pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eliminar</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ClientInvoicesListBase</name>
+    <message>
+        <source>Listado de Albaranes de Clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Código</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CIF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Población</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

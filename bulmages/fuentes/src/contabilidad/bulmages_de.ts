@@ -72,6 +72,57 @@
     </message>
 </context>
 <context>
+    <name>BbloqFecha</name>
+    <message>
+        <source>Diciembre </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Noviembre </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Octubre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Septiembre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Agosto    </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Julio     </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Junio     </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mayo      </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Abril     </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Marzo     </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Febrero   </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enero     </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Bulmages01</name>
     <message>
         <source>BulmaG&#xe9;s </source>
@@ -763,7 +814,7 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Ejercicios</source>
-        <translation>Rechnungsjahre</translation>
+        <translation type="obsolete">Rechnungsjahre</translation>
     </message>
     <message>
         <source>Que es ??</source>
@@ -843,6 +894,14 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Introducci&#xf3;n de Borrador</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cobros y Pagos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cobros y Pagos</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1881,7 +1940,7 @@ Public License instead of this License.
     <name>ainteligentesdlg</name>
     <message>
         <source>Asientos Inteligentes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Intelligente Belegen </translation>
     </message>
     <message>
         <source>Exportar</source>
@@ -2360,27 +2419,19 @@ Public License instead of this License.
     <name>asientoview</name>
     <message>
         <source>Atenci&#xf3;n</source>
-        <translation>Achtung</translation>
+        <translation type="obsolete">Achtung</translation>
     </message>
     <message>
         <source>El Asiento </source>
-        <translation>Der Beleg</translation>
-    </message>
-    <message>
-        <source> ya es de Apertura.</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Der Beleg</translation>
     </message>
     <message>
         <source>Atencion</source>
-        <translation>Achtung</translation>
-    </message>
-    <message>
-        <source> ya es de Regularizacion.</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Achtung</translation>
     </message>
     <message>
         <source> ya es de Cierre.</source>
-        <translation>es ist schon von Abschluss</translation>
+        <translation type="obsolete">es ist schon von Abschluss</translation>
     </message>
 </context>
 <context>
@@ -2566,7 +2617,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Cargar Asientos Inteligentes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Intelligenten Beleg laden</translation>
     </message>
 </context>
 <context>
@@ -2640,39 +2691,39 @@ Public License instead of this License.
     <name>calendario</name>
     <message>
         <source>General</source>
-        <translation>Allgemein</translation>
+        <translation type="obsolete">Allgemein</translation>
     </message>
     <message>
         <source>Non-working Days</source>
-        <translation>Non-working Days</translation>
+        <translation type="obsolete">Non-working Days</translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation>Montag</translation>
+        <translation type="obsolete">Montag</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation>Dienstag</translation>
+        <translation type="obsolete">Dienstag</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation>Mittwoch</translation>
+        <translation type="obsolete">Mittwoch</translation>
     </message>
     <message>
         <source>Thursday</source>
-        <translation>Donnerstag</translation>
+        <translation type="obsolete">Donnerstag</translation>
     </message>
     <message>
         <source>Friday</source>
-        <translation>Freitag</translation>
+        <translation type="obsolete">Freitag</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation>Sammstag</translation>
+        <translation type="obsolete">Sammstag</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation>Sonntag</translation>
+        <translation type="obsolete">Sonntag</translation>
     </message>
 </context>
 <context>
@@ -2762,6 +2813,108 @@ Public License instead of this License.
     <message>
         <source>Descripcion</source>
         <translation>Beschreibung</translation>
+    </message>
+</context>
+<context>
+    <name>cobropagodlg</name>
+    <message encoding="UTF-8">
+        <source>Gestión de Cobros y Pagos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generar Asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cuenta</source>
+        <translation type="unfinished">Konto</translation>
+    </message>
+    <message>
+        <source>Fecha Inicial</source>
+        <translation type="unfinished">AnfangsDatum</translation>
+    </message>
+    <message>
+        <source>Fecha Final</source>
+        <translation type="unfinished">Schlüssdatum</translation>
+    </message>
+    <message>
+        <source>Aceptar</source>
+        <translation type="unfinished">Akzeptieren</translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>cobropagoview</name>
+    <message>
+        <source>COL_IDPREVCOBRO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha Prevista</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha Efectiva</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IDCUENTA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cuenta Bancaria</source>
+        <translation type="unfinished">Bankkonto</translation>
+    </message>
+    <message>
+        <source>Nombre Cuenta Bancaria</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IDASIENTO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Asiento</source>
+        <translation type="unfinished">Beleg</translation>
+    </message>
+    <message>
+        <source>Cantidad Prevista</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cantidad Efectiva</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IDREGISTROIVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cuenta Cliente/Proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Documento</source>
+        <translation type="unfinished">Dokument</translation>
+    </message>
+    <message>
+        <source>COL_CODIGOCTAREGISTROIVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_ENTREGISTROIVA</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3276,6 +3429,10 @@ Public License instead of this License.
         <source>Aceptar</source>
         <translation>Akzeptieren</translation>
     </message>
+    <message>
+        <source>Ejercicio</source>
+        <translation type="unfinished">Rechnungsjahr</translation>
+    </message>
 </context>
 <context>
     <name>filtrardiariodlg</name>
@@ -3749,6 +3906,10 @@ Public License instead of this License.
     </message>
     <message>
         <source>No existe una cuenta con el codigo proporcionado, desea crear una?.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COBRO/PAGO</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

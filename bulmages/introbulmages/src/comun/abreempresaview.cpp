@@ -18,48 +18,44 @@
 
 
 
-abreempresaview::abreempresaview(BSelector *parent, int tipo, const char *name, bool modal) : abreempresadlg(0,name,modal) {
+abreempresaview::abreempresaview(BSelector *parent, int tipo, const char *name, bool modal, QString us, QString pass) : abreempresadlg(0,name,modal) {
+   
    padre = parent;
+   user = us;
+   password = pass;
+ /**    
    postgresiface2 *apuestatealgo;
    apuestatealgo = new postgresiface2();
    apuestatealgo->inicializa( confpr->valor(CONF_METABASE).c_str() );
    QListViewItem *it;
    cursor2 *a;
-   
    if (tipo==1 || tipo == 0) {
       // Cargamos las contabilidades.
       apuestatealgo->begin();
       a=apuestatealgo->cargaempresas();
       apuestatealgo->commit();
       while (!a->eof()) {
-            it =new QListViewItem(empresas);
-            it->setText(0,a->valor(1));
-            it->setText(1,a->valor(2));
-            it->setText(2,a->valor(3));
-            it->setText(3,"BulmaGés");
+            insertCompany(a->valor(1),a->valor(2),a->valor(3),"BulmaCont");
             a->siguienteregistro();
       }// end while
       delete a;
-   }
-
+   }// end if
    if (tipo ==2 || tipo == 0) {   
       // Cargamos las facturaciones.
       apuestatealgo->begin();
       a=apuestatealgo->cargacursor("SELECT * FROM empresafact","otroquery");
       apuestatealgo->commit();
       while (!a->eof()) {
-            it =new QListViewItem(empresas);
-            it->setText(0,a->valor(1));
-            it->setText(1,a->valor(2));
-            it->setText(2,a->valor(3));
-            it->setText(3,"BulmaFact");
+            insertCompany(a->valor(1),a->valor(2),a->valor(3),"BulmaFact");
             a->siguienteregistro();
       }// end while
       delete a;
    }// end if
-      
    delete apuestatealgo;
    intentos=0;
+   
+*/   
+   listDB();
 }// end abreempresaview
 
 
@@ -67,6 +63,14 @@ abreempresaview::~abreempresaview(){
 }// end ~abreempresaview
 
 
+
+void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo, QString tipo) {
+            QListViewItem *it =new QListViewItem(empresas);
+            it->setText(0,nombre);
+            it->setText(1,ano);
+            it->setText(2,archivo);
+            it->setText(3,tipo);
+}// end insertCompany
 
 
 void abreempresaview::accept() {
@@ -82,4 +86,62 @@ void abreempresaview::accept() {
 void abreempresaview::closeEvent(QCloseEvent * e) {
     e->accept();
 }
+
+
+/** \brief esta función es una primera prueba para empezar a eliminar la metabase.
+Intentará listar todas las bases de datos.
+*/
+void abreempresaview::listDB() {
+	// Desabilitamos las alertas para que no aparezcan warnings con bases de datos que no son del sistema.
+	confpr->setValor(ALERTAS_DB,"No");
+	postgresiface2 *db, *db1;
+	db = new postgresiface2();
+	db->inicializa(QString("template1"), user, password);
+	db->begin();
+	QString nombre;
+	QString nomdb="";
+	QString ano;
+	QString tipo;
+	cursor2 *curs= db->cargacursor("SELECT datname FROM pg_database","otroquery");
+	db->commit();
+	fprintf(stderr,"LISTADO DE BASES DE DATOS DISPONIBLES\n");
+	fprintf(stderr,"--------------------------------------\n");
+	fprintf(stderr,"Usuario %s, Password %s\n", user.ascii(), password.ascii());
+	while (! curs->eof()) {	
+		db1 = new postgresiface2();
+		db1->inicializa(curs->valor("datname"), user, password);
+		db1->begin();
+		cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre='Tipo'","masquery");
+		if (!curs1->eof() ) {
+			tipo=curs1->valor("valor");
+			nomdb=curs->valor("datname");
+		} // end if
+		delete curs1;
+		curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre='NombreEmpresa'","masquery1");
+
+		if (!curs1->eof() ) {
+			nombre=curs1->valor("valor");
+		} // end if
+		delete curs1;
+		curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre='Ejercicio'","masquery2");
+
+		if (!curs1->eof() ) {
+			ano=curs1->valor("valor");
+		} // end if
+		delete curs1;		
+		if (nomdb != "") {
+			insertCompany(nombre,ano,nomdb,tipo);
+			nomdb="";
+		}// end if
+		db1->commit();
+		delete db1;
+		curs->siguienteregistro();
+	}// end while
+	fprintf(stderr,"FIN DE LISTADO DE BASES DE DATOS DISPONIBLES\n");
+	fprintf(stderr,"--------------------------------------------\n");
+	delete curs;
+	delete db;	
+	confpr->setValor(ALERTAS_DB,"Yes");
+
+}// end listDB
 

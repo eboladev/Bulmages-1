@@ -1,6 +1,6 @@
 -- ----------------------------------------------------------------------------------------
 -- (C)  Joan Miquel Torrer Rigo & Tomeu Borras Riera & Mateu Borras Marco, Agosto 2004
---  joanmi@bulma.net, tborras@conetxia.com mborras@conetxia.com 
+--  joanmi@bulma.net, tborras@conetxia.com mborras@conetxia.com
 -- Este documento esta licenciado bajo licencia GPL, el cual no escribimos aqui por pereza.
 --  ----------------------------------------------------------------------------------------
 --     psql xxxx < bulmafact-0_0_1.sql
@@ -21,10 +21,24 @@ CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
 -- Todos los campos de una tabla terminan siempre con el nombre de la tabla (salvo las claves foraneas).
 -- Las claves foraneas tienen el mismo nombre que el campo con que se corresponden en la tabla relacionada.
 -- En caso de que haya diversas claves foraneas referentes al mismo campo, el criterio es que una de lleas tenga el nombre del campo con el que se corresponde y la otra tenga un nombre significativo.
--- Los campos de clave automatica empiezan por id    
+-- Los campos de clave automatica empiezan por id
 -- Los enums se simulan (normalmente) con campos numericos, el significado de los valores debe estar
 -- explicado en este archivo.
 
+
+-- La tabla de configuración.
+-- En esta tabla se guardan parametros que el programa va a utilizar.
+-- Como por ejemplo el numero de dígitos por defecto de las cuentas o el asiento inteligente que se enlaza con
+-- facturacion.
+-- Tiene tres campos
+-- idconfiguracion: el identificador (No tiene ningún uso especial).
+-- nombre: El nombre del parametro de configuracion.
+-- valor: El valor que toma dicho parametro.
+CREATE TABLE configuracion (
+    idconfiguracion integer NOT NULL,
+    nombre character varying(25),
+    valor character varying(350)
+);
 
 -- Codi: Clau artificial.
 -- Nom: Nom identificatiu del magatzem.
@@ -43,7 +57,7 @@ CREATE TABLE almacen (
  telalmacen character varying(20),
  faxalmacen character varying(20)
 );
-    
+
 
 
 -- Codi: Clau artificial.
@@ -82,7 +96,7 @@ CREATE TABLE tipo_iva (
 
 --COMPROVACIONS D'INTEGRITAT>Genriques:
 --Els articles "contenidors" de tots els components son articles composts.
---Els articles "contingut" de tots els components son articles no composts. 
+--Els articles "contingut" de tots els components son articles no composts.
 --COMPROVACIONS D'INTEGRITAT>A realitzar en moments especEn convertir un article a compost, comprovar abans que no s component de ning.
 --En afegir components a un article, comprovar que el nou component no s un article compost.
 --PANTALLES ESTADISTIQUES>Articles:
@@ -119,7 +133,7 @@ CREATE TABLE articulo (
     margenarticulo float,
     sobrecostearticulo float,
     modeloarticulo character varying(1000),
-    
+
     idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
     idlinea_prod integer REFERENCES linea_prod(idlinea_prod)
 );
@@ -129,9 +143,9 @@ CREATE TABLE articulo (
 
 
 -- COMPROVACIONS D'INTEGRITAT>Genriques:
--- Totes les families tenen, al menys, un ascendent de primer nivell i no son descendents de si mateixes. 
+-- Totes les families tenen, al menys, un ascendent de primer nivell i no son descendents de si mateixes.
 -- COMPROVACIONS DE RUTINA:
--- En assignar una nova familia a un article, verificar els catlegs no exclusius de la familia als que no pertany l'article i preguntar a l'usuari si vol que s'hi afegeixi. 
+-- En assignar una nova familia a un article, verificar els catlegs no exclusius de la familia als que no pertany l'article i preguntar a l'usuari si vol que s'hi afegeixi.
 -- En desassignar un article d'una familia, verificar els catlegs no exclusius de la familia sortint als que tamb pertany l'article i no cap de les families a les que encara pertany i preguntar a l'usuari si vol treure'l de les mateixes i de quines.
 -- La catalogaci
 -- Codi: Clau artificial.
@@ -279,7 +293,7 @@ CREATE TABLE cliente (
    faltacliente date DEFAULT NOW(),
    fbajacliente date,
    comentcliente character varying(2000),
-   
+
    idrecargo integer NOT NULL REFERENCES recargo(idrecargo)
 );
 
@@ -288,7 +302,7 @@ CREATE TABLE cliente (
 -- Nom: Nom de la sucursal.
 -- Adr: Adreça.
 -- Pobl: Població.
--- CProv: Codi de provincia (dos primers dígits del codi postal). 
+-- CProv: Codi de provincia (dos primers dígits del codi postal).
 -- sCP: Tres darrers dígits del codi postal.
 -- Telf: Telèfon.
 -- Fax: Fax.
@@ -305,7 +319,7 @@ CREATE TABLE sucursal (
    faxsucursal character varying(20),
    mailsucursal character varying(50),
    comentsucursal character varying(2000),
-   
+
    idcliente integer NOT NULL REFERENCES cliente(idcliente)
 );
 
@@ -321,9 +335,9 @@ CREATE TABLE pedido (
    anopedido integer,
    fechapedido date,
    descpedido character varying(500),
-   
+
    iddivision integer NOT NULL REFERENCES division(iddivision),
-	idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
+        idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
 
 
@@ -360,7 +374,7 @@ CREATE TABLE alb_pro (
    fcrealb_pro date,
    frecepalb_pro date,
    comentalb_pro character varying(2000),
-   
+
    idfra_pro integer REFERENCES fra_pro(idfra_pro),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
@@ -379,11 +393,11 @@ CREATE TABLE lpedido (
    cantlpedido float,
    pvdlpedido float,
    prevlpedido date,
-   
+
    idpedido integer NOT NULL REFERENCES pedido(idpedido),
    idalb_pro integer REFERENCES alb_pro(idalb_pro),
    idarticulo integer REFERENCES articulo(idarticulo)
---	PRIMARY KEY(idpedido, numlpedido)
+--      PRIMARY KEY(idpedido, numlpedido)
 );
 
 
@@ -412,7 +426,7 @@ CREATE TABLE cond_garantia (
   retardcond_garantia timestamp,
   tempsccond_garantia timestamp,
   comentcond_garantia character varying(2000),
-  
+
   idmodalidad_g integer NOT NULL REFERENCES modalidad_g(idmodalidad_g)
 );
 
@@ -481,7 +495,7 @@ CREATE TABLE presupuesto (
    vencpresupuesto date,
    comentpresupuesto character varying(3000),
    idusuari integer,
-   
+
    idcliente integer REFERENCES cliente(idcliente)
 );
 
@@ -513,7 +527,7 @@ CREATE TABLE lpresupuesto (
    cantlpresupuesto float,
    pvplpresupuesto float,
    descuentolpresupuesto float,
-   
+
    idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -582,7 +596,7 @@ CREATE TABLE dalbaran (
    numdalbaran serial PRIMARY KEY,
    conceptdalbaran character varying(500),
    propordalbaran float,
-   
+
    idalbaran integer REFERENCES albaran(idalbaran)
 );
 
@@ -599,7 +613,7 @@ CREATE TABLE lalbaran (
    cantlalbaran float,
    pvplalbaran float,
    descontlalbaran float,
-   
+
    idalbaran integer REFERENCES albaran(idalbaran),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -638,9 +652,9 @@ CREATE TABLE suministra (
    sobrecostesuministra float,
    principalsuministra float,
    referentsuministra float,
-   
+
    idproveedor integer REFERENCES proveedor(idproveedor),
-	idarticulo integer REFERENCES articulo(idarticulo)
+        idarticulo integer REFERENCES articulo(idarticulo)
 );
 
 
@@ -764,5 +778,5 @@ CREATE TABLE usuarios (
     clave character varying(35),
     permisos text,
     PRIMARY KEY ("login")
-    
+
 );

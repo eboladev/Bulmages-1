@@ -47,15 +47,25 @@ public:
    QString nombreempresa;
    QString tipo;
    
-public:
-   abreempresaview(BSelector *parent=0,int tipo=0, const char *name=0, bool modal=true);
-   ~abreempresaview();
-
-   
-
 private:   
     int intentos;
     BSelector * padre;
+    QString user;
+    QString password;
+       
+public:
+   abreempresaview(BSelector *parent=0,int tipo=0, const char *name=0, bool modal=true, QString us="", QString pas="");
+   ~abreempresaview();
+   void inicializa(QString us, QString pas) {user=us;password=pas;};
+  /// Listamos las nuevas bases de datos.
+  /// Esta función en un principio es un intento por eliminar  la metabase.
+  void listDB();
+   
+
+
+
+private:
+	void insertCompany(QString , QString , QString , QString);
 
 private slots:
     virtual void closeEvent(QCloseEvent * e);

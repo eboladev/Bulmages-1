@@ -22,25 +22,30 @@
 configuracion *confpr;
 
 configuracion::configuracion() {
-   // Creamos el directorio personalizado de bulmages.
+   /// Creamos el directorio personalizado de bulmages.
    system ("mkdir ~/.bulmages");
-   // Cambiamos a ~/.bulmages como directorio de trabajo.
+   /// Cambiamos a ~/.bulmages como directorio de trabajo.
    string dir = getenv("HOME");
    dir = dir + "/.bulmages";
    fprintf(stderr,"Se ha establecido el directorio de trabajo: %s\n",dir.c_str());
 
 #ifndef WIN32
-    // Solo cambiamos de directorio si no es windows
+    /// Solo cambiamos de directorio si no es windows
    chdir (dir.c_str());
 #endif    
    
-   // Primero leemos la configuracion global
+   /// Primero leemos la configuracion global
    leeconfig (CONFGLOBAL);
-   // Y  luego añadimos la configuracion local, asi los valores por defecto son los globales
-   // Y los que estan en local sustituyen a los existentes.
+   /// Y  luego añadimos la configuracion local, asi los valores por defecto son los globales
+   /// Y los que estan en local sustituyen a los existentes.
    string dir1 = getenv("HOME");
    dir1 = dir1 + "/"+ CONFLOCAL;
    leeconfig ((char *)dir1.c_str());
+
+//   valores[PRIVILEGIOS_USUARIO]= "1";
+   setValor(PRIVILEGIOS_USUARIO, "1");
+   setValor(ALERTAS_DB, "Yes");
+      
 }// end configuracion
 
 configuracion::~configuracion() {
@@ -133,7 +138,7 @@ void configuracion::leeconfig(char *fich) {
 		fprintf(stderr,"%s\n",a.c_str());
 	}// end while  
    filestr.close();
-valores[PRIVILEGIOS_USUARIO]= "1";
+
 }// end leeconfig
 
 

@@ -50,6 +50,9 @@ public:
 private:   
     int intentos;
     int entrada;
+    void listDB();
+    void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo, QString tipo);
+
         
 public slots:
    virtual void accept();

@@ -19,7 +19,6 @@
 
 #include "postgresiface2.h"
 
-// #include <qwidget.h>
 #include <fstream>
 #include <iostream>
 #include <iomanip>
@@ -81,14 +80,17 @@ using std::string;
 
 #define CONF_PROGDATA            320
 
+// Los siguientes campos no entran en el archivo de configuración pq
+// Son utilizados por la propia aplicación.
 #define PRIVILEGIOS_USUARIO    420
 
+/// ALERTAS_DB Determina si los errores de la base de datos deben ser alertados via messagebox o no.
+#define ALERTAS_DB             421
 
 class configuracion {
     private:
         string valores[1000];
         int numeroprueba;
-
     public:
         configuracion();
         ~configuracion();
@@ -106,6 +108,5 @@ class configuracion {
 extern configuracion *confpr;
 extern QApplication *theApp;
 extern QTranslator * traductor;
-//extern QString EjercicioActual;
 
 #endif

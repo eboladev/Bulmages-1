@@ -1557,10 +1557,10 @@ END;
 
 
 
--- ******************************************************
--- APARTADO DE COMPROBACIONES PARA QUE NO HAYA PROBLEMAS.
--- ******************************************************
--- ******************************************************
+-- **********************************************************************
+-- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCIÓN DE ERRORES.
+-- **********************************************************************
+-- **********************************************************************
 
 -- Las comprobaciones saltan como disparadores y abortan la ejecución si no se cumplen las restricciones.
 --DROP TRIGGER restriccionescuentatrigger ON cuenta CASCADE;

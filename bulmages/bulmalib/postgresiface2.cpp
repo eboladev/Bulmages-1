@@ -27,11 +27,11 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery){
     QString Query = "DECLARE "+nomcursor+" CURSOR FOR "+SQLQuery;
     result = PQexec(conn, Query.ascii());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
-//      if (!result || PQresultStatus(result) == PGRES_FATAL_ERROR || PQresultStatus(result) == PGRES_NONFATAL_ERROR ) {
          fprintf(stderr,"%s\n", PQerrorMessage(conn));
-         fprintf(stderr, "DECLARE CURSOR command failed\n");
-         QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la carga de un query de la base de datos\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
-         PQclear(result);
+         fprintf(stderr, "DECLARE CURSOR command failed %s\n", Query.ascii());
+	 if (confpr->valor(ALERTAS_DB) == "Yes") 
+	 	QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la carga de un query de la base de datos\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
+	 PQclear(result);
          return;
       }// end if
     PQclear(result);
@@ -157,15 +157,19 @@ QString cursor2::valor(QString campo, int registro){
 postgresiface2::postgresiface2(){
 }// end postgresiface2
 
+void postgresiface2::terminar() {
+	PQfinish(conn);
+}// end terminar
+
 postgresiface2::~postgresiface2(){
       /* close the connection to the database and cleanup */
     PQfinish(conn);
 }// end -postgresiface2
 
-int postgresiface2::inicializa(QString nomdb) {
+int postgresiface2::inicializa(QString nomdb, QString user, QString passwd) {
     dbName=nomdb;
-    pghost = confpr->valor(CONF_SERVIDOR).c_str();              /* host name of the backend server */
-    pgport = confpr->valor(CONF_PUERTO).c_str();              /* port of the backend server */
+    pghost = confpr->valor(CONF_SERVIDOR);             /* host name of the backend server */
+    pgport = confpr->valor(CONF_PUERTO);              /* port of the backend server */
     pgoptions = "";           /* special options to start up the backend server */
     pgtty = "";               /* debugging tty for the backend server */
     QString conexion;
@@ -173,11 +177,17 @@ int postgresiface2::inicializa(QString nomdb) {
 // Esto ya esta obsoleto, ahora dejamos la autentificacion al sistema
 //    sprintf(conexion, "dbname=%s user=%s", dbName, "ubulmages");
 
-    if (pghost == "localhost") {
-       conexion.sprintf("dbname=%s",dbName.ascii());
-    } else {
-       conexion.sprintf("hostaddr=%s port=%s dbname=%s",pghost.ascii(),pgport.ascii(), dbName.ascii());
+    if (pghost != "localhost") {
+       conexion = "hostaddr="+pghost+" port="+pgport;
     }// end if   
+    conexion += " dbname="+dbName;
+    if (user != "") {
+    	conexion += " user="+user;
+    }// end if
+    if (passwd != "") {
+    	conexion += " password="+passwd;
+    }// end if
+    
     fprintf(stderr,"%s\n",conexion.ascii());
     conn = PQconnectdb(conexion);
     if (PQstatus(conn) == CONNECTION_BAD)  {

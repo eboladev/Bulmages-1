@@ -41,6 +41,7 @@ public:
 public:
     BSelector(QWidget * parent=0,const char * name=0);
     ~BSelector();
+    void inicializa(QString us, QString pas) {login = us; password=pas;};
 
 public slots:
   virtual void seleccionaempresa_clicked();

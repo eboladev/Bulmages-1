@@ -77,7 +77,7 @@ private:
 public:
   postgresiface2();
   ~postgresiface2();
-  int inicializa(QString);
+  int inicializa(QString nomdb, QString user="", QString passwd="");
   int begin();
   void commit();
   void rollback();
@@ -107,10 +107,10 @@ public:
   cursor2 *cargaempresas();
   
   static QString sanearCadena(QString cadena);
+  void terminar();
 QString propiedadempresa(QString );
 private:
   int formatofecha();
-
 };
 
 #endif

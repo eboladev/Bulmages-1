@@ -85,7 +85,7 @@ int empresa::inicializa1(QWorkspace *space) {
    fprintf(stderr,"EMPRESA::inicializa1()\n");
    pWorkspace = space;
    fprintf(stderr,"conexionbase->inicializa\n");
-   conexionbase2->inicializa(nombreDB.ascii());
+   conexionbase2->inicializa(nombreDB, nombre, contrasenya);
    fprintf(stderr,"fin de conexionbase->inicializa\n");
 
   
@@ -95,18 +95,7 @@ int empresa::inicializa1(QWorkspace *space) {
    cursor2 *cursoraux1 = conexionbase2->cargacursor(query,"codcuenta");
    conexionbase2->commit();
    numdigitos=cursoraux1->valor(2).length();
-   delete cursoraux1;  
-    
-  /*  
-    //Buscamos el último ejercicio en la tabla "ejercicios"
-   query="SELECT MAX(ejercicio) AS ejercicio FROM ejercicios WHERE periodo=0";
-   conexionbase2->begin();
-   cursor2 *recordSet = conexionbase2->cargacursor(query,"recordSet");
-   conexionbase2->commit();
-   if (!recordSet->eof()) EjercicioActual=recordSet->valor("ejercicio");
-   else EjercicioActual="";
-   delete recordSet; 
-*/      
+   delete cursoraux1;       
 
    if (extracto != NULL) {
          delete extracto;
@@ -158,12 +147,16 @@ int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
     //salto el dialeg de login. Ja tinc el nom d'usuari, password i el nom de la base de dades.
     nombre = *User;
     contrasenya = *Passwd;
+    
+    fprintf(stderr,"Entramos con usuario %s, password %s\n", nombre.ascii(), contrasenya.ascii());
     nombreDB = *DB;
     //fi del salt
     
     // Buscamos la empresa anterior y hacemos lo que corresponda.
+    // Todo esto debe cambiar ya que no se basa en la metabase
     // ----------------------------------------------------------
-    char query[300];
+//    char query[300];
+/*    
     postgresiface2 *metabase;
     metabase = new postgresiface2();
     fprintf(stderr,"Acabamos de crear la metabase\n");
@@ -185,6 +178,7 @@ int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
     delete cursoraux;
     delete cursoraux2;
     delete metabase;  
+*/
   }// end if
   return(0);
 }// end inicializa

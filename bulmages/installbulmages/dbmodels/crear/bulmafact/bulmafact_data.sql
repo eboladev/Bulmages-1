@@ -1,3 +1,22 @@
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (1, 'CodCuenta', 'xxxxyyy');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (2, 'Amortizacion', 'Amortizacion');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (3, 'Cobro', 'Cobro');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (4, 'CIF', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (5, 'TipoIva', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (6, 'NombreVia', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (7, 'NumeroVia', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (8, 'Escalera', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (9, 'Piso', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (10, 'Puerta', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (11, 'CodPostal', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (12, 'Municipio', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (13, 'Provincia', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (14, 'Pais', '--');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (15, 'Tipo', 'BulmaFact');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (16, 'Ejercicio', '2004');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (17, 'NombreEmpresa', 'Sin Definir');
+
+
 INSERT INTO almacen (nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES ('La Botica del Abuelo', 'Camí Vell de Bunyola', 'Palma de Mallorca', '07009', '971434343', '971434344');
 INSERT INTO almacen (nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES ('Colmado de Mateo', 'Joan Maura', 'Palma de Mallorca', '07005', '971467911', '971776776');
 INSERT INTO almacen (nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES ('Almacén Norte', 'Polígono homogeneo', 'Alcudia', '07012', '971167911', '971111776');
