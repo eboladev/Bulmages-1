@@ -44,7 +44,9 @@ postgresiface2 *conexionbase;
    estadisticasview(QWidget *parent=0, const char *name=0);
    ~estadisticasview();
    void presentar();
+#ifdef GDCHART   
    void sacapie(float *,char **, int);
+#endif
 };
 
 #endif

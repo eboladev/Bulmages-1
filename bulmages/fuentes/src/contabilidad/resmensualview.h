@@ -19,7 +19,14 @@
 #define RESMENSUALVIEW_H
 
 #include <qwidget.h>
+#ifdef ESTADISTICAS
 #include "resmensualdlg.h"
+#endif
+
+#ifdef GDCHART
+#include "resmensualdlg1.h"
+#endif
+
 #include "postgresiface2.h"
 
 /***@author Tomeu Borrás Riera   */
@@ -35,7 +42,7 @@ public:
 	~resmensualview();
    void presentar();
    void presentarpie();
-   void generargrafico();
+   void generargrafico(float *, char **);
 public slots:
    virtual void accept();
    virtual void buscacodigocta();

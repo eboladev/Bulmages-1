@@ -35,15 +35,24 @@ public:
   postgresiface2* conexionbase;
   int numdigitos;
   int ccostes[200];
-	empresa *empresaactual;
+  empresa *empresaactual;
    
-	filtrarextractosview(empresa *, QWidget *parent=0, const char *name=0);
-	~filtrarextractosview();
+private:
+   int m_colNomCoste;
+   int m_colDescCoste;
+   int m_colIdCoste;
+   int m_colStatusCoste;
+   
+   
+public:
+  filtrarextractosview(empresa *, QWidget *parent=0, const char *name=0);
+  ~filtrarextractosview();
    void cargacostes();
    void setccoste(int);
-   
+
+      
  public slots:
- 	virtual void codigo_textChanged(const QString &);
+ virtual void codigo_textChanged(const QString &);
    virtual void boton_buscacontrapartida();
    virtual void return_codigo();
 };

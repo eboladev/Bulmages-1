@@ -24,6 +24,8 @@
 #ifdef GDCHART
 #include "gdcchart/gdc.h"
 #include "gdcchart/gdchart.h"
+#include "estadisticasview.h"
+#include <qlabel.h>
 #endif
 
 #include "qdatetime.h"
@@ -73,11 +75,11 @@ void resmensualview::presentar() {
    codigomasa[1]= idmpatrimonial2.c_str();
    codigomasa[2]= idmpatrimonial3.c_str();
    
-   string ano = "2003";
+   string ano = "2004";
 
    for (int j=0; j<3; j ++) {
-      QDate fecha(2003,1,1);
-      QDate fecha1(2003,1,31);
+      QDate fecha(2004,1,1);
+      QDate fecha1(2004,1,31);
       float saldoant=0;
       float movant=0;
       for(int i=0; i<12;i++) {
@@ -87,30 +89,33 @@ void resmensualview::presentar() {
          QString query;
          string cod = codigo[j].ascii();
          string cod1 = codigomasa[j].ascii();
+         query="";
          if (cod != "") {
             query.sprintf( "SELECT debetotal(id_cuenta('%s'),'%s','%s') as tdebe, habertotal(id_cuenta('%s'),'%s','%s') as thaber",codigo[j].ascii(),(char *)finicial.ascii(),(char *)ffinal.ascii(), codigo[j].ascii(),(char *)finicial.ascii(),(char *)ffinal.ascii());
 //         } else if (cod1 != "" ) {
-         } else {
+         } else if (cod1 != "") {
             query.sprintf( "SELECT debempatrimonial(%s,'%s','%s') as tdebe, habermpatrimonial(%s,'%s','%s') as thaber",codigomasa[j].ascii(),(char *)finicial.ascii(),(char *)ffinal.ascii(), codigomasa[j].ascii(),(char *)finicial.ascii(),(char *)ffinal.ascii());
          }// end if
-         fprintf(stderr,"%s\n",query.ascii());
-         conexionbase->begin();
-         cursor2 *curs = conexionbase->cargacursor(query,"midursor");
-         conexionbase->commit();
-         if (!curs->eof()) {
-            milistad[i].push_back(movant + atof(curs->valor("tdebe").ascii()) +atof(curs->valor("thaber").ascii()));
-            milistas[i].push_back(saldoant + atof(curs->valor("tdebe").ascii()) - atof(curs->valor("thaber").ascii()));
-            saldoant = saldoant + atof(curs->valor("tdebe").ascii()) - atof(curs->valor("thaber").ascii());
-            movant = movant +  atof(curs->valor("tdebe").ascii()) + atof(curs->valor("thaber").ascii());
-            fprintf(stderr,"metido en el gráfico%s\n", curs->valor("tdebe").ascii());
-         } else {
-            milistad[i].push_back(movant);
-//            milistad[i].push_back(0);
-            milistas[i].push_back(saldoant);
+         if (query != "") {
+                  fprintf(stderr,"%s\n",query.ascii());
+                  conexionbase->begin();
+                  cursor2 *curs = conexionbase->cargacursor(query,"midursor");
+                  conexionbase->commit();
+                  if (!curs->eof()) {
+                     milistad[i].push_back(movant + atof(curs->valor("tdebe").ascii()) +atof(curs->valor("thaber").ascii()));
+                     milistas[i].push_back(saldoant + atof(curs->valor("tdebe").ascii()) - atof(curs->valor("thaber").ascii()));
+                     saldoant = saldoant + atof(curs->valor("tdebe").ascii()) - atof(curs->valor("thaber").ascii());
+                     movant = movant +  atof(curs->valor("tdebe").ascii()) + atof(curs->valor("thaber").ascii());
+                     fprintf(stderr,"metido en el gráfico%s\n", curs->valor("tdebe").ascii());
+                  } else {
+                     milistad[i].push_back(movant);
+         //            milistad[i].push_back(0);
+                     milistas[i].push_back(saldoant);
+                  }// end if
+                  delete curs;
+                  fecha = fecha.addMonths(1);
+                  fecha1 = fecha1.addMonths(1);
          }// end if
-         delete curs;
-         fecha = fecha.addMonths(1);
-         fecha1 = fecha1.addMonths(1);
       }// end for
    }// end for
 #ifdef ESTADISTICAS
@@ -190,6 +195,11 @@ void resmensualview::buscampatrimonial3() {
 }// end buscampatrimonial1
 
 void resmensualview::presentarpie() {
+#ifdef GDCHART
+      char *label[1000];
+      float p[1000];
+      int j=0;
+#endif
       char query[2900];
       cursor2 *cursorapt;
 
@@ -202,11 +212,12 @@ void resmensualview::presentarpie() {
       codigo[1]=cod2->text();
       codigo[2]=cod3->text();
 
+#ifdef ESTADISTICAS
       toPieChart *pies[3];
       pies[0] = pie;
       pies[1] = pie1;
       pies[2] = pie2;
-
+#endif
 
       for (int i=0; i<3; i++) {      
          conexionbase->begin();
@@ -233,14 +244,31 @@ void resmensualview::presentarpie() {
    //                  pie->addValue(valor,nomcuenta.substr(0,25).c_str());
                      valores.push_back(valor);
                      labels.push_back(nomcuenta.mid(0,25).ascii());
+#ifdef GDCHART
+                  label[j]=new char[30];
+                  strcpy(label[j], cursorapt->valor("descripcion").mid(0,15).ascii());
+                  p[j]=valor;
+                  fprintf(stderr,"%s %d", label[j], p[j]);
+#endif
+                     
             } else {
    //                  pie->addValue(-valor,nomcuenta.substr(0,25).c_str());
                      valores.push_back(-valor);
                      labels.push_back(nomcuenta.mid(0,25).ascii());
+#ifdef GDCHART
+                  label[j]=new char[30];
+                  strcpy(label[j], cursorapt->valor("descripcion").mid(0,15).ascii());
+                  p[j]=-valor;
+                  fprintf(stderr,"%s %d", label[j], p[j]);
+#endif
+                     
             }// end if
 
             // Calculamos la siguiente cuenta registro y finalizamos el bucle
             cursorapt->siguienteregistro();
+#ifdef GDCHART
+            j++;
+#endif
          }// end while
 
          // Vaciamos el cursor de la base de datos.
@@ -248,18 +276,27 @@ void resmensualview::presentarpie() {
 #ifdef ESTADISTICAS         
          pies[i]->setValues(valores,labels);
 #endif
-
-      }// end for    
-      
 #ifdef GDCHART
-generargrafico();
+   generargrafico(p, label);               
+      fprintf(stderr,"Llamamos a sacapie\n");
+      fprintf(stderr,"Hemos terminado sacapie \n");
+      QPixmap *imag= new QPixmap("/tmp/graf.gif");
+      fprintf(stderr,"Y ahora hemos creado la imagen\n");
+      imgsaldos->setPixmap(*imag);
+      fprintf(stderr,"Y ahora la hemos mostrado\n");   
+      //Destruimos la memoria utilizada
+      for(int i=0;i<j;i++) delete label[i];
+      delete imag;
 #endif
         
+      }// end for    
+      
+
 }// end presentarpie
 
-void resmensualview::generargrafico() {
+void resmensualview::generargrafico(float *h1, char**t2) {
 #ifdef GDCHART
-
+fprintf(stderr,"Principio de generargrafico\n");
 	/* set some sample data points */
 	float	h[12]  = {	17.8,  17.1,  17.3,  0,  17.2,  17.1,
 						17.3,  17.3,  17.3,  17.1,         17.5,  17.4 };
@@ -281,7 +318,7 @@ void resmensualview::generargrafico() {
 	GDC_ANNOTATION_T	anno;
 
 	/* need an open FILE pointer  - can be stdout */
-	FILE				*outgif1 = fopen( "/tmp/g2.gif", "wb" );	/* rem: test open() fail */
+	FILE				*outgif1 = fopen( "/tmp/graf.gif", "wb" );	/* rem: test open() fail */
 
 
 	anno.color = 0x00FF00;
@@ -312,6 +349,8 @@ void resmensualview::generargrafico() {
 
 //	fprintf( stdout, "Content-Type: image/gif\n\n" );		/* rem: for web use */
 															/* finally: make the call */
+fprintf(stderr,"Voy a ejecutar out_graph\n");
+
 	out_graph( 200, 175,									// overall width, height
 			   outgif1,										// open FILE pointer
 			   GDC_COMBO_HLC_AREA,							// chart type
@@ -323,7 +362,9 @@ void resmensualview::generargrafico() {
 			   c,											// close
 			   v );											// combo/volume
 
+fprintf(stderr,"He terminado de ejecutar out_graph\n");
+                           
 	fclose( outgif1 );
-
+fprintf(stderr,"Fin de generargrafico|n");
 #endif
 }// end generargrafico

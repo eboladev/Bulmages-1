@@ -45,11 +45,12 @@ public:
   void mostrarplantilla();
   
 public slots:
-  void cambiacombo(int);
-  void boton_guardar();
-  void boton_nuevo();
-  void boton_borrar();
-  void seleccionado(QListViewItem *);
+  virtual void cambiacombo(int);
+  virtual void boton_guardar();
+  virtual void boton_nuevo();
+  virtual void boton_borrar();
+  virtual void seleccionado(QListViewItem *);
+  virtual void boton_establecerccostedef();
 };
 
 #endif

@@ -58,6 +58,10 @@ private:
   intapunts3view *introapunts1; // introapunts.  
   int numdigitos;  // El numero de digitos que tienen las cuentas.
 
+private:
+  int m_idcCosteDef;  // El centro de coste por defecto.
+  int m_idCanalDef; // El canal por defecto.
+
 public:
   empresa();
   ~empresa();
@@ -69,6 +73,11 @@ public:
   QString ejercicioactual() {return(EjercicioActual);}
   void setejactual(QString ej) {EjercicioActual=ej;}
   int inicializa(QString * DB=0, QString * User=0, QString * Passwd=0);
+  int idcCosteDef() const {return m_idcCosteDef;}
+  int idCanalDef() const {return m_idCanalDef;}
+  void setidcCosteDef(int a) { m_idcCosteDef=a;}
+  void setidCanalDef(int a) {m_idCanalDef=a;}
+  
   int muestracuentas();
   int nuevacuenta();
   int muestraapuntes();

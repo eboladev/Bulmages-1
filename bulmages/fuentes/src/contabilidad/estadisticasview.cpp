@@ -18,8 +18,9 @@
 #include <qlabel.h>
 
 #ifdef GDCHART
-#include "gdcchart/gdc.h"
+//#include "gdcchart/gdc.h"
 #include "gdcchart/gdcpie.h"
+#include "gdcchart/gdchart.h"
 #endif
 
 int estadisticasview::inicializa(postgresiface2 *conexion) {
@@ -111,8 +112,11 @@ void estadisticasview::presentar() {
       // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
       num1 = cursorapt->numregistros();
       j=0;
+
+#ifdef GDCHART
       char *label[1000];
       float p[1000];
+#endif
       while (!cursorapt->eof()) {
          // Acumulamos los totales para al final poder escribirlos
          float valor =  atof(cursorapt->valor("tsaldo").ascii());
@@ -169,8 +173,8 @@ void estadisticasview::presentar() {
 }// end presentar
 
 
-void estadisticasview::sacapie(float *p,char **lbl, int numslices) {
 #ifdef GDCHART
+void estadisticasview::sacapie(float *p,char **lbl, int numslices) {
 for (int i=0; i< numslices; i++) 
    fprintf(stderr,"%s = %d\n", lbl[i],p[i]);
 fprintf(stderr,"Hemos terminado de compilar   \n");
@@ -219,7 +223,7 @@ fprintf(stderr,"Hemos terminado de compilar   \n");
 fprintf(stderr,"Hemos terminado la imagen\n");
 	fclose( fp );
 //	exit( 0 );
-#endif
 }
+#endif
 
 

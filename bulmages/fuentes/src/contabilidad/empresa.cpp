@@ -52,6 +52,11 @@ empresa::empresa(){
  conexionbase2 = new postgresiface2();
  conexionanterior2 = NULL;
 
+ fprintf(stderr,"Inicialización de empresas \n");
+ m_idcCosteDef=0;  // El centro de coste por defecto.
+ m_idCanalDef=0; // El canal por defecto.
+
+
 }// end empresa
 
 

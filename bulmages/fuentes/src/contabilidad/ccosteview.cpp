@@ -44,14 +44,10 @@ void ccosteview::pintar() {
     int idc_coste=0;
     cursor2 *cursoraux1, *cursoraux2;
 
-    listcoste->clear();
-    
+    listcoste->clear();    
     conexionbase->begin();
     cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste","centroscoste");
-///    cursoraux1=conexionbase->cargacuentas(0);
     conexionbase->commit();
-    //   cursoraux1->ultimoregistro();
-
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").ascii());
         idc_coste = atoi( cursoraux1->valor("idc_coste").ascii());
@@ -124,6 +120,7 @@ void ccosteview::mostrarplantilla() {
 //  while (ccostes[i] != idc_coste)
 //    i++;
 //  combocoste->setCurrentItem(i);
+   botondefault->setOn(TRUE);
 }// end mostrarplantilla
 
 
@@ -172,3 +169,13 @@ void ccosteview::boton_borrar() {
   idc_coste=0;
   pintar();
 }// end boton_borrar
+
+void ccosteview::boton_establecerccostedef() {
+  QListViewItem *it;
+  it=listcoste->selectedItem();
+  if (it) {
+     empresaactual->setidcCosteDef(idc_coste);
+  } else {
+     empresaactual->setidcCosteDef(0);
+  }// end if
+}// end establecerccostedef

@@ -432,7 +432,7 @@ IDLS += contabilidad/estadisticasdlg.ui \
         contabilidad/resmensualdlg.ui \
 
 FORMS += contabilidad/estadisticasdlg.ui \
-	 contabilidad/resmensualdlg1.ui
+	 contabilidad/resmensualdlg.ui
 
 }	
 	

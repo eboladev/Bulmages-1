@@ -589,8 +589,8 @@ void Bulmages01::initMenuBar() {
   SCuentas->addTo(pHerramientasMenu);
   bloqaction->addTo(pHerramientasMenu);
   pHerramientasMenu->insertSeparator();
-  CCosteDef->addTo(pHerramientasMenu);
-  CanalDef->addTo(pHerramientasMenu);
+//  CCosteDef->addTo(pHerramientasMenu);
+//  CanalDef->addTo(pHerramientasMenu);
    
   //El menu de empresa
   pEmpresaMenu = new QPopupMenu();
