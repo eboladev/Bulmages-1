@@ -5,7 +5,7 @@
 
 TARGETDEPS += ../../bulmalib/libbulmalib.a \
               ../bulmalib/libbulmalib.a 
-LIBS += ../../bulmalib/libbulmalib.a \
+LIBS += ../bulmalib/libbulmalib.a \
         -lqt-mt \
         -lpq 
 INCLUDEPATH = ../bulmalib \

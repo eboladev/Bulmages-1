@@ -3,6 +3,10 @@
 # Subdir relative project main directory: ./bulmalib
 # Target is a library:  bulmalib
 
+HEADERS += configuracion.h \
+           postgresiface2.h 
+SOURCES += configuracion.cpp \
+           postgresiface2.cpp 
 LIBS += -lpq 
 INCLUDEPATH = /usr/include/postgresql/ 
 TARGET = bulmalib 

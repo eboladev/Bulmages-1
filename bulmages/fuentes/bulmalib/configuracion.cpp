@@ -149,6 +149,9 @@ void configuracion::leeconfig(char *fich) {
 		} else if (a == "CONF_PLANTILLA") {
 			   filestr >> a;
 				valores[CONF_PLANTILLA] = a;
+		} else if (a == "CONF_PROGDATA") {
+			   filestr >> a;
+				valores[CONF_PROGDATA] = a;
 		} else if (a== "CONF_TRADUCCION") {
 				filestr >> a;
 				valores[CONF_TRADUCCION] = a;
