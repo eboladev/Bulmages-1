@@ -110,6 +110,8 @@ public:
   void terminar();
   QString propiedadempresa(QString );
   QString searchParent(QString);
+  /// Returns the name of the database opened, if none as open then returns ""
+  QString nameDB() {return dbName;};  
 private:
   int formatofecha();
 };

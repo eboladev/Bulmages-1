@@ -112,7 +112,7 @@ void BConfiguracion::BotonA_10aceptar() {}// BotonA_10aceptar
 /// Responde a la pusación de importar datos de Contaplus a BulmaGés
 void BConfiguracion::BotonContaplus() {
     postgresiface2 *DBconn = new postgresiface2();
-    DBconn->inicializa(PunteroAlSelector->empresaDB(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+    DBconn->inicializa(PunteroAlSelector->empresaDB(), confpr->valor(CONF_LOGIN_USER).ascii(), confpr->valor(CONF_PASSWORD_USER).ascii());
     importContaplus *import= new importContaplus(DBconn,0,0,0);
     import->exec();
     delete import;
@@ -252,23 +252,22 @@ void BConfiguracion::salvarEmpresa() {
     QString PGserver;
     //  PGserver = "-h ";
 
-    PGserver = confpr->valor(CONF_SERVIDOR).c_str();
+    PGserver = confpr->valor(CONF_SERVIDOR).ascii();
     dbEmpresa = PunteroAlSelector->empresaDB();
     fprintf(stderr,"VAmos a guardar la empresa %s\n", dbEmpresa.ascii());
 
     //  (new BVisorEmpresas(& dbEmpresa, this,"Backup",true))->exec();
     if (dbEmpresa!="") {
-        fprintf(stderr,"VAmos a guardar la empresa\n");
         QString fn = QFileDialog::getSaveFileName(0, "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
         if (!fn.isEmpty()) {
             if (fn.right(7)!= ".pgdump")
                 fn = fn +".pgdump";
             fprintf(stderr,"Vamos a guardar la empresa en el fichero %s\n",fn.ascii());
 
-            char cadena[300];
-            sprintf(cadena,"%sguardaemp %s %s %s", confpr->valor(CONF_EJECUTABLES).c_str(), PGserver.ascii(), dbEmpresa.ascii(), fn.ascii() );
-            fprintf(stderr,"%s\n", cadena);
-            system(cadena);
+            QString cadena;
+            cadena.sprintf("%sguardaemp %s %s %s", confpr->valor(CONF_EJECUTABLES).ascii(), PGserver.ascii(), dbEmpresa.ascii(), fn.ascii() );
+            fprintf(stderr,"%s\n", cadena.ascii());
+            system(cadena.ascii());
         }// end if
     }// end if
 }// end salvarEmpresa
@@ -282,7 +281,7 @@ void BConfiguracion::BotonA_4restaurarEmpresa() {
     fprintf(stderr,"Restaurar empresa \n");
     QString dbEmpresa;
     QString PGserver;
-    PGserver = confpr->valor(CONF_SERVIDOR).c_str();
+    PGserver = confpr->valor(CONF_SERVIDOR).ascii();
     QString usuario;
 
     dbEmpresa = PunteroAlSelector->empresaDB();

@@ -49,11 +49,11 @@ int mpatrimonialview::inicializa(postgresiface2 *conn ) {
 }// end inicializa
 
 
-void mpatrimonialview::inicializa1(string idmpatrimonial1) {
+void mpatrimonialview::inicializa1(QString idmpatrimonial1) {
     idmpatrimonial = idmpatrimonial1;
-    string query = "SELECT * from mpatrimonial WHERE idmpatrimonial="+idmpatrimonial;
+    QString query = "SELECT * from mpatrimonial WHERE idmpatrimonial="+idmpatrimonial;
     conexionbase->begin();
-    cursor2 *cursor = conexionbase->cargacursor(query.c_str(),"micursor");
+    cursor2 *cursor = conexionbase->cargacursor(query,"micursor");
     conexionbase->commit();
     if (!cursor->eof() ) {
        descmpatrimonial->setText(cursor->valor("descmpatrimonial"));
@@ -64,7 +64,7 @@ void mpatrimonialview::inicializa1(string idmpatrimonial1) {
     // Leemos las cuentas y las metemos en la lista que corresponda.
     conexionbase->begin();
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM compmasap WHERE masaperteneciente="+idmpatrimonial+" AND signo=true)";
-    cursor2 *cursoraux = conexionbase->cargacursor(query.c_str(),"cursorusuario");
+    cursor2 *cursoraux = conexionbase->cargacursor(query,"cursorusuario");
     conexionbase->commit();
     QListViewItem *it;
     while (!cursoraux->eof()) {
@@ -81,7 +81,7 @@ void mpatrimonialview::inicializa1(string idmpatrimonial1) {
     // Leemos las masas patrimoniales y las metemos en la lista que corresponda.
     conexionbase->begin();
     query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial IN (SELECT idmpatrimonial FROM compmasap WHERE masaperteneciente="+idmpatrimonial+" AND signo=true)";
-    cursoraux = conexionbase->cargacursor(query.c_str(),"cursorusuario");
+    cursoraux = conexionbase->cargacursor(query,"cursorusuario");
     conexionbase->commit();
     while (!cursoraux->eof()) {
       it =new QListViewItem(componentessuma);
@@ -96,7 +96,7 @@ void mpatrimonialview::inicializa1(string idmpatrimonial1) {
     // Leemos las cuentas y las metemos en la lista que corresponda.
     conexionbase->begin();
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM compmasap WHERE masaperteneciente="+idmpatrimonial+" AND signo=false)";
-    cursor2 *cursoraux1 = conexionbase->cargacursor(query.c_str(),"cursorusuario");
+    cursor2 *cursoraux1 = conexionbase->cargacursor(query,"cursorusuario");
     conexionbase->commit();
     while (!cursoraux1->eof()) {
       it =new QListViewItem(componentesresta);
@@ -111,7 +111,7 @@ void mpatrimonialview::inicializa1(string idmpatrimonial1) {
     // Leemos las masas patrimoniales y las metemos en la lista que corresponda.
     conexionbase->begin();
     query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial IN (SELECT idmpatrimonial FROM compmasap WHERE masaperteneciente="+idmpatrimonial+" AND signo=false)";
-    cursoraux = conexionbase->cargacursor(query.c_str(),"cursorusuario");
+    cursoraux = conexionbase->cargacursor(query,"cursorusuario");
     conexionbase->commit();
     while (!cursoraux->eof()) {
       it =new QListViewItem(componentesresta);
@@ -134,13 +134,13 @@ void mpatrimonialview::inicializa1(string idmpatrimonial1) {
 void mpatrimonialview::nuevasuma() {
    QListViewItem *it;
    // Lo primero de todo es coger el código de cuenta.
-   string codcuenta = codigocta1->text().ascii();
-   string masapatrimonial = mpatrimonial->text().ascii();
+   QString codcuenta = codigocta1->text();
+   QString masapatrimonial = mpatrimonial->text();
 
     // Leemos las cuentas y las metemos en la lista que corresponda.
     conexionbase->begin();
-    string query = "SELECT * FROM cuenta WHERE codigo = '"+codcuenta+"'";
-    cursor2 *cursoraux1 = conexionbase->cargacursor(query.c_str(),"cursorusuario");
+    QString query = "SELECT * FROM cuenta WHERE codigo = '"+codcuenta+"'";
+    cursor2 *cursoraux1 = conexionbase->cargacursor(query,"cursorusuario");
     conexionbase->commit();
     while (!cursoraux1->eof()) {
       it =new QListViewItem(componentessuma);
@@ -155,7 +155,7 @@ void mpatrimonialview::nuevasuma() {
     // Leemos las masas patrimoniales y las metemos en la lista que corresponda.
     conexionbase->begin();
     query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial="+masapatrimonial;
-    cursoraux1 = conexionbase->cargacursor(query.c_str(),"cursormpatrimonial");
+    cursoraux1 = conexionbase->cargacursor(query,"cursormpatrimonial");
     conexionbase->commit();
     while(!cursoraux1->eof()) {
       it =new QListViewItem(componentessuma);
@@ -181,13 +181,13 @@ void mpatrimonialview::borrasuma() {
 void mpatrimonialview::nuevaresta() {
    QListViewItem *it;
    // Lo primero de todo es coger el código de cuenta.
-   string codcuenta = codigocta1->text().ascii();
-   string masapatrimonial = mpatrimonial->text().ascii();
+   QString codcuenta = codigocta1->text();
+   QString masapatrimonial = mpatrimonial->text();
 
     // Leemos las cuentas y las metemos en la lista que corresponda.
     conexionbase->begin();
-    string query = "SELECT * FROM cuenta WHERE codigo = '"+codcuenta+"'";
-    cursor2 *cursoraux1 = conexionbase->cargacursor(query.c_str(),"cursorusuario");
+    QString query = "SELECT * FROM cuenta WHERE codigo = '"+codcuenta+"'";
+    cursor2 *cursoraux1 = conexionbase->cargacursor(query,"cursorusuario");
     conexionbase->commit();
     while (!cursoraux1->eof()) {
       it =new QListViewItem(componentesresta);
@@ -202,7 +202,7 @@ void mpatrimonialview::nuevaresta() {
     // Leemos las masas patrimoniales y las metemos en la lista que corresponda.
     conexionbase->begin();
     query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial="+masapatrimonial;
-    cursoraux1 = conexionbase->cargacursor(query.c_str(),"cursormpatrimonial");
+    cursoraux1 = conexionbase->cargacursor(query,"cursormpatrimonial");
     conexionbase->commit();
     while(!cursoraux1->eof()) {
       it =new QListViewItem(componentesresta);
@@ -226,7 +226,7 @@ void mpatrimonialview::buscampatrimonial() {
    nuevae->inicializa(conexionbase);
    nuevae->setmodoselector();
    nuevae->exec();
-   mpatrimonial->setText(nuevae->getidmasa().c_str());
+   mpatrimonial->setText(nuevae->getidmasa());
    delete nuevae;
 }// end buscampatrimonial
 
@@ -247,19 +247,19 @@ void mpatrimonialview::accept() {
    
    // Ponemos los datos correctos sobre la masa patrimonial.
    QString text = descmpatrimonial->text();
-   query.sprintf("UPDATE mpatrimonial SET descmpatrimonial='%s' WHERE idmpatrimonial =%s", text.ascii(), idmpatrimonial.c_str());
+   query.sprintf("UPDATE mpatrimonial SET descmpatrimonial='%s' WHERE idmpatrimonial =%s", text.ascii(), idmpatrimonial.ascii());
    conexionbase->ejecuta(query);
    
-   query.sprintf("DELETE FROM compmasap WHERE masaperteneciente=%s", idmpatrimonial.c_str());
+   query.sprintf("DELETE FROM compmasap WHERE masaperteneciente=%s", idmpatrimonial.ascii());
    conexionbase->ejecuta(query);
    item = componentessuma->firstChild();
    while (item) {
-     string id = item->text(0).ascii();
-     string tipo = item->text(3).ascii();
+     QString id = item->text(0);
+     QString tipo = item->text(3);
      if (tipo == "cuenta") {
-        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (%s,NULL,%s,true)",id.c_str(), idmpatrimonial.c_str() );
+        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (%s,NULL,%s,true)",id.ascii(), idmpatrimonial.ascii() );
      } else {
-        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (NULL,%s,%s,true)",id.c_str(), idmpatrimonial.c_str() );
+        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (NULL,%s,%s,true)",id.ascii(), idmpatrimonial.ascii() );
      }// end if        
      fprintf(stderr,"%s\n",query.ascii());
      conexionbase->ejecuta(query);
@@ -268,12 +268,12 @@ void mpatrimonialview::accept() {
 
    item = componentesresta->firstChild();
    while (item) {
-     string id = item->text(0).ascii();
-     string tipo = item->text(3).ascii();
+     QString id = item->text(0).ascii();
+     QString tipo = item->text(3).ascii();
      if (tipo == "cuenta") {
-        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (%s,NULL,%s,false)",id.c_str(), idmpatrimonial.c_str() );
+        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (%s,NULL,%s,false)",id.ascii(), idmpatrimonial.ascii() );
      } else {
-        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (NULL,%s,%s,false)",id.c_str(), idmpatrimonial.c_str() );
+        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (NULL,%s,%s,false)",id.ascii(), idmpatrimonial.ascii() );
      }// end if   
      fprintf(stderr,"%s\n",query.ascii());
      conexionbase->ejecuta(query);
@@ -282,7 +282,7 @@ void mpatrimonialview::accept() {
    close();
 }// end accept
 
-string mpatrimonialview::getnommasa() {
+QString mpatrimonialview::getnommasa() {
    return descmpatrimonial->text().ascii();
 }
 

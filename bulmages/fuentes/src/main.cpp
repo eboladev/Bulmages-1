@@ -76,16 +76,16 @@ int main(int argc, char *argv[]) {
     QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
     QApplication * mainApp = new QApplication (argc, argv);
     theApp = mainApp;
-    mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).c_str(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).c_str())));
+    mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
     traductor = new QTranslator ( 0 );
     // set the location where your .qm files are in load() below as the last parameter instead of "."
     // for development, use "/" to use the english original as
     // .qm files are stored in the base project directory.
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load( QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).c_str() );
+        traductor->load( QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
     } else {
         string archivo = "bulmages_"+confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo.c_str(),confpr->valor(CONF_DIR_TRADUCCION).c_str());
+        traductor->load(archivo.c_str(),confpr->valor(CONF_DIR_TRADUCCION).ascii());
     }// end if
     mainApp->installTranslator( traductor );
 

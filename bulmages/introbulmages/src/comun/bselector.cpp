@@ -66,7 +66,7 @@ void BSelector::m_bulmatpv_clicked() {
    }// end while
    if (m_empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmatpv bulmatpv %s %s %s", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+      sprintf(cadena,"bulmatpv bulmatpv %s %s %s &", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).ascii(), confpr->valor(CONF_PASSWORD_USER).ascii());
       system (cadena);
    }// end if
 }// end m_bulmatpv_clicked
@@ -93,7 +93,7 @@ void BSelector::contabilidad_clicked() {
    }// end if
    if (m_empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmacont bulmacont %s %s %s", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+      sprintf(cadena,"bulmacont bulmacont %s %s %s &", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).ascii(), confpr->valor(CONF_PASSWORD_USER).ascii());
       system (cadena);
    }// end if
 }// end contabilidad_clicked
@@ -103,14 +103,14 @@ void BSelector::contabilidad_clicked() {
 void BSelector::produccion_clicked() {
 //Al crear un nuevo modulo, le paso como primer parametro un puntero al selector.
 //De este modo puedo acceder facilmente al selector desde el modulo.
-   system("mozilla http://localhost/galopin/");
+   system("mozilla http://localhost/galopin/ &");
 }
 
 
 //Boton para entrar en el modulo de STOCKS Y ALMACENES
 void BSelector::almacen_clicked() {
    fprintf(stderr,"SE ha pulsado sobre la opción del BContawev");
-   system("mozilla http://localhost/bcontaweb/");
+   system("mozilla http://localhost/bcontaweb/ &");
 //   system("netscape http://localhost/bcontaweb/");
 }
 
@@ -124,7 +124,7 @@ void BSelector::m_bulmafact_clicked() {
    }// end while
    if (m_empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmafact bulmafact %s %s %s", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+      sprintf(cadena,"bulmafact bulmafact %s %s %s &", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).ascii(), confpr->valor(CONF_PASSWORD_USER).ascii());
       system (cadena);
    }// end if
 }

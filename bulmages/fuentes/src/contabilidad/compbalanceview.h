@@ -30,12 +30,12 @@ class compbalanceview : public compbalancedlg  {
 public:
    empresa *empresaactual;
    postgresiface2 *conexionbase;
-   string idbalance;    // Esta variable indica cual es el balance que se esta modificando/visualizando
+   QString idbalance;    // Esta variable indica cual es el balance que se esta modificando/visualizando
 public: 
 	compbalanceview(empresa *, QWidget *parent=0, const char *name=0);
 	~compbalanceview();
-   void inicializa1(string);
-   string idmpatrimonial;   //este campo acompaña a la descripcion de la masa, pero no aparece pq no puede editarse.
+   void inicializa1(QString);
+   QString idmpatrimonial;   //este campo acompaña a la descripcion de la masa, pero no aparece pq no puede editarse.
 
 public slots:
    virtual void agregalinea();

@@ -149,25 +149,25 @@ void QTableItem1::paint( QPainter *p, const QColorGroup &cg, const QRect &cr, bo
 //    g.setColor( QColorGroup::Base, QColor::QColor(200,200,255) );
     QFont f(p->font());
     // Establecemos el color de fondo de este item como el color de fondo del diario.
-    g.setColor( QColorGroup::Base, QColor::QColor(confpr->valor(CONF_BG_DIARIO).c_str()) );
+    g.setColor( QColorGroup::Base, QColor::QColor(confpr->valor(CONF_BG_DIARIO).ascii()) );
 
     // Establecemos la fuente segun las preferencias del diario.
-    f.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).c_str()));
-	 f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).c_str());
+    f.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).ascii()));
+	 f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).ascii());
     p->setFont( f );
 
     if (modo == 1) {
-        g.setColor( QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO1).c_str()));
+        g.setColor( QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO1).ascii()));
     } else {
-        g.setColor(QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO2).c_str()));
+        g.setColor(QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO2).ascii()));
     }// end if
     
     // MODO 10
     if (modo == 10) {
       g.setColor( QColorGroup::Base, QColor::QColor("#FFFFFF") );
       // Establecemos la fuente segun las preferencias del diario.
-      f.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).c_str()));
-            f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).c_str());
+      f.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).ascii()));
+            f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).ascii());
       p->setFont( f );
       g.setColor(QColorGroup::Text, QColor::QColor("#FF0000"));
     }// end if

@@ -72,6 +72,7 @@ public:
 public:
   empresa();
   ~empresa();
+  /// Returns a pointer to the database class \ref postgresiface2
   postgresiface2 *bdempresa() {return (conexionbase2);}
   intapunts3view *intapuntsempresa() {return(introapunts1);}
   int numdigitosempresa() { return(numdigitos);}
@@ -79,7 +80,7 @@ public:
   QString nombreempresa() {return(nombre);}
   QString ejercicioactual() {return(EjercicioActual);}
   void setejactual(QString ej) {EjercicioActual=ej;}
-  int inicializa(QString * DB=0);
+//  int inicializa(QString * DB=0);
 //  int idcCosteDef() const {return m_idcCosteDef;}
 //  int idCanalDef() const {return m_idCanalDef;}
 //  void setidcCosteDef(int a) { m_idcCosteDef=a;}
@@ -95,14 +96,15 @@ public:
   int nuevaempresa();
 //  int cargarempresa();
   int borrarempresa();
-  int cambiarempresa();
+  /// This function search for a comapany
+  QString searchCompany();
   int libromayor();
   int librodiario();
   int librobalance();
   int librobalancetree();
   int registroiva();
   int modelo347();
-  int inicializa1(QWorkspace *);
+  int inicializa1(QString, QWorkspace *);
   int boton_siguiente();
   int boton_anterior();
   int boton_primero();

@@ -42,21 +42,18 @@ compbalanceview::~compbalanceview(){
 }
 
 
-void compbalanceview::inicializa1(string idbalancep) {
+void compbalanceview::inicializa1(QString idbalancep) {
    idbalance = idbalancep;
-   string query = "SELECT * FROM balance WHERE idbalance="+idbalance;
-   fprintf(stderr,"%s\n",query.c_str());
+   QString query = "SELECT * FROM balance WHERE idbalance="+idbalance;
    conexionbase->begin();
-   cursor2 *mycursor = conexionbase->cargacursor(query.c_str(),"balancequery");
+   cursor2 *mycursor = conexionbase->cargacursor(query,"balancequery");
    conexionbase->commit();
-
    if (!mycursor->eof()) {
       titbalance->setText(mycursor->valor("nombrebalance"));
    }// end if
    delete mycursor;
 
    // Hacemos la inicializacion del listado.
-//  listado->setNumRows(0);
   listado->setNumCols(6);
   
   listado->horizontalHeader()->setLabel( COL_IDCOMPBALANCE, tr( "identificador" ) );
@@ -82,9 +79,9 @@ void compbalanceview::inicializa1(string idbalancep) {
    
 //   query = "SELECT *, saldompatrimonial (idmpatrimonial,'01/01/2003','31/12/2003') AS saldot FROM compbalance WHERE idbalance = "+idbalance+" ORDER BY orden";
    query = "SELECT *, compbalance.idbalance AS saldot FROM compbalance WHERE idbalance = "+idbalance+" ORDER BY orden";
-   fprintf(stderr,"%s\n",query.c_str());
+   fprintf(stderr,"%s\n",query.ascii());
    conexionbase->begin();
-   mycursor = conexionbase->cargacursor(query.c_str(), "compbalancequery");
+   mycursor = conexionbase->cargacursor(query, "compbalancequery");
    conexionbase->commit();
    listado->setNumRows(mycursor->numregistros());
    int i=0;
@@ -128,7 +125,7 @@ void compbalanceview::borralinea() {
 }// end borralinea
 
 void compbalanceview::agregalinea() {
-   string elorden;
+   QString elorden;
    int row = listado->currentRow();
    if (row > 0 && listado->numRows() > 0) {
       elorden = listado->text(row,COL_ORDEN).ascii();
@@ -144,7 +141,7 @@ void compbalanceview::agregalinea() {
       fprintf(stderr,"INSERCION POR FORMULA\n");
       // Lo primero es crear una masa patrimonial.
       QString query;
-      query.sprintf("INSERT INTO mpatrimonial (idbalance, descmpatrimonial) VALUES (%s,'%s')",idbalance.c_str(),comentario.ascii());
+      query.sprintf("INSERT INTO mpatrimonial (idbalance, descmpatrimonial) VALUES (%s,'%s')",idbalance.ascii(),comentario.ascii());
       conexionbase->ejecuta(query);
       query.sprintf("SELECT max(idmpatrimonial) AS maxim FROM mpatrimonial");
       cursor2 * curs= conexionbase->cargacursor(query, "micursorcillo");
@@ -192,13 +189,9 @@ void compbalanceview::agregalinea() {
       string query1 = "UPDATE compbalance SET orden = orden +1 WHERE idbalance="+idbalance+" AND orden >= "+elorden+"+1";
       fprintf(stderr,"%s\n",query1.c_str());
       conexionbase->ejecuta(query1.c_str());
-      query.sprintf("INSERT INTO compbalance (concepto, idbalance, idmpatrimonial, tabulacion, orden) VALUES ('%s',%s,%s, 0, %s+1)", comentario.ascii(), idbalance.c_str(), idmpatrimonialnueva.ascii(), elorden.c_str());
-      fprintf(stderr,"%s\n",query.ascii());
-//      query1 = "INSERT INTO compbalance (concepto, idbalance, idmpatrimonial, tabulacion, orden) VALUES ('"+comentario+"',"+idbalance+","+idmpatrimonialnueva+", 0, "+elorden+"+1)";
+      query.sprintf("INSERT INTO compbalance (concepto, idbalance, idmpatrimonial, tabulacion, orden) VALUES ('%s',%s,%s, 0, %s+1)", comentario.ascii(), idbalance.ascii(), idmpatrimonialnueva.ascii(), elorden.ascii());
       conexionbase->ejecuta(query);
-      
       conexionbase->commit();
-   
    inicializa1(idbalance);
    listado->setCurrentCell(row+1,0);
    
@@ -270,20 +263,18 @@ void compbalanceview::botonabajo() {
 
 void compbalanceview::listadopulsado(int row, int col, int a, const QPoint &mouse) {
       concepto->setText("");
-      string query = "SELECT * FROM compbalance WHERE idcompbalance = "+(string) listado->text(row,COL_IDCOMPBALANCE).ascii();
-      fprintf(stderr,"%s\n",query.c_str());
+      QString query = "SELECT * FROM compbalance WHERE idcompbalance = "+(string) listado->text(row,COL_IDCOMPBALANCE).ascii();
       conexionbase->begin();
-      cursor2 *curs = conexionbase->cargacursor(query.c_str(),"supmycursor");
+      cursor2 *curs = conexionbase->cargacursor(query,"supmycursor");
       conexionbase->commit();
       if (!curs->eof()) {
          concepto->setText(curs->valor("concepto"));
-//         idmpatrimonial = listado->text(row,COL_IDMPATRIMONIAL).ascii();
          idmpatrimonial = curs->valor("idmpatrimonial").ascii();
 
          query = "SELECT * FROM compmasap LEFT JOIN cuenta ON compmasap.idcuenta = cuenta.idcuenta LEFT JOIN mpatrimonial ON compmasap.idmpatrimonial = mpatrimonial.idmpatrimonial WHERE masaperteneciente = "+idmpatrimonial;
          QString formula1;
          conexionbase->begin();
-         cursor2 *curs1 = conexionbase->cargacursor(query.c_str(),"cursdf");
+         cursor2 *curs1 = conexionbase->cargacursor(query,"cursdf");
          conexionbase->commit();
          while (!curs1->eof()) {
             if (curs1->valor("signo") == "t") {
@@ -349,8 +340,8 @@ void compbalanceview::modificalinea() {
    int row = listado->currentRow();
    QString query;                            // Utilizado para hacer los querys
 //   string query;
-   string idcompbalance = listado->text(row, COL_IDCOMPBALANCE).ascii();
-   string descripcion = concepto->text().ascii();
+   QString idcompbalance = listado->text(row, COL_IDCOMPBALANCE);
+   QString descripcion = concepto->text();
    if (idmpatrimonial == "") {
       idmpatrimonial="NULL";
    }// end if
@@ -360,11 +351,11 @@ void compbalanceview::modificalinea() {
       QString componente;                       // Esta variable es utilizada para desglosar la fórmula
 
       // es una formula, hay que insertar una masa patrimonial
-      query.sprintf("UPDATE mpatrimonial SET idbalance=%s WHERE idmpatrimonial=%s", idbalance.c_str(), idmpatrimonial.c_str());
+      query.sprintf("UPDATE mpatrimonial SET idbalance=%s WHERE idmpatrimonial=%s", idbalance.ascii(), idmpatrimonial.ascii());
       fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
 
-      query.sprintf("DELETE FROM compmasap WHERE masaperteneciente = %s", idmpatrimonial.c_str());
+      query.sprintf("DELETE FROM compmasap WHERE masaperteneciente = %s", idmpatrimonial.ascii());
       fprintf(stderr,"%s\n",(char *)query.ascii());
       conexionbase->ejecuta(query);
       // Hay que interpretar la linea de la formula y insertar la masa patrimonial.
@@ -393,10 +384,10 @@ void compbalanceview::modificalinea() {
             QString codcuenta;
             if (componente[0] == 'M') {
                idmpatrimonialcomp =  componente.mid(1,componente.length());
-               query.sprintf("INSERT INTO compmasap(idmpatrimonial, masaperteneciente, signo) VALUES (%s,%s,%s)",idmpatrimonialcomp.ascii(), idmpatrimonial.c_str(), signo.ascii());
+               query.sprintf("INSERT INTO compmasap(idmpatrimonial, masaperteneciente, signo) VALUES (%s,%s,%s)",idmpatrimonialcomp.ascii(), idmpatrimonial.ascii(), signo.ascii());
             } else {
                codcuenta = componente;
-               query.sprintf("INSERT INTO compmasap(idcuenta, masaperteneciente, signo) VALUES (id_cuenta('%s'),%s,%s)",codcuenta.ascii(), idmpatrimonial.c_str(), signo.ascii());
+               query.sprintf("INSERT INTO compmasap(idcuenta, masaperteneciente, signo) VALUES (id_cuenta('%s'),%s,%s)",codcuenta.ascii(), idmpatrimonial.ascii(), signo.ascii());
             }// end if
             fprintf(stderr,"%s\n",query.ascii());
             conexionbase->ejecuta(query);
@@ -404,7 +395,7 @@ void compbalanceview::modificalinea() {
          }// end if
       }// end for
 
-   query.sprintf("UPDATE compbalance SET idmpatrimonial=%s, concepto='%s' WHERE idcompbalance=%s",idmpatrimonial.c_str(), descripcion.c_str(), idcompbalance.c_str());
+   query.sprintf("UPDATE compbalance SET idmpatrimonial=%s, concepto='%s' WHERE idcompbalance=%s",idmpatrimonial.ascii(), descripcion.ascii(), idcompbalance.ascii());
    fprintf(stderr,"%s\n",query.ascii());
    conexionbase->ejecuta(query);
    conexionbase->commit();
@@ -422,7 +413,7 @@ void compbalanceview::botonimprimir() {
 
 void compbalanceview::accept() {
    QString query;
-   query.sprintf("UPDATE balance SET nombrebalance='%s' WHERE idbalance=%s",titbalance->text().ascii(),idbalance.c_str());
+   query.sprintf("UPDATE balance SET nombrebalance='%s' WHERE idbalance=%s",titbalance->text().ascii(),idbalance.ascii());
    conexionbase->begin();
    conexionbase->ejecuta(query);
    conexionbase->commit();

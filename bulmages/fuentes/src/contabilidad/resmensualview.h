@@ -42,7 +42,7 @@ private:
    empresa *empresaactual;
    postgresiface2 *conexionbase;
 public: 
-   string idmpatrimonial1, idmpatrimonial2, idmpatrimonial3;
+   QString idmpatrimonial1, idmpatrimonial2, idmpatrimonial3;
 
    int inicializa();
 	resmensualview(empresa *, QWidget *parent=0, const char *name=0);

@@ -140,7 +140,7 @@ void providerslist::inicializa() {
          
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).c_str());   
+    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).ascii());   
     m_list->setReadOnly(TRUE);        
     companyact->begin();
     cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor","unquery12");

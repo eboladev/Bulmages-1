@@ -78,9 +78,9 @@ void resmensualview::presentar() {
    codigo[1]=cod2->text();
    codigo[2]=cod3->text();
    QString codigomasa[3];
-   codigomasa[0]= idmpatrimonial1.c_str();
-   codigomasa[1]= idmpatrimonial2.c_str();
-   codigomasa[2]= idmpatrimonial3.c_str();
+   codigomasa[0]= idmpatrimonial1.ascii();
+   codigomasa[1]= idmpatrimonial2.ascii();
+   codigomasa[2]= idmpatrimonial3.ascii();
    
    string ano = "2004";
 
@@ -173,7 +173,7 @@ void resmensualview::buscampatrimonial1() {
    nuevae->inicializa(conexionbase);
    nuevae->setmodoselector();
    nuevae->exec();
-   mpatrimonial1->setText((char *) (nuevae->getnommasa()).c_str());
+   mpatrimonial1->setText((char *) (nuevae->getnommasa()).ascii());
    idmpatrimonial1 = nuevae->getidmasa();
    delete nuevae;
    
@@ -184,7 +184,7 @@ void resmensualview::buscampatrimonial2() {
    nuevae->inicializa(conexionbase);
    nuevae->setmodoselector();
    nuevae->exec();
-   mpatrimonial2->setText((char *) (nuevae->getnommasa()).c_str());
+   mpatrimonial2->setText((char *) (nuevae->getnommasa()).ascii());
    idmpatrimonial2 = nuevae->getidmasa();
    delete nuevae;
 
@@ -195,7 +195,7 @@ void resmensualview::buscampatrimonial3() {
    nuevae->inicializa(conexionbase);
    nuevae->setmodoselector();
    nuevae->exec();
-   mpatrimonial3->setText((char *) (nuevae->getnommasa()).c_str());
+   mpatrimonial3->setText((char *) (nuevae->getnommasa()).ascii());
    idmpatrimonial3 = nuevae->getidmasa();
    delete nuevae;
 

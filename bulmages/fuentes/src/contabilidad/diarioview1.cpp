@@ -63,8 +63,8 @@ diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int  )
 
    // Trabajamos con las fuentes
     QFont listado_font(  listado->font() );
-    listado_font.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).c_str()));
-    listado_font.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).c_str());
+    listado_font.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).ascii()));
+    listado_font.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).ascii());
     listado->setFont( listado_font );   
 
    listado->setColumnMovingEnabled( TRUE );
@@ -97,7 +97,7 @@ diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int  )
    listado->setColumnWidth(COL_CONTRAPARTIDA,100);
 
    // Establecemos el color de fondo, segun la configuracion.
-    listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_DIARIO).c_str());
+    listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_DIARIO).ascii());
 
     listado->hideColumn(COL_NUMASIENTO);
     // Dependiendo de la configuración mostramos o no mostramos la contrapartida, los canales y los centros de coste

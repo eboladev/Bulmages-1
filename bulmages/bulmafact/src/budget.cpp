@@ -81,8 +81,10 @@ CREATE TABLE lpresupuesto (
 #include <qpopupmenu.h>
 #include <qtoolbutton.h>
 
+#include <fstream>
+using namespace std;
+
 #include "funcaux.h"
-//#include "postgresiface2.h"
 
 #define COL_IDLPRESUPUESTO 0
 #define COL_IDARTICULO 1
@@ -602,7 +604,7 @@ void Budget::s_saveBudget() {
 }
 
 
-void Budget::s_contextMenu(int row, int col, int button, const QPoint &poin) {
+void Budget::s_contextMenu(int, int, int button, const QPoint &poin) {
 	qDebug("button = %d", button);
 	if (button == 2) {
 		QPopupMenu *popup;
@@ -620,7 +622,7 @@ void Budget::s_contextMenu(int row, int col, int button, const QPoint &poin) {
 }// end contextmenu
 
 
-void Budget::s_contextMenuDiscount(int row, int col, int button, const QPoint &poin) {
+void Budget::s_contextMenuDiscount(int, int, int button, const QPoint &poin) {
 	qDebug("button = %d", button);
 	if (button == 2) {
 		QPopupMenu *popup;
@@ -1067,7 +1069,7 @@ void Budget::presentaOpenReports() {
 	numero = m_numpresupuesto->text().ascii();
 	observaciones = m_comentpresupuesto->text().ascii();
 	
-	ifstream filestr((confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml").c_str());
+	ifstream filestr((confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml").ascii());
 	string a;
 	char c [1000];
 	char *argstxt[]={"presupuesto.jm.rml","presupuesto.jm.rml",NULL};      //presentació txt normal
@@ -1229,7 +1231,7 @@ void Budget::presentakugar() {
 		fitxersortidatxt << "\t\tdescuentolinea CDATA #REQUIRED\n";
 		fitxersortidatxt << "\t\timportelinea CDATA #REQUIRED>\n";
 		fitxersortidatxt << "]>\n\n";	 
-		fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).c_str()<<"pressupost.kut\">\n";
+		fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).ascii()<<"pressupost.kut\">\n";
 	}// end if
 	companyact->begin();
 	cursoraux = companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN  lpresupuesto ON presupuesto.idpresupuesto = lpresupuesto.idpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo ORDER BY idlpresupuesto ASC","elquery");

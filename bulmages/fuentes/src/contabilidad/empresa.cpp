@@ -69,8 +69,9 @@ empresa::~empresa(){
   if (selcanales) delete selcanales;
 }// end ~empresa
 
-
-int empresa::inicializa1(QWorkspace *space) {
+/** \brief inicializa la clase con el nombre de la base de datos y con el workspace.
+  */
+int empresa::inicializa1(QString nombreDB, QWorkspace *space) {
    fprintf(stderr,"EMPRESA::inicializa1()\n");
    pWorkspace = space;
    nombre = confpr->valor(CONF_LOGIN_USER);
@@ -132,28 +133,28 @@ void empresa::maximiza() {
 /** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
   * Al usuario debe seleccionar una empresa y el sistema empieza la inicialización de clases a partir de dicha inicialización.
   */
-int empresa::cambiarempresa() {
+QString empresa::searchCompany() {
 //El cambio de empresa se realiza desde el selector.
-  fprintf(stderr,"empresa::cambiarempresa vamos a mostrar el abreempresaview\n");
+  fprintf(stderr,"empresa::searchCompany vamos a mostrar el abreempresaview\n");
   abreempresaview *nuevae = new abreempresaview(0,"BulmaCont" );
   nuevae->exec();
    fprintf(stderr,"Vamos a cambiar la empresa \n");
    QString bd= nuevae->nomDB();
    fprintf(stderr,"Empresa cambiada a %s\n", bd.ascii());
    delete nuevae;
-   inicializa(&bd);
-  return(0);
-}// end cambiarempresa
+  return(bd);
+}// end searchCompany
 
 /** 
  * Esta funcion hace el inicio de la empresa, muestra el dialogo de abrir
  * y hace los pasos necesarios.
  */
+/*
 int empresa::inicializa(QString *DB) {
     nombreDB = *DB;
   return(0);
 }// end inicializa
-
+*/
 
 /** ****************************************************************
   Esta funcion abre la ventana que presenta las cuentas contables

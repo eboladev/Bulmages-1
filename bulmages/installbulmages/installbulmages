@@ -245,6 +245,7 @@ cp guardaemp /usr/local/bin
 cp bulmafact /usr/local/bin
 cp bulmacont /usr/local/bin
 cp bulmatpv /usr/local/bin
+cp rtkview /usr/local/bin
 
 cp trml2pdf/* /usr/bin/
 

@@ -197,7 +197,7 @@ void DiarioPrintView::presentakugar() {
         fitxersortidatxt << "\t\tdebe CDATA #REQUIRED\n";
         fitxersortidatxt << "\t\thaber CDATA #REQUIRED>\n";
         fitxersortidatxt << "]>\n\n";
-        fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).c_str()<<"diari.kut\">\n";
+        fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).ascii()<<"diari.kut\">\n";
     }// end if
 
     QString query = montaQuery();
@@ -346,13 +346,13 @@ void DiarioPrintView::presentar(char * tipus) {
         if (txt) {
             //presentació txt normal
             if (!pid) {
-                error = execvp(confpr->valor(CONF_EDITOR).c_str(),argstxt);
+                error = execvp(confpr->valor(CONF_EDITOR).ascii(),argstxt);
             }
         }
         if (html) {
             //presentació html normal
             if (!pid) {
-                error = execvp(confpr->valor(CONF_NAVEGADOR).c_str(),argshtml);
+                error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),argshtml);
             }// end if
         }// end if
     }
@@ -480,7 +480,7 @@ void DiarioPrintView::presentar(char * tipus) {
                     exit(errno);
                 }// end if
                 if (!pid) {
-                    error = execvp(confpr->valor(CONF_EDITOR).c_str(),argstxt);
+                    error = execvp(confpr->valor(CONF_EDITOR).ascii(),argstxt);
                 }// end if
             }// end if
 
@@ -491,7 +491,7 @@ void DiarioPrintView::presentar(char * tipus) {
                     exit(errno);
                 }// end if
                 if (!pid) {
-                    error = execvp(confpr->valor(CONF_NAVEGADOR).c_str(),argshtml);
+                    error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),argshtml);
                 }// end if
             }// end if
         }// end if
@@ -499,23 +499,25 @@ void DiarioPrintView::presentar(char * tipus) {
 }// end presentar
 
 
-
+/** \brief SLOT que responde a la pulsación del botón de canales.
+  * Sirve para que se puedan establecer en las opciones de filtrado los canales.
+  * En realidad no hace una nueva intancia de los canales sino que llama a una clase global.
+  */
 void DiarioPrintView::boton_canales() {
     fprintf(stderr,"Boton canales\n");
     selectcanalview *selcanales = empresaactual->getselcanales();
     selcanales->exec();
     selcanales->firstcanal();
-    //   while (selcanales->nextcanal());
 }// end boton_canales
 
 
-
+/** \brief SLOT que responde a la pulsación del botón de centros de coste.
+  */
 void DiarioPrintView::boton_ccostes() {
     fprintf(stderr,"Boton ccostes\n");
     selectccosteview *selccostes = empresaactual->getselccostes();
     selccostes->exec();
     selccostes->firstccoste();
-    //   while (selccostes->nextccoste());
 }// end boton_ccostes
 
 /** \brief SLOT que responde a la pulsación del botón de filtrado

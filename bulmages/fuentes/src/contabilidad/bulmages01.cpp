@@ -64,16 +64,14 @@
 
 Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB) 
 : QMainWindow(parent,name,f) {
-  fprintf(stderr,"Bulmages01::Bulmages01 Inicializando la empresa \n");
   if (DB != NULL) {
     DBName=*DB;
-    empresaactual.inicializa(DB);
   } else {
-    fprintf(stderr,"Bulmages01::Bulmages01 Cambio de empresa \n");
-    empresaactual.cambiarempresa();
-    DBName= empresaactual.nombreDB;    
+    DBName= "";
+    while (DBName == "") 
+    	DBName = empresaactual.searchCompany();
   }// end if
-  setCaption(tr("BulmaGés ") + empresaactual.ejercicioactual());  
+  setCaption(tr("BulmaGés ") + DBName);  
   initView();
   initActions();
   initMenuBar();
@@ -82,15 +80,13 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
   showView();
   viewToolBar->setOn(true);
   viewStatusBar->setOn(true);
-//  viewCorrector->setOn(true);
   
-  // Le indicamos al sistema de log cual va a ser la empresa.
-  fprintf(stderr,"HEMOS INICIALIZADO \n");
   
   // OJO QUE AQUI ESTA FALLANDO ESTO.
   ctllog->setempresa(&empresaactual);
-  ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario a entrado en bulmages01"); //: --"+empresaactual.nomuserempresa()+"-- ha entrado en la empresa(DB): --"+empresaactual.nombreDB);
-  fprintf(stderr,"Bulmages01::Bulmages01 HEMOS INICIALIZADO POR COMPLETO\n");
+  ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario a entrado en bulmages01");
+  
+  fprintf(stderr,"HEMOS INICIALIZADO \n");
 }// end Bulmages01
 
 
@@ -650,14 +646,14 @@ void Bulmages01::initView() {
   view_back->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
   pWorkspace = new QWorkspace( view_back );
   setCentralWidget(view_back);
-  fondo.load(confpr->valor(CONF_BACKGROUND).c_str());
+  fondo.load(confpr->valor(CONF_BACKGROUND).ascii());
 //  pWorkspace->setBackgroundPixmap (QPixmap(logofx));
   pWorkspace->setBackgroundPixmap (fondo);
 }// end initView
 
 
 void Bulmages01::showView() {
-  empresaactual.inicializa1(pWorkspace);
+  empresaactual.inicializa1(DBName, pWorkspace);
   showMaximized();
   empresaactual.maximiza();
 }// end initView
@@ -985,7 +981,7 @@ void Bulmages01::slotAyudai() {
        exit(errno);
    }// end if
    if (!pid) {
-      error = execvp(confpr->valor(CONF_NAVEGADOR).c_str(),args);
+      error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),args);
    }// end if
 #endif
 }// end slotAyudai

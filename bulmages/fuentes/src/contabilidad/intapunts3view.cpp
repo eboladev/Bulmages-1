@@ -67,8 +67,8 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
     tapunts= tapunts3;
     QFont tapunts_font(  tapunts->font() );
 
-    tapunts_font.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_APUNTES).c_str()));
-    tapunts_font.setFamily(confpr->valor(CONF_FONTFAMILY_APUNTES).c_str());
+    tapunts_font.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_APUNTES).ascii()));
+    tapunts_font.setFamily(confpr->valor(CONF_FONTFAMILY_APUNTES).ascii());
     tapunts->setFont( tapunts_font );
 
     tapunts->setNumRows( 0 );
@@ -515,8 +515,8 @@ void intapunts3view::asientoabiertop()  {
     nuevoasiento->setEnabled(FALSE);
     botonabrirasiento->setEnabled(FALSE);
     botoncerrarasiento->setEnabled(TRUE);
-    tapunts->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTESA).c_str());
-    tapunts->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTESA).c_str());
+    tapunts->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTESA).ascii());
+    tapunts->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTESA).ascii());
     tapunts->setReadOnly(FALSE);
     botoniva->setEnabled(TRUE);
     botoninteligente->setEnabled(TRUE);
@@ -531,8 +531,8 @@ void intapunts3view::asientocerradop() {
     botonabrirasiento->setEnabled(TRUE);
     botoncerrarasiento->setEnabled(FALSE);
     abierto = 0;
-    tapunts->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTES).c_str());
-    tapunts->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTES).c_str());
+    tapunts->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTES).ascii());
+    tapunts->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTES).ascii());
     tapunts->setReadOnly(TRUE);
     botoniva->setEnabled(FALSE);
     botoninteligente->setEnabled(TRUE);

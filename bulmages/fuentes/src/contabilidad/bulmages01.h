@@ -165,6 +165,7 @@ public:
     void windowMenuAboutToShow();    
     
   private:
+    /// the name used
     QString DBName;
     /** initializes all QActions of the application */
     void initActions();

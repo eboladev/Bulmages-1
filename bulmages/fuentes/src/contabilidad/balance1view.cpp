@@ -80,7 +80,7 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
       listado->setColumnAlignment(PADRE,Qt::AlignRight);
 //	 listado->setPaletteBackgroundColor("#FFFFFF");
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCETREE).c_str());
+    listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCETREE).ascii());
       
       // Inicializamos la tabla de nivel
       combonivel->insertItem("2",0);

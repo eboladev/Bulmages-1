@@ -102,7 +102,7 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
 
    
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_EXTRACTO).c_str());
+    listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_EXTRACTO).ascii());
    
 //   listado->setReadOnly(FALSE);
 

@@ -15,7 +15,8 @@
 #include "bnuevaempresa.h"
 
 
-BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, WFlags f) : nuevaempresadlg(parent,name,f) {}// end BNuevaEmpresa
+BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, WFlags f) : nuevaempresadlg(parent,name,f) {
+}// end BNuevaEmpresa
 
 
 BNuevaEmpresa::~BNuevaEmpresa() {}
@@ -31,7 +32,7 @@ void BNuevaEmpresa::accept() {
     cadena += "dbmodels/creabulmages --texto "+nombredb+" 1 "+nombreEmp+" "+ ejercicioempresa->text().stripWhiteSpace()+" "+"";
     system(cadena.ascii());
     postgresiface2 *DBconn = new postgresiface2();
-    DBconn->inicializa(nombredb, confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+    DBconn->inicializa(nombredb, confpr->valor(CONF_LOGIN_USER).ascii(), confpr->valor(CONF_PASSWORD_USER).ascii());
     QString query = "UPDATE configuracion SET valor='"+nombreEmp+"' WHERE nombre='NombreEmpresa'";
     DBconn->begin();
     DBconn->ejecuta(query);

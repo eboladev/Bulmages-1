@@ -20,6 +20,10 @@
 // Es un archivo separado por comas.
 #define LISTEMPRESAS "listempresas.lst"
 
+#include <fstream>
+using namespace std;
+
+
 #define ABRE_NOMBRE  0
 #define ABRE_ANO     1
 #define ABRE_ARCHIVO 2
@@ -77,9 +81,9 @@ void abreempresaview::closeEvent(QCloseEvent * e) {
 /** \brief carga del archivo de empresas las empresas disponibles.
   */
 void abreempresaview::cargaArchivo() {
-   string dir1 = getenv("HOME");
+   QString dir1 = getenv("HOME");
    dir1 = dir1 + "/.bulmages/"+LISTEMPRESAS;
-   ifstream filestr(dir1.c_str());
+   ifstream filestr(dir1.ascii());
    string nombre, ano, nombd, tipo;
         while (filestr.good()) {
 		getline(filestr,nombre,',');

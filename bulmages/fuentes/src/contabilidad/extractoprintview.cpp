@@ -121,7 +121,7 @@ void ExtractoPrintView::presentakugar() {
         fitxersortidatxt << "\t\tdebe CDATA #REQUIRED\n";
         fitxersortidatxt << "\t\thaber CDATA #REQUIRED>\n";
         fitxersortidatxt << "]>\n\n";
-        fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).c_str() <<"extracte.kut\">\n";
+        fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).ascii() <<"extracte.kut\">\n";
     }// end if
 
     /// Montamos la consulta que genera el listado
@@ -453,7 +453,7 @@ void ExtractoPrintView::presentar(char *tipus) {
             exit(errno);
         }
         if (!pid) {
-            error = execvp(confpr->valor(CONF_EDITOR).c_str(),argstxt);
+            error = execvp(confpr->valor(CONF_EDITOR).ascii(),argstxt);
         }
     }
     if (html) {
@@ -464,7 +464,7 @@ void ExtractoPrintView::presentar(char *tipus) {
             exit(errno);
         }
         if (!pid) {
-            error = execvp(confpr->valor(CONF_NAVEGADOR).c_str(),argshtml);
+            error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),argshtml);
         }
     }
 }

@@ -28,7 +28,7 @@ bitacora *ctllog;
 bitacora::bitacora() {
    fprintf(stderr,"Constructor de Bitacora\n");
     // abre archivo Log.
-    archivolog = new ofstream(confpr->valor(CONF_ARCHIVO_LOG).c_str(),ios::out | ios::app);      
+    archivolog = new ofstream(confpr->valor(CONF_ARCHIVO_LOG).ascii(),ios::out | ios::app);      
     empresaactual = NULL;
     fprintf(stderr,"Fin de Constructor de Bitacora\n");
 }

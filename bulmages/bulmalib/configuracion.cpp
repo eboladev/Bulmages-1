@@ -16,33 +16,40 @@
 #include <unistd.h>
 #endif
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+using namespace std;
+
+
 #define CONFGLOBAL "/etc/bulmages.conf"
 #define CONFLOCAL "bulmages.conf"
 
+/// The global object confpr is the instance of configuracion that is available to all BulmaGés aplications
+/// El objeto global confpr es la instancia de la clase configuracion. Este objeto puede ser accedido desde todas las clases de la aplicación.
 configuracion *confpr;
+
 
 configuracion::configuracion() {
    /// Creamos el directorio personalizado de bulmages.
    system ("mkdir ~/.bulmages");
    /// Cambiamos a ~/.bulmages como directorio de trabajo.
-   string dir = getenv("HOME");
+   QString dir = getenv("HOME");
    dir = dir + "/.bulmages";
-   fprintf(stderr,"Se ha establecido el directorio de trabajo: %s\n",dir.c_str());
 
 #ifndef WIN32
     /// Solo cambiamos de directorio si no es windows
-   chdir (dir.c_str());
+   chdir (dir.ascii());
 #endif
 
    /// Primero leemos la configuracion global
    leeconfig (CONFGLOBAL);
    /// Y  luego añadimos la configuracion local, asi los valores por defecto son los globales
    /// Y los que estan en local sustituyen a los existentes.
-   string dir1 = getenv("HOME");
+   QString dir1 = getenv("HOME");
    dir1 = dir1 + "/"+ CONFLOCAL;
-   leeconfig ((char *)dir1.c_str());
+   leeconfig ((char *)dir1.ascii());
 
-//   valores[PRIVILEGIOS_USUARIO]= "1";
    setValor(CONF_PRIVILEGIOS_USUARIO, "1");
    setValor(CONF_ALERTAS_DB, "Yes");
    setValor(CONF_LOGIN_USER, "");
@@ -54,7 +61,7 @@ configuracion::~configuracion() {
 }// end ~configuracion
 
 
-string configuracion::nombre(int i) {
+QString configuracion::nombre(int i) {
 if (i== CONF_BG_APUNTES) return "CONF_BG_APUNTES";
 if (i== CONF_FG_APUNTES) return "CONF_FG_APUNTES";
 if (i== CONF_BG_APUNTESA) return "CONF_BG_APUNTESA";
@@ -115,12 +122,13 @@ if (i== CONF_MOSTRAR_ALMACEN) return "CONF_MOSTRAR_ALMACEN";
 return "";
 }// end nombre
 
-
+/** \brief This method writes the configuration of the system to the home bulmages.conf file
+  * \brief Este metodo escribe la configuración del sistema en el fichero bulmages.conf del home del usuario.
+  */
 void configuracion::saveconfig() {
-   string dir1 = getenv("HOME");
+   QString dir1 = getenv("HOME");
    dir1 = dir1 + "/"+CONFLOCAL;
-   fprintf(stderr,"CONFIGURACION LOCAL %s\n", dir1.c_str());
-   ofstream filestr((char *) dir1.c_str());
+   ofstream filestr((char *) dir1.ascii());
    for (int i =0; i<1000;i++) {
       if (nombre(i) != "") {
          filestr << nombre(i);
@@ -133,9 +141,13 @@ void configuracion::saveconfig() {
 }// end saveconfig
 
 
+/** \brief This method reads the configuration params from a file
+  * \param fich File that contains the configuration.
+  * Lee la configuración del fichero de configuración pasado y rellena la estructura.
+  */
 void configuracion::leeconfig(char *fich) {
-   ifstream filestr(fich);
-  string a;
+	ifstream filestr(fich);
+	string a;
         while (filestr.good()) {
                filestr >> a;
                for (int i=0;i<1000;i++) {
@@ -144,31 +156,18 @@ void configuracion::leeconfig(char *fich) {
                      valores[i] = a;
                   }// end if
                }// end for
-                fprintf(stderr,"%s\n",a.c_str());
         }// end while
    filestr.close();
-
 }// end leeconfig
 
 
 
-void configuracion::cargarEntorno(QString baseDatos) {
-/*
-    postgresiface2 DBConn;
-    QString query;
-    cursor2 *recordSet;
-    DBConn.inicializa(baseDatos);
-    DBConn.begin();
-*/
-}
-
-
-string configuracion::valor(int i) {
+QString configuracion::valor(int i) {
         return (valores[i]);
 }// end valor
 
 
-void configuracion::setValor(int i, string valor) {
+void configuracion::setValor(int i, QString valor) {
   valores[i] = valor;
 }
 

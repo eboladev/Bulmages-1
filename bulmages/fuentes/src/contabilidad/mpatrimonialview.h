@@ -28,14 +28,14 @@ class mpatrimonialview : public mpatrimonialdlg  {
    Q_OBJECT
 public:
    postgresiface2 *conexionbase;   // La base de la empresa con la que trabajamos
-   string idmpatrimonial;          // El identificador de masa patrimonial. (Lo guardamos en forma de string pq es una prueba en la que no hay que hacer convesiones de tipos)
+   QString idmpatrimonial;          // El identificador de masa patrimonial. (Lo guardamos en forma de string pq es una prueba en la que no hay que hacer convesiones de tipos)
 public: 
 	mpatrimonialview(QWidget *parent=0, const char *name=0);
 	~mpatrimonialview();
    int inicializa(postgresiface2 *);
-   void inicializa1(string);
-   string getidmasa()  {return idmpatrimonial;}
-   string getnommasa();
+   void inicializa1(QString);
+   QString getidmasa()  {return idmpatrimonial;}
+   QString getnommasa();
 
 public slots:
    virtual void nuevasuma();

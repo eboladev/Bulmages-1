@@ -31,8 +31,8 @@ public:
    postgresiface2 *conexionbase; // Esta variable indica cual es la base de datos con la que se trabaja.
    int numdigitos;               // Esta variable indica el número de dítigos que tienen las cuentas de nivel más bajo.
    int modo;                     // Esta variable indica si se abre para busqueda o para edicion.
-   string nommasa;               // Esta variable indica el nombre de la masa, luego se usara
-   string idmasa;                // Esta variable indica el identificador de masa.
+   QString nommasa;               // Esta variable indica el nombre de la masa, luego se usara
+   QString idmasa;                // Esta variable indica el identificador de masa.
 
 public: 
 	mpatrimonialesview(QWidget *parent=0, const char *name=0, int fl=0);
@@ -41,8 +41,8 @@ public:
    void inicializatabla();
    void setmodoselector() {modo = 1;}
    void setmodoeditor() {modo = 0;}
-   string getnommasa() {return nommasa;}
-   string getidmasa() {return idmasa;}
+   QString getnommasa() {return nommasa;}
+   QString getidmasa() {return idmasa;}
    
 public slots:
    virtual void dbtabla(int, int, int, const QPoint &);

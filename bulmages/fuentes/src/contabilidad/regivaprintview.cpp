@@ -22,14 +22,9 @@
 #ifndef WIN32
 #include <unistd.h>
 #endif
-// extern float ivas4,ivas7,ivas16,ivar4,ivar7,ivar16;
- //extern float bases0,bases4,bases7,bases16,baser0,baser4,baser7,baser16;
- 
- //extern listivaview *perd;
-//  extern double ivas16, ivas4, ivas7;
-//  extern    double ivar16, ivar4, ivar7;
-//     extern double bases16, bases4, bases7, bases0;
-//     extern double baser16, baser4, baser7, baser0;
+#include <fstream>
+using namespace std;
+
 extern Mod300ps *modelo;
 
 regivaprintview::regivaprintview(QWidget *parent, const char *name ) : regivaprintdlg(parent,name) {
@@ -274,7 +269,7 @@ void regivaprintview::presentar(char *tipus){
                exit(errno);
             }
             if (!pid) {
-               error = execvp(confpr->valor(CONF_EDITOR).c_str(),argstxt);
+               error = execvp(confpr->valor(CONF_EDITOR).ascii(),argstxt);
             }
          }
          if (html) {
@@ -286,7 +281,7 @@ void regivaprintview::presentar(char *tipus){
                exit(errno);
             }
             if (!pid) {
-               error = execvp(confpr->valor(CONF_NAVEGADOR).c_str(),argshtml);
+               error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),argshtml);
             }
          }
 #endif

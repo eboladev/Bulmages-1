@@ -15,6 +15,7 @@
  ***************************************************************************/
 
 #include "propiedadesempresa.h"
+using namespace std;
 
 propiedadesempresa::propiedadesempresa(QWidget *parent, const char *name, bool modal) : propiedemp(parent,name,modal) {
 }// end propiedadesempresa

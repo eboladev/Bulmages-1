@@ -464,35 +464,21 @@ void listcuentasview1::return_descripcion() {
 	}// end if
 }// end return_codigo
 
-
+/** \brief Responde a la pulsación del botón de imprimir en la ventana de cuentas.
+  * Crea un string de llamada a rtkview y lo lanza como llamada de sistema.
+  * \todo La plantilla podría tener contenidos dinamicos mendiante marcas sustituibles por
+  * un egrep, o un sedit que aun no estan realizados.
+  * \todo Esta función debería implementarse con una clase nueva de Qt que solicitase 
+  * el rango de cuentas entre el que se quiere el listado.
+  */
 void listcuentasview1::s_PrintCuentas() {
 #ifdef REPORTS
-/*
-    cursor2 *cursoraux;
-    conexionbase->begin();
-    cursoraux=conexionbase->cargacursor("SELECT codigo, descripcion, debe, haber FROM cuenta", "unquery");
-    conexionbase->commit();
-    RTK::Report unReport;
-    unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk");
-    InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
-    inp->set(InputBGes::diario, empresaactual, cursoraux);
-    OutputQPainter *salida = new OutputQPainter(57, 59, A4, dots, 800,600,20,20,20,20);
-    unReport.print(*salida);
-    QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
-    mViewer->setCaption(tr("Listado de Cuentas", "Informe: "));
-    mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
-    mViewer->setPageCollection(salida->getPageCollection());
-    mViewer->show();
-    mViewer->slotFirstPage();
-*/
-QString cadena;
-/// OJO QUE NO ENCUENTRA LA RUTA 
-cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
-cadena += empresaactual->nombreempresa();
-cadena += "  /home/tborras/bulmages/installbulmages/reports/cuentas.rtk ";
-fprintf(stderr,"%s\n",cadena.ascii());
-system (cadena.ascii());
-
+	QString cadena;
+	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
+	cadena += conexionbase->nameDB()+" ";
+	cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
+	fprintf(stderr,"%s\n",cadena.ascii());
+	system (cadena.ascii());
 #endif
 }// end s_PrintCuentas
 

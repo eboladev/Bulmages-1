@@ -321,7 +321,7 @@ void BalancePrintView::presentar(char *tipus){
                exit(errno);
             }
             if (!pid) {
-               error = execvp(confpr->valor(CONF_EDITOR).c_str(),argstxt);
+               error = execvp(confpr->valor(CONF_EDITOR).ascii(),argstxt);
             }
          }
          if (html) {
@@ -332,7 +332,7 @@ void BalancePrintView::presentar(char *tipus){
                exit(errno);
             }
             if (!pid) {
-               error = execvp(confpr->valor(CONF_NAVEGADOR).c_str(),argshtml);
+               error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),argshtml);
             }
          }
       }

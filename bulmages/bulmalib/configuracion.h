@@ -23,12 +23,9 @@
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
-#include <string>
-using namespace std;
-using std::string;
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include <qstring.h>
+
+
 
 #define CONF_BG_APUNTES 1
 #define CONF_FG_APUNTES 2
@@ -110,17 +107,16 @@ using std::string;
 
 class configuracion {
     private:
-        string valores[1000];
+        QString valores[1000];
         int numeroprueba;
     public:
         configuracion();
         ~configuracion();
-        string valor(int);
-        void setValor(int, string);
+        QString valor(int);
+        void setValor(int, QString);
         void leeconfig(char *);
         void saveconfig();
-        void cargarEntorno(QString);
-        string nombre(int);
+        QString nombre(int);
 };
 
 

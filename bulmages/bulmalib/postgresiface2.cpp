@@ -649,9 +649,9 @@ int postgresiface2::cargaempresa(QString nomempresa, QString login, QString pass
     QString conexion;
 
     if (confpr->valor(CONF_SERVIDOR) == "localhost") {
-       conexion.sprintf( "dbname = %s", (char *)confpr->valor(CONF_METABASE).c_str());
+       conexion.sprintf( "dbname = %s", (char *)confpr->valor(CONF_METABASE).ascii());
     } else {
-       conexion.sprintf("hostaddr=%s port=%s dbname=%s", (char *) confpr->valor(CONF_SERVIDOR).c_str(), (char *) confpr->valor(CONF_PUERTO).c_str(), (char *) confpr->valor(CONF_METABASE).c_str());
+       conexion.sprintf("hostaddr=%s port=%s dbname=%s", (char *) confpr->valor(CONF_SERVIDOR).ascii(), (char *) confpr->valor(CONF_PUERTO).ascii(), (char *) confpr->valor(CONF_METABASE).ascii());
     }// end if
 
     conn = PQconnectdb(conexion);

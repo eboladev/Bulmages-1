@@ -90,7 +90,7 @@ balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int  )
    listado->setColumnWidth(SALDO,100);
     
    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-   listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).c_str());
+   listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).ascii());
    listado->setReadOnly(TRUE);
 
    // Inicializamos la tabla de nivel

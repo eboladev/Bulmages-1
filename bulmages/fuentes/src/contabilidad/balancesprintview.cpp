@@ -94,7 +94,7 @@ void balancesprintview::accept() {
         exit(errno);
    }// end if
    if (!pid) {
-      error = execvp(confpr->valor(CONF_EDITOR).c_str(),args);
+      error = execvp(confpr->valor(CONF_EDITOR).ascii(),args);
    }// end if
 #endif
 //   done(1);
