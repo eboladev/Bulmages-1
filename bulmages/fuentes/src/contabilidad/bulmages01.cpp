@@ -64,12 +64,14 @@
 #include "images/help.xpm"
 #include "images/estadisticas.xpm"
 
-Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd,QString * ejercicio) 
+Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd,QString *ejercicio) 
 : QMainWindow(parent,name,f) 
 
 {
-  setCaption(tr("BulmaGés "));
   Ejercicio =ejercicio->ascii();
+  setCaption(tr("BulmaGés ") + Ejercicio);
+  DBName=DB->ascii();
+  confpr->setValor(EJERCICIO_ACTUAL,Ejercicio.ascii());
   empresaactual.inicializa(DB,User,Passwd);
   initView();
   initActions();
@@ -280,7 +282,7 @@ void Bulmages01::initActions() {
   listadoApuntes->setWhatsThis(tr("Listar Apuntes Contables"));
   connect(listadoApuntes, SIGNAL(activated()), this, SLOT(slotListarApuntes()));
 
-  propiedadesEmpresa = new QAction(tr("Propiedades Empresa"),configuracionIcon, tr("&Propiedades Empresa"), 0, this);
+  propiedadesEmpresa = new QAction(tr("Propiedades Empresa"),configuracionIcon, tr("&Propiedades Empresa"), 0,this);
   propiedadesEmpresa->setStatusTip(tr("Propiedades de la Empresa"));
   propiedadesEmpresa->setWhatsThis(tr("Propiedades de la Empresa"));
   connect(propiedadesEmpresa, SIGNAL(activated()), this, SLOT(slotPropiedadesEmpresa()));
@@ -565,6 +567,30 @@ void Bulmages01::initMenuBar() {
   pEmpresaMenu = new QPopupMenu();
   pEmpresaMenu->setCheckable(true);
   propiedadesEmpresa->addTo(pEmpresaMenu);
+  pEmpresaMenu->insertSeparator();
+  menuEjercicios =new QPopupMenu();
+  pEmpresaMenu->insertItem(tr("Ejercicios"),menuEjercicios);
+
+  QActionGroup * anys= new QActionGroup(this);
+  connect(anys, SIGNAL(selected(QAction *)), this, SLOT(setCurrentEjercicio(QAction *)));
+  QAction * a;
+  QString aux;
+  postgresiface2 *DBconn = new postgresiface2();
+  DBconn->inicializa( DBName.ascii() );
+  DBconn->begin();
+  QString query;
+  query.sprintf("SELECT ejercicio FROM ejercicios WHERE periodo=0");
+  cursor2 * curEjer = DBconn->cargacursor(query,"curEjer");
+  DBconn->commit();
+  while (!curEjer->eof()) {
+      aux=curEjer->valor(0);
+      a = new QAction(aux,0,anys,aux);
+      a->setToggleAction(true);
+      a->addTo(menuEjercicios);
+      curEjer->siguienteregistro();
+  }
+  delete curEjer;
+  delete DBconn;
   //nuevaEmpresa->addTo(pEmpresaMenu);
   //borrarEmpresa->addTo(pEmpresaMenu);
   //cambiarEmpresa->addTo(pEmpresaMenu);
@@ -853,6 +879,13 @@ void Bulmages01::slotPropiedadesEmpresa()  {
   statusBar()->message(tr("Propiedades Empresa"));
   empresaactual.propiedadempresa();
 }// end slotPropiedadesEmpresa
+
+void Bulmages01::setCurrentEjercicio(QAction *a)  {
+Ejercicio=a->text();
+setCaption(tr("BulmaGés ") + Ejercicio);
+confpr->setValor(EJERCICIO_ACTUAL,Ejercicio.ascii());
+empresaactual.cambioejercicio();
+}// end setCurrentEjercicio
 
 /*
 void Bulmages01::slotUsuarios() {

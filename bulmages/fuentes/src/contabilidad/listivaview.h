@@ -49,7 +49,7 @@ public:
   intapunts3view *introapunts;
 
 public: 
-	listivaview(QWidget *parent=0, const char *name=0);
+	listivaview(QString ejerActual="",QWidget *parent=0, const char *name=0);
 	~listivaview();
   void inicializa(postgresiface2 *, intapunts3view *);
 public slots:

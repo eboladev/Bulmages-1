@@ -67,8 +67,9 @@ public:
     int inicializa(postgresiface2 *);
     int inicializa1(extractoview1 *, diarioview1 *, balanceview *);
     void cargarcursor(int);
-    void repinta();
+    void repinta(int);
     void muestraasiento(int);
+    void flashAsiento(int);
     void vaciarapuntes();
     void asientoabiertop();
     void asientocerradop();

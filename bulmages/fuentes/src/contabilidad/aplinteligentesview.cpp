@@ -230,7 +230,7 @@ void aplinteligentesview::boton_crear() {
     if (numasiento != 0) {
         recogevalores();
         creaasiento();
-        intapunts->repinta();
+        intapunts->repinta(numasiento);
         selectfirst();
         //	  done(1);
     } else {

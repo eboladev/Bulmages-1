@@ -63,7 +63,7 @@ void abreempresaview::accept() {
        padre->PasswordUsuario = contrasena;
        padre->NombreBaseDatos = empresabd;
        padre->nombreempresa->setText(nombreempresa);
-       padre->ejercicio->setText(ejercicio.ascii());
+       padre->ejercicio=ejercicio.ascii();
        DBConn.inicializa(confpr->valor(CONF_METABASE).c_str());
        DBConn.begin();
        QString query;

@@ -59,6 +59,12 @@ CREATE TABLE linamortizacion (
     REFERENCES "asiento" ("idasiento")
 );    
     
+CREATE TABLE ejercicios (
+    ejercicio 			int4,
+    periodo			smallint,
+    bloqueado			boolean
+);    
+
 ALTER TABLE asiento ADD COLUMN clase smallint;
 
 DROP FUNCTION reordenaasientos();

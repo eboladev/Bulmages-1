@@ -107,6 +107,8 @@ public:
     void slotListarApuntes();
     /** Slot para las propiedades de la empresa */
     void slotPropiedadesEmpresa();
+    /** Slot para cambiar de Ejercicio */
+    void setCurrentEjercicio(QAction *a);
     /** Slot para el libro mayor */
     void slotLibroMayor();
     /** Slot para guardar la empresa */
@@ -170,6 +172,7 @@ public:
     
   private:
     QString Ejercicio;
+    QString DBName;
     /** initializes all QActions of the application */
     void initActions();
     /** initMenuBar creates the menu_bar and inserts the menuitems */
@@ -201,6 +204,7 @@ public:
     QPopupMenu *pCuentaMenu;
     QPopupMenu *pApunteMenu;  
     QPopupMenu *pEmpresaMenu;
+    QPopupMenu *menuEjercicios;
     QPopupMenu *pListMenu;
     QPopupMenu *pEstMenu;
     QPopupMenu *pAsientoMenu;

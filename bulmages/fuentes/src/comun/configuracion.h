@@ -78,6 +78,7 @@ using std::string;
 #define CONF_FONTSIZE_BULMAGES    311
 
 #define PRIVILEGIOS_USUARIO    420
+#define EJERCICIO_ACTUAL    500
 
 
 

@@ -49,13 +49,15 @@
 #define  R_COL_IDBORRADOR 11
 
 
-listivaview::listivaview(QWidget *parent, const char *name ) : listivadlg(parent,name) {
-     QDate fecha = QDate::currentDate();
-     QString buffer;
-     buffer.sprintf("01/01/%d",fecha.year());
-     finicial->setText(buffer);
-     buffer.sprintf("31/12/%d",fecha.year());
-     ffinal->setText(buffer);
+listivaview::listivaview(QString ejerActual, QWidget *parent, const char *name ) : listivadlg(parent,name) {
+  //QDate fecha = QDate::currentDate();
+  //QString buffer;
+  //buffer.sprintf("01/01/%d",fecha.year());
+  //finicial->setText(buffer);
+  //buffer.sprintf("31/12/%d",fecha.year());
+  //ffinal->setText(buffer);
+  finicial->setText(normalizafecha("01/01/"+ejerActual).toString("dd/MM/yyyy"));
+  ffinal->setText(normalizafecha("31/12/"+ejerActual).toString("dd/MM/yyyy"));
 }// end listivaview
 
 
@@ -70,7 +72,8 @@ listivaview::~listivaview(){
 void listivaview::doble_click_soportado(int a, int b, int c, const QPoint &punto) {
   int idasiento;
   idasiento = atoi(tablasoportado->text(a,S_COL_IDASIENTO).ascii());
-  introapunts->muestraasiento(idasiento);
+  //introapunts->muestraasiento(idasiento);
+  introapunts->flashAsiento(idasiento);
   introapunts->show();
   introapunts->setFocus();
   done(1);
@@ -87,7 +90,8 @@ void listivaview::doble_click_soportado(int a, int b, int c, const QPoint &punto
 void listivaview::doble_click_repercutido(int a, int b, int c, const QPoint &punto) {
   int idasiento;
   idasiento = atoi(tablarepercutido->text(a,R_COL_IDASIENTO).ascii());
-  introapunts->muestraasiento(idasiento);
+  //introapunts->muestraasiento(idasiento);
+  introapunts->flashAsiento(idasiento);
   introapunts->show();
   introapunts->setFocus();
   done(1);
@@ -327,7 +331,8 @@ void listivaview::menu_contextual(int row, int col, const QPoint &poin) {
         case 0:
            int idasiento;
            idasiento = atoi(tablarepercutido->text(row,S_COL_IDASIENTO).ascii());
-           introapunts->muestraasiento(idasiento);
+           //introapunts->muestraasiento(idasiento);
+           introapunts->flashAsiento(idasiento);
            introapunts->show();
            introapunts->setFocus();
            done(1);
@@ -362,7 +367,8 @@ void listivaview::menu_contextual1(int row, int col, const QPoint &poin) {
         case 0:
            int idasiento;
            idasiento = atoi(tablarepercutido->text(row,R_COL_IDASIENTO).ascii());
-           introapunts->muestraasiento(idasiento);
+           //introapunts->muestraasiento(idasiento);
+           introapunts->flashAsiento(idasiento);
            introapunts->show();
            introapunts->setFocus();
            done(1);

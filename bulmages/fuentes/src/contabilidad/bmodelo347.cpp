@@ -15,11 +15,11 @@
 #include "bmodelo347.h"
 
 
-BModelo347::BModelo347(postgresiface2 *DBconnect,QWidget * parent, const char * name, WFlags f) : UImodelo347(parent,name,f) 
+BModelo347::BModelo347(postgresiface2 *DBconnect,QString ejerActual, QWidget * parent, const char * name, WFlags f) : UImodelo347(parent,name,f) 
 {
   importe->setText("3005.06");
-  finicial->setText(normalizafecha("01/01/2004").toString("dd/MM/yyyy"));
-  ffinal->setText(normalizafecha("31/12/2004").toString("dd/MM/yyyy"));
+  finicial->setText(normalizafecha("01/01/"+ejerActual).toString("dd/MM/yyyy"));
+  ffinal->setText(normalizafecha("31/12/"+ejerActual).toString("dd/MM/yyyy"));
   DBConn = DBconnect;
   click_boto3(); //carga las tablas en pantalla;
 }

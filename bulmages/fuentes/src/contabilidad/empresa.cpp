@@ -61,7 +61,7 @@ empresa::~empresa(){
   if (balance) delete balance;
   if (introapunts1) delete introapunts1;
   if (conexionbase2) delete conexionbase2;
-  if (conexionanterior2) delete conexionanterior2; //Segmentation Fault!! si destruimos un objeto que no existe.  
+  if (conexionanterior2) delete conexionanterior2; //Segmentation Fault!! si destruimos un objeto que no existe. 
 }// end ~empresa
 
 
@@ -119,14 +119,9 @@ int empresa::inicializa1(QWorkspace *space) {
   balance->inicializa2(introapunts1, diario, extracto);
   balance1->inicializa2(introapunts1, diario, extracto);  
   
- 
-
-  
-  
   
   return(0);
 }// end inicializa1
-
 
 void empresa::maximiza() {
   
@@ -244,6 +239,13 @@ int empresa::canales() {
   delete canal;
   return(0);
 }// end ccostes
+
+int empresa::cambioejercicio() {
+//El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio
+  introapunts1->cargarcursor(-1);
+  introapunts1->boton_fin();
+  return(0);
+}// end cambioejercicio
 
 
 int empresa::nuevaempresa() {
@@ -528,7 +530,7 @@ void empresa::Ordenarasientos(int ejercicio) {
 }// end Abrirasientos
 
 int empresa::registroiva() {
-   listivaview *perd = new listivaview;
+   listivaview *perd = new listivaview(confpr->valor(EJERCICIO_ACTUAL));
    perd->inicializa(conexionbase2, introapunts1);
    perd->exec();
    delete perd;
@@ -536,7 +538,7 @@ int empresa::registroiva() {
 }// end registroiva
 
 int empresa::modelo347() {
-   BModelo347 *dlg347 = new BModelo347(conexionbase2);
+   BModelo347 *dlg347 = new BModelo347(conexionbase2,confpr->valor(EJERCICIO_ACTUAL));
    //dlg347->inicializa(conexionbase2, introapunts1);
    dlg347->exec();
    delete dlg347;

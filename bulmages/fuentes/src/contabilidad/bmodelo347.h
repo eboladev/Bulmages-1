@@ -28,7 +28,7 @@ class BModelo347 : public UImodelo347
 {
 
 public:
-    BModelo347(postgresiface2 *DBConn=0,QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
+    BModelo347(postgresiface2 *DBConn=0,QString ejerActual="",QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
     ~BModelo347();
 
 
