@@ -435,12 +435,12 @@ void extractoview1::presentar() {
 
 
             
-            debe=atof(cursorapt->valor(8).ascii());
-            haber=atof(cursorapt->valor(9).ascii());
+            debe=atof(cursorapt->valor("debe").ascii());
+            haber=atof(cursorapt->valor("haber").ascii());
             saldo += debe - haber;
             debefinal += debe;
             haberfinal += haber;
-            cad = cursorapt->valor(4);
+            cad = cursorapt->valor("fecha");
             // Sacamos el centro de coste
             QString query;
             int ccoste = atoi(cursorapt->valor("idc_coste").ascii());
@@ -488,7 +488,7 @@ void extractoview1::presentar() {
             cadaux.sprintf("%d",ordenasiento);
             listado->setText(j,ORDEN_ASIENTO,cadaux);
             
-            listado->setText(j,CONCEPTO, cursorapt->valor(5));
+            listado->setText(j,CONCEPTO, cursorapt->valor("conceptocontable"));
             cadaux.sprintf("%5.2f",debe);
             listado->setText(j,DEBE,cadaux);
             cadaux.sprintf("%5.2f",haber);
