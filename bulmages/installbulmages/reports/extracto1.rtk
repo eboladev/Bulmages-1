@@ -118,9 +118,7 @@
 
   <INPUT name="default" driver="sqlbulmages" 
   sqldriver="QPSQL7" database="bulmages" user="tborras">
-    <INPUTFIELD name="ordenasiento" source="ordenasiento" type="number"></INPUTFIELD>
-    <INPUTFIELD name="idasiento" source="idasiento" type="date"></INPUTFIELD>
-    <INPUTFIELD name="descripcion" source="descripcion" type="text"></INPUTFIELD>
+    <INPUTFIELD name="descripcion" source="descripcion" type="number"></INPUTFIELD>
     <INPUTFIELD name="debe" source="debe" type="currency"></INPUTFIELD>
     <INPUTFIELD name="haber" source="haber" type="currency"></INPUTFIELD>
     <INPUTFIELD name="concepto" source="conceptocontable" type="number"></INPUTFIELD>
@@ -185,8 +183,13 @@
 
 <!-- Grupo cuenta encabezado -->
 
-  <SECTION name="grupo-cuenta-encabezado" type="group-header" grouplevel="1" groupvalue="input.fecha"
-    style="normal-text" posy="0" sizey="0" margintop="0">
+  <SECTION name="grupo-cuenta-encabezado" type="group-header" grouplevel="1" groupvalue="input.codigo"
+    style="normal-text" posy="0" sizey="2" margintop="0.2">
+    <OBJECT name="cuenta-codigo"
+      posx="0" posy="0" sizex="10" sizey="1"
+      value="input.codigo" textcolor="blue" fontsize="14"
+      ></OBJECT>
+    
   </SECTION>
 
 
@@ -250,6 +253,7 @@
       aggregate="sum" value="input.debe"
       style="currency-total"
       ></OBJECT>
+
   </SECTION>
  
   

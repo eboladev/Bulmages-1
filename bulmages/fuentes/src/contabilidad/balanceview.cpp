@@ -501,17 +501,15 @@ void balanceview::contextmenu(int row, int col, const QPoint &poin) {
    row=0;
 }// end contextmenu
 
-
 void balanceview::nivelactivated (int nivel) {
    presentar();
-   
    // Para evitar el warning al compilar
    nivel =0;
 }// end nivelactivated1
 
 
 void balanceview::boton_imprimir() {
-   BalancePrintView * balan = new BalancePrintView(0,0);
+   BalancePrintView * balan = new BalancePrintView(empresaactual,0,0);
 	balan->inicializa(conexionbase);
 	balan->inicializa1(codigoinicial->text(), codigofinal->text(), fechainicial1->text(), fechafinal1->text(), FALSE);
    balan->exec();

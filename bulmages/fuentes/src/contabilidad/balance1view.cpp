@@ -535,7 +535,7 @@ void balance1view::contextmenu( QListViewItem * item, const QPoint & poin, int c
 
 
 void balance1view::boton_imprimir() {
-   BalancePrintView *balan = new BalancePrintView(0,0);
+   BalancePrintView *balan = new BalancePrintView(empresaactual,0,0);
 	balan->inicializa(conexionbase);
 	fprintf(stderr,"balance1view esta inicializando  a BalancePrintView\n");
 	balan->inicializa1(codigoinicial->text(), codigofinal->text(), fechainicial1->text(), fechafinal1->text(), TRUE);
