@@ -26,6 +26,15 @@ $body = '
 <br>
 </td>
 </tr>
+<tr>
+<td>
+<BASE href="doxmanual"><A HREF="./manuales/doxmanual/html/" TARGET="nueva">Manual de Doxigen</A><BR>
+<P>Contiene los comandos más básicos para empezar a manejarlo y habituarse a documentar 
+el código.</P>
+
+<br>
+</td>
+</tr>
 </table>
 
 '; 

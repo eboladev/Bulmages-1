@@ -8,6 +8,20 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>5/12/2004</td>
+<td><center><b>Disponible Manual de Doxigen</b></center></td>
+</tr>
+<tr>
+<td colspan=2>El pasado día 1 de diciembre, David Gutierrez subió al CVS la primera versión del manual de Doxigen, de lectura muy recomendable especialmente para los desarrolladores. Se puede leer en la sección de <A href="http://www.iglues.org/home.php?go=manuales#doxmanual">documentación</A> de nuestra web.
+</td>
+</tr>
+</table>
+
+<br>
+
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>28/11/2004</td>
 <td><center><b>Junta Directiva de IGLUES</b></center></td>
 </tr>
