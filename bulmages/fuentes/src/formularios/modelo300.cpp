@@ -89,11 +89,10 @@ cuentaButton->setDisabled(true);
 /** \brief Accept slot for the 300-model dialog.
 
 When pressed, it calls to the \ref generaps method.
-\bug El programa casca cuando no hay ninguna cuenta de banco y no se selecciona la opción de especificar manualmente número de cuenta
 */
 void Mod300ps::accept()
 {
-  es_borrador=borradorcheckbox->isChecked();
+  m_es_borrador=borradorcheckbox->isChecked();
 
   if (cuentaButton->isChecked())
     {
@@ -175,14 +174,14 @@ void Mod300ps::generaps()
     cout << "Convirtiendo a postscript...\n";
     
     
-    if (es_borrador)
+    if (m_es_borrador)
     {
     system("pdftops "+pdfname+" "+tempname);
     }
     else
      {
-    psprogressdialog progress(QObject::tr("Creando formulario.."), QObject::tr("Cancelar"), 100); 
-    this->convierte_a_postscript=new genps_thread(pdfname,tempname,&progress);
+    Psprogressdialog progress(QObject::tr("Creando formulario.."), QObject::tr("Cancelar"), 100); 
+    this->convierte_a_postscript=new Genps_thread(pdfname,tempname,&progress);
     progress.setProgress(0);
     
     //LLama a la rutina para convertir el pdf en ps y conservar el dichoso numerito de serie
@@ -193,7 +192,6 @@ void Mod300ps::generaps()
      progress.exec();
      if (progress.wasCanceled())
      {
-     cout << "Rajao!!!!\n";
      system("kill $(ps aux|grep 'Xvfb :5.0'|grep -v grep|awk '{print $2}')");
      doit=false;
      }
@@ -214,79 +212,80 @@ void Mod300ps::generaps()
      psname=QString(getenv("HOME"))+"/.bulmages/mod300.ps";
 
 cout << psname;
-  fich.setName(psname);
-  if (fich.open(IO_WriteOnly))
+  m_fich.setName(psname);
+  if (m_fich.open(IO_WriteOnly))
     {
-      output.setDevice(&fich);
+      m_output.setDevice(&m_fich);
 
 
-      //fichlec.setName(tempname);
-      fichlec.setName(tempname);
-      if (!fichlec.open(IO_ReadOnly))
+      //m_fichlec.setName(tempname);
+      m_fichlec.setName(tempname);
+      if (!m_fichlec.open(IO_ReadOnly))
         {
           cout << "Error al abrir fichero de lectura!!\n";
           exit(1);
         }
 
 
-      fichlec.readLine(cad1,256);
+      m_fichlec.readLine(cad1,256);
       while (cad1.left(7)!="%%Page:")
         {
-          output << cad1 ;
-          fichlec.readLine(cad1,256);
+          m_output << cad1 ;
+          m_fichlec.readLine(cad1,256);
         }
-      output << cad1;
+      m_output << cad1;
       //Inserta definiciones de postscript al principio de la 1a pagina
       escribe_postscriptdefs();
 
-      fichlec.readLine(cad1,256);
+      m_fichlec.readLine(cad1,256);
       while (cad1!="showpage\n") //hasta que encuentre un showpage
         {
-          output << cad1;
-          fichlec.readLine(cad1,256);
+          m_output << cad1;
+          m_fichlec.readLine(cad1,256);
         }
 	
-	if (es_borrador) marcadeagua_borrador();
-	 rellena_identificacion();
+	if (m_es_borrador) marcadeagua_borrador();
+	
+ rellena_identificacion();
       rellena_liquidacion();
       rellena_compensacion();
-      output << cad1;
+      m_output << cad1;
 
-      fichlec.readLine(cad1,256);
+      m_fichlec.readLine(cad1,256);
       while (cad1!="showpage\n") //hasta que encuentre un showpage
         {
-          output << cad1;
-          fichlec.readLine(cad1,256);
+          m_output << cad1;
+          m_fichlec.readLine(cad1,256);
         }
-	if (es_borrador) marcadeagua_borrador();
+	if (m_es_borrador) marcadeagua_borrador();
       rellena_identificacion();
       rellena_liquidacion();
       rellena_compensacion();
-      output << cad1;
+      m_output << cad1;
 
-      fichlec.readLine(cad1,256);
+      m_fichlec.readLine(cad1,256);
       while (cad1!="showpage\n") //hasta que encuentre un showpage
         {
-          output << cad1;
+          m_output << cad1;
           ;
-          fichlec.readLine(cad1,256);
+          m_fichlec.readLine(cad1,256);
         }
-	if (es_borrador) marcadeagua_borrador();
+	if (m_es_borrador) marcadeagua_borrador();
       rellena_identificacion();
       rellena_compensacion();
-      output << cad1;
+      m_output << cad1;
 
 
 
-      while (!fichlec.atEnd())//Leo el resto del fichero
+      while (!m_fichlec.atEnd())//Leo el resto del fichero
         {
-          fichlec.readLine(cad1,256);
-          output << cad1 << "\n";
+          m_fichlec.readLine(cad1,256);
+          m_output << cad1 << "\n";
 
         }//end of while eof
 
-      fichlec.close();
-      fich.close();
+      m_fichlec.close();
+      m_fich.close();
 
 
 
@@ -352,7 +351,7 @@ void Mod300ps::escribe_postscriptdefs()
 //   "closepath\n"
 //   "clip\n";
 
-  output << "%bulmages\n"
+  m_output << "%bulmages\n"
   "%Texto introducido manualmente\n"
   "/Courier-Bold\n"
   "findfont\n"
@@ -402,7 +401,6 @@ void Mod300ps::escribe_cuenta_bancaria(int x,int y)
 /*!
     \fn Mod300ps::rellena_identificacion()
     \todo Solucionar problema cuando el nombre de la empresa (u otro campo) lleva acentos.
-    \todo El código postal no se rellena bien.
     \todo El teléfono no cabe (pero no es culpa mía!!)
  */
 void Mod300ps::rellena_identificacion()
@@ -422,10 +420,9 @@ escrder(m->propiedadempresa("Piso"),461,576);
 escrder(m->propiedadempresa("Puerta"),490,576);
 ///\bug Por ahora, el número de teléfono no cabe!!
 // escrder(m->propiedadempresa("Telefono"),518,576);
-escrder(m->propiedadempresa("CodPostal"),528,550);
 escrder(m->propiedadempresa("Municipio"),78,550);
 escrder(m->propiedadempresa("Provincia"),360,550);
-
+escribe_codigo_postal(m->propiedadempresa("CodPostal"));
 
 
 
@@ -514,3 +511,17 @@ void Mod300ps::rellena_compensacion()
  * \author David Gutiérrez Rubio
  */
 
+
+/** Escribe el codigo postal en las minusculas casillas
+destinadas a tal fin.
+*/
+void Mod300ps::escribe_codigo_postal(QString cod)
+{int offset=3;
+marca_casilla(QString(cod[0]),528-offset,550);
+marca_casilla(QString(cod[1]),537-offset,550);
+marca_casilla(QString(cod[2]),546-offset,550);
+marca_casilla(QString(cod[3]),554-offset,550);
+marca_casilla(QString(cod[4]),563-offset,550);
+
+
+}

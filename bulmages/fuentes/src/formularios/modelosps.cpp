@@ -50,7 +50,7 @@ void Modgenps::escrizq(QString cad,int x,int y)
 {
   /** Genera codigo postscript para escribir cad alineado a la derecha, suponiendo fuente Courier-Bold 12
   */
-  output << "("<< cad<< ") " << x << " "<< y << " " << cad.length() << " escrizq\n";
+  m_output << "("<< cad<< ") " << x << " "<< y << " " << cad.length() << " escrizq\n";
 }
 void Modgenps::escrizq(float valor,int x,int y)
 {
@@ -71,7 +71,7 @@ void Modgenps::escrder(QString cad,int x,int y)
 {
   /** Genera codigo postscript para escribir cad alineado a la izquierda, suponiendo fuente Courier-Bold 12
   */
-  output << "("<< cad<< ") " << x << " " << y << " "<< cad.length() << " escrder\n";
+  m_output << "("<< cad<< ") " << x << " " << y << " "<< cad.length() << " escrder\n";
 }
 void Modgenps::escrder(float valor,int x,int y)
 {
@@ -119,24 +119,24 @@ void Modgenps::marca_casilla(QString marca,int x,int y)
 }
 void Modgenps::marcadeagua_borrador()
 {
-output << "gsave\n";
-output << "1 setgray\n";
-output << "newpath\n";
-output << "360 685 moveto\n";
-output << "567 685 lineto\n";
-output << "567 630 lineto\n";
-output << "360 630 lineto\n";
-output << "closepath\n";
-output << "fill\n";
-output << ".7 setgray\n";
-output << "/Helvetica-Bold findfont\n";
-output << "100 scalefont\n";
-output << "setfont\n";
-output << "147 107 moveto\n";
-output << "45 rotate\n";
-output << "(BORRADOR) true charpath\n";
-output << "stroke\n";
-output << "grestore\n";
+m_output << "gsave\n";
+m_output << "1 setgray\n";
+m_output << "newpath\n";
+m_output << "360 685 moveto\n";
+m_output << "567 685 lineto\n";
+m_output << "567 630 lineto\n";
+m_output << "360 630 lineto\n";
+m_output << "closepath\n";
+m_output << "fill\n";
+m_output << ".7 setgray\n";
+m_output << "/Helvetica-Bold findfont\n";
+m_output << "100 scalefont\n";
+m_output << "setfont\n";
+m_output << "147 107 moveto\n";
+m_output << "45 rotate\n";
+m_output << "(BORRADOR) true charpath\n";
+m_output << "stroke\n";
+m_output << "grestore\n";
 }
 
 
@@ -149,24 +149,24 @@ output << "grestore\n";
 
 
 
-genps_thread::genps_thread(QString pdfnamepar,QString tempnamepar,QProgressDialog *dialpar)
+Genps_thread::Genps_thread(QString pdfnamepar,QString tempnamepar,QProgressDialog *dialpar)
 {
-pdfname=pdfnamepar;
-tempname=tempnamepar;
-progressdia=dialpar;
+m_pdfname=pdfnamepar;
+m_tempname=tempnamepar;
+m_progressdia=dialpar;
 }
 
-void genps_thread::run()
+void Genps_thread::run()
 {//Invoca al programa acrobat reader en un servidor virtual XVfb
 
-QTextStream output;
-system("rm -f "+tempname); //Lo borro para asegurarme de que Acrobat no me pregunte "¿overwrite?"
+QTextStream m_output;
+system("rm -f "+m_tempname); //Lo borro para asegurarme de que Acrobat no me pregunte "¿overwrite?"
 cout << "Llamando a XVfb...\n";
 system("Xvfb :5.0 -ac -fbdir /tmp -screen 0 800x600x8 &");
 system("xmodmap -display :5.0 /usr/X11R6/lib/X11/xmodmap.std");
 cout << "XVfb iniciado...\n";
 cout << "Iniciando acrobat reader...\n";
-system("acroread -display :5.0 -geometry 800x600+0+0 -tempFile +useFrontEndProgram "+pdfname+" &");
+system("acroread -display :5.0 -geometry 800x600+0+0 -tempFile +useFrontEndProgram "+m_pdfname+" &");
 cout << "Acrobat reader iniciado...\n";
 
 QString macrofilename=QString(getenv("HOME"))+"/.bulmages/macrotmp";
@@ -175,54 +175,54 @@ QFile macro(macrofilename);
 
 //Escribo la serie de macros que me interactuaran con Acrobat Reader, esto es: situar el raton en la ventana, pulsar ctrl+P, seleccionar "imprimr a fichero",
 //escribir el nombre del fichero y darle a imprimir. 
-//output << "Delay 10\n";
+//m_output << "Delay 10\n";
 
 //This sleeps are necessary to wait for Acrobat Reader to be started
 for (int i=1;i<11;i++)
 {
 sleep(1);
-postEvent(progressdia,new QCustomEvent(sleep10));
+postEvent(m_progressdia,new QCustomEvent(sleep10));
 cout << i<<"\n";
 }
 
 
 macro.open(IO_WriteOnly);
-output.setDevice(&macro);
-output << "MotionNotify 400 300\n";
-output << "KeyStrPress Control_L\n";
-output << "KeyStrPress p\n";
-output << "KeyStrRelease p\n";
-output << "KeyStrRelease Control_L\n";
+m_output.setDevice(&macro);
+m_output << "MotionNotify 400 300\n";
+m_output << "KeyStrPress Control_L\n";
+m_output << "KeyStrPress p\n";
+m_output << "KeyStrRelease p\n";
+m_output << "KeyStrRelease Control_L\n";
 macro.close();
 system("xmacroplay :5.0 < "+macrofilename);
 
 
 sleep(1);
-postEvent(progressdia,new QCustomEvent(sleep3));
+postEvent(m_progressdia,new QCustomEvent(sleep3));
 
 macro.open(IO_WriteOnly);
-output.setDevice(&macro);
-output << "KeyStrPress Tab\n";
-output << "KeyStrRelease Tab\n";
-output << "KeyStrPress Down\n";
-output << "KeyStrRelease Down\n";
-output << "KeyStrPress space\n";
-output << "KeyStrRelease space\n";
-output << "String "<< tempname+"\n"; //Aqui escribo el nombre del fichero donde quiero que imprima
-output << "KeyStrPress Return\n";
-output << "KeyStrRelease Return\n";
+m_output.setDevice(&macro);
+m_output << "KeyStrPress Tab\n";
+m_output << "KeyStrRelease Tab\n";
+m_output << "KeyStrPress Down\n";
+m_output << "KeyStrRelease Down\n";
+m_output << "KeyStrPress space\n";
+m_output << "KeyStrRelease space\n";
+m_output << "String "<< m_tempname+"\n"; //Aqui escribo el nombre del fichero donde quiero que imprima
+m_output << "KeyStrPress Return\n";
+m_output << "KeyStrRelease Return\n";
 macro.close();
 system("xmacroplay :5.0 < "+macrofilename);
 
 sleep(3);
-postEvent(progressdia,new QCustomEvent(sleep3));
+postEvent(m_progressdia,new QCustomEvent(sleep3));
 
 macro.open(IO_WriteOnly);
-output.setDevice(&macro);
-output << "KeyStrPress Control_L\n";
-output << "KeyStrPress q\n";
-output << "KeyStrRelease q\n";
-output << "KeyStrRelease Control_L\n";
+m_output.setDevice(&macro);
+m_output << "KeyStrPress Control_L\n";
+m_output << "KeyStrPress q\n";
+m_output << "KeyStrRelease q\n";
+m_output << "KeyStrRelease Control_L\n";
 macro.close();
 system("xmacroplay :5.0 < "+macrofilename);
 
@@ -232,12 +232,12 @@ cout << "Se acabó!!!\n";
 //postEvent(progressdia,new QCustomEvent(acabado));
 }
 
-psprogressdialog::psprogressdialog(QString a,QString b,int max):QProgressDialog(a,b,max) {}
+Psprogressdialog::Psprogressdialog(QString a,QString b,int max):QProgressDialog(a,b,max) {}
 
 
 
 
-void psprogressdialog::customEvent(QCustomEvent *event)
+void Psprogressdialog::customEvent(QCustomEvent *event)
 {
 
 if ((int)event->type()==sleep10) this->setProgress(progress()+5);
@@ -261,8 +261,6 @@ void Modgenps::download_form(QWidget *parent,QString tempname,QString inname)
 QString command,url;
 //command="wget http://a104.g.akamai.net/f/104/3242/15m/www.aeat.es/formularios/captura/300/mod300e.pdf -O"+tempname;
 //command="wget 80.59.9.31/bulmages/AA.pdf -O"+tempname;
-command="wget http://eurus2.us.es/ssh/ssh-2.4.0.tar.gz -O"+tempname;
-url="http://eurus2.us.es/ssh/ssh-2.4.0.tar.gz";
 
 QHttp *conexion=new QHttp();
 QFile tmpfile(tempname);
@@ -290,3 +288,4 @@ cout << "Hemos acabado!!\n";
  */
  
   
+

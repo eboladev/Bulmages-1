@@ -50,6 +50,7 @@ class Mod300ps: public Modgenps, public mod300dlg
     void rellena_identificacion();
     void rellena_compensacion();
     void rellena_liquidacion();
+    void escribe_codigo_postal(QString);
     float baser0;
     float baser16;
     float baser7;

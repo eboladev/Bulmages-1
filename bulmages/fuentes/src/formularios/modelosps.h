@@ -30,20 +30,20 @@
 enum {sleep10=1001,sleep3=1002,acabado=1003};
 
 
-class genps_thread:public QThread
+class Genps_thread:public QThread
 {
 public:
-genps_thread(QString,QString,QProgressDialog *);
+Genps_thread(QString,QString,QProgressDialog *);
 void run();
 
-QString pdfname,tempname;
-QProgressDialog *progressdia;
+QString m_pdfname,m_tempname;
+QProgressDialog *m_progressdia;
 };
  
-class psprogressdialog:public QProgressDialog
+class Psprogressdialog:public QProgressDialog
 {
 public:
-psprogressdialog(QString,QString,int);
+Psprogressdialog(QString,QString,int);
 void customEvent(QCustomEvent *);
 };
 
@@ -63,7 +63,7 @@ class Modgenps: public QObject
     {}
     ;
     void download_form(QWidget *,QString ,QString );
-    genps_thread *convierte_a_postscript;
+    Genps_thread *convierte_a_postscript;
     void formatdigits(QString *,QString *,float); //genera 2 cadenas con parte entera y fraccionaria del float
     void escrizq(QString,int,int);//escribe el texto "a la izquierda de" (o sea, alineado a la derecha)
     void escrizq(float,int,int);//funcion sobrecargada, igual que antes pero primero convierte float en cadena
@@ -73,36 +73,14 @@ class Modgenps: public QObject
     void escrizqder(float,int,int); //igual, pero primero convierte float en 2 cadenas con formatdigits
     void marca_casilla(QString,int,int); //pone una cruz en la casilla dada por sus coordenadas
     void marcadeagua_borrador();//inserta una marca de agua en el documento con la palabra BORRADOR bien grande, que sea vea!!
-    QFile fichlec;
-    QFile fich;
-    QTextStream output;
-    bool es_borrador;//True si el documento a generar es un borrador (mucho mas rapido de generar, pero sin numero de serie valido)
+    QFile m_fichlec;
+    QFile m_fich;
+    QTextStream m_output;
+    bool m_es_borrador;//True si el documento a generar es un borrador (mucho mas rapido de generar, pero sin numero de serie valido)
      /*
      public slots:
     void yata(bool);
     */
   };
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
 
 #endif
