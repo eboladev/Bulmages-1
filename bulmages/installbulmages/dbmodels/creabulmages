@@ -5,50 +5,93 @@
 # Este script no se encarga de hacer las inserciones oportunas en la metabd.
 # Aunque es una tarea muy sencilla que puede hacer posteriormente.
 # PARAMETROS:
-#               $1 Nombre Base de Datos
-#               $2 Tipo:  0.- Base (Vacia)
+#		$1 Tipo: Texto o dialogo
+#               $2 Nombre Base de Datos
+#               $3 Tipo:  0.- Base (Vacia)
 #			  1.- Plan Contable.
 #			  2.- Juego de prueba de bulmages
 #                         3.- La metabase
-#		$3 Nombre de la Empresa.
-#		$4 Ejercicio (ano)
-#		$5 La metabase en la que se mete la empresa.
+#		$4 Nombre de la Empresa.
+#		$5 Ejercicio (ano)
+#		$6 La metabase en la que se mete la empresa.
 #
 # Este script debe ser ejecutado como ROOT
 # ----------------------------------------------------------------------------------------
 
+
+#Buscamos el parametro para saber si es texto o no
+if [ "$1" = "--texto" ]; then
+  texto="1"
+  ptexto="--texto"
+else
+  texto="0"
+  ptexto="--dialog"
+fi
+
+
+function mensaje() {
+   if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
+      echo -e "$1"
+   else
+      dialog --title "Creacion Base de Datos" --backtitle "Asociación Iglues" --msgbox "$1" 10 60
+   fi
+}
+
+
+function info() {
+   if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
+      echo -e "$1"
+   else
+      dialog  --title "Creacion Base de Datos" --backtitle "Asociación Iglues" --infobox "$1" 10 60
+   fi
+}
+
+function tiempo {
+  sleep 1.5
+}
+
+function linea {
+   if [ ! -e /usr/bin/dialog ]; then
+     echo -e "\033[32m----------------------------------------------\033[0m\n"
+   fi
+}
+
 rm errores.txt
 touch errores.txt
 
-echo -e "Creamos la base de datos:$1 $2"
-echo -e "----------------------------"
+info "Creamos la base de datos:$2 $3"
+linea
+tiempo
 
 
 
-su - postgres -c "dropdb  $1" 2>> error.txt > /dev/null
-su - postgres -c "createdb -E SQL_ASCII $1" 2>> errores.txt > /dev/null
+su - postgres -c "dropdb  $2" 2>> error.txt > /dev/null
+su - postgres -c "createdb -E SQL_ASCII $2" 2>> errores.txt > /dev/null
 
-echo -e "Comprobamos la existencia de PLPGSQL"
+info "Comprobamos la existencia de PLPGSQL"
 ENC="0"
 if [ -e /usr/lib/postgresql/lib/plpgsql.so ]; then
-   echo -e "PostgreSQL esta bien instalado, la distribución parece una Debian."
-   su - postgres -c "psql $1" < crear/bulmages/bulmages_debian.pgdump 2>> errores.txt > /dev/null
+   info "PostgreSQL esta bien instalado, la distribución parece una Debian."
+   tiempo
+   su - postgres -c "psql $2" < crear/bulmages/bulmages_debian.pgdump 2>> errores.txt > /dev/null
    ENC="1"
 fi
 
 if [ -e /usr/lib/pgsql/plpgsql.so ]; then
-   echo -e "PostgreSQL esta bien instalado, la distribucion parece una Mandrake."
-   su -postgres -c "psql $1" < crear/bulmages/bulmages_mandrake.pgdump 2>> errores.txt > /dev/null
+   info "PostgreSQL esta bien instalado, la distribucion parece una Mandrake."
+   tiempo
+   su -postgres -c "psql $2" < crear/bulmages/bulmages_mandrake.pgdump 2>> errores.txt > /dev/null
    ENC="1"
 fi
 
 if [ "$ENC" = "0" ]; then
-   echo -e "PostgreSQL no esta bien instalado o la distribucion no es Debian."
-   echo -e "No se ha encontrado la libreria plpgsql.so necesaria para instalar las bases de datos"
-   echo -e "Por favor, localicela e intente una instalación manual"
+   info "PostgreSQL no esta bien instalado o la distribucion no es Debian. \
+   No se ha encontrado la libreria plpgsql.so necesaria para instalar las \ bases de datos \
+   Por favor, localicela e intente una instalación manual" 
+   tiempo
    LANG=`locate plpgsql.so`
    if [ $LANG ]; then
-      echo -e "Puede que el archivo que busca este en $LANG"
+      mensaje "Puede que el archivo que busca este en $LANG"
    fi
    exit 1
 fi
@@ -56,77 +99,86 @@ fi
 
 #Ya que estamos vamos a echar un vistacillo al pg_hba.conf
 if [ -e /etc/postgresql/pg_hba.conf ]; then
-   echo -e "El archivo pg_hba.conf esta en su sitio"
+   info "El archivo pg_hba.conf esta en su sitio"
    PGA=`cat /etc/postgresql/pg_hba.conf | grep reject`
    if [ ! $cat ]; then
-      echo -e "Alerta: Revise el archivo /etc/postgresql/pg_hba.conf, ya que puede tener restricciones de permisos"
+      info "Alerta: Revise el archivo /etc/postgresql/pg_hba.conf, ya que puede tener restricciones de permisos"
+      tiempo
    fi
 else
-   echo -e "No se encuentra el archivo de configuracion de postgresql."
-   echo -e "Esto puede ser debido a que no este instalado o a que no sea una distribucion Debian Sid."
-   echo -e "Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
+   info "No se encuentra el archivo de configuracion de postgresql.
+   Esto puede ser debido a que no este instalado o a que no sea una distribucion Debian Sid.
+   Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
+   tiempo
 fi
 
 
 # Creamos la base
-if [ "a$2" = "a1" -o "a$2" = "a2" ]; then
-   echo -e "Importamos el esquema de base de datos de una empresa"
-   su - postgres -c "psql $1" < crear/bulmages/bulmages_schema.pgdump 2>> errores.txt > /dev/null
+if [ "$3" = "1" -o "$3" = "2" ]; then
+   info "Importamos el esquema de base de datos de una empresa"
+   tiempo
+   su - postgres -c "psql $2" < crear/bulmages/bulmages_schema.pgdump 2>> errores.txt > /dev/null
 else
-   echo -e "Importamos el esquema de la metabd"
-   su - postgres -c "psql $1" < crear/metabd/metabd_schema.pgdump 2>> errores.txt > /dev/null
+   info "Importamos el esquema de la metabd"
+   tiempo
+   su - postgres -c "psql $2" < crear/metabd/metabd_schema.pgdump 2>> errores.txt > /dev/null
 fi
 
 
-if [ "a$2" = "a3" ]; then
+if [ "$3" = "3" ]; then
    # Cargamos la metabase
-   echo -e "Cargamos la metabase"
-   su - postgres -c "psql $1" < crear/metabd/metabd_data.pgdump 2>> errores.txt > /dev/null
+   info "Cargamos la metabase"
+   tiempo
+   su - postgres -c "psql $2" < crear/metabd/metabd_data.pgdump 2>> errores.txt > /dev/null
 fi
 
 
-if [ "$2" = "1" -o "$2" = "2" ]; then
+if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo
-   echo -e "Cargamos lo minimo"
-   su - postgres -c "psql $1" < crear/bulmages/t_configuracion_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_tiposiva_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_grupo_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_cuenta_data.pgdump 2>> errores.txt > /dev/null
+   info "Cargamos el conjunto minimo de datos"
+   tiempo
+   su - postgres -c "psql $2" < crear/bulmages/t_configuracion_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_tiposiva_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_grupo_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_cuenta_data.pgdump 2>> errores.txt > /dev/null
 fi
 
 
-if [ "$2" = "2" ]; then
+if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
-   echo -e "Cargamos el resto"
-   su - postgres -c "psql $1" < crear/bulmages/t_canal_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_c_coste_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_diario_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_asiento_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_apunte_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_borrador_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_registroiva_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_ainteligente_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_binteligente_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_ivainteligente_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_compmasap_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_compbalance_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_balance_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_amortizacion_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_linamortizacion_data.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "psql $1" < crear/bulmages/t_ejercicios_data.pgdump 2>> errores.txt > /dev/null
+   info "Cargamos datos adicionales"
+   tiempo
+   su - postgres -c "psql $2" < crear/bulmages/t_canal_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_c_coste_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_diario_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_asiento_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_apunte_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_borrador_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_registroiva_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_ainteligente_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_binteligente_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_ivainteligente_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_compmasap_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_compbalance_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_balance_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_amortizacion_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_linamortizacion_data.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "psql $2" < crear/bulmages/t_ejercicios_data.pgdump 2>> errores.txt > /dev/null
 fi
 
 
 #VAmos a hacer la insercion en la metabase de los datos necesarios.
-if [ "$2" = "1" -o "$2" = "2" ]; then
+if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo
-   echo -e "Creamos la empresa en la MetaBase"
-   su - postgres -c "echo -e \" INSERT INTO empresa (nombre, ano, nombredb) VALUES ('$3', $4, '$1')\" | psql $5" 2>> errores.txt   > /dev/null
+   info "Creamos la empresa en la MetaBase"
+   tiempo
+   su - postgres -c "echo -e \" INSERT INTO empresa (nombre, ano, nombredb) VALUES ('$4', $5, '$2')\" | psql $6" 2>> errores.txt   > /dev/null
    #  Hacemos una actualizacion de las bases de datos.
    su - postgres -c "echo -e \"\\pset tuples_only \n select MAX(idempresa) from empresa ;\" | psql metabd" > listdb.lst
    for x in `tail +2 listdb.lst`
    do
-      echo -e "Creamos los permisos necesarios"
+      info "Creamos los permisos necesarios"
+      tiempo
       su - postgres -c "echo -e \"\\pset tuples_only \n select idusuario FROM usuario ;\" | psql metabd" > listuser.lst
       for y in `tail +2 listuser.lst`
       do
@@ -138,9 +190,9 @@ fi
 
 DBS=`cat errores.txt | grep ERROR`
 if [ "$DBS" ]; then
-   echo -e "Se han producido errores"
-   source ../deinstallbulmages
+   mensaje "Se han producido errores al instalar la base de datos $2"
+   source ../deinstallbulmages $ptexto
    exit 1
 else
-   echo -e "La instalacion de la base de datos $1 ha sido un éxito"
+   mensaje "La instalacion de la base de datos $2 ha sido un éxito."
 fi

@@ -1,16 +1,81 @@
 #!/bin/bash
 
+###############################################################################
+# Script de instalación de BulmaGés
+# (C) Tomeu Borrás, Septiempbre 2004
+# Este documento es GPL
+#------------------------------------------------------------------------------
+# Parametros
+#     $1 : --texto
+#          --dialog (por defecto)
+###############################################################################
+
+
+# Primeros pinitos con archivos de Debian
+#. /usr/share/debconf/confmodule
+#db_version 2.0
+#db_input low foo/bar || true
+#db_go || true
+
+#Buscamos el parametro para saber si es texto o no
+if [ "$1" = "--texto" ]; then
+  texto="1"
+  ptexto="--texto"
+else
+  texto="0"
+  ptexto="--dialog"
+fi
+
+
+function mensaje() {
+   if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
+      echo -e "$2" "$1"  "$3"
+   else
+      dialog --title "Instalacion de BulmaGes v4.1" --backtitle "Asociación Iglues" --msgbox "$1" 10 60
+   fi
+}
+
+
+function info() {
+   if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
+      echo -e  "$2" "$1"  "$3"
+   else
+      dialog  --title "Instalacion de BulmaGes v4.1" --backtitle "Asociación Iglues" --infobox "$1" 10 60
+   fi
+}
+
+
+function lee() {
+  if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
+   echo -e "Indique el usuario que va a trabajar normalmente con el programa:"
+    read user
+    su - postgres -c "createuser --adduser --createdb $user"
+  else
+    dialog --title "Instalacion de BulmaGes v4.1" --inputbox "Nombre del usuario:" 10 60  2>/tmp/dialog.ans
+    if [ $? = 1 ]; then
+       clear
+       exit 0
+    fi
+    user=`cat /tmp/dialog.ans`
+    su - postgres -c "createuser --adduser --createdb $user"
+    rm -f /tmp/dialog.ans # don't litter !    
+  fi
+}
+
 function tiempo {
   sleep 1.5
 }
 
 function linea {
-   echo -e "\033[32m----------------------------------------------\033[0m\n"
+   if [ ! -e /usr/bin/dialog ]; then
+     echo -e "\033[32m----------------------------------------------\033[0m\n"
+   fi
 }
   
 # Comprobamos que estamos ejecutando como root el programa
 if [ ! $(whoami) = "root" ]; then
-   echo -e "Este script de instalacion debe ejecutarse como root"
+#   echo -e "Este script de instalacion debe ejecutarse como root"
+   mensaje "Este script de instalacion debe ejecutarse como root"
    exit 1
 fi
 
@@ -21,20 +86,21 @@ touch errores.txt
 
 #Comprobamos que estamos en el directorio adecuado
 if [ ! -e ./installbulmages ]; then
- echo -e "Directorio incorrecto"
+ mensaje "Directorio incorrecto. Debe ejecutarse desde el directorio donde se encuentra el script."
  exit 1
 fi
 
 
 # Distinguimos entre una instalación y una actualización
-echo -e "\033[32mComprobando versiones anteriores\033[0m\n"
+info "Comprobando versiones anteriores\n" "\033[32m" "\033[0m"
 tiempo
 
 if [ -e /etc/bulmages.conf ]; then
 
-   echo -e "Creando directorio backup para guardar copias de seguridad"
+   info "Creando directorio backup para guardar copias de seguridad"
+   tiempo
    if [ -e backup ]; then
-      echo -e "El directorio ya existe"
+      info -e "El directorio ya existe"
       linea
    else
       mkdir backup
@@ -44,41 +110,46 @@ if [ -e /etc/bulmages.conf ]; then
    su - postgres -c "echo -e \"\\pset tuples_only \n select nombredb from empresa;\" | psql metabd" > listdb.lst
    for x in `tail +2 listdb.lst`
    do
-      echo -e "Trataremos la base de datos $x"
+      info "Efectuando cambios sobre la base de datos $x"
       tiempo
-      echo -e "Hacemos copia de seguridad"
+      info "Realizando copia de seguridad"
+      tiempo
       su - postgres -c "pg_dump $x" > backup/$x.pgdump
       for y in `ls dbmodels/actualizar/rev-*.sql | sort`
       do
-         echo -e "Evaluamos: " $y
+         info "Evaluamos: " $y
          if [ ! -e /usr/share/bulmages/$y ]; then
 	    su - postgres -c "psql $x "  < $y  2>> errores.txt >> errores.txt
-	    echo -e "Actualizamos la version $y"
+	    info "Actualizando la version $y"
+	    tiempo
          fi
       done
       linea
    done
 
-   echo -e "Tratamos la metabase"
+   info "Efectuando cambios sobre la metabase"
+   tiempo
    for y in `ls dbmodels/actualizar/revmeta-*.sql | sort`
    do
-      echo -e "Evaluamos: " $y
+      info "Evaluamos: " $y
       if [ ! -e /usr/share/bulmages/$y ]; then
          su - postgres -c "psql metabd " < $y 2>> errores.txt >> errores.txt
-	 echo -e "Actualizamos la version $y"
+	 info "Actualizando a la version $y"
+	 tiempo
       fi
    done
    linea
 
 
    # También actualizarmos el fichero de backup.
-   echo -e "Hacemos un backup del archivo de configuracion"
+   info "Realizando backup del archivo de configuracion."
+   tiempo
    cp /etc/bulmages.conf bulmages.conf.old
 
    for j in `ls rev-bulmages*.conf | sort`
    do
       if [ ! -e /usr/share/bulmages/$j ]; then
-         echo -e "Aplicamos parche $j a bulmages.conf"
+         info "Aplicamos parche $j a bulmages.conf"
 	 cat $j >> /etc/bulmages.conf
       fi
    done
@@ -89,41 +160,40 @@ else
 
 
 # Hacemos una insercion inicial de las bases de datos.
-   echo -e "Creando directorio /usr/share/bulmages\n"
+   info "Inicializando directorio /usr/share/bulmages.\n"
+   tiempo
    if [ ! -e /usr/share/bulmages ]; then
       mkdir /usr/share/bulmages
    fi
    
-   echo -e "Creando bases de datos \n"
+   info "Creando bases de datos del sistema y empresas de ejemplo. \n"
+   tiempo
    cd dbmodels
-   source creabulmages metabd 3
-   source creabulmages bulmages 2 Bulmages 2004 metabd
-   source creabulmages bgplangcont 1 "En Blanco" 2004 metabd
+   source creabulmages $ptexto metabd 3
+   source creabulmages $ptexto bulmages 2 Bulmages 2004 metabd
+   source creabulmages $ptexto bgplangcont 1 "Plan Contable Vacio" 2004 metabd
    cd ..
    
   
    # Tratamos el archivo de configuracion
-   echo -e "Copiando la nueva version de bulmages.conf"
+   info "Instalando la nueva version del archivo de configuracion"
    cp bulmages.conf /etc
 
    # Presentamos los errores acaecidos
    cat errores.txt | grep ERROR
    
-   # Vamos a crear el usuario que acceda a la base de datos.
-   echo -e " \033[0;31m ========================================================"
-   echo -e " El usuario que usará el programa"
-   echo -e "Indique el usuario que va a trabajar normalmente con el programa:\033[0m"
-   read user
-   su - postgres -c "createuser --adduser --createdb $user"
+
+   # Dejamos que la inserción del usuario la haga una función y asi encapsulamos un poco.
+   lee
 fi
 
 # Copiamos todos los archivos de la nueva version a sus localizaciones normales.
-echo -e "Copiando archivos de imagenes"
+info "Instalando archivos de imagenes de Splash y de logotipo"
 tiempo
 cp *.jpg /usr/share/bulmages
 cp *.png /usr/share/bulmages
 
-echo -e "Copiando ejecutables"
+info "Instalando ejecutable del programa y scripts auxiliares."
 tiempo
 cp bulmages /usr/local/bin
 cp cargaemp /usr/local/bin
@@ -132,11 +202,11 @@ cp borraremp /usr/local/bin
 cp guardaemp /usr/local/bin
 cp cargaemp /usr/local/bin
 
-echo -e "Copiando archivos de revision de bulmages.conf"
+info "Instalando archivos de revision del archivo de configuracion."
 tiempo
 cp rev-* /usr/share/bulmages
 
-echo -e "Copiando archivos auxiliares"
+info "Instalando archivos de ayuda del programa, imagenes, iconos, listados y traducciones."
 tiempo
 cp -r dbmodels /usr/share/bulmages
 cp -r backgrounds /usr/share/bulmages
@@ -146,11 +216,11 @@ cp -r css /usr/share/bulmages
 cp -r icons /usr/share/bulmages
 cp -r traducciones /usr/share/bulmages
 
-echo -e "Vamos a hacer la instalación de BContaWeb"
+info "Realizando la instalación de BContaWeb"
 tiempo
 if [ -e /var/www ]; then
    cp -r bcontaweb /var/www
 fi
 
-echo -e "\033[32mINSTALACION FINALIZADA CON ÉXITO\033[0m"
+mensaje "INSTALACION FINALIZADA CON EXITO" "\033[32m" "\033[0m"
 
