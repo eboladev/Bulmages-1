@@ -35,10 +35,14 @@
 #include <qhttp.h>
 #include <qobject.h>
 using namespace std;
+/**
+\brief Constructor de la clase Mod300ps
 
+El constructor llama al cuadro de dialogo para seleccionar parametros adecuados para rellenar el modelo.
+Realiza una consulta para obtener las cuentas bancarias.
+*/
 Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
-{//El constructor llama al cuadro de dialogo para seleccionar parametros adecuados para rellenar el modelo
-  //Realizo una consulta para obtener las cuentas bancarias
+{
 
   QString query="select descripcion,bancoent_cuenta,codigo from cuenta where codigo like '572%%' and codigo>572";
 
@@ -95,10 +99,14 @@ Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
 
   cout << "Objeto Mod300ps generado\n";
 }
+/** \brief Accept slot for the 300-model dialog.
+
+When pressed, it calls to the \ref generaps method.
+*/
 void Mod300ps::accept()
 {
-es_borrador=borradorcheckbox->isChecked();
-  
+  es_borrador=borradorcheckbox->isChecked();
+
   if (cuentaButton->isChecked())
     {
       ccc=new numerocuenta(numerccc[combocuentas->currentItem()]);
@@ -130,6 +138,10 @@ es_borrador=borradorcheckbox->isChecked();
 
 }
 
+/** \brief Generate the postscript of the 300-model with the given parameters.
+ 
+The hardest part is converting the official pdf to postscript.
+ */
 void Mod300ps::generaps()
 {
 
@@ -236,6 +248,7 @@ cout << psname;
           fichlec.readLine(cad1,256);
         }
       output << cad1;
+      //Inserta definiciones de postscript al principio de la 1a pagina
       escribe_postscriptdefs();
 
       fichlec.readLine(cad1,256);
@@ -330,6 +343,12 @@ void Mod300ps::personalButtonPressed()
 
 
 
+/** \brief Write definitions in the postscript output file, necessary to insert text later.
+
+It set the Courier-Bold 12pt font, and defines functions in postscript to write left-aligned text and right-aligned text.
+\sa \ref escribe_cuenta_bancaria, \ref marca_casilla, \ref Modgenps::escrizq, \ref Modgenps::escrder, \ref Modgenps::escrizqder,
+  
+ */
 void Mod300ps::escribe_postscriptdefs()
 {//escribe un clipping path para evitar que aparezcan las casillas de "rellenar formulario" que aparecen si no se usa Acrobat para convertir el pdf a ps
 //   output << "newpath\n"
@@ -369,8 +388,8 @@ void Mod300ps::escribe_postscriptdefs()
 }
 
 
-/*!
-    \fn Mod300ps::escribe_cuenta_bancaria
+/** \brief Write the CCC-number in the 300-model.
+    
  */
 void Mod300ps::escribe_cuenta_bancaria(int x,int y)
 {
@@ -418,8 +437,7 @@ void Mod300ps::rellena_identificacion()
 
 
 }
-/*!
-    \fn Mod300ps::rellena_liquidacion()
+/** \brief Write the data in the second part of the 300-model
  */
 void Mod300ps::rellena_liquidacion()
 {

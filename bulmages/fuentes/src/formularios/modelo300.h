@@ -27,13 +27,12 @@
 #include "numerocuenta.h"
 #include <qcheckbox.h>
   
-  
-  
+/** Clase para generar el modelo 300 de declaración de IVA trimestral en formato postscript.
+Utiliza los formularios oficiales obtenidos de www.aeat.es convertidos de pdf a postscript.
+Hereda de \ref Modgenps */
 class Mod300ps: public Modgenps, public mod300dlg
   {
-    /** Clase para generar el modelo 300 de declaracin de IVA trimestral en formato postscript.
-      * Utiliza los formularios oficiales obtenidos de www.aeat.es convertidos de pdf a postscript.
-      * Hereda de Modgenps */
+   
   public:
     Mod300ps(QWidget *parent);
     ~Mod300ps()
@@ -67,7 +66,8 @@ class Mod300ps: public Modgenps, public mod300dlg
   private:
     QString *nombresccc;
     QString *numerccc;
-    numerocuenta *ccc;
+    /** Bank account number */
+    numerocuenta *ccc; 
     void personalButtonPressed();
 protected:
     QString ano;
