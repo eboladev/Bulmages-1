@@ -183,38 +183,45 @@ if [ -e /etc/bulmages.conf ]; then
    cat /tmp/errores.txt | grep ERROR
 else
 # Se trata de una instalación nueva
+	# Miramos donde está pg_hba.conf según distribuciones (habrá que discernir en más distros)
+	if [ -e	/var/lib/postgresql/data/pg_hba.conf ]; then
+		# GENTOO lo instala aquí
+		PGDIR="/var/lib/postgresql/data"
+	elif [ -e /etc/postgresql/pg_hba.conf ]; then
+		# el RESTO (no sé si en todas las demás será aquí)
+		PGDIR="/etc/postgresql"
+	else
+		PGDIR="0"
+		mensaje "No se encuentra el archivo de configuracion de postgresql.\n Esto puede ser debido a que no este instalado o a que no sea una distribucion con el directorio postgresql desconocido. Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
+	        tiempo					
+	fi
 
-        #Ya que estamos vamos a echar un vistacillo al pg_hba.conf
-        if [ -e /etc/postgresql/pg_hba.conf ]; then
+        # Vamos a echar un vistacillo al pg_hba.conf
+        if [ ! $PGDIR = "0" ]; then
                 info "Revisando archivo pg_hba.conf"
-                PGA=`cat /etc/postgresql/pg_hba.conf | grep reject | wc -l`
+                PGA=`cat $PGDIR/pg_hba.conf | grep reject | wc -l`
                 if [ ! "$PGA" -eq "0" ]; then
-                mensaje "Alerta: Revise el archivo /etc/postgresql/pg_hba.conf, ya que puede tener restricciones de permisos.\n $PGA"
-                tiempo
-                dialog --yesno "Si lo desea podemos instalar una copia personalizada del archivo pg_hba.conf  que configura los permisos de postgres. (Puede que con esta opcion pierda seguridad). \n" 15 60
-                case $? in
-                        0)
-                        info "Modificando  la configuracion de postgres. \n"
-                        mv /etc/postgresql/pg_hba.conf /etc/postgresql/pg_hba.conf.old
-                        cp pg_hba.conf /etc/postgresql/pg_hba.conf
-                        info "Reiniciando Postgres. \n"
-                        /etc/init.d/postgresql restart >/dev/null
-                        tiempo;;
-                        1)
-                        info "No se ha seleccionado. \n"
-                        tiempo;;
-                        255)
-                        info "ESC pulsado. \n"
-                        tiempo;;
-                esac
-        else
-                mensaje "pg_hba esta correcto"
-        fi
-        else
-        mensaje "No se encuentra el archivo de configuracion de postgresql.
-        Esto puede ser debido a que no este instalado o a que no sea una distribucion Debian Sid.
-        Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
-        tiempo
+                	mensaje "Alerta: Revise el archivo $PGDIR/pg_hba.conf, ya que puede tener restricciones de permisos.\n $PGA"
+	                tiempo
+        	        dialog --yesno "Si lo desea podemos instalar una copia personalizada del archivo pg_hba.conf  que configura los permisos de postgres. (Puede que con esta opcion pierda seguridad). \n" 15 60
+                	case $? in
+                          0)
+                           info "Modificando  la configuracion de postgres. \n"
+                           mv $PGDIR/pg_hba.conf $PGDIR/pg_hba.conf.old
+                           cp pg_hba.conf $PGDIR/pg_hba.conf
+                           info "Reiniciando Postgres. \n"
+                           /etc/init.d/postgresql restart >/dev/null
+                           tiempo;;
+                          1)
+                           info "No se ha seleccionado. \n"
+                           tiempo;;
+                          255)
+                           info "ESC pulsado. \n"
+                           tiempo;;
+	                esac
+ 	        else
+	                mensaje "pg_hba esta correcto"
+        	fi
         fi
 
 # Hacemos una insercion inicial de las bases de datos.

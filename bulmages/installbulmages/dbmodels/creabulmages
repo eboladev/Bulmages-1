@@ -78,7 +78,7 @@ createdb -E SQL_ASCII $2 2>> /tmp/errores1.txt > /dev/null
 info "Comprobamos la existencia de PLPGSQL"
 ENC="0"
 if [ -e /usr/lib/postgresql/lib/plpgsql.so ]; then
-   info "PostgreSQL esta bien instalado, la distribucion parece una Debian."
+   info "PostgreSQL esta bien instalado, la distribucion parece una Debian o una Gentoo."
    tiempo
    psql $2 < crear/bulmages/bulmages_debian.sql 2>> /tmp/errores1.txt > /dev/null
    ENC="1"
