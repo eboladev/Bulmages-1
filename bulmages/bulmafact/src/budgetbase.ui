@@ -331,7 +331,7 @@
                                             </widget>
                                             <widget class="QComboBox">
                                                 <property name="name">
-                                                    <cstring>comboBox1</cstring>
+                                                    <cstring>m_comboformapago</cstring>
                                                 </property>
                                             </widget>
                                         </hbox>

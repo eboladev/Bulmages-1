@@ -76,6 +76,7 @@ CREATE TABLE lpresupuesto (
 #include <qtable.h>
 #include <qwidget.h>
 #include <qobjectlist.h>
+#include <qcombobox.h>
 
 #include "funcaux.h"
 //#include "postgresiface2.h"
@@ -113,6 +114,20 @@ void Budget::inicialize() {
 	installEventFilter(this);
 	m_list->installEventFilter( this );
 	m_listDiscounts->installEventFilter( this );
+	
+	m_comboformapago->clear();
+	QString query = "SELECT * FROM prfp WHERE idpresupuesto="+m_idpresupuesto;
+	companyact->begin();
+	cursor2 * cur1= companyact->cargacursor(query, "querypresupuesto");
+	companyact->commit();
+	if (!cur1->eof()) {
+		cargarcomboformapago(cur1->valor("idforma_pago"));
+	} else {
+		cargarcomboformapago("0");	
+	}// end if
+	delete cur1;
+
+	
 	
 // Inicializamos la tabla de lineas de presupuesto
 	m_list->setNumRows( 0 );
@@ -198,9 +213,9 @@ void Budget::inicialize() {
 
 // Esta función carga un presupuesto.
 void Budget::chargeBudget(QString idbudget) {
+	m_idpresupuesto = idbudget;
 	inicialize();
 	
-	m_idpresupuesto = idbudget;
 	QString query = "SELECT * FROM presupuesto LEFT JOIN cliente ON cliente.idcliente = presupuesto.idcliente WHERE idpresupuesto="+idbudget;
 	companyact->begin();
 	cursor2 * cur= companyact->cargacursor(query, "querypresupuesto");
@@ -225,6 +240,27 @@ void Budget::chargeBudget(QString idbudget) {
 	m_initialValues = calculateValues();
 }// end chargeBudget
 
+
+void Budget::cargarcomboformapago(QString idformapago) {
+	m_cursorcombo = NULL;
+	companyact->begin();
+  	if (m_cursorcombo != NULL) delete m_cursorcombo;
+   	m_cursorcombo = companyact->cargacursor("SELECT * FROM forma_pago","unquery");
+   	companyact->commit();
+   	int i = 0;
+   	int i1 = 0;
+   	while (!m_cursorcombo->eof()) {
+   		i ++;
+			if (m_cursorcombo->valor("idforma_pago") == idformapago) {
+			   i1 = i;
+			}
+   		m_comboformapago->insertItem(m_cursorcombo->valor("descforma_pago"));
+			m_cursorcombo->siguienteregistro();
+   	}
+	if (i1 != 0 ) {
+   		m_comboformapago->setCurrentItem(i1-1);
+ 	} 
+} //end cargarcombodformapago
 
 // Carga líneas de presupuesto
 void Budget::chargeBudgetLines(QString idbudget) {
@@ -317,13 +353,18 @@ void Budget::s_removeBudget() {
 		if (companyact->ejecuta(SQLQuery)==0){
 			QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_idpresupuesto;
 				if (companyact->ejecuta(SQLQuery)==0){
-				QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_idpresupuesto;
-				if (companyact->ejecuta(SQLQuery)==0){
-					companyact->commit();
-					close();
-				} else {
-					companyact->rollback();
-				}
+					QString SQLQuery = "DELETE FROM prfp WHERE idpresupuesto ="+m_idpresupuesto;
+					if (companyact->ejecuta(SQLQuery)==0){
+						QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_idpresupuesto;
+						if (companyact->ejecuta(SQLQuery)==0){
+							companyact->commit();
+							close();
+						} else {
+							companyact->rollback();
+						}
+					} else {
+						companyact->rollback();
+					}
 			} else {
 				companyact->rollback();
 			}
@@ -456,14 +497,23 @@ QString Budget::searchArticle() {
 
 void Budget::s_saveBudget() {
 	companyact->begin();
-	if (saveBudget()==0 ) {
+	if (saveBudget()==0) {
 		if (m_idpresupuesto == "0") {
 			cursor2 * cur4= companyact->cargacursor("SELECT max(idpresupuesto) FROM presupuesto","unquery1");
 			if (!cur4->eof()) {
 				m_idpresupuesto=cur4->valor(0);
+				if (insertfpBudget()!=0) {
+					companyact->rollback();
+					return;
+				}
 			}
 			delete cur4;
-		} 
+		} else {
+			if (updatefpBudget()!=0) {
+				companyact->rollback();
+				return;
+			}
+		 }
 		if (saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
 			companyact->commit();
 			m_initialValues = calculateValues();
@@ -480,14 +530,24 @@ void Budget::s_saveBudget() {
 void Budget::accept() {
 	fprintf(stderr,"accept button activated\n");
 	companyact->begin();
-	if (saveBudget()==0 ) {
+	if (saveBudget()==0) {
 		if (m_idpresupuesto == "0") {
 			cursor2 * cur4= companyact->cargacursor("SELECT max(idpresupuesto) FROM presupuesto","unquery1");
 			if (!cur4->eof()) {
 				m_idpresupuesto=cur4->valor(0);
+				if (insertfpBudget()!=0) {
+					companyact->rollback();
+					return;
+				}
 			}
 			delete cur4;
-		} 
+		} else {
+			if (updatefpBudget()!=0) {
+				companyact->rollback();
+				return;
+			}
+		}
+		 
 		if (saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
 			companyact->commit();
 			m_initialValues = calculateValues();
@@ -514,16 +574,36 @@ int Budget::saveBudget() {
 		SQLQuery += " , idcliente="+m_idclient;
       SQLQuery += " WHERE idpresupuesto ="+m_idpresupuesto;
 	} else {
-		SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, vencpresupuesto, comentpresupuesto, idcliente)";
+		SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idcliente)";
 		SQLQuery += " VALUES (";
 		SQLQuery += m_numpresupuesto->text();
 		SQLQuery += " , '"+m_fpresupuesto->text()+"'";
       SQLQuery += " , '"+m_contactpresupuesto->text()+"'";
+		SQLQuery += " , '"+m_telpresupuesto->text()+"'";
       SQLQuery += " , '"+m_vencpresupuesto->text()+"'";
       SQLQuery += " , '"+m_comentpresupuesto->text()+"'";
 		SQLQuery += " , "+m_idclient;
       SQLQuery += " ) ";
 	}
+	return companyact->ejecuta(SQLQuery);
+} //end saveBudget
+
+
+int Budget::insertfpBudget() {
+	QString SQLQuery;
+	SQLQuery = "INSERT INTO prfp (idpresupuesto, idforma_pago)";
+	SQLQuery += " VALUES (";
+	SQLQuery += m_idpresupuesto;
+	SQLQuery += " , "+m_cursorcombo->valor("idforma_pago",m_comboformapago->currentItem());
+	SQLQuery += " ) ";
+	return companyact->ejecuta(SQLQuery);
+} //end insertfpBudget
+
+
+int Budget::updatefpBudget() {
+	QString SQLQuery;
+	SQLQuery = "UPDATE prfp SET idforma_pago="+m_cursorcombo->valor("idforma_pago",m_comboformapago->currentItem());
+	SQLQuery += " WHERE idpresupuesto ="+m_idpresupuesto;
 	return companyact->ejecuta(SQLQuery);
 } //end saveBudget
 

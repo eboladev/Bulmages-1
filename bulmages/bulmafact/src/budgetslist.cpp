@@ -167,12 +167,17 @@ void BudgetsList::s_removeBudget() {
 			if (companyact->ejecuta(SQLQuery)==0){
 				QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
 					if (companyact->ejecuta(SQLQuery)==0){
-					QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-					if (companyact->ejecuta(SQLQuery)==0){
-						companyact->commit();
-					} else {
-						companyact->rollback();
-					}
+						QString SQLQuery = "DELETE FROM prfp WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+						if (companyact->ejecuta(SQLQuery)==0){
+							QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+							if (companyact->ejecuta(SQLQuery)==0){
+								companyact->commit();
+							} else {
+								companyact->rollback();
+							}
+						} else {
+							companyact->rollback();
+						}
 				} else {
 					companyact->rollback();
 				}

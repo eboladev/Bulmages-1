@@ -23,6 +23,7 @@
 // PRESUPUESTOS.
 
 #include "budgetbase.h"
+#include "postgresiface2.h"
 
 /** @author Tomeu Borrás Riera */
 class company;
@@ -35,6 +36,7 @@ private:
    QString m_idpresupuesto;
    QString m_idclient;
 	QString m_initialValues;
+	cursor2 *m_cursorcombo;
 	
 public:
     Budget(company *, QWidget *, const char *);
@@ -49,6 +51,8 @@ public:
 	 
 private:
 	int saveBudget();
+	int insertfpBudget();
+	int updatefpBudget();
 	int saveBudgetLines();
 	int saveBudgetDiscountLines();
 	int insertBudgetLine(int);
@@ -63,6 +67,7 @@ private:
 	void calculateImports();
 	QString retrieveValues(QString);
 	QString calculateValues();
+	void cargarcomboformapago(QString);
 		
 protected:
 	bool eventFilter( QObject *, QEvent *);
