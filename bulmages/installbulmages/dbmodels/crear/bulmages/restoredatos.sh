@@ -1,11 +1,16 @@
 #!/bin/bash
 
+dropdb bulmages
+createdb bulmages
+
+psql bulmages < bulmages_debian.pgdump
+
 # Restauramos el esquema de la base de datos.
 psql bulmages < bulmages_schema.pgdump
 
 # Restauramos tabla a tabla los datos.
 psql bulmages < t_configuracion_data.pgdump
-psql bulmages < t_tiposiva_data.pgdump
+#psql bulmages < t_tiposiva_data.pgdump
 psql bulmages < t_grupo_data.pgdump
 psql bulmages < t_cuenta_data.pgdump
 psql bulmages < t_canal_data.pgdump

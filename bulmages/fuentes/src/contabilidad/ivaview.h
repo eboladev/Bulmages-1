@@ -61,6 +61,7 @@ private:
   void cargaiva(QString);
   void cargaComboTipoIva();
   void calculaTotales();
+  void buscafecha(int);
 
 public slots:
   virtual void accept();
@@ -68,6 +69,7 @@ public slots:
   virtual void boton_buscacuenta();
   virtual void cambiadacontrapartida();
   virtual void boton_generarPrevisiones();
+  virtual void boton_fecha();
   virtual void returnContrapartida();
 //  virtual void currentIvaChanged(int, int);
 

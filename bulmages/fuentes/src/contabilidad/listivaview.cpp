@@ -5,7 +5,6 @@
     copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
-
 /***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -50,21 +49,24 @@
 #define  R_COL_IDASIENTO 10
 #define  R_COL_IDBORRADOR 11
 
-Mod300ps *modelo;
 
+// Tablas de RESUMEN
+#define RES_NOMBRETIPOIVASOPORTADO 0
+#define RES_IVASOPORTADO 1
+#define RES_BASESOPORTADO 2
+
+#define RES_NOMBRETIPOIVAREPERCUTIDO 0
+#define RES_IVAREPERCUTIDO 1
+#define RES_BASEREPERCUTIDO 2
+
+
+Mod300ps *modelo;
 listivaview::listivaview(empresa * emp, QString ejerActual, QWidget *parent, const char *name ) : listivadlg(parent,name) {
    empresaactual = emp;
    conexionbase = emp->bdempresa();
-  //QDate fecha = QDate::currentDate();
-  //QString buffer;
-  //buffer.sprintf("01/01/%d",fecha.year());
-  //finicial->setText(buffer);
-  //buffer.sprintf("31/12/%d",fecha.year());
-  //ffinal->setText(buffer);
   finicial->setText(normalizafecha("01/01/"+ejerActual).toString("dd/MM/yyyy"));
   ffinal->setText(normalizafecha("31/12/"+ejerActual).toString("dd/MM/yyyy"));
   modelo=new Mod300ps(this->parentWidget());
-
 }// end listivaview
 
 
@@ -94,18 +96,13 @@ void listivaview::doble_click_soportado(int a, int b, int c, const QPoint &punto
  * Al hacer doble click sobre la tabla de ivas se accede al asiento *
  * que tiene dicha entrada                                          *
  ********************************************************************/
-void listivaview::doble_click_repercutido(int a, int b, int c, const QPoint &punto) {
+void listivaview::doble_click_repercutido(int a, int , int , const QPoint &) {
   int idasiento;
   idasiento = atoi(tablarepercutido->text(a,R_COL_IDASIENTO).ascii());
-  //introapunts->muestraasiento(idasiento);
   introapunts->flashAsiento(idasiento);
   introapunts->show();
   introapunts->setFocus();
   done(1);
-  
-  //Para quitar el warnings
-  b=c=0;
-  punto.isNull();
 }// end doble_click_repercutido
 
 
@@ -128,11 +125,67 @@ void listivaview::inicializa( intapunts3view *inta) {
     QString query;
     QString sbaseimp, siva;
     float  fbaseimp, fiva;
-    QString   cbaseimp, civa, ctotal;
-    double ivas16=0, ivas4=0, ivas7=0;
-    double ivar16=0, ivar4=0, ivar7=0;
-    double bases16=0, bases4=0, bases7=0, bases0=0;
-    double baser16=0, baser4=0, baser7=0, baser0=0;
+    QString   cbaseimp, civa, ctotal;    
+    double tbaseimps=0, tivas=0;
+    double tbaseimpr=0, tivar=0;
+    
+    // Inicializamos las tablas de RESUMEN
+    // Y empezamos a trabajar con las tablas de resumen.
+    m_listSoportado->setNumCols(3);
+    m_listSoportado->horizontalHeader()->setLabel( RES_NOMBRETIPOIVASOPORTADO, tr("NOMBRETIPOIVA"));
+    m_listSoportado->horizontalHeader()->setLabel( RES_IVASOPORTADO, tr("IVASOPORTADO"));
+    m_listSoportado->horizontalHeader()->setLabel( RES_BASESOPORTADO, tr("BASESOPORTADO"));
+    
+    m_listRepercutido->setNumCols(3);
+    m_listRepercutido->horizontalHeader()->setLabel( RES_NOMBRETIPOIVAREPERCUTIDO, tr("NOMBRETIPOIVA"));
+    m_listRepercutido->horizontalHeader()->setLabel( RES_IVAREPERCUTIDO, tr("IVASOPORTADO"));
+    m_listRepercutido->horizontalHeader()->setLabel( RES_BASEREPERCUTIDO, tr("BASESOPORTADO"));    
+
+    
+    QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '472%'";
+    conexionbase->begin();
+    cursor2 *cur = conexionbase->cargacursor(SQLQuery, "elcursor");
+    conexionbase->commit();
+    m_listSoportado->setNumRows(cur->numregistros());
+    int j =0;
+    while (! cur->eof() ) {
+       double baseiva = cur->valor("tbaseiva").toFloat();
+       double porcent = cur->valor("porcentajetipoiva").toFloat();
+       double baseimp = baseiva * 100 / porcent;
+       m_listSoportado->setText(j, RES_NOMBRETIPOIVASOPORTADO,cur->valor("nombretipoiva"));
+       m_listSoportado->setText(j, RES_IVASOPORTADO,cur->valor("tbaseiva"));
+       m_listSoportado->setText(j, RES_BASESOPORTADO, QString::number(baseimp));
+       tivas+= baseiva;
+       tbaseimps+=baseimp;
+       cur->siguienteregistro();
+       j++;
+    }// end while
+    delete cur;
+    
+    SQLQuery = "SELECT * FROM cuenta, tipoiva  LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '477%'";
+    conexionbase->begin();
+    cur = conexionbase->cargacursor(SQLQuery, "elcursor");
+    conexionbase->commit();
+    m_listRepercutido->setNumRows(cur->numregistros());
+    j =0;
+    while (! cur->eof() ) {
+       double baseiva = cur->valor("tbaseiva").toFloat();
+       double porcent = cur->valor("porcentajetipoiva").toFloat();
+       double baseimp = baseiva * 100 / porcent;    
+       m_listRepercutido->setText(j, RES_NOMBRETIPOIVAREPERCUTIDO,cur->valor("nombretipoiva"));
+       m_listRepercutido->setText(j, RES_IVAREPERCUTIDO,cur->valor("tbaseiva"));
+       m_listRepercutido->setText(j, RES_BASEREPERCUTIDO, QString::number(baseimp));   
+       tivar+= baseiva;
+       tbaseimpr+=baseimp;           
+       cur->siguienteregistro();
+       j++;
+    }// end while    
+    delete cur;
+
+   m_ivas->setText(QString::number(tivas));
+   m_ivar->setText(QString::number(tivar));
+   m_baseimps->setText(QString::number(tbaseimps));
+   m_baseimpr->setText(QString::number(tbaseimpr));
     
     // Vamos a cargar la lista de tablasoportado (COMPRAS)
     tablasoportado->setNumCols(13);
@@ -150,10 +203,16 @@ void listivaview::inicializa( intapunts3view *inta) {
     tablasoportado->horizontalHeader()->setLabel( S_COL_IDASIENTO, tr( "ID ASIENTO" ) );
     tablasoportado->horizontalHeader()->setLabel( S_COL_CUENTA_IVA, tr( "CUENTA IVA" ) );
 
-    //query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND cuenta.codigo LIKE '472%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
-    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo LIKE '472%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
-    //Si tinguessim un camp anomenat 'ctaiva' fariem:
-    //query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND registroiva.ctaiva LIKE '472%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s' ORDER BY to_number(registroiva.numorden,'99999')",finicial->text().ascii(), ffinal->text().ascii());
+    tablasoportado->hideColumn(S_COL_CUENTA_IVA);
+    tablasoportado->hideColumn(S_COL_IDASIENTO);
+    tablasoportado->hideColumn(S_COL_IDBORRADOR);
+    tablasoportado->hideColumn(S_COL_NUMASIENTO);
+    tablasoportado->hideColumn(S_COL_CONTRAPARTIDA);
+    tablasoportado->hideColumn(S_COL_PORCENT_IVA);
+    
+
+    
+    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
     conexionbase->begin();
     cursor2 *cursorreg = conexionbase->cargacursor(query,"cmquery");
     conexionbase->commit();
@@ -179,22 +238,6 @@ void listivaview::inicializa( intapunts3view *inta) {
       tablasoportado->setText(i,S_COL_BASEIMP,cbaseimp);
       siva = cursorreg->valor("iva");
       fiva = atof(siva.ascii());
-      switch (atoi(siva.ascii())) {
-        case 16:
-          ivas16 += fbaseimp*fiva/100;
-          bases16 += fbaseimp;
-          break;
-        case 7:
-          ivas7 += fbaseimp*fiva/100;
-          bases7 += fbaseimp;
-          break;
-        case 4:
-          ivas4 += fbaseimp*fiva/100;
-          bases4 += fbaseimp;
-          break;
-        case 0:
-            bases0 += fbaseimp;
-      }// end switch
       civa.sprintf("%2.0f",fiva);
       tablasoportado->setText(i,S_COL_PORCENT_IVA,civa);
       ctotal.sprintf("%2.2f",fbaseimp*fiva/100);
@@ -224,10 +267,17 @@ void listivaview::inicializa( intapunts3view *inta) {
     tablarepercutido->horizontalHeader()->setLabel( R_COL_IDBORRADOR, tr( "ID BORRADOR") );
     tablarepercutido->horizontalHeader()->setLabel( R_COL_IDASIENTO, tr( "ID ASIENTO" ) );
     tablarepercutido->horizontalHeader()->setLabel( R_COL_CUENTA_IVA, tr( "CUENTA IVA" ) );
-    //query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND cuenta.codigo LIKE '477%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha",finicial->text().ascii(), ffinal->text().ascii());
-    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo LIKE '477%%' OR cuenta.codigo LIKE '700%%') AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha",finicial->text().ascii(), ffinal->text().ascii());     
-    //Si tinguessim un camp anomenat 'ctaiva' fariem:
-    //query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND registroiva.ctaiva LIKE '477%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha, to_number(registroiva.factura,'99999')",finicial->text().ascii(), ffinal->text().ascii());
+    
+    tablasoportado->hideColumn(R_COL_CUENTA_IVA);
+    tablasoportado->hideColumn(R_COL_IDASIENTO);
+    tablasoportado->hideColumn(R_COL_IDBORRADOR);
+    tablasoportado->hideColumn(R_COL_NUMASIENTO);
+    tablasoportado->hideColumn(R_COL_CONTRAPARTIDA);
+    tablasoportado->hideColumn(R_COL_PORCENT_IVA);
+    
+            
+    // Hacemos el calculo de los que no pertenecen a iva soportado pq así entran todos.
+    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo NOT LIKE '43%%' AND cuenta.codigo NOT LIKE '600%%') AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha",finicial->text().ascii(), ffinal->text().ascii());     
     conexionbase->begin();
     cursorreg = conexionbase->cargacursor(query,"cmquery");
     conexionbase->commit();
@@ -253,23 +303,6 @@ void listivaview::inicializa( intapunts3view *inta) {
       siva = cursorreg->valor("iva");
       tablarepercutido->setText(i,R_COL_PORCENT_IVA,siva);
       fiva = atof(siva.ascii());
-      switch (atoi(siva.ascii())) {
-        case 16:
-          ivar16 += fbaseimp*fiva/100;
-          baser16 += fbaseimp;
-          break;
-        case 7:
-          ivar7 += fbaseimp*fiva/100;
-          baser7 += fbaseimp;
-          break;
-        case 4:
-          ivar4 += fbaseimp*fiva/100;
-          baser4 += fbaseimp;
-          break;
-        case 0:
-            baser0 += fbaseimp;
-          
-      }// end switch
       civa.sprintf("%2.0f",fiva);
       tablarepercutido->setText(i,3,civa);
       ctotal.sprintf("%2.2f",fbaseimp*fiva/100);
@@ -282,72 +315,28 @@ void listivaview::inicializa( intapunts3view *inta) {
       i++;
       cursorreg->siguienteregistro();
     }// end While
-    delete cursorreg;
+    delete cursorreg;  
+/*        
+//   Para que el modelo de iva en PDF funcione hay que hacer estos cambios
 
-
-
-    // Vamos a poner los totales.
-    QString cadena;
-    cadena.sprintf("%2.2f",ivas4);
-    siva4->setText(cadena);
-    cadena.sprintf("%2.2f",ivas7);
-    siva7->setText(cadena);
-    cadena.sprintf("%2.2f",ivas16);
-    siva16->setText(cadena);
-    cadena.sprintf("%2.2f",ivas4+ivas7+ivas16);
-    sivat->setText(cadena);
-        
-    cadena.sprintf("%2.2f",ivar4);
-    riva4->setText(cadena);
-    cadena.sprintf("%2.2f",ivar7);
-    riva7->setText(cadena);
-    cadena.sprintf("%2.2f",ivar16);
-    riva16->setText(cadena);
-    cadena.sprintf("%2.2f",ivar4+ivar7+ivar16);
-    rivat->setText(cadena);
-
-
-    cadena.sprintf("%2.2f",bases0);
-    tbasese->setText(cadena);
-    cadena.sprintf("%2.2f",bases4);
-    tbases4->setText(cadena);
-    cadena.sprintf("%2.2f",bases7);
-    tbases7->setText(cadena);
-    cadena.sprintf("%2.2f",bases16);
-    tbases16->setText(cadena);
-    cadena.sprintf("%2.2f",bases0+bases4+bases7+bases16);
-    tbases->setText(cadena);
-
-    cadena.sprintf("%2.2f",baser0);
-    tbasere->setText(cadena);
-    cadena.sprintf("%2.2f",baser4);
-    tbaser4->setText(cadena);
-    cadena.sprintf("%2.2f",baser7);
-    tbaser7->setText(cadena);
-    cadena.sprintf("%2.2f",baser16);
-    tbaser16->setText(cadena);
-    cadena.sprintf("%2.2f",baser0+baser4+baser7+baser16);
-    tbaser->setText(cadena);      
-    
-        
     modelo->ivas4=ivas4;
     modelo->ivas7=ivas7;
     modelo->ivas16=ivas16;
     
-     modelo->ivar4=ivar4;
+    modelo->ivar4=ivar4;
     modelo->ivar7=ivar7;
     modelo->ivar16=ivar16;
     
-     modelo->bases0=bases0;
+    modelo->bases0=bases0;
     modelo->bases4=bases4;
     modelo->bases7=bases7;
     modelo->bases16=bases16;
     
-     modelo->baser0=baser0;
+    modelo->baser0=baser0;
     modelo->baser4=baser4;
     modelo->baser7=baser7;
     modelo->baser16=baser16;
-
+*/
     
 }// end inicializa
 
@@ -373,7 +362,6 @@ void listivaview::menu_contextual(int row, int , const QPoint &poin) {
            int idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
            if (idborrador != 0) {
                ivaview *nuevae=new ivaview(empresaactual,0,"");
-//               nuevae->inicializa(1); //el "1" indica IVA Soportado
                nuevae->inicializa1(idborrador);
                nuevae->exec();
                delete nuevae;
@@ -397,7 +385,6 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
         case 0:
            int idasiento;
            idasiento = atoi(tablarepercutido->text(row,R_COL_IDASIENTO).ascii());
-           //introapunts->muestraasiento(idasiento);
            introapunts->flashAsiento(idasiento);
            introapunts->show();
            introapunts->setFocus();
@@ -407,7 +394,6 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
            int idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
            if (idborrador != 0) {
                ivaview *nuevae=new ivaview(empresaactual, 0,"");
-//               nuevae->inicializa(2); //el "2" indica IVA Repercutido
                nuevae->inicializa1(idborrador);
                nuevae->exec();
                delete nuevae;

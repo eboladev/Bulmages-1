@@ -157,7 +157,7 @@ int intapunts3view::inicializa(postgresiface2 *conexion) {
 }// end inicializa
 
 
-/**********************************************************
+/**
  * Esta funcion carga el cursor que sirve para hacer todo *
  * el recorrido a través de los asientos.                 *
  * numasiento: 0 indica el primer asiento
@@ -166,7 +166,7 @@ int intapunts3view::inicializa(postgresiface2 *conexion) {
  
   Esta funcion no hace cambios en la presentación, solo realiza una
   carga del cursor que sirve para recorrer los asientos.
- **********************************************************/
+ */
 void intapunts3view::cargarcursor(int numasiento) {
     QString cantapunt ="";
     QString saldototal = "";
@@ -179,16 +179,23 @@ void intapunts3view::cargarcursor(int numasiento) {
     QString textejercicio="";
     int ordenasiento=0;
     
-    if (numasiento > 0) ordenasiento =atoi(ORDENASIENTO);
-    fprintf(stderr,"Ejercicio: %s, IdAsiento: %d, OrdenAsiento: %d \n", empresaactual->ejercicioactual().ascii(), numasiento, ordenasiento);
+    fprintf(stderr," Inicio de la carga del cursor\n");
     
     cantapunt = filt->cantidadapunte->text();
     saldototal = filt->saldoasiento->text();
     nombreasiento = filt->nombreasiento->text();
-    int pand=0;
-    if (cursorasientos != NULL )
-        delete cursorasientos;
+    
+    fprintf(stderr," Inicio de la perdición del cursorasientos\n");
 
+    if (cursorasientos != NULL ) {
+      if (!cursorasientos->eof() && numasiento>0 )
+         ordenasiento = atoi(ORDENASIENTO);    
+      delete cursorasientos;
+    }// end if
+    
+     fprintf(stderr," Inicio de creación del query\n");
+   
+    int pand=0; // Indica si se tiene que agregar el AND o no en el select
     if (saldototal != "") {
         cadwhere = " WHERE ";
         textsaldototal = " idasiento IN (SELECT idasiento FROM (SELECT idasiento, sum(debe) AS total from apunte GROUP BY idasiento) AS foo WHERE foo.total="+saldototal+")";
@@ -217,13 +224,16 @@ void intapunts3view::cargarcursor(int numasiento) {
         //query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+"  ORDER BY ordenasiento";
         query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY ordenasiento";
     }// end if
+    
+    fprintf(stderr," Carga del cursor\n");
+    
     conexionbase->begin();
     cursorasientos = conexionbase->cargacursor(query,"cursorasientos");
     conexionbase->commit();
-    if (cursorasientos->numregistros() == 0) {
+    if (cursorasientos->eof()) {
         QMessageBox::warning( 0, "No existe asiento", "No existe ningun asiento para mostrar.", QMessageBox::Yes, QMessageBox::No);
     }// end if
-    if (numasiento > 0 && (cursorasientos->numregistros() != 0)) {
+    if (numasiento > 0 && (!cursorasientos->eof())) {
         cursorasientos->ultimoregistro();
         //while (!cursorasientos->bof() && atoi(cursorasientos->valor("idasiento").ascii())>numasiento) {
         while (!cursorasientos->bof() && atoi(cursorasientos->valor("ordenasiento").ascii())>ordenasiento) {
@@ -232,6 +242,7 @@ void intapunts3view::cargarcursor(int numasiento) {
         //Si el asiento no existe porque acabamos de borrarlo, entonces nos situamos sobre el primer registro
         if (cursorasientos->bof()) cursorasientos->primerregistro();
     }// end if
+    fprintf(stderr,"Fin del cargar cursor\n");
 }// end cargarcursor
 
 
@@ -412,12 +423,12 @@ void intapunts3view::repinta(int numasiento) {
         tapunts->setText(i,COL_CONCEPTO,cursorasiento->valor("conceptocontable"));
         tapunts->setText(i,COL_IDBORRADOR,cursorasiento->valor("idborrador"));
         // Vamos a mirar si existe registro de iva para este apunte y lo anotamos.
-        query.sprintf("SELECT * FROM registroiva WHERE idborrador=%s",cursorasiento->valor("idborrador").ascii());
+        query.sprintf("SELECT * FROM registroiva WHERE  idborrador=%s",cursorasiento->valor("idborrador").ascii());
         conexionbase->begin();
         cursoriva = conexionbase->cargacursor(query,"cursoriva0");
         conexionbase->commit();
         if (!cursoriva->eof()) {
-            tapunts->setText(i,COL_IVA,cursoriva->valor("iva"));
+            tapunts->setText(i,COL_IVA,"SI");
         }// end if
         delete cursoriva;
 
@@ -548,13 +559,20 @@ void intapunts3view::boton_cerrarasiento() {
 
     // Recorremos la tabla en busca de entradas de iva no introducidas y las preguntamos antes de cerrar nada.
     while (!tapunts->text(i,COL_IDBORRADOR).isNull()) {
-        if (tapunts->text(i,COL_IVA).isNull()) {
             QString codcuenta = tapunts->text(i,COL_SUBCUENTA);
             fprintf(stderr,"%s\n",codcuenta.ascii());
             codcuenta = codcuenta.mid(0,2);
-            if (codcuenta == "40" || codcuenta == "43") {
+            if (codcuenta == "60" || codcuenta == "70") {
                 fprintf(stderr,"%s\n",codcuenta.ascii());
                 int idborrador = atoi(tapunts->text(i,COL_IDBORRADOR).ascii());
+                QString query= "SELECT bcontrapartidaborr("+QString::number(idborrador)+") AS idborrador";
+                conexionbase->begin();
+                cursor2 *curss = conexionbase->cargacursor(query,"elquerybuscaalgo");
+                conexionbase->commit();
+                if (!curss->eof()) {
+                  idborrador = curss->valor("idborrador").toInt();
+                }// end if
+                delete curss;
                 if (idborrador != 0) {
                     ivaview *regivaview=new ivaview(empresaactual,0,"");
                     regivaview->inicializa1(idborrador);
@@ -562,8 +580,6 @@ void intapunts3view::boton_cerrarasiento() {
                     delete regivaview;
                 }// end if
             }// end if
-        }// end if
-        //asientoVacio = asientoVacio && (tapunts->text(i,COL_SUBCUENTA)=="");
         i++;
     }// end while
 
@@ -601,9 +617,15 @@ void intapunts3view::iniciar_asiento_nuevo() {
     idasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0,1);
     delete nuevoasiento;
     if ( normalizafecha(fechaasiento1->text()).year() == empresaactual->ejercicioactual().toInt() ) {
+    fprintf(stderr,"CargarCursor\n");
         cargarcursor(idasiento);
+    fprintf(stderr,"MuestraAsiento\n");
         muestraasiento(idasiento);
-    } else flashAsiento(idasiento);
+    } else {
+      fprintf(stderr,"flashAsiento\n");
+      flashAsiento(idasiento);
+    }// end if
+    fprintf(stderr,"Abrir Asiento\n");
     boton_abrirasiento();
 
    tapunts->setText(0,0,fechaasiento1->text());

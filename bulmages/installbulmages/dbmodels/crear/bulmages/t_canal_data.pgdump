@@ -8,15 +8,19 @@ SET check_function_bodies = false;
 SET search_path = public, pg_catalog;
 
 --
--- Data for TOC entry 2 (OID 1345962)
+-- Data for TOC entry 3 (OID 3768319)
 -- Name: canal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY canal (idcanal, descripcion, nombre) FROM stdin;
-1	Tipo A, Blanco Purisimo	Canal A
-4	Toma ya canal C	Canal C
-10	El canal B	Canal B
-9	A que jode que un nuevo canal nos haga la puñeta Ehhh !!!!!	Canal D
-\.
+INSERT INTO canal (idcanal, descripcion, nombre) VALUES (1, 'Tipo A', 'Canal A');
+INSERT INTO canal (idcanal, descripcion, nombre) VALUES (4, 'Tipo B', 'Canal B');
+
+
+--
+-- TOC entry 2 (OID 3768317)
+-- Name: canal_idcanal_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('canal_idcanal_seq', 100, false);
 
 

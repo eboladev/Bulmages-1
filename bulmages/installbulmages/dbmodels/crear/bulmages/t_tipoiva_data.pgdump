@@ -1,25 +1,9 @@
---
--- PostgreSQL database dump
---
 
-SET client_encoding = 'SQL_ASCII';
-SET check_function_bodies = false;
-
-SET search_path = public, pg_catalog;
-
---
--- Data for TOC entry 3 (OID 3673554)
--- Name: tipoiva; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO tipoiva (idtipoiva, nombretipoiva, porcentajetipoiva, idcuenta) VALUES (1, '16', 16, 740);
-
-
---
--- TOC entry 2 (OID 3673552)
--- Name: tipoiva_idtipoiva_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('tipoiva_idtipoiva_seq', 1, true);
+INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('Soportado 16%',   16, id_cuenta('4720016'));
+INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('Soportado 7%',     7, id_cuenta('4720007'));
+INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('Soportado 4%',     4, id_cuenta('4720004'));
+INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('Repercutido 16%', 16, id_cuenta('4770016'));
+INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('Repercutido 7%', 7, id_cuenta('4770007'));
+INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('Repercutido 4%', 4, id_cuenta('4770004'));
 
 

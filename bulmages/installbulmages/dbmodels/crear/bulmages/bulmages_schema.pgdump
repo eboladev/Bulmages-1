@@ -261,7 +261,8 @@ CREATE TABLE registroiva (
     plan349 boolean,
     numorden character varying(50),
     cif character varying(25),
-    idfpago integer REFERENCES fpago(idfpago)
+    idfpago integer REFERENCES fpago(idfpago),
+    rectificaaregistroiva integer REFERENCES registroiva(idregistroiva)
 );
 
 -- La tabla prevcobro es prevision de cobros / pagos para facturas.

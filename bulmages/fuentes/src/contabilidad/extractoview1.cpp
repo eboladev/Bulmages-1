@@ -673,7 +673,6 @@ void extractoview1::boton_guardarpunteo() {
     FILE *mifile;
     mifile = fopen((char *) fn.ascii(),"wt");
     if (mifile != NULL) {
-     
         QString query;
         query = "SELECT * FROM apunte WHERE punteo=TRUE";
         conexionbase->begin();

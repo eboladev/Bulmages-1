@@ -159,6 +159,7 @@ if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
    info "Cargamos datos adicionales. \n"
    tiempo
+   psql $2 < crear/bulmages/t_cuenta_data1.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_canal_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_c_coste_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_diario_data.pgdump 2>> /tmp/errores1.txt > /dev/null

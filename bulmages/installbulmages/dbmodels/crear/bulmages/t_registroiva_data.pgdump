@@ -12,9 +12,6 @@ SET search_path = public, pg_catalog;
 -- Name: registroiva; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO registroiva (idregistroiva, contrapartida, baseimp, iva, ffactura, factura, idborrador, incregistro, regularizacion, plan349, numorden, cif, idfpago) VALUES (1, 761, 100, 16, '2004-01-01', '1', 1785, NULL, NULL, NULL, '5', '5489070750-A', NULL);
-
-
 --
 -- TOC entry 2 (OID 3347656)
 -- Name: registroiva_idregistroiva_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres

@@ -8,21 +8,17 @@ SET check_function_bodies = false;
 SET search_path = public, pg_catalog;
 
 --
--- Data for TOC entry 2 (OID 1345967)
+-- Data for TOC entry 3 (OID 3768326)
 -- Name: c_coste; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY c_coste (idc_coste, descripcion, nombre, codigo, padre, imputacion, debe, haber) FROM stdin;
-21	Escriba su descripcion	st1010	\N	\N	\N	\N	\N
-9	Los davalls tb es grande	Los davall	\N	1	\N	\N	\N
-3	Local Alcudia, que es la hostia.	Alcudia	003	\N	\N	\N	\N
-5	Escriba su descripcion	Barcelona	\N	\N	\N	\N	\N
-2	Local Palma	Palma	002	\N	\N	\N	\N
-4	Madrid la historica capital del pais. Que pais	Madrid	\N	\N	\N	\N	\N
-22	asdfasdf	Corb Mari	\N	2	\N	\N	\N
-10	Conetxia.	Son Oliva	\N	2	\N	\N	\N
-7	Es mi patria chica, mi cosita linda, mi pueblo favorito, mi amor de infancia.\n Eres tu.	Algaida	\N	\N	\N	\N	\N
-1	Alaro es un gran pueblo	sipol	001	\N	\N	\N	\N
-\.
+INSERT INTO c_coste (idc_coste, descripcion, nombre, codigo, padre, imputacion, debe, haber) VALUES (10, 'Conetxia.', 'Son Oliva', NULL, NULL, NULL, NULL, NULL);
+
+--
+-- TOC entry 2 (OID 3768324)
+-- Name: c_coste_idc_coste_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('c_coste_idc_coste_seq', 100, false);
 
 
