@@ -76,12 +76,13 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) :
     m_list->horizontalHeader()->setLabel(COL_DOCPREVCOBRO,tr("Documento") );
     m_list->horizontalHeader()->setLabel(COL_CODIGOCTAREGISTROIVA,tr("COL_CODIGOCTAREGISTROIVA") );
     m_list->horizontalHeader()->setLabel(COL_ENTREGISTROIVA,tr("COL_ENTREGISTROIVA") );
-
     m_list->setColumnWidth(COL_SELECCION,25);
     m_list->hideColumn(COL_IDPREVCOBRO);
     m_list->hideColumn(COL_IDCUENTA);
     m_list->hideColumn(COL_IDASIENTO);
     m_list->hideColumn(COL_IDREGISTROIVA);
+    m_list->hideColumn(COL_FCOBROPREVCOBRO);
+    m_list->hideColumn(COL_CANTIDADPREVCOBRO);
     inicializa();
 }// end cobropagoview
 
@@ -116,7 +117,6 @@ void cobropagoview::inicializa() {
         m_list->setText(i,COL_IDREGISTROIVA, cur->valor("idregistroiva"));
         m_list->setText(i,COL_TIPOPREVCOBRO, cur->valor("tipoprevcobro"));
         m_list->setText(i,COL_DOCPREVCOBRO, cur->valor("docprevcobro"));
-
         if (cur->valor("idasiento") == "") {
             QCheckTableItem *item = new QCheckTableItem(m_list, "");
             m_list->setItem(i,COL_SELECCION,item);

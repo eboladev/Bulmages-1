@@ -3,6 +3,8 @@
 # Subdir relative project main directory: ./src
 # Target is an application:  ../bin/bulmacont
 
+SUBDIRS += estadisticas
+
 TARGETDEPS += ../../bulmalib/libbulmalib.a
 LIBS += ../../bulmalib/libbulmalib.a \
 -lqt-mt \
@@ -14,7 +16,7 @@ contabilidad \
 images \
 formularios \
 /usr/include/qt
-TARGET = ../bin/bulmacont
+TARGET = ../../installbulmages/bulmacont
 CONFIG += release \
 warn_on
 contabilidad/uibloqfecha.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/uibloqfecha.ui.target
@@ -417,46 +419,47 @@ exists (reports){
   SOURCES += rtkinputbges.cpp
   HEADERS += rtkinputbges.h
 }
-exists (gdchart){
-  LIBS += ../src/gdchart/libgdchart.a \
-  -lgd
-  INCLUDEPATH += ../src/gdchart
-  contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui
-  contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target
-  contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui
-  contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target
-  DEFINES += GDCHART
-  IDLS += contabilidad/estadisticasdlg1.ui \
-  contabilidad/resmensualdlg1.ui
-  FORMS += contabilidad/estadisticasdlg1.ui \
-  contabilidad/resmensualdlg1.ui
-}
-exists (gdcchart){
-  LIBS += ../src/gdcchart/libgdcchart.lib.a
-  INCLUDEPATH += ../src/gdcchart
-  contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui
-  contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target
-  contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui
-  contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target
-  DEFINES += GDCHART
-  IDLS += contabilidad/estadisticasdlg1.ui \
-  contabilidad/resmensualdlg1.ui
-  FORMS += contabilidad/estadisticasdlg1.ui \
-  contabilidad/resmensualdlg1.ui
-}
-exists (dislin){
-  LIBS += ../src/dislin/dislnc-8.2.a
-  INCLUDEPATH += ../src/dislin
-  contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui
-  contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target
-  contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui
-  contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target
-  DEFINES += DISLIN
-  IDLS += contabilidad/estadisticasdlg1.ui \
-  contabilidad/resmensualdlg1.ui
-  FORMS += contabilidad/estadisticasdlg1.ui \
-  contabilidad/resmensualdlg1.ui
-}
+
+#exists (gdchart){
+#  LIBS += ../src/gdchart/libgdchart.a \
+#  -lgd
+#  INCLUDEPATH += ../src/gdchart
+#  contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui
+#  contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target
+#  contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui
+#  contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target
+#  DEFINES += GDCHART
+#  IDLS += contabilidad/estadisticasdlg1.ui \
+#  contabilidad/resmensualdlg1.ui
+#  FORMS += contabilidad/estadisticasdlg1.ui \
+#  contabilidad/resmensualdlg1.ui
+#}
+#exists (gdcchart){
+#  LIBS += ../src/gdcchart/libgdcchart.lib.a
+#  INCLUDEPATH += ../src/gdcchart
+#  contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui
+#  contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target
+#  contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui
+#  contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target
+#  DEFINES += GDCHART
+#  IDLS += contabilidad/estadisticasdlg1.ui \
+#  contabilidad/resmensualdlg1.ui
+#  FORMS += contabilidad/estadisticasdlg1.ui \
+#  contabilidad/resmensualdlg1.ui
+#}
+#exists (dislin){
+#  LIBS += ../src/dislin/dislnc-8.2.a
+#  INCLUDEPATH += ../src/dislin
+#  contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui
+#  contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target
+#  contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui
+#  contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target
+#  DEFINES += DISLIN
+#  IDLS += contabilidad/estadisticasdlg1.ui \
+#  contabilidad/resmensualdlg1.ui
+#  FORMS += contabilidad/estadisticasdlg1.ui \
+#  contabilidad/resmensualdlg1.ui
+#}
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
