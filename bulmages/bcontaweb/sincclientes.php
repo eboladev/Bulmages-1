@@ -18,7 +18,8 @@
 $valssincr = new paramsincr();
 
 /* Conexión, de la base de datos correspondiente de BulmaGés */
-$dbconta= $valssincr->connectbulmages();
+//$dbconta= $valssincr->connectbulmages();
+$dbconta = $empresabd;
 $bdgalopin = $valssincr->connectgalopin();
 
 
@@ -45,7 +46,8 @@ while ($linea = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
       echo "\t<tr><td><H2>$nif</H2>\n";       
       echo "No existe el nif en BulmaGés, por tanto hay que insertarlo<BR>";
 	  //presentaarray($linea);
-	  nuevacuenta($dbconta, $linea );	
+//	  nuevacuenta($dbconta, $linea );
+	  ncuenta("");	
 	  echo "\t</td></tr>\n";
    }// end if
 }// end while

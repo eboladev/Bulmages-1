@@ -18,7 +18,8 @@
 $valssincr = new paramsincr();
 
 /* Conexión, de la base de datos correspondiente de BulmaGés */
-$dbconta= $valssincr->connectbulmages();
+//$dbconta= $valssincr->connectbulmages();
+$dbconta = $empresabd;
 $bdgalopin = $valssincr->connectgalopin();
 
 

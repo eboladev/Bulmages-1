@@ -135,4 +135,12 @@ function presentaarray($array) {
 	}// end foreach  
 	echo "</pre><HR>";    
 }
+
+function buscarcuenta($cad) {
+echo "<a href=\"#\" onclick=\"window.open('selectcuenta.php?campo=$cad','nueva',0)\"><IMG src=\"img/find.png\" width=\"22\" height=\"22\" border=\"0\"></a>";
+}
+
+function ncuenta($cad) {
+echo "<a href=\"#\" onclick=\"window.open('nuevacuenta.php?campo=$cad','nueva',0)\"><IMG src=\"img/find.png\" width=\"22\" height=\"22\" border=\"0\"></a>";
+}
 ?>

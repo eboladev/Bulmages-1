@@ -18,6 +18,7 @@ Importacion y exportacion<BR>
       <TR>
         <TD valign="top">
           <CENTER>BulmaGés</CENTER><BR>
+		  <!--
 		<SELECT NAME="idempresasinc">
 		<?php
 		$query = "SELECT * FROM empresa";
@@ -30,6 +31,7 @@ Importacion y exportacion<BR>
 		}// end while
 		?>
 		</SELECT>
+		-->
        </TD>
 	<td valign="top"><CENTER>Galopín</CENTER><BR>
 	Base de datos:<input type="text" name="nomdbgalopin" size="15"><BR>
@@ -43,8 +45,9 @@ Importacion y exportacion<BR>
      
      <tr><TD valign="top">
            <CENTER>Clientes &nbsp;&nbsp;&nbsp;y Proveedores</CENTER><BR>
-	   Cuentas de Clientes<input type="text" name="cclientes" size="12"> <IMG src="img/find.png" width="22" height="22" border="0"><BR>
-	   Cuentas de Proveedores<input type="text" name="cproveedores" size="12"> <IMG src="img/find.png" width="22" height="22" border="0"><BR>
+	   Cuentas de Clientes<input type="text" name="cclientes" size="12"><?php buscarcuenta("form1.cclientes") ?>
+              <BR>
+	   Cuentas de Proveedores<input type="text" name="cproveedores" size="12"><?php buscarcuenta("form1.cproveedores") ?><BR>
            <input type="checkbox">Cuentas de cliente incrementales<BR>
            <input type="checkbox">Actualizar BulmaGés con nuevos clientes<BR>
 	   <input type="checkbox">Basarse en el NIF como campo de identificacion <BR>
