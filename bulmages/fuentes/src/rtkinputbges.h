@@ -46,8 +46,7 @@ public:
                  String from = String(), String where = String(), String orderby = String(),
                  String name = String(), String driver = String())
                         :Input(name, driver),
-                        mFrom(from), mWhere(where), mOrderBy(orderby)
-        {
+                        mFrom(from), mWhere(where), mOrderBy(orderby)  {
            empresaactual=emp;
            conexionbase=empresaactual->bdempresa();
            ti = t;
@@ -59,8 +58,8 @@ public:
 
         virtual bool init();
         virtual bool next();
-        virtual Variant getValue(uint i);
-        virtual Variant getValue(char *);
+        virtual Variant getValue(uint i) const;
+        virtual Variant getValue(char *) const;
             
         /*<<<<<INPUTSQL_GETSET*/
 public:

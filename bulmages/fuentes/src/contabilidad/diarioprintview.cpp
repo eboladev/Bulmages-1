@@ -44,9 +44,19 @@ void DiarioPrintView::pruebasRTK() {
    cursoraux=conexionbase->cargacursor("SELECT * FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta", "unquery");
    conexionbase->commit();
    
-   RTK::Report *unReport = new Report();
-   unReport->readXml("/tmp/extracto.rtk");
+  Report unReport;
+  unReport.readXml("/tmp/extracto.rtk");
+  InputBGes inp(InputBGes::diario, empresaactual, cursoraux);
+OutputQPainter *salida = new OutputQPainter(A4, dots, 57, 59, 0,0,20,20,20,20);
+unReport.print(inp, *salida);
+QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
+mViewer->setCaption(tr("GongReport", "Informe: "));
+mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
+mViewer->setPageCollection(salida->getPageCollection());
+mViewer->show();
+mViewer->slotFirstPage();  
    
+/*     
    InputBGes inp(InputBGes::diario, empresaactual, cursoraux);
     OutputQPainter *salida = new OutputQPainter(A4, dots, 57, 59, 0,0,20,20,20,20);
     unReport->print(inp, *salida);
@@ -57,6 +67,8 @@ void DiarioPrintView::pruebasRTK() {
     mViewer->setPageCollection(salida->getPageCollection());
     mViewer->show();
     mViewer->slotFirstPage();
+*/
+
 #endif 
 }// end pruebasRTK
 

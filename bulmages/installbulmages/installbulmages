@@ -80,8 +80,8 @@ fi
 
 
 # Iniciamos el tema de los errores.
-rm errores.txt
-touch errores.txt
+rm /tmp/errores.txt
+touch /tmp/errores.txt
 
 #Comprobamos que estamos en el directorio adecuado
 if [ ! -e ./installbulmages ]; then
@@ -98,27 +98,27 @@ if [ -e /etc/bulmages.conf ]; then
 
    info "Creando directorio backup para guardar copias de seguridad"
    tiempo
-   if [ -e backup ]; then
+   if [ -e /tmp/backup ]; then
       info -e "El directorio ya existe"
       linea
    else
-      mkdir backup
+      mkdir /tmp/backup
    fi
 
 #  Hacemos una actualizacion de las bases de datos.
-   su - postgres -c "echo -e \"\\pset tuples_only \n select nombredb from empresa;\" | psql metabd" > listdb.lst
-   for x in `tail +2 listdb.lst`
+   su - postgres -c "echo -e \"\\pset tuples_only \n select nombredb from empresa;\" | psql metabd" > /tmp/listdb.lst
+   for x in `tail +2 /tmp/listdb.lst`
    do
       info "Efectuando cambios sobre la base de datos $x"
       tiempo
       info "Realizando copia de seguridad"
       tiempo
-      su - postgres -c "pg_dump $x" > backup/$x.pgdump
+      su - postgres -c "pg_dump $x" > /tmp/backup/$x.pgdump
       for y in `ls dbmodels/actualizar/rev-*.sql | sort`
       do
          info "Evaluamos: " $y
          if [ ! -e /usr/share/bulmages/$y ]; then
-	    su - postgres -c "psql $x "  < $y  2>> errores.txt >> errores.txt
+	    su - postgres -c "psql $x "  < $y  2>> /tmp/errores.txt >> /tmp/errores.txt
 	    info "Actualizando la version $y"
 	    tiempo
          fi
@@ -132,7 +132,7 @@ if [ -e /etc/bulmages.conf ]; then
    do
       info "Evaluamos: " $y
       if [ ! -e /usr/share/bulmages/$y ]; then
-         su - postgres -c "psql metabd " < $y 2>> errores.txt >> errores.txt
+         su - postgres -c "psql metabd " < $y 2>> /tmp/errores.txt >> /tmp/errores.txt
 	 info "Actualizando a la version $y"
 	 tiempo
       fi
@@ -154,9 +154,42 @@ if [ -e /etc/bulmages.conf ]; then
    done
    
    # Presentamos los errores acaecidos
-   cat errores.txt | grep ERROR
+   cat /tmp/errores.txt | grep ERROR
 else
+# Se trata de una instalación nueva
 
+	#Ya que estamos vamos a echar un vistacillo al pg_hba.conf
+	if [ -e /etc/postgresql/pg_hba.conf ]; then
+		info "Revisando archivo pg_hba.conf"
+		PGA=`cat /etc/postgresql/pg_hba.conf | grep reject | wc -l`
+		if [ ! "$PGA" -eq "0" ]; then
+		mensaje "Alerta: Revise el archivo /etc/postgresql/pg_hba.conf, ya que puede tener restricciones de permisos\n $PGA"
+		tiempo
+		dialog --yesno "Si lo desea podemos instalar una copia personalizada del archivo pg_hba.conf  que configura los permisos de postgres. (Puede que con esta opcion pierda seguridad)" 15 60
+		case $? in
+			0)
+			info "Yes chosen. Vamos a modificar la cosa"
+			mv /etc/postgresql/pg_hba.conf /etc/postgresql/pg_hba.conf.old
+			cp pg_hba.conf /etc/postgresql/pg_hba.conf
+			info "Reiniciando Postgres"
+			/etc/init.d/postgresql restart
+			tiempo;;
+			1)
+			info "No chosen."
+			tiempo;;
+			255)
+			info "ESC pressed."
+			tiempo;;
+		esac   
+	else
+		mensaje "pg_hba esta correcto"   
+	fi
+	else
+	mensaje "No se encuentra el archivo de configuracion de postgresql.
+	Esto puede ser debido a que no este instalado o a que no sea una distribucion Debian Sid.
+	Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
+	tiempo
+	fi
 
 # Hacemos una insercion inicial de las bases de datos.
    info "Inicializando directorio /usr/share/bulmages.\n"
@@ -179,7 +212,7 @@ else
    cp bulmages.conf /etc
 
    # Presentamos los errores acaecidos
-   cat errores.txt | grep ERROR
+   cat /tmp/errores.txt | grep ERROR
    
 
    # Dejamos que la inserción del usuario la haga una función y asi encapsulamos un poco.

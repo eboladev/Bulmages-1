@@ -40,7 +40,7 @@ bool InputBGes::next() {
         if (!inicializado) {
            // Ya se ha hecho un next, por tanto hacemos lo que toca.
            consulta->siguienteregistro();
-           fprintf(stderr,"%s\n",consulta->valor("idasiento").ascii());
+           fprintf(stderr," InputBGes::Next : %s\n",consulta->valor("idasiento").ascii());
         } else {
            // El primer next que se hace debe saltarse.
            inicializado=0;
@@ -49,7 +49,7 @@ bool InputBGes::next() {
 }
 
 
-Variant InputBGes::getValue(uint i) {
+Variant InputBGes::getValue(uint i) const {
    fprintf(stderr,"InputBGes::getValue()\n");
    fprintf(stderr,"%s\n", consulta->valor((int) i).ascii());
         if( i<(uint)consulta->numcampos() )
@@ -59,7 +59,7 @@ Variant InputBGes::getValue(uint i) {
 }
 
 
-Variant InputBGes::getValue(char *s)  {
+Variant InputBGes::getValue(char *s) const {
    fprintf(stderr,"InputBGes::getValue()\n");
    fprintf(stderr,"$s -- > %s\n",s , consulta->valor(s).ascii());
    return Variant(consulta->valor(s));
