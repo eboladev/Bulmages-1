@@ -57,18 +57,6 @@ bool importainteligente::startElement( const QString& , const QString& , const Q
        }// end if
        delete cur; 
     }// end binteligente
-    if (tag == "ivainteligente") {
-       SQLQuery.sprintf("INSERT INTO ivainteligente (idainteligente, idbinteligente) VALUES (%s, %s)\n", tvalores["idainteligente"].ascii(), tvalores["idbinteligente"].ascii());
-       conexionbase->begin();
-       conexionbase->ejecuta(SQLQuery);
-       SQLQuery = "SELECT max(idivainteligente) AS idivainteligente FROM ivainteligente";
-       cursor2 *cur = conexionbase->cargacursor(SQLQuery,"unquerymas");
-       conexionbase->commit();
-       if (!cur->eof()) {
-         tvalores["idivainteligente"]=cur->valor("idivainteligente");
-       }// end if
-       delete cur; 
-    }// end ivainteligente
     return TRUE;
 }// end startElement
 
@@ -142,58 +130,6 @@ bool importainteligente::endElement( const QString& , const QString& , const QSt
          conexionbase->commit();
          
       }// end binteligente
-      if (qName == "ivainteligente") {
-         SQLQuery.sprintf("UPDATE ivainteligente SET contrapartida='%s' WHERE idivainteligente=%s\n", tvalores["contrapartida"].ascii(), tvalores["idivainteligente"].ascii());
-         conexionbase->begin();
-         conexionbase->ejecuta(SQLQuery);
-         conexionbase->commit();
-         
-         SQLQuery.sprintf("UPDATE ivainteligente SET baseimp='%s' WHERE idivainteligente=%s\n", tvalores["baseimp"].ascii(), tvalores["idivainteligente"].ascii());
-         conexionbase->begin();
-         conexionbase->ejecuta(SQLQuery);
-         conexionbase->commit();
-         
-         SQLQuery.sprintf("UPDATE ivainteligente SET iva='%s' WHERE idivainteligente=%s\n", tvalores["iva"].ascii(), tvalores["idivainteligente"].ascii()); 
-         conexionbase->begin();
-         conexionbase->ejecuta(SQLQuery);
-         conexionbase->commit();
-         
-         SQLQuery.sprintf("UPDATE ivainteligente SET factura='%s' WHERE idivainteligente=%s\n", tvalores["factura"].ascii(), tvalores["idivainteligente"].ascii());
-         conexionbase->begin();
-         conexionbase->ejecuta(SQLQuery);
-         conexionbase->commit();
-         
-         SQLQuery.sprintf("UPDATE ivainteligente SET idborrador='%s' WHERE idivainteligente=%s\n", tvalores["idborrador"].ascii(), tvalores["idivainteligente"].ascii());
-         conexionbase->begin();
-         conexionbase->ejecuta(SQLQuery);
-         conexionbase->commit();
-         
-         SQLQuery.sprintf("UPDATE ivainteligente SET incregistro='%s' WHERE idivainteligente=%s\n", tvalores["incregistro"].ascii(), tvalores["idivainteligente"].ascii());
-         conexionbase->begin();
-         conexionbase->ejecuta(SQLQuery);
-         conexionbase->commit();
-         
-         SQLQuery.sprintf("UPDATE ivainteligente SET regularizacion='%s' WHERE idivainteligente=%s\n", tvalores["regularizacion"].ascii(), tvalores["idivainteligente"].ascii());
-         conexionbase->begin();
-         conexionbase->ejecuta(SQLQuery);
-         conexionbase->commit();
-         
-         SQLQuery.sprintf("UPDATE ivainteligente SET plan349='%s' WHERE idivainteligente=%s\n", tvalores["plan349"].ascii(), tvalores["idivainteligente"].ascii());  
-         conexionbase->begin();
-         conexionbase->ejecuta(SQLQuery);
-         conexionbase->commit();
-         
-         SQLQuery.sprintf("UPDATE ivainteligente SET numorden='%s' WHERE idivainteligente=%s\n", tvalores["incregistro"].ascii(), tvalores["numorden"].ascii());  
-         conexionbase->begin();
-         conexionbase->ejecuta(SQLQuery);
-         conexionbase->commit();
-         
-         SQLQuery.sprintf("UPDATE ivainteligente SET cif='%s' WHERE idivainteligente=%s\n", tvalores["cif"].ascii(), tvalores["idivainteligente"].ascii());
-         conexionbase->begin();
-         conexionbase->ejecuta(SQLQuery);
-         conexionbase->commit();
-         
-      }// end ivainteligente
       tag="";
       data="";
       return TRUE;

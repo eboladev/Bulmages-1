@@ -306,24 +306,7 @@ void aplinteligentesview::mostrarplantilla() {
     }// end while
     delete cur;
 
-    // Vamos a ver que tal se nos da el recoger variables de la plantilla iva
-    query.sprintf("SELECT * FROM ivainteligente WHERE idainteligente=%d",numainteligente);
-    conexionbase->begin();
-    cur= conexionbase->cargacursor(query,"superquery1");
-    conexionbase->commit();
-    while (!cur->eof()) {
-        recogevariables(cur->valor("contrapartida"),TIPO_CTA);
-        recogevariables(cur->valor("baseimp"),TIPO_NUMERO);
-        recogevariables(cur->valor("iva"),TIPO_NUMERO);
-        recogevariables(cur->valor("factura"),TIPO_TEXTO);
-        recogevariables(cur->valor("incregistro"), TIPO_NUMERO);
-        recogevariables(cur->valor("regularizacion"), TIPO_TEXTO);
-        recogevariables(cur->valor("plan349"), TIPO_TEXTO);
-        recogevariables(cur->valor("numorden"), TIPO_NUMERO);
-        recogevariables(cur->valor("cif"), TIPO_TEXTO);
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
+
 
     fprintf(stderr,"Hemos recolectado las nuevas variables\n");
     for (i=0;i<indvariablescta;i++) {
@@ -487,66 +470,7 @@ void aplinteligentesview::creaasiento() {
         query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s')",numasiento,idcuenta,idcontrapartida.ascii(), debe.ascii(), haber.ascii(), fecha.ascii(), conceptocontable.ascii(), descripcion.ascii());
         conexionbase->begin();
         conexionbase->ejecuta(query);
-        //    conexionbase->commit();
-
-        // Miramos si existe una entrada en iva para este apunte y la creamos
-        query.sprintf("SELECT * from ivainteligente WHERE idbinteligente=%s",cur->valor("idbinteligente").ascii());
-        fprintf(stderr,"%s\n",query.ascii());
-        conexionbase->begin();
-        cursor2 *curiva = conexionbase->cargacursor(query,"ivas");
         conexionbase->commit();
-        if (!curiva->eof()) {
-            // Lo primero que hacemos es encontrar la entrada de borrador que corresponde
-            query.sprintf( "SELECT max(idborrador) AS id FROM borrador");
-            conexionbase->begin();
-            cur1 = conexionbase->cargacursor(query,"borrador");
-            conexionbase->commit();
-            int idborrador = atoi(cur1->valor("id").ascii());
-            delete cur1;
-
-            // Luego buscamos la contrapartida
-            contrapartida = aplicavariable(curiva->valor("contrapartida"));
-            query.sprintf("SELECT * FROM cuenta where codigo='%s'",contrapartida.ascii());
-            conexionbase->begin();
-            cur1 = conexionbase->cargacursor(query,"buscacodigo");
-            conexionbase->commit();
-            if (!cur1->eof()) {
-                idcontrapartida = cur1->valor("idcuenta");
-            } else {
-                idcontrapartida = "NULL";
-            }// end if
-            
-            // Inicializamos la variable de apunte cifcuenta.
-            cifcuenta(atoi(idcontrapartida.ascii()));
-            delete cur1;
-
-
-            // Buscamos el iva
-            QString iva = aplicavariable(curiva->valor("iva"));
-            if (iva == "")
-                iva = "NULL";
-            // La factura
-            QString factura = "'"+aplicavariable(curiva->valor("factura"))+"'";
-            if (factura == "''")
-                factura = "NULL";
-            // La Base Imponible
-            QString baseimp = aplicavariable(curiva->valor("baseimp"));
-            if (baseimp == "")
-                baseimp = "NULL";
-            // El numero de orden
-            QString numorden = "'"+aplicavariable(curiva->valor("numorden"))+"'";
-            if (numorden == "''")
-                numorden = "NULL";
-            QString cif = "'"+aplicavariable(curiva->valor("cif"))+"'";
-            if (cif == "''")
-                cif = "NULL";
-            query.sprintf("INSERT INTO registroiva (idborrador, contrapartida, iva, factura, baseimp, numorden, cif) VALUES (%d, %s, %s, %s, %s, %s, %s)",idborrador, idcontrapartida.ascii(), iva.ascii(), factura.ascii(), baseimp.ascii(), numorden.ascii(), cif.ascii());
-            fprintf(stderr,"Registro de iva: %s",query.ascii());
-            conexionbase->begin();
-            conexionbase->ejecuta(query);
-            conexionbase->commit();
-        }// end if
-        delete curiva;
         // Borramos las variables creadas para este apunte
         cur->siguienteregistro();
     }// end while

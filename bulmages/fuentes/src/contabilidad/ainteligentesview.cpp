@@ -114,25 +114,6 @@ ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *
    tapunts->hideColumn(COL_IDC_COSTE);
 
 
-
-   tiva->setNumCols(13);
-   tiva->setNumRows(100);
-   tiva->horizontalHeader()->setLabel( COL_IDIVAINTELIGENTE, tr( "COL_IDIVAINTELIGENTE" ) );
-   tiva->horizontalHeader()->setLabel( COL_IDAINTELIGENTEIVA, tr( "COL_IDAINTELIGENTEIVA" ) );
-   tiva->horizontalHeader()->setLabel( COL_IDBINTELIGENTEIVA, tr( "COL_IDBINTELIGENTEIVA" ) );
-   tiva->horizontalHeader()->setLabel( COL_CONTRAPARTIDAIVA, tr( "CONTRAPARTIDA" ) );
-   tiva->horizontalHeader()->setLabel( COL_BASEIMPIVA, tr( "BASE IMP." ) );
-   tiva->horizontalHeader()->setLabel( COL_IVAIVA, tr( "IVA" ) );
-   tiva->horizontalHeader()->setLabel( COL_FACTURAIVA, tr( "NUM. FACTURA" ) );
-   tiva->horizontalHeader()->setLabel( COL_IDBORRADORIVA, tr( "Col. Borrador" ) );
-   tiva->horizontalHeader()->setLabel( COL_INCREGISTROIVA, tr( "Registro" ) );
-   tiva->horizontalHeader()->setLabel( COL_REGULARIZACIONIVA, tr( "Regularizacion" ) );
-   tiva->horizontalHeader()->setLabel( COL_PLAN349IVA, tr( "Plan 349" ) );
-   tiva->horizontalHeader()->setLabel( COL_NUMORDENIVA, tr( "Num. Orden" ) );
-   tiva->horizontalHeader()->setLabel( COL_CIFIVA, tr( "CIF Empresa" ) );
-   tiva->hideColumn(COL_IDIVAINTELIGENTE);
-   tiva->hideColumn(COL_IDAINTELIGENTEIVA);
-   tiva->hideColumn(COL_IDBINTELIGENTE);
    
    // El cursor que recorre los asientos inteligentes debe iniciarse a NULL
    cainteligentes = NULL;
@@ -328,14 +309,7 @@ void ainteligentesview::boton_igualant() {
     if (currow > 0) {
       tapunts->setText(currow, curcol, tapunts->text(currow-1, curcol));
     }// end if
-  } else if(pestanas->currentPageIndex() == 1) {
-    int currow = tiva->currentRow();
-    int curcol = tiva->currentColumn();
-    if (currow > 0) {
-      tiva->setText(currow, curcol, tiva->text(currow-1, curcol));
-    }// end if
   }// end if
-  
 }// end boton_igualant
   
 
@@ -467,7 +441,6 @@ void ainteligentesview::boton_save() {
            sprintf(query,"INSERT INTO binteligente (idainteligente, codcuenta, descripcion, fecha, conceptocontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario) VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",idasientointeligente, cod, desc, fecha,concontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario);
            conexionbase->begin();
            conexionbase->ejecuta(query);
-
            sprintf(query,"SELECT max(idbinteligente) AS id FROM binteligente");
            cur = conexionbase->cargacursor(query,"identificador");
            if (atoi(cur->valor(0).ascii()) != 0) 
@@ -477,76 +450,6 @@ void ainteligentesview::boton_save() {
         }// end if
      }// end if
   }// end for
-
-
-  conexionbase->begin();
-  // Hacemos la grabacion del registro de iva (tiva)
-  sprintf(query,"DELETE FROM ivainteligente WHERE idainteligente=%d", idasientointeligente);
-  conexionbase->ejecuta(query);
-  // Cambiamos el foco de tapunts para que coja el ultimo cambio realizado.
-  tiva->setCurrentCell(0,0);
-  for (i=0;i<tiva->numRows();i++) {
-    if (!tiva->text(i,COL_CONTRAPARTIDAIVA).isNull() && ( (string) tiva->text(i,COL_CONTRAPARTIDAIVA).ascii() != "") ) {
-        contrapartidaiva = "'"+(string) tiva->text(i,COL_CONTRAPARTIDAIVA).ascii()+"'";
-        if (contrapartidaiva.length() != 0) {
-
-          
-           if (!tiva->text(i,COL_BASEIMPIVA).isNull())
-             baseimp = "'"+(string) tiva->text(i,COL_BASEIMPIVA).ascii()+"'";
-           else
-             baseimp="NULL";
-
-           if (!tiva->text(i,COL_IVAIVA).isNull())
-             iva = "'"+(string) tiva->text(i,COL_IVAIVA).ascii()+"'";
-           else
-             iva= "NULL";
-
-           if (!tiva->text(i,COL_FACTURAIVA).isNull())
-             factura = "'"+(string)tiva->text(i,COL_FACTURAIVA).ascii()+"'";
-           else
-             factura = "NULL";
-
-           if (!tiva->text(i,COL_IDBORRADORIVA).isNull())
-             idborrador = "'"+(string)tiva->text(i,COL_IDBORRADORIVA).ascii()+"'";
-           else
-             idborrador = "NULL";
-
-           int algo = atoi(tiva->text(i,COL_IDBORRADORIVA).ascii());
-           tiva->setText(i,COL_IDBINTELIGENTEIVA,tapunts->text(algo,COL_IDBINTELIGENTE));
-           int idbinteligente = atoi(tiva->text(i,COL_IDBINTELIGENTEIVA).ascii());
-
-           if (!tiva->text(i,COL_INCREGISTROIVA).isNull())
-             incregistro = "'"+(string)tiva->text(i,COL_INCREGISTROIVA).ascii()+"'";
-           else
-             incregistro = "NULL";
-             
-           if (!tiva->text(i,COL_REGULARIZACIONIVA).isNull())
-             regularizacion = "'"+(string)tiva->text(i,COL_REGULARIZACIONIVA).ascii()+"'";
-           else
-             regularizacion = "NULL";
-
-           if (!tiva->text(i,COL_PLAN349IVA).isNull())
-             plan349 = "'"+(string)tiva->text(i,COL_PLAN349IVA).ascii()+"'";
-           else
-             plan349 = "NULL";
-                          
-           if (!tiva->text(i,COL_NUMORDENIVA).isNull())
-             numorden = "'"+(string)tiva->text(i,COL_NUMORDENIVA).ascii()+"'";
-           else
-             numorden = "NULL";
-
-           if (!tiva->text(i,COL_CIFIVA).isNull())
-             cif = "'"+(string)tiva->text(i,COL_CIFIVA).ascii()+"'";
-           else
-             cif = "NULL";
-                          
-           sprintf(query,"INSERT INTO ivainteligente (idainteligente, idbinteligente, contrapartida, baseimp, iva, factura, idborrador, incregistro, regularizacion, plan349, numorden, cif) VALUES (%d,%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",idasientointeligente,idbinteligente, contrapartidaiva.c_str(), baseimp.c_str(), iva.c_str(), factura.c_str(), idborrador.c_str(), incregistro.c_str(), regularizacion.c_str(), plan349.c_str(), numorden.c_str(), cif.c_str());
-           conexionbase->ejecuta(query);
-        }// end if
-     }// end if
-  }// end for
-
-  conexionbase->commit();
   cargacombo();
   repinta();
 }// end boton_save
@@ -637,35 +540,6 @@ void ainteligentesview::repinta() {
     i++;
   }// end while
   delete cur;
-
-
-  // Pintamos las entradas de tiva (registro de iva)
-  tiva->setNumRows(0);
-  tiva->setNumRows(100);
-  sprintf(query,"SELECT * FROM ivainteligente WHERE idainteligente=%d",idainteligente);
-  conexionbase->begin();
-  cur = conexionbase->cargacursor(query,"myquery2");
-  conexionbase->commit();
-  i=0;
-  while (!cur->eof()) {
-    tiva->setText(i,COL_IDIVAINTELIGENTE,   cur->valor("idivainteligente"));
-    tiva->setText(i,COL_IDAINTELIGENTEIVA,   cur->valor("idainteligente"));
-    tiva->setText(i,COL_IDBINTELIGENTEIVA,   cur->valor("idbinteligente"));
-    tiva->setText(i,COL_CONTRAPARTIDAIVA, cur->valor("contrapartida"));
-    tiva->setText(i,COL_BASEIMPIVA, cur->valor("baseimp"));
-    tiva->setText(i,COL_IVAIVA, cur->valor("iva")
-	 );
-    tiva->setText(i,COL_FACTURAIVA, cur->valor("factura"));
-    tiva->setText(i,COL_IDBORRADORIVA, cur->valor("idborrador"));
-    tiva->setText(i,COL_INCREGISTROIVA, cur->valor("incregistro"));
-    tiva->setText(i,COL_REGULARIZACIONIVA, cur->valor("regularizacion"));
-    tiva->setText(i,COL_PLAN349IVA, cur->valor("plan349"));
-    tiva->setText(i,COL_NUMORDENIVA, cur->valor("numorden"));
-    tiva->setText(i,COL_CIFIVA, cur->valor("cif"));
-    cur->siguienteregistro();
-    i++;
-  }// end while
-  delete cur;
   oldrow=-1;
   oldcol=-1;
 }// end repinta
@@ -747,8 +621,6 @@ void ainteligentesview::boton_cuentas() {
    listcuentas->exec();
    if (pestanas->currentPageIndex() == 0) {
      tapunts->setText(tapunts->currentRow(), tapunts->currentColumn(), listcuentas->codcuenta);
-   } else if (pestanas->currentPageIndex() == 1) {
-     tiva->setText(tiva->currentRow(), tiva->currentColumn(), listcuentas->codcuenta);
    }// end if
    delete listcuentas;  
 }// end boton_cuentas
@@ -789,26 +661,6 @@ void ainteligentesview::boton_exportar() {
                fprintf(mifile,"         <marcaconciliacion>%s</marcaconciliacion>\n", XMLProtect(cursp1->valor("marcaconciliacion")).ascii());
                fprintf(mifile,"         <idc_coste>%s</idc_coste>\n", XMLProtect(cursp1->valor("idc_coste")).ascii());
                QString SQlQuery2;
-               SQlQuery2.sprintf("SELECT * FROM ivainteligente WHERE idbinteligente=%s", cursp1->valor("idbinteligente").ascii());
-               conexionbase->begin();
-               cursor2 *cursp2 = conexionbase->cargacursor(SQlQuery2,"a2siento");
-               conexionbase->commit();
-               while (!cursp2->eof()) {
-                  fprintf(mifile,"         <ivainteligente>\n");
-                  fprintf(mifile,"            <contrapartida>%s</contrapartida>\n", XMLProtect(cursp2->valor("contrapartida")).ascii());
-                  fprintf(mifile,"            <baseimp>%s</baseimp>\n", XMLProtect(cursp2->valor("baseimp")).ascii());
-                  fprintf(mifile,"            <iva>%s</iva>\n", XMLProtect(cursp2->valor("iva")).ascii());
-                  fprintf(mifile,"            <factura>%s</factura>\n", XMLProtect(cursp2->valor("factura")).ascii());
-                  fprintf(mifile,"            <idborrador>%s</idborrador>\n", XMLProtect(cursp2->valor("idborrador")).ascii());
-                  fprintf(mifile,"            <incregistro>%s</incregistro>\n", XMLProtect(cursp2->valor("incregistro")).ascii());
-                  fprintf(mifile,"            <regularizacion>%s</regularizacion>\n", XMLProtect(cursp2->valor("regularizacion")).ascii());
-                  fprintf(mifile,"            <plan349>%s</plan349>\n", XMLProtect(cursp2->valor("plan349")).ascii());
-                  fprintf(mifile,"            <numorden>%s</numorden>\n", XMLProtect(cursp2->valor("numorden")).ascii());
-                  fprintf(mifile,"            <cif>%s</cif>\n", XMLProtect(cursp2->valor("cif")).ascii());
-                  fprintf(mifile,"         </ivainteligente>\n");
-                  cursp2->siguienteregistro();
-               }// end while
-               delete cursp2;
                fprintf(mifile,"      </binteligente>\n");
                cursp1->siguienteregistro();
             }// end while

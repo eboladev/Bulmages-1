@@ -550,17 +550,51 @@ void intapunts3view::boton_abrirasiento() {
  *********************************************************************/
 void intapunts3view::boton_cerrarasiento() {
     int eleccion;
-    int i=0;
+//    int i=0;
+    fprintf(stderr,"boton_cerrarasiento \n");
     guardaborrador(rowactual);
     if (( descuadre->text() != "0.00") && ( descuadre->text() != "-0.00")) {
         eleccion = QMessageBox::information( 0, "Asiento descuadrado, no se puede cerrar", "El asiento no puede guardarse, desea dejarlo abierto ?");
         return;
     }// end if
 
-    // Recorremos la tabla en busca de entradas de iva no introducidas y las preguntamos antes de cerrar nada.
+    // Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.    
+    // Esta versión se basa en la base de datos pq es mejor ya que así somos más eficaces.
+    QString SQLQuery = "SELECT * FROM borrador, cuenta where borrador.idcuenta = cuenta.idcuenta AND idasiento="+QString::number(atoi(IDASIENTO));
+    conexionbase->begin();
+    cursor2 *cursborr= conexionbase->cargacursor(SQLQuery, "queryborrador");
+    conexionbase->commit();
+    while (!cursborr->eof()) {
+         QString codcuenta = cursborr->valor("codigo");
+         codcuenta = codcuenta.mid(0,1);
+         if (codcuenta == "6" || codcuenta == "7") {
+               fprintf(stderr,"%s\n",codcuenta.ascii());
+               int idborrador = cursborr->valor("idborrador").toInt();
+               QString query= "SELECT bcontrapartidaborr("+QString::number(idborrador)+") AS idborrador";
+               conexionbase->begin();
+               cursor2 *curss = conexionbase->cargacursor(query,"elquerybuscaalgo");
+               conexionbase->commit();
+               if (!curss->eof()) {
+                  idborrador = curss->valor("idborrador").toInt();
+               }// end if
+               delete curss;
+               if (idborrador != 0) {
+                  fprintf(stderr,"ABRIMOS REGISTRO IVAS \n");
+                  ivaview *regivaview=new ivaview(empresaactual,0,"");
+                  regivaview->inicializa1(idborrador);
+                  regivaview->exec();
+                  delete regivaview;
+               }// end if
+         }// end if
+         cursborr->siguienteregistro();
+    }// end while
+    delete cursborr;
+    
+/*    
+    // Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
     while (!tapunts->text(i,COL_IDBORRADOR).isNull()) {
             QString codcuenta = tapunts->text(i,COL_SUBCUENTA);
-            fprintf(stderr,"%s\n",codcuenta.ascii());
+            fprintf(stderr,"BUSCA REGISTROS FACTURAS %s\n",codcuenta.ascii());
             codcuenta = codcuenta.mid(0,2);
             if (codcuenta == "60" || codcuenta == "70") {
                 fprintf(stderr,"%s\n",codcuenta.ascii());
@@ -574,6 +608,7 @@ void intapunts3view::boton_cerrarasiento() {
                 }// end if
                 delete curss;
                 if (idborrador != 0) {
+                    fprintf(stderr,"ABRIMOS REGISTRO IVAS \n");
                     ivaview *regivaview=new ivaview(empresaactual,0,"");
                     regivaview->inicializa1(idborrador);
                     regivaview->exec();
@@ -582,11 +617,10 @@ void intapunts3view::boton_cerrarasiento() {
             }// end if
         i++;
     }// end while
-
+*/
         // Realizamos la operación en la base de datos.
     if (idasiento==-1) idasiento=atoi(IDASIENTO);
     conexionbase->begin();
-    //conexionbase->cierraasiento(atoi(IDASIENTO));
     conexionbase->cierraasiento(idasiento);
     conexionbase->commit();
     asientocerradop();
