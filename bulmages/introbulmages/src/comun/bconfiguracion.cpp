@@ -37,13 +37,13 @@
 BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * name, WFlags f=0) : UIconfiguracion(parent,name,f) {
    PunteroAlSelector=ref;
    comboBoxFuente->insertStringList( (new QFontDatabase)->families() );
-   if (PunteroAlSelector->tipo == "BulmaGés") {
+   if (PunteroAlSelector->m_tipoempresa == "BulmaCont") {
       cargarFichaBulmages();
       m_tab->setTabEnabled(m_tab->page(1),FALSE);
       m_tab->setTabEnabled(m_tab->page(2),FALSE);
       m_tab->setTabEnabled(m_tab->page(3),FALSE);   
    }// end if
-   if (PunteroAlSelector->tipo == "BulmaFact") {
+   if (PunteroAlSelector->m_tipoempresa == "BulmaFact") {
       cargarFichaBulmages();
       m_tab->setTabEnabled(m_tab->page(0),FALSE);
       m_tab->setTabEnabled(m_tab->page(2),FALSE);
@@ -156,7 +156,7 @@ void BConfiguracion::BotonContaplus() {
 
 void BConfiguracion::BotonA_11rechazar() {
 //poner el comboBoxFuente y el comboBoxIdioma a sus valores anteriores.
-   if (PunteroAlSelector->tipo == "BulmaGés") {
+   if (PunteroAlSelector->m_tipoempresa == "BulmaCont") {
       cargarFichaBulmages();
    }// end if
 }// end BotonA_11rechazar

@@ -26,15 +26,18 @@
 #include "uiselector.h"
 #include "bconfiguracion.h"
 
-/** @author Josep Burcion */
+/** @author Josep Burcion 
+  * @brief Muestra un selector de aplicaciones y configuración
+  */
 
 class BSelector : public UIselector {
  Q_OBJECT
 
 public:
+/// Nombre de la base de datos que representa a la empresa.
    QString empresabd;
-   QString ejercicio;   // Indica el ejercicio si hace falta
-   QString tipo;        // Indica si va a ser contabilidad o facturación
+/// Indica si va a ser contabilidad o facturación   
+   QString m_tipoempresa;        
  
 public:
     BSelector(QWidget * parent=0,const char * name=0);

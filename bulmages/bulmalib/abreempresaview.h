@@ -34,17 +34,21 @@
 
 
 class BSelector;
-/** @author Tomeu Borrás Riera */
+/** @author Tomeu Borrás Riera 
+  * @brief  Class that shows the list of companyes to select one
+*/
 
 class abreempresaview : public abreempresadlg  {
    Q_OBJECT
    
 private:
-   QString nombre;
-   QString contrasena;
-   QString empresabd;
-   QString nombreempresa;
-   QString tipo;
+
+   QString m_empresabd;
+   QString m_nombreempresa;
+   /// Se usa para tener presente que tipo de elementos queremos que el selector muestre.
+   QString m_tipo;
+   /// Se usa para devolver el tipo de empresa que se ha seleccionado en el selector.
+   QString m_tipoempresa;
    
 private:   
     int intentos;
@@ -52,11 +56,15 @@ private:
     QString password;
        
 public:
-   QString nomDB() {return empresabd;};
-   QString nomEmpresa() {return nombreempresa;};
-   abreempresaview(QWidget *parent=0,int tipo=0, const char *name=0, bool modal=true);
+   QString nomDB() {return m_empresabd;};
+   QString nomEmpresa() {return m_nombreempresa;};
+   /// Devuelve el tipo de empresa que se ha seleccionado.
+   QString tipoEmpresa() {return m_tipoempresa;};
+   abreempresaview(QWidget *parent=0,QString tipo=0, const char *name=0, bool modal=true);
    ~abreempresaview();
-  /// Listamos las nuevas bases de datos.
+private:
+   void guardaArchivo();
+   void cargaArchivo();
 
 private:
     void insertCompany(QString , QString , QString , QString);
@@ -64,11 +72,13 @@ private:
 
 private slots:
     virtual void closeEvent(QCloseEvent * e);
-    virtual void quit() {exit(1);};
+    virtual void s_botonCancelar() {exit(1);};
         
 public slots:
-   //virtual void slotabreempresaview();
+/// This SLOT is activated to select a company and to press enter.
    virtual void accept();
+/// This SLOT searches in the databases of postgres all the companyes needed.
+   virtual void s_reloadButton();
    
 };
 

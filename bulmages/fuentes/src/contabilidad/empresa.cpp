@@ -70,15 +70,6 @@ empresa::~empresa(){
 }// end ~empresa
 
 
-
-/** *********************************************************************
- *  Esta funcion es una prueba de la nueva conexion a la base de datos *
- *  En estos momentos esta en desuso                                   *
- ***********************************************************************/
-void empresa::testnewdb() {
-}// end testnewdb
-
-
 int empresa::inicializa1(QWorkspace *space) {
    fprintf(stderr,"EMPRESA::inicializa1()\n");
    pWorkspace = space;
@@ -138,29 +129,26 @@ void empresa::maximiza() {
   introapunts1->showMaximized();
 }// end maximiza
 
-// Esta función se usa sólo si se llama a la anterior sin argumentos.
-// Ya no es una reinicialización. Es una inicialización.
+/** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
+  * Al usuario debe seleccionar una empresa y el sistema empieza la inicialización de clases a partir de dicha inicialización.
+  */
 int empresa::cambiarempresa() {
 //El cambio de empresa se realiza desde el selector.
-  fprintf(stderr,"empresa::cambiarempresa\n");
-//  abreempresaview *nuevae = new abreempresaview("Abrir Empresa",true );
-  abreempresaview *nuevae = new abreempresaview(0,0 );
-  
+  fprintf(stderr,"empresa::cambiarempresa vamos a mostrar el abreempresaview\n");
+  abreempresaview *nuevae = new abreempresaview(0,"BulmaCont" );
   nuevae->exec();
-  fprintf(stderr,"fin de la ejecución del formulario de selección de empresa \n");
    fprintf(stderr,"Vamos a cambiar la empresa \n");
    QString bd= nuevae->nomDB();
    fprintf(stderr,"Empresa cambiada a %s\n", bd.ascii());
-   fprintf(stderr,"%s", bd.ascii());
    delete nuevae;
    inicializa(&bd);
   return(0);
 }// end cambiarempresa
 
-/** **********************************************************************
+/** 
  * Esta funcion hace el inicio de la empresa, muestra el dialogo de abrir
  * y hace los pasos necesarios.
-************************************************************************/
+ */
 int empresa::inicializa(QString *DB) {
     nombreDB = *DB;
   return(0);

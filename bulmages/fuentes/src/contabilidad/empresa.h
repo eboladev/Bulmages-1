@@ -45,7 +45,6 @@
  *  
  * Clase que soporta todas las funciones de la empresa contable. Supuestamente el programa podrá tener múltiples empresas abiertas al mismo tiempo.
  */
-
 class empresa {
 private:
   QString nombre;
@@ -112,7 +111,6 @@ public:
   int boton_imprimir();
   int boton_reload();
   int ainteligentes();
-  void testnewdb();
   int ccostes();
   int canales();
   void cierraempresa();

@@ -31,7 +31,7 @@
 
 BSelector::BSelector(QWidget * parent,const char * name) : UIselector(parent,name) {
 //Al crear el selector, todos los modulos estan cerrados = NULL
-
+	m_tipoempresa = "";
 }
 
 
@@ -58,8 +58,8 @@ void BSelector::m_iglues_clicked() {
 
 //Boton para entrar en el modulo de TPV
 void BSelector::m_bulmatpv_clicked() {
-   if (tipo != "BulmaFact" ) {
-      abreempresaview *empcont = new abreempresaview(0,2, "abreempresa", true);
+   if (m_tipoempresa != "BulmaFact" ) {
+      abreempresaview *empcont = new abreempresaview(0,"bulmatpv", "abreempresa", true);
       empcont->exec();
       empresabd = empcont->nomDB();
 //      tipo = empcont->tipo;
@@ -74,24 +74,23 @@ void BSelector::m_bulmatpv_clicked() {
 
 //Boton cambio de Empresa y/o Usuario
 void BSelector::seleccionaempresa_clicked() {
-   abreempresaview *empcont = new abreempresaview(0, 0,"abreempresa", true);
+   abreempresaview *empcont = new abreempresaview(0, "","abreempresa", true);
    empcont->exec();
    empresabd = empcont->nomDB();
-//   tipo = empcont->tipo;
    // Cambiamos el nombre en la pantalla.
    nombreempresa->setText(empcont->nomEmpresa());
+   m_tipoempresa = empcont->tipoEmpresa();
    delete empcont;
 }// end seleccionaempresa_clicked
 
 
 /// Boton para entrar en el modulo de CONTABILIDAD 
 void BSelector::contabilidad_clicked() {
-   if (tipo != "BulmaGés" ) {
-      abreempresaview *empcont = new abreempresaview(0,1, "abreempresa", true);
+   if (m_tipoempresa != "BulmaCont" ) {
+      abreempresaview *empcont = new abreempresaview(0,"BulmaCont", "abreempresa", true);
       empcont->exec();
       empresabd = empcont->nomDB();
-//      tipo = empcont->tipo;
-   }// end while
+   }// end if
    if (empresabd != "") {
       char cadena[300];
       sprintf(cadena,"bulmacont bulmacont %s %s %s", empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
@@ -118,11 +117,10 @@ void BSelector::almacen_clicked() {
 
 //Boton para entrar en el modulo de Facturación
 void BSelector::m_bulmafact_clicked() {
-   if (tipo != "BulmaFact" ) {
-      abreempresaview *empcont = new abreempresaview(0,2, "abreempresa", true);
+   if (m_tipoempresa != "BulmaFact" ) {
+      abreempresaview *empcont = new abreempresaview(0,"BulmaFact", "abreempresa", true);
       empcont->exec();
       empresabd = empcont->nomDB();
-//      tipo = empcont->tipo;
    }// end while
    if (empresabd != "") {
       char cadena[300];

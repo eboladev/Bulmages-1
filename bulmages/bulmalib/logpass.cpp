@@ -30,25 +30,25 @@ logpass::logpass(QWidget *parent, const char *name)
 
 
 logpass::~logpass() {
-   delete metabase;
 }
 
+/** @brief Valida si postgres puede abrir bases de datos y si no es así pide loggin y password
+  */
 void logpass::validar() {
-   login  = postgresiface2::sanearCadena(m_login->text());
-   password = m_password->text();
-   authOK = false;
+   m_login->setText(postgresiface2::sanearCadena(m_login->text()));
+   m_authOK = false;
    
-   //Comprobamos si es un usuario válido
+   ///Comprobamos si es un usuario válido
    metabase = new postgresiface2();
-   if(!metabase->inicializa( "template1", login, password ) ) {
-   	authOK = true;
+   if(!metabase->inicializa( "template1", m_login->text(), m_password->text() ) ) {
+   	m_authOK = true;
    }// end if
    delete metabase;
     
-   //Si es valido abrimos el selector y si no mostramos un error y limpiamos el formulario
-   if (authOK) {
-       	confpr->setValor(CONF_LOGIN_USER,login);
-	confpr->setValor(CONF_PASSWORD_USER,password);
+   ///Si es valido abrimos el selector y si no mostramos un error y limpiamos el formulario
+   if (m_authOK) {
+       	confpr->setValor(CONF_LOGIN_USER,m_login->text());
+	confpr->setValor(CONF_PASSWORD_USER,m_password->text());
       close();
    } else {
       lblAuthError->setText(tr("Error: usuario y/o contraseña incorrectos"));

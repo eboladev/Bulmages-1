@@ -16,10 +16,20 @@
 #include "abreempresaview.h"
 #include "postgresiface2.h"
 
+// Este es el archivo en el que se almacenan las empresas que existen.
+// Es un archivo separado por comas.
+#define LISTEMPRESAS "listempresas.lst"
 
-
-abreempresaview::abreempresaview(QWidget *parent, int tipo, const char *name, bool modal) : abreempresadlg(0,name,modal) {
-   listDB();
+/** \brief se encarga de intentar abrir una nueva empresa
+  * @param parent La ventana que hace la llamada
+  * @param tipo   String que indica si es contabilidad o facturacion (bulmacont, bulmafact)
+  * @param name nombre de la ventana
+  * @param modal Indica si la ventana debe comportar de forma modal o no. (por defecto si)
+  */
+abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name, bool modal) : abreempresadlg(parent,name,modal) {
+   m_tipo = tipo;
+   m_tipoempresa = "";
+   cargaArchivo();
 }// end abreempresaview
 
 
@@ -27,7 +37,12 @@ abreempresaview::~abreempresaview(){
 }// end ~abreempresaview
 
 
-
+/** \brief Inserta una compañia en el QList empresas del dialogo
+  * @param nombre Nombre de la empresa
+  * @param ano Ejercicio de la empresa (aunque pueden ser varios)
+  * @param archivos Nombre de la base de datos
+  * @param tipo Tipo de base de datos (BulmaCont o BulmaFact)
+  */
 void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo, QString tipo) {
             QListViewItem *it =new QListViewItem(empresas);
             it->setText(0,nombre);
@@ -37,12 +52,14 @@ void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo
 }// end insertCompany
 
 
+/** \brief Se ha pulsado sobre el botón de aceptar con lo que iniciamos la variables y cerramos esta ventana ya que ha cumplico con su cometido
+  */
 void abreempresaview::accept() {
    QListViewItem *it;
    it = empresas->currentItem();
-   empresabd= it->text(2);
-   nombreempresa= it->text(0);
-   tipo = it->text(3);
+   m_empresabd= it->text(2);
+   m_nombreempresa= it->text(0);
+   m_tipoempresa = it->text(3);
    close();
 }// end accept
 
@@ -52,10 +69,35 @@ void abreempresaview::closeEvent(QCloseEvent * e) {
 }
 
 
-/** \brief esta función es una primera prueba para empezar a eliminar la metabase.
-Intentará listar todas las bases de datos.
-*/
-void abreempresaview::listDB() {
+/** \brief carga del archivo de empresas las empresas disponibles.
+  */
+void abreempresaview::cargaArchivo() {
+   string dir1 = getenv("HOME");
+   dir1 = dir1 + "/.bulmages/"+LISTEMPRESAS;
+   ifstream filestr(dir1.c_str());
+   string nombre, ano, nombd, tipo;
+        while (filestr.good()) {
+		getline(filestr,nombre,',');
+		getline(filestr,ano,',');
+		getline(filestr,nombd,',');
+		if (getline(filestr,tipo,'\n') ) {
+			QString eltipo=tipo.c_str();
+			fprintf(stderr,"%s\n",tipo.c_str());
+			if (eltipo == m_tipo || m_tipo=="") {
+				insertCompany(nombre.c_str(),ano.c_str(),nombd.c_str(),tipo.c_str());
+			}// end if
+		}// end if
+        }// end while
+   filestr.close();
+}// end cargaArchivo
+
+/** \brief Guarda en el archivo de empresas las empresas disponibles
+  * También actualiza el listado de empresas visibles.
+  */
+void abreempresaview::guardaArchivo() {
+	string dir1 = getenv("HOME");
+	dir1 = dir1 + "/.bulmages/"+LISTEMPRESAS;
+	ofstream filestr((char *) dir1.c_str());
         // Desabilitamos las alertas para que no aparezcan warnings con bases de datos que no son del sistema.
         confpr->setValor(CONF_ALERTAS_DB,"No");
         postgresiface2 *db, *db1;
@@ -91,8 +133,15 @@ void abreempresaview::listDB() {
                 } // end if
                 delete curs1;
                 if (nomdb != "") {
-                        insertCompany(nombre,ano,nomdb,tipo);
-                        nomdb="";
+			if (tipo == m_tipo || m_tipo=="") {
+                        	insertCompany(nombre,ano,nomdb,tipo);
+			}// end if
+			// Independientemente de si deben mostrarse o no hay que guardarlas en el archivo.
+			filestr << nombre << ",";
+			filestr << ano << ",";
+			filestr << nomdb << ",";
+			filestr << tipo  << endl;
+                       	nomdb="";
                 }// end if
                 db1->commit();
                 delete db1;
@@ -101,6 +150,12 @@ void abreempresaview::listDB() {
         delete curs;
         delete db;
         confpr->setValor(CONF_ALERTAS_DB,"Yes");
+	filestr.close();
+}// end guardaArchivo
 
-}// end listDB
+
+void abreempresaview::s_reloadButton() {
+	empresas->clear();
+	guardaArchivo();
+}// end s_reloadButton
 

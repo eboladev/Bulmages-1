@@ -22,7 +22,7 @@ SOURCES += postgresiface2.cpp \
 IDLS += logpassbase.ui \
 	abreempresadlg.ui
 FORMS += logpassbase.ui \
-	abreempresadlg.ui
+	 abreempresadlg.ui
 TEMPLATE = lib
 LANGUAGE = C++
 CONFIG += debug warn_on staticlib

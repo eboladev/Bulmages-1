@@ -46,6 +46,44 @@
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout2</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>281</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
         <widget class="QListView">
             <column>
                 <property name="text">
@@ -149,7 +187,10 @@
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="348">89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff610000012349444154388d8d92314b03411085bf152344b0f0ffff05b10a76b1cb15424a53a4381bb942641612d8855378163b7766e32571e01898b9f7e6b1ef21494a2ab52bcd1aa39a77de93249040b63556cd0a64e6e013ddf7c9c9526702947c5d5fda1df561be9180ea2be4d269057e72fdbc14206b5b4952bb591702270f924406e6c01eb803be8019841000502f980119b8867013900411ae88d1c1b1807386ef0256a7f2e3ccf77388ef6f00e43d700fb5820ce1d6af4a8c3528bba8600eb2ae2c7376b02b9b50103f639876e1822ba30b1fe75c38938be282fd23071714586313491c22777cb92ff3e5d3c215a409059daa90a8f77e94c443c50ccc8bc70701eab6afbf4ada3482c6795f2bc45ebabfccbdeacc9f78136b6cc8cc410dcc23f8fcdbfc001184e7e126370ec80000000049454e44ae426082</data>
+        <data format="PNG" length="310">89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff61000000fd49444154388d8592bb8ec2400c45cf6eb7c5feff4fa0add076d0918e120a8aa19b826222056982d25c8a711e132649a491255bf63db12f92a4a8f435162b91e5bdc52809d2f3e2549d402158f342b47ab461d107018a56ce959a59ecf35709c85e1a2e2d1398e4f97810a0e09c24c95dcf69405c23e8acd8ab7539d13a812903e3c0493d389776d09408a2f27f1c9a9709bea96bf8019e292a782441db0296ff1debf5fd0e40fb045e7c9577b0719581e0b17685155fa42b84c20ee68a5b04950a4eec2d3757ee52fef0bf37825820f0ca4c32dc7fe6c42931fde4fddf4e80fced32923cc6c621dfe5844ca74f95333f2ceda4127c9a26e48bdad8cd1b7d915bdc09c6ecdd0000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="1991">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000078e494441545885c5975f8c5c551dc73f9dde31e7d23b748e74644ec2920eb2dad950b22bc1645030bbb112e0459607634d0c058d69f0c184c2833e69f48d147c6823922e1aa0246a8b21711f202d8426ad11ddd16eec34d9d6bbd875cf40279cc3ee85fb63f776eac39dee76bafd83c6c4dfcb37e7dcdf9fefef777ee7dc73e0ff2cebfe13e5919df33570a3a087c10e8301ecba1e1e077d9cccbe51f77b625556d9c47313e7ff27044676fe7d8789ccc336917b540492384c64b0022a52481263028d15412985883d6a947e7173f2d40419d9dee7f79efbaf088cec9c1f01f734e8af80033504418a8a424c9472ff2038f1485a6672364404100b0260019392c5bb1abcf42b9ff88ff7bfbc7f0d912b12683c31bf431237612283cd34aa0a8f6e4d19bb2da456064ac032505c4567a1390b079ad06c8374a630ca601379e5fe68df77e2769cec7f79ffd2c571d65f21f31dd9929b2030244af3f868ca0feecd181b09a1006109dc2284613fea1ba05c8687be0c55e538f9fe2dd8850ea0ea3352b96ff05333bf1bb879e0e3d6c956f78a041a4fe4c14db946e533259e7a10ee1d2aa2cb455880f03a3e117e6e73c8d86781ae667a3ec3a8d28dada5ad4377ddd8fe7da55ae95e20d1476064e7fc48b6e426090ca54f073cf38d22e1f5292a2832b7b08a713b63eae41c1d0f33f36d545973a69312a97ebd4dd715a954527c5262badd014a833349e958bd74e69f03370f9c6b9d6c9d2ff4e7ef9e37918648f3a3fb4252a01c84789fe3fe37a7483b422d0a7960b4c65d0dcdd8700d3c8484b4dafdfab10713853c360a8d2d35c062caf51f03ba5eabafefabc0c8cebfec80caf79282e2f151309b324aaa88f5294555a4357b8287b6dd4ee5c690505fc4b908a51b406b70097416727debd315fbf0ba226a83e3c83f6e21f968c6cc75eff2d1d26bcdc61d8da5950a18651e06a86fd6986a880a42520f2a0889e71c638da1cbf56bbf484fbf67b762efa1be49333eec50918140c64d64ca40b1d05bfb9a157b0fca30622c2a80d83b04689d9a62aca1af1e186019bce4768a55fbd83b5406c74e59340ac900ccf064a7510754d0a33eaa944114d4ab06eb412bcde1e913ecdafe8535b1a69a601398f550af429ae5f3b31da857f58afdb1532969aa39780a943288802987d8768c2ad7be2422cdde12a861118b29435b563318db5a5b13fca9572c36c9f53697733d326827ab63058cdd098f3d18b26b3b28c84f49c065000a11bf45a1c21e013b6ca21a65056534b33e4713f4073f70046a9159f97e29b6e29847b7691eb87b4d6b60542fd508c061a2daad80ea113058f19415b4bc25050eb7624c3dec7724d04e2c65b58ade4f317e5bca43db60d7b7d756ec8258b9a812410d9bd87540f1420fac53511511d018ac4b09a9ae75e253fca261ca8251867ad531b66d6d8f5c4ef2bf685e891841451a49a4d023a0101fe3cb434c590781061cee6c88aeac3a996c850879262de0b15175cdc069dacb3cc9d10a9009220e85e2420f1c374ae304044d3b01d0c473fdce0eec20ff13066022383ad7bf449713ef7b3d10e5764a01584ca44f03dd1e017ddc8ac54bbebdd20ce204268fa57dcef400fcf4c17cce26b0e70df8c3b1f8aa04e24e8a0ac0c92a2130581f9f0696f325c8d23754d4dba7d5dcb989e0b00ff9560cb58b7aab361072f887e0ce82eda40cd5afdc78002ec9ab64a29edf002c820ad494205200a8fb9fc522f62862f10968959f6a5ac1f77f0bcead75ac2b3054bff612cc76dc8abf3000db3901305d67df3b0a95160054596546e917414833280750dfb48abb5ec833bea6a4979912bde2c779504a83c4af9bc87c08a4eb019a534deedeba38dd2e7cedab92ccdc6436192838068210d775948290d74e3a6421248c406fb824ca321c38ea387828647adef1c5cfe7954917e1376fe7f676c1d19ef76462a71b85979ef14bfedd80c0af9c752632cbcd247ed244b5b75ab396f186c1a72943a1c6a6500b35cd3329ed4e988f75bea534605330a146540aa2d9f5cb94ba09895dca90d6d845883b02584c20bf20c39bc8789bd8e595fbc0913f1e393f7e87b2ada5019775f5bd33ed33d46fd248b7c3c0c61267534bb05123a965606309bb68614369657cf1f7da0d1abbd81b2f5ade3a91902c58c8787ab0fbeca180c0fa25ef279e9b3877c98d88ecfe68f259b2f8498d66f2cf1e5d2ce332a86983eae1271de3520e9f049f584ca09e6eb0efa089ccbb823813990c2eb913be3df536835b07cfd568fdadb534f041d6d5db9ab33159b74cb4b183894af88f1c9528bc3aaa90c966cc91131922bdccb39f1fec65fe9e42a5bbf7ec3ebf8640af21cfdf79c79dd9edd1dc5f6792d23113d5b6c41d6f66de0fe874320635248454af0f49966053b48a33ff72c4efc1ab7ff27809c8c44e9b82fc646bf7d7872a51a5ed97fc7b26321feddeb37be55a7ec587c923df7da4a0504a10dde4f14740c609cc70efc5830a2ca66c00874b345ef2f9fcbb9e46e2d71bc1815705f10ad511c42994ec7d6e6ff7e238577d9a8d7f7dbc50afd5d7dbc46e3091294f761af5fc26e3b798a876ab4d64ddea5b519fb6de9d56814cd5d9f78e89cc872e711f2074db8bed4eb55495bd2ff407bf26810bb2fd9bdbd74b2621b0916534f9eebbbe5aa99e11a4a05008d255a8654144a1d2f6d9f67a55541f10905eee4d7841fe0d206cd9cf093f2da10000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -160,16 +201,22 @@
         <slot>accept()</slot>
     </connection>
     <connection>
-        <sender>botonCancelar</sender>
-        <signal>clicked()</signal>
-        <receiver>abreempresadlg</receiver>
-        <slot>quit()</slot>
-    </connection>
-    <connection>
         <sender>empresas</sender>
         <signal>doubleClicked(QListViewItem*)</signal>
         <receiver>abreempresadlg</receiver>
         <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>abreempresadlg</receiver>
+        <slot>s_reloadButton()</slot>
+    </connection>
+    <connection>
+        <sender>botonCancelar</sender>
+        <signal>clicked()</signal>
+        <receiver>abreempresadlg</receiver>
+        <slot>s_botonCancelar()</slot>
     </connection>
 </connections>
 <tabstops>
@@ -177,7 +224,8 @@
     <tabstop>botonCancelar</tabstop>
 </tabstops>
 <slots>
-    <slot>quit()</slot>
+    <slot>s_reloadButton()</slot>
+    <slot>s_botonCancelar()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

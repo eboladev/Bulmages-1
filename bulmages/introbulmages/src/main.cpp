@@ -29,12 +29,13 @@ if (confpr->valor(CONF_TRADUCCION) == "locales") {
     bw->setCaption( "BulmaGés Selector" );
     a.setMainWidget(bw);
     
-     
+/// Lo primero que hacemos es comprobar el sistema de autentificación de Postgres para pedir un loggin y un password en caso de que sea necesario para entrar en el sistema.     
     logpass *login1 = new logpass(0,"");
-    if (!login1->authOK) {
+    if (!login1->authOK()) {
 	login1->exec();
     }// end if
-    
+
+/// Una vez que hemos pasado por el sistema de loggin y password y ya somos autenticos podemos mostrar el selector de acciones.
     bw->show();
     return a.exec();   //QLabel *lblAuthError;
 //    delete login1;

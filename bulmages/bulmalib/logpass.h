@@ -30,10 +30,8 @@
 class logpass : public logpassbase
 {
 Q_OBJECT
-public:
-   QString login;
-   QString password;
-   bool authOK;
+private:
+   bool m_authOK;
    
 private:
    postgresiface2 *metabase;
@@ -41,7 +39,7 @@ private:
 public:
     logpass(QWidget *parent = 0, const char *name = 0);
     ~logpass();
-    
+    bool authOK() {return m_authOK;};
 public slots:
    virtual void validar();
 
