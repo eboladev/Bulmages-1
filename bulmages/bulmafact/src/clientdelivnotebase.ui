@@ -395,7 +395,7 @@
                                     </property>
                                     <widget class="QToolButton">
                                         <property name="name">
-                                            <cstring>m_newBudgetLine</cstring>
+                                            <cstring>m_newClientDelivNoteLine</cstring>
                                         </property>
                                         <property name="text">
                                             <string></string>
@@ -406,7 +406,7 @@
                                     </widget>
                                     <widget class="QToolButton">
                                         <property name="name">
-                                            <cstring>m_removeBudgetLine</cstring>
+                                            <cstring>m_removeClientDelivNoteLine</cstring>
                                         </property>
                                         <property name="text">
                                             <string></string>
@@ -478,7 +478,7 @@
                                     </property>
                                     <widget class="QToolButton">
                                         <property name="name">
-                                            <cstring>m_newBudgetLine_2</cstring>
+                                            <cstring>m_newClientDelivNoteLine_2</cstring>
                                         </property>
                                         <property name="text">
                                             <string></string>
@@ -489,7 +489,7 @@
                                     </widget>
                                     <widget class="QToolButton">
                                         <property name="name">
-                                            <cstring>m_removeBudgetLine_2</cstring>
+                                            <cstring>m_removeClientDelivNoteLine_2</cstring>
                                         </property>
                                         <property name="text">
                                             <string></string>
@@ -766,28 +766,28 @@
         <slot>s_clientDelivNoteDateLostFocus()</slot>
     </connection>
     <connection>
-        <sender>m_newBudgetLine</sender>
+        <sender>m_newClientDelivNoteLine</sender>
         <signal>clicked()</signal>
         <receiver>ClientDelivNoteBase</receiver>
-        <slot>s_newBudgetLine()</slot>
+        <slot>s_newClientDelivNoteLine()</slot>
     </connection>
     <connection>
-        <sender>m_newBudgetLine_2</sender>
+        <sender>m_newClientDelivNoteLine_2</sender>
         <signal>clicked()</signal>
         <receiver>ClientDelivNoteBase</receiver>
-        <slot>s_newBudgetDiscountLine()</slot>
+        <slot>s_newClientDelivNoteDiscountLine()</slot>
     </connection>
     <connection>
-        <sender>m_removeBudgetLine</sender>
+        <sender>m_removeClientDelivNoteLine</sender>
         <signal>clicked()</signal>
         <receiver>ClientDelivNoteBase</receiver>
-        <slot>s_removeBudgetLine()</slot>
+        <slot>s_removeClientDelivNoteLine()</slot>
     </connection>
     <connection>
-        <sender>m_removeBudgetLine_2</sender>
+        <sender>m_removeClientDelivNoteLine_2</sender>
         <signal>clicked()</signal>
         <receiver>ClientDelivNoteBase</receiver>
-        <slot>s_removeBudgetDiscountLine()</slot>
+        <slot>s_removeClientDelivNoteDiscountLine()</slot>
     </connection>
     <connection>
         <sender>pushButton1</sender>
@@ -811,29 +811,29 @@
         <sender>toolButton1_2_2</sender>
         <signal>clicked()</signal>
         <receiver>ClientDelivNoteBase</receiver>
-        <slot>s_saveBudget()</slot>
+        <slot>s_saveClientDelivNote()</slot>
     </connection>
     <connection>
         <sender>toolButton1_2_3</sender>
         <signal>clicked()</signal>
         <receiver>ClientDelivNoteBase</receiver>
-        <slot>s_removeBudget()</slot>
+        <slot>s_removeClientDelivNote()</slot>
     </connection>
 </connections>
 <slots>
     <slot>s_searchClient()</slot>
     <slot>s_clientDelivNoteDateLostFocus()</slot>
     <slot>s_clientDelivNoteExpiryLostFocus()</slot>
-    <slot>s_newBudgetLine()</slot>
-    <slot>s_removeBudgetLine()</slot>
-    <slot>s_valueBudgetLineChanged(int,  int)</slot>
+    <slot>s_newClientDelivNoteLine()</slot>
+    <slot>s_removeClientDelivNoteLine()</slot>
+    <slot>s_valueClientDelivNoteLineChanged(int,  int)</slot>
     <slot>s_accept()</slot>
     <slot>s_cancel()</slot>
-    <slot>s_newBudgetDiscountLine()</slot>
-    <slot>s_removeBudgetDiscountLine()</slot>
-    <slot>s_valueBudgetDiscountLineChanged(int, int)</slot>
-    <slot>s_saveBudget()</slot>
-    <slot>s_removeBudget()</slot>
+    <slot>s_newClientDelivNoteDiscountLine()</slot>
+    <slot>s_removeClientDelivNoteDiscountLine()</slot>
+    <slot>s_valueClientDelivNoteDiscountLineChanged(int, int)</slot>
+    <slot>s_saveClientDelivNote()</slot>
+    <slot>s_removeClientDelivNote()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

@@ -50,11 +50,13 @@ CREATE TABLE albaran (
 #define COL_FECHAALBARAN 1
 #define COL_NOMCLIENTE 2
 #define COL_IDFORMA_PAGO 3
-#define COL_NUMFACTURA 4
-#define COL_NUMNOFACTURA 5
-#define COL_IDUSUARIO 6
-#define COL_IDCLIENTE 7
-
+#define COL_DESCFORMA_PAGO 4
+#define COL_NUMFACTURA 5
+#define COL_NUMNOFACTURA 6
+#define COL_IDUSUARIO 7
+#define COL_IDCLIENTE 8
+#define COL_IDALBARAN 9
+#define COL_COMENTALBARAN 10
 
 ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const char *name, int flag)
  : ClientDelivNotesListBase(parent, name, flag) {
@@ -74,7 +76,7 @@ void ClientDelivNotesList::inicializa() {
    m_list->setSorting( TRUE );
    m_list->setSelectionMode( QTable::SingleRow );
    m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(8);
+   m_list->setNumCols(11);
 	m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
    m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "Nº Presupuesto" ) );
    m_list->horizontalHeader()->setLabel( COL_FECHAALBARAN, tr( "Fecha" ) );
@@ -83,6 +85,9 @@ void ClientDelivNotesList::inicializa() {
    m_list->horizontalHeader()->setLabel( COL_NUMNOFACTURA, tr( "Nº No Fra." ) );
    m_list->horizontalHeader()->setLabel( COL_IDUSUARIO, tr("COL_IDUSUARIO") );
    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
+	m_list->horizontalHeader()->setLabel( COL_IDALBARAN, tr("COL_IDALBARAN") );
+	m_list->horizontalHeader()->setLabel( COL_COMENTALBARAN, tr("Comentario") );
+	m_list->horizontalHeader()->setLabel( COL_DESCFORMA_PAGO, tr("Forma de Pago") );
    m_list->setColumnWidth(COL_NUMALBARAN,75);
    m_list->setColumnWidth(COL_FECHAALBARAN,100);
    m_list->setColumnWidth(COL_IDFORMA_PAGO,75);
@@ -91,7 +96,13 @@ void ClientDelivNotesList::inicializa() {
    m_list->setColumnWidth(COL_IDUSUARIO,75);
    m_list->setColumnWidth(COL_IDCLIENTE,75);
 	m_list->setColumnWidth(COL_NOMCLIENTE,200);
+	m_list->setColumnWidth(COL_IDALBARAN,75);
+	m_list->setColumnWidth(COL_COMENTALBARAN,200);
+	m_list->setColumnWidth(COL_DESCFORMA_PAGO,200);
+	
 	m_list->hideColumn(COL_IDCLIENTE);
+	m_list->hideColumn(COL_IDALBARAN);
+	m_list->hideColumn(COL_IDFORMA_PAGO);
 	//m_list->hideColumn(COL_IDUSUARI);
          
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
@@ -104,36 +115,40 @@ void ClientDelivNotesList::inicializa() {
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {
-         
-         m_list->setText(i,COL_NUMALBARAN,cur->valor("numalbaran"));
-         m_list->setText(i,COL_FECHAALBARAN,cur->valor("fechaalbaran"));
-         m_list->setText(i,COL_IDFORMA_PAGO,cur->valor("idforma_pago"));
-         m_list->setText(i,COL_NUMFACTURA,cur->valor("numfactura"));
-         m_list->setText(i,COL_NUMNOFACTURA,cur->valor("numnofactura"));
-         m_list->setText(i,COL_IDUSUARIO,cur->valor("idusuario"));
-         m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
-			m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
-         i++;
-         cur->siguienteregistro();
-    }// end while
-      delete cur;
+		m_list->setText(i,COL_NUMALBARAN,cur->valor("numalbaran"));
+		m_list->setText(i,COL_FECHAALBARAN,cur->valor("fechaalbaran"));
+		m_list->setText(i,COL_IDFORMA_PAGO,cur->valor("idforma_pago"));
+		m_list->setText(i,COL_NUMFACTURA,cur->valor("numfactura"));
+		m_list->setText(i,COL_NUMNOFACTURA,cur->valor("numnofactura"));
+		m_list->setText(i,COL_IDUSUARIO,cur->valor("idusuario"));
+		m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
+		m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
+		m_list->setText(i,COL_IDALBARAN,cur->valor("idalbaran"));
+		m_list->setText(i,COL_COMENTALBARAN,cur->valor("comentalbaran"));
+		
+		companyact->begin();
+		cursor2 * cur2= companyact->cargacursor("SELECT * FROM forma_pago where idforma_pago="+cur->valor("idforma_pago"),"qryforma_pago");
+		companyact->commit();
+		m_list->setText(i,COL_DESCFORMA_PAGO,cur2->valor("descforma_pago"));
+		delete cur2;
+		i++;
+		cur->siguienteregistro();
+	}// end while
+	delete cur;
 }// end inicializa
 
 
 
 void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
-   m_idclidelivnote = m_list->text(a,COL_NUMALBARAN);
-   if (m_modo ==0 && m_idclidelivnote != "") {
+	m_idclidelivnote = m_list->text(a,COL_NUMALBARAN);
+	if (m_modo ==0 && m_idclidelivnote != "") {
 		fprintf(stderr,"Iniciamos el boton_crear\n");
 		ClientDelivNote *cDelivNote = new ClientDelivNote(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
 		cDelivNote->chargeClientDelivNote(m_idclidelivnote);
 		cDelivNote->show();
-/*      Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albaranes", "company"));
-      bud->chargeClientDelivNote(m_idclidelivnote);
-      bud->show();*/
-   } else {
-      close();
-   }// end if
+	} else {
+		close();
+	}// end if
 }
 
 
@@ -160,19 +175,14 @@ void ClientDelivNotesList::s_removeClientDelivNote() {
 	fprintf(stderr,"Iniciamos el boton_borrar\n");
 	if (m_list->currentRow() >= 0) {
 		if (QMessageBox::warning( this, "BulmaFact - Albaranes", "Desea borrar el albarán seleccionado", "Sí", "No") == 0) {
-		/*	companyact->begin();
-			QString SQLQuery = "DELETE FROM lpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+			companyact->begin();
+			QString SQLQuery = "DELETE FROM lalbaran WHERE idalbaran ="+m_list->text(m_list->currentRow(),COL_IDALBARAN);
 			if (companyact->ejecuta(SQLQuery)==0){
-				QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+				QString SQLQuery = "DELETE FROM dalbaran WHERE idalbaran ="+m_list->text(m_list->currentRow(),COL_IDALBARAN);
 					if (companyact->ejecuta(SQLQuery)==0){
-						QString SQLQuery = "DELETE FROM prfp WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+						QString SQLQuery = "DELETE FROM albaran WHERE idalbaran ="+m_list->text(m_list->currentRow(),COL_IDALBARAN);
 						if (companyact->ejecuta(SQLQuery)==0){
-							QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-							if (companyact->ejecuta(SQLQuery)==0){
-								companyact->commit();
-							} else {
-								companyact->rollback();
-							}
+							companyact->commit();
 						} else {
 							companyact->rollback();
 						}
@@ -181,7 +191,7 @@ void ClientDelivNotesList::s_removeClientDelivNote() {
 				}
 			} else {
 				companyact->rollback();
-			} */
+			}
 		}
 	}
 	inicializa();

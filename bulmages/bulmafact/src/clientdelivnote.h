@@ -72,7 +72,7 @@ protected:
 	 
 public slots:
    virtual void s_searchClient();
-	virtual void s_delivNoteDateLostFocus();
+	virtual void s_clientDelivNoteDateLostFocus();
 	virtual void s_newClientDelivNoteLine();
 	virtual void s_removeClientDelivNoteLine();
 	virtual void s_newClientDelivNoteDiscountLine();

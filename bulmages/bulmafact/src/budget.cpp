@@ -391,22 +391,26 @@ void Budget::valueBudgetLineChanged(int row, int col) {
 			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, m_list->text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
 			float discountLine = m_list->text(row, COL_DESCUENTOLPRESUPUESTO).toFloat();
 			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, QString().sprintf("%0.2f", discountLine));
+			break;
 		}
 		case COL_CODARTICULO: {
 			manageArticle(row);
 			calculateImports();
+			break;
 		}
 		case COL_CANTLPRESUPUESTO: {
 			m_list->setText(row, COL_CANTLPRESUPUESTO, m_list->text(row, COL_CANTLPRESUPUESTO).replace(",","."));
 			float cantLine = m_list->text(row, COL_CANTLPRESUPUESTO).toFloat();
 			m_list->setText(row, COL_CANTLPRESUPUESTO, QString().sprintf("%0.3f", cantLine));
 			calculateImports();
+			break;
 		}
 		case COL_PVPLPRESUPUESTO: {
 			m_list->setText(row, COL_PVPLPRESUPUESTO, m_list->text(row, COL_PVPLPRESUPUESTO).replace(",","."));
 			float pvpLine = m_list->text(row, COL_PVPLPRESUPUESTO).toFloat();
 			m_list->setText(row, COL_PVPLPRESUPUESTO, QString().sprintf("%0.2f", pvpLine));
 			calculateImports();
+			break;
 		}
 	}
 } //end valueBudgetLineChanged
@@ -435,6 +439,7 @@ void Budget::valueBudgetDiscountLineChanged(int row, int col) {
 			float proporcionLine = m_listDiscounts->text(row, COL_DESCUENTO_PROPORCIONDPRESUPUESTO).toFloat();
 			m_listDiscounts->setText(row, COL_DESCUENTO_PROPORCIONDPRESUPUESTO, QString().sprintf("%0.2f", proporcionLine));
 			calculateImports();
+			break;
 		}
 	}
 } //end valueBudgetDiscountLineChanged
@@ -773,6 +778,10 @@ bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
 					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
 						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
 					}
+					if (QString(obj->name()).stripWhiteSpace() == "m_listDiscount") {
+						valueBudgetDiscountLineChanged(t->currentRow(), t->currentColumn());
+					}
+					nextCell(obj);
 					return TRUE;
 				}
 			} 
@@ -811,7 +820,7 @@ void Budget::nextCell(QObject *obj) {
 					col++;
 				} else {
 					t->setCurrentCell(row, col);
-					//t->editCell(row, col);
+					t->editCell(row, col);
 					break;
 				}
 			}

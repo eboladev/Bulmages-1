@@ -124,21 +124,7 @@ ClientDelivNote::~ClientDelivNote() {
 void ClientDelivNote::inicialize() {
 	installEventFilter(this);
 	m_list->installEventFilter( this );
-	m_listDiscounts->installEventFilter( this );
-	
-/*	m_comboformapago->clear();
-	QString query = "SELECT * FROM prfp WHERE numalbaran="+m_numalbaran;
-	companyact->begin();
-	cursor2 * cur1= companyact->cargacursor(query, "querypresupuesto");
-	companyact->commit();
-	if (!cur1->eof()) {
-		cargarcomboformapago(cur1->valor("idforma_pago"));
-	} else {
-		cargarcomboformapago("0");	
-	}// end if
-	delete cur1; */
-
-	
+	m_listDiscounts->installEventFilter( this );	
 	
 // Inicializamos la tabla de lineas de albarán
 	m_list->setNumRows( 0 );
@@ -242,8 +228,12 @@ void ClientDelivNote::chargeClientDelivNote(QString iddeliveryNote) {
 		chargeClientDelivNoteLines(iddeliveryNote);
 		chargeClientDelivNoteDiscounts(iddeliveryNote);
 		calculateImports();
-    }// end if
-     delete cur;   
+		m_comboformapago->clear();
+		cargarcomboformapago(cur->valor("idforma_pago"));
+	} else {
+		cargarcomboformapago("0");
+   }// end if
+	delete cur;
 	  
 	m_initialValues = calculateValues();
 }// end chargeClientDelivNote
@@ -305,7 +295,7 @@ void ClientDelivNote::chargeClientDelivNoteDiscounts(QString iddeliveryNote) {
 	while (!cur->eof()) {
 		m_listDiscounts->setText(i,COL_DESCUENTO_NUMDALBARAN,cur->valor("numdalbaran"));
 		m_listDiscounts->setText(i,COL_DESCUENTO_CONCEPTDALBARAN,cur->valor("conceptdalbaran"));
-		m_listDiscounts->setText(i,COL_DESCUENTO_PROPORCIONDALBARAN,QString().sprintf("%0.2f",cur->valor("proporciondalbaran").toFloat()));
+		m_listDiscounts->setText(i,COL_DESCUENTO_PROPORCIONDALBARAN,QString().sprintf("%0.2f",cur->valor("propordalbaran").toFloat()));
 		i++;
 		cur->siguienteregistro();
 	}// end while
@@ -336,7 +326,7 @@ void ClientDelivNote::s_searchClient() {
 }// end searchClient
 
 
-void ClientDelivNote::s_delivNoteDateLostFocus() {
+void ClientDelivNote::s_clientDelivNoteDateLostFocus() {
 	m_fechaalbaran->setText(normalizafecha(m_fechaalbaran->text()).toString("dd/MM/yyyy"));
 }
 
@@ -357,15 +347,10 @@ void ClientDelivNote::s_removeClientDelivNote() {
 		if (companyact->ejecuta(SQLQuery)==0){
 			QString SQLQuery = "DELETE FROM dalbaran WHERE idalbaran ="+m_idalbaran;
 				if (companyact->ejecuta(SQLQuery)==0){
-					QString SQLQuery = "DELETE FROM prfp WHERE idalbaran ="+m_idalbaran;
+					QString SQLQuery = "DELETE FROM albaran WHERE idalbaran ="+m_idalbaran;
 					if (companyact->ejecuta(SQLQuery)==0){
-						QString SQLQuery = "DELETE FROM albaran WHERE idalbaran ="+m_idalbaran;
-						if (companyact->ejecuta(SQLQuery)==0){
-							companyact->commit();
-							close();
-						} else {
-							companyact->rollback();
-						}
+						companyact->commit();
+						close();
 					} else {
 						companyact->rollback();
 					}
@@ -395,22 +380,28 @@ void ClientDelivNote::s_valueClientDelivNoteLineChanged(int row, int col) {
 			m_list->setText(row, COL_DESCUENTOLALBARAN, m_list->text(row, COL_DESCUENTOLALBARAN).replace(",","."));
 			float discountLine = m_list->text(row, COL_DESCUENTOLALBARAN).toFloat();
 			m_list->setText(row, COL_DESCUENTOLALBARAN, QString().sprintf("%0.2f", discountLine));
+			calculateImports();
+			break;
 		}
 		case COL_CODARTICULO: {
 			manageArticle(row);
 			calculateImports();
+			break;
 		}
 		case COL_CANTLALBARAN: {
 			m_list->setText(row, COL_CANTLALBARAN, m_list->text(row, COL_CANTLALBARAN).replace(",","."));
 			float cantLine = m_list->text(row, COL_CANTLALBARAN).toFloat();
+			qDebug("Cantidad albaran = %s",m_list->text(row, COL_CANTLALBARAN).ascii());
 			m_list->setText(row, COL_CANTLALBARAN, QString().sprintf("%0.3f", cantLine));
 			calculateImports();
+			break;
 		}
 		case COL_PVPLALBARAN: {
 			m_list->setText(row, COL_PVPLALBARAN, m_list->text(row, COL_PVPLALBARAN).replace(",","."));
 			float pvpLine = m_list->text(row, COL_PVPLALBARAN).toFloat();
 			m_list->setText(row, COL_PVPLALBARAN, QString().sprintf("%0.2f", pvpLine));
 			calculateImports();
+			break;
 		}
 	}
 } //end valueClientDelivNoteLineChanged
@@ -439,6 +430,7 @@ void ClientDelivNote::s_valueClientDelivNoteDiscountLineChanged(int row, int col
 			float proporcionLine = m_listDiscounts->text(row, COL_DESCUENTO_PROPORCIONDALBARAN).toFloat();
 			m_listDiscounts->setText(row, COL_DESCUENTO_PROPORCIONDALBARAN, QString().sprintf("%0.2f", proporcionLine));
 			calculateImports();
+			break;
 		}
 	}
 } //end valueClientDelivNoteDiscountLineChanged
@@ -551,19 +543,20 @@ int ClientDelivNote::saveClientDelivNote() {
 	
 	if (m_idalbaran != "0") {
 		SQLQuery = "UPDATE albaran SET numalbaran="+m_numalbaran->text();
-      SQLQuery += " , fechaalbaran='"+ m_fechaalbaran->text()+"'";
-      SQLQuery += " , comentalbaran='"+m_comentalbaran->text()+"'";
+		SQLQuery += " , fechaalbaran='"+ m_fechaalbaran->text()+"'";
+		SQLQuery += " , comentalbaran='"+m_comentalbaran->text()+"'";
 		SQLQuery += " , idcliente="+m_idclient;
-		SQLQuery += " , numalbaran="+m_numalbaran->text();
-      SQLQuery += " WHERE idalbaran ="+m_idalbaran;
+		SQLQuery += " , idforma_pago="+m_cursorcombo->valor("idforma_pago",m_comboformapago->currentItem());
+		SQLQuery += " WHERE idalbaran ="+m_idalbaran;
 	} else {
-		SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran, idcliente)";
+		SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran, idcliente, idforma_pago)";
 		SQLQuery += " VALUES (";
 		SQLQuery += m_numalbaran->text();
 		SQLQuery += " , '"+m_fechaalbaran->text()+"'";
-      SQLQuery += " , '"+m_comentalbaran->text()+"'";
+		SQLQuery += " , '"+m_comentalbaran->text()+"'";
 		SQLQuery += " , "+m_idclient;
-      SQLQuery += " ) ";
+		SQLQuery += " , "+m_cursorcombo->valor("idforma_pago",m_comboformapago->currentItem());
+		SQLQuery += " ) ";
 	}
 	return companyact->ejecuta(SQLQuery);
 } //end saveClientDelivNote
@@ -628,7 +621,7 @@ int ClientDelivNote::updateClientDelivNoteLine(int i) {
 
 int ClientDelivNote::insertClientDelivNoteLine(int i) {
 	QString SQLQuery ="";
-	SQLQuery = "INSERT INTO lalbaran (desclalbaran, cantlalbaran, pvplalbaran, desclalbaran, idalbaran, idarticulo)";
+	SQLQuery = "INSERT INTO lalbaran (desclalbaran, cantlalbaran, pvplalbaran, descontlalbaran, idalbaran, idarticulo)";
 	SQLQuery += " VALUES (";
 	SQLQuery += "'"+m_list->text(i,COL_DESCLALBARAN)+"'";
 	SQLQuery += " , "+m_list->text(i,COL_CANTLALBARAN);
@@ -642,14 +635,14 @@ int ClientDelivNote::insertClientDelivNoteLine(int i) {
 
 
 int ClientDelivNote::deleteClientDelivNoteLine(int line) {
-	QString SQLQuery = "DELETE FROM lalbaran WHERE numlalbaran ="+m_list->text(line,COL_NUMLALBARAN);
+	QString SQLQuery = "DELETE FROM lalbaran WHERE numlalbaran ="+m_list->text(line,COL_NUMLALBARAN)+" and idalbaran="+m_idalbaran;
 	return companyact->ejecuta(SQLQuery);
 } //end deleteClientDelivNoteLine
 
 
 int ClientDelivNote::updateClientDelivNoteDiscountLine(int i) {
 	QString SQLQuery = "UPDATE dalbaran SET conceptdalbaran='"+m_listDiscounts->text(i,COL_DESCUENTO_CONCEPTDALBARAN)+"'";
-	SQLQuery += " , proporciondalbaran="+ m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDALBARAN);
+	SQLQuery += " , propordalbaran="+ m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDALBARAN);
 	SQLQuery += " WHERE idalbaran ="+m_idalbaran+" AND numdalbaran="+m_listDiscounts->text(i,COL_DESCUENTO_NUMDALBARAN);
 	return companyact->ejecuta(SQLQuery);
 } //end updateClientDelivNoteDiscountLine
@@ -657,18 +650,18 @@ int ClientDelivNote::updateClientDelivNoteDiscountLine(int i) {
 
 int ClientDelivNote::insertClientDelivNoteDiscountLine(int i) {
 	QString SQLQuery ="";
-	SQLQuery = "INSERT INTO dalbaran (conceptdalbaran, proporciondalbaran, numalbaran)";
+	SQLQuery = "INSERT INTO dalbaran (conceptdalbaran, propordalbaran, idalbaran)";
 	SQLQuery += " VALUES (";
 	SQLQuery += "'"+m_listDiscounts->text(i,COL_DESCUENTO_CONCEPTDALBARAN)+"'";
 	SQLQuery += " , "+m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDALBARAN);
-	SQLQuery += " , "+m_numalbaran->text();
+	SQLQuery += " , "+m_idalbaran;
 	SQLQuery += " ) ";
 	return companyact->ejecuta(SQLQuery);
 } //end insertClientDelivNoteDiscountLine
 
 
 int ClientDelivNote::deleteClientDelivNoteDiscountLine(int line) {
-	QString SQLQuery = "DELETE FROM dalbaran WHERE numdalbaran ="+m_listDiscounts->text(line,COL_DESCUENTO_NUMDALBARAN);
+	QString SQLQuery = "DELETE FROM dalbaran WHERE numdalbaran ="+m_listDiscounts->text(line,COL_DESCUENTO_NUMDALBARAN)+" and idalbaran="+m_idalbaran;
 	return companyact->ejecuta(SQLQuery);
 } //end deleteClientDelivNoteDiscountLine
 
@@ -734,6 +727,10 @@ bool ClientDelivNote::eventFilter( QObject *obj, QEvent *ev ) {
 					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
 						s_valueClientDelivNoteLineChanged(t->currentRow(), t->currentColumn());
 					}
+					if (QString(obj->name()).stripWhiteSpace() == "m_listDiscounts") {
+						s_valueClientDelivNoteDiscountLineChanged(t->currentRow(), t->currentColumn());
+					}
+					nextCell(obj);
 					return TRUE;
 				}
 			} 
@@ -772,7 +769,7 @@ void ClientDelivNote::nextCell(QObject *obj) {
 					col++;
 				} else {
 					t->setCurrentCell(row, col);
-					//t->editCell(row, col);
+					t->editCell(row, col);
 					break;
 				}
 			}
@@ -810,7 +807,7 @@ void ClientDelivNote::duplicateCell(QObject *obj) {
 	QTable *t = (QTable *)obj;
 	int row = t->currentRow();
 	int col = t->currentColumn();
-	if (t->text(row, col) == "" && row>0) {
+	if ((t->text(row, col) == ""||t->text(row, col) == "*") && row>0) {
 		t->setText(row, col, t->text(row-1, col));
 	}
 }
