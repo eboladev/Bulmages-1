@@ -11,7 +11,7 @@
 #               $2 Nombre Base de Datos
 #               $3 Tipo:  0.- Base (Vacia)
 #			  1.- Plan Contable.
-#			  2.- Juego de prueba de bulmages
+#			  2.- Juego de prueba de bulmafact
 #                         3.- La metabase
 #		$4 Nombre de la Empresa.
 #		$5 Ejercicio (ano)
@@ -78,7 +78,7 @@ createdb -E SQL_ASCII $2 2>> /tmp/errores1.txt > /dev/null
 if [ "$3" = "1" -o "$3" = "2" ]; then
    info "Importamos el esquema de base de datos de una empresa. \n"
    tiempo
-   psql $2 < crear/bulmafact/bulmafact_schema.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmafact/bulmafact_schema.sql 2>> /tmp/errores1.txt > /dev/null
 else
    info "Importamos el esquema de la metabd. \n"
    tiempo
@@ -98,6 +98,7 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo
    info "Cargamos el conjunto minimo de datos. \n"
    tiempo
+   psql $2 < crear/bulmafact/bulmafact_data.sql 2>> /tmp/errores1.txt > /dev/null
 #   psql $2 < crear/bulmafact/t_configuracion_data.pgdump 2>> /tmp/errores1.txt > /dev/null
 #   psql $2 < crear/bulmafact/t_tiposiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
 #   psql $2 < crear/bulmafact/t_grupo_data.pgdump 2>> /tmp/errores1.txt > /dev/null

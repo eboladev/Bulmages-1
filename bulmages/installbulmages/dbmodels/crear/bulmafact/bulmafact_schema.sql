@@ -764,19 +764,3 @@ CREATE TABLE usuarios (
     PRIMARY KEY ("login")
     
 );
-
-
-INSERT INTO meta (id, valor) VALUES ('version', 'bulmafact 0.0.1');
-INSERT INTO meta (id, valor) VALUES ('empresa', 'Template_Data_Base');
-
-INSERT INTO usuarios (login, nombre, apellido1, apellido2, clave, permisos) 
-     VALUES ('bulmages', 'Superusuario', 'BulmaFact', 'Bulmafact', 'bulmages', 'entrada{+},');
-
-
-INSERT INTO division (descdivision) VALUES ('una division');
-INSERT INTO proveedor (iddivision, nomproveedor, cifproveedor, cpproveedor) VALUES (1,'Tomeu', '45678098D', '07008');
-INSERT INTO proveedor (iddivision, nomproveedor, cifproveedor, cpproveedor) VALUES (1,'Cristina', '45679998D', '07008');
-INSERT INTO proveedor (iddivision, nomproveedor, cifproveedor, cpproveedor) VALUES (1,'Marco Aurelio', '45668998D', '07008');
-INSERT INTO proveedor (iddivision, nomproveedor, cifproveedor, cpproveedor) VALUES (1,'Torrijas', '45678995D', '07008');
- 
-

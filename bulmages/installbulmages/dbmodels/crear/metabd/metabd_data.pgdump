@@ -13,10 +13,3 @@ INSERT INTO usuario ( nombre, apellido1, apellido2, login, password) VALUES ('To
 
 
 
-INSERT INTO empresafact (nombre, ano, nombredb, password, ejant) VALUES ('Bulmafact', 2004, 'bulmafact', 'bulmafact', 2003);
-INSERT INTO empresafact (nombre, ano, nombredb, password, ejant) VALUES ('Empresa vacia', 2004, 'bulmaprueba', 'bulmaprueba', 2003);
-
-INSERT INTO usuario_empresafact (idempresafact, idusuario, permisos) VALUES (2,2,1);
-INSERT INTO usuario_empresafact (idempresafact, idusuario, permisos) VALUES (1,2,1);
-INSERT INTO usuario_empresafact (idempresafact, idusuario, permisos) VALUES (2,1,1);
-INSERT INTO usuario_empresafact (idempresafact, idusuario, permisos) VALUES (2,2,1);
