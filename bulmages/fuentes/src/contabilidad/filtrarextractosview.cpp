@@ -19,6 +19,7 @@
 #include "empresa.h"
 
 filtrarextractosview::filtrarextractosview(empresa *emp,QWidget *parent, const char *name ) : filtrarextractosdlg(parent,name) {
+	fprintf(stderr,"Constructor de filtrarextractosview\n");
 	empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
@@ -26,7 +27,9 @@ filtrarextractosview::filtrarextractosview(empresa *emp,QWidget *parent, const c
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
    cargacostes();
 
-}
+   fprintf(stderr,"Fin del constructor de fitrarextractosview\n");
+}// end filtrarextractosview
+
 
 filtrarextractosview::~filtrarextractosview(){
 }
@@ -39,15 +42,18 @@ void filtrarextractosview::cargacostes() {
    conexionbase->begin();
    cursor2 *cursorcoste = conexionbase->cargacursor(query,"costes");
    conexionbase->commit();
+   fprintf(stderr,"Terminada la operativa con la base de datos\n");
    combocoste->insertItem("--",0);
    ccostes[0]=0;
    int i=1;
+   fprintf(stderr,"Vamos a iterear\n");
    while (!cursorcoste->eof()) {
       combocoste->insertItem(cursorcoste->valor(2),-1);
       ccostes[i++] = atoi(cursorcoste->valor(0).latin1());
       cursorcoste->siguienteregistro();
    }// end while
    delete cursorcoste;
+   fprintf(stderr,"Terminada la carga de los centros de coste\n");
 }// end cargacostes
 
 

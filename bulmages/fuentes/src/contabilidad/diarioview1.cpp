@@ -24,11 +24,13 @@
 #include <qlayout.h>
  
  
+#include "empresa.h"
 #include "diarioview1.h"
 #include "funcaux.h"
 #include "diarioprintview.h"
 #include "diarioprint.h"
 #include "configuracion.h"
+#include "calendario.h"
 
 // Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
@@ -49,7 +51,10 @@
 #define COL_CONTRAPARTIDA 9
 #define COL_NUMASIENTO 10
 
-diarioview1::diarioview1(QWidget *parent, const char *name, int flags ) : diariodlg1(parent,name, flags) {
+diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int flags ) : diariodlg1(parent,name, flags) {
+	empresaactual = emp;
+   conexionbase = empresaactual->bdempresa();
+   
   delete listado1;
    listado = new QTable1(this,"");
    listado->setSorting( FALSE );
@@ -117,7 +122,10 @@ diarioview1::diarioview1(QWidget *parent, const char *name, int flags ) : diario
    fechafinal1->setText(cadena);
 
    //Inicializamos el filtro
-	filt = new filtrardiarioview(0,0);       
+	filt = new filtrardiarioview(empresaactual,0,0);       
+	// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
+   cargacostes();
+
 }// end diarioview1
 
 diarioview1::~diarioview1(){
@@ -130,15 +138,17 @@ void diarioview1::inicializa2(intapunts3view *inta, extractoview1 *ext, balancev
   balance=bal;
 }// end inicializa2
 
-
+/*
 void diarioview1::inicializa(postgresiface2 *conn){
+// OBSOLETO, estas inicializaciones estan en el constructor de la clase
    conexionbase = conn;
    // Inicializamos la ventana de filtro 
 	filt->inicializa(conn);
 	// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
    cargacostes();
-}// end inicializa
 
+}// end inicializa
+*/
 
 void diarioview1::cargacostes() {
    filt->cargacostes();
@@ -488,10 +498,49 @@ void diarioview1::contextmenu(int row, int col, const QPoint &poin) {
 					boton_balance1(2);
 		  }// end switch
      delete popup;
+     // PAra no ver el warning, utilizamos las variables.
+     row=col=0;
 }// end contextmenu
 
 void diarioview1::boton_filtrar() {
    filt->exec();
    accept();
 }// end boton_filtrar
+
+
+// Cuando se ha pulsado una tecla sobre la fecha del extracto
+// Se evalua si la pulsación es un código de control o es un digitos
+// Para la introducción de fechas.
+void diarioview1::textChanged(const QString &texto) {
+	QLineEdit *fecha = (QLineEdit *) sender();
+    if (texto=="+") {
+        QList<QDate> a;
+        fecha->setText("");
+        calendario *cal = new calendario(0,0);
+        cal->exec();
+        a = cal->dn->selectedDates();
+        fecha->setText(a.first()->toString("dd/MM/yyyy"));
+        delete cal;
+    }// end if
+    if (texto=="*")
+        fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
+}// end fecha_textChanged
+
+// cuando pulsamos el boton de la fecha
+// es como si escribiesemos un + en el texto
+void diarioview1::boton_fechainicial() {
+	fechainicial1->setText("+");
+   fechainicial1->selectAll();
+   fechainicial1->setFocus();
+}// end boton_fechainicial
+
+// cuando pulsamos el boton de la fecha
+// es como si escribiesemos un + en el texto
+void diarioview1::boton_fechafinal() {
+	fechafinal1->setText("+");
+   fechafinal1->selectAll();
+   fechafinal1->setFocus();
+}// end boton_fechainicial
+
+
 

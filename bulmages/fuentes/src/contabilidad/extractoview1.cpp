@@ -36,7 +36,6 @@
 
 extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, int flags ) : extractodlg1(parent,name,flags) {
 	empresaactual = emp;
-   // Ya podemos saber cual es la conexion a la base de datos desde el constructor sin llamar al inicializador.
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
   
@@ -123,7 +122,7 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
 
    // Inicializamos la ventana de filtrado
    filt = new filtrarextractosview(empresaactual,0,0);
-
+   fprintf(stderr,"fin del constructor de extractoview1\n");
 }// end estractoview1
 
 
@@ -620,6 +619,8 @@ void extractoview1::contextmenu(int row, int col, const QPoint &poin) {
 					boton_balance1(2);
 		  }// end switch
         delete popup;
+        // Para evitar los warnings establecemos las variables a 0
+        row=col=0;
 }// end contextmenu
 
 

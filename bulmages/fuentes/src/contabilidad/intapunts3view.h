@@ -90,7 +90,7 @@ public:
     void bajarapunte(int);
     void iniciar_asiento_nuevo();
 public slots:
-    virtual void tpulsado(int , int, int, const QPoint &);
+//    virtual void tpulsado(int , int, int, const QPoint &);
     virtual void contextmenu(int, int,const QPoint &);
     virtual void currentChanged();
     virtual void apuntecambiadogrid(int, int);
@@ -119,6 +119,7 @@ public slots:
     virtual void return_numasiento();
     virtual void editarasiento();
     virtual void boton_duplicarasiento();
+    virtual void boton_fecha();
 
 };
 

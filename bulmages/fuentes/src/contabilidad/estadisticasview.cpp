@@ -110,6 +110,8 @@ void estadisticasview::presentar() {
       query.sprintf("DELETE FROM balance WHERE debe=0 AND haber =0");
       conexionbase->ejecuta(query);
 
+      conexionbase->commit();
+      conexionbase->begin();
       // Para evitar problemas con los nulls hacemos algunos updates
       query.sprintf("UPDATE BALANCE SET tsaldo=0 WHERE tsaldo ISNULL");
       conexionbase->ejecuta(query);
@@ -120,20 +122,32 @@ void estadisticasview::presentar() {
       query.sprintf("UPDATE BALANCE SET asaldo=0 WHERE asaldo ISNULL");
       conexionbase->ejecuta(query);
 
+      conexionbase->commit();
+      conexionbase->begin();
+
 		query.sprintf("SELECT idcuenta FROM balance ORDER BY padre DESC");
 		cursorapt = conexionbase->cargacursor(query,"Balance1view");
-		while (!cursorapt->eof())  {
+      conexionbase->commit();
+      conexionbase->begin();
+
+      while (!cursorapt->eof())  {
          query.sprintf("SELECT * FROM balance WHERE idcuenta=%s",cursorapt->valor("idcuenta").latin1());
          cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
-			query.sprintf("UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").latin1()), atof(mycur->valor("tdebe").latin1()), atof(mycur->valor("thaber").latin1()),atof(mycur->valor("asaldo").latin1()),  atoi(mycur->valor("padre").latin1()));
+			conexionbase->commit();
+	      conexionbase->begin();
+
+         query.sprintf("UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").latin1()), atof(mycur->valor("tdebe").latin1()), atof(mycur->valor("thaber").latin1()),atof(mycur->valor("asaldo").latin1()),  atoi(mycur->valor("padre").latin1()));
 //			fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
 			conexionbase->ejecuta(query);
          delete mycur;
 			cursorapt->siguienteregistro();
 		}// end while
 		delete cursorapt;
+      
+      conexionbase->commit();
+      conexionbase->begin();
+
       // Borramos todo lo que no es de este nivel
-//      sprintf(query,"DELETE FROM balance where nivel(codigo)>%s",combonivel->text(combonivel->currentItem()).latin1());
       query.sprintf("DELETE FROM balance where nivel(codigo)>%s","2");
       conexionbase->ejecuta(query);
 
@@ -141,6 +155,8 @@ void estadisticasview::presentar() {
       query.sprintf("DELETE FROM balance WHERE idcuenta IN (SELECT padre FROM balance)");
       conexionbase->ejecuta(query);
 
+      conexionbase->commit();
+      conexionbase->begin();
 
 		query.sprintf("SELECT * FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo");
 		cursorapt = conexionbase->cargacursor(query,"mycursor");
@@ -154,18 +170,7 @@ void estadisticasview::presentar() {
       j=0;
       while (!cursorapt->eof()) {
          // Acumulamos los totales para al final poder escribirlos
-/*
-         // Hacemos la insercion de los campos en la tabla.
-         listado->setText(j,CUENTA,cursorapt->valor("codigo").c_str());
-         listado->setText(j,DENOMINACION,cursorapt->valor("descripcion").c_str());
-         listado->setText(j,SALDO_ANT,QString::number(atof(cursorapt->valor("asaldo").c_str()),'f',2));
-         listado->setText(j,DEBE,QString::number(atof(cursorapt->valor("tdebe").c_str()),'f',2));
-         listado->setText(j,HABER,QString::number(atof(cursorapt->valor("thaber").c_str()),'f',2));
-         listado->setText(j,SALDO,QString::number(atof(cursorapt->valor("tsaldo").c_str()),'f',2));
-         listado->setText(j, DEBEEJ,QString::number(atof(cursorapt->valor("debe").c_str()),'f',2));
-         listado->setText(j, HABEREJ,QString::number(atof(cursorapt->valor("haber").c_str()),'f',2));
-         listado->setText(j, SALDOEJ,QString::number(atof(cursorapt->valor("saldo").c_str()),'f',2));
-*/
+
          float valor =  atof(cursorapt->valor("tsaldo").latin1());
          if (valor > 0)
                   pie->addValue(valor,cursorapt->valor("descripcion").mid(0,25).latin1());

@@ -44,6 +44,9 @@ void cuentaview::cambiapadre(const QString &cadena)  {
       }// end if
       delete cursoraux;
    }// end if
+   
+   // PAra quitar el warning
+   cadena.isNull();
 }// end cambiapadre
 
 
@@ -80,8 +83,6 @@ void cuentaview::aceptar() {
       tipocuenta = 5;
    else
       tipocuenta = 0;
-   fprintf(stderr,"Tipo de cuenta: %d\n",tipocuenta);
-
    // Si se trata de una modificacion modificamos y si se trata de
    // una insercion insertamos.
    if (idcuenta != 0) {
@@ -99,7 +100,6 @@ void cuentaview::aceptar() {
       delete cursoraux;
    }// end if
    // Liberamos memoria y terminamos.
-   fprintf(stderr,"Terminamos aceptar\n");
    done(1);
 }// end accept
 
@@ -147,12 +147,7 @@ int cuentaview::cargacuenta(int idcuenta1){
     } else {
        bloqueada->setChecked(false);
     }// end if
-/*    if (strcmp((char *) cursorcuenta->valor(13).c_str() , "f")) {
-       activo->setChecked(true);
-    } else {
-       activo->setChecked(false);
-    }// end if
-*/    if (cursorcuenta->valor(3)!= "f") {
+    if (cursorcuenta->valor(3)!= "f") {
        imputacion->setChecked(true);
     } else {
        imputacion->setChecked(false);
@@ -238,7 +233,7 @@ int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
 	 conexionbase->commit();
 	 long int valor = atol(cur->valor("maximo").latin1());
 	 valor ++;
-	 cpadreaux.sprintf("%d",valor);
+	 cpadreaux.setNum(valor);
 	 codigo->setText(cpadreaux);
 	 
 	 // Establecemos el valor del padre y del grupo.

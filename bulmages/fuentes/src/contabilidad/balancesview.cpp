@@ -139,6 +139,10 @@ void balancesview::dbtabla(int row, int colummn, int button,const QPoint &mouse)
       nombalance = listado->text(listado->currentRow(),COL_NOMBRE).latin1();
       close();
    }// end if
+   
+   // Para quitar el warning
+   colummn=button=0;
+   mouse.isNull();
 }// end dbtabla
 
 void balancesview::imprimir() {

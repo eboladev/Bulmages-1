@@ -29,6 +29,9 @@ QTable1::QTable1(QWidget * parent, const char * name ):QTable(parent, name ) {
 
 void QTable1::sortColumn ( int col, bool ascending, bool wholeRows) {
     QTable::sortColumn(col,ascending,true);
+    
+    // Para quitar el warning
+    wholeRows=FALSE;
 }
 
 QWidget *QTable1::beginEdit(int row, int col, bool type) {

@@ -165,10 +165,7 @@ public:
     /** change the status message of the whole statusbar temporary */
     void slotStatusHelpMsg(const QString &text);
     /** gets called when the window menu is activated; recreates the window menu with all opened window titles. */
-    void windowMenuAboutToShow();
-    /** activates the MDI child widget when it gets selected from the window menu. */
-    void windowMenuActivated( int id );
-    
+    void windowMenuAboutToShow();    
     
   private:
 

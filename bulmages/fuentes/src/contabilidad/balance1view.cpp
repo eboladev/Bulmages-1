@@ -59,9 +59,7 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
 
    fprintf(stderr,"BALANCE1VIEW: Constructor\n");
 	empresaactual = emp;
-
-   
-   cursor2 *cursoraux1;
+//   cursor2 *cursoraux1;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
@@ -128,24 +126,6 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
 
 balance1view::~balance1view(){
 }
-
-
-void balance1view::inicializa(postgresiface2 *conn){
-/* OBSOLETO, PASADO AL CONSTRUCTOR DE LA CLASE
-   fprintf(stderr,"BALANCE1VIEW::inicializa \n");
-   cursor2 *cursoraux1;
-   conexionbase = conn;
-   // Vamos a cargar el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
-   conexionbase->begin();
-   QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-   cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
-   numdigitos=cursoraux1->valor(2).length();
-   conexionbase->commit();
-   delete cursoraux1;
-   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-   cargacostes();
-*/
-}// end inicializa
 
 
 void balance1view::inicializa2(intapunts3view *inta, diarioview1 *diar, extractoview1 *extract) { 
@@ -552,6 +532,10 @@ void balance1view::contextmenu( QListViewItem * item, const QPoint & poin, int c
 					boton_extracto1(2);
 		  }// end switch
    delete popup;
+   
+   // Para evitar el warning al compilar.
+   item=NULL;
+   col=0;
 }// end contextmenu
 
 

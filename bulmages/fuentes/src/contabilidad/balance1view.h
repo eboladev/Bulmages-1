@@ -68,7 +68,6 @@ public:
   balance1view(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
   void inicializa1(QString, QString, QString, QString, int);
   ~balance1view();
-  void inicializa(postgresiface2 *);
   void inicializa2(intapunts3view *, diarioview1 *, extractoview1 *);
   void cargacostes();
   void boton_extracto1(int);

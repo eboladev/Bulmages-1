@@ -417,6 +417,10 @@ void listcuentasview1::dbtabla(int row, int colummn, int button,const QPoint &mo
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);
     listdblpulsada(it);
+    
+    //PAra quitar el warning
+    colummn=button=0;
+    mouse.isNull();
 }// end dbtabla
 
 void listcuentasview1::return_codigo() {

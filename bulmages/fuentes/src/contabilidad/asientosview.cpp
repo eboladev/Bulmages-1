@@ -57,6 +57,9 @@ void asientosview::pulsado(int a, int b, int c,const QPoint &punto) {
   introapunts->show();
   introapunts->setFocus();
   done(1);
+  // Para quitar el warning
+  a=b=c=0;
+  punto.isNull();
 }// end pulsado
 
 

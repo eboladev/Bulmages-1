@@ -1009,13 +1009,6 @@ void Bulmages01::windowMenuAboutToShow()  {
 }// end windowMenuAboutToShow
 
 
-void Bulmages01::windowMenuActivated( int id )  {
-/*
-  QWidget* w = pWorkspace->windowList().at( id );
-  if ( w )
-    w->setFocus();
-*/
-}// end windowMenuActivated
 
 void Bulmages01::slotWindowNewWindow() {
 }// end slotWindowNewWindow

@@ -276,14 +276,6 @@ void compbalanceview::listadopulsado(int row, int col, int a, const QPoint &mous
          concepto->setText(curs->valor("concepto"));
 //         idmpatrimonial = listado->text(row,COL_IDMPATRIMONIAL).latin1();
          idmpatrimonial = curs->valor("idmpatrimonial").latin1();
-//         query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial = "+idmpatrimonial;
-//         conexionbase->begin();
-//         cursor1 *curs1 = conexionbase->cargacursor(query,"cursmpatrim");
-//         conexionbase->commit();
-//         if (!curs1->eof()) {
-//7            mpatrimonial->setText(curs1->valor("descmpatrimonial").c_str());
-//7         }// end if
-///         delete curs1;
 
          query = "SELECT * FROM compmasap LEFT JOIN cuenta ON compmasap.idcuenta = cuenta.idcuenta LEFT JOIN mpatrimonial ON compmasap.idmpatrimonial = mpatrimonial.idmpatrimonial WHERE masaperteneciente = "+idmpatrimonial;
          QString formula1;
@@ -310,6 +302,10 @@ void compbalanceview::listadopulsado(int row, int col, int a, const QPoint &mous
          formula->setText(formula1);
       }// end if
       delete curs;
+      
+      // Para quitar el warning
+      col=a=0;
+      mouse.isNull();
 }// end listadopulsado
 
 

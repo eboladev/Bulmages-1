@@ -59,13 +59,10 @@
 intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name ) : intapunts3dlg(parent,name) {
     empresaactual = emp;
 
-    //   tapunts =  tapunts3;
     tapunts = new QTable1(this,"");
     tapunts->setGeometry( QRect( 10, 75, 693, 260 ) );
     tapunts->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)1, 0, 0, tapunts->sizePolicy().hasHeightForWidth() ) );
-    //   tapunts->setPaletteBackgroundColor( QColor( 255, 255, 255 ) );
     QFont tapunts_font(  tapunts->font() );
-    //    tapunts_font.setPointSize( 9 );
     tapunts_font.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_APUNTES).c_str()));
     tapunts_font.setFamily(confpr->valor(CONF_FONTFAMILY_APUNTES).c_str());
     tapunts->setFont( tapunts_font );
@@ -84,8 +81,6 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name ) 
     connect( tapunts, SIGNAL( contextMenuRequested(int,int,const QPoint&) ), this, SLOT( contextmenu(int,int,const QPoint&) ) );
     connect( tapunts, SIGNAL( pulsadomas(int, int, int)), this, SLOT(pulsadomas(int, int, int)));
 
-    //   numapuntes=0;
-    //   idasiento = 0;
     tapunts->setNumCols(16);
     tapunts->horizontalHeader()->setLabel( COL_FECHA, tr( "FECHA" ) );
     tapunts->horizontalHeader()->setLabel( COL_SUBCUENTA, tr( "SUBCUENTA" ) );
@@ -114,12 +109,11 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name ) 
     tapunts->setColumnWidth(COL_CANAL, 75);
     tapunts->hideColumn(COL_IDBORRADOR);
     tapunts->hideColumn(COL_TIPOIVA);
-    //    tapunts->hideColumn(COL_CONTRAPARTIDA);
+
     tapunts->hideColumn(COL_IDCUENTA);
     tapunts->hideColumn(COL_IDCONTRAPARTIDA);
     tapunts->hideColumn(COL_IDCANAL);
     tapunts->hideColumn(COL_IDCCOSTE);
-    //   asientocerradop();
 
     // Dependiendo de la configuración mostramos o no mostramos la contrapartida, los canales y los centros de coste
     if (confpr->valor(CONF_CONTRAPARTIDA_APUNTES) != "YES")
@@ -194,9 +188,7 @@ void intapunts3view::cargarcursor(int numasiento) {
     saldototal = filt->saldoasiento->text();
     nombreasiento = filt->nombreasiento->text();
 
-
     int pand=0;
-
     if (cursorasientos != NULL )
         delete cursorasientos;
 
@@ -474,37 +466,12 @@ void intapunts3view::repinta() {
     }// end while
 
 
-    //    tapunts->insertRows(num,1);
     cadena.sprintf("%d",ordenasiento);
     idasiento1->setText(cadena);
 
-    // Vamos a establecer la fecha del asiento
-    /*sobra
-    QString s1, s2, s3;
-    int dia, mes, ano;
-    s1= fechaasiento2;
-    s2=s1.left(2);
-    dia = atoi(s2.latin1());
-    s2=s1.mid(3,2);
-    mes = atoi(s2.latin1());
-    s2=s1.mid(6,4);
-    ano = atoi(s2.latin1());
-
-    QDate fechaaux;
-    fechaaux.setYMD(ano,mes,dia);
-    //   fechaasiento->setDate(fechaaux);
-    QString cadena2;
-    cadena2.sprintf("%2.2d/%2.2d/%4.4d",fechaaux.day(), fechaaux.month(), fechaaux.year());
-    fechaasiento1->setText(cadena2);
-    
-    //fechaasiento1->setText(normalizafecha(fechaasiento2.left(10)).toString("dd/MM/yyyy"));
-    fechaasiento1->setText(fechaasiento2.left(12));
-    */
     QDate * aux = new QDate();
     //si  datestyle = 'sql, european'
     aux->setYMD(fechaasiento2.mid(6,4).toInt(),fechaasiento2.mid(3,2).toInt(),fechaasiento2.mid(0,2).toInt());
-    //si  datestyle = 'iso, us'
-    //aux->setYMD(fechaasiento2.mid(6,4).toInt(),fechaasiento2.mid(0,2).toInt(),fechaasiento2.mid(3,2).toInt());
 
     fechaasiento1->setText(aux->toString("dd/MM/yyyy"));
     delete cursorasiento;
@@ -524,13 +491,10 @@ void intapunts3view::vaciarapuntes()  {
 
 void intapunts3view::asientoabiertop()  {
     descuadre->setEnabled(TRUE);
-    //   codigocontrapartida->setEnabled(TRUE);
-    //   buscarcontrapartida->setEnabled(TRUE);
     botonborrarasiento->setEnabled(FALSE);
     nuevoasiento->setEnabled(FALSE);
     botonabrirasiento->setEnabled(FALSE);
     botoncerrarasiento->setEnabled(TRUE);
-    //    tapunts->setPaletteBackgroundColor(QColor(white));
     tapunts->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTESA).c_str());
     tapunts->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTESA).c_str());
     tapunts->setReadOnly(FALSE);
@@ -547,7 +511,6 @@ void intapunts3view::asientocerradop() {
     botonabrirasiento->setEnabled(TRUE);
     botoncerrarasiento->setEnabled(FALSE);
     abierto = 0;
-    //    tapunts->setPaletteBackgroundColor(QColor(230,230,150));
     tapunts->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTES).c_str());
     tapunts->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTES).c_str());
     tapunts->setReadOnly(TRUE);
@@ -649,11 +612,6 @@ void intapunts3view::iniciar_asiento_nuevo() {
 
 }
 
-void intapunts3view::tpulsado(int row, int col, int c, const QPoint &poin) {
-    fprintf(stderr,"tpulsado:: row:%d, col:%d\n", row, col);
-}// end tpulsado
-
-
 
 void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
     QPopupMenu *popup;
@@ -666,57 +624,55 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
     if (abierto) {
         // Si el asiento esta abierto mostramos el popup para asientos abiertos
         popup = new QPopupMenu;
-        popup->insertItem("Igual que la anterior (*)",4);
+        popup->insertItem(tr("Igual que la anterior (*)"),4);
         switch (col) {
         case COL_CANAL:
             query = "SELECT * FROM canal";
             conexionbase->begin();
             cur = conexionbase->cargacursor(query,"canales");
-            menucanal->insertItem("Ninguno", 1000);
+            menucanal->insertItem(tr("Ninguno"), 1000);
             conexionbase->commit();
             while (!cur->eof()) {
                 menucanal->insertItem(cur->valor("nombre"),1000+atoi(cur->valor("idcanal").latin1()));
                 cur->siguienteregistro();
             }// end while
             delete cur;
-            popup->insertItem("&Seleccionar Canal",menucanal);
+            popup->insertItem(tr("&Seleccionar Canal"),menucanal);
             break;
         case COL_CCOSTE:
             query = "SELECT * FROM c_coste";
             conexionbase->begin();
             cur  = conexionbase->cargacursor(query,"costes");
-            menucoste->insertItem("Ninguno", 1000);
+            menucoste->insertItem(tr("Ninguno"), 1000);
             conexionbase->commit();
             while (!cur->eof()) {
                 menucoste->insertItem(cur->valor("nombre"), 1000+atoi(cur->valor("idc_coste").latin1()));
                 cur->siguienteregistro();
             }// end while
             delete cur;
-            popup->insertItem("&Seleccionar Centro de Coste",menucoste);
+            popup->insertItem(tr("&Seleccionar Centro de Coste"),menucoste);
             break;
         case COL_SUBCUENTA:
         case COL_CONTRAPARTIDA:
         case COL_FECHA:
         case COL_NOMCUENTA:
-            popup->insertItem("Seleccionar Valor (+)",5);
+            popup->insertItem(tr("Seleccionar Valor (+)"),5);
             break;
         case COL_DEBE:
         case COL_HABER:
-            popup->insertItem("Introducir Descuadre (+)",5);
+            popup->insertItem(tr("Introducir Descuadre (+)"),5);
             break;
         }// end switch
         popup->insertSeparator();
-        popup->insertItem("Duplicar Apunte",1);
-        popup->insertItem("Borrar Apunte",6);
+        popup->insertItem(tr("Duplicar Apunte"),1);
+        popup->insertItem(tr("Borrar Apunte"),6);
         popup->insertSeparator();
-        popup->insertItem("Subir (Ctrl Arriba)",2);
-        popup->insertItem("Bajar (Ctrl Abajo)",3);
+        popup->insertItem(tr("Subir (Ctrl Arriba)"),2);
+        popup->insertItem(tr("Bajar (Ctrl Abajo)"),3);
         opcion = popup->exec(poin);
         delete popup;
         delete menucanal;
         delete menucoste;
-
-        fprintf(stderr,"La opcion pulsada es:%d\n",opcion);
 
         switch(opcion) {
         case 1:
@@ -822,19 +778,21 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
     } else {
         // Si el asiento esta cerrado el menu a mostrar es diferente
         popup = new QPopupMenu;
-        popup->insertItem("Ver Diario (Este dia)",101);
-        //       popup->insertItem("Ver Diario (Esta semana)",102);
-        popup->insertItem("Ver Diario (Este mes)",103);
-        popup->insertItem("Ver Diario (Este año)",104);
+        popup->insertItem(tr("Ver Diario (Este dia)"),101);
+        popup->insertItem(tr("Ver Diario (Este mes)"),103);
+        popup->insertItem(tr("Ver Diario (Este año)"),104);
         popup->insertSeparator();
-        popup->insertItem("Ver Extracto (Este dia)",111);
-        //        popup->insertItem("Ver Extracto (Esta semana)",112);
-        popup->insertItem("Ver Extracto (Este mes)",113);
-        popup->insertItem("Ver Extracto (Este año)",114);
+        popup->insertItem(tr("Ver Extracto (Este dia)"),111);
+        popup->insertItem(tr("Ver Extracto (Este mes)"),113);
+        popup->insertItem(tr("Ver Extracto (Este año)"),114);
         popup->insertSeparator();
-        popup->insertItem("Ver Balance (Este dia)",121);
-        popup->insertItem("Ver Balance (Este mes)",123);
-        popup->insertItem("Ver Balance (Este año)",124);
+        popup->insertItem(tr("Ver Balance (Este dia)"),121);
+        popup->insertItem(tr("Ver Balance (Este mes)"),123);
+        popup->insertItem(tr("Ver Balance (Este año)"),124);
+        popup->insertSeparator();
+        if (col == COL_NOMCUENTA || col == COL_CONTRAPARTIDA || col == COL_SUBCUENTA) {
+        		popup->insertItem(tr("Editar Cuenta"),130);
+        }// end if
         opcion = popup->exec(poin);
         switch(opcion) {
         case 101:
@@ -908,17 +866,7 @@ void intapunts3view::tcambiaseleccion() {
     if (rowactual != tapunts->currentRow() && abierto)
         guardaborrador(rowactual);
     rowactual = tapunts->currentRow();
-/*    
-    if (!tapunts->text(rowactual,COL_SUBCUENTA).isEmpty() && abierto) {
-        codcuenta = tapunts->text(rowactual,COL_SUBCUENTA);
-    }
-        else {
-            codcuenta = "000";
-    }
-    codcuenta = codcuenta.mid(0,3);
-    botoniva->setEnabled((codcuenta == "472") + (codcuenta == "477") );
-*/
-}
+}// end tcambiaseleccion
 
 
 void intapunts3view::currentChanged() {
@@ -1240,7 +1188,7 @@ void intapunts3view::cambiadasubcuenta(int row) {
             tapunts->setText(row,COL_NOMCUENTA,cursorcta->valor(2));
             tapunts->setText(row,COL_IDCUENTA,cursorcta->valor("idcuenta"));
         } else {
-            QMessageBox::warning( 0, "No existe cuenta", "No existe una cuenta con el codigo proporcionado, desea crear una?.", QMessageBox::Yes, QMessageBox::No);
+            QMessageBox::warning( 0, tr("No existe cuenta"), tr("No existe una cuenta con el codigo proporcionado, desea crear una?."), QMessageBox::Yes, QMessageBox::No);
         }// end if
         delete cursorcta;
     }// end if
@@ -1271,7 +1219,7 @@ void intapunts3view::cambiadacontrapartida(int row) {
             tapunts->setText(row,COL_CONTRAPARTIDA,cursorcta->valor(1));
             tapunts->setText(row,COL_IDCONTRAPARTIDA,cursorcta->valor("idcuenta"));
         } else {
-            QMessageBox::warning( 0, "No existe cuenta", "No existe una cuenta con el codigo proporcionado, desea crear una?.", QMessageBox::Yes, QMessageBox::No);
+            QMessageBox::warning( 0, tr("No existe cuenta"), tr("No existe una cuenta con el codigo proporcionado, desea crear una?."), QMessageBox::Yes, QMessageBox::No);
         }// end if
         delete cursorcta;
     } else {
@@ -1703,4 +1651,7 @@ void intapunts3view::boton_duplicarasiento() {
 	delete dupli;
 }// end boton_duplicarasiento
 
+void intapunts3view::boton_fecha() {
+	fechaasiento1->setText("+");
+}// end boton_fecha
 

@@ -27,37 +27,6 @@
 
 resmensualview::resmensualview(QWidget *parent, const char *name ) : resmensualdlg(parent,name) {
 
-/*
-std::list<double> milista;
-milista.push_back(45.0);
-milista.push_back(60.3);
-milista.push_back(80.5);
-std::list<double> milista1;
-milista1.push_back(85);
-milista1.push_back(68);
-milista1.push_back(50);
-std::list<double> milista2;
-milista2.push_back(55);
-milista2.push_back(18);
-milista2.push_back(60);
-line->setMinValue(1);
-line->setMaxValue(100);
-line->setTitle("hola");
-line->setSamples(3);
-line->addValues(milista1,"hola");
-line->addValues(milista,"adios");
-line->addValues(milista2,"fin");
-
-line1->setMinValue(1);
-line1->setMaxValue(100);
-line1->setTitle("hola");
-line1->setSamples(3);
-line1->addValues(milista1,"hola");
-line1->addValues(milista,"adios");
-line1->addValues(milista2,"fin");
-//line->show();
-*/
-
 // Inicializamos los valores de las masas patrimoniales.
 idmpatrimonial1 = "";
 idmpatrimonial2 = "";
@@ -230,8 +199,7 @@ void resmensualview::presentarpie() {
 
       for (int i=0; i<3; i++) {      
          conexionbase->begin();
-   		sprintf(query,"SELECT sum(debe) as tdebe, sum(haber) as thaber, contrapartida FROM apunte WHERE idcuenta=id_cuenta('%s') GROUP BY contrapartida", codigo[i].latin1());
-   		fprintf(stderr,"%s\n",query);
+   		sprintf(query,"SELECT sum(debe) as tdebe, sum(haber) as thaber, contrapartida FROM apunte WHERE apunte.idcuenta=id_cuenta('%s') GROUP BY contrapartida", codigo[i].latin1());
    		cursorapt = conexionbase->cargacursor(query,"mycursor");
          conexionbase->commit();
          // Calculamos cuantos registros van a crearse y dimensionamos la tabla.

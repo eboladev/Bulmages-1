@@ -92,6 +92,10 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button,const QPoint &
       nommasa = tabla->text(tabla->currentRow(),1).latin1();
       close();
    }// end if  
+   
+   // Para quitar el warning
+   colummn=button=0;
+   mouse.isNull();
 }// end dbtabla
 
 

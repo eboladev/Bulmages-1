@@ -360,7 +360,7 @@ void DiarioPrintView::presentar(char * tipus){
 
                if (txtapren) {
                   //presentació txt format aprenentatge
-                  sprintf(codicompte,"( %d )",cursasiento->valor("codigo").latin1());
+                  sprintf(codicompte,"( %s )",cursasiento->valor("codigo").latin1());
                   fitxersortidatxt << setw(12) << atof(cursasiento->valor("debe").latin1()) << "  " << setw(10) << codicompte << "  " << cursasiento->valor("nomcuenta").latin1() << endl;
                }
                if (htmlapren) {
@@ -381,7 +381,7 @@ void DiarioPrintView::presentar(char * tipus){
 
                if (txtapren) {
                   //presentació txt format aprenentatge
-                  sprintf(codicompte,"( %d )",cursasiento->valor("codigo").latin1());
+                  sprintf(codicompte,"( %s )",cursasiento->valor("codigo").latin1());
                   fitxersortidatxt << "                                                                 a  " << setw(30) << cursasiento->valor("nomcuenta").latin1() << "  " << setw(10) << codicompte << "  " << setw(12) <<  atof(cursasiento->valor("haber").latin1()) <<endl;
                }
                if (htmlapren) {

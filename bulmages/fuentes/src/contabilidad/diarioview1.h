@@ -31,6 +31,7 @@ using std::string;
 #include "extractoview1.h"
 #include "balanceview.h"
 
+class empresa;
 class intapunts3view;
 class extractoview1;
 class balanceview;
@@ -49,11 +50,11 @@ public:
    postgresiface2 *conexionbase;
    int ccostes[200];
    filtrardiarioview *filt;
+   empresa *empresaactual;
 public:
-   diarioview1(QWidget *parent=0, const char *name=0, int flags=0);
+   diarioview1(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
    ~diarioview1();
    void accept();
-   void inicializa(postgresiface2 *);
    void inicializa1(QString, QString, int);
    void inicializa2(intapunts3view *, extractoview1 *, balanceview *);
    void presentar();
@@ -69,5 +70,8 @@ public slots:
    virtual void return_fechainicial();
    virtual void return_fechafinal();
    virtual void contextmenu(int , int , const QPoint &);   
+   virtual void textChanged(const QString &);
+   virtual void boton_fechainicial();
+   virtual void boton_fechafinal();
 };
 #endif

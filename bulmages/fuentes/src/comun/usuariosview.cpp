@@ -113,6 +113,8 @@ void usuariosview::datos_textChanged(const QString &st) {
       cadena.sprintf("%s %s",(char *) apellido1edit->text().latin1(), (char *) apellido2edit->text().latin1());
       it->setText(COL_APELLIDOS, cadena);
    }// end if
+   // Para quitar el warning
+   st.isNull();
 }// end nombreedit_textChanged
 
 

@@ -74,6 +74,9 @@ void listivaview::doble_click_soportado(int a, int b, int c, const QPoint &punto
   introapunts->show();
   introapunts->setFocus();
   done(1);
+  // Para quitar el warnings
+  a=b=c=0;
+  punto.isNull();
 }// end doble_click_soportado
 
 
@@ -88,6 +91,10 @@ void listivaview::doble_click_repercutido(int a, int b, int c, const QPoint &pun
   introapunts->show();
   introapunts->setFocus();
   done(1);
+  
+  //PAra quitar el warnings
+  b=c=0;
+  punto.isNull();
 }// end doble_click_repercutido
 
 
@@ -325,6 +332,9 @@ void listivaview::menu_contextual(int row, int col, const QPoint &poin) {
             break;
 		  }// end switch
         delete popup;
+        
+        // PAra evitar warnings
+        col=0;
 }// end contextmenu
 
 
@@ -357,6 +367,8 @@ void listivaview::menu_contextual1(int row, int col, const QPoint &poin) {
             break;
 		  }// end switch
         delete popup;
+			// Como a nadie le gusta ver warnings, utiliamos las variables de exceso para evitar warnings (una chapuza !!!!)
+			col =0;
 }// end contextmenu
 
 

@@ -50,10 +50,8 @@
 
 balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int flags ) : balancedlg(parent,name,flags) {
 
+	fprintf(stderr,"Inicializacion de balanceview\n");
 	empresaactual = emp;
-
-   
-   cursor2 *cursoraux1;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
@@ -118,8 +116,6 @@ balanceview::~balanceview(){
 }
 
 
-void balanceview::inicializa(postgresiface2 *conn){
-}// end inicializa
 
 
 void balanceview::inicializa2(intapunts3view *inta, diarioview1 *diar, extractoview1 *extract) {
@@ -479,16 +475,19 @@ void balanceview::contextmenu(int row, int col, const QPoint &poin) {
    int opcion;
    QString query   ;
    popup = new QPopupMenu;
-        popup->insertItem("Ver Extracto (Este dia)",111);
-//        popup->insertItem("Ver Extracto (Esta semana)",112);
-        popup->insertItem("Ver Extracto (Este mes)",113);
-        popup->insertItem("Ver Extracto (Este año)",114);
+        popup->insertItem(tr("Ver Extracto (Este dia)"),111);
+        popup->insertItem(tr("Ver Extracto (Este mes)"),113);
+        popup->insertItem(tr("Ver Extracto (Este año)"),114);
 		  popup->insertSeparator();
-        popup->insertItem("Ver Diario (Este dia)",101);
-//       popup->insertItem("Ver Diario (Esta semana)",102);
-        popup->insertItem("Ver Diario (Este mes)",103);
-        popup->insertItem("Ver Diario (Este año)",104);
-   opcion = popup->exec(poin);
+        popup->insertItem(tr("Ver Diario (Este dia)"),101);
+        popup->insertItem(tr("Ver Diario (Este mes)"),103);
+        popup->insertItem(tr("Ver Diario (Este año)"),104);
+        
+        // Si estamos sobre la columna del numero de cuenta añadiremos opciones al menu.
+        if (col == CUENTA) {
+        		popup->insertItem(tr("Editar Cuenta"), 105);
+        }// end if
+   		opcion = popup->exec(poin);
 		  switch(opcion) {
 		  		case 101:
 					boton_diario1(0);
@@ -509,11 +508,17 @@ void balanceview::contextmenu(int row, int col, const QPoint &poin) {
 					boton_extracto1(2);
 		  }// end switch
    delete popup;
+   
+   // Para quitar el warning que se produce al compilar.
+   row=0;
 }// end contextmenu
 
 
 void balanceview::nivelactivated (int nivel) {
    presentar();
+   
+   // Para evitar el warning al compilar
+   nivel =0;
 }// end nivelactivated1
 
 
@@ -523,6 +528,7 @@ void balanceview::boton_imprimir() {
 	balan->inicializa1(codigoinicial->text(), codigofinal->text(), fechainicial1->text(), fechafinal1->text(), FALSE);
    balan->exec();
 }// end boton_imprimir.
+
 
 void balanceview::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
@@ -554,7 +560,6 @@ void balanceview::fecha_textChanged(const QString &texto) {
     }// end if
     if (texto=="*")
         fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-   
 }// end fecha_textChanged
 
 void balanceview::boton_fechainicial() {

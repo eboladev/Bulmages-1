@@ -16,16 +16,26 @@
  ***************************************************************************/
 
 #include "filtrardiarioview.h"
+#include "empresa.h"
 
-filtrardiarioview::filtrardiarioview(QWidget *parent, const char *name ) : filtrardiariodlg(parent,name) {
-}
+filtrardiarioview::filtrardiarioview(empresa *emp, QWidget *parent, const char *name ) : filtrardiariodlg(parent,name) {
+	fprintf(stderr,"CONSTRUCTOR de filtrardiarioview\n");
+	empresaactual = emp;
+   conexionbase = empresaactual->bdempresa();
+   numdigitos = empresaactual->numdigitosempresa();
+   
+   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
+   cargacostes();
+
+}// end filtrardiarioview
+
 filtrardiarioview::~filtrardiarioview(){
 }
 
 void filtrardiarioview::cargacostes() {
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
    combocoste->clear();
-  QString query="SELECT * FROM c_coste ORDER BY nombre";
+   QString query="SELECT * FROM c_coste ORDER BY nombre";
    conexionbase->begin();
    cursor2 *cursorcoste = conexionbase->cargacursor(query,"costes");
    conexionbase->commit();
@@ -40,20 +50,6 @@ void filtrardiarioview::cargacostes() {
    delete cursorcoste;
 }// end cargacostes
 
-
-void filtrardiarioview::inicializa(postgresiface2 *conn){
-   cursor2 *cursoraux1;
-   conexionbase = conn;
-   // Vamos a cargar el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
-   conexionbase->begin();
-   QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-   cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
-   numdigitos=cursoraux1->valor(2).length();
-   conexionbase->commit();
-   delete cursoraux1;
-   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-   cargacostes();
-}// end inicializa
 
 void filtrardiarioview::setccoste(int idc_coste) {
    // Establecemos el centro de coste correspondiente.

@@ -72,40 +72,6 @@ empresa::~empresa(){
  *  En estos momentos esta en desuso                                   *
  ***********************************************************************/
 void empresa::testnewdb() {
-/*
-  cursor1 *micursor;
-  cursor1 *segcursor;
-  fprintf(stderr,"TESTNEWDB\n");
-  fprintf(stderr,"---------\n");
-  conexionbase->begin();
-  micursor = conexionbase->cargacursor("SELECT * FROM apunte","elcursor");
-  segcursor = conexionbase->cargacursor("SELECT * FROM cuenta","segcursor");
-  fprintf(stderr,"numregistros: %d\n",micursor->numregistros());
-  fprintf(stderr,"numregistros1: %d\n",segcursor->numregistros());
-  conexionbase->commit();
-  while (!micursor->eof()) {
-    fprintf(stderr,"Valor: %s\n",micursor->valor("conceptocontable").c_str());
-    micursor->siguienteregistro();
-  }// end while
-
-  for (int i=0; i<segcursor->numcampos();i++) {
-    fprintf(stderr,"%-20.20s   -  ",segcursor->nomcampo(i).c_str());
-  }// end for
-  fprintf(stderr,"\n----------------------------------------------\n");
-  segcursor->ultimoregistro();
-  while (!segcursor->bof()) {
-    for (int i=0; i<segcursor->numcampos();i++) {
-      fprintf(stderr,"%-20.20s  -  ",segcursor->valor(i).c_str());
-    }// end if
-    fprintf(stderr,"\n");
-    segcursor->registroanterior();
-  }// end while
-  fprintf(stderr,"END TESTNEWDB\n");
-  fprintf(stderr,"---------\n");
-  delete segcursor;
-  delete micursor;
-
-*/
 }// end testnewdb
 
 
@@ -138,12 +104,10 @@ int empresa::inicializa1(QWorkspace *space) {
 
   extracto = new extractoview1(this, pWorkspace,"extracto");
 //  extracto->inicializa(conexionbase2);
-  diario = new diarioview1(pWorkspace,"diario");
-  diario->inicializa(conexionbase2);
+  fprintf(stderr,"Vamos a inicializar el diarioview1\n");
+  diario = new diarioview1(this,pWorkspace,"diario");
   balance = new balanceview(this, pWorkspace,"balance");
-  balance->inicializa(conexionbase2);
   balance1 = new balance1view(this, pWorkspace,"Super");
-  balance1->inicializa(conexionbase2);
   
   // Empezamos las iniciaciones de introapunts1 que es la nueva parte de lo nuevo
   introapunts1 = new intapunts3view(this, pWorkspace,"introapunts2");

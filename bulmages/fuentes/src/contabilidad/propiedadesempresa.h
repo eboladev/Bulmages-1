@@ -38,7 +38,7 @@ public:
   propiedadesempresa(QWidget *parent=0, const char *name=0,bool modal=true);
   ~propiedadesempresa();
   int inicializa(postgresiface2 *, QString);
-  void modificacodcuenta(char *);
+//  void modificacodcuenta(char *);
 //  void accept();
 public slots:
   virtual void accept();

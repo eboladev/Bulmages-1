@@ -182,38 +182,10 @@ void propiedadesempresa::accept() {
 }// end accept
 
 
-void propiedadesempresa::modificacodcuenta(char *plantilla) {
 /*
-   int num, i,k;
-   unsigned int j;
-   char *cadena;
-   char cadaux[20];
-   int idcuenta;
-   int numdigits = strlen(plantilla);
-   postgresiface *piface = new postgresiface();
-   postgresiface *piface1;
-   piface->inicializa(empresadb);
-   num = piface->cargacuentas(-1);
-   fprintf(stderr,"Digitos %d",numdigits);
-   for(i=0;i<num;i++)  {
-      for (k=0;k<numdigits;k++) {
-         cadaux[k]='0';
-      }// end for
-      cadaux[numdigits]=0;
-      cadena = piface->siguientecampo(1,i);
-      for(j=0;j<strlen(cadena);j++) {
-         cadaux[j] = cadena[j];
-      }// end for
-      idcuenta= atoi(piface->siguientecampo(0,i));
-      piface1 = new postgresiface();
-      piface1->inicializa(empresadb);
-      piface1->modificacodcuenta(idcuenta, cadaux);
-      delete piface1;
-      fprintf(stderr,"%s\n",cadaux);
-   }// end for
-*/
+void propiedadesempresa::modificacodcuenta(char *plantilla) {
 }// end modificacodcuenta
-
+*/
 
 void propiedadesempresa::boton_usalectura() {
   QListViewItem *it;
