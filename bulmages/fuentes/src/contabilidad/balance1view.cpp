@@ -56,17 +56,14 @@ int cpadre;
 
 
 balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int flags ) : balance1dlg(parent,name, flags) {
-
    fprintf(stderr,"BALANCE1VIEW: Constructor\n");
-	empresaactual = emp;
-//   cursor2 *cursoraux1;
+   empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
    cargacostes();
    
       
-   
    // Date cuenta que el tema de los defines funciona de chiripa, pq no es correcto dado
    // Que en teoria el identificador lo devuelve la funcion addColumn.
    listado->clear();

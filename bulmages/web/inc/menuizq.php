@@ -23,7 +23,7 @@
         <BR>
         <table width="98%" border=0 cellspacing=0 cellpadding=0>
           <tr> 
-            <td class="tdhead"> <div align="center"><strong><font color="#FF0000" size="2" face="Verdana, Arial, Helvetica, sans-serif">Noticias</font></strong></div></td>
+            <td class="tdhead"> <div align="center"><strong><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif">Noticias</font></strong></div></td>
           </tr>
           <tr> 
             <td bgcolor="#FFFFFF" class="tdmensaje"> <div align="left"> 

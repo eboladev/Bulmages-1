@@ -29,14 +29,6 @@
         </tr>
       </table>
 </td></tr>
-<!--
-  <tr> 
-    <td valign="bottom"><img name="home_r1_c1" src="img/cabecera/cabecera.gif" width="684" height="124" border="0" alt=""></td></tr>
-
-	  <tr><td><img src="img/cabecera/cabecera2.gif" alt="" name="cabecera2" border="0" usemap="#cabecera2Map"></td>
-</tr>
--->
-
 <tr><td>
 <br>
 <table width="684" border="0" cellspacing="0" cellpadding="0" align="center">
