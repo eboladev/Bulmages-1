@@ -38,8 +38,6 @@
 #include <qstring.h>
 #include <qpixmap.h>
 
-
-
 // include files de la aplicacion
 #include "empresa.h"
 #include "bbloqfecha.h"
@@ -47,7 +45,6 @@
 //#include "pruebaview.h"
 
 #include "configuracion.h"
-
 
 /**
   * This Class is the base class for your application. It sets up the main
