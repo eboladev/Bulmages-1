@@ -21,4 +21,4 @@ INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (16, 'Ejercici
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (17, 'NombreEmpresa', 'Sin Definir');
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (18, 'RegistroEmitida', '472');
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (19, 'RegistroSoportada', '477');
-INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (19, 'DatabaseRevision', '0.4.9');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (20, 'DatabaseRevision', '0.4.9');

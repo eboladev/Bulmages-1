@@ -1006,11 +1006,11 @@ CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
 BEGIN
-	SELECT INTO as * FROM pg_attribute  WHERE attname=''cpent_cuenta'';
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''factemitida'';
 	IF NOT FOUND THEN
 		ALTER TABLE registroiva ADD COLUMN factemitida boolean;
-		UPDATE registroiva SET factemitida = TRUE WHERE contrapartida IN (SELECT * FROM cuenta WHERE codigo LIKE ''43%'');
-		UPDATE registroiva SET factemitida = FALSE WHERE contrapartida NOT IN (SELECT * FROM cuenta WHERE codigo LIKE ''43%'');
+		UPDATE registroiva SET factemitida = TRUE WHERE contrapartida IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE ''43%'');
+		UPDATE registroiva SET factemitida = FALSE WHERE contrapartida NOT IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE ''43%'');
 		ALTER TABLE registroiva ALTER COLUMN factemitida SET NOT NULL;	END IF;
 	RETURN 0;
 END;
@@ -1018,6 +1018,29 @@ END;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
 \echo "Agregada la columna factemitida a la tabla de registroiva"
+
+
+--
+-- Agregamos el campo fractemitida que indica si es una factura emitida o recibida
+--
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM configuracion WHERE nombre=''RegistroEmitida'';
+	IF NOT FOUND THEN
+		INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (18, ''RegistroEmitida'', ''472'');  
+	END IF;
+	SELECT INTO as * FROM configuracion WHERE nombre=''RegistroSoportada'';
+	IF NOT FOUND THEN
+		INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (19, ''RegistroSoportada'', ''477'');  
+	END IF;	
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregada la fila en la configuración para RegistroSoportada y RegistroEmitida"
 
 
 
