@@ -18,8 +18,8 @@
 Bpresupuesto::Bpresupuesto(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name, WFlags f) : UIpresupuesto(parent, name, f) {
     EmpresaTrabajo=punteroEmpresaTrabajo;
     
-    scrollBar1->setMaxValue (FrameCabecera->height()-contenedorCabecera->height());
-    scrollBar2->setMaxValue (FrameCabecera->width()-contenedorCabecera->width());
+//    scrollBar1->setMaxValue (FrameCabecera->height()-contenedorCabecera->height());
+//    scrollBar2->setMaxValue (FrameCabecera->width()-contenedorCabecera->width());
 
 }
 
@@ -49,11 +49,12 @@ void Bpresupuesto::resizeEvent(QResizeEvent * evento)
 contenedorCabecera->setGeometry(70,10,evento->size().width()-75, EmpresaTrabajo->roundI((evento->size().height()-140)  * 0.4) ); 
 
 //Barras de Scroll Vertical i Horizontal
+/*
 scrollBar1->setGeometry(contenedorCabecera->width()-20,7,20,contenedorCabecera->height()-25);
 scrollBar2->setGeometry(1,contenedorCabecera->height()-20,contenedorCabecera->width()-20,20);
 scrollBar1->setMaxValue (FrameCabecera->height()-contenedorCabecera->height());
 scrollBar2->setMaxValue (FrameCabecera->width()-contenedorCabecera->width());
-
+*/
 
 //frame oculto sobre el que se desplaza la cabezera
 baseScrollCabecera->setGeometry(5,10,contenedorCabecera->width()-30,contenedorCabecera->height()-30); 
@@ -66,7 +67,7 @@ contenedorLineas->setGeometry(70,10+EmpresaTrabajo->roundI((evento->size().heigh
 //Tabla Lineas
 tablaLineas->setGeometry(10,20,contenedorLineas->width()-20,contenedorLineas->height()-70); 
 //Botones de la zona de lineas
-contenedorBotonesLineas->setGeometry(20,contenedorLineas->height()-40,370,32);
+//contenedorBotonesLineas->setGeometry(20,contenedorLineas->height()-40,370,32);
 //Zona Totales
 contenedorTotales->setGeometry(10,10+contenedorLineas->height()+contenedorCabecera->height(),evento->size().width()-15,110);
 tablaIVA->setGeometry(250,12,tablaIVA->width()+(evento->size().width()-evento->oldSize().width()),90);
