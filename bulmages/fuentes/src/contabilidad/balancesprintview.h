@@ -25,28 +25,32 @@
 #endif
 #include <errno.h>
 #include <sys/types.h>
-#include <string>
-using std::string;
 #include "postgresiface2.h"
 
-/***@author Tomeu Borrás Riera */
+/** *@author Tomeu Borrás Riera */
+
+class empresa;
 
 class balancesprintview : public balancesprintdlg  {
    Q_OBJECT
-public:
+private:
    char *fichero;
-   string idbalance;
-
+   QString idbalance;
    postgresiface2 *conexionbase;
-	balancesprintview(QWidget *parent=0, const char *name=0);
+   empresa *empresaactual;
+public:
+	balancesprintview(empresa *emp,QWidget *parent=0, const char *name=0);
 	~balancesprintview();
-   void inicializa(postgresiface2 *con) {conexionbase = con;}
-   void setidbalance(string);       // Establece cual será el balance a imprimir
+   void setidbalance(QString);       // Establece cual será el balance a imprimir
 
 public slots:
    virtual void accept();
    virtual void fechaincambiada();
    virtual void fechafincambiada();
+   virtual void boton_finicial();
+   virtual void boton_ffinal();
+   virtual void finicial_textChanged(const QString &);
+   virtual void ffinal_textChanged(const QString &);
 };
 
 #endif

@@ -19,8 +19,13 @@
 #include <qdatetimeedit.h>
 #include <qprogressbar.h>
 #include "funcaux.h"
+#include "calendario.h"
+#include "empresa.h"
 
-balancesprintview::balancesprintview(QWidget *parent, const char *name ) : balancesprintdlg(parent,name) {
+
+balancesprintview::balancesprintview(empresa *emp,QWidget *parent, const char *name ) : balancesprintdlg(parent,name) {
+   empresaactual = emp;
+   conexionbase = emp->bdempresa();
    fichero = NULL;
 }// end balancesprintview
 
@@ -96,17 +101,49 @@ void balancesprintview::accept() {
 }// end accept
 
 
-void balancesprintview::setidbalance(string id) {
+void balancesprintview::setidbalance(QString id) {
    idbalance = id;
-   QString query ="SELECT * FROM balance WHERE idbalance="+QString(idbalance.c_str());
+   QString query ="SELECT * FROM balance WHERE idbalance="+idbalance;
    conexionbase->begin();
    cursor2 *cur = conexionbase->cargacursor(query, "micurs");
    conexionbase->commit();
    if (!cur->eof()) {
-      nombalance->setText(cur->valor("nombrebalance"));
+      m_nomBalance->setText(cur->valor("nombrebalance"));
    }// end if
    delete cur;
 }// end setidbalance
+
+void balancesprintview::finicial_textChanged( const QString & texto ) {
+    if (texto=="+") {
+        QList<QDate> a;
+        fechain->setText("");
+        calendario *cal = new calendario(0,0);
+        cal->exec();
+        a = cal->dn->selectedDates();
+        fechain->setText(a.first()->toString("dd/MM/yyyy"));
+        delete cal;
+    }// end if
+    if (texto=="*")
+        fechain->setText(QDate::currentDate().toString("dd/MM/yyyy") );
+}//fin fechaasiento1_textChanged
+
+
+void balancesprintview::ffinal_textChanged( const QString & texto ) {
+    if (texto=="+") {
+        QList<QDate> a;
+        fechafin->setText("");
+        calendario *cal = new calendario(0,0);
+        cal->exec();
+        a = cal->dn->selectedDates();
+        fechafin->setText(a.first()->toString("dd/MM/yyyy"));
+        delete cal;
+    }// end if
+    if (texto=="*")
+        fechafin->setText(QDate::currentDate().toString("dd/MM/yyyy") );
+}//fin fechaasiento1_textChanged
+
+
+
 
 void balancesprintview::fechaincambiada() {
   fechain->setText(normalizafecha(fechain->text()).toString("dd/MM/yyyy"));
@@ -115,3 +152,12 @@ void balancesprintview::fechaincambiada() {
 void balancesprintview::fechafincambiada() {
   fechafin->setText(normalizafecha(fechafin->text()).toString("dd/MM/yyyy"));
 }// end fechaincambiada
+
+void balancesprintview::boton_finicial() {
+  fechain->setText("+");
+}// end boton_finicial
+
+void balancesprintview::boton_ffinal() {
+   fechafin->setText("+");
+}// end boton_ffinal
+

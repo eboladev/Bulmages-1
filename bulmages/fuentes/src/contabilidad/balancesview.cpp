@@ -32,7 +32,6 @@ balancesview::balancesview(empresa *emp, QWidget *parent, const char *name ) : b
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
-   
    modo = 0;
    inicializatabla();
 }// end balancesview
@@ -79,8 +78,7 @@ void balancesview::nuevo() {
    cursor2 *cursoraux = conexionbase->cargacursor(query, "cursor1");
    conexionbase->commit();
    
-   compbalanceview * nuevae = new compbalanceview(0,"compbalance");
-   nuevae->inicializa(conexionbase);
+   compbalanceview * nuevae = new compbalanceview(empresaactual,this,"compbalance");
    nuevae->inicializa1(cursoraux->valor("idbalance").ascii());
    nuevae->exec();
    delete nuevae;   
@@ -115,8 +113,7 @@ void balancesview::dbtabla(int row, int colummn, int button,const QPoint &mouse)
   if (modo == 0) {
      string idbalance = listado->text(row,COL_CODIGO).ascii();
      // Creamos el objeto mpatrimonialview, y lo lanzamos.
-     compbalanceview *bal=new compbalanceview(this,0);
-     bal->inicializa(conexionbase);
+     compbalanceview *bal=new compbalanceview(empresaactual,this,0);
      bal->inicializa1(idbalance);
      bal->exec();
      delete bal;
@@ -134,9 +131,9 @@ void balancesview::dbtabla(int row, int colummn, int button,const QPoint &mouse)
 }// end dbtabla
 
 void balancesview::imprimir() {
-   string idbalance = listado->text(listado->currentRow(),COL_CODIGO).ascii();
-   balancesprintview *b = new balancesprintview(0,0);
-   b->inicializa(conexionbase);
+   QString idbalance = listado->text(listado->currentRow(),COL_CODIGO);
+   fprintf(stderr,"Balance print\n");
+   balancesprintview *b = new balancesprintview(empresaactual,0,0);
    b->setidbalance(idbalance);
    b->exec();
    delete b;
@@ -229,7 +226,7 @@ void balancesview::boton_importar() {
    QString fn = QFileDialog::getOpenFileName(0, tr("Asientos Inteligentes (*.xml)"), 0,tr("Cargar Asientos Inteligentes"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {      
       // Hacemos el parsing del XML
-      QFile xmlFile( fn);              // Declaramos el ficheros
+      QFile xmlFile( fn);                 // Declaramos el ficheros
       QXmlInputSource source( &xmlFile ); // Declaramos el inputsource, con el fichero como parámetro
       QXmlSimpleReader reader;            // Declaramos el lector
       

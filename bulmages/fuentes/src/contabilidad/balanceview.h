@@ -68,7 +68,7 @@ public slots:
   virtual void boton_fechainicial();
   virtual void boton_fechafinal();
   virtual void contextmenu(int , int , const QPoint &);
-  virtual void  nivelactivated(int);
+  virtual void nivelactivated(int);
   virtual void codigo_textChanged(const QString &);
   virtual void fecha_textChanged(const QString &);
 
