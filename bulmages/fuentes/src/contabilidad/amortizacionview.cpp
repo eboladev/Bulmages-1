@@ -322,18 +322,20 @@ void amortizacionview::cambiofecha1cuota() {
 
 
 
-// Datos para el asiento de amortización.
-//El asiento inteligente debe llamarse como el parametro Amortizacion de confpr.
-// El asiento inteligente debe tener las variables que se llamen:
-// $cuenta$ Cuenta de Amortización.
-// $cuentabien$ Cuenta del Bien.
-// $cuota$ Cuota a pagar.
+/** \brief SLOT que captura el menu contextual sobre la tabla de amortizacion.
+  * Datos para el asiento de amortización.
+  * El asiento inteligente debe llamarse como el parametro Amortizacion de confpr.
+  * El asiento inteligente debe tener las variables que se llamen:
+  * $cuenta$ Cuenta de Amortización.
+  * $cuentabien$ Cuenta del Bien.
+  * $cuota$ Cuota a pagar.
+  */
 void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin) {
    QPopupMenu *popup;
    popup = new QPopupMenu;
    int opcion;
    intapunts3view *intapunts = empresaactual->intapuntsempresa();
-   // Generamos el menu contextual.
+   /// Generamos el menu contextual.
    popup->insertItem(tr("Generar Asiento"),4);
    popup->insertSeparator();
    popup->insertItem(tr("Ver Asiento"),1);
@@ -362,11 +364,11 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
    
    opcion = popup->exec(poin);
    delete popup;
-   // Inserción de una nueva cuota.
+   /// Inserción de una nueva cuota.
    if (opcion == 7) {
       table1->insertRows(row+1, 1);
    }// end if
-   // Eliminar una cuota.
+   /// Eliminar una cuota.
    if (opcion == 8) {
       QString idlinamortizacion = table1->text(row, COL_IDLINAMORTIZACION);
       QString query="DELETE FROM linamortizacion WHERE idlinamortizacion="+idlinamortizacion;
@@ -378,12 +380,12 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
       table1->removeRow(row);
    }// end if
    if (opcion == 1 || opcion == 6) {
-      // Si se va a mostrar el asiento, o se va a borrar
+      /// Si se va a mostrar el asiento, o se va a borrar
       QString idasiento = table1->text(row, COL_IDASIENTO);
       intapunts->muestraasiento(idasiento.toInt());
    }// end if
    if (opcion == 5 || opcion ==6) {
-      // Si se va a desvincular el asiento o se va a borrar.
+      /// Si se va a desvincular el asiento o se va a borrar.
       QString idasiento = table1->text(row, COL_IDASIENTO);
       QString idlinamortizacion = table1->text(row, COL_IDLINAMORTIZACION);
       QString query = "UPDATE linamortizacion SET idasiento=NULL WHERE idlinamortizacion="+idlinamortizacion;
@@ -394,11 +396,11 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
       table1->setText(row,COL_ORDENASIENTO, "");
    }// end if
    if (opcion ==6) {
-      // Si se va a borrar el asiento
+      /// Si se va a borrar el asiento
       intapunts->borrar_asiento(TRUE);      
    }// end if
    if (opcion == 4) {
-      // Se va a generar el asiento
+      /// Se va a generar el asiento
       QString fecha= table1->text(row,COL_FECHA);
       fprintf(stderr,"Fecha: %s\n", fecha.ascii());
       QString cant= table1->text(row, COL_CUOTA);
@@ -413,15 +415,13 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
       nueva->setvalores("$cuentabien$",cuenta);
       nueva->setvalores("$fechaasiento$",table1->text(row,COL_FECHA));
       nueva->setvalores("$cuota$",table1->text(row,COL_CUOTA));   
-      
-      // Ponemos la fecha del asiento para evitar escribir.
+      /// Ponemos la fecha del asiento para evitar escribir.
       nueva->setfechaasiento(table1->text(row,COL_FECHA));
-       // Ponemos los asientos plantilla en modo exclusivo, para poder recuperar el control en cuanto se haya hecho la inserción del asiento. 
+       /// Ponemos los asientos plantilla en modo exclusivo, para poder recuperar el control en cuanto se haya hecho la inserción del asiento. 
       nueva->setmodo(1);
       nueva->exec();
       int numasiento1=atoi( intapunts->cursorasientos->valor("idasiento").ascii() );
       QString ordenasiento;
-      fprintf(stderr,"El asiento creado ha sido el : %d\n", numasiento1);
       QString SQLQuery = "SELECT * FROM asiento where idasiento="+QString::number(numasiento1);
       conexionbase->begin();
       cursor2 *cur = conexionbase->cargacursor(SQLQuery,"hola");
@@ -434,7 +434,7 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
       delete nueva;
       delete cur;
       
-      // Debemos guardar la modificacion en la linea de amortizacion.
+      /// Debemos guardar la modificacion en la linea de amortizacion.
       QString idlinamortizacion = table1->text(row,COL_IDLINAMORTIZACION);
       SQLQuery = "UPDATE linamortizacion set idasiento="+QString::number(numasiento1)+" WHERE idlinamortizacion="+idlinamortizacion;
       conexionbase->begin();

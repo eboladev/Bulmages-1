@@ -20,6 +20,7 @@
 #include "cobropagoview.h"
 #include "postgresiface2.h"
 #include "empresa.h"
+#include "aplinteligentesview.h"
 
 #include <qtable.h>
 
@@ -90,6 +91,12 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) :
 cobropagoview::~cobropagoview() {}
 
 
+/** \brief Inicializa el listado para que muestre los cobros y pagos iniciales.
+  * Selecciona los prevcobros de la base de datos
+  * Dimensiona las tablas.
+  * Itera para cada elemento y pone los valores correspondientes.
+  * También crea el checkbox para cada elemento y lo pone en la tabla.
+  */
 void cobropagoview::inicializa() {
     QString SQLQuery = "SELECT * FROM prevcobro ";
     SQLQuery += " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta ";
@@ -126,3 +133,80 @@ void cobropagoview::inicializa() {
     }// end while
     delete cur;
 }// end inicializa
+
+/**
+  * \brief SLOT que respoonde a la creación de un asiento de cobro o pago a partir de la gestion de cobros y pagos.
+  * Descripción:
+  * 1.- Calculamos los campos Total, Tipo de Asiento (compra/venta), Cuenta bancaria y cuenta de cliente
+  * 2.- Determinamos si es un cobro o un pago.
+  * 3.- Cargamos la plantilla de cobro o pago y le metemos los valores necesarios
+  * 4.- Generamos el asiento a partir del asiento inteligente.
+  */
+void cobropagoview::s_creaPago() {
+      QString idainteligente;
+      double total=0;
+      QString codcuenta;
+      QString codbanco;
+      QString tipo;
+      /// Calculamos los campos necesarios.
+      /* El calculo de los campos requeridos es una iteración por la tabla. */
+      for (int i=0; i< m_list->numRows(); i++) {
+      		fprintf(stderr,"Iteración para los elementos de la lista %d\n", i);
+		if (m_list->text(i,COL_IDPREVCOBRO) != "") {
+			fprintf(stderr,"Existe el elemento %d\n", i);
+			QTableItem *check = m_list->item(i,COL_SELECCION);
+			fprintf(stderr,"Vamos a testear \n");
+			if (check->rtti()==2) {
+				QCheckTableItem *check1 = (QCheckTableItem *) check;
+				if (check1->isChecked()) {
+					fprintf(stderr,"Este entra \n");
+					total += m_list->text(i, COL_CANTIDADPREVISTAPREVCOBRO).toFloat();
+					codbanco = m_list->text(i, COL_CODIGO);
+					codcuenta =  m_list->text(i, COL_CODIGOCTAREGISTROIVA);
+					tipo = m_list->text(i, COL_TIPOPREVCOBRO);
+					if ( tipo == "t") {
+					   tipo = "COBRO"; 
+					} else {
+					   tipo = "PAGO";
+					}// end if
+				}// end if
+			}// end if
+		}// end if
+      }// end for
+      
+      fprintf(stderr,"------------\n");
+      fprintf(stderr,"total: %2.2f -- banco %s -- cliente %s -- tipo %s\n", total, codbanco.ascii(), codcuenta.ascii(), tipo.ascii());
+      fprintf(stderr,"------------\n");
+      
+      /// Buscamos cual es el asiento inteligente que realiza la amortización.
+      QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion=valor AND configuracion.nombre='Cobro'";
+      conexionbase->begin();
+      cursor2 *cur = conexionbase->cargacursor(query,"asiento_de_cobro");
+      conexionbase->commit();
+      if (!cur->eof()) {
+         idainteligente = cur->valor("idainteligente");
+      }// end if
+      delete cur;	
+	
+      /// Se va a generar el asiento
+      int numasiento = 0; 
+      aplinteligentesview *nueva=new aplinteligentesview(0,"");
+      nueva->inicializa(conexionbase, numasiento, empresaactual->intapuntsempresa());
+      nueva->muestraplantilla(idainteligente.toInt());
+/*      nueva->setvalores("$cuenta$",cuentaamort);
+      nueva->setvalores("$cuentabien$",cuenta);
+      nueva->setvalores("$fechaasiento$",table1->text(row,COL_FECHA));
+      nueva->setvalores("$cuota$",table1->text(row,COL_CUOTA));  
+*/
+}// end s_creaPago
+
+
+/**
+  * \brief SLOT que responde a la pulsación del botón de actualizar
+  */
+void cobropagoview::s_actualizar() {
+	fprintf(stderr,"actualizar \n");
+}// end s_actualizar
+
+
+

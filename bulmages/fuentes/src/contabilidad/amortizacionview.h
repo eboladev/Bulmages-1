@@ -18,18 +18,27 @@
 
 class empresa;
 
-/**@author Tomeu Borras*/
-class amortizacionview : public amortizaciondlg
-{
+/** 
+  * @author Tomeu Borrás Riera 
+  * \class amortizacionview amortizacionview.h
+  * \brief Formulario de introducción y/o visión de amortizaciones.
+  */
+  
+class amortizacionview : public amortizaciondlg {
 Q_OBJECT
 public:
+/// Empresa con la que se trabaja
 empresa *empresaactual;
+/// Base de datos con la que se trabaja  
 postgresiface2 *conexionbase;
-QString idctaactivo; // Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
-QString idctaamortizacion; // Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
-
-QString idamortizacion;  // Esta variable indica cual es la amortizacion que se està enseñando. Si no tiene valor es que no se esta mostrando ninguna.
-QString idainteligente;   // Esta variable indica cual es el asiento plantilla de amortización.
+/// Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
+QString idctaactivo; 
+ /// Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
+QString idctaamortizacion;
+/// Esta variable indica cual es la amortizacion que se està enseñando. Si no tiene valor es que no se esta mostrando ninguna.
+QString idamortizacion;  
+/// Esta variable indica cual es el asiento plantilla de amortización.
+QString idainteligente;   
 public:
     amortizacionview::amortizacionview(empresa *, QWidget *, const char *, bool );
     ~amortizacionview();

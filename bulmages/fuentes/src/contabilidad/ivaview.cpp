@@ -15,12 +15,7 @@
  ***************************************************************************/
 
 /**
---
--- TOC entry 40 (OID 1346006)
--- Name: registroiva; Type: TABLE; Schema: public; Owner: postgres
---
--- ffactura fecha de la factura.
- 
+  * \brief definiciones de las tablas en la base de datos involucradas.
 CREATE TABLE registroiva (
     idregistroiva serial PRIMARY KEY,
     contrapartida integer REFERENCES cuenta(idcuenta),
@@ -119,7 +114,14 @@ CREATE TABLE fpago (
 #define COL_IVA_IDREGISTROIVA 5
 #define COL_IVA_PORCENTAJETIPOIVA 6
 
-
+/**
+  * \brief constructor de la clase
+  * Inicializa la clase cargando el puntero de empresaactual y de conexionbase para que apunten a las clases amigas apropiadas.
+  * Carga el numdigitos de la empresa.
+  * Inicializa todos los componentes, principalmente inicializa las tablas, pone los titulos de las columnas y hace las que
+  * no deben verse invisibles.
+  * También carga el cursor de las formas de pago.
+  */
 ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(parent,name) {
     empresaactual = emp;
     conexionbase = emp->bdempresa();
@@ -197,24 +199,25 @@ void ivaview::cargarComboFPago(QString idfpago) {
     }// end if
 }// end cargarComboFPago
 
+/**
+  * \brief Destructor de clase.
+  * Borra el cursor de las formas de pago para liberar la memoria reservada.
+  */
 ivaview::~ivaview() {
     delete m_cursorFPago;
 }// end ~ivaview
 
 
 
-/** Esquema:
+/** \brief Este slot se ejeccuta cuando pusamos sobre el botón aceptar.
   * Si se trata de una modificacion modificamos.
   * Si se trata de una insercion insertamos.
   */
 void ivaview::accept() {
     QString query;
     QString idfactrectificada= "NULL";
-    //  float iva1 = atof(iva->text().ascii());
     QString factura1= factura->text();
-
-
-    // Buscamos la factura rectificada si es que existe.
+    /// Buscamos la factura rectificada si es que existe.
     if (m_numfactrectificada->text() != "") {
         query = "SELECT * FROM registroiva WHERE factura='"+m_numfactrectificada->text()+"' AND cif='"+cif->text()+"'";
         conexionbase->begin();
@@ -233,16 +236,17 @@ void ivaview::accept() {
     if (!cursorcuenta->eof()) {
         int idcuenta= atoi(cursorcuenta->valor("idcuenta").ascii());
         if (idregistroiva !=0) {
-            // Se trata de una inserción, ya que no hay registros de iva introducidos.
+            /// Si se trata de una modificacion y hacemos el update.
             query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%s, contrapartida=%d, factura='%s', numorden='%s', cif='%s', ffactura='%s', rectificaaregistroiva = %s WHERE idregistroiva=%d", idborrador, baseimponible->text().ascii(), idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), m_ffactura->text().ascii(), idfactrectificada.ascii() ,idregistroiva);
             conexionbase->begin();
             conexionbase->ejecuta(query);
             conexionbase->commit();
         } else {
-            // Se trata de una inserción, ya que hay registros de iva introducidos.
+            /// Se trata de una inserción y hacemos el insert.
             query="INSERT INTO registroiva (idborrador, baseimp, contrapartida, factura, numorden, cif, ffactura, rectificaaregistroiva) VALUES ("+QString::number(idborrador)+","+baseimponible->text()+",  "+QString::number(idcuenta)+", '"+factura1+"', '"+numorden->text()+"', '"+cif1+"', '"+m_ffactura->text()+"',"+idfactrectificada+")";
             conexionbase->begin();
             conexionbase->ejecuta(query);
+	    /// Cargamos el identificador del registro de factura para poder mantener la clase.
             cursor2 *cur = conexionbase->cargacursor("SELECT MAX(idregistroiva) AS idregistroiva FROM registroiva", "elquery");
             conexionbase->commit();
             if (!cur->eof() )
@@ -251,13 +255,17 @@ void ivaview::accept() {
         }// end if
     }// end if
     delete cursorcuenta;
-    // Guardamos todas las previsiones de pago y asi nos curamos en salud
+    /// Guardamos todas las previsiones de pago y asi nos curamos en salud
     guardaprevpago();
     guardaiva();
     done(1);
 }// end accept
 
 
+/** \brief Guardamos una única línea de factura.
+  * Para guardar una línea primero miramos si existe entrada en la base de datos correspondiente a dicha linea.
+  * Si la entrada existe se hace un UPDATe y si no existe se hace un INSERT.
+  */
 void ivaview::guardaiva(int numrow) {
     QString idiva = m_listIva->text(numrow, COL_IVA_IDIVA);
     QString idregistroivastr;
@@ -292,13 +300,16 @@ void ivaview::guardaiva(int numrow) {
     }// end if
 }// end guardaiva
 
+/** \brief Guardamos todo el registro de factura.
+  */
 void ivaview::guardaiva() {
     int i=0;
     while (i < m_listIva->numRows())
         guardaiva(i++);
 }// end guardaiva
 
-/**
+
+/** \brief Borramos el registro de factura.
  * Se ha pulsado sobre el boton de borrar en ivaview por lo que borraremos *
  * el registro actual.                                                     *
  */
@@ -321,6 +332,10 @@ void ivaview::boton_borrar() {
     done(1);
 }// end boton_borrar
 
+
+/** \brief Calcula Totales y los presenta en el formulario.
+  * Calculamos el resultado de las sumas de las tablas y presentamos los resultados en los campos correspondientes.
+  */
 void ivaview::calculaTotales() {
     double base=0;
     double iva=0;
@@ -363,30 +378,35 @@ void ivaview::cambiadacontrapartida() {
     }// end if
 }// end cambiadacontrapartida
 
+
+
+/** \brief Se ha pulsado return sobre la contrapartida
+  */
 void ivaview::returnContrapartida() {
-QString cad = contrapartida->text();
-if (cad != "") {
-    cad = extiendecodigo(cad,numdigitos);
-    conexionbase->begin();
-    cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-    conexionbase->commit();
-    int num = cursorcta->numregistros();
-    if (num >0) {
-        contrapartida->setText(cursorcta->valor("codigo"));
-    }// end if
-    QString SQLQuery = "SELECT * FROM cuenta WHERE codigo='"+contrapartida->text()+"'";
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(SQLQuery,"buscacuenta");
-    conexionbase->commit();
-    if (!cur->eof()) {
-        cif->setText(cur->valor("cifent_cuenta"));
-        empfactura->setText(cur->valor("nombreent_cuenta"));
-    }// end if
-    delete cursorcta;
-}// end if
+	QString cad = contrapartida->text();
+	if (cad != "") {
+	cad = extiendecodigo(cad,numdigitos);
+	conexionbase->begin();
+	cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
+	conexionbase->commit();
+	int num = cursorcta->numregistros();
+	if (num >0) {
+		contrapartida->setText(cursorcta->valor("codigo"));
+	}// end if
+	QString SQLQuery = "SELECT * FROM cuenta WHERE codigo='"+contrapartida->text()+"'";
+	conexionbase->begin();
+	cursor2 *cur = conexionbase->cargacursor(SQLQuery,"buscacuenta");
+	conexionbase->commit();
+	if (!cur->eof()) {
+		cif->setText(cur->valor("cifent_cuenta"));
+		empfactura->setText(cur->valor("nombreent_cuenta"));
+	}// end if
+	delete cursorcta;
+	}// end if
 }// end return_codigofinal
 
-
+/** \brief SLOT que se dispara cuando se ha hecho el botón de búsqueda de una fecha.
+  */
 void ivaview::buscafecha(int idborrador) {
     QString SQLQuery = "SELECT * FROM asiento WHERE idasiento IN (SELECT idasiento FROM borrador WHERe idborrador = "+QString::number(idborrador)+")";
     conexionbase->begin();
@@ -518,7 +538,7 @@ int ivaview::buscaborradorcliente(int idborrador) {
 }// end if
 
 
-/** Esta función se encarga de cargar la tabla de registro de IVA
+/** \brief Esta función se encarga de cargar la tabla de registro de IVA
   */
 void ivaview::cargaiva(QString idregistroiva) {
     QString SQLQuery = "SELECT * FROM cuenta,tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva = "+idregistroiva+" ) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE cuenta.idcuenta = tipoiva.idcuenta";
@@ -543,7 +563,7 @@ void ivaview::cargaiva(QString idregistroiva) {
 }// end cargaiva
 
 /** 
-  * \brief Inicializa el registro de iva. Calculando los datos que son buscables.
+  * \brief Inicializa el registro de iva. Calculando los datos que son buscables (O encontrables a partir del asiento).
   * Esquema:
   * 1.- Comprobamos que no haya ya un registro con la factura
   * 2.- Si hay factura la ponemos, si no la hay sacamos los datos que podemos y los presentamos
@@ -729,6 +749,7 @@ void ivaview::guardaprevpago (int numrow) {
     }// end if
 }// end guardaprevpago
 
+
 /**
   * \brief SLOT que captura el cambio de foco en la rejilla de Previsiones de cobros y pagos.
   * Detecta si se ha cambiado de fila y si es el caso se guarda el registro.
@@ -742,7 +763,8 @@ void ivaview::tcambiaseleccion() {
     rowactual = m_listPrevision->currentRow();
 }// end ivaview
 
-
+/** EN DESUSO
+  */
 void ivaview::currentIvaChanged(int, int) {
     calculaTotales();
 }// end cambiadoIvaGrid
@@ -768,7 +790,8 @@ void ivaview::cambiadogrid(int row, int col) {
     }// end switch
 }// end apuntecambiadogrid
 
-
+/** Se ha pulsado sobre el botón de calcular la fecha.
+  */
 void ivaview::boton_fecha() {
     QList<QDate> a;
     m_ffactura->setText("");
@@ -778,6 +801,7 @@ void ivaview::boton_fecha() {
     m_ffactura->setText(a.first()->toString("dd/MM/yyyy"));
     delete cal;
 }// end boton_fecha
+
 
 /**
   * \brief SLOT que se activa al pulsar sobre el botón de generar previsiones.

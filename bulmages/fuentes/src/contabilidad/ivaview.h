@@ -27,6 +27,8 @@
 
 /** 
   * @author Tomeu Borrás Riera 
+  * \class ivaview ivaview.h
+  * \brief Formulario de introducción y/o visión de una factura emitida o recibida.
   */
 
 class empresa;  
@@ -34,13 +36,18 @@ class empresa;
 class ivaview : public ivadlg  {
   Q_OBJECT
 private:
-   cursor2 *m_cursorFPago;   // Cursor para las formas de pago.
-   
+   /// Cursor para las formas de pago.
+   cursor2 *m_cursorFPago;
 public:
-  empresa *empresaactual;
-  postgresiface2 *conexionbase;
+/// Empresa con la que se trabaja
+  empresa *empresaactual;	
+/// Base de datos con la que se trabaja  
+  postgresiface2 *conexionbase;	
+/// Borrador bajo el que se hace el registro de la factura
   int idborrador;
+/// Identificador de la tabla de facturas
   int idregistroiva;
+/// Numero de dígitos de la contabilidad.
   int numdigitos;
 
 public: 

@@ -689,8 +689,11 @@ void extractoview1::boton_guardarpunteo() {
 }// end boton_guardarpunteo
 
 
-// Esta función se activa justo cuando se pulsa sobre el botón de resetear el punteo.
-// Por supuesto cuando se pulsa dicho boton se borra el punteo.
+
+/** \brief Esta función borra todo el punteo de un extracto y lo pone a cero
+  * Esta función se activa justo cuando se pulsa sobre el botón de resetear el punteo.
+  * Por supuesto cuando se pulsa dicho boton se borra el punteo.
+  */
 void extractoview1::boton_borrapunteo() {
    int valor = QMessageBox::warning( 0, tr("Borrar Punteo"), "Se dispone a borrar el punteo. Este cambio es irrecuperable si no ha guardado su el punte. ¿Desea continuar?", QMessageBox::Yes, QMessageBox::No);
    if (valor == QMessageBox::Yes) {
@@ -702,7 +705,11 @@ void extractoview1::boton_borrapunteo() {
 }// end boton_cargarpunteo
 
 
-
+/** \brief Carga los punteos desde un fichero de texto que se solicita mediante un QFileDialog
+  * El fichero de punteos requiere que no se hayan modificado los identificadores de borrador.
+  * Para ello es preciso que no se hayan abierto y cerrado los asientos correspondientes ya que en dicho caso
+  * La carga del punteo no funciona correctamente.
+  */
 void extractoview1::boton_cargarpunteos() {
    QString fn = QFileDialog::getOpenFileName(0, tr("Punteos (*.pto)"), 0,tr("Cargar Punteo"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {

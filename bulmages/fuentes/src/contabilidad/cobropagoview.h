@@ -22,9 +22,11 @@
 
 #include <cobropagodlg.h>
 
-/**
-@author Tomeu Borras
-*/
+/** 
+  * @author Tomeu Borrás Riera 
+  * \class cobropagoview cobropagoview.h
+  * \brief Listado de gestion de cobros y pagos.
+  */
 
 class empresa;
 class postgresiface2;
@@ -40,6 +42,9 @@ public:
     cobropagoview(empresa *, QWidget *parent = 0, const char *name = 0);
     ~cobropagoview();
     void inicializa();
+public slots:
+    virtual void s_creaPago();
+    virtual void s_actualizar();
 };
 
 #endif
