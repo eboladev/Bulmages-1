@@ -30,7 +30,7 @@
         <string>BulmaFACT</string>
     </property>
     <property name="icon">
-        <pixmap>identity.png</pixmap>
+        <pixmap>yast_sysadmin.png</pixmap>
     </property>
 </widget>
 <menubar>
@@ -370,6 +370,9 @@
         <property name="name">
             <cstring>controlPresupuestosAction</cstring>
         </property>
+        <property name="iconSet">
+            <iconset>bug.png</iconset>
+        </property>
         <property name="text">
             <string>Presupuestos</string>
         </property>
@@ -380,6 +383,9 @@
     <action>
         <property name="name">
             <cstring>controlGarantiasAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>clanbomber.png</iconset>
         </property>
         <property name="text">
             <string>Garantias</string>

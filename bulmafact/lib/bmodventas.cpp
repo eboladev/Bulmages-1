@@ -34,7 +34,7 @@ BModVentas::BModVentas(QString* usuario, QString* passwd, QString* dataBase, QWi
     DataBase = dataBase;
     if (DataBase == NULL) DataBase = new QString(""); //NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR
     intentosFallidosPassword=0;
-    //Para evitar que se conecte a postgres, desactivo la funcion cargaUsuari!!
+    //Para evitar que se conecte a postgres, desactivo la funcion cargaUsuario!!
     //cargaUsuario();
 }
 

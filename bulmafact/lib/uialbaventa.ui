@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>UIAlbaVenta</class>
 <widget class="QWidget">
     <property name="name">
@@ -50,31 +50,12 @@
         </property>
         <widget class="QPushButton">
             <property name="name">
-                <cstring>botonX1</cstring>
+                <cstring>botonX6</cstring>
             </property>
             <property name="geometry">
                 <rect>
                     <x>10</x>
-                    <y>0</y>
-                    <width>40</width>
-                    <height>40</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="toolTip" stdset="0">
-                <string>Albaranes del Cliente</string>
-            </property>
-        </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>botonX2</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>40</y>
+                    <y>210</y>
                     <width>41</width>
                     <height>40</height>
                 </rect>
@@ -82,49 +63,14 @@
             <property name="text">
                 <string></string>
             </property>
-            <property name="toolTip" stdset="0">
-                <string>Imprimir</string>
-            </property>
-        </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>botonX3</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>80</y>
-                    <width>41</width>
-                    <height>40</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="toolTip" stdset="0">
-                <string>Contabilizar</string>
-            </property>
-        </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>botonX4</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>120</y>
-                    <width>41</width>
-                    <height>40</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string></string>
+            <property name="iconSet">
+                <iconset>fileclose.png</iconset>
             </property>
             <property name="buttonGroupId">
-                <number>3</number>
+                <number>5</number>
             </property>
             <property name="toolTip" stdset="0">
-                <string>Nuevo</string>
+                <string>Cerrar</string>
             </property>
         </widget>
         <widget class="QPushButton">
@@ -142,6 +88,9 @@
             <property name="text">
                 <string></string>
             </property>
+            <property name="iconSet">
+                <iconset>edittrash.png</iconset>
+            </property>
             <property name="buttonGroupId">
                 <number>4</number>
             </property>
@@ -151,12 +100,12 @@
         </widget>
         <widget class="QPushButton">
             <property name="name">
-                <cstring>botonX6</cstring>
+                <cstring>botonX4</cstring>
             </property>
             <property name="geometry">
                 <rect>
                     <x>10</x>
-                    <y>210</y>
+                    <y>120</y>
                     <width>41</width>
                     <height>40</height>
                 </rect>
@@ -164,11 +113,80 @@
             <property name="text">
                 <string></string>
             </property>
+            <property name="iconSet">
+                <iconset>window_new.png</iconset>
+            </property>
             <property name="buttonGroupId">
-                <number>5</number>
+                <number>3</number>
             </property>
             <property name="toolTip" stdset="0">
-                <string>Cerrar</string>
+                <string>Nuevo</string>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>botonX1</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>0</y>
+                    <width>40</width>
+                    <height>40</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string></string>
+            </property>
+            <property name="iconSet">
+                <iconset>fileopen_4.png</iconset>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Albaranes del Cliente</string>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>botonX3</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>80</y>
+                    <width>41</width>
+                    <height>40</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string></string>
+            </property>
+            <property name="iconSet">
+                <iconset>compfile.png</iconset>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Contabilizar</string>
+            </property>
+        </widget>
+        <widget class="QPushButton">
+            <property name="name">
+                <cstring>botonX2</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>40</y>
+                    <width>41</width>
+                    <height>40</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string></string>
+            </property>
+            <property name="iconSet">
+                <iconset>printer1.png</iconset>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string>Imprimir</string>
             </property>
         </widget>
     </widget>
@@ -441,7 +459,10 @@
                 </rect>
             </property>
             <property name="text">
-                <string>pushButton27</string>
+                <string></string>
+            </property>
+            <property name="iconSet">
+                <iconset>find.png</iconset>
             </property>
             <property name="toolTip" stdset="0">
                 <string>Opciones</string>
@@ -533,62 +554,6 @@
             <property name="frameShadow">
                 <enum>Sunken</enum>
             </property>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>botonL1</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>10</x>
-                        <y>1</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="flat">
-                    <bool>false</bool>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Buscar Articulo</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>botonL4</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>100</x>
-                        <y>1</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="flat">
-                    <bool>false</bool>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Insertar Linea</string>
-                </property>
-            </widget>
             <widget class="QComboBox">
                 <item>
                     <property name="text">
@@ -627,6 +592,37 @@
             </widget>
             <widget class="QPushButton">
                 <property name="name">
+                    <cstring>botonL1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>1</y>
+                        <width>30</width>
+                        <height>30</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>30</height>
+                    </size>
+                </property>
+                <property name="text">
+                    <string></string>
+                </property>
+                <property name="iconSet">
+                    <iconset>find.png</iconset>
+                </property>
+                <property name="flat">
+                    <bool>false</bool>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Buscar Articulo</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
                     <cstring>botonL2</cstring>
                 </property>
                 <property name="geometry">
@@ -645,6 +641,9 @@
                 </property>
                 <property name="text">
                     <string></string>
+                </property>
+                <property name="iconSet">
+                    <iconset>folder_new.png</iconset>
                 </property>
                 <property name="flat">
                     <bool>false</bool>
@@ -674,11 +673,45 @@
                 <property name="text">
                     <string></string>
                 </property>
+                <property name="iconSet">
+                    <iconset>editdelete.png</iconset>
+                </property>
                 <property name="flat">
                     <bool>false</bool>
                 </property>
                 <property name="toolTip" stdset="0">
                     <string>Borrar Linea</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>botonL4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>100</x>
+                        <y>1</y>
+                        <width>30</width>
+                        <height>30</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>30</height>
+                    </size>
+                </property>
+                <property name="text">
+                    <string></string>
+                </property>
+                <property name="iconSet">
+                    <iconset>1downarrow.png</iconset>
+                </property>
+                <property name="flat">
+                    <bool>false</bool>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Insertar Linea</string>
                 </property>
             </widget>
             <widget class="QPushButton">
@@ -702,36 +735,14 @@
                 <property name="text">
                     <string></string>
                 </property>
+                <property name="iconSet">
+                    <iconset>2leftarrow.png</iconset>
+                </property>
                 <property name="flat">
                     <bool>false</bool>
                 </property>
                 <property name="toolTip" stdset="0">
                     <string>Primero</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>botonL7</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>220</x>
-                        <y>1</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Posterior</string>
                 </property>
             </widget>
             <widget class="QPushButton">
@@ -755,6 +766,9 @@
                 <property name="text">
                     <string></string>
                 </property>
+                <property name="iconSet">
+                    <iconset>2rightarrow.png</iconset>
+                </property>
                 <property name="toolTip" stdset="0">
                     <string>Último</string>
                 </property>
@@ -766,6 +780,34 @@
                 <property name="geometry">
                     <rect>
                         <x>190</x>
+                        <y>0</y>
+                        <width>30</width>
+                        <height>30</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>30</height>
+                    </size>
+                </property>
+                <property name="text">
+                    <string></string>
+                </property>
+                <property name="iconSet">
+                    <iconset>1leftarrow.png</iconset>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Anterior</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>botonL7</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>220</x>
                         <y>1</y>
                         <width>30</width>
                         <height>30</height>
@@ -780,8 +822,11 @@
                 <property name="text">
                     <string></string>
                 </property>
+                <property name="iconSet">
+                    <iconset>1rightarrow.png</iconset>
+                </property>
                 <property name="toolTip" stdset="0">
-                    <string>Anterior</string>
+                    <string>Posterior</string>
                 </property>
             </widget>
         </widget>
@@ -947,25 +992,6 @@
                 <property name="midLineWidth">
                     <number>0</number>
                 </property>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonC1_2_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>184</x>
-                            <y>85</y>
-                            <width>30</width>
-                            <height>30</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Buscar Cliente</string>
-                    </property>
-                </widget>
                 <widget class="QLabel">
                     <property name="name">
                         <cstring>textLabel1_2_4</cstring>
@@ -980,25 +1006,6 @@
                     </property>
                     <property name="text">
                         <string>Almacen:</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonC1_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>184</x>
-                            <y>55</y>
-                            <width>30</width>
-                            <height>30</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Buscar Cliente</string>
                     </property>
                 </widget>
                 <widget class="QLabel">
@@ -1054,25 +1061,6 @@
                             <width>130</width>
                             <height>20</height>
                         </rect>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonC2_2_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>214</x>
-                            <y>85</y>
-                            <width>30</width>
-                            <height>30</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Mantenimiento Clientes</string>
                     </property>
                 </widget>
                 <widget class="QLabel">
@@ -1131,25 +1119,6 @@
                     </property>
                     <property name="text">
                         <string>Numero:</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonC2_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>214</x>
-                            <y>55</y>
-                            <width>30</width>
-                            <height>30</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Mantenimiento Clientes</string>
                     </property>
                 </widget>
                 <widget class="QLabel">
@@ -1215,25 +1184,6 @@
                         <string>Forma Pago:</string>
                     </property>
                 </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonC2_2_2_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>214</x>
-                            <y>115</y>
-                            <width>30</width>
-                            <height>30</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Mantenimiento Clientes</string>
-                    </property>
-                </widget>
                 <widget class="QLineEdit">
                     <property name="name">
                         <cstring>lineEdit20</cstring>
@@ -1245,25 +1195,6 @@
                             <width>117</width>
                             <height>20</height>
                         </rect>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonC1_2_2_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>184</x>
-                            <y>115</y>
-                            <width>30</width>
-                            <height>30</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Buscar Cliente</string>
                     </property>
                 </widget>
                 <widget class="QLineEdit">
@@ -1395,25 +1326,6 @@
                         <string>Provincia:</string>
                     </property>
                 </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonC2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>585</x>
-                            <y>4</y>
-                            <width>30</width>
-                            <height>30</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Mantenimiento Clientes</string>
-                    </property>
-                </widget>
                 <widget class="QLabel">
                     <property name="name">
                         <cstring>textLabel1_2_7</cstring>
@@ -1459,25 +1371,6 @@
                         </rect>
                     </property>
                 </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonC1</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>555</x>
-                            <y>4</y>
-                            <width>30</width>
-                            <height>30</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Buscar Cliente</string>
-                    </property>
-                </widget>
                 <widget class="QTextEdit">
                     <property name="name">
                         <cstring>textEdit2</cstring>
@@ -1505,6 +1398,182 @@
                     </property>
                     <property name="text">
                         <string>Observaciones Albarán</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>botonC1_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>184</x>
+                            <y>55</y>
+                            <width>30</width>
+                            <height>30</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>find.png</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Buscar Cliente</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>botonC1_2_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>184</x>
+                            <y>85</y>
+                            <width>30</width>
+                            <height>30</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>find.png</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Buscar Cliente</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>botonC1</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>555</x>
+                            <y>4</y>
+                            <width>30</width>
+                            <height>30</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>find.png</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Buscar Cliente</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>botonC2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>585</x>
+                            <y>4</y>
+                            <width>30</width>
+                            <height>30</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>folder_new.png</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Mantenimiento Clientes</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>botonC2_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>214</x>
+                            <y>55</y>
+                            <width>30</width>
+                            <height>30</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>folder_new.png</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Mantenimiento Clientes</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>botonC2_2_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>214</x>
+                            <y>85</y>
+                            <width>30</width>
+                            <height>30</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>folder_new.png</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Mantenimiento Clientes</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>botonC1_2_2_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>184</x>
+                            <y>115</y>
+                            <width>30</width>
+                            <height>30</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>find.png</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Buscar Formas Pago</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>botonC2_2_2_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>214</x>
+                            <y>115</y>
+                            <width>30</width>
+                            <height>30</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>folder_new.png</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Mantenimiento Formas Pago</string>
                     </property>
                 </widget>
             </widget>

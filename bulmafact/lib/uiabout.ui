@@ -7,7 +7,7 @@
     <property name="geometry">
         <rect>
             <x>0</x>
-            <y>0</y>
+            <y>2</y>
             <width>600</width>
             <height>300</height>
         </rect>
@@ -36,7 +36,7 @@
         <string>Acerca de Bulmages</string>
     </property>
     <property name="icon">
-        <pixmap>image0</pixmap>
+        <pixmap></pixmap>
     </property>
     <widget class="QTabWidget">
         <property name="name">
@@ -586,22 +586,20 @@ Public License instead of this License.
         </property>
         <property name="geometry">
             <rect>
-                <x>232</x>
-                <y>262</y>
-                <width>90</width>
-                <height>26</height>
+                <x>230</x>
+                <y>260</y>
+                <width>99</width>
+                <height>35</height>
             </rect>
         </property>
         <property name="text">
             <string>Cerrar</string>
         </property>
+        <property name="iconSet">
+            <iconset>fileclose.png</iconset>
+        </property>
     </widget>
 </widget>
-<images>
-    <image name="image0">
-        <data format="PNG" length="402">89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff610000015949444154789c85923b4fc43010843f230a3b1529a1bc92df8ea8101d828650f1680ea842675de5bbca7637141b121c40588ab2b3de79c4b1534e028fadca522f787fa8f4273d05089d03a024f1fc3eb8232a2b726d71ad78ef2940ad5062c27db3706d82b51810e0e36dc7e67cd34c288b526195604d0e3cdd3eb039df90c611498caf8fb3c8f3fbe0dcaf67108002aeebcc4dd9a29442391ce8cecefe4a6042fb8f1daeeb189f1e910405287b0850ab118697c1fd9260714d31d29f9e42298df83ac1f1b2678552047f626a0db942f0d49d252893e1f1623e0d7d91d7078a8702de4fb89af8fff7a0c1102681e02bc17b8eda04df92fc857bdfccff38839f24fb7680b2af3cdc0d344b3949394b92728c020ce72cc9faf1752b607ee6fd9c8464c5d5e58500c5716bc49cb51dee67d2dcd74256cee2e6faaa55b62c732fa768c352e3fc553b1b4a84be6ffebbeb3a94b3e10af8d5759fde9f4d493dea1a2901bd0000000049454e44ae426082</data>
-    </image>
-</images>
 <connections>
     <connection>
         <sender>PushButton1</sender>
@@ -610,5 +608,6 @@ Public License instead of this License.
         <slot>close()</slot>
     </connection>
 </connections>
+<pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
