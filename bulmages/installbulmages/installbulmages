@@ -97,8 +97,8 @@ else
    echo -e "Creando bases de datos \n"
    cd dbmodels
    source creabulmages metabd 3
-   source creabulmages bulmages 2
-   source creabulmages bgplangcont 1
+   source creabulmages bulmages 2 Bulmages 2004 metabd
+   source creabulmages bgplangcont 1 "En Blanco" 2004 metabd
    cd ..
    
   

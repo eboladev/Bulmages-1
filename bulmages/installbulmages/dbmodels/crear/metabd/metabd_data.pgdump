@@ -13,12 +13,8 @@ SET search_path = public, pg_catalog;
 --
 
 COPY usuario (idusuario, nombre, apellido1, apellido2, login, "password") FROM stdin;
-1	Tomeu	Borras	Riera	postgres	postgres
+1	Tomeu	Borras	Riera	tborras	tborras
 2	Bulmages	Bulma	Bulmita	bulmages	bulmages
-3	Cristina	Marco	Hernandez	cmarco	cmarco
-5	Joana Maria	Borras	Riera	jmborras	postgres
-6	Francisca Ana	Borras	Riera	fborras	postgres
-9	Perico	Palotes	Ramos	ppalotes	ramos
 \.
 
 
@@ -26,27 +22,6 @@ COPY usuario (idusuario, nombre, apellido1, apellido2, login, "password") FROM s
 -- Data for TOC entry 6 (OID 927484)
 -- Name: empresa; Type: TABLE DATA; Schema: public; Owner: postgres
 --
-
-COPY empresa (idempresa, nombre, ano, nombredb, "password", ejant) FROM stdin;
-1	Bulmages 2002	2002	bulmages	bulmages	\N
-2	Plan General Contable	2002	bgplangcont	bgplangcont	\N
-23	Tomeu-st1010	2004	st10102004	\N	\N
-\.
-
-
---
--- Data for TOC entry 7 (OID 927489)
--- Name: usuario_empresa; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY usuario_empresa (idusuarioempresa, idempresa, idusuario, permisos) FROM stdin;
-46	1	3	2
-47	1	9	2
-48	1	1	1
-49	1	2	1
-2	2	2	1
-50	23	2	1
-\.
 
 
 --

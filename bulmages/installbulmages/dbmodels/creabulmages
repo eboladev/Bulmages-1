@@ -6,10 +6,13 @@
 # Aunque es una tarea muy sencilla que puede hacer posteriormente.
 # PARAMETROS:
 #               $1 Nombre Base de Datos
-#               $2  Tipo: 0.- Base (Vacia)
+#               $2 Tipo:  0.- Base (Vacia)
 #			  1.- Plan Contable.
 #			  2.- Juego de prueba de bulmages
 #                         3.- La metabase
+#		$3 Nombre de la Empresa.
+#		$4 Ejercicio (ano)
+#		$5 La metabase en la que se mete la empresa.
 #
 # Este script debe ser ejecutado como ROOT
 # ----------------------------------------------------------------------------------------
@@ -82,7 +85,7 @@ if [ "a$2" = "a3" ]; then
 fi
 
 
-if [ "a$2" = "a1" -o "a$2" = "a2" ]; then
+if [ "$2" = "1" -o "$2" = "2" ]; then
    # Cargamos lo minimo
    echo -e "Cargamos lo minimo"
    su - postgres -c "psql $1" < crear/bulmages/t_configuracion_data.pgdump 2>> errores.txt > /dev/null
@@ -111,6 +114,26 @@ if [ "$2" = "2" ]; then
    su - postgres -c "psql $1" < crear/bulmages/t_amortizacion_data.pgdump 2>> errores.txt > /dev/null
    su - postgres -c "psql $1" < crear/bulmages/t_linamortizacion_data.pgdump 2>> errores.txt > /dev/null
    su - postgres -c "psql $1" < crear/bulmages/t_ejercicios_data.pgdump 2>> errores.txt > /dev/null
+fi
+
+
+#VAmos a hacer la insercion en la metabase de los datos necesarios.
+if [ "$2" = "1" -o "$2" = "2" ]; then
+   # Cargamos lo minimo
+   echo -e "Creamos la empresa en la MetaBase"
+   su - postgres -c "echo -e \" INSERT INTO empresa (nombre, ano, nombredb) VALUES ('$3', $4, '$1')\" | psql $5" 2>> errores.txt   > /dev/null
+   #  Hacemos una actualizacion de las bases de datos.
+   su - postgres -c "echo -e \"\\pset tuples_only \n select MAX(idempresa) from empresa ;\" | psql metabd" > listdb.lst
+   for x in `tail +2 listdb.lst`
+   do
+      echo -e "Creamos los permisos necesarios"
+      su - postgres -c "echo -e \"\\pset tuples_only \n select idusuario FROM usuario ;\" | psql metabd" > listuser.lst
+      for y in `tail +2 listuser.lst`
+      do
+	    su - postgres -c " echo \"INSERT INTO usuario_empresa (idusuario,idempresa) VALUES ($y, $x)\" | psql $5 "  2>> errores.txt >> errores.txt
+      done
+      linea
+   done
 fi
 
 DBS=`cat errores.txt | grep ERROR`
