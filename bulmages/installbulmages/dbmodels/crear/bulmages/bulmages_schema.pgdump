@@ -13,19 +13,6 @@ CREATE TABLE configuracion (
 );
 
 
--- La tabla de tipos de iva indica los tipos de iva que se soportan
--- Sirve para saber si un iva determinado es correcto o no.
--- Esta en forma de tabla y no en otra forma debido a que los porcentajes de IVA podrian cambiar.
--- Los campos son:
--- idtipoiva: Identificador de la tabla.
--- nombretipoiva: da un nombre al tipo de iva.
--- Porcentajetipoiva: El porcentaje que corresponde con este tipo.
-CREATE TABLE tiposiva (
-    idtipoiva integer NOT NULL,
-    nombretipoiva character varying(25),
-    porcentajetipoiva character varying(350)
-);
-
 
 CREATE TABLE grupo (
     idgrupo serial PRIMARY KEY,
@@ -63,12 +50,12 @@ CREATE TABLE grupo (
 
 CREATE TABLE cuenta (
     idcuenta serial PRIMARY KEY,
-    codigo character varying(12),
+    codigo character varying(12) NOT NULL,
     descripcion character varying(100),
     imputacion boolean,
     padre integer,
     bloqueada boolean,
-    idgrupo integer REFERENCES grupo(idgrupo),
+    idgrupo integer NOT NULL REFERENCES grupo(idgrupo),
     msg character varying(500),
     debe double precision DEFAULT 0,
     haber double precision DEFAULT 0,
@@ -88,108 +75,45 @@ CREATE TABLE cuenta (
 );
 
 
---
--- TOC entry 7 (OID 1345960)
--- Name: canal_idcanal_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE canal_idcanal_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
 
 
---
--- TOC entry 32 (OID 1345962)
--- Name: canal; Type: TABLE; Schema: public; Owner: postgres
---
 
+-- La tabla canal refleja los canales a los que puede pertenecer un apunte determinado.
 CREATE TABLE canal (
-    idcanal integer DEFAULT nextval('"canal_idcanal_seq"'::text) NOT NULL,
+    idcanal serial PRIMARY KEY,
     descripcion character varying(100),
     nombre character varying(50)
 );
 
 
---
--- TOC entry 8 (OID 1345965)
--- Name: c_coste_idc_coste_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE c_coste_idc_coste_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
---
--- TOC entry 33 (OID 1345967)
--- Name: c_coste; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE c_coste (
-    idc_coste integer DEFAULT nextval('"c_coste_idc_coste_seq"'::text) NOT NULL,
+    idc_coste serial PRIMARY KEY,
     descripcion character varying(100),
-    nombre character varying(50),
+    nombre character varying(50) NOT NULL,
     codigo character(3),
     padre integer,
     imputacion boolean,
-    debe double precision,
-    haber double precision
+    debe double precision DEFAULT 0,
+    haber double precision DEFAULT 0
 );
 
-
---
--- TOC entry 9 (OID 1345970)
--- Name: acumulado_c_c_idacumulado_c_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE acumulado_c_c_idacumulado_c_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
---
--- TOC entry 34 (OID 1345972)
--- Name: acumulado_c_coste; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE acumulado_c_coste (
-    idacumulado_c_coste integer DEFAULT nextval('"acumulado_c_c_idacumulado_c_seq"'::text) NOT NULL,
-    idcuenta integer REFERENCES cuenta(idcuenta),
-    idc_coste integer,
-    debe double precision,
-    haber double precision
+    idacumulado_c_coste serial PRIMARY KEY,
+    idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
+    idc_coste integer NOT NULL REFERENCES c_coste(idc_coste),
+    debe double precision DEFAULT 0,
+    haber double precision DEFAULT 0
 );
 
 
---
--- TOC entry 10 (OID 1345975)
--- Name: acumulado_can_idacumulado_c_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE acumulado_can_idacumulado_c_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
---
--- TOC entry 35 (OID 1345977)
--- Name: acumulado_canal; Type: TABLE; Schema: public; Owner: postgres
---
-
 CREATE TABLE acumulado_canal (
-    idacumulado_canal integer DEFAULT nextval('"acumulado_can_idacumulado_c_seq"'::text) NOT NULL,
-    idcuenta integer REFERENCES cuenta(idcuenta),
-    idcanal integer,
-    debe double precision,
-    haber double precision
+    idacumulado_canal serial PRIMARY KEY,
+    idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
+    idcanal integer NOT NULL REFERENCES canal(idcanal),
+    debe double precision DEFAULT 0,
+    haber double precision DEFAULT 0
 );
 
 
@@ -203,20 +127,17 @@ CREATE TABLE diario (
     descripcion character varying(100)
 );
 
+\echo "La tabla diario está en desuso, aunque de momento se crea."
 
 
---
--- TOC entry 37 (OID 1345987)
--- Name: asiento; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE asiento (
     idasiento serial PRIMARY KEY,
     descripcion character varying(100),
     fecha timestamp with time zone,
     comentariosasiento character varying(2000),
-    ordenasiento integer,
-    clase smallint
+    ordenasiento integer NOT NULL,
+    clase smallint DEFAULT 0
 );
 
 
@@ -230,64 +151,10 @@ CREATE TABLE adocumental (
     archivoadocumental character varying(300)
 );
 
---
--- TOC entry 13 (OID 1345993)
--- Name: apunte_idapunte_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
 
-CREATE SEQUENCE apunte_idapunte_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
---
--- TOC entry 38 (OID 1345995)
--- Name: apunte; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE apunte (
-    idapunte integer DEFAULT nextval('"apunte_idapunte_seq"'::text) NOT NULL,
-    codigoborrador integer,
-    idasiento integer REFERENCES asiento(idasiento),
-    iddiario integer REFERENCES diario(iddiario),
-    fecha timestamp with time zone,
-    conceptocontable character varying(50),
-    idcuenta integer REFERENCES cuenta(idcuenta),
-    descripcion character varying(100),
-    debe double precision,
-    haber double precision,
-    contrapartida integer REFERENCES cuenta(idcuenta),
-    comentario character varying(100),
-    idcanal integer,
-    marcaconciliacion character(12),
-    idc_coste integer,
-    idtipoiva integer,
-    orden integer,
-    punteo boolean DEFAULT false
-);
-
-
---
--- TOC entry 14 (OID 1345999)
--- Name: borrador_idborrador_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE borrador_idborrador_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
---
--- TOC entry 39 (OID 1346001)
--- Name: borrador; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE borrador (
-    idborrador integer DEFAULT nextval('"borrador_idborrador_seq"'::text) NOT NULL,
+    idapunte serial PRIMARY KEY,
     codigoborrador integer,
     idasiento integer NOT NULL REFERENCES asiento(idasiento),
     iddiario integer REFERENCES diario(iddiario),
@@ -295,13 +162,36 @@ CREATE TABLE borrador (
     conceptocontable character varying(50),
     idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
     descripcion character varying(100),
-    debe double precision,
-    haber double precision,
+    debe double precision NOT NULL DEFAULT 0,
+    haber double precision NOT NULL DEFAULT 0,
     contrapartida integer REFERENCES cuenta(idcuenta),
     comentario character varying(100),
-    idcanal integer,
+    idcanal integer REFERENCES canal(idcanal),
     marcaconciliacion character(12),
-    idc_coste integer,
+    idc_coste integer REFERENCES c_coste(idc_coste),
+    idtipoiva integer,
+    orden integer,
+    punteo boolean DEFAULT false
+);
+
+
+
+CREATE TABLE borrador (
+    idborrador serial PRIMARY KEY,
+    codigoborrador integer,
+    idasiento integer NOT NULL REFERENCES asiento(idasiento),
+    iddiario integer REFERENCES diario(iddiario),
+    fecha timestamp with time zone,
+    conceptocontable character varying(50),
+    idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
+    descripcion character varying(100),
+    debe double precision NOT NULL DEFAULT 0,
+    haber double precision NOT NULL DEFAULT 0,
+    contrapartida integer REFERENCES cuenta(idcuenta),
+    comentario character varying(100),
+    idcanal integer REFERENCES canal(idcanal),
+    marcaconciliacion character(12),
+    idc_coste integer REFERENCES c_coste(idc_coste),
     idapunte integer,
     idtipoiva integer,
     orden integer
@@ -334,6 +224,22 @@ CREATE TABLE fpago (
     tipoplazoentrerecibofpago integer
 );
 
+
+
+
+-- La tabla de tipos de iva indica los tipos de iva que se soportan
+-- Sirve para saber si un iva determinado es correcto o no.
+-- Esta en forma de tabla y no en otra forma debido a que los porcentajes de IVA podrian cambiar.
+-- Los campos son:
+-- idtipoiva: Identificador de la tabla.
+-- nombretipoiva: da un nombre al tipo de iva.
+-- Porcentajetipoiva: El porcentaje que corresponde con este tipo.
+CREATE TABLE tipoiva (
+    idtipoiva serial PRIMARY KEY,
+    nombretipoiva character varying(25),
+    porcentajetipoiva float,
+    idcuenta integer NOT NULL REFERENCES cuenta(idcuenta)
+);
 
 
 --
@@ -381,58 +287,34 @@ CREATE TABLE prevcobro (
     idcuenta integer REFERENCES cuenta(idcuenta),
     idasiento integer REFERENCES asiento(idasiento),
     cantidadprevistaprevcobro double precision,
-    cantidadprevcobro         double precision,
+    cantidadprevcobro  double precision,
     idregistroiva integer NOT NULL REFERENCES registroiva(idregistroiva),
     tipoprevcobro boolean,
     docprevcobro character varying(50)
 );
 
+\echo "Se ha creado la tabla prevcobro"
 
+-- Esta tabla especifica para cada factura los IVAS correspondientes.
+CREATE TABLE iva (
+   idiva serial PRIMARY KEY,
+   idtipoiva integer NOT NULL REFERENCES tipoiva (idtipoiva),
+   idregistroiva integer NOT NULL REFERENCES registroiva(idregistroiva),
+   baseiva double precision DEFAULT 0
+);
 
---
--- TOC entry 16 (OID 1346009)
--- Name: ainteligente_idainteligente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
+\echo "Se ha creado la tabla iva"
 
-CREATE SEQUENCE ainteligente_idainteligente_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
---
--- TOC entry 41 (OID 1346011)
--- Name: ainteligente; Type: TABLE; Schema: public; Owner: postgres
---
 
 CREATE TABLE ainteligente (
-    idainteligente integer DEFAULT nextval('"ainteligente_idainteligente_seq"'::text) NOT NULL,
+    idainteligente serial PRIMARY KEY,
     descripcion character varying(100),
     comentariosasiento character varying(2000)
 );
 
 
---
--- TOC entry 17 (OID 1346017)
--- Name: binteligente_idbinteligente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE binteligente_idbinteligente_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
-
---
--- TOC entry 42 (OID 1346019)
--- Name: binteligente; Type: TABLE; Schema: public; Owner: postgres
---
-
 CREATE TABLE binteligente (
-    idbinteligente integer DEFAULT nextval('"borrador_idborrador_seq"'::text) NOT NULL,
+    idbinteligente serial PRIMARY KEY,
     idainteligente integer,
     iddiario character varying(100),
     fecha character varying(100),
@@ -455,9 +337,9 @@ CREATE TABLE binteligente (
 --
 
 CREATE TABLE ivainteligente (
-    idivainteligente serial NOT NULL,
-    idainteligente integer,
-    idbinteligente integer,
+    idivainteligente serial PRIMARY KEY,
+    idainteligente integer NOT NULL REFERENCES ainteligente(idainteligente),
+    idbinteligente integer NOT NULL REFERENCES binteligente(idbinteligente),
     contrapartida character varying(100),
     baseimp character varying(100),
     iva character varying(100),
@@ -472,12 +354,41 @@ CREATE TABLE ivainteligente (
 
 
 --
+-- TOC entry 47 (OID 1346044)
+-- Name: balance; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE balance (
+    idbalance serial PRIMARY KEY,
+    nombrebalance character varying(150)
+);
+
+\echo "Se ha creado balance"
+
+--
+-- TOC entry 45 (OID 1346034)
+-- Name: mpatrimonial; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE mpatrimonial (
+    idmpatrimonial serial PRIMARY KEY,
+    idbalance integer REFERENCES balance(idbalance),
+    descmpatrimonial character varying(150),
+    orden integer,
+    tabulacion integer,
+    saldo double precision,
+    opdesc integer
+);
+
+\echo "Se ha creado la tabla mpatrimonial"
+
+--
 -- TOC entry 44 (OID 1346029)
 -- Name: compmasap; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE compmasap (
-    idcompmasap serial NOT NULL,
+    idcompmasap serial PRIMARY KEY,
     idcuenta integer REFERENCES cuenta(idcuenta),
     idmpatrimonial integer,
     masaperteneciente integer,
@@ -486,22 +397,7 @@ CREATE TABLE compmasap (
     nombre character varying(150)
 );
 
-
---
--- TOC entry 45 (OID 1346034)
--- Name: mpatrimonial; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE mpatrimonial (
-    idmpatrimonial serial NOT NULL,
-    idbalance integer,
-    descmpatrimonial character varying(150),
-    orden integer,
-    tabulacion integer,
-    saldo double precision,
-    opdesc integer
-);
-
+\echo "Se ha creado la tabla compmasap"
 
 --
 -- TOC entry 46 (OID 1346039)
@@ -509,24 +405,16 @@ CREATE TABLE mpatrimonial (
 --
 
 CREATE TABLE compbalance (
-    idcompbalance serial NOT NULL,
-    idbalance integer,
+    idcompbalance serial PRIMARY KEY,
+    idbalance integer NOT NULL REFERENCES balance(idbalance),
     idmpatrimonial integer,
     concepto character varying(150),
     orden integer,
     tabulacion integer
 );
 
+\echo "Se ha creado la tabla compbalance"
 
---
--- TOC entry 47 (OID 1346044)
--- Name: balance; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE balance (
-    idbalance serial NOT NULL,
-    nombrebalance character varying(150)
-);
 
 
 --
@@ -1685,579 +1573,7 @@ END;
     LANGUAGE plpgsql;
 
 
---
--- TOC entry 75 (OID 1358578)
--- Name: compbalance_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
 
-ALTER TABLE ONLY compbalance
-    ADD CONSTRAINT compbalance_pkey PRIMARY KEY (idcompbalance);
-
-
---
--- TOC entry 76 (OID 1358580)
--- Name: balance_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY balance
-    ADD CONSTRAINT balance_pkey PRIMARY KEY (idbalance);
-
-
---
--- TOC entry 74 (OID 1358582)
--- Name: ivainteligente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY ivainteligente
-    ADD CONSTRAINT ivainteligente_pkey PRIMARY KEY (idivainteligente);
-
-
---
--- TOC entry 72 (OID 1358584)
--- Name: ainteligente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY ainteligente
-    ADD CONSTRAINT ainteligente_pkey PRIMARY KEY (idainteligente);
-
-
---
--- TOC entry 73 (OID 1358586)
--- Name: binteligente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY binteligente
-    ADD CONSTRAINT binteligente_pkey PRIMARY KEY (idbinteligente);
-
-
---
--- TOC entry 59 (OID 1358588)
--- Name: configuracion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY configuracion
-    ADD CONSTRAINT configuracion_pkey PRIMARY KEY (idconfiguracion);
-
-
---
--- TOC entry 60 (OID 1358590)
--- Name: tiposiva_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY tiposiva
-    ADD CONSTRAINT tiposiva_pkey PRIMARY KEY (idtipoiva);
-
-
-
-
---
--- TOC entry 64 (OID 1358596)
--- Name: canal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY canal
-    ADD CONSTRAINT canal_pkey PRIMARY KEY (idcanal);
-
-
---
--- TOC entry 65 (OID 1358598)
--- Name: c_coste_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY c_coste
-    ADD CONSTRAINT c_coste_pkey PRIMARY KEY (idc_coste);
-
-
---
--- TOC entry 66 (OID 1358600)
--- Name: acumulado_c_coste_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY acumulado_c_coste
-    ADD CONSTRAINT acumulado_c_coste_pkey PRIMARY KEY (idacumulado_c_coste);
-
-
---
--- TOC entry 67 (OID 1358602)
--- Name: acumulado_canal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY acumulado_canal
-    ADD CONSTRAINT acumulado_canal_pkey PRIMARY KEY (idacumulado_canal);
-
-
---
--- TOC entry 70 (OID 1358608)
--- Name: apunte_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY apunte
-    ADD CONSTRAINT apunte_pkey PRIMARY KEY (idapunte);
-
-
---
--- TOC entry 71 (OID 1358610)
--- Name: borrador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY borrador
-    ADD CONSTRAINT borrador_pkey PRIMARY KEY (idborrador);
-
-
---
--- TOC entry 77 (OID 1358612)
--- Name: pga_graphs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY pga_graphs
-    ADD CONSTRAINT pga_graphs_pkey PRIMARY KEY (graphname);
-
-
---
--- TOC entry 78 (OID 1358614)
--- Name: pga_images_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY pga_images
-    ADD CONSTRAINT pga_images_pkey PRIMARY KEY (imagename);
-
-
---
--- TOC entry 79 (OID 1358616)
--- Name: pga_diagrams_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY pga_diagrams
-    ADD CONSTRAINT pga_diagrams_pkey PRIMARY KEY (diagramname);
-
-
---
--- TOC entry 80 (OID 1358618)
--- Name: pga_layout_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY pga_layout
-    ADD CONSTRAINT pga_layout_pkey PRIMARY KEY (tablename);
-
-
---
--- TOC entry 81 (OID 1358620)
--- Name: amortizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY amortizacion
-    ADD CONSTRAINT amortizacion_pkey PRIMARY KEY (idamortizacion);
-
-
---
--- TOC entry 82 (OID 1358622)
--- Name: linamortizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY linamortizacion
-    ADD CONSTRAINT linamortizacion_pkey PRIMARY KEY (idlinamortizacion);
-
-
-
-
---
--- TOC entry 119 (OID 1358632)
--- Name: linamoritzacion_amortizacion_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY linamortizacion
-    ADD CONSTRAINT linamoritzacion_amortizacion_fk FOREIGN KEY (idamortizacion) REFERENCES amortizacion(idamortizacion);
-
-
---
--- TOC entry 179 (OID 1358640)
--- Name: RI_ConstraintTrigger_1358640; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
-    AFTER INSERT OR UPDATE ON apunte
-    FROM tiposiva
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_check_ins"('idtipoiva_tipoiva_fk', 'apunte', 'tiposiva', 'UNSPECIFIED', 'idtipoiva', 'idtipoiva');
-
-
---
--- TOC entry 121 (OID 1358641)
--- Name: RI_ConstraintTrigger_1358641; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
-    AFTER DELETE ON tiposiva
-    FROM apunte
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_del"('idtipoiva_tipoiva_fk', 'apunte', 'tiposiva', 'UNSPECIFIED', 'idtipoiva', 'idtipoiva');
-
-
---
--- TOC entry 122 (OID 1358642)
--- Name: RI_ConstraintTrigger_1358642; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
-    AFTER UPDATE ON tiposiva
-    FROM apunte
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_upd"('idtipoiva_tipoiva_fk', 'apunte', 'tiposiva', 'UNSPECIFIED', 'idtipoiva', 'idtipoiva');
-
-
---
--- TOC entry 189 (OID 1358643)
--- Name: RI_ConstraintTrigger_1358643; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
-    AFTER INSERT OR UPDATE ON borrador
-    FROM tiposiva
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_check_ins"('idtipoivaborr_tipoiva_fk', 'borrador', 'tiposiva', 'UNSPECIFIED', 'idtipoiva', 'idtipoiva');
-
-
---
--- TOC entry 123 (OID 1358644)
--- Name: RI_ConstraintTrigger_1358644; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
-    AFTER DELETE ON tiposiva
-    FROM borrador
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_del"('idtipoivaborr_tipoiva_fk', 'borrador', 'tiposiva', 'UNSPECIFIED', 'idtipoiva', 'idtipoiva');
-
-
---
--- TOC entry 124 (OID 1358645)
--- Name: RI_ConstraintTrigger_1358645; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
-    AFTER UPDATE ON tiposiva
-    FROM borrador
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_upd"('idtipoivaborr_tipoiva_fk', 'borrador', 'tiposiva', 'UNSPECIFIED', 'idtipoiva', 'idtipoiva');
-
-
-
-
-
-
-
---
--- TOC entry 154 (OID 1358652)
--- Name: RI_ConstraintTrigger_1358652; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER c_coste_fk
-    AFTER INSERT OR UPDATE ON c_coste
-    FROM c_coste
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_check_ins"('c_coste_fk', 'c_coste', 'c_coste', 'UNSPECIFIED', 'padre', 'idc_coste');
-
-
---
--- TOC entry 155 (OID 1358653)
--- Name: RI_ConstraintTrigger_1358653; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER c_coste_fk
-    AFTER DELETE ON c_coste
-    FROM c_coste
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_del"('c_coste_fk', 'c_coste', 'c_coste', 'UNSPECIFIED', 'padre', 'idc_coste');
-
-
---
--- TOC entry 156 (OID 1358654)
--- Name: RI_ConstraintTrigger_1358654; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER c_coste_fk
-    AFTER UPDATE ON c_coste
-    FROM c_coste
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_upd"('c_coste_fk', 'c_coste', 'c_coste', 'UNSPECIFIED', 'padre', 'idc_coste');
-
-
-
-
-
-
-
-
---
--- TOC entry 167 (OID 1358658)
--- Name: RI_ConstraintTrigger_1358658; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
-    AFTER INSERT OR UPDATE ON acumulado_c_coste
-    FROM c_coste
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_check_ins"('acumulado_c_coste_idc_coste_fk', 'acumulado_c_coste', 'c_coste', 'UNSPECIFIED', 'idc_coste', 'idc_coste');
-
-
---
--- TOC entry 157 (OID 1358659)
--- Name: RI_ConstraintTrigger_1358659; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
-    AFTER DELETE ON c_coste
-    FROM acumulado_c_coste
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_del"('acumulado_c_coste_idc_coste_fk', 'acumulado_c_coste', 'c_coste', 'UNSPECIFIED', 'idc_coste', 'idc_coste');
-
-
---
--- TOC entry 158 (OID 1358660)
--- Name: RI_ConstraintTrigger_1358660; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
-    AFTER UPDATE ON c_coste
-    FROM acumulado_c_coste
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_upd"('acumulado_c_coste_idc_coste_fk', 'acumulado_c_coste', 'c_coste', 'UNSPECIFIED', 'idc_coste', 'idc_coste');
-
-
-
-
-
-
-
-
---
--- TOC entry 169 (OID 1358664)
--- Name: RI_ConstraintTrigger_1358664; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
-    AFTER INSERT OR UPDATE ON acumulado_canal
-    FROM canal
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_check_ins"('acumulado_idcanal_fk', 'acumulado_canal', 'canal', 'UNSPECIFIED', 'idcanal', 'idcanal');
-
-
---
--- TOC entry 146 (OID 1358665)
--- Name: RI_ConstraintTrigger_1358665; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
-    AFTER DELETE ON canal
-    FROM acumulado_canal
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_del"('acumulado_idcanal_fk', 'acumulado_canal', 'canal', 'UNSPECIFIED', 'idcanal', 'idcanal');
-
-
---
--- TOC entry 147 (OID 1358666)
--- Name: RI_ConstraintTrigger_1358666; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
-    AFTER UPDATE ON canal
-    FROM acumulado_canal
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_upd"('acumulado_idcanal_fk', 'acumulado_canal', 'canal', 'UNSPECIFIED', 'idcanal', 'idcanal');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---
--- TOC entry 184 (OID 1358679)
--- Name: RI_ConstraintTrigger_1358679; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
-    AFTER INSERT OR UPDATE ON apunte
-    FROM canal
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_check_ins"('apunte_idcanal_fk', 'apunte', 'canal', 'UNSPECIFIED', 'idcanal', 'idcanal');
-
-
---
--- TOC entry 148 (OID 1358680)
--- Name: RI_ConstraintTrigger_1358680; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
-    AFTER DELETE ON canal
-    FROM apunte
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_del"('apunte_idcanal_fk', 'apunte', 'canal', 'UNSPECIFIED', 'idcanal', 'idcanal');
-
-
---
--- TOC entry 149 (OID 1358681)
--- Name: RI_ConstraintTrigger_1358681; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
-    AFTER UPDATE ON canal
-    FROM apunte
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_upd"('apunte_idcanal_fk', 'apunte', 'canal', 'UNSPECIFIED', 'idcanal', 'idcanal');
-
-
---
--- TOC entry 185 (OID 1358682)
--- Name: RI_ConstraintTrigger_1358682; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
-    AFTER INSERT OR UPDATE ON apunte
-    FROM c_coste
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_check_ins"('apunte_idc_coste_fk', 'apunte', 'c_coste', 'UNSPECIFIED', 'idc_coste', 'idc_coste');
-
-
---
--- TOC entry 159 (OID 1358683)
--- Name: RI_ConstraintTrigger_1358683; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
-    AFTER DELETE ON c_coste
-    FROM apunte
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_del"('apunte_idc_coste_fk', 'apunte', 'c_coste', 'UNSPECIFIED', 'idc_coste', 'idc_coste');
-
-
---
--- TOC entry 160 (OID 1358684)
--- Name: RI_ConstraintTrigger_1358684; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
-    AFTER UPDATE ON c_coste
-    FROM apunte
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_upd"('apunte_idc_coste_fk', 'apunte', 'c_coste', 'UNSPECIFIED', 'idc_coste', 'idc_coste');
-
-
-
-
-
-
-
-
-
-
-
-
-
---
--- TOC entry 194 (OID 1358697)
--- Name: RI_ConstraintTrigger_1358697; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER borrador_canal_fk
-    AFTER INSERT OR UPDATE ON borrador
-    FROM canal
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_check_ins"('borrador_canal_fk', 'borrador', 'canal', 'UNSPECIFIED', 'idcanal', 'idcanal');
-
-
---
--- TOC entry 150 (OID 1358698)
--- Name: RI_ConstraintTrigger_1358698; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER borrador_canal_fk
-    AFTER DELETE ON canal
-    FROM borrador
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_del"('borrador_canal_fk', 'borrador', 'canal', 'UNSPECIFIED', 'idcanal', 'idcanal');
-
-
---
--- TOC entry 151 (OID 1358699)
--- Name: RI_ConstraintTrigger_1358699; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER borrador_canal_fk
-    AFTER UPDATE ON canal
-    FROM borrador
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_upd"('borrador_canal_fk', 'borrador', 'canal', 'UNSPECIFIED', 'idcanal', 'idcanal');
-
-
---
--- TOC entry 195 (OID 1358700)
--- Name: RI_ConstraintTrigger_1358700; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
-    AFTER INSERT OR UPDATE ON borrador
-    FROM c_coste
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_check_ins"('borrador_idc_coste_fk', 'borrador', 'c_coste', 'UNSPECIFIED', 'idc_coste', 'idc_coste');
-
-
---
--- TOC entry 161 (OID 1358701)
--- Name: RI_ConstraintTrigger_1358701; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
-    AFTER DELETE ON c_coste
-    FROM borrador
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_del"('borrador_idc_coste_fk', 'borrador', 'c_coste', 'UNSPECIFIED', 'idc_coste', 'idc_coste');
-
-
---
--- TOC entry 162 (OID 1358702)
--- Name: RI_ConstraintTrigger_1358702; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
-    AFTER UPDATE ON c_coste
-    FROM borrador
-    NOT DEFERRABLE INITIALLY IMMEDIATE
-    FOR EACH ROW
-    EXECUTE PROCEDURE "RI_FKey_noaction_upd"('borrador_idc_coste_fk', 'borrador', 'c_coste', 'UNSPECIFIED', 'idc_coste', 'idc_coste');
 
 
 --

@@ -21,6 +21,7 @@
 #include <qwidget.h>
 #include <ivadlg.h>
 #include <qlineedit.h>
+#include <qcombobox.h>
 
 #include "postgresiface2.h"
 
@@ -47,6 +48,8 @@ public:
   void inicializa1(int );
   void guardaprevpago(int );
   void guardaprevpago();
+  void guardaiva(int );
+  void guardaiva();
   void cambiadasubcuenta(int);
   void cargacobros();
 private:
@@ -54,6 +57,8 @@ private:
   int buscaborradoriva(int);
   int buscaborradorcliente(int);
   int buscaborradorservicio(int);
+  void cargaiva(QString);
+  void cargaComboTipoIva();
 
 public slots:
   virtual void accept();
@@ -64,6 +69,7 @@ public slots:
   virtual void importeiva_changed();
   virtual void baseiva_lostfocus();
   virtual void boton_generarPrevisiones();
+//  virtual void currentIvaChanged(int, int);
 
 private slots:
   virtual void tcambiaseleccion();

@@ -111,7 +111,12 @@ CREATE TABLE fpago (
 #define COL_PREV_IDREGISTROIVA 8
 #define COL_PREV_DOCPREVCOBRO 9
 
-
+#define COL_IVA_IDIVA 0
+#define COL_IVA_IDTIPOIVA 1
+#define COL_IVA_NOMBRETIPOIVA 2
+#define COL_IVA_CTAIVA 3
+#define COL_IVA_BASEIVA 4
+#define COL_IVA_IDREGISTROIVA 5
 
 
 ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(parent,name) {
@@ -120,6 +125,20 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
    idborrador=0;
    idregistroiva =0;
   
+   m_listIva->setNumCols(6);
+   m_listIva->horizontalHeader()->setLabel(COL_IVA_IDIVA,tr("COL_IVA_IDIVA") );
+   m_listIva->horizontalHeader()->setLabel(COL_IVA_IDTIPOIVA,tr("COL_IVA_IDTIPOIVA") );
+   m_listIva->horizontalHeader()->setLabel(COL_IVA_NOMBRETIPOIVA,tr("Tipo") );
+   m_listIva->horizontalHeader()->setLabel(COL_IVA_CTAIVA,tr("Cuenta") );
+   m_listIva->horizontalHeader()->setLabel(COL_IVA_BASEIVA,tr("Base") );
+   m_listIva->horizontalHeader()->setLabel(COL_IVA_IDREGISTROIVA,tr("COL_IVA_IDREGISTROIVA") );
+   m_listIva->setNumRows(50);
+   m_listIva->hideColumn(COL_IVA_IDIVA);
+   m_listIva->hideColumn(COL_IVA_IDTIPOIVA);
+   m_listIva->hideColumn(COL_IVA_IDREGISTROIVA);
+   
+   
+   
    m_listPrevision->setNumCols(10);
    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDPREVCOBRO, tr( "IDPREVCOBRO") );
    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FPREVISTAPREVCOBRO, tr( "FPREVISTAPREVCOBRO") );
@@ -150,6 +169,7 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
    m_cursorFPago = NULL;
    cargarComboFPago("NULL");
 }// end ivaview
+
 
 /**
   * \brief Carga el combo de las formas de pago
@@ -184,9 +204,10 @@ ivaview::~ivaview(){
 
 
 
-// Esquema:
-// Si se trata de una modificacion modificamos.
-// Si se trata de una insercion insertamos.
+/** Esquema:
+  * Si se trata de una modificacion modificamos.
+  * Si se trata de una insercion insertamos.
+  */
 void ivaview::accept() {
   QString query;
   float baseimponible1=atof(baseimponible->text().ascii());
@@ -202,23 +223,69 @@ void ivaview::accept() {
     if (idregistroiva !=0) {
           // Se trata de una inserción, ya que no hay registros de iva introducidos.
          query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%2.2f, iva=%2.0f, contrapartida=%d, factura='%s', numorden='%s', cif='%s', ffactura='%s' WHERE idregistroiva=%d", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), m_ffactura->text().ascii(), idregistroiva);
+         conexionbase->begin();
+         conexionbase->ejecuta(query);
+         conexionbase->commit();         
     } else {
           // Se trata de una modificacion, ya que hay registros de iva introducidos.
          query.sprintf("INSERT INTO registroiva (idborrador, baseimp, iva, contrapartida, factura, numorden, cif, ffactura) VALUES (%d,%2.2f, %2.0f, %d, '%s', '%s', '%s', '%s')", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), m_ffactura->text().ascii());
+         conexionbase->begin();
+         conexionbase->ejecuta(query);        
+         cursor2 *cur = conexionbase->cargacursor("SELECT MAX(idregistroiva) AS idregistroiva FROM registroiva", "elquery");
+         conexionbase->commit();
+         if (!cur->eof() )
+            idregistroiva = cur->valor("idregistroiva").toInt();
+         delete cur;
     }// end if
-    fprintf(stderr,"%s\n",query.ascii());
-    conexionbase->begin();
-    conexionbase->ejecuta(query);
-    conexionbase->commit();
   }// end if
   delete cursorcuenta;
-  
   // Guardamos todas las previsiones de pago y asi nos curamos en salud
   guardaprevpago();
-  
+  guardaiva();
   done(1);
 }// end accept
 
+
+void ivaview::guardaiva(int numrow) {
+   QString idiva = m_listIva->text(numrow, COL_IVA_IDIVA);
+   QString idregistroivastr;
+   idregistroivastr.sprintf("%d",idregistroiva);
+   if (idiva != "") {       // Ya un elemento, debemos hacer un UPDATE
+      if (m_listIva->text(numrow, COL_IVA_BASEIVA) != "") { // hay que hacer un update
+         QString SQLQuery = "UPDATE iva SET ";
+         SQLQuery += " idtipoiva="+m_listIva->text(numrow, COL_IVA_IDTIPOIVA)+" ";
+         SQLQuery += " , idregistroiva = "+idregistroivastr;
+         SQLQuery += " , baseiva = "+m_listIva->text(numrow, COL_IVA_BASEIVA);
+         SQLQuery += " WHERE idiva="+idiva;
+         conexionbase->begin();
+         conexionbase->ejecuta(SQLQuery);
+         conexionbase->commit();
+      } else { // Hay que hacer un DELETE
+         fprintf(stderr,"borramos el registro \n");
+         conexionbase->begin();
+         QString SQLQuery = "DELETE FROM iva WHERE idiva="+idiva;
+         conexionbase->ejecuta(SQLQuery);
+         conexionbase->commit();
+      }// end if
+   } else {   
+      if (m_listIva->text(numrow, COL_IVA_BASEIVA) != "") {
+         // Hay que hacer un INSERT   
+         QString SQLQuery = "INSERT INTO iva (idtipoiva, idregistroiva, baseiva) VALUES (";
+         SQLQuery += m_listIva->text(numrow, COL_IVA_IDTIPOIVA) + " , ";
+         SQLQuery += idregistroivastr;
+         SQLQuery += ","+m_listIva->text(numrow, COL_IVA_BASEIVA)  +") ";
+         conexionbase->begin();
+         conexionbase->ejecuta(SQLQuery);
+         conexionbase->commit();
+      }// end if
+   }// end if
+}// end guardaiva
+
+void ivaview::guardaiva() {
+   int i=0;
+   while (i < m_listIva->numRows())
+      guardaiva(i++);
+}// end guardaiva
 
 /**
  * Se ha pulsado sobre el boton de borrar en ivaview por lo que borraremos *
@@ -305,7 +372,7 @@ int ivaview::buscaborradorcliente(int idborrador) {
    QString SQLQuery;
    int registro=0;
    SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo FROM borrador, cuenta where borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador); 
- //  SQLQuery.sprintf("SELECT * FROM cuenta, borrador WHERE borrador.idcuenta = cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d) AND (bcontrapartidaborr(idborrador) = %d OR idborrador= %d)", idborrador, idborrador, idborrador);
+
    conexionbase->begin();
    conexionbase->ejecuta(SQLQuery);
    SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador, idborrador, idborrador);
@@ -328,6 +395,28 @@ int ivaview::buscaborradorcliente(int idborrador) {
    return registro;
 }// end if
 
+
+/** Esta función se encarga de cargar la tabla de registro de IVA 
+  */
+void ivaview::cargaiva(QString idregistroiva) {
+   QString SQLQuery = "SELECT * FROM cuenta,tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva = "+idregistroiva+" ) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE cuenta.idcuenta = tipoiva.idcuenta";
+   conexionbase->begin();
+   cursor2 *cur = conexionbase->cargacursor(SQLQuery, "Masquerys");
+   conexionbase->commit();
+   m_listIva->setNumRows(cur->numregistros());
+   int i=0;
+   while (! cur->eof()) {
+      m_listIva->setText(i,COL_IVA_IDIVA, cur->valor("idiva"));
+      m_listIva->setText(i,COL_IVA_IDTIPOIVA, cur->valor("idtipoiva"));
+      m_listIva->setText(i,COL_IVA_NOMBRETIPOIVA, cur->valor("nombretipoiva"));
+      m_listIva->setText(i,COL_IVA_BASEIVA, cur->valor("baseiva"));
+      m_listIva->setText(i,COL_IVA_IDREGISTROIVA, cur->valor("idregistroiva"));
+      m_listIva->setText(i,COL_IVA_CTAIVA, cur->valor("codigo"));
+      cur->siguienteregistro();
+      i++;
+   }// end while
+   delete cur;
+}// end cargaiva
 
 /** Esquema:
   * 1.- Comprobamos que no haya ya un registro con la factura
@@ -379,6 +468,7 @@ void ivaview::inicializa1(int idapunte1) {
          importeiva->setText("0.00");
       }// end if
       delete cursorapunte;
+      cargaiva(cursoriva->valor("idregistroiva"));
    } else {
          // Aun no se ha metido ningun registro de este estilo, debe inicializarse.
          // Hay una problematica al meterse asientos con multiples entradas de IVA, la cosa es durilla.

@@ -1077,7 +1077,7 @@ void intapunts3view::guardaborrador(int row) {
             conexionbase->begin();
             if (conexionbase->ejecuta(query)==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
             conexionbase->commit();
-        } else {
+        } else if (idcuenta != "NULL") {
             // El borrador no existe, por lo que hay que hacer un insert
             query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES (%s,%s,%s,%s,%s,%s,'%d',%s,%s,%s)",rowtext.ascii(),concepto.ascii(),fecha.ascii(),idcuenta.ascii(),debe.ascii(),haber.ascii(),idasiento,contrapartida.ascii(),idcanal.ascii(),idc_coste.ascii());
             conexionbase->begin();
@@ -1110,8 +1110,6 @@ void intapunts3view::duplicarapunte() {
 
 void intapunts3view::boton_iva() {
 //   QString codcuenta("xxx");
-   int i;
-   int sinIVA=0;
    guardaborrador(ROWACTUAL);
    // Si ya hay una entrada de borrador, no vamos a preguntar nada.
    // Directamente vamos a editar dicho registro.

@@ -132,7 +132,7 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    info "Cargamos el conjunto minimo de datos. \n"
    tiempo
    psql $2 < crear/bulmages/t_configuracion_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_tiposiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+#   psql $2 < crear/bulmages/t_tiposiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_grupo_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_fpago_data.pgdump 2>> /tmp/errores1.txt > /dev/null
@@ -169,6 +169,7 @@ if [ "$3" = "2" ]; then
    psql $2 < crear/bulmages/t_ainteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_binteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_ivainteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+#   psql $2 < crear/bulmages/t_mpatrimonial_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_compmasap_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_compbalance_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_balance_data.pgdump 2>> /tmp/errores1.txt > /dev/null

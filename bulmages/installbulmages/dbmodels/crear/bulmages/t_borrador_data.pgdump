@@ -120,71 +120,52 @@ COPY borrador (idborrador, codigoborrador, idasiento, iddiario, fecha, conceptoc
 1657	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	676		40.57	0	\N	\N	10	\N	\N	\N	1	12
 1719	\N	36	\N	2004-07-08 00:00:00+02	Pago de una factura	740		100	0	\N	\N	\N	\N	3	\N	\N	1
 1678	\N	27	\N	2004-05-07 00:00:00+02	Algun conasdf	756	\N	0	12	\N	\N	\N	\N	\N	\N	\N	1
-1679	\N	27	\N	2004-05-07 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	2
 1680	\N	28	\N	2004-12-31 00:00:00+01	Amortizacion	98		1200	0	\N	\N	\N	\N	\N	\N	\N	\N
-1715	\N	35	\N	2004-01-01 00:00:00+01		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	4
-1682	\N	28	\N	2004-12-31 00:00:00+01		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	0
 1655	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	493		601.00999999999999	0	\N	\N	10	\N	\N	\N	1	10
 1654	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	771		1803.04	0	\N	\N	\N	\N	\N	\N	1	2
 1677	\N	27	\N	2004-05-07 00:00:00+02	Algun conasdf	770	\N	12	0	\N	\N	\N	\N	\N	\N	\N	0
 1707	\N	34	\N	2004-12-31 00:00:00+01	Amortizacion	770		1340	0	\N	\N	\N	\N	\N	\N	\N	\N
 1708	\N	34	\N	2004-12-31 00:00:00+01	Amortizacion	770		0	1340	\N	\N	\N	\N	\N	\N	\N	\N
-1709	\N	34	\N	2004-12-31 00:00:00+01		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	0
 1690	\N	30	\N	2004-12-31 00:00:00+01	Amortizacion	770		1340	0	\N	\N	\N	\N	\N	\N	\N	\N
-1692	\N	30	\N	2004-12-31 00:00:00+01		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	0
 1691	\N	30	\N	2004-12-31 00:00:00+01	Amortizacion	770		0	1340	\N	\N	\N	\N	\N	\N	\N	1
 1694	\N	30	\N	2005-12-31 00:00:00+01	Amortizacion	770		1340	0	\N	\N	\N	\N	\N	\N	\N	3
 1693	\N	30	\N	2005-12-31 00:00:00+01	Amortizacion	770		0	1340	\N	\N	\N	\N	\N	\N	\N	2
-1697	\N	31	\N	2006-12-31 00:00:00+01		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	0
 1681	\N	28	\N	2004-12-31 00:00:00+01	Amortizacion	98		0	1200	\N	\N	\N	\N	\N	\N	\N	0
-1700	\N	32	\N	2004-06-08 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	2
-1712	\N	35	\N	2004-01-01 00:00:00+01		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	0
 1711	\N	35	\N	2004-01-01 00:00:00+01	Amortizacion	770		0	24000	\N	\N	\N	\N	\N	\N	\N	1
 1698	\N	32	\N	2004-06-08 00:00:00+02	asdf	761	\N	116	0	\N	\N	\N	\N	\N	\N	\N	0
 1710	\N	35	\N	2004-01-01 00:00:00+01	Amortizacion	770		24000	0	\N	\N	\N	\N	\N	\N	\N	0
 1699	\N	32	\N	2004-06-08 00:00:00+02	asdf	746	\N	0	116	\N	\N	\N	\N	\N	\N	\N	1
-1720	\N	36	\N	2004-01-01 00:00:00+01		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	0
 1721	\N	37	\N	2004-07-10 00:00:00+02	pagament adelaida	772	\N	12	0	\N	\N	\N	\N	\N	\N	\N	0
 1722	\N	37	\N	2004-07-10 00:00:00+02	pagament adelaida	756	\N	0	12	\N	\N	\N	\N	\N	\N	\N	1
-1723	\N	37	\N	2004-07-10 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	2
 1718	\N	36	\N	2004-07-08 00:00:00+02	Pago de una factura	761	asdf	0	100	740	\N	\N	\N	3	\N	\N	0
 1725	\N	38	\N	2004-07-10 00:00:00+02	Pago habitacion hotel	756	\N	0	185.25	\N	\N	\N	\N	\N	\N	\N	0
-1769	\N	43	\N	2004-08-29 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	2
 1767	\N	43	\N	2004-08-29 00:00:00+02	Factura num 3	767	\N	446.20999999999998	0	\N	\N	\N	\N	\N	\N	\N	0
 1768	\N	43	\N	2004-08-29 00:00:00+02	Factura num 3	756	\N	0	446.20999999999998	\N	\N	\N	\N	\N	\N	\N	1
 1727	\N	38	\N	2004-07-10 00:00:00+02	Pago habitacion hotel	774	\N	12.119999999999999	0	\N	\N	\N	\N	\N	\N	\N	2
-1728	\N	38	\N	2004-07-10 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	3
 1726	\N	38	\N	2004-07-10 00:00:00+02	Pago habitacion hotel	773	\N	173.13	0	\N	\N	\N	\N	\N	\N	\N	1
 1771	\N	44	\N	2004-08-30 00:00:00+02	un concepto	302	\N	0	100	\N	\N	\N	\N	\N	\N	\N	1
 1729	\N	38	\N	2004-07-10 00:00:00+02	wsdfg	88	\N	0	3	\N	\N	\N	\N	\N	\N	\N	0
 1730	\N	38	\N	2004-07-10 00:00:00+02	wsdfg	88	\N	3	0	\N	\N	\N	\N	\N	\N	\N	1
 1731	\N	39	\N	2004-07-10 00:00:00+02	Pago de una factura	773	asdf	0	185.25	740	\N	\N	\N	\N	\N	\N	\N
 1732	\N	39	\N	2004-07-10 00:00:00+02	Pago de una factura	740		185.25	0	\N	\N	\N	\N	\N	\N	\N	\N
-1733	\N	39	\N	2004-07-10 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	0
 1734	\N	40	\N	2004-07-10 00:00:00+02	Pago de una factura	773	asdf	0	100	740	\N	\N	\N	\N	\N	\N	\N
 1735	\N	40	\N	2004-07-10 00:00:00+02	Pago de una factura	740		100	0	\N	\N	\N	\N	\N	\N	\N	\N
-1736	\N	40	\N	2004-07-10 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	0
 1772	\N	44	\N	2004-08-30 00:00:00+02	un concepto	747	\N	100	0	\N	\N	\N	\N	\N	\N	\N	2
 1738	\N	41	\N	2004-07-10 00:00:00+02	Pago de una factura	740		234	0	\N	\N	\N	\N	\N	\N	\N	\N
 1764	\N	41	\N	2005-09-10 00:00:00+02	Amortizacion	586		10	0	\N	\N	\N	\N	\N	\N	\N	\N
 1765	\N	41	\N	2005-09-10 00:00:00+02	Amortizacion	586		0	10	\N	\N	\N	\N	\N	\N	\N	\N
-1766	\N	42	\N	2005-09-10 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	0
 1737	\N	41	\N	2004-07-10 00:00:00+02	Pago de una factura	764	asdf	0	234	740	\N	\N	\N	\N	\N	\N	0
 1773	\N	44	\N	2004-08-30 00:00:00+02	un concepto	767	\N	0	100	\N	\N	\N	\N	\N	\N	\N	3
-1774	\N	44	\N	2004-08-30 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	4
 1770	\N	44	\N	2004-08-30 00:00:00+02	un concepto	747	\N	100	0	\N	\N	\N	\N	\N	\N	\N	0
 1775	\N	44	\N	2004-08-30 00:00:00+02		740	\N	0	0	\N	\N	\N	\N	\N	\N	\N	4
 1776	\N	45	\N	2004-08-30 00:00:00+02	factgura 1	767	\N	116	0	\N	\N	\N	\N	\N	\N	\N	0
 1777	\N	45	\N	2004-08-30 00:00:00+02	factgura 1	619	\N	0	100	\N	\N	\N	\N	\N	\N	\N	1
-1779	\N	45	\N	2004-08-30 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	3
 1778	\N	45	\N	2004-08-30 00:00:00+02	factgura 1	740	\N	0	16	\N	\N	\N	\N	\N	\N	\N	2
 1780	\N	45	\N	2004-08-30 00:00:00+02	factgura 1	770	\N	1000	0	\N	\N	\N	\N	\N	\N	\N	3
-1783	\N	45	\N	2004-08-30 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	6
 1781	\N	45	\N	2004-08-30 00:00:00+02	factgura 1	775	\N	500	0	\N	\N	\N	\N	1	\N	\N	4
 1782	\N	45	\N	2004-08-30 00:00:00+02	factgura 1	776	\N	0	1500	\N	\N	\N	\N	1	\N	\N	5
 1784	\N	46	\N	2004-08-30 00:00:00+02	Pago de una factura	770	asdf	0	122	740	\N	\N	\N	\N	\N	\N	\N
 1785	\N	46	\N	2004-08-30 00:00:00+02	Pago de una factura	740		122	0	\N	\N	\N	\N	\N	\N	\N	\N
-1786	\N	46	\N	2004-01-01 00:00:00+01		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	0
 \.
 
 
