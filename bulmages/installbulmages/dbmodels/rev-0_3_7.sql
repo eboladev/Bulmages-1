@@ -70,6 +70,32 @@ ALTER TABLE asiento ADD COLUMN clase smallint;
 DROP FUNCTION reordenaasientos();
 DROP FUNCTION reordenaasientos(integer);
 
+-- Insertamos el nuevo parametro de configuracion.
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (2,'Amortizacion', 'Amortizacion');
+
+CREATE FUNCTION fainteligente() RETURNS integer 
+AS '
+DECLARE 
+    bs RECORD;
+BEGIN
+-- Insertamos la nueva amortizacion, que se corresponda con el campo Amortizacion.
+RAISE NOTICE ''empezamos lo bonito'';
+INSERT INTO ainteligente (descripcion, comentariosasiento) VALUES (''Amortizacion'', NULL);
+SELECT INTO bs currval(''ainteligente_idainteligente_seq'') AS valor;
+RAISE NOTICE '' Ahora insertamos los valores %'', bs.valor;
+INSERT INTO binteligente (idainteligente, iddiario, fecha, conceptocontable, codcuenta, descripcion, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste) VALUES (bs.valor, NULL, ''$fechaasiento, Fecha Asiento$'', ''Amortizacion'',''$cuenta, Cuenta Amortizacion$'',NULL,''$cuota, Cuota$'',''0'',NULL,NULL,NULL,NULL,NULL );
+INSERT INTO binteligente (idainteligente, iddiario, fecha, conceptocontable, codcuenta, descripcion, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste) VALUES (bs.valor, NULL, ''$fechaasiento, Fecha Asiento$'', ''Amortizacion'',''$cuenta, Cuenta Amortizacion$'',NULL,''$cuota, Cuota$'',''0'',NULL,NULL,NULL,NULL,NULL );
+RAISE NOTICE ''Terminamos lo bonito '';
+RETURN 0;
+END;
+' LANGUAGE plpgsql;
+
+SELECT fainteligente();
+
+DROP FUNCTION fainteligente();
+
+
+
 CREATE FUNCTION reordenaasientos(integer) RETURNS integer
     AS '
 DECLARE
