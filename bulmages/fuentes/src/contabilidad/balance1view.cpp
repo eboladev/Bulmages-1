@@ -265,13 +265,23 @@ void balance1view::presentar() {
       QString cinicial = codigoinicial->text();
       QString cfinal = codigofinal->text();
 
+      QString ejercicio = ffinal.right(4);
+            
       // Hacemos la consulta de los apuntes a listar en la base de datos.
       int idc_coste;
       idc_coste = ccostes[combocoste->currentItem()];
 
       // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
       // Causar problemas con el motor de base de datos.
+/*      
       query.sprintf( "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
+*/      
+      
+	query= "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo, ejdebe, ejhaber, (ejdebe-ejhaber) AS ejsaldo FROM cuenta";
+	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '"+finicial+"' AND fecha<= '"+ffinal+"' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta";
+	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta";
+	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '"+ejercicio+"' GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";      
+      
       conexionbase->begin();
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET padre=0 WHERE padre ISNULL");
@@ -299,13 +309,20 @@ void balance1view::presentar() {
       conexionbase->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET asaldo=0 WHERE asaldo ISNULL");
       conexionbase->ejecuta(query);
+      query.sprintf("UPDATE balancetemp SET ejsaldo=0 WHERE ejsaldo ISNULL");
+      conexionbase->ejecuta(query);
+      query.sprintf("UPDATE balancetemp SET ejdebe=0 WHERE ejdebe ISNULL");
+      conexionbase->ejecuta(query);
+      query.sprintf("UPDATE balancetemp SET ejhaber=0 WHERE ejhaber ISNULL");
+      conexionbase->ejecuta(query);      
       query.sprintf( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC");
       cursorapt = conexionbase->cargacursor(query,"Balance1view");
       while (!cursorapt->eof())  {
          query.sprintf("SELECT * FROM balancetemp WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
          cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
          if (!mycur->eof()) {
-            query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
+            query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f), ejdebe = ejdebe + (%2.2f), ejhaber = ejhaber +(%2.2f), ejsaldo = ejsaldo + (%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),atof(mycur->valor("ejdebe").ascii()), atof(mycur->valor("ejhaber").ascii()), 
+	    atof(mycur->valor("ejsaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
             conexionbase->ejecuta(query);
    	}// end if
         delete mycur;
@@ -357,9 +374,9 @@ void balance1view::presentar() {
          it->setText(DEBE,QString::number(atof(cursorapt1->valor("tdebe")),'f',2));
          it->setText(HABER,QString::number(atof(cursorapt1->valor("thaber")),'f',2));
          it->setText(SALDO,QString::number(atof(cursorapt1->valor("tsaldo")),'f',2));
-         it->setText(DEBEEJ,QString::number(atof(cursorapt1->valor("debe")),'f',2));
-         it->setText(HABEREJ,QString::number(atof(cursorapt1->valor("haber")),'f',2));
-         it->setText(SALDOEJ,QString::number(atof(cursorapt1->valor("saldo")),'f',2));
+         it->setText(DEBEEJ,QString::number(atof(cursorapt1->valor("ejdebe")),'f',2));
+         it->setText(HABEREJ,QString::number(atof(cursorapt1->valor("ejhaber")),'f',2));
+         it->setText(SALDOEJ,QString::number(atof(cursorapt1->valor("ejsaldo")),'f',2));
          it->setText(NIVEL, cursorapt1->valor("nivel"));
          it->setText(IDCUENTA, cursorapt1->valor("idcuenta"));
          it->setText(PADRE, cursorapt1->valor("padre"));

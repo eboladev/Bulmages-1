@@ -177,6 +177,7 @@ void intapunts3view::cargarcursor(int numasiento) {
     QString textcantapunt = "";
     QString textnombreasiento= "";
     QString textejercicio="";
+    QString ejercicio = "";
     int ordenasiento=0;
     
     fprintf(stderr," Inicio de la carga del cursor\n");
@@ -184,6 +185,7 @@ void intapunts3view::cargarcursor(int numasiento) {
     cantapunt = filt->cantidadapunte->text();
     saldototal = filt->saldoasiento->text();
     nombreasiento = filt->nombreasiento->text();
+    ejercicio = filt->ejercicio();
     
     fprintf(stderr," Inicio de la perdición del cursorasientos\n");
 
@@ -195,7 +197,7 @@ void intapunts3view::cargarcursor(int numasiento) {
     
      fprintf(stderr," Inicio de creación del query\n");
    
-    int pand=0; // Indica si se tiene que agregar el AND o no en el select
+    int pand=0; /// Indica si se tiene que agregar el AND o no en el select
     if (saldototal != "") {
         cadwhere = " WHERE ";
         textsaldototal = " idasiento IN (SELECT idasiento FROM (SELECT idasiento, sum(debe) AS total from apunte GROUP BY idasiento) AS foo WHERE foo.total="+saldototal+")";
@@ -215,14 +217,19 @@ void intapunts3view::cargarcursor(int numasiento) {
         textnombreasiento += " idasiento in (SELECT idasiento FROM apunte WHERE conceptocontable LIKE '%"+nombreasiento+"%' )";
         pand = 1;
     }// end if
-    if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ empresaactual->ejercicioactual() +"'";
-    else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ empresaactual->ejercicioactual() +"'";
+    
+    
+   /// Los ejercicios los pondremos como filtraje de la introducción de asientos    
+   if (ejercicio != "--") {
+    if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ ejercicio +"'";
+    else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ ejercicio +"'";
+   }// end if
+  
     if ((numasiento != 0) && (numasiento != -1)) {
         //query = "SELECT * FROM asiento ORDER BY ordenasiento";
         query = "SELECT * FROM asiento" + textejercicio + " ORDER BY ordenasiento";
     } else {
-        //query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+"  ORDER BY ordenasiento";
-        query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY ordenasiento";
+        query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY EXTRACT (YEAR FROM fecha), ordenasiento";
     }// end if
     
     fprintf(stderr," Carga del cursor\n");
@@ -663,7 +670,7 @@ void intapunts3view::iniciar_asiento_nuevo() {
     boton_abrirasiento();
 
    tapunts->setText(0,0,fechaasiento1->text());
-   // Comprobamos si existe un centro de coste por defecto y lo usamos
+   /// Comprobamos si existe un centro de coste por defecto y lo usamos
    selectccosteview *selccostes = empresaactual->getselccostes();
    QString ccoste = QString::number(selccostes->firstccoste());
    if ( ccoste != "0") {
@@ -671,7 +678,7 @@ void intapunts3view::iniciar_asiento_nuevo() {
       tapunts->setText(0,COL_IDCCOSTE, ccoste);
    }// end if
   
-   // Comprobamos si existe un canal por defecto y lo usamos
+   /// Comprobamos si existe un canal por defecto y lo usamos
    selectcanalview *selcanales = empresaactual->getselcanales();
    QString idcanal = QString::number(selcanales->firstcanal());
    if ( idcanal != "0") {

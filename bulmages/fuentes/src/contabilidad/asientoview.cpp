@@ -99,6 +99,7 @@ int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, Q
   QString query;
   QString valorClaseAsiento="1";
   QString cadenaAux="";
+/*  
   // Si ya existe un asiento con el orden que intentamos asignar debemos desplazar los asientos posteriores.
   //Solamente desplazamos si ordenasiento ha cambiado, en caso contrario No
   query.sprintf("SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND ordenasiento=%s",empresaactual->ejercicioactual().ascii(),orden.ascii());
@@ -144,7 +145,7 @@ int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, Q
           valorClaseAsiento="1";
       }
   }
-  
+*/  
   query.sprintf("UPDATE asiento SET descripcion='%s', fecha='%s', comentariosasiento='%s', ordenasiento=%s, clase=%s WHERE idasiento=%d",texto.ascii(),fecha.ascii(),notas.ascii(),orden.ascii(), valorClaseAsiento.ascii(), numasiento);
 
   conexionbase->ejecuta(query);

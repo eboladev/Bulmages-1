@@ -97,7 +97,7 @@ int empresa::inicializa1(QWorkspace *space) {
    numdigitos=cursoraux1->valor(2).length();
    delete cursoraux1;  
     
-    
+  /*  
     //Buscamos el último ejercicio en la tabla "ejercicios"
    query="SELECT MAX(ejercicio) AS ejercicio FROM ejercicios WHERE periodo=0";
    conexionbase2->begin();
@@ -105,7 +105,9 @@ int empresa::inicializa1(QWorkspace *space) {
    conexionbase2->commit();
    if (!recordSet->eof()) EjercicioActual=recordSet->valor("ejercicio");
    else EjercicioActual="";
-   delete recordSet;    
+   delete recordSet; 
+*/      
+
    if (extracto != NULL) {
          delete extracto;
          delete diario;
@@ -119,14 +121,7 @@ int empresa::inicializa1(QWorkspace *space) {
   // Inicializamos los selectores de centros de coste y canales
   selccostes=new selectccosteview(this,0,"selccostes");   
   selcanales=new selectcanalview(this,0,"selcanales");
-
-/* 
-  extracto = new extractoview1(this, pWorkspace,"extracto");
-  diario = new diarioview1(this,pWorkspace,"diario");
-  balance = new balanceview(this, pWorkspace,"balance");
-  balance1 = new balance1view(this, pWorkspace,"balance2");
-  introapunts1 = new intapunts3view(this, pWorkspace,"introapunts2");
-*/
+  
   extracto = new extractoview1(this, pWorkspace,"extracto");
   diario = new diarioview1(this,pWorkspace,"diario");
   balance = new balanceview(this, pWorkspace,"balance");
@@ -258,16 +253,6 @@ int empresa::cambioejercicio() {
 
 int empresa::nuevaempresa() {
 //La creación de una nueva empresa ha pasado al selector.
-/*  
-  nuevaempresaview * nuevae = new nuevaempresaview(0,"nevaempresa");
-  nuevae->exec();
-  nombre=NULL;
-  if (nuevae->empresacreada == 1) {
-    inicializa();
-    inicializa1(pWorkspace);
-  }// end if
-  delete nuevae; 
-*/  
   return(0);
 }// end nuevaempresa
 
@@ -282,9 +267,7 @@ int empresa::cambiarempresa() {
   abreempresaview *nuevae = new abreempresaview("Abrir Empresa",true );
   nuevae->exec();
   fprintf(stderr,"fin de la ejecución del formulario de selección de empresa \n");
-//  retorno = nuevae->result();
-//  fprintf(stderr,"cambiarempresa result:%d",retorno);
-//  if (retorno) {
+
    fprintf(stderr,"Vamos a cambiar la empresa \n");
    QString bd= nuevae->empresabd;
    QString us= nuevae->nombre;
@@ -292,8 +275,7 @@ int empresa::cambiarempresa() {
    fprintf(stderr,"%s %s %s", bd.ascii(), us.ascii(), pas.ascii());
    inicializa(&bd, &us, &pas);
    setejactual(nuevae->ejercicioMetaDB);
-//    inicializa1(pWorkspace);
-//  }// end if
+
   delete nuevae;
   return(0);
 }// end cambiarempresa
@@ -402,7 +384,7 @@ int empresa::boton_siguiente() {
     introapunts1->boton_siguiente();
   } else if (widget == diario){
 //    diario->boton_siguiente();
-  } else {
+  } else if (widget == extracto) {
     extracto->boton_siguiente();
   }// end if
   return(0);  
@@ -418,7 +400,7 @@ int empresa::boton_anterior() {
 // diario->boton_siguiente
 //  } else if (widget == introapunts1) {
 //      introapunts1->boton_anterior();
-  } else {
+  } else if (widget == extracto){
     extracto->boton_anterior();
   }// end if
   return(0);
@@ -444,8 +426,8 @@ int empresa::boton_imprimir() {
     diario->boton_imprimir();
   } else if(widget == balance1){
      balance1->boton_imprimir();
-	} else if (widget == balance) {
-		balance->boton_imprimir();
+  } else if (widget == balance) {
+     balance->boton_imprimir();
   } else if (widget == extracto) {
     extracto->boton_imprimir();
   }// end if
@@ -474,7 +456,7 @@ int empresa::boton_primero() {
   if (widget == introapunts1) {
     introapunts1->boton_inicio();
   } else if (widget == diario){
-  } else {
+  } else if (widget == extracto) {
     extracto->boton_inicio();
   }// end if
   return(0);
@@ -486,7 +468,7 @@ int empresa::boton_ultimo() {
   if (widget == introapunts1) {
     introapunts1->boton_fin();
   } else if (widget == diario){
-  } else {
+  } else if (widget == extracto) {
     extracto->boton_fin();
   }// end if
   return(0);
@@ -521,16 +503,18 @@ void empresa::Abrirasientos() {
 }// end Abrirasientos
 
 
-void empresa::Ordenarasientos(int ejercicio) {
+void empresa::Ordenarasientos() {
+
+   QString query= "SELECT reordenaasientosall()";
    conexionbase2->begin();
-   QString query;
-   query.sprintf("SELECT reordenaasientos(%i)",ejercicio);
-   conexionbase2->ejecuta(query);
+   cursor2 * cur = conexionbase2->cargacursor(query, "hola");
    conexionbase2->commit();
+   delete cur;
    introapunts1->cargarcursor(0);
    introapunts1->boton_fin();
    introapunts1->show();
 }// end Abrirasientos
+
 
 int empresa::registroiva() {
    listivaview *perd = new listivaview(this, EjercicioActual.ascii());

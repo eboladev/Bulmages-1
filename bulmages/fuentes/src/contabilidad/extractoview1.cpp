@@ -139,8 +139,8 @@ void extractoview1::inicializa2(intapunts3view *inta, diarioview1 *diar, balance
 }// end inicializa2
 
 
-/************************************************************************************
-Esta función carga el cursor de cuentas que forman el todo por el todo.
+/** ***********************************************************************************
+\brief Esta función carga el cursor de cuentas que forman el todo por el todo.
 También sera la encargada de recoger la información de filtración para que
 todo sea correcto.
 *************************************************************************************/
@@ -149,6 +149,10 @@ void extractoview1::accept() {
   QString codinicial= codigoinicial->text();
   QString codfinal = codigofinal->text();
   QString query;
+  
+  /// Si los datos de codigo inicial y final estan vacios los ponemos nosotros.
+  if (codinicial == "") codinicial ="0";
+  if (codfinal == "") codfinal = "9999999";
   
    query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >='"+codinicial+"' AND codigo <= '"+codfinal+"'  ORDER BY codigo";
 
@@ -238,9 +242,11 @@ void extractoview1::boton_balance1(int tipo) {
  * Esta es la funcion que avanza un registro entre las cuentas *
  ***************************************************************/
 void extractoview1::boton_siguiente() {
-  if (!cursorcta->esultimoregistro()) {
-     cursorcta->siguienteregistro();
-     presentar();
+  if (cursorcta != NULL) {
+	if (!cursorcta->esultimoregistro()) {
+	cursorcta->siguienteregistro();
+	presentar();
+	}// end if
   }// end if
 }// end boton_siguiente
 
@@ -249,22 +255,28 @@ void extractoview1::boton_siguiente() {
  * Esta es la funcion que retrocede un registro entre las cuentas *
  ******************************************************************/
 void extractoview1::boton_anterior() {
+  if (cursorcta != NULL) {
    if (!cursorcta->esprimerregistro()) {
      cursorcta->registroanterior();
      presentar();
+   }// end if
    }// end if
 }// end boton_anterior
 
 
 void extractoview1::boton_inicio() {
+  if (cursorcta != NULL) {
    cursorcta->primerregistro();
    presentar();
+  }// end if
 }// end if
 
 
 void extractoview1::boton_fin() {
+  if (cursorcta != NULL) {
    cursorcta->ultimoregistro();
    presentar();
+  }// end if
 }// end if
 
 

@@ -12,7 +12,7 @@ SET search_path = public, pg_catalog;
 -- Name: asiento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO asiento (idasiento, descripcion, fecha, comentariosasiento, ordenasiento, clase) VALUES (1, '20/12/2004', '2004-12-20 00:00:00+01', NULL, 1, 1);
+INSERT INTO asiento (idasiento, descripcion, fecha, comentariosasiento, ordenasiento, clase) VALUES (1, '20/01/2005', '2005-01-20 00:00:00+01', NULL, 1, 1);
 
 
 --

@@ -78,10 +78,7 @@ public:
      * @param doc pointer to the document instance that the view will
      * be connected to.
      */
-//    void createClient(Bulmages01Doc* doc);
 
-  public slots:
-  virtual void mostrar_selector();
   private slots:
 
     /** reverts the last editing action */
@@ -109,13 +106,6 @@ public:
     void setCurrentEjercicio();
     /** Slot para el libro mayor */
     void slotLibroMayor();
-    /** Slot para guardar la empresa */
-    //void slotGuardarEmpresa();
-    /** Slot para cargar la empresa */
-    //void slotCargarEmpresa();
-    //void slotNuevaEmpresa();
-    //void slotBorrarEmpresa();
-    //void slotCambiarEmpresa();
     void slotLibroDiario();
     void slotAsientos();
     void slotGruposContables();
@@ -227,7 +217,8 @@ public:
     /** a list of all open documents. If the last window of a document gets closed, the installed eventFilter
      * removes this document from the list. The document list is checked for modified documents when the user
      * is about to close the application. */
-//    QList<Bulmages01Doc> *pDocList;
+
+     
     QAction *editUndo;
     QAction *editCut;
     QAction *editCopy;
@@ -276,14 +267,9 @@ public:
     
     // Opciones de Empresa
     QAction *propiedadesEmpresa;
-    //QAction *guardarEmpresa;
-    //QAction *cargarEmpresa;
-    //QAction *nuevaEmpresa;
-    //QAction *borrarEmpresa;
-    //QAction *cambiarEmpresa;
+
     QAction *centrosCoste;
     QAction *canalesMenu;
-    //QAction *usuarioaction;
     QAction *cierraEmpresa;
     QAction *abreEmpresa;
     QAction *regularizaEmpresa;
@@ -297,10 +283,8 @@ public:
     QAction *printaction;
     QAction *reloadaction;
     QAction *filtro;
-    //QAction *NEjercicio;
     QAction *amortiz;
     QAction *bloqaction;
-    QAction * SelectorAction;
     
     QAction *CCosteDef;
     QAction *CanalDef;

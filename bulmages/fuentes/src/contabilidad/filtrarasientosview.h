@@ -21,6 +21,7 @@
 #include <qwidget.h>
 #include <qlineedit.h>
 #include <filtrarasientosdlg.h>
+#include <qcombobox.h>
 
 #include "postgresiface2.h"
 
@@ -37,6 +38,7 @@ private:
 public: 
 	filtrarasientosview(empresa *,QWidget *parent=0, const char *name=0);
 	~filtrarasientosview();
+	QString ejercicio() {return m_ejercicio->text(m_ejercicio->currentItem());};
 public slots:
   virtual void boton_reset();
   virtual void boton_ccostes();

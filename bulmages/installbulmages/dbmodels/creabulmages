@@ -136,23 +136,7 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    psql $2 < crear/bulmages/t_grupo_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_fpago_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_tipoiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   
-   # Hacemos las entradas oportunas para que funcione el ejercicio.
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 0, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 1, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 2, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 3, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 4, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 5, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 6, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 7, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 8, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 9, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 10, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 11, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 12, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
-   
+   psql $2 < crear/bulmages/t_tipoiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null   
 fi
 
 
@@ -160,6 +144,7 @@ if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
    info "Cargamos datos adicionales. \n"
    tiempo
+   psql $2 < crear/bulmages/t_ejercicios_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data1.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_canal_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_c_coste_data.pgdump 2>> /tmp/errores1.txt > /dev/null
@@ -170,13 +155,11 @@ if [ "$3" = "2" ]; then
    psql $2 < crear/bulmages/t_registroiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_ainteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_binteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-#   psql $2 < crear/bulmages/t_mpatrimonial_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_compmasap_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_compbalance_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_balance_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_amortizacion_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_linamortizacion_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_ejercicios_data.pgdump 2>> /tmp/errores1.txt > /dev/null
 fi
 
 

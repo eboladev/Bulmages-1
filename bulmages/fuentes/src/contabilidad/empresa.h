@@ -120,7 +120,7 @@ public:
   void regularizaempresa();
   void maximiza();
   void Abrirasientos();
-  void Ordenarasientos(int);
+  void Ordenarasientos();
   void SegCuentas();
   void BalanceGrafico();
   void Filtro();

@@ -59,8 +59,8 @@ CREATE TABLE cuenta (
     msg character varying(500),
     debe double precision DEFAULT 0,
     haber double precision DEFAULT 0,
-    nodebe boolean,
-    nohaber boolean,
+    nodebe boolean NOT NULL DEFAULT FALSE,
+    nohaber boolean NOT NULL DEFAULT FALSE,
     regularizacion boolean,
     activo boolean,
     nombreent_cuenta character varying(50),
@@ -1151,14 +1151,14 @@ CREATE FUNCTION creacuenta() RETURNS "trigger"
     AS '
 DECLARE
    mrecord RECORD;
-BEGIN            
+BEGIN
       FOR mrecord IN SELECT * FROM canal LOOP
          INSERT INTO acumulado_canal (idcuenta, idcanal,debe,haber) VALUES(NEW.idcuenta, mrecord.idcanal,0,0);
       END LOOP;
       FOR mrecord IN SELECT * FROM c_coste LOOP
          INSERT INTO acumulado_c_coste (idcuenta, idc_coste,debe,haber) VALUES(NEW.idcuenta, mrecord.idc_coste,0,0);
       END LOOP;
-        RETURN NEW;
+      RETURN NEW;
 END;
 '
     LANGUAGE plpgsql;
@@ -1524,7 +1524,7 @@ DECLARE
     cont integer;
 BEGIN
     cont := 1;
-    FOR as IN SELECT * from asiento WHERE EXTRACT(YEAR FROM fecha)=ejercicio ORDER BY fecha,clase,ordenasiento LOOP
+    FOR as IN SELECT * from asiento WHERE EXTRACT(YEAR FROM fecha)=ejercicio ORDER BY fecha,ordenasiento LOOP
 	IF (cont <> as.ordenasiento) THEN
 	    UPDATE asiento SET ordenasiento = cont WHERE idasiento = as.idasiento;
 	END IF;
@@ -1532,10 +1532,94 @@ BEGIN
     END LOOP;
     RETURN 0;
 END;
-'
-    LANGUAGE plpgsql;
+'    LANGUAGE plpgsql;
 
 
+--
+-- TOC entry 116 (OID 1346113)
+-- Name: reordenaasientosall(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION reordenaasientosall() RETURNS integer
+    AS '
+DECLARE
+    as RECORD;
+    ejercicio integer;
+BEGIN
+    FOR as IN SELECT DISTINCT EXTRACT (YEAR  FROM FECHA) AS ano FROM asiento ORDER BY ano LOOP
+	ejercicio := as.ano;
+	PERFORM reordenaasientos(ejercicio);
+    END LOOP;
+    RETURN 0;
+END;
+'    LANGUAGE plpgsql;
+
+
+
+
+-- ******************************************************
+-- APARTADO DE COMPROBACIONES PARA QUE NO HAYA PROBLEMAS.
+-- ******************************************************
+-- ******************************************************
+
+-- Las comprobaciones saltan como disparadores y abortan la ejecución si no se cumplen las restricciones.
+--DROP TRIGGER restriccionescuentatrigger ON cuenta CASCADE;
+--DROP FUNCTION restriccionescuenta();
+
+
+CREATE FUNCTION restriccionescuenta () RETURNS "trigger"
+AS '
+DECLARE
+BEGIN
+	IF NEW.codigo = '''' THEN
+		RAISE EXCEPTION '' No se puede dejar el código de cuenta vacio '';
+	END IF;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionescuentatrigger
+    BEFORE INSERT OR UPDATE ON cuenta
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionescuenta();
+
+    
+CREATE FUNCTION restriccionesborrador () RETURNS "trigger"
+AS '
+DECLARE
+	cta RECORD;
+BEGIN
+	FOR cta IN SELECT * FROM cuenta WHERE idcuenta = NEW.idcuenta() LOOP;
+		IF cta.bloqueada THEN
+			RAISE EXCEPTION '' Cuenta bloqueada, no se puede utilizar esta cuenta '';
+		END IF;
+			
+		IF cta.nodebe THEN
+			IF NEW.debe <> 0 THEN
+				RAISE EXCEPTION '' Cuenta bloqueada por debe, solo permite haber '';
+			END IF;
+		END IF;
+		IF cta.nohaber THEN
+			IF NEW.haber <> 0 THEN
+				RAISE EXCEPTION '' Cuenta bloqueada por haber, solo permite debe '';
+			END IF;
+		END IF;
+	END LOOP;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionesborradortrigger
+    BEFORE INSERT OR UPDATE ON borrador
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesborrador();
+      
+-- ******************************************************
+-- FIN DEL APARTADO DE COMPROBACIONES.
+-- ******************************************************
+-- ******************************************************
 
 
 

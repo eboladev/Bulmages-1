@@ -24,6 +24,17 @@ filtrarasientosview::filtrarasientosview(empresa * emp,QWidget *parent, const ch
    empresaactual = emp;
    conexionbase = emp->bdempresa();
    numdigitos = emp->numdigitosempresa();
+   
+   m_ejercicio->insertItem("--",0);
+   QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
+   conexionbase->begin();
+   cursor2 *cur = conexionbase->cargacursor(SQLQuery, "anyos");
+   conexionbase->commit();
+   while (! cur->eof()) {
+   	m_ejercicio->insertItem(cur->valor("ano"));
+	cur->siguienteregistro();
+   }// end while
+   delete cur;
 }
 
 filtrarasientosview::~filtrarasientosview(){

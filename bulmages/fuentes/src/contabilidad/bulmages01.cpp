@@ -20,18 +20,15 @@
 // Qt includes
 #include <qaccel.h>
 
-
 // Hacemos algunas pruebas con una docwindow. Para el corrector de contabilidad
 #include <qdockwindow.h>
 #include "correctorwidget.h"
-
 
 // application specific includes
 #include "bulmages01.h"
 #include "configuracion.h"
 #include "aboutview.h"
 #include "actualizacionesview.h"
-//#include "usuariosview.h"
 
 // Inclusiones para el log
 #include "log.h"
@@ -78,7 +75,6 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
     fprintf(stderr,"Cambio de empresa \n");
     empresaactual.cambiarempresa();
     DBName= empresaactual.nombreDB;
-    //if (empresaactual.ejercicioactual() =="") empresaactual.setejactual(*ejercicioMetaDB);
     setCaption(tr("BulmaGés ") + empresaactual.ejercicioactual());      
   }// end if
   initView();
@@ -123,18 +119,11 @@ Bulmages01::~Bulmages01() {
   delete asientosInteligentes;
   delete listadoApuntes;
   delete propiedadesEmpresa;
-  //delete guardarEmpresa;
-  //delete cargarEmpresa;
-  //delete nuevaEmpresa;
   delete cierraEmpresa;
   delete regularizaEmpresa;
   delete abreEmpresa;
-  //delete borrarEmpresa;
-  //delete cambiarEmpresa;
   delete libroMayor;
   delete libroDiario;  
-  //delete perdygan;
-  //delete balan;
   delete regiva;
   delete centrosCoste;
   delete canalesMenu;
@@ -146,9 +135,6 @@ Bulmages01::~Bulmages01() {
   delete saveaction;
   delete printaction;
   delete reloadaction;
-  //delete usuarioaction;  
-  //delete view_back;
-  //delete pWorkspace; //En algunos casos provoca Segmentation Fault.
   delete ayuda;
   delete amortiz; 
   //En el constructor asignamos un puntero a empresa { ctllog->setempresa(&empresaactual); }
@@ -305,38 +291,7 @@ void Bulmages01::initActions() {
   propiedadesEmpresa->setStatusTip(tr("Propiedades de la Empresa"));
   propiedadesEmpresa->setWhatsThis(tr("Propiedades de la Empresa"));
   connect(propiedadesEmpresa, SIGNAL(activated()), this, SLOT(slotPropiedadesEmpresa()));
-/*
-  guardarEmpresa = new QAction(tr("Copia Seguridad Empresa"), tr("&Guardar Empresa"), 0, this);
-  guardarEmpresa->setStatusTip(tr("Hacer Copia de Seguridad de la Empresa Actual"));
-  guardarEmpresa->setWhatsThis(tr("Hacer Copia de Seguridad de la Empresa Actual"));
-  connect(guardarEmpresa, SIGNAL(activated()), this, SLOT(slotGuardarEmpresa()));
   
-  cargarEmpresa = new QAction(tr("Restaurar Empresa"), tr("&Cargar Empresa"), 0, this);
-  cargarEmpresa->setStatusTip(tr("Restaurar de Seguridad de la Empresa Actual"));
-  cargarEmpresa->setWhatsThis(tr("Restaurar de Seguridad de la Empresa Actual"));
-  connect(cargarEmpresa, SIGNAL(activated()), this, SLOT(slotCargarEmpresa()));
-
-  nuevaEmpresa = new QAction(tr("Nueva Empresa"), tr("&Nueva Empresa"), 0, this);
-  nuevaEmpresa->setStatusTip(tr("Crear una Empresal"));
-  nuevaEmpresa->setWhatsThis(tr("Crear una empresa nueva"));
-  connect(nuevaEmpresa, SIGNAL(activated()), this, SLOT(slotNuevaEmpresa()));
-  
-  borrarEmpresa = new QAction(tr("Borrar Empresa"), tr("&Borrar Empresa"), 0, this);
-  borrarEmpresa->setStatusTip(tr("Borrar una Empresal"));
-  borrarEmpresa->setWhatsThis(tr("Borrar una empresa"));
-  connect(borrarEmpresa, SIGNAL(activated()), this, SLOT(slotBorrarEmpresa()));
-  
-  cambiarEmpresa = new QAction(tr("Cambiar Empresa"), tr("&Cambiar Empresa"), 0, this);
-  cambiarEmpresa->setStatusTip(tr("Cambiar de Empresa o de ejercicio"));
-  cambiarEmpresa->setWhatsThis(tr("Cambiar de empresa"));
-  connect(cambiarEmpresa, SIGNAL(activated()), this, SLOT(slotCambiarEmpresa()));
-    
-  NEjercicio = new QAction(tr("Nuevo Ejercicio"), tr("&Nuevo Ejercicio"), 0, this);
-  NEjercicio->setStatusTip(tr("Nuevo Ejercicio"));
-  NEjercicio->setWhatsThis(tr("Nuevo Ejercicio"));
-  connect(NEjercicio, SIGNAL(activated()), this, SLOT(slotNEjercicio()));
-
-*/
   cierraEmpresa = new QAction(tr("Asiento de Cierre"), tr("Asiento de &Cierre"), 0, this);
   cierraEmpresa->setStatusTip(tr("Crear el asiento de cierre"));
   cierraEmpresa->setWhatsThis(tr("Crear el asiento de cierre"));
@@ -371,25 +326,12 @@ void Bulmages01::initActions() {
   librobalancetree->setStatusTip(tr("Ver balance Jerarquico"));
   librobalancetree->setWhatsThis(tr("Ver balance jerarquico"));
   connect(librobalancetree, SIGNAL(activated()), this, SLOT(slotBalanceTree()));
-
-/*    
-  perdygan = new QAction(tr("Perdidas y ganancias av"), tr("&Perdidas y ganancias av"), 0, this);
-  perdygan->setStatusTip(tr("Ver cuenta de perdidas y ganancias"));
-  perdygan->setWhatsThis(tr("Ver cuenta de perdidas y ganancias"));
-  connect(perdygan, SIGNAL(activated()), this, SLOT(slotPerdidas()));
-*/
   
   Modelo347 = new QAction(tr("Modelo 347 no oficial"), tr("&Modelo 347"), 0, this);
   Modelo347->setStatusTip(tr("Modelo 347 no oficial"));
   Modelo347->setWhatsThis(tr("Lista en pantalla los saldos acumulados superirores a ..."));
   connect(Modelo347, SIGNAL(activated()), this, SLOT(slot347()));
 
-/*  
-  balan = new QAction(tr("Balance abreviado"), tr("&Balance Abreviado"), 0, this);
-  balan->setStatusTip(tr("Ver Balance de situacion abreviado"));
-  balan->setWhatsThis(tr("Ver Balance de situacion abreviado"));
-  connect(balan, SIGNAL(activated()), this, SLOT(slotBalan()));
-*/
   regiva = new QAction(tr("Registro de IVA"), tr("&Registro de IVA"), 0, this);
   regiva->setStatusTip(tr("Ver Libro Registro de IVA"));
   regiva->setWhatsThis(tr("Ver Libro Registro de IVA"));
@@ -444,12 +386,7 @@ void Bulmages01::initActions() {
   reloadaction->setStatusTip(tr("Recargar"));
   reloadaction->setWhatsThis(tr("Recargar"));
   connect(reloadaction, SIGNAL(activated()), this, SLOT(slotReload()));
-/*
-  usuarioaction = new QAction(tr("Usuarios"), usuarioIcon, tr("&Usuarios"), 0, this);
-  usuarioaction->setStatusTip(tr("Usuarios"));
-  usuarioaction->setWhatsThis(tr("Usuarios"));
-  connect(usuarioaction, SIGNAL(activated()), this, SLOT(slotUsuarios()));
-*/
+  
   amortiz = new QAction(tr("Amortizaciones"), tr("&Amortizaciones"), 0, this);
   amortiz->setStatusTip(tr("Amortizaciones"));
   amortiz->setWhatsThis(tr("Amortizaciones"));
@@ -531,14 +468,7 @@ void Bulmages01::initActions() {
   ArchDoc->setStatusTip(tr("Archivo Documental"));
   ArchDoc->setWhatsThis(tr("Archivo Documental"));
   connect(ArchDoc, SIGNAL(activated()), this, SLOT(slotArchDoc()));
-  
-       
-  SelectorAction = new QAction( this, "SelectorAction" );
-  SelectorAction->setIconSet( QIconSet( QPixmap::fromMimeSource( "tux1.png" ) ) );
-  connect( SelectorAction, SIGNAL( activated() ), this, SLOT( mostrar_selector() ) );      
 
-  
-  
   cobPag = new QAction(tr("Cobros y Pagos"), tr("&Cobros y Pagos"), 0, this);
   cobPag->setStatusTip(tr("Cobros y Pagos"));
   cobPag->setWhatsThis(tr("Cobros y Pagos"));
@@ -566,9 +496,6 @@ void Bulmages01::initMenuBar() {
   ///////////////////////////////////////////////////////////////////
   // EDIT YOUR APPLICATION SPECIFIC MENUENTRIES HERE
   // El menu de cuenta
-//  pCuentaMenu = new QPopupMenu();
-//  pCuentaMenu->setCheckable(true);
-//  planCuentas->addTo(pCuentaMenu);
   
   // El menu de apunte
   pApunteMenu = new QPopupMenu();
@@ -598,9 +525,6 @@ void Bulmages01::initMenuBar() {
   
   // El menu Listados
   pListMenu = new QPopupMenu();  
-//  perdygan->addTo(pListMenu);
-//  balan->addTo(pListMenu);
-//  pListMenu->insertSeparator();
   regiva->addTo(pListMenu);
   CompBalance->addTo(pListMenu);
   MPatrimoniales->addTo(pListMenu);
@@ -632,48 +556,10 @@ void Bulmages01::initMenuBar() {
   pEmpresaMenu->setCheckable(true);
   propiedadesEmpresa->addTo(pEmpresaMenu);
   pEmpresaMenu->insertSeparator();
-  menuEjercicios =new QPopupMenu();
-  pEmpresaMenu->insertItem(tr("Ejercicios"),menuEjercicios);
 
-  QActionGroup * anys= new QActionGroup(this);
-  connect(anys, SIGNAL(selected(QAction *)), this, SLOT(setCurrentEjercicio(QAction *)));
-  QAction * a;
-  QString aux;
-  postgresiface2 *DBconn = new postgresiface2();
-  DBconn->inicializa( DBName.ascii() );
-  DBconn->begin();
-  QString query;
-  query.sprintf("SELECT ejercicio FROM ejercicios WHERE periodo=0");
-  cursor2 * curEjer = DBconn->cargacursor(query,"curEjer");
-  DBconn->commit();
-  while (!curEjer->eof()) {
-      aux=curEjer->valor(0);
-     // a = new QAction(aux,0,anys,aux);
-//      a = new QAction(this,0);
-//      a->setToggleAction(true);
-//=======
-      a = new QAction(aux,aux,0,this);
-      connect(a, SIGNAL(activated()),this, SLOT(setCurrentEjercicio(a)));
-      connect(a, SIGNAL(activated()),this, SLOT(setCurrentEjercicio()));
-//      a->setToggleAction(true);
-      a->addTo(menuEjercicios);
-      curEjer->siguienteregistro();
-  }
-  delete curEjer;
-  delete DBconn;
-  //nuevaEmpresa->addTo(pEmpresaMenu);
-  //borrarEmpresa->addTo(pEmpresaMenu);
-  //cambiarEmpresa->addTo(pEmpresaMenu);
   pHerramientasMenu->insertSeparator();
-  //guardarEmpresa->addTo(pEmpresaMenu);
-  //cargarEmpresa->addTo(pEmpresaMenu);
-  //NEjercicio->addTo(pEmpresaMenu);
+
   
-  ///////////////////////////////////////////////////////////////////
-  // menuBar entry windowMenu
-//  pWindowMenu = new QPopupMenu(this);
-//  pWindowMenu->setCheckable(true);
-//  connect(pWindowMenu, SIGNAL(aboutToShow()), this, SLOT(windowMenuAboutToShow()));
   ///////////////////////////////////////////////////////////////////
   // menuBar entry helpMenu
   pHelpMenu=new QPopupMenu();
@@ -702,7 +588,7 @@ void Bulmages01::initMenuBar() {
 void Bulmages01::initToolBar() {
   fileToolbar = new QToolBar(this, "Empresa Operaciones");
   fileToolbar->setLabel("Ventanas");
-  SelectorAction->addTo( fileToolbar );
+//  SelectorAction->addTo( fileToolbar );
   propiedadesEmpresa->addTo(fileToolbar);
   fileToolbar->addSeparator();
   //usuarioaction->addTo(fileToolbar);
@@ -1055,7 +941,8 @@ void Bulmages01::slotAbrirasientos() {
 }// end slotAbrirasientos
 
 void Bulmages01::slotOrdenarasientos() {
-  empresaactual.Ordenarasientos(empresaactual.ejercicioactual().toInt());
+//  empresaactual.Ordenarasientos(empresaactual.ejercicioactual().toInt());
+    empresaactual.Ordenarasientos();
 }// end slotOrdenarasientos
 
 
@@ -1077,25 +964,6 @@ void Bulmages01::slotFiltro() {
 }// end slotFiltro
 
 void Bulmages01::windowMenuAboutToShow()  {
-/*
-  pWindowMenu->clear();	
-  windowNewWindow->addTo(pWindowMenu);
-  windowCascade->addTo(pWindowMenu);
-  windowTile->addTo(pWindowMenu);
-  if ( pWorkspace->windowList().isEmpty() ) {
-    windowAction->setEnabled(false);
-  } else {
-    windowAction->setEnabled(true);
-  }// end if
-  pWindowMenu->insertSeparator();
-  QWidgetList windows = pWorkspace->windowList();
-  for ( int i = 0; i < int(windows.count()); ++i )  {
-    int id = pWindowMenu->insertItem(QString("&%1 ").arg(i+1)+windows.at(i)->caption(), this, SLOT( windowMenuActivated( int ) ) );
-    pWindowMenu->setItemParameter( id, i );
-    pWindowMenu->setItemChecked( id, pWorkspace->activeWindow() == windows.at(i) );
-  }// end for
-
-*/
 }// end windowMenuAboutToShow
 
 
@@ -1146,6 +1014,4 @@ void Bulmages01::slotArchDoc() {
    empresaactual.archDoc();
 }
 
-void  Bulmages01::mostrar_selector() {
-}
 
