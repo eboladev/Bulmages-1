@@ -220,8 +220,7 @@ void empresa::BalanceGrafico() {
   comboboxes de todo el resto de pantallas para que se actualizen
   ****************************************************************/
 int empresa::ccostes() {
-  ccosteview *ccoste = new ccosteview(0,"ccostes", true);
-  ccoste->inicializa(conexionbase2);
+  ccosteview *ccoste = new ccosteview(this, 0,"ccostes", true);
   ccoste->exec();
   delete ccoste;
 //  introapunts1->cargacostes();

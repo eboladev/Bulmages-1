@@ -14,17 +14,21 @@
  *                                                                         *
  ***************************************************************************/
 #include "ccosteview.h"
+#include "empresa.h"
 
-ccosteview::ccosteview(QWidget *parent, const char *name, bool modal) : ccostedlg(parent,name, modal) {
-  idc_coste=0;
+ccosteview::ccosteview(empresa *emp, QWidget *parent, const char *name, bool modal) : ccostedlg(parent,name, modal) {
+	fprintf(stderr,"inicializador de ccosteview\n");
+	empresaactual = emp;
+	conexionbase=empresaactual->bdempresa();
+	idc_coste=0;
+	pintar();
 }// end ccosteview
 
 ccosteview::~ccosteview(){
 }// end ~ccosteview
 
-void ccosteview::inicializa(postgresiface2 *conn) {
-  conexionbase= conn;
 
+void ccosteview::pintar() {
   // Vamos a inicializar el combo de los centros de coste
   QString query = "SELECT * from c_coste ORDER BY nombre";
   conexionbase->begin();
@@ -38,7 +42,7 @@ void ccosteview::inicializa(postgresiface2 *conn) {
     cursorcoste->siguienteregistro();
   }// end while
   delete cursorcoste;
-  
+
   // Si el combocoste no está vacio se muestra el registro que
   // contiene
   if ( idc_coste!= 0) {
@@ -47,7 +51,7 @@ void ccosteview::inicializa(postgresiface2 *conn) {
     idc_coste = ccostes[combocoste->currentItem()];
     mostrarplantilla();
   }// end if
-}// end inicializa
+}// end pintar
 
 /*****************************************************
   Esta funcion sirve para hacer el cambio sobre un
@@ -88,7 +92,7 @@ void ccosteview::boton_guardar() {
   conexionbase->ejecuta(query);
   conexionbase->commit();
   fprintf(stderr,"Se ha guardado el centro de coste");
-  inicializa(conexionbase);
+  pintar();
 }// end boton_guardar
 
 
@@ -102,7 +106,7 @@ void ccosteview::boton_nuevo() {
   idc_coste= atoi(cur->valor("id_coste").latin1());
   delete cur;
   conexionbase->commit();
-  inicializa(conexionbase);
+  pintar();
 }// end boton_nuevo
 
 
@@ -113,5 +117,5 @@ void ccosteview::boton_borrar() {
   conexionbase->ejecuta(query);
   conexionbase->commit();
   idc_coste=0;
-  inicializa(conexionbase);
+  pintar();
 }// end boton_borrar

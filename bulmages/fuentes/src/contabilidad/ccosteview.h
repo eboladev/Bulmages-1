@@ -26,6 +26,7 @@
 #include "postgresiface2.h"
 
 /** *@author Tomeu Borrás Riera */
+class empresa;
 
 class ccosteview : public ccostedlg  {
   Q_OBJECT
@@ -34,10 +35,11 @@ public:
   int ccostes[100];
   int idc_coste;    // Indica cual es el centro de coste que se esta visualizando
                     // Si su valor es 0 entonces es que no se está visualizando ningun centro de coste.
-public: 
-  ccosteview(QWidget *parent=0, const char *name=0, bool modal=true);
+	empresa *empresaactual;
+public:
+  ccosteview(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);
   ~ccosteview();
-  void inicializa(postgresiface2 *);
+  void pintar();
   void mostrarplantilla();
   
 public slots:
