@@ -172,7 +172,7 @@ void Budget::inicialize() {
 	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_PROPORCIONDPRESUPUESTO, tr( "Proporción" ) );
    
 	m_listDiscounts->setColumnWidth(COL_DESCUENTO_IDDPRESUPUESTO,100);
-	m_listDiscounts->setColumnWidth(COL_DESCUENTO_CONCEPTDPRESUPUESTO,500);
+	m_listDiscounts->setColumnWidth(COL_DESCUENTO_CONCEPTDPRESUPUESTO,400);
 	m_listDiscounts->setColumnWidth(COL_DESCUENTO_PROPORCIONDPRESUPUESTO,100);
 	m_listDiscounts->hideColumn(COL_DESCUENTO_IDDPRESUPUESTO);
 	m_listDiscounts->hideColumn(COL_DESCUENTO_REMOVE);
