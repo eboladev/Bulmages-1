@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>abreempresadlg</class>
 <widget class="QDialog">
     <property name="name">
@@ -287,7 +287,7 @@
 </widget>
 <images>
     <image name="image0">
-        <data format="XPM.GZ" length="920">789c4dd3c94e23311006e07b9ea215dfa2910301cc017120613d0c9a2312e250ed250bd50ed98080e6dd712ddda4b3a83fd5ef72b9950c07d5d3bfbfd560d8db6c613bf7959fc1ba1a845dd3ec9f5f2ebf7bfd635795f7c97975dcffd3eb9740f5b8cc91eeb1dc9b23be88b7c4fa142278e23533d4ae3e253e10fd596120be31431d85f7c4103d78e65a189c70478c2e8cc21971a974d111ef9420d51b66591b78c895320ab7c4e4e248d6be2a5de46a6899b8faa104a92e943125e2bb308d8473a51346666a1fce46d86eb4576ae7af96b2efa732ca90a92387272d253cebc8fb4e856924e1baa5849b8e1cbe52ea54b6a5844d470e8f953a2474e46a5626a1355083076b82294fdff32f22c1945f69365fbce2c268ae29499397582e98fde66c7ec3555ea3315d3f8012c9667390b35bdc6598e615beb73983f891a9e761ee132c75a59ceffad1a701b3c7e6eb703e9e11afe0603e9911a13b8735d46d3cb946abb9bc4103906fca314a5f7e60f616efb2bdc7f23d2e6bf86f50aab91c23d5997a723faccb090cc274c23342ffff45ef0776b3f862</data>
+        <data format="PNG" length="383">89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff610000014649444154388d7d93c14ac3401086bf15052bf6a62fd29bef2c9e8a07a1deac206c6ecd4124c720a56c202d9bb2147e0f9ba4494cba1086cc3233dffc336b14244ec00cd80373483e13b3785a880ab80676c0037002ee0c00c99735c7d311e49c2449e584754e2a25ef156dee04c83b4941424192571d34b0b5dfa531a8fbc50b699ac0c768fbbe1220976592a42cb53181bf4410a269ab850ed1d6f708ae3814b58005cc81aa825d813106976648829bfa7e06c5e117806a0fdc439fc077aabac639d0e422c10ce4f258f596781ab21182e42731e31a5c9a8af36711b7631aec47febb7e8e355a018f430d861527f6a2d1c0aeedc8267a1fc736dc8be0a5525abd2eeb1662b63e41dee94f6ae7efd3bcbf851d621462c5e5cbb300e5df9b96244f366d50eb0fbe47867dfbf89f3974f6a1f4939ad8b5855e6093399c8552195f63d3f3509b3f3fece02c74ee10900000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -301,7 +301,7 @@
         <sender>botonCancelar</sender>
         <signal>clicked()</signal>
         <receiver>abreempresadlg</receiver>
-        <slot>close()</slot>
+        <slot>quitar()</slot>
     </connection>
     <connection>
         <sender>login</sender>
@@ -341,5 +341,8 @@
     <tabstop>botonCancelar</tabstop>
     <tabstop>botonAyuda</tabstop>
 </tabstops>
+<slots>
+    <slot>quitar()</slot>
+</slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

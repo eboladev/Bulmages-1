@@ -49,9 +49,12 @@ public:
    QString ejercicioMetaDB;
 private:   
     int intentos;
+    int entrada;
         
 public slots:
    virtual void accept();
+   virtual void quitar();
+   virtual void close();
    
 };
 

@@ -38,6 +38,7 @@ abreempresaview::abreempresaview(const char *name, bool modal) : abreempresadlg(
    delete a;
    delete apuestatealgo;
    intentos=0;
+   entrada=0;
 }// end abreempresaview
 
 
@@ -45,8 +46,25 @@ abreempresaview::~abreempresaview(){
 }// end ~abreempresaview
 
 
+/** \brief Se ha pulsado sobre cerrar en la ventana de selector
+  * lo que hacemos es cancelar la ejecución del programa saliendo del mismo
+ */
+void abreempresaview::quitar() {
+	exit(1);
+}// end close
 
 
+void abreempresaview::close() {
+	if (entrada == 0) exit(1);
+	QDialog::close();
+}// end if
+
+
+/** \brief Se ha pulsado el boton de aceptar sobre el selector
+  * Comprueba que se puede abrir la empresa y si es así
+  * carga los datos necesarios en el programa y hace los pasos requeridos.
+  * En caso contrario aborta la ejecución.
+  */
 void abreempresaview::accept() {
    postgresiface2 *DBConn = new postgresiface2();
    QListViewItem *it;
@@ -61,7 +79,6 @@ void abreempresaview::accept() {
    // El uso de esta función es dudoso.
    num = DBConn->cargaempresa(empresabd, nombre, contrasena);
    delete DBConn;
-
    if (num >0) {
        postgresiface2 *DBConn2= new postgresiface2();
        DBConn2->inicializa(confpr->valor(CONF_METABASE).c_str());
@@ -70,15 +87,16 @@ void abreempresaview::accept() {
        query.sprintf("SELECT permisos FROM usuario_empresa, empresa, usuario WHERE usuario_empresa.idempresa=empresa.idempresa and usuario_empresa.idusuario=usuario.idusuario and empresa.nombredb='%s' and usuario.login='%s'",empresabd.ascii(),nombre.ascii());
        cursor2 * recordSet = DBConn2->cargacursor(query,"recordSet");
        DBConn2->commit();
-       //       empresaactual->nombreusuario = nombre;
+       ///       empresaactual->nombreusuario = nombre;
        confpr->setValor(PRIVILEGIOS_USUARIO, recordSet->valor("permisos"));
-       //Empezamos un nuevo modo de guardar algunas preferencias de los usuarios en la base de datos
+       ///Empezamos un nuevo modo de guardar algunas preferencias de los usuarios en la base de datos
        confpr->cargarEntorno(empresabd);
        ctllog->add(LOG_SEG | LOG_TRA, 1,"AbrViw004", "Entrando usuario: --"+nombre+"-- hacia la empresa: --"+nombreempresa+"-- con los permisos -"+confpr->valor(PRIVILEGIOS_USUARIO).c_str()+"-" );
        delete recordSet;
        delete DBConn2;
-//      delete this;
-       fprintf(stderr,"Cerramos el abrir empresa \n");
+       // Indicamos que hemos pasado por este punto para que no se
+       // aborte la ejecución del programa.
+       entrada=1;
        close();
    }//end if
    // Si se supera el numero de intentos abortamos la ejecución
