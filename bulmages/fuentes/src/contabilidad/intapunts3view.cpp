@@ -55,6 +55,9 @@
 #define IDASIENTO cursorasientos->valor("idasiento").ascii()
 #define ORDENASIENTO cursorasientos->valor("ordenasiento").ascii()
 #define ROWACTUAL tapunts->currentRow()
+/// Define el número de filas que va a tener la tabla de apuntes.
+#define TAPUNTS_NUM_ROWS 10000
+
 
 intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, int  ) : intapunts3dlg(parent,name) {
    fprintf(stderr,"Constructor de intapunts3view\n");
@@ -413,9 +416,8 @@ void intapunts3view::repinta(int numasiento) {
     }// end if
     num=cursorasiento->numregistros();
     // Hacemos que no haya ningún apunte como preestablecido.
-    // tapunts->setNumRows(100);
     tapunts->setNumRows(0);
-    tapunts->setNumRows(100);
+    tapunts->setNumRows(TAPUNTS_NUM_ROWS);
     i=0;
     while (!cursorasiento->eof()) {
         cadena.sprintf("%10.10s",cursorasiento->valor("borrfecha").ascii());
@@ -573,8 +575,9 @@ void intapunts3view::boton_cerrarasiento() {
     conexionbase->commit();
     while (!cursborr->eof()) {
          QString codcuenta = cursborr->valor("codigo");
-         codcuenta = codcuenta.mid(0,1);
-         if (codcuenta == "6" || codcuenta == "7") {
+         codcuenta = codcuenta.mid(0,2);
+	 /// OJO que aqui los numero de cuenta están mal.
+         if (codcuenta == "60" || codcuenta == "70") {
                fprintf(stderr,"%s\n",codcuenta.ascii());
                int idborrador = cursborr->valor("idborrador").toInt();
                QString query= "SELECT bcontrapartidaborr("+QString::number(idborrador)+") AS idborrador";
@@ -596,36 +599,8 @@ void intapunts3view::boton_cerrarasiento() {
          cursborr->siguienteregistro();
     }// end while
     delete cursborr;
-    
-/*    
-    // Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
-    while (!tapunts->text(i,COL_IDBORRADOR).isNull()) {
-            QString codcuenta = tapunts->text(i,COL_SUBCUENTA);
-            fprintf(stderr,"BUSCA REGISTROS FACTURAS %s\n",codcuenta.ascii());
-            codcuenta = codcuenta.mid(0,2);
-            if (codcuenta == "60" || codcuenta == "70") {
-                fprintf(stderr,"%s\n",codcuenta.ascii());
-                int idborrador = atoi(tapunts->text(i,COL_IDBORRADOR).ascii());
-                QString query= "SELECT bcontrapartidaborr("+QString::number(idborrador)+") AS idborrador";
-                conexionbase->begin();
-                cursor2 *curss = conexionbase->cargacursor(query,"elquerybuscaalgo");
-                conexionbase->commit();
-                if (!curss->eof()) {
-                  idborrador = curss->valor("idborrador").toInt();
-                }// end if
-                delete curss;
-                if (idborrador != 0) {
-                    fprintf(stderr,"ABRIMOS REGISTRO IVAS \n");
-                    ivaview *regivaview=new ivaview(empresaactual,0,"");
-                    regivaview->inicializa1(idborrador);
-                    regivaview->exec();
-                    delete regivaview;
-                }// end if
-            }// end if
-        i++;
-    }// end while
-*/
-        // Realizamos la operación en la base de datos.
+
+    // Realizamos la operación en la base de datos.
     if (idasiento==-1) idasiento=atoi(IDASIENTO);
     conexionbase->begin();
     conexionbase->cierraasiento(idasiento);

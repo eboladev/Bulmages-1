@@ -450,6 +450,7 @@ END;
 -- TOC entry 87 (OID 1346049)
 -- Name: ccontrapartida(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
+-- La contrapartida de un apunte donde todo son ceros es la misma que el apunte. (Y asi salimos del lio).
 CREATE FUNCTION ccontrapartida(integer) RETURNS integer
     AS '
 DECLARE
@@ -464,7 +465,7 @@ BEGIN
         IF FOUND THEN
                 RETURN contra.idcuenta;
         ELSE
-                RETURN 0;
+                RETURN ap.idcuenta;
         END IF;
     ELSE
         RETURN apt.contrapartida;

@@ -230,9 +230,7 @@ void BConfiguracion::borrarEmpresa() {
                //Despues de evaluar algunos detalles, procedemos a eliminar la base de datos.
                   postgresiface2 *DBconn = new postgresiface2();
                   DBconn->inicializa( "template1", confpr->valor(CONF_LOGIN_USER), confpr->valor(CONF_PASSWORD_USER) );
-                  DBconn->begin();
                   DBconn->ejecuta("DROP DATABASE " + dbEmpresa);
-		  DBconn->commit();
                   delete DBconn;
       }// end if  
    }// end if

@@ -483,7 +483,7 @@ cursor2 *postgresiface2::cargacuentascodigo(int padre, QString codigoinicial, QS
 
 
 int postgresiface2::cierraasiento(int idasiento) {
-    QString query="";
+    QString query;
     query.sprintf("SELECT cierraasiento(%d)",idasiento);
     cursor2 *cur=cargacursor(query,"abreasientos");
     delete cur;
