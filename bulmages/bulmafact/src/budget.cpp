@@ -107,9 +107,9 @@ Budget::~Budget() {
 
 
 void Budget::inicialize() {
-
-	m_modified = false;
 	installEventFilter(this);
+	m_list->installEventFilter( this );
+	m_listDiscounts->installEventFilter( this );
 	
 // Inicializamos la tabla de lineas de presupuesto
 	m_list->setNumRows( 0 );
@@ -155,8 +155,6 @@ void Budget::inicialize() {
 	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
 	m_list->setPaletteBackgroundColor("#AFFAFA");   
 	m_list->setReadOnly(FALSE);
-	m_list->installEventFilter( this );
-	
 	
 // Inicializamos la tabla de descuentos del presupuesto
 	m_listDiscounts->setNumRows( 0 );
@@ -221,10 +219,7 @@ void Budget::chargeBudget(QString idbudget) {
     }// end if
      delete cur;   
 	  
-	m_initialValues = retrieveValues("QTable");
-	m_initialValues += retrieveValues("QLineEdit");
-	m_initialValues += retrieveValues("QTextEdit");
-	qDebug("Initial Values = %s", m_initialValues.ascii());
+	m_initialValues = calculateValues();
 }// end chargeBudget
 
 
@@ -237,9 +232,9 @@ void Budget::chargeBudgetLines(QString idbudget) {
 	while (!cur->eof()) {
 		m_list->setText(i,COL_IDLPRESUPUESTO,cur->valor("idlpresupuesto"));
 		m_list->setText(i,COL_DESCLPRESUPUESTO,cur->valor("desclpresupuesto"));
-		m_list->setText(i,COL_CANTLPRESUPUESTO,cur->valor("cantlpresupuesto"));
-		m_list->setText(i,COL_PVPLPRESUPUESTO,cur->valor("pvplpresupuesto"));
-		m_list->setText(i,COL_DESCUENTOLPRESUPUESTO,cur->valor("descuentolpresupuesto"));
+		m_list->setText(i,COL_CANTLPRESUPUESTO,QString().sprintf("%0.3f",cur->valor("cantlpresupuesto").toFloat()));
+		m_list->setText(i,COL_PVPLPRESUPUESTO,QString().sprintf("%0.2f",cur->valor("pvplpresupuesto").toFloat()));
+		m_list->setText(i,COL_DESCUENTOLPRESUPUESTO,QString().sprintf("%0.2f",cur->valor("descuentolpresupuesto").toFloat()));
 		m_list->setText(i,COL_IDPRESUPUESTO,cur->valor("idpresupuesto"));
 		m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
 		m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
@@ -263,7 +258,7 @@ void Budget::chargeBudgetDiscounts(QString idbudget) {
 	while (!cur->eof()) {
 		m_listDiscounts->setText(i,COL_DESCUENTO_IDDPRESUPUESTO,cur->valor("iddpresupuesto"));
 		m_listDiscounts->setText(i,COL_DESCUENTO_CONCEPTDPRESUPUESTO,cur->valor("conceptdpresupuesto"));
-		m_listDiscounts->setText(i,COL_DESCUENTO_PROPORCIONDPRESUPUESTO,cur->valor("proporciondpresupuesto"));
+		m_listDiscounts->setText(i,COL_DESCUENTO_PROPORCIONDPRESUPUESTO,QString().sprintf("%0.2f",cur->valor("proporciondpresupuesto").toFloat()));
 		i++;
 		cur->siguienteregistro();
 	}// end while
@@ -306,9 +301,8 @@ void Budget::budgetExpiryLostFocus() {
 
 void Budget::newBudgetLine() {
 	m_list->setNumRows( m_list->numRows()+1 );
-	//m_list->installEventFilter( this );
-	m_list->setCurrentCell(m_list->numRows()-1, COL_CODARTICULO);
-	
+	m_list->setCurrentCell(m_list->numRows()-1, COL_CODARTICULO);	
+	m_list->editCell(m_list->numRows()-1, COL_CODARTICULO);
 }
 
 
@@ -322,13 +316,12 @@ void Budget::removeBudgetLine() {
 
 
 void Budget::valueBudgetLineChanged(int row, int col) {
-	/*if (m_list->text(row, col)=="*") {
-		duplicateCell(m_list);
-	}*/
 	
 	switch (col) {
 		case COL_DESCUENTOLPRESUPUESTO: {
 			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, m_list->text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
+			float discountLine = m_list->text(row, COL_DESCUENTOLPRESUPUESTO).toFloat();
+			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, QString().sprintf("%0.2f", discountLine));
 		}
 		case COL_CODARTICULO: {
 			manageArticle(row);
@@ -336,10 +329,14 @@ void Budget::valueBudgetLineChanged(int row, int col) {
 		}
 		case COL_CANTLPRESUPUESTO: {
 			m_list->setText(row, COL_CANTLPRESUPUESTO, m_list->text(row, COL_CANTLPRESUPUESTO).replace(",","."));
+			float cantLine = m_list->text(row, COL_CANTLPRESUPUESTO).toFloat();
+			m_list->setText(row, COL_CANTLPRESUPUESTO, QString().sprintf("%0.3f", cantLine));
 			calculateImports();
 		}
 		case COL_PVPLPRESUPUESTO: {
 			m_list->setText(row, COL_PVPLPRESUPUESTO, m_list->text(row, COL_PVPLPRESUPUESTO).replace(",","."));
+			float pvpLine = m_list->text(row, COL_PVPLPRESUPUESTO).toFloat();
+			m_list->setText(row, COL_PVPLPRESUPUESTO, QString().sprintf("%0.2f", pvpLine));
 			calculateImports();
 		}
 	}
@@ -363,23 +360,14 @@ void Budget::removeBudgetDiscountLine() {
 
 
 void Budget::valueBudgetDiscountLineChanged(int row, int col) {
-	/*	switch (col) {
-		case COL_DESCUENTOLPRESUPUESTO: {
-			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, m_list->text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
-		}
-		case COL_CODARTICULO: {
-			manageArticle(row);
+	switch (col) {
+		case COL_DESCUENTO_PROPORCIONDPRESUPUESTO: {
+			m_listDiscounts->setText(row, COL_DESCUENTO_PROPORCIONDPRESUPUESTO, m_listDiscounts->text(row, COL_DESCUENTO_PROPORCIONDPRESUPUESTO).replace(",","."));
+			float proporcionLine = m_listDiscounts->text(row, COL_DESCUENTO_PROPORCIONDPRESUPUESTO).toFloat();
+			m_listDiscounts->setText(row, COL_DESCUENTO_PROPORCIONDPRESUPUESTO, QString().sprintf("%0.2f", proporcionLine));
 			calculateImports();
 		}
-		case COL_CANTLPRESUPUESTO: {
-			m_list->setText(row, COL_CANTLPRESUPUESTO, m_list->text(row, COL_CANTLPRESUPUESTO).replace(",","."));
-			calculateImports();
-		}
-		case COL_PVPLPRESUPUESTO: {
-			m_list->setText(row, COL_PVPLPRESUPUESTO, m_list->text(row, COL_PVPLPRESUPUESTO).replace(",","."));
-			calculateImports();
-		}
-	} */
+	}
 } //end valueBudgetDiscountLineChanged
 
 void Budget::manageArticle(int row) {
@@ -440,7 +428,7 @@ void Budget::s_saveBudget() {
 	companyact->begin();
 	if (saveBudget()==0 && saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
 		companyact->commit();
-		m_modified = false;
+		// chargeBudget();
 	} else {
 		companyact->rollback();
 	}	
@@ -453,7 +441,7 @@ void Budget::accept() {
 	companyact->begin();
 	if (saveBudget()==0 && saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
 		companyact->commit();
-		m_modified = false;
+		m_initialValues = calculateValues();
 		close();
 	} else {
 		companyact->rollback();
@@ -617,11 +605,15 @@ void Budget::calculateImports() {
 } // end calculateImports
 
 
+QString Budget::calculateValues() {
+	QString values = retrieveValues("QTable");
+	values += retrieveValues("QLineEdit");
+	values += retrieveValues("QTextEdit");
+	return values;
+}
+
+
 bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
-	if ( ev->type() == QEvent::KeyPress ) {
-		m_modified = true;
-	}
-	
 	if ( obj->isA("QTable")) {
 		QTable *t = (QTable *)obj;
 		if ( ev->type() == QEvent::KeyRelease ) {
@@ -636,6 +628,9 @@ bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
 					}
 					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
 						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
+					}
+					if (QString(obj->name()).stripWhiteSpace() == "m_listDiscounts") {
+						valueBudgetDiscountLineChanged(t->currentRow(), t->currentColumn());
 					}
 					nextCell(obj);
 					return TRUE;
@@ -653,7 +648,7 @@ bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
 	} 
 	
 	if ( ev->type() == QEvent::Close ) {
-		if ( m_modified ) {
+		if ( calculateValues() != m_initialValues ) {
 			if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Se perderán los cambios que haya realizado", "Aceptar", "Cancelar") != 0) {
 				return TRUE;
 			}

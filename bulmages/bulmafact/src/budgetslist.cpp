@@ -49,12 +49,14 @@ CREATE TABLE presupuesto (
 
 #define COL_IDPRESUPUESTO 0
 #define COL_NUMPRESUPUESTO 1
-#define COL_FPRESUPUESTO 2
-#define COL_CONTACTPRESUPUESTO 3
-#define COL_TELPRESUPUESTO 4
-#define COL_COMENTPRESUPUESTO 5
-#define COL_IDUSUARI 6
-#define COL_IDCLIENTE 7
+#define COL_NOMCLIENTE 2
+#define COL_FPRESUPUESTO 3
+#define COL_CONTACTPRESUPUESTO 4
+#define COL_TELPRESUPUESTO 5
+#define COL_COMENTPRESUPUESTO 6
+#define COL_IDUSUARI 7
+#define COL_IDCLIENTE 8
+
 
 BudgetsList::BudgetsList(company *comp, QWidget *parent, const char *name, int flag)
  : BudgetsListBase(parent, name, flag) {
@@ -74,30 +76,35 @@ void BudgetsList::inicializa() {
    m_list->setSorting( TRUE );
    m_list->setSelectionMode( QTable::SingleRow );
    m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(8);
+   m_list->setNumCols(9);
    m_list->horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "COL_IDPRESUPUESTO" ) );
-   m_list->horizontalHeader()->setLabel( COL_NUMPRESUPUESTO, tr( "COL_NUMPRESUPUESTO" ) );
-   m_list->horizontalHeader()->setLabel( COL_FPRESUPUESTO, tr( "COL_FPRESUPUESTO" ) );
-   m_list->horizontalHeader()->setLabel( COL_CONTACTPRESUPUESTO, tr( "COL_CONTACTPRESUPUESTO" ) );
-   m_list->horizontalHeader()->setLabel( COL_TELPRESUPUESTO, tr( "COL_TELPRESUPUESTO" ) );
-   m_list->horizontalHeader()->setLabel( COL_COMENTPRESUPUESTO, tr( "COL_COMENTPRESUPUESTO" ) );
+	m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
+   m_list->horizontalHeader()->setLabel( COL_NUMPRESUPUESTO, tr( "Nº Presupuesto" ) );
+   m_list->horizontalHeader()->setLabel( COL_FPRESUPUESTO, tr( "Fecha" ) );
+   m_list->horizontalHeader()->setLabel( COL_CONTACTPRESUPUESTO, tr( "Persona Contacto" ) );
+   m_list->horizontalHeader()->setLabel( COL_TELPRESUPUESTO, tr( "Teléfono" ) );
+   m_list->horizontalHeader()->setLabel( COL_COMENTPRESUPUESTO, tr( "Comentarios" ) );
    m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("COL_IDUSUARI") );
    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
    m_list->setColumnWidth(COL_IDPRESUPUESTO,75);
-   m_list->setColumnWidth(COL_NUMPRESUPUESTO,300);
-   m_list->setColumnWidth(COL_FPRESUPUESTO,300);
-   m_list->setColumnWidth(COL_CONTACTPRESUPUESTO,75);
-   m_list->setColumnWidth(COL_TELPRESUPUESTO,75);
-   m_list->setColumnWidth(COL_COMENTPRESUPUESTO,100);
-   m_list->setColumnWidth(COL_IDUSUARI,1000);
-   m_list->setColumnWidth(COL_IDCLIENTE,300);
+   m_list->setColumnWidth(COL_NUMPRESUPUESTO,75);
+   m_list->setColumnWidth(COL_FPRESUPUESTO,100);
+   m_list->setColumnWidth(COL_CONTACTPRESUPUESTO,200);
+   m_list->setColumnWidth(COL_TELPRESUPUESTO,150);
+   m_list->setColumnWidth(COL_COMENTPRESUPUESTO,300);
+   m_list->setColumnWidth(COL_IDUSUARI,75);
+   m_list->setColumnWidth(COL_IDCLIENTE,75);
+	m_list->setColumnWidth(COL_NOMCLIENTE,200);
+	m_list->hideColumn(COL_IDPRESUPUESTO);
+	m_list->hideColumn(COL_IDCLIENTE);
+	//m_list->hideColumn(COL_IDUSUARI);
          
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");   
     m_list->setReadOnly(TRUE);        
     companyact->begin();
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM presupuesto","querypresupuesto");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM presupuesto, cliente where presupuesto.idcliente=cliente.idcliente","querypresupuesto");
     companyact->commit();
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -110,6 +117,7 @@ void BudgetsList::inicializa() {
          m_list->setText(i,COL_COMENTPRESUPUESTO,cur->valor("comentpresupuesto"));
          m_list->setText(i,COL_IDUSUARI,cur->valor("idusuari"));
          m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
+			m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
          i++;
          cur->siguienteregistro();
     }// end while

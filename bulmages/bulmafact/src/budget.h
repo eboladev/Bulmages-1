@@ -34,7 +34,6 @@ private:
    company *companyact;
    QString m_idpresupuesto;
    QString m_idclient;
-	bool m_modified;
 	QString m_initialValues;
 	
 public:
@@ -63,6 +62,7 @@ private:
 	void duplicateCell(QObject *);
 	void calculateImports();
 	QString retrieveValues(QString);
+	QString calculateValues();
 		
 protected:
 	bool eventFilter( QObject *, QEvent *);
