@@ -39,90 +39,90 @@ CREATE TABLE prevcobro (
 );
 */
 #define COL_SELECCION                  0
-#define COL_IDPREVCOBRO                1   
+#define COL_IDPREVCOBRO                1
 #define COL_FPREVISTAPREVCOBRO         2
 #define COL_FCOBROPREVCOBRO            3
-#define COL_NOMFPAGO                   4
-#define COL_FPAGOPREVCOBRO             5
-#define COL_IDCUENTA                   6
-#define COL_CODIGO                     7
-#define COL_IDASIENTO                  8
-#define COL_ORDENASIENTO               9
-#define COL_CANTIDADPREVISTAPREVCOBRO  10
-#define COL_CANTIDADPREVCOBRO          11
-#define COL_IDREGISTROIVA              12
-#define COL_CODIGOCTAREGISTROIVA       13
-#define COL_ENTREGISTROIVA             14
-#define COL_TIPOPREVCOBRO              15
-#define COL_DOCPREVCOBRO               16
+#define COL_IDCUENTA                   4
+#define COL_CODIGO                     5
+#define COL_NOMCTA	               6
+#define COL_IDASIENTO                  7
+#define COL_ORDENASIENTO               8
+#define COL_CANTIDADPREVISTAPREVCOBRO  9
+#define COL_CANTIDADPREVCOBRO          10
+#define COL_IDREGISTROIVA              11
+#define COL_CODIGOCTAREGISTROIVA       12
+#define COL_ENTREGISTROIVA             13
+#define COL_TIPOPREVCOBRO              14
+#define COL_DOCPREVCOBRO               15
 
 cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) : cobropagodlg(parent, name) {
-   conexionbase = emp->bdempresa();
-   empresaactual = emp;
-   numdigitos = emp->numdigitosempresa();
-   m_list->setNumCols(17);
-   m_list->horizontalHeader()->setLabel(COL_IDPREVCOBRO,tr("COL_IDPREVCOBRO") );
-   m_list->horizontalHeader()->setLabel(COL_FPREVISTAPREVCOBRO,tr("Fecha Prevista") );
-   m_list->horizontalHeader()->setLabel(COL_FCOBROPREVCOBRO,tr("Fecha Efectiva") );
-   m_list->horizontalHeader()->setLabel(COL_FPAGOPREVCOBRO,tr("Forma de Pago") );
-   m_list->horizontalHeader()->setLabel(COL_IDCUENTA,tr("IDCUENTA") );
-   m_list->horizontalHeader()->setLabel(COL_CODIGO,tr("Cuenta Bancaria") );
-   m_list->horizontalHeader()->setLabel(COL_IDASIENTO,tr("COL_IDASIENTO") );
-   m_list->horizontalHeader()->setLabel(COL_ORDENASIENTO, tr("Asiento") );
-   m_list->horizontalHeader()->setLabel(COL_CANTIDADPREVISTAPREVCOBRO,tr("Cantidad Prevista") );
-   m_list->horizontalHeader()->setLabel(COL_CANTIDADPREVCOBRO,tr("Cantidad Efectiva") );
-   m_list->horizontalHeader()->setLabel(COL_IDREGISTROIVA,tr("COL_IDREGISTROIVA") );
-   m_list->horizontalHeader()->setLabel(COL_CODIGOCTAREGISTROIVA, tr("Cuenta Cliente/Proveedor") );
-   m_list->horizontalHeader()->setLabel(COL_TIPOPREVCOBRO,tr("Tipo") );
-   m_list->horizontalHeader()->setLabel(COL_DOCPREVCOBRO,tr("Documento") );   
-   m_list->horizontalHeader()->setLabel(COL_CODIGOCTAREGISTROIVA,tr("COL_CODIGOCTAREGISTROIVA") );   
-   m_list->horizontalHeader()->setLabel(COL_ENTREGISTROIVA,tr("COL_ENTREGISTROIVA") );   
+    conexionbase = emp->bdempresa();
+    empresaactual = emp;
+    numdigitos = emp->numdigitosempresa();
+    m_list->setNumCols(16);
+    m_list->horizontalHeader()->setLabel(COL_IDPREVCOBRO,tr("COL_IDPREVCOBRO") );
+    m_list->horizontalHeader()->setLabel(COL_FPREVISTAPREVCOBRO,tr("Fecha Prevista") );
+    m_list->horizontalHeader()->setLabel(COL_FCOBROPREVCOBRO,tr("Fecha Efectiva") );
+    m_list->horizontalHeader()->setLabel(COL_IDCUENTA,tr("IDCUENTA") );
+    m_list->horizontalHeader()->setLabel(COL_CODIGO,tr("Cuenta Bancaria") );
+    m_list->horizontalHeader()->setLabel(COL_NOMCTA,tr("Nombre Cuenta Bancaria") );
+    m_list->horizontalHeader()->setLabel(COL_IDASIENTO,tr("COL_IDASIENTO") );
+    m_list->horizontalHeader()->setLabel(COL_ORDENASIENTO, tr("Asiento") );
+    m_list->horizontalHeader()->setLabel(COL_CANTIDADPREVISTAPREVCOBRO,tr("Cantidad Prevista") );
+    m_list->horizontalHeader()->setLabel(COL_CANTIDADPREVCOBRO,tr("Cantidad Efectiva") );
+    m_list->horizontalHeader()->setLabel(COL_IDREGISTROIVA,tr("COL_IDREGISTROIVA") );
+    m_list->horizontalHeader()->setLabel(COL_CODIGOCTAREGISTROIVA, tr("Cuenta Cliente/Proveedor") );
+    m_list->horizontalHeader()->setLabel(COL_TIPOPREVCOBRO,tr("Tipo") );
+    m_list->horizontalHeader()->setLabel(COL_DOCPREVCOBRO,tr("Documento") );
+    m_list->horizontalHeader()->setLabel(COL_CODIGOCTAREGISTROIVA,tr("COL_CODIGOCTAREGISTROIVA") );
+    m_list->horizontalHeader()->setLabel(COL_ENTREGISTROIVA,tr("COL_ENTREGISTROIVA") );
 
-   
-      
-   m_list->setColumnWidth(COL_SELECCION,25);
-   
-   m_list->hideColumn(COL_IDPREVCOBRO);
-   m_list->hideColumn(COL_IDCUENTA);
-   m_list->hideColumn(COL_IDASIENTO);
-   m_list->hideColumn(COL_IDREGISTROIVA);
-   inicializa();
+    m_list->setColumnWidth(COL_SELECCION,25);
+    m_list->hideColumn(COL_IDPREVCOBRO);
+    m_list->hideColumn(COL_IDCUENTA);
+    m_list->hideColumn(COL_IDASIENTO);
+    m_list->hideColumn(COL_IDREGISTROIVA);
+    inicializa();
 }// end cobropagoview
 
 
-cobropagoview::~cobropagoview() {
-}
+cobropagoview::~cobropagoview() {}
 
 
 void cobropagoview::inicializa() {
-   QString SQLQuery = "SELECT * FROM prevcobro LEFT JOIN asiento ON prevcobro.idasiento=asiento.idasiento ";
-   SQLQuery += " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta ";
-   SQLQuery += " LEFT JOIN (SELECT idregistroiva, contrapartida, codigo AS ccontrapartida, descripcion AS nomcontrapartida FROM REGISTROIVA LEFT JOIN cuenta ON registroiva.contrapartida = cuenta.idcuenta) AS tt ON tt.idregistroiva = prevcobro.idregistroiva ";
-   conexionbase->begin();
-   cursor2 *cur = conexionbase->cargacursor(SQLQuery, "Masquerys");
-   conexionbase->commit();
-   m_list->setNumRows(cur->numregistros());
-   int i=0;
-   while (! cur->eof()) {
-      m_list->setText(i,COL_IDPREVCOBRO, cur->valor("idprevcobro"));
-      m_list->setText(i,COL_FPREVISTAPREVCOBRO, cur->valor("fprevistaprevcobro"));
-      m_list->setText(i,COL_FCOBROPREVCOBRO, cur->valor("fcobroprevcobro"));
-      m_list->setText(i,COL_IDCUENTA, cur->valor("idcuenta"));
-      m_list->setText(i,COL_CODIGO, cur->valor("codigo"));
-      m_list->setText(i,COL_CODIGOCTAREGISTROIVA, cur->valor("ccontrapartida") );
-      m_list->setText(i,COL_ENTREGISTROIVA, cur->valor("nomcontrapartida") );
-      m_list->setText(i,COL_IDASIENTO, cur->valor("idasiento"));
-      m_list->setText(i,COL_ORDENASIENTO, cur->valor("ordenasiento"));
-      m_list->setText(i,COL_CANTIDADPREVISTAPREVCOBRO, cur->valor("cantidadprevistaprevcobro"));
-      m_list->setText(i,COL_CANTIDADPREVCOBRO, cur->valor("cantidadprevcobro"));
-      m_list->setText(i,COL_IDREGISTROIVA, cur->valor("idregistroiva"));
-      m_list->setText(i,COL_TIPOPREVCOBRO, cur->valor("tipoprevcobro"));
-      m_list->setText(i,COL_DOCPREVCOBRO, cur->valor("docprevcobro"));
-      
-      QCheckTableItem *item = new QCheckTableItem(m_list, "");
-      m_list->setItem(i,COL_SELECCION,item);
-      cur->siguienteregistro();
-      i++;
-   }// end while
-   delete cur;
+    QString SQLQuery = "SELECT * FROM prevcobro ";
+    SQLQuery += " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta ";
+    SQLQuery += " LEFT JOIN asiento ON prevcobro.idasiento=asiento.idasiento ";
+    SQLQuery += " LEFT JOIN (SELECT idregistroiva, contrapartida, codigo AS ccontrapartida, descripcion AS nomcontrapartida FROM REGISTROIVA LEFT JOIN cuenta ON registroiva.contrapartida = cuenta.idcuenta) AS tt ON tt.idregistroiva = prevcobro.idregistroiva ";
+    SQLQuery += " ORDER BY fprevistaprevcobro ";
+    conexionbase->begin();
+    cursor2 *cur = conexionbase->cargacursor(SQLQuery, "Masquerys");
+    conexionbase->commit();
+    m_list->setNumRows(cur->numregistros());
+    int i=0;
+    while (! cur->eof()) {
+        m_list->setText(i,COL_IDPREVCOBRO, cur->valor("idprevcobro"));
+        m_list->setText(i,COL_FPREVISTAPREVCOBRO, cur->valor("fprevistaprevcobro"));
+        m_list->setText(i,COL_FCOBROPREVCOBRO, cur->valor("fcobroprevcobro"));
+        m_list->setText(i,COL_IDCUENTA, cur->valor("idcuenta"));
+        m_list->setText(i,COL_CODIGO, cur->valor("codigo"));
+        m_list->setText(i,COL_NOMCTA, cur->valor("descripcion"));
+        m_list->setText(i,COL_CODIGOCTAREGISTROIVA, cur->valor("ccontrapartida") );
+        m_list->setText(i,COL_ENTREGISTROIVA, cur->valor("nomcontrapartida") );
+        m_list->setText(i,COL_IDASIENTO, cur->valor("idasiento"));
+        m_list->setText(i,COL_ORDENASIENTO, cur->valor("ordenasiento"));
+        m_list->setText(i,COL_CANTIDADPREVISTAPREVCOBRO, cur->valor("cantidadprevistaprevcobro"));
+        m_list->setText(i,COL_CANTIDADPREVCOBRO, cur->valor("cantidadprevcobro"));
+        m_list->setText(i,COL_IDREGISTROIVA, cur->valor("idregistroiva"));
+        m_list->setText(i,COL_TIPOPREVCOBRO, cur->valor("tipoprevcobro"));
+        m_list->setText(i,COL_DOCPREVCOBRO, cur->valor("docprevcobro"));
+
+        if (cur->valor("idasiento") == "") {
+            QCheckTableItem *item = new QCheckTableItem(m_list, "");
+            m_list->setItem(i,COL_SELECCION,item);
+        }// end if
+        cur->siguienteregistro();
+        i++;
+    }// end while
+    delete cur;
 }// end inicializa

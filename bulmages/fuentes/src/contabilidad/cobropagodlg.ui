@@ -8,17 +8,75 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>906</width>
-            <height>730</height>
+            <width>658</width>
+            <height>403</height>
         </rect>
     </property>
     <property name="caption">
-        <string>Aplicar Asiento Inteligente</string>
+        <string>Gestión de Cobros y Pagos</string>
     </property>
     <vbox>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout6</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton4_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image0</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Generar Asiento</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Generar Asiento</string>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton4</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Actualizar</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>471</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
         <widget class="QLayoutWidget">
             <property name="name">
                 <cstring>layout7</cstring>
@@ -53,7 +111,10 @@
                                 <cstring>toolButton1</cstring>
                             </property>
                             <property name="text">
-                                <string>...</string>
+                                <string></string>
+                            </property>
+                            <property name="iconSet">
+                                <iconset>image2</iconset>
                             </property>
                         </widget>
                     </hbox>
@@ -84,7 +145,10 @@
                                 <cstring>toolButton1_2</cstring>
                             </property>
                             <property name="text">
-                                <string>...</string>
+                                <string></string>
+                            </property>
+                            <property name="iconSet">
+                                <iconset>image3</iconset>
                             </property>
                         </widget>
                     </hbox>
@@ -115,7 +179,10 @@
                                 <cstring>toolButton1_3</cstring>
                             </property>
                             <property name="text">
-                                <string>...</string>
+                                <string></string>
+                            </property>
+                            <property name="iconSet">
+                                <iconset>image3</iconset>
                             </property>
                         </widget>
                     </hbox>
@@ -184,5 +251,19 @@
         </widget>
     </vbox>
 </widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="466">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000199494441545885ed56d96dc3300c7d2cba8c4788840ed27495e4ab5da12bb883145246c838ea87459ba6a9c3285affe401441c89c7130fd91462c01eb8934ff11668ef5e095422e04e3e01402d183fb7746aa48a044a4e64600dadd3938d26018b4c0d7b4bf0dc52f06e099a9ae1d7fa0010629d9049804f4a04707e5c477060221945c856399eacc5780b443439b3021301f17b11325cbb6c1bc9de67544b102b86eea56659b7953033f09f28f6806c387d9a94d669b59a53962e0188379b40b507583cea759490fa524ad864408fd17b5fdca2fe55f9d563b9ba88bcf3db6ce6858f6c76c9ffad12583ada1f2912730936c1531695420e92d222729d9f798c3583847596cb6368d4ed9226e76fe7f3666fc038efd77c68748fe155fcdeeff759acfd2bfa316720c44064f4001f82afd800e07318368e02a67dd6f3d9b6d503ab123009b996db607317c8d30f8290d4635b1d6345c87a1deb51b4707e5dfa60fc1a5bea6670a0d284cdf917417bee8a525f1cfe2e389c40b1047b46e937287e1396eeee3de8f1717809767d15ff050ecfc083c083c0e1047e0057c0cd65028b1b260000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="1403">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000542494441545885a5964f881bc915c67f15da500d1de88609a8610211ecc236d8e0163387b671c0437470c35e043e842139f8bab925a7fcd9cbdc762087b0e4147c4820b7780f094ac0463a0c48060f92c1c3b4c186168ca0fb30a0820c74c10a2a87966469a635233befd20d55afbeef7defd57b258c317cacd9cdfacc49c314501a9068ad91488a24139b9e657d3cb0a6f5e53e7b8f1e123a757ce9d1ce07b4f32e9d6c80ff2f8d10c20018636e24223651c06efa0624ad2f637efdf3aff0ad19e8799f5e3e440d33e405e80b0d6705a061acd16f153711b9918068faa6f5a845fc608ff88b3d3aaa474f8f189d9cd21b0ed1230559817e31bae22bbf70d153e0bd5a4be2da14d84ddfb49a317bd1bd19f890f6a84f2f4d50c7293ac9d02ff205d7cbfefaad2aa3fbcc450861aa48dc500392f861bc88fc57477fc6c7451da7a82483125c00542929842801df2bc34f642589b504ec66ddc4cd7825721f97c938432f815f97c2f99a104230d2951baf5140d36ac6e8a9a6a713da6743e4b8408df2b9ec1b15f09cc85c8dcb2afca0cac16ed64d1cc5d46b3e039d90e719fe2d173556f0ae58896e5333c6cc7d56525049000007ea8e4f470d18e409d9f70aa99957fbc68da68ac8060434d292300575aed068e42d60aa2b0ff97fcc12773c232d8996202568405a123d85544fd03350fddf021c09801df9060740a22f34f2028a37abedb71136ccf0f5f0c66e6871a2e0b6cbb77ffa0be17640ddf161aac9f484f6b8cf40a76800cbe6ab8731fe2f7e47b41de03b3ecf4edafce6ebdfa35f8e560e6dec368cbfed8305f62ddb14df17eb3be1ec6bf8590df771c0dee70d6adb759816e4e78a4e3e445aa08b82567d0f7fcb6782e6efcfff81fe2e5dd4c43c2d8db061fc9acf93274f78fad7a764e38ceb94b01657e4456e34924ea0e0ae4b3d6c905da4253810feb84eeaa43ceb76d0270a92c955f0dd86f1b77c0ebe3e60f8664878274422af55c2820ff754bf18198dc605523da01e05a4a311a15bc3dff2681f0dd0af737857ac801745c1fd7bf78d5ff339fce321dde75d7ac73da425891e44e8230db7aff68005816512732524905a096150079712fc445d0107b8ffd319f83787f4bb7d7a2f7b645986edd800b41eb578f6ef67954aac74c22a2586d3142c2a235fcef9e1378774bbdd12fc2c231da7d8d28629f48e7bc48f62daff6c5f51e24a2bae52424335f8acda0f7e7b40ffa84fef7809dcb22974413a2a03181c0f88a288feab3e581f4854ce82cb4a48e4fa6affe513faaf4ad9d544613b36fe968fba50d8968d7424d9382b9f6e401004e5ffdd92c4b50365363fe61b56f6ce9f5d97ede00f0728a5e8bdeaa1ce15e16e48efa8479ee78ba6b66cd7be0796a7d865a255f7dab66de36d79e8a9463a92e2bc28112cd0535de9b37e182d91d8b4f707b7036a7e0de9486cca029ccf1469c94a9f1502f307cca7981062d17498c2444ff0b7fd7271a6c08d0400f3a924a29dc8845188e778a87385ca15c1e701f959ce68345adb8a5708cc361921c4c6448410dcdbbd67823060fff13ec9bb84344d716b2e9eeb71faf6f45affea1a284bd30821d6a665be16ed44c6dbf216e0a727a70c4e06844148e77987d1787df41fa096cc182396ae9899815d3920bc1b1a6949c2dd90fdc7fba46729c9eb84f6f3367133465da8b5795f09645d850b214cb813222d49ff65bf04dd29a79b4613ed46c4cd186fcb237997909c2474ba1de2664c3a4e190e87246f931b1f243735220310ed44047702ea9fd5f11c0fd775913f94a889a2fd9f36c99b84e84184e77ab4bf6b93bc4f166a7eb2025544c29d10d771f17ee4955fd7a3d005b66333c9273cfddbd38d813f8ac06522ebec6380e7f63ffec122fba18b3ac30000000049454e44ae426082</data>
+    </image>
+    <image name="image2">
+        <data format="PNG" length="398">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000155494441545885ed57bb6ec420101c1005ff83e4c2fe7e282cedff505822450c227879e4e2c391926dd0dc8ac7ec0e634ed04ec0014001fef0d04a4fc5d21ffe4b723656f1c77832ad34cc6202009023c1e5efc4923b598a099590ecc9ce7827f388790d9c31430382764a3def0539122d758fae0300b493481a188e1eb36f449c2f381f884cacb3e2191f3863860624a7ce146f54ffaff10156037fea5bc06a602666353013ab3b99e54e483b8991bcf287c7b66ea19c948fbd7c5c3ccf73983b9cd44ac33a2b00c02c2694ccf2cd5b95287d23c7adca08eb6c95e90873ae52b98dd7368fe3c507f24572e6afdcf316f3aa0fc476e4935e51778b79d307f20a709ab8e336547dc0ac26f59c13e64f989bc504b39a50ae9734906fce69a2d6c3919eb7aea82c99d734d1ab44b3e7b8be3722fe74c2ce3db7ce8a6ddd42d7072a3d4ff38b2b7af1812746fe7fc144fcff1e78fc3df001f03fcec5923b8ec90000000049454e44ae426082</data>
+    </image>
+    <image name="image3">
+        <data format="PNG" length="313">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000100494441545885dd97418e83300c459f2b2f7ca6e12c73bede0529f7f12212b3608094b6014a43107f133902e47cbebf63096d80082878744cedd0583d3acd4fd35101a10da2a6d647bf1313448724d322f1bd8108378fde27f0b05af9983e9989817bb39bd2ad183500d075c7ca404430356e2303351099187882c8ebfd3953ef9e5b7a0f40a9cb80474faaa0024c2da9823952ca7234e7c4bbf47b1e7ca0060ed3c01b96ca6a6045759cc207ca30909e3e27d2ebfbc0427f29a381b5d60c57f481b5e2fbc7297a41992a587bb9f9aa06b6886fc0757c60a3f8065ca4177c787a603617e490fbf08eebfc297c6064403e29a3bd18e682d0061946e7235714fe007f8af3646898efd40000000049454e44ae426082</data>
+    </image>
+</images>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

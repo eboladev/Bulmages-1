@@ -22,6 +22,7 @@
       <group pattern="*.png" name="Icons" />
       <group pattern="*" name="Others" />
       <hidenonprojectfiles>false</hidenonprojectfiles>
+      <hidenonlocation>false</hidenonlocation>
     </groups>
     <tree>
       <hidepatterns>*.o,*.lo,CVS</hidepatterns>
@@ -75,7 +76,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir></activedir>
+      <activedir>src</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
@@ -140,4 +141,28 @@
     <recursivewhencommitremove>true</recursivewhencommitremove>
     <revertoptions>-C</revertoptions>
   </kdevcvsservice>
+  <dist>
+    <custom>false</custom>
+    <bzip>false</bzip>
+    <archname></archname>
+    <appname>bulmages.kdevelop</appname>
+    <version>0.4.3</version>
+    <release></release>
+    <vendor></vendor>
+    <licence></licence>
+    <summary></summary>
+    <group></group>
+    <packager></packager>
+    <description></description>
+    <changelog></changelog>
+    <devpackage>false</devpackage>
+    <docspackage>false</docspackage>
+    <appicon>false</appicon>
+    <arch>0</arch>
+    <genHTML>false</genHTML>
+    <useRPM>false</useRPM>
+    <ftpkde>false</ftpkde>
+    <appskde>false</appskde>
+    <url></url>
+  </dist>
 </kdevelop>
