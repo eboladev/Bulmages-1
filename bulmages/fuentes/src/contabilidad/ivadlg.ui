@@ -930,7 +930,7 @@
 <customwidgets>
     <customwidget>
         <class>QTable1</class>
-        <header location="local">/home/tborras/bulmages/fuentes/src/contabilidad/qtable1.h</header>
+        <header location="local">qtable1.h</header>
         <sizehint>
             <width>-1</width>
             <height>-1</height>
