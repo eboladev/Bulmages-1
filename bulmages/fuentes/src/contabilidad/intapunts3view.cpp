@@ -469,9 +469,7 @@ void intapunts3view::repinta(int numasiento) {
                 tapunts->setText(i,COL_IDCONTRAPARTIDA,cursorcontrapartida->valor("idcuenta"));
             }// end if
             delete cursorcontrapartida;
-        }
-
-
+        }// end if
         // Pasamos al siguiente registro del asiento.
         cursorasiento->siguienteregistro();
         i++;
@@ -1788,10 +1786,9 @@ void intapunts3view::asiento_apertura() {
      DBconnEjActual->commit();
      cargarcursor(numasiento);
      muestraasiento(numasiento);
-  }      
-  else {
+  } else {
        QMessageBox::information( this, tr("Asiento de Apertura"), tr("No se ha podido encontrar el ejercicio anterior.\n\r El Asiento de Apertura tendrá que ser entrado manualmente."), QMessageBox::Ok);
-  }
+  }// end if
   
   delete cur;
   delete DBconnEjActual;
