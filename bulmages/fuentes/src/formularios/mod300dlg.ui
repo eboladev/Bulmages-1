@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>536</width>
-            <height>372</height>
+            <width>407</width>
+            <height>288</height>
         </rect>
     </property>
     <property name="caption">
@@ -24,21 +24,185 @@
     <property name="acceptDrops">
         <bool>false</bool>
     </property>
-    <widget class="QLabel">
+    <widget class="QPushButton">
         <property name="name">
-            <cstring>textLabel1</cstring>
+            <cstring>boton_vista_previa</cstring>
         </property>
         <property name="geometry">
             <rect>
-                <x>40</x>
-                <y>20</y>
-                <width>351</width>
-                <height>71</height>
+                <x>310</x>
+                <y>240</y>
+                <width>80</width>
+                <height>31</height>
             </rect>
         </property>
         <property name="text">
-            <string>Modelo 300. Declaración del IVA trimestral</string>
+            <string>Vista Previa</string>
         </property>
+    </widget>
+    <widget class="QButtonGroup">
+        <property name="name">
+            <cstring>buttonGroup1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>70</y>
+                <width>380</width>
+                <height>100</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Cuenta a devolver</string>
+        </property>
+        <widget class="QComboBox">
+            <property name="name">
+                <cstring>combocuentas</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>160</x>
+                    <y>30</y>
+                    <width>210</width>
+                    <height>21</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>personalButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>70</y>
+                    <width>151</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Personalizada</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>cuentaButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>30</y>
+                    <width>141</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>En el banco</string>
+            </property>
+            <property name="checked">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>banco</cstring>
+            </property>
+            <property name="enabled">
+                <bool>false</bool>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>162</x>
+                    <y>70</y>
+                    <width>43</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>1234</string>
+            </property>
+            <property name="frame">
+                <bool>true</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>entidad</cstring>
+            </property>
+            <property name="enabled">
+                <bool>false</bool>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>211</x>
+                    <y>70</y>
+                    <width>43</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>1234</string>
+            </property>
+            <property name="frame">
+                <bool>true</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>dc</cstring>
+            </property>
+            <property name="enabled">
+                <bool>false</bool>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>260</x>
+                    <y>70</y>
+                    <width>30</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>12</string>
+            </property>
+            <property name="frame">
+                <bool>true</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>cuenta</cstring>
+            </property>
+            <property name="enabled">
+                <bool>false</bool>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>296</x>
+                    <y>70</y>
+                    <width>76</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>123456789</string>
+            </property>
+            <property name="frame">
+                <bool>true</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+        </widget>
     </widget>
     <widget class="QComboBox">
         <item>
@@ -66,8 +230,8 @@
         </property>
         <property name="geometry">
             <rect>
-                <x>50</x>
-                <y>170</y>
+                <x>160</x>
+                <y>20</y>
                 <width>90</width>
                 <height>21</height>
             </rect>
@@ -76,20 +240,20 @@
             <string>Seleccione periodo de declaración</string>
         </property>
     </widget>
-    <widget class="QPushButton">
+    <widget class="QLabel">
         <property name="name">
-            <cstring>boton_vista_previa</cstring>
+            <cstring>textLabel1</cstring>
         </property>
         <property name="geometry">
             <rect>
-                <x>441</x>
-                <y>330</y>
-                <width>80</width>
-                <height>31</height>
+                <x>30</x>
+                <y>20</y>
+                <width>120</width>
+                <height>20</height>
             </rect>
         </property>
         <property name="text">
-            <string>Vista Previa</string>
+            <string>Periodo a declarar</string>
         </property>
     </widget>
     <widget class="QPushButton">
@@ -98,8 +262,8 @@
         </property>
         <property name="geometry">
             <rect>
-                <x>340</x>
-                <y>330</y>
+                <x>209</x>
+                <y>240</y>
                 <width>80</width>
                 <height>31</height>
             </rect>
@@ -111,7 +275,7 @@
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="952">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000037f49444154789c8d94b16f5c4510c67f67bd624e72b12b51bcd7d91d17d1384e81122830554ea98e342495ed5449f80f928e8e96125aaae03451e88c14c9170a8e4382c445a4bc2b5076252c768a93de144f5a8a77bed8f82cb1cdbcd16abff7cdf7cd4c8f4bced1e151368ccd72130c1068ace92e0d0c434dc1c089637b67bb77f67d7119b061ec7cbc43d28488a0a69452626678e74996f0e2a9634dfa2b5d78df5b8109c0643cc98280b004c3a0a1c1cc1091257380edebe719af5d061c3460ad1135420b75ac0927e15cae73a58e35b417dfaf64fc6afc2a478d38e70038cb7ca113c8e2d38c1b3b372ee0ac646cad7540f3cea0b3ccd5148a4e021121d9457de112f3b45504c1adbba5fb4edcb203965518f4e9af045ec9b874258661ed02b4704ba66aba646eadd1d0ac045ea9f1b38367f9ca8757283f283b594e353d130d4310c6bf8fb1c6f0bee2f3e17badcf49317931c9d33753a63f4f414044081aa85c4588e7e3a9c6b37ac6f89731e1efc0fdafeee7e1cd21b786b77acb3f4cc693fc723a851323cc13ae10b45dc8f09f68055445452a143d491cbe3cc44e8c300f5cffe82aa3dd51c778f26292a7c753eedc1c61d219a31a11712453fc694448661ccb6b0eec07860ca9a68ef11f10660101c6bf8e09f3d431fdeefb2739ff93ffd77997dfe5411e64c992077990dfbe7e9bbf79fc6ddebab695cb72233be7f246b991d7eaba667fef0bf02bcdbd700461c4670c183062c4e66093fddd3d869f0e0150d5ce3ce97bc271ea665e0d9c7443b5d805e2404c306179ff40bf6624359556d4126834b1b93180c5641a50ccea637c218436e19b3e8184338f4ac299a0180e8f4ac059851270541889da02918898f0db9fe3c53aea3a72cd158ed482174fb084eb7b8c846b054591423012d23a2201291c9104ada044cae2d4e0f75a1ac69a160ac90821e010620a08426c15a16b314cd036e2cca1f38833ba9c92388ff4e976c6622f71f5da75d65cebbab20bc1305ceb88445ceb505b4489b8b64489b8a25c54e28836430a4743c2bb0a03cab2646fef0e85164a331302094f45921a6f1535c778a9a86d8647a86586c711997595d0310e6dc45351eb181178f4f811b747b77bbda3c3a37cf0f4801f7f7a8ecd1baa754f6a8d7e01b474135718729aaf57689b96b9141e9d075817f677eff2f0c1c3deb925f4e4e0493e78fa9cf0a65e1ad0758fbd3765d14e8d812df6b0a9b1f5c91677bfbccbbdfd7b4bbc7f0126f8383640f04bfd0000000049454e44ae426082</data>
+        <data format="PNG" length="1027">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000003ca49444154789c8d94bf6b1c4714c73f125bccc11a76e1023390420b4971588d2c57ca0f888b400ea751dcc4aa2c3b8de5fc07f65f909429e3d64d6ca7314a65191cb80b762417f1792102cd418466c087767116f6611626c59e2f567c82bce6f106e63b9ff77d33b3c029b1fb7837944d49effd1e54400c4555d0893a50411dd5f8caa31a4512259cbd7076e134ad13f170e76108af43383e3a0ee1550847474721bc9ad6af43383e6ef3c1c141180d46e1bffb4f3d65f464143a4d67466aba062a904828aa82344e67e4d208ab6bab27b4164f13b6134b4d8d9d58148afc30c7956e56bf387c412105f9618e42bdb37f2ef1c1e020b8caa162858a146f93ab48cd3c9746a081d54f57dfd1994b5c5323918080affc09725f7950503625699ce22a37b7e368dea2174f1225a4518a8a5a311d6ba840c71a6984244aa082344ae70acf25ceba19655352d35e29adf48cd4577e465e535334c55ce1b91e3fb8ff209c5b3e87490c35f5ccd3b7b344826a14c3e7438abf0bcc7b191f7dfeafd727ac180d4661980fc91fe5a0606d790d3bb164dd0c7b7832974d898e35f97ecee0b701eea5e3fab7d743ff8b3e17fb171766278c9e8cc2a3a7435409b6741895e2c46194792717d4642ac3e191b266fbd76d9880ad2c1796d7e85fe9b7c4a3c1280cff18b2f9e565ca4848a2143fb124b1c6551ef3264709ae2ab1b1e54e759bf5681d792aa86760c71605ecfcbe83ad5c4bfae3edbb21bc0aff2b8ec371e8855e5041855ee885a33f8fc277b77e082be75782d64b214992b0a497c262be9f7375f32b383377b873e3329fd1a3c73aeb980f0d5bdf6cd1ffa40f405996edf0d23386229f3e88894057a11a206e5f98ea42a7ea50c7c0a4467553b626dfb31e5bccc4e0e28262e2e87db002721b0001a27cff1949a4b0e230758ab50e2306a71c46521c050683531623190e8b21a3c061c533c69248c2e0f90e32ed48018b5a699c80894d2b7ec650e030a4381c894a297024182c9644192c0e458ac7b2a4344e3c263633ab0461d1e3e91482fdcb6248b12f2d2929565a312f0e25295e2c5a0cbeb468516d4dc6b81c9392e02a37fbe3ce9d5f6351a3dbb6554a41819e9269cc74b3c1ab56c463d12ac3e34994662c3989d26d87dd0c01b4d66c6e5e6e89dd58d81bef211ef2720fe51372bf879284dce728afc8cb1c2509e369f6e518cd526b03196e62510a6edebac9a5f54b0b0bbb8f77c39d9fee70ef976da4aac962836b4a3a11d0808e343e2a51d3dac419ae71b33a8d0caeb2102bae5ed9e0c6d68d85139fd0ddfb77c3fd9fb771fb763600913797673a9476815a40a4fdd5a414563e5e61e3eb0dae5dbd36d3fb078e6057fa20e542de0000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -127,6 +291,15 @@
         <receiver>mod300dlg</receiver>
         <slot>close()</slot>
     </connection>
+    <connection>
+        <sender>personalButton</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>mod300dlg</receiver>
+        <slot>personalButtonPressed()</slot>
+    </connection>
 </connections>
+<slots>
+    <slot>personalButtonPressed()</slot>
+</slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
