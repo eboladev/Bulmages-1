@@ -324,9 +324,12 @@ void ClientDelivNote::s_searchClient() {
    while(!clients->isHidden()) theApp->processEvents();
    this->setEnabled(true);
    
-   m_idclient = clients->idclient();
-   m_cifclient->setText(clients->cifclient());
-   m_nomclient->setText(clients->nomclient());
+	if (clients->cifclient() !="" && clients->cifclient() !=NULL) {
+   	m_idclient = clients->idclient();
+		qDebug("Identificador de cliente = %s",m_idclient.ascii());
+   	m_cifclient->setText(clients->cifclient());
+   	m_nomclient->setText(clients->nomclient());
+	}
    delete clients;
 }// end searchClient
 
