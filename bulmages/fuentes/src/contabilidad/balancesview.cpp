@@ -96,6 +96,10 @@ void balancesview::borrar() {
    QString idbalance = listado->text(listado->currentRow(), COL_CODIGO);
    QString query;
    conexionbase->begin();
+   query.sprintf("DELETE FROM compmasap WHERE idmpatrimonial IN (SELECT idmpatrimonial FROM mpatrimonial WHERE idbalance = %s)",idbalance.ascii());
+   conexionbase->ejecuta(query.ascii());
+   query.sprintf("DELETE FROM mpatrimonial WHERE idbalance = %s",idbalance.ascii());
+   conexionbase->ejecuta(query);   
    query.sprintf("DELETE FROM compbalance WHERE idbalance=%s", idbalance.ascii());
    conexionbase->ejecuta(query.ascii());
    query.sprintf("DELETE FROM balance WHERE idbalance=%s",idbalance.ascii());

@@ -170,7 +170,7 @@ bool importbalance::endElement2( const QString& , const QString& , const QString
 // Como la inserción está hecha, podemos hacer los updates sin miedo a que no exista el registro.
     if (qName == "compmasap") {
          // Actualizamos el idmasapatrimonial del compmasap, que es el que más dolores de cabeza causa.
-         if (tvalores["idmpatrimonial"] != "") {
+         if (tvalores["idmpatrimonial"] != "" && tvalores["codigo"] == "") {
             SQLQuery.sprintf("UPDATE compmasap SET idmpatrimonial=%s WHERE idcompmasap=%s\n", identmasasp[tvalores["idmpatrimonial"]].ascii(), tvalores["idcompmasap"].ascii());
             conexionbase->begin();
             conexionbase->ejecuta(SQLQuery);
