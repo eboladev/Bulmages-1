@@ -436,31 +436,35 @@ FORMS += contabilidad/estadisticasdlg.ui \
 
 }	
 	
+
 # LAS GDCHART
-exists (gdcchart) {
-INCLUDEPATH +=  ../src/gdcchart/gdcchart
+# Si queremos compilar con GDCHART debemos descomentar este trozo.
+
+#exists (gdcchart) {
+#INCLUDEPATH +=  ../src/gdcchart/gdcchart
 	     
-HEADERS += gdcchart/gdc.h \
-		gdcchart/gdchart.h \
-		gdcchart/gdcpie.h 
+#HEADERS += gdcchart/gdc.h \
+#		gdcchart/gdchart.h \
+#		gdcchart/gdcpie.h 
 
-LIBS += ../src/gdcchart/libgdcchart.lib.a \
-	../src/gdcchart/gd1.3/libgd.lib.a
+#LIBS += ../src/gdcchart/libgdcchart.lib.a \
+#	../src/gdcchart/gd1.3/libgd.lib.a
 	
 
-IDLS += contabilidad/estadisticasdlg1.ui \
-	contabilidad/resmensualdlg1.ui
+#IDLS += contabilidad/estadisticasdlg1.ui \
+#	contabilidad/resmensualdlg1.ui
 	
-FORMS += contabilidad/estadisticasdlg1.ui \
-         contabilidad/resmensualdlg1.ui
+#FORMS += contabilidad/estadisticasdlg1.ui \
+#         contabilidad/resmensualdlg1.ui
 
-contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui 
-contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target 
-contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui 
-contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target 
+#contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui 
+#contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target 
+#contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui 
+#contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target 
 
-DEFINES += GDCHART
-}
+#DEFINES += GDCHART
+#}
+
 
 unix{
   UI_DIR = .ui

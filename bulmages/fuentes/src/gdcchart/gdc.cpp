@@ -7,10 +7,6 @@
 #include <string.h>
 
 
-//char				GDC_generate_gif	DEFAULTO( TRUE );
-//GDC_HOLD_IMAGE_T	GDC_hold_img		DEFAULTO( GDC_DESTROY_IMAGE );
-//void				*GDC_image			DEFAULTO( (void*)NULL );	/* in/out */
-
 
 struct	GDC_FONT_T	GDC_fontc[GDC_numfonts] = { {(gdFontPtr)NULL, 8,  5},
 	{(gdFontPtr)NULL, 8,  5},

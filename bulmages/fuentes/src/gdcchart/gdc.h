@@ -93,17 +93,25 @@ short	cnt_nl( char*, int* );
 extern struct	GDC_FONT_T	GDC_fontc[];
 #else
 #define EXTERND extern
-#define DEFAULTO(val) = val
+#define DEFAULTO(val)
 #endif
 
 /**** COMMON OPTIONS ********************************/
 #ifndef _GDC_COMMON_OPTIONS
 #define _GDC_COMMON_OPTIONS
+
 #define EXTERND extern
+/*
 EXTERND char				GDC_generate_gif	DEFAULTO( TRUE );
 EXTERND GDC_HOLD_IMAGE_T	GDC_hold_img		DEFAULTO( GDC_DESTROY_IMAGE );
-EXTERND void				*GDC_image			DEFAULTO( (void*)NULL );	/* in/out */
+EXTERND void				*GDC_image			DEFAULTO( (void*)NULL );	
+*/
+
+extern char GDC_generate_gif;
+extern GDC_HOLD_IMAGE_T  GDC_hold_img;
+extern void *GDC_image;
 #endif
+
 /****************************************************/
 
 

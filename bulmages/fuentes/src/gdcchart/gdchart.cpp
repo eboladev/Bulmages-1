@@ -29,8 +29,7 @@
 										gdp[1].x = gdp[2].x = x2,	\
 										gdp[2].y = gdp[3].y = y2
                                                                                 
- 
-                                                                                
+                                                                                 
 #define EXTERND                                                                                                                                                            
 EXTERND char				*GDC_ytitle;
 EXTERND char				*GDC_xtitle;
@@ -101,19 +100,6 @@ EXTERND int					GDC_hard_xorig		DEFAULTO( 0 );				/* in/out */
 EXTERND int					GDC_hard_graphwidth	DEFAULTO( 0 );				/* in/out */
 EXTERND int					GDC_hard_yorig		DEFAULTO( 0 );				/* in/out */
 EXTERND int					GDC_hard_grapheight	DEFAULTO( 0 );				/* in/out */
-
-/**** COMMON OPTIONS ********************************/
-/* NOTE:  common options copy here for reference only! */
-/*        they live in gdc.h                           */
-#ifndef _GDC_COMMON_OPTIONS
-#define _GDC_COMMON_OPTIONS
-#define EXTERND extern
-EXTERND char				GDC_generate_gif	DEFAULTO( TRUE );
-
-EXTERND GDC_HOLD_IMAGE_T	GDC_hold_img		DEFAULTO( GDC_DESTROY_IMAGE );
-EXTERND void				*GDC_image			DEFAULTO( (void*)NULL );	/* in/out */
-#endif
-                                                                                
 
 #ifdef THUMB_VALS
 // -------------------------------------------------------------------

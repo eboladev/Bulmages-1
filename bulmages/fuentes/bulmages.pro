@@ -4,9 +4,14 @@
 # Target is a subdirs project 
 
 
-exists(src/gdcchart) {
-    SUBDIRS += src/gdcchart
-}
+# Si queremos compilar con gdchart debemos descomentar estas lineas
+# y comentar las del directorio de estadisticas.
+# O borrar el directorio gdcchart
+
+#exists(src/gdcchart) {
+#    SUBDIRS += src/gdcchart
+#}
+
 exists(src/estadisticas) {
     SUBDIRS += src/estadisticas
 }

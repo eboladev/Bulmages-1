@@ -32,8 +32,10 @@ typedef enum {
 #endif
 #define EXTERND	extern
 
-EXTERND unsigned long		GDCPIE_BGColor			DEFAULTO( 0x000000L );	/* black */
-EXTERND unsigned long		GDCPIE_PlotColor		DEFAULTO( 0xC0C0C0L );	/* gray */
+//
+
+EXTERND unsigned long		GDCPIE_BGColor			DEFAULTO( 0x000000L );	
+EXTERND unsigned long		GDCPIE_PlotColor		DEFAULTO( 0xC0C0C0L );
 EXTERND unsigned long		GDCPIE_LineColor		DEFAULTO( GDC_DFLTCOLOR );
 EXTERND unsigned long		GDCPIE_EdgeColor		DEFAULTO( GDC_NOCOLOR ); /* edging on/off */
 
@@ -58,10 +60,11 @@ EXTERND GDCPIE_PCT_TYPE		GDCPIE_percent_labels	DEFAULTO( GDCPIE_PCT_NONE );
 #ifndef _GDC_COMMON_OPTIONS
 #define _GDC_COMMON_OPTIONS
 #define EXTERND extern
+/*
 EXTERND char				GDC_generate_gif	DEFAULTO( TRUE );
-
 EXTERND GDC_HOLD_IMAGE_T	GDC_hold_img		DEFAULTO( GDC_DESTROY_IMAGE );
-EXTERND void				*GDC_image			DEFAULTO( (void*)NULL );	/* in/out */
+EXTERND void				*GDC_image			DEFAULTO( (void*)NULL );
+*/
 #endif
 /**************************************************/
 
