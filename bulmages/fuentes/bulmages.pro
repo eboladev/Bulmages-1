@@ -3,11 +3,6 @@
 # Subdir relative project main directory: .
 # Target is a subdirs project 
 
-
-# Si queremos compilar con gdchart debemos descomentar estas lineas
-# y comentar las del directorio de estadisticas.
-# O borrar el directorio gdcchart
-
 exists(src/gdcchart) {
     SUBDIRS += src/gdcchart
 }
