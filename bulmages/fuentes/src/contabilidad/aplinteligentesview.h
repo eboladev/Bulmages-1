@@ -90,6 +90,8 @@ public:
   void inicializavariablesapunte(int);
   void cifcuenta(int);
   void selectfirst();
+  void muestraplantilla(int);
+  void setvalores(QString, QString);
   
 public slots:
   virtual void boton_crear();

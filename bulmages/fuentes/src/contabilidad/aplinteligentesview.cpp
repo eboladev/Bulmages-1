@@ -203,12 +203,25 @@ void aplinteligentesview::boton_buscacuenta() {
 }// end if
 
 
+// Esta función se llama a través del array de asientos inteligentes.
+// El valor que se pasa es un valor numérico del combo-box
+// Seguro que la función que interesa es muestraplantilla.
 void aplinteligentesview::cambiada_plantilla(int num) {
     fprintf(stderr,"idasientointeligente %d\n",listasientos[num]);
     idainteligente = listasientos[num];
     mostrarplantilla();
 }// end cambiada_plantilla
 
+// Esta función muestra la plantilla correspondiente con el idainteligente.
+// También pone el combo box en la posición adecuada.
+// Si la plantilla no existe el resultado es indefinido.
+void aplinteligentesview::muestraplantilla(int numplantilla) {
+   int i;
+   for (i=0; numplantilla != listasientos[i] && i<100;i++);
+   comboainteligentes->setCurrentItem(i);
+   idainteligente = numplantilla;
+   mostrarplantilla();
+}// end muestraplantilla
 
 void aplinteligentesview::boton_crear() {
     // Se está insertando sobre un asiento abierto, con lo que debemos
@@ -350,6 +363,37 @@ void aplinteligentesview::mostrarplantilla() {
 }// end mostrarplantilla
 
 
+// Esta función permite establecer los valores de las variables.
+// Siempre y cuando estas variables existan.
+// De esta forma podemos establecer valores por defecto de determinados asientos de obligada
+// existencia. Como los de Amortizaciones.
+void aplinteligentesview::setvalores(QString var, QString val) {
+   int i;
+    for (i=0;i<indvariablescta;i++) {
+        if (variablescta[i][0] == var) {
+           varcta[i]->setText(val);
+        }// end if
+    }// end for
+    for (i=0;i<indvariablesfecha;i++) {
+        if (variablesfecha[i][0] == var) {
+           varfecha[i]->setText(val);
+        }// end if
+    }// end for
+
+    for (i=0;i<indvariablesnumero;i++) {
+        if (variablesnumero[i][0] == var) {
+           varnumero[i]->setText(val);
+        }// end if
+    }// end for
+
+    for (i=0;i<indvariablestexto;i++) {
+        if (variablestexto[i][0] == var) {
+           vartexto[i]->setText(val);
+        }// end if
+    }// end for
+
+
+}// end setvalores
 
 /***************************************************************
  * Esta función recoge los valores de los cuadros de texto y   *
