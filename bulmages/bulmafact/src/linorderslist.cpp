@@ -80,6 +80,14 @@ void linorderslist::chargeorder(QString idpedido_) {
 			idproveedor = cur->valor("idproveedor");
 			iddivision = cur->valor("iddivision");
 			idalmacen = cur->valor("idalmacen");
+			
+			companyact->begin();
+   		cursor2 * cur2= companyact->cargacursor("SELECT * FROM proveedor WHERE idproveedor="+idproveedor,"unquery");
+   		companyact->commit();
+			if (!cur->eof()) {
+	  	 		m_cifprovider->setText(cur2->valor("cifproveedor"));
+				m_nomproveedor->setText(cur2->valor("nomproveedor"));
+			}
    	}
    	delete cur;
    
@@ -117,6 +125,8 @@ void linorderslist::chargelinorders(QString idpedido) {
    m_list->setColumnWidth(COL_IDPEDIDO,100);
    m_list->setColumnWidth(COL_IDALB_PRO,100);
    m_list->setColumnWidth(COL_IDARTICULO,100);
+	
+	m_list->hideColumn(COL_NUMLPEDIDO);
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
@@ -130,13 +140,13 @@ void linorderslist::chargelinorders(QString idpedido) {
        int i=0;
        while (!cur->eof()) {
          m_list->setText(i,COL_NUMLPEDIDO,cur->valor("numlpedido"));
-	 m_list->setText(i,COL_DESCLPEDIDO,cur->valor("desclpedido"));
+	 		m_list->setText(i,COL_DESCLPEDIDO,cur->valor("desclpedido"));
          m_list->setText(i,COL_CANTLPEDIDO,cur->valor("cantlpedido"));
          m_list->setText(i,COL_PVDLPEDIDO,cur->valor("pvdlpedido"));
-	 m_list->setText(i,COL_PREVLPEDIDO,cur->valor("prevlpedido"));
+	 		m_list->setText(i,COL_PREVLPEDIDO,cur->valor("prevlpedido"));
          m_list->setText(i,COL_IDPEDIDO,cur->valor("idpedido"));
-	 m_list->setText(i,COL_IDALB_PRO,cur->valor("idalb_pro"));
-	 m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
+	 		m_list->setText(i,COL_IDALB_PRO,cur->valor("idalb_pro"));
+			m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
          i++;
          cur->siguienteregistro();
        }// end while
