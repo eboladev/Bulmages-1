@@ -63,6 +63,9 @@ CREATE TABLE proveedor (
 
 #include "providerslist.h"
 #include <qtable.h>
+#include <qlineedit.h>
+#include <qmessagebox.h>
+
 #include "company.h"
 #include "provedit.h"
 
@@ -141,10 +144,8 @@ void providerslist::inicializa() {
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).ascii());   
-    m_list->setReadOnly(TRUE);        
-    companyact->begin();
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor","unquery12");
-    companyact->commit();
+    m_list->setReadOnly(TRUE);
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%"+m_findProvider->text()+"%'");
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {
@@ -157,7 +158,7 @@ void providerslist::inicializa() {
          m_list->setText(i,COL_COMENTPROVEEDOR,cur->valor("comentproveedor"));
          m_list->setText(i,COL_DIRPROVEEDOR,cur->valor("dirproveedor"));
          m_list->setText(i,COL_POBLPROVEEDOR,cur->valor("poblproveedor"));
-			m_list->setText(i,COL_CPPROVEEDOR,cur->valor("cpproveedor"));
+	 m_list->setText(i,COL_CPPROVEEDOR,cur->valor("cpproveedor"));
          m_list->setText(i,COL_TELPROVEEDOR,cur->valor("telproveedor"));
          m_list->setText(i,COL_FAXPROVEEDOR,cur->valor("faxproveedor"));
          m_list->setText(i,COL_EMAILPROVEEDOR,cur->valor("emailproveedor"));
@@ -206,11 +207,53 @@ void providerslist::newprovider() {
    prov->show();
 }// end boton_crear
 
-/*
-void providerslist::boton_editar() {}
-void providerslist::boton_duplicar() {}
-void providerslist::boton_borrar() {}
-void providerslist::boton_imprimir() {}
-void providerslist::boton_filtrar() {}
-*/
+
+void providerslist::s_findProvider() {
+	inicializa();
+}// end s_findProvider
+
+
+void providerslist::s_editProvider() {
+	QPoint a;
+	doubleclicked(m_list->currentRow(), 0,0, a);
+}// end s_editProvider
+
+void providerslist::s_removeProvider() {
+	fprintf(stderr, "removeOrder button activated");
+	if (QMessageBox::warning( this, "BulmaFact - Proveedores",
+    "¿Seguro que desea borrar el proveedor?", "Aceptar", "Cancelar") == 0) {
+		int row = m_list->currentRow();
+		QString idProvider = m_list->text(row,COL_IDPROVEEDOR);
+		QString SQLQuery = "DELETE FROM proveedor WHERE idproveedor ="+idProvider;
+		companyact->begin();
+		companyact->ejecuta(SQLQuery);
+		companyact->commit();
+		inicializa();
+	}
+}// end s_removeProvider
+
+
+void providerslist::s_printProviders() {
+	fprintf(stderr,"Impresión del listado\n");
+// #ifdef REPORTS
+    	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
+	QString cadena;
+	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.
+	cadena = "cp /home/tborras/bulmages/installbulmages/reports/bulma-styles.xml   /tmp/bulma-styles.xml" ;
+	system (cadena.ascii());	
+	cadena = "cp /home/tborras/bulmages/installbulmages/reports/providerslist.rtk   /tmp/providerslist.rtk" ;
+	system (cadena.ascii());	
+	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
+	cadena += companyact->nameDB()+" ";
+	// OJO QUE LA LINEA BUENA ES LA QUE ESTA COMENTADA
+//	cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
+	// ESTA LINEA ES PARA HACER PRUEBAS
+//	cadena += "/home/tborras/bulmages/installbulmages/reports/extracto1.rtk &";
+	cadena += "/tmp/providerslist.rtk &";
+	fprintf(stderr,"%s\n",cadena.ascii());
+	system (cadena.ascii());    
+// #endif
+}// end s_printProviders.
+
+
 

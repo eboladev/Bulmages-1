@@ -48,10 +48,12 @@ public slots:
     virtual void doubleclicked(int, int, int, const QPoint &);
     virtual void contextMenu(int, int, const QPoint &);
     virtual void newprovider();
-    
+    virtual void s_findProvider();
+    virtual void s_editProvider();
+    virtual void s_removeProvider();
+    virtual void s_printProviders();
     /*
     virtual void boton_editar();
-    
     virtual void boton_duplicar();
     virtual void boton_borrar();
     virtual void boton_imprimir();

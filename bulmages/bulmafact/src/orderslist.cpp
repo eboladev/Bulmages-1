@@ -128,23 +128,24 @@ void orderslist::removeOrder() {
 	fprintf(stderr, "removeOrder button activated");
 	if (QMessageBox::warning( this, "BulmaFact - Pedidos",
     "¿Seguro que desea borrar el pedido?", "Aceptar", "Cancelar") == 0) {
-	
 		int row = m_list->currentRow();
 		QString idOrder = m_list->text(row,COL_IDPEDIDO);
 		QString SQLQuery = "DELETE FROM lpedido WHERE idpedido ="+idOrder;
 		companyact->begin();
 		int ok=companyact->ejecuta(SQLQuery);
 		companyact->commit();
-	
 		if (ok==0) {
 			QString SQLQuery = "DELETE FROM pedido WHERE idpedido ="+idOrder;
 			companyact->begin();
 			companyact->ejecuta(SQLQuery);
 			companyact->commit();
-		}
+		}// end if
 		inicializa();
-	}
+	}// end if
 }// end removeOrder
+
+
+
 
 orderslist::~orderslist() {
 	companyact->sacaWindow(this);

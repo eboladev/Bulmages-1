@@ -7,7 +7,6 @@ using namespace std;
 typedef QObject *pQObject;
 
 typedef map<int, pQObject> mapa;
-//typedef map<int, QString> mapa;
 
 mapa elmapa;
 
