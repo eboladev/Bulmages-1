@@ -44,8 +44,9 @@ bool InputBGes::next() {
         } else {
            // El primer next que se hace debe saltarse.
            inicializado=0;
+           return (consulta->eof());
         }
-        return !consulta->eof();
+   return(!consulta->eof());
 }
 
 

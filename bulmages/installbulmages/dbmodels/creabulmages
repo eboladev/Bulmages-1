@@ -84,7 +84,6 @@ if [ -e /usr/lib/pgsql/plpgsql.so ]; then
 fi
 
 
-ENC="0"
 if [ "$ENC" = "0" ]; then
    LANG=`locate plpgsql.so`
    if [ $LANG ]; then
