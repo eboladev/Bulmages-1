@@ -59,6 +59,7 @@ CREATE TABLE linamortizacion (
     REFERENCES "asiento" ("idasiento")
 );    
     
+ALTER TABLE asiento ADD COLUMN clase int4;
 
 DROP FUNCTION reordenaasientos();
 
@@ -69,7 +70,7 @@ DECLARE
     cont integer;
 BEGIN
     cont := 1;
-    FOR as IN SELECT * from asiento ORDER BY fecha,ordenasiento LOOP
+    FOR as IN SELECT * from asiento ORDER BY clase,fecha,ordenasiento LOOP
 	IF (cont <> as.ordenasiento) THEN
 	    UPDATE asiento SET ordenasiento = cont WHERE idasiento = as.idasiento;
 	END IF;
