@@ -263,7 +263,6 @@ void aplinteligentesview::boton_crear() {
         fechaasiento->selectAll();
         fechaasiento->setFocus();
     }// end if
-
     // Si estamos en modo exclusivo cerramos la ventana. Y así devolvemos el control a la aplicacion principal.
     if (modo == 1) {
        close();
@@ -372,7 +371,7 @@ void aplinteligentesview::mostrarplantilla() {
 // De esta forma podemos establecer valores por defecto de determinados asientos de obligada
 // existencia. Como los de Amortizaciones.
 void aplinteligentesview::setvalores(QString var, QString val) {
-   int i;
+   int i;    
     for (i=0;i<indvariablescta;i++) {
         if (variablescta[i][0] == var) {
            varcta[i]->setText(val);
@@ -477,6 +476,7 @@ void aplinteligentesview::creaasiento() {
         // Borramos las variables creadas para este apunte
         cur->siguienteregistro();
     }// end while
+    delete cur;
 }// end creaasiento
 
 

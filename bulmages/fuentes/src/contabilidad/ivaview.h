@@ -50,8 +50,6 @@ public:
     int idborrador;
     /// Identificador de la tabla de facturas
     int idregistroiva;
-    /// Numero de dígitos de la contabilidad.
-    int numdigitos;
 
 public:
     ivaview(empresa *, QWidget *parent=0, const char *name=0);

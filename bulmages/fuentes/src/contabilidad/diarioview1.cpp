@@ -396,8 +396,6 @@ void diarioview1::presentar() {
       listado->setItem(i,COL_ORDENASIENTO, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
       listado->setText(i,COL_ORDENASIENTO,cadaux);
 
-      
-//      listado->setItem(i,2, new QTableItem1(listado, QTableItem::Always,0,0));
    QTableItem1 *item =   new QTableItem1(listado, QTableItem::OnTyping ,cadaux, modo);
 //   item->AlignmentFlags=Qt::AlignLeft;
       listado->setItem(i,2, item);

@@ -22,6 +22,7 @@
 #include "empresa.h"
 #include "aplinteligentesview.h"
 #include "calendario.h"
+#include "intapunts3view.h"
 
 #include <qtable.h>
 
@@ -89,6 +90,22 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) :
     m_list->hideColumn(COL_IDREGISTROIVA);
     m_list->hideColumn(COL_FCOBROPREVCOBRO);
     m_list->hideColumn(COL_CANTIDADPREVCOBRO);
+    /// Hacemos casi todas las columnas ineditables para evitar problemas
+    m_list->setColumnReadOnly(COL_IDPREVCOBRO, TRUE);
+    m_list->setColumnReadOnly(COL_FPREVISTAPREVCOBRO, TRUE);
+    m_list->setColumnReadOnly(COL_FCOBROPREVCOBRO, TRUE);
+    m_list->setColumnReadOnly(COL_IDCUENTA, TRUE);
+    m_list->setColumnReadOnly(COL_CODIGO, TRUE);
+    m_list->setColumnReadOnly(COL_NOMCTA, TRUE);
+    m_list->setColumnReadOnly(COL_ORDENASIENTO, TRUE);
+    m_list->setColumnReadOnly(COL_CANTIDADPREVISTAPREVCOBRO, TRUE);
+    m_list->setColumnReadOnly(COL_CANTIDADPREVCOBRO, TRUE);
+    m_list->setColumnReadOnly(COL_IDREGISTROIVA, TRUE);
+    m_list->setColumnReadOnly(COL_CODIGOCTAREGISTROIVA, TRUE);
+    m_list->setColumnReadOnly(COL_TIPOPREVCOBRO, TRUE);
+    m_list->setColumnReadOnly(COL_DOCPREVCOBRO, TRUE);
+    m_list->setColumnReadOnly(COL_CODIGOCTAREGISTROIVA, TRUE);
+    m_list->setColumnReadOnly(COL_ENTREGISTROIVA, TRUE);
     inicializa();
 }// end cobropagoview
 
@@ -157,6 +174,7 @@ void cobropagoview::s_creaPago() {
       QString codcuenta;
       QString codbanco;
       QString tipo;
+      QString fecha;
       /// Calculamos los campos necesarios.
       /* El calculo de los campos requeridos es una iteración por la tabla. */
       for (int i=0; i< m_list->numRows(); i++) {
@@ -165,7 +183,8 @@ void cobropagoview::s_creaPago() {
 			fprintf(stderr,"Existe el elemento %d\n", i);
 			QTableItem *check = m_list->item(i,COL_SELECCION);
 			fprintf(stderr,"Vamos a testear \n");
-			if (check->rtti()==2) {
+//			if (check->rtti()==2) {
+			if (check != NULL) {
 				QCheckTableItem *check1 = (QCheckTableItem *) check;
 				if (check1->isChecked()) {
 					fprintf(stderr,"Este entra \n");
@@ -173,6 +192,7 @@ void cobropagoview::s_creaPago() {
 					codbanco = m_list->text(i, COL_CODIGO);
 					codcuenta =  m_list->text(i, COL_CODIGOCTAREGISTROIVA);
 					tipo = m_list->text(i, COL_TIPOPREVCOBRO);
+					fecha = m_list->text(i, COL_FPREVISTAPREVCOBRO);
 					if ( tipo == "t") {
 					   tipo = "COBRO"; 
 					} else {
@@ -202,11 +222,37 @@ void cobropagoview::s_creaPago() {
       aplinteligentesview *nueva=new aplinteligentesview(empresaactual, 0,"");
       nueva->inicializa(numasiento, empresaactual->intapuntsempresa());
       nueva->muestraplantilla(idainteligente.toInt());
-/*      nueva->setvalores("$cuenta$",cuentaamort);
-      nueva->setvalores("$cuentabien$",cuenta);
-      nueva->setvalores("$fechaasiento$",table1->text(row,COL_FECHA));
-      nueva->setvalores("$cuota$",table1->text(row,COL_CUOTA));  
-*/
+      nueva->setfechaasiento(fecha);
+      nueva->setvalores("$fecha$",fecha);
+      nueva->setvalores("$codbanco$",codbanco);
+      nueva->setvalores("$codcuenta$",codcuenta);
+      nueva->setvalores("$total$",QString::number(total));  
+      nueva->setmodo(1);
+      nueva->exec();
+      QString numasientodevuelto= empresaactual->intapuntsempresa()->cursorasientos->valor("idasiento");
+      delete nueva;
+      
+      /// Actualizamos los campos que haga falta.
+      for (int i=0; i< m_list->numRows(); i++) {
+      		fprintf(stderr,"Iteración para los elementos de la lista %d\n", i);
+		if (m_list->text(i,COL_IDPREVCOBRO) != "") {
+			fprintf(stderr,"Existe el elemento %d\n", i);
+			QTableItem *check = m_list->item(i,COL_SELECCION);
+			fprintf(stderr,"Vamos a testear \n");
+//			if (check->rtti()==2) {
+			if (check != NULL) {
+				QCheckTableItem *check1 = (QCheckTableItem *) check;
+				if (check1->isChecked()) {
+					QString query = "UPDATE prevcobro SET idasiento= "+ numasientodevuelto +" WHERE idprevcobro = "+ m_list->text(i,COL_IDPREVCOBRO);
+					conexionbase->begin();
+					conexionbase->ejecuta(query);
+					conexionbase->commit();
+				}// end if
+			}// end if
+		}// end if
+      }// end for      
+      /// Inicializamos para que se muestren las cosas estas.
+      inicializa();
 }// end s_creaPago
 
 
@@ -253,6 +299,7 @@ void cobropagoview::s_searchLastDate() {
         m_lastDate->setText(a.first()->toString("dd/MM/yyyy"));
         delete cal;
 }// end s_searchLastDate
+
 
 
 
