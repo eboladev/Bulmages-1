@@ -8,6 +8,7 @@ clase \c coche, la clase \c multa, la clase \c macarra, y la clase \c listillo.
 
 /** \class coche
 \brief Clase que almacena las características de un coche.
+\author Cornelio Zigzagón
 
 Esta clase almacena las características a bote pronto 
 más importantes de un coche, 

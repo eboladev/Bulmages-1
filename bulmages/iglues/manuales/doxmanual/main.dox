@@ -120,9 +120,11 @@ años usando \f$\mbox{\LaTeX}\f$).
 \include 4.cpp
 El resultado de procesar este fichero lo puedes ver \link coche aquí \endlink.
 
-Veamos algunos comandos:
+Veamos algunos comandos. Destacar primero que cuando nos referimos aquí a \<palabra\>, 
+es que el comando en cuestión admite como parámetro una sola palabra. Si el argumento es 
+\<texto\>, el comando tomará como parámetro todo el texto hasta encontrar una línea en blanco.
 
-\anchor aqui El comando \c \\class \<nombre\> especifica que estamos comentando la clase \c
+\anchor aqui El comando \c \\class \<palabra\> especifica que estamos comentando la clase \c
 coche. En este caso no es necesario, ya que la clase coche es la porción de
 código inmediatamente después, pero si no lo fuera, se le puede indicar de esta
 manera. Así, podemos tener por ejemplo toda la documentación al final de los
@@ -135,12 +137,15 @@ El comando \c \\brief \<texto\>, que ya ha aparecido antes, incluye todo el
 texto que venga después hasta la próxima línea en blanco, como una descripción
 breve de lo que estamos comentando.
 
+El comando \c \\author \<texto\>, ya lo podéis adivinar...¡sí! Se trata del autor 
+del código, aquél al que tenemos que martirizar con frases como "Buaaaa, no me compiiiilaaaa".
+
 El comando \c \\overload, para los que son muy vagos, cuando
 estamos trabajando en \c C++, que es normal definir funciones sobrecargadas,
 este comando te escribe un mensajito diciendo que "Esta función está
 sobrecargada, bla,bla....".
 
-El comando \c \\ref \<texto\>, bastante útil, sirve para hacer referencia a
+El comando \c \\ref \<palabra\>, bastante útil, sirve para hacer referencia a
 cualquier cosa que esté documentada. Creará un hiperenlace con el nombre del
 objeto a enlazar. 
 
