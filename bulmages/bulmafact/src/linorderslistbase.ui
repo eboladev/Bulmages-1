@@ -421,7 +421,7 @@
                 </property>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1</cstring>
+                        <cstring>m_neworderlin</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -772,6 +772,12 @@
         <receiver>linorderslistbase</receiver>
         <slot>close()</slot>
     </connection>
+    <connection>
+        <sender>m_neworderlin</sender>
+        <signal>clicked()</signal>
+        <receiver>linorderslistbase</receiver>
+        <slot>neworderlin()</slot>
+    </connection>
 </connections>
 <includes>
     <include location="local" impldecl="in implementation">linorderslistbase.ui.h</include>
@@ -779,6 +785,7 @@
 <slots>
     <slot>activated( int )</slot>
     <slot>almacenactivated( int )</slot>
+    <slot>neworderlin()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

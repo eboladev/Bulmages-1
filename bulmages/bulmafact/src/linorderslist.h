@@ -52,6 +52,7 @@ public slots:
     virtual void almacenactivated(int);
     virtual void accept();
     virtual void close();
+	 virtual void neworderlin();
 };
 
 #endif

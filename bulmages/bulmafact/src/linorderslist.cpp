@@ -120,7 +120,8 @@ void linorderslist::chargelinorders(QString idpedido) {
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#AAAAAA");   
-    m_list->setReadOnly(TRUE);        
+    //m_list->setReadOnly(TRUE);        
+	 m_list->setReadOnly(FALSE);        
        companyact->begin();
        cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedido WHERE idpedido="+idpedido,"unquery");
        companyact->commit();
@@ -227,6 +228,12 @@ void linorderslist::accept() {
 void linorderslist::close() {
 	QDialog::close();
 }
+
+
+void linorderslist::neworderlin() {
+	m_list->setNumRows( m_list->numRows()+1 );
+}
+
 
 linorderslist::~linorderslist() {
 }// end ~linorderslist
