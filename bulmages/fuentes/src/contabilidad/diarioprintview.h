@@ -51,6 +51,7 @@ public:
    void presentar(char *tipus="html");
    // OJO con esta función que es una funcion para probar el Report Tool Kit
    void pruebasRTK();
+   void pruebasRTKoo();
 public slots:
    virtual void accept();
    virtual void boton_canales();

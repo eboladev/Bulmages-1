@@ -90,9 +90,10 @@ void aplinteligentesview::inicializavariables() {
         variablespredefinidas[indvariablespredefinidas++][1]=cur->valor("fecha");
     }// end if
     delete cur;
-    inicializavariablesapunte(0);
+//    inicializavariablesapunte(0);
 }// end inicializavariables
 
+/*
 // Existen variables de asientos inteligentes que cambian con la inserción
 // de cada apunte.
 void aplinteligentesview::inicializavariablesapunte(int idborrador) {
@@ -119,7 +120,7 @@ void aplinteligentesview::inicializavariablesapunte(int idborrador) {
     indvariablesapunte = 1;
     fprintf(stderr," Fin de aplicavariablesapunte\n");
 }// end inicializavariablesapunte
-
+*/
 
 // Esta función carga la variable de uso temporal $cifcuenta$
 // con el valor del nif de la cuenta introducida.
@@ -321,15 +322,15 @@ void aplinteligentesview::mostrarplantilla() {
         varcta[i]->setGeometry( QRect( 150, inc+32*(j), 120, 25 ) );
         connect( varcta[i], SIGNAL( returnPressed() ), this, SLOT( return_cta() ) );
         connect( varcta[i], SIGNAL( textChanged(const QString &)), this, SLOT(codigo_textChanged(const QString &)));
-		  varcta[i]->show();
+        varcta[i]->show();
         boton_cta[i] = new QToolButton( groupBox1, "" );
         boton_cta[i]->setPixmap( QPixmap(find1));
         boton_cta[i]->setGeometry( QRect( 275, inc+32*(j), 25, 25 ) );
         connect( boton_cta[i], SIGNAL( clicked() ), this, SLOT( boton_buscacuenta() ) );
         boton_cta[i]->show();
-		  nomcta[i] = new QLabel(groupBox1,"");
-		  nomcta[i]->setGeometry( QRect (310, inc+32*(j++), 350, 25) );
-		  nomcta[i]->show();
+        nomcta[i] = new QLabel(groupBox1,"");
+        nomcta[i]->setGeometry( QRect (310, inc+32*(j++), 350, 25) );
+        nomcta[i]->show();
     }// end for
 
     for (i=0;i<indvariablesfecha;i++) {

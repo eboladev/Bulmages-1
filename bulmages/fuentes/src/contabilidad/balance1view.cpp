@@ -55,7 +55,7 @@ int cnivel;
 int cpadre;
 
 
-balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int flags ) : balance1dlg(parent,name, flags) {
+balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int flags ) : balance1dlg(parent,name) {
    fprintf(stderr,"balance1view: Constructor\n");
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();

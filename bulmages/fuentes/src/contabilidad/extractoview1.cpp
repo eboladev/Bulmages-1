@@ -34,7 +34,7 @@
 #define NUM_ASIENTO     11
 
 
-extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, int flags ) : extractodlg1(parent,name,flags) {
+extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, int flags ) : extractodlg1(parent,name) {
    fprintf(stderr,"Constructor de extractoview1\n");
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
@@ -175,8 +175,7 @@ void extractoview1::boton_asiento() {
       introapunts->muestraasiento(numasiento);
     }// end if
   }// end if
-  introapunts->show();
-  introapunts->setFocus();
+  empresaactual->muestraapuntes1();
 }// end if
 
 
@@ -206,8 +205,7 @@ void extractoview1::boton_diario1(int tipo) {
     diario->inicializa1((char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
     }// end if
    diario->accept();
-   diario->show();
-   diario->setFocus();
+   empresaactual->librodiario();
 }// end boton_diario1
 
 
@@ -237,8 +235,7 @@ void extractoview1::boton_balance1(int tipo) {
         balance->inicializa1(codigoinicial->text(),codigofinal->text(), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
     balance->accept();
-    balance->show();
-    balance->setFocus();
+    empresaactual->librobalance();
 }// end boton_balance1
 
 

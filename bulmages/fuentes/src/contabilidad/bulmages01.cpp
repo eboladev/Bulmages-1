@@ -914,8 +914,6 @@ void Bulmages01::slotMPatrimoniales() {
     empresaactual.mpatrimoniales();
 }
 
-
-
 void Bulmages01::slotPropiedadesEmpresa()  {
   statusBar()->message(tr("Propiedades Empresa"));
   empresaactual.propiedadempresa();
@@ -935,57 +933,6 @@ setCaption(tr("BulmaGés ") + a->text());
 empresaactual.setejactual(a->text());
 empresaactual.cambioejercicio();
 }// end setCurrentEjercicio
-
-
-/*
-void Bulmages01::slotUsuarios() {
-  statusBar()->message(tr("Gestión de Usuarios"));
-  usuariosview* us=new usuariosview(0,"");
-  us->exec();
-  delete us;
-}// end slotUsuario
-*/
-
-/*
-void Bulmages01::slotGuardarEmpresa() {
-   statusBar()->message(tr("Guardar Empresa"));
-   empresaactual.guardarempresa();
-}// end slotGuardarEmpresa
-*/
-
-/*
-void Bulmages01::slotCargarEmpresa() {
-   statusBar()->message(tr("Cargar Empresa"));
-   empresaactual.cargarempresa();
-}// end slotCargarEmpresa
-*/
-
-/*
-void Bulmages01::slotCambiarEmpresa() {
-   statusBar()->message(tr("Cambiar Empresa"));
-   empresaactual.cambiarempresa();
-}// end slotCargarEmpresa
-*/
-
-/*
-void Bulmages01::slotNuevaEmpresa() {
-   statusBar()->message(tr("Nueva Empresa"));
-   empresaactual.nuevaempresa();
-}// end slotNuevaEmpresa
-*/
-
-/*
-void Bulmages01::slotBorrarEmpresa() {
-   statusBar()->message(tr("Borrar Empresa"));
-   empresaactual.borrarempresa();
-}// end slotNuevaEmpresa
-*/ 
-
-/*
-void Bulmages01::slotNEjercicio() {
-   empresaactual.nuevoejercicio();
-}// end slotNEjercicio
-*/
 
 void Bulmages01::slotLibroMayor()
 {
@@ -1131,7 +1078,7 @@ void Bulmages01::slotAyuda() {
 
 
 void Bulmages01::slotAyudai() {
-   char *args[]={"http://www.conetxia.com/bulmages/manualindex.php?version=0.4.1","http://www.conetxia.com/bulmages/manualindex.php?version=0.4.1",NULL};
+   char *args[]={"http://www.conetxia.com/bulmages/manualindex.php?version=0.4.3","http://www.conetxia.com/bulmages/manualindex.php?version=0.4.3",NULL};
    int pid;
    int error;
 #ifndef WIN32
@@ -1153,6 +1100,7 @@ void Bulmages01::slotSCuentas() {
 void Bulmages01::slotCCosteDef() {
    empresaactual.centrocostedefecto();
 }// end slotNEjercicio
+
 void Bulmages01::slotCanalDef() {
    empresaactual.canaldefecto();
 }// end slotNEjercicio

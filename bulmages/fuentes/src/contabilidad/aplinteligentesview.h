@@ -90,7 +90,7 @@ public:
   void borrawidgets();
   void selectsiguiente(QLineEdit *);
   void inicializavariables();
-  void inicializavariablesapunte(int);
+//  void inicializavariablesapunte(int);
   void cifcuenta(int);
   void selectfirst();
   void muestraplantilla(int);

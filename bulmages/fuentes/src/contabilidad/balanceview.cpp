@@ -48,7 +48,7 @@
 #define SALDOEJ			8
 
 
-balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int flags ) : balancedlg(parent,name,flags) {
+balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int flags ) : balancedlg(parent,name) {
    fprintf(stderr,"Inicializacion de balanceview\n");
 	empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
@@ -176,12 +176,10 @@ void balanceview::boton_extracto1(int tipo) {
 				fecha2.setYMD(fechaact.year(), 12, 31);
 			break;
 		}// end switch
- //     extracto->inicializa1((char *)codigoinicial->text().ascii(),(char *)codigofinal->text().ascii() ,(char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *)fecha2.toString("dd/MM/yyyy").ascii(),  ccostes[combocoste->currentItem()]);
  		  extracto->inicializa1( listado->text(listado->currentRow(), CUENTA), listado->text(listado->currentRow(), CUENTA),fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"),  ccostes[combocoste->currentItem()]);
    }// end if
    extracto->accept();
-   extracto->show();
-   extracto->setFocus();
+   empresaactual->libromayor();
 }// end boton_extracto1
 
 
@@ -213,16 +211,14 @@ void balanceview::boton_diario1(int tipo) {
    	diario->inicializa1(fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
    }// end if
    diario->accept();
-   diario->show();
-   diario->setFocus();
+   empresaactual->librodiario();
 }// end boton_diario1
 
 
 
 
 void balanceview::boton_asiento() {
-  introapunts->show();
-  introapunts->setFocus();
+  empresaactual->muestraapuntes1();
 }// end if
 
 
@@ -406,7 +402,6 @@ void balanceview::return_codigoinicial() {
       int num = cursorcta->numregistros();
       if (num >0) {
          codigoinicial->setText(cursorcta->valor(1));
-//         codigofinal->setText(cursorcta->valor(1).c_str());
          codigofinal->selectAll();
          // Simulamos la pulsacion del boton recargar.
          accept();
@@ -466,7 +461,7 @@ void balanceview::contextmenu(int row, int col, const QPoint &poin) {
         popup->insertItem(tr("Ver Extracto (Este dia)"),111);
         popup->insertItem(tr("Ver Extracto (Este mes)"),113);
         popup->insertItem(tr("Ver Extracto (Este año)"),114);
-		  popup->insertSeparator();
+        popup->insertSeparator();
         popup->insertItem(tr("Ver Diario (Este dia)"),101);
         popup->insertItem(tr("Ver Diario (Este mes)"),103);
         popup->insertItem(tr("Ver Diario (Este año)"),104);
@@ -549,13 +544,14 @@ void balanceview::fecha_textChanged(const QString &texto) {
 }// end fecha_textChanged
 
 void balanceview::boton_fechainicial() {
-	fechainicial1->setText("+");
+   fechainicial1->setText("+");
    fechainicial1->selectAll();
    fechainicial1->setFocus();
 }// end boton_fechainicial
 
+// This function represents the slot tat executes wen the finaldate button in the balance is clicked.
 void balanceview::boton_fechafinal() {
-	fechafinal1->setText("+");
+   fechafinal1->setText("+");
    fechafinal1->selectAll();
    fechafinal1->setFocus();
 }// end boton_fechainicial

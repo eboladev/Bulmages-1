@@ -124,7 +124,7 @@ int empresa::inicializa1(QWorkspace *space) {
   balance1 = new balance1view(this, pWorkspace,"balance2");
   introapunts1 = new intapunts3view(this, pWorkspace,"introapunts2");
 */
-  extracto = new extractoview1(this, pWorkspace,"extracto", Qt::WStyle_Customize | Qt::WStyle_NormalBorder | Qt::WStyle_MinMax | Qt::WStyle_SysMenu | Qt::WStyle_Title | Qt::WStyle_Minimize);
+  extracto = new extractoview1(this, pWorkspace,"extracto");
   diario = new diarioview1(this,pWorkspace,"diario");
   balance = new balanceview(this, pWorkspace,"balance");
   balance1 = new balance1view(this, pWorkspace,"balance2");
@@ -139,7 +139,6 @@ int empresa::inicializa1(QWorkspace *space) {
   balance->inicializa2(introapunts1, diario, extracto);
   balance1->inicializa2(introapunts1, diario, extracto);  
   
-
   return(0);
 }// end inicializa1
 
@@ -304,8 +303,7 @@ int empresa::muestraapuntes() {
 
 
 int empresa::muestraapuntes1() {
-  introapunts1->show();
-  introapunts1->setFocus();
+  introapunts1->setWindowState(introapunts1->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
   return(0);
 }// end muestraapuntes1
 
@@ -381,8 +379,7 @@ int empresa::compbalance() {
 
 
 int empresa::libromayor() {
-  extracto->show();
-  extracto->setFocus();
+  extracto->setWindowState(extracto->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
   return(0);
 }//end libromayor
 
@@ -486,22 +483,19 @@ int empresa::boton_ultimo() {
 
 
 int empresa::librodiario() {
-  diario->show();
-  diario->setFocus();
-   return(0);
+  diario->setWindowState(diario->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
+  return(0);
 }//end librodiario
 
 
 int empresa::librobalance() {
-   balance->show();
-   balance->setFocus();
+   balance->setWindowState(balance->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
    return(0);
 }//end librobalance
 
 
 int empresa::librobalancetree() {
-   balance1->show();
-   balance1->setFocus();
+   balance1->setWindowState(balance1->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
    return(0);
 }// end librobalancetree
 

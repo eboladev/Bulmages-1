@@ -52,7 +52,8 @@ function presentavarscuenta () {
 	global $indvariablescta;
 	global $variablescta;	
 	for ($i=0 ; $i<$indvariablescta; $i++) {
-		echo $variablescta[$i][2]."<input type=\"text\" name=\"".$variablescta[$i][0]."\" SIZE=\"15\">".$variablescta[$i][1]." [Buscar]<BR>";
+		echo $variablescta[$i][2]."<input type=\"text\" name=\"".$variablescta[$i][0]."\" SIZE=\"15\">\n";
+		echo buscarcuenta("form1.".$variablescta[$i][0])." <BR>\n";
 	}// end foreach
 }// end presentavarscuenta
 
@@ -354,43 +355,27 @@ function crear($idainteligente, $fechaasiento) {
 }// end boton_crear
 
 
-/**************************************************************
- * Esta funcion se encarga de crear el nuevo asiento a partir *
- * de los datos introducidos                                  *
- * No crea el asiento, crea los borradores asociados
- * Y la entrada en registro de iva correpondiente.
- **************************************************************/
- 
- /*
- 
- // Existen variables de asientos inteligentes que cambian con la inserción
-// de cada apunte.
-void aplinteligentesview::inicializavariablesapunte(int idborrador) {
-    fprintf(stderr,"aplicavariablesapunte %d\n",idborrador);
-    variablesapunte[0][0] ="$cifcuenta$";
-    QString query;
-    query.sprintf("SELECT * FROM borrador WHERE idborrador=%d",idborrador);
-    fprintf(stderr,"%s\n",query.ascii());
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(query,"cursor");
-    conexionbase->commit();
-    if (!cur->eof()) {
-        query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%s",cur->valor("idcuenta").ascii());
-        fprintf(stderr,"%s\n", query.ascii());
-        conexionbase->begin();
-        cursor2 *cur1 = conexionbase->cargacursor(query,"cursor2");
-        conexionbase->commit();
-        variablesapunte[0][0] ="$cifcuenta$";
-        variablesapunte[0][1] = cur1->valor("cifent_cuenta");
-        fprintf(stderr,"variable de APUNTE %s\n",cur1->valor("cifent_cuenta").ascii());
-        delete cur1;
+
+
+// Esta función carga la variable de uso temporal $cifcuenta$
+// con el valor del nif de la cuenta introducida.
+// NOTA: Notese que el sistema normalmente carga el NIF de la contrapartida del asiento inteligente
+// Y que este campo normalmente va en la parte de CIFCUENTA
+function cifcuenta($idcuenta) {
+    global $empresabd;
+    global $variablesapunte;
+    global $indvariablesapunte;
+    
+    $variablesapunte[$indvariablesapunte][0] ="$cifcuenta$";
+    $SQLQeury = "SELECT * FROM cuenta WHERE idcuenta=$idcuenta";
+    $result = pg_exec($empresabd, $SQLQuery);
+    if (pg_numrows($result)) {
+        $variablesapunte[$indvariablesapunte][1] = pg_result($result,0,"cifent_cuenta");
+    } else {
+        $variablesapunte[$indvariablesapunte][1] = "";
     }// end if
-    delete cur;
-    indvariablesapunte = 1;
-    fprintf(stderr," Fin de aplicavariablesapunte\n");
-}// end inicializavariablesapunte
- 
-*/
+    $indvariablesapunte++;
+}// end cifcuenta
 
 
 // Esta función crea todos los registros implicados con los asientos inteligentes
@@ -439,9 +424,6 @@ function creaasiento($numainteligente, $numasiento) {
 		$SQLQuery = "SELECT max(idborrador) AS id FROM borrador";
 		$result3 = pg_exec($empresabd, $SQLQuery);
 		$idborrador = pg_result($result3, 0, "id");
-		//Inicializamos las variables de apunte
-		//		inicializavariablesapunte(idborrador);
-		
 		// Buscamos la contrapartida
 	    	$contrapartida = aplicavariables(pg_result($curiva,0,"contrapartida"));
 		$SQLQuery = "SELECT * FROM cuenta where codigo='$contrapartida'";
@@ -454,7 +436,7 @@ function creaasiento($numainteligente, $numasiento) {
 		
 		// Esta función no está implementada, pero me imagino que tiene que ver con las variables de apunte.
 		// Lo que hace es cargar la variable de apunte $cifcuenta$ que proporciona el CIF de la cuenta usada en la contrapartida del apunte.
-//OJO FALTA IMPLEMENTAR		cifcuenta($idcontrapartida);
+		cifcuenta($idcontrapartida);
 		
 		$iva = aplicavariables(pg_result($curiva, 0, "iva"));
 		if ($iva == "") $iva="NULL";
@@ -471,8 +453,8 @@ function creaasiento($numainteligente, $numasiento) {
 		$SQLQuery = "INSERT INTO registroiva (idborrador, contrapartida, iva, factura, baseimp, numorden, cif) VALUES ($idborrador, $idcontrapartida, $iva, '$factura', $baseimp, '$numorden', '$cif')";
 		pg_exec($empresabd, $SQLQuery);
 		echo $SQLQuery;
-		$indvariablesapunte=0;
 	}// end if
+	$indvariablesapunte=0;		// Reseteamos las variables de apunte pq con cada apunte deben recalcularse.
    }// end while
 }// end creaasiento
 

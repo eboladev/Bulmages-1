@@ -80,7 +80,6 @@ if ($DEBUG==1) {
 }// end if
 
 
-
 // Cargamos las configuraciones
 include ("configuracion.inc");
 $confpr = new configuracion();
@@ -134,7 +133,7 @@ function presentaarray($array) {
 }
 
 function buscarcuenta($cad) {
-echo "<a href=\"#\" onclick=\"window.open('selectcuenta.php?campo=$cad','nueva',0)\"><IMG src=\"img/find.png\" width=\"22\" height=\"22\" border=\"0\"></a>";
+echo "<a href=\"#\" onclick=\"window.open('selectcuenta.php?campo=$cad','nueva','width=400, height=300, location=no, menubar=no, status=no, toolbar=yes, scrollbars=yes, resizable=yes')\"><IMG src=\"img/find.png\" width=\"22\" height=\"22\" border=\"0\"></a>";
 }
 
 function ncuenta($cad) {

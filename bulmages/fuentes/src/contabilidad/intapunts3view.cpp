@@ -55,7 +55,7 @@
 #define ORDENASIENTO cursorasientos->valor("ordenasiento").ascii()
 
 
-intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, int flags ) : intapunts3dlg(parent,name, flags) {
+intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, int flags ) : intapunts3dlg(parent,name) {
    fprintf(stderr,"Constructor de intapunts3view\n");
     empresaactual = emp;
     idasiento=-1;
@@ -1554,8 +1554,11 @@ void intapunts3view::boton_extracto1(int tipo) {
         extracto->inicializa1(tapunts->text(rowactual, COL_SUBCUENTA), tapunts->text(rowactual, COL_SUBCUENTA),fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
     extracto->accept();
+/*
     extracto->show();
     extracto->setFocus();
+*/
+   empresaactual->libromayor();
 }// end boton_extracto1
 
 
@@ -1587,8 +1590,7 @@ void intapunts3view::boton_diario1(int tipo) {
         diario->inicializa1( fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
     diario->accept();
-    diario->show();
-    diario->setFocus();
+    empresaactual->librodiario();
 }// end boton_diario1
 
 
@@ -1617,8 +1619,8 @@ void intapunts3view::boton_balance1(int tipo) {
         balance->inicializa1(tapunts->text(rowactual, COL_SUBCUENTA), tapunts->text(rowactual, COL_SUBCUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
     balance->accept();
-    balance->show();
-    balance->setFocus();
+    // La presentación que la haga la clase empresa. Que es quien se encarga de ello.
+    empresaactual->librobalance();
 }// end boton_balance1
 
 

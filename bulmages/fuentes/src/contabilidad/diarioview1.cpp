@@ -51,7 +51,7 @@
 #define COL_CONTRAPARTIDA 9
 #define COL_NUMASIENTO 10
 
-diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int flags ) : diariodlg1(parent,name, flags) {
+diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int flags ) : diariodlg1(parent,name) {
 	empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    
@@ -231,8 +231,7 @@ void diarioview1::boton_extracto1(int tipo) {
 	   extracto->inicializa1(listado->text(listado->currentRow(),COL_CUENTA),listado->text(listado->currentRow(),COL_CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
    }// end if
    extracto->accept();
-   extracto->show();
-   extracto->setFocus();
+   empresaactual->libromayor();
 }// end boton_extracto1
 
 
@@ -262,8 +261,7 @@ void diarioview1::boton_balance1(int tipo) {
 		balance->inicializa1(listado->text(listado->currentRow(),COL_CUENTA), listado->text(listado->currentRow(),COL_CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
    }// end if
    balance->accept();
-   balance->show();
-   balance->setFocus();
+   empresaactual->librobalance();
 }// end boton_balance1
 
 
@@ -275,8 +273,7 @@ void diarioview1::boton_asiento() {
       introapunts->muestraasiento(numasiento);
     }// end if
   }// end if
-  introapunts->show();
-  introapunts->setFocus();
+  empresaactual->muestraapuntes1();
 }// end if
 
 
