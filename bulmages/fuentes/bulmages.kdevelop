@@ -11,7 +11,7 @@
     </keywords>
     <projectdirectory>.</projectdirectory>
     <absoluteprojectpath>false</absoluteprojectpath>
-    <description/>
+    <description></description>
     <ignoreparts/>
     <secondaryLanguages/>
   </general>
@@ -21,7 +21,6 @@
       <group pattern="*.ui" name="User Interface" />
       <group pattern="*.png" name="Icons" />
       <group pattern="*" name="Others" />
-      <hidenonprojectfiles>false</hidenonprojectfiles>
     </groups>
     <tree>
       <hidepatterns>*.o,*.lo,CVS</hidepatterns>
@@ -47,15 +46,16 @@
   </kdevdoctreeview>
   <kdevdebugger>
     <general>
-      <dbgshell/>
-      <programargs/>
-      <gdbpath/>
+      <dbgshell></dbgshell>
+      <programargs></programargs>
+      <gdbpath></gdbpath>
       <configGdbScript/>
       <runShellScript/>
       <runGdbScript/>
       <breakonloadinglibs>true</breakonloadinglibs>
       <separatetty>false</separatetty>
       <floatingtoolbar>false</floatingtoolbar>
+      <runappinappdirectory>true</runappinappdirectory>
     </general>
     <display>
       <staticmembers>false</staticmembers>
@@ -65,7 +65,7 @@
   <kdevtrollproject>
     <run>
       <mainprogram>bin/bulmages</mainprogram>
-      <programargs/>
+      <programargs></programargs>
       <directoryradio>executable</directoryradio>
       <customdirectory>/</customdirectory>
       <terminal>false</terminal>
@@ -73,13 +73,13 @@
       <envvars/>
     </run>
     <general>
-      <activedir>/src</activedir>
+      <activedir></activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
       <numberofjobs>1</numberofjobs>
       <dontact>false</dontact>
-      <makebin/>
+      <makebin></makebin>
       <envvars/>
     </make>
   </kdevtrollproject>
@@ -89,7 +89,6 @@
       <type ext="ui" />
       <type ext="cpp" />
       <type ext="h" />
-      <type ext="ts" />
     </useglobaltypes>
   </kdevfilecreate>
   <kdevcppsupport>
@@ -111,6 +110,25 @@
     <filetemplates>
       <interfacesuffix>.h</interfacesuffix>
       <implementationsuffix>.cpp</implementationsuffix>
+      <choosefiles>false</choosefiles>
+      <interfaceURL></interfaceURL>
+      <implementationURL></implementationURL>
+      <lowercasefilenames>true</lowercasefilenames>
     </filetemplates>
+    <codecompletion/>
   </cppsupportpart>
+  <kdevcvs>
+    <cvsoptions>-f</cvsoptions>
+    <commitoptions></commitoptions>
+    <updateoptions>-dP</updateoptions>
+    <addoptions></addoptions>
+    <removeoptions>-f</removeoptions>
+    <diffoptions>-u3 -p</diffoptions>
+    <logoptions></logoptions>
+    <rshoptions>ssh</rshoptions>
+  </kdevcvs>
+  <kdevclassview>
+    <folderhierarchy>true</folderhierarchy>
+    <depthoffolders>2</depthoffolders>
+  </kdevclassview>
 </kdevelop>
