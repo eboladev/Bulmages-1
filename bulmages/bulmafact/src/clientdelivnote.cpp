@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Alvaro de Miguel                              *
- *   alvaro.demiguel@gmail.com                                                  *
+ *   Copyright (C) 2005 by Alvaro de Miguel                                *
+ *   alvaro.demiguel@gmail.com                                             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -205,6 +205,10 @@ void ClientDelivNote::inicialize() {
 	m_totalDiscounts->setAlignment(Qt::AlignRight);
 	m_totalClientDelivNote->setReadOnly(TRUE);
 	m_totalClientDelivNote->setAlignment(Qt::AlignRight);
+	
+	if (m_idalbaran=="0") {
+		cargarcomboformapago("0");
+	}
 }// end inicialize
 
 
@@ -744,7 +748,7 @@ bool ClientDelivNote::eventFilter( QObject *obj, QEvent *ev ) {
 			}
 		}
 	}
-	return FALSE;
+	return QWidget::eventFilter( obj, ev );
 } //end eventFilter
 
 
@@ -807,8 +811,15 @@ void ClientDelivNote::duplicateCell(QObject *obj) {
 	QTable *t = (QTable *)obj;
 	int row = t->currentRow();
 	int col = t->currentColumn();
-	if ((t->text(row, col) == ""||t->text(row, col) == "*") && row>0) {
-		t->setText(row, col, t->text(row-1, col));
+	int antRow = row - 1;
+	while (antRow>=0 && t->isRowHidden(antRow)) {
+		antRow--;
+	}
+	if ((t->text(row, col) == "" || t->text(row, col) == "*") && antRow>=0) {
+		t->setText(row, col, t->text(antRow, col).ascii());
+		qDebug("Valor = %s", t->text(antRow, col).ascii());
+	} else {
+		t->setText(row, col, "");
 	}
 }
 

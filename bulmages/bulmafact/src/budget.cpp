@@ -723,7 +723,7 @@ int Budget::insertBudgetLine(int i) {
 
 
 int Budget::deleteBudgetLine(int line) {
-	QString SQLQuery = "DELETE FROM lpresupuesto WHERE idlpresupuesto ="+m_list->text(line,COL_IDLPRESUPUESTO);
+	QString SQLQuery = "DELETE FROM lpresupuesto WHERE idlpresupuesto ="+m_list->text(line,COL_IDLPRESUPUESTO)+" AND idpresupuesto="+m_idpresupuesto;
 	return companyact->ejecuta(SQLQuery);
 } //end deleteBudgetLine
 
@@ -749,7 +749,7 @@ int Budget::insertBudgetDiscountLine(int i) {
 
 
 int Budget::deleteBudgetDiscountLine(int line) {
-	QString SQLQuery = "DELETE FROM dpresupuesto WHERE iddpresupuesto ="+m_listDiscounts->text(line,COL_DESCUENTO_IDDPRESUPUESTO);
+	QString SQLQuery = "DELETE FROM dpresupuesto WHERE iddpresupuesto ="+m_listDiscounts->text(line,COL_DESCUENTO_IDDPRESUPUESTO)+" AND idpresupuesto="+m_idpresupuesto;
 	return companyact->ejecuta(SQLQuery);
 } //end deleteBudgetDiscountLine
 
@@ -832,7 +832,7 @@ bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
 			}
 		}
 	}
-	return FALSE;
+	return QWidget::eventFilter( obj, ev );
 } //end eventFilter
 
 
@@ -895,8 +895,15 @@ void Budget::duplicateCell(QObject *obj) {
 	QTable *t = (QTable *)obj;
 	int row = t->currentRow();
 	int col = t->currentColumn();
-	if (t->text(row, col) == "" && row>0) {
-		t->setText(row, col, t->text(row-1, col));
+	int antRow = row - 1;
+	while (antRow>=0 && t->isRowHidden(antRow)) {
+		antRow--;
+	}
+	if ((t->text(row, col) == "" || t->text(row, col) == "*") && antRow>=0) {
+		t->setText(row, col, t->text(antRow, col).ascii());
+		qDebug("Valor = %s", t->text(antRow, col).ascii());
+	} else {
+		t->setText(row, col, "");
 	}
 }
 

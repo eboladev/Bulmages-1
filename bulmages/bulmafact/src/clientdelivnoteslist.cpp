@@ -140,7 +140,7 @@ void ClientDelivNotesList::inicializa() {
 
 
 void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
-	m_idclidelivnote = m_list->text(a,COL_NUMALBARAN);
+	m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
 	if (m_modo ==0 && m_idclidelivnote != "") {
 		fprintf(stderr,"Iniciamos el boton_crear\n");
 		ClientDelivNote *cDelivNote = new ClientDelivNote(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
