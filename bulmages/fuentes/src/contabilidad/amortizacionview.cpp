@@ -10,6 +10,8 @@
 #include "amortizacionview.h"
 #include "empresa.h"
 #include "funcaux.h"
+#include "aplinteligentesview.h"
+
 
 #define COL_FECHA                  0
 #define COL_CUOTA                  1
@@ -19,20 +21,20 @@
 
 amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *name, bool flag ) 
 : amortizaciondlg(parent,name,flag,0) {
-	empresaactual = emp;
-   conexionbase = empresaactual->bdempresa();
-   	idamortizacion = "";
-        QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion=valor AND configuracion.nombre='Amortizacion'";
-        conexionbase->begin();
-        cursor2 *cur = conexionbase->cargacursor(query,"hola");
-        conexionbase->commit();
-        if (!cur->eof()) {
-           idainteligente = cur->valor("idainteligente");
-           fprintf(stderr,"El asiento de amortización es:%s\n", idainteligente.ascii());;
-        }// end if
-        delete cur;
-        table1->hideColumn(COL_IDLINAMORTIZACION);
-   idamortizacion = "";
+      empresaactual = emp;
+      conexionbase = empresaactual->bdempresa();
+      idamortizacion = "";
+      QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion=valor AND configuracion.nombre='Amortizacion'";
+      conexionbase->begin();
+      cursor2 *cur = conexionbase->cargacursor(query,"hola");
+      conexionbase->commit();
+      if (!cur->eof()) {
+         idainteligente = cur->valor("idainteligente");
+         fprintf(stderr,"El asiento de amortización es:%s\n", idainteligente.ascii());
+      }// end if
+      delete cur;
+      table1->hideColumn(COL_IDLINAMORTIZACION);
+      idamortizacion = "";
 }
 
 
@@ -166,7 +168,7 @@ void amortizacionview::cambiofecha1cuota() {
 }// end cambiofechacompra
 
 
-void amortizacionview::contextMenuRequested(int x, int i, const QPoint &poin) {
+void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin) {
    QPopupMenu *popup;
    popup = new QPopupMenu;
    int opcion;
@@ -179,5 +181,19 @@ void amortizacionview::contextMenuRequested(int x, int i, const QPoint &poin) {
    popup->insertItem(tr("--"),3);
    opcion = popup->exec(poin);
    delete popup;
+   
+   if (opcion == 4) {
+      QString fecha= table1->text(row,COL_FECHA);
+      fprintf(stderr,"Fecha: %s\n", fecha.ascii());
+      QString cant= table1->text(row, COL_CUOTA);
+      fprintf(stderr,"Cuota: %s\n", cant.ascii());
+      int numasiento = 0; //El asiento debe ser uno nuevo.
+    aplinteligentesview *nueva=new aplinteligentesview(0,"");
+    nueva->inicializa(conexionbase, numasiento, empresaactual->intapuntsempresa());
+    nueva->muestraplantilla(idainteligente.toInt());
+    nueva->setvalores("$cuenta$","19000");
+    nueva->exec();
+    delete nueva;
+   }// end if
 }// end contextMenuRequested
 
