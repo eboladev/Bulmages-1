@@ -82,8 +82,8 @@ void calendario::init() {
     qcbWorkSun = new QCheckBox( tr( "Sunday" ), nwdOptions, "qcbWorkSun" );
     qcbWorkSun->setChecked( nonWorkDays[7] );
 
-    eDays = new QList<QDate>;
-    nwDays = new QList<QDate>;
+    eDays = new QPtrList<QDate>;
+    nwDays = new QPtrList<QDate>;
     eDays->setAutoDelete( true );
     nwDays->setAutoDelete( true );
 

@@ -24,7 +24,7 @@
 
 #include <qdialog.h>
 #include <qdatetime.h>
-#include <qlist.h>
+#include <qptrlist.h>
 
 class QmcDateNav;
 class QHBoxLayout;
@@ -42,7 +42,7 @@ public:
     calendario( class QDialog * parent = 0, const char * name = 0 );
     ~calendario();
     QmcDateNav *dn;
-    QList<QDate> *eDays;
+    QPtrList<QDate> *eDays;
 
 public slots:
     void updateEventDays( int );
@@ -57,7 +57,7 @@ private:
     QHBoxLayout *mainLayout;
 
 
-    QList<QDate> *nwDays;
+    QPtrList<QDate> *nwDays;
 
     QTabDialog *optionsDialog;
     QWidget *optionsWidget;

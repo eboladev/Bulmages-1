@@ -17,7 +17,7 @@
 
 #include <qwidget.h>
 #include <qdatetime.h>
-#include <qlist.h>
+#include <qptrlist.h>
 
 class QPopupMenu;
 
@@ -38,16 +38,16 @@ public:
     bool frame() const;
     void setFrame( bool );
 
-    QList<QDate> selectedDates() const;
+    QPtrList<QDate> selectedDates() const;
     bool setDate( const QDate d );
 
     bool outlook() const;
     void setOutlook( bool );
 
-    void installEventDayList( QList<QDate> * );
+    void installEventDayList( QPtrList<QDate> * );
     void removeEventDayList();
 
-    void installNonWorkingDayList( QList<QDate> * );
+    void installNonWorkingDayList( QPtrList<QDate> * );
     void removeNonWorkingDayList();
 
 public slots:

@@ -27,10 +27,10 @@ struct QmcDate {
     bool t;	// Today
 };
 
-QList<QmcDate> dateList;	// All visible days
+QPtrList<QmcDate> dateList;	// All visible days
 
-QList<QDate> *eventDayList;	// Only ever a pointer to a list
-QList<QDate> *nonWorkingDayList;// Ditto
+QPtrList<QDate> *eventDayList;	// Only ever a pointer to a list
+QPtrList<QDate> *nonWorkingDayList;// Ditto
 
 bool doOutlook; // Are we to paint in outlook compatible mode?
 
@@ -1060,8 +1060,8 @@ void QmcDateNav::monthMenuClicked( int id ) {
 }
 
 
-QList<QDate> QmcDateNav::selectedDates() const {
-    QList<QDate> rl;
+QPtrList<QDate> QmcDateNav::selectedDates() const {
+    QPtrList<QDate> rl;
     rl.clear();
     for( int i = 0; i <= 41; i++ )
         if( dateList.at( i )->s )
@@ -1122,7 +1122,7 @@ void QmcDateNav::setOutlook( bool on ) {
 }
 
 
-void QmcDateNav::installEventDayList( QList<QDate> *n ) {
+void QmcDateNav::installEventDayList( QPtrList<QDate> *n ) {
     eventDayList = n;
 }
 
@@ -1132,7 +1132,7 @@ void QmcDateNav::removeEventDayList() {
 }
 
 
-void QmcDateNav::installNonWorkingDayList( QList<QDate> *n ) {
+void QmcDateNav::installNonWorkingDayList( QPtrList<QDate> *n ) {
     nonWorkingDayList = n;
 }
 
@@ -1329,9 +1329,9 @@ void QmcDateNav::rbMenuClicked( int id ) {
  * \sa frame()
  */
 /*!
- * \fn QList<QDate> QmcDateNav::selectedDates() const
+ * \fn QPtrList<QDate> QmcDateNav::selectedDates() const
  *
- * \return A QList containing all of the selected dates in the navigator.
+ * \return A QPtrList containing all of the selected dates in the navigator.
  *
  */
 /*!
@@ -1380,7 +1380,7 @@ void QmcDateNav::rbMenuClicked( int id ) {
  * \reimp
  */
 /*!
- * \fn void QmcDateNav::installEventDayList( QList<QDate> *n )
+ * \fn void QmcDateNav::installEventDayList( QPtrList<QDate> *n )
  *
  * Assigns the address of the list \c n to be iterated over when searching for dates with events.
  *
@@ -1400,7 +1400,7 @@ void QmcDateNav::rbMenuClicked( int id ) {
  * \sa installEventDayList()
  */
 /*!
- * \fn void QmcDateNav::installNonWorkingDayList( QList<QDate> *n )
+ * \fn void QmcDateNav::installNonWorkingDayList( QPtrList<QDate> *n )
  *
  * Assigns the address of the list \c n to be iterated over when searching for dates that are non-working days.
  *
