@@ -30,6 +30,7 @@ public:
 public slots:
 	virtual void botonBuscarSubCta();
 	virtual void botonBuscarDiario();
+	virtual void botonBuscarXML();
 	virtual void botonImportar();
 	virtual void botonExportar();
 	virtual void botonBuscarFInicial();

@@ -47,6 +47,10 @@ importContaplus::importContaplus(postgresiface2 * con, QWidget * parent, const c
 	conexionbase = con;
 }//end importContaplus
 
+/// Se ha pulsado sobre el botón de búsqueda de una subcuenta.
+void importContaplus::botonBuscarXML() {
+	m_XML->setText( QFileDialog::getOpenFileName("","Contaplus (*.xml)", this, "open file dialo", "Elija el Archivo"));
+}// end botonBuscarSubCta
 
 /// Se ha pulsado sobre el botón de búsqueda de una subcuenta.
 void importContaplus::botonBuscarSubCta() {

@@ -506,7 +506,7 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 		stream << "\t<ORDENASIENTO>" << curas->valor("ordenasiento") << "</ORDENASIENTO>\n";
 		QString fechas = curas->valor("fecha");
 		fechas = fechas.mid(6,4)+fechas.mid(3,2)+fechas.mid(0,2);
-		stream << "\t\t<FECHA>" << fechas << "</FECHA>\n";
+		stream << "\t<FECHA>" << fechas << "</FECHA>\n";
 		query = "SELECT * FROM apunte, cuenta WHERE "+curas->valor("idasiento")+"= apunte.idasiento AND cuenta.idcuenta = apunte.idcuenta ";
 		conexionbase->begin();
 		cursor2 *curap = conexionbase->cargacursor(query, "masquery1");
@@ -519,6 +519,9 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 			stream << "\t\t<CODIGO>"   << curap->valor("codigo")  << "</CODIGO>\n";
 			stream << "\t\t<DEBE>"     << curap->valor("debe")    << "</DEBE>\n";
 			stream << "\t\t<HABER>"    << curap->valor("haber")   << "</HABER>\n";
+			stream << "\t\t<CONCEPTOCONTABLE>"    << curap->valor("conceptocontable")   << "</CONCEPTOCONTABLE>\n";			
+			stream << "\t\t<IDCANAL>"    << curap->valor("idcanal")   << "</IDCANAL>\n";			
+			stream << "\t\t<IDC_COSTE>"    << curap->valor("idc_coste")   << "</IDC_COSTE>\n";			
 			mensajeria("Exportando :"   + curap->valor("codigo")   + "--" +fecha+"\n");
 			curap->siguienteregistro();
 			stream << "\t</APUNTE>\n";
@@ -536,12 +539,18 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 
 
 int pgimportfiles::XML2Bulmages (QFile &fichero) {
-        StructureParser handler;
+        StructureParser handler(conexionbase);
         QXmlInputSource source( &fichero );
         QXmlSimpleReader reader;
         reader.setContentHandler( &handler );
         reader.parse( source );
+	return 0;
 }// end XML2Bulmages
+
+
+StructureParser::StructureParser(postgresiface2 *con) {
+	conexionbase = con;
+}// end StructureParser
 
 bool StructureParser::startDocument() {
     indent = "";
@@ -549,20 +558,27 @@ bool StructureParser::startDocument() {
 }// end startDocument
 
 bool StructureParser::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& ) {
-    printf( "%s<%s>", (const char*)indent, (const char*)qName);
+    fprintf( stderr, "%s<%s>", (const char*)indent, (const char*)qName);
     indent += "..";
     return TRUE;
 }// end startElement
 
 bool StructureParser::endElement( const QString&, const QString&, const QString& qName) {
     indent.remove( (uint)0, 2 );
-    printf( "<\\%s>\n", (const char*)qName);
+    fprintf( stderr,"<\\%s>\n", (const char*)qName);
+/// VAmos a ir distinguiendo casos y actuando segun cada caso. En la mayoría de casos iremos actuando en consecuencia.    
+    if (qName == "ASIENTO") {
+    	fprintf(stderr,"Fin de Asiento");
+    }// end if
+    
+    cadintermedia = "";
     return TRUE;
 }// end endElement
 
 
 bool StructureParser::characters( const QString& n1) {
-    printf( "[%s]", (const char*)n1);
+    fprintf( stderr,"[%s]", (const char*)n1);
+    cadintermedia += n1;
     return TRUE;
 }// end endElement
 

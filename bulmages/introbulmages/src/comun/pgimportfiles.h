@@ -49,9 +49,12 @@ public:
 
 
 
-class StructureParser : public QXmlDefaultHandler
-{
+class StructureParser : public QXmlDefaultHandler {
 public:
+	postgresiface2 *conexionbase;
+	QString cadintermedia;		/// ESta variable va almacenando los valores que van saliendo en la clase.
+public:
+    StructureParser(postgresiface2 *);
     bool startDocument();
     bool startElement( const QString&, const QString&, const QString& ,
                        const QXmlAttributes& );
