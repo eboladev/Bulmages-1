@@ -72,14 +72,21 @@ linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, i
       companyact = comp;
 }// end linorderslist
 
-// Cargamos de la tabla de pedidos los datos del pedido seleccionado y los ponemos en la pantalla.
+
+linorderslist::~linorderslist() {
+}// end ~linorderslist
+
 
 void linorderslist::chargeorder(QString idpedido_) {
+// Cargamos de la tabla de pedidos los datos del pedido seleccionado y los ponemos en la pantalla.
    QString idproveedor;
    QString iddivision;
    QString idalmacen;
 	
 	idpedido = idpedido_;
+	m_netImport->setReadOnly(TRUE);
+	m_taxImport->setReadOnly(TRUE);
+	m_totalImport->setReadOnly(TRUE);
    m_previsionDate->setDate(QDate::currentDate());
    if (idpedido != "0") {
    	companyact->begin();
@@ -98,14 +105,13 @@ void linorderslist::chargeorder(QString idpedido_) {
    	cargarcombodivision(idproveedor, iddivision);
 	} //endif (pedido !=0)
 	cargarcomboalmacen(idalmacen);
-  	
-}
+} //end chargeorder
 
 void linorderslist::chargelinorders(QString idpedido) {
 // Cargamos datos generales pedido y proveedor
    chargeorder(idpedido);
 	
-// Cargamos la tabla con lasl íneas del pedido
+// Cargamos la tabla con las líneas del pedido
 	m_list->setNumRows( 0 );
 	m_list->setNumCols( 0 );
 	m_list->setSelectionMode( QTable::SingleRow );
@@ -144,10 +150,9 @@ void linorderslist::chargelinorders(QString idpedido) {
 	m_list->hideColumn(COL_TASATIPO_IVA);
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
-// Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
 	m_list->setColumnReadOnly(COL_NOMARTICULO,true);
+	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
 	m_list->setPaletteBackgroundColor("#AFFAFA");   
-    //m_list->setReadOnly(TRUE);        
 	m_list->setReadOnly(FALSE);        
 	 
 	companyact->begin();
@@ -196,6 +201,7 @@ void linorderslist::cargarcomboalmacen(QString idalmacen) {
    	m_comboalmacen->setCurrentItem(i1-1);
    }
 } // end cargarcomboalmacen
+
 
 void linorderslist::cargarcombodivision(QString idproveedor, QString iddivision) {
 	m_cursorcombo = NULL;
@@ -265,53 +271,8 @@ void linorderslist::accept() {
 		} else {
 			companyact->rollback();
 		}
-	}
-	
+	}	
 } //end accept
-
-
-void linorderslist::neworderlin() {
-	m_list->setNumRows( m_list->numRows()+1 );
-	//m_list->setCurrentCell(m_list->numRows()-1, COL_CODARTICULO);
-	m_list->editCell(m_list->numRows()-1, COL_CODARTICULO);
-} // end neworderlin
-
-
-linorderslist::~linorderslist() {
-}// end ~linorderslist
-
-
-void linorderslist::searchProvider() {
-   fprintf(stderr,"Busqueda de un proveedor\n");
-   providerslist *provlist = new providerslist(companyact, NULL, theApp->translate("Seleccione proveedor","company"));
-   
-// , WType_Dialog| WShowModal   
-   provlist->modoseleccion();
-   
-   // Esto es convertir un QWidget en un sistema modal de dialogo.
-   this->setEnabled(false);
-   provlist->show();
-   while(!provlist->isHidden()) theApp->processEvents();
-   this->setEnabled(true);
-   
-   m_idprovider = provlist->idprovider();
-   m_cifprovider->setText(provlist->cifprovider());
-	providerChanged(m_idprovider);
-	m_combodivision->clear();
-	cargarcombodivision(m_idprovider, NULL);
-   delete provlist;
-}// end searchProvider
-
-
-void linorderslist::providerChanged(QString idProvider) {
-	companyact->begin();
-	cursor2 * cur2= companyact->cargacursor("SELECT * FROM proveedor WHERE idproveedor="+idProvider,"unquery");
-	companyact->commit();
-	if (!cur2->eof()) {
-		m_cifprovider->setText(cur2->valor("cifproveedor"));
-		m_nomproveedor->setText(cur2->valor("nomproveedor"));
-	}
-} //end providerChanged
 
 
 void linorderslist::saveOrderLines() {
@@ -331,12 +292,6 @@ void linorderslist::saveOrderLines() {
 		i ++;
    }
 } // end saveOrderLines
-
-
-void linorderslist::orderDateLostFocus() {
-   fprintf(stderr, "orderDate Lost Focus");
-   m_fechapedido->setText(normalizafecha(m_fechapedido->text()).toString("dd/MM/yyyy"));
-}// end neworder
 
 
 void linorderslist::updateOrderLine(int i) {
@@ -379,6 +334,53 @@ void linorderslist::deleteOrderLine(int line) {
 	QString SQLQuery = "DELETE FROM lpedido WHERE numlpedido ="+m_list->text(line,COL_NUMLPEDIDO);
 	m_saveError = companyact->ejecuta(SQLQuery);
 } //end deleteOrderLine
+
+
+void linorderslist::neworderlin() {
+	m_list->setNumRows( m_list->numRows()+1 );
+	//m_list->setCurrentCell(m_list->numRows()-1, COL_CODARTICULO);
+	m_list->editCell(m_list->numRows()-1, COL_CODARTICULO);
+} // end neworderlin
+
+
+
+void linorderslist::searchProvider() {
+   fprintf(stderr,"Busqueda de un proveedor\n");
+   providerslist *provlist = new providerslist(companyact, NULL, theApp->translate("Seleccione proveedor","company"));
+   
+// , WType_Dialog| WShowModal   
+   provlist->modoseleccion();
+   
+   // Esto es convertir un QWidget en un sistema modal de dialogo.
+   this->setEnabled(false);
+   provlist->show();
+   while(!provlist->isHidden()) theApp->processEvents();
+   this->setEnabled(true);
+   
+   m_idprovider = provlist->idprovider();
+   m_cifprovider->setText(provlist->cifprovider());
+	providerChanged(m_idprovider);
+	m_combodivision->clear();
+	cargarcombodivision(m_idprovider, NULL);
+   delete provlist;
+}// end searchProvider
+
+
+void linorderslist::providerChanged(QString idProvider) {
+	companyact->begin();
+	cursor2 * cur2= companyact->cargacursor("SELECT * FROM proveedor WHERE idproveedor="+idProvider,"unquery");
+	companyact->commit();
+	if (!cur2->eof()) {
+		m_cifprovider->setText(cur2->valor("cifproveedor"));
+		m_nomproveedor->setText(cur2->valor("nomproveedor"));
+	}
+} //end providerChanged
+
+
+void linorderslist::orderDateLostFocus() {
+   fprintf(stderr, "orderDate Lost Focus");
+   m_fechapedido->setText(normalizafecha(m_fechapedido->text()).toString("dd/MM/yyyy"));
+}// end neworder
 
 
 void linorderslist::valueOrderLineChanged(int row, int col) {
