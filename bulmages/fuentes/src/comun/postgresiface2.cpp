@@ -15,6 +15,9 @@
  ***************************************************************************/
 
 #include "postgresiface2.h"
+#include <qmessagebox.h>
+#include <qapplication.h>
+
 
 cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery){
     conn = conn1;
@@ -25,6 +28,7 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery){
     result = PQexec(conn, Query.ascii());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
         fprintf(stderr, "DECLARE CURSOR command failed\n");
+        QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la carga de un query de la base de datos",SQLQuery), theApp->translate("postgresiface","Aceptar",""));
         PQclear(result);
         return;
     }// end if
@@ -228,6 +232,7 @@ int postgresiface2::ejecuta(QString Query) {
     result = PQexec(conn, Query.ascii());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
         fprintf(stderr, "SQL command failed: %s\n", Query.ascii());
+        QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la Base de Datos",Query), theApp->translate("postgresiface","Aceptar",""));
         PQclear(result);
         return(1);
     }// end if

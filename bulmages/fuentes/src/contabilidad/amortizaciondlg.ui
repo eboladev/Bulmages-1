@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>722</width>
-            <height>529</height>
+            <height>531</height>
         </rect>
     </property>
     <property name="caption">
@@ -128,7 +128,7 @@
                             </widget>
                             <widget class="QLineEdit">
                                 <property name="name">
-                                    <cstring>lineEdit1_2_3_3_3</cstring>
+                                    <cstring>amortizado</cstring>
                                 </property>
                                 <property name="enabled">
                                     <bool>false</bool>
@@ -394,7 +394,7 @@
                             </widget>
                             <widget class="QLineEdit">
                                 <property name="name">
-                                    <cstring>lineEdit1_2_3_3_3_2</cstring>
+                                    <cstring>pendiente</cstring>
                                 </property>
                                 <property name="enabled">
                                     <bool>false</bool>
@@ -1014,24 +1014,57 @@
         </widget>
         <widget class="QLayoutWidget" row="0" column="0">
             <property name="name">
-                <cstring>layout6</cstring>
+                <cstring>layout9</cstring>
             </property>
             <hbox>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="QLabel">
+                <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>textLabel1</cstring>
+                        <cstring>layout8</cstring>
                     </property>
-                    <property name="text">
-                        <string>Nombre</string>
-                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Nombre</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>nomamortizacion</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
                 </widget>
-                <widget class="QLineEdit">
+                <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>nomamortizacion</cstring>
+                        <cstring>layout7</cstring>
                     </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1_3</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Agrupación</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>agrupacion</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
                 </widget>
             </hbox>
         </widget>
@@ -1144,8 +1177,8 @@
     <tabstop>pushButton1_2</tabstop>
     <tabstop>nomamortizacion</tabstop>
     <tabstop>tabWidget3</tabstop>
-    <tabstop>lineEdit1_2_3_3_3</tabstop>
-    <tabstop>lineEdit1_2_3_3_3_2</tabstop>
+    <tabstop>amortizado</tabstop>
+    <tabstop>pendiente</tabstop>
     <tabstop>radioButton2</tabstop>
     <tabstop>radioButton3</tabstop>
     <tabstop>radioButton3_2</tabstop>
