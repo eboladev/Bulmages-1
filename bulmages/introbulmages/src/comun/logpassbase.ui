@@ -15,59 +15,6 @@
     <property name="caption">
         <string>Usuario</string>
     </property>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>pushButton24</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>170</x>
-                <y>80</y>
-                <width>103</width>
-                <height>35</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Validar</string>
-        </property>
-        <property name="autoDefault">
-            <bool>false</bool>
-        </property>
-        <property name="default">
-            <bool>false</bool>
-        </property>
-    </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>textLabel1_2_2</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>26</x>
-                <y>104</y>
-                <width>90</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property name="paletteForegroundColor">
-            <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>255</blue>
-            </color>
-        </property>
-        <property name="font">
-            <font>
-                <family>Flubber</family>
-            </font>
-        </property>
-        <property name="text">
-            <string>Versión 0.0.1</string>
-        </property>
-        <property name="textFormat">
-            <enum>PlainText</enum>
-        </property>
-    </widget>
     <widget class="QLabel">
         <property name="name">
             <cstring>textLabel1</cstring>
@@ -100,38 +47,6 @@
             <string>Contraseña</string>
         </property>
     </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>textLabel1_2</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>80</y>
-                <width>120</width>
-                <height>26</height>
-            </rect>
-        </property>
-        <property name="paletteForegroundColor">
-            <color>
-                <red>255</red>
-                <green>113</green>
-                <blue>5</blue>
-            </color>
-        </property>
-        <property name="font">
-            <font>
-                <family>Flubber</family>
-                <pointsize>20</pointsize>
-            </font>
-        </property>
-        <property name="text">
-            <string>BulmaFACT</string>
-        </property>
-        <property name="textFormat">
-            <enum>PlainText</enum>
-        </property>
-    </widget>
     <widget class="QLineEdit">
         <property name="name">
             <cstring>m_login</cstring>
@@ -161,6 +76,91 @@
             <enum>Password</enum>
         </property>
     </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1_2_2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>16</x>
+                <y>104</y>
+                <width>100</width>
+                <height>22</height>
+            </rect>
+        </property>
+        <property name="paletteForegroundColor">
+            <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>255</blue>
+            </color>
+        </property>
+        <property name="font">
+            <font>
+                <family>Flubber</family>
+            </font>
+        </property>
+        <property name="text">
+            <string>Lanzador v.0.5</string>
+        </property>
+        <property name="textFormat">
+            <enum>PlainText</enum>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1_2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>80</y>
+                <width>120</width>
+                <height>26</height>
+            </rect>
+        </property>
+        <property name="paletteForegroundColor">
+            <color>
+                <red>255</red>
+                <green>113</green>
+                <blue>5</blue>
+            </color>
+        </property>
+        <property name="font">
+            <font>
+                <family>Flubber</family>
+                <pointsize>20</pointsize>
+            </font>
+        </property>
+        <property name="text">
+            <string>BulmaGés</string>
+        </property>
+        <property name="textFormat">
+            <enum>PlainText</enum>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton24</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>160</x>
+                <y>80</y>
+                <width>160</width>
+                <height>35</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Validar</string>
+        </property>
+        <property name="autoDefault">
+            <bool>false</bool>
+        </property>
+        <property name="default">
+            <bool>false</bool>
+        </property>
+    </widget>
 </widget>
 <connections>
     <connection>
@@ -170,16 +170,22 @@
         <slot>validar()</slot>
     </connection>
     <connection>
-        <sender>m_login</sender>
-        <signal>returnPressed()</signal>
-        <receiver>logpassbase</receiver>
-        <slot>returnPressedOnUser()</slot>
-    </connection>
-    <connection>
         <sender>m_password</sender>
         <signal>returnPressed()</signal>
         <receiver>logpassbase</receiver>
-        <slot>returnPressedOnPasswd()</slot>
+        <slot>validar()</slot>
+    </connection>
+    <connection>
+        <sender>m_login</sender>
+        <signal>returnPressed()</signal>
+        <receiver>m_password</receiver>
+        <slot>selectAll()</slot>
+    </connection>
+    <connection>
+        <sender>m_login</sender>
+        <signal>returnPressed()</signal>
+        <receiver>m_password</receiver>
+        <slot>setFocus()</slot>
     </connection>
 </connections>
 <tabstops>

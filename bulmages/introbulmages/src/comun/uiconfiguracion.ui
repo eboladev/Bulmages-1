@@ -32,7 +32,7 @@
                 <cstring>tab</cstring>
             </property>
             <attribute name="title">
-                <string>Utilidades</string>
+                <string>BulmaGés</string>
             </attribute>
             <widget class="QGroupBox">
                 <property name="name">
@@ -302,26 +302,6 @@
             </widget>
             <widget class="QPushButton">
                 <property name="name">
-                    <cstring>pushButtonA_4</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>180</x>
-                        <y>200</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Restaurar copia
- (RESTORE)</string>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Restaura la copia de seguridad de una empresa</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
                     <cstring>pushButtonA_3</cstring>
                 </property>
                 <property name="geometry">
@@ -399,12 +379,32 @@
             </widget>
             <widget class="QPushButton">
                 <property name="name">
+                    <cstring>pushButtonA_4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>190</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Restaurar copia
+ (RESTORE)</string>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Restaura la copia de seguridad de una empresa</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
                     <cstring>pushButtonA_2</cstring>
                 </property>
                 <property name="geometry">
                     <rect>
                         <x>180</x>
-                        <y>90</y>
+                        <y>110</y>
                         <width>140</width>
                         <height>60</height>
                     </rect>
@@ -414,6 +414,78 @@
                 </property>
                 <property name="toolTip" stdset="0">
                     <string>Borra por completo una empresa</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>TabPage</cstring>
+            </property>
+            <attribute name="title">
+                <string>BulmaFact</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonC_X</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Salir</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>TabPage</cstring>
+            </property>
+            <attribute name="title">
+                <string>BContaWeb</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonD_X</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Salir</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>TabPage</cstring>
+            </property>
+            <attribute name="title">
+                <string>Galopin</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonE_X</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Salir</string>
                 </property>
             </widget>
         </widget>
@@ -1070,78 +1142,6 @@
                 </property>
                 <property name="defaultRenameAction">
                     <enum>Reject</enum>
-                </property>
-            </widget>
-        </widget>
-        <widget class="QWidget">
-            <property name="name">
-                <cstring>TabPage</cstring>
-            </property>
-            <attribute name="title">
-                <string>Contabilidad</string>
-            </attribute>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonC_X</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>490</x>
-                        <y>390</y>
-                        <width>80</width>
-                        <height>40</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Salir</string>
-                </property>
-            </widget>
-        </widget>
-        <widget class="QWidget">
-            <property name="name">
-                <cstring>TabPage</cstring>
-            </property>
-            <attribute name="title">
-                <string>Facturación</string>
-            </attribute>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonD_X</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>490</x>
-                        <y>390</y>
-                        <width>80</width>
-                        <height>40</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Salir</string>
-                </property>
-            </widget>
-        </widget>
-        <widget class="QWidget">
-            <property name="name">
-                <cstring>TabPage</cstring>
-            </property>
-            <attribute name="title">
-                <string>Almacenes</string>
-            </attribute>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonE_X</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>490</x>
-                        <y>390</y>
-                        <width>80</width>
-                        <height>40</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Salir</string>
                 </property>
             </widget>
         </widget>
