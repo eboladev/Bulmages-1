@@ -8,7 +8,7 @@ CONFIG += release \
 warn_on \
 thread \
 qt
-TARGET = ../bin/bulmages
+TARGET = ../../installbulmages/bulmages
 LIBS += -lpq \
 	../../bulmalib/libbulmalib.a
 	
