@@ -66,7 +66,7 @@ CREATE TABLE cuenta (
     activo boolean,
     nombreent_cuenta character varying(100),
     cifent_cuenta character varying(12),
-    cpent_cuenta character varying(5);
+    cpent_cuenta character varying(5),
     dirent_cuenta character varying(80),
     telent_cuenta character varying(20),
     coment_cuenta character varying(500),
