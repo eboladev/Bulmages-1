@@ -68,14 +68,15 @@ void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
    conexionbase = conn;
    // Hacemos que tengan los dos el mismo filtro asi son compatibles uno con otro.
    filt = inta->filt;
-   string cantapunt = filt->cantidadapunte->text().ascii();
-   string saldototal = filt->saldoasiento->text().ascii();
-   string nombreasiento = filt->nombreasiento->text().ascii();
-   string query;
-   string cadwhere;
-   string textsaldototal = "";
-   string textcantapunt = "";
-   string textnombreasiento= "";
+   QString cantapunt = filt->cantidadapunte->text().ascii();
+   QString saldototal = filt->saldoasiento->text().ascii();
+   QString nombreasiento = filt->nombreasiento->text().ascii();
+   QString query;
+   QString cadwhere;
+   QString textsaldototal = "";
+   QString textcantapunt = "";
+   QString textnombreasiento= "";
+   QString textejercicio = "";
    int pand=0;
    if (saldototal != "") {
       cadwhere = " WHERE ";
@@ -96,9 +97,11 @@ void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
      textnombreasiento += " asiento.idasiento in (SELECT idasiento FROM apunte WHERE conceptocontable LIKE '%"+nombreasiento+"%' )";
      pand = 1;
    }// end if
-  query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha,  totaldebe, totalhaber, numap, numborr   from asiento  LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) as foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT sum(debe) as totaldebe, sum(haber) as totalhaber, count(idapunte) as numap, idasiento from apunte group by idasiento) as fula ON asiento.idasiento = fula.idasiento   "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+" ORDER BY asiento.ordenasiento";
+  if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ (QString) confpr->valor(EJERCICIO_ACTUAL).c_str() +"'";
+  else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ (QString) confpr->valor(EJERCICIO_ACTUAL).c_str() +"'";
+  query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha,  totaldebe, totalhaber, numap, numborr   from asiento  LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) as foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT sum(debe) as totaldebe, sum(haber) as totalhaber, count(idapunte) as numap, idasiento from apunte group by idasiento) as fula ON asiento.idasiento = fula.idasiento   "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY asiento.ordenasiento";
   conexionbase->begin();
-  cursor2 *cursoraux= conexionbase->cargacursor(query.c_str(), "query");
+  cursor2 *cursoraux= conexionbase->cargacursor(query, "query");
   conexionbase->commit();
   int numreg = cursoraux->numregistros();
   tablaasientos->setNumRows(numreg);
