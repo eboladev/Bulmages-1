@@ -109,6 +109,219 @@
             <string>Guardar</string>
         </property>
     </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1_2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>126</x>
+                <y>14</y>
+                <width>68</width>
+                <height>18</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Fecha Inicial</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>131</x>
+                <y>31</y>
+                <width>65</width>
+                <height>18</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Fecha Final</string>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>importe</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>381</x>
+                <y>27</y>
+                <width>104</width>
+                <height>18</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>finicial</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>200</x>
+                <y>12</y>
+                <width>100</width>
+                <height>18</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>ffinal</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>200</x>
+                <y>31</y>
+                <width>100</width>
+                <height>18</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QTabWidget">
+        <property name="name">
+            <cstring>TabWidget1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>50</y>
+                <width>480</width>
+                <height>490</height>
+            </rect>
+        </property>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Ventas</string>
+            </attribute>
+            <widget class="QTable">
+                <column>
+                    <property name="text">
+                        <string>Cuenta</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Nombre</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>CIF</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Importe</string>
+                    </property>
+                </column>
+                <property name="name">
+                    <cstring>tablaventas</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>460</width>
+                        <height>440</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>255</red>
+                        <green>255</green>
+                        <blue>255</blue>
+                    </color>
+                </property>
+                <property name="numRows">
+                    <number>0</number>
+                </property>
+                <property name="numCols">
+                    <number>4</number>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+                <property name="sorting">
+                    <bool>false</bool>
+                </property>
+                <property name="selectionMode">
+                    <enum>SingleRow</enum>
+                </property>
+                <property name="focusStyle">
+                    <enum>SpreadSheet</enum>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Compras</string>
+            </attribute>
+            <widget class="QTable">
+                <column>
+                    <property name="text">
+                        <string>Cuenta</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Nombre</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>CIF</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Importe</string>
+                    </property>
+                </column>
+                <property name="name">
+                    <cstring>tablacompras</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>460</width>
+                        <height>440</height>
+                    </rect>
+                </property>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>255</red>
+                        <green>255</green>
+                        <blue>255</blue>
+                    </color>
+                </property>
+                <property name="numRows">
+                    <number>0</number>
+                </property>
+                <property name="numCols">
+                    <number>4</number>
+                </property>
+                <property name="readOnly">
+                    <bool>true</bool>
+                </property>
+                <property name="sorting">
+                    <bool>false</bool>
+                </property>
+                <property name="selectionMode">
+                    <enum>SingleRow</enum>
+                </property>
+            </widget>
+        </widget>
+    </widget>
     <widget class="QToolButton">
         <property name="name">
             <cstring>ToolButton3</cstring>
@@ -145,180 +358,18 @@
             <string>Recargar datos</string>
         </property>
     </widget>
-    <widget class="QLineEdit">
-        <property name="name">
-            <cstring>finicial</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>200</x>
-                <y>12</y>
-                <width>100</width>
-                <height>18</height>
-            </rect>
-        </property>
-    </widget>
-    <widget class="QLineEdit">
-        <property name="name">
-            <cstring>ffinal</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>200</x>
-                <y>31</y>
-                <width>100</width>
-                <height>18</height>
-            </rect>
-        </property>
-    </widget>
-    <widget class="QLineEdit">
-        <property name="name">
-            <cstring>importe</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>381</x>
-                <y>27</y>
-                <width>104</width>
-                <height>18</height>
-            </rect>
-        </property>
-    </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>textLabel1_2</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>126</x>
-                <y>14</y>
-                <width>68</width>
-                <height>18</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Fecha Inicial</string>
-        </property>
-    </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>textLabel1</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>131</x>
-                <y>31</y>
-                <width>65</width>
-                <height>18</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Fecha Final</string>
-        </property>
-    </widget>
-    <widget class="QTabWidget">
-        <property name="name">
-            <cstring>TabWidget1</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>50</y>
-                <width>480</width>
-                <height>490</height>
-            </rect>
-        </property>
-        <widget class="QWidget">
-            <property name="name">
-                <cstring>tab</cstring>
-            </property>
-            <attribute name="title">
-                <string>Ventas</string>
-            </attribute>
-            <widget class="QTable">
-                <property name="name">
-                    <cstring>tablaventas</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>10</x>
-                        <y>10</y>
-                        <width>460</width>
-                        <height>440</height>
-                    </rect>
-                </property>
-                <property name="paletteBackgroundColor">
-                    <color>
-                        <red>255</red>
-                        <green>255</green>
-                        <blue>255</blue>
-                    </color>
-                </property>
-                <property name="numRows">
-                    <number>3</number>
-                </property>
-                <property name="numCols">
-                    <number>3</number>
-                </property>
-                <property name="readOnly">
-                    <bool>true</bool>
-                </property>
-                <property name="sorting">
-                    <bool>false</bool>
-                </property>
-                <property name="selectionMode">
-                    <enum>SingleRow</enum>
-                </property>
-                <property name="focusStyle">
-                    <enum>SpreadSheet</enum>
-                </property>
-            </widget>
-        </widget>
-        <widget class="QWidget">
-            <property name="name">
-                <cstring>tab</cstring>
-            </property>
-            <attribute name="title">
-                <string>Compras</string>
-            </attribute>
-            <widget class="QTable">
-                <property name="name">
-                    <cstring>tablacompras</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>10</x>
-                        <y>10</y>
-                        <width>460</width>
-                        <height>440</height>
-                    </rect>
-                </property>
-                <property name="paletteBackgroundColor">
-                    <color>
-                        <red>255</red>
-                        <green>255</green>
-                        <blue>255</blue>
-                    </color>
-                </property>
-                <property name="numRows">
-                    <number>3</number>
-                </property>
-                <property name="numCols">
-                    <number>3</number>
-                </property>
-                <property name="readOnly">
-                    <bool>true</bool>
-                </property>
-                <property name="sorting">
-                    <bool>false</bool>
-                </property>
-                <property name="selectionMode">
-                    <enum>SingleRow</enum>
-                </property>
-            </widget>
-        </widget>
-    </widget>
 </widget>
+<connections>
+    <connection>
+        <sender>ToolButton3</sender>
+        <signal>clicked()</signal>
+        <receiver>UImodelo347</receiver>
+        <slot>click_boto3()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>click_boto3()</slot>
+</slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

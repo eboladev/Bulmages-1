@@ -16,6 +16,10 @@
 #define BModelo347_H
 
 #include "uimodelo347.h"
+#include "funcaux.h"
+#include "postgresiface2.h"
+#include <qlineedit.h>
+#include <qtable.h>
 
 
 /** @author Josep Burcion */
@@ -24,17 +28,19 @@ class BModelo347 : public UImodelo347
 {
 
 public:
-    BModelo347(QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
+    BModelo347(postgresiface2 *DBConn=0,QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
     ~BModelo347();
 
 
 public slots:
-    //virtual void mostrar_selector();
+    virtual void click_boto3();
 
 private:
+        postgresiface2 * DBConn;
         //QWorkspace * zona0;
         //BSelector * PunteroAlSelector;
 
 };
 
 #endif
+

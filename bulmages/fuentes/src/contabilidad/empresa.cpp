@@ -535,7 +535,7 @@ int empresa::registroiva() {
 }// end registroiva
 
 int empresa::modelo347() {
-   BModelo347 *dlg347 = new BModelo347;
+   BModelo347 *dlg347 = new BModelo347(conexionbase2);
    //dlg347->inicializa(conexionbase2, introapunts1);
    dlg347->exec();
    delete dlg347;
