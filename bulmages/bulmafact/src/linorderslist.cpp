@@ -367,9 +367,7 @@ void linorderslist::insertOrderLine(int i) {
 void linorderslist::deleteOrderLine(int line) {
 	QString SQLQuery = "DELETE FROM lpedido WHERE numlpedido ="+m_list->text(line,COL_NUMLPEDIDO);
 	companyact->begin();
-	if (companyact->ejecuta(SQLQuery)==0) {
-		m_list->removeRow(m_list->currentRow());
-	}
+	companyact->ejecuta(SQLQuery);
 	companyact->commit();
 } //end deleteOrderLine
 

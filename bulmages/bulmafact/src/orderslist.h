@@ -21,6 +21,7 @@
 #define ORDERSLIST_H
 
 #include "orderslistbase.h"
+#include "postgresiface2.h"
 
 
 class company;
@@ -40,6 +41,7 @@ public:
 public slots:
     virtual void dobleclick(int, int, int, const QPoint &);
     virtual void neworder();
+	 virtual void removeOrder();
 };
 
 #endif

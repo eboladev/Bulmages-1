@@ -11,7 +11,7 @@ $body = '
 </tr>
 <tr>
 <td>
-<A HREF="./manuales/jabber/index.html" TARGET="nueva">Jabber como medio de comunicación social Libre</A><BR>
+<a name="jabber"></a><A HREF="./manuales/jabber/index.html" TARGET="nueva">Jabber como medio de comunicación social Libre</A><BR>
 <P>Manual introductorio al uso del sistema de mensajería instantánea Jabber, orientado a aquellas personas que nunca hayan usado este sistema de mensajería.</P>
 <A HREF="./documentos/manualjabber.pdf" TARGET="nueva">Versión PDF</A>
 <br>
@@ -20,7 +20,7 @@ $body = '
 <tr><td><br></td></tr>
 <tr>
 <td>
-<A HREF="./documentos/cvs.pdf" TARGET="nueva">CVS como herramienta de desarrollo compartido</A><BR>
+<a name="cvs"></a><A HREF="./documentos/cvs.pdf" TARGET="nueva">CVS como herramienta de desarrollo compartido</A><BR>
 <P>Manual básico de uso del sistema de control de versiones CVS a partir del cliente gráfico Cervisia. El manual usa como ejemplo la estructura del CVS de BulmaGés, para aquellos desarrolladores interesados en el proyecto.</P>
 
 <br>
@@ -28,7 +28,7 @@ $body = '
 </tr>
 <tr>
 <td>
-<BASE href="doxmanual"><A HREF="./manuales/doxmanual/html/" TARGET="nueva">Manual de Doxigen</A><BR>
+<a name="doxmanual"></a><A HREF="./manuales/doxmanual/html/" TARGET="nueva">Manual de Doxigen</A><BR>
 <P>Contiene los comandos más básicos para empezar a manejarlo y habituarse a documentar 
 el código.</P>
 
@@ -37,7 +37,7 @@ el código.</P>
 </tr>
 <tr>
 <td>
-<A HREF="./documentos/guia_de_estilo.pdf" TARGET="nueva">Guia de Estilo para Desarrollo de BulmaGés</A><BR>
+<a name="guiaestilo"></a><A HREF="./documentos/guia_de_estilo.pdf" TARGET="nueva">Guia de Estilo para Desarrollo de BulmaGés</A><BR>
 <P>Directivas para homogeneizar el código desarrollado en BulmaGés.</P>
 
 <br>

@@ -17,7 +17,7 @@
         </rect>
     </property>
     <property name="caption">
-        <string>Listado Pedidos</string>
+        <string>Pedidos a Proveedor</string>
     </property>
     <property name="icon">
         <pixmap>image0</pixmap>
@@ -75,7 +75,7 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>deleteorder</cstring>
+                        <cstring>m_removeOrder</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -220,6 +220,12 @@
         <receiver>orderslistbase</receiver>
         <slot>neworder()</slot>
     </connection>
+    <connection>
+        <sender>m_removeOrder</sender>
+        <signal>clicked()</signal>
+        <receiver>orderslistbase</receiver>
+        <slot>removeOrder()</slot>
+    </connection>
 </connections>
 <includes>
     <include location="local" impldecl="in implementation">orderslistbase.ui.h</include>
@@ -227,6 +233,7 @@
 <slots>
     <slot>dobleclick( int, int, int, const QPoint &amp; )</slot>
     <slot>neworder()</slot>
+    <slot>removeOrder()</slot>
 </slots>
 <layoutdefaults spacing="0" margin="0"/>
 </UI>
