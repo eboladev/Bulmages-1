@@ -20,7 +20,6 @@
 
 abreempresaview::abreempresaview(BSelector *parent, const char *name, bool modal) : abreempresadlg(0,name,modal) {
    padre = parent;
-   //padre->hide();
    postgresiface2 *apuestatealgo;
    apuestatealgo = new postgresiface2();
    apuestatealgo->inicializa( confpr->valor(CONF_METABASE).c_str() );
@@ -43,22 +42,13 @@ abreempresaview::abreempresaview(BSelector *parent, const char *name, bool modal
 
 
 abreempresaview::~abreempresaview(){
-//padre->show();
-//parentWidget()->show();
-
 }// end ~abreempresaview
-
-
-/*
-void abreempresaview::slotabreempresaview()  {
-}// end slotabreempresaview
-*/
 
 
 
 
 void abreempresaview::accept() {
-   postgresiface2 apuestatealgo;
+   postgresiface2 DBConn;
    QListViewItem *it;
    int num;
    it = empresas->currentItem();
@@ -67,13 +57,21 @@ void abreempresaview::accept() {
    empresabd= it->text(2);
    QString ejercicio = it->text(1);
    nombreempresa= it->text(0);
-   num = apuestatealgo.cargaempresa(empresabd, nombre, contrasena);
+   num = DBConn.cargaempresa(empresabd, nombre, contrasena);
    if (num >0) {
-       padre->NombreUsuario = nombre;
+       padre->NombreUsuario = nombre;  //Login
        padre->PasswordUsuario = contrasena;
        padre->NombreBaseDatos = empresabd;
        padre->nombreempresa->setText(nombreempresa);
        padre->ejercicio->setText(ejercicio.ascii());
+       DBConn.inicializa(confpr->valor(CONF_METABASE).c_str());
+       DBConn.begin();
+       QString query;
+       query.sprintf("SELECT permisos FROM usuario_empresa, empresa, usuario WHERE usuario_empresa.idempresa=empresa.idempresa and usuario_empresa.idusuario=usuario.idusuario and empresa.nombredb='%s' and usuario.login='%s'",empresabd.ascii(),nombre.ascii());
+       cursor2 * recordSet = DBConn.cargacursor(query,"recordSet");
+       DBConn.commit();
+       confpr->setValor(PRIVILEGIOS_USUARIO, recordSet->valor(0,0));
+       fprintf(stderr, "Entrando Usuario: %s, con Permisos tipo: %s\n",nombre.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str());
        delete this;
    }//end if
    if ((intentos+=1)>3) padre->close();

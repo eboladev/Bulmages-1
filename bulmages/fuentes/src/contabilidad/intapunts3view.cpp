@@ -527,7 +527,7 @@ void intapunts3view::asientocerradop() {
  *********************************************************************/
 void intapunts3view::boton_abrirasiento() {
     conexionbase->begin();
-    conexionbase->abreasiento(atoi(IDASIENTO));
+    if ((conexionbase->abreasiento(atoi(IDASIENTO)))==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
     conexionbase->commit();
     asientoabiertop();
 }// end boton_abrirasiento
@@ -945,7 +945,7 @@ void intapunts3view::borraborrador(int row) {
         QString idborrador = tapunts->text(row, COL_IDBORRADOR);
         QString query = "DELETE FROM borrador WHERE idborrador="+idborrador;
         conexionbase->begin();
-        conexionbase->ejecuta(query);
+        if (conexionbase->ejecuta(query)==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
         conexionbase->commit();
         int rowaux = row;
         while (!tapunts->text(rowaux,COL_IDBORRADOR).isNull()) {
@@ -1036,16 +1036,16 @@ void intapunts3view::guardaborrador(int row) {
         if (idborrador != "") {
             // El borrador existe, por lo que solo hay que hacer un update
             query = "UPDATE borrador SET orden="+rowtext+", conceptocontable="+concepto+", fecha="+fecha+", debe="+debe+",haber="+haber+", idcuenta="+idcuenta+", contrapartida="+contrapartida+", idcanal="+idcanal+", idc_coste="+idc_coste+" WHERE idborrador="+idborrador;
-            fprintf(stderr,"%s\n",query.ascii());
+            //fprintf(stderr,"%s\n",query.ascii());
             conexionbase->begin();
-            conexionbase->ejecuta(query);
+            if (conexionbase->ejecuta(query)==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
             conexionbase->commit();
         } else {
             // El borrador no existe, por lo que hay que hacer un insert
             query = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES ("+rowtext+","+concepto+", "+fecha+","+idcuenta+","+debe+","+haber+","+IDASIENTO+","+contrapartida+","+idcanal+","+idc_coste+")";
-            fprintf(stderr,"%s\n",query.ascii());
+            //fprintf(stderr,"%s\n",query.ascii());
             conexionbase->begin();
-            conexionbase->ejecuta(query);
+            if (conexionbase->ejecuta(query)==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
             query = "SELECT MAX (idborrador) AS id from borrador";
             cursor2 *cur= conexionbase->cargacursor(query,"cursorm");
             conexionbase->commit();
@@ -1445,7 +1445,7 @@ void intapunts3view::return_fechaasiento() {
         query.sprintf("UPDATE asiento SET fecha='%s' WHERE idasiento='%s'",fechaasiento1->text().ascii(),IDASIENTO);
         fprintf(stderr,"%s\n",query.ascii());
         resultado = conexionbase->ejecuta(query);
-        if (resultado != 0) {
+        if (resultado != 0 and resultado != 42501) {
             conexionbase->rollback();
         } else {
             conexionbase->commit();
@@ -1657,7 +1657,7 @@ void intapunts3view::borrar_asiento(bool confirmarBorrado) {
         if (valor ==  QMessageBox::Yes) {
             conexionbase->begin();
             query.sprintf("DELETE FROM apunte where idasiento=%s",IDASIENTO);
-            resultado = conexionbase->ejecuta(query);
+            if ((resultado = conexionbase->ejecuta(query))==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
             query.sprintf("DELETE FROM borrador where idasiento=%s",IDASIENTO);
             resultado += conexionbase->ejecuta(query);
             resultado += conexionbase->borrarasiento(atoi(IDASIENTO));

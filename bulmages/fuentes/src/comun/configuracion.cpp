@@ -158,6 +158,7 @@ void configuracion::leeconfig(char *fich) {
    filestr.close();
 valores[CONF_FONTFAMILY_BULMAGES]="Luxi Sans";
 valores[CONF_FONTSIZE_BULMAGES]= "12";
+valores[PRIVILEGIOS_USUARIO]= "1";
 }// end leeconfig
 
 

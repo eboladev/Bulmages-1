@@ -107,12 +107,11 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
 */
   QTimer *timer = new QTimer(this);
   connect( timer, SIGNAL(timeout()), SLOT(close()) );
-  timer->start( 10000); //timer->start( 10000);
+  timer->start( 1000 ); //timer->start( 10000);
 
   QTimer *timer1 = new QTimer(this);
   connect( timer1, SIGNAL(timeout()), SLOT(paint()) );
-  timer1->start( 1750); //timer1->start( 750);
-//   timer->start(500);
+  timer1->start( 175 ); //timer1->start( 1750);
   exec();
   delete l1;
 }// end splash

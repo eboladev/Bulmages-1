@@ -214,14 +214,17 @@ void postgresiface2::rollback() {
 }// end rollback
 
 cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
-	fprintf(stderr,"%s\n",Query.ascii());
+  fprintf(stderr,"%s\n",Query.ascii());
   cursor2 *cur=new cursor2(nomcursor,conn,Query);
   return(cur);
 }// end cargacursor
 
 int postgresiface2::ejecuta(QString Query) {
     PGresult *result;
-	 fprintf(stderr,"%s\n",Query.ascii());
+    fprintf(stderr,"%s\n",Query.ascii());
+    //Prova de control de permisos     
+    if (confpr->valor(PRIVILEGIOS_USUARIO) != "1" && (Query.left(6)=="DELETE" || Query.left(6)=="UPDATE" || Query.left(6)=="INSERT")) return (42501);
+    //Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard
     result = PQexec(conn, Query.ascii());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
         fprintf(stderr, "SQL command failed: %s\n", Query.ascii());

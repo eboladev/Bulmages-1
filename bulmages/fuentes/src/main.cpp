@@ -64,11 +64,12 @@ if (confpr->valor(CONF_TRADUCCION) == "locales") {
   ctllog = new bitacora();
   ctllog->add("Iniciacion del programa\n");
   
-    
+  BSelector * SelectorAplicaciones = new BSelector(0,"SelectorAplicaciones");  
+  
   Splash *splashScr = new Splash();
   delete splashScr;
   
-  BSelector * SelectorAplicaciones = new BSelector(0,"SelectorAplicaciones");
+  
   mainApp->setMainWidget(SelectorAplicaciones);
   
   valorsalida = mainApp->exec();
