@@ -55,7 +55,7 @@ void abreempresaview::accept() {
    nombre=login->text();
    contrasena=password->text();
    empresabd= it->text(2);
-   QString ejercicio = it->text(1);
+   QString ejercicioMetaDB = it->text(1);
    nombreempresa= it->text(0);
    num = DBConn.cargaempresa(empresabd, nombre, contrasena);
    if (num >0) {
@@ -63,7 +63,7 @@ void abreempresaview::accept() {
        padre->PasswordUsuario = contrasena;
        padre->NombreBaseDatos = empresabd;
        padre->nombreempresa->setText(nombreempresa);
-       padre->ejercicio=ejercicio.ascii();
+       padre->ejercicioMetaDB=ejercicioMetaDB.ascii();
        DBConn.inicializa(confpr->valor(CONF_METABASE).c_str());
        DBConn.begin();
        QString query;
@@ -75,6 +75,9 @@ void abreempresaview::accept() {
        
        confpr->setValor(PRIVILEGIOS_USUARIO, recordSet->valor(0,0));
        fprintf(stderr, "Entrando Usuario: %s, con Permisos tipo: %s\n",nombre.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str());
+       
+       //Empezamos un nuevo modo de guardar algunas preferencias de los usuarios en la base de datos
+       confpr->cargarEntorno(empresabd);
        
        ctllog->add(LOG_SEG | LOG_TRA,"Entrando Usuario: "+nombre );
        delete this;

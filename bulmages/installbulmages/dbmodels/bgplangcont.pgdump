@@ -7,19 +7,20 @@ SET SESSION AUTHORIZATION 'postgres';
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 102 (OID 105286)
+-- TOC entry 103 (OID 85642)
 -- Name: plpgsql_call_handler(); Type: FUNC PROCEDURAL LANGUAGE; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
     AS '/usr/lib/postgresql/lib/plpgsql.so', 'plpgsql_call_handler'
+--  AS '/usr/lib/pgsql/plpgsql.so', 'plpgsql_call_handler'
     LANGUAGE c;
 
 
 SET SESSION AUTHORIZATION DEFAULT;
 
 --
--- TOC entry 101 (OID 105287)
+-- TOC entry 102 (OID 85643)
 -- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: public; Owner: 
 --
 
@@ -38,7 +39,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
--- TOC entry 30 (OID 105288)
+-- TOC entry 30 (OID 85644)
 -- Name: pga_queries; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -54,7 +55,7 @@ CREATE TABLE pga_queries (
 
 
 --
--- TOC entry 31 (OID 105288)
+-- TOC entry 31 (OID 85644)
 -- Name: pga_queries; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -63,7 +64,7 @@ GRANT ALL ON TABLE pga_queries TO PUBLIC;
 
 
 --
--- TOC entry 32 (OID 105293)
+-- TOC entry 32 (OID 85649)
 -- Name: pga_forms; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -74,7 +75,7 @@ CREATE TABLE pga_forms (
 
 
 --
--- TOC entry 33 (OID 105293)
+-- TOC entry 33 (OID 85649)
 -- Name: pga_forms; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -83,7 +84,7 @@ GRANT ALL ON TABLE pga_forms TO PUBLIC;
 
 
 --
--- TOC entry 34 (OID 105298)
+-- TOC entry 34 (OID 85654)
 -- Name: pga_scripts; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -94,7 +95,7 @@ CREATE TABLE pga_scripts (
 
 
 --
--- TOC entry 35 (OID 105298)
+-- TOC entry 35 (OID 85654)
 -- Name: pga_scripts; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -103,7 +104,7 @@ GRANT ALL ON TABLE pga_scripts TO PUBLIC;
 
 
 --
--- TOC entry 36 (OID 105303)
+-- TOC entry 36 (OID 85659)
 -- Name: pga_reports; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -117,7 +118,7 @@ CREATE TABLE pga_reports (
 
 
 --
--- TOC entry 37 (OID 105303)
+-- TOC entry 37 (OID 85659)
 -- Name: pga_reports; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -126,7 +127,7 @@ GRANT ALL ON TABLE pga_reports TO PUBLIC;
 
 
 --
--- TOC entry 38 (OID 105308)
+-- TOC entry 38 (OID 85664)
 -- Name: pga_schema; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -138,7 +139,7 @@ CREATE TABLE pga_schema (
 
 
 --
--- TOC entry 39 (OID 105308)
+-- TOC entry 39 (OID 85664)
 -- Name: pga_schema; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -147,7 +148,7 @@ GRANT ALL ON TABLE pga_schema TO PUBLIC;
 
 
 --
--- TOC entry 40 (OID 105313)
+-- TOC entry 40 (OID 85669)
 -- Name: configuracion; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -159,7 +160,7 @@ CREATE TABLE configuracion (
 
 
 --
--- TOC entry 41 (OID 105315)
+-- TOC entry 41 (OID 85671)
 -- Name: tiposiva; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -171,7 +172,7 @@ CREATE TABLE tiposiva (
 
 
 --
--- TOC entry 4 (OID 105317)
+-- TOC entry 4 (OID 85673)
 -- Name: grupo_idgrupo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -184,7 +185,7 @@ CREATE SEQUENCE grupo_idgrupo_seq
 
 
 --
--- TOC entry 42 (OID 105319)
+-- TOC entry 42 (OID 85675)
 -- Name: grupo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -195,7 +196,7 @@ CREATE TABLE grupo (
 
 
 --
--- TOC entry 6 (OID 105322)
+-- TOC entry 6 (OID 85678)
 -- Name: cuenta_idcuenta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -207,7 +208,7 @@ CREATE SEQUENCE cuenta_idcuenta_seq
 
 
 --
--- TOC entry 43 (OID 105324)
+-- TOC entry 43 (OID 85680)
 -- Name: cuenta; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -239,7 +240,7 @@ CREATE TABLE cuenta (
 
 
 --
--- TOC entry 8 (OID 105329)
+-- TOC entry 8 (OID 85685)
 -- Name: canal_idcanal_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -251,7 +252,7 @@ CREATE SEQUENCE canal_idcanal_seq
 
 
 --
--- TOC entry 44 (OID 105331)
+-- TOC entry 44 (OID 85687)
 -- Name: canal; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -263,7 +264,7 @@ CREATE TABLE canal (
 
 
 --
--- TOC entry 10 (OID 105334)
+-- TOC entry 10 (OID 85690)
 -- Name: c_coste_idc_coste_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -275,7 +276,7 @@ CREATE SEQUENCE c_coste_idc_coste_seq
 
 
 --
--- TOC entry 45 (OID 105336)
+-- TOC entry 45 (OID 85692)
 -- Name: c_coste; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -292,7 +293,7 @@ CREATE TABLE c_coste (
 
 
 --
--- TOC entry 12 (OID 105339)
+-- TOC entry 12 (OID 85695)
 -- Name: acumulado_c_c_idacumulado_c_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -304,7 +305,7 @@ CREATE SEQUENCE acumulado_c_c_idacumulado_c_seq
 
 
 --
--- TOC entry 46 (OID 105341)
+-- TOC entry 46 (OID 85697)
 -- Name: acumulado_c_coste; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -318,7 +319,7 @@ CREATE TABLE acumulado_c_coste (
 
 
 --
--- TOC entry 14 (OID 105344)
+-- TOC entry 14 (OID 85700)
 -- Name: acumulado_can_idacumulado_c_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -330,7 +331,7 @@ CREATE SEQUENCE acumulado_can_idacumulado_c_seq
 
 
 --
--- TOC entry 47 (OID 105346)
+-- TOC entry 47 (OID 85702)
 -- Name: acumulado_canal; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -344,7 +345,7 @@ CREATE TABLE acumulado_canal (
 
 
 --
--- TOC entry 16 (OID 105349)
+-- TOC entry 16 (OID 85705)
 -- Name: diario_iddiario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -357,7 +358,7 @@ CREATE SEQUENCE diario_iddiario_seq
 
 
 --
--- TOC entry 48 (OID 105351)
+-- TOC entry 48 (OID 85707)
 -- Name: diario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -368,7 +369,7 @@ CREATE TABLE diario (
 
 
 --
--- TOC entry 18 (OID 105354)
+-- TOC entry 18 (OID 85710)
 -- Name: asiento_idasiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -380,7 +381,7 @@ CREATE SEQUENCE asiento_idasiento_seq
 
 
 --
--- TOC entry 49 (OID 105356)
+-- TOC entry 49 (OID 85712)
 -- Name: asiento; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -389,12 +390,13 @@ CREATE TABLE asiento (
     descripcion character varying(100),
     fecha timestamp with time zone,
     comentariosasiento character varying(2000),
-    ordenasiento integer
+    ordenasiento integer,
+    clase smallint
 );
 
 
 --
--- TOC entry 20 (OID 105362)
+-- TOC entry 20 (OID 85718)
 -- Name: apunte_idapunte_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -406,7 +408,7 @@ CREATE SEQUENCE apunte_idapunte_seq
 
 
 --
--- TOC entry 50 (OID 105364)
+-- TOC entry 50 (OID 85720)
 -- Name: apunte; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -433,7 +435,7 @@ CREATE TABLE apunte (
 
 
 --
--- TOC entry 22 (OID 105368)
+-- TOC entry 22 (OID 85724)
 -- Name: borrador_idborrador_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -445,7 +447,7 @@ CREATE SEQUENCE borrador_idborrador_seq
 
 
 --
--- TOC entry 51 (OID 105370)
+-- TOC entry 51 (OID 85726)
 -- Name: borrador; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -472,7 +474,7 @@ CREATE TABLE borrador (
 
 
 --
--- TOC entry 24 (OID 105373)
+-- TOC entry 24 (OID 85729)
 -- Name: registroiva_idregistroiva_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -484,7 +486,7 @@ CREATE SEQUENCE registroiva_idregistroiva_seq
 
 
 --
--- TOC entry 52 (OID 105375)
+-- TOC entry 52 (OID 85731)
 -- Name: registroiva; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -504,7 +506,7 @@ CREATE TABLE registroiva (
 
 
 --
--- TOC entry 26 (OID 105378)
+-- TOC entry 26 (OID 85734)
 -- Name: ainteligente_idainteligente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -516,7 +518,7 @@ CREATE SEQUENCE ainteligente_idainteligente_seq
 
 
 --
--- TOC entry 53 (OID 105380)
+-- TOC entry 53 (OID 85736)
 -- Name: ainteligente; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -528,7 +530,7 @@ CREATE TABLE ainteligente (
 
 
 --
--- TOC entry 28 (OID 105386)
+-- TOC entry 28 (OID 85742)
 -- Name: binteligente_idbinteligente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -541,7 +543,7 @@ CREATE SEQUENCE binteligente_idbinteligente_seq
 
 
 --
--- TOC entry 54 (OID 105388)
+-- TOC entry 54 (OID 85744)
 -- Name: binteligente; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -564,7 +566,7 @@ CREATE TABLE binteligente (
 
 
 --
--- TOC entry 55 (OID 105393)
+-- TOC entry 55 (OID 85749)
 -- Name: ivainteligente; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -586,7 +588,7 @@ CREATE TABLE ivainteligente (
 
 
 --
--- TOC entry 56 (OID 105398)
+-- TOC entry 56 (OID 85754)
 -- Name: compmasap; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -602,7 +604,7 @@ CREATE TABLE compmasap (
 
 
 --
--- TOC entry 57 (OID 105403)
+-- TOC entry 57 (OID 85759)
 -- Name: mpatrimonial; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -618,7 +620,7 @@ CREATE TABLE mpatrimonial (
 
 
 --
--- TOC entry 58 (OID 105408)
+-- TOC entry 58 (OID 85764)
 -- Name: compbalance; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -633,7 +635,7 @@ CREATE TABLE compbalance (
 
 
 --
--- TOC entry 59 (OID 105413)
+-- TOC entry 59 (OID 85769)
 -- Name: balance; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -646,7 +648,7 @@ CREATE TABLE balance (
 SET check_function_bodies = false;
 
 --
--- TOC entry 103 (OID 105416)
+-- TOC entry 104 (OID 85772)
 -- Name: abreasientos(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -667,31 +669,7 @@ END;
 
 
 --
--- TOC entry 104 (OID 105417)
--- Name: reordenaasientos(); Type: FUNCTION; Schema: public; Owner: postgres
---
-
-CREATE FUNCTION reordenaasientos() RETURNS integer
-    AS '
-DECLARE
-    as RECORD;
-    cont integer;
-BEGIN
-    cont := 1;
-    FOR as IN SELECT * from asiento ORDER BY ordenasiento LOOP
-	IF (cont <> as.ordenasiento) THEN
-	    UPDATE asiento SET ordenasiento = cont WHERE idasiento = as.idasiento;
-	END IF;
-	cont := cont + 1;
-    END LOOP;
-    RETURN 0;
-END;
-'
-    LANGUAGE plpgsql;
-
-
---
--- TOC entry 105 (OID 105418)
+-- TOC entry 105 (OID 85774)
 -- Name: cambiaasiento(integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -718,7 +696,7 @@ END;
 
 
 --
--- TOC entry 106 (OID 105419)
+-- TOC entry 106 (OID 85775)
 -- Name: ccontrapartida(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -751,7 +729,7 @@ END;
 
 
 --
--- TOC entry 107 (OID 105420)
+-- TOC entry 107 (OID 85776)
 -- Name: id_cuenta(character varying); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -773,7 +751,7 @@ END;
 
 
 --
--- TOC entry 108 (OID 105421)
+-- TOC entry 108 (OID 85777)
 -- Name: nivel(character varying); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -789,7 +767,7 @@ END;
 
 
 --
--- TOC entry 109 (OID 105422)
+-- TOC entry 109 (OID 85778)
 -- Name: saldototalmpatrimonial(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -827,7 +805,7 @@ END;
 
 
 --
--- TOC entry 110 (OID 105423)
+-- TOC entry 110 (OID 85779)
 -- Name: saldompatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -864,7 +842,7 @@ END;
 
 
 --
--- TOC entry 111 (OID 105424)
+-- TOC entry 111 (OID 85780)
 -- Name: debempatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -901,7 +879,7 @@ END;
 
 
 --
--- TOC entry 112 (OID 105425)
+-- TOC entry 112 (OID 85781)
 -- Name: habermpatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -938,7 +916,7 @@ END;
 
 
 --
--- TOC entry 113 (OID 105426)
+-- TOC entry 113 (OID 85782)
 -- Name: saldototal(character varying, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -973,7 +951,7 @@ END;
 
 
 --
--- TOC entry 114 (OID 105427)
+-- TOC entry 114 (OID 85783)
 -- Name: debetotal(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1009,7 +987,7 @@ END;
 
 
 --
--- TOC entry 115 (OID 105428)
+-- TOC entry 115 (OID 85784)
 -- Name: debetotal1(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1042,7 +1020,7 @@ END;
 
 
 --
--- TOC entry 116 (OID 105429)
+-- TOC entry 116 (OID 85785)
 -- Name: habertotal(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1077,7 +1055,7 @@ END;
 
 
 --
--- TOC entry 117 (OID 105430)
+-- TOC entry 117 (OID 85786)
 -- Name: habertotal1(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1110,7 +1088,7 @@ END;
 
 
 --
--- TOC entry 118 (OID 105431)
+-- TOC entry 118 (OID 85787)
 -- Name: recalculasaldos(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1133,7 +1111,7 @@ END;
 
 
 --
--- TOC entry 119 (OID 105432)
+-- TOC entry 119 (OID 85788)
 -- Name: aumenta_valor(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1172,7 +1150,7 @@ END;
 
 
 --
--- TOC entry 120 (OID 105433)
+-- TOC entry 120 (OID 85789)
 -- Name: disminuye_valor(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1214,7 +1192,7 @@ END;
 
 
 --
--- TOC entry 121 (OID 105434)
+-- TOC entry 121 (OID 85790)
 -- Name: disminuye_valor1(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1255,7 +1233,7 @@ END;
 
 
 --
--- TOC entry 122 (OID 105435)
+-- TOC entry 122 (OID 85791)
 -- Name: creacuenta(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1277,7 +1255,7 @@ END;
 
 
 --
--- TOC entry 123 (OID 105436)
+-- TOC entry 123 (OID 85792)
 -- Name: borracuenta(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1299,7 +1277,7 @@ END;
 
 
 --
--- TOC entry 124 (OID 105437)
+-- TOC entry 124 (OID 85793)
 -- Name: creacanal(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1318,7 +1296,7 @@ END;
 
 
 --
--- TOC entry 125 (OID 105438)
+-- TOC entry 125 (OID 85794)
 -- Name: borracanal(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1333,7 +1311,7 @@ END;
 
 
 --
--- TOC entry 126 (OID 105439)
+-- TOC entry 126 (OID 85795)
 -- Name: creaccoste(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1352,7 +1330,7 @@ END;
 
 
 --
--- TOC entry 127 (OID 105440)
+-- TOC entry 127 (OID 85796)
 -- Name: borraccoste(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1367,7 +1345,7 @@ END;
 
 
 --
--- TOC entry 128 (OID 105441)
+-- TOC entry 128 (OID 85797)
 -- Name: propagaacumuladocuenta(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1390,7 +1368,7 @@ END;
 
 
 --
--- TOC entry 129 (OID 105442)
+-- TOC entry 129 (OID 85798)
 -- Name: propagaacumuladoccoste(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1412,7 +1390,7 @@ END;
 
 
 --
--- TOC entry 130 (OID 105443)
+-- TOC entry 130 (OID 85799)
 -- Name: acumulados_canal(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1440,7 +1418,7 @@ END;
 
 
 --
--- TOC entry 60 (OID 105444)
+-- TOC entry 60 (OID 85800)
 -- Name: pga_graphs; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1452,7 +1430,7 @@ CREATE TABLE pga_graphs (
 
 
 --
--- TOC entry 61 (OID 105444)
+-- TOC entry 61 (OID 85800)
 -- Name: pga_graphs; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -1461,7 +1439,7 @@ GRANT ALL ON TABLE pga_graphs TO PUBLIC;
 
 
 --
--- TOC entry 62 (OID 105449)
+-- TOC entry 62 (OID 85805)
 -- Name: pga_images; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1472,7 +1450,7 @@ CREATE TABLE pga_images (
 
 
 --
--- TOC entry 63 (OID 105449)
+-- TOC entry 63 (OID 85805)
 -- Name: pga_images; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -1481,7 +1459,7 @@ GRANT ALL ON TABLE pga_images TO PUBLIC;
 
 
 --
--- TOC entry 64 (OID 105454)
+-- TOC entry 64 (OID 85810)
 -- Name: pga_diagrams; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1493,7 +1471,7 @@ CREATE TABLE pga_diagrams (
 
 
 --
--- TOC entry 65 (OID 105454)
+-- TOC entry 65 (OID 85810)
 -- Name: pga_diagrams; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -1502,7 +1480,7 @@ GRANT ALL ON TABLE pga_diagrams TO PUBLIC;
 
 
 --
--- TOC entry 66 (OID 105459)
+-- TOC entry 66 (OID 85815)
 -- Name: pga_layout; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1515,7 +1493,7 @@ CREATE TABLE pga_layout (
 
 
 --
--- TOC entry 67 (OID 105459)
+-- TOC entry 67 (OID 85815)
 -- Name: pga_layout; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -1524,7 +1502,7 @@ GRANT ALL ON TABLE pga_layout TO PUBLIC;
 
 
 --
--- TOC entry 131 (OID 105464)
+-- TOC entry 131 (OID 85820)
 -- Name: abreasiento(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1540,7 +1518,7 @@ END;
 
 
 --
--- TOC entry 132 (OID 105465)
+-- TOC entry 132 (OID 85821)
 -- Name: cierraasiento(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1571,7 +1549,7 @@ END;
 
 
 --
--- TOC entry 68 (OID 167431)
+-- TOC entry 68 (OID 85824)
 -- Name: amortizacion; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1596,7 +1574,7 @@ CREATE TABLE amortizacion (
 
 
 --
--- TOC entry 69 (OID 167449)
+-- TOC entry 69 (OID 85832)
 -- Name: linamortizacion; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1611,7 +1589,44 @@ CREATE TABLE linamortizacion (
 
 
 --
--- Data for TOC entry 133 (OID 105288)
+-- TOC entry 70 (OID 127825)
+-- Name: ejercicios; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE ejercicios (
+    ejercicio integer,
+    periodo smallint,
+    bloqueado boolean
+);
+
+
+--
+-- TOC entry 133 (OID 127827)
+-- Name: reordenaasientos(integer); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION reordenaasientos(integer) RETURNS integer
+    AS '
+DECLARE
+    ejercicio ALIAS FOR $1;
+    as RECORD;
+    cont integer;
+BEGIN
+    cont := 1;
+    FOR as IN SELECT * from asiento WHERE EXTRACT(YEAR FROM fecha)=ejercicio ORDER BY fecha,clase,ordenasiento LOOP
+	IF (cont <> as.ordenasiento) THEN
+	    UPDATE asiento SET ordenasiento = cont WHERE idasiento = as.idasiento;
+	END IF;
+	cont := cont + 1;
+    END LOOP;
+    RETURN 0;
+END;
+'
+    LANGUAGE plpgsql;
+
+
+--
+-- Data for TOC entry 134 (OID 85644)
 -- Name: pga_queries; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1620,7 +1635,7 @@ COPY pga_queries (queryname, querytype, querycommand, querytables, querylinks, q
 
 
 --
--- Data for TOC entry 134 (OID 105293)
+-- Data for TOC entry 135 (OID 85649)
 -- Name: pga_forms; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1629,7 +1644,7 @@ COPY pga_forms (formname, formsource) FROM stdin;
 
 
 --
--- Data for TOC entry 135 (OID 105298)
+-- Data for TOC entry 136 (OID 85654)
 -- Name: pga_scripts; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1638,7 +1653,7 @@ COPY pga_scripts (scriptname, scriptsource) FROM stdin;
 
 
 --
--- Data for TOC entry 136 (OID 105303)
+-- Data for TOC entry 137 (OID 85659)
 -- Name: pga_reports; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1647,7 +1662,7 @@ COPY pga_reports (reportname, reportsource, reportbody, reportprocs, reportoptio
 
 
 --
--- Data for TOC entry 137 (OID 105308)
+-- Data for TOC entry 138 (OID 85664)
 -- Name: pga_schema; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1656,7 +1671,7 @@ COPY pga_schema (schemaname, schematables, schemalinks) FROM stdin;
 
 
 --
--- Data for TOC entry 138 (OID 105313)
+-- Data for TOC entry 139 (OID 85669)
 -- Name: configuracion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1666,7 +1681,7 @@ COPY configuracion (idconfiguracion, nombre, valor) FROM stdin;
 
 
 --
--- Data for TOC entry 139 (OID 105315)
+-- Data for TOC entry 140 (OID 85671)
 -- Name: tiposiva; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1679,7 +1694,7 @@ COPY tiposiva (idtipoiva, nombretipoiva, porcentajetipoiva) FROM stdin;
 
 
 --
--- Data for TOC entry 140 (OID 105319)
+-- Data for TOC entry 141 (OID 85675)
 -- Name: grupo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1695,7 +1710,7 @@ COPY grupo (idgrupo, descripcion) FROM stdin;
 
 
 --
--- Data for TOC entry 141 (OID 105324)
+-- Data for TOC entry 142 (OID 85680)
 -- Name: cuenta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1715,7 +1730,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 109	122	Aportaciones de socios para compensacion de perdidas	t	106	t	1	\N	0	0	\N	\N	\N	t									2
 108	121	Resultados negativos de ejercicios anteriores	t	106	t	1	\N	0	0	\N	\N	\N	t									2
 107	1200000	Remanente	t	106	t	1	\N	0	0	\N	\N	\N	t									2
-111	129	Perdidas y ganancias	t	106	t	1	\N	0	0	\N	\N	\N	t									2
 117	131	Subvenciones de capital	t	113	t	1	\N	0	0	\N	\N	\N	t									2
 118	135	Ingresos por interes diferidos	t	113	t	1	\N	0	0	\N	\N	\N	t									2
 119	136	Diferencias positivas en moneda extranjera	t	113	t	1	\N	0	0	\N	\N	\N	t									2
@@ -2218,7 +2232,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 717	7990	Exceso de provision para insolvencias de creditos a corto plazo de empresas del grupo	\N	716	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 718	7991	Exceso de provision para insolvencias de creditos a corto plazo de empresas asociadas	\N	716	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 719	7993	Exceso de provision para insolvencias de creditos a corto plazo de otras empresas	\N	716	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-770	1000000	Capitan Socializado	t	724	t	1	\N	0	0	\N	\N	\N	t									3
 767	4300001	Carniceria Sibuna	t	766	t	4	\N	0	0	\N	\N	\N	t	Carniceria Sibuna	4582398 P	C/ Sa Torreta, 25	971.36.35.68	Pago en efectivo.\nHoras de Reparto:\nL,MX, J : de 16:00 a 19:00	325.2658.35.3565885			1
 768	4300002	SYP - Consum	t	766	t	4	\N	0	0	\N	\N	\N	t									1
 769	4300003	Restaurante Neirol	t	766	t	4	\N	0	0	\N	\N	\N	t									1
@@ -2258,7 +2271,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 314	41	ACREEDORES VARIOS	t	\N	t	4	\N	0	0	\N	\N	\N	t									0
 113	13	INGRESOS A DISTRIBUIR EN VARIOS EJERCICIOS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
 156	19	SITUACIONES TRANSITORIAS DE FINANCIACION	\N	\N	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-106	12	RESULTADOS PENDIENTES DE APLICACION	t	\N	t	1	\N	0	-1.8189894035458601e-12	\N	\N	\N	t									0
 301	4000	Proveedores	t	300	t	4	\N	1.13686837721616e-13	-3.69482222595252e-13	\N	\N	\N	t									2
 505	628	Suministros	t	496	t	6	\N	0	1.4210854715202001e-14	\N	\N	\N	t									5
 480	6000000	Compras de mercaderias	t	479	t	6	\N	0	0	\N	\N	\N	t									1
@@ -2293,7 +2305,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 374	477	Hacienda Publica, IVA repercutido	t	357	t	4	\N	-4.5474735088646402e-13	-2.2737367544323201e-13	\N	\N	\N	t									2
 363	472	Hacienda Publica, IVA soportado	\N	357	\N	4	\N	1.02318153949454e-12	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 369	4750000	Hacienda Publica, acreedor por IVA	t	368	t	4	\N	0	0	\N	\N	\N	t									2
-724	100	Capital Social	t	88	t	1	\N	0	0	\N	\N	\N	t	Nombre para capital social	A07898990	Jazmín algo	45 89 09	Pocos comentarios para esta cuenta	2051 21 35 12345678	info@algo.com	http://www.algo.com	3
 239	282	Amortizacion acumulada del inmovilizado material	\N	230	\N	2	\N	0	4.5474735088646402e-13	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 463	570	Caja	t	462	t	5	\N	9.0949470177292804e-13	5.6843418860808002e-14	\N	\N	\N	t									1
 98	112	Reserva legal	t	95	t	1	\N	0	0	\N	\N	\N	t									2
@@ -2326,7 +2337,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 587	69	DOTACIONES A LAS PROVISIONES	\N	\N	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
 291	39	PROVISIONES POR DEPRECIACION DE EXISTENCIAS	\N	\N	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
 368	475	Hacienda Publica, acreedor por conceptos fiscales	t	357	t	4	\N	0	0	\N	\N	\N	t									2
-88	10	CAPITAL	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
 95	11	RESERVAS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
 299	40	PROVEEDORES	t	\N	t	3	\N	0	-2.2737367544323201e-13	\N	\N	\N	t									0
 230	28	AMORTIZACION ACUMULADA DEL INMOVILIZADO	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
@@ -2337,11 +2347,16 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 170	21	INMOVILIZACIONES INMATERIALES	t	\N	t	2	\N	0	0	\N	\N	\N	t									0
 181	22	INMOVILIZACIONES MATERIALES	\N	\N	\N	2	\N	-1.8189894035458601e-12	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
 357	47	ADMINISTRACIONES PUBLICAS	\N	\N	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+770	1000000	Capitan Socializado	t	724	t	1	\N	1	0	\N	\N	\N	t									3
+111	129	Perdidas y ganancias	t	106	t	1	\N	0	1	\N	\N	\N	t									2
+724	100	Capital Social	t	88	t	1	\N	1	0	\N	\N	\N	t	Nombre para capital social	A07898990	Jazmín algo	45 89 09	Pocos comentarios para esta cuenta	2051 21 35 12345678	info@algo.com	http://www.algo.com	3
+106	12	RESULTADOS PENDIENTES DE APLICACION	t	\N	t	1	\N	0	0.99999999999818101	\N	\N	\N	t									0
+88	10	CAPITAL	t	\N	t	1	\N	1	0	\N	\N	\N	t									0
 \.
 
 
 --
--- Data for TOC entry 142 (OID 105331)
+-- Data for TOC entry 143 (OID 85687)
 -- Name: canal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -2354,7 +2369,7 @@ COPY canal (idcanal, descripcion, nombre) FROM stdin;
 
 
 --
--- Data for TOC entry 143 (OID 105336)
+-- Data for TOC entry 144 (OID 85692)
 -- Name: c_coste; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -2369,7 +2384,7 @@ COPY c_coste (idc_coste, descripcion, nombre, codigo, padre, imputacion, debe, h
 
 
 --
--- Data for TOC entry 144 (OID 105341)
+-- Data for TOC entry 145 (OID 85697)
 -- Name: acumulado_c_coste; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -8078,7 +8093,7 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 
 
 --
--- Data for TOC entry 145 (OID 105346)
+-- Data for TOC entry 146 (OID 85702)
 -- Name: acumulado_canal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10635,7 +10650,7 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 
 
 --
--- Data for TOC entry 146 (OID 105351)
+-- Data for TOC entry 147 (OID 85707)
 -- Name: diario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10644,34 +10659,39 @@ COPY diario (iddiario, descripcion) FROM stdin;
 
 
 --
--- Data for TOC entry 147 (OID 105356)
+-- Data for TOC entry 148 (OID 85712)
 -- Name: asiento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY asiento (idasiento, descripcion, fecha, comentariosasiento, ordenasiento) FROM stdin;
+COPY asiento (idasiento, descripcion, fecha, comentariosasiento, ordenasiento, clase) FROM stdin;
+1	01/01/2004	2004-01-01 00:00:00+01	\N	1	0
 \.
 
 
 --
--- Data for TOC entry 148 (OID 105364)
+-- Data for TOC entry 149 (OID 85720)
 -- Name: apunte; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY apunte (idapunte, codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idtipoiva, orden, punteo) FROM stdin;
+3299	\N	1	\N	2004-01-01 00:00:00+01		770	\N	1	0	111	\N	\N	\N	\N	\N	0	f
+3300	\N	1	\N	2004-01-01 00:00:00+01		111	\N	0	1	770	\N	\N	\N	\N	\N	1	f
 \.
 
 
 --
--- Data for TOC entry 149 (OID 105370)
+-- Data for TOC entry 150 (OID 85726)
 -- Name: borrador; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY borrador (idborrador, codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idapunte, idtipoiva, orden) FROM stdin;
+1554	\N	1	\N	2004-01-01 00:00:00+01		770	\N	1	0	\N	\N	\N	\N	\N	\N	\N	0
+1555	\N	1	\N	2004-01-01 00:00:00+01		111	\N	0	1	\N	\N	\N	\N	\N	\N	\N	1
 \.
 
 
 --
--- Data for TOC entry 150 (OID 105375)
+-- Data for TOC entry 151 (OID 85731)
 -- Name: registroiva; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10680,7 +10700,7 @@ COPY registroiva (idregistroiva, contrapartida, baseimp, iva, factura, idborrado
 
 
 --
--- Data for TOC entry 151 (OID 105380)
+-- Data for TOC entry 152 (OID 85736)
 -- Name: ainteligente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10692,7 +10712,7 @@ COPY ainteligente (idainteligente, descripcion, comentariosasiento) FROM stdin;
 
 
 --
--- Data for TOC entry 152 (OID 105388)
+-- Data for TOC entry 153 (OID 85744)
 -- Name: binteligente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10710,7 +10730,7 @@ COPY binteligente (idbinteligente, idainteligente, iddiario, fecha, conceptocont
 
 
 --
--- Data for TOC entry 153 (OID 105393)
+-- Data for TOC entry 154 (OID 85749)
 -- Name: ivainteligente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10720,7 +10740,7 @@ COPY ivainteligente (idivainteligente, idainteligente, idbinteligente, contrapar
 
 
 --
--- Data for TOC entry 154 (OID 105398)
+-- Data for TOC entry 155 (OID 85754)
 -- Name: compmasap; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10953,7 +10973,7 @@ COPY compmasap (idcompmasap, idcuenta, idmpatrimonial, masaperteneciente, saldo,
 
 
 --
--- Data for TOC entry 155 (OID 105403)
+-- Data for TOC entry 156 (OID 85759)
 -- Name: mpatrimonial; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11020,7 +11040,7 @@ COPY mpatrimonial (idmpatrimonial, idbalance, descmpatrimonial, orden, tabulacio
 
 
 --
--- Data for TOC entry 156 (OID 105408)
+-- Data for TOC entry 157 (OID 85764)
 -- Name: compbalance; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11102,7 +11122,7 @@ COPY compbalance (idcompbalance, idbalance, idmpatrimonial, concepto, orden, tab
 
 
 --
--- Data for TOC entry 157 (OID 105413)
+-- Data for TOC entry 158 (OID 85769)
 -- Name: balance; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11114,7 +11134,7 @@ COPY balance (idbalance, nombrebalance) FROM stdin;
 
 
 --
--- Data for TOC entry 158 (OID 105444)
+-- Data for TOC entry 159 (OID 85800)
 -- Name: pga_graphs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11123,7 +11143,7 @@ COPY pga_graphs (graphname, graphsource, graphcode) FROM stdin;
 
 
 --
--- Data for TOC entry 159 (OID 105449)
+-- Data for TOC entry 160 (OID 85805)
 -- Name: pga_images; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11132,7 +11152,7 @@ COPY pga_images (imagename, imagesource) FROM stdin;
 
 
 --
--- Data for TOC entry 160 (OID 105454)
+-- Data for TOC entry 161 (OID 85810)
 -- Name: pga_diagrams; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11141,16 +11161,18 @@ COPY pga_diagrams (diagramname, diagramtables, diagramlinks) FROM stdin;
 
 
 --
--- Data for TOC entry 161 (OID 105459)
+-- Data for TOC entry 162 (OID 85815)
 -- Name: pga_layout; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY pga_layout (tablename, nrcols, colnames, colwidth) FROM stdin;
+public.asiento	6	idasiento descripcion fecha comentariosasiento ordenasiento clase	150 150 150 150 150 150
+public.ejercicios	3	ejercicio periodo bloqueado	150 150 150
 \.
 
 
 --
--- Data for TOC entry 162 (OID 167431)
+-- Data for TOC entry 163 (OID 85824)
 -- Name: amortizacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11159,7 +11181,7 @@ COPY amortizacion (idamortizacion, idcuentaactivo, idcuentaamortizacion, descamo
 
 
 --
--- Data for TOC entry 163 (OID 167449)
+-- Data for TOC entry 164 (OID 85832)
 -- Name: linamortizacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11168,7 +11190,16 @@ COPY linamortizacion (idlinamortizacion, idamortizacion, idborrador, ejercicio, 
 
 
 --
--- TOC entry 79 (OID 114744)
+-- Data for TOC entry 165 (OID 127825)
+-- Name: ejercicios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY ejercicios (ejercicio, periodo, bloqueado) FROM stdin;
+\.
+
+
+--
+-- TOC entry 80 (OID 95113)
 -- Name: grupo_idgrupo_key; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -11176,7 +11207,7 @@ CREATE UNIQUE INDEX grupo_idgrupo_key ON grupo USING btree (idgrupo);
 
 
 --
--- TOC entry 93 (OID 114745)
+-- TOC entry 94 (OID 95114)
 -- Name: compbalance_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11185,7 +11216,7 @@ ALTER TABLE ONLY compbalance
 
 
 --
--- TOC entry 94 (OID 114747)
+-- TOC entry 95 (OID 95116)
 -- Name: balance_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11194,7 +11225,7 @@ ALTER TABLE ONLY balance
 
 
 --
--- TOC entry 92 (OID 114749)
+-- TOC entry 93 (OID 95118)
 -- Name: ivainteligente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11203,7 +11234,7 @@ ALTER TABLE ONLY ivainteligente
 
 
 --
--- TOC entry 90 (OID 114751)
+-- TOC entry 91 (OID 95120)
 -- Name: ainteligente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11212,7 +11243,7 @@ ALTER TABLE ONLY ainteligente
 
 
 --
--- TOC entry 91 (OID 114753)
+-- TOC entry 92 (OID 95122)
 -- Name: binteligente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11221,7 +11252,7 @@ ALTER TABLE ONLY binteligente
 
 
 --
--- TOC entry 77 (OID 114755)
+-- TOC entry 78 (OID 95124)
 -- Name: configuracion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11230,7 +11261,7 @@ ALTER TABLE ONLY configuracion
 
 
 --
--- TOC entry 78 (OID 114757)
+-- TOC entry 79 (OID 95126)
 -- Name: tiposiva_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11239,7 +11270,7 @@ ALTER TABLE ONLY tiposiva
 
 
 --
--- TOC entry 80 (OID 114759)
+-- TOC entry 81 (OID 95128)
 -- Name: grupo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11248,7 +11279,7 @@ ALTER TABLE ONLY grupo
 
 
 --
--- TOC entry 81 (OID 114761)
+-- TOC entry 82 (OID 95130)
 -- Name: cuenta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11257,7 +11288,7 @@ ALTER TABLE ONLY cuenta
 
 
 --
--- TOC entry 82 (OID 114763)
+-- TOC entry 83 (OID 95132)
 -- Name: canal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11266,7 +11297,7 @@ ALTER TABLE ONLY canal
 
 
 --
--- TOC entry 83 (OID 114765)
+-- TOC entry 84 (OID 95134)
 -- Name: c_coste_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11275,7 +11306,7 @@ ALTER TABLE ONLY c_coste
 
 
 --
--- TOC entry 84 (OID 114767)
+-- TOC entry 85 (OID 95136)
 -- Name: acumulado_c_coste_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11284,7 +11315,7 @@ ALTER TABLE ONLY acumulado_c_coste
 
 
 --
--- TOC entry 85 (OID 114769)
+-- TOC entry 86 (OID 95138)
 -- Name: acumulado_canal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11293,7 +11324,7 @@ ALTER TABLE ONLY acumulado_canal
 
 
 --
--- TOC entry 86 (OID 114771)
+-- TOC entry 87 (OID 95140)
 -- Name: diario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11302,7 +11333,7 @@ ALTER TABLE ONLY diario
 
 
 --
--- TOC entry 87 (OID 114773)
+-- TOC entry 88 (OID 95142)
 -- Name: asiento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11311,7 +11342,7 @@ ALTER TABLE ONLY asiento
 
 
 --
--- TOC entry 88 (OID 114775)
+-- TOC entry 89 (OID 95144)
 -- Name: apunte_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11320,7 +11351,7 @@ ALTER TABLE ONLY apunte
 
 
 --
--- TOC entry 89 (OID 114777)
+-- TOC entry 90 (OID 95146)
 -- Name: borrador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11329,7 +11360,7 @@ ALTER TABLE ONLY borrador
 
 
 --
--- TOC entry 95 (OID 114779)
+-- TOC entry 96 (OID 95148)
 -- Name: pga_graphs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11338,7 +11369,7 @@ ALTER TABLE ONLY pga_graphs
 
 
 --
--- TOC entry 96 (OID 114781)
+-- TOC entry 97 (OID 95150)
 -- Name: pga_images_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11347,7 +11378,7 @@ ALTER TABLE ONLY pga_images
 
 
 --
--- TOC entry 97 (OID 114783)
+-- TOC entry 98 (OID 95152)
 -- Name: pga_diagrams_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11356,7 +11387,7 @@ ALTER TABLE ONLY pga_diagrams
 
 
 --
--- TOC entry 98 (OID 114785)
+-- TOC entry 99 (OID 95154)
 -- Name: pga_layout_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11365,7 +11396,7 @@ ALTER TABLE ONLY pga_layout
 
 
 --
--- TOC entry 99 (OID 167437)
+-- TOC entry 100 (OID 95156)
 -- Name: amortizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11374,7 +11405,7 @@ ALTER TABLE ONLY amortizacion
 
 
 --
--- TOC entry 100 (OID 167452)
+-- TOC entry 101 (OID 95158)
 -- Name: linamortizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11383,7 +11414,7 @@ ALTER TABLE ONLY linamortizacion
 
 
 --
--- TOC entry 164 (OID 167439)
+-- TOC entry 166 (OID 95160)
 -- Name: amortizacion_cuenta_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11392,7 +11423,7 @@ ALTER TABLE ONLY amortizacion
 
 
 --
--- TOC entry 165 (OID 167443)
+-- TOC entry 167 (OID 95164)
 -- Name: amortizacion_cuentaamort_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11401,7 +11432,7 @@ ALTER TABLE ONLY amortizacion
 
 
 --
--- TOC entry 166 (OID 167454)
+-- TOC entry 168 (OID 95168)
 -- Name: linamoritzacion_amortizacion_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11410,7 +11441,7 @@ ALTER TABLE ONLY linamortizacion
 
 
 --
--- TOC entry 167 (OID 167458)
+-- TOC entry 169 (OID 95172)
 -- Name: linamortizacion_borrador_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11419,8 +11450,8 @@ ALTER TABLE ONLY linamortizacion
 
 
 --
--- TOC entry 226 (OID 114787)
--- Name: RI_ConstraintTrigger_114787; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 228 (OID 95176)
+-- Name: RI_ConstraintTrigger_95176; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
@@ -11432,8 +11463,8 @@ CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
 
 
 --
--- TOC entry 168 (OID 114788)
--- Name: RI_ConstraintTrigger_114788; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 170 (OID 95177)
+-- Name: RI_ConstraintTrigger_95177; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
@@ -11445,8 +11476,8 @@ CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
 
 
 --
--- TOC entry 169 (OID 114789)
--- Name: RI_ConstraintTrigger_114789; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 171 (OID 95178)
+-- Name: RI_ConstraintTrigger_95178; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
@@ -11458,8 +11489,8 @@ CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
 
 
 --
--- TOC entry 236 (OID 114790)
--- Name: RI_ConstraintTrigger_114790; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 238 (OID 95179)
+-- Name: RI_ConstraintTrigger_95179; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
@@ -11471,8 +11502,8 @@ CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
 
 
 --
--- TOC entry 170 (OID 114791)
--- Name: RI_ConstraintTrigger_114791; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 172 (OID 95180)
+-- Name: RI_ConstraintTrigger_95180; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
@@ -11484,8 +11515,8 @@ CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
 
 
 --
--- TOC entry 171 (OID 114792)
--- Name: RI_ConstraintTrigger_114792; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 173 (OID 95181)
+-- Name: RI_ConstraintTrigger_95181; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
@@ -11497,8 +11528,8 @@ CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
 
 
 --
--- TOC entry 174 (OID 114793)
--- Name: RI_ConstraintTrigger_114793; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 176 (OID 95182)
+-- Name: RI_ConstraintTrigger_95182; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_padre_fk
@@ -11510,8 +11541,8 @@ CREATE CONSTRAINT TRIGGER cuenta_padre_fk
 
 
 --
--- TOC entry 175 (OID 114794)
--- Name: RI_ConstraintTrigger_114794; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 177 (OID 95183)
+-- Name: RI_ConstraintTrigger_95183; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_padre_fk
@@ -11523,8 +11554,8 @@ CREATE CONSTRAINT TRIGGER cuenta_padre_fk
 
 
 --
--- TOC entry 176 (OID 114795)
--- Name: RI_ConstraintTrigger_114795; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 178 (OID 95184)
+-- Name: RI_ConstraintTrigger_95184; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_padre_fk
@@ -11536,8 +11567,8 @@ CREATE CONSTRAINT TRIGGER cuenta_padre_fk
 
 
 --
--- TOC entry 177 (OID 114796)
--- Name: RI_ConstraintTrigger_114796; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 179 (OID 95185)
+-- Name: RI_ConstraintTrigger_95185; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
@@ -11549,8 +11580,8 @@ CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
 
 
 --
--- TOC entry 172 (OID 114797)
--- Name: RI_ConstraintTrigger_114797; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 174 (OID 95186)
+-- Name: RI_ConstraintTrigger_95186; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
@@ -11562,8 +11593,8 @@ CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
 
 
 --
--- TOC entry 173 (OID 114798)
--- Name: RI_ConstraintTrigger_114798; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 175 (OID 95187)
+-- Name: RI_ConstraintTrigger_95187; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
@@ -11575,8 +11606,8 @@ CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
 
 
 --
--- TOC entry 201 (OID 114799)
--- Name: RI_ConstraintTrigger_114799; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 203 (OID 95188)
+-- Name: RI_ConstraintTrigger_95188; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER c_coste_fk
@@ -11588,8 +11619,8 @@ CREATE CONSTRAINT TRIGGER c_coste_fk
 
 
 --
--- TOC entry 202 (OID 114800)
--- Name: RI_ConstraintTrigger_114800; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 204 (OID 95189)
+-- Name: RI_ConstraintTrigger_95189; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER c_coste_fk
@@ -11601,8 +11632,8 @@ CREATE CONSTRAINT TRIGGER c_coste_fk
 
 
 --
--- TOC entry 203 (OID 114801)
--- Name: RI_ConstraintTrigger_114801; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 205 (OID 95190)
+-- Name: RI_ConstraintTrigger_95190; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER c_coste_fk
@@ -11614,8 +11645,8 @@ CREATE CONSTRAINT TRIGGER c_coste_fk
 
 
 --
--- TOC entry 213 (OID 114802)
--- Name: RI_ConstraintTrigger_114802; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 215 (OID 95191)
+-- Name: RI_ConstraintTrigger_95191; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
@@ -11627,8 +11658,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
 
 
 --
--- TOC entry 178 (OID 114803)
--- Name: RI_ConstraintTrigger_114803; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 180 (OID 95192)
+-- Name: RI_ConstraintTrigger_95192; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
@@ -11640,8 +11671,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
 
 
 --
--- TOC entry 179 (OID 114804)
--- Name: RI_ConstraintTrigger_114804; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 181 (OID 95193)
+-- Name: RI_ConstraintTrigger_95193; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
@@ -11653,8 +11684,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
 
 
 --
--- TOC entry 214 (OID 114805)
--- Name: RI_ConstraintTrigger_114805; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 216 (OID 95194)
+-- Name: RI_ConstraintTrigger_95194; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
@@ -11666,8 +11697,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
 
 
 --
--- TOC entry 204 (OID 114806)
--- Name: RI_ConstraintTrigger_114806; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 206 (OID 95195)
+-- Name: RI_ConstraintTrigger_95195; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
@@ -11679,8 +11710,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
 
 
 --
--- TOC entry 205 (OID 114807)
--- Name: RI_ConstraintTrigger_114807; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 207 (OID 95196)
+-- Name: RI_ConstraintTrigger_95196; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
@@ -11692,8 +11723,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
 
 
 --
--- TOC entry 215 (OID 114808)
--- Name: RI_ConstraintTrigger_114808; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 217 (OID 95197)
+-- Name: RI_ConstraintTrigger_95197; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
@@ -11705,8 +11736,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
 
 
 --
--- TOC entry 180 (OID 114809)
--- Name: RI_ConstraintTrigger_114809; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 182 (OID 95198)
+-- Name: RI_ConstraintTrigger_95198; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
@@ -11718,8 +11749,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
 
 
 --
--- TOC entry 181 (OID 114810)
--- Name: RI_ConstraintTrigger_114810; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 183 (OID 95199)
+-- Name: RI_ConstraintTrigger_95199; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
@@ -11731,8 +11762,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
 
 
 --
--- TOC entry 216 (OID 114811)
--- Name: RI_ConstraintTrigger_114811; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 218 (OID 95200)
+-- Name: RI_ConstraintTrigger_95200; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
@@ -11744,8 +11775,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
 
 
 --
--- TOC entry 193 (OID 114812)
--- Name: RI_ConstraintTrigger_114812; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 195 (OID 95201)
+-- Name: RI_ConstraintTrigger_95201; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
@@ -11757,8 +11788,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
 
 
 --
--- TOC entry 194 (OID 114813)
--- Name: RI_ConstraintTrigger_114813; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 196 (OID 95202)
+-- Name: RI_ConstraintTrigger_95202; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
@@ -11770,8 +11801,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
 
 
 --
--- TOC entry 227 (OID 114814)
--- Name: RI_ConstraintTrigger_114814; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 229 (OID 95203)
+-- Name: RI_ConstraintTrigger_95203; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
@@ -11783,8 +11814,8 @@ CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
 
 
 --
--- TOC entry 222 (OID 114815)
--- Name: RI_ConstraintTrigger_114815; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 224 (OID 95204)
+-- Name: RI_ConstraintTrigger_95204; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
@@ -11796,8 +11827,8 @@ CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
 
 
 --
--- TOC entry 223 (OID 114816)
--- Name: RI_ConstraintTrigger_114816; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 225 (OID 95205)
+-- Name: RI_ConstraintTrigger_95205; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
@@ -11809,8 +11840,8 @@ CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
 
 
 --
--- TOC entry 228 (OID 114817)
--- Name: RI_ConstraintTrigger_114817; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 230 (OID 95206)
+-- Name: RI_ConstraintTrigger_95206; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
@@ -11822,8 +11853,8 @@ CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
 
 
 --
--- TOC entry 218 (OID 114818)
--- Name: RI_ConstraintTrigger_114818; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 220 (OID 95207)
+-- Name: RI_ConstraintTrigger_95207; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
@@ -11835,8 +11866,8 @@ CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
 
 
 --
--- TOC entry 219 (OID 114819)
--- Name: RI_ConstraintTrigger_114819; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 221 (OID 95208)
+-- Name: RI_ConstraintTrigger_95208; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
@@ -11848,8 +11879,8 @@ CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
 
 
 --
--- TOC entry 229 (OID 114820)
--- Name: RI_ConstraintTrigger_114820; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 231 (OID 95209)
+-- Name: RI_ConstraintTrigger_95209; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
@@ -11861,8 +11892,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
 
 
 --
--- TOC entry 182 (OID 114821)
--- Name: RI_ConstraintTrigger_114821; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 184 (OID 95210)
+-- Name: RI_ConstraintTrigger_95210; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
@@ -11874,8 +11905,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
 
 
 --
--- TOC entry 183 (OID 114822)
--- Name: RI_ConstraintTrigger_114822; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 185 (OID 95211)
+-- Name: RI_ConstraintTrigger_95211; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
@@ -11887,8 +11918,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
 
 
 --
--- TOC entry 230 (OID 114823)
--- Name: RI_ConstraintTrigger_114823; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 232 (OID 95212)
+-- Name: RI_ConstraintTrigger_95212; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
@@ -11900,8 +11931,8 @@ CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
 
 
 --
--- TOC entry 184 (OID 114824)
--- Name: RI_ConstraintTrigger_114824; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 186 (OID 95213)
+-- Name: RI_ConstraintTrigger_95213; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
@@ -11913,8 +11944,8 @@ CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
 
 
 --
--- TOC entry 185 (OID 114825)
--- Name: RI_ConstraintTrigger_114825; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 187 (OID 95214)
+-- Name: RI_ConstraintTrigger_95214; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
@@ -11926,8 +11957,8 @@ CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
 
 
 --
--- TOC entry 231 (OID 114826)
--- Name: RI_ConstraintTrigger_114826; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 233 (OID 95215)
+-- Name: RI_ConstraintTrigger_95215; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
@@ -11939,8 +11970,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
 
 
 --
--- TOC entry 195 (OID 114827)
--- Name: RI_ConstraintTrigger_114827; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 197 (OID 95216)
+-- Name: RI_ConstraintTrigger_95216; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
@@ -11952,8 +11983,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
 
 
 --
--- TOC entry 196 (OID 114828)
--- Name: RI_ConstraintTrigger_114828; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 198 (OID 95217)
+-- Name: RI_ConstraintTrigger_95217; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
@@ -11965,8 +11996,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
 
 
 --
--- TOC entry 232 (OID 114829)
--- Name: RI_ConstraintTrigger_114829; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 234 (OID 95218)
+-- Name: RI_ConstraintTrigger_95218; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
@@ -11978,8 +12009,8 @@ CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
 
 
 --
--- TOC entry 206 (OID 114830)
--- Name: RI_ConstraintTrigger_114830; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 208 (OID 95219)
+-- Name: RI_ConstraintTrigger_95219; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
@@ -11991,8 +12022,8 @@ CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
 
 
 --
--- TOC entry 207 (OID 114831)
--- Name: RI_ConstraintTrigger_114831; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 209 (OID 95220)
+-- Name: RI_ConstraintTrigger_95220; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
@@ -12004,8 +12035,8 @@ CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
 
 
 --
--- TOC entry 237 (OID 114832)
--- Name: RI_ConstraintTrigger_114832; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 239 (OID 95221)
+-- Name: RI_ConstraintTrigger_95221; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
@@ -12017,8 +12048,8 @@ CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
 
 
 --
--- TOC entry 224 (OID 114833)
--- Name: RI_ConstraintTrigger_114833; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 226 (OID 95222)
+-- Name: RI_ConstraintTrigger_95222; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
@@ -12030,8 +12061,8 @@ CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
 
 
 --
--- TOC entry 225 (OID 114834)
--- Name: RI_ConstraintTrigger_114834; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 227 (OID 95223)
+-- Name: RI_ConstraintTrigger_95223; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
@@ -12043,8 +12074,8 @@ CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
 
 
 --
--- TOC entry 238 (OID 114835)
--- Name: RI_ConstraintTrigger_114835; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 240 (OID 95224)
+-- Name: RI_ConstraintTrigger_95224; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
@@ -12056,8 +12087,8 @@ CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
 
 
 --
--- TOC entry 220 (OID 114836)
--- Name: RI_ConstraintTrigger_114836; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 222 (OID 95225)
+-- Name: RI_ConstraintTrigger_95225; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
@@ -12069,8 +12100,8 @@ CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
 
 
 --
--- TOC entry 221 (OID 114837)
--- Name: RI_ConstraintTrigger_114837; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 223 (OID 95226)
+-- Name: RI_ConstraintTrigger_95226; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
@@ -12082,8 +12113,8 @@ CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
 
 
 --
--- TOC entry 239 (OID 114838)
--- Name: RI_ConstraintTrigger_114838; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 241 (OID 95227)
+-- Name: RI_ConstraintTrigger_95227; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
@@ -12095,8 +12126,8 @@ CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
 
 
 --
--- TOC entry 186 (OID 114839)
--- Name: RI_ConstraintTrigger_114839; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 188 (OID 95228)
+-- Name: RI_ConstraintTrigger_95228; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
@@ -12108,8 +12139,8 @@ CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
 
 
 --
--- TOC entry 187 (OID 114840)
--- Name: RI_ConstraintTrigger_114840; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 189 (OID 95229)
+-- Name: RI_ConstraintTrigger_95229; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
@@ -12121,8 +12152,8 @@ CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
 
 
 --
--- TOC entry 240 (OID 114841)
--- Name: RI_ConstraintTrigger_114841; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 242 (OID 95230)
+-- Name: RI_ConstraintTrigger_95230; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
@@ -12134,8 +12165,8 @@ CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
 
 
 --
--- TOC entry 188 (OID 114842)
--- Name: RI_ConstraintTrigger_114842; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 190 (OID 95231)
+-- Name: RI_ConstraintTrigger_95231; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
@@ -12147,8 +12178,8 @@ CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
 
 
 --
--- TOC entry 189 (OID 114843)
--- Name: RI_ConstraintTrigger_114843; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 191 (OID 95232)
+-- Name: RI_ConstraintTrigger_95232; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
@@ -12160,8 +12191,8 @@ CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
 
 
 --
--- TOC entry 241 (OID 114844)
--- Name: RI_ConstraintTrigger_114844; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 243 (OID 95233)
+-- Name: RI_ConstraintTrigger_95233; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_canal_fk
@@ -12173,8 +12204,8 @@ CREATE CONSTRAINT TRIGGER borrador_canal_fk
 
 
 --
--- TOC entry 197 (OID 114845)
--- Name: RI_ConstraintTrigger_114845; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 199 (OID 95234)
+-- Name: RI_ConstraintTrigger_95234; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_canal_fk
@@ -12186,8 +12217,8 @@ CREATE CONSTRAINT TRIGGER borrador_canal_fk
 
 
 --
--- TOC entry 198 (OID 114846)
--- Name: RI_ConstraintTrigger_114846; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 200 (OID 95235)
+-- Name: RI_ConstraintTrigger_95235; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_canal_fk
@@ -12199,8 +12230,8 @@ CREATE CONSTRAINT TRIGGER borrador_canal_fk
 
 
 --
--- TOC entry 242 (OID 114847)
--- Name: RI_ConstraintTrigger_114847; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 244 (OID 95236)
+-- Name: RI_ConstraintTrigger_95236; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
@@ -12212,8 +12243,8 @@ CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
 
 
 --
--- TOC entry 208 (OID 114848)
--- Name: RI_ConstraintTrigger_114848; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 210 (OID 95237)
+-- Name: RI_ConstraintTrigger_95237; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
@@ -12225,8 +12256,8 @@ CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
 
 
 --
--- TOC entry 209 (OID 114849)
--- Name: RI_ConstraintTrigger_114849; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 211 (OID 95238)
+-- Name: RI_ConstraintTrigger_95238; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
@@ -12238,7 +12269,7 @@ CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
 
 
 --
--- TOC entry 233 (OID 114850)
+-- TOC entry 235 (OID 95239)
 -- Name: nuevo_apunte; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12249,7 +12280,7 @@ CREATE TRIGGER nuevo_apunte
 
 
 --
--- TOC entry 234 (OID 114851)
+-- TOC entry 236 (OID 95240)
 -- Name: nuevo_apunte1; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12260,7 +12291,7 @@ CREATE TRIGGER nuevo_apunte1
 
 
 --
--- TOC entry 235 (OID 114852)
+-- TOC entry 237 (OID 95241)
 -- Name: nuevo_apunte2; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12271,7 +12302,7 @@ CREATE TRIGGER nuevo_apunte2
 
 
 --
--- TOC entry 191 (OID 114853)
+-- TOC entry 193 (OID 95242)
 -- Name: nueva_cuenta; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12282,7 +12313,7 @@ CREATE TRIGGER nueva_cuenta
 
 
 --
--- TOC entry 190 (OID 114854)
+-- TOC entry 192 (OID 95243)
 -- Name: borra_cuenta; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12293,7 +12324,7 @@ CREATE TRIGGER borra_cuenta
 
 
 --
--- TOC entry 200 (OID 114855)
+-- TOC entry 202 (OID 95244)
 -- Name: nuevo_canal; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12304,7 +12335,7 @@ CREATE TRIGGER nuevo_canal
 
 
 --
--- TOC entry 199 (OID 114856)
+-- TOC entry 201 (OID 95245)
 -- Name: borra_canal; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12315,7 +12346,7 @@ CREATE TRIGGER borra_canal
 
 
 --
--- TOC entry 211 (OID 114857)
+-- TOC entry 213 (OID 95246)
 -- Name: nuevo_ccoste; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12326,7 +12357,7 @@ CREATE TRIGGER nuevo_ccoste
 
 
 --
--- TOC entry 210 (OID 114858)
+-- TOC entry 212 (OID 95247)
 -- Name: borra_ccoste; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12337,7 +12368,7 @@ CREATE TRIGGER borra_ccoste
 
 
 --
--- TOC entry 192 (OID 114859)
+-- TOC entry 194 (OID 95248)
 -- Name: propaga_acumulado_cuenta; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12348,7 +12379,7 @@ CREATE TRIGGER propaga_acumulado_cuenta
 
 
 --
--- TOC entry 212 (OID 114860)
+-- TOC entry 214 (OID 95249)
 -- Name: propaga_acumulado_ccoste; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12359,7 +12390,7 @@ CREATE TRIGGER propaga_acumulado_ccoste
 
 
 --
--- TOC entry 217 (OID 114861)
+-- TOC entry 219 (OID 95250)
 -- Name: acumulados_canal_fk; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12370,7 +12401,7 @@ CREATE TRIGGER acumulados_canal_fk
 
 
 --
--- TOC entry 5 (OID 105317)
+-- TOC entry 5 (OID 85673)
 -- Name: grupo_idgrupo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12378,7 +12409,7 @@ SELECT pg_catalog.setval('grupo_idgrupo_seq', 1, false);
 
 
 --
--- TOC entry 7 (OID 105322)
+-- TOC entry 7 (OID 85678)
 -- Name: cuenta_idcuenta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12386,7 +12417,7 @@ SELECT pg_catalog.setval('cuenta_idcuenta_seq', 770, true);
 
 
 --
--- TOC entry 9 (OID 105329)
+-- TOC entry 9 (OID 85685)
 -- Name: canal_idcanal_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12394,7 +12425,7 @@ SELECT pg_catalog.setval('canal_idcanal_seq', 10, true);
 
 
 --
--- TOC entry 11 (OID 105334)
+-- TOC entry 11 (OID 85690)
 -- Name: c_coste_idc_coste_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12402,7 +12433,7 @@ SELECT pg_catalog.setval('c_coste_idc_coste_seq', 7, true);
 
 
 --
--- TOC entry 13 (OID 105339)
+-- TOC entry 13 (OID 85695)
 -- Name: acumulado_c_c_idacumulado_c_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12410,7 +12441,7 @@ SELECT pg_catalog.setval('acumulado_c_c_idacumulado_c_seq', 6481, true);
 
 
 --
--- TOC entry 15 (OID 105344)
+-- TOC entry 15 (OID 85700)
 -- Name: acumulado_can_idacumulado_c_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12418,7 +12449,7 @@ SELECT pg_catalog.setval('acumulado_can_idacumulado_c_seq', 6380, true);
 
 
 --
--- TOC entry 17 (OID 105349)
+-- TOC entry 17 (OID 85705)
 -- Name: diario_iddiario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12426,7 +12457,7 @@ SELECT pg_catalog.setval('diario_iddiario_seq', 1, false);
 
 
 --
--- TOC entry 19 (OID 105354)
+-- TOC entry 19 (OID 85710)
 -- Name: asiento_idasiento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12434,23 +12465,23 @@ SELECT pg_catalog.setval('asiento_idasiento_seq', 44, true);
 
 
 --
--- TOC entry 21 (OID 105362)
+-- TOC entry 21 (OID 85718)
 -- Name: apunte_idapunte_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('apunte_idapunte_seq', 3296, true);
+SELECT pg_catalog.setval('apunte_idapunte_seq', 3300, true);
 
 
 --
--- TOC entry 23 (OID 105368)
+-- TOC entry 23 (OID 85724)
 -- Name: borrador_idborrador_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('borrador_idborrador_seq', 1552, true);
+SELECT pg_catalog.setval('borrador_idborrador_seq', 1555, true);
 
 
 --
--- TOC entry 25 (OID 105373)
+-- TOC entry 25 (OID 85729)
 -- Name: registroiva_idregistroiva_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12458,7 +12489,7 @@ SELECT pg_catalog.setval('registroiva_idregistroiva_seq', 53, true);
 
 
 --
--- TOC entry 27 (OID 105378)
+-- TOC entry 27 (OID 85734)
 -- Name: ainteligente_idainteligente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12466,7 +12497,7 @@ SELECT pg_catalog.setval('ainteligente_idainteligente_seq', 13, true);
 
 
 --
--- TOC entry 29 (OID 105386)
+-- TOC entry 29 (OID 85742)
 -- Name: binteligente_idbinteligente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12474,7 +12505,7 @@ SELECT pg_catalog.setval('binteligente_idbinteligente_seq', 1, false);
 
 
 --
--- TOC entry 70 (OID 105391)
+-- TOC entry 71 (OID 85747)
 -- Name: ivainteligente_idivainteligente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12482,7 +12513,7 @@ SELECT pg_catalog.setval('ivainteligente_idivainteligente_seq', 55, true);
 
 
 --
--- TOC entry 71 (OID 105396)
+-- TOC entry 72 (OID 85752)
 -- Name: compmasap_idcompmasap_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12490,7 +12521,7 @@ SELECT pg_catalog.setval('compmasap_idcompmasap_seq', 605, true);
 
 
 --
--- TOC entry 72 (OID 105401)
+-- TOC entry 73 (OID 85757)
 -- Name: mpatrimonial_idmpatrimonial_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12498,7 +12529,7 @@ SELECT pg_catalog.setval('mpatrimonial_idmpatrimonial_seq', 78, true);
 
 
 --
--- TOC entry 73 (OID 105406)
+-- TOC entry 74 (OID 85762)
 -- Name: compbalance_idcompbalance_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12506,7 +12537,7 @@ SELECT pg_catalog.setval('compbalance_idcompbalance_seq', 115, true);
 
 
 --
--- TOC entry 74 (OID 105411)
+-- TOC entry 75 (OID 85767)
 -- Name: balance_idbalance_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12514,7 +12545,7 @@ SELECT pg_catalog.setval('balance_idbalance_seq', 5, true);
 
 
 --
--- TOC entry 75 (OID 167429)
+-- TOC entry 76 (OID 85822)
 -- Name: amortizacion_idamortizacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12522,7 +12553,7 @@ SELECT pg_catalog.setval('amortizacion_idamortizacion_seq', 1, false);
 
 
 --
--- TOC entry 76 (OID 167447)
+-- TOC entry 77 (OID 85830)
 -- Name: linamortizacion_idlinamortizacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 

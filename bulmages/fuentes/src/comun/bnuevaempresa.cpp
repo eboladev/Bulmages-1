@@ -40,7 +40,7 @@ void BNuevaEmpresa::accept()
   conexionbase->inicializa(confpr->valor(CONF_METABASE).c_str());
   //conexionbase->ejecuta("DROP DATABASE " + nombredb);
   conexionbase->ejecuta("CREATE DATABASE " + nombredb + " WITH TEMPLATE=bgplangcont");
-   
+  
    // Aqui vamos a insertar la fila correspondiente en la metabd
    QString query;
    cursor2 *cursoraux;
@@ -59,6 +59,15 @@ void BNuevaEmpresa::accept()
    if (!cursoraux->eof()) idSuperUser= cursoraux->valor(0).toInt();
    query.sprintf("INSERT INTO usuario_empresa(idusuario,idempresa,permisos) VALUES (%d,%d,1)",idSuperUser,idempresa);
    conexionbase->ejecuta(query);
+   conexionbase->commit();
+   
+   //Creamos el primer ejercicio de la empresa (con sus 12 periodos bloqueables) en la tabla ejercicios.
+   conexionbase->inicializa(nombredb);
+   conexionbase->begin();
+   for (int periodo=0; periodo<=12; periodo++) {
+       query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%d','%d', 'f')",ejercicio, periodo);
+       conexionbase->ejecuta(query);
+    }
    conexionbase->commit();
    
    delete conexionbase;

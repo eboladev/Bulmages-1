@@ -64,11 +64,13 @@
 #include "images/help.xpm"
 #include "images/estadisticas.xpm"
 
-Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd,QString *ejercicio) 
+Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd,QString *ejercicioMetaDB) 
 : QMainWindow(parent,name,f) 
 
 {
-  Ejercicio =ejercicio->ascii();
+  //Si no existe un ejercicio en la tabla "ejercicios" entonces usamos el ejercicio de la MetaDB
+  Ejercicio = confpr->valor(EJERCICIO_ACTUAL);
+  if (Ejercicio =="0000") Ejercicio = ejercicioMetaDB->ascii();
   setCaption(tr("BulmaGés ") + Ejercicio);
   DBName=DB->ascii();
   confpr->setValor(EJERCICIO_ACTUAL,Ejercicio.ascii());

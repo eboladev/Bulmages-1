@@ -71,7 +71,7 @@ public:
     QString NombreUsuario;
     QString PasswordUsuario;
     QString NombreBaseDatos;
-    QString ejercicio;
+    QString ejercicioMetaDB;
     
     BModContabilidad * ModuloContabilidad;
     BModVentas * ModuloVentas;

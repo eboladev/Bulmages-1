@@ -159,8 +159,21 @@ void configuracion::leeconfig(char *fich) {
 valores[CONF_FONTFAMILY_BULMAGES]="Luxi Sans";
 valores[CONF_FONTSIZE_BULMAGES]= "12";
 valores[PRIVILEGIOS_USUARIO]= "1";
-valores[EJERCICIO_ACTUAL]="0000";
 }// end leeconfig
+
+void configuracion::cargarEntorno(QString baseDatos) {
+    postgresiface2 DBConn;
+    QString query;
+    cursor2 *recordSet;
+    DBConn.inicializa(baseDatos);
+    DBConn.begin();
+    //Buscamos el último ejercicio en la tabla "ejercicios"
+    query="SELECT MAX(ejercicio) AS ejercicio FROM ejercicios WHERE periodo=0";
+    recordSet = DBConn.cargacursor(query,"recordSet");
+    DBConn.commit();
+    if (!recordSet->eof()) valores[EJERCICIO_ACTUAL]=recordSet->valor("ejercicio").ascii();
+    else valores[EJERCICIO_ACTUAL]="0000";
+}
 
 
 string configuracion::valor(int i) {

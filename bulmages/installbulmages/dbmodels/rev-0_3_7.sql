@@ -68,6 +68,7 @@ CREATE TABLE ejercicios (
 ALTER TABLE asiento ADD COLUMN clase smallint;
 
 DROP FUNCTION reordenaasientos();
+DROP FUNCTION reordenaasientos(integer);
 
 CREATE FUNCTION reordenaasientos(integer) RETURNS integer
     AS '

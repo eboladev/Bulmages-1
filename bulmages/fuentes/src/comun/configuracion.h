@@ -17,7 +17,7 @@
 #include <qapplication.h>
 #include <qtranslator.h>
 
-
+#include "postgresiface2.h"
 
 // #include <qwidget.h>
 #include <fstream>
@@ -92,7 +92,8 @@ class configuracion {
         ~configuracion();
         string valor(int);
         void setValor(int, string);
-        void leeconfig(char *);   
+        void leeconfig(char *);
+        void cargarEntorno(QString);   
 };
 
 
