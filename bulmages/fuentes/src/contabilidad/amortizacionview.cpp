@@ -16,5 +16,15 @@ amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *na
    conexionbase = empresaactual->bdempresa();
 }
 
+void amortizacionview::accept() {
+	fprintf(stderr,"Vamos a hacer un accept\n");
+	QString namortizacion = nomamortizacion->text();
+	QString query = "INSERT INTO amortizacion (nomamortizacion) VALUES('"+namortizacion+"')";
+	conexionbase->begin();
+	conexionbase->ejecuta(query);
+	conexionbase->commit();
+	done(1);
+}// end accept
+
 amortizacionview::~amortizacionview() {
 }

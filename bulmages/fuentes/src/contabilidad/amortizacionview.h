@@ -28,6 +28,8 @@ postgresiface2 *conexionbase;
 public:
     amortizacionview::amortizacionview(empresa *, QWidget *, const char *, bool );
     ~amortizacionview();
+public slots:
+	virtual void accept();
 };
 
 #endif

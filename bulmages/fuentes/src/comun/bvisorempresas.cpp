@@ -22,7 +22,7 @@ BVisorEmpresas::BVisorEmpresas(QString * ptrRetorno, QWidget * parent, const cha
    seleccion = ptrRetorno; //puntero al QString que sera retornado al cerrar.
    listView1->setColumnWidth(0,(int)((listView1->width()-20)*0.75));
    listView1->setColumnWidth(1,listView1->width() - listView1->columnWidth(0)-20);
-   listView1->hideColumn(2);
+//   listView1->hideColumn(2);
    QListViewItem *linea;
    
    postgresiface2 *DBconn = new postgresiface2();
