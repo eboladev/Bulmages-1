@@ -77,8 +77,8 @@ CREATE TABLE proveedor (
 #define COL_DIVISION_IDPROVEEDOR 7
 
 
-provedit::provedit(company *comp, QWidget *parent, const char *name)
- : provedit_base(parent, name) {
+provedit::provedit(company *comp, QWidget *parent, const char *name, int flag)
+ : provedit_base(parent, name, flag) {
    companyact = comp;
    idprovider = "0";
    

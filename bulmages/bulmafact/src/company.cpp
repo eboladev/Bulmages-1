@@ -21,6 +21,7 @@
  
 #include "company.h"
 #include "stdio.h"
+#include "budget.h"
 #include <qnamespace.h>
 #include "providerslist.h"
 #include "provedit.h"
@@ -41,16 +42,9 @@ company::~company(){
 
 
 void company::listproviders () {
-/*
+//   providerslist *m_provlist = new providerslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"),Qt::WType_TopLevel | Qt::WStyle_Customize | Qt::WStyle_DialogBorder);
    providerslist *m_provlist = new providerslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
    m_provlist->show();
-*/
-   providerslist *m_provlist = new providerslist(this, NULL,theApp->translate("Hola mundo.","company"));
-   m_provlist->modoseleccion();
-   m_provlist->exec();
-   fprintf(stderr,"El id seleccionado es: %s",m_provlist->idprovider().ascii());
-   delete m_provlist;
-
 }
 
 void company::listclients () {
@@ -73,9 +67,9 @@ void company::listdelivnotes () {
    m_delivnoteslist->show();
 }
 
-void company::provideraction() {
-   provedit *prov = new provedit(this,0,theApp->translate("Edicion de Proveedores", "company"));
-   prov->exec();
-   delete prov;
-}// end provideraction
+
+void company::newBudget() {
+   Budget *bud = new Budget(this,m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
+   bud->show();
+}// end bud
 

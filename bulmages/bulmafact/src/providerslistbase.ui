@@ -1,7 +1,7 @@
 <!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>providerslistbase</class>
 <author>Joan Miquel Torres Rigo</author>
-<widget class="QDialog">
+<widget class="QWidget">
     <property name="name">
         <cstring>providerslistbase</cstring>
     </property>

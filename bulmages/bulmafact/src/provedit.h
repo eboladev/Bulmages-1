@@ -32,7 +32,7 @@ private:
    company *companyact;
    QString idprovider;
 public:
-    provedit(company *emp, QWidget *parent = 0, const char *name = 0);
+    provedit(company *emp, QWidget *parent = 0, const char *name = 0, int flag=0);
     ~provedit();
 public:
    void chargeprovider(QString);
@@ -41,6 +41,7 @@ public slots:
    virtual void boton_nuevo();
    virtual void boton_borrar();
    virtual void boton_newdivision();
+   virtual void close() {delete this;};
 };
 
 #endif

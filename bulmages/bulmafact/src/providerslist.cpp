@@ -171,18 +171,14 @@ void providerslist::inicializa() {
 
 
 void providerslist::doubleclicked(int a, int b, int c, const QPoint &) {
-
    m_idprovider = m_list->text(a,COL_IDPROVEEDOR);
    m_cifprovider = m_list->text(a,COL_CIFPROVEEDOR);
-
    if (m_modo ==0 ) {
       QString idprov = m_list->text(a, COL_IDPROVEEDOR);
       fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
-      provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
+      provedit *prov = new provedit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
       prov->chargeprovider(idprov);
-      prov->exec();
-      delete prov;
-      inicializa();
+      prov->show();
    } else {
       close();
    }// end if
@@ -191,7 +187,7 @@ void providerslist::doubleclicked(int a, int b, int c, const QPoint &) {
 
 
 
-void providerslist::contextMenu(int a, int , const QPoint &) {
+void providerslist::contextMenu(int , int , const QPoint &) {
 /*
    QString idprov = m_list->text(a, COL_IDPROVEEDOR);
    provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
@@ -205,12 +201,8 @@ void providerslist::contextMenu(int a, int , const QPoint &) {
 
 void providerslist::newprovider() {
    fprintf(stderr,"Iniciamos el boton_crear\n");
-   provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
-   fprintf(stderr,"Ejecutamos el objeto que hemos creado\n");
-   prov->exec();
-   delete prov;
-   fprintf(stderr,"Recargamos el formulario\n");
-   inicializa();
+   provedit *prov = new provedit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
+   prov->show();
 }// end boton_crear
 
 /*

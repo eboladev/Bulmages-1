@@ -107,22 +107,18 @@ void orderslist::inicializa() {
 void orderslist::dobleclick(int a, int b, int c, const QPoint &) {
    QString idpedido = m_list->text(a, COL_IDPEDIDO);
    fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
-   linorderslist *linea = new linorderslist(companyact,0,theApp->translate("Detalle Pedido", "company"));
+   linorderslist *linea = new linorderslist(companyact,companyact->m_pWorkspace,theApp->translate("Detalle Pedido", "company"));
    linea->chargelinorders(idpedido);
-   linea->exec();
-   delete linea;
-   inicializa();
+   linea->show();
 }
 
 
 void orderslist::neworder() {
    fprintf(stderr, "neworder button activated");
-   linorderslist *linea = new linorderslist(companyact,0,theApp->translate("Detalle Pedido", "company"));
+   linorderslist *linea = new linorderslist(companyact,companyact->m_pWorkspace,theApp->translate("Detalle Pedido", "company"));
    linea->chargelinorders(QString("0"));
-   linea->exec();
-   delete linea;
-   inicializa();
-}
+   linea->show();
+}// end neworder
 
 
 orderslist::~orderslist() {

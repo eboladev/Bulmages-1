@@ -44,6 +44,7 @@ CREATE TABLE lpedido (
 #include <qlabel.h>
 #include <qtextedit.h>
 #include <qcombobox.h>
+#include <qwidget.h>
 #include "company.h"
 
 #define COL_NUMLPEDIDO 0
@@ -236,10 +237,6 @@ void linorderslist::accept() {
 	close();
 }
 
-void linorderslist::close() {
-	QDialog::close();
-}
-
 
 void linorderslist::neworderlin() {
 	m_list->setNumRows( m_list->numRows()+1 );
@@ -251,9 +248,16 @@ linorderslist::~linorderslist() {
 
 
 void linorderslist::searchProvider() {
-   providerslist *provlist = new providerslist(companyact, this,theApp->translate("Hola mundo.","company"));
+   fprintf(stderr,"Busqueda de un proveedor\n");
+   providerslist *provlist = new providerslist(companyact, NULL, theApp->translate("Seleccione proveedor","company"), WType_Dialog| WShowModal);
    provlist->modoseleccion();
-   provlist->exec();
+   
+   // Esto es convertir un QWidget en un sistema modal de dialogo.
+   this->setEnabled(false);
+   provlist->show();
+   while(!provlist->isHidden()) theApp->processEvents();
+   this->setEnabled(true);
+   
    m_idprovider = provlist->idprovider();
    m_cifprovider->setText(provlist->cifprovider());
    delete provlist;

@@ -29,7 +29,7 @@ Company class gives the application something like a standard interface to acces
 */
 
 class company : public postgresiface2 {
-private:
+public:
    QWidget *m_pWorkspace;
 public:
    company();
@@ -40,7 +40,7 @@ public:
    void listorders();
    void listdelivnotes();
    void setWorkspace(QWidget *qw) {m_pWorkspace=qw;}
-   void provideraction();
+   void newBudget();
 };
 
 #endif

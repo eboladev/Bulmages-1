@@ -85,7 +85,7 @@ void bulmafact::listdelivnotes()
 
 void bulmafact::proveedores() {
    fprintf(stderr,"provideraction activado \n");
-   m_company.provideraction();
+   m_company.listproviders();
 }// end provideraction
 
 void bulmafact::caja() {
@@ -122,4 +122,9 @@ void bulmafact::aboutQt()
 {
     QMessageBox::aboutQt( this, tr("Qt Application Example") );
 }
+
+void bulmafact::newBudget() {
+   m_company.newBudget();
+}// end provideraction
+
 
