@@ -24,6 +24,8 @@ abreempresaview::abreempresaview(BSelector *parent, const char *name, bool modal
    apuestatealgo = new postgresiface2();
    apuestatealgo->inicializa( confpr->valor(CONF_METABASE).c_str() );
    QListViewItem *it;
+   
+   // Cargamos las contabilidades.
    cursor2 *a;
    apuestatealgo->begin();
    a=apuestatealgo->cargaempresas();
@@ -36,6 +38,20 @@ abreempresaview::abreempresaview(BSelector *parent, const char *name, bool modal
          a->siguienteregistro();
    }// end while
    delete a;
+   
+   // Cargamos las facturaciones.
+   apuestatealgo->begin();
+   a=apuestatealgo->cargacursor("SELECT * FROM empresafact","otroquery");
+   apuestatealgo->commit();
+   while (!a->eof()) {
+         it =new QListViewItem(empresas);
+         it->setText(0,a->valor(1));
+         it->setText(1,a->valor(2));
+         it->setText(2,a->valor(3));
+         a->siguienteregistro();
+   }// end while
+   delete a;
+   
    delete apuestatealgo;
    intentos=0;
 }// end abreempresaview
