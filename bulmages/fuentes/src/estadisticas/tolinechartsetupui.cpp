@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Form implementation generated from reading ui file 'tolinechartsetupui.ui'
 **
-** Created: lun mar 8 23:54:05 2004
+** Created: mié mar 10 22:30:04 2004
 **      by: The User Interface Compiler ($Id$)
 **
 ** WARNING! All changes made in this file will be lost!

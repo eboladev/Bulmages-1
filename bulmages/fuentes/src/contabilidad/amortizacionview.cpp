@@ -22,18 +22,26 @@ amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *na
 	empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    	idamortizacion = "";
+        QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion=valor AND configuracion.nombre='Amortizacion'";
+        conexionbase->begin();
+        cursor2 *cur = conexionbase->cargacursor(query,"hola");
+        conexionbase->commit();
+        if (!cur->eof()) {
+           idainteligente = cur->valor("idainteligente");
+           fprintf(stderr,"El asiento de amortización es:%s\n", idainteligente.ascii());;
+        }// end if
+        delete cur;
         table1->hideColumn(COL_IDLINAMORTIZACION);
    idamortizacion = "";
 }
+
 
 void amortizacionview::accept() {
 	QString query;
 	QString namortizacion = nomamortizacion->text();
 	double valorcompradbl = valorcompra->text().toDouble();
 	int numcuotasint = numcuotas->text().toInt();
-	QString fechacomprastr = fechacompra->text();
-
-	
+	QString fechacomprastr = fechacompra->text();	
 	fprintf(stderr,"Vamos a hacer un accept\n");
 	if (idamortizacion == "") {
 		fprintf(stderr,"Se trata de una inserción");
@@ -80,8 +88,10 @@ void amortizacionview::accept() {
 	}// end if
 }// end accept
 
+
 amortizacionview::~amortizacionview() {
 }
+
 
 void amortizacionview::inicializa(QString idamortiza) {
 	idamortizacion = idamortiza;
@@ -154,4 +164,20 @@ void amortizacionview::cambiofechacompra() {
 void amortizacionview::cambiofecha1cuota() {
   fecha1cuota->setText(normalizafecha(fecha1cuota->text()).toString("dd/MM/yyyy"));
 }// end cambiofechacompra
+
+
+void amortizacionview::contextMenuRequested(int x, int i, const QPoint &poin) {
+   QPopupMenu *popup;
+   popup = new QPopupMenu;
+   int opcion;
+   popup->insertItem(tr("Generar Asiento"),4);
+   popup->insertSeparator();
+   popup->insertItem(tr("Ver Asiento"),1);
+   popup->insertItem(tr("--"),6);
+   popup->insertSeparator();
+   popup->insertItem(tr("--"),2);
+   popup->insertItem(tr("--"),3);
+   opcion = popup->exec(poin);
+   delete popup;
+}// end contextMenuRequested
 
