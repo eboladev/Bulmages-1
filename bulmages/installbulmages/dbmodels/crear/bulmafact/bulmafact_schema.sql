@@ -164,24 +164,95 @@ CREATE TABLE articulo (
 );
 
 
+--Codificación y clasifiación de artículos. Se han codificado las tablas para que sean compatibles con la definición de AECOC. 
+--En este script no se aplican los datos de integridad referencial necesarios.
+--Esto se hará a posteriori en un script que podrá ejecutar el usuario si desea utilizar este tipo de codificación.
+
+-- codigosector código de sector
+-- nombresector nombre del sector
+-- descsector descripción extendida del sector
+
+CREATE TABLE sector (
+	idsector serial PRIMARY KEY,
+	codigosector numeric(2, 0),
+	nombresector character varying(50),
+	descsector character varying(300)
+);
 
 
+-- codigoseccion código de la sección.
+-- nombreseccion nombre de la sección
+-- descseccion descripción extendida de la sección
+-- codcompseccion código compuesto de sección: codigo de sector + código de sección.
+-- comprobaciones de integridad respecto a la tabla sector con idsector. 
 
--- COMPROVACIONS D'INTEGRITAT>Genriques:
--- Totes les families tenen, al menys, un ascendent de primer nivell i no son descendents de si mateixes.
--- COMPROVACIONS DE RUTINA:
--- En assignar una nova familia a un article, verificar els catlegs no exclusius de la familia als que no pertany l'article i preguntar a l'usuari si vol que s'hi afegeixi.
--- En desassignar un article d'una familia, verificar els catlegs no exclusius de la familia sortint als que tamb pertany l'article i no cap de les families a les que encara pertany i preguntar a l'usuari si vol treure'l de les mateixes i de quines.
--- La catalogaci
--- Codi: Clau artificial.
--- Nom: Descripció curta de la familia.
--- Descripcio: Descripció completa (llarga) de la familia.
--- Icona: Icona de l'article.
+CREATE TABLE seccion (
+	idseccion serial PRIMARY KEY,
+	codigoseccion numeric(2, 0),
+	nombreseccion character varying(50),
+	descseccion character varying(300),
+	codcompseccion numeric(4, 0),
+	idsector integer REFERENCES sector(idsector)
+);
+
+
+-- codigofamilia código de la familia.
+-- nombrefamilia nombre de la familia
+-- descfamilia descripción extendida de la familia.
+-- codcompfamilia código compuesto de familia: codigo de sector + código de sección + código de familia.
+-- comprobaciones de integridad respecto a la tabla sector con idsector.
+-- comprobaciones de integridad respecto a la tabla seccion con idseccion. 
+
 CREATE TABLE familia (
-    idfamilia serial PRIMARY KEY,
-    nombrefamilia character varying(50),
-    descfamilia character varying(1000),
-    iconofamilia oid
+	idfamilia serial PRIMARY KEY,
+	codigofamilia numeric(2, 0),
+ 	nombrefamilia character varying(50),
+	descfamilia character varying(300),
+	codcompfamilia numeric(6, 0),
+	idsector integer REFERENCES sector(idsector),
+	idseccion integer REFERENCES seccion(idseccion)
+);
+
+
+-- codigosubfamilia código de la subfamilia.
+-- nombresubfamilia nombre de la subfamilia.
+-- descfamilia descripción extendida de la subfamilia.
+-- codcompfamilia código compuesto de subfamilia: codigo de sector + código de sección + código de familia + código de subfamilia.
+-- comprobaciones de integridad respecto a la tabla sector con idsector.
+-- comprobaciones de integridad respecto a la tabla seccion con idseccion.
+-- comprobaciones de integridad respecto a la tabla familia con idfamilia.  
+
+CREATE TABLE subfamilia (
+	idsubfamilia serial PRIMARY KEY,
+	codigosubfamilia numeric(2, 0),
+ 	nombresubfamilia character varying(50),
+	descsubfamilia character varying(300),
+	codcompsubfamilia numeric(8, 0),
+	idsector integer REFERENCES sector(idsector),
+	idseccion integer REFERENCES seccion(idseccion),
+	idfamilia integer REFERENCES familia(idfamilia)
+);
+
+
+-- codigosubfamilia código de la variedad.
+-- nombresubfamilia nombre de la variedad.
+-- descfamilia descripción extendida de la variedad.
+-- codcompfamilia código compuesto de variedad: codigo de sector + código de sección + código de familia + código de subfamilia + código de variedad.
+-- comprobaciones de integridad respecto a la tabla sector con idsector.
+-- comprobaciones de integridad respecto a la tabla seccion con idseccion.
+-- comprobaciones de integridad respecto a la tabla familia con idfamilia.
+-- comprobaciones de integridad respecto a la tabla subfamilia con idsubfamilia.    
+
+CREATE TABLE variedad (
+	idvariedad serial PRIMARY KEY,
+	codigovariedad numeric(2, 0),
+ 	nombrevariedad character varying(50),
+	descvariedad character varying(300),
+	codcompvariedad numeric(10, 0),
+	idsector integer REFERENCES sector(idsector),
+	idseccion integer REFERENCES seccion(idseccion),
+	idfamilia integer REFERENCES familia(idfamilia),
+	idsubfamilia integer REFERENCES subfamilia(idsubfamilia)
 );
 
 
@@ -712,11 +783,6 @@ CREATE TABLE num_serie (
 );
 
 
-CREATE TABLE famC (
-   idcatalogo integer REFERENCES catalogo(idcatalogo),
-   idfamilia integer REFERENCES familia(idfamilia)
-);
-
 
 CREATE TABLE artC (
    idcatalogo integer REFERENCES catalogo(idcatalogo),
@@ -724,15 +790,6 @@ CREATE TABLE artC (
 );
 
 
-CREATE TABLE hija (
-   idfamilia integer REFERENCES familia(idfamilia),
-   famhija integer REFERENCES familia(idfamilia)
-);
-
-CREATE TABLE agrupa (
-   idfamilia integer REFERENCES familia(idfamilia),
-   idarticulo integer REFERENCES articulo(idarticulo)
-);
 
 CREATE TABLE componente (
    idarticulo integer REFERENCES articulo(idarticulo),
@@ -752,11 +809,6 @@ CREATE TABLE stock (
    actual float
 );
 
-CREATE TABLE dxfam (
-   idcliente integer REFERENCES cliente(idcliente),
-   idfamilia integer REFERENCES familia(idfamilia),
-   descdxfam character varying(150)
-);
 
 CREATE TABLE dxart (
    idcliente integer REFERENCES cliente(idcliente),
