@@ -23,3 +23,8 @@ INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idline
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('2', 'Natillas', 'Pack dos envases de natillas de vainilla', 1, 1);
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('3', 'Yogurt', 'Pack 4 unidades yogures sabores', 1, 1);
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('4', 'Nestcafé', 'Bote 400 gramos café soluble natural', 1, 1);
+
+INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor) VALUES(1, 2004, '25/10/2004', 'Pedido semanal de carne y pescado', 1);
+INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor) VALUES(2, 2004, '30/10/2004', 'Pedido especial noche halloween', 2);
+INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor) VALUES(3, 2004, '02/11/2004', 'Frutos secos de temporada', 3);
+INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, idproveedor) VALUES(4, 2004, '02/10/2004', 'Pedido semanal de lencería', 2);
