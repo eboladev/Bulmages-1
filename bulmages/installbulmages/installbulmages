@@ -1,6 +1,7 @@
 #!/bin/bash
 
 
+touch errores.txt
 echo -e "Comprobando versiones anteriores\n"
 
 if [ -e /etc/bulmages.conf ]; then
