@@ -9,6 +9,32 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>22/11/2004</td>
+<td><center><b>Primer Screenshot de Bulmafact</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Hoy Tomeu Borràs ha mostrado la primera imagen de la futura facturación donde se pueden ver algunos de los puntos que ya se han realizado. Puede verse <A href="http://www.iglues.org/bulmafact1.png" TARGET="nueva">aquí</A>.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
+<td width=100>20/11/2004</td>
+<td><center><b>Aplazada Junta Directiva</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Dado que en la fecha fijada para la Junta Directiva a varios de los miembros les es imposible asistir ésta se aplaza hasta el próximo domingo dia 28 de noviembre con el mismo horario y programa.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>17/11/2004</td>
 <td><center><b>Finalizado Concurso de Iconos</b></center></td>
 </tr>

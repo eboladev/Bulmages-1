@@ -8,6 +8,32 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>22/11/2004</td>
+<td><center><b>Primer Screenshot de Bulmafact</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Hoy Tomeu Borràs ha mostrado la primera imagen de la futura facturación donde se pueden ver algunos de los puntos que ya se han realizado. Puede verse <A href="http://www.iglues.org/bulmafact1.png" TARGET="nueva">aquí</A>.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
+<td width=100>20/11/2004</td>
+<td><center><b>Aplazada Junta Directiva</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Dado que en la fecha fijada para la Junta Directiva a varios de los miembros les es imposible asistir ésta se aplaza hasta el próximo domingo dia 28 de noviembre con el mismo horario y programa.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>17/11/2004</td>
 <td><center><b>Finalizado Concurso de Iconos</b></center></td>
 </tr>
@@ -57,51 +83,6 @@ Enhorabuena!!!!!!!!!!
 </tr>
 </table>
 
-<br>
-
-<table border=0 cellspacing="0" class="news">
-<tr class="head">
-<td width=100>11/10/2004</td>
-<td><center><b>Concurso para crear la iconografía de BulmaFact</b></center></td>
-</tr>
-<tr>
-<td colspan=2>Ante la necesidad de realizar la iconografía para BulmaFact, se convoca un concurso consistente en 
-la realización de los iconos para el programa de facturación. El <A href="./img/pegatinaypin.jpg" TARGET="nueva">premio</A>, el hecho de que los iconos se utilizarán en el programa,
-una pegatina y un pin de la Free Software Foundation.<br>
-Los iconos a realizar son: proveedores, clientes, compras ventas, artículos, caja, bancos, facturas y partes de trabajo.</p>
-<br>
-Las normas del concurso son:
-<ol>
-        <li>No vale usar el lenguaje escrito.</li>
-        <li>Los iconos deben tener 32x32 píxeles y 256 colores.</li>
-        <li>Si son libres se pueden copiar o coger de otra parte.</li>
-        <li>Cada participante puede presentar tantos iconos como crea oportuno.</li>
-        <li>El jurado, como viene siendo habitual, será la votación popular.</li>
-	<li>El plazo de presentación es el dia 11/11/2004</li>
-</ol>
-<p>
-Se puede leer el anuncio oficial en <A HREF="http://llistes.bulma.net/pipermail/bulmages/2004-October/001201.html" TARGET="nueva">nuestra lista de correo<A>
-</td>
-</tr>
-</table>
-
-<br>
-
-<table border=0 cellspacing="0" class="news">
-<tr class="head">
-<td width=100>06/10/2004</td>
-<td><center><b>Publicada última versión de BulmaGés (0.41)</b></center></td>
-</tr>
-<tr>
-<td colspan=2>Hoy Tomeu Borrás ha anunciado la publicación de la última versión de BulmaGés (0.41) que incluye entre otras mejoras, cambio del splash de presentación y un nuevo script de instalación.
-Para más información visitar <A HREF="http://bulmages.bulma.net" TARGET="nueva">bulmages.bulma.net<A>
-</td>
-</tr>
-</table>
-
-<br>
-
-<a href="http://www.iglues.org/home.php?go=noticias">Más noticias ...</a>
 </div>
 '; 
 // =================================================
