@@ -1,5 +1,5 @@
 /* XPM */
-static const char *forward[]={
+static char *forward[]={
 "32 32 212 2",
 "Qt c None",
 ".A c #000000",
