@@ -64,6 +64,7 @@ CREATE TABLE proveedor (
 #include "provedit.h"
 #include "company.h"
 #include <qlineedit.h>
+#include <qmessagebox.h>
 
 provedit::provedit(company *comp, QWidget *parent, const char *name)
  : provedit_base(parent, name) {
@@ -178,7 +179,21 @@ void provedit::accept() {
       companyact->ejecuta(SQLQuery);
       companyact->commit();
       close();
-
    }// end if
 }// end accept
+
+/************************************************************************
+* Esta función se ejecuta cuando se ha pulsado sobre el botón de borrar *
+*************************************************************************/
+void provedit::boton_borrar() {
+   if (idprovider != "0") {
+      if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Proveedor","Esta a punto de borrar un proveedor, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
+         QString SQLQuery="DELETE FROM proveedor WHERE idproveedor="+idprovider;
+         companyact->begin();
+         companyact->ejecuta(SQLQuery);
+         companyact->commit();
+         close();
+      }// end if
+   }// end if
+}// end boton_borrar
 

@@ -35,12 +35,11 @@ public:
 public:
     providerslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
     ~providerslist();
+    void inicializa();
     
 public slots:
     virtual void dobleclick(int, int, int, const QPoint &);
     virtual void contextMenuRequested(int, int, const QPoint &);
-    
-    
 };
 
 #endif

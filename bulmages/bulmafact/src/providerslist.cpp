@@ -89,6 +89,14 @@ CREATE TABLE proveedor (
 providerslist::providerslist(company *comp, QWidget *parent, const char *name, int flag)
  : providerslistbase(parent, name, flag) {
       companyact = comp;
+      inicializa();
+      showMaximized();
+}// end providerslist
+
+providerslist::~providerslist() {
+}// end ~providerslist
+
+void providerslist::inicializa() {
    m_list->setNumRows( 0 );
    m_list->setNumCols( 0 );
    m_list->setSelectionMode( QTable::SingleRow );
@@ -112,7 +120,6 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
    m_list->horizontalHeader()->setLabel( COL_URLPROVEEDOR, tr("Página Web") );
    m_list->horizontalHeader()->setLabel( COL_CLAVEWEBPROVEEDOR, tr("Clave propia web proveedor") );
    m_list->horizontalHeader()->setLabel( COL_IDDIVISION, tr("Codigo División") );
-
    m_list->setColumnWidth(COL_IDPROVEEDOR,75);
    m_list->setColumnWidth(COL_NOMPROVEEDOR,300);
    m_list->setColumnWidth(COL_NOMALTPROVEEDOR,300);
@@ -134,12 +141,12 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).c_str());   
     m_list->setReadOnly(TRUE);        
-       companyact->begin();
-       cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor","unquery");
-       companyact->commit();
-       m_list->setNumRows( cur->numregistros() );
-       int i=0;
-       while (!cur->eof()) {
+    companyact->begin();
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor","unquery");
+    companyact->commit();
+    m_list->setNumRows( cur->numregistros() );
+    int i=0;
+    while (!cur->eof()) {
          m_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
          m_list->setText(i,COL_NOMPROVEEDOR,cur->valor("nomproveedor"));
          m_list->setText(i,COL_NOMALTPROVEEDOR,cur->valor("nomaltproveedor"));
@@ -158,15 +165,11 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
          m_list->setText(i,COL_IDDIVISION,cur->valor("iddivision"));
          i++;
          cur->siguienteregistro();
-       }// end while
-      
+    }// end while
       delete cur;
-      
-      showMaximized();
-}// end providerslist
+}// end inicializa
 
-providerslist::~providerslist() {
-}// end ~providerslist
+
 
 void providerslist::dobleclick(int a, int b, int c, const QPoint &d) {
 QString idprov = m_list->text(a, COL_IDPROVEEDOR);
@@ -176,6 +179,7 @@ fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
    prov->chargeprovider(idprov);
    prov->exec();
    delete prov;
+   inicializa();
 }
 
 
@@ -185,5 +189,6 @@ void providerslist::contextMenuRequested(int a, int b, const QPoint &d) {
    prov->chargeprovider(idprov);
    prov->exec();
    delete prov;
+   inicializa();
 }// end contextMenuRequested
 

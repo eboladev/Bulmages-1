@@ -39,6 +39,7 @@ public:
 public slots:
    virtual void accept();
    virtual void boton_nuevo();
+   virtual void boton_borrar();
 };
 
 #endif
