@@ -188,11 +188,11 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
     QDate fecha1;
     QDate fechain(1,1,1);
     QDate fechafi(2999,12,31);
+    int orden=0;
     if (m_fInicial != "")
     	fechain.setYMD(m_fInicial.mid(6,4).toInt(), m_fInicial.mid(3,2).toInt(), m_fInicial.mid(0,2).toInt());
     if (m_fFinal != "")
     	fechafi.setYMD(m_fFinal.mid(6,4).toInt(), m_fFinal.mid(3,2).toInt(), m_fFinal.mid(0,2).toInt());
-
 	// Subcuentas
 	QTextStream stream( &subcuentas );
 	while( !subcuentas.atEnd() ) {
@@ -347,6 +347,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 					delete cur;
 					napunte = 0;
 					lastasiento = asiento;
+					orden = 0;
 					mensajeria("<LI>Inserción de Asiento" + idasiento+"</LI>\n");
 				}// end if
 			}// end if
@@ -366,7 +367,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 			if (!cur->eof()) {
 				if (fecha1 >= fechain && fecha1 <= fechafi) {
 					if (!modoTest() ) {
-						query="INSERT INTO borrador (idasiento,idcuenta,fecha, conceptocontable, debe, haber) VALUES ("+idasiento+",id_cuenta('"+subcta+"'), '"+fecha+"','"+concepto+"',"+debe+","+haber+" )";
+						query="INSERT INTO borrador (idasiento,idcuenta,fecha, conceptocontable, debe, haber, orden) VALUES ("+idasiento+",id_cuenta('"+subcta+"'), '"+fecha+"','"+concepto+"',"+debe+","+haber+","+QString::number(orden++)+" )";
 						conexionbase->begin();
 						conexionbase->ejecuta(query);
 						conexionbase->commit();
@@ -425,19 +426,22 @@ QString pgimportfiles::searchParent(QString cod) {
 int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	QString codigo, descripcion;
 	QString strblancomax;
+	QString query;
 	QTextStream stream( &xmlfile );
 	stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
 	"<!DOCTYPE FUGIT>\n"
 	"<FUGIT version='0.3.1' origen='BulmaGés'"
         " date='" << QDate().toString(Qt::ISODate) << "'>\n";
-	    
+	
+
+	
+	
 	/// Sólo se van a exportar las cuentas utilizadas
-	QString query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre WHERE idcuenta IN (SELECT DISTINCT idcuenta FROM apunte)";
+	query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre ORDER BY codpadre";
 	conexionbase->begin();
 	cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
 	conexionbase->commit();
 	while (!curcta->eof()) {
-		QString linea="";
 		stream << "<CUENTA>\n";
 		stream << "\t<IDCUENTA>"       << curcta->valor("idcuenta")      << "</IDCUENTA>\n";
 		stream << "\t<CODIGO>"         << curcta->valor("codigo")        << "</CODIGO>\n";
@@ -449,7 +453,27 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 		curcta->siguienteregistro();
 	}// end while
 	delete curcta;
+
 	
+	/// Se vana exportar los tipos de IVA
+	query = "SELECT * from tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta";
+	conexionbase->begin();
+	cursor2 *curtiva = conexionbase->cargacursor(query, "querytiva");
+	conexionbase->commit();
+	while (!curtiva->eof()) {
+		stream << "<TIPOIVA>\n";
+		stream << "\t<IDTIPOIVA>"       << curtiva->valor("idtipoiva")      << "</IDTIPOIVA>\n";
+		stream << "\t<NOMBRETIPOIVA>"   << curtiva->valor("nombretipoiva")      << "</NOMBRETIPOIVA>\n";
+		stream << "\t<PORCENTAJETIPOIVA>"       << curtiva->valor("porcentajetipoiva")      << "</PORCENTAJETIPOIVA>\n";
+		stream << "\t<CUENTA>"       << curtiva->valor("codigo")      << "</CUENTA>\n";
+
+		stream << "</TIPOIVA>\n";
+		curtiva->siguienteregistro();
+
+	}// end while
+	delete curtiva;
+
+
 	/// Hacemos la exportación de asientos
 	query = "SELECT * FROM asiento WHERE 1=1 ";
 	if (m_fInicial != "") 
@@ -503,14 +527,14 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 			conexionbase->commit();
 			while (!curreg->eof()) {
 				stream << "\t\t<REGISTROIVA>\n";
-				stream << "\t\t\t<CONTRAPARTIDA>"  << curreg->valor("contrapartida")  << "</CONTRAPARTIDA>\n";
+				stream << "\t\t\t<CONTRAPARTIDA>"  << curreg->valor("codigo")  << "</CONTRAPARTIDA>\n";
 				stream << "\t\t\t<BASEIMP>"        << curreg->valor("baseimp")        << "</BASEIMP>\n";
 				stream << "\t\t\t<IVA>"            << curreg->valor("iva")            << "</IVA>\n";
 				stream << "\t\t\t<FFACTURA>"       << curreg->valor("ffactura")       << "</FFACTURA>\n";
 				stream << "\t\t\t<FACTURA>"        << curreg->valor("factura")        << "</FACTURA>\n";
 				stream << "\t\t\t<NUMORDEN>"       << curreg->valor("numorden")       << "</NUMORDEN>\n";
 				stream << "\t\t\t<CIF>"            << curreg->valor("cif")            << "</CIF>\n";
-				stream << "\t\t\t<IDFPAGO>"        << curreg->valor("idfpago")        << "</idfpago>\n";
+				stream << "\t\t\t<IDFPAGO>"        << curreg->valor("idfpago")        << "</IDFPAGO>\n";
 				stream << "\t\t\t<RECTIFICAAREGISTROIVA>"        << curreg->valor("rectificaaregistroiva")        << "</RECTIFICAAREGISTROIVA>\n";
 				
 				
@@ -523,7 +547,7 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 				while (!curiva->eof()) {
 					stream << "\t\t\t<RIVA>\n";
 					stream << "\t\t\t\t<IDTIPOIVA>"        << curiva->valor("idtipoiva")        << "</IDTIPOIVA>\n";
-					stream << "\t\t\t\t<BASEIVA>"          << curiva->valor("baseiva")        << "</baseiva>\n";
+					stream << "\t\t\t\t<BASEIVA>"          << curiva->valor("baseiva")        << "</BASEIVA>\n";
 					stream << "\t\t\t</RIVA>\n";
 					curiva->siguienteregistro();
 				}// end while
@@ -533,11 +557,7 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 				stream << "\t\t</REGISTROIVA>\n";
 				curreg->siguienteregistro();
 			}// end while
-			delete curreg;	
-			
-			
-			
-			
+			delete curreg;		
 			mensajeria("Exportando :"   + curap->valor("codigo")   + "--" +fecha+"\n");
 			curap->siguienteregistro();
 			stream << "\t</APUNTE>\n";
@@ -573,7 +593,25 @@ int pgimportfiles::XML2Bulmages (QFile &fichero) {
 StructureParser::StructureParser(postgresiface2 *con,void (*func)(int,int) ) {
 	alerta = func;
 	conexionbase = con;
+	QString query = "INSERT INTO cuenta (codigo, descripcion, idgrupo) VALUES ('AUX','Una descripcion', 1)";
+	conexionbase->begin();
+	conexionbase->ejecuta(query);
+	conexionbase->commit();	
+	for (int i=0; i<=12;i++) {
+		QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, "+QString::number(i)+", FALSE)";
+		conexionbase->begin();
+		conexionbase->ejecuta(query2);
+		conexionbase->commit();	
+	}// end for
 }// end StructureParser
+
+StructureParser::~StructureParser() {
+	QString query = "DELETE FROM cuenta WHERE codigo='AUX'";
+	conexionbase->begin();
+	conexionbase->ejecuta(query);
+	conexionbase->commit();
+}// end StructureParser
+
 
 bool StructureParser::startDocument() {
     indent = "";
@@ -594,11 +632,37 @@ bool StructureParser::startElement( const QString&, const QString&, const QStrin
 		idasiento = cur->valor("max");
 		fprintf(stderr,"INSERCION DE ASIENTO:%s",idasiento.ascii());
 	}// end if
+	// Iniciamos el orden para que los apuntes salgan en orden empezando desde cero
+	m_ordenapunte=0;
 	delete cur;
     }// end if
     if (qName == "APUNTE") {
+    	QString query = "INSERT INTO borrador (idasiento, debe, haber, idcuenta, fecha, orden) VALUES ("+idasiento+",0,0,id_cuenta('AUX'), '01/01/2003', "+QString::number(m_ordenapunte++)+")";
+	conexionbase->begin();
+	conexionbase->ejecuta(query);
+	cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idborrador) AS max FROM borrador","otroquery1");
+	conexionbase->commit();
+	if (!cur->eof() ) {
+		idborrador = cur->valor("max");
+		fprintf(stderr,"INSERCION DE APUNTE:%s",idborrador.ascii());
+	}// end if
+	delete cur;   
     	tagpadre = "APUNTE";
     }// end if
+    if (qName == "REGISTROIVA") {
+    	QString query = "INSERT INTO registroiva (contrapartida, idborrador) VALUES (id_cuenta('AUX'), "+idborrador+")";
+	conexionbase->begin();
+	conexionbase->ejecuta(query);
+	cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idregistroiva) AS max FROM registroiva","otroquery13");
+	conexionbase->commit();
+	if (!cur->eof() ) {
+		m_idRegistroIva = cur->valor("max");
+		fprintf(stderr,"INSERCION DE REGISTRO DE IVA:%s",idborrador.ascii());
+	}// end if
+	delete cur;   
+    	tagpadre = "REGISTROIVA";
+    }// end if
+    
     if (qName == "CUENTA") {
     	tagpadre = "CUENTA";
     }// end if
@@ -621,49 +685,80 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
     }// end if
 /// Si es una punte hacemos su inserción.
     if (qName == "APUNTE") {
-    	QString query = "INSERT INTO borrador (idasiento, debe, haber, idcuenta, fecha, conceptocontable) VALUES ("+idasiento+","+debeapunte+","+haberapunte+",id_cuenta('"+codigocuentaapunte+"'), '"+fechaapunte+"', '"+conceptocontableapunte+"')";
+    	QString query = "UPDATE borrador SET debe = "+debeapunte+", haber="+haberapunte+", idcuenta=id_cuenta('"+codigocuentaapunte+"'), fecha='"+fechaapunte+"', conceptocontable='"+conceptocontableapunte+"' WHERE idborrador="+idborrador;
 	conexionbase->begin();
 	conexionbase->ejecuta(query);
 	conexionbase->commit();
     }// end if
-    if (qName == "FECHA" && tagpadre == "ASIENTO") {
+    if (qName == "FECHA" && tagpadre == "ASIENTO")
     	fechaasiento = cadintermedia;
-    }// end if
-    if (qName == "FECHA" && tagpadre == "APUNTE") {
+    if (qName == "FECHA" && tagpadre == "APUNTE")
     	fechaapunte = cadintermedia;
-    }// end if
-    if (qName == "DEBE" && tagpadre == "APUNTE") {
+    if (qName == "DEBE" && tagpadre == "APUNTE")
     	debeapunte = cadintermedia;
-    }// end if
-    if (qName == "HABER" && tagpadre == "APUNTE") {
+    if (qName == "HABER" && tagpadre == "APUNTE")
     	haberapunte = cadintermedia;
-    }// end if
-    if (qName == "CODIGO" && tagpadre == "APUNTE") {
+    if (qName == "CODIGO" && tagpadre == "APUNTE")
     	codigocuentaapunte = cadintermedia;
-    }// end if
-    if (qName == "CONCEPTOCONTABLE" && tagpadre == "APUNTE") {
+    if (qName == "CONCEPTOCONTABLE" && tagpadre == "APUNTE")
     	conceptocontableapunte = cadintermedia;
-    }// end if
  
 /// Si es una cuenta la tratamos.
     if (qName == "CUENTA" ) {
     	QString idgrupo = codigocuenta.left(1);
 	fprintf(stderr,"codigocuenta [%s], primer caracter [%s] \n", codigocuenta.ascii(), idgrupo.ascii());
-    	QString query = "INSERT INTO cuenta (codigo, descripcion, padre, idgrupo) VALUES ('"+codigocuenta+"','"+descripcioncuenta+"', id_cuenta('"+codigopadre+"'), "+idgrupo+")";
+	/// Primero debemos determinar si existe o no dicha cuenta para hacer la inserción o no.
+	QString query = "SELECT * FROM cuenta WHERE codigo='"+codigocuenta+"'";
+	conexionbase->begin();
+	cursor2 *cur = conexionbase->cargacursor(query, "elquery23");
+	if (cur->eof()) {
+		QString query = "INSERT INTO cuenta (codigo, descripcion, padre, idgrupo) VALUES ('"+codigocuenta+"','"+descripcioncuenta+"', id_cuenta('"+codigopadre+"'), "+idgrupo+")";
+		conexionbase->ejecuta(query);
+		codigocuenta = "";
+		descripcioncuenta = "";
+		codigopadre = "";
+	}//end if
+	conexionbase->commit();	
+	delete cur;
+    }// end if
+    if (qName == "CODIGO" && tagpadre == "CUENTA")
+    	codigocuenta = cadintermedia;
+    if (qName == "DESCRIPCION" && tagpadre == "CUENTA")
+    	descripcioncuenta = cadintermedia;
+    if (qName == "CODPADRE" && tagpadre == "CUENTA")
+    	codigopadre = cadintermedia;
+    
+    /// Si es un registro de iva vamos a por el
+/// Si es una punte hacemos su inserción.
+    if (qName == "REGISTROIVA") {
+    	QString query = "UPDATE registroiva SET contrapartida=id_cuenta('"+m_rIvaContrapartida+"'), ffactura='"+m_rIvaFFactura+"'";
+	
+	if (m_rIvaBaseImp != "") 
+		query += ", baseimp="+m_rIvaBaseImp;
+	if (m_rIvaIva != "") 
+		query +=", iva="+m_rIvaIva;
+	query +="  WHERE idregistroiva="+m_idRegistroIva;
 	conexionbase->begin();
 	conexionbase->ejecuta(query);
 	conexionbase->commit();
-    }// end if
-    if (qName == "CODIGO" && tagpadre == "CUENTA") {
-    	codigocuenta = cadintermedia;
-    }// end if
-    if (qName == "DESCRIPCION" && tagpadre == "CUENTA") {
-    	descripcioncuenta = cadintermedia;
-    }// end if
-    if (qName == "CODPADRE" && tagpadre == "CUENTA") {
-    	codigopadre = cadintermedia;
-    }// end if
-    
+    }// end if    
+    if (qName == "CONTRAPARTIDA" && tagpadre == "REGISTROIVA")
+    	m_rIvaContrapartida = cadintermedia;
+    if (qName == "BASEIMP" && tagpadre == "REGISTROIVA")
+    	m_rIvaBaseImp = cadintermedia;	
+    if (qName == "IVA" && tagpadre == "REGISTROIVA")
+    	m_rIvaIva = cadintermedia;
+    if (qName == "FFACTURA" && tagpadre == "REGISTROIVA")
+    	m_rIvaFFactura = cadintermedia;
+    if (qName == "FACTURA" && tagpadre == "REGISTROIVA")
+    	m_rIvaFactura = cadintermedia;
+    if (qName == "CIF" && tagpadre == "REGISTROIVA")
+    	m_rIvaCIF = cadintermedia;
+    if (qName == "IDFPAGO" && tagpadre == "REGISTROIVA")
+    	m_rIvaIdFPago = cadintermedia;
+    if (qName == "RECTIFICAAREGISTROIVA" && tagpadre == "REGISTROIVA")
+    	m_rIvRecRegIva = cadintermedia;
+
     cadintermedia = "";
     return TRUE;
 }// end endElement

@@ -7,7 +7,7 @@ LIBS += ../../bulmalib/libbulmalib.a \
         -lpq 
 INCLUDEPATH = ../../bulmalib 
 TARGET = ../../installbulmages/bulmages 
-CONFIG += debug \
+CONFIG += release \
           warn_on \
           qt \
           thread 

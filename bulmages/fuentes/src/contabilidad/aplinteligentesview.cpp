@@ -443,6 +443,7 @@ void aplinteligentesview::creaasiento() {
     conexionbase->begin();
     cur= conexionbase->cargacursor(query,"superquery");
     conexionbase->commit();
+    int orden=0;
     while (!cur->eof()) {
         codcuenta = aplicavariable(cur->valor("codcuenta"));
         query.sprintf("SELECT * FROM cuenta where codigo='%s'",codcuenta.ascii());
@@ -469,7 +470,7 @@ void aplinteligentesview::creaasiento() {
         fecha = aplicavariable(cur->valor("fecha"));
         conceptocontable = aplicavariable(cur->valor("conceptocontable"));
         descripcion = aplicavariable(cur->valor("descripcion"));
-        query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s')",numasiento,idcuenta,idcontrapartida.ascii(), debe.ascii(), haber.ascii(), fecha.ascii(), conceptocontable.ascii(), descripcion.ascii());
+        query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)",numasiento,idcuenta,idcontrapartida.ascii(), debe.ascii(), haber.ascii(), fecha.ascii(), conceptocontable.ascii(), descripcion.ascii(), orden++);
         conexionbase->begin();
         conexionbase->ejecuta(query);
         conexionbase->commit();

@@ -74,7 +74,7 @@ function lee() {
     fi
     user=`cat /tmp/dialog.ans`
     su - postgres -c "createuser --adduser --createdb $user"
-    rm -f /tmp/dialog.ans # don't litter !    
+    rm -f /tmp/dialog.ans # don't litter !
   fi
 }
 
@@ -87,7 +87,7 @@ function linea {
      echo -e "\033[32m----------------------------------------------\033[0m\n"
    fi
 }
-  
+
 # Comprobamos que estamos ejecutando como root el programa
 if [ ! $(whoami) = "root" ]; then
 #   echo -e "Este script de instalacion debe ejecutarse como root"
@@ -109,11 +109,14 @@ if [ ! -e ./installbulmages ]; then
 fi
 
 #Comprobamos que existe la libreria de qt adecuada.
-if [ ! -e ${QTDIR}/libqt.so.3 ]; then
-	mensaje "Libreria de Qt libqt.so.3 no está instalada o no se encuentra en ${QTDIR} \n"
-	exit 1
+if [ ! -e /usr/lib/libqt.so.3]; then
+        mensaje "Libreria de Qt libqt.so.3 no está instalada o no se encuentra en ${QTDIR} \n"
+        exit 1
+        if [ ! -e ${QTDIR}/libqt.so.3 ]; then
+               mensaje "Libreria de Qt libqt.so.3 no está instalada o no se encuentra en ${QTDIR} \n"
+               exit 1
+        fi
 fi
-
 
 
 # Distinguimos entre una instalación y una actualización
@@ -142,9 +145,9 @@ if [ -e /etc/bulmages.conf ]; then
 #      do
 #         info "Evaluamos el archivo de revision:\n\n $y"
 #         if [ ! -e /usr/share/bulmages/$y ]; then
-#	    su - postgres -c "psql $x "  < $y  2>> /tmp/errores.txt >> /tmp/errores.txt
-#	    info "Actualizando la base de datos $x con la revision version $y"
-#	    tiempo
+#           su - postgres -c "psql $x "  < $y  2>> /tmp/errores.txt >> /tmp/errores.txt
+#           info "Actualizando la base de datos $x con la revision version $y"
+#           tiempo
 #         fi
 #      done
 #      linea
@@ -152,16 +155,16 @@ if [ -e /etc/bulmages.conf ]; then
 
 #   info "Efectuando cambios sobre la metabase."
 #   tiempo
-   
-   
-   
+
+
+
 #   for y in `ls dbmodels/actualizar/revmeta-*.sql | sort`
 #   do
 #      info "Evaluamos la revision $y."
 #      if [ ! -e /usr/share/bulmages/$y ]; then
 #         su - postgres -c "psql metabd " < $y 2>> /tmp/errores.txt >> /tmp/errores.txt
-#	 info "Actualizando a la version $y"
-#	 tiempo
+#        info "Actualizando a la version $y"
+#        tiempo
 #      fi
 #   done
 #   linea
@@ -176,47 +179,47 @@ if [ -e /etc/bulmages.conf ]; then
    do
       if [ ! -e /usr/share/bulmages/$j ]; then
          info "Aplicamos parche $j a bulmages.conf"
-	 cat $j >> /etc/bulmages.conf
+         cat $j >> /etc/bulmages.conf
       fi
    done
-   
+
    # Presentamos los errores acaecidos
    cat /tmp/errores.txt | grep ERROR
 else
 # Se trata de una instalación nueva
 
-	#Ya que estamos vamos a echar un vistacillo al pg_hba.conf
-	if [ -e /etc/postgresql/pg_hba.conf ]; then
-		info "Revisando archivo pg_hba.conf"
-		PGA=`cat /etc/postgresql/pg_hba.conf | grep reject | wc -l`
-		if [ ! "$PGA" -eq "0" ]; then
-		mensaje "Alerta: Revise el archivo /etc/postgresql/pg_hba.conf, ya que puede tener restricciones de permisos.\n $PGA"
-		tiempo
-		dialog --yesno "Si lo desea podemos instalar una copia personalizada del archivo pg_hba.conf  que configura los permisos de postgres. (Puede que con esta opcion pierda seguridad). \n" 15 60
-		case $? in
-			0)
-			info "Modificando  la configuracion de postgres. \n"
-			mv /etc/postgresql/pg_hba.conf /etc/postgresql/pg_hba.conf.old
-			cp pg_hba.conf /etc/postgresql/pg_hba.conf
-			info "Reiniciando Postgres. \n"
-			/etc/init.d/postgresql restart >/dev/null
-			tiempo;;
-			1)
-			info "No se ha seleccionado. \n"
-			tiempo;;
-			255)
-			info "ESC pulsado. \n"
-			tiempo;;
-		esac   
-	else
-		mensaje "pg_hba esta correcto"   
-	fi
-	else
-	mensaje "No se encuentra el archivo de configuracion de postgresql.
-	Esto puede ser debido a que no este instalado o a que no sea una distribucion Debian Sid.
-	Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
-	tiempo
-	fi
+        #Ya que estamos vamos a echar un vistacillo al pg_hba.conf
+        if [ -e /etc/postgresql/pg_hba.conf ]; then
+                info "Revisando archivo pg_hba.conf"
+                PGA=`cat /etc/postgresql/pg_hba.conf | grep reject | wc -l`
+                if [ ! "$PGA" -eq "0" ]; then
+                mensaje "Alerta: Revise el archivo /etc/postgresql/pg_hba.conf, ya que puede tener restricciones de permisos.\n $PGA"
+                tiempo
+                dialog --yesno "Si lo desea podemos instalar una copia personalizada del archivo pg_hba.conf  que configura los permisos de postgres. (Puede que con esta opcion pierda seguridad). \n" 15 60
+                case $? in
+                        0)
+                        info "Modificando  la configuracion de postgres. \n"
+                        mv /etc/postgresql/pg_hba.conf /etc/postgresql/pg_hba.conf.old
+                        cp pg_hba.conf /etc/postgresql/pg_hba.conf
+                        info "Reiniciando Postgres. \n"
+                        /etc/init.d/postgresql restart >/dev/null
+                        tiempo;;
+                        1)
+                        info "No se ha seleccionado. \n"
+                        tiempo;;
+                        255)
+                        info "ESC pulsado. \n"
+                        tiempo;;
+                esac
+        else
+                mensaje "pg_hba esta correcto"
+        fi
+        else
+        mensaje "No se encuentra el archivo de configuracion de postgresql.
+        Esto puede ser debido a que no este instalado o a que no sea una distribucion Debian Sid.
+        Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
+        tiempo
+        fi
 
 # Hacemos una insercion inicial de las bases de datos.
    info "Inicializando directorio /usr/share/bulmages.\n"
@@ -261,26 +264,26 @@ cp -r balances /usr/share/bulmages
 cp -r kugar /usr/share/bulmages
 cp -r openreports /usr/share/bulmages
 
-   
+
    info "Creando bases de datos del sistema y empresas de ejemplo. \n"
    tiempo
 #Creamos las bases de datos para la metabase.
 #   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto metabd 3"
-   
+
 # Creamos las bases de datos para bulmacont.
    su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bulmages 2 Bulmages 2004 metabd"
    su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bgplangcont 1 \"Plan Contable Vacio\" 2004 metabd"
-   
+
 # Creamos las bases de datos para bulmafact.
-   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmafact $ptexto bulmafact 1 \"Facturacion Vacia\" 2004 metabd"   
-  
+   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmafact $ptexto bulmafact 1 \"Facturacion Vacia\" 2004 metabd"
+
    # Tratamos el archivo de configuracion
    info "Instalando la nueva version del archivo de configuracion. \n"
    cp bulmages.conf /etc
 
    # Presentamos los errores acaecidos
    cat /tmp/errores.txt | grep ERROR
-   
+
 
    # Dejamos que la inserción del usuario la haga una función y asi encapsulamos un poco.
    lee

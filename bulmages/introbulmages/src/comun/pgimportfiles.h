@@ -72,20 +72,35 @@ private:
 	QString fechaasiento;
 	/// Variables usadas para almacenar los datos de un apunte.
 	QString idapunte;
+	QString idborrador;
 	QString fechaapunte;
 	QString codigocuentaapunte;
 	QString debeapunte;
 	QString haberapunte;
 	QString conceptocontableapunte;
+	int m_ordenapunte;
 	/// Variables usadas para almacenar los datos de una cuenta.
 	QString idcuenta;
 	QString descripcioncuenta;
 	QString codigocuenta;
 	QString codigopadre;
+	/// Variables usadas para almacenar los datos del registro de IVA
+    	QString m_idRegistroIva;   
+    	QString m_rIvaContrapartida;
+    	QString m_rIvaBaseImp;	
+    	QString m_rIvaIva;
+    	QString m_rIvaFFactura;
+    	QString m_rIvaFactura;
+    	QString m_rIvaCIF;
+    	QString m_rIvaIdFPago;
+    	QString m_rIvRecRegIva;
+	
+	
 	/// El tagpadre indica en que posición estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc
 	QString tagpadre;
 public:
     StructureParser(postgresiface2 *,void (*)(int,int));
+    ~StructureParser();
     bool startDocument();
     bool startElement( const QString&, const QString&, const QString& ,
                        const QXmlAttributes& );
