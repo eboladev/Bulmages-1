@@ -1,0 +1,80 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>UIalmacen</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>UIalmacen</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>600</width>
+            <height>488</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Modulo Almacen</string>
+    </property>
+</widget>
+<menubar>
+    <property name="name">
+        <cstring>MenuBar</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>600</width>
+            <height>21</height>
+        </rect>
+    </property>
+    <item text="Menu" name="MenuMenu">
+    </item>
+</menubar>
+<toolbars>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>toolBar</cstring>
+        </property>
+        <property name="offset">
+            <number>0</number>
+        </property>
+        <property name="label">
+            <string>Tools</string>
+        </property>
+        <action name="SelectorAction"/>
+    </toolbar>
+</toolbars>
+<actions>
+    <action>
+        <property name="name">
+            <cstring>SelectorAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>tux1.png</iconset>
+        </property>
+        <property name="text">
+            <string>Action</string>
+        </property>
+        <property name="menuText">
+            <string>Action</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+</actions>
+<connections>
+    <connection>
+        <sender>SelectorAction</sender>
+        <signal>activated()</signal>
+        <receiver>UIalmacen</receiver>
+        <slot>mostrar_selector()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>mostrar_selector()</slot>
+</slots>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
