@@ -586,7 +586,7 @@ void intapunts3view::boton_cerrarasiento() {
     fechaasiento1->setFocus();
 
     if (asientoVacio) {
-        QMessageBox::information( 0, "Asiento vacio", "El asiento esta vacio, se procedera a borrarlo !");
+        QMessageBox::information( 0, tr("Asiento vacio"), tr("El asiento esta vacio, se procedera a borrarlo !"));
         borrar_asiento(false); //el valor false indica que no nos muestre el dialogo de confirmación de borrado.
     }                            
 }// end boton_cerrarasiento

@@ -50,7 +50,7 @@
     </message>
     <message encoding="UTF-8">
         <source>Código Inicial</source>
-        <translation type="unfinished">First Code</translation>
+        <translation type="obsolete">First Code</translation>
     </message>
     <message encoding="UTF-8">
         <source>Código Final</source>
@@ -75,6 +75,11 @@
     <message>
         <source>Imprimir</source>
         <translation type="unfinished">Print</translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Código Inicial
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -899,9 +904,6 @@ Informacion sobre los autores de la aplicacion</source>
         <source>Gesti&#xf3;n de Usuarios</source>
         <translation type="unfinished">User Settings</translation>
     </message>
-</context>
-<context>
-    <name>Bulmages01App</name>
 </context>
 <context>
     <name>DiarioPrintDlg</name>
@@ -1971,6 +1973,10 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
         <source>Licencia</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message encoding="UTF-8">
         <source>&lt;PRE&gt;
 Este programa está distribuido bajo los términos de GPL v2.
@@ -2032,7 +2038,7 @@ patent must be licensed for everyone&apos;s free use or not licensed at all.
 
   The precise terms and conditions for copying, distribution and
 modification follow.
-
+ 
 <byte value="x9"/><byte value="x9"/>    GNU GENERAL PUBLIC LICENSE
    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
 
@@ -2087,7 +2093,7 @@ above, provided that you also meet all of these conditions:
     License.  (Exception: if the Program itself is interactive but
     does not normally print such an announcement, your work based on
     the Program is not required to print an announcement.)
-
+ 
 These requirements apply to the modified work as a whole.  If
 identifiable sections of that work are not derived from the Program,
 and can be reasonably considered independent and separate works in
@@ -2145,7 +2151,7 @@ access to copy from a designated place, then offering equivalent
 access to copy the source code from the same place counts as
 distribution of the source code, even though third parties are not
 compelled to copy the source along with the object code.
-
+ 
   4. You may not copy, modify, sublicense, or distribute the Program
 except as expressly provided under this License.  Any attempt
 otherwise to copy, modify, sublicense or distribute the Program is
@@ -2202,7 +2208,7 @@ impose that choice.
 
 This section is intended to make thoroughly clear what is believed to
 be a consequence of the rest of this License.
-
+ 
   8. If the distribution and/or use of the Program is restricted in
 certain countries either by patents or by copyrighted interfaces, the
 original copyright holder who places the Program under this License
@@ -2317,10 +2323,6 @@ consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Library General
 Public License instead of this License.
 &lt;/PRE&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cerrar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3950,6 +3952,14 @@ Public License instead of this License.
         <source>No existe una cuenta con el codigo proporcionado, desea crear una?.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Asiento vacio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>El asiento esta vacio, se procedera a borrarlo !</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ivadlg</name>
@@ -4406,7 +4416,7 @@ yyyy --&gt; Dígitos de cuenta.</source>
     </message>
     <message>
         <source>No alterar cuentas con menos de</source>
-        <translation type="unfinished">Don't change accounts less than</translation>
+        <translation type="unfinished">Don&apos;t change accounts less than</translation>
     </message>
     <message>
         <source>digitos</source>

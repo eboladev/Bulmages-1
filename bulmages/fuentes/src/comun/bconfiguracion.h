@@ -11,16 +11,16 @@
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #ifndef BCONFIGURACION_H
 #define BCONFIGURACION_H
 
 #include "uiconfiguracion.h"
+#include "postgresiface2.h"
+#include <qlistview.h>
+#include <qlineedit.h>
+#include <qtextedit.h>
+#include <qpopupmenu.h>
 
 /**
 @author Josep Burcion
@@ -33,6 +33,10 @@ public:
     BConfiguracion(QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
     ~BConfiguracion();
 
+private slots:
+  virtual void cerrar();
+  virtual void listView1_currentChanged(QListViewItem *);
+  virtual void listView2_clickBotonDerecho(QListViewItem*,const QPoint&,int);
 };
 
 #endif

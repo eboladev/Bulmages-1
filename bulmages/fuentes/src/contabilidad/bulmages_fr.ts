@@ -902,9 +902,6 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
 </context>
 <context>
-    <name>Bulmages01App</name>
-</context>
-<context>
     <name>DiarioPrintDlg</name>
     <message encoding="UTF-8">
         <source>Impresión del Diario</source>
@@ -3949,6 +3946,14 @@ Public License instead of this License.
     </message>
     <message>
         <source>No existe una cuenta con el codigo proporcionado, desea crear una?.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Asiento vacio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>El asiento esta vacio, se procedera a borrarlo !</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -4635,6 +4635,14 @@ Public License instead of this License.
         <source>No existe una cuenta con el codigo proporcionado, desea crear una?.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Asiento vacio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>El asiento esta vacio, se procedera a borrarlo !</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ivadlg</name>

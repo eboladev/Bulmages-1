@@ -9,13 +9,873 @@
             <x>0</x>
             <y>0</y>
             <width>600</width>
-            <height>482</height>
+            <height>481</height>
         </rect>
     </property>
     <property name="caption">
         <string>Configuración</string>
     </property>
+    <widget class="QTabWidget">
+        <property name="name">
+            <cstring>tabWidget</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>580</width>
+                <height>460</height>
+            </rect>
+        </property>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Utilidades</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>130</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Crear Nueva Empresa</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>200</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Restaurar copia
+ (RESTORE)</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>200</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Copia de Seguridad
+   (BACKUP)</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>130</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Borrar Empresa</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_5</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>30</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Nuevo Ejercicio</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_X</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Salir</string>
+                </property>
+                <property name="iconSet">
+                    <iconset>exit.png</iconset>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Usuarios</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonB_1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>310</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Salvar</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonB_2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>400</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Cancelar</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonB_3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>390</y>
+                        <width>40</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Nuevo</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonB_4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>70</x>
+                        <y>390</y>
+                        <width>40</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Borrar</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonB_5</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>120</x>
+                        <y>390</y>
+                        <width>40</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Duplicar</string>
+                </property>
+            </widget>
+            <widget class="QGroupBox">
+                <property name="name">
+                    <cstring>groupBox2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>171</x>
+                        <y>11</y>
+                        <width>400</width>
+                        <height>170</height>
+                    </rect>
+                </property>
+                <property name="title">
+                    <string>Datos Usuario</string>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>14</y>
+                            <width>61</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Login:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel3</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>40</y>
+                            <width>51</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Nombre:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel4</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>60</y>
+                            <width>60</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>1er Apellido:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel5</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>80</y>
+                            <width>70</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>2on Apellido:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>180</x>
+                            <y>14</y>
+                            <width>47</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Password:</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineEdit2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>240</x>
+                            <y>15</y>
+                            <width>120</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineEdit4</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>80</x>
+                            <y>60</y>
+                            <width>280</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineEdit5</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>80</x>
+                            <y>80</y>
+                            <width>280</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineEdit1</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>70</x>
+                            <y>15</y>
+                            <width>100</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="paletteBackgroundColor">
+                        <color>
+                            <red>255</red>
+                            <green>255</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineEdit3</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>80</x>
+                            <y>40</y>
+                            <width>280</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                </widget>
+                <widget class="QTextEdit">
+                    <property name="name">
+                        <cstring>textEdit1</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>110</y>
+                            <width>380</width>
+                            <height>50</height>
+                        </rect>
+                    </property>
+                </widget>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonB_X</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Salir</string>
+                </property>
+                <property name="iconSet">
+                    <iconset>exit.png</iconset>
+                </property>
+            </widget>
+            <widget class="QListView">
+                <column>
+                    <property name="text">
+                        <string>Privilegio</string>
+                    </property>
+                    <property name="clickable">
+                        <bool>false</bool>
+                    </property>
+                    <property name="resizable">
+                        <bool>false</bool>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Recurso</string>
+                    </property>
+                    <property name="clickable">
+                        <bool>false</bool>
+                    </property>
+                    <property name="resizable">
+                        <bool>false</bool>
+                    </property>
+                </column>
+            <item>
+                <property name="text">
+                    <string>S</string>
+                </property>
+                <property name="text">
+                    <string>Apuntes Contables</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>S</string>
+                </property>
+                <property name="text">
+                    <string>Balance de Cuentas</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>S</string>
+                </property>
+                <property name="text">
+                    <string>Extracto de Cuentas</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>S</string>
+                </property>
+                <property name="text">
+                    <string>Diario</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>N</string>
+                </property>
+                <property name="text">
+                    <string>Registro de IVA</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>V</string>
+                </property>
+                <property name="text">
+                    <string>Listados</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>V</string>
+                </property>
+                <property name="text">
+                    <string>Amortizaciones</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>N</string>
+                </property>
+                <property name="text">
+                    <string>Substituir Cuentas</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>V</string>
+                </property>
+                <property name="text">
+                    <string>Plan Contable</string>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+                <property name="pixmap">
+                    <pixmap></pixmap>
+                </property>
+            </item>
+                <property name="name">
+                    <cstring>listView2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>169</x>
+                        <y>186</y>
+                        <width>400</width>
+                        <height>200</height>
+                    </rect>
+                </property>
+                <property name="frameShape">
+                    <enum>GroupBoxPanel</enum>
+                </property>
+                <property name="lineWidth">
+                    <number>1</number>
+                </property>
+                <property name="margin">
+                    <number>1</number>
+                </property>
+                <property name="midLineWidth">
+                    <number>0</number>
+                </property>
+                <property name="resizePolicy">
+                    <enum>Manual</enum>
+                </property>
+                <property name="vScrollBarMode">
+                    <enum>AlwaysOn</enum>
+                </property>
+                <property name="hScrollBarMode">
+                    <enum>AlwaysOff</enum>
+                </property>
+                <property name="selectionMode">
+                    <enum>Extended</enum>
+                </property>
+                <property name="allColumnsShowFocus">
+                    <bool>true</bool>
+                </property>
+                <property name="itemMargin">
+                    <number>0</number>
+                </property>
+                <property name="rootIsDecorated">
+                    <bool>false</bool>
+                </property>
+                <property name="resizeMode">
+                    <enum>LastColumn</enum>
+                </property>
+            </widget>
+            <widget class="QListView">
+                <column>
+                    <property name="text">
+                        <string>Lista de Usuarios</string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap>usuario.xpm</pixmap>
+                    </property>
+                    <property name="clickable">
+                        <bool>false</bool>
+                    </property>
+                    <property name="resizable">
+                        <bool>false</bool>
+                    </property>
+                </column>
+                <property name="name">
+                    <cstring>listView1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>9</x>
+                        <y>16</y>
+                        <width>160</width>
+                        <height>370</height>
+                    </rect>
+                </property>
+                <property name="frameShape">
+                    <enum>GroupBoxPanel</enum>
+                </property>
+                <property name="frameShadow">
+                    <enum>Sunken</enum>
+                </property>
+                <property name="lineWidth">
+                    <number>1</number>
+                </property>
+                <property name="margin">
+                    <number>1</number>
+                </property>
+                <property name="midLineWidth">
+                    <number>0</number>
+                </property>
+                <property name="resizePolicy">
+                    <enum>Manual</enum>
+                </property>
+                <property name="allColumnsShowFocus">
+                    <bool>false</bool>
+                </property>
+                <property name="showSortIndicator">
+                    <bool>false</bool>
+                </property>
+                <property name="itemMargin">
+                    <number>1</number>
+                </property>
+                <property name="rootIsDecorated">
+                    <bool>false</bool>
+                </property>
+                <property name="resizeMode">
+                    <enum>AllColumns</enum>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>TabPage</cstring>
+            </property>
+            <attribute name="title">
+                <string>Contabilidad</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonC_X</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Salir</string>
+                </property>
+                <property name="iconSet">
+                    <iconset>exit.png</iconset>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>TabPage</cstring>
+            </property>
+            <attribute name="title">
+                <string>Facturación</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonD_X</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Salir</string>
+                </property>
+                <property name="iconSet">
+                    <iconset>exit.png</iconset>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>TabPage</cstring>
+            </property>
+            <attribute name="title">
+                <string>Almacenes</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonE_X</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Salir</string>
+                </property>
+                <property name="iconSet">
+                    <iconset>exit.png</iconset>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>TabPage</cstring>
+            </property>
+            <attribute name="title">
+                <string>Otros</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonF_X</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Salir</string>
+                </property>
+                <property name="iconSet">
+                    <iconset>exit.png</iconset>
+                </property>
+            </widget>
+        </widget>
+    </widget>
 </widget>
+<connections>
+    <connection>
+        <sender>pushButtonA_X</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>cerrar()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonB_X</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>cerrar()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonC_X</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>cerrar()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonD_X</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>cerrar()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonE_X</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>cerrar()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonF_X</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>cerrar()</slot>
+    </connection>
+    <connection>
+        <sender>listView1</sender>
+        <signal>currentChanged(QListViewItem*)</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>listView1_currentChanged(QListViewItem*)</slot>
+    </connection>
+    <connection>
+        <sender>listView2</sender>
+        <signal>rightButtonClicked(QListViewItem*,const QPoint&amp;,int)</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>listView2_clickBotonDerecho(QListViewItem*,const QPoint&amp;,int)</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>pushButtonB_X</tabstop>
+    <tabstop>pushButtonB_3</tabstop>
+    <tabstop>pushButtonB_4</tabstop>
+    <tabstop>pushButtonB_5</tabstop>
+    <tabstop>pushButtonB_1</tabstop>
+    <tabstop>pushButtonB_2</tabstop>
+    <tabstop>pushButtonA_X</tabstop>
+    <tabstop>pushButtonA_5</tabstop>
+    <tabstop>pushButtonA_1</tabstop>
+    <tabstop>pushButtonA_2</tabstop>
+    <tabstop>pushButtonA_3</tabstop>
+    <tabstop>pushButtonA_4</tabstop>
+    <tabstop>tabWidget</tabstop>
+    <tabstop>listView1</tabstop>
+    <tabstop>textEdit1</tabstop>
+    <tabstop>lineEdit3</tabstop>
+    <tabstop>lineEdit4</tabstop>
+    <tabstop>lineEdit5</tabstop>
+    <tabstop>lineEdit1</tabstop>
+    <tabstop>lineEdit2</tabstop>
+    <tabstop>listView2</tabstop>
+    <tabstop>pushButtonC_X</tabstop>
+    <tabstop>pushButtonD_X</tabstop>
+    <tabstop>pushButtonE_X</tabstop>
+    <tabstop>pushButtonF_X</tabstop>
+</tabstops>
+<slots>
+    <slot>cerrar()</slot>
+    <slot>listView1_currentChanged(QListViewItem *)</slot>
+    <slot>listView2_clickBotonDerecho(QListViewItem*,const QPoint&amp;,int)</slot>
+</slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
