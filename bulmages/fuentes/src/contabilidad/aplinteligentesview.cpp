@@ -27,6 +27,11 @@
 // son de uso interno, así que solo deben conocerse si se agregan variables de apunte.
 #define VAR_APUNT_CIFCUENTA 0
 
+// Estos defines indican posiciones de las variables predefinidas
+// Son de uso interno, asi que solo deben conocerse si se agrgan variables predefinidas
+#define VAR_PRED_FECHAACTUAL 0
+#define VAR_PRED_FECHAASIENTO 1
+
 aplinteligentesview::aplinteligentesview(QWidget *parent, const char *name ) : aplinteligentesdlg(parent,name) {
     // iniciamos los contadores de variables para que no haya problemas.
     indvariablescta=0;
@@ -83,17 +88,21 @@ void aplinteligentesview::inicializavariables() {
     fecha = QDate::currentDate();
     buffer.sprintf("%d/%d/%d",fecha.day(),fecha.month(),fecha.year());
     subcadena=buffer;
-    variablespredefinidas[indvariablespredefinidas][0]="$fechaactual$";
-    variablespredefinidas[indvariablespredefinidas++][1]=subcadena;
+    variablespredefinidas[VAR_PRED_FECHAACTUAL][0]="$fechaactual$";
+    variablespredefinidas[VAR_PRED_FECHAACTUAL][1]=subcadena;
     buffer.sprintf("SELECT * FROM asiento WHERE idasiento=%d",numasiento);
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(buffer,"cargaasiento");
     conexionbase->commit();
     if (!cur->eof()) {
-        variablespredefinidas[indvariablespredefinidas][0]="$fechaasiento$";
-        variablespredefinidas[indvariablespredefinidas++][1]=cur->valor("fecha");
+        variablespredefinidas[VAR_PRED_FECHAASIENTO][0]="$fechaasiento$";
+        variablespredefinidas[VAR_PRED_FECHAASIENTO][1]=cur->valor("fecha");
+    } else {
+        variablespredefinidas[VAR_PRED_FECHAASIENTO][0]="$fechaasiento$";
+        variablespredefinidas[VAR_PRED_FECHAASIENTO][1]="";
     }// end if
     delete cur;
+    indvariablespredefinidas=2;
 //    inicializavariablesapunte(0);
 }// end inicializavariables
 
@@ -241,6 +250,7 @@ void aplinteligentesview::boton_crear() {
     } else {
         // Se está insertando de forma sistemática asientos inteligentes
         // Asi que debemos facilitar las cosas al máximo.
+        variablespredefinidas[VAR_PRED_FECHAASIENTO][1]=fechaasiento->text().ascii();
         intapunts->fechaasiento1->setText(fechaasiento->text());
         intapunts->return_fechaasiento();
         numasiento=atoi( intapunts->cursorasientos->valor("idasiento").ascii() );

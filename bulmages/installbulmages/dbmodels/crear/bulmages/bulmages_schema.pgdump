@@ -361,12 +361,12 @@ CREATE TABLE registroiva (
     contrapartida integer,
     baseimp double precision,
     iva double precision,
-    factura character varying(12),
+    factura character varying(70),
     idborrador integer,
     incregistro boolean,
     regularizacion boolean,
     plan349 boolean,
-    numorden character varying(12),
+    numorden character varying(50),
     cif character varying(25)
 );
 
