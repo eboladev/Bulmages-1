@@ -7,7 +7,7 @@ TEMPLATE = app
 CONFIG += release \
 warn_on \
 thread \
-qt
+qt debug
 LIBS += ../../bulmalib/libbulmalib.a \
 -lpq
 INCLUDEPATH += ../../bulmalib

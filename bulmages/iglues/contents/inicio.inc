@@ -29,6 +29,7 @@ Más información en:
 <li><a href="http://www.nosoftwarepatents.com/es/m/intro/index.html">NoSoftwarePatents.com</a> [ES]</li>
 <li><a href="http://barrapunto.com/article.pl?sid=04/12/19/0825236">Barrapunto.com</a> [ES]</li>
 </ul>
+<br><span style="color: rgb(255, 0, 0);">Actualizaci&oacute;n 22/12/2004:</span> La propuesta fué detenida gracias a que el representate de Polonia pidió que se borrara ese punto del acta. Se le puede dar las gracias <a href="http://thankpoland.info/" TARGET="nueva">firmando en esta carta</a>
 </td>
 </tr>
 </table>
