@@ -52,7 +52,6 @@ orderslist::orderslist(company *comp, QWidget *parent, const char *name, int fla
  : orderslistbase(parent, name, flag) {
       companyact = comp;
       inicializa();
-      showMaximized();
 }// end orderslist
 
 void orderslist::inicializa() {

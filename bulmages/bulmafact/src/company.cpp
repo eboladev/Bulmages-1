@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
  
- 
+#include <qnamespace.h>
+
 #include "company.h"
 #include "stdio.h"
 #include "budget.h"
-#include <qnamespace.h>
 #include "providerslist.h"
 #include "provedit.h"
 #include "qobject.h"
@@ -33,8 +33,16 @@
 
 company::company(){
 //       inicializa(confpr->valor(CONF_METABASE).c_str());
-       inicializa("bulmafact");
+   inicializa("bulmafact");    
 }
+
+void company::createMainWindows() {
+   m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Listado de Proveedores","company"));
+   m_clientslist = new clientslist(this, m_pWorkspace,theApp->translate("Listado de Clientes","company"));
+   m_articleslist = new articleslist(this, m_pWorkspace,theApp->translate("Listado de Artículos","company"));
+   m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Listado de Pedidos","company"));
+   m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Listado de Albaranes","company"));   
+}// end createMainWindows
 
 
 company::~company(){
@@ -42,29 +50,33 @@ company::~company(){
 
 
 void company::listproviders () {
-//   providerslist *m_provlist = new providerslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"),Qt::WType_TopLevel | Qt::WStyle_Customize | Qt::WStyle_DialogBorder);
-   providerslist *m_provlist = new providerslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
-   m_provlist->show();
+   m_providerslist->hide();
+   m_providerslist->show();
+   m_providerslist->setActiveWindow();
 }
 
 void company::listclients () {
-   clientslist *m_clielist = new clientslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
-   m_clielist->show();
+   m_clientslist->hide();
+   m_clientslist->show();
+   m_clientslist->setActiveWindow();
 }
 
 void company::listarticles () {
-   articleslist *m_artilist = new articleslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
-   m_artilist->show();
+   m_articleslist->hide();
+   m_articleslist->show();
+   m_articleslist->setActiveWindow();
 }
 
 void company::listorders () {
-   orderslist *m_orderlist = new orderslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
-   m_orderlist->show();
+   m_orderslist->hide();
+   m_orderslist->show();
+   m_orderslist->setActiveWindow();
 }
 
 void company::listdelivnotes () {
-   delivnoteslist *m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
+   m_delivnoteslist->hide();
    m_delivnoteslist->show();
+   m_delivnoteslist->setActiveWindow();
 }
 
 

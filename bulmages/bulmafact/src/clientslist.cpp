@@ -126,7 +126,7 @@ clientslist::clientslist(company *comp, QWidget *parent, const char *name, int f
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#AAAAAA");   
+    m_list->setPaletteBackgroundColor("#DDDDFF");   
     m_list->setReadOnly(TRUE);        
        companyact->begin();
        cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente","unquery");
@@ -153,10 +153,7 @@ clientslist::clientslist(company *comp, QWidget *parent, const char *name, int f
          i++;
          cur->siguienteregistro();
        }// end while
-      
       delete cur;
-      
-      showMaximized();
 }// end clientslist
 
 clientslist::~clientslist() {

@@ -88,7 +88,6 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
  : providerslistbase(parent, name, flag) {
       companyact = comp;
       inicializa();
-      showMaximized();
       m_modo=0;
       
       m_idprovider="";

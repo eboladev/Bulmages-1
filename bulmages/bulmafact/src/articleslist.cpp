@@ -122,7 +122,7 @@ articleslist::articleslist(company *comp, QWidget *parent, const char *name, int
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#AAAAAA");   
+    m_list->setPaletteBackgroundColor("#FAAFFA");   
     m_list->setReadOnly(TRUE);        
        companyact->begin();
        cursor2 * cur= companyact->cargacursor("SELECT * FROM articulo","unquery");
@@ -149,10 +149,7 @@ articleslist::articleslist(company *comp, QWidget *parent, const char *name, int
          i++;
          cur->siguienteregistro();
        }// end while
-      
       delete cur;
-      
-      showMaximized();
 }// end articleslist
 
 articleslist::~articleslist() {

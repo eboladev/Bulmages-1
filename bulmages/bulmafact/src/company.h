@@ -23,12 +23,26 @@
 #include <qworkspace.h>
 #include "postgresiface2.h"
 #include <qobject.h>
+
 /**
 Company class gives the application something like a standard interface to access each company in the same way.
 @author Tomeu Borrás
 */
 
+class providerslist;
+class clientslist;
+class articleslist;
+class orderslist;
+class delivnoteslist;
+
 class company : public postgresiface2 {
+private:
+   providerslist *m_providerslist;
+   clientslist *m_clientslist;
+   articleslist *m_articleslist;
+   orderslist *m_orderslist;
+   delivnoteslist *m_delivnoteslist;
+   
 public:
    QWidget *m_pWorkspace;
 public:
@@ -39,8 +53,9 @@ public:
    void listarticles();
    void listorders();
    void listdelivnotes();
-   void setWorkspace(QWidget *qw) {m_pWorkspace=qw;}
+   void setWorkspace(QWidget *qw) {m_pWorkspace=qw;createMainWindows();}
    void newBudget();
+   void createMainWindows();
 };
 
 #endif

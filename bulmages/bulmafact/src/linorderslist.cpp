@@ -131,7 +131,7 @@ void linorderslist::chargelinorders(QString idpedido) {
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#AAAAAA");   
+    m_list->setPaletteBackgroundColor("#AFFAFA");   
     //m_list->setReadOnly(TRUE);        
 	 m_list->setReadOnly(FALSE);        
        companyact->begin();
@@ -249,7 +249,9 @@ linorderslist::~linorderslist() {
 
 void linorderslist::searchProvider() {
    fprintf(stderr,"Busqueda de un proveedor\n");
-   providerslist *provlist = new providerslist(companyact, NULL, theApp->translate("Seleccione proveedor","company"), WType_Dialog| WShowModal);
+   providerslist *provlist = new providerslist(companyact, NULL, theApp->translate("Seleccione proveedor","company"));
+   
+// , WType_Dialog| WShowModal   
    provlist->modoseleccion();
    
    // Esto es convertir un QWidget en un sistema modal de dialogo.
