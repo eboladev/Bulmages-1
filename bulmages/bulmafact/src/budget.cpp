@@ -891,6 +891,7 @@ void Budget::antCell(QObject *obj) {
 	}
 }
 
+
 void Budget::duplicateCell(QObject *obj) {
 	QTable *t = (QTable *)obj;
 	int row = t->currentRow();
