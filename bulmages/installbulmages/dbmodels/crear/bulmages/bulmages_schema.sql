@@ -498,7 +498,7 @@ DECLARE
     salidahaber BOOLEAN;
 BEGIN
 
-    RAISE NOTICE ''Em pezamos'';
+--    RAISE NOTICE ''Em pezamos'';
     SELECT INTO apt * FROM apunte WHERE idapunte=midapunte;
     IF apt.contrapartida ISNULL THEN
         -- Inicializamos las variables.

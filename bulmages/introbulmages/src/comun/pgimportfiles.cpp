@@ -78,7 +78,6 @@ pgimportfiles::pgimportfiles(postgresiface2 *con, void (*func)(int,int), void (*
 	mensajeria = func1;
 	m_fInicial="";
 	m_fFinal="";
-
 	setModoNormal();
 }// end pgimportfiles
 
@@ -468,7 +467,7 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	QTextStream stream( &xmlfile );
 	stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
 	"<!DOCTYPE FUGIT>\n"
-	"<FUGIT version='0.3.1' origen='contaplus'"
+	"<FUGIT version='0.3.1' origen='BulmaGés'"
         " date='" << QDate().toString(Qt::ISODate) << "'>\n";
 	    
 	/// Sólo se van a exportar las cuentas utilizadas, Ya que contaplus no hace ordenación en árbol.
@@ -478,14 +477,14 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	conexionbase->commit();
 	while (!curcta->eof()) {
 		QString linea="";
-		stream << "<CUENTA>";
+		stream << "<CUENTA>\n";
 		stream << "\t<IDCUENTA>"       << curcta->valor("idcuenta")      << "</IDCUENTA>\n";
 		stream << "\t<CODIGO>"         << curcta->valor("codigo")        << "</CODIGO>\n";
 		stream << "\t<DESCRIPCION>"    << curcta->valor("descripcion")   << "</DESCRIPCION>\n";
 		stream << "\t<CIFENT_CUENTA>"  << curcta->valor("cifent_cuenta") << "</CIFENT_CUENTA>\n";
 		stream << "\t<DIRENT_CUENTA>"  << curcta->valor("dirent_cuenta") << "</DIRENT_CUENTA>\n";
 		stream << "\t<CODPADRE>"       << curcta->valor("codpadre")      << "</CODPADRE>\n";
-		stream << "</CUENTA>";
+		stream << "</CUENTA>\n";
 		curcta->siguienteregistro();
 	}// end while
 	delete curcta;
@@ -502,12 +501,16 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	int i =0;
 	int numreg = curas->numregistros()+1;	
 	while (!curas->eof()) {
+		alerta(i++,numreg);    
 		stream << "<ASIENTO>\n";
 		stream << "\t<ORDENASIENTO>" << curas->valor("ordenasiento") << "</ORDENASIENTO>\n";
 		QString fechas = curas->valor("fecha");
 		fechas = fechas.mid(6,4)+fechas.mid(3,2)+fechas.mid(0,2);
 		stream << "\t<FECHA>" << fechas << "</FECHA>\n";
-		query = "SELECT * FROM apunte, cuenta WHERE "+curas->valor("idasiento")+"= apunte.idasiento AND cuenta.idcuenta = apunte.idcuenta ";
+		query = "SELECT * FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ";
+		query += "LEFT JOIN (SELECT nombre AS nomcanal, idcanal FROM canal) AS canal1 ON apunte.idcanal = canal1.idcanal "; query += "LEFT JOIN (SELECT nombre AS nc_coste, idc_coste FROM c_coste) AS c_coste1 ON c_coste1.idc_coste = apunte.idc_coste ";
+		query += "LEFT JOIN (SELECT codigo AS codcontrapartida,  idcuenta FROM cuenta) AS contra ON contra.idcuenta=apunte.contrapartida ";
+		query +=" WHERE "+curas->valor("idasiento")+"= apunte.idasiento ";
 		conexionbase->begin();
 		cursor2 *curap = conexionbase->cargacursor(query, "masquery1");
 		conexionbase->commit();
@@ -515,13 +518,17 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 			stream << "\t<APUNTE>\n";
 			QString fecha = curap->valor("fecha");
 			fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
-			stream << "\t\t<FECHA>"    << fecha << "</FECHA>\n";
-			stream << "\t\t<CODIGO>"   << curap->valor("codigo")  << "</CODIGO>\n";
-			stream << "\t\t<DEBE>"     << curap->valor("debe")    << "</DEBE>\n";
-			stream << "\t\t<HABER>"    << curap->valor("haber")   << "</HABER>\n";
-			stream << "\t\t<CONCEPTOCONTABLE>"    << curap->valor("conceptocontable")   << "</CONCEPTOCONTABLE>\n";			
-			stream << "\t\t<IDCANAL>"    << curap->valor("idcanal")   << "</IDCANAL>\n";			
-			stream << "\t\t<IDC_COSTE>"    << curap->valor("idc_coste")   << "</IDC_COSTE>\n";			
+			stream << "\t\t<FECHA>"               << fecha << "</FECHA>\n";
+			stream << "\t\t<CODIGO>"              << curap->valor("codigo")             << "</CODIGO>\n";
+			stream << "\t\t<DEBE>"                << curap->valor("debe")               << "</DEBE>\n";
+			stream << "\t\t<HABER>"               << curap->valor("haber")              << "</HABER>\n";
+			stream << "\t\t<CONCEPTOCONTABLE>"    << curap->valor("conceptocontable")   << "</CONCEPTOCONTABLE>\n";
+			stream << "\t\t<IDCANAL>"      << curap->valor("idcanal")     << "</IDCANAL>\n";
+			stream << "\t\t<CANAL>"        << curap->valor("nomcanal")    << "</CANAL>\n";
+			stream << "\t\t<IDC_COSTE>"    << curap->valor("idc_coste")   << "</IDC_COSTE>\n";	
+			stream << "\t\t<C_COSTE>"      << curap->valor("nc_coste")    << "</C_COSTE>\n";
+			stream << "\t\t<PUNTEO>"       << curap->valor("punteo")      << "</PUNTEO>\n";
+			stream << "\t\t<CONTRAPARTIDA>"<< curap->valor("codcontrapartida")<< "</CONTRAPARTIDA>\n";
 			mensajeria("Exportando :"   + curap->valor("codigo")   + "--" +fecha+"\n");
 			curap->siguienteregistro();
 			stream << "\t</APUNTE>\n";
@@ -532,23 +539,25 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	}// end while
 	delete curas;
 	stream << "</FUGIT>\n";
-	alerta (100,100);
+	alerta (numreg,numreg);
 	return 0;
 }// end if
 
 
 
 int pgimportfiles::XML2Bulmages (QFile &fichero) {
-        StructureParser handler(conexionbase);
+        StructureParser handler(conexionbase, alerta);
         QXmlInputSource source( &fichero );
         QXmlSimpleReader reader;
         reader.setContentHandler( &handler );
         reader.parse( source );
+	alerta(100,100);
 	return 0;
 }// end XML2Bulmages
 
 
-StructureParser::StructureParser(postgresiface2 *con) {
+StructureParser::StructureParser(postgresiface2 *con,void (*func)(int,int) ) {
+	alerta = func;
 	conexionbase = con;
 }// end StructureParser
 
@@ -560,6 +569,26 @@ bool StructureParser::startDocument() {
 bool StructureParser::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& ) {
     fprintf( stderr, "%s<%s>", (const char*)indent, (const char*)qName);
     indent += "..";
+    if (qName == "ASIENTO") {
+    	tagpadre = "ASIENTO";
+	QString query = "INSERT INTO ASIENTO (descripcion, fecha) VALUES ('un nuevo asiento', '01/01/2005')";
+	conexionbase->begin();
+	conexionbase->ejecuta(query);
+	cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idasiento) AS max FROM asiento","otroquery");
+	conexionbase->commit();
+	if (!cur->eof() ) {
+		idasiento = cur->valor("max");
+		fprintf(stderr,"INSERCION DE ASIENTO:%s",idasiento.ascii());
+	}// end if
+	delete cur;
+    }// end if
+    if (qName == "APUNTE") {
+    	tagpadre = "APUNTE";
+    }// end if
+    if (qName == "CUENTA") {
+    	tagpadre = "CUENTA";
+    }// end if
+    cadintermedia = "";    
     return TRUE;
 }// end startElement
 
@@ -569,6 +598,56 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
 /// VAmos a ir distinguiendo casos y actuando segun cada caso. En la mayoría de casos iremos actuando en consecuencia.    
     if (qName == "ASIENTO") {
     	fprintf(stderr,"Fin de Asiento");
+	QString query = "UPDATE asiento set fecha='"+fechaasiento+"' WHERE idasiento="+idasiento;
+	conexionbase->begin();
+	conexionbase->ejecuta(query);
+	cursor2 *cur = conexionbase->cargacursor("SELECT cierraasiento("+idasiento+")", "elauery");
+	conexionbase->commit();
+	delete cur;
+    }// end if
+/// Si es una punte hacemos su inserción.
+    if (qName == "APUNTE") {
+    	QString query = "INSERT INTO borrador (idasiento, debe, haber, idcuenta, fecha, conceptocontable) VALUES ("+idasiento+","+debeapunte+","+haberapunte+",id_cuenta('"+codigocuentaapunte+"'), '"+fechaapunte+"', '"+conceptocontableapunte+"')";
+	conexionbase->begin();
+	conexionbase->ejecuta(query);
+	conexionbase->commit();
+    }// end if
+    if (qName == "FECHA" && tagpadre == "ASIENTO") {
+    	fechaasiento = cadintermedia;
+    }// end if
+    if (qName == "FECHA" && tagpadre == "APUNTE") {
+    	fechaapunte = cadintermedia;
+    }// end if
+    if (qName == "DEBE" && tagpadre == "APUNTE") {
+    	debeapunte = cadintermedia;
+    }// end if
+    if (qName == "HABER" && tagpadre == "APUNTE") {
+    	haberapunte = cadintermedia;
+    }// end if
+    if (qName == "CODIGO" && tagpadre == "APUNTE") {
+    	codigocuentaapunte = cadintermedia;
+    }// end if
+    if (qName == "CONCEPTOCONTABLE" && tagpadre == "APUNTE") {
+    	conceptocontableapunte = cadintermedia;
+    }// end if
+ 
+/// Si es una cuenta la tratamos.
+    if (qName == "CUENTA" ) {
+    	QString idgrupo = codigocuenta.left(1);
+	fprintf(stderr,"codigocuenta [%s], primer caracter [%s] \n", codigocuenta.ascii(), idgrupo.ascii());
+    	QString query = "INSERT INTO cuenta (codigo, descripcion, padre, idgrupo) VALUES ('"+codigocuenta+"','"+descripcioncuenta+"', id_cuenta('"+codigopadre+"'), "+idgrupo+")";
+	conexionbase->begin();
+	conexionbase->ejecuta(query);
+	conexionbase->commit();
+    }// end if
+    if (qName == "CODIGO" && tagpadre == "CUENTA") {
+    	codigocuenta = cadintermedia;
+    }// end if
+    if (qName == "DESCRIPCION" && tagpadre == "CUENTA") {
+    	descripcioncuenta = cadintermedia;
+    }// end if
+    if (qName == "CODPADRE" && tagpadre == "CUENTA") {
+    	codigopadre = cadintermedia;
     }// end if
     
     cadintermedia = "";

@@ -50,11 +50,30 @@ public:
 
 
 class StructureParser : public QXmlDefaultHandler {
-public:
+private:
+	void (*alerta)(int,int);
 	postgresiface2 *conexionbase;
 	QString cadintermedia;		/// ESta variable va almacenando los valores que van saliendo en la clase.
+	/// Variables usadas para almacenar los datos de un asiento.
+	QString idasiento;
+	QString ordenasiento;
+	QString fechaasiento;
+	/// Variables usadas para almacenar los datos de un apunte.
+	QString idapunte;
+	QString fechaapunte;
+	QString codigocuentaapunte;
+	QString debeapunte;
+	QString haberapunte;
+	QString conceptocontableapunte;
+	/// Variables usadas para almacenar los datos de una cuenta.
+	QString idcuenta;
+	QString descripcioncuenta;
+	QString codigocuenta;
+	QString codigopadre;
+	/// El tagpadre indica en que posición estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc
+	QString tagpadre;
 public:
-    StructureParser(postgresiface2 *);
+    StructureParser(postgresiface2 *,void (*)(int,int));
     bool startDocument();
     bool startElement( const QString&, const QString&, const QString& ,
                        const QXmlAttributes& );
