@@ -37,7 +37,7 @@ public:
 public:
    void chargeprovider(QString);
 public slots:
-   virtual void accept();
+   virtual void s_saveProvider();
    virtual void boton_nuevo();
    virtual void boton_borrar();
    virtual void boton_newdivision();

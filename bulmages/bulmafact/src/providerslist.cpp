@@ -218,6 +218,10 @@ void providerslist::s_editProvider() {
 	doubleclicked(m_list->currentRow(), 0,0, a);
 }// end s_editProvider
 
+/** SLOT que responde a la pulsación de borrar un determinado proveedor
+  * Dicha función avisa de la perdida de datos y si se decide continuar
+  * Se procede a borrar el proveedor
+  */
 void providerslist::s_removeProvider() {
 	fprintf(stderr, "removeOrder button activated");
 	if (QMessageBox::warning( this, "BulmaFact - Proveedores",
@@ -233,6 +237,9 @@ void providerslist::s_removeProvider() {
 }// end s_removeProvider
 
 
+/** SLOT que se ejecuta al pulsar sobre el botón de imprimir en la ventana de proveedores
+  * La función llama a rtkview para generar el listado predefinido en reports/providerslist.rtk
+  */
 void providerslist::s_printProviders() {
 	fprintf(stderr,"Impresión del listado\n");
 // #ifdef REPORTS

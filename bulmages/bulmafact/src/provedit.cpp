@@ -199,7 +199,7 @@ void provedit::boton_nuevo() {
 * Comprueba si es una inserción o una modificación y hace los pasos      *
 * pertinentes                                                            *
 **************************************************************************/
-void provedit::accept() {
+void provedit::s_saveProvider() {
    if (idprovider != "0") {
       QString SQLQuery = "UPDATE proveedor SET urlproveedor='"+m_urlproveedor->text()+"'";
       SQLQuery += " , nomproveedor='"+m_nomproveedor->text()+"'";
@@ -217,7 +217,6 @@ void provedit::accept() {
       companyact->begin();
       companyact->ejecuta(SQLQuery);
       companyact->commit();
-      close();
    } else {
       QString SQLQuery = " INSERT INTO proveedor (nomproveedor, nomaltproveedor, cifproveedor, codicliproveedor, cbancproveedor, dirproveedor, poblproveedor, cpproveedor, telproveedor, faxproveedor, urlproveedor, emailproveedor)";
       SQLQuery += " VALUES (";
@@ -237,7 +236,6 @@ void provedit::accept() {
       companyact->begin();
       companyact->ejecuta(SQLQuery);
       companyact->commit();
-      close();
    }// end if
 }// end accept
 

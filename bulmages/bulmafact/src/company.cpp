@@ -73,6 +73,7 @@ void company::createMainWindows() {
    m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Listado de Pedidos","company"));
    m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Listado de Albaranes","company"));   
    m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos","company"));  
+   m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Listado de Clientes","company"));   
    m_clientDelivNotesList = new ClientDelivNotesList(this, m_pWorkspace,theApp->translate("Listado de Albaranes de Clientes","company"));
    fprintf(stderr,"Fin de createMainWindows\n");
 }// end createMainWindows
@@ -89,7 +90,6 @@ void company::listproviders () {
 }
 
 void company::listClients () {
-   m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Listado de Clientes","company"));
    m_clientsList->hide();
    m_clientsList->show();
    m_clientsList->setActiveWindow();
