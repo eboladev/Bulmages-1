@@ -1,5 +1,5 @@
 <script language="php">
-$title = "";
+$title = "Listas de correo";
 // =================================================
 $body = '
 

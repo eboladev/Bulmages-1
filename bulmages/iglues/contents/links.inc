@@ -2,7 +2,7 @@
 $title = "Enlaces";
 // =================================================
 $body = '
-
+<h1>Enlaces</h1>
 <p>Aquí pensamos que podemos dividirlos en varios subapartados, como 
 distribuciones de linux (y otros SO Libres?), herramientas de desarrollo 
 y publicación (IDEs, servidores de aplicaciones, lenguajes...), otros 

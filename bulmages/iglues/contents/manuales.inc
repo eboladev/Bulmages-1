@@ -1,5 +1,5 @@
 <script language="php">
-$title = "";
+$title = "Documentación";
 // =================================================
 $body = '
 

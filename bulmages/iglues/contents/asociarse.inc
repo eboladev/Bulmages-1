@@ -5,7 +5,7 @@ $body = '
 <h1>Pasos a seguir</h1>
 <p>Todo aquel que esté interesado en asociarse deberá enviar a la secretaria lo siguiente (entregado en mano, por mail - cmarco at conetxia.com -, por correo normal... como prefiráis)</p>
 <p>
--Datos personales: <br>
+- Datos personales: <br>
 <ul>
 <li>Nombre y Apellidos</li>
 <li>Nacionalidad</li>

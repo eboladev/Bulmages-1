@@ -6,7 +6,7 @@ $body = '
 <H1>Junta Directiva</H1>
 
 <OL>
-<LI> Pesidente: <A href="mailto:presidente@iglues.org">Josep Burción</A></LI>
+<LI> Presidente: <A href="mailto:presidente@iglues.org">Josep Burción</A></LI>
 	
 <LI> Vicepresidente: <A href="mailto:vicepresidente@iglues.org">René Mérou</A></LI>
 
