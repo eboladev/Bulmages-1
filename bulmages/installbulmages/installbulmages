@@ -230,6 +230,10 @@ cp nuevaemp /usr/local/bin
 cp borraremp /usr/local/bin
 cp guardaemp /usr/local/bin
 cp cargaemp /usr/local/bin
+cp bulmafact /usr/local/bin
+cp bulmacont /usr/local/bin
+cp bulmatpv /usr/local/bin
+
 
 info "Instalando archivos de revision del archivo de configuracion. \n"
 tiempo
