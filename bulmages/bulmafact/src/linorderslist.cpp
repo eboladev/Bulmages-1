@@ -65,6 +65,8 @@ linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, i
 
 void linorderslist::chargeorder(QString idpedido) {
    QString idproveedor;
+   QString iddivision;
+   QString idalmacen;
    
    companyact->begin();
    cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido, proveedor  WHERE idpedido="+idpedido+" and pedido.idproveedor=proveedor.idproveedor","unquery");
@@ -77,6 +79,8 @@ void linorderslist::chargeorder(QString idpedido) {
 	m_fechapedido->setText(cur->valor("fechapedido"));
 	m_descpedido->setText(cur->valor("descpedido"));
 	idproveedor = cur->valor("idproveedor");
+	iddivision = cur->valor("iddivision");
+	idalmacen = cur->valor("idalmacen");
    }
    delete cur;
    
@@ -85,20 +89,38 @@ void linorderslist::chargeorder(QString idpedido) {
    if (m_cursorcombo != NULL) delete m_cursorcombo;
    m_cursorcombo = companyact->cargacursor("SELECT * FROM division where idproveedor="+idproveedor,"unquery");
    companyact->commit();
+   int i = 0;
+   int i1 = 0;
    while (!m_cursorcombo->eof()) {
+   	i ++;
    	m_combodivision->insertItem(m_cursorcombo->valor("descdivision"));
 	m_cursorcombo->siguienteregistro();
+	if (m_cursorcombo->valor("iddivision") == iddivision) {
+	   i1 = i;
+	}
+   }
+   if (i1 != 0 ) {
+   	m_combodivision->setCurrentItem(i1);
    }
    
    companyact->begin();
    if (m_cursorcombo2 != NULL) delete m_cursorcombo2;
    m_cursorcombo2 = companyact->cargacursor("SELECT * FROM almacen","unquery");
    companyact->commit();
+   i = 0;
+   i1 = 0;   
    while (!m_cursorcombo2->eof()) {
+   	i ++;
+	if (idalmacen == m_cursorcombo2->valor("idalmacen")) {
+	   i1 = i;
+	}
    	m_comboalmacen->insertItem(m_cursorcombo2->valor("nomalmacen"));
 	m_cursorcombo2->siguienteregistro();
    }
-   
+   fprintf(stderr,"id:%s\n", idalmacen.ascii());
+   if (i1 != 0 ) {
+   	m_comboalmacen->setCurrentItem(i1);
+   }
 }
 
 void linorderslist::chargelinorders(QString idpedido) {
