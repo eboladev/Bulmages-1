@@ -41,6 +41,7 @@ public:
   postgresiface2 *conexionbase;
   int idborrador;
   int idregistroiva;
+  int numdigitos;
 
 public: 
   ivaview(empresa *, QWidget *parent=0, const char *name=0);
@@ -59,22 +60,22 @@ private:
   int buscaborradorservicio(int);
   void cargaiva(QString);
   void cargaComboTipoIva();
+  void calculaTotales();
 
 public slots:
   virtual void accept();
   virtual void boton_borrar();
   virtual void boton_buscacuenta();
   virtual void cambiadacontrapartida();
-  virtual void iva_changed();
-  virtual void importeiva_changed();
-  virtual void baseiva_lostfocus();
   virtual void boton_generarPrevisiones();
+  virtual void returnContrapartida();
 //  virtual void currentIvaChanged(int, int);
 
 private slots:
   virtual void tcambiaseleccion();
   virtual void cambiadogrid(int, int);
   virtual void pulsadomas(int, int, int);
+  virtual void currentIvaChanged(int, int);
   
 };
 

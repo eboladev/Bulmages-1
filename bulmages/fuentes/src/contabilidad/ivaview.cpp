@@ -117,6 +117,7 @@ CREATE TABLE fpago (
 #define COL_IVA_CTAIVA 3
 #define COL_IVA_BASEIVA 4
 #define COL_IVA_IDREGISTROIVA 5
+#define COL_IVA_PORCENTAJETIPOIVA 6
 
 
 ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(parent,name) {
@@ -124,15 +125,16 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
    conexionbase = emp->bdempresa();
    idborrador=0;
    idregistroiva =0;
-  
-   m_listIva->setNumCols(6);
+   numdigitos = emp->numdigitosempresa();
+   m_listIva->setNumCols(7);
    m_listIva->horizontalHeader()->setLabel(COL_IVA_IDIVA,tr("COL_IVA_IDIVA") );
    m_listIva->horizontalHeader()->setLabel(COL_IVA_IDTIPOIVA,tr("COL_IVA_IDTIPOIVA") );
    m_listIva->horizontalHeader()->setLabel(COL_IVA_NOMBRETIPOIVA,tr("Tipo") );
    m_listIva->horizontalHeader()->setLabel(COL_IVA_CTAIVA,tr("Cuenta") );
    m_listIva->horizontalHeader()->setLabel(COL_IVA_BASEIVA,tr("Base") );
    m_listIva->horizontalHeader()->setLabel(COL_IVA_IDREGISTROIVA,tr("COL_IVA_IDREGISTROIVA") );
-   m_listIva->setNumRows(50);
+   m_listIva->horizontalHeader()->setLabel(COL_IVA_PORCENTAJETIPOIVA,tr("COL_IVA_PORCENTAJETIPOIVA") );
+   m_listIva->setNumRows(0);
    m_listIva->hideColumn(COL_IVA_IDIVA);
    m_listIva->hideColumn(COL_IVA_IDTIPOIVA);
    m_listIva->hideColumn(COL_IVA_IDREGISTROIVA);
@@ -162,7 +164,6 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
    m_listPrevision->hideColumn(COL_PREV_IDCUENTA);
    m_listPrevision->hideColumn(COL_PREV_IDPREVCOBRO);
    m_listPrevision->hideColumn(COL_PREV_IDREGISTROIVA);
-   
    m_listPrevision->setNumRows(50);
    
    // CAlculamos las formas de pago.
@@ -294,6 +295,14 @@ void ivaview::guardaiva() {
 void ivaview::boton_borrar() {
   QString query;
   if (idregistroiva != 0) {
+    query.sprintf("DELETE FROM prevcobro WHERE idregistroiva=%d", idregistroiva);
+    conexionbase->begin();
+    conexionbase->ejecuta(query);
+    conexionbase->commit();    
+    query.sprintf("DELETE FROM iva WHERE idregistroiva=%d", idregistroiva);
+    conexionbase->begin();
+    conexionbase->ejecuta(query);
+    conexionbase->commit();
     query.sprintf("DELETE FROM registroiva WHERE idregistroiva=%d",idregistroiva);
     conexionbase->begin();
     conexionbase->ejecuta(query);
@@ -301,6 +310,18 @@ void ivaview::boton_borrar() {
   }// end if
   done(1);
 }// end boton_borrar
+
+void ivaview::calculaTotales() {
+   double base=0;
+   double iva=0;
+   for (int i=0;i< m_listIva->numRows(); i++) {
+      base += m_listIva->text(i,COL_IVA_BASEIVA).toFloat() * 100 / m_listIva->text(i,COL_IVA_PORCENTAJETIPOIVA).toFloat();
+      iva += m_listIva->text(i,COL_IVA_BASEIVA).toFloat();
+   }// end for
+   
+   baseimponible->setText(QString::number(base));
+   importeiva->setText(QString::number(iva));
+}
 
 /**
   * \brief SLOT que se ejecuta al pulsar sobre el boton de buscar una cuenta determinada
@@ -311,21 +332,100 @@ void ivaview::boton_buscacuenta() {
    listcuentas->inicializa(conexionbase);
    listcuentas->exec();
    contrapartida->setText(listcuentas->codcuenta);
+   returnContrapartida();
    delete listcuentas;
 }// end boton_buscacuenta
 
 
 void ivaview::cambiadacontrapartida() {
-   fprintf(stderr,"cambiada la contrapartida\n");
+    QLineEdit *codigo = (QLineEdit *) sender();
+    QString texto = contrapartida->text();
+    if (texto == "+") {
+        // Hacemos aparecer la ventana de cuentas
+        listcuentasview1 *listcuentas = new listcuentasview1();
+        listcuentas->modo=1;
+        listcuentas->inicializa(conexionbase);
+        listcuentas->exec();
+        codigo->setText(listcuentas->codcuenta);
+        delete listcuentas;
+    }// end if
 }// end cambiadacontrapartida
+
+void ivaview::returnContrapartida() {
+   QString cad = contrapartida->text();
+   if (cad != "") {
+      cad = extiendecodigo(cad,numdigitos);
+      conexionbase->begin();
+      cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
+      conexionbase->commit();
+      int num = cursorcta->numregistros();
+      if (num >0) {
+         contrapartida->setText(cursorcta->valor("codigo"));
+      }// end if
+      
+      fprintf(stderr,"CAMBIADA LA CONTRAPARTIDA\n");
+      QString SQLQuery = "SELECT * FROM cuenta WHERE codigo='"+contrapartida->text()+"'";
+      conexionbase->begin();
+      cursor2 *cur = conexionbase->cargacursor(SQLQuery,"buscacuenta");
+      conexionbase->commit();
+      if (!cur->eof()) {
+         cif->setText(cur->valor("cifent_cuenta"));
+         empfactura->setText(cur->valor("nombreent_cuenta"));
+      }// end if     
+      
+      delete cursorcta;
+   }// end if
+}// end return_codigofinal
+
+
 
 /** \brief busca la cuenta de IVA en el apunte que se ha seleccionado.
   *
-  * Nos pasa a la cuenta de IVa, pero y si hay varios registros de IVA ?
-  * Los pasa en forma de lista.
+  * Esta función carga, dado un apunte y un asiento
+  * todas las cuentas de iva en el registro de iva que corresponden con 
+  * la partida del asiento.
+  * Los pasa en la tabla m_listIva
   */
-int ivaview::buscaborradoriva(int idapunte) {
+int ivaview::buscaborradoriva(int idborrador) {
+   fprintf(stderr,"BUSCABORRADORIVA\n");
+   fprintf(stderr,"================\n");
    QString SQLQuery;
+   SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT borrador.debe AS debe, borrador.haber AS haber, idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo FROM borrador, cuenta  WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador); 
+   conexionbase->begin();
+   conexionbase->ejecuta(SQLQuery);
+   SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
+   conexionbase->ejecuta(SQLQuery);
+   conexionbase->commit();
+   conexionbase->begin();
+   // Cargamos los registros que quedan pq seguro que son de IVA.
+   SQLQuery = "SELECT * FROM tipoiva LEFT JOIN lacosa ON tipoiva.idcuenta = lacosa.idcuenta";
+   cursor2 * cur=conexionbase->cargacursor(SQLQuery, "buscaapunte");
+   conexionbase->commit();
+   m_listIva->setNumRows(cur->numregistros());
+   
+   int i=0;
+   while (! cur->eof() ) {
+      fprintf(stderr,"BUSCABORRADORIVA: idborrador: %s contrapartida: %s cuenta: %s idtipoiva %s\n",cur->valor("idborrador").ascii(), cur->valor("contrapartida").ascii(), cur->valor("codigo").ascii(), cur->valor("idtipoiva").ascii());
+      
+      m_listIva->setText(i,COL_IVA_IDIVA, cur->valor("idiva"));
+      m_listIva->setText(i,COL_IVA_IDTIPOIVA, cur->valor("idtipoiva"));
+      m_listIva->setText(i,COL_IVA_NOMBRETIPOIVA, cur->valor("nombretipoiva"));
+      double val = cur->valor("debe").toFloat() + cur->valor("haber").toFloat();
+      m_listIva->setText(i,COL_IVA_BASEIVA, QString::number(val));
+      m_listIva->setText(i,COL_IVA_IDREGISTROIVA, cur->valor("idregistroiva"));
+      m_listIva->setText(i,COL_IVA_CTAIVA, cur->valor("codigo"));      
+      m_listIva->setText(i,COL_IVA_PORCENTAJETIPOIVA, cur->valor("porcentajetipoiva"));      
+      
+      cur->siguienteregistro(); 
+      i++;
+   }// end while
+   delete cur;
+   conexionbase->begin();
+   SQLQuery = "DROP TABLE lacosa";
+   conexionbase->ejecuta(SQLQuery);
+   conexionbase->commit();
+   
+   fprintf(stderr,"END BUSCABORRADORIVA \n");
    return 0;
 }// end buscaborradoriva
 
@@ -338,7 +438,6 @@ int ivaview::buscaborradorservicio(int idborrador) {
    QString SQLQuery;
    int registro=0;
    SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo FROM borrador, cuenta where borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador); 
- //  SQLQuery.sprintf("SELECT * FROM cuenta, borrador WHERE borrador.idcuenta = cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador = %d) AND (bcontrapartidaborr(idborrador) = %d OR idborrador= %d)", idborrador, idborrador, idborrador);
    conexionbase->begin();
    conexionbase->ejecuta(SQLQuery);
    SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador, idborrador, idborrador);
@@ -383,6 +482,11 @@ int ivaview::buscaborradorcliente(int idborrador) {
    conexionbase->commit();
    while (! cur->eof() ) {
       fprintf(stderr,"idborrador: %s contrapartida: %s cuenta: %s\n",cur->valor("idborrador").ascii(), cur->valor("contrapartida").ascii(), cur->valor("codigo").ascii());
+      
+      // Ponemos la cuenta de Cliente y los valores adyacentes
+      contrapartida->setText(cur->valor("codigo"));
+      returnContrapartida();
+      
       registro = atoi(cur->valor("idborrador").ascii());
       cur->siguienteregistro(); 
    }// end while
@@ -412,10 +516,12 @@ void ivaview::cargaiva(QString idregistroiva) {
       m_listIva->setText(i,COL_IVA_BASEIVA, cur->valor("baseiva"));
       m_listIva->setText(i,COL_IVA_IDREGISTROIVA, cur->valor("idregistroiva"));
       m_listIva->setText(i,COL_IVA_CTAIVA, cur->valor("codigo"));
+      m_listIva->setText(i,COL_IVA_PORCENTAJETIPOIVA, cur->valor("porcentajetipoiva"));
       cur->siguienteregistro();
       i++;
    }// end while
    delete cur;
+   calculaTotales();
 }// end cargaiva
 
 /** Esquema:
@@ -425,14 +531,12 @@ void ivaview::cargaiva(QString idregistroiva) {
 void ivaview::inicializa1(int idapunte1) {
    QString query, cadena;
    double debe, haber, total_factura=0;
-   idborrador = idapunte1;
-   int idborradoriva;
-   int idborradorcliente;
-   
    // Primeras pruebas buscando los borradores
-   buscaborradorcliente(idapunte1);
-   
-   
+   idborrador = buscaborradorcliente(idapunte1);
+   // En el caso de que no existiese una cuenta de servicio a la que asociar se 
+   // Asocia directamente al apunte seleccionado.
+   if (idborrador <=0) 
+      idborrador = idapunte1;
    //Busca entradas de IVA en la tabla registroiva
    query.sprintf ( "SELECT * FROM registroiva, cuenta WHERE idborrador=%d AND registroiva.contrapartida=cuenta.idcuenta",idborrador);
    conexionbase->begin();
@@ -442,6 +546,7 @@ void ivaview::inicializa1(int idapunte1) {
       // Se trata de un registro que ya ha sido introducido
       idregistroiva=atoi(cursoriva->valor("idregistroiva").ascii());
       contrapartida->setText(cursoriva->valor("codigo"));
+      returnContrapartida();
       empfactura->setText(cursoriva->valor("nombreent_cuenta"));
       baseimponible->setText(cursoriva->valor("baseimp"));
       iva->setText(cursoriva->valor("iva"));
@@ -457,75 +562,12 @@ void ivaview::inicializa1(int idapunte1) {
          numasiento->setText(cursorapunte->valor("ordenasiento")); 
          cuentaiva->setText(cursorapunte->valor("codigo"));
       }// end if
-      if (cuentaiva->text().left(3) == "600") {
-         cuentaiva->setText("472");
-         iva->setText("0");
-         importeiva->setText("0.00");
-      }// end if
-      if (cuentaiva->text().left(3) == "700") {
-         cuentaiva->setText("477");
-         iva->setText("0");
-         importeiva->setText("0.00");
-      }// end if
       delete cursorapunte;
       cargaiva(cursoriva->valor("idregistroiva"));
-   } else {
-         // Aun no se ha metido ningun registro de este estilo, debe inicializarse.
-         // Hay una problematica al meterse asientos con multiples entradas de IVA, la cosa es durilla.
-         query.sprintf ("SELECT * from borrador, asiento, cuenta WHERE borrador.idborrador=%d AND borrador.idasiento=asiento.idasiento AND borrador.idcuenta=cuenta.idcuenta",idborrador); //Josep Burción
-         conexionbase->begin();
-         cursor2 * cursorapunte = conexionbase->cargacursor(query,"cursorapunte");
-         conexionbase->commit();
-         if (!cursorapunte->eof()) {
-            numasiento->setText(cursorapunte->valor("ordenasiento"));
-            cuentaiva->setText(cursorapunte->valor("codigo"));
-            debe = atof(cursorapunte->valor("debe").ascii());
-            haber = atof(cursorapunte->valor("haber").ascii());
-            
-            // La funcion bcontrapartidaborr (definida en la base de datos) busca contrapartidas de forma más compleja a como
-            // se propuso en un principio. Ahora en un mismo apunte con multiples entradas se encuentra la contrapartida mediante proximidades en el mismo cuadre.
-            // Atención a este SELECT que tiene tela,
-            // Si se hace un SELECT * FROM ..... WHERE borrador.idborrador = bcontrapartidaborr(%d) el rendimiento cae en picado.
-            query.sprintf("SELECT * FROM borrador,cuenta WHERE borrador.idcuenta = cuenta.idcuenta AND borrador.idborrador IN  (SELECT bcontrapartidaborr(%d))",idborrador);
-            conexionbase->begin();
-            cursor2 *cursorcontrapartida = conexionbase->cargacursor(query,"contrapartida");
-            conexionbase->commit();
-            // en el caso en que exista una contrapartida, se podra calcular la contrapartida
-            // Y la base imponible.
-            if (!cursorcontrapartida->eof()) {
-               empfactura->setText(cursorcontrapartida->valor("nombreent_cuenta"));
-               contrapartida->setText(cursorcontrapartida->valor("codigo"));
-               cif->setText(cursorcontrapartida->valor("cifent_cuenta"));
-               total_factura= atof(cursorcontrapartida->valor("debe").ascii());
-               if (total_factura == 0) {
-                  total_factura = atof(cursorcontrapartida->valor("haber").ascii());
-               }// end if
-               fprintf(stderr,"total factura %2.2f\n",total_factura);
-               double iva1 = atof(cursorapunte->valor("debe").ascii());
-               if (iva1 == 0) {
-                  iva1 = atof(cursorapunte->valor("haber").ascii());
-               }// end if
-               double baseimponible1 = total_factura - iva1;
-               double porcentiva = total_factura/baseimponible1 -1;
-               cadena.sprintf("%2.2f",baseimponible1);
-               baseimponible->setText(cadena);
-               cadena.sprintf("%2.0f",porcentiva*100);
-               iva->setText(cadena);
-               if (cuentaiva->text().left(3) == "600") {
-                  cuentaiva->setText("472");
-                  iva->setText("0");
-                  importeiva->setText("0.00");
-                  cadena.sprintf("%2.2f",total_factura);
-                  baseimponible->setText(cadena);
-               }
-               if (cuentaiva->text().left(3) == "700") {
-                  cuentaiva->setText("477");
-                  iva->setText("0");
-                  importeiva->setText("0.00");
-                  cadena.sprintf("%2.2f",total_factura);
-                  baseimponible->setText(cadena);
-               }
-               
+   } else {      
+      //buscamos en todo el asiento las cuentas de IVA y lo reflejamos
+      buscaborradoriva(idapunte1);
+      calculaTotales();
       //* JOSEP BURCION
                //Proponemos un número de factura si se trata de una venta y
                //proponemos un número de orden si se trata de una compra
@@ -572,11 +614,6 @@ void ivaview::inicializa1(int idapunte1) {
                   }// end if
                }// end if
                delete recordset;//Fin proposicion numeros factura y orden.
-      //* END JOSEP BURCION 
-            }// end if
-            delete cursorcontrapartida;
-         }// end if
-         delete cursorapunte;
    }// end if
    delete cursoriva;
   // Hacemos la carga de los cobros.
@@ -611,28 +648,6 @@ void ivaview::cargacobros () {
   delete curprevcobros;
 }// end cargacobros
 
-/** El usuario cambia el % de IVA
-  * Entonces recalculamos el importe de IVA
-  */
-void ivaview::iva_changed() {
-    importeiva->setText(QString::number(((baseimponible->text().toFloat()) *(iva->text().toFloat()))/100,'f',2));
-}
-
-/** El usuario cambia el importe del IVA
-  * Entonces recalculamos la base
-  * Controlamos que IVA no tenga valor ZERO para evitar "DIVISION POR ZERO!!"
-  */
-void ivaview::importeiva_changed() {
-    if (iva->text().toFloat() != 0) {
-        baseimponible->setText(QString::number((importeiva->text().toFloat() * 100) / iva->text().toFloat(),'f',2));
-    }
-}
-
-//El usuario cambia la base del IVA
-//Entonces recalculamos el importe
-void ivaview::baseiva_lostfocus() {
-    iva_changed(); //Hacemos lo mismo que en iva_changed();
-}
 
 void ivaview::guardaprevpago() {
    int i;
@@ -690,6 +705,11 @@ void ivaview::tcambiaseleccion() {
        guardaprevpago(rowactual);
    rowactual = m_listPrevision->currentRow();
 }// end ivaview
+
+
+void ivaview::currentIvaChanged(int, int) {
+   calculaTotales();
+}// end cambiadoIvaGrid
 
 /**
   * \brief SLOT que captura el cambio de foco en la rejilla de Previsiones de cobros y pagos.

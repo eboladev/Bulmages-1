@@ -102,7 +102,6 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
     tapunts->setColumnWidth(COL_CANAL, 75);
     tapunts->hideColumn(COL_IDBORRADOR);
     tapunts->hideColumn(COL_TIPOIVA);
-
     tapunts->hideColumn(COL_IDCUENTA);
     tapunts->hideColumn(COL_IDCONTRAPARTIDA);
     tapunts->hideColumn(COL_IDCANAL);
@@ -541,8 +540,6 @@ void intapunts3view::boton_abrirasiento() {
 void intapunts3view::boton_cerrarasiento() {
     int eleccion;
     int i=0;
-    //bool asientoVacio=true;
-
     guardaborrador(rowactual);
     if (( descuadre->text() != "0.00") && ( descuadre->text() != "-0.00")) {
         eleccion = QMessageBox::information( 0, "Asiento descuadrado, no se puede cerrar", "El asiento no puede guardarse, desea dejarlo abierto ?");
@@ -554,8 +551,8 @@ void intapunts3view::boton_cerrarasiento() {
         if (tapunts->text(i,COL_IVA).isNull()) {
             QString codcuenta = tapunts->text(i,COL_SUBCUENTA);
             fprintf(stderr,"%s\n",codcuenta.ascii());
-            codcuenta = codcuenta.mid(0,3);
-            if (codcuenta == "477" || codcuenta == "472") {
+            codcuenta = codcuenta.mid(0,2);
+            if (codcuenta == "40" || codcuenta == "43") {
                 fprintf(stderr,"%s\n",codcuenta.ascii());
                 int idborrador = atoi(tapunts->text(i,COL_IDBORRADOR).ascii());
                 if (idborrador != 0) {
@@ -583,17 +580,6 @@ void intapunts3view::boton_cerrarasiento() {
     fechaasiento1->selectAll();
     fechaasiento1->setFocus();
     idasiento=-1;
-
-// Hay un problema con la comprobación
-// Se borran asientos que no estan vacios
-// Por ejemplo cuando se crea un asiento a partir de un asiento inteligente.
-    
-//    if (asientoVacio) {
-//    if (i==1) {
-//        QMessageBox::information( 0, tr("Asiento vacio"), tr("El asiento esta vacio, se procedera a borrarlo !"));
-//        borrar_asiento(false); //el valor false indica que no nos muestre el dialogo de confirmación de borrado.
-//    }// end if
-
 }// end boton_cerrarasiento
 
 
