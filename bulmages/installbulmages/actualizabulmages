@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo -e "\pset tuples_only \n select nombredb from empresa" | psql metabd > listdb.lst
+
+# tail -1 listdb.lst
+# rm listdb.lst
+
