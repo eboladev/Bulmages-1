@@ -72,6 +72,7 @@ class Mod300ps: public Modgenps, public mod300dlg
     /** Bank account number */
     numerocuenta *ccc; 
     void personalButtonPressed();
+    bool sincuentasbancarias;///<Si es true, no tenemos ninguna cuenta de banco en nuestra base de datos
 protected:
     QString ano;
     QString empresa;

@@ -107,7 +107,7 @@ public:
   cursor2 *cargaempresas();
   
   static QString sanearCadena(QString cadena);
-
+QString propiedadempresa(QString );
 private:
   int formatofecha();
 

@@ -242,6 +242,11 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
   return(cur);
 }// end cargacursor
 
+/** \brief Ejecuta un comando SQL
+\param Query Comando a ejecutar. Debe ser un comando que no devuelva ningún valor (como \c select).
+\retval 0 Si la ejecución fue correcta
+\retval 1 en caso contrario
+*/
 int postgresiface2::ejecuta(QString Query) {
     PGresult *result;
     fprintf(stderr,"%s\n",Query.ascii());
@@ -660,4 +665,36 @@ QString postgresiface2::sanearCadena(QString cadena) {
    free(buffer);
    return cadenaLimpia;
 }
+
+/**\brief Devuelve el valor de una propiedad de la empresa
+
+Las propiedades de la empresa son valores asociados a ésta de la forma Nombre=Valor. 
+De esta forma se guardan datos como el nombre fiscal de la empresa, CIF, domicilio, etc.
+
+\param nombre Nombre de la propiedad
+\return Valor de la propiedad
+*/
+
+QString postgresiface2::propiedadempresa(QString nombre) {
+    PGresult *result;
+    QString value;
+    int num;
+    QString Query="select * from configuracion where nombre='"+nombre+"'";
+    fprintf(stderr,"%s\n",Query.ascii());
+    result = PQexec(conn, Query.ascii());
+    if (!result || PQresultStatus(result) != PGRES_TUPLES_OK) {
+        fprintf(stderr, "SQL command failed: %s\n", Query.ascii());
+        fprintf(stderr,"%s\n", PQerrorMessage(conn));
+        PQclear(result);
+        return("");
+    }// end if
+
+    num=PQntuples(result);
+    if (num>1) fprintf(stderr,"Aviso: Hay %d valores para el campo %s en la tabla configuracion\n",num,nombre.ascii());
+    if (num==0) value="";
+    else value= PQgetvalue(result, 0, 2);
+    PQclear(result);
+    return(value);
+}// end propiedadempresa
+
 

@@ -47,7 +47,8 @@ Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
   QString query="select descripcion,bancoent_cuenta,codigo from cuenta where codigo like '572%%' and codigo>572";
 
   postgresiface2 *metabase = new postgresiface2();
-  metabase->inicializa("bulmages");//[TODO] CAMBIAR!!!!
+   metabase->inicializa("bulmages");//[TODO] CAMBIAR!!!!
+//metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
   metabase->begin();
   fprintf(stderr,"%s\n",query.ascii());
   cursor2 *cur = metabase->cargacursor(query,"bancos");
@@ -61,7 +62,6 @@ Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
 
 
   for (int i=0;i<nTuples;i++)
-    //while (!cur->eof())
     {
       nombresccc[i]=cur->valor("descripcion");
       nombresccc[i]+="  ";
@@ -75,33 +75,21 @@ Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
   delete cur;
   delete metabase;
 
-  //Ahora realizo otra consulta para obtener datos sobre la empresa
-
-  query="select nombre,ano from empresa where nombredb='bulmages'";//Tiene que usar la empresa elegida, no bulmages!!!! TODO
-
-  metabase = new postgresiface2();
-  metabase->inicializa("metabd");//[TODO] CAMBIAR!!!
-  metabase->begin();
-  fprintf(stderr,"%s\n",query.ascii());
-  cur = metabase->cargacursor(query,"datos");
-
-  if (cur->numregistros()>1)
-    {
-      cout << "ERROR: Empresa duplicada!!\n";
-    }
-
-  empresa=cur->valor("nombre");
-  ano=cur->valor("ano");
-
-
-  cout << "Para " << empresa << ", " << ano << "\n";
-
-
+  if (nTuples==0) //Si no tenemos ninguna cuenta de banco...
+{
+sincuentasbancarias=true;
+personalButton->setChecked(true);
+personalButtonPressed();
+cuentaButton->setDisabled(true);  
+}
+  
+  
   cout << "Objeto Mod300ps generado\n";
 }
 /** \brief Accept slot for the 300-model dialog.
 
 When pressed, it calls to the \ref generaps method.
+\bug El programa casca cuando no hay ninguna cuenta de banco y no se selecciona la opción de especificar manualmente número de cuenta
 */
 void Mod300ps::accept()
 {
@@ -331,6 +319,7 @@ cout << psname;
 void Mod300ps::personalButtonPressed()
 {
   bool dis=cuentaButton->isChecked();
+  
   banco->setDisabled(dis);
   entidad->setDisabled(dis);
   dc->setDisabled(dis);
@@ -416,9 +405,27 @@ void Mod300ps::escribe_cuenta_bancaria(int x,int y)
 void Mod300ps::rellena_identificacion()
 {
   QString cad1;
+  
+  postgresiface2 *m = new postgresiface2();
+
+ m->inicializa("bulmages");//[TODO] CAMBIAR!!!!
+escrder(m->propiedadempresa("CIF"),78,601);
+escrder(m->propiedadempresa("TipoVia"),78,576);
+escrder(m->propiedadempresa("NombreVia"),141,576);
+escrder(m->propiedadempresa("NumeroVia"),389,576);
+escrder(m->propiedadempresa("Escalera"),431,576);
+escrder(m->propiedadempresa("Piso"),461,576);
+escrder(m->propiedadempresa("Puerta"),490,576);
+///\bug Por ahora, el número de teléfono no cabe!!
+// escrder(m->propiedadempresa("Telefono"),518,576);
+escrder(m->propiedadempresa("CodPostal"),528,550);
+escrder(m->propiedadempresa("Municipio"),78,550);
+escrder(m->propiedadempresa("Provincia"),360,550);
 
 
 
+
+delete m;
 
 
   cad1.sprintf("%d",trimestre->currentItem()+1);//Si elegido item 0 ---> cad1="1", etc.
