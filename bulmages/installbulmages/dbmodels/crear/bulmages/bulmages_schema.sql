@@ -41,6 +41,7 @@ CREATE TABLE grupo (
 -- nombreent_cuenta: Si hay una entidad ligada a la cuenta aqui ponemos su nombre.
 -- cifent_cuenta: Si hay una entidad ligada a la cuenta aqui ponemos su CIF
 -- dirent_cuenta: Direccion de una entidad ligada con la cuenta
+-- cpent_cuenta: Código Postal de una entidad ligada con la cuenta
 -- telent_cuenta: Telefono de una entidad ligada con la cuetna.
 -- coment_cuenta: Comentarios de una entidad ligada con la cuenta.
 -- bancoent_cuenta: Cuenta bancaria de una entidad ligada con la cuenta.
@@ -65,6 +66,7 @@ CREATE TABLE cuenta (
     activo boolean,
     nombreent_cuenta character varying(100),
     cifent_cuenta character varying(12),
+    cpent_cuenta character varying(5);
     dirent_cuenta character varying(80),
     telent_cuenta character varying(20),
     coment_cuenta character varying(500),
