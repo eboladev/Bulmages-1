@@ -31,7 +31,6 @@ enum {sleep10=1001,sleep3=1002,acabado=1003};
 
 
 class genps_thread:public QThread
-
 {
 public:
 genps_thread(QString,QString,QProgressDialog *);
