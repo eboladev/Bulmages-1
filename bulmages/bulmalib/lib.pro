@@ -5,10 +5,12 @@
 
 HEADERS += postgresiface2.h \
            configuracion.h \
-           numerocuenta.h 
+           numerocuenta.h  \
+	   funcaux.h
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
-           numerocuenta.cpp 
+           numerocuenta.cpp  \
+	   funcaux.cpp
 TEMPLATE = lib
 LANGUAGE = C++
 CONFIG += release warn_on staticlib

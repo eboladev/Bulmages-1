@@ -272,7 +272,6 @@ IDLS += contabilidad/about.ui \
         contabilidad/uibloqfecha.ui 
 HEADERS += comun/abreempresaview.h \
            comun/splashscreen.h \
-           comun/funcaux.h \
            comun/calendario.h \
            comun/qmcdatenav.h \
            contabilidad/bulmages01.h \
@@ -334,7 +333,6 @@ SOURCES += main.cpp \
            comun/splashscreen.cpp \
            comun/calendario.cpp \
            comun/qmcdatenav.cpp \
-           comun/funcaux.cpp \
            contabilidad/bulmages01.cpp \
            contabilidad/aboutview.cpp \
            contabilidad/empresa.cpp \
