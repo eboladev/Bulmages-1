@@ -75,7 +75,7 @@ void balancesprintview::accept() {
                       texto += "   ";
                    texto += cursor->valor("concepto");
 		   valor = mycursor->valor("saldot").toDouble();
-		   if (valor > 0.001 || valor < -0.001)
+//		   if (valor > 0.001 || valor < -0.001)
                    	fprintf(mifile, "%-60.60s %10.2f\n", texto.ascii(), valor);
                    i++;
                    mycursor->siguienteregistro();

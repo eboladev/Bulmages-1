@@ -968,9 +968,8 @@ void intapunts3view::duplicar(int col) {
 void intapunts3view::calculadescuadre() {
 	QString query = "SELECT sum(debe) as tdebe, sum(haber) AS thaber, sum(debe)-sum(haber) AS desc FROM borrador WHERE idasiento="+QS_IDASIENTO;
 	conexionbase->begin();
-	cursor2 * cur = conexionbase->cargacursor(query,"descuadres");
+	cursor2 *cur = conexionbase->cargacursor(query,"descuadres");
 	conexionbase->commit();
-
 	descuadre->setText(cur->valor("desc"));
 	totalhaber1->setText(cur->valor("thaber"));
 	totaldebe1->setText(cur->valor("tdebe"));

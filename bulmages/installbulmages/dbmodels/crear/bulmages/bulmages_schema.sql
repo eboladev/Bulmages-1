@@ -163,8 +163,8 @@ CREATE TABLE apunte (
     conceptocontable character varying(50),
     idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
     descripcion character varying(100),
-    debe double precision NOT NULL DEFAULT 0,
-    haber double precision NOT NULL DEFAULT 0,
+    debe numeric(12,2) NOT NULL DEFAULT 0,
+    haber numeric(12,2) NOT NULL DEFAULT 0,
     contrapartida integer REFERENCES cuenta(idcuenta),
     comentario character varying(100),
     idcanal integer REFERENCES canal(idcanal),
@@ -186,8 +186,8 @@ CREATE TABLE borrador (
     conceptocontable character varying(50),
     idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
     descripcion character varying(100),
-    debe double precision NOT NULL DEFAULT 0,
-    haber double precision NOT NULL DEFAULT 0,
+    debe numeric(12,2) NOT NULL DEFAULT 0,
+    haber numeric(12,2) NOT NULL DEFAULT 0,
     contrapartida integer REFERENCES cuenta(idcuenta),
     comentario character varying(100),
     idcanal integer REFERENCES canal(idcanal),
@@ -450,7 +450,7 @@ END;
 -- TOC entry 87 (OID 1346049)
 -- Name: ccontrapartida(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
--- La contrapartida de un apunte donde todo son ceros es la misma que el apunte. (Y asi salimos del lio).
+-- La contrapartida de un apunte donde todo son ceros es la misma que el apunte.
 CREATE FUNCTION ccontrapartida(integer) RETURNS integer
     AS '
 DECLARE
@@ -460,12 +460,16 @@ DECLARE
     contra RECORD;
 BEGIN
     SELECT INTO apt * FROM apunte WHERE idapunte= midapunte;
+-- Este metodo de buscar contrapartidas es poco eficaz por lo que de momento
+-- Tenemos desabilitada la opción de las contrapartidas asi como debe ser.    
+-- MUCHO OJO, PUEDE TENER GRAVES CONSECUENCIAS
     IF apt.contrapartida ISNULL THEN
-        SELECT INTO contra * FROM apunte WHERE idapunte = bcontrapartida(midapunte);
+--          RETURN apt.idcuenta;
+        SELECT INTO contra idcuenta FROM apunte WHERE idapunte = bcontrapartida(midapunte);
         IF FOUND THEN
                 RETURN contra.idcuenta;
         ELSE
-                RETURN ap.idcuenta;
+                RETURN apt.idcuenta;
         END IF;
     ELSE
         RETURN apt.contrapartida;
@@ -475,6 +479,74 @@ END;
     LANGUAGE plpgsql;
 
 
+    
+-- Creo que haciendo una función que cierre todas las contrapartidas de un asiento dado tendré muchos
+-- mejores rendimientos que mediante las funciones particulares y al cerrar el asiento se pueden 
+-- Recalcular todos los cierres.
+
+-- Recorremos el asiento en una única pasada y almacenamos contrapartidas de paso (maximas) al llegar a un punto de descuadre cero asignamos contrapartidas e inicializamos marcadores.
+-- Esta función es invocada desde cierraasiento ya que al cerrar el asiento se calculan las contrapartidas de todos los apuntes.
+-- Esta es de momento la forma más eficiente de calcular contrapartidas. 
+
+CREATE FUNCTION contraasiento(integer) RETURNS NUMERIC(12,2)
+   AS '
+DECLARE
+   midasiento ALIAS FOR $1;
+    midapunte ALIAS FOR $1;
+    apt RECORD;
+    aptasien RECORD;
+    cont RECORD;
+    descuadre NUMERIC(12,2);
+    apmaxdebe INTEGER;
+    apmaxhaber INTEGER;
+    maxdebe NUMERIC(12,2);
+    maxhaber NUMERIC(12,2);
+    ctadebe INTEGER;
+    ctahaber INTEGER;
+    salida BOOLEAN;
+    salidadebe BOOLEAN;
+    salidahaber BOOLEAN;   
+BEGIN
+                maxdebe := 0;
+                maxhaber := 0;
+                apmaxdebe:=0;
+                apmaxhaber := 0;
+		ctadebe := 0;
+		ctahaber := 0;
+		descuadre := 0;
+        FOR  cont IN SELECT  idcuenta,idapunte, debe, haber, orden FROM apunte WHERE idasiento = midasiento ORDER BY orden LOOP
+            -- Si es el debe maximo lo hacemos constar.
+            IF cont.debe >= maxdebe THEN
+                maxdebe := cont.debe;
+                apmaxdebe := cont.idapunte;
+		ctadebe := cont.idcuenta;
+            END IF;
+            -- Si es el haber mximo lo hacemos constar
+            IF cont.haber >= maxhaber THEN
+                maxhaber := cont.haber;
+                apmaxhaber := cont.idapunte;
+		ctahaber := cont.idcuenta;
+            END IF;
+            -- Calculamos el descuadre
+            descuadre := descuadre + cont.debe;
+            descuadre := descuadre - cont.haber;
+            -- Si es el descuadre inicializamos las variables.
+            IF descuadre = 0 AND ctadebe <> 0 AND ctahaber <> 0 THEN
+                UPDATE apunte SET contrapartida= ctahaber WHERE  haber=0 AND idasiento = midasiento AND orden <= cont.orden AND contrapartida ISNULL;
+                UPDATE apunte SET contrapartida= ctadebe WHERE  debe=0 AND idasiento = midasiento AND orden <= cont.orden AND contrapartida ISNULL;
+                maxdebe := 0;
+                maxhaber := 0;
+                apmaxdebe:=0;
+                apmaxhaber := 0;
+		ctadebe := 0;
+		ctahaber := 0;
+            END IF;
+        END LOOP;
+	RETURN 0;
+END;
+   ' LANGUAGE plpgsql;    
+    
+    
 --
 -- TOC entry 88 (OID 1346050)
 -- Name: bcontrapartida(integer); Type: FUNCTION; Schema: public; Owner: postgres
@@ -489,18 +561,18 @@ DECLARE
     apt RECORD;
     aptasien RECORD;
     cont RECORD;
-    descuadre FLOAT;
+    descuadre NUMERIC(12,2);
     apmaxdebe INTEGER;
     apmaxhaber INTEGER;
-    maxdebe FLOAT;
-    maxhaber FLOAT;
+    maxdebe NUMERIC(12,2);
+    maxhaber NUMERIC(12,2);
     salida BOOLEAN;
     salidadebe BOOLEAN;
     salidahaber BOOLEAN;
 BEGIN
 
 --    RAISE NOTICE ''Em pezamos'';
-    SELECT INTO apt * FROM apunte WHERE idapunte=midapunte;
+    SELECT INTO apt contrapartida, idasiento FROM apunte WHERE idapunte=midapunte;
     IF apt.contrapartida ISNULL THEN
         -- Inicializamos las variables.
         descuadre:=0;
@@ -510,8 +582,7 @@ BEGIN
         apmaxhaber:=0;
         salidadebe := FALSE;
         salidahaber := FALSE;
-
-        FOR  cont IN SELECT  * FROM apunte WHERE idasiento = apt.idasiento ORDER BY orden LOOP
+        FOR  cont IN SELECT  idapunte, debe, haber FROM apunte WHERE idasiento = apt.idasiento ORDER BY orden LOOP
             -- Si es la cuenta que estamos buscando lo hacemos constar.
             IF cont.idapunte = midapunte THEN
                 IF cont.debe > 0 THEN
@@ -534,7 +605,7 @@ BEGIN
             descuadre := descuadre + cont.debe;
             descuadre := descuadre - cont.haber;
             -- Si es el descuadre inicializamos las variables.
-            IF (descuadre*descuadre < 0.001) THEN  -- Asi nos aseguramos que valores positivos también entran.
+            IF (descuadre = 0) THEN  -- Asi nos aseguramos que valores positivos también entran.
                 IF (salidadebe = TRUE) THEN
                     RETURN apmaxdebe;
                 END IF;
@@ -550,7 +621,7 @@ BEGIN
         END LOOP;
         return 0;
     ELSE
-        SELECT INTO cont * FROM apunte WHERE idasiento = apt.idasiento AND idcuenta = apt.contrapartida;
+        SELECT INTO cont idapunte FROM apunte WHERE idasiento = apt.idasiento AND idcuenta = apt.contrapartida;
         RETURN cont.idapunte;
     END IF;
 END;
@@ -582,7 +653,7 @@ DECLARE
     salidahaber BOOLEAN;
 BEGIN
 
-    RAISE NOTICE ''Em pezamos'';
+--    RAISE NOTICE ''Em pezamos'';
     SELECT INTO apt * FROM borrador WHERE idborrador=midapunte;
     IF apt.contrapartida ISNULL THEN
         -- Inicializamos las variables.
@@ -678,16 +749,17 @@ END;
     LANGUAGE plpgsql;
 
 
+
 --
 -- TOC entry 92 (OID 1346054)
 -- Name: saldototalmpatrimonial(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION saldototalmpatrimonial(integer) RETURNS double precision
+CREATE FUNCTION saldototalmpatrimonial(integer) RETURNS NUMERIC(12,2)
     AS '
 DECLARE
    identmpatrimonial ALIAS FOR $1;
-   saldo DOUBLE PRECISION;
+   saldo NUMERIC(12,2);
    rsaldo RECORD;
    rsaldo1 RECORD;
    smpatrimonialsum RECORD;
@@ -1450,10 +1522,8 @@ mrecord.debe, mrecord.haber, mrecord.contrapartida, mrecord.comentario, mrecord.
 mrecord.idc_coste, mrecord.idtipoiva, mrecord.orden);
         END LOOP;
 
--- Cuando cerramos el asiento, tambien recalculamos todas las contrapartidas.
--- Si hay una contrapartida puesta en el borrador, entonces esa no se tocara.
--- De esta forma agilizamos cálculos y siemrpe en la tabla de apuntes tenemos las contrapartidas puestas.
-        UPDATE apunte set contrapartida = ccontrapartida(idapunte) WHERE idasiento= id_asiento;
+-- Cuando cerramos el asiento, tambien recalculamos todas las contrapartidas.	
+	PERFORM contraasiento(id_asiento);
         RETURN 1;
 END;
 
