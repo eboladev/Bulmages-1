@@ -1952,7 +1952,7 @@ void intapunts3view::fechaasiento1_textChanged( const QString & texto ) {
     }
     if (texto=="*")
         fechaasiento1->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}//fin fechaasiento1_textChanged( const QString &texto )
+}//fin fechaasiento1_textChanged
 
 
 void intapunts3view::boton_duplicarasiento() {
@@ -1973,13 +1973,20 @@ void intapunts3view::boton_fecha() {
 
 void intapunts3view::boton_adjuntar(){
    adocumental *adoc= new adocumental(empresaactual,0,"adjuntar documento");
+   adoc->setmodoconsulta();
    adoc->exec();
+   adoc->asociaasiento(IDASIENTO);
    delete adoc;
 }// end boton_adjuntar
 
 
-
+// Esto debe coger un asiento y asociarle un archivo documental y abrirlo y enseñar ambas cosas
 void intapunts3view::boton_nuevoasientodocumental(){
    fprintf(stderr,"boton_nuevoasientodocumental\n");
+   adocumental *adoc= new adocumental(empresaactual,0,"adjuntar documento");
+   adoc->presentaprimervacio();
+   iniciar_asiento_nuevo();
+   adoc->asociaasiento(IDASIENTO);
+   delete adoc;
 }// end boton_nuevoasientodocumental
 

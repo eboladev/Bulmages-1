@@ -31,12 +31,27 @@ private:
    empresa *empresaactual;
    postgresiface2 *conexionbase;
    QString RutaADocumental;
+/* En el modo edicion la ventana responde como si fuese un listado sobre el que se pueden editar los elementos la hacer doble click sobre ellos */
+/* En el modo consulta la ventana responde como si fuese un desplegable y se puede seleccionar el elemento con el que se desea tratar */
+   
+   int modo;  // Si modo vale 0 entonces es modo edicion
+              // Si modo vale 1 entonces es modo consulta
+              
+   QString idadocumental; // Almacena por un breve lapso de tiemo el idadocumental que se ha seleccionado.
 public: 
 	adocumental(empresa *, QWidget *parent=0, const char *name=0);
 	~adocumental();
+        void setmodoedicion() {modo=0;};
+        void setmodoconsulta() {modo=1;};
+        QString getidadocumental();
+        void asociaasiento(QString);
+        void presentaprimervacio();
+        void inicializa(); // A veces es necesario repintar las cosas. Esta funcion es la que lo hace.
 public slots:
    virtual void doubleclicked(int, int, int, const QPoint &);
    virtual void boton_newadocumental();
+   virtual void boton_desasociar();
+   
 };
 
 #endif
