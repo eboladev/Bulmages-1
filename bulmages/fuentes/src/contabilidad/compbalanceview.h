@@ -23,15 +23,17 @@
 
 /** *@author Tomeu Borrás Riera */
 
+class empresa;
+
 class compbalanceview : public compbalancedlg  {
    Q_OBJECT
 public:
+   empresa *empresaactual;
    postgresiface2 *conexionbase;
    string idbalance;    // Esta variable indica cual es el balance que se esta modificando/visualizando
 public: 
-	compbalanceview(QWidget *parent=0, const char *name=0);
+	compbalanceview(empresa *, QWidget *parent=0, const char *name=0);
 	~compbalanceview();
-   void inicializa(postgresiface2 *con) {conexionbase = con;}
    void inicializa1(string);
    string idmpatrimonial;   //este campo acompaña a la descripcion de la masa, pero no aparece pq no puede editarse.
 

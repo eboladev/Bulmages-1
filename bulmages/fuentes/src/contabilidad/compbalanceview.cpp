@@ -18,6 +18,7 @@
 #include <qradiobutton.h>
 #include "mpatrimonialesview.h"
 #include "mpatrimonialview.h"
+#include "empresa.h"
 
 #include "balancesprintview.h"
 
@@ -31,7 +32,9 @@
 #define COL_TABULACION     4
 #define COL_SALDO          5
 
-compbalanceview::compbalanceview(QWidget *parent, const char *name ) : compbalancedlg(parent,name) {
+compbalanceview::compbalanceview(empresa * emp,QWidget *parent, const char *name ) : compbalancedlg(parent,name) {
+	empresaactual = emp;
+	conexionbase =emp->bdempresa();
 }
 
 
@@ -411,8 +414,7 @@ void compbalanceview::modificalinea() {
 
 
 void compbalanceview::botonimprimir() {
-   balancesprintview *b = new balancesprintview(0,0);
-   b->inicializa(conexionbase);
+   balancesprintview *b = new balancesprintview(empresaactual,this,0);
    b->setidbalance(idbalance);
    b->exec();
    delete b;
