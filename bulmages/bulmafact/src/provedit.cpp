@@ -62,13 +62,52 @@ CREATE TABLE proveedor (
  
 #include "provedit.h"
 #include "company.h"
+#include "division.h"
 #include <qlineedit.h>
 #include <qmessagebox.h>
+#include <qtable.h>
+
+#define COL_DIVISION_IDDIVISION 0
+#define COL_DIVISION_DESCDIVISION 1
+#define COL_DIVISION_CONTACTODIVISION 2
+#define COL_DIVISION_COMENTDIVISION 3
+#define COL_DIVISION_TELDIVISION 4
+#define COL_DIVISION_FAXDIVISION 5
+#define COL_DIVISION_MAILDIVISION 6
+#define COL_DIVISION_IDPROVEEDOR 7
+
 
 provedit::provedit(company *comp, QWidget *parent, const char *name)
  : provedit_base(parent, name) {
    companyact = comp;
    idprovider = "0";
+   
+   
+   // Arreglamos la tabla de divisionoes.
+   m_divisiones->setNumRows( 0 );
+   m_divisiones->setNumCols( 0 );
+   m_divisiones->setSelectionMode( QTable::SingleRow );
+   m_divisiones->setSorting( TRUE );
+   m_divisiones->setSelectionMode( QTable::SingleRow );
+   m_divisiones->setColumnMovingEnabled( TRUE );
+   m_divisiones->setNumCols(8);
+   m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_IDDIVISION, tr( "Id. Division" ) );
+   m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_DESCDIVISION, tr( "Descripción" ) );
+   m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_CONTACTODIVISION, tr( "Contacto" ) );
+   m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_COMENTDIVISION, tr( "Comentarios" ) );
+   m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_TELDIVISION, tr( "Telefono" ) );
+   m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_FAXDIVISION, tr( "Fax" ) );
+   m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_MAILDIVISION, tr( "E-mail" ) );
+   m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_IDPROVEEDOR, tr( "idproveedor" ) );
+   
+   m_divisiones->setColumnWidth(COL_DIVISION_IDDIVISION,100);
+   m_divisiones->setColumnWidth(COL_DIVISION_DESCDIVISION,300);
+   m_divisiones->setColumnWidth(COL_DIVISION_CONTACTODIVISION,100);
+   m_divisiones->setColumnWidth(COL_DIVISION_COMENTDIVISION,100);
+   m_divisiones->setColumnWidth(COL_DIVISION_TELDIVISION,100);
+   m_divisiones->setColumnWidth(COL_DIVISION_FAXDIVISION,100);
+   m_divisiones->setColumnWidth(COL_DIVISION_MAILDIVISION,100);
+   m_divisiones->setColumnWidth(COL_DIVISION_IDPROVEEDOR,100);
 }// end provedit
 
 provedit::~provedit() {
@@ -81,8 +120,9 @@ provedit::~provedit() {
 * la ventana de edición en modo de inserción                            *
 *************************************************************************/
 void provedit::chargeprovider(QString idprov) {
+   idprovider = idprov;
    fprintf(stderr,"chargeprovider activado \n");
-   if (idprovider != "") {
+   if (idprovider != "0") {
       QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+idprov;
       companyact->begin();
       cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
@@ -95,7 +135,6 @@ void provedit::chargeprovider(QString idprov) {
          m_cifproveedor->setText(cur->valor("cifproveedor"));
          m_codicliproveedor->setText(cur->valor("codicliproveedor"));
          m_cbancproveedor->setText(cur->valor("cbancproveedor"));
-   //      m_comentproveedor->setText(cur->valor("comentproveedor"));
          m_dirproveedor->setText(cur->valor("dirproveedor"));
          m_poblproveedor->setText(cur->valor("poblproveedor"));
          m_cpproveedor->setText(cur->valor("cpproveedor"));
@@ -103,8 +142,27 @@ void provedit::chargeprovider(QString idprov) {
          m_faxproveedor->setText(cur->valor("faxproveedor"));
          m_emailproveedor->setText(cur->valor("emailproveedor"));
          m_urlproveedor->setText(cur->valor("urlproveedor"));
-   //      m_clavewebproveedor->setText(cur->valor("clavewebproveedor"));
-  
+         
+         // Providers division loading
+         // Cargamos las divisiones del proveedor.
+         QString SQLQuery1 = "SELECT * FROM division WHERE idproveedor="+idprov;
+         companyact->begin();
+         cursor2 *cur1 = companyact->cargacursor(SQLQuery1, "cargadivisiones");
+         companyact->commit();
+         m_divisiones->setNumRows(cur1->numregistros());
+         int i=0;
+         while (!cur1->eof()) {
+            m_divisiones->setText(i,COL_DIVISION_IDDIVISION,cur1->valor("iddivision"));
+            m_divisiones->setText(i,COL_DIVISION_DESCDIVISION,cur1->valor("descdivision"));
+            m_divisiones->setText(i,COL_DIVISION_CONTACTODIVISION,cur1->valor("contactodivision"));
+            m_divisiones->setText(i,COL_DIVISION_COMENTDIVISION,cur1->valor("comentdivision"));
+            m_divisiones->setText(i,COL_DIVISION_TELDIVISION,cur1->valor("teldivision"));
+            m_divisiones->setText(i,COL_DIVISION_FAXDIVISION,cur1->valor("faxdivision"));
+            m_divisiones->setText(i,COL_DIVISION_MAILDIVISION,cur1->valor("maildivision"));
+            m_divisiones->setText(i++,COL_DIVISION_IDPROVEEDOR,cur1->valor("idproveedor"));
+            cur1->siguienteregistro();
+         }// end while
+         delete cur1;
       } else {
          idprovider="0";
       }// end if
@@ -123,7 +181,6 @@ void provedit::boton_nuevo() {
       m_cifproveedor->setText("");
       m_codicliproveedor->setText("");
       m_cbancproveedor->setText("");
-//      m_comentproveedor->setText(cur->valor("comentproveedor"));
       m_dirproveedor->setText("");
       m_poblproveedor->setText("");
       m_cpproveedor->setText("");
@@ -131,9 +188,6 @@ void provedit::boton_nuevo() {
       m_faxproveedor->setText("");
       m_emailproveedor->setText("");
       m_urlproveedor->setText("");
-//      m_clavewebproveedor->setText(cur->valor("clavewebproveedor"));
-
-
 }// end boton_nuevo
 
 /*************************************************************************
@@ -175,7 +229,6 @@ void provedit::accept() {
       SQLQuery += ",'"+m_faxproveedor->text()+"'";
       SQLQuery += ",'"+m_urlproveedor->text()+"'";
       SQLQuery += ",'"+m_emailproveedor->text()+"'";
-      SQLQuery += ",1";
       SQLQuery += ")";
       companyact->begin();
       companyact->ejecuta(SQLQuery);
@@ -199,3 +252,7 @@ void provedit::boton_borrar() {
    }// end if
 }// end boton_borrar
 
+void provedit::boton_newdivision() {
+   division *driv = new division(companyact, 0,"hola");
+   driv->exec();
+}// end boton_newdivision

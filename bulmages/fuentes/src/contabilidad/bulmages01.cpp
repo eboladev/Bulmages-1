@@ -521,7 +521,13 @@ void Bulmages01::initActions() {
   CCosteDef->setStatusTip(tr("Centro de Coste por Defecto"));
   CCosteDef->setWhatsThis(tr("Centro de Coste por Defecto"));
   connect(CCosteDef, SIGNAL(activated()), this, SLOT(slotCCosteDef()));
-      
+ 
+  RecSald = new QAction(tr("Recalcular Saldos Iniciales"), tr("&Recalcular Saldos Iniciales"), 0, this);
+  RecSald->setStatusTip(tr("Recalcular Saldos Iniciales"));
+  RecSald->setWhatsThis(tr("Recalcular Saldos Iniciales"));
+  connect(RecSald, SIGNAL(activated()), this, SLOT(slotRecSald()));
+
+       
   SelectorAction = new QAction( this, "SelectorAction" );
   SelectorAction->setIconSet( QIconSet( QPixmap::fromMimeSource( "tux1.png" ) ) );
   connect( SelectorAction, SIGNAL( activated() ), this, SLOT( mostrar_selector() ) );      
@@ -604,7 +610,9 @@ void Bulmages01::initMenuBar() {
   pHerramientasMenu->insertSeparator();
   CCosteDef->addTo(pHerramientasMenu);
   CanalDef->addTo(pHerramientasMenu);
-   
+  pHerramientasMenu->insertSeparator();
+  RecSald->addTo(pHerramientasMenu);
+  
   //El menu de empresa
   pEmpresaMenu = new QPopupMenu();
   pEmpresaMenu->setCheckable(true);
@@ -1104,6 +1112,10 @@ void Bulmages01::slotSCuentas() {
    empresaactual.reemplazacuentaenasientos();
 }// end slotNEjercicio
 
+
+void Bulmages01::slotRecSald() {
+   // empresaactual.recalculasaldos();
+}
 
 void Bulmages01::slotCCosteDef() {
    empresaactual.centrocostedefecto();

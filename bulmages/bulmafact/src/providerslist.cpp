@@ -166,7 +166,7 @@ void providerslist::inicializa() {
 
 
 
-void providerslist::dobleclick(int a, int b, int c, const QPoint &d) {
+void providerslist::dobleclick(int a, int b, int c, const QPoint &) {
    QString idprov = m_list->text(a, COL_IDPROVEEDOR);
    fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
    provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
@@ -177,7 +177,7 @@ void providerslist::dobleclick(int a, int b, int c, const QPoint &d) {
 }
 
 
-void providerslist::contextMenuRequested(int a, int b, const QPoint &d) {
+void providerslist::contextMenu(int a, int , const QPoint &) {
    QString idprov = m_list->text(a, COL_IDPROVEEDOR);
    provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
    prov->chargeprovider(idprov);
@@ -187,7 +187,7 @@ void providerslist::contextMenuRequested(int a, int b, const QPoint &d) {
 }// end contextMenuRequested
 
 
-void providerslist::boton_crear() {
+void providerslist::newprovider() {
    fprintf(stderr,"Iniciamos el boton_crear\n");
    provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
    fprintf(stderr,"Ejecutamos el objeto que hemos creado\n");
@@ -197,11 +197,11 @@ void providerslist::boton_crear() {
    inicializa();
 }// end boton_crear
 
-
+/*
 void providerslist::boton_editar() {}
 void providerslist::boton_duplicar() {}
 void providerslist::boton_borrar() {}
 void providerslist::boton_imprimir() {}
 void providerslist::boton_filtrar() {}
-
+*/
 

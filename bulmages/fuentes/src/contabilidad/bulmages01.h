@@ -162,6 +162,7 @@ public:
     void slotSCuentas();
     void slotCCosteDef();
     void slotCanalDef();
+    void slotRecSald();
        
 
     /** toggle the toolbar*/
@@ -307,6 +308,8 @@ public:
     
     QAction *CCosteDef;
     QAction *CanalDef;
+    
+    QAction *RecSald;
 };
 #endif
 

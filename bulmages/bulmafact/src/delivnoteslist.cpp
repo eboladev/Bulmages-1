@@ -117,7 +117,7 @@ void delivnoteslist::inicializa() {
 }// end delivnoteslist
 
 
-void delivnoteslist::dobleclick(int a, int b, int c, const QPoint &d) {
+void delivnoteslist::dobleclick(int a, int b, int c, const QPoint &) {
    QString idpedido = m_list->text(a, COL_IDALB_PRO);
    fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
   /* lindelivnoteslist *linea = new lindelivnoteslist(companyact,0,theApp->translate("Detalle Pedido", "company"));

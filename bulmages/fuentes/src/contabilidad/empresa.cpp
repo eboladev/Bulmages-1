@@ -816,3 +816,8 @@ void empresa::reemplazacuentaenasientos() {
     ctac->exec();
 }// end reemplazacuentasenasientos
 
+void empresa::recalculasaldos() {
+   conexionbase2->begin();
+   conexionbase2->ejecuta("SELECT recalculasaldos()");
+   conexionbase2->commit();
+}// end recalculasaldos

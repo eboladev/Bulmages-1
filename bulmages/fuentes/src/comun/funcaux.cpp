@@ -14,6 +14,17 @@
  *                                                                         *
  ***************************************************************************/
 #include "funcaux.h"
+#include <qstring.h>
+
+QString XMLProtect( const QString& string ) {
+    QString s = string;
+    s.replace( "&", "&amp;" );
+    s.replace( ">", "&gt;" );
+    s.replace( "<", "&lt;" );
+    s.replace( "\"", "&quot;" );
+    s.replace( "\'", "&apos;" );
+    return s;
+}
 
 string extiendecodigo (string cad, unsigned int num1) {
    string cod=cad;

@@ -259,6 +259,7 @@ cp -r icons /usr/share/bulmages
 cp -r traducciones /usr/share/bulmages
 cp -r formularios /usr/share/bulmages
 cp -r ainteligentes /usr/share/bulmages
+cp -r balances /usr/share/bulmages
 
 
    

@@ -104,7 +104,7 @@ void orderslist::inicializa() {
 }// end orderslist
 
 
-void orderslist::dobleclick(int a, int b, int c, const QPoint &d) {
+void orderslist::dobleclick(int a, int b, int c, const QPoint &) {
    QString idpedido = m_list->text(a, COL_IDPEDIDO);
    fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
    linorderslist *linea = new linorderslist(companyact,0,theApp->translate("Detalle Pedido", "company"));

@@ -122,8 +122,6 @@ bool importbalance::endElement1( const QString& , const QString& , const QString
             conexionbase->commit();
             tvalores["opdesc"] = "";
          }// end if
-                  
-         tvalores["idmpatrimonial"]="";                       
       }// end mpatrimonial
 
       tag="";

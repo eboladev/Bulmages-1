@@ -38,13 +38,17 @@ public:
     
 public slots:
     virtual void dobleclick(int, int, int, const QPoint &);
-    virtual void contextMenuRequested(int, int, const QPoint &);
-    virtual void boton_crear();
+    virtual void contextMenu(int, int, const QPoint &);
+    virtual void newprovider();
+    
+    /*
     virtual void boton_editar();
+    
     virtual void boton_duplicar();
     virtual void boton_borrar();
     virtual void boton_imprimir();
     virtual void boton_filtrar();
+*/
 };
 
 #endif

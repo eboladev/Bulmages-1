@@ -165,13 +165,13 @@ void balancesview::boton_exportar() {
             conexionbase->commit();
             while (!cursp5->eof()) {
                fprintf(mifile,"      <mpatrimonial>\n");
-               fprintf(mifile,"         <idmasa>%s</idmasa>\n", cursp5->valor("idmpatrimonial").ascii());
-               fprintf(mifile,"         <idmpatrimonial>%s</idmpatrimonial>\n", cursp5->valor("idmpatrimonial").ascii());
-               fprintf(mifile,"         <descmpatrimonial>%s</descmpatrimonial>\n", cursp5->valor("descmpatrimonial").ascii());
-               fprintf(mifile,"         <orden>%s</orden>\n", cursp5->valor("orden").ascii());
-               fprintf(mifile,"         <tabulacion>%s</tabulacion>\n", cursp5->valor("tabulacion").ascii());
-               fprintf(mifile,"         <saldo>%s</saldo>\n", cursp5->valor("saldo").ascii());
-               fprintf(mifile,"         <opdesc>%s</opdesc>\n", cursp5->valor("opdesc").ascii());
+               fprintf(mifile,"         <idmasa>%s</idmasa>\n", XMLProtect(cursp5->valor("idmpatrimonial")).ascii());
+//               fprintf(mifile,"         <idmpatrimonial>%s</idmpatrimonial>\n", cursp5->valor("idmpatrimonial").ascii());
+               fprintf(mifile,"         <descmpatrimonial>%s</descmpatrimonial>\n", XMLProtect(cursp5->valor("descmpatrimonial")).ascii());
+               fprintf(mifile,"         <orden>%s</orden>\n", XMLProtect(cursp5->valor("orden")).ascii());
+               fprintf(mifile,"         <tabulacion>%s</tabulacion>\n", XMLProtect(cursp5->valor("tabulacion")).ascii());
+               fprintf(mifile,"         <saldo>%s</saldo>\n", XMLProtect(cursp5->valor("saldo")).ascii());
+               fprintf(mifile,"         <opdesc>%s</opdesc>\n", XMLProtect(cursp5->valor("opdesc")).ascii());
                QString SQlQuery1;
                SQlQuery1.sprintf("SELECT * FROM compmasap LEFT JOIN cuenta ON cuenta.idcuenta=compmasap.idcuenta WHERE masaperteneciente=%s", cursp5->valor("idmpatrimonial").ascii());
                conexionbase->begin();
@@ -179,12 +179,12 @@ void balancesview::boton_exportar() {
                conexionbase->commit();
                while (!cursp6->eof()) {
                   fprintf(mifile,"         <compmasap>\n");
-                  fprintf(mifile,"            <masaperteneciente>%s</masaperteneciente>\n", cursp6->valor("masaperteneciente").ascii());
-                  fprintf(mifile,"            <codigo>%s</codigo>\n", cursp6->valor("codigo").ascii());
-                  fprintf(mifile,"            <idmpatrimonial>%s</idmpatrimonial>\n", cursp6->valor("idmpatrimonial").ascii());
-                  fprintf(mifile,"            <saldo>%s</saldo>\n", cursp6->valor("saldo").ascii());
-                  fprintf(mifile,"            <signo>%s</signo>\n", cursp6->valor("signo").ascii());
-                  fprintf(mifile,"            <nombre>%s</nombre>\n", cursp6->valor("nombre").ascii());
+                  fprintf(mifile,"            <masaperteneciente>%s</masaperteneciente>\n", XMLProtect(cursp6->valor("masaperteneciente")).ascii());
+                  fprintf(mifile,"            <codigo>%s</codigo>\n", XMLProtect(cursp6->valor("codigo")).ascii());
+                  fprintf(mifile,"            <idmpatrimonial>%s</idmpatrimonial>\n", XMLProtect(cursp6->valor("idmpatrimonial")).ascii());
+                  fprintf(mifile,"            <saldo>%s</saldo>\n", XMLProtect(cursp6->valor("saldo")).ascii());
+                  fprintf(mifile,"            <signo>%s</signo>\n", XMLProtect(cursp6->valor("signo")).ascii());
+                  fprintf(mifile,"            <nombre>%s</nombre>\n", XMLProtect(cursp6->valor("nombre")).ascii());
                   fprintf(mifile,"         </compmasap>\n");
                   cursp6->siguienteregistro();
                }// end while
@@ -201,10 +201,10 @@ void balancesview::boton_exportar() {
             conexionbase->commit();
             while (!cursp1->eof()) {
                fprintf(mifile,"      <compbalance>\n");
-               fprintf(mifile,"         <idmpatrimonial>%s</idmpatrimonial>\n", cursp1->valor("idmpatrimonial").ascii());
-               fprintf(mifile,"         <concepto>%s</concepto>\n", cursp1->valor("concepto").ascii());
-               fprintf(mifile,"         <orden>%s</orden>\n", cursp1->valor("orden").ascii());
-               fprintf(mifile,"         <tabulacion>%s</tabulacion>\n", cursp1->valor("tabulacion").ascii());
+               fprintf(mifile,"         <idmpatrimonial>%s</idmpatrimonial>\n", XMLProtect(cursp1->valor("idmpatrimonial")).ascii());
+               fprintf(mifile,"         <concepto>%s</concepto>\n", XMLProtect(cursp1->valor("concepto")).ascii());
+               fprintf(mifile,"         <orden>%s</orden>\n", XMLProtect(cursp1->valor("orden")).ascii());
+               fprintf(mifile,"         <tabulacion>%s</tabulacion>\n", XMLProtect(cursp1->valor("tabulacion")).ascii());
                fprintf(mifile,"      </compbalance>\n");
                cursp1->siguienteregistro();
             }// end while
@@ -236,5 +236,6 @@ void balancesview::boton_importar() {
       source.reset();
       reader.parse( source );
    }// end if   
+   inicializatabla();   
 }// end boton_importar
 

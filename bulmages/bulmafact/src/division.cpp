@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by J. M. Torres Rigo                               *
- *   joanmi@bulma.net                                                      *
+ *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,30 +17,29 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef PROVEDIT_H
-#define PROVEDIT_H
 
-#include "provedit_base.h"
+ 
+#include "division.h"
+#include "company.h"
+#include <qlineedit.h>
+#include <qmessagebox.h>
+#include <qtable.h>
 
-/** @author J. M. Torres Rigo */
-class company;
+#define COL_DIVISION_IDDIVISION 0
+#define COL_DIVISION_DESCDIVISION 1
+#define COL_DIVISION_CONTACTODIVISION 2
+#define COL_DIVISION_COMENTDIVISION 3
+#define COL_DIVISION_TELDIVISION 4
+#define COL_DIVISION_FAXDIVISION 5
+#define COL_DIVISION_MAILDIVISION 6
+#define COL_DIVISION_IDPROVEEDOR 7
 
 
-class provedit : public provedit_base {
-Q_OBJECT
-private:
-   company *companyact;
-   QString idprovider;
-public:
-    provedit(company *emp, QWidget *parent = 0, const char *name = 0);
-    ~provedit();
-public:
-   void chargeprovider(QString);
-public slots:
-   virtual void accept();
-   virtual void boton_nuevo();
-   virtual void boton_borrar();
-   virtual void boton_newdivision();
-};
+division::division(company *comp, QWidget *parent, const char *name)
+ : divisionbase(parent, name) {
+   companyact = comp;
+}// end division1
 
-#endif
+division::~division() {
+}// end ~division1
+

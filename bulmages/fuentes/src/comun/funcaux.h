@@ -35,6 +35,9 @@ QString extiendecodigo (QString, unsigned int);
 float fround(float, unsigned);
 int roundI(double);
 QDate normalizafecha(QString);
+
+QString XMLProtect( const QString& );
+
 //string modificafecha(string);
 //QString modificafecha(QString);
 //QDate devuelvefecha(string);

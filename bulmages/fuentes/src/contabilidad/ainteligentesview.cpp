@@ -768,8 +768,8 @@ void ainteligentesview::boton_exportar() {
          fprintf(mifile,"<DOCUMENT>\n");
          while (!cursp->eof()) {
             fprintf(mifile,"   <ainteligente>\n");
-            fprintf(mifile,"      <descripcion>%s</descripcion>\n", cursp->valor("descripcion").ascii());
-            fprintf(mifile,"      <comentariosasiento>%s</comentariosasiento>\n", cursp->valor("comentariosasiento").ascii());
+            fprintf(mifile,"      <descripcion>%s</descripcion>\n", XMLProtect(cursp->valor("descripcion")).ascii());
+            fprintf(mifile,"      <comentariosasiento>%s</comentariosasiento>\n", XMLProtect(cursp->valor("comentariosasiento")).ascii());
             QString SQlQuery1;
             SQlQuery1.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d", idasientointeligente);
             conexionbase->begin();
@@ -777,17 +777,17 @@ void ainteligentesview::boton_exportar() {
             conexionbase->commit();
             while (!cursp1->eof()) {
                fprintf(mifile,"      <binteligente>\n");
-               fprintf(mifile,"         <fecha>%s</fecha>\n", cursp1->valor("fecha").ascii());
-               fprintf(mifile,"         <conceptocontable>%s</conceptocontable>\n", cursp1->valor("conceptocontable").ascii());
-               fprintf(mifile,"         <codcuenta>%s</codcuenta>\n", cursp1->valor("codcuenta").ascii());
-               fprintf(mifile,"         <descripcionb>%s</descripcionb>\n", cursp1->valor("descripcion").ascii());
-               fprintf(mifile,"         <debe>%s</debe>\n", cursp1->valor("debe").ascii());
-               fprintf(mifile,"         <haber>%s</haber>\n", cursp1->valor("haber").ascii());
-               fprintf(mifile,"         <contrapartida>%s</contrapartida>\n", cursp1->valor("contrapartida").ascii());
-               fprintf(mifile,"         <comentario>%s</comentario>\n", cursp1->valor("comentario").ascii());
-               fprintf(mifile,"         <canal>%s</canal>\n", cursp1->valor("canal").ascii());
-               fprintf(mifile,"         <marcaconciliacion>%s</marcaconciliacion>\n", cursp1->valor("marcaconciliacion").ascii());
-               fprintf(mifile,"         <idc_coste>%s</idc_coste>\n", cursp1->valor("idc_coste").ascii());
+               fprintf(mifile,"         <fecha>%s</fecha>\n", XMLProtect(cursp1->valor("fecha")).ascii());
+               fprintf(mifile,"         <conceptocontable>%s</conceptocontable>\n", XMLProtect(cursp1->valor("conceptocontable")).ascii());
+               fprintf(mifile,"         <codcuenta>%s</codcuenta>\n", XMLProtect(cursp1->valor("codcuenta")).ascii());
+               fprintf(mifile,"         <descripcionb>%s</descripcionb>\n", XMLProtect(cursp1->valor("descripcion")).ascii());
+               fprintf(mifile,"         <debe>%s</debe>\n", XMLProtect(cursp1->valor("debe")).ascii());
+               fprintf(mifile,"         <haber>%s</haber>\n", XMLProtect(cursp1->valor("haber")).ascii());
+               fprintf(mifile,"         <contrapartida>%s</contrapartida>\n", XMLProtect(cursp1->valor("contrapartida")).ascii());
+               fprintf(mifile,"         <comentario>%s</comentario>\n", XMLProtect(cursp1->valor("comentario")).ascii());
+               fprintf(mifile,"         <canal>%s</canal>\n", XMLProtect(cursp1->valor("canal")).ascii());
+               fprintf(mifile,"         <marcaconciliacion>%s</marcaconciliacion>\n", XMLProtect(cursp1->valor("marcaconciliacion")).ascii());
+               fprintf(mifile,"         <idc_coste>%s</idc_coste>\n", XMLProtect(cursp1->valor("idc_coste")).ascii());
                QString SQlQuery2;
                SQlQuery2.sprintf("SELECT * FROM ivainteligente WHERE idbinteligente=%s", cursp1->valor("idbinteligente").ascii());
                conexionbase->begin();
@@ -795,16 +795,16 @@ void ainteligentesview::boton_exportar() {
                conexionbase->commit();
                while (!cursp2->eof()) {
                   fprintf(mifile,"         <ivainteligente>\n");
-                  fprintf(mifile,"            <contrapartida>%s</contrapartida>\n", cursp2->valor("contrapartida").ascii());
-                  fprintf(mifile,"            <baseimp>%s</baseimp>\n", cursp2->valor("baseimp").ascii());
-                  fprintf(mifile,"            <iva>%s</iva>\n", cursp2->valor("iva").ascii());
-                  fprintf(mifile,"            <factura>%s</factura>\n", cursp2->valor("factura").ascii());
-                  fprintf(mifile,"            <idborrador>%s</idborrador>\n", cursp2->valor("idborrador").ascii());
-                  fprintf(mifile,"            <incregistro>%s</incregistro>\n", cursp2->valor("incregistro").ascii());
-                  fprintf(mifile,"            <regularizacion>%s</regularizacion>\n", cursp2->valor("regularizacion").ascii());
-                  fprintf(mifile,"            <plan349>%s</plan349>\n", cursp2->valor("plan349").ascii());
-                  fprintf(mifile,"            <numorden>%s</numorden>\n", cursp2->valor("numorden").ascii());
-                  fprintf(mifile,"            <cif>%s</cif>\n", cursp2->valor("cif").ascii());
+                  fprintf(mifile,"            <contrapartida>%s</contrapartida>\n", XMLProtect(cursp2->valor("contrapartida")).ascii());
+                  fprintf(mifile,"            <baseimp>%s</baseimp>\n", XMLProtect(cursp2->valor("baseimp")).ascii());
+                  fprintf(mifile,"            <iva>%s</iva>\n", XMLProtect(cursp2->valor("iva")).ascii());
+                  fprintf(mifile,"            <factura>%s</factura>\n", XMLProtect(cursp2->valor("factura")).ascii());
+                  fprintf(mifile,"            <idborrador>%s</idborrador>\n", XMLProtect(cursp2->valor("idborrador")).ascii());
+                  fprintf(mifile,"            <incregistro>%s</incregistro>\n", XMLProtect(cursp2->valor("incregistro")).ascii());
+                  fprintf(mifile,"            <regularizacion>%s</regularizacion>\n", XMLProtect(cursp2->valor("regularizacion")).ascii());
+                  fprintf(mifile,"            <plan349>%s</plan349>\n", XMLProtect(cursp2->valor("plan349")).ascii());
+                  fprintf(mifile,"            <numorden>%s</numorden>\n", XMLProtect(cursp2->valor("numorden")).ascii());
+                  fprintf(mifile,"            <cif>%s</cif>\n", XMLProtect(cursp2->valor("cif")).ascii());
                   fprintf(mifile,"         </ivainteligente>\n");
                   cursp2->siguienteregistro();
                }// end while

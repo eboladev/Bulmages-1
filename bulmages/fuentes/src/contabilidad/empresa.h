@@ -128,6 +128,7 @@ public:
   void canaldefecto() {   selcanales->exec();}
   selectccosteview * getselccostes() {return selccostes;}
   selectcanalview *getselcanales() {return selcanales;}
+  void recalculasaldos();
 
 
 };
