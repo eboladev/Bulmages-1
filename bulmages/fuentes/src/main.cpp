@@ -2,10 +2,9 @@
                           main.cpp  -  description
                              -------------------
     begin                : Wed Nov 27 17:16:28 CET 2002
-    copyright            : (C) 2002 by 
+    copyright            : (C) 2002 by tborras@conetxia.com, josep@burcion.com
     email                : 
  ***************************************************************************/
-
 /***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
