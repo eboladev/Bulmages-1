@@ -8,11 +8,27 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
-<td width=100>16/02/2005</td>
-<td><center><b>Liberada Nueva Versión BulmaGés 0.45</b></center></td>
+<td width=100>17/02/2005</td>
+<td><center><b>Actualizada Documentación de RTK Reports</b></center></td>
 </tr>
 <tr>
-<td colspan=2>Hoy Tomeu Borràs ha anunciado en la lista de BulmaGés la liberación de la nueva versión empaquetada 0.45. En ella se incluyen cambios como la entrada de líneas de IVA, gestión de cobros y pagos, además de depuración de los bugs encontrados hasta el momento de la liberación. También se han eliminado aquellas opciones que no eran operativas y que inducian a confusión, que se habían incluido en la versión anterior.<br> 
+<td colspan=2>El pasado dia 3 de febrero Santiago Capel actualizó la documentación de de RTK creando un pequeño tutorial que muestra 
+como crear un informe a partir del fichero /etc/passwd. Está en inglés... en <A href="http://reports.sourceforge.net" target="nueva">http://reports.sourceforge.net</A><br>
+<br>
+También ha arreglado algunos pequeños fallos y ahora parece que está funcionando perfectamente. Con esto, se da casi por concluida la primera versión de RTK Reports.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
+<td width=100>16/02/2005</td>
+<td><center><b>Liberada Nueva Versión BulmaGés 0.4.5</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Hoy Tomeu Borràs ha anunciado en la lista de BulmaGés la liberación de la nueva versión empaquetada 0.4.5. En ella se incluyen cambios como la entrada de líneas de IVA, gestión de cobros y pagos, además de depuración de los bugs encontrados hasta el momento de la liberación. También se han eliminado aquellas opciones que no eran operativas y que inducian a confusión, que se habían incluido en la versión anterior.<br> 
 Aquel que desee ver y probar los últimos cambios del proyecto debe recurrir al CVS y compilar la versión de desarrollo, que incluye otros módulos que están en fase de desarrollo. 
 <br><br>La nueva versión se puede bajar de <A href="http://prdownloads.sourceforge.net/bulmages/installbulmages_0_4_5.tgz?download" TARGET="nueva">aquí</A>. La versión de desarrollo está accesible como siempre desde el cvs de sourceforge.net.
 </td>
@@ -134,46 +150,6 @@ Más información en:
 </tr>
 <tr>
 <td colspan=2>Hoy Tomeu Borràs ha mostrado la primera imagen de la futura facturación donde se pueden ver algunos de los puntos que ya se han realizado. Puede verse <A href="http://www.iglues.org/bulmafact1.png" TARGET="nueva">aquí</A>.
-</td>
-</tr>
-</table>
-
-<br>
-
-<table border=0 cellspacing="0" class="news">
-<tr class="head">
-<td width=100>20/11/2004</td>
-<td><center><b>Aplazada Junta Directiva</b></center></td>
-</tr>
-<tr>
-<td colspan=2>Dado que en la fecha fijada para la Junta Directiva a varios de los miembros les es imposible asistir ésta se aplaza hasta el próximo domingo dia 28 de noviembre con el mismo horario y programa.
-</td>
-</tr>
-</table>
-
-<br>
-
-<table border=0 cellspacing="0" class="news">
-<tr class="head">
-<td width=100>17/11/2004</td>
-<td><center><b>Finalizado Concurso de Iconos</b></center></td>
-</tr>
-<tr>
-<td colspan=2>Damos por concluido el concurso de icono y que tras la votación el ganador ha sido Raül. (Aunque con un margen muy muy estrecho !!!)<br>
-Enhorabuena!!!!!!!!!!
-</td>
-</tr>
-</table>
-
-<br>
-
-<table border=0 cellspacing="0" class="news">
-<tr class="head">
-<td width=100>11/11/2004</td>
-<td><center><b>Reunión Junta Directiva domingo 21 de noviembre</b></center></td>
-</tr>
-<tr>
-<td colspan=2>Se convoca reunión de la Junta Directiva para el próximo domingo 21 de noviembre a las 17:00 horas en primera convocatoria y a las 17:30 en segunda convocatoria. La reunión tratará de formalizar las responsabilidades y trazar objetivos. Podeis ver el correo de la convocatoria en la <A href="http://llistes.bulma.net/pipermail/bulmages/2004-November/001401.html">lista</A>. Sólo recordar que que por decisión en Asamblea General todos los socios son vocales de la Junta.
 </td>
 </tr>
 </table>
