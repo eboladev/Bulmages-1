@@ -76,7 +76,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>src</activedir>
+      <activedir>../bulmalib</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
@@ -144,17 +144,17 @@
   <dist>
     <custom>false</custom>
     <bzip>false</bzip>
-    <archname></archname>
+    <archname/>
     <appname>bulmages.kdevelop</appname>
     <version>0.4.3</version>
-    <release></release>
-    <vendor></vendor>
-    <licence></licence>
-    <summary></summary>
-    <group></group>
-    <packager></packager>
-    <description></description>
-    <changelog></changelog>
+    <release/>
+    <vendor/>
+    <licence/>
+    <summary/>
+    <group/>
+    <packager/>
+    <description/>
+    <changelog/>
     <devpackage>false</devpackage>
     <docspackage>false</docspackage>
     <appicon>false</appicon>
@@ -163,6 +163,6 @@
     <useRPM>false</useRPM>
     <ftpkde>false</ftpkde>
     <appskde>false</appskde>
-    <url></url>
+    <url/>
   </dist>
 </kdevelop>
