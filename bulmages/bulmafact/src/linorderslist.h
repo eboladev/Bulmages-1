@@ -35,6 +35,7 @@ public:
    QString idpedido;
    cursor2 *m_cursorcombo;
    cursor2 *m_cursorcombo2;
+   QString  m_idprovider;
    
 public:
     linorderslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
@@ -52,7 +53,8 @@ public slots:
     virtual void almacenactivated(int);
     virtual void accept();
     virtual void close();
-	 virtual void neworderlin();
+    virtual void neworderlin();
+    virtual void searchProvider();
 };
 
 #endif

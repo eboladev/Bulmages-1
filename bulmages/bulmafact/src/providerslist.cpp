@@ -89,6 +89,10 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
       companyact = comp;
       inicializa();
       showMaximized();
+      m_modo=0;
+      
+      m_idprovider="";
+      m_cifprovider="";
 }// end providerslist
 
 providerslist::~providerslist() {
@@ -166,24 +170,36 @@ void providerslist::inicializa() {
 
 
 
-void providerslist::dobleclick(int a, int b, int c, const QPoint &) {
-   QString idprov = m_list->text(a, COL_IDPROVEEDOR);
-   fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
-   provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
-   prov->chargeprovider(idprov);
-   prov->exec();
-   delete prov;
-   inicializa();
+void providerslist::doubleclicked(int a, int b, int c, const QPoint &) {
+
+   m_idprovider = m_list->text(a,COL_IDPROVEEDOR);
+   m_cifprovider = m_list->text(a,COL_CIFPROVEEDOR);
+
+   if (m_modo ==0 ) {
+      QString idprov = m_list->text(a, COL_IDPROVEEDOR);
+      fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
+      provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
+      prov->chargeprovider(idprov);
+      prov->exec();
+      delete prov;
+      inicializa();
+   } else {
+      close();
+   }// end if
 }
 
 
+
+
 void providerslist::contextMenu(int a, int , const QPoint &) {
+/*
    QString idprov = m_list->text(a, COL_IDPROVEEDOR);
    provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
    prov->chargeprovider(idprov);
    prov->exec();
    delete prov;
    inicializa();
+*/
 }// end contextMenuRequested
 
 

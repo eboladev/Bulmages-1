@@ -28,16 +28,24 @@ class company;
 
 class providerslist : public providerslistbase {
  Q_OBJECT
-public:
+private:
    company *companyact;
+   int m_modo; // == 0 es modo edición
+            // ==1 es modo selector.
+   QString m_idprovider;
+   QString m_cifprovider;
    
 public:
     providerslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
     ~providerslist();
     void inicializa();
+    void modoseleccion() {m_modo=1;};
+    void modoedicion() {m_modo=0;};
+    QString idprovider() {return m_idprovider;};
+    QString cifprovider() {return m_cifprovider;};
     
 public slots:
-    virtual void dobleclick(int, int, int, const QPoint &);
+    virtual void doubleclicked(int, int, int, const QPoint &);
     virtual void contextMenu(int, int, const QPoint &);
     virtual void newprovider();
     

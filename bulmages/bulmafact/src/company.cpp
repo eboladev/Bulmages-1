@@ -41,8 +41,16 @@ company::~company(){
 
 
 void company::listproviders () {
+/*
    providerslist *m_provlist = new providerslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
    m_provlist->show();
+*/
+   providerslist *m_provlist = new providerslist(this, NULL,theApp->translate("Hola mundo.","company"));
+   m_provlist->modoseleccion();
+   m_provlist->exec();
+   fprintf(stderr,"El id seleccionado es: %s",m_provlist->idprovider().ascii());
+   delete m_provlist;
+
 }
 
 void company::listclients () {

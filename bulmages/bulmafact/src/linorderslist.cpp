@@ -38,6 +38,7 @@ CREATE TABLE lpedido (
 );*/
 
 #include "linorderslist.h"
+#include "providerslist.h"
 #include <qtable.h>
 #include <qlineedit.h>
 #include <qlabel.h>
@@ -237,5 +238,15 @@ void linorderslist::neworderlin() {
 
 linorderslist::~linorderslist() {
 }// end ~linorderslist
+
+
+void linorderslist::searchProvider() {
+   providerslist *provlist = new providerslist(companyact, this,theApp->translate("Hola mundo.","company"));
+   provlist->modoseleccion();
+   provlist->exec();
+   m_idprovider = provlist->idprovider();
+   m_cifprovider->setText(provlist->cifprovider());
+   delete provlist;
+}// end searchProvider
 
 
