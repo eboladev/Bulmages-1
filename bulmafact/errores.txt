@@ -1,0 +1,12 @@
+su: debe ejecutarse desde un terminal
+su: debe ejecutarse desde un terminal
+-------------
+Errores encontrados:
+--------------------
+
+
+
+
+
+--
+Tomeu Borras
