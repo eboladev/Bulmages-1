@@ -100,7 +100,7 @@ void abreempresaview::accept() {
 */       
        ///Empezamos un nuevo modo de guardar algunas preferencias de los usuarios en la base de datos
        confpr->cargarEntorno(empresabd);
-       ctllog->add(LOG_SEG | LOG_TRA, 1,"AbrViw004", "Entrando usuario: --"+nombre+"-- hacia la empresa: --"+nombreempresa+"-- con los permisos -"+confpr->valor(PRIVILEGIOS_USUARIO).c_str()+"-" );
+       ctllog->add(LOG_SEG | LOG_TRA, 1,"AbrViw004", "Entrando usuario: --"+nombre+"-- hacia la empresa: --"+nombreempresa+"-- con los permisos -"+confpr->valor(CONF_PRIVILEGIOS_USUARIO).c_str()+"-" );
 //       delete recordSet;
 //       delete DBConn2;
        // Indicamos que hemos pasado por este punto para que no se
