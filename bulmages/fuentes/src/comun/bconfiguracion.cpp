@@ -15,6 +15,7 @@
 #include "bconfiguracion.h"
 
 #include <qmessagebox.h>
+#include <errno.h>
 
 #ifdef WIN32
 #include <process.h>
