@@ -136,6 +136,7 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    psql $2 < crear/bulmages/t_grupo_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_fpago_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_tipoiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    
    # Hacemos las entradas oportunas para que funcione el ejercicio.
    echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 0, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
@@ -169,7 +170,6 @@ if [ "$3" = "2" ]; then
    psql $2 < crear/bulmages/t_registroiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_ainteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_binteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-   psql $2 < crear/bulmages/t_ivainteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
 #   psql $2 < crear/bulmages/t_mpatrimonial_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_compmasap_data.pgdump 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_compbalance_data.pgdump 2>> /tmp/errores1.txt > /dev/null

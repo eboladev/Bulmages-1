@@ -332,27 +332,6 @@ CREATE TABLE binteligente (
 );
 
 
---
--- TOC entry 43 (OID 1346024)
--- Name: ivainteligente; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE ivainteligente (
-    idivainteligente serial PRIMARY KEY,
-    idainteligente integer NOT NULL REFERENCES ainteligente(idainteligente),
-    idbinteligente integer NOT NULL REFERENCES binteligente(idbinteligente),
-    contrapartida character varying(100),
-    baseimp character varying(100),
-    iva character varying(100),
-    factura character varying(100),
-    idborrador character varying(100),
-    incregistro character varying(100),
-    regularizacion character varying(100),
-    plan349 character varying(100),
-    numorden character varying(100),
-    cif character varying(100)
-);
-
 
 --
 -- TOC entry 47 (OID 1346044)
@@ -470,26 +449,21 @@ END;
 -- TOC entry 87 (OID 1346049)
 -- Name: ccontrapartida(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
-
 CREATE FUNCTION ccontrapartida(integer) RETURNS integer
     AS '
 DECLARE 
     midapunte ALIAS FOR $1;
     apt RECORD;
     aptasien RECORD;
+    contra RECORD;
 BEGIN
     SELECT INTO apt * FROM apunte WHERE idapunte= midapunte;
     IF apt.contrapartida ISNULL THEN
-	IF apt.debe = 0 THEN
-	    SELECT INTO aptasien * FROM apunte WHERE idasiento = apt.idasiento AND debe <> 0 ORDER BY debe DESC;
-	    IF FOUND THEN
-		RETURN aptasien.idcuenta;
-	    END IF;	    
+	SELECT INTO contra * FROM apunte WHERE idapunte = bcontrapartida(midapunte);
+	IF FOUND THEN 
+		RETURN contra.idcuenta;
 	ELSE
-	    SELECT INTO aptasien * FROM apunte WHERE idasiento = apt.idasiento AND haber <> 0 ORDER BY haber DESC;
-	    IF FOUND THEN
-		RETURN aptasien.idcuenta;
-	    END IF;
+		RETURN 0;
 	END IF;
     ELSE
 	RETURN apt.contrapartida;
@@ -532,18 +506,16 @@ BEGIN
 	maxhaber := 0;
 	apmaxdebe:=0;
 	apmaxhaber:=0;
-	salida := FALSE;
 	salidadebe := FALSE;
 	salidahaber := FALSE;
 	
 	FOR  cont IN SELECT  * FROM apunte WHERE idasiento = apt.idasiento ORDER BY orden LOOP
 	    -- Si es la cuenta que estamos buscando lo hacemos constar.
 	    IF cont.idapunte = midapunte THEN
-		salida := TRUE;
 		IF cont.debe > 0 THEN
-		    salidadebe := TRUE;
-		ELSE
 		    salidahaber := TRUE;
+		ELSE
+		    salidadebe := TRUE;
 		END IF;
 	    END IF;
 	    -- Si es el debe maximo lo hacemos constar.
@@ -560,10 +532,7 @@ BEGIN
 	    descuadre := descuadre + cont.debe;
 	    descuadre := descuadre - cont.haber;
 	    -- Si es el descuadre inicializamos las variables.
-            
-            
-            
-	    IF (descuadre < 0.001) THEN
+	    IF (descuadre*descuadre < 0.001) THEN  -- Asi nos aseguramos que valores positivos también entran.
 		IF (salidadebe = TRUE) THEN
 		    RETURN apmaxdebe;
 		END IF;
@@ -577,6 +546,7 @@ BEGIN
 		
 	    END IF;
 	END LOOP;
+	return 0;
     ELSE
 	SELECT INTO cont * FROM apunte WHERE idasiento = apt.idasiento AND idcuenta = apt.contrapartida;
 	RETURN cont.idapunte;
@@ -610,7 +580,7 @@ BEGIN
 -- Dado un apunte nos retorna el apunte que ejerce de contrapartida. (no la cuenta si no el apunte).
 -- Esta funcion puede variar con la funcion ccontrapartida ya que en ccontrapartida el calculo es distinto y puede ser erroneo.
 -- Esta funcion esta mucho mas perfeccionada con lo que es menos probable un error. Por tanto se sugiere la migracion a esta nueva funcion
-    RAISE NOTICE ''Empezamos'';
+    RAISE NOTICE ''Em pezamos'';
     SELECT INTO apt * FROM borrador WHERE idborrador=midapunte;
     IF apt.contrapartida ISNULL THEN
 	-- Inicializamos las variables.
@@ -619,61 +589,52 @@ BEGIN
 	maxhaber := 0;
 	apmaxdebe:=0;
 	apmaxhaber:=0;
-	salida := FALSE;
 	salidadebe := FALSE;
 	salidahaber := FALSE;
+	
 	FOR  cont IN SELECT  * FROM borrador WHERE idasiento = apt.idasiento ORDER BY orden LOOP
 	    -- Si es la cuenta que estamos buscando lo hacemos constar.
 	    IF cont.idborrador = midapunte THEN
-                RAISE NOTICE ''Este ciclo debemos salir'';
-		salida := TRUE;
-		IF cont.debe = 0 THEN
-		    salidadebe := TRUE;
-                    RAISE NOTICE ''Salida por debe %'', salidadebe;
-		ELSE
+		IF cont.debe > 0 THEN
 		    salidahaber := TRUE;
-                    RAISE NOTICE ''Salida por haber %'', salidahaber;
+		ELSE
+		    salidadebe := TRUE;
 		END IF;
 	    END IF;
 	    -- Si es el debe maximo lo hacemos constar.
 	    IF cont.debe > maxdebe THEN
 		maxdebe := cont.debe;
 		apmaxdebe := cont.idborrador;
-                RAISE NOTICE ''Maxdebe: %, apmaxdebe: %'', maxdebe, apmaxdebe;
 	    END IF;
 	    -- Si es el haber mximo lo hacemos constar
 	    IF cont.haber > maxhaber THEN 
 		maxhaber := cont.haber;
 		apmaxhaber := cont.idborrador;
-                RAISE NOTICE ''Maxhaber: %, apmaxhaber: %'', maxhaber, apmaxhaber;                
 	    END IF;
 	    -- Calculamos el descuadre
 	    descuadre := descuadre + cont.debe;
 	    descuadre := descuadre - cont.haber;
 	    -- Si es el descuadre inicializamos las variables.
-           RAISE NOTICE ''Ciclo de iborrador %, debe %, haber %, descuadre %'', cont.idborrador, cont.debe, cont.haber, descuadre;            
-	    IF (descuadre < 0.001) THEN
-               RAISE NOTICE '' El descuadre es igual a cero'';
-		IF (salidadebe) THEN
-                   RAISE NOTICE '' Salida debe %'', apmaxdebe;
+	    IF (descuadre*descuadre < 0.001) THEN  -- Asi nos aseguramos que valores positivos también entran.
+		IF (salidadebe = TRUE) THEN
 		    RETURN apmaxdebe;
 		END IF;
-		IF (salidahaber) THEN
-                   RAISE NOTICE '' Salida haber %'', apmaxhaber;
+		IF (salidahaber = TRUE) THEN
 		    RETURN apmaxhaber;
 		END IF;
 		maxdebe := 0;
 		maxhaber := 0;
 		apmaxdebe:=0;
 		apmaxhaber := 0;
+		
 	    END IF;
 	END LOOP;
+	return 0;
     ELSE
 	SELECT INTO cont * FROM borrador WHERE idasiento = apt.idasiento AND idcuenta = apt.contrapartida;
-	RETURN cont.idapunte;
+	RETURN cont.idborrador;
     END IF;
-END;
-'
+END;'
     LANGUAGE plpgsql;
 
 
@@ -1487,8 +1448,9 @@ mrecord.debe, mrecord.haber, mrecord.contrapartida, mrecord.comentario, mrecord.
 mrecord.idc_coste, mrecord.idtipoiva, mrecord.orden);		
 	END LOOP;
 	
-	-- Cuando cerramos el asiento, tambien recalculamos todas las contrapartidas.
-	-- Si hay una contrapartida puesta en el borrador, entonces esa no se tocara.
+-- Cuando cerramos el asiento, tambien recalculamos todas las contrapartidas.
+-- Si hay una contrapartida puesta en el borrador, entonces esa no se tocara.
+-- De esta forma agilizamos cálculos y siemrpe en la tabla de apuntes tenemos las contrapartidas puestas.
 	UPDATE apunte set contrapartida = ccontrapartida(idapunte) WHERE idasiento= id_asiento;
 	RETURN 1;
 END;

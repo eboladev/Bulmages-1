@@ -8,15 +8,20 @@ SET check_function_bodies = false;
 SET search_path = public, pg_catalog;
 
 --
--- Data for TOC entry 3 (OID 3768432)
+-- Data for TOC entry 3 (OID 3839850)
 -- Name: borrador; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO borrador ( codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idapunte, idtipoiva, orden) VALUES ( NULL, 1, NULL, '2004-12-20 00:00:00+01', 'un concepto', id_cuenta('4720016'), NULL, 16, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2);
+INSERT INTO borrador ( codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idapunte, idtipoiva, orden) VALUES ( NULL, 1, NULL, '2004-12-20 00:00:00+01', 'un concepto', id_cuenta('4300001'), NULL, 0, 116, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO borrador ( codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idapunte, idtipoiva, orden) VALUES ( NULL, 1, NULL, '2004-12-20 00:00:00+01', 'un concepto', id_cuenta('7000000'), NULL, 100, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+
+
 --
--- TOC entry 2 (OID 3768430)
+-- TOC entry 2 (OID 3839848)
 -- Name: borrador_idborrador_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('borrador_idborrador_seq', 1, false);
+SELECT pg_catalog.setval('borrador_idborrador_seq', 3, true);
 
 

@@ -1,0 +1,65 @@
+
+--
+-- PostgreSQL database dump
+--
+
+SET client_encoding = 'SQL_ASCII';
+SET check_function_bodies = false;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for TOC entry 3 (OID 3697054)
+-- Name: cuenta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (762, '4000002', 'Maquinaria Industrial S.A.', true, 301, true, 4, NULL, 0, 0, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 2);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (614, '7000000', 'Ventas de mercaderias', true, 613, true, 7, NULL, 8490.7999999999993, 9590.7999999999993, NULL, NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (767, '4300001', 'Carniceria Sibuna', true, 766, true, 4, NULL, 2400.4200000000001, 200, true, true, NULL, true, '', '', '', '', '', '', '', '', 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (755, '1000034', 'una cuenta rara', true, 88, true, 1, NULL, 0, 0, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (770, '1000000', 'Capitan Socializado', true, 724, true, 1, NULL, 30044, 28264, true, true, NULL, true, '', '', '', '', '', '', '', '', 3);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (775, '1000001', 'asdfasdf', NULL, 724, NULL, 1, NULL, 1000, 0, false, false, NULL, NULL, '', '', '', '', '', '', '', '', 3);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (776, '1000002', 'asdfasdfasd', NULL, 724, NULL, 1, NULL, 0, 3000, false, false, NULL, NULL, '', '', '', '', '', '', '', '', 3);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (107, '1200000', 'Remanente', true, 106, true, 1, NULL, 0, 0, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 2);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (771, '7940000', 'Provision para insolvencias de trafico aplicada.', true, 699, true, 7, NULL, 1803.04, 1803.04, false, false, NULL, true, '', '', '', '', '', '', '', '', 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (772, '4000004', 'Adelaida', NULL, 301, NULL, 4, NULL, 12, 0, false, false, NULL, NULL, '', '', '', '', '', '', '', '', 2);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (773, '4000005', 'Hotel restaurant els NOGUERS', NULL, 301, NULL, 4, NULL, 173.13, 285.25, false, false, NULL, NULL, '', '', '', '', '', '', '', '', 2);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (768, '4300002', 'SYP - Consum', true, 766, true, 4, NULL, 0, 0, true, true, NULL, true, '', '9225665f', '', '', '', '', '', '', 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (764, '4000003', 'Imprenta Sa Taulera', true, 301, true, 4, NULL, 0, 234, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 2);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (756, '5730001', 'SA NOSTRA', true, 466, true, 5, NULL, 0, 1113.6700000000001, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 4);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (747, '4100002', 'YACOM INTERNET FACTORY', true, 318, true, 4, NULL, 400, 0, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 2);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (503, '6260000', 'Servicios bancarios y similares', true, 496, true, 6, NULL, 3.0099999999999998, 3.0099999999999998, NULL, NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (504, '6270000', 'Publicidad, propaganda y relaciones publicas', true, 496, true, 6, NULL, 420.70999999999998, 420.70999999999998, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (480, '6000000', 'Compras de mercaderias', true, 479, true, 6, NULL, 1682.8299999999999, 1682.8299999999999, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (369, '4750000', 'Hacienda Publica, acreedor por IVA', true, 368, true, 4, NULL, 0, 1563.3499999999999, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 2);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (746, '6280004', 'SUMINISTRO ADSL', true, 505, true, 6, NULL, 0, 116, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 5);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (761, '4000001', 'Ganaderias Alfredo', true, 301, true, 4, NULL, 116, 100, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 2);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (769, '4300003', 'Restaurante Neirol', true, 766, true, 4, NULL, 0, 0, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (752, '6280005', 'Telefonica tef', true, 505, true, 6, NULL, 0, 0, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 5);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (726, '2250002', 'INMOVILIZADO CASA', true, 187, true, 2, NULL, 0, 0, NULL, NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (727, '2270001', 'INMOVILIZADO COMPONENTES ORDENADOR', true, 189, true, 2, NULL, 0, 0, NULL, NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (745, '6292001', 'SERVICIOS DE ASESORIA', true, 506, true, 6, NULL, 0, 0, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 5);
+INSERT INTO cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) VALUES (742, '6296000', 'MATERIAL DE OFICINA', true, 506, true, 6, NULL, 0, 0, NULL, NULL, NULL, true, '', '', '', '', '', '', '', '', 5);
+
+
+-- Como hay un trigger recursivo y hay cuentas de nivel 4 que se actualizan despues que las de nivel 1 hay que hacer el update 
+-- tantas veces como niveles de cuentas tenemos.
+-- El scripting de base de datos funciona muy bien.
+UPDATE CUENTA SET debe=0, haber=0;
+UPDATE CUENTA SET debe=0, haber=0;
+UPDATE CUENTA SET debe=0, haber=0;
+UPDATE CUENTA SET debe=0, haber=0;
+UPDATE CUENTA SET debe=0, haber=0;
+UPDATE CUENTA SET debe=0, haber=0;
+UPDATE CUENTA SET debe=0, haber=0;
+UPDATE CUENTA SET debe=0, haber=0;
+
+--
+-- TOC entry 2 (OID 3697052)
+-- Name: cuenta_idcuenta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cuenta_idcuenta_seq', 10000, false);
+
+
