@@ -21,8 +21,6 @@
 
 #include <qwidget.h>
 #include <extractoprintdlg.h>
-#include "postgresiface2.h"
-
 #include <qlineedit.h>
 #include <qdatetimeedit.h>
 #include <qfiledialog.h>
@@ -31,22 +29,27 @@
 #include <qtoolbutton.h>
 #include <qradiobutton.h>
 
+#include "postgresiface2.h"
 /***@author Tomeu Borrás Riera*/
+class empresa;
+
 
 class ExtractoPrintView : public ExtractoPrintDlg  {
    Q_OBJECT
 public:
    char *fichero;
    postgresiface2 *conexionbase;
-   int inicializa(postgresiface2 *);
-	void inicializa1(QString , QString , QString , QString );
-	ExtractoPrintView(QWidget *parent=0, const char *name=0);
+   empresa *empresaactual;
+   void inicializa1(QString , QString , QString , QString );
+   ExtractoPrintView(empresa *, QWidget *, const char *);
    void presentar(char *tipus);
-	~ExtractoPrintView();
+   ~ExtractoPrintView();
 public slots:
    virtual void accept();
    virtual void boton_codinicial();
    virtual void boton_codfinal();
+   virtual void boton_ccostes();
+   virtual void boton_canales();
 };
 
 #endif

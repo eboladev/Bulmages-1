@@ -141,12 +141,6 @@ void extractoview1::inicializa2(intapunts3view *inta, diarioview1 *diar, balance
 }// end inicializa2
 
 
-void extractoview1::cargacostes() {
-   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-   filt->cargacostes();
-}// end cargacostes
-
-
 /************************************************************************************
 Esta función carga el cursor de cuentas que forman el todo por el todo.
 También sera la encargada de recoger la información de filtración para que
@@ -156,17 +150,13 @@ void extractoview1::accept() {
   QString codinicial= codigoinicial->text();
   QString codfinal = codigofinal->text();
   QString query;
-  int idc_coste = 0;
- 
+  
  // Como el filtrado de centros de coste ya no se hace asi, esta linea
  // Va a cambiar.  
 //  idc_coste = filt->ccostes[filt->combocoste->currentItem()];
-  
-  if (idc_coste != 0) {
-    query.sprintf("SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte WHERE idc_coste=%d) AND codigo >='%s' AND codigo <= '%s' ORDER BY codigo",idc_coste,codinicial.ascii(), codfinal.ascii());
-  } else {
-    query.sprintf("SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >='%s' AND codigo <= '%s' ORDER BY codigo",codinicial.ascii(), codfinal.ascii());
-  }// end if
+
+   query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >='"+codinicial+"' AND codigo <= '"+codfinal+"'  ORDER BY codigo";
+
   if (cursorcta != NULL) {
     delete cursorcta;
   }// end if
@@ -287,9 +277,8 @@ void extractoview1::boton_fin() {
 
 
 void extractoview1::boton_imprimir() {
-   ExtractoPrintView *print = new ExtractoPrintView(0,0);
-   print->inicializa(conexionbase);
-	print->inicializa1(fechainicial1->text(), fechafinal1->text(), codigoinicial->text(), codigofinal->text());
+   ExtractoPrintView *print = new ExtractoPrintView(empresaactual, 0,0);
+   print->inicializa1(fechainicial1->text(), fechafinal1->text(), codigoinicial->text(), codigofinal->text());
    print->exec();
 }// end if
 
@@ -352,7 +341,6 @@ void extractoview1::presentar() {
    
    QString cad;
    QString cadaux;
-	int idc_coste = 0;
    cursor2 *cursorapt;
    cursor2 *cursorcoste;
    cursor2 *cursorcanal;
@@ -372,12 +360,17 @@ void extractoview1::presentar() {
       QString query="";
       // Al igual que en el caso anterior los centros de coste han cambiado y aun no se pueden implementar.
       //idc_coste = filt->ccostes[filt->combocoste->currentItem()];    
+      selectcanalview *scanal=empresaactual->getselcanales();
+      selectccosteview *scoste=empresaactual->getselccostes();
+      QString ccostes = scoste->cadcoste();
+      if (ccostes != "") 
+         ccostes.sprintf(" AND idc_coste IN (%s) ", ccostes.ascii());
+      QString ccanales = scanal->cadcanal();
+      if (ccanales != "") 
+         ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.ascii());
+            
+     query.sprintf("SELECT * FROM apunte, asiento where asiento.idasiento = apunte.idasiento AND  idcuenta=%d AND apunte.fecha>='%s' AND apunte.fecha<='%s' %s %s %s ORDER BY apunte.fecha, ordenasiento, orden",idcuenta, (char *) finicial.ascii(),(char *) ffinal.ascii(), ccostes.ascii(), ccanales.ascii(), tipopunteo.ascii());  
       
-      if (idc_coste != 0) {
-        query.sprintf("SELECT * FROM apunte, asiento where asiento.idasiento = apunte.idasiento AND  idcuenta=%d AND apunte.fecha>='%s' AND apunte.fecha<='%s' AND idc_coste=%d  %s ORDER BY apunte.fecha, ordenasiento, orden",idcuenta, (char *) finicial.ascii(),(char *) ffinal.ascii(), idc_coste, tipopunteo.ascii());
-      } else {
-        query.sprintf("SELECT * FROM apunte, asiento where asiento.idasiento = apunte.idasiento AND idcuenta=%d AND apunte.fecha>='%s' AND  apunte.fecha<='%s'  %s ORDER BY apunte.fecha, ordenasiento, orden",idcuenta,(char *) finicial.ascii(),(char *) ffinal.ascii(), tipopunteo.ascii());
-      }// end if
       fprintf(stderr,"%s\n",query.ascii());
       conexionbase->begin();
       cursorapt=conexionbase->cargacursor(query,"cargasaldoscuentafecha");
@@ -508,7 +501,6 @@ void extractoview1::inicializa1(QString codinicial, QString codfinal, QString fe
    codigofinal->setText(codfinal);
    fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
    fechafinal1->setText(normalizafecha(fecha2).toString("dd/MM/yyyy"));
-   filt->setccoste(idc_coste);
 }// end inicializa1
 
 

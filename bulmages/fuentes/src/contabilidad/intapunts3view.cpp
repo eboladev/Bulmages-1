@@ -13,8 +13,6 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-
-
 #include <qpopupmenu.h>
 #include <qlineedit.h>
 #include <qlistview.h>
@@ -76,10 +74,9 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
     tapunts->setSorting( TRUE );
     tapunts->setSelectionMode( QTable::SingleRow );
     intapunts3dlgLayout->addWidget( tapunts, 1, 0 );
-    //connect( tapunts, SIGNAL( clicked(int,int,int,const QPoint&) ), this, SLOT( tpulsado(int,int,int,const QPoint&) ) );
+
     connect( tapunts, SIGNAL( valueChanged(int,int) ), this, SLOT( apuntecambiadogrid(int,int) ) );
     connect( tapunts, SIGNAL( selectionChanged() ), this, SLOT( tcambiaseleccion() ) );
-    //connect( tapunts, SIGNAL( currentChanged(int,int) ), this, SLOT( currentChanged(int,int) ) );
     connect( tapunts, SIGNAL( contextMenuRequested(int,int,const QPoint&) ), this, SLOT( contextmenu(int,int,const QPoint&) ) );
     connect( tapunts, SIGNAL( pulsadomas(int, int, int)), this, SLOT(pulsadomas(int, int, int)));
 
@@ -130,7 +127,7 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
 
     // Creamos el objeto de filtrado de asientos para que el filtro funcione siempre bien
     // desde esta ventana.
-    filt = new filtrarasientosview(0,"");
+    filt = new filtrarasientosview(empresaactual,0,"");
 
     // Consideramos que no hay row actual
     rowactual = -1;
@@ -243,6 +240,7 @@ void intapunts3view::cargarcursor(int numasiento) {
         if (cursorasientos->bof()) cursorasientos->primerregistro();
     }// end if
 }// end cargarcursor
+
 
 void intapunts3view::boton_inicio() {
     if (cursorasientos->numregistros() != 0) {
@@ -632,7 +630,24 @@ void intapunts3view::iniciar_asiento_nuevo() {
     } else flashAsiento(idasiento);
     boton_abrirasiento();
 
-    tapunts->setText(0,0,fechaasiento1->text());
+   tapunts->setText(0,0,fechaasiento1->text());
+   // Comprobamos si existe un centro de coste por defecto y lo usamos
+   selectccosteview *selccostes = empresaactual->getselccostes();
+   QString ccoste = QString::number(selccostes->firstccoste());
+   if ( ccoste != "0") {
+      tapunts->setText(0,COL_CCOSTE,selccostes->nomcoste());
+      tapunts->setText(0,COL_IDCCOSTE, ccoste);
+   }// end if
+  
+   // Comprobamos si existe un canal por defecto y lo usamos
+   selectcanalview *selcanales = empresaactual->getselcanales();
+   QString idcanal = QString::number(selcanales->firstcanal());
+   if ( idcanal != "0") {
+      tapunts->setText(0,COL_CANAL,selcanales->nomcanal());
+      tapunts->setText(0,COL_IDCANAL, idcanal);
+   }// end if  
+    
+    
     rowactual=0;
     tapunts->setCurrentCell(0,0);
     tapunts->setFocus();
@@ -1069,9 +1084,7 @@ void intapunts3view::guardaborrador(int row) {
             conexionbase->commit();
         } else {
             // El borrador no existe, por lo que hay que hacer un insert
-            //query = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES ("+rowtext+","+concepto+", "+fecha+","+idcuenta+","+debe+","+haber+","+idasiento+","+contrapartida+","+idcanal+","+idc_coste+")";
             query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES (%s,%s,%s,%s,%s,%s,'%d',%s,%s,%s)",rowtext.ascii(),concepto.ascii(),fecha.ascii(),idcuenta.ascii(),debe.ascii(),haber.ascii(),idasiento,contrapartida.ascii(),idcanal.ascii(),idc_coste.ascii());
-            //fprintf(stderr,"%s\n",query.ascii());
             conexionbase->begin();
             if (conexionbase->ejecuta(query)==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
             query = "SELECT MAX (idborrador) AS id from borrador";
@@ -1183,8 +1196,14 @@ void intapunts3view::boton_iva() {
 }// end boton_iva
 
 
-
+// Esta función captura la pulsación de una tecla. No es muy acertado el nombre de pulsado mas
+// Ya que captura cualquier tecla.
 void intapunts3view::pulsadomas(int row, int col, int caracter) {
+   QString query;
+   QPopupMenu *menucanal = new QPopupMenu( this );
+   QPopupMenu *menucoste = new QPopupMenu( this );
+   cursor2 *cur;
+   int opcion;
     float tdebe;
     fprintf(stderr,"Se ha pulsado la tecla (%i) sobre tapunts y se ha disparado el evento %d, %d\n",caracter, row, col);
     if (abierto) {
@@ -1236,6 +1255,70 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
                 break;
             case COL_CONCEPTO:
                 break;
+            case COL_CCOSTE:
+               // Si el asiento esta abierto mostramos el popup para asientos abiertos
+               query = "SELECT * FROM c_coste";
+               conexionbase->begin();
+               cur  = conexionbase->cargacursor(query,"costes");
+               menucoste->insertItem(tr("Ninguno"), 1000);
+               conexionbase->commit();
+               while (!cur->eof()) {
+                     menucoste->insertItem(cur->valor("nombre"), 1000+atoi(cur->valor("idc_coste").ascii()));
+                     cur->siguienteregistro();
+               }// end while
+               delete cur;
+               opcion = menucoste->exec();
+               delete menucoste;
+                if (opcion == 1000) {
+                    tapunts->setText(row, COL_CCOSTE, "");
+                    tapunts->setText(row, COL_IDCCOSTE, "");
+                }// end if
+                if (opcion > 1000) {
+                    QString query1;
+                    opcion -= 1000;
+                    query1.sprintf("SELECT * FROM c_coste WHERE idc_coste=%d", opcion);
+                    conexionbase->begin();
+                    cur = conexionbase->cargacursor(query1.ascii(),"canales1");
+                    conexionbase->commit();
+                    if (!cur->eof()) {
+                        tapunts->setText(row,COL_CCOSTE, cur->valor("nombre"));
+                        tapunts->setText(row,COL_IDCCOSTE, cur->valor("idc_coste"));
+                    }// end if
+                    delete cur;
+                }// end if               
+               break;
+            case COL_CANAL:
+               // Si el asiento esta abierto mostramos el popup para asientos abiertos
+               query = "SELECT * FROM canal";
+               conexionbase->begin();
+               cur = conexionbase->cargacursor(query,"canales");
+               menucanal->insertItem(tr("Ninguno"), 1000);
+               conexionbase->commit();
+               while (!cur->eof()) {
+                  menucanal->insertItem(cur->valor("nombre"),1000+atoi(cur->valor("idcanal").ascii()));
+                  cur->siguienteregistro();
+               }// end while
+               delete cur;
+               opcion = menucanal->exec();
+               delete menucanal;   
+                if (opcion == 1000) {
+                    tapunts->setText(row, COL_CANAL, "");
+                    tapunts->setText(row, COL_IDCANAL, "");
+                }// end if
+                if (opcion > 1000) {
+                    QString query1;
+                    opcion -= 1000;
+                    query1.sprintf("SELECT * FROM canal WHERE idcanal=%d", opcion);
+                    conexionbase->begin();
+                    cur = conexionbase->cargacursor(query1.ascii(),"canales1");
+                    conexionbase->commit();
+                    if (!cur->eof()) {
+                        tapunts->setText(row,COL_CANAL, cur->valor("nombre"));
+                        tapunts->setText(row,COL_IDCANAL, cur->valor("idcanal"));
+                    }// end if
+                    delete cur;
+                }// end if                           
+               break;
             }// end switch
             break;
         case '*':
@@ -1256,12 +1339,39 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
                 tapunts->setCurrentCell(row, COL_DEBE);
                 break;
             case COL_IVA:
-//                tapunts->setText(row+1,COL_FECHA,normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
-                tapunts->setText(row+1,COL_FECHA,normalizafecha(tapunts->text(row,COL_FECHA)).toString("dd/MM/yyyy"));
 //                Se ha verificado que es más cómodo poder cambiar la fecha o dar al enter
-                tapunts->setCurrentCell(row+1, COL_FECHA);
-
+               if (row >0) {
+                  if (tapunts->text(row-1,COL_CCOSTE) == "") 
+                     tapunts->setText(row+1,COL_FECHA,normalizafecha(tapunts->text(row,COL_FECHA)).toString("dd/MM/yyyy"));
+                     tapunts->setText(row+1,COL_CCOSTE, tapunts->text(row,COL_CCOSTE));
+                     tapunts->setText(row+1,COL_CANAL, tapunts->text(row,COL_CANAL));
+                     tapunts->setText(row+1,COL_IDCCOSTE, tapunts->text(row,COL_IDCCOSTE));
+                     tapunts->setText(row+1,COL_IDCANAL, tapunts->text(row,COL_IDCANAL));
+                     tapunts->setCurrentCell(row+1, COL_FECHA);               
+               } else {
+                     tapunts->setCurrentCell(row,COL_CCOSTE);
+               }// end if
                 break;
+            case COL_CCOSTE:
+               if (row > 0) {
+                     tapunts->setText(row+1,COL_FECHA,normalizafecha(tapunts->text(row,COL_FECHA)).toString("dd/MM/yyyy"));
+                     tapunts->setText(row+1,COL_CCOSTE, tapunts->text(row,COL_CCOSTE));
+                     tapunts->setText(row+1,COL_CANAL, tapunts->text(row,COL_CANAL));
+                     tapunts->setText(row+1,COL_IDCCOSTE, tapunts->text(row,COL_IDCCOSTE));
+                     tapunts->setText(row+1,COL_IDCANAL, tapunts->text(row,COL_IDCANAL));
+                     tapunts->setCurrentCell(row+1, COL_FECHA);                  
+               } else {
+                     tapunts->setCurrentCell(row,COL_CANAL);
+               }// end if
+               break;
+            case COL_CANAL:
+                     tapunts->setText(row+1,COL_FECHA,normalizafecha(tapunts->text(row,COL_FECHA)).toString("dd/MM/yyyy"));
+                     tapunts->setText(row+1,COL_CCOSTE, tapunts->text(row,COL_CCOSTE));
+                     tapunts->setText(row+1,COL_CANAL, tapunts->text(row,COL_CANAL));
+                     tapunts->setText(row+1,COL_IDCCOSTE, tapunts->text(row,COL_IDCCOSTE));
+                     tapunts->setText(row+1,COL_IDCANAL, tapunts->text(row,COL_IDCANAL));
+                     tapunts->setCurrentCell(row+1, COL_FECHA);               
+               break;
             case COL_CONCEPTO:
                 tapunts->setCurrentCell(row, COL_IVA);
                 break;

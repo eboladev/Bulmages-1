@@ -16,6 +16,7 @@
 
 #include "canalview.h"
 #include "empresa.h"
+#include "selectcanalview.h"
 
 canalview::canalview(empresa *emp, QWidget *parent, const char *name, bool modal ) : canaldlg(parent,name, modal) {
 	empresaactual = emp;
@@ -51,6 +52,9 @@ void canalview::pintar() {
     mostrarplantilla();
   }// end if
 
+  // Si se han cambiado los canales, se rehace el selector de canales.
+  selectcanalview *scanal = empresaactual->getselcanales();
+  scanal->cargacanales();
 }// end pintar
 
 /*****************************************************

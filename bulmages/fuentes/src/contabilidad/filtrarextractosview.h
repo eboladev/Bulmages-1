@@ -1,4 +1,3 @@
-
 /***************************************************************************
                           filtrarextractosview.h  -  description
                              -------------------
@@ -43,10 +42,6 @@ private:
 public:
   filtrarextractosview(empresa *, QWidget *parent=0, const char *name=0);
   ~filtrarextractosview();
-public:
-  void cargacostes();
-  void setccoste(int);
-  int ccostes[200];
 
 public slots:
   virtual void codigo_textChanged(const QString &);

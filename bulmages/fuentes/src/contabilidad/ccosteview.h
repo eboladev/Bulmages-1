@@ -50,7 +50,6 @@ public slots:
   virtual void boton_nuevo();
   virtual void boton_borrar();
   virtual void seleccionado(QListViewItem *);
-  virtual void boton_establecerccostedef();
 };
 
 #endif

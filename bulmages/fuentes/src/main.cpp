@@ -42,12 +42,8 @@ int main(int argc, char *argv[]) {
    int valorsalida=0;
    // Leemos la configuracion que luego podremos usar siempre
   confpr = new configuracion();
-   
-
-   
-  QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
-    
   
+  QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
   QApplication * mainApp = new QApplication (argc, argv);
   theApp = mainApp;
   //mainApp->setFont(QFont("helvetica", 11));
@@ -67,12 +63,12 @@ if (confpr->valor(CONF_TRADUCCION) == "locales") {
   ctllog = new bitacora();
   ctllog->add(LOG_SEG, 1,"MaiMai003", "---- Iniciación del programa ----");
   
-  BSelector * SelectorAplicaciones = new BSelector(0,"SelectorAplicaciones");  
   
   Splash *splashScr = new Splash();
   delete splashScr;
   
-  
+  BSelector * SelectorAplicaciones = new BSelector(0,"SelectorAplicaciones");  
+
   mainApp->setMainWidget(SelectorAplicaciones);
   
   valorsalida = mainApp->exec();

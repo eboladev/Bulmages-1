@@ -43,22 +43,16 @@
 
 
 empresa::empresa(){
- diario = NULL;
- extracto = NULL;
- balance1 = NULL;
- balance = NULL; 
- introapunts1 = NULL;
- selccostes  = NULL;
- selcanales = NULL;
- nombre = "";
- conexionbase2 = new postgresiface2();
- conexionanterior2 = NULL;
-
- fprintf(stderr,"Inicialización de empresas \n");
- m_idcCosteDef=0;  // El centro de coste por defecto.
- m_idCanalDef=0; // El canal por defecto.
-
-
+   diario = NULL;
+   extracto = NULL;
+   balance1 = NULL;
+   balance = NULL; 
+   introapunts1 = NULL;
+   selccostes  = NULL;
+   selcanales = NULL;
+   nombre = "";
+   conexionbase2 = new postgresiface2();
+   conexionanterior2 = NULL;
 }// end empresa
 
 
@@ -69,10 +63,9 @@ empresa::~empresa(){
   if (balance) delete balance;
   if (introapunts1) delete introapunts1;
   if (conexionbase2) delete conexionbase2;
-  if (conexionanterior2) delete conexionanterior2; //Segmentation Fault!! si destruimos un objeto que no existe. 
+  if (conexionanterior2) delete conexionanterior2;
   if (selccostes) delete selccostes;
   if (selcanales) delete selcanales;
-  
 }// end ~empresa
 
 
@@ -124,26 +117,26 @@ int empresa::inicializa1(QWorkspace *space) {
   selccostes=new selectccosteview(this,0,"selccostes");   
   selcanales=new selectcanalview(this,0,"selcanales");
 
-  
+/* 
   extracto = new extractoview1(this, pWorkspace,"extracto");
-  fprintf(stderr,"Vamos a inicializar el diarioview1\n");
   diario = new diarioview1(this,pWorkspace,"diario");
   balance = new balanceview(this, pWorkspace,"balance");
   balance1 = new balance1view(this, pWorkspace,"balance2");
-  
-  // Empezamos las iniciaciones de introapunts1 que es la nueva parte de lo nuevo
   introapunts1 = new intapunts3view(this, pWorkspace,"introapunts2");
+*/
+  extracto = new extractoview1(this, pWorkspace,"extracto", Qt::WStyle_Customize | Qt::WStyle_NormalBorder | Qt::WStyle_MinMax | Qt::WStyle_SysMenu | Qt::WStyle_Title | Qt::WStyle_Minimize);
+  diario = new diarioview1(this,pWorkspace,"diario");
+  balance = new balanceview(this, pWorkspace,"balance");
+  balance1 = new balance1view(this, pWorkspace,"balance2");
+  introapunts1 = new intapunts3view(this, pWorkspace,"introapunts2");
+  
   introapunts1->inicializa(conexionbase2);
   
   // Pasamos parametros a las ventanas para que puedan coordinarse entre si.
   introapunts1->inicializa1(extracto, diario, balance);
-  fprintf(stderr,"empresa inicializa extracto\n");
   extracto->inicializa2(introapunts1, diario, balance);
-  fprintf(stderr,"empresa inicializa diario\n");
   diario->inicializa2(introapunts1,extracto, balance);
-  fprintf(stderr,"empresa inicializa balance\n");
   balance->inicializa2(introapunts1, diario, extracto);
-  fprintf(stderr,"empresa inicializa balance1\n");
   balance1->inicializa2(introapunts1, diario, extracto);  
   
 
@@ -193,7 +186,6 @@ int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
     delete metabase;  
   }// end if
   return(0);
-
 }// end inicializa
 
 
@@ -233,8 +225,6 @@ int empresa::ccostes() {
   ccosteview *ccoste = new ccosteview(this, 0,"ccostes", true);
   ccoste->exec();
   delete ccoste;
-//  introapunts1->cargacostes();
-  extracto->cargacostes();
   balance->cargacostes();
   return(0);
 }// end ccostes
@@ -324,8 +314,6 @@ int empresa::muestraasientos() {
   asientosview *nuevae = new asientosview(this, 0,"",true);
   nuevae->inicializa(conexionbase2, introapunts1);
   nuevae->exec();
-//  introapunts->cargarcursor(0);
-//  introapunts->boton_primerasiento();
   delete nuevae;
   return(0);
 }// end muestraapuntes
@@ -338,6 +326,7 @@ int empresa::propiedadempresa() {
    delete nuevae;
    return(0);
 }// end propiedadempresa
+
 
 int empresa::amortizaciones(){
     amortizacionesview * amors = new amortizacionesview(this,0,"",true);
@@ -383,9 +372,6 @@ int empresa::compbalance() {
    // Esto es lo más correcto, lo anterior se llamará desde esta nueva ventana.
    balancesview * nueva = new balancesview(0,"balances");
    nueva->inicializa(conexionbase2);
-   // OJO, esta inicialización no es correcta, solo es una prueba.
-//   nuevae->inicializa1("1");
-//   nuevae->setmodoselector();
    nueva->exec();
    delete nueva;   
    return(0);

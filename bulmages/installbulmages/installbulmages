@@ -1,19 +1,48 @@
 #!/bin/bash
 
+function tiempo {
+  sleep 1.5
+}
 
+function linea {
+   echo -e "\033[32m----------------------------------------------\033[0m\n"
+}
+  
+# Comprobamos que estamos ejecutando como root el programa
+if [ ! $(whoami) = "root" ]; then
+   echo -e "Este script de instalacion debe ejecutarse como root"
+   exit 1
+fi
+
+
+# Iniciamos el tema de los errores.
+rm errores.txt
 touch errores.txt
-echo -e "Comprobando versiones anteriores\n"
+
+
+# Distinguimos entre una instalación y una actualización
+echo -e "\033[32mComprobando versiones anteriores\033[0m\n"
+tiempo
 
 if [ -e /etc/bulmages.conf ]; then
+
+   echo -e "Creando directorio backup para guardar copias de seguridad"
+   if [ -e backup ]; then
+      echo -e "El directorio ya existe"
+      linea
+   else
+      mkdir backup
+   fi
+
 #  Hacemos una actualizacion de las bases de datos.
    su - postgres -c "echo -e \"\\pset tuples_only \n select nombredb from empresa;\" | psql metabd" > listdb.lst
    for x in `tail +2 listdb.lst`
    do
       echo -e "Trataremos la base de datos $x"
+      tiempo
       echo -e "Hacemos copia de seguridad"
-      mkdir backup
       su - postgres -c "pg_dump $x" > backup/$x.pgdump
-      for y in `ls dbmodels/rev-*.sql | sort`
+      for y in `ls dbmodels/actualizar/rev-*.sql | sort`
       do
          echo -e "Evaluamos: " $y
          if [ ! -e /usr/share/bulmages/$y ]; then
@@ -21,11 +50,11 @@ if [ -e /etc/bulmages.conf ]; then
 	    echo -e "Actualizamos la version $y"
          fi
       done
-      echo -e "-----------------\n"
+      linea
    done
 
    echo -e "Tratamos la metabase"
-   for y in `ls dbmodels/revmeta-*.sql | sort`
+   for y in `ls dbmodels/actualizar/revmeta-*.sql | sort`
    do
       echo -e "Evaluamos: " $y
       if [ ! -e /usr/share/bulmages/$y ]; then
@@ -33,9 +62,11 @@ if [ -e /etc/bulmages.conf ]; then
 	 echo -e "Actualizamos la version $y"
       fi
    done
-   echo -e "------------------\n"
+   linea
 
 
+   # También actualizarmos el fichero de backup.
+   echo -e "Hacemos un backup del archivo de configuracion"
    cp /etc/bulmages.conf bulmages.conf.old
 
    for j in `ls rev-bulmages*.conf | sort`
@@ -53,38 +84,41 @@ else
 
 # Hacemos una insercion inicial de las bases de datos.
    echo -e "Creando directorio /usr/share/bulmages\n"
-   mkdir /usr/share/bulmages
+   if [ ! -e /usr/share/bulmages ]; then
+      mkdir /usr/share/bulmages
+   fi
    
    echo -e "Creando bases de datos \n"
-   su - postgres -c "dropdb  bulmages" 2>> errores.txt > /dev/null
-   su - postgres -c "createdb bulmages" 2>> errores.txt > /dev/null
-   su - postgres -c "psql bulmages" < dbmodels/bulmages.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "dropdb bgplangcont" 2>> errores.txt > /dev/null
-   su - postgres -c "createdb bgplangcont" 2>> errores.txt > /dev/null
-   su - postgres -c "psql bgplangcont" < dbmodels/bgplangcont.pgdump 2>> errores.txt > /dev/null
-   su - postgres -c "dropdb metabd" 2>> errores.txt > /dev/null
-   su - postgres -c "createdb metabd" 2>> errores.txt > /dev/null
-   su - postgres -c "psql metabd" < dbmodels/metabd.pgdump 2>> errores.txt > /dev/null
+   cd dbmodels
+   source creabulmages metabd 3
+   source creabulmages bulmages 2
+   source creabulmages bgplangcont 1
+   cd ..
    
+  
    # Tratamos el archivo de configuracion
-   echo -e "Copiando la nueva version de bulmages.conf\n"
+   echo -e "Copiando la nueva version de bulmages.conf"
    cp bulmages.conf /etc
 
    # Presentamos los errores acaecidos
    cat errores.txt | grep ERROR
    
    # Vamos a crear el usuario que acceda a la base de datos.
-   echo Indique el usuario que va a trabajar normalmente con el programa:
+   echo -e " \033[0;31m ========================================================"
+   echo -e " El usuario que usará el programa"
+   echo -e "Indique el usuario que va a trabajar normalmente con el programa:\033[0m"
    read user
    su - postgres -c "createuser --adduser --createdb $user"
 fi
 
 # Copiamos todos los archivos de la nueva version a sus localizaciones normales.
-echo -e "Copiando archivos de imagenes\n"
+echo -e "Copiando archivos de imagenes"
+tiempo
 cp *.jpg /usr/share/bulmages
 cp *.png /usr/share/bulmages
 
-echo -e "Copiando ejecutables\n"
+echo -e "Copiando ejecutables"
+tiempo
 cp bulmages /usr/local/bin
 cp cargaemp /usr/local/bin
 cp nuevaemp /usr/local/bin
@@ -92,10 +126,12 @@ cp borraremp /usr/local/bin
 cp guardaemp /usr/local/bin
 cp cargaemp /usr/local/bin
 
-echo -e "Copiando archivos de revision de bulmages.conf\n"
+echo -e "Copiando archivos de revision de bulmages.conf"
+tiempo
 cp rev-* /usr/share/bulmages
 
-echo -e "Copiando archivos auxiliares\n"
+echo -e "Copiando archivos auxiliares"
+tiempo
 cp -r dbmodels /usr/share/bulmages
 cp -r backgrounds /usr/share/bulmages
 cp -r ayuda /usr/share/bulmages
@@ -103,4 +139,12 @@ cp -r reports /usr/share/bulmages
 cp -r css /usr/share/bulmages
 cp -r icons /usr/share/bulmages
 cp -r traducciones /usr/share/bulmages
+
+echo -e "Vamos a hacer la instalación de BContaWeb"
+tiempo
+if [ -e /var/www ]; then
+   cp -r bcontaweb /var/www
+fi
+
+echo -e "\033[32mINSTALACION FINALIZADA CON ÉXITO\033[0m"
 

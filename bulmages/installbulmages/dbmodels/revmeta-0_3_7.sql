@@ -1,1 +1,0 @@
-ALTER TABLE empresa ADD COLUMN ejant character varying(15);

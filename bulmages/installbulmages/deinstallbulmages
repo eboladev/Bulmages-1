@@ -1,8 +1,9 @@
 #!/bin/bash
 
+echo -e "BulmaGés esta siendo desinstalado"
+echo -e "Puede que queden bases de datos en su ordenador que deberá borrar manualmente"
 su postgres -c "dropdb bulmages"
 su postgres -c "dropdb metabd"
 su postgres -c "dropdb bgplangcont"
-
 rm /etc/bulmages.conf
 rm -rf /usr/share/bulmages

@@ -12,24 +12,24 @@
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
- *                                                                         *
  ***************************************************************************/
+#include <unistd.h>
+#include <qwidget.h>
 
 #include "extractoprintview.h"
 #include "listcuentasview1.h"
-#include <unistd.h>
+#include "selectccosteview.h"
+#include "selectcanalview.h"
+#include "empresa.h"
 
-ExtractoPrintView::ExtractoPrintView(QWidget *parent, const char *name ) : ExtractoPrintDlg(parent,name) {
+ExtractoPrintView::ExtractoPrintView(empresa *emp, QWidget *parent=0, const char *name=0 ) : ExtractoPrintDlg(parent,name) {
    fichero=NULL;
+   empresaactual=emp;
+   conexionbase = emp->bdempresa();
 }
 
 ExtractoPrintView::~ExtractoPrintView(){
 }
-
-int ExtractoPrintView::inicializa(postgresiface2 *conn) {
-    conexionbase = conn;
-    return(0);
-}// end inicializa
 
 void ExtractoPrintView::inicializa1(QString fechainicial, QString fechafinal, QString codi, QString codf) {
 	fechainicial1->setText(fechainicial);
@@ -54,7 +54,6 @@ void ExtractoPrintView::accept() {
 // Versió per si decidim que es poden escollir vàries opcions
 
 /*
-
    if (radiotexto->isChecked()) presentar("txt");
    if (!(radiotexto->isChecked())) presentar("html");
 }
@@ -284,5 +283,15 @@ void ExtractoPrintView::boton_codfinal() {
 
 
 
+void ExtractoPrintView::boton_ccostes() {
+   selectccosteview *selccostes = empresaactual->getselccostes();
+   selccostes->exec();
+}// end boton_ccostes
+
+
+void ExtractoPrintView::boton_canales() {
+   selectcanalview *selcanales = empresaactual->getselcanales();
+   selcanales->exec();
+}// end boton_ccostes
 
 

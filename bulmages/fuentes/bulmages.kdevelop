@@ -3,7 +3,7 @@
   <general>
     <author>Tomeu Borras</author>
     <email>tborras@conetxia.com</email>
-    <version>0.3.9</version>
+    <version>0.4.1</version>
     <projectmanagement>KDevTrollProject</projectmanagement>
     <primarylanguage>C++</primarylanguage>
     <keywords>
@@ -75,7 +75,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>src</activedir>
+      <activedir></activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

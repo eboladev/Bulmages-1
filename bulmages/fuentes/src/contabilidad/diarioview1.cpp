@@ -135,17 +135,7 @@ void diarioview1::inicializa2(intapunts3view *inta, extractoview1 *ext, balancev
   balance=bal;
 }// end inicializa2
 
-/*
-void diarioview1::inicializa(postgresiface2 *conn){
-// OBSOLETO, estas inicializaciones estan en el constructor de la clase
-   conexionbase = conn;
-   // Inicializamos la ventana de filtro 
-	filt->inicializa(conn);
-	// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-   cargacostes();
 
-}// end inicializa
-*/
 
 
 
@@ -165,7 +155,6 @@ void diarioview1::inicializa1(QString finicial, QString ffinal, int idc_coste) {
    QString cadena2;
    cadena2.sprintf("%2.2d/%2.2d/%4.4d",fecha1aux.day(), fecha1aux.month(), fecha1aux.year());
    fechainicial1->setText(cadena2);
-
 
    s1= ffinal;
    s2=s1.mid(0,2);
@@ -239,7 +228,6 @@ void diarioview1::boton_extracto1(int tipo) {
 				fecha2.setYMD(fechaact.year(), 12, 31);
 			break;
 		}// end switch
-//		extracto->inicializa1((char *) tapunts->text(rowactual, COL_SUBCUENTA).ascii(), (char *)tapunts->text(rowactual, COL_SUBCUENTA).ascii(),(char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
 	   extracto->inicializa1(listado->text(listado->currentRow(),COL_CUENTA),listado->text(listado->currentRow(),COL_CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
    }// end if
    extracto->accept();
@@ -297,7 +285,6 @@ void diarioview1::presentar() {
    float totaldebe1, totalhaber1;
    int idcuenta;
    int idasiento;
-	int idc_coste = 0;
    QString fecha;
    QString fechaasiento;
    QString descripcion;
@@ -317,13 +304,22 @@ void diarioview1::presentar() {
    listado->setNumRows(0);
    totaldebe1=totalhaber1=0;
    cursor2 *cursoraux;
-   idc_coste = 0;
+
+   // Consideraciones para centros de coste y canales
+      selectcanalview *scanal=empresaactual->getselcanales();
+      selectccosteview *scoste=empresaactual->getselccostes();
+      QString ccostes = scoste->cadcoste();
+      if (ccostes != "") 
+         ccostes.sprintf(" AND idc_coste IN (%s) ", ccostes.ascii());
+      QString ccanales = scanal->cadcanal();
+      if (ccanales != "") 
+         ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.ascii());
+   
+   // Fin de consideraciones para centros de coste y canales
+   
+      query.sprintf( "SELECT asiento.ordenasiento, apunte.contrapartida, apunte.fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, apunte.conceptocontable,apunte.descripcion AS descapunte, apunte.debe, apunte.haber, cuenta.idcuenta, asiento.idasiento, apunte.idc_coste, apunte.idcanal, cuenta.codigo FROM asiento, apunte, cuenta WHERE asiento.idasiento=apunte.idasiento AND apunte.idcuenta = cuenta.idcuenta AND apunte.fecha >= '%s' AND apunte.fecha <= '%s' %s %s ORDER BY apunte.fecha, asiento.idasiento, apunte.orden", finicial.ascii(), ffinal.ascii(), ccostes.ascii(), ccanales.ascii() );  
+   
    conexionbase->begin();
-   if (idc_coste!= 0) {
-     query.sprintf( "SELECT asiento.ordenasiento, apunte.contrapartida, apunte.fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, apunte.conceptocontable,apunte.descripcion AS descapunte, apunte.debe, apunte.haber, cuenta.idcuenta, asiento.idasiento, apunte.idc_coste, apunte.idcanal, cuenta.codigo FROM asiento, apunte, cuenta WHERE apunte.idc_coste=%d AND asiento.idasiento=apunte.idasiento AND apunte.idcuenta = cuenta.idcuenta AND apunte.fecha >= '%s' AND apunte.fecha <= '%s' ORDER BY apunte.fecha, asiento.idasiento, apunte.orden", idc_coste, finicial.ascii(), ffinal.ascii() );
-   } else {
-     query.sprintf("SELECT asiento.ordenasiento, apunte.contrapartida, apunte.fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, apunte.conceptocontable,apunte.descripcion AS descapunte, apunte.debe, apunte.haber, cuenta.idcuenta, asiento.idasiento, apunte.idc_coste, apunte.idcanal, cuenta.codigo FROM asiento, apunte, cuenta WHERE  asiento.idasiento=apunte.idasiento AND apunte.idcuenta = cuenta.idcuenta AND apunte.fecha >= '%s' AND apunte.fecha <= '%s' ORDER BY apunte.fecha, asiento.idasiento, apunte.orden", finicial.ascii(), ffinal.ascii());
-   }// end if
    cursoraux = conexionbase->cargacursor(query,"cursorapuntes");
    conexionbase->commit();
    listado->setNumRows(cursoraux->numregistros());

@@ -24,8 +24,6 @@
 #include <qlineedit.h>
 #include <qcombobox.h>
 #include <qdatetimeedit.h>
-// #include <qfiledialog.h>
-
 #include <qtable.h>
 #include <qtoolbutton.h>
 
@@ -34,8 +32,7 @@
 #endif
 
 BalancePrintView::BalancePrintView(QWidget *parent, const char *name ) : BalancePrintDlg(parent,name) {
-	fichero = NULL;
-
+   fichero = NULL;
  // Inicializamos la tabla de nivel
    combonivel->insertItem("2",0);
    combonivel->insertItem("3",1);
@@ -43,8 +40,8 @@ BalancePrintView::BalancePrintView(QWidget *parent, const char *name ) : Balance
    combonivel->insertItem("5",3);
    combonivel->insertItem("6",4);
    combonivel->insertItem("7",5);
-   
 }
+
 BalancePrintView::~BalancePrintView(){
 }
 
@@ -55,11 +52,11 @@ int BalancePrintView::inicializa(postgresiface2 *conn ) {
 
 
 void BalancePrintView::inicializa1(QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1, bool arbol) {
-	   fechainicial1->setText(finicial1);
-      fechafinal1->setText(ffinal1);
-      codigoinicial->setText(codinicial1);
-      codigofinal->setText(codfinal1);
-		checksuperiores->setChecked(arbol);
+   fechainicial1->setText(finicial1);
+   fechafinal1->setText(ffinal1);
+   codigoinicial->setText(codinicial1);
+   codigofinal->setText(codfinal1);
+   checksuperiores->setChecked(arbol);
 }// end if
 
 
@@ -68,23 +65,7 @@ void BalancePrintView::inicializa2(char *fich) {
 }// end inicializa2
 
 
-void BalancePrintView::cargacostes() {
-   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-   combocoste->clear();
-   QString query="SELECT * FROM c_coste ORDER BY nombre";
-   conexionbase->begin();
-   cursor2 *cursorcoste = conexionbase->cargacursor(query,"costes");
-   conexionbase->commit();
-   combocoste->insertItem("--",0);
-   ccostes[0]=0;
-   int i=1;
-   while (!cursorcoste->eof()) {
-      combocoste->insertItem(cursorcoste->valor(2),-1);
-      ccostes[i++] = atoi(cursorcoste->valor(0).ascii());
-      cursorcoste->siguienteregistro();
-   }// end while
-   delete cursorcoste;
-}// end cargacostes
+
 
 /**************************************************************
  * Se ha pulsado sobre el boton aceptar del formulario
@@ -185,9 +166,6 @@ void BalancePrintView::presentar(char *tipus){
 
 
          // Hacemos la consulta de los apuntes a listar en la base de datos.
-         int idc_coste;
-         idc_coste = ccostes[combocoste->currentItem()];
-
          // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
          // Causar problemas con el motor de base de datos.
          fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");

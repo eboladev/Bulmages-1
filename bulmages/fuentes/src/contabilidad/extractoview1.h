@@ -67,7 +67,7 @@ public:
    void vaciar();
    void presentar();
    void ajustes();
-   void cargacostes();
+//   void cargacostes();
    void boton_filtrar();
 
 public slots:

@@ -22,15 +22,25 @@
 #include <qlineedit.h>
 #include <filtrarasientosdlg.h>
 
+#include "postgresiface2.h"
+
+class empresa;
+
 /***@author Tomeu Borrás Riera */
 
 class filtrarasientosview : public filtrarasientosdlg  {
-   Q_OBJECT
+Q_OBJECT
+private:
+  postgresiface2* conexionbase;
+  int numdigitos;
+  empresa *empresaactual;  
 public: 
-	filtrarasientosview(QWidget *parent=0, const char *name=0);
+	filtrarasientosview(empresa *,QWidget *parent=0, const char *name=0);
 	~filtrarasientosview();
 public slots:
   virtual void boton_reset();
+  virtual void boton_ccostes();
+  virtual void boton_canales();
 };
 
 #endif

@@ -47,7 +47,6 @@ public:
    void inicializa2(char *);
    void accept();
    void presentar(char *tipus);
-   void cargacostes();
 public slots:
    virtual void boton_codigoinicial();
    virtual void boton_codigofinal();

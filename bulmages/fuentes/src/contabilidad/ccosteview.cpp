@@ -20,6 +20,7 @@
 #include <qlistview.h>
 #include "ccosteview.h"
 #include "empresa.h"
+#include "selectccosteview.h"
 
 // El inicializador de la clase.
 ccosteview::ccosteview(empresa *emp, QWidget *parent, const char *name, bool modal) : ccostedlg(parent,name, modal) {
@@ -86,6 +87,11 @@ void ccosteview::pintar() {
   if ( idc_coste!= 0) {
     mostrarplantilla();
   }// end if
+  
+  // Ya que se han producido cambios en los centros de coste
+  // Se inicializa el selector de centros de coste.
+  selectccosteview *scoste = empresaactual->getselccostes();
+  scoste->cargacostes();
 }// end pintar
 
 /*****************************************************
@@ -170,12 +176,4 @@ void ccosteview::boton_borrar() {
   pintar();
 }// end boton_borrar
 
-void ccosteview::boton_establecerccostedef() {
-  QListViewItem *it;
-  it=listcoste->selectedItem();
-  if (it) {
-     empresaactual->setidcCosteDef(idc_coste);
-  } else {
-     empresaactual->setidcCosteDef(0);
-  }// end if
-}// end establecerccostedef
+

@@ -22,11 +22,6 @@ filtrarextractosview::filtrarextractosview(empresa *emp,QWidget *parent, const c
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
-   
-   // Hacemos la carga de los centros de coste. Rellenamos el combobox
-   // Esto es obsoleto pq hay un formulario que se encarga de ello.
-   // cargacostes();
- 
    fprintf(stderr,"Fin del constructor de fitrarextractosview\n");
 }// end filtrarextractosview
 
@@ -38,11 +33,6 @@ void filtrarextractosview::boton_ccostes() {
    fprintf(stderr,"Boton ccostes\n");
    selectccosteview *selccostes = empresaactual->getselccostes();
    selccostes->exec();
-   fprintf(stderr,"---------------INICIO---------------------\n");
-   selccostes->firstccoste();
-   while (selccostes->nextccoste());
-   fprintf(stderr,"-----------------FIN---------------------\n");
-//   selccostes->show();
 }// end boton_ccostes
 
 
@@ -50,45 +40,7 @@ void filtrarextractosview::boton_canales() {
    fprintf(stderr,"Boton canales\n");
    selectcanalview *selcanales = empresaactual->getselcanales();
    selcanales->exec();
-   fprintf(stderr,"---------------INICIO---------------------\n");
-   selcanales->firstcanal();
-   while (selcanales->nextcanal());
-   fprintf(stderr,"-----------------FIN---------------------\n");
-//   selccostes->show();
 }// end boton_ccostes
-
-
-void filtrarextractosview::cargacostes() {
-   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-   combocoste->clear();
-   QString query="SELECT * FROM c_coste ORDER BY nombre";
-   conexionbase->begin();
-   cursor2 *cursorcoste = conexionbase->cargacursor(query,"costes");
-   conexionbase->commit();
-   fprintf(stderr,"Terminada la operativa con la base de datos\n");
-   combocoste->insertItem("--",0);
-   ccostes[0]=0;
-   int i=1;
-   fprintf(stderr,"Vamos a iterear\n");
-   while (!cursorcoste->eof()) {
-      combocoste->insertItem(cursorcoste->valor(2),-1);
-      ccostes[i++] = atoi(cursorcoste->valor(0).ascii());
-      cursorcoste->siguienteregistro();
-   }// end while
-   delete cursorcoste;
-   fprintf(stderr,"Terminada la carga de los centros de coste en el combobox\n");
-   
-}// end cargacostes
-
-
-
-void filtrarextractosview::setccoste(int idc_coste) {
-   // Establecemos el centro de coste correspondiente.
-   int i=0;
-   while (ccostes[i]!=idc_coste && i<100) i++;
-   if (i<100) combocoste->setCurrentItem(i);
-}// end if
-
 
 void filtrarextractosview::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
