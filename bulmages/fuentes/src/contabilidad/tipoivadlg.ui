@@ -1,0 +1,341 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>tipoivadlg</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>tipoivadlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>383</width>
+            <height>286</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Tipos de IVA</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLayoutWidget" row="1" column="0">
+            <property name="name">
+                <cstring>layout2</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Tipo de IVA</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <property name="name">
+                        <cstring>m_comboTipoIVA</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget" row="3" column="0">
+            <property name="name">
+                <cstring>layout5</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>191</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Salir</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QGroupBox" row="2" column="0">
+            <property name="name">
+                <cstring>groupBox1</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>5</hsizetype>
+                    <vsizetype>7</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="title">
+                <string>Información del canal</string>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout3</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Nombre</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>m_nombreTipoIVA</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout23</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1_2</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>7</hsizetype>
+                                    <vsizetype>5</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="text">
+                                <string>Cuenta</string>
+                            </property>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>Layout2</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <property name="margin">
+                                    <number>0</number>
+                                </property>
+                                <property name="spacing">
+                                    <number>0</number>
+                                </property>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>m_codigoctaTipoIVA</cstring>
+                                    </property>
+                                </widget>
+                                <widget class="QToolButton">
+                                    <property name="name">
+                                        <cstring>ToolButton1</cstring>
+                                    </property>
+                                    <property name="minimumSize">
+                                        <size>
+                                            <width>25</width>
+                                            <height>25</height>
+                                        </size>
+                                    </property>
+                                    <property name="text">
+                                        <string></string>
+                                    </property>
+                                    <property name="iconSet">
+                                        <iconset>image0</iconset>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout22</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1_2_2</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>7</hsizetype>
+                                    <vsizetype>5</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="text">
+                                <string>Porcentaje</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>m_porcentTipoIVA</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer5</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>41</width>
+                            <height>81</height>
+                        </size>
+                    </property>
+                </spacer>
+            </vbox>
+        </widget>
+        <widget class="QLayoutWidget" row="0" column="0">
+            <property name="name">
+                <cstring>layout6</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image2</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image3</iconset>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>300</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+    </grid>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="1113">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000042049444154388d8d954168db561cc67f3229d890800c2d48c381baeca2d01e9e490ff618b45e076bbc5d3c76e8ca064db7d3ba5eb61d4a5b7a68d6c220f4d2b0c39c1e064e6121b9647107a5f26596c69a59838ce8d0600d1266b18e5a3441166cf07690ed395dda4d978fffd3d3f7bef7fd3fbda784ad107c4083da9a2d0b993cb5ed148606960f531970b6bb14b488f688ab084d0ce63bbe43bfb677537266b1caeaa5b2820f09c777408385ba29bd6e9e393f409b046bb44be114d447413f9162290a503d432ed44d394cdaff7e66711e7fcbc3f11dcc4729a984ad903b2b357938fb36f6284c1d053780fc61b0b7411c8cebc238982e08bf83bd6e32fdd694b29f723428dd5c96caf5cf2b92d1328191a43c99c28ba0a8437307726350db02a182bb1b8fd7d63b18f5008eb795be62a109aeae38b2136439ffbaa7084d90100705819e66ea684c5ad641074a63603d8677c7d9b358f9581a675ca3b39e947dd24f1723a991c5db36a9de45e243a2feabc3c9c978bb451d5ce2a703e40e81fb2714fb3816bf2fbf99a2be690e3c8e76236abfd42032b0b72cd02061648a034f9b3b90eb11a7818d2ee40ec464c50390020a40fb000835073e084de06e2e63240d828e49141838be43c2fc638342061c1ff411a86e411b58dd81520abc1ed9466fc10de2c5cd4d6bd038fbee056ccf22da35a8dc482b42138c144627707cc8bf0cde2e14c7a1d981523a26caf608279e414335068d0bad5079361d0973ad8a71b0a71830db50488335a4b0eff900bb507f64eec9f1b3b94e181d9ddafd0df299385242076b27defeb0c2f410cedc9a47fcf58fc7c34afb75c28a2cdcef96a96f42310b4e3bce6f5fb1d7c36e0f9b6e1be7a14b67bcbdafd27ead84ad90d2f4053975fa23d2efe4286763c5fd68f55302d07c04f657ab74467d0cd5403fce73cf8e84e33bacdeb9add4eecd51bb36c3fcbd0d0a6360f748fb1ecf2dac327bed0a5dd5a77cb84c848558392bcd5b47f63d3b94b0150e064bd3172414481ff2281e2dd2f49be4323996ee57c95120f92a08d5c0f56b9c573d74cd85c863692dc9d4d5d69eb38386d5e0fabc94f9f72a12900dab41d80a7911fe7446934f7ebc2ce5d3867cf24d5eca4baaac9cd1e4f0bc84d004f60f5582b646c36a289e27e42b17e7e4f3ba2d3481dd051ed6207249bf3103c2e0fc64c4dcc52372e0f9b012409e3c5791c6896fff53f9e5539a6c7d26a4fcbd22e5d307f24955c8f063555e3e112b571e9852d6d62db24983e963c97ffd412faaafbe7f444e9fd699f8f01348eab07285cea6cb957b49124b0f4ddadb3a4b6bcbbcf68523e31ba0204b3717f6edf6707dfdeb9632bbe8d1bc360b511b4ecf1065b230922431a10a82c0025510d1f3f0fb2afe56f6b91e0fd7b7977f53e6ec36cd2f6721f068fe9c2775ec2ccac97315194506d18e45b41b51b951dc7333fc5ffca0fc9254934930cee23f16fc0debef97445f1d3dd20000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="791">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002de494441545885b5974d6a1b3114803f87182418c30cb860411755564d682f9033f4263d43773d436fd2aebb49da5d218bb42b4fa10b0da4a0010b2470c15d8cc696ed71fc9389360fcd42d2fbe67b4f3383e9dd141c9081412f7406c181c8a07470e8bcac4a4466062a53abf59c61dffcbc7d689c414f344ab31c8af591cefd1cae87601e60928321875a2c8c2b07ed7a87c4c1f46eba3a197aa1df72f8980102ee2b9001f44bb8fd5e82389cc4597a22911dbeb79f0323300e74de2c8a04f55a139c5a1867d636db351f6c3a707d0c813930046fa00e2c5f9f37f0e3970151ee2571969e4c1f41009acded0c640ea533cbc752817aa320e8bd24ce5221823bf20073284640002514f8f8dcc244c0e52bb57c1d6de6e97e38b6abe05802de832cc05696fbaf81ca954c329d44c3e49f5e4077753ccd8176cc8011f000fe1caadf4d2c9d4709c9976f9ff9f0fe1d37b7375b4e3ccd01926ab0cda23f2b0b1954c1a0738909061d3b48ff0e007208785005f8bfa0b20213e072ac9001aec68a922868870327f781350212ca3f9e20c0381bfb82458cc1048b687b6847359ca576962754818c7d6092c9a6298d0b4468a2893144025dd570b2033e3621f3e0911954cec7cc3de42909ff0c0ec4ccb1a0720901f478155b0238b81ccb7e1df0bec9dc46eb8d2366dc74c42a12a89c47e44d29f6e7c01ca4043c14054d072c62667913752e916e45e42a97fd38d0be73ef0109d603a3e62ea00053af48904359fb7847d08f037298109843d192180133502fb64910afeafe1c187690886d78cd8924968e7efbc01a898440d1ba90d1b891b124d06b1fd849a075618380a97b72602f81d6858daa50bd3ad04520ad86e4565c5645dda703f30e0232216023813a1288b19f3e008f5741eb805d65deab03721781d4011bedaf9fcb817d04d2bb2121f0bc0ea4045c3781c71cd8fa2afef8e9339ae6334aa008985ee6a903bbff0d1d5c5c5f2cf67038794c6fa783cd3fa4f3cd13b59fce87fedd1e13371d5099e23fefb821ea97a916c90000000049454e44ae426082</data>
+    </image>
+    <image name="image2">
+        <data format="PNG" length="1103">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000416494441545885ad974f681b4714873f191b76600d2bd041033d640481daa407fb94f85a1a68690a2e712131146a954230218716873a2487d0de5a7a732e4a4bc1d71cd3a3e9c54ea16085a4388616ad0f8611d830022fcc8005ea617665d9966c4bf2bb3c6617de9f6f7ef37636577b5383040841271a19caa335aaa54270090421c4095c741dd7638250e78ec53b193fd18c660fbb7955544845db24c7ad736d0f61660cf41e1423d044d0085a3a8973bde2cb5092abbda975ad4c8612502df50117b7032080ad3a0807ea3dd8f82b86a0378991ce8a3a5fea44138417cf6d0f8171d009a8c8c741807c5fe112d9ea169f104fe02c0dccf443e0101803aba1e1686f9fd550ddd610c4a7488cf4aa4c271ad50701f0c9cd018808e244b71f0b09f29a04a74e9118e9140409c704e2923e0b3884fc38e04006126cfadc403180892bb2bd1d59be734f41bf04ac05910753376cfde9a82731c55075784db1a95ae0b7e3723590d901300eec811d85fa8ef771629181e08f572f79bcf829eb1bebb9cbd5001da7c1f826ded50d8450771a1509b4d3a874820ca681b76bf074ba6701620cb0201b061ecd30b1bd867630519008079305494c2ad0bee7c0db35f8e543d8adf62cc21e02fb06fbb004ef5ee1566e33f5f70b7462080aa09d21c86668882770b2f36c1d7712c892474013687429e21044ddc0c312c236a009f92688df6e33b15b453b50853c2e25d0df1c486218051a1cf9dd2a3c993eea7cd760bf2d8169609c2f5437bd8f8d4e27a41d500337caf0d5ea1181ccef5761691af15f0c8f8e774e136413ecbd0aeae3794860a22086d0c08d7998ab7802fb3e81dd0776aad8a51e9ddfabc06c997a6209227f1407d3c04912a14f2042c08280539d73bf829a2b23125005010e262331a0064e90b073154f60cf273cd9b9be5f81b9323af1db15376cfa8d60c839909ab8f6398c46dd3b8fae206f957dbcc8efb58a44ea19420399ed19ec831e7beec0eeee10df9d4e3193c6f53e4e185203c6c08312e2a08bda1da8745ddcaeb2f5c5b44fe54086b4090cae0163b08bdd3bd71f2db409645efe5365ebb369ff3e23d1185403c6c062f7ce595a453e7d8e78b24a913479135c13f2afab6cde4c49a49a184803f6d9d75d3b374b15989dc75a606e9ec6e30a3223e1d2625e57d97af613449ec0401a10cb2f404d1def7c7995fc6cd97f0304fe2bf86599fc8fabc8267ef63721b8b3c0e4f7df41c313185c032b9b1835e53b5faec0ad79ff0d486f42087f2764611ef7b32761eedc25fffb7374a3bb0646fb9d03f95f37e1df2df257277de7631c23901f070e407d5386894f90d765bbf3cc0f3f07ae4e7a3f467702e3a9bf2edb93b093c07073a0d3ce20901f278d73d479760a3a3570eeadf887959728fc352a40e2d097b2ce3470f6bf6102a59952eb1c0e035b6da3963b93800c25eb1beb67fedd0ee309e17f8331b26d9a4a43640000000049454e44ae426082</data>
+    </image>
+    <image name="image3">
+        <data format="PNG" length="1201">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000478494441545885a5974f68db7614c73f322ea8e0817cd3afb79fd9c585049adbda530bbbb497cda587958ec1d2edd2ec30dc9c4a3b68dac30861978cb1516f8ca53d2cad776a2f250c06492fa30177b56efae530ac400d364460c104dae167299263d9f9f320bc3cf3937eef7df5d17b3f196ecb051f2881e77b8892381057662b1143735bae316dfd51e262fc639eafcc5622f7b59b9bccb4eba7f9623ac087d11874a6d2922cdc5b60e3f70dd49e42be27c72a33ed7ea3f15405405fa4fa0a00d553d8451bd5536c343650a18e8fab4c7152a695d94ad4697508fa01c2d2c9cc7f391fef43e3e706b22c517bead8ca4c540040f515a224b87def36cffe7846dae63f4f25f353e358ca4c66001096c0eb7bc8b264921d46992bd7af44ce3f4e46995c0512fafb3a563d353181c3286362b2f4700942f4fd5bae91cb0064e91f95ffd0c90c95999b99a376ad863005aaabe8b43a9c993d13153cdfcb348938862cfd27b5200c08c20067d7e1d627b778fcf231008549f4e393d07f52934549e007d8a68df2158bf545dc2dd7288c569ea69f1263e93faa9d9d394bf562954138c0d97512c0290d15c8a5df9f4eff61cd322d023fe0c1570f78f1f20590330bd2f45ba6c5c56b17999b992308032842fb4dfbc89b9b9838bbfaf5537dc5427d81cdad4d636c1f8817d9a68dea2a8429b873ef8ea6b7a77432044824cfdf3c9fbaf9dccc1cd573557d7d5f212dad68ee2c00f47b3bdcdcf11c442870f61cecd066fe8b796c6c54a00ea54c10061080da53acde5f4de81f3b0b2ab395e8ed5f6f71ba8edefc9d83382d50efb4223bfe4ea24cb954e6f2c79793f73a4f195994faf7b2ccd03ff63c00684aff13a83dc58dcf6e24375a5e5986109cbe8340a0761584fa710d1870ee837310ea8ad3ca54dfaf6262a27a2a43fff8590094cd32ce9ec3cdf99b44513247300c23f9bfbe58479624ed6e1b610a7add9e6e5ac3c71654036449571cfbd5fbab345f3633f26718a8cc56a28d5f37509ec20eed6433cff31096c84de6faa7d713e5e24a39a5cf0de6a9543c427fbc6f2143bfaf9fb51338c906c212d0070680a77d1445c9df93df9ea01c4573bd993c6b005996d97884fe388942baf75ba185b3ebb0585fd4150fc0eb7b608df881568601743a1d00961e2ed15c6fb2f2cb0acdf566323d554fb17a374b7f9a81422cffd31f9fa27c45d92c27d5f7767a58a1457ba78d155a63e3abb5abd4aed5909664f9db65d6be5f4b14887d9afed1be5348d35f0ecb9aeea1f5833edb3bdb9c0e4eb3bdb33d368ea79cea2a44a8418c2b9f447fac44519404ee966b54ceef1f9da228e2f59faf93c5ed7fdbb95e162584c3d1ed2bee7e73572b3285fe0367c2349d866124c93c6a3c421625dbefb60ff8c60f0d2e7d7869bff2a2be26f336e4d03ff14c182fc687b4326b8d356459e2f5f6a7645c79ba99a53b5f1efd87fe2e48677ee1fc858c324052b9ea2a56be5ba1f6516d9ffe31bdff48df05a331ec9f6663655efdfd8afad775ec929da13eaff71fe9bb60d4a7cff579caa43b601efd696fb82d3793d949bf7ad3ccc496666a74fdd833e149e2cdad4dc36db946da4f5aff3f3e4f81d62c34a6640000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>m_comboTipoIVA</sender>
+        <signal>activated(int)</signal>
+        <receiver>tipoivadlg</receiver>
+        <slot>cambiacombo(int)</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>cambiacombo(int)</slot>
+    <slot>boton_nuevo()</slot>
+    <slot>boton_borrar()</slot>
+    <slot>boton_guardar()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
