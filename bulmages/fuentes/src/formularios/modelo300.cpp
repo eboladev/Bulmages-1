@@ -495,3 +495,11 @@ void Mod300ps::rellena_compensacion()
 }
 
 
+
+/**
+ * \file modelo300.cpp
+ * \brief Modelo 300 (implementación)
+ *
+ * \author David Gutiérrez Rubio
+ */
+

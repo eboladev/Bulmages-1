@@ -48,12 +48,13 @@ psprogressdialog(QString,QString,int);
 void customEvent(QCustomEvent *);
 };
 
-class Modgenps: public QObject
-  {
-    /** Clase base para modelos de declaracin de la agencia tributaria en formato postscript.
+/** Clase base para modelos de declaracion de la agencia tributaria en formato postscript.
       * Utiliza los formularios oficiales obtenidos de www.aeat.es convertidos de pdf a postscript.
       * funciona insertando codigo postscript para escribir los numeros en las casillas.
       * Usa la fuente Courier-Bold a 12 puntos. */
+class Modgenps: public QObject
+  {
+    
 // Q_OBJECT
   public:
     Modgenps()

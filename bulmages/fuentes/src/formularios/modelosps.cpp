@@ -61,6 +61,12 @@ void Modgenps::escrizq(float valor,int x,int y)
 
 
 
+/**\brief Writes text in the postscript file aligned to the left (that is, to the right of the given point)
+ * 
+ * @param cad String to write
+ * @param x x coordinate of the right point
+ * @param y y coordinate of the right point
+ */
 void Modgenps::escrder(QString cad,int x,int y)
 {
   /** Genera codigo postscript para escribir cad alineado a la izquierda, suponiendo fuente Courier-Bold 12
@@ -75,11 +81,25 @@ void Modgenps::escrder(float valor,int x,int y)
 }
 
 
+/**\brief Writes 2 string left and right aligned respectively
+ * 
+ * @param cad1 Left aligned text
+ * @param cad2 Right aligned text
+ * @param x x coordinate of center
+ * @param y y coordinate of center
+ */
 void Modgenps::escrizqder(QString cad1,QString cad2,int x,int y)
 {
   escrizq(cad1,x,y);
   escrder(cad2,x,y);
 }
+/** Writes 2 strings left and right aligned respectively
+ * 
+ * @param cad1 Left aligned text
+ * @param cad2 Right aligned text
+ * @param x x coordinate of center
+ * @param y y coordinate of center
+ */
 void Modgenps::escrizqder(float valor,int x,int y)
 {
   QString cad1,cad2;
@@ -90,6 +110,9 @@ void Modgenps::escrizqder(float valor,int x,int y)
   escrder(cad2,x,y);
 }
 
+
+/** \brief Put a character in a square box.
+*/
 void Modgenps::marca_casilla(QString marca,int x,int y)
 {
   escrder(marca,x-2,y);
@@ -154,6 +177,7 @@ QFile macro(macrofilename);
 //escribir el nombre del fichero y darle a imprimir. 
 //output << "Delay 10\n";
 
+//This sleeps are necessary to wait for Acrobat Reader to be started
 for (int i=1;i<11;i++)
 {
 sleep(1);
@@ -265,5 +289,4 @@ cout << "Hemos acabado!!\n";
 }
  */
  
-
-   
+  
