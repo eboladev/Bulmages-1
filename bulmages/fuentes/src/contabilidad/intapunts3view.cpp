@@ -32,6 +32,7 @@
 #include "ivaview.h"
 #include "aplinteligentesview.h"
 #include "listcuentasview1.h"
+#include "cuentaview.h"
 #include "duplicarasientoview.h"
 
 
@@ -795,6 +796,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
         }// end if
         opcion = popup->exec(poin);
         switch(opcion) {
+
         case 101:
             boton_diario1(0);
             break;
@@ -821,6 +823,21 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
             break;
         case 124:
             boton_balance1(2);
+            break;
+        case 130:
+        		// Se ha elegido la opción de editar cuenta.
+            // Abrimos la ventana de edición de cuentas.
+            QString idcuenta;
+            if (col == COL_SUBCUENTA || col == COL_NOMCUENTA) 
+	            idcuenta = tapunts->text(row,COL_IDCUENTA);
+             else
+             	idcuenta = tapunts->text(row,COL_IDCONTRAPARTIDA);
+            cuentaview *nuevae = new cuentaview(0,"",true);
+            nuevae->inicializa(conexionbase);
+            nuevae->cargacuenta(atoi(idcuenta.latin1()));
+            nuevae->exec();
+            delete nuevae;
+            repinta();
         }// end switch
         delete popup;
     }// end if

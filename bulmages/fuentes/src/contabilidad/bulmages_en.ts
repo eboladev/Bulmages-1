@@ -1,5 +1,16 @@
 <!DOCTYPE TS><TS>
 <context>
+    <name>BModContabilidad</name>
+    <message>
+        <source>Cerrar...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Realmente deseas Salir?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BalancePrintDlg</name>
     <message encoding="UTF-8">
         <source>Impresión del Balance</source>
@@ -68,7 +79,7 @@
     </message>
 </context>
 <context>
-    <name>Bulmages01App</name>
+    <name>Bulmages01</name>
     <message>
         <source>Bulmages </source>
         <translation type="unfinished"></translation>
@@ -213,6 +224,24 @@ Enables/disables the statusbar</source>
         <source>FullScreen
 
 Enables/disables the full screen mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Corrector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Corrector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Muestra/Oculta el corrector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Corrector
+
+Muestra/oculta el corrector</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -672,6 +701,14 @@ Informacion sobre los autores de la aplicacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Amortizaciones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Amortizaciones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Ayuda</source>
         <translation type="unfinished"></translation>
     </message>
@@ -764,6 +801,14 @@ Informacion sobre los autores de la aplicacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Sustituir Cuentas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Sustituir Cuentas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Que es ??</source>
         <translation type="unfinished"></translation>
     </message>
@@ -800,14 +845,6 @@ Informacion sobre los autores de la aplicacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Quit...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do your really want to quit?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Reverting last action...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -840,6 +877,10 @@ Informacion sobre los autores de la aplicacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Ver Corrector...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Plan de Cuentas</source>
         <translation type="unfinished"></translation>
     </message>
@@ -859,44 +900,9 @@ Informacion sobre los autores de la aplicacion</source>
         <source>Gesti&#xf3;n de Usuarios</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Corrector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Corrector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Muestra/Oculta el corrector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Corrector
-
-Muestra/oculta el corrector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Amortizaciones</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Amortizaciones</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sustituir Cuentas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Sustituir Cuentas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ver Corrector...</source>
-        <translation type="unfinished"></translation>
-    </message>
+</context>
+<context>
+    <name>Bulmages01App</name>
 </context>
 <context>
     <name>DiarioPrintDlg</name>
@@ -1144,6 +1150,773 @@ Muestra/oculta el corrector</source>
     </message>
     <message>
         <source>Permutando las tablas de partici&#xf3;n del sistema operativo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BulmaG&#xe9;s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>v 0.3.7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BULMAGES</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UIAlbaVenta</name>
+    <message>
+        <source>Abaran de Venta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Albaranes del Cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contabilizar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Totales </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recargo Finan.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>% Dto. P.P.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Portes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Total Albarán (€)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Base IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>% IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imp. IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pushButton27</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opciones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lineas Albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Descripción</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unidades</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Precio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descuento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar Articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insertar Linea</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Orden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mantenimiento Articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar Linea</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Primero</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Posterior</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Último</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anterior</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>ALBARÁN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cabecera Albaran Venta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar Cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almacen:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mantenimiento Clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Factura:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Agente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Serie Albarán</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forma Pago:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Dirección:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Población:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Provincia:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NIF/CIF:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cod. Postal:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Observaciones Albarán</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UIPediVenta</name>
+    <message>
+        <source>Pedidos de Venta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pedidos del Cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Traspasar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Totales </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recargo Finan.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>% Dto. P.P.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Portes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Base IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>% IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imp. IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pushButton27</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opciones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Total Pedido (€)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cabecera Pedido Venta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Dirección:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Población:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mantenimiento Clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar Cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lineas Pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar Articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insertar Linea</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mantenimiento Articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar Linea</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Primero</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Posterior</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Último</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anterior</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Orden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Descripción</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unidades</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Precio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descuento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uds. Servidas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>10</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UIalmacen</name>
+    <message>
+        <source>Modulo Almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tools</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UIcompras</name>
+    <message>
+        <source>Modulo Compras</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tools</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context encoding="UTF-8">
+    <name>UIconfiguracion</name>
+    <message encoding="UTF-8">
+        <source>Configuración</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UInominas</name>
+    <message>
+        <source>Modulo Nominas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UIproduccion</name>
+    <message>
+        <source>Modulo Produccion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UIselector</name>
+    <message>
+        <source>Bulmages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Empresa:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Salir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seleccionar Empresa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contabilidad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stock Almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nominas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Configuración</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gestion Compras</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Producción</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gestion Ventas</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UIventas</name>
+    <message>
+        <source>Modulo Ventas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Archivos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Ventas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Facturacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Listados</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Herramientas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modulos BulmaGes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A&amp;yuda</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tools</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Articulos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Presupuestos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pedidos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Albaranes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Series de Documentos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Facturacion Automatica</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Factura...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de Pedidos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pendientes de Traspasar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de Albaranes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pendientes de Entregar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de Facturas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de Tarifas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de Ofertas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Garantias</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contratos Mantenimiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acerca de...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ayuda</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calculadora</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Agenda</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contabilidad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Compras</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Configuración</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Producción</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2031,6 +2804,33 @@ Public License instead of this License.
     </message>
 </context>
 <context>
+    <name>balance1view</name>
+    <message>
+        <source>Ver Diario (Este dia)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este mes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este a&#xf1;o)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este dia)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este mes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este a&#xf1;o)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>balancedlg</name>
     <message>
         <source>Balance de Cuentas</source>
@@ -2162,6 +2962,34 @@ Public License instead of this License.
     </message>
     <message>
         <source>Saldo Ejercicio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este dia)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este mes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este a&#xf1;o)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este dia)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este mes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este a&#xf1;o)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editar Cuenta</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3033,6 +3861,94 @@ Public License instead of this License.
     </message>
     <message>
         <source>Asiento de Regularizacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Igual que la anterior (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ninguno</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Seleccionar Canal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Seleccionar Centro de Coste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seleccionar Valor (+)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Introducir Descuadre (+)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Duplicar Apunte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar Apunte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subir (Ctrl Arriba)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bajar (Ctrl Abajo)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este dia)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este mes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este a&#xf1;o)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este dia)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este mes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este a&#xf1;o)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Balance (Este dia)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Balance (Este mes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Balance (Este a&#xf1;o)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editar Cuenta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No existe cuenta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No existe una cuenta con el codigo proporcionado, desea crear una?.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
