@@ -49,6 +49,7 @@ CREATE TABLE lpedido (
 #include <qcombobox.h>
 #include <qwidget.h>
 #include "company.h"
+#include "funcaux.h"
 
 #define COL_NUMLPEDIDO 0
 #define COL_DESCLPEDIDO 1
@@ -274,5 +275,11 @@ void linorderslist::providerChanged(QString idProvider) {
 		m_nomproveedor->setText(cur2->valor("nomproveedor"));
 	}
 }
+
+void linorderslist::orderDateLostFocus() {
+   fprintf(stderr, "orderDate Lost Focus");
+   m_fechapedido->setText(normalizafecha(m_fechapedido->text()).toString("dd/MM/yyyy"));
+}// end neworder
+
 
 

@@ -774,6 +774,12 @@
         <receiver>linorderslistbase</receiver>
         <slot>searchProvider()</slot>
     </connection>
+    <connection>
+        <sender>m_fechapedido</sender>
+        <signal>lostFocus()</signal>
+        <receiver>linorderslistbase</receiver>
+        <slot>orderDateLostFocus()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>activated( int )</slot>
@@ -781,6 +787,7 @@
     <slot>neworderlin()</slot>
     <slot>searchProvider()</slot>
     <slot>accept()</slot>
+    <slot>orderDateLostFocus()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

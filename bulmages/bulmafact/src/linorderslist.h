@@ -56,6 +56,7 @@ public slots:
     virtual void close() {delete this;};
     virtual void neworderlin();
     virtual void searchProvider();
+	 virtual void orderDateLostFocus();
 };
 
 #endif
