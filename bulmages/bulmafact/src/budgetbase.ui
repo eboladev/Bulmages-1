@@ -456,7 +456,7 @@
                                     </property>
                                     <widget class="QToolButton">
                                         <property name="name">
-                                            <cstring>toolButton6</cstring>
+                                            <cstring>m_newBudgetLine</cstring>
                                         </property>
                                         <property name="text">
                                             <string></string>
@@ -467,7 +467,7 @@
                                     </widget>
                                     <widget class="QToolButton">
                                         <property name="name">
-                                            <cstring>toolButton6_2</cstring>
+                                            <cstring>m_removeBudgetLine</cstring>
                                         </property>
                                         <property name="text">
                                             <string></string>
@@ -598,11 +598,32 @@
         <receiver>BudgetBase</receiver>
         <slot>budgetExpiryLostFocus()</slot>
     </connection>
+    <connection>
+        <sender>m_newBudgetLine</sender>
+        <signal>clicked()</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>newBudgetLine()</slot>
+    </connection>
+    <connection>
+        <sender>m_removeBudgetLine</sender>
+        <signal>clicked()</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>removeBudgetLine()</slot>
+    </connection>
+    <connection>
+        <sender>m_list</sender>
+        <signal>valueChanged(int,int)</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>valueBudgetLineChanged(int,int)</slot>
+    </connection>
 </connections>
 <slots>
     <slot>searchClient()</slot>
     <slot>budgetDateLostFocus()</slot>
     <slot>budgetExpiryLostFocus()</slot>
+    <slot>newBudgetLine()</slot>
+    <slot>removeBudgetLine()</slot>
+    <slot>valueBudgetLineChanged(int,  int)</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

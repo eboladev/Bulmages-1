@@ -46,6 +46,9 @@ public slots:
    virtual void searchClient();
 	virtual void budgetDateLostFocus();
 	virtual void budgetExpiryLostFocus();
+	virtual void newBudgetLine();
+	virtual void removeBudgetLine();
+	virtual void valueBudgetLineChanged(int, int);
 
 };
 

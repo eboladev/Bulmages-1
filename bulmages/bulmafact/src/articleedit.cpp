@@ -91,6 +91,9 @@ articleedit::articleedit(company *comp, QWidget *parent, const char *name)
 	m_suministra->setColumnWidth(COL_SUMINISTRA_SOBRECOSTE,100);
 	m_suministra->setColumnWidth(COL_SUMINISTRA_PRINCIPAL,100);
 	m_suministra->setColumnWidth(COL_SUMINISTRA_REFERENT,100);
+	
+	m_suministra->hideColumn(COL_SUMINISTRA_IDPROVEEDOR);
+	m_suministra->setColumnReadOnly(COL_SUMINISTRA_NOMPROVEEDOR,true);
 
 }// end articleedit
 

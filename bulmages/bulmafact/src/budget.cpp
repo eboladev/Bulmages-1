@@ -76,14 +76,14 @@ CREATE TABLE lpresupuesto (
 #include "funcaux.h"
 
 #define COL_IDLPRESUPUESTO 0
-#define COL_DESCLPRESUPUESTO 1
-#define COL_CANTLPRESUPUESTO 2
-#define COL_PVPLPRESUPUESTO 3
-#define COL_DESCUENTOLPRESUPUESTO 4
-#define COL_IDPRESUPUESTO 5
-#define COL_IDARTICULO 6
-#define COL_CODARTICULO 7
-#define COL_NOMARTICULO 8
+#define COL_IDARTICULO 1
+#define COL_CODARTICULO 2
+#define COL_NOMARTICULO 3
+#define COL_DESCLPRESUPUESTO 4
+#define COL_CANTLPRESUPUESTO 5
+#define COL_PVPLPRESUPUESTO 6
+#define COL_DESCUENTOLPRESUPUESTO 7
+#define COL_IDPRESUPUESTO 8
 #define COL_REMOVE 9
 
 Budget::Budget(company *comp, QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) {
@@ -109,7 +109,7 @@ void Budget::inicialize() {
 	m_list->horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripción" ) );
 	m_list->horizontalHeader()->setLabel( COL_CANTLPRESUPUESTO, tr( "Cantidad" ) );
 	m_list->horizontalHeader()->setLabel( COL_PVPLPRESUPUESTO, tr( "Precio" ) );
-	m_list->horizontalHeader()->setLabel( COL_DESCUENTOLPRESUPUESTO, tr( "Fecha Prevista Entrega" ) );
+	m_list->horizontalHeader()->setLabel( COL_DESCUENTOLPRESUPUESTO, tr( "Descuento" ) );
 	m_list->horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "Nº Pedido" ) );
 	m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
 	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
@@ -125,9 +125,9 @@ void Budget::inicialize() {
 	m_list->setColumnWidth(COL_CODARTICULO,100);
 	m_list->setColumnWidth(COL_NOMARTICULO,300);
 
-	//m_list->hideColumn(COL_NUMLPRESUPUESTO);
-	//m_list->hideColumn(COL_IDPRESUPUESTO);
-	//m_list->hideColumn(COL_IDARTICULO);
+	m_list->hideColumn(COL_IDLPRESUPUESTO);
+	m_list->hideColumn(COL_IDPRESUPUESTO);
+	m_list->hideColumn(COL_IDARTICULO);
 	m_list->hideColumn(COL_REMOVE);
 	
    
@@ -220,3 +220,44 @@ void Budget::budgetDateLostFocus() {
 void Budget::budgetExpiryLostFocus() {
 	m_vencpresupuesto->setText(normalizafecha(m_vencpresupuesto->text()).toString("dd/MM/yyyy"));
 }
+
+
+void Budget::newBudgetLine() {
+	m_list->setNumRows( m_list->numRows()+1 );
+	m_list->editCell(m_list->numRows()-1, COL_CODARTICULO);
+	
+}
+
+
+void Budget::removeBudgetLine() {
+	if (m_list->currentRow() >= 0) {
+		int row = m_list->currentRow();
+		m_list->setText(row, COL_REMOVE, "S");
+		m_list->hideRow(row);
+	}
+}
+
+
+void Budget::valueBudgetLineChanged(int row, int col) {
+	if (m_list->text(row, col) == "*" && row>0) {
+		m_list->setText(row, col, m_list->text(row-1, col));
+	}
+	
+	switch (col) {
+		case COL_DESCUENTOLPRESUPUESTO: {
+			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, m_list->text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
+		}
+		case COL_CODARTICULO: {
+			//manageArticle(row);
+			//calculateImports();
+		}
+		case COL_CANTLPRESUPUESTO: {
+			m_list->setText(row, COL_CANTLPRESUPUESTO, m_list->text(row, COL_CANTLPRESUPUESTO).replace(",","."));
+			//calculateImports();
+		}
+		case COL_PVPLPRESUPUESTO: {
+			m_list->setText(row, COL_PVPLPRESUPUESTO, m_list->text(row, COL_PVPLPRESUPUESTO).replace(",","."));
+			//calculateImports();
+		}
+	}
+} //end valueBudgetLineChanged
