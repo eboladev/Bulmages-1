@@ -19,6 +19,7 @@
   * utilizadas de forma regular en el programa. Implementadas en \ref funcaux.cpp </P>
   * <P>Dichas funciones normalmente son de uso general, por lo que es normal ver este archivo incluido
   * en la práctica totalidad de los demás ficheros</P>
+  * \author Tomeu Borrás Riera
   */
 #ifndef FUNCAUX_H
 #define FUNCAUX_H
@@ -30,9 +31,6 @@
 using std::string;
 #include <math.h>
 #include <qstring.h>
-
-
-/** \author Tomeu Borras */
 
 
 /** \brief Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.  */

@@ -16,6 +16,11 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+ /** \file importainteligente.h
+   * Contiene la declaración de la clase importainteligente que sirve para importar ficheros de XML a la base de datos de
+   * BulmaCont
+   * \author Tomeu Borrás Riera
+   */
 #ifndef importainteligente_H
 #define importainteligente_H
 
@@ -27,15 +32,12 @@ class QString;
 class empresa;
 class postgresiface2;
 
-/**
-  * @author Tomeu Borrás Riera
-  * \class importainteligente importainteligente.h
+/** @author Tomeu Borrás Riera
   * \brief Sirve para importar asientos inteligentes (plantillas) dentro de la empresa en uso.
   *
   * Esta clase es un parser XML cuya función es importar a la base de datos abierta una plantilla de
   * asiento inteligente. Para ello utiliza las clases SAX de Qt.
   */
-
 class importainteligente: public QXmlDefaultHandler {
 private:
    /// Indica el tag que el parser está procesando en este preciso momento.
@@ -49,13 +51,13 @@ private:
    /// Empresa que sirve de base a todos estos elementos.
    empresa *empresaactual;		
 public:
-    /// \brief Constructor de la clase que inicializa las variables empresaactual y conexionbase.
+    ///  Constructor de la clase que inicializa las variables empresaactual y conexionbase.
     importainteligente( empresa * );
-    /// \brief Elemento del parser de SAX que se dispara al encontrar un tag de inicio.
+    ///  Elemento del parser de SAX que se dispara al encontrar un tag de inicio.
     bool startElement( const QString&, const QString&, const QString& , const QXmlAttributes& );
-    /// \brief Elemento del parser de SAX que se dispara al encontrar un tag de fin
+    ///  Elemento del parser de SAX que se dispara al encontrar un tag de fin
     bool endElement( const QString&, const QString&, const QString& );
-    /// \brief Elemento del parser de SAX que se dispara al encontrar contenidos.
+    ///  Elemento del parser de SAX que se dispara al encontrar contenidos.
     bool characters (const QString &);
 };
 
