@@ -600,7 +600,7 @@ void ivaview::inicializa1(int idapunte1) {
     idborrador = buscaborradorcliente(idapunte1);
     /// En el caso de que no existiese una cuenta de servicio a la que asociar se
     /// Asocia directamente al apunte seleccionado.
-    if (idborrador <=0)
+    if (idborrador <= 0)
         idborrador = idapunte1;
     ///Busca entradas de IVA en la tabla registroiva
     query.sprintf ( "SELECT * FROM registroiva, cuenta WHERE idborrador=%d AND registroiva.contrapartida=cuenta.idcuenta",idborrador);
@@ -618,7 +618,6 @@ void ivaview::inicializa1(int idapunte1) {
         contrapartida->setText(cursoriva->valor("codigo"));
         chContrapartida();
         empfactura->setText(cursoriva->valor("nombreent_cuenta"));
-//        baseimponible->setText(cursoriva->valor("baseimp"));
         factura->setText(cursoriva->valor("factura"));
         numorden->setText(cursoriva->valor("numorden"));
         cif->setText(cursoriva->valor("cif"));
@@ -634,6 +633,7 @@ void ivaview::inicializa1(int idapunte1) {
             delete currect;
         }// end if
         cargaiva(cursoriva->valor("idregistroiva"));
+        baseimponible->setText(cursoriva->valor("baseimp"));
     } else {
         ///buscamos en todo el asiento las cuentas de IVA y lo reflejamos
         buscaborradoriva(idapunte1);
@@ -710,7 +710,6 @@ void ivaview::cargacobros () {
         m_listPrevision->setText(i, COL_PREV_CANTIDADPREVCOBRO,curprevcobros->valor("cantidadprevcobro"));
         m_listPrevision->setText(i, COL_PREV_DOCPREVCOBRO,curprevcobros->valor("docprevcobro"));
         m_listPrevision->setText(i, COL_PREV_IDREGISTROIVA,curprevcobros->valor("idregistroiva"));
-	
         m_listPrevision->setText(i, COL_PREV_IDASIENTO,curprevcobros->valor("idasiento"));
         m_listPrevision->setText(i, COL_PREV_ORDENASIENTO,curprevcobros->valor("ordenasiento"));
 	if (curprevcobros->valor("idasiento") != "") {
