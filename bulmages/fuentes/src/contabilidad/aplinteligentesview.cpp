@@ -48,6 +48,7 @@ void aplinteligentesview::inicializa(postgresiface2 *con, int idasiento, intapun
     conexionbase = con;
     inicializavariables();
     QString query;
+    //Cargamos el combobox con la lista de asientos inteligentes.
     query.sprintf("SELECT * FROM ainteligente");
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(query,"unsuperquery");
@@ -69,7 +70,8 @@ void aplinteligentesview::inicializa(postgresiface2 *con, int idasiento, intapun
     cambiada_plantilla(0);
 }// end inicializa
 
-
+// Las variables predefinidas se declaran aqui.
+// De momento tenemos dos fariables fechaactual y fechaasiento
 void aplinteligentesview::inicializavariables() {
     QString subcadena;
     QString buffer;
@@ -80,7 +82,6 @@ void aplinteligentesview::inicializavariables() {
     variablespredefinidas[indvariablespredefinidas][0]="$fechaactual$";
     variablespredefinidas[indvariablespredefinidas++][1]=subcadena;
     buffer.sprintf("SELECT * FROM asiento WHERE idasiento=%d",numasiento);
-    fprintf(stderr,"%s\n",buffer.ascii());
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(buffer,"cargaasiento");
     conexionbase->commit();
@@ -125,19 +126,19 @@ void aplinteligentesview::inicializavariablesapunte(int idborrador) {
 // NOTA: Notese que el sistema normalmente carga el NIF de la contrapartida del asiento inteligente
 // Y que este campo normalmente va en la parte de CIFCUENTA
 void aplinteligentesview::cifcuenta(int idcuenta) {
-    variablesapunte[0][0] ="$cifcuenta$";
+    variablesapunte[indvariablesapunte][0] ="$cifcuenta$";
     QString query;
     query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%d", idcuenta);
     conexionbase->begin();
     cursor2 * cur = conexionbase->cargacursor(query,"cursor");
     conexionbase->commit();
     if (!cur->eof()) {
-        variablesapunte[0][1] = cur->valor("cifent_cuenta");
+        variablesapunte[indvariablesapunte][1] = cur->valor("cifent_cuenta");
     } else {
-        variablesapunte[0][1] = "";
+        variablesapunte[indvariablesapunte][1] = "";
     }// end if
     delete cur;
-    indvariablesapunte=1;
+    indvariablesapunte++;
 }// end cifcuenta
 
 void aplinteligentesview::return_cta() {
@@ -208,7 +209,6 @@ void aplinteligentesview::boton_buscacuenta() {
 // El valor que se pasa es un valor numérico del combo-box
 // Seguro que la función que interesa es muestraplantilla.
 void aplinteligentesview::cambiada_plantilla(int num) {
-    fprintf(stderr,"idasientointeligente %d\n",listasientos[num]);
     idainteligente = listasientos[num];
     mostrarplantilla();
 }// end cambiada_plantilla
@@ -224,6 +224,8 @@ void aplinteligentesview::muestraplantilla(int numplantilla) {
    mostrarplantilla();
 }// end muestraplantilla
 
+
+// La pulsación sobre el boton de creación del asiento.
 void aplinteligentesview::boton_crear() {
     // Se está insertando sobre un asiento abierto, con lo que debemos
     // Cerrar la ventana, ya que es un introduccion de asiento normal
@@ -232,7 +234,6 @@ void aplinteligentesview::boton_crear() {
         creaasiento();
         intapunts->repinta(numasiento);
         selectfirst();
-        //	  done(1);
     } else {
         // Se está insertando de forma sistemática asientos inteligentes
         // Asi que debemos facilitar las cosas al máximo.
@@ -407,19 +408,15 @@ void aplinteligentesview::recogevalores() {
     int i=0;
     for (i=0;i<indvariablestexto;i++) {
         variablestexto[i][1]=vartexto[i]->text();
-        fprintf(stderr,"%s=%s\n",variablestexto[i][0].ascii(),variablestexto[i][1].ascii());
     }// end for
     for (i=0;i<indvariablesnumero;i++) {
         variablesnumero[i][1]=varnumero[i]->text();
-        fprintf(stderr,"%s=%s\n",variablesnumero[i][0].ascii(),variablesnumero[i][1].ascii());
     }// end for
     for (i=0;i<indvariablesfecha;i++) {
         variablesfecha[i][1]=varfecha[i]->text();
-        fprintf(stderr,"%s=%s\n",variablesfecha[i][0].ascii(),variablesfecha[i][1].ascii());
     }// end for
     for (i=0;i<indvariablescta;i++) {
         variablescta[i][1]=varcta[i]->text();
-        fprintf(stderr,"%s=%s\n",variablescta[i][0].ascii(),variablescta[i][1].ascii());
     }// end for
 }// end recogevalores
 
@@ -443,12 +440,14 @@ void aplinteligentesview::creaasiento() {
     cursor2 *cur;
     cursor2 *cur1;
 
-    // El primer paso para crear el asiento inteligente es crear una instancia en la tabla de asiento.
+    /*
     query.sprintf("SELECT * FROM ainteligente WHERE idainteligente=%d",numainteligente);
     conexionbase->begin();
     cur = conexionbase->cargacursor(query,"asientoi");
     conexionbase->commit();
     delete cur;
+    */
+    
     query.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d",numainteligente);
     conexionbase->begin();
     cur= conexionbase->cargacursor(query,"superquery");

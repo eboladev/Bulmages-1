@@ -13,9 +13,6 @@ $SQLQuery1 = "SET DateStyle TO 'European'";
 $result1 = pg_exec($metabd,$SQLQuery1);  
 
 
-
-
-
 $autentificado = 0;
 if ($logincookie != "") {
 	$SQLQuery = "SELECT * FROM usuario WHERE login='$logincookie'";

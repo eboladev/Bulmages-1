@@ -556,6 +556,7 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
     return(ejecuta(query));
 }// end nuevacuenta
 
+
 int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento, int clase) {
     // clase => 0=Apertura, 1=Normal, 98=Regularización 99=Cierre
     QString query="";

@@ -17,7 +17,7 @@
 	$result = pg_exec($empresabd,$SQLQuery);
 	$filas = pg_NumRows($result);
 	while ($filas--) {
-		echo "<OPTION VALUE=\"".pg_result($result,$filas,"idainteligente")."\">".pg_result($result,$filas,"descripcion")."</OPTION>";	
+		echo "<OPTION VALUE=\"".pg_result($result,$filas,"idainteligente")."\">".pg_result($result,$filas,"descripcion")." </OPTION>";	
 	}// end while
 ?>
 </SELECT>
