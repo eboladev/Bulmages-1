@@ -1697,7 +1697,7 @@ void intapunts3view::asiento_cierre() {
     }// end if
 }// end asiento_cierre
 
-/// La creaci� de un asiento de apertura debe basarse en un asiento de cierre.
+/// La creación de un asiento de apertura debe basarse en un asiento de cierre.
 void intapunts3view::asiento_apertura() {
     /// Preparamos los datos.
     QString concepto="Asiento de Apertura";
@@ -1708,7 +1708,7 @@ void intapunts3view::asiento_apertura() {
     
     if (abierto) {
 	/// Buscamos el asiento anterior a este.
-	QString SQLQuery = "SELECT * FROM asiento WHERE fecha <= '"+fecha+"' AND idasiento <> "+QString::number(idasiento)+" ORDER BY fecha DESC, ordenasiento DESC";
+	QString SQLQuery = "SELECT * FROM asiento WHERE fecha < '"+fecha+"' AND idasiento < "+QString::number(idasiento)+" ORDER BY ordenasiento DESC";
 	conexionbase->begin();
 	cursor2 *cur=conexionbase->cargacursor(SQLQuery, "elquery");
 	conexionbase->commit();
@@ -1726,7 +1726,6 @@ void intapunts3view::asiento_apertura() {
 	    QString idcuenta = cur->valor("idcuenta");
 	    QString totaldebe = cur->valor("debe");
 	    QString totalhaber = cur->valor("haber");
-	    
 	    SQLQuery1.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%f,%f,%d)",orden.toInt(),concepto.ascii(),fecha.ascii(),idcuenta.toInt(),totalhaber.toFloat(),totaldebe.toFloat(),idasiento);
 	    conexionbase->begin();
 	    conexionbase->ejecuta(SQLQuery1);
