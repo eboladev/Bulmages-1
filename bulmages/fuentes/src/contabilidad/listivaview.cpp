@@ -17,6 +17,7 @@
 #include "listivaview.h"
 #include "regivaprintview.h"
 #include "ivaview.h"
+#include "modelosps.h"
 
 //Tabla Soportado
 #define  S_COL_FECHA 0
@@ -48,6 +49,7 @@
 #define  R_COL_IDASIENTO 10
 #define  R_COL_IDBORRADOR 11
 
+Mod300ps *modelo=new Mod300ps;
 
 listivaview::listivaview(QString ejerActual, QWidget *parent, const char *name ) : listivadlg(parent,name) {
   //QDate fecha = QDate::currentDate();
@@ -322,6 +324,28 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     tbaser16->setText(cadena);
     cadena.sprintf("%2.2f",baser0+baser4+baser7+baser16);
     tbaser->setText(cadena);      
+    
+        
+    modelo->ivas4=ivas4;
+    modelo->ivas7=ivas7;
+    modelo->ivas16=ivas16;
+    
+     modelo->ivar4=ivar4;
+    modelo->ivar7=ivar7;
+    modelo->ivar16=ivar16;
+    
+     modelo->bases0=bases0;
+    modelo->bases4=bases4;
+    modelo->bases7=bases7;
+    modelo->bases16=bases16;
+    
+     modelo->baser0=baser0;
+    modelo->baser4=baser4;
+    modelo->baser7=baser7;
+    modelo->baser16=baser16;
+    
+    
+    
 }// end inicializa
 
 void listivaview::menu_contextual(int row, int col, const QPoint &poin) {
