@@ -9,30 +9,19 @@
             <x>0</x>
             <y>0</y>
             <width>501</width>
-            <height>231</height>
+            <height>238</height>
         </rect>
     </property>
     <property name="caption">
         <string>Edicion de Asientos</string>
     </property>
     <property name="icon">
-        <pixmap>image0</pixmap>
+        <pixmap></pixmap>
     </property>
     <grid>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
-        <property name="margin">
-            <number>11</number>
-        </property>
-        <property name="spacing">
-            <number>6</number>
-        </property>
-        <widget class="QTextEdit" row="2" column="0">
-            <property name="name">
-                <cstring>notasasiento</cstring>
-            </property>
-        </widget>
         <widget class="QLayoutWidget" row="1" column="0">
             <property name="name">
                 <cstring>Layout3</cstring>
@@ -58,67 +47,6 @@
                 <widget class="QLineEdit">
                     <property name="name">
                         <cstring>descasiento</cstring>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
-        <widget class="QLayoutWidget" row="3" column="0">
-            <property name="name">
-                <cstring>Layout4</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
-                </property>
-                <spacer>
-                    <property name="name">
-                        <cstring>Spacer2</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>180</width>
-                            <height>0</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>PushButton1</cstring>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>NoFocus</enum>
-                    </property>
-                    <property name="text">
-                        <string>Aceptar</string>
-                    </property>
-                    <property name="autoDefault">
-                        <bool>false</bool>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>PushButton2</cstring>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>NoFocus</enum>
-                    </property>
-                    <property name="text">
-                        <string>Cancelar</string>
-                    </property>
-                    <property name="autoDefault">
-                        <bool>false</bool>
                     </property>
                 </widget>
             </hbox>
@@ -473,13 +401,93 @@
                 </spacer>
             </hbox>
         </widget>
+        <widget class="QLayoutWidget" row="3" column="0">
+            <property name="name">
+                <cstring>layout8</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QComboBox">
+                    <item>
+                        <property name="text">
+                            <string>Apertura</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Normal</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Regularización</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Cierre</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>claseAsiento</cstring>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>150</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>PushButton1</cstring>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string>Aceptar</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>PushButton2</cstring>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string>Cancelar</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QTextEdit" row="2" column="0">
+            <property name="name">
+                <cstring>notasasiento</cstring>
+            </property>
+        </widget>
     </grid>
 </widget>
-<images>
-    <image name="image0">
-        <data format="XPM.GZ" length="1271">789cd3d7528808f055d0d2e72a2e492cc94c5648ce482c52d04a29cdcdad8c8eb5ade6523236520022530543251d2e253d856405bffcbc54105b19c856360003103709c4b53086711341dc6453183719c44d4b8371f508808152a38c06b0a8514e4403ca186a3094c0150d901a2c00550d4824090dc05441d5282703019a2288185c0d988ba60826468e1a1480a606ea1e14ef2ba3b907e2af645435c968fec21e3cd00042a8410f1db0bb69a48608f7e821d2a61e9a00696a708361aba6d69a0b008e791452</data>
-    </image>
-</images>
 <connections>
     <connection>
         <sender>PushButton2</sender>
@@ -542,5 +550,6 @@
     <slot>acceptar()</slot>
     <slot>return_fecha()</slot>
 </slots>
+<pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

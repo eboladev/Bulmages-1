@@ -22,6 +22,7 @@
 #include <qinputdialog.h>
 #include <qdatetime.h>
 #include <qdatetimeedit.h>
+#include <qcombobox.h>
 #include <qtextedit.h>
 #include "postgresiface2.h"
 
@@ -32,6 +33,7 @@ class asientoview : public asientodlg  {
 public:
    postgresiface2 *conexionbase;
    int idasiento_mostrado;
+   int ordenasiento_mostrado;
 public: 
    asientoview(QWidget *parent=0, const char *name=0, bool modal=true);
    ~asientoview();

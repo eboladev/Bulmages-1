@@ -19,6 +19,7 @@
 #include "funcaux.h"
 
 asientoview::asientoview(QWidget *parent, const char *name, bool modal) : asientodlg(parent,name,modal) {
+ordenasiento_mostrado=0;
 }
 
 asientoview::~asientoview(){
@@ -34,6 +35,7 @@ void asientoview::inicializa(postgresiface2 *conn) {
 // descripcion del asiento.
 // **********************************************************************
 void asientoview::cargaasiento(int idasiento1) {
+   int indiceClaseAsiento=1;
    cursor2 *cursoraux;   
    conexionbase->begin();
    idasiento_mostrado = idasiento1;
@@ -43,7 +45,15 @@ void asientoview::cargaasiento(int idasiento1) {
       descasiento->setText(cursoraux->valor("descripcion"));
       fechaasiento1->setText(cursoraux->valor("fecha").mid(0,10));
       idasiento->setText(cursoraux->valor("ordenasiento"));
+      ordenasiento_mostrado =idasiento->text().toInt();
       notasasiento->setText(cursoraux->valor("comentariosasiento"));
+      switch (cursoraux->valor("clase").toInt()) {
+          case 0:  indiceClaseAsiento=0; break;
+          case 1:  indiceClaseAsiento=1; break;
+          case 98: indiceClaseAsiento=2; break;
+          case 99: indiceClaseAsiento=3; break;
+      }
+      claseAsiento->setCurrentItem(indiceClaseAsiento);
    }// end if
    delete cursoraux;
 }// end cargaasiento
@@ -87,15 +97,24 @@ int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, Q
   QString query;
   int val;
   // Si ya existe un asiento con el orden que intentamos asignar debemos desplazar los asientos posteriores.
-  query.sprintf("SELECT * FROM asiento WHERE ordenasiento=%s",orden.ascii());
+  //Solamente desplazamos si ordenasiento ha cambiado, en caso contrario No
+  query.sprintf("SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND ordenasiento=%s",confpr->valor(EJERCICIO_ACTUAL).c_str(),orden.ascii());
   conexionbase->begin();
   cursor2 *cur = conexionbase->cargacursor(query,"micursor");
   conexionbase->commit();
-  if (!cur->eof()) {
+  if (!cur->eof() && (orden.toInt() != ordenasiento_mostrado) ) {
      query.sprintf("UPDATE asiento set ordenasiento = ordenasiento+1 WHERE ordenasiento >= %s", orden.ascii());
      conexionbase->ejecuta(query);
   }// end if
   
+  /*
+  //Queda pendiente salvar la clase del asiento.
+  //Ojo, Controlar que no se dupliquen los asientos de apertura, regularización y cierre
+  query.sprintf("SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='0'",confpr->valor(EJERCICIO_ACTUAL).c_str());
+  if (!cur->eof() ) { 
+      QMessageBox:: ... Ya existe un asiento de apertura ...
+  }
+  */
   query.sprintf("UPDATE asiento SET descripcion='%s', fecha='%s', comentariosasiento='%s', ordenasiento=%s WHERE idasiento=%d",texto.ascii(),fecha.ascii(),notas.ascii(),orden.ascii(), numasiento);
   conexionbase->begin();
   val = conexionbase->ejecuta(query);
