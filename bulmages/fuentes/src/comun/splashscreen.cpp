@@ -33,7 +33,7 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   l0->setPaletteForegroundColor(QColor("#880000"));
   l0->setAlignment( AlignVCenter );
   l0->setFont( QFont( "Arial", 10, QFont::Bold ) );
-  l0->setText( tr("v 0.3.7") );
+  l0->setText( tr("v 0.3.9") );
   l0->setGeometry(100,40,150,15);
   l0->setBackgroundOrigin(QWidget::ParentOrigin);
   l0->setBackgroundPixmap(image0);
@@ -107,7 +107,7 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
 */
   QTimer *timer = new QTimer(this);
   connect( timer, SIGNAL(timeout()), SLOT(close()) );
-  timer->start( 10000 ); //timer->start( 10000);
+  timer->start( 1000 ); //timer->start( 10000);
 
   QTimer *timer1 = new QTimer(this);
   connect( timer1, SIGNAL(timeout()), SLOT(paint()) );

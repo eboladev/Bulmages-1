@@ -385,16 +385,6 @@ void intapunts3view::repinta(int numasiento) {
     QString cadena, ordenAsiento, query, fechaasiento2;
     int num, i;
 
-    /*
-    if (!cursorasientos->eof() && !cursorasientos->bof()) {
-        idasiento = atoi(IDASIENTO);
-    } else {
-        return;
-    }// end if
-    */
-    //   float debe,haber;
-    //   float totaldebe=0, totalhaber=0;
-    //vaciarapuntes();
     conexionbase->begin();
     query.sprintf("SELECT * FROM asiento where idasiento=%d",numasiento);
     cursoraux = conexionbase->cargacursor(query,"uncursor");
@@ -418,18 +408,12 @@ void intapunts3view::repinta(int numasiento) {
     i=0;
     while (!cursorasiento->eof()) {
         cadena.sprintf("%10.10s",cursorasiento->valor("borrfecha").ascii());
-        // AQUI HAY UN BUEN EJEMPLO
-        //         tapunts->setItem(i,COL_FECHA, new QTableItem1(tapunts, QTableItem::OnTyping,cadena,0));
         tapunts->setText(i,COL_FECHA,cadena);
         tapunts->setText(i,COL_NOMCUENTA,cursorasiento->valor("desccuenta"));
         tapunts->setText(i,COL_IDCUENTA,cursorasiento->valor("idcuenta"));
         tapunts->setText(i,COL_SUBCUENTA,cursorasiento->valor("codigo"));
-        //         debe = atof(cursorasiento->valor("debe").c_str());
-        //         totaldebe += debe;
         cadena.sprintf("%2.2f",atof(cursorasiento->valor("debe").ascii()));
         tapunts->setText(i,COL_DEBE,cadena);
-        //         haber = atof(cursorasiento->valor("haber").c_str());
-        //         totalhaber += haber;
         cadena.sprintf("%2.2f",atof(cursorasiento->valor("haber").ascii()));
         tapunts->setText(i,COL_HABER,cadena);
         tapunts->setText(i,COL_CONCEPTO,cursorasiento->valor("conceptocontable"));
@@ -545,7 +529,6 @@ void intapunts3view::asientocerradop() {
 }// end asientocerradop
 
 
-
 /*********************************************************************
  * Esta función se activa cuando se pulsa sobre el boton abrir asiento del
  * formulario
@@ -584,12 +567,12 @@ void intapunts3view::boton_cerrarasiento() {
                 fprintf(stderr,"%s\n",codcuenta.ascii());
                 int idborrador = atoi(tapunts->text(i,COL_IDBORRADOR).ascii());
                 if (idborrador != 0) {
-                    ivaview *nuevae=new ivaview(0,"");
-                    if (codcuenta == "477") nuevae->inicializa(conexionbase,2); //IVA Repercutido (Ventas)
-                    else nuevae->inicializa(conexionbase,1); //IVA Soportado (Compras)
-                    nuevae->inicializa1(idborrador);
-                    nuevae->exec();
-                    delete nuevae;
+                    ivaview *regivaview=new ivaview(0,"");
+                    if (codcuenta == "477") regivaview->inicializa(conexionbase,2); //IVA Repercutido (Ventas)
+                    else regivaview->inicializa(conexionbase,1); //IVA Soportado (Compras)
+                    regivaview->inicializa1(idborrador);
+                    regivaview->exec();
+                    delete regivaview;
                 }// end if
             }// end if
         }// end if
@@ -1114,15 +1097,23 @@ void intapunts3view::boton_iva() {
     int i;
     int sinIVA=0;
     guardaborrador(rowactual);
-    if (tapunts->currentRow() > 0)
-        if (tapunts->text(rowactual,COL_SUBCUENTA).left(3) == "")
-            sinIVA = QMessageBox::information(this, tr("Registro de IVA"),
-                         tr("Desea Gestionar una entrada EXENTA de IVA en el registro?"),
-                         QMessageBox::Yes,QMessageBox::No);
-
+    // Si ya hay una entrada de borrador, no vamos a preguntar nada.
+    // Directamente vamos a editar dicho registro.
+    int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
+    if (tapunts->text(rowactual,COL_IVA) != "") {
+       ivaview *nuevae=new ivaview(0,"");
+       nuevae->inicializa(conexionbase,0);
+       nuevae->inicializa1(idborrador);
+       nuevae->exec();
+       delete nuevae;
+       return;
+    }// end if
+    
+      
     // Miramos que haya un row seleccionado.
     tapunts->currentRow() >=0 ? i=rowactual : i=0;
 
+    // Buscamos una cuenta de IVA a partir de la posicion actual o a partir del principio si no hay otra candidata.
     while (codcuenta != "472" && codcuenta != "477" && codcuenta != "") 
         codcuenta = tapunts->text(i++,COL_SUBCUENTA).left(3);
     if (codcuenta == "" && rowactual > 0) {
@@ -1131,37 +1122,42 @@ void intapunts3view::boton_iva() {
         while (codcuenta != "472" && codcuenta != "477" && codcuenta != "")
             codcuenta = tapunts->text(i++,COL_SUBCUENTA).left(3);
     }
-    if (codcuenta != "" && sinIVA!=QMessageBox::Yes) {
+    if (codcuenta != "") {
         tapunts->setCurrentCell(rowactual=i-1,COL_SUBCUENTA);
-        int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
         codcuenta = tapunts->text(rowactual,COL_SUBCUENTA);
         codcuenta = codcuenta.left(3);
         int es_iva = (codcuenta == "472") + ((codcuenta == "477") * 2);
+        int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
         if (idborrador != 0) {
-             ivaview *nuevae=new ivaview(0,"");
-             nuevae->inicializa(conexionbase,es_iva);
-             nuevae->inicializa1(idborrador);
-             nuevae->exec();
-             delete nuevae;
+              ivaview *nuevae=new ivaview(0,"");
+              nuevae->inicializa(conexionbase,es_iva);
+              nuevae->inicializa1(idborrador);
+              nuevae->exec();
+              delete nuevae;
         }// end if
         repinta(atoi(IDASIENTO));
-    }
-    else {
-        if (sinIVA==0) sinIVA = QMessageBox::information(this, tr("Registro de IVA"),
+    } else {
+           // Como no hay candidatos en cuentas de IVA, preguntamos si va a ser  una entrada
+           // Exenta de IVA.
+           sinIVA = QMessageBox::information(this, tr("Registro de IVA"),
                                           tr("Desea Gestionar una entrada EXENTA de IVA en el registro?"),
                                               QMessageBox::Yes,QMessageBox::No);
         if (sinIVA==QMessageBox::Yes) {
             //Creamos una entrada exenta de iva en el registro de IVA.
             i=0;
             codcuenta="xxx";
-            while (codcuenta != "600" && codcuenta != "700" && codcuenta != "") 
-                codcuenta = tapunts->text(i++,COL_SUBCUENTA).left(3);
+            // Si no hay involucrada una cuenta de grupos 6 o 7 no es compra / venta y por tanto
+            // Esta descartada la posibilidad de que pueda haber un registro de IVA, sea de la clase que sea.
+            // Asi que buscamos cuentas del grupo 6 o 7, si las encontramos hacemos la entrada de IVA si no las encontramos damos un mensaje de error.
+            while (codcuenta != "6" && codcuenta != "7" && codcuenta != "") 
+                codcuenta = tapunts->text(i++,COL_SUBCUENTA).left(1);
             if (codcuenta != "") {
                 --i;
                 int idborrador = tapunts->text(i,COL_IDBORRADOR).toInt(); 
                 codcuenta = tapunts->text(i,COL_SUBCUENTA);
-                codcuenta = codcuenta.left(3);
-                int es_iva = (codcuenta == "600") + ((codcuenta == "700") * 2);
+                codcuenta = codcuenta.left(1);
+                // Una forma "compleja" de indicar si es una compra o una venta.
+                int es_iva = (codcuenta == "6") + ((codcuenta == "7") * 2);
                 if (idborrador != 0) {
                      ivaview *nuevae=new ivaview(0,"");
                      nuevae->inicializa(conexionbase,es_iva);
@@ -1174,7 +1170,7 @@ void intapunts3view::boton_iva() {
                 QMessageBox::information(this, tr("Registro de IVA"),
                                           tr("Este Asiento no es de Compra ni Venta"),
                                               QMessageBox::Ok);
-        }
+        }// end if
     }// end if
 }// end boton_iva
 

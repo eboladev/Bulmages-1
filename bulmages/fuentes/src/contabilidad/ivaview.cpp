@@ -56,13 +56,9 @@ void ivaview::accept() {
     if (idregistroiva !=0) {
           // Se trata de una inserción, ya que no hay registros de iva introducidos.
          query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%2.2f, iva=%2.0f, contrapartida=%d, factura='%s', numorden='%s', cif='%s' WHERE idregistroiva=%d", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), idregistroiva);
-         //Si tinguessim un camp anomenat 'ctaiva' fariem:
-         //query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%2.2f, iva=%2.0f, contrapartida=%d, factura='%s', numorden='%s', cif='%s', ctaiva='%s' WHERE idregistroiva=%d", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(),cuentaiva->text().ascii() ,idregistroiva );
     } else {
           // Se trata de una modificacion, ya que hay registros de iva introducidos.
          query.sprintf("INSERT INTO registroiva (idborrador, baseimp, iva, contrapartida, factura, numorden, cif) VALUES (%d,%2.2f, %2.0f, %d, '%s', '%s', '%s')", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii());
-         //Si tinguessim un camp anomenat 'ctaiva' fariem:
-         //query.sprintf("INSERT INTO registroiva (idborrador, baseimp, iva, contrapartida, factura, numorden, cif, ctaiva) VALUES (%d,%2.2f, %2.0f, %d, '%s', '%s', '%s','%s')", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), cuentaiva->text().ascii());
     }// end if
     fprintf(stderr,"%s\n",query.ascii());
     conexionbase->begin();
@@ -99,6 +95,7 @@ void ivaview::boton_buscacuenta() {
    contrapartida->setText(listcuentas->codcuenta);
    delete listcuentas;
 }// end boton_buscacuenta
+
 
 void ivaview::cambiadacontrapartida() {
    fprintf(stderr,"cambiada la contrapartida\n");
@@ -150,7 +147,8 @@ void ivaview::inicializa1(int idapunte1) {
     
     delete cursorapunte;
   } else {
-      // Aun no se ha metido ningun registro de este estilo
+      // Aun no se ha metido ningun registro de este estilo, debe inicializarse.
+      // Hay una problematica al meterse asientos con multiples entradas de IVA, la cosa es durilla.
       query.sprintf ("SELECT * from borrador, asiento, cuenta WHERE borrador.idborrador=%d AND borrador.idasiento=asiento.idasiento AND borrador.idcuenta=cuenta.idcuenta",idborrador); //Josep Burción
       fprintf(stderr,"%s\n",query.ascii());
       conexionbase->begin();
@@ -163,15 +161,10 @@ void ivaview::inicializa1(int idapunte1) {
         fprintf(stderr,"Cuenta usuario %s\n", cursorapunte->valor("conceptocontable").ascii());
         debe = atof(cursorapunte->valor("debe").ascii());
         haber = atof(cursorapunte->valor("haber").ascii());
-        // Vamos a intentar calcular la contrapartida sin usar el campo contrapartida ya
-        // que dicho campo podría desaparecer.
-        if (debe < haber) { //Venta
-          //setSoportadoRepercutido(IVA_REPERCUTIDO);
-          query.sprintf("SELECT * FROM borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.haber=0 ORDER BY borrador.debe DESC",atoi(cursorapunte->valor("idasiento").ascii()));
-        } else { //Compra
-          //setSoportadoRepercutido(IVA_SOPORTADO);
-          query.sprintf("SELECT * FROM borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.debe=0 ORDER BY borrador.haber DESC",atoi(cursorapunte->valor("idasiento").ascii()));
-        }// end if
+        
+        // La funcion bcontrapartidaborr (definida en la base de datos) busca contrapartidas de forma más compleja a como
+        // se propuso en un principio. Ahora en un mismo apunte con multiples entradas se encuentra la contrapartida mediante proximidades en el mismo cuadre.
+        query.sprintf("SELECT * FROM borrador,cuenta WHERE borrador.idcuenta = cuenta.idcuenta AND borrador.idborrador = bcontrapartidaborr(%d)",idborrador);
         fprintf(stderr,"%s\n",query.ascii());
         conexionbase->begin();
         cursor2 *cursorcontrapartida = conexionbase->cargacursor(query,"contrapartida");

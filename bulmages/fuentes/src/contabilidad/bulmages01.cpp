@@ -358,22 +358,24 @@ void Bulmages01::initActions() {
   librobalancetree->setWhatsThis(tr("Ver balance jerarquico"));
   connect(librobalancetree, SIGNAL(activated()), this, SLOT(slotBalanceTree()));
 
-    
+/*    
   perdygan = new QAction(tr("Perdidas y ganancias av"), tr("&Perdidas y ganancias av"), 0, this);
   perdygan->setStatusTip(tr("Ver cuenta de perdidas y ganancias"));
   perdygan->setWhatsThis(tr("Ver cuenta de perdidas y ganancias"));
   connect(perdygan, SIGNAL(activated()), this, SLOT(slotPerdidas()));
+*/
   
   Modelo347 = new QAction(tr("Modelo 347 no oficial"), tr("&Modelo 347"), 0, this);
   Modelo347->setStatusTip(tr("Modelo 347 no oficial"));
   Modelo347->setWhatsThis(tr("Lista en pantalla los saldos acumulados superirores a ..."));
   connect(Modelo347, SIGNAL(activated()), this, SLOT(slot347()));
 
+/*  
   balan = new QAction(tr("Balance abreviado"), tr("&Balance Abreviado"), 0, this);
   balan->setStatusTip(tr("Ver Balance de situacion abreviado"));
   balan->setWhatsThis(tr("Ver Balance de situacion abreviado"));
   connect(balan, SIGNAL(activated()), this, SLOT(slotBalan()));
-
+*/
   regiva = new QAction(tr("Registro de IVA"), tr("&Registro de IVA"), 0, this);
   regiva->setStatusTip(tr("Ver Libro Registro de IVA"));
   regiva->setWhatsThis(tr("Ver Libro Registro de IVA"));
@@ -556,9 +558,9 @@ void Bulmages01::initMenuBar() {
   
   // El menu Listados
   pListMenu = new QPopupMenu();  
-  perdygan->addTo(pListMenu);
-  balan->addTo(pListMenu);
-  pListMenu->insertSeparator();
+//  perdygan->addTo(pListMenu);
+//  balan->addTo(pListMenu);
+//  pListMenu->insertSeparator();
   regiva->addTo(pListMenu);
   CompBalance->addTo(pListMenu);
   MPatrimoniales->addTo(pListMenu);
