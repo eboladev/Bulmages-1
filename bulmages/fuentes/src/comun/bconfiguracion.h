@@ -29,7 +29,10 @@
 #include <qspinbox.h>
 #include <qfontdatabase.h>
 #include <qfiledialog.h>
+
+#ifndef WIN32
 #include <sys/wait.h>
+#endif
 
 /**
 @author Josep Burcion

@@ -16,13 +16,18 @@
 
 #include <qmessagebox.h>
 
+#ifdef WIN32
+#include <process.h>
+#endif
+
+#ifndef WIN32
 #include <map>
 #include <set>
 
 typedef std::map<QString,QString> campos_usuario;
 std::map<QString,campos_usuario> coleccion_usuarios;
 std::set<QString> usuarios_borrados;
-
+#endif
 
 BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * name, WFlags f)
  : UIconfiguracion(parent,name,f)
@@ -35,8 +40,10 @@ cargarFichaUsuarios();
 
 BConfiguracion::~BConfiguracion()
 {
+#ifndef WIN32
 coleccion_usuarios.clear();
 usuarios_borrados.clear();
+#endif
 }
 
 void BConfiguracion::cerrar()
@@ -317,6 +324,8 @@ void BConfiguracion::BotonA_3salvarEmpresa() {
          args[2]=(char *) dbEmpresa.ascii();
          args[3]=(char *) fn.ascii();
          args[4]=NULL;
+
+#ifndef WIN32
          if ((pid=fork()) == -1) {
            perror ("Fork failed");
            exit(errno);
@@ -326,6 +335,7 @@ void BConfiguracion::BotonA_3salvarEmpresa() {
             exit(execvp(argumentos.c_str(),args));
          }// end if
          if (pid) waitpid (pid, NULL, 0);
+#endif
      }
   }
 }
@@ -351,6 +361,8 @@ void BConfiguracion::BotonA_4restaurarEmpresa(){
          args[2]=(char *) dbEmpresa.ascii();
          args[3]=(char *) fn.ascii();
          args[4]=NULL;
+
+#ifndef WIN32
          if ((pid=fork())== -1) {
            perror ("Fork failed");
            exit(errno);
@@ -364,6 +376,7 @@ void BConfiguracion::BotonA_4restaurarEmpresa(){
             exit(error);
          }// end if
          if (pid) waitpid (pid, NULL, 0);
+#endif
       }// end if
     }
   }
@@ -373,7 +386,10 @@ void BConfiguracion::BotonA_4restaurarEmpresa(){
 /**********************************************************************************************/
 
 void BConfiguracion::cargarFichaUsuarios() {
-//Carga los Usuarios de la Base de Datos   
+
+#ifndef WIN32
+
+//Carga los Usuarios de la Base de Datos
    campos_usuario datos_usuario;   
    QString query;
    postgresiface2 * conexionDB;
@@ -423,11 +439,13 @@ void BConfiguracion::cargarFichaUsuarios() {
    listView1->setCurrentItem(it);
    if (privilegios) delete privilegios;
    delete recordSet;
-   delete conexionDB;   
+   delete conexionDB;
+#endif
 }
 
 
 void BConfiguracion::listView1_currentChanged(QListViewItem *it) {
+#ifndef WIN32
   campos_usuario datos_usuario;
   
   datos_usuario = coleccion_usuarios.find(it->text(0))->second;  
@@ -438,9 +456,11 @@ void BConfiguracion::listView1_currentChanged(QListViewItem *it) {
   lineEdit4->setText( datos_usuario.find("apellido1")->second );
   lineEdit5->setText( datos_usuario.find("apellido2")->second );
   textEdit1->setText( datos_usuario.find("coment")->second );
-  }// end listView1_currentChanged
+#endif
+}// end listView1_currentChanged
 
 void BConfiguracion::users_info_changed() {
+#ifndef WIN32
   campos_usuario datos_usuario;
   
   coleccion_usuarios.erase(listView1->currentItem()->text(0));  
@@ -460,10 +480,12 @@ void BConfiguracion::users_info_changed() {
       listView1->currentItem()->setText(0,lineEdit1->text());
       
   }
+#endif
 }
 
 //Creamos un usuario nuevo
 void BConfiguracion::newUser() {
+#ifndef WIN32
   campos_usuario datos_usuario;
    
   QString nombreInicial=tr("Nuevo Usuario");
@@ -480,13 +502,16 @@ void BConfiguracion::newUser() {
   datos_usuario.insert(make_pair("prv1000","N"));
   coleccion_usuarios.insert(make_pair(nombreInicial,datos_usuario));
   listView1->setCurrentItem(it);
+#endif
 }
 
 //Borramos un usuario
 void BConfiguracion::deleteUser() {
+#ifndef WIN32
 coleccion_usuarios.erase(listView1->currentItem()->text(0));  
 usuarios_borrados.insert(listView1->currentItem()->text(1));
 listView1->takeItem(listView1->currentItem());
+#endif
 }
 
 //Creamos un usuario nuevo con los mismos permisos que el usuario seleccionado.
@@ -496,6 +521,7 @@ void BConfiguracion::cloneUser() {
 
 //Salvamos los usuarios en la base de datos
 void BConfiguracion::BotonB_1Aplicar(){
+#ifndef WIN32
   campos_usuario datos_usuario;
   std::map<QString,campos_usuario>::iterator bucle_usuarios;
   postgresiface2 *DBConn = new postgresiface2();
@@ -551,6 +577,7 @@ void BConfiguracion::BotonB_1Aplicar(){
      usuaris->siguienteregistro();
   }
   DBConn->commit();
+#endif
 }
 
 //Desacemos los cambios que hemos hecho (UNDO).

@@ -12,7 +12,9 @@
 //
 #include "configuracion.h"
 
+#ifndef WIN32
 #include <unistd.h>
+#endif
 
 #define CONFGLOBAL "/etc/bulmages.conf"
 #define CONFLOCAL "bulmages.conf"
@@ -26,8 +28,12 @@ configuracion::configuracion() {
    string dir = getenv("HOME");
    dir = dir + "/.bulmages";
    fprintf(stderr,"Se ha establecido el directorio de trabajo: %s\n",dir.c_str());
+
+#ifndef WIN32
+    // Solo cambiamos de directorio si no es windows
    chdir (dir.c_str());
-    
+#endif    
+   
    // Primero leemos la configuracion local
    leeconfig (CONFGLOBAL);
    // Y  luego añadimos la configuracion local, asi los valores por defecto son los globales

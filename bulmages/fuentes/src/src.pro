@@ -427,16 +427,22 @@ unix{
   OBJECTS_DIR = .obj
   bulmages_install_script.path = .
   bulmages_install_script.extra = echo; echo "**************************"; echo Para Instalar BULMAGES ejecute el script de instalación; echo "installbulmages"; echo que encontrara en la carpeta installbulmages.; echo Gracias.; echo "(El equipo de Bulmages)"; echo "**************************"; echo;
+  exists(/usr/include/postgresql/libpq-fe.h){
+    DEFINES += DISTRO_DEBIAN
+  }
+  exists(/usr/include/pgsql/libpq-fe.h){
+    DEFINES += DISTRO_RED_HAT
+  }
+  exists(/usr/include/postgresql/pgsql/libpq-fe.h){
+    DEFINES += DISTRO_GENTOO
+  }
+  exists(/usr/include/no_se_que/pgsql/libpq-fe.h){
+    DEFINES += DISTRO_NO_SE_QUE
+  }
 }
-exists(/usr/include/postgresql/libpq-fe.h){
-  DEFINES += DISTRO_DEBIAN
+
+win32{
+   DEFINES += WIN32
+   INCLUDEPATH += lpqwin32/include
 }
-exists(/usr/include/pgsql/libpq-fe.h){
-  DEFINES += DISTRO_RED_HAT
-}
-exists(/usr/include/postgresql/pgsql/libpq-fe.h){
-  DEFINES += DISTRO_GENTOO
-}
-exists(/usr/include/no_se_que/pgsql/libpq-fe.h){
-  DEFINES += DISTRO_NO_SE_QUE
-}
+

@@ -21,7 +21,9 @@
 #include <qtextcodec.h>
 #include <qtranslator.h>
 
+#ifndef WIN32
 #include <unistd.h>
+#endif
 
 #include "bselector.h"
 #include "splashscreen.h"
