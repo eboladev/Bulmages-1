@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>propiedemp</class>
 <widget class="QDialog">
     <property name="name">
@@ -72,6 +72,401 @@
             <property name="name">
                 <cstring>TabWidget2</cstring>
             </property>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>TabPage</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Datos Fiscales</string>
+                </attribute>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineCIF</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>451</x>
+                            <y>20</y>
+                            <width>89</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>14</x>
+                            <y>50</y>
+                            <width>64</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Tipo de vía:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2_2_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>14</x>
+                            <y>80</y>
+                            <width>98</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Nombre de la vía:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>14</x>
+                            <y>20</y>
+                            <width>50</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Nombre:</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineNombreVia</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>120</x>
+                            <y>80</y>
+                            <width>420</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2_2_4</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>134</x>
+                            <y>120</y>
+                            <width>54</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Escalera:</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineEscalera</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>193</x>
+                            <y>119</y>
+                            <width>38</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>linePiso</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>290</x>
+                            <y>120</y>
+                            <width>42</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>linePuerta</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>401</x>
+                            <y>120</y>
+                            <width>41</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineCodPostal</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>496</x>
+                            <y>120</y>
+                            <width>44</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="maxLength">
+                        <number>5</number>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2_2_3_2_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>334</x>
+                            <y>160</y>
+                            <width>55</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Provincia:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2_2_6</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>244</x>
+                            <y>120</y>
+                            <width>30</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Piso:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2_2_5</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>344</x>
+                            <y>120</y>
+                            <width>41</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Puerta:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2_2_7</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>454</x>
+                            <y>120</y>
+                            <width>28</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>C.P.:</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineTipoVia</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>94</x>
+                            <y>50</y>
+                            <width>89</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineNombreEmpresa</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>80</x>
+                            <y>20</y>
+                            <width>340</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>420</x>
+                            <y>20</y>
+                            <width>24</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>CIF:</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineProvincia</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>400</x>
+                            <y>160</y>
+                            <width>140</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineNumeroVia</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>82</x>
+                            <y>120</y>
+                            <width>40</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineMunicipio</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>82</x>
+                            <y>160</y>
+                            <width>230</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>linePais</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>80</x>
+                            <y>200</y>
+                            <width>262</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2_2_3_2_3</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>14</x>
+                            <y>200</y>
+                            <width>30</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>País:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2_2_3_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>14</x>
+                            <y>160</y>
+                            <width>57</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Municipio:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2_2_3</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>14</x>
+                            <y>120</y>
+                            <width>50</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Número:</string>
+                    </property>
+                </widget>
+            </widget>
             <widget class="QWidget">
                 <property name="name">
                     <cstring>tab</cstring>
@@ -237,6 +632,9 @@ yyyy --&gt; Dígitos de cuenta.</string>
                         <property name="name">
                             <cstring>tpropiedades</cstring>
                         </property>
+                        <property name="resizePolicy">
+                            <enum>AutoOneFit</enum>
+                        </property>
                         <property name="numRows">
                             <number>3</number>
                         </property>
@@ -357,8 +755,8 @@ yyyy --&gt; Dígitos de cuenta.</string>
                                                                 <property name="text">
                                                                     <string></string>
                                                                 </property>
-                                                                <property name="pixmap">
-                                                                    <pixmap>image1</pixmap>
+                                                                <property name="iconSet">
+                                                                    <iconset>image1</iconset>
                                                                 </property>
                                                             </widget>
                                                             <widget class="QToolButton">
@@ -376,8 +774,8 @@ yyyy --&gt; Dígitos de cuenta.</string>
                                                                 <property name="text">
                                                                     <string></string>
                                                                 </property>
-                                                                <property name="pixmap">
-                                                                    <pixmap>image2</pixmap>
+                                                                <property name="iconSet">
+                                                                    <iconset>image2</iconset>
                                                                 </property>
                                                             </widget>
                                                         </vbox>
@@ -445,8 +843,8 @@ yyyy --&gt; Dígitos de cuenta.</string>
                                                                 <property name="text">
                                                                     <string></string>
                                                                 </property>
-                                                                <property name="pixmap">
-                                                                    <pixmap>image1</pixmap>
+                                                                <property name="iconSet">
+                                                                    <iconset>image1</iconset>
                                                                 </property>
                                                             </widget>
                                                             <widget class="QToolButton">
@@ -464,8 +862,8 @@ yyyy --&gt; Dígitos de cuenta.</string>
                                                                 <property name="text">
                                                                     <string></string>
                                                                 </property>
-                                                                <property name="pixmap">
-                                                                    <pixmap>image2</pixmap>
+                                                                <property name="iconSet">
+                                                                    <iconset>image2</iconset>
                                                                 </property>
                                                             </widget>
                                                         </vbox>
@@ -493,13 +891,13 @@ yyyy --&gt; Dígitos de cuenta.</string>
 </widget>
 <images>
     <image name="image0">
-        <data format="XPM.GZ" length="1271">789c95d34b0ac2301000d07d4f113abb22ad5a04413c82e25210179354d0850a7e1622dedd4cd2a4f9d88f932e32f465d2b49d2263dbcd8a6545727fe0e3249838e28d65d5f37c7eedf6cb7792965326af199ba4a324cd9960ebebe54073947318aba094533a2f69500a948a190d4a05a5d58186aad3137f1ba088e78d011b889c2b50236b5c22833b858c01089152ae01881095a23b2d4622410874296d200c83c0d60188548dec5e51158b1a136fe5bc81bcdb08f5d8034ccf5e9ef985d03c746368458fd12f2c38966fccdefec943e32344f3599defee236c330a5120fe360685c15da3918c4072ef9f8f8b9893b9bdd386bcfe6a41619fea3bce02893a7ad9d6eaeaf721261f626a947e16c9171c5d1aaf</data>
+        <data format="PNG" length="401">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000158494441545885c596510e8320104407d393700cf933e9b14cd3f4584dfa678fe155da9f2e596440a8a29334b1a0cc635916ccf49e70a6ba53dd015c0adffb9036b3c7fb39003648d4ef7a070078dc1f0080e13a30d3cfef1741a400d6cca1cd0160bc8dfe79b80e46996665481216993308918a868078bf35802af31c848028086deeffefb20bf424e679f6cfe36dc4ebf9d2938a96a55b746e86b0d632083d7eb00c02403b1b4044e3770867be290a3988943a46b597acb5ac3948c8e6a558a24012f21880843cc8e987910034cb0322835c0eb8dec996394401809454b56fab952acbab00f2e1226b9b9a0700225d406a2052e6520bd4c1c401a6f764f4473510ffcc5c94bc110984b536b86c68a5da6b145d485cef826a25107b882d03bb1151082d1d9dad101480416c9506d610498016200c6215a035441140098cdec6b9f79610d500352a895cd3e3781995c3014a200eb990e420be48dec32ccd3cc8210000000049454e44ae426082</data>
     </image>
     <image name="image1">
-        <data format="XPM.GZ" length="4334">789ce595d94e63471086ef790a8bba43518dcf7e8ea25cb0830183596da25cf4598c0dd8806dd628ef9e3eb5349a8c0593381a290a8d913eaafbefbfaaabdb5f561adda383c6ca97a5e9cccc8645a318984963a57c1c8d5e7ffded97df979603bf617f3dfbf1977f5a5aeecc1a45a37d37ae6ac0270bd0a41f62239c3653e291b2c7f109b3d7f4280e4d659fe270229c3263c77146fca61c300f98fda6c45f9525fea21c7ac4cfc219336c318726a6e4b0cb9c8579491c12a74ebf540e78bd279cc97ec01c7811e9995c388b0cc55799434f3857e6fd41f6b37e280e8fcc912f7cac9c04c497c226c98939ff34cd4d41fca09c87b41fe79bdafc88c138a67c41fc6585e4df532e228a4b7e26141e0b1705cfaf6af69a9a8f31c2525f38638e4dca7ecf9533f673c19ce486f98dd9e5d35316fff7ccce7fc46c94d794d91f8c84c52fec33e71a3f502e293f1c12bf9f479f39f6a5dea7cc4990b1bf84d9d53770ccfa2fc2525fb86376f54c1d733df785d5ef0eb3f3db5616bf45cd7e53fd1960567f0699d340ea3963767ef7989dfea670c9fa70c85c94554cfb5d1167ba1f3e3027019f2f1e30bbfeb86476fabbc2a5704b59f6f399dd7e4735079eed1fea7fbc65d6fd2013cee53c86cc6e3f99eff43bcc45241c3be6f78dee5f90c57abf726657ef0b61d5637f5959895f3a7f7b1b74fd35b3f383cab27e9d59f3851b62e3f43798cb48e25de1aa62bfd49f91efee6fc66cd7531ca6cc55ccf381dee3e85d8fdec7d877fbd1fb1abbfd7187b9103d247f49e0ea41f925b9e68711b3d617dbc27a9ef47ea481ab4725acfa4d66373f6556bfb85d73163afd35615d4ffd635f2f5d7fceecd6c7c27a5e89635e4ffd5fdf4689d3f793799fbfe798e7d37b545743e2ebc23affcc31d7bf60d6f3403a9f3a7be163e62aeef37aba7f7577ca795d31bbf37c12ae643eddefdabde8dd096b9cdeafd2cd876de67edcef539cee67ed46e225b38bd37daddd09d3f761ff9da95ffbf4537367b6d8f87f6920fc1b1a6816d6c8b1c072418d0afb788583853486788d37788ba38534c67887f7f880938534a638b32a8ff333fa5a039ff0195ff015df64d4b46a35d6701d3770d3aaccf1f28dc6d69cb18d3b76ec5a953aa36fea3247638a2d3b5b47cbf21eeee301b649e5108fb0f3a9c6319ee0a95ddbb27fcff0dcaebdc02ef6f0129bf63f1efa1860f8a98fc8ce8e31c11433b06d0a805d30d8831cdb50400915f4f1e9230db882010ce11a6ee0164630863bb887073076204c608a173083c74f349ee0195ee015dee0d5d2aaddbf5658b36aebb0019b96b6beaec81c8d6deb78c78e5d68c11eecc381fdac411b0ee1083a56f9184e3eab299cc2198d731a1794c5d82a74ad660f2ebfe36c07d07c1f3801cfaeea816f3db42080f0f31e9bdbeb39445623b61ec2bf76c6dfd04820a52cfef99dab203308c70bddfddc16d5cccfe27b354c6e3bea03851ff5269bfce3f87fe97bee0769fcf1f3d29fa122b1ff</data>
+        <data format="PNG" length="753">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002b8494441545885ed97af6f136118c73f2388a709e23dd73741b48ece0dc556cc5a0c9b8320d8e436c3364566c0e208ff01c381a38e06c3a66e255942ab76b89b20794f90bcaf20b9c715710b1058bbae074cc0634ebc97fb7e9edff7cec407311769972e54fd3f405980f68367c30b050068b6daa520ca011843edfe43da2b5b5343940210e0facd16f5c5259a2beb53415c2e052042c31aeaf756106368b69687f1de9b99bf06004514eedca8b3585b6507682edd1dc6ddd71343fc96360c41b14678bab1cafcfdb573a5e3d40834179a43ae2d8202e8c9f30733020a52b30024215033c272c31236368b6f4c1889912990ed8713791019e108380acaaccf599db398ed4d7664b29a185b036f6e2fd0a846d8caaf672e8724f378e0c920250222843560b96189b657d952a579677d18779e8f84185f84221c648e863144525078cd498392a9922aec054fe60241848eb8a22881b9aa6573638d9728ed95f5e1bb57a7438c0750a59f799200d6044070aaf433c56b0e40df876fefa60eba781498af2aad6b16776f8d448bba8a0fe25f20c602888057e80587c9a0228203d2a02860724582c2971cae5440150152810470ef8f70494af07ea4c6992950c0b940f2d9239c34c41501a910906fe2620c5a01aa110138fae8c80e5374bf03831ea7797f2680910ad6446015630d910008b92a45e005ac80078904538d500321f384c3047a3d18ec11775e4e5784edc7bba87e0f9fe387763006bd5acc01acc15423668d901e3bdc618a0efae8db5da66e437dba4316f251a748b50e732db8b544bd663106d263874f3274bf8bbeef9c293e126054be7eb6f6a3dda148312635d3c2f3fd2e3ad867d27d507e19851c9f38f4934307bdc2f3732ca372eb18b09f32fc6725f47b13e5fcb70228c59c08fd2e3ae89d5bbc3400aa64e987427cccbcffa300faf605f1debba9c4a1ec0f894829718099ff77c37f1ee02b0f7b45c8efb3392a0000000049454e44ae426082</data>
     </image>
     <image name="image2">
-        <data format="XPM.GZ" length="4238">789ce595496fe3480c85eff91546780b06af255992650ce6907de96ccee23819cc4196ac388bb3da499cc6fcf7a14856f5a1016760df66504990cf941eebb1c8f2b79546eff8a0b1f26de9759c8f6f8a4631cc5f1a2be564349afef9d71f3f96969b51837fc2286d44cbbf2d2d77c68da271f8f830a8815a0c1404411666c203e530303e741c05c25de32c6a0b371d3743e189721418bf2927519a0b6f0a673e1e7856bdd0b8ad8c4fc7b13c0fcdc7d962d143ee38117320e3b671e959f3a7ca716efbd9524ea25653f8ca735fde9f18e7ca74ee38d3e72f955bcd762c1c7b2ee47df39bf5fb1a7f506ec7fd5278645c28a3edb848246efef35819fd9ac3c0fb1b2ac7a1fac3bde354e254297b7f8967f573a29c46e6e7ccb3c64f8d73f3d7516ef5cddfd471aef13565ef775599fd2a6f7856bf17cace1fdd7bd678d7b850a6a9e3529fdf55eedbf3f4eed8e207c6a5326e84335fafc2b1d60b23e3dcea3756ce9ae66f5dd9f9414fd9efff4ed9e587cc53f4b3ded7cabe1e9171617a1bcadeef85b2f7b76f5c1a7f281765a9f37ceb78908adeb370dbcd1f3a8ead1f86ca5e7fdbd8e9ef39b67a1e291789e683f8a9a7cff44ae5ac9f6b7f7c5776fd8c4b65efcfe2aca7fa37c6cecf8e7299a81fea190fcc9ff4773ddd56df4765e7077bc66effaf35c7a1efaf73659f1fc2b9ef974cd9f9a56365ceaffe65deebd3b5793856f6fdb1ae9cbb79967e4b72df1f2f35a77966f38355cfaa77abecfbc59ef7fb93fba4be7d2cdf9db1eba77d65efff49d9f9c595b1eb17e9279e66775e6bca2e4ed24f59d39d0f5acafe7ce47ecafa8eb16becce4bee9776ece3b29ffaf6b3f390fba99e26d397f9e56977f596f9e6ea1953ae3c482d1e38ae743ff27dc0e95d5ce6ad4806038d43eebfda8dc5a53fcac4f3a3b2d3436a3ca82ae150b94a8de5fba4766bef8f8d5dbe1de5cae91d79d6f7e5fbb6ce662cf76ff593653eabcaf39b71a5dc192fb6fe7f1aa04535902faa813e0a948b6860800ad718ceaf811bdce28e55eee7d5c0080f78c413ef654e2f78c60b5e31668dc97c1a5cc75ae10deff8c0149fbfaeaf34b80eaba230c61ad6b181cd5fd6171aece2015bd8c60e76b1c76b03dfb18f031cb26abd8e703c5b031d76718253dec319ced1c5057ab8c4150284fcf61122fe7ca6069a889120e5ac2d64acd09675416057074494539f0a2a6769d0802abaa621ddd02dddd13d8de881d7083d7aa4277ae6f542af349eed8526f4864d7a678d0f9ad227ebacb2ca2aaf355a97b5519fd4ec9ad2266db1ca36edc85ea6bc76698fbef3277bb4cfff1fd0dad7674b8798b08b233aa65b74650f1d3aa153596774ce39bed460952e6df1ae2fa8c7bf9774859c020ad9e784ff8614fc1b0da9cb16576048d1bcbd2e2a4d7614f32e9245ee0feab2ca29a5f3cfbe3a42c91a0bdd637246cd453558a5b5f8bd5eef65718dd9eb3fa5f1f7ef4bff005f0f9e6a</data>
+        <data format="PNG" length="785">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002d8494441545885ed973f4c14511087bf3516b389c56e62b19758b09d476f71472cb8d3e2ceca2334d0112aa1022b6265b421a1432bff54d041c7756075d0719d4b61b25798ec76fb0a9237dd5aeca1183dc0c51c854eb9d99df966e637f3f639bdc31e3769b76e34fa7f80bf05d05cd9c86f0ca0f9ac7cf06b033c59d9c83dcf0364fc00f3ebddbc1a56a9783e523e7e398099b53779fb718dfaa31ae20a63adc0cccbf7f9fcec1c4b4f1b54c30a8905551d0fc0e2fa56de996eb0d0aae30e934eddd2b101b87dd51767d6dee79d5683a5d93693a1cf5e9c111b4526aa68ff90e6c28b4ba761ffc32ba714c0ccda9bbcd3eab034db6032f48933cb915122c07b5025f5562f77f271e3b78f2f05585cdf1af6bc4ee8f9c4d6b2630c072603cf03a354effa34428fda44857ae05339d796d8c2f38f7b7447f8bf1060717d379faed5996bd5093c9f582dddd4d035199151b05ae8df17f07c44840c505b7c9fa8a59f9a0b131c09d07cf63a6fb73ad41fd611cfa79b6644aa1c19a59f2a9a15ca5740512293211413e10b5820324a7f90119f8e9e9291003a38e620aa727c2fc0351912f864086a6ce11d2da20f218e1343a68aaae049d183c458924c492e18d39100bdee8e3335b79c1b2c526b23085e2048e052f81344044c82aa8b6a4664203a05b9732e11dcefa07f0400d0dbde749a73cb39b828e08a22410526044d2940dc1011a5220122674b49b02846011138b5e50000f6b7379da9f67c2eae10df6d108acf64e0f1191f1d24902400245f53481310ff5cfab600b2a38578a53dd0eb6e39539dc55cac92e93436ace0dfaf8040fa6500710283084c02f26335cbd929755689b20000bddd77434d80d4a671a1c83e4d208dd97fbbfacb96bb8a5d19000a4d4c7596735c214e4340117ba1c62eb53f3e0d7bbb9b8e7eda8534461454b31fa51e074001f1ced1a32eda3f04c6781cff04b1bde9e8c921a483d2c1af0500c574e8c931d751c1b5ff8a7b073b438872e6fcbf1bfef300df003a5642fe243256fd0000000049454e44ae426082</data>
     </image>
 </images>
 <connections>

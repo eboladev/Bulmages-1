@@ -121,6 +121,66 @@ int propiedadesempresa::inicializa(postgresiface2 *conn, QString nomdb) {
     
     delete metabase;     
     
+   //Este bloque de código realiza la consulta para obtener los datos fiscales de la empresa 
+    QString empresa, ano;
+   
+
+  query="select nombre,valor from configuracion";//Tiene que usar la empresa elegida, no bulmages!!!! TODO
+
+  metabase = new postgresiface2();
+  metabase->inicializa("bulmages");//[TODO] CAMBIAR!!!
+  metabase->begin();
+      
+
+   cursor2 *cur = metabase->cargacursor(query,"datos");
+    
+QString n,v;
+  int nTuples=cur->numregistros();
+  QLineEdit *p;
+    for (int i=0;i<nTuples;i++)
+    {
+    p=NULL;
+    n=cur->valor("nombre");
+    v=cur->valor("valor");
+    cur->siguienteregistro();
+    
+   if (n=="NombreEmpresa") p=lineNombreEmpresa;
+    if (n=="CIF") p=lineCIF;
+    if (n=="TipoVia") p=lineTipoVia;
+    if (n=="NombreVia") p=lineNombreVia;
+    if (n=="NumeroVia") p=lineNumeroVia;
+    if (n=="Escalera") p=lineEscalera;
+    if (n=="Piso") p=linePiso;
+    if (n=="Puerta") p=linePuerta;
+    if (n=="CodPostal") p=lineCodPostal;
+    if (n=="Municipio") p=lineMunicipio;
+    if (n=="Provincia") p=lineProvincia;
+    if (n=="Pais") p=linePais;
+    
+    if (p) 
+    {
+    cout << n << " = " << v << "\n";
+    p->setText(v);
+    }
+    }
+    delete cur;
+    delete metabase;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     return(0);
 }// end inicializa
 
@@ -177,9 +237,27 @@ void propiedadesempresa::accept() {
    metabase->commit();
    delete metabase;
 
-
+   //Este bloque de codigo guarda los datos fiscales en la tabla configuracion
+   
+   
+conexionbase->begin();
+update_value(conexionbase,"NombreEmpresa",lineNombreEmpresa->text());
+update_value(conexionbase,"CIF",lineCIF->text());
+update_value(conexionbase,"TipoVia",lineTipoVia->text());
+update_value(conexionbase,"NombreVia",lineNombreVia->text());
+update_value(conexionbase,"NumeroVia",lineNumeroVia->text());
+update_value(conexionbase,"Escalera",lineEscalera->text());
+update_value(conexionbase,"Piso",linePiso->text());
+update_value(conexionbase,"Puerta",linePuerta->text());
+update_value(conexionbase,"CodPostal",lineCodPostal->text());
+update_value(conexionbase,"Municipio",lineMunicipio->text());
+update_value(conexionbase,"Provincia",lineProvincia->text());
+update_value(conexionbase,"Pais",linePais->text());
+conexionbase->commit();
    done(1);
 }// end accept
+
+
 
 
 /*
@@ -214,3 +292,22 @@ void propiedadesempresa::boton_totalaus() {
   usuariostotal->takeItem(it);
   usuarios->insertItem(it);
 }// end boton_totalaus
+
+
+
+
+void propiedadesempresa::update_value(postgresiface2 *m,QString n,QString v)
+{
+QString query="SELECT * from configuracion where nombre='"+n+"'";
+ cursor2 *cur = m->cargacursor(query,"configuracion");
+ if (cur->numregistros()==0) 
+ {
+ query.sprintf("INSERT into configuracion (idconfiguracion,nombre,valor) values ((select max(idconfiguracion)+1 from configuracion),'%s','%s')",n.ascii(),v.ascii());
+ }
+ else
+query="UPDATE configuracion set valor='"+v+"' where nombre='"+n+"'";
+
+delete cur;
+  cout << m->ejecuta(query) << "\n";
+  
+}

@@ -45,6 +45,9 @@ public slots:
   virtual void boton_usalectura();
   virtual void boton_lecturaaus();
   virtual void boton_usatotal();
-  virtual void boton_totalaus();   
+  virtual void boton_totalaus();
+  
+  private:
+  void update_value(postgresiface2 *,QString ,QString);
 };
 #endif

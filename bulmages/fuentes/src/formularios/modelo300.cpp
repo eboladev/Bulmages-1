@@ -401,6 +401,9 @@ void Mod300ps::escribe_cuenta_bancaria(int x,int y)
 
 /*!
     \fn Mod300ps::rellena_identificacion()
+    \todo Solucionar problema cuando el nombre de la empresa (u otro campo) lleva acentos.
+    \todo El código postal no se rellena bien.
+    \todo El teléfono no cabe (pero no es culpa mía!!)
  */
 void Mod300ps::rellena_identificacion()
 {
@@ -410,6 +413,7 @@ void Mod300ps::rellena_identificacion()
 
  m->inicializa("bulmages");//[TODO] CAMBIAR!!!!
 escrder(m->propiedadempresa("CIF"),78,601);
+escrder(m->propiedadempresa("NombreEmpresa"),213,601);
 escrder(m->propiedadempresa("TipoVia"),78,576);
 escrder(m->propiedadempresa("NombreVia"),141,576);
 escrder(m->propiedadempresa("NumeroVia"),389,576);
