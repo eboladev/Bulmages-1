@@ -1,4 +1,4 @@
 #!/bin/sh
-dropdb $1
-createdb $1
-psql $1 < $2
+dropdb $1 $2
+createdb $1 $2
+psql $1 $2 < $3
