@@ -33,6 +33,7 @@
 #include "extractoview1.h"
 #include "bmodelo347.h"
 #include "postgresiface2.h"
+#include "log.h"
 
 
 /** * @author Tomeu Borrás Riera */
@@ -64,6 +65,7 @@ public:
   intapunts3view *intapuntsempresa() {return(introapunts1);}
   int numdigitosempresa() { return(numdigitos);}
   QString nomuserempresa() { return(nombre);}
+  QString nombreempresa() {return(nombre);}
   QString ejercicioactual() {return(EjercicioActual);}
   void setejactual(QString ej) {EjercicioActual=ej;}
   int inicializa(QString * DB=0, QString * User=0, QString * Passwd=0);

@@ -70,17 +70,16 @@ void abreempresaview::accept() {
        query.sprintf("SELECT permisos FROM usuario_empresa, empresa, usuario WHERE usuario_empresa.idempresa=empresa.idempresa and usuario_empresa.idusuario=usuario.idusuario and empresa.nombredb='%s' and usuario.login='%s'",empresabd.ascii(),nombre.ascii());
        cursor2 * recordSet = DBConn.cargacursor(query,"recordSet");
        DBConn.commit();
-       
-//       empresaactual->nombreusuario = nombre;
-       
+       //       empresaactual->nombreusuario = nombre;
+      
        confpr->setValor(PRIVILEGIOS_USUARIO, recordSet->valor(0,0));
-       fprintf(stderr, "Entrando Usuario: %s, con Permisos tipo: %s ",nombre.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str());
+       //fprintf(stderr, "Entrando Usuario: %s en la empresa: %s, con los Permisos tipo: %s ",nombre.ascii(),nombreempresa.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str());
        //pendiente añadir: %s en la empresa: %s ",nombre.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str(), empresaactual.nombreDB.ascii());
+       //printf("la empresa es: %s ",nombreempresa.ascii());
        
        //Empezamos un nuevo modo de guardar algunas preferencias de los usuarios en la base de datos
        confpr->cargarEntorno(empresabd);
-       
-       ctllog->add(LOG_SEG | LOG_TRA,"Entrando Usuario: "+nombre );
+       ctllog->add(LOG_SEG | LOG_TRA, 1,"AbrViw004", "Entrando usuario: --"+nombre+"-- hacia la empresa: --"+nombreempresa+"-- con los permisos -"+confpr->valor(PRIVILEGIOS_USUARIO).c_str()+"-" );
        delete this;
    }//end if
    if ((intentos+=1)>3) padre->close();

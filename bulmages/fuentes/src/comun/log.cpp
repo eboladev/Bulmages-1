@@ -27,8 +27,7 @@ bitacora *ctllog;
 
 bitacora::bitacora() {
     // abre archivo Log.
-    archivolog = new ofstream(confpr->valor(CONF_ARCHIVO_LOG).c_str(),ios::out |
-                              ios::app);
+    archivolog = new ofstream(confpr->valor(CONF_ARCHIVO_LOG).c_str(),ios::out | ios::app);
 			      
     empresaactual = NULL;
 }
@@ -39,7 +38,7 @@ bitacora::~bitacora() {
     archivolog->close();
 }
 
-void bitacora::add (int tipoLog, QString qsTxt ) {
+void bitacora::add (int tipoLog, int nivellog, QString logdebug , QString qsTxt ) {
      QDateTime hora = QDateTime::currentDateTime();
      QString horastr = hora.toString(Qt::LocalDate);
      QString tipoLogtxt;
@@ -55,9 +54,17 @@ void bitacora::add (int tipoLog, QString qsTxt ) {
     // Escribir en archivo log.
     *archivolog << tipoLog << ", " << tipoLogtxt.ascii() << ", " << horastr.ascii() << ", " empresaactual->nomuserempresa().ascii() << ", " << qsTxt.ascii() << endl;
     */
+   // printf("empresa actual: %s  usuario actual: %s",empresaactual->nomuserempresa().ascii(),usuario );
    if (empresaactual != NULL) {
-    *archivolog << tipoLog <<  ", " << horastr.ascii() << ", " << empresaactual->nomuserempresa().ascii() << ", " << qsTxt.ascii() << endl;
+   // el int tipo de log da idea de si es un log de seguridad, de acceso a base de datos, ... etc
+   // el int nivel log da idea de la profundidad del log, ejemplos los más generales=1, absolutamente todos 9
+   // el qstring logdebug sirve para saber donde está la orden de un log para ayudar a programar, tiene 3 partes:
+   //                                          1- nombre de la clase (abreviado), 2- nombre funcion abr. 3- número de log (general)
+    
+    *archivolog << tipoLog <<  ", "  << nivellog << ", " << logdebug << ", " << horastr.ascii() << ", usuario:" << empresaactual->nomuserempresa().ascii() << ", BD:" << empresaactual->nombreDB<< ", "<< qsTxt.ascii() << endl;
+    //", DB:" << empresaactual.nombreDB.ascii()
+    
    } else {
-    *archivolog << tipoLog <<  ", " << horastr.ascii() << ", "  <<  ", " << qsTxt.ascii() << endl;
+    *archivolog << tipoLog <<  ", " << horastr.ascii() << ", "  << ", "  <<  ", " << qsTxt.ascii() << endl;
    }// end if
 }

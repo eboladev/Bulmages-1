@@ -63,7 +63,7 @@ if (confpr->valor(CONF_TRADUCCION) == "locales") {
   mainApp->installTranslator( traductor );
 
   ctllog = new bitacora();
-  ctllog->add(LOG_SEG, "Iniciacion del programa\n");
+  ctllog->add(LOG_SEG, 1,"MaiMai003", "---- Iniciacion del programa ----");
   
   BSelector * SelectorAplicaciones = new BSelector(0,"SelectorAplicaciones");  
   

@@ -3,7 +3,7 @@
   <general>
     <author>Tomeu Borras</author>
     <email>tborras@conetxia.com</email>
-    <version>0.3.7</version>
+    <version>0.3.5</version>
     <projectmanagement>KDevTrollProject</projectmanagement>
     <primarylanguage>C++</primarylanguage>
     <keywords>
@@ -22,9 +22,10 @@
       <group pattern="*.png" name="Icons" />
       <group pattern="*" name="Others" />
       <hidenonprojectfiles>false</hidenonprojectfiles>
+      <hidenonlocation>false</hidenonlocation>
     </groups>
     <tree>
-      <hidepatterns></hidepatterns>
+      <hidepatterns>*.o,*.lo,CVS</hidepatterns>
       <hidenonprojectfiles>false</hidenonprojectfiles>
       <showvcsfields>false</showvcsfields>
     </tree>
