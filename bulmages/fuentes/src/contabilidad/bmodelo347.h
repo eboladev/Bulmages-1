@@ -33,10 +33,12 @@ public:
 
 
 public slots:
-    virtual void click_boto3();
+    virtual void click_recargar();
+    virtual void click_imprimir();
 
 private:
         postgresiface2 * DBConn;
+	char *fichero;
         //QWorkspace * zona0;
         //BSelector * PunteroAlSelector;
 
