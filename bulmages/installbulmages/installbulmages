@@ -50,7 +50,7 @@ function lee() {
     read user
     su - postgres -c "createuser --adduser --createdb $user"
   else
-    dialog --title "Instalacion de BulmaGes v4.1" --inputbox "Nombre del usuario:" 10 60  2>/tmp/dialog.ans
+    dialog --title "Instalacion de BulmaGes v4.1" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes" 10 60  2>/tmp/dialog.ans
     if [ $? = 1 ]; then
        clear
        exit 0
@@ -74,7 +74,7 @@ function linea {
 # Comprobamos que estamos ejecutando como root el programa
 if [ ! $(whoami) = "root" ]; then
 #   echo -e "Este script de instalacion debe ejecutarse como root"
-   mensaje "Este script de instalacion debe ejecutarse como root"
+   mensaje "Este script de instalacion debe ejecutarse como root. \n"
    exit 1
 fi
 
@@ -85,21 +85,22 @@ touch /tmp/errores.txt
 
 #Comprobamos que estamos en el directorio adecuado
 if [ ! -e ./installbulmages ]; then
- mensaje "Directorio incorrecto. Debe ejecutarse desde el directorio donde se encuentra el script."
+ mensaje "Directorio incorrecto. La instalacion debe ejecutarse desde el directorio donde se encuentra el script. \n"
  exit 1
 fi
 
 
+
 # Distinguimos entre una instalación y una actualización
-info "Comprobando versiones anteriores\n" "\033[32m" "\033[0m"
+info "Comprobando versiones anteriores. \n" "\033[32m" "\033[0m"
 tiempo
 
 if [ -e /etc/bulmages.conf ]; then
 
-   info "Creando directorio backup para guardar copias de seguridad"
+   info "Creando el directorio /tmp/backup para guardar copias de seguridad de las bases de datos. \n"
    tiempo
    if [ -e /tmp/backup ]; then
-      info -e "El directorio ya existe"
+      info -e "El directorio /tmp/backup ya existe. \n"
       linea
    else
       mkdir /tmp/backup
@@ -109,28 +110,31 @@ if [ -e /etc/bulmages.conf ]; then
    su - postgres -c "echo -e \"\\pset tuples_only \n select nombredb from empresa;\" | psql metabd" > /tmp/listdb.lst
    for x in `tail +2 /tmp/listdb.lst`
    do
-      info "Efectuando cambios sobre la base de datos $x"
-      tiempo
-      info "Realizando copia de seguridad"
+      info "Efectuando cambios sobre la base de datos $x \n Realizando copia de seguridad. \n"
       tiempo
       su - postgres -c "pg_dump $x" > /tmp/backup/$x.pgdump
       for y in `ls dbmodels/actualizar/rev-*.sql | sort`
       do
-         info "Evaluamos: " $y
+         info "Evaluamos el archivo de revision:\n\n $y"
          if [ ! -e /usr/share/bulmages/$y ]; then
 	    su - postgres -c "psql $x "  < $y  2>> /tmp/errores.txt >> /tmp/errores.txt
-	    info "Actualizando la version $y"
+	    info "Actualizando la base de datos $x con la revision version $y"
 	    tiempo
          fi
+	 
+	 
       done
       linea
    done
 
-   info "Efectuando cambios sobre la metabase"
+   info "Efectuando cambios sobre la metabase."
    tiempo
+   
+   
+   
    for y in `ls dbmodels/actualizar/revmeta-*.sql | sort`
    do
-      info "Evaluamos: " $y
+      info "Evaluamos la revision $y."
       if [ ! -e /usr/share/bulmages/$y ]; then
          su - postgres -c "psql metabd " < $y 2>> /tmp/errores.txt >> /tmp/errores.txt
 	 info "Actualizando a la version $y"
@@ -163,22 +167,22 @@ else
 		info "Revisando archivo pg_hba.conf"
 		PGA=`cat /etc/postgresql/pg_hba.conf | grep reject | wc -l`
 		if [ ! "$PGA" -eq "0" ]; then
-		mensaje "Alerta: Revise el archivo /etc/postgresql/pg_hba.conf, ya que puede tener restricciones de permisos\n $PGA"
+		mensaje "Alerta: Revise el archivo /etc/postgresql/pg_hba.conf, ya que puede tener restricciones de permisos.\n $PGA"
 		tiempo
-		dialog --yesno "Si lo desea podemos instalar una copia personalizada del archivo pg_hba.conf  que configura los permisos de postgres. (Puede que con esta opcion pierda seguridad)" 15 60
+		dialog --yesno "Si lo desea podemos instalar una copia personalizada del archivo pg_hba.conf  que configura los permisos de postgres. (Puede que con esta opcion pierda seguridad). \n" 15 60
 		case $? in
 			0)
-			info "Yes chosen. Vamos a modificar la cosa"
+			info "Modificando  la configuracion de postgres. \n"
 			mv /etc/postgresql/pg_hba.conf /etc/postgresql/pg_hba.conf.old
 			cp pg_hba.conf /etc/postgresql/pg_hba.conf
-			info "Reiniciando Postgres"
-			/etc/init.d/postgresql restart
+			info "Reiniciando Postgres. \n"
+			/etc/init.d/postgresql restart >/dev/null
 			tiempo;;
 			1)
-			info "No chosen."
+			info "No se ha seleccionado. \n"
 			tiempo;;
 			255)
-			info "ESC pressed."
+			info "ESC pulsado. \n"
 			tiempo;;
 		esac   
 	else
@@ -208,7 +212,7 @@ else
    
   
    # Tratamos el archivo de configuracion
-   info "Instalando la nueva version del archivo de configuracion"
+   info "Instalando la nueva version del archivo de configuracion. \n"
    cp bulmages.conf /etc
 
    # Presentamos los errores acaecidos
@@ -220,12 +224,12 @@ else
 fi
 
 # Copiamos todos los archivos de la nueva version a sus localizaciones normales.
-info "Instalando archivos de imagenes de Splash y de logotipo"
+info "Instalando archivos de imagenes de Splash y de logotipo. \n"
 tiempo
 cp *.jpg /usr/share/bulmages
 cp *.png /usr/share/bulmages
 
-info "Instalando ejecutable del programa y scripts auxiliares."
+info "Instalando ejecutable del programa y scripts auxiliares. \n"
 tiempo
 cp bulmages /usr/local/bin
 cp cargaemp /usr/local/bin
@@ -234,11 +238,11 @@ cp borraremp /usr/local/bin
 cp guardaemp /usr/local/bin
 cp cargaemp /usr/local/bin
 
-info "Instalando archivos de revision del archivo de configuracion."
+info "Instalando archivos de revision del archivo de configuracion. \n"
 tiempo
 cp rev-* /usr/share/bulmages
 
-info "Instalando archivos de ayuda del programa, imagenes, iconos, listados y traducciones."
+info "Instalando archivos de ayuda del programa, imagenes, iconos, listados y traducciones. \n"
 tiempo
 cp -r dbmodels /usr/share/bulmages
 cp -r backgrounds /usr/share/bulmages
@@ -248,7 +252,7 @@ cp -r css /usr/share/bulmages
 cp -r icons /usr/share/bulmages
 cp -r traducciones /usr/share/bulmages
 
-info "Realizando la instalación de BContaWeb"
+info "Realizando la instalacion de BContaWeb. \n"
 tiempo
 if [ -e /var/www ]; then
    cp -r bcontaweb /var/www

@@ -1,5 +1,9 @@
 NOTAS PARA LA INSTALACION:
 --------------------------
+El script de instalacion funciona sobre Debian y sobre Mandrake. Seguramente sea facil extenderlo a otras distribuciones.
+
+Para instalar el programa entre en el directorio de instalacion y escriba "como root" ./installbulmages.
+
 
 Para el correcto funcionamiento de Bulmages debe configurarse el acceso a postgres
 en modo trust. Para ello hay que modificar el fichero de configuracion pg_hba.conf y
@@ -11,7 +15,10 @@ por
 local all	all all		trust
 
 
-El script de instalacion debe ser ejecutado como root.
+
+Hay un modo de instalacion que no usa dialog, para hacer una instalacion en modo texto escriba ./installbulmages --texto
+
+
 
 --
 Tomeu Borras

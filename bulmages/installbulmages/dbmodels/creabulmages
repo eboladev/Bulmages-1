@@ -71,7 +71,7 @@ su - postgres -c "createdb -E SQL_ASCII $2" 2>> /tmp/errores.txt > /dev/null
 info "Comprobamos la existencia de PLPGSQL"
 ENC="0"
 if [ -e /usr/lib/postgresql/lib/plpgsql.so ]; then
-   info "PostgreSQL esta bien instalado, la distribución parece una Debian."
+   info "PostgreSQL esta bien instalado, la distribucion parece una Debian."
    tiempo
    su - postgres -c "psql $2" < crear/bulmages/bulmages_debian.pgdump 2>> /tmp/errores.txt > /dev/null
    ENC="1"
@@ -87,7 +87,7 @@ fi
 if [ "$ENC" = "0" ]; then
    LANG=`locate plpgsql.so`
    if [ $LANG ]; then
-         mensaje "PostgreSQL no esta bien instalado o la distribucion no es Debian. \
+         mensaje "PostgreSQL no esta bien instalado o la distribucion no es una de las soportadas por el instalador. \
    No se ha encontrado la libreria plpgsql.so necesaria para instalar las \ bases de datos \
    Por favor, localicela e intente una instalación manual\n\n Puede que el archivo que busca este en $LANG" 
    fi
@@ -96,11 +96,11 @@ fi
 
 # Creamos la base
 if [ "$3" = "1" -o "$3" = "2" ]; then
-   info "Importamos el esquema de base de datos de una empresa"
+   info "Importamos el esquema de base de datos de una empresa. \n"
    tiempo
    su - postgres -c "psql $2" < crear/bulmages/bulmages_schema.pgdump 2>> /tmp/errores.txt > /dev/null
 else
-   info "Importamos el esquema de la metabd"
+   info "Importamos el esquema de la metabd. \n"
    tiempo
    su - postgres -c "psql $2" < crear/metabd/metabd_schema.pgdump 2>> /tmp/errores.txt > /dev/null
 fi
@@ -108,7 +108,7 @@ fi
 
 if [ "$3" = "3" ]; then
    # Cargamos la metabase
-   info "Cargamos la metabase"
+   info "Cargamos la metabase. \n"
    tiempo
    su - postgres -c "psql $2" < crear/metabd/metabd_data.pgdump 2>> /tmp/errores.txt > /dev/null
 fi
@@ -116,7 +116,7 @@ fi
 
 if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo
-   info "Cargamos el conjunto minimo de datos"
+   info "Cargamos el conjunto minimo de datos. \n"
    tiempo
    su - postgres -c "psql $2" < crear/bulmages/t_configuracion_data.pgdump 2>> /tmp/errores.txt > /dev/null
    su - postgres -c "psql $2" < crear/bulmages/t_tiposiva_data.pgdump 2>> /tmp/errores.txt > /dev/null
@@ -127,7 +127,7 @@ fi
 
 if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
-   info "Cargamos datos adicionales"
+   info "Cargamos datos adicionales. \n"
    tiempo
    su - postgres -c "psql $2" < crear/bulmages/t_canal_data.pgdump 2>> /tmp/errores.txt > /dev/null
    su - postgres -c "psql $2" < crear/bulmages/t_c_coste_data.pgdump 2>> /tmp/errores.txt > /dev/null
@@ -151,20 +151,20 @@ fi
 #VAmos a hacer la insercion en la metabase de los datos necesarios.
 if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo
-   info "Creamos la empresa en la MetaBase"
+   info "Creamos la empresa en la MetaBase. \n"
    tiempo
    su - postgres -c "echo -e \" INSERT INTO empresa (nombre, ano, nombredb) VALUES ('$4', $5, '$2')\" | psql $6" 2>> /tmp/errores.txt   > /dev/null
    #  Hacemos una actualizacion de las bases de datos.
    su - postgres -c "echo -e \"\\pset tuples_only \n select MAX(idempresa) from empresa ;\" | psql metabd" > /tmp/listdb.lst
    for x in `tail +2 /tmp/listdb.lst`
    do
-      info "Creamos los permisos necesarios"
+      info "Creamos los permisos necesarios. \n"
       tiempo
       su - postgres -c "echo -e \"\\pset tuples_only \n select idusuario FROM usuario ;\" | psql metabd" > /tmp/listuser.lst
       for y in `tail +2 /tmp/listuser.lst`
       do
 	    su - postgres -c " echo \"INSERT INTO usuario_empresa (idusuario,idempresa) VALUES ($y, $x)\" | psql $6 "  2>> /tmp/errores.txt >> /tmp/errores.txt
-	    info "Damos permisos a $y, $x"
+	    info "Damos permisos a $y, $x. \n"
       done
       linea
    done
@@ -172,9 +172,9 @@ fi
 
 DBS=`cat /tmp/errores.txt | grep ERROR`
 if [ "$DBS" ]; then
-   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortará la instalacion. Para mas informacion consulte en bulmages@bulma.net"
+   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortará la instalacion. Para mas informacion consulte en bulmages@bulma.net. \n"
    source ../deinstallbulmages $ptexto
    exit 1
 else
-   info "La instalacion de la base de datos $2 ha sido un exito."
+   info "La instalacion de la base de datos $2 ha sido un exito. \n"
 fi
