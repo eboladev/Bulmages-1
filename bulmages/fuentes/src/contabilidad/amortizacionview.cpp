@@ -45,11 +45,12 @@ void amortizacionview::accept() {
 	QString namortizacion = nomamortizacion->text();
 	double valorcompradbl = valorcompra->text().toDouble();
 	int numcuotasint = numcuotas->text().toInt();
-	QString fechacomprastr = fechacompra->text();	
+	QString fechacomprastr = fechacompra->text();
+        QString fecha1cuotastr = fecha1cuota->text();	
 	fprintf(stderr,"Vamos a hacer un accept\n");
 	if (idamortizacion == "") {
 		fprintf(stderr,"Se trata de una inserción");
-		query.sprintf("INSERT INTO amortizacion (nomamortizacion, valorcompra, numcuotas, fechacompra, idcuentaactivo, idcuentaamortizacion) VALUES ('%s', %f, %d, '%s', %s, %s)", namortizacion.ascii(), valorcompradbl, numcuotasint, fechacomprastr.ascii(), idctaactivo.ascii(), idctaamortizacion.ascii());
+		query.sprintf("INSERT INTO amortizacion (nomamortizacion, valorcompra, numcuotas, fechacompra,fecha1cuota, idcuentaactivo, idcuentaamortizacion) VALUES ('%s', %f, %d, '%s','%s', %s, %s)", namortizacion.ascii(), valorcompradbl, numcuotasint, fechacomprastr.ascii(), fecha1cuotastr.ascii(), idctaactivo.ascii(), idctaamortizacion.ascii());
 		conexionbase->begin();
 		if (conexionbase->ejecuta(query)) {
                      QMessageBox::warning(this, tr("Error..."), tr("Ocurrió un error con la Base de Datos"), tr("Aceptar"));
@@ -77,7 +78,7 @@ void amortizacionview::accept() {
 		done(1);
 	} else {
 		fprintf(stderr,"Se trata de una modificación\n");
-		query.sprintf("UPDATE amortizacion SET nomamortizacion='%s', valorcompra=%f, numcuotas=%d, fechacompra='%s', idcuentaactivo=%s, idcuentaamortizacion=%s WHERE idamortizacion=%s", namortizacion.ascii(), valorcompradbl, numcuotasint,fechacomprastr.ascii(), idctaactivo.ascii(), idctaamortizacion.ascii(), idamortizacion.ascii());
+		query.sprintf("UPDATE amortizacion SET nomamortizacion='%s', valorcompra=%f, numcuotas=%d, fechacompra='%s', idcuentaactivo=%s, idcuentaamortizacion=%s, fecha1cuota='%s' WHERE idamortizacion=%s", namortizacion.ascii(), valorcompradbl, numcuotasint,fechacomprastr.ascii(), idctaactivo.ascii(), idctaamortizacion.ascii(),fecha1cuotastr.ascii(), idamortizacion.ascii());
 		fprintf(stderr,"El query es: %s\n", query.ascii());
 		conexionbase->begin();
 		if (conexionbase->ejecuta(query)) {
@@ -219,17 +220,23 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
       fprintf(stderr,"Cuota: %s\n", cant.ascii());
       int numasiento = 0; //El asiento debe ser uno nuevo.
       aplinteligentesview *nueva=new aplinteligentesview(0,"");
+      QString cuenta = ctaactivo->text();
+      QString cuentaamort = ctaamortizacion->text();
       nueva->inicializa(conexionbase, numasiento, empresaactual->intapuntsempresa());
       nueva->muestraplantilla(idainteligente.toInt());
-      nueva->setvalores("$cuenta$","19000");
-      nueva->setvalores("$cuentabien$","999999");
-      nueva->setvalores("$cuota$", "900");
+      nueva->setvalores("$cuenta$",cuentaamort);
+      nueva->setvalores("$cuentabien$",cuenta);
       nueva->setvalores("$fechaasiento$",table1->text(row,COL_FECHA));
       nueva->setvalores("$cuota$",table1->text(row,COL_CUOTA));   
-      nueva->setmodo(1); // Ponemos los asientos plantilla en modo exclusivo, para poder recuperar el control en cuanto se haya hecho la inserción del asiento. 
+      
+      // Ponemos la fecha del asiento para evitar escribir.
+      nueva->setfechaasiento(table1->text(row,COL_FECHA));
+       // Ponemos los asientos plantilla en modo exclusivo, para poder recuperar el control en cuanto se haya hecho la inserción del asiento. 
+      nueva->setmodo(1);
       nueva->exec();
       int numasiento1=atoi( intapunts->cursorasientos->valor("idasiento").ascii() );
       fprintf(stderr,"El asiento creado ha sido el : %d\n", numasiento1);
+      table1->setText(row,COL_ASIENTO,QString::number(numasiento1));
       delete nueva;
    }// end if
 }// end contextMenuRequested

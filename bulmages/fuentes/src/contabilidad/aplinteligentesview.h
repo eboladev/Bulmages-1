@@ -95,6 +95,7 @@ public:
   void selectfirst();
   void muestraplantilla(int);
   void setvalores(QString, QString);
+  void setfechaasiento(QString fecha) {fechaasiento->setText(fecha);}
   
   // La funcion sirve para especificar el modo de funcionamiento de los asientos intelgientes.
   // Consultar la variable modo para más detalles.
