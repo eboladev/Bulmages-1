@@ -19,11 +19,17 @@
 #define ESTADISTICASVIEW_H
 
 #include <qwidget.h>
-#include "estadisticasdlg.h"
 
+#ifdef ESTADISTICAS
+#include "estadisticasdlg.h"
 #include "estadisticas/topiechart.h"
 #include "estadisticas/tobarchart.h"
 #include "estadisticas/tolinechart.h"
+#endif
+
+#ifdef GDCHART
+#include "estadisticasdlg1.h"
+#endif
 
 #include "postgresiface2.h"
 /** *@author Tomeu Borrás Riera  */
@@ -35,9 +41,10 @@ public:
 postgresiface2 *conexionbase;
 
    int inicializa(postgresiface2 *);
-	estadisticasview(QWidget *parent=0, const char *name=0);
-	~estadisticasview();
+   estadisticasview(QWidget *parent=0, const char *name=0);
+   ~estadisticasview();
    void presentar();
+   void sacapie(float *,char **, int);
 };
 
 #endif

@@ -15,64 +15,20 @@
  ***************************************************************************/
 
 #include "estadisticasview.h"
+#include <qlabel.h>
 
+#ifdef GDCHART
+#include "gdcchart/gdc.h"
+#include "gdcchart/gdcpie.h"
+#endif
 
 int estadisticasview::inicializa(postgresiface2 *conexion) {
     conexionbase = conexion;
     presentar();
-//    pie->show();
     return(0);
 }// end inicializa
 
 estadisticasview::estadisticasview(QWidget *parent, const char *name ) : estadisticasdlg(parent,name) {
-/*
-pie = new toPieChart(this,0);
-pie->resize(550,400);
-//pie->show();
-*/
-
-/*
-std::list<double> milista;
-milista.push_back(45.0);
-milista.push_back(60.3);
-milista.push_back(80.5);
-
-
-std::list<double> milista1;
-milista1.push_back(85);
-milista1.push_back(68);
-milista1.push_back(50);
-
-std::list<double> milista2;
-milista2.push_back(55);
-milista2.push_back(18);
-milista2.push_back(60);
-
-bar = new toBarChart(this,0);
-bar->move(300,20);
-bar->resize(250,250);
-bar->setMinValue(1);
-bar->setMaxValue(100);
-bar->setTitle("hola como mola");
-bar->setSamples(3);
-bar->addValues(milista1,"adios");
-bar->addValues(milista,"hola");
-bar->addValues(milista2,"fin");
-//bar->show();
-
-line = new toLineChart(this,0);
-line->move(10,200);
-line->resize(250,250);
-line->setMinValue(1);
-line->setMaxValue(100);
-line->setTitle("hola");
-line->setSamples(3);
-line->addValues(milista1,"hola");
-line->addValues(milista,"adios");
-line->addValues(milista2,"fin");
-//line->show();
-
-*/
 }
 
 
@@ -83,10 +39,12 @@ estadisticasview::~estadisticasview(){
 
 
 void estadisticasview::presentar() {
+
       int j,num1;
       QString query;
       cursor2 *cursorapt;
-/*      QString finicial = fechainicial1->text();
+      
+/*    QString finicial = fechainicial1->text();
       QString ffinal = fechafinal1->text();
       QString cinicial = codigoinicial->text();
       QString cfinal = codigofinal->text();
@@ -110,8 +68,6 @@ void estadisticasview::presentar() {
       query.sprintf("DELETE FROM balance WHERE debe=0 AND haber =0");
       conexionbase->ejecuta(query);
 
-      conexionbase->commit();
-      conexionbase->begin();
       // Para evitar problemas con los nulls hacemos algunos updates
       query.sprintf("UPDATE BALANCE SET tsaldo=0 WHERE tsaldo ISNULL");
       conexionbase->ejecuta(query);
@@ -122,19 +78,13 @@ void estadisticasview::presentar() {
       query.sprintf("UPDATE BALANCE SET asaldo=0 WHERE asaldo ISNULL");
       conexionbase->ejecuta(query);
 
-      conexionbase->commit();
-      conexionbase->begin();
 
 		query.sprintf("SELECT idcuenta FROM balance ORDER BY padre DESC");
 		cursorapt = conexionbase->cargacursor(query,"Balance1view");
-      conexionbase->commit();
-      conexionbase->begin();
 
       while (!cursorapt->eof())  {
          query.sprintf("SELECT * FROM balance WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
          cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
-			conexionbase->commit();
-	      conexionbase->begin();
 
          query.sprintf("UPDATE balance SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
 //			fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
@@ -144,8 +94,6 @@ void estadisticasview::presentar() {
 		}// end while
 		delete cursorapt;
       
-      conexionbase->commit();
-      conexionbase->begin();
 
       // Borramos todo lo que no es de este nivel
       query.sprintf("DELETE FROM balance where nivel(codigo)>%s","2");
@@ -155,28 +103,41 @@ void estadisticasview::presentar() {
       query.sprintf("DELETE FROM balance WHERE idcuenta IN (SELECT padre FROM balance)");
       conexionbase->ejecuta(query);
 
-      conexionbase->commit();
-      conexionbase->begin();
 
 		query.sprintf("SELECT * FROM balance WHERE debe <> 0  OR haber <> 0 ORDER BY codigo");
 		cursorapt = conexionbase->cargacursor(query,"mycursor");
-		query.sprintf("DROP TABLE balance");
-		conexionbase->ejecuta(query);
-      conexionbase->commit();
 
 
       // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
       num1 = cursorapt->numregistros();
       j=0;
+      char *label[1000];
+      float p[1000];
       while (!cursorapt->eof()) {
          // Acumulamos los totales para al final poder escribirlos
-
          float valor =  atof(cursorapt->valor("tsaldo").ascii());
-         if (valor > 0)
-                  pie->addValue(valor,cursorapt->valor("descripcion").mid(0,25).ascii());
-         else
-                  pie->addValue(-valor,cursorapt->valor("descripcion").mid(0,25).ascii());
-         // end if
+         if (valor > 0) {
+#ifdef ESTADISTICAS
+                  pie->addValue(valor,cursorapt->valor("descripcion").mid(0,15).ascii());
+#endif
+#ifdef GDCHART
+                  label[j]=new char[30];
+                  strcpy(label[j], cursorapt->valor("descripcion").mid(0,15).ascii());
+                  p[j]=valor;
+                  fprintf(stderr,"%s %d", label[j], p[j]);
+#endif
+                  
+         } else {
+#ifdef ESTADISTICAS
+                  pie->addValue(-valor,cursorapt->valor("descripcion").mid(0,15).ascii());
+#endif
+#ifdef GDCHART
+                  label[j]=new char[30];
+                  strcpy(label[j], cursorapt->valor("descripcion").mid(0,15).ascii());
+                  p[j]=-valor;
+                  fprintf(stderr,"%s %d", label[j], p[j]);
+#endif
+         } // end if
 
          // Calculamos la siguiente cuenta registro y finalizamos el bucle
          cursorapt->siguienteregistro();
@@ -185,6 +146,80 @@ void estadisticasview::presentar() {
 
       // Vaciamos el cursor de la base de datos.
       delete cursorapt;
+      query.sprintf("DROP TABLE balance");
+      conexionbase->ejecuta(query);
+      conexionbase->commit();
 
+	/* values to chart */
+              
+#ifdef GDCHART                  
+      fprintf(stderr,"Llamamos a sacapie\n");
+//      sacapie(p, label, j);
+      sacapie(p, label, (j-1>10 )? 10:j-1);
+//      sacapie(p, label, 4);
+      fprintf(stderr,"Hemos terminado sacapie \n");
+      QPixmap *imag= new QPixmap("/tmp/pie.gif");
+      fprintf(stderr,"Y ahora hemos creado la imagen\n");
+      imagen2->setPixmap(*imag);
+      fprintf(stderr,"Y ahora la hemos mostrado\n");   
+      //Destruimos la memoria utilizada
+      for(int i=0;i<j;i++) delete label[i];
+      delete imag;
+#endif
 }// end presentar
+
+
+void estadisticasview::sacapie(float *p,char **lbl, int numslices) {
+#ifdef GDCHART
+for (int i=0; i< numslices; i++) 
+   fprintf(stderr,"%s = %d\n", lbl[i],p[i]);
+fprintf(stderr,"Hemos terminado de compilar   \n");
+	/* labels */
+	FILE		*fp = fopen( "/tmp/pie.gif", "wb" );
+
+	/* set which slices to explode, and by how much */
+	int				expl[] = { 0, 0, 0, 0, 0, 20, 0 };
+
+	/* set missing slices */
+	unsigned char	missing[] = { FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE };
+
+	/* colors */
+	unsigned long	clr[] = { 0xFF4040L, 0x80FF80L, 0x8080FFL, 0xFF80FFL, 0xFFFF80L, 0x80FFFFL, 0x0080FFL };
+
+	/* set options  */
+	/* a lot of options are set here for illustration */
+	/* none need be - see gdcpie.h for defaults */
+	GDCPIE_title = "Balance Gráfico";
+	GDCPIE_label_line = TRUE;
+	GDCPIE_label_dist = 15;				/* dist. labels to slice edge */
+										/* can be negative */
+	GDCPIE_LineColor = 0x000000L;
+	GDCPIE_label_size = GDC_SMALL;
+/*	GDCPIE_3d_depth  = 25;	*/
+/*	GDCPIE_3d_angle  = 45;				   0 - 359 */
+	GDCPIE_explode   = expl;			/* default: NULL - no explosion */
+	GDCPIE_Color     = clr;
+	GDCPIE_BGColor   = 0xFFFFFFL;
+	GDCPIE_EdgeColor = 0x000000L;		/* default is GDCPIE_NOCOLOR */
+										/* for no edging */
+	GDCPIE_missing   = missing;			/* default: NULL - none missing */
+
+										/* add percentage to slice label */
+										/* below the slice label */
+	GDCPIE_percent_labels = GDCPIE_PCT_RIGHT;
+
+	/* call the lib */
+	pie_gif( 480,			/* width */
+			 360,			/* height */
+			 fp,			/* open file pointer */
+			 GDC_3DPIE,		/* or GDC_2DPIE */
+			 numslices,				/* number of slices */
+			 lbl,			/* slice labels (unlike out_gif(), can be NULL */
+			 p );			/* data array */
+fprintf(stderr,"Hemos terminado la imagen\n");
+	fclose( fp );
+//	exit( 0 );
+#endif
+}
+
 
