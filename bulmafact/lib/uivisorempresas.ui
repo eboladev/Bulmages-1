@@ -65,7 +65,7 @@
     <widget class="QListView">
         <column>
             <property name="text">
-                <string>Nombre</string>
+                <string>Nombre Comercial</string>
             </property>
             <property name="clickable">
                 <bool>true</bool>
@@ -76,7 +76,7 @@
         </column>
         <column>
             <property name="text">
-                <string>Ejercicio</string>
+                <string>Archivo</string>
             </property>
             <property name="clickable">
                 <bool>true</bool>

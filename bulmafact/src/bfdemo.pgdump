@@ -117,9 +117,11 @@ CREATE TABLE pga_scripts (
 );
 
 
+SET SESSION AUTHORIZATION 'postgres';
+
 --
--- TOC entry 12 (OID 351729)
--- Name: meta; Type: TABLE; Schema: public; Owner: josep
+-- TOC entry 12 (OID 352261)
+-- Name: meta; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE meta (
@@ -129,8 +131,8 @@ CREATE TABLE meta (
 
 
 --
--- TOC entry 13 (OID 351842)
--- Name: usuarios; Type: TABLE; Schema: public; Owner: josep
+-- TOC entry 13 (OID 352265)
+-- Name: usuarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE usuarios (
@@ -138,10 +140,12 @@ CREATE TABLE usuarios (
     nombre character varying(35),
     apellido1 character varying(35),
     apellido2 character varying(35),
-    "password" character varying(35),
+    clave character varying(35),
     permisos text
 );
 
+
+SET SESSION AUTHORIZATION 'josep';
 
 --
 -- Data for TOC entry 24 (OID 351594)
@@ -180,8 +184,9 @@ pg_catalog.pg_group	3	groname grosysid grolist	150 150 150
 pg_catalog.pg_description	4	objoid classoid objsubid description	150 150 150 150
 pg_catalog.pg_depend	7	classid objid objsubid refclassid refobjid refobjsubid deptype	150 150 150 150 150 150 150
 pg_catalog.pg_database	11	datname datdba encoding datistemplate datallowconn datlastsysoid datvacuumxid datfrozenxid datpath datconfig datacl	150 150 150 150 150 150 150 150 150 150 150
-public.meta	2	id valor	134 275
-public.usuarios	6	login nombre apellido1 apellido2 password permisos	150 150 150 150 150 150
+	2	nombredb nombreempresa	150 150
+public.usuarios	6	login nombre apellido1 apellido2 clave permisos	150 150 150 150 150 150
+public.meta	2	id valor	150 150
 \.
 
 
@@ -239,9 +244,11 @@ COPY pga_scripts (scriptname, scriptsource) FROM stdin;
 \.
 
 
+SET SESSION AUTHORIZATION 'postgres';
+
 --
--- Data for TOC entry 32 (OID 351729)
--- Name: meta; Type: TABLE DATA; Schema: public; Owner: josep
+-- Data for TOC entry 32 (OID 352261)
+-- Name: meta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY meta (id, valor) FROM stdin;
@@ -251,15 +258,16 @@ empresa	Servicios Financieros S.A.
 
 
 --
--- Data for TOC entry 33 (OID 351842)
--- Name: usuarios; Type: TABLE DATA; Schema: public; Owner: josep
+-- Data for TOC entry 33 (OID 352265)
+-- Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY usuarios (login, nombre, apellido1, apellido2, "password", permisos) FROM stdin;
-a	usuari	de	prova		entrada{+},
+COPY usuarios (login, nombre, apellido1, apellido2, clave, permisos) FROM stdin;
 bulmages	Superusuario	BulmaFact	Bulmafact	bulmages	entrada{+},
 \.
 
+
+SET SESSION AUTHORIZATION 'josep';
 
 --
 -- TOC entry 14 (OID 351599)
@@ -333,9 +341,11 @@ ALTER TABLE ONLY pga_scripts
     ADD CONSTRAINT pga_scripts_pkey PRIMARY KEY (scriptname);
 
 
+SET SESSION AUTHORIZATION 'postgres';
+
 --
--- TOC entry 22 (OID 351731)
--- Name: meta_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+-- TOC entry 22 (OID 352263)
+-- Name: meta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY meta
@@ -343,15 +353,13 @@ ALTER TABLE ONLY meta
 
 
 --
--- TOC entry 23 (OID 351847)
--- Name: usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+-- TOC entry 23 (OID 352270)
+-- Name: usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY usuarios
     ADD CONSTRAINT usuarios_pkey PRIMARY KEY (login);
 
-
-SET SESSION AUTHORIZATION 'postgres';
 
 --
 -- TOC entry 2 (OID 2200)

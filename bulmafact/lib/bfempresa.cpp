@@ -42,7 +42,7 @@ BfCursor* BfEmpresa::pg_database(QString* usuario, QString* passwd) {
         DbTemp = new pgIface(currTemplate1->valor(0));
         DbTemp->begin();
         curTempVersion = DbTemp->cargaCursor("SELECT valor FROM meta WHERE id='version'","buscaDB");
-        query.sprintf("SELECT login, password FROM usuarios WHERE login='%s' AND password='%s'",usuario->ascii(),passwd->ascii());
+        query.sprintf("SELECT login, clave FROM usuarios WHERE login='%s' AND clave='%s'",usuario->ascii(),passwd->ascii());
         curTempUsuario = DbTemp->cargaCursor(query,"buscaUser");
         if (!curTempVersion->eof() && !curTempUsuario->eof()) {
             fprintf(stderr,"Encontrado Usuario: " +  curTempUsuario->valor(0) + "\n"); 
