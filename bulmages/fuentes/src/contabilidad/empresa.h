@@ -38,7 +38,13 @@
 #include "selectcanalview.h"
 
 
-/** * @author Tomeu Borrás Riera */
+/**
+ * @author Tomeu Borrás Riera
+ * \class empresa empresa.h
+ * \brief Soporte principal para cada empresa contable
+ *  
+ * Clase que soporta todas las funciones de la empresa contable. Supuestamente el programa podrá tener múltiples empresas abiertas al mismo tiempo.
+ */
 
 class empresa {
 private:

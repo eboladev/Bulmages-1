@@ -732,8 +732,7 @@ void Bulmages01::initToolBar() {
   navegacionToolbar->addSeparator();
   filtro->addTo(navegacionToolbar);
   
-  
-  
+
   // Vamos a probar con un docwindow.
 
   doc  = new  QDockWindow(this,"Corrector");
@@ -741,13 +740,11 @@ void Bulmages01::initToolBar() {
   doc->setFixedExtentWidth(200);
   correctorwidget *corr = new correctorwidget(doc,"correctorw");
   doc->setWidget(corr);
-//  doc->setCloseMode(QDockWindow::Always);
   doc->setResizeEnabled(TRUE);
   doc->setMovingEnabled(TRUE);
   moveDockWindow(doc,Left);
   doc->hide();
   corr->setEmpresa(&empresaactual);
-  
 }// end initToolBar
 
 

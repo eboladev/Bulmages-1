@@ -24,19 +24,28 @@
 
 #include "postgresiface2.h"
 
-/** *@author Tomeu Borrás Riera */
+/** 
+  * @author Tomeu Borrás Riera 
+  */
 
+class empresa;  
+  
 class ivaview : public ivadlg  {
   Q_OBJECT
+
 public:
+  empresa *empresaactual;
   postgresiface2 *conexionbase;
   int idborrador;
   int idregistroiva;
+
 public: 
-  ivaview(QWidget *parent=0, const char *name=0);
+  ivaview(empresa *, QWidget *parent=0, const char *name=0);
   ~ivaview();
-  int inicializa(postgresiface2 *, int);
+  int inicializa(int);
   void inicializa1(int );
+  void guardaprevpago(int );
+
 public slots:
   virtual void accept();
   virtual void boton_borrar();
@@ -48,7 +57,10 @@ public slots:
 
 private slots:
   virtual void setSoportadoRepercutido(int);
-
+  virtual void tcambiaseleccion();
+  virtual void cambiadogrid(int, int);
+  virtual void pulsadomas(int, int, int);
+  
 };
 
 #endif

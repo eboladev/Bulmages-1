@@ -73,10 +73,7 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
     tapunts->setColumnMovingEnabled( TRUE );
     tapunts->setSorting( TRUE );
     tapunts->setSelectionMode( QTable::SingleRow );
-
-    
-    connect( tapunts, SIGNAL( pulsadomas(int, int, int)), this, SLOT(pulsadomas(int, int, int)));
-
+ 
     tapunts->setNumCols(16);
     tapunts->horizontalHeader()->setLabel( COL_FECHA, tr( "FECHA" ) );
     tapunts->horizontalHeader()->setLabel( COL_SUBCUENTA, tr( "SUBCUENTA" ) );
@@ -562,9 +559,9 @@ void intapunts3view::boton_cerrarasiento() {
                 fprintf(stderr,"%s\n",codcuenta.ascii());
                 int idborrador = atoi(tapunts->text(i,COL_IDBORRADOR).ascii());
                 if (idborrador != 0) {
-                    ivaview *regivaview=new ivaview(0,"");
-                    if (codcuenta == "477") regivaview->inicializa(conexionbase,2); //IVA Repercutido (Ventas)
-                    else regivaview->inicializa(conexionbase,1); //IVA Soportado (Compras)
+                    ivaview *regivaview=new ivaview(empresaactual,0,"");
+                    if (codcuenta == "477") regivaview->inicializa(2); //IVA Repercutido (Ventas)
+                    else regivaview->inicializa(1); //IVA Soportado (Compras)
                     regivaview->inicializa1(idborrador);
                     regivaview->exec();
                     delete regivaview;
@@ -915,7 +912,6 @@ void intapunts3view::apuntecambiadogrid(int row, int col) {
 
 void intapunts3view::tcambiaseleccion() {
     QString codcuenta;
-    
     fprintf(stderr,"Canviat a la FILA: %d\n", tapunts->currentRow());
     if (rowactual != tapunts->currentRow() && abierto)
         guardaborrador(rowactual);
@@ -927,7 +923,13 @@ void intapunts3view::currentChanged() {
     fprintf(stderr,"currentChanged");
 }// end currentChanged()
 
+/** \brief Se va a hacer que el contenido de la casilla actual sea igual que el de la anterior.
 
+En la introducción de apuntes, al pulsar el * o con el correspondiente menu contextual se consigue el 
+efecto del duplicado de contenido basado en la linea anterior.
+\sa \ref pulsadomas \ref calculadescuadre
+  
+ */
 void intapunts3view::duplicar(int col) {
     if (rowactual >0) {
         if (col == COL_SUBCUENTA || col == COL_NOMCUENTA) {
@@ -1117,8 +1119,8 @@ void intapunts3view::boton_iva() {
     // Directamente vamos a editar dicho registro.
     int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
     if (tapunts->text(rowactual,COL_IVA) != "") {
-       ivaview *nuevae=new ivaview(0,"");
-       nuevae->inicializa(conexionbase,0);
+       ivaview *nuevae=new ivaview(empresaactual, 0,"");
+       nuevae->inicializa(0);
        nuevae->inicializa1(idborrador);
        nuevae->exec();
        delete nuevae;
@@ -1145,8 +1147,8 @@ void intapunts3view::boton_iva() {
         int es_iva = (codcuenta == "472") + ((codcuenta == "477") * 2);
         int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
         if (idborrador != 0) {
-              ivaview *nuevae=new ivaview(0,"");
-              nuevae->inicializa(conexionbase,es_iva);
+              ivaview *nuevae=new ivaview(empresaactual,0,"");
+              nuevae->inicializa(es_iva);
               nuevae->inicializa1(idborrador);
               nuevae->exec();
               delete nuevae;
@@ -1175,8 +1177,8 @@ void intapunts3view::boton_iva() {
                 // Una forma "compleja" de indicar si es una compra o una venta.
                 int es_iva = (codcuenta == "6") + ((codcuenta == "7") * 2);
                 if (idborrador != 0) {
-                     ivaview *nuevae=new ivaview(0,"");
-                     nuevae->inicializa(conexionbase,es_iva);
+                     ivaview *nuevae=new ivaview(empresaactual,0,"");
+                     nuevae->inicializa(es_iva);
                      nuevae->inicializa1(idborrador);
                      nuevae->exec();
                      delete nuevae;
@@ -1530,8 +1532,8 @@ void intapunts3view::boton_buscacuenta() {
 // 2 -> del año actual
 void intapunts3view::boton_extracto1(int tipo) {
     QDate fecha1, fecha2, fechaact;
-    if(!tapunts->text(rowactual, COL_FECHA).isEmpty()) {
-        fechaact = normalizafecha(tapunts->text(rowactual, COL_FECHA));
+    if(!tapunts->text(tapunts->currentRow(), COL_FECHA).isEmpty()) {
+        fechaact = normalizafecha(tapunts->text(tapunts->currentRow(), COL_FECHA));
         switch(tipo) {
         case 0:
             fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
@@ -1546,14 +1548,10 @@ void intapunts3view::boton_extracto1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         }// end switch
-        extracto->inicializa1(tapunts->text(rowactual, COL_SUBCUENTA), tapunts->text(rowactual, COL_SUBCUENTA),fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        extracto->inicializa1(tapunts->text(tapunts->currentRow(), COL_SUBCUENTA), tapunts->text(tapunts->currentRow(), COL_SUBCUENTA),fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
     extracto->accept();
-/*
-    extracto->show();
-    extracto->setFocus();
-*/
-   empresaactual->libromayor();
+    empresaactual->libromayor();
 }// end boton_extracto1
 
 
@@ -1564,8 +1562,8 @@ void intapunts3view::boton_extracto1(int tipo) {
 // 2 -> del año actual
 void intapunts3view::boton_diario1(int tipo) {
     QDate fecha1, fecha2, fechaact;
-    if(!tapunts->text(rowactual, COL_FECHA).isEmpty()) {
-        fechaact = normalizafecha(tapunts->text(rowactual, COL_FECHA) );
+    if(!tapunts->text(tapunts->currentRow(), COL_FECHA).isEmpty()) {
+        fechaact = normalizafecha(tapunts->text(tapunts->currentRow(), COL_FECHA) );
         switch(tipo) {
         case 0:
             fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
@@ -1595,8 +1593,8 @@ void intapunts3view::boton_diario1(int tipo) {
 // 2 -> del año actual
 void intapunts3view::boton_balance1(int tipo) {
     QDate fecha1, fecha2, fechaact;
-    if(!tapunts->text(rowactual, COL_FECHA).isEmpty()) {
-        fechaact = normalizafecha(tapunts->text(rowactual, COL_FECHA) );
+    if(!tapunts->text(tapunts->currentRow(), COL_FECHA).isEmpty()) {
+        fechaact = normalizafecha(tapunts->text(tapunts->currentRow(), COL_FECHA) );
         switch(tipo) {
         case 0:
             fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
@@ -1611,7 +1609,7 @@ void intapunts3view::boton_balance1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         }// end switch
-        balance->inicializa1(tapunts->text(rowactual, COL_SUBCUENTA), tapunts->text(rowactual, COL_SUBCUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        balance->inicializa1(tapunts->text(tapunts->currentRow(), COL_SUBCUENTA), tapunts->text(tapunts->currentRow(), COL_SUBCUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
     balance->accept();
     // La presentación que la haga la clase empresa. Que es quien se encarga de ello.

@@ -18,7 +18,6 @@
 #include <qlabel.h>
 
 #ifdef GDCHART
-//#include "gdcchart/gdc.h"
 #include "gdc.h"
 #include "gdcpie.h"
 #include <gdchart.h>
@@ -27,6 +26,15 @@
 int estadisticasview::inicializa(postgresiface2 *conexion) {
     conexionbase = conexion;
     presentar();
+#ifdef GDCHART
+   delete m_pie;
+#endif
+
+#ifdef ESTADISTICAS
+   delete m_imagen;
+#endif    
+    
+    
     return(0);
 }// end inicializa
 
@@ -35,22 +43,13 @@ estadisticasview::estadisticasview(QWidget *parent, const char *name ) : estadis
 
 
 estadisticasview::~estadisticasview(){
-//   delete pie;
-//   delete bar;
 }
 
 
 void estadisticasview::presentar() {
-
       int j,num1;
       QString query;
       cursor2 *cursorapt;
-      
-/*    QString finicial = fechainicial1->text();
-      QString ffinal = fechafinal1->text();
-      QString cinicial = codigoinicial->text();
-      QString cfinal = codigofinal->text();
-*/
       QString finicial = "01/01/2003";
       QString ffinal = "31/12/2003";
       QString cinicial = "10";
@@ -123,7 +122,7 @@ void estadisticasview::presentar() {
          float valor =  atof(cursorapt->valor("tsaldo").ascii());
          if (valor > 0) {
 #ifdef ESTADISTICAS
-                  pie->addValue(valor,cursorapt->valor("descripcion").mid(0,15).ascii());
+                  m_pie->addValue(valor,cursorapt->valor("descripcion").mid(0,15).ascii());
 #endif
 #ifdef GDCHART
                   label[j]=new char[30];
@@ -134,7 +133,7 @@ void estadisticasview::presentar() {
                   
          } else {
 #ifdef ESTADISTICAS
-                  pie->addValue(-valor,cursorapt->valor("descripcion").mid(0,15).ascii());
+                  m_pie->addValue(-valor,cursorapt->valor("descripcion").mid(0,15).ascii());
 #endif
 #ifdef GDCHART
                   label[j]=new char[30];
@@ -165,7 +164,7 @@ void estadisticasview::presentar() {
       fprintf(stderr,"Hemos terminado sacapie \n");
       QPixmap *imag= new QPixmap("/tmp/pie.gif");
       fprintf(stderr,"Y ahora hemos creado la imagen\n");
-      imagen2->setPixmap(*imag);
+      m_imagen->setPixmap(*imag);
       fprintf(stderr,"Y ahora la hemos mostrado\n");   
       //Destruimos la memoria utilizada
       for(int i=0;i<j;i++) delete label[i];

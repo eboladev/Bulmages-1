@@ -18,6 +18,7 @@
 #include "regivaprintview.h"
 #include "ivaview.h"
 #include "modelo300.h"
+#include "empresa.h"
 
 //Tabla Soportado
 #define  S_COL_FECHA 0
@@ -51,7 +52,9 @@
 
 Mod300ps *modelo;
 
-listivaview::listivaview(QString ejerActual, QWidget *parent, const char *name ) : listivadlg(parent,name) {
+listivaview::listivaview(empresa * emp, QString ejerActual, QWidget *parent, const char *name ) : listivadlg(parent,name) {
+   empresaactual = emp;
+   conexionbase = emp->bdempresa();
   //QDate fecha = QDate::currentDate();
   //QString buffer;
   //buffer.sprintf("01/01/%d",fecha.year());
@@ -116,13 +119,12 @@ void listivaview::boton_print() {
 
 
 void listivaview::boton_reload() {
-   inicializa(conexionbase, introapunts);
+   inicializa(introapunts);
 }// end boton_reload
 
 
-void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
+void listivaview::inicializa( intapunts3view *inta) {
     introapunts = inta;
-    conexionbase = conn;
     QString query;
     QString sbaseimp, siva;
     float  fbaseimp, fiva;
@@ -349,7 +351,7 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     
 }// end inicializa
 
-void listivaview::menu_contextual(int row, int col, const QPoint &poin) {
+void listivaview::menu_contextual(int row, int , const QPoint &poin) {
     // Si el asiento esta cerrado el menu a mostrar es diferente
     QPopupMenu *popup = new QPopupMenu;
     popup->insertItem(tr("Ver Asiento"), 0);
@@ -370,8 +372,8 @@ void listivaview::menu_contextual(int row, int col, const QPoint &poin) {
         case 101:
            int idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
            if (idborrador != 0) {
-               ivaview *nuevae=new ivaview(0,"");
-               nuevae->inicializa(conexionbase,1); //el "1" indica IVA Soportado
+               ivaview *nuevae=new ivaview(empresaactual,0,"");
+               nuevae->inicializa(1); //el "1" indica IVA Soportado
                nuevae->inicializa1(idborrador);
                nuevae->exec();
                delete nuevae;
@@ -380,12 +382,10 @@ void listivaview::menu_contextual(int row, int col, const QPoint &poin) {
     }// end switch
     delete popup;
     
-    // Para evitar warnings
-    col=0;
 }// end contextmenu
 
 
-void listivaview::menu_contextual1(int row, int col, const QPoint &poin) {
+void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
     // Si el asiento esta cerrado el menu a mostrar es diferente
     QPopupMenu *popup = new QPopupMenu;
     popup->insertItem(tr("Ver Asiento"), 0);
@@ -406,8 +406,8 @@ void listivaview::menu_contextual1(int row, int col, const QPoint &poin) {
         case 101:
            int idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
            if (idborrador != 0) {
-               ivaview *nuevae=new ivaview(0,"");
-               nuevae->inicializa(conexionbase,2); //el "2" indica IVA Repercutido
+               ivaview *nuevae=new ivaview(empresaactual, 0,"");
+               nuevae->inicializa(2); //el "2" indica IVA Repercutido
                nuevae->inicializa1(idborrador);
                nuevae->exec();
                delete nuevae;
@@ -415,8 +415,6 @@ void listivaview::menu_contextual1(int row, int col, const QPoint &poin) {
         break;
     }// end switch
     delete popup;
-    // Como a nadie le gusta ver warnings, utiliamos las variables de exceso para evitar warnings (una chapuza !!!!)
-    col =0;
 }// end contextmenu
 
 

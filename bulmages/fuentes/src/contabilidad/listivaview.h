@@ -42,16 +42,19 @@
 
 /** *@author Tomeu Borrás Riera */
 
+class empresa;
+
 class listivaview : public listivadlg  {
    Q_OBJECT
 public:
+  empresa *empresaactual;
   postgresiface2 *conexionbase;
   intapunts3view *introapunts;
 
 public: 
-	listivaview(QString ejerActual="",QWidget *parent=0, const char *name=0);
+	listivaview(empresa *, QString ejerActual="",QWidget *parent=0, const char *name=0);
 	~listivaview();
-  void inicializa(postgresiface2 *, intapunts3view *);
+  void inicializa(intapunts3view *);
 public slots:
   virtual void doble_click_soportado(int,int,int, const QPoint &);
   virtual void doble_click_repercutido(int,int,int, const QPoint &);

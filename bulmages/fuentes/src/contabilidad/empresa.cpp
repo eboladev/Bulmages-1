@@ -531,8 +531,8 @@ void empresa::Ordenarasientos(int ejercicio) {
 }// end Abrirasientos
 
 int empresa::registroiva() {
-   listivaview *perd = new listivaview(EjercicioActual.ascii());
-   perd->inicializa(conexionbase2, introapunts1);
+   listivaview *perd = new listivaview(this, EjercicioActual.ascii());
+   perd->inicializa(introapunts1);
    perd->exec();
    delete perd;
    return(0);

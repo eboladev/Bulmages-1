@@ -14,16 +14,88 @@
  *                                                                         *
  ***************************************************************************/
 
+ /*
+-- La tabla prevcobro es prevision de cobros / pagos para facturas.
+-- Esta tabla proporciona las formas de pago de cada factura que se pasa a un cliente o que recibimos de un proveedor.
+
+-- tipoprevcobro indica si es un cobro (true) o un pago (false).
+-- fpagoprevcobro es un identificador a la otra tabla de Formas de Pago.
+-- idcuenta La cuenta sobre la que se hará el cobro / pago.
+-- idasiento Asiento de cobro (Si está hecho).
+-- cantidadprevistaprevcobro Cantidad Prevista del cobro.
+-- cantidadprevcobro         Cantidad Cobrada.
+-- fprevistaprevcobro        Fecha en que se prevee el cobro / pago.
+-- fcobroprevcobro           Fecha en que se ha realizado el cobro / pago.
+-- idregistroiva             Registro de IVA con el que se corresponde, o factura con la que se corresponde.
+-- tipoprevcobro             Indica si es un cobro o un pago.
+
+
+CREATE TABLE prevcobro (
+    idprevcobro serial PRIMARY KEY,
+    fprevistaprevcobro date,
+    fcobroprevcobro date,
+    fpagoprevcobro integer,
+    idcuenta integer REFERENCES cuenta(idcuenta),
+    idasiento integer REFERENCES asiento(idasiento),
+    cantidadprevistaprevcobro double,
+    cantidadprevcobro         double,
+    idregistroiva NOT NULL REFERENCES registroiva(idregistroiva),
+    tipoprevcobro boolean
+);
+
+ */
+ 
+ 
+ 
+ 
 #include "ivaview.h"
 #include "listcuentasview1.h"
+#include "empresa.h"
+#include "calendario.h"
 
 #define IVA_SOPORTADO    1
 #define IVA_REPERCUTIDO  2
 
+#define COL_PREV_IDPREVCOBRO 0
+#define COL_PREV_FPREVISTAPREVCOBRO 1
+#define COL_PREV_FCOBROPREVCOBRO     2
+#define COL_PREV_IDCUENTA  3
+#define COL_PREV_CODCUENTA 4
+#define COL_PREV_CANTIDADPREVISTAPREVCOBRO 5
+#define COL_PREV_CANTIDADPREVCOBRO 6
+#define COL_PREV_FPAGOPREVCOBRO 7
+#define COL_PREV_IDREGISTROIVA 8
 
-ivaview::ivaview(QWidget *parent, const char *name ) : ivadlg(parent,name) {
-  idborrador=0;
-  idregistroiva =0;
+
+
+
+ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(parent,name) {
+   empresaactual = emp;
+   conexionbase = emp->bdempresa();
+   idborrador=0;
+   idregistroiva =0;
+  
+   m_listPrevision->setNumCols(9);
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDPREVCOBRO, tr( "COL_PREV_IDPREVCOBRO") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FPREVISTAPREVCOBRO, tr( "COL_PREV_FPREVISTAPREVCOBRO") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FCOBROPREVCOBRO, tr( "COL_PREV_FCOBROPREVCOBRO") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDCUENTA, tr( "COL_PREV_IDCUENTA") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CODCUENTA, tr( "COL_PREV_CODCUENTA") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CANTIDADPREVISTAPREVCOBRO, tr( "COL_PREV_CANTIDADPREVISTAPREVCOBRO") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CANTIDADPREVCOBRO, tr( "COL_PREV_CANTIDADPREVCOBRO") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FPAGOPREVCOBRO, tr( "COL_PREV_FPAGOPREVCOBRO") );
+   m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDREGISTROIVA, tr( "COL_PREV_IDREGISTROIVA") );
+   m_listPrevision->setColumnWidth(COL_PREV_IDPREVCOBRO,100);
+   m_listPrevision->setColumnWidth(COL_PREV_FPREVISTAPREVCOBRO,75);
+   m_listPrevision->setColumnWidth(COL_PREV_FCOBROPREVCOBRO,75);
+   m_listPrevision->setColumnWidth(COL_PREV_IDCUENTA,75);
+   m_listPrevision->setColumnWidth(COL_PREV_CODCUENTA,75);
+   m_listPrevision->setColumnWidth(COL_PREV_CANTIDADPREVISTAPREVCOBRO,75);
+   m_listPrevision->setColumnWidth(COL_PREV_CANTIDADPREVCOBRO,75);
+   m_listPrevision->setColumnWidth(COL_PREV_FPAGOPREVCOBRO,75);
+   m_listPrevision->setColumnWidth(COL_PREV_IDREGISTROIVA,75);
+   
+   m_listPrevision->setNumRows(50);
 }// end ivaview
 
 
@@ -31,8 +103,7 @@ ivaview::~ivaview(){
 }// end ~ivaview
 
 
-int ivaview::inicializa(postgresiface2 *conn, int sop_rep=0) {
-  conexionbase = conn;
+int ivaview::inicializa(int sop_rep=0) {
   setSoportadoRepercutido(sop_rep);
   return(0);
 }// end inicializa
@@ -75,7 +146,6 @@ void ivaview::accept() {
  * el registro actual.                                                     *
  ***************************************************************************/
 void ivaview::boton_borrar() {
-  fprintf(stderr,"Boton de Borrar Pulsado \n");
   QString query;
   if (idregistroiva != 0) {
     query.sprintf("DELETE FROM registroiva WHERE idregistroiva=%d",idregistroiva);
@@ -125,12 +195,10 @@ void ivaview::inicializa1(int idapunte1) {
     numorden->setText(cursoriva->valor("numorden"));
     cif->setText(cursoriva->valor("cif"));
     query.sprintf ("SELECT * from borrador, asiento, cuenta WHERE borrador.idborrador=%d AND borrador.idasiento=asiento.idasiento AND borrador.idcuenta=cuenta.idcuenta",idborrador);
-    //fprintf(stderr,"%s\n",query.ascii());
     conexionbase->begin();
     cursor2 * cursorapunte = conexionbase->cargacursor(query,"cursorapunte");
     conexionbase->commit();
     if (!cursorapunte->eof()) {
-      //fprintf(stderr,"Asiento %s\n",cursorapunte->valor("idasiento").ascii());
       numasiento->setText(cursorapunte->valor("ordenasiento")); 
       cuentaiva->setText(cursorapunte->valor("codigo"));
     }// end if
@@ -138,13 +206,12 @@ void ivaview::inicializa1(int idapunte1) {
       cuentaiva->setText("472");
       iva->setText("0");
       importeiva->setText("0.00");
-    }
+    }// end if
     if (cuentaiva->text().left(3) == "700") {
       cuentaiva->setText("477");
       iva->setText("0");
       importeiva->setText("0.00");
-    }
-    
+    }// end if
     delete cursorapunte;
   } else {
       // Aun no se ha metido ningun registro de este estilo, debe inicializarse.
@@ -249,9 +316,9 @@ void ivaview::inicializa1(int idapunte1) {
                       int numord = 1 + atoi(recordset->valor("numorden").ascii());
                       cadena.sprintf("%i",numord);
                       numorden->setText(cadena);
-                 }
-              }
-          }
+                 }// end if
+              }// end if
+          }// end if
           delete recordset;//Fin proposicion numeros factura y orden.
 //* END JOSEP BURCION 
         }// end if
@@ -260,6 +327,30 @@ void ivaview::inicializa1(int idapunte1) {
       delete cursorapunte;
   }// end if
   delete cursoriva;
+  
+  
+  // Cargamos las formas de pago correspondientes y las ponemos como toca.
+  QString SQLQuery;
+  SQLQuery.sprintf("SELECT * FROM prevcobro LEFT JOIN cuenta ON prevcobro.idcuenta = cuenta.idcuenta WHERE idregistroiva=%d", idregistroiva);
+  conexionbase->begin();
+  cursor2 *curprevcobros = conexionbase->cargacursor(SQLQuery, "queryprevcobros");
+  conexionbase->commit();
+  int i =0;
+  while ( ! curprevcobros->eof()) {  
+      m_listPrevision->setText(i, COL_PREV_IDPREVCOBRO,curprevcobros->valor("idprevcobro"));
+      m_listPrevision->setText(i, COL_PREV_FPREVISTAPREVCOBRO,curprevcobros->valor("fprevistaprevcobro"));
+      m_listPrevision->setText(i, COL_PREV_FCOBROPREVCOBRO,curprevcobros->valor("fcobroprevcobro"));
+      m_listPrevision->setText(i, COL_PREV_IDCUENTA,curprevcobros->valor("idcuenta"));
+      m_listPrevision->setText(i, COL_PREV_CODCUENTA,curprevcobros->valor("codigo"));
+      m_listPrevision->setText(i, COL_PREV_CANTIDADPREVISTAPREVCOBRO,curprevcobros->valor("cantidadprevistaprevcobro"));
+      m_listPrevision->setText(i, COL_PREV_CANTIDADPREVCOBRO,curprevcobros->valor("cantidadprevcobro"));
+      m_listPrevision->setText(i, COL_PREV_FPAGOPREVCOBRO,curprevcobros->valor("fpagoprevcobro"));
+      m_listPrevision->setText(i, COL_PREV_IDREGISTROIVA,curprevcobros->valor("idregistroiva"));
+      i++;
+      curprevcobros->siguienteregistro(); 
+  }// end while
+  delete curprevcobros;
+  
 }// end inicializa1
 
 
@@ -293,3 +384,157 @@ void ivaview::setSoportadoRepercutido(int sop_rep=0) {
   else setCaption("Iva soportado/repercutido");
   numorden->setEnabled(sop_rep==1);
 }
+
+/**
+  * \brief Esta función guarda una linea de la tabla de previsiones
+  *
+  * La linea se guarda en la base de datos prevcobro, la tabla afectada es m_listPrevision
+  * El parametro que se pasa es la columna de la tabla que queremos guardar en la base de datos.
+  */
+void ivaview::guardaprevpago (int numrow) {
+   QString idprevpago = m_listPrevision->text(numrow, COL_PREV_IDPREVCOBRO);
+   if (idprevpago != "") {       // Ya un elemento, debemos hacer un UPDATE
+      QString SQLQuery = "UPDATE prevcobro SET idcuenta="+m_listPrevision->text(numrow, COL_PREV_IDCUENTA);
+      SQLQuery += " WHERE idprevcobro="+idprevpago;
+      conexionbase->begin();
+      conexionbase->ejecuta(SQLQuery);
+      conexionbase->commit();
+   } else {                      // Hay que hacer un INSERT
+   }// end if
+}// end guardaprevpago
+
+/**
+  * \brief SLOT que captura el cambio de foco en la rejilla de Previsiones de cobros y pagos.
+  * Detecta si se ha cambiado de fila y si es el caso se guarda el registro.
+  */
+void ivaview::tcambiaseleccion() {
+   static int rowactual=0;
+   if (rowactual != m_listPrevision->currentRow())
+       guardaprevpago(rowactual);
+   rowactual = m_listPrevision->currentRow();
+}// end ivaview
+
+/**
+  * \brief SLOT que captura el cambio de foco en la rejilla de Previsiones de cobros y pagos.
+  * Detecta si se ha cambiado de fila y si es el caso se guarda el registro.
+  */
+void ivaview::cambiadogrid(int row, int col) {
+   QString fecha;
+   switch (col) {
+      case COL_PREV_FPREVISTAPREVCOBRO:
+         fecha = normalizafecha(m_listPrevision->text(row,col)).toString("dd/MM/yyyy");
+         m_listPrevision->setText(row, col, fecha);
+      break;
+   }// end switch
+}// end apuntecambiadogrid
+
+/**
+  * \brief SLOT que captura la pulsación de determinadas telcas especiales para la aplicacion
+  * Se emite cuando se han pulsado determinadas teclas en la edición de la tabla de cobros/pagos.
+  * Responde a la pulsación del '+' y del '*'
+  */
+void ivaview::pulsadomas(int row, int col, int caracter) { 
+   QString query, fecha;
+//   QPopupMenu *menucanal = new QPopupMenu( this );
+//   QPopupMenu *menucoste = new QPopupMenu( this );
+//   int opcion;
+   switch (caracter) {
+      case '+':
+         switch(col) {
+            case COL_PREV_FPREVISTAPREVCOBRO:
+               int dia, mes, ano;
+               QList<QDate> a;
+               QString cadena;
+               calendario *cal = new calendario(0,0);
+               cal->exec();
+               a = cal->dn->selectedDates();
+               dia = a.first()->day();
+               mes = a.first()->month();
+               ano = a.first()->year();
+               cadena.sprintf( "%2.2d/%2.2d/%d",dia, mes, ano);
+               fprintf(stderr,"Se ha pulsado:%s\n", cadena.ascii());
+               m_listPrevision->setText(row, COL_PREV_FPREVISTAPREVCOBRO, cadena);
+               delete cal;
+            break;
+         }// end switch
+      case '*':
+         fprintf(stderr,"Se ha pulsado el *\n");
+         //duplicar(col);
+      break;
+      case 4100:
+         fprintf(stderr,"Se ha pulsado el enter\n");
+         switch (col) {
+            case COL_PREV_FPREVISTAPREVCOBRO:
+               fecha = normalizafecha(m_listPrevision->text(row,col)).toString("dd/MM/yyyy");
+               m_listPrevision->setText(row, col, fecha);
+               m_listPrevision->setCurrentCell(row, COL_PREV_FCOBROPREVCOBRO);
+            break;
+/*
+            case COL_SUBCUENTA:
+                tapunts->setCurrentCell(row, COL_DEBE);
+                break;
+            case COL_CONTRAPARTIDA:
+                tapunts->setCurrentCell(row, COL_DEBE);
+                break;
+            case COL_IVA:
+//                Se ha verificado que es más cómodo poder cambiar la fecha o dar al enter
+               if (row >0) {
+                  if (tapunts->text(row-1,COL_CCOSTE) == "") 
+                     tapunts->setText(row+1,COL_FECHA,normalizafecha(tapunts->text(row,COL_FECHA)).toString("dd/MM/yyyy"));
+                     tapunts->setText(row+1,COL_CCOSTE, tapunts->text(row,COL_CCOSTE));
+                     tapunts->setText(row+1,COL_CANAL, tapunts->text(row,COL_CANAL));
+                     tapunts->setText(row+1,COL_IDCCOSTE, tapunts->text(row,COL_IDCCOSTE));
+                     tapunts->setText(row+1,COL_IDCANAL, tapunts->text(row,COL_IDCANAL));
+                     tapunts->setCurrentCell(row+1, COL_FECHA);               
+               } else {
+                     tapunts->setCurrentCell(row,COL_CCOSTE);
+               }// end if
+                break;
+            case COL_CCOSTE:
+               if (row > 0) {
+                     tapunts->setText(row+1,COL_FECHA,normalizafecha(tapunts->text(row,COL_FECHA)).toString("dd/MM/yyyy"));
+                     tapunts->setText(row+1,COL_CCOSTE, tapunts->text(row,COL_CCOSTE));
+                     tapunts->setText(row+1,COL_CANAL, tapunts->text(row,COL_CANAL));
+                     tapunts->setText(row+1,COL_IDCCOSTE, tapunts->text(row,COL_IDCCOSTE));
+                     tapunts->setText(row+1,COL_IDCANAL, tapunts->text(row,COL_IDCANAL));
+                     tapunts->setCurrentCell(row+1, COL_FECHA);                  
+               } else {
+                     tapunts->setCurrentCell(row,COL_CANAL);
+               }// end if
+               break;
+            case COL_CANAL:
+                     tapunts->setText(row+1,COL_FECHA,normalizafecha(tapunts->text(row,COL_FECHA)).toString("dd/MM/yyyy"));
+                     tapunts->setText(row+1,COL_CCOSTE, tapunts->text(row,COL_CCOSTE));
+                     tapunts->setText(row+1,COL_CANAL, tapunts->text(row,COL_CANAL));
+                     tapunts->setText(row+1,COL_IDCCOSTE, tapunts->text(row,COL_IDCCOSTE));
+                     tapunts->setText(row+1,COL_IDCANAL, tapunts->text(row,COL_IDCANAL));
+                     tapunts->setCurrentCell(row+1, COL_FECHA);               
+               break;
+            case COL_CONCEPTO:
+                tapunts->setCurrentCell(row, COL_IVA);
+                break;
+*/
+            default:
+               m_listPrevision->setCurrentCell(row, col+1);
+            break;
+         }// end switch
+      break;
+/*            
+        case Qt::Key_Delete:  //Tecla Supr
+            fprintf(stderr,"Se ha pulsado el Supr\n");
+            borraborrador(row);
+            break;
+        case 4115: //Tecla Control + UP
+            fprintf(stderr,"Se ha pulsado el ctrl + arriba\n");
+            subirapunte(row);
+            if (row > 0 )
+                tapunts->setCurrentCell(row, col);
+            break;
+        case 4117: //Tecla Control + DOWN
+            bajarapunte(row);
+            tapunts->setCurrentCell(row, col);
+            break;
+*/
+   }// end switch
+}// end pulsadomas
+

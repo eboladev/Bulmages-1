@@ -308,28 +308,19 @@ CREATE TABLE borrador (
 );
 
 
---
--- TOC entry 15 (OID 1346004)
--- Name: registroiva_idregistroiva_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE registroiva_idregistroiva_seq
-    INCREMENT BY 1
-    NO MAXVALUE
-    NO MINVALUE
-    CACHE 1;
-
 
 --
 -- TOC entry 40 (OID 1346006)
 -- Name: registroiva; Type: TABLE; Schema: public; Owner: postgres
 --
+-- ffactura fecha de la factura.
 
 CREATE TABLE registroiva (
-    idregistroiva integer DEFAULT nextval('"registroiva_idregistroiva_seq"'::text) NOT NULL,
+    idregistroiva serial PRIMARY KEY,
     contrapartida integer REFERENCES cuenta(idcuenta),
     baseimp double precision,
     iva double precision,
+    ffactura date,
     factura character varying(70),
     idborrador integer,
     incregistro boolean,
@@ -338,6 +329,43 @@ CREATE TABLE registroiva (
     numorden character varying(50),
     cif character varying(25)
 );
+
+
+
+-- La tabla prevcobro es prevision de cobros / pagos para facturas.
+-- Esta tabla proporciona las formas de pago de cada factura que se pasa a un cliente o que recibimos de un proveedor.
+
+-- tipoprevcobro indica si es un cobro (true) o un pago (false).
+-- fpagoprevcobro es un identificador a la otra tabla de Formas de Pago.
+-- idcuenta La cuenta sobre la que se hará el cobro / pago.
+-- idasiento Asiento de cobro (Si está hecho).
+-- cantidadprevistaprevcobro Cantidad Prevista del cobro.
+-- cantidadprevcobro         Cantidad Cobrada.
+-- fprevistaprevcobro        Fecha en que se prevee el cobro / pago.
+-- fcobroprevcobro           Fecha en que se ha realizado el cobro / pago.
+-- idregistroiva             Registro de IVA con el que se corresponde, o factura con la que se corresponde.
+-- tipoprevcobro             Indica si es un cobro o un pago.
+
+
+CREATE TABLE prevcobro (
+    idprevcobro serial PRIMARY KEY,
+    fprevistaprevcobro date,
+    fcobroprevcobro date,
+    fpagoprevcobro integer,
+    idcuenta integer REFERENCES cuenta(idcuenta),
+    idasiento integer REFERENCES asiento(idasiento),
+    cantidadprevistaprevcobro double precision,
+    cantidadprevcobro         double precision,
+    idregistroiva integer NOT NULL REFERENCES registroiva(idregistroiva),
+    tipoprevcobro boolean
+);
+
+
+
+
+
+
+
 
 
 --

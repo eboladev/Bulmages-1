@@ -36,7 +36,9 @@ class intapunts3view;
 class extractoview1;
 class balanceview;
 
-/***@author Tomeu Borrás Riera */
+/** 
+  * @author Tomeu Borrás Riera
+*/
 
 class diarioview1 : public diariodlg1  {
    Q_OBJECT
