@@ -49,9 +49,12 @@ void amortizacionview::accept() {
 	fprintf(stderr,"Vamos a hacer un accept\n");
 	if (idamortizacion == "") {
 		fprintf(stderr,"Se trata de una inserción");
-		query.sprintf("INSERT INTO amortizacion (nomamortizacion, valorcompra, numcuotas, fechacompra) VALUES ('%s', %f, %d, '%s')", namortizacion.ascii(), valorcompradbl, numcuotasint, fechacomprastr.ascii());
+		query.sprintf("INSERT INTO amortizacion (nomamortizacion, valorcompra, numcuotas, fechacompra, idcuentaactivo, idcuentaamortizacion) VALUES ('%s', %f, %d, '%s', %s, %s)", namortizacion.ascii(), valorcompradbl, numcuotasint, fechacomprastr.ascii(), idctaactivo.ascii(), idctaamortizacion.ascii());
 		conexionbase->begin();
-		conexionbase->ejecuta(query);
+		if (conexionbase->ejecuta(query)) {
+                     QMessageBox::warning(this, tr("Error..."), tr("Ocurrió un error con la Base de Datos"), tr("Aceptar"));
+                     return;
+                }//  end if
 		conexionbase->commit();
                 query.sprintf("SELECT max(idamortizacion) AS idamortizacion FROM amortizacion)");
                 conexionbase->begin();
@@ -65,7 +68,10 @@ void amortizacionview::accept() {
                    //Insertamos en la base de datos cada linea de amortizacion.
                    query.sprintf("INSERT INTO linamortizacion (idamortizacion, fechaprevista, cantidad) VALUES (%s, %s, %s)", idamortizacion.ascii(), table1->text(i,COL_FECHA).ascii(), table1->text(i, COL_CUOTA).ascii());
                    conexionbase->begin();
-                   conexionbase->ejecuta(query);
+                  if (conexionbase->ejecuta(query)) {
+                        QMessageBox::warning(this, tr("Error..."), tr("Ocurrió un error con la Base de Datos"), tr("Aceptar"));
+                        return;
+                  }//  end if
                    conexionbase->commit();
                 }// end for
 		done(1);
@@ -74,20 +80,29 @@ void amortizacionview::accept() {
 		query.sprintf("UPDATE amortizacion SET nomamortizacion='%s', valorcompra=%f, numcuotas=%d, fechacompra='%s', idcuentaactivo=%s, idcuentaamortizacion=%s WHERE idamortizacion=%s", namortizacion.ascii(), valorcompradbl, numcuotasint,fechacomprastr.ascii(), idctaactivo.ascii(), idctaamortizacion.ascii(), idamortizacion.ascii());
 		fprintf(stderr,"El query es: %s\n", query.ascii());
 		conexionbase->begin();
-		conexionbase->ejecuta(query);
-		conexionbase->commit();
+		if (conexionbase->ejecuta(query)) {
+                   QMessageBox::warning(this, tr("Error..."), tr("Ocurrió un error con la Base de Datos"), tr("Aceptar"));
+                   return;
+                }//  end if
+		
+                conexionbase->commit();
                 conexionbase->begin();
-                conexionbase->ejecuta("DELETE FROM linamortizacion WHERE idamortizacion="+idamortizacion);
+		if (conexionbase->ejecuta("DELETE FROM linamortizacion WHERE idamortizacion="+idamortizacion)) {
+                   QMessageBox::warning(this, tr("Error..."), tr("Ocurrió un error con la Base de Datos"), tr("Aceptar"));
+                   return;
+                }//  end if
                 conexionbase->commit();
                 //Iteramos para cada linea en el subformulario.
                 for(int i=0; i<table1->numRows(); i++) {
                    //Insertamos en la base de datos cada linea de amortizacion.
                    query.sprintf("INSERT INTO linamortizacion (idamortizacion, fechaprevista, cantidad) VALUES (%s, '%s', %s)", idamortizacion.ascii(), table1->text(i,COL_FECHA).ascii(), table1->text(i, COL_CUOTA).ascii());
                    conexionbase->begin();
-                   conexionbase->ejecuta(query);
+                   if (conexionbase->ejecuta(query)) {
+                         QMessageBox::warning(this, tr("Error..."), tr("Ocurrió un error con la Base de Datos"), tr("Aceptar"));
+                         return;
+                   }//  end if
                    conexionbase->commit();
                 }// end for
-                
 		done(1);
 	}// end if
 }// end accept

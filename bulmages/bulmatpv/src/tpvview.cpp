@@ -24,7 +24,6 @@
 tpvview::tpvview(QWidget *parent, const char *name)
  : tpvdlg(parent, name)
 {
-	
    display->display(0.00);
 }
 

@@ -64,7 +64,7 @@
 Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd) 
 : QMainWindow(parent,name,f) 
 {
-  setCaption(tr("Bulmages "));
+  setCaption(tr("BulmaGés "));
   empresaactual.inicializa(DB,User,Passwd);
   initView();
   initActions();

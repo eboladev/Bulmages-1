@@ -23,15 +23,12 @@
 
 #include <tpvdlg.h>
 
-/**
-@author Bulmages Developer Team
-*/
+/** author BulmaGés Developer Team */
 class tpvview : public tpvdlg
 {
 Q_OBJECT
 public:
     tpvview(QWidget *parent = 0, const char *name = 0);
-
     ~tpvview();
 
 public slots:
@@ -49,7 +46,6 @@ public slots:
    virtual void pseudo_teclado_atras();
    virtual void pseudo_teclado_si();
    virtual void pseudo_teclado_borrar();
-
 
 private:
    void pseudo_teclado(int);       

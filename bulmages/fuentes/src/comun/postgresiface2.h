@@ -30,12 +30,6 @@
     #include <libpq-fe.h>
 #endif
 
-/*
-#include <stdio.h>
-#include <string>
-using std::string;
-*/
-
 #include "configuracion.h"
 
 /** *@author Tomeu Borrás Riera */
