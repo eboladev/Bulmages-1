@@ -57,9 +57,6 @@ public:
    abreempresaview(QWidget *parent=0,int tipo=0, const char *name=0, bool modal=true);
    ~abreempresaview();
   /// Listamos las nuevas bases de datos.
-   
-
-
 
 private:
     void insertCompany(QString , QString , QString , QString);
@@ -67,6 +64,7 @@ private:
 
 private slots:
     virtual void closeEvent(QCloseEvent * e);
+    virtual void quit() {exit(1);};
         
 public slots:
    //virtual void slotabreempresaview();

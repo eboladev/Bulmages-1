@@ -84,6 +84,8 @@ void empresa::testnewdb() {
 int empresa::inicializa1(QWorkspace *space) {
    fprintf(stderr,"EMPRESA::inicializa1()\n");
    pWorkspace = space;
+   nombre = confpr->valor(CONF_LOGIN_USER);
+   contrasenya = confpr->valor(CONF_PASSWORD_USER);
    fprintf(stderr,"conexionbase->inicializa\n");
    conexionbase2->inicializa(nombreDB, nombre, contrasenya);
    fprintf(stderr,"fin de conexionbase->inicializa\n");
@@ -138,18 +140,31 @@ void empresa::maximiza() {
   introapunts1->showMaximized();
 }// end maximiza
 
-/************************************************************************
+// Esta función se usa sólo si se llama a la anterior sin argumentos.
+// Ya no es una reinicialización. Es una inicialización.
+int empresa::cambiarempresa() {
+//El cambio de empresa se realiza desde el selector.
+  fprintf(stderr,"empresa::cambiarempresa\n");
+//  abreempresaview *nuevae = new abreempresaview("Abrir Empresa",true );
+  abreempresaview *nuevae = new abreempresaview(0,0 );
+  
+  nuevae->exec();
+  fprintf(stderr,"fin de la ejecución del formulario de selección de empresa \n");
+   fprintf(stderr,"Vamos a cambiar la empresa \n");
+   QString bd= nuevae->nomDB();
+   fprintf(stderr,"Empresa cambiada a %s\n", bd.ascii());
+   fprintf(stderr,"%s", bd.ascii());
+   delete nuevae;
+   inicializa(&bd);
+  return(0);
+}// end cambiarempresa
+
+/** **********************************************************************
  * Esta funcion hace el inicio de la empresa, muestra el dialogo de abrir
  * y hace los pasos necesarios.
 ************************************************************************/
-int empresa::inicializa(QString * DB) {
-  if (nombre == NULL || 1) {
-    //salto el dialeg de login. Ja tinc el nom d'usuari, password i el nom de la base de dades.
-    nombre = confpr->valor(CONF_LOGIN_USER);
-    contrasenya = confpr->valor(CONF_PASSWORD_USER);
-    fprintf(stderr,"Entramos con usuario %s, password %s\n", nombre.ascii(), contrasenya.ascii());
+int empresa::inicializa(QString *DB) {
     nombreDB = *DB;
-  }// end if
   return(0);
 }// end inicializa
 
@@ -221,26 +236,7 @@ int empresa::nuevaempresa() {
 }// end nuevaempresa
 
 
-// Esta función se usa sólo si se llama a la anterior sin argumentos.
-// Ya no es una reinicialización. Es una inicialización.
-int empresa::cambiarempresa() {
-//El cambio de empresa se realiza desde el selector.
 
-//  int retorno;
-  fprintf(stderr,"empresa::cambiarempresa\n");
-//  abreempresaview *nuevae = new abreempresaview("Abrir Empresa",true );
-  abreempresaview *nuevae = new abreempresaview(0,0 );
-  
-  nuevae->exec();
-  fprintf(stderr,"fin de la ejecución del formulario de selección de empresa \n");
-   fprintf(stderr,"Vamos a cambiar la empresa \n");
-   QString bd= nuevae->nomDB();
-   fprintf(stderr,"Empresa cambiada a %s\n", bd.ascii());
-   fprintf(stderr,"%s", bd.ascii());
-   delete nuevae;
-   inicializa(&bd);
-  return(0);
-}// end cambiarempresa
 
 
 int empresa::nuevacuenta() {

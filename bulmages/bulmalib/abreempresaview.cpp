@@ -68,9 +68,7 @@ void abreempresaview::listDB() {
 	QString tipo;
 	cursor2 *curs= db->cargacursor("SELECT datname FROM pg_database","otroquery");
 	db->commit();
-	fprintf(stderr,"LISTADO DE BASES DE DATOS DISPONIBLES\n");
-	fprintf(stderr,"--------------------------------------\n");
-	fprintf(stderr,"Usuario %s, Password %s\n", confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+	 confpr->valor(CONF_PASSWORD_USER).c_str());
 	while (! curs->eof()) {	
 		db1 = new postgresiface2();
 		db1->inicializa(curs->valor("datname"), confpr->valor(CONF_LOGIN_USER), confpr->valor(CONF_PASSWORD_USER));
@@ -101,8 +99,6 @@ void abreempresaview::listDB() {
 		delete db1;
 		curs->siguienteregistro();
 	}// end while
-	fprintf(stderr,"FIN DE LISTADO DE BASES DE DATOS DISPONIBLES\n");
-	fprintf(stderr,"--------------------------------------------\n");
 	delete curs;
 	delete db;	
 	confpr->setValor(CONF_ALERTAS_DB,"Yes");

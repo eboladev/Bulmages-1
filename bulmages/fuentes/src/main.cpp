@@ -99,9 +99,14 @@ if (argc == 5) {
    Bulmages01 * bges = new Bulmages01(NULL, "bulmages",0, &db);
    mainApp->setMainWidget(bges);
    valorsalida = mainApp->exec();
+} else if (argc == 3) {
+   QString db= argv[2];
+   QString ej="";
+   Bulmages01 * bges = new Bulmages01(NULL, "bulmages",0, &db);
+   mainApp->setMainWidget(bges);
+   valorsalida = mainApp->exec();   
 } else {
    fprintf(stderr,"numero de parametros incorrecto\n");
-   
     logpass *login1 = new logpass(0,"");
     if (!login1->authOK) {
 	login1->exec();
