@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="5" >
+ <DocsAndViews NumberOfDocuments="9" >
   <Doc0 NumberOfViews="1" URL="file:/home/tborras/bulmages/fuentes/src/contabilidad/amortizacionesview.h" >
    <View0 line="37" Type="???" >
     <AdditionalSettings/>
@@ -27,6 +27,26 @@
     <AdditionalSettings/>
    </View0>
   </Doc4>
+  <Doc5 NumberOfViews="1" URL="file:/home/tborras/bulmages/fuentes/src/contabilidad/intapunts3view.cpp" >
+   <View0 line="1090" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc5>
+  <Doc6 context="ctx_docbase" NumberOfViews="1" URL="file:/usr/share/qt/doc/html/qmessagebox.html#63edba" >
+   <View0 Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc6>
+  <Doc7 NumberOfViews="1" URL="file:/home/tborras/bulmages/fuentes/src/contabilidad/bulmages01.cpp" >
+   <View0 line="880" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc7>
+  <Doc8 NumberOfViews="1" URL="file:/home/tborras/bulmages/fuentes/src/contabilidad/bmodcontabilidad.cpp" >
+   <View0 line="41" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc8>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

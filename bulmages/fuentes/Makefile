@@ -32,12 +32,8 @@ qmake: qmake_all
 all: $(SUBTARGETS)
 qmake_all: src/$(MAKEFILE)
 	 ( [ -d src ] && cd src ; grep "^qmake_all:" $(MAKEFILE) && $(MAKE) -f $(MAKEFILE) qmake_all; ) || true
-clean uicables mocables uiclean mocclean lexclean yaccclean : qmake_all FORCE
+clean uninstall uicables mocables install uiclean mocclean lexclean yaccclean: qmake_all FORCE
 	 ( [ -d src ] && cd src ; $(MAKE) -f $(MAKEFILE) $@; ) || true
-uninstall_subdirs: qmake_all FORCE
-	 ( [ -d src ] && cd src ; $(MAKE) -f $(MAKEFILE) uninstall; ) || true
-install_subdirs: qmake_all FORCE
-	 ( [ -d src ] && cd src ; $(MAKE) -f $(MAKEFILE) install; ) || true
 distclean: qmake_all FORCE
 	 ( [ -d src ] && cd src ; $(MAKE) -f $(MAKEFILE) $@; $(DEL_FILE) $(MAKEFILE); ) || true
 

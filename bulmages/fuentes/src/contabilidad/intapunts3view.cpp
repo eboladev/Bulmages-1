@@ -1072,19 +1072,27 @@ void intapunts3view::duplicarapunte() {
 
 
 void intapunts3view::boton_iva() {
-    //int idborrador = atoi(tapunts->text(rowactual,COL_IDBORRADOR).latin1());
-    int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
-    QString codcuenta = tapunts->text(rowactual,COL_SUBCUENTA);
-    codcuenta = codcuenta.left(3);
-    int es_iva = (codcuenta == "472") + ((codcuenta == "477") * 2);
-    if (idborrador != 0) {
-        ivaview *nuevae=new ivaview(0,"");
-        nuevae->inicializa(conexionbase,es_iva);
-        nuevae->inicializa1(idborrador);
-        nuevae->exec();
-        delete nuevae;
-    }// end if
-    repinta();
+	  // Miramos que haya un row seleccionado.
+	  if(tapunts->currentRow() >=0) {
+			//int idborrador = atoi(tapunts->text(rowactual,COL_IDBORRADOR).latin1());
+			int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
+			QString codcuenta = tapunts->text(rowactual,COL_SUBCUENTA);
+			codcuenta = codcuenta.left(3);
+			int es_iva = (codcuenta == "472") + ((codcuenta == "477") * 2);
+			if (idborrador != 0) {
+				ivaview *nuevae=new ivaview(0,"");
+				nuevae->inicializa(conexionbase,es_iva);
+				nuevae->inicializa1(idborrador);
+				nuevae->exec();
+				delete nuevae;
+			}// end if
+			repinta();
+		} else {
+			 QMessageBox::information(this, tr("Registro de IVA"),
+                                    tr("Debe seleccionar un apunte"),
+                                    QMessageBox::Ok);
+
+		}// end if
 }// end boton_iva
 
 
