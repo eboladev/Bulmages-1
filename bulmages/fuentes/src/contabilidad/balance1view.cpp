@@ -240,7 +240,6 @@ void balance1view::boton_asiento() {
 *****************************************************************************/
 void balance1view::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste) {
   fprintf(stderr,"balance1view::inicializa1\n");
-  QDate fecha1aux;
   codigoinicial->setText(codinicial);
   codigofinal->setText(codfinal);
   fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));

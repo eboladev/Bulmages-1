@@ -265,7 +265,7 @@ void intapunts3view::boton_anterior() {
         cursorasientos->registroanterior();
         muestraasiento(atoi(cursorasientos->valor("idasiento").latin1()));
     } else {
-        vaciarapuntes();
+        //vaciarapuntes();
     }// end if
 }
 
@@ -540,6 +540,7 @@ void intapunts3view::boton_abrirasiento() {
 void intapunts3view::boton_cerrarasiento() {
     int eleccion;
     int i=0;
+    bool asientoVacio=true;
 
     guardaborrador(rowactual);
     if (( descuadre->text() != "0.00") && ( descuadre->text() != "-0.00")) {
@@ -569,10 +570,11 @@ void intapunts3view::boton_cerrarasiento() {
                 }// end if
             }// end if
         }// end if
+        asientoVacio = asientoVacio && (tapunts->text(i,COL_SUBCUENTA)=="");
         i++;
     }// end while
 
-    // REalizamos la operación en la base de datos.
+        // Realizamos la operación en la base de datos.
     conexionbase->begin();
     conexionbase->cierraasiento(atoi(IDASIENTO));
     conexionbase->commit();
@@ -583,6 +585,10 @@ void intapunts3view::boton_cerrarasiento() {
     fechaasiento1->selectAll();
     fechaasiento1->setFocus();
 
+    if (asientoVacio) {
+        QMessageBox::information( 0, "Asiento vacio", "El asiento esta vacio, se procedera a borrarlo !");
+        borrar_asiento(false); //el valor false indica que no nos muestre el dialogo de confirmación de borrado.
+    }                            
 }// end boton_cerrarasiento
 
 
@@ -847,11 +853,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
 void intapunts3view::apuntecambiadogrid(int row, int col) {
     switch(col) {
     case COL_FECHA: {
-            QString fechaintro = tapunts->text(row,col);
-            QString fecharesult;
-            fprintf(stderr,"Pulsado return sobre la fecha %s\n", fechaintro.latin1());
-            fecharesult = normalizafecha(fechaintro).toString("dd/MM/yyyy");
-            tapunts->setText(row,col,fecharesult);
+            tapunts->setText(row,col,normalizafecha(tapunts->text(row,col)).toString("dd/MM/yyyy"));
             break;
         }
     case COL_SUBCUENTA:
@@ -1096,7 +1098,6 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
         case '+':
             switch(col) {
             case COL_FECHA: {
-
                     int dia, mes, ano;
                     QList<QDate> a;
                     QString cadena;
@@ -1149,6 +1150,10 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
         case 4100:
             fprintf(stderr,"Se ha pulsado el enter\n");
             switch (col) {
+            case COL_FECHA:
+                        tapunts->setText(row,col,normalizafecha(tapunts->text(row,col)).toString("dd/MM/yyyy"));
+                        tapunts->setCurrentCell(row, COL_SUBCUENTA);
+                break;
             case COL_SUBCUENTA:
                 tapunts->setCurrentCell(row, COL_DEBE);
                 break;
@@ -1156,7 +1161,8 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
                 tapunts->setCurrentCell(row, COL_DEBE);
                 break;
             case COL_IVA:
-                tapunts->setCurrentCell(row+1, COL_FECHA);
+                tapunts->setText(row+1,COL_FECHA,normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
+                tapunts->setCurrentCell(row+1, COL_SUBCUENTA);
                 break;
             case COL_CONCEPTO:
                 tapunts->setCurrentCell(row, COL_IVA);
@@ -1419,8 +1425,20 @@ void intapunts3view::boton_filtrar() {
 
 
 void intapunts3view::return_fechaasiento() {
+    QString query;
+    int resultado;
     fechaasiento1->setText(normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
-    iniciar_asiento_nuevo();
+    if (abierto) { //cambiar la fecha del asiento
+        conexionbase->begin();
+        query.sprintf("UPDATE asiento SET fecha='%s' WHERE idasiento='%s'",fechaasiento1->text().latin1(),IDASIENTO);
+        fprintf(stderr,"%s\n",query.latin1());
+        resultado = conexionbase->ejecuta(query);
+        if (resultado != 0) {
+            conexionbase->rollback();
+        } else {
+            conexionbase->commit();
+        }// end if
+    } else { iniciar_asiento_nuevo(); }
 }// end return_fechaasiento
 
 
@@ -1585,12 +1603,18 @@ void intapunts3view::boton_cargarasiento() {
 //* Esta función se activa cuando se pulsa sobre el boton borrar asiento
 //* del formulario
 //*********************************************************************/
-void intapunts3view::borrar_asiento() {
+void intapunts3view::boton_borrar_asiento() {
+borrar_asiento(true);
+}// end boto_borrar_asiento
+
+void intapunts3view::borrar_asiento(bool confirmarBorrado) {
     QString query;
     int valor;
     int resultado;
     if (atoi(IDASIENTO) != 0) {
-        valor = QMessageBox::warning( 0, "Borrar Asiento", "Se procedera a borrar el asiento.", QMessageBox::Yes, QMessageBox::No);
+        if (confirmarBorrado) {
+            valor = QMessageBox::warning( 0, "Borrar Asiento", "Se procedera a borrar el asiento.", QMessageBox::Yes, QMessageBox::No);
+        } else { valor = QMessageBox::Yes ; }
         if (valor ==  QMessageBox::Yes) {
             conexionbase->begin();
             query.sprintf("DELETE FROM apunte where idasiento=%s",IDASIENTO);
@@ -1607,11 +1631,11 @@ void intapunts3view::borrar_asiento() {
             repinta();
         }// end if
     }// end if
-}// end borrar_asiento
+} //fin borrar_asiento
 
-
-//******************************************************************
-//* Esta se encarga de la edicion de asientos.                                                 																							//****************************************************************/
+/******************************************************************
+* Esta se encarga de la edicion de asientos.                      *
+****************************************************************/
 void intapunts3view::editarasiento() {
     asientoview *nuevoasiento= new asientoview(0,"",true);
     nuevoasiento->inicializa(conexionbase);

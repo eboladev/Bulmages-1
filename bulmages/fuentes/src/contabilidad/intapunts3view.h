@@ -89,6 +89,7 @@ public:
     void subirapunte(int);
     void bajarapunte(int);
     void iniciar_asiento_nuevo();
+    void borrar_asiento(bool);
 public slots:
 //    virtual void tpulsado(int , int, int, const QPoint &);
     virtual void contextmenu(int, int,const QPoint &);
@@ -97,7 +98,7 @@ public slots:
     virtual void boton_iva();
     virtual void pulsadomas(int, int, int);
     virtual void boton_inteligente();
-    virtual void borrar_asiento();
+    virtual void boton_borrar_asiento();
     virtual void boton_buscacuenta();
 //    virtual void boton_extracto();
     virtual void boton_extracto1(int);

@@ -232,7 +232,6 @@ void balanceview::inicializa1(QString codinicial, QString codfinal, QString fech
 
 /********************** Josep *********************/
   fprintf(stderr,"balanceview::inicializa1\n");
-  QDate fecha1aux;
   codigoinicial->setText(codinicial);
   codigofinal->setText(codfinal);
   fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
