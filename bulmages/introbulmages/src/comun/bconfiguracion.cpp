@@ -16,8 +16,10 @@
 #include <qmessagebox.h>
 #include <errno.h>
 #include <qtable.h>
+#include <qtabwidget.h>
 
 #include "bnuevaempresa.h"
+#include "nuevafact.h"
 
 #ifdef WIN32
 #include <process.h>
@@ -38,6 +40,15 @@ BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * n
    comboBoxFuente->insertStringList( (new QFontDatabase)->families() );
    if (PunteroAlSelector->tipo == "BulmaGés") {
       cargarFichaBulmages();
+      m_tab->setTabEnabled(m_tab->page(1),FALSE);
+      m_tab->setTabEnabled(m_tab->page(2),FALSE);
+      m_tab->setTabEnabled(m_tab->page(3),FALSE);   
+   }// end if
+   if (PunteroAlSelector->tipo == "BulmaFact") {
+      cargarFichaBulmages();
+      m_tab->setTabEnabled(m_tab->page(0),FALSE);
+      m_tab->setTabEnabled(m_tab->page(2),FALSE);
+      m_tab->setTabEnabled(m_tab->page(3),FALSE);
    }// end if
    cargarFichaUsuarios();
    tablaconfiguracion();
@@ -58,7 +69,7 @@ void BConfiguracion::cerrar() {
       case 1: archivo = "bulmages_es.qm"; break;
       case 2: archivo = "bulmages_fr.qm"; break;
       case 3: archivo = "bulmages_en.qm"; break;
-  }
+  }// end switch
   
   // Guardamos la configuración.
    for (int i =0;i<500;i++) {
@@ -68,7 +79,6 @@ void BConfiguracion::cerrar() {
    }// end for   
 
    confpr->saveconfig();
-  
 //  traductor->load(archivo.c_str(),confpr->valor(CONF_DIR_TRADUCCION).c_str());
   //Cargo la nueva fuente
   //Cierro la ventana de Configuración
@@ -118,11 +128,11 @@ void BConfiguracion::cargarFichaBulmages() {
 
 void BConfiguracion::FontChanged(const QString & fuente) {
    muestra->setFont(QFont(fuente,spinBoxFuente->value()));
-}
+}// end FontChanged
 
 void BConfiguracion::FontSizeChanged(int tamano) {
    muestra->setFont(QFont(comboBoxFuente->currentText(),tamano));
-}
+}// end FontSizeChanged
 
 void BConfiguracion::BotonA_10aceptar() {
 //Salvar en la base de datos las preferencias del usuario: Idioma, Fuente, ...
@@ -181,6 +191,15 @@ void BConfiguracion::nuevaEmpresa() {
    delete n;
 }//Fin nuevaEmpresa
 
+/*********************************************************************************************************/
+/* Aqui abrimos el cuador de dialogo que nos permite crear una empresa nueva basada en la                */
+/* BASE DE DATOS bgplangcont                                                                             */
+/*********************************************************************************************************/
+void BConfiguracion::nuevaFacturacion() {
+   nuevafact *n= new nuevafact(this,"Creador",true);
+   n->exec();
+   delete n;
+}//Fin nuevaEmpresa
 
 
 /*********************************************************************************************************/
@@ -203,7 +222,6 @@ void BConfiguracion::borrarEmpresa() {
    QString nombreEmpresa;
    QString idEmpresa;
    QString ejercicio;
-      
    // Siempre se borra la empresa actual.
    dbEmpresa = PunteroAlSelector->empresabd;
    // (new BVisorEmpresas(& dbEmpresa, this,"Eliminador",true))->exec();
@@ -244,6 +262,9 @@ void BConfiguracion::borrarEmpresa() {
    close();
    PunteroAlSelector->seleccionaempresa_clicked();
 }//Fin borrarEmpresa
+
+
+
 
 /*********************************************************************************************************/
 /* Aqui creamos un nuevo ejercicio para la empresa que tengamos abierta en el momento de llamar          */

@@ -13,4 +13,4 @@ int main( int argc, char ** argv ) {
     mw->show();
     theApp->connect( theApp, SIGNAL(lastWindowClosed()), theApp, SLOT(quit()) );
     return theApp->exec();
-}
+}// end main

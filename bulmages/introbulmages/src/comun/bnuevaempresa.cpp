@@ -15,14 +15,11 @@
 #include "bnuevaempresa.h"
 
 
-BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, WFlags f)
- : nuevaempresadlg(parent,name,f)
-{
-}
+BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, WFlags f) : nuevaempresadlg(parent,name,f) {
+}// end BNuevaEmpresa
 
 
-BNuevaEmpresa::~BNuevaEmpresa()
-{
+BNuevaEmpresa::~BNuevaEmpresa() {
 }
 
 void BNuevaEmpresa::accept() {

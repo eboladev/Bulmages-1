@@ -58,7 +58,9 @@ function linea {
    fi
 }
 
-rm /tmp/errores1.txt
+if [ -e /tmp/errores1.txt ]; then
+    rm /tmp/errores1.txt
+fi
 touch /tmp/errores1.txt
 
 
@@ -204,8 +206,17 @@ if [ "$DBS" ]; then
    exit 1
 else
    info "La instalacion de la base de datos $2 ha sido un exito. \n"
+  if [ -e /tmp/errores1.txt ]; then
     rm /tmp/errores1.txt
+  fi
+  if [ -e /tmp/listdb.lst ]; then
     rm /tmp/listdb.lst
+  fi
+  if [ -e /tmp/listuser.lst ]; then
     rm /tmp/listuser.lst
+  fi
+  if [ -e /tmp/error.txt ]; then
     rm /tmp/error.txt
+  fi
 fi
+

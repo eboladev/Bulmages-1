@@ -70,6 +70,7 @@ private slots:
   virtual void cloneUser();
   virtual void BotonB_1Aplicar();
   virtual void BotonB_2Desacer();
+  virtual void nuevaFacturacion();
 };
 
 #endif

@@ -26,12 +26,21 @@ else
 fi
 
 #Borramos antiguos archivos que puedan dar problemas
+if [ -e /tmp/errores1.txt ]; then
+    rm /tmp/errores1.txt
+fi
+if [ -e /tmp/errores1.txt ]; then
 rm /tmp/errores1.txt
-rm /tmp/errores.txt
+fi
+if [ -e /tmp/listdb.lst ]; then
 rm /tmp/listdb.lst
+fi
+if [ -e /tmp/listuser.lst ]; then
 rm /tmp/listuser.lst
+fi
+if [ -e /tmp/error.txt ]; then
 rm /tmp/error.txt
-
+fi
 
 
 function mensaje() {
@@ -54,7 +63,7 @@ function info() {
 
 function lee() {
   if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
-   echo -e "Indique el usuario que va a trabajar normalmente con el programa:"
+   echo -e  "\033[33m""Indique el usuario que va a trabajar normalmente con el programa:"  "\033[0m"
     read user
     su - postgres -c "createuser --adduser --createdb $user"
   else
@@ -88,7 +97,9 @@ fi
 
 
 # Iniciamos el tema de los errores.
-rm /tmp/errores.txt
+if [ -e /tmp/errores.txt ]; then
+    rm /tmp/errores.txt
+fi
 touch /tmp/errores.txt
 
 #Comprobamos que estamos en el directorio adecuado
