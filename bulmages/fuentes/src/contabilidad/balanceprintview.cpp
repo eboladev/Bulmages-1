@@ -113,7 +113,7 @@ void BalancePrintView::presentar(char *tipus){
    int pid;
 
    int num1;
-   double tsaldoant=0, tdebe=0, thaber=0, tsaldo=0;
+   double tsaldoant=0, tdebe=0, thaber=0, tsaldo=0, debeej=0, haberej=0, saldoej=0;
    QString query;
    cursor2 *cursorapt;
 
@@ -150,7 +150,7 @@ void BalancePrintView::presentar(char *tipus){
          // Causar problemas con el motor de base de datos.
          fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
          conexionbase->begin();
-         query. sprintf( "CREATE TEMPORARY TABLE balancetmp AS SELECT 0 AS hoja, cuenta.idcuenta AS idcuenta, codigo AS codigo, nivel(codigo) AS nivel, cuenta.descripcion AS descripcion, padre AS padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
+         query.sprintf( "CREATE TEMPORARY TABLE balancetmp AS SELECT 0 AS hoja, cuenta.idcuenta AS idcuenta, codigo AS codigo, nivel(codigo) AS nivel, cuenta.descripcion AS descripcion, padre AS padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
          fprintf(stderr,"%s\n",query.ascii());
          conexionbase->ejecuta(query);
          query.sprintf("UPDATE balancetmp SET padre=0 WHERE padre ISNULL");
@@ -264,6 +264,9 @@ void BalancePrintView::presentar(char *tipus){
             tsaldo += atof(cursorapt->valor("tsaldo").ascii());
             tdebe += atof(cursorapt->valor("tdebe").ascii());
             thaber += atof(cursorapt->valor("thaber").ascii());
+	    debeej += atof(cursorapt->valor("debe").ascii());
+	    haberej += atof(cursorapt->valor("haber").ascii());
+	    saldoej += atof(cursorapt->valor("saldo").ascii());
             QString lcuenta = cursorapt->valor("codigo");
             QString ldenominacion = cursorapt->valor("descripcion");
             double lsaldoant = atof(cursorapt->valor("asaldo").ascii());
@@ -301,12 +304,15 @@ void BalancePrintView::presentar(char *tipus){
          QString totaldebe = QString::number(tdebe,'f',2);
          QString totalhaber = QString::number(thaber,'f',2);
          QString totalsaldo = QString::number(tsaldo,'f',2);
+	 QString totaldebeej = QString::number(debeej,'f',2);
+         QString totalhaberej = QString::number(haberej,'f',2);
+         QString totalsaldoej = QString::number(saldoej,'f',2);
 
 
          if (txt) {
             //presentació txt normal
-	    fitxersortidatxt << "                                            ___________________________________________________________\n";
-            fitxersortidatxt << "                                            Totales " << setw(12) <<  totalsaldoant.ascii() << " " << setw(12) <<  totaldebe.ascii() << " " << setw(12) <<  totalhaber.ascii() << " " << setw(12) <<  totalsaldo.ascii() << endl;
+	    fitxersortidatxt << "                                            __________________________________________________________________________________________________\n";
+            fitxersortidatxt << "                                            Totales " << setw(12) <<  totalsaldoant.ascii() << " " << setw(12) <<  totaldebe.ascii() << " " << setw(12) <<  totalhaber.ascii() << " " << setw(12) <<  totalsaldo.ascii()  << " " << setw(12) <<  totaldebeej.ascii() << " " << setw(12) <<  totalhaberej.ascii() << " " << setw(12) <<  totalsaldoej.ascii() << endl;
          }
          if (html) {
             //presentació html normal
