@@ -79,6 +79,7 @@ CREATE TABLE lalbaran (
 #include "division.h"
 #include "clientslist.h"
 #include "articleslist.h"
+#include "configuracion.h"
 
 #include <qlineedit.h>
 #include <qtextedit.h>
@@ -89,6 +90,7 @@ CREATE TABLE lalbaran (
 #include <qobjectlist.h>
 #include <qcombobox.h>
 #include <qpopupmenu.h>
+#include <qtoolbutton.h>
 
 #include "funcaux.h"
 //#include "postgresiface2.h"
@@ -210,6 +212,34 @@ void ClientDelivNote::inicialize() {
 	if (m_idalbaran=="0") {
 		cargarcomboformapago("0");
 	}
+	
+	if (m_idalbaran=="0") {	 
+		companyact->begin();
+		cursor2 * cur0= companyact->cargacursor("SELECT * FROM configuracion where nombre='AlmacenDefecto'","queryconfig");
+		companyact->commit(); 
+		if (!cur0->eof()) {
+			if (cur0->valor("valor")!="") {
+				m_codigoalmacen->setText(cur0->valor("valor"));
+			}
+		}
+		delete cur0;
+	}
+	
+	if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
+		m_codigoalmacen->setDisabled(true);
+		m_buscaralmacen->setDisabled(true);
+		m_lblalmacen->setDisabled(true);
+		m_nomalmacen->setDisabled(true);
+	}
+	
+	if (confpr->valor(CONF_NUM_AUT_PRESUP)=="YES") {
+		m_numalbaran->setReadOnly(true);
+		if (m_idalbaran!="0") {
+		  	m_codigoalmacen->setReadOnly(true);
+		}
+	}
+	
+	buscarAlmacen();
 }// end inicialize
 
 
@@ -583,6 +613,15 @@ void ClientDelivNote::s_accept() {
 
 
 int ClientDelivNote::saveClientDelivNote() {
+	buscarAlmacen();
+	
+	if (m_idalmacen == "")  return 1;
+
+	
+	if (m_numalbaran->text() == "") {
+		m_numalbaran->setText(newDelivNoteNumber());
+	}
+
 	QString SQLQuery;
 	
 	if (m_idalbaran != "0") {
@@ -591,11 +630,13 @@ int ClientDelivNote::saveClientDelivNote() {
 		SQLQuery += " , comentalbaran='"+m_comentalbaran->text()+"'";
 		SQLQuery += " , idcliente="+m_idclient;
 		SQLQuery += " , idforma_pago="+m_cursorcombo->valor("idforma_pago",m_comboformapago->currentItem());
+		SQLQuery += " , idalmacen="+m_idalmacen;
 		SQLQuery += " WHERE idalbaran ="+m_idalbaran;
 	} else {
-		SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran, idcliente, idforma_pago)";
+		SQLQuery = "INSERT INTO albaran (idalmacen, numalbaran, fechaalbaran, comentalbaran, idcliente, idforma_pago)";
 		SQLQuery += " VALUES (";
-		SQLQuery += m_numalbaran->text();
+		SQLQuery += m_idalmacen;
+		SQLQuery +=" , "+ m_numalbaran->text();
 		SQLQuery += " , '"+m_fechaalbaran->text()+"'";
 		SQLQuery += " , '"+m_comentalbaran->text()+"'";
 		SQLQuery += " , "+m_idclient;
@@ -895,4 +936,40 @@ QString ClientDelivNote::retrieveValues(QString qsWidget) {
 	delete l; // delete the list, not the objects
 	return values;
 }
+
+
+
+void ClientDelivNote::s_almacenLostFocus() {
+	buscarAlmacen();
+}//end s_almacenLostFocus
+
+
+void ClientDelivNote::buscarAlmacen() {
+	companyact->begin();
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM almacen where codigoalmacen ="+ m_codigoalmacen->text(),"unquery");
+	companyact->commit();
+	if (!cur->eof()) {
+		m_idalmacen = cur->valor("idalmacen");
+		m_nomalmacen->setText(cur->valor("nomalmacen"));
+	} else {
+		m_nomalmacen->setText(""); 
+		m_idalmacen = "";
+	}
+	delete cur;
+} // end buscarAlmacen
+
+
+QString ClientDelivNote::newDelivNoteNumber() {
+	QString rtnNumber;
+	companyact->begin();
+	cursor2 * cur4= companyact->cargacursor("SELECT max(numalbaran) FROM albaran WHERE idalmacen="+m_idalmacen,"unquery2");
+//	companyact->commit();
+	if (!cur4->eof()) {
+		rtnNumber = QString().sprintf("%d",cur4->valor(0).toInt()+1);
+	} else {
+		rtnNumber = "1";
+	}
+	delete cur4;
+	return rtnNumber;
+} // end newDelivNoteNumber
 

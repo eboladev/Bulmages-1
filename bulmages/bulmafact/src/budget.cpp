@@ -237,7 +237,8 @@ void Budget::inicialize() {
 		  	m_codigoalmacen->setReadOnly(true);
 		}
 	}
-
+	
+	buscarAlmacen();
 }// end inicialize
 
 
@@ -375,7 +376,7 @@ void Budget::budgetExpiryLostFocus() {
 
 void Budget::s_almacenLostFocus() {
 	buscarAlmacen();
-}
+}//end s_almacenLostFocus
 
 void Budget::buscarAlmacen() {
 	companyact->begin();
@@ -389,7 +390,7 @@ void Budget::buscarAlmacen() {
 		m_idalmacen = "";
 	}
 	delete cur;
-}
+} // end buscarAlmacen
 
 
 void Budget::newBudgetLine() {
@@ -658,6 +659,8 @@ void Budget::accept() {
 
 int Budget::saveBudget() {
 	buscarAlmacen();
+	if (m_idalmacen == "")  return 1;
+	
 	if (m_numpresupuesto->text() == "") {
 		m_numpresupuesto->setText(newBudgetNumber());
 	}
@@ -999,10 +1002,12 @@ QString Budget::retrieveValues(QString qsWidget) {
 	return values;
 }
 
+
 QString Budget::newBudgetNumber() {
 	QString rtnNumber;
 	companyact->begin();
 	cursor2 * cur4= companyact->cargacursor("SELECT max(numpresupuesto) FROM presupuesto WHERE idalmacen="+m_idalmacen,"unquery1");
+	//companyact->commit();
 	if (!cur4->eof()) {
 		rtnNumber = QString().sprintf("%d",cur4->valor(0).toInt()+1);
 	} else {

@@ -36,6 +36,7 @@ private:
 	QString m_idalbaran;
 	QString m_idclient;
 	QString m_initialValues;
+	QString m_idalmacen;
 	cursor2 *m_cursorcombo;
 	
 public:
@@ -66,6 +67,8 @@ private:
 	QString retrieveValues(QString);
 	QString calculateValues();
 	void cargarcomboformapago(QString);
+	void buscarAlmacen();
+	QString newDelivNoteNumber();
 		
 protected:
 	bool eventFilter( QObject *, QEvent *);
@@ -85,6 +88,7 @@ public slots:
 	virtual void s_removeClientDelivNote();
 	virtual void s_contextMenu(int, int, int, const QPoint &);
 	virtual void s_contextMenuDiscount(int, int, int, const QPoint &);
+	virtual void s_almacenLostFocus();
 
 };
 
