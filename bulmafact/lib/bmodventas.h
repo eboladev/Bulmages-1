@@ -23,7 +23,9 @@
 #include "bpresupuesto.h"
 #include "bpediventa.h"
 #include "bclientes.h"
+#include "bproveedor.h"
 #include "barticulos.h"
+#include "bmarca.h"
 #include "bpasswd.h"
 #include "bvisorempresas.h"
 
@@ -47,7 +49,9 @@ public slots:
     virtual void presupuestos();
     virtual void pedidos();
     virtual void fichaClientes();
+    virtual void fichaProveedores();
     virtual void fichaArticulos();
+    virtual void fichaMarcas();
     virtual void mostrar_selector();
     
 private:

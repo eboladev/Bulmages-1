@@ -34,7 +34,8 @@ BModVentas::BModVentas(QString* usuario, QString* passwd, QString* dataBase, QWi
     DataBase = dataBase;
     if (DataBase == NULL) DataBase = new QString(""); //NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR
     intentosFallidosPassword=0;
-    cargaUsuario();
+    //Para evitar que se conecte a postgres, desactivo la funcion cargaUsuari!!
+    //cargaUsuario();
 }
 
 
@@ -79,10 +80,20 @@ int BModVentas::seleccionaEmpresa(){
 void BModVentas::fichaClientes() {
     (new BClientes(empresaTrabajo, zona0,"cliente"))->show();
 }
+//Abro la ficha de mantenimiento de los proveedores
+void BModVentas::fichaProveedores() {
+    (new Bproveedor(empresaTrabajo, zona0,"proveedor"))->show();
+}
+
 
 //Abro la ficha de mantenimiento de los articulos
 void BModVentas::fichaArticulos() {
     (new BArticulos(empresaTrabajo, zona0,"articulo"))->show();
+}
+
+//Abro la ficha de mantenimiento de las Marcas de Articulos
+void BModVentas::fichaMarcas() {
+    (new Bmarca(empresaTrabajo, zona0,"marca"))->show();
 }
 
 //Abro la ventana de los albaranes de Venta.
