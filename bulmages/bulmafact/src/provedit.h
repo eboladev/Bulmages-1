@@ -36,6 +36,8 @@ public:
     ~provedit();
 public:
    void chargeprovider(QString);
+public slots:
+   virtual void accept();
 };
 
 #endif

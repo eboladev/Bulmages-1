@@ -49,7 +49,6 @@ void company::listclients () {
 
 void company::provideraction() {
    provedit *prov = new provedit(this,0,theApp->translate("Edicion de Proveedores", "company"));
-   prov->chargeprovider("1");
    prov->exec();
    delete prov;
 }// end provideraction

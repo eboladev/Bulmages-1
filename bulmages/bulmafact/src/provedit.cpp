@@ -68,22 +68,25 @@ CREATE TABLE proveedor (
 provedit::provedit(company *comp, QWidget *parent, const char *name)
  : provedit_base(parent, name) {
    companyact = comp;
-   idprovider = "";
+   idprovider = "0";
 }// end provedit
 
 provedit::~provedit() {
 }// end ~provedit
 
 
-/*********************************************************************
-* Esta función carga un proveedor de la base de datos y lo presenta. *
-**********************************************************************/
+/************************************************************************
+* Esta función carga un proveedor de la base de datos y lo presenta.    *
+* Si el parametro pasado no es un identificador válido entonces se pone *
+* la ventana de edición en modo de inserción                            *
+*************************************************************************/
 void provedit::chargeprovider(QString idprov) {
    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+idprov;
    companyact->begin();
    cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
    companyact->commit();
    if (!cur->eof()) {
+      idprovider = idprov;
       m_idproveedor->setText(cur->valor("idproveedor"));
       m_nomproveedor->setText(cur->valor("nomproveedor"));
       m_nomaltproveedor->setText(cur->valor("nomaltproveedor"));
@@ -100,8 +103,60 @@ void provedit::chargeprovider(QString idprov) {
       m_urlproveedor->setText(cur->valor("urlproveedor"));
 //      m_clavewebproveedor->setText(cur->valor("clavewebproveedor"));
       m_iddivision->setText(cur->valor("iddivision"));    
+   } else {
+      idprovider="0";
    }// end if
    delete cur;
 }// end chargeprovider
 
+
+/*************************************************************************
+* Esta función es la respuesta a la pulsación del boton de guardar       *
+* Comprueba si es una inserción o una modificación y hace los pasos      *
+* pertinentes                                                            *
+**************************************************************************/
+void provedit::accept() {
+   if (idprovider != "0") {
+      QString SQLQuery = "UPDATE proveedor SET urlproveedor='"+m_urlproveedor->text()+"'";
+      SQLQuery += " , nomproveedor='"+m_nomproveedor->text()+"'";
+      SQLQuery += " , nomaltproveedor='"+m_nomaltproveedor->text()+"'";
+      SQLQuery += " , cifproveedor='"+m_cifproveedor->text()+"'";
+      SQLQuery += " , codicliproveedor='"+m_codicliproveedor->text()+"'";
+      SQLQuery += " , cbancproveedor='"+m_cbancproveedor->text()+"'";
+      SQLQuery += " , dirproveedor='"+m_dirproveedor->text()+"'";
+      SQLQuery += " , poblproveedor='"+m_poblproveedor->text()+"'";
+      SQLQuery += " , cpproveedor='"+m_cpproveedor->text()+"'";
+      SQLQuery += " , telproveedor='"+m_telproveedor->text()+"'";
+      SQLQuery += " , faxproveedor='"+m_faxproveedor->text()+"'";
+      SQLQuery += " , emailproveedor='"+m_emailproveedor->text()+"'";
+      SQLQuery += " WHERE idproveedor ="+idprovider;
+      companyact->begin();
+      companyact->ejecuta(SQLQuery);
+      companyact->commit();
+      close();
+   } else {
+      QString SQLQuery = " INSERT INTO proveedor (nomproveedor, nomaltproveedor, cifproveedor, codicliproveedor, cbancproveedor, dirproveedor, poblproveedor, cpproveedor, telproveedor, faxproveedor, urlproveedor, emailproveedor, iddivision)";
+      SQLQuery += " VALUES (";
+      SQLQuery += "'"+m_nomproveedor->text()+"'";
+      SQLQuery += ",'"+m_nomaltproveedor->text()+"'";
+      SQLQuery += ",'"+m_nomproveedor->text()+"'";
+      SQLQuery += ",'"+m_cifproveedor->text()+"'";
+      SQLQuery += ",'"+m_codicliproveedor->text()+"'";
+      SQLQuery += ",'"+m_cbancproveedor->text()+"'";
+      SQLQuery += ",'"+m_dirproveedor->text()+"'";
+      SQLQuery += ",'"+m_poblproveedor->text()+"'";
+      SQLQuery += ",'"+m_cpproveedor->text()+"'";
+      SQLQuery += ",'"+m_telproveedor->text()+"'";
+      SQLQuery += ",'"+m_faxproveedor->text()+"'";
+      SQLQuery += ",'"+m_urlproveedor->text()+"'";
+      SQLQuery += ",'"+m_emailproveedor->text()+"'";
+      SQLQuery += ",1";
+      SQLQuery += ")";
+      companyact->begin();
+      companyact->ejecuta(SQLQuery);
+      companyact->commit();
+      close();
+
+   }// end if
+}// end accept
 
