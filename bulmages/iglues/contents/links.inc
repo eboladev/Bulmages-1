@@ -98,7 +98,7 @@ $body = '
 </tr>
 <tr>
 <td>
-<A HREF="http://bruli.100megas.com" TARGET="nueva">Pablo Braulio</A><BR>
+<A HREF="http://www.humano.ya.com/bruli" TARGET="nueva">Pablo Braulio</A><BR>
 <P>Página personal.</P>
 <br>
 </td>

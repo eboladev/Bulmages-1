@@ -14,11 +14,11 @@ $body = '
 <tr>
 <td colspan=2>Estamos muy contentos de poder comunicar que vamos a participar como ponentes en diversos eventos informáticos, jornadas de sofware libre y lan-parties. El calendario actualmente es el siguiente:<br>
 	<ul>
-		<li>Del 17 al 20 de Febrero: <A href="http://www.clubibosim.org">Feria de Informática y Nuevas Tecnologías</A></li>
-		<li>Dias 5, 11 al 12 de Marzo:  <A href="http://linuxcordoba.org">Jornadas Temáticas de Software Libre de Córdoba</A></li>
-		<li>Del 14 al 16 de Marzo: <A href="http://asturlinux.org/jornadas2005/index.php">V Jornadas de Software Libre en Asturias</A> <i>(falta confirmación)</i></li>
-		<li>Del 18 al 20 de Marzo: <A href="http://reuslanparty.org/index_es.htm">Reus-Lan-Party</A></li>
-		<li>Del 7 al 8 de Julio: <A href="http://congreso.gpul.org/">I Congreso de Tecnologías del Sofware Libre</A> <i>(falta confirmación)</i></li>
+		<li>Del 17 al 20 de Febrero: <A href="http://www.clubibosim.org" TARGET="nueva">Feria de Informática y Nuevas Tecnologías</A></li>
+		<li>Dias 5, 11 al 12 de Marzo:  <A href="http://linuxcordoba.org" TARGET="nueva">Jornadas Temáticas de Software Libre de Córdoba</A></li>
+		<li>Del 14 al 16 de Marzo: <A href="http://asturlinux.org/jornadas2005/index.php" TARGET="nueva">V Jornadas de Software Libre en Asturias</A> <i>(falta confirmación)</i></li>
+		<li>Del 18 al 20 de Marzo: <A href="http://reuslanparty.org/index_es.htm" TARGET="nueva">Reus-Lan-Party</A></li>
+		<li>Del 7 al 8 de Julio: <A href="http://congreso.gpul.org/" TARGET="nueva">I Congreso de Tecnologías del Sofware Libre</A> <i>(falta confirmación)</i></li>
 	</ul>
 	Gracias a todos por contar con nosotros :-) .
 	
