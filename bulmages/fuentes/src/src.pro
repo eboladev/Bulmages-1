@@ -329,8 +329,10 @@ FORMS += comun/uiselector.ui \
          nominas/uinominas.ui \
          contabilidad/amortizacionesdlg.ui \
          comun/uivisorempresas.ui
-INSTALLS += bulmages_install_script
 
+QMAKE_CLEAN += Makefile
+
+INSTALLS += bulmages_install_script
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
