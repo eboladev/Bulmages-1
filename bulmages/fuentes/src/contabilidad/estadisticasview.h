@@ -5,7 +5,6 @@
     copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
-
 /***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
