@@ -2,8 +2,6 @@
 -- PostgreSQL database dump
 --
 
-SET SESSION AUTHORIZATION 'postgres';
-
 --
 -- TOC entry 3 (OID 2200)
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
@@ -12,8 +10,6 @@ SET SESSION AUTHORIZATION 'postgres';
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
-
-SET SESSION AUTHORIZATION 'josep';
 
 SET search_path = public, pg_catalog;
 
@@ -117,10 +113,686 @@ CREATE TABLE pga_scripts (
 );
 
 
-SET SESSION AUTHORIZATION 'postgres';
+SET check_function_bodies = false;
 
 --
--- TOC entry 12 (OID 352261)
+-- TOC entry 129 (OID 355501)
+-- Name: plpgsql_call_handler(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
+    AS '/usr/lib/postgresql/lib/plpgsql.so', 'plpgsql_call_handler'
+    LANGUAGE c;
+
+
+--
+-- TOC entry 12 (OID 355504)
+-- Name: marca; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE marca (
+    idmarca serial NOT NULL,
+    nommarca character varying[],
+    urlmarca character varying[],
+    comentmarca character varying[]
+);
+
+
+--
+-- TOC entry 13 (OID 355514)
+-- Name: linea_prod; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE linea_prod (
+    idlinea_prod serial NOT NULL,
+    desclinea_prod character varying[],
+    idmarca integer
+);
+
+
+--
+-- TOC entry 14 (OID 355528)
+-- Name: tipo_iva; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tipo_iva (
+    idtipo_iva serial NOT NULL,
+    desctipo_iva character varying[],
+    tasatipo_iva integer
+);
+
+
+--
+-- TOC entry 15 (OID 355538)
+-- Name: articulo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE articulo (
+    idarticulo serial NOT NULL,
+    codarticulo character varying[],
+    nomarticulo character varying[],
+    descarticulo character varying[],
+    cbarrasarticulo character varying[],
+    tipoarticulo integer,
+    descuentoarticulo double precision,
+    especificacionesarticulo character varying[],
+    iconoarticulo oid,
+    fotoarticulo oid,
+    posterarticulo oid,
+    margenarticulo double precision,
+    sobrecostearticulo double precision,
+    modeloarticulo character varying[],
+    idtipo_iva integer,
+    idlinea_prod integer
+);
+
+
+--
+-- TOC entry 16 (OID 355556)
+-- Name: familia; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE familia (
+    idfamilia serial NOT NULL,
+    nombrefamilia character varying[],
+    descfamilia character varying[],
+    iconofamilia oid
+);
+
+
+--
+-- TOC entry 17 (OID 355566)
+-- Name: catalogo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE catalogo (
+    idcatalogo serial NOT NULL,
+    nombrecatalogo character varying[],
+    desccatalogo character varying[],
+    exclusivocatalogo boolean NOT NULL
+);
+
+
+--
+-- TOC entry 18 (OID 355576)
+-- Name: division; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE division (
+    iddivision serial NOT NULL,
+    descdivision character varying[],
+    contactosdivisioon character varying[],
+    comentdivision character varying[],
+    teldivision character varying[],
+    faxdivision character varying[],
+    maildivision character varying[]
+);
+
+
+--
+-- TOC entry 19 (OID 355586)
+-- Name: proveedor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE proveedor (
+    idproveedor serial NOT NULL,
+    nomproveedor character varying[],
+    nomaltproveedor character varying[],
+    cifproveedor character varying[],
+    codicliproveedor character varying[],
+    cbancproveedor character varying[],
+    comentproveedor character varying[],
+    dirproveedor character varying[],
+    poblproveedor character varying[],
+    cpproveedor character varying[] NOT NULL,
+    telproveedor character varying[],
+    faxproveedor character varying[],
+    emailproveedor character varying[],
+    urlproveedor character varying[],
+    clavewebproveedor character varying[],
+    iddivision integer NOT NULL
+);
+
+
+--
+-- TOC entry 20 (OID 355600)
+-- Name: recargo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE recargo (
+    idrecargo serial NOT NULL,
+    nomrecargo character varying[],
+    tasarecargo double precision
+);
+
+
+--
+-- TOC entry 21 (OID 355610)
+-- Name: cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE cliente (
+    idcliente serial NOT NULL,
+    nomcliente character varying[],
+    nomaltcliente character varying[],
+    cifcliente character varying[],
+    bancocliente character varying[],
+    dircliente character varying[],
+    poblcliente character varying[],
+    cpcliente character varying[],
+    telcliente character varying[],
+    faxcliente character varying[],
+    mailcliente character varying[],
+    urlcliente character varying[],
+    faltacliente date DEFAULT now(),
+    fbajacliente date,
+    comentcliente character varying[],
+    idrecargo integer NOT NULL
+);
+
+
+--
+-- TOC entry 22 (OID 355625)
+-- Name: sucursal; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE sucursal (
+    idsucursal serial NOT NULL,
+    nomsucursal character varying[],
+    dirsucursal character varying[],
+    poblsucursal character varying[],
+    cpsucursal character varying[],
+    telsucursal character varying[],
+    faxsucursal character varying[],
+    mailsucursal character varying[],
+    comentsucursal character varying[],
+    idcliente integer NOT NULL
+);
+
+
+--
+-- TOC entry 23 (OID 355639)
+-- Name: pedido; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pedido (
+    idpedido serial NOT NULL,
+    numpedido integer,
+    anopedido integer,
+    fechapedido date,
+    descpedido character varying[],
+    idproveedor integer NOT NULL
+);
+
+
+--
+-- TOC entry 24 (OID 355653)
+-- Name: fra_pro; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE fra_pro (
+    idfra_pro serial NOT NULL,
+    anofra_pro integer,
+    numfra_pro integer,
+    fcrefra_pro date,
+    comentfra_pro character varying[]
+);
+
+
+--
+-- TOC entry 25 (OID 355663)
+-- Name: alb_pro; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE alb_pro (
+    idalb_pro serial NOT NULL,
+    anoalb_pro integer,
+    ncompraalb_pro integer,
+    nalbalb_pro integer,
+    fcrealb_pro date,
+    frecepalb_pro date,
+    comentalb_pro character varying[],
+    idfra_pro integer
+);
+
+
+--
+-- TOC entry 26 (OID 355675)
+-- Name: lpedido; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE lpedido (
+    numlpedido integer NOT NULL,
+    desclpedido character varying[],
+    cantlpedido integer,
+    pvdlpedido double precision,
+    prevlpedido date,
+    idpedido integer NOT NULL,
+    idalb_pro integer,
+    idarticulo integer
+);
+
+
+--
+-- TOC entry 27 (OID 355696)
+-- Name: modalidad_g; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE modalidad_g (
+    idmodalidad_g serial NOT NULL,
+    nommodalitat_g character varying[],
+    descmodalidad_g character varying[]
+);
+
+
+--
+-- TOC entry 28 (OID 355706)
+-- Name: cond_garantia; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE cond_garantia (
+    idcond_garantia serial NOT NULL,
+    desccond_garantia character varying[],
+    retardcond_garantia timestamp without time zone,
+    tempsccond_garantia timestamp without time zone,
+    comentcond_garantia character varying[],
+    idmodalidad_g integer NOT NULL
+);
+
+
+--
+-- TOC entry 29 (OID 355720)
+-- Name: condiciones_v; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE condiciones_v (
+    idcondiciones_v serial NOT NULL
+);
+
+
+--
+-- TOC entry 30 (OID 355725)
+-- Name: oferta; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE oferta (
+    numoferta integer NOT NULL,
+    descoferta double precision,
+    fechainicio timestamp without time zone,
+    fechafin timestamp without time zone,
+    periodicidad integer
+);
+
+
+--
+-- TOC entry 31 (OID 355731)
+-- Name: forma_pago; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE forma_pago (
+    idforma_pago serial NOT NULL,
+    descforma_pago character varying[],
+    dias1tforma_pago integer,
+    descuentoforma_pago double precision
+);
+
+
+--
+-- TOC entry 32 (OID 355741)
+-- Name: termino_fp; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE termino_fp (
+    idtermino_fp serial NOT NULL,
+    proportermino_fp double precision,
+    diastermino_fp integer
+);
+
+
+--
+-- TOC entry 33 (OID 355748)
+-- Name: almacen; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE almacen (
+    idalmacen serial NOT NULL,
+    nomalmacen character varying[],
+    diralmacen character varying[],
+    poblalmacen character varying[],
+    cpalmacen character varying[],
+    telalmacen character varying[],
+    faxalmacen character varying[]
+);
+
+
+--
+-- TOC entry 34 (OID 355758)
+-- Name: presupuesto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE presupuesto (
+    idpresupuesto serial NOT NULL,
+    numpresupuesto integer,
+    fpresupuesto date,
+    contactpresupuesto character varying[],
+    telpresupuesto character varying[],
+    vencpresupuesto date,
+    comentpresupuesto character varying[],
+    idusuari integer,
+    idcliente integer
+);
+
+
+--
+-- TOC entry 35 (OID 355772)
+-- Name: dpresupuesto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE dpresupuesto (
+    iddpresupuesto serial NOT NULL,
+    conceptpresupuesto character varying[],
+    proporciondpresupuesto double precision,
+    idpresupuesto integer
+);
+
+
+--
+-- TOC entry 36 (OID 355784)
+-- Name: lpresupuesto; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE lpresupuesto (
+    idlpresupuesto integer NOT NULL,
+    desclpresupuesto character varying[],
+    cantlpresupuesto double precision,
+    pvplpresupuesto double precision,
+    descuentolpresupuesto double precision,
+    idpresupuesto integer NOT NULL,
+    idarituclo integer
+);
+
+
+--
+-- TOC entry 37 (OID 355799)
+-- Name: factura; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE factura (
+    numfactura integer NOT NULL,
+    fechafactura date
+);
+
+
+--
+-- TOC entry 38 (OID 355803)
+-- Name: nofactura; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE nofactura (
+    numnofactura integer NOT NULL,
+    fechanofactura date,
+    conceptnofactura character varying[],
+    observnofactura character varying[]
+);
+
+
+--
+-- TOC entry 39 (OID 355810)
+-- Name: albaran; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE albaran (
+    numalbaran integer NOT NULL,
+    fechaalbaran date,
+    idusuario integer,
+    idcliente integer,
+    idforma_pago integer,
+    numfactura integer,
+    numnofactura integer
+);
+
+
+--
+-- TOC entry 40 (OID 355830)
+-- Name: dalbaran; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE dalbaran (
+    numdalbaran integer NOT NULL,
+    conceptdalbaran character varying[],
+    propordalbaran double precision,
+    numalbaran integer
+);
+
+
+--
+-- TOC entry 41 (OID 355841)
+-- Name: lalbaran; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE lalbaran (
+    numlalbaran integer NOT NULL,
+    desclalbaran character varying[],
+    cantlalbaran double precision,
+    pvplalbaran double precision,
+    descontlalbaran double precision,
+    numalbaran integer,
+    idarticulo integer
+);
+
+
+--
+-- TOC entry 42 (OID 355858)
+-- Name: vencimiento; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE vencimiento (
+    idvencimiento serial NOT NULL,
+    fechavencimiento date,
+    importevencimiento double precision,
+    abonadovencimiento double precision,
+    numfactura integer
+);
+
+
+--
+-- TOC entry 43 (OID 355867)
+-- Name: ticket; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE ticket (
+    numticket integer NOT NULL,
+    fechaticket date
+);
+
+
+--
+-- TOC entry 44 (OID 355873)
+-- Name: suministra; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE suministra (
+    idsuministra serial NOT NULL,
+    refpro integer,
+    pvdsuministra double precision,
+    beneficiosuministra double precision,
+    sobrecostesuministra double precision,
+    principalsuministra double precision,
+    referentsuministra double precision,
+    idproveedor integer
+);
+
+
+--
+-- TOC entry 45 (OID 355882)
+-- Name: num_serie; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE num_serie (
+    numnum_serie character varying[] NOT NULL,
+    tiponumserie integer,
+    numlpedido integer,
+    numlalbaran integer
+);
+
+
+--
+-- TOC entry 46 (OID 355897)
+-- Name: famc; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE famc (
+    idcatalogo integer,
+    idfamilia integer
+);
+
+
+--
+-- TOC entry 47 (OID 355907)
+-- Name: artc; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE artc (
+    idcatalogo integer,
+    idarticulo integer
+);
+
+
+--
+-- TOC entry 48 (OID 355917)
+-- Name: hija; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE hija (
+    idfamilia integer,
+    famhija integer
+);
+
+
+--
+-- TOC entry 49 (OID 355927)
+-- Name: agrupa; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE agrupa (
+    idfamilia integer,
+    idarticulo integer
+);
+
+
+--
+-- TOC entry 50 (OID 355937)
+-- Name: componente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE componente (
+    idarticulo integer,
+    articulocomponente integer,
+    id integer,
+    prioridad integer,
+    descripcion character varying[],
+    cantidad double precision,
+    escalable boolean
+);
+
+
+--
+-- TOC entry 51 (OID 355950)
+-- Name: stock; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE stock (
+    idarticulo integer,
+    idalmacen integer,
+    minimo double precision,
+    maximo double precision,
+    actual double precision
+);
+
+
+--
+-- TOC entry 52 (OID 355960)
+-- Name: dxfam; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE dxfam (
+    idcliente integer,
+    idfamilia integer,
+    descdxfam character varying[]
+);
+
+
+--
+-- TOC entry 53 (OID 355973)
+-- Name: dxart; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE dxart (
+    idcliente integer,
+    idarticulo integer,
+    descdxart character varying[]
+);
+
+
+--
+-- TOC entry 54 (OID 355986)
+-- Name: dxof; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE dxof (
+    idarticulo integer,
+    numoferta integer
+);
+
+
+--
+-- TOC entry 55 (OID 355996)
+-- Name: representa; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE representa (
+    idusuario integer,
+    idcliente integer,
+    permisrepresnta integer
+);
+
+
+--
+-- TOC entry 56 (OID 356002)
+-- Name: prfp; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE prfp (
+    idpresupuesto integer,
+    idforma_pago integer,
+    descprfp double precision
+);
+
+
+--
+-- TOC entry 57 (OID 356012)
+-- Name: afp; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE afp (
+    idarticulo integer,
+    idforma_pago integer
+);
+
+
+--
+-- TOC entry 58 (OID 356022)
+-- Name: albpre; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE albpre (
+    idpresupuesto integer,
+    numalbaran integer
+);
+
+
+--
+-- TOC entry 59 (OID 356032)
 -- Name: meta; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -131,7 +803,7 @@ CREATE TABLE meta (
 
 
 --
--- TOC entry 13 (OID 352265)
+-- TOC entry 60 (OID 356036)
 -- Name: usuarios; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -145,10 +817,8 @@ CREATE TABLE usuarios (
 );
 
 
-SET SESSION AUTHORIZATION 'josep';
-
 --
--- Data for TOC entry 24 (OID 351594)
+-- Data for TOC entry 130 (OID 351594)
 -- Name: pga_graphs; Type: TABLE DATA; Schema: public; Owner: josep
 --
 
@@ -157,7 +827,7 @@ COPY pga_graphs (graphname, graphsource, graphcode) FROM stdin;
 
 
 --
--- Data for TOC entry 25 (OID 351601)
+-- Data for TOC entry 131 (OID 351601)
 -- Name: pga_layout; Type: TABLE DATA; Schema: public; Owner: josep
 --
 
@@ -185,13 +855,15 @@ pg_catalog.pg_description	4	objoid classoid objsubid description	150 150 150 150
 pg_catalog.pg_depend	7	classid objid objsubid refclassid refobjid refobjsubid deptype	150 150 150 150 150 150 150
 pg_catalog.pg_database	11	datname datdba encoding datistemplate datallowconn datlastsysoid datvacuumxid datfrozenxid datpath datconfig datacl	150 150 150 150 150 150 150 150 150 150 150
 	2	nombredb nombreempresa	150 150
-public.usuarios	6	login nombre apellido1 apellido2 clave permisos	150 150 150 150 150 150
+public.cliente	16	idcliente nomcliente nomaltcliente cifcliente bancocliente dircliente poblcliente cpcliente telcliente faxcliente mailcliente urlcliente faltacliente fbajacliente comentcliente idrecargo	150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150
 public.meta	2	id valor	150 150
+public.usuarios	6	login nombre apellido1 apellido2 clave permisos	150 150 150 150 150 150
+public.tipo_iva	3	idtipo_iva desctipo_iva tasatipo_iva	150 150 150
 \.
 
 
 --
--- Data for TOC entry 26 (OID 351608)
+-- Data for TOC entry 132 (OID 351608)
 -- Name: pga_images; Type: TABLE DATA; Schema: public; Owner: josep
 --
 
@@ -200,7 +872,7 @@ COPY pga_images (imagename, imagesource) FROM stdin;
 
 
 --
--- Data for TOC entry 27 (OID 351615)
+-- Data for TOC entry 133 (OID 351615)
 -- Name: pga_queries; Type: TABLE DATA; Schema: public; Owner: josep
 --
 
@@ -209,7 +881,7 @@ COPY pga_queries (queryname, querytype, querycommand, querytables, querylinks, q
 
 
 --
--- Data for TOC entry 28 (OID 351622)
+-- Data for TOC entry 134 (OID 351622)
 -- Name: pga_reports; Type: TABLE DATA; Schema: public; Owner: josep
 --
 
@@ -218,7 +890,7 @@ COPY pga_reports (reportname, reportsource, reportbody, reportprocs, reportoptio
 
 
 --
--- Data for TOC entry 29 (OID 351629)
+-- Data for TOC entry 135 (OID 351629)
 -- Name: pga_forms; Type: TABLE DATA; Schema: public; Owner: josep
 --
 
@@ -227,7 +899,7 @@ COPY pga_forms (formname, formsource) FROM stdin;
 
 
 --
--- Data for TOC entry 30 (OID 351636)
+-- Data for TOC entry 136 (OID 351636)
 -- Name: pga_diagrams; Type: TABLE DATA; Schema: public; Owner: josep
 --
 
@@ -236,7 +908,7 @@ COPY pga_diagrams (diagramname, diagramtables, diagramlinks) FROM stdin;
 
 
 --
--- Data for TOC entry 31 (OID 351643)
+-- Data for TOC entry 137 (OID 351643)
 -- Name: pga_scripts; Type: TABLE DATA; Schema: public; Owner: josep
 --
 
@@ -244,21 +916,442 @@ COPY pga_scripts (scriptname, scriptsource) FROM stdin;
 \.
 
 
-SET SESSION AUTHORIZATION 'postgres';
+--
+-- Data for TOC entry 138 (OID 355504)
+-- Name: marca; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY marca (idmarca, nommarca, urlmarca, comentmarca) FROM stdin;
+\.
+
 
 --
--- Data for TOC entry 32 (OID 352261)
+-- Data for TOC entry 139 (OID 355514)
+-- Name: linea_prod; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY linea_prod (idlinea_prod, desclinea_prod, idmarca) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 140 (OID 355528)
+-- Name: tipo_iva; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tipo_iva (idtipo_iva, desctipo_iva, tasatipo_iva) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 141 (OID 355538)
+-- Name: articulo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY articulo (idarticulo, codarticulo, nomarticulo, descarticulo, cbarrasarticulo, tipoarticulo, descuentoarticulo, especificacionesarticulo, iconoarticulo, fotoarticulo, posterarticulo, margenarticulo, sobrecostearticulo, modeloarticulo, idtipo_iva, idlinea_prod) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 142 (OID 355556)
+-- Name: familia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY familia (idfamilia, nombrefamilia, descfamilia, iconofamilia) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 143 (OID 355566)
+-- Name: catalogo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY catalogo (idcatalogo, nombrecatalogo, desccatalogo, exclusivocatalogo) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 144 (OID 355576)
+-- Name: division; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY division (iddivision, descdivision, contactosdivisioon, comentdivision, teldivision, faxdivision, maildivision) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 145 (OID 355586)
+-- Name: proveedor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY proveedor (idproveedor, nomproveedor, nomaltproveedor, cifproveedor, codicliproveedor, cbancproveedor, comentproveedor, dirproveedor, poblproveedor, cpproveedor, telproveedor, faxproveedor, emailproveedor, urlproveedor, clavewebproveedor, iddivision) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 146 (OID 355600)
+-- Name: recargo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY recargo (idrecargo, nomrecargo, tasarecargo) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 147 (OID 355610)
+-- Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY cliente (idcliente, nomcliente, nomaltcliente, cifcliente, bancocliente, dircliente, poblcliente, cpcliente, telcliente, faxcliente, mailcliente, urlcliente, faltacliente, fbajacliente, comentcliente, idrecargo) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 148 (OID 355625)
+-- Name: sucursal; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY sucursal (idsucursal, nomsucursal, dirsucursal, poblsucursal, cpsucursal, telsucursal, faxsucursal, mailsucursal, comentsucursal, idcliente) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 149 (OID 355639)
+-- Name: pedido; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pedido (idpedido, numpedido, anopedido, fechapedido, descpedido, idproveedor) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 150 (OID 355653)
+-- Name: fra_pro; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY fra_pro (idfra_pro, anofra_pro, numfra_pro, fcrefra_pro, comentfra_pro) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 151 (OID 355663)
+-- Name: alb_pro; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY alb_pro (idalb_pro, anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idfra_pro) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 152 (OID 355675)
+-- Name: lpedido; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idalb_pro, idarticulo) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 153 (OID 355696)
+-- Name: modalidad_g; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY modalidad_g (idmodalidad_g, nommodalitat_g, descmodalidad_g) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 154 (OID 355706)
+-- Name: cond_garantia; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY cond_garantia (idcond_garantia, desccond_garantia, retardcond_garantia, tempsccond_garantia, comentcond_garantia, idmodalidad_g) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 155 (OID 355720)
+-- Name: condiciones_v; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY condiciones_v (idcondiciones_v) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 156 (OID 355725)
+-- Name: oferta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY oferta (numoferta, descoferta, fechainicio, fechafin, periodicidad) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 157 (OID 355731)
+-- Name: forma_pago; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY forma_pago (idforma_pago, descforma_pago, dias1tforma_pago, descuentoforma_pago) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 158 (OID 355741)
+-- Name: termino_fp; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY termino_fp (idtermino_fp, proportermino_fp, diastermino_fp) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 159 (OID 355748)
+-- Name: almacen; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY almacen (idalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 160 (OID 355758)
+-- Name: presupuesto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY presupuesto (idpresupuesto, numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 161 (OID 355772)
+-- Name: dpresupuesto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY dpresupuesto (iddpresupuesto, conceptpresupuesto, proporciondpresupuesto, idpresupuesto) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 162 (OID 355784)
+-- Name: lpresupuesto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY lpresupuesto (idlpresupuesto, desclpresupuesto, cantlpresupuesto, pvplpresupuesto, descuentolpresupuesto, idpresupuesto, idarituclo) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 163 (OID 355799)
+-- Name: factura; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY factura (numfactura, fechafactura) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 164 (OID 355803)
+-- Name: nofactura; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY nofactura (numnofactura, fechanofactura, conceptnofactura, observnofactura) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 165 (OID 355810)
+-- Name: albaran; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago, numfactura, numnofactura) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 166 (OID 355830)
+-- Name: dalbaran; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY dalbaran (numdalbaran, conceptdalbaran, propordalbaran, numalbaran) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 167 (OID 355841)
+-- Name: lalbaran; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY lalbaran (numlalbaran, desclalbaran, cantlalbaran, pvplalbaran, descontlalbaran, numalbaran, idarticulo) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 168 (OID 355858)
+-- Name: vencimiento; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY vencimiento (idvencimiento, fechavencimiento, importevencimiento, abonadovencimiento, numfactura) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 169 (OID 355867)
+-- Name: ticket; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY ticket (numticket, fechaticket) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 170 (OID 355873)
+-- Name: suministra; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY suministra (idsuministra, refpro, pvdsuministra, beneficiosuministra, sobrecostesuministra, principalsuministra, referentsuministra, idproveedor) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 171 (OID 355882)
+-- Name: num_serie; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY num_serie (numnum_serie, tiponumserie, numlpedido, numlalbaran) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 172 (OID 355897)
+-- Name: famc; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY famc (idcatalogo, idfamilia) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 173 (OID 355907)
+-- Name: artc; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY artc (idcatalogo, idarticulo) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 174 (OID 355917)
+-- Name: hija; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY hija (idfamilia, famhija) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 175 (OID 355927)
+-- Name: agrupa; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY agrupa (idfamilia, idarticulo) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 176 (OID 355937)
+-- Name: componente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY componente (idarticulo, articulocomponente, id, prioridad, descripcion, cantidad, escalable) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 177 (OID 355950)
+-- Name: stock; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY stock (idarticulo, idalmacen, minimo, maximo, actual) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 178 (OID 355960)
+-- Name: dxfam; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY dxfam (idcliente, idfamilia, descdxfam) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 179 (OID 355973)
+-- Name: dxart; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY dxart (idcliente, idarticulo, descdxart) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 180 (OID 355986)
+-- Name: dxof; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY dxof (idarticulo, numoferta) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 181 (OID 355996)
+-- Name: representa; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY representa (idusuario, idcliente, permisrepresnta) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 182 (OID 356002)
+-- Name: prfp; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY prfp (idpresupuesto, idforma_pago, descprfp) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 183 (OID 356012)
+-- Name: afp; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY afp (idarticulo, idforma_pago) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 184 (OID 356022)
+-- Name: albpre; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY albpre (idpresupuesto, numalbaran) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 185 (OID 356032)
 -- Name: meta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY meta (id, valor) FROM stdin;
 version	bulmafact 0.0.1
-empresa	Servicios Financieros S.A.
+empresa	Template_Data_Base
 \.
 
 
 --
--- Data for TOC entry 33 (OID 352265)
+-- Data for TOC entry 186 (OID 356036)
 -- Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -267,10 +1360,8 @@ bulmages	Superusuario	BulmaFact	Bulmafact	bulmages	entrada{+},
 \.
 
 
-SET SESSION AUTHORIZATION 'josep';
-
 --
--- TOC entry 14 (OID 351599)
+-- TOC entry 85 (OID 351599)
 -- Name: pga_graphs_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
 --
 
@@ -279,7 +1370,7 @@ ALTER TABLE ONLY pga_graphs
 
 
 --
--- TOC entry 15 (OID 351606)
+-- TOC entry 86 (OID 351606)
 -- Name: pga_layout_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
 --
 
@@ -288,7 +1379,7 @@ ALTER TABLE ONLY pga_layout
 
 
 --
--- TOC entry 16 (OID 351613)
+-- TOC entry 87 (OID 351613)
 -- Name: pga_images_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
 --
 
@@ -297,7 +1388,7 @@ ALTER TABLE ONLY pga_images
 
 
 --
--- TOC entry 17 (OID 351620)
+-- TOC entry 88 (OID 351620)
 -- Name: pga_queries_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
 --
 
@@ -306,7 +1397,7 @@ ALTER TABLE ONLY pga_queries
 
 
 --
--- TOC entry 18 (OID 351627)
+-- TOC entry 89 (OID 351627)
 -- Name: pga_reports_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
 --
 
@@ -315,7 +1406,7 @@ ALTER TABLE ONLY pga_reports
 
 
 --
--- TOC entry 19 (OID 351634)
+-- TOC entry 90 (OID 351634)
 -- Name: pga_forms_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
 --
 
@@ -324,7 +1415,7 @@ ALTER TABLE ONLY pga_forms
 
 
 --
--- TOC entry 20 (OID 351641)
+-- TOC entry 91 (OID 351641)
 -- Name: pga_diagrams_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
 --
 
@@ -333,7 +1424,7 @@ ALTER TABLE ONLY pga_diagrams
 
 
 --
--- TOC entry 21 (OID 351648)
+-- TOC entry 92 (OID 351648)
 -- Name: pga_scripts_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
 --
 
@@ -341,10 +1432,314 @@ ALTER TABLE ONLY pga_scripts
     ADD CONSTRAINT pga_scripts_pkey PRIMARY KEY (scriptname);
 
 
-SET SESSION AUTHORIZATION 'postgres';
+--
+-- TOC entry 93 (OID 355510)
+-- Name: marca_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY marca
+    ADD CONSTRAINT marca_pkey PRIMARY KEY (idmarca);
+
 
 --
--- TOC entry 22 (OID 352263)
+-- TOC entry 94 (OID 355520)
+-- Name: linea_prod_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY linea_prod
+    ADD CONSTRAINT linea_prod_pkey PRIMARY KEY (idlinea_prod);
+
+
+--
+-- TOC entry 95 (OID 355534)
+-- Name: tipo_iva_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tipo_iva
+    ADD CONSTRAINT tipo_iva_pkey PRIMARY KEY (idtipo_iva);
+
+
+--
+-- TOC entry 96 (OID 355544)
+-- Name: articulo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY articulo
+    ADD CONSTRAINT articulo_pkey PRIMARY KEY (idarticulo);
+
+
+--
+-- TOC entry 97 (OID 355562)
+-- Name: familia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY familia
+    ADD CONSTRAINT familia_pkey PRIMARY KEY (idfamilia);
+
+
+--
+-- TOC entry 98 (OID 355572)
+-- Name: catalogo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY catalogo
+    ADD CONSTRAINT catalogo_pkey PRIMARY KEY (idcatalogo);
+
+
+--
+-- TOC entry 99 (OID 355582)
+-- Name: division_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY division
+    ADD CONSTRAINT division_pkey PRIMARY KEY (iddivision);
+
+
+--
+-- TOC entry 100 (OID 355592)
+-- Name: proveedor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY proveedor
+    ADD CONSTRAINT proveedor_pkey PRIMARY KEY (idproveedor);
+
+
+--
+-- TOC entry 101 (OID 355606)
+-- Name: recargo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY recargo
+    ADD CONSTRAINT recargo_pkey PRIMARY KEY (idrecargo);
+
+
+--
+-- TOC entry 102 (OID 355617)
+-- Name: cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (idcliente);
+
+
+--
+-- TOC entry 103 (OID 355631)
+-- Name: sucursal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY sucursal
+    ADD CONSTRAINT sucursal_pkey PRIMARY KEY (idsucursal);
+
+
+--
+-- TOC entry 104 (OID 355645)
+-- Name: pedido_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT pedido_pkey PRIMARY KEY (idpedido);
+
+
+--
+-- TOC entry 105 (OID 355659)
+-- Name: fra_pro_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY fra_pro
+    ADD CONSTRAINT fra_pro_pkey PRIMARY KEY (idfra_pro);
+
+
+--
+-- TOC entry 106 (OID 355669)
+-- Name: alb_pro_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY alb_pro
+    ADD CONSTRAINT alb_pro_pkey PRIMARY KEY (idalb_pro);
+
+
+--
+-- TOC entry 107 (OID 355680)
+-- Name: lpedido_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lpedido
+    ADD CONSTRAINT lpedido_pkey PRIMARY KEY (numlpedido);
+
+
+--
+-- TOC entry 108 (OID 355702)
+-- Name: modalidad_g_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY modalidad_g
+    ADD CONSTRAINT modalidad_g_pkey PRIMARY KEY (idmodalidad_g);
+
+
+--
+-- TOC entry 109 (OID 355712)
+-- Name: cond_garantia_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cond_garantia
+    ADD CONSTRAINT cond_garantia_pkey PRIMARY KEY (idcond_garantia);
+
+
+--
+-- TOC entry 110 (OID 355723)
+-- Name: condiciones_v_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY condiciones_v
+    ADD CONSTRAINT condiciones_v_pkey PRIMARY KEY (idcondiciones_v);
+
+
+--
+-- TOC entry 111 (OID 355727)
+-- Name: oferta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY oferta
+    ADD CONSTRAINT oferta_pkey PRIMARY KEY (numoferta);
+
+
+--
+-- TOC entry 112 (OID 355737)
+-- Name: forma_pago_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY forma_pago
+    ADD CONSTRAINT forma_pago_pkey PRIMARY KEY (idforma_pago);
+
+
+--
+-- TOC entry 113 (OID 355744)
+-- Name: termino_fp_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY termino_fp
+    ADD CONSTRAINT termino_fp_pkey PRIMARY KEY (idtermino_fp);
+
+
+--
+-- TOC entry 114 (OID 355754)
+-- Name: almacen_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY almacen
+    ADD CONSTRAINT almacen_pkey PRIMARY KEY (idalmacen);
+
+
+--
+-- TOC entry 115 (OID 355764)
+-- Name: presupuesto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY presupuesto
+    ADD CONSTRAINT presupuesto_pkey PRIMARY KEY (idpresupuesto);
+
+
+--
+-- TOC entry 116 (OID 355778)
+-- Name: dpresupuesto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dpresupuesto
+    ADD CONSTRAINT dpresupuesto_pkey PRIMARY KEY (iddpresupuesto);
+
+
+--
+-- TOC entry 117 (OID 355789)
+-- Name: lpresupuesto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lpresupuesto
+    ADD CONSTRAINT lpresupuesto_pkey PRIMARY KEY (idlpresupuesto);
+
+
+--
+-- TOC entry 118 (OID 355801)
+-- Name: factura_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY factura
+    ADD CONSTRAINT factura_pkey PRIMARY KEY (numfactura);
+
+
+--
+-- TOC entry 119 (OID 355808)
+-- Name: nofactura_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY nofactura
+    ADD CONSTRAINT nofactura_pkey PRIMARY KEY (numnofactura);
+
+
+--
+-- TOC entry 120 (OID 355812)
+-- Name: albaran_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY albaran
+    ADD CONSTRAINT albaran_pkey PRIMARY KEY (numalbaran);
+
+
+--
+-- TOC entry 121 (OID 355835)
+-- Name: dalbaran_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dalbaran
+    ADD CONSTRAINT dalbaran_pkey PRIMARY KEY (numdalbaran);
+
+
+--
+-- TOC entry 122 (OID 355846)
+-- Name: lalbaran_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lalbaran
+    ADD CONSTRAINT lalbaran_pkey PRIMARY KEY (numlalbaran);
+
+
+--
+-- TOC entry 123 (OID 355861)
+-- Name: vencimiento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY vencimiento
+    ADD CONSTRAINT vencimiento_pkey PRIMARY KEY (idvencimiento);
+
+
+--
+-- TOC entry 124 (OID 355869)
+-- Name: ticket_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY ticket
+    ADD CONSTRAINT ticket_pkey PRIMARY KEY (numticket);
+
+
+--
+-- TOC entry 125 (OID 355876)
+-- Name: suministra_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY suministra
+    ADD CONSTRAINT suministra_pkey PRIMARY KEY (idsuministra);
+
+
+--
+-- TOC entry 126 (OID 355887)
+-- Name: num_serie_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY num_serie
+    ADD CONSTRAINT num_serie_pkey PRIMARY KEY (numnum_serie);
+
+
+--
+-- TOC entry 127 (OID 356034)
 -- Name: meta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -353,12 +1748,672 @@ ALTER TABLE ONLY meta
 
 
 --
--- TOC entry 23 (OID 352270)
+-- TOC entry 128 (OID 356041)
 -- Name: usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY usuarios
     ADD CONSTRAINT usuarios_pkey PRIMARY KEY (login);
+
+
+--
+-- TOC entry 187 (OID 355522)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY linea_prod
+    ADD CONSTRAINT "$1" FOREIGN KEY (idmarca) REFERENCES marca(idmarca);
+
+
+--
+-- TOC entry 188 (OID 355546)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY articulo
+    ADD CONSTRAINT "$1" FOREIGN KEY (idtipo_iva) REFERENCES tipo_iva(idtipo_iva);
+
+
+--
+-- TOC entry 189 (OID 355550)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY articulo
+    ADD CONSTRAINT "$2" FOREIGN KEY (idlinea_prod) REFERENCES linea_prod(idlinea_prod);
+
+
+--
+-- TOC entry 190 (OID 355594)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY proveedor
+    ADD CONSTRAINT "$1" FOREIGN KEY (iddivision) REFERENCES division(iddivision);
+
+
+--
+-- TOC entry 191 (OID 355619)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cliente
+    ADD CONSTRAINT "$1" FOREIGN KEY (idrecargo) REFERENCES recargo(idrecargo);
+
+
+--
+-- TOC entry 192 (OID 355633)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY sucursal
+    ADD CONSTRAINT "$1" FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
+
+
+--
+-- TOC entry 193 (OID 355647)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pedido
+    ADD CONSTRAINT "$1" FOREIGN KEY (idproveedor) REFERENCES proveedor(idproveedor);
+
+
+--
+-- TOC entry 194 (OID 355671)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY alb_pro
+    ADD CONSTRAINT "$1" FOREIGN KEY (idfra_pro) REFERENCES fra_pro(idfra_pro);
+
+
+--
+-- TOC entry 195 (OID 355682)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lpedido
+    ADD CONSTRAINT "$1" FOREIGN KEY (idpedido) REFERENCES pedido(idpedido);
+
+
+--
+-- TOC entry 196 (OID 355686)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lpedido
+    ADD CONSTRAINT "$2" FOREIGN KEY (idalb_pro) REFERENCES alb_pro(idalb_pro);
+
+
+--
+-- TOC entry 197 (OID 355690)
+-- Name: $3; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lpedido
+    ADD CONSTRAINT "$3" FOREIGN KEY (idarticulo) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 198 (OID 355714)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY cond_garantia
+    ADD CONSTRAINT "$1" FOREIGN KEY (idmodalidad_g) REFERENCES modalidad_g(idmodalidad_g);
+
+
+--
+-- TOC entry 199 (OID 355766)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY presupuesto
+    ADD CONSTRAINT "$1" FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
+
+
+--
+-- TOC entry 200 (OID 355780)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dpresupuesto
+    ADD CONSTRAINT "$1" FOREIGN KEY (idpresupuesto) REFERENCES presupuesto(idpresupuesto);
+
+
+--
+-- TOC entry 201 (OID 355791)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lpresupuesto
+    ADD CONSTRAINT "$1" FOREIGN KEY (idpresupuesto) REFERENCES presupuesto(idpresupuesto);
+
+
+--
+-- TOC entry 202 (OID 355795)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lpresupuesto
+    ADD CONSTRAINT "$2" FOREIGN KEY (idarituclo) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 203 (OID 355814)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY albaran
+    ADD CONSTRAINT "$1" FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
+
+
+--
+-- TOC entry 204 (OID 355818)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY albaran
+    ADD CONSTRAINT "$2" FOREIGN KEY (idforma_pago) REFERENCES forma_pago(idforma_pago);
+
+
+--
+-- TOC entry 205 (OID 355822)
+-- Name: $3; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY albaran
+    ADD CONSTRAINT "$3" FOREIGN KEY (numfactura) REFERENCES factura(numfactura);
+
+
+--
+-- TOC entry 206 (OID 355826)
+-- Name: $4; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY albaran
+    ADD CONSTRAINT "$4" FOREIGN KEY (numnofactura) REFERENCES nofactura(numnofactura);
+
+
+--
+-- TOC entry 207 (OID 355837)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dalbaran
+    ADD CONSTRAINT "$1" FOREIGN KEY (numalbaran) REFERENCES albaran(numalbaran);
+
+
+--
+-- TOC entry 208 (OID 355848)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lalbaran
+    ADD CONSTRAINT "$1" FOREIGN KEY (numalbaran) REFERENCES albaran(numalbaran);
+
+
+--
+-- TOC entry 209 (OID 355852)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lalbaran
+    ADD CONSTRAINT "$2" FOREIGN KEY (idarticulo) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 210 (OID 355863)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY vencimiento
+    ADD CONSTRAINT "$1" FOREIGN KEY (numfactura) REFERENCES factura(numfactura);
+
+
+--
+-- TOC entry 211 (OID 355878)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY suministra
+    ADD CONSTRAINT "$1" FOREIGN KEY (idproveedor) REFERENCES proveedor(idproveedor);
+
+
+--
+-- TOC entry 212 (OID 355889)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY num_serie
+    ADD CONSTRAINT "$1" FOREIGN KEY (numlpedido) REFERENCES lpedido(numlpedido);
+
+
+--
+-- TOC entry 213 (OID 355893)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY num_serie
+    ADD CONSTRAINT "$2" FOREIGN KEY (numlalbaran) REFERENCES lalbaran(numlalbaran);
+
+
+--
+-- TOC entry 214 (OID 355899)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY famc
+    ADD CONSTRAINT "$1" FOREIGN KEY (idcatalogo) REFERENCES catalogo(idcatalogo);
+
+
+--
+-- TOC entry 215 (OID 355903)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY famc
+    ADD CONSTRAINT "$2" FOREIGN KEY (idfamilia) REFERENCES familia(idfamilia);
+
+
+--
+-- TOC entry 216 (OID 355909)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY artc
+    ADD CONSTRAINT "$1" FOREIGN KEY (idcatalogo) REFERENCES catalogo(idcatalogo);
+
+
+--
+-- TOC entry 217 (OID 355913)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY artc
+    ADD CONSTRAINT "$2" FOREIGN KEY (idarticulo) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 218 (OID 355919)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY hija
+    ADD CONSTRAINT "$1" FOREIGN KEY (idfamilia) REFERENCES familia(idfamilia);
+
+
+--
+-- TOC entry 219 (OID 355923)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY hija
+    ADD CONSTRAINT "$2" FOREIGN KEY (famhija) REFERENCES familia(idfamilia);
+
+
+--
+-- TOC entry 220 (OID 355929)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY agrupa
+    ADD CONSTRAINT "$1" FOREIGN KEY (idfamilia) REFERENCES familia(idfamilia);
+
+
+--
+-- TOC entry 221 (OID 355933)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY agrupa
+    ADD CONSTRAINT "$2" FOREIGN KEY (idarticulo) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 222 (OID 355942)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY componente
+    ADD CONSTRAINT "$1" FOREIGN KEY (idarticulo) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 223 (OID 355946)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY componente
+    ADD CONSTRAINT "$2" FOREIGN KEY (articulocomponente) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 224 (OID 355952)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY stock
+    ADD CONSTRAINT "$1" FOREIGN KEY (idarticulo) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 225 (OID 355956)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY stock
+    ADD CONSTRAINT "$2" FOREIGN KEY (idalmacen) REFERENCES almacen(idalmacen);
+
+
+--
+-- TOC entry 226 (OID 355965)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dxfam
+    ADD CONSTRAINT "$1" FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
+
+
+--
+-- TOC entry 227 (OID 355969)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dxfam
+    ADD CONSTRAINT "$2" FOREIGN KEY (idfamilia) REFERENCES familia(idfamilia);
+
+
+--
+-- TOC entry 228 (OID 355978)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dxart
+    ADD CONSTRAINT "$1" FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
+
+
+--
+-- TOC entry 229 (OID 355982)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dxart
+    ADD CONSTRAINT "$2" FOREIGN KEY (idarticulo) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 230 (OID 355988)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dxof
+    ADD CONSTRAINT "$1" FOREIGN KEY (idarticulo) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 231 (OID 355992)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY dxof
+    ADD CONSTRAINT "$2" FOREIGN KEY (numoferta) REFERENCES oferta(numoferta);
+
+
+--
+-- TOC entry 232 (OID 355998)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY representa
+    ADD CONSTRAINT "$1" FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
+
+
+--
+-- TOC entry 233 (OID 356004)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY prfp
+    ADD CONSTRAINT "$1" FOREIGN KEY (idpresupuesto) REFERENCES presupuesto(idpresupuesto);
+
+
+--
+-- TOC entry 234 (OID 356008)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY prfp
+    ADD CONSTRAINT "$2" FOREIGN KEY (idforma_pago) REFERENCES forma_pago(idforma_pago);
+
+
+--
+-- TOC entry 235 (OID 356014)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY afp
+    ADD CONSTRAINT "$1" FOREIGN KEY (idarticulo) REFERENCES articulo(idarticulo);
+
+
+--
+-- TOC entry 236 (OID 356018)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY afp
+    ADD CONSTRAINT "$2" FOREIGN KEY (idforma_pago) REFERENCES forma_pago(idforma_pago);
+
+
+--
+-- TOC entry 237 (OID 356024)
+-- Name: $1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY albpre
+    ADD CONSTRAINT "$1" FOREIGN KEY (idpresupuesto) REFERENCES presupuesto(idpresupuesto);
+
+
+--
+-- TOC entry 238 (OID 356028)
+-- Name: $2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY albpre
+    ADD CONSTRAINT "$2" FOREIGN KEY (numalbaran) REFERENCES albaran(numalbaran);
+
+
+--
+-- TOC entry 61 (OID 355502)
+-- Name: marca_idmarca_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('marca_idmarca_seq', 1, false);
+
+
+--
+-- TOC entry 62 (OID 355512)
+-- Name: linea_prod_idlinea_prod_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('linea_prod_idlinea_prod_seq', 1, false);
+
+
+--
+-- TOC entry 63 (OID 355526)
+-- Name: tipo_iva_idtipo_iva_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tipo_iva_idtipo_iva_seq', 1, false);
+
+
+--
+-- TOC entry 64 (OID 355536)
+-- Name: articulo_idarticulo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('articulo_idarticulo_seq', 1, false);
+
+
+--
+-- TOC entry 65 (OID 355554)
+-- Name: familia_idfamilia_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('familia_idfamilia_seq', 1, false);
+
+
+--
+-- TOC entry 66 (OID 355564)
+-- Name: catalogo_idcatalogo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('catalogo_idcatalogo_seq', 1, false);
+
+
+--
+-- TOC entry 67 (OID 355574)
+-- Name: division_iddivision_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('division_iddivision_seq', 1, false);
+
+
+--
+-- TOC entry 68 (OID 355584)
+-- Name: proveedor_idproveedor_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('proveedor_idproveedor_seq', 1, false);
+
+
+--
+-- TOC entry 69 (OID 355598)
+-- Name: recargo_idrecargo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('recargo_idrecargo_seq', 1, false);
+
+
+--
+-- TOC entry 70 (OID 355608)
+-- Name: cliente_idcliente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cliente_idcliente_seq', 1, false);
+
+
+--
+-- TOC entry 71 (OID 355623)
+-- Name: sucursal_idsucursal_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('sucursal_idsucursal_seq', 1, false);
+
+
+--
+-- TOC entry 72 (OID 355637)
+-- Name: pedido_idpedido_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('pedido_idpedido_seq', 1, false);
+
+
+--
+-- TOC entry 73 (OID 355651)
+-- Name: fra_pro_idfra_pro_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('fra_pro_idfra_pro_seq', 1, false);
+
+
+--
+-- TOC entry 74 (OID 355661)
+-- Name: alb_pro_idalb_pro_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('alb_pro_idalb_pro_seq', 1, false);
+
+
+--
+-- TOC entry 75 (OID 355694)
+-- Name: modalidad_g_idmodalidad_g_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('modalidad_g_idmodalidad_g_seq', 1, false);
+
+
+--
+-- TOC entry 76 (OID 355704)
+-- Name: cond_garantia_idcond_garantia_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cond_garantia_idcond_garantia_seq', 1, false);
+
+
+--
+-- TOC entry 77 (OID 355718)
+-- Name: condiciones_v_idcondiciones_v_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('condiciones_v_idcondiciones_v_seq', 1, false);
+
+
+--
+-- TOC entry 78 (OID 355729)
+-- Name: forma_pago_idforma_pago_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('forma_pago_idforma_pago_seq', 1, false);
+
+
+--
+-- TOC entry 79 (OID 355739)
+-- Name: termino_fp_idtermino_fp_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('termino_fp_idtermino_fp_seq', 1, false);
+
+
+--
+-- TOC entry 80 (OID 355746)
+-- Name: almacen_idalmacen_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('almacen_idalmacen_seq', 1, false);
+
+
+--
+-- TOC entry 81 (OID 355756)
+-- Name: presupuesto_idpresupuesto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('presupuesto_idpresupuesto_seq', 1, false);
+
+
+--
+-- TOC entry 82 (OID 355770)
+-- Name: dpresupuesto_iddpresupuesto_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('dpresupuesto_iddpresupuesto_seq', 1, false);
+
+
+--
+-- TOC entry 83 (OID 355856)
+-- Name: vencimiento_idvencimiento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('vencimiento_idvencimiento_seq', 1, false);
+
+
+--
+-- TOC entry 84 (OID 355871)
+-- Name: suministra_idsuministra_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('suministra_idsuministra_seq', 1, false);
 
 
 --

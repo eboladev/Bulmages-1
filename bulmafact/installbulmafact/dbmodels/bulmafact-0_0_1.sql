@@ -1,7 +1,10 @@
+-- ----------------------------------------------------------------------------------------
 -- (C)  Joan Miquel Torrer Rigo & Tomeu Borras Riera & Mateu Borras Marco, Agosto 2004
 --  joanmi@bulma.net, tborras@conetxia.com mborras@conetxia.com 
 -- Este documento esta licenciado bajo licencia GPL, el cual no escribimos aqui por pereza.
-
+--  ----------------------------------------------------------------------------------------
+--     psql xxxx < bulmafact-0_0_1.sql
+--  ---------------------------------------------------------------------------------------
 
 SET SESSION AUTHORIZATION 'postgres';
 SET search_path = public, pg_catalog;
@@ -581,9 +584,6 @@ CREATE TABLE dalbaran (
 );
 
 
-
-
-
 -- Numero
 -- Descripcio
 -- Quantitat
@@ -641,7 +641,6 @@ CREATE TABLE suministra (
 );
 
 
-
 -- Con cada pedido/albaran podemos asignar un numero de serie a los productos que han llegado.
 -- Esta relación es con los pedidos y no con los articulos pq los articulos son genericos
 -- y los pedidos instancian los stocks de los pedidos.
@@ -659,8 +658,6 @@ CREATE TABLE num_serie (
     numlpedido integer REFERENCES lpedido (numlpedido),
     numlalbaran integer REFERENCES lalbaran (numlalbaran)
 );
-
-
 
 
 CREATE TABLE famC (
@@ -749,5 +746,31 @@ CREATE TABLE albpre (
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
    numalbaran integer REFERENCES albaran(numalbaran)
 );
+
+CREATE TABLE meta (
+    id character varying(10) NOT NULL,
+    valor character varying(50),
+    PRIMARY KEY ("id")
+);
+
+
+CREATE TABLE usuarios (
+    login character varying(15) NOT NULL,
+    nombre character varying(35),
+    apellido1 character varying(35),
+    apellido2 character varying(35),
+    clave character varying(35),
+    permisos text,
+    PRIMARY KEY ("login")
+    
+);
+
+
+INSERT INTO meta (id, valor) VALUES ('version', 'bulmafact 0.0.1');
+INSERT INTO meta (id, valor) VALUES ('empresa', 'Template_Data_Base');
+
+INSERT INTO usuarios (login, nombre, apellido1, apellido2, clave, permisos) 
+     VALUES ('bulmages', 'Superusuario', 'BulmaFact', 'Bulmafact', 'bulmages', 'entrada{+},');
+
 
   
