@@ -109,6 +109,29 @@ void provedit::chargeprovider(QString idprov) {
    delete cur;
 }// end chargeprovider
 
+/************************************************************************
+* Esta función se ejecuta cuando se ha pulsado sobre el botón de nuevo  *
+*************************************************************************/
+void provedit::boton_nuevo() {
+      idprovider = "0";
+      m_idproveedor->setText("");
+      m_nomproveedor->setText("");
+      m_nomaltproveedor->setText("");
+      m_cifproveedor->setText("");
+      m_codicliproveedor->setText("");
+      m_cbancproveedor->setText("");
+//      m_comentproveedor->setText(cur->valor("comentproveedor"));
+      m_dirproveedor->setText("");
+      m_poblproveedor->setText("");
+      m_cpproveedor->setText("");
+      m_telproveedor->setText("");
+      m_faxproveedor->setText("");
+      m_emailproveedor->setText("");
+      m_urlproveedor->setText("");
+//      m_clavewebproveedor->setText(cur->valor("clavewebproveedor"));
+      m_iddivision->setText("");    
+
+}// end boton_nuevo
 
 /*************************************************************************
 * Esta función es la respuesta a la pulsación del boton de guardar       *
@@ -139,7 +162,6 @@ void provedit::accept() {
       SQLQuery += " VALUES (";
       SQLQuery += "'"+m_nomproveedor->text()+"'";
       SQLQuery += ",'"+m_nomaltproveedor->text()+"'";
-      SQLQuery += ",'"+m_nomproveedor->text()+"'";
       SQLQuery += ",'"+m_cifproveedor->text()+"'";
       SQLQuery += ",'"+m_codicliproveedor->text()+"'";
       SQLQuery += ",'"+m_cbancproveedor->text()+"'";

@@ -55,7 +55,7 @@
       <directoryradio>executable</directoryradio>
     </run>
     <general>
-      <activedir></activedir>
+      <activedir>src</activedir>
     </general>
   </kdevtrollproject>
   <workspace>
