@@ -214,8 +214,8 @@ void intapunts3view::cargarcursor(int numasiento) {
         textnombreasiento += " idasiento in (SELECT idasiento FROM apunte WHERE conceptocontable LIKE '%"+nombreasiento+"%' )";
         pand = 1;
     }// end if
-    if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ confpr->valor(EJERCICIO_ACTUAL) +"'";
-    else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ confpr->valor(EJERCICIO_ACTUAL) +"'";
+    if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ (QString) confpr->valor(EJERCICIO_ACTUAL).c_str() +"'";
+    else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ (QString) confpr->valor(EJERCICIO_ACTUAL).c_str() +"'";
     if ((numasiento != 0) && (numasiento != -1)) {
         //query = "SELECT * FROM asiento ORDER BY ordenasiento";
         query = "SELECT * FROM asiento" + textejercicio;

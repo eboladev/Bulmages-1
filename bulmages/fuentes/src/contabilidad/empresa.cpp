@@ -530,7 +530,7 @@ void empresa::Ordenarasientos(int ejercicio) {
 }// end Abrirasientos
 
 int empresa::registroiva() {
-   listivaview *perd = new listivaview(confpr->valor(EJERCICIO_ACTUAL));
+   listivaview *perd = new listivaview(confpr->valor(EJERCICIO_ACTUAL).c_str());
    perd->inicializa(conexionbase2, introapunts1);
    perd->exec();
    delete perd;
@@ -538,7 +538,7 @@ int empresa::registroiva() {
 }// end registroiva
 
 int empresa::modelo347() {
-   BModelo347 *dlg347 = new BModelo347(conexionbase2,confpr->valor(EJERCICIO_ACTUAL));
+   BModelo347 *dlg347 = new BModelo347(conexionbase2,confpr->valor(EJERCICIO_ACTUAL).c_str());
    //dlg347->inicializa(conexionbase2, introapunts1);
    dlg347->exec();
    delete dlg347;

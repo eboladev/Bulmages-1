@@ -125,18 +125,20 @@ Splash::~Splash() {
 void Splash::paint() {
   static int a=0;
   static QString cad;
-  QString mensajes[]={tr("Comprobando nivel de combustible"),
+  QString mensajes[]={
+                    tr("Comprobando nivel de combustible"),
                     tr("Calibrando los lasers del lector de CD"),
                     tr("Comprobando la disquetera y la Memoria Fisica"),
                     tr("Induciendo energía quantica, entre su RAM y su ROM"),
                     tr("Pequeños golpecitos de reajuste del HD"),
                     tr("Probando la Velocidad el Ventilador de la CPU y su Frecuencia"),
                     tr("Haciendo PING contra el servidor de la MetaBase"),
+                    tr("Violando a Segmento"),
                     tr("Dejando tiempo libre al sistema"),
                     tr("Sincronizando fases Alfa Beta"),
                     tr("Flusheando Datos con vidas inteligentes superiores"),
                     tr("Permutando las tablas de partición del sistema operativo"),
-		    tr("Logeando peticiones externas a la NASA")};
+		    tr("Crackeando BulmaGés")};
   if (a) {
 //   cad.sprintf("%s <FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>",cad.utf8());
    cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";

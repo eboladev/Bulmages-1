@@ -13,6 +13,9 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 #include "bconfiguracion.h"
+
+#include <qmessagebox.h>
+
 #include <map>
 #include <set>
 
@@ -185,7 +188,7 @@ void BConfiguracion::borrarEmpresa() {
 /*********************************************************************************************************/
 void BConfiguracion::nuevoEjercicio() {
  QString query;
- if (0 == QMessageBox::question( this, tr("Nuevo Ejercicio"), tr("¿Desea continuar usando la misma base de datos? - Haga clic en SI \n\n(Para iniciar el nuevo ejercico en otra base de datos - Haga clic en Otra)") , "&SI","&Otra"))  { 
+ if (0 == QMessageBox::warning( this, tr("Nuevo Ejercicio"), tr("¿Desea continuar usando la misma base de datos? - Haga clic en SI \n\n(Para iniciar el nuevo ejercico en otra base de datos - Haga clic en Otra)") , "&SI","&Otra"))  { 
      int x;
      QString ejer;
      postgresiface2 *DBconn = new postgresiface2();

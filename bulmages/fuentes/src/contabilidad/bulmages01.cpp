@@ -65,14 +65,12 @@
 #include "images/estadisticas.xpm"
 
 Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd,QString *ejercicioMetaDB) 
-: QMainWindow(parent,name,f) 
-
-{
+: QMainWindow(parent,name,f) {
   //Si no existe un ejercicio en la tabla "ejercicios" entonces usamos el ejercicio de la MetaDB
-  Ejercicio = confpr->valor(EJERCICIO_ACTUAL);
-  if (Ejercicio =="0000") Ejercicio = ejercicioMetaDB->ascii();
+  Ejercicio = confpr->valor(EJERCICIO_ACTUAL).c_str();
+  if (Ejercicio =="0000") Ejercicio = *ejercicioMetaDB;
   setCaption(tr("BulmaGés ") + Ejercicio);
-  DBName=DB->ascii();
+  DBName=*DB;
   confpr->setValor(EJERCICIO_ACTUAL,Ejercicio.ascii());
   empresaactual.inicializa(DB,User,Passwd);
   initView();
@@ -595,7 +593,9 @@ void Bulmages01::initMenuBar() {
   DBconn->commit();
   while (!curEjer->eof()) {
       aux=curEjer->valor(0);
-      a = new QAction(aux,0,anys,aux);
+//      a = new QAction(aux,0,anys,aux);
+      a = new QAction(this,0);
+
       a->setToggleAction(true);
       a->addTo(menuEjercicios);
       curEjer->siguienteregistro();
