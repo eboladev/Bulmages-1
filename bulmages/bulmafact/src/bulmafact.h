@@ -28,7 +28,8 @@ public slots:
     virtual void clientes();
     virtual void emitirfactura();
     virtual void recibirfactura();
-    virtual void listclients();
+    virtual void listClients();
+    virtual void newClient();
     virtual void listarticles();
     virtual void listorders();
     virtual void listdelivnotes();

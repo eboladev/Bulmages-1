@@ -9,6 +9,11 @@
     <keywords>
       <keyword>Qt</keyword>
     </keywords>
+    <projectdirectory>.</projectdirectory>
+    <absoluteprojectpath>false</absoluteprojectpath>
+    <description/>
+    <ignoreparts/>
+    <secondaryLanguages/>
   </general>
   <kdevfileview>
     <groups>
@@ -17,6 +22,7 @@
       <group pattern="*.png" name="Icons" />
       <group pattern="*" name="Others" />
       <hidenonprojectfiles>false</hidenonprojectfiles>
+      <hidenonlocation>false</hidenonlocation>
     </groups>
     <tree>
       <hidenonprojectfiles>false</hidenonprojectfiles>
@@ -41,6 +47,9 @@
       <breakonloadinglibs>true</breakonloadinglibs>
       <separatetty>false</separatetty>
       <floatingtoolbar>false</floatingtoolbar>
+      <configGdbScript/>
+      <runShellScript/>
+      <runGdbScript/>
     </general>
     <display>
       <staticmembers>false</staticmembers>
@@ -50,13 +59,24 @@
   </kdevdebugger>
   <kdevtrollproject>
     <run>
-      <mainprogram>./bin/bulmafact</mainprogram>
+      <mainprogram>bin/bulmafact</mainprogram>
       <programargs/>
       <directoryradio>executable</directoryradio>
+      <customdirectory>/</customdirectory>
+      <terminal>false</terminal>
+      <autocompile>true</autocompile>
+      <envvars/>
     </run>
     <general>
       <activedir></activedir>
     </general>
+    <make>
+      <abortonerror>false</abortonerror>
+      <numberofjobs>1</numberofjobs>
+      <dontact>false</dontact>
+      <makebin/>
+      <envvars/>
+    </make>
   </kdevtrollproject>
   <workspace>
     <openfiles/>
@@ -84,4 +104,10 @@
       <headerCompletionDelay>250</headerCompletionDelay>
     </codecompletion>
   </kdevcppsupport>
+  <cppsupportpart>
+    <filetemplates>
+      <interfacesuffix>.h</interfacesuffix>
+      <implementationsuffix>.cpp</implementationsuffix>
+    </filetemplates>
+  </cppsupportpart>
 </kdevelop>

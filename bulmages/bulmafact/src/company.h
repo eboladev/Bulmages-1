@@ -31,6 +31,7 @@ Company class gives the application something like a standard interface to acces
 
 class providerslist;
 class ClientsList;
+class ClientEdit;
 class articleslist;
 class orderslist;
 class delivnoteslist;
@@ -39,7 +40,8 @@ class BudgetsList;
 class company : public postgresiface2 {
 private:
    providerslist *m_providerslist;
-   ClientsList *m_clientslist;
+   ClientsList *m_clientsList;
+   ClientEdit *m_clientEdit;
    articleslist *m_articleslist;
    orderslist *m_orderslist;
    delivnoteslist *m_delivnoteslist;
@@ -50,7 +52,8 @@ public:
    company();
    ~company();
    void listproviders();
-   void listclients();
+   void listClients();
+   void newClient();
    void listarticles();
    void listorders();
    void listdelivnotes();

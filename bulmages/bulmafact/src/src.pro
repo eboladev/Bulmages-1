@@ -19,6 +19,7 @@ SOURCES += bulmafact.cpp \
            provedit.cpp \
 	   splashscreen.cpp \
 	   clientslist.cpp \
+	   clientedit.cpp \
            articleslist.cpp \
 	   orderslist.cpp \
 	   linorderslist.cpp \
@@ -32,6 +33,7 @@ HEADERS += bulmafact.h \
            provedit.h \
 	   splashscreen.h \
 	   clientslist.h \
+	   clientedit.h \
            articleslist.h \
 	   orderslist.h \
 	   linorderslist.h \
@@ -42,6 +44,7 @@ HEADERS += bulmafact.h \
 IDLS += providerslistbase.ui \
         provedit_base.ui \
 	clientslistbase.ui \
+	clienteditbase.ui \  
 	articleslistbase.ui \
 	orderslistbase.ui \
 	linorderslistbase.ui \
@@ -53,6 +56,7 @@ FORMS += bulmafactbase.ui \
          providerslistbase.ui \
          provedit_base.ui \
 	 clientslistbase.ui \
+	 clienteditbase.ui \
 	 articleslistbase.ui \
 	 orderslistbase.ui \
 	 linorderslistbase.ui \

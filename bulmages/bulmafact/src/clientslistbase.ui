@@ -42,7 +42,7 @@
                 </property>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1</cstring>
+                        <cstring>newButton</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -53,7 +53,7 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1_2</cstring>
+                        <cstring>editButton</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -64,7 +64,7 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1_3</cstring>
+                        <cstring>copyButton</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -75,7 +75,7 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1_3_2_2_2</cstring>
+                        <cstring>deleteButton</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -86,7 +86,7 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1_3_2</cstring>
+                        <cstring>printButton</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -97,7 +97,7 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1_3_2_2</cstring>
+                        <cstring>searchButton</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -147,7 +147,7 @@
                         </widget>
                         <widget class="QLineEdit">
                             <property name="name">
-                                <cstring>lineEdit1</cstring>
+                                <cstring>searchText</cstring>
                             </property>
                         </widget>
                     </hbox>
@@ -176,7 +176,7 @@
                 </property>
             </column>
             <property name="name">
-                <cstring>m_list</cstring>
+                <cstring>m_clientList</cstring>
             </property>
             <property name="numRows">
                 <number>3</number>
@@ -209,21 +209,32 @@
 </images>
 <connections>
     <connection>
-        <sender>toolButton1</sender>
+        <sender>newButton</sender>
         <signal>clicked()</signal>
         <receiver>ClientsListBase</receiver>
         <slot>newClient()</slot>
     </connection>
     <connection>
-        <sender>m_list</sender>
+        <sender>editButton</sender>
+        <signal>clicked()</signal>
+        <receiver>ClientsListBase</receiver>
+        <slot>editClient()</slot>
+    </connection>
+    <connection>
+        <sender>m_clientList</sender>
         <signal>doubleClicked(int,int,int,const QPoint&amp;)</signal>
         <receiver>ClientsListBase</receiver>
-        <slot>doubleClicked(int,int,int,const QPoint&amp;)</slot>
+        <slot>m_clientList_doubleClicked(int,int,int,const QPoint&amp;)</slot>
     </connection>
 </connections>
+<tabstops>
+    <tabstop>searchText</tabstop>
+    <tabstop>m_clientList</tabstop>
+</tabstops>
 <slots>
     <slot>newClient()</slot>
-    <slot>doubleClicked( int, int, int, const QPoint &amp;)</slot>
+    <slot>m_clientList_doubleClicked( int, int, int, const QPoint &amp; )</slot>
+    <slot>editClient()</slot>
 </slots>
 <layoutdefaults spacing="0" margin="0"/>
 </UI>

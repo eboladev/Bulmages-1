@@ -42,12 +42,15 @@ public:
     ~ClientsList();
     void selectMode() {m_mode=1;};
     void editMode() {m_mode=0;};
+
 public slots:
-    virtual void doubleClicked(int, int, int, const QPoint &);
     virtual void newClient();
+    virtual void selectClient(int, int, int, const QPoint &);
+    virtual void editClient();
     QString idclient() {return m_idclient;};
     QString nomclient() {return m_nomclient;};
     QString cifclient() {return m_cifclient;};
+    
 };
 
 #endif

@@ -59,10 +59,20 @@ void bulmafact::listproviders()
    m_company.listproviders();
 }
 
-void bulmafact::listclients()
+
+void bulmafact::listClients()
 {
    fprintf(stderr,"listclientsaction activado \n");
-   m_company.listclients();
+   m_company.listClients();
+}
+
+/**
+* This action opens the edit/new client window
+*
+*/
+void bulmafact::newClient()
+{
+   m_company.newClient();
 }
 
 

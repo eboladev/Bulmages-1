@@ -27,6 +27,7 @@
 #include "provedit.h"
 #include "qobject.h"
 #include "clientslist.h"
+#include "clientedit.h"
 #include "articleslist.h"
 #include "orderslist.h"
 #include "delivnoteslist.h"
@@ -39,7 +40,6 @@ company::company(){
 
 void company::createMainWindows() {
    m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Listado de Proveedores","company"));
-   m_clientslist = new ClientsList(this, m_pWorkspace,theApp->translate("Listado de Clientes","company"));
    m_articleslist = new articleslist(this, m_pWorkspace,theApp->translate("Listado de Artículos","company"));
    m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Listado de Pedidos","company"));
    m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Listado de Albaranes","company"));   
@@ -57,11 +57,19 @@ void company::listproviders () {
    m_providerslist->setActiveWindow();
 }
 
-void company::listclients () {
-   m_clientslist->hide();
-   m_clientslist->show();
-   m_clientslist->setActiveWindow();
+void company::listClients () {
+   m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Listado de Clientes","company"));
+   m_clientsList->hide();
+   m_clientsList->show();
+   m_clientsList->setActiveWindow();
 }
+
+void company::newClient() {
+   m_clientEdit = new ClientEdit(this, m_pWorkspace,theApp->translate("Editar/Añadir cliente","company"));
+   m_clientEdit->hide();
+   m_clientEdit->show();
+   m_clientEdit->setActiveWindow();
+}   
 
 void company::listarticles () {
    m_articleslist->hide();

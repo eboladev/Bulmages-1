@@ -83,77 +83,74 @@ CREATE TABLE cliente (
 ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int flag)
  : ClientsListBase(parent, name, flag) {
    companyact = comp;
-   m_mode =0;    
    m_idclient="";
-   m_cifclient="";
-   m_nomclient=""; 
  
-   m_list->setNumRows( 0 );
-   m_list->setNumCols( 0 );
-   m_list->setSelectionMode( QTable::SingleRow );
-   m_list->setSorting( TRUE );
-   m_list->setSelectionMode( QTable::SingleRow );
-   m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(16);
-   m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "Código" ) );
-   m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Nombre Fiscal" ) );
-   m_list->horizontalHeader()->setLabel( COL_NOMALTCLIENTE, tr( "Nombre Comercial" ) );
-   m_list->horizontalHeader()->setLabel( COL_CIFCLIENTE, tr( "CIF/NIF" ) );
-   m_list->horizontalHeader()->setLabel( COL_BANCOCLIENTE, tr( "Cuenta Bancaria" ) );
-   m_list->horizontalHeader()->setLabel( COL_DIRCLIENTE, tr( "Domicilio" ) );
-   m_list->horizontalHeader()->setLabel( COL_POBLCLIENTE, tr("Población") );
-   m_list->horizontalHeader()->setLabel( COL_CPCLIENTE, tr("C.P.") );
-   m_list->horizontalHeader()->setLabel( COL_TELCLIENTE, tr("Teléfono") );
-   m_list->horizontalHeader()->setLabel( COL_FAXCLIENTE, tr("Fax") );
-   m_list->horizontalHeader()->setLabel( COL_MAILCLIENTE, tr("Correo Electrónico") );
-   m_list->horizontalHeader()->setLabel( COL_URLCLIENTE, tr("Página Web") );
-   m_list->horizontalHeader()->setLabel( COL_FALTACLIENTE, tr("Fecha de Alta") );
-   m_list->horizontalHeader()->setLabel( COL_FBAJACLIENTE, tr("Fecha de Baja") );
-   m_list->horizontalHeader()->setLabel( COL_COMENTCLIENTE, tr("Observaciones") );
-   m_list->horizontalHeader()->setLabel( COL_IDRECARGO, tr("Cod. Recargo Eq.") );
+   m_clientList->setNumRows( 0 );
+   m_clientList->setNumCols( 0 );
+   m_clientList->setSelectionMode( QTable::SingleRow );
+   m_clientList->setSorting( TRUE );
+   m_clientList->setSelectionMode( QTable::SingleRow );
+   m_clientList->setColumnMovingEnabled( TRUE );
+   m_clientList->setNumCols(16);
+   m_clientList->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "Código" ) );
+   m_clientList->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Nombre Fiscal" ) );
+   m_clientList->horizontalHeader()->setLabel( COL_NOMALTCLIENTE, tr( "Nombre Comercial" ) );
+   m_clientList->horizontalHeader()->setLabel( COL_CIFCLIENTE, tr( "CIF/NIF" ) );
+   m_clientList->horizontalHeader()->setLabel( COL_BANCOCLIENTE, tr( "Cuenta Bancaria" ) );
+   m_clientList->horizontalHeader()->setLabel( COL_DIRCLIENTE, tr( "Domicilio" ) );
+   m_clientList->horizontalHeader()->setLabel( COL_POBLCLIENTE, tr("Población") );
+   m_clientList->horizontalHeader()->setLabel( COL_CPCLIENTE, tr("C.P.") );
+   m_clientList->horizontalHeader()->setLabel( COL_TELCLIENTE, tr("Teléfono") );
+   m_clientList->horizontalHeader()->setLabel( COL_FAXCLIENTE, tr("Fax") );
+   m_clientList->horizontalHeader()->setLabel( COL_MAILCLIENTE, tr("Correo Electrónico") );
+   m_clientList->horizontalHeader()->setLabel( COL_URLCLIENTE, tr("Página Web") );
+   m_clientList->horizontalHeader()->setLabel( COL_FALTACLIENTE, tr("Fecha de Alta") );
+   m_clientList->horizontalHeader()->setLabel( COL_FBAJACLIENTE, tr("Fecha de Baja") );
+   m_clientList->horizontalHeader()->setLabel( COL_COMENTCLIENTE, tr("Observaciones") );
+   m_clientList->horizontalHeader()->setLabel( COL_IDRECARGO, tr("Cod. Recargo Eq.") );
 
-   m_list->setColumnWidth(COL_IDCLIENTE,100);
-   m_list->setColumnWidth(COL_NOMCLIENTE,300);
-   m_list->setColumnWidth(COL_NOMALTCLIENTE,300);
-   m_list->setColumnWidth(COL_CIFCLIENTE,75);
-   m_list->setColumnWidth(COL_BANCOCLIENTE,100);
-   m_list->setColumnWidth(COL_DIRCLIENTE,300);
-   m_list->setColumnWidth(COL_POBLCLIENTE,200);
-   m_list->setColumnWidth(COL_CPCLIENTE,60);
-   m_list->setColumnWidth(COL_TELCLIENTE,100);
-   m_list->setColumnWidth(COL_FAXCLIENTE,100);
-   m_list->setColumnWidth(COL_MAILCLIENTE,400);
-   m_list->setColumnWidth(COL_URLCLIENTE,400);
-   m_list->setColumnWidth(COL_FALTACLIENTE,75);
-   m_list->setColumnWidth(COL_FBAJACLIENTE,75);
-   m_list->setColumnWidth(COL_COMENTCLIENTE,1000);
-   m_list->setColumnWidth(COL_IDRECARGO,50);
+   m_clientList->setColumnWidth(COL_IDCLIENTE,100);
+   m_clientList->setColumnWidth(COL_NOMCLIENTE,300);
+   m_clientList->setColumnWidth(COL_NOMALTCLIENTE,300);
+   m_clientList->setColumnWidth(COL_CIFCLIENTE,75);
+   m_clientList->setColumnWidth(COL_BANCOCLIENTE,100);
+   m_clientList->setColumnWidth(COL_DIRCLIENTE,300);
+   m_clientList->setColumnWidth(COL_POBLCLIENTE,200);
+   m_clientList->setColumnWidth(COL_CPCLIENTE,60);
+   m_clientList->setColumnWidth(COL_TELCLIENTE,100);
+   m_clientList->setColumnWidth(COL_FAXCLIENTE,100);
+   m_clientList->setColumnWidth(COL_MAILCLIENTE,400);
+   m_clientList->setColumnWidth(COL_URLCLIENTE,400);
+   m_clientList->setColumnWidth(COL_FALTACLIENTE,75);
+   m_clientList->setColumnWidth(COL_FBAJACLIENTE,75);
+   m_clientList->setColumnWidth(COL_COMENTCLIENTE,1000);
+   m_clientList->setColumnWidth(COL_IDRECARGO,50);
    
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#DDDDFF");   
-    m_list->setReadOnly(TRUE);        
+    m_clientList->setPaletteBackgroundColor("#DDDDFF");   
+    m_clientList->setReadOnly(TRUE);        
        companyact->begin();
        cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente","unquery");
        companyact->commit();
-       m_list->setNumRows( cur->numregistros() );
+       m_clientList->setNumRows( cur->numregistros() );
        int i=0;
        while (!cur->eof()) {
-         m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
-	 m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
-         m_list->setText(i,COL_NOMALTCLIENTE,cur->valor("nomaltcliente"));
-         m_list->setText(i,COL_CIFCLIENTE,cur->valor("cifcliente"));
-	 m_list->setText(i,COL_BANCOCLIENTE,cur->valor("bancocliente"));
-         m_list->setText(i,COL_DIRCLIENTE,cur->valor("dircliente"));
-         m_list->setText(i,COL_POBLCLIENTE,cur->valor("poblcliente"));
-         m_list->setText(i,COL_CPCLIENTE,cur->valor("cpcliente"));
-         m_list->setText(i,COL_TELCLIENTE,cur->valor("telcliente"));
-         m_list->setText(i,COL_FAXCLIENTE,cur->valor("faxcliente"));
-         m_list->setText(i,COL_MAILCLIENTE,cur->valor("mailcliente"));
-         m_list->setText(i,COL_URLCLIENTE,cur->valor("urlcliente"));
-         m_list->setText(i,COL_FALTACLIENTE,cur->valor("faltacliente"));
-         m_list->setText(i,COL_FBAJACLIENTE,cur->valor("fbajacliente"));
-         m_list->setText(i,COL_COMENTCLIENTE,cur->valor("comentcliente"));
-         m_list->setText(i,COL_IDRECARGO,cur->valor("idrecargo"));
+         m_clientList->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
+	 m_clientList->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
+         m_clientList->setText(i,COL_NOMALTCLIENTE,cur->valor("nomaltcliente"));
+         m_clientList->setText(i,COL_CIFCLIENTE,cur->valor("cifcliente"));
+	 m_clientList->setText(i,COL_BANCOCLIENTE,cur->valor("bancocliente"));
+         m_clientList->setText(i,COL_DIRCLIENTE,cur->valor("dircliente"));
+         m_clientList->setText(i,COL_POBLCLIENTE,cur->valor("poblcliente"));
+         m_clientList->setText(i,COL_CPCLIENTE,cur->valor("cpcliente"));
+         m_clientList->setText(i,COL_TELCLIENTE,cur->valor("telcliente"));
+         m_clientList->setText(i,COL_FAXCLIENTE,cur->valor("faxcliente"));
+         m_clientList->setText(i,COL_MAILCLIENTE,cur->valor("mailcliente"));
+         m_clientList->setText(i,COL_URLCLIENTE,cur->valor("urlcliente"));
+         m_clientList->setText(i,COL_FALTACLIENTE,cur->valor("faltacliente"));
+         m_clientList->setText(i,COL_FBAJACLIENTE,cur->valor("fbajacliente"));
+         m_clientList->setText(i,COL_COMENTCLIENTE,cur->valor("comentcliente"));
+         m_clientList->setText(i,COL_IDRECARGO,cur->valor("idrecargo"));
          i++;
          cur->siguienteregistro();
        }// end while
@@ -163,20 +160,16 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
 ClientsList::~ClientsList() {
 }// end ~clientslist
 
-void ClientsList::doubleClicked(int a, int , int , const QPoint &) {
-   fprintf(stderr,"ClientsList::doubleClicked\n");
-   m_idclient = m_list->text(a,COL_IDCLIENTE);
-   m_nomclient = m_list->text(a, COL_NOMCLIENTE);
-   m_cifclient = m_list->text(a, COL_CIFCLIENTE);
-   if (m_mode ==0 ) {
-//      cliente *cli = new Client(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Clientes", "company"));
-//      bud->chargeClient(m_idclient);
-//      cli->show();
-   } else {
-      close();
-   }// end if
+void ClientsList::selectClient(int a, int , int , const QPoint &) {
+   m_idclient = m_clientList->text(a,COL_IDCLIENTE);
+   editClient();
 }// end doubleClicked
 
 void ClientsList::newClient() {
+   companyact->newClient();
 }// end newClient
 
+void ClientsList::editClient() {
+   //newClient();
+   //noSeQueObjeto->loadClient(m_idclient);
+}

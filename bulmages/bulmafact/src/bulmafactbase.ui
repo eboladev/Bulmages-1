@@ -46,7 +46,7 @@
         <action name="AProveedores"/>
         <action name="listproveedores"/>
         <separator/>
-        <action name="AClientes"/>
+        <action name="AAddClient"/>
         <action name="AListClients"/>
         <separator/>
     </item>
@@ -66,7 +66,7 @@
         <property name="label">
             <string>Toolbar</string>
         </property>
-        <action name="AClientes"/>
+        <action name="AAddClient"/>
         <action name="AProveedores"/>
         <action name="AArticulo"/>
     </toolbar>
@@ -134,7 +134,7 @@
     </action>
     <action>
         <property name="name">
-            <cstring>AClientes</cstring>
+            <cstring>AAddClient</cstring>
         </property>
         <property name="iconSet">
             <iconset>image1</iconset>
@@ -424,10 +424,10 @@
         <slot>caja()</slot>
     </connection>
     <connection>
-        <sender>AClientes</sender>
+        <sender>AAddClient</sender>
         <signal>activated()</signal>
         <receiver>bulmafactbase</receiver>
-        <slot>clientes()</slot>
+        <slot>newClient()</slot>
     </connection>
     <connection>
         <sender>AProveedores</sender>
@@ -451,7 +451,7 @@
         <sender>AListClients</sender>
         <signal>activated()</signal>
         <receiver>bulmafactbase</receiver>
-        <slot>listclients()</slot>
+        <slot>listClients()</slot>
     </connection>
     <connection>
         <sender>AListArticles</sender>
@@ -505,12 +505,13 @@
     <slot>proveedores()</slot>
     <slot>emitirfactura()</slot>
     <slot>recibirfactura()</slot>
-    <slot>listclients()</slot>
+    <slot>listClients()</slot>
     <slot>listarticles()</slot>
     <slot>listorders()</slot>
     <slot>listdelivnotes()</slot>
     <slot>newBudget()</slot>
     <slot>listBudgets()</slot>
+    <slot>newClient()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
