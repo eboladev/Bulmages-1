@@ -1575,7 +1575,7 @@ BEGIN
                 RAISE EXCEPTION '' No se puede dejar el código de cuenta vacio '';
         END IF;
 	IF NEW.descripcion = '''' THEN
-		RAISE EXCEPTION '' Nombre de cuenta vacia '';
+		RAISE EXCEPTION '' Nombre de cuenta vacio '';
 	END IF;
 	IF NEW.nombreent_cuenta = '''' THEN
 		NEW.nombreent_cuenta = NEW.descripcion;
@@ -1595,8 +1595,10 @@ CREATE FUNCTION restriccionesborrador () RETURNS "trigger"
 AS '
 DECLARE
         cta RECORD;
+	ej RECORD;
 BEGIN
-        FOR cta IN SELECT * FROM cuenta WHERE idcuenta = NEW.idcuenta LOOP
+        SELECT INTO cta * FROM cuenta WHERE idcuenta = NEW.idcuenta;
+	IF FOUND THEN
                 IF cta.bloqueada THEN
                         RAISE EXCEPTION '' Cuenta bloqueada, no se puede utilizar esta cuenta '';
                 END IF;
@@ -1611,7 +1613,25 @@ BEGIN
                                 RAISE EXCEPTION '' Cuenta bloqueada por haber, solo permite debe '';
                         END IF;
                 END IF;
-        END LOOP;
+	ELSE
+		RAISE EXCEPTION '' Cuenta inexistente '';
+        END IF;
+	
+	
+	SELECT INTO  ej  * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo =0;
+	IF FOUND THEN
+		IF ej.bloqueado = TRUE THEN
+			RAISE EXCEPTION '' Periodo bloqueado '';
+		END IF;
+	ELSE
+		RAISE EXCEPTION '' Ejercicio Inexistente'';
+	END IF;
+	SELECT INTO  ej * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = EXTRACT (MONTH FROM NEW.fecha);
+	IF ej.bloqueado = TRUE THEN
+		RAISE EXCEPTION '' Periodo bloqueado '';
+	END IF;
+	
+	
         RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
@@ -1622,6 +1642,34 @@ CREATE TRIGGER restriccionesborradortrigger
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesborrador();
 
+    
+    
+CREATE FUNCTION restriccionesasiento () RETURNS "trigger"
+AS '
+DECLARE
+	ej RECORD;
+BEGIN
+	SELECT INTO  ej  * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo =0;
+	IF FOUND THEN
+		IF ej.bloqueado = TRUE THEN
+			RAISE EXCEPTION '' Periodo bloqueado '';
+		END IF;
+	ELSE
+		RAISE EXCEPTION '' Ejercicio Inexistente'';
+	END IF;
+	SELECT INTO  ej * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = EXTRACT (MONTH FROM NEW.fecha);
+	IF ej.bloqueado = TRUE THEN
+		RAISE EXCEPTION '' Periodo bloqueado '';
+	END IF;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER restriccionesasientotrigger
+   BEFORE INSERT OR UPDATE ON asiento
+   FOR EACH ROW
+   EXECUTE PROCEDURE restriccionesasiento();
+    
 -- ******************************************************
 -- FIN DEL APARTADO DE COMPROBACIONES.
 -- ******************************************************
