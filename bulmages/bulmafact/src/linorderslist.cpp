@@ -472,7 +472,7 @@ void linorderslist::searchArticle() {
    m_idArticle = artlist->idArticle();
 	
    delete artlist;
-}// end searchProvider
+}// end searchArticle
 
 
 void linorderslist::removeOrderLin() {	

@@ -41,6 +41,8 @@ public:
     void chargeBudget(QString);
 	 void chargeBudgetLines(QString);
 	 void inicialize();
+	 void manageArticle(int);
+	 QString searchArticle();
 	 
 public slots:
    virtual void searchClient();

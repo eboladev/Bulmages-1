@@ -67,6 +67,7 @@ CREATE TABLE lpresupuesto (
 #include "company.h"
 #include "division.h"
 #include "clientslist.h"
+#include "articleslist.h"
 
 #include <qlineedit.h>
 #include <qtextedit.h>
@@ -248,7 +249,8 @@ void Budget::valueBudgetLineChanged(int row, int col) {
 			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, m_list->text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
 		}
 		case COL_CODARTICULO: {
-			//manageArticle(row);
+			manageArticle(row);
+			m_list->editCell(row, COL_DESCLPRESUPUESTO);
 			//calculateImports();
 		}
 		case COL_CANTLPRESUPUESTO: {
@@ -261,3 +263,57 @@ void Budget::valueBudgetLineChanged(int row, int col) {
 		}
 	}
 } //end valueBudgetLineChanged
+
+
+void Budget::manageArticle(int row) {
+	QString articleCode = m_list->text(row, COL_CODARTICULO);
+	if (articleCode == "+") {
+		QString idArticle = "";
+		idArticle = searchArticle();
+		m_list->setText(row, COL_CODARTICULO, idArticle);
+		articleCode = idArticle;
+	}
+	
+	bool ok;
+	if (articleCode.toInt(&ok, 10)>0) {
+		m_list->setText(row, COL_NOMARTICULO, "");
+		m_list->setText(row, COL_IDARTICULO, "");
+		//m_list->setText(row, COL_TASATIPO_IVA, "");
+		
+		companyact->begin();
+		cursor2 * cur2= companyact->cargacursor("SELECT * FROM articulo WHERE codarticulo="+m_list->text(row, COL_CODARTICULO),"unquery");
+		companyact->commit();
+		if (!cur2->eof()) {
+			m_list->setText(row, COL_NOMARTICULO, cur2->valor("nomarticulo"));
+			m_list->setText(row, COL_IDARTICULO, cur2->valor("idarticulo"));
+			/* QString taxType = cur2->valor("idtipo_iva");
+			companyact->begin();
+			cursor2 * cur3= companyact->cargacursor("SELECT * FROM tipo_iva WHERE idtipo_iva="+taxType,"unquery");
+			companyact->commit();
+			if (!cur3->eof()) {
+				m_list->setText(row, COL_TASATIPO_IVA, cur3->valor("tasatipo_iva"));
+			} */
+		}
+	}
+} //end manageArticle
+
+
+QString Budget::searchArticle() {
+   fprintf(stderr,"Busqueda de un artículo\n");
+   articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
+   
+// , WType_Dialog| WShowModal   
+   artlist->modoseleccion();
+   
+   // Esto es convertir un QWidget en un sistema modal de dialogo.
+   this->setEnabled(false);
+   artlist->show();
+   while(!artlist->isHidden()) theApp->processEvents();
+   this->setEnabled(true);
+   
+   QString idArticle = artlist->idArticle();
+	
+   delete artlist;
+	
+	return idArticle;
+}// end searchArticle
