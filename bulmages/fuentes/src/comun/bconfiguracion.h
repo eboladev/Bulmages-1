@@ -19,8 +19,12 @@
 #include "postgresiface2.h"
 #include <qlistview.h>
 #include <qlineedit.h>
+#include <qlabel.h>
 #include <qtextedit.h>
 #include <qpopupmenu.h>
+#include <qcombobox.h>
+#include <qspinbox.h>
+#include <qfontdatabase.h>
 
 /**
 @author Josep Burcion
@@ -33,10 +37,18 @@ public:
     BConfiguracion(QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
     ~BConfiguracion();
 
+private:
+    void cargarFichaUtilidades();
+    void cargarFichaUsuarios();
+    
 private slots:
   virtual void cerrar();
   virtual void listView1_currentChanged(QListViewItem *);
   virtual void listView2_clickBotonDerecho(QListViewItem*,const QPoint&,int);
+  virtual void FontChanged(const QString &);
+  virtual void FontSizeChanged(int);
+  virtual void BotonA_10aceptar();
+  virtual void BotonA_11rechazar();
 };
 
 #endif

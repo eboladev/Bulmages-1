@@ -14,27 +14,12 @@
  ***************************************************************************/
 #include "bconfiguracion.h"
 
-
 BConfiguracion::BConfiguracion(QWidget * parent, const char * name, WFlags f)
  : UIconfiguracion(parent,name,f)
 {
-   postgresiface2 * conexionDB;
-   conexionDB = new postgresiface2();
-   conexionDB->inicializa(confpr->valor(CONF_METABASE).c_str());
-   cursor2 * recordSet;
-   QListViewItem *it;
-
-   conexionDB->begin();
-   recordSet=conexionDB->cargacursor("SELECT * from usuario","recordSet");
-   conexionDB->commit();
-   while (!recordSet->eof()) {
-         it =new QListViewItem(listView1);
-         it->setText(0,recordSet->valor("login"));
-         recordSet->siguienteregistro();
-   }// end while
-   delete recordSet;
-   delete conexionDB;   
-
+comboBoxFuente->insertStringList( (new QFontDatabase)->families() );
+cargarFichaUtilidades();
+cargarFichaUsuarios();
 }
 
 BConfiguracion::~BConfiguracion()
@@ -74,7 +59,84 @@ void BConfiguracion::listView2_clickBotonDerecho(QListViewItem* item,const QPoin
 }
 
 
+void BConfiguracion::FontChanged(const QString & fuente) {
+muestra->setFont(QFont(fuente,spinBoxFuente->value()));
+}
+
+void BConfiguracion::FontSizeChanged(int tamano) {
+muestra->setFont(QFont(comboBoxFuente->currentText(),tamano));
+}
+
+void BConfiguracion::BotonA_10aceptar() {
+//Salvar en la base de datos las preferencias del usuario: Idioma, Fuente, ...
+  string codigoPais;
+  switch (comboBoxIdioma->currentItem()) {
+      case 0: codigoPais = "ca"; break;
+      case 1: codigoPais = "es"; break;
+      case 2: codigoPais = "fr"; break;
+      case 3: codigoPais = "en"; break;
+  }
+  confpr->setValor(CONF_TRADUCCION,codigoPais);
+  confpr->setValor(CONF_FONTFAMILY_BULMAGES,comboBoxFuente->currentText().latin1());
+  confpr->setValor(CONF_FONTSIZE_BULMAGES,spinBoxFuente->text().latin1());
+
+}
+
+void BConfiguracion::BotonA_11rechazar() {
+//poner el comboBoxFuente y el comboBoxIdioma a sus valores anteriores.
+cargarFichaUtilidades();
+}
+
 void BConfiguracion::cerrar()
 {
-delete(this);
+  //Cargo el nuevo Idioma
+  string archivo;
+  theApp->removeTranslator( traductor );
+  switch (comboBoxIdioma->currentItem()) {
+      case 0: archivo = "bulmages_ca.qm"; break;
+      case 1: archivo = "bulmages_es.qm"; break;
+      case 2: archivo = "bulmages_fr.qm"; break;
+      case 3: archivo = "bulmages_en.qm"; break;
+  }
+  traductor->load(archivo.c_str(),confpr->valor(CONF_DIR_TRADUCCION).c_str());
+  theApp->installTranslator( traductor );
+  
+  //Cargo la nueva fuente
+  theApp->setFont(QFont(comboBoxFuente->currentText(),spinBoxFuente->value()), TRUE);
+  
+  //Cierro la ventana de Configuración
+  delete(this);
+}
+
+void BConfiguracion::cargarFichaUtilidades() {
+//Carga idioma y fuente de la aplicacion 
+  if (confpr->valor(CONF_TRADUCCION)=="ca") comboBoxIdioma->setCurrentItem(0);
+  if (confpr->valor(CONF_TRADUCCION)=="es") comboBoxIdioma->setCurrentItem(1);
+  if (confpr->valor(CONF_TRADUCCION)=="fr") comboBoxIdioma->setCurrentItem(2);
+  if (confpr->valor(CONF_TRADUCCION)=="en") comboBoxIdioma->setCurrentItem(3);
+  
+  int i=0;
+  while ( comboBoxFuente->text(i) != confpr->valor(CONF_FONTFAMILY_BULMAGES).c_str() &&  i < comboBoxFuente->count()) ++i;
+  comboBoxFuente->setCurrentItem(i);
+  spinBoxFuente->setValue(atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).c_str()));
+}
+
+void BConfiguracion::cargarFichaUsuarios() {
+//Carga los Usuarios de la Base de Datos   
+   postgresiface2 * conexionDB;
+   conexionDB = new postgresiface2();
+   conexionDB->inicializa(confpr->valor(CONF_METABASE).c_str());
+   cursor2 * recordSet;
+   QListViewItem *it;
+
+   conexionDB->begin();
+   recordSet=conexionDB->cargacursor("SELECT * from usuario","recordSet");
+   conexionDB->commit();
+   while (!recordSet->eof()) {
+         it =new QListViewItem(listView1);
+         it->setText(0,recordSet->valor("login"));
+         recordSet->siguienteregistro();
+   }// end while
+   delete recordSet;
+   delete conexionDB;   
 }

@@ -15,6 +15,7 @@
 
 
 #include <qapplication.h>
+#include <qtranslator.h>
 
 
 
@@ -72,17 +73,23 @@ using std::string;
 #define CONF_TRADUCCION  305
 #define CONF_DIR_TRADUCCION 306
 
+#define CONF_FONTFAMILY_BULMAGES  310
+#define CONF_FONTSIZE_BULMAGES    311
+
+
+
 
 class configuracion {
-	private:
-	string valores[1000];
-	int numeroprueba;
-	
-	public:
-	configuracion();
-	~configuracion();
-	string valor(int);
-   void leeconfig(char *);   
+    private:
+        string valores[1000];
+        int numeroprueba;
+
+    public:
+        configuracion();
+        ~configuracion();
+        string valor(int);
+        void setValor(int, string);
+        void leeconfig(char *);   
 };
 
 
@@ -90,5 +97,6 @@ class configuracion {
 // Se va a llamar muy a menudo a este objeto en los demás archivos. 
 extern configuracion *confpr;
 extern QApplication *theApp;
+extern QTranslator * traductor;
 
 #endif

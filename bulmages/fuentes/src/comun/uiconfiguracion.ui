@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>600</width>
-            <height>481</height>
+            <height>489</height>
         </rect>
     </property>
     <property name="caption">
@@ -36,88 +36,6 @@
             </attribute>
             <widget class="QPushButton">
                 <property name="name">
-                    <cstring>pushButtonA_1</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>30</x>
-                        <y>130</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Crear Nueva Empresa</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_4</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>180</x>
-                        <y>200</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Restaurar copia
- (RESTORE)</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_3</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>30</x>
-                        <y>200</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Copia de Seguridad
-   (BACKUP)</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_2</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>180</x>
-                        <y>130</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Borrar Empresa</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_5</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>30</x>
-                        <y>30</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Nuevo Ejercicio</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
                     <cstring>pushButtonA_X</cstring>
                 </property>
                 <property name="geometry">
@@ -134,6 +52,290 @@
                 <property name="iconSet">
                     <iconset>exit.png</iconset>
                 </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>100</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Borrar Empresa</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_5</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>30</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Nuevo Ejercicio</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>100</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Crear Nueva Empresa</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>170</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Copia de Seguridad
+   (BACKUP)</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>170</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Restaurar copia
+ (RESTORE)</string>
+                </property>
+            </widget>
+            <widget class="QGroupBox">
+                <property name="name">
+                    <cstring>groupBoxA_1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>370</x>
+                        <y>10</y>
+                        <width>200</width>
+                        <height>370</height>
+                    </rect>
+                </property>
+                <property name="title">
+                    <string>Generalidades</string>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>140</x>
+                            <y>70</y>
+                            <width>47</width>
+                            <height>16</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Tamaño:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_3</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>70</y>
+                            <width>51</width>
+                            <height>16</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Fuente:</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>20</y>
+                            <width>34</width>
+                            <height>16</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Idioma:</string>
+                    </property>
+                    <property name="alignment">
+                        <set>AlignVCenter|AlignLeft</set>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButtonA_10</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>330</y>
+                            <width>60</width>
+                            <height>31</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Aceptar</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButtonA_11</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>130</x>
+                            <y>330</y>
+                            <width>61</width>
+                            <height>31</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Rechazar</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <item>
+                        <property name="text">
+                            <string>Català</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Castellano</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Français</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>English</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>comboBoxIdioma</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>40</y>
+                            <width>140</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <property name="editable">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>muestra</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>9</x>
+                            <y>126</y>
+                            <width>181</width>
+                            <height>31</height>
+                        </rect>
+                    </property>
+                    <property name="paletteBackgroundColor">
+                        <color>
+                            <red>255</red>
+                            <green>255</green>
+                            <blue>0</blue>
+                        </color>
+                    </property>
+                    <property name="frameShape">
+                        <enum>Box</enum>
+                    </property>
+                    <property name="frameShadow">
+                        <enum>Sunken</enum>
+                    </property>
+                    <property name="text">
+                        <string>Muestra 0123...</string>
+                    </property>
+                    <property name="scaledContents">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+                <widget class="QSpinBox">
+                    <property name="name">
+                        <cstring>spinBoxFuente</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>150</x>
+                            <y>90</y>
+                            <width>30</width>
+                            <height>20</height>
+                        </rect>
+                    </property>
+                    <property name="specialValueText">
+                        <string></string>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>12</number>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <property name="name">
+                        <cstring>comboBoxFuente</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>90</y>
+                            <width>120</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                </widget>
             </widget>
         </widget>
         <widget class="QWidget">
@@ -843,20 +1045,49 @@
         <receiver>UIconfiguracion</receiver>
         <slot>listView2_clickBotonDerecho(QListViewItem*,const QPoint&amp;,int)</slot>
     </connection>
+    <connection>
+        <sender>comboBoxFuente</sender>
+        <signal>activated(const QString&amp;)</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>FontChanged(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxFuente</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>FontSizeChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_10</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_10aceptar()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_11</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_11rechazar()</slot>
+    </connection>
 </connections>
 <tabstops>
-    <tabstop>pushButtonB_X</tabstop>
-    <tabstop>pushButtonB_3</tabstop>
-    <tabstop>pushButtonB_4</tabstop>
-    <tabstop>pushButtonB_5</tabstop>
-    <tabstop>pushButtonB_1</tabstop>
-    <tabstop>pushButtonB_2</tabstop>
     <tabstop>pushButtonA_X</tabstop>
     <tabstop>pushButtonA_5</tabstop>
     <tabstop>pushButtonA_1</tabstop>
     <tabstop>pushButtonA_2</tabstop>
     <tabstop>pushButtonA_3</tabstop>
     <tabstop>pushButtonA_4</tabstop>
+    <tabstop>comboBoxIdioma</tabstop>
+    <tabstop>comboBoxFuente</tabstop>
+    <tabstop>spinBoxFuente</tabstop>
+    <tabstop>pushButtonA_10</tabstop>
+    <tabstop>pushButtonA_11</tabstop>
+    <tabstop>pushButtonB_X</tabstop>
+    <tabstop>pushButtonB_3</tabstop>
+    <tabstop>pushButtonB_4</tabstop>
+    <tabstop>pushButtonB_5</tabstop>
+    <tabstop>pushButtonB_1</tabstop>
+    <tabstop>pushButtonB_2</tabstop>
     <tabstop>tabWidget</tabstop>
     <tabstop>listView1</tabstop>
     <tabstop>textEdit1</tabstop>
@@ -875,6 +1106,10 @@
     <slot>cerrar()</slot>
     <slot>listView1_currentChanged(QListViewItem *)</slot>
     <slot>listView2_clickBotonDerecho(QListViewItem*,const QPoint&amp;,int)</slot>
+    <slot>FontChanged(const QString &amp;)</slot>
+    <slot>FontSizeChanged(int)</slot>
+    <slot>BotonA_10aceptar()</slot>
+    <slot>BotonA_11rechazar()</slot>
 </slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
