@@ -15,6 +15,8 @@
 
 #include "bfempresa.h"
 #include "bclientes.h"
+#include "barticulos.h"
+
 #define __VERSION_ACTUAL__ "bulmafact 0.0.1"
 
 /*******************************************************************************/
@@ -29,6 +31,59 @@ BfEmpresa::BfEmpresa() {
 BfEmpresa::~BfEmpresa() {
 }
 
+/************************************************************************************/
+/* Inicializa la empresa. Para empezar cargamos el nombre de la base de datos.      */
+/************************************************************************************/
+void BfEmpresa::cargaEmpresa(QString *NombreBaseDatos) {
+nombreDB=NombreBaseDatos;
+}
+
+/************************************************************************************/
+/* Esta función retorna un cursor con una lista de todas las bases de datos que     */
+/* se han encontrado en el servidor y que sean compatibles con la versión actual    */
+/* de bulmaFACT.                                                                    */
+/***********************************************************************************/
+BfCursor* BfEmpresa::pg_database(QString* usuario, QString* passwd) {
+    QString query;
+    pgIface* DbTemp;
+    BfCursor* curTempVersion;
+    BfCursor* curTempUsuario;
+    BfCursor* curTempNombreEmpresa;
+    pgIface* pg_template1 = new pgIface("template1");
+    pg_template1->begin();
+    pg_template1->ejecuta("CREATE LOCAL TEMPORARY TABLE misEmpresas (nombreDB varchar(20), nombreEmpresa varchar(50))");
+    BfCursor* currTemplate1 = pg_template1->cargaCursor("SELECT datname FROM pg_database","listaEmpresas");
+    pg_template1->commit();
+    pg_template1->begin();
+    while (!currTemplate1->eof()) {
+        DbTemp = new pgIface(currTemplate1->valor(0));
+        DbTemp->begin();
+        curTempVersion = DbTemp->cargaCursor("SELECT valor FROM meta WHERE id='version'","buscaDB");
+        query.sprintf("SELECT login, clave FROM usuarios WHERE login='%s' AND clave='%s'",usuario->ascii(),passwd->ascii());
+        curTempUsuario = DbTemp->cargaCursor(query,"buscaUser");
+        if (!curTempVersion->eof() && !curTempUsuario->eof()) {
+            fprintf(stderr,"Encontrado Usuario: " +  curTempUsuario->valor(0) + "\n"); 
+            if (curTempVersion->valor(0)==__VERSION_ACTUAL__)  {
+                //fprintf(stderr," " +  currTemplate1->valor(0) + "\n"); 
+                curTempNombreEmpresa = DbTemp->cargaCursor("SELECT valor FROM meta WHERE id='empresa'","buscaNombre");
+                query.sprintf("INSERT INTO misEmpresas (nombreDB, nombreEmpresa) VALUES ('%s', '%s')",currTemplate1->valor(0).ascii(),curTempNombreEmpresa->valor(0).ascii());
+                pg_template1->ejecuta(query);
+                }
+        }
+        DbTemp->commit();
+        currTemplate1->siguienteregistro();
+    }
+    BfCursor* lista = pg_template1->cargaCursor("SELECT * FROM misEmpresas","misEmpresas");
+    pg_template1->commit();
+    delete pg_template1;
+    
+    if (lista->eof()) return 0;
+    else return lista;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!  COSAS RELACIONADAS CON LA TABLA CLIENTE !!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 /************************************************************************************/
 /* Esta función crea un nuevo cliente en la base de datos.                          */
 /************************************************************************************/
@@ -148,52 +203,99 @@ int BfEmpresa::cargaCliente(BClientes* datos) {
     return datos->codigo_cli->text().toInt();
 }
 
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!  COSAS RELACIONADAS CON LA TABLA ARTICULO !!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 /************************************************************************************/
-/* Esta función retorna un cursor con una lista de todas las bases de datos que     */
-/* se han encontrado en el servidor y que sean compatibles con la versión actual    */
-/* de bulmaFACT.                                                                    */
-/***********************************************************************************/
-BfCursor* BfEmpresa::pg_database(QString* usuario, QString* passwd) {
+/* Esta función crea un nuevo articulo en la base de datos.                         */
+/************************************************************************************/
+int BfEmpresa::nuevoArticulo(QString* codigo) {
     QString query;
-    pgIface* DbTemp;
-    BfCursor* curTempVersion;
-    BfCursor* curTempUsuario;
-    BfCursor* curTempNombreEmpresa;
-    pgIface* pg_template1 = new pgIface("template1");
-    pg_template1->begin();
-    pg_template1->ejecuta("CREATE LOCAL TEMPORARY TABLE misEmpresas (nombreDB varchar(20), nombreEmpresa varchar(50))");
-    BfCursor* currTemplate1 = pg_template1->cargaCursor("SELECT datname FROM pg_database","listaEmpresas");
-    pg_template1->commit();
-    pg_template1->begin();
-    while (!currTemplate1->eof()) {
-        DbTemp = new pgIface(currTemplate1->valor(0));
-        DbTemp->begin();
-        curTempVersion = DbTemp->cargaCursor("SELECT valor FROM meta WHERE id='version'","buscaDB");
-        query.sprintf("SELECT login, clave FROM usuarios WHERE login='%s' AND clave='%s'",usuario->ascii(),passwd->ascii());
-        curTempUsuario = DbTemp->cargaCursor(query,"buscaUser");
-        if (!curTempVersion->eof() && !curTempUsuario->eof()) {
-            fprintf(stderr,"Encontrado Usuario: " +  curTempUsuario->valor(0) + "\n"); 
-            if (curTempVersion->valor(0)==__VERSION_ACTUAL__)  {
-                //fprintf(stderr," " +  currTemplate1->valor(0) + "\n"); 
-                curTempNombreEmpresa = DbTemp->cargaCursor("SELECT valor FROM meta WHERE id='empresa'","buscaNombre");
-                query.sprintf("INSERT INTO misEmpresas (nombreDB, nombreEmpresa) VALUES ('%s', '%s')",currTemplate1->valor(0).ascii(),curTempNombreEmpresa->valor(0).ascii());
-                pg_template1->ejecuta(query);
-                }
-        }
-        DbTemp->commit();
-        currTemplate1->siguienteregistro();
+    pgIface* connexionDB;
+    BfCursor* recordset;
+    int artID=-1;
+    connexionDB = new pgIface(*nombreDB);
+    connexionDB->begin();
+    query.sprintf("SELECT codarticulo FROM articulo WHERE codarticulo='%s'",codigo->ascii());    
+    recordset = connexionDB->cargaCursor(query,"buscaRepe");
+    if ( recordset->eof() ) {
+        recordset = connexionDB->cargaCursor("SELECT max(idarticulo) AS ultimID FROM articulo","ultimoID");
+        if ( recordset->eof() ) { artID=1; }
+        else { artID = recordset->valor(0).toInt() + 1; }
+        if (*codigo=="") {  *codigo->sprintf("%06i",artID); }
+        query.sprintf("INSERT INTO articulo (idarticulo,codarticulo,nomarticulo) VALUES ('%i','%s','.')",artID, codigo->ascii());    
+        connexionDB->ejecuta(query);
     }
-    BfCursor* lista = pg_template1->cargaCursor("SELECT * FROM misEmpresas","misEmpresas");
-    pg_template1->commit();
-    delete pg_template1;
-    
-    if (lista->eof()) return 0;
-    else return lista;
+    connexionDB->commit();
+    delete connexionDB;
+    return artID;
+}
+
+/************************************************************************************/
+/* Esta función elimina al articulo de la base de datos (PELIGRO!!!)                */
+/************************************************************************************/
+int BfEmpresa::eliminarArticulo(QString* codigo) {
+    QString query;
+    pgIface * connexionDB = new pgIface(*nombreDB);
+    connexionDB->begin();
+    query.sprintf("DELETE FROM articulo WHERE codarticulo='%s'",codigo->ascii());    
+    connexionDB->ejecuta(query);
+    connexionDB->commit();
+    delete connexionDB;
+    //return codigo->toInt();
+    return -1;
+
+}
+
+/************************************************************************************/
+/* Esta función salva los datos del formulario articulos en la base de datos.       */
+/************************************************************************************/
+int BfEmpresa::salvaArticulo(BArticulos* datos) {
+    //Leemos todos los campos de la pantalla articulo.
+    //Otra opción seria passar a esta función todos los campos como paràmetros.
+    //O bien crear una estructura que contenga todos los campos del formulario articulo.
+    QString codarticulo = datos->codigo_art->text();
+    QString nomarticulo = datos->nombre_art->text();
+    QString cbarrasarticulo = datos->cbarras_art->text();
+    //Fin lectura campos en pantalla
+    QString query;
+    pgIface * connexionDB = new pgIface(*nombreDB);
+    connexionDB->begin();
+    query.sprintf("UPDATE articulo SET codarticulo='%s',nomarticulo='%s', cbarrasarticulo='%s' \
+                   WHERE idarticulo='%i'"
+                   ,codarticulo.ascii(), nomarticulo.ascii(), cbarrasarticulo.ascii(),
+                   datos->ID_art);    
+    connexionDB->ejecuta(query);
+    connexionDB->commit();
+    delete connexionDB;
+    return datos->codigo_art->text().toInt();
+}
+
+/************************************************************************************/
+/* Esta función carga los datos en la pantalla articulo.                            */
+/************************************************************************************/
+int BfEmpresa::cargaArticulo(BArticulos* datos) {
+    QString query;
+    QString artID="-1";
+    BfCursor* recordset;
+    pgIface * connexionDB = new pgIface(*nombreDB);
+    connexionDB->begin();
+    query.sprintf("SELECT * FROM articulo WHERE codarticulo='%s'",datos->codigo_art->text().ascii());    
+    recordset = connexionDB->cargaCursor(query,"cargaArt");
+    connexionDB->commit();
+    if (! recordset->eof() ) { 
+        artID = recordset->valor("idarticulo");
+        datos->codigo_art->setText(recordset->valor("codarticulo"));
+        datos->nombre_art->setText(recordset->valor("nomarticulo"));
+        datos->cbarras_art->setText(recordset->valor("cbarrasarticulo"));
+    }
+    delete connexionDB;
+    return artID.toInt();
 }
 
 
 /************************************************************************************/
-/* Busca en la tabla clientes nombres parecidos A ...                               */
+/* Busca "argumentoBusqueda" en la "tabla" con las opciones "opcionesBusqueda"      */
 /************************************************************************************/
 BfCursor* BfEmpresa::buscarParecidos(QString tabla, QString argumentoBusqueda, QString opcionesBusqueda) {
     QString query("");
@@ -208,13 +310,6 @@ BfCursor* BfEmpresa::buscarParecidos(QString tabla, QString argumentoBusqueda, Q
     connexionDB->commit();
     delete connexionDB;
     return recordset;
-}
-
-/************************************************************************************/
-/* Inicializa la empresa. Para empezar cargamos el nombre de la base de datos.      */
-/************************************************************************************/
-void BfEmpresa::cargaEmpresa(QString *NombreBaseDatos) {
-nombreDB=NombreBaseDatos;
 }
 
 /************************************************************************************/

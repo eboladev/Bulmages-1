@@ -29,10 +29,13 @@
 #include <qstring.h>
 #include <qdatetime.h>
 #include <qtextedit.h>
+#include <qlineedit.h>
+#include <qpushbutton.h>
 #include <qmessagebox.h>
 
 
 class BClientes;
+class BArticulos;
 class BfCursor;
 
 /** @author Josep Burcion */
@@ -44,13 +47,20 @@ class BfEmpresa{
 public:
     BfEmpresa();
     ~BfEmpresa();
+    void cargaEmpresa(QString*);
+    BfCursor* pg_database(QString* usuario=0, QString* passwd=0);
+    //Funciones relacionadas con clientes
     int nuevoCliente(QString* codigo=NULL);
     int eliminarCliente(QString*);
     int salvaCliente(BClientes*);
     int cargaCliente(BClientes*);
+    //Funciones relacionadas con Articulos
+    int nuevoArticulo(QString*);
+    int eliminarArticulo(QString*);
+    int salvaArticulo(BArticulos*);
+    int cargaArticulo(BArticulos*);
+
     BfCursor* buscarParecidos(QString tabla, QString argumentoBusqueda="", QString opcionesBusqueda="ILIKE '%");
-    void cargaEmpresa(QString*);
-    BfCursor* pg_database(QString* usuario=0, QString* passwd=0);
     QString fechaPresente();
     int roundI(double);
     

@@ -22,7 +22,6 @@
 #include "uibuscador.h"
 #include "bfempresa.h"
 
-//#include "postgresiface2.h"
 
 
 /**
@@ -43,6 +42,7 @@ private:
     MyQTable* tablaResultados; //La clase MyQTable es herdera de QTable.
     BfEmpresa* EmpresaTrabajo;
     QString tablaBusqueda;
+    int columnaRetorno;
 
 private slots:
     virtual void llenarTabla(const QString &);

@@ -30,10 +30,22 @@ class BArticulos : public UIArticulos
 public:
     BArticulos(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent = 0, const char * name = 0, WFlags f=0);
     ~BArticulos();
+    
+    int ID_art;
 
 private:
     BfEmpresa* EmpresaTrabajo;
-    
+    void vaciarFicha();
+
+private slots:
+    virtual void iniciarBusqueda();
+    virtual void crearNuevoArticulo();
+    virtual void eliminarArticulo();
+    virtual void salvarArticulo();
+    virtual void articuloReturnPressed();
+    virtual void cerrarVentana();
+    virtual void closeEvent(QCloseEvent * e); 
+    virtual void cambioEnFicha(const QString&);  
 };
 
 #endif

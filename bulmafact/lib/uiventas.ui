@@ -483,7 +483,7 @@
             <cstring>archivoProveedoresAction</cstring>
         </property>
         <property name="iconSet">
-            <iconset>2rightarrow.png</iconset>
+            <iconset>identity.png</iconset>
         </property>
         <property name="text">
             <string>Proveedores</string>
@@ -511,7 +511,7 @@
             <cstring>archivoFamilias</cstring>
         </property>
         <property name="iconSet">
-            <iconset>identity.png</iconset>
+            <iconset>file-manager.png</iconset>
         </property>
         <property name="text">
             <string>Familias</string>
@@ -525,7 +525,7 @@
             <cstring>archivoProveedoresProveedoresAction</cstring>
         </property>
         <property name="iconSet">
-            <iconset>2rightarrow.png</iconset>
+            <iconset>identity.png</iconset>
         </property>
         <property name="text">
             <string>Proveedores</string>

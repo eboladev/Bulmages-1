@@ -13,6 +13,7 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 #include "bclientes.h"
+#include "bbuscador.h"
 
 BClientes::BClientes(BfEmpresa* punteroEmpresaTrabajo, QWidget * parent, const char * name) : UIClientes(parent, name) {
     EmpresaTrabajo=punteroEmpresaTrabajo;
@@ -24,12 +25,12 @@ BClientes::~BClientes(){
 
 //Abre el dialogo de búsqueda
 void BClientes::iniciarBusqueda() {
-    QString Retorno("resultado");
+    QString Retorno("3"); //columna que va a retornar en la variable retorno.
     QString tabla("cliente");
-    QString* arg1 = new QString("nomcliente");
-    QString* arg2 = new QString("poblcliente");
-    QString* arg3 = new QString("telcliente");
-    QString* arg4 = new QString("idcliente");
+    QString* arg1 = new QString("nomcliente");  //Columna 0
+    QString* arg2 = new QString("poblcliente"); //Col. 1
+    QString* arg3 = new QString("telcliente");  //Col. 2
+    QString* arg4 = new QString("idcliente");   //Col. 3
     (new Bbuscador(this, "buscaCli",WType_TopLevel,EmpresaTrabajo,&Retorno,&tabla, arg1,arg2,arg3,arg4,0))->exec();
     codigo_cli->setText(Retorno);
     clienteReturnPressed();
@@ -67,8 +68,6 @@ void BClientes::cerrarVentana() {
 }
 
 void BClientes::closeEvent(QCloseEvent * e) {
-    //int exit=0;
-    //if (exit==1) e->accept();
-    //else e->ignore();
+   e->ignore();
    cerrarVentana();    
 }

@@ -19,7 +19,6 @@
 #include ".ui/uiclientes.h"
 
 #include "bfempresa.h"
-#include "bbuscador.h"
 
 /**
 @author Josep Burcion
@@ -42,9 +41,6 @@ private slots:
     virtual void clienteReturnPressed();
     virtual void cerrarVentana();
     virtual void closeEvent(QCloseEvent * e);
-
-    
-
 };
 
 #endif

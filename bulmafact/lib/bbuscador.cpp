@@ -34,6 +34,7 @@ Bbuscador::Bbuscador(QWidget* parent, const char* name, WFlags f,BfEmpresa* punt
     
     EmpresaTrabajo=punteroEmpresaTrabajo;
     cadRetorno=cadenaRet;
+    columnaRetorno = cadRetorno->toInt();
     tablaBusqueda = *tabla; //Tabla Base de Datos
     tablaResultados=new MyQTable(this,"tablaResultados");
     tablaResultados->setGeometry(10,80,550,260);
@@ -48,6 +49,7 @@ Bbuscador::Bbuscador(QWidget* parent, const char* name, WFlags f,BfEmpresa* punt
     connect(tablaResultados, SIGNAL(keyEnterPressed(int, int)), this, SLOT(pulsadoEnter(int, int)));
     connect(tablaResultados, SIGNAL(doubleClicked(int, int, int, const QPoint&)), this, SLOT(dblClickRaton(int, int, int, const QPoint&)));
     setCaption("Buscar en la Tabla: " + tablaBusqueda);
+    *cadRetorno="";
    
 }
 
@@ -76,6 +78,12 @@ void Bbuscador::llenarTabla(const QString &cadena) {
             tablaResultados->setText(i,2,recordset->valor("telcliente"));
             tablaResultados->setText(i,3,recordset->valor("idcliente"));
         }
+        if (tablaBusqueda=="articulo") {
+            tablaResultados->setText(i,0,recordset->valor("nomarticulo"));
+            tablaResultados->setText(i,1,recordset->valor("codarticulo"));
+            tablaResultados->setText(i,2,recordset->valor("descarticulo"));
+            tablaResultados->setText(i,3,recordset->valor("idarticulo"));
+        }
         if (tablaBusqueda=="proveedor") {
             tablaResultados->setText(i,0,recordset->valor("nomproveedor"));
             tablaResultados->setText(i,1,recordset->valor("poblproveedor"));
@@ -100,7 +108,7 @@ void Bbuscador::dblClickRaton(int row,int col,int button,const QPoint & mousePos
 }
 
 void Bbuscador::pulsadoEnter(int fila, int columna){
-    columna=3; //idcliente
+    columna=columnaRetorno;
     *cadRetorno = tablaResultados->text(fila,columna);
     delete this;
 }
