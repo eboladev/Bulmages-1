@@ -25,7 +25,7 @@
       <hidenonlocation>false</hidenonlocation>
     </groups>
     <tree>
-      <hidepatterns>*.o,*.lo,CVS</hidepatterns>
+      <hidepatterns>pro</hidepatterns>
       <hidenonprojectfiles>false</hidenonprojectfiles>
       <showvcsfields>false</showvcsfields>
     </tree>
@@ -77,7 +77,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>src</activedir>
+      <activedir></activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

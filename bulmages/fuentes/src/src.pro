@@ -469,6 +469,7 @@ unix{
   }
   exists(/usr/include/postgresql/pgsql/libpq-fe.h){
     DEFINES += DISTRO_GENTOO
+    DEFINES += QT_THREAD_SUPPORT
   }
   exists(/usr/include/no_se_que/pgsql/libpq-fe.h){
     DEFINES += DISTRO_NO_SE_QUE
