@@ -7,19 +7,20 @@ SET SESSION AUTHORIZATION 'postgres';
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 102 (OID 168196)
+-- TOC entry 103 (OID 249267)
 -- Name: plpgsql_call_handler(); Type: FUNC PROCEDURAL LANGUAGE; Schema: public; Owner: postgres
 --
 
 CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
-      AS '/usr/lib/postgresql/lib/plpgsql.so', 'plpgsql_call_handler'
-   -- AS '/usr/lib/pgsql/plpgsql.so', 'plpgsql_call_handler'
+    AS '/usr/lib/postgresql/lib/plpgsql.so', 'plpgsql_call_handler'
+--  AS '/usr/lib/pgsql/plpgsql.so', 'plpgsql_call_handler'
     LANGUAGE c;
+
 
 SET SESSION AUTHORIZATION DEFAULT;
 
 --
--- TOC entry 101 (OID 168197)
+-- TOC entry 102 (OID 249268)
 -- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: public; Owner: 
 --
 
@@ -38,7 +39,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
--- TOC entry 30 (OID 168198)
+-- TOC entry 30 (OID 249269)
 -- Name: pga_queries; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -54,7 +55,7 @@ CREATE TABLE pga_queries (
 
 
 --
--- TOC entry 31 (OID 168198)
+-- TOC entry 31 (OID 249269)
 -- Name: pga_queries; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -63,7 +64,7 @@ GRANT ALL ON TABLE pga_queries TO PUBLIC;
 
 
 --
--- TOC entry 32 (OID 168203)
+-- TOC entry 32 (OID 249274)
 -- Name: pga_forms; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -74,7 +75,7 @@ CREATE TABLE pga_forms (
 
 
 --
--- TOC entry 33 (OID 168203)
+-- TOC entry 33 (OID 249274)
 -- Name: pga_forms; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -83,7 +84,7 @@ GRANT ALL ON TABLE pga_forms TO PUBLIC;
 
 
 --
--- TOC entry 34 (OID 168208)
+-- TOC entry 34 (OID 249279)
 -- Name: pga_scripts; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -94,7 +95,7 @@ CREATE TABLE pga_scripts (
 
 
 --
--- TOC entry 35 (OID 168208)
+-- TOC entry 35 (OID 249279)
 -- Name: pga_scripts; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -103,7 +104,7 @@ GRANT ALL ON TABLE pga_scripts TO PUBLIC;
 
 
 --
--- TOC entry 36 (OID 168213)
+-- TOC entry 36 (OID 249284)
 -- Name: pga_reports; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -117,7 +118,7 @@ CREATE TABLE pga_reports (
 
 
 --
--- TOC entry 37 (OID 168213)
+-- TOC entry 37 (OID 249284)
 -- Name: pga_reports; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -126,7 +127,7 @@ GRANT ALL ON TABLE pga_reports TO PUBLIC;
 
 
 --
--- TOC entry 38 (OID 168218)
+-- TOC entry 38 (OID 249289)
 -- Name: pga_schema; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -138,7 +139,7 @@ CREATE TABLE pga_schema (
 
 
 --
--- TOC entry 39 (OID 168218)
+-- TOC entry 39 (OID 249289)
 -- Name: pga_schema; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -147,7 +148,7 @@ GRANT ALL ON TABLE pga_schema TO PUBLIC;
 
 
 --
--- TOC entry 40 (OID 168223)
+-- TOC entry 40 (OID 249294)
 -- Name: configuracion; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -159,7 +160,7 @@ CREATE TABLE configuracion (
 
 
 --
--- TOC entry 41 (OID 168225)
+-- TOC entry 41 (OID 249296)
 -- Name: tiposiva; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -171,7 +172,7 @@ CREATE TABLE tiposiva (
 
 
 --
--- TOC entry 4 (OID 168227)
+-- TOC entry 4 (OID 249298)
 -- Name: grupo_idgrupo_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -184,7 +185,7 @@ CREATE SEQUENCE grupo_idgrupo_seq
 
 
 --
--- TOC entry 42 (OID 168229)
+-- TOC entry 42 (OID 249300)
 -- Name: grupo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -195,7 +196,7 @@ CREATE TABLE grupo (
 
 
 --
--- TOC entry 6 (OID 168232)
+-- TOC entry 6 (OID 249303)
 -- Name: cuenta_idcuenta_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -207,7 +208,7 @@ CREATE SEQUENCE cuenta_idcuenta_seq
 
 
 --
--- TOC entry 43 (OID 168234)
+-- TOC entry 43 (OID 249305)
 -- Name: cuenta; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -239,7 +240,7 @@ CREATE TABLE cuenta (
 
 
 --
--- TOC entry 8 (OID 168239)
+-- TOC entry 8 (OID 249310)
 -- Name: canal_idcanal_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -251,7 +252,7 @@ CREATE SEQUENCE canal_idcanal_seq
 
 
 --
--- TOC entry 44 (OID 168241)
+-- TOC entry 44 (OID 249312)
 -- Name: canal; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -263,7 +264,7 @@ CREATE TABLE canal (
 
 
 --
--- TOC entry 10 (OID 168244)
+-- TOC entry 10 (OID 249315)
 -- Name: c_coste_idc_coste_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -275,7 +276,7 @@ CREATE SEQUENCE c_coste_idc_coste_seq
 
 
 --
--- TOC entry 45 (OID 168246)
+-- TOC entry 45 (OID 249317)
 -- Name: c_coste; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -292,7 +293,7 @@ CREATE TABLE c_coste (
 
 
 --
--- TOC entry 12 (OID 168249)
+-- TOC entry 12 (OID 249320)
 -- Name: acumulado_c_c_idacumulado_c_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -304,7 +305,7 @@ CREATE SEQUENCE acumulado_c_c_idacumulado_c_seq
 
 
 --
--- TOC entry 46 (OID 168251)
+-- TOC entry 46 (OID 249322)
 -- Name: acumulado_c_coste; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -318,7 +319,7 @@ CREATE TABLE acumulado_c_coste (
 
 
 --
--- TOC entry 14 (OID 168254)
+-- TOC entry 14 (OID 249325)
 -- Name: acumulado_can_idacumulado_c_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -330,7 +331,7 @@ CREATE SEQUENCE acumulado_can_idacumulado_c_seq
 
 
 --
--- TOC entry 47 (OID 168256)
+-- TOC entry 47 (OID 249327)
 -- Name: acumulado_canal; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -344,7 +345,7 @@ CREATE TABLE acumulado_canal (
 
 
 --
--- TOC entry 16 (OID 168259)
+-- TOC entry 16 (OID 249330)
 -- Name: diario_iddiario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -357,7 +358,7 @@ CREATE SEQUENCE diario_iddiario_seq
 
 
 --
--- TOC entry 48 (OID 168261)
+-- TOC entry 48 (OID 249332)
 -- Name: diario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -368,7 +369,7 @@ CREATE TABLE diario (
 
 
 --
--- TOC entry 18 (OID 168264)
+-- TOC entry 18 (OID 249335)
 -- Name: asiento_idasiento_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -380,7 +381,7 @@ CREATE SEQUENCE asiento_idasiento_seq
 
 
 --
--- TOC entry 49 (OID 168266)
+-- TOC entry 49 (OID 249337)
 -- Name: asiento; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -389,12 +390,13 @@ CREATE TABLE asiento (
     descripcion character varying(100),
     fecha timestamp with time zone,
     comentariosasiento character varying(2000),
-    ordenasiento integer
+    ordenasiento integer,
+    clase smallint
 );
 
 
 --
--- TOC entry 20 (OID 168272)
+-- TOC entry 20 (OID 249343)
 -- Name: apunte_idapunte_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -406,7 +408,7 @@ CREATE SEQUENCE apunte_idapunte_seq
 
 
 --
--- TOC entry 50 (OID 168274)
+-- TOC entry 50 (OID 249345)
 -- Name: apunte; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -433,7 +435,7 @@ CREATE TABLE apunte (
 
 
 --
--- TOC entry 22 (OID 168278)
+-- TOC entry 22 (OID 249349)
 -- Name: borrador_idborrador_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -445,7 +447,7 @@ CREATE SEQUENCE borrador_idborrador_seq
 
 
 --
--- TOC entry 51 (OID 168280)
+-- TOC entry 51 (OID 249351)
 -- Name: borrador; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -472,7 +474,7 @@ CREATE TABLE borrador (
 
 
 --
--- TOC entry 24 (OID 168283)
+-- TOC entry 24 (OID 249354)
 -- Name: registroiva_idregistroiva_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -484,7 +486,7 @@ CREATE SEQUENCE registroiva_idregistroiva_seq
 
 
 --
--- TOC entry 52 (OID 168285)
+-- TOC entry 52 (OID 249356)
 -- Name: registroiva; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -504,7 +506,7 @@ CREATE TABLE registroiva (
 
 
 --
--- TOC entry 26 (OID 168288)
+-- TOC entry 26 (OID 249359)
 -- Name: ainteligente_idainteligente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -516,7 +518,7 @@ CREATE SEQUENCE ainteligente_idainteligente_seq
 
 
 --
--- TOC entry 53 (OID 168290)
+-- TOC entry 53 (OID 249361)
 -- Name: ainteligente; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -528,7 +530,7 @@ CREATE TABLE ainteligente (
 
 
 --
--- TOC entry 28 (OID 168296)
+-- TOC entry 28 (OID 249367)
 -- Name: binteligente_idbinteligente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -541,7 +543,7 @@ CREATE SEQUENCE binteligente_idbinteligente_seq
 
 
 --
--- TOC entry 54 (OID 168298)
+-- TOC entry 54 (OID 249369)
 -- Name: binteligente; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -564,7 +566,7 @@ CREATE TABLE binteligente (
 
 
 --
--- TOC entry 55 (OID 168303)
+-- TOC entry 55 (OID 249374)
 -- Name: ivainteligente; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -586,7 +588,7 @@ CREATE TABLE ivainteligente (
 
 
 --
--- TOC entry 56 (OID 168308)
+-- TOC entry 56 (OID 249379)
 -- Name: compmasap; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -602,7 +604,7 @@ CREATE TABLE compmasap (
 
 
 --
--- TOC entry 57 (OID 168313)
+-- TOC entry 57 (OID 249384)
 -- Name: mpatrimonial; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -618,7 +620,7 @@ CREATE TABLE mpatrimonial (
 
 
 --
--- TOC entry 58 (OID 168318)
+-- TOC entry 58 (OID 249389)
 -- Name: compbalance; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -633,7 +635,7 @@ CREATE TABLE compbalance (
 
 
 --
--- TOC entry 59 (OID 168323)
+-- TOC entry 59 (OID 249394)
 -- Name: balance; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -646,7 +648,7 @@ CREATE TABLE balance (
 SET check_function_bodies = false;
 
 --
--- TOC entry 103 (OID 168326)
+-- TOC entry 104 (OID 249397)
 -- Name: abreasientos(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -667,7 +669,7 @@ END;
 
 
 --
--- TOC entry 104 (OID 168328)
+-- TOC entry 105 (OID 249398)
 -- Name: cambiaasiento(integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -694,7 +696,7 @@ END;
 
 
 --
--- TOC entry 105 (OID 168329)
+-- TOC entry 106 (OID 249399)
 -- Name: ccontrapartida(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -727,7 +729,7 @@ END;
 
 
 --
--- TOC entry 106 (OID 168330)
+-- TOC entry 107 (OID 249400)
 -- Name: id_cuenta(character varying); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -749,7 +751,7 @@ END;
 
 
 --
--- TOC entry 107 (OID 168331)
+-- TOC entry 108 (OID 249401)
 -- Name: nivel(character varying); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -765,7 +767,7 @@ END;
 
 
 --
--- TOC entry 108 (OID 168332)
+-- TOC entry 109 (OID 249402)
 -- Name: saldototalmpatrimonial(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -803,7 +805,7 @@ END;
 
 
 --
--- TOC entry 109 (OID 168333)
+-- TOC entry 110 (OID 249403)
 -- Name: saldompatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -840,7 +842,7 @@ END;
 
 
 --
--- TOC entry 110 (OID 168334)
+-- TOC entry 111 (OID 249404)
 -- Name: debempatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -877,7 +879,7 @@ END;
 
 
 --
--- TOC entry 111 (OID 168335)
+-- TOC entry 112 (OID 249405)
 -- Name: habermpatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -914,7 +916,7 @@ END;
 
 
 --
--- TOC entry 112 (OID 168336)
+-- TOC entry 113 (OID 249406)
 -- Name: saldototal(character varying, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -949,7 +951,7 @@ END;
 
 
 --
--- TOC entry 113 (OID 168337)
+-- TOC entry 114 (OID 249407)
 -- Name: debetotal(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -985,7 +987,7 @@ END;
 
 
 --
--- TOC entry 114 (OID 168338)
+-- TOC entry 115 (OID 249408)
 -- Name: debetotal1(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1018,7 +1020,7 @@ END;
 
 
 --
--- TOC entry 115 (OID 168339)
+-- TOC entry 116 (OID 249409)
 -- Name: habertotal(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1053,7 +1055,7 @@ END;
 
 
 --
--- TOC entry 116 (OID 168340)
+-- TOC entry 117 (OID 249410)
 -- Name: habertotal1(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1086,7 +1088,7 @@ END;
 
 
 --
--- TOC entry 117 (OID 168341)
+-- TOC entry 118 (OID 249411)
 -- Name: recalculasaldos(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1109,7 +1111,7 @@ END;
 
 
 --
--- TOC entry 118 (OID 168342)
+-- TOC entry 119 (OID 249412)
 -- Name: aumenta_valor(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1148,7 +1150,7 @@ END;
 
 
 --
--- TOC entry 119 (OID 168343)
+-- TOC entry 120 (OID 249413)
 -- Name: disminuye_valor(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1190,7 +1192,7 @@ END;
 
 
 --
--- TOC entry 120 (OID 168344)
+-- TOC entry 121 (OID 249414)
 -- Name: disminuye_valor1(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1231,7 +1233,7 @@ END;
 
 
 --
--- TOC entry 121 (OID 168345)
+-- TOC entry 122 (OID 249415)
 -- Name: creacuenta(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1253,7 +1255,7 @@ END;
 
 
 --
--- TOC entry 122 (OID 168346)
+-- TOC entry 123 (OID 249416)
 -- Name: borracuenta(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1275,7 +1277,7 @@ END;
 
 
 --
--- TOC entry 123 (OID 168347)
+-- TOC entry 124 (OID 249417)
 -- Name: creacanal(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1294,7 +1296,7 @@ END;
 
 
 --
--- TOC entry 124 (OID 168348)
+-- TOC entry 125 (OID 249418)
 -- Name: borracanal(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1309,7 +1311,7 @@ END;
 
 
 --
--- TOC entry 125 (OID 168349)
+-- TOC entry 126 (OID 249419)
 -- Name: creaccoste(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1328,7 +1330,7 @@ END;
 
 
 --
--- TOC entry 126 (OID 168350)
+-- TOC entry 127 (OID 249420)
 -- Name: borraccoste(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1343,7 +1345,7 @@ END;
 
 
 --
--- TOC entry 127 (OID 168351)
+-- TOC entry 128 (OID 249421)
 -- Name: propagaacumuladocuenta(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1366,7 +1368,7 @@ END;
 
 
 --
--- TOC entry 128 (OID 168352)
+-- TOC entry 129 (OID 249422)
 -- Name: propagaacumuladoccoste(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1388,7 +1390,7 @@ END;
 
 
 --
--- TOC entry 129 (OID 168353)
+-- TOC entry 130 (OID 249423)
 -- Name: acumulados_canal(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1416,7 +1418,7 @@ END;
 
 
 --
--- TOC entry 60 (OID 168354)
+-- TOC entry 60 (OID 249424)
 -- Name: pga_graphs; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1428,7 +1430,7 @@ CREATE TABLE pga_graphs (
 
 
 --
--- TOC entry 61 (OID 168354)
+-- TOC entry 61 (OID 249424)
 -- Name: pga_graphs; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -1437,7 +1439,7 @@ GRANT ALL ON TABLE pga_graphs TO PUBLIC;
 
 
 --
--- TOC entry 62 (OID 168359)
+-- TOC entry 62 (OID 249429)
 -- Name: pga_images; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1448,7 +1450,7 @@ CREATE TABLE pga_images (
 
 
 --
--- TOC entry 63 (OID 168359)
+-- TOC entry 63 (OID 249429)
 -- Name: pga_images; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -1457,7 +1459,7 @@ GRANT ALL ON TABLE pga_images TO PUBLIC;
 
 
 --
--- TOC entry 64 (OID 168364)
+-- TOC entry 64 (OID 249434)
 -- Name: pga_diagrams; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1469,7 +1471,7 @@ CREATE TABLE pga_diagrams (
 
 
 --
--- TOC entry 65 (OID 168364)
+-- TOC entry 65 (OID 249434)
 -- Name: pga_diagrams; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -1478,7 +1480,7 @@ GRANT ALL ON TABLE pga_diagrams TO PUBLIC;
 
 
 --
--- TOC entry 66 (OID 168369)
+-- TOC entry 66 (OID 249439)
 -- Name: pga_layout; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1491,7 +1493,7 @@ CREATE TABLE pga_layout (
 
 
 --
--- TOC entry 67 (OID 168369)
+-- TOC entry 67 (OID 249439)
 -- Name: pga_layout; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -1500,7 +1502,7 @@ GRANT ALL ON TABLE pga_layout TO PUBLIC;
 
 
 --
--- TOC entry 130 (OID 168374)
+-- TOC entry 131 (OID 249444)
 -- Name: abreasiento(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1516,7 +1518,7 @@ END;
 
 
 --
--- TOC entry 131 (OID 168375)
+-- TOC entry 132 (OID 249445)
 -- Name: cierraasiento(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -1547,7 +1549,7 @@ END;
 
 
 --
--- TOC entry 68 (OID 168378)
+-- TOC entry 68 (OID 249448)
 -- Name: amortizacion; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -1572,14 +1574,14 @@ CREATE TABLE amortizacion (
 
 
 --
--- TOC entry 69 (OID 168386)
+-- TOC entry 69 (OID 249456)
 -- Name: linamortizacion; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE linamortizacion (
     idlinamortizacion serial NOT NULL,
     idamortizacion integer,
-    idasiento integer,
+    idborrador integer,
     ejercicio integer,
     fechaprevista date,
     cantidad double precision
@@ -1587,18 +1589,31 @@ CREATE TABLE linamortizacion (
 
 
 --
--- TOC entry 132 (OID 187844)
--- Name: reordenaasientos(); Type: FUNCTION; Schema: public; Owner: postgres
+-- TOC entry 70 (OID 249459)
+-- Name: ejercicios; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION reordenaasientos() RETURNS integer
+CREATE TABLE ejercicios (
+    ejercicio integer,
+    periodo smallint,
+    bloqueado boolean
+);
+
+
+--
+-- TOC entry 133 (OID 249461)
+-- Name: reordenaasientos(integer); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION reordenaasientos(integer) RETURNS integer
     AS '
 DECLARE
+    ejercicio ALIAS FOR $1;
     as RECORD;
     cont integer;
 BEGIN
     cont := 1;
-    FOR as IN SELECT * from asiento ORDER BY fecha,ordenasiento LOOP
+    FOR as IN SELECT * from asiento WHERE EXTRACT(YEAR FROM fecha)=ejercicio ORDER BY fecha,clase,ordenasiento LOOP
 	IF (cont <> as.ordenasiento) THEN
 	    UPDATE asiento SET ordenasiento = cont WHERE idasiento = as.idasiento;
 	END IF;
@@ -1611,7 +1626,7 @@ END;
 
 
 --
--- Data for TOC entry 133 (OID 168198)
+-- Data for TOC entry 134 (OID 249269)
 -- Name: pga_queries; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1620,7 +1635,7 @@ COPY pga_queries (queryname, querytype, querycommand, querytables, querylinks, q
 
 
 --
--- Data for TOC entry 134 (OID 168203)
+-- Data for TOC entry 135 (OID 249274)
 -- Name: pga_forms; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1629,7 +1644,7 @@ COPY pga_forms (formname, formsource) FROM stdin;
 
 
 --
--- Data for TOC entry 135 (OID 168208)
+-- Data for TOC entry 136 (OID 249279)
 -- Name: pga_scripts; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1638,7 +1653,7 @@ COPY pga_scripts (scriptname, scriptsource) FROM stdin;
 
 
 --
--- Data for TOC entry 136 (OID 168213)
+-- Data for TOC entry 137 (OID 249284)
 -- Name: pga_reports; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1647,7 +1662,7 @@ COPY pga_reports (reportname, reportsource, reportbody, reportprocs, reportoptio
 
 
 --
--- Data for TOC entry 137 (OID 168218)
+-- Data for TOC entry 138 (OID 249289)
 -- Name: pga_schema; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1656,7 +1671,7 @@ COPY pga_schema (schemaname, schematables, schemalinks) FROM stdin;
 
 
 --
--- Data for TOC entry 138 (OID 168223)
+-- Data for TOC entry 139 (OID 249294)
 -- Name: configuracion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1666,7 +1681,7 @@ COPY configuracion (idconfiguracion, nombre, valor) FROM stdin;
 
 
 --
--- Data for TOC entry 139 (OID 168225)
+-- Data for TOC entry 140 (OID 249296)
 -- Name: tiposiva; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1679,7 +1694,7 @@ COPY tiposiva (idtipoiva, nombretipoiva, porcentajetipoiva) FROM stdin;
 
 
 --
--- Data for TOC entry 140 (OID 168229)
+-- Data for TOC entry 141 (OID 249300)
 -- Name: grupo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -1695,25 +1710,21 @@ COPY grupo (idgrupo, descripcion) FROM stdin;
 
 
 --
--- Data for TOC entry 141 (OID 168234)
+-- Data for TOC entry 142 (OID 249305)
 -- Name: cuenta; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrupo, msg, debe, haber, nodebe, nohaber, regularizacion, activo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta) FROM stdin;
+626	709	Rappels sobre ventas	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 93	101	Fondo social	\N	88	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-354	46	PERSONAL	\N	\N	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-94	102	Capital	t	88	t	1	\N	0	0	\N	\N	\N	t									3
 755	1000034	una cuenta rara	t	88	t	1	\N	0	0	\N	\N	\N	t									1
-724	100	Capital Social	t	88	t	1	\N	0	60101.209999999999	\N	\N	\N	t	Nombre para capital social	A07898990	Jazm�n algo	45 89 09	Pocos comentarios para esta cuenta	2051 21 35 12345678	info@algo.com	http://www.algo.com	3
 96	110	Prima de emision de acciones	t	95	t	1	\N	0	0	\N	\N	\N	t									2
 97	111	Reservas de revalorizacion	t	95	t	1	\N	0	0	\N	\N	\N	t									2
 103	116	Reservas Estatutarias	t	95	t	1	\N	0	0	\N	\N	\N	t									2
-104	117	Reservas voluntarias	t	95	t	1	\N	0	0	\N	\N	\N	t									2
 105	118	Reservas por capital amortizado	t	95	t	1	\N	0	0	\N	\N	\N	t									2
 100	114	Reservas para acciones de la sociedad dominante	t	95	t	1	\N	0	0	\N	\N	\N	t									2
 102	115	Reservas para acciones propias	t	95	t	1	\N	0	0	\N	\N	\N	t									2
 99	113	Reservas especiales	t	95	t	1	\N	0	0	\N	\N	\N	t									2
-98	112	Reserva legal	t	95	t	1	\N	0	6010.1199999999999	\N	\N	\N	t									2
 109	122	Aportaciones de socios para compensacion de perdidas	t	106	t	1	\N	0	0	\N	\N	\N	t									2
 108	121	Resultados negativos de ejercicios anteriores	t	106	t	1	\N	0	0	\N	\N	\N	t									2
 107	1200000	Remanente	t	106	t	1	\N	0	0	\N	\N	\N	t									2
@@ -1745,12 +1756,10 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 144	165	proveedores de inmovilizado a largo plazo, empresas asociadas	\N	136	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 138	1600	Prestamos a largo plazo de empresas del grupo	\N	137	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 139	1609	Otras deudas a largo plazo con empresas del grupo	\N	137	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-146	170	Deudas a largo plazo con entidades de credito	t	145	t	1	\N	0	0	\N	\N	\N	t									2
 149	171	Deudas a largo plazo	t	145	t	1	\N	0	0	\N	\N	\N	t									2
 150	172	Deudas a largo plazo transformables en subvenciones	t	145	t	1	\N	0	0	\N	\N	\N	t									2
 151	173	Proveedores de inmovilizado a largo plazo	t	145	t	1	\N	0	0	\N	\N	\N	t									2
 152	174	Efectos a pagar a largo plazo	t	145	t	1	\N	0	0	\N	\N	\N	t									2
-147	1700	Prestamos a largo plazo de entidades de credito	t	146	t	1	\N	0	0	\N	\N	\N	t									2
 148	1709	Otras deudas a largo plazo con entidades de credito	t	146	t	1	\N	0	0	\N	\N	\N	t									2
 154	180	Fianzas recibidas a largo plazo	\N	153	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 155	185	Depositos recibidos a largo plazo	\N	153	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
@@ -1773,19 +1782,13 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 176	213	Fondo de comercio	\N	170	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 171	210	Gastos de investigacion y desarrollo	t	170	t	2	\N	0	0	\N	\N	\N	t									5
 178	215	Aplicaciones informaticas	t	170	t	2	\N	0	0	\N	\N	\N	t									5
-175	212	Propiedad industrial	\N	170	\N	2	\N	12020.24	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 172	2100	Gastos de investigacion y desarrollo en proyectos no terminados	t	171	t	2	\N	0	0	\N	\N	\N	t									5
 173	2101	Gastos de investigacion y desarrollo en proyectos terminados	t	171	t	2	\N	0	0	\N	\N	\N	t									5
 184	222	Instalaciones tecnicas	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-190	228	Elementos de transporte	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 189	227	Equipos para proceso de informacion	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-188	226	Mobiliario	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 186	224	Utillaje	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 191	229	Otro inmovilizado material	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 187	225	Otras instalaciones	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-185	223	Maquinaria	\N	181	\N	2	\N	6010.1199999999999	3005.0599999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-182	220	Terrenos y bienes naturales	\N	181	\N	2	\N	6010.1199999999999	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-183	221	Construcciones	\N	181	\N	2	\N	18030.360000000001	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 726	2250002	INMOVILIZADO CASA	t	187	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
 727	2270001	INMOVILIZADO COMPONENTES ORDENADOR	t	189	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
 193	230	Adaptacion de terrenos y de bienes naturales	\N	192	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
@@ -1821,23 +1824,15 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 227	270	Gastos de formalizacion de deudas	\N	226	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 228	271	Gastos por intereses diferidos en valores negociables	\N	226	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 229	272	Gastos por intereses diferidos	\N	226	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-239	282	Amortizacion acumulada del inmovilizado material	\N	230	\N	2	\N	601.00999999999999	5108.6000000000004	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-231	281	Amortizacion acumulada del inmovilizado inmaterial	\N	230	\N	2	\N	0	2163.6399999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 232	2810	Amortizacion acumulada de gastos de investigacion y desarrollo	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 233	2811	Amortizacion acumulada de concesiones administrativas	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-234	2812	Amortizacion acumulada de propiedad industrial	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-235	2813	Amortizacion acumulada de fondo de comercio	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 236	2814	Amortizacion acumulada de derechos de traspaso	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 237	2815	Amortizacion acumulada de aplicaciones informaticas	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 238	2817	Amortizacion acumulada de derechos sobre bienes en regimen de arrendamiento financiero	\N	231	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 240	2821	Amortizacion acumulada de construcciones	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 241	2822	Amortizacion acumulada de instalaciones tecnicas	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-242	2823	Amortizacion acumulada de maquinaria	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 243	2824	Amortizacion acumulada de utillaje	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 244	2825	Amortizacion acumulada de otras instalaciones	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-245	2826	Amortizacion acumulada de mobiliario	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-246	2827	Amortizacion acumulada de equipos para proceso de informacion	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-247	2828	Amortizacion acumulada de elementos de transporte	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 248	2829	Amortizacion acumulada de otro inmovilizado material	\N	239	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 250	291	Provision por depreciacion del inmovilizado inmaterial	\N	249	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 252	293	Provision por depreciacion de valores de renta fija a largo plazo de empresas del grupo	t	249	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
@@ -1846,12 +1841,10 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 259	296	Provision para insolvencias de creditos a largo plazo a empresas asociadas	\N	249	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 257	295	Provision para insolvencias de creditos a largo plazo a empresas del grupo	t	249	t	2	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
 260	298	Provision para insolvencias de creditos a largo plazo	\N	249	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-251	292	Provision por depreciacion del inmovilizado material	\N	249	\N	2	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 253	2935	Provision por depreciacion de valores negociables a largo plazo en empresas del grupo	\N	252	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 255	2941	Provision por depreciacion de participaciones en capital a largo plazo en empresas asociadas	\N	254	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 256	2946	Provision por depreciacion de valores negociables a largo plazo en empresas asociadas	\N	254	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 263	301	Mercaderias B	\N	261	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-262	300	Mercaderias A	\N	261	\N	3	\N	22237.450000000001	10818.219999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 265	310	Materias primas A	\N	264	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 266	311	Materias primas B	\N	264	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 268	320	Elementos y conjuntos incorporables	\N	267	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
@@ -1879,18 +1872,12 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 296	394	Provision por depreciacion de productos semiterminados	\N	291	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 297	395	Provision por depreciacion de productos terminados	\N	291	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 298	396	Provision por depreciacion de subproductos, residuos y materiales recuperados	\N	291	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-292	390	Provision por depreciacion de mercaderias	\N	291	\N	3	\N	1803.04	601.00999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 313	407	Anticipos a proveedores	\N	299	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 304	402	Proveedores, empresas del grupo	t	299	t	4	\N	0	0	\N	\N	\N	t									2
 311	403	Proveedores, empresas asociadas	t	299	t	4	\N	0	0	\N	\N	\N	t									2
 312	406	Embases y embalajes a devolver a proveedores	t	299	t	4	\N	0	0	\N	\N	\N	t									2
-303	401	Proveedores, efectos comerciales a pagar	t	299	t	4	\N	1803.04	601.00999999999999	\N	\N	\N	t									2
 302	4004	Proveedores (moneda extranjera)	t	300	t	4	\N	0	0	\N	\N	\N	t									2
 305	4009	Proveedores, facturas pendientes de recibir o de formalizar	t	300	t	4	\N	0	0	\N	\N	\N	t									2
-301	4000	Proveedores	t	300	t	4	\N	0	0	\N	\N	\N	t									2
-761	4000001	Ganaderias Alfredo	t	301	t	4	\N	0	0	\N	\N	\N	t									2
-764	4000003	Imprenta Sa Taulera	t	301	t	4	\N	0	0	\N	\N	\N	t									2
-762	4000002	Maquinaria Industrial S.A.	t	301	t	4	\N	0	0	\N	\N	\N	t									2
 306	4020	Proveedores, empresas del grupo	t	304	t	4	\N	0	0	\N	\N	\N	t									2
 307	4021	Efectos comerciales a pagar, empresas del grupo	t	304	t	4	\N	0	0	\N	\N	\N	t									2
 308	4024	Proveedores, empresas del grupo (moneda extranjera)	t	304	t	4	\N	0	0	\N	\N	\N	t									2
@@ -1907,12 +1894,8 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 339	433	Clientes, empresas asociadas	\N	323	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 341	436	Envases y embalajes a devolver por clientes	\N	323	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 342	437	Anticipos de clientes	t	323	t	4	\N	0	0	\N	\N	\N	t									2
-340	435	Clientes de dudoso cobro	\N	323	\N	4	\N	1803.04	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-328	431	Clientes, efectos comerciales a pagar	\N	323	\N	4	\N	5709.6099999999997	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-324	430	Clientes	\N	323	\N	4	\N	11652.370000000001	2501.2199999999998	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 326	4304	Clientes (Moneda extranjera)	t	324	t	4	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
 327	4309	Clientes, facturas pendientes de formalizar	\N	324	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-766	4300	Clientes	t	324	t	4	\N	0	0	\N	\N	\N	t									1
 329	4310	Efectos comerciales en cartera	\N	328	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 330	4311	Efectos comerciales descontados	\N	328	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 331	4312	Efectos comerciales en gestion de cobro	\N	328	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
@@ -1939,28 +1922,17 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 364	473	Hacienda Publica, retenciones y pagos a cuenta	\N	357	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 365	474	Impuesto sobre beneficios anticipado y compensacion de perdidas	\N	357	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 375	479	Impuesto sobre beneficios diferido	t	357	t	4	\N	0	0	\N	\N	\N	t									2
-373	476	Organismos de la Seguridad Social, acreedores	t	357	t	4	\N	0	1111.8699999999999	\N	\N	\N	t									2
-363	472	Hacienda Publica, IVA soportado	\N	357	\N	4	\N	588.51999999999998	588.50999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-374	477	Hacienda Publica, IVA repercutido	t	357	t	4	\N	2224.9899999999998	2223.9899999999998	\N	\N	\N	t									2
-368	475	Hacienda Publica, acreedor por conceptos fiscales	t	357	t	4	\N	0	2464.8699999999999	\N	\N	\N	t									2
 359	4700	Hacienda Publica, deudor por IVA	\N	358	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 360	4708	Hacienda Publica, deudor por subvenciones conseguidas	\N	358	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 361	4709	Hacienda Publica, deudor por devolucion de impuestos	\N	358	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-743	4720004	IVA SOPORTADO 4% COMPRAS	\N	363	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-740	4720016	IVA SOPORTADO 16% COMPRAS	\N	363	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 366	4740	Impuesto sobre beneficios anticipado	\N	365	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 367	4746	Credito por perdidas a compensar del ejercicio	\N	365	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 371	4752	Hacienda Publica, acreedor por impuestos sobre sociedades	t	368	t	4	\N	0	0	\N	\N	\N	t									2
 372	4758	Hacienda Publica, acreedor por subvenciones a reintegrar	t	368	t	4	\N	0	0	\N	\N	\N	t									2
-369	4750000	Hacienda Publica, acreedor por IVA	t	368	t	4	\N	0	1563.3499999999999	\N	\N	\N	t									2
-370	4751	Hacienda Publica, acreedor por retenciones practicadas	t	368	t	4	\N	0	901.51999999999998	\N	\N	\N	t									2
-748	4770016	IVA 16% VENTAS	\N	374	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 378	485	Ingresos anticipados	t	376	t	4	\N	0	0	\N	\N	\N	t									2
-377	480	Gastos anticipados	\N	376	\N	4	\N	210.36000000000001	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 381	491	Provision para insolvencias de trafico de empresas del grupo	\N	379	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 382	494	Provision para insolvencias de trafico de empresas asociadas	\N	379	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 383	499	Provision para otras insolvencias de trafico	t	379	t	4	\N	0	0	\N	\N	\N	t									2
-380	490	Provision para insolvencias de trafico	\N	379	\N	4	\N	1803.04	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 385	500	Obligaciones y bonos a corto plazo	\N	384	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 386	501	Obligaciones y bonos convertibles a corto plazo	\N	384	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 387	505	Deudas representadas en otros valores negociables a corto plazo	\N	384	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
@@ -1986,7 +1958,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 416	526	Intereses a corto plazo de deudas con entidades de credito	\N	407	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 415	525	Dividendo activo a pagar	\N	407	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 408	520	Deudas a corto plazo con entidades de credito	t	407	t	5	\N	0	0	\N	\N	\N	t									2
-412	521	Deudas a corto plazo	t	407	t	5	\N	0	0	\N	\N	\N	t									2
 413	523	Proveedores de inmovilizado a corto plazo	t	407	t	5	\N	0	0	\N	\N	\N	t									2
 414	524	Efectos a pagar a corto plazo	t	407	t	5	\N	0	0	\N	\N	\N	t									2
 410	5201	Deudas a corto plazo por credito dispuesto	t	408	t	5	\N	0	0	\N	\N	\N	t									2
@@ -2013,7 +1984,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 442	547	Intereses a corto plazo de creditos	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 443	548	Imposiciones a corto plazo	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 444	549	Desembolsos pendientes sobre acciones a corto plazo	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-432	540	Inversiones financieras temporales en capital	\N	431	\N	5	\N	270.44999999999999	135.22999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 433	5400	Inversiones financieras temporales en acciones con cotizacion en un mercado secundario	\N	432	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 434	5401	Inversiones financieras temporales en acciones sin cotizacion en un mercado secundario	\N	432	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 435	5409	Otras inversiones financieras temporales en capital	\N	432	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
@@ -2034,8 +2004,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 461	566	Depostios constituidos a corto plazo	\N	460	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 468	575	Bancos e instituciones de credito, cuentas de ahorro, moneda extranjera	\N	462	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 467	574	Bancos e instituciones de credito cuentas de ahorro	\N	462	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-466	573	Bancos e instituciones de credito c/c vista, moneda extranjera	t	462	t	5	\N	9788.9799999999996	8627.6399999999994	\N	\N	\N	t									1
-463	570	Caja	t	462	t	5	\N	9856.6000000000004	627.46000000000004	\N	\N	\N	t									1
 756	5730001	SA NOSTRA	t	466	t	5	\N	0	0	\N	\N	\N	t									4
 470	580	Intereses pagados por anticipado	\N	469	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 471	585	Intereses cobrados por anticipado	t	469	t	5	\N	0	0	\N	\N	\N	t									2
@@ -2044,7 +2012,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 475	595	Provision para insolvencias de creditos a corto plazo a empresas del grupo	\N	472	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 476	596	Provision para insolvencias de creditos a corto plazo a empresas asociadas	\N	472	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 478	598	Provision para insolvencias de creditos a corto plazo	\N	472	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-477	597	Provision por depreciacion de valores negociables a corto plazo	\N	472	\N	5	\N	0	120.2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 482	602	Compras de otros aprovisionamientos	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 484	608	Devoluciones de compras y operaciones similares	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 487	6082	Devoluciones de compras de otros aprovisionamientos	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
@@ -2061,7 +2028,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 500	623	Servicios de profesionales independientes	\N	496	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 502	625	Primas de seguros	\N	496	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 506	629	Otros servicios	t	496	t	6	\N	0	0	\N	\N	\N	t									5
-505	628	Suministros	t	496	t	6	\N	0	0	\N	\N	\N	t									5
 746	6280004	SUMINISTRO ADSL	t	505	t	6	\N	0	0	\N	\N	\N	t									5
 752	6280005	Telefonica tef	t	505	t	6	\N	0	0	\N	\N	\N	t									5
 745	6292001	SERVICIOS DE ASESORIA	t	506	t	6	\N	0	0	\N	\N	\N	t									5
@@ -2154,7 +2120,6 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 610	6990	Dotacion a la provision para insolvencias de creditos a corto plazo a empresas del grupo	\N	609	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 611	6991	Dotacion a la provision para insolvencias de creditos a corto plazo a empresas asociadas	\N	609	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 612	6993	Dotacion a la provision para insolvencias de creditos a corto plazo a otras empresas	\N	609	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-626	709	Rappels sobre ventas	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 615	701	Ventas de productos terminados	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 616	702	Ventas de productos semiterminados	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 617	703	Ventas de subproductos y residuos	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
@@ -2246,13 +2211,9 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 717	7990	Exceso de provision para insolvencias de creditos a corto plazo de empresas del grupo	\N	716	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 718	7991	Exceso de provision para insolvencias de creditos a corto plazo de empresas asociadas	\N	716	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
 719	7993	Exceso de provision para insolvencias de creditos a corto plazo de otras empresas	\N	716	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-770	1000000	Capitan Socializado	t	724	t	1	\N	0	0	\N	\N	\N	t									3
-767	4300001	Carniceria Sibuna	t	766	t	4	\N	0	0	\N	\N	\N	t	Carniceria Sibuna	4582398 P	C/ Sa Torreta, 25	971.36.35.68	Pago en efectivo.\nHoras de Reparto:\nL,MX, J : de 16:00 a 19:00	325.2658.35.3565885			1
-768	4300002	SYP - Consum	t	766	t	4	\N	0	0	\N	\N	\N	t									1
-769	4300003	Restaurante Neirol	t	766	t	4	\N	0	0	\N	\N	\N	t									1
-210	25	OTRAS INVERSIONES FINANCIERAS	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
 126	15	EMPRESITOS Y OTRAS EMISIONES ANALOGAS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
 192	23	INMOVILIZACIONES MATERIALES EN CURSO	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+354	46	PERSONAL	\N	\N	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
 507	63	TRIBUTOS	\N	\N	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
 199	24	INVERSIONES FINANCIERAS EN EMPRESAS DEL GRUPO Y ASOCIADAS	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
 223	26	FIANZAS Y DEPOSITOS CONSTITUIDOS A LARGO PLAZO	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
@@ -2277,71 +2238,149 @@ COPY cuenta (idcuenta, codigo, descripcion, imputacion, padre, bloqueada, idgrup
 166	20	GASTOS DE ESTABLECIMIENTO	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
 120	14	PROVISIONES PARA RIESGOS Y GASTOS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
 136	16	DEUDAS A LARGO PLAZO CON EMPRESAS DEL GRUPO Y ASOCIADAS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
-145	17	DEUDAS A LARGO PLAZO POR PRESTAMOS RECIBIDOS Y OTROS CONCEPTOS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
 153	18	FIANZAS Y DEPOSITOS RECIBIDOS A LARGO PLAZO	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
 384	50	EMPRESITOS Y OTRAS EMISIONES ANALOGAS A CORTO PLAZO	t	\N	t	5	\N	0	0	\N	\N	\N	t									0
 393	51	DEUDAS A CORTO PLAZO CON EMPRESAS DEL GRUPO Y ASOCIADAS	t	\N	t	5	\N	0	0	\N	\N	\N	t									0
-407	52	DEUDAS A CORTO PLAZO POR PRESTAMOS RECIBIDOS Y OTROS CONCEPTOS	t	\N	t	5	\N	0	0	\N	\N	\N	t									0
 314	41	ACREEDORES VARIOS	t	\N	t	4	\N	0	0	\N	\N	\N	t									0
 113	13	INGRESOS A DISTRIBUIR EN VARIOS EJERCICIOS	t	\N	t	1	\N	0	0	\N	\N	\N	t									0
 156	19	SITUACIONES TRANSITORIAS DE FINANCIACION	\N	\N	\N	1	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-379	49	PROVISIONES POR OPERACIONES DE TRAFICO	\N	\N	\N	4	\N	1803.04	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-88	10	CAPITAL	t	\N	t	1	\N	0	60101.209999999999	\N	\N	\N	t									0
-95	11	RESERVAS	t	\N	t	1	\N	0	6010.1199999999999	\N	\N	\N	t									0
-249	29	PROVISIONES DE INMOVILIZADO	\N	\N	\N	2	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-472	59	PROVISIONES FINANCIERAS	\N	\N	\N	5	\N	0	120.2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-431	54	OTRAS INVERSIONES FINANCIERAS TEMPORALES	t	\N	t	5	\N	270.44999999999999	135.22999999999999	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
-376	48	AJUSTES POR PERIODIFICACION	\N	\N	\N	4	\N	210.36000000000001	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-291	39	PROVISIONES POR DEPRECIACION DE EXISTENCIAS	\N	\N	\N	3	\N	1803.04	601.00999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-170	21	INMOVILIZACIONES INMATERIALES	t	\N	t	2	\N	12020.24	0	\N	\N	\N	t									0
-181	22	INMOVILIZACIONES MATERIALES	\N	\N	\N	2	\N	30050.599999999999	3005.0599999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-230	28	AMORTIZACION ACUMULADA DEL INMOVILIZADO	\N	\N	\N	2	\N	601.00999999999999	7272.2399999999998	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-261	30	COMERCIALES	\N	\N	\N	3	\N	22237.450000000001	10818.219999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-300	400	Proveedores	t	299	t	4	\N	174.28999999999999	2884.8600000000001	\N	\N	\N	t									2
-323	43	CLIENTES	\N	\N	\N	4	\N	19165.02	4304.2600000000002	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-357	47	ADMINISTRACIONES PUBLICAS	\N	\N	\N	4	\N	2813.5100000000002	6389.2399999999998	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-462	57	TESORERIA	t	\N	t	5	\N	19645.580000000002	9255.1000000000004	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
-299	40	PROVEEDORES	t	\N	t	3	\N	1977.3299999999999	3485.8699999999999	\N	\N	\N	t									0
-687	771	Beneficios procedentes de inmovilizado material	\N	685	\N	7	\N	2139.5999999999999	2139.5999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-504	6270000	Publicidad, propaganda y relaciones publicas	t	496	t	6	\N	420.70999999999998	420.70999999999998	\N	\N	\N	t									1
-480	6000000	Compras de mercaderias	t	479	t	6	\N	1682.8299999999999	1682.8299999999999	\N	\N	\N	t									1
-498	621	Arrendamiento y canones	\N	496	\N	6	\N	643.08000000000004	643.08000000000004	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-620	708	Devoluciones de ventas y operaciones similares	\N	613	\N	7	\N	601.00999999999999	601.00999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-522	642	Seguridad Social a cargo de la empresa	\N	519	\N	6	\N	661.11000000000001	661.11000000000001	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-590	693	Dotacion a la provision de existencias	\N	587	\N	6	\N	601.00999999999999	601.00999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-499	622	Reparaciones y conservaciones	\N	496	\N	6	\N	570.96000000000004	570.96000000000004	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-586	682	Amortizacion del inmovilizado material	\N	583	\N	6	\N	2103.54	2103.54	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-520	640	Sueldos	\N	519	\N	6	\N	6010.1199999999999	6010.1199999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-111	129	Perdidas y ganancias	t	106	t	1	\N	17534.52	15028.309999999999	\N	\N	\N	t									2
-592	694	Dotacion a la provision para insolvencias de trafico	\N	587	\N	6	\N	1803.04	1803.04	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-699	794	Provision para insolvencias de trafico aplicada	t	694	t	7	\N	1803.04	1803.04	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
-614	7000000	Ventas de mercaderias	t	613	t	7	\N	8490.7999999999993	8490.7999999999993	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
-503	6260000	Servicios bancarios y similares	t	496	t	6	\N	3.0099999999999998	3.0099999999999998	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
-698	793	Provision de existencias aplicada	t	694	t	7	\N	1803.04	1803.04	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
-501	624	Transportes	\N	496	\N	6	\N	360.61000000000001	360.61000000000001	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-526	650	Perdidas de creditos comerciales incobrables	t	525	t	6	\N	1202.03	1202.03	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
-585	681	Amortizacion del inmovilizado inmaterial	\N	583	\N	6	\N	961.62	961.62	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-605	698	Dotacion a la provision para valores negociables a corto plazo	\N	587	\N	6	\N	120.2	120.2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-493	610	Variacion de existencias de mercaderias	\N	492	\N	6	\N	11419.23	11419.23	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-488	609	Rappels por compras	\N	479	\N	6	\N	150.25	150.25	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-676	766	Beneficios en valores negociables	\N	655	\N	7	\N	40.57	40.57	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
-685	77	BENEFICIOS PROCEDENTES DEL INMOVILIZADO E INGRESOS EXCEPCIONALES	\N	\N	\N	7	\N	2139.5999999999999	2139.5999999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-519	64	GASTOS DE PERSONAL	\N	\N	\N	6	\N	6671.2299999999996	6671.2299999999996	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-106	12	RESULTADOS PENDIENTES DE APLICACION	t	\N	t	1	\N	17534.52	15028.309999999999	\N	\N	\N	t									0
-613	70	VENTAS DE MERCADERIAS DE PRODUCCION PROPIA, DE SERVICIOS, ETC.	\N	\N	\N	7	\N	9091.8099999999995	9091.8099999999995	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-694	79	EXCESOS Y APLICACIONES DE PROVISIONES	\N	\N	\N	7	\N	3606.0799999999999	3606.0799999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-496	62	SERVICIOS EXTERIORES	\N	\N	\N	6	\N	1998.3699999999999	1998.3699999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-525	65	OTROS GASTOS DE GESTION	\N	\N	\N	6	\N	1202.03	1202.03	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-583	68	DOTACIONES A LAS PROVISIONES	\N	\N	\N	6	\N	3065.1599999999999	3065.1599999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-587	69	DOTACIONES A LAS PROVISIONES	\N	\N	\N	6	\N	2524.25	2524.25	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
-492	61	VARIACION DE EXISTENCIAS	t	\N	t	6	\N	11419.23	11419.23	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
-479	60	COMPRAS	t	\N	t	6	\N	1833.0799999999999	1833.0799999999999	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
-655	76	INGRESOS FINANCIEROS	\N	\N	\N	7	\N	40.57	40.57	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+505	628	Suministros	t	496	t	6	\N	0	1.4210854715202001e-14	\N	\N	\N	t									5
+488	609	Rappels por compras	\N	479	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+501	624	Transportes	\N	496	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+620	708	Devoluciones de ventas y operaciones similares	\N	613	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+592	694	Dotacion a la provision para insolvencias de trafico	\N	587	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+526	650	Perdidas de creditos comerciales incobrables	t	525	t	6	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+340	435	Clientes de dudoso cobro	\N	323	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+380	490	Provision para insolvencias de trafico	\N	379	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+699	794	Provision para insolvencias de trafico aplicada	t	694	t	7	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+522	642	Seguridad Social a cargo de la empresa	\N	519	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+498	621	Arrendamiento y canones	\N	496	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+499	622	Reparaciones y conservaciones	\N	496	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+377	480	Gastos anticipados	\N	376	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+504	6270000	Publicidad, propaganda y relaciones publicas	t	496	t	6	\N	0	0	\N	\N	\N	t									1
+687	771	Beneficios procedentes de inmovilizado material	\N	685	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+503	6260000	Servicios bancarios y similares	t	496	t	6	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+432	540	Inversiones financieras temporales en capital	\N	431	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+676	766	Beneficios en valores negociables	\N	655	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+493	610	Variacion de existencias de mercaderias	\N	492	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+586	682	Amortizacion del inmovilizado material	\N	583	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+585	681	Amortizacion del inmovilizado inmaterial	\N	583	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+605	698	Dotacion a la provision para valores negociables a corto plazo	\N	587	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+477	597	Provision por depreciacion de valores negociables a corto plazo	\N	472	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+698	793	Provision de existencias aplicada	t	694	t	7	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+590	693	Dotacion a la provision de existencias	\N	587	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+292	390	Provision por depreciacion de mercaderias	\N	291	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+98	112	Reserva legal	t	95	t	1	\N	0	0	\N	\N	\N	t									2
+182	220	Terrenos y bienes naturales	\N	181	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+303	401	Proveedores, efectos comerciales a pagar	t	299	t	4	\N	0	0	\N	\N	\N	t									2
+251	292	Provision por depreciacion del inmovilizado material	\N	249	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+466	573	Bancos e instituciones de credito c/c vista, moneda extranjera	t	462	t	5	\N	-1.8189894035458601e-12	-6.8212102632969598e-13	\N	\N	\N	t									1
+328	431	Clientes, efectos comerciales a pagar	\N	323	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+525	65	OTROS GASTOS DE GESTION	\N	\N	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+379	49	PROVISIONES POR OPERACIONES DE TRAFICO	\N	\N	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+376	48	AJUSTES POR PERIODIFICACION	\N	\N	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+685	77	BENEFICIOS PROCEDENTES DEL INMOVILIZADO E INGRESOS EXCEPCIONALES	\N	\N	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+496	62	SERVICIOS EXTERIORES	\N	\N	\N	6	\N	-2.9309887850104102e-13	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+431	54	OTRAS INVERSIONES FINANCIERAS TEMPORALES	t	\N	t	5	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
+655	76	INGRESOS FINANCIEROS	\N	\N	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+492	61	VARIACION DE EXISTENCIAS	t	\N	t	6	\N	0	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
+583	68	DOTACIONES A LAS PROVISIONES	\N	\N	\N	6	\N	-1.13686837721616e-13	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+472	59	PROVISIONES FINANCIERAS	\N	\N	\N	5	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+694	79	EXCESOS Y APLICACIONES DE PROVISIONES	\N	\N	\N	7	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+587	69	DOTACIONES A LAS PROVISIONES	\N	\N	\N	6	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+291	39	PROVISIONES POR DEPRECIACION DE EXISTENCIAS	\N	\N	\N	3	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+249	29	PROVISIONES DE INMOVILIZADO	\N	\N	\N	2	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+777	4070000	Anticipos a Proveedores	\N	313	\N	4	\N	0	0	f	f	\N	\N									1
+781	571	Caja, moneda extranjera	\N	462	\N	5	\N	0	0	f	f	\N	\N									1
+235	2813	Amortizacion acumulada de fondo de comercio	t	231	t	2	\N	0	0	t	t	\N	t									1
+770	1000000	Capitan Socializado	t	724	t	1	\N	0	0	\N	\N	\N	t									3
+724	100	Capital Social	t	88	t	1	\N	0	0	\N	\N	\N	t	Nombre para capital social	A07898990	Jazm�n algo	45 89 09	Pocos comentarios para esta cuenta	2051 21 35 12345678	info@algo.com	http://www.algo.com	3
+210	25	OTRAS INVERSIONES FINANCIERAS	t	\N	t	2	\N	0	0	t	t	\N	t									1
+771	1020001	Capital Social	\N	94	\N	1	\N	0	3005.0599999999999	f	f	\N	\N									3
+772	1290001	Perdidas y Ganancias	t	111	t	1	\N	0	11753.42	f	f	\N	t									2
+791	2828001	Amortización acumulada Vehiculos	\N	247	\N	2	\N	0	1853.25	f	f	\N	\N									1
+773	1700001	Prestamo al Banco Cristiano do Saupablo	\N	147	\N	1	\N	0	30274.27	f	f	\N	\N									2
+774	2120001	Propiedad Industrial	\N	175	\N	2	\N	3524.25	0	f	f	\N	\N									1
+775	2210001	Construcciones	\N	183	\N	2	\N	15657.68	0	f	f	\N	\N									1
+788	2230001	Máquinas	\N	185	\N	2	\N	3258.21	0	f	f	\N	\N									1
+776	2260001	Mobiliario	\N	188	\N	2	\N	4217.1199999999999	0	f	f	\N	\N									1
+790	2280001	Coches empresa	\N	190	\N	2	\N	8723.2800000000007	0	f	f	\N	\N									1
+789	3000001	Existencias mercaderias	\N	262	\N	3	\N	20998.43	0	f	f	\N	\N									1
+769	4300003	Restaurante Neirol	f	766	f	4	\N	214.65000000000001	0	f	f	\N	t		A-3645789							1
+778	5210001	Deudas a corto Plazo	\N	412	\N	5	\N	0	3500	f	f	\N	\N									2
+783	1170001	Reserves Voluntaries	\N	104	\N	1	\N	0	34281.389999999999	f	f	\N	\N									2
+787	2812001	Amortización acumulada propiedad industrial	\N	234	\N	2	\N	0	853.94000000000005	f	f	\N	\N									1
+784	2823000	Amortización Acumulada Maquinária	\N	242	\N	2	\N	0	125.55	f	f	\N	\N									1
+786	2826001	Amortización acumulada muebles	\N	245	\N	2	\N	0	1024.3699999999999	f	f	\N	\N									1
+785	2827001	Amortización ordenadores	t	246	t	2	\N	0	60.340000000000003	f	f	\N	t									1
+94	102	Capital	t	88	t	1	\N	0	3005.0599999999999	\N	\N	\N	t									3
+111	129	Perdidas y ganancias	t	106	t	1	\N	0	11753.42	\N	\N	\N	t									2
+247	2828	Amortizacion acumulada de elementos de transporte	\N	239	\N	2	\N	0	1853.25	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+147	1700	Prestamos a largo plazo de entidades de credito	t	146	t	1	\N	0	30274.27	\N	\N	\N	t									2
+175	212	Propiedad industrial	\N	170	\N	2	\N	3524.25	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+183	221	Construcciones	\N	181	\N	2	\N	15657.68	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+185	223	Maquinaria	\N	181	\N	2	\N	3258.21	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+188	226	Mobiliario	\N	181	\N	2	\N	4217.1199999999999	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+190	228	Elementos de transporte	\N	181	\N	2	\N	8723.2800000000007	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+262	300	Mercaderias A	\N	261	\N	3	\N	20998.43	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+412	521	Deudas a corto plazo	t	407	t	5	\N	0	3500	\N	\N	\N	t									2
+104	117	Reservas voluntarias	t	95	t	1	\N	0	34281.389999999999	\N	\N	\N	t									2
+234	2812	Amortizacion acumulada de propiedad industrial	\N	231	\N	2	\N	0	853.94000000000005	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+242	2823	Amortizacion acumulada de maquinaria	\N	239	\N	2	\N	0	125.55	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+245	2826	Amortizacion acumulada de mobiliario	\N	239	\N	2	\N	0	1024.3699999999999	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+246	2827	Amortizacion acumulada de equipos para proceso de informacion	\N	239	\N	2	\N	0	60.340000000000003	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+88	10	CAPITAL	t	\N	t	1	\N	0	3005.0599999999999	\N	\N	\N	t									0
+106	12	RESULTADOS PENDIENTES DE APLICACION	t	\N	t	1	\N	0	11753.419999999998	\N	\N	\N	t									0
+146	170	Deudas a largo plazo con entidades de credito	t	145	t	1	\N	0	30274.27	\N	\N	\N	t									2
+170	21	INMOVILIZACIONES INMATERIALES	t	\N	t	2	\N	3524.25	0	\N	\N	\N	t									0
+181	22	INMOVILIZACIONES MATERIALES	\N	\N	\N	2	\N	31856.290000000001	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+261	30	COMERCIALES	\N	\N	\N	3	\N	20998.43	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+407	52	DEUDAS A CORTO PLAZO POR PRESTAMOS RECIBIDOS Y OTROS CONCEPTOS	t	\N	t	5	\N	0	3500	\N	\N	\N	t									0
+95	11	RESERVAS	t	\N	t	1	\N	0	34281.389999999999	\N	\N	\N	t									0
+231	281	Amortizacion acumulada del inmovilizado inmaterial	\N	230	\N	2	\N	0	853.94000000000005	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+239	282	Amortizacion acumulada del inmovilizado material	\N	230	\N	2	\N	0	3063.5100000000002	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+145	17	DEUDAS A LARGO PLAZO POR PRESTAMOS RECIBIDOS Y OTROS CONCEPTOS	t	\N	t	1	\N	0	30274.27	\N	\N	\N	t									0
+230	28	AMORTIZACION ACUMULADA DEL INMOVILIZADO	\N	\N	\N	2	\N	0	3917.4499999999998	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+779	5700001	Caixa o Faixa	\N	463	\N	5	\N	52.240000000000002	145.52000000000001	f	f	\N	\N									1
+463	570	Caja, euros	t	462	t	5	\N	52.240000000000911	145.52000000000007	t	t	\N	t									1
+762	4000002	Maquinaria Industrial S.A.	f	301	f	4	\N	0	247.98999999999998	f	f	\N	t		59842253X							2
+761	4000001	Ganaderias Alfredo	f	301	f	4	\N	145.52000000000001	1115.6400000000001	f	f	\N	t		55821154X							2
+792	4751001	H. P. accred. por reteniones practicadas	t	370	t	4	\N	0	86.810000000000002	f	f	\N	t									2
+794	6400001	Nomina Sr. Garcia	\N	520	\N	6	\N	964.5	0	f	f	\N	\N									2
+793	4760001	Seg. social acreedores	t	373	t	4	\N	0	70.670000000000002	f	f	\N	t									2
+370	4751	Hacienda Publica, acreedor por retenciones practicadas	t	368	t	4	\N	0	86.810000000000002	\N	\N	\N	t									2
+520	640	Sueldos	\N	519	\N	6	\N	964.5	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+373	476	Organismos de la Seguridad Social, acreedores	t	357	t	4	\N	0	70.670000000000002	\N	\N	\N	t									2
+519	64	GASTOS DE PERSONAL	\N	\N	\N	6	\N	964.49999999999966	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+764	4000003	Imprenta Sa Taulera	f	301	f	4	\N	0	15956.960000000001	f	f	\N	t		35955425X							2
+480	6000000	Compras de mercaderias	t	479	t	6	\N	12582.390000000001	0	\N	\N	\N	t									1
+301	4000	Proveedores	t	300	t	4	\N	145.52000000000012	17320.590000000004	\N	\N	\N	t									2
+479	60	COMPRAS	t	\N	t	6	\N	12582.390000000001	0	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
+300	400	Proveedores	t	299	t	4	\N	145.52000000000001	17320.590000000004	\N	\N	\N	t									2
+299	40	PROVEEDORES	t	\N	t	3	\N	145.52000000000001	17320.590000000004	\N	\N	\N	t									0
+743	4720004	IVA SOPORTADO 4% COMPRAS	\N	363	\N	4	\N	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+740	4720016	IVA SOPORTADO 16% COMPRAS	\N	363	\N	4	\N	2013.1800000000001	2013.1800000000001	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+363	472	Hacienda Publica, IVA soportado	\N	357	\N	4	\N	2013.180000000001	2013.1800000000001	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+369	4750000	Hacienda Publica, acreedor por IVA	t	368	t	4	\N	192.5	192.5	\N	\N	\N	t									2
+368	475	Hacienda Publica, acreedor por conceptos fiscales	t	357	t	4	\N	192.5	279.3100000000004	\N	\N	\N	t									2
+748	4770016	IVA 16% VENTAS	\N	374	\N	4	\N	2205.6799999999998	2221.6799999999998	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+614	7000000	Ventas de mercaderias	t	613	t	7	\N	0	13885.470000000001	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	1
+767	4300001	Carniceria Sibuna	f	766	f	4	\N	2376.9899999999998	0	f	f	\N	t	Carniceria Sibuna	4582398 P	C/ Sa Torreta, 25	971.36.35.68	Pago en efectivo.\nHoras de Reparto:\nL,MX, J : de 16:00 a 19:00	325.2658.35.3565885			1
+374	477	Hacienda Publica, IVA repercutido	t	357	t	4	\N	2205.6799999999998	2221.6799999999994	\N	\N	\N	t									2
+613	70	VENTAS DE MERCADERIAS DE PRODUCCION PROPIA, DE SERVICIOS, ETC.	\N	\N	\N	7	\N	0	13885.470000000001	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+357	47	ADMINISTRACIONES PUBLICAS	\N	\N	\N	4	\N	4411.3599999999988	4584.8399999999965	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
+782	5720001	Caixa d`estalvis comarcal	t	780	t	5	\N	46540.909999999996	999.52000000000044	f	f	\N	t									1
+768	4300002	SYP - Consum	f	766	f	4	\N	15186.66	15186.66	f	f	\N	t		B-4536468							1
+780	572	Bancos e instituciones de crédito c/c. vista, euros.	\N	462	\N	5	\N	46540.909999999996	999.52000000000044	f	f	\N	\N									1
+766	4300	Clientes	t	324	t	4	\N	17778.299999999999	15186.66	\N	\N	\N	t									1
+462	57	TESORERIA	t	\N	t	5	\N	46593.150000000001	1145.0400000000009	\N	\N	\N	t	\N	\N	\N	\N	\N	\N	\N	\N	0
+324	430	Clientes	\N	323	\N	4	\N	17778.299999999999	15186.66	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	1
+323	43	CLIENTES	\N	\N	\N	4	\N	17778.299999999999	15186.66	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	0
 \.
 
 
 --
--- Data for TOC entry 142 (OID 168241)
+-- Data for TOC entry 143 (OID 249312)
 -- Name: canal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -2354,22 +2393,22 @@ COPY canal (idcanal, descripcion, nombre) FROM stdin;
 
 
 --
--- Data for TOC entry 143 (OID 168246)
+-- Data for TOC entry 144 (OID 249317)
 -- Name: c_coste; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY c_coste (idc_coste, descripcion, nombre, codigo, padre, imputacion, debe, haber) FROM stdin;
+4	Madrid la historica capital del pais. Que pais	Madrid	\N	\N	\N	\N	\N
+5	Escriba su descripcion	Barcelona	\N	\N	\N	\N	\N
+7	Es mi patria chica, mi cosita linda, mi pueblo favorito, mi amor de infancia. Eres tu.	Algaida	\N	\N	\N	\N	\N
+2	Local Palma	Palma	002	\N	\N	\N	\N
 3	Local Alcudia	Alcudia	003	\N	\N	\N	\N
 1	Alaro es un gran pueblo	Alar�	001	\N	\N	\N	\N
-7	Es mi patria chica, mi cosita linda, mi pueblo favorito, mi amor de infancia. Eres tu.	Algaida	\N	\N	\N	\N	\N
-5	Escriba su descripcion	Barcelona	\N	\N	\N	\N	\N
-2	Local Palma	Palma	002	\N	\N	\N	\N
-4	Madrid la historica capital del pais. Que pais	Madrid	\N	\N	\N	\N	\N
 \.
 
 
 --
--- Data for TOC entry 144 (OID 168251)
+-- Data for TOC entry 145 (OID 249322)
 -- Name: acumulado_c_coste; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -3344,6 +3383,7 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 993	498	2	0	0
 994	499	2	0	0
 995	500	2	0	0
+996	501	2	0	0
 997	502	2	0	0
 998	504	2	0	0
 999	505	2	0	0
@@ -3583,6 +3623,7 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 1235	415	2	0	0
 1236	156	2	0	0
 1238	261	2	0	0
+1239	496	2	0	0
 1240	328	2	0	0
 1241	637	2	0	0
 1242	479	2	0	0
@@ -5251,6 +5292,7 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 2936	500	2	0	0
 2937	500	3	0	0
 2938	501	1	0	0
+2939	501	2	0	0
 2940	501	3	0	0
 2941	502	1	0	0
 2942	502	2	0	0
@@ -6062,6 +6104,7 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 3817	300	1	0	0
 3818	300	2	0	0
 3820	496	1	0	0
+3821	496	2	0	0
 3822	496	3	0	0
 3824	315	2	0	0
 3825	315	3	0	0
@@ -6423,6 +6466,8 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 4195	522	4	0	0
 4196	523	4	0	0
 4197	524	4	0	0
+4198	525	4	0	0
+4199	526	4	0	0
 4200	527	4	0	0
 4201	528	4	0	0
 4202	529	4	0	0
@@ -6577,8 +6622,10 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 4351	691	4	0	0
 4352	692	4	0	0
 4353	693	4	0	0
+4354	694	4	0	0
 4355	696	4	0	0
 4356	697	4	0	0
+4357	699	4	0	0
 4358	698	4	0	0
 4359	695	4	0	0
 4360	701	4	0	0
@@ -6686,7 +6733,9 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 4463	505	4	0	0
 4464	496	4	0	0
 4465	479	4	0	0
+4466	614	4	0	0
 4467	748	4	0	0
+4468	613	4	0	0
 4469	374	4	0	0
 4470	299	4	0	0
 4471	467	4	0	0
@@ -7200,9 +7249,11 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 4982	691	5	0	0
 4983	692	5	0	0
 4984	693	5	0	0
+4985	694	5	0	0
 4986	696	5	0	0
 4987	697	5	0	0
 4988	699	5	0	0
+4989	698	5	0	0
 4990	695	5	0	0
 4991	701	5	0	0
 4992	702	5	0	0
@@ -7885,6 +7936,7 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 6310	170	7	0	0
 6311	743	7	0	0
 6312	746	7	0	0
+6313	503	7	0	0
 6314	188	7	0	0
 6315	399	7	0	0
 6316	186	7	0	0
@@ -7928,11 +7980,14 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 6355	159	7	0	0
 6356	156	7	0	0
 6357	479	7	0	0
+6358	614	7	0	0
 6359	742	7	0	0
 6360	745	7	0	0
 6361	752	7	0	0
+6362	613	7	0	0
 6363	506	7	0	0
 6364	505	7	0	0
+6365	496	7	0	0
 6366	755	7	0	0
 6367	107	7	0	0
 6368	111	7	0	0
@@ -8058,27 +8113,155 @@ COPY acumulado_c_coste (idacumulado_c_coste, idcuenta, idc_coste, debe, haber) F
 6479	770	2	0	0
 6480	770	3	0	0
 6481	770	1	0	0
-4466	614	4	0	0
-4468	613	4	0	0
-4357	699	4	0	0
-4354	694	4	0	0
-6358	614	7	0	0
-6362	613	7	0	0
-6313	503	7	0	0
-6365	496	7	0	0
-4989	698	5	1803.04	0
-4985	694	5	1803.04	0
-996	501	2	0	360.61000000000001
-2939	501	2	0	360.61000000000001
-1239	496	2	0	360.61000000000001
-3821	496	2	0	360.61000000000001
-4199	526	4	0	1202.03
-4198	525	4	0	1202.03
+6482	771	4	0	0
+6483	771	5	0	0
+6484	771	7	0	0
+6485	771	2	0	0
+6486	771	3	0	0
+6487	771	1	0	0
+6488	772	4	0	0
+6489	772	5	0	0
+6490	772	7	0	0
+6491	772	2	0	0
+6492	772	3	0	0
+6493	772	1	0	0
+6494	773	4	0	0
+6495	773	5	0	0
+6496	773	7	0	0
+6497	773	2	0	0
+6498	773	3	0	0
+6499	773	1	0	0
+6500	774	4	0	0
+6501	774	5	0	0
+6502	774	7	0	0
+6503	774	2	0	0
+6504	774	3	0	0
+6505	774	1	0	0
+6506	775	4	0	0
+6507	775	5	0	0
+6508	775	7	0	0
+6509	775	2	0	0
+6510	775	3	0	0
+6511	775	1	0	0
+6512	776	4	0	0
+6513	776	5	0	0
+6514	776	7	0	0
+6515	776	2	0	0
+6516	776	3	0	0
+6517	776	1	0	0
+6518	777	4	0	0
+6519	777	5	0	0
+6520	777	7	0	0
+6521	777	2	0	0
+6522	777	3	0	0
+6523	777	1	0	0
+6524	778	4	0	0
+6525	778	5	0	0
+6526	778	7	0	0
+6527	778	2	0	0
+6528	778	3	0	0
+6529	778	1	0	0
+6530	779	4	0	0
+6531	779	5	0	0
+6532	779	7	0	0
+6533	779	2	0	0
+6534	779	3	0	0
+6535	779	1	0	0
+6536	780	4	0	0
+6537	780	5	0	0
+6538	780	7	0	0
+6539	780	2	0	0
+6540	780	3	0	0
+6541	780	1	0	0
+6542	781	4	0	0
+6543	781	5	0	0
+6544	781	7	0	0
+6545	781	2	0	0
+6546	781	3	0	0
+6547	781	1	0	0
+6548	782	4	0	0
+6549	782	5	0	0
+6550	782	7	0	0
+6551	782	2	0	0
+6552	782	3	0	0
+6553	782	1	0	0
+6554	783	4	0	0
+6555	783	5	0	0
+6556	783	7	0	0
+6557	783	2	0	0
+6558	783	3	0	0
+6559	783	1	0	0
+6560	784	4	0	0
+6561	784	5	0	0
+6562	784	7	0	0
+6563	784	2	0	0
+6564	784	3	0	0
+6565	784	1	0	0
+6566	785	4	0	0
+6567	785	5	0	0
+6568	785	7	0	0
+6569	785	2	0	0
+6570	785	3	0	0
+6571	785	1	0	0
+6572	786	4	0	0
+6573	786	5	0	0
+6574	786	7	0	0
+6575	786	2	0	0
+6576	786	3	0	0
+6577	786	1	0	0
+6578	787	4	0	0
+6579	787	5	0	0
+6580	787	7	0	0
+6581	787	2	0	0
+6582	787	3	0	0
+6583	787	1	0	0
+6584	788	4	0	0
+6585	788	5	0	0
+6586	788	7	0	0
+6587	788	2	0	0
+6588	788	3	0	0
+6589	788	1	0	0
+6590	789	4	0	0
+6591	789	5	0	0
+6592	789	7	0	0
+6593	789	2	0	0
+6594	789	3	0	0
+6595	789	1	0	0
+6596	790	4	0	0
+6597	790	5	0	0
+6598	790	7	0	0
+6599	790	2	0	0
+6600	790	3	0	0
+6601	790	1	0	0
+6602	791	4	0	0
+6603	791	5	0	0
+6604	791	7	0	0
+6605	791	2	0	0
+6606	791	3	0	0
+6607	791	1	0	0
+6608	792	4	0	0
+6609	792	5	0	0
+6610	792	7	0	0
+6611	792	2	0	0
+6612	792	3	0	0
+6613	792	1	0	0
+6614	793	4	0	0
+6615	793	5	0	0
+6616	793	7	0	0
+6617	793	2	0	0
+6618	793	3	0	0
+6619	793	1	0	0
+6620	794	4	0	0
+6621	794	5	0	0
+6622	794	7	0	0
+6623	794	2	0	0
+6624	794	3	0	0
+6625	794	1	0	0
 \.
 
 
 --
--- Data for TOC entry 145 (OID 168256)
+-- Data for TOC entry 146 (OID 249327)
 -- Name: acumulado_canal; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -8423,6 +8606,7 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 340	498	1	0	0
 341	499	1	0	0
 342	500	1	0	0
+343	501	1	0	0
 344	502	1	0	0
 345	504	1	0	0
 346	508	1	0	0
@@ -8498,10 +8682,14 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 416	580	1	0	0
 417	581	1	0	0
 418	582	1	0	0
+419	583	1	0	0
 420	584	1	0	0
+421	585	1	0	0
 422	586	1	0	0
+423	587	1	0	0
 424	588	1	0	0
 425	589	1	0	0
+426	590	1	0	0
 427	591	1	0	0
 428	592	1	0	0
 429	593	1	0	0
@@ -8515,6 +8703,7 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 437	602	1	0	0
 438	603	1	0	0
 439	604	1	0	0
+440	605	1	0	0
 441	606	1	0	0
 442	607	1	0	0
 443	608	1	0	0
@@ -8578,6 +8767,7 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 501	673	1	0	0
 502	674	1	0	0
 503	675	1	0	0
+504	676	1	0	0
 505	677	1	0	0
 506	678	1	0	0
 507	679	1	0	0
@@ -8592,8 +8782,10 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 516	691	1	0	0
 517	692	1	0	0
 518	693	1	0	0
+519	694	1	0	0
 520	696	1	0	0
 521	697	1	0	0
+522	699	1	0	0
 523	698	1	0	0
 524	695	1	0	0
 525	701	1	0	0
@@ -8642,6 +8834,7 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 568	311	1	0	0
 569	415	1	0	0
 570	166	1	0	0
+571	655	1	0	0
 572	407	1	0	0
 573	332	1	0	0
 574	328	1	0	0
@@ -8678,6 +8871,7 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 607	318	1	0	0
 608	613	1	0	0
 609	462	1	0	0
+610	496	1	0	0
 611	189	1	0	0
 612	107	1	0	0
 613	368	1	0	0
@@ -9655,10 +9849,14 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 5388	516	9	0	0
 5389	517	9	0	0
 5390	518	9	0	0
+5391	519	9	0	0
 5392	520	9	0	0
 5393	521	9	0	0
+5394	522	9	0	0
 5395	523	9	0	0
 5396	524	9	0	0
+5397	525	9	0	0
+5398	526	9	0	0
 5399	527	9	0	0
 5400	528	9	0	0
 5401	529	9	0	0
@@ -9713,7 +9911,9 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 5450	580	9	0	0
 5451	581	9	0	0
 5452	582	9	0	0
+5453	583	9	0	0
 5454	584	9	0	0
+5455	585	9	0	0
 5456	586	9	0	0
 5457	587	9	0	0
 5458	588	9	0	0
@@ -10248,9 +10448,12 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 5994	485	10	0	0
 5995	486	10	0	0
 5996	487	10	0	0
+5997	488	10	0	0
 5998	489	10	0	0
 5999	490	10	0	0
 6000	491	10	0	0
+6001	492	10	0	0
+6002	493	10	0	0
 6003	494	10	0	0
 6004	495	10	0	0
 6005	497	10	0	0
@@ -10418,6 +10621,7 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 6167	673	10	0	0
 6168	674	10	0	0
 6169	675	10	0	0
+6170	676	10	0	0
 6171	677	10	0	0
 6172	678	10	0	0
 6173	679	10	0	0
@@ -10432,8 +10636,10 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 6182	691	10	0	0
 6183	692	10	0	0
 6184	693	10	0	0
+6185	694	10	0	0
 6186	696	10	0	0
 6187	697	10	0	0
+6188	699	10	0	0
 6189	698	10	0	0
 6190	695	10	0	0
 6191	701	10	0	0
@@ -10474,6 +10680,7 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 6226	683	10	0	0
 6227	415	10	0	0
 6228	166	10	0	0
+6229	655	10	0	0
 6230	332	10	0	0
 6231	328	10	0	0
 6232	263	10	0	0
@@ -10529,6 +10736,7 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 6283	323	10	0	0
 6284	159	10	0	0
 6285	156	10	0	0
+6286	479	10	0	0
 6287	614	10	0	0
 6288	742	10	0	0
 6289	745	10	0	0
@@ -10606,36 +10814,107 @@ COPY acumulado_canal (idacumulado_canal, idcuenta, idcanal, debe, haber) FROM st
 6378	770	4	0	0
 6379	770	9	0	0
 6380	770	10	0	0
-522	699	1	0	0
-519	694	1	0	0
-6188	699	10	0	0
-6185	694	10	0	0
-426	590	1	0	0
-5455	585	9	0	0
-343	501	1	0	0
-504	676	1	0	0
-5394	522	9	0	0
-5398	526	9	0	0
-5453	583	9	0	0
-610	496	1	0	0
-571	655	1	0	0
-5391	519	9	0	0
-5397	525	9	0	0
-421	585	1	0	961.62
-440	605	1	0	120.2
-6002	493	10	601.00999999999999	0
-5997	488	10	150.25	0
-6170	676	10	40.57	0
-419	583	1	0	961.62
-423	587	1	0	120.2
-6001	492	10	601.00999999999999	0
-6286	479	10	150.25	0
-6229	655	10	40.57	0
+6381	771	1	0	0
+6382	771	4	0	0
+6383	771	9	0	0
+6384	771	10	0	0
+6385	772	1	0	0
+6386	772	4	0	0
+6387	772	9	0	0
+6388	772	10	0	0
+6389	773	1	0	0
+6390	773	4	0	0
+6391	773	9	0	0
+6392	773	10	0	0
+6393	774	1	0	0
+6394	774	4	0	0
+6395	774	9	0	0
+6396	774	10	0	0
+6397	775	1	0	0
+6398	775	4	0	0
+6399	775	9	0	0
+6400	775	10	0	0
+6401	776	1	0	0
+6402	776	4	0	0
+6403	776	9	0	0
+6404	776	10	0	0
+6405	777	1	0	0
+6406	777	4	0	0
+6407	777	9	0	0
+6408	777	10	0	0
+6409	778	1	0	0
+6410	778	4	0	0
+6411	778	9	0	0
+6412	778	10	0	0
+6413	779	1	0	0
+6414	779	4	0	0
+6415	779	9	0	0
+6416	779	10	0	0
+6417	780	1	0	0
+6418	780	4	0	0
+6419	780	9	0	0
+6420	780	10	0	0
+6421	781	1	0	0
+6422	781	4	0	0
+6423	781	9	0	0
+6424	781	10	0	0
+6425	782	1	0	0
+6426	782	4	0	0
+6427	782	9	0	0
+6428	782	10	0	0
+6429	783	1	0	0
+6430	783	4	0	0
+6431	783	9	0	0
+6432	783	10	0	0
+6433	784	1	0	0
+6434	784	4	0	0
+6435	784	9	0	0
+6436	784	10	0	0
+6437	785	1	0	0
+6438	785	4	0	0
+6439	785	9	0	0
+6440	785	10	0	0
+6441	786	1	0	0
+6442	786	4	0	0
+6443	786	9	0	0
+6444	786	10	0	0
+6445	787	1	0	0
+6446	787	4	0	0
+6447	787	9	0	0
+6448	787	10	0	0
+6449	788	1	0	0
+6450	788	4	0	0
+6451	788	9	0	0
+6452	788	10	0	0
+6453	789	1	0	0
+6454	789	4	0	0
+6455	789	9	0	0
+6456	789	10	0	0
+6457	790	1	0	0
+6458	790	4	0	0
+6459	790	9	0	0
+6460	790	10	0	0
+6461	791	1	0	0
+6462	791	4	0	0
+6463	791	9	0	0
+6464	791	10	0	0
+6465	792	1	0	0
+6466	792	4	0	0
+6467	792	9	0	0
+6468	792	10	0	0
+6469	793	1	0	0
+6470	793	4	0	0
+6471	793	9	0	0
+6472	793	10	0	0
+6473	794	1	0	0
+6474	794	4	0	0
+6475	794	9	0	0
+6476	794	10	0	0
 \.
 
 
 --
--- Data for TOC entry 146 (OID 168261)
+-- Data for TOC entry 147 (OID 249332)
 -- Name: diario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10644,328 +10923,185 @@ COPY diario (iddiario, descripcion) FROM stdin;
 
 
 --
--- Data for TOC entry 147 (OID 168266)
+-- Data for TOC entry 148 (OID 249337)
 -- Name: asiento; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY asiento (idasiento, descripcion, fecha, comentariosasiento, ordenasiento) FROM stdin;
-1	01/01/2003	2003-01-01 00:00:00+01	\N	1
-2	01/01/2003	2003-01-01 00:00:00+01	\N	2
-3	01/01/2003	2003-01-01 00:00:00+01	\N	3
-4	01/01/2003	2003-01-01 00:00:00+01	\N	4
-5	01/01/2003	2003-01-01 00:00:00+01	\N	5
-6	01/01/2003	2003-01-01 00:00:00+01	\N	6
-7	01/01/2003	2003-01-01 00:00:00+01	\N	7
-8	01/01/2003	2003-01-01 00:00:00+01	\N	8
-9	01/01/2003	2003-01-01 00:00:00+01	\N	9
-10	01/01/2003	2003-01-01 00:00:00+01	\N	10
-11	01/01/2003	2003-01-01 00:00:00+01	\N	11
-12	01/01/2003	2003-01-01 00:00:00+01	\N	12
-13	01/01/2003	2003-01-01 00:00:00+01	\N	13
-14	01/01/2003	2003-01-01 00:00:00+01	\N	14
-15	01/01/2003	2003-01-01 00:00:00+01	\N	15
-16	01/01/2003	2003-01-01 00:00:00+01	\N	16
-17	01/01/2003	2003-01-01 00:00:00+01	\N	17
-18	01/01/2003	2003-01-01 00:00:00+01	\N	18
-19	01/01/2003	2003-01-01 00:00:00+01	\N	19
-20	01/01/2003	2003-01-01 00:00:00+01	\N	20
-21	01/01/2003	2003-01-01 00:00:00+01	\N	21
-22	01/01/2003	2003-01-01 00:00:00+01	\N	22
-23	01/01/2003	2003-01-01 00:00:00+01	\N	23
-24	01/01/2003	2003-01-01 00:00:00+01	\N	24
-25	01/01/2003	2003-01-01 00:00:00+01	\N	25
-26	01/01/2003	2003-05-24 00:00:00+02	\N	26
+COPY asiento (idasiento, descripcion, fecha, comentariosasiento, ordenasiento, clase) FROM stdin;
+2	10/01/2004	2004-01-10 00:00:00+01	\N	2	1
+3	12/01/2004	2004-01-12 00:00:00+01	\N	3	1
+1	ASIENTO APERTURA	2004-01-01 00:00:00+01		1	0
+10	16/01/2004	2004-01-16 00:00:00+01	\N	4	1
+8	Nómina Sr. Garcia	2004-01-31 00:00:00+01		5	1
+4	Aquest era el 6	2004-02-01 00:00:00+01	i ara serà el 9	6	1
+5	03/02/2004	2004-02-03 00:00:00+01		8	1
+12	Pago IVA primer Trimestre 2004	2004-03-31 00:00:00+02		10	1
+6	pago factura.	2004-04-04 00:00:00+02	Este es un ejemplo del pago de una factura	12	1
+7	Cobro Factura Nº 1	2004-04-05 00:00:00+02		13	1
+13	Factura Nº 2	2004-02-02 00:00:00+01		7	1
+11	Liquidación IVA primer trimestre 2004	2004-03-31 00:00:00+02	Asiento numero 9	9	1
+9	Factura de Venta Nº 3	2004-04-04 00:00:00+02		11	1
 \.
 
 
 --
--- Data for TOC entry 148 (OID 168274)
+-- Data for TOC entry 149 (OID 249345)
 -- Name: apunte; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY apunte (idapunte, codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idtipoiva, orden, punteo) FROM stdin;
-2910	\N	2	\N	2003-01-01 00:00:00+01	Compra de Mercdaderias.	363	\N	269.25999999999999	0	300	\N	\N	\N	\N	\N	1	f
-2911	\N	2	\N	2003-01-01 00:00:00+01	Compra de Mercdaderias.	463	\N	0	209.15000000000001	480	\N	\N	\N	\N	\N	3	f
-2912	\N	2	\N	2003-01-01 00:00:00+01	Compra de Mercdaderias.	300	\N	0	1742.9400000000001	480	\N	\N	\N	\N	\N	2	f
-2913	\N	2	\N	2003-01-01 00:00:00+01	Compra de Mercdaderias.	480	\N	1682.8299999999999	0	300	\N	\N	\N	\N	\N	0	f
-2930	\N	3	\N	2003-01-01 00:00:00+01	Rappels por compras	300	\N	174.28999999999999	0	488	\N	\N	\N	\N	\N	0	f
-2931	\N	3	\N	2003-01-01 00:00:00+01	Rappels por compras	488	\N	0	150.25	300	\N	\N	\N	\N	\N	1	f
-2932	\N	3	\N	2003-01-01 00:00:00+01	Rappels por compras	363	\N	0	24.039999999999999	300	\N	\N	\N	\N	\N	2	f
-2933	\N	4	\N	2003-01-01 00:00:00+01	Venta de Mercaderias	324	\N	9849.3299999999999	0	614	\N	\N	\N	\N	\N	0	f
-2934	\N	4	\N	2003-01-01 00:00:00+01	Venta de Mercaderias	614	\N	0	8490.7999999999993	324	\N	\N	\N	\N	\N	1	f
-2935	\N	4	\N	2003-01-01 00:00:00+01	Venta de Mercaderias	374	\N	0	1358.53	324	\N	\N	\N	\N	\N	2	f
-2936	\N	5	\N	2003-01-01 00:00:00+01	Transportes	501	\N	360.61000000000001	0	463	\N	\N	\N	\N	\N	0	f
-2937	\N	5	\N	2003-01-01 00:00:00+01	Transportes	363	\N	57.700000000000003	0	463	\N	\N	\N	\N	\N	1	f
-2938	\N	5	\N	2003-01-01 00:00:00+01	Transportes	463	\N	0	418.31	501	\N	\N	\N	\N	\N	2	f
-2939	\N	6	\N	2003-01-01 00:00:00+01	Devoluciones de Ventas	620	\N	601.00999999999999	0	324	\N	\N	\N	\N	\N	0	f
-2940	\N	6	\N	2003-01-01 00:00:00+01	Devoluciones de Ventas	374	\N	97.170000000000002	0	324	\N	\N	\N	\N	\N	1	f
-2941	\N	6	\N	2003-01-01 00:00:00+01	Devoluciones de Ventas	324	\N	0	698.17999999999995	620	\N	\N	\N	\N	\N	2	f
-2942	\N	7	\N	2003-01-01 00:00:00+01	Clientes de dudoso cobro	340	\N	1803.04	0	324	\N	\N	\N	\N	\N	0	f
-2943	\N	7	\N	2003-01-01 00:00:00+01	Clientes de dudoso cobro	324	\N	0	1803.04	340	\N	\N	\N	\N	\N	1	f
-2944	\N	8	\N	2003-01-01 00:00:00+01	Multas	592	\N	1803.04	0	380	\N	\N	\N	\N	\N	0	f
-2945	\N	8	\N	2003-01-01 00:00:00+01	Multas	380	\N	0	1803.04	592	\N	\N	\N	\N	\N	1	f
-2946	\N	9	\N	2003-01-01 00:00:00+01	bancos	466	\N	601.00999999999999	0	340	\N	\N	\N	\N	\N	0	f
-2947	\N	9	\N	2003-01-01 00:00:00+01	bancos	526	\N	1202.03	0	340	\N	\N	\N	\N	\N	1	f
-2948	\N	9	\N	2003-01-01 00:00:00+01	bancos	340	\N	0	1803.04	526	\N	\N	\N	\N	\N	2	f
-2949	\N	10	\N	2003-01-01 00:00:00+01	multas	380	\N	1803.04	0	699	\N	\N	\N	\N	\N	0	f
-2950	\N	10	\N	2003-01-01 00:00:00+01	multas	699	\N	0	1803.04	380	\N	\N	\N	\N	\N	1	f
-2951	\N	11	\N	2003-01-01 00:00:00+01	sueldos	520	\N	6010.1199999999999	0	466	\N	\N	\N	\N	\N	0	f
-2952	\N	11	\N	2003-01-01 00:00:00+01	sueldos	522	\N	661.11000000000001	0	466	\N	\N	\N	\N	\N	1	f
-2953	\N	11	\N	2003-01-01 00:00:00+01	sueldos	370	\N	0	901.51999999999998	520	\N	\N	\N	\N	\N	2	f
-2954	\N	11	\N	2003-01-01 00:00:00+01	sueldos	373	\N	0	1111.8699999999999	520	\N	\N	\N	\N	\N	3	f
-2955	\N	11	\N	2003-01-01 00:00:00+01	sueldos	466	\N	0	4657.8400000000001	520	\N	\N	\N	\N	\N	4	f
-2956	\N	12	\N	2003-01-01 00:00:00+01	arrendamientos	498	\N	643.08000000000004	0	466	\N	\N	\N	\N	\N	0	f
-2957	\N	12	\N	2003-01-01 00:00:00+01	arrendamientos	499	\N	570.96000000000004	0	466	\N	\N	\N	\N	\N	1	f
-2958	\N	12	\N	2003-01-01 00:00:00+01	arrendamientos	504	\N	420.70999999999998	0	466	\N	\N	\N	\N	\N	2	f
-2959	\N	12	\N	2003-01-01 00:00:00+01	arrendamientos	363	\N	261.56	0	466	\N	\N	\N	\N	\N	3	f
-2960	\N	12	\N	2003-01-01 00:00:00+01	arrendamientos	466	\N	0	1896.3099999999999	498	\N	\N	\N	\N	\N	4	f
-2963	\N	13	\N	2003-01-01 00:00:00+01	publicidad	377	\N	210.36000000000001	0	504	\N	\N	\N	\N	\N	0	f
-2964	\N	13	\N	2003-01-01 00:00:00+01	publicidad	504	\N	0	210.36000000000001	377	\N	\N	\N	\N	\N	1	f
-2965	\N	14	\N	2003-01-01 00:00:00+01	caja	463	\N	5409.1099999999997	0	185	\N	\N	\N	\N	\N	0	f
-2966	\N	14	\N	2003-01-01 00:00:00+01	caja	239	\N	601.00999999999999	0	185	\N	\N	\N	\N	\N	1	f
-2967	\N	14	\N	2003-01-01 00:00:00+01	caja	185	\N	0	3005.0599999999999	463	\N	\N	\N	\N	\N	2	f
-2968	\N	14	\N	2003-01-01 00:00:00+01	caja	374	\N	0	865.46000000000004	463	\N	\N	\N	\N	\N	3	f
-2969	\N	14	\N	2003-01-01 00:00:00+01	caja	687	\N	0	2139.5999999999999	463	\N	\N	\N	\N	\N	4	f
-2970	\N	15	\N	2003-01-01 00:00:00+01	inversiones	432	\N	270.44999999999999	0	466	\N	\N	\N	\N	\N	0	f
-2971	\N	15	\N	2003-01-01 00:00:00+01	inversiones	466	\N	0	270.44999999999999	432	\N	\N	\N	\N	\N	1	f
-2972	\N	16	\N	2003-01-01 00:00:00+01	bancos	466	\N	172.78999999999999	0	432	\N	\N	\N	\N	\N	0	f
-2973	\N	16	\N	2003-01-01 00:00:00+01	bancos	503	\N	3.0099999999999998	0	432	\N	\N	\N	\N	\N	1	f
-2974	\N	16	\N	2003-01-01 00:00:00+01	bancos	432	\N	0	135.22999999999999	466	\N	\N	\N	\N	\N	2	f
-2975	\N	16	\N	2003-01-01 00:00:00+01	bancos	676	\N	0	40.57	466	\N	\N	\N	\N	\N	3	f
-2976	\N	17	\N	2003-01-01 00:00:00+01	proveedores	303	\N	1803.04	0	466	\N	\N	\N	\N	\N	0	f
-2977	\N	17	\N	2003-01-01 00:00:00+01	proveedores	466	\N	0	1803.04	303	\N	\N	\N	\N	\N	1	f
-2978	\N	18	\N	2003-01-01 00:00:00+01	inventario	493	\N	10818.219999999999	0	262	\N	\N	\N	\N	\N	0	f
-2979	\N	18	\N	2003-01-01 00:00:00+01	inventario	262	\N	0	10818.219999999999	493	\N	\N	\N	\N	\N	1	f
-2980	\N	19	\N	2003-01-01 00:00:00+01	inventario	262	\N	11419.23	0	493	\N	\N	\N	\N	\N	0	f
-2981	\N	19	\N	2003-01-01 00:00:00+01	inventario	493	\N	0	11419.23	262	\N	\N	\N	\N	\N	1	f
-2982	\N	20	\N	2003-01-01 00:00:00+01	amortizaciones	586	\N	2103.54	0	239	\N	\N	\N	\N	\N	0	f
-2983	\N	20	\N	2003-01-01 00:00:00+01	amortizaciones	239	\N	0	2103.54	586	\N	\N	\N	\N	\N	1	f
-2984	\N	21	\N	2003-01-01 00:00:00+01	amortizaciones	585	\N	961.62	0	231	\N	\N	\N	\N	\N	0	f
-2985	\N	21	\N	2003-01-01 00:00:00+01	amortizaciones	231	\N	0	961.62	585	\N	\N	\N	\N	\N	1	f
-2986	\N	22	\N	2003-01-01 00:00:00+01	valores	605	\N	120.2	0	477	\N	\N	\N	\N	\N	0	f
-2987	\N	22	\N	2003-01-01 00:00:00+01	valores	477	\N	0	120.2	605	\N	\N	\N	\N	\N	1	f
-2988	\N	23	\N	2003-01-01 00:00:00+01	depreciaciones	292	\N	1803.04	0	698	\N	\N	\N	\N	\N	0	f
-2989	\N	23	\N	2003-01-01 00:00:00+01	depreciaciones	698	\N	0	1803.04	292	\N	\N	\N	\N	\N	1	f
-2990	\N	24	\N	2003-01-01 00:00:00+01	provisiones	590	\N	601.00999999999999	0	292	\N	\N	\N	\N	\N	0	f
-2991	\N	24	\N	2003-01-01 00:00:00+01	provisiones	292	\N	0	601.00999999999999	590	\N	\N	\N	\N	\N	1	f
-2992	\N	25	\N	2003-01-01 00:00:00+01	ivas	374	\N	2127.8200000000002	0	369	\N	\N	\N	\N	\N	0	f
-2993	\N	25	\N	2003-01-01 00:00:00+01	ivas	363	\N	0	564.47000000000003	374	\N	\N	\N	\N	\N	1	f
-2994	\N	25	\N	2003-01-01 00:00:00+01	ivas	369	\N	0	1563.3499999999999	374	\N	\N	\N	\N	\N	2	f
-3084	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	724	\N	0	60101.209999999999	183	\N	\N	\N	\N	\N	9	f
-3085	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	239	\N	0	3005.0599999999999	183	\N	\N	\N	\N	\N	13	f
-3086	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	463	\N	4447.4899999999998	0	724	\N	\N	\N	\N	\N	8	f
-3087	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	98	\N	0	6010.1199999999999	183	\N	\N	\N	\N	\N	10	f
-3088	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	183	\N	18030.360000000001	0	724	\N	\N	\N	\N	\N	1	f
-3089	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	182	\N	6010.1199999999999	0	724	\N	\N	\N	\N	\N	0	f
-3090	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	300	\N	0	1141.9200000000001	183	\N	\N	\N	\N	\N	11	f
-3091	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	303	\N	0	601.00999999999999	183	\N	\N	\N	\N	\N	12	f
-3092	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	231	\N	0	1202.02	183	\N	\N	\N	\N	\N	14	f
-3093	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	251	\N	0	1803.04	183	\N	\N	\N	\N	\N	15	f
-3094	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	466	\N	9015.1800000000003	0	724	\N	\N	\N	\N	\N	7	f
-3095	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	262	\N	10818.219999999999	0	724	\N	\N	\N	\N	\N	4	f
-3096	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	328	\N	5709.6099999999997	0	724	\N	\N	\N	\N	\N	5	f
-3097	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	324	\N	1803.04	0	724	\N	\N	\N	\N	\N	6	f
-3098	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	175	\N	12020.24	0	724	\N	\N	\N	\N	\N	3	f
-3099	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	185	\N	6010.1199999999999	0	724	\N	\N	\N	\N	\N	2	f
-3827	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	687		2139.5999999999999	0	111	\N	\N	\N	\N	1	3	f
-3828	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	504		0	210.34999999999999	111	\N	\N	\N	\N	1	13	f
-3829	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	480		0	1682.8299999999999	111	\N	\N	\N	\N	1	18	f
-3830	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	498		0	643.08000000000004	111	\N	\N	\N	\N	1	16	f
-3831	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	620		0	601.00999999999999	111	\N	\N	\N	\N	1	15	f
-3832	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	522		0	661.11000000000001	111	\N	\N	\N	\N	1	16	f
-3833	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	590		0	601.00999999999999	111	\N	\N	\N	\N	1	5	f
-3834	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	499		0	570.96000000000004	111	\N	\N	\N	\N	1	\N	f
-3835	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	586		0	2103.54	111	\N	\N	\N	\N	1	\N	f
-3836	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	520		0	6010.1199999999999	111	\N	\N	\N	\N	1	\N	f
-3837	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	111		0	15028.309999999999	111	\N	\N	\N	\N	1	\N	f
-3838	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	111		17534.52	0	111	\N	\N	\N	\N	1	\N	f
-3839	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	592		0	1803.04	111	\N	\N	\N	\N	1	19	f
-3840	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	699		1803.04	0	111	\N	\N	\N	\N	1	2	f
-3841	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	614		8490.7999999999993	0	111	\N	\N	\N	\N	1	1	f
-3842	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	503		0	3.0099999999999998	111	\N	\N	\N	\N	1	0	f
-3843	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	698		1803.04	0	111	\N	\N	\N	5	1	5	f
-3844	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	501		0	360.61000000000001	111	\N	\N	\N	2	1	6	f
-3845	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	526		0	1202.03	111	\N	\N	\N	4	1	7	f
-3846	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	585		0	961.62	111	\N	1	\N	\N	1	8	f
-3847	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	605		0	120.2	111	\N	1	\N	\N	1	9	f
-3848	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	493		601.00999999999999	0	111	\N	10	\N	\N	1	10	f
-3849	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	488		150.25	0	111	\N	10	\N	\N	1	11	f
-3850	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	676		40.57	0	111	\N	10	\N	\N	1	12	f
+3376	\N	1	\N	2004-01-01 00:00:00+01		\N	\N	0	0	782	\N	\N	\N	\N	\N	2	f
+3377	\N	1	\N	2004-01-01 00:00:00+01		\N	\N	0	0	782	\N	\N	\N	\N	\N	24	f
+3378	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	771	\N	0	3005.0599999999999	782	\N	\N	\N	\N	\N	0	f
+3379	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	772	\N	0	11753.42	782	\N	\N	\N	\N	\N	1	f
+3401	\N	1	\N	2004-01-01 00:00:00+01		791	\N	0	1853.25	782	\N	\N	\N	\N	\N	23	f
+3380	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	773	\N	0	30274.27	782	\N	\N	\N	\N	\N	2	f
+3381	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	774	\N	3524.25	0	783	\N	\N	\N	\N	\N	3	f
+3382	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	775	\N	15657.68	0	783	\N	\N	\N	\N	\N	4	f
+3383	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	788	\N	3258.21	0	783	\N	\N	\N	\N	\N	5	f
+3384	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	776	\N	4217.1199999999999	0	783	\N	\N	\N	\N	\N	6	f
+3385	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	790	\N	8723.2800000000007	0	783	\N	\N	\N	\N	\N	7	f
+3386	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	789	\N	20998.43	0	783	\N	\N	\N	\N	\N	8	f
+3387	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	761	\N	0	970.12	782	\N	\N	\N	\N	\N	9	f
+3388	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	762	\N	0	214.44999999999999	782	\N	\N	\N	\N	\N	10	f
+3389	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	764	\N	0	1540.45	782	\N	\N	\N	\N	\N	11	f
+3390	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	767	\N	810.58000000000004	0	783	\N	\N	\N	\N	\N	12	f
+3392	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	769	\N	214.65000000000001	0	783	\N	\N	\N	\N	\N	14	f
+3393	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	778	\N	0	3500	782	\N	\N	\N	\N	\N	15	f
+3394	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	779	\N	52.240000000000002	0	783	\N	\N	\N	\N	\N	16	f
+3395	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	782	\N	31354.25	0	783	\N	\N	\N	\N	\N	17	f
+3396	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	783	\N	0	34281.389999999999	782	\N	\N	\N	\N	\N	18	f
+3397	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	787	\N	0	853.94000000000005	782	\N	\N	\N	\N	\N	19	f
+3398	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	784	\N	0	125.55	782	\N	\N	\N	\N	\N	20	f
+3399	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	786	\N	0	1024.3699999999999	782	\N	\N	\N	\N	\N	21	f
+3400	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	785	\N	0	60.340000000000003	782	\N	\N	\N	\N	\N	22	f
+3391	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	768	\N	645.91999999999996	0	783	\N	\N	\N	\N	\N	13	f
+3410	\N	10	\N	2004-01-16 00:00:00+01	Cobro Factura cliente 4300002	782	\N	645.91999999999996	0	768	\N	\N	\N	\N	\N	0	f
+3411	\N	10	\N	2004-01-16 00:00:00+01	Cobro Factura Ejercicio Anterior	768	\N	0	645.91999999999996	782	\N	\N	\N	\N	\N	1	f
+3435	\N	6	\N	2004-04-04 00:00:00+02		761	\N	145.52000000000001	0	779	\N	\N	\N	\N	\N	1	f
+3436	\N	6	\N	2004-04-04 00:00:00+02	Pago factura P1-0001	779	\N	0	145.52000000000001	761	\N	\N	\N	\N	\N	0	f
+3457	\N	2	\N	2004-01-10 00:00:00+01	Factura de compra	762	\N	0	33.539999999999999	480	\N	\N	\N	\N	\N	0	f
+3458	\N	2	\N	2004-01-10 00:00:00+01		480	\N	28.91	0	762	\N	\N	\N	\N	\N	1	f
+3459	\N	2	\N	2004-01-10 00:00:00+01		740	\N	4.6299999999999999	0	762	\N	\N	\N	\N	\N	2	f
+3460	\N	3	\N	2004-01-12 00:00:00+01		480	\N	125.45	0	761	\N	\N	\N	\N	\N	1	f
+3461	\N	3	\N	2004-01-12 00:00:00+01	Factura de compra	761	\N	0	145.52000000000001	480	\N	\N	\N	\N	\N	0	f
+3462	\N	3	\N	2004-01-12 00:00:00+01		740	\N	20.07	0	761	\N	\N	\N	\N	\N	2	f
+3463	\N	8	\N	2004-01-31 00:00:00+01		792	\N	0	86.810000000000002	794	\N	\N	\N	\N	\N	1	f
+3464	\N	8	\N	2004-01-31 00:00:00+01		794	\N	964.5	0	782	\N	\N	\N	\N	\N	3	f
+3465	\N	8	\N	2004-01-31 00:00:00+01	Pago nomina Sr. Garcia	782	\N	0	807.01999999999998	794	\N	\N	\N	\N	\N	0	f
+3466	\N	8	\N	2004-01-31 00:00:00+01		793	\N	0	70.670000000000002	794	\N	\N	\N	\N	\N	2	f
+3467	\N	4	\N	2004-02-01 00:00:00+01		748	\N	0	2005.6199999999999	768	\N	\N	\N	\N	\N	2	f
+3468	\N	4	\N	2004-02-01 00:00:00+01		614	\N	0	12535.120000000001	768	\N	\N	\N	\N	\N	1	f
+3469	\N	4	\N	2004-02-01 00:00:00+01	Factura Nº1	768	\N	14540.74	0	614	\N	\N	\N	\N	\N	0	f
+3470	\N	13	\N	2004-02-02 00:00:00+01		614	\N	0	1250.3499999999999	767	\N	\N	\N	\N	\N	1	f
+3471	\N	13	\N	2004-02-02 00:00:00+01	Factura Nº2	767	\N	1450.4100000000001	0	614	\N	\N	\N	\N	\N	0	f
+3472	\N	13	\N	2004-02-02 00:00:00+01		748	\N	0	200.06	767	\N	\N	\N	\N	\N	2	f
+3473	\N	5	\N	2004-02-03 00:00:00+01		740	\N	1988.48	0	764	\N	\N	\N	\N	\N	2	f
+3474	\N	5	\N	2004-02-03 00:00:00+01	Factura de compra Nº 3	764	\N	0	14416.51	480	\N	\N	\N	\N	\N	0	f
+3475	\N	5	\N	2004-02-03 00:00:00+01		480	\N	12428.030000000001	0	764	\N	\N	\N	\N	\N	1	f
+3476	\N	11	\N	2004-03-31 00:00:00+02		743	\N	0	0	748	\N	\N	\N	\N	\N	1	f
+3477	\N	11	\N	2004-03-31 00:00:00+02		369	\N	0	192.5	748	\N	\N	\N	\N	\N	3	f
+3478	\N	11	\N	2004-03-31 00:00:00+02	Liquidación de IVA Primer Trimestre	748	\N	2205.6799999999998	0	740	\N	\N	\N	\N	\N	0	f
+3479	\N	11	\N	2004-03-31 00:00:00+02		740	\N	0	2013.1800000000001	748	\N	\N	\N	\N	\N	2	f
+3480	\N	12	\N	2004-03-31 00:00:00+02	Pago IVA primer trimestre a HACIENDA	782	\N	0	192.5	369	\N	\N	\N	\N	\N	0	f
+3481	\N	12	\N	2004-03-31 00:00:00+02		369	\N	192.5	0	782	\N	\N	\N	\N	\N	1	f
+3482	\N	9	\N	2004-04-04 00:00:00+02	IVA 16%	748		0	16	767	\N	\N	\N	\N	\N	2	f
+3483	\N	9	\N	2004-04-04 00:00:00+02	Factura Nº 3	614		0	100	767	\N	\N	\N	\N	\N	0	f
+3484	\N	9	\N	2004-04-04 00:00:00+02	Cliente	767		116	0	614	\N	\N	\N	\N	\N	1	f
+3485	\N	7	\N	2004-04-05 00:00:00+02		\N	\N	0	0	782	\N	\N	\N	\N	\N	1	f
+3486	\N	7	\N	2004-04-05 00:00:00+02		782	\N	14540.74	0	768	\N	\N	\N	\N	\N	0	f
+3487	\N	7	\N	2004-04-05 00:00:00+02	COBRO FACTURA Nº 1	768	\N	0	14540.74	782	\N	\N	\N	\N	\N	1	f
 \.
 
 
 --
--- Data for TOC entry 149 (OID 168280)
+-- Data for TOC entry 150 (OID 249351)
 -- Name: borrador; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY borrador (idborrador, codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idapunte, idtipoiva, orden) FROM stdin;
-1209	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	724	\N	0	60101.209999999999	\N	\N	\N	\N	\N	\N	\N	9
-1217	\N	2	\N	2003-01-01 00:00:00+01	Compra de Mercdaderias.	363	\N	269.25999999999999	0	\N	\N	\N	\N	\N	\N	\N	1
-1219	\N	2	\N	2003-01-01 00:00:00+01	Compra de Mercdaderias.	463	\N	0	209.15000000000001	\N	\N	\N	\N	\N	\N	\N	3
-1218	\N	2	\N	2003-01-01 00:00:00+01	Compra de Mercdaderias.	300	\N	0	1742.9400000000001	\N	\N	\N	\N	\N	\N	\N	2
-1210	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	98	\N	0	6010.1199999999999	\N	\N	\N	\N	\N	\N	\N	10
-1216	\N	2	\N	2003-01-01 00:00:00+01	Compra de Mercdaderias.	480	\N	1682.8299999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1212	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	303	\N	0	601.00999999999999	\N	\N	\N	\N	\N	\N	\N	12
-1205	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	328	\N	5709.6099999999997	0	\N	\N	\N	\N	\N	\N	\N	5
-1220	\N	3	\N	2003-01-01 00:00:00+01	Rappels por compras	300	\N	174.28999999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1222	\N	3	\N	2003-01-01 00:00:00+01	Rappels por compras	363	\N	0	24.039999999999999	\N	\N	\N	\N	\N	\N	\N	2
-1221	\N	3	\N	2003-01-01 00:00:00+01	Rappels por compras	488	\N	0	150.25	\N	\N	\N	\N	\N	\N	\N	1
-1223	\N	4	\N	2003-01-01 00:00:00+01	Venta de Mercaderias	324	\N	9849.3299999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1225	\N	4	\N	2003-01-01 00:00:00+01	Venta de Mercaderias	374	\N	0	1358.53	\N	\N	\N	\N	\N	\N	\N	2
-1224	\N	4	\N	2003-01-01 00:00:00+01	Venta de Mercaderias	614	\N	0	8490.7999999999993	\N	\N	\N	\N	\N	\N	\N	1
-1228	\N	5	\N	2003-01-01 00:00:00+01	Transportes	463	\N	0	418.31	\N	\N	\N	\N	\N	\N	\N	2
-1226	\N	5	\N	2003-01-01 00:00:00+01	Transportes	501	\N	360.61000000000001	0	\N	\N	\N	\N	\N	\N	\N	0
-1227	\N	5	\N	2003-01-01 00:00:00+01	Transportes	363	\N	57.700000000000003	0	\N	\N	\N	\N	\N	\N	\N	1
-1229	\N	6	\N	2003-01-01 00:00:00+01	Devoluciones de Ventas	620	\N	601.00999999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1231	\N	6	\N	2003-01-01 00:00:00+01	Devoluciones de Ventas	324	\N	0	698.17999999999995	\N	\N	\N	\N	\N	\N	\N	2
-1230	\N	6	\N	2003-01-01 00:00:00+01	Devoluciones de Ventas	374	\N	97.170000000000002	0	\N	\N	\N	\N	\N	\N	\N	1
-1232	\N	7	\N	2003-01-01 00:00:00+01	Clientes de dudoso cobro	340	\N	1803.04	0	\N	\N	\N	\N	\N	\N	\N	0
-1233	\N	7	\N	2003-01-01 00:00:00+01	Clientes de dudoso cobro	324	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	1
-1234	\N	8	\N	2003-01-01 00:00:00+01	Multas	380	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	1
-1235	\N	8	\N	2003-01-01 00:00:00+01	Multas	592	\N	1803.04	0	\N	\N	\N	\N	\N	\N	\N	0
-1236	\N	9	\N	2003-01-01 00:00:00+01	bancos	466	\N	601.00999999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1237	\N	9	\N	2003-01-01 00:00:00+01	bancos	526	\N	1202.03	0	\N	\N	\N	\N	\N	\N	\N	1
-1238	\N	9	\N	2003-01-01 00:00:00+01	bancos	340	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	2
-1239	\N	10	\N	2003-01-01 00:00:00+01	multas	380	\N	1803.04	0	\N	\N	\N	\N	\N	\N	\N	0
-1240	\N	10	\N	2003-01-01 00:00:00+01	multas	699	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	1
-1241	\N	11	\N	2003-01-01 00:00:00+01	sueldos	520	\N	6010.1199999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1242	\N	11	\N	2003-01-01 00:00:00+01	sueldos	522	\N	661.11000000000001	0	\N	\N	\N	\N	\N	\N	\N	1
-1243	\N	11	\N	2003-01-01 00:00:00+01	sueldos	370	\N	0	901.51999999999998	\N	\N	\N	\N	\N	\N	\N	2
-1244	\N	11	\N	2003-01-01 00:00:00+01	sueldos	373	\N	0	1111.8699999999999	\N	\N	\N	\N	\N	\N	\N	3
-1245	\N	11	\N	2003-01-01 00:00:00+01	sueldos	466	\N	0	4657.8400000000001	\N	\N	\N	\N	\N	\N	\N	4
-1246	\N	12	\N	2003-01-01 00:00:00+01	arrendamientos	498	\N	643.08000000000004	0	\N	\N	\N	\N	\N	\N	\N	0
-1247	\N	12	\N	2003-01-01 00:00:00+01	arrendamientos	499	\N	570.96000000000004	0	\N	\N	\N	\N	\N	\N	\N	1
-1248	\N	12	\N	2003-01-01 00:00:00+01	arrendamientos	504	\N	420.70999999999998	0	\N	\N	\N	\N	\N	\N	\N	2
-1249	\N	12	\N	2003-01-01 00:00:00+01	arrendamientos	363	\N	261.56	0	\N	\N	\N	\N	\N	\N	\N	3
-1250	\N	12	\N	2003-01-01 00:00:00+01	arrendamientos	466	\N	0	1896.3099999999999	\N	\N	\N	\N	\N	\N	\N	4
-1251	\N	13	\N	2003-01-01 00:00:00+01	publicidad	377	\N	210.36000000000001	0	\N	\N	\N	\N	\N	\N	\N	0
-1252	\N	13	\N	2003-01-01 00:00:00+01	publicidad	504	\N	0	210.36000000000001	\N	\N	\N	\N	\N	\N	\N	1
-1253	\N	14	\N	2003-01-01 00:00:00+01	caja	463	\N	5409.1099999999997	0	\N	\N	\N	\N	\N	\N	\N	0
-1254	\N	14	\N	2003-01-01 00:00:00+01	caja	239	\N	601.00999999999999	0	\N	\N	\N	\N	\N	\N	\N	1
-1255	\N	14	\N	2003-01-01 00:00:00+01	caja	185	\N	0	3005.0599999999999	\N	\N	\N	\N	\N	\N	\N	2
-1256	\N	14	\N	2003-01-01 00:00:00+01	caja	374	\N	0	865.46000000000004	\N	\N	\N	\N	\N	\N	\N	3
-1257	\N	14	\N	2003-01-01 00:00:00+01	caja	687	\N	0	2139.5999999999999	\N	\N	\N	\N	\N	\N	\N	4
-1258	\N	15	\N	2003-01-01 00:00:00+01	inversiones	432	\N	270.44999999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1259	\N	15	\N	2003-01-01 00:00:00+01	inversiones	466	\N	0	270.44999999999999	\N	\N	\N	\N	\N	\N	\N	1
-1260	\N	16	\N	2003-01-01 00:00:00+01	bancos	466	\N	172.78999999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1261	\N	16	\N	2003-01-01 00:00:00+01	bancos	503	\N	3.0099999999999998	0	\N	\N	\N	\N	\N	\N	\N	1
-1262	\N	16	\N	2003-01-01 00:00:00+01	bancos	432	\N	0	135.22999999999999	\N	\N	\N	\N	\N	\N	\N	2
-1263	\N	16	\N	2003-01-01 00:00:00+01	bancos	676	\N	0	40.57	\N	\N	\N	\N	\N	\N	\N	3
-1264	\N	17	\N	2003-01-01 00:00:00+01	proveedores	303	\N	1803.04	0	\N	\N	\N	\N	\N	\N	\N	0
-1265	\N	17	\N	2003-01-01 00:00:00+01	proveedores	466	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	1
-1266	\N	18	\N	2003-01-01 00:00:00+01	inventario	493	\N	10818.219999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1267	\N	18	\N	2003-01-01 00:00:00+01	inventario	262	\N	0	10818.219999999999	\N	\N	\N	\N	\N	\N	\N	1
-1268	\N	19	\N	2003-01-01 00:00:00+01	inventario	262	\N	11419.23	0	\N	\N	\N	\N	\N	\N	\N	0
-1269	\N	19	\N	2003-01-01 00:00:00+01	inventario	493	\N	0	11419.23	\N	\N	\N	\N	\N	\N	\N	1
-1270	\N	20	\N	2003-01-01 00:00:00+01	amortizaciones	586	\N	2103.54	0	\N	\N	\N	\N	\N	\N	\N	0
-1271	\N	20	\N	2003-01-01 00:00:00+01	amortizaciones	239	\N	0	2103.54	\N	\N	\N	\N	\N	\N	\N	1
-1272	\N	21	\N	2003-01-01 00:00:00+01	amortizaciones	585	\N	961.62	0	\N	\N	\N	\N	\N	\N	\N	0
-1273	\N	21	\N	2003-01-01 00:00:00+01	amortizaciones	231	\N	0	961.62	\N	\N	\N	\N	\N	\N	\N	1
-1274	\N	22	\N	2003-01-01 00:00:00+01	valores	605	\N	120.2	0	\N	\N	\N	\N	\N	\N	\N	0
-1275	\N	22	\N	2003-01-01 00:00:00+01	valores	477	\N	0	120.2	\N	\N	\N	\N	\N	\N	\N	1
-1276	\N	23	\N	2003-01-01 00:00:00+01	depreciaciones	292	\N	1803.04	0	\N	\N	\N	\N	\N	\N	\N	0
-1277	\N	23	\N	2003-01-01 00:00:00+01	depreciaciones	698	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	1
-1278	\N	24	\N	2003-01-01 00:00:00+01	provisiones	590	\N	601.00999999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1279	\N	24	\N	2003-01-01 00:00:00+01	provisiones	292	\N	0	601.00999999999999	\N	\N	\N	\N	\N	\N	\N	1
-1282	\N	25	\N	2003-01-01 00:00:00+01	ivas	369	\N	0	1563.3499999999999	\N	\N	\N	\N	\N	\N	\N	2
-1280	\N	25	\N	2003-01-01 00:00:00+01	ivas	374	\N	2127.8200000000002	0	\N	\N	\N	\N	\N	\N	\N	0
-1204	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	262	\N	10818.219999999999	0	\N	\N	\N	\N	\N	\N	\N	4
-1206	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	324	\N	1803.04	0	\N	\N	\N	\N	\N	\N	\N	6
-1208	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	463	\N	4447.4899999999998	0	\N	\N	\N	\N	\N	\N	\N	8
-1215	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	251	\N	0	1803.04	\N	\N	\N	\N	\N	\N	\N	15
-1203	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	175	\N	12020.24	0	\N	\N	\N	\N	\N	\N	\N	3
-1200	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	182	\N	6010.1199999999999	0	\N	\N	\N	\N	\N	\N	\N	0
-1201	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	183	\N	18030.360000000001	0	\N	\N	\N	\N	\N	\N	\N	1
-1202	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	185	\N	6010.1199999999999	0	\N	\N	\N	\N	\N	\N	\N	2
-1207	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	466	\N	9015.1800000000003	0	\N	\N	\N	\N	\N	\N	\N	7
-1211	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	300	\N	0	1141.9200000000001	\N	\N	\N	\N	\N	\N	\N	11
-1213	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	239	\N	0	3005.0599999999999	\N	\N	\N	\N	\N	\N	\N	13
-1214	\N	1	\N	2003-01-01 00:00:00+01	Asiento de Apertura	231	\N	0	1202.02	\N	\N	\N	\N	\N	\N	\N	14
-1281	\N	25	\N	2003-01-01 00:00:00+01	ivas	363	\N	0	564.47000000000003	\N	\N	\N	\N	\N	\N	\N	1
-1652	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	687		2139.5999999999999	0	\N	\N	\N	\N	\N	\N	1	3
-1660	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	504		0	210.34999999999999	\N	\N	\N	\N	\N	\N	1	13
-1669	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	480		0	1682.8299999999999	\N	\N	\N	\N	\N	\N	1	18
-1665	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	498		0	643.08000000000004	\N	\N	\N	\N	\N	\N	1	16
-1664	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	620		0	601.00999999999999	\N	\N	\N	\N	\N	\N	1	15
-1666	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	522		0	661.11000000000001	\N	\N	\N	\N	\N	\N	1	16
-1663	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	590		0	601.00999999999999	\N	\N	\N	\N	\N	\N	1	5
-1662	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	499		0	570.96000000000004	\N	\N	\N	\N	\N	\N	1	\N
-1671	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	586		0	2103.54	\N	\N	\N	\N	\N	\N	1	\N
-1672	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	520		0	6010.1199999999999	\N	\N	\N	\N	\N	\N	1	\N
-1673	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	111		0	15028.309999999999	\N	\N	\N	\N	\N	\N	1	\N
-1674	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	111		17534.52	0	\N	\N	\N	\N	\N	\N	1	\N
-1670	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	592		0	1803.04	\N	\N	\N	\N	\N	\N	1	19
-1654	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	699		1803.04	0	\N	\N	\N	\N	\N	\N	1	2
-1651	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	614		8490.7999999999993	0	\N	\N	\N	\N	\N	\N	1	1
-1658	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	503		0	3.0099999999999998	\N	\N	\N	\N	\N	\N	1	0
-1653	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	698		1803.04	0	\N	\N	\N	\N	5	\N	1	5
-1661	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	501		0	360.61000000000001	\N	\N	\N	\N	2	\N	1	6
-1668	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	526		0	1202.03	\N	\N	\N	\N	4	\N	1	7
-1667	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	585		0	961.62	\N	\N	1	\N	\N	\N	1	8
-1659	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	605		0	120.2	\N	\N	1	\N	\N	\N	1	9
-1655	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	493		601.00999999999999	0	\N	\N	10	\N	\N	\N	1	10
-1656	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	488		150.25	0	\N	\N	10	\N	\N	\N	1	11
-1657	\N	26	\N	2003-01-01 00:00:00+01	Asiento de Regularizacion	676		40.57	0	\N	\N	10	\N	\N	\N	1	12
+1556	\N	1	\N	2004-01-01 00:00:00+01		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	2
+1580	\N	1	\N	2004-01-01 00:00:00+01		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	24
+1585	\N	3	\N	2004-01-12 00:00:00+01		480	\N	125.45	0	\N	\N	\N	\N	\N	\N	\N	1
+1589	\N	4	\N	2004-02-01 00:00:00+01		748	\N	0	2005.6199999999999	\N	\N	\N	\N	\N	\N	\N	2
+1596	\N	7	\N	2004-04-05 00:00:00+02		\N	\N	0	0	\N	\N	\N	\N	\N	\N	\N	1
+1595	\N	7	\N	2004-04-05 00:00:00+02		782	\N	14540.74	0	\N	\N	\N	\N	\N	\N	\N	0
+1597	\N	7	\N	2004-04-05 00:00:00+02	COBRO FACTURA Nº 1	768	\N	0	14540.74	\N	\N	\N	\N	\N	\N	\N	1
+1599	\N	8	\N	2004-01-31 00:00:00+01		792	\N	0	86.810000000000002	\N	\N	\N	\N	\N	\N	\N	1
+1601	\N	8	\N	2004-01-31 00:00:00+01		794	\N	964.5	0	\N	\N	\N	\N	\N	\N	\N	3
+1554	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	771	\N	0	3005.0599999999999	\N	\N	\N	\N	\N	\N	\N	0
+1555	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	772	\N	0	11753.42	\N	\N	\N	\N	\N	\N	\N	1
+1557	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	773	\N	0	30274.27	\N	\N	\N	\N	\N	\N	\N	2
+1558	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	774	\N	3524.25	0	\N	\N	\N	\N	\N	\N	\N	3
+1559	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	775	\N	15657.68	0	\N	\N	\N	\N	\N	\N	\N	4
+1561	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	788	\N	3258.21	0	\N	\N	\N	\N	\N	\N	\N	5
+1562	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	776	\N	4217.1199999999999	0	\N	\N	\N	\N	\N	\N	\N	6
+1563	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	790	\N	8723.2800000000007	0	\N	\N	\N	\N	\N	\N	\N	7
+1564	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	789	\N	20998.43	0	\N	\N	\N	\N	\N	\N	\N	8
+1565	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	761	\N	0	970.12	\N	\N	\N	\N	\N	\N	\N	9
+1566	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	762	\N	0	214.44999999999999	\N	\N	\N	\N	\N	\N	\N	10
+1567	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	764	\N	0	1540.45	\N	\N	\N	\N	\N	\N	\N	11
+1568	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	767	\N	810.58000000000004	0	\N	\N	\N	\N	\N	\N	\N	12
+1569	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	768	\N	645.91999999999996	0	\N	\N	\N	\N	\N	\N	\N	13
+1570	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	769	\N	214.65000000000001	0	\N	\N	\N	\N	\N	\N	\N	14
+1571	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	778	\N	0	3500	\N	\N	\N	\N	\N	\N	\N	15
+1572	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	779	\N	52.240000000000002	0	\N	\N	\N	\N	\N	\N	\N	16
+1573	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	782	\N	31354.25	0	\N	\N	\N	\N	\N	\N	\N	17
+1574	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	783	\N	0	34281.389999999999	\N	\N	\N	\N	\N	\N	\N	18
+1575	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	787	\N	0	853.94000000000005	\N	\N	\N	\N	\N	\N	\N	19
+1576	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	784	\N	0	125.55	\N	\N	\N	\N	\N	\N	\N	20
+1577	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	786	\N	0	1024.3699999999999	\N	\N	\N	\N	\N	\N	\N	21
+1578	\N	1	\N	2004-01-01 00:00:00+01	Apertuta	785	\N	0	60.340000000000003	\N	\N	\N	\N	\N	\N	\N	22
+1579	\N	1	\N	2004-01-01 00:00:00+01		791	\N	0	1853.25	\N	\N	\N	\N	\N	\N	\N	23
+1588	\N	4	\N	2004-02-01 00:00:00+01		614	\N	0	12535.120000000001	\N	\N	\N	\N	\N	\N	\N	1
+1632	\N	10	\N	2004-01-16 00:00:00+01	Cobro Factura cliente 4300002	782	\N	645.91999999999996	0	\N	\N	\N	\N	\N	\N	\N	0
+1633	\N	10	\N	2004-01-16 00:00:00+01	Cobro Factura Ejercicio Anterior	768	\N	0	645.91999999999996	\N	\N	\N	\N	\N	\N	\N	1
+1594	\N	6	\N	2004-04-04 00:00:00+02		761	\N	145.52000000000001	0	\N	\N	\N	\N	\N	\N	\N	1
+1593	\N	6	\N	2004-04-04 00:00:00+02	Pago factura P1-0001	779	\N	0	145.52000000000001	\N	\N	\N	\N	\N	\N	\N	0
+1642	\N	13	\N	2004-02-02 00:00:00+01		614	\N	0	1250.3499999999999	\N	\N	\N	\N	\N	\N	\N	1
+1636	\N	11	\N	2004-03-31 00:00:00+02		743	\N	0	0	\N	\N	\N	\N	\N	\N	\N	1
+1638	\N	11	\N	2004-03-31 00:00:00+02		369	\N	0	192.5	\N	\N	\N	\N	\N	\N	\N	3
+1581	\N	2	\N	2004-01-10 00:00:00+01	Factura de compra	762	\N	0	33.539999999999999	\N	\N	\N	\N	\N	\N	\N	0
+1582	\N	2	\N	2004-01-10 00:00:00+01		480	\N	28.91	0	\N	\N	\N	\N	\N	\N	\N	1
+1583	\N	2	\N	2004-01-10 00:00:00+01		740	\N	4.6299999999999999	0	\N	\N	\N	\N	\N	\N	\N	2
+1584	\N	3	\N	2004-01-12 00:00:00+01	Factura de compra	761	\N	0	145.52000000000001	\N	\N	\N	\N	\N	\N	\N	0
+1586	\N	3	\N	2004-01-12 00:00:00+01		740	\N	20.07	0	\N	\N	\N	\N	\N	\N	\N	2
+1598	\N	8	\N	2004-01-31 00:00:00+01	Pago nomina Sr. Garcia	782	\N	0	807.01999999999998	\N	\N	\N	\N	\N	\N	\N	0
+1600	\N	8	\N	2004-01-31 00:00:00+01		793	\N	0	70.670000000000002	\N	\N	\N	\N	\N	\N	\N	2
+1587	\N	4	\N	2004-02-01 00:00:00+01	Factura Nº1	768	\N	14540.74	0	\N	\N	\N	\N	\N	\N	\N	0
+1641	\N	13	\N	2004-02-02 00:00:00+01	Factura Nº2	767	\N	1450.4100000000001	0	\N	\N	\N	\N	\N	\N	\N	0
+1643	\N	13	\N	2004-02-02 00:00:00+01		748	\N	0	200.06	\N	\N	\N	\N	\N	\N	\N	2
+1592	\N	5	\N	2004-02-03 00:00:00+01		740	\N	1988.48	0	\N	\N	\N	\N	\N	\N	\N	2
+1590	\N	5	\N	2004-02-03 00:00:00+01	Factura de compra Nº 3	764	\N	0	14416.51	\N	\N	\N	\N	\N	\N	\N	0
+1591	\N	5	\N	2004-02-03 00:00:00+01		480	\N	12428.030000000001	0	\N	\N	\N	\N	\N	\N	\N	1
+1635	\N	11	\N	2004-03-31 00:00:00+02	Liquidación de IVA Primer Trimestre	748	\N	2205.6799999999998	0	\N	\N	\N	\N	\N	\N	\N	0
+1637	\N	11	\N	2004-03-31 00:00:00+02		740	\N	0	2013.1800000000001	\N	\N	\N	\N	\N	\N	\N	2
+1639	\N	12	\N	2004-03-31 00:00:00+02	Pago IVA primer trimestre a HACIENDA	782	\N	0	192.5	\N	\N	\N	\N	\N	\N	\N	0
+1640	\N	12	\N	2004-03-31 00:00:00+02		369	\N	192.5	0	\N	\N	\N	\N	\N	\N	\N	1
+1630	\N	9	\N	2004-04-04 00:00:00+02	IVA 16%	748		0	16	\N	\N	\N	\N	\N	\N	\N	2
+1629	\N	9	\N	2004-04-04 00:00:00+02	Factura Nº 3	614		0	100	\N	\N	\N	\N	\N	\N	\N	0
+1628	\N	9	\N	2004-04-04 00:00:00+02	Cliente	767		116	0	\N	\N	\N	\N	\N	\N	\N	1
 \.
 
 
 --
--- Data for TOC entry 150 (OID 168285)
+-- Data for TOC entry 151 (OID 249356)
 -- Name: registroiva; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY registroiva (idregistroiva, contrapartida, baseimp, iva, factura, idborrador, incregistro, regularizacion, plan349, numorden, cif) FROM stdin;
-7	726	184	16	147	318	\N	\N	\N	23	A-078989898
-14	724	115	0	as	401	\N	\N	\N	asdf	asdf
-8	724	84	16		365	\N	\N	\N		
-9	463	84	16	23	368	\N	\N	\N	87	566677766
-11	724	2903.04	19	dsf	384	\N	\N	\N	sdfs	sdfasdf
-15	724	88	14	12	507	\N	\N	\N	12	12
-13	724	100	16		388	\N	\N	\N		
-16	764	54.899999999999999	19	58545	941	\N	\N	\N		
-17	757	385.25	16	1	945	\N	\N	\N		47859565 W
-18	769	320.25999999999999	16	2	953	\N	\N	\N		
-19	762	586.35000000000002	16	65545648	958	\N	\N	\N		
-20	761	365.36000000000001	16	654654	963	\N	\N	\N		
-21	768	530	16	3	968	\N	\N	\N		
-22	767	365.36000000000001	16	425582	973	\N	\N	\N		4582398 P
-23	301	92.799999999999997	625	54	978	\N	\N	\N		
-24	301	530	16	484564	985	\N	\N	\N		
-31	88	100	16	gtty	1106	\N	\N	\N	sdf	\N
-29	755	100	16	gtty	1055	\N	\N	\N	sdf	5678908
-30	746	1234	16	67a	1081	\N	\N	\N		
-27	755	100	16	45A	1024	\N	\N	\N	\N	\N
-26	369	100	16	45A	1022	\N	\N	\N		
-28	755	100	16	45A	1031	\N	\N	\N	\N	\N
-25	301	580	16	5464	990	\N	\N	\N		
-34	755	122	92	12	1059	\N	\N	\N	4	34444
-35	88	1000	16	12	1127	\N	\N	\N	12	345678
-36	88	1148	1	12	1129	\N	\N	\N	345	23456
-38	724	100	16	gtty	1138	\N	\N	\N	sdf	\N
-37	755	100	16	gtty	1132	\N	\N	\N	sdf	
-39	724	100	16	gtty	1140	\N	\N	\N	sdf	paco
-40	724	100	16	gtty	1142	\N	\N	\N	sdf	\N
-41	724	100	16	gtty	1144	\N	\N	\N	sdf	\N
-42	724	100	16	gtty	1146	\N	\N	\N	sdf	\N
-44	770	132	76	12	1119	\N	\N	\N	45	123333
-43	756	323.61000000000001	19	34	945	\N	\N	\N	78	12341
-33	724	100	100	12	1120	\N	\N	\N	12	A07898990
-32	770	168	16	12 - A	1116	\N	\N	\N	88	A07898990
-45	767	100	16	gtty	1160	\N	\N	\N	sdf	4582398 P
-46	116	16	625	12	1161	\N	\N	\N	1	1234567g
-47	480	0	16	1	1217	\N	\N	\N	1	1234553123
-48	300	150.25	16	12	1222	\N	\N	\N		
-49	324	8490.7999999999993	16		1225	\N	\N	\N		
-50	463	360.61000000000001	16	90	1227	\N	\N	\N	888	
-51	324	601.00999999999999	16	12	1230	\N	\N	\N		
-52	466	1634.75	16	34	1249	\N	\N	\N		
-53	463	4543.6499999999996	19	78	1256	\N	\N	\N		
+54	762	28.940000000000001	16	P2-0001	1583	\N	\N	\N	1	59842253X
+55	761	125.44	16	P1-0001	1586	\N	\N	\N	2	55821154X
+56	768	12535.120000000001	16	1	1589	\N	\N	\N		B-4536468
+57	764	12428	16	P3-0001	1592	\N	\N	\N	3	35955425X
+60	764	12	0	P3-0001	1591	\N	\N	\N	3	35955425X
+59	767	100	16	3	1630	\N	\N	\N		4582398 P
+61	767	1250.3800000000001	16	2	1643	\N	\N	\N		4582398 P
 \.
 
 
 --
--- Data for TOC entry 151 (OID 168290)
+-- Data for TOC entry 152 (OID 249361)
 -- Name: ainteligente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10973,11 +11109,12 @@ COPY ainteligente (idainteligente, descripcion, comentariosasiento) FROM stdin;
 13	pruebas con un nuevo asiento inteligente.	Un asiento inteligente para que ????
 11	Capital Social	Tiene esto un aire que no se que decirte macho.
 9	Cobro de Facturas	Estoy confundido
+14	Factura de Venta IVA 16%	
 \.
 
 
 --
--- Data for TOC entry 152 (OID 168298)
+-- Data for TOC entry 153 (OID 249369)
 -- Name: binteligente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10989,23 +11126,26 @@ COPY binteligente (idbinteligente, idainteligente, iddiario, fecha, conceptocont
 1100	13		$fechaasiento$	hola	1000034		45	45			\N		\N
 999	11	0	$fechaactual$	Una factura guapa	1000000	Ingreso en capital social	$cantidad, Cantidad$	0	4720016	Sin comentarios		1	
 1000	11		$fechaactual$	Una factura guapa	1000000	sdf	0	$cantidad$*0.16	4720016	Sin comentarios	\N	1	\N
-1164	9	0	$fechaactual$	Pago de una factura	$cod, Cuenta de Proveedor$	asdf	0	$haber, Total Factura$	4720016	asdf		1	
-1165	9		$fechaactual$	Pago de una factura	4720016		$haber$	0					
+1614	9	0	$fechaactual$	Pago de una factura	$cod, Cuenta de Proveedor$	asdf	0	$haber, Total Factura$	4720016	asdf		1	
+1615	9		$fechaactual$	Pago de una factura	4720016		$haber$	0					
+1625	14		$fechaasiento$	Cliente	4300001		116.00	0.00					
+1626	14		$fechaasiento$	Venta	7000000		0.00	100.00					
+1627	14		$fechaasiento$	IVA 16%	4770016		0.00	16.00					
 \.
 
 
 --
--- Data for TOC entry 153 (OID 168303)
+-- Data for TOC entry 154 (OID 249374)
 -- Name: ivainteligente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY ivainteligente (idivainteligente, idainteligente, idbinteligente, contrapartida, baseimp, iva, factura, idborrador, incregistro, regularizacion, plan349, numorden, cif) FROM stdin;
-55	9	1165	$cod$	100	16	gtty	1	f	asd	fa	sdf	$cifcuenta$
+57	9	1615	$cod$	100	16	Fact-1	1	f	f	f	1	$cifcuenta$
 \.
 
 
 --
--- Data for TOC entry 154 (OID 168308)
+-- Data for TOC entry 155 (OID 249379)
 -- Name: compmasap; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11230,59 +11370,15 @@ COPY compmasap (idcompmasap, idcuenta, idmpatrimonial, masaperteneciente, saldo,
 594	284	\N	78	\N	t	\N
 595	291	\N	78	\N	t	\N
 596	313	\N	78	\N	t	\N
-606	164	\N	79	\N	t	\N
-607	200	\N	80	\N	t	\N
-608	201	\N	80	\N	t	\N
-609	202	\N	80	\N	t	\N
-610	203	\N	80	\N	t	\N
-611	204	\N	80	\N	t	\N
-612	205	\N	80	\N	t	\N
-613	206	\N	80	\N	t	\N
-614	207	\N	80	\N	t	\N
-615	211	\N	80	\N	t	\N
-616	215	\N	80	\N	t	\N
-617	216	\N	80	\N	t	\N
-618	217	\N	80	\N	t	\N
-619	218	\N	80	\N	t	\N
-620	219	\N	80	\N	t	\N
-621	220	\N	80	\N	t	\N
-622	221	\N	80	\N	t	\N
-623	223	\N	80	\N	t	\N
-624	252	\N	80	\N	t	\N
-625	254	\N	80	\N	t	\N
-626	257	\N	80	\N	t	\N
-627	259	\N	80	\N	t	\N
-628	258	\N	80	\N	t	\N
-629	260	\N	80	\N	t	\N
-630	181	\N	81	\N	t	\N
-631	192	\N	81	\N	t	\N
-632	239	\N	81	\N	t	\N
-633	251	\N	81	\N	t	\N
-634	170	\N	82	\N	t	\N
-635	231	\N	82	\N	t	\N
-636	250	\N	82	\N	t	\N
-637	166	\N	83	\N	t	\N
-638	\N	83	84	\N	t	\N
-639	\N	82	84	\N	t	\N
-640	\N	81	84	\N	t	\N
-641	\N	80	84	\N	t	\N
-642	\N	79	84	\N	t	\N
-647	157	\N	85	\N	t	\N
-648	158	\N	85	\N	t	\N
-649	159	\N	85	\N	t	\N
-650	160	\N	85	\N	t	\N
-651	161	\N	85	\N	t	\N
-652	162	\N	85	\N	t	\N
-653	163	\N	85	\N	t	\N
-654	\N	46	27	\N	t	\N
-655	\N	45	27	\N	t	\N
-656	\N	84	27	\N	t	\N
-657	\N	85	27	\N	t	\N
+602	\N	46	27	\N	t	\N
+603	\N	45	27	\N	t	\N
+604	\N	22	27	\N	t	\N
+605	\N	15	27	\N	t	\N
 \.
 
 
 --
--- Data for TOC entry 155 (OID 168313)
+-- Data for TOC entry 156 (OID 249384)
 -- Name: mpatrimonial; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11344,19 +11440,12 @@ COPY mpatrimonial (idmpatrimonial, idbalance, descmpatrimonial, orden, tabulacio
 76	4	VI. RESULTADO DEL EJERCICIO (BENEFICIOS) (AV -A14-A15)	\N	\N	\N	\N
 77	\N	Tesoreria	\N	\N	\N	\N
 78	\N	Existencias	\N	\N	\N	\N
-79	3	V. Acciones propias	\N	\N	\N	\N
-80	3	IV. Inmovilizaciones financieras	\N	\N	\N	\N
-81	3	III. Inmovilizaciones materiales	\N	\N	\N	\N
-82	3	II. Inmovilizaciones inmateriales	\N	\N	\N	\N
-83	3	I. Gastos de establecimiento	\N	\N	\N	\N
-84	3	B) Inmovilizado	\N	\N	\N	\N
-85	3	A) Accionistas (socios) por desembolsos no exigidos	\N	\N	\N	\N
 27	3	TOTAL GENERAL	\N	\N	\N	\N
 \.
 
 
 --
--- Data for TOC entry 156 (OID 168318)
+-- Data for TOC entry 157 (OID 249389)
 -- Name: compbalance; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11364,6 +11453,16 @@ COPY compbalance (idcompbalance, idbalance, idmpatrimonial, concepto, orden, tab
 45	1	3	primera linea	3	0
 46	1	3	ddddda	2	0
 47	1	10	primera linea	1	0
+63	3	21	II. Existencias	11	1
+62	3	41	I. Accionistas por desembolso exigidos	10	1
+86	3	39	E) Acreedores a corto plazo	29	0
+60	3	46	C) Gastos a distribuir en varios ejercicios	8	0
+57	3	18	III. Inmovilizaciones materiales	5	1
+56	3	17	II. Inmovilizaciones inmateriales	4	1
+54	3	16	I. Gastos de establecimiento	3	1
+58	3	19	IV. Inmovilizaciones financieras	6	1
+59	3	20	V. Acciones propias	7	1
+53	3	15	A) Accionistas (socios) por desembolsos no exigidos	1	0
 69	1	3	primera kk	6	0
 70	1	3	primera kk	5	0
 37	1	3	primera kk	4	1
@@ -11377,6 +11476,23 @@ COPY compbalance (idcompbalance, idbalance, idmpatrimonial, concepto, orden, tab
 42	1	9	sexta linea	14	1
 72	1	25	pruebas con de formulas.	9	0
 73	1	26	Seguimos probando el tema de las formulas.	8	0
+76	3	29	I. Capital suscrito	19	1
+77	3	30	II. Prima de emision	20	1
+78	3	31	III. Reserva de revalorizacion	21	1
+79	3	32	IV. Reserva	22	1
+81	3	34	VI. Perdidas y ganancias	24	1
+82	3	35	VII. Dividendo a cuenta entregado en el ejercicio.	25	1
+83	3	36	B) Ingresos a distribuir en varios ejercicios	26	0
+84	3	37	C) Provisiones para riesgos y gastos	27	0
+85	3	38	D) Acreedores a largo plazo	28	0
+87	3	40	TOTAL GENERAL (A+B+C+D+E)	30	0
+80	3	33	V. Resultados de ejercicios anteriores	23	1
+75	3	28	A) Fondos Propios	18	0
+61	3	45	D) Activo circulante	9	0
+65	3	42	III. Deudores	12	1
+64	3	43	IV. Inversiones financieras temporales	13	1
+67	3	47	V. Tesoreria	15	1
+68	3	48	VI. Ajuste por periodificacion	16	1
 88	4	49	A) GASTOS	1	0
 92	4	53	b) Cargas sociales	5	3
 91	4	52	a) Sueldos, salarios y asimilados	4	3
@@ -11405,40 +11521,13 @@ COPY compbalance (idcompbalance, idbalance, idmpatrimonial, concepto, orden, tab
 113	4	74	14.- Impuesto sobre sociedades	26	1
 114	4	75	15.- Otros impuestos	27	1
 115	4	76	VI. RESULTADO DEL EJERCICIO (BENEFICIOS) (AV -A14-A15)	28	0
-63	3	21	II. Existencias	18	1
-62	3	41	I. Accionistas por desembolso exigidos	17	1
-86	3	39	E) Acreedores a corto plazo	36	0
-60	3	46	C) Gastos a distribuir en varios ejercicios	15	0
-76	3	29	I. Capital suscrito	26	1
-77	3	30	II. Prima de emision	27	1
-78	3	31	III. Reserva de revalorizacion	28	1
-79	3	32	IV. Reserva	29	1
-81	3	34	VI. Perdidas y ganancias	31	1
-82	3	35	VII. Dividendo a cuenta entregado en el ejercicio.	32	1
-83	3	36	B) Ingresos a distribuir en varios ejercicios	33	0
-84	3	37	C) Provisiones para riesgos y gastos	34	0
-85	3	38	D) Acreedores a largo plazo	35	0
-87	3	40	TOTAL GENERAL (A+B+C+D+E)	37	0
-80	3	33	V. Resultados de ejercicios anteriores	30	1
-75	3	28	A) Fondos Propios	25	0
-61	3	45	D) Activo circulante	16	0
-65	3	42	III. Deudores	19	1
-64	3	43	IV. Inversiones financieras temporales	20	1
-67	3	47	V. Tesoreria	22	1
-68	3	48	VI. Ajuste por periodificacion	23	1
-116	3	79	V. Acciones propias	14	1
-117	3	80	IV. Inmovilizaciones financieras	12	1
-118	3	81	III. Inmovilizaciones materiales	10	1
-119	3	82	II. Inmovilizaciones inmateriales	8	1
-120	3	83	I. Gastos de establecimiento	6	1
-121	3	84	B) Inmovilizado	4	0
-122	3	85	A) Accionistas (socios) por desembolsos no exigidos	1	0
-74	3	27	TOTAL GENERAL	24	0
+55	3	22	B) Inmovilizado	2	0
+74	3	27	TOTAL GENERAL	17	0
 \.
 
 
 --
--- Data for TOC entry 157 (OID 168323)
+-- Data for TOC entry 158 (OID 249394)
 -- Name: balance; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11450,7 +11539,7 @@ COPY balance (idbalance, nombrebalance) FROM stdin;
 
 
 --
--- Data for TOC entry 158 (OID 168354)
+-- Data for TOC entry 159 (OID 249424)
 -- Name: pga_graphs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11459,7 +11548,7 @@ COPY pga_graphs (graphname, graphsource, graphcode) FROM stdin;
 
 
 --
--- Data for TOC entry 159 (OID 168359)
+-- Data for TOC entry 160 (OID 249429)
 -- Name: pga_images; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11468,7 +11557,7 @@ COPY pga_images (imagename, imagesource) FROM stdin;
 
 
 --
--- Data for TOC entry 160 (OID 168364)
+-- Data for TOC entry 161 (OID 249434)
 -- Name: pga_diagrams; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11477,38 +11566,62 @@ COPY pga_diagrams (diagramname, diagramtables, diagramlinks) FROM stdin;
 
 
 --
--- Data for TOC entry 161 (OID 168369)
+-- Data for TOC entry 162 (OID 249439)
 -- Name: pga_layout; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY pga_layout (tablename, nrcols, colnames, colwidth) FROM stdin;
+public.asiento	6	idasiento descripcion fecha comentariosasiento ordenasiento clase	150 150 150 150 150 150
+public.ejercicios	3	ejercicio periodo bloqueado	150 150 150
+public.registroiva	11	idregistroiva contrapartida baseimp iva factura idborrador incregistro regularizacion plan349 numorden cif	150 150 150 150 150 150 150 150 150 150 150
+public.cuenta	23	idcuenta codigo descripcion imputacion padre bloqueada idgrupo msg debe haber nodebe nohaber regularizacion activo nombreent_cuenta cifent_cuenta dirent_cuenta telent_cuenta coment_cuenta bancoent_cuenta emailent_cuenta webent_cuenta tipocuenta	150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150
+	23	idcuenta codigo descripcion imputacion padre bloqueada idgrupo msg debe haber nodebe nohaber regularizacion activo nombreent_cuenta cifent_cuenta dirent_cuenta telent_cuenta coment_cuenta bancoent_cuenta emailent_cuenta webent_cuenta tipocuenta	150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150
+public.borrador	18	idborrador codigoborrador idasiento iddiario fecha conceptocontable idcuenta descripcion debe haber contrapartida comentario idcanal marcaconciliacion idc_coste idapunte idtipoiva orden	150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150
 \.
 
 
 --
--- Data for TOC entry 162 (OID 168378)
+-- Data for TOC entry 163 (OID 249448)
 -- Name: amortizacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY amortizacion (idamortizacion, idcuentaactivo, idcuentaamortizacion, descamortizacion, nomamortizacion, fechacompra, fecha1cuota, valorcompra, periodicidad, numcuotas, metodo, nifproveedor, nomproveedor, dirproveedor, telproveedor, agrupacion) FROM stdin;
-3	\N	\N	\N	Me cago en la puta amortización de los cojones.	2004-01-01	\N	12.67	\N	5	\N	\N	\N	\N	\N	\N
-2	\N	\N	\N	Toma castaña de amortización, capullo	2003-01-01	\N	11.9	\N	35	\N	\N	\N	\N	\N	\N
-1	770	770	\N	Una amortización nueva	2003-01-01	\N	345	1	19	1	\N	\N	\N	\N	3
-4	\N	\N	\N	Y otra amortización más	2005-01-01	\N	123.54000000000001	\N	12	\N	\N	\N	\N	\N	\N
 \.
 
 
 --
--- Data for TOC entry 163 (OID 168386)
+-- Data for TOC entry 164 (OID 249456)
 -- Name: linamortizacion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY linamortizacion (idlinamortizacion, idamortizacion, idasiento, ejercicio, fechaprevista, cantidad) FROM stdin;
+COPY linamortizacion (idlinamortizacion, idamortizacion, idborrador, ejercicio, fechaprevista, cantidad) FROM stdin;
 \.
 
 
 --
--- TOC entry 79 (OID 178003)
+-- Data for TOC entry 165 (OID 249459)
+-- Name: ejercicios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY ejercicios (ejercicio, periodo, bloqueado) FROM stdin;
+2004	0	f
+2004	1	f
+2004	2	f
+2004	3	f
+2004	4	f
+2004	5	f
+2004	6	f
+2004	7	f
+2004	8	f
+2004	9	f
+2004	10	f
+2004	11	f
+2004	12	f
+\.
+
+
+--
+-- TOC entry 80 (OID 259147)
 -- Name: grupo_idgrupo_key; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -11516,7 +11629,7 @@ CREATE UNIQUE INDEX grupo_idgrupo_key ON grupo USING btree (idgrupo);
 
 
 --
--- TOC entry 93 (OID 178004)
+-- TOC entry 94 (OID 259148)
 -- Name: compbalance_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11525,7 +11638,7 @@ ALTER TABLE ONLY compbalance
 
 
 --
--- TOC entry 94 (OID 178006)
+-- TOC entry 95 (OID 259150)
 -- Name: balance_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11534,7 +11647,7 @@ ALTER TABLE ONLY balance
 
 
 --
--- TOC entry 92 (OID 178008)
+-- TOC entry 93 (OID 259152)
 -- Name: ivainteligente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11543,7 +11656,7 @@ ALTER TABLE ONLY ivainteligente
 
 
 --
--- TOC entry 90 (OID 178010)
+-- TOC entry 91 (OID 259154)
 -- Name: ainteligente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11552,7 +11665,7 @@ ALTER TABLE ONLY ainteligente
 
 
 --
--- TOC entry 91 (OID 178012)
+-- TOC entry 92 (OID 259156)
 -- Name: binteligente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11561,7 +11674,7 @@ ALTER TABLE ONLY binteligente
 
 
 --
--- TOC entry 77 (OID 178014)
+-- TOC entry 78 (OID 259158)
 -- Name: configuracion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11570,7 +11683,7 @@ ALTER TABLE ONLY configuracion
 
 
 --
--- TOC entry 78 (OID 178016)
+-- TOC entry 79 (OID 259160)
 -- Name: tiposiva_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11579,7 +11692,7 @@ ALTER TABLE ONLY tiposiva
 
 
 --
--- TOC entry 80 (OID 178018)
+-- TOC entry 81 (OID 259162)
 -- Name: grupo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11588,7 +11701,7 @@ ALTER TABLE ONLY grupo
 
 
 --
--- TOC entry 81 (OID 178020)
+-- TOC entry 82 (OID 259164)
 -- Name: cuenta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11597,7 +11710,7 @@ ALTER TABLE ONLY cuenta
 
 
 --
--- TOC entry 82 (OID 178022)
+-- TOC entry 83 (OID 259166)
 -- Name: canal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11606,7 +11719,7 @@ ALTER TABLE ONLY canal
 
 
 --
--- TOC entry 83 (OID 178024)
+-- TOC entry 84 (OID 259168)
 -- Name: c_coste_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11615,7 +11728,7 @@ ALTER TABLE ONLY c_coste
 
 
 --
--- TOC entry 84 (OID 178026)
+-- TOC entry 85 (OID 259170)
 -- Name: acumulado_c_coste_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11624,7 +11737,7 @@ ALTER TABLE ONLY acumulado_c_coste
 
 
 --
--- TOC entry 85 (OID 178028)
+-- TOC entry 86 (OID 259172)
 -- Name: acumulado_canal_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11633,7 +11746,7 @@ ALTER TABLE ONLY acumulado_canal
 
 
 --
--- TOC entry 86 (OID 178030)
+-- TOC entry 87 (OID 259174)
 -- Name: diario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11642,7 +11755,7 @@ ALTER TABLE ONLY diario
 
 
 --
--- TOC entry 87 (OID 178032)
+-- TOC entry 88 (OID 259176)
 -- Name: asiento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11651,7 +11764,7 @@ ALTER TABLE ONLY asiento
 
 
 --
--- TOC entry 88 (OID 178034)
+-- TOC entry 89 (OID 259178)
 -- Name: apunte_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11660,7 +11773,7 @@ ALTER TABLE ONLY apunte
 
 
 --
--- TOC entry 89 (OID 178036)
+-- TOC entry 90 (OID 259180)
 -- Name: borrador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11669,7 +11782,7 @@ ALTER TABLE ONLY borrador
 
 
 --
--- TOC entry 95 (OID 178038)
+-- TOC entry 96 (OID 259182)
 -- Name: pga_graphs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11678,7 +11791,7 @@ ALTER TABLE ONLY pga_graphs
 
 
 --
--- TOC entry 96 (OID 178040)
+-- TOC entry 97 (OID 259184)
 -- Name: pga_images_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11687,7 +11800,7 @@ ALTER TABLE ONLY pga_images
 
 
 --
--- TOC entry 97 (OID 178042)
+-- TOC entry 98 (OID 259186)
 -- Name: pga_diagrams_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11696,7 +11809,7 @@ ALTER TABLE ONLY pga_diagrams
 
 
 --
--- TOC entry 98 (OID 178044)
+-- TOC entry 99 (OID 259188)
 -- Name: pga_layout_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11705,7 +11818,7 @@ ALTER TABLE ONLY pga_layout
 
 
 --
--- TOC entry 99 (OID 178046)
+-- TOC entry 100 (OID 259190)
 -- Name: amortizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11714,7 +11827,7 @@ ALTER TABLE ONLY amortizacion
 
 
 --
--- TOC entry 100 (OID 178048)
+-- TOC entry 101 (OID 259192)
 -- Name: linamortizacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11723,7 +11836,7 @@ ALTER TABLE ONLY linamortizacion
 
 
 --
--- TOC entry 164 (OID 178050)
+-- TOC entry 166 (OID 259194)
 -- Name: amortizacion_cuenta_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11732,7 +11845,7 @@ ALTER TABLE ONLY amortizacion
 
 
 --
--- TOC entry 165 (OID 178054)
+-- TOC entry 167 (OID 259198)
 -- Name: amortizacion_cuentaamort_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11741,7 +11854,7 @@ ALTER TABLE ONLY amortizacion
 
 
 --
--- TOC entry 166 (OID 178058)
+-- TOC entry 168 (OID 259202)
 -- Name: linamoritzacion_amortizacion_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -11750,17 +11863,17 @@ ALTER TABLE ONLY linamortizacion
 
 
 --
--- TOC entry 167 (OID 178062)
+-- TOC entry 169 (OID 259206)
 -- Name: linamortizacion_borrador_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY linamortizacion
-    ADD CONSTRAINT linamortizacion_borrador_fk FOREIGN KEY (idasiento) REFERENCES borrador(idborrador);
+    ADD CONSTRAINT linamortizacion_borrador_fk FOREIGN KEY (idborrador) REFERENCES borrador(idborrador);
 
 
 --
--- TOC entry 226 (OID 178066)
--- Name: RI_ConstraintTrigger_178066; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 228 (OID 259210)
+-- Name: RI_ConstraintTrigger_259210; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
@@ -11772,8 +11885,8 @@ CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
 
 
 --
--- TOC entry 168 (OID 178067)
--- Name: RI_ConstraintTrigger_178067; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 170 (OID 259211)
+-- Name: RI_ConstraintTrigger_259211; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
@@ -11785,8 +11898,8 @@ CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
 
 
 --
--- TOC entry 169 (OID 178068)
--- Name: RI_ConstraintTrigger_178068; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 171 (OID 259212)
+-- Name: RI_ConstraintTrigger_259212; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
@@ -11798,8 +11911,8 @@ CREATE CONSTRAINT TRIGGER idtipoiva_tipoiva_fk
 
 
 --
--- TOC entry 236 (OID 178069)
--- Name: RI_ConstraintTrigger_178069; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 238 (OID 259213)
+-- Name: RI_ConstraintTrigger_259213; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
@@ -11811,8 +11924,8 @@ CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
 
 
 --
--- TOC entry 170 (OID 178070)
--- Name: RI_ConstraintTrigger_178070; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 172 (OID 259214)
+-- Name: RI_ConstraintTrigger_259214; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
@@ -11824,8 +11937,8 @@ CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
 
 
 --
--- TOC entry 171 (OID 178071)
--- Name: RI_ConstraintTrigger_178071; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 173 (OID 259215)
+-- Name: RI_ConstraintTrigger_259215; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
@@ -11837,8 +11950,8 @@ CREATE CONSTRAINT TRIGGER idtipoivaborr_tipoiva_fk
 
 
 --
--- TOC entry 174 (OID 178072)
--- Name: RI_ConstraintTrigger_178072; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 176 (OID 259216)
+-- Name: RI_ConstraintTrigger_259216; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_padre_fk
@@ -11850,8 +11963,8 @@ CREATE CONSTRAINT TRIGGER cuenta_padre_fk
 
 
 --
--- TOC entry 175 (OID 178073)
--- Name: RI_ConstraintTrigger_178073; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 177 (OID 259217)
+-- Name: RI_ConstraintTrigger_259217; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_padre_fk
@@ -11863,8 +11976,8 @@ CREATE CONSTRAINT TRIGGER cuenta_padre_fk
 
 
 --
--- TOC entry 176 (OID 178074)
--- Name: RI_ConstraintTrigger_178074; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 178 (OID 259218)
+-- Name: RI_ConstraintTrigger_259218; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_padre_fk
@@ -11876,8 +11989,8 @@ CREATE CONSTRAINT TRIGGER cuenta_padre_fk
 
 
 --
--- TOC entry 177 (OID 178075)
--- Name: RI_ConstraintTrigger_178075; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 179 (OID 259219)
+-- Name: RI_ConstraintTrigger_259219; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
@@ -11889,8 +12002,8 @@ CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
 
 
 --
--- TOC entry 172 (OID 178076)
--- Name: RI_ConstraintTrigger_178076; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 174 (OID 259220)
+-- Name: RI_ConstraintTrigger_259220; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
@@ -11902,8 +12015,8 @@ CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
 
 
 --
--- TOC entry 173 (OID 178077)
--- Name: RI_ConstraintTrigger_178077; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 175 (OID 259221)
+-- Name: RI_ConstraintTrigger_259221; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
@@ -11915,8 +12028,8 @@ CREATE CONSTRAINT TRIGGER cuenta_idgrupo_fk
 
 
 --
--- TOC entry 201 (OID 178078)
--- Name: RI_ConstraintTrigger_178078; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 203 (OID 259222)
+-- Name: RI_ConstraintTrigger_259222; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER c_coste_fk
@@ -11928,8 +12041,8 @@ CREATE CONSTRAINT TRIGGER c_coste_fk
 
 
 --
--- TOC entry 202 (OID 178079)
--- Name: RI_ConstraintTrigger_178079; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 204 (OID 259223)
+-- Name: RI_ConstraintTrigger_259223; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER c_coste_fk
@@ -11941,8 +12054,8 @@ CREATE CONSTRAINT TRIGGER c_coste_fk
 
 
 --
--- TOC entry 203 (OID 178080)
--- Name: RI_ConstraintTrigger_178080; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 205 (OID 259224)
+-- Name: RI_ConstraintTrigger_259224; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER c_coste_fk
@@ -11954,8 +12067,8 @@ CREATE CONSTRAINT TRIGGER c_coste_fk
 
 
 --
--- TOC entry 213 (OID 178081)
--- Name: RI_ConstraintTrigger_178081; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 215 (OID 259225)
+-- Name: RI_ConstraintTrigger_259225; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
@@ -11967,8 +12080,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
 
 
 --
--- TOC entry 178 (OID 178082)
--- Name: RI_ConstraintTrigger_178082; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 180 (OID 259226)
+-- Name: RI_ConstraintTrigger_259226; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
@@ -11980,8 +12093,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
 
 
 --
--- TOC entry 179 (OID 178083)
--- Name: RI_ConstraintTrigger_178083; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 181 (OID 259227)
+-- Name: RI_ConstraintTrigger_259227; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
@@ -11993,8 +12106,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idcuenta_fk
 
 
 --
--- TOC entry 214 (OID 178084)
--- Name: RI_ConstraintTrigger_178084; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 216 (OID 259228)
+-- Name: RI_ConstraintTrigger_259228; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
@@ -12006,8 +12119,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
 
 
 --
--- TOC entry 204 (OID 178085)
--- Name: RI_ConstraintTrigger_178085; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 206 (OID 259229)
+-- Name: RI_ConstraintTrigger_259229; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
@@ -12019,8 +12132,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
 
 
 --
--- TOC entry 205 (OID 178086)
--- Name: RI_ConstraintTrigger_178086; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 207 (OID 259230)
+-- Name: RI_ConstraintTrigger_259230; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
@@ -12032,8 +12145,8 @@ CREATE CONSTRAINT TRIGGER acumulado_c_coste_idc_coste_fk
 
 
 --
--- TOC entry 215 (OID 178087)
--- Name: RI_ConstraintTrigger_178087; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 217 (OID 259231)
+-- Name: RI_ConstraintTrigger_259231; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
@@ -12045,8 +12158,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
 
 
 --
--- TOC entry 180 (OID 178088)
--- Name: RI_ConstraintTrigger_178088; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 182 (OID 259232)
+-- Name: RI_ConstraintTrigger_259232; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
@@ -12058,8 +12171,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
 
 
 --
--- TOC entry 181 (OID 178089)
--- Name: RI_ConstraintTrigger_178089; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 183 (OID 259233)
+-- Name: RI_ConstraintTrigger_259233; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
@@ -12071,8 +12184,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcuenta_fk
 
 
 --
--- TOC entry 216 (OID 178090)
--- Name: RI_ConstraintTrigger_178090; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 218 (OID 259234)
+-- Name: RI_ConstraintTrigger_259234; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
@@ -12084,8 +12197,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
 
 
 --
--- TOC entry 193 (OID 178091)
--- Name: RI_ConstraintTrigger_178091; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 195 (OID 259235)
+-- Name: RI_ConstraintTrigger_259235; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
@@ -12097,8 +12210,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
 
 
 --
--- TOC entry 194 (OID 178092)
--- Name: RI_ConstraintTrigger_178092; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 196 (OID 259236)
+-- Name: RI_ConstraintTrigger_259236; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
@@ -12110,8 +12223,8 @@ CREATE CONSTRAINT TRIGGER acumulado_idcanal_fk
 
 
 --
--- TOC entry 227 (OID 178093)
--- Name: RI_ConstraintTrigger_178093; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 229 (OID 259237)
+-- Name: RI_ConstraintTrigger_259237; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
@@ -12123,8 +12236,8 @@ CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
 
 
 --
--- TOC entry 222 (OID 178094)
--- Name: RI_ConstraintTrigger_178094; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 224 (OID 259238)
+-- Name: RI_ConstraintTrigger_259238; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
@@ -12136,8 +12249,8 @@ CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
 
 
 --
--- TOC entry 223 (OID 178095)
--- Name: RI_ConstraintTrigger_178095; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 225 (OID 259239)
+-- Name: RI_ConstraintTrigger_259239; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
@@ -12149,8 +12262,8 @@ CREATE CONSTRAINT TRIGGER apunte_idasiento_fk
 
 
 --
--- TOC entry 228 (OID 178096)
--- Name: RI_ConstraintTrigger_178096; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 230 (OID 259240)
+-- Name: RI_ConstraintTrigger_259240; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
@@ -12162,8 +12275,8 @@ CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
 
 
 --
--- TOC entry 218 (OID 178097)
--- Name: RI_ConstraintTrigger_178097; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 220 (OID 259241)
+-- Name: RI_ConstraintTrigger_259241; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
@@ -12175,8 +12288,8 @@ CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
 
 
 --
--- TOC entry 219 (OID 178098)
--- Name: RI_ConstraintTrigger_178098; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 221 (OID 259242)
+-- Name: RI_ConstraintTrigger_259242; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
@@ -12188,8 +12301,8 @@ CREATE CONSTRAINT TRIGGER apunte_iddiario_fk
 
 
 --
--- TOC entry 229 (OID 178099)
--- Name: RI_ConstraintTrigger_178099; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 231 (OID 259243)
+-- Name: RI_ConstraintTrigger_259243; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
@@ -12201,8 +12314,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
 
 
 --
--- TOC entry 182 (OID 178100)
--- Name: RI_ConstraintTrigger_178100; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 184 (OID 259244)
+-- Name: RI_ConstraintTrigger_259244; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
@@ -12214,8 +12327,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
 
 
 --
--- TOC entry 183 (OID 178101)
--- Name: RI_ConstraintTrigger_178101; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 185 (OID 259245)
+-- Name: RI_ConstraintTrigger_259245; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
@@ -12227,8 +12340,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcuenta_fk
 
 
 --
--- TOC entry 230 (OID 178102)
--- Name: RI_ConstraintTrigger_178102; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 232 (OID 259246)
+-- Name: RI_ConstraintTrigger_259246; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
@@ -12240,8 +12353,8 @@ CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
 
 
 --
--- TOC entry 184 (OID 178103)
--- Name: RI_ConstraintTrigger_178103; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 186 (OID 259247)
+-- Name: RI_ConstraintTrigger_259247; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
@@ -12253,8 +12366,8 @@ CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
 
 
 --
--- TOC entry 185 (OID 178104)
--- Name: RI_ConstraintTrigger_178104; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 187 (OID 259248)
+-- Name: RI_ConstraintTrigger_259248; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
@@ -12266,8 +12379,8 @@ CREATE CONSTRAINT TRIGGER apunte_contrapartida_fk
 
 
 --
--- TOC entry 231 (OID 178105)
--- Name: RI_ConstraintTrigger_178105; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 233 (OID 259249)
+-- Name: RI_ConstraintTrigger_259249; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
@@ -12279,8 +12392,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
 
 
 --
--- TOC entry 195 (OID 178106)
--- Name: RI_ConstraintTrigger_178106; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 197 (OID 259250)
+-- Name: RI_ConstraintTrigger_259250; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
@@ -12292,8 +12405,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
 
 
 --
--- TOC entry 196 (OID 178107)
--- Name: RI_ConstraintTrigger_178107; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 198 (OID 259251)
+-- Name: RI_ConstraintTrigger_259251; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
@@ -12305,8 +12418,8 @@ CREATE CONSTRAINT TRIGGER apunte_idcanal_fk
 
 
 --
--- TOC entry 232 (OID 178108)
--- Name: RI_ConstraintTrigger_178108; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 234 (OID 259252)
+-- Name: RI_ConstraintTrigger_259252; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
@@ -12318,8 +12431,8 @@ CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
 
 
 --
--- TOC entry 206 (OID 178109)
--- Name: RI_ConstraintTrigger_178109; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 208 (OID 259253)
+-- Name: RI_ConstraintTrigger_259253; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
@@ -12331,8 +12444,8 @@ CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
 
 
 --
--- TOC entry 207 (OID 178110)
--- Name: RI_ConstraintTrigger_178110; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 209 (OID 259254)
+-- Name: RI_ConstraintTrigger_259254; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
@@ -12344,8 +12457,8 @@ CREATE CONSTRAINT TRIGGER apunte_idc_coste_fk
 
 
 --
--- TOC entry 237 (OID 178111)
--- Name: RI_ConstraintTrigger_178111; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 239 (OID 259255)
+-- Name: RI_ConstraintTrigger_259255; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
@@ -12357,8 +12470,8 @@ CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
 
 
 --
--- TOC entry 224 (OID 178112)
--- Name: RI_ConstraintTrigger_178112; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 226 (OID 259256)
+-- Name: RI_ConstraintTrigger_259256; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
@@ -12370,8 +12483,8 @@ CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
 
 
 --
--- TOC entry 225 (OID 178113)
--- Name: RI_ConstraintTrigger_178113; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 227 (OID 259257)
+-- Name: RI_ConstraintTrigger_259257; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
@@ -12383,8 +12496,8 @@ CREATE CONSTRAINT TRIGGER borrador_idasiento_fk
 
 
 --
--- TOC entry 238 (OID 178114)
--- Name: RI_ConstraintTrigger_178114; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 240 (OID 259258)
+-- Name: RI_ConstraintTrigger_259258; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
@@ -12396,8 +12509,8 @@ CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
 
 
 --
--- TOC entry 220 (OID 178115)
--- Name: RI_ConstraintTrigger_178115; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 222 (OID 259259)
+-- Name: RI_ConstraintTrigger_259259; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
@@ -12409,8 +12522,8 @@ CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
 
 
 --
--- TOC entry 221 (OID 178116)
--- Name: RI_ConstraintTrigger_178116; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 223 (OID 259260)
+-- Name: RI_ConstraintTrigger_259260; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
@@ -12422,8 +12535,8 @@ CREATE CONSTRAINT TRIGGER borrador_iddiario_fk
 
 
 --
--- TOC entry 239 (OID 178117)
--- Name: RI_ConstraintTrigger_178117; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 241 (OID 259261)
+-- Name: RI_ConstraintTrigger_259261; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
@@ -12435,8 +12548,8 @@ CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
 
 
 --
--- TOC entry 186 (OID 178118)
--- Name: RI_ConstraintTrigger_178118; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 188 (OID 259262)
+-- Name: RI_ConstraintTrigger_259262; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
@@ -12448,8 +12561,8 @@ CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
 
 
 --
--- TOC entry 187 (OID 178119)
--- Name: RI_ConstraintTrigger_178119; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 189 (OID 259263)
+-- Name: RI_ConstraintTrigger_259263; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
@@ -12461,8 +12574,8 @@ CREATE CONSTRAINT TRIGGER borrador_idcuenta_fk
 
 
 --
--- TOC entry 240 (OID 178120)
--- Name: RI_ConstraintTrigger_178120; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 242 (OID 259264)
+-- Name: RI_ConstraintTrigger_259264; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
@@ -12474,8 +12587,8 @@ CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
 
 
 --
--- TOC entry 188 (OID 178121)
--- Name: RI_ConstraintTrigger_178121; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 190 (OID 259265)
+-- Name: RI_ConstraintTrigger_259265; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
@@ -12487,8 +12600,8 @@ CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
 
 
 --
--- TOC entry 189 (OID 178122)
--- Name: RI_ConstraintTrigger_178122; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 191 (OID 259266)
+-- Name: RI_ConstraintTrigger_259266; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
@@ -12500,8 +12613,8 @@ CREATE CONSTRAINT TRIGGER borrador_contrapartida_fk
 
 
 --
--- TOC entry 241 (OID 178123)
--- Name: RI_ConstraintTrigger_178123; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 243 (OID 259267)
+-- Name: RI_ConstraintTrigger_259267; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_canal_fk
@@ -12513,8 +12626,8 @@ CREATE CONSTRAINT TRIGGER borrador_canal_fk
 
 
 --
--- TOC entry 197 (OID 178124)
--- Name: RI_ConstraintTrigger_178124; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 199 (OID 259268)
+-- Name: RI_ConstraintTrigger_259268; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_canal_fk
@@ -12526,8 +12639,8 @@ CREATE CONSTRAINT TRIGGER borrador_canal_fk
 
 
 --
--- TOC entry 198 (OID 178125)
--- Name: RI_ConstraintTrigger_178125; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 200 (OID 259269)
+-- Name: RI_ConstraintTrigger_259269; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_canal_fk
@@ -12539,8 +12652,8 @@ CREATE CONSTRAINT TRIGGER borrador_canal_fk
 
 
 --
--- TOC entry 242 (OID 178126)
--- Name: RI_ConstraintTrigger_178126; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 244 (OID 259270)
+-- Name: RI_ConstraintTrigger_259270; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
@@ -12552,8 +12665,8 @@ CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
 
 
 --
--- TOC entry 208 (OID 178127)
--- Name: RI_ConstraintTrigger_178127; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 210 (OID 259271)
+-- Name: RI_ConstraintTrigger_259271; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
@@ -12565,8 +12678,8 @@ CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
 
 
 --
--- TOC entry 209 (OID 178128)
--- Name: RI_ConstraintTrigger_178128; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 211 (OID 259272)
+-- Name: RI_ConstraintTrigger_259272; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
@@ -12578,7 +12691,7 @@ CREATE CONSTRAINT TRIGGER borrador_idc_coste_fk
 
 
 --
--- TOC entry 233 (OID 178129)
+-- TOC entry 235 (OID 259273)
 -- Name: nuevo_apunte; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12589,7 +12702,7 @@ CREATE TRIGGER nuevo_apunte
 
 
 --
--- TOC entry 234 (OID 178130)
+-- TOC entry 236 (OID 259274)
 -- Name: nuevo_apunte1; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12600,7 +12713,7 @@ CREATE TRIGGER nuevo_apunte1
 
 
 --
--- TOC entry 235 (OID 178131)
+-- TOC entry 237 (OID 259275)
 -- Name: nuevo_apunte2; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12611,7 +12724,7 @@ CREATE TRIGGER nuevo_apunte2
 
 
 --
--- TOC entry 191 (OID 178132)
+-- TOC entry 193 (OID 259276)
 -- Name: nueva_cuenta; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12622,7 +12735,7 @@ CREATE TRIGGER nueva_cuenta
 
 
 --
--- TOC entry 190 (OID 178133)
+-- TOC entry 192 (OID 259277)
 -- Name: borra_cuenta; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12633,7 +12746,7 @@ CREATE TRIGGER borra_cuenta
 
 
 --
--- TOC entry 200 (OID 178134)
+-- TOC entry 202 (OID 259278)
 -- Name: nuevo_canal; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12644,7 +12757,7 @@ CREATE TRIGGER nuevo_canal
 
 
 --
--- TOC entry 199 (OID 178135)
+-- TOC entry 201 (OID 259279)
 -- Name: borra_canal; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12655,7 +12768,7 @@ CREATE TRIGGER borra_canal
 
 
 --
--- TOC entry 211 (OID 178136)
+-- TOC entry 213 (OID 259280)
 -- Name: nuevo_ccoste; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12666,7 +12779,7 @@ CREATE TRIGGER nuevo_ccoste
 
 
 --
--- TOC entry 210 (OID 178137)
+-- TOC entry 212 (OID 259281)
 -- Name: borra_ccoste; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12677,7 +12790,7 @@ CREATE TRIGGER borra_ccoste
 
 
 --
--- TOC entry 192 (OID 178138)
+-- TOC entry 194 (OID 259282)
 -- Name: propaga_acumulado_cuenta; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12688,7 +12801,7 @@ CREATE TRIGGER propaga_acumulado_cuenta
 
 
 --
--- TOC entry 212 (OID 178139)
+-- TOC entry 214 (OID 259283)
 -- Name: propaga_acumulado_ccoste; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12699,7 +12812,7 @@ CREATE TRIGGER propaga_acumulado_ccoste
 
 
 --
--- TOC entry 217 (OID 178140)
+-- TOC entry 219 (OID 259284)
 -- Name: acumulados_canal_fk; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -12710,7 +12823,7 @@ CREATE TRIGGER acumulados_canal_fk
 
 
 --
--- TOC entry 5 (OID 168227)
+-- TOC entry 5 (OID 249298)
 -- Name: grupo_idgrupo_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12718,15 +12831,15 @@ SELECT pg_catalog.setval('grupo_idgrupo_seq', 1, false);
 
 
 --
--- TOC entry 7 (OID 168232)
+-- TOC entry 7 (OID 249303)
 -- Name: cuenta_idcuenta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cuenta_idcuenta_seq', 770, true);
+SELECT pg_catalog.setval('cuenta_idcuenta_seq', 794, true);
 
 
 --
--- TOC entry 9 (OID 168239)
+-- TOC entry 9 (OID 249310)
 -- Name: canal_idcanal_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12734,7 +12847,7 @@ SELECT pg_catalog.setval('canal_idcanal_seq', 10, true);
 
 
 --
--- TOC entry 11 (OID 168244)
+-- TOC entry 11 (OID 249315)
 -- Name: c_coste_idc_coste_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12742,23 +12855,23 @@ SELECT pg_catalog.setval('c_coste_idc_coste_seq', 7, true);
 
 
 --
--- TOC entry 13 (OID 168249)
+-- TOC entry 13 (OID 249320)
 -- Name: acumulado_c_c_idacumulado_c_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('acumulado_c_c_idacumulado_c_seq', 6481, true);
+SELECT pg_catalog.setval('acumulado_c_c_idacumulado_c_seq', 6625, true);
 
 
 --
--- TOC entry 15 (OID 168254)
+-- TOC entry 15 (OID 249325)
 -- Name: acumulado_can_idacumulado_c_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('acumulado_can_idacumulado_c_seq', 6380, true);
+SELECT pg_catalog.setval('acumulado_can_idacumulado_c_seq', 6476, true);
 
 
 --
--- TOC entry 17 (OID 168259)
+-- TOC entry 17 (OID 249330)
 -- Name: diario_iddiario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12766,7 +12879,7 @@ SELECT pg_catalog.setval('diario_iddiario_seq', 1, false);
 
 
 --
--- TOC entry 19 (OID 168264)
+-- TOC entry 19 (OID 249335)
 -- Name: asiento_idasiento_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12774,39 +12887,39 @@ SELECT pg_catalog.setval('asiento_idasiento_seq', 44, true);
 
 
 --
--- TOC entry 21 (OID 168272)
+-- TOC entry 21 (OID 249343)
 -- Name: apunte_idapunte_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('apunte_idapunte_seq', 3851, true);
+SELECT pg_catalog.setval('apunte_idapunte_seq', 3487, true);
 
 
 --
--- TOC entry 23 (OID 168278)
+-- TOC entry 23 (OID 249349)
 -- Name: borrador_idborrador_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('borrador_idborrador_seq', 1675, true);
+SELECT pg_catalog.setval('borrador_idborrador_seq', 1643, true);
 
 
 --
--- TOC entry 25 (OID 168283)
+-- TOC entry 25 (OID 249354)
 -- Name: registroiva_idregistroiva_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('registroiva_idregistroiva_seq', 53, true);
+SELECT pg_catalog.setval('registroiva_idregistroiva_seq', 61, true);
 
 
 --
--- TOC entry 27 (OID 168288)
+-- TOC entry 27 (OID 249359)
 -- Name: ainteligente_idainteligente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('ainteligente_idainteligente_seq', 13, true);
+SELECT pg_catalog.setval('ainteligente_idainteligente_seq', 14, true);
 
 
 --
--- TOC entry 29 (OID 168296)
+-- TOC entry 29 (OID 249367)
 -- Name: binteligente_idbinteligente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12814,39 +12927,39 @@ SELECT pg_catalog.setval('binteligente_idbinteligente_seq', 1, false);
 
 
 --
--- TOC entry 70 (OID 168301)
+-- TOC entry 71 (OID 249372)
 -- Name: ivainteligente_idivainteligente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('ivainteligente_idivainteligente_seq', 55, true);
+SELECT pg_catalog.setval('ivainteligente_idivainteligente_seq', 57, true);
 
 
 --
--- TOC entry 71 (OID 168306)
+-- TOC entry 72 (OID 249377)
 -- Name: compmasap_idcompmasap_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('compmasap_idcompmasap_seq', 657, true);
+SELECT pg_catalog.setval('compmasap_idcompmasap_seq', 605, true);
 
 
 --
--- TOC entry 72 (OID 168311)
+-- TOC entry 73 (OID 249382)
 -- Name: mpatrimonial_idmpatrimonial_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('mpatrimonial_idmpatrimonial_seq', 85, true);
+SELECT pg_catalog.setval('mpatrimonial_idmpatrimonial_seq', 78, true);
 
 
 --
--- TOC entry 73 (OID 168316)
+-- TOC entry 74 (OID 249387)
 -- Name: compbalance_idcompbalance_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('compbalance_idcompbalance_seq', 122, true);
+SELECT pg_catalog.setval('compbalance_idcompbalance_seq', 115, true);
 
 
 --
--- TOC entry 74 (OID 168321)
+-- TOC entry 75 (OID 249392)
 -- Name: balance_idbalance_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -12854,15 +12967,15 @@ SELECT pg_catalog.setval('balance_idbalance_seq', 5, true);
 
 
 --
--- TOC entry 75 (OID 168376)
+-- TOC entry 76 (OID 249446)
 -- Name: amortizacion_idamortizacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('amortizacion_idamortizacion_seq', 4, true);
+SELECT pg_catalog.setval('amortizacion_idamortizacion_seq', 1, false);
 
 
 --
--- TOC entry 76 (OID 168384)
+-- TOC entry 77 (OID 249454)
 -- Name: linamortizacion_idlinamortizacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
