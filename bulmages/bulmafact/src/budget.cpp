@@ -135,13 +135,15 @@ void Budget::inicialize() {
 	m_list->hideColumn(COL_IDARTICULO);
 	m_list->hideColumn(COL_REMOVE);
 	
-	m_list->setNumRows(1000);
+	m_list->setNumRows(10);
 	
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
 	m_list->setColumnReadOnly(COL_NOMARTICULO,true);
 	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
 	m_list->setPaletteBackgroundColor("#AFFAFA");   
 	m_list->setReadOnly(FALSE);
+	m_list->installEventFilter( this );
+	
 	
 // Inicializamos la tabla de descuentos del presupuesto
 	m_listDiscounts->setNumRows( 0 );
@@ -157,7 +159,7 @@ void Budget::inicialize() {
 	m_listDiscounts->setColumnWidth(COL_DESCUENTO_CONCEPTDPRESUPUESTO,500);
 	m_listDiscounts->setColumnWidth(COL_DESCUENTO_PROPORCIONDPRESUPUESTO,100);
 	
-	m_listDiscounts->setNumRows(100);
+	m_listDiscounts->setNumRows(10);
 
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
 	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
@@ -464,3 +466,24 @@ int Budget::deleteBudgetLine(int line) {
 void Budget::cancel() {
 	close();
 }
+
+
+bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
+	if ( obj == m_list ) {
+		if ( ev->type() == QEvent::KeyPress ) {
+			QKeyEvent *k = (QKeyEvent *)ev;
+			qDebug( "Ate key press %d", k->key() );
+			if (k->key()==Qt::Key_Enter || k->key() == Qt::Key_Return ) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
+	} else {
+		// pass the event on to the parent class
+		return QWidget::eventFilter( obj, ev );
+	}
+}
+

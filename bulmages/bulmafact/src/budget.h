@@ -51,6 +51,9 @@ private:
 	int insertBudgetLine(int);
 	int updateBudgetLine(int);
 	int deleteBudgetLine(int);
+	
+protected:
+	bool eventFilter( QObject *obj, QEvent *ev );
 	 
 public slots:
    virtual void searchClient();

@@ -8,6 +8,34 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>21/12/2004</td>
+<td><center><b>Directiva de Patentes de Programas en la lista de Puntos A del Consejo Agrícola</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Nos sentimos muy preocupados por lo que representa que la conocida como <i>"directiva de patentes de software"</i> de comisión se pueda aprovar hoy martes 21 sobre el sector informático. El mayor peligro actual para la innovacion, hasta asociaciones de informáticos se han manifestado en contra.
+<br>
+Más información en:
+<ul>
+<li><a href="http://proinnova.hispalinux.es/">Proinnova</a> [ES]
+</li><li><a href="http://demo.ffii.org/">Acciones en la Red</a>
+</li><li><a href="http://swpat.ffii.org/letter/cons0406/index.es.html">Petici&oacute;n Urgente</a> [ES]
+
+</li><li><a href="http://kwiki.ffii.org/ConsRevers04En">Revirtamos la Decisi&oacute;n del Consejo del 18 de mayo</a>
+</li>
+<li><a href="http://kwiki.ffii.org/SwpatcninoEs">Noticias FFII sobre Patentes de Programaci&oacute;n</a> [ES]</li>
+<li><a href="http://swpat.ffii.org/">FFII: Patentes de Programas en Europa</a>
+<li><a href="http://www.nosoftwarepatents.com/es/m/intro/index.html">NoSoftwarePatents.com</a> [ES]</li>
+<li><a href="http://barrapunto.com/article.pl?sid=04/12/19/0825236">Barrapunto.com</a> [ES]</li>
+<li><a href="http://bulma.net/body.phtml?nIdNoticia=2132">Bulma.net</a> [ES]</li>
+</ul>
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>5/12/2004</td>
 <td><center><b>Disponible Manual de Doxigen</b></center></td>
 </tr>
@@ -104,18 +132,6 @@ Enhorabuena!!!!!!!!!!
 </tr>
 </table>
 
-<br>
-
-<table border=0 cellspacing="0" class="news">
-<tr class="head">
-<td width=100>10/11/2004</td>
-<td><center><b>Disponibles Manuales Básicos de Jabber y CVS</b></center></td>
-</tr>
-<tr>
-<td colspan=2>Ante el interés que ha suscitado el proyecto despues de la publicación de la noticia de la creación de IGLUES en <A href="http://barrapunto.com">Barrapunto</A>, <A href="http://bulma.net">Bulma</A> y en la publicación Todo Linux, se ha creido conveniente documentar dos de los programas que nos son de utilidad en nuestro proyecto, tanto por el aspecto del desarrollo (manual de CVS) como a nivel de relación social (manual de Jabber). Ambos se encuentran en la sección de <A href="http://www.iglues.org/home.php?go=manuales">documentación</A> de nuestra web.
-</td>
-</tr>
-</table>
 
 </div>
 '; 
