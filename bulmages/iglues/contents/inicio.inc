@@ -8,11 +8,24 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>12/03/2005</td>
+<td><center><b>I Convención Igluera</b></center></td>
+</tr>
+<tr>
+<td colspan=2>El pasado fin de semana tuvo lugar en Palma de Mallorca la Primera Convención Igluera. Fueron tres dias de convivencia, intercambio de opiniones, y toma de algunas decisiones. Más detalles en <A href="documentos/cronica_kedada.sxw" target="Nueva">este documento</A> y las fotos <a href="cmallorca/" target="Nueva">aquí</A>.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>23/02/2005</td>
 <td><center><b>Liberada Primera Versions de RTK::Report Toolkit</b></center></td>
 </tr>
 <tr>
-<td colspan=2>Santiago Capel ha anunciado en la lista de correo de bulmagés la liberación de la primera versión de Reports. RTK es una grupo de herramientas bajo licencia GNU GPL para generar informes desde diferentes fuentes (que incluyen ficheros de texto plano, XML y SQL) a distintos formatos (ficheros de texto plano, HTML, OppenOffice Calc y en un visualizador gráfico propio) mediante un sistema de plantillas. 
+<td colspan=2>Santiago Capel ha anunciado en la lista de correo de bulmagés la liberación de la primera versión de Reports. RTK es una grupo de herramientas bajo licencia GNU GPL para generar informes desde diferentes fuentes (que incluyen ficheros de texto plano, XML y SQL) a distintos formatos (ficheros de texto plano, HTML, OpenOffice Calc y en un visualizador gráfico propio) mediante un sistema de plantillas. 
 <br><br>
 Es el primer intento de crear una herramienta de generación de informes de calidad, al estilo de Crystal Reports(C), o Ms Access(C). El código está totalmente orientado a objetos y diseñado para ser extremadamente escalable, pequeño y eficiente.<br><br>
 La página del proyecto es: <A href="http://reports.sourceforge.net" target="nueva">http://reports.sourceforge.net</A>  

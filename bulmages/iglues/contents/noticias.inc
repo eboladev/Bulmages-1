@@ -9,6 +9,19 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>12/03/2005</td>
+<td><center><b>I Convención Igluera</b></center></td>
+</tr>
+<tr>
+<td colspan=2>El pasado fin de semana tuvo lugar en Palma de Mallorca la Primera Convención Igluera. Fueron tres dias de convivencia, intercambio de opiniones, y toma de algunas decisiones. Más detalles en <A href="documentos/cronica_kedada.sxw" target="Nueva">este documento</A> y las fotos <a href="cmallorca/" target="Nueva">aquí</A>.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>23/02/2005</td>
 <td><center><b>Liberada Primera Versions de RTK::Report Toolkit</b></center></td>
 </tr>
