@@ -28,8 +28,7 @@ void BPasswd::validar() {
     delete this;
 }
 
-BPasswd::~BPasswd()
-{
+BPasswd::~BPasswd() {
 }
 
 

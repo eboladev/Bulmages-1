@@ -18,7 +18,7 @@
 //#define libFileName "/usr/local/lib/bulmages/libbulmafact.so"
 
 //ruta a la libreria bulmafact para la versión en desarrolo.
-#define libFileName "lib/libbulmafact.so"
+#define libFileName "./lib/libbulmafact.so"
 
 #include <qapplication.h>
 #include <qworkspace.h>

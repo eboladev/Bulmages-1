@@ -75,7 +75,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir></activedir>
+      <activedir>lib</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>
