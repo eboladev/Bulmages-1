@@ -66,6 +66,7 @@ public:
    void createMainWindows();
    void refreshOrders();
 	void refreshArticles();
+	void refreshBudgets();
 };
 
 #endif

@@ -78,6 +78,7 @@ CREATE TABLE lpresupuesto (
 #include <qobjectlist.h>
 
 #include "funcaux.h"
+//#include "postgresiface2.h"
 
 #define COL_IDLPRESUPUESTO 0
 #define COL_IDARTICULO 1
@@ -98,11 +99,13 @@ CREATE TABLE lpresupuesto (
 
 Budget::Budget(company *comp, QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) {
    companyact = comp;
-   m_idpresupuesto = "";
+   m_idpresupuesto = "0";
    m_idclient = "";
+	inicialize();
 }// end Budget
 
 Budget::~Budget() {
+	companyact->refreshBudgets();
 }// end ~Budget
 
 
@@ -398,7 +401,9 @@ void Budget::manageArticle(int row) {
 			if (!cur3->eof()) {
 				m_list->setText(row, COL_TASATIPO_IVA, cur3->valor("tasatipo_iva"));
 			}
+			delete cur3;
 		}
+		delete cur2;
 	}
 } //end manageArticle
 
@@ -426,23 +431,45 @@ QString Budget::searchArticle() {
 
 void Budget::s_saveBudget() {
 	companyact->begin();
-	if (saveBudget()==0 && saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
-		companyact->commit();
-		// chargeBudget();
+	if (saveBudget()==0 ) {
+		if (m_idpresupuesto == "0") {
+			cursor2 * cur4= companyact->cargacursor("SELECT max(idpresupuesto) FROM presupuesto","unquery1");
+			if (!cur4->eof()) {
+				m_idpresupuesto=cur4->valor(0);
+			}
+			delete cur4;
+		} 
+		if (saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
+			companyact->commit();
+			m_initialValues = calculateValues();
+		} else {
+			companyact->rollback();
+		}
 	} else {
 		companyact->rollback();
 	}	
+	chargeBudget(m_idpresupuesto);
 }
 
 
 void Budget::accept() {
 	fprintf(stderr,"accept button activated\n");
-	
 	companyact->begin();
-	if (saveBudget()==0 && saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
-		companyact->commit();
-		m_initialValues = calculateValues();
-		close();
+	if (saveBudget()==0 ) {
+		if (m_idpresupuesto == "0") {
+			cursor2 * cur4= companyact->cargacursor("SELECT max(idpresupuesto) FROM presupuesto","unquery1");
+			if (!cur4->eof()) {
+				m_idpresupuesto=cur4->valor(0);
+			}
+			delete cur4;
+		} 
+		if (saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
+			companyact->commit();
+			m_initialValues = calculateValues();
+			close();
+		} else {
+			companyact->rollback();
+		}
 	} else {
 		companyact->rollback();
 	}	

@@ -111,15 +111,18 @@ void company::listdelivnotes () {
    m_delivnoteslist->setActiveWindow();
 }
 
+
 void company::listBudgets() {
    m_budgetsList->hide();
    m_budgetsList->show();
    m_budgetsList->setActiveWindow();
 }// end listbudgets
 
-
 void company::newBudget() {
    Budget *bud = new Budget(this,m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
    bud->show();
 }// end bud
 
+void company::refreshBudgets() {
+   m_budgetsList->inicializa();
+}// end refreshBudgets
