@@ -1,0 +1,125 @@
+<!DOCTYPE UI><UI>
+<class>listadosdlg</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>listadosdlg</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>568</width>
+            <height>480</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Listados de Cuentas</string>
+    </property>
+    <widget>
+        <class>QTabWidget</class>
+        <property stdset="1">
+            <name>name</name>
+            <cstring>TabWidget2</cstring>
+        </property>
+        <property stdset="1">
+            <name>geometry</name>
+            <rect>
+                <x>6</x>
+                <y>7</y>
+                <width>571</width>
+                <height>469</height>
+            </rect>
+        </property>
+        <widget>
+            <class>QWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>tab</cstring>
+            </property>
+            <attribute>
+                <name>title</name>
+                <string>Tab 1</string>
+            </attribute>
+            <widget>
+                <class>QTable</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>tabla1</cstring>
+                </property>
+                <property stdset="1">
+                    <name>geometry</name>
+                    <rect>
+                        <x>10</x>
+                        <y>17</y>
+                        <width>552</width>
+                        <height>418</height>
+                    </rect>
+                </property>
+                <property stdset="1">
+                    <name>lineWidth</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>numRows</name>
+                    <number>300</number>
+                </property>
+                <property stdset="1">
+                    <name>numCols</name>
+                    <number>3</number>
+                </property>
+                <property stdset="1">
+                    <name>showGrid</name>
+                    <bool>false</bool>
+                </property>
+            </widget>
+        </widget>
+        <widget>
+            <class>QWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>tab</cstring>
+            </property>
+            <attribute>
+                <name>title</name>
+                <string>Tab 2</string>
+            </attribute>
+            <widget>
+                <class>QTable</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>tabla2</cstring>
+                </property>
+                <property stdset="1">
+                    <name>geometry</name>
+                    <rect>
+                        <x>4</x>
+                        <y>11</y>
+                        <width>559</width>
+                        <height>425</height>
+                    </rect>
+                </property>
+                <property stdset="1">
+                    <name>lineWidth</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>numRows</name>
+                    <number>300</number>
+                </property>
+                <property stdset="1">
+                    <name>numCols</name>
+                    <number>3</number>
+                </property>
+                <property stdset="1">
+                    <name>showGrid</name>
+                    <bool>false</bool>
+                </property>
+            </widget>
+        </widget>
+    </widget>
+</widget>
+</UI>

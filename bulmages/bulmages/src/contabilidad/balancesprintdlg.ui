@@ -1,0 +1,242 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>balancesprintdlg</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>balancesprintdlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>528</width>
+            <height>242</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Impresión de Balances</string>
+    </property>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1_2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>80</y>
+                <width>80</width>
+                <height>21</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Fecha Inicial</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1_2_2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>270</x>
+                <y>80</y>
+                <width>70</width>
+                <height>21</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Fecha Final</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>30</y>
+                <width>60</width>
+                <height>21</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Balance</string>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>fechafin</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>350</x>
+                <y>80</y>
+                <width>140</width>
+                <height>21</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>nombalance</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>100</x>
+                <y>30</y>
+                <width>401</width>
+                <height>21</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>fechain</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>120</x>
+                <y>80</y>
+                <width>131</width>
+                <height>21</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QGroupBox">
+        <property name="name">
+            <cstring>groupBox1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>170</y>
+                <width>200</width>
+                <height>50</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Formato</string>
+        </property>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>radioButton1_2</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>120</x>
+                    <y>20</y>
+                    <width>60</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>HTML</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>radioButton1</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>20</y>
+                    <width>90</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>texto plano</string>
+            </property>
+        </widget>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>220</x>
+                <y>190</y>
+                <width>131</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Aceptar</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton1_2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>360</x>
+                <y>190</y>
+                <width>131</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Cancelar</string>
+        </property>
+    </widget>
+    <widget class="QProgressBar">
+        <property name="name">
+            <cstring>progreso</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>120</y>
+                <width>490</width>
+                <height>31</height>
+            </rect>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>pushButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>balancesprintdlg</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton1_2</sender>
+        <signal>clicked()</signal>
+        <receiver>balancesprintdlg</receiver>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>fechain</sender>
+        <signal>lostFocus()</signal>
+        <receiver>balancesprintdlg</receiver>
+        <slot>fechaincambiada()</slot>
+    </connection>
+    <connection>
+        <sender>fechafin</sender>
+        <signal>lostFocus()</signal>
+        <receiver>balancesprintdlg</receiver>
+        <slot>fechafincambiada()</slot>
+    </connection>
+    <connection>
+        <sender>fechain</sender>
+        <signal>returnPressed()</signal>
+        <receiver>balancesprintdlg</receiver>
+        <slot>fechaincambiada()</slot>
+    </connection>
+    <connection>
+        <sender>fechafin</sender>
+        <signal>returnPressed()</signal>
+        <receiver>balancesprintdlg</receiver>
+        <slot>fechafincambiada()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>fechaincambiada()</slot>
+    <slot>fechafincambiada()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

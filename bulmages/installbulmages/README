@@ -1,0 +1,13 @@
+NOTAS PARA LA INSTALACION:
+--------------------------
+
+El script de instalacion no restaura desde versiones anteriores del programa.
+
+Para el correcto funcionamiento de Bulmages debe configurarse el acceso a postgres
+en modo trust. Para ello hay que modificar el fichero de configuracion pg_hba.conf y
+editar la linea que dice:
+local all	all all		ident sameuser
+
+por
+
+local all	all all		trust

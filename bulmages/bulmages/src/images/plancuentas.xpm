@@ -1,0 +1,21 @@
+/* XPM */
+const char *plancuentas[]={
+"10 14 4 1",
+"# c None",
+". c #000000",
+"b c #000080",
+"a c #ffffff",
+".......###",
+".aaaaaa.##",
+".aaaaaaa.#",
+".ababbbaa.",
+".aaaaaaaa.",
+".ababbaba.",
+".aaaaaaaa.",
+".abaabbba.",
+".aaaaaaaa.",
+".ababbbba.",
+".aaaaaaaa.",
+".ababbbba.",
+".aaaaaaaa.",
+".........."};

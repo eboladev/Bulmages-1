@@ -1,0 +1,4 @@
+#!/bin/sh
+dropdb $1
+createdb $1
+psql $1 < $2
