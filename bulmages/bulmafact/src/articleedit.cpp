@@ -95,6 +95,7 @@ articleedit::articleedit(company *comp, QWidget *parent, const char *name)
 }// end articleedit
 
 articleedit::~articleedit() {
+	companyact->refreshArticles();
 }// end ~articleedit
 
 
@@ -105,6 +106,7 @@ articleedit::~articleedit() {
 *************************************************************************/
 void articleedit::chargeArticle(QString idArt) {
    idArticle = idArt;
+	QString ivaType="";
    fprintf(stderr,"chargeArticle activado \n");
    if (idArticle != "0") {
       QString SQLQuery = "SELECT * FROM articulo WHERE idarticulo="+idArt;
@@ -122,9 +124,8 @@ void articleedit::chargeArticle(QString idArt) {
          m_articleMargin->setText(cur->valor("margenarticulo"));
          m_articleOverCost->setText(cur->valor("sobrecostearticulo"));
          m_articleModel->setText(cur->valor("modeloarticulo"));
+			ivaType=cur->valor("idtipo_iva");
 			m_comboArtType->setCurrentItem(cur->valor("tipoarticulo").toInt());
-			cargarcomboiva(cur->valor("idtipo_iva"));
-			
    //      m_productionLine->setText());
          
          // Suministra relation loading
@@ -151,7 +152,8 @@ void articleedit::chargeArticle(QString idArt) {
          idArticle="0";
       }// end if
       delete cur;
-   }// end if
+   }
+	cargarcomboiva(ivaType);
 }// end chargeArticle
 
 
@@ -203,8 +205,9 @@ void articleedit::boton_nuevo() {
 * pertinentes                                                            *
 **************************************************************************/
 void articleedit::accept() {
+	QString SQLQuery;
 	if (idArticle != "0") {
-      QString SQLQuery = "UPDATE articulo SET codarticulo='"+m_articleCode->text()+"'";
+      SQLQuery = "UPDATE articulo SET codarticulo='"+m_articleCode->text()+"'";
       SQLQuery += " , nomarticulo='"+m_articleName->text()+"'";
       SQLQuery += " , descarticulo='"+m_articleDesc->text()+"'";
       SQLQuery += " , cbarrasarticulo='"+m_barCode->text()+"'";
@@ -217,10 +220,6 @@ void articleedit::accept() {
       SQLQuery += " , idtipo_iva="+m_cursorcombo->valor("idtipo_iva",m_comboIvaType->currentItem());
     //  SQLQuery += " , idlinea_prod='"+... ;
       SQLQuery += " WHERE idarticulo ="+idArticle;
-      companyact->begin();
-      companyact->ejecuta(SQLQuery);
-      companyact->commit();
-      close();
    } else {
       QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, cbarrasarticulo, tipoarticulo, descuentoarticulo, especificacionesarticulo, margenarticulo, sobrecostearticulo, modeloarticulo, idtipo_iva)";
       SQLQuery += " VALUES (";
@@ -242,6 +241,13 @@ void articleedit::accept() {
       companyact->commit(); 
       close(); 
    }// end if */
+	companyact->begin();
+	if (companyact->ejecuta(SQLQuery)==0) {
+		companyact->commit();
+		close();
+	} else {
+		companyact->rollback();
+	}
 }// end accept
 
 /************************************************************************
@@ -252,9 +258,12 @@ void articleedit::boton_borrar() {
       if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artículo","Esta a punto de borrar un artículo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
          QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+idArticle;
          companyact->begin();
-         companyact->ejecuta(SQLQuery);
-         companyact->commit();
-         close();
+         if (companyact->ejecuta(SQLQuery)==0) {
+         	companyact->commit();
+         	close();
+			} else {
+				companyact->rollback();
+			}
       }// end if
    }// end if
 }// end boton_borrar

@@ -45,6 +45,8 @@ public:
     
 public slots:
 	virtual void articleSelected(int, int, int, const QPoint &);
+	virtual void newArticle();
+	virtual void removeArticle();
 };
 
 #endif

@@ -32,6 +32,7 @@
 #include "orderslist.h"
 #include "delivnoteslist.h"
 #include "budgetslist.h"
+#include "linorderslist.h"
 
 
 
@@ -82,6 +83,11 @@ void company::listarticles () {
    m_articleslist->setActiveWindow();
 }
 
+void company::refreshArticles() {
+   m_articleslist->inicializa();
+}// end refreshOrders
+
+
 void company::listorders () {
    m_orderslist->hide();
    m_orderslist->show();
@@ -91,6 +97,12 @@ void company::listorders () {
 void company::refreshOrders() {
    m_orderslist->inicializa();
 }// end refreshOrders
+
+void company::newOrder() {
+   linorderslist *order = new linorderslist(this,m_pWorkspace,theApp->translate("Nuevo Pedido", "company"));
+	order->chargelinorders("0");
+   order->show();
+}// end newOrder
 
 
 void company::listdelivnotes () {

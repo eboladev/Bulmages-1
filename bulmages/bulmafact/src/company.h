@@ -36,6 +36,7 @@ class articleslist;
 class orderslist;
 class delivnoteslist;
 class BudgetsList;
+class linorderslist;
 
 class company : public postgresiface2 {
 private:
@@ -45,6 +46,7 @@ private:
    articleslist *m_articleslist;
    orderslist *m_orderslist;
    delivnoteslist *m_delivnoteslist;
+	linorderslist *m_linorderslist;
    BudgetsList *m_budgetsList;
 public:
    QWidget *m_pWorkspace;
@@ -60,8 +62,10 @@ public:
    void listBudgets();
    void setWorkspace(QWidget *qw) {m_pWorkspace=qw;createMainWindows();}
    void newBudget();
+	void newOrder();
    void createMainWindows();
    void refreshOrders();
+	void refreshArticles();
 };
 
 #endif

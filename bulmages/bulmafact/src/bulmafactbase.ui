@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>bulmafactbase</class>
 <widget class="QMainWindow">
     <property name="name">
@@ -41,7 +41,7 @@
         <action name="AFacturar"/>
     </item>
     <item text="Compras" name="Compras">
-        <action name="ANewPedido"/>
+        <action name="a_newOrder"/>
         <action name="AListOrders"/>
         <separator/>
         <action name="ANewAlbaran"/>
@@ -142,6 +142,9 @@
         <property name="text">
             <string>Emitir Factura</string>
         </property>
+        <property name="menuText">
+            <string>Emitir Factura</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -151,6 +154,9 @@
             <iconset>image2</iconset>
         </property>
         <property name="text">
+            <string>Nuevo Cliente</string>
+        </property>
+        <property name="menuText">
             <string>Nuevo Cliente</string>
         </property>
     </action>
@@ -164,6 +170,9 @@
         <property name="text">
             <string>Nuevo Proveedor</string>
         </property>
+        <property name="menuText">
+            <string>Nuevo Proveedor</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -173,6 +182,9 @@
             <iconset>image4</iconset>
         </property>
         <property name="text">
+            <string>Nueva Factura Recibida</string>
+        </property>
+        <property name="menuText">
             <string>Nueva Factura Recibida</string>
         </property>
     </action>
@@ -186,6 +198,9 @@
         <property name="text">
             <string>Caja</string>
         </property>
+        <property name="menuText">
+            <string>Caja</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -195,6 +210,9 @@
             <iconset>image6</iconset>
         </property>
         <property name="text">
+            <string>Bancos</string>
+        </property>
+        <property name="menuText">
             <string>Bancos</string>
         </property>
     </action>
@@ -208,6 +226,9 @@
         <property name="text">
             <string>Cobrar</string>
         </property>
+        <property name="menuText">
+            <string>Cobrar</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -219,12 +240,18 @@
         <property name="text">
             <string>Pagar</string>
         </property>
+        <property name="menuText">
+            <string>Pagar</string>
+        </property>
     </action>
     <action>
         <property name="name">
             <cstring>Afacturar</cstring>
         </property>
         <property name="text">
+            <string>Facturar</string>
+        </property>
+        <property name="menuText">
             <string>Facturar</string>
         </property>
     </action>
@@ -238,6 +265,9 @@
         <property name="text">
             <string>Articulo</string>
         </property>
+        <property name="menuText">
+            <string>Articulo</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -247,6 +277,9 @@
             <iconset>image10</iconset>
         </property>
         <property name="text">
+            <string>Listado de clientes</string>
+        </property>
+        <property name="menuText">
             <string>Listado de clientes</string>
         </property>
     </action>
@@ -307,6 +340,9 @@
         <property name="text">
             <string>Nuevo Presupuesto</string>
         </property>
+        <property name="menuText">
+            <string>Nuevo Presupuesto</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -329,12 +365,18 @@
         <property name="text">
             <string>Facturas Recibidas</string>
         </property>
+        <property name="menuText">
+            <string>Facturas Recibidas</string>
+        </property>
     </action>
     <action>
         <property name="name">
-            <cstring>ANewPedido</cstring>
+            <cstring>a_newOrder</cstring>
         </property>
         <property name="text">
+            <string>Nuevo Pedido</string>
+        </property>
+        <property name="menuText">
             <string>Nuevo Pedido</string>
         </property>
     </action>
@@ -343,6 +385,9 @@
             <cstring>ANewAlbaran</cstring>
         </property>
         <property name="text">
+            <string>Nuevo Albarán</string>
+        </property>
+        <property name="menuText">
             <string>Nuevo Albarán</string>
         </property>
     </action>
@@ -364,12 +409,18 @@
         <property name="text">
             <string>Nuevo Parte</string>
         </property>
+        <property name="menuText">
+            <string>Nuevo Parte</string>
+        </property>
     </action>
     <action>
         <property name="name">
             <cstring>APartes</cstring>
         </property>
         <property name="text">
+            <string>Partes</string>
+        </property>
+        <property name="menuText">
             <string>Partes</string>
         </property>
     </action>
@@ -383,6 +434,9 @@
         <property name="text">
             <string>Facturas Emitidas</string>
         </property>
+        <property name="menuText">
+            <string>Facturas Emitidas</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -394,6 +448,9 @@
         <property name="text">
             <string>Entrega de Presupuesto</string>
         </property>
+        <property name="menuText">
+            <string>Entrega de Presupuesto</string>
+        </property>
     </action>
     <action>
         <property name="name">
@@ -403,6 +460,9 @@
             <iconset>image16</iconset>
         </property>
         <property name="text">
+            <string>Listado de Presupuestos</string>
+        </property>
+        <property name="menuText">
             <string>Listado de Presupuestos</string>
         </property>
     </action>
@@ -468,12 +528,6 @@
         <slot>listproviders()</slot>
     </connection>
     <connection>
-        <sender>ACaja</sender>
-        <signal>activated()</signal>
-        <receiver>bulmafactbase</receiver>
-        <slot>caja()</slot>
-    </connection>
-    <connection>
         <sender>AAddClient</sender>
         <signal>activated()</signal>
         <receiver>bulmafactbase</receiver>
@@ -533,6 +587,12 @@
         <receiver>bulmafactbase</receiver>
         <slot>listBudgets()</slot>
     </connection>
+    <connection>
+        <sender>a_newOrder</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>newOrder()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>fileNew()</slot>
@@ -550,7 +610,7 @@
     <slot>helpContents()</slot>
     <slot>helpAbout()</slot>
     <slot>listproviders()</slot>
-    <slot>caja()</slot>
+    <slot>newOrder()</slot>
     <slot>clientes()</slot>
     <slot>proveedores()</slot>
     <slot>emitirfactura()</slot>

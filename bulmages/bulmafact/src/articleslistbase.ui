@@ -42,7 +42,7 @@
                 </property>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1</cstring>
+                        <cstring>m_newArticle1</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -75,7 +75,7 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1_3_2_2_2</cstring>
+                        <cstring>m_removeArticle</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -214,9 +214,23 @@
         <receiver>articleslistbase</receiver>
         <slot>articleSelected(int,int,int,const QPoint&amp;)</slot>
     </connection>
+    <connection>
+        <sender>m_newArticle1</sender>
+        <signal>clicked()</signal>
+        <receiver>articleslistbase</receiver>
+        <slot>newArticle()</slot>
+    </connection>
+    <connection>
+        <sender>m_removeArticle</sender>
+        <signal>clicked()</signal>
+        <receiver>articleslistbase</receiver>
+        <slot>removeArticle()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>articleSelected(int, int, int,const QPoint&amp;)</slot>
+    <slot>newArticle()</slot>
+    <slot>removeArticle()</slot>
 </slots>
 <layoutdefaults spacing="0" margin="0"/>
 </UI>

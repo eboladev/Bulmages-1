@@ -110,6 +110,12 @@ void bulmafact::listorders()
    m_company.listorders();
 }// end listordersaction
 
+void bulmafact::newOrder()
+{
+   m_company.newOrder();
+}// end newOrder action
+
+
 void bulmafact::listdelivnotes()
 {
    fprintf(stderr,"listdelivnotes activado \n");

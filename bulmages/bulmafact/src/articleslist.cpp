@@ -55,6 +55,7 @@ CREATE TABLE articulo (
 
 #include "articleslist.h"
 #include <qtable.h>
+#include <qmessagebox.h>
 #include "company.h"
 #include "articleedit.h"
 
@@ -179,3 +180,21 @@ articleslist::~articleslist() {
 }// end ~articleslist
 
 
+void articleslist::newArticle() {
+	QString idArt = "0";
+	articleedit *art = new articleedit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Articulos", "company"));
+	art->chargeArticle(idArt);
+	art->show();
+	inicializa();
+}
+
+
+void articleslist::removeArticle() {
+	if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artículo","Esta a punto de borrar un artículo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
+		QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+m_list->text(m_list->currentRow(),COL_IDARTICULO);
+		companyact->begin();
+		companyact->ejecuta(SQLQuery);
+		companyact->commit();
+		inicializa();
+	}// end if
+}
