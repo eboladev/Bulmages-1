@@ -34,69 +34,76 @@
                     <property name="title">
                         <string>Documento</string>
                     </property>
-                    <grid>
+                    <vbox>
                         <property name="name">
                             <cstring>unnamed</cstring>
                         </property>
-                        <widget class="QLayoutWidget" row="0" column="0">
+                        <widget class="QRadioButton">
                             <property name="name">
-                                <cstring>layout12</cstring>
+                                <cstring>radiotexto</cstring>
                             </property>
-                            <vbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QRadioButton">
-                                    <property name="name">
-                                        <cstring>radiotexto</cstring>
-                                    </property>
-                                    <property name="text">
-                                        <string>Texto Plano</string>
-                                    </property>
-                                    <property name="checked">
-                                        <bool>true</bool>
-                                    </property>
-                                    <property name="buttonGroupId">
-                                        <number>-1</number>
-                                    </property>
-                                </widget>
-                                <widget class="QRadioButton">
-                                    <property name="name">
-                                        <cstring>radiohtml</cstring>
-                                    </property>
-                                    <property name="mouseTracking">
-                                        <bool>false</bool>
-                                    </property>
-                                    <property name="text">
-                                        <string>HTML</string>
-                                    </property>
-                                    <property name="autoRepeat">
-                                        <bool>false</bool>
-                                    </property>
-                                    <property name="buttonGroupId">
-                                        <number>-1</number>
-                                    </property>
-                                </widget>
-                                <widget class="QRadioButton">
-                                    <property name="name">
-                                        <cstring>radiopropietario</cstring>
-                                    </property>
-                                    <property name="mouseTracking">
-                                        <bool>false</bool>
-                                    </property>
-                                    <property name="text">
-                                        <string>Propietario</string>
-                                    </property>
-                                    <property name="autoRepeat">
-                                        <bool>false</bool>
-                                    </property>
-                                    <property name="buttonGroupId">
-                                        <number>-1</number>
-                                    </property>
-                                </widget>
-                            </vbox>
+                            <property name="text">
+                                <string>Texto Plano</string>
+                            </property>
+                            <property name="checked">
+                                <bool>true</bool>
+                            </property>
+                            <property name="buttonGroupId">
+                                <number>-1</number>
+                            </property>
                         </widget>
-                    </grid>
+                        <widget class="QRadioButton">
+                            <property name="name">
+                                <cstring>radiohtml</cstring>
+                            </property>
+                            <property name="mouseTracking">
+                                <bool>false</bool>
+                            </property>
+                            <property name="text">
+                                <string>HTML</string>
+                            </property>
+                            <property name="autoRepeat">
+                                <bool>false</bool>
+                            </property>
+                            <property name="buttonGroupId">
+                                <number>-1</number>
+                            </property>
+                        </widget>
+                        <widget class="QRadioButton">
+                            <property name="name">
+                                <cstring>radiopropietario</cstring>
+                            </property>
+                            <property name="mouseTracking">
+                                <bool>false</bool>
+                            </property>
+                            <property name="text">
+                                <string>Propietario</string>
+                            </property>
+                            <property name="autoRepeat">
+                                <bool>false</bool>
+                            </property>
+                            <property name="buttonGroupId">
+                                <number>-1</number>
+                            </property>
+                        </widget>
+                        <widget class="QRadioButton">
+                            <property name="name">
+                                <cstring>radiokugar</cstring>
+                            </property>
+                            <property name="mouseTracking">
+                                <bool>false</bool>
+                            </property>
+                            <property name="text">
+                                <string>Kugar</string>
+                            </property>
+                            <property name="autoRepeat">
+                                <bool>false</bool>
+                            </property>
+                            <property name="buttonGroupId">
+                                <number>0</number>
+                            </property>
+                        </widget>
+                    </vbox>
                 </widget>
                 <widget class="QButtonGroup">
                     <property name="name">
@@ -343,10 +350,10 @@
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="632">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000023f49444154789cc557316edb30147ddfe0c05364f0112c4083bc65ccead153e12b74343aa4ea645f41c81064d4ea319b3808508fe0a1a7e020801d2452944c4aa493a67fa13f8927928fef7dd2d4d40dd00260806c2538e35f9aaf642b4783b1f9264dd47bf6aeeec5af74a75e596c0e0012f7e399bd32577b492f0a7d70704848d8f9a6ff7d492fca35aef347f148aeefd39206b26c6b16706fe4f889a7fa895cdf5f640000ce3821139973074bed264d3a663ce35e0d884c284dbf4497c79c71289e2a5179573ea532868950fc6a4eddd388517b28de5b0784a8c827a4109f87e267ebc06fd1900d8ef57908de6820719cd952347563ac158baf44459c71300d3efd3a455b2c4913d5d40ddd83df665b55898a986cbb4a255b89e38f63f00ef2e7dce0747bf876089abc7c2d01c072419fc4c414676b60a935e5ba45ef026b27a131c5d9ea5e6c7530741af031409403e050ea7b3003e5baecfcde5f44ba3dfc390c4c589bf032409443a9230009a2733803d6a4c090170fc5e07f0c8b7632304c0e287504510ea2f38809af06c0b1bfee010673eb150f4537e9c734301e9f63c075e6a37e1d0c312e188fcf3170a37e4cfaad4d303703d3c5f02806ded66f372fa3dd7517a6814e70d2b4c3e47ca48d580d94eb12fbebfe46030e06a499c40e6dc910066e6e474469c0a785f1317c96061c2e70bb415bb06322ce05a62e84d5813037cc31a07defab84b31a7095dd8185411b3e0676d7dde26d68627a17e4cf79d47b60ca40f15204e3f4a2fffb8b889aba71fe23faaa7cb5f4bafdd7f95fcc808b8df8d996fe0000000049454e44ae426082</data>
+        <data format="PNG" length="651">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000252494441545885c557af97a33010fea6af02d9d89595452d92ba95952beb4ff12ff49dd8c39c2feae4bdb7b212bb0a2455d8cab341e27202127e2590707b7763a693f091e1cb379394caa2046a001e50d51576deee9fc69baaae0693aef121f0c547f821d6e237725066e61a0300075f8ddff633d3f95b7013688d818183a31f1fdadfb7e02674f3327ec95f48f77e5ad240181e55026b2dc637bc16afa47bff22030090e08ae7fc59fb054bfe10f8828119e78d1ab8877721e9e7e0b88777e1b2c7b678caf2cc98f9984a17266cf19b39758fcd45edb678631fc8f38c4c42b2a9735b3c954539dbb10ea12f24784dc75bc22b0df89a3d5bb2b2285569b9e2b33ca39db7c35682afdfafe03507f398b5f7035f9445496bf0c7f028b23ca36d55578d406a8ecbd78bf517c46f3180864e898fbe4456fd21fd990240af0a00308fb930a89e1fe05b752f79d5ae6bb455d07e818bc9e707f856608b5e9a87460326068862000c4244d60ca4fb141c5c1d44d247bfa28e89d6ba3ea0618028861017001c44893503fd45812e4e9e12c5004397bc96816e7140880b8862102503264c0c30309c1f67c083ea0bc953d22cfa671a18cecf31a0dbf3c1b8340f2e55309c9f6360a27e8cc65b53f7812903e364981303effbf7c9cde8f438d969a0111c57be5b9c0db4e1aa81749fe2fc384f34a06180ab45fa264bd28681c9e908270d98b430dc86cfd280a60af4d5204bb061c2ad0a545fb0eb0376d530c780ac7b53279cd580aeed762c74da3031707a9c164f4365e3b3207e8b9dee036306921f89354e26ffdf6f448b77c2bf1d6fd6feabfdacf837b2f28e10e9308b330000000049454e44ae426082</data>
     </image>
     <image name="image1">
-        <data format="PNG" length="725">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000029c49444154789cc5573b8edb30107d63b0d015b24580e8041608b890ba946e53a6cc2285e1725b9f22fb010cbb4c99766f20150208a773e70059607d05160426854c8a942d4bfe6497cde0892687f3e6718626552ac0001080361a9188de140fb4d1c1e45b63613f6669c6b8c250a5223f52bb7f1b16d6795ee4e44f9e6be548b27f882e2b221101c06ef1330311008d736c5ea404a057e4160b6d34802a2700c09c028840244fa63f4bc1002053e9d2d9c56cc040352ae7aa54740db5cb54baf4b66aa066c0d2899d300bb6d81eee14acca31d9e07a32600fd1c41ac0ece494c8d1ac4ac9a84e8965b655033e03af7fbf411b8d388e3b7379ee2d39a801870d10c7bf1cbef496a8e233d9e05a3540f45c6351dd0aa27a7eb3f97252c4371f9735b3022e987e1a300d46e06fda1df1ebe66b805d9afb6aa03a7138af8d06f3b817eddb1704d8a5d9bbaa832e0d840cec33153add619295358d79031784dd7f70ac0eec3310d5bf7395325c0792002bd439f7986d6800024d06fa69c039b791fa91b3aab1b7be4d030103aa1c936d28c734e09cd8486d844decd6b76b404422425ee4d47c0f5806b62f9f3c063ca6fc48a101caeac59ca3af0684057ea5cbd28cb5d1b8897fa255034dd55ba7fef70e0d540c20e3dbef09168f2b586b7f941729551570c6be06b67f3e549bedbadf51db55076e273be79e4d866103f13510162197b05ef8a00616f30569a3b198573959ccf7fbbb1c490eebc479bde0a8067c3b9d4cf71ea8cd3ab177fffbe0d65ee0e5e46e72c70082b4c834d4c4252f2500813fca8bdc81871f0fbc5eaf5dd4f61000b0fabd6a9272d668be2b4895ea5dfe111dd5401f4d5c3aee1fefa9ee8647deedbe26ae69a793296ba381bcc8a14a75d026c3849361c2aac07fb1c930e1560d2c9f967ce903b48f0d6ec17bd87f53d5c1afa109d1f50000000049454e44ae426082</data>
+        <data format="PNG" length="751">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002b6494441545885c5572d77db3014bdca313074c63218b62312070cc46874b070a7686020cb4f687fc59a81ed9ca094168e0ed960c019d129cbd8c26a41b337203f597262c74dba56e49e2b397a7af75d7d44a85c01258010d0a5461446cfca07bad4dee073f3803b9359427882a67225dc4c79fe361e70f0344b853b782acaa9247711c73088c20800aa1fdf11300450e0144cb35800e89539f340971a80a9090010c5002208211f2d7f320301809c495bce63ca7a0a986682ab5c89a770bb9c495bde560fd40a0c01d43c996dc8c8cb8de5eec7557e2138b99e0a14009a9c27bd7e7449e4f4da94645a9784956df580abc0c3dfcfd0a5c6783c3e5acb5377c9410f585e02e3f10fcbcfdd252a7b2738b9560f087167f9281c81288610f5f876fbfe5119bf7abdac122b801036990e0f0c3d059a9ea8273d9ef1c3f683c76d99bb3d50780ab89e6024baa8faa34e2c763cdfd02e1e80b75507fb1ee8528051db7e3f68c5853458f27cd5224ad82478fec1fe39502b606ae68f1be4203c1ed9ef202440caf0b056f4900710a2a9403f0fd8e09ca99b39a99a5b0580360f780aa8fc42f0857258810a390867ca4a34b955a0dd0341144648b35434df03ac40b17be328c0b8f33385064452ff9852f4f540c0c43de9925942bad490e39ff03c51c9383ce47a0eeaf687237479c028102474f931c6fadb068cfc519ac5c29c80d7e47aa0f81399c94b1cc763e7c0e5a72ab883f1c4bf405c0ff88710b77efca007d6abb5d0a5c67a656ab25eeddfef722ac93f274ebb0b3a3de0e262bed87ba036cf097ff29ebcf52e706a7235bf22005e59e45bdf13e7bc940078f1449aa5962cbf2ce9fefede66cd8b0080cdef4d5394935af35d2154ae5ee41f51a707fa78e2dc76f3f546d4b761c7bbddf5c453e262be205d6a20cd52a85c1dc47812533c8949fdc27fc1781253ab076ebfdfd2b90fd03ee8ed8297c07f551ac4a55a7c6d960000000049454e44ae426082</data>
     </image>
 </images>
 <connections>

@@ -40,24 +40,27 @@ using namespace RTK;
 // *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
 void DiarioPrintView::pruebasRTK() {
 #ifdef REPORTS
-cursor2 *cursoraux;
-conexionbase->begin();
-// cursoraux=conexionbase->cargacursor("SELECT ordenasiento, asiento.idasiento AS idasiento, cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY ordenasiento", "unquery");
-   cursoraux=conexionbase->cargacursor("SELECT  cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY fecha", "unquery");
-conexionbase->commit();
 
-RTK::Report unReport;
-unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"diario.rtk");
-InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
-inp->set(InputBGes::diario, empresaactual, cursoraux);
-OutputQPainter *salida = new OutputQPainter(57, 59, A4, dots, 0,0,20,20,20,20);
-unReport.print(*salida);
-QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
-mViewer->setCaption(tr("Libro Diario", "Informe: "));
-mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
-mViewer->setPageCollection(salida->getPageCollection());
-mViewer->show();
-mViewer->slotFirstPage();
+   cursor2 *cursoraux;
+   conexionbase->begin();
+//   cursoraux=conexionbase->cargacursor("SELECT  cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY fecha", "unquery");
+cursoraux=conexionbase->cargacursor("SELECT ordenasiento, asiento.idasiento AS idasiento, cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY ordenasiento", "unquery");
+   
+   conexionbase->commit();
+   RTK::Report unReport;
+   unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"diario.rtk");
+   InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
+   inp->set(InputBGes::diario, empresaactual, cursoraux);
+   OutputQPainter *salida = new OutputQPainter(57, 59, A4, dots, 800,600,20,20,20,20);
+   unReport.print(*salida);
+   QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
+   mViewer->setCaption(tr("Extracto de Cuentas", "Informe: "));
+   mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
+//   mViewer->setPageDimensions(800, 1600);
+   
+   mViewer->setPageCollection(salida->getPageCollection());
+   mViewer->show();
+   mViewer->slotFirstPage();
 #endif 
 }// end pruebasRTK
 
@@ -111,26 +114,102 @@ void DiarioPrintView::accept() {
    } else if (radiopropietario->isChecked()) {
    // El formato propietario es de momento el de RTK.
       pruebasRTK();
-      pruebasRTKoo();
+ //     pruebasRTKoo();
+   } else if (radiokugar->isChecked()) {
+   	presentakugar();
    }// end if
 }// end accept
 
+void DiarioPrintView::presentakugar() {
+   int txt, html, txtapren, htmlapren;
+   int error;
+   int pid;
+   float debe, haber;
+   int idcuenta;
+   int idasiento;
+   char data[15];
+   string fecha;
+   string fechaasiento;
+   string descripcion;
+   string concepto;
+   string codigocuenta;
+   string cad;
+   cursor2 *cursoraux, *cursoraux1, *cursoraux2;
 
-// Versió per si decidim que es poden escollir vàries opcions
+   // Cogemos los valores del formulario.
+   QString finicial = fechainicial1->text();
+   QString ffinal = fechafinal1->text();
 
+
+      char *argstxt[]={"diari.kud","diari.kud",NULL};      //presentació txt normal
+      ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
+      if (!fitxersortidatxt) txt=0;    // verifiquem que s'hagin creat correctament els fitxers
+
+      if (txt) {
+            //presentació txt normal
+            fitxersortidatxt.setf(ios::fixed);
+            fitxersortidatxt.precision(2);
+            fitxersortidatxt << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" ;
+            fitxersortidatxt << "<!DOCTYPE KugarData [\n" ;
+            fitxersortidatxt << "\t<!ELEMENT KugarData (Row* )>\n" ;
+	    fitxersortidatxt << "\t\t<!ATTLIST KugarData\n";
+	    fitxersortidatxt << "\t\tTemplate CDATA #REQUIRED>\n";
+	    fitxersortidatxt << "\t<!ELEMENT Row EMPTY>\n";
+	    fitxersortidatxt << "\t<!ATTLIST Row \n";
+	    fitxersortidatxt << "\t\tlevel CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tasiento CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tfecha CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tcuenta CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tdescripcion CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tdebe CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\thaber CDATA #REQUIRED>\n";
+	    fitxersortidatxt << "]>\n\n";	 
+	    fitxersortidatxt << "<KugarData Template=\"./diari.kut\">\n";
+      }
+
+         conexionbase->begin();
+         cursoraux = conexionbase->cargacursor("SELECT * FROM apunte LEFT JOIN  cuenta ON apunte.idcuenta = cuenta.idcuenta LEFT JOIN asiento ON apunte.idasiento= asiento.idasiento ORDER BY ordenasiento ASC","elquery");
+         conexionbase->commit();
+         for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
+            fechaasiento = cursoraux->valor("fecha").ascii();
+            idasiento = atoi(cursoraux->valor("idasiento").ascii());
+               fecha = cursoraux->valor("fecha").left(10).ascii();
+               descripcion = cursoraux->valor("descripcion").ascii();
+               concepto = cursoraux->valor("conceptocontable").ascii();
+               debe = atof(cursoraux->valor("debe").ascii());
+               haber = atof(cursoraux->valor("haber").ascii());
+               codigocuenta = cursoraux->valor("codigo").ascii();
+
+               if (txt) {
+                  //presentació txt normal
+			fitxersortidatxt << "\t<Row level=\"0\" asiento=\""<< idasiento <<"\"";
+			fitxersortidatxt << " fecha=\""<< fecha <<"\""; 
+			fitxersortidatxt << " cuenta=\""<< codigocuenta.c_str() <<"\""; 
+			fitxersortidatxt << " descripcion =\""<< concepto.c_str() <<"\""; 
+			fitxersortidatxt << " debe=\""<< debe <<"\""; 
+			fitxersortidatxt << " haber=\""<< haber <<"\"/>\n" ; 
+               }
+         }// end for
+
+         delete cursoraux;
+	 fitxersortidatxt <<"</KugarData>\n";
+         fitxersortidatxt.close();
 /*
+      if ((pid=fork()) < 0) {
+         perror ("Fork failed");
+         exit(errno);
+      }
 
-   if (radionormal->isChecked()){
-      if (radiotexto->isChecked()) presentar("txt");
-      if (!(radiotexto->isChecked())) presentar("html");
-   }
-   if (!(radionormal->isChecked())){ 
-      if (radiotexto->isChecked()) presentar("txtapren");
-      if (!(radiotexto->isChecked())) presentar("htmlapren");
-   }
-}
-
+      if (txt) {
+         //presentació txt normal
+         if (!pid) {
+            error = execvp(confpr->valor(CONF_EDITOR).c_str(),argstxt);
+         }
+      }   
 */
+      system("kugar diari.kud");
+   
+}// end presentakugar
 
 
 
@@ -415,7 +494,8 @@ void DiarioPrintView::presentar(char * tipus){
          }
       } 
    }   
-}
+
+}// end presentar
 
 
 
@@ -428,6 +508,8 @@ void DiarioPrintView::boton_canales() {
    while (selcanales->nextcanal());
    fprintf(stderr,"-----------------FIN---------------------\n");
 }// end boton_canales
+
+
 
 void DiarioPrintView::boton_ccostes() {
    fprintf(stderr,"Boton ccostes\n");

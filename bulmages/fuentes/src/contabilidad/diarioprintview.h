@@ -52,6 +52,7 @@ public:
    // OJO con esta función que es una funcion para probar el Report Tool Kit
    void pruebasRTK();
    void pruebasRTKoo();
+   void presentakugar();
 public slots:
    virtual void accept();
    virtual void boton_canales();
