@@ -466,6 +466,11 @@ void Bulmages01::initActions() {
   cobPag->setStatusTip(tr("Cobros y Pagos"));
   cobPag->setWhatsThis(tr("Cobros y Pagos"));
   connect(cobPag, SIGNAL(activated()), this, SLOT(slotCobPag()));  
+
+  tiposIVAMenu = new QAction(tr("Tipos de IVA"), tr("&Tipos de IVA"), 0, this);
+  tiposIVAMenu->setStatusTip(tr("CTipos de IVA"));
+  tiposIVAMenu->setWhatsThis(tr("Tipos de IVA"));
+  connect(tiposIVAMenu, SIGNAL(activated()), this, SLOT(slotTiposIVA()));  
 }
 
 
@@ -503,6 +508,7 @@ void Bulmages01::initMenuBar() {
   librobalancetree->addTo(pApunteMenu);
   centrosCoste->addTo(pApunteMenu);
   canalesMenu->addTo(pApunteMenu);
+  tiposIVAMenu->addTo(pApunteMenu);
 
   // El menu asiento
   pAsientoMenu = new QPopupMenu();
@@ -1008,5 +1014,11 @@ void Bulmages01::slotCanalDef() {
 void Bulmages01::slotArchDoc() {
    empresaactual.archDoc();
 }
+
+void Bulmages01::slotTiposIVA() {
+   empresaactual.tiposIVA();
+}
+
+
 
 

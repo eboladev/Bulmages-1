@@ -32,6 +32,7 @@
 #include "amortizacionesview.h"
 #include "adocumental.h"
 #include "cobropagoview.h"
+#include "tipoivaview.h"
 
 #include <qobject.h>
 #ifndef WIN32
@@ -208,6 +209,17 @@ int empresa::canales() {
   delete canal;
   return(0);
 }// end ccostes
+
+/** Crea la ventana de tipos de IVA y la presenta en modo modal
+  * Es invocada desde la clase principal
+  */
+int empresa::tiposIVA() {
+   tipoivaview *tip = new tipoivaview(this, 0, "tipos Iva");
+   tip->exec();
+   delete tip;
+   return(0);
+}// end tiposiva
+
 
 int empresa::cambioejercicio() {
 //El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio

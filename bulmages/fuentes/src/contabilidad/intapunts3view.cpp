@@ -1130,8 +1130,9 @@ void intapunts3view::boton_iva() {
 }// end boton_iva
 
 
-// Esta función captura la pulsación de una tecla. No es muy acertado el nombre de pulsado mas
-// Ya que captura cualquier tecla.
+/** Esta función captura la pulsación de una tecla. No es muy acertado el nombre de pulsadomas
+  * Ya que captura cualquier tecla.
+  */
 void intapunts3view::pulsadomas(int row, int col, int caracter) {
    QString query;
    QPopupMenu *menucanal = new QPopupMenu( this );

@@ -68,11 +68,10 @@ void canalview::cambiacombo(int numcombo) {
 }// end cambiacombo
 
 
-/****************************************************************
+/**
   Esta funcion muestra el canal en la ventana.
-  ***************************************************************/
+  */
 void canalview::mostrarplantilla() {
-//  char cadena[300];
   int i;
   QString query;
   query.sprintf("SELECT * from canal WHERE idcanal=%d",idcanal);

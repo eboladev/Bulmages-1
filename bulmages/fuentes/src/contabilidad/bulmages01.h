@@ -146,6 +146,7 @@ public:
     void slotRecSald();
     void slotArchDoc();
     void slotCobPag();
+    void slotTiposIVA();
        
 
     /** toggle the toolbar*/
@@ -291,6 +292,7 @@ public:
     QAction *ArchDoc;
     
     QAction *cobPag;
+    QAction *tiposIVAMenu;
 };
 #endif
 
