@@ -152,8 +152,11 @@ providerslist::~providerslist() {
 }// end ~providerslist
 
 void providerslist::dobleclick(int a, int b, int c, const QPoint &d) {
+QString idprov = m_list->text(a, COL_IDPROVEEDOR);
+
 fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
-   provedit *prov = new provedit(0,theApp->translate("Edicion de Proveedores", "company"));
+   provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
+   prov->chargeprovider(idprov);
    prov->exec();
    delete prov;
 }
