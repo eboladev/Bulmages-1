@@ -18,24 +18,23 @@
 #define AINTELIGENTESVIEW_H
 
 #include <qwidget.h>
-#include <ainteligentesdlg.h>
-#include <qlineedit.h>
-#include <qtable.h>
-#include <qtextedit.h>
-#include <qcombobox.h>
-#include <qtabwidget.h>
+#include "ainteligentesdlg.h"
 
 #include "postgresiface2.h"
 
 
 /*** @author Tomeu Borrás Riera */
+class empresa;
+
 
 class ainteligentesview : public ainteligentesdlg  {
    Q_OBJECT
 private:
    cursor2 *cainteligentes;
+   empresa *empresaactual;
+   int numdigitos;
    
-public:
+private:
   postgresiface2 *conexionbase;
   int idasientointeligente;
   int ccostes[100];
@@ -44,9 +43,8 @@ public:
   int oldrow,oldcol;
   
 public: 
-  ainteligentesview(QWidget *parent=0, const char *name=0, bool modal=true);
+  ainteligentesview(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);
   ~ainteligentesview();
-  void inicializa(postgresiface2 *);
   void repinta();
   void return_asiento();
   void cargacanales();

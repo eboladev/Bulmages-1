@@ -17,6 +17,15 @@
 #include "ainteligentesview.h"
 #include <listcuentasview1.h>
 #include <qfiledialog.h>
+#include <qlineedit.h>
+#include <qtable.h>
+#include <qtextedit.h>
+#include <qcombobox.h>
+#include <qtabwidget.h>
+
+#include "importainteligente.h"
+#include "empresa.h"
+
 
 // Estas son las columnas que van con la talba de apuntes.
 #define COL_IDBINTELIGENTE 0
@@ -54,7 +63,10 @@
 
 
 
-ainteligentesview::ainteligentesview(QWidget *parent, const char *name, bool modal ) : ainteligentesdlg(parent,name, modal) {
+ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *name, bool modal ) : ainteligentesdlg(parent,name, modal) {
+   empresaactual = emp;
+   conexionbase = empresaactual->bdempresa();
+   numdigitos = empresaactual->numdigitosempresa();
    oldrow=-2;
    oldcol=-2;
 
@@ -124,9 +136,18 @@ ainteligentesview::ainteligentesview(QWidget *parent, const char *name, bool mod
    
    // El cursor que recorre los asientos inteligentes debe iniciarse a NULL
    cainteligentes = NULL;
+   
+   // Hacemos la inicialización inicial.
+   oldrow=-1;
+   oldcol=-1;
+   cargacombo();
+   // Llamamos a boton_fin para que la pantalla aparezca con un asiento inteligente inicial.
+   boton_fin();
+   
 }// end ainteligentesview
 
 void ainteligentesview::cargacombo() {
+   m_ainteligente->clear();
    if (cainteligentes != NULL) {
       delete cainteligentes;
    }// end if
@@ -142,7 +163,7 @@ void ainteligentesview::cargacombo() {
 }// end if
 
 
-void ainteligentesview::comboActivated(const QString &texto) {
+void ainteligentesview::comboActivated(const QString &) {
    QString idasiento = cainteligentes->valor("idainteligente",m_ainteligente->currentItem());
    idasientointeligente=idasiento.toInt();
    repinta();
@@ -194,21 +215,10 @@ ainteligentesview::~ainteligentesview(){
 }// end ~ainteligentesview
 
 
-void ainteligentesview::inicializa(postgresiface2 *conn) {
-  conexionbase = conn;
-  oldrow=-1;
-  oldcol=-1;
-  cargacombo();
-  // Llamamos a boton_fin para que la pantalla aparezca con un asiento inteligente inicial.
-  boton_fin();
-}// end inicializa
-
-
 void ainteligentesview::return_asiento() {
   QString cadena;
   cadena = idainteligenteedit->text();
   idasientointeligente = atoi(cadena.ascii());
-  fprintf(stderr,"%d\n",idasientointeligente);
   repinta();
 }// end return_asiento
 
@@ -227,6 +237,7 @@ void ainteligentesview::boton_nuevo() {
   cursor2 *aux = conexionbase->cargacursor(query,"querysupersuper");
   conexionbase->commit();
   if (!aux->eof()) {
+    cargacombo();
     idasientointeligente= atoi(aux->valor(0).ascii());
     repinta();
   }// end if
@@ -536,6 +547,7 @@ void ainteligentesview::boton_save() {
   }// end for
 
   conexionbase->commit();
+  cargacombo();
   repinta();
 }// end boton_save
 
@@ -744,32 +756,89 @@ void ainteligentesview::boton_cuentas() {
 void ainteligentesview::boton_exportar() {
    QString fn = QFileDialog::getSaveFileName(0, tr("AInteligente (*.xml)"), 0,tr("Guardar Asiento Inteligente"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {
-      QString SQlQuery;
-      SQlQuery.sprintf("SELECT * FROM ainteligente WHERE idainteligente=%d", idasientointeligente);
-      fprintf(stderr,"SQLQuery = %s\n", SQlQuery.ascii());
-      QMessageBox::warning( this,"BulmaGés", SQlQuery, "OK",  "No OK", 0, 0, 1 );
-      
-   }// end if    
-    
+      FILE *mifile;
+      mifile = fopen((char *) fn.ascii(),"wt");
+      if (mifile != NULL) {
+          QString SQlQuery;
+          SQlQuery.sprintf("SELECT * FROM ainteligente WHERE idainteligente=%d", idasientointeligente);
+         conexionbase->begin();
+         cursor2 *cursp = conexionbase->cargacursor(SQlQuery,"asiento");
+         conexionbase->commit();
+         fprintf(mifile,"<?xml version=\"1.0\"?>\n");
+         fprintf(mifile,"<DOCUMENT>\n");
+         while (!cursp->eof()) {
+            fprintf(mifile,"   <ainteligente>\n");
+            fprintf(mifile,"      <descripcion>%s</descripcion>\n", cursp->valor("descripcion").ascii());
+            fprintf(mifile,"      <comentariosasiento>%s</comentariosasiento>\n", cursp->valor("comentariosasiento").ascii());
+            QString SQlQuery1;
+            SQlQuery1.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d", idasientointeligente);
+            conexionbase->begin();
+            cursor2 *cursp1 = conexionbase->cargacursor(SQlQuery1,"a1siento");
+            conexionbase->commit();
+            while (!cursp1->eof()) {
+               fprintf(mifile,"      <binteligente>\n");
+               fprintf(mifile,"         <fecha>%s</fecha>\n", cursp1->valor("fecha").ascii());
+               fprintf(mifile,"         <conceptocontable>%s</conceptocontable>\n", cursp1->valor("conceptocontable").ascii());
+               fprintf(mifile,"         <codcuenta>%s</codcuenta>\n", cursp1->valor("codcuenta").ascii());
+               fprintf(mifile,"         <descripcionb>%s</descripcionb>\n", cursp1->valor("descripcion").ascii());
+               fprintf(mifile,"         <debe>%s</debe>\n", cursp1->valor("debe").ascii());
+               fprintf(mifile,"         <haber>%s</haber>\n", cursp1->valor("haber").ascii());
+               fprintf(mifile,"         <contrapartida>%s</contrapartida>\n", cursp1->valor("contrapartida").ascii());
+               fprintf(mifile,"         <comentario>%s</comentario>\n", cursp1->valor("comentario").ascii());
+               fprintf(mifile,"         <canal>%s</canal>\n", cursp1->valor("canal").ascii());
+               fprintf(mifile,"         <marcaconciliacion>%s</marcaconciliacion>\n", cursp1->valor("marcaconciliacion").ascii());
+               fprintf(mifile,"         <idc_coste>%s</idc_coste>\n", cursp1->valor("idc_coste").ascii());
+               QString SQlQuery2;
+               SQlQuery2.sprintf("SELECT * FROM ivainteligente WHERE idbinteligente=%s", cursp1->valor("idbinteligente").ascii());
+               conexionbase->begin();
+               cursor2 *cursp2 = conexionbase->cargacursor(SQlQuery2,"a2siento");
+               conexionbase->commit();
+               while (!cursp2->eof()) {
+                  fprintf(mifile,"         <ivainteligente>\n");
+                  fprintf(mifile,"            <contrapartida>%s</contrapartida>\n", cursp2->valor("contrapartida").ascii());
+                  fprintf(mifile,"            <baseimp>%s</baseimp>\n", cursp2->valor("baseimp").ascii());
+                  fprintf(mifile,"            <iva>%s</iva>\n", cursp2->valor("iva").ascii());
+                  fprintf(mifile,"            <factura>%s</factura>\n", cursp2->valor("factura").ascii());
+                  fprintf(mifile,"            <idborrador>%s</idborrador>\n", cursp2->valor("idborrador").ascii());
+                  fprintf(mifile,"            <incregistro>%s</incregistro>\n", cursp2->valor("incregistro").ascii());
+                  fprintf(mifile,"            <regularizacion>%s</regularizacion>\n", cursp2->valor("regularizacion").ascii());
+                  fprintf(mifile,"            <plan349>%s</plan349>\n", cursp2->valor("plan349").ascii());
+                  fprintf(mifile,"            <numorden>%s</numorden>\n", cursp2->valor("numorden").ascii());
+                  fprintf(mifile,"            <cif>%s</cif>\n", cursp2->valor("cif").ascii());
+                  fprintf(mifile,"         </ivainteligente>\n");
+                  cursp2->siguienteregistro();
+               }// end while
+               delete cursp2;
+               fprintf(mifile,"      </binteligente>\n");
+               cursp1->siguienteregistro();
+            }// end while
+            delete cursp1;
+            fprintf(mifile,"   </ainteligente>\n");            
+            cursp->siguienteregistro();
+         }// end while
+         delete cursp;
+         fprintf(mifile,"</DOCUMENT>\n");
+         fclose(mifile);
+      }// end if
+  }// end if   
+  QMessageBox::warning( this,"BulmaGés", "Se ha exportado el asiento inteligente.", "OK",  "No OK", 0, 0, 1 );  
 }// end boton_exportar
 
+
 void ainteligentesview::boton_importar() {
-    switch( QMessageBox::warning( this, "Application name",
-        "Could not connect to the <mumble> server.\n"
-        "This program can't function correctly "
-        "without the server.\n\n",
-        "Retry",
-        "Quit", 0, 0, 1 ) ) {
-    case 0: // The user clicked the Retry again button or pressed Enter
-        // try again
-        break;
-    case 1: // The user clicked the Quit or pressed Escape
-        // exit
-        break;
-    }
-   QString fn = QFileDialog::getOpenFileName(0, tr("Punteos (*.pto)"), 0,tr("Cargar Punteo"),tr("Elige el nombre de archivo"));
-   if (!fn.isEmpty()) {
-      ifstream filestr((char *) fn.ascii());
+   QString fn = QFileDialog::getOpenFileName(0, tr("Asientos Inteligentes (*.xml)"), 0,tr("Cargar Asientos Inteligentes"),tr("Elige el nombre de archivo"));
+   if (!fn.isEmpty()) {      
+      // Hacemos el parsing del XML
+      QFile xmlFile( fn);              // Declaramos el ficheros
+      QXmlInputSource source( &xmlFile ); // Declaramos el inputsource, con el fichero como parámetro
+      QXmlSimpleReader reader;            // Declaramos el lector
+      
+      importainteligente * handler = new importainteligente( empresaactual );
+      reader.setContentHandler( handler );
+      reader.parse( source );   
+      
+      cargacombo();
+      boton_fin();
    }// end if
     
 }// end boton_importar

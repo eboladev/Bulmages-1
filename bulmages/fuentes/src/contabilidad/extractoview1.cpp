@@ -34,7 +34,7 @@
 #define NUM_ASIENTO     11
 
 
-extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, int flags ) : extractodlg1(parent,name) {
+extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, int  ) : extractodlg1(parent,name) {
    fprintf(stderr,"Constructor de extractoview1\n");
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
@@ -488,7 +488,7 @@ void extractoview1::presentar() {
 
 
 
-void extractoview1::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste) {
+void extractoview1::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int ) {
    codigoinicial->setText(codinicial);
    codigofinal->setText(codfinal);
    fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
@@ -688,6 +688,7 @@ void extractoview1::boton_guardarpunteo() {
     }// end if
   }// end if   
 }// end boton_guardarpunteo
+
 
 // Esta función se activa justo cuando se pulsa sobre el botón de resetear el punteo.
 // Por supuesto cuando se pulsa dicho boton se borra el punteo.

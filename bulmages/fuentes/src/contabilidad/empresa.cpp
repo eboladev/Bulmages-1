@@ -349,8 +349,7 @@ int empresa::amortizaciones(){
  * de asientos inteligentes.                                       *
  *******************************************************************/
 int empresa::ainteligentes() {
-   ainteligentesview * nuevae = new ainteligentesview(0,"ainteligentes",true);
-   nuevae->inicializa(conexionbase2);
+   ainteligentesview * nuevae = new ainteligentesview(this, 0,"ainteligentes",true);
    nuevae->exec();
    delete nuevae;
   return(0);

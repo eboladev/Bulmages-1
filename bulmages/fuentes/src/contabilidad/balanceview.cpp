@@ -48,7 +48,7 @@
 #define SALDOEJ			8
 
 
-balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int flags ) : balancedlg(parent,name) {
+balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int  ) : balancedlg(parent,name) {
    fprintf(stderr,"Inicializacion de balanceview\n");
 	empresaactual = emp;
    conexionbase = empresaactual->bdempresa();

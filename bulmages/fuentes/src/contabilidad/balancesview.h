@@ -51,6 +51,8 @@ public slots:
    virtual void borrar();
    virtual void imprimir();
    virtual void dbtabla(int, int, int, const QPoint &);
+  virtual void boton_exportar();
+  virtual void boton_importar();
    
 };
 

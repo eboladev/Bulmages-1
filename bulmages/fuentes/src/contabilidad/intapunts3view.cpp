@@ -55,7 +55,7 @@
 #define ORDENASIENTO cursorasientos->valor("ordenasiento").ascii()
 
 
-intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, int flags ) : intapunts3dlg(parent,name) {
+intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, int  ) : intapunts3dlg(parent,name) {
    fprintf(stderr,"Constructor de intapunts3view\n");
     empresaactual = emp;
     idasiento=-1;

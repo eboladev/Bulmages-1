@@ -15,9 +15,11 @@
  ***************************************************************************/
 
 #include "balancesview.h"
-#include <qtable.h>
 #include "compbalanceview.h"
 #include "balancesprintview.h"
+#include <qtable.h>
+#include <qfiledialog.h>
+#include <qmessagebox.h>
 
 
 #define COL_CODIGO 0
@@ -154,4 +156,89 @@ void balancesview::imprimir() {
    delete b;
 }// end imprimir
 
+
+void balancesview::boton_exportar() {
+   fprintf(stderr,"Boton de Exportar\n");
+   QString idbalance = listado->text(listado->currentRow(),COL_CODIGO);
+   QString fn = QFileDialog::getSaveFileName(0, tr("Balances (*.xml)"), 0,tr("Guardar Balance"),tr("Elige el nombre de archivo"));
+   if (!fn.isEmpty()) {
+      FILE *mifile;
+      mifile = fopen((char *) fn.ascii(),"wt");
+      if (mifile != NULL) {
+          QString SQlQuery;
+          SQlQuery.sprintf("SELECT * FROM balance WHERE idbalance=%s", idbalance.ascii());
+         conexionbase->begin();
+         cursor2 *cursp = conexionbase->cargacursor(SQlQuery,"balance");
+         conexionbase->commit();
+         fprintf(mifile,"<?xml version=\"1.0\"?>\n");
+         fprintf(mifile,"<DOCUMENT>\n");
+         while (!cursp->eof()) {
+            fprintf(mifile,"   <balance>\n");
+            fprintf(mifile,"      <nombrebalance>%s</nombrebalance>\n", cursp->valor("nombrebalance").ascii());
+ // ----------------------
+            QString SQlQuery;
+            SQlQuery.sprintf("SELECT * FROM mpatrimonial WHERE idbalance=%s", idbalance.ascii());
+            conexionbase->begin();
+            cursor2 *cursp5 = conexionbase->cargacursor(SQlQuery,"balance5");
+            conexionbase->commit();
+            while (!cursp5->eof()) {
+               fprintf(mifile,"      <mpatrimonial>\n");
+               fprintf(mifile,"         <idmpatrimonial>%s</idmpatrimonial>\n", cursp5->valor("idmpatrimonial").ascii());
+               fprintf(mifile,"         <descmpatrimonial>%s</descmpatrimonial>\n", cursp5->valor("descmpatrimonial").ascii());
+               fprintf(mifile,"         <orden>%s</orden>\n", cursp5->valor("orden").ascii());
+               fprintf(mifile,"         <tabulacion>%s</tabulacion>\n", cursp5->valor("tabulacion").ascii());
+               fprintf(mifile,"         <saldo>%s</saldo>\n", cursp5->valor("saldo").ascii());
+               fprintf(mifile,"         <opdesc>%s</opdesc>\n", cursp5->valor("opdesc").ascii());
+               QString SQlQuery1;
+               SQlQuery1.sprintf("SELECT * FROM compmasap LEFT JOIN cuenta ON cuenta.idcuenta=compmasap.idcuenta WHERE masaperteneciente=%s", cursp5->valor("idmpatrimonial").ascii());
+               conexionbase->begin();
+               cursor2 *cursp6 = conexionbase->cargacursor(SQlQuery1,"compabalance6");
+               conexionbase->commit();
+               while (!cursp6->eof()) {
+                  fprintf(mifile,"         <compmasap>\n");
+                  fprintf(mifile,"            <codigo>%s</codigo>\n", cursp6->valor("codigo").ascii());
+                  fprintf(mifile,"            <idmpatrimonial>%s</idmpatrimonial>\n", cursp6->valor("idmpatrimonial").ascii());
+                  fprintf(mifile,"            <saldo>%s</saldo>\n", cursp6->valor("saldo").ascii());
+                  fprintf(mifile,"            <signo>%s</signo>\n", cursp6->valor("signo").ascii());
+                  fprintf(mifile,"            <nombre>%s</nombre>\n", cursp6->valor("nombre").ascii());
+                  fprintf(mifile,"         </compmasap>\n");
+                  cursp6->siguienteregistro();
+               }// end while
+               delete cursp6;
+               fprintf(mifile,"      </mpatrimonial>\n");            
+               cursp5->siguienteregistro();
+            }// end while
+            delete cursp5;
+ // --------------           
+            QString SQlQuery1;
+            SQlQuery1.sprintf("SELECT * FROM compbalance WHERE idbalance=%s", idbalance.ascii());
+            conexionbase->begin();
+            cursor2 *cursp1 = conexionbase->cargacursor(SQlQuery1,"compabalance");
+            conexionbase->commit();
+            while (!cursp1->eof()) {
+               fprintf(mifile,"      <compbalance>\n");
+               fprintf(mifile,"         <idmpatrimonial>%s</idmpatrimonial>\n", cursp1->valor("idmpatrimonial").ascii());
+               fprintf(mifile,"         <concepto>%s</concepto>\n", cursp1->valor("concepto").ascii());
+               fprintf(mifile,"         <orden>%s</orden>\n", cursp1->valor("orden").ascii());
+               fprintf(mifile,"         <tabulacion>%s</tabulacion>\n", cursp1->valor("tabulacion").ascii());
+               fprintf(mifile,"      </compbalance>\n");
+               cursp1->siguienteregistro();
+            }// end while
+            delete cursp1;
+            fprintf(mifile,"   </balance>\n");            
+            cursp->siguienteregistro();
+         }// end while
+         delete cursp;
+         fprintf(mifile,"</DOCUMENT>\n");
+         fclose(mifile);
+      }// end if
+  }// end if   
+  QMessageBox::warning( this,"BulmaGés", "Se ha exportado el Balance.", "OK",  "No OK", 0, 0, 1 );  
+   
+   
+}// end boton_exportar
+
+void balancesview::boton_importar() {
+   fprintf(stderr,"Boton de Importar\n");
+}// end boton_importar
 

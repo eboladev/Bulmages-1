@@ -51,7 +51,7 @@
 #define COL_CONTRAPARTIDA 9
 #define COL_NUMASIENTO 10
 
-diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int flags ) : diariodlg1(parent,name) {
+diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int  ) : diariodlg1(parent,name) {
 	empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    
@@ -139,7 +139,7 @@ void diarioview1::inicializa2(intapunts3view *inta, extractoview1 *ext, balancev
 
 
 
-void diarioview1::inicializa1(QString finicial, QString ffinal, int idc_coste) {
+void diarioview1::inicializa1(QString finicial, QString ffinal, int ) {
    QString s1, s2, s3;
    QDate fecha1aux;
    int dia, mes, ano;
