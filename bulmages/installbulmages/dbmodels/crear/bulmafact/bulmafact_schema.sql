@@ -493,7 +493,7 @@ CREATE TABLE presupuesto (
 -- Descompte de pressupost a clients.
 CREATE TABLE dpresupuesto (
    iddpresupuesto serial PRIMARY KEY,
-   conceptpresupuesto character varying(2000),
+   conceptdpresupuesto character varying(2000),
    proporciondpresupuesto float,
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
 );
@@ -508,7 +508,7 @@ CREATE TABLE dpresupuesto (
 -- Descompte: Percentatge de descompte en línia.
 -- Linia de pressupost a clients.
 CREATE TABLE lpresupuesto (
-   idlpresupuesto integer PRIMARY KEY,
+   idlpresupuesto serial PRIMARY KEY,
    desclpresupuesto character varying(150),
    cantlpresupuesto float,
    pvplpresupuesto float,
