@@ -736,8 +736,7 @@ int postgresiface2::cargaempresa(QString nomempresa, QString login, QString pass
     }// end if
     begin();
 
-    /*
-     * fetch rows from the pg_database, the system catalog of
+    /** fetch rows from the pg_database, the system catalog of
      * databases
      */
     query.sprintf("DECLARE mycursor CURSOR FOR SELECT * FROM empresa, usuario, usuario_empresa where usuario.idusuario=usuario_empresa.idusuario AND empresa.idempresa=usuario_empresa.idempresa AND usuario.login='%s' AND empresa.nombredb='%s' AND usuario.password='%s'",login.ascii(), nomempresa.ascii(), password.ascii());
@@ -767,7 +766,6 @@ QString postgresiface2::sanearCadena(QString cadena) {
     int longitud;
     char *buffer;
     QString cadenaLimpia;
-
     longitud = cadena.length();
     // Reservamos (la funcion de postgres lo necesita) un buffer del
     // doble de caracteres + 1 que la cadena original
@@ -797,7 +795,6 @@ QString postgresiface2::propiedadempresa(QString nombre) {
         PQclear(result);
         return("");
     }// end if
-
     num=PQntuples(result);
     if (num>1)
         fprintf(stderr,"Aviso: Hay %d valores para el campo %s en la tabla configuracion\n",num,nombre.ascii());

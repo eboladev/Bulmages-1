@@ -174,11 +174,11 @@ void ClientEdit::loadClient(QString client) {
 */
 void ClientEdit::setModified(bool formContentsChanged) {   
    if (formContentsChanged) {
-      modified = true;
+      m_modified = true;
       saveButton->setEnabled(true);
       setCaption(tr("Cliente (modificado)"));
    } else {
-      modified = false;
+      m_modified = false;
       saveButton->setEnabled(false);
       setCaption(tr("Cliente"));
    }
@@ -192,9 +192,7 @@ void ClientEdit::setModified(bool formContentsChanged) {
 void ClientEdit::emptyForm() {
    
       deleteButton->setEnabled(false);
-      
       clientId = "0";
-      
       m_clientId->setText( tr("Cliente nuevo"));
       m_clientName->setText("");
       m_altClientName->setText("");
@@ -207,7 +205,6 @@ void ClientEdit::emptyForm() {
       m_clientFax->setText("");
       m_clientEmail->setText("");
       m_clientUrl->setText("");
-      
       setModified(false);
 }// end newClient
 
@@ -256,7 +253,6 @@ void ClientEdit::saveClient() {
    companyact->begin();
    companyact->ejecuta(SQLQuery);
    companyact->commit(); 
-   
    setModified(false);  
 }// end accept
 
@@ -300,7 +296,7 @@ void ClientEdit::deleteButton_clicked() {
 
 
 void ClientEdit::cancelButton_clicked() {
-   if (modified) {
+   if (m_modified) {
       int ret = QMessageBox::warning(this,tr("Edición de clientes"),
                      tr("El cliente ha sido modificado.\n"
                         "¿Quiere guardar los cambios?"),
@@ -318,6 +314,7 @@ void ClientEdit::cancelButton_clicked() {
 }
 
 void ClientEdit::close() {
+	fprintf(stderr,"ClientEdit::close\n");
 	QWidget::close();
 	delete this;
 }// end close

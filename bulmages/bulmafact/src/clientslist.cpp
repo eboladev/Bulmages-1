@@ -150,7 +150,7 @@ ClientsList::~ClientsList() {
   */
 void ClientsList::initClients() {
        companyact->begin();
-       cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%'","unquery");
+       cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente","unquery");
        companyact->commit();
        m_clientList->setNumRows( cur->numregistros() );
        int i=0;
@@ -216,25 +216,20 @@ void ClientsList::s_findClients() {
 
 void ClientsList::s_printClients() {
 	fprintf(stderr,"Impresión del listado\n");
-// #ifdef REPORTS
+#ifdef REPORTS
     	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
 	QString cadena;
 	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.
-	cadena = "cp /home/tborras/bulmages/installbulmages/reports/bulma-styles.xml   /tmp/bulma-styles.xml" ;
+	cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"bulma-styles.xml   /tmp/bulma-styles.xml" ;
 	system (cadena.ascii());	
-	cadena = "cp /home/tborras/bulmages/installbulmages/reports/clientslist.rtk   /tmp/clientslist.rtk" ;
+	cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"clientslist.rtk   /tmp/clientslist.rtk" ;
 	system (cadena.ascii());	
 	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
 	cadena += companyact->nameDB()+" ";
-	// OJO QUE LA LINEA BUENA ES LA QUE ESTA COMENTADA
-//	cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
-	// ESTA LINEA ES PARA HACER PRUEBAS
-//	cadena += "/home/tborras/bulmages/installbulmages/reports/extracto1.rtk &";
 	cadena += "/tmp/clientslist.rtk &";
 	fprintf(stderr,"%s\n",cadena.ascii());
 	system (cadena.ascii());    
-// #endif
-
+#endif
 }// end s_printClients
 
 

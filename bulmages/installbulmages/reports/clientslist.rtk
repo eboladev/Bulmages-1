@@ -118,65 +118,89 @@
 
 <IMAGE name="encabezado" url="/home/tborras/bulmages/installbulmages/reports/logo.jpg" mime-type="image/jpg"></IMAGE>
 
-
-  <!--INPUT name="default" driver="sqlbulmages" 
-  sqldriver="QPSQL7" database="bulmages" user="tborras"-->
   <INPUT name="default" driver="sql" 
   sqldriver="QPSQL7" database="bulmages" user="tborras" from="cliente" orderby="nomcliente">
+    <INPUTFIELD name="idcliente" source="cliente.idcliente" type="text"></INPUTFIELD>
     <INPUTFIELD name="nomcliente" source="cliente.nomcliente" type="text"></INPUTFIELD>
     <INPUTFIELD name="nomaltcliente" source="cliente.nomaltcliente" type="text"></INPUTFIELD>
     <INPUTFIELD name="cifcliente" source="cliente.cifcliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="bancocliente" source="cliente.bancocliente" type="text"></INPUTFIELD>    
     <INPUTFIELD name="dircliente" source="cliente.dircliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="poblcliente" source="cliente.poblcliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="cpcliente" source="cliente.cpcliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="telcliente" source="cliente.telcliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="faxcliente" source="cliente.faxcliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="mailcliente" source="cliente.mailcliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="urlcliente" source="cliente.urlcliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="faltacliente" source="cliente.faltacliente" type="text"></INPUTFIELD>
+    <INPUTFIELD name="fbajacliente" source="cliente.fbajacliente" type="text"></INPUTFIELD>
   </INPUT>
 
 <!-- Encabezado de página -->
-  <SECTION name="pageheader" type="page-header" sizey="9" backgroundimage="encabezado" PrintInFirstPage="true">
-
-    <OBJECT name="header-numasiento" fontsize="8"
+  <SECTION name="pageheader" type="page-header" sizey="9" backgroundimage="encabezado" printinfirstpage="true">
+    <OBJECT name="codigo" fontsize="8"
       posx="0" posy="8" sizex="0" sizey="1" adjustment="none" 
-      value="Cuenta" 
+      value="Código" 
       ></OBJECT>
-    <OBJECT name="header-apunte-descripcion"  fontsize="8"
+    <OBJECT name="Nombre"  fontsize="8"
       posx="31" posy="8" sizex="10" sizey="1"
-      value="Concepto" 
+      value="Nombre" 
       ></OBJECT>
-    <OBJECT name="header-debe" fontsize="8"
+    <OBJECT name="Nombre Alternativo" fontsize="8"
       posx="44" posy="8" sizex="12" sizey="1" 
       value="Debe"    
-      halignment="right"
+      halignment="Nombre Alternativo"
       ></OBJECT>
-    <OBJECT name="header-haber" fontsize="8"
+    <OBJECT name="CIF" fontsize="8"
       posx="56" posy="8" sizex="12" sizey="1" 
-      value="Haber"
-      halignment="right"
+      value="CIF"
       ></OBJECT>
   </SECTION>
 
 <!-- Detalles -->
-  <SECTION name="details" type="details" style="normal-text"
-    sizey="1" 
-    fontsize="10" marginleft="2"
-    printinfirstpage="TRUE">
-    <OBJECT name="cuenta-codigo"
-      posx="1"
-      sizex="10"
-      value="input.nomcliente" style="text" textcolor="blue"
+  <SECTION name="details" type="details" style="normal-text" sizey="3" fontsize="10" marginleft="0" margintop="0.2" marginright="0" marginbottom="0"
+  borderstyle="none" bordercolor="#000000" borderwidth="0" borderbottomstyle="solid" borderbottomwidth="1">
+    <!-- Identificador del Cliente -->
+    <OBJECT posx="0" posy="0" sizex="7" sizey="1" 
+      value="Código:" textcolor="blue"></OBJECT>
+    <OBJECT posx="8" sizex="3"
+      value="input.idcliente" style="text" textcolor="blue"
+      halignment="right"></OBJECT>
+    <!-- El CIF del cliente -->
+    <OBJECT posx="12" posy="0" sizex="3" sizey="1" 
+      value="CIF:" textcolor="blue"></OBJECT>
+    <OBJECT posx="16" sizex="8"
+      value="input.cifcliente" textcolor="black" style="text"></OBJECT>
+    <!-- El nombre del cliente -->
+    <OBJECT posx="13" sizex="20" posy="2"
+      value="input.nomcliente" style="text"
       halignment="left"
       ></OBJECT>
-    <OBJECT name="cuenta-descripcion"
-      posx="12" sizex="40"
+    <OBJECT posx="34" sizex="20" posy="2"
       value="input.nomaltcliente" textcolor="blue"
       ></OBJECT>
-    <OBJECT name="cuenta-debe"
-      posx="55" sizex="8" sizey="1" 
-      value="input.cifcliente" textcolor="black"
-      style="text"
-      ></OBJECT>
-    <OBJECT name="acuenta-haber"
-      posx="65" sizex="8" 
+    <OBJECT posx="55" sizex="20" posy="2"
       value="input.dircliente"  textcolor="black"
-      style="currency"
       ></OBJECT>        
+  <!-- Segunda linea -->
+    <!-- Telefono -->
+    <OBJECT posx="0" posy="1" sizex="4" sizey="1" 
+      value="Tel." textcolor="blue"></OBJECT>  
+    <OBJECT posx="4" sizex="10" posy="1"
+      value="input.telcliente"  textcolor="black"
+      ></OBJECT>   
+    <!-- Fecha de Alta -->
+    <OBJECT posx="15" posy="1" sizex="4" sizey="1" 
+      value="Fecha Alta" textcolor="blue"></OBJECT>  
+    <OBJECT posx="24" sizex="10" posy="1"
+      value="input.faltacliente"  textcolor="black"
+      ></OBJECT>
+    <!-- Fecha de Baja -->
+    <OBJECT posx="35" posy="1" sizex="4" sizey="1" 
+      value="Fecha Baja" textcolor="blue"></OBJECT>  
+    <OBJECT posx="44" sizex="10" posy="1"
+      value="input.fbajacliente"  textcolor="black"
+      ></OBJECT>
   </SECTION>
   
     

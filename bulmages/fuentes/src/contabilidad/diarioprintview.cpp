@@ -46,9 +46,9 @@ void DiarioPrintView::pruebasRTK() {
     	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
 	QString cadena;
 	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.
-	cadena = "cp /home/tborras/bulmages/installbulmages/reports/bulma-styles.xml   /tmp/bulma-styles.xml" ;
+	cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"bulma-styles.xml   /tmp/bulma-styles.xml" ;
 	system (cadena.ascii());	
-	cadena = "cp /home/tborras/bulmages/installbulmages/reports/diario.rtk   /tmp/diario.rtk" ;
+	cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"diario.rtk   /tmp/diario.rtk" ;
 	system (cadena.ascii());
 	cadena = " sed -e \"s&###fechainicial###&"+fechainicial1->text()+"&g\"  /tmp/diario.rtk > /tmp/diario1.rtk";
 	system (cadena.ascii());
@@ -57,10 +57,6 @@ void DiarioPrintView::pruebasRTK() {
 	
 	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
 	cadena += conexionbase->nameDB()+" ";
-	// OJO QUE LA LINEA BUENA ES LA QUE ESTA COMENTADA
-//	cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
-	// ESTA LINEA ES PARA HACER PRUEBAS
-//	cadena += "/home/tborras/bulmages/installbulmages/reports/extracto1.rtk &";
 	cadena += "/tmp/diario.rtk &";
 	fprintf(stderr,"%s\n",cadena.ascii());
 	system (cadena.ascii()); 

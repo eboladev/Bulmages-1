@@ -17,6 +17,10 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+ /** \file clientedit.h
+   * Este finchero tiene la implementación de la clase \ref ClientEdit que se encarga
+   * de la ventana de edición de clientes
+   */
 #ifndef CLIENTEDIT_H
 #define CLIENTEDIT_H
 
@@ -32,7 +36,7 @@ Q_OBJECT
 private:
    company *companyact;
    QString clientId;
-   bool modified;
+   bool m_modified;
    
    void setModified(bool formContentsChanged);
    void emptyForm();
