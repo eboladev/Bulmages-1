@@ -25,10 +25,11 @@ void listventanas::clicked() {
 	fprintf(stderr,"Se ha pulsado\n");
 	int item = m_listBox->currentItem();
 	QWidget *widget = (QWidget *)elmapa[item];
-	widget->hide();
-	widget->show();
+//	widget->hide();
+	widget->showMaximized();
 	widget->setActiveWindow();
 }// end clicked
+
 
 listventanas::~listventanas() {
 	delete m_listBox;

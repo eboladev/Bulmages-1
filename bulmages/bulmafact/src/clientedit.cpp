@@ -51,6 +51,7 @@ Restricciones de llave foránea:
 #include <qmessagebox.h>
 #include <qtable.h>
 #include <qtoolbutton.h>
+#include <qwidget.h>
 
 #define COL_DIVISION_IDDIVISION 0
 #define COL_DIVISION_DESCDIVISION 1
@@ -314,8 +315,12 @@ void ClientEdit::cancelButton_clicked() {
    } else {
       close();
    } 
-   
 }
+
+void ClientEdit::close() {
+	QWidget::close();
+	delete this;
+}// end close
 
 void ClientEdit::formModified() {
    setModified(true);

@@ -85,26 +85,26 @@ company::~company(){
 
 void company::listproviders () {
    m_providerslist->hide();
-   m_providerslist->show();
+   m_providerslist->showMaximized();
    m_providerslist->setActiveWindow();
 }
 
 void company::listClients () {
    m_clientsList->hide();
-   m_clientsList->show();
+   m_clientsList->showMaximized();
    m_clientsList->setActiveWindow();
 }
 
 void company::newClient() {
    m_clientEdit = new ClientEdit(this, m_pWorkspace,theApp->translate("Editar/Añadir cliente","company"));
    m_clientEdit->hide();
-   m_clientEdit->show();
+   m_clientEdit->showMaximized();
    m_clientEdit->setActiveWindow();
 }   
 
 void company::listarticles () {
    m_articleslist->hide();
-   m_articleslist->show();
+   m_articleslist->showMaximized();
    m_articleslist->setActiveWindow();
 }
 
@@ -115,7 +115,7 @@ void company::refreshArticles() {
 
 void company::listorders () {
    m_orderslist->hide();
-   m_orderslist->show();
+   m_orderslist->showMaximized();
    m_orderslist->setActiveWindow();
 }
 
@@ -132,14 +132,14 @@ void company::newOrder() {
 
 void company::listdelivnotes () {
    m_delivnoteslist->hide();
-   m_delivnoteslist->show();
+   m_delivnoteslist->showMaximized();
    m_delivnoteslist->setActiveWindow();
 }
 
 
 void company::listBudgets() {
    m_budgetsList->hide();
-   m_budgetsList->show();
+   m_budgetsList->showMaximized();
    m_budgetsList->setActiveWindow();
 }// end listbudgets
 
@@ -155,13 +155,13 @@ void company::refreshBudgets() {
 
 void company::listClientDelivNotes() {
    m_clientDelivNotesList->hide();
-   m_clientDelivNotesList->show();
+   m_clientDelivNotesList->showMaximized();
    m_clientDelivNotesList->setActiveWindow();
 }// end listbudgets
 
 void company::newClientDelivNote() {
    ClientDelivNote *cDelivNote = new ClientDelivNote(this,m_pWorkspace,theApp->translate("Edicion de Albaranes", "company"));
-   cDelivNote->show();
+   cDelivNote->showMaximized();
 }// end newClientDelivNote
 
 void company::refreshClientDelivNotes() {

@@ -51,6 +51,7 @@ public slots:
    virtual void deleteButton_clicked();
    virtual void cancelButton_clicked();   
    virtual void formModified();
+   virtual void close();
 };
 
 #endif

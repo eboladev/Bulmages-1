@@ -1393,12 +1393,6 @@
         <receiver>ClientEditBase</receiver>
         <slot>cancelButton_clicked()</slot>
     </connection>
-    <connection>
-        <sender>ClientEditBase</sender>
-        <signal>destroyed(QObject*)</signal>
-        <receiver>ClientEditBase</receiver>
-        <slot>cancelButton_clicked()</slot>
-    </connection>
 </connections>
 <tabstops>
     <tabstop>tabWidget</tabstop>
@@ -1431,6 +1425,7 @@
     <slot>saveButton_clicked()</slot>
     <slot>deleteButton_clicked()</slot>
     <slot>cancelButton_clicked()</slot>
+    <slot>close()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

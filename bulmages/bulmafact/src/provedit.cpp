@@ -280,5 +280,6 @@ void provedit::close() {
 		s_saveProvider();	   
    }// end if
    QWidget::close();
+   delete this;
 }// end close
 
