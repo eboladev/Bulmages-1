@@ -36,7 +36,7 @@
 #include "clientdelivnoteslist.h"
 #include "linorderslist.h"
 #include "abreempresaview.h"
-
+#include "fpago.h"
 
 
 
@@ -168,3 +168,10 @@ void company::refreshClientDelivNotes() {
    m_clientDelivNotesList->inicializa();
 }// end refreshClientDelivNotes
 
+
+/** Presenta la ventana de formas de pago y espera la ejecución de la misma */
+void company::s_FPago() {
+   fpago *f = new fpago(this,NULL,theApp->translate("Formas de Pago", "company"));
+   f->exec();
+   delete f;
+}// end newOrder

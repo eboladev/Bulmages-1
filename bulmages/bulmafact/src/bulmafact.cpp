@@ -150,3 +150,8 @@ void bulmafact::newClientDelivNote() {
    m_company.newClientDelivNote();
 }// end provideraction
 
+void bulmafact::s_FPago() {
+	m_company.s_FPago();
+}// end s_FPago
+
+

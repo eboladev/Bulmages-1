@@ -80,6 +80,7 @@ public:
    void refreshClientDelivNotes();
    void meteWindow(QString nom, QObject *obj) {m_listventanas->meteWindow(nom, obj);};
    void sacaWindow(QObject *nom) {m_listventanas->sacaWindow(nom);};
+   void s_FPago();
    QString searchCompany();
 };
 

@@ -38,6 +38,7 @@ public slots:
     virtual void listBudgets();
 	 virtual void newOrder();
 	 virtual void listClientDelivNotes();
+    virtual void s_FPago();
     void about();
     void aboutQt();
 /*

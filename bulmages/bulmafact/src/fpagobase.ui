@@ -1,0 +1,502 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>fpagobase</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>fpagodlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>735</width>
+            <height>586</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Formas de Pago</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout6</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image0</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image2</iconset>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>300</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout19</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QListView">
+                    <property name="name">
+                        <cstring>m_listFPago</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>5</hsizetype>
+                            <vsizetype>7</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>150</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                </widget>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>groupBox1</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>5</hsizetype>
+                            <vsizetype>7</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="title">
+                        <string>Información de la Forma de Pago</string>
+                    </property>
+                    <vbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout3</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel1</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Nombre</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>m_descforma_pago</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout22_2</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel1_2_2_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>7</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>Plazo primer Recibo (dias)</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>m_dias1tforma_pago</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout22_2_2</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel1_2_2_2_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>7</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>Descuento</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>m_descuentoforma_pago</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout22</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel1_2_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>7</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>Número de Plazos</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>m_nPlazosFPago</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout22_3</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel1_2_2_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>7</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>tipoplazoprimerpago</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>m_tipoPlazoPrimerPago</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout22_3_2</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel1_2_2_3_2</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>7</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>Plazo entre Recibos (dias)</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>m_plazoEntreReciboFPago</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout22_3_3</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel1_2_2_3_3</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>7</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>tipoplazoentrerecibofpago</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>m_tipoPlazoEntreReciboFPago</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>false</bool>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer5</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Vertical</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>41</width>
+                                    <height>140</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </vbox>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout5</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>191</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Salir</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="506">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001c1494441545885d595a16ec33010862f6cafd4bc421f65af30b6b2e10eed09865b38984c9a9482482d2830283008302888a6927fc077a9ec348bdbd8d57652f5c701bdcb77ff9d0900a10401a0a2860dd6abce0628ca829cff0b38772f5983a33d59d58d146380f65c44a8ba95d5fd44bfc6d1caf62055d977d790984ec030818d0600280da71d41047a1e080d2e02da7baf114ce266021286db50d46e15aa718b48e30121c06d40eb9d1546a76332819693563b0334c0db7b7151d3784082db001e496cacac4aabcfcb1588e82289e904bc69a876f6e1e34b73111a5802440444f74057052bef838e24931002693cc004d4c1562104aada7031062f630462ed81ade2f3de4ac59ac403e7bbc07eb910d82ad63d93d8b7093ce0cfbfb85f7691dc0d4c24aa0764ee0d2717f7cbada8b447e4d046f4807cb9b85ee67f888476094cf280f4bc23207a7409f4486844f4c0c9d331128d4b208e077c129c7cd0130d12ec8131021e89a87b60908078c123a01b24dc033e81012fa4f5803f0d1708c4df03374ec1b43d3044e0ae1ef8d37be0bf7a202bca82f2594ee56749f92cc7e2754d4f34a705ade981e6f44d71ced963460032ce23f9a8df1322a4fa8578e0eefa0344d854b2162498140000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="752">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002b7494441545885b596214c1c411885df25151515880a444505a2a282754010080409a826886b527124154d55455d11a454a169d2e44e901c068120205bd164b74993435c7208c48a132b56aca8d834355fc5cc1cecb2cb1db77b7fb2793bb3c9feff7bf3e69f11200204c80f7c65c67d4c587cd038813bff2b188f264b70e248ff198c62574c02e94d1165585a1920c76ce2f8636030745599b9fb94a85f81c42a70190110466496a35081b11e98346c1144b9f98852256a53c0456297c1ef67ab08e36c11b3f18053c02e03696e1c726777d4ae406a93f6ae1288a17de217e26c3ce0c22e03764b7269e03c30f8f9f01c49ccc403f9ddd0bb322fdf7f47b688080e41124ced813d6f4c15163f2cc3f05687b44a3805a6f3404bf056a5453805d2ed39d810c9baa003bdbe51c2ef271ce41598d8032dc1b16e305f84db05cd39d812ac0bd604ab82187ad759051ee681a06d983b051cee7ae5ccd744b42a581283e32e00bdebb48207826e568196a023f8e895335f121cb5cdf730abc0741e704abc314fba2dd816e9960a998736793834ce1c0cd30a1eb8ad4447d0141ccab02e627e6c99bbae1c55f1402ed21fed7b994736b9bb1f84516a911afa808bb235df786ebebb3320ce62350f38059ac56e0f17052f45b8658ce93ae24889981a3c50c6dc26e78560410cd6bd42252a79a08c79b4bb63982fd8e4cf04f362b0ea651488622a78a08cf9a969329c7433c9792a78227a8b5ea1020ff240fae55521f3e4d4b8dddd03a2a336cc8bde9c49ee3f12480cf60e460a4cef81775e96f99965eece00770a76ba86b94d4e73a73e0f242dcf303fb3ccdd196093bb3b61f8ad6d98375f8f988fb0721fb81e6499e7157037a29f6498d7da075c9429e030df07aa79201fe31418d309fdc057c30f7cad2caf28f8151421fb5f2ff4499bdad7851e6b537f55cfb8f1be21a071bf07022489593d937860e6f81f688256ed458f55e80000000049454e44ae426082</data>
+    </image>
+    <image name="image2">
+        <data format="PNG" length="983">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000039e494441545885b597bd6bdc4818c61f8533f85f709f220235822da235b9bfc1c86c7122e688c3350e2e8c9222ac5d98b50f82e283805d18760bc3ba31eb0b242285c1297c48812b72559c4ec5156bb8c2850b7b382f3c578c662cadf643bbc90d0cefce7ebdeffce69967462009c6044944718441630054bdccf72719eb3787c53429a3b388946fe48a19f7fbb1ff3fae52003ab9bbe09209d96c35c9a458cc34242622e02eb86cee37c9160b715a32232b55c979c63b0299a648f4c749c88cacb0807f449b96cc58f52bfcc95e32b28032644ccb2c9029adfe7104ca90b12d9b8ded061b9b0d5d4479f57f63b32d9b8dcd067946d65fd629b383f7e24f31e000f1a71855a70a350680eaa32ae23f627c8f267a02a227f0fcfd736cfdba85d7bfbd961ff4cf9c25d43f4d0bad90fe9acfeb77d78ce2482ec1300d7c6ffca665d25ff5b9b2bac2e55f964972b406a655ffa8022e8f2eb9fc4426dfddd925000ef4817ef5871f42da964df38149d332a72ac0b66c7a4b1ebd258fd159a49373900f00e0e9c753f25f999c5764e7a84376c9f6415b1663990cad70a2e4c97e42b7269773a40f0020afc9f05d485e92edc33679909ac93eb9fb66977c4306af825264cc0726bd9aa7b514ec04450239f55f939ddf3be43f69f2bf5333394f937f2683ed808cc9fa469d3c21fd357f2899d00ae9d65c267b494efd6ad24614477affcf57e7d939ea60f1761187bd433cfef9b1dec7c14e00f4002104d6b18e75b1aec737b88110428e7b025ffffa0ad113c00f8079dfc4eccc2cc4adc0f1db631886019286f29d22feaec4adbd206dd943c57fe1931fc895d515adeeee4197de4f1e93bd44cf381bc9bcfa15794dc0300cf2806889169ef69ec2786680242e2e2e303737977335c330f46b6fc9934e27046621678a1900b7d033c70ce0affa98ff711e511c198ab826a0d4dfdc936bad84a25bb72ff691712a0e010c9c79964056fd8a7c1e7faaee6cf26eb73b363a15878ded466e99dc05976ecd1daafedc2e009053b72ee05c862fe75f868e9d870e835701f927750490233048fdccfa000079546ecaa3324b4039e2b06857eece786e539ff5ee829bdbff0affd03b61161f49f22a35a331f1f4e1a93ee775f212ea2f68a0ff3454bdd96ade39615f742a8ebc5c6c4872f50d494fcddcadb905ef9feab940f5764b3aa38a4ec5214fd21bcec9ddf295517f4e03832a2b43c6a938f4d77cfa2f7cfa6bfe44ea2ff55c30e4a65420a36e3a93a87fa406268dfdfbbf8cfa4b6b60d271b618d5bfe9d9f0ff8eff0177c29f6edcd55cea0000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>toolButton1_2_2</sender>
+        <signal>clicked()</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>s_saveFPago()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1_2</sender>
+        <signal>clicked()</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>s_deleteFPago()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>s_newFPago()</slot>
+    </connection>
+    <connection>
+        <sender>m_dias1tforma_pago</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>s_setModificado()</slot>
+    </connection>
+    <connection>
+        <sender>m_tipoPlazoPrimerPago</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>s_setModificado()</slot>
+    </connection>
+    <connection>
+        <sender>m_nPlazosFPago</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>s_setModificado()</slot>
+    </connection>
+    <connection>
+        <sender>m_tipoPlazoPrimerPago</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>s_setModificado()</slot>
+    </connection>
+    <connection>
+        <sender>m_plazoEntreReciboFPago</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>s_setModificado()</slot>
+    </connection>
+    <connection>
+        <sender>m_tipoPlazoEntreReciboFPago</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>s_setModificado()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton2</sender>
+        <signal>clicked()</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>m_listFPago</sender>
+        <signal>clicked(QListViewItem*)</signal>
+        <receiver>fpagodlg</receiver>
+        <slot>s_lista(QListViewItem*)</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>cambiacombo( int )</slot>
+    <slot>s_saveFPago()</slot>
+    <slot>s_deleteFPago()</slot>
+    <slot>s_newFPago()</slot>
+    <slot>s_setModificado()</slot>
+    <slot>close()</slot>
+    <slot>s_lista(QListViewItem *)</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
