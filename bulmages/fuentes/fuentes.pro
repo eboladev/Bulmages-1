@@ -4,5 +4,5 @@
 # Target is a subdirs project 
 
 TEMPLATE = subdirs
-SUBDIRS += src
 SUBDIRS += src/estadisticas
+SUBDIRS += src
