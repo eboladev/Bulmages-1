@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>722</width>
-            <height>525</height>
+            <height>529</height>
         </rect>
     </property>
     <property name="caption">
@@ -975,6 +975,11 @@
                                 <string>IdLinAmortizacion</string>
                             </property>
                         </column>
+                        <column>
+                            <property name="text">
+                                <string>Num. Asiento</string>
+                            </property>
+                        </column>
                         <property name="name">
                             <cstring>table1</cstring>
                         </property>
@@ -982,7 +987,7 @@
                             <number>3</number>
                         </property>
                         <property name="numCols">
-                            <number>5</number>
+                            <number>6</number>
                         </property>
                         <property name="selectionMode">
                             <enum>SingleRow</enum>
@@ -990,7 +995,7 @@
                     </widget>
                     <widget class="QPushButton" row="3" column="1">
                         <property name="name">
-                            <cstring>pushButton4</cstring>
+                            <cstring>botoncalcular</cstring>
                         </property>
                         <property name="text">
                             <string>Calcular</string>
@@ -1063,7 +1068,7 @@
         <slot>close()</slot>
     </connection>
     <connection>
-        <sender>pushButton4</sender>
+        <sender>botoncalcular</sender>
         <signal>clicked()</signal>
         <receiver>amortizaciondlg</receiver>
         <slot>calculaamortizacion()</slot>
@@ -1132,7 +1137,7 @@
     <tabstop>periodicidad</tabstop>
     <tabstop>valorcompra</tabstop>
     <tabstop>radioButton1</tabstop>
-    <tabstop>pushButton4</tabstop>
+    <tabstop>botoncalcular</tabstop>
     <tabstop>table1</tabstop>
     <tabstop>pushButton1_3</tabstop>
     <tabstop>pushButton1</tabstop>

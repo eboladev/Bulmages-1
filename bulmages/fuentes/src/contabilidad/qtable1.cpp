@@ -152,12 +152,23 @@ void QTableItem1::paint( QPainter *p, const QColorGroup &cg, const QRect &cr, bo
 	 f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).c_str());
     p->setFont( f );
 
-    
     if (modo == 1) {
         g.setColor( QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO1).c_str()));
     } else {
         g.setColor(QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO2).c_str()));
     }// end if
+    
+    // MODO 10
+    if (modo == 10) {
+      g.setColor( QColorGroup::Base, QColor::QColor("#FFFFFF") );
+      // Establecemos la fuente segun las preferencias del diario.
+      f.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).c_str()));
+            f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).c_str());
+      p->setFont( f );
+      g.setColor(QColorGroup::Text, QColor::QColor("#FF0000"));
+    }// end if
+    // FIN DEL MODO 10
+    
     QTableItem::paint( p, g, cr, selected );
 }
 

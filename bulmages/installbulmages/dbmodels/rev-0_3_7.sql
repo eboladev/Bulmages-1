@@ -16,10 +16,10 @@
 \connect - postgres
 
 
--- DROP TABLE linamortizacion;
--- DROP TABLE amortizacion;
--- DROP SEQUENCE amortizacion_idamortizacion_seq;
--- DROP SEQUENCE linamortizacion_idlinamortizacion_seq;
+DROP TABLE linamortizacion;
+DROP TABLE amortizacion;
+DROP SEQUENCE amortizacion_idamortizacion_seq;
+DROP SEQUENCE linamortizacion_idlinamortizacion_seq;
 
 CREATE TABLE amortizacion (
     idamortizacion 		serial,
