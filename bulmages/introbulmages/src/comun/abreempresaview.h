@@ -39,13 +39,17 @@ class BSelector;
 
 class abreempresaview : public abreempresadlg  {
    Q_OBJECT
+   
 public:
-   abreempresaview(BSelector *parent=0, const char *name=0, bool modal=true);
-   ~abreempresaview();
    QString nombre;
    QString contrasena;
    QString empresabd;
    QString nombreempresa;
+   
+public:
+   abreempresaview(BSelector *parent=0, const char *name=0, bool modal=true);
+   ~abreempresaview();
+
    
 
 private:   

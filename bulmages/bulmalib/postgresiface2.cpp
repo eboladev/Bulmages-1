@@ -594,6 +594,10 @@ cursor2 *postgresiface2::cargaempresas() {
 }// end cargaempresas
 
 
+
+// Esta función carga de la metabase la combinación usuario password y basde de datos y 
+// devuelve el número de tuplas encontrados.
+// Sirve como comprobación de que los datos introducidos (usuario/password y la empresa seleccionada) son verídicos.
 int postgresiface2::cargaempresa(QString nomempresa, QString login, QString password) {
     fprintf(stderr,"postgresiface2::cargaempresa\n");
     QString query="";
@@ -621,6 +625,7 @@ int postgresiface2::cargaempresa(QString nomempresa, QString login, QString pass
      */
     query.sprintf("DECLARE mycursor CURSOR FOR SELECT * FROM empresa, usuario, usuario_empresa where usuario.idusuario=usuario_empresa.idusuario AND empresa.idempresa=usuario_empresa.idempresa AND usuario.login='%s' AND empresa.nombredb='%s' AND usuario.password='%s'",login.ascii(), nomempresa.ascii(), password.ascii());
     res = PQexec(conn, query.ascii());
+    commit();
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         fprintf(stderr, "DECLARE CURSOR command failed\n");
         PQclear(res);

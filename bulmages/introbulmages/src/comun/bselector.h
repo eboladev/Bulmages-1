@@ -26,13 +26,18 @@
 #include "uiselector.h"
 #include "bconfiguracion.h"
 
-
-
 /** @author Josep Burcion */
 
 class BSelector : public UIselector {
  Q_OBJECT
 
+public:
+   QString empresabd;
+   QString loggin;
+   QString password;
+   QString ejercicio;   // Indica el ejercicio si hace falta
+   QString tipo;        // Indica si va a ser contabilidad o facturación
+ 
 public:
     BSelector(QWidget * parent=0,const char * name=0);
     ~BSelector();

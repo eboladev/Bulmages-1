@@ -57,6 +57,7 @@ void abreempresaview::accept() {
    empresabd= it->text(2);
    ejercicioMetaDB = it->text(1);
    nombreempresa= it->text(0);
+   
    // El uso de esta función es dudoso.
    num = DBConn->cargaempresa(empresabd, nombre, contrasena);
    delete DBConn;
@@ -70,19 +71,18 @@ void abreempresaview::accept() {
        cursor2 * recordSet = DBConn2->cargacursor(query,"recordSet");
        DBConn2->commit();
        //       empresaactual->nombreusuario = nombre;
-      
-       confpr->setValor(PRIVILEGIOS_USUARIO, recordSet->valor(0,0));
-
-       
+       confpr->setValor(PRIVILEGIOS_USUARIO, recordSet->valor("permisos"));
        //Empezamos un nuevo modo de guardar algunas preferencias de los usuarios en la base de datos
        confpr->cargarEntorno(empresabd);
        ctllog->add(LOG_SEG | LOG_TRA, 1,"AbrViw004", "Entrando usuario: --"+nombre+"-- hacia la empresa: --"+nombreempresa+"-- con los permisos -"+confpr->valor(PRIVILEGIOS_USUARIO).c_str()+"-" );
        delete recordSet;
        delete DBConn2;
 //      delete this;
-      close();
+       fprintf(stderr,"Cerramos el abrir empresa \n");
+       close();
    }//end if
-//   if ((intentos+=1)>3) padre->close();
+   // Si se supera el numero de intentos abortamos la ejecución
+   if ((intentos+=1)>3) exit(1);
 }// end accept
 
 

@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras                                    *
- *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2004 by Josep Burcion                                   *
+ *   josep@burcion.com                                                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -11,36 +11,32 @@
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef LOGPASS_H
-#define LOGPASS_H
+#ifndef BPASSWD_H
+#define BPASSWD_H
 
-#include <logpassbase.h>
-#include "postgresiface2.h"
+#include <uipassword.h>
+#include <qlineedit.h>
 
 /**
-@author Tomeu Borras
+@author Josep Burcion
 */
-class logpass : public logpassbase
+class BPasswd : public UIPassword
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-   QString login;
-   QString password;
-private:
-   postgresiface2 *metabase;
+    BPasswd(QString * usuario, QString * passwd, QWidget * parent=0, const char * name=0, bool modal=FALSE, WFlags f=0);
+    ~BPasswd();
 
-public:
-    logpass(QWidget *parent = 0, const char *name = 0);
-    ~logpass();
-    
-public slots:
-   virtual void validar();
+        
+private:
+    QString * Usuario;
+    QString * Password;
+
+private slots:
+    virtual void validar();
+    virtual void returnPressedOnUser();
+    virtual void returnPressedOnPasswd();
 
 };
 
