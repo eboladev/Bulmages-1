@@ -585,10 +585,15 @@ void intapunts3view::boton_cerrarasiento() {
     fechaasiento1->selectAll();
     fechaasiento1->setFocus();
 
+// Hay un problema con la comprobación
+// Se borran asientos que no estan vacios
+// Por ejemplo cuando se crea un asiento a partir de un asiento inteligente.
+/*    
     if (asientoVacio) {
         QMessageBox::information( 0, tr("Asiento vacio"), tr("El asiento esta vacio, se procedera a borrarlo !"));
         borrar_asiento(false); //el valor false indica que no nos muestre el dialogo de confirmación de borrado.
-    }                            
+    }// end if
+*/
 }// end boton_cerrarasiento
 
 
