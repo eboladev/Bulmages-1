@@ -39,6 +39,7 @@ public:
 
 public slots:
     virtual void dobleclick(int, int, int, const QPoint &);
+    virtual void neworder();
 };
 
 #endif

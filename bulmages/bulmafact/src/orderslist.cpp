@@ -115,6 +115,15 @@ void orderslist::dobleclick(int a, int b, int c, const QPoint &d) {
 }
 
 
+void orderslist::neworder() {
+   fprintf(stderr, "neworder button activated");
+   linorderslist *linea = new linorderslist(companyact,0,theApp->translate("Detalle Pedido", "company"));
+   linea->chargelinorders(QString("0"));
+   linea->exec();
+   delete linea;
+   inicializa();
+}
+
 
 orderslist::~orderslist() {
 }// end ~orderslist

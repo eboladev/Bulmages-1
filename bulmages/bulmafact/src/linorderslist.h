@@ -48,6 +48,8 @@ public:
 public slots:
     virtual void activated(int);
     virtual void almacenactivated(int);
+    virtual void accept();
+    virtual void close();
 };
 
 #endif

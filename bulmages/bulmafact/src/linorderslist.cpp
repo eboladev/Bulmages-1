@@ -63,71 +63,74 @@ linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, i
 
 // Cargamos de la tabla de pedidos los datos del pedido seleccionado y los ponemos en la pantalla.
 
-void linorderslist::chargeorder(QString idpedido) {
+void linorderslist::chargeorder(QString idpedido_) {
    QString idproveedor;
    QString iddivision;
    QString idalmacen;
+	
+	idpedido = idpedido_;
    
-   companyact->begin();
-   cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido, division WHERE idpedido="+idpedido+" and pedido.iddivision=division.iddivision","unquery");
-   companyact->commit();
-   if (!cur->eof()) {
-   	m_numpedido->setText(cur->valor("numpedido"));
-	m_fechapedido->setText(cur->valor("fechapedido"));
-	m_descpedido->setText(cur->valor("descpedido"));
-	idproveedor = cur->valor("idproveedor");
-	iddivision = cur->valor("iddivision");
-	idalmacen = cur->valor("idalmacen");
-   }
-   delete cur;
+   if (idpedido != "0") {
+   	companyact->begin();
+   	cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido, division WHERE idpedido="+idpedido+" and pedido.iddivision=division.iddivision","unquery");
+   	companyact->commit();
+   	if (!cur->eof()) {
+  	 	m_numpedido->setText(cur->valor("numpedido"));
+		m_fechapedido->setText(cur->valor("fechapedido"));
+		m_descpedido->setText(cur->valor("descpedido"));
+		idproveedor = cur->valor("idproveedor");
+		iddivision = cur->valor("iddivision");
+		idalmacen = cur->valor("idalmacen");
+   	}
+   	delete cur;
    
-   companyact->begin();
-   cursor2 * cur3= companyact->cargacursor("SELECT * FROM proveedor WHERE idproveedor="+idproveedor,"unquery");
-   companyact->commit();
-   if (!cur3->eof()) {
-   	m_cifproveedor->setText(cur->valor("cifproveedor"));
-	m_nomproveedor->setText(cur->valor("nomproveedor"));
-	m_dirproveedor->setText(cur->valor("dirproveedor"));
-   }
-   delete cur3;
+ 	companyact->begin();
+   	cursor2 * cur3= companyact->cargacursor("SELECT * FROM proveedor WHERE idproveedor="+idproveedor,"unquery");
+   	companyact->commit();
+   	if (!cur3->eof()) {
+   		m_cifproveedor->setText(cur->valor("cifproveedor"));
+		m_nomproveedor->setText(cur->valor("nomproveedor"));
+		m_dirproveedor->setText(cur->valor("dirproveedor"));
+   	}
+   	delete cur3;
    
-   companyact->begin();
+  	companyact->begin();
    
-   if (m_cursorcombo != NULL) delete m_cursorcombo;
-   m_cursorcombo = companyact->cargacursor("SELECT * FROM division where idproveedor="+idproveedor,"unquery");
-   companyact->commit();
-   int i = 0;
-   int i1 = 0;
-   while (!m_cursorcombo->eof()) {
-   	i ++;
-	if (m_cursorcombo->valor("iddivision") == iddivision) {
-	   i1 = i;
-	}
-   	m_combodivision->insertItem(m_cursorcombo->valor("descdivision"));
-	m_cursorcombo->siguienteregistro();
-   }
-   if (i1 != 0 ) {
-   	m_combodivision->setCurrentItem(i1);
-   }
+  	if (m_cursorcombo != NULL) delete m_cursorcombo;
+   	m_cursorcombo = companyact->cargacursor("SELECT * FROM division where idproveedor="+idproveedor,"unquery");
+   	companyact->commit();
+   	int i = 0;
+   	int i1 = 0;
+   	while (!m_cursorcombo->eof()) {
+   		i ++;
+		if (m_cursorcombo->valor("iddivision") == iddivision) {
+		   i1 = i;
+		}
+   		m_combodivision->insertItem(m_cursorcombo->valor("descdivision"));
+		m_cursorcombo->siguienteregistro();
+   	}
+	if (i1 != 0 ) {
+   		m_combodivision->setCurrentItem(i1);
+ 	}
    
-   companyact->begin();
-   if (m_cursorcombo2 != NULL) delete m_cursorcombo2;
-   m_cursorcombo2 = companyact->cargacursor("SELECT * FROM almacen","unquery");
-   companyact->commit();
-   i = 0;
-   i1 = 0;   
-   while (!m_cursorcombo2->eof()) {
-   	i ++;
-	if (idalmacen == m_cursorcombo2->valor("idalmacen")) {
-	   i1 = i;
-	}
-   	m_comboalmacen->insertItem(m_cursorcombo2->valor("nomalmacen"));
-	m_cursorcombo2->siguienteregistro();
-   }
-   fprintf(stderr,"id:%s\n", idalmacen.ascii());
-   if (i1 != 0 ) {
-   	m_comboalmacen->setCurrentItem(i1);
-   }
+   	companyact->begin();
+   	if (m_cursorcombo2 != NULL) delete m_cursorcombo2;
+   	m_cursorcombo2 = companyact->cargacursor("SELECT * FROM almacen","unquery");
+   	companyact->commit();
+   	i = 0;
+   	i1 = 0;   
+   	while (!m_cursorcombo2->eof()) {
+   		i ++;
+		if (idalmacen == m_cursorcombo2->valor("idalmacen")) {
+		   i1 = i;
+		}
+   		m_comboalmacen->insertItem(m_cursorcombo2->valor("nomalmacen"));
+		m_cursorcombo2->siguienteregistro();
+   	}
+     	if (i1 != 0 ) {
+   		m_comboalmacen->setCurrentItem(i1);
+   	}
+   } //endif (pedido !=0)
 }
 
 void linorderslist::chargelinorders(QString idpedido) {
@@ -187,11 +190,45 @@ void linorderslist::chargelinorders(QString idpedido) {
 
 
 void linorderslist::activated(int a) {
-fprintf(stderr,"id:%s\n", m_cursorcombo->valor("iddivision",a-1).ascii());
+	fprintf(stderr,"id:%s\n", m_cursorcombo->valor("iddivision",a-1).ascii());
 }
 
 void linorderslist::almacenactivated(int a) {
-fprintf(stderr,"id:%s\n", m_cursorcombo2->valor("idalmacen",a-1).ascii());
+	fprintf(stderr,"id:%s\n", m_cursorcombo2->valor("idalmacen",a-1).ascii());
+}
+
+void linorderslist::accept() {
+	if (idpedido != "0") {
+		QString SQLQuery = "UPDATE pedido SET numpedido='"+m_numpedido->text()+"'";
+ //     SQLQuery += " , anopedido='"+m_fechapedido->text()+"'";
+      SQLQuery += " , fechapedido='"+m_fechapedido->text()+"'";
+      SQLQuery += " , descpedido='"+m_descpedido->text()+"'";
+      SQLQuery += " , iddivision="+m_cursorcombo->valor("iddivision",m_combodivision->currentItem()-1);
+      SQLQuery += " , idalmacen="+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem()-1);
+      SQLQuery += " WHERE idpedido ="+idpedido;
+      companyact->begin();
+      companyact->ejecuta(SQLQuery);
+      companyact->commit();
+	} else {
+		QString SQLQuery = "INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen)";
+		SQLQuery += " VALUES (";
+		SQLQuery += "'"+m_numpedido->text()+"'";
+ //     SQLQuery += " , anopedido='"+m_fechapedido->text()+"'";
+      SQLQuery += " , '"+m_fechapedido->text()+"'";
+      SQLQuery += " , '"+m_descpedido->text()+"'";
+      SQLQuery += " , "+m_cursorcombo->valor("iddivision",m_combodivision->currentItem()-1);
+      SQLQuery += " , "+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem()-1);
+      SQLQuery += " ) ";
+      companyact->begin();
+      companyact->ejecuta(SQLQuery);
+      companyact->commit();
+	}
+	fprintf(stderr,"accept button activated\n");
+	close();
+}
+
+void linorderslist::close() {
+	QDialog::close();
 }
 
 linorderslist::~linorderslist() {
