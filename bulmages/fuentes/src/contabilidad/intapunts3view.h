@@ -97,6 +97,7 @@ public:
     void bajarapunte(int);
     void iniciar_asiento_nuevo();
     void borrar_asiento(bool);
+    void buscaFactura();
 public slots:
     virtual void contextmenu(int, int,const QPoint &);
     virtual void apuntecambiadogrid(int, int);

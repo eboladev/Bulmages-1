@@ -34,12 +34,13 @@
 #include <unistd.h>
 #endif
 
+/*
 #ifdef REPORTS
 #include "rtkinputbges.h"
 #include "rtkqtreportviewer.h"
 using namespace RTK;
 #endif
-
+*/
 
 BalancePrintView::BalancePrintView(empresa *emp,QWidget *parent, const char *name ) : BalancePrintDlg(parent,name) {
    empresaactual=emp;
@@ -212,6 +213,7 @@ void BalancePrintView::presentar(char *tipus){
 
          if(rtk) {
             // Ahora vamos a hacer la presentacion como si fuese de RTK.
+/*
             #ifdef REPORTS            
             RTK::Report unReport;
             unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"balance.rtk");
@@ -229,6 +231,7 @@ void BalancePrintView::presentar(char *tipus){
                fprintf(stderr,"No existe soporte para REPORTS \n");
             #endif             
             // FIN DE LA PRESENTACION CON RTK.
+*/
          }// end if
 
                   

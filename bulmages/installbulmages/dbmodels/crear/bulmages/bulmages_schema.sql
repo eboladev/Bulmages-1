@@ -251,12 +251,14 @@ CREATE TABLE tipoiva (
 -- Name: registroiva; Type: TABLE; Schema: public; Owner: postgres
 --
 -- ffactura fecha de la factura.
+-- El campo iva es un campo de sólo lectura que se actualiza con los valores del IVA.
+-- El campo factemitida indica si es una factura emitida o recibida.
 
 CREATE TABLE registroiva (
     idregistroiva serial PRIMARY KEY,
     contrapartida integer REFERENCES cuenta(idcuenta),
     baseimp numeric(12,2),
-    iva numeric(12,2),
+    iva numeric(12,2),		-- De solo lectura
     ffactura date,
     factura character varying(70),
     idborrador integer,
@@ -266,6 +268,7 @@ CREATE TABLE registroiva (
     numorden character varying(50),
     cif character varying(25),
     idfpago integer REFERENCES fpago(idfpago),
+    factemitida boolean NOT NULL,
     rectificaaregistroiva integer REFERENCES registroiva(idregistroiva)
 );
 
@@ -305,7 +308,8 @@ CREATE TABLE iva (
    idiva serial PRIMARY KEY,
    idtipoiva integer NOT NULL REFERENCES tipoiva (idtipoiva),
    idregistroiva integer NOT NULL REFERENCES registroiva(idregistroiva),
-   baseiva numeric(12,2) DEFAULT 0
+   baseiva numeric(12,2) DEFAULT 0,
+   ivaiva numeric(12,2) DEFAULT 0
 );
 
 \echo "Se ha creado la tabla iva"
@@ -1844,6 +1848,42 @@ CREATE TRIGGER borratipoiva
    FOR EACH ROW
    EXECUTE PROCEDURE deletetipoiva();
    
+   
+   
+CREATE OR REPLACE FUNCTION cambiadoiva () RETURNS "trigger"
+    AS '
+DECLARE
+    mrecord RECORD;
+BEGIN
+    FOR mrecord IN SELECT SUM(baseiva) AS suma, SUM(ivaiva) AS sumaiva FROM iva WHERE iva.idregistroiva=NEW.idregistroiva LOOP
+    	UPDATE registroiva SET baseimp=mrecord.suma, iva=mrecord.sumaiva WHERE idregistroiva=NEW.idregistroiva;
+    END LOOP;
+    RETURN NEW;
+END;
+'    LANGUAGE plpgsql;
+
+CREATE TRIGGER civa
+   AFTER INSERT OR UPDATE ON iva
+   FOR EACH ROW
+   EXECUTE PROCEDURE cambiadoiva();  
+   
+   
+CREATE OR REPLACE FUNCTION cambiadoivad () RETURNS "trigger"
+    AS '
+DECLARE
+    mrecord RECORD;
+BEGIN
+    FOR mrecord IN SELECT SUM(baseiva) AS suma, SUM(ivaiva) AS sumaiva FROM iva WHERE iva.idregistroiva=OLD.idregistroiva LOOP
+    	UPDATE registroiva SET baseimp=mrecord.suma, iva=mrecord.sumaiva WHERE idregistroiva=OLD.idregistroiva;
+    END LOOP;
+    RETURN OLD;
+END;
+'    LANGUAGE plpgsql;
+
+CREATE TRIGGER civad
+   AFTER DELETE ON iva
+   FOR EACH ROW
+   EXECUTE PROCEDURE cambiadoivad();     
 -- ******************************************************
 -- FIN DEL APARTADO DE COMPROBACIONES.
 -- ******************************************************

@@ -34,12 +34,7 @@
 #include <qtable.h>
 #include <qstring.h>
 
-// Para la impesión utilizamos REPORTS, pero sólo si éte existe.
-#ifdef REPORTS
-#include "rtkinputbges.h"
-#include "rtkqtreportviewer.h"
-using namespace RTK;
-#endif
+
 
 listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : listcuentasdlg1(parent,name, modal) {
     empresaactual = emp;

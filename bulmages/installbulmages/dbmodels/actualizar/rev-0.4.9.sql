@@ -15,6 +15,38 @@ BEGIN;
 -- hay que hacer lo mismo.
 --
 
+
+--
+-- Función auxiliar para borrar funciones limpiamente
+--
+create or replace function drop_if_exists_table (text) returns INTEGER AS '
+DECLARE
+tbl_name ALIAS FOR $1;
+BEGIN
+IF (select count(*) from pg_tables where tablename=$1) THEN
+ EXECUTE ''DROP TABLE '' || $1;
+RETURN 1;
+END IF;
+RETURN 0;
+END;
+'
+language 'plpgsql';
+
+
+create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
+DECLARE
+proc_name ALIAS FOR $1;
+proc_params ALIAS FOR $2;
+BEGIN
+IF (select count(*) from pg_proc where proname=$1) THEN
+ EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+RETURN 1;
+END IF;
+RETURN 0;
+END;
+'
+language 'plpgsql';
+
 --
 -- Función para convertir los tipos de la tabla CUENTA
 --
@@ -804,8 +836,10 @@ CREATE TRIGGER propaga_acumulado_ccoste
     FOR EACH ROW
     EXECUTE PROCEDURE propagaacumuladoccoste();
 
+\echo "Creado el trigger propaga_acumulado_ccoste"
+    
 DROP FUNCTION acumulados_canal() CASCADE;
-CREATE FUNCTION acumulados_canal() RETURNS "trigger"
+CREATE OR REPLACE FUNCTION acumulados_canal() RETURNS "trigger"
     AS '
 DECLARE
    incdebe  numeric(12,2);
@@ -826,12 +860,15 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
+
 CREATE TRIGGER acumulados_canal_fk
     AFTER UPDATE ON acumulado_canal
     FOR EACH ROW
     EXECUTE PROCEDURE acumulados_canal();
 
 
+\echo "Creado el trigger de propagación de acumulados del canal"
+    
 DROP FUNCTION inserttipoiva() CASCADE;
 CREATE OR REPLACE FUNCTION inserttipoiva () RETURNS "trigger"
 AS '
@@ -866,9 +903,146 @@ CREATE TRIGGER borratipoiva
    FOR EACH ROW
    EXECUTE PROCEDURE deletetipoiva();
 
+\echo "Creados los TRIGGER borratipoiva"
+  
+
+
+--
+-- Agregamos el campo ivaiva a los ivas pq se debe almacenar tanto la base de iva como su importe
+--
+CREATE OR REPLACE FUNCTION columnivaiva() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''ivaiva'';
+	IF NOT FOUND THEN
+		ALTER TABLE iva ADD COLUMN ivaiva numeric(12,2);
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+
+SELECT columnivaiva();
+DROP FUNCTION columnivaiva() CASCADE;
+\echo "Agregada la columna ivaiva a la tabla de iva"
+
+
+ 
+--
+-- Mejoramos el tratamiento del iva y creamos los updates del campo de iva de los registros de iva.
+--   
+SELECT drop_if_exists_proc ('cambiadoiva','');
+CREATE OR REPLACE FUNCTION cambiadoiva () RETURNS "trigger"
+    AS '
+DECLARE
+    mrecord RECORD;
+BEGIN
+    FOR mrecord IN SELECT SUM(baseiva) AS suma, SUM(ivaiva) AS sumaiva FROM iva WHERE iva.idregistroiva=NEW.idregistroiva LOOP
+    	UPDATE registroiva SET baseimp=mrecord.suma, iva=mrecord.sumaiva WHERE idregistroiva=NEW.idregistroiva;
+    END LOOP;
+    RETURN NEW;
+END;
+'    LANGUAGE plpgsql;
+
+-- DROP TRIGGER civa ON iva;
+CREATE TRIGGER civa
+   AFTER INSERT OR UPDATE ON iva
+   FOR EACH ROW
+   EXECUTE PROCEDURE cambiadoiva();   
+\echo "Creado el TRIGGER civa"
+   
+
+--DROP FUNCTION cambiadoivad() CASCADE;
+SELECT drop_if_exists_proc ('cambiadoivad','');
+CREATE OR REPLACE FUNCTION cambiadoivad () RETURNS "trigger"
+    AS '
+DECLARE
+    mrecord RECORD;
+BEGIN
+    FOR mrecord IN SELECT SUM(baseiva) AS suma, SUM(ivaiva) AS sumaiva FROM iva WHERE iva.idregistroiva=OLD.idregistroiva LOOP
+    	UPDATE registroiva SET baseimp=mrecord.suma, iva=mrecord.sumaiva WHERE idregistroiva=OLD.idregistroiva;
+    END LOOP;
+    RETURN OLD;
+END;
+'    LANGUAGE plpgsql;
+
+CREATE TRIGGER civad
+   AFTER DELETE ON iva
+   FOR EACH ROW
+   EXECUTE PROCEDURE cambiadoivad(); 
+   
+   
+\echo "Creado el trigger civad"
+
+
+
+-- Hacemos la actualización de los IVAS para que la cosa vaya bien
+UPDATE iva set idiva=idiva;
+
+\echo "Actualizado el iva para que propague acumulados"
 --
 -- Se añade el campo Código Postal a las cuenta porque se necesita ese dato en los listados para el modelo 347.
 --
-ALTER TABLE cuenta ADD COLUMN cpent_cuenta character varying(5);
+CREATE OR REPLACE FUNCTION columncpent() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''cpent_cuenta'';
+	IF NOT FOUND THEN
+		ALTER TABLE cuenta ADD COLUMN cpent_cuenta character varying(5);
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+
+SELECT columncpent();
+DROP FUNCTION columncpent() CASCADE;
+\echo "Agregada la columna cpent_cuenta a la tabla de cuentas"
+
+--
+-- Agregamos el campo fractemitida que indica si es una factura emitida o recibida
+--
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''cpent_cuenta'';
+	IF NOT FOUND THEN
+		ALTER TABLE registroiva ADD COLUMN factemitida boolean;
+		UPDATE registroiva SET factemitida = TRUE WHERE contrapartida IN (SELECT * FROM cuenta WHERE codigo LIKE ''43%'');
+		UPDATE registroiva SET factemitida = FALSE WHERE contrapartida NOT IN (SELECT * FROM cuenta WHERE codigo LIKE ''43%'');
+		ALTER TABLE registroiva ALTER COLUMN factemitida SET NOT NULL;	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregada la columna factemitida a la tabla de registroiva"
+
+
+
+--
+-- Agregamos nuevos parametros de configuración.
+--
+CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'';
+	IF FOUND THEN
+		UPDATE CONFIGURACION SET valor=''0.4.9'' WHERE nombre=''DatabaseRevision'';
+	ELSE
+		INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (20, ''DatabaseRevision'', ''0.4.9'');  
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT actualizarevision();
+DROP FUNCTION actualizarevision() CASCADE;
+\echo "Actualizada la revisión de la base de datos"
+
+DROP FUNCTION drop_if_exists_table(text) CASCADE;
+DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
+
 
 COMMIT;
