@@ -32,20 +32,15 @@ class propiedadesempresa : public propiedemp  {
 public:
    QString empresadb;
    postgresiface2 *conexionbase;
-   QString nombredb;
    
 public: 
   propiedadesempresa(QWidget *parent=0, const char *name=0,bool modal=true);
   ~propiedadesempresa();
-  int inicializa(postgresiface2 *, QString);
+  int inicializa(postgresiface2 *);
 //  void modificacodcuenta(char *);
 //  void accept();
 public slots:
   virtual void accept();
-  virtual void boton_usalectura();
-  virtual void boton_lecturaaus();
-  virtual void boton_usatotal();
-  virtual void boton_totalaus();
   
   private:
   void update_value(postgresiface2 *,QString ,QString);

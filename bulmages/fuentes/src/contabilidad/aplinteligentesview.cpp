@@ -252,8 +252,8 @@ void aplinteligentesview::boton_crear() {
         // Asi que debemos facilitar las cosas al máximo.
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1]=fechaasiento->text().ascii();
         intapunts->fechaasiento1->setText(fechaasiento->text());
-        intapunts->return_fechaasiento();
-        numasiento=atoi( intapunts->cursorasientos->valor("idasiento").ascii() );
+        intapunts->iniciar_asiento_nuevo();
+        numasiento= intapunts->cursorasientos->valor("idasiento").toInt();
         recogevalores();
         creaasiento();
         intapunts->boton_cerrarasiento();

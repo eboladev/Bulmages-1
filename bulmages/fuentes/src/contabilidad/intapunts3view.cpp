@@ -657,16 +657,8 @@ void intapunts3view::iniciar_asiento_nuevo() {
     nuevoasiento->inicializa(conexionbase);
     idasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0,1);
     delete nuevoasiento;
-    if ( normalizafecha(fechaasiento1->text()).year() == empresaactual->ejercicioactual().toInt() ) {
-    fprintf(stderr,"CargarCursor\n");
-        cargarcursor(idasiento);
-    fprintf(stderr,"MuestraAsiento\n");
-        muestraasiento(idasiento);
-    } else {
-      fprintf(stderr,"flashAsiento\n");
-      flashAsiento(idasiento);
-    }// end if
-    fprintf(stderr,"Abrir Asiento\n");
+    cargarcursor(idasiento);
+    muestraasiento(idasiento);
     boton_abrirasiento();
 
    tapunts->setText(0,0,fechaasiento1->text());

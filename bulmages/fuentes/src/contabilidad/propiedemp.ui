@@ -322,22 +322,6 @@
                         <string></string>
                     </property>
                 </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>lineNombreEmpresa</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>80</x>
-                            <y>20</y>
-                            <width>340</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
                 <widget class="QLabel">
                     <property name="name">
                         <cstring>textLabel2_2</cstring>
@@ -464,6 +448,22 @@
                     </property>
                     <property name="text">
                         <string>Número:</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>m_nomEmpresa</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>80</x>
+                            <y>20</y>
+                            <width>340</width>
+                            <height>21</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string></string>
                     </property>
                 </widget>
             </widget>
@@ -633,7 +633,10 @@ yyyy --&gt; Dígitos de cuenta.</string>
                             <cstring>tpropiedades</cstring>
                         </property>
                         <property name="resizePolicy">
-                            <enum>AutoOneFit</enum>
+                            <enum>Default</enum>
+                        </property>
+                        <property name="dragAutoScroll">
+                            <bool>true</bool>
                         </property>
                         <property name="numRows">
                             <number>3</number>
@@ -641,248 +644,18 @@ yyyy --&gt; Dígitos de cuenta.</string>
                         <property name="numCols">
                             <number>3</number>
                         </property>
-                    </widget>
-                </grid>
-            </widget>
-            <widget class="QWidget">
-                <property name="name">
-                    <cstring>tab</cstring>
-                </property>
-                <attribute name="title">
-                    <string>Usuarios</string>
-                </attribute>
-                <grid>
-                    <property name="name">
-                        <cstring>unnamed</cstring>
-                    </property>
-                    <widget class="QGroupBox" row="0" column="0">
-                        <property name="name">
-                            <cstring>GroupBox2</cstring>
+                        <property name="rowMovingEnabled">
+                            <bool>true</bool>
                         </property>
-                        <property name="title">
-                            <string>Usuarios</string>
+                        <property name="columnMovingEnabled">
+                            <bool>true</bool>
                         </property>
-                        <grid>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QLayoutWidget" row="0" column="0">
-                                <property name="name">
-                                    <cstring>layout17</cstring>
-                                </property>
-                                <hbox>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <widget class="QListView">
-                                        <property name="name">
-                                            <cstring>usuarios</cstring>
-                                        </property>
-                                        <property name="hScrollBarMode">
-                                            <enum>AlwaysOff</enum>
-                                        </property>
-                                        <property name="allColumnsShowFocus">
-                                            <bool>true</bool>
-                                        </property>
-                                        <property name="showSortIndicator">
-                                            <bool>true</bool>
-                                        </property>
-                                        <property name="showToolTips">
-                                            <bool>false</bool>
-                                        </property>
-                                        <property name="resizeMode">
-                                            <enum>NoColumn</enum>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLayoutWidget">
-                                        <property name="name">
-                                            <cstring>layout15</cstring>
-                                        </property>
-                                        <vbox>
-                                            <property name="name">
-                                                <cstring>unnamed</cstring>
-                                            </property>
-                                            <widget class="QLayoutWidget">
-                                                <property name="name">
-                                                    <cstring>layout13</cstring>
-                                                </property>
-                                                <hbox>
-                                                    <property name="name">
-                                                        <cstring>unnamed</cstring>
-                                                    </property>
-                                                    <widget class="QLayoutWidget">
-                                                        <property name="name">
-                                                            <cstring>layout7</cstring>
-                                                        </property>
-                                                        <vbox>
-                                                            <property name="name">
-                                                                <cstring>unnamed</cstring>
-                                                            </property>
-                                                            <widget class="QLabel">
-                                                                <property name="name">
-                                                                    <cstring>TextLabel4_2</cstring>
-                                                                </property>
-                                                                <property name="sizePolicy">
-                                                                    <sizepolicy>
-                                                                        <hsizetype>0</hsizetype>
-                                                                        <vsizetype>5</vsizetype>
-                                                                        <horstretch>0</horstretch>
-                                                                        <verstretch>0</verstretch>
-                                                                    </sizepolicy>
-                                                                </property>
-                                                                <property name="minimumSize">
-                                                                    <size>
-                                                                        <width>70</width>
-                                                                        <height>0</height>
-                                                                    </size>
-                                                                </property>
-                                                                <property name="text">
-                                                                    <string>Ver</string>
-                                                                </property>
-                                                            </widget>
-                                                            <widget class="QToolButton">
-                                                                <property name="name">
-                                                                    <cstring>usalectura</cstring>
-                                                                </property>
-                                                                <property name="sizePolicy">
-                                                                    <sizepolicy>
-                                                                        <hsizetype>0</hsizetype>
-                                                                        <vsizetype>0</vsizetype>
-                                                                        <horstretch>0</horstretch>
-                                                                        <verstretch>0</verstretch>
-                                                                    </sizepolicy>
-                                                                </property>
-                                                                <property name="text">
-                                                                    <string></string>
-                                                                </property>
-                                                                <property name="iconSet">
-                                                                    <iconset>image1</iconset>
-                                                                </property>
-                                                            </widget>
-                                                            <widget class="QToolButton">
-                                                                <property name="name">
-                                                                    <cstring>lecturaaus</cstring>
-                                                                </property>
-                                                                <property name="sizePolicy">
-                                                                    <sizepolicy>
-                                                                        <hsizetype>0</hsizetype>
-                                                                        <vsizetype>0</vsizetype>
-                                                                        <horstretch>0</horstretch>
-                                                                        <verstretch>0</verstretch>
-                                                                    </sizepolicy>
-                                                                </property>
-                                                                <property name="text">
-                                                                    <string></string>
-                                                                </property>
-                                                                <property name="iconSet">
-                                                                    <iconset>image2</iconset>
-                                                                </property>
-                                                            </widget>
-                                                        </vbox>
-                                                    </widget>
-                                                    <widget class="QListView">
-                                                        <property name="name">
-                                                            <cstring>usuarioslectura</cstring>
-                                                        </property>
-                                                        <property name="allColumnsShowFocus">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </hbox>
-                                            </widget>
-                                            <widget class="QLayoutWidget">
-                                                <property name="name">
-                                                    <cstring>layout14</cstring>
-                                                </property>
-                                                <hbox>
-                                                    <property name="name">
-                                                        <cstring>unnamed</cstring>
-                                                    </property>
-                                                    <widget class="QLayoutWidget">
-                                                        <property name="name">
-                                                            <cstring>layout12</cstring>
-                                                        </property>
-                                                        <vbox>
-                                                            <property name="name">
-                                                                <cstring>unnamed</cstring>
-                                                            </property>
-                                                            <widget class="QLabel">
-                                                                <property name="name">
-                                                                    <cstring>TextLabel4_2_2</cstring>
-                                                                </property>
-                                                                <property name="sizePolicy">
-                                                                    <sizepolicy>
-                                                                        <hsizetype>0</hsizetype>
-                                                                        <vsizetype>5</vsizetype>
-                                                                        <horstretch>0</horstretch>
-                                                                        <verstretch>0</verstretch>
-                                                                    </sizepolicy>
-                                                                </property>
-                                                                <property name="minimumSize">
-                                                                    <size>
-                                                                        <width>70</width>
-                                                                        <height>0</height>
-                                                                    </size>
-                                                                </property>
-                                                                <property name="text">
-                                                                    <string>Modificar</string>
-                                                                </property>
-                                                            </widget>
-                                                            <widget class="QToolButton">
-                                                                <property name="name">
-                                                                    <cstring>usatotal</cstring>
-                                                                </property>
-                                                                <property name="sizePolicy">
-                                                                    <sizepolicy>
-                                                                        <hsizetype>0</hsizetype>
-                                                                        <vsizetype>0</vsizetype>
-                                                                        <horstretch>0</horstretch>
-                                                                        <verstretch>0</verstretch>
-                                                                    </sizepolicy>
-                                                                </property>
-                                                                <property name="text">
-                                                                    <string></string>
-                                                                </property>
-                                                                <property name="iconSet">
-                                                                    <iconset>image1</iconset>
-                                                                </property>
-                                                            </widget>
-                                                            <widget class="QToolButton">
-                                                                <property name="name">
-                                                                    <cstring>totalaus</cstring>
-                                                                </property>
-                                                                <property name="sizePolicy">
-                                                                    <sizepolicy>
-                                                                        <hsizetype>0</hsizetype>
-                                                                        <vsizetype>0</vsizetype>
-                                                                        <horstretch>0</horstretch>
-                                                                        <verstretch>0</verstretch>
-                                                                    </sizepolicy>
-                                                                </property>
-                                                                <property name="text">
-                                                                    <string></string>
-                                                                </property>
-                                                                <property name="iconSet">
-                                                                    <iconset>image2</iconset>
-                                                                </property>
-                                                            </widget>
-                                                        </vbox>
-                                                    </widget>
-                                                    <widget class="QListView">
-                                                        <property name="name">
-                                                            <cstring>usuariostotal</cstring>
-                                                        </property>
-                                                        <property name="allColumnsShowFocus">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </hbox>
-                                            </widget>
-                                        </vbox>
-                                    </widget>
-                                </hbox>
-                            </widget>
-                        </grid>
+                        <property name="sorting">
+                            <bool>true</bool>
+                        </property>
+                        <property name="selectionMode">
+                            <enum>NoSelection</enum>
+                        </property>
                     </widget>
                 </grid>
             </widget>
@@ -891,13 +664,7 @@ yyyy --&gt; Dígitos de cuenta.</string>
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="401">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000158494441545885c596510e8320104407d393700cf933e9b14cd3f4584dfa678fe155da9f2e596440a8a29334b1a0cc635916ccf49e70a6ba53dd015c0adffb9036b3c7fb39003648d4ef7a070078dc1f0080e13a30d3cfef1741a400d6cca1cd0160bc8dfe79b80e46996665481216993308918a868078bf35802af31c848028086deeffefb20bf424e679f6cfe36dc4ebf9d2938a96a55b746e86b0d632083d7eb00c02403b1b4044e3770867be290a3988943a46b597acb5ac3948c8e6a558a24012f21880843cc8e987910034cb0322835c0eb8dec996394401809454b56fab952acbab00f2e1226b9b9a0700225d406a2052e6520bd4c1c401a6f764f4473510ffcc5c94bc110984b536b86c68a5da6b145d485cef826a25107b882d03bb1151082d1d9dad101480416c9506d610498016200c6215a035441140098cdec6b9f79610d500352a895cd3e3781995c3014a200eb990e420be48dec32ccd3cc8210000000049454e44ae426082</data>
-    </image>
-    <image name="image1">
-        <data format="PNG" length="753">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002b8494441545885ed97af6f136118c73f2388a709e23dd73741b48ece0dc556cc5a0c9b8320d8e436c3364566c0e208ff01c381a38e06c3a66e255942ab76b89b20794f90bcaf20b9c715710b1058bbae074cc0634ebc97fb7e9edff7cec407311769972e54fd3f405980f68367c30b050068b6daa520ca011843edfe43da2b5b5343940210e0facd16f5c5259a2beb53415c2e052042c31aeaf756106368b69687f1de9b99bf06004514eedca8b3585b6507682edd1dc6ddd71343fc96360c41b14678bab1cafcfdb573a5e3d40834179a43ae2d8202e8c9f30733020a52b30024215033c272c31236368b6f4c1889912990ed8713791019e108380acaaccf599db398ed4d7664b29a185b036f6e2fd0a846d8caaf672e8724f378e0c920250222843560b96189b657d952a579677d18779e8f84185f84221c648e863144525078cd498392a9922aec054fe60241848eb8a22881b9aa6573638d9728ed95f5e1bb57a7438c0750a59f799200d6044070aaf433c56b0e40df876fefa60eba781498af2aad6b16776f8d448bba8a0fe25f20c602888057e80587c9a0228203d2a02860724582c2971cae5440150152810470ef8f70494af07ea4c6992950c0b940f2d9239c34c41501a910906fe2620c5a01aa110138fae8c80e5374bf03831ea7797f2680910ad6446015630d910008b92a45e005ac80078904538d500321f384c3047a3d18ec11775e4e5784edc7bba87e0f9fe387763006bd5acc01acc15423668d901e3bdc618a0efae8db5da66e437dba4316f251a748b50e732db8b544bd663106d263874f3274bf8bbeef9c293e126054be7eb6f6a3dda148312635d3c2f3fd2e3ad867d27d507e19851c9f38f4934307bdc2f3732ca372eb18b09f32fc6725f47b13e5fcb70228c59c08fd2e3ae89d5bbc3400aa64e987427cccbcffa300faf605f1debba9c4a1ec0f894829718099ff77c37f1ee02b0f7b45c8efb3392a0000000049454e44ae426082</data>
-    </image>
-    <image name="image2">
-        <data format="PNG" length="785">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002d8494441545885ed973f4c14511087bf3516b389c56e62b19758b09d476f71472cb8d3e2ceca2334d0112aa1022b6265b421a1432bff54d041c7756075d0719d4b61b25798ec76fb0a9237dd5aeca1183dc0c51c854eb9d99df966e637f3f639bdc31e3769b76e34fa7f80bf05d05cd9c86f0ca0f9ac7cf06b033c59d9c83dcf0364fc00f3ebddbc1a56a9783e523e7e398099b53779fb718dfaa31ae20a63adc0cccbf7f9fcec1c4b4f1b54c30a8905551d0fc0e2fa56de996eb0d0aae30e934eddd2b101b87dd51767d6dee79d5683a5d93693a1cf5e9c111b4526aa68ff90e6c28b4ba761ffc32ba714c0ccda9bbcd3eab034db6032f48933cb915122c07b5025f5562f77f271e3b78f2f05585cdf1af6bc4ee8f9c4d6b2630c072603cf03a354effa34428fda44857ae05339d796d8c2f38f7b7447f8bf1060717d379faed5996bd5093c9f582dddd4d035199151b05ae8df17f07c44840c505b7c9fa8a59f9a0b131c09d07cf63a6fb73ad41fd611cfa79b6644aa1c19a59f2a9a15ca5740512293211413e10b5820324a7f90119f8e9e9291003a38e620aa727c2fc0351912f864086a6ce11d2da20f218e1343a68aaae049d183c458924c492e18d39100bdee8e3335b79c1b2c526b23085e2048e052f81344044c82aa8b6a4664203a05b9732e11dcefa07f0400d0dbde749a73cb39b828e08a22410526044d2940dc1011a5220122674b49b02846011138b5e50000f6b7379da9f67c2eae10df6d108acf64e0f1191f1d24902400245f53481310ff5cfab600b2a38578a53dd0eb6e39539dc55cac92e93436ace0dfaf8040fa6500710283084c02f26335cbd929755689b20000bddd77434d80d4a671a1c83e4d208dd97fbbfacb96bb8a5d19000a4d4c7596735c214e4340117ba1c62eb53f3e0d7bbb9b8e7eda8534461454b31fa51e074001f1ced1a32eda3f04c6781cff04b1bde9e8c921a483d2c1af0500c574e8c931d751c1b5ff8a7b073b438872e6fcbf1bfef300df003a5642fe243256fd0000000049454e44ae426082</data>
+        <data format="PNG" length="585">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000210494441545885bd97ad92833010c77799134840566271953027fa0067fa1cf5a798ce4dd5f93e07a6b2a20a240e8b3c09485cce106613366d28b46bd22d9bb0fbcf2f1f605556003d00b8005ddf81e77a6ff59daeef9487eff6b12a2b9b4c05f31cd78877ee642ac0052107333d8fb69148e24464974cdcae373d1ebbbe43123f51020d0c089b398cb611e876fe3dc3ee738743f27a7fb46180cd94f3abb29a2470f83ec0ed7a13d92503cff5702e035695db28010070fa39c1fe6b8fc3b4a0c6083e62c0daa74ad4753dfe4e8f2964978c3231618a32c0cdd9534a3475034118e84ad0d52006404706e4cb1fce998d124118704ab0e33b9eebd1ca47796465737d99441886d0d4cd9884effa6cbc43d6e96a3b9c343a0d6ddf2a00ca78e7d94aeffac49abf6602248d7fcd59408cf509f0ceaa950f3e35cee7ce8245f49b18d015f0c197dbb19981244ee492598501eab7d04ee215069238d1d7ed6c25f46dd9c080b20f282fd7a89d55397726d8323006049bc098c49ccae97800cac1a4f41f19a8ca0a6d92b0ad5c37dff5d9fe1fa6f52b93083601a4c7541d0c7c68a19dfc7fcfdabe559296ede44e18c591a01d65126b983e0dec7d202f72a49da412755d8f2d807aeedb1a733f30de09274a2c35aa2455c27816e4458e14cca5c6802d58060c379dd5d4d095c0bcc8593a4dad2999bcc8d1264e4fc2c8c01abe8d722ffd36b461c8f6dbf0654aacf25db044897f3ba32368533fe59b0000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -912,30 +679,6 @@ yyyy --&gt; Dígitos de cuenta.</string>
         <signal>pressed()</signal>
         <receiver>propiedemp</receiver>
         <slot>reject()</slot>
-    </connection>
-    <connection>
-        <sender>usalectura</sender>
-        <signal>clicked()</signal>
-        <receiver>propiedemp</receiver>
-        <slot>boton_usalectura()</slot>
-    </connection>
-    <connection>
-        <sender>lecturaaus</sender>
-        <signal>clicked()</signal>
-        <receiver>propiedemp</receiver>
-        <slot>boton_lecturaaus()</slot>
-    </connection>
-    <connection>
-        <sender>usatotal</sender>
-        <signal>clicked()</signal>
-        <receiver>propiedemp</receiver>
-        <slot>boton_usatotal()</slot>
-    </connection>
-    <connection>
-        <sender>totalaus</sender>
-        <signal>clicked()</signal>
-        <receiver>propiedemp</receiver>
-        <slot>boton_totalaus()</slot>
     </connection>
 </connections>
 <slots>

@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>UIbloqFecha</class>
 <widget class="QDialog">
     <property name="name">
@@ -15,72 +15,88 @@
     <property name="caption">
         <string>Bloquear Fechas</string>
     </property>
-    <widget class="QPushButton">
+    <vbox>
         <property name="name">
-            <cstring>pushButton1</cstring>
+            <cstring>unnamed</cstring>
         </property>
-        <property name="geometry">
-            <rect>
-                <x>180</x>
-                <y>300</y>
-                <width>81</width>
-                <height>30</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Aceptar</string>
-        </property>
-    </widget>
-    <widget class="QListView">
-        <column>
-            <property name="text">
-                <string>Ejercicio</string>
+        <widget class="QListView">
+            <column>
+                <property name="text">
+                    <string>Ejercicio</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Estado</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <property name="name">
+                <cstring>listView1</cstring>
             </property>
-            <property name="clickable">
+            <property name="resizePolicy">
+                <enum>Manual</enum>
+            </property>
+            <property name="selectionMode">
+                <enum>NoSelection</enum>
+            </property>
+            <property name="showSortIndicator">
+                <bool>false</bool>
+            </property>
+            <property name="rootIsDecorated">
                 <bool>true</bool>
             </property>
-            <property name="resizable">
-                <bool>true</bool>
+            <property name="resizeMode">
+                <enum>AllColumns</enum>
             </property>
-        </column>
-        <column>
-            <property name="text">
-                <string>Estado</string>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout1</cstring>
             </property>
-            <property name="clickable">
-                <bool>true</bool>
-            </property>
-            <property name="resizable">
-                <bool>true</bool>
-            </property>
-        </column>
-        <property name="name">
-            <cstring>listView1</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>2</x>
-                <y>2</y>
-                <width>270</width>
-                <height>290</height>
-            </rect>
-        </property>
-        <property name="resizePolicy">
-            <enum>Manual</enum>
-        </property>
-        <property name="selectionMode">
-            <enum>NoSelection</enum>
-        </property>
-        <property name="showSortIndicator">
-            <bool>false</bool>
-        </property>
-        <property name="rootIsDecorated">
-            <bool>true</bool>
-        </property>
-        <property name="resizeMode">
-            <enum>AllColumns</enum>
-        </property>
-    </widget>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>141</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Aceptar</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
 </widget>
 <connections>
     <connection>

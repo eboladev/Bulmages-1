@@ -31,9 +31,7 @@
 #include "cambiactaview.h"
 #include "amortizacionesview.h"
 #include "adocumental.h"
-
 #include "cobropagoview.h"
-
 
 #include <qobject.h>
 #ifndef WIN32
@@ -73,7 +71,7 @@ empresa::~empresa(){
 
 
 
-/***********************************************************************
+/** *********************************************************************
  *  Esta funcion es una prueba de la nueva conexion a la base de datos *
  *  En estos momentos esta en desuso                                   *
  ***********************************************************************/
@@ -169,7 +167,7 @@ int empresa::inicializa(QString *DB) {
 }// end inicializa
 
 
-/******************************************************************
+/** ****************************************************************
   Esta funcion abre la ventana que presenta las cuentas contables
 *******************************************************************/
 int empresa::muestracuentas() 	{
@@ -272,7 +270,7 @@ int empresa::muestraasientos() {
 
 int empresa::propiedadempresa() {
    propiedadesempresa * nuevae = new propiedadesempresa(0,"",true);
-   nuevae->inicializa(conexionbase2, nombreDB.ascii());
+   nuevae->inicializa(conexionbase2);
    nuevae->exec();
    delete nuevae;
    return(0);
@@ -567,44 +565,6 @@ int empresa::cargarempresa() {
  
 int empresa::borrarempresa() {
 //El proceso de borrado se realiza desde las herramientas el selector.
-/*  
-  char *args[3];
-  args[0]="borraremp";
-  args[1]= nombredb;
-  args[2]=NULL;
-  int pid, error;
-  fprintf(stderr,"Borrado de la empresa %s\n",nombredb);
-  // Aqui vamos a borrar la columna correspondiente en la metabd
-  char query[400];
-  cursor2 *cursoraux;
-  postgresiface2 *metabase;
-  metabase = new postgresiface2();
-  metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
-  metabase->begin();
-  sprintf(query,"SELECT * FROM EMPRESA WHERE nombredb='%s'\n",nombredb);
-  cursoraux = metabase->cargacursor(query,"cursorempresa");
-  sprintf(query,"DELETE FROM usuario_empresa WHERE idempresa=%s\n",cursoraux->valor(0).ascii());
-  metabase->ejecuta(query);
-  sprintf(query,"DELETE FROM  empresa WHERE nombredb='%s'\n",nombredb);
-  metabase->ejecuta(query);
-  metabase->commit();
-  delete cursoraux;
-  delete metabase;
-  nombre=NULL;
-#ifndef WIN32
-  if ((pid=fork()) < 0) {
-        perror ("Fork failed");
-        exit(errno);
-  }// end if
-  if (pid==0) {
-     string argumentos = confpr->valor(CONF_EJECUTABLES) + "borraremp";
-     error = execvp(argumentos.c_str(),args);
-  } else {
-        waitpid (pid, NULL, 0);
-  }// end if
-#endif
-  cambiarempresa();
-*/  
   return(0);
 }// end borrarrempresa
 
@@ -612,114 +572,6 @@ int empresa::borrarempresa() {
 // Esta función es la que se encarga de cerrar al empresa
 // Y de crear un nuevo ejercicio para dicha empresa
 void empresa::nuevoejercicio() {
-//Para crear un nuevo ejercicio se tiene que hacer desde el selector.
-/*  
-  char *args[4];
-  int pid;
-  int error;
-   QString query;
-    postgresiface2 *metabase;
-    metabase = new postgresiface2();
-    metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
-    metabase->begin();
-    query.sprintf("SELECT * FROM empresa WHERE nombredb='%s'",nombredb);
-    fprintf(stderr,"%s\n",query.ascii());
-    cursor2 *cur = metabase->cargacursor(query,"empresa");
-    if (!cur->eof()) {
-       QString nnombre = cur->valor("nombre");
-       QString nnombredb = cur->valor("nombredb");
-       QString nanodb = cur->valor("ano");
-       nnombredb = nnombredb.left(nnombredb.length()-4);
-       bool ok;
-       int inanodb = nanodb.toInt(&ok,10);
-       inanodb++;
-       QString nanodb2;
-       nanodb2.setNum(inanodb,10);
-       nnombredb += nanodb2;
-       query.sprintf("INSERT INTO EMPRESA ( nombre, nombredb, ano) VALUES ('%s','%s',%d)", nnombre.ascii(), nnombredb.ascii(), inanodb);
-       fprintf(stderr,"%s\n",query.ascii());
-       metabase->ejecuta(query);
-
-       query.sprintf("SELECT last_value AS idempresa FROM empresa_idempresa_seq");
-       cursor2 *cur2=metabase->cargacursor(query,"idempresa");
-              
-       query.sprintf("SELECT * FROM usuario_empresa WHERE idempresa = %s", cur->valor("idempresa").ascii());
-       cursor2 *cur1=metabase->cargacursor(query,"us_emp");
-       while (!cur1->eof()) {
-          query.sprintf("INSERT INTO usuario_empresa (idusuario, idempresa, permisos) VALUES (%s,%s,%s)", cur1->valor("idusuario").ascii(), cur2->valor("idempresa").ascii(), cur1->valor("permisos").ascii());
-          metabase->ejecuta(query);
-          cur1->siguienteregistro();
-       }// end whiel
-       delete cur1;
-       delete cur2;
-
-       // Guardamos la Empresa
-       args[0]=nombredb;
-       args[1]=nombredb;
-       args[2]="/tmp/bulmacop.pgdump";
-       args[3]=NULL;
-#ifndef WIN32
-       if ((pid=fork()) < 0) {
-         perror ("Fork failed");
-         exit(errno);
-       }// end if
-       if (!pid) {
-          string argumentos = confpr->valor(CONF_EJECUTABLES) + "guardaemp";
-          error = execvp(argumentos.c_str(),args);
-       }// end if
-       if (pid) {
-          waitpid (pid, NULL, 0);
-       }// end if
-
-       // Cargamos la empresa guardada
-       args[0]=(char *)nnombredb.ascii();
-       args[1]=(char *)nnombredb.ascii();
-       args[2]="/tmp/bulmacop.pgdump";
-       args[3]=NULL;
-  //     defaultDB->close();
-       if ((pid=fork()) < 0) {
-         perror ("Fork failed");
-         exit(errno);
-       }// end if
-       if (!pid) {
-          string argumentos = confpr->valor(CONF_EJECUTABLES) + "cargaemp";
-          error = execvp(argumentos.c_str(),args);
-       }// end if
-       if (pid) {
-          waitpid (pid, NULL, 0);
-       }// end if
-#endif
-       strcpy(nombredb,nnombredb.ascii());
-    }// end if
-    delete cur;
-    metabase->commit();
-    delete metabase;
-    inicializa();
-    inicializa1(pWorkspace);
-    abreempresa();
-
-// Borramos los asientos anteriores
-   char query1[500];
-   int valor;
-   int resultado;
-   valor = QMessageBox::warning( 0, theApp->translate("empresa","Borrar Asiento",""), theApp->translate("empresa","Se procedera a borrar el asiento.",""), QMessageBox::Yes, QMessageBox::No);
-   if (valor ==  QMessageBox::Yes) {
-       conexionbase2->begin();
-       sprintf(query1,"DELETE FROM apunte where idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
-       resultado = conexionbase2->ejecuta(query1);
-       sprintf(query1,"DELETE FROM borrador where idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
-       resultado += conexionbase2->ejecuta(query1);
-       sprintf(query1,"DELETE FROM asiento WHERE idasiento NOT IN (SELECT max(idasiento) FROM asiento)");
-       resultado += conexionbase2->ejecuta(query1);
-       if (resultado != 0) {
-           conexionbase2->rollback();
-       } else {
-           conexionbase2->commit();
-       }// end if
-       Ordenarasientos();
-//       introapunts1->repinta();
-   }// end if
-*/
 }// end nuevoejercicio
 
 void empresa::cierraempresa() {
@@ -770,13 +622,13 @@ void empresa::recalculasaldos() {
 }// end recalculasaldos
 
 
-// Esta función se dispara para poner en marcha el archivo documental.
+/** Esta función se dispara para poner en marcha el archivo documental.
 // El archivo documental es una opción mendiante la cual se pueden poner
 // Junto a los asientos y otras entidades una seríe de documentos ligados
 // Como puden ser PDF's, GIFS, Archivos de Sonido, etc etc etc.
 // La idea principal es que se pueda conectar un scaner y se puedan escanear
 // Las imagenes de facturas para después pasarlas.
-
+*/
 void empresa::archDoc() {
    adocumental *adoc= new adocumental(this,0,"hola");
    adoc->exec();
