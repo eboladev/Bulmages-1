@@ -35,7 +35,7 @@ Bbuscador::Bbuscador(QWidget* parent, const char* name, WFlags f,BfEmpresa* punt
     EmpresaTrabajo=punteroEmpresaTrabajo;
     cadRetorno=cadenaRet;
     tablaResultados=new MyQTable(this,"tablaResultados");
-    tablaResultados->setGeometry(10,80,550,260);
+    tablaResultados->setGeometry(10,82,550,260);
     tablaResultados->setNumCols(i);
     textLabel1->setText(taula[0]);
     for (int k=0; k<i; k++){
@@ -45,7 +45,8 @@ Bbuscador::Bbuscador(QWidget* parent, const char* name, WFlags f,BfEmpresa* punt
     tablaResultados->setReadOnly(TRUE);
     llenarTabla("");
     connect(tablaResultados, SIGNAL(keyEnterPressed(int, int)), this, SLOT(pulsadoEnter(int, int)));
-    setCaption("Buscar en la Tabla: " + *tabla);
+    tablaBusqueda = *tabla;
+    setCaption("Buscar en la Tabla: " + tablaBusqueda);
    
 }
 
@@ -54,26 +55,38 @@ Bbuscador::~Bbuscador(){
 }
 
 void Bbuscador::llenarTabla(const QString &cadena) {
-    /*
-    int i=0;
-    QString query;
-    postgresiface2 *DBconn= new postgresiface2();
-    cursor2 *recordSet;
-    DBconn->inicializa("proves2004");
-    DBconn->begin();
-    query.sprintf("SELECT codigo, descripcion FROM cuenta WHERE codigo LIKE '%s%%' ORDER BY codigo",cadena.ascii());
-    recordSet = DBconn->cargacursor(query,"cuentas");
-    DBconn->commit();
-    tablacuentas->setNumRows(recordSet->numregistros());
-    while (!recordSet->eof()) {
-        tablacuentas->setText(i,0,recordSet->valor("codigo"));
-        tablacuentas->setText(i,1,recordSet->valor("descripcion"));
-        i++;
-        recordSet->siguienteregistro();
+    int i;
+    for (i=tablaResultados->numRows()-1; i>=0; i--) {
+        tablaResultados->removeRow(i);
     }
-    delete DBconn;
-    delete recordSet;
-    */
+    
+    QString condicionBusqueda = "ILIKE '";
+    if (checkMayMin->isChecked()) condicionBusqueda = "LIKE '";
+    if (checkBuscarIntermedio->isChecked()) condicionBusqueda = condicionBusqueda + "%";
+    
+    i=0;
+    BfCursor* recordset;
+    recordset = EmpresaTrabajo->buscarParecidos(tablaBusqueda,cadena,condicionBusqueda);
+    if (recordset) {
+        while (! recordset->eof() ) { 
+            tablaResultados->insertRows(i);
+            if (tablaBusqueda=="cliente") {
+                tablaResultados->setText(i,0,recordset->valor("nomcliente"));
+                tablaResultados->setText(i,1,recordset->valor("poblcliente"));
+                tablaResultados->setText(i,2,recordset->valor("telcliente"));
+                tablaResultados->setText(i,3,recordset->valor("idcliente"));
+            }
+            if (tablaBusqueda=="proveedor") {
+                tablaResultados->setText(i,0,recordset->valor("nomproveedor"));
+                tablaResultados->setText(i,1,recordset->valor("poblproveedor"));
+                tablaResultados->setText(i,2,recordset->valor("telproveedor"));
+                tablaResultados->setText(i,3,recordset->valor("idproveedor"));
+            }
+            i++;
+            recordset->siguienteregistro();
+        }
+        delete recordset;
+    }
 }
 
 

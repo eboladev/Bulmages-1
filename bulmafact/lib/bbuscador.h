@@ -17,7 +17,7 @@
 
 #include <qlineedit.h>
 #include <qlabel.h>
-
+#include <qcheckbox.h>
 
 #include "uibuscador.h"
 #include "bfempresa.h"
@@ -42,6 +42,7 @@ private:
     QString* cadRetorno;
     MyQTable* tablaResultados; //La clase MyQTable es herdera de QTable.
     BfEmpresa* EmpresaTrabajo;
+    QString tablaBusqueda;
 
 private slots:
     void llenarTabla(const QString &);

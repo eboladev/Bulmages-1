@@ -33,9 +33,9 @@ CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
 -- Comentaris
 CREATE TABLE marca (
    idmarca serial PRIMARY KEY,
-   nommarca character varying[150],
-   urlmarca character varying[150],
-   comentmarca character varying[2000]
+   nommarca character varying(150),
+   urlmarca character varying(150),
+   comentmarca character varying(2000)
 );
 
 
@@ -44,7 +44,7 @@ CREATE TABLE marca (
 -- Descripcio
 CREATE TABLE linea_prod(
    idlinea_prod serial PRIMARY KEY,
-   desclinea_prod character varying[500],
+   desclinea_prod character varying(500),
    idmarca integer REFERENCES marca(idmarca)
 );
 
@@ -56,7 +56,7 @@ CREATE TABLE linea_prod(
 -- Taxa: Tipus vigent.
 CREATE TABLE tipo_iva (
    idtipo_iva serial PRIMARY KEY,
-   desctipo_iva character varying[2000],
+   desctipo_iva character varying(2000),
    tasatipo_iva integer
 );
 
@@ -87,19 +87,19 @@ CREATE TABLE tipo_iva (
 -- Model: Referència, o nom identificatiu del fabricant.
 CREATE TABLE articulo (
     idarticulo serial PRIMARY KEY,
-    codarticulo character varying[12],
-    nomarticulo character varying[50],
-    descarticulo character varying[500],
-    cbarrasarticulo character varying[22],
+    codarticulo character varying(12),
+    nomarticulo character varying(50),
+    descarticulo character varying(500),
+    cbarrasarticulo character varying(22),
     tipoarticulo integer,
     descuentoarticulo float,
-    especificacionesarticulo character varying[2000],
+    especificacionesarticulo character varying(2000),
     iconoarticulo oid,
     fotoarticulo oid,
     posterarticulo oid,
     margenarticulo float,
     sobrecostearticulo float,
-    modeloarticulo character varying[1000],
+    modeloarticulo character varying(1000),
     
     idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
     idlinea_prod integer REFERENCES linea_prod(idlinea_prod)
@@ -121,8 +121,8 @@ CREATE TABLE articulo (
 -- Icona: Icona de l'article.
 CREATE TABLE familia (
     idfamilia serial PRIMARY KEY,
-    nombrefamilia character varying[50],
-    descfamilia character varying[1000],
+    nombrefamilia character varying(50),
+    descfamilia character varying(1000),
     iconofamilia oid
 );
 
@@ -136,8 +136,8 @@ CREATE TABLE familia (
 --Exclusiu: (Booleà) La pertinença a un catàleg exclusiu anula (que no esborra) la pertinença de l'article o familia a qualsevol catàleg no exclusiu. Un article o familia només pot pertànyer a un únic catàleg exclusiu. Útil per a catàlegs de descatalogació (descatalogats temporals, definitius, sense stock, pendents de revisió...).
 CREATE TABLE catalogo (
    idcatalogo serial PRIMARY KEY,
-   nombrecatalogo character varying[50],
-   desccatalogo character varying[1000],
+   nombrecatalogo character varying(50),
+   desccatalogo character varying(1000),
    exclusivocatalogo boolean NOT NULL
 );
 
@@ -151,12 +151,12 @@ CREATE TABLE catalogo (
 --Email
 CREATE TABLE division (
    iddivision serial PRIMARY KEY,
-   descdivision character varying[1000],
-   contactosdivisioon character varying[500],
-   comentdivision character varying[2000],
-   teldivision character varying[20],
-   faxdivision character varying[20],
-   maildivision character varying[100]
+   descdivision character varying(1000),
+   contactosdivisioon character varying(500),
+   comentdivision character varying(2000),
+   teldivision character varying(20),
+   faxdivision character varying(20),
+   maildivision character varying(100)
 );
 
 
@@ -184,20 +184,20 @@ CREATE TABLE division (
 -- CompteWeb: Dades de login si disposen de tenda o tarifes en línia
 CREATE TABLE proveedor (
    idproveedor serial PRIMARY KEY,
-   nomproveedor character varying[200],
-   nomaltproveedor character varying[200],
-   cifproveedor character varying[12],
-   codicliproveedor character varying[30],
-   cbancproveedor character varying[20],
-   comentproveedor character varying[2000],
-   dirproveedor character varying[50],
-   poblproveedor character varying[50],
-   cpproveedor character varying[9] NOT NULL,
-   telproveedor character varying[12],
-   faxproveedor character varying[12],
-   emailproveedor character varying[100],
-   urlproveedor character varying[100],
-   clavewebproveedor character varying[100],
+   nomproveedor character varying(200),
+   nomaltproveedor character varying(200),
+   cifproveedor character varying(12),
+   codicliproveedor character varying(30),
+   cbancproveedor character varying(20),
+   comentproveedor character varying(2000),
+   dirproveedor character varying(50),
+   poblproveedor character varying(50),
+   cpproveedor character varying(9) NOT NULL,
+   telproveedor character varying(12),
+   faxproveedor character varying(12),
+   emailproveedor character varying(100),
+   urlproveedor character varying(100),
+   clavewebproveedor character varying(100),
    iddivision integer NOT NULL REFERENCES division(iddivision)
 );
 
@@ -223,11 +223,11 @@ CREATE TABLE proveedor (
 --  Recàrrec d'Equivalència.
 CREATE TABLE recargo (
    idrecargo serial PRIMARY KEY,
-   nomrecargo character varying[150],
+   nomrecargo character varying(150),
    tasarecargo float
 );
 
-
+INSERT INTO recargo (idrecargo, nomrecargo, tasarecargo) VALUES ('1', 'Tipo 1', '4.0');
 
 -- El cliente siempre tiene la razón, bueno, o por lo menos eso cree.
 --Codi: Clau artificial.
@@ -248,20 +248,20 @@ CREATE TABLE recargo (
 ---Comentaris
 CREATE TABLE cliente (
    idcliente serial PRIMARY KEY,
-   nomcliente character varying[100],
-   nomaltcliente character varying[300],
-   cifcliente character varying[200],
-   bancocliente character varying[35],
-   dircliente character varying[100],
-   poblcliente character varying[40],
-   cpcliente character varying[10],
-   telcliente character varying[20],
-   faxcliente character varying[20],
-   mailcliente character varying[100],
-   urlcliente character varying[150],
+   nomcliente character varying(100),
+   nomaltcliente character varying(300),
+   cifcliente character varying(200),
+   bancocliente character varying(35),
+   dircliente character varying(100),
+   poblcliente character varying(40),
+   cpcliente character varying(10),
+   telcliente character varying(20),
+   faxcliente character varying(20),
+   mailcliente character varying(100),
+   urlcliente character varying(150),
    faltacliente date DEFAULT NOW(),
    fbajacliente date,
-   comentcliente character varying[2000],
+   comentcliente character varying(2000),
    
    idrecargo integer NOT NULL REFERENCES recargo(idrecargo)
 );
@@ -280,14 +280,14 @@ CREATE TABLE cliente (
 -- Comentaris
 CREATE TABLE sucursal (
    idsucursal serial PRIMARY KEY,
-   nomsucursal character varying[100],
-   dirsucursal character varying[150],
-   poblsucursal character varying[100],
-   cpsucursal character varying[15],
-   telsucursal character varying[20],
-   faxsucursal character varying[20],
-   mailsucursal character varying[50],
-   comentsucursal character varying[2000],
+   nomsucursal character varying(100),
+   dirsucursal character varying(150),
+   poblsucursal character varying(100),
+   cpsucursal character varying(15),
+   telsucursal character varying(20),
+   faxsucursal character varying(20),
+   mailsucursal character varying(50),
+   comentsucursal character varying(2000),
    
    idcliente integer NOT NULL REFERENCES cliente(idcliente)
 );
@@ -303,7 +303,7 @@ CREATE TABLE pedido (
    numpedido integer,
    anopedido integer,
    fechapedido date,
-   descpedido character varying[500],
+   descpedido character varying(500),
    
    idproveedor integer NOT NULL REFERENCES proveedor(idproveedor)
 );
@@ -322,7 +322,7 @@ CREATE TABLE fra_pro (
    anofra_pro integer,
    numfra_pro integer,
    fcrefra_pro date,
-   comentfra_pro character varying[2000]
+   comentfra_pro character varying(2000)
 );
 
 
@@ -341,7 +341,7 @@ CREATE TABLE alb_pro (
    nalbalb_pro integer,
    fcrealb_pro date,
    frecepalb_pro date,
-   comentalb_pro character varying[2000],
+   comentalb_pro character varying(2000),
    
    idfra_pro integer REFERENCES fra_pro(idfra_pro)
 );
@@ -356,7 +356,7 @@ CREATE TABLE alb_pro (
 -- Previsió: Data prevista de recepció
 CREATE TABLE lpedido (
    numlpedido integer PRIMARY KEY,
-   desclpedido character varying[150],
+   desclpedido character varying(150),
    cantlpedido integer,
    pvdlpedido float,
    prevlpedido date,
@@ -375,8 +375,8 @@ CREATE TABLE lpedido (
 -- Descripcio
 CREATE TABLE modalidad_g (
    idmodalidad_g serial PRIMARY KEY,
-   nommodalitat_g character varying[150],
-   descmodalidad_g character varying[2000]
+   nommodalitat_g character varying(150),
+   descmodalidad_g character varying(2000)
 );
 
 
@@ -388,10 +388,10 @@ CREATE TABLE modalidad_g (
 -- Condicions de garantia. Defineixen un periode d'aplicabilitat d'una determinada modalitat de garantia per a una determinada línia de productes d'un mateix fabricant.
 CREATE TABLE cond_garantia (
   idcond_garantia serial PRIMARY KEY,
-  desccond_garantia character varying[2000],
+  desccond_garantia character varying(2000),
   retardcond_garantia timestamp,
   tempsccond_garantia timestamp,
-  comentcond_garantia character varying[2000],
+  comentcond_garantia character varying(2000),
   
   idmodalidad_g integer NOT NULL REFERENCES modalidad_g(idmodalidad_g)
 );
@@ -427,7 +427,7 @@ CREATE TABLE oferta (
 -- Descompte: Descompte automàtic per l'ús d'aquesta forma de pagament.
 CREATE TABLE forma_pago (
    idforma_pago serial PRIMARY KEY,
-   descforma_pago character varying[500],
+   descforma_pago character varying(500),
    dias1tforma_pago integer,
    descuentoforma_pago float
 );
@@ -453,12 +453,12 @@ CREATE TABLE termino_fp (
 -- Fax: Fax.
 CREATE TABLE almacen (
  idalmacen serial PRIMARY KEY,
- nomalmacen character varying[50],
- diralmacen character varying[150],
- poblalmacen character varying[50],
- cpalmacen character varying[20],
- telalmacen character varying[20],
- faxalmacen character varying[20]
+ nomalmacen character varying(50),
+ diralmacen character varying(150),
+ poblalmacen character varying(50),
+ cpalmacen character varying(20),
+ telalmacen character varying(20),
+ faxalmacen character varying(20)
 );
 
 
@@ -475,10 +475,10 @@ CREATE TABLE presupuesto (
    idpresupuesto serial PRIMARY KEY,
    numpresupuesto integer,
    fpresupuesto date,
-   contactpresupuesto character varying[90],
-   telpresupuesto character varying[20],
+   contactpresupuesto character varying(90),
+   telpresupuesto character varying(20),
    vencpresupuesto date,
-   comentpresupuesto character varying[3000],
+   comentpresupuesto character varying(3000),
    idusuari integer,
    
    idcliente integer REFERENCES cliente(idcliente)
@@ -492,7 +492,7 @@ CREATE TABLE presupuesto (
 -- Descompte de pressupost a clients.
 CREATE TABLE dpresupuesto (
    iddpresupuesto serial PRIMARY KEY,
-   conceptpresupuesto character varying[2000],
+   conceptpresupuesto character varying(2000),
    proporciondpresupuesto float,
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
 );
@@ -508,7 +508,7 @@ CREATE TABLE dpresupuesto (
 -- Linia de pressupost a clients.
 CREATE TABLE lpresupuesto (
    idlpresupuesto integer PRIMARY KEY,
-   desclpresupuesto character varying[150],
+   desclpresupuesto character varying(150),
    cantlpresupuesto float,
    pvplpresupuesto float,
    descuentolpresupuesto float,
@@ -543,8 +543,8 @@ CREATE TABLE factura (
 CREATE TABLE nofactura (
    numnofactura integer PRIMARY KEY,
    fechanofactura date,
-   conceptnofactura character varying[150],
-   observnofactura character varying[150]
+   conceptnofactura character varying(150),
+   observnofactura character varying(150)
 );
 
 
@@ -577,7 +577,7 @@ CREATE TABLE albaran (
 -- Descompte d'albarà a clients.
 CREATE TABLE dalbaran (
    numdalbaran integer PRIMARY KEY,
-   conceptdalbaran character varying[500],
+   conceptdalbaran character varying(500),
    propordalbaran float,
    
    numalbaran integer REFERENCES albaran(numalbaran)
@@ -592,7 +592,7 @@ CREATE TABLE dalbaran (
 -- Línia d'albarà a clients.
 CREATE TABLE lalbaran (
    numlalbaran integer PRIMARY KEY,
-   desclalbaran character varying[100],
+   desclalbaran character varying(100),
    cantlalbaran float,
    pvplalbaran float,
    descontlalbaran float,
@@ -652,7 +652,7 @@ CREATE TABLE suministra (
 -- Segun mis calculos un numero de serie debe ir sólo con un pedido o sólo con un albaran
 -- Asi que los campos pueden ser NULL pq o bien va con uno o bien va con el otro.
 CREATE TABLE num_serie (
-    numnum_serie character varying[30] PRIMARY KEY,
+    numnum_serie character varying(30) PRIMARY KEY,
     tiponumserie integer,
     
     numlpedido integer REFERENCES lpedido (numlpedido),
@@ -687,7 +687,7 @@ CREATE TABLE componente (
    articulocomponente integer REFERENCES articulo(idarticulo),
    id integer,
    prioridad integer,
-   descripcion character varying[200],
+   descripcion character varying(200),
    cantidad float,
    escalable boolean
 );
@@ -703,13 +703,13 @@ CREATE TABLE stock (
 CREATE TABLE dxfam (
    idcliente integer REFERENCES cliente(idcliente),
    idfamilia integer REFERENCES familia(idfamilia),
-   descdxfam character varying[150]
+   descdxfam character varying(150)
 );
 
 CREATE TABLE dxart (
    idcliente integer REFERENCES cliente(idcliente),
    idarticulo integer REFERENCES articulo(idarticulo),
-   descdxart character varying[150]
+   descdxart character varying(150)
 );
 
 -- Esta tabla tiene algo que ver con las ofertas

@@ -82,7 +82,10 @@
                                                     </widget>
                                                     <widget class="QLineEdit">
                                                         <property name="name">
-                                                            <cstring>lineEdit19</cstring>
+                                                            <cstring>codigo_cli</cstring>
+                                                        </property>
+                                                        <property name="enabled">
+                                                            <bool>true</bool>
                                                         </property>
                                                     </widget>
                                                 </hbox>
@@ -105,7 +108,7 @@
                                                     </widget>
                                                     <widget class="QLineEdit">
                                                         <property name="name">
-                                                            <cstring>lineEdit19_2</cstring>
+                                                            <cstring>CIF_cli</cstring>
                                                         </property>
                                                     </widget>
                                                 </hbox>
@@ -128,7 +131,7 @@
                                                     </widget>
                                                     <widget class="QLineEdit">
                                                         <property name="name">
-                                                            <cstring>lineEdit19_2_2</cstring>
+                                                            <cstring>Ref_cli</cstring>
                                                         </property>
                                                     </widget>
                                                 </hbox>
@@ -156,7 +159,7 @@
                                             </widget>
                                             <widget class="QLineEdit">
                                                 <property name="name">
-                                                    <cstring>lineEdit23</cstring>
+                                                    <cstring>nombre1_cli</cstring>
                                                 </property>
                                             </widget>
                                         </hbox>
@@ -179,7 +182,7 @@
                                             </widget>
                                             <widget class="QLineEdit">
                                                 <property name="name">
-                                                    <cstring>lineEdit24</cstring>
+                                                    <cstring>nombre2_cli</cstring>
                                                 </property>
                                             </widget>
                                         </hbox>
@@ -210,7 +213,7 @@
                                                     </widget>
                                                     <widget class="QLineEdit">
                                                         <property name="name">
-                                                            <cstring>lineEdit3_6</cstring>
+                                                            <cstring>direccion_cli</cstring>
                                                         </property>
                                                     </widget>
                                                 </hbox>
@@ -241,7 +244,7 @@
                                                     </widget>
                                                     <widget class="QLineEdit">
                                                         <property name="name">
-                                                            <cstring>lineEdit3_7</cstring>
+                                                            <cstring>CP_cli</cstring>
                                                         </property>
                                                         <property name="sizePolicy">
                                                             <sizepolicy>
@@ -282,7 +285,7 @@
                                                     </widget>
                                                     <widget class="QLineEdit">
                                                         <property name="name">
-                                                            <cstring>lineEdit20</cstring>
+                                                            <cstring>poblacion_cli</cstring>
                                                         </property>
                                                     </widget>
                                                 </hbox>
@@ -363,7 +366,7 @@
                                                     </widget>
                                                     <widget class="QLineEdit">
                                                         <property name="name">
-                                                            <cstring>lineEdit3_8</cstring>
+                                                            <cstring>telf_cli</cstring>
                                                         </property>
                                                     </widget>
                                                 </hbox>
@@ -386,7 +389,7 @@
                                                     </widget>
                                                     <widget class="QLineEdit">
                                                         <property name="name">
-                                                            <cstring>lineEdit3_8_4</cstring>
+                                                            <cstring>WEB_cli</cstring>
                                                         </property>
                                                     </widget>
                                                 </hbox>
@@ -419,7 +422,7 @@
                                                     </widget>
                                                     <widget class="QLineEdit">
                                                         <property name="name">
-                                                            <cstring>lineEdit3_8_2</cstring>
+                                                            <cstring>fax_cli</cstring>
                                                         </property>
                                                     </widget>
                                                 </hbox>
@@ -442,7 +445,7 @@
                                                     </widget>
                                                     <widget class="QLineEdit">
                                                         <property name="name">
-                                                            <cstring>lineEdit3_8_3</cstring>
+                                                            <cstring>mail_cli</cstring>
                                                         </property>
                                                     </widget>
                                                 </hbox>
@@ -477,7 +480,7 @@
                                             </widget>
                                             <widget class="QLineEdit">
                                                 <property name="name">
-                                                    <cstring>lineEdit32</cstring>
+                                                    <cstring>fecha_alta_cli</cstring>
                                                 </property>
                                             </widget>
                                         </hbox>
@@ -500,7 +503,7 @@
                                             </widget>
                                             <widget class="QLineEdit">
                                                 <property name="name">
-                                                    <cstring>lineEdit33</cstring>
+                                                    <cstring>fecha_baja_cli</cstring>
                                                 </property>
                                             </widget>
                                         </hbox>
@@ -543,7 +546,7 @@
                                             </widget>
                                             <widget class="QLineEdit">
                                                 <property name="name">
-                                                    <cstring>lineEdit34_2</cstring>
+                                                    <cstring>banco_cli</cstring>
                                                 </property>
                                             </widget>
                                         </hbox>
@@ -566,7 +569,7 @@
                                             </widget>
                                             <widget class="QLineEdit">
                                                 <property name="name">
-                                                    <cstring>lineEdit34_2_2</cstring>
+                                                    <cstring>poblacion_banco_cli</cstring>
                                                 </property>
                                             </widget>
                                         </hbox>
@@ -591,7 +594,7 @@
                                     </widget>
                                     <widget class="QLineEdit">
                                         <property name="name">
-                                            <cstring>lineEdit34</cstring>
+                                            <cstring>ccc_cli</cstring>
                                         </property>
                                     </widget>
                                 </hbox>
@@ -616,7 +619,7 @@
                             </widget>
                             <widget class="QTextEdit">
                                 <property name="name">
-                                    <cstring>textEdit1_2</cstring>
+                                    <cstring>comentarios_cli</cstring>
                                 </property>
                                 <property name="resizePolicy">
                                     <enum>Manual</enum>
@@ -883,7 +886,7 @@ de todos los presupuestos, albaranes y facturas del cliente, o no ...</string>
                 </property>
                 <widget class="QPushButton">
                     <property name="name">
-                        <cstring>pushButton2</cstring>
+                        <cstring>botonNuevo</cstring>
                     </property>
                     <property name="sizePolicy">
                         <sizepolicy>
@@ -911,7 +914,7 @@ de todos los presupuestos, albaranes y facturas del cliente, o no ...</string>
                 </widget>
                 <widget class="QPushButton">
                     <property name="name">
-                        <cstring>pushButton2_2</cstring>
+                        <cstring>botonSalvar</cstring>
                     </property>
                     <property name="sizePolicy">
                         <sizepolicy>
@@ -939,7 +942,7 @@ de todos los presupuestos, albaranes y facturas del cliente, o no ...</string>
                 </widget>
                 <widget class="QPushButton">
                     <property name="name">
-                        <cstring>pushButton2_3</cstring>
+                        <cstring>botonImprimir</cstring>
                     </property>
                     <property name="sizePolicy">
                         <sizepolicy>
@@ -967,7 +970,7 @@ de todos los presupuestos, albaranes y facturas del cliente, o no ...</string>
                 </widget>
                 <widget class="QPushButton">
                     <property name="name">
-                        <cstring>pushButton2_4</cstring>
+                        <cstring>botonEliminar</cstring>
                     </property>
                     <property name="sizePolicy">
                         <sizepolicy>
@@ -995,7 +998,7 @@ de todos los presupuestos, albaranes y facturas del cliente, o no ...</string>
                 </widget>
                 <widget class="QPushButton">
                     <property name="name">
-                        <cstring>pushButton2_5</cstring>
+                        <cstring>botonCerrar</cstring>
                     </property>
                     <property name="sizePolicy">
                         <sizepolicy>
@@ -1064,14 +1067,14 @@ de todos los presupuestos, albaranes y facturas del cliente, o no ...</string>
                                 </widget>
                                 <widget class="QLineEdit">
                                     <property name="name">
-                                        <cstring>lineEdit1</cstring>
+                                        <cstring>nombre0_cli</cstring>
                                     </property>
                                 </widget>
                             </hbox>
                         </widget>
                         <widget class="QPushButton">
                             <property name="name">
-                                <cstring>pushButton1</cstring>
+                                <cstring>botonBuscar</cstring>
                             </property>
                             <property name="sizePolicy">
                                 <sizepolicy>
@@ -1106,8 +1109,51 @@ de todos los presupuestos, albaranes y facturas del cliente, o no ...</string>
         </widget>
     </grid>
 </widget>
+<connections>
+    <connection>
+        <sender>botonBuscar</sender>
+        <signal>clicked()</signal>
+        <receiver>UIClientes</receiver>
+        <slot>iniciarBusqueda()</slot>
+    </connection>
+    <connection>
+        <sender>botonNuevo</sender>
+        <signal>clicked()</signal>
+        <receiver>UIClientes</receiver>
+        <slot>crearNuevoCliente()</slot>
+    </connection>
+    <connection>
+        <sender>botonCerrar</sender>
+        <signal>clicked()</signal>
+        <receiver>UIClientes</receiver>
+        <slot>cerrarVentana()</slot>
+    </connection>
+    <connection>
+        <sender>botonEliminar</sender>
+        <signal>clicked()</signal>
+        <receiver>UIClientes</receiver>
+        <slot>eliminarCliente()</slot>
+    </connection>
+    <connection>
+        <sender>botonSalvar</sender>
+        <signal>clicked()</signal>
+        <receiver>UIClientes</receiver>
+        <slot>salvarCliente()</slot>
+    </connection>
+    <connection>
+        <sender>codigo_cli</sender>
+        <signal>returnPressed()</signal>
+        <receiver>UIClientes</receiver>
+        <slot>clienteReturnPressed()</slot>
+    </connection>
+</connections>
 <slots>
     <slot access="private">iniciarBusqueda()</slot>
+    <slot>crearNuevoCliente()</slot>
+    <slot>cerrarVentana()</slot>
+    <slot>eliminarCliente()</slot>
+    <slot>salvarCliente()</slot>
+    <slot>clienteReturnPressed()</slot>
 </slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>

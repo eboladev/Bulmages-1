@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>UIbuscador</class>
 <widget class="QDialog">
     <property name="name">
@@ -15,34 +15,85 @@
     <property name="caption">
         <string>Buscar Datos</string>
     </property>
-    <widget class="QLabel">
+    <widget class="QFrame">
         <property name="name">
-            <cstring>textLabel1</cstring>
+            <cstring>frame3</cstring>
         </property>
         <property name="geometry">
             <rect>
-                <x>20</x>
-                <y>16</y>
-                <width>101</width>
-                <height>20</height>
+                <x>10</x>
+                <y>8</y>
+                <width>550</width>
+                <height>60</height>
             </rect>
         </property>
-        <property name="text">
-            <string>Codigo</string>
+        <property name="frameShape">
+            <enum>StyledPanel</enum>
         </property>
-    </widget>
-    <widget class="QLineEdit">
-        <property name="name">
-            <cstring>codigo</cstring>
+        <property name="frameShadow">
+            <enum>Raised</enum>
         </property>
-        <property name="geometry">
-            <rect>
-                <x>20</x>
-                <y>40</y>
-                <width>141</width>
-                <height>20</height>
-            </rect>
-        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel1</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>8</x>
+                    <y>8</y>
+                    <width>98</width>
+                    <height>13</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Campo busqueda</string>
+            </property>
+        </widget>
+        <widget class="QCheckBox">
+            <property name="name">
+                <cstring>checkMayMin</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>230</x>
+                    <y>33</y>
+                    <width>234</width>
+                    <height>18</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Diferenciar mayusculas de minusculas</string>
+            </property>
+        </widget>
+        <widget class="QCheckBox">
+            <property name="name">
+                <cstring>checkBuscarIntermedio</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>230</x>
+                    <y>9</y>
+                    <width>182</width>
+                    <height>18</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Activar búsqueda intermedia</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>codigo</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>8</x>
+                    <y>29</y>
+                    <width>160</width>
+                    <height>18</height>
+                </rect>
+            </property>
+        </widget>
     </widget>
 </widget>
 <connections>

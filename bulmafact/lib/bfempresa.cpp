@@ -12,20 +12,147 @@
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
+
 #include "bfempresa.h"
+#include "bclientes.h"
 #define __VERSION_ACTUAL__ "bulmafact 0.0.1"
 
 /*******************************************************************************/
-/* Clase BfEmpresa                                                               */
+/* Clase BfEmpresa                                                             */
 /*******************************************************************************/
 
 BfEmpresa::BfEmpresa() {
+    nombreDB = new QString(""); //Inicializa el nombre de la base de datos con un valor vacio.
 }
 
 
 BfEmpresa::~BfEmpresa() {
 }
 
+/************************************************************************************/
+/* Esta función crea un nuevo cliente en la base de datos.                          */
+/************************************************************************************/
+int BfEmpresa::nuevoCliente(QString* codigo) {
+    QString query;
+    pgIface* connexionDB;
+    BfCursor* recordset;
+    int codi=0;
+    QString fecha;
+    fecha = this->fechaPresente();
+    connexionDB = new pgIface(*nombreDB);
+    connexionDB->begin();
+    if (codigo==NULL) { //Asignamos al nuevo cliente el siguiente codigo al último utilizado.
+        recordset = connexionDB->cargaCursor("SELECT max(idcliente) AS ultimCodi FROM cliente","ultimoCli");
+        if ( recordset->eof() ) { codi=1; }
+        else { codi = recordset->valor(0).toInt() + 1; }
+        query.sprintf("INSERT INTO cliente (idcliente, faltacliente, idrecargo) VALUES ('%i','%s','1')",codi,fecha.ascii());    
+        connexionDB->ejecuta(query);
+        connexionDB->commit();
+    } else { //El usuario ha escojido un id para el nuevo cliente
+        query.sprintf("SELECT idcliente FROM cliente WHERE idcliente='%s'", codigo->ascii());    
+        recordset = connexionDB->cargaCursor(query,"escojeCli");
+        if ( recordset->eof() ) { 
+            codi=codigo->toInt();
+            query.sprintf("INSERT INTO cliente (idcliente, faltacliente, idrecargo) VALUES ('%i','%s','1')",codi,fecha.ascii());    
+            connexionDB->ejecuta(query);
+            connexionDB->commit();
+        } 
+    }
+    delete connexionDB;
+    return codi;    
+}
+
+/************************************************************************************/
+/* Esta función elimina al cliente de la base de datos (PELIGRO!!!)                 */
+/************************************************************************************/
+int BfEmpresa::eliminarCliente(QString* codigo) {
+    QString query;
+    pgIface * connexionDB = new pgIface(*nombreDB);
+    connexionDB->begin();
+    query.sprintf("DELETE FROM cliente WHERE idcliente='%s'",codigo->ascii());    
+    connexionDB->ejecuta(query);
+    connexionDB->commit();
+    delete connexionDB;
+    return codigo->toInt();
+
+}
+
+/************************************************************************************/
+/* Esta función salva los datos del formulario clientes en la base de datos.       */
+/************************************************************************************/
+int BfEmpresa::salvaCliente(BClientes* datos) {
+    //Leemos todos los campos de la pantalla cliente.
+    //Otra opción seria passar a esta función todos los campos como paràmetros.
+    QString idcliente = datos->codigo_cli->text();
+    QString nomcliente = datos->nombre1_cli->text();
+    QString nomaltcliente = datos->nombre2_cli->text();
+    QString cifcliente = datos->CIF_cli->text();
+    QString bancocliente = datos->ccc_cli->text();
+    QString dircliente = datos->direccion_cli->text();
+    QString poblcliente = datos->poblacion_cli->text();
+    QString cpcliente = datos->CP_cli->text();
+    QString telcliente = datos->telf_cli->text();
+    QString faxcliente = datos->fax_cli->text();
+    QString mailcliente = datos->mail_cli->text();
+    QString urlcliente = datos->WEB_cli->text();
+    QString faltacliente = datos->fecha_alta_cli->text();
+    QString fbajacliente = "01/01/2000"; //datos->fecha_baja_cli->text();
+    QString comentcliente = datos->comentarios_cli->text();
+    //QString idrecargo = datos->codigo_cli->text();
+    //Fin lectura campos en pantalla
+    QString query;
+    pgIface * connexionDB = new pgIface(*nombreDB);
+    connexionDB->begin();
+    query.sprintf("UPDATE cliente SET nomcliente='%s',nomaltcliente='%s', cifcliente='%s', bancocliente='%s', dircliente='%s', poblcliente='%s', cpcliente='%s', \
+                   telcliente='%s', faxcliente='%s', mailcliente='%s', urlcliente='%s', faltacliente='%s', fbajacliente='%s', comentcliente='%s' \
+                   WHERE idcliente='%s'"
+                   ,nomcliente.ascii(), nomaltcliente.ascii(), cifcliente.ascii(), bancocliente.ascii(), dircliente.ascii(), poblcliente.ascii(), cpcliente.ascii(), 
+                   telcliente.ascii(), faxcliente.ascii(), mailcliente.ascii(), urlcliente.ascii(), faltacliente.ascii(), fbajacliente.ascii(), comentcliente.ascii(),
+                   idcliente.ascii());    
+    connexionDB->ejecuta(query);
+    connexionDB->commit();
+    delete connexionDB;
+    return datos->codigo_cli->text().toInt();
+}
+
+/************************************************************************************/
+/* Esta función carga los datos en la pantalla cliente.                             */
+/************************************************************************************/
+int BfEmpresa::cargaCliente(BClientes* datos) {
+    QString query;
+    BfCursor* recordset;
+    pgIface * connexionDB = new pgIface(*nombreDB);
+    connexionDB->begin();
+    query.sprintf("SELECT * FROM cliente WHERE idcliente='%s'",datos->codigo_cli->text().ascii());    
+    recordset = connexionDB->cargaCursor(query,"cargaCli");
+    connexionDB->commit();
+    if (! recordset->eof() ) { 
+        //datos->codigo_cli->setText();
+        datos->nombre0_cli->setText(recordset->valor("nomcliente"));
+        datos->nombre1_cli->setText(recordset->valor("nomcliente"));
+        datos->nombre2_cli->setText(recordset->valor("nomaltcliente"));
+        datos->CIF_cli->setText(recordset->valor("cifcliente"));
+        datos->ccc_cli->setText(recordset->valor("bancocliente"));
+        datos->direccion_cli->setText(recordset->valor("dircliente"));
+        datos->poblacion_cli->setText(recordset->valor("poblcliente"));
+        datos->CP_cli->setText(recordset->valor("cpcliente"));
+        datos->telf_cli->setText(recordset->valor("telcliente"));
+        datos->fax_cli->setText(recordset->valor("faxcliente"));
+        datos->mail_cli->setText(recordset->valor("mailcliente"));
+        datos->WEB_cli->setText(recordset->valor("urlcliente"));
+        datos->fecha_alta_cli->setText(recordset->valor("faltacliente"));
+        datos->fecha_baja_cli->setText(recordset->valor("fbajacliente"));
+        datos->comentarios_cli->setText(recordset->valor("comentcliente"));
+    }
+    delete connexionDB;
+    return datos->codigo_cli->text().toInt();
+}
+
+/************************************************************************************/
+/* Esta función retorna un cursor con una lista de todas las bases de datos que     */
+/* se han encontrado en el servidor y que sean compatibles con la versión actual    */
+/* de bulmaFACT.                                                                    */
+/***********************************************************************************/
 BfCursor* BfEmpresa::pg_database(QString* usuario, QString* passwd) {
     QString query;
     pgIface* DbTemp;
@@ -64,8 +191,37 @@ BfCursor* BfEmpresa::pg_database(QString* usuario, QString* passwd) {
     else return lista;
 }
 
-void BfEmpresa::cargaEmpresa(QString *NombreDB) {
-NombreDB=NombreDB;
+
+/************************************************************************************/
+/* Busca en la tabla clientes nombres parecidos A ...                               */
+/************************************************************************************/
+BfCursor* BfEmpresa::buscarParecidos(QString tabla, QString argumentoBusqueda, QString opcionesBusqueda) {
+    QString query;
+    BfCursor* recordset;
+    pgIface * connexionDB = new pgIface(*nombreDB);
+    connexionDB->begin();
+    query.sprintf(""); 
+    if (tabla=="cliente") query.sprintf("SELECT * FROM cliente WHERE nomcliente %s%s%%' ORDER BY nomcliente",opcionesBusqueda.ascii(), argumentoBusqueda.ascii());    
+    if (tabla=="proveedor") query.sprintf("SELECT * FROM proveedor WHERE nomproveedor %s%s%%' ORDER BY nomproveedor",opcionesBusqueda.ascii(),argumentoBusqueda.ascii());    
+    if (tabla=="articulo") query.sprintf("SELECT * FROM articulo WHERE nomarticulo %s%s%%' ORDER BY nomarticulo",opcionesBusqueda.ascii(),argumentoBusqueda.ascii());    
+    recordset = connexionDB->cargaCursor(query,"cargaClientes");
+    connexionDB->commit();
+    if (connexionDB) delete connexionDB;
+    return recordset;
+}
+
+/************************************************************************************/
+/* Inicializa la empresa. Para empezar cargamos el nombre de la base de datos.      */
+/************************************************************************************/
+void BfEmpresa::cargaEmpresa(QString *NombreBaseDatos) {
+nombreDB=NombreBaseDatos;
+}
+
+/************************************************************************************/
+/* Devuelve la fecha presente del sistema                                           */
+/************************************************************************************/
+QString BfEmpresa::fechaPresente(){
+    return QDate::currentDate().toString("dd/MM/yyyy");
 }
 
 /************************************************************************************/
@@ -80,7 +236,9 @@ int BfEmpresa::roundI(double valor) {
     return retorno;
 }
 
-
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!  FIN  DE LA CLASE BfEmpresa    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 /*******************************************************************************/
 /* Clase BfCursor                                                                */

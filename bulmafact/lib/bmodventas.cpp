@@ -34,8 +34,8 @@ BModVentas::BModVentas(QString* usuario, QString* passwd, QString* dataBase, QWi
     DataBase = dataBase;
     if (DataBase == NULL) DataBase = new QString(""); //NOMBRE_DE_LA_BASE_DE_DATOS_SIN_DETERMINAR
     intentosFallidosPassword=0;
-    //Para evitar que se conecte a postgres, desactivo la funcion cargaUsuario!!
-    //cargaUsuario();
+    //Para evitar que se conecte a postgres, desactiva la funcion cargaUsuario!!
+    cargaUsuario();
 }
 
 
@@ -46,7 +46,8 @@ BModVentas::~BModVentas() {
 /* Pide confirmaciòn antes de cerrar la aplicación                           */
 /*****************************************************************************/
 void BModVentas::closeEvent(QCloseEvent * e) {
-  int exit=QMessageBox::information(this, "Cerrar...","Realmente deseas Salir?",QMessageBox::Ok, QMessageBox::Cancel);
+  int exit=1;
+  if (intentosFallidosPassword < 3) exit=QMessageBox::information(this, "Cerrar...","Realmente deseas Salir?",QMessageBox::Ok, QMessageBox::Cancel);
   if (exit==1) e->accept();
   else e->ignore();
 }
@@ -92,7 +93,7 @@ int BModVentas::seleccionaEmpresa(){
 void BModVentas::abrirFormAlbaranes()      { (new BAlbaVenta(empresaTrabajo, zona0,"albaran"))->show(); }
 void BModVentas::abrirFormPresupuestos()   { (new Bpresupuesto(empresaTrabajo, zona0,"presupuesto"))->show(); }
 void BModVentas::abrirFormPedidos()        { (new BPediVenta(empresaTrabajo, zona0,"pedidoVenta"))->show(); }
-void BModVentas::abrirFormClientes()       { (new BClientes(empresaTrabajo, zona0,"cliente"))->show(); }
+void BModVentas::abrirFormClientes()       { (new BClientes(empresaTrabajo, zona0,"cliente"))->showMaximized(); }
 void BModVentas::abrirFormProveedores()    { (new Bproveedor(empresaTrabajo, zona0,"proveedor"))->show(); }
 void BModVentas::abrirFormListadoProveed() { (new BProvList(empresaTrabajo, zona0,"proveedlist"))->show(); }
 void BModVentas::abrirFormArticulos()      { (new BArticulos(empresaTrabajo, zona0,"articulo"))->show(); }

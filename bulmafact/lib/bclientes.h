@@ -36,6 +36,11 @@ private:
 
 private slots:
     virtual void iniciarBusqueda();
+    virtual void crearNuevoCliente();
+    virtual void eliminarCliente();
+    virtual void salvarCliente();
+    virtual void clienteReturnPressed();
+    virtual void cerrarVentana();
 
 };
 
