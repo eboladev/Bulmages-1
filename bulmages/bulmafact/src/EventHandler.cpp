@@ -1,6 +1,21 @@
 #include "EventHandler.h"
 #include <qwidget.h>
 #include <qtable.h>
+#include <qlineedit.h>
+#include "funcaux.h"
+
+
+EventHandler::EventHandler(QWidget *EH, const int textEditType=0 ){
+	m_TextEditType=textEditType;
+};
+
+
+EventHandler::EventHandler(QWidget *EH, QTable *table ){
+	
+};
+
+EventHandler::~EventHandler(){
+};
 
 bool EventHandler::eventFilter( QObject *obj, QEvent *ev ) {
 	if ( obj->isA("QTable")) {
@@ -22,12 +37,24 @@ bool EventHandler::eventFilter( QObject *obj, QEvent *ev ) {
 				}
 			} 
 		}
-		return FALSE;
-	} else {
-		// pass the event on to the parent class
-		//return QWidget::eventFilter( obj, ev );
-		return FALSE;
+	} 
+	
+	if ( obj->isA("QLineEdit")) {
+		if ( ev->type() == QEvent::FocusOut ) {
+			switch ( m_TextEditType ) {
+				case QUANTITY:  {
+					
+					return TRUE;
+				}
+				case DATE: {
+					manageDate(obj);
+					return TRUE;
+				}
+			} 
+		}
 	}
+	
+	return FALSE;
 } //end eventFilter
 
 
@@ -69,3 +96,17 @@ void EventHandler::duplicateCell(QObject *obj) {
 		t->setText(row, col, t->text(row-1, col));
 	}
 }
+
+
+void EventHandler::manageDate(QObject *obj) {
+	QLineEdit *t = (QLineEdit *)obj;
+	t->setText(normalizafecha(t->text()).toString("dd/MM/yyyy"));
+}
+
+
+void EventHandler::manageQuantity(QObject *obj) {
+	QLineEdit *t = (QLineEdit *)obj;
+	t->setText(t->text().replace(",","."));
+}
+
+

@@ -44,6 +44,7 @@ public:
 	 void inicialize();
 	 void manageArticle(int);
 	 QString searchArticle();
+	
 	 
 private:
 	int saveBudgetLines();
@@ -53,9 +54,10 @@ private:
 	int deleteBudgetLine(int);
 	void nextCell(QObject *);
 	void duplicateCell(QObject *);
-	
-//protected:
-//	bool eventFilter( QObject *, QEvent *);
+	void calculateImports();
+		
+protected:
+	bool eventFilter( QObject *, QEvent *);
 	 
 public slots:
    virtual void searchClient();

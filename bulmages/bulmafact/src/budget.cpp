@@ -68,7 +68,6 @@ CREATE TABLE lpresupuesto (
 #include "division.h"
 #include "clientslist.h"
 #include "articleslist.h"
-#include "EventHandler.h"
 
 #include <qlineedit.h>
 #include <qtextedit.h>
@@ -103,6 +102,7 @@ Budget::~Budget() {
 
 
 void Budget::inicialize() {
+
 // Inicializamos la tabla de lineas de presupuesto
 	m_list->setNumRows( 0 );
 	m_list->setNumCols( 0 );
@@ -120,6 +120,7 @@ void Budget::inicialize() {
 	m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
 	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
 	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
+	m_list->horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
    
 	m_list->setColumnWidth(COL_IDLPRESUPUESTO,100);
 	m_list->setColumnWidth(COL_DESCLPRESUPUESTO,300);
@@ -130,11 +131,13 @@ void Budget::inicialize() {
 	m_list->setColumnWidth(COL_IDARTICULO,100);
 	m_list->setColumnWidth(COL_CODARTICULO,100);
 	m_list->setColumnWidth(COL_NOMARTICULO,300);
+	m_list->setColumnWidth(COL_TASATIPO_IVA,50);
 
 	m_list->hideColumn(COL_IDLPRESUPUESTO);
 	m_list->hideColumn(COL_IDPRESUPUESTO);
 	m_list->hideColumn(COL_IDARTICULO);
 	m_list->hideColumn(COL_REMOVE);
+	m_list->hideColumn(COL_TASATIPO_IVA);
 	
 	m_list->setNumRows(10);
 	
@@ -143,8 +146,7 @@ void Budget::inicialize() {
 	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
 	m_list->setPaletteBackgroundColor("#AFFAFA");   
 	m_list->setReadOnly(FALSE);
-	EventHandler *qtableEventHandler = new EventHandler(this);
-	m_list->installEventFilter( qtableEventHandler );
+	m_list->installEventFilter( this );
 	
 	
 // Inicializamos la tabla de descuentos del presupuesto
@@ -167,8 +169,16 @@ void Budget::inicialize() {
 	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
 	m_listDiscounts->setPaletteBackgroundColor("#AFFAFA");   
 	m_listDiscounts->setReadOnly(FALSE);    
-	//m_listDiscounts->installEventFilter( this );
+	m_listDiscounts->installEventFilter( this );
 	
+	m_totalBases->setReadOnly(TRUE);
+	m_totalBases->setAlignment(Qt::AlignRight);
+	m_totalTaxes->setReadOnly(TRUE);
+	m_totalTaxes->setAlignment(Qt::AlignRight);
+	m_totalDiscounts->setReadOnly(TRUE);
+	m_totalDiscounts->setAlignment(Qt::AlignRight);
+	m_totalBudget->setReadOnly(TRUE);
+	m_totalBudget->setAlignment(Qt::AlignRight);
 }// end inicialize
 
 
@@ -182,7 +192,7 @@ void Budget::chargeBudget(QString idbudget) {
 	cursor2 * cur= companyact->cargacursor(query, "querypresupuesto");
 	companyact->commit();
 	if (!cur->eof()) {
-		m_idclient = cur->valor("idcliente");
+		m_idclient = cur->valor("idcliente");	
 		m_numpresupuesto->setText(cur->valor("numpresupuesto"));
 		m_fpresupuesto->setText(cur->valor("fpresupuesto"));
 		m_vencpresupuesto->setText(cur->valor("vencpresupuesto"));
@@ -194,6 +204,7 @@ void Budget::chargeBudget(QString idbudget) {
    
 		chargeBudgetLines(idbudget);
 		chargeBudgetDiscounts(idbudget);
+		calculateImports();
     }// end if
      delete cur;   
 }// end chargeBudget
@@ -202,7 +213,7 @@ void Budget::chargeBudget(QString idbudget) {
 // Carga líneas de presupuesto
 void Budget::chargeBudgetLines(QString idbudget) {
 	companyact->begin();
-	cursor2 * cur= companyact->cargacursor("SELECT * FROM lpresupuesto, articulo WHERE idpresupuesto="+idbudget+" AND articulo.idarticulo=lpresupuesto.idarticulo","unquery");
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM lpresupuesto, articulo, tipo_iva WHERE idpresupuesto="+idbudget+" AND articulo.idarticulo=lpresupuesto.idarticulo and articulo.idtipo_iva = tipo_iva.idtipo_iva","unquery");
 	companyact->commit();
 	int i=0;
 	while (!cur->eof()) {
@@ -215,6 +226,7 @@ void Budget::chargeBudgetLines(QString idbudget) {
 		m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
 		m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
 		m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
+		m_list->setText(i,COL_TASATIPO_IVA,cur->valor("tasatipo_iva"));
 		i++;
 		cur->siguienteregistro();
 	}// end while
@@ -288,22 +300,25 @@ void Budget::removeBudgetLine() {
 
 
 void Budget::valueBudgetLineChanged(int row, int col) {
+	/*if (m_list->text(row, col)=="*") {
+		duplicateCell(m_list);
+	}*/
+	
 	switch (col) {
 		case COL_DESCUENTOLPRESUPUESTO: {
 			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, m_list->text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
 		}
 		case COL_CODARTICULO: {
 			manageArticle(row);
-			m_list->editCell(row, COL_DESCLPRESUPUESTO);
-			//calculateImports();
+			calculateImports();
 		}
 		case COL_CANTLPRESUPUESTO: {
 			m_list->setText(row, COL_CANTLPRESUPUESTO, m_list->text(row, COL_CANTLPRESUPUESTO).replace(",","."));
-			//calculateImports();
+			calculateImports();
 		}
 		case COL_PVPLPRESUPUESTO: {
 			m_list->setText(row, COL_PVPLPRESUPUESTO, m_list->text(row, COL_PVPLPRESUPUESTO).replace(",","."));
-			//calculateImports();
+			calculateImports();
 		}
 	}
 } //end valueBudgetLineChanged
@@ -322,7 +337,7 @@ void Budget::manageArticle(int row) {
 	if (articleCode.toInt(&ok, 10)>0) {
 		m_list->setText(row, COL_NOMARTICULO, "");
 		m_list->setText(row, COL_IDARTICULO, "");
-		//m_list->setText(row, COL_TASATIPO_IVA, "");
+		m_list->setText(row, COL_TASATIPO_IVA, "");
 		
 		companyact->begin();
 		cursor2 * cur2= companyact->cargacursor("SELECT * FROM articulo WHERE codarticulo="+m_list->text(row, COL_CODARTICULO),"unquery");
@@ -330,13 +345,13 @@ void Budget::manageArticle(int row) {
 		if (!cur2->eof()) {
 			m_list->setText(row, COL_NOMARTICULO, cur2->valor("nomarticulo"));
 			m_list->setText(row, COL_IDARTICULO, cur2->valor("idarticulo"));
-			/* QString taxType = cur2->valor("idtipo_iva");
+			QString taxType = cur2->valor("idtipo_iva");
 			companyact->begin();
 			cursor2 * cur3= companyact->cargacursor("SELECT * FROM tipo_iva WHERE idtipo_iva="+taxType,"unquery");
 			companyact->commit();
 			if (!cur3->eof()) {
 				m_list->setText(row, COL_TASATIPO_IVA, cur3->valor("tasatipo_iva"));
-			} */
+			}
 		}
 	}
 } //end manageArticle
@@ -464,4 +479,103 @@ int Budget::deleteBudgetLine(int line) {
 
 void Budget::cancel() {
 	close();
+}//end cancel
+
+
+void Budget::calculateImports() {
+	int i = 0;
+	float netImport = 0;
+	float taxImport = 0;
+	float discountImport = 0;
+	while (i < m_list->numRows()) {
+		if (m_list->text(i,COL_PVPLPRESUPUESTO)!="" and m_list->text(i,COL_CANTLPRESUPUESTO)!="") {
+			netImport += m_list->text(i,COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i,COL_CANTLPRESUPUESTO).toInt();
+			taxImport += (m_list->text(i,COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i,COL_CANTLPRESUPUESTO).toInt() * m_list->text(i,COL_TASATIPO_IVA).toInt())/100;
+			discountImport += (m_list->text(i,COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i,COL_CANTLPRESUPUESTO).toInt() * m_list->text(i,COL_DESCUENTOLPRESUPUESTO).toInt())/100;
+		}
+		i ++;
+   }
+	
+	m_totalBases->setText(QString().sprintf("%0.2f", netImport));
+	m_totalTaxes->setText(QString().sprintf("%0.2f", taxImport));
+	m_totalDiscounts->setText(QString().sprintf("%0.2f", discountImport));
+	m_totalBudget->setText(QString().sprintf("%0.2f", netImport+taxImport));
+} // end calculateImports
+
+
+bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
+	if ( obj->isA("QTable")) {
+		QTable *t = (QTable *)obj;
+		if ( ev->type() == QEvent::KeyPress ) {
+			QKeyEvent *k = (QKeyEvent *)ev;
+			switch (k->key()) {
+				case Qt::Key_Enter:  {
+					if (obj->name() == "m_list") {
+						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
+					}
+					nextCell(obj);
+					return TRUE;
+				}
+				case Qt::Key_Return: {
+					if (obj->name() == "m_list") {
+						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
+					}
+					nextCell(obj);
+					return TRUE;
+				}
+				case Qt::Key_Asterisk: {
+					duplicateCell(obj);
+					if (obj->name() == "m_list") {
+						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
+					}
+					return TRUE;
+				}
+			} 
+		}
+	} 
+		
+	return FALSE;
+} //end eventFilter
+
+
+void Budget::nextCell(QObject *obj) {
+	QTable *t = (QTable *)obj;
+	int row = t->currentRow();
+	int col = t->currentColumn();
+	int lastCol = t->numCols()-1;
+	if (t->isReadOnly()==FALSE) {
+		//qDebug( "Fila, Columna = %d, %d", row, col);
+		col++;
+		while (true) {
+			qDebug( "Fila, Columna = %d, %d", row, col);
+			if (col > lastCol) {
+				col = 0;
+				row++;
+				if (row == (t->numRows())) {
+					t->setNumRows(row+1);
+				}
+			} else {
+				if (t->isColumnHidden(col) || t->isColumnReadOnly(col) || t->isRowHidden(row) || t->isRowReadOnly(row)) {
+					col++;
+				} else {
+					t->setCurrentCell(row, col);
+					//t->editCell(row, col);
+					break;
+				}
+			}
+		}
+	}
 }
+
+
+void Budget::duplicateCell(QObject *obj) {
+	QTable *t = (QTable *)obj;
+	int row = t->currentRow();
+	int col = t->currentColumn();
+	if (t->text(row, col) == "" && row>0) {
+		t->setText(row, col, t->text(row-1, col));
+	}
+}
+
+
+

@@ -28,47 +28,47 @@ SOURCES += bulmafact.cpp \
 	   budget.cpp \
 	   budgetslist.cpp \
 		articleedit.cpp \
-		EventHandler.cpp
+		EventHandler.cpp 
 HEADERS += bulmafact.h \
-           company.h \
-           providerslist.h \
-           provedit.h \
-	   splashscreen.h \
-	   clientslist.h \
-	   clientedit.h \
-           articleslist.h \
-	   orderslist.h \
-	   linorderslist.h \
-	   delivnoteslist.h \
-	   division.h \
-	   budget.h \
-	   budgetslist.h \
+		company.h \
+		providerslist.h \
+		provedit.h \
+		splashscreen.h \
+		clientslist.h \
+		clientedit.h \
+		articleslist.h \
+		orderslist.h \
+		linorderslist.h \
+		delivnoteslist.h \
+		division.h \
+		budget.h \
+		budgetslist.h \
 		articleedit.h \
 		EventHandler.h
 IDLS += providerslistbase.ui \
-        provedit_base.ui \
-	clientslistbase.ui \
-	clienteditbase.ui \  
-	articleslistbase.ui \
-	orderslistbase.ui \
-	linorderslistbase.ui \
-	delivnoteslistbase.ui  \
-	divisionbase.ui \
-	budgetbase.ui \
-	budgetslistbase.ui \
+		provedit_base.ui \
+		clientslistbase.ui \
+		clienteditbase.ui \  
+		articleslistbase.ui \
+		orderslistbase.ui \
+		linorderslistbase.ui \
+		delivnoteslistbase.ui  \
+		divisionbase.ui \
+		budgetbase.ui \
+		budgetslistbase.ui \
 		articleeditbase.ui
 FORMS += bulmafactbase.ui \
-         providerslistbase.ui \
-         provedit_base.ui \
-	 clientslistbase.ui \
-	 clienteditbase.ui \
-	 articleslistbase.ui \
-	 orderslistbase.ui \
-	 linorderslistbase.ui \
-	 delivnoteslistbase.ui \
-	 divisionbase.ui \
-	 budgetbase.ui \
-	 budgetslistbase.ui \
+		providerslistbase.ui \
+		provedit_base.ui \
+		clientslistbase.ui \
+		clienteditbase.ui \
+		articleslistbase.ui \
+		orderslistbase.ui \
+		linorderslistbase.ui \
+		delivnoteslistbase.ui \
+		divisionbase.ui \
+		budgetbase.ui \
+		budgetslistbase.ui \
 		articleeditbase.ui
 unix{
   UI_DIR = .ui
