@@ -1,0 +1,67 @@
+/***************************************************************************
+                          ainteligentesview.h  -  description
+                             -------------------
+    begin                : Thu Feb 6 2003
+    copyright            : (C) 2003 by Tomeu Borrás Riera
+    email                : tborras@conetxia.com
+ ***************************************************************************/
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
+
+#ifndef AINTELIGENTESVIEW_H
+#define AINTELIGENTESVIEW_H
+
+#include <qwidget.h>
+#include <ainteligentesdlg.h>
+#include <qlineedit.h>
+#include <qtable.h>
+#include <qtextedit.h>
+#include <qcombobox.h>
+#include <qtabwidget.h>
+
+#include "postgresiface2.h"
+
+
+/*** @author Tomeu Borrás Riera */
+
+class ainteligentesview : public ainteligentesdlg  {
+   Q_OBJECT
+public:
+  postgresiface2 *conexionbase;
+  int idasientointeligente;
+  int ccostes[100];
+  int ccanales[100];
+  QComboBox *combocoste, *combocanal;
+  int oldrow,oldcol;
+  
+public: 
+  ainteligentesview(QWidget *parent=0, const char *name=0, bool modal=true);
+  ~ainteligentesview();
+  void inicializa(postgresiface2 *);
+  void repinta();
+  void return_asiento();
+  void cargacanales();
+  void cargacostes();
+  
+public slots:
+  virtual void boton_nuevo();
+  virtual void boton_save();
+  virtual void boton_borrar();
+  virtual void boton_inicio();
+  virtual void boton_fin();
+  virtual void boton_siguiente();
+  virtual void boton_anterior();
+  virtual void currentChanged(int, int);
+  virtual void selectionChanged();
+  virtual void boton_igualant();
+  virtual void boton_cuentas();
+  virtual void accept();
+};
+
+#endif

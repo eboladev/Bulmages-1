@@ -1,0 +1,214 @@
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<class>asientosdlg</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>asientosdlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>430</width>
+            <height>368</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Asientos</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLayoutWidget" row="3" column="0">
+            <property name="name">
+                <cstring>Layout2</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>198</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>PushButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Aceptar</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>PushButton2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Cancelar</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget" row="0" column="0">
+            <property name="name">
+                <cstring>Layout3</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>ToolButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap>image0</pixmap>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>ToolButton2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap>image1</pixmap>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>ToolButton3</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="pixmap">
+                        <pixmap>image2</pixmap>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>374</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+        <widget class="QTable" row="1" column="0">
+            <property name="name">
+                <cstring>tablaasientos</cstring>
+            </property>
+            <property name="numRows">
+                <number>0</number>
+            </property>
+            <property name="numCols">
+                <number>0</number>
+            </property>
+            <property name="readOnly">
+                <bool>true</bool>
+            </property>
+            <property name="sorting">
+                <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+                <enum>SingleRow</enum>
+            </property>
+        </widget>
+        <widget class="QDataTable" row="2" column="0">
+            <property name="name">
+                <cstring>DataTable2</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>1</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<images>
+    <image name="image0">
+        <data format="XPM.GZ" length="3966">789c9595db5222491040dffd0ac27c3336726884a63b36f60164141514466746ddd887be22c845041498d87fdfacccac626416d6352de0d055a7b2b2aa9b4f4785bb4ebb70f4e960368fe6fda4903c462f85a374311aadfefceb8f1f0787c7a502fd7bc5b0503afcede0b03b2f2485abc9383380400045fe330cd7c281a7dc11ce73616c3107b63fd61d07ccdf9503bdbe702cd75f0c935c1906c29e1def59f664fe91e152d10b84f1d970392a178f3de647c3955239500e842bc50a2f1672e68838627e530e85b168d82ff99e2ffd393f3f723c510e7d19df355c3df6c3ea31f358b8ea09e305735cf53c59dfdc7235665e2b87c2786738a0f12559ef857218887f251c78caa7cc31b1f886caa1f2d470580ec2b0ccfe07e1b0a27ccf9c1027cc35e55499f38bca611a49ffaa705451e6f9a324aa683daf2c4732fe5239d3eb8ee53a3c198ec927f5c5ae72a6f5ce2cc732df4a38f6954bcc69986afdcf84e97acadc56ce94f9bc2695c44f2a3cfe0b739af85aafa6e544fad7953365be3fd24aacfdf14c38c9747ccd72ca7e6808a7be728f39b3e3e1d1b2ee4759391386c8b1d42bb62cf5874438f195cf85693ebe9fe1443913c6d070e6c7be9eb763659b3f5ad6f9fb8e653f6f84135ff3492deb794894757fb16259ea8fbe706af7efd6b2eec757e54c183e5bce7ce6576113cc3366aa87dc0f28fdb344eb834f8e259f57cb3aff3761974fc7b1e47b6e59f35b2a6b7e38772cfddb9665bf3112cef43c61d3b29e87a5e54cf66ba19c09233f7f73570f7c732cbe9eb0f3c79675fe8963f18d95ed791858967ae2d0b1e4f36c3997eb33e15cf3c5ccb25ee7fb3fcfdd7c0d653bdfc8b2ce77e258ae4f859dbf6f59fdb9e39c3955ce85bbf37d8160625f8f0f39228cf799fecb4123134c3576983ee04831a396bbf7deb6699f031fd9b01d7d8ac1cfa6bd0ec0a7ad1ccc7b1f8738c2314e686d3d63d9edc0e77fc9c2e430a5189025a648f065af43aab99dc38c0d6336cc71b16f2d5c0b33ebee1c7af8baab1e522baec58ce7edebfc3687018d7fc32535edb9eda0ef56b8c61ad6a9ef94aa67e616c3104fe8bb86337ca6bea778b6ed7006538b093669dd038d31d760c2ab3827c792fa5ce0e5f6beb0a146b1c616f56c72d5daf43aa2b1c670c586255e6387560ad8c52fef1dce50e35adcd06cb7d4ff2bb55b72cdd9680c1dcaf11b7ec73b5ac9bb9ab2e11e1fd851440f4b784c9e328da850f3c9d8e1f1c6606678915a6c1c6c78a0b8e756c32a0654d50599422a3c400431249060022919e864712d169bfb65cbf0a09fab90414e1e30262c438f4c8fd027cb0d0ce0c9d442ee1875c8297af83560c83981e6d4831ed9469487496f0c1318cbde123d6346ed17130c614aafd428ab17f290096664286291c64f604ed7ac6301afd438c444f3b3819a0b537190d3691c638aa9c9511daf1c4b7e35a6a535fd6459d1e715ac69e49c9ba961609ceaa8419de284a2419613f82c56359db241626d2d94674e069707aee08c5a1d9a140d8a3a59ce298ceb444dd672613c92035bac03b88297b49b97d0823685c9ab45b61a35939f35ad8d4357116cf2d8dcf1bcee4bb8a25d68c319458b8db2d273b35235e592c3268fed6707e57bca775e8dd66772a3bce853938d0d8e3797c78ee7a933c93d68d67845b9adc8730d1d32b63639ec7faeab49ea27e7957223df25add4e5f0c1df2839d563aed5a93c5f36397cc4f1ce3481aeeeefdb477fe7769bdeffe6fe1fc7c6f4fe9bc3bf7f3ff8078bb0fdf6</data>
+    </image>
+    <image name="image1">
+        <data format="XPM.GZ" length="1797">789c85935d6fda301486eff91511beaba6161212624dbba05ff46bd32e274dbbb01de73b8512685aa6fdf79d73ec84043aed18241ee5c9ebbc602ece9c1fdfbf3a6717a37a2bb69972542a36ce59b4abaaf79fbfbefc1e8d3dd781d76ce24cc79f46e3734739df56cf1a3f33f8cc26348829a2cbddd0e58819a23775438f6e7c34e84d0c2e093920c90f1643830ad177fd89ef2226840250206e2d72836bc4c00da601c92b4211f080ae3e23cebd80cf3dc4d2e07c6af08a50024ac4c22237f884187a731e929c1b0ca7062f092520c995456ef00591cf42ce67887b83dc37b82054800a515b8c0c468862c62341726350f8065f091520c93b8bdae03ba29c092d49ae0dcac0e01b610418216e2c6a830251f92a503ea2248c00e9ea1d62e447414457ef0935201d866b441de042bc25d48074f5c6a2361823c63474a8da618c9d7f307d8709213ed2868e54f06427da518e82a789b41e6a3d874970e011411aa6f51da3e00cd3864e127763d252d40e0eb652717f202dcb733670e4508101a5906c9073e2a44529ab83d3b61ae694a5e8edf561ccf36a7de42427ce6a2d5f0e0e289b3a4bd3e156dbade875679b4d5def5e9b2ccdfa8a927de7ad7e6f1aadf7fbaa4b4b1305ad3a87bded76a02cf62f97795194262d53096ed539b00dfc3c55055fda15b4596f214d256ae0341a0f2668e5d50a9544e1c256ad03ca82c5d7374683474d94c237c5b4ce6251b1f8e616166a4ba66c4edfd9a372ddae650e699044adacc3a00d8befeeed7aa86058625bb50eb461b168e731cfe19eb655b7176371ddcd439e93625af5ce2168baa1b52c9e8a8275ad8efe3b8c454dd42c0b18d6b51a3a366d599665afd5a9431a388756274e977668f50fc768ec7f4e7fc67f3e8ffe027b34c1e0</data>
+    </image>
+    <image name="image2">
+        <data format="XPM.GZ" length="1737">789cb5d34d6fda401006e03bbfc2626fa82231c6c656d5430824b9b4eab152d5c37e8cf107c6604c6252f5bf7767c65053a25aaada1d2cf9615f0dbb6b733372be7cfee88c6e06fb5ad6a97674222b67640e4571fcfaedc3f7c1d09b38f8091c77f86e301c3bdaf9546e00ef85bd17b734905b626815228b9621f301e9da3997c28a898594c4100bf98c9cdcbae18466374c2ce41dd28bbcd08b9047a42ffdc897c857643009dc6082bc47cebc993bf3907ba2b254c81764e8cda290660f44655741b3cb9611f309194dc3289a223533f2992ba2b6d4c8baa5613e22e5343292c20953facc1d515b52b86c094c835453098ac2295305cc8a682c0d326b09cc06a97d05da47025307cc39d15852386f09cc05d2f81a0c8563a609986b2258d2cb30ee197f9111e7f11ffbe0d7522aa90dc4343ab9731fa1c44a27499a411ec76b2a2838c61931de681b28cb2c03c829c45727b3b5995d69cab43a45da82a2d347ecebb24cd3539f53a74c74fa88e29094e9af9f6a4b88cb35afea6e082fd15d3387e4f3cbae69da3ecdf1bcf9ce198af85528dd0075b181bbabf3a1d03c15c5968ef9ded4e7a3bec814b0ce17b672a8ca9dc0edbef1bc04ef26cfd265e781fdfe4c712d0bb8885cbd1bc26e3acfaa6ee4fafd29160b282f22d799873940d293d902648f3d1931874cf76500d2a7be8c3dc0657f26edcdaca13af465e2a6b70ffd8bc67f3ee737c63fcbfc783ff809d3f97ec6</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>tablaasientos</sender>
+        <signal>doubleClicked(int,int,int,const QPoint&amp;)</signal>
+        <receiver>asientosdlg</receiver>
+        <slot>pulsado(int,int,int,const QPoint&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>PushButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>asientosdlg</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>PushButton2</sender>
+        <signal>clicked()</signal>
+        <receiver>asientosdlg</receiver>
+        <slot>reject()</slot>
+    </connection>
+    <connection>
+        <sender>ToolButton3</sender>
+        <signal>clicked()</signal>
+        <receiver>asientosdlg</receiver>
+        <slot>boton_filtrar()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>pulsado(int,int,int,const QPoint&amp;)</slot>
+    <slot>boton_filtrar()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
