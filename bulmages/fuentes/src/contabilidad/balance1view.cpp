@@ -520,15 +520,17 @@ void balance1view::contextmenu( QListViewItem * item, const QPoint & poin, int c
    QPopupMenu *popup;
    int opcion;
    popup = new QPopupMenu;
-        popup->insertItem("Ver Diario (Este dia)",101);
+        popup->insertItem(tr("Ver Diario (Este dia)"),101);
 //       popup->insertItem("Ver Diario (Esta semana)",102);
-        popup->insertItem("Ver Diario (Este mes)",103);
-        popup->insertItem("Ver Diario (Este año)",104);
+        popup->insertItem(tr("Ver Diario (Este mes)"),103);
+        popup->insertItem(tr("Ver Diario (Este año)"),104);
 		  popup->insertSeparator();
-        popup->insertItem("Ver Extracto (Este dia)",111);
+        popup->insertItem(tr("Ver Extracto (Este dia)"),111);
 //        popup->insertItem("Ver Extracto (Esta semana)",112);
-        popup->insertItem("Ver Extracto (Este mes)",113);
-        popup->insertItem("Ver Extracto (Este año)",114);
+        popup->insertItem(tr("Ver Extracto (Este mes)"),113);
+        popup->insertItem(tr("Ver Extracto (Este año)"),114);
+        
+        
    opcion = popup->exec(poin);
 		  switch(opcion) {
 		  		case 101:

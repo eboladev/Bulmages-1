@@ -430,6 +430,14 @@ CONFIG += debug \
 TARGET = ../bin/bulmages 
 INCLUDEPATH = ../src \
               ../src \
+              compras \
+              comun \
+              contabilidad \
+              estadisticas \
+              images \
+              nominas \
+              produccion \
+              ventas \
               /usr/include/qt 
 LIBS += -lqt-mt \
         -lpq \
