@@ -8,42 +8,39 @@ CONFIG += release \
 warn_on \
 thread \
 qt
-
 LIBS += ../../bulmalib/libbulmalib.a \
-	-lpq
-	
-
+-lpq
 INCLUDEPATH += ../../bulmalib
-
 TARGET = ../bin/bulmafact
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
-           providerslist.cpp 
+           providerslist.cpp \
+           provedit.cpp 
 HEADERS += bulmafact.h \
            company.h \
-           providerslist.h 
-IDLS += providerslistbase.ui 
+           providerslist.h \
+           provedit.h 
+IDLS += providerslistbase.ui \
+        provedit_base.ui 
 FORMS += bulmafactbase.ui \
-         providerslistbase.ui 
-
-
+         providerslistbase.ui \
+         provedit_base.ui 
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
   bulmages_install_script.path = .
   bulmages_install_script.extra = echo; echo "**************************"; echo Para Instalar BULMAGES ejecute el script de instalaci exists(/usr/include/postgresql/libpq-fe.h){
-  DEFINES += DISTRO_DEBIAN
+    DEFINES += DISTRO_DEBIAN
+  }
+  exists(/usr/include/pgsql/libpq-fe.h){
+    DEFINES += DISTRO_RED_HAT
+  }
+  exists(/usr/include/postgresql/pgsql/libpq-fe.h){
+    DEFINES += DISTRO_GENTOO
+  }
+  exists(/usr/include/no_se_que/pgsql/libpq-fe.h){
+    DEFINES += DISTRO_NO_SE_QUE
+  }
 }
-	exists(/usr/include/pgsql/libpq-fe.h){
-	DEFINES += DISTRO_RED_HAT
-}
-	exists(/usr/include/postgresql/pgsql/libpq-fe.h){
-	DEFINES += DISTRO_GENTOO
-}
-	exists(/usr/include/no_se_que/pgsql/libpq-fe.h){
-	DEFINES += DISTRO_NO_SE_QUE
-    }
-}
-					

@@ -53,6 +53,28 @@ bulmafact::~bulmafact()
 
 
 
+
+void bulmafact::listproviders()
+{
+   m_company.listproviders();
+}
+
+
+void bulmafact::proveedores() {
+   fprintf(stderr,"provideraction activado \n");
+   m_company.provideraction();
+}// end provideraction
+
+void bulmafact::caja() {
+   fprintf(stderr,"caja\n");
+}// end caja
+
+
+void bulmafact::clientes() {
+   fprintf(stderr,"clientes\n");
+}// end clientes
+
+
 void bulmafact::about()
 {
     QMessageBox::about( this, tr("Qt Application Example"),
@@ -66,7 +88,3 @@ void bulmafact::aboutQt()
     QMessageBox::aboutQt( this, tr("Qt Application Example") );
 }
 
-void bulmafact::listproviders()
-{
-   m_company.listproviders();
-}

@@ -22,7 +22,7 @@
 
 #include <qworkspace.h>
 #include "postgresiface2.h"
-
+#include <qobject.h>
 /**
 Company class gives the application something like a standard interface to access each company in the same way.
 @author Tomeu Borrás
@@ -36,6 +36,7 @@ public:
    ~company();
    void listproviders();
    void setWorkspace(QWidget *qw) {m_pWorkspace=qw;}
+   void provideraction();
 };
 
 #endif

@@ -23,6 +23,8 @@
 #include "stdio.h"
 #include <qnamespace.h>
 #include "providerslist.h"
+#include "provedit.h"
+#include "qobject.h"
 
 company::company(){
 //       inicializa(confpr->valor(CONF_METABASE).c_str());
@@ -35,8 +37,13 @@ company::~company(){
 
 
 void company::listproviders () {
-   providerslist *m_provlist = new providerslist(this, m_pWorkspace,"Hola mundo.");
+   providerslist *m_provlist = new providerslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
    m_provlist->show();
 }
 
+void company::provideraction() {
+   provedit *prov = new provedit(0,theApp->translate("Edicion de Proveedores", "company"));
+   prov->exec();
+   delete prov;
+}// end provideraction
 

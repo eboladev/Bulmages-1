@@ -21,11 +21,13 @@ public:
     bulmafact();
     ~bulmafact();
     
-private slots:
-
+public slots:
+    virtual void listproviders();
+    virtual void proveedores();
+    virtual void caja();
+    virtual void clientes();
     void about();
     void aboutQt();
-    void listproviders();
 /*
 private:
 
