@@ -28,21 +28,25 @@
 
 #include "postgresiface2.h"
 
-/***@author Tomeu Borrás Riera */
+class empresa;
 
+/**
+  * Trata el formulario de impresión del registro de IVA
+  * y genera los listados pertinentes
+  */
 class regivaprintview : public regivaprintdlg  {
-   Q_OBJECT
+    Q_OBJECT
 public:
-   char *fichero;
-   postgresiface2 *conexionbase;
-public: 
-	regivaprintview(QWidget *parent=0, const char *name=0);
-	~regivaprintview();
-   int inicializa(postgresiface2 *);
-   void inicializa1(QString, QString);
-   void presentar(char *tipus);
+    char *fichero;
+    postgresiface2 *conexionbase;
+    empresa *empresaactual;
+public:
+    regivaprintview(empresa *, QWidget *parent=0, const char *name=0);
+    ~regivaprintview();
+    void inicializa1(QString, QString);
+    void presentar(char *tipus);
 public slots:
-   virtual void accept();
+    virtual void accept();
 };
 
 #endif

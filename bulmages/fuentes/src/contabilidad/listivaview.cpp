@@ -105,8 +105,7 @@ void listivaview::doble_click_repercutido(int a, int , int , const QPoint &) {
 
 
 void listivaview::boton_print() {
-   regivaprintview *print = new regivaprintview(0,0);
-   print->inicializa(conexionbase);
+   regivaprintview *print = new regivaprintview(empresaactual,0,0);
    print->inicializa1(finicial->text(), ffinal->text());
    print->exec();
    delete print;
@@ -122,10 +121,10 @@ void listivaview::inicializa( intapunts3view *inta) {
     introapunts = inta;
     QString query;
     QString sbaseimp, siva;
-    float  fbaseimp, fiva;
+//    float  fbaseimp, fiva;
     QString   cbaseimp, civa, ctotal;    
-    double tbaseimps=0, tivas=0;
-    double tbaseimpr=0, tivar=0;
+    long int tbaseimps=0, tivas=0;
+    long int tbaseimpr=0, tivar=0;
     
     // Inicializamos las tablas de RESUMEN
     // Y empezamos a trabajar con las tablas de resumen.
@@ -140,19 +139,21 @@ void listivaview::inicializa( intapunts3view *inta) {
     m_listRepercutido->horizontalHeader()->setLabel( RES_BASEREPERCUTIDO, tr("BASESOPORTADO"));    
 
     
-    QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '472%'";
+    QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva  WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"' ) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '472%'";
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(SQLQuery, "elcursor");
     conexionbase->commit();
     m_listSoportado->setNumRows(cur->numregistros());
     int j =0;
     while (! cur->eof() ) {
-       double baseiva = cur->valor("tbaseiva").toFloat();
-       double porcent = cur->valor("porcentajetipoiva").toFloat();
-       double baseimp = baseiva * 100 / porcent;
+       long int baseiva = cur->valor("tbaseiva").replace(".","").toInt();
+       long int porcent = cur->valor("porcentajetipoiva").replace(".","").toInt();
+       long int baseimp = baseiva *10000 / porcent;
+       QString numberstr = QString::number(baseimp);
+       numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2);
        m_listSoportado->setText(j, RES_NOMBRETIPOIVASOPORTADO,cur->valor("nombretipoiva"));
        m_listSoportado->setText(j, RES_IVASOPORTADO,cur->valor("tbaseiva"));
-       m_listSoportado->setText(j, RES_BASESOPORTADO, QString::number(baseimp));
+       m_listSoportado->setText(j, RES_BASESOPORTADO, numberstr);
        tivas+= baseiva;
        tbaseimps+=baseimp;
        cur->siguienteregistro();
@@ -160,19 +161,21 @@ void listivaview::inicializa( intapunts3view *inta) {
     }// end while
     delete cur;
     
-    SQLQuery = "SELECT * FROM cuenta, tipoiva  LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '477%'";
+    SQLQuery = "SELECT * FROM cuenta, tipoiva  LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"' ) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '477%'";
     conexionbase->begin();
     cur = conexionbase->cargacursor(SQLQuery, "elcursor");
     conexionbase->commit();
     m_listRepercutido->setNumRows(cur->numregistros());
     j =0;
     while (! cur->eof() ) {
-       double baseiva = cur->valor("tbaseiva").toFloat();
-       double porcent = cur->valor("porcentajetipoiva").toFloat();
-       double baseimp = baseiva * 100 / porcent;    
+       long int baseiva = cur->valor("tbaseiva").replace(".","").toInt();
+       long int porcent = cur->valor("porcentajetipoiva").replace(".","").toInt();
+       long int baseimp = baseiva*10000 / porcent;
+       QString numberstr = QString::number(baseimp);
+       numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2); 
        m_listRepercutido->setText(j, RES_NOMBRETIPOIVAREPERCUTIDO,cur->valor("nombretipoiva"));
        m_listRepercutido->setText(j, RES_IVAREPERCUTIDO,cur->valor("tbaseiva"));
-       m_listRepercutido->setText(j, RES_BASEREPERCUTIDO, QString::number(baseimp));   
+       m_listRepercutido->setText(j, RES_BASEREPERCUTIDO, numberstr);   
        tivar+= baseiva;
        tbaseimpr+=baseimp;           
        cur->siguienteregistro();
@@ -180,10 +183,19 @@ void listivaview::inicializa( intapunts3view *inta) {
     }// end while    
     delete cur;
 
-   m_ivas->setText(QString::number(tivas));
-   m_ivar->setText(QString::number(tivar));
-   m_baseimps->setText(QString::number(tbaseimps));
-   m_baseimpr->setText(QString::number(tbaseimpr));
+    
+   QString numberstr = QString::number(tivas);
+   numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2); 
+   m_ivas->setText(numberstr);
+   numberstr = QString::number(tivar);
+   numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2);    
+   m_ivar->setText(numberstr);
+   numberstr = QString::number(tbaseimps);
+   numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2);    
+   m_baseimps->setText(numberstr);
+   numberstr = QString::number(tbaseimpr);
+   numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2); 
+   m_baseimpr->setText(numberstr);
     
     // Vamos a cargar la lista de tablasoportado (COMPRAS)
     tablasoportado->setNumCols(13);
@@ -229,17 +241,19 @@ void listivaview::inicializa( intapunts3view *inta) {
       delete cursorcontra;
       tablasoportado->setText(i,S_COL_FECHA,cursorreg->valor("fecha").mid(0,10));
       tablasoportado->setText(i,S_COL_CUENTA_IVA,cursorreg->valor("codigo"));
-      if (tablasoportado->text(i,S_COL_CUENTA_IVA).left(3)!="472") tablasoportado->setText(i,S_COL_CUENTA_IVA,tr("Exento"));
-      sbaseimp = cursorreg->valor("baseimp");
-      fbaseimp = atof(sbaseimp.ascii());
-      cbaseimp.sprintf("%2.2f",fbaseimp);
-      tablasoportado->setText(i,S_COL_BASEIMP,cbaseimp);
-      siva = cursorreg->valor("iva");
-      fiva = atof(siva.ascii());
-      civa.sprintf("%2.0f",fiva);
-      tablasoportado->setText(i,S_COL_PORCENT_IVA,civa);
-      ctotal.sprintf("%2.2f",fbaseimp*fiva/100);
-      tablasoportado->setText(i,S_COL_TOTAL,ctotal);
+      if (tablasoportado->text(i,S_COL_CUENTA_IVA).left(3)!="472")
+      		tablasoportado->setText(i,S_COL_CUENTA_IVA,tr("Exento"));
+
+      
+      tablasoportado->setText(i,S_COL_BASEIMP,cursorreg->valor("baseimp"));
+      tablasoportado->setText(i,S_COL_PORCENT_IVA,cursorreg->valor("iva"));
+      
+      long int fbaseimp = cursorreg->valor("baseimp").replace(".","").toInt();
+      long int fiva = cursorreg->valor("iva").replace(".","").toInt();
+      long int total = fbaseimp * fiva /100;
+      QString numberstr = QString::number(total);
+      numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2);       
+      tablasoportado->setText(i,S_COL_TOTAL,numberstr);
       tablasoportado->setText(i,S_COL_FACTURA,cursorreg->valor("factura"));
       tablasoportado->setText(i,S_COL_ORDEN,cursorreg->valor("numorden"));
       tablasoportado->setText(i,S_COL_CIF,cursorreg->valor("cif"));
@@ -294,17 +308,19 @@ void listivaview::inicializa( intapunts3view *inta) {
       tablarepercutido->setText(i,R_COL_FECHA,cursorreg->valor("fecha").mid(0,10));
       tablarepercutido->setText(i,R_COL_CUENTA_IVA,cursorreg->valor("codigo"));
       if (tablarepercutido->text(i,R_COL_CUENTA_IVA).left(3)!="477") tablarepercutido->setText(i,R_COL_CUENTA_IVA,tr("Exento"));
-      sbaseimp = cursorreg->valor("baseimp");
-      fbaseimp = atof(sbaseimp.ascii());
-      cbaseimp.sprintf("%2.2f",fbaseimp);
-      tablarepercutido->setText(i,R_COL_BASEIMP,cbaseimp);
-      siva = cursorreg->valor("iva");
-      tablarepercutido->setText(i,R_COL_PORCENT_IVA,siva);
-      fiva = atof(siva.ascii());
-      civa.sprintf("%2.0f",fiva);
-      tablarepercutido->setText(i,3,civa);
-      ctotal.sprintf("%2.2f",fbaseimp*fiva/100);
-      tablarepercutido->setText(i,R_COL_TOTAL,ctotal);
+
+      tablarepercutido->setText(i,R_COL_BASEIMP,cursorreg->valor("baseimp"));
+      tablarepercutido->setText(i,R_COL_PORCENT_IVA,cursorreg->valor("iva"));
+//      tablarepercutido->setText(i,3,civa);
+
+   
+      long int fbaseimp = cursorreg->valor("baseimp").replace(".","").toInt();
+      long int fiva = cursorreg->valor("iva").replace(".","").toInt();
+      long int total = fbaseimp * fiva /100;
+      QString numberstr = QString::number(total);
+      numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2);     
+      
+      tablarepercutido->setText(i,R_COL_TOTAL,numberstr);
       tablarepercutido->setText(i,R_COL_FACTURA,cursorreg->valor("factura"));
       tablarepercutido->setText(i,R_COL_CIF,cursorreg->valor("cif"));
       tablarepercutido->setText(i,R_COL_NUMASIENTO,cursorreg->valor("ordenasiento"));
@@ -313,29 +329,7 @@ void listivaview::inicializa( intapunts3view *inta) {
       i++;
       cursorreg->siguienteregistro();
     }// end While
-    delete cursorreg;  
-/*        
-//   Para que el modelo de iva en PDF funcione hay que hacer estos cambios
-
-    modelo->ivas4=ivas4;
-    modelo->ivas7=ivas7;
-    modelo->ivas16=ivas16;
-    
-    modelo->ivar4=ivar4;
-    modelo->ivar7=ivar7;
-    modelo->ivar16=ivar16;
-    
-    modelo->bases0=bases0;
-    modelo->bases4=bases4;
-    modelo->bases7=bases7;
-    modelo->bases16=bases16;
-    
-    modelo->baser0=baser0;
-    modelo->baser4=baser4;
-    modelo->baser7=baser7;
-    modelo->baser16=baser16;
-*/
-    
+    delete cursorreg;      
 }// end inicializa
 
 void listivaview::menu_contextual(int row, int , const QPoint &poin) {
