@@ -1416,8 +1416,8 @@ void intapunts3view::cambiadasubcuenta(int row) {
         conexionbase->commit();
         int num = cursorcta->numregistros();
         if (num >0) {
-            tapunts->setText(row,COL_SUBCUENTA,cursorcta->valor(1));
-            tapunts->setText(row,COL_NOMCUENTA,cursorcta->valor(2));
+            tapunts->setText(row,COL_SUBCUENTA,cursorcta->valor("codigo"));
+            tapunts->setText(row,COL_NOMCUENTA,cursorcta->valor("descripcion"));
             tapunts->setText(row,COL_IDCUENTA,cursorcta->valor("idcuenta"));
         } else {
             QMessageBox::warning( 0, tr("No existe cuenta"), tr("No existe una cuenta con el codigo proporcionado, desea crear una?."), QMessageBox::Yes, QMessageBox::No);

@@ -45,6 +45,8 @@ public:
   int inicializa(int);
   void inicializa1(int );
   void guardaprevpago(int );
+  void guardaprevpago();
+  void cambiadasubcuenta(int);
 
 public slots:
   virtual void accept();
