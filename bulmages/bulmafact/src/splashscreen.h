@@ -14,8 +14,6 @@
 #include <qpixmap.h>
 #include <stdlib.h>
 #include <qtimer.h>
-
-
 #include <qtextbrowser.h>
 
 class Splash : public QDialog

@@ -20,19 +20,22 @@
 #ifndef PROVEDIT_H
 #define PROVEDIT_H
 
-#include <provedit_base.h>
+#include "provedit_base.h"
 
-/**
-@author J. M. Torres Rigo
-*/
-class provedit : public provedit_base
-{
+/** @author J. M. Torres Rigo */
+class company;
+
+
+class provedit : public provedit_base {
 Q_OBJECT
+private:
+   company *companyact;
+   QString idprovider;
 public:
-    provedit(QWidget *parent = 0, const char *name = 0);
-
+    provedit(company *emp, QWidget *parent = 0, const char *name = 0);
     ~provedit();
-
+public:
+   void chargeprovider(QString);
 };
 
 #endif

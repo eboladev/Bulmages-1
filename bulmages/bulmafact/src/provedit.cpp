@@ -18,15 +18,35 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include "provedit.h"
+#include "company.h"
+#include <qlineedit.h>
 
-provedit::provedit(QWidget *parent, const char *name)
- : provedit_base(parent, name)
-{
-}
+provedit::provedit(company *comp, QWidget *parent, const char *name)
+ : provedit_base(parent, name) {
+   companyact = comp;
+   idprovider = "";
+}// end provedit
 
 
-provedit::~provedit()
-{
-}
+provedit::~provedit() {
+}// end ~provedit
+
+
+/*********************************************************************
+* Esta función carga un proveedor de la base de datos y lo presenta. *
+**********************************************************************/
+void provedit::chargeprovider(QString idprov) {
+   QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+idprov;
+   companyact->begin();
+   cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
+   companyact->commit();
+   if (!cur->eof()) {
+      m_cifproveedor->setText(cur->valor("cifproveedor"));
+      m_idproveedor->setText(cur->valor("idproveedor"));
+      m_nomproveedor->setText(cur->valor("nomproveedor"));
+      m_nomaltproveedor->setText(cur->valor("nomaltproveedor"));
+   }// end if
+   delete cur;
+}// end chargeprovider
 
 

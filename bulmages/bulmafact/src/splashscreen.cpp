@@ -63,6 +63,11 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   QTimer *timer1 = new QTimer(this);
   connect( timer1, SIGNAL(timeout()), SLOT(paint()) );
   timer1->start( 1750 ); //timer1->start( 1750);
+  
+  connect(this, SIGNAL(clicked()),this,  SLOT(close()) );
+  connect(this, SIGNAL(returnPressed()),this,  SLOT(close()) );
+//  connect((QObject *) &image0, SIGNAL(clicked(int, int)),this, SLOT(close()) );
+  
   exec();
   delete l1;
 }// end splash
