@@ -1,3 +1,5 @@
+DROP FUNCTION bcontrapartida(integer);
+
 CREATE FUNCTION bcontrapartida(integer) RETURNS integer
 AS '
 DECLARE
@@ -55,9 +57,7 @@ BEGIN
 	    descuadre := descuadre - cont.haber;
 	    -- Si es el descuadre inicializamos las variables.
             
-            
-            
-	    IF (descuadre < 0.001) THEN
+	    IF (descuadre*descuadre < 0.001) THEN
 		IF (salidadebe = TRUE) THEN
 		    RETURN apmaxdebe;
 		END IF;
@@ -78,6 +78,8 @@ BEGIN
 END;
 ' LANGUAGE plpgsql;
 
+
+DROP FUNCTION bcontrapartidaborr(integer);
 
 CREATE FUNCTION bcontrapartidaborr(integer) RETURNS integer
 AS '
@@ -139,9 +141,9 @@ BEGIN
 	    descuadre := descuadre + cont.debe;
 	    descuadre := descuadre - cont.haber;
 	    -- Si es el descuadre inicializamos las variables.
-           RAISE NOTICE ''Ciclo de iborrador %, debe %, haber %, descuadre %'', cont.idborrador, cont.debe, cont.haber, descuadre;            
-	    IF (descuadre < 0.001) THEN
-               RAISE NOTICE '' El descuadre es igual a cero'';
+           RAISE NOTICE ''Ciclo de iborrador %, debe %, haber %, descuadre %, apmaxdebe %, apmaxhaber %'', cont.idborrador, cont.debe, cont.haber, descuadre, apmaxdebe, apmaxhaber;            
+	    IF (descuadre*descuadre < 0.001) THEN
+               RAISE NOTICE '' El descuadre es igual a cero %'', descuadre;
 		IF (salidadebe) THEN
                    RAISE NOTICE '' Salida debe %'', apmaxdebe;
 		    RETURN apmaxdebe;
@@ -155,6 +157,7 @@ BEGIN
 		apmaxdebe:=0;
 		apmaxhaber := 0;
 	    END IF;
+	    RAISE NOTICE ''------- FIN TURNO -----------------'';
 	END LOOP;
     ELSE
 	SELECT INTO cont * FROM borrador WHERE idasiento = apt.idasiento AND idcuenta = apt.contrapartida;

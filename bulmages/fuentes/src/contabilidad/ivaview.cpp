@@ -164,7 +164,9 @@ void ivaview::inicializa1(int idapunte1) {
         
         // La funcion bcontrapartidaborr (definida en la base de datos) busca contrapartidas de forma más compleja a como
         // se propuso en un principio. Ahora en un mismo apunte con multiples entradas se encuentra la contrapartida mediante proximidades en el mismo cuadre.
-        query.sprintf("SELECT * FROM borrador,cuenta WHERE borrador.idcuenta = cuenta.idcuenta AND borrador.idborrador = bcontrapartidaborr(%d)",idborrador);
+	// Atención a este SELECT que tiene tela,
+	// Si se hace un SELECT * FROM ..... WHERE borrador.idborrador = bcontrapartidaborr(%d) el rendimiento cae en picado.
+        query.sprintf("SELECT * FROM borrador,cuenta WHERE borrador.idcuenta = cuenta.idcuenta AND borrador.idborrador IN  (SELECT bcontrapartidaborr(%d))",idborrador);
         fprintf(stderr,"%s\n",query.ascii());
         conexionbase->begin();
         cursor2 *cursorcontrapartida = conexionbase->cargacursor(query,"contrapartida");
