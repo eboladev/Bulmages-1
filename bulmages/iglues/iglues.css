@@ -27,3 +27,6 @@ table.news {width:100%;}
 table.news tr.head td {background-color:#81afc8;}
 table.news tr td {background-color:#ffffff; color:#000000}
 
+table.link {width:100%;}
+table.link tr.head td {background-color:#81afc8;}
+table.link tr td {background-color:#ffffff; color:#000000}

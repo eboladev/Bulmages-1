@@ -41,6 +41,7 @@ echo "<h1>$title</h1>";
 	<div id="navbar_title"><div style="position:relative; top:.8em;">&nbsp;<strong>Contenidos:</strong></div></div>
 	<?php include "navbar.inc"; ?>
 	</div>
+	
 
 
 
