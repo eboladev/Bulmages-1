@@ -413,6 +413,7 @@ images \
 nominas \
 produccion \
 ventas \
+formularios \
 /usr/include/qt \
 ../../bulmalib
 LIBS += -lqt-mt \
