@@ -5,7 +5,6 @@
     copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
-
 /***************************************************************************
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,6 +18,8 @@
 #define RESMENSUALVIEW_H
 
 #include <qwidget.h>
+#include "postgresiface2.h"
+
 #ifdef ESTADISTICAS
 #include "resmensualdlg.h"
 #endif
@@ -27,7 +28,11 @@
 #include "resmensualdlg1.h"
 #endif
 
-#include "postgresiface2.h"
+#ifdef DISLIN
+#include "resmensualdlg1.h"
+#endif
+
+
 
 /***@author Tomeu Borrás Riera   */
 

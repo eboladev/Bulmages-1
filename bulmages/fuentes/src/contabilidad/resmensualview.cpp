@@ -22,10 +22,15 @@
 #endif
 
 #ifdef GDCHART
-#include "gdcchart/gdc.h"
-#include "gdcchart/gdchart.h"
+//#include "gdc.h"
+//#include "gdchart.h"
 #include "estadisticasview.h"
 #include <qlabel.h>
+#endif
+
+#ifdef DISLIN
+#include <stdio.h>
+#include "dislin.h"
 #endif
 
 #include "qdatetime.h"
@@ -195,7 +200,12 @@ void resmensualview::buscampatrimonial3() {
 }// end buscampatrimonial1
 
 void resmensualview::presentarpie() {
-#ifdef GDCHART
+#ifdef GDCHART 
+      char *label[1000];
+      float p[1000];
+      int j=0;
+#endif
+#ifdef DISLIN 
       char *label[1000];
       float p[1000];
       int j=0;
@@ -288,14 +298,27 @@ void resmensualview::presentarpie() {
       for(int i=0;i<j;i++) delete label[i];
       delete imag;
 #endif
-        
+
+#ifdef DISLIN
+generargrafico(p, label);
+#endif    
       }// end for    
       
 
 }// end presentarpie
 
+
+
+
+#ifdef ESTADISTICAS
+// Si se compila con las librerias de estadisticas se supone que no se va a llamar a esta función, por tanto no hace nada.
 void resmensualview::generargrafico(float *h1, char**t2) {
+}// end resmensualview
+#endif
+
 #ifdef GDCHART
+// Esta funcion es si se compila con GDCHART
+void resmensualview::generargrafico(float *h1, char**t2) {
 fprintf(stderr,"Principio de generargrafico\n");
 	/* set some sample data points */
 	float	h[12]  = {	17.8,  17.1,  17.3,  0,  17.2,  17.1,
@@ -324,7 +347,7 @@ fprintf(stderr,"Principio de generargrafico\n");
 	anno.color = 0x00FF00;
 	strncpy( anno.note, "Did Not\nTrade", MAX_NOTE_LEN );	/* don't exceed MAX_NOTE_LEN */
 	anno.point = 3;											/* first is 0 */
-	GDC_annotation_font = GDC_TINY;
+//	GDC_annotation_font = GDC_TINY;
 	GDC_annotation = &anno;									/* set annote option */
 
 	GDC_HLC_style = (GDC_HLC_STYLE_T) (GDC_HLC_I_CAP | GDC_HLC_CLOSE_CONNECTED);
@@ -343,7 +366,7 @@ fprintf(stderr,"Principio de generargrafico\n");
 
 //	GDC_SetColor  = setcolor;								/* see README */
 	GDC_PlotColor = 0xFFFFFF;
-	GDC_grid = FALSE;
+//	GDC_grid = FALSE;
 
 //	GDC_xtitle="fy.1998";
 
@@ -366,5 +389,60 @@ fprintf(stderr,"He terminado de ejecutar out_graph\n");
                            
 	fclose( outgif1 );
 fprintf(stderr,"Fin de generargrafico|n");
-#endif
+
 }// end generargrafico
+#endif
+
+
+#ifdef DISLIN
+// Si se compila con las librerias de DISLIN se ejecutará esta versión.
+void resmensualview::generargrafico(float *h1, char**t2) {
+char cbuf[80];
+  float xray[5]  = {2.,4.,6.,8.,10.},
+        y1ray[5] = {0.,0.,0.,0.,0.},
+        y2ray[5] = {3.2,1.5,2.0,1.0,3.0};
+
+  int ic1ray[5]  = {50,150,100,200,175},
+      ic2ray[5]  = {50,150,100,200,175};
+
+      
+  fprintf(stderr,"resmensualview::generargrafico DISLIN version. \n");
+      
+    metafl("XWIN");
+  setpag("da4p");
+  disini();
+  pagera();
+  hwfont();
+
+  titlin("3-D Bar Graph / 3-D Pie Chart", 2);
+  htitle(40);
+
+  shdpat(16);
+  axslen(1500,1000);
+  axspos(300,1400);
+
+  barwth(0.5);
+  bartyp("3dvert");
+  labels("second","bars");
+  labpos("outside","bars");
+  labclr(255,"bars");
+  graf(0.,12.,0.,2.,0.,5.,0.,1.);
+  title();
+  color("red");
+  bars(xray,y1ray,y2ray,5);
+  endgrf();
+
+  shdpat(16);
+  labels("data","pie");
+  labclr(255,"pie");
+  chnpie("none");
+  pieclr(ic1ray,ic2ray,5);
+  pietyp("3d");
+  axspos(300,2700);
+  piegrf(cbuf,0,y2ray,5);       
+  disfin();
+}// end resmensualview
+#endif
+
+
+

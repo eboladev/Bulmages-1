@@ -458,6 +458,44 @@ exists (reports) {
    HEADERS += rtkinputbges.h
 }
 
+
+exists (gdchart) {
+ LIBS += ../src/gdchart/libgdchart.a \
+ -lgd
+  
+  INCLUDEPATH += ../src/gdchart
+  contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui
+  contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target
+  contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui
+  contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target
+
+  DEFINES += GDCHART
+  IDLS += contabilidad/estadisticasdlg1.ui \
+  contabilidad/resmensualdlg1.ui
+  
+  FORMS += contabilidad/estadisticasdlg1.ui \
+  contabilidad/resmensualdlg1.ui
+}
+
+
+exists (dislin) {
+ LIBS += ../src/dislin/dislnc-8.2.a
+  
+  INCLUDEPATH += ../src/dislin
+  contabilidad/estadisticasdlg1.ui.target = contabilidad/estadisticasdlg1.ui
+  contabilidad/estadisticasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg1.ui.target
+  contabilidad/resmensualdlg1.ui.target = contabilidad/resmensualdlg1.ui
+  contabilidad/resmensualdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg1.ui.target
+
+  DEFINES += DISLIN
+  IDLS += contabilidad/estadisticasdlg1.ui \
+  contabilidad/resmensualdlg1.ui
+  
+  FORMS += contabilidad/estadisticasdlg1.ui \
+  contabilidad/resmensualdlg1.ui
+}
+
+
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

@@ -19,8 +19,9 @@
 
 #ifdef GDCHART
 //#include "gdcchart/gdc.h"
-#include "gdcchart/gdcpie.h"
-#include "gdcchart/gdchart.h"
+#include "gdc.h"
+#include "gdcpie.h"
+#include <gdchart.h>
 #endif
 
 int estadisticasview::inicializa(postgresiface2 *conexion) {
@@ -174,12 +175,27 @@ void estadisticasview::presentar() {
 
 
 #ifdef GDCHART
-void estadisticasview::sacapie(float *p,char **lbl, int numslices) {
-for (int i=0; i< numslices; i++) 
-   fprintf(stderr,"%s = %d\n", lbl[i],p[i]);
+void estadisticasview::sacapie(float *p1,char **lbl1, int numslices1) {
+
 fprintf(stderr,"Hemos terminado de compilar   \n");
 	/* labels */
 	FILE		*fp = fopen( "/tmp/pie.gif", "wb" );
+	/* labels */
+	char		*lbl[] = { "CPQ\n(DEC)",
+						   "HP",
+						   "SCO",
+						   "IBM",
+						   "SGI",
+						   "SUN\nSPARC",
+						   "other" }; 
+	/* values to chart */
+	float		 p[] = { 12.5,
+						 20.1,
+						 2.0,
+						 22.0,
+						 5.0,
+						 18.0,
+						 13.0 };
 
 	/* set which slices to explode, and by how much */
 	int				expl[] = { 0, 0, 0, 0, 0, 20, 0 };
@@ -193,33 +209,35 @@ fprintf(stderr,"Hemos terminado de compilar   \n");
 	/* set options  */
 	/* a lot of options are set here for illustration */
 	/* none need be - see gdcpie.h for defaults */
-	GDCPIE_title = "Balance Gráfico";
+	/* GDCPIE_title = "Sample\nPIE"; */
 	GDCPIE_label_line = TRUE;
 	GDCPIE_label_dist = 15;				/* dist. labels to slice edge */
 										/* can be negative */
 	GDCPIE_LineColor = 0x000000L;
 	GDCPIE_label_size = GDC_SMALL;
-/*	GDCPIE_3d_depth  = 25;	*/
-/*	GDCPIE_3d_angle  = 45;				   0 - 359 */
+	GDCPIE_3d_depth  = 25;
+	GDCPIE_3d_angle  = 180;				/* 0 - 359 */
+	GDCPIE_perspective = 70;				/* 0 - 99 */
 	GDCPIE_explode   = expl;			/* default: NULL - no explosion */
 	GDCPIE_Color     = clr;
 	GDCPIE_BGColor   = 0xFFFFFFL;
-	GDCPIE_EdgeColor = 0x000000L;		/* default is GDCPIE_NOCOLOR */
+/*	GDCPIE_EdgeColor = 0x000000L;		   default is GDCPIE_NOCOLOR */ 
 										/* for no edging */
 	GDCPIE_missing   = missing;			/* default: NULL - none missing */
 
 										/* add percentage to slice label */
 										/* below the slice label */
-	GDCPIE_percent_labels = GDCPIE_PCT_RIGHT;
-
+	GDCPIE_percent_labels = GDCPIE_PCT_BELOW;
+	GDC_image_type     = GDC_PNG;
 	/* call the lib */
-	pie_gif( 480,			/* width */
-			 360,			/* height */
-			 fp,			/* open file pointer */
-			 GDC_3DPIE,		/* or GDC_2DPIE */
-			 numslices,				/* number of slices */
-			 lbl,			/* slice labels (unlike out_gif(), can be NULL */
-			 p );			/* data array */
+	GDC_out_pie( 300,			/* width */
+				 200,			/* height */
+				 fp,			/* open file pointer */
+				 GDC_3DPIE,		/* or GDC_2DPIE */
+				 7,				/* number of slices */
+				 NULL,			/* can be NULL */
+				 p );			/* data array */
+
 fprintf(stderr,"Hemos terminado la imagen\n");
 	fclose( fp );
 //	exit( 0 );

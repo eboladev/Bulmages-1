@@ -27,7 +27,13 @@
 #include "estadisticas/tolinechart.h"
 #endif
 
+#include "postgresiface2.h"
+
 #ifdef GDCHART
+#include "estadisticasdlg1.h"
+#endif
+
+#ifdef DISLIN
 #include "estadisticasdlg1.h"
 #endif
 
