@@ -258,6 +258,7 @@ cp -r formularios /usr/share/bulmages
 cp -r ainteligentes /usr/share/bulmages
 cp -r balances /usr/share/bulmages
 cp -r kugar /usr/share/bulmages
+cp -r openreports /usr/share/bulmages
 
    
    info "Creando bases de datos del sistema y empresas de ejemplo. \n"

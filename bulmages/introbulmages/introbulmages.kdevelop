@@ -78,7 +78,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>src</activedir>
+      <activedir></activedir>
     </general>
     <subclassing/>
     <make>

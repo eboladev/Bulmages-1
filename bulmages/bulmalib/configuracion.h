@@ -81,6 +81,7 @@ using std::string;
 
 #define CONF_PROGDATA            320
 
+#define CONF_DIR_OPENREPORTS		330
 // Los siguientes campos no entran en el archivo de configuración pq
 // Son utilizados por la propia aplicación.
 #define CONF_PRIVILEGIOS_USUARIO    420
@@ -95,12 +96,12 @@ using std::string;
 #define CONF_PASSWORD_USER          423
 
 
-/// CONF_NUM_AUT_*		Determina si se utilizarán numeradores automaticos para presupuestos, albaranes y facturas  Inicialmente vale ""
+// CONF_NUM_AUT_*		Determina si se utilizarán numeradores automaticos para presupuestos, albaranes y facturas  Inicialmente vale ""
 #define CONF_NUM_AUT_PRESUP 500
 #define CONF_NUM_AUT_ALBARAN 501
 #define CONF_NUM_AUT_FACTURA 502
 
-/// CONF_MOSTRAR_ALMACEN		Determina si se visualizará el almacén en los listados y si aparecera inhibido en las entradas de datos  Inicialmente vale ""
+// CONF_MOSTRAR_ALMACEN		Determina si se visualizará el almacén en los listados y si aparecera inhibido en las entradas de datos  Inicialmente vale ""
 #define CONF_MOSTRAR_ALMACEN	510
 
 
