@@ -819,6 +819,18 @@
         <receiver>ClientDelivNoteBase</receiver>
         <slot>s_removeClientDelivNote()</slot>
     </connection>
+    <connection>
+        <sender>m_list</sender>
+        <signal>clicked(int,int,int,const QPoint&amp;)</signal>
+        <receiver>ClientDelivNoteBase</receiver>
+        <slot>s_contextMenu(int,int,int,const QPoint&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>m_listDiscounts</sender>
+        <signal>clicked(int,int,int,const QPoint&amp;)</signal>
+        <receiver>ClientDelivNoteBase</receiver>
+        <slot>s_contextMenuDiscount(int,int,int,const QPoint&amp;)</slot>
+    </connection>
 </connections>
 <slots>
     <slot>s_searchClient()</slot>
@@ -834,6 +846,8 @@
     <slot>s_valueClientDelivNoteDiscountLineChanged(int, int)</slot>
     <slot>s_saveClientDelivNote()</slot>
     <slot>s_removeClientDelivNote()</slot>
+    <slot>s_contextMenu(int, int, int, const QPoint &amp;)</slot>
+    <slot>s_contextMenuDiscount(int, int, int, const QPoint &amp;)</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

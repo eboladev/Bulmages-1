@@ -88,6 +88,7 @@ CREATE TABLE lalbaran (
 #include <qwidget.h>
 #include <qobjectlist.h>
 #include <qcombobox.h>
+#include <qpopupmenu.h>
 
 #include "funcaux.h"
 //#include "postgresiface2.h"
@@ -495,6 +496,42 @@ QString ClientDelivNote::searchArticle() {
 }// end searchArticle
 
 
+void ClientDelivNote::s_contextMenu(int row, int col, int button, const QPoint &poin) {
+	qDebug("button = %d", button);
+	if (button == 2) {
+		QPopupMenu *popup;
+		popup = new QPopupMenu;
+		popup->insertItem(tr("Eliminar"),101);
+		//popup->insertSeparator();
+		int opcion = popup->exec(m_list->mapToGlobal(poin));
+		switch(opcion) {
+			case 101:
+				s_removeClientDelivNoteLine();
+				break;
+		}// end switch
+		delete popup;
+	}
+}// end contextmenu
+
+
+void ClientDelivNote::s_contextMenuDiscount(int row, int col, int button, const QPoint &poin) {
+	qDebug("button = %d", button);
+	if (button == 2) {
+		QPopupMenu *popup;
+		popup = new QPopupMenu;
+		popup->insertItem(tr("Eliminar"),101);
+		//popup->insertSeparator();
+		int opcion = popup->exec(m_listDiscounts->mapToGlobal(poin));
+		switch(opcion) {
+			case 101:
+				s_removeClientDelivNoteDiscountLine();
+				break;
+		}// end switch
+		delete popup;
+	}
+}// end contextmenu
+
+
 void ClientDelivNote::s_saveClientDelivNote() {
 	companyact->begin();
 	if (saveClientDelivNote()==0) {
@@ -806,6 +843,7 @@ void ClientDelivNote::antCell(QObject *obj) {
 		}
 	}
 }
+
 
 void ClientDelivNote::duplicateCell(QObject *obj) {
 	QTable *t = (QTable *)obj;

@@ -45,6 +45,7 @@ CREATE TABLE albaran (
 #include "clientdelivnote.h"
 #include <qtable.h>
 #include <qmessagebox.h>
+#include <qpopupmenu.h>
 
 #define COL_NUMALBARAN 0
 #define COL_FECHAALBARAN 1
@@ -152,16 +153,22 @@ void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
 }
 
 
-void ClientDelivNotesList::s_contextMenu(int row , int , const QPoint &) {
-/*
-   QString idprov = m_list->text(a, COL_IDPROVEEDOR);
-   provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
-   prov->chargeprovider(idprov);
-   prov->exec();
-   delete prov;
-   inicializa();
-*/
-}// end contextMenuRequested
+void ClientDelivNotesList::s_contextMenu(int row, int col, int button, const QPoint &poin) {
+	qDebug("button = %d", button);
+	if (button == 2) {
+		QPopupMenu *popup;
+		popup = new QPopupMenu;
+		popup->insertItem(tr("Eliminar"),101);
+		//popup->insertSeparator();
+		int opcion = popup->exec(m_list->mapToGlobal(poin));
+		switch(opcion) {
+			case 101:
+				s_removeClientDelivNote();
+				break;
+		}// end switch
+		delete popup;
+	}
+}// end contextmenu
 
 
 void ClientDelivNotesList::s_newClientDelivNote() {

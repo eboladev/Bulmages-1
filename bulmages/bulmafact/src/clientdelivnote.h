@@ -83,6 +83,8 @@ public slots:
 	virtual void s_cancel();
 	virtual void s_saveClientDelivNote();
 	virtual void s_removeClientDelivNote();
+	virtual void s_contextMenu(int, int, int, const QPoint &);
+	virtual void s_contextMenuDiscount(int, int, int, const QPoint &);
 
 };
 

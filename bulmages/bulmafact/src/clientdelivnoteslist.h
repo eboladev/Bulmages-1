@@ -47,9 +47,9 @@ public:
     
 public slots:
     virtual void s_doubleclicked(int, int, int, const QPoint &);
-    virtual void s_contextMenu(int, int, const QPoint &);
     virtual void s_newClientDelivNote();
 	 virtual void s_removeClientDelivNote();
+	 virtual void s_contextMenu(int, int, int, const QPoint &);
     
     /*
     virtual void boton_editar();
