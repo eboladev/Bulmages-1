@@ -1,0 +1,8 @@
+#!/bin/bash
+
+su postgres -c "dropdb bulmages"
+su postgres -c "dropdb metabd"
+su postgres -c "dropdb bgplangcont"
+
+rm /etc/bulmages.conf
+rm -rf /usr/share/bulmages
