@@ -16,6 +16,7 @@
 #include "ccosteview.h"
 #include "empresa.h"
 
+// El inicializador de la clase.
 ccosteview::ccosteview(empresa *emp, QWidget *parent, const char *name, bool modal) : ccostedlg(parent,name, modal) {
 	fprintf(stderr,"inicializador de ccosteview\n");
 	empresaactual = emp;
