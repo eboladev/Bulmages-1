@@ -35,10 +35,14 @@ public:
   int numdigitos;
   int ccostes[200];
   empresa *empresaactual;
+  QString idcontrapartida; // Si hay una este campo vale su id
   
    filtrardiarioview(empresa *, QWidget *parent=0, const char *name=0);
 	~filtrardiarioview();
    void cargacostes();
    void setccoste(int);
+   
+   public slots:
+   virtual void buscacontrapartida();
 };
 #endif

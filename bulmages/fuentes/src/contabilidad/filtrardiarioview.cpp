@@ -15,6 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
+#include "listcuentasview1.h"
 #include "filtrardiarioview.h"
 #include "empresa.h"
 
@@ -58,5 +59,13 @@ void filtrardiarioview::setccoste(int idc_coste) {
    if (i<100) {
      combocoste->setCurrentItem(i);
    }// end if
-}// end if
+}// end setccoste
 
+void filtrardiarioview::buscacontrapartida() {
+  listcuentasview1 *listcuentas = new listcuentasview1();
+   listcuentas->modo=1;
+   listcuentas->inicializa(conexionbase);
+   listcuentas->exec();
+   contrapartida->setText(listcuentas->codcuenta);
+   delete listcuentas;
+}// end buscacontrapartida

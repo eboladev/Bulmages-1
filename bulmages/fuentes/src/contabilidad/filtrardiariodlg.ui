@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>filtrardiariodlg</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,11 +9,11 @@
             <x>0</x>
             <y>0</y>
             <width>576</width>
-            <height>286</height>
+            <height>288</height>
         </rect>
     </property>
     <property name="caption">
-        <string>Filtrado de Extractos</string>
+        <string>Filtrado de Diario</string>
     </property>
     <property name="icon">
         <pixmap>image0</pixmap>
@@ -40,7 +40,7 @@
                 </widget>
                 <widget class="QLineEdit">
                     <property name="name">
-                        <cstring>lineEdit1</cstring>
+                        <cstring>saldosuperior</cstring>
                     </property>
                 </widget>
             </hbox>
@@ -172,7 +172,7 @@
                 </widget>
                 <widget class="QLineEdit">
                     <property name="name">
-                        <cstring>lineEdit1_2</cstring>
+                        <cstring>saldoinferior</cstring>
                     </property>
                 </widget>
             </hbox>
@@ -195,7 +195,7 @@
                 </widget>
                 <widget class="QLineEdit">
                     <property name="name">
-                        <cstring>lineEdit1_2_2</cstring>
+                        <cstring>contrapartida</cstring>
                     </property>
                 </widget>
                 <widget class="QToolButton">
@@ -205,8 +205,8 @@
                     <property name="text">
                         <string></string>
                     </property>
-                    <property name="pixmap">
-                        <pixmap>image1</pixmap>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
                     </property>
                 </widget>
             </hbox>
@@ -234,9 +234,16 @@
         <receiver>filtrardiariodlg</receiver>
         <slot>reset()</slot>
     </connection>
+    <connection>
+        <sender>toolButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>filtrardiariodlg</receiver>
+        <slot>buscacontrapartida()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>reset()</slot>
+    <slot>buscacontrapartida()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
