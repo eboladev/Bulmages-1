@@ -12,8 +12,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>712</width>
-            <height>295</height>
+            <width>713</width>
+            <height>294</height>
         </rect>
     </property>
     <property name="caption">
@@ -222,9 +222,15 @@
     </connection>
     <connection>
         <sender>m_clientList</sender>
+        <signal>clicked(int,int,int,const QPoint&amp;)</signal>
+        <receiver>ClientsListBase</receiver>
+        <slot>m_clientList_clicked(int,int,int,const QPoint&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>m_clientList</sender>
         <signal>doubleClicked(int,int,int,const QPoint&amp;)</signal>
         <receiver>ClientsListBase</receiver>
-        <slot>doubleClicked(int,int,int,const QPoint&amp;)</slot>
+        <slot>m_clientList_doubleClicked(int,int,int,const QPoint&amp;)</slot>
     </connection>
 </connections>
 <tabstops>
@@ -233,8 +239,9 @@
 </tabstops>
 <slots>
     <slot>newClient()</slot>
-    <slot>doubleClicked( int, int, int, const QPoint &amp; )</slot>
     <slot>editClient()</slot>
+    <slot>m_clientList_clicked( int, int, int, const QPoint &amp; )</slot>
+    <slot>m_clientList_doubleClicked( int, int, int, const QPoint &amp; )</slot>
 </slots>
 <layoutdefaults spacing="0" margin="0"/>
 </UI>

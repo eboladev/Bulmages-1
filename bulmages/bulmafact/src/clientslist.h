@@ -49,9 +49,10 @@ public:
 
 public slots:
     virtual void newClient();
-    virtual void selectClient(int, int, int, const QPoint &);
+    //virtual void selectClient(int, int, int, const QPoint &);
     virtual void editClient();
-    virtual void doubleClicked(int, int, int, const QPoint &);
+    virtual void m_clientList_clicked(int, int, int, const QPoint &);
+    virtual void m_clientList_doubleClicked(int, int, int, const QPoint &);
     
 };
 

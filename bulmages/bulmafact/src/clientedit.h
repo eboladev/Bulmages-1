@@ -27,24 +27,30 @@
 */
 class company;
 
-class ClientEdit : public clienteditbase {
+class ClientEdit : public ClientEditBase {
 Q_OBJECT
 private:
    company *companyact;
    QString clientId;
    bool modified;
-   QString strModified;
+   
+   void setModified(bool formContentsChanged);
+   void emptyForm();
    
 public:
     ClientEdit(company *emp, QWidget *parent = 0, const char *name = 0);
     ~ClientEdit();
+    
 public:
-   void loadClient(QString);
+   void loadClient(QString client);
+   void saveClient();
+   void deleteClient();
+   
 public slots:
-   virtual void newClient();
-   virtual void saveClient();
-   virtual void deleteClient();
-   virtual void formChanged();
+   virtual void saveButton_clicked();
+   virtual void deleteButton_clicked();
+   virtual void cancelButton_clicked();   
+   virtual void formModified();
 };
 
 #endif

@@ -60,7 +60,7 @@ CREATE TABLE cliente (
 #include "clientslist.h"
 #include "clientedit.h"
 #include "company.h"
-
+#include <qmessagebox.h>
 #include <qtable.h>
 
 #define COL_IDCLIENTE 0
@@ -173,24 +173,24 @@ void ClientsList::initClients() {
 }// end initClients
 
 
-void ClientsList::selectClient(int a, int , int , const QPoint &) {
+void ClientsList::m_clientList_clicked(int a, int , int , const QPoint &) {
    m_idclient = m_clientList->text(a,COL_IDCLIENTE);
-   editClient();
-}// end doubleClicked
+}// end m_clientList_clicked
 
 void ClientsList::newClient() {
    companyact->newClient();
 }// end newClient
 
 void ClientsList::editClient() {
-   //newClient();
-   //noSeQueObjeto->loadClient(m_idclient);
+   ClientEdit *cli = new ClientEdit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Clientes", "company"));
+   cli->loadClient(m_idclient);
+   cli->show();
 }
 
 /*********************************************************************
    Se ha hecho un doble click sobre la tabla de Clientes.
 **********************************************************************/
-void ClientsList::doubleClicked(int a, int , int , const QPoint &) {
+void ClientsList::m_clientList_doubleClicked(int a, int , int , const QPoint &) {
    m_idclient = m_clientList->text(a,COL_IDCLIENTE);
    m_cifclient = m_clientList->text(a,COL_CIFCLIENTE);
    m_nomclient = m_clientList->text(a, COL_NOMCLIENTE);

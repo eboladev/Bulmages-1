@@ -61,11 +61,12 @@ Restricciones de llave foránea:
 #define COL_DIVISION_MAILDIVISION 6
 #define COL_DIVISION_IDPROVEEDOR 7
 
-
+#define NEW_CLIENT "0"
 ClientEdit::ClientEdit(company *comp, QWidget *parent, const char *name)
- : clienteditbase(parent, name) {
+ : ClientEditBase(parent, name) {
    companyact = comp;
-   this->clientId = "0";
+   clientId = NEW_CLIENT;
+   //clientId = "0";
    
    // Arreglamos la tabla de divisionoes.
    m_divisiones->setNumRows( 0 );
@@ -93,6 +94,7 @@ ClientEdit::ClientEdit(company *comp, QWidget *parent, const char *name)
    m_divisiones->setColumnWidth(COL_DIVISION_MAILDIVISION,100);
    m_divisiones->setColumnWidth(COL_DIVISION_IDPROVEEDOR,100);
    
+   emptyForm();
 }// end ClientEdit
 
 ClientEdit::~ClientEdit() {
@@ -107,8 +109,10 @@ ClientEdit::~ClientEdit() {
 * Otherwise it empties the form and sets it so that we can add
 * a new client
 */
-void ClientEdit::loadClient(QString clientId) {
-   if (this->clientId != "0") {
+void ClientEdit::loadClient(QString client) {
+   clientId = client;
+   
+   if (clientId != "0") {
       QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+clientId;
       companyact->begin();
       cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
@@ -152,22 +156,43 @@ void ClientEdit::loadClient(QString clientId) {
          
          */
       } else {
-          newClient();
+          emptyForm();
       }// end if
       delete cur;
+
+      setModified(false);      
    }// end if
 }// end loadClient
 
-/************************************************************************
-* Esta función se ejecuta cuando se ha pulsado sobre el botón de nuevo  *
-*************************************************************************/
-void ClientEdit::newClient() {
+
+/**
+* Toggles the status of the onscreen client modified/not modified.
+* Also performs the necesary gui actions in the window caption to reflect it.
+*/
+void ClientEdit::setModified(bool formContentsChanged) {   
+   if (formContentsChanged) {
+      modified = true;
+      saveButton->setEnabled(true);
+      setCaption(tr("Cliente (modificado)"));
+   } else {
+      modified = false;
+      saveButton->setEnabled(false);
+      setCaption(tr("Cliente"));
+   }
+}// end setModified
+
+
+/**
+* Empties the form.
+*
+*/
+void ClientEdit::emptyForm() {
    
       deleteButton->setEnabled(false);
       
-      this->clientId = "0";
+      clientId = "0";
       
-      m_clientId->setText( tr("Nuevo"));
+      m_clientId->setText( tr("Cliente nuevo"));
       m_clientName->setText("");
       m_altClientName->setText("");
       m_clientCif->setText("");
@@ -179,6 +204,8 @@ void ClientEdit::newClient() {
       m_clientFax->setText("");
       m_clientEmail->setText("");
       m_clientUrl->setText("");
+      
+      setModified(false);
 }// end newClient
 
 
@@ -192,7 +219,7 @@ void ClientEdit::newClient() {
 void ClientEdit::saveClient() {
    QString SQLQuery; 
    
-   if (this->clientId != "0") {
+   if (clientId != "0") {
       SQLQuery = "UPDATE cliente SET ";
       SQLQuery += " urlcliente='"+m_clientUrl->text()+"'";
       SQLQuery += " , nomcliente='"+m_clientName->text()+"'";
@@ -225,23 +252,68 @@ void ClientEdit::saveClient() {
    
    companyact->begin();
    companyact->ejecuta(SQLQuery);
-   companyact->commit();
-   close(); 
+   companyact->commit(); 
    
-   strModified = tr("");
-   saveButton->setEnabled(false);
+   setModified(false);  
 }// end accept
 
-/************************************************************************
-* Esta función se ejecuta cuando se ha pulsado sobre el botón de borrar *
-*************************************************************************/
-void ClientEdit::deleteClient() {
-   // --Preguntar si está seguro
-   // --Borrar/Marcar borrado si es necesario el cliente
-   emit newClient();
-}// end boton_borrar
 
-void ClientEdit::formChanged() {
-   strModified = tr(" (modificado)"); 
-   saveButton->setEnabled(true);
+/**
+* For now this function cleans the form and sets it so that we can add
+* a new client
+*
+* In the future it should really delete the client, or better yet
+* mark it as deleted on an appropiate field in the DB
+*/
+void ClientEdit::deleteClient() {
+   QMessageBox::information(this,tr("Edición de clientes"),
+         tr("Qué peligro tienes, majete!\n"
+            "De momento no hago nada, pero tendría que borrarlo"),
+         QMessageBox::Yes | QMessageBox::Default,
+         QMessageBox::No,
+         QMessageBox::Cancel | QMessageBox::Escape);
+}// end deleteClient()
+
+
+void ClientEdit::saveButton_clicked() {
+   saveClient();
+   setModified(false);
+}
+
+void ClientEdit::deleteButton_clicked() {
+   int ret = QMessageBox::warning(this,tr("Edición de clientes"),
+                  tr("Está a punto de borrar un cliente.\n"
+                     "¿Está seguro de que quiere borrarlo?"),
+                  QMessageBox::Yes | QMessageBox::Default,
+                  QMessageBox::No,
+                  QMessageBox::Cancel | QMessageBox::Escape);
+   if (ret == QMessageBox::Yes) {
+      deleteClient();
+      close();
+   } else if (ret == QMessageBox::No) 
+      close();
+}
+
+
+void ClientEdit::cancelButton_clicked() {
+   if (modified) {
+      int ret = QMessageBox::warning(this,tr("Edición de clientes"),
+                     tr("El cliente ha sido modificado.\n"
+                        "¿Quiere guardar los cambios?"),
+                     QMessageBox::Yes | QMessageBox::Default,
+                     QMessageBox::No,
+                     QMessageBox::Cancel | QMessageBox::Escape);
+      if (ret == QMessageBox::Yes) {
+         saveClient();
+         close();
+      } else if (ret == QMessageBox::No) 
+         close();
+   } else {
+      close();
+   } 
+   
+}
+
+void ClientEdit::formModified() {
+   setModified(true);
 }// end boton_newdivision
