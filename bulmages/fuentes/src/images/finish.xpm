@@ -1,5 +1,5 @@
 /* XPM */
-static char *finish[]={
+static const char *finish[]={
 "32 32 210 2",
 "Qt c None",
 ".j c #000000",

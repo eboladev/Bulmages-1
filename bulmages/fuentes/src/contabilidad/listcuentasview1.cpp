@@ -32,21 +32,29 @@
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qtable.h>
+#include <qstring.h>
+
+// Para la impesión utilizamos REPORTS, pero sólo si éte existe.
+#ifdef REPORTS
+#include "rtkinputbges.h"
+#include "rtkqtreportviewer.h"
+using namespace RTK;
+#endif
 
 listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : listcuentasdlg1(parent,name, modal) {
     empresaactual = emp;
     modo=0;
     conexionbase= emp->bdempresa();
-        ccuenta=ListView1->addColumn("código cuenta",-1);
-        cdesccuenta=ListView1->addColumn("nombre cuenta",-1);
-        cidcuenta = ListView1->addColumn("id cuenta",0);
-        cbloqueada = ListView1->addColumn("bloqueada",0);
-        cnodebe = ListView1->addColumn("nodebe",0);
-        cnohaber = ListView1->addColumn("nohaber",0);
-        cregularizacion = ListView1->addColumn("regularizacion",0);
-        cimputacion = ListView1->addColumn("imputacion",0);
-        cgrupo = ListView1->addColumn("grupo",0);
-        ctipocuenta = ListView1->addColumn("tipo cuenta",0);
+    ccuenta=ListView1->addColumn("código cuenta",-1);
+    cdesccuenta=ListView1->addColumn("nombre cuenta",-1);
+    cidcuenta = ListView1->addColumn("id cuenta",0);
+    cbloqueada = ListView1->addColumn("bloqueada",0);
+    cnodebe = ListView1->addColumn("nodebe",0);
+    cnohaber = ListView1->addColumn("nohaber",0);
+    cregularizacion = ListView1->addColumn("regularizacion",0);
+    cimputacion = ListView1->addColumn("imputacion",0);
+    cgrupo = ListView1->addColumn("grupo",0);
+    ctipocuenta = ListView1->addColumn("tipo cuenta",0);
     tablacuentas->setNumCols(3);
     tablacuentas->horizontalHeader()->setLabel( 0, tr( "CODIGO" ) );
     tablacuentas->horizontalHeader()->setLabel( 1, tr( "NOMBRE" ) );
@@ -54,7 +62,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
     tablacuentas->hideColumn(2);
     tablacuentas->setColumnWidth(1,400);
     tablacuentas->setColumnWidth(0,100);
-    
+
     installEventFilter(this);
 }// end listcuentasview
 
@@ -69,15 +77,15 @@ bool listcuentasview1::eventFilter( QObject *obj, QEvent *event ) {
         QKeyEvent *keyEvent = (QKeyEvent *) event;
         int key = keyEvent->key();
         if (key == Qt::Key_Up) { // El enter
-	    ListView1->eventFilter(ListView1, event);
-	    QListViewItem *it = ListView1->currentItem()->itemAbove();
-	    ListView1->setCurrentItem(it);
+            ListView1->eventFilter(ListView1, event);
+            QListViewItem *it = ListView1->currentItem()->itemAbove();
+            ListView1->setCurrentItem(it);
             ListView1->ensureItemVisible(it);
             return TRUE;
         }// end if
-	if (key == Qt::Key_Down) { // El enter
-	    QListViewItem *it = ListView1->currentItem()->itemBelow();
-	    ListView1->setCurrentItem(it);
+        if (key == Qt::Key_Down) { // El enter
+            QListViewItem *it = ListView1->currentItem()->itemBelow();
+            ListView1->setCurrentItem(it);
             ListView1->ensureItemVisible(it);
             return TRUE;
         }// end if
@@ -139,18 +147,18 @@ int listcuentasview1::inicializa( ) {
         cursoraux1->siguienteregistro ();
     }// end while
     delete cursoraux1;
-    
-    
-	 conexionbase->begin();
-//    cursoraux2=conexionbase->cargacuentas(-2);
-    	query = "SELECT * FROM cuenta WHERE padre IS NOT NULL ORDER BY padre";
-	cursoraux2 = conexionbase->cargacursor(query, "cursor2");
-	 conexionbase->commit();
+
+
+    conexionbase->begin();
+    //    cursoraux2=conexionbase->cargacuentas(-2);
+    query = "SELECT * FROM cuenta WHERE padre IS NOT NULL ORDER BY padre";
+    cursoraux2 = conexionbase->cargacursor(query, "cursor2");
+    conexionbase->commit();
     //   cursoraux1->ultimoregistro();
     while (!cursoraux2->eof()) {
         padre = atoi(cursoraux2->valor(4).ascii());
         idcuenta1 = atoi(cursoraux2->valor("idcuenta").ascii());
-		  fprintf(stderr,"Cuentas de subnivel:%d",padre);
+        fprintf(stderr,"Cuentas de subnivel:%d",padre);
         if (padre != 0) {
             it = new QListViewItem(Lista[padre]);
             Lista[idcuenta1]=it;
@@ -197,7 +205,7 @@ int listcuentasview1::inicializa( ) {
 
 
 void listcuentasview1::inicializatabla()  {
-	QString query;
+    QString query;
     //  tablacuentas->clear();
 
     conexionbase->begin();
@@ -242,9 +250,9 @@ void listcuentasview1::arbolcuentas(QListViewItem *itempadre, int padre ) {
     QString cadena;
     QString cadena1;
     int num, idcuenta;
-	 conexionbase->begin();
+    conexionbase->begin();
     cursoraux = conexionbase->cargacuentas(padre);
-	 conexionbase->commit();
+    conexionbase->commit();
     num = cursoraux->numregistros();
     while (!cursoraux->eof()) {
         it =new QListViewItem(itempadre);
@@ -287,19 +295,19 @@ void listcuentasview1::listpulsada(QListViewItem *it) {
 
 
 void listcuentasview1::descripcioncambiada(const QString &string1) {
-   QListViewItem *it;
-   QString cod = extiendecodigo(string1, numdigitos);
+    QListViewItem *it;
+    QString cod = extiendecodigo(string1, numdigitos);
 
     it = ListView1->findItem(cod, ccuenta, Qt::BeginsWith);
     if (it != 0) {
         ListView1->setCurrentItem(it);
         ListView1->ensureItemVisible(it);
-    } else {   
-	it = ListView1->findItem(string1, cdesccuenta, Qt::BeginsWith);
-	if (it != 0) {
-		ListView1->setCurrentItem(it);
-		ListView1->ensureItemVisible(it);
-	}// end if
+    } else {
+        it = ListView1->findItem(string1, cdesccuenta, Qt::BeginsWith);
+        if (it != 0) {
+            ListView1->setCurrentItem(it);
+            ListView1->ensureItemVisible(it);
+        }// end if
     }// end if
 }// end descripcioncambiada
 
@@ -315,7 +323,7 @@ void listcuentasview1::listdblpulsada(QListViewItem *it) {
     codcuenta = it->text(ccuenta);
     idcuenta = it->text(cidcuenta);
     if (modo == 0) {
-	 
+
         cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
         nuevae->cargacuenta(atoi(idcuenta.ascii()));
         nuevae->exec();
@@ -367,7 +375,7 @@ void listcuentasview1::nuevacuenta()  {
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);
     delete nuevae;
-	 
+
 }// end nuevacuenta
 
 
@@ -416,8 +424,9 @@ void listcuentasview1::borrarcuenta()  {
             if (ot)
                 idcuenta =atoi((char *) ot->text(cidcuenta).ascii());
             inicializa();
-            QString cadena;;
-				cadena.sprintf("%d",idcuenta);
+            QString cadena;
+            ;
+            cadena.sprintf("%d",idcuenta);
             it = ListView1->findItem(cadena, cidcuenta, Qt::ExactMatch);
             ListView1->setCurrentItem(it);
             ListView1->ensureItemVisible(it);
@@ -441,16 +450,49 @@ void listcuentasview1::dbtabla(int row, int colummn, int button,const QPoint &mo
 }// end dbtabla
 
 void listcuentasview1::return_codigo() {
-                                 QListViewItem *it = ListView1->currentItem();
-                                 if (it != 0) {
-                                     listdblpulsada(it);
-                                 }// end if
-                             }// end return_codigo
+	QListViewItem *it = ListView1->currentItem();
+	if (it != 0) {
+	listdblpulsada(it);
+	}// end if
+}// end return_codigo
 
 
-                             void listcuentasview1::return_descripcion() {
-                                                              QListViewItem *it = ListView1->currentItem();
-                                                              if (it != 0) {
-                                                                  listdblpulsada(it);
-                                                              }// end if
-                                                          }// end return_codigo
+void listcuentasview1::return_descripcion() {
+	QListViewItem *it = ListView1->currentItem();
+	if (it != 0) {
+		listdblpulsada(it);
+	}// end if
+}// end return_codigo
+
+
+void listcuentasview1::s_PrintCuentas() {
+#ifdef REPORTS
+/*
+    cursor2 *cursoraux;
+    conexionbase->begin();
+    cursoraux=conexionbase->cargacursor("SELECT codigo, descripcion, debe, haber FROM cuenta", "unquery");
+    conexionbase->commit();
+    RTK::Report unReport;
+    unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk");
+    InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
+    inp->set(InputBGes::diario, empresaactual, cursoraux);
+    OutputQPainter *salida = new OutputQPainter(57, 59, A4, dots, 800,600,20,20,20,20);
+    unReport.print(*salida);
+    QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
+    mViewer->setCaption(tr("Listado de Cuentas", "Informe: "));
+    mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
+    mViewer->setPageCollection(salida->getPageCollection());
+    mViewer->show();
+    mViewer->slotFirstPage();
+*/
+QString cadena;
+/// OJO QUE NO ENCUENTRA LA RUTA 
+cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
+cadena += empresaactual->nombreempresa();
+cadena += "  /home/tborras/bulmages/installbulmages/reports/cuentas.rtk ";
+fprintf(stderr,"%s\n",cadena.ascii());
+system (cadena.ascii());
+
+#endif
+}// end s_PrintCuentas
+

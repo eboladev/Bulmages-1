@@ -21,7 +21,9 @@
 
 #include "postgresiface2.h"
 #include "listcuentasdlg1.h"
-/*** @author Tomeu Borrás Riera */
+
+
+/** * @author Tomeu Borrás Riera */
 
 class empresa;
 
@@ -56,5 +58,6 @@ public slots:
    virtual void return_codigo();
    virtual void return_descripcion();
    virtual bool eventFilter( QObject *, QEvent * );
+   virtual void s_PrintCuentas();
 };
 #endif

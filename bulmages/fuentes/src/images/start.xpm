@@ -1,5 +1,5 @@
 /* XPM */
-static char *start[]={
+static const char *start[]={
 "32 32 149 2",
 "Qt c None",
 ".e c #020202",

@@ -135,8 +135,7 @@
   </INPUT>
 
 <!-- Encabezado de página -->
-  <SECTION name="pageheader" type="page-header" sizey="6" backgroundimage="encabezado"
->
+  <SECTION name="pageheader" type="page-header" sizey="6" backgroundimage="encabezado">
   <OBJECT name="titulo" style="title" value="Plan Contable - Ejercicio 2005" sizey="2"></OBJECT>
   <OBJECT name="empresa" style="empresa" value="GestiONG ONG" posy="2" sizey="2"></OBJECT>
   <OBJECT name="seleccion" style="detail" halignment="right"

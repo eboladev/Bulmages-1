@@ -1,5 +1,5 @@
 /* XPM */
-static char *back[]={
+static const char *back[]={
 "32 32 149 2",
 "Qt c None",
 "as c #060e1a",
