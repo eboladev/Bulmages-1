@@ -11,7 +11,7 @@ $body = '
 </tr>
 <tr>
 <td>
-<A HREF="./documentos/manualjabber.pdf" TARGET="nueva">Manual de Jabber</A><BR>
+<A HREF="./documentos/manualjabber.pdf" TARGET="nueva">Jabber como medio de comunicación social Libre</A><BR>
 <P>Manual introductorio al uso del sistema de mensajería instantánea Jabber, orientado a aquellas personas que nunca hayan usado este sistema de mensajería.</P>
 <br>
 </td>

@@ -14,7 +14,7 @@ $body = '
 </tr>
 <tr>
 <td colspan=2>Ante la necesidad de realizar la iconografía para BulmaFact, se convoca un concurso consistente en 
-la realización de los iconos para el programa de facturación. El premio, el hecho de que los iconos se utilizarán en el programa,
+la realización de los iconos para el programa de facturación. El <A href="./img/pegatinaypin.jpg" TARGET="nueva">premio</A>, el hecho de que los iconos se utilizarán en el programa,
 una pegatina y un pin de la Free Software Foundation.<br>
 Los iconos a realizar son: proveedores, clientes, compras ventas, artículos, caja, bancos, facturas y partes de trabajo.</p>
 <br>
