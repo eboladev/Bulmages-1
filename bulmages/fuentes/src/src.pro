@@ -413,7 +413,9 @@ contabilidad/uibloqfecha.ui.target = contabilidad/uibloqfecha.ui
 contabilidad/uibloqfecha.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/uibloqfecha.ui.target 
 
 CONFIG += release \
-          warn_on
+          warn_on \
+	  debug
+	  
 
 TARGET = ../bin/bulmages 
 
@@ -448,9 +450,12 @@ exists (estadisticas){
 }
 
 
-exists (rtk) {
-   LIBS += ../src/rtk/rtkserver/src/librtkserver.a
-   DEFINES += RTK
+exists (reports) {
+   LIBS += ../src/reports/lib/librtkserver.a
+   INCLUDEPATH += ../src/reports/rtkserver/src
+   DEFINES += REPORTS
+   SOURCES += rtkinputbges.cpp
+   HEADERS += rtkinputbges.h
 }
 
 unix{

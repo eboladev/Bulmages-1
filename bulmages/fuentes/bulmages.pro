@@ -12,8 +12,8 @@ exists(src/gdcchart) {
     SUBDIRS += src/gdcchart
 }
 
-exists(src/rtk) {
-   SUBDIRS= src/rtk/rtkserver/src
+exists(src/reports) {
+   SUBDIRS= src/reports/rtkserver/src
 }
 
 exists(src/estadisticas) {

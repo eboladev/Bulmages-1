@@ -157,8 +157,10 @@ void extractoview1::accept() {
   QString codfinal = codigofinal->text();
   QString query;
   int idc_coste = 0;
-  
-  idc_coste = filt->ccostes[filt->combocoste->currentItem()];
+ 
+ // Como el filtrado de centros de coste ya no se hace asi, esta linea
+ // Va a cambiar.  
+//  idc_coste = filt->ccostes[filt->combocoste->currentItem()];
   
   if (idc_coste != 0) {
     query.sprintf("SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte WHERE idc_coste=%d) AND codigo >='%s' AND codigo <= '%s' ORDER BY codigo",idc_coste,codinicial.ascii(), codfinal.ascii());
@@ -169,7 +171,6 @@ void extractoview1::accept() {
     delete cursorcta;
   }// end if
   conexionbase->begin();
-//  cursorcta = conexionbase->cargacuentascodigo(-1,codinicial,codfinal);
   cursorcta = conexionbase->cargacursor(query,"cursorcuenta");
   conexionbase->commit();
   presentar();
@@ -369,8 +370,10 @@ void extractoview1::presentar() {
       nombrecuenta->setText(cursorcta->valor("descripcion"));
       // Hacemos la consulta de los apuntes a listar en la base de datos.
       QString query="";
-      idc_coste = filt->ccostes[filt->combocoste->currentItem()];    
-		if (idc_coste != 0) {
+      // Al igual que en el caso anterior los centros de coste han cambiado y aun no se pueden implementar.
+      //idc_coste = filt->ccostes[filt->combocoste->currentItem()];    
+      
+      if (idc_coste != 0) {
         query.sprintf("SELECT * FROM apunte, asiento where asiento.idasiento = apunte.idasiento AND  idcuenta=%d AND apunte.fecha>='%s' AND apunte.fecha<='%s' AND idc_coste=%d  %s ORDER BY apunte.fecha, ordenasiento, orden",idcuenta, (char *) finicial.ascii(),(char *) ffinal.ascii(), idc_coste, tipopunteo.ascii());
       } else {
         query.sprintf("SELECT * FROM apunte, asiento where asiento.idasiento = apunte.idasiento AND idcuenta=%d AND apunte.fecha>='%s' AND  apunte.fecha<='%s'  %s ORDER BY apunte.fecha, ordenasiento, orden",idcuenta,(char *) finicial.ascii(),(char *) ffinal.ascii(), tipopunteo.ascii());
@@ -534,20 +537,19 @@ void extractoview1::return_codigoinicial() {
    if (cad != "") {
       cad = extiendecodigo(cad,numdigitos);
       conexionbase->begin();
-      cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
+      cursor2 *curs = conexionbase->cargacuenta(0, cad );
       conexionbase->commit();
-      int num = cursorcta->numregistros();
+      int num = curs->numregistros();
       if (num >0) {
          codigoinicial->setText(cursorcta->valor(1));
          codigofinal->setText(cursorcta->valor(1));
          codigofinal->selectAll();
-         // Simulamos la pulsacion del boton recargar.
          accept();
       } else {
         codigoinicial->selectAll();
         codigoinicial->setFocus();
       }// end if
-      delete cursorcta;
+      delete curs;
    }// end if
 }// end return_codigoinicial
 

@@ -5,18 +5,16 @@
 // también 
 $DEBUG=1;
 
-include ("configuracion.inc");
-
-$confpr = new configuracion();
-
-$confpr->leeconffile("/etc/bulmages.conf");
-
 $metabd=pg_connect("dbname=metabd user=tborras");
 // Establecemos el tipo de fecha para la base de datos.
 $SQLQuery1 = "SET DateStyle TO 'SQL'";
 $result1 = pg_exec($metabd,$SQLQuery1);  
 $SQLQuery1 = "SET DateStyle TO 'European'";
 $result1 = pg_exec($metabd,$SQLQuery1);  
+
+
+
+
 
 $autentificado = 0;
 if ($logincookie != "") {
@@ -57,7 +55,7 @@ if ($autentificado == 0) {
 		}// end if
 		setcookie("idempresa",$idempresa);
 		if ($idempresa != "") {
-			$SQLQuery = "SELECT * FROM empresa WHERE idempresa='$idempresa'";
+			$SQLQuery = "SELECT * FROM empresa WHERE idempresa=$idempresa";
 			$empresa = pg_exec($metabd, $SQLQuery);
 			$filas = pg_NumRows($empresa);
 			if ($filas--) {
@@ -83,8 +81,15 @@ if ($DEBUG==1) {
 	echo "<BR>";
 	echo pg_result($usuario,0,"nombre");
 }// end if
-?>
 
+
+
+// Cargamos las configuraciones
+include ("configuracion.inc");
+$confpr = new configuracion();
+$confpr->leeconffile("/etc/bulmages.conf");
+
+?>
 <?php 
 // Esta función sirve para insertar una cuenta en la base de datos de bulmages
 // que se pasa como parametro
@@ -112,4 +117,22 @@ function nuevacuenta($database, $array) {
 	echo "$QueryInsercion<BR>";
 }// end nuevacuenta
 
+
+// Esta funcion limpia una cadena de caracteres extraños que lo puedan confundir.
+function limpia($nif) {
+   $nif= str_replace(".","",$nif);
+   $nif= str_replace(" ","",$nif);
+   $nif= str_replace("-","",$nif);
+   $nif= strtoupper($nif);
+   return $nif;
+}// end limpia
+
+
+function presentaarray($array) {
+	echo "<hr><pre>";
+	foreach ($array as $nombre => $valor_col) {
+		echo "\t\t$nombre = $valor_col<BR>\n";
+	}// end foreach  
+	echo "</pre><HR>";    
+}
 ?>

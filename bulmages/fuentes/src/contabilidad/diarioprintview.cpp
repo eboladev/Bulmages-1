@@ -17,84 +17,47 @@
 
 #include "diarioprintview.h"
 #include <unistd.h>
-// EStas inclusiones son las primeras pruebas con rtkserver
-// EL SISTEMA DE REPORTS.
 
-/*
-#include <qapplication.h>
-#include <qfont.h>
-#include <qfontdatabase.h>
-#include <qstring.h>
-#include <qwidget.h>
-#include <qlabel.h>
-#include <qtextcodec.h>
-#include <qtranslator.h>
-#include <qpicture.h>
-#include "rtkserver/rtkserver.h"
-#include "rtkserver/rtk.h"
-#include "rtkserver/rtkqtreportviewer.h"
-//#include "rtkserver/rtkinputsql.h"
-#include "rtkserver/rtkinputpsql.h"
-// Fin de las inclusiones con rtk
-*/
-
-DiarioPrintView::DiarioPrintView(QWidget *parent, const char *name ) : DiarioPrintDlg(parent,name) {
+DiarioPrintView::DiarioPrintView(empresa *emp,QWidget *parent, const char *name ) : DiarioPrintDlg(parent,name) {
+   fprintf(stderr," CONSTRUCTOR de diarioprintview\n");
    fichero=NULL;
+   empresaactual = emp;
+   conexionbase = empresaactual->bdempresa();
+   numdigitos = empresaactual->numdigitosempresa();
+   fprintf(stderr,"Fin del CONSTRUCTOR de diarioprintview\n");   
 }
+
+
+
 DiarioPrintView::~DiarioPrintView(){
 }
 
-
-
+#ifdef REPORTS
+#include "rtkinputbges.h"
+using namespace RTK;
+#endif
 // *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
 void DiarioPrintView::pruebasRTK() {
-
-   /*
-     fprintf(stderr,"--------------------\npruebasRTK\n");
-//     RTK::Input *orinput;
-      RTK::InputPSql myinput;
-
-//     myquery.init1(conexionbase);
-
-     RTK::Report unReport("", RTK::chars, "lopd");
-//     unReport.readXml("../reports/diario.xml");
-    unReport.readXml("/usr/share/bulmages/reports/diario.xml");
-//    orinput = unReport.getInput();
-
-     myinput.init1(conexionbase);
-//     myinput.init();
-
-
-//    string query = "SELECT asiento.ordenasiento, cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta, asiento WHERE  cuenta.idcuenta=apunte.idcuenta AND apunte.idasiento=asiento.idasiento ORDER BY ordenasiento";
-   // Cogemos los valores de la fecha del formulario.
-   QString finicial = fechainicial1->text();
-   QString ffinal = fechafinal1->text();
-
-    QString query;
-    query.sprintf("SELECT asiento.ordenasiento, cuenta.codigo, cuenta.descripcion AS nomcuenta, apunte.debe AS debe, apunte.haber AS haber FROM apunte, cuenta, asiento WHERE  cuenta.idcuenta=apunte.idcuenta AND apunte.idasiento=asiento.idasiento ANd apunte.fecha >='%s' AND apunte.fecha<='%s'  ORDER BY ordenasiento, apunte.fecha", finicial.ascii(), ffinal.ascii());
-    myinput.setQuery(query.ascii());
-
-    unReport.insertInput(&myinput);
-
-    unReport.debug_print();
-
-
-//    RTK::OutputFile salida("salida.txt", RTK::chars, 80, 10, 0, 2,2,2,2);
-    RTK::OutputQPainter salida(RTK::A3, RTK::dots,
-      81, 81, 0, 0, 20, 20, 20, 20);
-    unReport.print(salida);
-
-    RTK::QReportViewer viewer(&salida);
-    viewer.setPageDimensions((int)(salida.getSizeX()), (int)(salida.getSizeY()));
-    viewer.setPageCollection(salida.getPageCollection());
-    viewer.showMaximized();
-    viewer.slotFirstPage();
-    viewer.exec();
-//   viewer.show();
-   fprintf(stderr,"------------------\nfin de pruebasRTK\n");
-
-
-   */
+#ifdef REPORTS
+   cursor2 *cursoraux;
+   conexionbase->begin();
+   cursoraux=conexionbase->cargacursor("SELECT * FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta", "unquery");
+   conexionbase->commit();
+   
+   RTK::Report *unReport = new Report();
+   unReport->readXml("/tmp/extracto.rtk");
+   
+   InputBGes inp(InputBGes::diario, empresaactual, cursoraux);
+    OutputQPainter *salida = new OutputQPainter(A4, dots, 57, 59, 0,0,20,20,20,20);
+    unReport->print(inp, *salida);
+    
+    QReportViewer *mViewer = new QReportViewer(salida, true);
+    mViewer->setCaption(tr("GongReport", "Informe: "));
+    mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
+    mViewer->setPageCollection(salida->getPageCollection());
+    mViewer->show();
+    mViewer->slotFirstPage();
+#endif 
 }// end pruebasRTK
 
 
@@ -114,6 +77,7 @@ void DiarioPrintView::inicializa1(QString fechai, QString fechaf) {
  **************************************************************/
 void DiarioPrintView::accept() {
 // Versió per si només permetem escollir una opció
+  
    if (radiotexto->isChecked()) {
       if (radionormal->isChecked()) {
          presentar("txt");
@@ -127,6 +91,7 @@ void DiarioPrintView::accept() {
          presentar("htmlapren");
       }// end if
    } else if (radiopropietario->isChecked()) {
+   // El formato propietario es de momento el de RTK.
       pruebasRTK();
    }// end if
 }// end accept
@@ -432,3 +397,28 @@ void DiarioPrintView::presentar(char * tipus){
       } 
    }   
 }
+
+
+
+void DiarioPrintView::boton_canales() {
+   fprintf(stderr,"Boton canales\n");
+   selectcanalview *selcanales = empresaactual->getselcanales();
+   selcanales->exec();
+   fprintf(stderr,"---------------INICIO---------------------\n");
+   selcanales->firstcanal();
+   while (selcanales->nextcanal());
+   fprintf(stderr,"-----------------FIN---------------------\n");
+}// end boton_canales
+
+void DiarioPrintView::boton_ccostes() {
+   fprintf(stderr,"Boton ccostes\n");
+   selectccosteview *selccostes = empresaactual->getselccostes();
+   selccostes->exec();
+   fprintf(stderr,"---------------INICIO---------------------\n");
+   selccostes->firstccoste();
+   while (selccostes->nextccoste());
+   fprintf(stderr,"-----------------FIN---------------------\n");
+}// end boton_ccostes
+
+
+

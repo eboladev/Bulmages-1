@@ -16,11 +16,17 @@
  ***************************************************************************/
 
 #include "diarioprint.h"
+#include "listcuentasview1.h"
+#include "empresa.h"
 
 #include <unistd.h>
 
-diarioprint::diarioprint(){
+diarioprint::diarioprint(empresa *emp){
+   fprintf(stderr,"CONSTRUCTOR de diarioprint\n");
    fichero = NULL;
+   empresaactual = emp;
+   conexionbase = empresaactual->bdempresa();
+   fprintf(stderr,"Fin del CONSTRUCTOR de diarioprint\n");
 }// end diarioprint
 
 diarioprint::~diarioprint(){
@@ -108,3 +114,5 @@ void diarioprint::accept() {
       error = execvp("kedit",args);
    }// end if
 }// end accept
+
+

@@ -62,7 +62,7 @@ public:
     filtrarasientosview *filt; // Este objeto contiene todas las opciones de filtraje necesarias para funcionar.
     empresa *empresaactual;
 public:
-    intapunts3view(empresa *, QWidget *parent=0, const char *name=0);
+    intapunts3view(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
     ~intapunts3view();
     int inicializa(postgresiface2 *);
     int inicializa1(extractoview1 *, diarioview1 *, balanceview *);

@@ -5,7 +5,9 @@
     <title>selectempresa.php</title>
   </head>
 <BODY bgcolor="<?php echo $confpr->config("CONF_BG_APUNTES") ?>">
-<table><TR><TD valign="top">
+<table>         
+<FORM name="form1" method="POST" action="sincclientes.php">
+<TR><TD valign="top">
 <?php include("inc/menu.inc")?>
 </TD><TD>
 Importacion y exportacion<BR>
@@ -13,14 +15,12 @@ Importacion y exportacion<BR>
 <HR>
     Nombre Sincronización <input type="text" name="nomsinc" size="60"><BR><BR>
     <TABLE bgcolor="CCCCCC" align="center" border="1" width="98%">
-         <FORM method="POST" action="post">
       <TR>
         <TD valign="top">
           <CENTER>BulmaGés</CENTER><BR>
-		<SELECT NAME="idempresa">
+		<SELECT NAME="idempresasinc">
 		<?php
 		$query = "SELECT * FROM empresa";
-		
 		$result = pg_exec($metabd, $query);
 		$filas = pg_NumRows($result);
 		while ($filas--) {
@@ -32,11 +32,11 @@ Importacion y exportacion<BR>
 		</SELECT>
        </TD>
 	<td valign="top"><CENTER>Galopín</CENTER><BR>
-	Base de datos:<input type="text" name="nomdb" size="15"><BR>
-	Login usuario:<input type="text" name="loginus" size="15"><BR>
-	Password usuario:<input type="text" name="passus" size="15"><BR>
-	Servidor:<input type="text" name="servidor" size="15"><BR>
-	Puerto:<input type="text" name="puerto" size="15"><BR>
+	Base de datos:<input type="text" name="nomdbgalopin" size="15"><BR>
+	Login usuario:<input type="text" name="usergalopin" size="15"><BR>
+	Password usuario:<input type="text" name="passgalopin" size="15"><BR>
+	Servidor:<input type="text" name="servergalopin" size="15"><BR>
+	Puerto:<input type="text" name="portgalopin" size="15"><BR>
 	</td>
      </TR>
      
@@ -52,7 +52,7 @@ Importacion y exportacion<BR>
 	   <input type="checkbox">Confirmar cada inserción 
           <br>
         </TD><td valign="top">
-          Clientes y Proveedores [<A HREF="sincclientes.php">sincronizar</A>]<BR>
+          Clientes y Proveedores [<A HREF="javascript:document.form1.action='sincclientes.php';document.form1.submit()">sincronizar</A>]<BR>
 	  <input type="checkbox">Actualizar Galopin con nuevos clientes<BR>
 	  <input type="checkbox">Confirmar cada inserción <BR>
         </td></tr>
@@ -68,8 +68,9 @@ Importacion y exportacion<BR>
 	<input type="checkbox">Comprobar modificacion de facturas<BR>
 	</TD>
 	<td valign="top">
-	Facturas Emitidas/Soportadas
-	</td></tr>
+	  <p>Facturas Emitidas/Soportadas
+</p>
+	  <p>[<A HREF="javascript:document.form1.action='sincfacturas.php';document.form1.submit()">sincronizar</a>]</p></td></tr>
 	<tr><TD valign="top">
 	Asientos
 	Asiento inteligente a aplicar <SELECT ></SELECT><br>
@@ -81,13 +82,13 @@ Importacion y exportacion<BR>
 	Cobros/Pagos
 	</td></tr>
 	
-	  </FORM>
+	  
     </TABLE><BR>
     <input type="button" value="Guardar">
     <input type="button" value="Ejecutar">
     <input type="button" value="Probar">
 <!-- END Cuerpo de la página -->
-</TD></TR></table>
+</TD></TR></FORM></table>
 <?php include("inc/pie.inc") ?>
 </BODY>
 </HTML>

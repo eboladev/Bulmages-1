@@ -164,18 +164,7 @@ void empresa::maximiza() {
  * y hace los pasos necesarios.
 ************************************************************************/
 int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
-  //int retorno;
   if (nombre == NULL || 1) {
-    /*
-    abreempresaview *nuevae = new abreempresaview(0,"abrirempresa",true );
-    nuevae->exec();
-    retorno = nuevae->result();
-    nombre=(char *) nuevae->nombre.ascii();
-    contrasenya= (char *) nuevae->contrasena.ascii();
-    strcpy(nombredb,nuevae->empresabd.ascii());
-    delete nuevae;
-    */
-    
     //salto el dialeg de login. Ja tinc el nom d'usuari, password i el nom de la base de dades.
     nombre = *User;
     contrasenya = *Passwd;

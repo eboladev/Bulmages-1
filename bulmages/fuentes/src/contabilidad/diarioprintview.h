@@ -29,23 +29,31 @@
 #include <qtoolbutton.h>
 #include <qradiobutton.h>
 
+#include "empresa.h"
+
 /***@author Tomeu Borrás Riera */
 
 class DiarioPrintView : public DiarioPrintDlg  {
    Q_OBJECT
 public:
    char *fichero;
-   postgresiface2 *conexionbase;
+   postgresiface2 *conexionbase;  
+   empresa *empresaactual;
+   int numdigitos;
+   
 public:
    int inicializa(postgresiface2 *);
 	void inicializa1(QString, QString);
-	DiarioPrintView(QWidget *parent=0, const char *name=0);
+	DiarioPrintView(empresa *emp, QWidget *parent, const char *name);
 	~DiarioPrintView();
    void presentar(char *tipus="html");
    // OJO con esta función que es una funcion para probar el Report Tool Kit
    void pruebasRTK();
 public slots:
    virtual void accept();
+   virtual void boton_canales();
+   virtual void boton_ccostes();
+   
 };
 
 #endif

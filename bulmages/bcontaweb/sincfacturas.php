@@ -24,30 +24,59 @@ $bdgalopin = $valssincr->connectgalopin();
 
 echo "<H1>Galopin => BulmaGés</H1>";
 /* Realizar una consulta MYSQL */
-$consulta  = "SELECT * FROM clientes";
+$consulta  = "SELECT * FROM clientes, facturas WHERE clientes.codcliente=facturas.codcliente";
 $resultado = mysql_query($consulta) or die("La consulta fall&oacute;: " . mysql_error());
 
 /* Impresion de resultados en HTML */
 echo "<table border='1'>\n";
 while ($linea = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
    $nif = limpia($linea["nif"]);
-   $SQLQuery = "SELECT * FROM cuenta WHERE cifent_cuenta IS NOT NULL AND cifent_cuenta <> ''";
+   $codfactura = limpia($linea["codfactura"]);
+   echo "\t<tr><td><H2>$nif & $codfactura</H2>\n";  
+   $consulta1= "SELECT sum(importe) AS bimp FROM factulinea WHERE codfactura=$codfactura";
+   $resultado1 = mysql_query($consulta1) or die("La consulta fallo");
+   $res = mysql_fetch_array($resultado1, MYSQL_ASSOC);
+   $importe = $res["bimp"] * $linea["iva"] /100 + $res["bimp"];
+   
+   $SQLQuery = "SELECT * FROM cuenta, apunte WHERE cifent_cuenta IS NOT NULL AND cifent_cuenta <> '' AND apunte.idcuenta=cuenta.idcuenta";
    $result = pg_exec($dbconta,$SQLQuery);
    $filas = pg_numrows($result);
    $encontrado = 0;
    while ($filas--) {
 		$nifent = limpia(pg_result($result,$filas,"cifent_cuenta"));
+		echo "$nifent<BR>";
+		// La primera comprobacion es que las cuentas son del mismo NIF.
 		if ($nif == $nifent) {
-			$encontrado = 1;
+			echo $nifent;
+			echo "Posible candidado por coincidencia de cliente: ";
+			echo pg_result($result,$filas,"idasiento");
+			echo "<BR>";
+			$debe = pg_result($result,$filas,"debe");
+			$haber = pg_result($result,$filas,"haber");
+			$total = $debe + $haber;
+			// La siguiente comprobacion es que los importes son iguales (o casi)
+			if (abs((float)$total-(float)$importe) < 1) {
+				echo (float)$total -(float)$importe;
+				echo "importe factura: $importe, total asiento: $total<BR>";
+				echo "Se ha encontrado un posible candidado para esta factura [<A HREF=''>Adjuntar</A>] <BR>";
+				// Puede haber muchas más comprobaciones:
+				// Entrada en el registro de IVA
+				// Entrada en tablas auxiliares
+				// Fecha
+				// etc etc etc, nosotros nos pararemos aqui de momento (esto es un ejemplo).
+				$encontrado = 1;
+			}// end if
 		}// end if
    }// end while 
    if ($encontrado == 0) {
-      echo "\t<tr><td><H2>$nif</H2>\n";       
-      echo "No existe el nif en BulmaGés, por tanto hay que insertarlo<BR>";
+     
+      echo "No se ha encontrado la factura <$codfactura> en BulmaGés con importe $importe, Seguramente haya que crearla.<BR>";
+	  echo "[<A href=''>Crear</a>]";
 	  //presentaarray($linea);
-	  nuevacuenta($dbconta, $linea );	
-	  echo "\t</td></tr>\n";
+	  //nuevacuenta($dbconta, $linea );	
+
    }// end if
+echo "\t</td></tr>\n";   
 }// end while
 echo "</table>\n";
 

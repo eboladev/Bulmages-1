@@ -57,7 +57,7 @@
 #define ORDENASIENTO cursorasientos->valor("ordenasiento").ascii()
 
 
-intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name ) : intapunts3dlg(parent,name) {
+intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, int flags ) : intapunts3dlg(parent,name, flags) {
    fprintf(stderr,"Constructor de intapunts3view\n");
     empresaactual = emp;
     idasiento=-1;
@@ -1723,7 +1723,6 @@ void intapunts3view::asiento_regularizacion() {
         }// end if
         totaldebe1 += totaldebe;
         totalhaber1 += totalhaber;
-
         conexionbase->nuevoborrador(idcuenta, numasiento,tr("Asiento de Regularizacion"),"", totaldebe, totalhaber,  nfecha, 0, 1, 0, 0);
         cur->siguienteregistro();
     }// end while
@@ -1741,6 +1740,7 @@ void intapunts3view::asiento_regularizacion() {
 void intapunts3view::return_numasiento() {
     boton_cargarasiento();
 }// end return_cuenta
+
 
 //**************************************************************
 //* Se ha pulsado sobre el boton de cargar asiento con lo
@@ -1859,6 +1859,7 @@ void intapunts3view::boton_duplicarasiento() {
     repinta(atoi(IDASIENTO));
     delete dupli;
 }// end boton_duplicarasiento
+
 
 void intapunts3view::boton_fecha() {
     fechaasiento1->setText("+");

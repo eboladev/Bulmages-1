@@ -54,6 +54,7 @@ public:
    int ultimoregistro();
    void cerrar();
    QString nomcampo(int);
+   int numcampo(QString);
    int numcampos();
    bool eof();
    bool bof();

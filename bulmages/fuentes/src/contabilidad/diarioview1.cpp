@@ -184,7 +184,7 @@ void diarioview1::inicializa1(QString finicial, QString ffinal, int idc_coste) {
  * Se ha pulsado sobre el boton imprimir del formulario
  **************************************************************/
 void diarioview1::boton_imprimir() {
-   DiarioPrintView *print = new DiarioPrintView(0,0);
+   DiarioPrintView *print = new DiarioPrintView(empresaactual,0,0);
    print->inicializa(conexionbase);
 	print->inicializa1(fechainicial1->text(), fechafinal1->text());
    print->exec();
@@ -199,7 +199,7 @@ void diarioview1::boton_guardar() {
   if (!fn.isEmpty()) {
      // Si se ha proporcionado un nombre de archivo valido
      // invocamos la clase diarioprint y hacemos que guarde el archivo.
-     diarioprint diariop;
+     diarioprint diariop(empresaactual);
      QString finicial = fechainicial1->text();
      QString ffinal = fechafinal1->text();
      diariop.inicializa(conexionbase);

@@ -71,6 +71,22 @@ QString cursor2::nomcampo(int campo) {
   return((QString) PQfname(result, campo));
 }// end if
 
+
+/*************************************************************
+Dado un campo esta función devuelve devuelve el entero que le
+corresponde, y si no le corresponde ninguno devuelve -1
+**************************************************************/
+int cursor2::numcampo(QString campo) {
+  int i=0;
+  while (i<numcampos() && campo != nomcampo(i) ){
+    i++;
+  }// end while
+  if (i== numcampos())
+     return(-1);
+  return(i);
+}// end numcampo
+
+
 /**********************************************************************
  * Esta funcion devuelve el valor del campo posicion del registro
  * pasado, si se pasa -1 como registro se devuelve el registro actual
@@ -163,10 +179,6 @@ int postgresiface2::inicializa(QString nomdb) {
        conexion.sprintf("hostaddr=%s port=%s dbname=%s",pghost.ascii(),pgport.ascii(), dbName.ascii());
     }// end if   
     fprintf(stderr,"%s\n",conexion.ascii());
-
-//    fprintf(stderr,"Inicializamos la nueva definicion de la base de datos\n");
-//    fprintf(stderr,"-----------------------------------------------------\n");
-//    conn = PQsetdb(pghost, pgport, pgoptions, pgtty, dbName);
     conn = PQconnectdb(conexion);
     if (PQstatus(conn) == CONNECTION_BAD)  {
         fprintf(stderr, "Connection to database '%s' failed.\n", dbName.ascii());

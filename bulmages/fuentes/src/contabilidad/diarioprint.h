@@ -27,7 +27,7 @@
 #include <string>
 using std::string;
 #include "postgresiface2.h"
-
+#include "empresa.h"
 /***@author Tomeu Borrás Riera */
 
 class diarioprint {
@@ -36,8 +36,10 @@ public:
    char *ffinal;
    char *fichero;
    postgresiface2 *conexionbase;  
+   empresa *empresaactual;
+
 public: 
-   diarioprint();
+   diarioprint(empresa *);
    ~diarioprint();
    int inicializa(postgresiface2 *);
    void inicializa1(char *, char *);
