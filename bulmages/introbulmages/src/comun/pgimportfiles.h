@@ -94,7 +94,10 @@ private:
     	QString m_rIvaCIF;
     	QString m_rIvaIdFPago;
     	QString m_rIvRecRegIva;
-	
+	/// Variables usadas para almacenar los datos de la tabla de IVA's
+	QString m_idTipoIva;
+	QString m_baseIva;
+	QString m_nombreTipoIva;
 	
 	/// El tagpadre indica en que posición estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc
 	QString tagpadre;

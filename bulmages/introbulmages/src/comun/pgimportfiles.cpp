@@ -15,6 +15,7 @@
  ***************************************************************************/
 #include <qdatetime.h>
 #include "pgimportfiles.h"
+#include "funcaux.h"
 #include <qtextstream.h>
 #include <qobject.h>
 #include <qstring.h>
@@ -433,9 +434,6 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	"<FUGIT version='0.3.1' origen='BulmaGés'"
         " date='" << QDate().toString(Qt::ISODate) << "'>\n";
 	
-
-	
-	
 	/// Sólo se van a exportar las cuentas utilizadas
 	query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre ORDER BY codpadre";
 	conexionbase->begin();
@@ -443,12 +441,12 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	conexionbase->commit();
 	while (!curcta->eof()) {
 		stream << "<CUENTA>\n";
-		stream << "\t<IDCUENTA>"       << curcta->valor("idcuenta")      << "</IDCUENTA>\n";
-		stream << "\t<CODIGO>"         << curcta->valor("codigo")        << "</CODIGO>\n";
-		stream << "\t<DESCRIPCION>"    << curcta->valor("descripcion")   << "</DESCRIPCION>\n";
-		stream << "\t<CIFENT_CUENTA>"  << curcta->valor("cifent_cuenta") << "</CIFENT_CUENTA>\n";
-		stream << "\t<DIRENT_CUENTA>"  << curcta->valor("dirent_cuenta") << "</DIRENT_CUENTA>\n";
-		stream << "\t<CODPADRE>"       << curcta->valor("codpadre")      << "</CODPADRE>\n";
+		stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
+		stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
+		stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
+		stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
+		stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
+		stream << "\t<CODPADRE>"       << XMLProtect(curcta->valor("codpadre"))      << "</CODPADRE>\n";
 		stream << "</CUENTA>\n";
 		curcta->siguienteregistro();
 	}// end while
@@ -462,10 +460,10 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	conexionbase->commit();
 	while (!curtiva->eof()) {
 		stream << "<TIPOIVA>\n";
-		stream << "\t<IDTIPOIVA>"       << curtiva->valor("idtipoiva")      << "</IDTIPOIVA>\n";
-		stream << "\t<NOMBRETIPOIVA>"   << curtiva->valor("nombretipoiva")      << "</NOMBRETIPOIVA>\n";
-		stream << "\t<PORCENTAJETIPOIVA>"       << curtiva->valor("porcentajetipoiva")      << "</PORCENTAJETIPOIVA>\n";
-		stream << "\t<CUENTA>"       << curtiva->valor("codigo")      << "</CUENTA>\n";
+		stream << "\t<IDTIPOIVA>"       << XMLProtect(curtiva->valor("idtipoiva"))      << "</IDTIPOIVA>\n";
+		stream << "\t<NOMBRETIPOIVA>"   << XMLProtect(curtiva->valor("nombretipoiva"))      << "</NOMBRETIPOIVA>\n";
+		stream << "\t<PORCENTAJETIPOIVA>"       << XMLProtect(curtiva->valor("porcentajetipoiva"))      << "</PORCENTAJETIPOIVA>\n";
+		stream << "\t<CUENTA>"       << XMLProtect(curtiva->valor("codigo"))      << "</CUENTA>\n";
 
 		stream << "</TIPOIVA>\n";
 		curtiva->siguienteregistro();
@@ -504,18 +502,18 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 			stream << "\t<APUNTE>\n";
 			QString fecha = curap->valor("fecha");
 			fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
-			stream << "\t\t<FECHA>"               << fecha << "</FECHA>\n";
-			stream << "\t\t<CODIGO>"              << curap->valor("codigo")             << "</CODIGO>\n";
-			stream << "\t\t<DEBE>"                << curap->valor("debe")               << "</DEBE>\n";
-			stream << "\t\t<HABER>"               << curap->valor("haber")              << "</HABER>\n";
-			stream << "\t\t<CONCEPTOCONTABLE>"    << curap->valor("conceptocontable")   << "</CONCEPTOCONTABLE>\n";
-			stream << "\t\t<IDCANAL>"      << curap->valor("idcanal")     << "</IDCANAL>\n";
-			stream << "\t\t<CANAL>"        << curap->valor("nomcanal")    << "</CANAL>\n";
-			stream << "\t\t<IDC_COSTE>"    << curap->valor("idc_coste")   << "</IDC_COSTE>\n";	
-			stream << "\t\t<C_COSTE>"      << curap->valor("nc_coste")    << "</C_COSTE>\n";
-			stream << "\t\t<PUNTEO>"       << curap->valor("punteo")      << "</PUNTEO>\n";
-			stream << "\t\t<ORDEN>"        << curap->valor("orden")       << "</ORDEN>\n";
-			stream << "\t\t<CONTRAPARTIDA>"<< curap->valor("codcontrapartida")<< "</CONTRAPARTIDA>\n";
+			stream << "\t\t<FECHA>"               << XMLProtect(fecha) << "</FECHA>\n";
+			stream << "\t\t<CODIGO>"              << XMLProtect(curap->valor("codigo"))             << "</CODIGO>\n";
+			stream << "\t\t<DEBE>"                << XMLProtect(curap->valor("debe"))               << "</DEBE>\n";
+			stream << "\t\t<HABER>"               << XMLProtect(curap->valor("haber"))              << "</HABER>\n";
+			stream << "\t\t<CONCEPTOCONTABLE>"    << XMLProtect(curap->valor("conceptocontable"))   << "</CONCEPTOCONTABLE>\n";
+			stream << "\t\t<IDCANAL>"      << XMLProtect(curap->valor("idcanal"))     << "</IDCANAL>\n";
+			stream << "\t\t<CANAL>"        << XMLProtect(curap->valor("nomcanal"))    << "</CANAL>\n";
+			stream << "\t\t<IDC_COSTE>"    << XMLProtect(curap->valor("idc_coste"))   << "</IDC_COSTE>\n";	
+			stream << "\t\t<C_COSTE>"      << XMLProtect(curap->valor("nc_coste"))    << "</C_COSTE>\n";
+			stream << "\t\t<PUNTEO>"       << XMLProtect(curap->valor("punteo"))      << "</PUNTEO>\n";
+			stream << "\t\t<ORDEN>"        << XMLProtect(curap->valor("orden"))       << "</ORDEN>\n";
+			stream << "\t\t<CONTRAPARTIDA>"<< XMLProtect(curap->valor("codcontrapartida"))<< "</CONTRAPARTIDA>\n";
 			
 			
 			/// Hacemos la exportación de registros de IVA
@@ -527,27 +525,29 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 			conexionbase->commit();
 			while (!curreg->eof()) {
 				stream << "\t\t<REGISTROIVA>\n";
-				stream << "\t\t\t<CONTRAPARTIDA>"  << curreg->valor("codigo")  << "</CONTRAPARTIDA>\n";
-				stream << "\t\t\t<BASEIMP>"        << curreg->valor("baseimp")        << "</BASEIMP>\n";
-				stream << "\t\t\t<IVA>"            << curreg->valor("iva")            << "</IVA>\n";
-				stream << "\t\t\t<FFACTURA>"       << curreg->valor("ffactura")       << "</FFACTURA>\n";
-				stream << "\t\t\t<FACTURA>"        << curreg->valor("factura")        << "</FACTURA>\n";
-				stream << "\t\t\t<NUMORDEN>"       << curreg->valor("numorden")       << "</NUMORDEN>\n";
-				stream << "\t\t\t<CIF>"            << curreg->valor("cif")            << "</CIF>\n";
-				stream << "\t\t\t<IDFPAGO>"        << curreg->valor("idfpago")        << "</IDFPAGO>\n";
-				stream << "\t\t\t<RECTIFICAAREGISTROIVA>"        << curreg->valor("rectificaaregistroiva")        << "</RECTIFICAAREGISTROIVA>\n";
+				stream << "\t\t\t<CONTRAPARTIDA>"  << XMLProtect(curreg->valor("codigo"))  << "</CONTRAPARTIDA>\n";
+				stream << "\t\t\t<BASEIMP>"        << XMLProtect(curreg->valor("baseimp"))        << "</BASEIMP>\n";
+				stream << "\t\t\t<IVA>"            << XMLProtect(curreg->valor("iva"))            << "</IVA>\n";
+				stream << "\t\t\t<FFACTURA>"       << XMLProtect(curreg->valor("ffactura"))       << "</FFACTURA>\n";
+				stream << "\t\t\t<FACTURA>"        << XMLProtect(curreg->valor("factura"))        << "</FACTURA>\n";
+				stream << "\t\t\t<NUMORDEN>"       << XMLProtect(curreg->valor("numorden"))       << "</NUMORDEN>\n";
+				stream << "\t\t\t<CIF>"            << XMLProtect(curreg->valor("cif"))            << "</CIF>\n";
+				stream << "\t\t\t<IDFPAGO>"        << XMLProtect(curreg->valor("idfpago"))        << "</IDFPAGO>\n";
+				stream << "\t\t\t<RECTIFICAAREGISTROIVA>"        << XMLProtect(curreg->valor("rectificaaregistroiva"))        << "</RECTIFICAAREGISTROIVA>\n";
 				
 				
 				/// Hacemos la exportación deIVAs
-				query  = "SELECT * FROM iva";
+				query  = "SELECT * FROM iva ";
+				query += " LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva ";
 				query += " WHERE idregistroiva = "+curreg->valor("idregistroiva");
 				conexionbase->begin();
 				cursor2 *curiva = conexionbase->cargacursor(query, "queryiva");
 				conexionbase->commit();
 				while (!curiva->eof()) {
 					stream << "\t\t\t<RIVA>\n";
-					stream << "\t\t\t\t<IDTIPOIVA>"        << curiva->valor("idtipoiva")        << "</IDTIPOIVA>\n";
-					stream << "\t\t\t\t<BASEIVA>"          << curiva->valor("baseiva")        << "</BASEIVA>\n";
+					stream << "\t\t\t\t<IDTIPOIVA>"        << XMLProtect(curiva->valor("idtipoiva"))        << "</IDTIPOIVA>\n";
+					stream << "\t\t\t\t<NOMBRETIPOIVA>"    << XMLProtect(curiva->valor("nombretipoiva"))    << "</NOMBRETIPOIVA>\n";
+					stream << "\t\t\t\t<BASEIVA>"          << XMLProtect(curiva->valor("baseiva"))          << "</BASEIVA>\n";
 					stream << "\t\t\t</RIVA>\n";
 					curiva->siguienteregistro();
 				}// end while
@@ -568,17 +568,16 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile) {
 	}// end while
 	delete curas;
 	
-	
-
-	
-	
 	stream << "</FUGIT>\n";
 	alerta (numreg,numreg);
 	return 0;
 }// end if
 
 
-
+/** \brief Función para pasar de un archivo XML a Bulmagés
+  * Crea un objeto del tipo \ref StructureParser y lo invoca para que haga la imporación del
+  * archivo XML
+  */
 int pgimportfiles::XML2Bulmages (QFile &fichero) {
         StructureParser handler(conexionbase, alerta);
         QXmlInputSource source( &fichero );
@@ -662,7 +661,9 @@ bool StructureParser::startElement( const QString&, const QString&, const QStrin
 	delete cur;   
     	tagpadre = "REGISTROIVA";
     }// end if
-    
+    if (qName == "RIVA") {
+    	tagpadre = "RIVA";
+    }// end if
     if (qName == "CUENTA") {
     	tagpadre = "CUENTA";
     }// end if
@@ -729,7 +730,6 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
     	codigopadre = cadintermedia;
     
     /// Si es un registro de iva vamos a por el
-/// Si es una punte hacemos su inserción.
     if (qName == "REGISTROIVA") {
     	QString query = "UPDATE registroiva SET contrapartida=id_cuenta('"+m_rIvaContrapartida+"'), ffactura='"+m_rIvaFFactura+"'";
 	
@@ -759,6 +759,26 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
     if (qName == "RECTIFICAAREGISTROIVA" && tagpadre == "REGISTROIVA")
     	m_rIvRecRegIva = cadintermedia;
 
+    /// Inserción de IVA's dentro del registro de IVA
+    if (qName == "RIVA") {
+    	QString query1 = "SELECT idtipoiva FROM tipoiva WHERE nombretipoiva = '"+m_nombreTipoIva+"'";
+	
+	conexionbase->begin();
+	cursor2 * cur = conexionbase->cargacursor(query1,"elqueryd");
+	if ( !cur->eof() ) {
+		QString query = "INSERT INTO IVA (idregistroiva, idtipoiva, baseiva) VALUES ("+m_idRegistroIva+", "+cur->valor("idtipoiva")+", "+m_baseIva+")";
+		conexionbase->ejecuta(query);
+	}// end if
+	delete cur;
+	conexionbase->commit();
+    }// end if
+    if (qName == "IDTIPOIVA" && tagpadre == "RIVA")
+    	m_idTipoIva = cadintermedia;
+    if (qName == "NOMBRETIPOIVA" && tagpadre == "RIVA") 
+    	m_nombreTipoIva = cadintermedia;
+    if (qName == "BASEIVA" && tagpadre == "RIVA")
+    	m_baseIva = cadintermedia;
+	    
     cadintermedia = "";
     return TRUE;
 }// end endElement
