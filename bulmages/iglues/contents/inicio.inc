@@ -5,6 +5,23 @@ $body = '
 <div id="noticies">
 <!-- <img src=""> -->
 <h1>&Uacute;ltimas Noticias</h1>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
+<td width=100>16/02/2005</td>
+<td><center><b>Liberada Nueva Versión BulmaGés 0.45</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Hoy Tomeu Borràs ha anunciado en la lista de BulmaGés la liberación de la nueva versión empaquetada 0.45. En ella se incluyen cambios como la entrada de líneas de IVA, gestión de cobros y pagos, además de depuración de los bugs encontrados hasta el momento de la liberación. También se han eliminado aquellas opciones que no eran operativas y que inducian a confusión, que se habían incluido en la versión anterior.<br> 
+Aquel que desee ver y probar los últimos cambios del proyecto debe recurrir al CVS y compilar la versión de desarrollo, que incluye otros módulos que están en fase de desarrollo. 
+<br><br>La nueva versión se puede bajar de <A href="http://prdownloads.sourceforge.net/bulmages/installbulmages_0_4_5.tgz?download" TARGET="nueva">aquí</A>. La versión de desarrollo está accesible como siempre desde el cvs de sourceforge.net.
+</td>
+</tr>
+</table>
+
+<br>
+
+
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
 <td width=100>31/01/2005</td>
