@@ -18,10 +18,12 @@
 #define LIBROMAYORPRINT_H
 
 #include <qwidget.h>
+#ifndef WIN32
 #include <unistd.h>
+#include <sys/wait.h>
+#endif
 #include <errno.h>
 #include <sys/types.h>
-#include <sys/wait.h>
 #include <string>
 using std::string;
 

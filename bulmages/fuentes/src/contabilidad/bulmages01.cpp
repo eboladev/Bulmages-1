@@ -13,9 +13,10 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+#ifndef WIN32
+#include <unistd.h>
+#endif
 
- #include <unistd.h>
- 
 // Qt includes
 #include <qaccel.h>
 
@@ -1125,9 +1126,10 @@ void Bulmages01::slotAyuda() {
 
 
 void Bulmages01::slotAyudai() {
-   char *args[]={"http://www.conetxia.com/bulmages/manualindex.php?version=0.3.5","http://www.conetxia.com/bulmages/manualindex.php?version=0.3.5",NULL};
+   char *args[]={"http://www.conetxia.com/bulmages/manualindex.php?version=0.3.9","http://www.conetxia.com/bulmages/manualindex.php?version=0.3.9",NULL};
    int pid;
    int error;
+#ifndef WIN32
    if ((pid=fork()) < 0) {
        perror ("Fork failed");
        exit(errno);
@@ -1135,6 +1137,7 @@ void Bulmages01::slotAyudai() {
    if (!pid) {
       error = execvp(confpr->valor(CONF_NAVEGADOR).c_str(),args);
    }// end if
+#endif
 }// end slotAyudai
 
 void Bulmages01::slotSCuentas() {

@@ -26,3 +26,7 @@ INCLUDEPATH = ../../src/estadisticas \
               ../../src \
               /usr/include/qt 
 LIBS += -lqt-mt 
+
+win32 {
+    DEFINES += WIN32
+}

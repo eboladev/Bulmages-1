@@ -1533,7 +1533,7 @@ void intapunts3view::return_fechaasiento() {
         query.sprintf("UPDATE asiento SET fecha='%s' WHERE idasiento='%s'",fechaasiento1->text().ascii(),IDASIENTO);
         fprintf(stderr,"%s\n",query.ascii());
         resultado = conexionbase->ejecuta(query);
-        if (resultado != 0 and resultado != 42501) {
+        if (resultado != 0 && resultado != 42501) {
             conexionbase->rollback();
         } else {
             conexionbase->commit();

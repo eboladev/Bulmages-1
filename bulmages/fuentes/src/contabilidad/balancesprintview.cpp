@@ -83,6 +83,7 @@ void balancesprintview::accept() {
        delete cursor;
        fclose(mifile);
    }// end if
+#ifndef WIN32
    if ((pid=fork()) < 0) {
         perror ("Fork failed");
         exit(errno);
@@ -90,6 +91,7 @@ void balancesprintview::accept() {
    if (!pid) {
       error = execvp(confpr->valor(CONF_EDITOR).c_str(),args);
    }// end if
+#endif
 //   done(1);
 }// end accept
 

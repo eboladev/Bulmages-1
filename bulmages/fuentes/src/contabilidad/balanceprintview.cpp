@@ -29,8 +29,9 @@
 #include <qtable.h>
 #include <qtoolbutton.h>
 
+#ifndef WIN32
 #include <unistd.h>
-
+#endif
 
 BalancePrintView::BalancePrintView(QWidget *parent, const char *name ) : BalancePrintDlg(parent,name) {
 	fichero = NULL;
@@ -147,7 +148,7 @@ void BalancePrintView::boton_codigofinal() {
  * Se ha pulsado sobre el boton aceptar del formulario
  **************************************************************/
 void BalancePrintView::presentar(char *tipus){
-
+#ifndef WIN32
    int txt, html, txtapren, htmlapren;
    int error;
    int pid;
@@ -367,4 +368,5 @@ void BalancePrintView::presentar(char *tipus){
          }
       }
    }
+#endif
 }

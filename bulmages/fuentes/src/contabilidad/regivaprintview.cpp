@@ -17,7 +17,9 @@
  ***************************************************************************/
 
 #include "regivaprintview.h"
+#ifndef WIN32
 #include <unistd.h>
+#endif
 
 regivaprintview::regivaprintview(QWidget *parent, const char *name ) : regivaprintdlg(parent,name) {
   	fichero = NULL;
@@ -80,6 +82,7 @@ void regivaprintview::inicializa1(QString finicial1, QString ffinal1) {
  **************************************************************/
 
 void regivaprintview::presentar(char *tipus){
+#ifndef WIN32
 
    int txt, html, txtapren, htmlapren;
    int error;
@@ -237,6 +240,8 @@ void regivaprintview::presentar(char *tipus){
          }// end while
          // Vaciamos el cursor de la base de datos.
          delete cursorapt;
+
+#ifndef WIN32
          if (txt) {
             fitxersortidatxt.close();
             //presentació txt normal
@@ -260,7 +265,9 @@ void regivaprintview::presentar(char *tipus){
                error = execvp(confpr->valor(CONF_NAVEGADOR).c_str(),argshtml);
             }
          }
+#endif
       }
    }
+#endif
 }
 

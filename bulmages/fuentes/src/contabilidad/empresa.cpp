@@ -33,10 +33,11 @@
 
 
 #include <qobject.h>
+#ifndef WIN32
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-
+#endif
 
 // #define __DEBUG__
 
@@ -563,6 +564,7 @@ int empresa::guardarempresa() {
      args[1]=(char *) nombreDB.ascii();
      args[2]=(char *) fn.ascii();
      args[3]=NULL;
+#ifndef WIN32
      if ((pid=fork()) < 0) {
        perror ("Fork failed");
        exit(errno);
@@ -574,6 +576,7 @@ int empresa::guardarempresa() {
      if (pid) {
         waitpid (pid, NULL, 0);
      }// end if
+#endif
   }// end if
   return(0);  
 }// end guardarempresa
@@ -596,12 +599,12 @@ int empresa::cargarempresa() {
      // Para cargar la empresa debe estar sin ningun usuario dentro de ella.
      delete conexionbase2;
      conexionbase2 = new postgresiface2();
+#ifndef WIN32
      if ((pid=fork()) < 0) {
        perror ("Fork failed");
        exit(errno);
      }// end if
      if (!pid) {
-
         string argumentos = confpr->valor(CONF_EJECUTABLES) + "cargaemp";
         fprintf(stderr,"Ejecutamos el cargaemp\n");
         error = execvp(argumentos.c_str(),args);
@@ -613,6 +616,7 @@ int empresa::cargarempresa() {
      inicializa();
      inicializa1(pWorkspace);
      maximiza();
+#endif
   }// end if
   return(0);
 }// end cargarempresa
@@ -647,6 +651,7 @@ int empresa::borrarempresa() {
   delete cursoraux;
   delete metabase;
   nombre=NULL;
+#ifndef WIN32
   if ((pid=fork()) < 0) {
         perror ("Fork failed");
         exit(errno);
@@ -657,6 +662,7 @@ int empresa::borrarempresa() {
   } else {
         waitpid (pid, NULL, 0);
   }// end if
+#endif
   cambiarempresa();
 */  
   return(0);
@@ -712,6 +718,7 @@ void empresa::nuevoejercicio() {
        args[1]=nombredb;
        args[2]="/tmp/bulmacop.pgdump";
        args[3]=NULL;
+#ifndef WIN32
        if ((pid=fork()) < 0) {
          perror ("Fork failed");
          exit(errno);
@@ -741,7 +748,7 @@ void empresa::nuevoejercicio() {
        if (pid) {
           waitpid (pid, NULL, 0);
        }// end if
-
+#endif
        strcpy(nombredb,nnombredb.ascii());
     }// end if
     delete cur;
