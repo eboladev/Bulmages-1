@@ -3,59 +3,58 @@
     <name>BModContabilidad</name>
     <message>
         <source>Cerrar...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Close...</translation>
     </message>
     <message>
         <source>Realmente deseas Salir?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Are you soure?</translation>
     </message>
 </context>
 <context>
     <name>BalancePrintDlg</name>
     <message encoding="UTF-8">
         <source>Impresión del Balance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Print Balance</translation>
     </message>
     <message>
         <source>Datos Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">List Data</translation>
     </message>
     <message>
         <source>Centro de Coste</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cost Center</translation>
     </message>
     <message>
         <source>Canal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Chanel</translation>
     </message>
     <message>
         <source>Nivel de Cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Acount Level</translation>
     </message>
     <message>
         <source>Incluir niveles superiores.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Include upper levels.</translation>
     </message>
     <message>
         <source>Incluir resultados parciales</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Include partial results</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">First date</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Last Date</translation>
     </message>
     <message encoding="UTF-8">
-        <source>Código Inicial
-</source>
-        <translation type="unfinished"></translation>
+        <source>Código Inicial</source>
+        <translation type="unfinished">First Code</translation>
     </message>
     <message encoding="UTF-8">
         <source>Código Final</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Last Code</translation>
     </message>
     <message>
         <source>buttonGroup1</source>
@@ -63,26 +62,26 @@
     </message>
     <message>
         <source>Texto Plano</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Plain Text</translation>
     </message>
     <message>
         <source>HTML</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HTML</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cancel</translation>
     </message>
     <message>
         <source>Imprimir</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Print</translation>
     </message>
 </context>
 <context>
     <name>Bulmages01</name>
     <message>
         <source>Bulmages </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bulmages </translation>
     </message>
     <message>
         <source>Cut</source>
@@ -228,21 +227,21 @@ Enables/disables the full screen mode</source>
     </message>
     <message>
         <source>Corrector</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Corrector</translation>
     </message>
     <message>
         <source>&amp;Corrector</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Corrector</translation>
     </message>
     <message>
         <source>Muestra/Oculta el corrector</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show/Hide Corrector</translation>
     </message>
     <message>
         <source>Corrector
 
 Muestra/oculta el corrector</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show/Hide Corrector</translation>
     </message>
     <message>
         <source>New Window</source>
@@ -300,265 +299,265 @@ Tiles all windows</source>
     </message>
     <message>
         <source>Acerca de </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">About...</translation>
     </message>
     <message>
         <source>&amp;Acerca de ...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;About...</translation>
     </message>
     <message>
         <source>Sobre la aplicacion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">About...</translation>
     </message>
     <message>
         <source>Acerca de ...
 
 Informacion sobre los autores de la aplicacion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">About authors</translation>
     </message>
     <message>
         <source>Plan Contable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Char of Accounts</translation>
     </message>
     <message>
         <source>&amp;Plan Contable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Char of Accounts</translation>
     </message>
     <message>
         <source>Muestra el plan contable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Char of Accounts</translation>
     </message>
     <message>
         <source>Grupos Contables</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Account Groups</translation>
     </message>
     <message>
         <source>&amp;Grupos Contables</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Account&amp;Groups</translation>
     </message>
     <message>
         <source>Muestra los grupos contables</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show Account Groups</translation>
     </message>
     <message>
         <source>Listado de Cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Account List</translation>
     </message>
     <message>
         <source>&amp;Listado de Cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Account List</translation>
     </message>
     <message>
         <source>Muestra los listados de las cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show Account Lists</translation>
     </message>
     <message>
         <source>Introducci&#xf3;n de Apuntes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">accounting entry</translation>
     </message>
     <message>
         <source>&amp;Introducci&#xf3;n de Apuntes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">accounting entry</translation>
     </message>
     <message>
         <source>Permite introducir Apuntes Contables</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Let accounting entry</translation>
     </message>
     <message>
         <source>Asientos Inteligentes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Inteligent accounting entry</translation>
     </message>
     <message>
         <source>&amp;Asientos Inteligentes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Inteligent accounting entry</translation>
     </message>
     <message>
         <source>Permite introducir Apuntes Contables Mediante Plantillas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Let template accounting entry</translation>
     </message>
     <message>
         <source>Listado de Apuntes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Account List</translation>
     </message>
     <message>
         <source>&amp;Listado de Apuntes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Account List</translation>
     </message>
     <message>
         <source>Listar Apuntes Contables</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">List accounting entries</translation>
     </message>
     <message>
         <source>Propiedades Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Company Settings</translation>
     </message>
     <message>
         <source>&amp;Propiedades Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Company Settings</translation>
     </message>
     <message>
         <source>Propiedades de la Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Company Settings</translation>
     </message>
     <message>
         <source>Copia Seguridad Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DataBase Backup</translation>
     </message>
     <message>
         <source>&amp;Guardar Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">save Company data</translation>
     </message>
     <message>
         <source>Hacer Copia de Seguridad de la Empresa Actual</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Present Company Backup</translation>
     </message>
     <message>
         <source>Restaurar Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Recover Company data</translation>
     </message>
     <message>
         <source>&amp;Cargar Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Load Database</translation>
     </message>
     <message>
         <source>Restaurar de Seguridad de la Empresa Actual</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Recover Present Company data</translation>
     </message>
     <message>
         <source>Nueva Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Create New Company</translation>
     </message>
     <message>
         <source>&amp;Nueva Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Create New Company</translation>
     </message>
     <message>
         <source>Crear una Empresal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Create New Company</translation>
     </message>
     <message>
         <source>Crear una empresa nueva</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Create New Company</translation>
     </message>
     <message>
         <source>Asiento de Cierre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Make close account entry</translation>
     </message>
     <message>
         <source>Asiento de &amp;Cierre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Make close account entry</translation>
     </message>
     <message>
         <source>Crear el asiento de cierre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Make close account entry</translation>
     </message>
     <message>
         <source>Asiento de Regularizaci&#xf3;n</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Make regularization account entry</translation>
     </message>
     <message>
         <source>Asiento de &amp;Regularizaci&#xf3;n</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Make regularization account entry</translation>
     </message>
     <message>
         <source>Regularizar Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Make regularization account entry</translation>
     </message>
     <message>
         <source>Asiento de Apertura</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Make open account entry</translation>
     </message>
     <message>
         <source>Asiento de &amp;Apertura</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Make open account entry</translation>
     </message>
     <message>
         <source>Abrir el asiento de apertura</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Make open account entry</translation>
     </message>
     <message>
         <source>Borrar Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erase company</translation>
     </message>
     <message>
         <source>&amp;Borrar Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erase company</translation>
     </message>
     <message>
         <source>Borrar una Empresal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erase company</translation>
     </message>
     <message>
         <source>Borrar una empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erase company</translation>
     </message>
     <message>
         <source>Cambiar Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Change company</translation>
     </message>
     <message>
         <source>&amp;Cambiar Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">change company</translation>
     </message>
     <message>
         <source>Cambiar de Empresa o de ejercicio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Change company or year</translation>
     </message>
     <message>
         <source>Cambiar de empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">change company</translation>
     </message>
     <message>
         <source>Libro Mayor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Major book</translation>
     </message>
     <message>
         <source>&amp;Libro Mayor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Major book</translation>
     </message>
     <message>
         <source>Ver el libro Mayor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">view Major book</translation>
     </message>
     <message>
         <source>Libro Diario</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Daily book</translation>
     </message>
     <message>
         <source>&amp;Libro Diario</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Daily book</translation>
     </message>
     <message>
         <source>Ver el libro Diario</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">view Daily book</translation>
     </message>
     <message>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Balance</translation>
     </message>
     <message>
         <source>&amp;Balance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Balance</translation>
     </message>
     <message>
         <source>Ver balance</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">view Balance</translation>
     </message>
     <message>
         <source>Balance Jerarquico</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">hierarchy Balance</translation>
     </message>
     <message>
         <source>&amp;Balance Jerarquico</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">hierarchy Balance</translation>
     </message>
     <message>
         <source>Ver balance Jerarquico</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">view hierarchy Balance</translation>
     </message>
     <message>
         <source>Ver balance jerarquico</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">view hierarchy Balance</translation>
     </message>
     <message>
         <source>Perdidas y ganancias av</source>
@@ -742,11 +741,11 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Ordenar Asientos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">sort Acc. entries</translation>
     </message>
     <message>
         <source>&amp;Ordenar Asientos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">sort Acc. entries</translation>
     </message>
     <message>
         <source>Reorganiza los Asientos</source>
@@ -758,23 +757,23 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>&amp;Seguimiento de Cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Account Tracking</translation>
     </message>
     <message>
         <source>Balance Gr&#xe1;fico</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Graphical Balance</translation>
     </message>
     <message>
         <source>&amp;Balance Gr&#xe1;fico</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Graphical Balance</translation>
     </message>
     <message>
         <source>Filtro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Filter</translation>
     </message>
     <message>
         <source>&amp;Filtro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Filter</translation>
     </message>
     <message>
         <source>Masas Patrimoniales</source>
@@ -786,7 +785,7 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Balances</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Balance</translation>
     </message>
     <message>
         <source>&amp;Balances</source>
@@ -794,11 +793,11 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Nuevo Ejercicio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">New year</translation>
     </message>
     <message>
         <source>&amp;Nuevo Ejercicio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">New year</translation>
     </message>
     <message>
         <source>Sustituir Cuentas</source>
@@ -810,35 +809,35 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Que es ??</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">What is it??</translation>
     </message>
     <message>
         <source>&amp;Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Company</translation>
     </message>
     <message>
         <source>&amp;Asiento</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Acc. Entry</translation>
     </message>
     <message>
         <source>&amp;Listados</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">listings</translation>
     </message>
     <message>
         <source>&amp;Estadistica</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Estadistics</translation>
     </message>
     <message>
         <source>&amp;Ventana</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Window</translation>
     </message>
     <message>
         <source>&amp;Herramientas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">tools</translation>
     </message>
     <message>
         <source>&amp;Ver</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">view</translation>
     </message>
     <message>
         <source>Listo.</source>
@@ -878,11 +877,11 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Ver Corrector...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show Corrector...</translation>
     </message>
     <message>
         <source>Plan de Cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Account Chart</translation>
     </message>
     <message>
         <source>Introducci&#xf3;n de Borrador</source>
@@ -898,7 +897,7 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Gesti&#xf3;n de Usuarios</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">User Settings</translation>
     </message>
 </context>
 <context>
@@ -908,7 +907,7 @@ Informacion sobre los autores de la aplicacion</source>
     <name>DiarioPrintDlg</name>
     <message encoding="UTF-8">
         <source>Impresión del Diario</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Print Daily book</translation>
     </message>
     <message>
         <source>Datos Listado</source>
@@ -920,7 +919,7 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Canal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Channel</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
@@ -2033,7 +2032,7 @@ patent must be licensed for everyone&apos;s free use or not licensed at all.
 
   The precise terms and conditions for copying, distribution and
 modification follow.
- 
+
 <byte value="x9"/><byte value="x9"/>    GNU GENERAL PUBLIC LICENSE
    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
 
@@ -2088,7 +2087,7 @@ above, provided that you also meet all of these conditions:
     License.  (Exception: if the Program itself is interactive but
     does not normally print such an announcement, your work based on
     the Program is not required to print an announcement.)
- 
+
 These requirements apply to the modified work as a whole.  If
 identifiable sections of that work are not derived from the Program,
 and can be reasonably considered independent and separate works in
@@ -2146,7 +2145,7 @@ access to copy from a designated place, then offering equivalent
 access to copy the source code from the same place counts as
 distribution of the source code, even though third parties are not
 compelled to copy the source along with the object code.
- 
+
   4. You may not copy, modify, sublicense, or distribute the Program
 except as expressly provided under this License.  Any attempt
 otherwise to copy, modify, sublicense or distribute the Program is
@@ -2203,7 +2202,7 @@ impose that choice.
 
 This section is intended to make thoroughly clear what is believed to
 be a consequence of the rest of this License.
- 
+
   8. If the distribution and/or use of the Program is restricted in
 certain countries either by patents or by copyrighted interfaces, the
 original copyright holder who places the Program under this License
@@ -2329,50 +2328,50 @@ Public License instead of this License.
     <name>abreempresadlg</name>
     <message>
         <source>Abrir Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Open Company</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Name</translation>
     </message>
     <message encoding="UTF-8">
         <source>Año</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">year</translation>
     </message>
     <message>
         <source>Archivo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">File</translation>
     </message>
     <message encoding="UTF-8">
         <source>Identificación</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Identity</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Login</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">password</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">accept</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">cancel</translation>
     </message>
     <message>
         <source>Ayuda</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Help</translation>
     </message>
 </context>
 <context>
     <name>actualizacionesdlg</name>
     <message>
         <source>Actualizaciones</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Updates</translation>
     </message>
     <message>
         <source>http://www.conetxia.com</source>
@@ -2380,7 +2379,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Accept</translation>
     </message>
 </context>
 <context>
@@ -2391,7 +2390,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Apuntes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Accounts</translation>
     </message>
     <message>
         <source>Registro IVA</source>
@@ -2399,7 +2398,7 @@ Public License instead of this License.
     </message>
     <message encoding="UTF-8">
         <source>Aplicación Automática</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Automatics aplication</translation>
     </message>
     <message>
         <source>Usar Aplicacion Automatica del Asiento</source>
@@ -2419,11 +2418,11 @@ Public License instead of this License.
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Accept</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cancel</translation>
     </message>
 </context>
 <context>
@@ -2442,27 +2441,27 @@ Public License instead of this License.
     </message>
     <message>
         <source>FECHA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DATE</translation>
     </message>
     <message>
         <source>CONCEPTOCONTABLE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CONCEPT</translation>
     </message>
     <message>
         <source>CODCUENTA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ACCOUNTCODE</translation>
     </message>
     <message>
         <source>DESCRIPCION</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DESCRIPTION</translation>
     </message>
     <message>
         <source>DEBE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DEBTOR</translation>
     </message>
     <message>
         <source>HABER</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CREDITOR</translation>
     </message>
     <message>
         <source>CONTRAPARTIDA</source>
@@ -2470,15 +2469,15 @@ Public License instead of this License.
     </message>
     <message>
         <source>COMENTARIO</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">COMMENT</translation>
     </message>
     <message>
         <source>CANAL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CHANNEL</translation>
     </message>
     <message>
         <source>MARCACONCILIACION</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MARK</translation>
     </message>
     <message>
         <source>IDC_COSTE</source>
@@ -2486,7 +2485,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>CENTRO COSTE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">COST CENTER</translation>
     </message>
     <message>
         <source>COL_IDIVAINTELIGENTE</source>
@@ -2502,15 +2501,15 @@ Public License instead of this License.
     </message>
     <message>
         <source>BASE IMP.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">BASE</translation>
     </message>
     <message>
         <source>IVA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">IVA</translation>
     </message>
     <message>
         <source>NUM. FACTURA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">FACT. NUMBER</translation>
     </message>
     <message>
         <source>Col. Borrador</source>
@@ -2530,11 +2529,11 @@ Public License instead of this License.
     </message>
     <message>
         <source>Num. Orden</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ord. Num.</translation>
     </message>
     <message>
         <source>CIF Empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CIF</translation>
     </message>
     <message>
         <source>Nuevo Asiento Inteligente</source>
@@ -2549,15 +2548,15 @@ Public License instead of this License.
     </message>
     <message>
         <source>Borrar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Delete</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Accept</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">cancel</translation>
     </message>
     <message encoding="UTF-8">
         <source>Amortización</source>
@@ -2569,7 +2568,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Fecha</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Date</translation>
     </message>
     <message>
         <source>Cantidad</source>
@@ -2676,15 +2675,15 @@ Public License instead of this License.
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Accept</translation>
     </message>
     <message>
         <source>Plantilla</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Template</translation>
     </message>
     <message>
         <source>Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Close</translation>
     </message>
     <message>
         <source>Fecha Asiento</source>
@@ -2699,23 +2698,23 @@ Public License instead of this License.
     </message>
     <message>
         <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Description</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Accept</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cancel</translation>
     </message>
     <message>
         <source>Numero</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Number</translation>
     </message>
     <message>
         <source>Fecha</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Date</translation>
     </message>
 </context>
 <context>
@@ -2726,11 +2725,11 @@ Public License instead of this License.
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Accept</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cancel</translation>
     </message>
 </context>
 <context>
@@ -2741,31 +2740,31 @@ Public License instead of this License.
     </message>
     <message>
         <source>Fecha</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Date</translation>
     </message>
     <message>
         <source>Debe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Debtor</translation>
     </message>
     <message>
         <source>Haber</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Creditor</translation>
     </message>
     <message>
         <source>Cerrado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Closed</translation>
     </message>
     <message>
         <source>Orden</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Order</translation>
     </message>
     <message>
         <source>Si</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">yes</translation>
     </message>
     <message>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">No</translation>
     </message>
 </context>
 <context>
@@ -2776,15 +2775,15 @@ Public License instead of this License.
     </message>
     <message>
         <source>Totales:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Total:</translation>
     </message>
     <message>
         <source>Cuenta inicial</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">first account</translation>
     </message>
     <message>
         <source>Cuenta final</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Last account</translation>
     </message>
     <message>
         <source>C. Coste</source>
@@ -2792,42 +2791,42 @@ Public License instead of this License.
     </message>
     <message>
         <source>Nivel </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Level</translation>
     </message>
     <message>
         <source>Fecha inicial</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">First Date</translation>
     </message>
     <message>
         <source>Fecha final</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Last Date</translation>
     </message>
 </context>
 <context>
     <name>balance1view</name>
     <message>
         <source>Ver Diario (Este dia)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show Daily (this day)</translation>
     </message>
     <message>
         <source>Ver Diario (Este mes)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show Daily (this month)</translation>
     </message>
     <message>
         <source>Ver Diario (Este a&#xf1;o)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show Daily (this year)</translation>
     </message>
     <message>
         <source>Ver Extracto (Este dia)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show summary (this day)</translation>
     </message>
     <message>
         <source>Ver Extracto (Este mes)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show summary (this month)</translation>
     </message>
     <message>
         <source>Ver Extracto (Este a&#xf1;o)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Show summary (this year)</translation>
     </message>
 </context>
 <context>
@@ -3817,15 +3816,15 @@ Public License instead of this License.
     </message>
     <message>
         <source>DEBE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DEBTOR</translation>
     </message>
     <message>
         <source>HABER</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CREDITOR</translation>
     </message>
     <message>
         <source>NOMBRE CUENTA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ACCOUNT NAME</translation>
     </message>
     <message>
         <source>CONTRAPARTIDA</source>
@@ -3833,19 +3832,19 @@ Public License instead of this License.
     </message>
     <message>
         <source>TIPO IVA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">IVA TYPE</translation>
     </message>
     <message>
         <source>IVA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">IVA</translation>
     </message>
     <message>
         <source>CCOSTE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">COST CENTER</translation>
     </message>
     <message>
         <source>CANAL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CHANNEL</translation>
     </message>
     <message>
         <source>IDCCOSTE</source>
@@ -3865,11 +3864,11 @@ Public License instead of this License.
     </message>
     <message>
         <source>Igual que la anterior (*)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Same as upper (*)</translation>
     </message>
     <message>
         <source>Ninguno</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">nothing</translation>
     </message>
     <message>
         <source>&amp;Seleccionar Canal</source>
@@ -3881,7 +3880,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Seleccionar Valor (+)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Search value (+)</translation>
     </message>
     <message>
         <source>Introducir Descuadre (+)</source>
@@ -3889,19 +3888,19 @@ Public License instead of this License.
     </message>
     <message>
         <source>Duplicar Apunte</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Duplicate line</translation>
     </message>
     <message>
         <source>Borrar Apunte</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Delete line</translation>
     </message>
     <message>
         <source>Subir (Ctrl Arriba)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">UP (Ctrl UP)</translation>
     </message>
     <message>
         <source>Bajar (Ctrl Abajo)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Down (Ctrl Down)</translation>
     </message>
     <message>
         <source>Ver Diario (Este dia)</source>
@@ -4382,11 +4381,11 @@ Public License instead of this License.
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">accept</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">cancel</translation>
     </message>
     <message>
         <source>Digitos de cuentas</source>
@@ -4398,20 +4397,20 @@ Public License instead of this License.
     </message>
     <message>
         <source>Digitos estandar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">standard digits</translation>
     </message>
     <message encoding="UTF-8">
         <source>xxxx --&gt; Dígitos de plan contable.
 yyyy --&gt; Dígitos de cuenta.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">xxxx --chart accounting digits. yyyy accounts digits</translation>
     </message>
     <message>
         <source>No alterar cuentas con menos de</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Don't change accounts less than</translation>
     </message>
     <message>
         <source>digitos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">digits</translation>
     </message>
     <message encoding="UTF-8">
         <source>Ampliar sólo cuentas finales</source>
@@ -4431,30 +4430,30 @@ yyyy --&gt; Dígitos de cuenta.</source>
     </message>
     <message>
         <source>Modificar plan contable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Modify accounting chart</translation>
     </message>
     <message>
         <source>Propiedades Generales</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">General settings</translation>
     </message>
     <message>
         <source>Usuarios</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Users</translation>
     </message>
     <message>
         <source>Ver</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">show</translation>
     </message>
     <message>
         <source>Modificar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Modifi</translation>
     </message>
 </context>
 <context>
     <name>regivaprintdlg</name>
     <message encoding="UTF-8">
         <source>Impresión del Registro de IVA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Print IVA reg.</translation>
     </message>
     <message>
         <source>Datos Listado</source>
@@ -4466,46 +4465,46 @@ yyyy --&gt; Dígitos de cuenta.</source>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">First Date</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Last date</translation>
     </message>
     <message>
         <source>Formato</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Format</translation>
     </message>
     <message>
         <source>Texto Plano</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Plain Text</translation>
     </message>
     <message>
         <source>HTML</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">HTML</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cancel</translation>
     </message>
     <message>
         <source>Imprimir</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Print</translation>
     </message>
 </context>
 <context>
     <name>resmensualdlg</name>
     <message>
         <source>Seguimiento de Cuentas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Account tracking</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cancel</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Accept</translation>
     </message>
     <message>
         <source>Linea 1</source>
@@ -4513,7 +4512,7 @@ yyyy --&gt; Dígitos de cuenta.</source>
     </message>
     <message>
         <source>Cuenta</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Account</translation>
     </message>
     <message>
         <source>M. Patrimonial</source>
@@ -4563,39 +4562,39 @@ yyyy --&gt; Dígitos de cuenta.</source>
     <name>usuariosdlg</name>
     <message encoding="UTF-8">
         <source>Gestión de Usuarios</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">User settings</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Name</translation>
     </message>
     <message>
         <source>1er. Apellido</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Surname 1</translation>
     </message>
     <message encoding="UTF-8">
         <source>2º. Apellido</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Surname 2</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Login</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Password</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Comments</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Accept</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cancel</translation>
     </message>
 </context>
 <context>
