@@ -3,24 +3,20 @@
 # Subdir relative project main directory: .
 # Target is a subdirs project 
 
-exists(src/gdcchart) {
-    SUBDIRS += src/gdcchart
-}
-
-exists(src/gdchart) {
-    SUBDIRS += src/gdchart
-}
-
-exists(src/reports) {
-   SUBDIRS= src/reports/rtkserver/src
-}
-
-exists(src/estadisticas) {
-    SUBDIRS += src/estadisticas
-}
-
-SUBDIRS += src
-
-TEMPLATE = subdirs 
+SUBDIRS += bulmalib \
+           src 
+TEMPLATE = subdirs
 CONFIG += release \
-          warn_on 
+warn_on
+exists(src/gdcchart){
+  SUBDIRS += src/gdcchart
+}
+exists(src/gdchart){
+  SUBDIRS += src/gdchart
+}
+exists(src/reports){
+  SUBDIRS= src/reports/rtkserver/src
+}
+exists(src/estadisticas){
+  SUBDIRS += src/estadisticas
+}
