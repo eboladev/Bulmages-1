@@ -28,7 +28,7 @@ DiarioPrintView::DiarioPrintView(empresa *emp,QWidget *parent, const char *name 
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
     numdigitos = empresaactual->numdigitosempresa();
-}
+}// end DiarioPrintView
 
 
 

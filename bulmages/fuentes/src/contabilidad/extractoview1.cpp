@@ -543,7 +543,6 @@ void extractoview1::boton_buscacuentainicial() {
    listcuentas->exec();
    codigoinicial->setText(listcuentas->codcuenta);
    delete listcuentas;
-   
    codigofinal->setText(codigoinicial->text());
    codigofinal->selectAll();
    codigofinal->setFocus();
@@ -558,10 +557,8 @@ void extractoview1::boton_buscacuentafinal() {
    listcuentas->exec();
    codigofinal->setText(listcuentas->codcuenta);
    delete listcuentas;
-   
    fechainicial1->selectAll();
    fechainicial1->setFocus();
-
 }// end boton_buscacuentafinal
 
 
