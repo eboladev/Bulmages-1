@@ -1028,6 +1028,15 @@ QString Budget::newBudgetNumber() {
 
 void Budget::presentaOpenReports() {
 	int txt=1;
+	string codigoarticulo;
+	string descripcionarticulo;
+	string cantidadlinea;
+	string preciolinea;
+	string descuentolinea;
+	string importelinea;
+	cursor2 *cursoraux;
+
+	
 	ifstream filestr((confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml").c_str());
 	string a;
 	char c [1000];
@@ -1043,16 +1052,82 @@ void Budget::presentaOpenReports() {
 			fitxersortidatxt << "\n" ;
 		}
 	}// end while
+	fitxersortidatxt << "<story>\n" ;
+	// aquí falten les dades del client
+	
+	fitxersortidatxt << "\t<nextFrame/>\n" ;
+	
+	// Dades capcelera pressupost
+	fitxersortidatxt << "\t<blockTable colWidths=\"2.5cm, 2.5cm, 2.5cm, 2.5cm\" style=\"datoscabecera\">\n" ;
+	fitxersortidatxt << "\t\t<tr><td>NIF/CIF</td><td>Cod. Clien.</td><td>Fecha</td><td>N. Presup</td></tr>\n" ;
+	fitxersortidatxt << "\t\t<tr><td>43084545</td><td>28</td><td>25/01/2005</td><td>2</td></tr>\n" ;
+	fitxersortidatxt << "\t</blockTable>\n" ;
+	fitxersortidatxt << "\t<nextFrame/>\n";
+	
+	// Dades detall pressupost
+	fitxersortidatxt << "\t<setNextTemplate name=\"others\"/>\n" ;
+	fitxersortidatxt << "\t<spacer length=\"0.5cm\" width=\"1mm\"/>" ;
+	fitxersortidatxt << "\t<blockTable colWidths=\"1.5cm, 10cm, 2cm, 2cm, 1.5cm, 2cm\" style=\"products\">" ;
+	fitxersortidatxt << "\t<tr><td>Código</td><td>Descripción</td><td>Cantidad</td><td>Precio</td><td>%Desc</td><td>Importe</td></tr>\n" ;
+
+	companyact->begin();
+	cursoraux = companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN  lpresupuesto ON presupuesto.idpresupuesto = lpresupuesto.idpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo ORDER BY idlpresupuesto ASC","elquery");
+	companyact->commit();
+	for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
+		codigoarticulo = cursoraux->valor("codarticulo").ascii();
+		descripcionarticulo = cursoraux->valor("nomarticulo").ascii();
+		preciolinea = cursoraux->valor("pvplpresupuesto").ascii();
+		cantidadlinea = cursoraux->valor("cantlpresupuesto").ascii();
+		descuentolinea = cursoraux->valor("descuentolpresupuesto").ascii();
+		importelinea = "";
+		
+		if (txt) {
+			//presentació txt normal
+			fitxersortidatxt << "\t<tr>" ;
+			fitxersortidatxt << "\t\t<td>" << codigoarticulo.c_str() << "</td>\n" ;
+			fitxersortidatxt << "\t\t<td><para>" << descripcionarticulo.c_str() << "</para></td>\n" ; 
+			fitxersortidatxt << "\t\t<td>" << preciolinea.c_str() << "</td>\n" ; 
+			fitxersortidatxt << "\t\t<td>" << cantidadlinea.c_str() << "</td>\n" ; 
+			fitxersortidatxt << "\t\t<td>" << descuentolinea.c_str() << "</td>\n" ; 
+			fitxersortidatxt << "\t\t<td>" << importelinea.c_str() << "</td>\n" ; 
+			fitxersortidatxt << "\t</tr>" ;
+		}
+	}// end for
+	fitxersortidatxt << "\t</blockTable>\n" ;
+	
+	
+	// Línea de totales del presupuesto
+	
+	fitxersortidatxt << "\t<spacer length=\"2cm\" width=\"50mm\"/>\n" ;
+	
+	fitxersortidatxt << "\t<blockTable colWidths=\"2.5cm, 2.5cm, 2.5cm, 2.5cm\" style=\"products2\">\n" ;
+	fitxersortidatxt << "\t<tr><td>NETO</td><td>CUOTA IVA</td><td>IVA</td><td>TOTAL</td></tr>\n" ;
+	fitxersortidatxt << "\t<tr>\n" ;
+	fitxersortidatxt << "\t\t<td>324,09</td>\n" ;
+	fitxersortidatxt << "\t\t<td>16%</td>\n" ;
+	fitxersortidatxt << "\t\t<td>51,85</td>\n" ;
+	fitxersortidatxt << "\t\t<td>375,94</td>\n" ;
+	fitxersortidatxt << "\t</tr>\n" ;
+	fitxersortidatxt << "\t</blockTable>\n" ;
+	fitxersortidatxt << "\t<spacer length=\"2cm\" width=\"1mm\"/>\n" ;
+	fitxersortidatxt << "\t<para style=\"payment\">\n" ;
+	fitxersortidatxt << "\t- Lineas para obserbaciones -\n" ;
+	fitxersortidatxt << "\t</para>\n" ;
+	fitxersortidatxt << "</story>\n" ;
+	fitxersortidatxt << "</document>\n" ;
+
+	delete cursoraux;
+	
 	fitxersortidatxt.close();
    filestr.close();
+	system("trml2pdf.py presupuesto.jm.rml > pressupost.pdf");
+	system("kprinter pressupost.pdf");
 } //end presentaOpenReports
 
 
 // Esta función fue un intento de sacar un presupuesto con kugar. Lo dejo aquí de momento por si más adelante sirve de algo.
 void Budget::presentakugar() {
 	int txt=1;
-	float debe, haber;
-	int idasiento;
 	string codigoarticulo;
 	string descripcionarticulo;
 	string cantidadlinea;

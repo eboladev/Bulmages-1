@@ -5,7 +5,7 @@
 	<pageTemplate id="first">
 		<pageGraphics>
 			<lines>20cm 19.2cm 20.4cm 19.2cm</lines>
-			<image x="5mm" y="240mm" width="200mm" height="50mm" file="logo.jpg"/>
+			<image x="5mm" y="240mm" width="200mm" height="50mm" file="/usr/share/bulmages/openreports/logo.jpg"/>
 
 			<setFont name="Helvetica" size="10"/>
 			<fill color="(0,0,0)"/>
