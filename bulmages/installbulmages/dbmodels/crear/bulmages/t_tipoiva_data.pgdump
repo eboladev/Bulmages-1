@@ -1,0 +1,25 @@
+--
+-- PostgreSQL database dump
+--
+
+SET client_encoding = 'SQL_ASCII';
+SET check_function_bodies = false;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for TOC entry 3 (OID 3673554)
+-- Name: tipoiva; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO tipoiva (idtipoiva, nombretipoiva, porcentajetipoiva, idcuenta) VALUES (1, '16', 16, 740);
+
+
+--
+-- TOC entry 2 (OID 3673552)
+-- Name: tipoiva_idtipoiva_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tipoiva_idtipoiva_seq', 1, true);
+
+
