@@ -31,6 +31,8 @@ $body = '
 
 <h4>REPORTS</h4>
 
+<a href="http://reports.sourceforge.net/">Página web del proyecto</a><BR>
+
 <p>El proyecto Reports es una iniciativa de Santiago Capel (Creador de GestiONG) para generar informes de forma elegante y práctica. Utiliza plantillas XML para generar una salida y direccionarla a distintos formatos (Open Office, HTML, WEB, incluso tiene un visor própio). Este proyecto ya estaba presente en BulmaGés en la versión 0.3.1, luego por problemas de compilación se quedó en stand-by y ahora vuelve a estar incorporado dando al programa una capacidad generativa impresionante.</p>
 
 <A HREF="http://bulma.net/~tborras/bges041/reports.png" BORDER="0"><IMG SRC="http://bulma.net/~tborras/bges041/reportsp.png" BORDER="0"></A>
@@ -41,8 +43,12 @@ $body = '
 
 
 <h4>GESTIONG</h4>
+
+<a href="http://gestiong.sourceforge.net/">Página web del proyecto</a><BR>
 <P>
-Este proyecto de contabilidad, idea original de Santiago Capel se encuentra en un avanzado estado. Su misión es realizar la gestión de organizaciones dado que éstas requieren de un software algo especial para su funcionamiento.
+GestiONG es un programa de gestión de ONGs y Asociaciones sin ánimo de lucro 
+con un módulo de contabilidad adaptado a las necesidades especiales de estas 
+asociaciones.
 </P>
 
 '; 

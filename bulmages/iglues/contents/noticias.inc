@@ -10,6 +10,20 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>06/10/2004</td>
+<td><center><b>Publicada última versión de BulmaGés (0.41)</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Hoy Tomeu Borrás ha anunciado la publicación de la última versión de BulmaGés (0.41) que incluye entre otras mejoras, cambio del splash de presentación y un nuevo script de instalación.
+Para más información visitar <A HREF="http://bulmages.bulma.net" TARGET="nueva">bulmages.bulma.net<A>
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>03/10/2004</td>
 <td><center><b>Primera Asamblea General</b></center></td>
 </tr>
