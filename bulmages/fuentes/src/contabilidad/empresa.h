@@ -110,6 +110,7 @@ public:
   int ccostes();
   int canales();
   int tiposIVA();
+  int fPago();
   void cierraempresa();
   void abreempresa();
   void regularizaempresa();

@@ -471,6 +471,12 @@ void Bulmages01::initActions() {
   tiposIVAMenu->setStatusTip(tr("CTipos de IVA"));
   tiposIVAMenu->setWhatsThis(tr("Tipos de IVA"));
   connect(tiposIVAMenu, SIGNAL(activated()), this, SLOT(slotTiposIVA()));  
+
+  FPagoMenu = new QAction(tr("Formas de Pago"), tr("&Formas de Pago"), 0, this);
+  FPagoMenu->setStatusTip(tr("Formas de Pago"));
+  FPagoMenu->setWhatsThis(tr("Formas de Pago"));
+  connect(FPagoMenu, SIGNAL(activated()), this, SLOT(slotFPago()));  
+
 }
 
 
@@ -509,6 +515,7 @@ void Bulmages01::initMenuBar() {
   centrosCoste->addTo(pApunteMenu);
   canalesMenu->addTo(pApunteMenu);
   tiposIVAMenu->addTo(pApunteMenu);
+  FPagoMenu->addTo(pApunteMenu);
 
   // El menu asiento
   pAsientoMenu = new QPopupMenu();
@@ -1019,6 +1026,10 @@ void Bulmages01::slotTiposIVA() {
    empresaactual.tiposIVA();
 }
 
+
+void Bulmages01::slotFPago() {
+   empresaactual.fPago();
+}
 
 
 

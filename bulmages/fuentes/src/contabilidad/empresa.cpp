@@ -33,6 +33,7 @@
 #include "adocumental.h"
 #include "cobropagoview.h"
 #include "tipoivaview.h"
+#include "fpagoview.h"
 
 #include <qobject.h>
 #ifndef WIN32
@@ -215,6 +216,17 @@ int empresa::canales() {
   */
 int empresa::tiposIVA() {
    tipoivaview *tip = new tipoivaview(this, 0, "tipos Iva");
+   tip->exec();
+   delete tip;
+   return(0);
+}// end tiposiva
+
+
+/** Crea la ventana de Formas de Pago y la presenta en modo modal
+  * Es invocada desde la clase principal
+  */
+int empresa::fPago() {
+   fpagoview *tip = new fpagoview(this, 0, "Formas de Pago");
    tip->exec();
    delete tip;
    return(0);
