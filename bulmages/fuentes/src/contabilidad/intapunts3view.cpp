@@ -78,7 +78,7 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name ) 
     connect( tapunts, SIGNAL( clicked(int,int,int,const QPoint&) ), this, SLOT( tpulsado(int,int,int,const QPoint&) ) );
     connect( tapunts, SIGNAL( valueChanged(int,int) ), this, SLOT( apuntecambiadogrid(int,int) ) );
     connect( tapunts, SIGNAL( selectionChanged() ), this, SLOT( tcambiaseleccion() ) );
-    connect( tapunts, SIGNAL( currentChanged(int,int) ), this, SLOT( currentChanged(int,int) ) );
+    //connect( tapunts, SIGNAL( currentChanged(int,int) ), this, SLOT( currentChanged(int,int) ) );
     connect( tapunts, SIGNAL( contextMenuRequested(int,int,const QPoint&) ), this, SLOT( contextmenu(int,int,const QPoint&) ) );
     connect( tapunts, SIGNAL( pulsadomas(int, int, int)), this, SLOT(pulsadomas(int, int, int)));
 
@@ -448,17 +448,20 @@ void intapunts3view::repinta() {
 
 
         // Vamos a cargar la contrapartida, que aunque no aparece hay que ponerla para que se pueda usar.
-        query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%s",cursorasiento->valor("contrapartida").ascii());
-        fprintf(stderr,"%s\n",query.ascii());
-        conexionbase->begin();
-        cursor2 *cursorcontrapartida = conexionbase->cargacursor(query,"cursorcontrapartida");
-        conexionbase->commit();
-        if (!cursorcontrapartida->eof()) {
-            fprintf(stderr,"%s\n", cursorcontrapartida->valor("codigo").ascii());
-            tapunts->setText(i,COL_CONTRAPARTIDA,cursorcontrapartida->valor("codigo"));
-            tapunts->setText(i,COL_IDCONTRAPARTIDA,cursorcontrapartida->valor("idcuenta"));
-        }// end if
-        delete cursorcontrapartida;
+        cadena=cursorasiento->valor("contrapartida");
+        if (cadena.stripWhiteSpace() !="") {
+            query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%s",cadena.ascii());
+            fprintf(stderr,"%s\n",query.ascii());
+            conexionbase->begin();
+            cursor2 *cursorcontrapartida = conexionbase->cargacursor(query,"cursorcontrapartida");
+            conexionbase->commit();
+            if (!cursorcontrapartida->eof()) {
+                fprintf(stderr,"%s\n", cursorcontrapartida->valor("codigo").ascii());
+                tapunts->setText(i,COL_CONTRAPARTIDA,cursorcontrapartida->valor("codigo"));
+                tapunts->setText(i,COL_IDCONTRAPARTIDA,cursorcontrapartida->valor("idcuenta"));
+            }// end if
+            delete cursorcontrapartida;
+        }
 
 
         // Pasamos al siguiente registro del asiento.
@@ -895,7 +898,7 @@ void intapunts3view::tcambiaseleccion() {
 
 
 void intapunts3view::currentChanged() {
-    fprintf(stderr,"currentChanged::");
+    fprintf(stderr,"currentChanged");
 }// end currentChanged()
 
 
@@ -1078,27 +1081,71 @@ void intapunts3view::duplicarapunte() {
 
 
 void intapunts3view::boton_iva() {
-	  // Miramos que haya un row seleccionado.
-	  if(tapunts->currentRow() >=0) {
-			//int idborrador = atoi(tapunts->text(rowactual,COL_IDBORRADOR).ascii());
-			int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
-			QString codcuenta = tapunts->text(rowactual,COL_SUBCUENTA);
-			codcuenta = codcuenta.left(3);
-			int es_iva = (codcuenta == "472") + ((codcuenta == "477") * 2);
-			if (idborrador != 0) {
-				ivaview *nuevae=new ivaview(0,"");
-				nuevae->inicializa(conexionbase,es_iva);
-				nuevae->inicializa1(idborrador);
-				nuevae->exec();
-				delete nuevae;
-			}// end if
-			repinta();
-		} else {
-			 QMessageBox::information(this, tr("Registro de IVA"),
-                                    tr("Debe seleccionar un apunte"),
-                                    QMessageBox::Ok);
+    QString codcuenta("xxx");
+    int i;
+    int sinIVA=0;
+    if (tapunts->currentRow() > 0)
+        if (tapunts->text(rowactual,COL_SUBCUENTA).left(3) == "")
+            sinIVA = QMessageBox::information(this, tr("Registro de IVA"),
+                         tr("Desea Crear una entrada EXENTA de IVA en el registro?"),
+                         QMessageBox::Yes,QMessageBox::No);
 
-		}// end if
+    // Miramos que haya un row seleccionado.
+    tapunts->currentRow() >=0 ? i=rowactual : i=0;
+
+    while (codcuenta != "472" && codcuenta != "477" && codcuenta != "") 
+        codcuenta = tapunts->text(i++,COL_SUBCUENTA).left(3);
+    if (codcuenta == "" && rowactual > 0) {
+        i=0;
+        codcuenta="xxx";
+        while (codcuenta != "472" && codcuenta != "477" && codcuenta != "")
+            codcuenta = tapunts->text(i++,COL_SUBCUENTA).left(3);
+    }
+    if (codcuenta != "" && sinIVA!=QMessageBox::Yes) {
+        tapunts->setCurrentCell(rowactual=i-1,COL_SUBCUENTA);
+        int idborrador = tapunts->text(rowactual,COL_IDBORRADOR).toInt();
+        codcuenta = tapunts->text(rowactual,COL_SUBCUENTA);
+        codcuenta = codcuenta.left(3);
+        int es_iva = (codcuenta == "472") + ((codcuenta == "477") * 2);
+        if (idborrador != 0) {
+             ivaview *nuevae=new ivaview(0,"");
+             nuevae->inicializa(conexionbase,es_iva);
+             nuevae->inicializa1(idborrador);
+             nuevae->exec();
+             delete nuevae;
+        }// end if
+        repinta();
+    }
+    else {
+        if (sinIVA==0) sinIVA = QMessageBox::information(this, tr("Registro de IVA"),
+                                          tr("Desea Crear una entrada EXENTA de IVA en el registro?"),
+                                              QMessageBox::Yes,QMessageBox::No);
+        if (sinIVA==QMessageBox::Yes) {
+            //Creamos una entrada exenta de iva en el registro de IVA.
+            i=0;
+            codcuenta="xxx";
+            while (codcuenta != "600" && codcuenta != "700" && codcuenta != "") 
+                codcuenta = tapunts->text(i++,COL_SUBCUENTA).left(3);
+            if (codcuenta != "") {
+                --i;
+                int idborrador = tapunts->text(i,COL_IDBORRADOR).toInt(); 
+                codcuenta = tapunts->text(i,COL_SUBCUENTA);
+                codcuenta = codcuenta.left(3);
+                int es_iva = (codcuenta == "600") + ((codcuenta == "700") * 2);
+                if (idborrador != 0) {
+                     ivaview *nuevae=new ivaview(0,"");
+                     nuevae->inicializa(conexionbase,es_iva);
+                     nuevae->inicializa1(idborrador);
+                     nuevae->exec();
+                     delete nuevae;
+                }// end if
+                repinta();
+            } else 
+                QMessageBox::information(this, tr("Registro de IVA"),
+                                          tr("Este Asiento no es de Compra ni Venta"),
+                                              QMessageBox::Ok);
+        }
+    }// end if
 }// end boton_iva
 
 

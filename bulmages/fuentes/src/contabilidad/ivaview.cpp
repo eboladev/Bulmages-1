@@ -105,10 +105,9 @@ void ivaview::cambiadacontrapartida() {
 // 1.- Comprobamos que no haya ya un registro con la factura
 // 2.- Si hay factura la ponemos, si no la hay sacamos los datos que podemos y los presentamos
 void ivaview::inicializa1(int idapunte1) {
+  QString query, cadena;
+  double debe, haber, total_factura=0;
   idborrador = idapunte1;
-  QString query;
-  double debe;
-  double haber;
   //Busca entradas de IVA en la tabla registroiva
   query.sprintf ( "SELECT * FROM registroiva, cuenta WHERE idborrador=%d AND registroiva.contrapartida=cuenta.idcuenta",idborrador);
   conexionbase->begin();
@@ -125,15 +124,20 @@ void ivaview::inicializa1(int idapunte1) {
     numorden->setText(cursoriva->valor("numorden"));
     cif->setText(cursoriva->valor("cif"));
     query.sprintf ("SELECT * from borrador, asiento, cuenta WHERE borrador.idborrador=%d AND borrador.idasiento=asiento.idasiento AND borrador.idcuenta=cuenta.idcuenta",idborrador);
-    fprintf(stderr,"%s\n",query.ascii());
+    //fprintf(stderr,"%s\n",query.ascii());
     conexionbase->begin();
     cursor2 * cursorapunte = conexionbase->cargacursor(query,"cursorapunte");
     conexionbase->commit();
     if (!cursorapunte->eof()) {
-      fprintf(stderr,"Asiento %s\n",cursorapunte->valor("idasiento").ascii());
+      //fprintf(stderr,"Asiento %s\n",cursorapunte->valor("idasiento").ascii());
       numasiento->setText(cursorapunte->valor("ordenasiento")); //Josep Burción
       cuentaiva->setText(cursorapunte->valor("codigo"));
     }// end if
+    if (cuentaiva->text().left(3) == "600" || cuentaiva->text().left(3) == "700") {
+      cuentaiva->setText(tr("Sin IVA"));
+      iva->setText("0");
+      importeiva->setText("0.00");
+    }
     delete cursorapunte;
   } else {
       // Aun no se ha metido ningun registro de este estilo
@@ -152,10 +156,10 @@ void ivaview::inicializa1(int idapunte1) {
         // Vamos a intentar calcular la contrapartida sin usar el campo contrapartida ya
         // que dicho campo podría desaparecer.
         if (debe < haber) { //Venta
-          setSoportadoRepercutido(IVA_REPERCUTIDO);
+          //setSoportadoRepercutido(IVA_REPERCUTIDO);
           query.sprintf("SELECT * from borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.haber=0 ORDER BY borrador.debe DESC",atoi(cursorapunte->valor("idasiento").ascii()));
         } else { //Compra
-          setSoportadoRepercutido(IVA_SOPORTADO);
+          //setSoportadoRepercutido(IVA_SOPORTADO);
           query.sprintf("SELECT * from borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.debe=0 ORDER BY borrador.haber DESC",atoi(cursorapunte->valor("idasiento").ascii()));
         }// end if
         fprintf(stderr,"%s\n",query.ascii());
@@ -168,7 +172,7 @@ void ivaview::inicializa1(int idapunte1) {
           empfactura->setText(cursorcontrapartida->valor("nombreent_cuenta"));
           contrapartida->setText(cursorcontrapartida->valor("codigo"));
           cif->setText(cursorcontrapartida->valor("cifent_cuenta"));
-          double total_factura= atof(cursorcontrapartida->valor("debe").ascii());
+          total_factura= atof(cursorcontrapartida->valor("debe").ascii());
           if (total_factura == 0) {
             total_factura = atof(cursorcontrapartida->valor("haber").ascii());
           }// end if
@@ -179,11 +183,17 @@ void ivaview::inicializa1(int idapunte1) {
           }// end if
           double baseimponible1 = total_factura - iva1;
           double porcentiva = total_factura/baseimponible1 -1;
-          QString cadena;
           cadena.sprintf("%2.2f",baseimponible1);
           baseimponible->setText(cadena);
           cadena.sprintf("%2.0f",porcentiva*100);
           iva->setText(cadena);
+          if (cuentaiva->text().left(3) == "600" || cuentaiva->text().left(3) == "700") {
+              cuentaiva->setText(tr("Sin IVA"));
+              iva->setText("0");
+              importeiva->setText("0.00");
+              cadena.sprintf("%2.2f",total_factura);
+              baseimponible->setText(cadena);
+          }
 // JOSEP BURCION
           //Proponemos un número de factura si se trata de una venta y
           //proponemos un número de orden si se trata de una compra
@@ -213,9 +223,7 @@ void ivaview::inicializa1(int idapunte1) {
              }
           }
           delete recordset;//Fin proposicion numeros factura y orden.
-// END JOSEP BURCION			 
-			 
-			 
+// END JOSEP BURCION
         }// end if
         delete cursorcontrapartida;
       }// end if
