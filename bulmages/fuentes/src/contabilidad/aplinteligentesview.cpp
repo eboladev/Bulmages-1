@@ -23,6 +23,9 @@
 #define TIPO_NUMERO 3
 #define TIPO_PREDEFINIDO 4
 
+// Estos defines indican posiciones de las variables de apunte.
+// son de uso interno, así que solo deben conocerse si se agregan variables de apunte.
+#define VAR_APUNT_CIFCUENTA 0
 
 aplinteligentesview::aplinteligentesview(QWidget *parent, const char *name ) : aplinteligentesdlg(parent,name) {
     // iniciamos los contadores de variables para que no haya problemas.
@@ -30,8 +33,9 @@ aplinteligentesview::aplinteligentesview(QWidget *parent, const char *name ) : a
     indvariablesfecha=0;
     indvariablesnumero=0;
     indvariablestexto=0;
-    indvariablespredefinidas=0;
-    indvariablesapunte=0;
+    indvariablespredefinidas=0;  // Este array es estático, pero como no se modifica nunca se ponen los valores al principio y la parte dinámica queda igual.
+    indvariablesapunte=1;  // Cada apunte la tiene o no la tiene, pero no se debe aplicar.
+    variablesapunte[VAR_APUNT_CIFCUENTA][0] ="$cifcuenta$";
     setmodo(0);
 }// end aplinteligentesview
 
@@ -127,19 +131,18 @@ void aplinteligentesview::inicializavariablesapunte(int idborrador) {
 // NOTA: Notese que el sistema normalmente carga el NIF de la contrapartida del asiento inteligente
 // Y que este campo normalmente va en la parte de CIFCUENTA
 void aplinteligentesview::cifcuenta(int idcuenta) {
-    variablesapunte[indvariablesapunte][0] ="$cifcuenta$";
     QString query;
     query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%d", idcuenta);
+    fprintf(stderr,"cifcuenta: %s\n",query.ascii());
     conexionbase->begin();
     cursor2 * cur = conexionbase->cargacursor(query,"cursor");
     conexionbase->commit();
     if (!cur->eof()) {
-        variablesapunte[indvariablesapunte][1] = cur->valor("cifent_cuenta");
+        variablesapunte[VAR_APUNT_CIFCUENTA][1] = cur->valor("cifent_cuenta");
     } else {
-        variablesapunte[indvariablesapunte][1] = "";
+        variablesapunte[VAR_APUNT_CIFCUENTA][1] = "";
     }// end if
     delete cur;
-    indvariablesapunte++;
 }// end cifcuenta
 
 void aplinteligentesview::return_cta() {
@@ -440,14 +443,6 @@ void aplinteligentesview::creaasiento() {
     QString query;
     cursor2 *cur;
     cursor2 *cur1;
-
-    /*
-    query.sprintf("SELECT * FROM ainteligente WHERE idainteligente=%d",numainteligente);
-    conexionbase->begin();
-    cur = conexionbase->cargacursor(query,"asientoi");
-    conexionbase->commit();
-    delete cur;
-    */
     
     query.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d",numainteligente);
     conexionbase->begin();
@@ -499,10 +494,6 @@ void aplinteligentesview::creaasiento() {
             int idborrador = atoi(cur1->valor("id").ascii());
             delete cur1;
 
-            //Inicializamos las variables de apunte
-            //		inicializavariablesapunte(idborrador);
-
-
             // Luego buscamos la contrapartida
             contrapartida = aplicavariable(curiva->valor("contrapartida"));
             query.sprintf("SELECT * FROM cuenta where codigo='%s'",contrapartida.ascii());
@@ -514,6 +505,8 @@ void aplinteligentesview::creaasiento() {
             } else {
                 idcontrapartida = "NULL";
             }// end if
+            
+            // Inicializamos la variable de apunte cifcuenta.
             cifcuenta(atoi(idcontrapartida.ascii()));
             delete cur1;
 
@@ -537,8 +530,6 @@ void aplinteligentesview::creaasiento() {
             QString cif = "'"+aplicavariable(curiva->valor("cif"))+"'";
             if (cif == "''")
                 cif = "NULL";
-
-
             query.sprintf("INSERT INTO registroiva (idborrador, contrapartida, iva, factura, baseimp, numorden, cif) VALUES (%d, %s, %s, %s, %s, %s, %s)",idborrador, idcontrapartida.ascii(), iva.ascii(), factura.ascii(), baseimp.ascii(), numorden.ascii(), cif.ascii());
             fprintf(stderr,"Registro de iva: %s",query.ascii());
             conexionbase->begin();
@@ -546,10 +537,7 @@ void aplinteligentesview::creaasiento() {
             conexionbase->commit();
         }// end if
         delete curiva;
-
         // Borramos las variables creadas para este apunte
-        indvariablesapunte = 0;
-
         cur->siguienteregistro();
     }// end while
 }// end creaasiento

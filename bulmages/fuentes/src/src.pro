@@ -407,7 +407,8 @@ SOURCES += main.cpp \
            comun/log.cpp \
            comun/selectccosteview.cpp \
            comun/selectcanalview.cpp \
-           formularios/modelosps.cpp
+           formularios/modelosps.cpp \
+	   formularios/modelo300.cpp
 QMAKE_CLEAN += Makefile
 LANGUAGE = C++
 exists (estadisticas){
