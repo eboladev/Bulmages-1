@@ -71,7 +71,7 @@ CREATE TABLE cuenta (
     bancoent_cuenta character varying(30),
     emailent_cuenta character varying(50),
     webent_cuenta character varying(70),
-    tipocuenta integer
+    tipocuenta integer DEFAULT 1
 );
 
 
@@ -130,13 +130,14 @@ CREATE TABLE diario (
 \echo "La tabla diario está en desuso, aunque de momento se crea."
 
 
-
+-- El campo ordenasiento se puede dejar en nulo sólo porque luego el trigger lo reasigna. Con un default sería más adecuado pero
+-- no se como se implementa un default tan complicado.
 CREATE TABLE asiento (
     idasiento serial PRIMARY KEY,
     descripcion character varying(100),
-    fecha timestamp with time zone,
+    fecha date,
     comentariosasiento character varying(2000),
-    ordenasiento integer NOT NULL,
+    ordenasiento integer,
     clase smallint DEFAULT 0
 );
 
@@ -1660,6 +1661,14 @@ BEGIN
 	SELECT INTO  ej * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = EXTRACT (MONTH FROM NEW.fecha);
 	IF ej.bloqueado = TRUE THEN
 		RAISE EXCEPTION '' Periodo bloqueado '';
+	END IF;
+	IF NEW.ordenasiento ISNULL OR NEW.ordenasiento = 0 THEN
+		SELECT INTO ej max(ordenasiento)+1 AS max, count(idasiento) as cuenta FROM asiento;
+		IF ej.cuenta > 0 THEN
+			NEW.ordenasiento = ej.max;
+		ELSE
+			NEW.ordenasiento = 1;
+		END IF;
 	END IF;
 	RETURN NEW;
 END;

@@ -57,14 +57,10 @@ pgimportfiles::pgimportfiles(postgresiface2 *con) {
 }// end pgimportfiles
 
 int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
-//    QTextStream fugit( &fugitfile );
-
-/*    fugit << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
-			"<!DOCTYPE FUGIT>\n"
-			"<FUGIT version='0.3.1' origen='contaplus'"
-            " date='" << QDate().toString(Qt::ISODate) << "'>\n";
-*/
+    QString idasiento;
     QString lopd_str, cuenta_str;
+    QString debe, haber;
+    QString query;
 
     // Subcuentas
     QTextStream stream( &subcuentas );
@@ -97,46 +93,26 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 			pos += LEN_AJUSTAME;
 			QString tipoiva = line.mid(pos,LEN_TIPOIVA).stripWhiteSpace();
 			pos += LEN_TIPOIVA;
-		
-			if( !nif.isEmpty() || !domicilio.isEmpty() || !poblacion.isEmpty()
-			    || !provincia.isEmpty() || !codpostal.isEmpty() ) {
-			    lopd_str += "<LOPD>\n"
-				"\t<FIELD name='cif'>" + nif + "</FIELD>\n"
-				"\t<FIELD name='nombre'>" + titulo + "</FIELD>\n"
-				"\t<FIELD name='direccion'>" + domicilio + "</FIELD>\n"
-				"\t<FIELD name='localidad'>" + poblacion + "</FIELD>\n"
-				"\t<FIELD name='provincia'>" + provincia + "</FIELD>\n"
-				"\t<FIELD name='cp'>" + codpostal + "</FIELD>\n"
-				"</LOPD>\n";
-			}
-			if( !cod.isEmpty() ) {
-			    cuenta_str += "<CUENTA>\n"
-				"\t<FIELD name='cuenta'>" + cod + "</FIELD>\n"
-				"\t<FIELD name='descripcion'>" + titulo + "</FIELD>\n"
-				"\t<FIELD name='cif'>" + nif + "</FIELD>\n"
-				"</CUENTA>\n";
-				QString padre = searchParent(cod);
-				QString idgrupo = cod.left(1);
-				QString query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, idgrupo, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (TRUE, TRUE, 1,'"+cod+"', '"+titulo+"', '"+nif+"', "+padre+", "+idgrupo+", 'importada de ContaPlus','','','','','','')";
-				conexionbase->begin();
-				conexionbase->ejecuta(query);
-				conexionbase->commit();
-			}
+			/// Antes de hacer una inserción comprobamos que la cuenta no exista ya en el sistema.
+			QString query = "SELECT * FROM cuenta WHERE codigo = '"+cod+"'";
+			conexionbase->begin();
+			cursor2 *cursaux=conexionbase->cargacursor(query,"hol");
+			conexionbase->commit();
+			if (cursaux->eof()) {
+				if( !cod.isEmpty() ) {
+					QString padre = searchParent(cod);
+					QString idgrupo = cod.left(1);
+					query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, idgrupo, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (TRUE, TRUE, 1,'"+cod+"', '"+titulo+"', '"+nif+"', "+padre+", "+idgrupo+", 'importada de ContaPlus','"+domicilio + poblacion+ provincia+codpostal+"','','','','','')";
+					conexionbase->begin();
+					conexionbase->ejecuta(query);
+					conexionbase->commit();
+				}// end if
+			}// end if
+			delete cursaux;
 	  }
-	  
-	  
-/*	  
-    fugit << "<FICHERO_LOPD>\n";
-    fugit <<  lopd_str ;
-    fugit << "</FICHERO_LOPD>\n";
-    fugit << "<FICHERO_CUENTA>\n";
-    fugit <<  cuenta_str ;
-    fugit << "</FICHERO_CUENTA>\n\n";
-*/
-    // Asientos
-//    fugit << "<FICHERO_ASIENTO>\n";
+
     QTextStream stream2( &asientos );
-    QString lastasiento;
+    QString lastasiento="0";
     int napunte=0;
     while( !asientos.atEnd() ) {
 			QString line = stream2.readLine();
@@ -210,40 +186,44 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 			pos += LEN_NUMEROINV;
 	
 			if( asiento != lastasiento ) {
-	   		if( !lastasiento.isEmpty() ) {
-//					fugit <<  "</ASIENTO>\n";
-		    }
-/*		    fugit <<  "<ASIENTO>\n"
-				"\t<FIELD name='numasiento'>" + asiento + "</FIELD>\n"
-				"\t<FIELD name='fecha'>" + fecha + "</FIELD>\n"
-				"\t<FIELD name='numdocumento'>" + documento + "</FIELD>\n"
-				"\t<FIELD name='numdiario'>" + departa + "</FIELD>\n"
-				"\t<FIELD name='punteo'>" + estado + "</FIELD>\n";
-*/			    napunte = 0;
-		    lastasiento = asiento;
+				if (lastasiento != 0) {
+					query = "SELECT cierraasiento("+idasiento+")";
+				//	conexionbase->begin();
+				//	conexionbase->ejecuta(query); 
+				//	conexionbase->commit();
+				}// end if
+				fprintf(stderr,"Inserción de Asiento");
+				query="INSERT INTO asiento (fecha, comentariosasiento, clase) VALUES ('"+fecha+"','Importado de Contaplus', 1 )";
+				conexionbase->begin();
+				conexionbase->ejecuta(query);
+				query = "SELECT max(idasiento) as idasiento FROM asiento";
+				cursor2 *cur=conexionbase->cargacursor(query,"lolailo");
+				conexionbase->commit();
+				idasiento = cur->valor("idasiento");
+				delete cur;
+				napunte = 0;
+				lastasiento = asiento;
 			}
 			napunte++;
-/*			fugit <<  "\t<APUNTE>\n"
-			    "\t\t<FIELD name='numapunte'>" + QString::number(napunte) + "</FIELD>\n"
-			    "\t\t<FIELD name='cuenta'>" + subcta + "</FIELD>\n"
-			    "\t\t<FIELD name='contrapartida'>" + contra + "</FIELD>\n"
-			    "\t\t<FIELD name='concepto'>" + concepto + "</FIELD>\n";
-*/			if( monedauso == "1" ) { // Ptas
-/*			    fugit <<
-				"\t\t<FIELD name='debe'>" + QString::number((ptadebe.toDouble()) / EURO) + "</FIELD>\n"
-				"\t\t<FIELD name='haber'>" + QString::number((ptahaber.toDouble()) / EURO) + "</FIELD>\n";
-*/			} else {
-/*			    fugit <<
-				"\t\t<FIELD name='debe'>" + QString::number((eurodebe.toDouble()) ) + "</FIELD>\n"
-				"\t\t<FIELD name='haber'>" + QString::number((eurohaber.toDouble()) ) + "</FIELD>\n";
-*/			}
-//			fugit <<  "\t</APUNTE>\n";
+			if( monedauso == "1" ) { // Ptas
+				debe = QString::number((ptahaber.toDouble()) / EURO);
+				haber = QString::number((ptadebe.toDouble()) / EURO);
+			} else {
+				debe = QString::number(eurodebe.toDouble());
+				haber = QString::number(eurohaber.toDouble());
+			}// end if	
+			query = "SELECT * FROM cuenta WHERE codigo='"+subcta+"'";
+			conexionbase->begin();
+			cursor2 *cur=conexionbase->cargacursor(query,"elquery");
+			conexionbase->commit();
+			if (!cur->eof()) {
+				fprintf(stderr,"Inserción de Borrador\n");
+				query="INSERT INTO borrador (idasiento,idcuenta,fecha, conceptocontable, debe, haber) VALUES ("+idasiento+",id_cuenta('"+subcta+"'), '"+fecha+"','"+concepto+"',"+debe+","+haber+" )";
+				conexionbase->begin();
+				conexionbase->ejecuta(query);
+				conexionbase->commit();
+			}// end if
     }
-/*    if( !lastasiento.isEmpty() )
-			fugit <<  "</ASIENTO>\n";
-    fugit <<  "</FICHERO_ASIENTO>\n";
-    fugit << "</FUGIT>";
-  */ 
    return 1;
 }
 
@@ -272,3 +252,5 @@ QString pgimportfiles::searchParent(QString cod) {
 	}// end while
 	return padre;
 }// end searchParent
+
+
