@@ -4,7 +4,7 @@
   <head>
     <title>selectempresa.php</title>
   </head>
-<BODY>
+<BODY bgcolor="<?php echo $confpr->config("CONF_BG_APUNTES") ?>">
 <table><TR><TD valign="top">
 <?php include("inc/menu.inc")?>
 </TD><TD>
@@ -30,7 +30,6 @@ Importacion y exportacion<BR>
 		}// end while
 		?>
 		</SELECT>
-	  
        </TD>
 	<td valign="top"><CENTER>Galopín</CENTER><BR>
 	Base de datos:<input type="text" name="nomdb" size="15"><BR>

@@ -1,5 +1,15 @@
 <?php
+// Este fichero se lee al principio de cada fichero de la aplicacion
+// por tanto contiene toda la información necesaria y hace
+// todas las inicializaciones comunes a la aplicacion
+// también 
 $DEBUG=1;
+
+include ("configuracion.inc");
+
+$confpr = new configuracion();
+
+$confpr->leeconffile("/etc/bulmages.conf");
 
 $metabd=pg_connect("dbname=metabd user=tborras");
 // Establecemos el tipo de fecha para la base de datos.
@@ -76,20 +86,30 @@ if ($DEBUG==1) {
 ?>
 
 <?php 
-function nuevacuenta($database) {
+// Esta función sirve para insertar una cuenta en la base de datos de bulmages
+// que se pasa como parametro
+function nuevacuenta($database, $array) {
    echo "Nueva cuenta:";
 	$SQLQuery = "SELECT * FROM cuenta WHERE codigo LIKE '430%'";
 	$result = pg_exec($database, $SQLQuery);
 	$filas = pg_numRows($result);
 	$valormax = 0;
 	while ($filas--) {
-	   $valor = atoi (pg_result($result, $filas, "codigo"));
+	   $valor = pg_result($result, $filas, "codigo");
 	   if ($valor > $valormax) {
 	   	$valormax = $valor;
 	   }// end if
 	}// end while
 	$valormax++;
-	echo $valormax;
+	echo "La nueva cuenta puede ser:$valormax <BR>";
+/*	
+ idcuenta |   |                                            
+                | imputacion | padre | bloqueada | idgrupo | msg |   debe   |  haber   | nodebe | nohaber
+ | regularizacion | activo |      nombreent_cuenta      | cifent_cuenta |      | 
+|                         coment_cuenta                          |   bancoent_cuenta   |    webent_cuenta    | tipocuenta
+*/	
+	$QueryInsercion = " INSERT INTO cuenta (codigo, descripcion, cifent_cuenta, nombreent_cuenta, dirent_cuenta , telent_cuenta, emailent_cuenta, coment_cuenta) VALUES ('$valormax', '".$array["nombre"]."' , '".$array["nif"]."' , '".$array["nombre"]."' , '".$array["direccion"]."' , '".$array["telefono"]."' , '".$array["email"]."' , '".$array["observaciones"]."')";
+	echo "$QueryInsercion<BR>";
 }// end nuevacuenta
 
 ?>

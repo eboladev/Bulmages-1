@@ -1,9 +1,8 @@
-<?php $selempresa="0"; ?>
 <?php include ("inc/funciones.inc") ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
   <head>
-    <title>selectempresa.php</title>
+    <title>Sincronización de clientes.</title>
   </head>
 <BODY>
 <table><TR><TD valign="top">
@@ -12,6 +11,9 @@
 <!-- BEGIN Cuerpo de la página -->
 
 <?php
+// Leemos los valores de sincronización.
+$valssincr = new paramsincr();
+
 /* Conexión, de la base de datos correspondiente de BulmaGés */
 $dbconta=pg_connect("dbname=bulmages user=tborras");
 // Establecemos el tipo de fecha para la base de datos.
@@ -44,9 +46,6 @@ $resultado = mysql_query($consulta) or die("La consulta fall&oacute;: " . mysql_
 echo "<table border='1'>\n";
 while ($linea = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
    echo "\t<tr>\n";
-//   foreach ($linea as $valor_col) {
-//       echo "\t\t<td>$valor_col</td>\n";
-//   }
    echo "\t\t<td>".$linea["nif"]."<BR>\n"; 
    $nif = $linea["nif"];
    $nif= str_replace(".","",$nif);
@@ -85,7 +84,7 @@ while ($linea = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
 	foreach ($linea as $nombre => $valor_col) {
 	echo "\t\t$nombre = $valor_col<BR>\n";
 	}// end foreach      
-	nuevacuenta($dbconta);	
+	nuevacuenta($dbconta, $linea );	
    }// end if
 
    echo "\t</td></tr>\n";
