@@ -273,9 +273,9 @@ void BConfiguracion::cargarFichaUsuarios() {
    postgresiface2 * conexionDB;
    conexionDB = new postgresiface2();
    conexionDB->inicializa(confpr->valor(CONF_METABASE).c_str());
-   cursor2 *recordSet, *privilegios;
+   cursor2 *recordSet, *privilegios=NULL;
    QString acceso;
-   QListViewItem *it;
+   QListViewItem *it=NULL;
    conexionDB->begin();
    recordSet=conexionDB->cargacursor("SELECT * from usuario","recordSet");
    conexionDB->commit();
@@ -315,7 +315,7 @@ void BConfiguracion::cargarFichaUsuarios() {
          recordSet->siguienteregistro();
    }// end while
    listView1->setCurrentItem(it);
-   delete privilegios;
+   if (privilegios) delete privilegios;
    delete recordSet;
    delete conexionDB;   
 }

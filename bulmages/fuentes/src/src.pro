@@ -131,7 +131,6 @@ SOURCES += main.cpp \
            contabilidad/canalview.cpp \
            contabilidad/ccosteview.cpp \
            contabilidad/ainteligentesview.cpp \
-           contabilidad/nuevaempresaview.cpp \
            contabilidad/propiedadesempresa.cpp \
            contabilidad/filtrarextractosview.cpp \
            contabilidad/extractoprintview.cpp \
@@ -199,7 +198,6 @@ HEADERS += comun/bselector.h \
            contabilidad/canalview.h \
            contabilidad/ccosteview.h \
            contabilidad/ainteligentesview.h \
-           contabilidad/nuevaempresaview.h \
            contabilidad/propiedadesempresa.h \
            contabilidad/filtrarextractosview.h \
            contabilidad/extractoprintview.h \
