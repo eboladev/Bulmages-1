@@ -52,13 +52,15 @@ CREATE TABLE lpedido (
 #include "funcaux.h"
 
 #define COL_NUMLPEDIDO 0
-#define COL_DESCLPEDIDO 1
-#define COL_CANTLPEDIDO 2
-#define COL_PVDLPEDIDO 3
-#define COL_PREVLPEDIDO 4
-#define COL_IDPEDIDO 5
-#define COL_IDALB_PRO 6
-#define COL_IDARTICULO 7
+#define COL_IDARTICULO 1
+#define COL_CODARTICULO 2
+#define COL_NOMARTICULO 3
+#define COL_DESCLPEDIDO 4
+#define COL_CANTLPEDIDO 5
+#define COL_PVDLPEDIDO 6
+#define COL_PREVLPEDIDO 7
+#define COL_IDPEDIDO 8
+#define COL_IDALB_PRO 9
 
 linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, int flag)
  : linorderslistbase(parent, name, flag) {
@@ -104,7 +106,7 @@ void linorderslist::chargelinorders(QString idpedido) {
    m_list->setSorting( TRUE );
    m_list->setSelectionMode( QTable::SingleRow );
    m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(8);
+   m_list->setNumCols(10);
    m_list->horizontalHeader()->setLabel( COL_NUMLPEDIDO, tr( "Nº Línea" ) );
    m_list->horizontalHeader()->setLabel( COL_DESCLPEDIDO, tr( "Descripción" ) );
    m_list->horizontalHeader()->setLabel( COL_CANTLPEDIDO, tr( "Cantidad" ) );
@@ -113,6 +115,8 @@ void linorderslist::chargelinorders(QString idpedido) {
    m_list->horizontalHeader()->setLabel( COL_IDPEDIDO, tr( "Nº Pedido" ) );
    m_list->horizontalHeader()->setLabel( COL_IDALB_PRO, tr( "Albarán" ) );
    m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
+	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
+	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
    
    m_list->setColumnWidth(COL_NUMLPEDIDO,100);
    m_list->setColumnWidth(COL_DESCLPEDIDO,300);
@@ -122,17 +126,21 @@ void linorderslist::chargelinorders(QString idpedido) {
    m_list->setColumnWidth(COL_IDPEDIDO,100);
    m_list->setColumnWidth(COL_IDALB_PRO,100);
    m_list->setColumnWidth(COL_IDARTICULO,100);
+	m_list->setColumnWidth(COL_CODARTICULO,100);
+	m_list->setColumnWidth(COL_NOMARTICULO,300);
 	
 	m_list->hideColumn(COL_NUMLPEDIDO);
 	m_list->hideColumn(COL_IDPEDIDO);
+	m_list->hideColumn(COL_IDARTICULO);
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
+	 m_list->setColumnReadOnly(COL_NOMARTICULO,true);
     m_list->setPaletteBackgroundColor("#AFFAFA");   
     //m_list->setReadOnly(TRUE);        
 	 m_list->setReadOnly(FALSE);        
        companyact->begin();
-       cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedido WHERE idpedido="+idpedido,"unquery");
+       cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedido, articulo WHERE idpedido="+idpedido+" AND articulo.idarticulo=lpedido.idarticulo","unquery");
        companyact->commit();
        m_list->setNumRows( cur->numregistros() );
        int i=0;
@@ -145,6 +153,8 @@ void linorderslist::chargelinorders(QString idpedido) {
          m_list->setText(i,COL_IDPEDIDO,cur->valor("idpedido"));
 	 		m_list->setText(i,COL_IDALB_PRO,cur->valor("idalb_pro"));
 			m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
+			m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
+			m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
          i++;
          cur->siguienteregistro();
        }// end while
@@ -295,13 +305,9 @@ void linorderslist::saveOrderLines() {
       	companyact->commit();
 			
 		} else {
-			char buffer [50];
-			sprintf(buffer, "%d", lastOrderLine()+10);
-			QString newLine(buffer);
-			QString SQLQuery = "INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo)";
+			QString SQLQuery = "INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo)";
 			SQLQuery += " VALUES (";
-			SQLQuery += newLine;
-			SQLQuery += ", '"+m_list->text(i,COL_DESCLPEDIDO)+"'";
+			SQLQuery += m_list->text(i,COL_DESCLPEDIDO)+"'";
 			SQLQuery += " , "+m_list->text(i,COL_CANTLPEDIDO);
       	SQLQuery += " , "+m_list->text(i,COL_PVDLPEDIDO);
       	SQLQuery += " , '"+m_list->text(i,COL_PREVLPEDIDO)+"'";
@@ -321,23 +327,36 @@ void linorderslist::orderDateLostFocus() {
    m_fechapedido->setText(normalizafecha(m_fechapedido->text()).toString("dd/MM/yyyy"));
 }// end neworder
 
-int linorderslist::lastOrderLine() {
-	bool ok;
-	char buffer [10];
-	
-	companyact->begin();
-   cursor2 * cur= companyact->cargacursor("SELECT max(numlpedido) as lastLine FROM lpedido WHERE idpedido="+idpedido,"unquery");
-   companyact->commit();
-   if (!cur->eof()) {
-		return cur->valor(0).toInt(&ok, 10);
-   } else {
-		return 0;
-	}
-   delete cur;
-}
 
 void linorderslist::valueOrderLineChanged(int row, int col) {
-	if (col == COL_PREVLPEDIDO) {
-		m_list->setText(row, COL_PREVLPEDIDO,normalizafecha(m_list->text(row, col)).toString("dd/MM/yyyy"));
+	if (m_list->text(row, col) == "*" && row>0) {
+		m_list->setText(row, col, m_list->text(row-1, col));
+	}
+	
+	switch (col) {
+		case COL_PREVLPEDIDO: {
+			m_list->setText(row, COL_PREVLPEDIDO,normalizafecha(m_list->text(row, col)).toString("dd/MM/yyyy"));
+		}
+		case COL_CODARTICULO: {
+			manageArticle(row);
+		}
+	}
+} //end valueOrderLineChanged
+
+void linorderslist::manageArticle(int row) {
+	QString articleCode = m_list->text(row, COL_CODARTICULO);
+	if (articleCode == "+") {
+	}
+	
+	bool ok;
+	if (articleCode.toInt(&ok, 10)>0) {
+		companyact->begin();
+		cursor2 * cur2= companyact->cargacursor("SELECT * FROM articulo WHERE codarticulo="+m_list->text(row, COL_CODARTICULO),"unquery");
+		companyact->commit();
+		if (!cur2->eof()) {
+			m_list->setText(row, COL_NOMARTICULO, cur2->valor("nomarticulo"));
+		} else {
+			m_list->setText(row, COL_NOMARTICULO, cur2->valor(""));
+		}
 	}
 }

@@ -39,18 +39,18 @@ INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, i
 INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-3', 2004, '02/11/2004', 'Frutos secos de temporada', 3, 2);
 INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-4', 2004, '02/10/2004', 'Pedido semanal de lencería', 6, 1);
 
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (10, ' ', 10, 1.2, '30/10/2004', 1, 1);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (20, ' ', 100, 2.23, '02/11/2004', 1, 2);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (30, ' ', 15, 3.34, '30/10/2004', 1, 3);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (10, ' ', 34, 11.20, '05/11/2004', 2, 1);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (20, ' ', 45, 2.55, '05/11/2004', 2, 3);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (30, ' ', 1, 4.28, '10/11/2004', 2, 4);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (10, ' ', 34, 1.7, '31/12/2004', 3, 2);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (20, ' ', 11, 1.3, '30/12/2004', 3, 3);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (30, ' ', 28, 2.2, '30/12/2004', 3, 4);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (10, ' ', 15, 3.2, '15/11/2004', 4, 1);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (20, ' ', 10, 8.59, '10/11/2004', 4, 2);
-INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (30, ' ', 6, 6.15, '25/11/2004', 4, 3);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 10, 1.2, '30/10/2004', 1, 1);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 100, 2.23, '02/11/2004', 1, 2);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 15, 3.34, '30/10/2004', 1, 3);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 34, 11.20, '05/11/2004', 2, 1);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 45, 2.55, '05/11/2004', 2, 3);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 1, 4.28, '10/11/2004', 2, 4);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 34, 1.7, '31/12/2004', 3, 2);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 11, 1.3, '30/12/2004', 3, 3);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 28, 2.2, '30/12/2004', 3, 4);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 15, 3.2, '15/11/2004', 4, 1);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 10, 8.59, '10/11/2004', 4, 2);
+INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 6, 6.15, '25/11/2004', 4, 3);
 
 INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(2004, 1, '123', '01/12/2004', '30/11/2004', 'Albarán nº 123', 2);
 INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(2004, 2, '2323', '15/11/2004', '10/11/2004', 'Albarán nº 2323', 1);
