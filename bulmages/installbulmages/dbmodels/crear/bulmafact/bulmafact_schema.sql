@@ -227,8 +227,6 @@ CREATE TABLE recargo (
    tasarecargo float
 );
 
-INSERT INTO recargo (idrecargo, nomrecargo, tasarecargo) VALUES ('1', 'Tipo 1', '4.0');
-
 -- El cliente siempre tiene la razón, bueno, o por lo menos eso cree.
 --Codi: Clau artificial.
 --Nom: Nom comercial o fiscal.

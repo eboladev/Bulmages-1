@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by J. M. Torres Rigo                               *
- *   joanmi@bulma.net                                                      *
+ *   Copyright (C) 2004 by J. M. Estopa Rey                                *
+ *   pepma@telefonica.net                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,52 +17,47 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
+
  /*
- -- Los proveedores son los que nos suminstran articulos y/o servicios.
--- COMPROVACIONS D'INTEGRITAT>Genèriques:
--- 1 Article té 1 sol proveïdor principal.
--- 1 Article té 1 sol proveïdor referent.
--- CAMPOS
--- ======
--- Codi: Clau artificial.
--- Nom: Nom comercial o fiscal.
--- Nom_alternatiu: Nom comercial o fiscal.
--- CIF: Codi d'Identificació Fiscal.
--- CodiCli: Codi de client amb que ens facturen. Útil per a identificar-nos.
--- C_Banc
--- Comentaris
--- Adreça: Adreça.
--- Població: Població.
--- CProv: Codi de provincia (dos primers dígits del codi postal).
--- sCP: Tres darrers dígits del codi postal.
--- Telf: Telèfon.
--- Fax: Fax.
--- Email: eMail.
--- Url: Url.
--- CompteWeb: Dades de login si disposen de tenda o tarifes en línia
-CREATE TABLE proveedor (
-   idproveedor serial PRIMARY KEY,
-   nomproveedor character varying(200),
-   nomaltproveedor character varying(200),
-   cifproveedor character varying(12),
-   codicliproveedor character varying(30),
-   cbancproveedor character varying(20),
-   comentproveedor character varying(2000),
-   dirproveedor character varying(50),
-   poblproveedor character varying(50),
-   cpproveedor character varying(9) NOT NULL,
-   telproveedor character varying(12),
-   faxproveedor character varying(12),
-   emailproveedor character varying(100),
-   urlproveedor character varying(100),
-   clavewebproveedor character varying(100),
-   iddivision integer NOT NULL REFERENCES division(iddivision)
+-- El cliente siempre tiene la razón, bueno, o por lo menos eso cree.
+--Codi: Clau artificial.
+--Nom: Nom comercial o fiscal.
+--Nom_alternatiu: Nom comercial o fiscal.
+--CIF: Codi d'Identificació Fiscal.
+--C_Banc: Compte Bancari.
+--Adr: Adreça.
+--Pobl: Població.
+--CProv: Codi de provincia (dos primers dígits del codi postal).
+--sCP: Tres darrers dígits del codi postal.
+--Telf: Telèfon.
+--Fax: Fax.
+--Email: eMail.
+--Url: Url.
+--Data_alta
+--Data_Baixa
+---Comentaris
+CREATE TABLE cliente (
+   idcliente serial PRIMARY KEY,
+   nomcliente character varying(100),
+   nomaltcliente character varying(300),
+   cifcliente character varying(200),
+   bancocliente character varying(35),
+   dircliente character varying(100),
+   poblcliente character varying(40),
+   cpcliente character varying(10),
+   telcliente character varying(20),
+   faxcliente character varying(20),
+   mailcliente character varying(100),
+   urlcliente character varying(150),
+   faltacliente date DEFAULT NOW(),
+   fbajacliente date,
+   comentcliente character varying(2000),
+   
+   idrecargo integer NOT NULL REFERENCES recargo(idrecargo)
 );
 */
 
-
-#include "providerslist.h"
+#include "clientslist.h"
 #include <qtable.h>
 #include "company.h"
 
@@ -85,8 +80,8 @@ CREATE TABLE proveedor (
 
 
 
-providerslist::providerslist(company *comp, QWidget *parent, const char *name, int flag)
- : providerslistbase(parent, name, flag) {
+clientslist::clientslist(company *comp, QWidget *parent, const char *name, int flag)
+ : clientslistbase(parent, name, flag) {
       companyact = comp;
    m_list->setNumRows( 0 );
    m_list->setNumCols( 0 );
@@ -121,23 +116,17 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).c_str());   
+    m_list->setPaletteBackgroundColor("#AAAAAA");   
     m_list->setReadOnly(TRUE);        
        companyact->begin();
-       cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor","unquery");
+       cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente","unquery");
        companyact->commit();
        m_list->setNumRows( cur->numregistros() );
        int i=0;
        while (!cur->eof()) {
-         m_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
-         m_list->setText(i,COL_NOMPROVEEDOR,cur->valor("nomproveedor"));
-         m_list->setText(i,COL_NOMALTPROVEEDOR,cur->valor("nomaltproveedor"));
-         m_list->setText(i,COL_CIFPROVEEDOR,cur->valor("cifproveedor"));
-         m_list->setText(i,COL_CODICLIPROVEEDOR,cur->valor("codicliproveedor"));
-         m_list->setText(i,COL_CBANCPROVEEDOR,cur->valor("cbancproveedor"));
-         m_list->setText(i,COL_COMENTPROVEEDOR,cur->valor("comentproveedor"));
-         m_list->setText(i,COL_DIRPROVEEDOR,cur->valor("dirproveedor"));
-         m_list->setText(i,COL_POBLPROVEEDOR,cur->valor("poblproveedor"));
+         m_list->setText(i,COL_IDPROVEEDOR,cur->valor("idcliente"));
+         m_list->setText(i,COL_NOMPROVEEDOR,cur->valor("nomcliente"));
+         m_list->setText(i,COL_CIFPROVEEDOR,cur->valor("cifcliente"));
          i++;
          cur->siguienteregistro();
        }// end while
@@ -145,9 +134,9 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
       delete cur;
       
       showMaximized();
-}// end providerslist
+}// end clientslist
 
-providerslist::~providerslist() {
-}// end ~providerslist
+clientslist::~clientslist() {
+}// end ~clientslist
 
 

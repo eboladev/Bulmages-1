@@ -26,6 +26,7 @@
     </item>
     <item text="Clientes" name="Clientes">
         <action name="AClientes"/>
+        <action name="AListClients"/>
     </item>
     <item text="Proveedores" name="Proveedores">
         <action name="AProveedores"/>
@@ -217,6 +218,14 @@
             <string>Action</string>
         </property>
     </action>
+    <action>
+        <property name="name">
+            <cstring>AListClients</cstring>
+        </property>
+        <property name="text">
+            <string>Listado de clientes</string>
+        </property>
+    </action>
 </actions>
 <images>
     <image name="image0">
@@ -287,6 +296,12 @@
         <receiver>bulmafactbase</receiver>
         <slot>recibirfactura()</slot>
     </connection>
+    <connection>
+        <sender>AListClients</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>listclients()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>fileNew()</slot>
@@ -309,6 +324,7 @@
     <slot>proveedores()</slot>
     <slot>emitirfactura()</slot>
     <slot>recibirfactura()</slot>
+    <slot>listclients()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

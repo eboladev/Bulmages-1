@@ -59,6 +59,11 @@ void bulmafact::listproviders()
    m_company.listproviders();
 }
 
+void bulmafact::listclients()
+{
+   fprintf(stderr,"listclientsaction activado \n");
+   m_company.listclients();
+}
 
 void bulmafact::proveedores() {
    fprintf(stderr,"provideraction activado \n");
