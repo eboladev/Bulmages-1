@@ -79,7 +79,7 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
   showView();
   viewToolBar->setOn(true);
   viewStatusBar->setOn(true);
-  viewCorrector->setOn(true);
+//  viewCorrector->setOn(true);
   
   // Le indicamos al sistema de log cual va a ser la empresa.
   
@@ -696,6 +696,7 @@ void Bulmages01::initToolBar() {
   doc->setResizeEnabled(TRUE);
   doc->setMovingEnabled(TRUE);
   moveDockWindow(doc,Left);
+  doc->hide();
   corr->setEmpresa(&empresaactual);
   
 }// end initToolBar
@@ -821,10 +822,6 @@ void Bulmages01::slotViewCorrector(bool toggle)  {
   statusBar()->message(tr("Ready."));
 }// end slotViewStatusBar
 
-/*
-void Bulmages01::slotWindowNewWindow()  {
-}// end slotWindowNewWindow
-*/
 
 void Bulmages01::slotHelpAbout()  {
    aboutview *about=new aboutview(0,0);
