@@ -62,6 +62,7 @@ CREATE TABLE lpedido (
 #define COL_PREVLPEDIDO 7
 #define COL_IDPEDIDO 8
 #define COL_IDALB_PRO 9
+#define COL_REMOVE 10
 
 linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, int flag)
  : linorderslistbase(parent, name, flag) {
@@ -100,69 +101,72 @@ void linorderslist::chargeorder(QString idpedido_) {
 void linorderslist::chargelinorders(QString idpedido) {
 // Cargamos datos generales pedido y proveedor
    chargeorder(idpedido);
+	
 // Cargamos la tabla con lasl íneas del pedido
-   m_list->setNumRows( 0 );
-   m_list->setNumCols( 0 );
-   m_list->setSelectionMode( QTable::SingleRow );
-   m_list->setSorting( TRUE );
-   m_list->setSelectionMode( QTable::SingleRow );
-   m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(10);
-   m_list->horizontalHeader()->setLabel( COL_NUMLPEDIDO, tr( "Nº Línea" ) );
-   m_list->horizontalHeader()->setLabel( COL_DESCLPEDIDO, tr( "Descripción" ) );
-   m_list->horizontalHeader()->setLabel( COL_CANTLPEDIDO, tr( "Cantidad" ) );
-   m_list->horizontalHeader()->setLabel( COL_PVDLPEDIDO, tr( "Precio" ) );
-   m_list->horizontalHeader()->setLabel( COL_PREVLPEDIDO, tr( "Fecha Prevista Entrega" ) );
-   m_list->horizontalHeader()->setLabel( COL_IDPEDIDO, tr( "Nº Pedido" ) );
-   m_list->horizontalHeader()->setLabel( COL_IDALB_PRO, tr( "Albarán" ) );
-   m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
+	m_list->setNumRows( 0 );
+	m_list->setNumCols( 0 );
+	m_list->setSelectionMode( QTable::SingleRow );
+	m_list->setSorting( TRUE );
+	m_list->setSelectionMode( QTable::SingleRow );
+	m_list->setColumnMovingEnabled( TRUE );
+	m_list->setNumCols(11);
+	m_list->horizontalHeader()->setLabel( COL_NUMLPEDIDO, tr( "Nº Línea" ) );
+	m_list->horizontalHeader()->setLabel( COL_DESCLPEDIDO, tr( "Descripción" ) );
+	m_list->horizontalHeader()->setLabel( COL_CANTLPEDIDO, tr( "Cantidad" ) );
+	m_list->horizontalHeader()->setLabel( COL_PVDLPEDIDO, tr( "Precio" ) );
+	m_list->horizontalHeader()->setLabel( COL_PREVLPEDIDO, tr( "Fecha Prevista Entrega" ) );
+	m_list->horizontalHeader()->setLabel( COL_IDPEDIDO, tr( "Nº Pedido" ) );
+	m_list->horizontalHeader()->setLabel( COL_IDALB_PRO, tr( "Albarán" ) );
+	m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
 	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
 	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
    
-   m_list->setColumnWidth(COL_NUMLPEDIDO,100);
-   m_list->setColumnWidth(COL_DESCLPEDIDO,300);
-   m_list->setColumnWidth(COL_CANTLPEDIDO,100);
-   m_list->setColumnWidth(COL_PVDLPEDIDO,100);
-   m_list->setColumnWidth(COL_PREVLPEDIDO,100);
-   m_list->setColumnWidth(COL_IDPEDIDO,100);
-   m_list->setColumnWidth(COL_IDALB_PRO,100);
-   m_list->setColumnWidth(COL_IDARTICULO,100);
+	m_list->setColumnWidth(COL_NUMLPEDIDO,100);
+	m_list->setColumnWidth(COL_DESCLPEDIDO,300);
+	m_list->setColumnWidth(COL_CANTLPEDIDO,100);
+	m_list->setColumnWidth(COL_PVDLPEDIDO,100);
+	m_list->setColumnWidth(COL_PREVLPEDIDO,100);
+	m_list->setColumnWidth(COL_IDPEDIDO,100);
+	m_list->setColumnWidth(COL_IDALB_PRO,100);
+	m_list->setColumnWidth(COL_IDARTICULO,100);
 	m_list->setColumnWidth(COL_CODARTICULO,100);
 	m_list->setColumnWidth(COL_NOMARTICULO,300);
-	
+
 	m_list->hideColumn(COL_NUMLPEDIDO);
 	m_list->hideColumn(COL_IDPEDIDO);
 	m_list->hideColumn(COL_IDARTICULO);
+	m_list->hideColumn(COL_REMOVE);
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-	 m_list->setColumnReadOnly(COL_NOMARTICULO,true);
-    m_list->setPaletteBackgroundColor("#AFFAFA");   
+// Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
+	m_list->setColumnReadOnly(COL_NOMARTICULO,true);
+	m_list->setPaletteBackgroundColor("#AFFAFA");   
     //m_list->setReadOnly(TRUE);        
-	 m_list->setReadOnly(FALSE);        
-       companyact->begin();
-       cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedido, articulo WHERE idpedido="+idpedido+" AND articulo.idarticulo=lpedido.idarticulo","unquery");
-       companyact->commit();
-       m_list->setNumRows( cur->numregistros() );
-       int i=0;
-       while (!cur->eof()) {
-         m_list->setText(i,COL_NUMLPEDIDO,cur->valor("numlpedido"));
-	 		m_list->setText(i,COL_DESCLPEDIDO,cur->valor("desclpedido"));
-         m_list->setText(i,COL_CANTLPEDIDO,cur->valor("cantlpedido"));
-         m_list->setText(i,COL_PVDLPEDIDO,cur->valor("pvdlpedido"));
-	 		m_list->setText(i,COL_PREVLPEDIDO,cur->valor("prevlpedido"));
-         m_list->setText(i,COL_IDPEDIDO,cur->valor("idpedido"));
-	 		m_list->setText(i,COL_IDALB_PRO,cur->valor("idalb_pro"));
-			m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
-			m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
-			m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
-         i++;
-         cur->siguienteregistro();
-       }// end while
-      
-      delete cur;
-    //showMaximized();
-}// end linorderslist
+	m_list->setReadOnly(FALSE);        
+	 
+	companyact->begin();
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedido, articulo WHERE idpedido="+idpedido+" AND articulo.idarticulo=lpedido.idarticulo","unquery");
+	companyact->commit();
+	m_list->setNumRows( cur->numregistros() );
+	int i=0;
+	while (!cur->eof()) {
+		m_list->setText(i,COL_NUMLPEDIDO,cur->valor("numlpedido"));
+		m_list->setText(i,COL_DESCLPEDIDO,cur->valor("desclpedido"));
+		m_list->setText(i,COL_CANTLPEDIDO,cur->valor("cantlpedido"));
+		m_list->setText(i,COL_PVDLPEDIDO,cur->valor("pvdlpedido"));
+		m_list->setText(i,COL_PREVLPEDIDO,cur->valor("prevlpedido"));
+		m_list->setText(i,COL_IDPEDIDO,cur->valor("idpedido"));
+		m_list->setText(i,COL_IDALB_PRO,cur->valor("idalb_pro"));
+		m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
+		m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
+		m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
+		i++;
+		cur->siguienteregistro();
+	}// end while
+	
+	delete cur;
+	
+}// end chargelinorders
 
 void linorderslist::cargarcomboalmacen(QString idalmacen) {
 	m_cursorcombo2 = NULL;
@@ -183,7 +187,7 @@ void linorderslist::cargarcomboalmacen(QString idalmacen) {
    if (i1 != 0 ) {
    	m_comboalmacen->setCurrentItem(i1-1);
    }
-}
+} // end cargarcomboalmacen
 
 void linorderslist::cargarcombodivision(QString idproveedor, QString iddivision) {
 	m_cursorcombo = NULL;
@@ -204,16 +208,18 @@ void linorderslist::cargarcombodivision(QString idproveedor, QString iddivision)
 	if (i1 != 0 ) {
    		m_combodivision->setCurrentItem(i1-1);
  	} 
-}
+} //end cargarcombodivision
 
 
 void linorderslist::activated(int a) {
 	fprintf(stderr,"id:%s\n", m_cursorcombo->valor("iddivision",a).ascii());
 }
 
+
 void linorderslist::almacenactivated(int a) {
 	fprintf(stderr,"id:%s\n", m_cursorcombo2->valor("idalmacen",a).ascii());
 }
+
 
 void linorderslist::accept() {
 	fprintf(stderr,"accept button activated\n");
@@ -248,7 +254,7 @@ void linorderslist::accept() {
 	saveOrderLines();
 	
 	close();
-}
+} //end accept
 
 
 void linorderslist::neworderlin() {
@@ -281,6 +287,7 @@ void linorderslist::searchProvider() {
    delete provlist;
 }// end searchProvider
 
+
 void linorderslist::providerChanged(QString idProvider) {
 	companyact->begin();
 	cursor2 * cur2= companyact->cargacursor("SELECT * FROM proveedor WHERE idproveedor="+idProvider,"unquery");
@@ -291,42 +298,80 @@ void linorderslist::providerChanged(QString idProvider) {
 	}
 } //end providerChanged
 
+
 void linorderslist::saveOrderLines() {
 	int i = 0;
 	while (i < m_list->numRows()) {
-   	if (m_list->text(i,COL_NUMLPEDIDO)!="") {
-			QString SQLQuery = "UPDATE lpedido SET desclpedido='"+m_list->text(i,COL_DESCLPEDIDO)+"'";
-      	SQLQuery += " , cantlpedido="+ m_list->text(i,COL_CANTLPEDIDO);
-      	SQLQuery += " , pvdlpedido="+m_list->text(i,COL_PVDLPEDIDO);
-      	SQLQuery += " , prevlpedido='"+m_list->text(i,COL_PREVLPEDIDO)+"'";
-      	SQLQuery += " , idarticulo="+m_list->text(i,COL_IDARTICULO);
-      	SQLQuery += " WHERE idpedido ="+idpedido+" AND numlpedido="+m_list->text(i,COL_NUMLPEDIDO);
-      	companyact->begin();
-      	companyact->ejecuta(SQLQuery);
-      	companyact->commit();
-			
+		if (m_list->text(i,COL_REMOVE)=="S") {
+			if (m_list->text(i,COL_NUMLPEDIDO)!="") {
+				deleteOrderLine(i);
+			}
 		} else {
-			QString SQLQuery = "INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo)";
-			SQLQuery += " VALUES (";
-			SQLQuery += m_list->text(i,COL_DESCLPEDIDO)+"'";
-			SQLQuery += " , "+m_list->text(i,COL_CANTLPEDIDO);
-      	SQLQuery += " , "+m_list->text(i,COL_PVDLPEDIDO);
-      	SQLQuery += " , '"+m_list->text(i,COL_PREVLPEDIDO)+"'";
-      	SQLQuery += " , "+idpedido;
-      	SQLQuery += " , "+m_list->text(i,COL_IDARTICULO);
-      	SQLQuery += " ) ";
-      	companyact->begin();
-      	companyact->ejecuta(SQLQuery);
-      	companyact->commit();
+			if (m_list->text(i,COL_NUMLPEDIDO)!="") {
+				updateOrderLine(i);
+			} else {
+				insertOrderLine(i);
+			}
 		}
 		i ++;
    }
 } // end saveOrderLines
 
+
 void linorderslist::orderDateLostFocus() {
    fprintf(stderr, "orderDate Lost Focus");
    m_fechapedido->setText(normalizafecha(m_fechapedido->text()).toString("dd/MM/yyyy"));
 }// end neworder
+
+
+void linorderslist::updateOrderLine(int i) {
+	QString SQLQuery = "UPDATE lpedido SET desclpedido='"+m_list->text(i,COL_DESCLPEDIDO)+"'";
+	SQLQuery += " , cantlpedido="+ m_list->text(i,COL_CANTLPEDIDO);
+	SQLQuery += " , pvdlpedido="+m_list->text(i,COL_PVDLPEDIDO);
+	SQLQuery += " , prevlpedido='"+m_list->text(i,COL_PREVLPEDIDO)+"'";
+	SQLQuery += " , idarticulo="+m_list->text(i,COL_IDARTICULO);
+	if (m_list->text(i,COL_IDALB_PRO) != "") {
+		SQLQuery += " , idalb_pro="+m_list->text(i,COL_IDALB_PRO);
+	}
+	SQLQuery += " WHERE idpedido ="+idpedido+" AND numlpedido="+m_list->text(i,COL_NUMLPEDIDO);
+	companyact->begin();
+	companyact->ejecuta(SQLQuery);
+	companyact->commit();
+} //end updateOrderLine
+
+
+void linorderslist::insertOrderLine(int i) {
+	QString SQLQuery ="";
+	if (m_list->text(i,COL_IDALB_PRO)!="") {
+		SQLQuery = "INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo, idalb_pro)";
+	} else {
+		SQLQuery = "INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo)";
+	}
+	SQLQuery += " VALUES (";
+	SQLQuery += "'"+m_list->text(i,COL_DESCLPEDIDO)+"'";
+	SQLQuery += " , "+m_list->text(i,COL_CANTLPEDIDO);
+	SQLQuery += " , "+m_list->text(i,COL_PVDLPEDIDO);
+	SQLQuery += " , '"+m_list->text(i,COL_PREVLPEDIDO)+"'";
+	SQLQuery += " , "+idpedido;
+	SQLQuery += " , "+m_list->text(i,COL_IDARTICULO);
+	if (m_list->text(i,COL_IDALB_PRO) != "") {
+		SQLQuery += " , "+m_list->text(i,COL_IDALB_PRO);
+	}
+	SQLQuery += " ) ";
+	companyact->begin();
+	companyact->ejecuta(SQLQuery);
+	companyact->commit();
+} //end insertOrderLine
+
+
+void linorderslist::deleteOrderLine(int line) {
+	QString SQLQuery = "DELETE FROM lpedido WHERE numlpedido ="+m_list->text(line,COL_NUMLPEDIDO);
+	companyact->begin();
+	if (companyact->ejecuta(SQLQuery)==0) {
+		m_list->removeRow(m_list->currentRow());
+	}
+	companyact->commit();
+} //end deleteOrderLine
 
 
 void linorderslist::valueOrderLineChanged(int row, int col) {
@@ -344,6 +389,7 @@ void linorderslist::valueOrderLineChanged(int row, int col) {
 	}
 } //end valueOrderLineChanged
 
+
 void linorderslist::manageArticle(int row) {
 	QString articleCode = m_list->text(row, COL_CODARTICULO);
 	if (articleCode == "+") {
@@ -360,11 +406,13 @@ void linorderslist::manageArticle(int row) {
 		companyact->commit();
 		if (!cur2->eof()) {
 			m_list->setText(row, COL_NOMARTICULO, cur2->valor("nomarticulo"));
+			m_list->setText(row, COL_IDARTICULO, cur2->valor("idarticulo"));
 		} else {
 			m_list->setText(row, COL_NOMARTICULO, cur2->valor(""));
+			m_list->setText(row, COL_IDARTICULO, cur2->valor(""));
 		}
 	}
-}
+} //end manageArticle
 
 
 void linorderslist::searchArticle() {
@@ -384,3 +432,14 @@ void linorderslist::searchArticle() {
 	
    delete artlist;
 }// end searchProvider
+
+
+void linorderslist::removeOrderLin() {
+	
+	if (m_list->currentRow() >= 0) {
+		int row = m_list->currentRow();
+		m_list->setText(row, COL_REMOVE, "S");
+		m_list->hideRow(row);
+	}
+	
+}// end removeOrderLin

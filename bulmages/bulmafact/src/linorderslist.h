@@ -55,6 +55,9 @@ private:
 	void cargarcombodivision(QString, QString);
 	void cargarcomboalmacen(QString);
 	void searchArticle();
+	void insertOrderLine(int);
+	void updateOrderLine(int);
+	void deleteOrderLine(int);
 
 public slots:
     virtual void activated(int);
@@ -65,6 +68,7 @@ public slots:
     virtual void searchProvider();
 	 virtual void orderDateLostFocus();
 	 virtual void valueOrderLineChanged(int, int);
+	 virtual void removeOrderLin();
 };
 
 #endif

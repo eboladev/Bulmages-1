@@ -422,7 +422,7 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1_3_2_2_2</cstring>
+                        <cstring>m_rmvOrderLin</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -786,6 +786,12 @@
         <receiver>linorderslistbase</receiver>
         <slot>valueOrderLineChanged(int,int)</slot>
     </connection>
+    <connection>
+        <sender>m_rmvOrderLin</sender>
+        <signal>clicked()</signal>
+        <receiver>linorderslistbase</receiver>
+        <slot>removeOrderLin()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>activated( int )</slot>
@@ -795,6 +801,7 @@
     <slot>accept()</slot>
     <slot>orderDateLostFocus()</slot>
     <slot>valueOrderLineChanged(int, int)</slot>
+    <slot>removeOrderLin()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
