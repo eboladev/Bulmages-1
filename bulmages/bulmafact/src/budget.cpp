@@ -71,9 +71,11 @@ CREATE TABLE lpresupuesto (
 
 #include <qlineedit.h>
 #include <qtextedit.h>
+#include <qmessagebox.h>
 #include <qlabel.h>
 #include <qtable.h>
 #include <qwidget.h>
+
 #include "funcaux.h"
 
 #define COL_IDLPRESUPUESTO 0
@@ -104,6 +106,9 @@ Budget::~Budget() {
 
 
 void Budget::inicialize() {
+
+	installEventFilter( this );
+	m_modified = false;
 
 // Inicializamos la tabla de lineas de presupuesto
 	m_list->setNumRows( 0 );
@@ -430,6 +435,7 @@ void Budget::accept() {
 	companyact->begin();
 	if (saveBudget()==0 && saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
 		companyact->commit();
+		m_modified = false;
 		close();
 	} else {
 		companyact->rollback();
@@ -594,6 +600,9 @@ void Budget::calculateImports() {
 
 
 bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
+	if ( ev->type() == QEvent::KeyPress ) {
+		m_modified = true;
+	}
 	if ( obj->isA("QTable")) {
 		QTable *t = (QTable *)obj;
 		if ( ev->type() == QEvent::KeyPress ) {
@@ -623,7 +632,14 @@ bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
 			} 
 		}
 	} 
-		
+	
+	if ( ev->type() == QEvent::Close ) {
+		if ( m_modified ) {
+			if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Se perderán los cambios que haya realizado", "Aceptar", "Cancelar") != 0) {
+				return TRUE;
+			}
+		}
+	}
 	return FALSE;
 } //end eventFilter
 
@@ -666,6 +682,5 @@ void Budget::duplicateCell(QObject *obj) {
 		t->setText(row, col, t->text(row-1, col));
 	}
 }
-
 
 

@@ -34,6 +34,7 @@ private:
    company *companyact;
    QString m_idpresupuesto;
    QString m_idclient;
+	bool m_modified;
 	
 public:
     Budget(company *, QWidget *, const char *);

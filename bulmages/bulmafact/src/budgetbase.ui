@@ -822,7 +822,7 @@
 <connections>
     <connection>
         <sender>m_fpresupuesto</sender>
-        <signal>textChanged(const QString&amp;)</signal>
+        <signal>lostFocus()</signal>
         <receiver>BudgetBase</receiver>
         <slot>budgetDateLostFocus()</slot>
     </connection>
