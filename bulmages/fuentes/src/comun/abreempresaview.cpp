@@ -70,10 +70,13 @@ void abreempresaview::accept() {
        query.sprintf("SELECT permisos FROM usuario_empresa, empresa, usuario WHERE usuario_empresa.idempresa=empresa.idempresa and usuario_empresa.idusuario=usuario.idusuario and empresa.nombredb='%s' and usuario.login='%s'",empresabd.ascii(),nombre.ascii());
        cursor2 * recordSet = DBConn.cargacursor(query,"recordSet");
        DBConn.commit();
+       
+//       empresaactual->nombreusuario = nombre;
+       
        confpr->setValor(PRIVILEGIOS_USUARIO, recordSet->valor(0,0));
        fprintf(stderr, "Entrando Usuario: %s, con Permisos tipo: %s\n",nombre.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str());
        
-       ctllog->add("Entrando Usuario: "+nombre );
+       ctllog->add(LOG_SEG | LOG_TRA,"Entrando Usuario: "+nombre );
        delete this;
    }//end if
    if ((intentos+=1)>3) padre->close();
