@@ -3,8 +3,8 @@
 #---------------------------------------------------------------------------
 # Project related configuration options
 #---------------------------------------------------------------------------
-PROJECT_NAME           = bulmages.kdevelop
-PROJECT_NUMBER         = 0.01
+PROJECT_NAME           = Bulmacont
+PROJECT_NUMBER         = 0.41
 OUTPUT_DIRECTORY       = 
 OUTPUT_LANGUAGE        = Spanish
 USE_WINDOWS_ENCODING   = NO
@@ -72,7 +72,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = /home/prova/projects/bulmages
+INPUT                  = .
 FILE_PATTERNS          = *.c \
                          *.cc \
                          *.cxx \
@@ -106,9 +106,9 @@ FILE_PATTERNS          = *.c \
 RECURSIVE              = YES
 EXCLUDE                = 
 EXCLUDE_SYMLINKS       = NO
-EXCLUDE_PATTERNS       = 
+EXCLUDE_PATTERNS       = */.ui/*
 EXAMPLE_PATH           = 
-EXAMPLE_PATTERNS       = *
+EXAMPLE_PATTERNS       = 
 EXAMPLE_RECURSIVE      = NO
 IMAGE_PATH             = 
 INPUT_FILTER           = 
@@ -151,7 +151,7 @@ TREEVIEW_WIDTH         = 250
 #---------------------------------------------------------------------------
 # configuration options related to the LaTeX output
 #---------------------------------------------------------------------------
-GENERATE_LATEX         = YES
+GENERATE_LATEX         = NO
 LATEX_OUTPUT           = latex
 LATEX_CMD_NAME         = latex
 MAKEINDEX_CMD_NAME     = makeindex
@@ -182,7 +182,7 @@ MAN_LINKS              = NO
 #---------------------------------------------------------------------------
 # configuration options related to the XML output
 #---------------------------------------------------------------------------
-GENERATE_XML           = YES
+GENERATE_XML           = NO
 XML_OUTPUT             = xml
 XML_SCHEMA             = 
 XML_DTD                = 
@@ -223,7 +223,7 @@ PERL_PATH              = /usr/bin/perl
 #---------------------------------------------------------------------------
 CLASS_DIAGRAMS         = YES
 HIDE_UNDOC_RELATIONS   = YES
-HAVE_DOT               = NO
+HAVE_DOT               = YES
 CLASS_GRAPH            = YES
 COLLABORATION_GRAPH    = YES
 UML_LOOK               = NO
