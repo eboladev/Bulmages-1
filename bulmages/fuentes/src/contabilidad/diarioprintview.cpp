@@ -50,14 +50,14 @@ void DiarioPrintView::pruebasRTK() {
 #ifdef REPORTS
 cursor2 *cursoraux;
 conexionbase->begin();
-cursoraux=conexionbase->cargacursor("SELECT * FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta", "unquery");
+cursoraux=conexionbase->cargacursor("SELECT * FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY ordenasiento", "unquery");
 conexionbase->commit();
 
 // Esta llamada que se hace aqui sólo hay que hacerla una vez al principio de la aplicacion
 registraInputBGes();
 
 RTK::Report unReport;
-unReport.readXml("/tmp/extracto.rtk");
+unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"extracto.rtk");
 InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
 inp->set(InputBGes::diario, empresaactual, cursoraux);
 OutputQPainter *salida = new OutputQPainter(A4, dots, 57, 59, 0,0,20,20,20,20);

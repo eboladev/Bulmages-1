@@ -55,7 +55,7 @@ Variant InputBGes::getValue(uint i) const {
         if( i<(uint)consulta->numcampos() )
                 return Variant(consulta->valor((int) i));
         else
-                return Variant();
+                return Variant("");
 }
 
 

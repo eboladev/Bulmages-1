@@ -39,6 +39,7 @@ su postgres -c "dropdb metabd"  > /dev/null 2> /dev/null
 su postgres -c "dropdb bgplangcont"  > /dev/null 2> /dev/null
 rm /etc/bulmages.conf
 rm -rf /usr/share/bulmages
+rm -rf /var/www/bcontaweb
 
 mensaje "BulmaGes ha sido completamente desinstalado.
 Puede que queden bases de datos en su ordenador que debera borrar manualmente"

@@ -1,5 +1,6 @@
 #!/bin/bash
-
+#  (C) Tomeu Borrás Riera, Setiembre 2004
+#
 # Este script se encarga de crear bases de datos de bulmages.
 # para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos que será)
 # Este script no se encarga de hacer las inserciones oportunas en la metabd.
@@ -33,7 +34,7 @@ function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog --title "Creacion Base de Datos" --backtitle "Asociación Iglues" --msgbox "$1" 10 60
+      dialog --title "Creacion Base de Datos" --backtitle "Asociacion Iglues" --msgbox "$1" 15 60
    fi
 }
 
@@ -42,7 +43,7 @@ function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog  --title "Creacion Base de Datos" --backtitle "Asociación Iglues" --infobox "$1" 10 60
+      dialog  --title "Creacion Base de Datos" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
    fi
 }
 
@@ -63,8 +64,6 @@ info "Creamos la base de datos:$2 $3"
 linea
 tiempo
 
-
-
 su - postgres -c "dropdb  $2" 2>> /tmp/error.txt > /dev/null
 su - postgres -c "createdb -E SQL_ASCII $2" 2>> /tmp/errores.txt > /dev/null
 
@@ -84,14 +83,21 @@ if [ -e /usr/lib/pgsql/plpgsql.so ]; then
    ENC="1"
 fi
 
+
+ENC="0"
 if [ "$ENC" = "0" ]; then
    LANG=`locate plpgsql.so`
    if [ $LANG ]; then
-         mensaje "PostgreSQL no esta bien instalado o la distribucion no es una de las soportadas por el instalador. \
-   No se ha encontrado la libreria plpgsql.so necesaria para instalar las \ bases de datos \
-   Por favor, localicela e intente una instalación manual\n\n Puede que el archivo que busca este en $LANG" 
+      LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
+      mensaje "No se ha encontrado plpgsql.o en los sitios mas usuales, se ha encontrado dicho archivo en $LANG. Intentando la instalacion con dicho archivo" 
+      tiempo
+      cat crear/bulmages/bulmages_generica.pgdump | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.pgdump      
+   else
+      mensaje "PostgreSQL no esta bien instalado o la distribucion no es una \n de las soportadas por el instalador. \
+   No se ha encontrado la libreria plpgsql.so necesaria para instalar las \n bases de datos 
+   Por favor, localicela e intente una instalacion manual\n" 
+      exit 1
    fi
-   exit 1
 fi
 
 # Creamos la base
@@ -163,7 +169,7 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
       su - postgres -c "echo -e \"\\pset tuples_only \n select idusuario FROM usuario ;\" | psql metabd" > /tmp/listuser.lst
       for y in `tail +2 /tmp/listuser.lst`
       do
-	    su - postgres -c " echo \"INSERT INTO usuario_empresa (idusuario,idempresa) VALUES ($y, $x)\" | psql $6 "  2>> /tmp/errores.txt >> /tmp/errores.txt
+	    su - postgres -c " echo \"INSERT INTO usuario_empresa (idusuario,idempresa, permisos) VALUES ($y, $x, 1)\" | psql $6 "  2>> /tmp/errores.txt >> /tmp/errores.txt
 	    info "Damos permisos a $y, $x. \n"
       done
       linea

@@ -111,7 +111,7 @@
 >
 
 
-<REPORT name="extracto.rtk" title="Extractos de Cuentas" tag="Diario" units="chars" 
+<REPORT name="extracto.rtk" title="Diario Contable" tag="Diario" units="chars" 
   sizex="80" sizey="60" fontsize="10" valingment="middle" fontitalic="true">
   
 &rtkstyles;
@@ -122,6 +122,7 @@
     orderby="cuenta.codigo, asiento.fecha, apunte.orden">
     <INPUTFIELD name="numdiario" source="apunte.idc_coste" type="number"></INPUTFIELD>
     <INPUTFIELD name="numasiento" source="asiento.ordenasiento" type="number"></INPUTFIELD>
+    <INPUTFIELD name="ordenasiento" source="asiento.ordenasiento" type="number"></INPUTFIELD>
     <INPUTFIELD name="fecha" source="asiento.fecha" type="date"></INPUTFIELD>
     <INPUTFIELD name="numdocumento" source="asiento.descripcion" type="text"></INPUTFIELD>
     <INPUTFIELD name="fechadocumento" source="asiento.fecha" type="date"></INPUTFIELD>
@@ -134,7 +135,6 @@
     <INPUTFIELD name="haber" source="apunte.haber" type="currency"></INPUTFIELD>
     <INPUTFIELD name="numapunte" source="apunte.orden" type="number"></INPUTFIELD>
     <INPUTFIELD name="concepto" source="apunte.conceptocontable" type="number"></INPUTFIELD>
-    
   </INPUT>
 
 <!-- Encabezado de página -->
@@ -195,12 +195,12 @@
 
 <!-- Grupo cuenta encabezado -->
 
-  <SECTION name="grupo-cuenta-encabezado" type="group-header" grouplevel="1" groupvalue="input.cuenta"
+  <SECTION name="grupo-cuenta-encabezado" type="group-header" grouplevel="1" groupvalue="input.ordenasiento"
     style="normal-text" posy="0" sizey="1.2" margintop="0.2">
 
     <OBJECT name="cuenta"
       posx="0" posy="0" sizex="12" sizey="1"
-      value="input.cuenta" fontweight="bold"
+      value="input.ordenasiento" fontweight="bold"
       ></OBJECT>
     <OBJECT name="cuenta-descripcion"
       posx="14" posy="0" sizex="64" sizey="1"
@@ -226,7 +226,7 @@
       ></OBJECT>
     <OBJECT name="asiento-numasiento"
       posx="2" posy="0" sizex="6.5" sizey="1"
-      value="input.numasiento" mask="000000"
+      value="input.ordenasiento" mask="000000"
       ></OBJECT>
     <OBJECT name="asiento-div2"
       posx="8" posy="0" sizex="1" sizey="1"
@@ -262,11 +262,11 @@
 
 <!-- Grupo cuenta pie -->
 
-  <SECTION name="grupo-cuenta-pie" type="group-footer" grouplevel="1" groupvalue="input.id"
+  <SECTION name="grupo-cuenta-pie" type="group-footer" grouplevel="1" groupvalue="input.ordenasiento"
     style="normal-text" sizey="1.5" posy="0.2">
 
-    <OBJECT name="text-debe-total" style="total"
-      posx="27" posy="0" sizex="6" sizey="1"
+    <OBJECT name="text-debe-total" style="currency"
+      posx="27" posy="0" sizex="12" sizey="1"
       value="Total:"
       ></OBJECT>
     <OBJECT name="text-cuenta-pie" style="total"
