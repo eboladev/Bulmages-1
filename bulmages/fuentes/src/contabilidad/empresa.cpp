@@ -377,8 +377,7 @@ int empresa::mpatrimoniales() {
  *******************************************************************/
 int empresa::compbalance() {
    // Esto es lo más correcto, lo anterior se llamará desde esta nueva ventana.
-   balancesview * nueva = new balancesview(0,"balances");
-   nueva->inicializa(conexionbase2);
+   balancesview * nueva = new balancesview(this,0,"balances");
    nueva->exec();
    delete nueva;   
    return(0);

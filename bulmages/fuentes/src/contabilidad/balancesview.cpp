@@ -21,42 +21,24 @@
 #include <qfiledialog.h>
 #include <qmessagebox.h>
 
+#include "importbalance.h"
+#include "empresa.h"
+
 
 #define COL_CODIGO 0
 #define COL_NOMBRE 1
 
-balancesview::balancesview(QWidget *parent, const char *name ) : balancesdlg(parent,name) {
+balancesview::balancesview(empresa *emp, QWidget *parent, const char *name ) : balancesdlg(parent,name) {
+   empresaactual = emp;
+   conexionbase = empresaactual->bdempresa();
+   numdigitos = empresaactual->numdigitosempresa();
+   
    modo = 0;
-}
+   inicializatabla();
+}// end balancesview
 
 balancesview::~balancesview(){
 }
-
-
-/*************************************************************
- * Esta funcion se encarga de hacer las inicializaciones de todo el formulario.
- * Se llama asi y no desde el constructor pq asi la podemos llamar desde dentro
- * de la misma clase, etc etc etc
- *************************************************************/
-int balancesview::inicializa(postgresiface2 *conn ) {
-//   cursor1 *cursoraux1;
-
-   conexionbase = conn;
-//   conexionbase->begin();
-
-/*   
-   // Vamos a cargar el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
-   conexionbase->begin();
-   string query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-   cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
-   conexionbase->commit();
-   numdigitos=cursoraux1->valor(2).size();
-   delete cursoraux1;
-   fprintf(stderr,"las cuentas tienen %d digitos\n",numdigitos);
-*/
-   inicializatabla();
-   return(0);
-}// end inicializa
 
 
 void balancesview::inicializatabla()  {
@@ -183,6 +165,7 @@ void balancesview::boton_exportar() {
             conexionbase->commit();
             while (!cursp5->eof()) {
                fprintf(mifile,"      <mpatrimonial>\n");
+               fprintf(mifile,"         <idmasa>%s</idmasa>\n", cursp5->valor("idmpatrimonial").ascii());
                fprintf(mifile,"         <idmpatrimonial>%s</idmpatrimonial>\n", cursp5->valor("idmpatrimonial").ascii());
                fprintf(mifile,"         <descmpatrimonial>%s</descmpatrimonial>\n", cursp5->valor("descmpatrimonial").ascii());
                fprintf(mifile,"         <orden>%s</orden>\n", cursp5->valor("orden").ascii());
@@ -196,6 +179,7 @@ void balancesview::boton_exportar() {
                conexionbase->commit();
                while (!cursp6->eof()) {
                   fprintf(mifile,"         <compmasap>\n");
+                  fprintf(mifile,"            <masaperteneciente>%s</masaperteneciente>\n", cursp6->valor("masaperteneciente").ascii());
                   fprintf(mifile,"            <codigo>%s</codigo>\n", cursp6->valor("codigo").ascii());
                   fprintf(mifile,"            <idmpatrimonial>%s</idmpatrimonial>\n", cursp6->valor("idmpatrimonial").ascii());
                   fprintf(mifile,"            <saldo>%s</saldo>\n", cursp6->valor("saldo").ascii());
@@ -234,11 +218,23 @@ void balancesview::boton_exportar() {
       }// end if
   }// end if   
   QMessageBox::warning( this,"BulmaGés", "Se ha exportado el Balance.", "OK",  "No OK", 0, 0, 1 );  
-   
-   
 }// end boton_exportar
 
 void balancesview::boton_importar() {
    fprintf(stderr,"Boton de Importar\n");
+   QString fn = QFileDialog::getOpenFileName(0, tr("Asientos Inteligentes (*.xml)"), 0,tr("Cargar Asientos Inteligentes"),tr("Elige el nombre de archivo"));
+   if (!fn.isEmpty()) {      
+      // Hacemos el parsing del XML
+      QFile xmlFile( fn);              // Declaramos el ficheros
+      QXmlInputSource source( &xmlFile ); // Declaramos el inputsource, con el fichero como parámetro
+      QXmlSimpleReader reader;            // Declaramos el lector
+      
+      importbalance * handler = new importbalance( empresaactual );
+      reader.setContentHandler( handler );
+      reader.parse( source );   
+      handler->cambiapaso();
+      source.reset();
+      reader.parse( source );
+   }// end if   
 }// end boton_importar
 

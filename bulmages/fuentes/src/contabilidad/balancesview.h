@@ -25,19 +25,22 @@
 
 /***@author Tomeu Borrás Riera */
 
+class empresa;
+
 class balancesview : public balancesdlg  {
    Q_OBJECT
-public:
+private:
+   empresa *empresaactual;
    postgresiface2 *conexionbase; // Esta variable indica cual es la base de datos con la que se trabaja.
 //   int numdigitos;               // Esta variable indica el número de dítigos que tienen las cuentas de nivel más bajo.
    int modo;                     // Esta variable indica si se abre para busqueda o para edicion.
    string nombalance;               // Esta variable indica el nombre de la masa, luego se usara
    string idbalance;                // Esta variable indica el identificador de masa.
+   int numdigitos;
    
 public: 
-	balancesview(QWidget *parent=0, const char *name=0);
+	balancesview(empresa *, QWidget *parent=0, const char *name=0);
 	~balancesview();
-   int inicializa(postgresiface2 *);
    void inicializatabla();
    void setmodoselector() {modo = 1;}
    void setmodoeditor() {modo = 0;}

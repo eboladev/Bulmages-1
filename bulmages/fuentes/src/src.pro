@@ -323,7 +323,8 @@ HEADERS += comun/abreempresaview.h \
            comun/selectcanalview.h \
            formularios/modelosps.h \
            formularios/modelo300.h \
-	   comun/importainteligente.h
+	   comun/importainteligente.h \
+	   comun/importbalance.h
 SOURCES += main.cpp \
            comun/abreempresaview.cpp \
            comun/splashscreen.cpp \
@@ -381,7 +382,8 @@ SOURCES += main.cpp \
            comun/selectcanalview.cpp \
            formularios/modelosps.cpp \
 	   formularios/modelo300.cpp \
-	   comun/importainteligente.cpp
+	   comun/importainteligente.cpp \
+	   comun/importbalance.cpp 
 QMAKE_CLEAN += Makefile
 LANGUAGE = C++
 exists (estadisticas){
