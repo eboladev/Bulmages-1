@@ -27,5 +27,5 @@ div#contents_margins {margin-left:1em; margin-right:1em;}
 
 table.news {width:100%;}
 table.news tr.head td {background-color:#81afc8;}
-table.news tr td {background-color:#ffffff;}
+table.news tr td {background-color:#ffffff; color:#000000}
 
