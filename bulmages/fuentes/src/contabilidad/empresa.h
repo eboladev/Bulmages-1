@@ -31,6 +31,7 @@
 #include "balance1view.h"
 #include "diarioview1.h"
 #include "extractoview1.h"
+#include "bmodelo347.h"
 #include "postgresiface2.h"
 
 
@@ -79,6 +80,7 @@ public:
   int librobalance();
   int librobalancetree();
   int registroiva();
+  int modelo347();
   int inicializa1(QWorkspace *);
   int boton_siguiente();
   int boton_anterior();

@@ -110,16 +110,17 @@ public:
     /** Slot para el libro mayor */
     void slotLibroMayor();
     /** Slot para guardar la empresa */
-    void slotGuardarEmpresa();
+    //void slotGuardarEmpresa();
     /** Slot para cargar la empresa */
-    void slotCargarEmpresa();
-    void slotNuevaEmpresa();
-    void slotBorrarEmpresa();
-    void slotCambiarEmpresa();
+    //void slotCargarEmpresa();
+    //void slotNuevaEmpresa();
+    //void slotBorrarEmpresa();
+    //void slotCambiarEmpresa();
     void slotLibroDiario();
     void slotAsientos();
     void slotGruposContables();
     void slotPerdidas();
+    void slot347();
     void slotBalan();
     void slotSiguiente();
     void slotAnterior();
@@ -132,7 +133,7 @@ public:
     void slotAsientosInteligentes();
     void slotCentrosCoste();
     void slotCanales();
-    void slotUsuarios();
+    //void slotUsuarios();
     void slotcierraEmpresa();
     void slotabreEmpresa();
     void slotregularizaEmpresa();
@@ -149,7 +150,7 @@ public:
     void slotFiltro();
     void slotMPatrimoniales();
     void slotCompBalance();
-    void slotNEjercicio();
+    //void slotNEjercicio();
     void slotAmortizaciones();
     void slotSCuentas();
        
@@ -250,6 +251,7 @@ public:
     QAction *libroMayor;
     QAction *libroDiario;
     QAction *perdygan;
+    QAction *Modelo347;
     QAction *asientos;
     QAction *balan;
     QAction *regiva;
@@ -267,14 +269,14 @@ public:
     
     // Opciones de Empresa
     QAction *propiedadesEmpresa;
-    QAction *guardarEmpresa;
-    QAction *cargarEmpresa;
-    QAction *nuevaEmpresa;
-    QAction *borrarEmpresa;
-    QAction *cambiarEmpresa;
+    //QAction *guardarEmpresa;
+    //QAction *cargarEmpresa;
+    //QAction *nuevaEmpresa;
+    //QAction *borrarEmpresa;
+    //QAction *cambiarEmpresa;
     QAction *centrosCoste;
     QAction *canalesMenu;
-    QAction *usuarioaction;
+    //QAction *usuarioaction;
     QAction *cierraEmpresa;
     QAction *abreEmpresa;
     QAction *regularizaEmpresa;
@@ -288,7 +290,7 @@ public:
     QAction *printaction;
     QAction *reloadaction;
     QAction *filtro;
-    QAction *NEjercicio;
+    //QAction *NEjercicio;
     QAction *amortiz;
     QAction * SelectorAction;
 };

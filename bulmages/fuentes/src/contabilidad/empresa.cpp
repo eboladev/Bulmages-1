@@ -534,6 +534,13 @@ int empresa::registroiva() {
    return(0);
 }// end registroiva
 
+int empresa::modelo347() {
+   BModelo347 *dlg347 = new BModelo347;
+   //dlg347->inicializa(conexionbase2, introapunts1);
+   dlg347->exec();
+   delete dlg347;
+   return(0);
+}// end modelo347
 
 int empresa::guardarempresa() {
   char *args[4];

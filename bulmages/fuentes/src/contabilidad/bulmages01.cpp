@@ -30,7 +30,7 @@
 #include "configuracion.h"
 #include "aboutview.h"
 #include "actualizacionesview.h"
-#include "usuariosview.h"
+//#include "usuariosview.h"
 
 //Inclusión de las imagenes.
 #include "images/filenew.xpm"
@@ -100,14 +100,14 @@ Bulmages01::~Bulmages01() {
   delete asientosInteligentes;
   delete listadoApuntes;
   delete propiedadesEmpresa;
-  delete guardarEmpresa;
-  delete cargarEmpresa;
-  delete nuevaEmpresa;
+  //delete guardarEmpresa;
+  //delete cargarEmpresa;
+  //delete nuevaEmpresa;
   delete cierraEmpresa;
   delete regularizaEmpresa;
   delete abreEmpresa;
-  delete borrarEmpresa;
-  delete cambiarEmpresa;
+  //delete borrarEmpresa;
+  //delete cambiarEmpresa;
   delete libroMayor;
   delete libroDiario;  
   delete perdygan;
@@ -123,7 +123,7 @@ Bulmages01::~Bulmages01() {
   delete saveaction;
   delete printaction;
   delete reloadaction;
-  delete usuarioaction;  
+  //delete usuarioaction;  
   //delete view_back;
   //delete pWorkspace; //En algunos casos provoca Segmentation Fault.
   delete ayuda;
@@ -275,7 +275,7 @@ void Bulmages01::initActions() {
   propiedadesEmpresa->setStatusTip(tr("Propiedades de la Empresa"));
   propiedadesEmpresa->setWhatsThis(tr("Propiedades de la Empresa"));
   connect(propiedadesEmpresa, SIGNAL(activated()), this, SLOT(slotPropiedadesEmpresa()));
-
+/*
   guardarEmpresa = new QAction(tr("Copia Seguridad Empresa"), tr("&Guardar Empresa"), 0, this);
   guardarEmpresa->setStatusTip(tr("Hacer Copia de Seguridad de la Empresa Actual"));
   guardarEmpresa->setWhatsThis(tr("Hacer Copia de Seguridad de la Empresa Actual"));
@@ -290,7 +290,23 @@ void Bulmages01::initActions() {
   nuevaEmpresa->setStatusTip(tr("Crear una Empresal"));
   nuevaEmpresa->setWhatsThis(tr("Crear una empresa nueva"));
   connect(nuevaEmpresa, SIGNAL(activated()), this, SLOT(slotNuevaEmpresa()));
+  
+  borrarEmpresa = new QAction(tr("Borrar Empresa"), tr("&Borrar Empresa"), 0, this);
+  borrarEmpresa->setStatusTip(tr("Borrar una Empresal"));
+  borrarEmpresa->setWhatsThis(tr("Borrar una empresa"));
+  connect(borrarEmpresa, SIGNAL(activated()), this, SLOT(slotBorrarEmpresa()));
+  
+  cambiarEmpresa = new QAction(tr("Cambiar Empresa"), tr("&Cambiar Empresa"), 0, this);
+  cambiarEmpresa->setStatusTip(tr("Cambiar de Empresa o de ejercicio"));
+  cambiarEmpresa->setWhatsThis(tr("Cambiar de empresa"));
+  connect(cambiarEmpresa, SIGNAL(activated()), this, SLOT(slotCambiarEmpresa()));
+    
+  NEjercicio = new QAction(tr("Nuevo Ejercicio"), tr("&Nuevo Ejercicio"), 0, this);
+  NEjercicio->setStatusTip(tr("Nuevo Ejercicio"));
+  NEjercicio->setWhatsThis(tr("Nuevo Ejercicio"));
+  connect(NEjercicio, SIGNAL(activated()), this, SLOT(slotNEjercicio()));
 
+*/
   cierraEmpresa = new QAction(tr("Asiento de Cierre"), tr("Asiento de &Cierre"), 0, this);
   cierraEmpresa->setStatusTip(tr("Crear el asiento de cierre"));
   cierraEmpresa->setWhatsThis(tr("Crear el asiento de cierre"));
@@ -305,16 +321,6 @@ void Bulmages01::initActions() {
   abreEmpresa->setStatusTip(tr("Abrir el asiento de apertura"));
   abreEmpresa->setWhatsThis(tr("Abrir el asiento de apertura"));
   connect(abreEmpresa, SIGNAL(activated()), this, SLOT(slotabreEmpresa()));
-  
-  borrarEmpresa = new QAction(tr("Borrar Empresa"), tr("&Borrar Empresa"), 0, this);
-  borrarEmpresa->setStatusTip(tr("Borrar una Empresal"));
-  borrarEmpresa->setWhatsThis(tr("Borrar una empresa"));
-  connect(borrarEmpresa, SIGNAL(activated()), this, SLOT(slotBorrarEmpresa()));
-  
-  cambiarEmpresa = new QAction(tr("Cambiar Empresa"), tr("&Cambiar Empresa"), 0, this);
-  cambiarEmpresa->setStatusTip(tr("Cambiar de Empresa o de ejercicio"));
-  cambiarEmpresa->setWhatsThis(tr("Cambiar de empresa"));
-  connect(cambiarEmpresa, SIGNAL(activated()), this, SLOT(slotCambiarEmpresa()));
     
   libroMayor = new QAction(tr("Libro Mayor"),mayorIcon, tr("&Libro Mayor"), 0, this);
   libroMayor->setStatusTip(tr("Ver el libro Mayor"));
@@ -336,12 +342,16 @@ void Bulmages01::initActions() {
   librobalancetree->setWhatsThis(tr("Ver balance jerarquico"));
   connect(librobalancetree, SIGNAL(activated()), this, SLOT(slotBalanceTree()));
 
-
-  
+    
   perdygan = new QAction(tr("Perdidas y ganancias av"), tr("&Perdidas y ganancias av"), 0, this);
   perdygan->setStatusTip(tr("Ver cuenta de perdidas y ganancias"));
   perdygan->setWhatsThis(tr("Ver cuenta de perdidas y ganancias"));
   connect(perdygan, SIGNAL(activated()), this, SLOT(slotPerdidas()));
+  
+  Modelo347 = new QAction(tr("Modelo 347 no oficial"), tr("&Modelo 347"), 0, this);
+  Modelo347->setStatusTip(tr("Modelo 347 no oficial"));
+  Modelo347->setWhatsThis(tr("Lista en pantalla los saldos acumulados superirores a ..."));
+  connect(Modelo347, SIGNAL(activated()), this, SLOT(slot347()));
 
   balan = new QAction(tr("Balance abreviado"), tr("&Balance Abreviado"), 0, this);
   balan->setStatusTip(tr("Ver Balance de situacion abreviado"));
@@ -402,12 +412,12 @@ void Bulmages01::initActions() {
   reloadaction->setStatusTip(tr("Recargar"));
   reloadaction->setWhatsThis(tr("Recargar"));
   connect(reloadaction, SIGNAL(activated()), this, SLOT(slotReload()));
-
+/*
   usuarioaction = new QAction(tr("Usuarios"), usuarioIcon, tr("&Usuarios"), 0, this);
   usuarioaction->setStatusTip(tr("Usuarios"));
   usuarioaction->setWhatsThis(tr("Usuarios"));
   connect(usuarioaction, SIGNAL(activated()), this, SLOT(slotUsuarios()));
-
+*/
   amortiz = new QAction(tr("Amortizaciones"), tr("&Amortizaciones"), 0, this);
   amortiz->setStatusTip(tr("Amortizaciones"));
   amortiz->setWhatsThis(tr("Amortizaciones"));
@@ -460,10 +470,6 @@ void Bulmages01::initActions() {
   CompBalance->setWhatsThis(tr("Balances"));
   connect(CompBalance, SIGNAL(activated()), this, SLOT(slotCompBalance()));
 
-  NEjercicio = new QAction(tr("Nuevo Ejercicio"), tr("&Nuevo Ejercicio"), 0, this);
-  NEjercicio->setStatusTip(tr("Nuevo Ejercicio"));
-  NEjercicio->setWhatsThis(tr("Nuevo Ejercicio"));
-  connect(NEjercicio, SIGNAL(activated()), this, SLOT(slotNEjercicio()));
 
   SCuentas = new QAction(tr("Sustituir Cuentas"), tr("&Sustituir Cuentas"), 0, this);
   SCuentas->setStatusTip(tr("Sustituir Cuentas"));
@@ -524,7 +530,7 @@ void Bulmages01::initMenuBar() {
   abreEmpresa->addTo(pAsientoMenu);
   regularizaEmpresa->addTo(pAsientoMenu);
   
-      
+  // El menu Listados
   pListMenu = new QPopupMenu();  
   perdygan->addTo(pListMenu);
   balan->addTo(pListMenu);
@@ -532,6 +538,8 @@ void Bulmages01::initMenuBar() {
   regiva->addTo(pListMenu);
   CompBalance->addTo(pListMenu);
   MPatrimoniales->addTo(pListMenu);
+  pListMenu->insertSeparator();
+  Modelo347->addTo(pListMenu);
 
   // El menu de estadísticas
   pEstMenu = new QPopupMenu();
@@ -540,7 +548,7 @@ void Bulmages01::initMenuBar() {
 
   // El menu de Herramientas
   pHerramientasMenu = new QPopupMenu();
-  usuarioaction->addTo(pHerramientasMenu);
+  //usuarioaction->addTo(pHerramientasMenu);
   amortiz->addTo(pHerramientasMenu);
   SCuentas->addTo(pHerramientasMenu);
    
@@ -548,13 +556,13 @@ void Bulmages01::initMenuBar() {
   pEmpresaMenu = new QPopupMenu();
   pEmpresaMenu->setCheckable(true);
   propiedadesEmpresa->addTo(pEmpresaMenu);
-  nuevaEmpresa->addTo(pEmpresaMenu);
-  borrarEmpresa->addTo(pEmpresaMenu);
-  cambiarEmpresa->addTo(pEmpresaMenu);
+  //nuevaEmpresa->addTo(pEmpresaMenu);
+  //borrarEmpresa->addTo(pEmpresaMenu);
+  //cambiarEmpresa->addTo(pEmpresaMenu);
   pHerramientasMenu->insertSeparator();
-  guardarEmpresa->addTo(pEmpresaMenu);
-  cargarEmpresa->addTo(pEmpresaMenu);
-  NEjercicio->addTo(pEmpresaMenu);
+  //guardarEmpresa->addTo(pEmpresaMenu);
+  //cargarEmpresa->addTo(pEmpresaMenu);
+  //NEjercicio->addTo(pEmpresaMenu);
   
   ///////////////////////////////////////////////////////////////////
   // menuBar entry windowMenu
@@ -592,8 +600,8 @@ void Bulmages01::initToolBar() {
   SelectorAction->addTo( fileToolbar );
   propiedadesEmpresa->addTo(fileToolbar);
   fileToolbar->addSeparator();
-  usuarioaction->addTo(fileToolbar);
-  fileToolbar->addSeparator();
+  //usuarioaction->addTo(fileToolbar);
+  //fileToolbar->addSeparator();
   planCuentas->addTo(fileToolbar);
   fileToolbar->addSeparator();
   introducirApuntes1->addTo(fileToolbar);
@@ -666,15 +674,6 @@ void Bulmages01::showView() {
   empresaactual.maximiza();
 }// end initView
 
-
-/*
-bool Bulmages01::queryExit() {
-  int exit=QMessageBox::information(this, tr("Quit..."),
-                                    tr("Do your really want to quit?"),
-                                    QMessageBox::Ok, QMessageBox::Cancel);
-  return (exit==1);
-}
-*/
 
 bool Bulmages01::eventFilter(QObject* object, QEvent* event)  {
   return QWidget::eventFilter( object, event );    // standard event processing
@@ -846,40 +845,55 @@ void Bulmages01::slotPropiedadesEmpresa()  {
   empresaactual.propiedadempresa();
 }// end slotPropiedadesEmpresa
 
-
-void Bulmages01::slotGuardarEmpresa() {
-   statusBar()->message(tr("Guardar Empresa"));
-   empresaactual.guardarempresa();
-}// end slotGuardarEmpresa
-
-
-void Bulmages01::slotCargarEmpresa() {
-   statusBar()->message(tr("Cargar Empresa"));
-   empresaactual.cargarempresa();
-}// end slotCargarEmpresa
-
+/*
 void Bulmages01::slotUsuarios() {
   statusBar()->message(tr("Gestión de Usuarios"));
   usuariosview* us=new usuariosview(0,"");
   us->exec();
   delete us;
 }// end slotUsuario
+*/
 
+/*
+void Bulmages01::slotGuardarEmpresa() {
+   statusBar()->message(tr("Guardar Empresa"));
+   empresaactual.guardarempresa();
+}// end slotGuardarEmpresa
+*/
+
+/*
+void Bulmages01::slotCargarEmpresa() {
+   statusBar()->message(tr("Cargar Empresa"));
+   empresaactual.cargarempresa();
+}// end slotCargarEmpresa
+*/
+
+/*
 void Bulmages01::slotCambiarEmpresa() {
    statusBar()->message(tr("Cambiar Empresa"));
    empresaactual.cambiarempresa();
 }// end slotCargarEmpresa
+*/
 
-
+/*
 void Bulmages01::slotNuevaEmpresa() {
    statusBar()->message(tr("Nueva Empresa"));
    empresaactual.nuevaempresa();
 }// end slotNuevaEmpresa
+*/
 
+/*
 void Bulmages01::slotBorrarEmpresa() {
    statusBar()->message(tr("Borrar Empresa"));
    empresaactual.borrarempresa();
 }// end slotNuevaEmpresa
+*/ 
+
+/*
+void Bulmages01::slotNEjercicio() {
+   empresaactual.nuevoejercicio();
+}// end slotNEjercicio
+*/
 
 void Bulmages01::slotLibroMayor()
 {
@@ -917,6 +931,10 @@ void Bulmages01::slotPrimero() {
 
 void Bulmages01::slotPerdidas() {
 }// end slotPerdidas
+
+void Bulmages01::slot347() {
+empresaactual.modelo347();
+}// end slot347
 
 void Bulmages01::slotBalan() {
 }// end slotBalan
@@ -1009,7 +1027,6 @@ void Bulmages01::windowMenuAboutToShow()  {
 }// end windowMenuAboutToShow
 
 
-
 void Bulmages01::slotWindowNewWindow() {
 }// end slotWindowNewWindow
 
@@ -1020,10 +1037,6 @@ void Bulmages01::slotAyuda() {
    delete act;
 }// end slotAyuda
 
-
-void Bulmages01::slotNEjercicio() {
-   empresaactual.nuevoejercicio();
-}// end slotNEjercicio
 
 void Bulmages01::slotAyudai() {
    char *args[]={"http://www.conetxia.com/bulmages/manualindex.php?version=0.3.5","http://www.conetxia.com/bulmages/manualindex.php?version=0.3.5",NULL};

@@ -3,9 +3,7 @@
 # Subdir relative project main directory: ./src
 # Target is an application:  ../bin/bulmages
 
-LANGUAGE = C++
 QMAKE_CLEAN += Makefile
-TEMPLATE = app
 contabilidad/about.ui.target = contabilidad/about.ui
 contabilidad/about.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/about.ui.target
 contabilidad/listadocuentas1.ui.target = contabilidad/listadocuentas1.ui
@@ -82,22 +80,12 @@ contabilidad/correctorwdt.ui.target = contabilidad/correctorwdt.ui
 contabilidad/correctorwdt.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/correctorwdt.ui.target
 contabilidad/amortizacionesdlg.ui.target = contabilidad/amortizacionesdlg.ui
 contabilidad/amortizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/amortizacionesdlg.ui.target
-CONFIG += release \
-warn_on
 TARGET = ../bin/bulmages
-INCLUDEPATH = ../src \
-compras \
-comun \
-contabilidad \
-estadisticas \
-images \
-nominas \
-produccion \
-ventas \
-/usr/include/qt
-LIBS += -lqt-mt \
--lpq \
-../src/estadisticas/libestadisticas.lib.a
+TEMPLATE =app
+CONFIG += release warn_on
+INCLUDEPATH += ../src compras comun contabilidad estadisticas images nominas produccion ventas /usr/include/qt
+LIBS += -lqt-mt -lpq ../src/estadisticas/libestadisticas.lib.a
+LANGUAGE = C++
 SOURCES += main.cpp \
            comun/bselector.cpp \
            comun/configuracion.cpp \
@@ -156,6 +144,7 @@ SOURCES += main.cpp \
            contabilidad/duplicarasientoview.cpp \
            contabilidad/amortizacionview.cpp \
            contabilidad/bmodcontabilidad.cpp \
+           contabilidad/bmodelo347.cpp \
            ventas/bmodventas.cpp \
            ventas/balbaventa.cpp \
            ventas/bpediventa.cpp \
@@ -165,6 +154,7 @@ SOURCES += main.cpp \
            nominas/bmodnominas.cpp \
            contabilidad/amortizacionesview.cpp \
            comun/log.cpp 
+
 HEADERS += comun/bselector.h \
            comun/configuracion.h \
            comun/abreempresaview.h \
@@ -222,6 +212,7 @@ HEADERS += comun/bselector.h \
            contabilidad/duplicarasientoview.h \
            contabilidad/amortizacionview.h \
            contabilidad/bmodcontabilidad.h \
+           contabilidad/bmodelo347.h \
            ventas/bmodventas.h \
            ventas/balbaventa.h \
            ventas/bpediventa.h \
@@ -411,6 +402,7 @@ FORMS += comun/uiselector.ui \
          contabilidad/cambiactadlg.ui \
          contabilidad/duplicaasientodlg.ui \
          contabilidad/amortizaciondlg.ui \
+         contabilidad/uimodelo347.ui \
          ventas/uialbaventa.ui \
          ventas/uiventas.ui \
          ventas/uipediventa.ui \
@@ -420,6 +412,7 @@ FORMS += comun/uiselector.ui \
          nominas/uinominas.ui \
          contabilidad/amortizacionesdlg.ui \
          comun/uivisorempresas.ui 
+
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
