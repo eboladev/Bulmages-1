@@ -66,6 +66,7 @@ using std::string;
 #define CONF_EDITOR     198
 #define CONF_SPLASH     199
 #define CONF_BACKGROUND 200
+#define CONF_SPLASH_BULMAFACT 196
 
 #define CONF_EJECUTABLES 300
 #define CONF_PLANTILLA   301
