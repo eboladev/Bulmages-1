@@ -1,5 +1,5 @@
 /* XPM */
-static const char *print[]={
+static char *print[]={
 "32 32 290 2",
 "Qt c None",
 ".# c #000000",
