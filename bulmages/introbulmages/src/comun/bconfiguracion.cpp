@@ -36,13 +36,13 @@
 
 BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * name, WFlags f=0) : UIconfiguracion(parent,name,f) {
     PunteroAlSelector=ref;
-    if (PunteroAlSelector->m_tipoempresa == "BulmaCont") {
+    if (PunteroAlSelector->tipoEmpresa() == "BulmaCont") {
         cargarFichaBulmages();
         m_tab->setTabEnabled(m_tab->page(1),FALSE);
         m_tab->setTabEnabled(m_tab->page(2),FALSE);
         m_tab->setTabEnabled(m_tab->page(3),FALSE);
     }// end if
-    if (PunteroAlSelector->m_tipoempresa == "BulmaFact") {
+    if (PunteroAlSelector->tipoEmpresa() == "BulmaFact") {
         cargarFichaBulmages();
         m_tab->setTabEnabled(m_tab->page(0),FALSE);
         m_tab->setTabEnabled(m_tab->page(2),FALSE);
@@ -112,7 +112,7 @@ void BConfiguracion::BotonA_10aceptar() {}// BotonA_10aceptar
 /// Responde a la pusación de importar datos de Contaplus a BulmaGés
 void BConfiguracion::BotonContaplus() {
     postgresiface2 *DBconn = new postgresiface2();
-    DBconn->inicializa(PunteroAlSelector->empresabd, confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+    DBconn->inicializa(PunteroAlSelector->empresaDB(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
     importContaplus *import= new importContaplus(DBconn,0,0,0);
     import->exec();
     delete import;
@@ -122,7 +122,7 @@ void BConfiguracion::BotonContaplus() {
 
 void BConfiguracion::BotonA_11rechazar() {
     //poner el comboBoxFuente y el comboBoxIdioma a sus valores anteriores.
-    if (PunteroAlSelector->m_tipoempresa == "BulmaCont") {
+    if (PunteroAlSelector->tipoEmpresa() == "BulmaCont") {
         cargarFichaBulmages();
     }// end if
 }// end BotonA_11rechazar
@@ -184,24 +184,29 @@ void BConfiguracion::borrarEmpresa() {
     QString idEmpresa;
     QString ejercicio;
     // Siempre se borra la empresa actual.
-    dbEmpresa = PunteroAlSelector->empresabd;
+    dbEmpresa = PunteroAlSelector->empresaDB();
     // (new BVisorEmpresas(& dbEmpresa, this,"Eliminador",true))->exec();
     if (dbEmpresa!="") {
         if (dbEmpresa=="bgplangcont") {
             QMessageBox::information( this, tr("Atención"), tr("Esta Base de Datos no puede ser eliminada.\n\r Es la plantilla para generar nuevas empresas."), QMessageBox::Ok);
-        } else if (dbEmpresa != PunteroAlSelector->empresabd) {
+        } else if (dbEmpresa != PunteroAlSelector->empresaDB()) {
             QMessageBox::warning( this, tr("Atención"), tr("No Está permitido eliminar la base \n\r de datos actualmente abierta."), QMessageBox::Ok,0);
         } else {
-            fprintf(stderr,"VAmos a borrar\n");
-            //Despues de evaluar algunos detalles, procedemos a eliminar la base de datos.
-            postgresiface2 *DBconn = new postgresiface2();
-            DBconn->inicializa( "template1", confpr->valor(CONF_LOGIN_USER), confpr->valor(CONF_PASSWORD_USER) );
-            DBconn->ejecuta("DROP DATABASE " + dbEmpresa);
-            delete DBconn;
+	    int mensaje = QMessageBox::warning( this, tr("Atención"), tr("Borrar una empresa puede suponer perdida de datos\n ¿Desea continuar?\n"), QMessageBox::Yes,QMessageBox::No,0);
+	    if (mensaje == QMessageBox::Yes) { 
+		//Despues de evaluar algunos detalles, procedemos a eliminar la base de datos.
+/*		postgresiface2 *DBconn = new postgresiface2();
+		DBconn->inicializa( "template1", confpr->valor(CONF_LOGIN_USER), confpr->valor(CONF_PASSWORD_USER) );
+		DBconn->ejecuta("DROP DATABASE " + dbEmpresa);
+		delete DBconn;
+*/
+		QString sentencia = "dropdb "+dbEmpresa;
+		system(sentencia.ascii());
+		PunteroAlSelector->seleccionaempresa_clicked();
+	    }// end if
         }// end if
     }// end if
     close();
-    PunteroAlSelector->seleccionaempresa_clicked();
 }//Fin borrarEmpresa
 
 
@@ -216,7 +221,7 @@ void BConfiguracion::nuevoEjercicio() {
     int x;
     QString ejer;
     postgresiface2 *DBconn = new postgresiface2();
-    DBconn->inicializa(PunteroAlSelector->empresabd);
+    DBconn->inicializa(PunteroAlSelector->empresaDB());
     ejer = m_ejercicio->text();
     if (ejer == "") {
         DBconn->begin();
@@ -248,7 +253,7 @@ void BConfiguracion::salvarEmpresa() {
     //  PGserver = "-h ";
 
     PGserver = confpr->valor(CONF_SERVIDOR).c_str();
-    dbEmpresa = PunteroAlSelector->empresabd;
+    dbEmpresa = PunteroAlSelector->empresaDB();
     fprintf(stderr,"VAmos a guardar la empresa %s\n", dbEmpresa.ascii());
 
     //  (new BVisorEmpresas(& dbEmpresa, this,"Backup",true))->exec();
@@ -280,7 +285,7 @@ void BConfiguracion::BotonA_4restaurarEmpresa() {
     PGserver = confpr->valor(CONF_SERVIDOR).c_str();
     QString usuario;
 
-    dbEmpresa = PunteroAlSelector->empresabd;
+    dbEmpresa = PunteroAlSelector->empresaDB();
     if (dbEmpresa!="") {
         fprintf(stderr,"Restaurar empresa cargamos fichero\n");
         //     QString fn = QFileDialog::getOpenFileName(0, theApp->translate("empresa","Empresas (*.pgdump)",""), 0,theApp->translate("empresa","Cargar Empresa",""),theApp->translate("emrpesa","Elige el fichero a cargar.",""));
@@ -306,28 +311,6 @@ void BConfiguracion::listView1_currentChanged(QListViewItem *) {
 #endif
 }// end listView1_currentChanged
 
-
-void BConfiguracion::users_info_changed() {
-#ifndef WIN32
-#endif
-}
-
-//Creamos un usuario nuevo
-void BConfiguracion::newUser() {
-#ifndef WIN32
-#endif
-}
-
-//Borramos un usuario
-void BConfiguracion::deleteUser() {
-#ifndef WIN32
-#endif
-}
-
-//Creamos un usuario nuevo con los mismos permisos que el usuario seleccionado.
-void BConfiguracion::cloneUser() {
-    //Trabajo pendiente...
-}
 
 //Salvamos los usuarios en la base de datos
 void BConfiguracion::BotonB_1Aplicar() {}

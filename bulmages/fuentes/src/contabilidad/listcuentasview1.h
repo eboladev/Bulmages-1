@@ -18,15 +18,8 @@
 #define LISTCUENTASVIEW1_H
 
 
-#include <qlistview.h>
-#include <stdlib.h>
-#include <qmessagebox.h>
-#include <qlineedit.h>
-#include <qcheckbox.h>
-#include <qtable.h>
 
 #include "postgresiface2.h"
-#include "funcaux.h"
 #include "listcuentasdlg1.h"
 /*** @author Tomeu Borrás Riera */
 
@@ -53,14 +46,15 @@ public:
    void listdblpulsada(QListViewItem *);
    int inicializa();
    void inicializatabla();
+
 public slots:
    virtual void dbtabla(int, int, int, const QPoint &);
    virtual void editarcuenta();
    virtual void borrarcuenta();
    virtual void nuevacuenta();
    virtual void descripcioncambiada(const QString &);
-   virtual void codigocambiado(const QString &);
    virtual void return_codigo();
    virtual void return_descripcion();
+   virtual bool eventFilter( QObject *, QEvent * );
 };
 #endif

@@ -63,10 +63,6 @@ private slots:
   virtual void nuevaEmpresa();
   virtual void borrarEmpresa();
   virtual void nuevoEjercicio();
-  virtual void users_info_changed();
-  virtual void newUser();
-  virtual void deleteUser();
-  virtual void cloneUser();
   virtual void BotonB_1Aplicar();
   virtual void BotonB_2Desacer();
   virtual void nuevaFacturacion();

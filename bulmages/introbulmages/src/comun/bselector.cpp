@@ -61,12 +61,12 @@ void BSelector::m_bulmatpv_clicked() {
    if (m_tipoempresa != "BulmaFact" ) {
       abreempresaview *empcont = new abreempresaview(0,"bulmatpv", "abreempresa", true);
       empcont->exec();
-      empresabd = empcont->nomDB();
+      m_empresabd = empcont->nomDB();
 //      tipo = empcont->tipo;
    }// end while
-   if (empresabd != "") {
+   if (m_empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmatpv bulmatpv %s %s %s", empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+      sprintf(cadena,"bulmatpv bulmatpv %s %s %s", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
       system (cadena);
    }// end if
 }// end m_bulmatpv_clicked
@@ -76,7 +76,7 @@ void BSelector::m_bulmatpv_clicked() {
 void BSelector::seleccionaempresa_clicked() {
    abreempresaview *empcont = new abreempresaview(0, "","abreempresa", true);
    empcont->exec();
-   empresabd = empcont->nomDB();
+   m_empresabd = empcont->nomDB();
    // Cambiamos el nombre en la pantalla.
    nombreempresa->setText(empcont->nomEmpresa());
    m_tipoempresa = empcont->tipoEmpresa();
@@ -89,11 +89,11 @@ void BSelector::contabilidad_clicked() {
    if (m_tipoempresa != "BulmaCont" ) {
       abreempresaview *empcont = new abreempresaview(0,"BulmaCont", "abreempresa", true);
       empcont->exec();
-      empresabd = empcont->nomDB();
+      m_empresabd = empcont->nomDB();
    }// end if
-   if (empresabd != "") {
+   if (m_empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmacont bulmacont %s %s %s", empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+      sprintf(cadena,"bulmacont bulmacont %s %s %s", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
       system (cadena);
    }// end if
 }// end contabilidad_clicked
@@ -120,11 +120,11 @@ void BSelector::m_bulmafact_clicked() {
    if (m_tipoempresa != "BulmaFact" ) {
       abreempresaview *empcont = new abreempresaview(0,"BulmaFact", "abreempresa", true);
       empcont->exec();
-      empresabd = empcont->nomDB();
+      m_empresabd = empcont->nomDB();
    }// end while
-   if (empresabd != "") {
+   if (m_empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmafact bulmafact %s %s %s", empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
+      sprintf(cadena,"bulmafact bulmafact %s %s %s", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
       system (cadena);
    }// end if
 }

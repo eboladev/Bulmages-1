@@ -20,6 +20,11 @@
 // Es un archivo separado por comas.
 #define LISTEMPRESAS "listempresas.lst"
 
+#define ABRE_NOMBRE  0
+#define ABRE_ANO     1
+#define ABRE_ARCHIVO 2
+#define ABRE_TIPO    3
+
 /** \brief se encarga de intentar abrir una nueva empresa
   * @param parent La ventana que hace la llamada
   * @param tipo   String que indica si es contabilidad o facturacion (bulmacont, bulmafact)
@@ -45,10 +50,10 @@ abreempresaview::~abreempresaview(){
   */
 void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo, QString tipo) {
             QListViewItem *it =new QListViewItem(empresas);
-            it->setText(0,nombre);
-            it->setText(1,ano);
-            it->setText(2,archivo);
-            it->setText(3,tipo);
+            it->setText(ABRE_NOMBRE,nombre);
+            it->setText(ABRE_ANO,ano);
+            it->setText(ABRE_ARCHIVO,archivo);
+            it->setText(ABRE_TIPO,tipo);
 }// end insertCompany
 
 
@@ -57,9 +62,9 @@ void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo
 void abreempresaview::accept() {
    QListViewItem *it;
    it = empresas->currentItem();
-   m_empresabd= it->text(2);
-   m_nombreempresa= it->text(0);
-   m_tipoempresa = it->text(3);
+   m_empresabd= it->text(ABRE_ARCHIVO);
+   m_nombreempresa= it->text(ABRE_NOMBRE);
+   m_tipoempresa = it->text(ABRE_TIPO);
    close();
 }// end accept
 

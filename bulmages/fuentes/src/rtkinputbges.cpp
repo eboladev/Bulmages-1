@@ -40,7 +40,7 @@ bool InputBGes::next() {
         if (!inicializado) {
            // Ya se ha hecho un next, por tanto hacemos lo que toca.
            consulta->siguienteregistro();
-           fprintf(stderr," InputBGes::Next : %s\n",consulta->valor("idasiento").ascii());
+ //          fprintf(stderr," InputBGes::Next : %s\n",consulta->valor("idasiento").ascii());
         } else {
            // El primer next que se hace debe saltarse.
            inicializado=0;

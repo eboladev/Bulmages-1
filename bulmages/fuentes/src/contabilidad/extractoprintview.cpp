@@ -15,6 +15,7 @@
  ***************************************************************************/
 #include <unistd.h>
 #include <qwidget.h>
+#include <qcheckbox.h>
 
 #include "extractoprintview.h"
 #include "listcuentasview1.h"
@@ -242,10 +243,13 @@ void ExtractoPrintView::pruebasRTK() {
 #ifdef REPORTS
     cursor2 *cursoraux;
     conexionbase->begin();
-    cursoraux=conexionbase->cargacursor("SELECT  cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY fecha", "unquery");
+    cursoraux=conexionbase->cargacursor("SELECT  cuenta.codigo, cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY fecha", "unquery");
     conexionbase->commit();
     RTK::Report unReport;
-    unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"extracto1.rtk");
+    // NO BORRAR ESTA LINEA QUE ES LA BUENA.
+//    unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"extracto1.rtk");
+    // OJO QUE ESTA LINEA ES TEMPORAL. 
+    unReport.readXml("/home/tborras/bulmages/installbulmages/reports/extracto1.rtk");
     InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
     inp->set
     (InputBGes::diario, empresaactual, cursoraux);

@@ -26,6 +26,7 @@
 #include <qdatetimeedit.h>
 #include <qtable.h>
 #include <qtoolbutton.h>
+#include <qcheckbox.h>
 
 #include "empresa.h"
 

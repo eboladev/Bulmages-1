@@ -19,6 +19,7 @@
 #include "empresa.h"
 
 #include <unistd.h>
+#include <qcheckbox.h>
 
 
 

@@ -19,6 +19,7 @@
 #include "calendario.h"
 #include "empresa.h"
 #include <qfiledialog.h>
+#include <qcheckbox.h>
 
 #define PUNTEO          0
 #define FECHA           1

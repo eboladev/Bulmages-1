@@ -22,7 +22,7 @@
 #include <qcolor.h>
 #include <qpopupmenu.h>
 #include <qlayout.h>
- 
+#include <qcheckbox.h>
  
 #include "empresa.h"
 #include "diarioview1.h"

@@ -898,28 +898,24 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
   */
 void intapunts3view::apuntecambiadogrid(int row, int col) {
     switch(col) {
-    case COL_FECHA: {
+    case COL_FECHA:
             tapunts->setText(row,col,normalizafecha(tapunts->text(row,col)).toString("dd/MM/yyyy"));
             break;
-        }
     case COL_SUBCUENTA:
         cambiadasubcuenta(row);
         break;
     case COL_CONTRAPARTIDA:
         cambiadacontrapartida(row);
         break;
-    case COL_DEBE: {
+    case COL_DEBE:
             cambiadodebe(row);
             break;
-        }// end case
-    case COL_HABER: {
+    case COL_HABER: 
             cambiadohaber(row);
             break;
-        }// end case
-    case COL_CONCEPTO: {
+    case COL_CONCEPTO:
             //         tapunts->setCurrentCell(row+1,COL_FECHA);
             break;
-        }// end case
     }// end switch
 }// end apuntecambiadogrid
 
@@ -1444,8 +1440,8 @@ void intapunts3view::cambiadodebe(int row) {
         if (ndebe > 0.01) {
             tapunts->setText(row,COL_HABER,"0.00");
         }// end if
-        cad.sprintf("%2.2f",ndebe);
-        tapunts->setText(row,COL_DEBE,cad);
+//        cad.sprintf("%2.2f",ndebe);
+//        tapunts->setText(row,COL_DEBE,cad);
     }// end if
     calculadescuadre();
 }// end cambiadodebe
@@ -1461,8 +1457,8 @@ void intapunts3view::cambiadohaber(int row) {
         if (nhaber > 0.01) {
             tapunts->setText(row,COL_DEBE,"0.00");
         }// end if
-        cad.sprintf("%2.2f",nhaber);
-        tapunts->setText(row,COL_HABER,cad);
+//        cad.sprintf("%2.2f",nhaber);
+//        tapunts->setText(row,COL_HABER,cad);
     }// end if
     calculadescuadre();
 }// end cambiadohaber

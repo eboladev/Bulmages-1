@@ -15,15 +15,23 @@
  ***************************************************************************/
 #include "listcuentasview1.h"
 
+#include <qlistview.h>
+
 // Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
 #include "images/cpasivo.xpm"
 #include "images/cneto.xpm"
 #include "images/cingresos.xpm"
 #include "images/cgastos.xpm"
+#include "funcaux.h"
 
 #include "cuentaview.h"
 #include "empresa.h"
+#include <stdlib.h>
+#include <qmessagebox.h>
+#include <qlineedit.h>
+#include <qcheckbox.h>
+#include <qtable.h>
 
 listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : listcuentasdlg1(parent,name, modal) {
     empresaactual = emp;
@@ -45,11 +53,37 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
 
     tablacuentas->hideColumn(2);
     tablacuentas->setColumnWidth(1,400);
-    tablacuentas->setColumnWidth(0,100);	
+    tablacuentas->setColumnWidth(0,100);
+    
+    installEventFilter(this);
 }// end listcuentasview
 
 
+
+
 listcuentasview1::~listcuentasview1() {}// end ~listcuentasview
+
+
+bool listcuentasview1::eventFilter( QObject *obj, QEvent *event ) {
+    if ( event->type() == QEvent::KeyPress ) {
+        QKeyEvent *keyEvent = (QKeyEvent *) event;
+        int key = keyEvent->key();
+        if (key == Qt::Key_Up) { // El enter
+	    ListView1->eventFilter(ListView1, event);
+	    QListViewItem *it = ListView1->currentItem()->itemAbove();
+	    ListView1->setCurrentItem(it);
+            ListView1->ensureItemVisible(it);
+            return TRUE;
+        }// end if
+	if (key == Qt::Key_Down) { // El enter
+	    QListViewItem *it = ListView1->currentItem()->itemBelow();
+	    ListView1->setCurrentItem(it);
+            ListView1->ensureItemVisible(it);
+            return TRUE;
+        }// end if
+    }// end if
+    return listcuentasdlg1::eventFilter(obj, event);
+}// end eventFilter
 
 
 /*************************************************************
@@ -253,26 +287,19 @@ void listcuentasview1::listpulsada(QListViewItem *it) {
 
 
 void listcuentasview1::descripcioncambiada(const QString &string1) {
-    QListViewItem *it;
-    it = ListView1->findItem(string1, cdesccuenta, Qt::BeginsWith);
-    if (it != 0) {
-        ListView1->setCurrentItem(it);
-        ListView1->ensureItemVisible(it);
-    }// end if
-}// end descripcioncambiada
-
-
-void listcuentasview1::codigocambiado(const QString &string1) {
-    QListViewItem *it;
-    // Con este trozo de código lo que hacemos es sustituir los puntos
-    // por ceros ampliando hasta el número de dígitos requeridos.
-    // De esta forma podemos hacer búsquedas del tipo 1.3 para buscar 1000003
+   QListViewItem *it;
    QString cod = extiendecodigo(string1, numdigitos);
 
     it = ListView1->findItem(cod, ccuenta, Qt::BeginsWith);
     if (it != 0) {
         ListView1->setCurrentItem(it);
         ListView1->ensureItemVisible(it);
+    } else {   
+	it = ListView1->findItem(string1, cdesccuenta, Qt::BeginsWith);
+	if (it != 0) {
+		ListView1->setCurrentItem(it);
+		ListView1->ensureItemVisible(it);
+	}// end if
     }// end if
 }// end descripcioncambiada
 

@@ -33,15 +33,19 @@
 class BSelector : public UIselector {
  Q_OBJECT
 
-public:
+private:
 /// Nombre de la base de datos que representa a la empresa.
-   QString empresabd;
+   QString m_empresabd;
 /// Indica si va a ser contabilidad o facturación   
    QString m_tipoempresa;        
  
 public:
     BSelector(QWidget * parent=0,const char * name=0);
     ~BSelector();
+    QString empresaDB() {return m_empresabd;};
+    void setEmpresaBD(QString emp) {m_empresabd=emp;};
+    QString tipoEmpresa() {return m_tipoempresa;};
+    void setTipoEmpresa(QString tip) {m_tipoempresa = tip;};
 
 public slots:
   virtual void seleccionaempresa_clicked();
