@@ -83,9 +83,7 @@ unix{
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
   bulmages_install_script.path = .
-  bulmages_install_script.extra = echo; 
-  echo "**************************";
-  echo "Para Instalar BULMAGES ejecute el script de instalacion";
+  bulmages_install_script.extra = echo; echo "**************************"; echo "Para Instalar BULMAGES ejecute el script de instalacion";
   
   exists(/usr/include/postgresql/libpq-fe.h){
     DEFINES += DISTRO_DEBIAN
