@@ -56,8 +56,6 @@ CREATE TABLE lpedido (
 
 linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, int flag)
  : linorderslistbase(parent, name, flag) {
-      m_cursorcombo = NULL;
-      m_cursorcombo2 = NULL;
       companyact = comp;
 }// end linorderslist
 
@@ -75,62 +73,19 @@ void linorderslist::chargeorder(QString idpedido_) {
    	cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido, division WHERE idpedido="+idpedido+" and pedido.iddivision=division.iddivision","unquery");
    	companyact->commit();
    	if (!cur->eof()) {
-  	 	m_numpedido->setText(cur->valor("numpedido"));
-		m_fechapedido->setText(cur->valor("fechapedido"));
-		m_descpedido->setText(cur->valor("descpedido"));
-		idproveedor = cur->valor("idproveedor");
-		iddivision = cur->valor("iddivision");
-		idalmacen = cur->valor("idalmacen");
+	  	 	m_numpedido->setText(cur->valor("numpedido"));
+			m_fechapedido->setText(cur->valor("fechapedido"));
+			m_descpedido->setText(cur->valor("descpedido"));
+			idproveedor = cur->valor("idproveedor");
+			iddivision = cur->valor("iddivision");
+			idalmacen = cur->valor("idalmacen");
    	}
    	delete cur;
    
- 	companyact->begin();
-   	cursor2 * cur3= companyact->cargacursor("SELECT * FROM proveedor WHERE idproveedor="+idproveedor,"unquery");
-   	companyact->commit();
-   	if (!cur3->eof()) {
-   		m_cifproveedor->setText(cur->valor("cifproveedor"));
-		m_nomproveedor->setText(cur->valor("nomproveedor"));
-		m_dirproveedor->setText(cur->valor("dirproveedor"));
-   	}
-   	delete cur3;
-   
-  	companyact->begin();
-   
-  	if (m_cursorcombo != NULL) delete m_cursorcombo;
-   	m_cursorcombo = companyact->cargacursor("SELECT * FROM division where idproveedor="+idproveedor,"unquery");
-   	companyact->commit();
-   	int i = 0;
-   	int i1 = 0;
-   	while (!m_cursorcombo->eof()) {
-   		i ++;
-		if (m_cursorcombo->valor("iddivision") == iddivision) {
-		   i1 = i;
-		}
-   		m_combodivision->insertItem(m_cursorcombo->valor("descdivision"));
-		m_cursorcombo->siguienteregistro();
-   	}
-	if (i1 != 0 ) {
-   		m_combodivision->setCurrentItem(i1);
- 	}
-   
-   	companyact->begin();
-   	if (m_cursorcombo2 != NULL) delete m_cursorcombo2;
-   	m_cursorcombo2 = companyact->cargacursor("SELECT * FROM almacen","unquery");
-   	companyact->commit();
-   	i = 0;
-   	i1 = 0;   
-   	while (!m_cursorcombo2->eof()) {
-   		i ++;
-		if (idalmacen == m_cursorcombo2->valor("idalmacen")) {
-		   i1 = i;
-		}
-   		m_comboalmacen->insertItem(m_cursorcombo2->valor("nomalmacen"));
-		m_cursorcombo2->siguienteregistro();
-   	}
-     	if (i1 != 0 ) {
-   		m_comboalmacen->setCurrentItem(i1);
-   	}
-   } //endif (pedido !=0)
+   	cargarcombodivision(idproveedor, iddivision);
+	} //endif (pedido !=0)
+	cargarcomboalmacen(idalmacen);
+  	
 }
 
 void linorderslist::chargelinorders(QString idpedido) {
@@ -187,6 +142,48 @@ void linorderslist::chargelinorders(QString idpedido) {
       delete cur;
     //showMaximized();
 }// end linorderslist
+
+void linorderslist::cargarcomboalmacen(QString idalmacen) {
+	m_cursorcombo2 = NULL;
+   companyact->begin();
+   if (m_cursorcombo2 != NULL) delete m_cursorcombo2;
+   	m_cursorcombo2 = companyact->cargacursor("SELECT * FROM almacen","unquery");
+   	companyact->commit();
+   	int i = 0;
+   	int i1 = 0;   
+   	while (!m_cursorcombo2->eof()) {
+   		i ++;
+		if (idalmacen == m_cursorcombo2->valor("idalmacen")) {
+		   i1 = i;
+		}
+   		m_comboalmacen->insertItem(m_cursorcombo2->valor("nomalmacen"));
+		m_cursorcombo2->siguienteregistro();
+   }
+   if (i1 != 0 ) {
+   	m_comboalmacen->setCurrentItem(i1);
+   }
+}
+
+void linorderslist::cargarcombodivision(QString idproveedor, QString iddivision) {
+	m_cursorcombo = NULL;
+	companyact->begin();
+  	if (m_cursorcombo != NULL) delete m_cursorcombo;
+   	m_cursorcombo = companyact->cargacursor("SELECT * FROM division where idproveedor="+idproveedor,"unquery");
+   	companyact->commit();
+   	int i = 0;
+   	int i1 = 0;
+   	while (!m_cursorcombo->eof()) {
+   		i ++;
+			if (m_cursorcombo->valor("iddivision") == iddivision) {
+			   i1 = i;
+			}
+   		m_combodivision->insertItem(m_cursorcombo->valor("descdivision"));
+			m_cursorcombo->siguienteregistro();
+   	}
+	if (i1 != 0 ) {
+   		m_combodivision->setCurrentItem(i1);
+ 	} 
+}
 
 
 void linorderslist::activated(int a) {
