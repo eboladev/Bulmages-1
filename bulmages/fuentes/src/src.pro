@@ -7,10 +7,8 @@ QMAKE_CLEAN += Makefile
 LANGUAGE = C++
 SOURCES += main.cpp \
            comun/bselector.cpp \
-           comun/configuracion.cpp \
            comun/abreempresaview.cpp \
            comun/splashscreen.cpp \
-           comun/postgresiface2.cpp \
            comun/calendario.cpp \
            comun/qmcdatenav.cpp \
            comun/funcaux.cpp \
@@ -78,10 +76,8 @@ SOURCES += main.cpp \
 
 
 HEADERS += comun/bselector.h \
-           comun/configuracion.h \
            comun/abreempresaview.h \
            comun/splashscreen.h \
-           comun/postgresiface2.h \
            comun/funcaux.h \
            comun/calendario.h \
            comun/qmcdatenav.h \
@@ -427,10 +423,12 @@ INCLUDEPATH = ../src \
               nominas \
               produccion \
               ventas \
-              /usr/include/qt
+              /usr/include/qt \
+	      ../../bulmalib
 
 LIBS += -lqt-mt \
-        -lpq 
+        -lpq \
+	../../bulmalib/libbulmalib.a
 	
 exists (estadisticas){
   LIBS += ../src/estadisticas/libestadisticas.lib.a

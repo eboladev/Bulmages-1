@@ -9,24 +9,32 @@ warn_on \
 thread \
 qt
 TARGET = ../bin/introbulmages
-LIBS += -lpq
+LIBS += -lpq \
+	../../bulmalib/libbulmalib.a
+	
 SOURCES += main.cpp \
            comun/bselector.cpp \
            comun/abreempresaview.cpp \
            comun/postgresiface2.cpp \
            comun/configuracion.cpp \
-           comun/bconfiguracion.cpp 
+           comun/bconfiguracion.cpp \
+           comun/logpass.cpp 
 HEADERS += comun/bselector.h \
            comun/abreempresaview.h \
            comun/postgresiface2.h \
            comun/configuracion.h \
-           comun/bconfiguracion.h 
+           comun/bconfiguracion.h \
+           comun/logpass.h 
 IDLS += comun/uiselector.ui \
         comun/abreempresadlg.ui \
-        comun/uiconfiguracion.ui 
+        comun/uiconfiguracion.ui \
+        comun/logpassbase.ui 
 FORMS += comun/uiselector.ui \
          comun/abreempresadlg.ui \
-         comun/uiconfiguracion.ui 
+         comun/uiconfiguracion.ui \
+         comun/logpassbase.ui 
+	 
+INCLUDEPATH += ../../bulmalib
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
