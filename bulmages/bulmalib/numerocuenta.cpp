@@ -1,6 +1,12 @@
 #include "numerocuenta.h"
 #include <qstring.h>
 
+/**\brief Constructor con los 4 parámetros
+\param bancopar Código banco (4 dígitos)
+\param entidadpar Código entidad (4 dígitos)
+\param dcpar Dígitos de Control (2 dígitos)
+\param numcuentapar Código de cuenta (10 dígitos)
+*/
 numerocuenta::numerocuenta(QString bancopar,QString entidadpar,QString dcpar,QString numcuentapar)
 {
 setbanco(bancopar);
@@ -8,6 +14,9 @@ setentidad(entidadpar);
 setnumcuenta(numcuentapar);
 dc=dcpar;
 }
+/**\overload
+En este caso los dígitos de control se calculan automáticamente
+*/
 numerocuenta::numerocuenta(QString bancopar,QString entidadpar,QString numcuentapar)
 {
 setbanco(bancopar);
@@ -15,6 +24,9 @@ setentidad(entidadpar);
 setnumcuenta(numcuentapar);
 dc=getdc();
 }
+/**\overload
+Si la cuenta se presenta como una única cadena, extrae los 4 elementos de ella.
+*/
 numerocuenta::numerocuenta(QString cuenpar)
 {
 QString tem=cuenpar;
@@ -31,7 +43,8 @@ numcuenta=tem.mid(10,10);
 numerocuenta::~numerocuenta()
 {}
 
-
+/**\brief Devuelve los dígitos de control del número de cuenta
+*/
 QString numerocuenta::getdc()
 {
 QString resul;
