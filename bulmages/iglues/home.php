@@ -28,7 +28,7 @@ if (is_file($section = "contents/" . $_GET['go'] . ".inc")) {
   ?>
 </head>
 <?php
-echo "<body onLoad=\"easyinit()\">\n";
+//echo "<body onLoad=\"easyinit()\">\n";
 ?>
 <div id="header">
 <div id="section_title">
@@ -49,7 +49,7 @@ echo "<h1>$title</h1>";
 	<div id="contents">
 	
 	<?php
-	include "navmenu.inc";
+//	include "navmenu.inc";
 	echo "<div id=\"contents_margins\">\n";
 
 	echo $body;

@@ -7,6 +7,10 @@
   <meta http-equiv="refresh" content="10; url=home.php">
   <link rel="stylesheet" type="text/css" href="iglues.css">
 </head>
+<SCRIPT>
+//if (navigator.appName.indexOf("Microsoft") != -1) 
+//	alert("Está ejecutando Internet Explorer");
+</SCRIPT>
 <body>
 <table width="100%" height="100%" border="0">
 <tr><td valign="middle" align="center">

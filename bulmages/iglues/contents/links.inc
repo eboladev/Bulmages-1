@@ -85,8 +85,8 @@ $body = '
 </tr>
 <tr>
 <td>
-<A HREF="http://h.says.it" TARGET="nueva">René Merou</A><BR>
-<P>Página personal en la que se tratan diversos temas, informáticos, ocio y religión enr otros.</P>
+<A HREF="http://mallorcaweb.net/rene/" TARGET="nueva">René Merou</A><BR>
+<P>Web de H con artículos muy diversos: Software libre, Nubes - meteorología, privacidad en la informatica , estrategia, escepticismo - racionalismo... y su weblog personal.</P>
 </td>
 </tr>
 <tr>

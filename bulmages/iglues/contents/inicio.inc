@@ -3,7 +3,7 @@ $title = "";
 // =================================================
 $body = '
 <div id="noticies">
-<img src="">
+<!-- <img src=""> -->
 <h1>&Uacute;ltimas Noticias</h1>
 
 <table border=0 cellspacing="0" class="news">
