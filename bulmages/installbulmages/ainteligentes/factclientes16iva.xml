@@ -41,18 +41,6 @@
          <canal></canal>
          <marcaconciliacion></marcaconciliacion>
          <idc_coste></idc_coste>
-         <ivainteligente>
-            <contrapartida>$codcli$</contrapartida>
-            <baseimp>$total$/1.16</baseimp>
-            <iva>16</iva>
-            <factura>$numfactura$</factura>
-            <idborrador>2</idborrador>
-            <incregistro>1</incregistro>
-            <regularizacion>1</regularizacion>
-            <plan349>1</plan349>
-            <numorden>1</numorden>
-            <cif>$cifcuenta$</cif>
-         </ivainteligente>
       </binteligente>
    </ainteligente>
 </DOCUMENT>
