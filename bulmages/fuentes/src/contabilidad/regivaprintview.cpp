@@ -38,8 +38,7 @@ regivaprintview::regivaprintview(QWidget *parent, const char *name ) : regivapri
 
 
 regivaprintview::~regivaprintview(){
- cout << "delete modelo\n";
-      delete modelo;
+       
 }
 
 /**************************************************************
@@ -56,7 +55,7 @@ void regivaprintview::accept() {
       //Lanza dialogo de generacion de modelo 300 
       //Deberia revisarse el Widget parent de la variable modelo (listivaview--->modelo, en vez de regivaprintview--->modelo)
        modelo->exec();
-      
+       
     
       }
       
