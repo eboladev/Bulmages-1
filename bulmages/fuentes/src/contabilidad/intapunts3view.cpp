@@ -575,7 +575,7 @@ void intapunts3view::boton_cerrarasiento() {
          QString codcuenta = cursborr->valor("codigo");
          codcuenta = codcuenta.mid(0,2);
 	 /// OJO que aqui los numero de cuenta están mal.
-         if (codcuenta == "60" || codcuenta == "70") {
+         if (codcuenta == "60" || codcuenta == "62" || codcuenta == "70") {
                fprintf(stderr,"%s\n",codcuenta.ascii());
                int idborrador = cursborr->valor("idborrador").toInt();
                QString query= "SELECT bcontrapartidaborr("+QString::number(idborrador)+") AS idborrador";
@@ -1766,12 +1766,14 @@ void intapunts3view::asiento_regularizacion() {
 		}// end while
 		delete cur;
 		if (totaldebe1 > 0) {
+			orden++;
 			query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,0,%f,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta1,totaldebe1,idasiento);
 			conexionbase->begin();
 			conexionbase->ejecuta(query);
 			conexionbase->commit();
 		} // end if
 		if (totalhaber1 > 0) {
+			orden++;
 			query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%f,0,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta1,totalhaber1,idasiento);
 			conexionbase->begin();
 			conexionbase->ejecuta(query);
