@@ -86,7 +86,9 @@ public slots:
 	virtual void cancel();
 	virtual void s_saveBudget();
 	virtual void s_removeBudget();
-
+	virtual void s_contextMenu(int, int, int, const QPoint &);
+	virtual void s_contextMenuDiscount(int, int, int, const QPoint &);
+		
 };
 
 #endif

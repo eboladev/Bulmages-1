@@ -47,6 +47,7 @@ CREATE TABLE presupuesto (
 #include "budget.h"
 #include <qtable.h>
 #include <qmessagebox.h>
+#include <qpopupmenu.h>
 
 #define COL_IDPRESUPUESTO 0
 #define COL_NUMPRESUPUESTO 1
@@ -139,16 +140,22 @@ void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
 }
 
 
-void BudgetsList::contextMenu(int , int , const QPoint &) {
-/*
-   QString idprov = m_list->text(a, COL_IDPROVEEDOR);
-   provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
-   prov->chargeprovider(idprov);
-   prov->exec();
-   delete prov;
-   inicializa();
-*/
-}// end contextMenuRequested
+void BudgetsList::s_contextMenu(int row, int col, int button, const QPoint &poin) {
+	qDebug("button = %d", button);
+	if (button == 2) {
+		QPopupMenu *popup;
+		popup = new QPopupMenu;
+		popup->insertItem(tr("Borrar Presupuesto"),101);
+		//popup->insertSeparator();
+		int opcion = popup->exec(m_list->mapToGlobal(poin));
+		switch(opcion) {
+			case 101:
+				s_removeBudget();
+				break;
+		}// end switch
+		delete popup;
+	}
+}// end contextmenu
 
 
 void BudgetsList::newBudget() {

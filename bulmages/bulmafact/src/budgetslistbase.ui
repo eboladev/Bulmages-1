@@ -228,12 +228,6 @@
     </connection>
     <connection>
         <sender>m_list</sender>
-        <signal>contextMenuRequested(int,int,const QPoint&amp;)</signal>
-        <receiver>BudgetsListBase</receiver>
-        <slot>contextMenu(int,int,const QPoint&amp;)</slot>
-    </connection>
-    <connection>
-        <sender>m_list</sender>
         <signal>doubleClicked(int,int,int,const QPoint&amp;)</signal>
         <receiver>BudgetsListBase</receiver>
         <slot>doubleclicked(int,int,int,const QPoint&amp;)</slot>
@@ -244,10 +238,16 @@
         <receiver>BudgetsListBase</receiver>
         <slot>s_removeBudget()</slot>
     </connection>
+    <connection>
+        <sender>m_list</sender>
+        <signal>clicked(int,int,int,const QPoint&amp;)</signal>
+        <receiver>BudgetsListBase</receiver>
+        <slot>s_contextMenu(int,int,int,const QPoint&amp;)</slot>
+    </connection>
 </connections>
 <slots>
     <slot>newBudget()</slot>
-    <slot>contextMenu(int, int, const QPoint &amp;)</slot>
+    <slot>s_contextMenu(int, int, int, const QPoint &amp;)</slot>
     <slot>doubleclicked(int, int, int, const QPoint &amp;)</slot>
     <slot>s_removeBudget()</slot>
 </slots>

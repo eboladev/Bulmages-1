@@ -897,6 +897,18 @@
         <receiver>BudgetBase</receiver>
         <slot>s_removeBudget()</slot>
     </connection>
+    <connection>
+        <sender>m_list</sender>
+        <signal>clicked(int,int,int,const QPoint&amp;)</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>s_contextMenu(int,int,int,const QPoint&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>m_listDiscounts</sender>
+        <signal>clicked(int,int,int,const QPoint&amp;)</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>s_contextMenuDiscount(int,int,int,const QPoint&amp;)</slot>
+    </connection>
 </connections>
 <slots>
     <slot>searchClient()</slot>
@@ -912,6 +924,8 @@
     <slot>valueBudgetDiscountLineChanged(int, int)</slot>
     <slot>s_saveBudget()</slot>
     <slot>s_removeBudget()</slot>
+    <slot>s_contextMenu(int, int, int, const QPoint &amp;)</slot>
+    <slot>s_contextMenuDiscount(int, int, int, const QPoint &amp;)</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

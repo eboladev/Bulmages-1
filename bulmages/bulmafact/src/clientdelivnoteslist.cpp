@@ -152,7 +152,7 @@ void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
 }
 
 
-void ClientDelivNotesList::s_contextMenu(int , int , const QPoint &) {
+void ClientDelivNotesList::s_contextMenu(int row , int , const QPoint &) {
 /*
    QString idprov = m_list->text(a, COL_IDPROVEEDOR);
    provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
