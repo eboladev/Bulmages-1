@@ -9,13 +9,9 @@ LIBS += ../../bulmalib/libbulmalib.a \
         -lpq 
 INCLUDEPATH = ../../bulmalib \
               ../src \
-              compras \
               comun \
               contabilidad \
               images \
-              nominas \
-              produccion \
-              ventas \
               formularios \
               /usr/include/qt 
 TARGET = ../bin/bulmacont 
@@ -129,13 +125,6 @@ FORMS += comun/uiselector.ui \
          contabilidad/duplicaasientodlg.ui \
          contabilidad/amortizaciondlg.ui \
          contabilidad/uimodelo347.ui \
-         ventas/uialbaventa.ui \
-         ventas/uiventas.ui \
-         ventas/uipediventa.ui \
-         compras/uicompras.ui \
-         almacen/uialmacen.ui \
-         produccion/uiproduccion.ui \
-         nominas/uinominas.ui \
          contabilidad/amortizacionesdlg.ui \
          comun/uivisorempresas.ui \
          contabilidad/uibloqfecha.ui \
@@ -283,7 +272,6 @@ HEADERS += comun/abreempresaview.h \
            comun/funcaux.h \
            comun/calendario.h \
            comun/qmcdatenav.h \
-           comun/bvisorempresas.h \
            contabilidad/bulmages01.h \
            contabilidad/aboutview.h \
            contabilidad/empresa.h \
@@ -327,15 +315,7 @@ HEADERS += comun/abreempresaview.h \
            contabilidad/cambiactaview.h \
            contabilidad/duplicarasientoview.h \
            contabilidad/amortizacionview.h \
-           contabilidad/bmodcontabilidad.h \
            contabilidad/bmodelo347.h \
-           ventas/bmodventas.h \
-           ventas/balbaventa.h \
-           ventas/bpediventa.h \
-           compras/bmodcompras.h \
-           almacen/bmodalmacen.h \
-           produccion/bmodproduccion.h \
-           nominas/bmodnominas.h \
            contabilidad/amortizacionesview.h \
            contabilidad/bbloqfecha.h \
            comun/log.h \
@@ -349,7 +329,6 @@ SOURCES += main.cpp \
            comun/calendario.cpp \
            comun/qmcdatenav.cpp \
            comun/funcaux.cpp \
-           comun/bvisorempresas.cpp \
            contabilidad/bulmages01.cpp \
            contabilidad/aboutview.cpp \
            contabilidad/empresa.cpp \
@@ -393,15 +372,7 @@ SOURCES += main.cpp \
            contabilidad/cambiactaview.cpp \
            contabilidad/duplicarasientoview.cpp \
            contabilidad/amortizacionview.cpp \
-           contabilidad/bmodcontabilidad.cpp \
            contabilidad/bmodelo347.cpp \
-           ventas/bmodventas.cpp \
-           ventas/balbaventa.cpp \
-           ventas/bpediventa.cpp \
-           compras/bmodcompras.cpp \
-           almacen/bmodalmacen.cpp \
-           produccion/bmodproduccion.cpp \
-           nominas/bmodnominas.cpp \
            contabilidad/amortizacionesview.cpp \
            contabilidad/bbloqfecha.cpp \
            comun/log.cpp \
