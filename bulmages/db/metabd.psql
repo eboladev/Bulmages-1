@@ -1,5 +1,3 @@
-\connect - postgres
-
 /***
   * NOTAS: 
  ***/
@@ -22,7 +20,7 @@ CREATE TABLE "empresa" (
 	"nombredb"     character varying(15),
 	"password"      character varying(15),
 
-        PRIMARY KEY ("idempresalinux ")
+        PRIMARY KEY ("idempresa")
 );
 
 CREATE TABLE "usuario_empresa" (
