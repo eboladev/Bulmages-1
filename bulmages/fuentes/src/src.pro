@@ -3,12 +3,11 @@
 # Subdir relative project main directory: ./src
 # Target is an application:  ../bin/bulmages
 
-TARGETDEPS += ../../bulmalib/libbulmalib.a \
-              ../bulmalib/libbulmalib.a 
-LIBS += ../bulmalib/libbulmalib.a \
+TARGETDEPS += ../../bulmalib/libbulmalib.a 
+LIBS += ../../bulmalib/libbulmalib.a \
         -lqt-mt \
         -lpq 
-INCLUDEPATH = ../bulmalib \
+INCLUDEPATH = ../../bulmalib \
               ../src \
               compras \
               comun \

@@ -128,8 +128,8 @@ fich << fichlec.rdbuf(); // Copia el contenido de fichlec en fich (cuartotrozo d
 fichlec.close();// explicit close, unnecessary in this case
 fich.close();
 cout << "Se supone que tengo que leer los formularios desde " << confpr->valor(CONF_PROGDATA) << "\n";
-cout << "¡¡OJO!! Los formularios que genera no son validos, ya que han de tener un numero de serie UNICO\n";
-cout << "Es decir, hay que bajarse de internet uno nuevo CADA VEZ que se haga un modelo nuevo\n";
+cout << "[TODO] ¡¡OJO!! Los formularios que genera no son validos, ya que han de tener un numero de serie UNICO\n";
+cout << "[TODO]  Es decir, hay que bajarse de internet uno nuevo CADA VEZ que se haga un modelo nuevo\n";
 QString command;
 
 int pid;

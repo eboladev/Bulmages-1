@@ -3,7 +3,7 @@
 # Subdir relative project main directory: .
 # Target is a subdirs project 
 
-SUBDIRS +=bulmalib \
+SUBDIRS += ../bulmalib \
            src 
 TEMPLATE = subdirs
 CONFIG += release \
