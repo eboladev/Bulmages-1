@@ -106,6 +106,11 @@ if (i== CONF_FONTSIZE_BULMAGES) return "CONF_FONTSIZE_BULMAGES";
 
 if (i== CONF_PROGDATA) return "CONF_PROGDATA";
 
+if (i== CONF_NUM_AUT_PRESUP) return "CONF_NUM_AUT_PRESUP";
+if (i== CONF_NUM_AUT_FACTURA) return "CONF_NUM_AUT_FACTURA";
+if (i== CONF_NUM_AUT_ALBARAN) return "CONF_NUM_AUT_ALBARAN";
+
+if (i== CONF_MOSTRAR_ALMACEN) return "CONF_MOSTRAR_ALMACEN";
 return "";
 }// end nombre
 
@@ -115,7 +120,7 @@ void configuracion::saveconfig() {
    dir1 = dir1 + "/"+CONFLOCAL;
    fprintf(stderr,"CONFIGURACION LOCAL %s\n", dir1.c_str());
    ofstream filestr((char *) dir1.c_str());
-   for (int i =0; i<500;i++) {
+   for (int i =0; i<1000;i++) {
       if (nombre(i) != "") {
          filestr << nombre(i);
          filestr << "   ";
@@ -132,7 +137,7 @@ void configuracion::leeconfig(char *fich) {
   string a;
         while (filestr.good()) {
                filestr >> a;
-               for (int i=0;i<500;i++) {
+               for (int i=0;i<1000;i++) {
                   if (a==nombre(i)) {
                      filestr >> a;
                      valores[i] = a;

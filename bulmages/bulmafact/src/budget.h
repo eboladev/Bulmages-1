@@ -35,6 +35,7 @@ private:
    company *companyact;
    QString m_idpresupuesto;
    QString m_idclient;
+	QString m_idalmacen;
 	QString m_initialValues;
 	cursor2 *m_cursorcombo;
 	
@@ -68,6 +69,8 @@ private:
 	QString retrieveValues(QString);
 	QString calculateValues();
 	void cargarcomboformapago(QString);
+	void buscarAlmacen();
+	QString newBudgetNumber();
 		
 protected:
 	bool eventFilter( QObject *, QEvent *);
@@ -88,6 +91,8 @@ public slots:
 	virtual void s_removeBudget();
 	virtual void s_contextMenu(int, int, int, const QPoint &);
 	virtual void s_contextMenuDiscount(int, int, int, const QPoint &);
+	virtual void s_almacenLostFocus();
+
 		
 };
 

@@ -35,8 +35,7 @@ CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
 -- nombre: El nombre del parametro de configuracion.
 -- valor: El valor que toma dicho parametro.
 CREATE TABLE configuracion (
-    idconfiguracion integer NOT NULL,
-    nombre character varying(25),
+    nombre character varying(25) PRIMARY KEY,
     valor character varying(350)
 );
 
@@ -48,14 +47,19 @@ CREATE TABLE configuracion (
 -- sCP: Tres darrers dígits del codi postal.
 -- Telf: Telèfon.
 -- Fax: Fax.
+-- presupuestoautoalmacen el numero de presupuesto es automatico? N=No, 
+-- albaranautoalmacen el numero de albaran es automatico? N=No, 
+-- facturaautoalmacen el numero de factura es automatico? N=No, 
 CREATE TABLE almacen (
  idalmacen serial PRIMARY KEY,
+ codigoalmacen numeric(5, 0) NOT NULL,
  nomalmacen character varying(50),
  diralmacen character varying(150),
  poblalmacen character varying(50),
  cpalmacen character varying(20),
  telalmacen character varying(20),
- faxalmacen character varying(20)
+ faxalmacen character varying(20),
+ UNIQUE(codigoalmacen)
 );
 
 
@@ -92,6 +96,18 @@ CREATE TABLE tipo_iva (
    desctipo_iva character varying(2000),
    tasatipo_iva integer
 );
+
+-- Tabla con series de Iva, código i descripción
+-- Básicamente sirve para garantizar la integridad referencial en las  series de facturación
+-- Deberían existir en contabilidad tambien.
+CREATE TABLE serie_factura (
+	idserie_factura serial PRIMARY KEY,
+	codigoserie_factura character(2),
+	descserie_factura character varying(50) NOT NULL,
+	UNIQUE (codigoserie_factura)
+);
+
+
 
 
 --COMPROVACIONS D'INTEGRITAT>Genriques:
@@ -337,7 +353,7 @@ CREATE TABLE pedido (
    descpedido character varying(500),
 
    iddivision integer NOT NULL REFERENCES division(iddivision),
-        idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
 
 
@@ -488,7 +504,7 @@ CREATE TABLE termino_fp (
 --  Pressupost a clients.
 CREATE TABLE presupuesto (
    idpresupuesto serial PRIMARY KEY,
-   numpresupuesto integer,
+   numpresupuesto integer NOT NULL,
    fpresupuesto date,
    contactpresupuesto character varying(90),
    telpresupuesto character varying(20),
@@ -496,7 +512,9 @@ CREATE TABLE presupuesto (
    comentpresupuesto character varying(3000),
    idusuari integer,
 
-   idcliente integer REFERENCES cliente(idcliente)
+   idcliente integer REFERENCES cliente(idcliente),
+	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+	UNIQUE (idalmacen, numpresupuesto)
 );
 
 
@@ -541,8 +559,12 @@ CREATE TABLE lpresupuesto (
 -- Data
 -- Factura a clients.
 CREATE TABLE factura (
-   numfactura integer PRIMARY KEY,
-   fechafactura date
+	idfactura serial PRIMARY KEY,
+	idserie_factura char(2) NOT NULL,
+   numfactura integer NOT NULL,
+   fechafactura date,
+	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+	UNIQUE (idalmacen, idserie_factura, numfactura)
 );
 
 
@@ -556,10 +578,13 @@ CREATE TABLE factura (
 -- Observacions
 -- Agrupacio d'albarans no facturables en funció d'un determinat concepte.
 CREATE TABLE nofactura (
-   numnofactura integer PRIMARY KEY,
+	idnofactura serial PRIMARY KEY,
+   numnofactura integer NOT NULL,
    fechanofactura date,
    conceptnofactura character varying(150),
-   observnofactura character varying(150)
+   observnofactura character varying(150),
+	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+	UNIQUE (idalmacen, numnofactura)
 );
 
 
@@ -573,7 +598,7 @@ CREATE TABLE nofactura (
 -- Albarà a clients.
 CREATE TABLE albaran (
    idalbaran serial PRIMARY KEY,
-   numalbaran integer UNIQUE,
+   numalbaran integer NOT NULL,
    fechaalbaran date,
    idusuario integer,
    comentalbaran character varying(3000),
@@ -581,8 +606,10 @@ CREATE TABLE albaran (
 --   idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
    idcliente integer REFERENCES cliente(idcliente),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),
-   numfactura integer REFERENCES factura(numfactura),
-   numnofactura integer REFERENCES nofactura(numnofactura)
+   idfactura integer REFERENCES factura(idfactura),
+   idnofactura integer REFERENCES nofactura(idnofactura),
+	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+	UNIQUE (idalmacen, numalbaran)
 );
 
 
@@ -630,7 +657,7 @@ CREATE TABLE vencimiento (
    fechavencimiento date,
    importevencimiento float,
    abonadovencimiento float,
-   numfactura integer REFERENCES factura(numfactura)
+   idfactura integer REFERENCES factura(idfactura)
 );
 
 

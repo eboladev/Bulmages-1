@@ -142,21 +142,21 @@
                 <attribute name="title">
                     <string>Datos Generales</string>
                 </attribute>
-                <hbox>
+                <vbox>
                     <property name="name">
                         <cstring>unnamed</cstring>
                     </property>
                     <widget class="QLayoutWidget">
                         <property name="name">
-                            <cstring>layout14</cstring>
+                            <cstring>layout68</cstring>
                         </property>
-                        <vbox>
+                        <hbox>
                             <property name="name">
                                 <cstring>unnamed</cstring>
                             </property>
                             <widget class="QLayoutWidget">
                                 <property name="name">
-                                    <cstring>layout5_2</cstring>
+                                    <cstring>layout67</cstring>
                                 </property>
                                 <hbox>
                                     <property name="name">
@@ -164,30 +164,7 @@
                                     </property>
                                     <widget class="QLabel">
                                         <property name="name">
-                                            <cstring>textLabel1_2_2_3</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>Num. Presupuesto</string>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit">
-                                        <property name="name">
-                                            <cstring>m_numpresupuesto</cstring>
-                                        </property>
-                                    </widget>
-                                </hbox>
-                            </widget>
-                            <widget class="QLayoutWidget">
-                                <property name="name">
-                                    <cstring>layout14</cstring>
-                                </property>
-                                <hbox>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <widget class="QLabel">
-                                        <property name="name">
-                                            <cstring>textLabel1</cstring>
+                                            <cstring>m_lblalmacen</cstring>
                                         </property>
                                         <property name="sizePolicy">
                                             <sizepolicy>
@@ -198,25 +175,36 @@
                                             </sizepolicy>
                                         </property>
                                         <property name="text">
-                                            <string>Cliente</string>
+                                            <string>Almacén</string>
                                         </property>
                                     </widget>
                                     <widget class="QLineEdit">
                                         <property name="name">
-                                            <cstring>m_cifclient</cstring>
+                                            <cstring>m_codigoalmacen</cstring>
                                         </property>
                                         <property name="sizePolicy">
                                             <sizepolicy>
-                                                <hsizetype>5</hsizetype>
+                                                <hsizetype>0</hsizetype>
                                                 <vsizetype>0</vsizetype>
                                                 <horstretch>0</horstretch>
                                                 <verstretch>0</verstretch>
                                             </sizepolicy>
                                         </property>
+                                        <property name="text">
+                                            <string></string>
+                                        </property>
                                     </widget>
                                     <widget class="QToolButton">
                                         <property name="name">
-                                            <cstring>toolButton1</cstring>
+                                            <cstring>m_buscaralmacen</cstring>
+                                        </property>
+                                        <property name="sizePolicy">
+                                            <sizepolicy>
+                                                <hsizetype>5</hsizetype>
+                                                <vsizetype>1</vsizetype>
+                                                <horstretch>0</horstretch>
+                                                <verstretch>0</verstretch>
+                                            </sizepolicy>
                                         </property>
                                         <property name="minimumSize">
                                             <size>
@@ -233,112 +221,23 @@
                                     </widget>
                                     <widget class="QLabel">
                                         <property name="name">
-                                            <cstring>m_nomclient</cstring>
+                                            <cstring>m_nomalmacen</cstring>
                                         </property>
                                         <property name="sizePolicy">
                                             <sizepolicy>
-                                                <hsizetype>7</hsizetype>
+                                                <hsizetype>4</hsizetype>
                                                 <vsizetype>5</vsizetype>
                                                 <horstretch>0</horstretch>
                                                 <verstretch>0</verstretch>
                                             </sizepolicy>
                                         </property>
                                         <property name="text">
-                                            <string>Cliente</string>
+                                            <string>xxxxxxxxxxxxxxxxxxxxxxxxx</string>
                                         </property>
-                                    </widget>
-                                </hbox>
-                            </widget>
-                            <widget class="QLayoutWidget">
-                                <property name="name">
-                                    <cstring>layout12</cstring>
-                                </property>
-                                <hbox>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <widget class="QLayoutWidget">
-                                        <property name="name">
-                                            <cstring>layout4</cstring>
-                                        </property>
-                                        <hbox>
-                                            <property name="name">
-                                                <cstring>unnamed</cstring>
-                                            </property>
-                                            <widget class="QLabel">
-                                                <property name="name">
-                                                    <cstring>textLabel1_2</cstring>
-                                                </property>
-                                                <property name="text">
-                                                    <string>Fecha Creación</string>
-                                                </property>
-                                            </widget>
-                                            <widget class="QLineEdit">
-                                                <property name="name">
-                                                    <cstring>m_fpresupuesto</cstring>
-                                                </property>
-                                            </widget>
-                                        </hbox>
-                                    </widget>
-                                    <widget class="QLayoutWidget">
-                                        <property name="name">
-                                            <cstring>layout5</cstring>
-                                        </property>
-                                        <hbox>
-                                            <property name="name">
-                                                <cstring>unnamed</cstring>
-                                            </property>
-                                            <widget class="QLabel">
-                                                <property name="name">
-                                                    <cstring>textLabel1_2_2</cstring>
-                                                </property>
-                                                <property name="text">
-                                                    <string>Fecha Vencimiento</string>
-                                                </property>
-                                            </widget>
-                                            <widget class="QLineEdit">
-                                                <property name="name">
-                                                    <cstring>m_vencpresupuesto</cstring>
-                                                </property>
-                                            </widget>
-                                        </hbox>
-                                    </widget>
-                                </hbox>
-                            </widget>
-                            <widget class="QLayoutWidget">
-                                <property name="name">
-                                    <cstring>layout14</cstring>
-                                </property>
-                                <hbox>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <widget class="QLayoutWidget">
-                                        <property name="name">
-                                            <cstring>layout9</cstring>
-                                        </property>
-                                        <hbox>
-                                            <property name="name">
-                                                <cstring>unnamed</cstring>
-                                            </property>
-                                            <widget class="QLabel">
-                                                <property name="name">
-                                                    <cstring>textLabel1_3</cstring>
-                                                </property>
-                                                <property name="text">
-                                                    <string>Forma de Pago</string>
-                                                </property>
-                                            </widget>
-                                            <widget class="QComboBox">
-                                                <property name="name">
-                                                    <cstring>m_comboformapago</cstring>
-                                                </property>
-                                            </widget>
-                                        </hbox>
                                     </widget>
                                     <spacer>
                                         <property name="name">
-                                            <cstring>spacer3</cstring>
+                                            <cstring>spacer12</cstring>
                                         </property>
                                         <property name="orientation">
                                             <enum>Horizontal</enum>
@@ -348,8 +247,8 @@
                                         </property>
                                         <property name="sizeHint">
                                             <size>
-                                                <width>351</width>
-                                                <height>21</height>
+                                                <width>16</width>
+                                                <height>20</height>
                                             </size>
                                         </property>
                                     </spacer>
@@ -357,86 +256,303 @@
                             </widget>
                             <widget class="QLayoutWidget">
                                 <property name="name">
-                                    <cstring>layout13</cstring>
+                                    <cstring>layout66</cstring>
                                 </property>
                                 <hbox>
                                     <property name="name">
                                         <cstring>unnamed</cstring>
                                     </property>
-                                    <widget class="QLayoutWidget">
+                                    <widget class="QLabel">
                                         <property name="name">
-                                            <cstring>layout1</cstring>
+                                            <cstring>textLabel1_2_2_3</cstring>
                                         </property>
-                                        <hbox>
-                                            <property name="name">
-                                                <cstring>unnamed</cstring>
-                                            </property>
-                                            <widget class="QLabel">
-                                                <property name="name">
-                                                    <cstring>textLabel1_2_2_2</cstring>
-                                                </property>
-                                                <property name="text">
-                                                    <string>Contacto</string>
-                                                </property>
-                                            </widget>
-                                            <widget class="QLineEdit">
-                                                <property name="name">
-                                                    <cstring>m_contactpresupuesto</cstring>
-                                                </property>
-                                            </widget>
-                                        </hbox>
+                                        <property name="sizePolicy">
+                                            <sizepolicy>
+                                                <hsizetype>1</hsizetype>
+                                                <vsizetype>5</vsizetype>
+                                                <horstretch>0</horstretch>
+                                                <verstretch>0</verstretch>
+                                            </sizepolicy>
+                                        </property>
+                                        <property name="text">
+                                            <string>Num. Presupuesto</string>
+                                        </property>
                                     </widget>
-                                    <widget class="QLayoutWidget">
+                                    <widget class="QLineEdit">
                                         <property name="name">
-                                            <cstring>layout2</cstring>
+                                            <cstring>m_numpresupuesto</cstring>
                                         </property>
-                                        <hbox>
-                                            <property name="name">
-                                                <cstring>unnamed</cstring>
-                                            </property>
-                                            <widget class="QLabel">
-                                                <property name="name">
-                                                    <cstring>textLabel1_2_2_2_2</cstring>
-                                                </property>
-                                                <property name="text">
-                                                    <string>Tel. Contacto</string>
-                                                </property>
-                                            </widget>
-                                            <widget class="QLineEdit">
-                                                <property name="name">
-                                                    <cstring>m_telpresupuesto</cstring>
-                                                </property>
-                                            </widget>
-                                        </hbox>
+                                        <property name="sizePolicy">
+                                            <sizepolicy>
+                                                <hsizetype>0</hsizetype>
+                                                <vsizetype>0</vsizetype>
+                                                <horstretch>0</horstretch>
+                                                <verstretch>0</verstretch>
+                                            </sizepolicy>
+                                        </property>
                                     </widget>
                                 </hbox>
                             </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout14</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>textLabel1</cstring>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy>
+                                        <hsizetype>1</hsizetype>
+                                        <vsizetype>5</vsizetype>
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                                <property name="text">
+                                    <string>Cliente</string>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit">
+                                <property name="name">
+                                    <cstring>m_cifclient</cstring>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy>
+                                        <hsizetype>5</hsizetype>
+                                        <vsizetype>0</vsizetype>
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                            </widget>
+                            <widget class="QToolButton">
+                                <property name="name">
+                                    <cstring>toolButton1</cstring>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>32</width>
+                                        <height>32</height>
+                                    </size>
+                                </property>
+                                <property name="text">
+                                    <string></string>
+                                </property>
+                                <property name="iconSet">
+                                    <iconset>image5</iconset>
+                                </property>
+                            </widget>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>m_nomclient</cstring>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy>
+                                        <hsizetype>7</hsizetype>
+                                        <vsizetype>5</vsizetype>
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                                <property name="text">
+                                    <string>Cliente</string>
+                                </property>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout12</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
                             <widget class="QLayoutWidget">
                                 <property name="name">
-                                    <cstring>layout14</cstring>
+                                    <cstring>layout4</cstring>
                                 </property>
-                                <vbox>
+                                <hbox>
                                     <property name="name">
                                         <cstring>unnamed</cstring>
                                     </property>
                                     <widget class="QLabel">
                                         <property name="name">
-                                            <cstring>textLabel1_2_2_2_2_2</cstring>
+                                            <cstring>textLabel1_2</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Comentarios</string>
+                                            <string>Fecha Creación</string>
                                         </property>
                                     </widget>
-                                    <widget class="QTextEdit">
+                                    <widget class="QLineEdit">
                                         <property name="name">
-                                            <cstring>m_comentpresupuesto</cstring>
+                                            <cstring>m_fpresupuesto</cstring>
                                         </property>
                                     </widget>
-                                </vbox>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout5</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel1_2_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Fecha Vencimiento</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>m_vencpresupuesto</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout14</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout9</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel1_3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Forma de Pago</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QComboBox">
+                                        <property name="name">
+                                            <cstring>m_comboformapago</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <spacer>
+                                <property name="name">
+                                    <cstring>spacer3</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Horizontal</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>351</width>
+                                        <height>21</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout13</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout1</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel1_2_2_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Contacto</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>m_contactpresupuesto</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout2</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>textLabel1_2_2_2_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Tel. Contacto</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>m_telpresupuesto</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout14</cstring>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>textLabel1_2_2_2_2_2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Comentarios</string>
+                                </property>
+                            </widget>
+                            <widget class="QTextEdit">
+                                <property name="name">
+                                    <cstring>m_comentpresupuesto</cstring>
+                                </property>
                             </widget>
                         </vbox>
                     </widget>
-                </hbox>
+                </vbox>
             </widget>
             <widget class="QWidget">
                 <property name="name">
@@ -909,6 +1025,12 @@
         <receiver>BudgetBase</receiver>
         <slot>s_contextMenuDiscount(int,int,int,const QPoint&amp;)</slot>
     </connection>
+    <connection>
+        <sender>m_codigoalmacen</sender>
+        <signal>lostFocus()</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>s_almacenLostFocus()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>searchClient()</slot>
@@ -926,6 +1048,7 @@
     <slot>s_removeBudget()</slot>
     <slot>s_contextMenu(int, int, int, const QPoint &amp;)</slot>
     <slot>s_contextMenuDiscount(int, int, int, const QPoint &amp;)</slot>
+    <slot>s_almacenLostFocus()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

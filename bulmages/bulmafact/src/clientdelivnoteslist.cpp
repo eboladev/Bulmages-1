@@ -79,7 +79,7 @@ void ClientDelivNotesList::inicializa() {
    m_list->setColumnMovingEnabled( TRUE );
    m_list->setNumCols(11);
 	m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-   m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "Nº Presupuesto" ) );
+   m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "Nº Albarán" ) );
    m_list->horizontalHeader()->setLabel( COL_FECHAALBARAN, tr( "Fecha" ) );
    m_list->horizontalHeader()->setLabel( COL_IDFORMA_PAGO, tr( "COL_IDFORMA_PAGO" ) );
    m_list->horizontalHeader()->setLabel( COL_NUMFACTURA, tr( "Nº Factura" ) );

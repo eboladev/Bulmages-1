@@ -78,6 +78,7 @@ CREATE TABLE lpresupuesto (
 #include <qobjectlist.h>
 #include <qcombobox.h>
 #include <qpopupmenu.h>
+#include <qtoolbutton.h>
 
 #include "funcaux.h"
 //#include "postgresiface2.h"
@@ -115,7 +116,7 @@ void Budget::inicialize() {
 	installEventFilter(this);
 	m_list->installEventFilter( this );
 	m_listDiscounts->installEventFilter( this );
-	
+	m_nomalmacen->setText("");
 	m_comboformapago->clear();
 	QString query = "SELECT * FROM prfp WHERE idpresupuesto="+m_idpresupuesto;
 	companyact->begin();
@@ -209,6 +210,25 @@ void Budget::inicialize() {
 	m_totalDiscounts->setAlignment(Qt::AlignRight);
 	m_totalBudget->setReadOnly(TRUE);
 	m_totalBudget->setAlignment(Qt::AlignRight);
+	
+	if (m_idpresupuesto=="0") {	 
+		companyact->begin();
+		cursor2 * cur0= companyact->cargacursor("SELECT * FROM configuracion where nombre='AlmacenDefecto'","queryconfig");
+		companyact->commit(); 
+		if (!cur0->eof()) {
+			if (cur0->valor("valor")!="") {
+				m_codigoalmacen->setText(cur0->valor("valor"));
+		}
+		delete cur0;
+	}
+	
+	/*			m_codigoalmacen->hide();
+				m_buscaralmacen->hide();
+				m_lblalmacen->hide();
+				m_nomalmacen->hide(); */
+//				m_numpresupuesto->setReadOnly(true);
+
+	}
 }// end inicialize
 
 
@@ -216,13 +236,14 @@ void Budget::inicialize() {
 void Budget::chargeBudget(QString idbudget) {
 	m_idpresupuesto = idbudget;
 	inicialize();
-	
-	QString query = "SELECT * FROM presupuesto LEFT JOIN cliente ON cliente.idcliente = presupuesto.idcliente WHERE idpresupuesto="+idbudget;
+
+	QString query = "SELECT * FROM presupuesto LEFT JOIN cliente ON cliente.idcliente = presupuesto.idcliente LEFT JOIN almacen ON  presupuesto.idalmacen = almacen.idalmacen WHERE idpresupuesto="+idbudget;
 	companyact->begin();
 	cursor2 * cur= companyact->cargacursor(query, "querypresupuesto");
 	companyact->commit();
 	if (!cur->eof()) {
 		m_idclient = cur->valor("idcliente");	
+		m_idalmacen = cur->valor("idalmacen");
 		m_numpresupuesto->setText(cur->valor("numpresupuesto"));
 		m_fpresupuesto->setText(cur->valor("fpresupuesto"));
 		m_vencpresupuesto->setText(cur->valor("vencpresupuesto"));
@@ -231,6 +252,8 @@ void Budget::chargeBudget(QString idbudget) {
 		m_comentpresupuesto->setText(cur->valor("comentpresupuesto"));
 		m_nomclient->setText(cur->valor("nomcliente"));
 		m_cifclient->setText(cur->valor("cifcliente"));
+		m_codigoalmacen-> setText(cur->valor("codigoalmacen"));
+		m_nomalmacen-> setText(cur->valor("nomalmacen"));
    
 		chargeBudgetLines(idbudget);
 		chargeBudgetDiscounts(idbudget);
@@ -338,6 +361,25 @@ void Budget::budgetDateLostFocus() {
 
 void Budget::budgetExpiryLostFocus() {
 	m_vencpresupuesto->setText(normalizafecha(m_vencpresupuesto->text()).toString("dd/MM/yyyy"));
+}
+
+
+void Budget::s_almacenLostFocus() {
+	buscarAlmacen();
+}
+
+void Budget::buscarAlmacen() {
+	companyact->begin();
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM almacen where codigoalmacen ="+ m_codigoalmacen->text(),"unquery");
+	companyact->commit();
+	if (!cur->eof()) {
+		m_idalmacen = cur->valor("idalmacen");
+		m_nomalmacen->setText(cur->valor("nomalmacen"));
+	} else {
+		m_nomalmacen->setText(""); 
+		m_idalmacen = "";
+	}
+	delete cur;
 }
 
 
@@ -606,6 +648,10 @@ void Budget::accept() {
 
 
 int Budget::saveBudget() {
+	buscarAlmacen();
+	if (m_numpresupuesto->text() == "") {
+		m_numpresupuesto->setText(newBudgetNumber());
+	}
 	QString SQLQuery;
 	
 	if (m_idpresupuesto != "0") {
@@ -616,11 +662,13 @@ int Budget::saveBudget() {
       SQLQuery += " , vencpresupuesto='"+m_vencpresupuesto->text()+"'";
       SQLQuery += " , comentpresupuesto='"+m_comentpresupuesto->text()+"'";
 		SQLQuery += " , idcliente="+m_idclient;
+		SQLQuery += " , idalmacen="+m_idalmacen;
       SQLQuery += " WHERE idpresupuesto ="+m_idpresupuesto;
 	} else {
-		SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idcliente)";
+		SQLQuery = "INSERT INTO presupuesto (idalmacen, numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idcliente)";
 		SQLQuery += " VALUES (";
-		SQLQuery += m_numpresupuesto->text();
+		SQLQuery += m_idalmacen;
+		SQLQuery += " , "+m_numpresupuesto->text();
 		SQLQuery += " , '"+m_fpresupuesto->text()+"'";
       SQLQuery += " , '"+m_contactpresupuesto->text()+"'";
 		SQLQuery += " , '"+m_telpresupuesto->text()+"'";
@@ -940,5 +988,18 @@ QString Budget::retrieveValues(QString qsWidget) {
 	}
 	delete l; // delete the list, not the objects
 	return values;
+}
+
+QString Budget::newBudgetNumber() {
+	QString rtnNumber;
+	companyact->begin();
+	cursor2 * cur4= companyact->cargacursor("SELECT max(numpresupuesto) FROM presupuesto WHERE idalmacen="+m_idalmacen,"unquery1");
+	if (!cur4->eof()) {
+		rtnNumber = QString().sprintf("%d",cur4->valor(0).toInt()+1);
+	} else {
+		rtnNumber = "1";
+	}
+	delete cur4;
+	return rtnNumber;
 }
 

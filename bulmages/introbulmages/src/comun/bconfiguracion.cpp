@@ -67,7 +67,7 @@ void BConfiguracion::cerrar() {
   }// end switch
   
   // Guardamos la configuración.
-   for (int i =0;i<500;i++) {
+   for (int i =0;i<1000;i++) {
       if (confpr->nombre(i) != "") {
          confpr->setValor(i,m_tconfiguracion->text(i,1).ascii());
       }// end if
@@ -86,9 +86,9 @@ void BConfiguracion::cerrar() {
 void BConfiguracion::tablaconfiguracion() {
    m_tconfiguracion->setLeftMargin(0);
    m_tconfiguracion->hideColumn(2);
-   m_tconfiguracion->setNumRows(500);
+   m_tconfiguracion->setNumRows(1000);
    QString cad;
-   for (int i =0;i<500;i++) {
+   for (int i =0;i<1000;i++) {
       cad= cad.setNum(i);
       m_tconfiguracion->setText(i,0,confpr->nombre(i));
       m_tconfiguracion->setText(i,1,confpr->valor(i));

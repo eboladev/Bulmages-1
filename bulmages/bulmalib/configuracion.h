@@ -94,6 +94,19 @@ using std::string;
 /// CONF_PASSWORD_USER     Determina el password del usuario. Inicialmente vale ""
 #define CONF_PASSWORD_USER          423
 
+
+/// CONF_NUM_AUT_*		Determina si se utilizarán numeradores automaticos para presupuestos, albaranes y facturas  Inicialmente vale ""
+#define CONF_NUM_AUT_PRESUP 500
+#define CONF_NUM_AUT_ALBARAN 501
+#define CONF_NUM_AUT_FACTURA 502
+
+/// CONF_MOSTRAR_ALMACEN		Determina si se visualizará el almacén en los listados y si aparecera inhibido en las entradas de datos  Inicialmente vale ""
+#define CONF_MOSTRAR_ALMACEN	510
+
+
+
+
+
 class configuracion {
     private:
         string valores[1000];
