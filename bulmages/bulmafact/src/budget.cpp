@@ -104,6 +104,8 @@ using namespace std;
 #define COL_DESCUENTO_PROPORCIONDPRESUPUESTO 2
 #define COL_DESCUENTO_REMOVE 3
 
+#define coma "'"
+
 Budget::Budget(company *comp, QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) {
    companyact = comp;
    m_idpresupuesto = "0";
@@ -389,7 +391,7 @@ void Budget::s_almacenLostFocus() {
 
 
 void Budget::s_printBudget() {
-	presentaOpenReports();
+	presentaReports();
 }//end s_printBudget
 
 
@@ -1035,26 +1037,26 @@ QString Budget::newBudgetNumber() {
 }
 
 
-void Budget::presentaOpenReports() {
+void Budget::presentaReports() {
 	int txt=1;
-	string codigoarticulo;
-	string descripcionarticulo;
-	string cantidadlinea;
-	string preciolinea;
-	string descuentolinea;
-	string importelinea;
+	QString codigoarticulo;
+	QString descripcionarticulo;
+	QString cantidadlinea;
+	QString preciolinea;
+	QString descuentolinea;
+	QString importelinea;
 	
-	string cif;
-	string fecha;
-	string numero;
-	string observaciones;
+	QString cif;
+	QString fecha;
+	QString numero;
+	QString observaciones;
 	
-	string nombre;
-	string direccion;
-	string poblacion;
-	string cp;
-	string telefono;
-	string fax;
+	QString nombre;
+	QString direccion;
+	QString poblacion;
+	QString cp;
+	QString telefono;
+	QString fax;
 	
 	float bases [99];
 	float tasas [99];
@@ -1069,22 +1071,13 @@ void Budget::presentaOpenReports() {
 	numero = m_numpresupuesto->text().ascii();
 	observaciones = m_comentpresupuesto->text().ascii();
 	
-	ifstream filestr((confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml").ascii());
-	string a;
-	char c [1000];
-	char *argstxt[]={"presupuesto.jm.rml","presupuesto.jm.rml",NULL};      //presentació txt normal
+
+	
+	QString a;
+	
+	char *argstxt[]={"presupuesto.csv","presupuesto.csv",NULL};      //presentació txt normal
 	ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
 	if (!fitxersortidatxt) txt=0;    // verifiquem que s'hagin creat correctament els fitxers
-	while (filestr.good()) {
-		filestr.getline(c,1000);// >> a;
-		if (txt) {
-			fitxersortidatxt.setf(ios::fixed);
-			fitxersortidatxt.precision(2);
-			fitxersortidatxt << c ;
-			fitxersortidatxt << "\n" ;
-		}
-	}// end while
-	fitxersortidatxt << "<story>\n" ;
 	
 	// dades del client
 	QString query = "SELECT * FROM cliente WHERE idcliente="+m_idclient;
@@ -1101,30 +1094,6 @@ void Budget::presentaOpenReports() {
     }// end if
 	 delete cur;
 	
-	fitxersortidatxt << "<para style=\"name\">" << nombre.c_str() << "</para>\n" ;
-	fitxersortidatxt << "<para>" << direccion.c_str() << "</para>\n" ;
-	fitxersortidatxt << "<para>" << cp.c_str() << " " << poblacion.c_str() << "</para>\n" ;
-	fitxersortidatxt << "<para>" << "Tfno: " << telefono.c_str() << "  Fax: " << fax.c_str() << "</para>\n" ;
-	fitxersortidatxt << "\t<nextFrame/>\n" ;
-	
-	// Dades capcelera pressupost
-	fitxersortidatxt << "\t<blockTable colWidths=\"2.5cm, 2.5cm, 2.5cm, 2.5cm\" style=\"datoscabecera\">\n" ;
-	fitxersortidatxt << "\t\t<tr><td>NIF/CIF</td><td>Cod. Clien.</td><td>Fecha</td><td>N. Presup</td></tr>\n" ;
-	fitxersortidatxt << "\t\t<tr>\n" ;
-	fitxersortidatxt << "\t\t\t<td>" << cif.c_str() << "</td>\n" ;
-	fitxersortidatxt << "\t\t\t<td></td>\n" ;
-	fitxersortidatxt << "\t\t\t<td>" << fecha << "</td>\n" ;
-	fitxersortidatxt << "\t\t\t<td>" << numero << "</td>\n" ;
-	fitxersortidatxt << "\t\t</tr>\n" ;
-	fitxersortidatxt << "\t</blockTable>\n" ;
-	fitxersortidatxt << "\t<nextFrame/>\n";
-	
-	// Dades detall pressupost
-	fitxersortidatxt << "\t<setNextTemplate name=\"others\"/>\n" ;
-	fitxersortidatxt << "\t<spacer length=\"0.5cm\" width=\"1mm\"/>" ;
-	fitxersortidatxt << "\t<blockTable colWidths=\"1.5cm, 10cm, 2cm, 2cm, 1.5cm, 2cm\" style=\"products\">" ;
-	fitxersortidatxt << "\t<tr><td>Código</td><td>Descripción</td><td>Cantidad</td><td>Precio</td><td>%Desc</td><td>Importe</td></tr>\n" ;
-
 	int i = 0;
 	int error = 0;
 	while (i < m_list->numRows() && error==0) {
@@ -1143,25 +1112,18 @@ void Budget::presentaOpenReports() {
 		
 				if (txt) {
 					//presentació txt normal
-					fitxersortidatxt << "\t<tr>" ;
-					fitxersortidatxt << "\t\t<td>" << codigoarticulo.c_str() << "</td>\n" ;
-					fitxersortidatxt << "\t\t<td><para>" << descripcionarticulo.c_str() << "</para></td>\n" ;
-					fitxersortidatxt << "\t\t<td>" << cantidadlinea.c_str() << "</td>\n" ; 
-					fitxersortidatxt << "\t\t<td>" << preciolinea.c_str() << "</td>\n" ;  
-					fitxersortidatxt << "\t\t<td>" << descuentolinea.c_str() << "</td>\n" ; 
-					fitxersortidatxt << "\t\t<td>" << importelinea.c_str() << "</td>\n" ; 
-					fitxersortidatxt << "\t</tr>" ;
+					a = "'d';'" + nombre + "';'" + direccion + "';" +  cp + ";'" + poblacion + "';'" + telefono + "';'" + fax + "';'" + cif + "';'" + fecha + "';" + numero + ";" + "'" +codigoarticulo + "'" + ";'" + descripcionarticulo + "'" + ";" + preciolinea + ";" + cantidadlinea + ";" + descuentolinea + ";" + importelinea + "\n";    
+					fitxersortidatxt << a;
 				}
 			}
 		}
 		i ++;
    } //end while
-
-	fitxersortidatxt << "\t</blockTable>\n" ;
 	
 	
 	// Línea de totales del presupuesto
 	
+	/*
 	fitxersortidatxt << "\t<spacer length=\"2cm\" width=\"50mm\"/>\n" ;
 	
 	fitxersortidatxt << "\t<blockTable colWidths=\"2.5cm, 2.5cm, 2.5cm, 2.5cm\" style=\"products2\">\n" ;
@@ -1189,74 +1151,10 @@ void Budget::presentaOpenReports() {
 	fitxersortidatxt << "\t</para>\n" ;
 	fitxersortidatxt << "</story>\n" ;
 	fitxersortidatxt << "</document>\n" ;
+	*/
 	
 	fitxersortidatxt.close();
-   filestr.close();
-	system("trml2pdf.py presupuesto.jm.rml > pressupost.pdf");
-	system("kprinter pressupost.pdf");
-} //end presentaOpenReports
+/*	system("trml2pdf.py presupuesto.jm.rml > pressupost.pdf");
+	system("kprinter pressupost.pdf"); */
+} //end presentaReports
 
-
-// Esta función fue un intento de sacar un presupuesto con kugar. Lo dejo aquí de momento por si más adelante sirve de algo.
-void Budget::presentakugar() {
-	int txt=1;
-	string codigoarticulo;
-	string descripcionarticulo;
-	string cantidadlinea;
-	string preciolinea;
-	string descuentolinea;
-	string importelinea;
-	cursor2 *cursoraux;
-	
-	char *argstxt[]={"pressupost.kud","pressupost.kud",NULL};      //presentació txt normal
-	ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
-	if (!fitxersortidatxt) txt=0;    // verifiquem que s'hagin creat correctament els fitxers
-	
-	if (txt) {
-		//presentació txt normal
-		fitxersortidatxt.setf(ios::fixed);
-		fitxersortidatxt.precision(2);
-		fitxersortidatxt << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" ;
-		fitxersortidatxt << "<!DOCTYPE KugarData [\n" ;
-		fitxersortidatxt << "\t<!ELEMENT KugarData (Row* )>\n" ;
-		fitxersortidatxt << "\t\t<!ATTLIST KugarData\n";
-		fitxersortidatxt << "\t\tTemplate CDATA #REQUIRED>\n";
-		fitxersortidatxt << "\t<!ELEMENT Row EMPTY>\n";
-		fitxersortidatxt << "\t<!ATTLIST Row \n";
-		fitxersortidatxt << "\t\tlevel CDATA #REQUIRED\n";
-		fitxersortidatxt << "\t\tcodigoarticulo CDATA #REQUIRED\n";
-		fitxersortidatxt << "\t\tdescripcionarticulo CDATA #REQUIRED\n";
-		fitxersortidatxt << "\t\tcantidadlinea CDATA #REQUIRED\n";
-		fitxersortidatxt << "\t\tpreciolinea CDATA #REQUIRED\n";
-		fitxersortidatxt << "\t\tdescuentolinea CDATA #REQUIRED\n";
-		fitxersortidatxt << "\t\timportelinea CDATA #REQUIRED>\n";
-		fitxersortidatxt << "]>\n\n";	 
-		fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).ascii()<<"pressupost.kut\">\n";
-	}// end if
-	companyact->begin();
-	cursoraux = companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN  lpresupuesto ON presupuesto.idpresupuesto = lpresupuesto.idpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo ORDER BY idlpresupuesto ASC","elquery");
-	companyact->commit();
-	for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
-		codigoarticulo = cursoraux->valor("codarticulo").ascii();
-		descripcionarticulo = cursoraux->valor("nomarticulo").ascii();
-		preciolinea = cursoraux->valor("pvplpresupuesto").ascii();
-		cantidadlinea = QString().sprintf("%0.3f",cursoraux->valor("cantlpresupuesto").toFloat()).ascii(); //cursoraux->valor("cantlpresupuesto").ascii();
-		descuentolinea = cursoraux->valor("descuentolpresupuesto").ascii();
-		importelinea = "";
-		
-		if (txt) {
-			//presentació txt normal
-			fitxersortidatxt << "\t<Row level=\"0\" codigoarticulo=\""<< codigoarticulo.c_str() <<"\"";
-			fitxersortidatxt << " descripcionarticulo=\""<< descripcionarticulo.c_str() <<"\""; 
-			fitxersortidatxt << " preciolinea=\""<< preciolinea.c_str() <<"\""; 
-			fitxersortidatxt << " cantidadlinea=\""<< cantidadlinea.c_str() <<"\""; 
-			fitxersortidatxt << " descuentolinea=\""<< descuentolinea.c_str() <<"\""; 
-			fitxersortidatxt << " importelinea=\""<< importelinea.c_str() <<"\"/>\n" ; 
-		}
-	}// end for
-
-	delete cursoraux;
-	fitxersortidatxt <<"</KugarData>\n";
-	fitxersortidatxt.close();
-	system("kugar pressupost.kud");
-}// end presentakugar

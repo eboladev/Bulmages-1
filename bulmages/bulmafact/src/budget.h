@@ -71,8 +71,7 @@ private:
 	void cargarcomboformapago(QString);
 	void buscarAlmacen();
 	QString newBudgetNumber();
-	void presentakugar();
-	void presentaOpenReports();
+	void presentaReports();
 		
 protected:
 	bool eventFilter( QObject *, QEvent *);
