@@ -322,7 +322,7 @@ CREATE TABLE pedido (
    fechapedido date,
    descpedido character varying(500),
    
-   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
+   iddivision integer NOT NULL REFERENCES division(iddivision),
 	idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
 

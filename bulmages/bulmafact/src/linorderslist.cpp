@@ -69,13 +69,10 @@ void linorderslist::chargeorder(QString idpedido) {
    QString idalmacen;
    
    companyact->begin();
-   cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido, proveedor  WHERE idpedido="+idpedido+" and pedido.idproveedor=proveedor.idproveedor","unquery");
+   cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido, division WHERE idpedido="+idpedido+" and pedido.iddivision=division.iddivision","unquery");
    companyact->commit();
    if (!cur->eof()) {
    	m_numpedido->setText(cur->valor("numpedido"));
-	m_cifproveedor->setText(cur->valor("cifproveedor"));
-	m_nomproveedor->setText(cur->valor("nomproveedor"));
-	m_dirproveedor->setText(cur->valor("dirproveedor"));
 	m_fechapedido->setText(cur->valor("fechapedido"));
 	m_descpedido->setText(cur->valor("descpedido"));
 	idproveedor = cur->valor("idproveedor");
@@ -83,6 +80,16 @@ void linorderslist::chargeorder(QString idpedido) {
 	idalmacen = cur->valor("idalmacen");
    }
    delete cur;
+   
+   companyact->begin();
+   cursor2 * cur3= companyact->cargacursor("SELECT * FROM proveedor WHERE idproveedor="+idproveedor,"unquery");
+   companyact->commit();
+   if (!cur3->eof()) {
+   	m_cifproveedor->setText(cur->valor("cifproveedor"));
+	m_nomproveedor->setText(cur->valor("nomproveedor"));
+	m_dirproveedor->setText(cur->valor("dirproveedor"));
+   }
+   delete cur3;
    
    companyact->begin();
    
@@ -93,11 +100,11 @@ void linorderslist::chargeorder(QString idpedido) {
    int i1 = 0;
    while (!m_cursorcombo->eof()) {
    	i ++;
-   	m_combodivision->insertItem(m_cursorcombo->valor("descdivision"));
-	m_cursorcombo->siguienteregistro();
 	if (m_cursorcombo->valor("iddivision") == iddivision) {
 	   i1 = i;
 	}
+   	m_combodivision->insertItem(m_cursorcombo->valor("descdivision"));
+	m_cursorcombo->siguienteregistro();
    }
    if (i1 != 0 ) {
    	m_combodivision->setCurrentItem(i1);

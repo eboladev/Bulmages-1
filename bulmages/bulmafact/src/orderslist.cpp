@@ -30,7 +30,7 @@ CREATE TABLE pedido (
    fechapedido date,
    descpedido character varying(500),
    
-   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
+   iddivision integer NOT NULL REFERENCES division(iddivision),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
 */
@@ -45,7 +45,7 @@ CREATE TABLE pedido (
 #define COL_ANOPEDIDO 2
 #define COL_FECHAPEDIDO 3
 #define COL_DESCPEDIDO 4
-#define COL_IDPROVEEDOR 5
+#define COL_IDDIVISION 5
 #define COL_IDALMACEN 6
 
 orderslist::orderslist(company *comp, QWidget *parent, const char *name, int flag)
@@ -68,7 +68,7 @@ void orderslist::inicializa() {
    m_list->horizontalHeader()->setLabel( COL_ANOPEDIDO, tr( "Año" ) );
    m_list->horizontalHeader()->setLabel( COL_FECHAPEDIDO, tr( "Fecha Emisión" ) );
    m_list->horizontalHeader()->setLabel( COL_DESCPEDIDO, tr( "Descripción" ) );
-   m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr( "Proveedor" ) );
+   m_list->horizontalHeader()->setLabel( COL_IDDIVISION, tr( "Proveedor/División" ) );
    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr( "Almacén" ) );
    
    m_list->setColumnWidth(COL_IDPEDIDO,100);
@@ -76,7 +76,7 @@ void orderslist::inicializa() {
    m_list->setColumnWidth(COL_ANOPEDIDO,75);
    m_list->setColumnWidth(COL_FECHAPEDIDO,100);
    m_list->setColumnWidth(COL_DESCPEDIDO,300);
-   m_list->setColumnWidth(COL_IDPROVEEDOR,100);
+   m_list->setColumnWidth(COL_IDDIVISION,100);
    m_list->setColumnWidth(COL_IDALMACEN,100);
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
@@ -94,7 +94,7 @@ void orderslist::inicializa() {
          m_list->setText(i,COL_ANOPEDIDO,cur->valor("anopedido"));
          m_list->setText(i,COL_FECHAPEDIDO,cur->valor("fechapedido"));
 	 m_list->setText(i,COL_DESCPEDIDO,cur->valor("descpedido"));
-         m_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
+         m_list->setText(i,COL_IDDIVISION,cur->valor("iddivision"));
 	 m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
          i++;
          cur->siguienteregistro();
