@@ -218,7 +218,7 @@ void intapunts3view::cargarcursor(int numasiento) {
     else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ (QString) confpr->valor(EJERCICIO_ACTUAL).c_str() +"'";
     if ((numasiento != 0) && (numasiento != -1)) {
         //query = "SELECT * FROM asiento ORDER BY ordenasiento";
-        query = "SELECT * FROM asiento" + textejercicio;
+        query = "SELECT * FROM asiento" + textejercicio + " ORDER BY ordenasiento";
     } else {
         //query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+"  ORDER BY ordenasiento";
         query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY ordenasiento";
