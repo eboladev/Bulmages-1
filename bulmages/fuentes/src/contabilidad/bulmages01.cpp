@@ -62,14 +62,13 @@
 #include "images/help.xpm"
 #include "images/estadisticas.xpm"
 
-Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd,QString *ejercicioMetaDB) 
+Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB) 
 : QMainWindow(parent,name,f) {
   //Si no existe un ejercicio en la tabla "ejercicios" entonces usamos el ejercicio de la MetaDB
   fprintf(stderr,"Inicializando la empresa \n");
   if (DB != NULL) {
     DBName=*DB;
-    empresaactual.inicializa(DB,User,Passwd);
-    if (empresaactual.ejercicioactual() =="") empresaactual.setejactual(*ejercicioMetaDB);
+    empresaactual.inicializa(DB);
     setCaption(tr("BulmaGés ") + empresaactual.ejercicioactual());  
   } else {
     fprintf(stderr,"Cambio de empresa \n");

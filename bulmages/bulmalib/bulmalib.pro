@@ -6,11 +6,19 @@
 HEADERS += postgresiface2.h \
            configuracion.h \
            numerocuenta.h  \
-	   funcaux.h
+	   funcaux.h \
+	   logpass.h \
+	   abreempresaview.h
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp  \
-	   funcaux.cpp
+	   funcaux.cpp \
+	   logpass.cpp \
+	   abreempresaview.cpp
+IDLS += logpassbase.ui \
+	abreempresadlg.ui
+FORMS += logpassbase.ui \
+	abreempresadlg.ui
 TEMPLATE = lib
 LANGUAGE = C++
 CONFIG += debug warn_on staticlib

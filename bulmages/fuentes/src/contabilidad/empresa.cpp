@@ -142,43 +142,13 @@ void empresa::maximiza() {
  * Esta funcion hace el inicio de la empresa, muestra el dialogo de abrir
  * y hace los pasos necesarios.
 ************************************************************************/
-int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
+int empresa::inicializa(QString * DB) {
   if (nombre == NULL || 1) {
     //salto el dialeg de login. Ja tinc el nom d'usuari, password i el nom de la base de dades.
-    nombre = *User;
-    contrasenya = *Passwd;
-    
+    nombre = confpr->valor(CONF_LOGIN_USER);
+    contrasenya = confpr->valor(CONF_PASSWORD_USER);
     fprintf(stderr,"Entramos con usuario %s, password %s\n", nombre.ascii(), contrasenya.ascii());
     nombreDB = *DB;
-    //fi del salt
-    
-    // Buscamos la empresa anterior y hacemos lo que corresponda.
-    // Todo esto debe cambiar ya que no se basa en la metabase
-    // ----------------------------------------------------------
-//    char query[300];
-/*    
-    postgresiface2 *metabase;
-    metabase = new postgresiface2();
-    fprintf(stderr,"Acabamos de crear la metabase\n");
-    metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
-    fprintf(stderr,"acabamos de inicializar la metabase\n");
-    metabase->begin();
-    fprintf(stderr,"Acabamos de hacer un begin\n");
-    sprintf(query,"SELECT * FROM EMPRESA WHERE nombredb='%s'\n",nombreDB.ascii());
-    fprintf(stderr,"%s\n",query);
-    cursor2 *cursoraux = metabase->cargacursor(query,"cursorempresa");
-    sprintf(query,"SELECT * FROM EMPRESA WHERE nombre='%s' AND ano<%s ORDER BY ano DESC\n",cursoraux->valor("nombre").ascii(), cursoraux->valor("ano").ascii());
-    cursor2 *cursoraux2 = metabase->cargacursor(query,"cursorempresa1");
-    if (!cursoraux2->eof()) {
-       conexionanterior2 = new postgresiface2();
-       conexionanterior2->inicializa( cursoraux2->valor("nombredb"));
-       fprintf(stderr,"Hemos encontrado el año anterior\n");
-    }// end if
-    metabase->commit();
-    delete cursoraux;
-    delete cursoraux2;
-    delete metabase;  
-*/
   }// end if
   return(0);
 }// end inicializa
@@ -258,19 +228,17 @@ int empresa::cambiarempresa() {
 
 //  int retorno;
   fprintf(stderr,"empresa::cambiarempresa\n");
-  abreempresaview *nuevae = new abreempresaview("Abrir Empresa",true );
+//  abreempresaview *nuevae = new abreempresaview("Abrir Empresa",true );
+  abreempresaview *nuevae = new abreempresaview(0,0 );
+  
   nuevae->exec();
   fprintf(stderr,"fin de la ejecución del formulario de selección de empresa \n");
-
    fprintf(stderr,"Vamos a cambiar la empresa \n");
-   QString bd= nuevae->empresabd;
-   QString us= nuevae->nombre;
-   QString pas= nuevae->contrasena;
-   fprintf(stderr,"%s %s %s", bd.ascii(), us.ascii(), pas.ascii());
-   inicializa(&bd, &us, &pas);
-   setejactual(nuevae->ejercicioMetaDB);
-
-  delete nuevae;
+   QString bd= nuevae->nomDB();
+   fprintf(stderr,"Empresa cambiada a %s\n", bd.ascii());
+   fprintf(stderr,"%s", bd.ascii());
+   delete nuevae;
+   inicializa(&bd);
   return(0);
 }// end cambiarempresa
 

@@ -80,7 +80,7 @@ public:
   QString nombreempresa() {return(nombre);}
   QString ejercicioactual() {return(EjercicioActual);}
   void setejactual(QString ej) {EjercicioActual=ej;}
-  int inicializa(QString * DB=0, QString * User=0, QString * Passwd=0);
+  int inicializa(QString * DB=0);
 //  int idcCosteDef() const {return m_idcCosteDef;}
 //  int idCanalDef() const {return m_idCanalDef;}
 //  void setidcCosteDef(int a) { m_idcCosteDef=a;}

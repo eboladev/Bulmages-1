@@ -14,27 +14,19 @@ LIBS += -lpq \
 	
 SOURCES += main.cpp \
            comun/bselector.cpp \
-           comun/abreempresaview.cpp \
            comun/bconfiguracion.cpp \
-           comun/logpass.cpp  \
 	   comun/bnuevaempresa.cpp \
 	   comun/nuevafact.cpp
 HEADERS += comun/bselector.h \
-           comun/abreempresaview.h \
            comun/bconfiguracion.h \
-           comun/logpass.h \
 	   comun/bnuevaempresa.h \
 	   comun/nuevafact.h
 IDLS += comun/uiselector.ui \
-        comun/abreempresadlg.ui \
         comun/uiconfiguracion.ui \
-        comun/logpassbase.ui \
 	comun/nuevaempresadlg.ui \
 	comun/nuevafactbase.ui 
 FORMS += comun/uiselector.ui \
-         comun/abreempresadlg.ui \
          comun/uiconfiguracion.ui \
-         comun/logpassbase.ui \
 	 comun/nuevaempresadlg.ui \
 	 comun/nuevafactbase.ui
 	 

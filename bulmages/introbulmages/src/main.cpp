@@ -37,6 +37,6 @@ if (confpr->valor(CONF_TRADUCCION) == "locales") {
     
     bw->show();
     return a.exec();   //QLabel *lblAuthError;
-  //  delete login1;
+//    delete login1;
     
 }// end main

@@ -32,7 +32,7 @@
 
 #include "qtextcodec.h"
 #include "log.h"
-
+#include "logpass.h"
 
 #ifdef REPORTS
 #include "rtkinputbges.h"
@@ -94,12 +94,20 @@ if (argc == 5) {
    QString us=argv[3];
    QString pass=argv[4];
    QString ej="";
-   Bulmages01 * bges = new Bulmages01(NULL, "bulmages",0, &db, &us, &pass, &ej);
+   confpr->setValor(CONF_LOGIN_USER, us);
+   confpr->setValor(CONF_PASSWORD_USER, pass);
+   Bulmages01 * bges = new Bulmages01(NULL, "bulmages",0, &db);
    mainApp->setMainWidget(bges);
    valorsalida = mainApp->exec();
 } else {
    fprintf(stderr,"numero de parametros incorrecto\n");
-   Bulmages01 * bges = new Bulmages01(NULL, "bulmages",0, NULL, NULL, NULL, NULL);
+   
+    logpass *login1 = new logpass(0,"");
+    if (!login1->authOK) {
+	login1->exec();
+    }// end if
+    
+   Bulmages01 * bges = new Bulmages01(NULL, "bulmages",0, NULL);
    fprintf(stderr,"la empresa se ha inicializado bien\n");
    mainApp->setMainWidget(bges);
    valorsalida = mainApp->exec();

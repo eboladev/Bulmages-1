@@ -110,7 +110,6 @@ contabilidad/adocumentalbase.ui.target = contabilidad/adocumentalbase.ui
 QMAKE_CLEAN += Makefile
 LANGUAGE = C++
 SOURCES += main.cpp \
-           comun/abreempresaview.cpp \
            comun/splashscreen.cpp \
            comun/calendario.cpp \
            comun/qmcdatenav.cpp \
@@ -169,8 +168,7 @@ SOURCES += main.cpp \
            comun/importbalance.cpp \
            contabilidad/cobropagoview.cpp \
 	   contabilidad/bbloqfecha.cpp
-HEADERS += comun/abreempresaview.h \
-           comun/splashscreen.h \
+HEADERS += comun/splashscreen.h \
            comun/calendario.h \
            comun/qmcdatenav.h \
            contabilidad/bulmages01.h \
@@ -369,7 +367,6 @@ TRANSLATIONS += contabilidad/bulmages_es.ts \
                 contabilidad/bulmages_fr.ts \
                 contabilidad/bulmages_de.ts 
 FORMS += comun/uiselector.ui \
-         comun/abreempresadlg.ui \
          contabilidad/about.ui \
          contabilidad/listcuentasdlg1.ui \
          contabilidad/cuentadlg.ui \
