@@ -15,18 +15,19 @@
  ***************************************************************************/
 
 #include "canalview.h"
+#include "empresa.h"
 
-canalview::canalview(QWidget *parent, const char *name, bool modal ) : canaldlg(parent,name, modal) {
-  idcanal=0;
+canalview::canalview(empresa *emp, QWidget *parent, const char *name, bool modal ) : canaldlg(parent,name, modal) {
+	empresaactual = emp;
+	conexionbase=empresaactual->bdempresa();
+	idcanal=0;
+	pintar();
 }// end canalview
 
 canalview::~canalview(){
 }// end ~canalview
 
-// Inicializamos la clase con la base de datos
-// Es necesario inicializar la clase antes de utilizarla.
-void canalview::inicializa(postgresiface2 *conn) {
-  conexionbase= conn;
+void canalview::pintar() {
   // Vamos a inicializar el combo de los canales
   QString query = "SELECT * from canal ORDER BY nombre";
   conexionbase->begin();
@@ -49,7 +50,8 @@ void canalview::inicializa(postgresiface2 *conn) {
     idcanal = canales[combocanal->currentItem()];
     mostrarplantilla();
   }// end if
-}// end inicializa
+
+}// end pintar
 
 /*****************************************************
   Esta funcion sirve para hacer el cambio sobre un
@@ -92,7 +94,7 @@ void canalview::boton_guardar() {
   conexionbase->begin();
   conexionbase->ejecuta(query);
   conexionbase->commit();
-  inicializa(conexionbase);
+  pintar();
 }// end boton_guardar
 
 
@@ -106,7 +108,7 @@ void canalview::boton_nuevo() {
   idcanal= atoi(cur->valor("id").latin1());
   delete cur;
   conexionbase->commit();
-  inicializa(conexionbase);
+  pintar();
 }// end boton_nuevo
 
 
@@ -117,5 +119,5 @@ void canalview::boton_borrar() {
   conexionbase->ejecuta(query);
   conexionbase->commit();
   idcanal=0;
-  inicializa(conexionbase);
+  pintar();
 }// end boton_borrar

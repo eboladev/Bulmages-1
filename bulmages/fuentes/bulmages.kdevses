@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
- <DocsAndViews NumberOfDocuments="3" >
+ <DocsAndViews NumberOfDocuments="5" >
   <Doc0 NumberOfViews="1" URL="file:/home/tborras/bulmages/fuentes/src/contabilidad/resmensualview.h" >
    <View0 line="0" Type="???" >
     <AdditionalSettings/>
@@ -17,6 +17,16 @@
     <AdditionalSettings/>
    </View0>
   </Doc2>
+  <Doc3 NumberOfViews="1" URL="file:/home/tborras/bulmages/fuentes/src/.ui/uialbaventa.cpp" >
+   <View0 line="210" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc3>
+  <Doc4 NumberOfViews="1" URL="file:/home/tborras/bulmages/fuentes/src/.ui/uipediventa.cpp" >
+   <View0 line="144" Type="???" >
+    <AdditionalSettings/>
+   </View0>
+  </Doc4>
  </DocsAndViews>
  <pluginList>
   <kdevbookmarks>

@@ -27,6 +27,8 @@
 #include "postgresiface2.h"
 /***@author Tomeu Borrás Riera */
 
+class empresa;
+
 class canalview : public canaldlg  {
    Q_OBJECT
 public:
@@ -34,12 +36,12 @@ public:
   int canales[100];
   int idcanal;    // Indica cual es el canal que se esta visualizando
                     // Si su valor es 0 entonces es que no se está visualizando ningun centro de coste.
-
+  empresa *empresaactual;
 public: 
-	canalview(QWidget *parent=0, const char *name=0,  bool modal=true);
+	canalview(empresa *, QWidget *parent=0, const char *name=0,  bool modal=true);
 	~canalview();
-  void inicializa(postgresiface2 *);
   void mostrarplantilla();
+  void pintar();
 
 public slots:
   void cambiacombo(int);

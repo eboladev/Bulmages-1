@@ -238,8 +238,7 @@ int empresa::ccostes() {
   actualizen.
   ******************************************************************/
 int empresa::canales() {
-  canalview *canal = new canalview(0,"canales",true);
-  canal->inicializa(conexionbase2);
+  canalview *canal = new canalview(this,0,"canales",true);
   canal->exec();
   delete canal;
   return(0);
