@@ -74,7 +74,7 @@
                           <BR> <table width="97%" border="0" align="center" cellpadding="0" cellspacing="3" bgcolor="#CCCCCC">
                             <tr> 
                               <td width="96%" height="19"><font color="#333333" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>&nbsp;&nbsp;&nbsp;BulmaG&eacute;s 
-                                0.3.7</strong></font></td>
+                                0.4.1</strong></font></td>
                             </tr>
                           </table>
                           <table width="97%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
@@ -82,9 +82,20 @@
                               <td><strong><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
                                 </font></strong> <table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#CCCCCC">
                                   <tr> 
-                                    <td width="96%" height="19"><p align="justify"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">La 
-                                        &uacute;ltima versi&oacute;n publicada 
-                                        de BulmaG&eacute;s es la 0.3.7</font></p>
+                                    <td width="96%" height="19"><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
+<TABLE border="0"><TR>
+<TD><A HREF="http://bulma.net/~tborras/bges041/splash.png"><IMG SRC="http://bulma.net/~tborras/bges041/splashp.png" BORDER="0"></A></TD>
+<TD><P><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
+             Recién sacada del horno la versi&oacute;n 0.4.1 de<strong>BulmaGés</strong>.
+</P>
+<P align="justify">
+             Nuevas capacidades, nuevos proyectos. De esta nueva versi&oacute;n hay muchas cosas que contar. Como el proyecto BContaWeb, los inicios de BulmaFact, la integraci&oacute;n con Reports de Santiago Capel, importación de datos desde Contaplus, etc
+          </P></font>
+</TD>
+
+
+</TR></TABLE>
+				    				    
                                       <p align="justify"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Puede 
                                         descargarla en nuestra secci&oacute;n 
                                         de <a href="descarga.php">download</a></font></p>

@@ -36,9 +36,9 @@
                           <BR> <table width="97%" border="1" align="center" cellpadding="3" cellspacing="0" bordercolor="#999999">
                             <tr> 
                               <td height="94"><div align="justify"> 
-                                  <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="descarga/installbulmages_0_3_7.tgz"><font color="#999999" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>Descargar 
-                                    el ejecutable de BulmaGes 0.3.7</strong></font></a> 
-                                    (<a href="descarga/installbulmages_0_3_7.tgz">aqui</a>) 
+                                  <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="descarga/installbulmages_0_4_1.tgz"><font color="#999999" size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>Descargar 
+                                    el ejecutable de BulmaGes 0.4.1</strong></font></a> 
+                                    (<a href="descarga/installbulmages_0_4_1.tgz">aqui</a>) 
                                     </font></p>
                                   <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Para 
                                     el correcto funcionamiento del programa, debe 
@@ -57,14 +57,6 @@
                                     Revise el <a href="manualindex.php">manual</a> 
                                     del programa, para asegurarse de que tiene 
                                     bien configurado el motor de bases de datos.</font></p>
-                                  <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>Nota2</strong>: 
-                                    Actualmente no esta contemplada la compatibilidad 
-                                    de bases de datos entre versiones. Si ya tiene 
-                                    una versi&oacute;n de BulmaG&eacute;s con 
-                                    datos de valor para Vd. no instale una nueva 
-                                    versi&oacute;n sin consultar previamente en 
-                                    la lista de distribuci&oacute;n sobre como 
-                                    migrar de una versi&oacute;n a otra.</font></p>
                                   <p>&nbsp;</p>
                                 </div></td>
                             </tr>
@@ -86,8 +78,7 @@
                           <br> <table width="97%" border="1" align="center" cellpadding="5" cellspacing="0" bordercolor="#999999">
                             <tr> 
                               <td height="24"><div align="justify"> 
-                                  <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Existe 
-                                    un CVS con el c&oacute;digo fuente del programa:</font></p>
+                                  <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Actualmente no se distribuye el código fuente de cada liberación. Siempre se puede obtener la última versión a partir del CVS que usamos para trabajar:</font></p>
                                   <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><strong>cvs 
                                     -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/bulmages 
                                     login <br>

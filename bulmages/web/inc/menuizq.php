@@ -27,6 +27,19 @@
           </tr>
           <tr> 
             <td bgcolor="#FFFFFF" class="tdmensaje"> <div align="left"> 
+                <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Se ha mejorado el sistema de informes mediante el proyecto RTK (Reports ToolKit) de Santiago Capel.</font></p>
+                <p align="right"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://reports.sourceforge.net">[RTK]</a> 
+                  </font></p>
+              </div></td>
+          </tr>
+        </table>	
+        <BR>
+        <table width="98%" border=0 cellspacing=0 cellpadding=0>
+          <tr> 
+            <td class="tdhead"> <div align="center"><strong><font color="#FF0000" size="2" face="Verdana, Arial, Helvetica, sans-serif">Noticias</font></strong></div></td>
+          </tr>
+          <tr> 
+            <td bgcolor="#FFFFFF" class="tdmensaje"> <div align="left"> 
                 <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Ya 
                   puedes consultar la Explicaci&oacute;n de los diagramas de Base 
                   de Datos (DER).</font></p>

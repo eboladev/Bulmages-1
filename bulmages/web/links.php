@@ -21,8 +21,7 @@
                     </div></td>
                   <td height="53" bgcolor="#FFFFFF"> <table width="100%" border="0" cellpadding="3" cellspacing="0" dwcopytype="CopyTableRow">
                       <tr> 
-                        <td><font color="#FF9966" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Sobre 
-                          BulmaGes</strong></font></td>
+                        <td><font color="#FF9966" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Sobre BulmaG&eacute;s</strong></font></td>
                       </tr>
                       <tr> 
                         <td><a href="http://llistes.bulma.net/mailman/listinfo/bulmages" target="_blank"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Lista 
@@ -33,11 +32,13 @@
                           Biso&ntilde;os Usuarios de Linux de Mallorca y Alrededores 
                           </font></a></td>
                       </tr>
-                    </table>
-                    <table width="100%" border="0" cellspacing="0" cellpadding="3">
                       <tr>
                         <td><a href="http://www.burcion.com/bulmages.htm" target="_blank"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">P&aacute;gina de Josep Burci&oacute;n </FONT></a></td>
                       </tr>
+                      <tr>
+                        <td><a href="http://www.iglues.org" target="_blank"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Asociación Iglues.</FONT></a></td>
+                      </tr>		      
+		      
                       <tr> 
                         <td><font color="#FF9966" size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Proyectos 
                           Relacionados: </strong></font></td>
