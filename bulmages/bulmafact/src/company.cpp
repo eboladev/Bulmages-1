@@ -35,13 +35,37 @@
 #include "budgetslist.h"
 #include "clientdelivnoteslist.h"
 #include "linorderslist.h"
+#include "abreempresaview.h"
 
 
 
 
 company::company(){
-   inicializa("bulmafact");
 }// end company
+
+
+void company::init(QString bd) {
+   if (bd == "") 
+   	bd = searchCompany();
+   inicializa(bd);
+}// end init
+
+/** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
+  * Al usuario debe seleccionar una empresa y el sistema empieza la inicialización de clases a partir de dicha inicialización.
+  */
+QString company::searchCompany() {
+//El cambio de empresa se realiza desde el selector.
+  fprintf(stderr,"empresa::searchCompany vamos a mostrar el abreempresaview\n");
+  abreempresaview *nuevae = new abreempresaview(0,"BulmaFact" );
+  nuevae->exec();
+   fprintf(stderr,"Vamos a cambiar la empresa \n");
+   QString bd= nuevae->nomDB();
+   fprintf(stderr,"Empresa cambiada a %s\n", bd.ascii());
+   delete nuevae;
+  return(bd);
+}// end searchCompany
+
+
 
 void company::createMainWindows() {
    m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Listado de Proveedores","company"));   
@@ -50,6 +74,7 @@ void company::createMainWindows() {
    m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Listado de Albaranes","company"));   
    m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos","company"));  
    m_clientDelivNotesList = new ClientDelivNotesList(this, m_pWorkspace,theApp->translate("Listado de Albaranes de Clientes","company"));
+   fprintf(stderr,"Fin de createMainWindows\n");
 }// end createMainWindows
 
 

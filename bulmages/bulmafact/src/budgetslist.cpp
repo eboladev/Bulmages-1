@@ -162,7 +162,7 @@ void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
 }
 
 
-void BudgetsList::s_contextMenu(int row, int col, int button, const QPoint &poin) {
+void BudgetsList::s_contextMenu(int, int, int button, const QPoint &poin) {
 	qDebug("button = %d", button);
 	if (button == 2) {
 		QPopupMenu *popup;

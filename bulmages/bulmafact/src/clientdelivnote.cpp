@@ -531,7 +531,7 @@ QString ClientDelivNote::searchArticle() {
 }// end searchArticle
 
 
-void ClientDelivNote::s_contextMenu(int row, int col, int button, const QPoint &poin) {
+void ClientDelivNote::s_contextMenu(int, int, int button, const QPoint &poin) {
 	qDebug("button = %d", button);
 	if (button == 2) {
 		QPopupMenu *popup;
@@ -549,7 +549,7 @@ void ClientDelivNote::s_contextMenu(int row, int col, int button, const QPoint &
 }// end contextmenu
 
 
-void ClientDelivNote::s_contextMenuDiscount(int row, int col, int button, const QPoint &poin) {
+void ClientDelivNote::s_contextMenuDiscount(int, int, int button, const QPoint &poin) {
 	qDebug("button = %d", button);
 	if (button == 2) {
 		QPopupMenu *popup;

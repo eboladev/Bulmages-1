@@ -18,7 +18,7 @@ private:
    QWorkspace *pWorkspace;
 
 public:
-    bulmafact();
+    bulmafact(QString bd);
     ~bulmafact();
     
 public slots:

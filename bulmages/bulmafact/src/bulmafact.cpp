@@ -28,16 +28,17 @@
 
 #include "listventanas.h"
 
-bulmafact::bulmafact() : bulmafactbase( 0, "bulmafact", WDestructiveClose ) {
+bulmafact::bulmafact(QString bd) : bulmafactbase( 0, "bulmafact", WDestructiveClose ) {
   QPixmap fondo;
+  m_company.init(bd);
   view_back = new QVBox( this);
   pWorkspace = new QWorkspace( view_back, "WorkSpace" );
   pWorkspace->setScrollBarsEnabled( TRUE );
   setCentralWidget(view_back);
   pWorkspace->showMaximized();
- 
-   m_company.setWorkspace(pWorkspace);
-    
+  
+  m_company.setWorkspace(pWorkspace);  
+  
   /// Aqui creamos la ventana dock para meter las distintas ventanas.  
   listventanas *list = new listventanas (this, "Ventanas");
   moveDockWindow(list, Left); 
@@ -45,9 +46,9 @@ bulmafact::bulmafact() : bulmafactbase( 0, "bulmafact", WDestructiveClose ) {
   m_company.createMainWindows();
   showMaximized();
   statusBar()->message( tr("Ready"), 2000 );
-  resize( 450, 600 );
-
-}
+//  resize( 450, 600 );
+  fprintf(stderr,"Fin de bulmafact constructor\n");
+}// end bulmafact
 
 
 bulmafact::~bulmafact() {

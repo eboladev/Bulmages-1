@@ -59,6 +59,7 @@ public:
 public:
    company();
    ~company();
+   void init(QString);
    void setListVentanas(listventanas *doc) {m_listventanas= doc;};
    void listproviders();
    void listClients();
@@ -79,6 +80,7 @@ public:
    void refreshClientDelivNotes();
    void meteWindow(QString nom, QObject *obj) {m_listventanas->meteWindow(nom, obj);};
    void sacaWindow(QObject *nom) {m_listventanas->sacaWindow(nom);};
+   QString searchCompany();
 };
 
 #endif

@@ -128,9 +128,9 @@ void BConfiguracion::BotonA_11rechazar() {
 }// end BotonA_11rechazar
 
 
-// ---------------------------------------------------------------------------
-// Esta función se ejecuta cuando se lanza el cambio de nombre de la empresa.|
-// ---------------------------------------------------------------------------
+/**
+  * Esta función se ejecuta cuando se lanza el cambio de nombre de la empresa.|
+  */
 void BConfiguracion::BotonA_6nombreEmpresa() {
     if (lineEditA_1->isReadOnly() ) { //Activa el line edit para que pueda ser editado.
         lineEditA_1->setReadOnly(false);
@@ -143,20 +143,20 @@ void BConfiguracion::BotonA_6nombreEmpresa() {
 }// end BotonA_6nombreEmpresa
 
 
-/*********************************************************************************************************/
-/* Aqui abrimos el cuador de dialogo que nos permite crear una empresa nueva basada en la                */
-/* BASE DE DATOS bgplangcont                                                                             */
-/*********************************************************************************************************/
+/**
+  * Aqui abrimos el cuador de dialogo que nos permite crear una empresa nueva basada en la
+  * BASE DE DATOS bgplangcont
+  */
 void BConfiguracion::nuevaEmpresa() {
     BNuevaEmpresa *n= new BNuevaEmpresa(this,"Creador",true);
     n->exec();
     delete n;
 }//Fin nuevaEmpresa
 
-/*********************************************************************************************************/
-/* Aqui abrimos el cuador de dialogo que nos permite crear una empresa nueva basada en la                */
-/* BASE DE DATOS bgplangcont                                                                             */
-/*********************************************************************************************************/
+/**
+  * Aqui abrimos el cuadro de dialogo que nos permite crear una empresa nueva basada en la
+  * BASE DE DATOS bgplangcont
+  */
 void BConfiguracion::nuevaFacturacion() {
     nuevafact *n= new nuevafact(this,"Creador",true);
     n->exec();
@@ -164,9 +164,9 @@ void BConfiguracion::nuevaFacturacion() {
 }//Fin nuevaEmpresa
 
 
-/*********************************************************************************************************/
-/* Aqui creamos una nueva empresa que es una copia exacta de otra empresa que ya existe.                 */
-/*********************************************************************************************************/
+/**
+  * Aqui creamos una nueva empresa que es una copia exacta de otra empresa que ya existe.
+  */
 void BConfiguracion::BotonA_61clonarEmpresa() {
     QString dbEmpresa;
     if (dbEmpresa!=NULL) {
@@ -174,10 +174,12 @@ void BConfiguracion::BotonA_61clonarEmpresa() {
     }// end if
 }
 
-/*********************************************************************************************************/
-/* Aqui borramos una empresa entera. No nos permite borrar la base de datos bgplangcont ni la base       */
-/* de datos de la empresa que tengamos abierta en este momento.                                          */
-/*********************************************************************************************************/
+
+/**
+  * Aqui borramos una empresa entera. No nos permite borrar la base de datos bgplangcont ni la base      
+  * de datos de la empresa que tengamos abierta en este momento.
+  * \todo Sólo borra bases de datos en local, con bases de datos remotas no funciona. 
+  */
 void BConfiguracion::borrarEmpresa() {
     QString dbEmpresa;
     QString nombreEmpresa;
@@ -185,7 +187,6 @@ void BConfiguracion::borrarEmpresa() {
     QString ejercicio;
     // Siempre se borra la empresa actual.
     dbEmpresa = PunteroAlSelector->empresaDB();
-    // (new BVisorEmpresas(& dbEmpresa, this,"Eliminador",true))->exec();
     if (dbEmpresa!="") {
         if (dbEmpresa=="bgplangcont") {
             QMessageBox::information( this, tr("Atención"), tr("Esta Base de Datos no puede ser eliminada.\n\r Es la plantilla para generar nuevas empresas."), QMessageBox::Ok);
@@ -194,12 +195,6 @@ void BConfiguracion::borrarEmpresa() {
         } else {
 	    int mensaje = QMessageBox::warning( this, tr("Atención"), tr("Borrar una empresa puede suponer perdida de datos\n ¿Desea continuar?\n"), QMessageBox::Yes,QMessageBox::No,0);
 	    if (mensaje == QMessageBox::Yes) { 
-		//Despues de evaluar algunos detalles, procedemos a eliminar la base de datos.
-/*		postgresiface2 *DBconn = new postgresiface2();
-		DBconn->inicializa( "template1", confpr->valor(CONF_LOGIN_USER), confpr->valor(CONF_PASSWORD_USER) );
-		DBconn->ejecuta("DROP DATABASE " + dbEmpresa);
-		delete DBconn;
-*/
 		QString sentencia = "dropdb "+dbEmpresa;
 		system(sentencia.ascii());
 		PunteroAlSelector->seleccionaempresa_clicked();
@@ -263,7 +258,6 @@ void BConfiguracion::salvarEmpresa() {
             if (fn.right(7)!= ".pgdump")
                 fn = fn +".pgdump";
             fprintf(stderr,"Vamos a guardar la empresa en el fichero %s\n",fn.ascii());
-
             QString cadena;
             cadena.sprintf("%sguardaemp %s %s %s", confpr->valor(CONF_EJECUTABLES).ascii(), PGserver.ascii(), dbEmpresa.ascii(), fn.ascii() );
             fprintf(stderr,"%s\n", cadena.ascii());

@@ -64,7 +64,6 @@ int main(int argc, char *argv[]) {
     QString db= argv[2];
     QString us=argv[3];
     QString pass=argv[4];
-    QString ej="";
     /// Leemos la configuracion que luego podremos usar siempre
     confpr = new configuracion();
 
@@ -103,7 +102,6 @@ int main(int argc, char *argv[]) {
         bges = new Bulmages01(NULL, "bulmages",0, &db);
     } else if (argc == 3) {
         QString db= argv[2];
-        QString ej="";
         bges = new Bulmages01(NULL, "bulmages",0, &db);
     } else {
         logpass *login1 = new logpass(0,"");
