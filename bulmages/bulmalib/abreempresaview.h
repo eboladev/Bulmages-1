@@ -21,7 +21,7 @@
 #define ABREEMPRESAVIEW_H
 
 #include <qstring.h>
-#include "abreempresadlg.h"
+#include ".ui/abreempresadlg.h"
 
 /** @brief  Clase que muestra la lista de empresas para seleccionar aquella con la que se desea trabajar.
   *
