@@ -40,7 +40,7 @@ int balancesview::inicializa(postgresiface2 *conn ) {
 //   cursor1 *cursoraux1;
 
    conexionbase = conn;
-   conexionbase->begin();
+//   conexionbase->begin();
 
 /*   
    // Vamos a cargar el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
