@@ -75,6 +75,18 @@ void bulmafact::clientes() {
 }// end clientes
 
 
+void bulmafact::emitirfactura() {
+   fprintf(stderr,"emitir factura activado\n");
+   QMessageBox::information( this, "BulmaFact",
+    "Pulse aceptar para emitir un monton de facturas");
+}// end emitirfactura
+
+void bulmafact::recibirfactura() {
+   fprintf(stderr,"recibir factura activado\n");
+   QMessageBox::critical( this, "BulmaFact",
+    "Pulse aceptar para recibir(destruir) un monton de facturas");
+}// end recibirfactura
+
 void bulmafact::about()
 {
     QMessageBox::about( this, tr("Qt Application Example"),

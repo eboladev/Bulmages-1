@@ -26,6 +26,8 @@ public slots:
     virtual void proveedores();
     virtual void caja();
     virtual void clientes();
+    virtual void emitirfactura();
+    virtual void recibirfactura();
     void about();
     void aboutQt();
 /*

@@ -77,7 +77,7 @@ void Splash::paint() {
   static int a=0;
   static QString cad;
   QString mensajes[]={
-                    tr("Comprobando nivel de combustible"),
+                    tr("Pepma sais hola"),
                     tr("Calibrando los lasers del lector de CD"),
                     tr("Comprobando la disquetera y la Memoria Fisica"),
                     tr("Induciendo energía quantica, entre su RAM y su ROM"),
