@@ -1,0 +1,38 @@
+/** \mainpage Guia de desarrollo de BulmaGés
+
+\author Tomeu Borrás
+\section introduccion Introducción
+<a href="http://www.iglues.org">BulmaGés</a>Es un proyecto para implementar toda una gama de aplicaciones de gestión Empresarial.
+Comprende Contabilidad, Facturación, Terminal Punto de Venta y otras herramientas de desarrollo.
+<BR>
+BulmaGés progresa gracas a la labor  voluntaria de diversos desarrolladores que, distribuidos geograficamente, gracias a su interés común y a internet tienen la oportunidad de trabajar conjuntamente en un proyecto de éstas características.
+\arg \ref explicacion
+\arg \ref estilo
+\arg \ref eventos
+\arg \ref idiomas
+\arg \ref tareas
+*/
+
+
+/**\page explicacion Como desarrollar
+Como desarrollar BulmaGés
+*/
+
+
+/**\page estilo Guia de estilo
+Guia de estilo de desarrollo de BulmaGés
+*/
+
+/**\page sintaxis Eventos a llevar a cabo
+Eventos para los desarrolladores
+*/
+
+
+/**\page idiomas Idiomas utilizados
+Desarrollo con múltiples idiomas
+*/
+
+
+/**\page tareas Tareas en las que se requiere colaboración
+Tareas en las que se requiere colaboración
+*/
