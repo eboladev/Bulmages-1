@@ -47,7 +47,8 @@ FORMS += comun/uiselector.ui \
          comun/selectcanaldlg.ui \
          formularios/mod300dlg.ui \
          contabilidad/cobropagodlg.ui \
-         contabilidad/tipoivadlg.ui 
+         contabilidad/tipoivadlg.ui \
+         contabilidad/fpagodlg.ui 
 TRANSLATIONS += contabilidad/bulmages_es.ts \
                 contabilidad/bulmages_ca.ts \
                 contabilidad/bulmages_en.ts \
@@ -244,7 +245,8 @@ HEADERS += comun/splashscreen.h \
            comun/importbalance.h \
            contabilidad/cobropagoview.h \
            contabilidad/bbloqfecha.h \
-           contabilidad/tipoivaview.h 
+           contabilidad/tipoivaview.h \
+           contabilidad/fpagoview.h 
 SOURCES += main.cpp \
            comun/splashscreen.cpp \
            contabilidad/bulmages01.cpp \
@@ -302,7 +304,8 @@ SOURCES += main.cpp \
            comun/importbalance.cpp \
            contabilidad/cobropagoview.cpp \
            contabilidad/bbloqfecha.cpp \
-           contabilidad/tipoivaview.cpp 
+           contabilidad/tipoivaview.cpp \
+           contabilidad/fpagoview.cpp 
 TEMPLATE = app
 TARGETDEPS += ../../bulmalib/libbulmalib.a
 LIBS += ../../bulmalib/libbulmalib.a \
@@ -394,6 +397,8 @@ contabilidad/cobropagodlg.ui.commands = contabilidad/cobropagodlg.ui
 contabilidad/adocumentalbase.ui.target = contabilidad/adocumentalbase.ui
 contabilidad/tipoivadlg.ui.target = contabilidad/tipoivadlg.ui
 contabilidad/tipoivadlg.ui.commands = contabilidad/tipoivadlg.ui
+contabilidad/fpagodlg.ui.target = contabilidad/fpagodlg.ui
+contabilidad/fpagodlg.ui.commands = contabilidad/fpagodlg.ui
 QMAKE_CLEAN += Makefile
 LANGUAGE = C++
 exists (estadisticas){
