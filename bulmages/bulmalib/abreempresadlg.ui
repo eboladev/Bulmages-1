@@ -1,0 +1,190 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>abreempresadlg</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>abreempresadlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>390</width>
+            <height>301</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>7</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>390</width>
+            <height>210</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>640</width>
+            <height>1000</height>
+        </size>
+    </property>
+    <property name="caption">
+        <string>Abrir Empresa</string>
+    </property>
+    <property name="icon">
+        <pixmap>image0</pixmap>
+    </property>
+    <property name="toolTip" stdset="0">
+        <string>Abrir Empresa</string>
+        <comment>Sirve para seleccionar la empresa con la que se quiere trabajar</comment>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QListView" row="0" column="0">
+            <column>
+                <property name="text">
+                    <string>Nombre</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Año</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>false</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Archivo</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>false</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Tipo</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>false</bool>
+                </property>
+            </column>
+            <property name="name">
+                <cstring>empresas</cstring>
+            </property>
+            <property name="resizePolicy">
+                <enum>Manual</enum>
+            </property>
+            <property name="selectionMode">
+                <enum>Single</enum>
+            </property>
+            <property name="allColumnsShowFocus">
+                <bool>true</bool>
+            </property>
+            <property name="itemMargin">
+                <number>0</number>
+            </property>
+            <property name="resizeMode">
+                <enum>AllColumns</enum>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget" row="1" column="0">
+            <property name="name">
+                <cstring>layout6</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout3</cstring>
+                    </property>
+                    <vbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>botonAceptar</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Aceptar</string>
+                            </property>
+                            <property name="autoDefault">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>botonCancelar</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Cancelar</string>
+                            </property>
+                            <property name="on">
+                                <bool>false</bool>
+                            </property>
+                            <property name="autoDefault">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+            </hbox>
+        </widget>
+    </grid>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="349">89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff610000012449444154388d8d92316bc33010853f153cb8d0a1ffff2f944ea15bbac55bc666c8e042874be820430272700baf836427726db7027170a77bf7a17b489282e239c5609591e52dc520092490ed8c4db501799f9a6762aa872416cc0b5048e57cd26914fbfc4e02b21bc5a579823472fbba16205fd792a47ab78d0249dc49122d500267e001f8020a70ce01a04e50002d00b87b872468e08ea649cd4d6c6e5bb8c4667d84f8b048f5129ae33b00ed1978849ca08dead9546ec8fe242841de62f13bbdeec926080ec7839bdec2d2563a5db7f0b9b485055fc42df87ff860c6173d815536e1c4de72e3c95dccaf5f5689204c10983293a84b71e4c45b627ae5d5f39300d9feed4ab2f743d390ef7242acaa7f2b77ca3d3ff3275659f44c767ae5a179f96f7e001882e760da8a6a640000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>botonAceptar</sender>
+        <signal>clicked()</signal>
+        <receiver>abreempresadlg</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>botonCancelar</sender>
+        <signal>clicked()</signal>
+        <receiver>abreempresadlg</receiver>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>empresas</sender>
+        <signal>doubleClicked(QListViewItem*)</signal>
+        <receiver>abreempresadlg</receiver>
+        <slot>accept()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>botonAceptar</tabstop>
+    <tabstop>botonCancelar</tabstop>
+</tabstops>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
