@@ -74,6 +74,7 @@ linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, i
 
 
 linorderslist::~linorderslist() {
+   companyact->refreshOrders();
 }// end ~linorderslist
 
 

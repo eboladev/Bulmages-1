@@ -61,6 +61,7 @@ public:
    void setWorkspace(QWidget *qw) {m_pWorkspace=qw;createMainWindows();}
    void newBudget();
    void createMainWindows();
+   void refreshOrders();
 };
 
 #endif

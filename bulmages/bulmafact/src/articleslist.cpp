@@ -169,7 +169,7 @@ void articleslist::articleSelected(int a, int b, int c, const QPoint &) {
       articleedit *art = new articleedit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Articulos", "company"));
       art->chargeArticle(idArt);
       art->show();
-		inicializa();
+      inicializa();
    } else {
       close();
    }// end if

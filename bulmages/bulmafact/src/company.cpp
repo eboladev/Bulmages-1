@@ -88,6 +88,11 @@ void company::listorders () {
    m_orderslist->setActiveWindow();
 }
 
+void company::refreshOrders() {
+   m_orderslist->inicializa();
+}// end refreshOrders
+
+
 void company::listdelivnotes () {
    m_delivnoteslist->hide();
    m_delivnoteslist->show();

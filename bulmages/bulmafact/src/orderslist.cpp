@@ -111,7 +111,6 @@ void orderslist::dobleclick(int a, int b, int c, const QPoint &) {
    linorderslist *linea = new linorderslist(companyact,companyact->m_pWorkspace,theApp->translate("Detalle Pedido", "company"));
    linea->chargelinorders(idpedido);
    linea->show();
-	inicializa();
 }
 
 
@@ -120,7 +119,6 @@ void orderslist::neworder() {
    linorderslist *linea = new linorderslist(companyact,companyact->m_pWorkspace,theApp->translate("Detalle Pedido", "company"));
    linea->chargelinorders(QString("0"));
    linea->show();
-	inicializa();
 }// end neworder
 
 
@@ -142,7 +140,6 @@ void orderslist::removeOrder() {
 			companyact->ejecuta(SQLQuery);
 			companyact->commit();
 		}
-	
 		inicializa();
 	}
 }// end removeOrder
