@@ -638,7 +638,7 @@ int postgresiface2::abreasiento(int idasiento) {
 }// end abreasiento
 
 
-int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString nombreent, QString cifent, QString dir, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
+int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
     QString cadena;
     cadena.sprintf("%d",idcuenta);
     QString query="";
@@ -647,13 +647,13 @@ int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString cod
     QString imputacion = cimputacion ?  "TRUE" :  "FALSE";
     QString nodebe = cnodebe ? "TRUE" : "FALSE";
     QString nohaber = cnohaber ? "TRUE" : "FALSE";
-    query.sprintf("UPDATE cuenta SET descripcion='%s', codigo='%s', imputacion=%s, bloqueada=%s, idgrupo=%d, activo=%s, nombreent_cuenta='%s', cifent_cuenta='%s', dirent_cuenta='%s', telent_cuenta='%s', coment_cuenta='%s', bancoent_cuenta='%s', emailent_cuenta='%s', webent_cuenta='%s', tipocuenta=%d, nodebe=%s, nohaber = %s WHERE idcuenta=%d\n",desccuenta.ascii(),codigo.ascii(),imputacion.ascii(),bloqueada.ascii(),idgrupo,activo.ascii(),nombreent.ascii(), cifent.ascii(),dir.ascii(), tel.ascii(), comm.ascii(),banco.ascii(), email.ascii(), web.ascii(),tipocuenta,nodebe.ascii(), nohaber.ascii(), idcuenta);
+    query.sprintf("UPDATE cuenta SET descripcion='%s', codigo='%s', imputacion=%s, bloqueada=%s, idgrupo=%d, activo=%s, nombreent_cuenta='%s', cifent_cuenta='%s', dirent_cuenta='%s', cpent_cuenta='%s', telent_cuenta='%s', coment_cuenta='%s', bancoent_cuenta='%s', emailent_cuenta='%s', webent_cuenta='%s', tipocuenta=%d, nodebe=%s, nohaber = %s WHERE idcuenta=%d\n",desccuenta.ascii(),codigo.ascii(),imputacion.ascii(),bloqueada.ascii(),idgrupo,activo.ascii(),nombreent.ascii(), cifent.ascii(),dir.ascii(),cp.ascii(),tel.ascii(),comm.ascii(),banco.ascii(), email.ascii(), web.ascii(),tipocuenta,nodebe.ascii(), nohaber.ascii(), idcuenta);
     fprintf(stderr,"%s\n",query.ascii());
     return(ejecuta(query));
 }// end modificacuenta
 
 
-int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, int idgrupo, QString nombreent, QString cifent, QString dir, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
+int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, int idgrupo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
     QString query="";
     QString tpadre;
     if (padre == 0) {
@@ -664,7 +664,7 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
     QString nodebe = cnodebe ? "TRUE" : "FALSE";
     QString nohaber = cnohaber ? "TRUE" : "FALSE";
 
-    query.sprintf("INSERT INTO cuenta (descripcion, padre,codigo, idgrupo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta, nodebe, nohaber) VALUES('%s',%s,'%s',%d, '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %s, %s)",desccuenta.ascii(),tpadre.ascii(), codigo.ascii(), idgrupo, nombreent.ascii(), cifent.ascii(), dir.ascii(), tel.ascii() ,comm.ascii(), banco.ascii(), email.ascii(), web.ascii(), tipocuenta, nodebe.ascii(), nohaber.ascii() );
+    query.sprintf("INSERT INTO cuenta (descripcion, padre,codigo, idgrupo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, cpent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta, nodebe, nohaber) VALUES('%s',%s,'%s',%d, '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %s, %s)",desccuenta.ascii(),tpadre.ascii(), codigo.ascii(), idgrupo, nombreent.ascii(), cifent.ascii(), dir.ascii(), cp.ascii(), tel.ascii() ,comm.ascii(), banco.ascii(), email.ascii(), web.ascii(), tipocuenta, nodebe.ascii(), nohaber.ascii() );
     fprintf(stderr,"%s\n",query.ascii());
     return(ejecuta(query));
 }// end nuevacuenta

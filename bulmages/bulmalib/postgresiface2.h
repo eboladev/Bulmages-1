@@ -146,8 +146,8 @@ public:
   int borrarborrador(int idborrador);
   int abreasiento(int idasiento);
   int borrarcuenta(int idcuenta);
-  int modificacuenta(int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool);
-  int nuevacuenta(QString desccuenta, QString codigo, int padre, int idgrupo, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool);
+  int modificacuenta(int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool);
+  int nuevacuenta(QString desccuenta, QString codigo, int padre, int idgrupo, QString, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool);
   int nuevoasiento(QString nombre, QString fecha, int numasiento=0, int clase=1);
   /// Hace la carga de una empresa determinada
   int cargaempresa(QString nomempresa, QString login, QString password);
