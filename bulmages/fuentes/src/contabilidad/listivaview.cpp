@@ -75,7 +75,7 @@ void listivaview::doble_click_soportado(int a, int b, int c, const QPoint &punto
   introapunts->setFocus();
   done(1);
   // Para quitar el warnings
-  a=b=c=0;
+  b=c=0;
   punto.isNull();
 }// end doble_click_soportado
 
@@ -92,7 +92,7 @@ void listivaview::doble_click_repercutido(int a, int b, int c, const QPoint &pun
   introapunts->setFocus();
   done(1);
   
-  //PAra quitar el warnings
+  //Para quitar el warnings
   b=c=0;
   punto.isNull();
 }// end doble_click_repercutido
@@ -121,10 +121,10 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     QString   cbaseimp, civa, ctotal;
     double ivas16=0, ivas4=0, ivas7=0;
     double ivar16=0, ivar4=0, ivar7=0;
-    double bases16=0, bases4=0, bases7=0;
-    double baser16=0, baser4=0, baser7=0;
+    double bases16=0, bases4=0, bases7=0, bases0=0;
+    double baser16=0, baser4=0, baser7=0, baser0=0;
     
-    // Vamos a cargar la lista de tablasoportado 
+    // Vamos a cargar la lista de tablasoportado (COMPRAS)
     tablasoportado->setNumCols(13);
     tablasoportado->horizontalHeader()->setLabel( S_COL_FECHA, tr( "FECHA" ) );
     tablasoportado->horizontalHeader()->setLabel( S_COL_CONTRAPARTIDA, tr( "CONTRAPARTIDA" ) );
@@ -140,7 +140,8 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     tablasoportado->horizontalHeader()->setLabel( S_COL_IDASIENTO, tr( "ID ASIENTO" ) );
     tablasoportado->horizontalHeader()->setLabel( S_COL_CUENTA_IVA, tr( "CUENTA IVA" ) );
 
-    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND cuenta.codigo LIKE '472%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
+    //query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND cuenta.codigo LIKE '472%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
+    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND registroiva.numorden!='-1' AND borrador.fecha>='%s' AND borrador.fecha<='%s' ORDER BY to_number(registroiva.numorden,'99999')",finicial->text().ascii(), ffinal->text().ascii());
     conexionbase->begin();
     cursor2 *cursorreg = conexionbase->cargacursor(query,"cmquery");
     conexionbase->commit();
@@ -148,7 +149,7 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     cursor2 *cursorcontra;
     tablasoportado->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
-      query.sprintf("select * from cuenta where cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
+      query.sprintf("SELECT * FROM cuenta WHERE cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
       conexionbase->begin();
       cursorcontra = conexionbase->cargacursor(query,"contra");
       conexionbase->commit();
@@ -159,7 +160,7 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
       delete cursorcontra;
       tablasoportado->setText(i,S_COL_FECHA,cursorreg->valor("fecha").mid(0,10));
       tablasoportado->setText(i,S_COL_CUENTA_IVA,cursorreg->valor("codigo"));
-
+      if (tablasoportado->text(i,S_COL_CUENTA_IVA).left(3)!="472") tablasoportado->setText(i,S_COL_CUENTA_IVA,tr("Exento"));
       sbaseimp = cursorreg->valor("baseimp");
       fbaseimp = atof(sbaseimp.ascii());
       cbaseimp.sprintf("%2.2f",fbaseimp);
@@ -179,6 +180,8 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
           ivas4 += fbaseimp*fiva/100;
           bases4 += fbaseimp;
           break;
+        case 0:
+            bases0 += fbaseimp;
       }// end switch
       civa.sprintf("%2.0f",fiva);
       tablasoportado->setText(i,S_COL_PORCENT_IVA,civa);
@@ -195,7 +198,7 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     }// end for
     delete cursorreg;
 
-    // Vamos a cargar la lista de tablarepercutido
+    // Vamos a cargar la lista de tablarepercutido (VENTAS)
     tablarepercutido->setNumCols(12);
     tablarepercutido->horizontalHeader()->setLabel( R_COL_FECHA, tr( "FECHA" ) );
     tablarepercutido->horizontalHeader()->setLabel( R_COL_CONTRAPARTIDA, tr( "CONTRAPARTIDA" ) );
@@ -209,14 +212,15 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     tablarepercutido->horizontalHeader()->setLabel( R_COL_IDBORRADOR, tr( "ID BORRADOR") );
     tablarepercutido->horizontalHeader()->setLabel( R_COL_IDASIENTO, tr( "ID ASIENTO" ) );
     tablarepercutido->horizontalHeader()->setLabel( R_COL_CUENTA_IVA, tr( "CUENTA IVA" ) );
-    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND cuenta.codigo LIKE '477%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
+    //query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND cuenta.codigo LIKE '477%%' AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
+    query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND registroiva.numorden='-1' AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha, to_number(registroiva.factura,'99999')",finicial->text().ascii(), ffinal->text().ascii());
     conexionbase->begin();
     cursorreg = conexionbase->cargacursor(query,"cmquery");
     conexionbase->commit();
     i =0;
     tablarepercutido->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
-      query.sprintf("select * from cuenta where cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
+      query.sprintf("SELECT * FROM cuenta WHERE cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
       conexionbase->begin();
       cursorcontra = conexionbase->cargacursor(query,"contra");
       conexionbase->commit();
@@ -227,6 +231,7 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
       delete cursorcontra;
       tablarepercutido->setText(i,R_COL_FECHA,cursorreg->valor("fecha").mid(0,10));
       tablarepercutido->setText(i,R_COL_CUENTA_IVA,cursorreg->valor("codigo"));
+      if (tablarepercutido->text(i,R_COL_CUENTA_IVA).left(3)!="477") tablarepercutido->setText(i,R_COL_CUENTA_IVA,tr("Exento"));
       sbaseimp = cursorreg->valor("baseimp");
       fbaseimp = atof(sbaseimp.ascii());
       cbaseimp.sprintf("%2.2f",fbaseimp);
@@ -246,6 +251,9 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
           ivar4 += fbaseimp*fiva/100;
           baser4 += fbaseimp;
           break;
+        case 0:
+            baser0 += fbaseimp;
+          
       }// end switch
       civa.sprintf("%2.0f",fiva);
       tablarepercutido->setText(i,3,civa);
@@ -258,7 +266,7 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
       tablarepercutido->setText(i,R_COL_IDBORRADOR, cursorreg->valor("idborrador"));
       i++;
       cursorreg->siguienteregistro();
-    }// end for
+    }// end While
     delete cursorreg;
 
 
@@ -284,91 +292,95 @@ void listivaview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     rivat->setText(cadena);
 
 
+    cadena.sprintf("%2.2f",bases0);
+    tbasese->setText(cadena);
     cadena.sprintf("%2.2f",bases4);
     tbases4->setText(cadena);
     cadena.sprintf("%2.2f",bases7);
     tbases7->setText(cadena);
     cadena.sprintf("%2.2f",bases16);
     tbases16->setText(cadena);
-    cadena.sprintf("%2.2f",bases4+bases7+bases16);
+    cadena.sprintf("%2.2f",bases0+bases4+bases7+bases16);
     tbases->setText(cadena);
 
+    cadena.sprintf("%2.2f",baser0);
+    tbasere->setText(cadena);
     cadena.sprintf("%2.2f",baser4);
     tbaser4->setText(cadena);
     cadena.sprintf("%2.2f",baser7);
     tbaser7->setText(cadena);
     cadena.sprintf("%2.2f",baser16);
     tbaser16->setText(cadena);
-    cadena.sprintf("%2.2f",baser4+baser7+baser16);
+    cadena.sprintf("%2.2f",baser0+baser4+baser7+baser16);
     tbaser->setText(cadena);      
 }// end inicializa
 
 void listivaview::menu_contextual(int row, int col, const QPoint &poin) {
-        // Si el asiento esta cerrado el menu a mostrar es diferente
-        QPopupMenu *popup = new QPopupMenu;
-		  popup->insertItem(tr("Ver Asiento"), 0);
-		  popup->insertSeparator();
-        popup->insertItem(tr("Editar Registro"),101);
-        popup->insertItem(tr("Borrar Registro"),103);
-        int opcion = popup->exec(poin);
-		  switch(opcion) {
-		  		case 0:
-               int idasiento;
-               idasiento = atoi(tablarepercutido->text(row,S_COL_IDASIENTO).ascii());
-               introapunts->muestraasiento(idasiento);
-               introapunts->show();
-               introapunts->setFocus();
-               done(1);
-				break;
-            case 101:
-               int idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
-               if (idborrador != 0) {
-                   ivaview *nuevae=new ivaview(0,"");
-                   nuevae->inicializa(conexionbase,1); //el "1" indica IVA Soportado
-                   nuevae->inicializa1(idborrador);
-                   nuevae->exec();
-                   delete nuevae;
-               }// end if            
-            break;
-		  }// end switch
-        delete popup;
-        
-        // PAra evitar warnings
-        col=0;
+    // Si el asiento esta cerrado el menu a mostrar es diferente
+    QPopupMenu *popup = new QPopupMenu;
+    popup->insertItem(tr("Ver Asiento"), 0);
+    popup->insertSeparator();
+    popup->insertItem(tr("Editar Registro"),101);
+    popup->insertItem(tr("Borrar Registro"),103);
+    int opcion = popup->exec(poin);
+    switch(opcion) {
+        case 0:
+           int idasiento;
+           idasiento = atoi(tablarepercutido->text(row,S_COL_IDASIENTO).ascii());
+           introapunts->muestraasiento(idasiento);
+           introapunts->show();
+           introapunts->setFocus();
+           done(1);
+           break;
+        case 101:
+           int idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
+           if (idborrador != 0) {
+               ivaview *nuevae=new ivaview(0,"");
+               nuevae->inicializa(conexionbase,1); //el "1" indica IVA Soportado
+               nuevae->inicializa1(idborrador);
+               nuevae->exec();
+               delete nuevae;
+           }// end if            
+        break;
+    }// end switch
+    delete popup;
+    
+    // Para evitar warnings
+    col=0;
 }// end contextmenu
 
 
 void listivaview::menu_contextual1(int row, int col, const QPoint &poin) {
-        // Si el asiento esta cerrado el menu a mostrar es diferente
-        QPopupMenu *popup = new QPopupMenu;
-		  popup->insertItem(tr("Ver Asiento"), 0);
-		  popup->insertSeparator();
-        popup->insertItem(tr("Editar entrada de IVA"),101);
-        popup->insertItem(tr("Borrar Registro"),103);
-        int opcion = popup->exec(poin);
-		  switch(opcion) {
-		  		case 0:
-               int idasiento;
-               idasiento = atoi(tablarepercutido->text(row,R_COL_IDASIENTO).ascii());
-               introapunts->muestraasiento(idasiento);
-               introapunts->show();
-               introapunts->setFocus();
-               done(1);
-  				break;
-            case 101:
-               int idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
-               if (idborrador != 0) {
-                   ivaview *nuevae=new ivaview(0,"");
-                   nuevae->inicializa(conexionbase,2); //el "2" indica IVA Repercutido
-                   nuevae->inicializa1(idborrador);
-                   nuevae->exec();
-                   delete nuevae;
-               }// end if            
-            break;
-		  }// end switch
-        delete popup;
-			// Como a nadie le gusta ver warnings, utiliamos las variables de exceso para evitar warnings (una chapuza !!!!)
-			col =0;
+    // Si el asiento esta cerrado el menu a mostrar es diferente
+    QPopupMenu *popup = new QPopupMenu;
+    popup->insertItem(tr("Ver Asiento"), 0);
+    popup->insertSeparator();
+    popup->insertItem(tr("Editar entrada de IVA"),101);
+    popup->insertItem(tr("Borrar Registro"),103);
+    int opcion = popup->exec(poin);
+    switch(opcion) {
+        case 0:
+           int idasiento;
+           idasiento = atoi(tablarepercutido->text(row,R_COL_IDASIENTO).ascii());
+           introapunts->muestraasiento(idasiento);
+           introapunts->show();
+           introapunts->setFocus();
+           done(1);
+           break;
+        case 101:
+           int idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
+           if (idborrador != 0) {
+               ivaview *nuevae=new ivaview(0,"");
+               nuevae->inicializa(conexionbase,2); //el "2" indica IVA Repercutido
+               nuevae->inicializa1(idborrador);
+               nuevae->exec();
+               delete nuevae;
+           }// end if            
+        break;
+    }// end switch
+    delete popup;
+    // Como a nadie le gusta ver warnings, utiliamos las variables de exceso para evitar warnings (una chapuza !!!!)
+    col =0;
 }// end contextmenu
 
 

@@ -561,12 +561,9 @@ void intapunts3view::boton_cerrarasiento() {
                 fprintf(stderr,"%s\n",codcuenta.ascii());
                 int idborrador = atoi(tapunts->text(i,COL_IDBORRADOR).ascii());
                 if (idborrador != 0) {
-
                     ivaview *nuevae=new ivaview(0,"");
-                    if (codcuenta == "477")
-                        nuevae->inicializa(conexionbase,1);
-                    else
-                        nuevae->inicializa(conexionbase,2);
+                    if (codcuenta == "477") nuevae->inicializa(conexionbase,2); //IVA Repercutido (Ventas)
+                    else nuevae->inicializa(conexionbase,1); //IVA Soportado (Compras)
                     nuevae->inicializa1(idborrador);
                     nuevae->exec();
                     delete nuevae;
@@ -1089,7 +1086,7 @@ void intapunts3view::boton_iva() {
     if (tapunts->currentRow() > 0)
         if (tapunts->text(rowactual,COL_SUBCUENTA).left(3) == "")
             sinIVA = QMessageBox::information(this, tr("Registro de IVA"),
-                         tr("Desea Crear una entrada EXENTA de IVA en el registro?"),
+                         tr("Desea Gestionar una entrada EXENTA de IVA en el registro?"),
                          QMessageBox::Yes,QMessageBox::No);
 
     // Miramos que haya un row seleccionado.
@@ -1120,7 +1117,7 @@ void intapunts3view::boton_iva() {
     }
     else {
         if (sinIVA==0) sinIVA = QMessageBox::information(this, tr("Registro de IVA"),
-                                          tr("Desea Crear una entrada EXENTA de IVA en el registro?"),
+                                          tr("Desea Gestionar una entrada EXENTA de IVA en el registro?"),
                                               QMessageBox::Yes,QMessageBox::No);
         if (sinIVA==QMessageBox::Yes) {
             //Creamos una entrada exenta de iva en el registro de IVA.

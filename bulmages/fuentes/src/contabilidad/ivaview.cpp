@@ -2,7 +2,7 @@
                           ivaview.cpp  -  description
                              -------------------
     begin                : Tue Jan 28 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera & Josep Burción
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -46,7 +46,9 @@ void ivaview::accept() {
   float baseimponible1=atof(baseimponible->text().ascii());
   float iva1 = atof(iva->text().ascii());
   QString factura1= factura->text();
-  QString numorden1 = numorden->text();
+  QString numorden1; 
+  if (numorden->isEnabled()) (numorden->text() != "" && numorden->text() != "-1") ? numorden1 = numorden->text() : numorden1="0";
+  else numorden1="-1";
   QString cif1 = cif->text();
   conexionbase->begin();
   cursor2 *cursorcuenta =conexionbase->cargacuenta(0,contrapartida->text());
@@ -122,6 +124,7 @@ void ivaview::inicializa1(int idapunte1) {
     iva->setText(cursoriva->valor("iva"));
     factura->setText(cursoriva->valor("factura"));
     numorden->setText(cursoriva->valor("numorden"));
+    if (numorden->text()=="-1") numorden->setText("");
     cif->setText(cursoriva->valor("cif"));
     query.sprintf ("SELECT * from borrador, asiento, cuenta WHERE borrador.idborrador=%d AND borrador.idasiento=asiento.idasiento AND borrador.idcuenta=cuenta.idcuenta",idborrador);
     //fprintf(stderr,"%s\n",query.ascii());
@@ -157,10 +160,10 @@ void ivaview::inicializa1(int idapunte1) {
         // que dicho campo podría desaparecer.
         if (debe < haber) { //Venta
           //setSoportadoRepercutido(IVA_REPERCUTIDO);
-          query.sprintf("SELECT * from borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.haber=0 ORDER BY borrador.debe DESC",atoi(cursorapunte->valor("idasiento").ascii()));
+          query.sprintf("SELECT * FROM borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.haber=0 ORDER BY borrador.debe DESC",atoi(cursorapunte->valor("idasiento").ascii()));
         } else { //Compra
           //setSoportadoRepercutido(IVA_SOPORTADO);
-          query.sprintf("SELECT * from borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.debe=0 ORDER BY borrador.haber DESC",atoi(cursorapunte->valor("idasiento").ascii()));
+          query.sprintf("SELECT * FROM borrador,cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento=%d AND borrador.debe=0 ORDER BY borrador.haber DESC",atoi(cursorapunte->valor("idasiento").ascii()));
         }// end if
         fprintf(stderr,"%s\n",query.ascii());
         conexionbase->begin();
@@ -194,36 +197,53 @@ void ivaview::inicializa1(int idapunte1) {
               cadena.sprintf("%2.2f",total_factura);
               baseimponible->setText(cadena);
           }
-// JOSEP BURCION
+//* JOSEP BURCION
           //Proponemos un número de factura si se trata de una venta y
           //proponemos un número de orden si se trata de una compra
           //Realmente esto se tendria que implementar con contadores en
           //la base de datos.
           cursor2 * recordset;
-          if (! numorden->isEnabled()) {  //Se trata de una Venta
-              query.sprintf( "SELECT factura FROM registroiva WHERE idborrador=(SELECT MAX(idborrador) FROM registroiva WHERE numorden='')");
-              conexionbase->begin();
-              recordset = conexionbase->cargacursor(query,"recordset");
-              conexionbase->commit();
-              if (!recordset->eof()) {
-                  int numfact = 1 + atoi(recordset->valor("factura").ascii());
-                  cadena.sprintf("%i",numfact);
-                  factura->setText(cadena);
+          //Primero comprovamos si esta factura ya tiene un apunte de iva distinto y cojemos el mismo numero de factura
+          query.sprintf("SELECT factura, numorden FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=(SELECT idasiento FROM borrador WHERE idborrador='%i'))",idborrador);
+          conexionbase->begin();
+          recordset = conexionbase->cargacursor(query,"recordset");
+          conexionbase->commit();
+          if (!recordset->eof()) {
+              if (! numorden->isEnabled()) {  //Se trata de una Venta
+                  factura->setText(recordset->valor("factura"));
+              } else { //Se trata de una compra
+                  factura->setText(recordset->valor("factura"));
+                  numorden->setText(recordset->valor("numorden"));
+              }
+              
+          }  else {   //La factura no existe, entonces proponemos el siguiente número de factura
+              if (! numorden->isEnabled()) {  //Se trata de una Venta
+                  //query.sprintf( "SELECT factura FROM registroiva WHERE idborrador=(SELECT MAX(idborrador) FROM registroiva WHERE numorden='-1')");
+                  query.sprintf("SELECT MAX(to_number(factura,'99999')) AS factura FROM registroiva WHERE numorden='-1'");
+                  conexionbase->begin();
+                  recordset = conexionbase->cargacursor(query,"recordset");
+                  conexionbase->commit();
+                  if (!recordset->eof()) {
+                      int numfact = 1 + atoi(recordset->valor("factura").ascii());
+                      cadena.sprintf("%i",numfact);
+                      factura->setText(cadena);
+                  }
+              }
+              else { //Se trata de una compra
+                  //query.sprintf( "SELECT numorden FROM registroiva WHERE idborrador=(SELECT MAX(idborrador) FROM registroiva WHERE numorden<>'-1')");
+                  query.sprintf("SELECT MAX(to_number(numorden,'99999')) AS numorden FROM registroiva WHERE numorden!='-1'");
+                  conexionbase->begin();
+                  recordset = conexionbase->cargacursor(query,"recordset");
+                  conexionbase->commit();
+                  if (!recordset->eof()) {
+                      int numord = 1 + atoi(recordset->valor("numorden").ascii());
+                      cadena.sprintf("%i",numord);
+                      numorden->setText(cadena);
+                 }
               }
           }
-          else { //Se trata de una compra
-              query.sprintf( "SELECT numorden FROM registroiva WHERE idborrador=(SELECT MAX(idborrador) FROM registroiva WHERE numorden<>'')");
-              conexionbase->begin();
-              recordset = conexionbase->cargacursor(query,"recordset");
-              conexionbase->commit();
-              if (!recordset->eof()) {
-                  int numord = 1 + atoi(recordset->valor("numorden").ascii());
-                  cadena.sprintf("%i",numord);
-                  numorden->setText(cadena);
-             }
-          }
           delete recordset;//Fin proposicion numeros factura y orden.
-// END JOSEP BURCION
+//* END JOSEP BURCION 
         }// end if
         delete cursorcontrapartida;
       }// end if

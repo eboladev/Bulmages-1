@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>600</width>
-            <height>591</height>
+            <height>595</height>
         </rect>
     </property>
     <property name="caption">
@@ -201,54 +201,6 @@
                         <number>6</number>
                     </property>
                     <widget class="QTable" row="0" column="0">
-                        <column>
-                            <property name="text">
-                                <string>1</string>
-                            </property>
-                            <property name="pixmap">
-                                <pixmap></pixmap>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>2</string>
-                            </property>
-                            <property name="pixmap">
-                                <pixmap></pixmap>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>3</string>
-                            </property>
-                            <property name="pixmap">
-                                <pixmap></pixmap>
-                            </property>
-                        </column>
-                        <row>
-                            <property name="text">
-                                <string>1</string>
-                            </property>
-                            <property name="pixmap">
-                                <pixmap></pixmap>
-                            </property>
-                        </row>
-                        <row>
-                            <property name="text">
-                                <string>2</string>
-                            </property>
-                            <property name="pixmap">
-                                <pixmap></pixmap>
-                            </property>
-                        </row>
-                        <row>
-                            <property name="text">
-                                <string>3</string>
-                            </property>
-                            <property name="pixmap">
-                                <pixmap></pixmap>
-                            </property>
-                        </row>
                         <property name="name">
                             <cstring>tablarepercutido</cstring>
                         </property>
@@ -336,6 +288,13 @@
                                                 <verstretch>0</verstretch>
                                             </sizepolicy>
                                         </property>
+                                        <property name="paletteBackgroundColor">
+                                            <color>
+                                                <red>255</red>
+                                                <green>255</green>
+                                                <blue>0</blue>
+                                            </color>
+                                        </property>
                                         <property name="alignment">
                                             <set>AlignRight</set>
                                         </property>
@@ -351,6 +310,13 @@
                                                 <horstretch>0</horstretch>
                                                 <verstretch>0</verstretch>
                                             </sizepolicy>
+                                        </property>
+                                        <property name="paletteBackgroundColor">
+                                            <color>
+                                                <red>255</red>
+                                                <green>255</green>
+                                                <blue>0</blue>
+                                            </color>
                                         </property>
                                         <property name="alignment">
                                             <set>AlignRight</set>
@@ -528,6 +494,9 @@
                                         <property name="name">
                                             <cstring>riva4_2</cstring>
                                         </property>
+                                        <property name="enabled">
+                                            <bool>false</bool>
+                                        </property>
                                         <property name="sizePolicy">
                                             <sizepolicy>
                                                 <hsizetype>0</hsizetype>
@@ -536,8 +505,14 @@
                                                 <verstretch>0</verstretch>
                                             </sizepolicy>
                                         </property>
+                                        <property name="text">
+                                            <string>0.00</string>
+                                        </property>
                                         <property name="alignment">
                                             <set>AlignRight</set>
+                                        </property>
+                                        <property name="readOnly">
+                                            <bool>true</bool>
                                         </property>
                                     </widget>
                                     <widget class="QLineEdit">
@@ -660,6 +635,13 @@
                                                 <verstretch>0</verstretch>
                                             </sizepolicy>
                                         </property>
+                                        <property name="paletteBackgroundColor">
+                                            <color>
+                                                <red>255</red>
+                                                <green>255</green>
+                                                <blue>0</blue>
+                                            </color>
+                                        </property>
                                         <property name="alignment">
                                             <set>AlignRight</set>
                                         </property>
@@ -675,6 +657,13 @@
                                                 <horstretch>0</horstretch>
                                                 <verstretch>0</verstretch>
                                             </sizepolicy>
+                                        </property>
+                                        <property name="paletteBackgroundColor">
+                                            <color>
+                                                <red>255</red>
+                                                <green>255</green>
+                                                <blue>0</blue>
+                                            </color>
                                         </property>
                                         <property name="alignment">
                                             <set>AlignRight</set>
@@ -852,6 +841,9 @@
                                         <property name="name">
                                             <cstring>siva4_2</cstring>
                                         </property>
+                                        <property name="enabled">
+                                            <bool>false</bool>
+                                        </property>
                                         <property name="sizePolicy">
                                             <sizepolicy>
                                                 <hsizetype>0</hsizetype>
@@ -860,8 +852,14 @@
                                                 <verstretch>0</verstretch>
                                             </sizepolicy>
                                         </property>
+                                        <property name="text">
+                                            <string>0.00</string>
+                                        </property>
                                         <property name="alignment">
                                             <set>AlignRight</set>
+                                        </property>
+                                        <property name="readOnly">
+                                            <bool>true</bool>
                                         </property>
                                     </widget>
                                     <widget class="QLineEdit">
@@ -1004,9 +1002,6 @@
         <slot>menu_contextual1(int,int,const QPoint&amp;)</slot>
     </connection>
 </connections>
-<includes>
-    <include location="local" impldecl="in implementation">listivadlg.ui.h</include>
-</includes>
 <slots>
     <slot>doble_click_soportado( int, int, int, const QPoint &amp; )</slot>
     <slot>doble_click_repercutido( int, int, int, const QPoint &amp; )</slot>
