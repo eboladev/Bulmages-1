@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>selectccostedlg</class>
 <widget class="QDialog">
     <property name="name">
@@ -47,7 +47,7 @@
         </widget>
         <widget class="QLayoutWidget" row="1" column="0">
             <property name="name">
-                <cstring>layout1</cstring>
+                <cstring>layout2</cstring>
             </property>
             <hbox>
                 <property name="name">
@@ -65,17 +65,25 @@
                     </property>
                     <property name="sizeHint">
                         <size>
-                            <width>31</width>
+                            <width>130</width>
                             <height>21</height>
                         </size>
                     </property>
                 </spacer>
                 <widget class="QPushButton">
                     <property name="name">
+                        <cstring>pushButton3_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Invertir</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
                         <cstring>pushButton3</cstring>
                     </property>
                     <property name="text">
-                        <string>Deseleccionar Todo</string>
+                        <string>S. Nada</string>
                     </property>
                 </widget>
                 <widget class="QPushButton">
@@ -83,7 +91,7 @@
                         <cstring>pushButton2</cstring>
                     </property>
                     <property name="text">
-                        <string>Seleccionar Todo</string>
+                        <string>S. Todo</string>
                     </property>
                 </widget>
                 <widget class="QPushButton">
@@ -105,6 +113,29 @@
         <receiver>selectccostedlg</receiver>
         <slot>close()</slot>
     </connection>
+    <connection>
+        <sender>pushButton2</sender>
+        <signal>clicked()</signal>
+        <receiver>selectccostedlg</receiver>
+        <slot>boton_todo()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton3</sender>
+        <signal>clicked()</signal>
+        <receiver>selectccostedlg</receiver>
+        <slot>boton_nada()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton3_2</sender>
+        <signal>clicked()</signal>
+        <receiver>selectccostedlg</receiver>
+        <slot>boton_invertir()</slot>
+    </connection>
 </connections>
+<slots>
+    <slot>boton_todo()</slot>
+    <slot>boton_nada()</slot>
+    <slot>boton_invertir()</slot>
+</slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

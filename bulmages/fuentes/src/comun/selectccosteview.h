@@ -48,6 +48,13 @@ public:
    void cargacostes();
    int firstccoste();
    int nextccoste();
+   QString cadcoste();
+   QString nomcoste();
+   
+public slots:
+   void boton_todo();
+   void boton_nada();
+   void boton_invertir();
    
 };
 

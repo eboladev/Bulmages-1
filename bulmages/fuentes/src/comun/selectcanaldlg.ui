@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>selectcanaldlg</class>
 <widget class="QDialog">
     <property name="name">
@@ -8,7 +8,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>498</width>
+            <width>391</width>
             <height>362</height>
         </rect>
     </property>
@@ -47,13 +47,45 @@
         </widget>
         <widget class="QLayoutWidget" row="1" column="0">
             <property name="name">
-                <cstring>layout1</cstring>
+                <cstring>layout2</cstring>
             </property>
-            <hbox>
+            <grid>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <spacer>
+                <widget class="QPushButton" row="0" column="2">
+                    <property name="name">
+                        <cstring>pushButton3</cstring>
+                    </property>
+                    <property name="text">
+                        <string>S. Nada</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton" row="0" column="1">
+                    <property name="name">
+                        <cstring>pushButton3_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Invertir</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton" row="0" column="3">
+                    <property name="name">
+                        <cstring>pushButton2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>S. Todo</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton" row="0" column="4">
+                    <property name="name">
+                        <cstring>pushButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Cerrar</string>
+                    </property>
+                </widget>
+                <spacer row="0" column="0">
                     <property name="name">
                         <cstring>spacer1</cstring>
                     </property>
@@ -65,36 +97,12 @@
                     </property>
                     <property name="sizeHint">
                         <size>
-                            <width>31</width>
+                            <width>68</width>
                             <height>21</height>
                         </size>
                     </property>
                 </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButton3</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Deseleccionar Todo</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButton2</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Seleccionar Todo</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButton1</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Cerrar</string>
-                    </property>
-                </widget>
-            </hbox>
+            </grid>
         </widget>
     </grid>
 </widget>
@@ -105,6 +113,29 @@
         <receiver>selectcanaldlg</receiver>
         <slot>close()</slot>
     </connection>
+    <connection>
+        <sender>pushButton3_2</sender>
+        <signal>clicked()</signal>
+        <receiver>selectcanaldlg</receiver>
+        <slot>boton_invertir()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton3</sender>
+        <signal>clicked()</signal>
+        <receiver>selectcanaldlg</receiver>
+        <slot>boton_nada()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton2</sender>
+        <signal>clicked()</signal>
+        <receiver>selectcanaldlg</receiver>
+        <slot>boton_todo()</slot>
+    </connection>
 </connections>
+<slots>
+    <slot>boton_todo()</slot>
+    <slot>boton_nada()</slot>
+    <slot>boton_invertir()</slot>
+</slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

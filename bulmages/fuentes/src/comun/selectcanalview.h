@@ -45,6 +45,13 @@ public:
    void cargacanales();
    int firstcanal();
    int nextcanal();
+   QString cadcanal();
+   QString nomcanal();
+   
+public slots:
+   void boton_todo();
+   void boton_nada();
+   void boton_invertir();
 };
 
 #endif

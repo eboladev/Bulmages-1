@@ -128,3 +128,74 @@ int selectccosteview::nextccoste() {
    }
   return idccoste;
 }// end nextccoste
+
+// Esta funcion prepara una lista separada por comas de los costes seleccionados.
+// Sirve para generar sentencias SQL
+QString selectccosteview::cadcoste() {
+   int idc_coste;
+  QString  ccostes="";
+  
+  idc_coste = firstccoste();
+  while (idc_coste) {
+     if (ccostes != "") 
+        ccostes.sprintf("%s, %d",ccostes.ascii(), idc_coste);
+     else
+        ccostes.sprintf("%d", idc_coste);
+     idc_coste= nextccoste();
+  }// end while
+  fprintf(stderr," cadcoste: %s\n",ccostes.ascii());
+  return ccostes; ;
+}// end cadcoste
+
+// Esta función devuelve el nombre del centro de coste actual
+// Si no existe devuelve ""
+QString selectccosteview::nomcoste() {
+   QCheckListItem *item;
+   fprintf(stderr,"nomcoste\n");
+   (*m_iterador)--;
+   item = (QCheckListItem *) m_iterador->current();
+   (*m_iterador)++;
+   if (item->isOn()) {
+      fprintf(stderr,"nomcoste: %s\n", item->text(m_colNomCoste).ascii()); 
+      return item->text(m_colNomCoste);
+   } else {
+      return "";
+   }// end if
+}// end nomcoste
+
+void selectccosteview::boton_todo() {
+   QListViewItemIterator* m_iterador;
+   m_iterador = new QListViewItemIterator (m_listCostes);
+   QCheckListItem *item;
+   while (m_iterador->current()) {
+      item = (QCheckListItem *) m_iterador->current();
+      item->setOn(TRUE);
+     (*m_iterador)++;
+   }
+}// end boton_todo
+
+void selectccosteview::boton_nada() {
+   QListViewItemIterator* m_iterador;
+   m_iterador = new QListViewItemIterator (m_listCostes);
+   QCheckListItem *item;
+   while (m_iterador->current()) {
+      item = (QCheckListItem *) m_iterador->current();
+      item->setOn(FALSE);
+     (*m_iterador)++;
+   }
+}// end boton_todo
+
+
+void selectccosteview::boton_invertir() {
+   QListViewItemIterator* m_iterador;
+   m_iterador = new QListViewItemIterator (m_listCostes);
+   QCheckListItem *item;
+   while (m_iterador->current()) {
+      item = (QCheckListItem *) m_iterador->current();
+      if (item->isOn()) 
+         item->setOn(FALSE);
+      else 
+         item->setOn(TRUE);
+     (*m_iterador)++;
+   }//end while
+}// end boton_invertir

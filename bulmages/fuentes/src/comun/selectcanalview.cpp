@@ -51,12 +51,6 @@ selectcanalview::~selectcanalview() {
 
 
 void selectcanalview::cargacanales() {
-// Rellenamnos la listbox que va a sustituir al combobox correspondiente.
-// Para que en los listados puedan salir más cosas de las que se dicen.   
-   fprintf(stderr,"Ahora nos toca rellenar las listas.\n");
-   
-//    QListViewItem * it;
-//    QListViewItem *Lista[10000];
    QCheckListItem *it;
    QCheckListItem *Lista[10000];
     int idcanal=0;
@@ -68,9 +62,7 @@ void selectcanalview::cargacanales() {
     cursoraux1 = conexionbase->cargacursor("SELECT * FROM canal","canalillos");
     conexionbase->commit();
     while (!cursoraux1->eof()) {
-//        padre = atoi( cursoraux1->valor("padre").ascii());
         idcanal = atoi( cursoraux1->valor("idcanal").ascii());
-//        it =new QListViewItem(m_listCanales);
         it =new QCheckListItem(m_listCanales,"hola pepsi",QCheckListItem::CheckBox);
         Lista[idcanal]=it;
         it->setText(m_colIdCoste, cursoraux1->valor("idcanal"));
@@ -81,6 +73,7 @@ void selectcanalview::cargacanales() {
     }// end while
     delete cursoraux1;
 }// end cargacostes
+
 
 // Esta función devuelve el primer centro de coste seleccionado de la vita.
 // Devuelve el idc_coste. Si no hay ningun centro de coste seleccionado devuelve
@@ -106,3 +99,73 @@ int selectcanalview::nextcanal() {
    }// end while
   return idcanal;
 }// end nextccoste
+
+
+QString selectcanalview::cadcanal() {
+   int idcanal;
+  QString  ccanales="";
+  
+  idcanal = firstcanal();
+  while (idcanal) {
+     if (ccanales != "") 
+        ccanales.sprintf("%s, %d",ccanales.ascii(), idcanal);
+     else
+        ccanales.sprintf("%d", idcanal);
+     idcanal= nextcanal();
+  }// end while
+  return ccanales; ;
+}// end cadcoste
+
+
+// Esta función devuelve el nombre de un canal determinado
+QString selectcanalview::nomcanal() {
+   int idcanal=0;
+   QCheckListItem *item;
+   (*m_iterador)--;
+   item = (QCheckListItem *) m_iterador->current();
+   (*m_iterador)++;
+   if (item->isOn()) {
+         fprintf(stderr,"nomcanal: %s\n", item->text(m_colNomCoste).ascii());
+         return item->text(m_colNomCoste);
+   } else {
+         return "";
+   }// end if
+}// end nomcanal
+
+
+void selectcanalview::boton_todo() {
+   QListViewItemIterator* m_iterador;
+   m_iterador = new QListViewItemIterator (m_listCanales);
+   QCheckListItem *item;
+   while (m_iterador->current()) {
+      item = (QCheckListItem *) m_iterador->current();
+      item->setOn(TRUE);
+     (*m_iterador)++;
+   }// end while
+}// end boton_todo
+
+void selectcanalview::boton_nada() {
+   QListViewItemIterator* m_iterador;
+   m_iterador = new QListViewItemIterator (m_listCanales);
+   QCheckListItem *item;
+   while (m_iterador->current()) {
+      item = (QCheckListItem *) m_iterador->current();
+      item->setOn(FALSE);
+     (*m_iterador)++;
+   }// end while
+}// end boton_todo
+
+
+void selectcanalview::boton_invertir() {
+   QListViewItemIterator* m_iterador;
+   m_iterador = new QListViewItemIterator (m_listCanales);
+   QCheckListItem *item;
+   while (m_iterador->current()) {
+      item = (QCheckListItem *) m_iterador->current();
+      if (item->isOn()) 
+         item->setOn(FALSE);
+      else 
+         item->setOn(TRUE);
+     (*m_iterador)++;
+   }//end while
+}// end boton_invertir
