@@ -382,7 +382,7 @@ void Budget::s_almacenLostFocus() {
 
 
 void Budget::s_printBudget() {
-	presentakugar();
+	presentaOpenReports();
 }//end s_printBudget
 
 
@@ -1026,6 +1026,29 @@ QString Budget::newBudgetNumber() {
 }
 
 
+void Budget::presentaOpenReports() {
+	int txt=1;
+	ifstream filestr((confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml").c_str());
+	string a;
+	char c [1000];
+	char *argstxt[]={"presupuesto.jm.rml","presupuesto.jm.rml",NULL};      //presentació txt normal
+	ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
+	if (!fitxersortidatxt) txt=0;    // verifiquem que s'hagin creat correctament els fitxers
+	while (filestr.good()) {
+		filestr.getline(c,1000);// >> a;
+		if (txt) {
+			fitxersortidatxt.setf(ios::fixed);
+			fitxersortidatxt.precision(2);
+			fitxersortidatxt << c ;
+			fitxersortidatxt << "\n" ;
+		}
+	}// end while
+	fitxersortidatxt.close();
+   filestr.close();
+} //end presentaOpenReports
+
+
+// Esta función fue un intento de sacar un presupuesto con kugar. Lo dejo aquí de momento por si más adelante sirve de algo.
 void Budget::presentakugar() {
 	int txt=1;
 	float debe, haber;
@@ -1041,7 +1064,7 @@ void Budget::presentakugar() {
 	char *argstxt[]={"pressupost.kud","pressupost.kud",NULL};      //presentació txt normal
 	ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
 	if (!fitxersortidatxt) txt=0;    // verifiquem que s'hagin creat correctament els fitxers
-
+	
 	if (txt) {
 		//presentació txt normal
 		fitxersortidatxt.setf(ios::fixed);

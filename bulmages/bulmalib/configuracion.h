@@ -81,7 +81,7 @@ using std::string;
 
 #define CONF_PROGDATA            320
 
-#define CONF_DIR_OPENREPORTS		330
+#define CONF_DIR_OPENREPORTS 330
 // Los siguientes campos no entran en el archivo de configuración pq
 // Son utilizados por la propia aplicación.
 #define CONF_PRIVILEGIOS_USUARIO    420

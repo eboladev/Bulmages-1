@@ -72,6 +72,7 @@ private:
 	void buscarAlmacen();
 	QString newBudgetNumber();
 	void presentakugar();
+	void presentaOpenReports();
 		
 protected:
 	bool eventFilter( QObject *, QEvent *);
