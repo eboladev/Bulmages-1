@@ -15,14 +15,10 @@ LIBS += -lpq \
 SOURCES += main.cpp \
            comun/bselector.cpp \
            comun/abreempresaview.cpp \
-           comun/postgresiface2.cpp \
-           comun/configuracion.cpp \
            comun/bconfiguracion.cpp \
            comun/logpass.cpp 
 HEADERS += comun/bselector.h \
            comun/abreempresaview.h \
-           comun/postgresiface2.h \
-           comun/configuracion.h \
            comun/bconfiguracion.h \
            comun/logpass.h 
 IDLS += comun/uiselector.ui \

@@ -37,35 +37,6 @@
             <bool>false</bool>
         </property>
     </widget>
-    <widget class="QLineEdit">
-        <property name="name">
-            <cstring>userLine</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>160</x>
-                <y>20</y>
-                <width>160</width>
-                <height>20</height>
-            </rect>
-        </property>
-    </widget>
-    <widget class="QLineEdit">
-        <property name="name">
-            <cstring>passwdLine</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>160</x>
-                <y>50</y>
-                <width>161</width>
-                <height>20</height>
-            </rect>
-        </property>
-        <property name="echoMode">
-            <enum>Password</enum>
-        </property>
-    </widget>
     <widget class="QLabel">
         <property name="name">
             <cstring>textLabel1_2_2</cstring>
@@ -161,6 +132,35 @@
             <enum>PlainText</enum>
         </property>
     </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>m_login</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>160</x>
+                <y>20</y>
+                <width>160</width>
+                <height>20</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>m_password</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>160</x>
+                <y>50</y>
+                <width>161</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="echoMode">
+            <enum>Password</enum>
+        </property>
+    </widget>
 </widget>
 <connections>
     <connection>
@@ -170,21 +170,21 @@
         <slot>validar()</slot>
     </connection>
     <connection>
-        <sender>userLine</sender>
+        <sender>m_login</sender>
         <signal>returnPressed()</signal>
         <receiver>logpassbase</receiver>
         <slot>returnPressedOnUser()</slot>
     </connection>
     <connection>
-        <sender>passwdLine</sender>
+        <sender>m_password</sender>
         <signal>returnPressed()</signal>
         <receiver>logpassbase</receiver>
         <slot>returnPressedOnPasswd()</slot>
     </connection>
 </connections>
 <tabstops>
-    <tabstop>userLine</tabstop>
-    <tabstop>passwdLine</tabstop>
+    <tabstop>m_login</tabstop>
+    <tabstop>m_password</tabstop>
     <tabstop>pushButton24</tabstop>
 </tabstops>
 <slots>

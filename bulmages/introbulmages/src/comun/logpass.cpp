@@ -19,20 +19,32 @@
  ***************************************************************************/
 #include "logpass.h"
 #include "postgresiface2.h"
+#include <qlineedit.h>
+#include <qstring.h>
 
 logpass::logpass(QWidget *parent, const char *name)
- : logpassbase(parent, name)
-{
-   postgresiface2 *apuestatealgo;
-   apuestatealgo = new postgresiface2();
-   apuestatealgo->inicializa( confpr->valor(CONF_METABASE).c_str() );
-   delete apuestatealgo;
-
+ : logpassbase(parent, name) {
+   metabase = new postgresiface2();
+   metabase->inicializa( confpr->valor(CONF_METABASE).c_str() );
 }
 
 
-logpass::~logpass()
-{
+logpass::~logpass() {
+   delete metabase;
 }
+
+void logpass::validar() {
+
+   login  = m_login->text();
+   password = m_password->text();
+   
+   QString SQLQuery = "SELECT * FROM usuario WHERE login ='"+login+"'";
+   metabase->begin();
+   cursor2 *cur=metabase->cargacursor(SQLQuery,"selectusuario");
+   metabase->commit();
+   if (!cur->eof()) {
+      if (cur->valor("password") == password) close();
+   }// end if
+}// end validar
 
 

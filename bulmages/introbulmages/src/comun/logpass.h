@@ -21,6 +21,7 @@
 #define LOGPASS_H
 
 #include <logpassbase.h>
+#include "postgresiface2.h"
 
 /**
 @author Tomeu Borras
@@ -29,9 +30,20 @@ class logpass : public logpassbase
 {
 Q_OBJECT
 public:
-    logpass(QWidget *parent = 0, const char *name = 0);
+   QString login;
+   QString password;
 
+
+
+private:
+   postgresiface2 *metabase;
+
+public:
+    logpass(QWidget *parent = 0, const char *name = 0);
     ~logpass();
+    
+public slots:
+   virtual void validar();
 
 };
 

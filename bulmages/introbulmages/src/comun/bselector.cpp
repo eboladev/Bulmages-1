@@ -20,7 +20,7 @@
 
 
 #include "bselector.h"
-
+#include "logpass.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -29,11 +29,13 @@
 #endif
 
 
-BSelector::BSelector(QWidget * parent,const char * name) : UIselector(parent,name)
-{
+BSelector::BSelector(QWidget * parent,const char * name) : UIselector(parent,name) {
 //Al crear el selector, todos los modulos estan cerrados = NULL
  //   show();
-    seleccionaempresa_clicked();
+//    seleccionaempresa_clicked();
+    logpass *loggin = new logpass(0,"");
+    loggin->exec();
+
 }
 
 
