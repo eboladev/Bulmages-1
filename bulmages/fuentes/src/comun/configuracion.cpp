@@ -153,8 +153,8 @@ void configuracion::leeconfig(char *fich) {
 		fprintf(stderr,"%s\n",a.c_str());
 	}// end while  
    filestr.close();
-valores[CONF_FONTFAMILY_BULMAGES]="Helvetica";
-valores[CONF_FONTSIZE_BULMAGES]= "11";
+valores[CONF_FONTFAMILY_BULMAGES]="Luxi Sans";
+valores[CONF_FONTSIZE_BULMAGES]= "12";
 }// end leeconfig
 
 

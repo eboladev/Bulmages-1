@@ -245,6 +245,8 @@ int empresa::canales() {
 
 
 int empresa::nuevaempresa() {
+//La creación de una nueva empresa ha pasado al selector.
+/*  
   nuevaempresaview * nuevae = new nuevaempresaview(0,"nevaempresa");
   nuevae->exec();
   nombre=NULL;
@@ -253,11 +255,14 @@ int empresa::nuevaempresa() {
     inicializa1(pWorkspace);
   }// end if
   delete nuevae; 
+*/  
   return(0);
 }// end nuevaempresa
 
 
 int empresa::cambiarempresa() {
+//El cambio de empresa se realiza desde el selector.
+/*  
   int retorno;
   nombre=NULL;
   abreempresaview *nuevae = new abreempresaview(0,"",true );
@@ -271,6 +276,7 @@ int empresa::cambiarempresa() {
     inicializa1(pWorkspace);
   }// end if
   delete nuevae;
+*/  
   return(0);
 }// end cambiarempresa
 
@@ -596,6 +602,8 @@ int empresa::cargarempresa() {
  * Esta funcion borra la empresa actual
  *************************************************************/
 int empresa::borrarempresa() {
+//El proceso de borrado se realiza desde las herramientas el selector.
+/*  
   char *args[3];
   args[0]="borraremp";
   args[1]= nombredb;
@@ -630,6 +638,7 @@ int empresa::borrarempresa() {
         waitpid (pid, NULL, 0);
   }// end if
   cambiarempresa();
+*/  
   return(0);
 }// end borrarrempresa
 
@@ -637,6 +646,8 @@ int empresa::borrarempresa() {
 // Esta función es la que se encarga de cerrar al empresa
 // Y de crear un nuevo ejercicio para dicha empresa
 void empresa::nuevoejercicio() {
+//Para crear un nuevo ejercicio se tiene que hacer desde el selector.
+/*  
   char *args[4];
   int pid;
   int error;
@@ -743,6 +754,7 @@ void empresa::nuevoejercicio() {
        Ordenarasientos();
 //       introapunts1->repinta();
    }// end if
+*/
 }// end nuevoejercicio
 
 void empresa::cierraempresa() {

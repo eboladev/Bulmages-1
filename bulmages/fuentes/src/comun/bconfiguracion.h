@@ -16,7 +16,10 @@
 #define BCONFIGURACION_H
 
 #include "uiconfiguracion.h"
+#include "bnuevaempresa.h"
 #include "postgresiface2.h"
+#include "bvisorempresas.h"
+#include <qpushbutton.h>
 #include <qlistview.h>
 #include <qlineedit.h>
 #include <qlabel.h>
@@ -34,12 +37,14 @@ class BConfiguracion : public UIconfiguracion
 {
 
 public:
-    BConfiguracion(QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
+    BConfiguracion(BSelector * ref, QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
     ~BConfiguracion();
 
 private:
+    BSelector * PunteroAlSelector;
     void cargarFichaUtilidades();
     void cargarFichaUsuarios();
+    
     
 private slots:
   virtual void cerrar();
@@ -49,6 +54,10 @@ private slots:
   virtual void FontSizeChanged(int);
   virtual void BotonA_10aceptar();
   virtual void BotonA_11rechazar();
+  virtual void BotonA_6nombreEmpresa();
+  virtual void nuevaEmpresa();
+  virtual void borrarEmpresa();
+  virtual void nuevoEjercicio();
 };
 
 #endif

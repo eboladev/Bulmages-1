@@ -57,7 +57,7 @@ void BSelector::seleccionaempresa_clicked() {
 
 //Boton para abrir el dialogo de configuraciones personalizadas
 void BSelector::configura_clicked() {
-    BConfiguracion * VentanaConfiguracion = new BConfiguracion(0,"VentanaConfiguracion",true);
+    BConfiguracion * VentanaConfiguracion = new BConfiguracion(this, 0,"VentanaConfiguracion",true);
     VentanaConfiguracion->show();
 }
 

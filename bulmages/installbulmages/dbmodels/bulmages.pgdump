@@ -20,7 +20,7 @@ SET SESSION AUTHORIZATION DEFAULT;
 
 --
 -- TOC entry 101 (OID 95374)
--- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: public; Owner: 
+-- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: public; Owner:
 --
 
 CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
@@ -678,7 +678,7 @@ DECLARE
     cont integer;
 BEGIN
     cont := 1;
-    FOR as IN SELECT * from asiento ORDER BY ordenasiento LOOP
+    FOR as IN SELECT * from asiento ORDER BY fecha,ordenasiento LOOP
 	IF (cont <> as.ordenasiento) THEN
 	    UPDATE asiento SET ordenasiento = cont WHERE idasiento = as.idasiento;
 	END IF;
@@ -724,7 +724,7 @@ END;
 
 CREATE FUNCTION ccontrapartida(integer) RETURNS integer
     AS '
-DECLARE 
+DECLARE
     midapunte ALIAS FOR $1;
     apt RECORD;
     aptasien RECORD;
@@ -735,7 +735,7 @@ BEGIN
 	    SELECT INTO aptasien * FROM apunte WHERE idasiento = apt.idasiento AND debe <> 0 ORDER BY debe DESC;
 	    IF FOUND THEN
 		RETURN aptasien.idcuenta;
-	    END IF;	    
+	    END IF;
 	ELSE
 	    SELECT INTO aptasien * FROM apunte WHERE idasiento = apt.idasiento AND haber <> 0 ORDER BY haber DESC;
 	    IF FOUND THEN
@@ -1148,7 +1148,7 @@ BEGIN
         UPDATE cuenta SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idcuenta = NEW.idcuenta;
         UPDATE c_coste SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idc_coste = NEW.idc_coste;
         IF NEW.idcuenta IS NOT NULL THEN
-           UPDATE acumulado_canal SET debe= debe + NEW.debe, haber = haber + NEW.haber WHERE idcuenta = NEW.idcuenta AND 
+           UPDATE acumulado_canal SET debe= debe + NEW.debe, haber = haber + NEW.haber WHERE idcuenta = NEW.idcuenta AND
 idcanal = NEW.idcanal;
         END IF;
         cta := NEW.idcuenta;
@@ -1159,7 +1159,7 @@ idcanal = NEW.idcanal;
            SELECT INTO ctar * FROM cuenta WHERE idcuenta = cta;
            WHILE FOUND LOOP
 --                RAISE NOTICE '' Cuenta % Centro Coste %'', ctar.idcuenta, ccostr.idc_coste;
-         	UPDATE acumulado_c_coste SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idc_coste = 
+         	UPDATE acumulado_c_coste SET debe = debe + NEW.debe, haber = haber + NEW.haber WHERE idc_coste =
 ccostr.idc_coste AND idcuenta = ctar.idcuenta;
 	      SELECT INTO ctar * FROM cuenta WHERE idcuenta = ctar.padre;
            END LOOP;
@@ -1185,11 +1185,11 @@ DECLARE
    ccostr RECORD;
 BEGIN
 --	RAISE NOTICE ''disminuye_valor: debe antiguo %, debe nuevo %'', OLD.debe, NEW.debe;
-	
+
         UPDATE cuenta SET debe = debe - OLD.debe, haber = haber - OLD.haber WHERE idcuenta = OLD.idcuenta;
         UPDATE c_coste SET debe = debe - OLD.debe, haber = haber - OLD.haber WHERE idc_coste = OLD.idc_coste;
         IF OLD.idcuenta IS NOT NULL THEN
-           UPDATE acumulado_canal SET debe= debe - OLD.debe, haber =haber - OLD.haber WHERE idcuenta = OLD.idcuenta AND 
+           UPDATE acumulado_canal SET debe= debe - OLD.debe, haber =haber - OLD.haber WHERE idcuenta = OLD.idcuenta AND
 idcanal = OLD.idcanal;
         END IF;
 	cta := OLD.idcuenta;
@@ -1200,13 +1200,13 @@ idcanal = OLD.idcanal;
 	   SELECT INTO ctar * FROM cuenta WHERE idcuenta = cta;
 	   WHILE FOUND LOOP
 --	      RAISE NOTICE '' Cuenta % Centro Coste %'', ctar.idcuenta, ccostr.idc_coste;
-	      UPDATE acumulado_c_coste SET debe = debe - OLD.debe, haber = haber -OLD.haber WHERE idc_coste = ccostr.idc_coste 
+	      UPDATE acumulado_c_coste SET debe = debe - OLD.debe, haber = haber -OLD.haber WHERE idc_coste = ccostr.idc_coste
 AND idcuenta = ctar.idcuenta;
 	      SELECT INTO ctar * FROM cuenta WHERE idcuenta = ctar.padre;
 	    END LOOP;
 	    SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccostr.padre;
 	END LOOP;
---	RAISE NOTICE '' disminuye_valor: Finaliza el algoritmo. ''; 
+--	RAISE NOTICE '' disminuye_valor: Finaliza el algoritmo. '';
 	RETURN NEW;
 END;
 '
@@ -1226,11 +1226,11 @@ DECLARE
    ctar   RECORD;
    ccostr RECORD;
 BEGIN
-	
+
         UPDATE cuenta SET debe = debe - OLD.debe, haber = haber - OLD.haber WHERE idcuenta = OLD.idcuenta;
         UPDATE c_coste SET debe = debe - OLD.debe, haber = haber - OLD.haber WHERE idc_coste = OLD.idc_coste;
         IF OLD.idcuenta IS NOT NULL THEN
-           UPDATE acumulado_canal SET debe= debe - OLD.debe, haber =haber - OLD.haber WHERE idcuenta = OLD.idcuenta AND 
+           UPDATE acumulado_canal SET debe= debe - OLD.debe, haber =haber - OLD.haber WHERE idcuenta = OLD.idcuenta AND
 idcanal = OLD.idcanal;
         END IF;
 	cta := OLD.idcuenta;
@@ -1241,13 +1241,13 @@ idcanal = OLD.idcanal;
 	   SELECT INTO ctar * FROM cuenta WHERE idcuenta = cta;
 	   WHILE FOUND LOOP
 --	      RAISE NOTICE '' Cuenta % Centro Coste %'', ctar.idcuenta, ccostr.idc_coste;
-	      UPDATE acumulado_c_coste SET debe = debe - OLD.debe, haber = haber -OLD.haber WHERE idc_coste = ccostr.idc_coste 
+	      UPDATE acumulado_c_coste SET debe = debe - OLD.debe, haber = haber -OLD.haber WHERE idc_coste = ccostr.idc_coste
 AND idcuenta = ctar.idcuenta;
 	      SELECT INTO ctar * FROM cuenta WHERE idcuenta = ctar.padre;
 	    END LOOP;
 	    SELECT INTO ccostr * FROM c_coste WHERE idc_coste = ccostr.padre;
 	END LOOP;
---	RAISE NOTICE '' disminuye_valor: Finaliza el algoritmo. ''; 
+--	RAISE NOTICE '' disminuye_valor: Finaliza el algoritmo. '';
 	RETURN OLD;
 END;
 '
@@ -1263,7 +1263,7 @@ CREATE FUNCTION creacuenta() RETURNS "trigger"
     AS '
 DECLARE
    mrecord RECORD;
-BEGIN            
+BEGIN
       FOR mrecord IN SELECT * FROM canal LOOP
          INSERT INTO acumulado_canal (idcuenta, idcanal,debe,haber) VALUES(NEW.idcuenta, mrecord.idcanal,0,0);
       END LOOP;
@@ -1285,7 +1285,7 @@ CREATE FUNCTION borracuenta() RETURNS "trigger"
     AS '
 DECLARE
    mrecord RECORD;
-BEGIN            
+BEGIN
       FOR mrecord IN SELECT * FROM canal LOOP
         DELETE FROM acumulado_canal WHERE idcuenta = OLD.idcuenta;
       END LOOP;
@@ -1307,7 +1307,7 @@ CREATE FUNCTION creacanal() RETURNS "trigger"
     AS '
 DECLARE
    mrecord RECORD;
-BEGIN            
+BEGIN
       FOR mrecord IN SELECT * FROM cuenta LOOP
          INSERT INTO acumulado_canal (idcuenta, idcanal,debe,haber) VALUES(mrecord.idcuenta, NEW.idcanal,0,0);
       END LOOP;
@@ -1341,7 +1341,7 @@ CREATE FUNCTION creaccoste() RETURNS "trigger"
     AS '
 DECLARE
    mrecord RECORD;
-BEGIN            
+BEGIN
       FOR mrecord IN SELECT * FROM cuenta LOOP
          INSERT INTO acumulado_c_coste (idcuenta, idc_coste,debe,haber) VALUES(mrecord.idcuenta, NEW.idc_coste,0,0);
       END LOOP;
@@ -1430,7 +1430,7 @@ BEGIN
    SELECT INTO cuentar * FROM cuenta WHERE idcuenta = NEW.idcuenta;
    SELECT INTO cuentar * FROM cuenta WHERE idcuenta = cuentar.padre;
    IF FOUND THEN
-      UPDATE acumulado_canal SET debe = debe + incdebe, haber = haber + inchaber WHERE idcuenta = cuentar.idcuenta AND idcanal 
+      UPDATE acumulado_canal SET debe = debe + incdebe, haber = haber + inchaber WHERE idcuenta = cuentar.idcuenta AND idcanal
 = NEW.idcanal;
    END IF;
    RETURN NEW;
@@ -1553,13 +1553,13 @@ BEGIN
 	 -- // Linia Afegida per Josep B.
 
 	FOR mrecord IN SELECT * from borrador WHERE idasiento=id_asiento LOOP
-		INSERT INTO apunte (codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe, 
-haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idtipoiva, orden) VALUES (mrecord.codigoborrador, 
-mrecord.idasiento, mrecord.iddiario, mrecord.fecha, mrecord.conceptocontable, mrecord.idcuenta, mrecord.descripcion, 
-mrecord.debe, mrecord.haber, mrecord.contrapartida, mrecord.comentario, mrecord.idcanal, mrecord.marcaconciliacion, 
-mrecord.idc_coste, mrecord.idtipoiva, mrecord.orden);		
+		INSERT INTO apunte (codigoborrador, idasiento, iddiario, fecha, conceptocontable, idcuenta, descripcion, debe,
+haber, contrapartida, comentario, idcanal, marcaconciliacion, idc_coste, idtipoiva, orden) VALUES (mrecord.codigoborrador,
+mrecord.idasiento, mrecord.iddiario, mrecord.fecha, mrecord.conceptocontable, mrecord.idcuenta, mrecord.descripcion,
+mrecord.debe, mrecord.haber, mrecord.contrapartida, mrecord.comentario, mrecord.idcanal, mrecord.marcaconciliacion,
+mrecord.idc_coste, mrecord.idtipoiva, mrecord.orden);
 	END LOOP;
-	
+
 	-- Cuando cerramos el asiento, tambien recalculamos todas las contrapartidas.
 	-- Si hay una contrapartida puesta en el borrador, entonces esa no se tocara.
 	UPDATE apunte set contrapartida = ccontrapartida(idapunte) WHERE idasiento= id_asiento;
@@ -10918,32 +10918,32 @@ COPY borrador (idborrador, codigoborrador, idasiento, iddiario, fecha, conceptoc
 COPY registroiva (idregistroiva, contrapartida, baseimp, iva, factura, idborrador, incregistro, regularizacion, plan349, numorden, cif) FROM stdin;
 7	726	184	16	147	318	\N	\N	\N	23	A-078989898
 14	724	115	0	as	401	\N	\N	\N	asdf	asdf
-8	724	84	16		365	\N	\N	\N		
+8	724	84	16		365	\N	\N	\N
 9	463	84	16	23	368	\N	\N	\N	87	566677766
 11	724	2903.04	19	dsf	384	\N	\N	\N	sdfs	sdfasdf
 15	724	88	14	12	507	\N	\N	\N	12	12
-13	724	100	16		388	\N	\N	\N		
-16	764	54.899999999999999	19	58545	941	\N	\N	\N		
+13	724	100	16		388	\N	\N	\N
+16	764	54.899999999999999	19	58545	941	\N	\N	\N
 17	757	385.25	16	1	945	\N	\N	\N		47859565 W
-18	769	320.25999999999999	16	2	953	\N	\N	\N		
-19	762	586.35000000000002	16	65545648	958	\N	\N	\N		
-20	761	365.36000000000001	16	654654	963	\N	\N	\N		
-21	768	530	16	3	968	\N	\N	\N		
+18	769	320.25999999999999	16	2	953	\N	\N	\N
+19	762	586.35000000000002	16	65545648	958	\N	\N	\N
+20	761	365.36000000000001	16	654654	963	\N	\N	\N
+21	768	530	16	3	968	\N	\N	\N
 22	767	365.36000000000001	16	425582	973	\N	\N	\N		4582398 P
-23	301	92.799999999999997	625	54	978	\N	\N	\N		
-24	301	530	16	484564	985	\N	\N	\N		
+23	301	92.799999999999997	625	54	978	\N	\N	\N
+24	301	530	16	484564	985	\N	\N	\N
 31	88	100	16	gtty	1106	\N	\N	\N	sdf	\N
 29	755	100	16	gtty	1055	\N	\N	\N	sdf	5678908
-30	746	1234	16	67a	1081	\N	\N	\N		
+30	746	1234	16	67a	1081	\N	\N	\N
 27	755	100	16	45A	1024	\N	\N	\N	\N	\N
-26	369	100	16	45A	1022	\N	\N	\N		
+26	369	100	16	45A	1022	\N	\N	\N
 28	755	100	16	45A	1031	\N	\N	\N	\N	\N
-25	301	580	16	5464	990	\N	\N	\N		
+25	301	580	16	5464	990	\N	\N	\N
 34	755	122	92	12	1059	\N	\N	\N	4	34444
 35	88	1000	16	12	1127	\N	\N	\N	12	345678
 36	88	1148	1	12	1129	\N	\N	\N	345	23456
 38	724	100	16	gtty	1138	\N	\N	\N	sdf	\N
-37	755	100	16	gtty	1132	\N	\N	\N	sdf	
+37	755	100	16	gtty	1132	\N	\N	\N	sdf
 39	724	100	16	gtty	1140	\N	\N	\N	sdf	paco
 40	724	100	16	gtty	1142	\N	\N	\N	sdf	\N
 41	724	100	16	gtty	1144	\N	\N	\N	sdf	\N
@@ -10955,12 +10955,12 @@ COPY registroiva (idregistroiva, contrapartida, baseimp, iva, factura, idborrado
 45	767	100	16	gtty	1160	\N	\N	\N	sdf	4582398 P
 46	116	16	625	12	1161	\N	\N	\N	1	1234567g
 47	480	0	16	1	1217	\N	\N	\N	1	1234553123
-48	300	150.25	16	12	1222	\N	\N	\N		
-49	324	8490.7999999999993	16		1225	\N	\N	\N		
-50	463	360.61000000000001	16	90	1227	\N	\N	\N	888	
-51	324	601.00999999999999	16	12	1230	\N	\N	\N		
-52	466	1634.75	16	34	1249	\N	\N	\N		
-53	463	4543.6499999999996	19	78	1256	\N	\N	\N		
+48	300	150.25	16	12	1222	\N	\N	\N
+49	324	8490.7999999999993	16		1225	\N	\N	\N
+50	463	360.61000000000001	16	90	1227	\N	\N	\N	888
+51	324	601.00999999999999	16	12	1230	\N	\N	\N
+52	466	1634.75	16	34	1249	\N	\N	\N
+53	463	4543.6499999999996	19	78	1256	\N	\N	\N
 \.
 
 
@@ -10984,13 +10984,13 @@ COPY ainteligente (idainteligente, descripcion, comentariosasiento) FROM stdin;
 COPY binteligente (idbinteligente, idainteligente, iddiario, fecha, conceptocontable, codcuenta, descripcion, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste) FROM stdin;
 895	8	\N	\N	\N	asdf	\N	\N	\N	\N	\N	\N	\N	\N
 896	8	\N	\N	\N	asdfasdf	\N	\N	\N	\N	\N	\N	\N	\N
-1098	13		$fechaasiento$	hola	1000000		45	0					
+1098	13		$fechaasiento$	hola	1000000		45	0
 1099	13		$fechaasiento$	hola	6296000		0	45			\N		\N
 1100	13		$fechaasiento$	hola	1000034		45	45			\N		\N
-999	11	0	$fechaactual$	Una factura guapa	1000000	Ingreso en capital social	$cantidad, Cantidad$	0	4720016	Sin comentarios		1	
+999	11	0	$fechaactual$	Una factura guapa	1000000	Ingreso en capital social	$cantidad, Cantidad$	0	4720016	Sin comentarios		1
 1000	11		$fechaactual$	Una factura guapa	1000000	sdf	0	$cantidad$*0.16	4720016	Sin comentarios	\N	1	\N
-1164	9	0	$fechaactual$	Pago de una factura	$cod, Cuenta de Proveedor$	asdf	0	$haber, Total Factura$	4720016	asdf		1	
-1165	9		$fechaactual$	Pago de una factura	4720016		$haber$	0					
+1164	9	0	$fechaactual$	Pago de una factura	$cod, Cuenta de Proveedor$	asdf	0	$haber, Total Factura$	4720016	asdf		1
+1165	9		$fechaactual$	Pago de una factura	4720016		$haber$	0
 \.
 
 
