@@ -16,7 +16,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 4 (OID 114863)
+-- TOC entry 4 (OID 226869)
 -- Name: usuario_idusuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -28,7 +28,7 @@ CREATE SEQUENCE usuario_idusuario_seq
 
 
 --
--- TOC entry 10 (OID 114865)
+-- TOC entry 10 (OID 226871)
 -- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -43,7 +43,7 @@ CREATE TABLE usuario (
 
 
 --
--- TOC entry 6 (OID 114868)
+-- TOC entry 6 (OID 226874)
 -- Name: empresa_idempresa_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -55,7 +55,7 @@ CREATE SEQUENCE empresa_idempresa_seq
 
 
 --
--- TOC entry 11 (OID 114870)
+-- TOC entry 11 (OID 226876)
 -- Name: empresa; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -70,7 +70,7 @@ CREATE TABLE empresa (
 
 
 --
--- TOC entry 8 (OID 114873)
+-- TOC entry 8 (OID 226879)
 -- Name: usuario_empre_idusuarioempr_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -82,7 +82,7 @@ CREATE SEQUENCE usuario_empre_idusuarioempr_seq
 
 
 --
--- TOC entry 12 (OID 114875)
+-- TOC entry 12 (OID 226881)
 -- Name: usuario_empresa; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -95,7 +95,7 @@ CREATE TABLE usuario_empresa (
 
 
 --
--- TOC entry 13 (OID 114878)
+-- TOC entry 13 (OID 226884)
 -- Name: pga_queries; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -111,7 +111,7 @@ CREATE TABLE pga_queries (
 
 
 --
--- TOC entry 14 (OID 114878)
+-- TOC entry 14 (OID 226884)
 -- Name: pga_queries; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -120,7 +120,7 @@ GRANT ALL ON TABLE pga_queries TO PUBLIC;
 
 
 --
--- TOC entry 15 (OID 114883)
+-- TOC entry 15 (OID 226889)
 -- Name: pga_forms; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -131,7 +131,7 @@ CREATE TABLE pga_forms (
 
 
 --
--- TOC entry 16 (OID 114883)
+-- TOC entry 16 (OID 226889)
 -- Name: pga_forms; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -140,7 +140,7 @@ GRANT ALL ON TABLE pga_forms TO PUBLIC;
 
 
 --
--- TOC entry 17 (OID 114888)
+-- TOC entry 17 (OID 226894)
 -- Name: pga_scripts; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -151,7 +151,7 @@ CREATE TABLE pga_scripts (
 
 
 --
--- TOC entry 18 (OID 114888)
+-- TOC entry 18 (OID 226894)
 -- Name: pga_scripts; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -160,7 +160,7 @@ GRANT ALL ON TABLE pga_scripts TO PUBLIC;
 
 
 --
--- TOC entry 19 (OID 114893)
+-- TOC entry 19 (OID 226899)
 -- Name: pga_reports; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -174,7 +174,7 @@ CREATE TABLE pga_reports (
 
 
 --
--- TOC entry 20 (OID 114893)
+-- TOC entry 20 (OID 226899)
 -- Name: pga_reports; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -183,7 +183,7 @@ GRANT ALL ON TABLE pga_reports TO PUBLIC;
 
 
 --
--- TOC entry 21 (OID 114898)
+-- TOC entry 21 (OID 226904)
 -- Name: pga_layout; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -196,7 +196,7 @@ CREATE TABLE pga_layout (
 
 
 --
--- TOC entry 22 (OID 114898)
+-- TOC entry 22 (OID 226904)
 -- Name: pga_layout; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -205,7 +205,7 @@ GRANT ALL ON TABLE pga_layout TO PUBLIC;
 
 
 --
--- TOC entry 23 (OID 114903)
+-- TOC entry 23 (OID 226909)
 -- Name: pga_graphs; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -217,7 +217,7 @@ CREATE TABLE pga_graphs (
 
 
 --
--- TOC entry 24 (OID 114903)
+-- TOC entry 24 (OID 226909)
 -- Name: pga_graphs; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -226,7 +226,7 @@ GRANT ALL ON TABLE pga_graphs TO PUBLIC;
 
 
 --
--- TOC entry 25 (OID 114908)
+-- TOC entry 25 (OID 226914)
 -- Name: pga_diagrams; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -238,7 +238,7 @@ CREATE TABLE pga_diagrams (
 
 
 --
--- TOC entry 26 (OID 114908)
+-- TOC entry 26 (OID 226914)
 -- Name: pga_diagrams; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -247,7 +247,7 @@ GRANT ALL ON TABLE pga_diagrams TO PUBLIC;
 
 
 --
--- TOC entry 27 (OID 114913)
+-- TOC entry 27 (OID 226919)
 -- Name: pga_images; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -258,7 +258,7 @@ CREATE TABLE pga_images (
 
 
 --
--- TOC entry 28 (OID 114913)
+-- TOC entry 28 (OID 226919)
 -- Name: pga_images; Type: ACL; Schema: public; Owner: postgres
 --
 
@@ -267,50 +267,57 @@ GRANT ALL ON TABLE pga_images TO PUBLIC;
 
 
 --
--- Data for TOC entry 35 (OID 114865)
+-- Data for TOC entry 35 (OID 226871)
 -- Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY usuario (idusuario, nombre, apellido1, apellido2, login, "password") FROM stdin;
-1	Tomeu	Borras	Riera	postgres	postgres
 2	Bulmages	Bulma	Bulmita	bulmages	bulmages
 3	Cristina	Marco	Hernandez	cmarco	cmarco
+6	Francisca Ana	Borras	Riera1	fborras	postgres
 5	Joana Maria	Borras	Riera	jmborras	postgres
-6	Francisca Ana	Borras	Riera	fborras	postgres
+1	Tomeu	Borras	Riera	postgres	postgres
 9	Perico	Palotes	Ramos	ppalotes	ramos
 \.
 
 
 --
--- Data for TOC entry 36 (OID 114870)
+-- Data for TOC entry 36 (OID 226876)
 -- Name: empresa; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY empresa (idempresa, nombre, ano, nombredb, "password") FROM stdin;
-1	Bulmages 2002	2002	bulmages	bulmages
-2	Plan General Contable	2002	bgplangcont	bgplangcont
-23	Conetxia 2003	2003	conetxia2003	\N
+COPY empresa (idempresa, nombre, ano, nombredb, "password", ejant) FROM stdin;
+1	Bulmages 2002	2002	bulmages	bulmages	\N
+2	Plan General Contable	2002	bgplangcont	bgplangcont	\N
+23	Conetxia 2003	2003	conetxia2003	\N	\N
+24	Conetxia 2004	2004	conetxia2004	\N	\N
 \.
 
 
 --
--- Data for TOC entry 37 (OID 114875)
+-- Data for TOC entry 37 (OID 226881)
 -- Name: usuario_empresa; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY usuario_empresa (idusuarioempresa, idempresa, idusuario, permisos) FROM stdin;
-46	1	3	2
-47	1	9	2
-48	1	1	1
-49	1	2	1
 2	2	2	1
 50	23	1	1
 51	23	2	1
+52	24	1	1
+53	24	2	1
+54	24	3	1
+55	24	5	1
+56	24	6	1
+57	24	9	1
+62	1	2	1
+63	1	3	2
+64	1	1	1
+65	1	9	2
 \.
 
 
 --
--- Data for TOC entry 38 (OID 114878)
+-- Data for TOC entry 38 (OID 226884)
 -- Name: pga_queries; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -319,7 +326,7 @@ COPY pga_queries (queryname, querytype, querycommand, querytables, querylinks, q
 
 
 --
--- Data for TOC entry 39 (OID 114883)
+-- Data for TOC entry 39 (OID 226889)
 -- Name: pga_forms; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -328,7 +335,7 @@ COPY pga_forms (formname, formsource) FROM stdin;
 
 
 --
--- Data for TOC entry 40 (OID 114888)
+-- Data for TOC entry 40 (OID 226894)
 -- Name: pga_scripts; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -337,7 +344,7 @@ COPY pga_scripts (scriptname, scriptsource) FROM stdin;
 
 
 --
--- Data for TOC entry 41 (OID 114893)
+-- Data for TOC entry 41 (OID 226899)
 -- Name: pga_reports; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -346,7 +353,7 @@ COPY pga_reports (reportname, reportsource, reportbody, reportprocs, reportoptio
 
 
 --
--- Data for TOC entry 42 (OID 114898)
+-- Data for TOC entry 42 (OID 226904)
 -- Name: pga_layout; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -358,7 +365,7 @@ usuario_empresa	4	idusuarioempresa idempresa idusuario permisos	150 150 150 150
 
 
 --
--- Data for TOC entry 43 (OID 114903)
+-- Data for TOC entry 43 (OID 226909)
 -- Name: pga_graphs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -367,7 +374,7 @@ COPY pga_graphs (graphname, graphsource, graphcode) FROM stdin;
 
 
 --
--- Data for TOC entry 44 (OID 114908)
+-- Data for TOC entry 44 (OID 226914)
 -- Name: pga_diagrams; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -376,7 +383,7 @@ COPY pga_diagrams (diagramname, diagramtables, diagramlinks) FROM stdin;
 
 
 --
--- Data for TOC entry 45 (OID 114913)
+-- Data for TOC entry 45 (OID 226919)
 -- Name: pga_images; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -385,7 +392,7 @@ COPY pga_images (imagename, imagesource) FROM stdin;
 
 
 --
--- TOC entry 29 (OID 114934)
+-- TOC entry 29 (OID 226950)
 -- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -394,7 +401,7 @@ ALTER TABLE ONLY usuario
 
 
 --
--- TOC entry 30 (OID 114936)
+-- TOC entry 30 (OID 226952)
 -- Name: empresa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -403,7 +410,7 @@ ALTER TABLE ONLY empresa
 
 
 --
--- TOC entry 31 (OID 114938)
+-- TOC entry 31 (OID 226954)
 -- Name: usuario_empresa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -412,7 +419,7 @@ ALTER TABLE ONLY usuario_empresa
 
 
 --
--- TOC entry 32 (OID 114940)
+-- TOC entry 32 (OID 226956)
 -- Name: pga_graphs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -421,7 +428,7 @@ ALTER TABLE ONLY pga_graphs
 
 
 --
--- TOC entry 33 (OID 114942)
+-- TOC entry 33 (OID 226958)
 -- Name: pga_diagrams_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -430,7 +437,7 @@ ALTER TABLE ONLY pga_diagrams
 
 
 --
--- TOC entry 34 (OID 114944)
+-- TOC entry 34 (OID 226960)
 -- Name: pga_images_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -439,8 +446,8 @@ ALTER TABLE ONLY pga_images
 
 
 --
--- TOC entry 50 (OID 114946)
--- Name: RI_ConstraintTrigger_114946; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 50 (OID 226962)
+-- Name: RI_ConstraintTrigger_226962; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER usuario_empresa_idempresa_fk
@@ -452,8 +459,8 @@ CREATE CONSTRAINT TRIGGER usuario_empresa_idempresa_fk
 
 
 --
--- TOC entry 48 (OID 114947)
--- Name: RI_ConstraintTrigger_114947; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 48 (OID 226963)
+-- Name: RI_ConstraintTrigger_226963; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER usuario_empresa_idempresa_fk
@@ -465,8 +472,8 @@ CREATE CONSTRAINT TRIGGER usuario_empresa_idempresa_fk
 
 
 --
--- TOC entry 49 (OID 114948)
--- Name: RI_ConstraintTrigger_114948; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 49 (OID 226964)
+-- Name: RI_ConstraintTrigger_226964; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER usuario_empresa_idempresa_fk
@@ -478,8 +485,8 @@ CREATE CONSTRAINT TRIGGER usuario_empresa_idempresa_fk
 
 
 --
--- TOC entry 51 (OID 114949)
--- Name: RI_ConstraintTrigger_114949; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 51 (OID 226965)
+-- Name: RI_ConstraintTrigger_226965; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER usuario_empresa_idusuario_fk
@@ -491,8 +498,8 @@ CREATE CONSTRAINT TRIGGER usuario_empresa_idusuario_fk
 
 
 --
--- TOC entry 46 (OID 114950)
--- Name: RI_ConstraintTrigger_114950; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 46 (OID 226966)
+-- Name: RI_ConstraintTrigger_226966; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER usuario_empresa_idusuario_fk
@@ -504,8 +511,8 @@ CREATE CONSTRAINT TRIGGER usuario_empresa_idusuario_fk
 
 
 --
--- TOC entry 47 (OID 114951)
--- Name: RI_ConstraintTrigger_114951; Type: TRIGGER; Schema: public; Owner: postgres
+-- TOC entry 47 (OID 226967)
+-- Name: RI_ConstraintTrigger_226967; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
 CREATE CONSTRAINT TRIGGER usuario_empresa_idusuario_fk
@@ -517,7 +524,7 @@ CREATE CONSTRAINT TRIGGER usuario_empresa_idusuario_fk
 
 
 --
--- TOC entry 5 (OID 114863)
+-- TOC entry 5 (OID 226869)
 -- Name: usuario_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -525,19 +532,19 @@ SELECT pg_catalog.setval('usuario_idusuario_seq', 13, true);
 
 
 --
--- TOC entry 7 (OID 114868)
+-- TOC entry 7 (OID 226874)
 -- Name: empresa_idempresa_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('empresa_idempresa_seq', 23, true);
+SELECT pg_catalog.setval('empresa_idempresa_seq', 26, true);
 
 
 --
--- TOC entry 9 (OID 114873)
+-- TOC entry 9 (OID 226879)
 -- Name: usuario_empre_idusuarioempr_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('usuario_empre_idusuarioempr_seq', 51, true);
+SELECT pg_catalog.setval('usuario_empre_idusuarioempr_seq', 65, true);
 
 
 --
