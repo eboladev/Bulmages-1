@@ -44,12 +44,19 @@ $body = '
 
 <table border=0 cellspacing="0" class="link">
 <tr class="head">
-<td><center><b>Asociaciones Colaboradoras</b></center></td>
+<td><center><b>Asociaciones Colaboradoras y Amigas</b></center></td>
 </tr>
 <tr>
 <td>
 <A HREF="http://bulma.net" TARGET="nueva">Bulma</A><BR>
 <P>BULMA (Bisoños Usuarios de Linux de Mallorca y Alrededores) es una asociación sin ánimo de lucro,constituída de acuerdo a la ley, cuyo ámbito es el de la Comunidad Autónoma de Baleares, con unos objetivos entre los cuales se hallan: La divulgación y promoción del Software Libre, el apoyo a grupos de usuarios y desarrolladores de Software Libre en Baleares, promover el intercambio de experiencias relacionadas con el sistema operativo Linux y el Software Libre en general entre usuarios y desarrolladores, facilitar el acceso a Linux y al software libre a los residentes en Baleares, y de manera muy especial a alumnos y profesores de los distintos niveles del sistema de enseñanza, organización de cursos, congresos, conferencias y encuentros encaminados a conseguir todo lo anterior. </P>
+<br>
+</td>
+</tr>
+<tr>
+<td>
+<A HREF="http://www.clubibosim.org" TARGET="nueva">Club de Informática de Eivissa y Formentera</A><BR>
+<P>un grupo de amigos que comparten una afición común: la informática y las comunicaciones a través del ordenador. Pese a su corta historia como Asociación -se fundó a finales de 1999-, el núcleo del club se gestó en las antiguas BBS y en una red de comunicaciones amateur: FIDONET, allá por el año 1991. Desde entonces venimos compartiendo experiencias, alegrias, problemillas, pero todo con una gran camaradería y procurando sobre todo divertirnos. </P>
 <br>
 </td>
 </tr>

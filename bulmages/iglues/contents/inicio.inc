@@ -8,6 +8,41 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>23/02/2005</td>
+<td><center><b>Liberada Primera Versions de RTK::Report Toolkit</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Santiago Capel ha anunciado en la lista de correo de bulmagés la liberación de la primera versión de Reports. RTK es una grupo de herramientas bajo licencia GNU GPL para generar informes desde diferentes fuentes (que incluyen ficheros de texto plano, XML y SQL) a distintos formatos (ficheros de texto plano, HTML, OppenOffice Calc y en un visualizador gráfico propio) mediante un sistema de plantillas. 
+<br><br>
+Es el primer intento de crear una herramienta de generación de informes de calidad, al estilo de Crystal Reports(C), o Ms Access(C). El código está totalmente orientado a objetos y diseñado para ser extremadamente escalable, pequeño y eficiente.<br><br>
+La página del proyecto es: <A href="http://reports.sourceforge.net" target="nueva">http://reports.sourceforge.net</A>  
+<br><br>Cualquier comentario sobre esta herramienta podeis enviarla a Santiago Capel Torres (santiagocapel[a t]yahoo[do t]es).
+<br><br><B><I>¡¡¡Enhorabuena Santi!!!</I></B>
+</td>
+</tr>
+</table>
+
+<br>
+
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
+<td width=100>12/02/2005</td>
+<td><center><b>Presentación de BulmaGés en INTEC</b></center></td>
+</tr>
+<tr>
+<td colspan=2>El pasado dia 12 de febrero Tomeu Borràs presentó BulmaGés en la Feria de Informática y Nuevas Tecnologías en Ibiza, invitado por el <A href="http://www.clubibosim.org" target="nueva">Club Ibosim</A>. La presentación fué un éxito teniendo en cuenta la afluencia de público al evento en general. La ponencia trató sobre nuestra asociación, el software libre y las empresas, el Proyecto BulmaGés, herramientas de desarrollo y finalizó con una pequeña demostración de los módulos BulmaCont y BulmaFact.<br>
+Queremos agradecer a los miembros del <A href="http://www.clubibosim.org" target="nueva">Club Ibosim</A> su hospitalidad y las atenciones que tuvieron con nosotros. Quedamos gratamente sorprendidos de conocer más esta asociación de amigos de la informática que lleva realizado un largo camino desde sus inicios con la red Fidonet hasta la actualidad.
+<br>
+<A href="http://www.iglues.org/ibosim/" target="nueva">Aquí</A> podeis ver unas fotos del evento y posterior cena.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>17/02/2005</td>
 <td><center><b>Actualizada Documentación de RTK Reports</b></center></td>
 </tr>
@@ -119,41 +154,6 @@ Más información en:
 </td>
 </tr>
 </table>
-
-<br>
-
-
-<table border=0 cellspacing="0" class="news">
-<tr class="head">
-<td width=100>28/11/2004</td>
-<td><center><b>Junta Directiva de IGLUES</b></center></td>
-</tr>
-<tr>
-<td colspan=2>El pasado domingo 28 de noviembre tuvo lugar la primera reunión de la nueva Junta Directiva. Cabe destacar la gran participación por parte de los soci@s tanto en asistencia como en el debate de los temas que se discutieron. En líneas generales se trataron los temas siguientes:
-<ul>
-<li>Creación de un inventario de proyectos en de la asociación con las personas que los integran.</li>
-<li>Documentación orientada a presentar el software libre en general y el nuestro en particular a las empresas, en forma tanto de arículos como de presentacones.</li>
-<li>Presentación de la asociación y de BulmaGés al Ayuntamiento de Benicarló y a AJOVE (Asociación de Jóvenes Empresarios de Castellón).</li>
-<li>Realización de manuales de las aplicaciones.</li>
-<li>Documentación técnica con DOXIGEN.</li>
-</ul>
-</td>
-</tr>
-</table>
-
-<br>
-
-<table border=0 cellspacing="0" class="news">
-<tr class="head">
-<td width=100>22/11/2004</td>
-<td><center><b>Primer Screenshot de Bulmafact</b></center></td>
-</tr>
-<tr>
-<td colspan=2>Hoy Tomeu Borràs ha mostrado la primera imagen de la futura facturación donde se pueden ver algunos de los puntos que ya se han realizado. Puede verse <A href="http://www.iglues.org/bulmafact1.png" TARGET="nueva">aquí</A>.
-</td>
-</tr>
-</table>
-
 
 
 </div>
