@@ -410,7 +410,9 @@ exists (reports){
 	    reports/rtkview/src/rtkqtreportviewer.cpp \
 	    reports/rtkview/src/rtkqtpagedisplay.cpp
   LIBS += ../src/reports/lib/librtklib.a
-  INCLUDEPATH += reports/rtklib/src reports/rtkviewer/src
+  INCLUDEPATH += reports/rtklib/src \ 
+	    reports/rtkview/src \
+	    reports/rtkserver/src
   DEFINES += REPORTS
 }
 unix{
