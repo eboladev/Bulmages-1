@@ -184,11 +184,12 @@ bool cursor2::bof() {
     return(registroactual < 0);
 }// end if
 
-
+/** \return devuelve TRUE si es el último registro a considerar */
 bool cursor2::esultimoregistro() {
     return (registroactual == nregistros-1);
 }// end ultimoregistro
 
+/** \return devuelve TRUE si es el primer registro a consear e el query. */
 bool cursor2::esprimerregistro() {
     return (registroactual == 0);
 }// end ultimoregistro
@@ -198,27 +199,34 @@ bool cursor2::esprimerregistro() {
 // -----------------------------------------------------------------
 // -----------------------------------------------------------------
 
+/** Constructor de la clase, no hace nada de nada de nada */
 postgresiface2::postgresiface2() {}// end postgresiface2
 
+/** Finaliza la conexión con la base de datos */
 void postgresiface2::terminar() {
     PQfinish(conn);
 }// end terminar
 
+/** Destructor de la clase que al igual que \ref terminar termina la conexión con la base de datos */
 postgresiface2::~postgresiface2() {
-    /* close the connection to the database and cleanup */
+    /** close the connection to the database and cleanup */
     PQfinish(conn);
 }// end -postgresiface2
 
+/** Inicializa la conexión con la base de datos mediante los parámetro especificados
+  * Precisamente no lo hace el constructor debido a la ausencia de dichos datos.
+  * \param nomdb Indica el nombre de la base de datos
+  * \param user Indica el usuario que hace la operación a ojos de la base de datos.
+  * \param passwd Indica la contraseña que utiliza el usuario para autentificarse
+  * \return Si todo va bien devuelve 0, en caso contrario devuelve 1
+  */
 int postgresiface2::inicializa(QString nomdb, QString user, QString passwd) {
     dbName=nomdb;
-    pghost = confpr->valor(CONF_SERVIDOR);             /* host name of the backend server */
-    pgport = confpr->valor(CONF_PUERTO);              /* port of the backend server */
-    pgoptions = "";           /* special options to start up the backend server */
-    pgtty = "";               /* debugging tty for the backend server */
+    pghost = confpr->valor(CONF_SERVIDOR);             /** host name of the backend server */
+    pgport = confpr->valor(CONF_PUERTO);              /** port of the backend server */
+    pgoptions = "";           /** special options to start up the backend server */
+    pgtty = "";               /** debugging tty for the backend server */
     QString conexion;
-
-    // Esto ya esta obsoleto, ahora dejamos la autentificacion al sistema
-    //    sprintf(conexion, "dbname=%s user=%s", dbName, "ubulmages");
 
     if (pghost != "localhost") {
         conexion = "hostaddr="+pghost+" port="+pgport;
@@ -244,10 +252,10 @@ int postgresiface2::inicializa(QString nomdb, QString user, QString passwd) {
 }// end inicializa
 
 
-/***********************************************************************
- * Cambia el formato de fecha de la base de datos para que usemos la
- * fecha española dd/mm/yyyy
- ***********************************************************************/
+/** Cambia el formato de fecha de la base de datos para que usemos la
+  * fecha española dd/mm/yyyy
+  * \return Devuelve 0 si no ha habido problemas, en caso contrario devuelve 1
+  */
 int postgresiface2::formatofecha() {
     QString query="";
     PGresult   *res;
@@ -255,14 +263,19 @@ int postgresiface2::formatofecha() {
     query.sprintf("SET DateStyle TO 'SQL'");
     res = PQexec(conn, query.ascii());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "DECLARE CURSOR command failed\n");
+        fprintf(stderr, "Cambio del formato de fecha command failed\n");
     }// end if
     PQclear(res);
     commit();
-    //    n=1;
     return(0);
 }// end formatofecha
 
+
+/** Con esta sentencia se inicia una transacción en la base de datos
+  * Las transacciones lo que indican es que el usuario se ha apoderado de la base de datos durante
+  * un tiempo y que la operación que va a transcurrir debe hacerse sin concurrencia.
+  * \return Si todo ha funcionado bien devuelve un 0, en caso contrario devuelve un 1
+  */
 int postgresiface2::begin() {
     PGresult   *res;
     res = PQexec(conn, "BEGIN");
@@ -276,6 +289,10 @@ int postgresiface2::begin() {
     return(0);
 }// end begin
 
+
+/** Con esta sentencia se termina un bloque de transacción dando por buenos todos los resultados que
+  * Se han almacenado dentro de éste. Y quedando almacenados en la base de datos de forma definitiva.
+  */
 void postgresiface2::commit() {
     PGresult   *res;
     fprintf(stderr,"-- COMMIT TRANSACTION --\n");
@@ -283,13 +300,22 @@ void postgresiface2::commit() {
     PQclear(res);
 }// end commit
 
+
+/** Con esta sentencia se termina un bloque de transacción dando por malos los resultados de la operación
+  * Y dejandose la base de datos en el mismo estado que cuando se inició la transacción.
+  */
 void postgresiface2::rollback() {
     PGresult   *res;
     res = PQexec(conn, "ROLLBACK");
     PQclear(res);
 }// end rollback
 
-cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor="") {
+
+/** Se encarga de generar un objeto del tipo cursor2 y de iniciarlo con un query concreto
+  * NOTA: Este método crea memória, con lo que ésta debe ser liberada posteriormente.
+  * \return Devuelve un apuntador al objeto \ref cursor2 generado e inicializado con la respuesta al query.
+  */
+cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
     fprintf(stderr,"%s\n",Query.ascii());
     cursor2 *cur=new cursor2(nomcursor,conn,Query);
     return(cur);
@@ -609,8 +635,6 @@ int postgresiface2::abreasiento(int idasiento) {
     cursor2 *cur=cargacursor(query,"abreasientos");
     delete cur;
     return(1);
-
-    //    return(ejecuta(query));
 }// end abreasiento
 
 
@@ -687,9 +711,10 @@ cursor2 *postgresiface2::cargaempresas() {
 
 
 
-// Esta función carga de la metabase la combinación usuario password y basde de datos y
-// devuelve el número de tuplas encontrados.
-// Sirve como comprobación de que los datos introducidos (usuario/password y la empresa seleccionada) son verídicos.
+/** Esta función carga de la metabase la combinación usuario password y basde de datos y
+  * devuelve el número de tuplas encontrados.
+  * Sirve como comprobación de que los datos introducidos (usuario/password y la empresa seleccionada) son verídicos.
+  */
 int postgresiface2::cargaempresa(QString nomempresa, QString login, QString password) {
     fprintf(stderr,"postgresiface2::cargaempresa\n");
     QString query="";
@@ -733,11 +758,11 @@ int postgresiface2::cargaempresa(QString nomempresa, QString login, QString pass
     return nFields;
 }// end cargaempresa
 
-/**
-* Esta función estática devuelve una cadena "saneada" para pasarsela a Postgresql.
-* Neutraliza (escapes) los caracteres problemáticos por ser caracteres especiales
-* de Postgresql. Ejemplo, comillas, contrabarras,...
-*/
+
+/** Esta función estática devuelve una cadena "saneada" para pasarsela a Postgresql.
+  * Neutraliza (escapes) los caracteres problemáticos por ser caracteres especiales
+  * de Postgresql. Ejemplo, comillas, contrabarras,...
+  */
 QString postgresiface2::sanearCadena(QString cadena) {
     int longitud;
     char *buffer;
@@ -753,15 +778,12 @@ QString postgresiface2::sanearCadena(QString cadena) {
     return cadenaLimpia;
 }
 
-/**\brief Devuelve el valor de una propiedad de la empresa
- 
-Las propiedades de la empresa son valores asociados a ésta de la forma Nombre=Valor. 
-De esta forma se guardan datos como el nombre fiscal de la empresa, CIF, domicilio, etc.
- 
-\param nombre Nombre de la propiedad
-\return Valor de la propiedad
+/** Devuelve el valor de una propiedad de la empresa
+  * Las propiedades de la empresa son valores asociados a ésta de la forma Nombre=Valor. 
+  *De esta forma se guardan datos como el nombre fiscal de la empresa, CIF, domicilio, etc.
+  * \param nombre Nombre de la propiedad
+  * \return Valor de la propiedad
 */
-
 QString postgresiface2::propiedadempresa(QString nombre) {
     PGresult *result;
     QString value;

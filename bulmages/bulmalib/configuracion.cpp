@@ -10,6 +10,13 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
+/** \file configuracion.cpp
+  * Este fichero contiene la implementación de la clase \ref configuracion que se encarga
+  * de recoger todos los parametros de configuración de la aplicación y los centraliza 
+  * en un único objeto que luego es instanciado como objeto global \ref confpr
+  * De este modo cualquier objeto de la aplicación puede consultar (sin demasiados problemas cual es la configuración que le corresponde).
+  */
+
 #include "configuracion.h"
 
 #ifndef WIN32
@@ -30,6 +37,11 @@ using namespace std;
 configuracion *confpr;
 
 
+/** Constructor de la clase que hace directamente la lectura de los dos posibles
+  * archivos que pueden tener información de configuración de Bulmages
+  * /etc/bulmages.conf y
+  * ~/bulmages.conf
+  */
 configuracion::configuracion() {
    /// Creamos el directorio personalizado de bulmages.
    system ("mkdir ~/.bulmages");
@@ -54,13 +66,19 @@ configuracion::configuracion() {
    setValor(CONF_ALERTAS_DB, "Yes");
    setValor(CONF_LOGIN_USER, "");
    setValor(CONF_PASSWORD_USER, "");
-
 }// end configuracion
 
+/** El destructor de la clase no hace nada porque no hay que liberar memoria
+  */
 configuracion::~configuracion() {
 }// end ~configuracion
 
 
+/** Puesto que la configuración funciona sobre un array y sobre defines en dicho array
+  * esta función dado un define devuelve el nombre utilizado.
+  * Esta función es útil para hacer la inserción inicial de elementos
+  * También es útil para hacer nosotros el guardado de los parametros.
+  */
 QString configuracion::nombre(int i) {
 if (i== CONF_BG_APUNTES) return "CONF_BG_APUNTES";
 if (i== CONF_FG_APUNTES) return "CONF_FG_APUNTES";
@@ -122,8 +140,9 @@ if (i== CONF_MOSTRAR_ALMACEN) return "CONF_MOSTRAR_ALMACEN";
 return "";
 }// end nombre
 
-/** \brief This method writes the configuration of the system to the home bulmages.conf file
-  * \brief Este metodo escribe la configuración del sistema en el fichero bulmages.conf del home del usuario.
+
+/** This method writes the configuration of the system to the home bulmages.conf file
+  * Este metodo escribe la configuración del sistema en el fichero bulmages.conf del home del usuario.
   */
 void configuracion::saveconfig() {
    QString dir1 = getenv("HOME");
@@ -141,7 +160,7 @@ void configuracion::saveconfig() {
 }// end saveconfig
 
 
-/** \brief This method reads the configuration params from a file
+/** This method reads the configuration params from a file
   * \param fich File that contains the configuration.
   * Lee la configuración del fichero de configuración pasado y rellena la estructura.
   */
@@ -153,7 +172,8 @@ void configuracion::leeconfig(char *fich) {
                for (int i=0;i<1000;i++) {
                   if (a==nombre(i)) {
                      filestr >> a;
-                     valores[i] = a;
+		     m_valores[i]=a;
+		     break;
                   }// end if
                }// end for
         }// end while
@@ -161,14 +181,21 @@ void configuracion::leeconfig(char *fich) {
 }// end leeconfig
 
 
-
+/** Devuelve el valor de un campo determinado
+  * \param i Parametro del que se quiere el valor
+  * \return El valor que tiene dicho parametro.
+  */
 QString configuracion::valor(int i) {
-        return (valores[i]);
+        return (m_valores[i]);
 }// end valor
 
 
+/** Establece el valor de un campo determinado con la tupla que se pasa como parametro
+  * \param i El indice del parametro a cambiar
+  * \param valor El valor que tomará dicho parámetro
+  */
 void configuracion::setValor(int i, QString valor) {
-  valores[i] = valor;
-}
+  m_valores[i] = valor;
+}// end setValor
 
 

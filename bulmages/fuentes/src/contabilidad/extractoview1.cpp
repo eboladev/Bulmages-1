@@ -13,6 +13,22 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+ /** \file extractiview1.cpp
+   * Este archivo contiene la implementación de la clase extractoview1 que saca el extracto por pantalla de
+   * una o varias cuentas determinadas. Esta clase es una de las tres principales junto a \ref introapuntes1 y 
+   * \ref diarioview1
+   * \author Tomeu Borrás Riera
+   */
+
+#include <qwidget.h>
+#include <qlineedit.h>
+#include <qdatetimeedit.h>
+#include <qwidget.h>
+#include <qtable.h>
+#include <qtoolbutton.h>
+#include <qlayout.h>
+#include <qpopupmenu.h>
+
 #include "extractoview1.h"
 #include "extractoprintview.h"
 #include "libromayorprint.h"
@@ -20,6 +36,11 @@
 #include "empresa.h"
 #include <qfiledialog.h>
 #include <qcheckbox.h>
+#include "intapunts3view.h"
+#include "balanceview.h"
+#include "diarioview1.h"
+#include "listcuentasview1.h"
+
 
 #define PUNTEO          0
 #define FECHA           1
@@ -40,16 +61,11 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
-  
-   
-   delete listado1;
-   listado = new QTable1(this,"listado");
    listado->setNumRows( 0 );
    listado->setNumCols( 0 );
    listado->setSelectionMode( QTable::SingleRow );
    listado->setSorting( TRUE );
    listado->setSelectionMode( QTable::SingleRow );
-   extractodlg1Layout->addWidget( listado, 2, 0 );
    listado->setColumnMovingEnabled( TRUE );  
    listado->setNumCols(12);
 
@@ -140,11 +156,10 @@ void extractoview1::inicializa2(intapunts3view *inta, diarioview1 *diar, balance
 }// end inicializa2
 
 
-/** ***********************************************************************************
-\brief Esta función carga el cursor de cuentas que forman el todo por el todo.
-También sera la encargada de recoger la información de filtración para que
-todo sea correcto.
-*************************************************************************************/
+/** \brief Esta función carga el cursor de cuentas que forman el todo por el todo.
+  * También sera la encargada de recoger la información de filtración para que
+  * todo sea correcto.
+  */
 void extractoview1::accept() {
   fprintf(stderr,"accept inicializado\n");
   QString codinicial= codigoinicial->text();
@@ -160,9 +175,9 @@ void extractoview1::accept() {
   if (cursorcta != NULL) {
     delete cursorcta;
   }// end if
-  conexionbase->begin();
+
   cursorcta = conexionbase->cargacursor(query,"cursorcuenta");
-  conexionbase->commit();
+
   presentar();
 }// end extractoview1
 
@@ -387,9 +402,9 @@ void extractoview1::presentar() {
      query="SELECT * FROM "+tabla+", asiento where asiento.idasiento = "+tabla+".idasiento AND  idcuenta="+QString::number(idcuenta)+" AND "+tabla+".fecha>='"+finicial+"' AND "+tabla+".fecha<='"+ffinal+"' "+ccostes+" "+ccanales+" "+tipopunteo+" ORDER BY "+tabla+".fecha, ordenasiento, orden";  
       
       fprintf(stderr,"%s\n",query.ascii());
-      conexionbase->begin();
+
       cursorapt=conexionbase->cargacursor(query,"cargasaldoscuentafecha");
-      conexionbase->commit();
+
       num1 = cursorapt->numregistros();      
       if (!cursorapt->eof()) {
          fprintf(stderr,"Existen apuntes por tanto pintamos algo\n");
@@ -397,10 +412,10 @@ void extractoview1::presentar() {
 
          // Cargamos los saldos iniciales.
          cursor2* cursoraux;
-         conexionbase->begin();
+
          query.sprintf("SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta=%d AND fecha <'%s'",idcuenta, finicial.ascii());
          cursoraux = conexionbase->cargacursor(query, "saldos_iniciales");
-         conexionbase->commit();
+
          if (!cursoraux->eof()) {
             debeinicial = atof(cursoraux->valor("tdebe").ascii());
             haberinicial = atof(cursoraux->valor("thaber").ascii());
@@ -445,9 +460,9 @@ void extractoview1::presentar() {
             QString query;
             int ccoste = atoi(cursorapt->valor("idc_coste").ascii());
             query.sprintf( "SELECT * FROM c_coste WHERE idc_coste=%d",ccoste);
-            conexionbase->begin();
+
             cursorcoste=conexionbase->cargacursor(query,"ccoste");
-            conexionbase->commit();
+
             if (!cursorcoste->eof()) {
               cadaux.sprintf("%s",cursorcoste->valor("nombre").ascii());
               listado->setText(j,C_COSTE,cadaux);
@@ -457,9 +472,9 @@ void extractoview1::presentar() {
             // Sacamos el canal
             int canal = atoi(cursorapt->valor("idcanal").ascii());
             query.sprintf( "SELECT * FROM canal WHERE idcanal=%d",canal);
-            conexionbase->begin();
+
             cursorcanal=conexionbase->cargacursor(query,"canal");
-            conexionbase->commit();
+
             if (!cursorcanal->eof()) {
               cadaux.sprintf("%s",cursorcanal->valor("nombre").ascii());
               listado->setText(j,CANAL,cadaux);
@@ -470,9 +485,9 @@ void extractoview1::presentar() {
 	    if (!filt->m_asAbiertos->isChecked()) {
 		query.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursorapt->valor("contrapartida").ascii());
 		fprintf(stderr,"%s\n",query.ascii());
-		conexionbase->begin();
+
 		cursoraux1=conexionbase->cargacursor(query,"contrapartida");
-		conexionbase->commit();
+
 		if (!cursoraux1->eof()) {
 		listado->setText(j,CONTRAPARTIDA,cursoraux1->valor("codigo"));
 		}// end if
@@ -555,12 +570,10 @@ void extractoview1::return_codigoinicial() {
    QString cad = codigoinicial->text();
    if (cad != "") {
       cad = extiendecodigo(cad,numdigitos);
-      conexionbase->begin();
       cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-      conexionbase->commit();
       int num = cursorcta->numregistros();
       if (num >0) {
-         fprintf(stderr,"Hay registros que  se muetran \n");
+         fprintf(stderr,"Hay registros que  se muestran \n");
          codigoinicial->setText(cursorcta->valor("codigo"));
          codigofinal->setText(cursorcta->valor("codigo"));
          codigofinal->selectAll();
@@ -578,9 +591,7 @@ void extractoview1::return_codigofinal() {
    QString cad = codigofinal->text();
    if (cad != "") {
       cad = extiendecodigo(cad,numdigitos);
-      conexionbase->begin();
       cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-      conexionbase->commit();
       int num = cursorcta->numregistros();
       if (num >0) {
          codigofinal->setText(cursorcta->valor("codigo"));
@@ -700,9 +711,7 @@ void extractoview1::boton_guardarpunteo() {
     if (mifile != NULL) {
         QString query;
         query = "SELECT * FROM apunte WHERE punteo=TRUE";
-        conexionbase->begin();
         cursor2 *cursp = conexionbase->cargacursor(query,"punteos");
-        conexionbase->commit();
         while (!cursp->eof()) {
            fprintf(mifile,"%s\n", cursp->valor("idapunte").ascii());
            cursp->siguienteregistro();

@@ -8,13 +8,16 @@ TARGETDEPS += ../../bulmalib/libbulmalib.a
 LIBS += ../../bulmalib/libbulmalib.a \
 -lqt-mt \
 -lpq
+
 INCLUDEPATH = ../../bulmalib \
 ../src \
 comun \
 contabilidad \
 images \
 formularios \
-/usr/include/qt
+/usr/include/qt \
+../../bulmalib/.ui
+
 TARGET = ../../installbulmages/bulmacont
 CONFIG += release \
 warn_on

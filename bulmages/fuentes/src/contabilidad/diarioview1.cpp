@@ -295,7 +295,6 @@ void diarioview1::presentar() {
    QString finicial = fechainicial1->text();
    QString ffinal = fechafinal1->text();
    QString cad;
-//   std::ostringstream query;
 	QString query;
    listado->setNumRows(0);
    totaldebe1=totalhaber1=0;
@@ -322,9 +321,9 @@ void diarioview1::presentar() {
    
       query= "SELECT asiento.ordenasiento, "+tabla+".contrapartida, "+tabla+".fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, "+tabla+".conceptocontable,"+tabla+".descripcion AS descapunte, "+tabla+".debe, "+tabla+".haber, cuenta.idcuenta, asiento.idasiento, "+tabla+".idc_coste, "+tabla+".idcanal, cuenta.codigo FROM asiento, "+tabla+", cuenta WHERE asiento.idasiento="+tabla+".idasiento AND "+tabla+".idcuenta = cuenta.idcuenta AND "+tabla+".fecha >= '"+finicial+"' AND "+tabla+".fecha <= '"+ffinal+"' "+ccostes+" "+ccanales+" ORDER BY "+tabla+".fecha, asiento.idasiento, "+tabla+".orden";
    
-   conexionbase->begin();
+//   conexionbase->begin();
    cursoraux = conexionbase->cargacursor(query,"cursorapuntes");
-   conexionbase->commit();
+//   conexionbase->commit();
    listado->setNumRows(cursoraux->numregistros());
    int i =0;
    int modo=0;
@@ -353,9 +352,7 @@ void diarioview1::presentar() {
       if (cursoraux->valor("idc_coste") != "") {
          QString query1;
          query1 = "SELECT * FROM c_coste WHERE idc_coste=" + cursoraux->valor("idc_coste");
-         conexionbase->begin();
          cursorcoste=conexionbase->cargacursor(query1,"ccoste");
-         conexionbase->commit();
          if (!cursorcoste->eof()) {
          listado->setItem(i,COL_CCOSTE, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
          listado->setText(i,COL_CCOSTE,cursorcoste->valor("nombre"));
@@ -366,9 +363,7 @@ void diarioview1::presentar() {
       // Sacamos el canal si existe
       if (cursoraux->valor("idcanal") != "") {
          QString query2 = "SELECT * FROM canal WHERE idcanal=" + cursoraux->valor("idcanal");
-         conexionbase->begin();
          cursorcanal=conexionbase->cargacursor(query2,"canal");
-         conexionbase->commit();
          if (!cursorcanal->eof()) {
          listado->setItem(i,COL_CANAL, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
          listado->setText(i,COL_CANAL,cursorcanal->valor("nombre"));
@@ -380,9 +375,7 @@ void diarioview1::presentar() {
        if (cursoraux->valor("contrapartida") != "") {
          QString querycontrapartida;
          querycontrapartida.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursoraux->valor("contrapartida").ascii());
-         conexionbase->begin();
          cursoraux1=conexionbase->cargacursor(querycontrapartida,"contrapartida");
-         conexionbase->commit();
          if (!cursoraux1->eof()) {
             listado->setItem(i,COL_CONTRAPARTIDA, new QTableItem1(listado, QTableItem::OnTyping,cadaux, modo));
             listado->setText(i,COL_CONTRAPARTIDA,cursoraux1->valor("codigo"));
@@ -456,7 +449,7 @@ void diarioview1::return_fechafinal() {
 }// end return_fechafinal
 
 
-void diarioview1::contextmenu(int row, int col, const QPoint &poin) {
+void diarioview1::contextmenu(int , int , const QPoint &poin) {
    QPopupMenu *popup;
    int opcion;
    popup = new QPopupMenu;
@@ -494,8 +487,6 @@ void diarioview1::contextmenu(int row, int col, const QPoint &poin) {
 					boton_balance1(2);
 		  }// end switch
      delete popup;
-     // PAra no ver el warning, utilizamos las variables.
-     row=col=0;
 }// end contextmenu
 
 void diarioview1::boton_filtrar() {
