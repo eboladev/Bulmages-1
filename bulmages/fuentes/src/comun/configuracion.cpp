@@ -149,6 +149,9 @@ void configuracion::leeconfig(char *fich) {
 		} else if (a == "CONF_DIR_TRADUCCION") {
 				filestr >> a;
 				valores[CONF_DIR_TRADUCCION] = a;
+		} else if (a == "CONF_ARCHIVO_LOG") {
+				filestr >> a;
+				valores[CONF_ARCHIVO_LOG] = a;
 		}// end if
 		fprintf(stderr,"%s\n",a.c_str());
 	}// end while  

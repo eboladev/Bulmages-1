@@ -282,7 +282,7 @@ void BConfiguracion::cargarFichaUsuarios() {
    coleccion_usuarios.clear();
    usuarios_borrados.clear();
    listView1->clear();
-   listView1->hideColumn(1);
+//   listView1->hideColumn(1);
    listView1->setColumnWidth(0,155);
    (listView2->header())->setResizeEnabled (false);
    listView2->setColumnWidth(0,60);

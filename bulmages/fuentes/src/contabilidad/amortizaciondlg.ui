@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>722</width>
-            <height>511</height>
+            <height>515</height>
         </rect>
     </property>
     <property name="caption">
@@ -1020,6 +1020,28 @@
         <receiver>amortizaciondlg</receiver>
         <slot>accept()</slot>
     </connection>
+    <connection>
+        <sender>fechacompra</sender>
+        <signal>lostFocus()</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>cambiofechacompra()</slot>
+    </connection>
+    <connection>
+        <sender>fecha1cuota</sender>
+        <signal>lostFocus()</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>cambiofecha1cuota()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton1_2</sender>
+        <signal>clicked()</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>close()</slot>
+    </connection>
 </connections>
+<slots>
+    <slot>cambiofechacompra()</slot>
+    <slot>cambiofecha1cuota()</slot>
+</slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

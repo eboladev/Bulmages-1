@@ -111,7 +111,7 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
 
   QTimer *timer1 = new QTimer(this);
   connect( timer1, SIGNAL(timeout()), SLOT(paint()) );
-  timer1->start( 750); //timer1->start( 750);
+  timer1->start( 1750); //timer1->start( 750);
 //   timer->start(500);
   exec();
   delete l1;
@@ -136,14 +136,15 @@ void Splash::paint() {
                     tr("Dejando tiempo libre al sistema"),
                     tr("Sincronizando fases Alfa Beta"),
                     tr("Flusheando Datos con vidas inteligentes superiores"),
-                    tr("Permutando las tablas de partición del sistema operativo")};
+                    tr("Permutando las tablas de partición del sistema operativo"),
+		    tr("Logeando peticiones externas a la NASA")};
   if (a) {
 //   cad.sprintf("%s <FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>",cad.utf8());
    cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";
   }// end if
 //   cad.sprintf("%s %s",cad.ascii(),mensajes[a].utf8());
    cad= cad+" "+mensajes[a];
-  if(a >9) a=0;
+  if(a >10) a=0;
   a++;
   l2->setText( cad );
   l2->scrollBy(0,400);
