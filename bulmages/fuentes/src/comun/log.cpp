@@ -19,6 +19,9 @@
 #include "log.h"
 #include "configuracion.h"
 
+#include <qdatetime.h>
+
+
 bitacora *ctllog;
 
 bitacora::bitacora() {
@@ -33,8 +36,12 @@ bitacora::~bitacora() {
     archivolog->close();
 }
 
-void bitacora::add
-    (QString qsTxt) {
+void bitacora::add (QString qsTxt) {
+     QDateTime hora = QDateTime::currentDateTime();
+     QString horastr = hora.toString(Qt::LocalDate);
+     
+     
+    
     // Escribir en archivo log.
-    *archivolog << qsTxt.ascii() << endl;
+    *archivolog << horastr.ascii()<< " " << qsTxt.ascii() << endl;
 }
