@@ -59,14 +59,14 @@ void BSelector::m_iglues_clicked() {
 //Boton para entrar en el modulo de TPV
 void BSelector::m_bulmatpv_clicked() {
    if (tipo != "BulmaFact" ) {
-      abreempresaview *empcont = new abreempresaview(0,2, "abreempresa", true, login, password);
+      abreempresaview *empcont = new abreempresaview(0,2, "abreempresa", true);
       empcont->exec();
       empresabd = empcont->empresabd;
       tipo = empcont->tipo;
    }// end while
    if (empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmatpv bulmatpv %s %s %s", empresabd.ascii(), login.ascii(), password.ascii());
+      sprintf(cadena,"bulmatpv bulmatpv %s %s %s", empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
       system (cadena);
    }// end if
 }// end m_bulmatpv_clicked
@@ -74,7 +74,7 @@ void BSelector::m_bulmatpv_clicked() {
 
 //Boton cambio de Empresa y/o Usuario
 void BSelector::seleccionaempresa_clicked() {
-   abreempresaview *empcont = new abreempresaview(0, 0,"abreempresa", true, login, password);
+   abreempresaview *empcont = new abreempresaview(0, 0,"abreempresa", true);
    empcont->exec();
    empresabd = empcont->empresabd;
    tipo = empcont->tipo;
@@ -87,14 +87,14 @@ void BSelector::seleccionaempresa_clicked() {
 // Boton para entrar en el modulo de CONTABILIDAD 
 void BSelector::contabilidad_clicked() {
    if (tipo != "BulmaGés" ) {
-      abreempresaview *empcont = new abreempresaview(0,1, "abreempresa", true, login, password);
+      abreempresaview *empcont = new abreempresaview(0,1, "abreempresa", true);
       empcont->exec();
       empresabd = empcont->empresabd;
       tipo = empcont->tipo;
    }// end while
    if (empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmacont bulmacont %s %s %s", empresabd.ascii(), login.ascii(), password.ascii());
+      sprintf(cadena,"bulmacont bulmacont %s %s %s", empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
       system (cadena);
    }// end if
 }// end contabilidad_clicked
@@ -119,14 +119,14 @@ void BSelector::almacen_clicked() {
 //Boton para entrar en el modulo de Facturación
 void BSelector::m_bulmafact_clicked() {
    if (tipo != "BulmaFact" ) {
-      abreempresaview *empcont = new abreempresaview(0,2, "abreempresa", true, login, password);
+      abreempresaview *empcont = new abreempresaview(0,2, "abreempresa", true);
       empcont->exec();
       empresabd = empcont->empresabd;
       tipo = empcont->tipo;
    }// end while
    if (empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmafact bulmafact %s %s %s", empresabd.ascii(), login.ascii(), password.ascii());
+      sprintf(cadena,"bulmafact bulmafact %s %s %s", empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
       system (cadena);
    }// end if
 }

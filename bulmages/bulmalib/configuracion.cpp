@@ -43,8 +43,10 @@ configuracion::configuracion() {
    leeconfig ((char *)dir1.c_str());
 
 //   valores[PRIVILEGIOS_USUARIO]= "1";
-   setValor(PRIVILEGIOS_USUARIO, "1");
-   setValor(ALERTAS_DB, "Yes");
+   setValor(CONF_PRIVILEGIOS_USUARIO, "1");
+   setValor(CONF_ALERTAS_DB, "Yes");
+   setValor(CONF_LOGIN_USER, "");
+   setValor(CONF_PASSWORD_USER, "");
       
 }// end configuracion
 

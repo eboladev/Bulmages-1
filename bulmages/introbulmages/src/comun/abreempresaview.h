@@ -54,9 +54,8 @@ private:
     QString password;
        
 public:
-   abreempresaview(BSelector *parent=0,int tipo=0, const char *name=0, bool modal=true, QString us="", QString pas="");
+   abreempresaview(BSelector *parent=0,int tipo=0, const char *name=0, bool modal=true);
    ~abreempresaview();
-   void inicializa(QString us, QString pas) {user=us;password=pas;};
   /// Listamos las nuevas bases de datos.
   /// Esta función en un principio es un intento por eliminar  la metabase.
   void listDB();

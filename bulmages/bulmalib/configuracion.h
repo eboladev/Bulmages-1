@@ -82,10 +82,16 @@ using std::string;
 
 // Los siguientes campos no entran en el archivo de configuración pq
 // Son utilizados por la propia aplicación.
-#define PRIVILEGIOS_USUARIO    420
+#define CONF_PRIVILEGIOS_USUARIO    420
 
 /// ALERTAS_DB Determina si los errores de la base de datos deben ser alertados via messagebox o no.
-#define ALERTAS_DB             421
+#define CONF_ALERTAS_DB             421
+
+/// CONF_LOGIN_USER    Determina el login de usuario. Inicialmente vale  ""
+#define CONF_LOGIN_USER             422
+
+/// CONF_PASSWORD_USER     Determina el password del usuario. Inicialmente vale ""
+#define CONF_PASSWORD_USER          423
 
 class configuracion {
     private:

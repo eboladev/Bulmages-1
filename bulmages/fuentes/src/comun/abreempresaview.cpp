@@ -127,7 +127,7 @@ Intentará listar todas las bases de datos.
 */
 void abreempresaview::listDB() {
 	// Desabilitamos las alertas para que no aparezcan warnings con bases de datos que no son del sistema.
-	confpr->setValor(ALERTAS_DB,"No");
+	confpr->setValor(CONF_ALERTAS_DB,"No");
 	postgresiface2 *db, *db1;
 	db = new postgresiface2();
 	db->inicializa(QString("template1"));
@@ -175,7 +175,7 @@ void abreempresaview::listDB() {
 	fprintf(stderr,"--------------------------------------------\n");
 	delete curs;
 	delete db;	
-	confpr->setValor(ALERTAS_DB,"Yes");
+	confpr->setValor(CONF_ALERTAS_DB,"Yes");
 
 }// end listDB
 

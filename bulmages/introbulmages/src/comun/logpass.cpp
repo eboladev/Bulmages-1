@@ -48,10 +48,8 @@ void logpass::validar() {
     
    //Si es valido abrimos el selector y si no mostramos un error y limpiamos el formulario
    if (authOK) {
-      BSelector *bw = new BSelector();
-      bw->setCaption( "BulmaGés Selector" );
-      bw->inicializa(login, password);
-      bw->show();          
+       	confpr->setValor(CONF_LOGIN_USER,login);
+	confpr->setValor(CONF_PASSWORD_USER,password);
       close();
    } else {
       lblAuthError->setText(tr("Error: usuario y/o contraseña incorrectos"));

@@ -33,15 +33,12 @@ class BSelector : public UIselector {
 
 public:
    QString empresabd;
-   QString login;
-   QString password;
    QString ejercicio;   // Indica el ejercicio si hace falta
    QString tipo;        // Indica si va a ser contabilidad o facturación
  
 public:
     BSelector(QWidget * parent=0,const char * name=0);
     ~BSelector();
-    void inicializa(QString us, QString pas) {login = us; password=pas;};
 
 public slots:
   virtual void seleccionaempresa_clicked();

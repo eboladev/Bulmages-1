@@ -1,6 +1,7 @@
 #include <qapplication.h>
 #include "configuracion.h"
 #include "logpass.h"
+#include "bselector.h"
 #include "postgresiface2.h"
 #include <qtextcodec.h>
 
@@ -21,17 +22,21 @@ if (confpr->valor(CONF_TRADUCCION) == "locales") {
 } else {
    string archivo = "bulmages_"+confpr->valor(CONF_TRADUCCION);
    traductor->load(archivo.c_str(),confpr->valor(CONF_DIR_TRADUCCION).c_str());
-}// end if
+}// end if    delete login1;
+
   a.installTranslator( traductor );
+    BSelector *bw = new BSelector();
+    bw->setCaption( "BulmaGés Selector" );
+    a.setMainWidget(bw);
     
-       
+     
     logpass *login1 = new logpass(0,"");
     if (!login1->authOK) {
-    	login1->show();
-    }
+	login1->exec();
+    }// end if
     
-    a.connect( &a, SIGNAL(lastWindowClosed()), &a, SLOT(quit()) );
+    bw->show();
     return a.exec();   //QLabel *lblAuthError;
-
+  //  delete login1;
     
 }// end main

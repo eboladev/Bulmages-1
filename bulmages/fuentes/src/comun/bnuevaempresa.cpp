@@ -15,18 +15,14 @@
 #include "bnuevaempresa.h"
 
 
-BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, WFlags f)
- : nuevaempresadlg(parent,name,f)
-{
+BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, WFlags f) : nuevaempresadlg(parent,name,f) {
 }
 
 
-BNuevaEmpresa::~BNuevaEmpresa()
-{
+BNuevaEmpresa::~BNuevaEmpresa() {
 }
 
-void BNuevaEmpresa::accept()
-{
+void BNuevaEmpresa::accept() {
   QString nombredb;
   QString nombreEmp;
   int ejercicio, idempresa=0, idSuperUser=0;

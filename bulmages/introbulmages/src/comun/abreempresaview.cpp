@@ -18,43 +18,9 @@
 
 
 
-abreempresaview::abreempresaview(BSelector *parent, int tipo, const char *name, bool modal, QString us, QString pass) : abreempresadlg(0,name,modal) {
+abreempresaview::abreempresaview(BSelector *parent, int tipo, const char *name, bool modal) : abreempresadlg(0,name,modal) {
    
-   padre = parent;
-   user = us;
-   password = pass;
- /**    
-   postgresiface2 *apuestatealgo;
-   apuestatealgo = new postgresiface2();
-   apuestatealgo->inicializa( confpr->valor(CONF_METABASE).c_str() );
-   QListViewItem *it;
-   cursor2 *a;
-   if (tipo==1 || tipo == 0) {
-      // Cargamos las contabilidades.
-      apuestatealgo->begin();
-      a=apuestatealgo->cargaempresas();
-      apuestatealgo->commit();
-      while (!a->eof()) {
-            insertCompany(a->valor(1),a->valor(2),a->valor(3),"BulmaCont");
-            a->siguienteregistro();
-      }// end while
-      delete a;
-   }// end if
-   if (tipo ==2 || tipo == 0) {   
-      // Cargamos las facturaciones.
-      apuestatealgo->begin();
-      a=apuestatealgo->cargacursor("SELECT * FROM empresafact","otroquery");
-      apuestatealgo->commit();
-      while (!a->eof()) {
-            insertCompany(a->valor(1),a->valor(2),a->valor(3),"BulmaFact");
-            a->siguienteregistro();
-      }// end while
-      delete a;
-   }// end if
-   delete apuestatealgo;
-   intentos=0;
-   
-*/   
+   padre = parent;   
    listDB();
 }// end abreempresaview
 
@@ -93,10 +59,10 @@ Intentará listar todas las bases de datos.
 */
 void abreempresaview::listDB() {
 	// Desabilitamos las alertas para que no aparezcan warnings con bases de datos que no son del sistema.
-	confpr->setValor(ALERTAS_DB,"No");
+	confpr->setValor(CONF_ALERTAS_DB,"No");
 	postgresiface2 *db, *db1;
 	db = new postgresiface2();
-	db->inicializa(QString("template1"), user, password);
+	db->inicializa(QString("template1"), confpr->valor(CONF_LOGIN_USER), confpr->valor(CONF_PASSWORD_USER));
 	db->begin();
 	QString nombre;
 	QString nomdb="";
@@ -106,10 +72,10 @@ void abreempresaview::listDB() {
 	db->commit();
 	fprintf(stderr,"LISTADO DE BASES DE DATOS DISPONIBLES\n");
 	fprintf(stderr,"--------------------------------------\n");
-	fprintf(stderr,"Usuario %s, Password %s\n", user.ascii(), password.ascii());
+	fprintf(stderr,"Usuario %s, Password %s\n", confpr->valor(CONF_LOGIN_USER).c_str(), confpr->valor(CONF_PASSWORD_USER).c_str());
 	while (! curs->eof()) {	
 		db1 = new postgresiface2();
-		db1->inicializa(curs->valor("datname"), user, password);
+		db1->inicializa(curs->valor("datname"), confpr->valor(CONF_LOGIN_USER), confpr->valor(CONF_PASSWORD_USER));
 		db1->begin();
 		cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre='Tipo'","masquery");
 		if (!curs1->eof() ) {
@@ -141,7 +107,7 @@ void abreempresaview::listDB() {
 	fprintf(stderr,"--------------------------------------------\n");
 	delete curs;
 	delete db;	
-	confpr->setValor(ALERTAS_DB,"Yes");
+	confpr->setValor(CONF_ALERTAS_DB,"Yes");
 
 }// end listDB
 

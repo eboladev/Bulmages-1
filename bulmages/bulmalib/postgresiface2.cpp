@@ -29,7 +29,7 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery){
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
          fprintf(stderr,"%s\n", PQerrorMessage(conn));
          fprintf(stderr, "DECLARE CURSOR command failed %s\n", Query.ascii());
-	 if (confpr->valor(ALERTAS_DB) == "Yes") 
+	 if (confpr->valor(CONF_ALERTAS_DB) == "Yes") 
 	 	QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la carga de un query de la base de datos\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
 	 PQclear(result);
          return;
@@ -261,7 +261,7 @@ int postgresiface2::ejecuta(QString Query) {
     PGresult *result;
     fprintf(stderr,"%s\n",Query.ascii());
     //Prova de control de permisos     
-    if (confpr->valor(PRIVILEGIOS_USUARIO) != "1" && (Query.left(6)=="DELETE" || Query.left(6)=="UPDATE" || Query.left(6)=="INSERT")) return (42501);
+    if (confpr->valor(CONF_PRIVILEGIOS_USUARIO) != "1" && (Query.left(6)=="DELETE" || Query.left(6)=="UPDATE" || Query.left(6)=="INSERT")) return (42501);
     //Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard
     result = PQexec(conn, Query.ascii());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
