@@ -328,19 +328,19 @@ END;
 --
 -- Se ejecutan las funciones para cambiar los tipos
 --
---SELECT convierteanumeric_cuenta();
---SELECT convierteanumeric_c_coste();
---SELECT convierteanumeric_acumulado_c_coste();
---SELECT convierteanumeric_acumulado_canal();
---SELECT convierteanumeric_apunte();
---SELECT convierteanumeric_borrador();
---SELECT convierteanumeric_registroiva();
---SELECT convierteanumeric_prevcobro();
---SELECT convierteanumeric_iva();
---SELECT convierteanumeric_mpatrimonial();
---SELECT convierteanumeric_compmasap();
---SELECT convierteanumeric_amortizacion();
---SELECT convierteanumeric_linamortizacion();
+SELECT convierteanumeric_cuenta();
+SELECT convierteanumeric_c_coste();
+SELECT convierteanumeric_acumulado_c_coste();
+SELECT convierteanumeric_acumulado_canal();
+SELECT convierteanumeric_apunte();
+SELECT convierteanumeric_borrador();
+SELECT convierteanumeric_registroiva();
+SELECT convierteanumeric_prevcobro();
+SELECT convierteanumeric_iva();
+SELECT convierteanumeric_mpatrimonial();
+SELECT convierteanumeric_compmasap();
+SELECT convierteanumeric_amortizacion();
+SELECT convierteanumeric_linamortizacion();
 
 --
 -- Y ahora borramos las funciones, para qué las queremos ya
@@ -709,7 +709,7 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-CREATE FUNCTION recalculasaldos2() RETURNS integer
+CREATE OR REPLACE FUNCTION recalculasaldos2() RETURNS integer
     AS '
 DECLARE
    niveles RECORD;
@@ -832,7 +832,7 @@ CREATE TRIGGER acumulados_canal_fk
     EXECUTE PROCEDURE acumulados_canal();
 
     
-    
+DROP FUNCTION inserttipoiva() CASCADE;
 CREATE OR REPLACE FUNCTION inserttipoiva () RETURNS "trigger"
 AS '
 DECLARE
@@ -850,6 +850,7 @@ CREATE TRIGGER nuevotipoiva
    FOR EACH ROW
    EXECUTE PROCEDURE inserttipoiva();
 
+DROP FUNCTION deletetipoiva() CASCADE;
 CREATE OR REPLACE FUNCTION deletetipoiva() RETURNS "trigger"
     AS '
 DECLARE
@@ -864,6 +865,10 @@ CREATE TRIGGER borratipoiva
    BEFORE DELETE ON tipoiva
    FOR EACH ROW
    EXECUTE PROCEDURE deletetipoiva();
-    
+   
+--
+-- Se añade el campo Código Postal a las cuenta porque se necesita ese dato en los listados para el modelo 347.
+--   
+ALTER TABLE cuenta ADD COLUMN cpent_cuenta character varying(5);
     
 COMMIT;
