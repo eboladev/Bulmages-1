@@ -99,7 +99,7 @@ public:
   void regularizaempresa();
   void maximiza();
   void Abrirasientos();
-  void Ordenarasientos();
+  void Ordenarasientos(int);
   void SegCuentas();
   void BalanceGrafico();
   void Filtro();

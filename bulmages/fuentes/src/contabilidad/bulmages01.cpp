@@ -64,10 +64,12 @@
 #include "images/help.xpm"
 #include "images/estadisticas.xpm"
 
-Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd) 
+Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd,QString * ejercicio) 
 : QMainWindow(parent,name,f) 
+
 {
   setCaption(tr("BulmaGés "));
+  Ejercicio =ejercicio->ascii();
   empresaactual.inicializa(DB,User,Passwd);
   initView();
   initActions();
@@ -994,7 +996,7 @@ void Bulmages01::slotAbrirasientos() {
 }// end slotAbrirasientos
 
 void Bulmages01::slotOrdenarasientos() {
-  empresaactual.Ordenarasientos();
+  empresaactual.Ordenarasientos(Ejercicio.toInt());
 }// end slotOrdenarasientos
 
 
