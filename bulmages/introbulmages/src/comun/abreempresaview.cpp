@@ -35,6 +35,7 @@ abreempresaview::abreempresaview(BSelector *parent, const char *name, bool modal
          it->setText(0,a->valor(1));
          it->setText(1,a->valor(2));
          it->setText(2,a->valor(3));
+         it->setText(3,"BulmaGés");
          a->siguienteregistro();
    }// end while
    delete a;
@@ -48,6 +49,7 @@ abreempresaview::abreempresaview(BSelector *parent, const char *name, bool modal
          it->setText(0,a->valor(1));
          it->setText(1,a->valor(2));
          it->setText(2,a->valor(3));
+         it->setText(3,"BulmaFact");
          a->siguienteregistro();
    }// end while
    delete a;
@@ -68,6 +70,7 @@ void abreempresaview::accept() {
    it = empresas->currentItem();
    empresabd= it->text(2);
    nombreempresa= it->text(0);
+   tipo = it->text(3);
    close();
 }// end accept
 

@@ -7,11 +7,8 @@ QApplication *theApp;
 
 int main( int argc, char ** argv ) {
     confpr = new configuracion();
-   
     QApplication a( argc, argv );
    
-    
-
     BSelector *bw = new BSelector();
     theApp = &a;
     bw->setCaption( "BulmaGés Selector" );

@@ -45,6 +45,7 @@ public:
    QString contrasena;
    QString empresabd;
    QString nombreempresa;
+   QString tipo;
    
 public:
    abreempresaview(BSelector *parent=0, const char *name=0, bool modal=true);

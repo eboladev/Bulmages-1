@@ -25,7 +25,8 @@
 #include <unistd.h>
 #endif
 
-#include "bselector.h"
+// #include "bselector.h"
+#include "bulmages01.h"
 #include "splashscreen.h"
 #include "configuracion.h"
 

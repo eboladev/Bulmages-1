@@ -86,9 +86,9 @@ public:
   int muestraapuntes1();
   int muestraasientos();
   int propiedadempresa();
-  int guardarempresa();
+//  int guardarempresa();
   int nuevaempresa();
-  int cargarempresa();
+//  int cargarempresa();
   int borrarempresa();
   int cambiarempresa();
   int libromayor();

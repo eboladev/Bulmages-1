@@ -1,5 +1,6 @@
 #!/bin/bash
 #  (C) Tomeu Borrás Riera, Setiembre 2004
+# Lo ejecuta un usuario con privilegios para crear bases de datos. Si no no funciona.
 #
 # Este script se encarga de crear bases de datos de bulmages.
 # para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos que será)
@@ -16,8 +17,8 @@
 #		$5 Ejercicio (ano)
 #		$6 La metabase en la que se mete la empresa.
 #
-# Este script debe ser ejecutado como ROOT
-# ----------------------------------------------------------------------------------------
+# La diferencia entre este script y el anterior es que este no hace falta que se ejecute como ROOT
+# ------------------------------------------------------------------------------------------------
 
 
 #Buscamos el parametro para saber si es texto o no
@@ -57,29 +58,34 @@ function linea {
    fi
 }
 
-rm /tmp/errores.txt
-touch /tmp/errores.txt
+rm /tmp/errores1.txt
+touch /tmp/errores1.txt
+
+
+#Nos situamos en el directorio correcto.
+cd /usr/share/bulmages/dbmodels
+
 
 info "Creamos la base de datos:$2 $3"
 linea
 tiempo
 
-su - postgres -c "dropdb  $2" 2>> /tmp/error.txt > /dev/null
-su - postgres -c "createdb -E SQL_ASCII $2" 2>> /tmp/errores.txt > /dev/null
+dropdb  $2 2>> /tmp/error.txt > /dev/null
+createdb -E SQL_ASCII $2 2>> /tmp/errores1.txt > /dev/null
 
 info "Comprobamos la existencia de PLPGSQL"
 ENC="0"
 if [ -e /usr/lib/postgresql/lib/plpgsql.so ]; then
    info "PostgreSQL esta bien instalado, la distribucion parece una Debian."
    tiempo
-   su - postgres -c "psql $2" < crear/bulmages/bulmages_debian.pgdump 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/bulmages_debian.pgdump 2>> /tmp/errores1.txt > /dev/null
    ENC="1"
 fi
 
 if [ -e /usr/lib/pgsql/plpgsql.so ]; then
    info "PostgreSQL esta bien instalado, la distribucion parece una Mandrake."
    tiempo
-   su -postgres -c "psql $2" < crear/bulmages/bulmages_mandrake.pgdump 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/bulmages_mandrake.pgdump 2>> /tmp/errores1.txt > /dev/null
    ENC="1"
 fi
 
@@ -103,11 +109,11 @@ fi
 if [ "$3" = "1" -o "$3" = "2" ]; then
    info "Importamos el esquema de base de datos de una empresa. \n"
    tiempo
-   su - postgres -c "psql $2" < crear/bulmages/bulmages_schema.pgdump 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/bulmages_schema.pgdump 2>> /tmp/errores1.txt > /dev/null
 else
    info "Importamos el esquema de la metabd. \n"
    tiempo
-   su - postgres -c "psql $2" < crear/metabd/metabd_schema.pgdump 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/metabd/metabd_schema.pgdump 2>> /tmp/errores1.txt > /dev/null
 fi
 
 
@@ -115,7 +121,7 @@ if [ "$3" = "3" ]; then
    # Cargamos la metabase
    info "Cargamos la metabase. \n"
    tiempo
-   su - postgres -c "psql $2" < crear/metabd/metabd_data.pgdump 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/metabd/metabd_data.pgdump 2>> /tmp/errores1.txt > /dev/null
 fi
 
 
@@ -123,10 +129,26 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo
    info "Cargamos el conjunto minimo de datos. \n"
    tiempo
-   su - postgres -c "psql $2" < crear/bulmages/t_configuracion_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_tiposiva_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_grupo_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_cuenta_data.pgdump 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_configuracion_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_tiposiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_grupo_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_cuenta_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   
+   # Hacemos las entradas oportunas para que funcione el ejercicio.
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 0, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 1, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 2, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 3, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 4, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 5, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 6, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 7, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 8, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 9, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 10, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 11, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   echo -e " INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES ($5, 12, FALSE)" | psql $2 >> /tmp/errores1.txt > /dev/null
+   
 fi
 
 
@@ -134,22 +156,22 @@ if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
    info "Cargamos datos adicionales. \n"
    tiempo
-   su - postgres -c "psql $2" < crear/bulmages/t_canal_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_c_coste_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_diario_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_asiento_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_apunte_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_borrador_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_registroiva_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_ainteligente_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_binteligente_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_ivainteligente_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_compmasap_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_compbalance_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_balance_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_amortizacion_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_linamortizacion_data.pgdump 2>> /tmp/errores.txt > /dev/null
-   su - postgres -c "psql $2" < crear/bulmages/t_ejercicios_data.pgdump 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_canal_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_c_coste_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_diario_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_asiento_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_apunte_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_borrador_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_registroiva_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_ainteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_binteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_ivainteligente_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_compmasap_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_compbalance_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_balance_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_amortizacion_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_linamortizacion_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+   psql $2 < crear/bulmages/t_ejercicios_data.pgdump 2>> /tmp/errores1.txt > /dev/null
 fi
 
 
@@ -158,28 +180,32 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo
    info "Creamos la empresa en la MetaBase. \n"
    tiempo
-   su - postgres -c "echo -e \" INSERT INTO empresa (nombre, ano, nombredb) VALUES ('$4', $5, '$2')\" | psql $6" 2>> /tmp/errores.txt   > /dev/null
+   echo -e " INSERT INTO empresa (nombre, ano, nombredb) VALUES ('$4', $5, '$2')" | psql $6 2>> /tmp/errores1.txt   > /dev/null
    #  Hacemos una actualizacion de las bases de datos.
-   su - postgres -c "echo -e \"\\pset tuples_only \n select MAX(idempresa) from empresa ;\" | psql metabd" > /tmp/listdb.lst
+   echo -e "\\pset tuples_only \n select MAX(idempresa) from empresa ;" | psql metabd > /tmp/listdb.lst
    for x in `tail +2 /tmp/listdb.lst`
    do
       info "Creamos los permisos necesarios. \n"
       tiempo
-      su - postgres -c "echo -e \"\\pset tuples_only \n select idusuario FROM usuario ;\" | psql metabd" > /tmp/listuser.lst
+      echo -e "\\pset tuples_only \n select idusuario FROM usuario ;" | psql metabd > /tmp/listuser.lst
       for y in `tail +2 /tmp/listuser.lst`
       do
-	    su - postgres -c " echo \"INSERT INTO usuario_empresa (idusuario,idempresa, permisos) VALUES ($y, $x, 1)\" | psql $6 "  2>> /tmp/errores.txt >> /tmp/errores.txt
+	    echo "INSERT INTO usuario_empresa (idusuario,idempresa, permisos) VALUES ($y, $x, 1)" | psql $6   2>> /tmp/errores1.txt >> /tmp/errores1.txt
 	    info "Damos permisos a $y, $x. \n"
       done
       linea
    done
 fi
 
-DBS=`cat /tmp/errores.txt | grep ERROR`
+DBS=`cat /tmp/errores1.txt | grep ERROR`
 if [ "$DBS" ]; then
    mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortará la instalacion. Para mas informacion consulte en bulmages@bulma.net. \n"
-   source ../deinstallbulmages $ptexto
+   dropdb $2
    exit 1
 else
    info "La instalacion de la base de datos $2 ha sido un exito. \n"
+    rm /tmp/errores1.txt
+    rm /tmp/listdb.lst
+    rm /tmp/listuser.lst
+    rm /tmp/error.txt
 fi

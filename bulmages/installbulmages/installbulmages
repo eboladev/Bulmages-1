@@ -25,6 +25,14 @@ else
   ptexto="--dialog"
 fi
 
+#Borramos antiguos archivos que puedan dar problemas
+rm /tmp/errores1.txt
+rm /tmp/errores.txt
+rm /tmp/listdb.lst
+rm /tmp/listuser.lst
+rm /tmp/error.txt
+
+
 
 function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
@@ -207,27 +215,6 @@ else
    if [ ! -e /usr/share/bulmages ]; then
       mkdir /usr/share/bulmages
    fi
-   
-   info "Creando bases de datos del sistema y empresas de ejemplo. \n"
-   tiempo
-   cd dbmodels
-   source creabulmages $ptexto metabd 3
-   source creabulmages $ptexto bulmages 2 Bulmages 2004 metabd
-   source creabulmages $ptexto bgplangcont 1 "Plan Contable Vacio" 2004 metabd
-   cd ..
-   
-  
-   # Tratamos el archivo de configuracion
-   info "Instalando la nueva version del archivo de configuracion. \n"
-   cp bulmages.conf /etc
-
-   # Presentamos los errores acaecidos
-   cat /tmp/errores.txt | grep ERROR
-   
-
-   # Dejamos que la inserción del usuario la haga una función y asi encapsulamos un poco.
-   lee
-fi
 
 # Copiamos todos los archivos de la nueva version a sus localizaciones normales.
 info "Instalando archivos de imagenes de Splash y de logotipo. \n"
@@ -258,6 +245,28 @@ cp -r css /usr/share/bulmages
 cp -r icons /usr/share/bulmages
 cp -r traducciones /usr/share/bulmages
 cp -r formularios /usr/share/bulmages
+
+
+   
+   info "Creando bases de datos del sistema y empresas de ejemplo. \n"
+   tiempo
+   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto metabd 3"
+   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bulmages 2 Bulmages 2004 metabd"
+   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bgplangcont 1 \"Plan Contable Vacio\" 2004 metabd"
+   
+  
+   # Tratamos el archivo de configuracion
+   info "Instalando la nueva version del archivo de configuracion. \n"
+   cp bulmages.conf /etc
+
+   # Presentamos los errores acaecidos
+   cat /tmp/errores.txt | grep ERROR
+   
+
+   # Dejamos que la inserción del usuario la haga una función y asi encapsulamos un poco.
+   lee
+fi
+
 
 info "Realizando la instalacion de BContaWeb. \n"
 tiempo

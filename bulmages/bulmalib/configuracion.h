@@ -94,7 +94,9 @@ class configuracion {
         string valor(int);
         void setValor(int, string);
         void leeconfig(char *);
+        void saveconfig();
         void cargarEntorno(QString);   
+        string nombre(int);
 };
 
 

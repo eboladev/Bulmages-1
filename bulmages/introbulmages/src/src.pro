@@ -8,7 +8,7 @@ CONFIG += release \
 warn_on \
 thread \
 qt
-TARGET = ../bin/introbulmages
+TARGET = ../bin/bulmages
 LIBS += -lpq \
 	../../bulmalib/libbulmalib.a
 	
@@ -16,19 +16,23 @@ SOURCES += main.cpp \
            comun/bselector.cpp \
            comun/abreempresaview.cpp \
            comun/bconfiguracion.cpp \
-           comun/logpass.cpp 
+           comun/logpass.cpp  \
+	   comun/bnuevaempresa.cpp
 HEADERS += comun/bselector.h \
            comun/abreempresaview.h \
            comun/bconfiguracion.h \
-           comun/logpass.h 
+           comun/logpass.h \
+	   comun/bnuevaempresa.h
 IDLS += comun/uiselector.ui \
         comun/abreempresadlg.ui \
         comun/uiconfiguracion.ui \
-        comun/logpassbase.ui 
+        comun/logpassbase.ui \
+	comun/nuevaempresadlg.ui
 FORMS += comun/uiselector.ui \
          comun/abreempresadlg.ui \
          comun/uiconfiguracion.ui \
-         comun/logpassbase.ui 
+         comun/logpassbase.ui \
+	 comun/nuevaempresadlg.ui
 	 
 INCLUDEPATH += ../../bulmalib
 unix{

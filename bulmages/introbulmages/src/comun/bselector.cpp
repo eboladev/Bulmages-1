@@ -33,15 +33,16 @@ BSelector::BSelector(QWidget * parent,const char * name) : UIselector(parent,nam
 //Al crear el selector, todos los modulos estan cerrados = NULL
     logpass *loggin1 = new logpass(0,"");
     loggin1->exec();
-    fprintf(stderr,"Hemos aceptado y salido\n");
     loggin= loggin1->login;
     password= loggin1->password;
     delete loggin1;
+//    nombreempresa="";
+    empresabd="";
+    tipo="";
 }
 
 
-BSelector::~BSelector()
-{
+BSelector::~BSelector() {
 }
 
 //Boton Salir
@@ -70,10 +71,12 @@ void BSelector::compras_clicked() {
 
 //Boton cambio de Empresa y/o Usuario
 void BSelector::seleccionaempresa_clicked() {
-   abreempresaview *empcont = new abreempresaview(0, "hola", true);
+   abreempresaview *empcont = new abreempresaview(0, "abreempresa", true);
    empcont->exec();
    fprintf(stderr,"Hemos cambiado la empresa\n");
    empresabd = empcont->empresabd;
+   tipo = empcont->tipo;
+   
    // Cambiamos el nombre en la pantalla.
    nombreempresa->setText(empcont->nombreempresa);
    delete empcont;
@@ -82,32 +85,9 @@ void BSelector::seleccionaempresa_clicked() {
 
 // Boton para entrar en el modulo de CONTABILIDAD 
 void BSelector::contabilidad_clicked() {
-/*   
-   int pid;
-   int error;
-   //Abro Bulmages (contabilidad) con el nombre de la base de datos, Usuario y password
-   //que han sido introducidos al principio al cargar el selector de módulos.
-   // Cargamos la empresa guardada
-   char *args[10];
-   args[0]= (char *) "bulmages";
-   args[1]=(char *) "bulmages";
-   args[2]= (char *) empresabd.ascii();
-   args[3]=(char *) loggin.ascii();
-   args[4]=(char *) password.ascii();
-   args[5]=NULL;
-   if ((pid=fork()) < 0) {
-      perror ("Fork failed");
-      exit(errno);
-   }// end if
-   if (!pid) {
-      for (int i=0;i<5;i++) fprintf(stderr,"%s\n", args[i]);
-      string argumentos = "/home/tborras/bulmages/fuentes/bin/bulmages";
-      error = execvp(argumentos.c_str(),args);
-   }// end if
-   if (pid) {
-      waitpid (pid, NULL, 0);
-   }// end if  
-  */ 
+   while (tipo != "BulmaGés") {
+      seleccionaempresa_clicked();
+   }// end while
    char cadena[300];
    sprintf(cadena,"bulmages bulmages %s %s %s", empresabd.ascii(), loggin.ascii(), password.ascii());
    system (cadena);

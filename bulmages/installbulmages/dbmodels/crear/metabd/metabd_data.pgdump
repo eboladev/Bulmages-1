@@ -3,13 +3,13 @@ INSERT INTO usuario ( nombre, apellido1, apellido2, login, password) VALUES ('Bu
 INSERT INTO usuario ( nombre, apellido1, apellido2, login, password) VALUES ('Tomeu', 'Borras', 'Riera', 'tborras', 'tborras');
 
 
-INSERT INTO empresa (nombre, ano, nombredb, password, ejant) VALUES ('BulmaGes', 2004, 'bulmages', 'bulmages', 2003);
-INSERT INTO empresa (nombre, ano, nombredb, password, ejant) VALUES ('Empresa vacia', 2004, 'bgplangcont', 'bgplangcont', 2003);
+--INSERT INTO empresa (nombre, ano, nombredb, password, ejant) VALUES ('BulmaGes', 2004, 'bulmages', 'bulmages', 2003);
+--INSERT INTO empresa (nombre, ano, nombredb, password, ejant) VALUES ('Empresa vacia', 2004, 'bgplangcont', 'bgplangcont', 2003);
 
-INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (2,2,1);
-INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (1,2,1);
-INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (2,1,1);
-INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (2,2,1);
+--INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (2,2,1);
+--INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (1,2,1);
+--INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (2,1,1);
+--INSERT INTO usuario_empresa (idempresa, idusuario, permisos) VALUES (2,2,1);
 
 
 

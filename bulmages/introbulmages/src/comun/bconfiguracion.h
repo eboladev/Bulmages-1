@@ -45,8 +45,9 @@ public:
     ~BConfiguracion();
 private:
     BSelector* PunteroAlSelector;
-    void cargarFichaUtilidades();
+    void cargarFichaBulmages();
     void cargarFichaUsuarios();
+    void tablaconfiguracion();
 private slots:
   virtual void cerrar();
   virtual void listView1_currentChanged(QListViewItem *);

@@ -547,6 +547,7 @@ int empresa::modelo347() {
    return(0);
 }// end modelo347
 
+/*
 int empresa::guardarempresa() {
   char *args[4];
   int pid;
@@ -574,11 +575,12 @@ int empresa::guardarempresa() {
   }// end if
   return(0);  
 }// end guardarempresa
-
+*/
 
 /*************************************************************
  * Esta funcion carga una empresa previamente guardada
  *************************************************************/
+ /*
 int empresa::cargarempresa() {
   char *args[4];
   int pid;
@@ -614,11 +616,12 @@ int empresa::cargarempresa() {
   }// end if
   return(0);
 }// end cargarempresa
-
+*/
 
 /*************************************************************
  * Esta funcion borra la empresa actual
  *************************************************************/
+ 
 int empresa::borrarempresa() {
 //El proceso de borrado se realiza desde las herramientas el selector.
 /*  
@@ -751,8 +754,6 @@ void empresa::nuevoejercicio() {
     inicializa();
     inicializa1(pWorkspace);
     abreempresa();
-
-
 
 // Borramos los asientos anteriores
    char query1[500];

@@ -54,12 +54,13 @@ private slots:
   virtual void produccion_clicked();
   virtual void almacen_clicked();
   virtual void nominas_clicked();
+/*
 public:
     QString NombreUsuario;
     QString PasswordUsuario;
     QString NombreBaseDatos;
     QString ejercicioMetaDB;
-   
+*/ 
 };
 
 #endif

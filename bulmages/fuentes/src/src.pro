@@ -18,7 +18,7 @@ INCLUDEPATH = ../../bulmalib \
               ventas \
               formularios \
               /usr/include/qt 
-TARGET = ../bin/bulmages 
+TARGET = ../bin/bulmacont 
 CONFIG += release \
           warn_on 
 contabilidad/uibloqfecha.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/uibloqfecha.ui.target 
@@ -37,8 +37,6 @@ contabilidad/filtrarextractosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$co
 contabilidad/filtrarextractosdlg.ui.target = contabilidad/filtrarextractosdlg.ui 
 contabilidad/propiedemp.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/propiedemp.ui.target 
 contabilidad/propiedemp.ui.target = contabilidad/propiedemp.ui 
-contabilidad/nuevaempresadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/nuevaempresadlg.ui.target 
-contabilidad/nuevaempresadlg.ui.target = contabilidad/nuevaempresadlg.ui 
 contabilidad/ainteligentesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ainteligentesdlg.ui.target 
 contabilidad/ainteligentesdlg.ui.target = contabilidad/ainteligentesdlg.ui 
 contabilidad/ccostedlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ccostedlg.ui.target 
@@ -96,7 +94,6 @@ contabilidad/about.ui.target = contabilidad/about.ui
 TEMPLATE = app 
 FORMS += comun/uiselector.ui \
          comun/abreempresadlg.ui \
-         comun/uiconfiguracion.ui \
          contabilidad/about.ui \
          contabilidad/listcuentasdlg1.ui \
          contabilidad/cuentadlg.ui \
@@ -122,7 +119,6 @@ FORMS += comun/uiselector.ui \
          contabilidad/canaldlg.ui \
          contabilidad/ccostedlg.ui \
          contabilidad/ainteligentesdlg.ui \
-         contabilidad/nuevaempresadlg.ui \
          contabilidad/propiedemp.ui \
          contabilidad/filtrarextractosdlg.ui \
          contabilidad/extractoprintdlg.ui \
@@ -272,7 +268,6 @@ IDLS += contabilidad/about.ui \
         contabilidad/canaldlg.ui \
         contabilidad/ccostedlg.ui \
         contabilidad/ainteligentesdlg.ui \
-        contabilidad/nuevaempresadlg.ui \
         contabilidad/propiedemp.ui \
         contabilidad/filtrarextractosdlg.ui \
         contabilidad/extractoprintdlg.ui \
@@ -283,14 +278,11 @@ IDLS += contabilidad/about.ui \
         contabilidad/correctorwdt.ui \
         contabilidad/amortizacionesdlg.ui \
         contabilidad/uibloqfecha.ui 
-HEADERS += comun/bselector.h \
-           comun/abreempresaview.h \
+HEADERS += comun/abreempresaview.h \
            comun/splashscreen.h \
            comun/funcaux.h \
            comun/calendario.h \
            comun/qmcdatenav.h \
-           comun/bconfiguracion.h \
-           comun/bnuevaempresa.h \
            comun/bvisorempresas.h \
            contabilidad/bulmages01.h \
            contabilidad/aboutview.h \
@@ -351,14 +343,11 @@ HEADERS += comun/bselector.h \
            comun/selectcanalview.h \
            formularios/modelosps.h 
 SOURCES += main.cpp \
-           comun/bselector.cpp \
            comun/abreempresaview.cpp \
            comun/splashscreen.cpp \
            comun/calendario.cpp \
            comun/qmcdatenav.cpp \
            comun/funcaux.cpp \
-           comun/bconfiguracion.cpp \
-           comun/bnuevaempresa.cpp \
            comun/bvisorempresas.cpp \
            contabilidad/bulmages01.cpp \
            contabilidad/aboutview.cpp \

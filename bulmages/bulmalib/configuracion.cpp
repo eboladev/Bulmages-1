@@ -5,7 +5,7 @@
 // Description: 
 //
 //
-// Author: Tomeu Borr? Riera <tborras@conetxia.com>, (C) 2003
+// Author: Tomeu Borrás Riera <tborras@conetxia.com>, (C) 2003
 //
 // Copyright: See COPYING file that comes with this distribution
 //
@@ -39,140 +39,103 @@ configuracion::configuracion() {
    // Y  luego añadimos la configuracion local, asi los valores por defecto son los globales
    // Y los que estan en local sustituyen a los existentes.
    string dir1 = getenv("HOME");
-   dir1 = dir1 + CONFLOCAL;
-	leeconfig ((char *)dir1.c_str());
-
+   dir1 = dir1 + "/"+ CONFLOCAL;
+   leeconfig ((char *)dir1.c_str());
 }// end configuracion
 
 configuracion::~configuracion() {
 }// end ~configuracion
 
 
+string configuracion::nombre(int i) {
+if (i== CONF_BG_APUNTES) return "CONF_BG_APUNTES";
+if (i== CONF_FG_APUNTES) return "CONF_FG_APUNTES";
+if (i== CONF_BG_APUNTESA) return "CONF_BG_APUNTESA";
+if (i== CONF_FG_APUNTESA) return "CONF_FG_APUNTESA";
+if (i== CONF_FONTSIZE_APUNTES) return "CONF_FONTSIZE_APUNTES";
+if (i== CONF_FONTFAMILY_APUNTES) return "CONF_FONTFAMILY_APUNTES";
+
+if (i== CONF_BG_DIARIO) return "CONF_BG_DIARIO";
+if (i== CONF_FG_DIARIO1) return "CONF_FG_DIARIO1";
+if (i== CONF_FG_DIARIO2) return "CONF_FG_DIARIO2";
+if (i== CONF_FONTFAMILY_DIARIO) return "CONF_FONTFAMILY_DIARIO";
+if (i== CONF_FONTSIZE_DIARIO) return "CONF_FONTSIZE_DIARIO";
+if (i== CONF_CONTRAPARTIDA_DIARIO) return "CONF_CONTRAPARTIDA_DIARIO";
+if (i== CONF_CANAL_DIARIO) return "CONF_CANAL_DIARIO";
+if (i== CONF_CCOSTE_DIARIO) return "CONF_CCOSTE_DIARIO";
+
+if (i== CONF_BG_EXTRACTO) return "CONF_BG_EXTRACTO";
+if (i== CONF_BG_BALANCE) return "CONF_BG_BALANCE";
+if (i== CONF_BG_BALANCETREE) return "CONF_BG_BALANCETREE";
+if (i== CONF_CONTRAPARTIDA_EXTRACTO) return "CONF_CONTRAPARTIDA_EXTRACTO";
+if (i== CONF_CANAL_EXTRACTO) return "CONF_CANAL_EXTRACTO";
+if (i== CONF_CCOSTE_EXTRACTO) return "CONF_CCOSTE_EXTRACTO";
+
+if (i== CONF_CONTRAPARTIDA_APUNTES) return "CONF_CONTRAPARTIDA_APUNTES";
+if (i== CONF_CANAL_APUNTES) return "CONF_CANAL_APUNTES";
+if (i== CONF_CCOSTE_APUNTES) return "CONF_CCOSTE_APUNTES";
+
+if (i== CONF_METABASE) return "CONF_METABASE";
+if (i== CONF_SERVIDOR) return "CONF_SERVIDOR";
+if (i== CONF_PUERTO) return "CONF_PUERTO";
+
+if (i== CONF_NAVEGADOR) return "CONF_NAVEGADOR";
+if (i== CONF_EDITOR) return "CONF_EDITOR";
+if (i== CONF_SPLASH) return "CONF_SPLASH";
+if (i== CONF_BACKGROUND) return "CONF_BACKGROUND";
+
+if (i== CONF_EJECUTABLES) return "CONF_EJECUTABLES";
+if (i== CONF_PLANTILLA) return "CONF_PLANTILLA";
+
+if (i== CONF_TRADUCCION) return "CONF_TRADUCCION";
+if (i== CONF_DIR_TRADUCCION) return "CONF_DIR_TRADUCCION";
+if (i== CONF_ARCHIVO_LOG) return "CONF_ARCHIVO_LOG";
+if (i== CONF_DIR_REPORTS) return "CONF_DIR_REPORTS";
+
+if (i== CONF_FONTFAMILY_BULMAGES) return "CONF_FONTFAMILY_BULMAGES";
+if (i== CONF_FONTSIZE_BULMAGES) return "CONF_FONTSIZE_BULMAGES";
+
+if (i== CONF_PROGDATA) return "CONF_PROGDATA";
+
+return "";
+}// end nombre
+
+
+void configuracion::saveconfig() {
+   string dir1 = getenv("HOME");
+   dir1 = dir1 + "/"+CONFLOCAL;
+   fprintf(stderr,"CONFIGURACION LOCAL %s\n", dir1.c_str());
+   ofstream filestr((char *) dir1.c_str());
+   for (int i =0; i<500;i++) {
+      if (nombre(i) != "") {
+         filestr << nombre(i);
+         filestr << "   ";
+         filestr << valor(i);
+         filestr << endl;
+      }// end if
+   }// end for
+   filestr.close();
+}// end saveconfig
+
+
 void configuracion::leeconfig(char *fich) {
    ifstream filestr(fich);
   string a;
 	while (filestr.good()) {
-		filestr >> a;
-		if (a== "CONF_BG_APUNTES") {           /* Aqui van las configuraciones de la introduccion de apuntes */
-				filestr >> a;
-				valores[CONF_BG_APUNTES] = a;
-		} else if (a == "CONF_FG_APUNTES") {
-			   filestr >> a;
-				valores[CONF_FG_APUNTES] = a;
-		} else if (a == "CONF_FG_APUNTESA") {
-			   filestr >> a;
-				valores[CONF_FG_APUNTESA] = a;
-		} else if (a == "CONF_BG_APUNTESA") {
-			   filestr >> a;
-				valores[CONF_BG_APUNTESA] = a;
-		} else if (a == "CONF_FONTSIZE_APUNTES") {
-			   filestr >> a;
-				valores[CONF_FONTSIZE_APUNTES] = a;
-		} else if (a == "CONF_FONTFAMILY_APUNTES") {
-			   filestr >> a;
-				valores[CONF_FONTFAMILY_APUNTES] = a;
-		} else if (a == "CONF_CONTRAPARTIDA_APUNTES") {
-			   filestr >> a;
-				valores[CONF_CONTRAPARTIDA_APUNTES] = a;
-		} else if (a == "CONF_CANAL_APUNTES") {
-			   filestr >> a;
-				valores[CONF_CANAL_APUNTES] = a;
-		} else if (a == "CONF_CCOSTE_APUNTES") {
-			   filestr >> a;
-				valores[CONF_CCOSTE_APUNTES] = a;
-		} else if (a == "CONF_BACKGROUND") {
-			   filestr >> a;
-				valores[CONF_BACKGROUND] = a;
-		} else if (a == "CONF_SPLASH") {
-			   filestr >> a;
-				valores[CONF_SPLASH] = a;
-		} else if (a == "CONF_BG_DIARIO") {  /* Aqui van las configuraciones de diario */
-			   filestr >> a;
-				valores[CONF_BG_DIARIO] = a;
-		} else if (a == "CONF_FG_DIARIO1") {
-			   filestr >> a;
-				valores[CONF_FG_DIARIO1] = a;
-		} else if (a == "CONF_FG_DIARIO2") {
-			   filestr >> a;
-				valores[CONF_FG_DIARIO2] = a;
-		} else if (a == "CONF_FONTSIZE_DIARIO") {
-			   filestr >> a;
-				valores[CONF_FONTSIZE_DIARIO] = a;
-		} else if (a == "CONF_FONTFAMILY_DIARIO") {
-			   filestr >> a;
-				valores[CONF_FONTFAMILY_DIARIO] = a;
-		} else if (a == "CONF_CONTRAPARTIDA_DIARIO") {
-			   filestr >> a;
-				valores[CONF_CONTRAPARTIDA_DIARIO] = a;
-		} else if (a == "CONF_CANAL_DIARIO") {
-			   filestr >> a;
-				valores[CONF_CANAL_DIARIO] = a;
-		} else if (a == "CONF_CCOSTE_DIARIO") {
-			   filestr >> a;
-				valores[CONF_CCOSTE_DIARIO] = a;
-		} else if (a == "CONF_BG_EXTRACTO") {     /* Aqui van las configuraciones de extracto */
-			   filestr >> a;
-				valores[CONF_BG_EXTRACTO] = a;
-		} else if (a == "CONF_CONTRAPARTIDA_EXTRACTO") {
-			   filestr >> a;
-				valores[CONF_CONTRAPARTIDA_EXTRACTO] = a;
-		} else if (a == "CONF_CANAL_EXTRACTO") {
-			   filestr >> a;
-				valores[CONF_CANAL_EXTRACTO] = a;
-		} else if (a == "CONF_CCOSTE_EXTRACTO") {
-			   filestr >> a;
-				valores[CONF_CCOSTE_EXTRACTO] = a;
-		} else if (a == "CONF_BG_BALANCE") {   /*Aqui van las configuraciones de balance */
-			   filestr >> a;
-				valores[CONF_BG_BALANCE] = a;
-		} else if (a == "CONF_BG_BALANCETREE") {
-			   filestr >> a;
-				valores[CONF_BG_BALANCETREE] = a;
-		} else if (a == "CONF_METABASE") {    /* Aqui van las configuraciones de la base de datos */
-			   filestr >> a;
-				valores[CONF_METABASE] = a;
-		} else if (a == "CONF_SERVIDOR") {    
-			   filestr >> a;
-				valores[CONF_SERVIDOR] = a;
-		} else if (a == "CONF_PUERTO") {    
-			   filestr >> a;
-				valores[CONF_PUERTO] = a;
-		} else if (a == "CONF_EDITOR") {    /* Aqui van las configuraciones de los programas auxiliares */
-			   filestr >> a;
-				valores[CONF_EDITOR] = a;
-		} else if (a == "CONF_NAVEGADOR") { 
-			   filestr >> a;
-				valores[CONF_NAVEGADOR] = a;
-		} else if (a == "CONF_EJECUTABLES") {
-			   filestr >> a;
-				valores[CONF_EJECUTABLES] = a;
-		} else if (a == "CONF_PLANTILLA") {
-			   filestr >> a;
-				valores[CONF_PLANTILLA] = a;
-		} else if (a== "CONF_TRADUCCION") {
-				filestr >> a;
-				valores[CONF_TRADUCCION] = a;
-		} else if (a == "CONF_DIR_TRADUCCION") {
-				filestr >> a;
-				valores[CONF_DIR_TRADUCCION] = a;
-		} else if (a == "CONF_DIR_REPORTS") {
-				filestr >> a;
-				valores[CONF_DIR_REPORTS] = a;
-		} else if (a == "CONF_ARCHIVO_LOG") {
-				filestr >> a;
-				valores[CONF_ARCHIVO_LOG] = a;
-  		} else if (a == "CONF_PROGDATA") {
-				filestr >> a;
-				valores[CONF_PROGDATA] = a;
-
-		}// end if
+               filestr >> a;
+               for (int i=0;i<500;i++) {
+                  if (a==nombre(i)) {
+                     filestr >> a;
+                     valores[i] = a;
+                  }// end if
+               }// end for              
 		fprintf(stderr,"%s\n",a.c_str());
 	}// end while  
    filestr.close();
-valores[CONF_FONTFAMILY_BULMAGES]="Luxi Sans";
-valores[CONF_FONTSIZE_BULMAGES]= "12";
 valores[PRIVILEGIOS_USUARIO]= "1";
 }// end leeconfig
+
+
 
 void configuracion::cargarEntorno(QString baseDatos) {
 /*
