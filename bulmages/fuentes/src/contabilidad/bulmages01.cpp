@@ -1130,7 +1130,7 @@ void Bulmages01::slotAyuda() {
 
 
 void Bulmages01::slotAyudai() {
-   char *args[]={"http://www.conetxia.com/bulmages/manualindex.php?version=0.3.9","http://www.conetxia.com/bulmages/manualindex.php?version=0.3.9",NULL};
+   char *args[]={"http://www.conetxia.com/bulmages/manualindex.php?version=0.4.1","http://www.conetxia.com/bulmages/manualindex.php?version=0.4.1",NULL};
    int pid;
    int error;
 #ifndef WIN32

@@ -62,12 +62,8 @@ void ExtractoPrintView::pruebasRTK() {
 #ifdef REPORTS
 cursor2 *cursoraux;
 conexionbase->begin();
-
-cursoraux=conexionbase->cargacursor("SELECT ordenasiento, asiento.idasiento AS idasiento, cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY ordenasiento", "unquery");
-
+cursoraux=conexionbase->cargacursor("SELECT  cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY fecha", "unquery");
 conexionbase->commit();
-
-
 RTK::Report unReport;
 unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"extracto1.rtk");
 InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
@@ -75,7 +71,7 @@ inp->set(InputBGes::diario, empresaactual, cursoraux);
 OutputQPainter *salida = new OutputQPainter(A4, dots, 57, 59, 0,0,20,20,20,20);
 unReport.print(*salida);
 QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
-mViewer->setCaption(tr("GongReport", "Informe: "));
+mViewer->setCaption(tr("Extracto de Cuentas", "Informe: "));
 mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
 mViewer->setPageCollection(salida->getPageCollection());
 mViewer->show();

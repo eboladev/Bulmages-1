@@ -34,7 +34,7 @@ configuracion::configuracion() {
    chdir (dir.c_str());
 #endif    
    
-   // Primero leemos la configuracion local
+   // Primero leemos la configuracion global
    leeconfig (CONFGLOBAL);
    // Y  luego añadimos la configuracion local, asi los valores por defecto son los globales
    // Y los que estan en local sustituyen a los existentes.
@@ -109,7 +109,7 @@ void configuracion::leeconfig(char *fich) {
 				valores[CONF_CANAL_DIARIO] = a;
 		} else if (a == "CONF_CCOSTE_DIARIO") {
 			   filestr >> a;
-				valores[CONF_CCOSTE_EXTRACTO] = a;
+				valores[CONF_CCOSTE_DIARIO] = a;
 		} else if (a == "CONF_BG_EXTRACTO") {     /* Aqui van las configuraciones de extracto */
 			   filestr >> a;
 				valores[CONF_BG_EXTRACTO] = a;
