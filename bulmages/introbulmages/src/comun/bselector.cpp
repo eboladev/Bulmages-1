@@ -20,7 +20,7 @@
 
 
 #include "bselector.h"
-#include "logpass.h"
+//#include "logpass.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -31,14 +31,7 @@
 
 BSelector::BSelector(QWidget * parent,const char * name) : UIselector(parent,name) {
 //Al crear el selector, todos los modulos estan cerrados = NULL
-    logpass *loggin1 = new logpass(0,"");
-    loggin1->exec();
-    loggin= loggin1->login;
-    password= loggin1->password;
-    delete loggin1;
-//    nombreempresa="";
-    empresabd="";
-    tipo="";
+
 }
 
 
@@ -73,7 +66,7 @@ void BSelector::m_bulmatpv_clicked() {
    }// end while
    if (empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmatpv bulmatpv %s %s %s", empresabd.ascii(), loggin.ascii(), password.ascii());
+      sprintf(cadena,"bulmatpv bulmatpv %s %s %s", empresabd.ascii(), login.ascii(), password.ascii());
       system (cadena);
    }// end if
 }// end m_bulmatpv_clicked
@@ -102,7 +95,7 @@ void BSelector::contabilidad_clicked() {
    }// end while
    if (empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmacont bulmacont %s %s %s", empresabd.ascii(), loggin.ascii(), password.ascii());
+      sprintf(cadena,"bulmacont bulmacont %s %s %s", empresabd.ascii(), login.ascii(), password.ascii());
       system (cadena);
    }// end if
 }// end contabilidad_clicked
@@ -134,7 +127,7 @@ void BSelector::m_bulmafact_clicked() {
    }// end while
    if (empresabd != "") {
       char cadena[300];
-      sprintf(cadena,"bulmafact bulmafact %s %s %s", empresabd.ascii(), loggin.ascii(), password.ascii());
+      sprintf(cadena,"bulmafact bulmafact %s %s %s", empresabd.ascii(), login.ascii(), password.ascii());
       system (cadena);
    }// end if
 }

@@ -21,7 +21,7 @@
 
 // include files for QT
 #include <qvbox.h>
-#include <qapp.h>
+#include <qapplication.h>
 #include <qmainwindow.h>
 #include <qaction.h>
 #include <qworkspace.h>
@@ -32,7 +32,7 @@
 #include <qpopupmenu.h>
 #include <qaccel.h>
 #include <qtoolbutton.h>
-#include <qmsgbox.h>
+#include <qmessagebox.h>
 #include <qfiledialog.h>
 #include <qprinter.h>
 #include <qstring.h>

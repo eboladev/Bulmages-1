@@ -18,14 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include "logpass.h"
+#include "bselector.h"
 #include "postgresiface2.h"
 #include <qlineedit.h>
 #include <qstring.h>
+#include <qlabel.h>
 
 logpass::logpass(QWidget *parent, const char *name)
  : logpassbase(parent, name) {
    metabase = new postgresiface2();
    metabase->inicializa( confpr->valor(CONF_METABASE).c_str() );
+   authOK = false;
 }
 
 
@@ -35,16 +38,34 @@ logpass::~logpass() {
 
 void logpass::validar() {
 
-   login  = m_login->text();
+   login  = postgresiface2::sanearCadena(m_login->text());
    password = m_password->text();
    
+   //Comprobamos si es un usuario válido
    QString SQLQuery = "SELECT * FROM usuario WHERE login ='"+login+"'";
    metabase->begin();
    cursor2 *cur=metabase->cargacursor(SQLQuery,"selectusuario");
    metabase->commit();
    if (!cur->eof()) {
-      if (cur->valor("password") == password) close();
+      if (cur->valor("password") == password) {
+         authOK = true;
+      }
    }// end if
+   
+   //Si es valido abrimos el selector y si no mostramos un error y limpiamos el formulario
+   if (authOK) {
+      BSelector *bw = new BSelector();
+      bw->setCaption( "BulmaGés Selector" );
+      bw->login = login;
+      bw->password = password;
+      bw->show();          
+      close();
+   } else {
+      lblAuthError->setText(tr("Error: usuario y/o contraseña incorrectos"));
+      m_login->setText("");
+      m_password->setText("");
+      m_login->setFocus();
+   }
 }// end validar
 
 

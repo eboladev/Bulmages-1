@@ -104,6 +104,8 @@ public:
   int nuevoasiento(QString nombre, QString fecha, int numasiento=0, int clase=1);
   int cargaempresa(QString nomempresa, QString login, QString password);
   cursor2 *cargaempresas();
+  
+  static QString sanearCadena(QString cadena);
 
 private:
   int formatofecha();

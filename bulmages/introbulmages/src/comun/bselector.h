@@ -33,7 +33,7 @@ class BSelector : public UIselector {
 
 public:
    QString empresabd;
-   QString loggin;
+   QString login;
    QString password;
    QString ejercicio;   // Indica el ejercicio si hace falta
    QString tipo;        // Indica si va a ser contabilidad o facturación

@@ -32,6 +32,8 @@ Q_OBJECT
 public:
    QString login;
    QString password;
+   bool authOK;
+   
 private:
    postgresiface2 *metabase;
 

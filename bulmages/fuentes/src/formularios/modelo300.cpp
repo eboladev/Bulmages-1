@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <fstream>
 #include <iostream>
+#include <unistd.h>
 #include <qstring.h>
 #include <qcombobox.h>
 #include <qradiobutton.h>

@@ -13,6 +13,7 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 #include "bconfiguracion.h"
+#include <unistd.h>
 #include <qmessagebox.h>
 #include <errno.h>
 #include <qtable.h>

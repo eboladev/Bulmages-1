@@ -1,18 +1,21 @@
 #include <qapplication.h>
-#include "bselector.h"
 #include "configuracion.h"
+#include "logpass.h"
 #include "postgresiface2.h"
 
 QApplication *theApp;
 
 int main( int argc, char ** argv ) {
+    bool authOK;
+
     confpr = new configuracion();
     QApplication a( argc, argv );
    
-    BSelector *bw = new BSelector();
-    theApp = &a;
-    bw->setCaption( "BulmaGés Selector" );
-    bw->show();
+    logpass *login1 = new logpass(0,"");
+    login1->show();
+    
     a.connect( &a, SIGNAL(lastWindowClosed()), &a, SLOT(quit()) );
-    return a.exec();
+    return a.exec();   //QLabel *lblAuthError;
+
+    
 }// end main

@@ -641,3 +641,23 @@ int postgresiface2::cargaempresa(QString nomempresa, QString login, QString pass
     return nFields;
 }// end cargaempresa
 
+/**
+* Esta función estática devuelve una cadena "saneada" para pasarsela a Postgresql.
+* Neutraliza (escapes) los caracteres problemáticos por ser caracteres especiales
+* de Postgresql. Ejemplo, comillas, contrabarras,...
+*/
+QString postgresiface2::sanearCadena(QString cadena) {
+   int longitud;
+   char *buffer;
+   QString cadenaLimpia;
+   
+   longitud = cadena.length();
+   // Reservamos (la funcion de postgres lo necesita) un buffer del
+   // doble de caracteres + 1 que la cadena original
+   buffer = (char *)malloc(sizeof(char)*longitud*2+1);
+   PQescapeString(buffer, cadena.ascii(), longitud);
+   cadenaLimpia = buffer;
+   free(buffer);
+   return cadenaLimpia;
+}
+
