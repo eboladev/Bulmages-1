@@ -52,14 +52,14 @@ float fround(float n, unsigned d) {
   return floor(n*pow(10., d) + .5) / pow (10., d);
 }// end fround
 
-/********************************************************************************/
-/* Esta función convierte un numero con decimales a un entero. Usando la regla  */
-/* que si el el primer decimal es mayor a 5 se devuelve el entero superior.     */
-/********************************************************************************/
+/************************************************************************************/
+/* Esta función convierte un numero con decimales a un entero. Usando la regla      */
+/* que si el el primer decimal es mayor o igual  a 5 se devuelve el entero superior.*/
+/***********************************************************************************/
 int roundI(double valor) {
     int retorno;
     double mayor=floor(valor);
-    if ((mayor-valor) > 0.5)  retorno=(int)mayor-1;
+    if ((mayor-valor) >= 0.5)  retorno=(int)mayor-1;
     else retorno= (int)mayor;
     return retorno;
 }
