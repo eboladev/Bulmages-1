@@ -125,8 +125,8 @@ Bulmages01::~Bulmages01() {
   //delete cambiarEmpresa;
   delete libroMayor;
   delete libroDiario;  
-  delete perdygan;
-  delete balan;
+  //delete perdygan;
+  //delete balan;
   delete regiva;
   delete centrosCoste;
   delete canalesMenu;
@@ -147,6 +147,7 @@ Bulmages01::~Bulmages01() {
   //Al destruir la clase empresa no podemos seguir apuntando a un objeto que ya no existe.
   //es necesario eliminar la referencia a este objeto, por ejemplo aquí:
   //justo antes logeo la salida del usuario (René)
+  
   ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgDtt017","El usuario sale de bulmages01." ); 
   ctllog->setempresa(NULL);
 }
