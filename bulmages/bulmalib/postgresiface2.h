@@ -13,6 +13,12 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+ /** \file postgresiface2.h
+   * Fichero de deficiniciones de las clases \ref cursor2 y \ref postgresiface2
+   * los cuales definen la interficie de comunicación con el sistema motor de bases de datos
+   * Estas clases se basan en la clase libpq.
+   * \author Tomeu Borrás Riera
+   */
 #ifndef POSTGRESIFACE2_H
 #define POSTGRESIFACE2_H
 
@@ -32,8 +38,10 @@
 
 #include "configuracion.h"
 
-/** *@author Tomeu Borrás Riera */
-
+/** Esta clase provee toda la interacción necesaria con las consultas de base de datos
+  * Se carga normalmente a partir de la clase \ref postgresiface2 con el método \ref cargacursor
+  * Y crea las estructuras necesarias para recorrer un recordset de postgres
+  */
 class cursor2 {
 private:
    QString nomcursor;
@@ -109,6 +117,7 @@ public:
   static QString sanearCadena(QString cadena);
   void terminar();
   QString propiedadempresa(QString );
+  /// Returns the parent of a determinated account code.
   QString searchParent(QString);
   /// Returns the name of the database opened, if none as open then returns ""
   QString nameDB() {return dbName;};  

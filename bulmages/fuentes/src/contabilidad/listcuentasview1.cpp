@@ -110,9 +110,7 @@ int listcuentasview1::inicializa( ) {
     ListView1->clear();
 
     QString query = "SELECT * FROM cuenta where padre ISNULL ORDER BY padre";
-    conexionbase->begin();
     cursoraux1 = conexionbase->cargacursor(query,"elquery2");
-    conexionbase->commit();
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").ascii());
         idcuenta1 = atoi( cursoraux1->valor("idcuenta").ascii());
@@ -148,13 +146,8 @@ int listcuentasview1::inicializa( ) {
     }// end while
     delete cursoraux1;
 
-
-    conexionbase->begin();
-    //    cursoraux2=conexionbase->cargacuentas(-2);
     query = "SELECT * FROM cuenta WHERE padre IS NOT NULL ORDER BY padre";
     cursoraux2 = conexionbase->cargacursor(query, "cursor2");
-    conexionbase->commit();
-    //   cursoraux1->ultimoregistro();
     while (!cursoraux2->eof()) {
         padre = atoi(cursoraux2->valor(4).ascii());
         idcuenta1 = atoi(cursoraux2->valor("idcuenta").ascii());
@@ -193,9 +186,7 @@ int listcuentasview1::inicializa( ) {
     delete cursoraux2;
     // Vamos a cargar el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
     query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-    conexionbase->begin();
     cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
-    conexionbase->commit();
     numdigitos=cursoraux1->valor("valor").length();
     delete cursoraux1;
     inicializatabla();
@@ -206,12 +197,9 @@ int listcuentasview1::inicializa( ) {
 
 void listcuentasview1::inicializatabla()  {
     QString query;
-    //  tablacuentas->clear();
-
-    conexionbase->begin();
     query = "SELECT * FROM cuenta ORDER BY padre";
     cursor2 *cursoraux1 = conexionbase->cargacursor(query,"elquery");
-    conexionbase->commit();
+//    conexionbase->commit();
     tablacuentas->setNumRows(cursoraux1->numregistros());
     int i=0;
     while (!cursoraux1->eof()) {
@@ -250,9 +238,7 @@ void listcuentasview1::arbolcuentas(QListViewItem *itempadre, int padre ) {
     QString cadena;
     QString cadena1;
     int num, idcuenta;
-    conexionbase->begin();
     cursoraux = conexionbase->cargacuentas(padre);
-    conexionbase->commit();
     num = cursoraux->numregistros();
     while (!cursoraux->eof()) {
         it =new QListViewItem(itempadre);
@@ -425,7 +411,6 @@ void listcuentasview1::borrarcuenta()  {
                 idcuenta =atoi((char *) ot->text(cidcuenta).ascii());
             inicializa();
             QString cadena;
-            ;
             cadena.sprintf("%d",idcuenta);
             it = ListView1->findItem(cadena, cidcuenta, Qt::ExactMatch);
             ListView1->setCurrentItem(it);
