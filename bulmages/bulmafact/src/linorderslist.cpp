@@ -84,13 +84,18 @@ void linorderslist::chargeorder(QString idpedido_) {
    QString idalmacen;
 	
 	idpedido = idpedido_;
+	
 	m_netImport->setReadOnly(TRUE);
 	m_taxImport->setReadOnly(TRUE);
 	m_totalImport->setReadOnly(TRUE);
-   m_previsionDate->setDate(QDate::currentDate());
-   if (idpedido != "0") {
-   	companyact->begin();
-   	cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido, division WHERE idpedido="+idpedido+" and pedido.iddivision=division.iddivision","unquery");
+	m_netImport->setAlignment(Qt::AlignRight);
+	m_taxImport->setAlignment(Qt::AlignRight);
+	m_totalImport->setAlignment(Qt::AlignRight);
+	m_previsionDate->setText(QDate::currentDate().toString("dd/MM/yyyy"));
+	
+	if (idpedido != "0") {
+		companyact->begin();
+		cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido, division WHERE idpedido="+idpedido+" and pedido.iddivision=division.iddivision","unquery");
    	companyact->commit();
    	if (!cur->eof()) {
 	  	 	m_numpedido->setText(cur->valor("numpedido"));
@@ -109,7 +114,7 @@ void linorderslist::chargeorder(QString idpedido_) {
 
 void linorderslist::chargelinorders(QString idpedido) {
 // Cargamos datos generales pedido y proveedor
-   chargeorder(idpedido);
+	chargeorder(idpedido);
 	
 // Cargamos la tabla con las líneas del pedido
 	m_list->setNumRows( 0 );
@@ -181,6 +186,7 @@ void linorderslist::chargelinorders(QString idpedido) {
 	
 }// end chargelinorders
 
+
 void linorderslist::cargarcomboalmacen(QString idalmacen) {
 	m_cursorcombo2 = NULL;
    companyact->begin();
@@ -238,7 +244,21 @@ void linorderslist::almacenactivated(int a) {
 void linorderslist::accept() {
 	fprintf(stderr,"accept button activated\n");
 	
-	m_saveError = 0;
+	companyact->begin();
+	if (saveOrder()!=0){
+		companyact->rollback();
+	} else {
+		if (saveOrderLines()==0) {
+			companyact->commit();
+			close();
+		} else {
+			companyact->rollback();
+		}
+	}	
+} //end accept
+
+
+int linorderslist::saveOrder() {
 	QString SQLQuery;
 	
 	if (idpedido != "0") {
@@ -260,41 +280,32 @@ void linorderslist::accept() {
       SQLQuery += " , "+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem());
       SQLQuery += " ) ";
 	}
-	companyact->begin();
-	if (companyact->ejecuta(SQLQuery)!=0){
-		companyact->rollback();
-	} else {
-		saveOrderLines();
-		if (m_saveError == 0) {
-			companyact->commit();
-			close();
-		} else {
-			companyact->rollback();
-		}
-	}	
-} //end accept
+	return companyact->ejecuta(SQLQuery);
+} //end saveOrder
 
 
-void linorderslist::saveOrderLines() {
+int linorderslist::saveOrderLines() {
 	int i = 0;
-	while (i < m_list->numRows() && m_saveError==0) {
+	int error = 0;
+	while (i < m_list->numRows() && error==0) {
 		if (m_list->text(i,COL_REMOVE)=="S") {
 			if (m_list->text(i,COL_NUMLPEDIDO)!="") {
-				deleteOrderLine(i);
+				error = deleteOrderLine(i);
 			}
 		} else {
 			if (m_list->text(i,COL_NUMLPEDIDO)!="") {
-				updateOrderLine(i);
+				error = updateOrderLine(i);
 			} else {
-				insertOrderLine(i);
+				error = insertOrderLine(i);
 			}
 		}
 		i ++;
    }
+	return error;
 } // end saveOrderLines
 
 
-void linorderslist::updateOrderLine(int i) {
+int linorderslist::updateOrderLine(int i) {
 	QString SQLQuery = "UPDATE lpedido SET desclpedido='"+m_list->text(i,COL_DESCLPEDIDO)+"'";
 	SQLQuery += " , cantlpedido="+ m_list->text(i,COL_CANTLPEDIDO);
 	SQLQuery += " , pvdlpedido="+m_list->text(i,COL_PVDLPEDIDO);
@@ -304,11 +315,11 @@ void linorderslist::updateOrderLine(int i) {
 		SQLQuery += " , idalb_pro="+m_list->text(i,COL_IDALB_PRO);
 	}
 	SQLQuery += " WHERE idpedido ="+idpedido+" AND numlpedido="+m_list->text(i,COL_NUMLPEDIDO);
-	m_saveError = companyact->ejecuta(SQLQuery);
+	return companyact->ejecuta(SQLQuery);
 } //end updateOrderLine
 
 
-void linorderslist::insertOrderLine(int i) {
+int linorderslist::insertOrderLine(int i) {
 	QString SQLQuery ="";
 	if (m_list->text(i,COL_IDALB_PRO)!="") {
 		SQLQuery = "INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo, idalb_pro)";
@@ -326,13 +337,13 @@ void linorderslist::insertOrderLine(int i) {
 		SQLQuery += " , "+m_list->text(i,COL_IDALB_PRO);
 	}
 	SQLQuery += " ) ";
-	m_saveError = companyact->ejecuta(SQLQuery);
+	return companyact->ejecuta(SQLQuery);
 } //end insertOrderLine
 
 
-void linorderslist::deleteOrderLine(int line) {
+int linorderslist::deleteOrderLine(int line) {
 	QString SQLQuery = "DELETE FROM lpedido WHERE numlpedido ="+m_list->text(line,COL_NUMLPEDIDO);
-	m_saveError = companyact->ejecuta(SQLQuery);
+	return companyact->ejecuta(SQLQuery);
 } //end deleteOrderLine
 
 
@@ -357,11 +368,14 @@ void linorderslist::searchProvider() {
    while(!provlist->isHidden()) theApp->processEvents();
    this->setEnabled(true);
    
-   m_idprovider = provlist->idprovider();
-   m_cifprovider->setText(provlist->cifprovider());
-	providerChanged(m_idprovider);
-	m_combodivision->clear();
-	cargarcombodivision(m_idprovider, NULL);
+	QString tmpProvider = provlist->idprovider();
+	if (tmpProvider!="") {
+   	m_idprovider = tmpProvider;
+   	m_cifprovider->setText(provlist->cifprovider());
+		providerChanged(m_idprovider);
+		m_combodivision->clear();
+		cargarcombodivision(m_idprovider, NULL);
+	}
    delete provlist;
 }// end searchProvider
 
@@ -400,6 +414,7 @@ void linorderslist::valueOrderLineChanged(int row, int col) {
 			calculateImports();
 		}
 		case COL_PVDLPEDIDO: {
+			m_list->setText(row, COL_PVDLPEDIDO, m_list->text(row, COL_PVDLPEDIDO).replace(",","."));
 			calculateImports();
 		}
 	}
@@ -458,14 +473,12 @@ void linorderslist::searchArticle() {
 }// end searchProvider
 
 
-void linorderslist::removeOrderLin() {
-	
+void linorderslist::removeOrderLin() {	
 	if (m_list->currentRow() >= 0) {
 		int row = m_list->currentRow();
 		m_list->setText(row, COL_REMOVE, "S");
 		m_list->hideRow(row);
 	}
-	
 }// end removeOrderLin
 
 
@@ -478,10 +491,6 @@ void linorderslist::cancelOrderLinChanges() {
 
 
 void linorderslist::calculateImports() {
-	char stNetImport [50];
-	char stTaxImport [50];
-	char stTotalImport [50];
-	
 	int i = 0;
 	float netImport = 0;
 	float taxImport = 0;
@@ -492,29 +501,23 @@ void linorderslist::calculateImports() {
 		}
 		i ++;
    }
-	sprintf(stNetImport, "%0.2f", netImport);
-	sprintf(stTaxImport, "%0.2f", taxImport);
-	sprintf(stTotalImport, "%0.2f", netImport+taxImport);
-	QString qstNetImport(stNetImport);
-	QString qstTaxImport(stTaxImport);
-	QString qstTotalImport(stTotalImport);
-	m_netImport->setText(qstNetImport);
-	m_taxImport->setText(qstTaxImport);
-	m_totalImport->setText(qstTotalImport);
+	
+	m_netImport->setText(QString().sprintf("%0.2f", netImport));
+	m_taxImport->setText(QString().sprintf("%0.2f", taxImport));
+	m_totalImport->setText(QString().sprintf("%0.2f", netImport+taxImport));
 } // end calculateImports
 
 
-void linorderslist::updatePrevDate(const QDate &) {
-	char stPrevDate [50];
-	QDate previsionDate=m_previsionDate->date();
-	sprintf(stPrevDate, "%02d/%02d/%02d", previsionDate.day(), previsionDate.month(), previsionDate.year());
-	QString qstPrevDate(stPrevDate);
-	
-	
+void linorderslist::prevDateLostFocus() {
+   fprintf(stderr, "Prevision Date Lost Focus\n");
+   m_previsionDate->setText(normalizafecha(m_previsionDate->text()).toString("dd/MM/yyyy"));
+}// end neworder
+
+
+void linorderslist::applyPrevDate() {
 	int i = 0;
-	
 	while (i < m_list->numRows()) {
-		m_list->setText(i, COL_PREVLPEDIDO, qstPrevDate);
+		m_list->setText(i, COL_PREVLPEDIDO, m_previsionDate->text());
 		i ++;
    }
-} // end updatePrevDate
+} // end applyPrevDate

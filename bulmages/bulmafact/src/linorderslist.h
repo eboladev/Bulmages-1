@@ -31,13 +31,12 @@ class linorderslist : public linorderslistbase
 {
  Q_OBJECT
 public:
-   company *companyact;
-   QString idpedido;
-   cursor2 *m_cursorcombo;
-   cursor2 *m_cursorcombo2;
-   QString  m_idprovider;
+	company *companyact;
+	QString idpedido;
+	cursor2 *m_cursorcombo;
+	cursor2 *m_cursorcombo2;
+	QString  m_idprovider;
 	QString m_idArticle;
-	int m_saveError;
    
 public:
     linorderslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
@@ -51,28 +50,31 @@ public:
 	 
     
 private:
-	void saveOrderLines();
+	int saveOrderLines();
+	int saveOrder();
+	int insertOrderLine(int);
+	int updateOrderLine(int);
+	int deleteOrderLine(int);
+	
 	void manageArticle(int);
 	void cargarcombodivision(QString, QString);
 	void cargarcomboalmacen(QString);
 	void searchArticle();
-	void insertOrderLine(int);
-	void updateOrderLine(int);
-	void deleteOrderLine(int);
 	void cancelOrderLinChanges();
 	void calculateImports();
 
 public slots:
-    virtual void activated(int);
-    virtual void almacenactivated(int);
-    virtual void accept();
-    virtual void close() {delete this;};
-    virtual void neworderlin();
-    virtual void searchProvider();
-	 virtual void orderDateLostFocus();
-	 virtual void valueOrderLineChanged(int, int);
-	 virtual void removeOrderLin();
-	 virtual void updatePrevDate(const QDate &);
+	virtual void activated(int);
+	virtual void almacenactivated(int);
+	virtual void accept();
+	virtual void close() {delete this;};
+	virtual void neworderlin();
+	virtual void searchProvider();
+	virtual void orderDateLostFocus();
+	virtual void prevDateLostFocus();
+	virtual void valueOrderLineChanged(int, int);
+	virtual void removeOrderLin();
+	virtual void applyPrevDate();
 };
 
 #endif
