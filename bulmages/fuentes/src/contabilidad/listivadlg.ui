@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>747</width>
-            <height>788</height>
+            <width>746</width>
+            <height>575</height>
         </rect>
     </property>
     <property name="caption">
@@ -24,17 +24,11 @@
         </property>
         <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>layout14</cstring>
+                <cstring>layout4</cstring>
             </property>
             <hbox>
                 <property name="name">
                     <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>0</number>
                 </property>
                 <widget class="QToolButton">
                     <property name="name">
@@ -108,6 +102,17 @@
                         <cstring>finicial</cstring>
                     </property>
                 </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image4</iconset>
+                    </property>
+                </widget>
                 <widget class="QLabel">
                     <property name="name">
                         <cstring>textLabel1</cstring>
@@ -119,6 +124,17 @@
                 <widget class="QLineEdit">
                     <property name="name">
                         <cstring>ffinal</cstring>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image4</iconset>
                     </property>
                 </widget>
                 <spacer>
@@ -133,7 +149,7 @@
                     </property>
                     <property name="sizeHint">
                         <size>
-                            <width>79</width>
+                            <width>159</width>
                             <height>20</height>
                         </size>
                     </property>
@@ -151,37 +167,34 @@
                 <attribute name="title">
                     <string>Soportado</string>
                 </attribute>
-                <grid>
+                <widget class="QTable">
                     <property name="name">
-                        <cstring>unnamed</cstring>
+                        <cstring>tablasoportado</cstring>
                     </property>
-                    <property name="margin">
-                        <number>11</number>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>11</y>
+                            <width>700</width>
+                            <height>450</height>
+                        </rect>
                     </property>
-                    <property name="spacing">
-                        <number>6</number>
+                    <property name="numRows">
+                        <number>3</number>
                     </property>
-                    <widget class="QTable" row="0" column="0">
-                        <property name="name">
-                            <cstring>tablasoportado</cstring>
-                        </property>
-                        <property name="numRows">
-                            <number>3</number>
-                        </property>
-                        <property name="numCols">
-                            <number>3</number>
-                        </property>
-                        <property name="readOnly">
-                            <bool>true</bool>
-                        </property>
-                        <property name="sorting">
-                            <bool>false</bool>
-                        </property>
-                        <property name="selectionMode">
-                            <enum>SingleRow</enum>
-                        </property>
-                    </widget>
-                </grid>
+                    <property name="numCols">
+                        <number>3</number>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                    <property name="sorting">
+                        <bool>false</bool>
+                    </property>
+                    <property name="selectionMode">
+                        <enum>SingleRow</enum>
+                    </property>
+                </widget>
             </widget>
             <widget class="QWidget">
                 <property name="name">
@@ -516,6 +529,41 @@
                 </vbox>
             </widget>
         </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout5</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer4_2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>371</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Cerrar</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
     </vbox>
 </widget>
 <images>
@@ -530,6 +578,9 @@
     </image>
     <image name="image3">
         <data format="PNG" length="1547">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000005d24944415458859d9741681b571ac77f0a3a3c8302235041033e589042679542c7710f92f042e4f610175f54f662bb858ad28b4b0f4dc861137a58da4b4b2e4b4fbbdb1c16e25bdc43b7ea425d05b6cc3860476348c4186c98811866a086795081df41307b90a595ed19d99b7719be9979efff7dfff77ddffbbf4cb7d3050508904aa209ed42fbc6ddf7620050d007e4e007a51402c1b387bf642ebb5e76f8f232cf852f5662503496d6a8df32a9176611802d3dd6fd0dda4107fd5f8a72b51c03743bddcc45eb66ba9dee859edeb8bb1083a0b1b4c8971fdda7d8d7684987f5c316b6f4905b2ea2afa18e4278793c60e650a1f62400966d65d2d6cf58b635d1c3f2dd85b871abc1e27c9de5b7de6723fc111b89bf63633b0eca97101ca3367dce0ef18686ea030772e444220393225f5e5a61f66d93e6dc0a1b611b3becd072b7902f3c9413a03643ced23d9c5f9e1d6c05d7b4534e8ce35d914a9e021fb74150ad544ec07fe4d35f1ff064df41ee78c81370cbb63267f77a38bfdbe9662cdbca7020614650abd6e2b37857c6e940712ae116df5d3ca1bd8d1dbae868444701ca0d6033a46b773369f3c76dcbb632f80a38fffd4a92e79ad00045736985b0176013b0beff84e83040ee85a3c8d3984bb2874c9567cbf1f8f72b499edfb8fb5ebc7c7385bc26f008087d17fdea0cf250c2fe71622497b5bb9d6e66dc4ece01406623cc82c1e3b04d47ba04bffb08056ad33f57dfff0f1397ca015014733af4801e830e775583fe601f5f25f2343b5bfeb0168bac400910e2a442b282b017e121097b210850bf059013002c7cfe7e4c8e41fbed29440f7ef9dbe35309b9da5c8d9d5d27b5fe477d0088c5758d7fac3fa654286216fe00bd6342248f0e5a7cd7b3914721a0b1963531aecd522d18140b3a0f771e71e78bfbe7b665f593d5d8281ab8a18bbbebf2ec3fcf52cf868c655bd4aab598778a687f32a8bf3e4bf19a09bd80b02769fb0e22072a3aa661d4d1733a9110acfff01dea7bef3c787335d68b3acd669387ff7c487018308989d15950abd662f1ce0cc2ccc31b1a66a58eeb3b27a79ca43e6d108908c7f1503b12dc283972cde0f65f6ee3ed7b387b0ec1f3002774529918f501cbb6326ad3473a01ec4a9c276df499224a49cc6211910367cb433d0d93c19babb15ed0b9f7d77bb8db2e1b9b1b046180316fa017758ceb06e56a393e5b0da7fa80655b193643941b812ff17e75a94f1b9083d67607f562d007d2f6fc9bafbfc1dd72693d6d11bc0c087f0b09fd90c6ad06c6b4813967b2f0c78578bc1acee901cbb632b56a2d56283405ed7e07b2a076c364f0933dbff7f53d9c27ce08dc3bf4981253d0874845546f55913f48b80ee56a391ee64436ad770f9c1083d254a4473e6d70fbcfb771b75d5a3bff03d7b33a810af07c0fb2e0bdf0a8542ab8db2e64a156adc55dbb9b495544e34c08446ae48d0f1b03f0a72d642499ca4da11774644f32959d42e404c161007d28aa22baa123fb12de1a3031510f0cab23e9bc1fcaaeb3e3dbafbec50b3dec6d1b7924b9397f93d6cf2dc230449d74d2f171a1264cabdfa4f70bf585981c147345444e707c743c88360baaaf123562aa1e7815dbb86e60940c544ea1a3431ff4dce029b222717eaa1e78155b2088fa11f4c1531efab44ea4a2110349f34ff581a158781526ee7c7627362b26a54209792491a1c478dd40bd54f8be7f2e8712f5c050b12475ac49f6c79f7d1c1ba6c1da076b6c3ddfc2f33cb4a2465ecb63efd9a78ef00bf5c0203507757ad9c8f385fc083c3808e8bce85037ebb47f6ee31ffaa7d4f0393d9056ffc0c41bce6a7335165981f9b6c9da076b38fb0ec16ec0a39f1eb1f8ee22de91372abb897a20ad0f94abe5d89c33d1b33aada72d00cc39131d9d8080c5f9452af3154ad3a551e41b3f6db0bcb48c73e0e0380eee9e3bd28013f5409a8743262a73158c370d4ad74ae4737966b419d4550511acff7b1df7b94b65be425ecbd3fabe857be09ebbac4c6420c9b3717b78c331e74cb49c46feb53ca542090483369d5520e1c1df1f5c78173c6b5fea763c8c64c848dab84cc4679fff05bf429948c4a016e40000000049454e44ae426082</data>
+    </image>
+    <image name="image4">
+        <data format="PNG" length="256">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000000c7494441545885dd97410e84200c457f8da76235c7f088738c59f55acc069568ac400b35be9d89cae3b7201233c39319004208d1637066a679bb5a7e6347ff7e0000d3d851cfec092423378118c7b60111017854098e24c313c7a4aeeebb7b2ee19e80bbc07509f2c8a498a5e62d288f7b0263048494fa0914ae8e9796209ffdcd0efbd204560abe2ff602a55b7337814a6c052a9aaf8f40037d042a0e37760295cd672fd0888d4043f3d90a28d00b28660f4827a21ce9c5cae3bc7b09b604a871196921efdff33f969028da94b6502d0000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -569,6 +620,48 @@
         <receiver>listivadlg</receiver>
         <slot>menu_contextual1(int,int,const QPoint&amp;)</slot>
     </connection>
+    <connection>
+        <sender>pushButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>listivadlg</receiver>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>listivadlg</receiver>
+        <slot>boton_finicial()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1_2</sender>
+        <signal>clicked()</signal>
+        <receiver>listivadlg</receiver>
+        <slot>boton_ffinal()</slot>
+    </connection>
+    <connection>
+        <sender>finicial</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>listivadlg</receiver>
+        <slot>finicial_textChanged(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ffinal</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>listivadlg</receiver>
+        <slot>ffinal_textChanged(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>finicial</sender>
+        <signal>lostFocus()</signal>
+        <receiver>listivadlg</receiver>
+        <slot>finicial_lostFocus()</slot>
+    </connection>
+    <connection>
+        <sender>ffinal</sender>
+        <signal>lostFocus()</signal>
+        <receiver>listivadlg</receiver>
+        <slot>ffinal_lostFocus()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>doble_click_soportado( int, int, int, const QPoint &amp; )</slot>
@@ -577,6 +670,12 @@
     <slot>boton_print()</slot>
     <slot>menu_contextual( int, int, const QPoint &amp; )</slot>
     <slot>menu_contextual1( int, int, const QPoint &amp; )</slot>
+    <slot>boton_finicial()</slot>
+    <slot>boton_ffinal()</slot>
+    <slot>finicial_textChanged(const QString &amp;)</slot>
+    <slot>ffinal_textChanged(const QString &amp;)</slot>
+    <slot>finicial_lostFocus()</slot>
+    <slot>ffinal_lostFocus()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

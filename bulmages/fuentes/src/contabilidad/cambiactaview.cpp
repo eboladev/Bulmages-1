@@ -66,7 +66,24 @@ void cambiactaview::accept() {
 	if (ffinal != "") {
 		query = query + " AND fecha <= '"+ffinal+"'";
 	}// end if
+
 	
+	// Modificamos las contrapartidas de los borradores
+	QString query2 = "UPDATE borrador SET contrapartida = id_cuenta('"+destino+"') WHERE contrapartida = id_cuenta('"+origen+"')";
+	if (ainicial != "") {
+		query2 = query2 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= "+ainicial+")";
+	}// end if
+	if (afinal != "") {
+		query2 = query2 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= "+afinal+")";
+	}// end if
+	if (finicial != "") {
+		query2 = query2 + " AND fecha >= '"+finicial+"'";
+	}// end if
+	if (ffinal != "") {
+		query2 = query2 + " AND fecha <= '"+ffinal+"'";
+	}// end if
+	
+		
 	// Modificamos también los apuntes
 	QString query1 = "UPDATE apunte SET idcuenta = id_cuenta('"+destino+"') WHERE idcuenta = id_cuenta('"+origen+"')";
 	if (ainicial != "") {
@@ -76,15 +93,32 @@ void cambiactaview::accept() {
 		query1 = query1 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= "+afinal+")";
 	}// end if
 	if (finicial != "") {
-		query = query + " AND fecha >= '"+finicial+"'";
+		query1 = query1 + " AND fecha >= '"+finicial+"'";
 	}// end if
 	if (ffinal != "") {
-		query = query + " AND fecha <= '"+ffinal+"'";
+		query1 = query1 + " AND fecha <= '"+ffinal+"'";
+	}// end if
+	
+	// Modificamos también las contrapartidas de los apuntes
+	QString query3 = "UPDATE apunte SET contrapartida = id_cuenta('"+destino+"') WHERE contrapartida = id_cuenta('"+origen+"')";
+	if (ainicial != "") {
+		query3 = query3 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= "+ainicial+")";
+	}// end if
+	if (afinal != "") {
+		query3 = query3 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento <= "+afinal+")";
+	}// end if
+	if (finicial != "") {
+		query3 = query3 + " AND fecha >= '"+finicial+"'";
+	}// end if
+	if (ffinal != "") {
+		query3 = query3 + " AND fecha <= '"+ffinal+"'";
 	}// end if
 	
 	CONEXIONBASE->begin();
 	CONEXIONBASE->ejecuta(query);
 	CONEXIONBASE->ejecuta(query1);
+	CONEXIONBASE->ejecuta(query2);
+	CONEXIONBASE->ejecuta(query3);
 	CONEXIONBASE->commit();
 	
 	done(1);

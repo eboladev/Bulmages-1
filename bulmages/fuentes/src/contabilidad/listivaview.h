@@ -62,6 +62,12 @@ public slots:
   virtual void boton_print();
   virtual void menu_contextual(int, int, const QPoint &);
   virtual void menu_contextual1(int, int, const QPoint &);
+  virtual void boton_finicial();
+  virtual void boton_ffinal();
+  virtual void finicial_textChanged(const QString &);
+  virtual void ffinal_textChanged(const QString &);
+  virtual void finicial_lostFocus();
+  virtual void ffinal_lostFocus();
 };
 
 #endif

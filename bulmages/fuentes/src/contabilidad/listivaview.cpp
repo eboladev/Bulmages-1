@@ -18,6 +18,7 @@
 #include "ivaview.h"
 #include "modelo300.h"
 #include "empresa.h"
+#include "calendario.h"
 
 //Tabla Soportado
 #define  S_COL_FECHA 0
@@ -64,8 +65,8 @@ Mod300ps *modelo;
 listivaview::listivaview(empresa * emp, QString ejerActual, QWidget *parent, const char *name ) : listivadlg(parent,name) {
    empresaactual = emp;
    conexionbase = emp->bdempresa();
-  finicial->setText(normalizafecha("01/01/"+ejerActual).toString("dd/MM/yyyy"));
-  ffinal->setText(normalizafecha("31/12/"+ejerActual).toString("dd/MM/yyyy"));
+  finicial->setText(normalizafecha("01/01").toString("dd/MM/yyyy"));
+  ffinal->setText(normalizafecha("31/12").toString("dd/MM/yyyy"));
   modelo=new Mod300ps(this->parentWidget());
 }// end listivaview
 
@@ -403,6 +404,55 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
     delete popup;
 }// end contextmenu
 
+/** \brief ESta funcion responde a la pulsación del boton de busqueda de fecha inicial
+**/
+void listivaview::boton_finicial() {
+	finicial->setText("+");
+}// end boton_finicial
 
+void listivaview::finicial_textChanged( const QString & texto ) {
+    if (texto=="+") {
+        QList<QDate> a;
+        finicial->setText("");
+        calendario *cal = new calendario(0,0);
+        cal->exec();
+        a = cal->dn->selectedDates();
+        finicial->setText(a.first()->toString("dd/MM/yyyy"));
+        delete cal;
+    }// end if
+    if (texto=="*")
+        finicial->setText(QDate::currentDate().toString("dd/MM/yyyy") );
+}//fin fechaasiento1_textChanged
+
+
+/** Esta función responde a la pulsación del boton de busqueda de fecha final
+**/
+void listivaview::boton_ffinal() {
+	ffinal->setText("+");
+}// end boton_ffinal
+
+
+void listivaview::ffinal_textChanged( const QString & texto ) {
+    if (texto=="+") {
+        QList<QDate> a;
+        ffinal->setText("");
+        calendario *cal = new calendario(0,0);
+        cal->exec();
+        a = cal->dn->selectedDates();
+        ffinal->setText(a.first()->toString("dd/MM/yyyy"));
+        delete cal;
+    }// end if
+    if (texto=="*")
+        ffinal->setText(QDate::currentDate().toString("dd/MM/yyyy") );
+}//fin fechaasiento1_textChanged
+
+
+void listivaview::finicial_lostFocus() {
+  finicial->setText(normalizafecha(finicial->text()).toString("dd/MM/yyyy"));
+}// end return_fechainicial
+
+void listivaview::ffinal_lostFocus() {
+  ffinal->setText(normalizafecha(ffinal->text()).toString("dd/MM/yyyy"));
+}// end return_fechainicial
 
 
