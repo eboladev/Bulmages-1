@@ -68,7 +68,7 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
 : QMainWindow(parent,name,f) {
   //Si no existe un ejercicio en la tabla "ejercicios" entonces usamos el ejercicio de la MetaDB
   Ejercicio = confpr->valor(EJERCICIO_ACTUAL).c_str();
-  if (Ejercicio =="0000") Ejercicio = *ejercicioMetaDB;
+  if (Ejercicio =="") Ejercicio = *ejercicioMetaDB;
   setCaption(tr("BulmaGés ") + Ejercicio);
   DBName=*DB;
   confpr->setValor(EJERCICIO_ACTUAL,Ejercicio.ascii());

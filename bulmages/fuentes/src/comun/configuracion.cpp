@@ -172,7 +172,7 @@ void configuracion::cargarEntorno(QString baseDatos) {
     recordSet = DBConn.cargacursor(query,"recordSet");
     DBConn.commit();
     if (!recordSet->eof()) valores[EJERCICIO_ACTUAL]=recordSet->valor("ejercicio").ascii();
-    else valores[EJERCICIO_ACTUAL]="0000";
+    else valores[EJERCICIO_ACTUAL]="";
 }
 
 
