@@ -17,6 +17,9 @@ proyectos en la misma línea que el nuestro, organizacione afines, ...</p>
 <A HREF="http://www.fisterra.org" TARGET="nueva">Fisterra</A><BR>
 <P>Fisterra es un proyecto que ha realizado una facturación</P>
 
+<A HREF="http://galopin.sinuh.org" TARGET="nueva">Galopín</A><BR>
+<P>Es un sencillo programa de facturación y control de existencias, liberado bajo licencia GPL, realizado en lenguaje PHP y utilizando como motor de bases de datos MySQL. Pensado para una pequeña empresa permite su utilización en una red local.</P>
+
 
 
 
