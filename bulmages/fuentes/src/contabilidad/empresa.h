@@ -63,6 +63,7 @@ public:
   postgresiface2 *bdempresa() {return (conexionbase2);}
   intapunts3view *intapuntsempresa() {return(introapunts1);}
   int numdigitosempresa() { return(numdigitos);}
+  QString nomuserempresa() { return(nombre);}
   int inicializa(QString * DB=0, QString * User=0, QString * Passwd=0);
   int muestracuentas();
   int nuevacuenta();

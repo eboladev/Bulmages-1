@@ -40,9 +40,7 @@ class BModAlmacen;
 class BModProduccion;
 class BModNominas;
 
-/**
-@author Josep Burcion
-*/
+/** @author Josep Burcion */
 
 class BSelector : public UIselector {
  Q_OBJECT

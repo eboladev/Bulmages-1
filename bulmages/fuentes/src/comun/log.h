@@ -24,6 +24,14 @@
 #include <fstream>
 using namespace std;
 
+#include "empresa.h"
+
+// Estos tipos son utilizados para poder hacer los logs. Se llaman con la función add.
+#define LOG_SEG 1
+#define LOG_SIS 2
+#define LOG_DBD 4
+#define LOG_TRA 8
+
 
 
 /**
@@ -31,14 +39,17 @@ We want to log everything
 @author Fco. Javier MC, Jean René Mérou, Víctor G. Marimón
 */
 
+
+
 class bitacora {
 private:
     ofstream *archivolog;
-
+    empresa *empresaactual;
+    
 public:
     bitacora();
-    void add
-        (QString);
+    void add(int , QString);
+    void setempresa(empresa *emp) {empresaactual=emp;}
 
     ~bitacora();
 };

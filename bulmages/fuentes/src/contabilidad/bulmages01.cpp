@@ -32,6 +32,9 @@
 #include "actualizacionesview.h"
 //#include "usuariosview.h"
 
+// Inclusiones para el log
+#include "log.h"
+
 //Inclusión de las imagenes.
 #include "images/filenew.xpm"
 #include "images/fileopen.xpm"
@@ -75,6 +78,10 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
   viewToolBar->setOn(true);
   viewStatusBar->setOn(true);
   viewCorrector->setOn(true);
+  
+  // Le indicamos al sistema de log cual va a ser la empresa.
+  
+  ctllog->setempresa(&empresaactual);
 }// end Bulmages01
 
 

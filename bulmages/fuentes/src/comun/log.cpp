@@ -18,6 +18,7 @@
  ***************************************************************************/
 #include "log.h"
 #include "configuracion.h"
+#include "empresa.h"
 
 #include <qdatetime.h>
 
@@ -28,6 +29,8 @@ bitacora::bitacora() {
     // abre archivo Log.
     archivolog = new ofstream(confpr->valor(CONF_ARCHIVO_LOG).c_str(),ios::out |
                               ios::app);
+			      
+    empresaactual = NULL;
 }
 
 
@@ -36,12 +39,25 @@ bitacora::~bitacora() {
     archivolog->close();
 }
 
-void bitacora::add (QString qsTxt) {
+void bitacora::add (int tipoLog, QString qsTxt ) {
      QDateTime hora = QDateTime::currentDateTime();
      QString horastr = hora.toString(Qt::LocalDate);
+     QString tipoLogtxt;
      
-     
-    
+    /*switch(tipoLog) { //  Lo he comentado porque el tipoLogtxt podría ser variado si se considera que el numero puede ser tipo filtro
+    	case LOG_SEG:
+		tipoLogtxt = "SEG";
+	break;
+	case LOG_SIS:
+		tipoLogtxt = "SIS";
+	break;
+    }// end tipoLog
     // Escribir en archivo log.
-    *archivolog << horastr.ascii()<< " " << qsTxt.ascii() << endl;
+    *archivolog << tipoLog << ", " << tipoLogtxt.ascii() << ", " << horastr.ascii() << ", " empresaactual->nomuserempresa().ascii() << ", " << qsTxt.ascii() << endl;
+    */
+   if (empresaactual != NULL) {
+    *archivolog << tipoLog <<  ", " << horastr.ascii() << ", " << empresaactual->nomuserempresa().ascii() << ", " << qsTxt.ascii() << endl;
+   } else {
+    *archivolog << tipoLog <<  ", " << horastr.ascii() << ", "  <<  ", " << qsTxt.ascii() << endl;
+   }// end if
 }
