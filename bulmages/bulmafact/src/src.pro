@@ -12,6 +12,11 @@ LIBS += ../../bulmalib/libbulmalib.a \
 -lpq
 INCLUDEPATH += ../../bulmalib
 TARGET = ../../installbulmages/bulmafact
+TRANSLATIONS += bulmafact_es.ts \
+		bulmafact_ca.ts \
+		bulmafact_en.ts \
+		bulmafact_fr.ts \
+		bulmafact_de.ts 
 SOURCES += bulmafact.cpp \
 	main.cpp \
 	company.cpp \
