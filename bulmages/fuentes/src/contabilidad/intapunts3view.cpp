@@ -59,7 +59,7 @@
 
 intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name ) : intapunts3dlg(parent,name) {
     empresaactual = emp;
-    
+    idasiento=-1;
     tapunts = new QTable1(this,"");
     tapunts->setGeometry( QRect( 10, 75, 693, 260 ) );
     tapunts->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)1, 0, 0, tapunts->sizePolicy().hasHeightForWidth() ) );
@@ -333,9 +333,9 @@ void intapunts3view::muestraasiento(int numasiento) {
         fechaasiento2 = cursoraux->valor(2);
     }// end if
     delete cursoraux;
-    cursoraux=conexionbase->cargaapuntes(atoi(IDASIENTO));
+    cursoraux=conexionbase->cargaapuntes(numasiento);
     num2 = cursoraux->numregistros();
-    cursoraux1=conexionbase->cargaborradores(atoi(IDASIENTO));
+    cursoraux1=conexionbase->cargaborradores(numasiento);
     num = cursoraux1->numregistros();
     if (num2 != num) {
         // El asiento esta abierto y por tanto se muestra como abierto
@@ -348,7 +348,7 @@ void intapunts3view::muestraasiento(int numasiento) {
     delete cursoraux;
     // Como ya hemos hecho los ajustes para que lo que se
     // muestre sea correcto, llamamos a la funcionde repintar.
-    repinta(atoi(IDASIENTO));
+    repinta(numasiento);
     rowactual  =-1;
 }// end muestraasiento
 
@@ -376,7 +376,6 @@ void intapunts3view::flashAsiento(int numasiento) {
  * a que nos muestre un asiento determinado.
  ******************************************************************/
 void intapunts3view::repinta(int numasiento) {
-    int idasiento;
     cursor2 *cursorasiento, *cursoraux, *cursoriva;
     QString cadena, ordenAsiento, query, fechaasiento2;
     int num, i;
@@ -388,15 +387,14 @@ void intapunts3view::repinta(int numasiento) {
         return;
     }// end if
     */
-    idasiento=numasiento;
-    fprintf(stderr,"repinta: idasiento %d\n",idasiento);
+    fprintf(stderr,"repinta: idasiento %d\n",numasiento);
     //   float debe,haber;
     //   float totaldebe=0, totalhaber=0;
-    //   vaciarapuntes();
+    //vaciarapuntes();
     conexionbase->begin();
-    query.sprintf("SELECT * FROM asiento where idasiento=%d",idasiento);
+    query.sprintf("SELECT * FROM asiento where idasiento=%d",numasiento);
     cursoraux = conexionbase->cargacursor(query,"uncursor");
-    query.sprintf("SELECT borrador.debe, borrador.haber, borrador.conceptocontable, borrador.idborrador, borrador.idc_coste, borrador.idcanal,cuenta.codigo,cuenta.idcuenta, cuenta.descripcion AS desccuenta, borrador.fecha AS borrfecha , borrador.contrapartida AS contrapartida FROM  borrador, cuenta WHERE borrador.idasiento=%d AND cuenta.idcuenta=borrador.idcuenta ORDER BY orden",idasiento);
+    query.sprintf("SELECT borrador.debe, borrador.haber, borrador.conceptocontable, borrador.idborrador, borrador.idc_coste, borrador.idcanal,cuenta.codigo,cuenta.idcuenta, cuenta.descripcion AS desccuenta, borrador.fecha AS borrfecha , borrador.contrapartida AS contrapartida FROM  borrador, cuenta WHERE borrador.idasiento=%d AND cuenta.idcuenta=borrador.idcuenta ORDER BY orden",numasiento);
     cursorasiento = conexionbase->cargacursor(query,"micursor");
     conexionbase->commit();
     num = cursoraux->numregistros();
@@ -550,7 +548,8 @@ void intapunts3view::asientocerradop() {
  *********************************************************************/
 void intapunts3view::boton_abrirasiento() {
     conexionbase->begin();
-    if ((conexionbase->abreasiento(atoi(IDASIENTO)))==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
+    if (idasiento==-1) idasiento=atoi(IDASIENTO);
+    if ((conexionbase->abreasiento(idasiento))==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
     conexionbase->commit();
     asientoabiertop();
 }// end boton_abrirasiento
@@ -595,15 +594,18 @@ void intapunts3view::boton_cerrarasiento() {
     }// end while
 
         // Realizamos la operación en la base de datos.
+    if (idasiento==-1) idasiento=atoi(IDASIENTO);
     conexionbase->begin();
-    conexionbase->cierraasiento(atoi(IDASIENTO));
+    //conexionbase->cierraasiento(atoi(IDASIENTO));
+    conexionbase->cierraasiento(idasiento);
     conexionbase->commit();
     asientocerradop();
 
     // Como pueden haber cambiado cosas, hacemos un repintado para que se actualizen
-    repinta(atoi(IDASIENTO));
+    repinta(idasiento);
     fechaasiento1->selectAll();
     fechaasiento1->setFocus();
+    idasiento=-1;
 
 // Hay un problema con la comprobación
 // Se borran asientos que no estan vacios
@@ -631,13 +633,14 @@ void intapunts3view::boton_nuevoasiento() {
  * Esta funcion se encarga de hacer las inicializaciones en un asiento nuevo
  ********************************************************************************/
 void intapunts3view::iniciar_asiento_nuevo() {
-    int numasiento;
     asientoview *nuevoasiento = new asientoview;
     nuevoasiento->inicializa(conexionbase);
-    numasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0);
+    idasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0);
     delete nuevoasiento;
-    cargarcursor(numasiento);
-    muestraasiento(numasiento);
+    if ( normalizafecha(fechaasiento1->text()).year() == atoi(confpr->valor(EJERCICIO_ACTUAL).c_str()) ) {
+        cargarcursor(idasiento);
+        muestraasiento(idasiento);
+    } else flashAsiento(idasiento);
     boton_abrirasiento();
 
     tapunts->setText(0,0,fechaasiento1->text());
@@ -1000,6 +1003,7 @@ void intapunts3view::guardaborrador(int row) {
     QString idc_coste;
     int datos=0;
     fprintf(stderr,"guardaborrador: row:%d rowactual:%d\n",row, row);
+    if (idasiento==-1) idasiento=atoi(IDASIENTO);
     // Hacemos la recoleccion de datos.
     if ( !tapunts->text(row, COL_IDBORRADOR).isEmpty()) {
         idborrador = tapunts->text(row,COL_IDBORRADOR);
@@ -1070,7 +1074,8 @@ void intapunts3view::guardaborrador(int row) {
             conexionbase->commit();
         } else {
             // El borrador no existe, por lo que hay que hacer un insert
-            query = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES ("+rowtext+","+concepto+", "+fecha+","+idcuenta+","+debe+","+haber+","+IDASIENTO+","+contrapartida+","+idcanal+","+idc_coste+")";
+            //query = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES ("+rowtext+","+concepto+", "+fecha+","+idcuenta+","+debe+","+haber+","+idasiento+","+contrapartida+","+idcanal+","+idc_coste+")";
+            query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES (%s,%s,%s,%s,%s,%s,'%d',%s,%s,%s)",rowtext.ascii(),concepto.ascii(),fecha.ascii(),idcuenta.ascii(),debe.ascii(),haber.ascii(),idasiento,contrapartida.ascii(),idcanal.ascii(),idc_coste.ascii());
             //fprintf(stderr,"%s\n",query.ascii());
             conexionbase->begin();
             if (conexionbase->ejecuta(query)==42501) QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
@@ -1542,13 +1547,13 @@ int intapunts3view::inicializa1(extractoview1 *ext, diarioview1 *diar, balancevi
 
 void intapunts3view::asiento_cierre() {
     int idcuenta;
-    int idasiento;
+    int numasiento;
     double diferencia;
     double nuevodebe, nuevohaber;
     QString nfecha = fechaasiento1->text();
     asientoview *nuevoasiento = new asientoview;
     nuevoasiento->inicializa(conexionbase);
-    idasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0);
+    numasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0);
     QString query ="SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE idgrupo=6 OR idgrupo=7) GROUP BY idcuenta ORDER BY saldito";
     conexionbase->begin();
     cursor2 *cursor=conexionbase->cargacursor(query, "cursor");
@@ -1564,22 +1569,22 @@ void intapunts3view::asiento_cierre() {
             nuevohaber=0;
         }// end if
         if (nuevodebe != nuevohaber) {
-            conexionbase->nuevoborrador(idcuenta, idasiento,"Asiento de Cierre","", nuevodebe, nuevohaber,  nfecha, 0, 1, 0, 0);
+            conexionbase->nuevoborrador(idcuenta, numasiento,"Asiento de Cierre","", nuevodebe, nuevohaber,  nfecha, 0, 1, 0, 0);
         }// end if
         cursor->siguienteregistro();
     }// end while
     delete nuevoasiento;
     conexionbase->begin();
-    conexionbase->cierraasiento(idasiento);
+    conexionbase->cierraasiento(numasiento);
     conexionbase->commit();
-    cargarcursor(idasiento);
-    muestraasiento(idasiento);
+    cargarcursor(numasiento);
+    muestraasiento(numasiento);
 }// end asiento_cierre
 
 
 void intapunts3view::asiento_apertura() {
   int idcuenta;
-  int idasiento;
+  int numasiento;
   double nuevodebe, nuevohaber;
   QString nfecha = normalizafecha("02/01").toString("dd/MM/yyyy");
   asientoview *nuevoasiento = new asientoview(this,"apertura");
@@ -1616,20 +1621,20 @@ void intapunts3view::asiento_apertura() {
           postgresiface2 * DBconnEjActual = new postgresiface2();
           DBconnEjActual->inicializa(empresaactual->nombreDB);
           nuevoasiento->inicializa(DBconnEjActual);
-          idasiento = nuevoasiento->creaasiento( "Asiento de Apertura", nfecha,0);
+          numasiento = nuevoasiento->creaasiento( "Asiento de Apertura", nfecha,0);
           while (!cur->eof()) {
               nuevodebe= cur->valor("haber").toDouble();
               nuevohaber = cur->valor("debe").toDouble();
               idcuenta = cur->valor("idcuenta").toInt();
-              DBconnEjActual->nuevoborrador(idcuenta, idasiento,"Asiento de Apertura","", nuevodebe, nuevohaber, nfecha, 0, 1, 0, 0);
+              DBconnEjActual->nuevoborrador(idcuenta, numasiento,"Asiento de Apertura","", nuevodebe, nuevohaber, nfecha, 0, 1, 0, 0);
               cur->siguienteregistro();
           }// end while
           DBconnEjActual->begin();
-          DBconnEjActual->cierraasiento(idasiento);
+          DBconnEjActual->cierraasiento(numasiento);
           DBconnEjActual->commit();
           delete DBconnEjActual;
-          cargarcursor(idasiento);
-          muestraasiento(idasiento);
+          cargarcursor(numasiento);
+          muestraasiento(numasiento);
       }
       else {
         QMessageBox::information( this, tr("Asiento de Apertura"), tr("No se ha podido encontrar el ejercicio anterior.\n\r El Asiento de Apertura tendrá que ser entrado manualmente."), QMessageBox::Ok);
@@ -1642,14 +1647,14 @@ void intapunts3view::asiento_apertura() {
 void intapunts3view::asiento_regularizacion() {
     int idcuenta;
     int idcuenta1;
-    int idasiento;
+    int numasiento;
     double diferencia;
     double totaldebe, totalhaber;
     double totaldebe1 =0, totalhaber1=0;
     QString nfecha = fechaasiento1->text();
     asientoview *nuevoasiento = new asientoview;
     nuevoasiento->inicializa(conexionbase);
-    idasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0);
+    numasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0);
     QString query = "SELECT * FROM cuenta where codigo ='129'";
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");
@@ -1676,17 +1681,17 @@ void intapunts3view::asiento_regularizacion() {
         totaldebe1 += totaldebe;
         totalhaber1 += totalhaber;
 
-        conexionbase->nuevoborrador(idcuenta, idasiento,tr("Asiento de Regularizacion"),"", totaldebe, totalhaber,  nfecha, 0, 1, 0, 0);
+        conexionbase->nuevoborrador(idcuenta, numasiento,tr("Asiento de Regularizacion"),"", totaldebe, totalhaber,  nfecha, 0, 1, 0, 0);
         cur->siguienteregistro();
     }// end while
     delete cur;
-    conexionbase->nuevoborrador(idcuenta1, idasiento,tr("Asiento de Regularizacion"),"", 0, totaldebe1,  nfecha, 0, 1, 0, 0);
-    conexionbase->nuevoborrador(idcuenta1, idasiento,tr("Asiento de Regularizacion"),"", totalhaber1, 0, nfecha, 0, 1, 0, 0);
+    conexionbase->nuevoborrador(idcuenta1, numasiento,tr("Asiento de Regularizacion"),"", 0, totaldebe1,  nfecha, 0, 1, 0, 0);
+    conexionbase->nuevoborrador(idcuenta1, numasiento,tr("Asiento de Regularizacion"),"", totalhaber1, 0, nfecha, 0, 1, 0, 0);
     conexionbase->begin();
-    conexionbase->cierraasiento(idasiento);
+    conexionbase->cierraasiento(numasiento);
     conexionbase->commit();
-    cargarcursor(idasiento);
-    muestraasiento(idasiento);
+    cargarcursor(numasiento);
+    muestraasiento(numasiento);
 }// end asiento_regularizacion
 
 

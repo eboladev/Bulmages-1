@@ -434,6 +434,11 @@ void Bulmages01::initActions() {
   amortiz->setWhatsThis(tr("Amortizaciones"));
   connect(amortiz, SIGNAL(activated()), this, SLOT(slotAmortizaciones()));
   
+  bloqaction = new QAction(tr("Bloquear Fechas"), tr("&Bloquear Fechas"), 0, this);
+  bloqaction->setStatusTip(tr("Bloquear Fechas"));
+  bloqaction->setWhatsThis(tr("Bloquear Fechas"));
+  connect(bloqaction, SIGNAL(activated()), this, SLOT(slotBloqFechas()));
+  
   ayuda = new QAction(tr("Ayuda"), ayudaIcon, tr("&Ayuda"), 0, this);
   ayuda->setStatusTip(tr("Ayuda"));
   ayuda->setWhatsThis(tr("Ayuda"));
@@ -537,9 +542,12 @@ void Bulmages01::initMenuBar() {
   pAsientoMenu->setCheckable(true);
   Abrirasientos->addTo(pAsientoMenu);
   Ordenarasientos->addTo(pAsientoMenu);
-  cierraEmpresa->addTo(pAsientoMenu);
+  pAsientoMenu->insertSeparator();
   abreEmpresa->addTo(pAsientoMenu);
   regularizaEmpresa->addTo(pAsientoMenu);
+  cierraEmpresa->addTo(pAsientoMenu);
+  
+  
   
   // El menu Listados
   pListMenu = new QPopupMenu();  
@@ -562,6 +570,7 @@ void Bulmages01::initMenuBar() {
   //usuarioaction->addTo(pHerramientasMenu);
   amortiz->addTo(pHerramientasMenu);
   SCuentas->addTo(pHerramientasMenu);
+  bloqaction->addTo(pHerramientasMenu);
    
   //El menu de empresa
   pEmpresaMenu = new QPopupMenu();
@@ -728,6 +737,12 @@ void Bulmages01::slotAmortizaciones() {
 	empresaactual.amortizaciones();
 }// end amortizaciones
 
+
+void Bulmages01::slotBloqFechas() {
+//BbloqFecha * pep = new BbloqFecha();
+//pep->exec();
+(new BbloqFecha())->exec();
+}
 
 void Bulmages01::slotEditCut()  {
   statusBar()->message(tr("Cutting selection..."));

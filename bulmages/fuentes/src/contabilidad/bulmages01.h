@@ -40,6 +40,7 @@
 
 // include files de la aplicacion
 #include "empresa.h"
+#include "bbloqfecha.h"
 //#include "usuariosview.h"
 //#include "pruebaview.h"
 
@@ -154,6 +155,7 @@ public:
     void slotCompBalance();
     //void slotNEjercicio();
     void slotAmortizaciones();
+    void slotBloqFechas();
     void slotSCuentas();
        
 
@@ -296,6 +298,7 @@ public:
     QAction *filtro;
     //QAction *NEjercicio;
     QAction *amortiz;
+    QAction *bloqaction;
     QAction * SelectorAction;
 };
 #endif

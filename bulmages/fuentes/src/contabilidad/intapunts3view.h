@@ -46,7 +46,7 @@ public:
     int cidapunte;
     int cdescapunte;
     int cfechaapunte;
-    int idapunte;            // El identificador del apunte actual.
+    int idasiento;            // El identificador del asiento actual.
     int rowactual;           // El identificador del row actual. Si no hay row seleccionado valdrá -1
     float descuadre1;
     int abierto;             // Indica que el asiento esta abierto.
