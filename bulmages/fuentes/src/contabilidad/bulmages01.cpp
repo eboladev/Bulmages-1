@@ -139,6 +139,10 @@ Bulmages01::~Bulmages01() {
   //delete pWorkspace; //En algunos casos provoca Segmentation Fault.
   delete ayuda;
   delete amortiz; 
+  //En el constructor asignamos un puntero a empresa { ctllog->setempresa(&empresaactual); }
+  //Al destruir la clase empresa no podemos seguir apuntando a un objeto que ya no existe.
+  //es necesario eliminar la referencia a este objeto, por ejemplo aquí:
+  ctllog->setempresa(NULL);
 }
 
 
