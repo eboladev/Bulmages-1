@@ -71,6 +71,7 @@ private:
 	void cargarcomboformapago(QString);
 	void buscarAlmacen();
 	QString newBudgetNumber();
+	void presentakugar();
 		
 protected:
 	bool eventFilter( QObject *, QEvent *);
@@ -92,6 +93,7 @@ public slots:
 	virtual void s_contextMenu(int, int, int, const QPoint &);
 	virtual void s_contextMenuDiscount(int, int, int, const QPoint &);
 	virtual void s_almacenLostFocus();
+	virtual void s_printBudget();
 
 		
 };

@@ -378,6 +378,12 @@ void Budget::s_almacenLostFocus() {
 	buscarAlmacen();
 }//end s_almacenLostFocus
 
+
+void Budget::s_printBudget() {
+	presentakugar();
+}//end s_printBudget
+
+
 void Budget::buscarAlmacen() {
 	companyact->begin();
 	cursor2 * cur= companyact->cargacursor("SELECT * FROM almacen where codigoalmacen ="+ m_codigoalmacen->text(),"unquery");
@@ -1017,3 +1023,68 @@ QString Budget::newBudgetNumber() {
 	return rtnNumber;
 }
 
+
+void Budget::presentakugar() {
+	int txt=1;
+	float debe, haber;
+	int idasiento;
+	string codigoarticulo;
+	string descripcionarticulo;
+	string cantidadlinea;
+	string preciolinea;
+	string descuentolinea;
+	string importelinea;
+	cursor2 *cursoraux;
+	
+	char *argstxt[]={"pressupost.kud","pressupost.kud",NULL};      //presentació txt normal
+	ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
+	if (!fitxersortidatxt) txt=0;    // verifiquem que s'hagin creat correctament els fitxers
+
+	if (txt) {
+		//presentació txt normal
+		fitxersortidatxt.setf(ios::fixed);
+		fitxersortidatxt.precision(2);
+		fitxersortidatxt << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" ;
+		fitxersortidatxt << "<!DOCTYPE KugarData [\n" ;
+		fitxersortidatxt << "\t<!ELEMENT KugarData (Row* )>\n" ;
+		fitxersortidatxt << "\t\t<!ATTLIST KugarData\n";
+		fitxersortidatxt << "\t\tTemplate CDATA #REQUIRED>\n";
+		fitxersortidatxt << "\t<!ELEMENT Row EMPTY>\n";
+		fitxersortidatxt << "\t<!ATTLIST Row \n";
+		fitxersortidatxt << "\t\tlevel CDATA #REQUIRED\n";
+		fitxersortidatxt << "\t\tcodigoarticulo CDATA #REQUIRED\n";
+		fitxersortidatxt << "\t\tdescripcionarticulo CDATA #REQUIRED\n";
+		fitxersortidatxt << "\t\tcantidadlinea CDATA #REQUIRED\n";
+		fitxersortidatxt << "\t\tpreciolinea CDATA #REQUIRED\n";
+		fitxersortidatxt << "\t\tdescuentolinea CDATA #REQUIRED\n";
+		fitxersortidatxt << "\t\timportelinea CDATA #REQUIRED>\n";
+		fitxersortidatxt << "]>\n\n";	 
+		fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).c_str()<<"pressupost.kut\">\n";
+	}// end if
+	companyact->begin();
+	cursoraux = companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN  lpresupuesto ON presupuesto.idpresupuesto = lpresupuesto.idpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo ORDER BY idlpresupuesto ASC","elquery");
+	companyact->commit();
+	for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
+		codigoarticulo = cursoraux->valor("codarticulo").ascii();
+		descripcionarticulo = cursoraux->valor("nomarticulo").ascii();
+		preciolinea = cursoraux->valor("pvplpresupuesto").ascii();
+		cantidadlinea = cursoraux->valor("cantlpresupuesto").ascii();
+		descuentolinea = cursoraux->valor("descuentolpresupuesto").ascii();
+		importelinea = "";
+		
+		if (txt) {
+			//presentació txt normal
+			fitxersortidatxt << "\t<Row level=\"0\" codigoarticulo=\""<< codigoarticulo.c_str() <<"\"";
+			fitxersortidatxt << " descripcionarticulo=\""<< descripcionarticulo.c_str() <<"\""; 
+			fitxersortidatxt << " preciolinea=\""<< preciolinea.c_str() <<"\""; 
+			fitxersortidatxt << " cantidadlinea=\""<< cantidadlinea.c_str() <<"\""; 
+			fitxersortidatxt << " descuentolinea=\""<< descuentolinea.c_str() <<"\""; 
+			fitxersortidatxt << " importelinea=\""<< importelinea.c_str() <<"\"/>\n" ; 
+		}
+	}// end for
+
+	delete cursoraux;
+	fitxersortidatxt <<"</KugarData>\n";
+	fitxersortidatxt.close();
+	system("kugar pressupost.kud");
+}// end presentakugar
