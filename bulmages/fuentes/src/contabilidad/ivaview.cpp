@@ -167,6 +167,8 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
     m_listPrevision->hideColumn(COL_PREV_IDPREVCOBRO);
     m_listPrevision->hideColumn(COL_PREV_IDREGISTROIVA);
     m_listPrevision->hideColumn(COL_PREV_IDASIENTO);  
+    m_listPrevision->hideColumn(COL_PREV_FCOBROPREVCOBRO);
+    m_listPrevision->hideColumn(COL_PREV_CANTIDADPREVCOBRO);
     m_listPrevision->setNumRows(50);
     // CAlculamos las formas de pago.
     m_cursorFPago = NULL;
@@ -585,6 +587,7 @@ void ivaview::cargaiva(QString idregistroiva) {
     calculaTotales();
 }// end cargaiva
 
+
 /**
   * \brief Inicializa el registro de iva. Calculando los datos que son buscables (O encontrables a partir del asiento).
   * Esquema:
@@ -868,7 +871,14 @@ void ivaview::boton_generarPrevisiones() {
         m_listPrevision->setText(i,COL_PREV_FCOBROPREVCOBRO,fpcobro.toString("dd/MM/yyyy"));
         m_listPrevision->setText(i, COL_PREV_CANTIDADPREVCOBRO, QString::number(totalplazo));
         m_listPrevision->setText(i, COL_PREV_CANTIDADPREVISTAPREVCOBRO, QString::number(totalplazo));
-        m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, "TRUE");
+	/// Hay que saber si es un cobro o un pago
+	if (contrapartida->text().left(2) == "43") // Si es un cliente es un cobro, si es un proveedor es un pago.
+	        m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, "COBRO"); // Cobro
+	else
+	        m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, "PAGO"); // Pago
+
+	
+	
         fpcobro = fpcobro.addDays(plazoentrerecibo);
     }// end for
 }// end boton_generarPrevisiones

@@ -10,8 +10,8 @@ BEGIN;
 -- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
 -- que se almacenen como tipo 'numeric'.
 -- Todas devuelven como valor numérico el número de filas influenciadas por el cambio
--- NOTA: Si alguien sabe como pasar por parámetro un nombre de tabla y campo a modificar se 
--- haría mucho más sencillito porque sólo habría que implementar un función ya que siempre 
+-- NOTA: Si alguien sabe como pasar por parámetro un nombre de tabla y campo a modificar se
+-- haría mucho más sencillito porque sólo habría que implementar un función ya que siempre
 -- hay que hacer lo mismo.
 --
 
@@ -48,7 +48,7 @@ DECLARE
    fila RECORD;
    num INTEGER;
 BEGIN
-   ALTER TABLE c_coste ADD COLUMN temp_debe numeric(12,2); 
+   ALTER TABLE c_coste ADD COLUMN temp_debe numeric(12,2);
    ALTER TABLE c_coste ADD COLUMN temp_haber numeric(12,2);
    RAISE INFO ''Convirtiendo la tabla c_coste... '';
    num := 0;
@@ -148,7 +148,7 @@ DECLARE
    fila RECORD;
    num INTEGER;
 BEGIN
-   ALTER TABLE borrador ADD COLUMN temp_debe numeric(12,2); 
+   ALTER TABLE borrador ADD COLUMN temp_debe numeric(12,2);
    ALTER TABLE borrador ADD COLUMN temp_haber numeric(12,2);
    RAISE INFO ''Convirtiendo la tabla borrador... (esta también tarda...)'';
    num := 0;
@@ -203,7 +203,7 @@ BEGIN
    RAISE INFO ''Convirtiendo la tabla prevcobro... '';
    num := 0;
    FOR fila IN SELECT * FROM prevcobro LOOP
-      UPDATE prevcobro SET temp_cpprevcobro=fila.cantidadprevistaprevcobro, temp_cpcobro=fila.cantidadprevcobro where idprevcobro=fila.idprevcobro;
+      UPDATE prevcobro SET temp_cppcobro=fila.cantidadprevistaprevcobro, temp_cpcobro=fila.cantidadprevcobro where idprevcobro=fila.idprevcobro;
       num := num+1;
    END LOOP;
    ALTER TABLE prevcobro DROP COLUMN cantidadprevistaprevcobro;
@@ -382,27 +382,27 @@ DECLARE
     ctahaber INTEGER;
     salida BOOLEAN;
     salidadebe BOOLEAN;
-    salidahaber BOOLEAN;   
+    salidahaber BOOLEAN;
 BEGIN
                 maxdebe := 0;
                 maxhaber := 0;
                 apmaxdebe:=0;
                 apmaxhaber := 0;
-		ctadebe := 0;
-		ctahaber := 0;
-		descuadre := 0;
+                ctadebe := 0;
+                ctahaber := 0;
+                descuadre := 0;
         FOR  cont IN SELECT  idcuenta,idapunte, debe, haber, orden FROM apunte WHERE idasiento = midasiento ORDER BY orden LOOP
             -- Si es el debe maximo lo hacemos constar.
             IF cont.debe >= maxdebe THEN
                 maxdebe := cont.debe;
                 apmaxdebe := cont.idapunte;
-		ctadebe := cont.idcuenta;
+                ctadebe := cont.idcuenta;
             END IF;
             -- Si es el haber mximo lo hacemos constar
             IF cont.haber >= maxhaber THEN
                 maxhaber := cont.haber;
                 apmaxhaber := cont.idapunte;
-		ctahaber := cont.idcuenta;
+                ctahaber := cont.idcuenta;
             END IF;
             -- Calculamos el descuadre
             descuadre := descuadre + cont.debe;
@@ -415,15 +415,15 @@ BEGIN
                 maxhaber := 0;
                 apmaxdebe:=0;
                 apmaxhaber := 0;
-		ctadebe := 0;
-		ctahaber := 0;
+                ctadebe := 0;
+                ctahaber := 0;
             END IF;
         END LOOP;
-	RETURN 0;
+        RETURN 0;
 END;
-   ' LANGUAGE plpgsql;   
-  
-    
+   ' LANGUAGE plpgsql;
+
+
 DROP FUNCTION saldototalmpatrimonial(integer);
 CREATE FUNCTION saldototalmpatrimonial(integer) RETURNS NUMERIC(12,2)
     AS '
@@ -487,7 +487,7 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-    
+
 DROP FUNCTION debempatrimonial(integer, timestamp without time zone, timestamp without time zone);
 CREATE FUNCTION debempatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
@@ -718,13 +718,13 @@ BEGIN
    -- De momento, la haremos funcionar para un sistema de cuentas xxxxyyy
    SELECT INTO niveles strpos(valor, ''y'')-1 AS numx FROM configuracion WHERE nombre=''CodCuenta'';
    IF niveles.numx <> 4 THEN
-   	RAISE NOTICE ''Lo siento, pero esta función sólo funciona de momento con 4 niveles de cuentas'';
-	RETURN -1;
+        RAISE NOTICE ''Lo siento, pero esta función sólo funciona de momento con 4 niveles de cuentas'';
+        RETURN -1;
    END IF;
-   
+
    -- Creamos la tabla con el árbol de cuentas y sus valores (se ha considerado hasta nivel 4)
    CREATE TEMPORARY TABLE temp4 AS (SELECT n1.codigo AS cod1, n1.debe AS debe1, n1.haber AS haber1, n2.codigo AS cod2, n2.debe AS debe2, n2.haber AS haber2, n3.codigo AS cod3, n3.debe AS debe3, n3.haber AS haber3, n4.codigo AS cod4, n4.debe AS debe4, n4.haber AS haber4 FROM (SELECT idcuenta, codigo, debe, haber FROM cuenta WHERE padre IS NULL) AS n1 INNER JOIN (SELECT idcuenta, padre, codigo, debe, haber FROM cuenta) AS n2 ON n1.idcuenta=n2.padre INNER JOIN (SELECT idcuenta, padre, codigo, debe, haber FROM cuenta) AS n3 ON n2.idcuenta=n3.padre LEFT JOIN (SELECT padre, codigo, debe, haber FROM cuenta) AS n4 ON n3.idcuenta=n4.padre);
-   
+
    -- Ahora iremos actualizando las ramas desde las hojas hasta las raíces
    -- Primero, tendremos en cuenta aquellas cuentas que están en un nivel 4, calculamos la suma de su nivel y subimos el dato al nivel 3
    CREATE TEMPORARY TABLE temp3 AS (SELECT cod1,cod2,cod3,sum(debe4) AS debe3,sum(haber4) AS haber3 FROM temp4 WHERE debe4 IS NOT NULL group by cod1,cod2,cod3 order by cod3);
@@ -739,24 +739,24 @@ BEGIN
    CREATE TEMPORARY TABLE nivel1 AS (SELECT t1.cod1,t1.debe1,t1.haber1 FROM (SELECT * FROM temp1) AS t1 INNER JOIN (SELECT codigo,debe,haber FROM cuenta) AS t2 ON t1.cod1=t2.codigo WHERE t1.debe1<>t2.debe OR t1.haber1<>t2.haber);
    CREATE TEMPORARY TABLE nivel2 AS (SELECT t1.cod2,t1.debe2,t1.haber2 FROM (SELECT * FROM temp2) AS t1 INNER JOIN (SELECT codigo,debe,haber FROM cuenta) AS t2 ON t1.cod2=t2.codigo WHERE t1.debe2<>t2.debe OR t1.haber2<>t2.haber);
    CREATE TEMPORARY TABLE nivel3 AS (SELECT t1.cod3,t1.debe3,t1.haber3 FROM (SELECT * FROM temp3) AS t1 INNER JOIN (SELECT codigo,debe,haber FROM cuenta) AS t2 ON t1.cod3=t2.codigo WHERE t1.debe3<>t2.debe OR t1.haber3<>t2.haber);
-   
+
    -- Como colofón, hay que introducir los valores actualizados en las cuentas padre.
    FOR cta IN SELECT * FROM nivel1 ORDER BY cod1 LOOP
-	RAISE NOTICE ''Cuenta %	-> debe: %	haber: %'',cta.cod1,cta.debe1,cta.haber1;
-	UPDATE cuenta SET debe=cta.debe1, haber=cta.haber1 WHERE idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo=cta.cod1);
-	RAISE NOTICE ''Cuenta % actualizada'',cta.cod1;
+        RAISE NOTICE ''Cuenta % -> debe: %      haber: %'',cta.cod1,cta.debe1,cta.haber1;
+        UPDATE cuenta SET debe=cta.debe1, haber=cta.haber1 WHERE idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo=cta.cod1);
+        RAISE NOTICE ''Cuenta % actualizada'',cta.cod1;
    END LOOP;
    FOR cta IN SELECT * FROM nivel2 ORDER BY cod2 LOOP
-        RAISE NOTICE ''Cuenta %	-> debe: %     haber: %'',cta.cod2,cta.debe2,cta.haber2;
+        RAISE NOTICE ''Cuenta % -> debe: %     haber: %'',cta.cod2,cta.debe2,cta.haber2;
         UPDATE cuenta SET debe=cta.debe2, haber=cta.haber2 WHERE idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo=cta.cod2);
         RAISE NOTICE ''Cuenta % actualizada'',cta.cod2;
    END LOOP;
    FOR cta IN SELECT * FROM nivel3 WHERE length(cod3)=niveles.numx ORDER BY cod3 LOOP
-   	RAISE NOTICE ''Cuenta %	-> debe: %     haber: %'',cta.cod3,cta.debe3,cta.haber3;
-	UPDATE cuenta SET debe=cta.debe3, haber=cta.haber3 WHERE idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo=cta.cod3);
-	RAISE NOTICE ''Cuenta % actualizada'',cta.cod3;
-   END LOOP;   
-   
+        RAISE NOTICE ''Cuenta % -> debe: %     haber: %'',cta.cod3,cta.debe3,cta.haber3;
+        UPDATE cuenta SET debe=cta.debe3, haber=cta.haber3 WHERE idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo=cta.cod3);
+        RAISE NOTICE ''Cuenta % actualizada'',cta.cod3;
+   END LOOP;
+
    RETURN 0;
 END;
 '    LANGUAGE plpgsql;
@@ -831,7 +831,7 @@ CREATE TRIGGER acumulados_canal_fk
     FOR EACH ROW
     EXECUTE PROCEDURE acumulados_canal();
 
-    
+
 DROP FUNCTION inserttipoiva() CASCADE;
 CREATE OR REPLACE FUNCTION inserttipoiva () RETURNS "trigger"
 AS '
@@ -865,10 +865,10 @@ CREATE TRIGGER borratipoiva
    BEFORE DELETE ON tipoiva
    FOR EACH ROW
    EXECUTE PROCEDURE deletetipoiva();
-   
+
 --
 -- Se añade el campo Código Postal a las cuenta porque se necesita ese dato en los listados para el modelo 347.
---   
+--
 ALTER TABLE cuenta ADD COLUMN cpent_cuenta character varying(5);
-    
+
 COMMIT;
