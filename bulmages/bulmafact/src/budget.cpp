@@ -1071,7 +1071,7 @@ void Budget::presentaOpenReports() {
 	fitxersortidatxt << "\t<tr><td>Código</td><td>Descripción</td><td>Cantidad</td><td>Precio</td><td>%Desc</td><td>Importe</td></tr>\n" ;
 
 	companyact->begin();
-	cursoraux = companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN  lpresupuesto ON presupuesto.idpresupuesto = lpresupuesto.idpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo ORDER BY idlpresupuesto ASC","elquery");
+	cursoraux = companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN  lpresupuesto ON presupuesto.idpresupuesto = lpresupuesto.idpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presupuesto.idpresupuesto="+m_idpresupuesto+" ORDER BY idlpresupuesto ASC","elquery");
 	companyact->commit();
 	for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
 		codigoarticulo = cursoraux->valor("codarticulo").ascii();
