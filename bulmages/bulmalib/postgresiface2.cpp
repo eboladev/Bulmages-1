@@ -664,7 +664,7 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
     QString nodebe = cnodebe ? "TRUE" : "FALSE";
     QString nohaber = cnohaber ? "TRUE" : "FALSE";
 
-    query.sprintf("INSERT INTO cuenta (descripcion, padre,codigo, idgrupo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, cpent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta, nodebe, nohaber) VALUES('%s',%s,'%s',%d, '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %s, %s)",desccuenta.ascii(),tpadre.ascii(), codigo.ascii(), idgrupo, nombreent.ascii(), cifent.ascii(), dir.ascii(), cp.ascii(), tel.ascii() ,comm.ascii(), banco.ascii(), email.ascii(), web.ascii(), tipocuenta, nodebe.ascii(), nohaber.ascii() );
+    query.sprintf("INSERT INTO cuenta (descripcion, padre,codigo, idgrupo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, cpent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta, nodebe, nohaber) VALUES('%s',%s,'%s',%d, '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %s, %s)",desccuenta.ascii(),tpadre.ascii(), codigo.ascii(), idgrupo, nombreent.ascii(), cifent.ascii(), dir.ascii(), cp.ascii(), tel.ascii() ,comm.ascii(), banco.ascii(), email.ascii(), web.ascii(), tipocuenta, nodebe.ascii(), nohaber.ascii() );
     fprintf(stderr,"%s\n",query.ascii());
     return(ejecuta(query));
 }// end nuevacuenta

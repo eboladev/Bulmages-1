@@ -129,12 +129,13 @@ void cuentaview::cambiapadre(const QString &cadena)  {
 }// end cambiapadre
 
 
-/***************************************************************
+/**
  * Este es el slot que se activa al pulsar el boton ok del formulario
  * Lo que hace es recoger los datos del formulario y hacer una insercion
  * o una modificacion de la tabla de cuentas.
- ***************************************************************/
+ */
 void cuentaview::aceptar() {
+   fprintf(stderr,"cuentaview::aceptar()\n");
    QString codigocuenta;
    int idpadre=0;
    cursor2 *cursoraux;   
@@ -145,7 +146,7 @@ void cuentaview::aceptar() {
       conexionbase->begin();
       cursoraux = conexionbase->cargacuenta(0,codigocuenta);
       conexionbase->commit();
-      idpadre = atoi(cursoraux->valor(0).ascii());
+      idpadre = atoi(cursoraux->valor("idcuenta").ascii());
       delete cursoraux;
    }// end if
    // Recogemos el valor de tipocuenta
@@ -169,12 +170,13 @@ void cuentaview::aceptar() {
       conexionbase->modificacuenta(idcuenta,descripcion->text() ,codigo->text(), imputacion->isChecked(), bloqueada->isChecked(),idgrupos[combogrupos->currentItem()],TRUE, nombreent->text(), cif->text(), direccion->text(), cp->text(), telf->text(), coments->text(), banco->text(),  email->text(),  web->text(), tipocuenta , nodebe->isChecked(), nohaber->isChecked());
       conexionbase->commit();
    } else {
-      //QMessageBox::information( 0, "Se va a dar de alta una nueva cuenta", "Unable to find the user preferences file.\n""The factory default will be used instead." );
       conexionbase->begin();
+      fprintf(stderr,"Hacemos la llamada a Nueva cuenta \n");
       conexionbase->nuevacuenta( descripcion->text(), codigo->text(), idpadre, idgrupos[combogrupos->currentItem()],nombreent->text(),  cif->text(), direccion->text(), cp->text(), telf->text(),coments->text(), banco->text(), email->text(), web->text(), tipocuenta, nodebe->isChecked(), nohaber->isChecked() );
-      QString query = "SELECT max(idcuenta) from cuenta";
+      fprintf(stderr,"Buscamos el valor máximo\n");
+      QString query = "SELECT max(idcuenta) AS id from cuenta";
       cursoraux = conexionbase->cargacursor(query, "maxidcuenta");
-      idcuenta = atoi(cursoraux->valor(0).ascii());
+      idcuenta = atoi(cursoraux->valor("id").ascii());
       conexionbase->commit();
       delete cursoraux;
    }// end if
@@ -201,7 +203,7 @@ int cuentaview::inicializa() {
    conexionbase->begin();
    QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
    cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
-   numdigitos=cursoraux1->valor(2).length();
+   numdigitos=cursoraux1->valor("valor").length();
    conexionbase->commit();
    delete cursoraux1;   
    return(0);

@@ -27,20 +27,29 @@ class company;
 
 
 class provedit : public provedit_base {
-Q_OBJECT
+    Q_OBJECT
 private:
-   company *companyact;
-   QString idprovider;
+    company *companyact;
+    QString idprovider;
+    bool m_modificado; /// Indica si se han producido cambios.
+
 public:
     provedit(company *emp, QWidget *parent = 0, const char *name = 0);
     ~provedit();
 public:
-   void chargeprovider(QString);
+    void chargeprovider(QString);
 public slots:
-   virtual void s_saveProvider();
-   virtual void boton_nuevo();
-   virtual void boton_borrar();
-   virtual void boton_newdivision();
+    virtual void s_saveProvider();
+    virtual void boton_nuevo();
+    virtual void boton_borrar();
+    virtual void boton_newdivision();
+    virtual void s_setModificado() {
+        m_modificado = TRUE;
+    };
+    virtual void s_releaseModificado() {
+        m_modificado = FALSE;
+    };
+    virtual void close();
 };
 
 #endif

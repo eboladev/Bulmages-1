@@ -92,7 +92,6 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
       companyact = comp;
       inicializa();
       m_modo=0;
-      
       m_idprovider="";
       m_cifprovider="";
       companyact->meteWindow(caption(),this);
@@ -217,6 +216,7 @@ void providerslist::s_editProvider() {
 	QPoint a;
 	doubleclicked(m_list->currentRow(), 0,0, a);
 }// end s_editProvider
+
 
 /** SLOT que responde a la pulsación de borrar un determinado proveedor
   * Dicha función avisa de la perdida de datos y si se decide continuar

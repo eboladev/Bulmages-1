@@ -99,7 +99,6 @@ provedit::provedit(company *comp, QWidget *parent, const char *name)
    m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_FAXDIVISION, tr( "Fax" ) );
    m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_MAILDIVISION, tr( "E-mail" ) );
    m_divisiones->horizontalHeader()->setLabel( COL_DIVISION_IDPROVEEDOR, tr( "idproveedor" ) );
-   
    m_divisiones->setColumnWidth(COL_DIVISION_IDDIVISION,100);
    m_divisiones->setColumnWidth(COL_DIVISION_DESCDIVISION,300);
    m_divisiones->setColumnWidth(COL_DIVISION_CONTACTODIVISION,100);
@@ -108,8 +107,8 @@ provedit::provedit(company *comp, QWidget *parent, const char *name)
    m_divisiones->setColumnWidth(COL_DIVISION_FAXDIVISION,100);
    m_divisiones->setColumnWidth(COL_DIVISION_MAILDIVISION,100);
    m_divisiones->setColumnWidth(COL_DIVISION_IDPROVEEDOR,100);
-   
    companyact->meteWindow(caption(),this);
+   s_releaseModificado();
 
 }// end provedit
 
@@ -172,12 +171,21 @@ void provedit::chargeprovider(QString idprov) {
       }// end if
       delete cur;
    }// end if
+   s_releaseModificado();
 }// end chargeprovider
 
 /************************************************************************
 * Esta función se ejecuta cuando se ha pulsado sobre el botón de nuevo  *
 *************************************************************************/
 void provedit::boton_nuevo() {
+   if (m_modificado  ) {
+    	    if ( QMessageBox::warning( this, "Guardar Proveedor",
+		"Desea guardar los cambios.",
+		QMessageBox::Ok ,
+		QMessageBox::Cancel ) == QMessageBox::Ok)
+		s_saveProvider();	   
+   }// end if
+
       idprovider = "0";
       m_idproveedor->setText("");
       m_nomproveedor->setText("");
@@ -192,6 +200,7 @@ void provedit::boton_nuevo() {
       m_faxproveedor->setText("");
       m_emailproveedor->setText("");
       m_urlproveedor->setText("");
+      s_releaseModificado();
 }// end boton_nuevo
 
 /*************************************************************************
@@ -237,6 +246,7 @@ void provedit::s_saveProvider() {
       companyact->ejecuta(SQLQuery);
       companyact->commit();
    }// end if
+   s_releaseModificado();
 }// end accept
 
 /************************************************************************
@@ -257,4 +267,18 @@ void provedit::boton_borrar() {
 void provedit::boton_newdivision() {
    division *driv = new division(companyact, 0,"hola");
    driv->exec();
+   s_setModificado();
 }// end boton_newdivision
+
+
+void provedit::close() {
+   if (m_modificado  ) {
+    	    if ( QMessageBox::warning( this, "Guardar Proveedor",
+		"Desea guardar los cambios.",
+		QMessageBox::Ok ,
+		QMessageBox::Cancel ) == QMessageBox::Ok)
+		s_saveProvider();	   
+   }// end if
+   QWidget::close();
+}// end close
+
