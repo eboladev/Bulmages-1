@@ -52,13 +52,6 @@ public slots:
     virtual void s_editProvider();
     virtual void s_removeProvider();
     virtual void s_printProviders();
-    /*
-    virtual void boton_editar();
-    virtual void boton_duplicar();
-    virtual void boton_borrar();
-    virtual void boton_imprimir();
-    virtual void boton_filtrar();
-*/
 };
 
 #endif

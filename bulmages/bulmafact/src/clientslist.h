@@ -53,7 +53,8 @@ public slots:
     virtual void editClient();
     virtual void m_clientList_clicked(int, int, int, const QPoint &);
     virtual void m_clientList_doubleClicked(int, int, int, const QPoint &);
-    
+    virtual void s_printClients();    
+    virtual void s_findClients();
 };
 
 #endif

@@ -62,6 +62,7 @@ CREATE TABLE cliente (
 #include "company.h"
 #include <qmessagebox.h>
 #include <qtable.h>
+#include <qlineedit.h>
 
 #define COL_IDCLIENTE 0
 #define COL_NOMCLIENTE 1
@@ -143,12 +144,13 @@ ClientsList::~ClientsList() {
 }// end ~clientslist
 
 
-/****************************************************************
-   Iniciamos los clientes.
-*****************************************************************/
+/**
+  * Iniciamos los clientes.
+  * Hacemos la consulta a la base de datos y presentamos el listado.
+  */
 void ClientsList::initClients() {
        companyact->begin();
-       cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente","unquery");
+       cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%'","unquery");
        companyact->commit();
        m_clientList->setNumRows( cur->numregistros() );
        int i=0;
@@ -190,9 +192,9 @@ void ClientsList::editClient() {
    cli->show();
 }
 
-/*********************************************************************
-   Se ha hecho un doble click sobre la tabla de Clientes.
-**********************************************************************/
+/**
+   *  Se ha hecho un doble click sobre la tabla de Clientes.
+  */
 void ClientsList::m_clientList_doubleClicked(int a, int , int , const QPoint &) {
    m_idclient = m_clientList->text(a,COL_IDCLIENTE);
    m_cifclient = m_clientList->text(a,COL_CIFCLIENTE);
@@ -205,3 +207,35 @@ void ClientsList::m_clientList_doubleClicked(int a, int , int , const QPoint &) 
       close();
    }// end if
 }// end doubleClicked
+
+
+void ClientsList::s_findClients() {
+	initClients();
+}// end s_findClients
+
+
+void ClientsList::s_printClients() {
+	fprintf(stderr,"Impresión del listado\n");
+// #ifdef REPORTS
+    	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
+	QString cadena;
+	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.
+	cadena = "cp /home/tborras/bulmages/installbulmages/reports/bulma-styles.xml   /tmp/bulma-styles.xml" ;
+	system (cadena.ascii());	
+	cadena = "cp /home/tborras/bulmages/installbulmages/reports/clientslist.rtk   /tmp/clientslist.rtk" ;
+	system (cadena.ascii());	
+	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
+	cadena += companyact->nameDB()+" ";
+	// OJO QUE LA LINEA BUENA ES LA QUE ESTA COMENTADA
+//	cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
+	// ESTA LINEA ES PARA HACER PRUEBAS
+//	cadena += "/home/tborras/bulmages/installbulmages/reports/extracto1.rtk &";
+	cadena += "/tmp/clientslist.rtk &";
+	fprintf(stderr,"%s\n",cadena.ascii());
+	system (cadena.ascii());    
+// #endif
+
+}// end s_printClients
+
+
+
