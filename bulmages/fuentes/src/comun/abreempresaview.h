@@ -33,6 +33,7 @@
 #include "configuracion.h"
 #include "bselector.h"
 #include "log.h"
+#include "empresa.h"
 
 
 class BSelector;

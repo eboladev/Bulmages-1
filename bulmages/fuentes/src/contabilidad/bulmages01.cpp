@@ -140,6 +140,8 @@ Bulmages01::~Bulmages01() {
   //En el constructor asignamos un puntero a empresa { ctllog->setempresa(&empresaactual); }
   //Al destruir la clase empresa no podemos seguir apuntando a un objeto que ya no existe.
   //es necesario eliminar la referencia a este objeto, por ejemplo aquí:
+  //justo antes logeo la salida del usuario (René)
+  ctllog->add(LOG_SEG | LOG_TRA,"Saliendo Usuario: " + empresaactual.nomuserempresa() ); 
   ctllog->setempresa(NULL);
 }
 

@@ -74,7 +74,8 @@ void abreempresaview::accept() {
 //       empresaactual->nombreusuario = nombre;
        
        confpr->setValor(PRIVILEGIOS_USUARIO, recordSet->valor(0,0));
-       fprintf(stderr, "Entrando Usuario: %s, con Permisos tipo: %s\n",nombre.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str());
+       fprintf(stderr, "Entrando Usuario: %s, con Permisos tipo: %s ",nombre.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str());
+       //pendiente añadir: %s en la empresa: %s ",nombre.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str(), empresaactual.nombreDB.ascii());
        
        //Empezamos un nuevo modo de guardar algunas preferencias de los usuarios en la base de datos
        confpr->cargarEntorno(empresabd);
