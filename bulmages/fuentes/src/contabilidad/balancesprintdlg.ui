@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>528</width>
-            <height>242</height>
+            <height>248</height>
         </rect>
     </property>
     <property name="caption">
@@ -148,6 +148,9 @@
             <property name="text">
                 <string>texto plano</string>
             </property>
+            <property name="checked">
+                <bool>true</bool>
+            </property>
         </widget>
     </widget>
     <widget class="QPushButton">
@@ -165,6 +168,9 @@
         <property name="text">
             <string>Aceptar</string>
         </property>
+        <property name="autoDefault">
+            <bool>false</bool>
+        </property>
     </widget>
     <widget class="QPushButton">
         <property name="name">
@@ -180,6 +186,9 @@
         </property>
         <property name="text">
             <string>Cancelar</string>
+        </property>
+        <property name="autoDefault">
+            <bool>false</bool>
         </property>
     </widget>
     <widget class="QProgressBar">
@@ -224,16 +233,31 @@
     <connection>
         <sender>fechain</sender>
         <signal>returnPressed()</signal>
-        <receiver>balancesprintdlg</receiver>
-        <slot>fechaincambiada()</slot>
+        <receiver>fechafin</receiver>
+        <slot>selectAll()</slot>
+    </connection>
+    <connection>
+        <sender>fechain</sender>
+        <signal>returnPressed()</signal>
+        <receiver>fechafin</receiver>
+        <slot>setFocus()</slot>
     </connection>
     <connection>
         <sender>fechafin</sender>
         <signal>returnPressed()</signal>
-        <receiver>balancesprintdlg</receiver>
-        <slot>fechafincambiada()</slot>
+        <receiver>pushButton1</receiver>
+        <slot>setFocus()</slot>
     </connection>
 </connections>
+<tabstops>
+    <tabstop>nombalance</tabstop>
+    <tabstop>fechain</tabstop>
+    <tabstop>fechafin</tabstop>
+    <tabstop>radioButton1</tabstop>
+    <tabstop>radioButton1_2</tabstop>
+    <tabstop>pushButton1</tabstop>
+    <tabstop>pushButton1_2</tabstop>
+</tabstops>
 <slots>
     <slot>fechaincambiada()</slot>
     <slot>fechafincambiada()</slot>

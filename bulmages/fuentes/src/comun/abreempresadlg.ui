@@ -7,15 +7,15 @@
     <property name="geometry">
         <rect>
             <x>0</x>
-            <y>1</y>
+            <y>0</y>
             <width>390</width>
-            <height>210</height>
+            <height>301</height>
         </rect>
     </property>
     <property name="sizePolicy">
         <sizepolicy>
-            <hsizetype>4</hsizetype>
-            <vsizetype>4</vsizetype>
+            <hsizetype>7</hsizetype>
+            <vsizetype>7</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
         </sizepolicy>
@@ -28,8 +28,8 @@
     </property>
     <property name="maximumSize">
         <size>
-            <width>390</width>
-            <height>210</height>
+            <width>640</width>
+            <height>1000</height>
         </size>
     </property>
     <property name="caption">
@@ -37,6 +37,10 @@
     </property>
     <property name="icon">
         <pixmap>image0</pixmap>
+    </property>
+    <property name="toolTip" stdset="0">
+        <string>Abrir Empresa</string>
+        <comment>Sirve para seleccionar la empresa con la que se quiere trabajar</comment>
     </property>
     <grid>
         <property name="name">
@@ -337,8 +341,5 @@
     <tabstop>botonCancelar</tabstop>
     <tabstop>botonAyuda</tabstop>
 </tabstops>
-<includes>
-    <include location="local" impldecl="in implementation">abreempresadlg.ui.h</include>
-</includes>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

@@ -601,6 +601,9 @@ void intapunts3view::boton_nuevoasiento() {
     iniciar_asiento_nuevo();
 }// end boton_nuevoasiento
 
+/*************************************************************************
+ * Esta funcion se encarga de hacer las inicializaciones en un asiento nuevo
+ ********************************************************************************/
 void intapunts3view::iniciar_asiento_nuevo() {
     int numasiento;
     asientoview *nuevoasiento = new asientoview;
@@ -615,9 +618,7 @@ void intapunts3view::iniciar_asiento_nuevo() {
     rowactual=0;
     tapunts->setCurrentCell(0,0);
     tapunts->setFocus();
-
-
-}
+}// end iniciar_asiento_nuevo
 
 
 void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
@@ -1169,8 +1170,12 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
                 tapunts->setCurrentCell(row, COL_DEBE);
                 break;
             case COL_IVA:
-                tapunts->setText(row+1,COL_FECHA,normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
-                tapunts->setCurrentCell(row+1, COL_SUBCUENTA);
+//                tapunts->setText(row+1,COL_FECHA,normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
+                tapunts->setText(row+1,COL_FECHA,normalizafecha(tapunts->text(row,COL_FECHA)).toString("dd/MM/yyyy"));
+//                Se ha verificado que es más cómodo poder cambiar la fecha o dar al enter
+//                tapunts->setCurrentCell(row+1, COL_SUBCUENTA);
+//                Aunque también podría interesar poner la fecha de arriba.
+
                 break;
             case COL_CONCEPTO:
                 tapunts->setCurrentCell(row, COL_IVA);

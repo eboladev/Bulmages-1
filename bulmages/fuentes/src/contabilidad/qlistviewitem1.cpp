@@ -41,7 +41,7 @@ void QListViewItem1::paintCell( QPainter *p, const QColorGroup &cg, int c, int w
         f.setWeight( QFont::Bold );
 //        f.setItalic( true );
         f.setPointSize( 10 );
-    } else if (tipolista == 3){
+    } else if (tipolista < 7){
         g.setColor(QColorGroup::Text, QColor::QColor(50,50,200));
         f.setPointSize( 10 );
     } else {

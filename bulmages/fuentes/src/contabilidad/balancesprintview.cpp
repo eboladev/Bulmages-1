@@ -57,26 +57,27 @@ void balancesprintview::accept() {
        progreso->setTotalSteps(numregistros);
        progreso->setProgress(1);
        while (!cursor->eof()) {
-//                string query = "SELECT saldompatrimonial ("+cursor->valor("idmpatrimonial")+",'"+fechainicial+"','"+fechafinal+"') AS saldot";
                 QString query = "SELECT saldototalmpatrimonial("+cursor->valor("idmpatrimonial")+") AS saldot";
                 conexionbase->begin();
                 cursor2 *mycursor = conexionbase->cargacursor(query, "compbalancequery");
                 conexionbase->commit();
                 int i=0;
+		double valor;
                 while (!mycursor->eof()) {
                    int orden = atoi (cursor->valor("tabulacion").ascii());
                    QString texto = "";
                    for (int j=0; j<orden; j++)
                       texto += "   ";
                    texto += cursor->valor("concepto");
-                   fprintf(mifile, "%-50.50s %10s\n", texto.ascii(), mycursor->valor("saldot").ascii());
-                    i++;
+		   valor = mycursor->valor("saldot").toDouble();
+		   if (valor > 0.001 || valor < -0.001)
+                   	fprintf(mifile, "%-60.60s %10.2f\n", texto.ascii(), valor);
+                   i++;
                    mycursor->siguienteregistro();
                 }// end while
                 delete mycursor;
                 // Actualizamos la barra de progreso
                 progreso->setProgress(progreso->progress()+1);
-                
                 cursor->siguienteregistro();
        }// end while
        delete cursor;
@@ -87,7 +88,7 @@ void balancesprintview::accept() {
         exit(errno);
    }// end if
    if (!pid) {
-      error = execvp("kedit",args);
+      error = execvp(confpr->valor(CONF_EDITOR).c_str(),args);
    }// end if
 //   done(1);
 }// end accept
