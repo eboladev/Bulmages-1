@@ -13,7 +13,7 @@ SOURCES += postgresiface2.cpp \
 	   funcaux.cpp
 TEMPLATE = lib
 LANGUAGE = C++
-CONFIG += release warn_on staticlib
+CONFIG += debug warn_on staticlib
 INCLUDEPATH += ../src /usr/include/qt
 VERSION = 0.1
 TARGET = bulmalib

@@ -111,11 +111,7 @@ void Budget::inicialize() {
 	m_modified = false;
 	installEventFilter(this);
 	
-	//installEventFilters("QTable");
-	installEventFilters("QLineEdit");
-	installEventFilters("QTextEdit");
-	
-// Inicializamos la tabla de lineas de presupuestoil
+// Inicializamos la tabla de lineas de presupuesto
 	m_list->setNumRows( 0 );
 	m_list->setNumCols( 0 );
 	m_list->setSelectionMode( QTable::SingleRow );
@@ -224,6 +220,11 @@ void Budget::chargeBudget(QString idbudget) {
 		calculateImports();
     }// end if
      delete cur;   
+	  
+	m_initialValues = retrieveValues("QTable");
+	m_initialValues += retrieveValues("QLineEdit");
+	m_initialValues += retrieveValues("QTextEdit");
+	qDebug("Initial Values = %s", m_initialValues.ascii());
 }// end chargeBudget
 
 
@@ -727,17 +728,34 @@ void Budget::duplicateCell(QObject *obj) {
 }
 
 
-void Budget::installEventFilters(QString qsWidget) {
+QString Budget::retrieveValues(QString qsWidget) {
 	QObjectList *l = queryList( qsWidget );
-	QObjectListIt it( *l ); // iterate over the buttons
+	QObjectListIt it( *l );
 	QObject *obj;
-
-    while ( (obj = it.current()) != 0 ) {
-		// for each found object...
+	QString values="";
+    while ( (obj = it.current() ) != 0 ) {
 		++it;
-		qDebug("Widget = %s", ((QWidget*)obj)->name());
-		((QWidget*)obj)->installEventFilter(this);
-    }
-    delete l; // delete the list, not the objects
+		
+		if (qsWidget=="QLineEdit") {
+			//qDebug("QLineEdit Name = %s",obj->name());
+			values += ((QLineEdit*)obj)->text();
+		}
+		
+		if (qsWidget=="QTextEdit") {
+			//qDebug("QTextEdit Name = %s",obj->name());
+			values += ((QTextEdit*)obj)->text();
+		}
+		
+		if (qsWidget=="QTable") {
+			//qDebug("QTable Name = %s",obj->name());
+			for (int i=0; i < m_list->numRows(); i++) {
+				for (int j=0; j < m_list->numCols(); j++) {
+					values += ((QTable*)obj)->text(i, j);
+				}
+			}
+		}
+	}
+	delete l; // delete the list, not the objects
+	return values;
 }
 

@@ -35,6 +35,7 @@ private:
    QString m_idpresupuesto;
    QString m_idclient;
 	bool m_modified;
+	QString m_initialValues;
 	
 public:
     Budget(company *, QWidget *, const char *);
@@ -61,7 +62,7 @@ private:
 	void antCell(QObject *);
 	void duplicateCell(QObject *);
 	void calculateImports();
-	void installEventFilters(QString);
+	QString retrieveValues(QString);
 		
 protected:
 	bool eventFilter( QObject *, QEvent *);
