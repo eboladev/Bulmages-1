@@ -147,6 +147,7 @@ También sera la encargada de recoger la información de filtración para que
 todo sea correcto.
 *************************************************************************************/
 void extractoview1::accept() {
+  fprintf(stderr,"accept inicializado\n");
   QString codinicial= codigoinicial->text();
   QString codfinal = codigofinal->text();
   QString query;
@@ -522,23 +523,25 @@ void extractoview1::boton_buscacuentafinal() {
 
 
 void extractoview1::return_codigoinicial() {
+   fprintf(stderr,"return_codigoinicial se inicia bien \n");
    QString cad = codigoinicial->text();
    if (cad != "") {
       cad = extiendecodigo(cad,numdigitos);
       conexionbase->begin();
-      cursor2 *curs = conexionbase->cargacuenta(0, cad );
+      cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
       conexionbase->commit();
-      int num = curs->numregistros();
+      int num = cursorcta->numregistros();
       if (num >0) {
-         codigoinicial->setText(cursorcta->valor(1));
-         codigofinal->setText(cursorcta->valor(1));
+         fprintf(stderr,"Hay registros que  se muetran \n");
+         codigoinicial->setText(cursorcta->valor("codigo"));
+         codigofinal->setText(cursorcta->valor("codigo"));
          codigofinal->selectAll();
          accept();
       } else {
         codigoinicial->selectAll();
         codigoinicial->setFocus();
       }// end if
-      delete curs;
+      delete cursorcta;
    }// end if
 }// end return_codigoinicial
 
@@ -552,7 +555,7 @@ void extractoview1::return_codigofinal() {
       conexionbase->commit();
       int num = cursorcta->numregistros();
       if (num >0) {
-         codigofinal->setText(cursorcta->valor(1));
+         codigofinal->setText(cursorcta->valor("codigo"));
       } else {
         codigofinal->selectAll();
         codigofinal->setFocus();
