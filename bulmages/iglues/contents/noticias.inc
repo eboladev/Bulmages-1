@@ -9,6 +9,19 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>06/10/2004</td>
+<td><center><b>Disponibles Manuales Básicos de Jabber y CVS</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Ante el interés que ha suscitado el proyecto despues de la publicación de la noticia de la cración de IGLUES en <A href="http://barrapunto.com">Barrapunto</A>, <A href="http://bulma.net">Bulma</A> y en la publicación Todo Linux, se ha creido conveniente documentar dos de los programas que nos son de utilidad en nuestro proyecto, tanto por el aspecto del desarrollo (manual de CVS) como a nivel de relación social (manual de Jabber). Ambos se encuentran en la sección de <A href="http://www.iglues.org/home.php?go=manuales">documentación</A> de nuestra web.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>11/10/2004</td>
 <td><center><b>Concurso para crear la iconografía de BulmaFact</b></center></td>
 </tr>

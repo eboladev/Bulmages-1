@@ -17,6 +17,15 @@ $body = '
 <br>
 </td>
 </tr>
+<tr><td><br></td></tr>
+<tr>
+<td>
+<A HREF="./documentos/cvs.pdf" TARGET="nueva">CVS como herramienta de desarrollo compartido</A><BR>
+<P>Manual básico de uso del sistema de control de versiones CVS a partir del cliente gráfico Cervisia. El manual usa como ejemplo la estructura del CVS de BulmaGés, para aquellos desarrolladores interesados en el proyecto.</P>
+
+<br>
+</td>
+</tr>
 </table>
 
 '; 
