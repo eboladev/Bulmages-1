@@ -55,6 +55,7 @@ orderslist::orderslist(company *comp, QWidget *parent, const char *name, int fla
 }// end orderslist
 
 void orderslist::inicializa() {
+	
    m_list->setNumRows( 0 );
    m_list->setNumCols( 0 );
    m_list->setSelectionMode( QTable::SingleRow );
@@ -89,12 +90,12 @@ void orderslist::inicializa() {
        int i=0;
        while (!cur->eof()) {
          m_list->setText(i,COL_IDPEDIDO,cur->valor("idpedido"));
-	 m_list->setText(i,COL_NUMPEDIDO,cur->valor("numpedido"));
+	 		m_list->setText(i,COL_NUMPEDIDO,cur->valor("numpedido"));
          m_list->setText(i,COL_ANOPEDIDO,cur->valor("anopedido"));
          m_list->setText(i,COL_FECHAPEDIDO,cur->valor("fechapedido"));
-	 m_list->setText(i,COL_DESCPEDIDO,cur->valor("descpedido"));
+	 		m_list->setText(i,COL_DESCPEDIDO,cur->valor("descpedido"));
          m_list->setText(i,COL_IDDIVISION,cur->valor("iddivision"));
-	 m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
+	 		m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
          i++;
          cur->siguienteregistro();
        }// end while
@@ -109,6 +110,7 @@ void orderslist::dobleclick(int a, int b, int c, const QPoint &) {
    linorderslist *linea = new linorderslist(companyact,companyact->m_pWorkspace,theApp->translate("Detalle Pedido", "company"));
    linea->chargelinorders(idpedido);
    linea->show();
+	inicializa();
 }
 
 
@@ -117,6 +119,7 @@ void orderslist::neworder() {
    linorderslist *linea = new linorderslist(companyact,companyact->m_pWorkspace,theApp->translate("Detalle Pedido", "company"));
    linea->chargelinorders(QString("0"));
    linea->show();
+	inicializa();
 }// end neworder
 
 

@@ -123,6 +123,7 @@ void linorderslist::chargelinorders(QString idpedido) {
    m_list->setColumnWidth(COL_IDARTICULO,100);
 	
 	m_list->hideColumn(COL_NUMLPEDIDO);
+	m_list->hideColumn(COL_IDPEDIDO);
    
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
