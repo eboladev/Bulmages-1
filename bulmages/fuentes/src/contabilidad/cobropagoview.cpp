@@ -21,6 +21,7 @@
 #include "postgresiface2.h"
 #include "empresa.h"
 #include "aplinteligentesview.h"
+#include "calendario.h"
 
 #include <qtable.h>
 
@@ -228,5 +229,31 @@ void cobropagoview::s_searchAccount() {
    m_cuenta->setText(listcuentas->codcuenta);
    delete listcuentas;   
 }// end s_searchAccount
+
+/**
+  * \brief Busqueda de una fecha inicial del listado.
+  */
+void cobropagoview::s_searchFirstDate() {
+        QList<QDate> a;
+        calendario *cal = new calendario(0,0);
+        cal->exec();
+        a = cal->dn->selectedDates();
+        m_fistDate->setText(a.first()->toString("dd/MM/yyyy"));
+        delete cal;
+}// end s_searchFistDate
+
+/**
+  * \brief Búsqueda de una fecha final del listado.
+  */
+void cobropagoview::s_searchLastDate() {
+        QList<QDate> a;
+        calendario *cal = new calendario(0,0);
+        cal->exec();
+        a = cal->dn->selectedDates();
+        m_lastDate->setText(a.first()->toString("dd/MM/yyyy"));
+        delete cal;
+}// end s_searchLastDate
+
+
 
 

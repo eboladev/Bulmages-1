@@ -46,6 +46,8 @@ public slots:
     virtual void s_creaPago();
     virtual void s_actualizar();
     virtual void s_searchAccount();
+    virtual void s_searchFirstDate();
+    virtual void s_searchLastDate();
 };
 
 #endif

@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>658</width>
-            <height>403</height>
+            <width>780</width>
+            <height>436</height>
         </rect>
     </property>
     <property name="caption">
@@ -26,6 +26,12 @@
             <hbox>
                 <property name="name">
                     <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
                 </property>
                 <widget class="QToolButton">
                     <property name="name">
@@ -85,6 +91,12 @@
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
+                </property>
                 <widget class="QLayoutWidget">
                     <property name="name">
                         <cstring>layout6</cstring>
@@ -92,6 +104,12 @@
                     <hbox>
                         <property name="name">
                             <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
                         </property>
                         <widget class="QLabel">
                             <property name="name">
@@ -127,6 +145,12 @@
                         <property name="name">
                             <cstring>unnamed</cstring>
                         </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
                         <widget class="QLabel">
                             <property name="name">
                                 <cstring>textLabel1_2</cstring>
@@ -137,7 +161,7 @@
                         </widget>
                         <widget class="QLineEdit">
                             <property name="name">
-                                <cstring>m_FInicial</cstring>
+                                <cstring>m_fistDate</cstring>
                             </property>
                         </widget>
                         <widget class="QToolButton">
@@ -161,6 +185,12 @@
                         <property name="name">
                             <cstring>unnamed</cstring>
                         </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
                         <widget class="QLabel">
                             <property name="name">
                                 <cstring>textLabel1_2_2</cstring>
@@ -171,7 +201,7 @@
                         </widget>
                         <widget class="QLineEdit">
                             <property name="name">
-                                <cstring>m_fFinal</cstring>
+                                <cstring>m_lastDate</cstring>
                             </property>
                         </widget>
                         <widget class="QToolButton">
@@ -207,6 +237,12 @@
             <hbox>
                 <property name="name">
                     <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
                 </property>
                 <spacer>
                     <property name="name">
@@ -296,11 +332,25 @@
         <receiver>cobropagodlg</receiver>
         <slot>s_searchAccount()</slot>
     </connection>
+    <connection>
+        <sender>toolButton1_2</sender>
+        <signal>clicked()</signal>
+        <receiver>cobropagodlg</receiver>
+        <slot>s_searchFirstDate()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1_3</sender>
+        <signal>clicked()</signal>
+        <receiver>cobropagodlg</receiver>
+        <slot>s_searchLastDate()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>s_creaPago()</slot>
     <slot>s_actualizar()</slot>
     <slot>s_searchAccount()</slot>
+    <slot>s_searchFirstDate()</slot>
+    <slot>s_searchLastDate()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
