@@ -29,7 +29,6 @@
 #include <qfontdatabase.h>
 #include <qfiledialog.h>
 
-
 #ifndef WIN32
 #include <sys/wait.h>
 #endif
@@ -71,6 +70,7 @@ private slots:
   virtual void BotonB_1Aplicar();
   virtual void BotonB_2Desacer();
   virtual void nuevaFacturacion();
+  virtual void BotonContaplus();
 };
 
 #endif

@@ -181,6 +181,14 @@
                             </widget>
                         </hbox>
                     </widget>
+                    <widget class="QPushButton">
+                        <property name="name">
+                            <cstring>pushButton32</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Importar desde ContaPlus</string>
+                        </property>
+                    </widget>
                     <widget class="QGroupBox">
                         <property name="name">
                             <cstring>groupBoxA_1</cstring>
@@ -1816,6 +1824,12 @@
         <receiver>UIconfiguracion</receiver>
         <slot>nuevaFacturacion()</slot>
     </connection>
+    <connection>
+        <sender>pushButton32</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonContaplus()</slot>
+    </connection>
 </connections>
 <tabstops>
     <tabstop>lineEdit1</tabstop>
@@ -1865,6 +1879,7 @@
     <slot>BotonA_4restaurarEmpresa()</slot>
     <slot>BotonA_61clonarEmpresa()</slot>
     <slot>nuevaFacturacion()</slot>
+    <slot>BotonContaplus()</slot>
 </slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>

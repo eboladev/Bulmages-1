@@ -18,7 +18,10 @@
 #include <errno.h>
 #include <qtable.h>
 #include <qtabwidget.h>
+#include <qfile.h>
 
+#include "gongimportfiles.h"
+#include "pgimportfiles.h"
 #include "bnuevaempresa.h"
 #include "nuevafact.h"
 
@@ -29,11 +32,8 @@
 #ifndef WIN32
 #include <map>
 #include <set>
-
-typedef std::map<QString,QString> campos_usuario;
-std::map<QString,campos_usuario> coleccion_usuarios;
-std::set<QString> usuarios_borrados;
 #endif
+
 
 
 BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * name, WFlags f=0) : UIconfiguracion(parent,name,f) {
@@ -56,10 +56,6 @@ BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * n
 }// end BConfiguracion
 
 BConfiguracion::~BConfiguracion() {
-#ifndef WIN32
-coleccion_usuarios.clear();
-usuarios_borrados.clear();
-#endif
 }
 
 void BConfiguracion::cerrar() {
@@ -87,8 +83,8 @@ void BConfiguracion::cerrar() {
 }
 
 
-// Esta función rellena la tabla de configuración del programa.
-// Para luego poder guardar los parametros que haga falta.
+/// Esta función rellena la tabla de configuración del programa.
+/// Para luego poder guardar los parametros que haga falta.
 void BConfiguracion::tablaconfiguracion() {
    m_tconfiguracion->setLeftMargin(0);
    m_tconfiguracion->hideColumn(2);
@@ -117,14 +113,12 @@ void BConfiguracion::cargarFichaBulmages() {
   if (confpr->valor(CONF_TRADUCCION)=="es") comboBoxIdioma->setCurrentItem(1);
   if (confpr->valor(CONF_TRADUCCION)=="fr") comboBoxIdioma->setCurrentItem(2);
   if (confpr->valor(CONF_TRADUCCION)=="en") comboBoxIdioma->setCurrentItem(3);
-  
   lineEditA_1->setText(PunteroAlSelector->nombreempresa->text());
-  
   int i=0;
   while ( comboBoxFuente->text(i) != confpr->valor(CONF_FONTFAMILY_BULMAGES).c_str() &&  i < comboBoxFuente->count()) ++i;
   comboBoxFuente->setCurrentItem(i);
   spinBoxFuente->setValue(atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).c_str()));
-}
+}// end cargarFichaBulmages
 
 
 void BConfiguracion::FontChanged(const QString & fuente) {
@@ -147,7 +141,30 @@ void BConfiguracion::BotonA_10aceptar() {
   confpr->setValor(CONF_TRADUCCION,codigoPais);
   confpr->setValor(CONF_FONTFAMILY_BULMAGES,comboBoxFuente->currentText().ascii());
   confpr->setValor(CONF_FONTSIZE_BULMAGES,spinBoxFuente->text().ascii());
-}
+}// BotonA_10aceptar
+
+
+/// Responde a la pusación de importar datos de Contaplus a BulmaGés
+void BConfiguracion::BotonContaplus() {
+	fprintf(stderr,"Importar desde Contaplus\n");
+	postgresiface2 *DBconn = new postgresiface2();
+	DBconn->inicializa(PunteroAlSelector->empresabd);
+	
+//	QFile filedest("/home/tborras/.bulmages/contadest.txt");
+	QFile filecont ("/home/tborras/Desktop/contaplus/xsubcta_ex.txt");
+	QFile fileasie ("/home/tborras/Desktop/contaplus/diario_ex.txt");
+//	filedest.open(IO_ReadWrite);
+	filecont.open(IO_ReadOnly);
+	fileasie.open(IO_ReadOnly);
+//	Contaplus2Fugit(filedest, filecont, fileasie);
+	pgimportfiles *importacion = new pgimportfiles(DBconn);
+	importacion->contaplus2Bulmages(filecont, fileasie);
+
+//	filedest.close();
+	filecont.close();
+	fileasie.close();
+	delete importacion;
+}// end BotonContaplus
 
 
 void BConfiguracion::BotonA_11rechazar() {
@@ -168,15 +185,6 @@ if (lineEditA_1->isReadOnly() ) { //Activa el line edit para que pueda ser edita
   } else { //Y guarda el nuevo nombre de empresa.
     lineEditA_1->setReadOnly(true);  
     lineEditA_1->setPaletteBackgroundColor(QColor(255,255,0));
-    
-//    postgresiface2 *DBconn = new postgresiface2();
-//    DBconn->inicializa(confpr->valor(CONF_METABASE).c_str());
-//    DBconn->begin();
-//    QString query;
-//    query.sprintf("UPDATE empresa SET nombre='%s' WHERE nombre='%s'",lineEditA_1->text().ascii(),PunteroAlSelector->nombreempresa->text().ascii());
-//    DBconn->ejecuta(query);
-//    DBconn->commit();
-//    delete DBconn;
     PunteroAlSelector->nombreempresa->setText(lineEditA_1->text());
   }// end if
 }// end BotonA_6nombreEmpresa
@@ -208,10 +216,9 @@ void BConfiguracion::nuevaFacturacion() {
 /*********************************************************************************************************/
 void BConfiguracion::BotonA_61clonarEmpresa(){
     QString dbEmpresa; 
-//    (new BVisorEmpresas(&dbEmpresa, this,"Clonador",true))->exec();
     if (dbEmpresa!=NULL) {
         QMessageBox::information( this, "Debug", "Clonando la Base de Datos: " +dbEmpresa +"\n\nProceso no disponible...\n", QMessageBox::Ok);
-    }
+    }// end if
 }
 
 /*********************************************************************************************************/
@@ -348,6 +355,7 @@ void BConfiguracion::salvarEmpresa() {
   }// end if
 }// end salvarEmpresa
 
+
 /*********************************************************************************************************/
 /* Restauramos una copia de seguridad de una base de datos                                               */
 /*********************************************************************************************************/
@@ -438,75 +446,26 @@ void BConfiguracion::cargarFichaUsuarios() {
 }
 
 
-void BConfiguracion::listView1_currentChanged(QListViewItem *it) {
+void BConfiguracion::listView1_currentChanged(QListViewItem *) {
 #ifndef WIN32
-  campos_usuario datos_usuario;
-  
-  datos_usuario = coleccion_usuarios.find(it->text(0))->second;  
-  listView2->findItem("prv1000",2)->setText( 0,datos_usuario.find("prv1000")->second );
-  lineEdit1->setText( datos_usuario.find("login")->second );
-  lineEdit2->setText( datos_usuario.find("password")->second );
-  lineEdit3->setText( datos_usuario.find("nombre")->second );
-  lineEdit4->setText( datos_usuario.find("apellido1")->second );
-  lineEdit5->setText( datos_usuario.find("apellido2")->second );
-  textEdit1->setText( datos_usuario.find("coment")->second );
 #endif
 }// end listView1_currentChanged
 
 
 void BConfiguracion::users_info_changed() {
 #ifndef WIN32
-  campos_usuario datos_usuario;
-  
-  coleccion_usuarios.erase(listView1->currentItem()->text(0));  
-  datos_usuario.insert(make_pair("login",lineEdit1->text()));
-  datos_usuario.insert(make_pair("password",lineEdit2->text()));
-  datos_usuario.insert(make_pair("nombre",lineEdit3->text()));
-  datos_usuario.insert(make_pair("apellido1",lineEdit4->text()));	 
-  datos_usuario.insert(make_pair("apellido2",lineEdit5->text()));
-  datos_usuario.insert(make_pair("coment",textEdit1->text()));
-  datos_usuario.insert(make_pair("idusuario",listView1->currentItem()->text(1)));
-  datos_usuario.insert(make_pair("prv1000",listView2->findItem("prv1000",2)->text(0)));
-  if ( (coleccion_usuarios.find(lineEdit1->text())) != coleccion_usuarios.end() ) {
-      QMessageBox::warning( 0, "Nuevo Usuario", "Ya existe otro usuario con este login.", QMessageBox::Ok,0);
-      lineEdit1->setText(listView1->currentItem()->text(0));
-  } else {
-      coleccion_usuarios.insert(make_pair(lineEdit1->text(),datos_usuario));
-      listView1->currentItem()->setText(0,lineEdit1->text());
-  }// end if
 #endif
 }
 
 //Creamos un usuario nuevo
 void BConfiguracion::newUser() {
 #ifndef WIN32
-  campos_usuario datos_usuario;
-   
-  QString nombreInicial=tr("Nuevo Usuario");
-  QListViewItem * it = new QListViewItem(listView1);
-  it->setText(0,nombreInicial);
-  it->setText(1,"-1");
-  datos_usuario.insert(make_pair("login",nombreInicial));
-  datos_usuario.insert(make_pair("password",""));
-  datos_usuario.insert(make_pair("nombre",""));
-  datos_usuario.insert(make_pair("apellido1",""));
-  datos_usuario.insert(make_pair("apellido2",""));
-  datos_usuario.insert(make_pair("coment",""));
-  datos_usuario.insert(make_pair("idusuario","-1"));
-  datos_usuario.insert(make_pair("prv1000","N"));
-  coleccion_usuarios.insert(make_pair(nombreInicial,datos_usuario));
-  listView1->setCurrentItem(it);
 #endif
 }
 
 //Borramos un usuario
 void BConfiguracion::deleteUser() {
 #ifndef WIN32
-	QListViewItem *it = listView1->currentItem();
-	coleccion_usuarios.erase(it->text(0));  
-	usuarios_borrados.insert(it->text(1));
-	listView1->takeItem(it);
-	delete it;
 #endif
 }
 

@@ -16,11 +16,15 @@ SOURCES += main.cpp \
            comun/bselector.cpp \
            comun/bconfiguracion.cpp \
 	   comun/bnuevaempresa.cpp \
-	   comun/nuevafact.cpp
+	   comun/nuevafact.cpp \
+	   comun/gongimportfiles.cpp \
+	   comun/pgimportfiles.cpp
 HEADERS += comun/bselector.h \
            comun/bconfiguracion.h \
 	   comun/bnuevaempresa.h \
-	   comun/nuevafact.h
+	   comun/nuevafact.h \
+	   comun/pgimportfiles.h \
+	   comun/gongimportfiles.h
 IDLS += comun/uiselector.ui \
         comun/uiconfiguracion.ui \
 	comun/nuevaempresadlg.ui \
