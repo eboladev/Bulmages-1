@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding = "iso-8859-1"?>
+
+  <STYLE name="header" 
+    fontfamily="Chancery I" fontsize="12" fontweight="bold" 
+    halignment="left"
+    textcolor="blue" backcolor="grey"/>
+  <STYLE name="title-text" halignment="center"
+    fontfamily="Caption" fontsize="14" fontweight="bold" 
+    textcolor="red"/>
+
+  <STYLE name="normal-text" 
+    fontfamily="Courier 10 Pitch" fontsize="10" fontweight="normal" 
+    textcolor="black" backcolor="white"/>
+  <STYLE name="normal-number" halignment="right"/>
+
+  <STYLE name="footer" fontfamily="Chancery I" 
+    fontsize="10" fontweight="normal" 
+    textcolor="black" backcolor="grey"/>
+
+  <STYLE name="date" format="%d/%m/%y"/>
+  <STYLE name="currency"  mask="###,###,##0.00" halignment="right"/>
+  <STYLE name="currency-total"  mask="###,###,##0.00" halignment="right"
+    textcolor="blue" fontweight="bold"/>
+  <STYLE name="total" textcolor="blue" fontweight="bold"/>
+  
