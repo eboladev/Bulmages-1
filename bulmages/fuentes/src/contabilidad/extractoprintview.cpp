@@ -131,11 +131,14 @@ void ExtractoPrintView::presentar(char *tipus) {
       }
 
       conexionbase->begin();
-      cursoraux = conexionbase->cargacuentascodigo(-1,(char *) cinicial.ascii(), (char *)cfinal.ascii());
+      cursoraux = conexionbase->cargacuentascodigo(-1,cinicial, cfinal);
+      conexionbase->commit();
 
       while(!cursoraux->eof()) {
          idcuenta = atoi(cursoraux->valor(0).ascii());
-         cursoraux1 = conexionbase->cargaapuntesctafecha(idcuenta,(char *) finicial.ascii(), (char *)ffinal.ascii());
+	 conexionbase->begin();
+         cursoraux1 = conexionbase->cargaapuntesctafecha(idcuenta, finicial.ascii(), ffinal.ascii());
+	 conexionbase->commit();
 
          if (!cursoraux1->eof()) {
             activo = strcmp((char *) cursoraux->valor(13).ascii() , "f");
@@ -159,8 +162,9 @@ void ExtractoPrintView::presentar(char *tipus) {
                }
 
             }
-
+		conexionbase->begin();
             cursoraux2 = conexionbase->cargasaldoscuentafecha(idcuenta, (char *)finicial.ascii());
+	    conexionbase->commit();
             if (!cursoraux2->eof()) {
                debeinicial = atof(cursoraux2->valor(0).ascii());
                haberinicial = atof(cursoraux2->valor(1).ascii());
@@ -203,9 +207,9 @@ void ExtractoPrintView::presentar(char *tipus) {
                haberfinal += haber;
                cad = cursoraux1->valor(4).ascii();
                //presentació txt
-               if (txt) fitxersortidatxt <<  setw(5) << idasiento << setw(14) << cad.substr(1,10).c_str() << setw(10) << contrapartida << "  " << setw(40)  << setiosflags(ios::left) << cursoraux1->valor(5).ascii() << setw(10) << resetiosflags(ios::left) << debe << setw(10) << haber << setw(10) << saldo << endl;
+               if (txt) fitxersortidatxt <<  setw(5) << idasiento << setw(14) << cad.substr(0,10).c_str() << setw(10) << contrapartida << "  " << setw(40)  << setiosflags(ios::left) << cursoraux1->valor(5).ascii() << setw(10) << resetiosflags(ios::left) << debe << setw(10) << haber << setw(10) << saldo << endl;
                //presentació html
-               if (html) fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(1,10).c_str() << " </td><td class=contrapartidamajor> " << contrapartida << " </td><td> " << cursoraux1->valor(5).ascii() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
+               if (html) fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(0,10).c_str() << " </td><td class=contrapartidamajor> " << contrapartida << " </td><td> " << cursoraux1->valor(5).ascii() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
             }
 
             if (activo) {
