@@ -240,6 +240,7 @@ cp bulmafact /usr/local/bin
 cp bulmacont /usr/local/bin
 cp bulmatpv /usr/local/bin
 
+cp trml2pdf/* /usr/bin/
 
 info "Instalando archivos de revision del archivo de configuracion. \n"
 tiempo
