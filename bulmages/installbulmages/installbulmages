@@ -108,9 +108,9 @@ if [ ! -e ./installbulmages ]; then
  exit 1
 fi
 
-#Comprobamos que existe la libreia de qt adecuada.
+#Comprobamos que existe la libreria de qt adecuada.
 if [ ! -e ${QTDIR}/lib/libqt.so.3 ]; then
-	mensaje "Libreia de Qt libqt.so.3 no está instalada o no se encuentra en /usr/lib \n"
+	mensaje "Libreria de Qt libqt.so.3 no está instalada o no se encuentra en ${QTDIR}/lib \n"
 	exit 1
 fi
 
