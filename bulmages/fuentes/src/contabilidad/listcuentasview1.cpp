@@ -26,6 +26,7 @@
 #include "empresa.h"
 
 listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : listcuentasdlg1(parent,name, modal) {
+    empresaactual = emp;
     modo=0;
     conexionbase= emp->bdempresa();
         ccuenta=ListView1->addColumn("código cuenta",-1);
@@ -288,8 +289,7 @@ void listcuentasview1::listdblpulsada(QListViewItem *it) {
     idcuenta = it->text(cidcuenta);
     if (modo == 0) {
 	 
-        cuentaview *nuevae = new cuentaview(0,"",true);
-        nuevae->inicializa(conexionbase);
+        cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
         nuevae->cargacuenta(atoi(idcuenta.ascii()));
         nuevae->exec();
         inicializa();
@@ -321,8 +321,7 @@ void listcuentasview1::nuevacuenta()  {
     int idcuenta;
     QListViewItem *it;
     fprintf(stderr,"listcuentasview1::nuevacuenta\n");
-    cuentaview *nuevae = new cuentaview(0,0,true);
-    nuevae->inicializa(conexionbase);
+    cuentaview *nuevae = new cuentaview(empresaactual,0,0,true);
     it = ListView1->currentItem();
     codigo = (string) it->text(ccuenta).ascii();
     cadena = (string) it->text(cgrupo).ascii();
@@ -360,8 +359,7 @@ void listcuentasview1::editarcuenta()  {
     listpulsada(it);
     codcuenta = it->text(ccuenta);
     idcuenta = it->text(cidcuenta);
-    cuentaview *nuevae = new cuentaview(0,"",true);
-    nuevae->inicializa(conexionbase);
+    cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
     nuevae->cargacuenta(atoi(idcuenta.ascii()));
     nuevae->exec();
     inicializa();

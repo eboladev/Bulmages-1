@@ -499,10 +499,10 @@ void intapunts3view::repinta(int numasiento) {
     calculadescuadre();
 }// end repinta
 
-/*******************************************************
+/**
  * Esta funcion se encarga de vaciar toda la tabla de apuntes
  * que aparece en el formulario.
- *******************************************************/
+ */
 void intapunts3view::vaciarapuntes()  {
     tapunts->setNumRows(0);
 }// end vaciarapuntes
@@ -539,10 +539,10 @@ void intapunts3view::asientocerradop() {
 }// end asientocerradop
 
 
-/*********************************************************************
+/**
  * Esta función se activa cuando se pulsa sobre el boton abrir asiento del
  * formulario
- *********************************************************************/
+ */
 void intapunts3view::boton_abrirasiento() {
     conexionbase->begin();
     if (idasiento==-1) idasiento=atoi(IDASIENTO);
@@ -558,9 +558,8 @@ void intapunts3view::boton_abrirasiento() {
  *********************************************************************/
 void intapunts3view::boton_cerrarasiento() {
     int eleccion;
-//    int i=0;
-    fprintf(stderr,"boton_cerrarasiento \n");
     guardaborrador(rowactual);
+    calculadescuadre();
     if (( descuadre->text() != "0.00") && ( descuadre->text() != "-0.00")) {
         eleccion = QMessageBox::information( 0, "Asiento descuadrado, no se puede cerrar", "El asiento no puede guardarse, desea dejarlo abierto ?");
         return;
@@ -882,8 +881,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
                 idcuenta = tapunts->text(row,COL_IDCUENTA);
             else
                  idcuenta = tapunts->text(row,COL_IDCONTRAPARTIDA);
-            cuentaview *nuevae = new cuentaview(0,"",true);
-            nuevae->inicializa(conexionbase);
+            cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
             nuevae->cargacuenta(atoi(idcuenta.ascii()));
             nuevae->exec();
             delete nuevae;
@@ -895,6 +893,9 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
 }// end contextmenu
 
 
+/** \brief SLOT que responde al cambio de casilla en la tabla.
+  * Mira que columna es en la que se esta y actua en consecuencia.
+  */
 void intapunts3view::apuntecambiadogrid(int row, int col) {
     switch(col) {
     case COL_FECHA: {
@@ -925,16 +926,13 @@ void intapunts3view::apuntecambiadogrid(int row, int col) {
 
 void intapunts3view::tcambiaseleccion() {
     QString codcuenta;
-    fprintf(stderr,"Canviat a la FILA: %d\n", tapunts->currentRow());
-    if (rowactual != tapunts->currentRow() && abierto)
+    if (rowactual != tapunts->currentRow() && abierto) {
         guardaborrador(rowactual);
+	calculadescuadre();
+    }// end if
     rowactual = tapunts->currentRow();
 }// end tcambiaseleccion
 
-
-void intapunts3view::currentChanged() {
-    fprintf(stderr,"currentChanged");
-}// end currentChanged()
 
 /** \brief Se va a hacer que el contenido de la casilla actual sea igual que el de la anterior.
 
@@ -1001,7 +999,7 @@ void intapunts3view::borraborrador(int row) {
 }// end borraborrador
 
 
-// Esta funcion guarda en la base de datos el borrador de la columna que se ha pasado.
+/// Esta funcion guarda en la base de datos el borrador de la columna que se ha pasado.
 void intapunts3view::guardaborrador(int row) {
     QString query;
     QString idborrador;
@@ -1014,7 +1012,6 @@ void intapunts3view::guardaborrador(int row) {
     QString idcanal;
     QString idc_coste;
     int datos=0;
-    fprintf(stderr,"guardaborrador: row:%d rowactual:%d\n",row, row);
     // Si no hay asiento lo calculamos.
     if (idasiento==-1) idasiento=atoi(IDASIENTO);
     // Hacemos la recoleccion de datos.
@@ -1335,6 +1332,7 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
     }// end if
 }// end pulsadomas
 
+
 void intapunts3view::cambiadasubcuenta(int row) {
     QString subcuenta = tapunts->text(row,COL_SUBCUENTA);
     if (subcuenta == "") {
@@ -1360,11 +1358,20 @@ void intapunts3view::cambiadasubcuenta(int row) {
             tapunts->setText(row,COL_NOMCUENTA,cursorcta->valor("descripcion"));
             tapunts->setText(row,COL_IDCUENTA,cursorcta->valor("idcuenta"));
         } else {
-            QMessageBox::warning( 0, tr("No existe cuenta"), tr("No existe una cuenta con el codigo proporcionado, desea crear una?."), QMessageBox::Yes, QMessageBox::No);
+	    int valor;
+            valor = QMessageBox::warning( 0, tr("No existe cuenta"), tr("No existe una cuenta con el codigo proporcionado, desea crear una?."), QMessageBox::Yes, QMessageBox::No);
+	    if (valor == QMessageBox::Yes) {
+	    	cuentaview *cta = new cuentaview(empresaactual,this,0,0);
+		cta->cuentanueva(subcuenta);
+		cta->exec();
+		delete cta;
+	    }// end if
         }// end if
         delete cursorcta;
     }// end if
 }// end cambiadasubcuenta
+
+
 
 void intapunts3view::buscacontrapartida(int row) {
     QString subcuenta = tapunts->text(row,COL_CONTRAPARTIDA);
@@ -1443,14 +1450,9 @@ void intapunts3view::boton_inteligente() {
     } else {
         numasiento = 0;
     }// end if
-    //  int idasiento = atoi(cursorasientos->valor("idasiento").c_str());
     aplinteligentesview *nueva=new aplinteligentesview(empresaactual, 0,"");
     nueva->inicializa(numasiento, this);
     nueva->exec();
-    //  numasiento = nueva->numasiento;
-    //  if (numasiento != 0)
-    //  muestraasiento(idasiento);
-    // repinta();
     delete nueva;
 }// end boton_inteligente
 
@@ -1764,17 +1766,17 @@ void intapunts3view::return_numasiento() {
 }// end return_cuenta
 
 
-//**************************************************************
-//* Se ha pulsado sobre el boton de cargar asiento con lo
-//* que debemos comprobar que el numero introducido es correcto
-//* y hacer las gestiones oportunas para mostrar el asiento en
-//* pantalla o crearlo si hace falta.
-//**************************************************************/
+/**
+  * Se ha pulsado sobre el boton de cargar asiento con lo
+  * que debemos comprobar que el numero introducido es correcto
+  * y hacer las gestiones oportunas para mostrar el asiento en
+  * pantalla o crearlo si hace falta.
+  */
 void intapunts3view::boton_cargarasiento() {
     QString query;
     int IdAsien=0;
     conexionbase->begin();
-    query.sprintf("SELECT idasiento FROM asiento WHERE ordenasiento<=%d AND EXTRACT(YEAR FROM fecha)=%s ORDER BY ordenasiento DESC",idasiento1->text().toInt(),empresaactual->ejercicioactual().ascii());
+    query.sprintf("SELECT idasiento FROM asiento WHERE ordenasiento<=%d ORDER BY ordenasiento DESC",idasiento1->text().toInt());
     cursor2 *curs = conexionbase->cargacursor(query, "micursor");
     conexionbase->commit();
     if (!curs->eof()) {
@@ -1842,23 +1844,37 @@ void intapunts3view::editarasiento() {
 
 
 void intapunts3view::subirapunte(int row) {
+    /// Como existen resticciones en la base de datos sobre el campo orden
+    /// Debemos usar un campo intermedio.
     if (row > 0 ) {
+        tapunts->swapRows(row, TAPUNTS_NUM_ROWS-1);
+        guardaborrador(TAPUNTS_NUM_ROWS-1);
         tapunts->swapRows(row, row-1);
         guardaborrador(row);
+        tapunts->swapRows(TAPUNTS_NUM_ROWS-1, row-1);
         guardaborrador(row-1);
     }// end if
 }// end subirapunte
 
 
 void intapunts3view::bajarapunte(int row) {
+    /// Como existen resticciones en la base de datos sobre el campo orden
+    /// Debemos usar un campo intermedio.
     if (!tapunts->text(row+1, COL_IDBORRADOR).isNull()) {
+        tapunts->swapRows(row, TAPUNTS_NUM_ROWS-1);
+        guardaborrador(TAPUNTS_NUM_ROWS-1);
         tapunts->swapRows(row, row+1);
         guardaborrador(row);
+        tapunts->swapRows(TAPUNTS_NUM_ROWS-1, row+1);
         guardaborrador(row+1);
     }// end if
 }// end subirapunte
 
 
+/** \brief Responde al cambio de texto en el qlineedit de la fecha
+  * Si se ha pulsado un + crea un objeto del tipo \ref calendario y lo llama para obtener la fecha
+  * Si se ha pulsado el * pone la fecha actual
+  */
 void intapunts3view::fechaasiento1_textChanged( const QString & texto ) {
     if (texto=="+") {
         QList<QDate> a;

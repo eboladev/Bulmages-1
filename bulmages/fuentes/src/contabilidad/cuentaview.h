@@ -32,19 +32,23 @@
 
 /** *@author Tomeu Borrás Riera */
 
+class empresa;
+
 class cuentaview : public cuentadlg  {
 Q_OBJECT
 public:
+empresa *empresaactual;
 int idcuenta;
 int idgrupos[100];
 postgresiface2 *conexionbase;
 unsigned int numdigitos; // Esta variable indica el número de dígitos que tiene la contabilidad en sus cuentas
 
 public:
-  cuentaview(QWidget *, const char *name =0, int fl=0);
+  cuentaview(empresa *emp,QWidget *, const char *name =0, int fl=0);
   ~cuentaview();
-  int inicializa(postgresiface2 *);
+  int inicializa();
   int nuevacuenta(QString, int);
+  QString cuentanueva(QString);
   int cargacuenta(int);
   void cambiapadre( const QString &);
 public slots:

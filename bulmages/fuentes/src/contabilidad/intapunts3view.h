@@ -41,6 +41,7 @@ class empresa;
   *@author Tomeu Borrás Riera 
  * \class intapunts3view intapunts3view.h
  * \brief Se encarga de controlar la ventana de introducción de apuntes.
+ * \todo Eliminar los arrays de canales y centros de coste y sustituirlos por listas o por conjuntos.
  * Esta es una de las clases más complejas del programa ya que controla toda la acción y casi toda la interactuación del usuario con el programa. El intento es conseguir una interficia que resulte muy rápida y cómodo para el usuario que introduzca datos.
  Hereda intapunts3dlg  
 */
@@ -97,21 +98,16 @@ public:
     void iniciar_asiento_nuevo();
     void borrar_asiento(bool);
 public slots:
-//    virtual void tpulsado(int , int, int, const QPoint &);
     virtual void contextmenu(int, int,const QPoint &);
-    virtual void currentChanged();
     virtual void apuntecambiadogrid(int, int);
     virtual void boton_iva();
     virtual void pulsadomas(int, int, int);
     virtual void boton_inteligente();
     virtual void boton_borrar_asiento();
     virtual void boton_buscacuenta();
-//    virtual void boton_extracto();
     virtual void boton_extracto1(int);
-//    virtual void boton_diario();
     virtual void boton_diario1(int);
     virtual void boton_balance1(int);
-//    virtual void boton_balance();
     virtual void boton_filtrar();
     virtual void boton_abrirasiento();
     virtual void boton_cerrarasiento();
@@ -127,7 +123,6 @@ public slots:
     virtual void editarasiento();
     virtual void boton_duplicarasiento();
     virtual void boton_fecha();
-    
     virtual void boton_nuevoasientodocumental();
     virtual void boton_adjuntar();
 

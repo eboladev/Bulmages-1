@@ -226,10 +226,7 @@ int empresa::nuevaempresa() {
 
 
 int empresa::nuevacuenta() {
-   cuentaview * nuevae =new cuentaview(0,"nuevacuenta",true);
-   nuevae->inicializa(conexionbase2);
-   // Al ser una insercion no es preciso cargar ninguna cuenta previa.
-   //   nuevae->cargacuenta(24);
+   cuentaview * nuevae =new cuentaview(this,0,"nuevacuenta",true);
    nuevae->exec();
    delete nuevae;
    return(0);

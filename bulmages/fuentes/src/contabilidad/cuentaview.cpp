@@ -15,10 +15,21 @@
  ***************************************************************************/
 
 #include "cuentaview.h"
+#include "empresa.h"
 
-cuentaview::cuentaview(QWidget *parent, const char *name, int fl): cuentadlg(parent,name,fl) {
+cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int fl): cuentadlg(parent,name,fl) {
    idcuenta=0;
+   empresaactual = emp;
+   conexionbase = emp->bdempresa();
+   inicializa();
 }// end cuentaview
+
+/** Saca el formulario, crea una cuenta y devuelve su identificador
+  */
+QString cuentaview::cuentanueva(QString cod) {
+
+}// end cuentanueva
+
 
 cuentaview::~cuentaview(){
 }// end ~cuentaview
@@ -103,9 +114,8 @@ void cuentaview::aceptar() {
    done(1);
 }// end accept
 
-int cuentaview::inicializa(postgresiface2 *conn) {
+int cuentaview::inicializa() {
     cursor2 *cursorgrupos, *cursoraux1;
-    conexionbase = conn;
     for (int i=0;i<100;i++) {
        idgrupos[i]=-1;
     }// end for

@@ -1,4 +1,4 @@
-/***************************************************************************
+/********************************************************************
                           listcuentasview.h  -  description
                              -------------------
     begin                : Wed Nov 27 2002
@@ -44,7 +44,7 @@ unsigned int numdigitos; // Esta variable indica el numero de digitos que tienen
 QString codcuenta;      // El codigo de la cuenta
 QString idcuenta;
 postgresiface2 *conexionbase;
-
+empresa *empresaactual;
 public:
    listcuentasview1(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);
    ~listcuentasview1();
