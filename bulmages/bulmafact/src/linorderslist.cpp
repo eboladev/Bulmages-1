@@ -206,9 +206,11 @@ void linorderslist::almacenactivated(int a) {
 
 void linorderslist::accept() {
 	fprintf(stderr,"accept button activated\n");
+	QDate orderDate = normalizafecha(m_fechapedido->text());
+	
 	if (idpedido != "0") {
 		QString SQLQuery = "UPDATE pedido SET numpedido='"+m_numpedido->text()+"'";
- //     SQLQuery += " , anopedido='"+m_fechapedido->text()+"'";
+      SQLQuery += " , anopedido="+ m_fechapedido->text().right(4);
       SQLQuery += " , fechapedido='"+m_fechapedido->text()+"'";
       SQLQuery += " , descpedido='"+m_descpedido->text()+"'";
       SQLQuery += " , iddivision="+m_cursorcombo->valor("iddivision",m_combodivision->currentItem());
@@ -218,10 +220,10 @@ void linorderslist::accept() {
       companyact->ejecuta(SQLQuery);
       companyact->commit();
 	} else {
-		QString SQLQuery = "INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen)";
+		QString SQLQuery = "INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen)";
 		SQLQuery += " VALUES (";
 		SQLQuery += "'"+m_numpedido->text()+"'";
- //     SQLQuery += " , anopedido='"+m_fechapedido->text()+"'";
+		SQLQuery += " , "+m_fechapedido->text().right(4);
       SQLQuery += " , '"+m_fechapedido->text()+"'";
       SQLQuery += " , '"+m_descpedido->text()+"'";
       SQLQuery += " , "+m_cursorcombo->valor("iddivision",m_combodivision->currentItem());
