@@ -2,9 +2,9 @@
 <!DOCTYPE KDevPrjSession>
 <KDevPrjSession>
  <DocsAndViews NumberOfDocuments="1" >
-  <Doc0 NumberOfViews="1" URL="file:/home/josep/projects/cvs/bulmages/bulmatpv/src/main.cpp" >
-   <View0 line="6" Type="???" >
-    <AdditionalSettings Top="1" Width="730" Attach="1" Height="350" Left="1" MinMaxMode="0" />
+  <Doc0 NumberOfViews="1" URL="file:/home/tborras/bulmages/bulmatpv/src/tpvview.h" >
+   <View0 line="48" Type="???" >
+    <AdditionalSettings Top="1" Width="1111" Attach="1" Height="650" Left="1" MinMaxMode="0" />
    </View0>
   </Doc0>
  </DocsAndViews>
