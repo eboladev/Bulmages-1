@@ -24,6 +24,7 @@
 
 #ifdef REPORTS
 #include "rtkinputbges.h"
+#include "rtkqtreportviewer.h"
 using namespace RTK;
 #endif
 
