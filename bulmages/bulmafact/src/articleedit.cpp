@@ -193,6 +193,8 @@ void articleedit::boton_nuevo() {
 	m_articleOverCost->setText("");
 	m_articleModel->setText("");
 	m_productionLine->setText("");
+	m_comboArtType->setCurrentItem(0);
+	m_comboIvaType->setCurrentItem(0);
 }// end boton_nuevo
 
 /*************************************************************************
@@ -220,25 +222,25 @@ void articleedit::accept() {
       companyact->commit();
       close();
    } else {
- /*     QString SQLQuery = " INSERT INTO proveedor (nomproveedor, nomaltproveedor, cifproveedor, codicliproveedor, cbancproveedor, dirproveedor, poblproveedor, cpproveedor, telproveedor, faxproveedor, urlproveedor, emailproveedor)";
+      QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, cbarrasarticulo, tipoarticulo, descuentoarticulo, especificacionesarticulo, margenarticulo, sobrecostearticulo, modeloarticulo, idtipo_iva)";
       SQLQuery += " VALUES (";
-      SQLQuery += "'"+m_nomproveedor->text()+"'";
-      SQLQuery += ",'"+m_nomaltproveedor->text()+"'";
-      SQLQuery += ",'"+m_cifproveedor->text()+"'";
-      SQLQuery += ",'"+m_codicliproveedor->text()+"'";
-      SQLQuery += ",'"+m_cbancproveedor->text()+"'";
-      SQLQuery += ",'"+m_dirproveedor->text()+"'";
-      SQLQuery += ",'"+m_poblproveedor->text()+"'";
-      SQLQuery += ",'"+m_cpproveedor->text()+"'";
-      SQLQuery += ",'"+m_telproveedor->text()+"'";
-      SQLQuery += ",'"+m_faxproveedor->text()+"'";
-      SQLQuery += ",'"+m_urlproveedor->text()+"'";
-      SQLQuery += ",'"+m_emailproveedor->text()+"'";
+      SQLQuery += " "+m_articleCode->text();
+      SQLQuery += " , '"+m_articleName->text()+"'";
+      SQLQuery += " , '"+m_articleDesc->text()+"'";
+      SQLQuery += " , '"+m_barCode->text()+"'";
+      SQLQuery += " , "+QString().sprintf("%d", m_comboArtType->currentItem());
+      SQLQuery += " , "+m_articleDiscount->text();
+      SQLQuery += " , '"+m_specifications->text()+"'";
+      SQLQuery += " , "+m_articleMargin->text();
+      SQLQuery += " , "+m_articleOverCost->text();
+      SQLQuery += " , '"+m_articleModel->text()+"'";
+      SQLQuery += " , "+m_cursorcombo->valor("idtipo_iva",m_comboIvaType->currentItem());
+    //  SQLQuery += " , idlinea_prod='"+... ;
       SQLQuery += ")";
       companyact->begin();
       companyact->ejecuta(SQLQuery);
       companyact->commit(); 
-      close(); */
+      close(); 
    }// end if */
 }// end accept
 
