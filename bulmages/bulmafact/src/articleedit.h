@@ -21,6 +21,7 @@
 #define ARTICLEEDIT_H
 
 #include "articleeditbase.h"
+#include "postgresiface2.h"
 
 /** @author Alvaro de Miguel */
 class company;
@@ -31,11 +32,17 @@ Q_OBJECT
 private:
    company *companyact;
    QString idArticle;
+	cursor2 *m_cursorcombo;
+	
 public:
     articleedit(company *emp, QWidget *parent = 0, const char *name = 0);
     ~articleedit();
+	 
 public:
    void chargeArticle(QString);
+	void articleedit::cargarcomboiva(QString);
+
+	
 public slots:
    virtual void accept();
    virtual void boton_nuevo();

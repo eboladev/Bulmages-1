@@ -46,6 +46,8 @@ CREATE TABLE articulo (
 #include <qlineedit.h>
 #include <qmessagebox.h>
 #include <qtable.h>
+#include <qcombobox.h>
+#include <qtextedit.h>
 
 #define COL_SUMINISTRA_IDSUMINISTRA 0
 #define COL_SUMINISTRA_IDPROVEEDOR 0
@@ -97,7 +99,7 @@ articleedit::~articleedit() {
 
 
 /************************************************************************
-* Esta función carga un proveedor de la base de datos y lo presenta.    *
+* Esta función carga un artículo de la base de datos y lo presenta.     *
 * Si el parametro pasado no es un identificador válido entonces se pone *
 * la ventana de edición en modo de inserción                            *
 *************************************************************************/
@@ -115,17 +117,19 @@ void articleedit::chargeArticle(QString idArt) {
          m_articleName->setText(cur->valor("nomarticulo"));
          m_articleDesc->setText(cur->valor("descarticulo"));
          m_barCode->setText(cur->valor("cbarrasarticulo"));
-  //       m_comboIvaType ...
          m_articleDiscount->setText(cur->valor("descuentoarticulo"));
-         //m_specifications->setText(cur->valor("especificacionesarticulo"));
+         m_specifications->setText(cur->valor("especificacionesarticulo"));
          m_articleMargin->setText(cur->valor("margenarticulo"));
          m_articleOverCost->setText(cur->valor("sobrecostearticulo"));
          m_articleModel->setText(cur->valor("modeloarticulo"));
+			m_comboArtType->setCurrentItem(cur->valor("tipoarticulo").toInt());
+			cargarcomboiva(cur->valor("idtipo_iva"));
+			
    //      m_productionLine->setText());
          
          // Suministra relation loading
          // Cargamos las relaciones artículo - proveedor.
-         QString SQLQuery1 = "SELECT * FROM suministra WHERE idarticulo="+idArt;
+         QString SQLQuery1 = "SELECT * FROM suministra, proveedor WHERE suministra.idproveedor=proveedor.idproveedor and idarticulo="+idArt;
          companyact->begin();
          cursor2 *cur1 = companyact->cargacursor(SQLQuery1, "cargaSuministra");
          companyact->commit();
@@ -133,7 +137,7 @@ void articleedit::chargeArticle(QString idArt) {
          int i=0;
          while (!cur1->eof()) {
             m_suministra->setText(i,COL_SUMINISTRA_IDPROVEEDOR,cur1->valor("idproveedor"));
-       //     m_suministra->setText(i,COL_SUMINISTRA_NOMPROVEEDOR,cur1->valor("nomproveedor"));
+            m_suministra->setText(i,COL_SUMINISTRA_NOMPROVEEDOR,cur1->valor("nomproveedor"));
             m_suministra->setText(i,COL_SUMINISTRA_REFPRO,cur1->valor("refprosuministra"));
             m_suministra->setText(i,COL_SUMINISTRA_PVD,cur1->valor("pvdsuministra"));
             m_suministra->setText(i,COL_SUMINISTRA_BENEFICIO,cur1->valor("beneficiosuministra"));
@@ -150,6 +154,29 @@ void articleedit::chargeArticle(QString idArt) {
    }// end if
 }// end chargeArticle
 
+
+void articleedit::cargarcomboiva(QString idIva) {
+	m_cursorcombo = NULL;
+   companyact->begin();
+   if (m_cursorcombo != NULL) delete m_cursorcombo;
+   	m_cursorcombo = companyact->cargacursor("SELECT * FROM tipo_iva","unquery");
+   	companyact->commit();
+   	int i = 0;
+   	int i1 = 0;   
+   	while (!m_cursorcombo->eof()) {
+   		i ++;
+		if (idIva == m_cursorcombo->valor("idtipo_iva")) {
+		   i1 = i;
+		}
+   		m_comboIvaType->insertItem(m_cursorcombo->valor("desctipo_iva"));
+		m_cursorcombo->siguienteregistro();
+   }
+   if (i1 != 0 ) {
+   	m_comboIvaType->setCurrentItem(i1-1);
+   }
+} // end cargarcomboalmacen
+
+
 /************************************************************************
 * Esta función se ejecuta cuando se ha pulsado sobre el botón de nuevo  *
 *************************************************************************/
@@ -161,7 +188,7 @@ void articleedit::boton_nuevo() {
 	m_barCode->setText("");
   //       m_comboIvaType ...
 	m_articleDiscount->setText("");
-//	m_specifications->setText("");
+	m_specifications->setText("");
 	m_articleMargin->setText("");
 	m_articleOverCost->setText("");
 	m_articleModel->setText("");
@@ -174,26 +201,26 @@ void articleedit::boton_nuevo() {
 * pertinentes                                                            *
 **************************************************************************/
 void articleedit::accept() {
-/*   if (idprovider != "0") {
-      QString SQLQuery = "UPDATE proveedor SET urlproveedor='"+m_urlproveedor->text()+"'";
-      SQLQuery += " , nomproveedor='"+m_nomproveedor->text()+"'";
-      SQLQuery += " , nomaltproveedor='"+m_nomaltproveedor->text()+"'";
-      SQLQuery += " , cifproveedor='"+m_cifproveedor->text()+"'";
-      SQLQuery += " , codicliproveedor='"+m_codicliproveedor->text()+"'";
-      SQLQuery += " , cbancproveedor='"+m_cbancproveedor->text()+"'";
-      SQLQuery += " , dirproveedor='"+m_dirproveedor->text()+"'";
-      SQLQuery += " , poblproveedor='"+m_poblproveedor->text()+"'";
-      SQLQuery += " , cpproveedor='"+m_cpproveedor->text()+"'";
-      SQLQuery += " , telproveedor='"+m_telproveedor->text()+"'";
-      SQLQuery += " , faxproveedor='"+m_faxproveedor->text()+"'";
-      SQLQuery += " , emailproveedor='"+m_emailproveedor->text()+"'";
-      SQLQuery += " WHERE idproveedor ="+idprovider;
+	if (idArticle != "0") {
+      QString SQLQuery = "UPDATE articulo SET codarticulo='"+m_articleCode->text()+"'";
+      SQLQuery += " , nomarticulo='"+m_articleName->text()+"'";
+      SQLQuery += " , descarticulo='"+m_articleDesc->text()+"'";
+      SQLQuery += " , cbarrasarticulo='"+m_barCode->text()+"'";
+      SQLQuery += " , tipoarticulo="+QString().sprintf("%d", m_comboArtType->currentItem());
+      SQLQuery += " , descuentoarticulo="+m_articleDiscount->text();
+      SQLQuery += " , especificacionesarticulo='"+m_specifications->text()+"'";
+      SQLQuery += " , margenarticulo="+m_articleMargin->text();
+      SQLQuery += " , sobrecostearticulo="+m_articleOverCost->text();
+      SQLQuery += " , modeloarticulo='"+m_articleModel->text()+"'";
+      SQLQuery += " , idtipo_iva="+m_cursorcombo->valor("idtipo_iva",m_comboIvaType->currentItem());
+    //  SQLQuery += " , idlinea_prod='"+... ;
+      SQLQuery += " WHERE idarticulo ="+idArticle;
       companyact->begin();
       companyact->ejecuta(SQLQuery);
       companyact->commit();
       close();
    } else {
-      QString SQLQuery = " INSERT INTO proveedor (nomproveedor, nomaltproveedor, cifproveedor, codicliproveedor, cbancproveedor, dirproveedor, poblproveedor, cpproveedor, telproveedor, faxproveedor, urlproveedor, emailproveedor)";
+ /*     QString SQLQuery = " INSERT INTO proveedor (nomproveedor, nomaltproveedor, cifproveedor, codicliproveedor, cbancproveedor, dirproveedor, poblproveedor, cpproveedor, telproveedor, faxproveedor, urlproveedor, emailproveedor)";
       SQLQuery += " VALUES (";
       SQLQuery += "'"+m_nomproveedor->text()+"'";
       SQLQuery += ",'"+m_nomaltproveedor->text()+"'";
@@ -211,7 +238,7 @@ void articleedit::accept() {
       companyact->begin();
       companyact->ejecuta(SQLQuery);
       companyact->commit(); 
-      close();
+      close(); */
    }// end if */
 }// end accept
 

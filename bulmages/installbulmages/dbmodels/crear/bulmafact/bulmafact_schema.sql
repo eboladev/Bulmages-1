@@ -95,7 +95,7 @@ CREATE TABLE tipo_iva (
 -- Nom: Descripció curta de l'article.
 -- Descripcio: Descripció completa (llarga) de l'article.
 -- CBarres: Codi de barres.
--- Tipus: [Simple | Compost calculat | Compost escalat | Ampliat]. Determina el tipus d'article i com --  calcular-ne el preu. Simple = Article no compost amb preu PVP; Compost = Article compost amb preu suma dels PVPs dels components (Calculat) o PVP (escalat); Ampliat = Compost d'ell mateix més els components amb preu suma de PVP i PVPs dels components.
+-- Tipus: [Simple (0) | Compost calculat (1) | Compost escalat (2) | Ampliat (3)]. Determina el tipus d'article i com --  calcular-ne el preu. Simple = Article no compost amb preu PVP; Compost = Article compost amb preu suma dels PVPs dels components (Calculat) o PVP (escalat); Ampliat = Compost d'ell mateix més els components amb preu suma de PVP i PVPs dels components.
 -- Descompte: Descompte "invisible" que s'aplica al preu resultant. Útil sobretot per a diferenciar el preu dels articles composts del preu de compra per separat.
 -- Especificacions: Camp de text per a comentaris i informacions varies.
 -- Icona: Icona de l'article.
@@ -376,7 +376,7 @@ CREATE TABLE alb_pro (
 CREATE TABLE lpedido (
    numlpedido serial PRIMARY KEY,
    desclpedido character varying(150),
-   cantlpedido integer,
+   cantlpedido float,
    pvdlpedido float,
    prevlpedido date,
    

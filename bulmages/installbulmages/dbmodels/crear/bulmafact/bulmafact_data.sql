@@ -60,3 +60,11 @@ INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frece
 INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente) VALUES (1, '30/11/2004', 'Primer Contacto', '971 32 32 78', '12/12/2004', 'Sin comentarios', 1, 1);
 INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente) VALUES (2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', '13/12/2004', 'Sin comentarios', 1, 1);
 INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente) VALUES (3, '10/11/2004', 'Tercer Contacto', '971 29 06 29', '14/12/2004', 'Sin comentarios', 1, 2);
+
+INSERT INTO suministra (idarticulo, idproveedor) VALUES (1, 1);
+INSERT INTO suministra (idarticulo, idproveedor) VALUES (2, 1);
+INSERT INTO suministra (idarticulo, idproveedor) VALUES (3, 2);
+INSERT INTO suministra (idarticulo, idproveedor) VALUES (4, 2);
+INSERT INTO suministra (idarticulo, idproveedor) VALUES (2, 3);
+INSERT INTO suministra (idarticulo, idproveedor) VALUES (3, 3);
+INSERT INTO suministra (idarticulo, idproveedor) VALUES (4, 1);

@@ -411,6 +411,7 @@ void linorderslist::valueOrderLineChanged(int row, int col) {
 			calculateImports();
 		}
 		case COL_CANTLPEDIDO: {
+			m_list->setText(row, COL_CANTLPEDIDO, m_list->text(row, COL_CANTLPEDIDO).replace(",","."));
 			calculateImports();
 		}
 		case COL_PVDLPEDIDO: {
