@@ -80,6 +80,7 @@ public slots:
 	virtual void accept();
 	virtual void cancel();
 	virtual void s_saveBudget();
+	virtual void s_removeBudget();
 
 };
 

@@ -238,11 +238,18 @@
         <receiver>BudgetsListBase</receiver>
         <slot>doubleclicked(int,int,int,const QPoint&amp;)</slot>
     </connection>
+    <connection>
+        <sender>botonborrar</sender>
+        <signal>clicked()</signal>
+        <receiver>BudgetsListBase</receiver>
+        <slot>s_removeBudget()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>newBudget()</slot>
     <slot>contextMenu(int, int, const QPoint &amp;)</slot>
     <slot>doubleclicked(int, int, int, const QPoint &amp;)</slot>
+    <slot>s_removeBudget()</slot>
 </slots>
 <layoutdefaults spacing="0" margin="0"/>
 </UI>

@@ -48,6 +48,7 @@ public slots:
     virtual void doubleclicked(int, int, int, const QPoint &);
     virtual void contextMenu(int, int, const QPoint &);
     virtual void newBudget();
+	 virtual void s_removeBudget();
     
     /*
     virtual void boton_editar();

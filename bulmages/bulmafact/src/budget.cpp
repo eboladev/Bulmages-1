@@ -309,6 +309,31 @@ void Budget::newBudgetLine() {
 }
 
 
+void Budget::s_removeBudget() {
+	fprintf(stderr,"Iniciamos el boton_borrar\n");
+	if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "Sí", "No") == 0) {
+		companyact->begin();
+		QString SQLQuery = "DELETE FROM lpresupuesto WHERE idpresupuesto ="+m_idpresupuesto;
+		if (companyact->ejecuta(SQLQuery)==0){
+			QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_idpresupuesto;
+				if (companyact->ejecuta(SQLQuery)==0){
+				QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_idpresupuesto;
+				if (companyact->ejecuta(SQLQuery)==0){
+					companyact->commit();
+					close();
+				} else {
+					companyact->rollback();
+				}
+			} else {
+				companyact->rollback();
+			}
+		} else {
+			companyact->rollback();
+		}
+	}	
+}// end boton_borrar
+
+
 void Budget::removeBudgetLine() {
 	if (m_list->currentRow() >= 0) {
 		int row = m_list->currentRow();

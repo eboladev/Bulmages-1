@@ -46,6 +46,7 @@ CREATE TABLE presupuesto (
 #include "company.h"
 #include "budget.h"
 #include <qtable.h>
+#include <qmessagebox.h>
 
 #define COL_IDPRESUPUESTO 0
 #define COL_NUMPRESUPUESTO 1
@@ -138,8 +139,6 @@ void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
 }
 
 
-
-
 void BudgetsList::contextMenu(int , int , const QPoint &) {
 /*
    QString idprov = m_list->text(a, COL_IDPROVEEDOR);
@@ -158,3 +157,29 @@ void BudgetsList::newBudget() {
    bud->show();
 }// end boton_crear
 
+
+void BudgetsList::s_removeBudget() {
+	fprintf(stderr,"Iniciamos el boton_borrar\n");
+	if (m_list->currentRow() >= 0) {
+		if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar el presupuesto seleccionado", "Sí", "No") == 0) {
+			companyact->begin();
+			QString SQLQuery = "DELETE FROM lpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+			if (companyact->ejecuta(SQLQuery)==0){
+				QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+					if (companyact->ejecuta(SQLQuery)==0){
+					QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+					if (companyact->ejecuta(SQLQuery)==0){
+						companyact->commit();
+					} else {
+						companyact->rollback();
+					}
+				} else {
+					companyact->rollback();
+				}
+			} else {
+				companyact->rollback();
+			}
+		}	
+	}
+	inicializa();
+}// end boton_borrar
