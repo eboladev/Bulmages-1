@@ -423,6 +423,7 @@ unix{
   bulmages_install_script.extra = echo; echo "**************************"; echo Para Instalar BULMAGES ejecute el script de instalación; echo "installbulmages"; echo que encontrara en la carpeta installbulmages.; echo Gracias.; echo "(El equipo de Bulmages)"; echo "**************************"; echo;
   exists(/usr/include/postgresql/libpq-fe.h){
     DEFINES += DISTRO_DEBIAN
+    DEFINES += QT_THREAD_SUPPORT
   }
   exists(/usr/include/pgsql/libpq-fe.h){
     DEFINES += DISTRO_RED_HAT
