@@ -68,6 +68,7 @@ CREATE TABLE lpresupuesto (
 #include "division.h"
 #include "clientslist.h"
 #include "articleslist.h"
+#include "EventHandler.h"
 
 #include <qlineedit.h>
 #include <qtextedit.h>
@@ -142,7 +143,8 @@ void Budget::inicialize() {
 	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
 	m_list->setPaletteBackgroundColor("#AFFAFA");   
 	m_list->setReadOnly(FALSE);
-	m_list->installEventFilter( this );
+	EventHandler *qtableEventHandler = new EventHandler(this);
+	m_list->installEventFilter( qtableEventHandler );
 	
 	
 // Inicializamos la tabla de descuentos del presupuesto
@@ -165,7 +167,7 @@ void Budget::inicialize() {
 	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
 	m_listDiscounts->setPaletteBackgroundColor("#AFFAFA");   
 	m_listDiscounts->setReadOnly(FALSE);    
-	m_listDiscounts->installEventFilter( this );
+	//m_listDiscounts->installEventFilter( this );
 	
 }// end inicialize
 
@@ -286,10 +288,6 @@ void Budget::removeBudgetLine() {
 
 
 void Budget::valueBudgetLineChanged(int row, int col) {
-	if (m_list->text(row, col) == "*" && row>0) {
-		m_list->setText(row, col, m_list->text(row-1, col));
-	}
-	
 	switch (col) {
 		case COL_DESCUENTOLPRESUPUESTO: {
 			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, m_list->text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
@@ -466,55 +464,4 @@ int Budget::deleteBudgetLine(int line) {
 
 void Budget::cancel() {
 	close();
-}
-
-
-bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
-	if ( obj->isA("QTable")) {
-		if ( ev->type() == QEvent::KeyPress ) {
-			QKeyEvent *k = (QKeyEvent *)ev;
-			qDebug( "Ate key press %d", k->key() );
-			if (k->key()==Qt::Key_Enter || k->key() == Qt::Key_Return ) {
-				nextCell(obj);
-				return TRUE;
-			} else {
-				return FALSE;
-			}
-		} else {
-			return FALSE;
-		}
-	} else {
-		// pass the event on to the parent class
-		return QWidget::eventFilter( obj, ev );
-	}
-} //end eventFilter
-
-
-void Budget::nextCell(QObject *obj) {
-	QTable *t = (QTable *)obj;
-	int row = t->currentRow();
-	int col = t->currentColumn();
-	int lastCol = t->numCols()-1;
-	if (t->isReadOnly()==FALSE) {
-		//qDebug( "Fila, Columna = %d, %d", row, col);
-		col++;
-		while (true) {
-			qDebug( "Fila, Columna = %d, %d", row, col);
-			if (col > lastCol) {
-				col = 0;
-				row++;
-				if (row == (t->numRows())) {
-					t->setNumRows(row+1);
-				}
-			} else {
-				if (t->isColumnHidden(col) || t->isColumnReadOnly(col) || t->isRowHidden(row) || t->isRowReadOnly(row)) {
-					col++;
-				} else {
-					t->setCurrentCell(row, col);
-					//t->editCell(row, col);
-					break;
-				}
-			}
-		}
-	}
 }

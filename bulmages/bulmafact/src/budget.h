@@ -52,6 +52,7 @@ private:
 	int updateBudgetLine(int);
 	int deleteBudgetLine(int);
 	void nextCell(QObject *obj);
+	void duplicateCell(QObject *obj);
 	
 protected:
 	bool eventFilter( QObject *obj, QEvent *ev );

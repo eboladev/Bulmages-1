@@ -27,7 +27,8 @@ SOURCES += bulmafact.cpp \
 	   division.cpp \
 	   budget.cpp \
 	   budgetslist.cpp \
-		articleedit.cpp 
+		articleedit.cpp \
+		EventHandler.cpp
 HEADERS += bulmafact.h \
            company.h \
            providerslist.h \
@@ -42,7 +43,8 @@ HEADERS += bulmafact.h \
 	   division.h \
 	   budget.h \
 	   budgetslist.h \
-		articleedit.h 
+		articleedit.h \
+		EventHandler.h
 IDLS += providerslistbase.ui \
         provedit_base.ui \
 	clientslistbase.ui \
