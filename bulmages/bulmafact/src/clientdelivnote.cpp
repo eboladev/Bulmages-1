@@ -300,7 +300,7 @@ void ClientDelivNote::cargarcomboformapago(QString idformapago) {
 // Carga líneas de albarán
 void ClientDelivNote::chargeClientDelivNoteLines(QString iddeliveryNote) {
 	companyact->begin();
-	cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaran, articulo, tipo_iva WHERE idalbaran="+iddeliveryNote+" AND articulo.idarticulo=lalbaran.idarticulo and articulo.idtipo_iva = tipo_iva.idtipo_iva","unquery");
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaran, articulo WHERE idalbaran="+iddeliveryNote+" AND articulo.idarticulo=lalbaran.idarticulo","unquery");
 	companyact->commit();
 	int i=0;
 	while (!cur->eof()) {
@@ -313,7 +313,13 @@ void ClientDelivNote::chargeClientDelivNoteLines(QString iddeliveryNote) {
 		m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
 		m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
 		m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
-		m_list->setText(i,COL_TASATIPO_IVA,cur->valor("tasatipo_iva"));
+		
+		cursor2 * cur2= companyact->cargacursor("SELECT porcentasa_iva FROM tasa_iva WHERE idtipo_iva="+cur->valor("idtipo_iva")+" AND fechatasa_iva<='"+m_fechaalbaran->text()+"' ORDER BY fechatasa_iva DESC","unquery2");
+		companyact->commit();
+		if (!cur2->eof()) {
+			m_list->setText(i,COL_TASATIPO_IVA,cur2->valor("porcentasa_iva"));
+		}
+		
 		i++;
 		cur->siguienteregistro();
 	}// end while
@@ -498,10 +504,10 @@ void ClientDelivNote::manageArticle(int row) {
 			m_list->setText(row, COL_IDARTICULO, cur2->valor("idarticulo"));
 			QString taxType = cur2->valor("idtipo_iva");
 			companyact->begin();
-			cursor2 * cur3= companyact->cargacursor("SELECT * FROM tipo_iva WHERE idtipo_iva="+taxType,"unquery");
+			cursor2 * cur3= companyact->cargacursor("SELECT idtipo_iva, porcentasa_iva FROM tasa_iva WHERE idtipo_iva="+taxType+" AND fechatasa_iva<='"+m_fechaalbaran->text()+"' ORDER BY fechatasa_iva DESC","unquery");
 			companyact->commit();
 			if (!cur3->eof()) {
-				m_list->setText(row, COL_TASATIPO_IVA, cur3->valor("tasatipo_iva"));
+				m_list->setText(row, COL_TASATIPO_IVA, cur3->valor("porcentasa_iva"));
 			}
 			delete cur3;
 		}

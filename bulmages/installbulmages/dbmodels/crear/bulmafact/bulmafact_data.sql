@@ -41,17 +41,20 @@ INSERT INTO cliente (idrecargo, nomcliente, cifcliente, telcliente, poblcliente)
 INSERT INTO cliente (idrecargo, nomcliente, cifcliente, telcliente, poblcliente) VALUES(1, 'Dolores Fuertes de Barriga', '66881444E', '666998877', 'Muro');
 INSERT INTO cliente (idrecargo, nomcliente, cifcliente, telcliente, poblcliente) VALUES(1, 'Pepe Gotera', '55881444W', '9321998877', 'Barcelona');
 
-INSERT INTO tipo_iva (desctipo_iva, tasatipo_iva) VALUES('Exento', 0);
-INSERT INTO tipo_iva (desctipo_iva, tasatipo_iva) VALUES('Normal', 16.00);
+INSERT INTO tipo_iva (desctipo_iva) VALUES('Exento');
+INSERT INTO tipo_iva (desctipo_iva) VALUES('Normal');
+INSERT INTO tasa_iva(idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(1, 0, '0001-01-01');
+INSERT INTO tasa_iva(idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(2, 16.00, '0001-01-01');
+INSERT INTO tasa_iva(idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(2, 17.00, '2005-01-01');
 
-INSERT INTO marca (nommarca, urlmarca, comentmarca) VALUES('Nestl√©', 'www.nestle.com', 'Productos Aliment√≠cios');
+INSERT INTO marca (nommarca, urlmarca, comentmarca) VALUES('NestlÈ', 'www.nestle.com', 'Productos AlimentÌcios');
 
 INSERT INTO linea_prod (desclinea_prod, idmarca) VALUES('L√≠nea de producci√≥n 1', 1);
 
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('1', 'Leche Entera', 'Brick leche entera 1 litro', 1, 1);
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('2', 'Natillas', 'Pack dos envases de natillas de vainilla', 2, 1);
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('3', 'Yogurt', 'Pack 4 unidades yogures sabores', 1, 1);
-INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('4', 'Nestcaf√©', 'Bote 400 gramos caf√© soluble natural', 1, 1);
+INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('4', 'NestcafÈ', 'Bote 400 gramos cafÈ soluble natural', 1, 1);
 
 INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-1', 2004, '25/10/2004', 'Pedido semanal de carne y pescado', 1, 1);
 INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-2', 2004, '30/10/2004', 'Pedido especial noche halloween', 2, 3);

@@ -88,14 +88,23 @@ CREATE TABLE linea_prod(
 
 
 -- Esta tabla contiene las descripciones de los ivas que se pueden aplicar.
--- Codi: Clau artificial.
 -- Descripcio: Text descriptiu del tipus d'IVA.
--- Taxa: Tipus vigent.
 CREATE TABLE tipo_iva (
    idtipo_iva serial PRIMARY KEY,
-   desctipo_iva character varying(2000),
-   tasatipo_iva integer
+   desctipo_iva character varying(2000)
 );
+
+-- Esta tabla contiene las tasas de cada tipo de iva a partir de una fecha dada.
+-- porcentasa_iva contiene el porcentaje de la tasa de iva a aplicar.
+-- fechatasa_iva es la fecha de entrada en vigor del % de IVA para el tipo descrito.
+CREATE TABLE tasa_iva (
+	idtasa_iva serial PRIMARY KEY,
+	idtipo_iva integer REFERENCES tipo_iva(idtipo_iva),
+	porcentasa_iva NUMERIC(5, 2),
+	fechatasa_iva date NOT NULL,
+	UNIQUE (idtipo_iva, fechatasa_iva)
+);
+
 
 -- Tabla con series de Iva, código i descripción
 -- Básicamente sirve para garantizar la integridad referencial en las  series de facturación
