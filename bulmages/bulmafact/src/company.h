@@ -30,7 +30,7 @@ Company class gives the application something like a standard interface to acces
 */
 
 class providerslist;
-class clientslist;
+class ClientsList;
 class articleslist;
 class orderslist;
 class delivnoteslist;
@@ -39,7 +39,7 @@ class BudgetsList;
 class company : public postgresiface2 {
 private:
    providerslist *m_providerslist;
-   clientslist *m_clientslist;
+   ClientsList *m_clientslist;
    articleslist *m_articleslist;
    orderslist *m_orderslist;
    delivnoteslist *m_delivnoteslist;

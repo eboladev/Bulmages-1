@@ -39,12 +39,11 @@ company::company(){
 
 void company::createMainWindows() {
    m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Listado de Proveedores","company"));
-   m_clientslist = new clientslist(this, m_pWorkspace,theApp->translate("Listado de Clientes","company"));
+   m_clientslist = new ClientsList(this, m_pWorkspace,theApp->translate("Listado de Clientes","company"));
    m_articleslist = new articleslist(this, m_pWorkspace,theApp->translate("Listado de Artículos","company"));
    m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Listado de Pedidos","company"));
    m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Listado de Albaranes","company"));   
    m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos","company"));   
-   
 }// end createMainWindows
 
 

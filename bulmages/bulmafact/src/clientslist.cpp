@@ -80,9 +80,14 @@ CREATE TABLE cliente (
 
 
 
-clientslist::clientslist(company *comp, QWidget *parent, const char *name, int flag)
- : clientslistbase(parent, name, flag) {
-      companyact = comp;
+ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int flag)
+ : ClientsListBase(parent, name, flag) {
+   companyact = comp;
+   m_mode =0;    
+   m_idclient="";
+   m_cifclient="";
+   m_nomclient=""; 
+ 
    m_list->setNumRows( 0 );
    m_list->setNumCols( 0 );
    m_list->setSelectionMode( QTable::SingleRow );
@@ -124,7 +129,6 @@ clientslist::clientslist(company *comp, QWidget *parent, const char *name, int f
    m_list->setColumnWidth(COL_COMENTCLIENTE,1000);
    m_list->setColumnWidth(COL_IDRECARGO,50);
    
-//   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#DDDDFF");   
     m_list->setReadOnly(TRUE);        
@@ -156,7 +160,23 @@ clientslist::clientslist(company *comp, QWidget *parent, const char *name, int f
       delete cur;
 }// end clientslist
 
-clientslist::~clientslist() {
+ClientsList::~ClientsList() {
 }// end ~clientslist
 
+void ClientsList::doubleClicked(int a, int , int , const QPoint &) {
+   fprintf(stderr,"ClientsList::doubleClicked\n");
+   m_idclient = m_list->text(a,COL_IDCLIENTE);
+   m_nomclient = m_list->text(a, COL_NOMCLIENTE);
+   m_cifclient = m_list->text(a, COL_CIFCLIENTE);
+   if (m_mode ==0 ) {
+//      cliente *cli = new Client(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Clientes", "company"));
+//      bud->chargeClient(m_idclient);
+//      cli->show();
+   } else {
+      close();
+   }// end if
+}// end doubleClicked
+
+void ClientsList::newClient() {
+}// end newClient
 

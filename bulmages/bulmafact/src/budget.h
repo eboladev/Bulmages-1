@@ -32,11 +32,15 @@ class Budget : public BudgetBase {
 Q_OBJECT
 private:
    company *companyact;
+   QString m_idpresupuesto;
+   QString m_idclient;
 public:
     Budget(company *emp, QWidget *parent = 0, const char *name = 0);
     ~Budget();
+    void chargeBudget(QString);
 public slots:
-   virtual void close();
+   virtual void searchClient();
+
 };
 
 #endif
