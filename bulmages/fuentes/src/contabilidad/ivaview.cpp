@@ -46,9 +46,7 @@ void ivaview::accept() {
   float baseimponible1=atof(baseimponible->text().ascii());
   float iva1 = atof(iva->text().ascii());
   QString factura1= factura->text();
-  QString numorden1; 
-  if (numorden->isEnabled()) (numorden->text() != "" && numorden->text() != "-1") ? numorden1 = numorden->text() : numorden1="0";
-  else numorden1="-1";
+  
   QString cif1 = cif->text();
   conexionbase->begin();
   cursor2 *cursorcuenta =conexionbase->cargacuenta(0,contrapartida->text());
@@ -57,10 +55,14 @@ void ivaview::accept() {
     int idcuenta= atoi(cursorcuenta->valor("idcuenta").ascii());
     if (idregistroiva !=0) {
           // Se trata de una inserción, ya que no hay registros de iva introducidos.
-         query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%2.2f, iva=%2.0f, contrapartida=%d, factura='%s', numorden='%s', cif='%s' WHERE idregistroiva=%d", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden1.ascii(), cif1.ascii(), idregistroiva);
+         query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%2.2f, iva=%2.0f, contrapartida=%d, factura='%s', numorden='%s', cif='%s' WHERE idregistroiva=%d", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), idregistroiva);
+         //Si tinguessim un camp anomenat 'ctaiva' fariem:
+         //query.sprintf("UPDATE registroiva set idborrador=%d, baseimp=%2.2f, iva=%2.0f, contrapartida=%d, factura='%s', numorden='%s', cif='%s', ctaiva='%s' WHERE idregistroiva=%d", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(),cuentaiva->text().ascii() ,idregistroiva );
     } else {
           // Se trata de una modificacion, ya que hay registros de iva introducidos.
-         query.sprintf("INSERT INTO registroiva (idborrador, baseimp, iva, contrapartida, factura, numorden, cif) VALUES (%d,%2.2f, %2.0f, %d, '%s', '%s', '%s')", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden1.ascii(), cif1.ascii());
+         query.sprintf("INSERT INTO registroiva (idborrador, baseimp, iva, contrapartida, factura, numorden, cif) VALUES (%d,%2.2f, %2.0f, %d, '%s', '%s', '%s')", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii());
+         //Si tinguessim un camp anomenat 'ctaiva' fariem:
+         //query.sprintf("INSERT INTO registroiva (idborrador, baseimp, iva, contrapartida, factura, numorden, cif, ctaiva) VALUES (%d,%2.2f, %2.0f, %d, '%s', '%s', '%s','%s')", idborrador, baseimponible1, iva1, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), cuentaiva->text().ascii());
     }// end if
     fprintf(stderr,"%s\n",query.ascii());
     conexionbase->begin();
@@ -124,7 +126,6 @@ void ivaview::inicializa1(int idapunte1) {
     iva->setText(cursoriva->valor("iva"));
     factura->setText(cursoriva->valor("factura"));
     numorden->setText(cursoriva->valor("numorden"));
-    if (numorden->text()=="-1") numorden->setText("");
     cif->setText(cursoriva->valor("cif"));
     query.sprintf ("SELECT * from borrador, asiento, cuenta WHERE borrador.idborrador=%d AND borrador.idasiento=asiento.idasiento AND borrador.idcuenta=cuenta.idcuenta",idborrador);
     //fprintf(stderr,"%s\n",query.ascii());
@@ -133,14 +134,20 @@ void ivaview::inicializa1(int idapunte1) {
     conexionbase->commit();
     if (!cursorapunte->eof()) {
       //fprintf(stderr,"Asiento %s\n",cursorapunte->valor("idasiento").ascii());
-      numasiento->setText(cursorapunte->valor("ordenasiento")); //Josep Burción
+      numasiento->setText(cursorapunte->valor("ordenasiento")); 
       cuentaiva->setText(cursorapunte->valor("codigo"));
     }// end if
-    if (cuentaiva->text().left(3) == "600" || cuentaiva->text().left(3) == "700") {
-      cuentaiva->setText(tr("Sin IVA"));
+    if (cuentaiva->text().left(3) == "600") {
+      cuentaiva->setText("472");
       iva->setText("0");
       importeiva->setText("0.00");
     }
+    if (cuentaiva->text().left(3) == "700") {
+      cuentaiva->setText("477");
+      iva->setText("0");
+      importeiva->setText("0.00");
+    }
+    
     delete cursorapunte;
   } else {
       // Aun no se ha metido ningun registro de este estilo
@@ -190,13 +197,21 @@ void ivaview::inicializa1(int idapunte1) {
           baseimponible->setText(cadena);
           cadena.sprintf("%2.0f",porcentiva*100);
           iva->setText(cadena);
-          if (cuentaiva->text().left(3) == "600" || cuentaiva->text().left(3) == "700") {
-              cuentaiva->setText(tr("Sin IVA"));
+          if (cuentaiva->text().left(3) == "600") {
+              cuentaiva->setText("472");
               iva->setText("0");
               importeiva->setText("0.00");
               cadena.sprintf("%2.2f",total_factura);
               baseimponible->setText(cadena);
           }
+          if (cuentaiva->text().left(3) == "700") {
+              cuentaiva->setText("477");
+              iva->setText("0");
+              importeiva->setText("0.00");
+              cadena.sprintf("%2.2f",total_factura);
+              baseimponible->setText(cadena);
+          }
+          
 //* JOSEP BURCION
           //Proponemos un número de factura si se trata de una venta y
           //proponemos un número de orden si se trata de una compra
@@ -219,7 +234,7 @@ void ivaview::inicializa1(int idapunte1) {
           }  else {   //La factura no existe, entonces proponemos el siguiente número de factura
               if (! numorden->isEnabled()) {  //Se trata de una Venta
                   //query.sprintf( "SELECT factura FROM registroiva WHERE idborrador=(SELECT MAX(idborrador) FROM registroiva WHERE numorden='-1')");
-                  query.sprintf("SELECT MAX(to_number(factura,'99999')) AS factura FROM registroiva WHERE numorden='-1'");
+                  query.sprintf("SELECT MAX(to_number(factura,'99999')) AS factura FROM registroiva WHERE numorden=''");
                   conexionbase->begin();
                   recordset = conexionbase->cargacursor(query,"recordset");
                   conexionbase->commit();
@@ -231,7 +246,7 @@ void ivaview::inicializa1(int idapunte1) {
               }
               else { //Se trata de una compra
                   //query.sprintf( "SELECT numorden FROM registroiva WHERE idborrador=(SELECT MAX(idborrador) FROM registroiva WHERE numorden<>'-1')");
-                  query.sprintf("SELECT MAX(to_number(numorden,'99999')) AS numorden FROM registroiva WHERE numorden!='-1'");
+                  query.sprintf("SELECT MAX(to_number(numorden,'99999')) AS numorden FROM registroiva WHERE numorden<>''");
                   conexionbase->begin();
                   recordset = conexionbase->cargacursor(query,"recordset");
                   conexionbase->commit();

@@ -185,6 +185,25 @@ void BConfiguracion::borrarEmpresa() {
 /*********************************************************************************************************/
 void BConfiguracion::nuevoEjercicio() {
  QString query;
+ if (0 == QMessageBox::question( this, tr("Nuevo Ejercicio"), tr("¿Desea continuar usando la misma base de datos? - Haga clic en SI \n\n(Para iniciar el nuevo ejercico en otra base de datos - Haga clic en Otra)") , "&SI","&Otra"))  { 
+     int x;
+     QString ejer;
+     postgresiface2 *DBconn = new postgresiface2();
+     DBconn->inicializa(PunteroAlSelector->NombreBaseDatos);
+     DBconn->begin();
+     query.sprintf("SELECT MAX(ejercicio) AS ejercicio FROM ejercicios WHERE periodo=0");
+     cursor2 *curA = DBconn->cargacursor(query,"curA");
+     if (!curA->eof()) ejer = curA->valor("ejercicio");
+     ejer.setNum(ejer.toInt() + 1);
+     if (ejer.toInt()<2000) ejer="2003";
+     for (x=0; x<=12; x++) {
+         query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')",ejer.ascii(),x);
+         DBconn->ejecuta(query);
+     }
+     DBconn->commit();
+     QMessageBox::information( this, tr("Nuevo Ejercicio"), "El ejercicio ("+ ejer + ") ha sido creado con exito" , "&Aceptar");
+ } else {
+ 
  postgresiface2 *metabase = new postgresiface2();
  metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
  metabase->begin();
@@ -258,7 +277,8 @@ void BConfiguracion::nuevoEjercicio() {
      QMessageBox::information( this, tr("Nuevo Ejercicio"), tr("No se puede crear un nuevo ejercicio. \n\r El ejercicio que pretende crear ya existe.") , QMessageBox::Ok,0); 
      }//end else
     }//end if QMessageBox
-}// end if   
+}// end if  
+} 
 }//Fin nuevoEjercicio
 
 

@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>224</width>
-            <height>316</height>
+            <width>282</width>
+            <height>342</height>
         </rect>
     </property>
     <property name="caption">
@@ -17,12 +17,12 @@
     </property>
     <widget class="QPushButton">
         <property name="name">
-            <cstring>pushButton4</cstring>
+            <cstring>pushButton1</cstring>
         </property>
         <property name="geometry">
             <rect>
-                <x>120</x>
-                <y>280</y>
+                <x>180</x>
+                <y>300</y>
                 <width>81</width>
                 <height>30</height>
             </rect>
@@ -45,7 +45,7 @@
         </column>
         <column>
             <property name="text">
-                <string>Periodo</string>
+                <string>Estado</string>
             </property>
             <property name="clickable">
                 <bool>true</bool>
@@ -54,117 +54,6 @@
                 <bool>true</bool>
             </property>
         </column>
-        <column>
-            <property name="text">
-                <string>Bloqueado</string>
-            </property>
-            <property name="clickable">
-                <bool>true</bool>
-            </property>
-            <property name="resizable">
-                <bool>true</bool>
-            </property>
-        </column>
-    <item>
-        <property name="text">
-            <string>Item</string>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-    </item>
-    <item>
-        <property name="text">
-            <string>Item</string>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-    </item>
-    <item>
-        <property name="text">
-            <string>Item</string>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-    </item>
-    <item>
-        <property name="text">
-            <string>Item</string>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-    </item>
-    <item>
-        <property name="text">
-            <string>New Item</string>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-        <property name="pixmap">
-            <pixmap></pixmap>
-        </property>
-    </item>
         <property name="name">
             <cstring>listView1</cstring>
         </property>
@@ -172,9 +61,12 @@
             <rect>
                 <x>2</x>
                 <y>2</y>
-                <width>211</width>
-                <height>270</height>
+                <width>270</width>
+                <height>290</height>
             </rect>
+        </property>
+        <property name="resizePolicy">
+            <enum>Manual</enum>
         </property>
         <property name="selectionMode">
             <enum>NoSelection</enum>
@@ -185,8 +77,29 @@
         <property name="rootIsDecorated">
             <bool>true</bool>
         </property>
+        <property name="resizeMode">
+            <enum>AllColumns</enum>
+        </property>
     </widget>
 </widget>
+<connections>
+    <connection>
+        <sender>pushButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>UIbloqFecha</receiver>
+        <slot>boto1_click()</slot>
+    </connection>
+    <connection>
+        <sender>listView1</sender>
+        <signal>doubleClicked(QListViewItem*)</signal>
+        <receiver>UIbloqFecha</receiver>
+        <slot>dobleClick(QListViewItem*)</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>boto1_click()</slot>
+    <slot>dobleClick(QListViewItem* )</slot>
+</slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

@@ -16,8 +16,9 @@
 #define BbloqFecha_H
 
 #include "uibloqfecha.h"
+#include "postgresiface2.h"
 
-#include <qframe.h>
+#include <qlistview.h>
 
 /**
 @author Josep Burcion
@@ -32,7 +33,8 @@ public:
 
 
 public slots:
-    //virtual void mostrar_selector();
+    virtual void dobleClick (QListViewItem *item);
+    virtual void boto1_click();
 
 private:
         //QWorkspace * zona0;

@@ -37,7 +37,7 @@ public:
    ~asientoview();
    void inicializa(postgresiface2 *);
    void cargaasiento(int);
-   int creaasiento(QString, QString, int numasiento=0);
+   int creaasiento(QString, QString, int numasiento=0, int clase=1);
    int modificaasiento(QString, QString, int, QString, QString);
 public slots:
    virtual void return_fecha();

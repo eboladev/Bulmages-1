@@ -75,10 +75,10 @@ void asientoview::acceptar() {
  * Si todo va bien la funcion devuelve el identificador
  * Si algo falla devuelve cero.
  ***********************************************************/
-int asientoview::creaasiento(QString texto, QString fecha, int numasiento) {
+int asientoview::creaasiento(QString texto, QString fecha, int numasiento, int clase) {
    int val;
    conexionbase->begin();
-   val = conexionbase->nuevoasiento(texto, fecha, numasiento,1);
+   val = conexionbase->nuevoasiento(texto, fecha, numasiento,clase);
    conexionbase->commit();
    return(val);
 }// end creaasiento

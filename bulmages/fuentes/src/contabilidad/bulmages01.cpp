@@ -739,9 +739,7 @@ void Bulmages01::slotAmortizaciones() {
 
 
 void Bulmages01::slotBloqFechas() {
-//BbloqFecha * pep = new BbloqFecha();
-//pep->exec();
-(new BbloqFecha())->exec();
+(new BbloqFecha(this))->exec();
 }
 
 void Bulmages01::slotEditCut()  {

@@ -33,7 +33,7 @@ void BModelo347::click_boto3() {
   int i =0;
   QString query;
   //A por la tabla de Ventas...pedazo de consulta SQL
-  query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, importe FROM (SELECT  registroiva.contrapartida, SUM(baseimp+(baseimp*iva*0.01)) AS importe FROM registroiva, borrador WHERE borrador.idborrador=registroiva.idborrador AND borrador.fecha >= '")+finicial->text() + QString("' AND borrador.fecha <= '") + ffinal->text() + QString("' GROUP BY registroiva.contrapartida) AS parcial, cuenta WHERE parcial.contrapartida=cuenta.idcuenta AND cuenta.codigo LIKE '430%' AND importe >='") + importe->text() + QString("'");
+  query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, importe FROM (SELECT  registroiva.contrapartida, SUM(baseimp+(baseimp*iva*0.01)) AS importe FROM registroiva, borrador WHERE borrador.idborrador=registroiva.idborrador AND borrador.fecha >= '")+finicial->text() + QString("' AND borrador.fecha <= '") + ffinal->text() + QString("' GROUP BY registroiva.contrapartida) AS parcial, cuenta WHERE parcial.contrapartida=cuenta.idcuenta AND cuenta.codigo LIKE '430%%' AND importe >='") + importe->text() + QString("'");
   DBConn->begin();
   cursor2 *recordSet = DBConn->cargacursor(query,"recordSet");
   DBConn->commit();
@@ -50,7 +50,7 @@ void BModelo347::click_boto3() {
   }
 
   //A por la tabla de Compras...
-  query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, importe FROM (SELECT  registroiva.contrapartida, SUM(baseimp+(baseimp*iva*0.01)) AS importe FROM registroiva, borrador WHERE borrador.idborrador=registroiva.idborrador AND borrador.fecha >= '")+finicial->text() + QString("' AND borrador.fecha <= '") + ffinal->text() + QString("' GROUP BY registroiva.contrapartida) AS parcial, cuenta WHERE parcial.contrapartida=cuenta.idcuenta AND cuenta.codigo LIKE '400%' AND importe >='") + importe->text() + QString("'");
+  query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, importe FROM (SELECT  registroiva.contrapartida, SUM(baseimp+(baseimp*iva*0.01)) AS importe FROM registroiva, borrador WHERE borrador.idborrador=registroiva.idborrador AND borrador.fecha >= '")+finicial->text() + QString("' AND borrador.fecha <= '") + ffinal->text() + QString("' GROUP BY registroiva.contrapartida) AS parcial, cuenta WHERE parcial.contrapartida=cuenta.idcuenta AND cuenta.codigo LIKE '400%%' AND importe >='") + importe->text() + QString("'");
   DBConn->begin();
   recordSet = DBConn->cargacursor(query,"recordSet");
   DBConn->commit();

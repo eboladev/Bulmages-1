@@ -318,7 +318,7 @@ void intapunts3view::muestraasiento(int numasiento) {
         if (valor == QMessageBox::Yes) {
             asientoview *nuevoasiento = new asientoview;
             nuevoasiento->inicializa(conexionbase);
-            int nasiento = nuevoasiento->creaasiento(fechaasiento1->text(), fechaasiento1->text(),numasiento);
+            int nasiento = nuevoasiento->creaasiento(fechaasiento1->text(), fechaasiento1->text(),numasiento,1);
             delete nuevoasiento;
             cargarcursor(nasiento);
             muestraasiento(nasiento);
@@ -635,7 +635,7 @@ void intapunts3view::boton_nuevoasiento() {
 void intapunts3view::iniciar_asiento_nuevo() {
     asientoview *nuevoasiento = new asientoview;
     nuevoasiento->inicializa(conexionbase);
-    idasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0);
+    idasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0,1);
     delete nuevoasiento;
     if ( normalizafecha(fechaasiento1->text()).year() == atoi(confpr->valor(EJERCICIO_ACTUAL).c_str()) ) {
         cargarcursor(idasiento);
@@ -1551,9 +1551,10 @@ void intapunts3view::asiento_cierre() {
     double diferencia;
     double nuevodebe, nuevohaber;
     QString nfecha = fechaasiento1->text();
+    nfecha.sprintf("31/12/%s",confpr->valor(EJERCICIO_ACTUAL).c_str());
     asientoview *nuevoasiento = new asientoview;
     nuevoasiento->inicializa(conexionbase);
-    numasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0);
+    numasiento = nuevoasiento->creaasiento( "Asiento de Cierre" ,nfecha ,0, 99); //99=>Cierre.
     QString query ="SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE idgrupo=6 OR idgrupo=7) GROUP BY idcuenta ORDER BY saldito";
     conexionbase->begin();
     cursor2 *cursor=conexionbase->cargacursor(query, "cursor");
@@ -1621,7 +1622,7 @@ void intapunts3view::asiento_apertura() {
           postgresiface2 * DBconnEjActual = new postgresiface2();
           DBconnEjActual->inicializa(empresaactual->nombreDB);
           nuevoasiento->inicializa(DBconnEjActual);
-          numasiento = nuevoasiento->creaasiento( "Asiento de Apertura", nfecha,0);
+          numasiento = nuevoasiento->creaasiento( "Asiento de Apertura", nfecha,0,0); //0=> Apertura
           while (!cur->eof()) {
               nuevodebe= cur->valor("haber").toDouble();
               nuevohaber = cur->valor("debe").toDouble();
@@ -1647,14 +1648,15 @@ void intapunts3view::asiento_apertura() {
 void intapunts3view::asiento_regularizacion() {
     int idcuenta;
     int idcuenta1;
-    int numasiento;
+    int numasiento=0;
     double diferencia;
     double totaldebe, totalhaber;
     double totaldebe1 =0, totalhaber1=0;
     QString nfecha = fechaasiento1->text();
+    nfecha.sprintf("31/12/%s",confpr->valor(EJERCICIO_ACTUAL).c_str());
     asientoview *nuevoasiento = new asientoview;
     nuevoasiento->inicializa(conexionbase);
-    numasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0);
+    numasiento = nuevoasiento->creaasiento("Asiento de Regularización" ,nfecha,0,98); //98=regularizacion
     QString query = "SELECT * FROM cuenta where codigo ='129'";
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");
