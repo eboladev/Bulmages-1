@@ -28,6 +28,8 @@
 #include <qcombobox.h>
 #include <qspinbox.h>
 #include <qfontdatabase.h>
+#include <qfiledialog.h>
+#include <sys/wait.h>
 
 /**
 @author Josep Burcion
@@ -53,9 +55,12 @@ private slots:
   virtual void listiView2_clickMouse(int,QListViewItem *,const QPoint&,int);
   virtual void FontChanged(const QString &);
   virtual void FontSizeChanged(int);
+  virtual void BotonA_3salvarEmpresa();
+  virtual void BotonA_4restaurarEmpresa();
   virtual void BotonA_10aceptar();
   virtual void BotonA_11rechazar();
   virtual void BotonA_6nombreEmpresa();
+  virtual void BotonA_61clonarEmpresa();
   virtual void nuevaEmpresa();
   virtual void borrarEmpresa();
   virtual void nuevoEjercicio();

@@ -138,6 +138,17 @@ void BConfiguracion::nuevaEmpresa() {
 }//Fin nuevaEmpresa
 
 /*********************************************************************************************************/
+/* Aqui creamos una nueva empresa que es una copia exacta de otra empresa que ya existe.                 */
+/*********************************************************************************************************/
+void BConfiguracion::BotonA_61clonarEmpresa(){
+    QString dbEmpresa; 
+    (new BVisorEmpresas(&dbEmpresa, this,"Clonador",true))->exec();
+    if (dbEmpresa!=NULL) {
+        QMessageBox::information( this, "Debug", "Clonando la Base de Datos: " +dbEmpresa +"\n\nProceso no disponible...\n", QMessageBox::Ok);
+    }
+}
+
+/*********************************************************************************************************/
 /* Aqui borramos una empresa entera. No nos permite borrar la base de datos bgplangcont ni la base       */
 /* de datos de la empresa que tengamos abierta en este momento.                                          */
 /*********************************************************************************************************/
@@ -284,6 +295,69 @@ void BConfiguracion::nuevoEjercicio() {
 } 
 }//Fin nuevoEjercicio
 
+
+/*********************************************************************************************************/
+/* Creamos una copia de seguridad de una base de datos                                                   */
+/*********************************************************************************************************/
+void BConfiguracion::BotonA_3salvarEmpresa() {
+  char *args[4];
+  int pid;
+  QString dbEmpresa; 
+  (new BVisorEmpresas(& dbEmpresa, this,"Backup",true))->exec();
+  if (dbEmpresa!="") {
+      QString fn = QFileDialog::getSaveFileName(0, "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
+      if (!fn.isEmpty()) {
+         if (fn.right(7)!= ".pgdump") fn = fn +".pgdump";
+         fprintf(stderr,"Vamos a guardar la empresa en el fichero %s\n",fn.ascii());
+         args[0]=(char *) "guardaemp";
+         args[1]=(char *) dbEmpresa.ascii();
+         args[2]=(char *) fn.ascii();
+         args[3]=NULL;
+         if ((pid=fork()) == -1) {
+           perror ("Fork failed");
+           exit(errno);
+         }// end if
+         if (!pid) {
+            string argumentos = confpr->valor(CONF_EJECUTABLES) + "guardaemp";
+            exit(execvp(argumentos.c_str(),args));
+         }// end if
+         if (pid) waitpid (pid, NULL, 0);
+     }
+  }
+}
+
+/*********************************************************************************************************/
+/* Restauramos una copia de seguridad de una base de datos                                               */
+/*********************************************************************************************************/
+// Para cargar la empresa debe estar sin ningun usuario dentro de ella.
+void BConfiguracion::BotonA_4restaurarEmpresa(){
+  char *args[4];
+  int pid;
+  int error;
+  QString dbEmpresa; 
+  (new BVisorEmpresas(& dbEmpresa, this,"Restore",true))->exec();
+  if (dbEmpresa!="") {
+      QString fn = QFileDialog::getOpenFileName(0, theApp->translate("empresa","Empresas (*.pgdump)",""), 0,theApp->translate("empresa","Cargar Empresa",""),theApp->translate("emrpesa","Elige el fichero a cargar.",""));
+      if (!fn.isEmpty()) {
+         args[0]=(char *) "cargaemp";
+         args[1]=(char *) dbEmpresa.ascii();
+         args[2]=(char *) fn.ascii();
+         args[3]=NULL;
+         if ((pid=fork())== -1) {
+           perror ("Fork failed");
+           exit(errno);
+         }// end if
+         if (!pid) {
+            string argumentos = confpr->valor(CONF_EJECUTABLES) + "cargaemp";
+            fprintf(stderr,"Ejecutamos el cargaemp\n");
+            error = execvp(argumentos.c_str(),args);
+            fprintf(stderr,"Fin del cargaemp\n");
+            exit(error);
+         }// end if
+         if (pid) waitpid (pid, NULL, 0);
+      }// end if
+    }
+  }
 
 /**********************************************************************************************/
 /* BLOQUE USUARIOS                                                                            */

@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>600</width>
-            <height>505</height>
+            <height>509</height>
         </rect>
     </property>
     <property name="caption">
@@ -204,126 +204,6 @@
                     </property>
                 </widget>
             </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_1</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>20</x>
-                        <y>100</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Crear Nueva Empresa</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_3</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>20</x>
-                        <y>170</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Copia de Seguridad
-   (BACKUP)</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_2</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>180</x>
-                        <y>100</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Borrar Empresa</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_4</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>180</x>
-                        <y>170</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Restaurar copia
- (RESTORE)</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_X</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>490</x>
-                        <y>390</y>
-                        <width>80</width>
-                        <height>40</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Salir</string>
-                </property>
-                <property name="iconSet">
-                    <iconset>exit.png</iconset>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_5</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>20</x>
-                        <y>30</y>
-                        <width>140</width>
-                        <height>60</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Nuevo Ejercicio</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>pushButtonA_6</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>210</x>
-                        <y>390</y>
-                        <width>40</width>
-                        <height>40</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="iconSet">
-                    <iconset>edit.png</iconset>
-                </property>
-            </widget>
             <widget class="QLineEdit">
                 <property name="name">
                     <cstring>lineEditA_1</cstring>
@@ -358,18 +238,21 @@
             </widget>
             <widget class="QPushButton">
                 <property name="name">
-                    <cstring>pushButtonA_11</cstring>
+                    <cstring>pushButtonA_X</cstring>
                 </property>
                 <property name="geometry">
                     <rect>
-                        <x>400</x>
+                        <x>490</x>
                         <y>390</y>
                         <width>80</width>
                         <height>40</height>
                     </rect>
                 </property>
                 <property name="text">
-                    <string>Desacer</string>
+                    <string>Salir</string>
+                </property>
+                <property name="iconSet">
+                    <iconset>exit.png</iconset>
                 </property>
             </widget>
             <widget class="QPushButton">
@@ -386,6 +269,157 @@
                 </property>
                 <property name="text">
                     <string>Aplicar</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_11</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>400</x>
+                        <y>390</y>
+                        <width>80</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Desacer</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_6</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>210</x>
+                        <y>390</y>
+                        <width>40</width>
+                        <height>40</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string></string>
+                </property>
+                <property name="iconSet">
+                    <iconset>edit.png</iconset>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_5</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>30</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Nuevo Ejercicio</string>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Crea un nuevo ejercicio contable</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_61</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>30</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Clonar Empresa</string>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Crea una nueva empresa identica a otra existente</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>100</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Crear Nueva Empresa</string>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Crea una empresa nueva sin datos</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>100</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Borrar Empresa</string>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Borra por completo una empresa</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>170</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Copia de Seguridad
+ (BACKUP)</string>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Guarda una copia de seguridad de una empresa</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonA_4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>170</y>
+                        <width>140</width>
+                        <height>60</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Restaurar copia
+ (RESTORE)</string>
+                </property>
+                <property name="toolTip" stdset="0">
+                    <string>Restaura la copia de seguridad de una empresa</string>
                 </property>
             </widget>
         </widget>
@@ -1330,6 +1364,24 @@
         <receiver>UIconfiguracion</receiver>
         <slot>listiView2_clickMouse(int,QListViewItem*,const QPoint&amp;,int)</slot>
     </connection>
+    <connection>
+        <sender>pushButtonA_3</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_3salvarEmpresa()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_4</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_4restaurarEmpresa()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonA_61</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>BotonA_61clonarEmpresa()</slot>
+    </connection>
 </connections>
 <tabstops>
     <tabstop>lineEdit1</tabstop>
@@ -1384,6 +1436,9 @@
     <slot>BotonB_1Aplicar()</slot>
     <slot>BotonB_2Desacer()</slot>
     <slot>listiView2_clickMouse(int,QListViewItem *,const QPoint&amp;,int)</slot>
+    <slot>BotonA_3salvarEmpresa()</slot>
+    <slot>BotonA_4restaurarEmpresa()</slot>
+    <slot>BotonA_61clonarEmpresa()</slot>
 </slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
