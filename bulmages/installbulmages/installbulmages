@@ -236,7 +236,6 @@ tiempo
 cp bulmages /usr/local/bin
 cp cargaemp /usr/local/bin
 cp guardaemp /usr/local/bin
-cp cargaemp /usr/local/bin
 cp bulmafact /usr/local/bin
 cp bulmacont /usr/local/bin
 cp bulmatpv /usr/local/bin
