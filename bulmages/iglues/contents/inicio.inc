@@ -12,7 +12,7 @@ $body = '
 <td><center><b>IGLUES: Somos asociación con todas las de la Ley</b></center></td>
 </tr>
 <tr>
-<td colspan=2>A fecha 4 de noviembre de 2004 el ministerio de interior ha resuelto en inscribir la asociació IGLUES en el Registro Nacional de Asociaciones, Grupo 1º, Sección 1ª, Número Nacional 172642. Podeis ver el comunicado realizado por nuestra secretaria en éste correo de la <A href="http://llistes.bulma.net/pipermail/bulmages/2004-November/001408.html">lista</A>.
+<td colspan=2>A fecha 4 de noviembre de 2004 el ministerio de interior ha resuelto en inscribir la asociación IGLUES en el Registro Nacional de Asociaciones, Grupo 1º, Sección 1ª, Número Nacional 172642. Podeis ver el comunicado realizado por nuestra secretaria en este correo de la <A href="http://llistes.bulma.net/pipermail/bulmages/2004-November/001408.html">lista</A>.
 </td>
 </tr>
 </table>
