@@ -353,7 +353,7 @@ CREATE TABLE alb_pro (
 -- PVD
 -- Previsió: Data prevista de recepció
 CREATE TABLE lpedido (
-   numlpedido integer PRIMARY KEY,
+   numlpedido integer,
    desclpedido character varying(150),
    cantlpedido integer,
    pvdlpedido float,
@@ -361,7 +361,8 @@ CREATE TABLE lpedido (
    
    idpedido integer NOT NULL REFERENCES pedido(idpedido),
    idalb_pro integer REFERENCES alb_pro(idalb_pro),
-   idarticulo integer REFERENCES articulo(idarticulo)
+   idarticulo integer REFERENCES articulo(idarticulo),
+	PRIMARY KEY(idpedido, numlpedido)
 );
 
 
@@ -653,7 +654,10 @@ CREATE TABLE num_serie (
     numnum_serie character varying(30) PRIMARY KEY,
     tiponumserie integer,
     
-    numlpedido integer REFERENCES lpedido (numlpedido),
+	 idpedido integer, -- REFERENCES pedido (idpedido),
+    numlpedido integer, -- REFERENCES lpedido (numlpedido),
+	 unique (idpedido, numlpedido), 
+	 FOREIGN KEY (idpedido, numlpedido) REFERENCES lpedido (idpedido, numlpedido),
     numlalbaran integer REFERENCES lalbaran (numlalbaran)
 );
 

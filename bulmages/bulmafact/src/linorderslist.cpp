@@ -39,6 +39,10 @@ CREATE TABLE lpedido (
 
 #include "linorderslist.h"
 #include <qtable.h>
+#include <qlineedit.h>
+#include <qlabel.h>
+#include <qtextedit.h>
+#include <qcombobox.h>
 #include "company.h"
 
 #define COL_NUMLPEDIDO 0
@@ -52,11 +56,46 @@ CREATE TABLE lpedido (
 
 linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, int flag)
  : linorderslistbase(parent, name, flag) {
+      m_cursorcombo = NULL;
       companyact = comp;
 }// end linorderslist
 
+// Cargamos de la tabla de pedidos los datos del pedido seleccionado y los ponemos en la pantalla.
+
+void linorderslist::chargeorder(QString idpedido) {
+   QString idproveedor;
+   
+   companyact->begin();
+   cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido, proveedor  WHERE idpedido="+idpedido+" and pedido.idproveedor=proveedor.idproveedor","unquery");
+   companyact->commit();
+   if (!cur->eof()) {
+   	m_numpedido->setText(cur->valor("numpedido"));
+	m_cifproveedor->setText(cur->valor("cifproveedor"));
+	m_nomproveedor->setText(cur->valor("nomproveedor"));
+	m_dirproveedor->setText(cur->valor("dirproveedor"));
+	m_fechapedido->setText(cur->valor("fechapedido"));
+	m_descpedido->setText(cur->valor("descpedido"));
+	idproveedor = cur->valor("idproveedor");
+   }
+   delete cur;
+   
+   companyact->begin();
+   
+   if (m_cursorcombo != NULL) delete m_cursorcombo;
+   //cursor2 * cur2= companyact->cargacursor("SELECT * FROM division WHERE idproveedor="+idproveedor,"unquery");
+   m_cursorcombo = companyact->cargacursor("SELECT * FROM division","unquery");
+   companyact->commit();
+   while (!m_cursorcombo->eof()) {
+   	m_combodivision->insertItem(m_cursorcombo->valor("descdivision"));
+	m_cursorcombo->siguienteregistro();
+   }
+   
+}
 
 void linorderslist::chargelinorders(QString idpedido) {
+// Cargamos datos generales pedido y proveedor
+   chargeorder(idpedido);
+// Cargamos la tabla con lasl íneas del pedido
    m_list->setNumRows( 0 );
    m_list->setNumCols( 0 );
    m_list->setSelectionMode( QTable::SingleRow );
@@ -107,6 +146,12 @@ void linorderslist::chargelinorders(QString idpedido) {
       delete cur;
     //showMaximized();
 }// end linorderslist
+
+
+void linorderslist::activated(int a) {
+fprintf(stderr,"id:%s\n", m_cursorcombo->valor("iddivision",a-1).ascii());
+}
+
 
 linorderslist::~linorderslist() {
 }// end ~linorderslist

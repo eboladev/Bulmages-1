@@ -21,6 +21,7 @@
 #define LINORDERSLIST_H
 
 #include "linorderslistbase.h"
+#include "postgresiface2.h"
 
 
 class company;
@@ -32,6 +33,7 @@ class linorderslist : public linorderslistbase
 public:
    company *companyact;
    QString idpedido;
+   cursor2 *m_cursorcombo;
    
 public:
     linorderslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
@@ -40,6 +42,10 @@ public:
 
 public:
     void chargelinorders(QString);
+    void chargeorder(QString);
+    
+public slots:
+    virtual void activated(int);
 };
 
 #endif
