@@ -25,7 +25,8 @@ HEADERS	+= bulmafact.h \
 	EventHandler.h \
 	clientdelivnoteslist.h \
 	clientdelivnote.h \
-	clientinvoiceslist.h
+	clientinvoiceslist.h \
+	listventanas.h
 
 SOURCES	+= bulmafact.cpp \
 	main.cpp \
@@ -46,7 +47,8 @@ SOURCES	+= bulmafact.cpp \
 	EventHandler.cpp \
 	clientdelivnoteslist.cpp \
 	clientdelivnote.cpp \
-	clientinvoiceslist.cpp
+	clientinvoiceslist.cpp \
+	listventanas.cpp
 
 FORMS	= bulmafactbase.ui \
 	providerslistbase.ui \

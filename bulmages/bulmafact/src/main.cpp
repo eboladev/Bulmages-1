@@ -9,11 +9,9 @@ bulmafact * mainClass;
 int main( int argc, char ** argv ) {
     // Leemos la configuracion que luego podremos usar siempre
     confpr = new configuracion();
-    theApp = new QApplication( argc, argv );
-    
-  Splash *splashScr = new Splash();
-  delete splashScr;
-  
+    theApp = new QApplication( argc, argv );  
+    Splash *splashScr = new Splash();
+    delete splashScr;
     mainClass = new bulmafact();
     mainClass->setCaption( "bulmafact" );
     mainClass->show();

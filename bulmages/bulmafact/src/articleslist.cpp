@@ -85,6 +85,7 @@ articleslist::articleslist(company *comp, QWidget *parent, const char *name, int
 	companyact = comp;
 	inicializa();
 	m_modo=0;
+	comp->meteWindow("Articulos",this);
 }// end articleslist
 
 
@@ -183,6 +184,7 @@ void articleslist::articleSelected(int a, int b, int c, const QPoint &) {
 }
 
 articleslist::~articleslist() {
+	companyact->sacaWindow(this);
 }// end ~articleslist
 
 

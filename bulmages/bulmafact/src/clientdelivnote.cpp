@@ -117,10 +117,12 @@ ClientDelivNote::ClientDelivNote(company *comp, QWidget *parent, const char *nam
    m_idalbaran = "0";
    m_idclient = "";
 	inicialize();
+	   companyact->meteWindow(caption(),this);
 }// end ClientDelivNote
 
 ClientDelivNote::~ClientDelivNote() {
 	companyact->refreshClientDelivNotes();
+	companyact->sacaWindow(this);
 }// end ~ClientDelivNote
 
 

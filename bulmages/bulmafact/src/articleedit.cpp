@@ -95,10 +95,12 @@ articleedit::articleedit(company *comp, QWidget *parent, const char *name)
 	m_suministra->hideColumn(COL_SUMINISTRA_IDPROVEEDOR);
 	m_suministra->setColumnReadOnly(COL_SUMINISTRA_NOMPROVEEDOR,true);
 
+	companyact->meteWindow("Articulo Edicion",this);
 }// end articleedit
 
 articleedit::~articleedit() {
 	companyact->refreshArticles();
+	companyact->sacaWindow(this);
 }// end ~articleedit
 
 

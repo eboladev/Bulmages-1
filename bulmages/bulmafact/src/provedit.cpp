@@ -108,9 +108,13 @@ provedit::provedit(company *comp, QWidget *parent, const char *name)
    m_divisiones->setColumnWidth(COL_DIVISION_FAXDIVISION,100);
    m_divisiones->setColumnWidth(COL_DIVISION_MAILDIVISION,100);
    m_divisiones->setColumnWidth(COL_DIVISION_IDPROVEEDOR,100);
+   
+   companyact->meteWindow(caption(),this);
+
 }// end provedit
 
 provedit::~provedit() {
+	companyact->sacaWindow(this);
 }// end ~provedit
 
 

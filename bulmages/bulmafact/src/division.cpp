@@ -38,8 +38,10 @@
 division::division(company *comp, QWidget *parent, const char *name)
  : divisionbase(parent, name) {
    companyact = comp;
+   companyact->meteWindow(caption(),this);
 }// end division1
 
 division::~division() {
+	companyact->sacaWindow(this);
 }// end ~division1
 

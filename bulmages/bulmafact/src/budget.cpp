@@ -105,11 +105,13 @@ Budget::Budget(company *comp, QWidget *parent, const char *name) : BudgetBase(pa
    companyact = comp;
    m_idpresupuesto = "0";
    m_idclient = "";
-	inicialize();
+   inicialize();
+   companyact->meteWindow(caption(),this);
 }// end Budget
 
 Budget::~Budget() {
 	companyact->refreshBudgets();
+	companyact->sacaWindow(this);
 }// end ~Budget
 
 

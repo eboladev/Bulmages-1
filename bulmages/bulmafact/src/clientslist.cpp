@@ -134,9 +134,12 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
     m_clientList->setReadOnly(TRUE);        
     
    initClients();
+   companyact->meteWindow(caption(),this);
+
 }// end clientslist
 
 ClientsList::~ClientsList() {
+	companyact->sacaWindow(this);
 }// end ~clientslist
 
 

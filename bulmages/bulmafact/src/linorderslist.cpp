@@ -70,11 +70,14 @@ CREATE TABLE lpedido (
 linorderslist::linorderslist(company *comp, QWidget *parent, const char *name, int flag)
  : linorderslistbase(parent, name, flag) {
       companyact = comp;
+         companyact->meteWindow(caption(),this);
+
 }// end linorderslist
 
 
 linorderslist::~linorderslist() {
    companyact->refreshOrders();
+   companyact->sacaWindow(this);
 }// end ~linorderslist
 
 
@@ -275,11 +278,11 @@ int linorderslist::saveOrder() {
 		SQLQuery += " VALUES (";
 		SQLQuery += "'"+m_numpedido->text()+"'";
 		SQLQuery += " , "+m_fechapedido->text().right(4);
-      SQLQuery += " , '"+m_fechapedido->text()+"'";
-      SQLQuery += " , '"+m_descpedido->text()+"'";
-      SQLQuery += " , "+m_cursorcombo->valor("iddivision",m_combodivision->currentItem());
-      SQLQuery += " , "+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem());
-      SQLQuery += " ) ";
+		SQLQuery += " , '"+m_fechapedido->text()+"'";
+		SQLQuery += " , '"+m_descpedido->text()+"'";
+		SQLQuery += " , "+m_cursorcombo->valor("iddivision",m_combodivision->currentItem());
+		SQLQuery += " , "+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem());
+		SQLQuery += " ) ";
 	}
 	return companyact->ejecuta(SQLQuery);
 } //end saveOrder
@@ -301,7 +304,7 @@ int linorderslist::saveOrderLines() {
 			}
 		}
 		i ++;
-   }
+ 	}// end while
 	return error;
 } // end saveOrderLines
 

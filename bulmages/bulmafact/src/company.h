@@ -24,6 +24,8 @@
 #include "postgresiface2.h"
 #include <qobject.h>
 
+#include "listventanas.h"
+
 /**
 Company class gives the application something like a standard interface to access each company in the same way.
 @author Tomeu Borrás
@@ -39,6 +41,7 @@ class BudgetsList;
 class ClientDelivNotesList;
 class linorderslist;
 
+
 class company : public postgresiface2 {
 private:
    providerslist *m_providerslist;
@@ -47,14 +50,16 @@ private:
    articleslist *m_articleslist;
    orderslist *m_orderslist;
    delivnoteslist *m_delivnoteslist;
-	linorderslist *m_linorderslist;
+   linorderslist *m_linorderslist;
    BudgetsList *m_budgetsList;
-	ClientDelivNotesList *m_clientDelivNotesList;
+   ClientDelivNotesList *m_clientDelivNotesList;
+   listventanas *m_listventanas;
 public:
    QWidget *m_pWorkspace;
 public:
    company();
    ~company();
+   void setListVentanas(listventanas *doc) {m_listventanas= doc;};
    void listproviders();
    void listClients();
    void newClient();
@@ -62,16 +67,18 @@ public:
    void listorders();
    void listdelivnotes();
    void listBudgets();
-	void listClientDelivNotes();
-   void setWorkspace(QWidget *qw) {m_pWorkspace=qw;createMainWindows();}
+   void listClientDelivNotes();
+   void setWorkspace(QWidget *qw) {m_pWorkspace=qw;}
    void newBudget();
-	void newClientDelivNote();
-	void newOrder();
+   void newClientDelivNote();
+   void newOrder();
    void createMainWindows();
    void refreshOrders();
-	void refreshArticles();
-	void refreshBudgets();
-	void refreshClientDelivNotes();
+   void refreshArticles();
+   void refreshBudgets();
+   void refreshClientDelivNotes();
+   void meteWindow(QString nom, QObject *obj) {m_listventanas->meteWindow(nom, obj);};
+   void sacaWindow(QObject *nom) {m_listventanas->sacaWindow(nom);};
 };
 
 #endif

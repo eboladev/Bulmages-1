@@ -59,6 +59,7 @@ delivnoteslist::delivnoteslist(company *comp, QWidget *parent, const char *name,
  : delivnoteslistbase(parent, name, flag) {
       companyact = comp;
       inicializa();
+      companyact->meteWindow(caption(),this);
 }// end delivnoteslist
 
 void delivnoteslist::inicializa() {
@@ -129,6 +130,7 @@ void delivnoteslist::dobleclick(int a, int b, int c, const QPoint &) {
 
 
 delivnoteslist::~delivnoteslist() {
+	companyact->sacaWindow(this);
 }// end ~delivnoteslist
 
 

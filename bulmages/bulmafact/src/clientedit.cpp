@@ -95,9 +95,11 @@ ClientEdit::ClientEdit(company *comp, QWidget *parent, const char *name)
    m_divisiones->setColumnWidth(COL_DIVISION_IDPROVEEDOR,100);
    
    emptyForm();
+   companyact->meteWindow(caption(),this);
 }// end ClientEdit
 
 ClientEdit::~ClientEdit() {
+	companyact->sacaWindow(this);
 }// end ~ClientEdit
 
 /**

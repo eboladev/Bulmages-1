@@ -67,9 +67,11 @@ ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const
       inicializa();
       m_modo=0;
       m_idclidelivnote="";
+      companyact->meteWindow(caption(), this);
 }// end providerslist
 
 ClientDelivNotesList::~ClientDelivNotesList() {
+     companyact->sacaWindow(this);
 }// end ~providerslist
 
 void ClientDelivNotesList::inicializa() {

@@ -53,6 +53,8 @@ orderslist::orderslist(company *comp, QWidget *parent, const char *name, int fla
  : orderslistbase(parent, name, flag) {
       companyact = comp;
       inicializa();
+         companyact->meteWindow(caption(),this);
+
 }// end orderslist
 
 void orderslist::inicializa() {
@@ -145,6 +147,7 @@ void orderslist::removeOrder() {
 }// end removeOrder
 
 orderslist::~orderslist() {
+	companyact->sacaWindow(this);
 }// end ~orderslist
 
 

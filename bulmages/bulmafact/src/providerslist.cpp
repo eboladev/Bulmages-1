@@ -92,9 +92,11 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
       
       m_idprovider="";
       m_cifprovider="";
+      companyact->meteWindow(caption(),this);
 }// end providerslist
 
 providerslist::~providerslist() {
+	companyact->sacaWindow(this);
 }// end ~providerslist
 
 void providerslist::inicializa() {

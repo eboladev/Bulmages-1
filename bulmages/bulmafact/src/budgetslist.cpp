@@ -70,9 +70,11 @@ BudgetsList::BudgetsList(company *comp, QWidget *parent, const char *name, int f
       inicializa();
       m_modo=0;
       m_idpresupuesto="";
+      companyact->meteWindow(caption(),this);
 }// end providerslist
 
 BudgetsList::~BudgetsList() {
+	companyact->sacaWindow(this);
 }// end ~providerslist
 
 void BudgetsList::inicializa() {

@@ -65,9 +65,12 @@ ClientInvoicesList::ClientInvoicesList(company *comp, QWidget *parent, const cha
       inicializa();
       m_modo=0;
       m_idcliinvoice="";
+      companyact->meteWindow(caption(),this);
+
 }// end providerslist
 
 ClientInvoicesList::~ClientInvoicesList() {
+	companyact->sacaWindow(this);
 }// end ~providerslist
 
 void ClientInvoicesList::inicializa() {
