@@ -96,30 +96,40 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
    m_list->setSelectionMode( QTable::SingleRow );
    m_list->setColumnMovingEnabled( TRUE );
    m_list->setNumCols(16);
-   m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr( "Cuenta" ) );
-   m_list->horizontalHeader()->setLabel( COL_NOMPROVEEDOR, tr( "Denominacion" ) );
-   m_list->horizontalHeader()->setLabel( COL_NOMALTPROVEEDOR, tr( "Saldo Ant." ) );
-   m_list->horizontalHeader()->setLabel( COL_CIFPROVEEDOR, tr( "Debe Periodo" ) );
-   m_list->horizontalHeader()->setLabel( COL_CODICLIPROVEEDOR, tr( "Haber Periodo" ) );
-   m_list->horizontalHeader()->setLabel( COL_CBANCPROVEEDOR, tr( "Saldo Periodo" ) );
-   m_list->horizontalHeader()->setLabel( COL_COMENTPROVEEDOR, tr("Debe Ejercicio") );
-   m_list->horizontalHeader()->setLabel( COL_DIRPROVEEDOR, tr("Haber Ejercicio") );
-   m_list->horizontalHeader()->setLabel( COL_POBLPROVEEDOR, tr("Saldo Ejercicio") );
-   m_list->horizontalHeader()->setLabel( COL_CPPROVEEDOR, tr("Saldo Ejercicio") );
-   m_list->horizontalHeader()->setLabel( COL_TELPROVEEDOR, tr("Saldo Ejercicio") );
-   m_list->horizontalHeader()->setLabel( COL_FAXPROVEEDOR, tr("Saldo Ejercicio") );
-   m_list->horizontalHeader()->setLabel( COL_EMAILPROVEEDOR, tr("Saldo Ejercicio") );
-   m_list->horizontalHeader()->setLabel( COL_URLPROVEEDOR, tr("Saldo Ejercicio") );
-   m_list->horizontalHeader()->setLabel( COL_CLAVEWEBPROVEEDOR, tr("Saldo Ejercicio") );
-   m_list->horizontalHeader()->setLabel( COL_IDDIVISION, tr("Saldo Ejercicio") );
+   m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr( "Código" ) );
+   m_list->horizontalHeader()->setLabel( COL_NOMPROVEEDOR, tr( "Nombre Fiscal" ) );
+   m_list->horizontalHeader()->setLabel( COL_NOMALTPROVEEDOR, tr( "Nombre Comercial" ) );
+   m_list->horizontalHeader()->setLabel( COL_CIFPROVEEDOR, tr( "CIF/NIF" ) );
+   m_list->horizontalHeader()->setLabel( COL_CODICLIPROVEEDOR, tr( "Código de cliente" ) );
+   m_list->horizontalHeader()->setLabel( COL_CBANCPROVEEDOR, tr( "Cuenta Bancaria" ) );
+   m_list->horizontalHeader()->setLabel( COL_COMENTPROVEEDOR, tr("Observaciones") );
+   m_list->horizontalHeader()->setLabel( COL_DIRPROVEEDOR, tr("Domicilio") );
+   m_list->horizontalHeader()->setLabel( COL_POBLPROVEEDOR, tr("Población") );
+   m_list->horizontalHeader()->setLabel( COL_CPPROVEEDOR, tr("C.P.") );
+   m_list->horizontalHeader()->setLabel( COL_TELPROVEEDOR, tr("Nº Teléfono") );
+   m_list->horizontalHeader()->setLabel( COL_FAXPROVEEDOR, tr("Nº Fax") );
+   m_list->horizontalHeader()->setLabel( COL_EMAILPROVEEDOR, tr("Correo Electrónico") );
+   m_list->horizontalHeader()->setLabel( COL_URLPROVEEDOR, tr("Página Web") );
+   m_list->horizontalHeader()->setLabel( COL_CLAVEWEBPROVEEDOR, tr("Clave propia web proveedor") );
+   m_list->horizontalHeader()->setLabel( COL_IDDIVISION, tr("Codigo División") );
 
-   m_list->setColumnWidth(COL_IDDIVISION,75);
+   m_list->setColumnWidth(COL_IDPROVEEDOR,75);
    m_list->setColumnWidth(COL_NOMPROVEEDOR,300);
-   m_list->setColumnWidth(COL_NOMALTPROVEEDOR,75);
+   m_list->setColumnWidth(COL_NOMALTPROVEEDOR,300);
    m_list->setColumnWidth(COL_CIFPROVEEDOR,75);
    m_list->setColumnWidth(COL_CODICLIPROVEEDOR,75);
    m_list->setColumnWidth(COL_CBANCPROVEEDOR,100);
-   
+   m_list->setColumnWidth(COL_COMENTPROVEEDOR,1000);
+   m_list->setColumnWidth(COL_DIRPROVEEDOR,300);
+   m_list->setColumnWidth(COL_POBLPROVEEDOR,200);
+   m_list->setColumnWidth(COL_CPPROVEEDOR,75);
+   m_list->setColumnWidth(COL_TELPROVEEDOR,75);
+   m_list->setColumnWidth(COL_FAXPROVEEDOR,100);
+   m_list->setColumnWidth(COL_EMAILPROVEEDOR,300);
+   m_list->setColumnWidth(COL_URLPROVEEDOR,300);
+   m_list->setColumnWidth(COL_CLAVEWEBPROVEEDOR,300);
+   m_list->setColumnWidth(COL_IDDIVISION,75);
+      
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).c_str());   
@@ -139,6 +149,13 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
          m_list->setText(i,COL_COMENTPROVEEDOR,cur->valor("comentproveedor"));
          m_list->setText(i,COL_DIRPROVEEDOR,cur->valor("dirproveedor"));
          m_list->setText(i,COL_POBLPROVEEDOR,cur->valor("poblproveedor"));
+	 m_list->setText(i,COL_CPPROVEEDOR,cur->valor("cpproveedor"));
+         m_list->setText(i,COL_TELPROVEEDOR,cur->valor("telproveedor"));
+         m_list->setText(i,COL_FAXPROVEEDOR,cur->valor("faxproveedor"));
+         m_list->setText(i,COL_EMAILPROVEEDOR,cur->valor("emailproveedor"));
+         m_list->setText(i,COL_URLPROVEEDOR,cur->valor("urlproveedor"));
+         m_list->setText(i,COL_CLAVEWEBPROVEEDOR,cur->valor("clavewebproveedor"));
+         m_list->setText(i,COL_IDDIVISION,cur->valor("iddivision"));
          i++;
          cur->siguienteregistro();
        }// end while
