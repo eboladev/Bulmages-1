@@ -1,0 +1,601 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>bulmafactbase</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>bulmafactbase</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>600</width>
+            <height>559</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>BulmaFact</string>
+    </property>
+</widget>
+<menubar>
+    <property name="name">
+        <cstring>menubar</cstring>
+    </property>
+    <item text="Ventas" name="Ventas">
+    </item>
+    <item text="Compras" name="Compras">
+    </item>
+    <item text="Clientes" name="Clientes">
+        <action name="Action_Clientes"/>
+    </item>
+    <item text="Proveedores" name="Proveedores">
+        <action name="Action_Proveedores"/>
+        <action name="listproveedores"/>
+    </item>
+    <item text="Ayuda" name="Ayuda">
+        <action name="helpContentsAction"/>
+        <action name="helpIndexAction"/>
+        <separator/>
+        <action name="helpAboutAction"/>
+    </item>
+    <separator/>
+</menubar>
+<toolbars>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>Toolbar</cstring>
+        </property>
+        <property name="label">
+            <string>Toolbar</string>
+        </property>
+        <action name="Action_Clientes"/>
+        <action name="Action_Proveedores"/>
+        <action name="Action_Articulo"/>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>Toolbar_2</cstring>
+        </property>
+        <property name="label">
+            <string>Toolbar_2</string>
+        </property>
+        <action name="Action_Cobrar"/>
+        <action name="Action_Pagar"/>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>Toolbar_3</cstring>
+        </property>
+        <property name="label">
+            <string>Toolbar_3</string>
+        </property>
+        <action name="Action_EmitirFactura"/>
+        <action name="Action_RecibirFacturas"/>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>Toolbar_4</cstring>
+        </property>
+        <property name="label">
+            <string>Toolbar_4</string>
+        </property>
+        <action name="Action_Bancos"/>
+        <action name="Action_caja"/>
+    </toolbar>
+</toolbars>
+<actions>
+    <action>
+        <property name="name">
+            <cstring>fileNewAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image0</iconset>
+        </property>
+        <property name="text">
+            <string>New</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;New</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+N</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileOpenAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image1</iconset>
+        </property>
+        <property name="text">
+            <string>Open</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Open...</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+O</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileSaveAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image2</iconset>
+        </property>
+        <property name="text">
+            <string>Save</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Save</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+S</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileSaveAsAction</cstring>
+        </property>
+        <property name="text">
+            <string>Save As</string>
+        </property>
+        <property name="menuText">
+            <string>Save &amp;As...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>filePrintAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image3</iconset>
+        </property>
+        <property name="text">
+            <string>Print</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Print...</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+P</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileExitAction</cstring>
+        </property>
+        <property name="text">
+            <string>Exit</string>
+        </property>
+        <property name="menuText">
+            <string>E&amp;xit</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editUndoAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image4</iconset>
+        </property>
+        <property name="text">
+            <string>Undo</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Undo</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+Z</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editRedoAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image5</iconset>
+        </property>
+        <property name="text">
+            <string>Redo</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Redo</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+Y</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editCutAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image6</iconset>
+        </property>
+        <property name="text">
+            <string>Cut</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Cut</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+X</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editPasteAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image7</iconset>
+        </property>
+        <property name="text">
+            <string>Paste</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Paste</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+V</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>editFindAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image8</iconset>
+        </property>
+        <property name="text">
+            <string>Find</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Find...</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+F</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpContentsAction</cstring>
+        </property>
+        <property name="text">
+            <string>Contents</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Contents...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpIndexAction</cstring>
+        </property>
+        <property name="text">
+            <string>Index</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Index...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpAboutAction</cstring>
+        </property>
+        <property name="text">
+            <string>About</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;About</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>listproveedores</cstring>
+        </property>
+        <property name="text">
+            <string>Listado</string>
+        </property>
+        <property name="menuText">
+            <string>Listado</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action_EmitirFactura</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image9</iconset>
+        </property>
+        <property name="text">
+            <string>EmitirFacuta</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action_Clientes</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image10</iconset>
+        </property>
+        <property name="text">
+            <string>Clientes</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action_Proveedores</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image11</iconset>
+        </property>
+        <property name="text">
+            <string>Proveedores</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action_RecibirFacturas</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image12</iconset>
+        </property>
+        <property name="text">
+            <string>Action</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action_caja</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image13</iconset>
+        </property>
+        <property name="text">
+            <string>Caja</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action_Bancos</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image14</iconset>
+        </property>
+        <property name="text">
+            <string>Bancos</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action_Cobrar</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image15</iconset>
+        </property>
+        <property name="text">
+            <string>Cobrar</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action_Pagar</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image16</iconset>
+        </property>
+        <property name="text">
+            <string>Pagar</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action_Facturar1</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image17</iconset>
+        </property>
+        <property name="text">
+            <string>Facturar</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action_Articulo</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image18</iconset>
+        </property>
+        <property name="text">
+            <string>Articulo</string>
+        </property>
+    </action>
+</actions>
+<images>
+    <image name="image0">
+        <data format="PNG" length="274">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000000d949444154789ced95b10a833014454fc4c1d1b55bc7465d2c74d1b93fe087fa173a76f33f1cddd241d28698d4a076f380844b78bcfb2e8f2886d7001390c0388da4497a888eb5d0677ecf1501747d27cc3afb8c4cc1341729a5bc1f802c2475552b26b0ebb58ecc4e24215ea12c4b6421c9ab5cd9f55ac776a710e44dce0e81baaad5d00fc2761ed99d42689e0d97ebe5a7f3d895f11ad92303a0a5f53a5f6c45084208f7c59e8cf566b89aedced88799b1738f37b3778fbd1893475bf6d8c799f19733e30fc6e4ceb7c2fb16ac614c2efef5cf5b647c947e0335cf332ee2ba751c0000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="324">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000010b49444154789cad95b17283301044df311494f677b84b697f5b2693c9b789529dbec3947497421c115828c2a36b6e16a1bdd56a0724f8003330c0344f5c864b13dc4df3b479d80a4bf0a1a952c37d3aa9a6df3e6e4a526e74b25f0f3e486f93d2c5236c9b52658ffb4301820fb20e3deb71f041f6eb6e74b221250eed6a94d69c24b567f5d88e6365cadef11ce2300154154021424464ff6eb6ece2b2398eaffc9182a0aaa852eca6ece84e16627921ffbf53bc83ace2ba4e314d598fcf7a9dabfe48b191fe7cc31578269b4af8f32bf6acc71bd2216eba0e0b49011ba91b9d2c56b4536a11dc286ea1d4d2b12a6ea5d452d1014d951af91aca564a3739e6cd2a7d2bc48deed41fa4b6ff02989d9f196982fbb30000000049454e44ae426082</data>
+    </image>
+    <image name="image2">
+        <data format="PNG" length="376">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000013f49444154789cad953b6bc43010843f1f2e94ce82342953bb4f11837f51fa54211857e9f38b02be22853bd557ba39b0ca2d0e2e8591df2f050f0831e0598d46cb3a30a501011458b1442a3a8617e702e07ee432a5218c5404c0f717d4021f9f50fc145e4ee39718f3dbdc3c4e63ac584e562cd014d534885484153b28b2c681963b7deb58aba63800d21577cec6fce9f64c25179c3e49135a0843c72d7acee40a0f373d715a85978e0379d62ca73ff51d3bf49d69a5a9a55e74bea4dfccb80a2fa84736331eeb078eeb5e465b190ff88c7e33e35ddd31a3dfcc788ff3397d38ce28cf46adb3037936cd78d2c75a351ff6b9cfbe98b13bf9bfdc653cebf8eddd2b09a09b35b090f1e0e415b84165c592a4c9761ff75f770dde7dbcd7b1771ffb38f69a153e8ed76645e0fe79f16b7cdf57721da634010241712e060f71d4fe078bda80e50d70cf990000000049454e44ae426082</data>
+    </image>
+    <image name="image3">
+        <data format="PNG" length="894">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000034549444154789c8d952d6f244710869fb516d4b21a36c3bc5280879d8dce613e9695420ccf0af1ca21f905912ebf206149588e4521a7185e9849e435c9dd06c41e76b3e8bac1295d6c8b75c0ccecaded8d74dda0d41f6fd55b1f5d3dba7d7b0b0e08981b2a0a0ee6961d675a4e37e7c913828083e3981b38a828a232dac68f87c543e9ee3c7bfa8c6061b35f4b8db9516945f24421056d6c49313dc28f6edfdede633a3017240bb259575a81c39af5bdfbde4f151d6de3f7b62d6d872358c071a24504a18d2dc1c2bdb5b9d1c616411ee147ff13e31c2d222a0c73cb93cd7def28776c1fe468efa12573eb00c290c47bcc87fbbdfb244f8ff008ec6d077cc8f0c04c45d975eef886f984c94efcce18975a6e92b2eb7c60ee386bd63b73347e68494569560d4707471b03434cb7e5c03ac4c0b259e6aa98626aa39d752c48be59de10fe0a88087220040b545a11e27de93822c2aa5db1f87341b0405dd779f6e58c69391d6deab853ba840f4eb0848a3c2afacde3012aa94863c33e24ae6eae08d1710fd40753e617f38eb12079d92c79fec5292e7431b4888892dc28068990dc69e48e4bff8d1933aaa5b258021e10a0f9bbe1e71f5fc29bc59bfccbcb5f73fe377fd2789fdfe73ad759b2e43ad7f9ddddbbfcfdb73fe5c32787b92cf7b3aae6fd723fefb56dcbfcfc0c0a3e799c704c4dcd29a74ceb29f38b7366273300cc0c80b14c0aee9ac4a47b0da0c29a44215d6f100571c105304754f9c67e602e2d9555b4124816987e56833bf4c5335eb50d85088d278af5844042bd60290dea82e128052601f50a23a0543889d60391c8da85f69f05de7b24f42f2ff42d30784227450f160c434430028212098874120423528a821b857c8ca5e3ec1986a4092174ca620a284a7443e8ebdb15f388ba62163b4f3ca294448b4c90fe13e8c6d193cfd9531493be6eb14e2911a5578662d22931222a65ef89127d85887639d10a07cab2e4fcebe78c0d23add608505011a401af48341452d1da0a5893c429e894ad51263de3e011a848b640045e7cf7827abf1e8daeafaef3e5ab4b7effe335ee6b44a0eb59dde818fbc64d950ae3a3db4281790011e617679c1c9f8c70185d2fae87c6932f5fbd26b4ed26015df50cb906efcb69ede09eba3d730e9f1e72f6d519c787c79b0ff53fb9599853b6fbb1790000000049454e44ae426082</data>
+    </image>
+    <image name="image4">
+        <data format="PNG" length="321">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000010849444154789ced94310e82401045ff120a4a390715964b65e105b88f31c42b780e1a4b13a9a4846acf0125dd5898d91d4005231626d26c3eeccc3cfe4c4699ca001d800068bb16ab60b588f6daaeedbd5c4a2b53994549597b4b93b256dff2d89715a7ce445f0800801040037e8e5988781b2b79df7a9ce89a4cb9518f48a2754e2ed9f353c65b62a041a40bba96ae72a26b72640d4c95aae77fd2a03817c4e4d6e34817242b0ff594a77cdf54a9eacdb1247349816b19ab39d3c0f759fbf6e384674c266d909ae3587bd2e37eb7efe473e796e3597bd6b31eb1d389aee915e9307eb42b24e9bbe4dc9343e63cfe6857e4a79c76fbc73df96857b8a4e3e9f9daaef8efe31ff6f80691ec5095f0ead40a0000000049454e44ae426082</data>
+    </image>
+    <image name="image5">
+        <data format="PNG" length="312">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000000ff49444154789ced94b10e82301086ff120646780e2619210ebc02cfe1ee648c7172f73958dc75d2b14e7d0e18bbd5010fda02424c4d3491a5f9e9ddf5ef779732c105200104402d6b8441e8447bb5ac8d9fae34135c38754ada73ed9434fb14635f3f310c4294a7526db611800addd768c10b66c78fad06e33829151579b55e6f0b36e4344e4a4587fbbad32967597a5740852c3d2b00461c99ea318ed38ba2a2530cf59b095e305b1b734c4ce7745ff08251bc89afcbf7da644400605c1f725c37c561f5a0db6fe79836e7cea9edd4cef75a86cfa029a7c3d3d3cf6f19ef771ab3379cda8c47e7f87888902f73e6e4add0bbbd5a57dff956fcdfe31f66fc0097544d7737c723170000000049454e44ae426082</data>
+    </image>
+    <image name="image6">
+        <data format="PNG" length="383">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000014649444154789cad54317284300c5c315750c23b5c4169ff8287f2844b854ba8fc0e28e994c26722fbcce184d0302b0b69bdac446e76c00ea006b67d435337ff82ab6ddfa2a0c4461bce9d2bad38972f711540e8146124f8751ee26ff902571f3b237f93103fbb6953379ef159e71c33a30d9fdda458630050bde2e8c70070b3a35b1a3beb48ca811d48f1df34ae7da1e00ea55524c3278da9c4c7aaf705830cb77d2cdd119ea2fc1a9e71c944196dd85947a51378a9b12ffa640050faeb72e28a7cec8b2e7c688b15462facfa916ff9d8e8274fb623a03db49e6c476e1e4816ff958f8d5ed8d981fc50ac6fbb232d5ee4e38369ba1b5ecccf8a4be68f33a6e91847cc453ed096690cac191fb711c3cbfc9cc6f2ba3f5b6ecd9eab7e64370f94d3f8213bc922671f4fb6a3e06b194fdfd95da1fa918116c00a370f45bb21c534d929dbf1eefb1b8b6e67151be3bd670000000049454e44ae426082</data>
+    </image>
+    <image name="image7">
+        <data format="PNG" length="431">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000017649444154789cad95bd6e83301446cf8d1818e1393275e910a43e445fa3ec5d82a20896eeee23c1d0814e7e0e18d9dcc1901a303f517225747d6debf3e763c0a26b0d1d1042dbb54461f4943a180a5f4e4e8961126555cad27c378baef5a20880717a457c33fe17739d1ff68afaea21925362daae1de110c000a82f45d3a5c4a122fd4c6f42ae4bb7f6cd779d0b60d455d1900239d92543ffe84d86c7d723f93507326214e92545d75a86f10340835d1932607cbaae985bdbc888c3c114a3f1c0f6e4765b282025794bfc30271163718075ee320e462b77e988dd3d79bad3c374e5c1f9bd353898c2fef0f22b8b4eb28b021a20dec819bad232e098319e3b6930e6bcc859a4c098b37d0dd718cfd9a95ee07be6d4988fbea6172f8caedf850e2bbcc6d08ad08bf8a2b9b55cf1c00ead9df63ec753f15d8cb71c8b147d3bbecd7f98b1ef60458a6730f645cc438c7dd9eea081b22ac1fe3a179edcdc1b901bd9baf392d3afd9f7e58df3ea9d17851165f5b2eb8e9be63f8819f6f34291b5270000000049454e44ae426082</data>
+    </image>
+    <image name="image8">
+        <data format="PNG" length="772">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000002cb49444154789ccd95b18b1b4714c67f2b523c818b5970b10b2eb470cda6d356d69114327161a58ac0cd1957f97bae7219ae32b831e80a93a4389053c4bac24172a38c8b835161982902fb8ac0be22b0291ce33bcc59815c91eaf1cd0c8f8f1fdfbc976dd75b3040404d71e26e440fd4f4cae14de92f3e08278e9042af51f1171e105a532a5790dfc919d76330b2cbef31b84e67af56af70e2f03bdffbd7010e861c4ea6b462e492e3dfaef9fd6c430ecceecf40ae36bfae66dbf516bff3fdf2c5922fbf69981d7d0f4047476a0d1123688b3ffd09bb481c3d3c42906c2fe3a4a9f7af3dcde31993efe6c42ed245487e88dbe5845f0c5429a70ddc712ccf97ff8af1a08d2d1ce4cca6df8241a925e16d4b47c01328a9b0970e31a82635e99d1252e8f7311e6c769ec3e994488b19acdf04b4f02417300944020525711771aea4bb0d166d6f3a06f297e02407c0e3e16e87892026600e27151b5d2185a0da5216253ef96b9d5ec9b162c436e210922604c3768e421bbcff11192b6a4667a0d69193ef67ec446835326448d2f7cda3b61494f8cd1ac6863ac321188a1874d2edcdf1406e0921b5448d083931454c8678dd302c94648a99902c2126847781a66ef6336eea8674768e9810353014c152a4a4a2dd7560d0a9223842f0d452e2c4ed672c4eb2fa76c5f2e705268ea88a1361d32d51e701435b083160bf05ca83927c94e377be17a4ff0c634735aea8fe74b4cf5f5222981a555520554e81a3b416f76be4f0ab4326e349b67eb3e6fcec9ce327c7985affd9599134f56113585dac1137845b0238ec8f8018dcbb7f8f7a5467ff34e99f3d7fc6e27481738ef9c339cdb8a170c587fbf7b3e2f25fc7e87df0606018a3724455542064979d21b0f19b7ef1c3029f3cf30773c65f8fa9477586f1d1f1be69755d4d9afad58b1527a7279445c9a3c78f984ea659b65d6f6f6473c410fbe327c7c414993d98fd77c757d260f4274f4f30b34f19ffef77dedff8e6a58b144bf0f10000000049454e44ae426082</data>
+    </image>
+    <image name="image9">
+        <data format="PNG" length="340">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000011b49444154789ced56410e8320101c1a0ffec75b9bf8749b68f046dfe3c1647aa85840a0a515bc380921b322bb8c83009c3871e26088c2f9483bb9b8142ec02a83000f57a0707ed00d543926c5012bd3a0d142cf2d5c9628197ee9177cad8070132fc6e09b6ef06fa1d69caf6d489afea41a9599cc6a24f16bf3c16fc239be84c7f0002a609a27d455fd1aff81774317294058aa88a66d429f8000d0dd3b4c98d6608d3a895bc99659b9906fccb3ab07fed9af54a35a65fed437d7c69b2f87cb53205c1352f672b3825b7b83194fe51145b6bb601cc6cd60379eca7dfd2a81abc01eba26207e1f90bdccca7da0ec254bf488a8ed0ecac9e1fd04da48fa4cc8c58305e8b3406f955c3c84a21e08fd8acdc3c8b947eec60fbbb65978024e129d9c1b7dca0e0000000049454e44ae426082</data>
+    </image>
+    <image name="image10">
+        <data format="PNG" length="718">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000029549444154789cdd974b6edb400c863f1a2aa0dea681bd49dce62a5d0941163e4d1641e055af92c6e9c6792c7a970888017631c379692ccb809b4508188ca4217ff2278733814f2aea7f0765f63f80b59b6e20a704d76b6007344ecbfa30c6310ce8d84f571ebc4df4049f87180875d4bbfa02b92a0c3aa632a0f8a5e3a02dd0e740e97bfde574b94e577b60fd675d81dce4d1655d6b1907871a3f8bc85e46521b7bac06d039869af042f35d232203e068ad2e880ef84ec600ad0bbe2c4d096e3d32ab81a740a3b2001efcdfa67b6f1b191a3a69e2ba19c0e3efc771202223996c710ca4dababfad0691ef160ba06d5a787f0b2022c2e67e7330a8c040a9897a10440f34ae014300ec802f5f33df6d3361235bc6352612462c8850fb5df0202e8006787f7335f77a7e31e7f9cf33bcbf39e35a3f582d1b9fb1e90a237ae7e782ad4f5c30bf98f3f4f814c668bff31d526126135f4bb9f1fbde7643c9cc83d381813ebab0ce1aa467fb7473bfa16d5afa5d1ff4f272599b78c1cede8f69b975f8468600aa77c0df9889762097cb41e25926be556c226613335df7029c1dc1004079baedcba43615e50a74e1415f3c53af9121cf80cfbccca8afd05a7cb7da43fdccc8c001d90efdc88df5e34b91d9791ea9ac93daf664932c9c193f93802b9943dd7e50025d243c26353346b26eaf3165b54e322762696a3f380d7591309164c079c1500ab24f5b8f6cb3441d8eef2d59e73722912d714898b314742a3819782922b784dd539e300abe0c65d74fccb8c83c805602d1d10f592f1c29066ec36c0ca7762995d449383826ea14bc7ae12b70f6dd8a6310e624d1b2057e0067718bc96b4ebbac93e00e043126f9d57b81eab7e4f97a703ddf677f1219fe2fd0a1ba1a0de0e4a2da6560e5f3874809f8e10118e8d8f364f907dc08748202e1eefc0000000049454e44ae426082</data>
+    </image>
+    <image name="image11">
+        <data format="PNG" length="588">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000021349444154789cb557cb6ac330109c141ffc3fbda5b45f959c0a052172d2ffe45248c1c5ee49f99e1c0adb832b6725ed4a72d20e08123d7666b5ab95bcc11504191ba5ff16a41c1bc9f87f09c9c84b46ff5284646bb1d315883411b792aa44771b598988f341212400b0c6c21afb4f3a6490d4acb1627fa9b983236b2cb9834bc73857bb8871189b88c76124226a995f27e5cd4f3e322a78b69013d12af226211cbc3f8487933708582f22859fbc3ad618ae753bc08d722fb9b72bc81701691dc89383081ba162877e6d1c988f71dff5b87c5fd0773df6affb744ab650f5b225ae7c8e35b6252cede4b504d3c0c5f8c147b9230a20a225b34be4a99012f8bc7118d3c2967bcf85b4785fdb35fcd69130e6877c17681c46f293cf8c0411a55c68f19edbf093e7bb70ad749a8116a42492e77c8ce5429eb11279ab9092286e239c0a7e1d1731af9fa19d7b3e5e9bd3773db72d83676bea99b40e88b39d7b8e24ccac2ee417098774ebd55ab0970918ae02a21cd0125082b623da6f6db7a21c38be1fab3165f15aea3f8fb5f63bccd772a003801e7d3681c31997f549466b4e8435e7af73e43401f30ba7042917b4e3abad4fb71fbc105963c54a58432a4a5acbfb8a7781f4acba055c4cea797a1b465f46a78f1300e0e9e509d658f8c9af8a7380330ebbb75dd4377d4e8b7d0e5eaec4ac720787edf376cedaef597278e1d4fe3f6e1fe1278fe3fb517a11153f4e8ba2ee44c4f9037b05bd17e90de5500000000049454e44ae426082</data>
+    </image>
+    <image name="image12">
+        <data format="PNG" length="480">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001a749444154789ced56316ec3300c3c151ef29e7acbd057f50bed92bcc9051cd89bfc1e0f01ae832c99a2a9382e52670901c79628dd91275208f0b297bdecc9e676e6237372f7b67300591804f8740576e607f544f5004402219588be25b33fd5008394a4c8e8f475524bfe290016c0c7eb086056a2b44e5b492a96fcb17229c8f4226baec4692940df7b894548c949701a512f12916773718f6176115ecba1878abbbf7b86de039701cda531fd9602aefea825677c6c728a9234ecfd58a3f969528d2cc8d632483ce1ec5dd67605521da42259ad8144282b59f776913c38d367df76b23616095b0a30fe58d5ad098a36a950ea94b84a17216566a9179d0b196f283e019861cdf105ac45179cbfcf18af230ed521bde3fce7667a1b4f1664516539700bc7fd476091c855ab57f1305f4a19b8bb751c055fd776f0169e30766d47df7b22dc88b2cb6f3f93a1e08f78c82fcbf52022c0a660d423f1ee0a402aa0df56466b01689c9b6720a24c9b7c3b474f80becdd5887e2d398dfd4a05fb26f4bd47d7760080fa580315d2d80159f3c6b1f40fd37e67ec97dbb20f4385e897923d72bcfb1f52d37e0137ec88ff0b2a05460000000049454e44ae426082</data>
+    </image>
+    <image name="image13">
+        <data format="PNG" length="692">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000027b49444154789cb597c1aaab3010863f0f59f83edd59ee81bb389b3ed2396069a17d243785167ad19def9385e05998d169348916ee48491393ccfc937f2623a4a557bfd4bccdf291dab47ed6b44d4bfdac634a7a4eef19913280dce454b78adce44123390106de31226980ed2c87af03d5ad0a2b2f81ce8d6c34229b6d387fb7343629374e79099c55ffb8b87fd480be6d5a6c67c94dceaed8c53690331f14cbccde1921b2c2083982be6d5ae8a0f9d7603b4bdbb4b0ecca0979095c9d8a8b6bc5a0959c30f2c77696e6d160b1dc1ff7d0fc09f93703daa353d4b9d6f7c40938d213f0c448c2dce4147f8b91ed87afc3b2728dfcc880bc5450367a420cc876c58efbe34ef1a72067c68157e4003f0af9598d6b4f483fc285755120c8bfd59b0b13fbb55cddb871462eeb19c5cf0399fa4dcaf1940b72093d2dbe2712120b9134f233730f88cc3d1127e1a2728823f7956b6fcc3db13a3bf69ce8b9d0d3bb16d79edc98b4fab904fab23e207312ea0ca7e35c8f69091d81cc5b9992d723d7fd25e47ade0ab78fa97876abe938d7c8e5bddff7914788e71b30b15d88256c8739e1748693db4f2b3784dcbe58597d00194785640ddb4b5e592eca21843c585989fd99bb30e2712e7740a756ea3a20e276a9acfc3bc6bcf452c861422eb2f2cc139595c7fed0e3c7ff06b613e0c0707beb9c1d8bebd2ebc3a6385f92e9d291b3d7b93fa63c7ce6a11a326ac0b070ad2720186af5b3263739b6b3ec3ff74923f4653484a3d0f21a501e89f3f6d9be7c47b4cf605d398af1fa193fce1352e9f8f93fc676c3c8f2ea569113fc981965e93a9e7b426abe04e124d460aa31df31605022e59478229ddbb3fde77e4c366b3990922d713ead59f735bd69c3ff26bf252b6e3f279f0e890000000049454e44ae426082</data>
+    </image>
+    <image name="image14">
+        <data format="PNG" length="544">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001e749444154789cc597416e83400c459f23169c275995a8b95576c9aaddb5a7a21ab21acec302c95d90a166180a2a25b11481878cffb7fd9938f0649395fb756dacbf1250005f7ac8a0691b8ea7e3da988b81d5575e5de934f880bad2a9afbc5d5b644bd92a802b1d799673280e589f160ea76ecd577ee0cf61cc11d010d49639f87996d3b40dc56b41f55551bc1688c8805c203b8595fd0a7cef7108627b1e32cfb31cf8b94e913d9e8ea12d032231ab4519dbebfe654f7dab27fdb85d7145320bfc5b8f2da8f5eb5b3d000506cf634d185f038bc58addc23218661af7782b3f0876073fe5b25fdeda0ff6f416ecee24c207573a7ce551ed78b9d2f5f7b1bd01aa4c3e57555ce9fa7b5ff9de0f98bb78535f2ee3a7803f804b8f2ba876eba978bdb5e378a38328ee912513c02f134dbb2820708de259b4385eb202b4e90c2cb808bcf7c79822d2ad5da24ac4c9acaec09c4974b6c6ed5c5481290d5c81cf3b80eaff68604460ae02676ce98716977fb47fad06825d496b2045624e03c90a586558c6e1bd9f330b31a7819108e734904b8a84f46b9fd2b529b5ff5fce8133d0c8f82c78972ef3f370f9711ab826c0e3fd290d2427a20799c4043435f36de1ef5ff661788d7e8c1e340fd4b77a58069e381308dd3f9dc9a977ab6b68c30ec673fe23fcd086a78f64df675d1d5a100ae2350000000049454e44ae426082</data>
+    </image>
+    <image name="image15">
+        <data format="PNG" length="1329">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000004f849444154789ced956f6c137518c73f85dbf80d36730dadde8025bb81b00206ba05a51b5b58e30cab1a9399bd70c6104463e27c637046853971101391ecc580c49898884182184848182f1a3793913561aed580a909335b364c2fd0b8334ef88967cf17b73f65eb3aa0fa4a9fe4f2f47acfeff97d9eeff3dcefe07fcbcd3c9a870baa071bb08510b6ea51bb807260c9dd24589c23c09b4f3cc94b8d4f8361805eba8a9215be470b44c16b96655d97525efa3701ca7de5bc525b499922608b1fc43293df936efc811abc4bbd0df1a1f8cf40345b1225078047348dc7850a029016146b0031e2b171cc0937c021201f38365f925c14d8a097d2e47b183e3d055b36819502af0a4a91c9da95063e3f427f90adf1217e611e257201b86a18e4b997b3ad62137c760aaa360964caa26829480089f5e539beb22c3e00ac4c497269c19f52f28750e0c4e7b0e77590968e5074868d6ece9c64c048f203b02b5b925c00560395b1cb202518268c1be3206e11e9256c24d9092472c89fd534e07ce99a52bb7147a32d0a851dd88cad7ab04b5761034d779be87e14f858f3b03ed8c036dd63d21f8b820591ef9c87e63d2673dd65dc62200f85ce5777b1bb40254f537df4f6a968ee086e0d84a221ad0a84d2cd990bdc18fe91a0b4b8f24f006c5655ea85e0c3503de86b5412463323637104bdf8b74c9e03c0f0100c8f413000873f0133b970fe6caf611550eddf4878fd7ab5beb9c94f913a8150829c3d7f9ce2c211fc8f815040a61c5fa4027f6998b715dc48ae8e720918ba1f05b6fb37734455d910ac0367e64208249204d00bc0f00808012363109856a20e308038dd616e442ed2029c9e0f20d3106e0d3d15ea7ab1a96e0305128124163f8850ba91961ba1a81849e80943c20051e87c886e9910ac07a1c491964428e0f7e38d5ca4291bc0ec16acf69573aee5f99ab525eb9ec1abfa18f8fe0d146b02999a009258a96b9c390d3575206f82770524af4345250cc440d7271ca55250940f054b597975885f816f33012c4abf5155b54cf3044a874d1d6926e8893c0b9681c4e931933e6182becaa95e2f7674f46f04bd04e203ccc42b5057835ab79d2ea07101053a6c29832f8c8ceaf4f6c0f193499ea83e8b4c394fadd4648f53608c829507d746c1bc0949038a9683fa00e8eb66e28b3d01240ac97173d1f8757e9ab8c925e0f63c003def39835f3b7d85bfd94fa87e72f3b469f796c0e5188c19506081910491ef78ef324719a14071c94eca1eaac54a8529caa766cc6091947c9d0eb0e04928ad0e040269c9c97bd00a05a106391d73b4ab8d5003c4af40340e21cd891b1e3b81db7700dd13007f849e8bbc05bc3d0fc0474c762fcd43a83e4445a062214e842280560792999951551f89421fc28c645c970690be39d37eaaf26cb6efdd7d00b85c0e40b00ea4251072373d7d4791d617c889cc6bd3de823b2b9ff24e6599cde5baf31cb36d1bdbb6696b07a1ec0125814f776326253d610d84960d20bdf21925a4258946a2f4f7f5cf596cdb362e976bcee5aceb47ca63f4460e138d69f8fc215a5e6e999323ad05e90acc28515d5b0dc060ff20d1be2828dc3113b66d73e0fd0308c519d4b6f63600dada7bd3b63108d5fb9096eccc029079069a9f6b46de9254565532d83f38ad88b424553555c0cc0cccfe1d8d44e90e77d3d6de86b4e42181e8980d90de447bf6c38efd1d6542114b8ca4b143203a0f761e9cfa7fbae26cbe756feb54fc11a188775af7b6fe960de05e6c0eec3c76bff9ff43f63727a2edc387720a490000000049454e44ae426082</data>
+    </image>
+    <image name="image16">
+        <data format="PNG" length="1811">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000006da49444154789c95976d6c14d715861f2f637237eca219ea2533e05598041baf0969c702835d20c5ada53040144c109251846254a484045451daa8244ad18a1fad41482d1f8a9a0f3512ad14245aa5897f94c42bc551b7b59d388a234cbb4e77651c765556ec946ebcb7eeb0ee8f597fd0c6f6fafcb97b66ce3df7bdef79ef3db3152cd03a4f7556a0b05e135a6fcecda1291a3999c38f9f0205fc8a9fee9eeec62bbfbfd20f4ccc974f592800e9ca064318bdf65e1b55a8482991aea4bba71b2b6c2102824b972ff5a2b01e978fe7cbb768218b474f46b75811eb7df77e7771eecb1c037f1de046ea0689910456c4e2f55fbf8eb658e360c7415283a9fd8991440f303257ce8a052cfe78b3d5fc865aad1a9ad028c8027ee1a7e01688c7e224b349da77b773e6e219cefdec1cdd7fee66a7bdf33a10992b6fd90cd8adf6af8c078d75a22870ee38e042f26692542245d5ca2a2a8b9584c2210eec3d805ff3135482246f262786ae0d7d090cce96d7572e00e94a54a1d2b0a981c8ea085ab546f3fa66d4904a3c164737751aac06fc9a1f00a3daa0fdc9f610f0fdb9f296c540f464f448dbf6b63d8fae7f74493a95665fc73e7adeeb61707890fd7bf7c312a8afae477b40bb27b3263480fbe3bdf171e02fde8bce6761eb31b09f82ad4f957b0a9a32f9cc72ffb09ffd1dfb8b861ef7a94110580c5cb7d9b17d07fce7ff271935061dcf762c2fb88513172e5ed80d36d05c07111d2420ca3e86c79e3ff4fc4305596834f58ccfb240285e59842bbc88caaf9f581fa9e7a51fbcb4dcde662fbff0568aae770d609aa9b234f0f22b2fdf44617bc6c91c92422280377eebbdcbb9b979e71b35063b9edc81b5ce022e01e781d3c0e9f218889e8c868c2ae31de9ca4de72f9ebf1bef1b5ad4be4b65a04fc56e35ca4931832101e44aa32cfb141c316bccfac3470e73edb36b8ba4b431569fe6c48fced1d0d450660a10a5453d932510e55bf4b5575ffb6aecf6d8c4d8edb189893b130b1e8fbdf0ee04744e40746a2cfb260474e0c3e75e78ae46131ad2955e27714128a22cff4f3d8278bf80194c940be055bd8afa96ed6c4e2705c9514166d46b4233ec32706dee3491ef82bed9fbed070a7302580454a270b6e3690e6a2a95ba1a21161708318069824025e736e357bae8bacaade4755aa4cbe773e4dc0858331fcc06e05b6a15ad42e1e76dbbc0a85671b207194a7e824a8cc886c97b00d2a3309480962d70e62238d9f21bdce42e675a33f06deb11aed6d789d6b6ddeb082e95089a79fbbdb7d00229ac8da50a16bd09c1a520ffad931f770197d1117a81e17201cc44fb1d6b3de7d4006b5bb6815074a46b97769a4428b1a91d23c0493283896d084522dd38dd57b915fb88c3789a289b814df64efbe2d1a70f3dd2b8b99190ba8e4c3686208d2c660197eced0c5d7f809e7eb8310c7d9f427e1c4c1340e216330824ca1296f4f5c342003c1ca9e39dc3075a6bc36b761052d731f0f929141c64318f50b2b8c50c577e075b1e03650c565443da81c60d30fc31841fce7b0c142114804ac1cac430ff04fae703e05303ea437a55d3aa64d620974dd3ddb307640ae97a01d2f56a9ece82a10301504bbd24b21ad430c4fb988e07b635a1366de69740dbbc0ce82bf42f7e78ec458c6506d9ec79e4d8a7c8a2575bb734ca223837c1ad84d1118ffa6c06b41018cba0a6663aded49bc8a3c0578e2f9de58b7c9e5e607cf61228fc34b22642706910657c806c3e059416675aeda1300c0ec08d0c5448c8de06b1186efc0302f7813fe0c587c207301e6844ba312a15b6a433f8a4e483594b2014af210845a0866db4805ef24bed4281ee18e82ad8dba161355816a8253f627af7c064bc93be842622987a13960542f0e25c25f0a140645504e94a8caa160a6ea967cdd040a4067e53d27481e9e7008ebcd7cf4910011344e49ee7b39640292ab1c448e2995ab316b7c2a521b28fa1d1b7113e774a03fe00181a9c7f13322330380c6e1efa3ef368dffa180404b8454150394a62e48fdccd5fc19192c17ec88f71725600725cfac2abc276c8087dc3b9e9a00403d4aeb449df1922e853c88fe7bd9204a06523dc5d0c4d1b3c211e7d06cc35a04c0a961fe32ab7307585c1e11e3efc40c79101f277f2b303009cd0b25026f1b7c4deb493a676452dc9cc2d1ad61ec4f549647ee09ed350f3a077fd6ef8265f735a14142e73fdef7d7c32a053b3d6e689d627b8da7d7556000a40fbeef641897c7fe8fad0f7ba3eea2297ce914c25d9b3abd9dbbd22181abe3055d3ffd5c8a41f8fc7c8e5bd6bdc346dcc6a13e9cab3736960aa17749eeaac93aeac4ba7d2bf70a413a600c96c1281402291d93833bbffcc8fab49dfacb351833a882961770a45448f9f38feaf79014c5af464d404ee731ce771e18ab339a6ff7a6b68cce59baa8954a6609d13889f1c7f65f6c501fe0bd48904850f0d48ba0000000049454e44ae426082</data>
+    </image>
+    <image name="image17">
+        <data format="PNG" length="557">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001f449444154789ced963d8adb4014c77f0a2ea64ab1375848b10b697c1ccd0d5206569523ccf0d6d50452a4c80dbcc77113d82d16f6062eb69ac2f0524823ebd396d99542207f1083243cff8ff7dec8f0af431cfa5788fd06d5bda8be7a1547639d9c5c5c41ee1d25a9b444c87422f4d517e41b3ace274f223af52ec6df751ecba2fb71292463c9fd060d07f8f6d5c321f0fd574ebcbfff9155cf59986a4d3e66a3f7ef8396570312ebde68c063123199f8fe1cc91885719344400d90017e03775f041666308131497c182120292f0508e5c3b082fb9f391c428d9c1679717f2a895135b2a9d5e5e725d92a0340801c12dd8bf639be2489c518f2db9b5bc2a1f02e4ec8d739802657f9a081a638aa24da22ce96c02c4c67b5a9855a59fa905ce5c93101aa24dae5385982e8de60c8d619e284c7a747b60fdbfaeff4d43edd246894635402a16cbd1ef2b326fa92a8976150804dad2e6f968443205fe78893735a478a088d778302a2f348fef2fcd2e7fe6211edc6ed156053abd79fae8f6230d514bc057d533338866661c856197ee3d9fddebdc9fd29741268cffd7b38bf48409cf7f7aafd45b0a95571a2808a13b5a99dfcefd56002719d0d36b5ea9d9fd53d9409c4af5de0d8707325508d61fdc41b38722741d503917ceeda379ad060263d7406056c1fb6c589f7b49bbffb4bccd6f5ffd1c61f383d88e180f1e12a0000000049454e44ae426082</data>
+    </image>
+    <image name="image18">
+        <data format="PNG" length="1075">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000003fa49444154789ccd97316fdb4614c77f5768386de647503615192c861a5c388bc6aef1d48cb455c446ba34a3478fce64444554b15394299f414b836430236948a3cdfa08d4a61b045c87bb238f34653b4e50f400e2f48eeff8defffffe3c3ec1ff74e8ff2ad00fb5c15febbb26a12bd76dbeb726a0d9b57edb93c803bee18a119f70f30d896c05d52839451af6ac256d12bf8ad2a6775c7170d40209ea62cae1f31014205b8c2e3eb143c0010fca815e6bf3bc02807086a03c0c037bc00688ecea9fd66e001dbb9e02b31adbf96d8067de9353bbfe11988b3cb6cf801973010d0f80048eec7c618300ecdbdffb5806ec7ac3f37f6f67e5edf382fb096880375ca1c890e91245c621a141e2ae23e00fbb4b015d3bcf2db26716e9dcfacf405f26886ecc289d72c8a36b7805a08f39a6499336bfd08b42d6401398a40987515c78772ca28f98323d043e7bb68f14131c768015cb6ecc249db2e02d2f7999c7cf130889999230d87d55d4dad5d2d5ced97b5e507fb6f7f56cecd5a50d2c00c58998121223092cc38f0a0dec1010725214c509ccd5d8d13e032ead5d990d6257f41eb066fcdb5f28b5261ef6083941d2a41db558a6650db02243121408375e300fe1289de608dc1ceb45057100648c8f139e0e622020e99f116b4522da04b4989101de4124096847ad82e67dcbc06393c4eff3178cd229bd28a413b5bce0cb1c71d2ff60839d03016a834d668d9401a088f59249fac580c51361484c2f0a79e018d8b599d9f77b944e9992a050f43865c21912c92b1d969027fd33e2e12990e5b66cc89c0998009244b4af6b60ed8ab2f14a29cb1a9134f9c0393f73ca8a3563d1e4a99e004b927e423c3c25e99f130f5fd8b948c60fbe6319c84bb022a30985ea95bda18afbbde84794ad9db3dbbb2dc6a207ac88873f01990d7e462fa236782f0a59d9e7e40c4802b3b4850177df65eeeca0019dc824e19800e9215f9a1a7ac1d7767f8901456696b630e0eebbcc9d9d6dcca1e53361024e30efff0ad18df3e0ce5f5519b88b06fccc9d1d34c89950ac11dd383f0145f709d5e73bff7b69c0cfdcd9d9869c0949133620ba31a2f3c47c2b3ad4faafeace816b1a803b69c0215364c531fe18f32a57f63bffefae01c34050ec7f58bfbfaa813c815a0d780cdc5503b7edbf5103b374f95d3470d3fead1a58f0b6a8e1b76ae086fd4183d2b7a0018801030d70cc1a36a1597d8fe9f54a352cbe62cece3696d6aa066a34b448297d455d02607bb40103cd7c70bd27e41e1af8ccb57364c5bada96896a536a9ac5d4b5e23a47643452d54095014f037f532433171c5463d851f7cfc8390952e1bad85c23db34b0982f0b0d5c9aa0de7ee15d35886f1f5623c728141259eaedfc1eef1ecffeaaa1310d8c7ec7951ef1cfd7fc37ac1df7cdd20ff64d48ff0556bd234cbadf0e090000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>fileNewAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>fileNew()</slot>
+    </connection>
+    <connection>
+        <sender>fileOpenAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>fileOpen()</slot>
+    </connection>
+    <connection>
+        <sender>fileSaveAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>fileSave()</slot>
+    </connection>
+    <connection>
+        <sender>fileSaveAsAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>fileSaveAs()</slot>
+    </connection>
+    <connection>
+        <sender>filePrintAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>filePrint()</slot>
+    </connection>
+    <connection>
+        <sender>fileExitAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>fileExit()</slot>
+    </connection>
+    <connection>
+        <sender>editUndoAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>editUndo()</slot>
+    </connection>
+    <connection>
+        <sender>editRedoAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>editRedo()</slot>
+    </connection>
+    <connection>
+        <sender>editCutAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>editCut()</slot>
+    </connection>
+    <connection>
+        <sender>editPasteAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>editPaste()</slot>
+    </connection>
+    <connection>
+        <sender>editFindAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>editFind()</slot>
+    </connection>
+    <connection>
+        <sender>helpIndexAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>helpIndex()</slot>
+    </connection>
+    <connection>
+        <sender>helpContentsAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>helpContents()</slot>
+    </connection>
+    <connection>
+        <sender>helpAboutAction</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>helpAbout()</slot>
+    </connection>
+    <connection>
+        <sender>listproveedores</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>listproviders()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>fileNew()</slot>
+    <slot>fileOpen()</slot>
+    <slot>fileSave()</slot>
+    <slot>fileSaveAs()</slot>
+    <slot>filePrint()</slot>
+    <slot>fileExit()</slot>
+    <slot>editUndo()</slot>
+    <slot>editRedo()</slot>
+    <slot>editCut()</slot>
+    <slot>editCopy()</slot>
+    <slot>editPaste()</slot>
+    <slot>editFind()</slot>
+    <slot>helpIndex()</slot>
+    <slot>helpContents()</slot>
+    <slot>helpAbout()</slot>
+    <slot>listproviders()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
