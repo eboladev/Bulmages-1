@@ -19,7 +19,7 @@ div#navbar div {width:100%; margin:0px; color:#5f7f98;}
 div#navbar a:link, div#navbar a:visited, div#navbar a:hover {text-decoration:none;}
 div#navbar a:hover div {background-color:#5f7f98; color:#ffffff;}
 
-div#contents {position:absolute; bottom:0px; left:30%; width:60%; top:90px; color:#000000; background:url('img/ULcorner.png') left top no-repeat; background-color:#A6C5E7; } 
+div#contents {position:absolute; left:30%; width:60%; top:90px; color:#000000; background:url('img/ULcorner.png') left top no-repeat; background-color:#A6C5E7; } 
 
 div#contents_margins {margin-left:1em; margin-right:1em;}
 

@@ -11,6 +11,7 @@ $body = '
 
 <A HREF="http://llistes.bulma.net/mailman/listinfo/bulmages" >http://llistes.bulma.net/mailman/listinfo/bulmages</A>
 
+<BR>
 '; 
 // =================================================
 </script>
