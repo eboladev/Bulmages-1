@@ -8,7 +8,20 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
-<td width=100>06/10/2004</td>
+<td width=100>11/11/2004</td>
+<td><center><b>IGLUES: Somos asociación con todas las de la Ley</b></center></td>
+</tr>
+<tr>
+<td colspan=2>A fecha 4 de noviembre de 2004 el ministerio de interior ha resuelto en inscribir la asociació IGLUES en el Registro Nacional de Asociaciones, Grupo 1º, Sección 1ª, Número Nacional 172642. Podeis ver el comunicado realizado por nuestra secretaria en éste correo de la <A href="http://llistes.bulma.net/pipermail/bulmages/2004-November/001408.html">lista</A>.
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
+<td width=100>10/11/2004</td>
 <td><center><b>Disponibles Manuales Básicos de Jabber y CVS</b></center></td>
 </tr>
 <tr>
