@@ -11,4 +11,12 @@ ln -s /usr/local/lib/bulmages/libbulmafact.so.0.1.0  /usr/local/lib/bulmages/lib
 ln -s /usr/local/lib/bulmages/libbulmafact.so.0.1.0  /usr/local/lib/bulmages/libbulmafact.so.0
 ln -s /usr/local/lib/bulmages/libbulmafact.so.0.1.0  /usr/local/lib/bulmages/libbulmafact.so.0.1
 
+su - postgres -c "dropdb bfdemo2004"
+su - postgres -c "dropdb bfestruct"
+su - postgres -c "createdb bfdemo2004"
+su - postgres -c "createdb bfestruct"
+
+su - postgres -c "psql bfdemo2004 " < bfdemo.pgdump
+su - postgres -c "psql bfestruct "  < bfestruct.pgdump 
+
 echo "Fin Instalación Bulmafact ********************"

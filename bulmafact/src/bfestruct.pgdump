@@ -1,0 +1,363 @@
+--
+-- PostgreSQL database dump
+--
+
+SET SESSION AUTHORIZATION 'postgres';
+
+--
+-- TOC entry 3 (OID 2200)
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+SET SESSION AUTHORIZATION 'josep';
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 4 (OID 351594)
+-- Name: pga_graphs; Type: TABLE; Schema: public; Owner: josep
+--
+
+CREATE TABLE pga_graphs (
+    graphname character varying(64) NOT NULL,
+    graphsource text,
+    graphcode text
+);
+
+
+--
+-- TOC entry 5 (OID 351601)
+-- Name: pga_layout; Type: TABLE; Schema: public; Owner: josep
+--
+
+CREATE TABLE pga_layout (
+    tablename character varying(64) NOT NULL,
+    nrcols smallint,
+    colnames text,
+    colwidth text
+);
+
+
+--
+-- TOC entry 6 (OID 351608)
+-- Name: pga_images; Type: TABLE; Schema: public; Owner: josep
+--
+
+CREATE TABLE pga_images (
+    imagename character varying(64) NOT NULL,
+    imagesource text
+);
+
+
+--
+-- TOC entry 7 (OID 351615)
+-- Name: pga_queries; Type: TABLE; Schema: public; Owner: josep
+--
+
+CREATE TABLE pga_queries (
+    queryname character varying(64) NOT NULL,
+    querytype character(1),
+    querycommand text,
+    querytables text,
+    querylinks text,
+    queryresults text,
+    querycomments text
+);
+
+
+--
+-- TOC entry 8 (OID 351622)
+-- Name: pga_reports; Type: TABLE; Schema: public; Owner: josep
+--
+
+CREATE TABLE pga_reports (
+    reportname character varying(64) NOT NULL,
+    reportsource text,
+    reportbody text,
+    reportprocs text,
+    reportoptions text
+);
+
+
+--
+-- TOC entry 9 (OID 351629)
+-- Name: pga_forms; Type: TABLE; Schema: public; Owner: josep
+--
+
+CREATE TABLE pga_forms (
+    formname character varying(64) NOT NULL,
+    formsource text
+);
+
+
+--
+-- TOC entry 10 (OID 351636)
+-- Name: pga_diagrams; Type: TABLE; Schema: public; Owner: josep
+--
+
+CREATE TABLE pga_diagrams (
+    diagramname character varying(64) NOT NULL,
+    diagramtables text,
+    diagramlinks text
+);
+
+
+--
+-- TOC entry 11 (OID 351643)
+-- Name: pga_scripts; Type: TABLE; Schema: public; Owner: josep
+--
+
+CREATE TABLE pga_scripts (
+    scriptname character varying(64) NOT NULL,
+    scriptsource text
+);
+
+
+--
+-- TOC entry 12 (OID 351729)
+-- Name: meta; Type: TABLE; Schema: public; Owner: josep
+--
+
+CREATE TABLE meta (
+    id character varying(10) NOT NULL,
+    valor character varying(50)
+);
+
+
+--
+-- TOC entry 13 (OID 351842)
+-- Name: usuarios; Type: TABLE; Schema: public; Owner: josep
+--
+
+CREATE TABLE usuarios (
+    login character varying(15) NOT NULL,
+    nombre character varying(35),
+    apellido1 character varying(35),
+    apellido2 character varying(35),
+    "password" character varying(35),
+    permisos text
+);
+
+
+--
+-- Data for TOC entry 24 (OID 351594)
+-- Name: pga_graphs; Type: TABLE DATA; Schema: public; Owner: josep
+--
+
+COPY pga_graphs (graphname, graphsource, graphcode) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 25 (OID 351601)
+-- Name: pga_layout; Type: TABLE DATA; Schema: public; Owner: josep
+--
+
+COPY pga_layout (tablename, nrcols, colnames, colwidth) FROM stdin;
+public.pga_queries	7	queryname querytype querycommand querytables querylinks queryresults querycomments	150 150 150 150 150 150 150
+public.pga_scripts	2	scriptname scriptsource	150 150
+public.pga_forms	2	formname formsource	150 150
+public.pga_diagrams	3	diagramname diagramtables diagramlinks	150 150 150
+pg_catalog.pg_type	22	typname typnamespace typowner typlen typbyval typtype typisdefined typdelim typrelid typelem typinput typoutput typreceive typsend typalign typstorage typnotnull typbasetype typtypmod typndims typdefaultbin typdefault	150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150
+pg_catalog.pg_trigger	13	tgrelid tgname tgfoid tgtype tgenabled tgisconstraint tgconstrname tgconstrrelid tgdeferrable tginitdeferred tgnargs tgattr tgargs	150 150 150 150 150 150 150 150 150 150 150 150 150
+pg_catalog.pg_statistic	21	starelid staattnum stanullfrac stawidth stadistinct stakind1 stakind2 stakind3 stakind4 staop1 staop2 staop3 staop4 stanumbers1 stanumbers2 stanumbers3 stanumbers4 stavalues1 stavalues2 stavalues3 stavalues4	150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150
+pg_catalog.pg_shadow	8	usename usesysid usecreatedb usesuper usecatupd passwd valuntil useconfig	150 150 150 150 150 150 150 150
+pg_catalog.pg_rewrite	7	rulename ev_class ev_attr ev_type is_instead ev_qual ev_action	150 150 150 150 150 150 150
+pg_catalog.pg_proc	15	proname pronamespace proowner prolang proisagg prosecdef proisstrict proretset provolatile pronargs prorettype proargtypes prosrc probin proacl	150 150 150 150 150 150 150 150 150 150 150 150 150 150 150
+pg_catalog.pg_operator	17	oprname oprnamespace oprowner oprkind oprcanhash oprleft oprright oprresult oprcom oprnegate oprlsortop oprrsortop oprltcmpop oprgtcmpop oprcode oprrest oprjoin	150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150 150
+pg_catalog.pg_opclass	7	opcamid opcname opcnamespace opcowner opcintype opcdefault opckeytype	150 150 150 150 150 150 150
+pg_catalog.pg_namespace	3	nspname nspowner nspacl	150 150 150
+pg_catalog.pg_listener	3	relname listenerpid notification	150 150 150
+pg_catalog.pg_largeobject	3	loid pageno data	150 150 150
+pg_catalog.pg_language	6	lanname lanispl lanpltrusted lanplcallfoid lanvalidator lanacl	150 150 150 150 150 150
+pg_catalog.pg_inherits	3	inhrelid inhparent inhseqno	150 150 150
+pg_catalog.pg_index	10	indexrelid indrelid indkey indclass indnatts indisunique indisprimary indisclustered indexprs indpred	150 150 150 150 150 150 150 150 150 150
+pg_catalog.pg_group	3	groname grosysid grolist	150 150 150
+pg_catalog.pg_description	4	objoid classoid objsubid description	150 150 150 150
+pg_catalog.pg_depend	7	classid objid objsubid refclassid refobjid refobjsubid deptype	150 150 150 150 150 150 150
+pg_catalog.pg_database	11	datname datdba encoding datistemplate datallowconn datlastsysoid datvacuumxid datfrozenxid datpath datconfig datacl	150 150 150 150 150 150 150 150 150 150 150
+public.meta	2	id valor	134 275
+public.usuarios	6	login nombre apellido1 apellido2 password permisos	150 150 150 150 150 150
+\.
+
+
+--
+-- Data for TOC entry 26 (OID 351608)
+-- Name: pga_images; Type: TABLE DATA; Schema: public; Owner: josep
+--
+
+COPY pga_images (imagename, imagesource) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 27 (OID 351615)
+-- Name: pga_queries; Type: TABLE DATA; Schema: public; Owner: josep
+--
+
+COPY pga_queries (queryname, querytype, querycommand, querytables, querylinks, queryresults, querycomments) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 28 (OID 351622)
+-- Name: pga_reports; Type: TABLE DATA; Schema: public; Owner: josep
+--
+
+COPY pga_reports (reportname, reportsource, reportbody, reportprocs, reportoptions) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 29 (OID 351629)
+-- Name: pga_forms; Type: TABLE DATA; Schema: public; Owner: josep
+--
+
+COPY pga_forms (formname, formsource) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 30 (OID 351636)
+-- Name: pga_diagrams; Type: TABLE DATA; Schema: public; Owner: josep
+--
+
+COPY pga_diagrams (diagramname, diagramtables, diagramlinks) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 31 (OID 351643)
+-- Name: pga_scripts; Type: TABLE DATA; Schema: public; Owner: josep
+--
+
+COPY pga_scripts (scriptname, scriptsource) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 32 (OID 351729)
+-- Name: meta; Type: TABLE DATA; Schema: public; Owner: josep
+--
+
+COPY meta (id, valor) FROM stdin;
+version	bulmafact 0.0.1
+empresa	Servicios Financieros S.A.
+\.
+
+
+--
+-- Data for TOC entry 33 (OID 351842)
+-- Name: usuarios; Type: TABLE DATA; Schema: public; Owner: josep
+--
+
+COPY usuarios (login, nombre, apellido1, apellido2, "password", permisos) FROM stdin;
+a	usuari	de	prova		entrada{+},
+bulmages	Superusuario	BulmaFact	Bulmafact	bulmages	entrada{+},
+\.
+
+
+--
+-- TOC entry 14 (OID 351599)
+-- Name: pga_graphs_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+--
+
+ALTER TABLE ONLY pga_graphs
+    ADD CONSTRAINT pga_graphs_pkey PRIMARY KEY (graphname);
+
+
+--
+-- TOC entry 15 (OID 351606)
+-- Name: pga_layout_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+--
+
+ALTER TABLE ONLY pga_layout
+    ADD CONSTRAINT pga_layout_pkey PRIMARY KEY (tablename);
+
+
+--
+-- TOC entry 16 (OID 351613)
+-- Name: pga_images_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+--
+
+ALTER TABLE ONLY pga_images
+    ADD CONSTRAINT pga_images_pkey PRIMARY KEY (imagename);
+
+
+--
+-- TOC entry 17 (OID 351620)
+-- Name: pga_queries_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+--
+
+ALTER TABLE ONLY pga_queries
+    ADD CONSTRAINT pga_queries_pkey PRIMARY KEY (queryname);
+
+
+--
+-- TOC entry 18 (OID 351627)
+-- Name: pga_reports_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+--
+
+ALTER TABLE ONLY pga_reports
+    ADD CONSTRAINT pga_reports_pkey PRIMARY KEY (reportname);
+
+
+--
+-- TOC entry 19 (OID 351634)
+-- Name: pga_forms_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+--
+
+ALTER TABLE ONLY pga_forms
+    ADD CONSTRAINT pga_forms_pkey PRIMARY KEY (formname);
+
+
+--
+-- TOC entry 20 (OID 351641)
+-- Name: pga_diagrams_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+--
+
+ALTER TABLE ONLY pga_diagrams
+    ADD CONSTRAINT pga_diagrams_pkey PRIMARY KEY (diagramname);
+
+
+--
+-- TOC entry 21 (OID 351648)
+-- Name: pga_scripts_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+--
+
+ALTER TABLE ONLY pga_scripts
+    ADD CONSTRAINT pga_scripts_pkey PRIMARY KEY (scriptname);
+
+
+--
+-- TOC entry 22 (OID 351731)
+-- Name: meta_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+--
+
+ALTER TABLE ONLY meta
+    ADD CONSTRAINT meta_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 23 (OID 351847)
+-- Name: usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: josep
+--
+
+ALTER TABLE ONLY usuarios
+    ADD CONSTRAINT usuarios_pkey PRIMARY KEY (login);
+
+
+SET SESSION AUTHORIZATION 'postgres';
+
+--
+-- TOC entry 2 (OID 2200)
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON SCHEMA public IS 'Standard public schema';
+
+
