@@ -78,8 +78,14 @@ CREATE TABLE articulo (
 
 articleslist::articleslist(company *comp, QWidget *parent, const char *name, int flag)
  : articleslistbase(parent, name, flag) {
-      companyact = comp;
-   m_list->setNumRows( 0 );
+	companyact = comp;
+	inicializa();
+	m_modo=0;
+}// end articleslist
+
+
+void articleslist::inicializa() {
+	m_list->setNumRows( 0 );
    m_list->setNumCols( 0 );
    m_list->setSelectionMode( QTable::SingleRow );
    m_list->setSorting( TRUE );
@@ -120,37 +126,51 @@ articleslist::articleslist(company *comp, QWidget *parent, const char *name, int
    m_list->setColumnWidth(COL_IDTIPO_IVA,50);
    m_list->setColumnWidth(COL_IDLINEA_PROD,50);
    
-//   listado->setPaletteBackgroundColor(QColor(150,230,230));
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#FAAFFA");   
-    m_list->setReadOnly(TRUE);        
-       companyact->begin();
-       cursor2 * cur= companyact->cargacursor("SELECT * FROM articulo","unquery");
-       companyact->commit();
-       m_list->setNumRows( cur->numregistros() );
-       int i=0;
-       while (!cur->eof()) {
-         m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
-	 m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
-         m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
-         m_list->setText(i,COL_DESCARTICULO,cur->valor("descarticulo"));
-	 m_list->setText(i,COL_CBARRASARTICULO,cur->valor("cbarrasarticulo"));
-         m_list->setText(i,COL_TIPOARTICULO,cur->valor("tipoarticulo"));
-         m_list->setText(i,COL_DESCUENTOARTICULO,cur->valor("descuentoarticulo"));
-         m_list->setText(i,COL_ESPECIFICACIONESARTICULO,cur->valor("especificacionesarticulo"));
-         m_list->setText(i,COL_ICONOARTICULO,cur->valor("iconoarticulo"));
-         m_list->setText(i,COL_FOTOARTICULO,cur->valor("fotoarticulo"));
-         m_list->setText(i,COL_POSTERARTICULO,cur->valor("posterarticulo"));
-         m_list->setText(i,COL_MARGENARTICULO,cur->valor("margenarticulo"));
-         m_list->setText(i,COL_SOBRECOSTEARTICULO,cur->valor("sobrecostearticulo"));
-         m_list->setText(i,COL_MODELOARTICULO,cur->valor("modeloarticulo"));
-         m_list->setText(i,COL_IDTIPO_IVA,cur->valor("idtipo_iva"));
-         m_list->setText(i,COL_IDLINEA_PROD,cur->valor("idlinea_prod"));
-         i++;
-         cur->siguienteregistro();
-       }// end while
-      delete cur;
-}// end articleslist
+	//listado->setPaletteBackgroundColor(QColor(150,230,230));
+	// Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
+	m_list->setPaletteBackgroundColor("#FAAFFA");   
+	m_list->setReadOnly(TRUE);        
+	companyact->begin();
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM articulo","unquery");
+	companyact->commit();
+	m_list->setNumRows( cur->numregistros() );
+	int i=0;
+	while (!cur->eof()) {
+		m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
+		m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
+		m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
+		m_list->setText(i,COL_DESCARTICULO,cur->valor("descarticulo"));
+		m_list->setText(i,COL_CBARRASARTICULO,cur->valor("cbarrasarticulo"));
+		m_list->setText(i,COL_TIPOARTICULO,cur->valor("tipoarticulo"));
+		m_list->setText(i,COL_DESCUENTOARTICULO,cur->valor("descuentoarticulo"));
+		m_list->setText(i,COL_ESPECIFICACIONESARTICULO,cur->valor("especificacionesarticulo"));
+		m_list->setText(i,COL_ICONOARTICULO,cur->valor("iconoarticulo"));
+		m_list->setText(i,COL_FOTOARTICULO,cur->valor("fotoarticulo"));
+		m_list->setText(i,COL_POSTERARTICULO,cur->valor("posterarticulo"));
+		m_list->setText(i,COL_MARGENARTICULO,cur->valor("margenarticulo"));
+		m_list->setText(i,COL_SOBRECOSTEARTICULO,cur->valor("sobrecostearticulo"));
+		m_list->setText(i,COL_MODELOARTICULO,cur->valor("modeloarticulo"));
+		m_list->setText(i,COL_IDTIPO_IVA,cur->valor("idtipo_iva"));
+		m_list->setText(i,COL_IDLINEA_PROD,cur->valor("idlinea_prod"));
+		i++;
+		cur->siguienteregistro();
+	}// end while
+	delete cur;
+} //end inicializa
+
+
+void articleslist::articleSelected(int a, int b, int c, const QPoint &) {
+   m_idArticle = m_list->text(a,COL_IDARTICULO);
+   if (m_modo ==0 ) {
+      /*QString idprov = m_list->text(a, COL_IDPROVEEDOR);
+      fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
+      provedit *prov = new provedit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
+      prov->chargeprovider(idprov);
+      prov->show(); */
+   } else {
+      close();
+   }// end if
+}
 
 articleslist::~articleslist() {
 }// end ~articleslist

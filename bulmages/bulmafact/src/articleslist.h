@@ -31,10 +31,20 @@ class articleslist : public articleslistbase
  Q_OBJECT
 public:
    company *companyact;
+	int m_modo;	// == 0 es modo edición
+					// ==1 es modo selector.
+	QString m_idArticle;
    
 public:
     articleslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
+	 void inicializa();
+    void modoseleccion() {m_modo=1;};
+    void modoedicion() {m_modo=0;};
+    QString idArticle() {return m_idArticle;};
     ~articleslist();
+    
+public slots:
+	virtual void articleSelected(int, int, int, const QPoint &);
 };
 
 #endif

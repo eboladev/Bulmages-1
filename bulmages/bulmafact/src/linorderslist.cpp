@@ -42,6 +42,7 @@ CREATE TABLE lpedido (
 
 #include "linorderslist.h"
 #include "providerslist.h"
+#include "articleslist.h"
 #include <qtable.h>
 #include <qlineedit.h>
 #include <qlabel.h>
@@ -346,6 +347,10 @@ void linorderslist::valueOrderLineChanged(int row, int col) {
 void linorderslist::manageArticle(int row) {
 	QString articleCode = m_list->text(row, COL_CODARTICULO);
 	if (articleCode == "+") {
+		m_idArticle = "";
+		searchArticle();
+		m_list->setText(row, COL_CODARTICULO, m_idArticle);
+		articleCode = m_idArticle;
 	}
 	
 	bool ok;
@@ -360,3 +365,22 @@ void linorderslist::manageArticle(int row) {
 		}
 	}
 }
+
+
+void linorderslist::searchArticle() {
+   fprintf(stderr,"Busqueda de un artículo\n");
+   articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
+   
+// , WType_Dialog| WShowModal   
+   artlist->modoseleccion();
+   
+   // Esto es convertir un QWidget en un sistema modal de dialogo.
+   this->setEnabled(false);
+   artlist->show();
+   while(!artlist->isHidden()) theApp->processEvents();
+   this->setEnabled(true);
+   
+   m_idArticle = artlist->idArticle();
+	
+   delete artlist;
+}// end searchProvider
