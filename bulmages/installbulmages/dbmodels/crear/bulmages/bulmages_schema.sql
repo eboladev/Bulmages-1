@@ -913,26 +913,25 @@ DECLARE
     fechafin ALIAS FOR $3;
     apt RECORD;
     apt1 RECORD;
-    apt2 RECORD;
-         cta RECORD;
+    --apt2 RECORD;
+    cta RECORD;
     saldo NUMERIC(12,2);
 BEGIN
 --    SELECT INTO apt * FROM apunte WHERE id_cuenta(codcuenta) = apunte.idcuenta;
-         SELECT INTO cta * FROM  cuenta WHERE codigo = codcuenta;
-    SELECT INTO apt sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE apunte.idcuenta = id_cuenta(codcuenta) AND fecha <= "fechafin" AND fecha >= "fechain";
+    SELECT INTO cta id_cuenta(codcuenta) AS id;
+    SELECT INTO apt sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE apunte.idcuenta = cta.id AND fecha <= "fechafin" AND fecha >= "fechain";
     IF (apt.tdebe ISNULL) THEN
         saldo := 0;
     ELSE
         saldo := apt.tdebe - apt.thaber;
     END IF;
 --    RAISE NOTICE '' saldo total % valor adquirido %'', codcuenta, saldo;
-    FOR apt1 IN SELECT codigo FROM cuenta WHERE padre = id_cuenta(codcuenta) LOOP
+    FOR apt1 IN SELECT codigo FROM cuenta WHERE padre = cta.id LOOP
         saldo := saldo + saldototal(apt1.codigo,fechain, fechafin);
     END LOOP;
     RETURN saldo;
 END;
-'
-    LANGUAGE plpgsql;
+'    LANGUAGE plpgsql;
 
 
 --
