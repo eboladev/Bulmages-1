@@ -104,7 +104,7 @@ void orderslist::dobleclick(int a, int b, int c, const QPoint &d) {
    fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
    linorderslist *linea = new linorderslist(companyact,0,theApp->translate("Detalle Pedido", "company"));
    linea->chargelinorders(idpedido);
-//   linea->exec();
+   linea->exec();
    delete linea;
    inicializa();
 }

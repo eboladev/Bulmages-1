@@ -1,7 +1,7 @@
 <!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>linorderslistbase</class>
 <author>Josep Maria Estopà Rey</author>
-<widget class="QWidget">
+<widget class="QDialog">
     <property name="name">
         <cstring>linorderslistbase</cstring>
     </property>
