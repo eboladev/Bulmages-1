@@ -1,0 +1,532 @@
+--
+-- PostgreSQL database dump
+--
+
+\connect - postgres
+
+SET search_path = public, pg_catalog;
+
+--
+-- TOC entry 2 (OID 368522)
+-- Name: usuario_idusuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE usuario_idusuario_seq
+    START 1
+    INCREMENT 1
+    MAXVALUE 9223372036854775807
+    MINVALUE 1
+    CACHE 1;
+
+
+--
+-- TOC entry 8 (OID 368524)
+-- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE usuario (
+    idusuario integer DEFAULT nextval('"usuario_idusuario_seq"'::text) NOT NULL,
+    nombre character varying(25),
+    apellido1 character varying(35),
+    apellido2 character varying(35),
+    login character varying(35),
+    "password" character varying(35)
+);
+
+
+--
+-- TOC entry 4 (OID 368527)
+-- Name: empresa_idempresa_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE empresa_idempresa_seq
+    START 1
+    INCREMENT 1
+    MAXVALUE 9223372036854775807
+    MINVALUE 1
+    CACHE 1;
+
+
+--
+-- TOC entry 9 (OID 368529)
+-- Name: empresa; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE empresa (
+    idempresa integer DEFAULT nextval('"empresa_idempresa_seq"'::text) NOT NULL,
+    nombre character varying(50),
+    ano character varying(10),
+    nombredb character varying(15),
+    "password" character varying(15)
+);
+
+
+--
+-- TOC entry 6 (OID 368532)
+-- Name: usuario_empre_idusuarioempr_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE usuario_empre_idusuarioempr_seq
+    START 1
+    INCREMENT 1
+    MAXVALUE 9223372036854775807
+    MINVALUE 1
+    CACHE 1;
+
+
+--
+-- TOC entry 10 (OID 368534)
+-- Name: usuario_empresa; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE usuario_empresa (
+    idusuarioempresa integer DEFAULT nextval('"usuario_empre_idusuarioempr_seq"'::text) NOT NULL,
+    idempresa integer,
+    idusuario integer,
+    permisos integer
+);
+
+
+--
+-- TOC entry 11 (OID 368537)
+-- Name: pga_queries; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pga_queries (
+    queryname character varying(64),
+    querytype character(1),
+    querycommand text,
+    querytables text,
+    querylinks text,
+    queryresults text,
+    querycomments text
+);
+
+
+--
+-- TOC entry 12 (OID 368537)
+-- Name: pga_queries; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON TABLE pga_queries FROM PUBLIC;
+GRANT ALL ON TABLE pga_queries TO PUBLIC;
+
+
+--
+-- TOC entry 13 (OID 368542)
+-- Name: pga_forms; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pga_forms (
+    formname character varying(64),
+    formsource text
+);
+
+
+--
+-- TOC entry 14 (OID 368542)
+-- Name: pga_forms; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON TABLE pga_forms FROM PUBLIC;
+GRANT ALL ON TABLE pga_forms TO PUBLIC;
+
+
+--
+-- TOC entry 15 (OID 368547)
+-- Name: pga_scripts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pga_scripts (
+    scriptname character varying(64),
+    scriptsource text
+);
+
+
+--
+-- TOC entry 16 (OID 368547)
+-- Name: pga_scripts; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON TABLE pga_scripts FROM PUBLIC;
+GRANT ALL ON TABLE pga_scripts TO PUBLIC;
+
+
+--
+-- TOC entry 17 (OID 368552)
+-- Name: pga_reports; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pga_reports (
+    reportname character varying(64),
+    reportsource text,
+    reportbody text,
+    reportprocs text,
+    reportoptions text
+);
+
+
+--
+-- TOC entry 18 (OID 368552)
+-- Name: pga_reports; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON TABLE pga_reports FROM PUBLIC;
+GRANT ALL ON TABLE pga_reports TO PUBLIC;
+
+
+--
+-- TOC entry 19 (OID 368557)
+-- Name: pga_layout; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pga_layout (
+    tablename character varying(64),
+    nrcols smallint,
+    colnames text,
+    colwidth text
+);
+
+
+--
+-- TOC entry 20 (OID 368557)
+-- Name: pga_layout; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON TABLE pga_layout FROM PUBLIC;
+GRANT ALL ON TABLE pga_layout TO PUBLIC;
+
+
+--
+-- TOC entry 21 (OID 368562)
+-- Name: pga_graphs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pga_graphs (
+    graphname character varying(64) NOT NULL,
+    graphsource text,
+    graphcode text
+);
+
+
+--
+-- TOC entry 22 (OID 368562)
+-- Name: pga_graphs; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON TABLE pga_graphs FROM PUBLIC;
+GRANT ALL ON TABLE pga_graphs TO PUBLIC;
+
+
+--
+-- TOC entry 23 (OID 368567)
+-- Name: pga_diagrams; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pga_diagrams (
+    diagramname character varying(64) NOT NULL,
+    diagramtables text,
+    diagramlinks text
+);
+
+
+--
+-- TOC entry 24 (OID 368567)
+-- Name: pga_diagrams; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON TABLE pga_diagrams FROM PUBLIC;
+GRANT ALL ON TABLE pga_diagrams TO PUBLIC;
+
+
+--
+-- TOC entry 25 (OID 368572)
+-- Name: pga_images; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE pga_images (
+    imagename character varying(64) NOT NULL,
+    imagesource text
+);
+
+
+--
+-- TOC entry 26 (OID 368572)
+-- Name: pga_images; Type: ACL; Schema: public; Owner: postgres
+--
+
+REVOKE ALL ON TABLE pga_images FROM PUBLIC;
+GRANT ALL ON TABLE pga_images TO PUBLIC;
+
+
+--
+-- Data for TOC entry 33 (OID 368524)
+-- Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuario (idusuario, nombre, apellido1, apellido2, login, "password") FROM stdin;
+1	Tomeu	Borras	Riera	postgres	postgres
+2	Bulmages	Bulma	Bulmita	bulmages	bulmages
+3	Cristina	Marco	Hernandez	cmarco	cmarco
+5	Joana Maria	Borras	Riera	jmborras	postgres
+6	Francisca Ana	Borras	Riera	fborras	postgres
+9	Perico	Palotes	Ramos	ppalotes	ramos
+\.
+
+
+--
+-- Data for TOC entry 34 (OID 368529)
+-- Name: empresa; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY empresa (idempresa, nombre, ano, nombredb, "password") FROM stdin;
+1	Bulmages 2002	2002	bulmages	bulmages
+2	Plan General Contable	2002	bgplangcont	bgplangcont
+\.
+
+
+--
+-- Data for TOC entry 35 (OID 368534)
+-- Name: usuario_empresa; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuario_empresa (idusuarioempresa, idempresa, idusuario, permisos) FROM stdin;
+46	1	3	2
+47	1	9	2
+48	1	1	1
+49	1	2	1
+2	2	2	1
+\.
+
+
+--
+-- Data for TOC entry 36 (OID 368537)
+-- Name: pga_queries; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pga_queries (queryname, querytype, querycommand, querytables, querylinks, queryresults, querycomments) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 37 (OID 368542)
+-- Name: pga_forms; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pga_forms (formname, formsource) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 38 (OID 368547)
+-- Name: pga_scripts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pga_scripts (scriptname, scriptsource) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 39 (OID 368552)
+-- Name: pga_reports; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pga_reports (reportname, reportsource, reportbody, reportprocs, reportoptions) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 40 (OID 368557)
+-- Name: pga_layout; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pga_layout (tablename, nrcols, colnames, colwidth) FROM stdin;
+empresa	5	idempresa nombre ano nombredb password	150 150 150 150 150
+usuario	6	idusuario nombre 1apellido 2apellido login password	150 150 150 150 150 150
+usuario_empresa	4	idusuarioempresa idempresa idusuario permisos	150 150 150 150
+\.
+
+
+--
+-- Data for TOC entry 41 (OID 368562)
+-- Name: pga_graphs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pga_graphs (graphname, graphsource, graphcode) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 42 (OID 368567)
+-- Name: pga_diagrams; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pga_diagrams (diagramname, diagramtables, diagramlinks) FROM stdin;
+\.
+
+
+--
+-- Data for TOC entry 43 (OID 368572)
+-- Name: pga_images; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY pga_images (imagename, imagesource) FROM stdin;
+\.
+
+
+--
+-- TOC entry 27 (OID 368596)
+-- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (idusuario);
+
+
+--
+-- TOC entry 28 (OID 368598)
+-- Name: empresa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY empresa
+    ADD CONSTRAINT empresa_pkey PRIMARY KEY (idempresa);
+
+
+--
+-- TOC entry 29 (OID 368600)
+-- Name: usuario_empresa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario_empresa
+    ADD CONSTRAINT usuario_empresa_pkey PRIMARY KEY (idusuarioempresa);
+
+
+--
+-- TOC entry 30 (OID 368602)
+-- Name: pga_graphs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pga_graphs
+    ADD CONSTRAINT pga_graphs_pkey PRIMARY KEY (graphname);
+
+
+--
+-- TOC entry 31 (OID 368604)
+-- Name: pga_diagrams_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pga_diagrams
+    ADD CONSTRAINT pga_diagrams_pkey PRIMARY KEY (diagramname);
+
+
+--
+-- TOC entry 32 (OID 368606)
+-- Name: pga_images_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY pga_images
+    ADD CONSTRAINT pga_images_pkey PRIMARY KEY (imagename);
+
+
+--
+-- TOC entry 48 (OID 368608)
+-- Name: RI_ConstraintTrigger_368608; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE CONSTRAINT TRIGGER usuario_empresa_idempresa_fk
+    AFTER INSERT OR UPDATE ON usuario_empresa
+    FROM empresa
+    NOT DEFERRABLE INITIALLY IMMEDIATE
+    FOR EACH ROW
+    EXECUTE PROCEDURE "RI_FKey_check_ins" ('usuario_empresa_idempresa_fk', 'usuario_empresa', 'empresa', 'UNSPECIFIED', 'idempresa', 'idempresa');
+
+
+--
+-- TOC entry 46 (OID 368609)
+-- Name: RI_ConstraintTrigger_368609; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE CONSTRAINT TRIGGER usuario_empresa_idempresa_fk
+    AFTER DELETE ON empresa
+    FROM usuario_empresa
+    NOT DEFERRABLE INITIALLY IMMEDIATE
+    FOR EACH ROW
+    EXECUTE PROCEDURE "RI_FKey_noaction_del" ('usuario_empresa_idempresa_fk', 'usuario_empresa', 'empresa', 'UNSPECIFIED', 'idempresa', 'idempresa');
+
+
+--
+-- TOC entry 47 (OID 368610)
+-- Name: RI_ConstraintTrigger_368610; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE CONSTRAINT TRIGGER usuario_empresa_idempresa_fk
+    AFTER UPDATE ON empresa
+    FROM usuario_empresa
+    NOT DEFERRABLE INITIALLY IMMEDIATE
+    FOR EACH ROW
+    EXECUTE PROCEDURE "RI_FKey_noaction_upd" ('usuario_empresa_idempresa_fk', 'usuario_empresa', 'empresa', 'UNSPECIFIED', 'idempresa', 'idempresa');
+
+
+--
+-- TOC entry 49 (OID 368611)
+-- Name: RI_ConstraintTrigger_368611; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE CONSTRAINT TRIGGER usuario_empresa_idusuario_fk
+    AFTER INSERT OR UPDATE ON usuario_empresa
+    FROM usuario
+    NOT DEFERRABLE INITIALLY IMMEDIATE
+    FOR EACH ROW
+    EXECUTE PROCEDURE "RI_FKey_check_ins" ('usuario_empresa_idusuario_fk', 'usuario_empresa', 'usuario', 'UNSPECIFIED', 'idusuario', 'idusuario');
+
+
+--
+-- TOC entry 44 (OID 368612)
+-- Name: RI_ConstraintTrigger_368612; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE CONSTRAINT TRIGGER usuario_empresa_idusuario_fk
+    AFTER DELETE ON usuario
+    FROM usuario_empresa
+    NOT DEFERRABLE INITIALLY IMMEDIATE
+    FOR EACH ROW
+    EXECUTE PROCEDURE "RI_FKey_noaction_del" ('usuario_empresa_idusuario_fk', 'usuario_empresa', 'usuario', 'UNSPECIFIED', 'idusuario', 'idusuario');
+
+
+--
+-- TOC entry 45 (OID 368613)
+-- Name: RI_ConstraintTrigger_368613; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE CONSTRAINT TRIGGER usuario_empresa_idusuario_fk
+    AFTER UPDATE ON usuario
+    FROM usuario_empresa
+    NOT DEFERRABLE INITIALLY IMMEDIATE
+    FOR EACH ROW
+    EXECUTE PROCEDURE "RI_FKey_noaction_upd" ('usuario_empresa_idusuario_fk', 'usuario_empresa', 'usuario', 'UNSPECIFIED', 'idusuario', 'idusuario');
+
+
+--
+-- TOC entry 3 (OID 368522)
+-- Name: usuario_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval ('usuario_idusuario_seq', 13, true);
+
+
+--
+-- TOC entry 5 (OID 368527)
+-- Name: empresa_idempresa_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval ('empresa_idempresa_seq', 22, true);
+
+
+--
+-- TOC entry 7 (OID 368532)
+-- Name: usuario_empre_idusuarioempr_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval ('usuario_empre_idusuarioempr_seq', 49, true);
+
+
