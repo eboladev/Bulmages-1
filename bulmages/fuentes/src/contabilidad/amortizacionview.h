@@ -34,5 +34,6 @@ public slots:
 	virtual void accept();
 	virtual void cambiofechacompra();
 	virtual void cambiofecha1cuota();
+        virtual void calculaamortizacion();
 };
 #endif

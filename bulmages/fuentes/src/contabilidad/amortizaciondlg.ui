@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>722</width>
-            <height>515</height>
+            <height>517</height>
         </rect>
     </property>
     <property name="caption">
@@ -85,7 +85,7 @@
                     <property name="name">
                         <cstring>unnamed</cstring>
                     </property>
-                    <widget class="QLabel" row="4" column="0">
+                    <widget class="QLabel" row="4" column="0" rowspan="1" colspan="2">
                         <property name="name">
                             <cstring>textLabel1_2_3_3</cstring>
                         </property>
@@ -93,38 +93,7 @@
                             <string>Cuotas</string>
                         </property>
                     </widget>
-                    <widget class="QTable" row="5" column="0">
-                        <column>
-                            <property name="text">
-                                <string>Fecha</string>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>Cantidad</string>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>Nº Asiento</string>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>Ejercicio</string>
-                            </property>
-                        </column>
-                        <property name="name">
-                            <cstring>table1</cstring>
-                        </property>
-                        <property name="numRows">
-                            <number>3</number>
-                        </property>
-                        <property name="numCols">
-                            <number>4</number>
-                        </property>
-                    </widget>
-                    <widget class="QLayoutWidget" row="6" column="0">
+                    <widget class="QLayoutWidget" row="6" column="0" rowspan="1" colspan="2">
                         <property name="name">
                             <cstring>layout2</cstring>
                         </property>
@@ -690,7 +659,7 @@
                             </widget>
                         </hbox>
                     </widget>
-                    <widget class="QLayoutWidget" row="2" column="0">
+                    <widget class="QLayoutWidget" row="2" column="0" rowspan="1" colspan="2">
                         <property name="name">
                             <cstring>layout3</cstring>
                         </property>
@@ -799,7 +768,7 @@
                             </widget>
                         </hbox>
                     </widget>
-                    <widget class="QLayoutWidget" row="1" column="0">
+                    <widget class="QLayoutWidget" row="1" column="0" rowspan="1" colspan="2">
                         <property name="name">
                             <cstring>layout4</cstring>
                         </property>
@@ -852,7 +821,7 @@
                             </widget>
                         </hbox>
                     </widget>
-                    <widget class="QLayoutWidget" row="0" column="0">
+                    <widget class="QLayoutWidget" row="0" column="0" rowspan="1" colspan="2">
                         <property name="name">
                             <cstring>layout5</cstring>
                         </property>
@@ -931,6 +900,14 @@
                         <property name="name">
                             <cstring>buttonGroup1</cstring>
                         </property>
+                        <property name="sizePolicy">
+                            <sizepolicy>
+                                <hsizetype>7</hsizetype>
+                                <vsizetype>5</vsizetype>
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                            </sizepolicy>
+                        </property>
                         <property name="title">
                             <string>Método</string>
                         </property>
@@ -971,6 +948,89 @@
                                 </property>
                             </widget>
                         </grid>
+                    </widget>
+                    <widget class="QTable" row="5" column="0" rowspan="1" colspan="2">
+                        <column>
+                            <property name="text">
+                                <string>Fecha</string>
+                            </property>
+                            <property name="pixmap">
+                                <pixmap></pixmap>
+                            </property>
+                        </column>
+                        <column>
+                            <property name="text">
+                                <string>Cantidad</string>
+                            </property>
+                            <property name="pixmap">
+                                <pixmap></pixmap>
+                            </property>
+                        </column>
+                        <column>
+                            <property name="text">
+                                <string>Nº Asiento</string>
+                            </property>
+                            <property name="pixmap">
+                                <pixmap></pixmap>
+                            </property>
+                        </column>
+                        <column>
+                            <property name="text">
+                                <string>Ejercicio</string>
+                            </property>
+                            <property name="pixmap">
+                                <pixmap></pixmap>
+                            </property>
+                        </column>
+                        <column>
+                            <property name="text">
+                                <string>IdLinAmortizacion</string>
+                            </property>
+                            <property name="pixmap">
+                                <pixmap></pixmap>
+                            </property>
+                        </column>
+                        <row>
+                            <property name="text">
+                                <string>1</string>
+                            </property>
+                            <property name="pixmap">
+                                <pixmap></pixmap>
+                            </property>
+                        </row>
+                        <row>
+                            <property name="text">
+                                <string>2</string>
+                            </property>
+                            <property name="pixmap">
+                                <pixmap></pixmap>
+                            </property>
+                        </row>
+                        <row>
+                            <property name="text">
+                                <string>3</string>
+                            </property>
+                            <property name="pixmap">
+                                <pixmap></pixmap>
+                            </property>
+                        </row>
+                        <property name="name">
+                            <cstring>table1</cstring>
+                        </property>
+                        <property name="numRows">
+                            <number>3</number>
+                        </property>
+                        <property name="numCols">
+                            <number>5</number>
+                        </property>
+                    </widget>
+                    <widget class="QPushButton" row="3" column="1">
+                        <property name="name">
+                            <cstring>pushButton4</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Calcular</string>
+                        </property>
                     </widget>
                 </grid>
             </widget>
@@ -1038,10 +1098,17 @@
         <receiver>amortizaciondlg</receiver>
         <slot>close()</slot>
     </connection>
+    <connection>
+        <sender>pushButton4</sender>
+        <signal>clicked()</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>calculaamortizacion()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>cambiofechacompra()</slot>
     <slot>cambiofecha1cuota()</slot>
+    <slot>calculaamortizacion()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

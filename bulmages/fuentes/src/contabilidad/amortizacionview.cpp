@@ -11,11 +11,18 @@
 #include "empresa.h"
 #include "funcaux.h"
 
+#define COL_FECHA                  0
+#define COL_CUOTA                  1
+#define COL_ASIENTO                2
+#define COL_EJERCICIO              3
+#define COL_IDLINAMORTIZACION      4
+
 amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *name, bool flag ) 
 : amortizaciondlg(parent,name,flag,0) {
 	empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    	idamortizacion = "";
+        table1->hideColumn(COL_IDLINAMORTIZACION);
    idamortizacion = "";
 }
 
@@ -34,6 +41,17 @@ void amortizacionview::accept() {
 		conexionbase->begin();
 		conexionbase->ejecuta(query);
 		conexionbase->commit();
+                query.sprintf("SELECT max(idamortizacion) AS idamortizacion FROM amortizacion)");
+                conexionbase->begin();
+                cursor2 *cur = conexionbase->cargacursor(query,"unquery");
+                conexionbase->commit();
+                if (!cur->eof()) {
+                   idamortizacion = cur->valor("idamortizacion");
+                }// end if
+                //Iteramos para cada linea en el subformulario.
+                for(int i=0; i<table1->numRows(); i++) {
+                   //Insertamos en la base de datos cada linea de amortizacion.
+                }// end for
 		done(1);
 	} else {
 		fprintf(stderr,"Se trata de una modificación\n");
@@ -68,15 +86,43 @@ void amortizacionview::inicializa(QString idamortiza) {
       fechacompra->setText(cadena);
       cadena.sprintf("%10.10s",curs->valor("fecha1cuota").ascii());
       fecha1cuota->setText(cadena);
-   
-   
    }// end if
    delete curs;
 }// end inicializa
 
+
+void amortizacionview::calculaamortizacion() {
+   // Para hacer el cálculo de los plazos de cada amortizacion
+   // Hay que obtener diversos datos.
+   QDate f1cuota = normalizafecha(fecha1cuota->text());
+   int ncuotas = numcuotas->text().toInt();
+   QString periodicidadtxt = periodicidad->currentText();
+   table1->setNumRows(ncuotas);
+   double valcuota = valorcompra->text().toDouble() / ncuotas;
+   QString valcuotastr ;
+   valcuotastr.sprintf("%10.2f",valcuota);
+   for (int i = 0; i<ncuotas; i++) {
+      fprintf(stderr,"calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").ascii());
+      table1->setText(i,0,f1cuota.toString("dd/MM/yyyy"));
+      table1->setText(i,1,valcuotastr);
+      // Dependiendo de la periodicidad actualizamos la fecha.
+      if (periodicidadtxt == tr("Anual")) {
+         f1cuota = f1cuota.addYears(1);
+      } else if (periodicidadtxt == tr("Mensual")) {
+         f1cuota = f1cuota.addMonths(1);
+      } else if (periodicidadtxt == tr("Semestral")) {
+         f1cuota = f1cuota.addMonths(6);
+      } else if (periodicidadtxt == tr("Trimestral")) {
+         f1cuota = f1cuota.addMonths(3);
+      }// end if
+   }// end for
+}// end calculaamortizacion
+
+
 void amortizacionview::cambiofechacompra() {
   fechacompra->setText(normalizafecha(fechacompra->text()).toString("dd/MM/yyyy"));
 }// end cambiofechacompra
+
 
 void amortizacionview::cambiofecha1cuota() {
   fecha1cuota->setText(normalizafecha(fecha1cuota->text()).toString("dd/MM/yyyy"));
