@@ -8,6 +8,20 @@ $body = '
 
 <table border=0 cellspacing="0" class="news">
 <tr class="head">
+<td width=100>17/11/2004</td>
+<td><center><b>Finalizado Concurso de Iconos</b></center></td>
+</tr>
+<tr>
+<td colspan=2>Damos por concluido el concurso de icono y que tras la votación el ganador ha sido Raül. (Aunque con un margen muy muy estrecho !!!)<br>
+Enhorabuena!!!!!!!!!! 
+</td>
+</tr>
+</table>
+
+<br>
+
+<table border=0 cellspacing="0" class="news">
+<tr class="head">
 <td width=100>11/11/2004</td>
 <td><center><b>Reunión Junta Directiva domingo 21 de noviembre</b></center></td>
 </tr>
