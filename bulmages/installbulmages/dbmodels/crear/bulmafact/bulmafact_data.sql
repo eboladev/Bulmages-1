@@ -56,3 +56,6 @@ INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frece
 INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(2004, 2, '2323', '15/11/2004', '10/11/2004', 'Albarán nº 2323', 1);
 INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(2004, 3, '34', '23/11/2004', '23/11/2004', 'Albarán nº 34', 3);
 
+INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente) VALUES (1, '30/11/2004', 'Primer Contacto', '971 32 32 78', '12/12/2004', 'Sin comentarios', 1, 1);
+INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente) VALUES (2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', '13/12/2004', 'Sin comentarios', 1, 1);
+INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente) VALUES (3, '10/11/2004', 'Tercer Contacto', '971 29 06 29', '14/12/2004', 'Sin comentarios', 1, 2);
