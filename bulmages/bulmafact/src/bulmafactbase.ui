@@ -32,7 +32,7 @@
         <action name="ABudget"/>
         <action name="a_listBudgets"/>
         <separator/>
-        <action name="ventasNuevo_AlbarnAction"/>
+        <action name="a_newClientDelivNote"/>
         <action name="a_clientDelivNotesList"/>
         <separator/>
         <action name="AFacturar"/>
@@ -504,7 +504,7 @@
     </action>
     <action>
         <property name="name">
-            <cstring>ventasNuevo_AlbarnAction</cstring>
+            <cstring>a_newClientDelivNote</cstring>
         </property>
         <property name="text">
             <string>Nuevo Albarán</string>
@@ -667,6 +667,12 @@
         <receiver>bulmafactbase</receiver>
         <slot>listClientDelivNotes()</slot>
     </connection>
+    <connection>
+        <sender>a_newClientDelivNote</sender>
+        <signal>activated()</signal>
+        <receiver>bulmafactbase</receiver>
+        <slot>newClientDelivNote()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>fileNew()</slot>
@@ -697,6 +703,7 @@
     <slot>listBudgets()</slot>
     <slot>newClient()</slot>
     <slot>listClientDelivNotes()</slot>
+    <slot>newClientDelivNote()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

@@ -23,6 +23,7 @@
 #include "company.h"
 #include "stdio.h"
 #include "budget.h"
+#include "clientdelivnote.h"
 #include "providerslist.h"
 #include "provedit.h"
 #include "qobject.h"
@@ -135,10 +136,10 @@ void company::listClientDelivNotes() {
    m_clientDelivNotesList->setActiveWindow();
 }// end listbudgets
 
-/*void company::newClientDelivNote() {
-   Budget *bud = new Budget(this,m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
-   bud->show();
-}// end bud */
+void company::newClientDelivNote() {
+   ClientDelivNote *cDelivNote = new ClientDelivNote(this,m_pWorkspace,theApp->translate("Edicion de Albaranes", "company"));
+   cDelivNote->show();
+}// end newClientDelivNote
 
 void company::refreshClientDelivNotes() {
    m_clientDelivNotesList->inicializa();

@@ -42,7 +42,7 @@ CREATE TABLE albaran (
 */
 #include "clientdelivnoteslist.h"
 #include "company.h"
-// #include "clientdelivnote.h"
+#include "clientdelivnote.h"
 #include <qtable.h>
 #include <qmessagebox.h>
 
@@ -124,6 +124,10 @@ void ClientDelivNotesList::inicializa() {
 void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
    m_idclidelivnote = m_list->text(a,COL_NUMALBARAN);
    if (m_modo ==0 && m_idclidelivnote != "") {
+		fprintf(stderr,"Iniciamos el boton_crear\n");
+		ClientDelivNote *cDelivNote = new ClientDelivNote(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+		cDelivNote->chargeClientDelivNote(m_idclidelivnote);
+		cDelivNote->show();
 /*      Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albaranes", "company"));
       bud->chargeClientDelivNote(m_idclidelivnote);
       bud->show();*/
@@ -146,9 +150,9 @@ void ClientDelivNotesList::s_contextMenu(int , int , const QPoint &) {
 
 
 void ClientDelivNotesList::s_newClientDelivNote() {
-   fprintf(stderr,"Iniciamos el boton_crear\n");
-   /* Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
-   bud->show(); */
+	fprintf(stderr,"Iniciamos el boton_crear\n");
+	ClientDelivNote *cDelivNote = new ClientDelivNote(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+ 	cDelivNote->show();
 }// end boton_crear
 
 

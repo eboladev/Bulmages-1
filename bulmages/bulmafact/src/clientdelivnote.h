@@ -25,7 +25,7 @@
 #include "clientdelivnotebase.h"
 #include "postgresiface2.h"
 
-/** @author Tomeu Borrás Riera */
+/** @author Alvaro de Miguel */
 class company;
 
 
@@ -51,8 +51,6 @@ public:
 	 
 private:
 	int saveClientDelivNote();
-	int insertfpClientDelivNote();
-	int updatefpClientDelivNote();
 	int saveClientDelivNoteLines();
 	int saveClientDelivNoteDiscountLines();
 	int insertClientDelivNoteLine(int);

@@ -65,6 +65,7 @@ public:
 	void listClientDelivNotes();
    void setWorkspace(QWidget *qw) {m_pWorkspace=qw;createMainWindows();}
    void newBudget();
+	void newClientDelivNote();
 	void newOrder();
    void createMainWindows();
    void refreshOrders();

@@ -558,9 +558,11 @@ CREATE TABLE nofactura (
 -- Data
 -- Albarà a clients.
 CREATE TABLE albaran (
-   numalbaran integer PRIMARY KEY,
+   idalbaran serial PRIMARY KEY,
+   numalbaran integer UNIQUE,
    fechaalbaran date,
    idusuario integer,
+   comentalbaran character varying(3000),
 
 --   idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
    idcliente integer REFERENCES cliente(idcliente),
@@ -577,11 +579,11 @@ CREATE TABLE albaran (
 -- Proporcio: Percentatge a descomptar.
 -- Descompte d'albarà a clients.
 CREATE TABLE dalbaran (
-   numdalbaran integer PRIMARY KEY,
+   numdalbaran serial PRIMARY KEY,
    conceptdalbaran character varying(500),
    propordalbaran float,
    
-   numalbaran integer REFERENCES albaran(numalbaran)
+   idalbaran integer REFERENCES albaran(idalbaran)
 );
 
 
@@ -592,13 +594,13 @@ CREATE TABLE dalbaran (
 -- Descompte
 -- Línia d'albarà a clients.
 CREATE TABLE lalbaran (
-   numlalbaran integer PRIMARY KEY,
+   numlalbaran serial PRIMARY KEY,
    desclalbaran character varying(100),
    cantlalbaran float,
    pvplalbaran float,
    descontlalbaran float,
    
-   numalbaran integer REFERENCES albaran(numalbaran),
+   idalbaran integer REFERENCES albaran(idalbaran),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
 
@@ -744,7 +746,7 @@ CREATE TABLE afp (
 
 CREATE TABLE albpre (
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
-   numalbaran integer REFERENCES albaran(numalbaran)
+   idalbaran integer REFERENCES albaran(idalbaran)
 );
 
 CREATE TABLE meta (

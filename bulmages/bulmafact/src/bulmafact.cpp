@@ -167,8 +167,13 @@ void bulmafact::aboutQt()
     QMessageBox::aboutQt( this, tr("Qt Application Example") );
 }
 
+
 void bulmafact::newBudget() {
    m_company.newBudget();
 }// end provideraction
 
+
+void bulmafact::newClientDelivNote() {
+   m_company.newClientDelivNote();
+}// end provideraction
 

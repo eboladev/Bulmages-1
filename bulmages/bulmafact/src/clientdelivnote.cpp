@@ -140,7 +140,7 @@ void ClientDelivNote::inicialize() {
 
 	
 	
-// Inicializamos la tabla de lineas de presupuesto
+// Inicializamos la tabla de lineas de albarán
 	m_list->setNumRows( 0 );
 	m_list->setNumCols( 0 );
 	m_list->setSelectionMode( QTable::SingleRow );
@@ -185,7 +185,7 @@ void ClientDelivNote::inicialize() {
 	m_list->setPaletteBackgroundColor("#AFFAFA");   
 	m_list->setReadOnly(FALSE);
 	
-// Inicializamos la tabla de descuentos del presupuesto
+// Inicializamos la tabla de descuentos del albarán
 	m_listDiscounts->setNumRows( 0 );
 	m_listDiscounts->setNumCols( 0 );
 	m_listDiscounts->setSelectionMode( QTable::SingleRow );
@@ -222,25 +222,25 @@ void ClientDelivNote::inicialize() {
 }// end inicialize
 
 
-// Esta función carga un presupuesto.
-void ClientDelivNote::chargeClientDelivNote(QString idbudget) {
-	m_idalbaran = idbudget;
+// Esta función carga un albarán.
+void ClientDelivNote::chargeClientDelivNote(QString iddeliveryNote) {
+	m_idalbaran = iddeliveryNote;
 	inicialize();
 	
-	QString query = "SELECT * FROM presupuesto LEFT JOIN cliente ON cliente.idcliente = presupuesto.idcliente WHERE numalbaran="+idbudget;
+	QString query = "SELECT * FROM albaran LEFT JOIN cliente ON cliente.idcliente = albaran.idcliente WHERE idalbaran="+iddeliveryNote;
 	companyact->begin();
-	cursor2 * cur= companyact->cargacursor(query, "querypresupuesto");
+	cursor2 * cur= companyact->cargacursor(query, "queryalbaran");
 	companyact->commit();
 	if (!cur->eof()) {
 		m_idclient = cur->valor("idcliente");	
-		m_numalbaran->setText(cur->valor("numpresupuesto"));
-		m_fpresupuesto->setText(cur->valor("fpresupuesto"));
-		m_comentpresupuesto->setText(cur->valor("comentpresupuesto"));
+		m_numalbaran->setText(cur->valor("numalbaran"));
+		m_fechaalbaran->setText(cur->valor("fechaalbaran"));
+		m_comentalbaran->setText(cur->valor("comentalbaran"));
 		m_nomclient->setText(cur->valor("nomcliente"));
 		m_cifclient->setText(cur->valor("cifcliente"));
    
-		chargeClientDelivNoteLines(idbudget);
-		chargeClientDelivNoteDiscounts(idbudget);
+		chargeClientDelivNoteLines(iddeliveryNote);
+		chargeClientDelivNoteDiscounts(iddeliveryNote);
 		calculateImports();
     }// end if
      delete cur;   
@@ -270,10 +270,10 @@ void ClientDelivNote::cargarcomboformapago(QString idformapago) {
  	} 
 } //end cargarcombodformapago
 
-// Carga líneas de presupuesto
-void ClientDelivNote::chargeClientDelivNoteLines(QString idbudget) {
+// Carga líneas de albarán
+void ClientDelivNote::chargeClientDelivNoteLines(QString iddeliveryNote) {
 	companyact->begin();
-	cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaran, articulo, tipo_iva WHERE numalbaran="+idbudget+" AND articulo.idarticulo=lalbaran.idarticulo and articulo.idtipo_iva = tipo_iva.idtipo_iva","unquery");
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaran, articulo, tipo_iva WHERE idalbaran="+iddeliveryNote+" AND articulo.idarticulo=lalbaran.idarticulo and articulo.idtipo_iva = tipo_iva.idtipo_iva","unquery");
 	companyact->commit();
 	int i=0;
 	while (!cur->eof()) {
@@ -296,10 +296,10 @@ void ClientDelivNote::chargeClientDelivNoteLines(QString idbudget) {
 }// end chargeClientDelivNoteLines
 
 
-// Carga líneas descuentos presupuesto
-void ClientDelivNote::chargeClientDelivNoteDiscounts(QString idbudget) {
+// Carga líneas descuentos albarán
+void ClientDelivNote::chargeClientDelivNoteDiscounts(QString iddeliveryNote) {
 	companyact->begin();
-	cursor2 * cur= companyact->cargacursor("SELECT * FROM dalbaran WHERE numalbaran="+idbudget,"unquery");
+	cursor2 * cur= companyact->cargacursor("SELECT * FROM dalbaran WHERE idalbaran="+iddeliveryNote,"unquery");
 	companyact->commit();
 	int i=0;
 	while (!cur->eof()) {
@@ -337,7 +337,7 @@ void ClientDelivNote::s_searchClient() {
 
 
 void ClientDelivNote::s_delivNoteDateLostFocus() {
-	m_fpresupuesto->setText(normalizafecha(m_fpresupuesto->text()).toString("dd/MM/yyyy"));
+	m_fechaalbaran->setText(normalizafecha(m_fechaalbaran->text()).toString("dd/MM/yyyy"));
 }
 
 
@@ -351,15 +351,15 @@ void ClientDelivNote::s_newClientDelivNoteLine() {
 
 void ClientDelivNote::s_removeClientDelivNote() {
 	fprintf(stderr,"Iniciamos el boton_borrar\n");
-	if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "Sí", "No") == 0) {
+	if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este albarán", "Sí", "No") == 0) {
 		companyact->begin();
-		QString SQLQuery = "DELETE FROM lalbaran WHERE numalbaran ="+m_idalbaran;
+		QString SQLQuery = "DELETE FROM lalbaran WHERE idalbaran ="+m_idalbaran;
 		if (companyact->ejecuta(SQLQuery)==0){
-			QString SQLQuery = "DELETE FROM dalbaran WHERE numalbaran ="+m_idalbaran;
+			QString SQLQuery = "DELETE FROM dalbaran WHERE idalbaran ="+m_idalbaran;
 				if (companyact->ejecuta(SQLQuery)==0){
-					QString SQLQuery = "DELETE FROM prfp WHERE numalbaran ="+m_idalbaran;
+					QString SQLQuery = "DELETE FROM prfp WHERE idalbaran ="+m_idalbaran;
 					if (companyact->ejecuta(SQLQuery)==0){
-						QString SQLQuery = "DELETE FROM presupuesto WHERE numalbaran ="+m_idalbaran;
+						QString SQLQuery = "DELETE FROM albaran WHERE idalbaran ="+m_idalbaran;
 						if (companyact->ejecuta(SQLQuery)==0){
 							companyact->commit();
 							close();
@@ -503,21 +503,12 @@ void ClientDelivNote::s_saveClientDelivNote() {
 	companyact->begin();
 	if (saveClientDelivNote()==0) {
 		if (m_idalbaran == "0") {
-			cursor2 * cur4= companyact->cargacursor("SELECT max(numalbaran) FROM presupuesto","unquery1");
+			cursor2 * cur4= companyact->cargacursor("SELECT max(idalbaran) FROM albaran","unquery1");
 			if (!cur4->eof()) {
 				m_idalbaran=cur4->valor(0);
-				if (insertfpClientDelivNote()!=0) {
-					companyact->rollback();
-					return;
-				}
 			}
 			delete cur4;
-		} else {
-			if (updatefpClientDelivNote()!=0) {
-				companyact->rollback();
-				return;
-			}
-		 }
+		}
 		if (saveClientDelivNoteLines()==0 && saveClientDelivNoteDiscountLines()==0) {
 			companyact->commit();
 			m_initialValues = calculateValues();
@@ -536,22 +527,12 @@ void ClientDelivNote::s_accept() {
 	companyact->begin();
 	if (saveClientDelivNote()==0) {
 		if (m_idalbaran == "0") {
-			cursor2 * cur4= companyact->cargacursor("SELECT max(numalbaran) FROM presupuesto","unquery1");
+			cursor2 * cur4= companyact->cargacursor("SELECT max(idalbaran) FROM albaran","unquery1");
 			if (!cur4->eof()) {
 				m_idalbaran=cur4->valor(0);
-				if (insertfpClientDelivNote()!=0) {
-					companyact->rollback();
-					return;
-				}
 			}
 			delete cur4;
-		} else {
-			if (updatefpClientDelivNote()!=0) {
-				companyact->rollback();
-				return;
-			}
 		}
-		 
 		if (saveClientDelivNoteLines()==0 && saveClientDelivNoteDiscountLines()==0) {
 			companyact->commit();
 			m_initialValues = calculateValues();
@@ -569,39 +550,21 @@ int ClientDelivNote::saveClientDelivNote() {
 	QString SQLQuery;
 	
 	if (m_idalbaran != "0") {
-		SQLQuery = "UPDATE presupuesto  SET numpresupuesto="+m_numalbaran->text();
-      SQLQuery += " , fpresupuesto='"+ m_fpresupuesto->text()+"'";
-      SQLQuery += " , comentpresupuesto='"+m_comentpresupuesto->text()+"'";
+		SQLQuery = "UPDATE albaran SET numalbaran="+m_numalbaran->text();
+      SQLQuery += " , fechaalbaran='"+ m_fechaalbaran->text()+"'";
+      SQLQuery += " , comentalbaran='"+m_comentalbaran->text()+"'";
 		SQLQuery += " , idcliente="+m_idclient;
-      SQLQuery += " WHERE numalbaran ="+m_idalbaran;
+		SQLQuery += " , numalbaran="+m_numalbaran->text();
+      SQLQuery += " WHERE idalbaran ="+m_idalbaran;
 	} else {
-		SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, comentpresupuesto, idcliente)";
+		SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran, idcliente)";
 		SQLQuery += " VALUES (";
 		SQLQuery += m_numalbaran->text();
-		SQLQuery += " , '"+m_fpresupuesto->text()+"'";
-      SQLQuery += " , '"+m_comentpresupuesto->text()+"'";
+		SQLQuery += " , '"+m_fechaalbaran->text()+"'";
+      SQLQuery += " , '"+m_comentalbaran->text()+"'";
 		SQLQuery += " , "+m_idclient;
       SQLQuery += " ) ";
 	}
-	return companyact->ejecuta(SQLQuery);
-} //end saveClientDelivNote
-
-
-int ClientDelivNote::insertfpClientDelivNote() {
-	QString SQLQuery;
-	SQLQuery = "INSERT INTO prfp (numalbaran, idforma_pago)";
-	SQLQuery += " VALUES (";
-	SQLQuery += m_idalbaran;
-	SQLQuery += " , "+m_cursorcombo->valor("idforma_pago",m_comboformapago->currentItem());
-	SQLQuery += " ) ";
-	return companyact->ejecuta(SQLQuery);
-} //end insertfpClientDelivNote
-
-
-int ClientDelivNote::updatefpClientDelivNote() {
-	QString SQLQuery;
-	SQLQuery = "UPDATE prfp SET idforma_pago="+m_cursorcombo->valor("idforma_pago",m_comboformapago->currentItem());
-	SQLQuery += " WHERE numalbaran ="+m_idalbaran;
 	return companyact->ejecuta(SQLQuery);
 } //end saveClientDelivNote
 
@@ -658,14 +621,14 @@ int ClientDelivNote::updateClientDelivNoteLine(int i) {
 	SQLQuery += " , pvplalbaran="+m_list->text(i,COL_PVPLALBARAN);
 	SQLQuery += " , descontlalbaran="+m_list->text(i,COL_DESCUENTOLALBARAN);
 	SQLQuery += " , idarticulo="+m_list->text(i,COL_IDARTICULO);
-	SQLQuery += " WHERE numalbaran ="+m_idalbaran+" AND numlalbaran="+m_list->text(i,COL_NUMLALBARAN);
+	SQLQuery += " WHERE idalbaran ="+m_idalbaran+" AND numlalbaran="+m_list->text(i,COL_NUMLALBARAN);
 	return companyact->ejecuta(SQLQuery);
 } //end updateClientDelivNoteLine
 
 
 int ClientDelivNote::insertClientDelivNoteLine(int i) {
 	QString SQLQuery ="";
-	SQLQuery = "INSERT INTO lalbaran (desclalbaran, cantlalbaran, pvplalbaran, desclalbaran, numalbaran, idarticulo)";
+	SQLQuery = "INSERT INTO lalbaran (desclalbaran, cantlalbaran, pvplalbaran, desclalbaran, idalbaran, idarticulo)";
 	SQLQuery += " VALUES (";
 	SQLQuery += "'"+m_list->text(i,COL_DESCLALBARAN)+"'";
 	SQLQuery += " , "+m_list->text(i,COL_CANTLALBARAN);
@@ -687,7 +650,7 @@ int ClientDelivNote::deleteClientDelivNoteLine(int line) {
 int ClientDelivNote::updateClientDelivNoteDiscountLine(int i) {
 	QString SQLQuery = "UPDATE dalbaran SET conceptdalbaran='"+m_listDiscounts->text(i,COL_DESCUENTO_CONCEPTDALBARAN)+"'";
 	SQLQuery += " , proporciondalbaran="+ m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDALBARAN);
-	SQLQuery += " WHERE numalbaran ="+m_idalbaran+" AND numdalbaran="+m_listDiscounts->text(i,COL_DESCUENTO_NUMDALBARAN);
+	SQLQuery += " WHERE idalbaran ="+m_idalbaran+" AND numdalbaran="+m_listDiscounts->text(i,COL_DESCUENTO_NUMDALBARAN);
 	return companyact->ejecuta(SQLQuery);
 } //end updateClientDelivNoteDiscountLine
 
@@ -698,7 +661,7 @@ int ClientDelivNote::insertClientDelivNoteDiscountLine(int i) {
 	SQLQuery += " VALUES (";
 	SQLQuery += "'"+m_listDiscounts->text(i,COL_DESCUENTO_CONCEPTDALBARAN)+"'";
 	SQLQuery += " , "+m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDALBARAN);
-	SQLQuery += " , "+m_idalbaran;
+	SQLQuery += " , "+m_numalbaran->text();
 	SQLQuery += " ) ";
 	return companyact->ejecuta(SQLQuery);
 } //end insertClientDelivNoteDiscountLine

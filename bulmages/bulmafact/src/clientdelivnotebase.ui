@@ -212,7 +212,7 @@
                                     </widget>
                                     <widget class="QLineEdit">
                                         <property name="name">
-                                            <cstring>m_fpresupuesto</cstring>
+                                            <cstring>m_fechaalbaran</cstring>
                                         </property>
                                     </widget>
                                 </hbox>
@@ -359,7 +359,7 @@
                             </widget>
                             <widget class="QTextEdit">
                                 <property name="name">
-                                    <cstring>m_comentpresupuesto</cstring>
+                                    <cstring>m_comentalbaran</cstring>
                                 </property>
                             </widget>
                         </vbox>
@@ -760,7 +760,7 @@
 </images>
 <connections>
     <connection>
-        <sender>m_fpresupuesto</sender>
+        <sender>m_fechaalbaran</sender>
         <signal>lostFocus()</signal>
         <receiver>ClientDelivNoteBase</receiver>
         <slot>s_clientDelivNoteDateLostFocus()</slot>

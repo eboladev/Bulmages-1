@@ -34,6 +34,7 @@ public slots:
     virtual void listorders();
     virtual void listdelivnotes();
     virtual void newBudget();
+	 virtual void newClientDelivNote();
     virtual void listBudgets();
 	 virtual void newOrder();
 	 virtual void listClientDelivNotes();
