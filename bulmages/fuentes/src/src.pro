@@ -136,7 +136,8 @@ FORMS += comun/uiselector.ui \
 TRANSLATIONS += contabilidad/bulmages_es.ts \
                 contabilidad/bulmages_ca.ts \
                 contabilidad/bulmages_en.ts \
-                contabilidad/bulmages_fr.ts 
+                contabilidad/bulmages_fr.ts \
+		contabilidad/bulmages_de.ts
 IMAGES += images/kate.png \
           images/kfind.png \
           images/clock.png \
@@ -319,7 +320,6 @@ HEADERS += comun/abreempresaview.h \
            contabilidad/amortizacionview.h \
            contabilidad/bmodelo347.h \
            contabilidad/amortizacionesview.h \
-           contabilidad/bbloqfecha.h \
            contabilidad/adocumental.h \
            comun/log.h \
            comun/selectccosteview.h \
@@ -378,7 +378,6 @@ SOURCES += main.cpp \
            contabilidad/amortizacionview.cpp \
            contabilidad/bmodelo347.cpp \
            contabilidad/amortizacionesview.cpp \
-           contabilidad/bbloqfecha.cpp \
            contabilidad/adocumental.cpp \
            comun/log.cpp \
            comun/selectccosteview.cpp \

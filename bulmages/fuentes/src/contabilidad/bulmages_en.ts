@@ -2,70 +2,19 @@
 <context>
     <name>BConfiguracion</name>
     <message>
-        <source>Atenci&#xf3;n</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Esta Base de Datos no puede ser eliminada.
-<byte value="xd"/> Es la plantilla para generar nuevas empresas.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No Est&#xe1; permitido eliminar la base 
-<byte value="xd"/> de datos actualmente abierta.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Peligro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nuevo Ejercicio</source>
-        <translation type="unfinished">New year</translation>
-    </message>
-    <message>
-        <source>&#xbf;Desea continuar usando la misma base de datos? - Haga clic en SI 
-
-(Para iniciar el nuevo ejercico en otra base de datos - Haga clic en Otra)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No se ha podido crear un nuevo ejercicio. 
-<byte value="xd"/> Posiblemente hay alguna conexi&#xf3;n abierta  
-<byte value="xd"/>.  Empresa: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No se puede crear un nuevo ejercicio. 
-<byte value="xd"/> El ejercicio que pretende crear ya existe.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo Usuario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>S - Acceso Permitido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>N - Acceso Denegado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>V - Acceso Restringido</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">New year</translation>
     </message>
 </context>
 <context>
     <name>BModContabilidad</name>
     <message>
         <source>Cerrar...</source>
-        <translation type="unfinished">Close...</translation>
+        <translation type="obsolete">Close...</translation>
     </message>
     <message>
         <source>Realmente deseas Salir?</source>
-        <translation type="unfinished">Are you soure?</translation>
+        <translation type="obsolete">Are you soure?</translation>
     </message>
 </context>
 <context>
@@ -80,11 +29,11 @@
     </message>
     <message>
         <source>Centro de Coste</source>
-        <translation type="unfinished">Cost Center</translation>
+        <translation type="obsolete">Cost Center</translation>
     </message>
     <message>
         <source>Canal</source>
-        <translation type="unfinished">Chanel</translation>
+        <translation type="obsolete">Chanel</translation>
     </message>
     <message>
         <source>Nivel de Cuentas</source>
@@ -143,57 +92,21 @@
         <source>Formato</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Propietario</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BalancePrintView</name>
+    <message>
+        <source>Balance</source>
+        <comment>Informe: </comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BbloqFecha</name>
-    <message>
-        <source>Diciembre </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Noviembre </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Octubre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Septiembre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Agosto    </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Julio     </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Junio     </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mayo      </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Abril     </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Marzo     </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Febrero   </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enero     </source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Bulmages01</name>
@@ -1021,6 +934,22 @@ Informacion sobre los autores de la aplicacion</source>
         <source>Ejercicios</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Recalcular Saldos Iniciales</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Recalcular Saldos Iniciales</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Archivo Documental</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Archivo Documental</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DiarioPrintDlg</name>
@@ -1034,11 +963,11 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Centro de Coste</source>
-        <translation type="unfinished">Amount Center</translation>
+        <translation type="obsolete">Amount Center</translation>
     </message>
     <message>
         <source>Canal</source>
-        <translation type="unfinished">Channel</translation>
+        <translation type="obsolete">Channel</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
@@ -1086,6 +1015,14 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
 </context>
 <context>
+    <name>DiarioPrintView</name>
+    <message>
+        <source>Libro Diario</source>
+        <comment>Informe: </comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ExtractoPrintDlg</name>
     <message encoding="UTF-8">
         <source>Impresión del Extracto</source>
@@ -1097,11 +1034,11 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Centro de Coste</source>
-        <translation type="unfinished">Amounth Center</translation>
+        <translation type="obsolete">Amounth Center</translation>
     </message>
     <message>
         <source>Canal</source>
-        <translation type="unfinished">Channel</translation>
+        <translation type="obsolete">Channel</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
@@ -1139,6 +1076,57 @@ Informacion sobre los autores de la aplicacion</source>
     <message>
         <source>Imprimir</source>
         <translation type="unfinished">Print</translation>
+    </message>
+    <message>
+        <source>Propietario</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ExtractoPrintView</name>
+    <message>
+        <source>Extracto de Cuentas</source>
+        <comment>Informe: </comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <source>Formulario 300</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aviso: El n&#xfa;mero de cuenta bancario introducido
+no se corresponde con un CCC correcto.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generar de todas formas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Volver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lo siento, no encuentro el formulario original en pdf.
+Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
+/usr/share/bulmages/formularios/ o en
+~/.bulmages/formularios/.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aceptar</source>
+        <translation type="unfinished">Accept</translation>
+    </message>
+    <message>
+        <source>Creando formulario..</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancelar</source>
+        <translation type="unfinished">Cancel</translation>
     </message>
 </context>
 <context>
@@ -1275,14 +1263,6 @@ Informacion sobre los autores de la aplicacion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>BULMAGES</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>v 0.3.9</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Violando a Segmento</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1290,485 +1270,12 @@ Informacion sobre los autores de la aplicacion</source>
         <source>Crackeando BulmaG&#xe9;s</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>UIAlbaVenta</name>
     <message>
-        <source>Abaran de Venta</source>
+        <source>v 0.4.3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Albaranes del Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Contabilizar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cerrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Totales </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recargo Finan.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>% Dto. P.P.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Portes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Total Albarán (€)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Base IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>% IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imp. IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>pushButton27</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Opciones</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lineas Albaran</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unidades</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Precio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Descuento</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Importe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Insertar Linea</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Albaran</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Orden</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mantenimiento Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Linea</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Primero</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Posterior</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Último</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Anterior</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>ALBARÁN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cabecera Albaran Venta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Almacen:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mantenimiento Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Factura:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Numero:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Agente:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>B</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Serie Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Forma Pago:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Dirección:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Población:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Provincia:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>NIF/CIF:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cod. Postal:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Observaciones Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UIPediVenta</name>
-    <message>
-        <source>Pedidos de Venta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cerrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pedidos del Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Traspasar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Totales </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recargo Finan.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>% Dto. P.P.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Portes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Base IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>% IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imp. IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>pushButton27</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Opciones</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Total Pedido (€)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cabecera Pedido Venta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Dirección:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Población:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Numero:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mantenimiento Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lineas Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Insertar Linea</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mantenimiento Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Linea</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Primero</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Posterior</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Último</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Anterior</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Orden</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unidades</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Precio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Descuento</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Importe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Uds. Servidas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>7</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>9</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>10</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UIalmacen</name>
-    <message>
-        <source>Modulo Almacen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tools</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Action</source>
+        <source>BULMAG&#xc9;S</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1792,307 +1299,14 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
 </context>
 <context>
-    <name>UIcompras</name>
-    <message>
-        <source>Modulo Compras</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tools</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Action</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>UIconfiguracion</name>
-    <message encoding="UTF-8">
-        <source>Configuración</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Utilidades</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Generalidades</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Català</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Castellano</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Français</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>English</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Idioma:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fuente:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Tamaño:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Muestra 0123...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nom Empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre de la empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Salir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Aplicar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Desacer</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Nuevo Ejercicio</source>
-        <translation type="unfinished">New year</translation>
-    </message>
-    <message>
-        <source>Crea un nuevo ejercicio contable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clonar Empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Crea una nueva empresa identica a otra existente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Crear Nueva Empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Crea una empresa nueva sin datos</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">New year</translation>
     </message>
     <message>
         <source>Borrar Empresa</source>
-        <translation type="unfinished">Erase company</translation>
-    </message>
-    <message>
-        <source>Borra por completo una empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copia de Seguridad
- (BACKUP)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guarda una copia de seguridad de una empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restaurar copia
- (RESTORE)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restaura la copia de seguridad de una empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Usuarios</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Datos Usuario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Apellido 1º:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Apellido 2º:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Login:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Password:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Duplicar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Privilegio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recurso</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>idprv</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Login Empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>prv1000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Apuntes Contables</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>prv1001</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>V</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Balance de Cuentas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>prv1002</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Extracto de Cuentas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>prv1003</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Diario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>prv1004</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Registro de IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>prv1005</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listados</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>prv1006</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Amortizaciones</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>prv1007</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Substituir Cuentas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>prv1008</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Plan Contable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>prv1009</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lista de Usuarios</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>idusuario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Contabilidad</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Facturación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Almacenes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Otros</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Erase company</translation>
     </message>
 </context>
 <context>
@@ -2146,44 +1360,6 @@ Informacion sobre los autores de la aplicacion</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
-<context>
-    <name>UInominas</name>
-    <message>
-        <source>Modulo Nominas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Toolbar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Action</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>UIproduccion</name>
-    <message>
-        <source>Modulo Produccion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Toolbar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Action</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
 <context encoding="UTF-8">
     <name>UIselector</name>
     <message>
@@ -2232,169 +1408,6 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
 </context>
 <context>
-    <name>UIventas</name>
-    <message>
-        <source>Modulo Ventas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Archivos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Ventas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Facturacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Listados</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Herramientas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Modulos BulmaGes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A&amp;yuda</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tools</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Articulos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Presupuestos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pedidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Albaranes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Series de Documentos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cerrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Facturacion Automatica</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ver Factura...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado de Pedidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pendientes de Traspasar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado de Albaranes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pendientes de Entregar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado de Facturas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado de Tarifas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado de Ofertas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Garantias</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Contratos Mantenimiento</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Selector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Acerca de...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ayuda</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Calculadora</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Agenda</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Contabilidad</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Compras</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Configuración</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Producción</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>UIvisorEmpresas</name>
     <message>
         <source>Seleciona Empresa</source>
@@ -2433,7 +1446,7 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message encoding="UTF-8">
         <source>Versión 0.3.5</source>
-        <translation type="unfinished">Version 0.3.5</translation>
+        <translation type="obsolete">Version 0.3.5</translation>
     </message>
     <message>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Contabilidad para Linux&lt;/b&gt;&lt;/p&gt;</source>
@@ -2446,15 +1459,6 @@ Informacion sobre los autores de la aplicacion</source>
     <message>
         <source>Soporte</source>
         <translation type="unfinished">Support</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot;font-size:-1pt;font-family:helvetica&quot; bgcolor=&quot;#FFFFFF&quot;&gt;
-&lt;p style=&quot;margin-top:14px&quot;&gt;&lt;span style=&quot;font-weight:600&quot;&gt;Entidades que dan soporte al programa:&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot;&gt;
-&lt;br /&gt;&lt;img src=/usr/share/bulmages/logopeq.png &gt;&lt;br /&gt;&lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt; &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;img src=/usr/share/bulmages/bulma_small.jpg width=300 &gt;&lt;br /&gt;&lt;a href=&quot;http://bulmalug.net&quot;&gt;http://bulmalug.net&lt;/a&gt;&lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;
-</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Licencia</source>
@@ -2813,14 +1817,36 @@ Public License instead of this License.
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
+        <source>Versión 0.4.3</source>
+        <translation type="unfinished">Version 0.4.3</translation>
+    </message>
+    <message encoding="UTF-8">
         <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot;font-size:-1pt;font-family:helvetica&quot; bgcolor=&quot;#FFFFFF&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot;margin-top:18px&quot;&gt;&lt;span style=&quot;font-weight:600&quot;&gt;Bulmages&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;margin-top:18px&quot;&gt;&lt;span style=&quot;font-weight:600&quot;&gt;BulmaGés&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot;&gt;&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;Programación&lt;/span&gt; &lt;br /&gt;Tomeu Borrás &lt;a href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt; &lt;br /&gt;
 Antoni Mirabete &lt;a href=&quot;mailto:amirabet@biada.org&quot;&gt;amirabet@biada.org&lt;/a&gt; &lt;br /&gt;
 
 Josep Burción &lt;a href=&quot;mailto:josep@burcion.com&quot;&gt;josep@burcion.com&lt;/a&gt; &lt;br /&gt;
 
-Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@regamallorca.com&lt;/a&gt; &lt;br /&gt;Celso Gonzalez &lt;a href=&quot;mailto:mitago@ono.com&quot;&gt;mitago@ono.com&lt;/a&gt; &lt;br /&gt;&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;Depuracion y manuales&lt;/span&gt; &lt;br /&gt;Cristina Marco &lt;a href=&quot;cmarco@conetxia.com&quot;&gt;cmarco@conetxia.com&lt;/a&gt; &lt;br /&gt;&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;WebMaster&lt;/span&gt;&lt;br&gt;Cristina Marco &lt;a href=&quot;cmarco@conetxia.com&quot;&gt;cmarco@conetxia.com&lt;/a&gt; &lt;br /&gt;&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;Lista de Correo&lt;/span&gt;&lt;br /&gt;Tomeu Borrás &lt;a href=&quot;tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;Asesoramiento&lt;/span&gt; &lt;br /&gt;Antoni Aloy &lt;a href=&quot;mailto:aloy@ctv.es&quot;&gt;aloy@ctv.es&lt;/a&gt;&lt;br /&gt;Mª Dolores Hernandez &lt;a href=&quot;mailto:mdhernandez@conetxia.com&quot;&gt;mdhernandez@conetxia.comt&lt;/a&gt;  &lt;br /&gt;Fco. Javier M. C. &lt;a href=&quot;mailto:fcojavmc@todo-redes.com&quot;&gt;fcojavmc@todo-redes.com&lt;/a&gt;&lt;/p&gt;
+Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@regamallorca.com&lt;/a&gt; &lt;br /&gt;Celso Gonzalez &lt;a href=&quot;mailto:mitago@ono.com&quot;&gt;mitago@ono.com&lt;/a&gt; &lt;br /&gt;
+
+Jean René Mèrou &lt;br /&gt;
+ Fco. Javier M.C. &lt;br /&gt;
+ Victor G. Marimón &lt;br /&gt;
+ Beatriu Romero &lt;br /&gt;
+ Ramón Navarro &lt;br /&gt;
+
+ &lt;br /&gt;
+&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;Depuracion y manuales&lt;/span&gt; &lt;br /&gt;Cristina Marco &lt;a href=&quot;cmarco@conetxia.com&quot;&gt;cmarco@conetxia.com&lt;/a&gt; &lt;br /&gt;&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;WebMaster&lt;/span&gt;&lt;br&gt;Cristina Marco &lt;a href=&quot;cmarco@conetxia.com&quot;&gt;cmarco@conetxia.com&lt;/a&gt; &lt;br /&gt;&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;Lista de Correo&lt;/span&gt;&lt;br /&gt;Tomeu Borrás &lt;a href=&quot;tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;Asesoramiento&lt;/span&gt; &lt;br /&gt;Antoni Aloy &lt;a href=&quot;mailto:aloy@ctv.es&quot;&gt;aloy@ctv.es&lt;/a&gt;&lt;br /&gt;Mª Dolores Hernandez &lt;a href=&quot;mailto:mdhernandez@conetxia.com&quot;&gt;mdhernandez@conetxia.comt&lt;/a&gt;  &lt;br /&gt;Fco. Javier M. C. &lt;a href=&quot;mailto:fcojavmc@todo-redes.com&quot;&gt;fcojavmc@todo-redes.com&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot;font-size:-1pt;font-family:helvetica&quot; bgcolor=&quot;#FFFFFF&quot;&gt;
+&lt;p style=&quot;margin-top:14px&quot;&gt;&lt;span style=&quot;font-weight:600&quot;&gt;Entidades que dan soporte al programa:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=/usr/share/bulmages/logopeq.png &gt;&lt;br /&gt;&lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt; &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;img src=/usr/share/bulmages/bulma_small.jpg width=300 &gt;&lt;br /&gt;&lt;a href=&quot;http://bulma.net&quot;&gt;http://bulma.net&lt;/a&gt;&lt;/p&gt;
 &lt;/body&gt;&lt;/html&gt;
 </source>
         <translation type="unfinished"></translation>
@@ -2890,6 +1916,80 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     </message>
 </context>
 <context>
+    <name>adocumental</name>
+    <message>
+        <source>COL_IDADOCUMENTAL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IDASIENTO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_DESCRIPCIONADOCUMENTAL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FECHAINTADOCUMENTAL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FECHAASADOCUMENTAL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_ARCHIVOADOCUMENTAL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_ORDENASIENTO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Punteos (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Agregar Documento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Elige el nombre de archivo</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>adocumentalbase</name>
+    <message>
+        <source>Archivo Documental</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>iadocumental</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>archivo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>idasiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comentarios</source>
+        <translation type="unfinished">Comments</translation>
+    </message>
+    <message>
+        <source>Aceptar</source>
+        <translation type="unfinished">Accept</translation>
+    </message>
+    <message>
+        <source>Cancelar</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+</context>
+<context>
     <name>ainteligentesdlg</name>
     <message>
         <source>Asientos Inteligentes</source>
@@ -2898,10 +1998,6 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     <message>
         <source>Apuntes</source>
         <translation type="unfinished">Accounts</translation>
-    </message>
-    <message>
-        <source>Registro IVA</source>
-        <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
         <source>Aplicación Automática</source>
@@ -2930,6 +2026,14 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     <message>
         <source>Cancelar</source>
         <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+        <source>Exportar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importar</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2995,55 +2099,47 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
         <translation type="unfinished">COST CENTER</translation>
     </message>
     <message>
-        <source>COL_IDIVAINTELIGENTE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>COL_IDAINTELIGENTEIVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>COL_IDBINTELIGENTEIVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>BASE IMP.</source>
-        <translation type="unfinished">BASE</translation>
+        <translation type="obsolete">BASE</translation>
     </message>
     <message>
         <source>IVA</source>
-        <translation type="unfinished">IVA</translation>
+        <translation type="obsolete">IVA</translation>
     </message>
     <message>
         <source>NUM. FACTURA</source>
-        <translation type="unfinished">FACT. NUMBER</translation>
-    </message>
-    <message>
-        <source>Col. Borrador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Registro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Regularizacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Plan 349</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">FACT. NUMBER</translation>
     </message>
     <message>
         <source>Num. Orden</source>
-        <translation type="unfinished">Ord. Num.</translation>
+        <translation type="obsolete">Ord. Num.</translation>
     </message>
     <message>
         <source>CIF Empresa</source>
-        <translation type="unfinished">CIF</translation>
+        <translation type="obsolete">CIF</translation>
     </message>
     <message>
         <source>Nuevo Asiento Inteligente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>AInteligente (*.xml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Guardar Asiento Inteligente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Elige el nombre de archivo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Asientos Inteligentes (*.xml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cargar Asientos Inteligentes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3525,6 +2621,14 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
         <source>Cerrar</source>
         <translation type="unfinished">Close</translation>
     </message>
+    <message>
+        <source>Exportar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>balancesprintdlg</name>
@@ -3573,6 +2677,26 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     </message>
     <message>
         <source>Nombre Balance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Balances (*.xml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Guardar Balance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Elige el nombre de archivo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Asientos Inteligentes (*.xml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cargar Asientos Inteligentes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4105,21 +3229,10 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     </message>
 </context>
 <context>
-    <name>empresa</name>
-    <message>
-        <source>Empresas (*.pgdump)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cargar Empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>emrpesa</name>
     <message>
         <source>Elige el fichero a cargar.</source>
-        <translation type="unfinished">Chooose file to load.</translation>
+        <translation type="obsolete">Chooose file to load.</translation>
     </message>
 </context>
 <context>
@@ -4309,14 +3422,6 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Centro de Coste</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Canal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Reset</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4369,14 +3474,6 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     </message>
     <message>
         <source>Apuntes con contrapartida:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Canales</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Centros de Coste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4610,18 +3707,6 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Registro de IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Desea Gestionar una entrada EXENTA de IVA en el registro?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Este Asiento no es de Compra ni Venta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Asiento de Apertura</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4638,10 +3723,6 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
 <context>
     <name>ivadlg</name>
     <message>
-        <source>Iva</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Datos Factura</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4650,16 +3731,8 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Base Imponible</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Num. Orden</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ord. Num.</translation>
     </message>
     <message>
         <source>Aceptar</source>
@@ -4682,23 +3755,138 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
         <translation type="unfinished">Name</translation>
     </message>
     <message>
-        <source>Cuenta Empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>CIF / NIF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cuenta de IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Importe IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Asiento:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Registro de Facturas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cuenta Cliente / Proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IVA</source>
+        <translation type="unfinished">IVA</translation>
+    </message>
+    <message>
+        <source>% IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BASE IMPONIBLE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TOTAL IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rectifica A:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha Factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total Base Imponible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cobros / Pagos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comentarios</source>
+        <translation type="unfinished">Comments</translation>
+    </message>
+</context>
+<context>
+    <name>ivaview</name>
+    <message>
+        <source>COL_IVA_IDIVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IVA_IDTIPOIVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cuenta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IVA_IDREGISTROIVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IVA_PORCENTAJETIPOIVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IDPREVCOBRO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FPREVISTAPREVCOBRO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FCOBROPREVCOBRO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IDCUENTA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CODCUENTA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NOMCUENTA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CANTIDADPREVISTAPREVCOBRO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CANTIDADPREVCOBRO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IDREGISTROIVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DOCPREVCOBRO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No existe cuenta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No existe una cuenta con el codigo proporcionado, desea crear una?.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4776,28 +3964,8 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Iva</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Iva 16%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Iva 7%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Iva 4%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Exento</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>IVA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">IVA</translation>
     </message>
     <message>
         <source>Total</source>
@@ -4805,10 +3973,6 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     </message>
     <message>
         <source>IVA Soportado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>0.00</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4888,6 +4052,85 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     </message>
     <message>
         <source>Exento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>NOMBRETIPOIVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IVASOPORTADO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BASESOPORTADO</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>mod300dlg</name>
+    <message>
+        <source>Modelo 300</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Periodo a declarar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancelar</source>
+        <translation type="unfinished">Cancel</translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>1º trimestre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>2º trimestre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>3º trimestre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>4º trimestre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Seleccione periodo de declaración</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vista Previa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cuenta a devolver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personalizada</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>En el banco</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1234</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0123456789</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generar borrador</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4999,42 +4242,22 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     <name>nuevaempresadlg</name>
     <message>
         <source>Nueva Empresa</source>
-        <translation type="unfinished">Create New Company</translation>
+        <translation type="obsolete">Create New Company</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished">Accept</translation>
+        <translation type="obsolete">Accept</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation type="unfinished">Cancel</translation>
-    </message>
-    <message>
-        <source>Datos Empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre de la empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ejercicio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Base de Datos</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Cancel</translation>
     </message>
 </context>
 <context>
     <name>postgresiface</name>
     <message>
-        <source>Error...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Aceptar</source>
-        <translation type="unfinished">Accept</translation>
+        <translation type="obsolete">Accept</translation>
     </message>
 </context>
 <context>
@@ -5127,6 +4350,58 @@ yyyy --&gt; Dígitos de cuenta.</source>
         <source>Modificar</source>
         <translation type="unfinished">Modifi</translation>
     </message>
+    <message>
+        <source>Datos Fiscales</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Tipo de vía:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Nombre de la vía:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Escalera:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Provincia:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piso:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Puerta:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C.P.:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CIF:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>País:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Municipio:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Número:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>regivaprintdlg</name>
@@ -5169,6 +4444,10 @@ yyyy --&gt; Dígitos de cuenta.</source>
     <message>
         <source>Imprimir</source>
         <translation type="unfinished">Print</translation>
+    </message>
+    <message>
+        <source>Postscript</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5244,15 +4523,19 @@ yyyy --&gt; Dígitos de cuenta.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Deseleccionar Todo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Seleccionar Todo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Cerrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S. Nada</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invertir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S. Todo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5263,15 +4546,19 @@ yyyy --&gt; Dígitos de cuenta.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Deseleccionar Todo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Seleccionar Todo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Cerrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invertir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S. Nada</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S. Todo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
