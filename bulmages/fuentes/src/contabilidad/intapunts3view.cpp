@@ -1041,7 +1041,7 @@ void intapunts3view::guardaborrador(int row) {
             conexionbase->commit();
         } else {
             // El borrador no existe, por lo que hay que hacer un insert
-            query = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES ("+rowtext+", "+concepto+", "+fecha+","+idcuenta+","+debe+","+haber+","+IDASIENTO+","+contrapartida+", "+idcanal+", "+idc_coste+")";
+            query = "INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES ("+rowtext+","+concepto+", "+fecha+","+idcuenta+","+debe+","+haber+","+IDASIENTO+","+contrapartida+","+idcanal+","+idc_coste+")";
             fprintf(stderr,"%s\n",query.latin1());
             conexionbase->begin();
             conexionbase->ejecuta(query);
