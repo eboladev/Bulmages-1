@@ -41,3 +41,8 @@ INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedi
 INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (310, ' ', 15, 3.2, '15/11/2004', 4, 1);
 INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (320, ' ', 10, 8.59, '10/11/2004', 4, 2);
 INSERT INTO lpedido (numlpedido, desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (330, ' ', 6, 6.15, '25/11/2004', 4, 3);
+
+INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro) VALUES(2004, 1, 123, '01/12/2004', '30/11/2004', 'Albarán nº 123');
+INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro) VALUES(2004, 2, 2323, '15/11/2004', '10/11/2004', 'Albarán nº 2323');
+INSERT INTO alb_pro (anoalb_pro, ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro) VALUES(2004, 3, 34, '23/11/2004', '23/11/2004', 'Albarán nº 34');
+

@@ -28,6 +28,7 @@
 #include "clientslist.h"
 #include "articleslist.h"
 #include "orderslist.h"
+#include "delivnoteslist.h"
 
 company::company(){
 //       inicializa(confpr->valor(CONF_METABASE).c_str());
@@ -57,6 +58,11 @@ void company::listarticles () {
 void company::listorders () {
    orderslist *m_orderlist = new orderslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
    m_orderlist->show();
+}
+
+void company::listdelivnotes () {
+   delivnoteslist *m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Hola mundo.","company"));
+   m_delivnoteslist->show();
 }
 
 void company::provideraction() {
