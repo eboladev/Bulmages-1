@@ -142,24 +142,6 @@ CREATE TABLE catalogo (
 );
 
 
---Numero: Número de divisió (clau artificial).
---Descripcio: Nom o descripció de la divisió.
---Contactes: Nom de persona o persones de contacte.
---Comentaris
---Telf: Telèfon.
---Fax: Fax.
---Email
-CREATE TABLE division (
-   iddivision serial PRIMARY KEY,
-   descdivision character varying(1000),
-   contactosdivisioon character varying(500),
-   comentdivision character varying(2000),
-   teldivision character varying(20),
-   faxdivision character varying(20),
-   maildivision character varying(100)
-);
-
-
 -- Los proveedores son los que nos suminstran articulos y/o servicios.
 -- COMPROVACIONS D'INTEGRITAT>Genèriques:
 -- 1 Article té 1 sol proveïdor principal.
@@ -197,8 +179,26 @@ CREATE TABLE proveedor (
    faxproveedor character varying(12),
    emailproveedor character varying(100),
    urlproveedor character varying(100),
-   clavewebproveedor character varying(100),
-   iddivision integer NOT NULL REFERENCES division(iddivision)
+   clavewebproveedor character varying(100)
+);
+
+
+--Numero: Número de divisió (clau artificial).
+--Descripcio: Nom o descripció de la divisió.
+--Contactes: Nom de persona o persones de contacte.
+--Comentaris
+--Telf: Telèfon.
+--Fax: Fax.
+--Email
+CREATE TABLE division (
+   iddivision serial PRIMARY KEY,
+   descdivision character varying(1000),
+   contactosdivisioon character varying(500),
+   comentdivision character varying(2000),
+   teldivision character varying(20),
+   faxdivision character varying(20),
+   maildivision character varying(100),
+   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor)
 );
 
 
@@ -342,6 +342,7 @@ CREATE TABLE alb_pro (
    comentalb_pro character varying(2000),
    
    idfra_pro integer REFERENCES fra_pro(idfra_pro)
+--   idalmacen integer REFERENCES almacen(idalmacen)
 );
 
 

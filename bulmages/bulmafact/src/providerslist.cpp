@@ -57,7 +57,6 @@ CREATE TABLE proveedor (
    emailproveedor character varying(100),
    urlproveedor character varying(100),
    clavewebproveedor character varying(100),
-   iddivision integer NOT NULL REFERENCES division(iddivision)
 );
 */
 
@@ -82,7 +81,6 @@ CREATE TABLE proveedor (
 #define COL_EMAILPROVEEDOR 12
 #define COL_URLPROVEEDOR 13
 #define COL_CLAVEWEBPROVEEDOR 14
-#define COL_IDDIVISION 15
 
 
 
@@ -119,7 +117,6 @@ void providerslist::inicializa() {
    m_list->horizontalHeader()->setLabel( COL_EMAILPROVEEDOR, tr("Correo Electrónico") );
    m_list->horizontalHeader()->setLabel( COL_URLPROVEEDOR, tr("Página Web") );
    m_list->horizontalHeader()->setLabel( COL_CLAVEWEBPROVEEDOR, tr("Clave propia web proveedor") );
-   m_list->horizontalHeader()->setLabel( COL_IDDIVISION, tr("Codigo División") );
    m_list->setColumnWidth(COL_IDPROVEEDOR,75);
    m_list->setColumnWidth(COL_NOMPROVEEDOR,300);
    m_list->setColumnWidth(COL_NOMALTPROVEEDOR,300);
@@ -135,8 +132,7 @@ void providerslist::inicializa() {
    m_list->setColumnWidth(COL_EMAILPROVEEDOR,300);
    m_list->setColumnWidth(COL_URLPROVEEDOR,300);
    m_list->setColumnWidth(COL_CLAVEWEBPROVEEDOR,300);
-   m_list->setColumnWidth(COL_IDDIVISION,75);
-      
+         
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).c_str());   
@@ -162,7 +158,6 @@ void providerslist::inicializa() {
          m_list->setText(i,COL_EMAILPROVEEDOR,cur->valor("emailproveedor"));
          m_list->setText(i,COL_URLPROVEEDOR,cur->valor("urlproveedor"));
          m_list->setText(i,COL_CLAVEWEBPROVEEDOR,cur->valor("clavewebproveedor"));
-         m_list->setText(i,COL_IDDIVISION,cur->valor("iddivision"));
          i++;
          cur->siguienteregistro();
     }// end while

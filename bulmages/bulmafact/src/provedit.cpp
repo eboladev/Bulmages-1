@@ -56,8 +56,7 @@ CREATE TABLE proveedor (
    faxproveedor character varying(12),
    emailproveedor character varying(100),
    urlproveedor character varying(100),
-   clavewebproveedor character varying(100),
-   iddivision integer NOT NULL REFERENCES division(iddivision)
+   clavewebproveedor character varying(100)
 );
 */
  
@@ -105,7 +104,7 @@ void provedit::chargeprovider(QString idprov) {
          m_emailproveedor->setText(cur->valor("emailproveedor"));
          m_urlproveedor->setText(cur->valor("urlproveedor"));
    //      m_clavewebproveedor->setText(cur->valor("clavewebproveedor"));
-         m_iddivision->setText(cur->valor("iddivision"));    
+  
       } else {
          idprovider="0";
       }// end if
@@ -133,7 +132,7 @@ void provedit::boton_nuevo() {
       m_emailproveedor->setText("");
       m_urlproveedor->setText("");
 //      m_clavewebproveedor->setText(cur->valor("clavewebproveedor"));
-      m_iddivision->setText("");    
+
 
 }// end boton_nuevo
 
@@ -162,7 +161,7 @@ void provedit::accept() {
       companyact->commit();
       close();
    } else {
-      QString SQLQuery = " INSERT INTO proveedor (nomproveedor, nomaltproveedor, cifproveedor, codicliproveedor, cbancproveedor, dirproveedor, poblproveedor, cpproveedor, telproveedor, faxproveedor, urlproveedor, emailproveedor, iddivision)";
+      QString SQLQuery = " INSERT INTO proveedor (nomproveedor, nomaltproveedor, cifproveedor, codicliproveedor, cbancproveedor, dirproveedor, poblproveedor, cpproveedor, telproveedor, faxproveedor, urlproveedor, emailproveedor)";
       SQLQuery += " VALUES (";
       SQLQuery += "'"+m_nomproveedor->text()+"'";
       SQLQuery += ",'"+m_nomaltproveedor->text()+"'";

@@ -1,9 +1,15 @@
 
-INSERT INTO division (descdivision) VALUES ('una division');
-INSERT INTO proveedor (iddivision, nomproveedor, cifproveedor, cpproveedor) VALUES (1,'Tomeu', '45678098D', '07008');
-INSERT INTO proveedor (iddivision, nomproveedor, cifproveedor, cpproveedor) VALUES (1,'Cristina', '45679998D', '07008');
-INSERT INTO proveedor (iddivision, nomproveedor, cifproveedor, cpproveedor) VALUES (1,'Marco Aurelio', '45668998D', '07008');
-INSERT INTO proveedor (iddivision, nomproveedor, cifproveedor, cpproveedor) VALUES (1,'Torrijas', '45678995D', '07008');
+INSERT INTO proveedor (nomproveedor, cifproveedor, cpproveedor) VALUES ('Tomeu', '45678098D', '07008');
+INSERT INTO proveedor (nomproveedor, cifproveedor, cpproveedor) VALUES ('Cristina', '45679998D', '07008');
+INSERT INTO proveedor (nomproveedor, cifproveedor, cpproveedor) VALUES ('Marco Aurelio', '45668998D', '07008');
+INSERT INTO proveedor (nomproveedor, cifproveedor, cpproveedor) VALUES ('Torrijas', '45678995D', '07008');
+
+INSERT INTO division (idproveedor, descdivision) VALUES (1, 'division 1 de mateu');
+INSERT INTO division (idproveedor, descdivision) VALUES (1, 'division 2 de mateu');
+INSERT INTO division (idproveedor, descdivision) VALUES (2, 'division 1 de cristina');
+INSERT INTO division (idproveedor, descdivision) VALUES (2, 'division 2 de cristina');
+INSERT INTO division (idproveedor, descdivision) VALUES (2, 'division 3 de cristina');
+INSERT INTO division (idproveedor, descdivision) VALUES (4, 'division 1 de Torrijas');
 
 
 INSERT INTO recargo (nomrecargo, tasarecargo) VALUES('Exento', 0);
