@@ -138,7 +138,6 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
          m_list->setText(i,COL_COMENTPROVEEDOR,cur->valor("comentproveedor"));
          m_list->setText(i,COL_DIRPROVEEDOR,cur->valor("dirproveedor"));
          m_list->setText(i,COL_POBLPROVEEDOR,cur->valor("poblproveedor"));
-         
          i++;
          cur->siguienteregistro();
        }// end while
