@@ -1,6 +1,57 @@
 #!/bin/bash
 
-mkdir /usr/share/bulmages
+if [ -e /etc/bulmages.conf ]; then
+#  Hacemos una actualizacion de las bases de datos.
+   su - postgres -c "echo -e \"\\pset tuples_only \n select nombredb from empresa;\" | psql metabd" > listdb.lst
+   for x in `tail +2 listdb.lst`
+   do
+      echo -e "Trataremos la base de datos $x"
+      echo -e "Hacemos copia de seguridad"
+      mkdir backup
+      su - postgres -c "pg_dump $x" > backup/$x.pgdump
+      for y in `ls dbmodels/rev-*.sql | sort`
+      do
+         echo -e "Evaluamos: " $y
+         if [ ! -e /usr/share/bulmages/$y ]; then
+	    su - postgres -c "psql $x "  < $y  2>> errores.txt >> errores.txt
+	    echo -e "Actualizamos la version $y"
+         fi
+      done
+      echo -e "-----------------\n"
+   done
+   cp /etc/bulmages.conf bulmages.conf.old
+
+   for j in `ls rev-bulmages*.conf | sort`
+   do
+      if [ ! -e /usr/share/bulmages/$j ]; then
+         echo -e "Aplicamos parche $j a bulmages.conf"
+	 cat $j >> /etc/bulmages.conf
+      fi
+   done
+   
+   # Presentamos los errores acaecidos
+   cat errores.txt | grep ERROR
+else
+
+
+# Hacemos una insercion inicial de las bases de datos.
+   mkdir /usr/share/bulmages
+   su - postgres -c "dropdb  bulmages" 2>> errores.txt > /dev/null
+   su - postgres -c "createdb bulmages" 2>> errores.txt > /dev/null
+   su - postgres -c "psql bulmages" < dbmodels/bulmages.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "dropdb bgplangcont" 2>> errores.txt > /dev/null
+   su - postgres -c "createdb bgplangcont" 2>> errores.txt > /dev/null
+   su - postgres -c "psql bgplangcont" < dbmodels/bgplangcont.pgdump 2>> errores.txt > /dev/null
+   su - postgres -c "dropdb metabd" 2>> errores.txt > /dev/null
+   su - postgres -c "createdb metabd" 2>> errores.txt > /dev/null
+   su - postgres -c "psql metabd" < dbmodels/metabd.pgdump 2>> errores.txt > /dev/null
+   cp bulmages.conf /etc
+
+   # Presentamos los errores acaecidos
+   cat errores.txt | grep ERROR
+fi
+
+# Copiamos todos los archivos de la nueva version a sus localizaciones normales.
 cp *.jpg /usr/share/bulmages
 cp *.png /usr/share/bulmages
 
@@ -8,8 +59,9 @@ cp bulmages /usr/local/bin
 cp cargaemp /usr/local/bin
 cp nuevaemp /usr/local/bin
 cp borraremp /usr/local/bin
-cp bulmages.conf /etc
 
+cp rev-* /usr/share/bulmages
+   
 cp -r dbmodels /usr/share/bulmages
 cp -r backgrounds /usr/share/bulmages
 cp -r ayuda /usr/share/bulmages
@@ -17,17 +69,4 @@ cp -r reports /usr/share/bulmages
 cp -r css /usr/share/bulmages
 cp -r icons /usr/share/bulmages
 cp -r traducciones /usr/share/bulmages
-
-su - postgres -c "dropdb  bulmages"
-su - postgres -c "createdb bulmages"
-su - postgres -c "psql bulmages < /usr/share/bulmages/dbmodels/bulmages.pgdump"
-
-su - postgres -c "dropdb bgplangcont"
-su - postgres -c "createdb bgplangcont"
-su - postgres -c "psql bgplangcont < /usr/share/bulmages/dbmodels/bgplangcont.pgdump"
-
-su - postgres -c "dropdb metabd"
-su - postgres -c "createdb metabd"
-su - postgres -c "psql metabd < /usr/share/bulmages/dbmodels/metabd.pgdump"
-
 
