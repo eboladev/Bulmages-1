@@ -449,8 +449,15 @@ int ivaview::buscaborradoriva(int idborrador) {
         m_listIva->setText(i,COL_IVA_IDIVA, cur->valor("idiva"));
         m_listIva->setText(i,COL_IVA_IDTIPOIVA, cur->valor("idtipoiva"));
         m_listIva->setText(i,COL_IVA_NOMBRETIPOIVA, cur->valor("nombretipoiva"));
-        double val = cur->valor("debe").toFloat() + cur->valor("haber").toFloat();
-        m_listIva->setText(i,COL_IVA_BASEIVA, QString::number(val));
+	if (cur->valor("debe") != "0") {
+		QString cadena;
+		cadena.sprintf("%2.2f", atof(cur->valor("debe").ascii()));
+	        m_listIva->setText(i,COL_IVA_BASEIVA, cadena);
+	} else {
+		QString cadena;
+		cadena.sprintf("%2.2f", atof(cur->valor("haber").ascii()));
+	        m_listIva->setText(i,COL_IVA_BASEIVA, cadena);
+	}// end if
         m_listIva->setText(i,COL_IVA_IDREGISTROIVA, cur->valor("idregistroiva"));
         m_listIva->setText(i,COL_IVA_CTAIVA, cur->valor("codigo"));
         m_listIva->setText(i,COL_IVA_PORCENTAJETIPOIVA, cur->valor("porcentajetipoiva"));

@@ -114,11 +114,27 @@ void cambiactaview::accept() {
 		query3 = query3 + " AND fecha <= '"+ffinal+"'";
 	}// end if
 	
+	// Modificamos los registros de IVA
+	QString query4 = "UPDATE registroiva SET contrapartida = id_cuenta('"+destino+"') WHERE contrapartida = id_cuenta('"+origen+"')";
+	if (ainicial != "") {
+		query4 = query4 + " AND idborrador IN (SELECT idborrador FROM borrador,asiento WHERE ordenasiento >= "+ainicial+" AND borrador.idasiento = asiento.idasiento)";
+	}// end if
+	if (afinal != "") {
+		query4 = query4 + " AND idborrador IN (SELECT idborrador FROM borrador,asiento WHERE ordenasiento <= "+afinal+" AND borrador.idasiento = asiento.idasiento)";
+	}// end if
+	if (finicial != "") {
+		query4 = query4 + " AND ffactura >= '"+finicial+"'";
+	}// end if
+	if (ffinal != "") {
+		query4 = query4 + " AND ffactura <= '"+ffinal+"'";
+	}// end if
+	
 	CONEXIONBASE->begin();
 	CONEXIONBASE->ejecuta(query);
 	CONEXIONBASE->ejecuta(query1);
 	CONEXIONBASE->ejecuta(query2);
 	CONEXIONBASE->ejecuta(query3);
+	CONEXIONBASE->ejecuta(query4);
 	CONEXIONBASE->commit();
 	
 	done(1);
