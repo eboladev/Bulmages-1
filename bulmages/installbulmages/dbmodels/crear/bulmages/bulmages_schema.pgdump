@@ -277,7 +277,6 @@ CREATE TABLE registroiva (
 -- fprevistaprevcobro        Fecha en que se prevee el cobro / pago.
 -- fcobroprevcobro           Fecha en que se ha realizado el cobro / pago.
 -- idregistroiva             Registro de IVA con el que se corresponde, o factura con la que se corresponde.
--- tipoprevcobro             Indica si es un cobro o un pago.
 
 
 CREATE TABLE prevcobro (

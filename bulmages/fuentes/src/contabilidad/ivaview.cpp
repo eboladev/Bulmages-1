@@ -43,9 +43,7 @@ CREATE TABLE registroiva (
 -- cantidadprevcobro         Cantidad Cobrada.
 -- fprevistaprevcobro        Fecha en que se prevee el cobro / pago.
 -- fcobroprevcobro           Fecha en que se ha realizado el cobro / pago.
--- idregistroiva             Registro de IVA con el que se corresponde, o factura con la que se corresponde.
--- tipoprevcobro             Indica si es un cobro o un pago.
- 
+-- idregistroiva             Registro de IVA con el que se corresponde, o factura con la que se corresponde. 
  
 CREATE TABLE prevcobro (
     idprevcobro serial PRIMARY KEY,
@@ -153,7 +151,7 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
     m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CANTIDADPREVCOBRO, tr( "CANTIDADPREVCOBRO") );
     m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDREGISTROIVA, tr( "IDREGISTROIVA") );
     m_listPrevision->horizontalHeader()->setLabel( COL_PREV_DOCPREVCOBRO, tr( "DOCPREVCOBRO") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_TIPOCOBRO, tr( "TIPO COBRO") );
+    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_TIPOCOBRO, tr( "COBRO/PAGO") );
     m_listPrevision->setColumnWidth(COL_PREV_FPREVISTAPREVCOBRO,90);
     m_listPrevision->setColumnWidth(COL_PREV_FCOBROPREVCOBRO,90);
     m_listPrevision->setColumnWidth(COL_PREV_CODCUENTA,75);
@@ -688,7 +686,11 @@ void ivaview::cargacobros () {
         m_listPrevision->setText(i, COL_PREV_CANTIDADPREVCOBRO,curprevcobros->valor("cantidadprevcobro"));
         m_listPrevision->setText(i, COL_PREV_DOCPREVCOBRO,curprevcobros->valor("docprevcobro"));
         m_listPrevision->setText(i, COL_PREV_IDREGISTROIVA,curprevcobros->valor("idregistroiva"));
-	m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, curprevcobros->valor("tipoprevcobro"));
+	if (curprevcobros->valor("tipoprevcobro") == "t") {
+		m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, "COBRO");
+	} else {
+		m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, "PAGO");
+	}// end if
         i++;
         curprevcobros->siguienteregistro();
     }// end while
@@ -726,7 +728,11 @@ void ivaview::guardaprevpago (int numrow) {
         SQLQuery += " , cantidadprevistaprevcobro = "+m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVISTAPREVCOBRO)+" ";
         SQLQuery += " , cantidadprevcobro = "+m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVCOBRO)+" ";
         SQLQuery += " , docprevcobro = '"+m_listPrevision->text(numrow, COL_PREV_DOCPREVCOBRO)+"' ";
-	SQLQuery += " , tipoprevcobro = "+m_listPrevision->text(numrow, COL_PREV_TIPOCOBRO);
+	if (m_listPrevision->text(numrow, COL_PREV_TIPOCOBRO) == "COBRO" ) {
+		SQLQuery += " , tipoprevcobro = TRUE";
+	} else {
+		SQLQuery += " , tipoprevcobro = FALSE";
+	}// end if
         SQLQuery += " WHERE idprevcobro="+idprevpago;
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
@@ -740,7 +746,11 @@ void ivaview::guardaprevpago (int numrow) {
         SQLQuery += ", "+m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVCOBRO);
         SQLQuery += ", '"+m_listPrevision->text(numrow, COL_PREV_DOCPREVCOBRO)+"'";
         SQLQuery += ", "+QString::number(idregistroiva);
-	SQLQuery += ", "+m_listPrevision->text(numrow, COL_PREV_TIPOCOBRO);
+	if (m_listPrevision->text(numrow, COL_PREV_TIPOCOBRO) == "COBRO") {
+		SQLQuery += ", TRUE";
+	} else {
+		SQLQuery += ", FALSE";
+	}// end if
 	SQLQuery += ") ";
 	fprintf(stderr,"El query: %s", SQLQuery.ascii());
         conexionbase->begin();

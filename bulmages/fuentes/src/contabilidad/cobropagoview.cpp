@@ -122,7 +122,11 @@ void cobropagoview::inicializa() {
         m_list->setText(i,COL_CANTIDADPREVISTAPREVCOBRO, cur->valor("cantidadprevistaprevcobro"));
         m_list->setText(i,COL_CANTIDADPREVCOBRO, cur->valor("cantidadprevcobro"));
         m_list->setText(i,COL_IDREGISTROIVA, cur->valor("idregistroiva"));
-        m_list->setText(i,COL_TIPOPREVCOBRO, cur->valor("tipoprevcobro"));
+	if ( cur->valor("tipoprevcobro") == "t" ) {
+        	m_list->setText(i,COL_TIPOPREVCOBRO, "COBRO");
+	} else {
+	        m_list->setText(i,COL_TIPOPREVCOBRO, "PAGO");
+	} // end if
         m_list->setText(i,COL_DOCPREVCOBRO, cur->valor("docprevcobro"));
         if (cur->valor("idasiento") == "") {
             QCheckTableItem *item = new QCheckTableItem(m_list, "");
