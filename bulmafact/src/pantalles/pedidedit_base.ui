@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>745</width>
-            <height>580</height>
+            <width>722</width>
+            <height>523</height>
         </rect>
     </property>
     <property name="caption">
@@ -33,6 +33,56 @@
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout129</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout126</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel16</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Número</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>lineEdit58</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer28</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>390</width>
+                                    <height>21</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </hbox>
+                </widget>
                 <widget class="QLayoutWidget">
                     <property name="name">
                         <cstring>layout83_2</cstring>
@@ -182,7 +232,7 @@
                 </widget>
                 <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>layout102</cstring>
+                        <cstring>layout128</cstring>
                     </property>
                     <hbox>
                         <property name="name">
@@ -256,11 +306,34 @@
                             </property>
                             <property name="sizeHint">
                                 <size>
-                                    <width>341</width>
+                                    <width>240</width>
                                     <height>21</height>
                                 </size>
                             </property>
                         </spacer>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout125</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel17</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Previsión</string>
+                                    </property>
+                                </widget>
+                                <widget class="QDateEdit">
+                                    <property name="name">
+                                        <cstring>dateEdit10_2</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
                     </hbox>
                 </widget>
             </vbox>
