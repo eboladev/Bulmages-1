@@ -84,17 +84,9 @@ void linorderslist::chargeorder(QString idpedido_) {
 			idproveedor = cur->valor("idproveedor");
 			iddivision = cur->valor("iddivision");
 			idalmacen = cur->valor("idalmacen");
-			
-			companyact->begin();
-   		cursor2 * cur2= companyact->cargacursor("SELECT * FROM proveedor WHERE idproveedor="+idproveedor,"unquery");
-   		companyact->commit();
-			if (!cur->eof()) {
-	  	 		m_cifprovider->setText(cur2->valor("cifproveedor"));
-				m_nomproveedor->setText(cur2->valor("nomproveedor"));
-			}
    	}
    	delete cur;
-   
+   	providerChanged(idproveedor);
    	cargarcombodivision(idproveedor, iddivision);
 	} //endif (pedido !=0)
 	cargarcomboalmacen(idalmacen);
@@ -265,7 +257,20 @@ void linorderslist::searchProvider() {
    
    m_idprovider = provlist->idprovider();
    m_cifprovider->setText(provlist->cifprovider());
+	providerChanged(m_idprovider);
+	m_combodivision->clear();
+	cargarcombodivision(m_idprovider, NULL);
    delete provlist;
 }// end searchProvider
+
+void linorderslist::providerChanged(QString idProvider) {
+	companyact->begin();
+	cursor2 * cur2= companyact->cargacursor("SELECT * FROM proveedor WHERE idproveedor="+idProvider,"unquery");
+	companyact->commit();
+	if (!cur2->eof()) {
+		m_cifprovider->setText(cur2->valor("cifproveedor"));
+		m_nomproveedor->setText(cur2->valor("nomproveedor"));
+	}
+}
 
 

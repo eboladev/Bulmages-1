@@ -47,6 +47,7 @@ public:
     void chargeorder(QString);
 	 void cargarcombodivision(QString, QString);
 	 void cargarcomboalmacen(QString);
+	 void providerChanged(QString);
     
 public slots:
     virtual void activated(int);
