@@ -302,7 +302,6 @@ int cuentaview::cargacuenta(int idcuenta1){
 
 
 int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
-
 	// Suponiendo que las cuentas son numericas, al crear una nueva cuenta
 	// Buscamos entre las que seran sus hermanas y le asignamos el numero siguiente
 	// que le corresponda.
