@@ -49,7 +49,7 @@
 #define  R_COL_IDASIENTO 10
 #define  R_COL_IDBORRADOR 11
 
-Mod300ps *modelo=new Mod300ps;
+Mod300ps *modelo;
 
 listivaview::listivaview(QString ejerActual, QWidget *parent, const char *name ) : listivadlg(parent,name) {
   //QDate fecha = QDate::currentDate();
@@ -60,6 +60,8 @@ listivaview::listivaview(QString ejerActual, QWidget *parent, const char *name )
   //ffinal->setText(buffer);
   finicial->setText(normalizafecha("01/01/"+ejerActual).toString("dd/MM/yyyy"));
   ffinal->setText(normalizafecha("31/12/"+ejerActual).toString("dd/MM/yyyy"));
+  Mod300ps *tem=new Mod300ps(this);
+  modelo=tem;
 }// end listivaview
 
 

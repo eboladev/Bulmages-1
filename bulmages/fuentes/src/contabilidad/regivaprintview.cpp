@@ -51,9 +51,10 @@ void regivaprintview::accept() {
       if (radiohtml->isChecked()) presentar("html");
       if (radioPS->isChecked()) 
       {
-      
-   
-    modelo->generaps();
+      //Lanza dialogo de generacion de modelo 300 
+      //Deberia revisarse el Widget parent de la variable modelo (listivaview--->modelo, en vez de regivaprintview--->modelo)
+       modelo->exec();
+      delete modelo;
     
       }
       

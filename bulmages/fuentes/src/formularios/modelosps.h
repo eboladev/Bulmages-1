@@ -22,6 +22,7 @@
 
 #ifndef MOD300_H
 #define MOD300_H
+#include "mod300dlg.h"
 
 class Modgenps
 {
@@ -41,22 +42,24 @@ void escrder(QString,int,int);//igual que escrizq pero alineado a la izquierda
 void escrder(float,int,int);//sobrecargada igual que la anterior
 void escrizqder(QString,QString,int,int);//escribe primera cadena a la izquierda y segunda a la derecha del punto dado
 void escrizqder(float,int,int); //igual, pero primero convierte float en 2 cadenas con formatdigits
-void marca_casilla(int,int); //pone una cruz en la casilla dada por sus coordenadas
+void marca_casilla(QString,int,int); //pone una cruz en la casilla dada por sus coordenadas
 
 ifstream fichlec;
 ofstream fich;
 };
 
 
-class Mod300ps: public Modgenps
+class Mod300ps: public Modgenps, public mod300dlg
 {
 /** Clase para generar el modelo 300 de declaracin de IVA trimestral en formato postscript.
   * Utiliza los formularios oficiales obtenidos de www.aeat.es convertidos de pdf a postscript.
   * Hereda de Modgenps */
   
 public:
-Mod300ps(){};
+Mod300ps(QWidget *parent);
 ~Mod300ps(){};
+
+void accept();
 void generaps();
 float baser0;
 float baser16;

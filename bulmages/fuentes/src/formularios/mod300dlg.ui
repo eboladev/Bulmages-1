@@ -1,0 +1,132 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>mod300dlg</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>mod300dlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>536</width>
+            <height>372</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Modelo 300</string>
+    </property>
+    <property name="icon">
+        <pixmap>image0</pixmap>
+    </property>
+    <property name="iconText">
+        <string></string>
+    </property>
+    <property name="acceptDrops">
+        <bool>false</bool>
+    </property>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>40</x>
+                <y>20</y>
+                <width>351</width>
+                <height>71</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Modelo 300. Declaración del IVA trimestral</string>
+        </property>
+    </widget>
+    <widget class="QComboBox">
+        <item>
+            <property name="text">
+                <string>1º trimestre</string>
+            </property>
+        </item>
+        <item>
+            <property name="text">
+                <string>2º trimestre</string>
+            </property>
+        </item>
+        <item>
+            <property name="text">
+                <string>3º trimestre</string>
+            </property>
+        </item>
+        <item>
+            <property name="text">
+                <string>4º trimestre</string>
+            </property>
+        </item>
+        <property name="name">
+            <cstring>trimestre</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>50</x>
+                <y>170</y>
+                <width>90</width>
+                <height>21</height>
+            </rect>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Seleccione periodo de declaración</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>boton_vista_previa</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>441</x>
+                <y>330</y>
+                <width>80</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Vista Previa</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>boton_cancelar</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>340</x>
+                <y>330</y>
+                <width>80</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Cancelar</string>
+        </property>
+    </widget>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="952">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000037f49444154789c8d94b16f5c4510c67f67bd624e72b12b51bcd7d91d17d1384e81122830554ea98e342495ed5449f80f928e8e96125aaae03451e88c14c9170a8e4382c445a4bc2b5076252c768a93de144f5a8a77bed8f82cb1cdbcd16abff7cdf7cd4c8f4bced1e151368ccd72130c1068ace92e0d0c434dc1c089637b67bb77f67d7119b061ec7cbc43d28488a0a69452626678e74996f0e2a9634dfa2b5d78df5b8109c0643cc98280b004c3a0a1c1cc1091257380edebe719af5d061c3460ad1135420b75ac0927e15cae73a58e35b417dfaf64fc6afc2a478d38e70038cb7ca113c8e2d38c1b3b372ee0ac646cad7540f3cea0b3ccd5148a4e021121d9457de112f3b45504c1adbba5fb4edcb203965518f4e9af045ec9b874258661ed02b4704ba66aba646eadd1d0ac045ea9f1b38367f9ca8757283f283b594e353d130d4310c6bf8fb1c6f0bee2f3e17badcf49317931c9d33753a63f4f414044081aa85c4588e7e3a9c6b37ac6f89731e1efc0fdafeee7e1cd21b786b77acb3f4cc693fc723a851323cc13ae10b45dc8f09f68055445452a143d491cbe3cc44e8c300f5cffe82aa3dd51c778f26292a7c753eedc1c61d219a31a11712453fc694448661ccb6b0eec07860ca9a68ef11f10660101c6bf8e09f3d431fdeefb2739ff93ffd77997dfe5411e64c992077990dfbe7e9bbf79fc6ddebab695cb72233be7f246b991d7eaba667fef0bf02bcdbd700461c4670c183062c4e66093fddd3d869f0e0150d5ce3ce97bc271ea665e0d9c7443b5d805e2404c306179ff40bf6624359556d4126834b1b93180c5641a50ccea637c218436e19b3e8184338f4ac299a0180e8f4ac059851270541889da02918898f0db9fe3c53aea3a72cd158ed482174fb084eb7b8c846b054591423012d23a2201291c9104ada044cae2d4e0f75a1ac69a160ac90821e010620a08426c15a16b314cd036e2cca1f38833ba9c92388ff4e976c6622f71f5da75d65cebbab20bc1305ceb88445ceb505b4489b8b64489b8a25c54e28836430a4743c2bb0a03cab2646fef0e85164a331302094f45921a6f1535c778a9a86d8647a86586c711997595d0310e6dc45351eb181178f4f811b747b77bbda3c3a37cf0f4801f7f7a8ecd1baa754f6a8d7e01b474135718729aaf57689b96b9141e9d075817f677eff2f0c1c3deb925f4e4e0493e78fa9cf0a65e1ad0758fbd3765d14e8d812df6b0a9b1f5c91677bfbccbbdfd7b4bbc7f0126f8383640f04bfd0000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>boton_vista_previa</sender>
+        <signal>clicked()</signal>
+        <receiver>mod300dlg</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>boton_cancelar</sender>
+        <signal>clicked()</signal>
+        <receiver>mod300dlg</receiver>
+        <slot>close()</slot>
+    </connection>
+</connections>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

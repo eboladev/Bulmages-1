@@ -21,17 +21,29 @@
 #include <fstream.h>
 #include <iostream.h>
 #include <qstring.h>
+#include <qcombobox.h>
 #include "modelosps.h"
 #include "tomain.h"
 #include "configuracion.h"
 
+
+
+Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
+{
+cout << "Objeto Mod300ps generado\n";
+}
+void Mod300ps::accept()
+{
+cout << "Generando vista preliminar...\n";
+generaps();
+}
+
+
 void Mod300ps::generaps(){
-#define CONF_PROGDATA 800
-
-confpr->setValor(CONF_PROGDATA,"/usr/share/bulmages/");
-
 
 QString psname,cad1;
+
+cout << "Elegido trimestre" << trimestre->currentItem() << "\n";
 
 
 psname=tempnam(NULL,"m300_");
@@ -71,24 +83,26 @@ escrizqder(ivar4,531,487);//Casilla 09
 
 escrizqder(ivar16+ivar7+ivar4,531,400);//Casilla 21
 
-// escrizqder(bases16,328,516);
-// escrizqder(bases7,328,502);
-// escrizqder(bases4,328,487);
-// 
-// escrizqder(ivas16,,516);
-// escrizqder(ivas7,328,502);
-// escrizqder(ivas4,328,487);
-
 escrizqder(ivas4+ivas7+ivas16,532,366);//Casilla 22
 escrizqder(ivas4+ivas7+ivas16,532,295);//Casilla 27
 
 float cas34=ivas4+ivas7+ivas16-(ivar16+ivar7+ivar4);
 escrizqder(cas34,532,196);//Casilla 34
 
-if (cas34<0)  escrizqder(-cas34,248,145);
+if (cas34<0)  escrizqder(-cas34,248,145);//Casilla a compensar si la 34 sale negativa
 
 //escrder("X",394,134);
-marca_casilla(396,134);
+marca_casilla("X",396,134);
+
+switch(trimestre->currentItem())
+{
+case 0: {cad1="1";break;}
+case 1: {cad1="2";break;}
+case 2: {cad1="3";break;}
+case 3: {cad1="4";break;}
+}
+marca_casilla(cad1,452,690);
+marca_casilla("T",467,690);	
 
 
 cad1=confpr->valor(CONF_PROGDATA)+"formularios/mod300-2.ps.part";
@@ -112,17 +126,27 @@ cad1=confpr->valor(CONF_PROGDATA)+"formularios/mod300-4.ps.part";
 fichlec.open(cad1);
 fich << fichlec.rdbuf(); // Copia el contenido de fichlec en fich (cuartotrozo de postscript)
 fichlec.close();// explicit close, unnecessary in this case
-
-
-
 fich.close();
 cout << "Se supone que tengo que leer los formularios desde " << confpr->valor(CONF_PROGDATA) << "\n";
+cout << "¡¡OJO!! Los formularios que genera no son validos, ya que han de tener un numero de serie UNICO\n";
+cout << "Es decir, hay que bajarse de internet uno nuevo CADA VEZ que se haga un modelo nuevo\n";
 QString command;
+
+int pid;
+if ((pid = fork()) < 0) {
+        cout << "Error haciendo fork()\n";
+	exit(1);
+	}
+	
+if (pid==0)
+{
 command="kghostview "+psname;
 system(command);
 command="rm "+psname+" 2>/dev/null";
 system(command);
 
+exit(1);
+}
 }//End of if fich.open
 	
 }//End of function generaps
@@ -178,9 +202,11 @@ escrizq(cad1,x,y);
 escrder(cad2,x,y);
 }
 
-void Modgenps::marca_casilla(int x,int y)
+void Modgenps::marca_casilla(QString marca,int x,int y)
 {
-escrder("X",x-2,y);
+escrder(marca,x-2,y);
 }
+
+
 
 
