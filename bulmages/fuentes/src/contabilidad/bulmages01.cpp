@@ -124,8 +124,8 @@ Bulmages01::~Bulmages01() {
   delete printaction;
   delete reloadaction;
   delete usuarioaction;  
-  delete view_back;
-  delete pWorkspace;
+  //delete view_back;
+  //delete pWorkspace; //En algunos casos provoca Segmentation Fault.
   delete ayuda;
   delete amortiz; 
 }
