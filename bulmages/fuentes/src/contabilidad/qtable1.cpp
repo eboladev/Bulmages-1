@@ -44,21 +44,25 @@ bool QTable1::eventFilter( QObject *obj, QEvent *event ) {
         QKeyEvent *keyEvent = (QKeyEvent *) event;
         int key = keyEvent->key();
         fprintf(stderr,"Key event %d %c\n", key, key);
-        if ( key == '+') {
+        if ( key == Qt::Key_Plus) {
             emit pulsadomas(currentRow(), currentColumn(), key);
             return TRUE;
         }// end if
-        if (key == '*') {
+        if (key == Qt::Key_Asterisk) {
             emit pulsadomas(currentRow(), currentColumn(), key);
             return TRUE;
         }// end if
-        if (key == 4100) { // El enter
-            emit pulsadomas(currentRow(), currentColumn(), key);
+        if (key == Qt::Key_Enter || key == Qt::Key_Return) { // El enter
+            emit pulsadomas(currentRow(), currentColumn(), 4100);
             return TRUE;
         }// end if
         if (key == 4115) {// La tecla hacia arriba
             if (ctrlpulsado)   // Solo en combinacion con el ctrl
                 emit pulsadomas(currentRow(), currentColumn(), key);
+        }// end if
+        if (key == Qt::Key_Delete) {
+            emit pulsadomas(currentRow(), currentColumn(), key);
+            return TRUE;
         }// end if
         if (key == 4117) {// La tecla hacia arriba
             if (ctrlpulsado)   // Solo en combinacion con el ctrl

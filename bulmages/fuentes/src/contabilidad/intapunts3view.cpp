@@ -75,7 +75,7 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name ) 
     tapunts->setSorting( TRUE );
     tapunts->setSelectionMode( QTable::SingleRow );
     intapunts3dlgLayout->addWidget( tapunts, 1, 0 );
-    connect( tapunts, SIGNAL( clicked(int,int,int,const QPoint&) ), this, SLOT( tpulsado(int,int,int,const QPoint&) ) );
+    //connect( tapunts, SIGNAL( clicked(int,int,int,const QPoint&) ), this, SLOT( tpulsado(int,int,int,const QPoint&) ) );
     connect( tapunts, SIGNAL( valueChanged(int,int) ), this, SLOT( apuntecambiadogrid(int,int) ) );
     connect( tapunts, SIGNAL( selectionChanged() ), this, SLOT( tcambiaseleccion() ) );
     //connect( tapunts, SIGNAL( currentChanged(int,int) ), this, SLOT( currentChanged(int,int) ) );
@@ -543,7 +543,7 @@ void intapunts3view::boton_abrirasiento() {
 void intapunts3view::boton_cerrarasiento() {
     int eleccion;
     int i=0;
-    bool asientoVacio=true;
+    //bool asientoVacio=true;
 
     guardaborrador(rowactual);
     if (( descuadre->text() != "0.00") && ( descuadre->text() != "-0.00")) {
@@ -573,7 +573,7 @@ void intapunts3view::boton_cerrarasiento() {
                 }// end if
             }// end if
         }// end if
-        asientoVacio = asientoVacio && (tapunts->text(i,COL_SUBCUENTA)=="");
+        //asientoVacio = asientoVacio && (tapunts->text(i,COL_SUBCUENTA)=="");
         i++;
     }// end while
 
@@ -591,12 +591,13 @@ void intapunts3view::boton_cerrarasiento() {
 // Hay un problema con la comprobación
 // Se borran asientos que no estan vacios
 // Por ejemplo cuando se crea un asiento a partir de un asiento inteligente.
-/*    
-    if (asientoVacio) {
-        QMessageBox::information( 0, tr("Asiento vacio"), tr("El asiento esta vacio, se procedera a borrarlo !"));
-        borrar_asiento(false); //el valor false indica que no nos muestre el dialogo de confirmación de borrado.
-    }// end if
-*/
+    
+//    if (asientoVacio) {
+//    if (i==1) {
+//        QMessageBox::information( 0, tr("Asiento vacio"), tr("El asiento esta vacio, se procedera a borrarlo !"));
+//        borrar_asiento(false); //el valor false indica que no nos muestre el dialogo de confirmación de borrado.
+//    }// end if
+
 }// end boton_cerrarasiento
 
 
@@ -807,7 +808,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
         popup->insertItem(tr("Ver Balance (Este año)"),124);
         popup->insertSeparator();
         if (col == COL_NOMCUENTA || col == COL_CONTRAPARTIDA || col == COL_SUBCUENTA) {
-        		popup->insertItem(tr("Editar Cuenta"),130);
+            popup->insertItem(tr("Editar Cuenta"),130);
         }// end if
         opcion = popup->exec(poin);
         switch(opcion) {
@@ -840,13 +841,13 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
             boton_balance1(2);
             break;
         case 130:
-        		// Se ha elegido la opción de editar cuenta.
+            // Se ha elegido la opción de editar cuenta.
             // Abrimos la ventana de edición de cuentas.
             QString idcuenta;
             if (col == COL_SUBCUENTA || col == COL_NOMCUENTA) 
-	            idcuenta = tapunts->text(row,COL_IDCUENTA);
-             else
-             	idcuenta = tapunts->text(row,COL_IDCONTRAPARTIDA);
+                idcuenta = tapunts->text(row,COL_IDCUENTA);
+            else
+                 idcuenta = tapunts->text(row,COL_IDCONTRAPARTIDA);
             cuentaview *nuevae = new cuentaview(0,"",true);
             nuevae->inicializa(conexionbase);
             nuevae->cargacuenta(atoi(idcuenta.ascii()));
@@ -1084,6 +1085,7 @@ void intapunts3view::boton_iva() {
     QString codcuenta("xxx");
     int i;
     int sinIVA=0;
+    guardaborrador(rowactual);
     if (tapunts->currentRow() > 0)
         if (tapunts->text(rowactual,COL_SUBCUENTA).left(3) == "")
             sinIVA = QMessageBox::information(this, tr("Registro de IVA"),
@@ -1152,7 +1154,7 @@ void intapunts3view::boton_iva() {
 
 void intapunts3view::pulsadomas(int row, int col, int caracter) {
     float tdebe;
-    fprintf(stderr,"Se ha pulsado el mas sobre tapunts y se ha disparado el evento %d, %d\n",row, col);
+    fprintf(stderr,"Se ha pulsado la tecla (%i) sobre tapunts y se ha disparado el evento %d, %d\n",caracter, row, col);
     if (abierto) {
         //Siempre teniendo en cuenta que el asiento este abierto.
         switch (caracter) {
@@ -1236,13 +1238,16 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
                 break;
             }// end switch
             break;
-        case 4115:
+        case Qt::Key_Delete:  //Tecla Supr
+            borraborrador(row);
+            break;
+        case 4115: //Tecla Control + UP
             fprintf(stderr,"Se ha pulsado el ctrl + arriba\n");
             subirapunte(row);
             if (row > 0 )
                 tapunts->setCurrentCell(row, col);
             break;
-        case 4117:
+        case 4117: //Tecla Control + DOWN
             bajarapunte(row);
             tapunts->setCurrentCell(row, col);
             break;
@@ -1728,6 +1733,7 @@ void intapunts3view::borrar_asiento(bool confirmarBorrado) {
 * Esta se encarga de la edicion de asientos.                      *
 ****************************************************************/
 void intapunts3view::editarasiento() {
+    guardaborrador(rowactual);
     asientoview *nuevoasiento= new asientoview(0,"",true);
     nuevoasiento->inicializa(conexionbase);
     nuevoasiento->cargaasiento(atoi(IDASIENTO));
@@ -1774,16 +1780,16 @@ void intapunts3view::fechaasiento1_textChanged( const QString & texto ) {
 
 void intapunts3view::boton_duplicarasiento() {
     duplicarasientoview *dupli= new duplicarasientoview(empresaactual,0,"",true);
-	 // Establecemos los parametros para el nuevo asiento a duplicar
-	 dupli->inicializa(idasiento1->text(), idasiento1->text());
+    // Establecemos los parametros para el nuevo asiento a duplicar
+    dupli->inicializa(idasiento1->text(), idasiento1->text());
     dupli->exec();
-	cargarcursor(-1);
-	boton_fin();
-	repinta();
-	delete dupli;
+    cargarcursor(-1);
+    boton_fin();
+    repinta();
+    delete dupli;
 }// end boton_duplicarasiento
 
 void intapunts3view::boton_fecha() {
-	fechaasiento1->setText("+");
+    fechaasiento1->setText("+");
 }// end boton_fecha
 

@@ -27,7 +27,6 @@
 #include "canalview.h"
 #include "ccosteview.h"
 #include "ainteligentesview.h"
-#include "nuevaempresaview.h"
 #include "propiedadesempresa.h"
 #include "cambiactaview.h"
 #include "amortizacionesview.h"

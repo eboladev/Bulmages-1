@@ -12,7 +12,7 @@
             <x>0</x>
             <y>0</y>
             <width>839</width>
-            <height>475</height>
+            <height>477</height>
         </rect>
     </property>
     <property name="sizePolicy">
@@ -831,7 +831,7 @@
                         <iconset>image5</iconset>
                     </property>
                     <property name="toolTip" stdset="0">
-                        <string>Asientos Inteligentes</string>
+                        <string>Duplicar Asiento</string>
                     </property>
                 </widget>
                 <widget class="QToolButton">
@@ -853,7 +853,7 @@
                         <iconset>image6</iconset>
                     </property>
                     <property name="toolTip" stdset="0">
-                        <string>Abrir ...</string>
+                        <string>Cargar Asiento</string>
                     </property>
                 </widget>
                 <widget class="QToolButton">
