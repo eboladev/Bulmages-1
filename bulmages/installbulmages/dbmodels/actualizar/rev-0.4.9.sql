@@ -328,19 +328,19 @@ END;
 --
 -- Se ejecutan las funciones para cambiar los tipos
 --
-SELECT convierteanumeric_cuenta();
-SELECT convierteanumeric_c_coste();
-SELECT convierteanumeric_acumulado_c_coste();
-SELECT convierteanumeric_acumulado_canal();
-SELECT convierteanumeric_apunte();
-SELECT convierteanumeric_borrador();
-SELECT convierteanumeric_registroiva();
-SELECT convierteanumeric_prevcobro();
-SELECT convierteanumeric_iva();
-SELECT convierteanumeric_mpatrimonial();
-SELECT convierteanumeric_compmasap();
-SELECT convierteanumeric_amortizacion();
-SELECT convierteanumeric_linamortizacion();
+--SELECT convierteanumeric_cuenta();
+--SELECT convierteanumeric_c_coste();
+--SELECT convierteanumeric_acumulado_c_coste();
+--SELECT convierteanumeric_acumulado_canal();
+--SELECT convierteanumeric_apunte();
+--SELECT convierteanumeric_borrador();
+--SELECT convierteanumeric_registroiva();
+--SELECT convierteanumeric_prevcobro();
+--SELECT convierteanumeric_iva();
+--SELECT convierteanumeric_mpatrimonial();
+--SELECT convierteanumeric_compmasap();
+--SELECT convierteanumeric_amortizacion();
+--SELECT convierteanumeric_linamortizacion();
 
 --
 -- Y ahora borramos las funciones, para qué las queremos ya
@@ -708,5 +708,75 @@ BEGIN
     RETURN 0;
 END;
 '    LANGUAGE plpgsql;
+
+DROP FUNCTION propagaacumuladocuenta() CASCADE;
+CREATE FUNCTION propagaacumuladocuenta() RETURNS "trigger"
+    AS '
+DECLARE
+   incdebe numeric(12,2);
+   inchaber numeric(12,2);
+BEGIN
+   incdebe = NEW.debe - OLD.debe;
+   inchaber = NEW.haber - OLD.haber;
+--   RAISE NOTICE ''propagaacumuladocuenta %'', NEW.codigo;
+   IF incdebe <> 0 OR inchaber <> 0 THEN
+           UPDATE cuenta SET debe = debe + incdebe, haber = haber + inchaber WHERE idcuenta = NEW.padre;
+   END IF;
+   RETURN NEW;
+END;
+'    LANGUAGE plpgsql;
+
+CREATE TRIGGER propaga_acumulado_cuenta
+    AFTER UPDATE ON cuenta
+    FOR EACH ROW
+    EXECUTE PROCEDURE propagaacumuladocuenta();
+
+DROP FUNCTION propagaacumuladoccoste() CASCADE;
+CREATE FUNCTION propagaacumuladoccoste() RETURNS "trigger"
+    AS '
+DECLARE
+   incdebe numeric(12,2);
+   inchaber numeric(12,2);
+BEGIN
+   incdebe = NEW.debe - OLD.debe;
+   inchaber = NEW.haber - OLD.haber;
+   IF incdebe <> 0 OR inchaber <> 0 THEN
+           UPDATE c_coste SET debe = debe + incdebe, haber = haber + inchaber WHERE idc_coste = OLD.padre;
+   END IF;
+   RETURN NEW;
+END;
+'    LANGUAGE plpgsql;
+
+CREATE TRIGGER propaga_acumulado_ccoste
+    AFTER UPDATE ON c_coste
+    FOR EACH ROW
+    EXECUTE PROCEDURE propagaacumuladoccoste();
+
+DROP FUNCTION acumulados_canal() CASCADE;
+CREATE FUNCTION acumulados_canal() RETURNS "trigger"
+    AS '
+DECLARE
+   incdebe  numeric(12,2);
+   inchaber numeric(12,2);
+   cuentar  RECORD;
+BEGIN
+--   RAISE NOTICE '' Ha entrado el trigger acumulados_canal() '';
+--   RAISE NOTICE '' idcuenta % idcanal %'', NEW.idcuenta, NEW.idcanal;
+   incdebe = NEW.debe - OLD.debe;
+   inchaber = NEW.haber - OLD.haber;
+   SELECT INTO cuentar * FROM cuenta WHERE idcuenta = NEW.idcuenta;
+   SELECT INTO cuentar * FROM cuenta WHERE idcuenta = cuentar.padre;
+   IF FOUND THEN
+      UPDATE acumulado_canal SET debe = debe + incdebe, haber = haber + inchaber WHERE idcuenta = cuentar.idcuenta AND idcanal
+= NEW.idcanal;
+   END IF;
+   RETURN NEW;
+END;
+'    LANGUAGE plpgsql;
+
+CREATE TRIGGER acumulados_canal_fk
+    AFTER UPDATE ON acumulado_canal
+    FOR EACH ROW
+    EXECUTE PROCEDURE acumulados_canal();
 
 COMMIT;
