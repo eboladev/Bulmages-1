@@ -35,7 +35,9 @@ amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *na
       delete cur;
       table1->hideColumn(COL_IDLINAMORTIZACION);
       idamortizacion = "";
-}
+      idctaactivo="";
+      idctaamortizacion="";
+}// end amortizacionview
 
 
 void amortizacionview::accept() {
@@ -69,7 +71,7 @@ void amortizacionview::accept() {
 		done(1);
 	} else {
 		fprintf(stderr,"Se trata de una modificación\n");
-		query.sprintf("UPDATE amortizacion SET nomamortizacion='%s', valorcompra=%f, numcuotas=%d, fechacompra='%s' WHERE idamortizacion=%s", namortizacion.ascii(), valorcompradbl, numcuotasint,fechacomprastr.ascii(), idamortizacion.ascii());
+		query.sprintf("UPDATE amortizacion SET nomamortizacion='%s', valorcompra=%f, numcuotas=%d, fechacompra='%s', idcuentaactivo=%s, idcuentaamortizacion=%s WHERE idamortizacion=%s", namortizacion.ascii(), valorcompradbl, numcuotasint,fechacomprastr.ascii(), idctaactivo.ascii(), idctaamortizacion.ascii(), idamortizacion.ascii());
 		fprintf(stderr,"El query es: %s\n", query.ascii());
 		conexionbase->begin();
 		conexionbase->ejecuta(query);
@@ -98,7 +100,7 @@ amortizacionview::~amortizacionview() {
 void amortizacionview::inicializa(QString idamortiza) {
 	idamortizacion = idamortiza;
 	fprintf(stderr,"Inicializamos el formulario %s\n", idamortizacion.ascii());
-   QString query = "SELECT * FROM amortizacion WHERE idamortizacion="+idamortizacion;
+   QString query = "SELECT * FROM amortizacion LEFT JOIN (SELECT idcuenta AS idcta, codigo AS codctaactivo FROM cuenta) AS t1 ON t1.idcta=amortizacion.idcuentaactivo LEFT JOIN (SELECT idcuenta AS idcta1, codigo AS codctaamortizacion FROM cuenta) AS t2 ON t2.idcta1=amortizacion.idcuentaamortizacion WHERE idamortizacion="+idamortizacion;
    
    conexionbase->begin();
    cursor2 *curs=conexionbase->cargacursor(query,"unquery");
@@ -114,6 +116,10 @@ void amortizacionview::inicializa(QString idamortiza) {
       fechacompra->setText(cadena);
       cadena.sprintf("%10.10s",curs->valor("fecha1cuota").ascii());
       fecha1cuota->setText(cadena);
+      ctaactivo->setText(curs->valor("codctaactivo"));
+      idctaactivo = curs->valor("idcta");
+      ctaamortizacion->setText(curs->valor("codctaamortizacion"));
+      idctaamortizacion= curs->valor("idcta1");
    }// end if
    delete curs;
    
@@ -178,6 +184,8 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
    QPopupMenu *popup;
    popup = new QPopupMenu;
    int opcion;
+   intapunts3view *intapunts = empresaactual->intapuntsempresa();
+   
    popup->insertItem(tr("Generar Asiento"),4);
    popup->insertSeparator();
    popup->insertItem(tr("Ver Asiento"),1);
@@ -202,9 +210,89 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
       nueva->setvalores("$cuentabien$","999999");
       nueva->setvalores("$cuota$", "900");
       nueva->setvalores("$fechaasiento$",table1->text(row,COL_FECHA));
-      nueva->setvalores("$cuota$",table1->text(row,COL_CUOTA));    
+      nueva->setvalores("$cuota$",table1->text(row,COL_CUOTA));   
+      nueva->setmodo(1); // Ponemos los asientos plantilla en modo exclusivo, para poder recuperar el control en cuanto se haya hecho la inserción del asiento. 
       nueva->exec();
+      int numasiento1=atoi( intapunts->cursorasientos->valor("idasiento").ascii() );
+      fprintf(stderr,"El asiento creado ha sido el : %d\n", numasiento1);
       delete nueva;
    }// end if
 }// end contextMenuRequested
+
+void amortizacionview::codigo_lostfocus() {
+}// end codigo_lostfocus
+
+void amortizacionview::return_ctaactivo() {
+    QLineEdit *cuenta;
+    cuenta = (QLineEdit *) sender();
+    QString cad = cuenta->text();
+    if (cad != "") {
+        cad = extiendecodigo(cad,empresaactual->numdigitosempresa());
+    }// end if
+    conexionbase->begin();
+    cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
+    conexionbase->commit();
+    int num = cursorcta->numregistros();
+    if (num >0) {
+       cuenta->setText(cursorcta->valor("codigo"));
+       idctaactivo = cursorcta->valor("idcuenta");
+       ctaamortizacion->selectAll();
+       ctaamortizacion->setFocus();
+    }// end if
+    delete cursorcta;   
+}// end return_ctaactivo
+
+
+void amortizacionview::return_ctaamortizacion() {
+    QLineEdit *cuenta;
+    cuenta = (QLineEdit *) sender();
+    QString cad = cuenta->text();
+    if (cad != "") {
+        cad = extiendecodigo(cad,empresaactual->numdigitosempresa());
+    }// end if
+    conexionbase->begin();
+    cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
+    conexionbase->commit();
+    int num = cursorcta->numregistros();
+    if (num >0) {
+       cuenta->setText(cursorcta->valor("codigo"));
+       idctaamortizacion=cursorcta->valor("idcuenta");
+       fechacompra->selectAll();
+       fechacompra->setFocus();
+    }// end if
+    delete cursorcta;   
+}// end return_ctaamortizacion
+
+void amortizacionview::codigo_textChanged(const QString &texto) {
+    QLineEdit *codigo = (QLineEdit *) sender();
+    if (texto == "+") {
+        // Hacemos aparecer la ventana de cuentas
+        listcuentasview1 *listcuentas = new listcuentasview1();
+        listcuentas->modo=1;
+        listcuentas->inicializa(conexionbase);
+        listcuentas->exec();
+        codigo->setText(listcuentas->codcuenta);
+        delete listcuentas;
+    }// end if
+}// end codigo_textChanged
+
+
+void amortizacionview::buscactaactivo() {
+    listcuentasview1 *listcuentas = new listcuentasview1();
+    listcuentas->modo=1;
+    listcuentas->inicializa(conexionbase);
+    listcuentas->exec();
+    ctaactivo->setText(listcuentas->codcuenta);
+    delete listcuentas;
+}// end buscactaactivo
+
+void amortizacionview::buscactaamortizacion() {
+    listcuentasview1 *listcuentas = new listcuentasview1();
+    listcuentas->modo=1;
+    listcuentas->inicializa(conexionbase);
+    listcuentas->exec();
+    ctaamortizacion->setText(listcuentas->codcuenta);
+    delete listcuentas;
+}// end if
+
 

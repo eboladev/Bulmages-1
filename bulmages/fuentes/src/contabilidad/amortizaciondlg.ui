@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>722</width>
-            <height>521</height>
+            <height>525</height>
         </rect>
     </property>
     <property name="caption">
@@ -1074,12 +1074,87 @@
         <receiver>amortizaciondlg</receiver>
         <slot>contextMenuRequested(int,int,const QPoint&amp;)</slot>
     </connection>
+    <connection>
+        <sender>toolButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>buscactaactivo()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1_2</sender>
+        <signal>clicked()</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>buscactaamortizacion()</slot>
+    </connection>
+    <connection>
+        <sender>ctaactivo</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>codigo_textChanged(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ctaamortizacion</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>codigo_textChanged(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ctaactivo</sender>
+        <signal>lostFocus()</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>return_ctaactivo()</slot>
+    </connection>
+    <connection>
+        <sender>ctaamortizacion</sender>
+        <signal>lostFocus()</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>return_ctaamortizacion()</slot>
+    </connection>
+    <connection>
+        <sender>ctaactivo</sender>
+        <signal>returnPressed()</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>return_ctaactivo()</slot>
+    </connection>
+    <connection>
+        <sender>ctaamortizacion</sender>
+        <signal>returnPressed()</signal>
+        <receiver>amortizaciondlg</receiver>
+        <slot>return_ctaamortizacion()</slot>
+    </connection>
 </connections>
+<tabstops>
+    <tabstop>ctaactivo</tabstop>
+    <tabstop>ctaamortizacion</tabstop>
+    <tabstop>fechacompra</tabstop>
+    <tabstop>fecha1cuota</tabstop>
+    <tabstop>numcuotas</tabstop>
+    <tabstop>periodicidad</tabstop>
+    <tabstop>valorcompra</tabstop>
+    <tabstop>radioButton1</tabstop>
+    <tabstop>pushButton4</tabstop>
+    <tabstop>table1</tabstop>
+    <tabstop>pushButton1_3</tabstop>
+    <tabstop>pushButton1</tabstop>
+    <tabstop>pushButton1_2</tabstop>
+    <tabstop>nomamortizacion</tabstop>
+    <tabstop>tabWidget3</tabstop>
+    <tabstop>lineEdit1_2_3_3_3</tabstop>
+    <tabstop>lineEdit1_2_3_3_3_2</tabstop>
+    <tabstop>radioButton2</tabstop>
+    <tabstop>radioButton3</tabstop>
+    <tabstop>radioButton3_2</tabstop>
+</tabstops>
 <slots>
     <slot>cambiofechacompra()</slot>
     <slot>cambiofecha1cuota()</slot>
     <slot>calculaamortizacion()</slot>
     <slot>contextMenuRequested(int, int, const QPoint &amp;)</slot>
+    <slot>buscactaactivo()</slot>
+    <slot>buscactaamortizacion()</slot>
+    <slot>codigo_textChanged(const QString &amp;)</slot>
+    <slot>return_ctaactivo()</slot>
+    <slot>return_ctaamortizacion()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

@@ -32,6 +32,7 @@ aplinteligentesview::aplinteligentesview(QWidget *parent, const char *name ) : a
     indvariablestexto=0;
     indvariablespredefinidas=0;
     indvariablesapunte=0;
+    setmodo(0);
 }// end aplinteligentesview
 
 
@@ -244,9 +245,12 @@ void aplinteligentesview::boton_crear() {
         numasiento = 0;
         fechaasiento->selectAll();
         fechaasiento->setFocus();
-
     }// end if
 
+    // Si estamos en modo exclusivo cerramos la ventana. Y así devolvemos el control a la aplicacion principal.
+    if (modo == 1) {
+       close();
+    }// end if
 }// end boton_crear
 
 

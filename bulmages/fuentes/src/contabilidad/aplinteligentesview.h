@@ -30,9 +30,7 @@
 #include <qlayout.h>
 #include <qtoolbutton.h>
 #include <qdatetime.h>
-
 #include <qpixmap.h>
-
 #include "listcuentasview1.h"
 #include "funcaux.h"
 #include "postgresiface2.h"
@@ -42,7 +40,7 @@
 
 class aplinteligentesview : public aplinteligentesdlg  {
    Q_OBJECT
-public:
+private:
   postgresiface2 *conexionbase;
   QString variablescta[100][3];
   QString variablesfecha[100][3];
@@ -58,6 +56,11 @@ public:
   int indvariablespredefinidas;
   int indvariablesapunte;					// El indice a las variables de apunte
   intapunts3view *intapunts;
+  
+  int modo; // Si modo==0 entonces es modo normal. Si modo==1 entonces es modo 1 ejecución. 
+           // El modo provoca que la plantilla de asiento inteligente se cierre tras haber pulsado
+           // El botón de aceptar y asi permite recuperar el control a otros estamentos.
+           // Por defecto el modo es 0.
 
   QLabel    *labelcta[100];
   QLabel    *nomcta[100];
@@ -92,6 +95,10 @@ public:
   void selectfirst();
   void muestraplantilla(int);
   void setvalores(QString, QString);
+  
+  // La funcion sirve para especificar el modo de funcionamiento de los asientos intelgientes.
+  // Consultar la variable modo para más detalles.
+  void setmodo(int i) { modo=i;}
   
 public slots:
   virtual void boton_crear();
