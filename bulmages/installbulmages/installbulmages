@@ -132,41 +132,39 @@ if [ -e /etc/bulmages.conf ]; then
    fi
 
 #  Hacemos una actualizacion de las bases de datos.
-   su - postgres -c "echo -e \"\\pset tuples_only \n select nombredb from empresa;\" | psql metabd" > /tmp/listdb.lst
-   for x in `tail +2 /tmp/listdb.lst`
-   do
-      info "Efectuando cambios sobre la base de datos $x \n Realizando copia de seguridad. \n"
-      tiempo
-      su - postgres -c "pg_dump $x" > /tmp/backup/$x.pgdump
-      for y in `ls dbmodels/actualizar/rev-*.sql | sort`
-      do
-         info "Evaluamos el archivo de revision:\n\n $y"
-         if [ ! -e /usr/share/bulmages/$y ]; then
-	    su - postgres -c "psql $x "  < $y  2>> /tmp/errores.txt >> /tmp/errores.txt
-	    info "Actualizando la base de datos $x con la revision version $y"
-	    tiempo
-         fi
-	 
-	 
-      done
-      linea
-   done
+#   su - postgres -c "echo -e \"\\pset tuples_only \n select nombredb from empresa;\" | psql metabd" > /tmp/listdb.lst
+#   for x in `tail +2 /tmp/listdb.lst`
+#   do
+#      info "Efectuando cambios sobre la base de datos $x \n Realizando copia de seguridad. \n"
+#      tiempo
+#      su - postgres -c "pg_dump $x" > /tmp/backup/$x.pgdump
+#      for y in `ls dbmodels/actualizar/rev-*.sql | sort`
+#      do
+#         info "Evaluamos el archivo de revision:\n\n $y"
+#         if [ ! -e /usr/share/bulmages/$y ]; then
+#	    su - postgres -c "psql $x "  < $y  2>> /tmp/errores.txt >> /tmp/errores.txt
+#	    info "Actualizando la base de datos $x con la revision version $y"
+#	    tiempo
+#         fi
+#      done
+#      linea
+#   done
 
-   info "Efectuando cambios sobre la metabase."
-   tiempo
+#   info "Efectuando cambios sobre la metabase."
+#   tiempo
    
    
    
-   for y in `ls dbmodels/actualizar/revmeta-*.sql | sort`
-   do
-      info "Evaluamos la revision $y."
-      if [ ! -e /usr/share/bulmages/$y ]; then
-         su - postgres -c "psql metabd " < $y 2>> /tmp/errores.txt >> /tmp/errores.txt
-	 info "Actualizando a la version $y"
-	 tiempo
-      fi
-   done
-   linea
+#   for y in `ls dbmodels/actualizar/revmeta-*.sql | sort`
+#   do
+#      info "Evaluamos la revision $y."
+#      if [ ! -e /usr/share/bulmages/$y ]; then
+#         su - postgres -c "psql metabd " < $y 2>> /tmp/errores.txt >> /tmp/errores.txt
+#	 info "Actualizando a la version $y"
+#	 tiempo
+#      fi
+#   done
+#   linea
 
 
    # También actualizarmos el fichero de backup.
@@ -266,7 +264,7 @@ cp -r balances /usr/share/bulmages
    info "Creando bases de datos del sistema y empresas de ejemplo. \n"
    tiempo
 #Creamos las bases de datos para la metabase.
-   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto metabd 3"
+#   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto metabd 3"
    
 # Creamos las bases de datos para bulmacont.
    su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bulmages 2 Bulmages 2004 metabd"

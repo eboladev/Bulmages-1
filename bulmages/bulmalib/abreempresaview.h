@@ -53,6 +53,7 @@ private:
        
 public:
    QString nomDB() {return empresabd;};
+   QString nomEmpresa() {return nombreempresa;};
    abreempresaview(QWidget *parent=0,int tipo=0, const char *name=0, bool modal=true);
    ~abreempresaview();
   /// Listamos las nuevas bases de datos.

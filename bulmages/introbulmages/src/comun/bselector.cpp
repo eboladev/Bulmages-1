@@ -61,8 +61,8 @@ void BSelector::m_bulmatpv_clicked() {
    if (tipo != "BulmaFact" ) {
       abreempresaview *empcont = new abreempresaview(0,2, "abreempresa", true);
       empcont->exec();
-      empresabd = empcont->empresabd;
-      tipo = empcont->tipo;
+      empresabd = empcont->nomDB();
+//      tipo = empcont->tipo;
    }// end while
    if (empresabd != "") {
       char cadena[300];
@@ -76,10 +76,10 @@ void BSelector::m_bulmatpv_clicked() {
 void BSelector::seleccionaempresa_clicked() {
    abreempresaview *empcont = new abreempresaview(0, 0,"abreempresa", true);
    empcont->exec();
-   empresabd = empcont->empresabd;
-   tipo = empcont->tipo;
+   empresabd = empcont->nomDB();
+//   tipo = empcont->tipo;
    // Cambiamos el nombre en la pantalla.
-   nombreempresa->setText(empcont->nombreempresa);
+   nombreempresa->setText(empcont->nomEmpresa());
    delete empcont;
 }// end seleccionaempresa_clicked
 
@@ -89,8 +89,8 @@ void BSelector::contabilidad_clicked() {
    if (tipo != "BulmaGés" ) {
       abreempresaview *empcont = new abreempresaview(0,1, "abreempresa", true);
       empcont->exec();
-      empresabd = empcont->empresabd;
-      tipo = empcont->tipo;
+      empresabd = empcont->nomDB();
+//      tipo = empcont->tipo;
    }// end while
    if (empresabd != "") {
       char cadena[300];
@@ -121,8 +121,8 @@ void BSelector::m_bulmafact_clicked() {
    if (tipo != "BulmaFact" ) {
       abreempresaview *empcont = new abreempresaview(0,2, "abreempresa", true);
       empcont->exec();
-      empresabd = empcont->empresabd;
-      tipo = empcont->tipo;
+      empresabd = empcont->nomDB();
+//      tipo = empcont->tipo;
    }// end while
    if (empresabd != "") {
       char cadena[300];

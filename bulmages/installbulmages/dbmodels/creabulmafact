@@ -86,12 +86,12 @@ else
 fi
 
 
-if [ "$3" = "3" ]; then
+#if [ "$3" = "3" ]; then
    # Cargamos la metabase
-   info "Cargamos la metabase. \n"
-   tiempo
-   psql $2 < crear/metabd/metabd_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-fi
+#   info "Cargamos la metabase. \n"
+#   tiempo
+#   psql $2 < crear/metabd/metabd_data.pgdump 2>> /tmp/errores1.txt > /dev/null
+#fi
 
 
 if [ "$3" = "1" -o "$3" = "2" ]; then
@@ -130,26 +130,26 @@ fi
 
 
 #VAmos a hacer la insercion en la metabase de los datos necesarios.
-if [ "$3" = "1" -o "$3" = "2" ]; then
+#if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo
-   info "Creamos la empresa en la MetaBase. \n"
-   tiempo
-   echo -e " INSERT INTO empresafact (nombre, ano, nombredb) VALUES ('$4', $5, '$2')" | psql $6 2>> /tmp/errores1.txt   > /dev/null
+#   info "Creamos la empresa en la MetaBase. \n"
+#   tiempo
+#   echo -e " INSERT INTO empresafact (nombre, ano, nombredb) VALUES ('$4', $5, '$2')" | psql $6 2>> /tmp/errores1.txt   > /dev/null
    #  Hacemos una actualizacion de las bases de datos.
-   echo -e "\\pset tuples_only \n select MAX(idempresafact) from empresafact ;" | psql metabd > /tmp/listdb.lst
-   for x in `tail +2 /tmp/listdb.lst`
-   do
-      info "Creamos los permisos necesarios. \n"
-      tiempo
-      echo -e "\\pset tuples_only \n select idusuario FROM usuario ;" | psql metabd > /tmp/listuser.lst
-      for y in `tail +2 /tmp/listuser.lst`
-      do
-	    echo "INSERT INTO usuario_empresafact (idusuario,idempresafact, permisos) VALUES ($y, $x, 1)" | psql $6   2>> /tmp/errores1.txt >> /tmp/errores1.txt
-	    info "Damos permisos a $y, $x. \n"
-      done
-      linea
-   done
-fi
+#   echo -e "\\pset tuples_only \n select MAX(idempresafact) from empresafact ;" | psql metabd > /tmp/listdb.lst
+#   for x in `tail +2 /tmp/listdb.lst`
+#   do
+#      info "Creamos los permisos necesarios. \n"
+#      tiempo
+#      echo -e "\\pset tuples_only \n select idusuario FROM usuario ;" | psql metabd > /tmp/listuser.lst
+#      for y in `tail +2 /tmp/listuser.lst`
+#      do
+#	    echo "INSERT INTO usuario_empresafact (idusuario,idempresafact, permisos) VALUES ($y, $x, 1)" | psql $6   2>> /tmp/errores1.txt >> /tmp/errores1.txt
+#	    info "Damos permisos a $y, $x. \n"
+#      done
+#      linea
+#   done
+#fi
 
 DBS=`cat /tmp/errores1.txt | grep ERROR`
 if [ "$DBS" ]; then
