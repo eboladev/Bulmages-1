@@ -160,3 +160,13 @@ fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
    prov->exec();
    delete prov;
 }
+
+
+void providerslist::contextMenuRequested(int a, int b, const QPoint &d) {
+   QString idprov = m_list->text(a, COL_IDPROVEEDOR);
+   provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
+   prov->chargeprovider(idprov);
+   prov->exec();
+   delete prov;
+}// end contextMenuRequested
+

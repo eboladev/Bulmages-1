@@ -38,6 +38,9 @@ public:
     
 public slots:
     virtual void dobleclick(int, int, int, const QPoint &);
+    virtual void contextMenuRequested(int, int, const QPoint &);
+    
+    
 };
 
 #endif

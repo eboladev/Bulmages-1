@@ -3,6 +3,8 @@
 #include "qdialog.h"
 #include "qlayout.h"
 #include "qcolor.h"
+#include <qobject.h>
+#include <qevent.h>
 
 Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
 //  QPixmap image0( logofx );
@@ -64,8 +66,8 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   connect( timer1, SIGNAL(timeout()), SLOT(paint()) );
   timer1->start( 1750 ); //timer1->start( 1750);
   
-  connect(this, SIGNAL(clicked()),this,  SLOT(close()) );
-  connect(this, SIGNAL(returnPressed()),this,  SLOT(close()) );
+//  connect(this, SIGNAL(clicked()),this,  SLOT(close()) );
+//  connect(this, SIGNAL(returnPressed()),this,  SLOT(close()) );
 //  connect((QObject *) &image0, SIGNAL(clicked(int, int)),this, SLOT(close()) );
   
   exec();
@@ -77,6 +79,12 @@ Splash::~Splash() {
  delete l2;
 }
 
+bool Splash::event( QEvent *evt) {
+	if (evt->type() == QEvent::KeyPress) {
+		close();
+	}// end if
+	return QWidget::event( evt);
+}// end event
 
 void Splash::paint() {
   static int a=0;
@@ -104,3 +112,6 @@ void Splash::paint() {
   l2->setText( cad );
   l2->scrollBy(0,400);
 }
+
+
+
