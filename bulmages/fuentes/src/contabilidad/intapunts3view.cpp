@@ -234,6 +234,8 @@ void intapunts3view::cargarcursor(int numasiento) {
         while (!cursorasientos->bof() && atoi(cursorasientos->valor("idasiento").ascii())>numasiento) {
             cursorasientos->registroanterior();
         }// end while
+        //Si el asiento no existe porque acabamos de borrarlo, entonces nos situamos sobre el primer registro
+        if (cursorasientos->bof()) cursorasientos->primerregistro();
     }// end if
 }// end cargarcursor
 
