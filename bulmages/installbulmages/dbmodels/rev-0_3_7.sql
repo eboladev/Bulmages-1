@@ -67,6 +67,37 @@ CREATE TABLE ejercicios (
 
 ALTER TABLE asiento ADD COLUMN clase smallint;
 
+
+
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 0, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 1, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 2, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 3, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 4, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 5, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 6, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 7, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 8, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 9, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 10, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 11, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, 12, FALSE);
+
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 0, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 1, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 2, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 3, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 4, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 5, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 6, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 7, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 8, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 9, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 10, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 11, FALSE);
+INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 12, FALSE);
+
+
 DROP FUNCTION reordenaasientos();
 DROP FUNCTION reordenaasientos(integer);
 

@@ -19,7 +19,8 @@
 #include "funcaux.h"
 
 
-asientoview::asientoview(QWidget *parent, const char *name, bool modal) : asientodlg(parent,name,modal) {
+asientoview::asientoview(empresa *emp,QWidget *parent, const char *name, bool modal) : asientodlg(parent,name,modal) {
+empresaactual=emp;
 ordenasiento_mostrado=0;
 }
 
@@ -100,7 +101,7 @@ int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, Q
   QString cadenaAux="";
   // Si ya existe un asiento con el orden que intentamos asignar debemos desplazar los asientos posteriores.
   //Solamente desplazamos si ordenasiento ha cambiado, en caso contrario No
-  query.sprintf("SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND ordenasiento=%s",EjercicioActual.ascii(),orden.ascii());
+  query.sprintf("SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND ordenasiento=%s",empresaactual->ejercicioactual().ascii(),orden.ascii());
   conexionbase->begin();
   cursor2 *cur = conexionbase->cargacursor(query,"micursor");
 
@@ -112,7 +113,7 @@ int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, Q
   //Controlamos que no se dupliquen los asientos de apertura, regularización y cierre
   if (claseAsiento->currentItem()==0 ) { //El asiento es de Apertura
       valorClaseAsiento="0";
-      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='0' AND idasiento<>'%d'",EjercicioActual.ascii(), numasiento);
+      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='0' AND idasiento<>'%d'",empresaactual->ejercicioactual().ascii(), numasiento);
       cur = conexionbase->cargacursor(query,"clase0");
       if (!cur->eof() ) { 
           cadenaAux =cur->valor(1);
@@ -125,7 +126,7 @@ int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, Q
   }
   if (claseAsiento->currentItem()==2) { //El asiento es de Regularización
       valorClaseAsiento="98";
-      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='98' AND idasiento<>'%d'",EjercicioActual.ascii(), numasiento);
+      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='98' AND idasiento<>'%d'",empresaactual->ejercicioactual().ascii(), numasiento);
       cur = conexionbase->cargacursor(query,"clase98");
       if (!cur->eof() ) { 
           cadenaAux =cur->valor(1);
@@ -135,7 +136,7 @@ int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, Q
   }
   if (claseAsiento->currentItem()==3) { //El asiento es de Cierre
       valorClaseAsiento="99";
-      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='99' AND idasiento<>'%d'",EjercicioActual.ascii(), numasiento);
+      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='99' AND idasiento<>'%d'",empresaactual->ejercicioactual().ascii(), numasiento);
       cur = conexionbase->cargacursor(query,"clase99");
       if (!cur->eof() ) { 
           cadenaAux =cur->valor(1);

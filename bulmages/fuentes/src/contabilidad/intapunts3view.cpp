@@ -188,7 +188,7 @@ void intapunts3view::cargarcursor(int numasiento) {
     int ordenasiento=0;
     
     if (numasiento > 0) ordenasiento =atoi(ORDENASIENTO);
-    fprintf(stderr,"Ejercicio: %s, IdAsiento: %d, OrdenAsiento: %d \n", EjercicioActual.ascii(), numasiento, ordenasiento);
+    fprintf(stderr,"Ejercicio: %s, IdAsiento: %d, OrdenAsiento: %d \n", empresaactual->ejercicioactual().ascii(), numasiento, ordenasiento);
     
     cantapunt = filt->cantidadapunte->text();
     saldototal = filt->saldoasiento->text();
@@ -216,8 +216,8 @@ void intapunts3view::cargarcursor(int numasiento) {
         textnombreasiento += " idasiento in (SELECT idasiento FROM apunte WHERE conceptocontable LIKE '%"+nombreasiento+"%' )";
         pand = 1;
     }// end if
-    if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ EjercicioActual +"'";
-    else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ EjercicioActual +"'";
+    if (pand) textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ empresaactual->ejercicioactual() +"'";
+    else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ empresaactual->ejercicioactual() +"'";
     if ((numasiento != 0) && (numasiento != -1)) {
         //query = "SELECT * FROM asiento ORDER BY ordenasiento";
         query = "SELECT * FROM asiento" + textejercicio + " ORDER BY ordenasiento";
@@ -321,7 +321,7 @@ void intapunts3view::muestraasiento(int numasiento) {
         // No existe el numero de asiento que se ha introducido, por tanto lo avisamos y salimos.
         int valor = QMessageBox::warning( 0, "No existe asiento", "No existe un asiento con el numero que ha proporcionado, desea crear uno?.", QMessageBox::Yes, QMessageBox::No);
         if (valor == QMessageBox::Yes) {
-            asientoview *nuevoasiento = new asientoview;
+            asientoview *nuevoasiento = new asientoview(empresaactual);
             nuevoasiento->inicializa(conexionbase);
             int nasiento = nuevoasiento->creaasiento(fechaasiento1->text(), fechaasiento1->text(),numasiento,1);
             delete nuevoasiento;
@@ -637,11 +637,11 @@ void intapunts3view::boton_nuevoasiento() {
  * Esta funcion se encarga de hacer las inicializaciones en un asiento nuevo
  ********************************************************************************/
 void intapunts3view::iniciar_asiento_nuevo() {
-    asientoview *nuevoasiento = new asientoview;
+    asientoview *nuevoasiento = new asientoview(empresaactual);
     nuevoasiento->inicializa(conexionbase);
     idasiento = nuevoasiento->creaasiento( fechaasiento1->text(), fechaasiento1->text(),0,1);
     delete nuevoasiento;
-    if ( normalizafecha(fechaasiento1->text()).year() == EjercicioActual.toInt() ) {
+    if ( normalizafecha(fechaasiento1->text()).year() == empresaactual->ejercicioactual().toInt() ) {
         cargarcursor(idasiento);
         muestraasiento(idasiento);
     } else flashAsiento(idasiento);
@@ -1555,8 +1555,8 @@ void intapunts3view::asiento_cierre() {
     double diferencia;
     double nuevodebe, nuevohaber;
     QString nfecha = fechaasiento1->text();
-    nfecha.sprintf("31/12/%s",EjercicioActual.ascii());
-    asientoview *nuevoasiento = new asientoview;
+    nfecha.sprintf("31/12/%s",empresaactual->ejercicioactual().ascii());
+    asientoview *nuevoasiento = new asientoview(empresaactual);
     nuevoasiento->inicializa(conexionbase);
     numasiento = nuevoasiento->creaasiento( "Asiento de Cierre" ,nfecha ,0, 99); //99=>Cierre.
     QString query ="SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE idgrupo=6 OR idgrupo=7) GROUP BY idcuenta ORDER BY saldito";
@@ -1592,19 +1592,19 @@ void intapunts3view::asiento_apertura() {
   int idcuenta;
   int numasiento=0;
   double nuevodebe, nuevohaber;
-  QString nfecha = normalizafecha("02/01/"+EjercicioActual).toString("dd/MM/yyyy");
-  asientoview *nuevoasiento = new asientoview(this,"apertura");
+  QString nfecha = normalizafecha("02/01/"+empresaactual->ejercicioactual()).toString("dd/MM/yyyy");
+  asientoview *nuevoasiento = new asientoview(empresaactual,this,"apertura");
   //Buscamos en la tabla ejercicios si existe un ejercicio anterior, si no existe usaremos la metaDB.
   QString query;
   postgresiface2 * DBconnEjActual = new postgresiface2();
   DBconnEjActual->inicializa(empresaactual->nombreDB);
   DBconnEjActual->begin();
-  query.sprintf("SELECT * FROM ejercicios WHERE periodo='0' AND ejercicio='%d'",EjercicioActual.toInt()-1);
+  query.sprintf("SELECT * FROM ejercicios WHERE periodo='0' AND ejercicio='%d'",empresaactual->ejercicioactual().toInt()-1);
   cur = DBconnEjActual->cargacursor(query,"EjAnterior");
   DBconnEjActual->commit();
   if (!cur->eof()) { //Tenemos el Ejercicio anterior en la misma base de datos que el ejercicio actual
       DBconnEjActual->begin();
-      query.sprintf("SELECT idasiento FROM asiento WHERE clase='99' AND EXTRACT(YEAR FROM fecha)='%d'",EjercicioActual.toInt()-1);
+      query.sprintf("SELECT idasiento FROM asiento WHERE clase='99' AND EXTRACT(YEAR FROM fecha)='%d'",empresaactual->ejercicioactual().toInt()-1);
       cur = DBconnEjActual->cargacursor(query, "asiento99");
       query = "SELECT * FROM borrador WHERE idasiento =" + cur->valor("idasiento");
       cur = DBconnEjActual->cargacursor(query, "cierre");
@@ -1646,7 +1646,7 @@ void intapunts3view::asiento_apertura() {
   if (cur != NULL) {  
   //Comprovamos si ya existe un asiento de apertura i la borramos
   DBconnEjActual->begin();
-  query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='0'",EjercicioActual.ascii());
+  query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='0'",empresaactual->ejercicioactual().ascii());
   cursor2 *aux = DBconnEjActual->cargacursor(query,"aux");
   if (!aux->eof()) {
       numasiento = aux->valor(0).toInt();
@@ -1690,8 +1690,8 @@ void intapunts3view::asiento_regularizacion() {
     double totaldebe, totalhaber;
     double totaldebe1 =0, totalhaber1=0;
     QString nfecha = fechaasiento1->text();
-    nfecha.sprintf("31/12/%s",EjercicioActual.ascii());
-    asientoview *nuevoasiento = new asientoview;
+    nfecha.sprintf("31/12/%s",empresaactual->ejercicioactual().ascii());
+    asientoview *nuevoasiento = new asientoview(empresaactual);
     nuevoasiento->inicializa(conexionbase);
     numasiento = nuevoasiento->creaasiento(tr("Asiento de Regularización") ,nfecha,0,98); //98=regularizacion
     QString query = "SELECT * FROM cuenta where codigo ='129'";
@@ -1748,7 +1748,7 @@ void intapunts3view::boton_cargarasiento() {
     QString query;
     int IdAsien=0;
     conexionbase->begin();
-    query.sprintf("SELECT idasiento FROM asiento WHERE ordenasiento<=%d AND EXTRACT(YEAR FROM fecha)=%s ORDER BY ordenasiento DESC",idasiento1->text().toInt(),EjercicioActual.ascii());
+    query.sprintf("SELECT idasiento FROM asiento WHERE ordenasiento<=%d AND EXTRACT(YEAR FROM fecha)=%s ORDER BY ordenasiento DESC",idasiento1->text().toInt(),empresaactual->ejercicioactual().ascii());
     cursor2 *curs = conexionbase->cargacursor(query, "micursor");
     conexionbase->commit();
     if (!curs->eof()) {
@@ -1801,7 +1801,7 @@ void intapunts3view::borrar_asiento(bool confirmarBorrado) {
 ****************************************************************/
 void intapunts3view::editarasiento() {
     guardaborrador(rowactual);
-    asientoview *nuevoasiento= new asientoview(0,"",true);
+    asientoview *nuevoasiento= new asientoview(empresaactual,0,"",true);
     nuevoasiento->inicializa(conexionbase);
     nuevoasiento->cargaasiento(atoi(IDASIENTO));
     nuevoasiento->exec();

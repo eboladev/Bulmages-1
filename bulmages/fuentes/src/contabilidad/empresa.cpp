@@ -91,7 +91,17 @@ int empresa::inicializa1(QWorkspace *space) {
     conexionbase2->commit();
     numdigitos=cursoraux1->valor(2).length();
     delete cursoraux1;  
-  
+    
+    
+    //Buscamos el último ejercicio en la tabla "ejercicios"
+    query="SELECT MAX(ejercicio) AS ejercicio FROM ejercicios WHERE periodo=0";
+    conexionbase2->begin();
+    cursor2 *recordSet = conexionbase2->cargacursor(query,"recordSet");
+    conexionbase2->commit();
+    if (!recordSet->eof()) EjercicioActual=recordSet->valor("ejercicio");
+    else EjercicioActual="";
+    delete recordSet;
+
     
   if (extracto != NULL) {
     delete extracto;
@@ -306,7 +316,7 @@ int empresa::muestraapuntes1() {
 
 
 int empresa::muestraasientos() {
-  asientosview *nuevae = new asientosview(0,"",true);
+  asientosview *nuevae = new asientosview(this, 0,"",true);
   nuevae->inicializa(conexionbase2, introapunts1);
   nuevae->exec();
 //  introapunts->cargarcursor(0);

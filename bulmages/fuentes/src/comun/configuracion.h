@@ -100,6 +100,6 @@ class configuracion {
 extern configuracion *confpr;
 extern QApplication *theApp;
 extern QTranslator * traductor;
-extern QString EjercicioActual;
+//extern QString EjercicioActual;
 
 #endif

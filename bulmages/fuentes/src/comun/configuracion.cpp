@@ -162,17 +162,13 @@ valores[PRIVILEGIOS_USUARIO]= "1";
 }// end leeconfig
 
 void configuracion::cargarEntorno(QString baseDatos) {
+/*
     postgresiface2 DBConn;
     QString query;
     cursor2 *recordSet;
     DBConn.inicializa(baseDatos);
     DBConn.begin();
-    //Buscamos el último ejercicio en la tabla "ejercicios"
-    query="SELECT MAX(ejercicio) AS ejercicio FROM ejercicios WHERE periodo=0";
-    recordSet = DBConn.cargacursor(query,"recordSet");
-    DBConn.commit();
-    if (!recordSet->eof()) EjercicioActual=recordSet->valor("ejercicio");
-    else EjercicioActual="";
+*/
 }
 
 

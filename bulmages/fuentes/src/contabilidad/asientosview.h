@@ -27,7 +27,7 @@
 */
 #include "intapunts3view.h"
 #include "filtrarasientosview.h"
-
+#include "empresa.h"
 /** *@author Tomeu Borrás Riera */
 
 class asientosview : public asientosdlg  {
@@ -36,8 +36,9 @@ public:
   postgresiface2 *conexionbase;
   intapunts3view *introapunts;
   filtrarasientosview *filt ; // Este objeto contiene todas las opciones de filtraje necesarias para funcionar.
+  empresa *empresaactual;
 public: 
-  asientosview(QWidget *parent=0, const char *name=0, bool=true);
+  asientosview(empresa *emp, QWidget *parent=0, const char *name=0, bool=true);
   ~asientosview();
   void inicializa(postgresiface2 *, intapunts3view *);
 public slots:

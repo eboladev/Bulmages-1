@@ -110,6 +110,7 @@ public:
     void slotPropiedadesEmpresa();
     /** Slot para cambiar de Ejercicio */
     void setCurrentEjercicio(QAction *a);
+    void setCurrentEjercicio();
     /** Slot para el libro mayor */
     void slotLibroMayor();
     /** Slot para guardar la empresa */

@@ -26,6 +26,7 @@
 #include <qmessagebox.h>
 #include <qtextedit.h>
 #include "postgresiface2.h"
+#include "empresa.h"
 
 /** *@author Tomeu Borrás Riera */
 
@@ -35,8 +36,9 @@ public:
    postgresiface2 *conexionbase;
    int idasiento_mostrado;
    int ordenasiento_mostrado;
+   empresa *empresaactual;
 public: 
-   asientoview(QWidget *parent=0, const char *name=0, bool modal=true);
+   asientoview(empresa *emp,QWidget *parent=0, const char *name=0, bool modal=true);
    ~asientoview();
    void inicializa(postgresiface2 *);
    void cargaasiento(int);

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+echo -e "Comprobando versiones anteriores\n"
+
 if [ -e /etc/bulmages.conf ]; then
 #  Hacemos una actualizacion de las bases de datos.
    su - postgres -c "echo -e \"\\pset tuples_only \n select nombredb from empresa;\" | psql metabd" > listdb.lst
@@ -48,7 +51,10 @@ else
 
 
 # Hacemos una insercion inicial de las bases de datos.
+   echo -e "Creando directorio /usr/share/bulmages\n"
    mkdir /usr/share/bulmages
+   
+   echo -e "Creando bases de datos \n"
    su - postgres -c "dropdb  bulmages" 2>> errores.txt > /dev/null
    su - postgres -c "createdb bulmages" 2>> errores.txt > /dev/null
    su - postgres -c "psql bulmages" < dbmodels/bulmages.pgdump 2>> errores.txt > /dev/null
@@ -58,16 +64,26 @@ else
    su - postgres -c "dropdb metabd" 2>> errores.txt > /dev/null
    su - postgres -c "createdb metabd" 2>> errores.txt > /dev/null
    su - postgres -c "psql metabd" < dbmodels/metabd.pgdump 2>> errores.txt > /dev/null
+   
+   # Tratamos el archivo de configuracion
+   echo -e "Copiando la nueva version de bulmages.conf\n"
    cp bulmages.conf /etc
 
    # Presentamos los errores acaecidos
    cat errores.txt | grep ERROR
+   
+   # Vamos a crear el usuario que acceda a la base de datos.
+   echo Indique el usuario que va a trabajar normalmente con el programa:
+   read user
+   su - postgres -c "createuser --adduser --createdb $user"
 fi
 
 # Copiamos todos los archivos de la nueva version a sus localizaciones normales.
+echo -e "Copiando archivos de imagenes\n"
 cp *.jpg /usr/share/bulmages
 cp *.png /usr/share/bulmages
 
+echo -e "Copiando ejecutables\n"
 cp bulmages /usr/local/bin
 cp cargaemp /usr/local/bin
 cp nuevaemp /usr/local/bin
@@ -75,8 +91,10 @@ cp borraremp /usr/local/bin
 cp guardaemp /usr/local/bin
 cp cargaemp /usr/local/bin
 
+echo -e "Copiando archivos de revision de bulmages.conf\n"
 cp rev-* /usr/share/bulmages
-   
+
+echo -e "Copiando archivos auxiliares\n"
 cp -r dbmodels /usr/share/bulmages
 cp -r backgrounds /usr/share/bulmages
 cp -r ayuda /usr/share/bulmages

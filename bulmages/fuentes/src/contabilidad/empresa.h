@@ -40,6 +40,7 @@
 class empresa {
 private:
   QString nombre;
+  QString EjercicioActual;     // Indica cual es el ejercicio actual de la base de datos.
   int ano;
   QString contrasenya;
   QWorkspace *pWorkspace;
@@ -63,6 +64,8 @@ public:
   intapunts3view *intapuntsempresa() {return(introapunts1);}
   int numdigitosempresa() { return(numdigitos);}
   QString nomuserempresa() { return(nombre);}
+  QString ejercicioactual() {return(EjercicioActual);}
+  void setejactual(QString ej) {EjercicioActual=ej;}
   int inicializa(QString * DB=0, QString * User=0, QString * Passwd=0);
   int muestracuentas();
   int nuevacuenta();

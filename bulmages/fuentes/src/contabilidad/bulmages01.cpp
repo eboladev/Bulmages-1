@@ -67,10 +67,10 @@
 Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd,QString *ejercicioMetaDB) 
 : QMainWindow(parent,name,f) {
   //Si no existe un ejercicio en la tabla "ejercicios" entonces usamos el ejercicio de la MetaDB
-  if (EjercicioActual =="") EjercicioActual = *ejercicioMetaDB;
-  setCaption(tr("BulmaGés ") + EjercicioActual);
   DBName=*DB;
   empresaactual.inicializa(DB,User,Passwd);
+  if (empresaactual.ejercicioactual() =="") empresaactual.setejactual(*ejercicioMetaDB);
+  setCaption(tr("BulmaGés ") + empresaactual.ejercicioactual());  
   initView();
   initActions();
   initMenuBar();
@@ -595,9 +595,10 @@ void Bulmages01::initMenuBar() {
   DBconn->commit();
   while (!curEjer->eof()) {
       aux=curEjer->valor(0);
-      a = new QAction(aux,0,anys,aux);
-      //a = new QAction(this,0);
-      a->setToggleAction(true);
+      a = new QAction(aux,aux,0,this);
+      connect(a, SIGNAL(activated()),this, SLOT(setCurrentEjercicio(a)));
+      connect(a, SIGNAL(activated()),this, SLOT(setCurrentEjercicio()));
+//      a->setToggleAction(true);
       a->addTo(menuEjercicios);
       curEjer->siguienteregistro();
   }
@@ -897,10 +898,20 @@ void Bulmages01::slotPropiedadesEmpresa()  {
 }// end slotPropiedadesEmpresa
 
 void Bulmages01::setCurrentEjercicio(QAction *a)  {
-EjercicioActual=a->text();
-setCaption(tr("BulmaGés ") + EjercicioActual);
+fprintf(stderr,"Cambio de ejercicio\n");
+setCaption(tr("BulmaGés ") + a->text());
+empresaactual.setejactual(a->text());
 empresaactual.cambioejercicio();
 }// end setCurrentEjercicio
+
+void Bulmages01::setCurrentEjercicio()  {
+QAction *a= (QAction *)sender();
+fprintf(stderr,"Cambio de ejercicio\n");
+setCaption(tr("BulmaGés ") + a->text());
+empresaactual.setejactual(a->text());
+empresaactual.cambioejercicio();
+}// end setCurrentEjercicio
+
 
 /*
 void Bulmages01::slotUsuarios() {
@@ -1044,7 +1055,7 @@ void Bulmages01::slotAbrirasientos() {
 }// end slotAbrirasientos
 
 void Bulmages01::slotOrdenarasientos() {
-  empresaactual.Ordenarasientos(EjercicioActual.toInt());
+  empresaactual.Ordenarasientos(empresaactual.ejercicioactual().toInt());
 }// end slotOrdenarasientos
 
 

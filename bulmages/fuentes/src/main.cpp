@@ -32,7 +32,7 @@
 
 QApplication * theApp;
 QTranslator * traductor;
-QString EjercicioActual="";
+// QString EjercicioActual="";
 
 
 int main(int argc, char *argv[]) {
