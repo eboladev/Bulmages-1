@@ -35,7 +35,7 @@
          <codcuenta>4770016</codcuenta>
          <descripcionb></descripcionb>
          <debe>0</debe>
-         <haber>$total$ - $total$/1.1</haber>
+         <haber>$total$ - $total$/1.16</haber>
          <contrapartida></contrapartida>
          <comentario></comentario>
          <canal></canal>
