@@ -18,42 +18,46 @@
 
 
 
-abreempresaview::abreempresaview(BSelector *parent, const char *name, bool modal) : abreempresadlg(0,name,modal) {
+abreempresaview::abreempresaview(BSelector *parent, int tipo, const char *name, bool modal) : abreempresadlg(0,name,modal) {
    padre = parent;
    postgresiface2 *apuestatealgo;
    apuestatealgo = new postgresiface2();
    apuestatealgo->inicializa( confpr->valor(CONF_METABASE).c_str() );
    QListViewItem *it;
-   
-   // Cargamos las contabilidades.
    cursor2 *a;
-   apuestatealgo->begin();
-   a=apuestatealgo->cargaempresas();
-   apuestatealgo->commit();
-   while (!a->eof()) {
-         it =new QListViewItem(empresas);
-         it->setText(0,a->valor(1));
-         it->setText(1,a->valor(2));
-         it->setText(2,a->valor(3));
-         it->setText(3,"BulmaGés");
-         a->siguienteregistro();
-   }// end while
-   delete a;
    
-   // Cargamos las facturaciones.
-   apuestatealgo->begin();
-   a=apuestatealgo->cargacursor("SELECT * FROM empresafact","otroquery");
-   apuestatealgo->commit();
-   while (!a->eof()) {
-         it =new QListViewItem(empresas);
-         it->setText(0,a->valor(1));
-         it->setText(1,a->valor(2));
-         it->setText(2,a->valor(3));
-         it->setText(3,"BulmaFact");
-         a->siguienteregistro();
-   }// end while
-   delete a;
-   
+   if (tipo==1 || tipo == 0) {
+      // Cargamos las contabilidades.
+      apuestatealgo->begin();
+      a=apuestatealgo->cargaempresas();
+      apuestatealgo->commit();
+      while (!a->eof()) {
+            it =new QListViewItem(empresas);
+            it->setText(0,a->valor(1));
+            it->setText(1,a->valor(2));
+            it->setText(2,a->valor(3));
+            it->setText(3,"BulmaGés");
+            a->siguienteregistro();
+      }// end while
+      delete a;
+   }
+
+   if (tipo ==2 || tipo == 0) {   
+      // Cargamos las facturaciones.
+      apuestatealgo->begin();
+      a=apuestatealgo->cargacursor("SELECT * FROM empresafact","otroquery");
+      apuestatealgo->commit();
+      while (!a->eof()) {
+            it =new QListViewItem(empresas);
+            it->setText(0,a->valor(1));
+            it->setText(1,a->valor(2));
+            it->setText(2,a->valor(3));
+            it->setText(3,"BulmaFact");
+            a->siguienteregistro();
+      }// end while
+      delete a;
+   }// end if
+      
    delete apuestatealgo;
    intentos=0;
 }// end abreempresaview

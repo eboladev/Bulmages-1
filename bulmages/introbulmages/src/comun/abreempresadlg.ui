@@ -151,17 +151,6 @@
                                 <bool>false</bool>
                             </property>
                         </widget>
-                        <widget class="QPushButton">
-                            <property name="name">
-                                <cstring>botonAyuda</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Ayuda</string>
-                            </property>
-                            <property name="autoDefault">
-                                <bool>false</bool>
-                            </property>
-                        </widget>
                     </vbox>
                 </widget>
             </hbox>
@@ -170,7 +159,7 @@
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="364">89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff610000013349444154789c7d93316bc33010853f15326468a1ffff2f944ea15b3b14e22d4b211e3a284bf1508a0c4e91412dbc0e27bb56625b601e3af99ddedd3d21498ab2d519f8ca53c49b8c51124820ffe6d9577b500899bc802148498a51864d10a0988fcb9bba0b1ce2b504149f2597961544631f5e9e0528786fe5d5074b90933b49a207b6c019b8057e800d38e70050126c801ef80577e790042ddcd0b699dc1ab9efe1dbc8f2c17edce4f32db45f2700fa33703f1433d41aff6b1d63973de954f4a054b00585c66ea50726ca66149c3e4e6e7e0a6b538913059f6b5358f1859568fb751f2cf86250e02b3fe3c43cffab9b539492f4fcb4cb0ae28c8246e50452c63a962e9c2846c976bbc707016ade8fa392583723698ca75221fef5789d394dfc90967be22b6f4e2dd690798877f61a977af307bc120e51888af9ad0000000049454e44ae426082</data>
+        <data format="PNG" length="349">89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff610000012449444154388d8d92316bc33010853f153cb8d0a1ffff2f944ea15bbac55bc666c8e042874be820430272700baf836427726db7027170a77bf7a17b489282e239c5609591e52dc520092490ed8c4db501799f9a6762aa872416cc0b5048e57cd26914fbfc4e02b21bc5a579823472fbba16205fd792a47ab78d0249dc49122d500267e001f8020a70ce01a04e50002d00b87b872468e08ea649cd4d6c6e5bb8c4667d84f8b048f5129ae33b00ed1978849ca08dead9546ec8fe242841de62f13bbdeec926080ec7839bdec2d2563a5db7f0b9b485055fc42df87ff860c6173d815536e1c4de72e3c95dccaf5f5689204c10983293a84b71e4c45b627ae5d5f39300d9feed4ab2f743d390ef7242acaa7f2b77ca3d3ff3275659f44c767ae5a179f96f7e001882e760da8a6a640000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -196,7 +185,6 @@
 <tabstops>
     <tabstop>botonAceptar</tabstop>
     <tabstop>botonCancelar</tabstop>
-    <tabstop>botonAyuda</tabstop>
 </tabstops>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

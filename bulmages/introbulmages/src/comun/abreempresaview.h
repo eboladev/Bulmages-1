@@ -48,7 +48,7 @@ public:
    QString tipo;
    
 public:
-   abreempresaview(BSelector *parent=0, const char *name=0, bool modal=true);
+   abreempresaview(BSelector *parent=0,int tipo=0, const char *name=0, bool modal=true);
    ~abreempresaview();
 
    

@@ -25,9 +25,7 @@
 #include <qlineedit.h>
 
 
-/**
-@author Josep Burcion
-*/
+/** @author Josep Burcion */
 class BSelector;
 
 class BNuevaEmpresa : public nuevaempresadlg

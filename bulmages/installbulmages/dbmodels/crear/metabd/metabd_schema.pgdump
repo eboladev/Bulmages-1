@@ -77,7 +77,7 @@ CREATE TABLE usuario_empresa (
     idusuarioempresa integer DEFAULT nextval('"usuario_empre_idusuarioempr_seq"'::text) NOT NULL,
     idempresa integer,
     idusuario integer,
-    permisos integer
+    permisos integer DEFAULT 1
 );
 
 
