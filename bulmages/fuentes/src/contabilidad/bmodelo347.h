@@ -35,7 +35,7 @@ public:
 public slots:
     virtual void click_recargar();
     virtual void click_imprimir();
-
+    virtual void formatea_fecha();
 private:
         postgresiface2 * DBConn;
 	char *fichero;

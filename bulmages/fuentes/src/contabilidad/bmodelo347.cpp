@@ -127,3 +127,26 @@ void BModelo347::click_imprimir() {
    }// end if
 #endif
 }
+
+
+void BModelo347::formatea_fecha()
+{
+    QLineEdit *fecha = (QLineEdit *) sender();
+    fecha->setText(normalizafecha(fecha->text()).toString("dd/MM/yyyy"));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
