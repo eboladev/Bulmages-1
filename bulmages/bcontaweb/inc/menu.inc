@@ -22,4 +22,15 @@ Diario
 <A HREF="mayor.php">
 Mayor</A>
 <BR>
-</TD></TR></table>
+</TD></TR>
+<TR><TD>
+Sincronizacion/ Importacion / Exportacion
+<br>
+<UL>
+<A HREF="impexp.php">BulmaGés <==> Galopín v1.0</A><BR>
+BulmaGés <==> Facturalux<BR>
+BulmaGés <==> XML<BR>
+BulmaGés <==> Contaplús<BR>
+</UL></TD></TR>
+
+</table>

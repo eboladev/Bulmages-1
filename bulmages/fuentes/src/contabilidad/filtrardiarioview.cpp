@@ -25,8 +25,6 @@ filtrardiarioview::filtrardiarioview(empresa *emp, QWidget *parent, const char *
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
    
-   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-   cargacostes();
    fprintf(stderr,"Fin del CONSTRUCTOR de filtrardiarioview\n");
 
 }// end filtrardiarioview
@@ -34,33 +32,6 @@ filtrardiarioview::filtrardiarioview(empresa *emp, QWidget *parent, const char *
 filtrardiarioview::~filtrardiarioview(){
 }
 
-void filtrardiarioview::cargacostes() {
-   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-   combocoste->clear();
-   QString query="SELECT * FROM c_coste ORDER BY nombre";
-   conexionbase->begin();
-   cursor2 *cursorcoste = conexionbase->cargacursor(query,"costes");
-   conexionbase->commit();
-   combocoste->insertItem("--",0);
-   ccostes[0]=0;
-   int i=1;
-   while (!cursorcoste->eof()) {
-      combocoste->insertItem(cursorcoste->valor(2),-1);
-      ccostes[i++] = atoi(cursorcoste->valor(0).ascii());
-      cursorcoste->siguienteregistro();
-   }// end while
-   delete cursorcoste;
-}// end cargacostes
-
-
-void filtrardiarioview::setccoste(int idc_coste) {
-   // Establecemos el centro de coste correspondiente.
-   int i=0;
-   while (ccostes[i]!=idc_coste && i<100) i++;
-   if (i<100) {
-     combocoste->setCurrentItem(i);
-   }// end if
-}// end setccoste
 
 void filtrardiarioview::buscacontrapartida() {
   listcuentasview1 *listcuentas = new listcuentasview1();
@@ -70,3 +41,25 @@ void filtrardiarioview::buscacontrapartida() {
    contrapartida->setText(listcuentas->codcuenta);
    delete listcuentas;
 }// end buscacontrapartida
+
+void filtrardiarioview::boton_canales() {
+   fprintf(stderr,"Boton canales\n");
+   selectcanalview *selcanales = empresaactual->getselcanales();
+   selcanales->exec();
+   fprintf(stderr,"---------------INICIO---------------------\n");
+   selcanales->firstcanal();
+   while (selcanales->nextcanal());
+   fprintf(stderr,"-----------------FIN---------------------\n");
+//   selccostes->show();
+}// end boton_canales
+
+void filtrardiarioview::boton_ccostes() {
+   fprintf(stderr,"Boton ccostes\n");
+   selectccosteview *selccostes = empresaactual->getselccostes();
+   selccostes->exec();
+   fprintf(stderr,"---------------INICIO---------------------\n");
+   selccostes->firstccoste();
+   while (selccostes->nextccoste());
+   fprintf(stderr,"-----------------FIN---------------------\n");
+//   selccostes->show();
+}// end boton_ccostes

@@ -39,10 +39,10 @@ public:
   
    filtrardiarioview(empresa *, QWidget *parent=0, const char *name=0);
 	~filtrardiarioview();
-   void cargacostes();
-   void setccoste(int);
    
    public slots:
    virtual void buscacontrapartida();
+   virtual void boton_canales();
+   virtual void boton_ccostes();
 };
 #endif

@@ -122,10 +122,7 @@ diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int fl
    fechafinal1->setText(cadena);
 
    //Inicializamos el filtro
-	filt = new filtrardiarioview(empresaactual,0,0);       
-	// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-   cargacostes();
-
+   filt = new filtrardiarioview(empresaactual,0,0);       
 }// end diarioview1
 
 diarioview1::~diarioview1(){
@@ -150,9 +147,6 @@ void diarioview1::inicializa(postgresiface2 *conn){
 }// end inicializa
 */
 
-void diarioview1::cargacostes() {
-   filt->cargacostes();
-}// end cargacostes
 
 
 void diarioview1::inicializa1(QString finicial, QString ffinal, int idc_coste) {
@@ -183,9 +177,6 @@ void diarioview1::inicializa1(QString finicial, QString ffinal, int idc_coste) {
    fecha1aux.setYMD(ano,mes,dia);
    cadena2.sprintf("%2.2d/%2.2d/%4.4d",fecha1aux.day(), fecha1aux.month(), fecha1aux.year());
    fechafinal1->setText(cadena2);
-
-   // Establecemos el centro de coste correspondiente.
-   filt->setccoste(idc_coste);
 }// end inicializa1
 
 
@@ -249,7 +240,7 @@ void diarioview1::boton_extracto1(int tipo) {
 			break;
 		}// end switch
 //		extracto->inicializa1((char *) tapunts->text(rowactual, COL_SUBCUENTA).ascii(), (char *)tapunts->text(rowactual, COL_SUBCUENTA).ascii(),(char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
-	   extracto->inicializa1(listado->text(listado->currentRow(),COL_CUENTA),listado->text(listado->currentRow(),COL_CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"),  filt->ccostes[filt->combocoste->currentItem()]);
+	   extracto->inicializa1(listado->text(listado->currentRow(),COL_CUENTA),listado->text(listado->currentRow(),COL_CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
    }// end if
    extracto->accept();
    extracto->show();
@@ -326,7 +317,7 @@ void diarioview1::presentar() {
    listado->setNumRows(0);
    totaldebe1=totalhaber1=0;
    cursor2 *cursoraux;
-   idc_coste = filt->ccostes[filt->combocoste->currentItem()];
+   idc_coste = 0;
    conexionbase->begin();
    if (idc_coste!= 0) {
      query.sprintf( "SELECT asiento.ordenasiento, apunte.contrapartida, apunte.fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, apunte.conceptocontable,apunte.descripcion AS descapunte, apunte.debe, apunte.haber, cuenta.idcuenta, asiento.idasiento, apunte.idc_coste, apunte.idcanal, cuenta.codigo FROM asiento, apunte, cuenta WHERE apunte.idc_coste=%d AND asiento.idasiento=apunte.idasiento AND apunte.idcuenta = cuenta.idcuenta AND apunte.fecha >= '%s' AND apunte.fecha <= '%s' ORDER BY apunte.fecha, asiento.idasiento, apunte.orden", idc_coste, finicial.ascii(), ffinal.ascii() );

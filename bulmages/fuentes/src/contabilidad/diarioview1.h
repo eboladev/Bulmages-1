@@ -58,7 +58,6 @@ public:
    void inicializa1(QString, QString, int);
    void inicializa2(intapunts3view *, extractoview1 *, balanceview *);
    void presentar();
-   void cargacostes();
    void boton_filtrar();
    
 public slots:

@@ -8,8 +8,6 @@ $result1 = pg_exec($metabd,$SQLQuery1);
 $SQLQuery1 = "SET DateStyle TO 'European'";
 $result1 = pg_exec($metabd,$SQLQuery1);  
 
-
-
 $autentificado = 0;
 if ($logincookie != "") {
 	$SQLQuery = "SELECT * FROM usuario WHERE login='$logincookie'";
@@ -75,4 +73,23 @@ if ($DEBUG==1) {
 	echo "<BR>";
 	echo pg_result($usuario,0,"nombre");
 }// end if
+?>
+
+<?php 
+function nuevacuenta($database) {
+   echo "Nueva cuenta:";
+	$SQLQuery = "SELECT * FROM cuenta WHERE codigo LIKE '430%'";
+	$result = pg_exec($database, $SQLQuery);
+	$filas = pg_numRows($result);
+	$valormax = 0;
+	while ($filas--) {
+	   $valor = atoi (pg_result($result, $filas, "codigo"));
+	   if ($valor > $valormax) {
+	   	$valormax = $valor;
+	   }// end if
+	}// end while
+	$valormax++;
+	echo $valormax;
+}// end nuevacuenta
+
 ?>

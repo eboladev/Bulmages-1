@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>366</width>
-            <height>279</height>
+            <height>205</height>
         </rect>
     </property>
     <property name="caption">
@@ -79,62 +79,6 @@
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout6</cstring>
-                    </property>
-                    <vbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout2</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel1</cstring>
-                                    </property>
-                                    <property name="text">
-                                        <string>Centro de Coste</string>
-                                    </property>
-                                </widget>
-                                <widget class="QComboBox">
-                                    <property name="name">
-                                        <cstring>combocoste</cstring>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout1</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel1_2</cstring>
-                                    </property>
-                                    <property name="text">
-                                        <string>Canal</string>
-                                    </property>
-                                </widget>
-                                <widget class="QComboBox">
-                                    <property name="name">
-                                        <cstring>comboBox1_2</cstring>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                    </vbox>
-                </widget>
             </hbox>
         </widget>
         <widget class="QLayoutWidget">
@@ -312,10 +256,24 @@
         <receiver>filtrardiariodlg</receiver>
         <slot>buscacontrapartida()</slot>
     </connection>
+    <connection>
+        <sender>toolButton2</sender>
+        <signal>clicked()</signal>
+        <receiver>filtrardiariodlg</receiver>
+        <slot>boton_canales()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton2_2</sender>
+        <signal>clicked()</signal>
+        <receiver>filtrardiariodlg</receiver>
+        <slot>boton_ccostes()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>reset()</slot>
     <slot>buscacontrapartida()</slot>
+    <slot>boton_canales()</slot>
+    <slot>boton_ccostes()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>UIpresupuesto</class>
 <widget class="QWidget">
     <property name="name">
@@ -9,536 +9,169 @@
             <x>0</x>
             <y>0</y>
             <width>780</width>
-            <height>522</height>
+            <height>582</height>
         </rect>
     </property>
     <property name="caption">
         <string>Tabla: presupuesto</string>
     </property>
-    <widget class="QButtonGroup">
-        <property name="name">
-            <cstring>buttonGroup1</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>13</x>
-                <y>30</y>
-                <width>60</width>
-                <height>280</height>
-            </rect>
-        </property>
-        <property name="lineWidth">
-            <number>0</number>
-        </property>
-        <property name="title">
-            <string></string>
-        </property>
-        <property name="radioButtonExclusive">
-            <bool>true</bool>
-        </property>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>botonX1</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>0</y>
-                    <width>40</width>
-                    <height>40</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="iconSet">
-                <iconset>fileopen_4.png</iconset>
-            </property>
-            <property name="toolTip" stdset="0">
-                <string>Pedidos del Cliente</string>
-            </property>
-        </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>botonX2</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>40</y>
-                    <width>41</width>
-                    <height>40</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="iconSet">
-                <iconset>fileprint.png</iconset>
-            </property>
-            <property name="toolTip" stdset="0">
-                <string>Imprimir</string>
-            </property>
-        </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>botonX3</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>80</y>
-                    <width>41</width>
-                    <height>40</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="iconSet">
-                <iconset>compfile.png</iconset>
-            </property>
-            <property name="toolTip" stdset="0">
-                <string>Traspasar</string>
-            </property>
-        </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>botonX4</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>120</y>
-                    <width>41</width>
-                    <height>40</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="iconSet">
-                <iconset>window_new.png</iconset>
-            </property>
-            <property name="buttonGroupId">
-                <number>3</number>
-            </property>
-            <property name="toolTip" stdset="0">
-                <string>Nuevo</string>
-            </property>
-        </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>botonX5</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>170</y>
-                    <width>41</width>
-                    <height>40</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="iconSet">
-                <iconset>edittrash.png</iconset>
-            </property>
-            <property name="buttonGroupId">
-                <number>4</number>
-            </property>
-            <property name="toolTip" stdset="0">
-                <string>Borrar</string>
-            </property>
-        </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>botonX6</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>210</y>
-                    <width>41</width>
-                    <height>40</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="iconSet">
-                <iconset>exit.png</iconset>
-            </property>
-            <property name="buttonGroupId">
-                <number>5</number>
-            </property>
-            <property name="toolTip" stdset="0">
-                <string>Cerrar</string>
-            </property>
-        </widget>
-    </widget>
     <widget class="QGroupBox">
         <property name="name">
-            <cstring>contenedorLineas</cstring>
+            <cstring>contenedorTotales</cstring>
         </property>
         <property name="geometry">
             <rect>
-                <x>80</x>
-                <y>170</y>
-                <width>700</width>
-                <height>231</height>
+                <x>11</x>
+                <y>387</y>
+                <width>758</width>
+                <height>124</height>
             </rect>
         </property>
         <property name="title">
-            <string>Lineas Presupuesto</string>
+            <string>Totales </string>
         </property>
-        <widget class="QTable">
-            <column>
-                <property name="text">
-                    <string>Articulo</string>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Descripción</string>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Unidades</string>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Precio</string>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Descuento</string>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Importe</string>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Uds. Servidas</string>
-                </property>
-            </column>
+        <grid>
             <property name="name">
-                <cstring>tablaLineas</cstring>
+                <cstring>unnamed</cstring>
             </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>20</y>
-                    <width>680</width>
-                    <height>160</height>
-                </rect>
-            </property>
-            <property name="numRows">
-                <number>10</number>
-            </property>
-            <property name="numCols">
-                <number>7</number>
-            </property>
-            <property name="showGrid">
-                <bool>true</bool>
-            </property>
-        </widget>
-        <widget class="QFrame">
-            <property name="name">
-                <cstring>contenedorBotonesLineas</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>20</x>
-                    <y>190</y>
-                    <width>370</width>
-                    <height>32</height>
-                </rect>
-            </property>
-            <property name="frameShape">
-                <enum>StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-                <enum>Sunken</enum>
-            </property>
-            <widget class="QPushButton">
+            <widget class="QLineEdit" row="1" column="5" rowspan="2" colspan="1">
                 <property name="name">
-                    <cstring>botonL1</cstring>
+                    <cstring>totalAlbaran</cstring>
                 </property>
-                <property name="geometry">
-                    <rect>
-                        <x>10</x>
-                        <y>1</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
+                <property name="paletteBackgroundColor">
+                    <color>
+                        <red>255</red>
+                        <green>255</green>
+                        <blue>0</blue>
+                    </color>
                 </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="iconSet">
-                    <iconset>find.png</iconset>
-                </property>
-                <property name="flat">
-                    <bool>false</bool>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Buscar Articulo</string>
+                <property name="readOnly">
+                    <bool>true</bool>
                 </property>
             </widget>
-            <widget class="QPushButton">
+            <widget class="QLineEdit" row="0" column="1" rowspan="2" colspan="2">
                 <property name="name">
-                    <cstring>botonL2</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>40</x>
-                        <y>1</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="iconSet">
-                    <iconset>folder_new.png</iconset>
-                </property>
-                <property name="flat">
-                    <bool>false</bool>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Mantenimiento Articulo</string>
+                    <cstring>lineEdit12</cstring>
                 </property>
             </widget>
-            <widget class="QPushButton">
+            <widget class="QLineEdit" row="2" column="1" rowspan="1" colspan="2">
                 <property name="name">
-                    <cstring>botonL3</cstring>
+                    <cstring>lineEdit7</cstring>
                 </property>
-                <property name="geometry">
-                    <rect>
-                        <x>70</x>
-                        <y>0</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="iconSet">
-                    <iconset>editdelete.png</iconset>
-                </property>
-                <property name="flat">
-                    <bool>false</bool>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Borrar Linea</string>
+                <property name="readOnly">
+                    <bool>true</bool>
                 </property>
             </widget>
-            <widget class="QPushButton">
+            <widget class="QLineEdit" row="4" column="1">
                 <property name="name">
-                    <cstring>botonL4</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>100</x>
-                        <y>1</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="iconSet">
-                    <iconset>1downarrow.png</iconset>
-                </property>
-                <property name="flat">
-                    <bool>false</bool>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Insertar Linea</string>
+                    <cstring>lineEdit10</cstring>
                 </property>
             </widget>
-            <widget class="QPushButton">
+            <widget class="QLineEdit" row="4" column="2">
                 <property name="name">
-                    <cstring>botonL5</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>160</x>
-                        <y>1</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="iconSet">
-                    <iconset>2leftarrow.png</iconset>
-                </property>
-                <property name="flat">
-                    <bool>false</bool>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Primero</string>
+                    <cstring>lineEdit11_2</cstring>
                 </property>
             </widget>
-            <widget class="QPushButton">
+            <widget class="QLineEdit" row="3" column="2">
                 <property name="name">
-                    <cstring>botonL6</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>190</x>
-                        <y>1</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="iconSet">
-                    <iconset>1leftarrow.png</iconset>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Anterior</string>
+                    <cstring>lineEdit9_2</cstring>
                 </property>
             </widget>
-            <widget class="QPushButton">
+            <widget class="QLineEdit" row="3" column="1">
                 <property name="name">
-                    <cstring>botonL7</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>220</x>
-                        <y>1</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
-                </property>
-                <property name="text">
-                    <string></string>
-                </property>
-                <property name="iconSet">
-                    <iconset>1rightarrow.png</iconset>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Posterior</string>
+                    <cstring>lineEdit8</cstring>
                 </property>
             </widget>
-            <widget class="QPushButton">
+            <widget class="QLabel" row="0" column="0" rowspan="2" colspan="1">
                 <property name="name">
-                    <cstring>botonL8</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>250</x>
-                        <y>1</y>
-                        <width>30</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>0</width>
-                        <height>30</height>
-                    </size>
+                    <cstring>textLabel2_2_2</cstring>
                 </property>
                 <property name="text">
-                    <string></string>
-                </property>
-                <property name="iconSet">
-                    <iconset>2rightarrow.png</iconset>
-                </property>
-                <property name="toolTip" stdset="0">
-                    <string>Último</string>
+                    <string>Portes</string>
                 </property>
             </widget>
-            <widget class="QComboBox">
-                <item>
+            <widget class="QLabel" row="2" column="0">
+                <property name="name">
+                    <cstring>textLabel3_2_2</cstring>
+                </property>
+                <property name="text">
+                    <string>Total</string>
+                </property>
+            </widget>
+            <widget class="QLabel" row="3" column="0">
+                <property name="name">
+                    <cstring>textLabel4_2_2</cstring>
+                </property>
+                <property name="text">
+                    <string>% Dto. P.P.</string>
+                </property>
+            </widget>
+            <widget class="QLabel" row="4" column="0">
+                <property name="name">
+                    <cstring>textLabel5_2</cstring>
+                </property>
+                <property name="text">
+                    <string>Recargo Finan.</string>
+                </property>
+            </widget>
+            <widget class="QLabel" row="0" column="5">
+                <property name="name">
+                    <cstring>etiquetaTotalAlbaran</cstring>
+                </property>
+                <property name="font">
+                    <font>
+                        <pointsize>14</pointsize>
+                    </font>
+                </property>
+                <property name="text">
+                    <string>Total Presup. (€)</string>
+                </property>
+            </widget>
+            <widget class="QTable" row="0" column="4" rowspan="5" colspan="1">
+                <column>
                     <property name="text">
-                        <string>Presupuesto</string>
+                        <string>Base IVA</string>
                     </property>
-                </item>
-                <item>
+                </column>
+                <column>
                     <property name="text">
-                        <string>Cliente</string>
+                        <string>% IVA</string>
                     </property>
-                </item>
-                <item>
+                </column>
+                <column>
                     <property name="text">
-                        <string>Fecha</string>
+                        <string>Imp. IVA</string>
                     </property>
-                </item>
+                </column>
                 <property name="name">
-                    <cstring>comboBox1</cstring>
+                    <cstring>tablaIVA</cstring>
                 </property>
-                <property name="geometry">
-                    <rect>
-                        <x>283</x>
-                        <y>5</y>
-                        <width>81</width>
-                        <height>21</height>
-                    </rect>
+                <property name="maximumSize">
+                    <size>
+                        <width>350</width>
+                        <height>90</height>
+                    </size>
                 </property>
-                <property name="toolTip" stdset="0">
-                    <string>Orden</string>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="hScrollBarMode">
+                    <enum>AlwaysOff</enum>
+                </property>
+                <property name="numRows">
+                    <number>4</number>
+                </property>
+                <property name="numCols">
+                    <number>3</number>
+                </property>
+                <property name="selectionMode">
+                    <enum>Multi</enum>
+                </property>
+                <property name="focusStyle">
+                    <enum>SpreadSheet</enum>
                 </property>
             </widget>
-        </widget>
+        </grid>
     </widget>
     <widget class="QGroupBox">
         <property name="name">
@@ -546,10 +179,10 @@
         </property>
         <property name="geometry">
             <rect>
-                <x>80</x>
-                <y>10</y>
-                <width>700</width>
-                <height>160</height>
+                <x>11</x>
+                <y>11</y>
+                <width>758</width>
+                <height>166</height>
             </rect>
         </property>
         <property name="sizePolicy">
@@ -575,85 +208,13 @@
         <property name="checked">
             <bool>false</bool>
         </property>
-        <widget class="QScrollBar">
+        <grid>
             <property name="name">
-                <cstring>scrollBar1</cstring>
+                <cstring>unnamed</cstring>
             </property>
-            <property name="geometry">
-                <rect>
-                    <x>680</x>
-                    <y>7</y>
-                    <width>20</width>
-                    <height>135</height>
-                </rect>
-            </property>
-            <property name="maxValue">
-                <number>100</number>
-            </property>
-            <property name="lineStep">
-                <number>10</number>
-            </property>
-            <property name="pageStep">
-                <number>100</number>
-            </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
-            </property>
-        </widget>
-        <widget class="QScrollBar">
-            <property name="name">
-                <cstring>scrollBar2</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>1</x>
-                    <y>140</y>
-                    <width>680</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="lineStep">
-                <number>10</number>
-            </property>
-            <property name="pageStep">
-                <number>100</number>
-            </property>
-            <property name="orientation">
-                <enum>Horizontal</enum>
-            </property>
-        </widget>
-        <widget class="QFrame">
-            <property name="name">
-                <cstring>baseScrollCabecera</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>10</y>
-                    <width>670</width>
-                    <height>120</height>
-                </rect>
-            </property>
-            <property name="frameShape">
-                <enum>StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-                <enum>Plain</enum>
-            </property>
-            <property name="lineWidth">
-                <number>0</number>
-            </property>
-            <widget class="QFrame">
+            <widget class="QFrame" row="0" column="0">
                 <property name="name">
-                    <cstring>FrameCabecera</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>0</y>
-                        <width>900</width>
-                        <height>300</height>
-                    </rect>
+                    <cstring>baseScrollCabecera</cstring>
                 </property>
                 <property name="frameShape">
                     <enum>StyledPanel</enum>
@@ -664,679 +225,266 @@
                 <property name="lineWidth">
                     <number>0</number>
                 </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="midLineWidth">
-                    <number>0</number>
-                </property>
-                <widget class="QLayoutWidget">
+                <grid>
                     <property name="name">
-                        <cstring>layout102</cstring>
+                        <cstring>unnamed</cstring>
                     </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>10</x>
-                            <y>10</y>
-                            <width>202</width>
-                            <height>92</height>
-                        </rect>
-                    </property>
-                    <grid>
+                    <widget class="QFrame" row="0" column="0">
                         <property name="name">
-                            <cstring>unnamed</cstring>
+                            <cstring>FrameCabecera</cstring>
                         </property>
-                        <widget class="QLabel" row="3" column="0">
-                            <property name="name">
-                                <cstring>textLabel4_3_4</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Telefono:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit" row="2" column="2">
-                            <property name="name">
-                                <cstring>lineEdit150</cstring>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit" row="0" column="1" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>NumAlbaran</cstring>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="1" column="0">
-                            <property name="name">
-                                <cstring>textLabel4_3_2</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Fecha:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="2" column="0" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>textLabel4_3_3</cstring>
-                            </property>
-                            <property name="text">
-                                <string>A la atencion de:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit" row="1" column="1" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>lineEdit149</cstring>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit" row="3" column="1" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>lineEdit151</cstring>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="0" column="0">
-                            <property name="name">
-                                <cstring>textLabel4_3</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Numero:</string>
-                            </property>
-                        </widget>
-                    </grid>
-                </widget>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout103</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>230</x>
-                            <y>10</y>
-                            <width>242</width>
-                            <height>92</height>
-                        </rect>
-                    </property>
-                    <grid>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
+                        <property name="frameShape">
+                            <enum>StyledPanel</enum>
                         </property>
-                        <widget class="QLineEdit" row="3" column="2">
-                            <property name="name">
-                                <cstring>lineEdit152</cstring>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit" row="2" column="1" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>lineEdit9</cstring>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit" row="0" column="1" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>lineEdit1</cstring>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit" row="1" column="1" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>lineEdit2</cstring>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="2" column="0">
-                            <property name="name">
-                                <cstring>textLabel3_3</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Población:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="1" column="0">
-                            <property name="name">
-                                <cstring>textLabel2_3</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Dirección:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="3" column="0" rowspan="1" colspan="2">
-                            <property name="name">
-                                <cstring>textLabel4_3_5</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Validez del presupuesto:</string>
-                            </property>
-                        </widget>
-                        <widget class="QLabel" row="0" column="0">
-                            <property name="name">
-                                <cstring>textLabel1_2</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Cliente:</string>
-                            </property>
-                        </widget>
-                    </grid>
-                </widget>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout107</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>10</x>
-                            <y>110</y>
-                            <width>180</width>
-                            <height>170</height>
-                        </rect>
-                    </property>
-                    <vbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
+                        <property name="frameShadow">
+                            <enum>Plain</enum>
                         </property>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel13</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Albaranes:</string>
-                            </property>
-                        </widget>
-                        <widget class="QListView">
-                            <column>
-                                <property name="text">
-                                    <string>Albaran</string>
-                                </property>
-                                <property name="clickable">
-                                    <bool>true</bool>
-                                </property>
-                                <property name="resizable">
-                                    <bool>true</bool>
-                                </property>
-                            </column>
-                            <column>
-                                <property name="text">
-                                    <string>Fecha</string>
-                                </property>
-                                <property name="clickable">
-                                    <bool>true</bool>
-                                </property>
-                                <property name="resizable">
-                                    <bool>true</bool>
-                                </property>
-                            </column>
-                        <item>
-                            <property name="text">
-                                <string>New Item</string>
-                            </property>
-                            <property name="text">
-                                <string></string>
-                            </property>
-                            <property name="pixmap">
-                                <pixmap></pixmap>
-                            </property>
-                            <property name="pixmap">
-                                <pixmap></pixmap>
-                            </property>
-                        </item>
-                            <property name="name">
-                                <cstring>listView8</cstring>
-                            </property>
-                        </widget>
-                    </vbox>
-                </widget>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout108</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>210</x>
-                            <y>110</y>
-                            <width>160</width>
-                            <height>170</height>
-                        </rect>
-                    </property>
-                    <vbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
+                        <property name="lineWidth">
+                            <number>0</number>
                         </property>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel15</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Formas de Pago:</string>
-                            </property>
-                        </widget>
-                        <widget class="QListView">
-                            <column>
-                                <property name="text">
-                                    <string>Descripcion</string>
-                                </property>
-                                <property name="clickable">
-                                    <bool>true</bool>
-                                </property>
-                                <property name="resizable">
-                                    <bool>true</bool>
-                                </property>
-                            </column>
-                        <item>
-                            <property name="text">
-                                <string>New Item</string>
-                            </property>
-                            <property name="pixmap">
-                                <pixmap></pixmap>
-                            </property>
-                        </item>
-                            <property name="name">
-                                <cstring>listView9</cstring>
-                            </property>
-                        </widget>
-                    </vbox>
-                </widget>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout108_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>390</x>
-                            <y>110</y>
-                            <width>160</width>
-                            <height>170</height>
-                        </rect>
-                    </property>
-                    <vbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
+                        <property name="margin">
+                            <number>0</number>
                         </property>
-                        <widget class="QLabel">
+                        <property name="midLineWidth">
+                            <number>0</number>
+                        </property>
+                        <grid>
                             <property name="name">
-                                <cstring>textLabel15_2</cstring>
+                                <cstring>unnamed</cstring>
                             </property>
-                            <property name="text">
-                                <string>Descuentos en presupuesto:</string>
-                            </property>
-                        </widget>
-                        <widget class="QListView">
-                            <column>
-                                <property name="text">
-                                    <string>Descripcion</string>
+                            <widget class="QLayoutWidget" row="0" column="0" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>layout102</cstring>
                                 </property>
-                                <property name="clickable">
-                                    <bool>true</bool>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel" row="3" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel4_3_4</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Telefono:</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="2" column="2">
+                                        <property name="name">
+                                            <cstring>lineEdit150</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="0" column="1" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>NumAlbaran</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="1" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel4_3_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Fecha:</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="2" column="0" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>textLabel4_3_3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>A la atencion de:</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="1" column="1" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>lineEdit149</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="3" column="1" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>lineEdit151</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="0" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel4_3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Numero:</string>
+                                        </property>
+                                    </widget>
+                                </grid>
+                            </widget>
+                            <widget class="QLayoutWidget" row="0" column="2" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>layout103</cstring>
                                 </property>
-                                <property name="resizable">
-                                    <bool>true</bool>
-                                </property>
-                            </column>
-                        <item>
-                            <property name="text">
-                                <string>New Item</string>
-                            </property>
-                            <property name="pixmap">
-                                <pixmap></pixmap>
-                            </property>
-                        </item>
-                            <property name="name">
-                                <cstring>listView9_2</cstring>
-                            </property>
-                        </widget>
-                    </vbox>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonC1</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>490</x>
-                            <y>2</y>
-                            <width>30</width>
-                            <height>30</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>find.png</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Buscar Cliente</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonC2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>520</x>
-                            <y>2</y>
-                            <width>30</width>
-                            <height>30</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>folder_new.png</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Mantenimiento Clientes</string>
-                    </property>
-                </widget>
-                <widget class="QTextEdit">
-                    <property name="name">
-                        <cstring>textEdit2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>560</x>
-                            <y>0</y>
-                            <width>150</width>
-                            <height>160</height>
-                        </rect>
-                    </property>
-                </widget>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLineEdit" row="3" column="2">
+                                        <property name="name">
+                                            <cstring>lineEdit152</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="2" column="1" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>lineEdit9</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="0" column="1" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>lineEdit1</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="1" column="1" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>lineEdit2</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="2" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel3_3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Población:</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="1" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel2_3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Dirección:</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="3" column="0" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>textLabel4_3_5</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Validez del presupuesto:</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="0" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel1_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Cliente:</string>
+                                        </property>
+                                    </widget>
+                                </grid>
+                            </widget>
+                        </grid>
+                    </widget>
+                </grid>
             </widget>
-        </widget>
+        </grid>
     </widget>
     <widget class="QGroupBox">
         <property name="name">
-            <cstring>contenedorTotales</cstring>
+            <cstring>contenedorLineas</cstring>
         </property>
         <property name="geometry">
             <rect>
-                <x>10</x>
-                <y>400</y>
-                <width>760</width>
-                <height>110</height>
+                <x>11</x>
+                <y>183</y>
+                <width>758</width>
+                <height>198</height>
             </rect>
         </property>
         <property name="title">
-            <string>Totales </string>
+            <string>Lineas Presupuesto</string>
         </property>
-        <widget class="QTable">
-            <column>
-                <property name="text">
-                    <string>Base IVA</string>
+        <grid>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <widget class="QTable" row="0" column="0">
+                <column>
+                    <property name="text">
+                        <string>Articulo</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Descripción</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Unidades</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Precio</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Descuento</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Importe</string>
+                    </property>
+                </column>
+                <column>
+                    <property name="text">
+                        <string>Uds. Servidas</string>
+                    </property>
+                </column>
+                <property name="name">
+                    <cstring>tablaLineas</cstring>
                 </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>% IVA</string>
+                <property name="numRows">
+                    <number>10</number>
                 </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Imp. IVA</string>
+                <property name="numCols">
+                    <number>7</number>
                 </property>
-            </column>
-            <property name="name">
-                <cstring>tablaIVA</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>250</x>
-                    <y>12</y>
-                    <width>350</width>
-                    <height>90</height>
-                </rect>
-            </property>
-            <property name="maximumSize">
-                <size>
-                    <width>350</width>
-                    <height>90</height>
-                </size>
-            </property>
-            <property name="margin">
-                <number>0</number>
-            </property>
-            <property name="hScrollBarMode">
-                <enum>AlwaysOff</enum>
-            </property>
-            <property name="numRows">
-                <number>4</number>
-            </property>
-            <property name="numCols">
-                <number>3</number>
-            </property>
-            <property name="selectionMode">
-                <enum>Multi</enum>
-            </property>
-            <property name="focusStyle">
-                <enum>SpreadSheet</enum>
-            </property>
-        </widget>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>totalAlbaran</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>620</x>
-                    <y>30</y>
-                    <width>125</width>
-                    <height>25</height>
-                </rect>
-            </property>
-            <property name="paletteBackgroundColor">
-                <color>
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>0</blue>
-                </color>
-            </property>
-            <property name="readOnly">
-                <bool>true</bool>
-            </property>
-        </widget>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>lineEdit12</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>90</x>
-                    <y>20</y>
-                    <width>100</width>
-                    <height>16</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>lineEdit7</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>90</x>
-                    <y>40</y>
-                    <width>100</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="readOnly">
-                <bool>true</bool>
-            </property>
-        </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>pushButton27</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>196</x>
-                    <y>12</y>
-                    <width>30</width>
-                    <height>30</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>pushButton27</string>
-            </property>
-            <property name="iconSet">
-                <iconset>find.png</iconset>
-            </property>
-            <property name="toolTip" stdset="0">
-                <string>Opciones</string>
-            </property>
-        </widget>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>lineEdit10</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>90</x>
-                    <y>79</y>
-                    <width>41</width>
-                    <height>16</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>lineEdit11_2</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>79</y>
-                    <width>51</width>
-                    <height>16</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>lineEdit9_2</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>140</x>
-                    <y>60</y>
-                    <width>51</width>
-                    <height>16</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>lineEdit8</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>90</x>
-                    <y>60</y>
-                    <width>41</width>
-                    <height>16</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>textLabel2_2_2</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>20</x>
-                    <y>21</y>
-                    <width>40</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Portes</string>
-            </property>
-        </widget>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>textLabel3_2_2</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>20</x>
-                    <y>39</y>
-                    <width>48</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Total</string>
-            </property>
-        </widget>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>textLabel4_2_2</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>20</x>
-                    <y>60</y>
-                    <width>70</width>
-                    <height>16</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>% Dto. P.P.</string>
-            </property>
-        </widget>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>textLabel5_2</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>80</y>
-                    <width>70</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Recargo Finan.</string>
-            </property>
-        </widget>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>etiquetaTotalAlbaran</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>620</x>
-                    <y>10</y>
-                    <width>118</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <property name="font">
-                <font>
-                    <pointsize>14</pointsize>
-                </font>
-            </property>
-            <property name="text">
-                <string>Total Presup. (€)</string>
-            </property>
-        </widget>
+                <property name="showGrid">
+                    <bool>true</bool>
+                </property>
+            </widget>
+        </grid>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton19</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>580</x>
+                <y>530</y>
+                <width>81</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Aceptar</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>pushButton18</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>670</x>
+                <y>530</y>
+                <width>101</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Cancelar</string>
+        </property>
     </widget>
 </widget>
-<connections>
-    <connection>
-        <sender>scrollBar1</sender>
-        <signal>valueChanged(int)</signal>
-        <receiver>UIpresupuesto</receiver>
-        <slot>ScrollCabeceraV(int)</slot>
-    </connection>
-    <connection>
-        <sender>scrollBar2</sender>
-        <signal>valueChanged(int)</signal>
-        <receiver>UIpresupuesto</receiver>
-        <slot>ScrollCabeceraH(int)</slot>
-    </connection>
-    <connection>
-        <sender>botonX6</sender>
-        <signal>clicked()</signal>
-        <receiver>UIpresupuesto</receiver>
-        <slot>close()</slot>
-    </connection>
-</connections>
 <slots>
     <slot>ScrollCabeceraH(int)</slot>
     <slot>ScrollCabeceraV(int)</slot>

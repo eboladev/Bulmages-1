@@ -447,6 +447,12 @@ exists (estadisticas){
   contabilidad/resmensualdlg.ui
 }
 
+
+exists (rtk) {
+   LIBS += ../src/rtk/rtkserver/src/librtkserver.a
+   DEFINES += RTK
+}
+
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

@@ -246,7 +246,6 @@ int empresa::ccostes() {
   delete ccoste;
 //  introapunts1->cargacostes();
   extracto->cargacostes();
-  diario->cargacostes();
   balance->cargacostes();
   return(0);
 }// end ccostes

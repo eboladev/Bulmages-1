@@ -8,9 +8,13 @@
 # y comentar las del directorio de estadisticas.
 # O borrar el directorio gdcchart
 
-#exists(src/gdcchart) {
-#    SUBDIRS += src/gdcchart
-#}
+exists(src/gdcchart) {
+    SUBDIRS += src/gdcchart
+}
+
+exists(src/rtk) {
+   SUBDIRS= src/rtk/rtkserver/src
+}
 
 exists(src/estadisticas) {
     SUBDIRS += src/estadisticas
