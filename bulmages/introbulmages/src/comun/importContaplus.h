@@ -26,11 +26,13 @@ private:
 public:
     importContaplus(postgresiface2 *, QWidget *, const char *, WFlags );
     ~importContaplus(){};
-    void botonImportar();
     
 public slots:
-	void botonBuscarSubCta();
-	void botonBuscarDiario();
+	virtual void botonBuscarSubCta();
+	virtual void botonBuscarDiario();
+	virtual void botonImportar();
+	virtual void botonExportar();
+
 };
 
 

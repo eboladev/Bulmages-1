@@ -20,8 +20,6 @@
 #include <qtabwidget.h>
 #include <qfile.h>
 
-#include "gongimportfiles.h"
-#include "pgimportfiles.h"
 #include "bnuevaempresa.h"
 #include "nuevafact.h"
 
@@ -144,26 +142,21 @@ void BConfiguracion::BotonA_10aceptar() {
 }// BotonA_10aceptar
 
 
+
+#include "importContaplus.h"
 /// Responde a la pusación de importar datos de Contaplus a BulmaGés
 void BConfiguracion::BotonContaplus() {
+	
+	
 	fprintf(stderr,"Importar desde Contaplus\n");
 	postgresiface2 *DBconn = new postgresiface2();
 	DBconn->inicializa(PunteroAlSelector->empresabd);
 	
-//	QFile filedest("/home/tborras/.bulmages/contadest.txt");
-	QFile filecont ("/home/tborras/Desktop/contaplus/xsubcta_ex.txt");
-	QFile fileasie ("/home/tborras/Desktop/contaplus/diario_ex.txt");
-//	filedest.open(IO_ReadWrite);
-	filecont.open(IO_ReadOnly);
-	fileasie.open(IO_ReadOnly);
-//	Contaplus2Fugit(filedest, filecont, fileasie);
-	pgimportfiles *importacion = new pgimportfiles(DBconn);
-	importacion->contaplus2Bulmages(filecont, fileasie);
+	importContaplus *import= new importContaplus(DBconn,0,0,0);
+	import->exec();
+	delete import;
+	
 
-//	filedest.close();
-	filecont.close();
-	fileasie.close();
-	delete importacion;
 }// end BotonContaplus
 
 

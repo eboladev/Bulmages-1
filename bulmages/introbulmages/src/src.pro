@@ -18,21 +18,25 @@ SOURCES += main.cpp \
 	   comun/bnuevaempresa.cpp \
 	   comun/nuevafact.cpp \
 	   comun/gongimportfiles.cpp \
-	   comun/pgimportfiles.cpp
+	   comun/pgimportfiles.cpp \
+	   comun/importContaplus.cpp
 HEADERS += comun/bselector.h \
            comun/bconfiguracion.h \
 	   comun/bnuevaempresa.h \
 	   comun/nuevafact.h \
 	   comun/pgimportfiles.h \
-	   comun/gongimportfiles.h
+	   comun/gongimportfiles.h \
+	   comun/importContaplus.h
 IDLS += comun/uiselector.ui \
         comun/uiconfiguracion.ui \
 	comun/nuevaempresadlg.ui \
-	comun/nuevafactbase.ui 
+	comun/nuevafactbase.ui \
+	comun/importContaplusBase.ui
 FORMS += comun/uiselector.ui \
          comun/uiconfiguracion.ui \
 	 comun/nuevaempresadlg.ui \
-	 comun/nuevafactbase.ui
+	 comun/nuevafactbase.ui \
+	 comun/importContaplusBase.ui
 	 
 INCLUDEPATH += ../../bulmalib
 unix{

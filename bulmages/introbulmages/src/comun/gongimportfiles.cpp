@@ -3,54 +3,54 @@
 #include "gongimportfiles.h"
 #include <qtextstream.h>
 
-const double EURO = 166.386;
+#define EURO  166.386
 
-const int LEN_CODIGO_CUENTA=12;
-const int LEN_TITULO = 40;
-const int LEN_NIF = 15;
-const int LEN_DOMICILIO = 35;
-const int LEN_POBLACION = 25;
-const int LEN_PROVINCIA = 20;
-const int LEN_CODPOSTAL = 5;
-const int LEN_DIVISA = 1;
-const int LEN_CTA_CODDIVISA = 5;
-const int LEN_CTA_DOCUMENTO = 1;
-const int LEN_AJUSTAME = 1;
-const int LEN_TIPOIVA = 1;
+#define LEN_CODIGO_CUENTA 12
+#define LEN_TITULO  40
+#define LEN_NIF  15
+#define LEN_DOMICILIO  35
+#define LEN_POBLACION  25
+#define LEN_PROVINCIA  20
+#define LEN_CODPOSTAL  5
+#define LEN_DIVISA  1
+#define LEN_CTA_CODDIVISA  5
+#define LEN_CTA_DOCUMENTO  1
+#define LEN_AJUSTAME  1
+#define LEN_TIPOIVA  1
 
 
-const int LEN_ASIEN = 6;
-const int LEN_FECHA = 8;
-const int LEN_SUBCTA = 12;
-const int LEN_CONTRA = 12;
-const int LEN_PTADEBE = 16;
-const int LEN_CONCEPTO = 25;
-const int LEN_PTAHABER = 16;
-const int LEN_FACTURA = 8;
-const int LEN_BASEIMPO = 16;
-const int LEN_IVA = 5;
-const int LEN_RECEQUIV = 5;
-const int LEN_DOCUMENTO = 10;
-const int LEN_DEPARTA = 3;
-const int LEN_CLAVE = 6;
-const int LEN_ESTADO = 1;
-const int LEN_NCASADO = 6;
-const int LEN_TCASADO = 1;
-const int LEN_TRANS = 6;
-const int LEN_CAMBIO = 16;
-const int LEN_DEBEME = 16;
-const int LEN_HABERME = 16;
-const int LEN_AUXILIAR = 1;
-const int LEN_SERIE = 1;
-const int LEN_SUCURSAL = 4;
-const int LEN_CODDIVISA = 5;
-const int LEN_IMPAUXME = 16;
-const int LEN_MONEDAUSO = 1;
-const int LEN_EURODEBE = 16;
-const int LEN_EUROHABER = 16;
-const int LEN_BASEEURO = 16;
-const int LEN_NOCONV = 1;
-const int LEN_NUMEROINV = 10;
+#define LEN_ASIEN  6
+#define LEN_FECHA  8
+#define LEN_SUBCTA  12
+#define LEN_CONTRA  12
+#define LEN_PTADEBE  16
+#define LEN_CONCEPTO  25
+#define LEN_PTAHABER  16
+#define LEN_FACTURA  8
+#define LEN_BASEIMPO  16
+#define LEN_IVA  5
+#define LEN_RECEQUIV  5
+#define LEN_DOCUMENTO  10
+#define LEN_DEPARTA  3
+#define LEN_CLAVE  6
+#define LEN_ESTADO  1
+#define LEN_NCASADO  6
+#define LEN_TCASADO  1
+#define LEN_TRANS  6
+#define LEN_CAMBIO  16
+#define LEN_DEBEME  16
+#define LEN_HABERME  16
+#define LEN_AUXILIAR  1
+#define LEN_SERIE  1
+#define LEN_SUCURSAL  4
+#define LEN_CODDIVISA  5
+#define LEN_IMPAUXME  16
+#define LEN_MONEDAUSO  1
+#define LEN_EURODEBE  16
+#define LEN_EUROHABER  16
+#define LEN_BASEEURO  16
+#define LEN_NOCONV  1
+#define LEN_NUMEROINV  10
 
 
 

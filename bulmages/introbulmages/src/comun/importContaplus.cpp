@@ -76,3 +76,25 @@ void importContaplus::botonImportar() {
 	mensajein="";
 }// end botonImportar 
 
+void importContaplus::botonExportar() {
+
+	void (*func) (int,int);
+	func = realizado;
+	void (*func1) (QString);
+	func1 = publicamensaje;
+	QFile filecont (m_subCta->text());
+	QFile fileasie (m_diario->text());
+
+	filecont.open(IO_WriteOnly);
+	fileasie.open(IO_WriteOnly);
+	pgimportfiles *importacion = new pgimportfiles(conexionbase,func, func1);
+	if (m_test->isChecked() ) {
+		importacion->setModoTest();
+	}// end if
+	importacion->bulmages2Contaplus(filecont, fileasie);
+	filecont.close();
+	fileasie.close();
+	delete importacion;
+	
+	mensajein="";
+}// end botonExportar
