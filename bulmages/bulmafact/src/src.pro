@@ -16,11 +16,13 @@ SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
            providerslist.cpp \
-           provedit.cpp 
+           provedit.cpp \
+	   splashscreen.cpp
 HEADERS += bulmafact.h \
            company.h \
            providerslist.h \
-           provedit.h 
+           provedit.h \
+	   splashscreen.h
 IDLS += providerslistbase.ui \
         provedit_base.ui 
 FORMS += bulmafactbase.ui \
