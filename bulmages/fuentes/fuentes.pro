@@ -5,3 +5,4 @@
 
 TEMPLATE = subdirs
 SUBDIRS += src
+SUBDIRS += src/estadisticas

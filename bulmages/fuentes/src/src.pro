@@ -3,8 +3,23 @@
 # Subdir relative project main directory: ./src
 # Target is an application:  ../bin/bulmacont
 
-SUBDIRS += estadisticas
+exists (estadisticas){
+  LIBS += estadisticas/libestadisticas.lib.a
+  INCLUDEPATH += estadisticas
+  contabilidad/estadisticasdlg.ui.target = contabilidad/estadisticasdlg.ui
+  contabilidad/estadisticasdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg.ui.target
+  contabilidad/resmensualdlg.ui.target = contabilidad/resmensualdlg.ui
+  contabilidad/resmensualdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg.ui.target
+  DEFINES += ESTADISTICAS
+  IDLS += contabilidad/estadisticasdlg.ui \
+  contabilidad/resmensualdlg.ui
+  FORMS += contabilidad/estadisticasdlg.ui \
+  contabilidad/resmensualdlg.ui
+}
 
+
+
+TEMPLATE = app
 TARGETDEPS += ../../bulmalib/libbulmalib.a
 LIBS += ../../bulmalib/libbulmalib.a \
 -lqt-mt \
@@ -92,7 +107,6 @@ contabilidad/about.ui.target = contabilidad/about.ui
 contabilidad/cobropagodlg.ui.target = contabilidad/cobropagodlg.ui
 contabilidad/cobropagodlg.ui.commands = contabilidad/cobropagodlg.ui
 contabilidad/adocumentalbase.ui.target = contabilidad/adocumentalbase.ui
-TEMPLATE = app
 QMAKE_CLEAN += Makefile
 LANGUAGE = C++
 SOURCES += main.cpp \
@@ -399,19 +413,7 @@ FORMS += comun/uiselector.ui \
          comun/selectcanaldlg.ui \
          formularios/mod300dlg.ui \
          contabilidad/cobropagodlg.ui 
-exists (estadisticas){
-  LIBS += ../src/estadisticas/libestadisticas.lib.a
-  INCLUDEPATH += estadisticas
-  contabilidad/estadisticasdlg.ui.target = contabilidad/estadisticasdlg.ui
-  contabilidad/estadisticasdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg.ui.target
-  contabilidad/resmensualdlg.ui.target = contabilidad/resmensualdlg.ui
-  contabilidad/resmensualdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg.ui.target
-  DEFINES += ESTADISTICAS
-  IDLS += contabilidad/estadisticasdlg.ui \
-  contabilidad/resmensualdlg.ui
-  FORMS += contabilidad/estadisticasdlg.ui \
-  contabilidad/resmensualdlg.ui
-}
+
 exists (reports){
   LIBS += ../src/reports/lib/librtkserver.a
   INCLUDEPATH += ../src/reports/rtkserver/src
