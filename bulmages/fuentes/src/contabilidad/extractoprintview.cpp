@@ -52,9 +52,115 @@ void ExtractoPrintView::accept() {
 
    if (radiotexto->isChecked()) presentar("txt");
    else if (radiohtml->isChecked()) presentar("html");
+   else if (radiokugar->isChecked()) presentakugar();
    else pruebasRTK();
 
 }
+
+
+void ExtractoPrintView::presentakugar() {
+   int txt=1;
+   float debe, haber;
+   int idasiento=0;
+   string fecha;
+   string fechaasiento;
+   string descripcion;
+   string conceptocontable;
+   string codigo;
+   string ordenasiento;
+   string cad;
+   string desc1;
+   string codcontrapartida;
+   string codigoant="0";
+   string desccontrapartida;
+   cursor2 *cursoraux;
+
+   // Cogemos los valores del formulario.
+   QString finicial = fechainicial1->text();
+   QString ffinal = fechafinal1->text();
+
+
+      char *argstxt[]={"extracte.kud","extracte.kud",NULL};      //presentació txt normal
+      ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
+      if (!fitxersortidatxt) txt=0;    // verifiquem que s'hagin creat correctament els fitxers
+
+      if (txt) {
+            //presentació txt normal
+            fitxersortidatxt.setf(ios::fixed);
+            fitxersortidatxt.precision(2);
+            fitxersortidatxt << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" ;
+            fitxersortidatxt << "<!DOCTYPE KugarData [\n" ;
+            fitxersortidatxt << "\t<!ELEMENT KugarData (Row* )>\n" ;
+	    fitxersortidatxt << "\t\t<!ATTLIST KugarData\n";
+	    fitxersortidatxt << "\t\tTemplate CDATA #REQUIRED>\n";
+	    fitxersortidatxt << "\t<!ELEMENT Row EMPTY>\n";
+	    fitxersortidatxt << "\t<!ATTLIST Row \n";
+	    fitxersortidatxt << "\t\tlevel CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tdescripcion CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tfecha CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tcodigo CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tconceptocontable CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tdesc1 CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tordenasiento CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\tdebe CDATA #REQUIRED\n";
+	    fitxersortidatxt << "\t\thaber CDATA #REQUIRED>\n";
+	    fitxersortidatxt << "]>\n\n";	 
+	    fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).c_str() <<"extracte.kut\">\n";
+      }// end if
+
+         conexionbase->begin();
+         cursoraux = conexionbase->cargacursor("SELECT desccontrapartida, codcontrapartida, apunte.contrapartida AS contrapartida, ordenasiento, cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM apunte LEFT JOIN asiento ON apunte.idasiento=asiento.idasiento LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta LEFT JOIN (SELECT codigo AS codcontrapartida, idcuenta as contrapartida, descripcion AS desccontrapartida  FROM cuenta) AS t1 ON apunte.contrapartida = t1.contrapartida ORDER BY codigo, fecha","elquery");
+         conexionbase->commit();
+         for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
+               ordenasiento = atoi(cursoraux->valor("ordenasiento").ascii());
+               descripcion = cursoraux->valor("descripcion").ascii();
+               fecha = cursoraux->valor("fecha").left(10).ascii();
+               codigo = cursoraux->valor("codigo").ascii();
+               conceptocontable = cursoraux->valor("conceptocontable").ascii();
+               desc1 = cursoraux->valor("desc1").ascii();	       
+               ordenasiento = cursoraux->valor("ordenasiento").ascii();	       
+               debe = atof(cursoraux->valor("debe").ascii());
+               haber = atof(cursoraux->valor("haber").ascii());
+	       codcontrapartida = cursoraux->valor("codcontrapartida").ascii();
+	       desccontrapartida = cursoraux->valor("desccontrapartida").ascii();
+	       if (codigoant != codigo) {
+	       	/// Ponemos el row de nivel 0 ya que es por donde se agrupa.
+		/// Asi que kugar pide que se ponga el row dos veces por los agrupamientos.
+			fitxersortidatxt << "\t<Row level=\"0\" asiento=\""<< idasiento <<"\"";
+			fitxersortidatxt << " descripcion =\""<< conceptocontable.c_str() <<"\""; 
+			fitxersortidatxt << " fecha=\""<< fecha <<"\""; 
+			fitxersortidatxt << " codigo=\""<< codigo.c_str() <<"\""; 
+			fitxersortidatxt << " conceptocontable=\""<< conceptocontable.c_str() <<"\""; 
+			fitxersortidatxt << " desc1=\""<< desc1.c_str() <<"\""; 
+			fitxersortidatxt << " ordenasiento=\""<< ordenasiento.c_str() <<"\""; 
+			fitxersortidatxt << " debe=\""<< debe <<"\""; 
+			fitxersortidatxt << " haber=\""<< haber <<"\"\n" ; 
+			fitxersortidatxt << " codcontrapartida=\""<< codcontrapartida <<"\"\n" ; 		
+			fitxersortidatxt << " desccontrapartida=\""<< desccontrapartida <<"\"/>\n" ; 		
+	       }// end if
+               if (txt) {
+                  //presentació txt normal
+			fitxersortidatxt << "\t<Row level=\"1\" asiento=\""<< idasiento <<"\"";
+			fitxersortidatxt << " descripcion =\""<< conceptocontable.c_str() <<"\""; 
+			fitxersortidatxt << " fecha=\""<< fecha <<"\""; 
+			fitxersortidatxt << " codigo=\""<< codigo.c_str() <<"\""; 
+			fitxersortidatxt << " conceptocontable=\""<< conceptocontable.c_str() <<"\""; 
+			fitxersortidatxt << " desc1=\""<< desc1.c_str() <<"\""; 
+			fitxersortidatxt << " ordenasiento=\""<< ordenasiento.c_str() <<"\""; 
+			fitxersortidatxt << " debe=\""<< debe <<"\""; 
+			fitxersortidatxt << " haber=\""<< haber <<"\"\n" ; 
+			fitxersortidatxt << " codcontrapartida=\""<< codcontrapartida <<"\"\n" ; 
+			fitxersortidatxt << " desccontrapartida=\""<< desccontrapartida <<"\"/>\n" ; 
+               }
+	       codigoant = codigo;
+         }// end for
+         delete cursoraux;
+	 fitxersortidatxt <<"</KugarData>\n";
+         fitxersortidatxt.close();
+
+      system("kugar extracte.kud");
+}// end presentakugar
+
 
 
 // *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
@@ -90,7 +196,6 @@ void ExtractoPrintView::presentar(char *tipus) {
    float debefinal, haberfinal, saldofinal;
    int idcuenta;
    int idasiento;
-//   char *textasiento;
    int contrapartida;
    int activo;
    string cad;

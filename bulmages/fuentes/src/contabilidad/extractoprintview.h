@@ -47,6 +47,7 @@ public:
    void presentar(char *tipus);
    ~ExtractoPrintView();
    void pruebasRTK();
+   void presentakugar();
 public slots:
    virtual void accept();
    virtual void boton_codinicial();
