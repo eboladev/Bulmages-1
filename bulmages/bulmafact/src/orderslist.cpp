@@ -37,6 +37,7 @@ CREATE TABLE pedido (
 
 #include "orderslist.h"
 #include <qtable.h>
+#include <qmessagebox.h>
 #include "company.h"
 #include "linorderslist.h"
 
@@ -125,22 +126,26 @@ void orderslist::neworder() {
 
 void orderslist::removeOrder() {
 	fprintf(stderr, "removeOrder button activated");
-	int row = m_list->currentRow();
-	QString idOrder = m_list->text(row,COL_IDPEDIDO);
-	QString SQLQuery = "DELETE FROM lpedido WHERE idpedido ="+idOrder;
-	companyact->begin();
-	int ok=companyact->ejecuta(SQLQuery);
-	companyact->commit();
+	if (QMessageBox::warning( this, "BulmaFact - Pedidos",
+    "¿Seguro que desea borrar el pedido?", "Aceptar", "Cancelar") == 0) {
 	
-	if (ok==0) {
-		QString SQLQuery = "DELETE FROM pedido WHERE idpedido ="+idOrder;
+		int row = m_list->currentRow();
+		QString idOrder = m_list->text(row,COL_IDPEDIDO);
+		QString SQLQuery = "DELETE FROM lpedido WHERE idpedido ="+idOrder;
 		companyact->begin();
-		companyact->ejecuta(SQLQuery);
+		int ok=companyact->ejecuta(SQLQuery);
 		companyact->commit();
-	}
 	
-	inicializa();
-}// end neworder
+		if (ok==0) {
+			QString SQLQuery = "DELETE FROM pedido WHERE idpedido ="+idOrder;
+			companyact->begin();
+			companyact->ejecuta(SQLQuery);
+			companyact->commit();
+		}
+	
+		inicializa();
+	}
+}// end removeOrder
 
 orderslist::~orderslist() {
 }// end ~orderslist

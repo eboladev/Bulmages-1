@@ -58,6 +58,8 @@ private:
 	void insertOrderLine(int);
 	void updateOrderLine(int);
 	void deleteOrderLine(int);
+	void cancelOrderLinChanges();
+	void calculateImports();
 
 public slots:
     virtual void activated(int);

@@ -49,6 +49,7 @@ CREATE TABLE lpedido (
 #include <qtextedit.h>
 #include <qcombobox.h>
 #include <qwidget.h>
+#include <qmessagebox.h>
 #include "company.h"
 #include "funcaux.h"
 
@@ -165,6 +166,7 @@ void linorderslist::chargelinorders(QString idpedido) {
 	}// end while
 	
 	delete cur;
+	calculateImports();
 	
 }// end chargelinorders
 
@@ -383,6 +385,13 @@ void linorderslist::valueOrderLineChanged(int row, int col) {
 		}
 		case COL_CODARTICULO: {
 			manageArticle(row);
+			calculateImports();
+		}
+		case COL_CANTLPEDIDO: {
+			calculateImports();
+		}
+		case COL_PVDLPEDIDO: {
+			calculateImports();
 		}
 	}
 } //end valueOrderLineChanged
@@ -441,3 +450,37 @@ void linorderslist::removeOrderLin() {
 	}
 	
 }// end removeOrderLin
+
+
+void linorderslist::cancelOrderLinChanges() {
+	if (QMessageBox::warning( this, "BulmaFact - Pedidos",
+    "Se perderán los cambios que haya realizado", "Aceptar", "Cancelar") == 0) {
+		close();
+	}
+}
+
+
+void linorderslist::calculateImports() {
+	char stNetImport [50];
+	char stTaxImport [50];
+	char stTotalImport [50];
+	
+	int i = 0;
+	float netImport = 0;
+	float taxImport = 0;
+	while (i < m_list->numRows()) {
+		if (m_list->text(i,COL_PVDLPEDIDO)!="" and m_list->text(i,COL_CANTLPEDIDO)!="") {
+			netImport += m_list->text(i,COL_PVDLPEDIDO).toFloat() * m_list->text(i,COL_CANTLPEDIDO).toInt();
+		}
+		i ++;
+   }
+	sprintf(stNetImport, "%0.2f", netImport);
+	sprintf(stTaxImport, "%0.2f", taxImport);
+	sprintf(stTotalImport, "%0.2f", netImport+taxImport);
+	QString qstNetImport(stNetImport);
+	QString qstTaxImport(stTaxImport);
+	QString qstTotalImport(stTotalImport);
+	m_netImport->setText(qstNetImport);
+	m_taxImport->setText(qstTaxImport);
+	m_totalImport->setText(qstTotalImport);
+} // end calculateImports

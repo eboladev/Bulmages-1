@@ -622,17 +622,17 @@
                                 </widget>
                                 <widget class="QLineEdit" row="0" column="1">
                                     <property name="name">
-                                        <cstring>lineEdit53</cstring>
+                                        <cstring>m_netImport</cstring>
                                     </property>
                                 </widget>
                                 <widget class="QLineEdit" row="2" column="1">
                                     <property name="name">
-                                        <cstring>lineEdit53_3</cstring>
+                                        <cstring>m_totalImport</cstring>
                                     </property>
                                 </widget>
                                 <widget class="QLineEdit" row="1" column="1">
                                     <property name="name">
-                                        <cstring>lineEdit53_2</cstring>
+                                        <cstring>m_taxImport</cstring>
                                     </property>
                                 </widget>
                                 <widget class="QLabel" row="0" column="0">
@@ -760,7 +760,7 @@
         <sender>m_cancel</sender>
         <signal>clicked()</signal>
         <receiver>linorderslistbase</receiver>
-        <slot>close()</slot>
+        <slot>cancelOrderLinChanges()</slot>
     </connection>
     <connection>
         <sender>m_neworderlin</sender>
@@ -802,6 +802,7 @@
     <slot>orderDateLostFocus()</slot>
     <slot>valueOrderLineChanged(int, int)</slot>
     <slot>removeOrderLin()</slot>
+    <slot>cancelOrderLinChanges()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
