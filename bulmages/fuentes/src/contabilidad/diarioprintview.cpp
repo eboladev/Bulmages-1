@@ -35,42 +35,42 @@ DiarioPrintView::~DiarioPrintView(){
 #ifdef REPORTS
 #include "rtkinputbges.h"
 using namespace RTK;
+Input *InputBGesCreator(const String &name, const String &driver) {
+   return new InputBGes(name, driver);
+}
+
+void registraInputBGes() {
+RTK::Report::registerInput("sqlbulmages", &InputBGesCreator);
+}
+
+
 #endif
 // *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
 void DiarioPrintView::pruebasRTK() {
 #ifdef REPORTS
-   cursor2 *cursoraux;
-   conexionbase->begin();
-   cursoraux=conexionbase->cargacursor("SELECT * FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta", "unquery");
-   conexionbase->commit();
-   
-  Report unReport;
-  unReport.readXml("/tmp/extracto.rtk");
-  InputBGes inp(InputBGes::diario, empresaactual, cursoraux);
+cursor2 *cursoraux;
+conexionbase->begin();
+cursoraux=conexionbase->cargacursor("SELECT * FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta", "unquery");
+conexionbase->commit();
+
+// Esta llamada que se hace aqui sólo hay que hacerla una vez al principio de la aplicacion
+registraInputBGes();
+
+RTK::Report unReport;
+unReport.readXml("/tmp/extracto.rtk");
+InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
+inp->set(InputBGes::diario, empresaactual, cursoraux);
 OutputQPainter *salida = new OutputQPainter(A4, dots, 57, 59, 0,0,20,20,20,20);
-unReport.print(inp, *salida);
+unReport.print(*salida);
 QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
 mViewer->setCaption(tr("GongReport", "Informe: "));
 mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
 mViewer->setPageCollection(salida->getPageCollection());
 mViewer->show();
-mViewer->slotFirstPage();  
-   
-/*     
-   InputBGes inp(InputBGes::diario, empresaactual, cursoraux);
-    OutputQPainter *salida = new OutputQPainter(A4, dots, 57, 59, 0,0,20,20,20,20);
-    unReport->print(inp, *salida);
-    
-    QReportViewer *mViewer = new QReportViewer(salida, true);
-    mViewer->setCaption(tr("GongReport", "Informe: "));
-    mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
-    mViewer->setPageCollection(salida->getPageCollection());
-    mViewer->show();
-    mViewer->slotFirstPage();
-*/
-
+mViewer->slotFirstPage();
 #endif 
 }// end pruebasRTK
+
 
 
 int DiarioPrintView::inicializa(postgresiface2 *conn) {

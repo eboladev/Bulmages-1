@@ -42,17 +42,14 @@ private:
    int inicializado;
         /*<<<<<INPUTSQL_CONSTRUCTOR*/
 public:
-        InputBGes(tipoinput t, empresa *emp, cursor2 *cons,
-                 String from = String(), String where = String(), String orderby = String(),
-                 String name = String(), String driver = String())
-                        :Input(name, driver),
-                        mFrom(from), mWhere(where), mOrderBy(orderby)  {
-           empresaactual=emp;
-           conexionbase=empresaactual->bdempresa();
-           ti = t;
-           consulta = cons;
-           inicializado=1;
-        };
+InputBGes(const String &name, const String &driver) : Input(name, driver) {};
+void set(tipoinput t, empresa *emp, cursor2 *cons) {
+empresaactual=emp;
+conexionbase=empresaactual->bdempresa();
+ti = t;
+consulta = cons;
+inicializado=1;
+};
 
         ~InputBGes();
 
