@@ -56,6 +56,8 @@ CREATE TABLE articulo (
 #include "articleslist.h"
 #include <qtable.h>
 #include "company.h"
+#include "articleedit.h"
+
 
 #define COL_IDARTICULO 0
 #define COL_CODARTICULO 1
@@ -162,11 +164,11 @@ void articleslist::inicializa() {
 void articleslist::articleSelected(int a, int b, int c, const QPoint &) {
    m_idArticle = m_list->text(a,COL_IDARTICULO);
    if (m_modo ==0 ) {
-      /*QString idprov = m_list->text(a, COL_IDPROVEEDOR);
+      QString idArt = m_list->text(a, COL_IDARTICULO);
       fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
-      provedit *prov = new provedit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
-      prov->chargeprovider(idprov);
-      prov->show(); */
+      articleedit *art = new articleedit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Articulos", "company"));
+      art->chargeArticle(idArt);
+      art->show();
    } else {
       close();
    }// end if

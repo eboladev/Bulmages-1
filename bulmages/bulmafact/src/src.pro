@@ -26,7 +26,8 @@ SOURCES += bulmafact.cpp \
 	   delivnoteslist.cpp \
 	   division.cpp \
 	   budget.cpp \
-	   budgetslist.cpp
+	   budgetslist.cpp \
+		articleedit.cpp
 HEADERS += bulmafact.h \
            company.h \
            providerslist.h \
@@ -40,7 +41,8 @@ HEADERS += bulmafact.h \
 	   delivnoteslist.h \
 	   division.h \
 	   budget.h \
-	   budgetslist.h
+	   budgetslist.h \
+		articleedit.h
 IDLS += providerslistbase.ui \
         provedit_base.ui \
 	clientslistbase.ui \
@@ -51,7 +53,8 @@ IDLS += providerslistbase.ui \
 	delivnoteslistbase.ui  \
 	divisionbase.ui \
 	budgetbase.ui \
-	budgetslistbase.ui 
+	budgetslistbase.ui \
+		articleeditbase.ui
 FORMS += bulmafactbase.ui \
          providerslistbase.ui \
          provedit_base.ui \
@@ -63,7 +66,8 @@ FORMS += bulmafactbase.ui \
 	 delivnoteslistbase.ui \
 	 divisionbase.ui \
 	 budgetbase.ui \
-	 budgetslistbase.ui
+	 budgetslistbase.ui \
+		articleeditbase.ui
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

@@ -637,8 +637,8 @@ CREATE TABLE suministra (
    principalsuministra float,
    referentsuministra float,
    
-   idproveedor integer REFERENCES proveedor(idproveedor)
---   idarticulo integer REFERENCES articulo(idarticulo)
+   idproveedor integer REFERENCES proveedor(idproveedor),
+	idarticulo integer REFERENCES articulo(idarticulo)
 );
 
 
