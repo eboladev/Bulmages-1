@@ -597,6 +597,10 @@ void Bulmages01::initMenuBar() {
   DBconn->commit();
   while (!curEjer->eof()) {
       aux=curEjer->valor(0);
+      a = new QAction(aux,0,anys,aux);
+      //a = new QAction(this,0);
+      a->setToggleAction(true);
+=======
       a = new QAction(aux,aux,0,this);
       connect(a, SIGNAL(activated()),this, SLOT(setCurrentEjercicio(a)));
       connect(a, SIGNAL(activated()),this, SLOT(setCurrentEjercicio()));
