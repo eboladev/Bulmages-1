@@ -68,10 +68,19 @@
 Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB, QString * User, QString * Passwd,QString *ejercicioMetaDB) 
 : QMainWindow(parent,name,f) {
   //Si no existe un ejercicio en la tabla "ejercicios" entonces usamos el ejercicio de la MetaDB
-  DBName=*DB;
-  empresaactual.inicializa(DB,User,Passwd);
-  if (empresaactual.ejercicioactual() =="") empresaactual.setejactual(*ejercicioMetaDB);
-  setCaption(tr("BulmaGés ") + empresaactual.ejercicioactual());  
+  fprintf(stderr,"Inicializando la empresa \n");
+  if (DB != NULL) {
+    DBName=*DB;
+    empresaactual.inicializa(DB,User,Passwd);
+    if (empresaactual.ejercicioactual() =="") empresaactual.setejactual(*ejercicioMetaDB);
+    setCaption(tr("BulmaGés ") + empresaactual.ejercicioactual());  
+  } else {
+    fprintf(stderr,"Cambio de empresa \n");
+    empresaactual.cambiarempresa();
+    DBName= empresaactual.nombreDB;
+    //if (empresaactual.ejercicioactual() =="") empresaactual.setejactual(*ejercicioMetaDB);
+    setCaption(tr("BulmaGés ") + empresaactual.ejercicioactual());      
+  }// end if
   initView();
   initActions();
   initMenuBar();
@@ -89,7 +98,6 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
   ctllog->setempresa(&empresaactual);
   ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario a entrado en bulmages01"); //: --"+empresaactual.nomuserempresa()+"-- ha entrado en la empresa(DB): --"+empresaactual.nombreDB);
   fprintf(stderr,"HEMOS INICIALIZADO POR COMPLETO\n");
-
 }// end Bulmages01
 
 

@@ -185,6 +185,7 @@ int postgresiface2::inicializa(QString nomdb) {
         fprintf(stderr, "%s", PQerrorMessage(conn));
         return(1);
     }// end if
+    fprintf(stderr,"La conexion con la base de datos ha ido bien, ahora vamos a por la fecha\n");
     formatofecha();
     return(0);
 }// end inicializa

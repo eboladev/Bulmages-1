@@ -18,8 +18,8 @@
 
 
 
-abreempresaview::abreempresaview(BSelector *parent, const char *name, bool modal) : abreempresadlg(0,name,modal) {
-   padre = parent;
+abreempresaview::abreempresaview(const char *name, bool modal) : abreempresadlg(0,name,modal) {
+//   padre = parent;
    postgresiface2 *apuestatealgo;
    apuestatealgo = new postgresiface2();
    apuestatealgo->inicializa( confpr->valor(CONF_METABASE).c_str() );
@@ -48,46 +48,43 @@ abreempresaview::~abreempresaview(){
 
 
 void abreempresaview::accept() {
-   postgresiface2 DBConn;
+   postgresiface2 *DBConn = new postgresiface2();
    QListViewItem *it;
    int num;
    it = empresas->currentItem();
    nombre=login->text();
    contrasena=password->text();
    empresabd= it->text(2);
-   QString ejercicioMetaDB = it->text(1);
+   ejercicioMetaDB = it->text(1);
    nombreempresa= it->text(0);
-   num = DBConn.cargaempresa(empresabd, nombre, contrasena);
+   // El uso de esta función es dudoso.
+   num = DBConn->cargaempresa(empresabd, nombre, contrasena);
+   delete DBConn;
+
    if (num >0) {
-       padre->NombreUsuario = nombre;  //Login
-       padre->PasswordUsuario = contrasena;
-       padre->NombreBaseDatos = empresabd;
-       padre->nombreempresa->setText(nombreempresa);
-       padre->ejercicioMetaDB=ejercicioMetaDB.ascii();
-       DBConn.inicializa(confpr->valor(CONF_METABASE).c_str());
-       DBConn.begin();
+       postgresiface2 *DBConn2= new postgresiface2();
+       DBConn2->inicializa(confpr->valor(CONF_METABASE).c_str());
+       DBConn2->begin();
        QString query;
        query.sprintf("SELECT permisos FROM usuario_empresa, empresa, usuario WHERE usuario_empresa.idempresa=empresa.idempresa and usuario_empresa.idusuario=usuario.idusuario and empresa.nombredb='%s' and usuario.login='%s'",empresabd.ascii(),nombre.ascii());
-       cursor2 * recordSet = DBConn.cargacursor(query,"recordSet");
-       DBConn.commit();
+       cursor2 * recordSet = DBConn2->cargacursor(query,"recordSet");
+       DBConn2->commit();
        //       empresaactual->nombreusuario = nombre;
       
        confpr->setValor(PRIVILEGIOS_USUARIO, recordSet->valor(0,0));
-       //fprintf(stderr, "Entrando Usuario: %s en la empresa: %s, con los Permisos tipo: %s ",nombre.ascii(),nombreempresa.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str());
-       //pendiente añadir: %s en la empresa: %s ",nombre.ascii(),confpr->valor(PRIVILEGIOS_USUARIO).c_str(), empresaactual.nombreDB.ascii());
-       //printf("la empresa es: %s ",nombreempresa.ascii());
+
        
        //Empezamos un nuevo modo de guardar algunas preferencias de los usuarios en la base de datos
        confpr->cargarEntorno(empresabd);
        ctllog->add(LOG_SEG | LOG_TRA, 1,"AbrViw004", "Entrando usuario: --"+nombre+"-- hacia la empresa: --"+nombreempresa+"-- con los permisos -"+confpr->valor(PRIVILEGIOS_USUARIO).c_str()+"-" );
-       delete this;
+       delete recordSet;
+       delete DBConn2;
+//      delete this;
+      close();
    }//end if
-   if ((intentos+=1)>3) padre->close();
+//   if ((intentos+=1)>3) padre->close();
 }// end accept
 
 
-void abreempresaview::closeEvent(QCloseEvent * e) {
-    e->accept();
-    padre->close();
-}
+
 

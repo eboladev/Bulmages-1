@@ -31,34 +31,26 @@
 
 #include "postgresiface2.h"
 #include "configuracion.h"
-#include "bselector.h"
 #include "log.h"
 #include "empresa.h"
 
 
-class BSelector;
 /** @author Tomeu Borrás Riera */
 
 class abreempresaview : public abreempresadlg  {
    Q_OBJECT
 public:
-   abreempresaview(BSelector *parent=0, const char *name=0, bool modal=true);
+   abreempresaview(const char *name=0, bool modal=true);
    ~abreempresaview();
    QString nombre;
    QString contrasena;
    QString empresabd;
    QString nombreempresa;
-   
-
+   QString ejercicioMetaDB;
 private:   
     int intentos;
-    BSelector * padre;
-
-private slots:
-    virtual void closeEvent(QCloseEvent * e);
         
 public slots:
-   //virtual void slotabreempresaview();
    virtual void accept();
    
 };

@@ -168,9 +168,13 @@ int empresa::inicializa(QString * DB, QString * User, QString * Passwd) {
     char query[300];
     postgresiface2 *metabase;
     metabase = new postgresiface2();
+    fprintf(stderr,"Acabamos de crear la metabase\n");
     metabase->inicializa(confpr->valor(CONF_METABASE).c_str());
+    fprintf(stderr,"acabamos de inicializar la metabase\n");
     metabase->begin();
+    fprintf(stderr,"Acabamos de hacer un begin\n");
     sprintf(query,"SELECT * FROM EMPRESA WHERE nombredb='%s'\n",nombreDB.ascii());
+    fprintf(stderr,"%s\n",query);
     cursor2 *cursoraux = metabase->cargacursor(query,"cursorempresa");
     sprintf(query,"SELECT * FROM EMPRESA WHERE nombre='%s' AND ano<%s ORDER BY ano DESC\n",cursoraux->valor("nombre").ascii(), cursoraux->valor("ano").ascii());
     cursor2 *cursoraux2 = metabase->cargacursor(query,"cursorempresa1");
@@ -265,23 +269,29 @@ int empresa::nuevaempresa() {
 }// end nuevaempresa
 
 
+// Esta función se usa sólo si se llama a la anterior sin argumentos.
+// Ya no es una reinicialización. Es una inicialización.
 int empresa::cambiarempresa() {
 //El cambio de empresa se realiza desde el selector.
-/*  
-  int retorno;
-  nombre=NULL;
-  abreempresaview *nuevae = new abreempresaview(0,"",true );
+
+//  int retorno;
+  fprintf(stderr,"empresa::cambiarempresa\n");
+  abreempresaview *nuevae = new abreempresaview("Abrir Empresa",true );
   nuevae->exec();
-  retorno = nuevae->result();
-  fprintf(stderr,"cambiarempresa result:%d",retorno);
-  if (retorno) {
-    nombre = (char *)nuevae->nombre.ascii();
-    contrasenya = (char *)nuevae->contrasena.ascii();
-    strcpy(nombredb,nuevae->empresabd);
-    inicializa1(pWorkspace);
-  }// end if
+  fprintf(stderr,"fin de la ejecución del formulario de selección de empresa \n");
+//  retorno = nuevae->result();
+//  fprintf(stderr,"cambiarempresa result:%d",retorno);
+//  if (retorno) {
+   fprintf(stderr,"Vamos a cambiar la empresa \n");
+   QString bd= nuevae->empresabd;
+   QString us= nuevae->nombre;
+   QString pas= nuevae->contrasena;
+   fprintf(stderr,"%s %s %s", bd.ascii(), us.ascii(), pas.ascii());
+   inicializa(&bd, &us, &pas);
+   setejactual(nuevae->ejercicioMetaDB);
+//    inicializa1(pWorkspace);
+//  }// end if
   delete nuevae;
-*/  
   return(0);
 }// end cambiarempresa
 

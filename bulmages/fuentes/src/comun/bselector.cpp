@@ -53,7 +53,7 @@ void BSelector::seleccionaempresa_clicked() {
     if (ModuloContabilidad || ModuloVentas || ModuloCompras || ModuloAlmacen || ModuloProduccion || ModuloNominas) 
         QMessageBox::warning(0, "Atención...", QString("Cierre todas las aplicaciones antes de cambiar de usuario o empresa."));
     else  
-        (new abreempresaview(this,"validar",true))->show(); 
+        (new abreempresaview("validar",true))->show(); 
 }
 
 //Boton para abrir el dialogo de configuraciones personalizadas

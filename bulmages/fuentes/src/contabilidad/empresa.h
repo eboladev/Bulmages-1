@@ -47,10 +47,7 @@ private:
   int ano;
   QString contrasenya;
   QWorkspace *pWorkspace;
-//  postgresiface1 *conexionbase; // LA conexion con la base de datos
   postgresiface2 *conexionbase2;  // Usaremos la nueva versión de postgresiface, durante un tiempo deberá convivir con la version anterior.
-  
-//  postgresiface1 *conexionanterior;       // La base de datos del ejercicio anterior de la empresa
   postgresiface2 *conexionanterior2;
   
   balance1view *balance1;  
@@ -64,12 +61,9 @@ private:
   // Estos selectores generales se podran invocar desde distintas partes.
   selectccosteview *selccostes;
   selectcanalview *selcanales;
-
-/* ESTOS ESTAN OBSOLETOS
-  int m_idcCosteDef;  // El centro de coste por defecto.
-  int m_idCanalDef; // El canal por defecto.
-*/
-
+public:
+  QString nombreDB;
+  
 public:
   empresa();
   ~empresa();
@@ -135,6 +129,6 @@ public:
   selectccosteview * getselccostes() {return selccostes;}
   selectcanalview *getselcanales() {return selcanales;}
 
-  QString nombreDB;
+
 };
 #endif
