@@ -1011,7 +1011,8 @@ BEGIN
 		ALTER TABLE registroiva ADD COLUMN factemitida boolean;
 		UPDATE registroiva SET factemitida = TRUE WHERE contrapartida IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE ''43%'');
 		UPDATE registroiva SET factemitida = FALSE WHERE contrapartida NOT IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE ''43%'');
-		ALTER TABLE registroiva ALTER COLUMN factemitida SET NOT NULL;	END IF;
+		ALTER TABLE registroiva ALTER COLUMN factemitida SET NOT NULL;
+	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;

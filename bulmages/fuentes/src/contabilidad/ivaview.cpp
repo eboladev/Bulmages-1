@@ -241,15 +241,18 @@ void ivaview::accept() {
     conexionbase->begin();
     cursor2 *cursorcuenta =conexionbase->cargacuenta(0,contrapartida->text());
     conexionbase->commit();
-    if (!cursorcuenta->eof()) {
-        int idcuenta= atoi(cursorcuenta->valor("idcuenta").ascii());
-        if (idregistroiva !=0) {
+
 	    QString factemitida;
 	    if (m_factEmitida->isChecked()) {
 	    	factemitida="TRUE";
 	    } else {
 	    	factemitida="FALSE";
-	    }// end if
+	    }// end if  
+	          
+    if (!cursorcuenta->eof()) {
+        int idcuenta= atoi(cursorcuenta->valor("idcuenta").ascii());
+        if (idregistroiva !=0) {
+
             /// Si se trata de una modificacion y hacemos el update.
             query.sprintf("UPDATE registroiva set factemitida=%s, idborrador=%d, contrapartida=%d, factura='%s', numorden='%s', cif='%s', ffactura='%s', rectificaaregistroiva = %s WHERE idregistroiva=%d",factemitida.ascii(), idborrador, idcuenta, factura1.ascii(), numorden->text().ascii(), cif1.ascii(), m_ffactura->text().ascii(), idfactrectificada.ascii() ,idregistroiva);
             conexionbase->begin();
@@ -257,7 +260,7 @@ void ivaview::accept() {
             conexionbase->commit();
         } else {
             /// Se trata de una inserción y hacemos el insert.
-            query="INSERT INTO registroiva (idborrador, baseimp, contrapartida, factura, numorden, cif, ffactura, rectificaaregistroiva) VALUES ("+QString::number(idborrador)+","+m_baseImponible->text()+",  "+QString::number(idcuenta)+", '"+factura1+"', '"+numorden->text()+"', '"+cif1+"', '"+m_ffactura->text()+"',"+idfactrectificada+")";
+            query="INSERT INTO registroiva (idborrador, baseimp, contrapartida, factura, numorden, cif, ffactura, rectificaaregistroiva, factemitida) VALUES ("+QString::number(idborrador)+","+m_baseImponible->text()+",  "+QString::number(idcuenta)+", '"+factura1+"', '"+numorden->text()+"', '"+cif1+"', '"+m_ffactura->text()+"',"+idfactrectificada+", "+factemitida+")";
             conexionbase->begin();
             conexionbase->ejecuta(query);
             /// Cargamos el identificador del registro de factura para poder mantener la clase.
