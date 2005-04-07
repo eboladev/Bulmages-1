@@ -117,7 +117,7 @@
 &rtkstyles;
 
   <INPUT name="default" driver="sqlbulmages" 
-  sqldriver="QPSQL7" database="bulmages" user="tborras">
+  sqldriver="QPSQL7">
     <INPUTFIELD name="hoja" source="hoja" type="text"></INPUTFIELD>
     <INPUTFIELD name="idcuenta" source="idcuenta" type="text"></INPUTFIELD>
     <INPUTFIELD name="codigo" source="codigo" type="text"></INPUTFIELD>

@@ -38,8 +38,8 @@ INSERT INTO recargo (nomrecargo, tasarecargo) VALUES('Exento', 0);
 
 INSERT INTO cliente (idrecargo, nomcliente, cifcliente, telcliente, poblcliente) VALUES(1, 'Pepma de la rioja', '39881444W', '971998877', 'Palma de Mallorca');
 INSERT INTO cliente (idrecargo, nomcliente, cifcliente, telcliente, poblcliente) VALUES(1, 'Rene Merou', '43881555Z', '871998877', 'Campos');
-INSERT INTO cliente (idrecargo, nomcliente, cifcliente, telcliente, poblcliente) VALUES(1, 'Dolores Fuertes de Barriga', '66881444E', '666998877', 'Muro');
-INSERT INTO cliente (idrecargo, nomcliente, cifcliente, telcliente, poblcliente) VALUES(1, 'Pepe Gotera', '55881444W', '9321998877', 'Barcelona');
+INSERT INTO cliente (idrecargo, nomcliente, cifcliente, telcliente, poblcliente) VALUES(1, 'Dolores Barriga', '66881444E', '666998877', 'Muro');
+INSERT INTO cliente (idrecargo, nomcliente, cifcliente, telcliente, poblcliente) VALUES(1, 'Pepe Infante', '55881444W', '9321998877', 'Barcelona');
 
 INSERT INTO tipo_iva (desctipo_iva) VALUES('Exento');
 INSERT INTO tipo_iva (desctipo_iva) VALUES('Normal');
@@ -53,7 +53,7 @@ INSERT INTO linea_prod (desclinea_prod, idmarca) VALUES('LÃ­nea de producciÃ³n 1
 
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('1', 'Leche Entera', 'Brick leche entera 1 litro', 1, 1);
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('2', 'Natillas', 'Pack dos envases de natillas de vainilla', 2, 1);
-INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('3', 'Yogurt', 'Pack 4 unidades yogures sabores', 1, 1);
+INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('3', 'Iogurt', 'Pack 4 unidades yogures sabores', 1, 1);
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('4', 'Nestcafé', 'Bote 400 gramos café soluble natural', 1, 1);
 
 INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-1', 2004, '25/10/2004', 'Pedido semanal de carne y pescado', 1, 1);

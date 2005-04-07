@@ -116,11 +116,11 @@
   
 &rtkstyles;
 
-<IMAGE name="encabezado" url="/home/tborras/bulmages/installbulmages/reports/logo.jpg" mime-type="image/jpg"></IMAGE>
+<IMAGE name="encabezado" url="/usr/share/bulmages/reports/logo.jpg" mime-type="image/jpg"></IMAGE>
 
 
   <INPUT name="default" driver="sql" 
-  sqldriver="QPSQL7" database="bulmages" user="tborras" from="apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta LEFT JOIN cuenta AS contra ON contra.idcuenta = apunte.contrapartida LEFT JOIN asiento ON asiento.idasiento = apunte.idasiento WHERE cuenta.codigo &gt;= '###codigoinicial###' AND cuenta.codigo &lt;= '###codigofinal###' AND apunte.fecha &gt;= '###fechainicial###' AND apunte.fecha &lt;= '###fechafinal###'" orderby="cuenta.codigo , fecha">
+  sqldriver="QPSQL7" from="apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta LEFT JOIN cuenta AS contra ON contra.idcuenta = apunte.contrapartida LEFT JOIN asiento ON asiento.idasiento = apunte.idasiento WHERE cuenta.codigo &gt;= '###codigoinicial###' AND cuenta.codigo &lt;= '###codigofinal###' AND apunte.fecha &gt;= '###fechainicial###' AND apunte.fecha &lt;= '###fechafinal###'" orderby="cuenta.codigo , fecha">
     <INPUTFIELD name="descripcion" source="cuenta.descripcion" type="text"></INPUTFIELD>
     <INPUTFIELD name="debe" source="apunte.debe" type="text"></INPUTFIELD>
     <INPUTFIELD name="haber" source="apunte.haber" type="text"></INPUTFIELD>

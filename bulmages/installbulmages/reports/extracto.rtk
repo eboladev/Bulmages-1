@@ -117,7 +117,7 @@
 &rtkstyles;
 
   <INPUT name="default" driver="sqlbulmages" 
-  sqldriver="QPSQL7" database="bulmages" user="tborras">
+  sqldriver="QPSQL7">
     <INPUTFIELD name="ordenasiento" source="ordenasiento" type="number"></INPUTFIELD>
     <INPUTFIELD name="idasiento" source="idasiento" type="date"></INPUTFIELD>
     <INPUTFIELD name="descripcion" source="descripcion" type="text"></INPUTFIELD>

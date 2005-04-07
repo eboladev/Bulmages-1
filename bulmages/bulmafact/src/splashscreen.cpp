@@ -52,7 +52,7 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
 
   QTimer timer(this); // = new QTimer(this);
   connect( &timer, SIGNAL(timeout()), SLOT(close()) );
-  timer.start( 30000 ); //timer->start( 10000);
+  timer.start( 10000 ); //timer->start( 10000);
 
   QTimer timer1(this); // = new QTimer(this);
   connect( &timer1, SIGNAL(timeout()), SLOT(paint()) );
@@ -80,7 +80,6 @@ void Splash::paint() {
   static int a=0;
   static QString cad;
   QString mensajes[]={
-                    tr("Pepma sais hola"),
                     tr("Calibrando los lasers del lector de CD"),
                     tr("Comprobando la disquetera y la Memoria Fisica"),
                     tr("Induciendo energía quantica, entre su RAM y su ROM"),

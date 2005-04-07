@@ -116,10 +116,10 @@
   
 &rtkstyles;
 
-<IMAGE name="encabezado" url="/home/tborras/bulmages/installbulmages/reports/logo.jpg" mime-type="image/jpg"></IMAGE>
+<IMAGE name="encabezado" url="/usr/share/bulmages/reports/logo.jpg" mime-type="image/jpg"></IMAGE>
 
   <INPUT name="default" driver="sql" 
-  sqldriver="QPSQL7" database="bulmages" user="tborras" from="cliente" orderby="nomcliente">
+  sqldriver="QPSQL7" from="cliente" orderby="nomcliente">
     <INPUTFIELD name="idcliente" source="cliente.idcliente" type="text"></INPUTFIELD>
     <INPUTFIELD name="nomcliente" source="cliente.nomcliente" type="text"></INPUTFIELD>
     <INPUTFIELD name="nomaltcliente" source="cliente.nomaltcliente" type="text"></INPUTFIELD>

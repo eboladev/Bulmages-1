@@ -51,7 +51,7 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
 
   QTimer timer(this);
   connect( &timer, SIGNAL(timeout()), SLOT(close()) );
-  timer.start( 150000 ); //timer->start( 10000);
+  timer.start(10000 ); //timer->start( 10000);
 
   QTimer timer1(this);
   connect( &timer1, SIGNAL(timeout()), SLOT(paint()) );
