@@ -13,6 +13,9 @@ SET search_path = public, pg_catalog;
 CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
     AS '/usr/lib/postgresql/lib/plpgsql.so', 'plpgsql_call_handler'
     LANGUAGE c;
+    
+CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
+
 
 
 -- NOTACION:
@@ -119,6 +122,65 @@ CREATE TABLE serie_factura (
 
 
 
+
+
+-- codigofamilia código de la familia.
+-- nombrefamilia nombre de la familia
+-- descfamilia descripción extendida de la familia.
+-- codcompfamilia código compuesto de familia: codigo de sector + código de sección + código de familia.
+-- comprobaciones de integridad respecto a la tabla sector con idsector.
+-- comprobaciones de integridad respecto a la tabla seccion con idseccion. 
+-- codigocompletofamilia Este campo es de sólo lectura, no se puede escribir sobre él.
+
+CREATE TABLE familia (
+	idfamilia serial PRIMARY KEY,
+	codigofamilia character varying(12) NOT NULL,
+ 	nombrefamilia character varying(50) NOT NULL,
+	descfamilia character varying(300),
+	padrefamilia integer REFERENCES familia(idfamilia),
+	codigocompletofamilia character varying(50) UNIQUE
+);
+
+CREATE FUNCTION calculacodigocompletofamilia () RETURNS "trigger"
+AS '
+DECLARE
+	as RECORD;
+	codigocompleto character varying(50);
+BEGIN
+	codigocompleto := NEW.codigofamilia;
+	SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
+	IF FOUND THEN
+		codigocompleto := codigocompleto || as.codigocompletofamilia;
+	END IF;
+        NEW.codigocompletofamilia := codigocompleto;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER calculacodigocompletofamiliatrigger
+    BEFORE INSERT OR UPDATE ON familia
+    FOR EACH ROW
+    EXECUTE PROCEDURE calculacodigocompletofamilia();
+
+
+
+-- Esta función nos da el identificador de familia dado un código.
+--CREATE OR REPLACE FUNCTION idfamilia (text) RETURNS "trigger"
+--    AS '
+--DECLARE
+--    codigo ALIAS FROR $1;
+--    mrecord RECORD;
+--BEGIN
+--    FOR mrecord IN SELECT SUM(baseiva) AS suma, SUM(ivaiva) AS sumaiva FROM iva WHERE iva.idregistroiva=NEW.idregistroiva LOOP
+--    	UPDATE registroiva SET baseimp=mrecord.suma, iva=mrecord.sumaiva WHERE idregistroiva=NEW.idregistroiva;
+--    END LOOP;
+--    RETURN NEW;
+--END;
+--'    LANGUAGE plpgsql;
+
+
+
 --COMPROVACIONS D'INTEGRITAT>Genriques:
 --Els articles "contenidors" de tots els components son articles composts.
 --Els articles "contingut" de tots els components son articles no composts.
@@ -143,6 +205,8 @@ CREATE TABLE serie_factura (
 -- Marge: (Per defecte) Percentatge de càlcul del PVP sobre el PVD. Vàlid només quan no estigui definit un marge específic per aquest article i el proveïdor corresponent.
 -- Sobrecost: (Per defecte) Import a sumar en el càlcul del PVP en concepte de despeses de transport o altres.
 -- Model: Referència, o nom identificatiu del fabricant.
+
+-- El campo codigocompletoarticulo sólo puede ser de lectura.
 CREATE TABLE articulo (
     idarticulo serial PRIMARY KEY,
     codarticulo character varying(12),
@@ -158,102 +222,36 @@ CREATE TABLE articulo (
     margenarticulo float,
     sobrecostearticulo float,
     modeloarticulo character varying(1000),
-
     idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
-    idlinea_prod integer REFERENCES linea_prod(idlinea_prod)
+    idlinea_prod integer REFERENCES linea_prod(idlinea_prod),
+    codigocompletoarticulo character varying(100) UNIQUE,
+    idfamilia integer REFERENCES familia(idfamilia) NOT NULL
 );
 
 
---Codificación y clasifiación de artículos. Se han codificado las tablas para que sean compatibles con la definición de AECOC. 
---En este script no se aplican los datos de integridad referencial necesarios.
---Esto se hará a posteriori en un script que podrá ejecutar el usuario si desea utilizar este tipo de codificación.
-
--- codigosector código de sector
--- nombresector nombre del sector
--- descsector descripción extendida del sector
-
-CREATE TABLE sector (
-	idsector serial PRIMARY KEY,
-	codigosector numeric(2, 0),
-	nombresector character varying(50),
-	descsector character varying(300)
-);
-
-
--- codigoseccion código de la sección.
--- nombreseccion nombre de la sección
--- descseccion descripción extendida de la sección
--- codcompseccion código compuesto de sección: codigo de sector + código de sección.
--- comprobaciones de integridad respecto a la tabla sector con idsector. 
-
-CREATE TABLE seccion (
-	idseccion serial PRIMARY KEY,
-	codigoseccion numeric(2, 0),
-	nombreseccion character varying(50),
-	descseccion character varying(300),
-	codcompseccion numeric(4, 0),
-	idsector integer REFERENCES sector(idsector)
-);
+CREATE FUNCTION calculacodigocompletoarticulo () RETURNS "trigger"
+AS '
+DECLARE
+	as RECORD;
+	codigocompleto character varying(100);
+BEGIN
+	codigocompleto := NEW.codarticulo;
+	SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
+	IF FOUND THEN
+		codigocompleto := codigocompleto || as.codigocompletofamilia;
+	END IF;
+        NEW.codigocompletoarticulo := codigocompleto;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
 
 
--- codigofamilia código de la familia.
--- nombrefamilia nombre de la familia
--- descfamilia descripción extendida de la familia.
--- codcompfamilia código compuesto de familia: codigo de sector + código de sección + código de familia.
--- comprobaciones de integridad respecto a la tabla sector con idsector.
--- comprobaciones de integridad respecto a la tabla seccion con idseccion. 
-
-CREATE TABLE familia (
-	idfamilia serial PRIMARY KEY,
-	codigofamilia numeric(2, 0),
- 	nombrefamilia character varying(50),
-	descfamilia character varying(300),
-	codcompfamilia numeric(6, 0),
-	idsector integer REFERENCES sector(idsector),
-	idseccion integer REFERENCES seccion(idseccion)
-);
+CREATE TRIGGER calculacodigocompletoarticulotrigger
+    BEFORE INSERT OR UPDATE ON articulo
+    FOR EACH ROW
+    EXECUTE PROCEDURE calculacodigocompletoarticulo();
 
 
--- codigosubfamilia código de la subfamilia.
--- nombresubfamilia nombre de la subfamilia.
--- descfamilia descripción extendida de la subfamilia.
--- codcompfamilia código compuesto de subfamilia: codigo de sector + código de sección + código de familia + código de subfamilia.
--- comprobaciones de integridad respecto a la tabla sector con idsector.
--- comprobaciones de integridad respecto a la tabla seccion con idseccion.
--- comprobaciones de integridad respecto a la tabla familia con idfamilia.  
-
-CREATE TABLE subfamilia (
-	idsubfamilia serial PRIMARY KEY,
-	codigosubfamilia numeric(2, 0),
- 	nombresubfamilia character varying(50),
-	descsubfamilia character varying(300),
-	codcompsubfamilia numeric(8, 0),
-	idsector integer REFERENCES sector(idsector),
-	idseccion integer REFERENCES seccion(idseccion),
-	idfamilia integer REFERENCES familia(idfamilia)
-);
-
-
--- codigosubfamilia código de la variedad.
--- nombresubfamilia nombre de la variedad.
--- descfamilia descripción extendida de la variedad.
--- codcompfamilia código compuesto de variedad: codigo de sector + código de sección + código de familia + código de subfamilia + código de variedad.
--- comprobaciones de integridad respecto a la tabla sector con idsector.
--- comprobaciones de integridad respecto a la tabla seccion con idseccion.
--- comprobaciones de integridad respecto a la tabla familia con idfamilia.
--- comprobaciones de integridad respecto a la tabla subfamilia con idsubfamilia.    
-
-CREATE TABLE variedad (
-	idvariedad serial PRIMARY KEY,
-	codigovariedad numeric(2, 0),
- 	nombrevariedad character varying(50),
-	descvariedad character varying(300),
-	codcompvariedad numeric(10, 0),
-	idsector integer REFERENCES sector(idsector),
-	idseccion integer REFERENCES seccion(idseccion),
-	idfamilia integer REFERENCES familia(idfamilia),
-	idsubfamilia integer REFERENCES subfamilia(idsubfamilia)
-);
 
 
 -- Yo me imagino que un catalogo es una agrupación de articulos para poder hacer listados

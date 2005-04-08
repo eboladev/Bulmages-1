@@ -33,7 +33,7 @@
 #include <qcheckbox.h>
 #include <qtable.h>
 #include <qstring.h>
-
+#include <qmap.h>
 
 
 listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : listcuentasdlg1(parent,name, modal) {
@@ -96,7 +96,7 @@ bool listcuentasview1::eventFilter( QObject *obj, QEvent *event ) {
  *************************************************************/
 int listcuentasview1::inicializa( ) {
     QListViewItem * it;
-    QListViewItem *Lista[100000];
+    QMap <int, QListViewItem*> Lista1;
     int idcuenta;
     int padre;
     int idcuenta1;
@@ -110,7 +110,7 @@ int listcuentasview1::inicializa( ) {
         padre = atoi( cursoraux1->valor("padre").ascii());
         idcuenta1 = atoi( cursoraux1->valor("idcuenta").ascii());
         it =new QListViewItem(ListView1);
-        Lista[idcuenta1]=it;
+        Lista1[idcuenta1]=it;
         it->setText(ccuenta, cursoraux1->valor("codigo"));
         it->setText(cdesccuenta,cursoraux1->valor("descripcion"));
         idcuenta = atoi(cursoraux1->valor("idcuenta").ascii());
@@ -148,8 +148,8 @@ int listcuentasview1::inicializa( ) {
         idcuenta1 = atoi(cursoraux2->valor("idcuenta").ascii());
         fprintf(stderr,"Cuentas de subnivel:%d",padre);
         if (padre != 0) {
-            it = new QListViewItem(Lista[padre]);
-            Lista[idcuenta1]=it;
+            it = new QListViewItem(Lista1[padre]);
+            Lista1[idcuenta1]=it;
 
             it->setText(ccuenta,cursoraux2->valor("codigo"));
             it->setText(cdesccuenta, cursoraux2->valor("descripcion"));

@@ -40,7 +40,7 @@ ccosteview::~ccosteview(){
 
 void ccosteview::pintar() {  
     QListViewItem * it;
-    QListViewItem *Lista[10000];
+    QMap <int,QListViewItem *>Lista;
     int padre;
     int idc_coste=0;
     cursor2 *cursoraux1, *cursoraux2;

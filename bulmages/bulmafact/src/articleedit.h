@@ -33,6 +33,7 @@ private:
    company *companyact;
    QString idArticle;
 	cursor2 *m_cursorcombo;
+   QString m_idFamilia;
 	
 public:
     articleedit(company *emp, QWidget *parent = 0, const char *name = 0);
@@ -50,6 +51,8 @@ public slots:
 	virtual void articleMarginLostFocus();
 	virtual void articleOverCostLostFocus();
 	virtual void articleDiscountLostFocus();
+   virtual void s_familiaLostFocus();
+   virtual void s_searchFamily();
 };
 
 #endif

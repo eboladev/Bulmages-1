@@ -50,11 +50,20 @@ INSERT INTO tasa_iva(idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(2, 17.00,
 INSERT INTO marca (nommarca, urlmarca, comentmarca) VALUES('Nestlé', 'www.nestle.com', 'Productos Alimentícios');
 
 INSERT INTO linea_prod (desclinea_prod, idmarca) VALUES('LÃ­nea de producciÃ³n 1', 1);
+\echo "Hemos insertado las linea_prod"
 
-INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('1', 'Leche Entera', 'Brick leche entera 1 litro', 1, 1);
-INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('2', 'Natillas', 'Pack dos envases de natillas de vainilla', 2, 1);
-INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('3', 'Iogurt', 'Pack 4 unidades yogures sabores', 1, 1);
-INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod) VALUES('4', 'Nestcafé', 'Bote 400 gramos café soluble natural', 1, 1);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('01', 'Familia 01', NULL);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('02', 'Familia 02', NULL);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('03', 'Familia 03', NULL);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('01', 'Subfamilia 0101', 1);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('02', 'Subfamilia 0102', 2);
+\echo "Hemos insertado las familias"
+
+INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod, idfamilia) VALUES('1', 'Leche Entera', 'Brick leche entera 1 litro', 1, 1,4);
+INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod, idfamilia) VALUES('2', 'Natillas', 'Pack dos envases de natillas de vainilla', 2, 1,4);
+INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod, idfamilia) VALUES('3', 'Iogurt', 'Pack 4 unidades yogures sabores', 1, 1,5);
+INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod, idfamilia) VALUES('4', 'Nestcafé', 'Bote 400 gramos café soluble natural', 1, 1,5);
+\echo "Hemos insertado los articulos"
 
 INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-1', 2004, '25/10/2004', 'Pedido semanal de carne y pescado', 1, 1);
 INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-2', 2004, '30/10/2004', 'Pedido especial noche halloween', 2, 3);

@@ -1,19 +1,31 @@
-# Archivo generado por el gestor qmake de kdevelop.
-# -------------------------------------------
+# Archivo generado por el gestor qmake de kdevelop. 
+# ------------------------------------------- 
 # Subdirectorio relativo al directorio principal del proyecto: ./bulmafact/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmafact
 
-TEMPLATE = app
-LANGUAGE = C++
-CONFIG += release \
-          warn_on \
-          thread \
-          qt
-LIBS += ../../bulmalib/libbulmalib.a -lpq
-INCLUDEPATH += ../../bulmalib
-TARGET = ../../installbulmages/bulmafact
-DEFINES += REPORTS
-
+FORMS += bulmafactbase.ui \
+         providerslistbase.ui \
+         provedit_base.ui \
+         clientslistbase.ui \
+         clienteditbase.ui \
+         articleslistbase.ui \
+         orderslistbase.ui \
+         linorderslistbase.ui \
+         delivnoteslistbase.ui \
+         divisionbase.ui \
+         budgetbase.ui \
+         budgetslistbase.ui \
+         articleeditbase.ui \
+         clientdelivnoteslistbase.ui \
+         clientdelivnotebase.ui \
+         clientinvoiceslistbase.ui \
+         fpagobase.ui \
+         familiasdlg.ui 
+TRANSLATIONS += bulmafact_es.ts \
+                bulmafact_ca.ts \
+                bulmafact_en.ts \
+                bulmafact_fr.ts \
+                bulmafact_de.ts 
 HEADERS += bulmafact.h \
            company.h \
            providerslist.h \
@@ -34,8 +46,8 @@ HEADERS += bulmafact.h \
            clientdelivnote.h \
            clientinvoiceslist.h \
            listventanas.h \
-           fpago.h
-
+           fpago.h \
+           familiasview.h 
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -57,32 +69,18 @@ SOURCES += bulmafact.cpp \
            clientdelivnote.cpp \
            clientinvoiceslist.cpp \
            listventanas.cpp \
-           fpago.cpp
-
-FORMS += bulmafactbase.ui \
-         providerslistbase.ui \
-         provedit_base.ui \
-         clientslistbase.ui \
-         clienteditbase.ui \
-         articleslistbase.ui \
-         orderslistbase.ui \
-         linorderslistbase.ui \
-         delivnoteslistbase.ui \
-         divisionbase.ui \
-         budgetbase.ui \
-         budgetslistbase.ui \
-         articleeditbase.ui \
-         clientdelivnoteslistbase.ui \
-         clientdelivnotebase.ui \
-         clientinvoiceslistbase.ui \
-         fpagobase.ui
-
-TRANSLATIONS += bulmafact_es.ts \
-                bulmafact_ca.ts \
-                bulmafact_en.ts \
-                bulmafact_fr.ts \
-                bulmafact_de.ts
-
+           fpago.cpp \
+           familiasview.cpp 
+TEMPLATE = app
+LANGUAGE = C++
+CONFIG += release \
+warn_on \
+thread \
+qt
+LIBS += ../../bulmalib/libbulmalib.a -lpq
+INCLUDEPATH += ../../bulmalib
+TARGET = ../../installbulmages/bulmafact
+DEFINES += REPORTS
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
