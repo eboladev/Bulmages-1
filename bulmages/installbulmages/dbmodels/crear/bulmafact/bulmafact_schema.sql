@@ -150,7 +150,7 @@ BEGIN
 	codigocompleto := NEW.codigofamilia;
 	SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
 	IF FOUND THEN
-		codigocompleto := codigocompleto || as.codigocompletofamilia;
+		codigocompleto := as.codigocompletofamilia || codigocompleto;
 	END IF;
         NEW.codigocompletofamilia := codigocompleto;
 	RETURN NEW;
@@ -163,7 +163,20 @@ CREATE TRIGGER calculacodigocompletofamiliatrigger
     FOR EACH ROW
     EXECUTE PROCEDURE calculacodigocompletofamilia();
 
+CREATE FUNCTION propagacodigocompletofamilia () RETURNS "trigger"
+AS '
+DECLARE
+BEGIN
+	UPDATE familia SET codigocompletofamilia=codigocompletofamilia WHERE padrefamilia = NEW.idfamilia;
+	UPDATE articulo SET codigocompletoarticulo = codigocompletoarticulo WHERE articulo.idfamilia = NEW.idfamilia;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
 
+CREATE TRIGGER propagacodigocompletofamiliatrigger
+    AFTER UPDATE ON familia
+    FOR EACH ROW
+    EXECUTE PROCEDURE propagacodigocompletofamilia();
 
 -- Esta función nos da el identificador de familia dado un código.
 --CREATE OR REPLACE FUNCTION idfamilia (text) RETURNS "trigger"
@@ -238,7 +251,7 @@ BEGIN
 	codigocompleto := NEW.codarticulo;
 	SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
 	IF FOUND THEN
-		codigocompleto := codigocompleto || as.codigocompletofamilia;
+		codigocompleto := as.codigocompletofamilia || codigocompleto;
 	END IF;
         NEW.codigocompletoarticulo := codigocompleto;
 	RETURN NEW;

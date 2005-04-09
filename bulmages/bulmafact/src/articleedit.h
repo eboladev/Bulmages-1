@@ -53,6 +53,7 @@ public slots:
 	virtual void articleDiscountLostFocus();
    virtual void s_familiaLostFocus();
    virtual void s_searchFamily();
+   virtual void s_findArticulo();
 };
 
 #endif

@@ -29,10 +29,18 @@ public:
     familiasview(company *, QWidget *parent = 0, const char *name = 0);
 
     ~familiasview();
+    void trataModificado();
+    void mostrarplantilla();
+    
 public slots:
-	void s_setModificado() {m_modificado=TRUE;};
-	void s_releaseModificado() {m_modificado=FALSE;};
-	void pintar();
+	virtual void s_setModificado() {m_modificado=TRUE;};
+	virtual void s_releaseModificado() {m_modificado=FALSE;};
+	virtual void pintar();
+	virtual void s_seleccionado(QListViewItem *);
+	virtual void close();
+	virtual void s_saveFamilia();
+	virtual void s_newFamilia();
+	
 };
 
 #endif

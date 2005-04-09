@@ -152,7 +152,7 @@ void articleedit::chargeArticle(QString idArt) {
             m_articleModel->setText(cur->valor("modeloarticulo"));
             ivaType=cur->valor("idtipo_iva");
             m_comboArtType->setCurrentItem(cur->valor("tipoarticulo").toInt());
-
+	    m_codigoCompletoArticulo->setText(cur->valor("codigocompletoarticulo"));
 
             // Suministra relation loading
             // Cargamos las relaciones artículo - proveedor.
@@ -238,27 +238,28 @@ void articleedit::accept() {
         SQLQuery += " , nomarticulo='"+m_articleName->text()+"'";
         SQLQuery += " , descarticulo='"+m_articleDesc->text()+"'";
         SQLQuery += " , cbarrasarticulo='"+m_barCode->text()+"'";
-        SQLQuery += " , tipoarticulo="+QString().sprintf("%d", m_comboArtType->currentItem());
-        SQLQuery += " , descuentoarticulo="+m_articleDiscount->text();
-        SQLQuery += " , especificacionesarticulo='"+m_specifications->text()+"'";
-        SQLQuery += " , margenarticulo="+m_articleMargin->text();
-        SQLQuery += " , sobrecostearticulo="+m_articleOverCost->text();
-        SQLQuery += " , modeloarticulo='"+m_articleModel->text()+"'";
+//        SQLQuery += " , tipoarticulo="+QString().sprintf("%d", m_comboArtType->currentItem());
+//        SQLQuery += " , descuentoarticulo="+m_articleDiscount->text();
+//        SQLQuery += " , especificacionesarticulo='"+m_specifications->text()+"'";
+//        SQLQuery += " , margenarticulo="+m_articleMargin->text();
+//        SQLQuery += " , sobrecostearticulo="+m_articleOverCost->text();
+//        SQLQuery += " , modeloarticulo='"+m_articleModel->text()+"'";
         SQLQuery += " , idtipo_iva="+m_cursorcombo->valor("idtipo_iva",m_comboIvaType->currentItem());
         SQLQuery += " WHERE idarticulo ="+idArticle;
     } else {
-        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, cbarrasarticulo, tipoarticulo, descuentoarticulo, especificacionesarticulo, margenarticulo, sobrecostearticulo, modeloarticulo, idtipo_iva)";
+        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, cbarrasarticulo, idtipo_iva)";
+// , tipoarticulo, descuentoarticulo, especificacionesarticulo, margenarticulo, sobrecostearticulo, modeloarticulo
         SQLQuery += " VALUES (";
         SQLQuery += " "+m_articleCode->text();
         SQLQuery += " , '"+m_articleName->text()+"'";
         SQLQuery += " , '"+m_articleDesc->text()+"'";
         SQLQuery += " , '"+m_barCode->text()+"'";
-        SQLQuery += " , "+QString().sprintf("%d", m_comboArtType->currentItem());
-        SQLQuery += " , "+m_articleDiscount->text();
-        SQLQuery += " , '"+m_specifications->text()+"'";
-        SQLQuery += " , "+m_articleMargin->text();
-        SQLQuery += " , "+m_articleOverCost->text();
-        SQLQuery += " , '"+m_articleModel->text()+"'";
+//        SQLQuery += " , "+QString().sprintf("%d", m_comboArtType->currentItem());
+//        SQLQuery += " , "+m_articleDiscount->text();
+//        SQLQuery += " , '"+m_specifications->text()+"'";
+//        SQLQuery += " , "+m_articleMargin->text();
+//        SQLQuery += " , "+m_articleOverCost->text();
+//        SQLQuery += " , '"+m_articleModel->text()+"'";
         SQLQuery += " , "+m_cursorcombo->valor("idtipo_iva",m_comboIvaType->currentItem());
         SQLQuery += ")";
         companyact->begin();
@@ -293,6 +294,15 @@ void articleedit::boton_borrar() {
     }// end if
 }// end boton_borrar
 
+
+void articleedit::s_findArticulo() {
+	QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '"+m_codigoCompletoArticulo->text()+"'";
+	cursor2 *cur = companyact->cargacursor(SQlQuery);
+	if (!cur->eof()) {
+		chargeArticle(cur->valor("idarticulo"));
+	}// end if
+	delete cur;
+}// end s_findArticulo
 
 void articleedit::articleDiscountLostFocus() {
     m_articleDiscount->setText(m_articleDiscount->text().replace(",","."));
