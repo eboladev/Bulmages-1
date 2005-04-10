@@ -110,9 +110,10 @@ articleedit::~articleedit() {
 
 void articleedit::s_familiaLostFocus() {
         QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='"+m_codigoCompletoFamilia->text()+"'";
-        cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
+        cursor2 *cur= companyact->cargacursor(SQLQuery);
         if (!cur->eof()) {
-	    m_idFamilia = cur->valor(cur->valor("idfamilia"));
+	    m_idFamilia = cur->valor("idfamilia");
+	    fprintf(stderr,"idfamilia:%s\n", m_idFamilia.ascii());
             m_nomFamilia->setText(cur->valor("nombrefamilia"));	    
 	}// end if
 	delete cur;
@@ -139,7 +140,7 @@ void articleedit::chargeArticle(QString idArt) {
         cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
         if (!cur->eof()) {
             idArticle = idArt;
-	    m_idFamilia = cur->valor(cur->valor("idfamilia"));
+	    m_idFamilia = cur->valor("idfamilia");
             m_codigoCompletoFamilia->setText(cur->valor("codigocompletofamilia"));
             m_articleCode->setText(cur->valor("codarticulo"));
             m_articleName->setText(cur->valor("nomarticulo"));
@@ -199,10 +200,10 @@ void articleedit::cargarcomboiva(QString idIva) {
         }
         m_comboIvaType->insertItem(m_cursorcombo->valor("desctipo_iva"));
         m_cursorcombo->siguienteregistro();
-    }
+    }// end while
     if (i1 != 0 ) {
         m_comboIvaType->setCurrentItem(i1-1);
-    }
+    }// end if
 } // end cargarcomboalmacen
 
 
@@ -238,6 +239,7 @@ void articleedit::accept() {
         SQLQuery += " , nomarticulo='"+m_articleName->text()+"'";
         SQLQuery += " , descarticulo='"+m_articleDesc->text()+"'";
         SQLQuery += " , cbarrasarticulo='"+m_barCode->text()+"'";
+	SQLQuery += " , idfamilia="+m_idFamilia;
 //        SQLQuery += " , tipoarticulo="+QString().sprintf("%d", m_comboArtType->currentItem());
 //        SQLQuery += " , descuentoarticulo="+m_articleDiscount->text();
 //        SQLQuery += " , especificacionesarticulo='"+m_specifications->text()+"'";
@@ -247,7 +249,7 @@ void articleedit::accept() {
         SQLQuery += " , idtipo_iva="+m_cursorcombo->valor("idtipo_iva",m_comboIvaType->currentItem());
         SQLQuery += " WHERE idarticulo ="+idArticle;
     } else {
-        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, cbarrasarticulo, idtipo_iva)";
+        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, cbarrasarticulo, idtipo_iva, idfamilia)";
 // , tipoarticulo, descuentoarticulo, especificacionesarticulo, margenarticulo, sobrecostearticulo, modeloarticulo
         SQLQuery += " VALUES (";
         SQLQuery += " "+m_articleCode->text();
@@ -261,6 +263,7 @@ void articleedit::accept() {
 //        SQLQuery += " , "+m_articleOverCost->text();
 //        SQLQuery += " , '"+m_articleModel->text()+"'";
         SQLQuery += " , "+m_cursorcombo->valor("idtipo_iva",m_comboIvaType->currentItem());
+	SQLQuery += " , "+m_idFamilia;
         SQLQuery += ")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
@@ -273,12 +276,13 @@ void articleedit::accept() {
         close();
     } else {
         companyact->rollback();
-    }
+    }// end if
 }// end accept
 
-/************************************************************************
-* Esta función se ejecuta cuando se ha pulsado sobre el botón de borrar *
-*************************************************************************/
+
+/**
+  * Esta función se ejecuta cuando se ha pulsado sobre el botón de borrar *
+  */
 void articleedit::boton_borrar() {
     if (idArticle != "0") {
         if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artículo","Esta a punto de borrar un artículo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {

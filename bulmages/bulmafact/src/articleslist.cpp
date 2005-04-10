@@ -61,7 +61,7 @@ CREATE TABLE articulo (
 
 
 #define COL_IDARTICULO 0
-#define COL_CODARTICULO 1
+#define COL_CODCOMPLETOARTICULO 1
 #define COL_NOMARTICULO 2
 #define COL_DESCARTICULO 3
 #define COL_CBARRASARTICULO 4
@@ -77,6 +77,7 @@ CREATE TABLE articulo (
 #define COL_IDTIPO_IVA 14
 #define COL_DESCTIPO_IVA 15
 #define COL_IDLINEA_PROD 16
+#define COL_CODARTICULO 17
 
 
 
@@ -99,6 +100,7 @@ void articleslist::inicializa() {
    m_list->setNumCols(17);
    m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Identificador" ) );
    m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código" ) );
+   m_list->horizontalHeader()->setLabel( COL_CODCOMPLETOARTICULO, tr( "Código Completo" ) );
    m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción" ) );
    m_list->horizontalHeader()->setLabel( COL_DESCARTICULO, tr( "Descripción Completa" ) );
    m_list->horizontalHeader()->setLabel( COL_CBARRASARTICULO, tr( "Código de Barras" ) );
@@ -117,6 +119,7 @@ void articleslist::inicializa() {
    
    m_list->setColumnWidth(COL_IDARTICULO,100);
    m_list->setColumnWidth(COL_CODARTICULO,100);
+   m_list->setColumnWidth(COL_CODCOMPLETOARTICULO, 100);
    m_list->setColumnWidth(COL_NOMARTICULO,300);
    m_list->setColumnWidth(COL_DESCARTICULO,300);
    m_list->setColumnWidth(COL_CBARRASARTICULO,100);
@@ -147,6 +150,7 @@ void articleslist::inicializa() {
 	while (!cur->eof()) {
 		m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
 		m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
+		m_list->setText(i,COL_CODCOMPLETOARTICULO, cur->valor("codigocompletoarticulo"));
 		m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
 		m_list->setText(i,COL_DESCARTICULO,cur->valor("descarticulo"));
 		m_list->setText(i,COL_CBARRASARTICULO,cur->valor("cbarrasarticulo"));
