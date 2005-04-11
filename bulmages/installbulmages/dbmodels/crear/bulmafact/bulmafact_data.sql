@@ -52,11 +52,17 @@ INSERT INTO marca (nommarca, urlmarca, comentmarca) VALUES('Nestl�', 'www.nestle
 INSERT INTO linea_prod (desclinea_prod, idmarca) VALUES('Línea de producción 1', 1);
 \echo "Hemos insertado las linea_prod"
 
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('01', 'Familia 01', NULL);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('02', 'Familia 02', NULL);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('03', 'Familia 03', NULL);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('01', 'Subfamilia 0101', 1);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('02', 'Subfamilia 0102', 2);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('CO', 'Comestibles', NULL);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('DR', 'Drogueria', NULL);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('VE', 'Vehiculos', NULL);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('LA', 'Lacteos', 1);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('CA', 'Carnicos', 1);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('CH', 'Charcuteria', 1);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('PE', 'Pescaderia', 1);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('PA', 'Panaderia', 1);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('FU', 'Fruteria', 1);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('BE', 'Bebidas', 1);
+INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('IN', 'Infusiones', 1);
 \echo "Hemos insertado las familias"
 
 INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, idtipo_iva, idlinea_prod, idfamilia) VALUES('1', 'Leche Entera', 'Brick leche entera 1 litro', 1, 1,4);
