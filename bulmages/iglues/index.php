@@ -18,8 +18,12 @@
 <a href="home.php">
 <img src="img/igloo_web.jpg" width="600" height="397" border="0" alt="No te imaginas lo que se está montando aquí dentro...">
 </a>
-
 <br />
+<h1>IGLUES contra las patentes de software
+<br /> <br />
+<A href='http://movilizacion.proinnova.org/'><IMG src='img/banner_movilizacion.gif' width='468' height='60' align='middle' border='0''></A>
+<br />
+</h1>
 I.G.L.U.E.S. - 
 Iniciativa
 de Gestion

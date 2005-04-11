@@ -37,7 +37,9 @@ echo "<title>IGLUES - $title</title>";
 <div id="header">
 <div id="section_title">
 <?php
-echo "<h1>$title</h1>";
+echo "<h1><A href='http://movilizacion.proinnova.org/'><IMG src='img/banner_movilizacion.gif' width='468' height='60' align='middle' border='0'
+'></A><br></h1> ";
+//echo "<h1>$title</h1>";
 ?>
 </div>
 </div>
