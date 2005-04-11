@@ -21,7 +21,7 @@
 <br />
 <h1>IGLUES contra las patentes de software
 <br /> <br />
-<A href='http://movilizacion.proinnova.org/'><IMG src='img/banner_movilizacion.gif' width='468' height='60' align='middle' border='0''></A>
+<A href='http://movilizacion.proinnova.org/'><IMG src='img/banner_movilizacion.gif' width='468' height='60' align='middle' border='0'></A>
 <br />
 </h1>
 I.G.L.U.E.S. - 
