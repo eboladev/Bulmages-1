@@ -1691,7 +1691,8 @@ void intapunts3view::asiento_cierre() {
 	    cursor->siguienteregistro();
 	}// end while
 	delete cursor;
-	muestraasiento(idasiento);
+	// muestraasiento(idasiento);
+	repinta(idasiento);
     } else {
 	QMessageBox::warning( 0, tr("Asiento Cerrado"), tr("Debe abrir un asiento primero.."), QMessageBox::Ok,0);
     }// end if
@@ -1733,7 +1734,8 @@ void intapunts3view::asiento_apertura() {
 	    cur->siguienteregistro();
 	}// end while
 	delete cur;
-	muestraasiento(idasiento);
+	// muestraasiento(idasiento);
+	repinta(idasiento);
     } else {
 	QMessageBox::warning( 0, tr("Asiento Cerrado"), tr("Debe abrir un asiento primero.."), QMessageBox::Ok,0);
     }// end if
@@ -1756,14 +1758,20 @@ void intapunts3view::asiento_regularizacion() {
 	if (idasiento==-1)
 	    idasiento=atoi(IDASIENTO);
 	
-	/// Calculamos cual va a ser la cuenta de regularizaciÃ³n.
+	/// El parametro está en la configuración de empresa.
+	QString query = "SELECT * FROM cuenta WHERE codigo in (SELECT valor FROM configuracion WHERE nombre='CuentaRegularizacion')";
+	cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");
+	idcuenta1 = atoi(cur->valor("idcuenta").ascii());
+	delete cur;
+	
+/*	/// Calculamos cual va a ser la cuenta de regularizaciÃ³n.
 	QString query = "SELECT * FROM cuenta WHERE codigo LIKE '129%' and padre in (SELECT idcuenta FROM cuenta WHERE codigo='129')";
 	conexionbase->begin();
 	cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");
 	conexionbase->commit();
 	idcuenta1 = atoi(cur->valor("idcuenta").ascii());
 	delete cur;
-	
+*/	
 	query = "SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito from apunte WHERE idcuenta IN (SELECT idcuenta FROM cuenta where idgrupo=6 OR idgrupo=7) AND fecha <= '"+fechaasiento1->text()+"' GROUP BY idcuenta ORDER BY saldito";
 	
 	

@@ -516,9 +516,28 @@ int ivaview::buscaborradorservicio(int idborrador) {
     conexionbase->ejecuta(SQLQuery);
     SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
     conexionbase->ejecuta(SQLQuery);
+    
+    /// Cogemos de la configuración las cuentas que queremos que se apunten.
+    /// Montamos los querys en base a la cadena cuentas.
+    QString cuentas="";
+    SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasIngresos'";
+    cursor2 *cur=conexionbase->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+    	cuentas += cur->valor("valor"); 
+    }// end if
+    delete cur;
+    SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasGastos'";
+    cur=conexionbase->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+    	cuentas += ";"+cur->valor("valor"); 
+    }// end if
+    delete cur;
+    cuentas.replace(';',"%|^");
+    cuentas = "'^"+cuentas+"%'";    
+    
     // Atentos aquí que aqui es donde se incorpora el parametro.
-    SQLQuery = "SELECT * FROM lacosa WHERE codigo LIKE '6%' OR codigo LIKE '7%'";
-    cursor2 * cur=conexionbase->cargacursor(SQLQuery);
+    SQLQuery = "SELECT * FROM lacosa WHERE codigo SIMILAR TO "+cuentas;
+    cur=conexionbase->cargacursor(SQLQuery);
     conexionbase->commit();
     while (! cur->eof() ) {
         fprintf(stderr,"idborrador: %s contrapartida: %s cuenta: %s\n",cur->valor("idborrador").ascii(), cur->valor("contrapartida").ascii(), cur->valor("codigo").ascii());
@@ -526,8 +545,10 @@ int ivaview::buscaborradorservicio(int idborrador) {
         cur->siguienteregistro();
     }// end while
     delete cur;
-    // Atentos aquí que aqui es donde se calcula el total
-    SQLQuery = "SELECT sum(baseimp) AS total FROM lacosa WHERE codigo LIKE '6%' OR codigo LIKE '7%'";
+
+    
+    /// Atentos aquí que aqui es donde se calcula el total
+    SQLQuery = "SELECT abs(sum(baseimp)) AS total FROM lacosa WHERE codigo SIMILAR TO "+cuentas;
     cur=conexionbase->cargacursor(SQLQuery);
     conexionbase->commit();
     if (! cur->eof() ) {

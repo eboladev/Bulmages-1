@@ -1056,6 +1056,18 @@ BEGIN
 	IF NOT FOUND THEN
 		INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (19, ''RegistroSoportada'', ''477'');  
 	END IF;	
+	SELECT INTO as * FROM configuracion WHERE nombre=''CuentaRegularizacion'';
+	IF NOT FOUND THEN
+		INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (21, ''CuentaRegularizacion'', ''129'');
+	END IF;
+	SELECT INTO as * FROM configuracion WHERE nombre=''CuentasIngresos'';
+	IF NOT FOUND THEN
+		INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (22, ''CuentasIngresos'', ''60;62'');
+	END IF;
+	SELECT INTO as * FROM configuracion WHERE nombre=''CuentasGastos'';
+	IF NOT FOUND THEN
+		INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (23, ''CuentasGastos'', ''70'');
+	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
