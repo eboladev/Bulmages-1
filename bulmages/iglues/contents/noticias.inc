@@ -13,7 +13,7 @@ $body = '
 <td><center><b>Manifestación contra las Patentes de Software</b></center></td>
 </tr>
 <tr>
-<td colspan=2>La asociacion Iglues manifiesta su preocupación ante la propuesta de directiva aprovada por la Cominión Europea. Hace ya mucho que las asociaciones de informáticos en general se manifiestan contra la propuesta de patentes de software por sus graves consecuencias dentro del ramo del desarrollo de aplicaciones informáticas. Así pues, Iglues como entidad con que quiere seguir podiendo desarrollar software. Así pues Iglues, como entidad que defiende y trabaja por la imnovación en la infiormática,  objetivo que seria según los estudios disponibles a traves de webs dedicadas al tema como proinnova o FFII  seriamente perjudicado, se une a la convocatoria de la <A href="http://movilizacion.proinnova.org/">concentración contra las patentes</A> de software del próximo 27 de abril.
+<td colspan=2>La asociacion Iglues manifiesta su preocupación ante la propuesta de directiva aprovada por la Cominión Europea. Hace ya mucho que las asociaciones de informáticos en general se manifiestan contra la propuesta de patentes de software por sus graves consecuencias dentro del ramo del desarrollo de aplicaciones informáticas. <br>Así pues Iglues, como entidad que defiende y trabaja por la imnovación en la infiormática,  objetivo que seria según los estudios disponibles a traves de webs dedicadas al tema como proinnova o FFII  seriamente perjudicado, se une a la convocatoria de la <A href="http://movilizacion.proinnova.org/">concentración contra las patentes</A> de software del próximo 27 de abril.
 </td>
 </tr>
 </table>
