@@ -61,7 +61,7 @@ configuracion::configuracion() {
    QString dir1 = getenv("HOME");
    dir1 = dir1 + "/"+ CONFLOCAL;
    leeconfig ((char *)dir1.ascii());
-
+   setValor(CONF_DIR_USER,dir);
    setValor(CONF_PRIVILEGIOS_USUARIO, "1");
    setValor(CONF_ALERTAS_DB, "Yes");
    setValor(CONF_LOGIN_USER, "");

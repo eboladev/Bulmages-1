@@ -622,7 +622,7 @@ void ainteligentesview::boton_cuentas() {
 }// end boton_cuentas
 
 void ainteligentesview::boton_exportar() {
-   QString fn = QFileDialog::getSaveFileName(0, tr("AInteligente (*.xml)"), 0,tr("Guardar Asiento Inteligente"),tr("Elige el nombre de archivo"));
+   QString fn = QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("AInteligente (*.xml)"), 0,tr("Guardar Asiento Inteligente"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {
       FILE *mifile;
       mifile = fopen((char *) fn.ascii(),"wt");
@@ -674,7 +674,7 @@ void ainteligentesview::boton_exportar() {
 
 
 void ainteligentesview::boton_importar() {
-   QString fn = QFileDialog::getOpenFileName(0, tr("Asientos Inteligentes (*.xml)"), 0,tr("Cargar Asientos Inteligentes"),tr("Elige el nombre de archivo"));
+   QString fn = QFileDialog::getOpenFileName("/usr/share/bulmages/ainteligentes", tr("Asientos Inteligentes (*.xml)"), 0,tr("Cargar Asientos Inteligentes"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {      
       // Hacemos el parsing del XML
       QFile xmlFile( fn);              // Declaramos el ficheros

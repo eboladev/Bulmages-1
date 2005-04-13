@@ -132,6 +132,9 @@
 /// CONF_PASSWORD_USER     Determina el password del usuario. Inicialmente vale ""
 #define CONF_PASSWORD_USER          423
 
+/// ESta variable indica el directorio de trabajo del usuario
+#define CONF_DIR_USER               424
+
 
 /// CONF_NUM_AUT_*		Determina si se utilizarán numeradores automaticos para presupuestos, albaranes y facturas  Inicialmente vale ""
 #define CONF_NUM_AUT_PRESUP 500

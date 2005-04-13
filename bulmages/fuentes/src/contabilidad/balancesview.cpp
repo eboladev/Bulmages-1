@@ -142,7 +142,7 @@ void balancesview::imprimir() {
 void balancesview::boton_exportar() {
    fprintf(stderr,"Boton de Exportar\n");
    QString idbalance = listado->text(listado->currentRow(),COL_CODIGO);
-   QString fn = QFileDialog::getSaveFileName(0, tr("Balances (*.xml)"), 0,tr("Guardar Balance"),tr("Elige el nombre de archivo"));
+   QString fn = QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("Balances (*.xml)"), 0,tr("Guardar Balance"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {
       FILE *mifile;
       mifile = fopen((char *) fn.ascii(),"wt");
@@ -222,7 +222,7 @@ void balancesview::boton_exportar() {
 
 void balancesview::boton_importar() {
    fprintf(stderr,"Boton de Importar\n");
-   QString fn = QFileDialog::getOpenFileName(0, tr("Asientos Inteligentes (*.xml)"), 0,tr("Cargar Asientos Inteligentes"),tr("Elige el nombre de archivo"));
+   QString fn = QFileDialog::getOpenFileName("/usr/share/bulmages/balances", tr("Asientos Inteligentes (*.xml)"), 0,tr("Cargar Asientos Inteligentes"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {      
       // Hacemos el parsing del XML
       QFile xmlFile( fn);                 // Declaramos el ficheros

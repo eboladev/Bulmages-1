@@ -108,7 +108,7 @@ void adocumental::doubleclicked(int row, int, int, const QPoint &) {
 
 
 void adocumental::boton_newadocumental() {
-   QString fn = QFileDialog::getOpenFileName(0, tr("Punteos (*.*)"), 0,tr("Agregar Documento"),tr("Elige el nombre de archivo"));
+   QString fn = QFileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), tr("Punteos (*.*)"), 0,tr("Agregar Documento"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {
       fprintf(stderr,"%s\n",fn.ascii());
       QString comando= "cp "+fn+" "+RutaADocumental;

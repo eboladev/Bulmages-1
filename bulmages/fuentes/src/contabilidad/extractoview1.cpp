@@ -305,7 +305,7 @@ void extractoview1::boton_imprimir() {
 
 
 void extractoview1::boton_guardar() {
-  QString fn = QFileDialog::getSaveFileName(0, tr("Diarios (*.txt)"), 0,tr("Guardar Libro Diario"),tr("Elige el nombre de archivo"));
+  QString fn = QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("Diarios (*.txt)"), 0,tr("Guardar Libro Diario"),tr("Elige el nombre de archivo"));
   if (!fn.isEmpty()) {
      libromayorprint libromayor;
      QString finicial = fechainicial1->text().ascii();
@@ -701,7 +701,7 @@ void extractoview1::boton_casacion() {
 }// end boton_casacion
 
 void extractoview1::boton_guardarpunteo() {
-  QString fn = QFileDialog::getSaveFileName(0, tr("Punteos (*.pto)"), 0,tr("Guardar Punteo"),tr("Elige el nombre de archivo"));
+  QString fn = QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("Punteos (*.pto)"), 0,tr("Guardar Punteo"),tr("Elige el nombre de archivo"));
   if (!fn.isEmpty()) {
     FILE *mifile;
     mifile = fopen((char *) fn.ascii(),"wt");
@@ -742,7 +742,7 @@ void extractoview1::boton_borrapunteo() {
   * La carga del punteo no funciona correctamente.
   */
 void extractoview1::boton_cargarpunteos() {
-   QString fn = QFileDialog::getOpenFileName(0, tr("Punteos (*.pto)"), 0,tr("Cargar Punteo"),tr("Elige el nombre de archivo"));
+   QString fn = QFileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), tr("Punteos (*.pto)"), 0,tr("Cargar Punteo"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {
       ifstream filestr((char *) fn.ascii());
       string a;

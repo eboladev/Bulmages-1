@@ -49,18 +49,18 @@ importContaplus::importContaplus(postgresiface2 * con, QWidget * parent, const c
 
 /// Se ha pulsado sobre el botón de búsqueda de una subcuenta.
 void importContaplus::botonBuscarXML() {
-	m_XML->setText( QFileDialog::getSaveFileName("","Contaplus (*.xml)", this, "select file", "Elija el Archivo"));
+	m_XML->setText( QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Contaplus (*.xml)", this, "select file", "Elija el Archivo"));
 }// end botonBuscarSubCta
 
 /// Se ha pulsado sobre el botón de búsqueda de una subcuenta.
 void importContaplus::botonBuscarSubCta() {
-	m_subCta->setText( QFileDialog::getSaveFileName("","Contaplus (*.txt)", this, "select file", "Elija el Archivo"));
+	m_subCta->setText( QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Contaplus (*.txt)", this, "select file", "Elija el Archivo"));
 }// end botonBuscarSubCta
 
 /** \brief SLOT que responde a la pulsación de selección de archivo.
   */
 void importContaplus::botonBuscarDiario() {
-	m_diario->setText( QFileDialog::getSaveFileName("","Contaplus (*.txt)", this, "select file", "Elija el Archivo"));
+	m_diario->setText( QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Contaplus (*.txt)", this, "select file", "Elija el Archivo"));
 }// end botonBuscarDiario	
 
 void importContaplus::botonImportar() {

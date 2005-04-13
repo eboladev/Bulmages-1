@@ -253,7 +253,7 @@ void BConfiguracion::salvarEmpresa() {
 
     //  (new BVisorEmpresas(& dbEmpresa, this,"Backup",true))->exec();
     if (dbEmpresa!="") {
-        QString fn = QFileDialog::getSaveFileName(0, "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
+        QString fn = QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
         if (!fn.isEmpty()) {
             if (fn.right(7)!= ".pgdump")
                 fn = fn +".pgdump";
@@ -280,9 +280,7 @@ void BConfiguracion::BotonA_4restaurarEmpresa() {
 
     dbEmpresa = PunteroAlSelector->empresaDB();
     if (dbEmpresa!="") {
-        fprintf(stderr,"Restaurar empresa cargamos fichero\n");
-        //     QString fn = QFileDialog::getOpenFileName(0, theApp->translate("empresa","Empresas (*.pgdump)",""), 0,theApp->translate("empresa","Cargar Empresa",""),theApp->translate("emrpesa","Elige el fichero a cargar.",""));
-        QString fn = QFileDialog::getOpenFileName(0, "Empresas (*.pgdump)", 0,"Cargar Empresa","Elige el fichero a cargar.");
+        QString fn = QFileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), "Empresas (*.pgdump)", 0,"Cargar Empresa","Elige el fichero a cargar.");
 
         if (!fn.isEmpty()) {
             QString comando= "cargaemp "+PGserver+" "+dbEmpresa+" "+fn;

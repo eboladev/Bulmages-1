@@ -183,7 +183,7 @@ void diarioview1::boton_imprimir() {
  * Se ha pulsado sobre el boton guardar del formulario
  **************************************************************/
 void diarioview1::boton_guardar() {
-  QString fn = QFileDialog::getSaveFileName(0, "Diarios (*.txt)", 0,"Guardar Libro Diario","Elige el nombre de archivo");
+  QString fn = QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Diarios (*.txt)", 0,"Guardar Libro Diario","Elige el nombre de archivo");
   if (!fn.isEmpty()) {
      // Si se ha proporcionado un nombre de archivo valido
      // invocamos la clase diarioprint y hacemos que guarde el archivo.
