@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include "plugincorrector.h"
+#include "correctorwidget.h"
+#include "empresa.h"
+
+#include <qpopupmenu.h>
+#include <qaction.h>
+#include <qobject.h>
+#include <qmessagebox.h>
+#include <qdockwindow.h>
+#include <qmainwindow.h>
+
+
+void entryPoint(Bulmages01 *bges) {
+    empresa *emp = &(bges->empresaactual);
+//    conexionbase2 *con = emp->bdempresa();
+    
+    fprintf(stderr,"Estoy dentro del plugin\n");
+//    myplugin *plug= new myplugin( );
+//    plug->inicializa(bges);
+
+
+  // Vamos a probar con un docwindow.
+
+//  mydock  *doc1  = new  mydock(QDockWindow::OutsideDock, bges, "Corrector1");
+  QDockWindow  *doc1  = new  QDockWindow(QDockWindow::OutsideDock, bges, "Corrector1");
+  doc1->setGeometry(100,100,100,500);
+  doc1->setFixedExtentWidth(200);
+  correctorwidget *corr = new correctorwidget(doc1,"correctorplugin");
+  corr->setEmpresa(emp);
+  corr->dock = doc1;
+  doc1->setWidget(corr);
+  doc1->setResizeEnabled(TRUE);
+  doc1->setMovingEnabled(TRUE);
+  bges->moveDockWindow(doc1,QMainWindow::Right);
+  doc1->dock();
+  doc1->hide();
+
+	
+    //El menu de empresa
+  QAction  *viewCorrector = new QAction("Corrector", "&Corrector", 0, 0, 0, true);
+  viewCorrector->setStatusTip("Muestra/Oculta el corrector");
+  viewCorrector->setWhatsThis("Corrector\n\nMuestra/oculta el corrector");
+  QObject::connect(viewCorrector, SIGNAL(toggled(bool)), corr, SLOT(cambia(bool)));    
+  viewCorrector->addTo(bges->pViewMenu);
+   
+}
+
+

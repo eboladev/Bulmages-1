@@ -1,0 +1,126 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>correctorwdt</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>correctorwdt</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>306</width>
+            <height>576</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Corrector</string>
+    </property>
+    <property name="mouseTracking">
+        <bool>true</bool>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
+        <property name="spacing">
+            <number>0</number>
+        </property>
+        <widget class="QToolButton" row="0" column="0">
+            <property name="name">
+                <cstring>toolButton1</cstring>
+            </property>
+            <property name="text">
+                <string></string>
+            </property>
+            <property name="iconSet">
+                <iconset>image0</iconset>
+            </property>
+        </widget>
+        <spacer row="0" column="1">
+            <property name="name">
+                <cstring>spacer1</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>230</width>
+                    <height>21</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="Line" row="1" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>line1</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="frameShape">
+                <enum>HLine</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Sunken</enum>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget class="QTextBrowser" row="3" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>browser</cstring>
+            </property>
+            <property name="paletteBackgroundColor">
+                <color>
+                    <red>255</red>
+                    <green>255</green>
+                    <blue>255</blue>
+                </color>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<images>
+    <image name="image0">
+        <data format="XPM.GZ" length="3806">789c7d96d952eb480c86ef798a14ba3b35a5891ddbb16b6a2ed821ac6187a9b9909710c2c90284254ccdbb8fdcfadb87e462d204f84abfd46a75b7ecdf7fb46ecf8e5b3f7e5f7b9dcbfcb16815437969fd28dfc6e3c55f7ffff9cfda7a18b6f42748b256b8fedbda7a7fde2a5a27d3495503bd2a50db7d1c6fadf06099f9a9e681fb387b77c5feba629f2fdb65afe6ca7d9cbd5d73111761113b7be1b82ca4281dafe4275f354b219514ceffb2e6244c82c42d8e472bfa1c1c21bf537081f5b97cdaa9da53677f04a7c632ad39507d60fe43e37a38fb081cc17e601ca6986fdfb803a609b8086cbe4de308f9d1b667d83f1ca781e707706a4c9fc64dbc3de3261e838bd0f2c98ce336f41be0d8ecf25673d80ea0a723e328827f601cb7c15f60f8f379c399f37f006798efc8b3d979c7382d6177e72dccc208f60a9c22de19b8005bbe5904e685715cc2fed3b89b758c9f8cb318f51b817d7e27c6e2ebe1ce6f27088b4ee0f437c69db63197e008bc659c04d07f1877b3c8ecbbc63e3ebbf3dec93aa9e527137061cc87354741d4367fa9c0913189715e61fe8e711182ddf98f44f5e258c0a931ed181715ea33362e43b03b2f711815b1ddafbe71dc369627700c3b3916658b7f0acec0b08bc07f6cf7372eedfe52b0729fddfe25929489e51f1ae715f4eebe763bca16ffda71decdbab9e3b4e6b4a3d7a5e3fc5dbf4973cfe2e26751166491d35f8163637e715ce801b17e730c2e8dd9c59748ede61f1a4b20c627e85762fd8a2f8c4bc99d5ddcf9c9a33c34a6a1719918f336187abe775ce621e23d8393dcf54b5a80055c597fcd118f5ec03e9f4b7065fd977697fb31cfc009faf3b1f5670952575fd905c7a8e751c3665f80c5ea232fe00a2cc67962f5940df4ffc4fa3f7f2e3f0fe8ddb8f2cf0bb7ff65acf5b07887e004f5bf070b3869d8e6eb81fdf3e4c233ea857805f6476660d45bdec1a837773da37e77e00af9bb7e5f564dbc83862d9eb7c35f0660ec8fec376cf122e312f5a04ec396cf142ca57bdef2045c818f8d2b30c5eef9acd70dfe737055258e13e32a84ffd833ec113831961d7bde17d80ff96cd8eaff0cf6f7610846fd65cbb8f4e78fc1fe3cdc82abd2d65f1a6b7e56ff2b7062ef1b7c0316700cc6fb88b87e3d489af9b78d4bbfdfe419f5be0363bfe81cecf767c3d8e74307e004f59e8105f5bb05231f7ef73c30fb99713d5c3eeef93a1834ebef1937f3f5c17ebe6730ce037d79b6f9691f8cfda6c27810e27d6d0a463d29f78cfcae1b76ef7f8c7c06027e03e3fdb03fff35985838e7824bae78c00f3ce4471ef1c8db97f5fcc43f79cc93e63be5193fabfec57bace85fd532e7b76fe35dfd3ef8d37b7cd76bf4858e2fded0efe6378f4a7fc3e3975ed55bbccd3bbccb7bbccf07eab1c73de771a873c0e39bfe888f557da2aaa9dac79af5a9fe7fa6cabe7a549ad568497fce172ef6255f39d535dfa8624fffbef12ddff13db797f40187dcd12c664e5d8f9e6a238e5d5609773935bdae2ee32f6222128d57e7bdf7ad423dee514e059554999e06f440437aa4113dd14f1ad344a3dee85ed96a7b3455f58c9e09eba5579ad31bbdabfa43d59fba03110f68a1d99f21f6978e0ddaf4f9d3967a6ceb1c3b34a15d1ed39eaa49eb32e25bd5efeb38a01e1dfe5aaf9be3938ee858d73ba2133aa5333d45eaa1ca7deaeb38a78beff5711e9774a5276ca8f1afe986aeebff956e359773baa3fbef7ae7d1a64077eb9d4b0a35fa883a3a228a55dd537de2f5f5ce51975ef989525d6d4f29a58c1f54adb185ebe84222cd7a0792d73e52d0497d12a4a453d16acb4033d99007a71eca63a3d7dc65a4151ff1a33cc94f19cb44a63293411d5bb5b5fa595e96eb23af3c14979bbce9f7ddd488fd219fb258a94f57bee84436ea55caa6aab75cec6d177b47c7ee727dfa73d13af29dec735766742807d2d3d7b44379941759c8911cafeafbf52afe77acfffbc7da7f57e389cc</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>toolButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>correctorwdt</receiver>
+        <slot>corregir()</slot>
+    </connection>
+    <connection>
+        <sender>browser</sender>
+        <signal>anchorClicked(const QString&amp;,const QString&amp;)</signal>
+        <receiver>correctorwdt</receiver>
+        <slot>alink(const QString&amp;,const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>browser</sender>
+        <signal>linkClicked(const QString&amp;)</signal>
+        <receiver>correctorwdt</receiver>
+        <slot>link(const QString&amp;)</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>corregir()</slot>
+    <slot>alink(const QString&amp;, const QString &amp;)</slot>
+    <slot>link(const QString &amp;)</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
