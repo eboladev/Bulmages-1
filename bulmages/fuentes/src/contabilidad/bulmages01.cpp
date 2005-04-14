@@ -22,7 +22,7 @@
 
 // Hacemos algunas pruebas con una docwindow. Para el corrector de contabilidad
 #include <qdockwindow.h>
-#include "correctorwidget.h"
+//#include "correctorwidget.h"
 
 // application specific includes
 #include "bulmages01.h"
@@ -98,7 +98,7 @@ Bulmages01::~Bulmages01() {
   delete viewToolBar;
   delete viewStatusBar;
   delete viewFullScreen;
-  delete viewCorrector;
+//  delete viewCorrector;
   delete windowNewWindow;
   delete windowCascade;
   delete windowTile;
@@ -215,10 +215,12 @@ void Bulmages01::initActions() {
   viewFullScreen->setWhatsThis(tr("FullScreen\n\nEnables/disables the full screen mode"));
   connect(viewFullScreen, SIGNAL(toggled(bool)), this, SLOT(slotViewFullScreen(bool)));
 
+  /*
   viewCorrector = new QAction(tr("Corrector"), tr("&Corrector"), 0, this, 0, true);
   viewCorrector->setStatusTip(tr("Muestra/Oculta el corrector"));
   viewCorrector->setWhatsThis(tr("Corrector\n\nMuestra/oculta el corrector"));
   connect(viewCorrector, SIGNAL(toggled(bool)), this, SLOT(slotViewCorrector(bool)));
+  */
   
   windowNewWindow = new QAction(tr("New Window"), tr("&New Window"), 0, this);
   windowNewWindow->setStatusTip(tr("Opens a new view for the current document"));
@@ -496,7 +498,7 @@ void Bulmages01::initMenuBar() {
   viewToolBar->addTo(pViewMenu);
   viewStatusBar->addTo(pViewMenu);
   viewFullScreen->addTo(pViewMenu);
-  viewCorrector->addTo(pViewMenu);
+//  viewCorrector->addTo(pViewMenu);
   ///////////////////////////////////////////////////////////////////
   // EDIT YOUR APPLICATION SPECIFIC MENUENTRIES HERE
   // El menu de cuenta
@@ -634,7 +636,7 @@ void Bulmages01::initToolBar() {
   
 
   // Vamos a probar con un docwindow.
-
+/*
   doc  = new  QDockWindow(this,"Corrector");
   doc->setGeometry(100,100,100,500);
   doc->setFixedExtentWidth(200);
@@ -645,6 +647,7 @@ void Bulmages01::initToolBar() {
   moveDockWindow(doc,Left);
   doc->hide();
   corr->setEmpresa(&empresaactual);
+  */
 }// end initToolBar
 
 
@@ -758,6 +761,8 @@ void Bulmages01::slotViewFullScreen(bool toggle)  {
 ///////////////////////////////////////////////////////////////////
 //turn Statusbar on or off                                       //
 ///////////////////////////////////////////////////////////////////
+
+/*
 void Bulmages01::slotViewCorrector(bool toggle)  {
   statusBar()->message(tr("Ver Corrector..."));
   if (toggle == false) {
@@ -767,7 +772,7 @@ void Bulmages01::slotViewCorrector(bool toggle)  {
   }// end if
   statusBar()->message(tr("Ready."));
 }// end slotViewStatusBar
-
+*/
 
 void Bulmages01::slotHelpAbout()  {
    aboutview *about=new aboutview(0,0);

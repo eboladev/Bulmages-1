@@ -34,7 +34,6 @@ FORMS += comun/uiselector.ui \
          contabilidad/extractoprintdlg.ui \
          contabilidad/actualizacionesdlg.ui \
          contabilidad/diarioprintdlg.ui \
-         contabilidad/correctorwdt.ui \
          contabilidad/cambiactadlg.ui \
          contabilidad/duplicaasientodlg.ui \
          contabilidad/amortizaciondlg.ui \
@@ -183,7 +182,6 @@ IDLS += contabilidad/about.ui \
         contabilidad/actualizacionesdlg.ui \
         contabilidad/diarioprintdlg.ui \
         contabilidad/diarioprintdlg.ui \
-        contabilidad/correctorwdt.ui \
         contabilidad/amortizacionesdlg.ui \
         contabilidad/adocumentalbase.ui \
         contabilidad/uibloqfecha.ui \
@@ -229,7 +227,6 @@ HEADERS += comun/splashscreen.h \
            contabilidad/diarioprint.h \
            contabilidad/actualizacionesview.h \
            contabilidad/diarioprintview.h \
-           contabilidad/correctorwidget.h \
            contabilidad/cambiactaview.h \
            contabilidad/duplicarasientoview.h \
            contabilidad/amortizacionview.h \
@@ -288,7 +285,6 @@ SOURCES += main.cpp \
            contabilidad/diarioprint.cpp \
            contabilidad/actualizacionesview.cpp \
            contabilidad/diarioprintview.cpp \
-           contabilidad/correctorwidget.cpp \
            contabilidad/cambiactaview.cpp \
            contabilidad/duplicarasientoview.cpp \
            contabilidad/amortizacionview.cpp \
@@ -306,11 +302,17 @@ SOURCES += main.cpp \
            contabilidad/bbloqfecha.cpp \
            contabilidad/tipoivaview.cpp \
            contabilidad/fpagoview.cpp 
+	   
+	   
 TEMPLATE = app
+
 TARGETDEPS += ../../bulmalib/libbulmalib.a
+
 LIBS += ../../bulmalib/libbulmalib.a \
 -lqt-mt \
--lpq
+-lpq \
+-rdynamic
+
 INCLUDEPATH = ../../bulmalib \
 ../src \
 comun \
@@ -320,14 +322,13 @@ formularios \
 /usr/include/qt \
 ../../bulmalib/.ui
 TARGET = ../../installbulmages/bulmacont
-CONFIG += release \
-warn_on
+CONFIG += qt \
+          release \
+	  warn_on
 contabilidad/uibloqfecha.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/uibloqfecha.ui.target
 contabilidad/uibloqfecha.ui.target = contabilidad/uibloqfecha.ui
 contabilidad/amortizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/amortizacionesdlg.ui.target
 contabilidad/amortizacionesdlg.ui.target = contabilidad/amortizacionesdlg.ui
-contabilidad/correctorwdt.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/correctorwdt.ui.target
-contabilidad/correctorwdt.ui.target = contabilidad/correctorwdt.ui
 contabilidad/diarioprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/diarioprintdlg.ui.target
 contabilidad/diarioprintdlg.ui.target = contabilidad/diarioprintdlg.ui
 contabilidad/actualizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/actualizacionesdlg.ui.target
@@ -399,8 +400,13 @@ contabilidad/tipoivadlg.ui.target = contabilidad/tipoivadlg.ui
 contabilidad/tipoivadlg.ui.commands = contabilidad/tipoivadlg.ui
 contabilidad/fpagodlg.ui.target = contabilidad/fpagodlg.ui
 contabilidad/fpagodlg.ui.commands = contabilidad/fpagodlg.ui
+
+
 QMAKE_CLEAN += Makefile
+
 LANGUAGE = C++
+
+
 exists (estadisticas){
   LIBS += estadisticas/libestadisticas.lib.a
   INCLUDEPATH += estadisticas

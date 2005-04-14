@@ -21,6 +21,8 @@
 #include <qtextcodec.h>
 #include <qtranslator.h>
 
+#include <qlibrary.h>
+
 #ifndef WIN32
 #include <unistd.h>
 #endif
@@ -45,6 +47,7 @@ void registraInputBGes() {
 }
 #endif
 
+
 /// Estas son las variables globales de la aplicación.
 /// El puntero de la aplicación
 QApplication * theApp;
@@ -52,7 +55,9 @@ QApplication * theApp;
 QTranslator * traductor;
 /// Faltan el configurador de parametros confpr y el sistema de log ctlog
 
-
+    typedef void (*MyPrototype)(Bulmages01 *);
+    MyPrototype myFunction;
+    
 /** \brief los datos de ejecución del programa son sencillos
   * La ejecución primero crea e inicializa los objetos configuración, idioma, splash, etc
   * luego intenta entrar en el sistema de base de datos
@@ -110,6 +115,30 @@ int main(int argc, char *argv[]) {
         bges = new Bulmages01(NULL, "bulmages",0, NULL);
     }// end if
     mainApp->setMainWidget(bges);
+    
+    
+    
+    /// Hacemos la carga de los plugins.
+    QString cad= confpr->valor(CONF_PLUGINS_BULMACONT);
+    fprintf(stderr,"carga de plugins: %s\n",cad.ascii());
+    QStringList plugins = QStringList::split( ";", cad );
+    for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
+	QLibrary *lib= new QLibrary(*it);
+	if (!lib->load()) {
+		printf("No se ha podido cargar la libreria\n");
+	} else {
+		myFunction = (MyPrototype) lib->resolve( "entryPoint" );
+		if ( myFunction ) {
+			myFunction(bges);
+		} else {
+			fprintf(stderr,"No ha entrado la libreria\n");
+		}// end if    
+	}// end if
+    }// end for
+    
+
+    
+        
     valorsalida = mainApp->exec();
     delete confpr;
     return valorsalida;

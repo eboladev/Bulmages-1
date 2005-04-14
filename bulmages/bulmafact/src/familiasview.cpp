@@ -105,7 +105,6 @@ void familiasview::mostrarplantilla() {
         m_codFamilia->setText(cursorfamilia->valor("codigofamilia"));
     }// end if
     delete cursorfamilia;
-//    botondefault->setOn(TRUE);
 }// end mostrarplantilla
 
 

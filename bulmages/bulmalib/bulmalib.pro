@@ -23,15 +23,27 @@ IDLS += logpassbase.ui \
 	abreempresadlg.ui
 FORMS += logpassbase.ui \
 	 abreempresadlg.ui
+	 
 TEMPLATE = lib
 LANGUAGE = C++
-CONFIG += debug warn_on staticlib
+CONFIG += qt \
+	  warn_on \
+	  staticlib
+	  
 INCLUDEPATH += ../src /usr/include/qt
+
+LIBS += -lqt-mt  \
+        -lpq \
+	-rdynamic
+	
 VERSION = 0.1
+
 TARGET = bulmalib
+
 OBJECTS_DIR = .obj
 UI_DIR = .ui
 MOC_DIR = .moc
+
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

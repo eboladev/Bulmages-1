@@ -114,6 +114,11 @@
 /// Indica cual va a ser el tamaño de fuente por defecto
 #define CONF_FONTSIZE_BULMAGES    311
 
+
+/// Indica cuales son los plugins para la contabilidad que se cargan.
+#define CONF_PLUGINS_BULMACONT 312
+
+
 /// Indica donde estan los datos del programa. Por defecto /usr/share/bulmages
 #define CONF_PROGDATA            320
 

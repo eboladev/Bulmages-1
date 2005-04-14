@@ -6,3 +6,5 @@
 TEMPLATE = subdirs
 SUBDIRS += src/estadisticas
 SUBDIRS += src
+SUBDIRS += src/plugin
+SUBDIRS += src/plugincorrector

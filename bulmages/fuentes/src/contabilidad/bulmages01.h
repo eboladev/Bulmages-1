@@ -125,7 +125,7 @@ public:
     void slotabreEmpresa();
     void slotregularizaEmpresa();
     void slotViewFullScreen(bool toggle);
-    void slotViewCorrector(bool toggle);
+//    void slotViewCorrector(bool toggle);
     void slotBalance();
     void slotBalanceTree();
     void slotAyuda();
@@ -186,7 +186,9 @@ public:
     /** edit_menu contains all items of the menubar entry "Edit" */
     QPopupMenu *pEditMenu;
     /** view_menu contains all items of the menubar entry "View" */
+    public:
     QPopupMenu *pViewMenu;
+    private:
     /** view_menu contains all items of the menubar entry "Help" */
     QPopupMenu *pHelpMenu;
     /** the window menu */
@@ -227,7 +229,7 @@ public:
     QAction *viewToolBar;
     QAction *viewStatusBar;
     QAction *viewFullScreen;
-    QAction *viewCorrector;
+//    QAction *viewCorrector;
 
     QActionGroup *windowAction;
     QAction *windowNewWindow;
