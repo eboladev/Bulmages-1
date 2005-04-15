@@ -8,3 +8,5 @@ SUBDIRS += src/estadisticas
 SUBDIRS += src
 SUBDIRS += src/plugin
 SUBDIRS += src/plugincorrector
+SUBDIRS += src/pluginadocumental
+

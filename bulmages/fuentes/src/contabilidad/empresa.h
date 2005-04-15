@@ -131,7 +131,6 @@ public:
   selectccosteview * getselccostes() {return selccostes;}
   selectcanalview *getselcanales() {return selcanales;}
   void recalculasaldos();
-  void archDoc(); // El archivo Documental Grafico.
   void cobPag();  // Gestion de cobros y pagos
 };
 #endif

@@ -459,11 +459,12 @@ void Bulmages01::initActions() {
   RecSald->setWhatsThis(tr("Recalcular Saldos Iniciales"));
   connect(RecSald, SIGNAL(activated()), this, SLOT(slotRecSald()));
 
+/*
   ArchDoc = new QAction(tr("Archivo Documental"), tr("&Archivo Documental"), 0, this);
   ArchDoc->setStatusTip(tr("Archivo Documental"));
   ArchDoc->setWhatsThis(tr("Archivo Documental"));
   connect(ArchDoc, SIGNAL(activated()), this, SLOT(slotArchDoc()));
-
+*/
   cobPag = new QAction(tr("Cobros y Pagos"), tr("&Cobros y Pagos"), 0, this);
   cobPag->setStatusTip(tr("Cobros y Pagos"));
   cobPag->setWhatsThis(tr("Cobros y Pagos"));
@@ -555,8 +556,6 @@ void Bulmages01::initMenuBar() {
   pHerramientasMenu->insertSeparator();
   RecSald->addTo(pHerramientasMenu);
   pHerramientasMenu->insertSeparator();
-  ArchDoc->addTo(pHerramientasMenu);
-  pHerramientasMenu->insertSeparator();
   cobPag->addTo(pHerramientasMenu);  
   
   //El menu de empresa
@@ -579,16 +578,12 @@ void Bulmages01::initMenuBar() {
 
   menuBar()->insertItem(tr("&Empresa"),pEmpresaMenu);
   menuBar()->insertItem(tr("&Asiento"),pAsientoMenu);
-//  menuBar()->insertItem(tr("&Cuenta"), pCuentaMenu);
-//  menuBar()->insertItem(tr("&Apunte"), pApunteMenu);
   menuBar()->insertItem(tr("&Listados"),pListMenu);
   menuBar()->insertItem(tr("&Estadistica"),pEstMenu);
   menuBar()->insertItem(tr("&Ventana"), pApunteMenu);
   menuBar()->insertItem(tr("&Herramientas"), pHerramientasMenu);
-  
   menuBar()->insertItem(tr("&Ver"), pViewMenu);
   menuBar()->insertItem(tr("&Ayuda"), pHelpMenu);
-//  menuBar()->insertItem(tr("&Salir"), pFileMenu);
 }
 
 
@@ -1023,9 +1018,6 @@ void Bulmages01::slotCanalDef() {
    empresaactual.canaldefecto();
 }// end slotNEjercicio
 
-void Bulmages01::slotArchDoc() {
-   empresaactual.archDoc();
-}
 
 void Bulmages01::slotTiposIVA() {
    empresaactual.tiposIVA();

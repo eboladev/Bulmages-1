@@ -48,7 +48,7 @@ class empresa;
 
 class intapunts3view : public intapunts3dlg  {
     Q_OBJECT
-public:
+private:
     int cidapunte;
     int cdescapunte;
     int cfechaapunte;
@@ -64,9 +64,12 @@ public:
     unsigned int numdigitos;
     int ccostes[200];
     int ccanales[200];
+public:
+    QString idAsiento();
     cursor2 *cursorasientos;   // Este es el cursor que se usará para recorrer la lista de asientos.
     filtrarasientosview *filt; // Este objeto contiene todas las opciones de filtraje necesarias para funcionar.
     empresa *empresaactual;
+    QHBoxLayout *layoutPlugins;
 public:
     intapunts3view(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
     ~intapunts3view();
@@ -118,14 +121,14 @@ public slots:
     virtual void boton_siguiente();
     virtual void boton_anterior();
     virtual void return_fechaasiento();
-    virtual void fechaasiento1_textChanged( const QString & );	 
+    virtual void fechaasiento1_textChanged( const QString & );
     virtual void boton_cargarasiento();
     virtual void return_numasiento();
     virtual void editarasiento();
     virtual void boton_duplicarasiento();
     virtual void boton_fecha();
-    virtual void boton_nuevoasientodocumental();
-    virtual void boton_adjuntar();
+//    virtual void boton_nuevoasientodocumental();
+//    virtual void boton_adjuntar();
 
 };
 

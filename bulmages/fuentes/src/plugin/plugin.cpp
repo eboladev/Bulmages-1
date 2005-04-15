@@ -32,14 +32,14 @@ void myplugin::inicializa(Bulmages01 *bges) {
     planCuentas->addTo(pPluginMenu);
 
     connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
-}
+}// end inicializa
 
 
 void entryPoint(Bulmages01 *bges) {
     fprintf(stderr,"Estoy dentro del plugin\n");
     myplugin *plug= new myplugin( );
     plug->inicializa(bges);
-    bges->setCaption("Me cago en la puta de oros");
+    bges->setCaption("Prueba de plugin.");
 
 }
 

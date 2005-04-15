@@ -39,7 +39,6 @@ FORMS += comun/uiselector.ui \
          contabilidad/amortizaciondlg.ui \
          contabilidad/uimodelo347.ui \
          contabilidad/amortizacionesdlg.ui \
-         contabilidad/adocumentalbase.ui \
          comun/uivisorempresas.ui \
          contabilidad/uibloqfecha.ui \
          comun/selectccostedlg.ui \
@@ -183,7 +182,6 @@ IDLS += contabilidad/about.ui \
         contabilidad/diarioprintdlg.ui \
         contabilidad/diarioprintdlg.ui \
         contabilidad/amortizacionesdlg.ui \
-        contabilidad/adocumentalbase.ui \
         contabilidad/uibloqfecha.ui \
         contabilidad/cobropagodlg.ui \
         contabilidad/tipoivadlg.ui 
@@ -232,7 +230,6 @@ HEADERS += comun/splashscreen.h \
            contabilidad/amortizacionview.h \
            contabilidad/bmodelo347.h \
            contabilidad/amortizacionesview.h \
-           contabilidad/adocumental.h \
            comun/log.h \
            comun/selectccosteview.h \
            comun/selectcanalview.h \
@@ -290,7 +287,6 @@ SOURCES += main.cpp \
            contabilidad/amortizacionview.cpp \
            contabilidad/bmodelo347.cpp \
            contabilidad/amortizacionesview.cpp \
-           contabilidad/adocumental.cpp \
            comun/log.cpp \
            comun/selectccosteview.cpp \
            comun/selectcanalview.cpp \
@@ -395,7 +391,6 @@ contabilidad/about.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/abo
 contabilidad/about.ui.target = contabilidad/about.ui
 contabilidad/cobropagodlg.ui.target = contabilidad/cobropagodlg.ui
 contabilidad/cobropagodlg.ui.commands = contabilidad/cobropagodlg.ui
-contabilidad/adocumentalbase.ui.target = contabilidad/adocumentalbase.ui
 contabilidad/tipoivadlg.ui.target = contabilidad/tipoivadlg.ui
 contabilidad/tipoivadlg.ui.commands = contabilidad/tipoivadlg.ui
 contabilidad/fpagodlg.ui.target = contabilidad/fpagodlg.ui

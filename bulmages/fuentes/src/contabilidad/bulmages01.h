@@ -144,7 +144,7 @@ public:
     void slotCCosteDef();
     void slotCanalDef();
     void slotRecSald();
-    void slotArchDoc();
+//    void slotArchDoc();
     void slotCobPag();
     void slotTiposIVA();
     void slotFPago();
@@ -203,8 +203,9 @@ public:
     QPopupMenu *pListMenu;
     QPopupMenu *pEstMenu;
     QPopupMenu *pAsientoMenu;
+    public:
     QPopupMenu *pHerramientasMenu;
-
+    private:
     QToolBar *fileToolbar;
     QToolBar *navegacionToolbar;
 
@@ -292,7 +293,7 @@ public:
     QAction *CanalDef;
     
     QAction *RecSald;
-    QAction *ArchDoc;
+//    QAction *ArchDoc;
     
     QAction *cobPag;
     QAction *tiposIVAMenu;

@@ -13,16 +13,9 @@
 
 void entryPoint(Bulmages01 *bges) {
     empresa *emp = &(bges->empresaactual);
-//    conexionbase2 *con = emp->bdempresa();
     
     fprintf(stderr,"Estoy dentro del plugin\n");
-//    myplugin *plug= new myplugin( );
-//    plug->inicializa(bges);
-
-
   // Vamos a probar con un docwindow.
-
-//  mydock  *doc1  = new  mydock(QDockWindow::OutsideDock, bges, "Corrector1");
   QDockWindow  *doc1  = new  QDockWindow(QDockWindow::OutsideDock, bges, "Corrector1");
   doc1->setGeometry(100,100,100,500);
   doc1->setFixedExtentWidth(200);

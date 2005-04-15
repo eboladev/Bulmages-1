@@ -30,7 +30,7 @@
 #include "propiedadesempresa.h"
 #include "cambiactaview.h"
 #include "amortizacionesview.h"
-#include "adocumental.h"
+//#include "adocumental.h"
 #include "cobropagoview.h"
 #include "tipoivaview.h"
 #include "fpagoview.h"
@@ -563,18 +563,7 @@ void empresa::recalculasaldos() {
 }// end recalculasaldos
 
 
-/** Esta función se dispara para poner en marcha el archivo documental.
-// El archivo documental es una opción mendiante la cual se pueden poner
-// Junto a los asientos y otras entidades una seríe de documentos ligados
-// Como puden ser PDF's, GIFS, Archivos de Sonido, etc etc etc.
-// La idea principal es que se pueda conectar un scaner y se puedan escanear
-// Las imagenes de facturas para después pasarlas.
-*/
-void empresa::archDoc() {
-   adocumental *adoc= new adocumental(this,0,"hola");
-   adoc->exec();
-   delete adoc;
-}// archDoc
+
 
 
 /** Esta función se dispara para poner en marcha la gestión de cobros y pagos
