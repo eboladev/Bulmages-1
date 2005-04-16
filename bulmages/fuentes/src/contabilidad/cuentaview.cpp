@@ -2,7 +2,7 @@
                           cuentaview.cpp  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -31,12 +31,12 @@ void cuentaview::cuentanueva(QString cod) {
 	/// VAmos a buscar el posible padre de una cuenta y lo pondremos como toca.
 	QString cpadre = conexionbase->searchParent(cod);
 	codigopadre->setText(cpadre);
-	/// También buscaremos el grupo y lo pondremos como toca
+	/// Tambiï¿½ buscaremos el grupo y lo pondremos como toca
 	QString query = "SELECT * FROM cuenta WHERE codigo = '"+cpadre+"'";
 	conexionbase->begin();
 	cursor2 *cur = conexionbase->cargacursor(query,"elquery");
 	conexionbase->commit();
-	/// Y también buscaremos los tipos y los usaremos.
+	/// Y tambiï¿½ buscaremos los tipos y los usaremos.
 	if (!cur->eof()) {
 	
 		descripcion->setText(cur->valor("descripcion"));
@@ -104,7 +104,7 @@ cuentaview::~cuentaview(){
 
 
 /*********************************************************************
- * Esta función se activa cada vez quese pulsa una tecla sobre la cuenta
+ * Esta funciï¿½ se activa cada vez quese pulsa una tecla sobre la cuenta
  *********************************************************************/
 void cuentaview::cambiapadre(const QString &cadena)  {
   QString cad;
@@ -173,7 +173,7 @@ void cuentaview::aceptar() {
       conexionbase->begin();
       fprintf(stderr,"Hacemos la llamada a Nueva cuenta \n");
       conexionbase->nuevacuenta( descripcion->text(), codigo->text(), idpadre, idgrupos[combogrupos->currentItem()],nombreent->text(),  cif->text(), direccion->text(), cp->text(), telf->text(),coments->text(), banco->text(), email->text(), web->text(), tipocuenta, nodebe->isChecked(), nohaber->isChecked() );
-      fprintf(stderr,"Buscamos el valor máximo\n");
+      fprintf(stderr,"Buscamos el valor mï¿½imo\n");
       QString query = "SELECT max(idcuenta) AS id from cuenta";
       cursoraux = conexionbase->cargacursor(query, "maxidcuenta");
       idcuenta = atoi(cursoraux->valor("id").ascii());
@@ -199,7 +199,7 @@ int cuentaview::inicializa() {
     }// end while
    delete cursorgrupos;
 
-   // Vamos a cargar el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
+   // Vamos a cargar el nmero de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
    conexionbase->begin();
    QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
    cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
@@ -218,35 +218,35 @@ int cuentaview::cargacuenta(int idcuenta1){
     conexionbase->begin();
     cursorcuenta = conexionbase->cargacuenta(idcuenta1);
     conexionbase->commit();
-    codigo->setText(cursorcuenta->valor(1));
-    descripcion->setText(cursorcuenta->valor(2));
-    debe->setText(cursorcuenta->valor(8));
-    haber->setText(cursorcuenta->valor(9));
-    if (cursorcuenta->valor(5) != "f") {
+    codigo->setText(cursorcuenta->valor("codigo"));
+    descripcion->setText(cursorcuenta->valor("descripcion"));
+    debe->setText(cursorcuenta->valor("debe"));
+    haber->setText(cursorcuenta->valor("haber"));
+    if (cursorcuenta->valor("bloqueada") != "f") {
        bloqueada->setChecked(true);
     } else {
        bloqueada->setChecked(false);
     }// end if
-    if (cursorcuenta->valor(3)!= "f") {
+    if (cursorcuenta->valor("imputacion")!= "f") {
        imputacion->setChecked(true);
     } else {
        imputacion->setChecked(false);
     }// end if
-    if (cursorcuenta->valor(10) != "f") {
-   nodebe->setChecked(true);
-  } else {
-    nodebe->setChecked(false);
-  }// end if
-  if (cursorcuenta->valor(11) != "f") {
-    nohaber->setChecked(true);
-  } else {
-    nohaber->setChecked(false);
-  }// end if
-  if (cursorcuenta->valor(12) != "f") {
-     regularizacion->setChecked(true);
-  } else {
-     regularizacion->setChecked(false);
-  }// end if
+    if (cursorcuenta->valor("nodebe") != "f") {
+	nodebe->setChecked(true);
+    } else {
+	nodebe->setChecked(false);
+    }// end if
+    if (cursorcuenta->valor("nohaber") != "f") {
+	nohaber->setChecked(true);
+    } else {
+	nohaber->setChecked(false);
+    }// end if
+    if (cursorcuenta->valor("regularizacion") != "f") {
+	regularizacion->setChecked(true);
+    } else {
+	regularizacion->setChecked(false);
+    }// end if
   // Vamos a hacer la carga del tipocuenta
   int tipocuenta = atoi(cursorcuenta->valor("tipocuenta").ascii());
   switch(tipocuenta) {
@@ -274,7 +274,7 @@ int cuentaview::cargacuenta(int idcuenta1){
   int i=0;
   while (idgrupos[i]!=idgrupo && i<100) i++;
   combogrupos->setCurrentItem(i);
-  // Vamos a coger el código del padre de la cuenta para que también
+  // Vamos a coger el cï¿½igo del padre de la cuenta para que tambiï¿½
   // aparezca en el formulario.
   cpadre = atoi( cursorcuenta->valor(4).ascii());
   if (cpadre != 0) {
