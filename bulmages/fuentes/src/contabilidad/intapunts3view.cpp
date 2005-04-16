@@ -1834,7 +1834,7 @@ void intapunts3view::return_fechaasiento() {
                            }// end asiento_regularizacion
 
 
-                           void intapunts3view::return_numasiento() {
+                           void intapunts3view::eturn_numasiento() {
                                                           boton_cargarasiento();
                                                       }// end return_cuenta
 
@@ -1982,24 +1982,3 @@ void intapunts3view::return_fechaasiento() {
                                                           fechaasiento1->setText("+");
                                                       }// end boton_fecha
 
-						      /* === 
-                                                      void intapunts3view::boton_adjuntar() {
-                                                          adocumental *adoc= new adocumental(empresaactual,0,"adjuntar documento");
-                                                          adoc->setmodoconsulta();
-                                                          adoc->exec();
-                                                          adoc->asociaasiento(IDASIENTO);
-                                                          delete adoc;
-                                                      }// end boton_adjuntar
-*/
-/*
-                                                      // Esto debe coger un asiento y asociarle un archivo documental y abrirlo y ense�r ambas cosas
-                                                      void intapunts3view::boton_nuevoasientodocumental() {
-                                                          fprintf(stderr,"boton_nuevoasientodocumental\n");
-                                                          adocumental *adoc= new adocumental(empresaactual,0,"adjuntar documento");
-                                                          adoc->presentaprimervacio();
-                                                          iniciar_asiento_nuevo();
-                                                          adoc->asociaasiento(IDASIENTO);
-                                                          delete adoc;
-                                                      }// end boton_nuevoasientodocumental
-
-*/

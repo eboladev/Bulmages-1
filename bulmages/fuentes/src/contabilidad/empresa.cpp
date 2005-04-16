@@ -21,8 +21,8 @@
 #include "listivaview.h"
 #include "asientosview.h"
 #include "balancesview.h"
-#include "estadisticasview.h"
-#include "resmensualview.h"
+//#include "estadisticasview.h"
+//#include "resmensualview.h"
 #include "mpatrimonialesview.h"
 #include "canalview.h"
 #include "ccosteview.h"
@@ -147,20 +147,10 @@ QString empresa::searchCompany() {
   return(bd);
 }// end searchCompany
 
-/** 
- * Esta funcion hace el inicio de la empresa, muestra el dialogo de abrir
- * y hace los pasos necesarios.
- */
-/*
-int empresa::inicializa(QString *DB) {
-    nombreDB = *DB;
-  return(0);
-}// end inicializa
-*/
 
-/** ****************************************************************
-  Esta funcion abre la ventana que presenta las cuentas contables
-*******************************************************************/
+/** 
+  * Esta funcion abre la ventana que presenta las cuentas contables
+  */
 int empresa::muestracuentas() 	{
   listcuentasview1 *nuevae = new listcuentasview1(this, 0,"mostracuentas",true);
   nuevae->inicializa();
@@ -170,26 +160,10 @@ int empresa::muestracuentas() 	{
 }// end muestracuentas
 
 
-void empresa::SegCuentas() {
-// Aprovechamos para empezar a trabajar con estadisticas a ver que tal van.
-   resmensualview *rmen = new resmensualview(this,0,0);
-   rmen->inicializa();
-   rmen->exec();
-   delete rmen;   
-}// end SegCuentas
-
-void empresa::BalanceGrafico() {
-   // Aprovechamos para empezar a trabajar con estadisticas a ver que tal van.
-   estadisticasview *est = new estadisticasview(0,0);
-   est->inicializa(conexionbase2);
-   est->exec();
-   delete est;   
-}// end BalanceGrafico
-
-/*****************************************************************
-  Esta funcion presenta los centros de coste. Luego recarga los
-  comboboxes de todo el resto de pantallas para que se actualizen
-  ****************************************************************/
+/**
+  * Esta funcion presenta los centros de coste. Luego recarga los
+  * comboboxes de todo el resto de pantallas para que se actualizen
+  */
 int empresa::ccostes() {
   ccosteview *ccoste = new ccosteview(this, 0,"ccostes", true);
   ccoste->exec();
@@ -199,17 +173,18 @@ int empresa::ccostes() {
 }// end ccostes
 
 
-/*******************************************************************
-  Esta funcion presenta la pantalla de edicion de canales. Luego
-  recarga los comboboxes de todo el resto de pantallas para que se
-  actualizen.
-  ******************************************************************/
+/**
+  * Esta funcion presenta la pantalla de edicion de canales. Luego
+  * recarga los comboboxes de todo el resto de pantallas para que se
+  * actualizen.
+  */
 int empresa::canales() {
   canalview *canal = new canalview(this,0,"canales",true);
   canal->exec();
   delete canal;
   return(0);
 }// end ccostes
+
 
 /** Crea la ventana de tipos de IVA y la presenta en modo modal
   * Es invocada desde la clase principal

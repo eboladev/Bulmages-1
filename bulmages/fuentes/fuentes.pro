@@ -4,9 +4,9 @@
 # Target is a subdirs project 
 
 TEMPLATE = subdirs
-SUBDIRS += src/estadisticas
+SUBDIRS += src/pluginestadisticas/estadisticas
 SUBDIRS += src
 SUBDIRS += src/plugin
 SUBDIRS += src/plugincorrector
 SUBDIRS += src/pluginadocumental
-
+SUBDIRS += src/pluginestadisticas

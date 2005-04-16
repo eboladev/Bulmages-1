@@ -117,8 +117,6 @@ public:
   void maximiza();
   void Abrirasientos();
   void Ordenarasientos();
-  void SegCuentas();
-  void BalanceGrafico();
   void Filtro();
   void nuevoejercicio();
   int mpatrimoniales();

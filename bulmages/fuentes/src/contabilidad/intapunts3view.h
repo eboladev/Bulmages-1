@@ -53,9 +53,9 @@ private:
     int cdescapunte;
     int cfechaapunte;
     int idasiento;            // El identificador del asiento actual.
-    int rowactual;           // El identificador del row actual. Si no hay row seleccionado valdrá -1
+    int rowactual;            // El identificador del row actual. Si no hay row seleccionado valdrá -1
     float descuadre1;
-    int abierto;             // Indica que el asiento esta abierto.
+    int abierto;              // Indica que el asiento esta abierto.
     extractoview1 *extracto;
     diarioview1 *diario;
     balanceview *balance;
@@ -123,13 +123,10 @@ public slots:
     virtual void return_fechaasiento();
     virtual void fechaasiento1_textChanged( const QString & );
     virtual void boton_cargarasiento();
-    virtual void return_numasiento();
+    virtual void eturn_numasiento();
     virtual void editarasiento();
     virtual void boton_duplicarasiento();
     virtual void boton_fecha();
-//    virtual void boton_nuevoasientodocumental();
-//    virtual void boton_adjuntar();
-
 };
 
 #endif

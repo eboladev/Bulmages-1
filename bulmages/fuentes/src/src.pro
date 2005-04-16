@@ -1,5 +1,5 @@
-# Archivo generado por el gestor qmake de kdevelop. 
-# ------------------------------------------- 
+# Archivo generado por el gestor qmake de kdevelop.
+# -------------------------------------------
 # Subdirectorio relativo al directorio principal del proyecto: ./fuentes/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmacont
 
@@ -46,12 +46,12 @@ FORMS += comun/uiselector.ui \
          formularios/mod300dlg.ui \
          contabilidad/cobropagodlg.ui \
          contabilidad/tipoivadlg.ui \
-         contabilidad/fpagodlg.ui 
+         contabilidad/fpagodlg.ui
 TRANSLATIONS += contabilidad/bulmages_es.ts \
                 contabilidad/bulmages_ca.ts \
                 contabilidad/bulmages_en.ts \
                 contabilidad/bulmages_fr.ts \
-                contabilidad/bulmages_de.ts 
+                contabilidad/bulmages_de.ts
 IMAGES += images/kate.png \
           images/kfind.png \
           images/clock.png \
@@ -138,7 +138,7 @@ IMAGES += images/kate.png \
           images/pda_blue.png \
           images/tux1.png \
           images/filetypes.png \
-          images/edit.png 
+          images/edit.png
 IDLS += contabilidad/about.ui \
         contabilidad/int_apunts3.ui \
         contabilidad/aplinteligentesdlg.ui \
@@ -184,7 +184,7 @@ IDLS += contabilidad/about.ui \
         contabilidad/amortizacionesdlg.ui \
         contabilidad/uibloqfecha.ui \
         contabilidad/cobropagodlg.ui \
-        contabilidad/tipoivadlg.ui 
+        contabilidad/tipoivadlg.ui
 HEADERS += comun/splashscreen.h \
            contabilidad/bulmages01.h \
            contabilidad/aboutview.h \
@@ -213,8 +213,6 @@ HEADERS += comun/splashscreen.h \
            contabilidad/balanceprintview.h \
            contabilidad/balancesprintview.h \
            contabilidad/balancesview.h \
-           contabilidad/estadisticasview.h \
-           contabilidad/resmensualview.h \
            contabilidad/canalview.h \
            contabilidad/ccosteview.h \
            contabilidad/ainteligentesview.h \
@@ -240,7 +238,7 @@ HEADERS += comun/splashscreen.h \
            contabilidad/cobropagoview.h \
            contabilidad/bbloqfecha.h \
            contabilidad/tipoivaview.h \
-           contabilidad/fpagoview.h 
+           contabilidad/fpagoview.h
 SOURCES += main.cpp \
            comun/splashscreen.cpp \
            contabilidad/bulmages01.cpp \
@@ -270,8 +268,6 @@ SOURCES += main.cpp \
            contabilidad/balanceprintview.cpp \
            contabilidad/balancesprintview.cpp \
            contabilidad/balancesview.cpp \
-           contabilidad/estadisticasview.cpp \
-           contabilidad/resmensualview.cpp \
            contabilidad/canalview.cpp \
            contabilidad/ccosteview.cpp \
            contabilidad/ainteligentesview.cpp \
@@ -297,9 +293,9 @@ SOURCES += main.cpp \
            contabilidad/cobropagoview.cpp \
            contabilidad/bbloqfecha.cpp \
            contabilidad/tipoivaview.cpp \
-           contabilidad/fpagoview.cpp 
-	   
-	   
+           contabilidad/fpagoview.cpp
+
+
 TEMPLATE = app
 
 TARGETDEPS += ../../bulmalib/libbulmalib.a
@@ -320,7 +316,7 @@ formularios \
 TARGET = ../../installbulmages/bulmacont
 CONFIG += qt \
           release \
-	  warn_on
+          warn_on
 contabilidad/uibloqfecha.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/uibloqfecha.ui.target
 contabilidad/uibloqfecha.ui.target = contabilidad/uibloqfecha.ui
 contabilidad/amortizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/amortizacionesdlg.ui.target
@@ -402,19 +398,7 @@ QMAKE_CLEAN += Makefile
 LANGUAGE = C++
 
 
-exists (estadisticas){
-  LIBS += estadisticas/libestadisticas.lib.a
-  INCLUDEPATH += estadisticas
-  contabilidad/estadisticasdlg.ui.target = contabilidad/estadisticasdlg.ui
-  contabilidad/estadisticasdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/estadisticasdlg.ui.target
-  contabilidad/resmensualdlg.ui.target = contabilidad/resmensualdlg.ui
-  contabilidad/resmensualdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/resmensualdlg.ui.target
-  DEFINES += ESTADISTICAS
-  IDLS += contabilidad/estadisticasdlg.ui \
-  contabilidad/resmensualdlg.ui
-  FORMS += contabilidad/estadisticasdlg.ui \
-  contabilidad/resmensualdlg.ui
-}
+
 exists (reports){
   HEADERS += rtkinputbges.h \
   reports/rtkview/src/rtkqtreportviewer.h \

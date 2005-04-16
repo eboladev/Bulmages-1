@@ -120,31 +120,25 @@ public:
     void slotAsientosInteligentes();
     void slotCentrosCoste();
     void slotCanales();
-    //void slotUsuarios();
     void slotcierraEmpresa();
     void slotabreEmpresa();
     void slotregularizaEmpresa();
     void slotViewFullScreen(bool toggle);
-//    void slotViewCorrector(bool toggle);
     void slotBalance();
     void slotBalanceTree();
     void slotAyuda();
     void slotAbrirasientos();
     void slotOrdenarasientos();
-    void slotSegCuentas();
-    void slotBalanceGrafico();
     void slotAyudai();
     void slotFiltro();
     void slotMPatrimoniales();
     void slotCompBalance();
-    //void slotNEjercicio();
     void slotAmortizaciones();
     void slotBloqFechas();
     void slotSCuentas();
     void slotCCosteDef();
     void slotCanalDef();
     void slotRecSald();
-//    void slotArchDoc();
     void slotCobPag();
     void slotTiposIVA();
     void slotFPago();
@@ -201,7 +195,6 @@ public:
     QPopupMenu *pEmpresaMenu;
     QPopupMenu *menuEjercicios;
     QPopupMenu *pListMenu;
-    QPopupMenu *pEstMenu;
     QPopupMenu *pAsientoMenu;
     public:
     QPopupMenu *pHerramientasMenu;
@@ -261,8 +254,6 @@ public:
     QAction *librobalancetree;
     QAction *Abrirasientos;
     QAction *Ordenarasientos;
-    QAction *Segcuentas;
-    QAction *BGrafico;
     QAction *ayudai;
     QAction *MPatrimoniales;
     QAction *CompBalance;

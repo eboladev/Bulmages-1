@@ -60,7 +60,6 @@
 #include "images/balancetree.xpm"
 #include "images/filter.xpm"
 #include "images/help.xpm"
-#include "images/estadisticas.xpm"
 
 Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * DB) 
 : QMainWindow(parent,name,f) {
@@ -148,7 +147,7 @@ void Bulmages01::initActions() {
   QPixmap ainteligenteIcon, ayudaIcon;
   QPixmap balanceIcon, balancetreeIcon;
   QPixmap filterIcon;
-  QPixmap estadisticasIcon;
+
   
   newIcon = QPixmap(filenew);
   openIcon = QPixmap(fileopen);
@@ -174,7 +173,7 @@ void Bulmages01::initActions() {
   balancetreeIcon = QPixmap(balancetree);
   ayudaIcon = QPixmap(help);
   filterIcon=QPixmap(filter);
-  estadisticasIcon = QPixmap(estadisticas);
+
   
   
   // Ponemos el logo de la aplicacion
@@ -413,6 +412,7 @@ void Bulmages01::initActions() {
   Ordenarasientos->setWhatsThis(tr("Reorganiza los Asientos"));
   connect(Ordenarasientos, SIGNAL(activated()), this, SLOT(slotOrdenarasientos()));
 
+/*  
   Segcuentas = new QAction(tr("Seguimiento de Cuentas"),estadisticasIcon ,tr("&Seguimiento de Cuentas"), 0, this);
   Segcuentas->setStatusTip(tr("Seguimiento de Cuentas"));
   Segcuentas->setWhatsThis(tr("Seguimiento de Cuentas"));
@@ -423,6 +423,7 @@ void Bulmages01::initActions() {
   BGrafico->setWhatsThis(tr("Balance Gráfico"));
   connect(BGrafico, SIGNAL(activated()), this, SLOT(slotBalanceGrafico()));
 
+*/
 
   filtro = new QAction(tr("Filtro"),filterIcon, tr("&Filtro"), 0, this);
   filtro->setStatusTip(tr("Filtro"));
@@ -540,10 +541,12 @@ void Bulmages01::initMenuBar() {
   pListMenu->insertSeparator();
   Modelo347->addTo(pListMenu);
 
+  /*
   // El menu de estadísticas
   pEstMenu = new QPopupMenu();
   Segcuentas->addTo(pEstMenu);
   BGrafico->addTo(pEstMenu);
+*/
 
   // El menu de Herramientas
   pHerramientasMenu = new QPopupMenu();
@@ -579,7 +582,7 @@ void Bulmages01::initMenuBar() {
   menuBar()->insertItem(tr("&Empresa"),pEmpresaMenu);
   menuBar()->insertItem(tr("&Asiento"),pAsientoMenu);
   menuBar()->insertItem(tr("&Listados"),pListMenu);
-  menuBar()->insertItem(tr("&Estadistica"),pEstMenu);
+//  menuBar()->insertItem(tr("&Estadistica"),pEstMenu);
   menuBar()->insertItem(tr("&Ventana"), pApunteMenu);
   menuBar()->insertItem(tr("&Herramientas"), pHerramientasMenu);
   menuBar()->insertItem(tr("&Ver"), pViewMenu);
@@ -954,13 +957,6 @@ void Bulmages01::slotOrdenarasientos() {
 }// end slotOrdenarasientos
 
 
-void Bulmages01::slotSegCuentas() {
-  empresaactual.SegCuentas();
-}// end slotOrdenarasientos
-
-void Bulmages01::slotBalanceGrafico() {
-  empresaactual.BalanceGrafico();
-}// end slotOrdenarasientos
 
 void Bulmages01::slotCobPag() {
    empresaactual.cobPag();
