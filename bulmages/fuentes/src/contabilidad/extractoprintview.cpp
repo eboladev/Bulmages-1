@@ -2,9 +2,9 @@
                           extractoprintview.cpp  -  description
                              -------------------
     begin                : jue jun 26 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Terés - amirabet@biada.org
+    modificat per        : (C) 2003 Antoni Mirabete i Terï¿½ - amirabet@biada.org
  ***************************************************************************/
 /***************************************************************************
  *                                                                         *
@@ -35,7 +35,7 @@ using namespace RTK;
   * @param emp Empresa con la que va a trabajar esta clase
   * @param parent Ventana que llama a esta ventana
   * @param name Nombre de la ventana
-  * Aqui también se inicializa la variable global conexionbase.
+  * Aqui tambiï¿½ se inicializa la variable global conexionbase.
   */
 ExtractoPrintView::ExtractoPrintView(empresa *emp, QWidget *parent=0, const char *name=0 ) : ExtractoPrintDlg(parent,name) {
     fichero=NULL;
@@ -46,7 +46,7 @@ ExtractoPrintView::ExtractoPrintView(empresa *emp, QWidget *parent=0, const char
 
 ExtractoPrintView::~ExtractoPrintView() {}
 
-/** \brief Inicializa la clase con algunos parámetros por defecto
+/** \brief Inicializa la clase con algunos parï¿½etros por defecto
   * @param fechainicial Fecha para empezar el extracto
   * @param fechafinal  Fecha para terminar el extracto
   * @param codi Codigo de cuenta inicial del extracto
@@ -63,7 +63,7 @@ void ExtractoPrintView::inicializa1(QString fechainicial, QString fechafinal, QS
  * Se ha pulsado sobre el boton aceptar del formulario
  **************************************************************/
 void ExtractoPrintView::accept() {
-    // Versió per si només permetem escollir una opci
+    // Versiï¿½per si nomï¿½ permetem escollir una opci
     if (radiotexto->isChecked())
         presentar("txt");
     else if (radiohtml->isChecked())
@@ -74,7 +74,7 @@ void ExtractoPrintView::accept() {
         pruebasRTK();
 }
 
-/** \brief se va a hacer una impresión de Libro Mayor con kugar
+/** \brief se va a hacer una impresiï¿½ de Libro Mayor con kugar
   */
 void ExtractoPrintView::presentakugar() {
     int txt=1;
@@ -95,8 +95,8 @@ void ExtractoPrintView::presentakugar() {
 
 
 
-    /// La impresión siempre se hace en el archivo extracte.kud situado en el directorio de trabajo
-    char *argstxt[]={"extracte.kud","extracte.kud",NULL};      //presentació txt normal
+    /// La impresiï¿½ siempre se hace en el archivo extracte.kud situado en el directorio de trabajo
+    char *argstxt[]={"extracte.kud","extracte.kud",NULL};      //presentaciï¿½txt normal
     ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
     if (!fitxersortidatxt)
         txt=0;    // verifiquem que s'hagin creat correctament els fitxers
@@ -160,7 +160,7 @@ void ExtractoPrintView::presentakugar() {
             fitxersortidatxt << " desccontrapartida=\""<< desccontrapartida <<"\"/>\n" ;
         }// end if
         if (txt) {
-            //presentació txt normal
+            //presentaciï¿½txt normal
             fitxersortidatxt << "\t<Row level=\"1\" asiento=\""<< idasiento <<"\"";
             fitxersortidatxt << " descripcion =\""<< conceptocontable.c_str() <<"\"";
             fitxersortidatxt << " fecha=\""<< fecha <<"\"";
@@ -183,9 +183,9 @@ void ExtractoPrintView::presentakugar() {
 }// end presentakugar
 
 
-/** \brief Esta función monta la consulta que se va a realizar contra la base de datos
-  * La consulta es de bastante detalle y por eso es conveniente dedicar una función a realizarla
-  * Además dicha consulta puede ser invocada desde distintos sitios
+/** \brief Esta funciï¿½ monta la consulta que se va a realizar contra la base de datos
+  * La consulta es de bastante detalle y por eso es conveniente dedicar una funciï¿½ a realizarla
+  * Ademï¿½ dicha consulta puede ser invocada desde distintos sitios
   */
 QString ExtractoPrintView::montaQuery() {
     fprintf(stderr,"Presentar\n");
@@ -278,7 +278,7 @@ void ExtractoPrintView::presentar(char *tipus) {
     int idcuenta;
     int idasiento;
     int contrapartida;
-    int codcontrapartida;
+    string codcontrapartida;
     int activo;
     string cad;
     cursor2 *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
@@ -288,13 +288,12 @@ void ExtractoPrintView::presentar(char *tipus) {
     QString cinicial = codigoinicial->text();
     QString cfinal = codigofinal->text();
 
-    // tipus de presentació
-
+    // tipus de presentaciï¿½
     txt=!strcmp(tipus,"txt");
     html=!strcmp(tipus,"html");
 
-    char *argstxt[]={"major.txt","major.txt",NULL};      //presentació txt normal
-    char *argshtml[]={"major.html","major.html",NULL};   //presentació html normal
+    char *argstxt[]={"mayor.txt","mayor.txt",NULL};      //presentaciï¿½txt normal
+    char *argshtml[]={"mayor.html","mayor.html",NULL};   //presentaciï¿½html normal
 
     ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
     ofstream fitxersortidahtml(argshtml[0]);
@@ -304,9 +303,9 @@ void ExtractoPrintView::presentar(char *tipus) {
     if (!fitxersortidahtml)
         html=0;  // es pot millorar el tractament d'errors
 
-    if (txt | html) {                 // només continuem si hem pogut crear algun fitxer
+    if (txt | html) {                 // nomï¿½ continuem si hem pogut crear algun fitxer
         if (txt) {
-            //presentació txt
+            //presentaciï¿½txt
 
             fitxersortidatxt.setf(ios::fixed)
                 ;
@@ -317,7 +316,7 @@ void ExtractoPrintView::presentar(char *tipus) {
             fitxersortidatxt << "_________________________________________________________________________________________________________\n";
         }
         if (html) {
-            //presentació html
+            //presentaciï¿½html
 
             fitxersortidahtml.setf(ios::fixed)
                 ;
@@ -377,14 +376,14 @@ void ExtractoPrintView::presentar(char *tipus) {
                     }
 
                     if (txt) {
-                        //presentació txt
+                        //presentaciï¿½txt
                         fitxersortidatxt << "\nAsiento  Fecha   Contrapartida   Descripcion                          Debe         Haber         Saldo\n";
                         fitxersortidatxt << "                                                 SUMAS ANTERIORES...   " << setw(10) << debeinicial << setw(10) << haberinicial << setw(10) << saldoinicial << endl;
                         fitxersortidatxt << "_________________________________________________________________________________________________________\n";
                     }
 
                     if (html) {
-                        //presentació html
+                        //presentaciï¿½html
                         fitxersortidahtml << "<tr><td class=titolcolumnamajor> Asiento </td><td class=titolcolumnamajor> Fecha </td><td class=titolcolumnamajor> Contrapartida </td><td class=titolcolumnamajor> Descripcion </td><td class=titolcolumnamajor> Debe </td><td class=titolcolumnamajor> Haber </td><td class=titolcolumnamajor> Saldo </td></tr>\n";
                         fitxersortidahtml << "<tr><td></td><td></td><td></td><td class=sumamajor> Sumes anteriors...</td><td class=dosdecimals> " << debeinicial << " </td><td class=dosdecimals> " << haberinicial << " </td><td class=dosdecimals> " << saldoinicial << "</td><td>\n";
                     }
@@ -398,57 +397,54 @@ void ExtractoPrintView::presentar(char *tipus) {
                         contrapartida = atoi(cursoraux1->valor("contrapartida").ascii());
 			conexionbase->begin();
 			cursoraux3 = conexionbase->cargacuenta(contrapartida);
-			codcontrapartida = atoi(cursoraux3->valor("codigo").ascii());;
+			codcontrapartida = cursoraux3->valor("codigo").ascii();
 			conexionbase->commit(); 
                         debe=atof(cursoraux1->valor("debe").ascii());
                         haber=atof(cursoraux1->valor("haber").ascii());
-
                         if (activo) {
                             saldo += debe - haber;
                         } else {
                             saldo += haber -debe;
                         }
-
                         debefinal += debe;
                         haberfinal += haber;
                         cad = cursoraux1->valor("fecha").ascii();
-                        //presentació txt
+                        //presentaciï¿½txt
                         if (txt)
                             fitxersortidatxt <<  setw(5) << idasiento << setw(14) << cad.substr(0,10).c_str() << setw(10) << codcontrapartida << "  " << setw(40)  << setiosflags(ios::left) << cursoraux1->valor("conceptocontable").ascii() << setw(10) << resetiosflags(ios::left) << debe << setw(10) << haber << setw(10) << saldo << endl;
-                        //presentació html
+                        //presentaciï¿½html
                         if (html)
                             fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(0,10).c_str() << " </td><td class=contrapartidamajor> " << codcontrapartida << " </td><td> " << cursoraux1->valor("conceptocontable").ascii() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
+			cursoraux3->cerrar();
                     }
 
                     if (activo) {
                         saldofinal = debefinal - haberfinal;
                     } else {
-                        saldofinal = haberfinal -debefinal;
+                        saldofinal = haberfinal - debefinal;
                     }
                     if (txt) {
-                        //presentació txt
+                        //presentaciï¿½txt
                         fitxersortidatxt << "                                               __________________________________________________________\n";
                         fitxersortidatxt << "                                                  TOTAL SUBCUENTA...   " << setw(10) << debefinal << setw(10) << haberfinal << setw(10) << saldofinal << endl;
                     }
                     if (html) {
-                        //presentació html
+                        //presentaciï¿½html
                         fitxersortidahtml << "<tr><td></td><td></td><td></td><td class=sumamajor> Total subcompte... </td><td class=dosdecimals>" << debefinal << " </td><td class=dosdecimals> " << haberfinal << " </td><td class=dosdecimals> " << saldofinal << "</td></tr>\n\n";
                     }
                     cursoraux2->cerrar();
-                    delete cursoraux2;
                 }
             }
             cursoraux1->cerrar();
-            delete cursoraux1;
             cursoraux->siguienteregistro();
         }
         if (html)
-            fitxersortidahtml << "\n</table></body></html>\n";     //presentació html
+            fitxersortidahtml << "\n</table></body></html>\n";     //presentaciï¿½html
         conexionbase->commit();
         delete cursoraux;
     }
     if (txt) {
-        //presentació txt
+        //presentaciï¿½txt
         fitxersortidatxt.close();
         if ((pid=fork()) < 0) {
             perror ("Fork failed");
@@ -459,7 +455,7 @@ void ExtractoPrintView::presentar(char *tipus) {
         }
     }
     if (html) {
-        //presentació html
+        //presentaciï¿½html
         fitxersortidahtml.close();
         if ((pid=fork()) < 0) {
             perror ("Fork failed");
