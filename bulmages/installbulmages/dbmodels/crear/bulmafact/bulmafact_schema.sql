@@ -17,7 +17,6 @@ CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
 CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
 
 
-
 -- NOTACION:
 -- Considerar las siguientes opciones de codificación:
 -- Los nombres de tabla estan escritos SIEMPRE en singular.
@@ -42,14 +41,15 @@ CREATE TABLE configuracion (
     valor character varying(350)
 );
 
--- Codi: Clau artificial.
--- Nom: Nom identificatiu del magatzem.
--- Adr: Adreça.
--- Pobl: Població.
--- CProv: Codi de provincia (dos primers dígits del codi postal).
--- sCP: Tres darrers dígits del codi postal.
--- Telf: Telèfon.
--- Fax: Fax.
+
+-- Codigo: Clave artificial.
+-- Nombre: Nombre identificativo del almacén.
+-- diralmacen: Dirección del almacén.
+-- poblalmacen: Población del almacén.
+-- cpalmacenc: código postal almacén.
+-- telfalmacen: Teléfono del almacén.
+-- faxalmacen: Fax del almacén.
+-- emailalmacen: correo electrónico del almacén.
 -- presupuestoautoalmacen el numero de presupuesto es automatico? N=No, 
 -- albaranautoalmacen el numero de albaran es automatico? N=No, 
 -- facturaautoalmacen el numero de factura es automatico? N=No, 
@@ -62,32 +62,9 @@ CREATE TABLE almacen (
  cpalmacen character varying(20),
  telalmacen character varying(20),
  faxalmacen character varying(20),
+ emailalmacen character varying(100),
  UNIQUE(codigoalmacen)
 );
-
-
-
--- Codi: Clau artificial.
--- Nom
--- Url
--- Comentaris
-CREATE TABLE marca (
-   idmarca serial PRIMARY KEY,
-   nommarca character varying(150),
-   urlmarca character varying(150),
-   comentmarca character varying(2000)
-);
-
-
--- Linea de producto, las lineas de producto son una catalogación de productos por linea.
--- Codi: Clau artificial.
--- Descripcio
-CREATE TABLE linea_prod(
-   idlinea_prod serial PRIMARY KEY,
-   desclinea_prod character varying(500),
-   idmarca integer REFERENCES marca(idmarca)
-);
-
 
 
 -- Esta tabla contiene las descripciones de los ivas que se pueden aplicar.
@@ -120,16 +97,10 @@ CREATE TABLE serie_factura (
 );
 
 
-
-
-
-
 -- codigofamilia código de la familia.
 -- nombrefamilia nombre de la familia
 -- descfamilia descripción extendida de la familia.
--- codcompfamilia código compuesto de familia: codigo de sector + código de sección + código de familia.
--- comprobaciones de integridad respecto a la tabla sector con idsector.
--- comprobaciones de integridad respecto a la tabla seccion con idseccion. 
+-- codcompfamilia código compuesto de familia: Es la concatenación del código de familia con sus códigos padres. 
 -- codigocompletofamilia Este campo es de sólo lectura, no se puede escribir sobre él.
 
 CREATE TABLE familia (
@@ -193,50 +164,30 @@ CREATE TRIGGER propagacodigocompletofamiliatrigger
 --'    LANGUAGE plpgsql;
 
 
+-- El tipo de artículo es una tabla que permite crear una forma alternativa de agrupar los artículos.
+-- codigo: identificador del tipo.
+-- desc:
+CREATE TABLE tipo_articulo (
+	idtipo_articulo serial PRIMARY KEY,
+	codtipo_articulo character varying(10),
+	desctipo_articulo character varying(50)
+);
 
---COMPROVACIONS D'INTEGRITAT>Genriques:
---Els articles "contenidors" de tots els components son articles composts.
---Els articles "contingut" de tots els components son articles no composts.
---COMPROVACIONS D'INTEGRITAT>A realitzar en moments especEn convertir un article a compost, comprovar abans que no s component de ning.
---En afegir components a un article, comprovar que el nou component no s un article compost.
---PANTALLES ESTADISTIQUES>Articles:
---Nombre d'articles que no pertanyen a cap familia.
---
---tipoarticulo: [Simple | Compost calculat | Compost escalat | Ampliat]. Determina el tipus d'article i com calcular-ne el preu. Simple = Article no compost amb preu PVP; Compost = Article compost amb preu suma dels PVPs dels components (Calculat) o PVP (escalat); Ampliat = Compost d'ell mateix ms els components amb preu suma de PVP i PVPs dels components
---
 
--- Codi: Clau artificial.
--- Nom: Descripció curta de l'article.
--- Descripcio: Descripció completa (llarga) de l'article.
--- CBarres: Codi de barres.
--- Tipus: [Simple (0) | Compost calculat (1) | Compost escalat (2) | Ampliat (3)]. Determina el tipus d'article i com --  calcular-ne el preu. Simple = Article no compost amb preu PVP; Compost = Article compost amb preu suma dels PVPs dels components (Calculat) o PVP (escalat); Ampliat = Compost d'ell mateix més els components amb preu suma de PVP i PVPs dels components.
--- Descompte: Descompte "invisible" que s'aplica al preu resultant. Útil sobretot per a diferenciar el preu dels articles composts del preu de compra per separat.
--- Especificacions: Camp de text per a comentaris i informacions varies.
--- Icona: Icona de l'article.
--- Fotografia: Fotografia de l'article.
--- Poster: Fotografia de gran tamany de l'article.
--- Marge: (Per defecte) Percentatge de càlcul del PVP sobre el PVD. Vàlid només quan no estigui definit un marge específic per aquest article i el proveïdor corresponent.
--- Sobrecost: (Per defecte) Import a sumar en el càlcul del PVP en concepte de despeses de transport o altres.
--- Model: Referència, o nom identificatiu del fabricant.
-
+-- Codigo: Clave artificial.
+-- Nombre: Descripción corta del artículo.
+-- abrev: Nombre abreviado del articulo (para tpv o cartelitos estanterias...)
+-- idtipo_articulo: identificador de tipo de artículo que se utilizará para agrupar artículos como clasificación alternativa a el surtido (familias).
+-- Observaciones: Campo de texto para a comentarios y observaciones.
 -- El campo codigocompletoarticulo sólo puede ser de lectura.
 CREATE TABLE articulo (
     idarticulo serial PRIMARY KEY,
     codarticulo character varying(12),
     nomarticulo character varying(50),
-    descarticulo character varying(500),
-    cbarrasarticulo character varying(22),
-    tipoarticulo integer,
-    descuentoarticulo float,
-    especificacionesarticulo character varying(2000),
-    iconoarticulo oid,
-    fotoarticulo oid,
-    posterarticulo oid,
-    margenarticulo float,
-    sobrecostearticulo float,
-    modeloarticulo character varying(1000),
+	 abrevarticulo character varying(30),
+    obserarticulo character varying(2000),
+    idtipo_articulo numeric(2, 0) REFERENCES tipo_articulo(idtipo_articulo),
     idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
-    idlinea_prod integer REFERENCES linea_prod(idlinea_prod),
     codigocompletoarticulo character varying(100) UNIQUE,
     idfamilia integer REFERENCES familia(idfamilia) NOT NULL
 );
@@ -263,23 +214,6 @@ CREATE TRIGGER calculacodigocompletoarticulotrigger
     BEFORE INSERT OR UPDATE ON articulo
     FOR EACH ROW
     EXECUTE PROCEDURE calculacodigocompletoarticulo();
-
-
-
-
--- Yo me imagino que un catalogo es una agrupación de articulos para poder hacer listados
--- de ofertas y cosas de estas.
---La catalogació per families tendrà preferència sobre la catalogació per articles. Si un article pertany a un catàleg sel·leccionat però no a cap familia sel·leccionada pel seu catàleg, no serà llistat.
---Codi: Clau artificial.
---Nom: Descripció curta del catàleg.
---Descripcio: Descripció detallada del catàleg.
---Exclusiu: (Booleà) La pertinença a un catàleg exclusiu anula (que no esborra) la pertinença de l'article o familia a qualsevol catàleg no exclusiu. Un article o familia només pot pertànyer a un únic catàleg exclusiu. Útil per a catàlegs de descatalogació (descatalogats temporals, definitius, sense stock, pendents de revisió...).
-CREATE TABLE catalogo (
-   idcatalogo serial PRIMARY KEY,
-   nombrecatalogo character varying(50),
-   desccatalogo character varying(1000),
-   exclusivocatalogo boolean NOT NULL
-);
 
 
 -- Los proveedores son los que nos suminstran articulos y/o servicios.
@@ -342,31 +276,6 @@ CREATE TABLE division (
 );
 
 
-
---TARIFES AUTOMÀTIQUES:
---Els prearticles son els articles obtinguts de tarifes de proveïdors que no tenim com a articles però que s'enregistren (i esborren en caducar) automàticament per oferir-nos una recerca ràpida sobre els articles dels nostres proveïdors que no hem treballat mai.
---Refpro: Referència del proveïdor.
---Descripcio: Descripció de l'article.
---PVD
---Data: Data d'actualització del PVD del prearticle.
---Caducitat: Temps de vida (en dies) del prearticle a comptar des de la darrera data d'actualització.
--- Això ha de desapareixer així que no pos res aqui.
---CREATE TABLE prearticulo (
---);
-
-
-
--- La tabla recargo indica los recargos que se aplican a un cliente. O los descuentos.
--- Codi: Clau artificial.
--- Nom: Nom descriptiu del tipus de Recàrrec.
--- Taxa: Percentatge de Recàrrec d'Equivalència.
---  Recàrrec d'Equivalència.
-CREATE TABLE recargo (
-   idrecargo serial PRIMARY KEY,
-   nomrecargo character varying(150),
-   tasarecargo float
-);
-
 -- El cliente siempre tiene la razón, bueno, o por lo menos eso cree.
 --Codi: Clau artificial.
 --Nom: Nom comercial o fiscal.
@@ -399,37 +308,8 @@ CREATE TABLE cliente (
    urlcliente character varying(150),
    faltacliente date DEFAULT NOW(),
    fbajacliente date,
-   comentcliente character varying(2000),
-
-   idrecargo integer NOT NULL REFERENCES recargo(idrecargo)
+   comentcliente character varying(2000)
 );
-
-
--- Numero: Número de sucursal (Clau artificial).
--- Nom: Nom de la sucursal.
--- Adr: Adreça.
--- Pobl: Població.
--- CProv: Codi de provincia (dos primers dígits del codi postal).
--- sCP: Tres darrers dígits del codi postal.
--- Telf: Telèfon.
--- Fax: Fax.
--- Email: eMail.
--- Url: Url.
--- Comentaris
-CREATE TABLE sucursal (
-   idsucursal serial PRIMARY KEY,
-   nomsucursal character varying(100),
-   dirsucursal character varying(150),
-   poblsucursal character varying(100),
-   cpsucursal character varying(15),
-   telsucursal character varying(20),
-   faxsucursal character varying(20),
-   mailsucursal character varying(50),
-   comentsucursal character varying(2000),
-
-   idcliente integer NOT NULL REFERENCES cliente(idcliente)
-);
-
 
 
 -- Any: Any en que s'efectua la comanda.
@@ -439,7 +319,6 @@ CREATE TABLE sucursal (
 CREATE TABLE pedido (
    idpedido serial PRIMARY KEY,
    numpedido character varying(60),
-   anopedido integer,
    fechapedido date,
    descpedido character varying(500),
 
@@ -458,7 +337,6 @@ CREATE TABLE pedido (
 -- Factura de proveïdor.
 CREATE TABLE fra_pro (
    idfra_pro serial PRIMARY KEY,
-   anofra_pro integer,
    numfra_pro character varying(60),
    fcrefra_pro date,
    comentfra_pro character varying(2000)
@@ -475,7 +353,6 @@ CREATE TABLE fra_pro (
 -- Comentaris
 CREATE TABLE alb_pro (
    idalb_pro serial PRIMARY KEY,
-   anoalb_pro integer,
    ncompraalb_pro integer,
    nalbalb_pro character varying(60),
    fcrealb_pro date,
@@ -506,62 +383,6 @@ CREATE TABLE lpedido (
    idarticulo integer REFERENCES articulo(idarticulo)
 --      PRIMARY KEY(idpedido, numlpedido)
 );
-
-
-
-
--- modalidad_g es la talba que contiene las modalidades de garanti9a.
--- Codi: Clau artificial.
--- Nom
--- Descripcio
-CREATE TABLE modalidad_g (
-   idmodalidad_g serial PRIMARY KEY,
-   nommodalitat_g character varying(150),
-   descmodalidad_g character varying(2000)
-);
-
-
--- Codi
--- Descripcio
--- RetardC: Temps a transcórrer per a l'inici de la cobertura.
--- TempsC: Temps de Cobertura.
--- Comentaris
--- Condicions de garantia. Defineixen un periode d'aplicabilitat d'una determinada modalitat de garantia per a una determinada línia de productes d'un mateix fabricant.
-CREATE TABLE cond_garantia (
-  idcond_garantia serial PRIMARY KEY,
-  desccond_garantia character varying(2000),
-  retardcond_garantia timestamp,
-  tempsccond_garantia timestamp,
-  comentcond_garantia character varying(2000),
-
-  idmodalidad_g integer NOT NULL REFERENCES modalidad_g(idmodalidad_g)
-);
-
-
-
--- Condicions de Venta, Agrupa articles, formes de pagament i clients.
-CREATE TABLE condiciones_v (
-   idcondiciones_v serial PRIMARY KEY
-);
-
--- Numero
--- Descompte
--- AnyInici: Any d'inici d'aplicació (NULL => Periòdic)
--- MesInici: Mes d'inici d'aplicació (NULL => Periòdic)
--- DiaInici: Dia d'inici d'aplicació (NULL => Des de sempre)
--- AnyFi: Any de fi d'aplicació (NULL => Periòdic)
--- MesFi: Mes de fi d'aplicació (NULL => Periòdic)
--- DiaFi: Dia de fi d'aplicació (NULL => Indefinit)
--- Comentari
-CREATE TABLE oferta (
-   numoferta integer PRIMARY KEY,
-   descoferta float,
-   fechainicio timestamp,
-   fechafin timestamp,
-   periodicidad integer
-);
-
-
 -- Codi: Clau artificial.
 -- Descripcio: Nom identificatiu o descripció breu.
 -- Dies_1T: Dies abans del primer termini computant els blocs de 30 com a mesos naturals.
@@ -572,17 +393,6 @@ CREATE TABLE forma_pago (
    dias1tforma_pago integer,
    descuentoforma_pago float
 );
-
-
--- Numero
--- Proporcio: Percentatge a abonar en aquest termini.
--- Dies: Dies a transcorrer a partir de la data de facturació computant els blocs de 30 com a mesos naturals.
-CREATE TABLE termino_fp (
-   idtermino_fp serial PRIMARY KEY,
-   proportermino_fp float,
-   diastermino_fp integer
-);
-
 
 -- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
 -- hacemos a petición de un cliente determinado
@@ -640,8 +450,6 @@ CREATE TABLE lpresupuesto (
    idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
-
-
 
 
 -- FACTURACIO>Albarans:
@@ -737,21 +545,6 @@ CREATE TABLE lalbaran (
 );
 
 
-
--- Numero
--- Data: Data del venciment.
--- Import: Import a abonar.
--- Abonat
--- Venciment d'un pagament.
-CREATE TABLE vencimiento (
-   idvencimiento serial PRIMARY KEY,
-   fechavencimiento date,
-   importevencimiento float,
-   abonadovencimiento float,
-   idfactura integer REFERENCES factura(idfactura)
-);
-
-
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 CREATE TABLE ticket (
@@ -759,113 +552,26 @@ CREATE TABLE ticket (
    fechaticket date
 );
 
+
 -- COMPROVACIONS D'INTEGRITAT>Genèriques:
 -- 1 Article té 1 sol proveïdor principal.
 -- 1 Article té 1 sol proveïdor referent.
 CREATE TABLE suministra (
    idsuministra serial PRIMARY KEY,
-   refpro integer,
-   pvdsuministra float,
-   beneficiosuministra float,
-   sobrecostesuministra float,
+   refpro character varying(100),
    principalsuministra float,
-   referentsuministra float,
 
    idproveedor integer REFERENCES proveedor(idproveedor),
-        idarticulo integer REFERENCES articulo(idarticulo)
-);
-
-
--- Con cada pedido/albaran podemos asignar un numero de serie a los productos que han llegado.
--- Esta relación es con los pedidos y no con los articulos pq los articulos son genericos
--- y los pedidos instancian los stocks de los pedidos.
---Numero: Numero de srie d'un article.
---Tipus: (Intern|Majorista|Fabricant) Indica si s un nmero intern (posat per nosaltres), del majorista o del fabricant.
--- Intern 1
--- Majorista 2
--- Fabricante 3
--- Segun mis calculos un numero de serie debe ir sólo con un pedido o sólo con un albaran
--- Asi que los campos pueden ser NULL pq o bien va con uno o bien va con el otro.
-CREATE TABLE num_serie (
-    numnum_serie character varying(30) PRIMARY KEY,
-    tiponumserie integer,
-    numlpedido integer REFERENCES lpedido (numlpedido),
-    numlalbaran integer REFERENCES lalbaran (numlalbaran)
-);
-
-
-
-CREATE TABLE artC (
-   idcatalogo integer REFERENCES catalogo(idcatalogo),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
 
-
-
-CREATE TABLE componente (
-   idarticulo integer REFERENCES articulo(idarticulo),
-   articulocomponente integer REFERENCES articulo(idarticulo),
-   id integer,
-   prioridad integer,
-   descripcion character varying(200),
-   cantidad float,
-   escalable boolean
-);
-
-CREATE TABLE stock (
-   idarticulo integer REFERENCES articulo(idarticulo),
-   idalmacen integer REFERENCES almacen(idalmacen),
-   minimo float,
-   maximo float,
-   actual float
-);
-
-
-CREATE TABLE dxart (
-   idcliente integer REFERENCES cliente(idcliente),
-   idarticulo integer REFERENCES articulo(idarticulo),
-   descdxart character varying(150)
-);
-
--- Esta tabla tiene algo que ver con las ofertas
--- pero aun no he descubierto que es (si alguien logra saberlo algun dia
--- por favor que satisfaga mi curiosidad.
-CREATE TABLE dxof (
-  idarticulo integer REFERENCES articulo(idarticulo),
-  numoferta integer REFERENCES oferta(numoferta)
-);
-
--- Esta debe de ser la tabla de representantes.
-CREATE TABLE representa (
-   idusuario integer, -- no hace referencia pq esta en base de datos externa y vinculada
-   idcliente integer REFERENCES cliente(idcliente),
-   permisrepresnta integer
-);
-
-
+-- ESTA TABLA DEBE DESAPARECER -- LO HARE CUANDO TOQUE EL LA ENTRADA DEL PRESUPUESTO.
 -- Presupuesto - forma de pago
 -- Esta tabla indica las formas de pago que tiene un presupuesto
 CREATE TABLE prfp (
   idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
   idforma_pago integer REFERENCES forma_pago(idforma_pago),
   descprfp float
-);
-
--- Forma de pago posible para los articulos
-CREATE TABLE afp (
-   idarticulo integer REFERENCES articulo(idarticulo),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago)
-);
-
-CREATE TABLE albpre (
-   idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
-   idalbaran integer REFERENCES albaran(idalbaran)
-);
-
-CREATE TABLE meta (
-    id character varying(10) NOT NULL,
-    valor character varying(50),
-    PRIMARY KEY ("id")
 );
 
 

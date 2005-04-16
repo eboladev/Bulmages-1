@@ -1,6 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2004 by Alvaro de Miguel                                *
- *   alvaro_demiguel@gmail.com                                             *
+ *   alvaro.demiguel@gmail.com                                             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,28 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/*
-CREATE TABLE articulo (
-    idarticulo serial PRIMARY KEY,
-    codarticulo character varying(12),
-    nomarticulo character varying(50),
-    descarticulo character varying(500),
-    cbarrasarticulo character varying(22),
-    tipoarticulo integer,
-    descuentoarticulo float,
-    especificacionesarticulo character varying(2000),
-    iconoarticulo oid,
-    fotoarticulo oid,
-    posterarticulo oid,
-    margenarticulo float,
-    sobrecostearticulo float,
-    modeloarticulo character varying(1000),
-    
-    idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
-    idlinea_prod integer REFERENCES linea_prod(idlinea_prod)
-); 
-*/
-
 #include "articleedit.h"
 #include "company.h"
 #include "division.h"
@@ -56,11 +34,8 @@ CREATE TABLE articulo (
 #define COL_SUMINISTRA_IDPROVEEDOR 0
 #define COL_SUMINISTRA_NOMPROVEEDOR 1
 #define COL_SUMINISTRA_REFPRO 2
-#define COL_SUMINISTRA_PVD 3
-#define COL_SUMINISTRA_BENEFICIO 4
-#define COL_SUMINISTRA_SOBRECOSTE 5
-#define COL_SUMINISTRA_PRINCIPAL 6
-#define COL_SUMINISTRA_REFERENT 7
+#define COL_SUMINISTRA_PRINCIPAL 3
+#define COL_SUMINISTRA_REFERENT 4
 
 
 articleedit::articleedit(company *comp, QWidget *parent, const char *name)
@@ -76,22 +51,16 @@ articleedit::articleedit(company *comp, QWidget *parent, const char *name)
     m_suministra->setSorting( TRUE );
     m_suministra->setSelectionMode( QTable::SingleRow );
     m_suministra->setColumnMovingEnabled( TRUE );
-    m_suministra->setNumCols(8);
+    m_suministra->setNumCols(5);
     m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_IDPROVEEDOR, tr( "Id. Proveedor" ) );
     m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_NOMPROVEEDOR, tr( "Nombre Proveedor" ) );
     m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_REFPRO, tr( "Referencia del Proveedor" ) );
-    m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_PVD, tr( "PVD" ) );
-    m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_BENEFICIO, tr( "Beneficio" ) );
-    m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_SOBRECOSTE, tr( "Sobrecoste" ) );
     m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_PRINCIPAL, tr( "Es Principal" ) );
     m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_REFERENT, tr( "Es de Referencia" ) );
 
     m_suministra->setColumnWidth(COL_SUMINISTRA_IDPROVEEDOR,100);
     m_suministra->setColumnWidth(COL_SUMINISTRA_NOMPROVEEDOR,300);
     m_suministra->setColumnWidth(COL_SUMINISTRA_REFPRO,100);
-    m_suministra->setColumnWidth(COL_SUMINISTRA_PVD,100);
-    m_suministra->setColumnWidth(COL_SUMINISTRA_BENEFICIO,100);
-    m_suministra->setColumnWidth(COL_SUMINISTRA_SOBRECOSTE,100);
     m_suministra->setColumnWidth(COL_SUMINISTRA_PRINCIPAL,100);
     m_suministra->setColumnWidth(COL_SUMINISTRA_REFERENT,100);
 
@@ -109,12 +78,12 @@ articleedit::~articleedit() {
 
 
 void articleedit::s_familiaLostFocus() {
-        QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='"+m_codigoCompletoFamilia->text()+"'";
+        QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='"+m_codigocompletofamilia->text()+"'";
         cursor2 *cur= companyact->cargacursor(SQLQuery);
         if (!cur->eof()) {
 	    m_idFamilia = cur->valor("idfamilia");
 	    fprintf(stderr,"idfamilia:%s\n", m_idFamilia.ascii());
-            m_nomFamilia->setText(cur->valor("nombrefamilia"));	    
+            m_nombrefamilia->setText(cur->valor("nombrefamilia"));	    
 	}// end if
 	delete cur;
 }// end s_familiaLostFocus
@@ -140,22 +109,14 @@ void articleedit::chargeArticle(QString idArt) {
         cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
         if (!cur->eof()) {
             idArticle = idArt;
-	    m_idFamilia = cur->valor("idfamilia");
-            m_codigoCompletoFamilia->setText(cur->valor("codigocompletofamilia"));
-            m_articleCode->setText(cur->valor("codarticulo"));
-            m_articleName->setText(cur->valor("nomarticulo"));
-            m_articleDesc->setText(cur->valor("descarticulo"));
-            m_barCode->setText(cur->valor("cbarrasarticulo"));
-            m_articleDiscount->setText(cur->valor("descuentoarticulo"));
-            m_specifications->setText(cur->valor("especificacionesarticulo"));
-            m_articleMargin->setText(cur->valor("margenarticulo"));
-            m_articleOverCost->setText(cur->valor("sobrecostearticulo"));
-            m_articleModel->setText(cur->valor("modeloarticulo"));
+	    		m_idFamilia = cur->valor("idfamilia");
+            m_codigocompletofamilia->setText(cur->valor("codigocompletofamilia"));
+            m_codigoarticulo->setText(cur->valor("codarticulo"));
+            m_nombrearticulo->setText(cur->valor("nomarticulo"));
+            m_obserarticulo->setText(cur->valor("obserarticulo"));
             ivaType=cur->valor("idtipo_iva");
-            m_comboArtType->setCurrentItem(cur->valor("tipoarticulo").toInt());
-	    m_codigoCompletoArticulo->setText(cur->valor("codigocompletoarticulo"));
+            m_codigocompletoarticulo->setText(cur->valor("codigocompletoarticulo"));
 
-            // Suministra relation loading
             // Cargamos las relaciones artículo - proveedor.
             QString SQLQuery1 = "SELECT * FROM suministra, proveedor WHERE suministra.idproveedor=proveedor.idproveedor and idarticulo="+idArt;
             companyact->begin();
@@ -167,9 +128,6 @@ void articleedit::chargeArticle(QString idArt) {
                 m_suministra->setText(i,COL_SUMINISTRA_IDPROVEEDOR,cur1->valor("idproveedor"));
                 m_suministra->setText(i,COL_SUMINISTRA_NOMPROVEEDOR,cur1->valor("nomproveedor"));
                 m_suministra->setText(i,COL_SUMINISTRA_REFPRO,cur1->valor("refprosuministra"));
-                m_suministra->setText(i,COL_SUMINISTRA_PVD,cur1->valor("pvdsuministra"));
-                m_suministra->setText(i,COL_SUMINISTRA_BENEFICIO,cur1->valor("beneficiosuministra"));
-                m_suministra->setText(i,COL_SUMINISTRA_SOBRECOSTE,cur1->valor("sobrecostesuministra"));
                 m_suministra->setText(i,COL_SUMINISTRA_PRINCIPAL,cur1->valor("principalsuministra"));
                 m_suministra->setText(i++,COL_SUMINISTRA_REFERENT,cur1->valor("referentsuministra"));
                 cur1->siguienteregistro();
@@ -198,11 +156,11 @@ void articleedit::cargarcomboiva(QString idIva) {
         if (idIva == m_cursorcombo->valor("idtipo_iva")) {
             i1 = i;
         }
-        m_comboIvaType->insertItem(m_cursorcombo->valor("desctipo_iva"));
+        m_combotipo_iva->insertItem(m_cursorcombo->valor("desctipo_iva"));
         m_cursorcombo->siguienteregistro();
     }// end while
     if (i1 != 0 ) {
-        m_comboIvaType->setCurrentItem(i1-1);
+        m_combotipo_iva->setCurrentItem(i1-1);
     }// end if
 } // end cargarcomboalmacen
 
@@ -212,19 +170,10 @@ void articleedit::cargarcomboiva(QString idIva) {
 *************************************************************************/
 void articleedit::boton_nuevo() {
     idArticle = "0";
-    m_articleCode->setText("");
-    m_articleName->setText("");
-    m_articleDesc->setText("");
-    m_barCode->setText("");
-    //       m_comboIvaType ...
-    m_articleDiscount->setText("");
-    m_specifications->setText("");
-    m_articleMargin->setText("");
-    m_articleOverCost->setText("");
-    m_articleModel->setText("");
-    m_productionLine->setText("");
-    m_comboArtType->setCurrentItem(0);
-    m_comboIvaType->setCurrentItem(0);
+    m_codigoarticulo->setText("");
+    m_nombrearticulo->setText("");
+    m_obserarticulo->setText("");
+    m_combotipo_iva->setCurrentItem(0);
 }// end boton_nuevo
 
 /*************************************************************************
@@ -233,50 +182,7 @@ void articleedit::boton_nuevo() {
 * pertinentes                                                            *
 **************************************************************************/
 void articleedit::accept() {
-    QString SQLQuery;
-    if (idArticle != "0") {
-        SQLQuery = "UPDATE articulo SET codarticulo='"+m_articleCode->text()+"'";
-        SQLQuery += " , nomarticulo='"+m_articleName->text()+"'";
-        SQLQuery += " , descarticulo='"+m_articleDesc->text()+"'";
-        SQLQuery += " , cbarrasarticulo='"+m_barCode->text()+"'";
-	SQLQuery += " , idfamilia="+m_idFamilia;
-//        SQLQuery += " , tipoarticulo="+QString().sprintf("%d", m_comboArtType->currentItem());
-//        SQLQuery += " , descuentoarticulo="+m_articleDiscount->text();
-//        SQLQuery += " , especificacionesarticulo='"+m_specifications->text()+"'";
-//        SQLQuery += " , margenarticulo="+m_articleMargin->text();
-//        SQLQuery += " , sobrecostearticulo="+m_articleOverCost->text();
-//        SQLQuery += " , modeloarticulo='"+m_articleModel->text()+"'";
-        SQLQuery += " , idtipo_iva="+m_cursorcombo->valor("idtipo_iva",m_comboIvaType->currentItem());
-        SQLQuery += " WHERE idarticulo ="+idArticle;
-    } else {
-        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, descarticulo, cbarrasarticulo, idtipo_iva, idfamilia)";
-// , tipoarticulo, descuentoarticulo, especificacionesarticulo, margenarticulo, sobrecostearticulo, modeloarticulo
-        SQLQuery += " VALUES (";
-        SQLQuery += " "+m_articleCode->text();
-        SQLQuery += " , '"+m_articleName->text()+"'";
-        SQLQuery += " , '"+m_articleDesc->text()+"'";
-        SQLQuery += " , '"+m_barCode->text()+"'";
-//        SQLQuery += " , "+QString().sprintf("%d", m_comboArtType->currentItem());
-//        SQLQuery += " , "+m_articleDiscount->text();
-//        SQLQuery += " , '"+m_specifications->text()+"'";
-//        SQLQuery += " , "+m_articleMargin->text();
-//        SQLQuery += " , "+m_articleOverCost->text();
-//        SQLQuery += " , '"+m_articleModel->text()+"'";
-        SQLQuery += " , "+m_cursorcombo->valor("idtipo_iva",m_comboIvaType->currentItem());
-	SQLQuery += " , "+m_idFamilia;
-        SQLQuery += ")";
-        companyact->begin();
-        companyact->ejecuta(SQLQuery);
-        companyact->commit();
-        close();
-    }// end if */
-    companyact->begin();
-    if (companyact->ejecuta(SQLQuery)==0) {
-        companyact->commit();
-        close();
-    } else {
-        companyact->rollback();
-    }// end if
+	
 }// end accept
 
 
@@ -300,7 +206,7 @@ void articleedit::boton_borrar() {
 
 
 void articleedit::s_findArticulo() {
-	QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '"+m_codigoCompletoArticulo->text()+"'";
+	QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '"+m_codigocompletoarticulo->text()+"'";
 	cursor2 *cur = companyact->cargacursor(SQlQuery);
 	if (!cur->eof()) {
 		chargeArticle(cur->valor("idarticulo"));
@@ -308,16 +214,35 @@ void articleedit::s_findArticulo() {
 	delete cur;
 }// end s_findArticulo
 
-void articleedit::articleDiscountLostFocus() {
-    m_articleDiscount->setText(m_articleDiscount->text().replace(",","."));
-}
 
-
-void articleedit::articleMarginLostFocus() {
-    m_articleMargin->setText(m_articleMargin->text().replace(",","."));
-}
-
-
-void articleedit::articleOverCostLostFocus() {
-    m_articleOverCost->setText(m_articleOverCost->text().replace(",","."));
-}
+void articleedit::s_grabarClicked() {
+	
+    QString SQLQuery;
+    if (idArticle != "0") {
+        SQLQuery = "UPDATE articulo SET codarticulo='"+m_codigoarticulo->text()+"'";
+        SQLQuery += " , nomarticulo='"+m_nombrearticulo->text()+"'"; 
+		  SQLQuery += " , idfamilia="+m_idFamilia;
+        SQLQuery += " , obserarticulo='"+m_obserarticulo->text()+"'";
+        SQLQuery += " , idtipo_iva="+m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem());
+        SQLQuery += " WHERE idarticulo ="+idArticle;
+    } else {
+        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia)";
+        SQLQuery += " VALUES (";
+        SQLQuery += " "+m_codigoarticulo->text();
+        SQLQuery += " , '"+m_nombrearticulo->text()+"'";
+        SQLQuery += " , '"+m_obserarticulo->text()+"'";
+        SQLQuery += " , "+m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem());
+	SQLQuery += " , "+m_idFamilia;
+        SQLQuery += ")";
+        companyact->begin();
+        companyact->ejecuta(SQLQuery);
+        companyact->commit();
+        close();
+    }// end if */
+    companyact->begin();
+    if (companyact->ejecuta(SQLQuery)==0) {
+        companyact->commit();
+    } else {
+        companyact->rollback();
+    }// end if
+}// end s_grabarClicked

@@ -48,12 +48,10 @@ public slots:
    virtual void accept();
    virtual void boton_nuevo();
    virtual void boton_borrar();
-	virtual void articleMarginLostFocus();
-	virtual void articleOverCostLostFocus();
-	virtual void articleDiscountLostFocus();
    virtual void s_familiaLostFocus();
    virtual void s_searchFamily();
    virtual void s_findArticulo();
+	virtual void s_grabarClicked();
 };
 
 #endif
