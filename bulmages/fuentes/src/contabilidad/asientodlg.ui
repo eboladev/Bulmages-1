@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>asientodlg</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,46 +9,55 @@
             <x>0</x>
             <y>0</y>
             <width>501</width>
-            <height>240</height>
+            <height>331</height>
         </rect>
     </property>
     <property name="caption">
         <string>Edicion de Asientos</string>
     </property>
-    <grid>
+    <vbox>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
-        <widget class="QLayoutWidget" row="1" column="0">
+        <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>Layout3</cstring>
+                <cstring>layout11</cstring>
             </property>
             <hbox>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
-                </property>
-                <widget class="QLabel">
+                <widget class="QToolButton">
                     <property name="name">
-                        <cstring>TextLabel2</cstring>
+                        <cstring>toolButton1_2_2</cstring>
                     </property>
                     <property name="text">
-                        <string>Descripcion</string>
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image0</iconset>
                     </property>
                 </widget>
-                <widget class="QLineEdit">
+                <spacer>
                     <property name="name">
-                        <cstring>descasiento</cstring>
+                        <cstring>spacer5</cstring>
                     </property>
-                </widget>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>381</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
             </hbox>
         </widget>
-        <widget class="QLayoutWidget" row="0" column="0">
+        <widget class="QLayoutWidget">
             <property name="name">
                 <cstring>Layout5</cstring>
             </property>
@@ -398,7 +407,41 @@
                 </spacer>
             </hbox>
         </widget>
-        <widget class="QLayoutWidget" row="3" column="0">
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>Layout3</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>TextLabel2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Descripcion</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>descasiento</cstring>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QTextEdit">
+            <property name="name">
+                <cstring>notasasiento</cstring>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget">
             <property name="name">
                 <cstring>layout8</cstring>
             </property>
@@ -450,27 +493,13 @@
                 </spacer>
                 <widget class="QPushButton">
                     <property name="name">
-                        <cstring>PushButton1</cstring>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>NoFocus</enum>
-                    </property>
-                    <property name="text">
-                        <string>Aceptar</string>
-                    </property>
-                    <property name="autoDefault">
-                        <bool>false</bool>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
                         <cstring>PushButton2</cstring>
                     </property>
                     <property name="focusPolicy">
                         <enum>NoFocus</enum>
                     </property>
                     <property name="text">
-                        <string>Cancelar</string>
+                        <string>Cerrar</string>
                     </property>
                     <property name="autoDefault">
                         <bool>false</bool>
@@ -478,20 +507,14 @@
                 </widget>
             </hbox>
         </widget>
-        <widget class="QTextEdit" row="2" column="0">
-            <property name="name">
-                <cstring>notasasiento</cstring>
-            </property>
-        </widget>
-    </grid>
+    </vbox>
 </widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="1378">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000529494441545885ad9741681b571086bf350a883dd5a082149c834d2febd487a794c24a50c8b12514a324870695429d9c9a1c5a250dc5a4a5757c088a125ac8c1451b08757368e2f8127c29d94060770fc5d121915d52231b6c629d921cccea4104af87f5ae2559b6ec2403cbe8474f9a99fffd3bf39ee6d77ca80349a8d42b88a4d886f5215db1697ecdd77aaddf0feeabd42b6d5f76627d4857fe331fe79183ffcc471fd2959ed1953ea4ab6eebf78bf16b3e8eebe0d77c7cd7df8601e53c7294aa29951bcda9ea5c5595adb2aace5515103d3bfdbe17eeeb952980480adc3517006fd54320f0563daa5695f25499796bfe8d99d176d3803ea42b555334d61a3000f9eff2ccccce8472c0ba6961a64cbc75afcd1ffeec70b4a69766223abaf9907eff99af72a339b59b95a7ca6ade9a57e5a9b2aa5ad508776e53671ccdaff9bbaadfaff954d62ab8775cceff769ebdd84ecc9cf8fe048b4f17db9889b5ee49ab0fd55f590b7069b5b4a7e000635f8f0130cc30d6ef16221668264e9c89c909681216a7ed59fd6f6be243a1267e9e50f7a7eeabf11fc695aa2905a81dfb40a7fadfd66453229b92874b0fb97ce6325767af02d0d74a3b7522fa554d057840bc9304cc9889dc908884c0adbb5c285cc0777dad6b1f0082ca93db5fbd37b1e19161fa8ff6d36836b097eca05880e4260361e51113049557ea15cc43e65b050fcd4818c80d89f583c5cdd99b4050ecb6b7a055fd46c2e0e5a72f498fa4914d09315878b2b0efe071e2d84b3610307bb67016c775349114c43a3500e0ad79c15eadb8a41369c67f1c279d48e3aeba4132484c4cac2756cfe0e991348630100981b7e69119c80044f1b6310020dedb0a6eff67239a027b39f06367c610085ce9ee8919d99420c15bf698b93613a93f8cd7360bf4215dbd78fc027bc58e2a16ef0bbc652ff0ab5bcc1849036f25c0de8a87fdb7dd9599b191315e19af309326992f326433597cd7d742c16b8eeb440c64335975f7afbba45fa7719b2ef9aff2d11f154b45688294329886d28b70830652ca0037258b95c58819e30383f88138f2b564fada34fa908e5ff3b590815827fd46c2c05eb6393d761aa5a283109aa6459f0b170a9849738ba915977432f022219086c44c9a78752ff233d766b8317ba38d7eea6c31a00fe9aa7aab8a273d445370e49b2328a5585f5f27954ab5ed6b6b32a7be3c15ecb594c4092ae500f09aa8720e40e15c81ec27d948fd61127d6deadf08f6da96761420954ac1fa26d8f44aa9e8b9fdc76d961797b977e75ea081cdbe611e32db70a7faa3e6170e204039bf3aaa78a5a88218813d7ffebca7373f32d5c4e444dbeccf8de654ee642e186435a58aa5e07f3bcf037d21fdce9f0eee868b9130b6b85e84543cc5c2e202a978aa2b3e9e3b4eee648ecc4086e295220f6e3d8818087d6befefec3b7d61efb7976c8ca681b7e445f11bb106ee5397c1d820ee53b72b0ea79cbbe2926e064204a2f9efad7a6dbdbf73f6c44452e0bbbea667b6cefe4a29d6ff59e771fd31e9641afb5f7b476fc64c686e8eeebacba59f2e913b99eba9fe3089e83ce0b88ee6d77ccd711d4dd3340e7e7c90639f1f63eec91c832f07bbfac95f26e93fda8f6806cd4836254054396ceffd9de78f6db3402445b4983ab432336d4d631e32a9ac0653d2c24224055edddba21522f57bf5edbdbf33de8e67c2d0b7669ecd64a364ca5639d8eb150f62812f5d2f911bcd451ae8d6fb3bfdaef7826ef784f034dbca4ce1db022229c85fcc533c578c3a60b7debfefbb612b0e7b78a7664ad74be42fe6f7a5fe3606dec52db79b66426bd554e7fa9e77c3fde2566642bfdbfaff01618867fb39ac61a90000000049454e44ae426082</data>
+    </image>
+</images>
 <connections>
-    <connection>
-        <sender>PushButton2</sender>
-        <signal>pressed()</signal>
-        <receiver>asientodlg</receiver>
-        <slot>reject()</slot>
-    </connection>
     <connection>
         <sender>fechaasiento1</sender>
         <signal>returnPressed()</signal>
@@ -523,30 +546,29 @@
         <slot>setFocus()</slot>
     </connection>
     <connection>
-        <sender>notasasiento</sender>
-        <signal>returnPressed()</signal>
-        <receiver>PushButton1</receiver>
-        <slot>toggle()</slot>
-    </connection>
-    <connection>
-        <sender>PushButton1</sender>
+        <sender>PushButton2</sender>
         <signal>clicked()</signal>
         <receiver>asientodlg</receiver>
-        <slot>acceptar()</slot>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1_2_2</sender>
+        <signal>clicked()</signal>
+        <receiver>asientodlg</receiver>
+        <slot>s_saveAsiento()</slot>
     </connection>
 </connections>
 <tabstops>
     <tabstop>fechaasiento1</tabstop>
     <tabstop>descasiento</tabstop>
     <tabstop>notasasiento</tabstop>
-    <tabstop>PushButton1</tabstop>
     <tabstop>PushButton2</tabstop>
     <tabstop>idasiento</tabstop>
 </tabstops>
 <slots>
-    <slot>acceptar()</slot>
+    <slot>close()</slot>
     <slot>return_fecha()</slot>
+    <slot>s_saveAsiento()</slot>
 </slots>
-<pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

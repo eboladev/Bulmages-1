@@ -14,10 +14,12 @@
  *                                                                         *
  ***************************************************************************/
 
+#include <qmessagebox.h>
+ 
 #include "propiedadesempresa.h"
 using namespace std;
 
-propiedadesempresa::propiedadesempresa(QWidget *parent, const char *name, bool modal) : propiedemp(parent,name,modal) {
+propiedadesempresa::propiedadesempresa(QWidget *parent, const char *name, bool modal) : propiedemp(parent,name,modal) , dialogChanges(this) {
 }// end propiedadesempresa
 
 
@@ -106,11 +108,14 @@ int propiedadesempresa::inicializa(postgresiface2 *conn) {
         }
     }
     delete cur;
+    
+    dialogChanges_cargaInicial(); 
+    
     return(0);
 }// end inicializa
 
 
-void propiedadesempresa::accept() {
+void propiedadesempresa::s_saveConfig() {
     QString query = "DELETE FROM configuracion";
     conexionbase->begin();
     conexionbase->ejecuta(query);
@@ -140,7 +145,9 @@ void propiedadesempresa::accept() {
     update_value(conexionbase,"Provincia",lineProvincia->text());
     update_value(conexionbase,"Pais",linePais->text());
     conexionbase->commit();
-    done(1);
+    dialogChanges_cargaInicial(); 
+    
+    //done(1);
 }// end accept
 
 
@@ -156,3 +163,16 @@ void propiedadesempresa::update_value(postgresiface2 *m,QString n,QString v) {
     cout << m->ejecuta(query) << "\n";
 
 }
+
+
+void propiedadesempresa::close() {
+    /// Si se ha modificado el contenido advertimos y guardamos.
+    if (dialogChanges_hayCambios()) {
+    	    if ( QMessageBox::warning( this, "Guardar Cambios",
+		"Desea guardar los cambios.",
+		QMessageBox::Ok ,
+		QMessageBox::Cancel ) == QMessageBox::Ok)
+		s_saveConfig();	
+    }// end if
+    QDialog::close();
+}// end close

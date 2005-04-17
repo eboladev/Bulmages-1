@@ -19,7 +19,7 @@
 #include "funcaux.h"
 
 
-asientoview::asientoview(empresa *emp,QWidget *parent, const char *name, bool modal) : asientodlg(parent,name,modal) {
+asientoview::asientoview(empresa *emp,QWidget *parent, const char *name, bool modal) : asientodlg(parent,name,modal) , dialogChanges(this){
 empresaactual=emp;
 ordenasiento_mostrado=0;
 }
@@ -32,10 +32,10 @@ void asientoview::inicializa(postgresiface2 *conn) {
 }// end inicializa
 
 
-// **********************************************************************
-// Esta funcion esta a medio construir, falta poder coger la fecha y la
-// descripcion del asiento.
-// **********************************************************************
+/**
+  * Esta funcion esta a medio construir, falta poder coger 
+  * la fecha y la descripcion del asiento.
+  */
 void asientoview::cargaasiento(int idasiento1) {
    int indiceClaseAsiento=1;
    cursor2 *cursoraux;   
@@ -58,12 +58,13 @@ void asientoview::cargaasiento(int idasiento1) {
       claseAsiento->setCurrentItem(indiceClaseAsiento);
    }// end if
    delete cursoraux;
+   dialogChanges_cargaInicial();
 }// end cargaasiento
 
 
-// ****************************************************************************
-// * Esta funcion esta a medio construir, falta contemplar las modificaciones *
-// ****************************************************************************
+/**
+  * Esta funcion esta a medio construir, falta contemplar las modificaciones
+  */
 void asientoview::acceptar() {
    QString fecha;
    int val=0;
@@ -81,12 +82,45 @@ void asientoview::acceptar() {
 }// end accept
 
 
+void asientoview::close() {
+    /// Si se ha modificado el contenido advertimos y guardamos.
+    if (dialogChanges_hayCambios()) {
+    	    if ( QMessageBox::warning( this, "Guardar Asiento",
+		"Desea guardar los cambios.",
+		QMessageBox::Ok ,
+		QMessageBox::Cancel ) == QMessageBox::Ok)
+		acceptar();	
+    }// end if
+    QDialog::close();
+}// end close
 
-/**********************************************************
- * Esta funcion crea un asiento y devuelve su identificador.
- * Si todo va bien la funcion devuelve el identificador
- * Si algo falla devuelve cero.
- ***********************************************************/
+
+
+/** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
+  * Lo que hace es que se hace un update de todos los campos
+  */
+void asientoview::s_saveAsiento() {
+   QString fecha;
+   int val=0;
+   int numasiento = idasiento_mostrado;
+   QString text = descasiento->text();
+   fecha = fechaasiento1->text();
+   QString ordenasiento = idasiento->text();
+   if (numasiento==0) {
+      val = creaasiento(text, fecha);
+   } else {
+      val = modificaasiento(text, fecha, numasiento, notasasiento->text(), ordenasiento);
+   }// end if
+   dialogChanges_cargaInicial();
+}// end s_saveFPago
+
+
+
+/**
+  * Esta funcion crea un asiento y devuelve su identificador.
+  * Si todo va bien la funcion devuelve el identificador
+  * Si algo falla devuelve cero.
+  */
 int asientoview::creaasiento(QString texto, QString fecha, int numasiento, int clase) {
    int val;
    conexionbase->begin();
@@ -95,63 +129,18 @@ int asientoview::creaasiento(QString texto, QString fecha, int numasiento, int c
    return(val);
 }// end creaasiento
 
+
 int asientoview::modificaasiento(QString texto, QString fecha, int numasiento, QString notas, QString orden) {
   QString query;
   QString valorClaseAsiento="1";
-  QString cadenaAux="";
-/*  
-  // Si ya existe un asiento con el orden que intentamos asignar debemos desplazar los asientos posteriores.
-  //Solamente desplazamos si ordenasiento ha cambiado, en caso contrario No
-  query.sprintf("SELECT * FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND ordenasiento=%s",empresaactual->ejercicioactual().ascii(),orden.ascii());
-  conexionbase->begin();
-  cursor2 *cur = conexionbase->cargacursor(query,"micursor");
-
-  if (!cur->eof() && (orden.toInt() != ordenasiento_mostrado) ) {
-     query.sprintf("UPDATE asiento set ordenasiento = ordenasiento+1 WHERE ordenasiento >= %s", orden.ascii());
-     conexionbase->ejecuta(query);
-  }// end if
-  
-  //Controlamos que no se dupliquen los asientos de apertura, regularización y cierre
-  if (claseAsiento->currentItem()==0 ) { //El asiento es de Apertura
-      valorClaseAsiento="0";
-      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='0' AND idasiento<>'%d'",empresaactual->ejercicioactual().ascii(), numasiento);
-      cur = conexionbase->cargacursor(query,"clase0");
-      if (!cur->eof() ) { 
-          cadenaAux =cur->valor(1);
-          QMessageBox::warning( 0, tr("Atención"), tr("El Asiento ") + cadenaAux + tr(" ya es de Apertura."), QMessageBox::Ok,0);
-          valorClaseAsiento="1";
-      }
-  }
-  if (claseAsiento->currentItem()==1) { //El asiento es normal, entonces no hacemos nada!
-      valorClaseAsiento="1";
-  }
-  if (claseAsiento->currentItem()==2) { //El asiento es de Regularización
-      valorClaseAsiento="98";
-      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='98' AND idasiento<>'%d'",empresaactual->ejercicioactual().ascii(), numasiento);
-      cur = conexionbase->cargacursor(query,"clase98");
-      if (!cur->eof() ) { 
-          cadenaAux =cur->valor(1);
-          QMessageBox::warning( 0, tr("Atencion"), tr("El Asiento ") + cadenaAux + tr(" ya es de Regularizacion."), QMessageBox::Ok,0);
-          valorClaseAsiento="1";
-      }
-  }
-  if (claseAsiento->currentItem()==3) { //El asiento es de Cierre
-      valorClaseAsiento="99";
-      query.sprintf("SELECT idasiento, ordenasiento FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s' AND clase='99' AND idasiento<>'%d'",empresaactual->ejercicioactual().ascii(), numasiento);
-      cur = conexionbase->cargacursor(query,"clase99");
-      if (!cur->eof() ) { 
-          cadenaAux =cur->valor(1);
-          QMessageBox::warning( 0, tr("Atencion"), tr("El Asiento ") + cadenaAux + tr(" ya es de Cierre."), QMessageBox::Ok,0);
-          valorClaseAsiento="1";
-      }
-  }
-*/  
+  QString cadenaAux=""; 
   query.sprintf("UPDATE asiento SET descripcion='%s', fecha='%s', comentariosasiento='%s', ordenasiento=%s, clase=%s WHERE idasiento=%d",texto.ascii(),fecha.ascii(),notas.ascii(),orden.ascii(), valorClaseAsiento.ascii(), numasiento);
 
   conexionbase->ejecuta(query);
   conexionbase->commit();
   return(numasiento);
 }// end modificaasiento
+
 
 void asientoview::return_fecha() {
   fechaasiento1->setText(normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));

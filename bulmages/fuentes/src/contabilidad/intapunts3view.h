@@ -75,7 +75,7 @@ public:
     ~intapunts3view();
     int inicializa(postgresiface2 *);
     int inicializa1(extractoview1 *, diarioview1 *, balanceview *);
-    void cargarcursor(int);
+    void cargarcursor();
     void repinta(int);
     void muestraasiento(int);
     void flashAsiento(int);
@@ -120,7 +120,7 @@ public slots:
     virtual void boton_fin();
     virtual void boton_siguiente();
     virtual void boton_anterior();
-    virtual void return_fechaasiento();
+    virtual void eturn_fechaasiento();
     virtual void fechaasiento1_textChanged( const QString & );
     virtual void boton_cargarasiento();
     virtual void eturn_numasiento();

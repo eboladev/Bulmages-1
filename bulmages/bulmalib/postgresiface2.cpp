@@ -478,10 +478,10 @@ cursor2 *postgresiface2::cargaapuntes(int tidasiento) {
 }// end cargaapuntes
 
 
-/* ***************************************************************
+/**
  * Esta funcion carga de la base de datos los apuntes
  * tidasiento --> El asiento del que se deben cargar los apuntes
- *****************************************************************/
+ */
 cursor2 *postgresiface2::cargaborradores(int tidasiento) {
     QString query="";
     query.sprintf("SELECT * FROM borrador where idasiento=%d ORDER BY idborrador",tidasiento);
@@ -490,7 +490,7 @@ cursor2 *postgresiface2::cargaborradores(int tidasiento) {
 }// end cargaborradores
 
 
-/* *****************************************************
+/**
  * Esta funcion carga de la base de datos las cuentas
  * padre : = 0 carga las cuentas de nivel 0
  * padre : = -1 carga todas las cuentas sin excepcion
@@ -513,9 +513,9 @@ cursor2 *postgresiface2::cargacuentas(int padre) {
 
 
 
-/* *****************************************************
+/**
  * Esta funcion carga de la base de datos los grupos
- *******************************************************/
+ */
 cursor2 *postgresiface2::cargagrupos() {
     QString query="SELECT * FROM grupo";
     cursor2 *cur=cargacursor(query,"cargagrupos");

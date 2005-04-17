@@ -210,7 +210,7 @@ int empresa::fPago() {
 
 int empresa::cambioejercicio() {
 //El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio
-  introapunts1->cargarcursor(-1);
+  introapunts1->cargarcursor();
   introapunts1->boton_fin();
   return(0);
 }// end cambioejercicio
@@ -438,7 +438,7 @@ void empresa::Abrirasientos() {
    conexionbase2->begin();
    conexionbase2->ejecuta("SELECT abreasientos()");
    conexionbase2->commit();
-   introapunts1->cargarcursor(0);
+   introapunts1->cargarcursor();
    introapunts1->boton_fin();
    introapunts1->show();
 }// end Abrirasientos
@@ -451,7 +451,7 @@ void empresa::Ordenarasientos() {
    cursor2 * cur = conexionbase2->cargacursor(query, "hola");
    conexionbase2->commit();
    delete cur;
-   introapunts1->cargarcursor(0);
+   introapunts1->cargarcursor();
    introapunts1->boton_fin();
    introapunts1->show();
 }// end Abrirasientos

@@ -53,7 +53,7 @@ asientosview::~asientosview(){
 void asientosview::pulsado(int a, int b, int c,const QPoint &punto) {
   int idasiento;
   idasiento = atoi(tablaasientos->text(a,COL_IDASIENTO).ascii());
-  introapunts->cargarcursor(idasiento);
+  introapunts->cargarcursor();
   introapunts->muestraasiento(idasiento);
   introapunts->show();
   introapunts->setFocus();

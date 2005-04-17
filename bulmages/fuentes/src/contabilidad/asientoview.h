@@ -27,10 +27,11 @@
 #include <qtextedit.h>
 #include "postgresiface2.h"
 #include "empresa.h"
+#include "dialogchanges.h"
 
 /** *@author Tomeu Borrás Riera */
 
-class asientoview : public asientodlg  {
+class asientoview : public asientodlg , dialogChanges {
    Q_OBJECT
 public:
    postgresiface2 *conexionbase;
@@ -47,5 +48,7 @@ public:
 public slots:
    virtual void return_fecha();
    virtual void acceptar();
+   virtual void close();
+   virtual void s_saveAsiento();
 };
 #endif

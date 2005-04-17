@@ -24,10 +24,11 @@
 #include <qtable.h>
 #include <stdlib.h>
 #include "postgresiface2.h"
+#include "dialogchanges.h"
 
 /** *@author Tomeu Borrás Riera */
 
-class propiedadesempresa : public propiedemp  {
+class propiedadesempresa : public propiedemp , dialogChanges {
    Q_OBJECT
 public:
    QString empresadb;
@@ -40,7 +41,8 @@ public:
 //  void modificacodcuenta(char *);
 //  void accept();
 public slots:
-  virtual void accept();
+  virtual void s_saveConfig();
+  virtual void close();
   
   private:
   void update_value(postgresiface2 *,QString ,QString);

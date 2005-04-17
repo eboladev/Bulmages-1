@@ -480,7 +480,7 @@ int ivaview::buscaborradoriva(int idborrador) {
         m_listIva->setText(i,COL_IVA_IDIVA, cur->valor("idiva"));
         m_listIva->setText(i,COL_IVA_IDTIPOIVA, cur->valor("idtipoiva"));
         m_listIva->setText(i,COL_IVA_NOMBRETIPOIVA, cur->valor("nombretipoiva"));
-        if (cur->valor("debe").toInt() != 0) {
+        if (cur->valor("debe") != "0.00") {
             m_listIva->setText(i,COL_IVA_IVAIVA, cur->valor("debe"));
 	    m_listIva->setText(i,COL_IVA_BASEIVA, cur->valor("pdebe"));
         } else {

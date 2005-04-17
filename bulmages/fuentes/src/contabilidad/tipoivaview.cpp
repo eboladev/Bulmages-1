@@ -19,11 +19,11 @@
 
 /** El constructor de la clase prepara las variables globales y llama a la función pintar
   */
-tipoivaview::tipoivaview(empresa *emp,QWidget *parent, const char *name) : tipoivadlg(parent, name) {
+tipoivaview::tipoivaview(empresa *emp,QWidget *parent, const char *name) : tipoivadlg(parent, name) , dialogChanges(this) {
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
     m_curtipoiva = NULL;
-    s_releaseModificado();
+    dialogChanges_cargaInicial(); 
     pintar();
 }// end tipoivaview
 
@@ -66,7 +66,7 @@ void tipoivaview::pintar(QString idtipoiva) {
   */
 void tipoivaview::mostrarplantilla(int pos) {
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (m_modificado) {
+    if (dialogChanges_hayCambios()) {
     	    if ( QMessageBox::warning( this, "Guardar Tipo de IVA",
 		"Desea guardar los cambios.",
 		QMessageBox::Ok ,
@@ -80,8 +80,8 @@ void tipoivaview::mostrarplantilla(int pos) {
         m_nombreTipoIVA->setText(m_curtipoiva->valor("nombretipoiva", m_posactual));
         m_codigoCtaTipoIVA->setText(m_curtipoiva->valor("codigo",m_posactual));
         m_porcentTipoIVA->setText(m_curtipoiva->valor("porcentajetipoiva",m_posactual));
-	/// Como está recién puesto quitamos el flag de modificado
-	s_releaseModificado();
+	/// Comprobamos cual es la cadena inicial.
+	dialogChanges_cargaInicial();
     }// end if
 }// end mostrarplantilla
 
@@ -102,7 +102,8 @@ void tipoivaview::s_saveTipoIVA() {
     QString idtipoiva = m_curtipoiva->valor("idtipoiva",m_posactual);
     QString query = "UPDATE tipoiva SET nombretipoiva='"+m_nombreTipoIVA->text()+"', porcentajetipoiva= "+m_porcentTipoIVA->text()+" , idcuenta = id_cuenta('"+m_codigoCtaTipoIVA->text()+"') WHERE idtipoiva="+m_curtipoiva->valor("idtipoiva", m_posactual);
     conexionbase->ejecuta(query);
-    s_releaseModificado();
+    /// Comprobamos cual es la cadena inicial.
+    dialogChanges_cargaInicial();
     pintar(m_curtipoiva->valor("idtipoiva", m_posactual));
 }// end s_saveTipoIVA
 
@@ -112,7 +113,7 @@ void tipoivaview::s_saveTipoIVA() {
   */
 void tipoivaview::s_newTipoIVA() {
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (m_modificado) {
+    if (dialogChanges_hayCambios()) {
     	    if ( QMessageBox::warning( this, "Guardar Tipo de IVA",
 		"Desea guardar los cambios.",
 		QMessageBox::Ok ,
@@ -167,7 +168,7 @@ void tipoivaview::s_searchAccount() {
   */
 void tipoivaview::close() {
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (m_modificado) {
+    if (dialogChanges_hayCambios()) {
     	    if ( QMessageBox::warning( this, "Guardar Tipo de IVA",
 		"Desea guardar los cambios.",
 		QMessageBox::Ok ,
