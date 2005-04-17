@@ -18,7 +18,7 @@
 
 #include <fpagodlg.h>
 #include "postgresiface2.h"
-
+#include "dialogchanges.h"
 
 class empresa;
 
@@ -28,13 +28,12 @@ class empresa;
   * Las formas de pago son unas plantillas que se usan para determinar las formas en que se pagan  o se
   * cobran las facturas emitidas o recibidas
   */
-class fpagoview : public fpagodlg  {
+class fpagoview : public fpagodlg , dialogChanges {
 Q_OBJECT
 private:
     empresa *empresaactual;
     postgresiface2 *conexionbase;
    cursor2 *m_curfpago;   
-   bool m_modificado; ///Indica si se han modificado campos en la pantalla.
    int m_posactual; /// Indica la posición en el combobox que está seleccionada. Se usa para hacer saves en caso de modificaciones.
 private:
     void pintar(QString idtipoiva="");
@@ -43,8 +42,6 @@ public:
     fpagoview(empresa *, QWidget *parent = 0, const char *name = 0);
     ~fpagoview();
 private slots:
-    virtual void s_setModificado() {m_modificado=TRUE;};
-    virtual void s_releaseModificado() {m_modificado=FALSE;}
     virtual void cambiacombo(int);
     virtual void s_saveFPago();
     virtual void s_newFPago();

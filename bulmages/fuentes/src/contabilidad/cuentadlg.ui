@@ -9,13 +9,13 @@
             <x>0</x>
             <y>0</y>
             <width>634</width>
-            <height>351</height>
+            <height>407</height>
         </rect>
     </property>
     <property name="caption">
         <string>Cuenta</string>
     </property>
-    <grid>
+    <vbox>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
@@ -25,9 +25,9 @@
         <property name="spacing">
             <number>6</number>
         </property>
-        <widget class="QLayoutWidget" row="1" column="0">
+        <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>Layout14</cstring>
+                <cstring>layout39</cstring>
             </property>
             <hbox>
                 <property name="name">
@@ -37,11 +37,33 @@
                     <number>0</number>
                 </property>
                 <property name="spacing">
-                    <number>6</number>
+                    <number>0</number>
                 </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image0</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton4</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                </widget>
                 <spacer>
                     <property name="name">
-                        <cstring>Spacer1</cstring>
+                        <cstring>spacer2</cstring>
                     </property>
                     <property name="orientation">
                         <enum>Horizontal</enum>
@@ -51,65 +73,14 @@
                     </property>
                     <property name="sizeHint">
                         <size>
-                            <width>205</width>
-                            <height>0</height>
+                            <width>291</width>
+                            <height>21</height>
                         </size>
                     </property>
                 </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>botonaceptar</cstring>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>NoFocus</enum>
-                    </property>
-                    <property name="text">
-                        <string>Aceptar</string>
-                    </property>
-                    <property name="accel">
-                        <string></string>
-                    </property>
-                    <property name="autoDefault">
-                        <bool>false</bool>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>PushButton2_2</cstring>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>NoFocus</enum>
-                    </property>
-                    <property name="text">
-                        <string>Borrar</string>
-                    </property>
-                    <property name="accel">
-                        <string></string>
-                    </property>
-                    <property name="autoDefault">
-                        <bool>false</bool>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>PushButton2</cstring>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>NoFocus</enum>
-                    </property>
-                    <property name="text">
-                        <string>Cancelar</string>
-                    </property>
-                    <property name="accel">
-                        <string></string>
-                    </property>
-                    <property name="autoDefault">
-                        <bool>false</bool>
-                    </property>
-                </widget>
             </hbox>
         </widget>
-        <widget class="QTabWidget" row="0" column="0">
+        <widget class="QTabWidget">
             <property name="name">
                 <cstring>TabWidget2</cstring>
             </property>
@@ -1296,8 +1267,66 @@
                 </widget>
             </widget>
         </widget>
-    </grid>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>Layout14</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>205</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>PushButton2</cstring>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string>Cerrar</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
 </widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="1201">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000478494441545885a5974f68db7614c73f322ea8e0817cd3afb79fd9c585049adbda530bbbb497cda587958ec1d2edd2ec30dc9c4a3b68dac30861978cb1516f8ca53d2cad776a2f250c06492fa30177b56efae530ac400d364460c104dae167299263d9f9f320bc3cf3937eef7df5d17b3f196ecb051f2881e77b8892381057662b1143735bae316dfd51e262fc639eafcc5622f7b59b9bccb4eba7f9623ac087d11874a6d2922cdc5b60e3f70dd49e42be27c72a33ed7ea3f15405405fa4fa0a00d553d8451bd5536c343650a18e8fab4c7152a695d94ad4697508fa01c2d2c9cc7f391fef43e3e706b22c517bead8ca4c540040f515a224b87def36cffe7846dae63f4f25f353e358ca4c66001096c0eb7bc8b264921d46992bd7af44ce3f4e46995c0512fafb3a563d353181c3286362b2f4700942f4fd5bae91cb0064e91f95ffd0c90c95999b99a376ad863005aaabe8b43a9c993d13153cdfcb348938862cfd27b5200c08c20067d7e1d627b778fcf231008549f4e393d07f52934549e007d8a68df2158bf545dc2dd7288c569ea69f1263e93faa9d9d394bf562954138c0d97512c0290d15c8a5df9f4eff61cd322d023fe0c1570f78f1f20590330bd2f45ba6c5c56b17999b992308032842fb4dfbc89b9b9838bbfaf5537dc5427d81cdad4d636c1f8817d9a68dea2a8429b873ef8ea6b7a77432044824cfdf3c9fbaf9dccc1cd573557d7d5f212dad68ee2c00f47b3bdcdcf11c442870f61cecd066fe8b796c6c54a00ea54c10061080da53acde5f4de81f3b0b2ab395e8ed5f6f71ba8edefc9d83382d50efb4223bfe4ea24cb954e6f2c79793f73a4f195994faf7b2ccd03ff63c00684aff13a83dc58dcf6e24375a5e5986109cbe8340a0761584fa710d1870ee837310ea8ad3ca54dfaf6262a27a2a43fff8590094cd32ce9ec3cdf99b44513247300c23f9bfbe58479624ed6e1b610a7add9e6e5ac3c71654036449571cfbd5fbab345f3633f26718a8cc56a28d5f37509ec20eed6433cff31096c84de6faa7d713e5e24a39a5cf0de6a9543c427fbc6f2143bfaf9fb51338c906c212d0070680a77d1445c9df93df9ea01c4573bd993c6b005996d97884fe388942baf75ba185b3ebb0585fd4150fc0eb7b608df881568601743a1d00961e2ed15c6fb2f2cb0acdf566323d554fb17a374b7f9a81422cffd31f9fa27c45d92c27d5f7767a58a1457ba78d155a63e3abb5abd4aed5909664f9db65d6be5f4b14887d9afed1be5348d35f0ecb9aeea1f5833edb3bdb9c0e4eb3bdb33d368ea79cea2a44a8418c2b9f447fac44519404ee966b54ceef1f9da228e2f59faf93c5ed7fdbb95e162584c3d1ed2bee7e73572b3285fe0367c2349d866124c93c6a3c421625dbefb60ff8c60f0d2e7d7869bff2a2be26f336e4d03ff14c182fc687b4326b8d356459e2f5f6a7645c79ba99a53b5f1efd87fe2e48677ee1fc858c324052b9ea2a56be5ba1f6516d9ffe31bdff48df05a331ec9f6663655efdfd8afad775ec929da13eaff71fe9bb60d4a7cff579caa43b601efd696fb82d3793d949bf7ad3ccc496666a74fdd833e149e2cdad4dc36db946da4f5aff3f3e4f81d62c34a6640000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="982">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000039d494441545885bd965f685b751cc53f911676c14103561ad8c0807db030b0990f6dd940c181d0ed4550680683b54f557cf0c5a7214cebd39e27082922742f0a7b18eba33274ed406902adcd6483a4ace54653498695dc6003c787dfef3637c96dfe6efbc2e5e4e626fcce39f7fcbedf1f9238ee5adb94298b3dddbbcad1a12471ece2f6eaba2aff19748b3e999254d2ce6004365b176a5bff18d87ee2b3925494fb621d285907d2ae2429e74a72b5db1781b55e1db024e4367def4a2aeacfe7ea805f25fb1ad6361b59e48a928a8d4e7426d0af03f635a8d2749f93e4eaaf208197daee93336d9fb6d630781e1085f4c332fc0dcb3facc3bf168760f9fefaab7a2235d870dcd57306fcb2af41764b2a6de0eeba71e9cb9b77059cd5f3c840f36ed8c89a0f3ffeea5a12ae74535d1238ce81eb931d5858fc745a7a14e890d689a003bd67603e027b19f82211fa17ef1070c0fb300a0f1f50fe28c2cc6f90de2ac324ac6f9539c1ecd1efdb1258df0a59fc1c50034e859038046718484671bca75083680df8364262244afa31cc9c895265b53b023341071e2cc310709f3aee65e0f3445df9b0555e7e4ab96a88166a06b3bfdc22310ee9c71ed7ba7580a003d30b7075a5ee808f6319f82c11aebc06b11ab09862227919f290187758ead681960c4c5f863752c6817b6601ef1eb093c1bb1409559e5f4cc19505f2bb1ec421bbeb0d9081a013536601670af0c08156e59fa4885f598002c44f3b508089d34e4306faee03959f52d207a87211e93d547a17e96de49e439a42eead94e907b619e5dc8a4535f481ee33d054ce3b0b303412ae7ce43562c90528436c14d88778ccb1c800190894970c4f7bbe0aeced90bf94802814cac02814f60de6f719300360d27e1092f62ac4ed7dfc8f0cd90b0962511a9d18a5cf3ed04179e1c27cdd811a64ab30f17b86ec79ebc47edd89601fe86d16cc8d4817916ce06403a7db2be6f9f72bd2eb68fb14d218d22b482fa38d37edec28b6ce82ae7741e5abf743d35eba6dd25eb103c8fd2e258da18d11b3f8da101268fbfa8da35d71a3db69d8721e589c6c547ec72af74f42fe145c5e31caede29a9b1fdc01bf4a57278df23b56b95ddc77c03f13e6be4919e573c923e54738f079e0d176a3f26607fc13d1cf6a501ee6407f7d607cc2e070600a7a8003e503e0a4c5f3ad7da0f04cfa805ffefc3f04c7013c889e040e2c96317d60bfde07624d7d20a2c00135a4b4f4f52ad7986589554e304b9567731ff938f296a48db604229108c0d90e3ef45d1d09bc88fa1f6e5069efc2da00370000000049454e44ae426082</data>
+    </image>
+</images>
 <connections>
     <connection>
         <sender>codigo</sender>
@@ -1312,12 +1341,6 @@
         <slot>setFocus()</slot>
     </connection>
     <connection>
-        <sender>botonaceptar</sender>
-        <signal>clicked()</signal>
-        <receiver>cuentadlg</receiver>
-        <slot>aceptar()</slot>
-    </connection>
-    <connection>
         <sender>PushButton2</sender>
         <signal>clicked()</signal>
         <receiver>cuentadlg</receiver>
@@ -1328,6 +1351,18 @@
         <signal>returnPressed()</signal>
         <receiver>cuentadlg</receiver>
         <slot>codigo_return()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1_2_2</sender>
+        <signal>clicked()</signal>
+        <receiver>cuentadlg</receiver>
+        <slot>saveAccount()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton4</sender>
+        <signal>clicked()</signal>
+        <receiver>cuentadlg</receiver>
+        <slot>deleteAccount()</slot>
     </connection>
 </connections>
 <tabstops>
@@ -1359,12 +1394,13 @@
     <tabstop>web</tabstop>
     <tabstop>coments</tabstop>
     <tabstop>PushButton2</tabstop>
-    <tabstop>botonaceptar</tabstop>
 </tabstops>
 <slots>
     <slot>cambiapadre(const QString &amp;)</slot>
     <slot>codigo_return()</slot>
-    <slot>aceptar()</slot>
+    <slot>close()</slot>
+    <slot>deleteAccount()</slot>
+    <slot>saveAccount()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

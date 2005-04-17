@@ -18,11 +18,11 @@
 
 /** El constructor de la clase prepara las variables globales y llama a la función pintar
   */
-fpagoview::fpagoview(empresa *emp, QWidget *parent, const char *name) : fpagodlg(parent, name) {
+fpagoview::fpagoview(empresa *emp, QWidget *parent, const char *name) : fpagodlg(parent, name) , dialogChanges(this) {
     empresaactual=emp;
     conexionbase = emp->bdempresa();
-    m_curfpago = NULL;
-    s_releaseModificado();    
+    m_curfpago = NULL;  
+    dialogChanges_cargaInicial(); 
     pintar();
 }// end fpagoview
 
@@ -66,7 +66,7 @@ void fpagoview::pintar(QString idfpago) {
 void fpagoview::mostrarplantilla(int pos) {
     fprintf(stderr,"mostrarplantilla\n");
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (m_modificado) {
+    if (dialogChanges_hayCambios()) {
     	    if ( QMessageBox::warning( this, "Guardar Forma de Pago",
 		"Desea guardar los cambios.",
 		QMessageBox::Ok ,
@@ -83,16 +83,16 @@ void fpagoview::mostrarplantilla(int pos) {
         m_tipoPlazoPrimerPago->setText(m_curfpago->valor("tipoplazoprimerpago",m_posactual));
         m_plazoEntreReciboFPago->setText(m_curfpago->valor("plazoentrerecibofpago",m_posactual));
         m_tipoPlazoEntreReciboFPago->setText(m_curfpago->valor("tipoplazoentrerecibofpago",m_posactual));
-	/// Como está recién puesto quitamos el flag de modificado
-	s_releaseModificado();	
+	/// Comprobamos cual es la cadena inicial.
+	dialogChanges_cargaInicial();
     }// end if
 }// end mostrarplantilla
 
 
-/*****************************************************
+/**
   Esta funcion sirve para hacer el cambio sobre un
   centro de coste .
-  ****************************************************/
+  */
 void fpagoview::cambiacombo(int) {
     fprintf(stderr,"cambiado el combo\n");
     mostrarplantilla();
@@ -105,7 +105,7 @@ void fpagoview::s_saveFPago() {
     QString idfpago = m_curfpago->valor("idfpago",m_posactual);
     QString query = "UPDATE fpago SET nomfpago='"+m_nomFPago->text()+"', nplazosfpago= "+m_nPlazosFPago->text()+" , plazoprimerpagofpago = "+m_plazoPrimerPagoFPago->text()+", plazoentrerecibofpago="+m_plazoEntreReciboFPago->text()+" WHERE idfpago="+m_curfpago->valor("idfpago", m_posactual);
     conexionbase->ejecuta(query);
-    s_releaseModificado();    
+    dialogChanges_cargaInicial();    
     pintar(m_curfpago->valor("idfpago", m_posactual));
 }// end s_saveFPago
 
@@ -115,7 +115,7 @@ void fpagoview::s_saveFPago() {
   */
 void fpagoview::s_newFPago() {
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (m_modificado) {
+    if (dialogChanges_hayCambios()) {
     	    if ( QMessageBox::warning( this, "Guardar Forma de Pago",
 		"Desea guardar los cambios.",
 		QMessageBox::Ok ,
@@ -158,7 +158,7 @@ void fpagoview::s_deleteFPago() {
 /** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo */
 void fpagoview::close() {
     /// Si se ha modificado el contenido advertimos y guardamos.
-    if (m_modificado) {
+    if (dialogChanges_hayCambios()) {
     	    if ( QMessageBox::warning( this, "Guardar Forma de Pago",
 		"Desea guardar los cambios.",
 		QMessageBox::Ok ,

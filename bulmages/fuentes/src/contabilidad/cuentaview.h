@@ -27,14 +27,16 @@
 #include <qcheckbox.h>
 #include <qradiobutton.h>
 
+
 #include "postgresiface2.h"
 #include "funcaux.h"
-
+#include "dialogchanges.h"
 /** *@author Tomeu Borrás Riera */
 
 class empresa;
 
-class cuentaview : public cuentadlg  {
+
+class cuentaview : public cuentadlg , dialogChanges  {
 Q_OBJECT
 public:
 empresa *empresaactual;
@@ -50,10 +52,12 @@ public:
   int nuevacuenta(QString, int);
   void cuentanueva(QString);
   int cargacuenta(int);
-  void cambiapadre( const QString &);
+  void cambiapadre( const QString &);  
+  
 public slots:
-  void codigo_return();
-  void aceptar();
-  void accept();
+  virtual void codigo_return();
+  virtual void close();
+  virtual void saveAccount();
+  virtual void deleteAccount();
 };
 #endif

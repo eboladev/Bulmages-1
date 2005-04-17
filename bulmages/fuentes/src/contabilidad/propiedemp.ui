@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>583</width>
-            <height>386</height>
+            <width>619</width>
+            <height>396</height>
         </rect>
     </property>
     <property name="caption">
@@ -21,13 +21,13 @@
     <property name="acceptDrops">
         <bool>false</bool>
     </property>
-    <grid>
+    <vbox>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
-        <widget class="QLayoutWidget" row="1" column="0">
+        <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>layout19</cstring>
+                <cstring>layout5</cstring>
             </property>
             <hbox>
                 <property name="name">
@@ -39,9 +39,20 @@
                 <property name="spacing">
                     <number>0</number>
                 </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                </widget>
                 <spacer>
                     <property name="name">
-                        <cstring>spacer2</cstring>
+                        <cstring>spacer2_2</cstring>
                     </property>
                     <property name="orientation">
                         <enum>Horizontal</enum>
@@ -51,30 +62,14 @@
                     </property>
                     <property name="sizeHint">
                         <size>
-                            <width>281</width>
-                            <height>21</height>
+                            <width>441</width>
+                            <height>20</height>
                         </size>
                     </property>
                 </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>PushButton1</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Aceptar</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>PushButton1_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Cancelar</string>
-                    </property>
-                </widget>
             </hbox>
         </widget>
-        <widget class="QTabWidget" row="0" column="0">
+        <widget class="QTabWidget">
             <property name="name">
                 <cstring>TabWidget2</cstring>
             </property>
@@ -85,393 +80,206 @@
                 <attribute name="title">
                     <string>Datos Fiscales</string>
                 </attribute>
-                <widget class="QLineEdit">
+                <grid>
                     <property name="name">
-                        <cstring>lineCIF</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>451</x>
-                            <y>20</y>
-                            <width>89</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>14</x>
-                            <y>50</y>
-                            <width>64</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>Tipo de vía:</string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2_2_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>14</x>
-                            <y>80</y>
-                            <width>98</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>Nombre de la vía:</string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>14</x>
-                            <y>20</y>
-                            <width>50</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>Nombre:</string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>lineNombreVia</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>120</x>
-                            <y>80</y>
-                            <width>420</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2_2_4</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>134</x>
-                            <y>120</y>
-                            <width>54</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>Escalera:</string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>lineEscalera</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>193</x>
-                            <y>119</y>
-                            <width>38</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>linePiso</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>290</x>
-                            <y>120</y>
-                            <width>42</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>linePuerta</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>401</x>
-                            <y>120</y>
-                            <width>41</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>lineCodPostal</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>496</x>
-                            <y>120</y>
-                            <width>44</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="maxLength">
-                        <number>5</number>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2_2_3_2_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>334</x>
-                            <y>160</y>
-                            <width>55</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>Provincia:</string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2_2_6</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>244</x>
-                            <y>120</y>
-                            <width>30</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>Piso:</string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2_2_5</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>344</x>
-                            <y>120</y>
-                            <width>41</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>Puerta:</string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2_2_7</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>454</x>
-                            <y>120</y>
-                            <width>28</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>C.P.:</string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>lineTipoVia</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>94</x>
-                            <y>50</y>
-                            <width>89</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>420</x>
-                            <y>20</y>
-                            <width>24</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>CIF:</string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>lineProvincia</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>400</x>
-                            <y>160</y>
-                            <width>140</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>lineNumeroVia</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>82</x>
-                            <y>120</y>
-                            <width>40</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>lineMunicipio</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>82</x>
-                            <y>160</y>
-                            <width>230</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>linePais</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>80</x>
-                            <y>200</y>
-                            <width>262</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2_2_3_2_3</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>14</x>
-                            <y>200</y>
-                            <width>30</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>País:</string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2_2_3_2</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>14</x>
-                            <y>160</y>
-                            <width>57</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>Municipio:</string>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2_2_3</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>14</x>
-                            <y>120</y>
-                            <width>50</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string>Número:</string>
-                    </property>
-                </widget>
-                <widget class="QLineEdit">
-                    <property name="name">
-                        <cstring>m_nomEmpresa</cstring>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>80</x>
-                            <y>20</y>
-                            <width>340</width>
-                            <height>21</height>
-                        </rect>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QLineEdit" row="0" column="11" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>lineCIF</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="1" column="0">
+                        <property name="name">
+                            <cstring>textLabel2_2_2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Tipo de vía:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="2" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>textLabel2_2_2_2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Nombre de la vía:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="0" column="0">
+                        <property name="name">
+                            <cstring>textLabel2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Nombre:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="2" column="2" rowspan="1" colspan="11">
+                        <property name="name">
+                            <cstring>lineNombreVia</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="3" column="3">
+                        <property name="name">
+                            <cstring>textLabel2_2_2_4</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Escalera:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="3" column="4">
+                        <property name="name">
+                            <cstring>lineEscalera</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="3" column="6">
+                        <property name="name">
+                            <cstring>linePiso</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="3" column="9" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>linePuerta</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="3" column="12">
+                        <property name="name">
+                            <cstring>lineCodPostal</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                        <property name="maxLength">
+                            <number>5</number>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="4" column="7" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>textLabel2_2_2_3_2_2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Provincia:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="3" column="5">
+                        <property name="name">
+                            <cstring>textLabel2_2_2_6</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Piso:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="3" column="8">
+                        <property name="name">
+                            <cstring>textLabel2_2_2_5</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Puerta:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="3" column="11">
+                        <property name="name">
+                            <cstring>textLabel2_2_2_7</cstring>
+                        </property>
+                        <property name="text">
+                            <string>C.P.:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="1" column="1" rowspan="1" colspan="3">
+                        <property name="name">
+                            <cstring>lineTipoVia</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="0" column="10">
+                        <property name="name">
+                            <cstring>textLabel2_2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>CIF:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="4" column="9" rowspan="1" colspan="4">
+                        <property name="name">
+                            <cstring>lineProvincia</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="3" column="1" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>lineNumeroVia</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="4" column="1" rowspan="1" colspan="6">
+                        <property name="name">
+                            <cstring>lineMunicipio</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="5" column="1" rowspan="1" colspan="7">
+                        <property name="name">
+                            <cstring>linePais</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="5" column="0">
+                        <property name="name">
+                            <cstring>textLabel2_2_2_3_2_3</cstring>
+                        </property>
+                        <property name="text">
+                            <string>País:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="4" column="0">
+                        <property name="name">
+                            <cstring>textLabel2_2_2_3_2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Municipio:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="3" column="0">
+                        <property name="name">
+                            <cstring>textLabel2_2_2_3</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Número:</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit" row="0" column="1" rowspan="1" colspan="9">
+                        <property name="name">
+                            <cstring>m_nomEmpresa</cstring>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                    </widget>
+                </grid>
             </widget>
             <widget class="QWidget">
                 <property name="name">
@@ -666,25 +474,69 @@ yyyy --&gt; Dígitos de cuenta.</string>
                 </grid>
             </widget>
         </widget>
-    </grid>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout19</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>281</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>PushButton1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Cerrar</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="597">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000021c494441545885bd973d72c2301085df7aa83cae33a8d501d20777dc20356d6e909a6132a973035ad71c203374e6001c40ad98d41eb74a8394952c81c026db98452b79f5f6d38f491d15d001a800dd69884afcab5fe84e7b8dffed933aaa9c4c4da49da6882f2e646a50c1d8c152edf2599a7a519b66d798fdf73e8c27dd6962f1032528c180c9a9a17c96086dfbb5c5f26549e7e4c3fe94c34034d398af8e6a90c0dbfb1bf6df7bd3ec1a884ad0ad0c64cd3c470900f8fcf8c4ea7545e7b250c0085d6320dbe74a28f5f77bbd59a3d9359c8901539c8158cdee52a2573d4a59864af0d560ce803a06eccbafd62c478952963125a2e317a2127ce64e1e3bb35b7d9b849412bdea5d12a9f882add3c976386bbc0cacdd70252c0377d19ff2f9aae87f7a944fa5c7023ad063cf0266a7eee4f9017328c6d63ce6739b5773cf8f31309afe1403a10202c26ec7ee7d4538937a51db2573bf1209053486f11e03f5a20ed7edcd4a84db728201173fe333e7d4ae376b00e03bd8d599c7ce845c065c40f954a2ffe96f56227520054b90c2fe8e017554949344eecc434bf59fa5d6af4d8297c30d06010d3df8ff92e94e63592d3d0563f701c88534bc23dfc9c65a5886e87da03db4c43b59259452ee09f8e77eae45ee07c93be14089b1163913bcfbc080eef6d0120773ac45c036510612379dc9d40895a0f6d07a545e7ba692690f2de5c48549241998c2cf51eea1df86390ce57e1b3e4c8949be0bc628f10bc0d51fb64d01cce90000000049454e44ae426082</data>
+        <data format="PNG" length="590">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000215494441545885bd973d72c2301085df7a72004f4a7772499f0677dc211d5d0e9013304c8613e400eed27184ccd09923505a9d4bc637d83448b3965720b0c93666d14a5ebdfdf463ea4e1dd003c801db5b98dcfcab9fd9de0e1affdba7eed4a564ca4a3bcd119f5dc9949183dd60b1f6625170b5acb8ded77cf83d84f1647b4b227ea4044518e0941a168b02a1fd7cff60f5b6a24bf2617f4a6140cd54f3bb53374a60fdb9c6e1f7c0f5be86c90dddcb40d2cc53940080ddd70e1fef1f74290b058cd02d06927da944dbb6fef766bb41bdaf251323a624035acd1e52825b0695142a2157035f00f50cb897dfac598a125492a6843a7e66722367eee57133bbd777499465096ed927118bcfc43a9d6d877326cb20da592ae1187888fe982f57059f19f44a0316d0839e7b1608537d017c36b5e69a2f4df3b5b36012fd310642050c8cdb8efdfbb27026d5b2724be67125220a588ce3070c54cb2a5cb7772b116ecb11067cfc8b9cb9a476b3dd0080dcc16ece5c3b135219f001f44ae033dfad44ec400a962085fd3d03dda9a394245267ae29a1f57f89ad5f97842c871f0c061676f4ff35b3bdc52a5f0d14d4ee03289605cb8e72279b6a6119d4fb40736c066f734ab46deb9fc0f0dc4f35e57e10bd138e94986aca9930b80f8ce86e8e0d4930a79a0236ab0c446e3ab3a9112a41cdb1195079eb194ba63936941217261165600e3f45b9a77e1ba63094fa6df8342566f92e98a2c41f89f11bf667bac5a50000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="1110">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000041d494441545885b597bf6b1c4714c73f2b5630d78dfe04431ad9a8d05d38905cc590c6557c468d9009f8ec546ec2714d8c92e290210811028640d0090c86149695ce81147621ee0e0e6fe5c82ed569afdb811cec800636c5dc8e76eff759e4354f6f3537f3f63b9f79f3d60bba0118c0076d34c2172371a95c4a1858d00dbc59e31789fdf4e1245f2a9792a01d4c4c66d6ef67793f1b606038069ba91492dd67bb1cbf38461985f4e5586566cd371ccf5400ec8f94560028ad5c7cdcb4c95c47197f5aa6a5722939eb9ea1b546089b4cf5bb6aba0ecda326524894519fadcc5405b26fbcf76c8fd77fbe266bd58799647e6f7e9632d31900841068ad9105c9349b47999d873bc9a77f3ee59499a880a35fdb58c56a6a02f328231034f61a60b0f377036f220390a77f58feb9931928535c2b52d9aa20b0c99c75cfb855be952c69a37345228d214fff754d1b8d369a9eeab17d6f9b37a76f00589a463f0647ff754dfa12ddd75601a3a8d7ea04edc05b1a7ef32cfdf88ca57f51bbb97693cdaf36894d4ca8420738fe408189f49bd9f42f62baafa93daed139edd8785c1dc8d20f507950a1b856740a7dfcf071e185058250858055f649ed09ad76cb1b5b07d2410241a4230a1478fae353bb77b1b2c9a09148da1fda33172fae15595d5f75f44b61159d7817000873b578f86f8830829ee9218ca0fab8ea929b47196d346850978ac60f0d47ffd8bba0542e25adbf5b84fdd0ca16872ef3ac8ffa11f870f7de5dfbbc3f5919e94bfbbc2073f48fed07004be9a53d2a3bdfeeb889f60ff6c140a423b728c66e574cccfac63a183b695699d52f56ddf665e91f7f170caca77b3caa3e2249dc3d82e779eeef5abd86f425a10e2950b0e73b536e6facde40fad2dd01ca58f9df9dbecbc99f63a0542e25c72f8e51914298ab64c230440a393199ed07db16dcfe609b2e152c63df787970872c8fd23fc2809bc417843abcda432141431cc5a001c148321b5f6ed079dfa1b255717b3de287e84f9358cad67e8c65a05eab9324097114db8a28c8f9388a09c390388ab9b8b800a0b1d7e0e4d509477f1c71f2eac4dd9e2a5634ea79fab30c2ca5f21ffe7a68e9ce58afd7833e9cf7cea13f3ebe5fb94f65abc28a5861ffe77d9e1f3cb7ca0d2ae830fd637b42477f4af7c02215b9c1e7e63c572fb2b1361aad352bfe0a918edc9ba70c8ca33fc740d00ebcd2e655eb9424096fff7a4b6c620a7e81c84413bdf4a5dbd3c844ecfeb46b599841ff484f98a5d3f33c97cc61f310e94b7aa637e29bbf35b9f3f51d8411eef604dcb99f46ffd49e301d8c81ac322f9b2f9142da1e314375da80a6db99ad7c93e89ffbbb209bf9edcddb3965d2a38b0f5a6b0e7e39a0f24de58afe31b57fa1ef82e118aebad95499cefb0eb5ef6beeffc3e77fb8f62ff45d30ecb37dfd2465e6a53ff55ed00d72995df7ab37cb4c6a59a686c77bad766b6e05fe0fff1f5b27780aa6f019a00000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
-    <connection>
-        <sender>PushButton1</sender>
-        <signal>pressed()</signal>
-        <receiver>propiedemp</receiver>
-        <slot>accept()</slot>
-    </connection>
     <connection>
         <sender>PushButton1_2</sender>
         <signal>pressed()</signal>
         <receiver>propiedemp</receiver>
         <slot>reject()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1_2_2</sender>
+        <signal>clicked()</signal>
+        <receiver>propiedemp</receiver>
+        <slot>accept()</slot>
     </connection>
 </connections>
 <slots>
@@ -693,5 +545,5 @@ yyyy --&gt; Dígitos de cuenta.</string>
     <slot>boton_usatotal()</slot>
     <slot>boton_totalaus()</slot>
 </slots>
-<layoutdefaults spacing="6" margin="11"/>
+<layoutdefaults spacing="4" margin="4"/>
 </UI>

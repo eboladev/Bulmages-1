@@ -10,7 +10,8 @@ HEADERS += postgresiface2.h \
 	   logpass.h \
 	   abreempresaview.h \
 	   calendario.h \
-	   qmcdatenav.h
+	   qmcdatenav.h \
+	   dialogchanges.h
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp  \
@@ -18,7 +19,8 @@ SOURCES += postgresiface2.cpp \
 	   logpass.cpp \
 	   abreempresaview.cpp \
 	   calendario.cpp \
-	   qmcdatenav.cpp
+	   qmcdatenav.cpp \
+	   dialogchanges.cpp 
 IDLS += logpassbase.ui \
 	abreempresadlg.ui
 FORMS += logpassbase.ui \

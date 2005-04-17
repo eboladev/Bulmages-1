@@ -17,7 +17,7 @@
 #include "cuentaview.h"
 #include "empresa.h"
 
-cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int fl): cuentadlg(parent,name,fl) {
+cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int fl): cuentadlg(parent,name,fl) ,dialogChanges(this) {
    idcuenta=0;
    empresaactual = emp;
    conexionbase = emp->bdempresa();
@@ -134,51 +134,13 @@ void cuentaview::cambiapadre(const QString &cadena)  {
  * Lo que hace es recoger los datos del formulario y hacer una insercion
  * o una modificacion de la tabla de cuentas.
  */
-void cuentaview::aceptar() {
-   fprintf(stderr,"cuentaview::aceptar()\n");
-   QString codigocuenta;
-   int idpadre=0;
-   cursor2 *cursoraux;   
-   // Comprobamos que el campo codigopadre tiene un numero de cuenta y
-   // calculamos el id correspondiente consultando en la base de datos.
-   codigocuenta = codigopadre->text();
-   if (codigocuenta!="") {
-      conexionbase->begin();
-      cursoraux = conexionbase->cargacuenta(0,codigocuenta);
-      conexionbase->commit();
-      idpadre = atoi(cursoraux->valor("idcuenta").ascii());
-      delete cursoraux;
-   }// end if
-   // Recogemos el valor de tipocuenta
-   int tipocuenta=0;
-   if (cuentaactivo->isChecked())
-      tipocuenta= 1;
-   else if (cuentapasivo->isChecked())
-      tipocuenta = 2;
-   else if (cuentaneto->isChecked())
-      tipocuenta = 3;
-   else if (cuentaingreso->isChecked())
-      tipocuenta = 4;
-   else if (cuentagasto->isChecked())
-      tipocuenta = 5;
-   else
-      tipocuenta = 0;
-   // Si se trata de una modificacion modificamos y si se trata de
-   // una insercion insertamos.
-   if (idcuenta != 0) {
-      conexionbase->begin();
-      conexionbase->modificacuenta(idcuenta,descripcion->text() ,codigo->text(), imputacion->isChecked(), bloqueada->isChecked(),idgrupos[combogrupos->currentItem()],TRUE, nombreent->text(), cif->text(), direccion->text(), cp->text(), telf->text(), coments->text(), banco->text(),  email->text(),  web->text(), tipocuenta , nodebe->isChecked(), nohaber->isChecked());
-      conexionbase->commit();
-   } else {
-      conexionbase->begin();
-      fprintf(stderr,"Hacemos la llamada a Nueva cuenta \n");
-      conexionbase->nuevacuenta( descripcion->text(), codigo->text(), idpadre, idgrupos[combogrupos->currentItem()],nombreent->text(),  cif->text(), direccion->text(), cp->text(), telf->text(),coments->text(), banco->text(), email->text(), web->text(), tipocuenta, nodebe->isChecked(), nohaber->isChecked() );
-      fprintf(stderr,"Buscamos el valor mï¿½imo\n");
-      QString query = "SELECT max(idcuenta) AS id from cuenta";
-      cursoraux = conexionbase->cargacursor(query, "maxidcuenta");
-      idcuenta = atoi(cursoraux->valor("id").ascii());
-      conexionbase->commit();
-      delete cursoraux;
+void cuentaview::close() {
+   if (dialogChanges_hayCambios())  {
+    	    if ( QMessageBox::warning( this, "Guardar Cuenta",
+		"Desea guardar los cambios.",
+		QMessageBox::Ok ,
+		QMessageBox::Cancel ) == QMessageBox::Ok)   
+		   	saveAccount();
    }// end if
    // Liberamos memoria y terminamos.
    done(1);
@@ -297,6 +259,11 @@ int cuentaview::cargacuenta(int idcuenta1){
   email->setText(cursorcuenta->valor("emailent_cuenta"));
   web->setText(cursorcuenta->valor("webent_cuenta"));
   delete cursorcuenta;
+  
+  
+  // Estamos probando la nueva forma de almacenar cambios
+  dialogChanges_cargaInicial();
+  
   return(0);
 }// end cargacuenta
 
@@ -334,5 +301,75 @@ void cuentaview::codigo_return() {
   codigo->setText(cod);
 }// end codigo_return
 
-void cuentaview::accept() {
-}// end accept
+
+
+void cuentaview::saveAccount() {
+   fprintf(stderr,"cuentaview::aceptar()\n");
+   QString codigocuenta;
+   int idpadre=0;
+   cursor2 *cursoraux;   
+   // Comprobamos que el campo codigopadre tiene un numero de cuenta y
+   // calculamos el id correspondiente consultando en la base de datos.
+   codigocuenta = codigopadre->text();
+   if (codigocuenta!="") {
+      conexionbase->begin();
+      cursoraux = conexionbase->cargacuenta(0,codigocuenta);
+      conexionbase->commit();
+      idpadre = atoi(cursoraux->valor("idcuenta").ascii());
+      delete cursoraux;
+   }// end if
+   // Recogemos el valor de tipocuenta
+   int tipocuenta=0;
+   if (cuentaactivo->isChecked())
+      tipocuenta= 1;
+   else if (cuentapasivo->isChecked())
+      tipocuenta = 2;
+   else if (cuentaneto->isChecked())
+      tipocuenta = 3;
+   else if (cuentaingreso->isChecked())
+      tipocuenta = 4;
+   else if (cuentagasto->isChecked())
+      tipocuenta = 5;
+   else
+      tipocuenta = 0;
+   // Si se trata de una modificacion modificamos y si se trata de
+   // una insercion insertamos.
+   if (idcuenta != 0) {
+      conexionbase->begin();
+      conexionbase->modificacuenta(idcuenta,descripcion->text() ,codigo->text(), imputacion->isChecked(), bloqueada->isChecked(),idgrupos[combogrupos->currentItem()],TRUE, nombreent->text(), cif->text(), direccion->text(), cp->text(), telf->text(), coments->text(), banco->text(),  email->text(),  web->text(), tipocuenta , nodebe->isChecked(), nohaber->isChecked());
+      conexionbase->commit();
+   } else {
+      conexionbase->begin();
+      fprintf(stderr,"Hacemos la llamada a Nueva cuenta \n");
+      conexionbase->nuevacuenta( descripcion->text(), codigo->text(), idpadre, idgrupos[combogrupos->currentItem()],nombreent->text(),  cif->text(), direccion->text(), cp->text(), telf->text(),coments->text(), banco->text(), email->text(), web->text(), tipocuenta, nodebe->isChecked(), nohaber->isChecked() );
+      fprintf(stderr,"Buscamos el valor mï¿½imo\n");
+      QString query = "SELECT max(idcuenta) AS id from cuenta";
+      cursoraux = conexionbase->cargacursor(query, "maxidcuenta");
+      idcuenta = atoi(cursoraux->valor("id").ascii());
+      conexionbase->commit();
+      delete cursoraux;
+   }// end if
+   
+  // Estamos probando la nueva forma de almacenar cambios
+  dialogChanges_cargaInicial();   
+}// end saveAccount
+
+void cuentaview::deleteAccount() {
+    switch( QMessageBox::warning( this, "Borrar Cuenta",
+                                  "Se va a borrar la Forma de Pago,\n"
+                                  "Esto puede ocasionar pérdida de datos\n"
+                                  "Tal vez deberia pensarselo mejor antes\n"
+                                  "porque igual su trabajo se va a tomar por culo.",
+                                  QMessageBox::Ok ,
+                                  QMessageBox::Cancel )) {
+    case QMessageBox::Ok: // Retry clicked or Enter pressed
+        conexionbase->ejecuta("DELETE FROM fpago WHERE idfpago ="+QString::number(idcuenta));
+        done(1);
+        break;
+    case QMessageBox::Cancel: // Abort clicked or Escape pressed
+        break;
+    }// end switch
+}// end deleteAccount
+
+
+
