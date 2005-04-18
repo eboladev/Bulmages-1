@@ -41,7 +41,7 @@ void myplugin::inicializa(Bulmages01 *bges) {
     //El menu de empresa
     QPopupMenu *pPluginMenu = new QPopupMenu();
     pPluginMenu->setCheckable(true);
-    bges->menuBar()->insertItem("&Estadisticas",pPluginMenu);
+    bges->menuBar()->insertItem("&Estadisticas",pPluginMenu,-1,3);
     QAction *planCuentas = new QAction("Resumen Mensual", *estadisticasIcon, "&Resumen Mensual", 0, 0);
     planCuentas->setStatusTip("Resumen Mensual");
     planCuentas->setWhatsThis("Resumen Mensual");

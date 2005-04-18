@@ -68,7 +68,7 @@
     <message>
         <source>Balance</source>
         <comment>Informe: </comment>
-        <translation>Bilanz</translation>
+        <translation type="obsolete">Bilanz</translation>
     </message>
 </context>
 <context>
@@ -283,24 +283,6 @@ Enables/disables the full screen mode</source>
         <translation>FullScreen(new line)
 (new line)
 Enables/disables the full screen mode</translation>
-    </message>
-    <message>
-        <source>Corrector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Corrector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Muestra/Oculta el corrector</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Corrector
-
-Muestra/oculta el corrector</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>New Window</source>
@@ -733,20 +715,12 @@ Informacion sobre los autores de la aplicacion</source>
         <translation>Belegen umstellen </translation>
     </message>
     <message>
-        <source>Seguimiento de Cuentas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Seguimiento de Cuentas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Balance Gr&#xe1;fico</source>
-        <translation>DiagrammsBilanz</translation>
+        <translation type="obsolete">DiagrammsBilanz</translation>
     </message>
     <message>
         <source>&amp;Balance Gr&#xe1;fico</source>
-        <translation>&amp;DiagrammsBilanz</translation>
+        <translation type="obsolete">&amp;DiagrammsBilanz</translation>
     </message>
     <message>
         <source>Filtro</source>
@@ -806,11 +780,11 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Archivo Documental</source>
-        <translation>Kokumentales Archiv</translation>
+        <translation type="obsolete">Kokumentales Archiv</translation>
     </message>
     <message>
         <source>&amp;Archivo Documental</source>
-        <translation>&amp;Kokumentales Archiv</translation>
+        <translation type="obsolete">&amp;Kokumentales Archiv</translation>
     </message>
     <message>
         <source>Ejercicios</source>
@@ -831,10 +805,6 @@ Informacion sobre los autores de la aplicacion</source>
     <message>
         <source>&amp;Listados</source>
         <translation>&amp;Listen</translation>
-    </message>
-    <message>
-        <source>&amp;Estadistica</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Ventana</source>
@@ -885,10 +855,6 @@ Informacion sobre los autores de la aplicacion</source>
         <translation>Toggle full screen mode..</translation>
     </message>
     <message>
-        <source>Ver Corrector...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Plan de Cuentas</source>
         <translation type="unfinished"></translation>
     </message>
@@ -902,6 +868,26 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>&amp;Cobros y Pagos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipos de IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Tipos de IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CTipos de IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Formas de Pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Formas de Pago</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -959,13 +945,17 @@ Informacion sobre los autores de la aplicacion</source>
         <source>Fecha Final</source>
         <translation>Schlüssdatum</translation>
     </message>
+    <message>
+        <source>Kugar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DiarioPrintView</name>
     <message>
         <source>Libro Diario</source>
         <comment>Informe: </comment>
-        <translation>Journal</translation>
+        <translation type="obsolete">Journal</translation>
     </message>
 </context>
 <context>
@@ -1019,13 +1009,17 @@ Informacion sobre los autores de la aplicacion</source>
         <source>Imprimir</source>
         <translation>Drucken</translation>
     </message>
+    <message>
+        <source>Kugar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ExtractoPrintView</name>
     <message>
         <source>Extracto de Cuentas</source>
         <comment>Informe: </comment>
-        <translation>Kontoauszug</translation>
+        <translation type="obsolete">Kontoauszug</translation>
     </message>
 </context>
 <context>
@@ -1071,98 +1065,90 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
     <name>QmcDateNav</name>
     <message>
         <source>SEPTEMBER</source>
-        <translation>SEPTEMBER</translation>
+        <translation type="obsolete">SEPTEMBER</translation>
     </message>
     <message>
         <source>Sunday</source>
-        <translation>Sonntag</translation>
+        <translation type="obsolete">Sonntag</translation>
     </message>
     <message>
         <source>Monday</source>
-        <translation>Montag</translation>
+        <translation type="obsolete">Montag</translation>
     </message>
     <message>
         <source>Tuesday</source>
-        <translation>Dienstag</translation>
+        <translation type="obsolete">Dienstag</translation>
     </message>
     <message>
         <source>Wednesday</source>
-        <translation>Mittwoch</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation></translation>
+        <translation type="obsolete">Mittwoch</translation>
     </message>
     <message>
         <source>Saturday</source>
-        <translation>Sammstag</translation>
+        <translation type="obsolete">Sammstag</translation>
     </message>
     <message>
         <source>January</source>
-        <translation>Januer</translation>
+        <translation type="obsolete">Januer</translation>
     </message>
     <message>
         <source>February</source>
-        <translation>Februar</translation>
+        <translation type="obsolete">Februar</translation>
     </message>
     <message>
         <source>March</source>
-        <translation>März</translation>
+        <translation type="obsolete">März</translation>
     </message>
     <message>
         <source>April</source>
-        <translation>April</translation>
+        <translation type="obsolete">April</translation>
     </message>
     <message>
         <source>May</source>
-        <translation>Mai</translation>
+        <translation type="obsolete">Mai</translation>
     </message>
     <message>
         <source>June</source>
-        <translation>Juni</translation>
+        <translation type="obsolete">Juni</translation>
     </message>
     <message>
         <source>July</source>
-        <translation>Juli</translation>
+        <translation type="obsolete">Juli</translation>
     </message>
     <message>
         <source>August</source>
-        <translation>August</translation>
+        <translation type="obsolete">August</translation>
     </message>
     <message>
         <source>September</source>
-        <translation>September</translation>
+        <translation type="obsolete">September</translation>
     </message>
     <message>
         <source>October</source>
-        <translation>Oktober</translation>
+        <translation type="obsolete">Oktober</translation>
     </message>
     <message>
         <source>November</source>
-        <translation>November</translation>
+        <translation type="obsolete">November</translation>
     </message>
     <message>
         <source>December</source>
-        <translation>Dezember</translation>
+        <translation type="obsolete">Dezember</translation>
     </message>
 </context>
 <context>
     <name>Splash</name>
     <message>
         <source>BulmaG&#xe9;s</source>
-        <translation>BulmaGés</translation>
+        <translation type="obsolete">BulmaGés</translation>
     </message>
     <message>
         <source>v 0.4.3</source>
-        <translation>v 0.4.3</translation>
+        <translation type="obsolete">v 0.4.3</translation>
     </message>
     <message>
         <source>BULMAG&#xc9;S</source>
-        <translation>BULMAGÉS</translation>
+        <translation type="obsolete">BULMAGÉS</translation>
     </message>
     <message>
         <source>Comprobando nivel de combustible</source>
@@ -1216,6 +1202,18 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
         <source>Crackeando BulmaG&#xe9;s</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>BulmaCont</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>v 0.4.7</source>
+        <translation type="unfinished">v 0.4.7</translation>
+    </message>
+    <message>
+        <source>BULMACONT</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UIbloqFecha</name>
@@ -1239,20 +1237,16 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
 <context>
     <name>UImodelo347</name>
     <message>
-        <source>Saldos Acumulados Superiores a ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Importe</source>
         <translation></translation>
     </message>
     <message>
         <source>Imprimir</source>
-        <translation>Drucken</translation>
+        <translation type="obsolete">Drucken</translation>
     </message>
     <message>
         <source>Guardar</source>
-        <translation>Speichern</translation>
+        <translation type="obsolete">Speichern</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
@@ -1272,7 +1266,7 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Name</translation>
+        <translation type="obsolete">Name</translation>
     </message>
     <message>
         <source>CIF</source>
@@ -1283,8 +1277,20 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
         <translation>Einkäufe</translation>
     </message>
     <message>
-        <source>Recargar datos</source>
-        <translation></translation>
+        <source>Listado para el modelo 347</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deudor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acreedor</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context encoding="UTF-8">
@@ -1377,7 +1383,7 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
     </message>
     <message encoding="UTF-8">
         <source>Versión 0.4.3</source>
-        <translation>Versión 0.4.3</translation>
+        <translation type="obsolete">Versión 0.4.3</translation>
     </message>
     <message>
         <source>Autores</source>
@@ -1798,53 +1804,57 @@ Public License instead of this License.
         <source>Cerrar</source>
         <translation>Schliessen</translation>
     </message>
+    <message encoding="UTF-8">
+        <source>Versión 0.4.9</source>
+        <translation type="unfinished">Versión 0.4.9</translation>
+    </message>
 </context>
 <context>
     <name>abreempresadlg</name>
     <message>
         <source>Abrir Empresa</source>
-        <translation>Öffnen Unternehmen</translation>
+        <translation type="obsolete">Öffnen Unternehmen</translation>
     </message>
     <message>
         <source>Abrir Empresa</source>
         <comment>Sirve para seleccionar la empresa con la que se quiere trabajar</comment>
-        <translation>Öffnen Unternehmen</translation>
+        <translation type="obsolete">Öffnen Unternehmen</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Name</translation>
+        <translation type="obsolete">Name</translation>
     </message>
     <message encoding="UTF-8">
         <source>Año</source>
-        <translation>Jahr</translation>
+        <translation type="obsolete">Jahr</translation>
     </message>
     <message>
         <source>Archivo</source>
-        <translation>Archiv</translation>
+        <translation type="obsolete">Archiv</translation>
     </message>
     <message encoding="UTF-8">
         <source>Identificación</source>
-        <translation>Steuernummer</translation>
+        <translation type="obsolete">Steuernummer</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation>Login</translation>
+        <translation type="obsolete">Login</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kennwort</translation>
+        <translation type="obsolete">Kennwort</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Akzeptieren</translation>
+        <translation type="obsolete">Akzeptieren</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Abbrechen</translation>
+        <translation type="obsolete">Abbrechen</translation>
     </message>
     <message>
         <source>Ayuda</source>
-        <translation>Hilfe</translation>
+        <translation type="obsolete">Hilfe</translation>
     </message>
 </context>
 <context>
@@ -1865,75 +1875,35 @@ Public License instead of this License.
 <context>
     <name>adocumental</name>
     <message>
-        <source>COL_IDADOCUMENTAL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>COL_IDASIENTO</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>COL_DESCRIPCIONADOCUMENTAL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>FECHAINTADOCUMENTAL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>FECHAASADOCUMENTAL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>COL_ARCHIVOADOCUMENTAL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>COL_ORDENASIENTO</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Punteos (*.*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Agregar Documento</source>
-        <translation>Dokument hinzufügen</translation>
+        <translation type="obsolete">Dokument hinzufügen</translation>
     </message>
     <message>
         <source>Elige el nombre de archivo</source>
-        <translation>Wählen Sie den Wählen Sie den Archivsname aus</translation>
+        <translation type="obsolete">Wählen Sie den Wählen Sie den Archivsname aus</translation>
     </message>
 </context>
 <context>
     <name>adocumentalbase</name>
     <message>
         <source>Archivo Documental</source>
-        <translation>Kokumentales Archiv</translation>
-    </message>
-    <message>
-        <source>iadocumental</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Kokumentales Archiv</translation>
     </message>
     <message>
         <source>archivo</source>
-        <translation>Archiv</translation>
-    </message>
-    <message>
-        <source>idasiento</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Archiv</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>KOMMENTAR</translation>
+        <translation type="obsolete">KOMMENTAR</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Akzeptieren</translation>
+        <translation type="obsolete">Akzeptieren</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Abbrechen</translation>
+        <translation type="obsolete">Abbrechen</translation>
     </message>
 </context>
 <context>
@@ -2358,11 +2328,15 @@ Public License instead of this License.
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Akzeptieren</translation>
+        <translation type="obsolete">Akzeptieren</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Abbrechen</translation>
+        <translation type="obsolete">Abbrechen</translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2373,11 +2347,15 @@ Public License instead of this License.
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Akzeptieren</translation>
+        <translation type="obsolete">Akzeptieren</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Abbrechen</translation>
+        <translation type="obsolete">Abbrechen</translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2843,7 +2821,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Aceptar</source>
-        <translation type="unfinished">Akzeptieren</translation>
+        <translation type="obsolete">Akzeptieren</translation>
     </message>
     <message>
         <source>Cerrar</source>
@@ -2933,7 +2911,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Imprimir</source>
-        <translation>Drucken</translation>
+        <translation type="obsolete">Drucken</translation>
     </message>
     <message>
         <source>Cancelar</source>
@@ -2957,6 +2935,10 @@ Public License instead of this License.
     </message>
     <message>
         <source>Editar Masa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Visualizar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2989,10 +2971,6 @@ Public License instead of this License.
 </context>
 <context>
     <name>correctorwdt</name>
-    <message>
-        <source>Corrector</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>cuentadlg</name>
@@ -3002,15 +2980,15 @@ Public License instead of this License.
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Akzeptieren</translation>
+        <translation type="obsolete">Akzeptieren</translation>
     </message>
     <message>
         <source>Borrar</source>
-        <translation>Löschen</translation>
+        <translation type="obsolete">Löschen</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Abbrechen</translation>
+        <translation type="obsolete">Abbrechen</translation>
     </message>
     <message>
         <source>Datos Contables</source>
@@ -3106,7 +3084,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Direccion</source>
-        <translation>Adresse</translation>
+        <translation type="obsolete">Adresse</translation>
     </message>
     <message>
         <source>CIF</source>
@@ -3131,6 +3109,18 @@ Public License instead of this License.
     <message>
         <source>Comentarios</source>
         <translation>Kommentar</translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Dirección</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C.P.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3254,11 +3244,11 @@ Public License instead of this License.
     <name>estadisticasdlg</name>
     <message encoding="UTF-8">
         <source>Balance Gráfico</source>
-        <translation>DiagrammsBilanz</translation>
+        <translation type="obsolete">DiagrammsBilanz</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Akzeptieren</translation>
+        <translation type="obsolete">Akzeptieren</translation>
     </message>
 </context>
 <context>
@@ -3460,6 +3450,10 @@ Public License instead of this License.
         <source>Aceptar</source>
         <translation>Akzeptieren</translation>
     </message>
+    <message>
+        <source>Incluir asientos abiertos</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>filtrarextractosdlg</name>
@@ -3502,6 +3496,53 @@ Public License instead of this License.
     <message>
         <source>Apuntes con contrapartida:</source>
         <translation>Belegen mit Gegenbuchung</translation>
+    </message>
+    <message>
+        <source>Incluir asientos abiertos</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>fpagodlg</name>
+    <message>
+        <source>Formas de Pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forma de Pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Salir</source>
+        <translation type="unfinished">Beenden</translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Información de la Forma de Pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plazo primer Recibo (dias)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Número de Plazos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tipoplazoprimerpago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plazo entre Recibos (dias)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tipoplazoentrerecibofpago</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3562,6 +3603,34 @@ Public License instead of this License.
         <source>Totales</source>
         <translation>Gesamt</translation>
     </message>
+    <message>
+        <source>Ctrl+A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+C</source>
+        <translation type="unfinished">Ctrl+C</translation>
+    </message>
+    <message>
+        <source>Ctrl+N</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+I</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+M</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saldo</source>
+        <translation type="unfinished">Saldo</translation>
+    </message>
 </context>
 <context>
     <name>intapunts3view</name>
@@ -3599,7 +3668,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>IVA</source>
-        <translation>MEHRWERTSTEUER</translation>
+        <translation type="obsolete">MEHRWERTSTEUER</translation>
     </message>
     <message>
         <source>CCOSTE</source>
@@ -3623,10 +3692,6 @@ Public License instead of this License.
     </message>
     <message>
         <source>PRIVILEGIOS</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No tiene suficientes privilegios para realizar esta acci&#xf3;n.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3679,7 +3744,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Ver Diario (Este a&#xf1;o)</source>
-        <translation>Journal (dieses Jahres) ansehen</translation>
+        <translation type="obsolete">Journal (dieses Jahres) ansehen</translation>
     </message>
     <message>
         <source>Ver Extracto (Este dia)</source>
@@ -3691,7 +3756,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Ver Extracto (Este a&#xf1;o)</source>
-        <translation>Kontoauszug (dieses Jahres) ansehen</translation>
+        <translation type="obsolete">Kontoauszug (dieses Jahres) ansehen</translation>
     </message>
     <message>
         <source>Ver Balance (Este dia)</source>
@@ -3703,7 +3768,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Ver Balance (Este a&#xf1;o)</source>
-        <translation>Bilanz (dieses Jahres) ansehen</translation>
+        <translation type="obsolete">Bilanz (dieses Jahres) ansehen</translation>
     </message>
     <message>
         <source>Editar Cuenta</source>
@@ -3722,20 +3787,31 @@ Public License instead of this License.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Asiento de Apertura</source>
+        <source>FACTURA/FECHA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No se ha podido encontrar el ejercicio anterior.
-<byte value="xd"/> El Asiento de Apertura tendr&#xe1; que ser entrado manualmente.</source>
+        <source>No tiene suficientes privilegios para realizar esta acci&#xef;&#xbf;&#xbd;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Asiento de Regularizaci&#xf3;n</source>
+        <source>Ver Diario (Este a&#xef;&#xbf;&#xbd;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Asiento de Regularizacion</source>
+        <source>Ver Extracto (Este a&#xef;&#xbf;&#xbd;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Balance (Este a&#xef;&#xbf;&#xbd;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Asiento Cerrado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Debe abrir un asiento primero..</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3815,7 +3891,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>Kommentar</translation>
+        <translation type="obsolete">Kommentar</translation>
     </message>
     <message>
         <source>Aceptar</source>
@@ -3823,11 +3899,39 @@ Public License instead of this License.
     </message>
     <message>
         <source>Borrar</source>
-        <translation>Löschen</translation>
+        <translation type="obsolete">Löschen</translation>
     </message>
     <message>
         <source>Cancelar</source>
         <translation>Abbrechen</translation>
+    </message>
+    <message>
+        <source>Tener en cuenta para el registro de IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Serie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Fecha Recepción</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipo de Factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Emitida</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recibida</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total Factura</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3847,10 +3951,6 @@ Public License instead of this License.
     <message>
         <source>Cuenta</source>
         <translation>Konto</translation>
-    </message>
-    <message>
-        <source>Total IVA</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>COL_IVA_IDREGISTROIVA</source>
@@ -3912,6 +4012,22 @@ Public License instead of this License.
         <source>COBRO/PAGO</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Total Base del IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COL_IVA_IVAIVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IDASIENTO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ORDENASIENTO</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>listcuentasdlg1</name>
@@ -3926,11 +4042,11 @@ Public License instead of this License.
     </message>
     <message encoding="UTF-8">
         <source>Código :</source>
-        <translation>Code:</translation>
+        <translation type="obsolete">Code:</translation>
     </message>
     <message encoding="UTF-8">
         <source>Descripción</source>
-        <translation>Beschreibung</translation>
+        <translation type="obsolete">Beschreibung</translation>
     </message>
     <message>
         <source>Plan Contable</source>
@@ -3943,6 +4059,10 @@ Public License instead of this License.
     <message>
         <source>&amp;Salir</source>
         <translation>Beenden</translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Búsqueda</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3996,6 +4116,10 @@ Public License instead of this License.
     </message>
     <message>
         <source>Iva Repercutido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4265,15 +4389,15 @@ Public License instead of this License.
     <name>propiedadesempresa</name>
     <message>
         <source>idusuario</source>
-        <translation>iduser</translation>
+        <translation type="obsolete">iduser</translation>
     </message>
     <message>
         <source>login</source>
-        <translation>login</translation>
+        <translation type="obsolete">login</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Name</translation>
+        <translation type="obsolete">Name</translation>
     </message>
 </context>
 <context>
@@ -4284,11 +4408,11 @@ Public License instead of this License.
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Akzeptieren</translation>
+        <translation type="obsolete">Akzeptieren</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Abbrechen</translation>
+        <translation type="obsolete">Abbrechen</translation>
     </message>
     <message>
         <source>Datos Fiscales</source>
@@ -4393,15 +4517,19 @@ yyyy --&gt; Dígitos de cuenta.</source>
     </message>
     <message>
         <source>Usuarios</source>
-        <translation>Users</translation>
+        <translation type="obsolete">Users</translation>
     </message>
     <message>
         <source>Ver</source>
-        <translation>Ansehen</translation>
+        <translation type="obsolete">Ansehen</translation>
     </message>
     <message>
         <source>Modificar</source>
-        <translation>Modifizieren</translation>
+        <translation type="obsolete">Modifizieren</translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4454,68 +4582,52 @@ yyyy --&gt; Dígitos de cuenta.</source>
 <context>
     <name>resmensualdlg</name>
     <message>
-        <source>Seguimiento de Cuentas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Cancelar</source>
-        <translation>Abbrechen</translation>
+        <translation type="obsolete">Abbrechen</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Akzeptieren</translation>
+        <translation type="obsolete">Akzeptieren</translation>
     </message>
     <message>
         <source>Linea 1</source>
-        <translation>Zeile 1</translation>
+        <translation type="obsolete">Zeile 1</translation>
     </message>
     <message>
         <source>Cuenta</source>
-        <translation>Konto</translation>
+        <translation type="obsolete">Konto</translation>
     </message>
     <message>
         <source>M. Patrimonial</source>
-        <translation>Kapitalvermögen</translation>
+        <translation type="obsolete">Kapitalvermögen</translation>
     </message>
     <message>
         <source>Linea 2</source>
-        <translation>Zeile 2</translation>
+        <translation type="obsolete">Zeile 2</translation>
     </message>
     <message>
         <source>Linea 3</source>
-        <translation>Zeile 3</translation>
+        <translation type="obsolete">Zeile 3</translation>
     </message>
     <message>
         <source>Saldos</source>
-        <translation>Saldos</translation>
-    </message>
-    <message>
-        <source>Movimientos</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Saldos</translation>
     </message>
     <message>
         <source>Contrapartidas 1</source>
-        <translation>Gegenbuchung 1</translation>
+        <translation type="obsolete">Gegenbuchung 1</translation>
     </message>
     <message>
         <source>Contrapartidas 2</source>
-        <translation>Gegenbuchung 2</translation>
+        <translation type="obsolete">Gegenbuchung 2</translation>
     </message>
     <message>
         <source>Contrapartidas 3</source>
-        <translation>Gegenbuchung 3</translation>
+        <translation type="obsolete">Gegenbuchung 3</translation>
     </message>
 </context>
 <context>
     <name>resmensualview</name>
-    <message>
-        <source>Progresion de saldos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Movimientos menusales</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>selectcanaldlg</name>
@@ -4561,6 +4673,37 @@ yyyy --&gt; Dígitos de cuenta.</source>
     <message>
         <source>Cerrar</source>
         <translation>SchliessenSchliessen</translation>
+    </message>
+</context>
+<context>
+    <name>tipoivadlg</name>
+    <message>
+        <source>Tipos de IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipo de IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Salir</source>
+        <translation type="unfinished">Beenden</translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Información del canal</source>
+        <translation type="unfinished">Information des Kanals</translation>
+    </message>
+    <message>
+        <source>Nombre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cuenta</source>
+        <translation type="unfinished">Konto</translation>
+    </message>
+    <message>
+        <source>Porcentaje</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

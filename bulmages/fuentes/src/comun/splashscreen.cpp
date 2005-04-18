@@ -26,7 +26,7 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   l0->setPaletteForegroundColor(QColor("#FF0000"));
   l0->setAlignment( AlignVCenter );
   l0->setFont( QFont( "Arial", 20, QFont::Bold ) );
-  l0->setText( tr("v 0.4.7") );
+  l0->setText( tr("v 0.4.9") );
   l0->setGeometry(100,35,150,25);
   l0->setBackgroundOrigin(QWidget::ParentOrigin);
   l0->setBackgroundPixmap(image0);

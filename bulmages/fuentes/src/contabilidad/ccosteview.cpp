@@ -23,7 +23,7 @@
 #include "selectccosteview.h"
 
 // El inicializador de la clase.
-ccosteview::ccosteview(empresa *emp, QWidget *parent, const char *name, bool modal) : ccostedlg(parent,name, modal) {
+ccosteview::ccosteview(empresa *emp, QWidget *parent, const char *name, bool modal) : ccostedlg(parent,name, modal) , dialogChanges(this) {
     fprintf(stderr,"inicializador de ccosteview\n");
     empresaactual = emp;
     conexionbase=empresaactual->bdempresa();
@@ -31,6 +31,7 @@ ccosteview::ccosteview(empresa *emp, QWidget *parent, const char *name, bool mod
     col_nom_coste = listcoste->addColumn("nom_coste",-1);
     col_desc_coste = listcoste->addColumn("desc_coste",-1);
     col_idc_coste=listcoste->addColumn("idc_coste",0);
+    dialogChanges_cargaInicial();     
     pintar();
 }// end ccosteview
 
@@ -41,18 +42,16 @@ void ccosteview::pintar() {
     QListViewItem * it;
     QMap <int,QListViewItem *>Lista;
     int padre;
-    int idc_coste=0;
+    int idc_coste1=0;
     cursor2 *cursoraux1, *cursoraux2;
 
     listcoste->clear();
-    conexionbase->begin();
-    cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste","centroscoste");
-    conexionbase->commit();
+    cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").ascii());
-        idc_coste = atoi( cursoraux1->valor("idc_coste").ascii());
+        idc_coste1 = atoi( cursoraux1->valor("idc_coste").ascii());
         it =new QListViewItem(listcoste);
-        Lista[idc_coste]=it;
+        Lista[idc_coste1]=it;
         it->setText(col_idc_coste, cursoraux1->valor("idc_coste"));
         it->setText(col_desc_coste,cursoraux1->valor("descripcion"));
         it->setText(col_nom_coste, cursoraux1->valor("nombre"));
@@ -61,15 +60,13 @@ void ccosteview::pintar() {
     }// end while
     delete cursoraux1;
 
-    conexionbase->begin();
-    cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste","mascostes");
-    conexionbase->commit();
+    cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
     while (!cursoraux2->eof()) {
         padre = atoi(cursoraux2->valor("padre").ascii());
-        idc_coste = atoi(cursoraux2->valor("idc_coste").ascii());
+        idc_coste1 = atoi(cursoraux2->valor("idc_coste").ascii());
         fprintf(stderr,"Cuentas de subnivel:%d",padre);
         it = new QListViewItem(Lista[padre]);
-        Lista[idc_coste]=it;
+        Lista[idc_coste1]=it;
         it->setText(col_idc_coste,cursoraux2->valor("idc_coste"));
         it->setText(col_desc_coste,cursoraux1->valor("descripcion"));
         it->setText(col_nom_coste,cursoraux1->valor("nombre"));
@@ -93,13 +90,24 @@ void ccosteview::pintar() {
   Esta funcion sirve para hacer el cambio sobre un
   centro de coste .
   ****************************************************/
+  /*
 void ccosteview::cambiacombo(int numcombo) {
     idc_coste = ccostes[numcombo];
     mostrarplantilla();
 }// end cambiacombo
+*/
 
 void ccosteview::seleccionado(QListViewItem *it) {
-    idc_coste = atoi(it->text(col_idc_coste).ascii());
+    int previdccoste = it->text(col_idc_coste).toInt();
+    if (dialogChanges_hayCambios()) {
+    	    if ( QMessageBox::warning( this, "Guardar Centro de Coste",
+		"Desea guardar los cambios.",
+		QMessageBox::Ok ,
+		QMessageBox::Cancel ) == QMessageBox::Ok)
+		boton_guardar();
+		fprintf(stderr,"Se ha guardado\n");	
+    }// end if 
+    idc_coste = previdccoste;
     mostrarplantilla();
 }// end seleccionado
 
@@ -108,12 +116,13 @@ void ccosteview::mostrarplantilla() {
     fprintf(stderr,"mostramos la plantilla");
     QString query;
     query.sprintf("SELECT * from c_coste WHERE idc_coste=%d",idc_coste);
-    cursor2 *cursorcoste = conexionbase->cargacursor(query,"costes1");
+    cursor2 *cursorcoste = conexionbase->cargacursor(query);
     if (!cursorcoste->eof()) {
         nomcentro->setText(cursorcoste->valor("nombre"));
         desccoste->setText(cursorcoste->valor("descripcion"));
     }// end if
     delete cursorcoste;
+    dialogChanges_cargaInicial(); 
     botondefault->setOn(TRUE);
 }// end mostrarplantilla
 
@@ -126,12 +135,22 @@ void ccosteview::boton_guardar() {
     conexionbase->begin();
     conexionbase->ejecuta(query);
     conexionbase->commit();
-    fprintf(stderr,"Se ha guardado el centro de coste");
+    fprintf(stderr,"Se ha guardado el centro de coste\n");
+    dialogChanges_cargaInicial(); 
     pintar();
 }// end boton_guardar
 
 
 void ccosteview::boton_nuevo() {
+    /// Si se ha modificado el contenido advertimos y guardamos.
+    if (dialogChanges_hayCambios()) {
+    	    if ( QMessageBox::warning( this, "Guardar Centro de Coste",
+		"Desea guardar los cambios.",
+		QMessageBox::Ok ,
+		QMessageBox::Cancel ) == QMessageBox::Ok)
+		boton_guardar();	
+    }// end if
+
     QString query;
     QListViewItem *it;
     it=listcoste->selectedItem();
@@ -155,13 +174,37 @@ void ccosteview::boton_nuevo() {
 
 
 void ccosteview::boton_borrar() {
-    QString query;
-    query.sprintf("DELETE FROM c_coste WHERE idc_coste=%d", idc_coste);
-    conexionbase->begin();
-    conexionbase->ejecuta(query);
-    conexionbase->commit();
-    idc_coste=0;
-    pintar();
+    switch( QMessageBox::warning( this, "Borrar Centro de Coste",
+                                  "Se va a borrar la Forma de Pago,\n"
+                                  "Esto puede ocasionar pérdida de datos\n"
+                                  "Tal vez deberia pensarselo mejor antes\n"
+                                  "porque igual su trabajo se va a tomar por culo.",
+                                  QMessageBox::Ok ,
+                                  QMessageBox::Cancel )) {
+    case QMessageBox::Ok: // Retry clicked or Enter pressed
+				  
+	QString query;
+	query.sprintf("DELETE FROM c_coste WHERE idc_coste=%d", idc_coste);
+	conexionbase->begin();
+	conexionbase->ejecuta(query);
+	conexionbase->commit();
+	idc_coste=0;
+	pintar();
+    }// end switch
 }// end boton_borrar
+
+
+/** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo */
+void ccosteview::close() {
+    /// Si se ha modificado el contenido advertimos y guardamos.
+    if (dialogChanges_hayCambios()) {
+    	    if ( QMessageBox::warning( this, "Guardar Centro de Coste",
+		"Desea guardar los cambios.",
+		QMessageBox::Ok ,
+		QMessageBox::Cancel ) == QMessageBox::Ok)
+		boton_guardar();	
+    }// end if
+    QDialog::close();
+}// end close
 
 

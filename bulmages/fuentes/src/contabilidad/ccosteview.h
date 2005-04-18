@@ -24,11 +24,12 @@
 #include <qlineedit.h>
 #include <qtextedit.h>
 #include "postgresiface2.h"
+#include "dialogchanges.h"
 
 /** *@author Tomeu Borrás Riera */
 class empresa;
 
-class ccosteview : public ccostedlg  {
+class ccosteview : public ccostedlg, dialogChanges  {
   Q_OBJECT
 public:
   postgresiface2 *conexionbase;
@@ -45,11 +46,12 @@ public:
   void mostrarplantilla();
   
 public slots:
-  virtual void cambiacombo(int);
+//  virtual void cambiacombo(int);
   virtual void boton_guardar();
   virtual void boton_nuevo();
   virtual void boton_borrar();
   virtual void seleccionado(QListViewItem *);
+  virtual void close();
 };
 
 #endif

@@ -97,7 +97,6 @@ Bulmages01::~Bulmages01() {
   delete viewToolBar;
   delete viewStatusBar;
   delete viewFullScreen;
-//  delete viewCorrector;
   delete windowNewWindow;
   delete windowCascade;
   delete windowTile;
@@ -213,13 +212,6 @@ void Bulmages01::initActions() {
   viewFullScreen->setStatusTip(tr("Enables/disables the full screen"));
   viewFullScreen->setWhatsThis(tr("FullScreen\n\nEnables/disables the full screen mode"));
   connect(viewFullScreen, SIGNAL(toggled(bool)), this, SLOT(slotViewFullScreen(bool)));
-
-  /*
-  viewCorrector = new QAction(tr("Corrector"), tr("&Corrector"), 0, this, 0, true);
-  viewCorrector->setStatusTip(tr("Muestra/Oculta el corrector"));
-  viewCorrector->setWhatsThis(tr("Corrector\n\nMuestra/oculta el corrector"));
-  connect(viewCorrector, SIGNAL(toggled(bool)), this, SLOT(slotViewCorrector(bool)));
-  */
   
   windowNewWindow = new QAction(tr("New Window"), tr("&New Window"), 0, this);
   windowNewWindow->setStatusTip(tr("Opens a new view for the current document"));
@@ -396,11 +388,6 @@ void Bulmages01::initActions() {
   ayuda->setWhatsThis(tr("Ayuda"));
   connect(ayuda, SIGNAL(activated()), this, SLOT(slotAyuda()));
 
-  ayudai = new QAction(tr("Ayuda en Internet"),ayudaIcon, tr("&Ayuda en Internet"), 0, this);
-  ayudai->setStatusTip(tr("Ayuda en la web del proyecto"));
-  ayudai->setWhatsThis(tr("Ayuda en la web del proyecto"));
-  connect(ayudai, SIGNAL(activated()), this, SLOT(slotAyudai()));
-
 
   Abrirasientos = new QAction(tr("Abrir Asientos"), tr("&Abrir Asientos"), 0, this);
   Abrirasientos->setStatusTip(tr("Abrir Asientos"));
@@ -411,19 +398,6 @@ void Bulmages01::initActions() {
   Ordenarasientos->setStatusTip(tr("Ordenar Asientos"));
   Ordenarasientos->setWhatsThis(tr("Reorganiza los Asientos"));
   connect(Ordenarasientos, SIGNAL(activated()), this, SLOT(slotOrdenarasientos()));
-
-/*  
-  Segcuentas = new QAction(tr("Seguimiento de Cuentas"),estadisticasIcon ,tr("&Seguimiento de Cuentas"), 0, this);
-  Segcuentas->setStatusTip(tr("Seguimiento de Cuentas"));
-  Segcuentas->setWhatsThis(tr("Seguimiento de Cuentas"));
-  connect(Segcuentas, SIGNAL(activated()), this, SLOT(slotSegCuentas()));  
-
-  BGrafico = new QAction(tr("Balance Gráfico"), tr("&Balance Gráfico"), 0, this);
-  BGrafico->setStatusTip(tr("Balance Gráfico"));
-  BGrafico->setWhatsThis(tr("Balance Gráfico"));
-  connect(BGrafico, SIGNAL(activated()), this, SLOT(slotBalanceGrafico()));
-
-*/
 
   filtro = new QAction(tr("Filtro"),filterIcon, tr("&Filtro"), 0, this);
   filtro->setStatusTip(tr("Filtro"));
@@ -460,12 +434,7 @@ void Bulmages01::initActions() {
   RecSald->setWhatsThis(tr("Recalcular Saldos Iniciales"));
   connect(RecSald, SIGNAL(activated()), this, SLOT(slotRecSald()));
 
-/*
-  ArchDoc = new QAction(tr("Archivo Documental"), tr("&Archivo Documental"), 0, this);
-  ArchDoc->setStatusTip(tr("Archivo Documental"));
-  ArchDoc->setWhatsThis(tr("Archivo Documental"));
-  connect(ArchDoc, SIGNAL(activated()), this, SLOT(slotArchDoc()));
-*/
+
   cobPag = new QAction(tr("Cobros y Pagos"), tr("&Cobros y Pagos"), 0, this);
   cobPag->setStatusTip(tr("Cobros y Pagos"));
   cobPag->setWhatsThis(tr("Cobros y Pagos"));
@@ -541,12 +510,6 @@ void Bulmages01::initMenuBar() {
   pListMenu->insertSeparator();
   Modelo347->addTo(pListMenu);
 
-  /*
-  // El menu de estadísticas
-  pEstMenu = new QPopupMenu();
-  Segcuentas->addTo(pEstMenu);
-  BGrafico->addTo(pEstMenu);
-*/
 
   // El menu de Herramientas
   pHerramientasMenu = new QPopupMenu();
@@ -574,7 +537,6 @@ void Bulmages01::initMenuBar() {
   // menuBar entry helpMenu
   pHelpMenu=new QPopupMenu();
   ayuda->addTo(pHelpMenu);
-  ayudai->addTo(pHelpMenu);
   helpAboutApp->addTo(pHelpMenu);
   pHelpMenu->insertSeparator();
   pHelpMenu->insertItem(tr("Que es ??"), this, SLOT(whatsThis()), SHIFT+Key_F1);
@@ -582,7 +544,6 @@ void Bulmages01::initMenuBar() {
   menuBar()->insertItem(tr("&Empresa"),pEmpresaMenu);
   menuBar()->insertItem(tr("&Asiento"),pAsientoMenu);
   menuBar()->insertItem(tr("&Listados"),pListMenu);
-//  menuBar()->insertItem(tr("&Estadistica"),pEstMenu);
   menuBar()->insertItem(tr("&Ventana"), pApunteMenu);
   menuBar()->insertItem(tr("&Herramientas"), pHerramientasMenu);
   menuBar()->insertItem(tr("&Ver"), pViewMenu);
@@ -594,11 +555,8 @@ void Bulmages01::initMenuBar() {
 void Bulmages01::initToolBar() {
   fileToolbar = new QToolBar(this, "Empresa Operaciones");
   fileToolbar->setLabel("Ventanas");
-//  SelectorAction->addTo( fileToolbar );
   propiedadesEmpresa->addTo(fileToolbar);
   fileToolbar->addSeparator();
-  //usuarioaction->addTo(fileToolbar);
-  //fileToolbar->addSeparator();
   planCuentas->addTo(fileToolbar);
   fileToolbar->addSeparator();
   introducirApuntes1->addTo(fileToolbar);
@@ -610,7 +568,6 @@ void Bulmages01::initToolBar() {
   centrosCoste->addTo(fileToolbar);
   canalesMenu->addTo(fileToolbar);
   asientosInteligentes->addTo(fileToolbar);
-//  fileToolbar->addSeparator();
 
   fileToolbar->addSeparator();
   QWhatsThis::whatsThisButton(fileToolbar);
@@ -632,20 +589,6 @@ void Bulmages01::initToolBar() {
   navegacionToolbar->addSeparator();
   cobPag->addTo(navegacionToolbar);
   
-
-  // Vamos a probar con un docwindow.
-/*
-  doc  = new  QDockWindow(this,"Corrector");
-  doc->setGeometry(100,100,100,500);
-  doc->setFixedExtentWidth(200);
-  correctorwidget *corr = new correctorwidget(doc,"correctorw");
-  doc->setWidget(corr);
-  doc->setResizeEnabled(TRUE);
-  doc->setMovingEnabled(TRUE);
-  moveDockWindow(doc,Left);
-  doc->hide();
-  corr->setEmpresa(&empresaactual);
-  */
 }// end initToolBar
 
 
@@ -760,18 +703,6 @@ void Bulmages01::slotViewFullScreen(bool toggle)  {
 //turn Statusbar on or off                                       //
 ///////////////////////////////////////////////////////////////////
 
-/*
-void Bulmages01::slotViewCorrector(bool toggle)  {
-  statusBar()->message(tr("Ver Corrector..."));
-  if (toggle == false) {
-    doc->hide();
-  } else {
-    doc->show();
-  }// end if
-  statusBar()->message(tr("Ready."));
-}// end slotViewStatusBar
-*/
-
 void Bulmages01::slotHelpAbout()  {
    aboutview *about=new aboutview(0,0);
    about->exec();
@@ -843,22 +774,6 @@ void Bulmages01::slotPropiedadesEmpresa()  {
   empresaactual.propiedadempresa();
 }// end slotPropiedadesEmpresa
 
-/*
-void Bulmages01::setCurrentEjercicio(QAction *a)  {
-fprintf(stderr,"Cambio de ejercicio\n");
-setCaption(tr("BulmaGés ") + a->text());
-empresaactual.setejactual(a->text());
-empresaactual.cambioejercicio();
-}// end setCurrentEjercicio
-
-void Bulmages01::setCurrentEjercicio()  {
-QAction *a= (QAction *)sender();
-fprintf(stderr,"Cambio de ejercicio\n");
-setCaption(tr("BulmaGés ") + a->text());
-empresaactual.setejactual(a->text());
-empresaactual.cambioejercicio();
-}// end setCurrentEjercicio
-*/
 
 void Bulmages01::slotLibroMayor()
 {
@@ -952,7 +867,6 @@ void Bulmages01::slotAbrirasientos() {
 }// end slotAbrirasientos
 
 void Bulmages01::slotOrdenarasientos() {
-//  empresaactual.Ordenarasientos(empresaactual.ejercicioactual().toInt());
     empresaactual.Ordenarasientos();
 }// end slotOrdenarasientos
 
@@ -980,22 +894,6 @@ void Bulmages01::slotAyuda() {
    act->exec();
    delete act;
 }// end slotAyuda
-
-
-void Bulmages01::slotAyudai() {
-   char *args[]={"http://www.conetxia.com/bulmages/manualindex.php?version=0.4.3","http://www.conetxia.com/bulmages/manualindex.php?version=0.4.3",NULL};
-   int pid;
-   int error;
-#ifndef WIN32
-   if ((pid=fork()) < 0) {
-       perror ("Fork failed");
-       exit(errno);
-   }// end if
-   if (!pid) {
-      error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),args);
-   }// end if
-#endif
-}// end slotAyudai
 
 void Bulmages01::slotSCuentas() {
    empresaactual.reemplazacuentaenasientos();

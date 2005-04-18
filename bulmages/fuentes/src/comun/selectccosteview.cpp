@@ -23,7 +23,6 @@
 
 #include <qlistview.h>
 
-
 selectccosteview::selectccosteview(empresa *emp,QWidget *parent, const char
 *name) : selectccostedlg(parent, name) {
    fprintf(stderr,"Constructor de selectccosteview\n");
@@ -54,25 +53,18 @@ void selectccosteview::cargacostes() {
 // Rellenamnos la listbox que va a sustituir al combobox correspondiente.
 // Para que en los listados puedan salir más cosas de las que se dicen.   
    fprintf(stderr,"Ahora nos toca rellenar las listas.\n");
-   
-//    QListViewItem * it;
-//    QListViewItem *Lista[10000];
-   QCheckListItem *it;
-   QCheckListItem *Lista[10000];
+    QCheckListItem *it;
+    QMap <int,QListViewItem *>Lista;
     int padre;
     int idc_coste=0;
     cursor2 *cursoraux1, *cursoraux2;
 
     // Cogemos los centros de coste principales y los ponemos donde toca.
     m_listCostes->clear();
-    conexionbase->begin();
-    cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste","ceroscoste");
-    conexionbase->commit();
+    cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
     while (!cursoraux1->eof()) {
-//        padre = atoi( cursoraux1->valor("padre").ascii());
-        idc_coste = atoi( cursoraux1->valor("idc_coste").ascii());
-//        it =new QListViewItem(m_listCostes);
-        it =new QCheckListItem(m_listCostes,"hola pepsi",QCheckListItem::CheckBox);
+        idc_coste = cursoraux1->valor("idc_coste").toInt();
+        it =new QCheckListItem(m_listCostes,"hola",QCheckListItem::CheckBox);
         Lista[idc_coste]=it;
         it->setText(m_colIdCoste, cursoraux1->valor("idc_coste"));
         it->setText(m_colDescCoste,cursoraux1->valor("descripcion"));
@@ -84,12 +76,10 @@ void selectccosteview::cargacostes() {
     // Una vez que hemos puesto los centros de coste padre, todo lo demás es una
     // Tarea de ir colocando centros de coste a sus respectivos
     // deja de ser recursivo y pasa a ser lineal.
-    conexionbase->begin();
-    cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste","mescostes");
-    conexionbase->commit();
+    cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
     while (!cursoraux2->eof()) {
-         padre = atoi(cursoraux2->valor("padre").ascii());
-         idc_coste = atoi(cursoraux2->valor("idc_coste").ascii());
+         padre = cursoraux2->valor("padre").toInt();
+         idc_coste = cursoraux2->valor("idc_coste").toInt();
          fprintf(stderr,"Cuentas de subnivel:%d",padre);
 //         it = new QListViewItem(Lista[padre]);
          it = new QCheckListItem(Lista[padre],"hola",QCheckListItem::CheckBox);

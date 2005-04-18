@@ -25,11 +25,13 @@
 #include <qlineedit.h>
 #include <qtextedit.h>
 #include "postgresiface2.h"
+#include "dialogchanges.h"
+
 /** *@author Tomeu Borrás Riera */
 
 class empresa;
 
-class canalview : public canaldlg  {
+class canalview : public canaldlg , dialogChanges {
    Q_OBJECT
 public:
   postgresiface2 *conexionbase;
@@ -44,10 +46,11 @@ public:
   void pintar();
 
 public slots:
-  void cambiacombo(int);
-  void boton_guardar();
-  void boton_nuevo();
-  void boton_borrar();  
+  virtual void cambiacombo(int);
+  virtual void boton_guardar();
+  virtual void boton_nuevo();
+  virtual void boton_borrar();  
+  virtual void close();
 };
 
 #endif

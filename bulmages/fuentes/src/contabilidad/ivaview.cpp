@@ -366,11 +366,8 @@ void ivaview::calculaTotales() {
         }// end if
         iva += m_listIva->text(i,COL_IVA_IVAIVA).replace(".","").toInt();
     }// end for
-//    QString numberstr = QString::number(base);
-//    numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2);
     QString ivastr = QString::number(iva);
     ivastr = ivastr.left(ivastr.length()-2)+"."+ivastr.right(2);
-//    baseimponible->setText(numberstr);
     importeiva->setText(ivastr);
 }// end calculaTotales
 

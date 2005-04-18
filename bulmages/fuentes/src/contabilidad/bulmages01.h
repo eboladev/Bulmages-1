@@ -129,7 +129,6 @@ public:
     void slotAyuda();
     void slotAbrirasientos();
     void slotOrdenarasientos();
-    void slotAyudai();
     void slotFiltro();
     void slotMPatrimoniales();
     void slotCompBalance();
@@ -182,9 +181,9 @@ public:
     /** view_menu contains all items of the menubar entry "View" */
     public:
     QPopupMenu *pViewMenu;
-    private:
     /** view_menu contains all items of the menubar entry "Help" */
     QPopupMenu *pHelpMenu;
+    private:
     /** the window menu */
     QPopupMenu *pWindowMenu;
 
@@ -254,7 +253,6 @@ public:
     QAction *librobalancetree;
     QAction *Abrirasientos;
     QAction *Ordenarasientos;
-    QAction *ayudai;
     QAction *MPatrimoniales;
     QAction *CompBalance;
     QAction *SCuentas;

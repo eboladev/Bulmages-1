@@ -18,43 +18,43 @@
 #include "empresa.h"
 #include "selectcanalview.h"
 
-canalview::canalview(empresa *emp, QWidget *parent, const char *name, bool modal ) : canaldlg(parent,name, modal) {
-	empresaactual = emp;
-	conexionbase=empresaactual->bdempresa();
-	idcanal=0;
-	pintar();
+canalview::canalview(empresa *emp, QWidget *parent, const char *name, bool modal ) : canaldlg(parent,name, modal) , dialogChanges(this) {
+    empresaactual = emp;
+    conexionbase=empresaactual->bdempresa();
+    idcanal=0;
+    dialogChanges_cargaInicial();
+    pintar();
 }// end canalview
 
-canalview::~canalview(){
-}// end ~canalview
+canalview::~canalview() {}// end ~canalview
 
 void canalview::pintar() {
-  // Vamos a inicializar el combo de los canales
-  QString query = "SELECT * from canal ORDER BY nombre";
-  conexionbase->begin();
-  cursor2 *cursorcanal = conexionbase->cargacursor(query,"canales");
-  conexionbase->commit();
-  int i = 0;
-  combocanal->clear();
-  while (!cursorcanal->eof()) {
-    combocanal->insertItem(cursorcanal->valor(2), -1);
-    canales[i++] = atoi (cursorcanal->valor(0).ascii());
-    cursorcanal->siguienteregistro();
-  }// end while
-  delete cursorcanal;
+    // Vamos a inicializar el combo de los canales
+    QString query = "SELECT * from canal ORDER BY nombre";
+    conexionbase->begin();
+    cursor2 *cursorcanal = conexionbase->cargacursor(query,"canales");
+    conexionbase->commit();
+    int i = 0;
+    combocanal->clear();
+    while (!cursorcanal->eof()) {
+        combocanal->insertItem(cursorcanal->valor(2), -1);
+        canales[i++] = atoi (cursorcanal->valor(0).ascii());
+        cursorcanal->siguienteregistro();
+    }// end while
+    delete cursorcanal;
 
-  // Si el combocoste no está vacio se muestra el registro que
-  // contiene
-  if (idcanal != 0) {
-    mostrarplantilla();
-  } else if (combocanal->count() > 0) {
-    idcanal = canales[combocanal->currentItem()];
-    mostrarplantilla();
-  }// end if
+    // Si el combocoste no está vacio se muestra el registro que
+    // contiene
+    if (idcanal != 0) {
+        mostrarplantilla();
+    } else if (combocanal->count() > 0) {
+        idcanal = canales[combocanal->currentItem()];
+        mostrarplantilla();
+    }// end if
 
-  // Si se han cambiado los canales, se rehace el selector de canales.
-  selectcanalview *scanal = empresaactual->getselcanales();
-  scanal->cargacanales();
+    // Si se han cambiado los canales, se rehace el selector de canales.
+    selectcanalview *scanal = empresaactual->getselcanales();
+    scanal->cargacanales();
 }// end pintar
 
 /*****************************************************
@@ -62,9 +62,18 @@ void canalview::pintar() {
   centro de coste .
   ****************************************************/
 void canalview::cambiacombo(int numcombo) {
-//  fprintf(stderr,"idasientointeligente %d\n",listasientos[num]);
-  idcanal = canales[numcombo];
-  mostrarplantilla();
+    //  fprintf(stderr,"idasientointeligente %d\n",listasientos[num]);
+    int idcanal1 = canales[numcombo];
+    if (dialogChanges_hayCambios()) {
+        if ( QMessageBox::warning( this, "Guardar Canal",
+                                   "Desea guardar los cambios.",
+                                   QMessageBox::Ok ,
+                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+            boton_guardar();
+        fprintf(stderr,"Se ha guardado\n");
+    }// end if
+    idcanal = idcanal1;
+    mostrarplantilla();
 }// end cambiacombo
 
 
@@ -72,55 +81,89 @@ void canalview::cambiacombo(int numcombo) {
   Esta funcion muestra el canal en la ventana.
   */
 void canalview::mostrarplantilla() {
-  int i;
-  QString query;
-  query.sprintf("SELECT * from canal WHERE idcanal=%d",idcanal);
-  conexionbase->begin();
-  cursor2 *cursorcanal = conexionbase->cargacursor(query,"canales1");
-  conexionbase->commit();
-  if (!cursorcanal->eof()) {
-    nomcanal->setText(cursorcanal->valor(2));
-    desccanal->setText(cursorcanal->valor(1));
-  }// end if
-  i=0;
-  while (canales[i] != idcanal)
-    i++;
-  combocanal->setCurrentItem(i);  
+    int i;
+    QString query;
+    query.sprintf("SELECT * from canal WHERE idcanal=%d",idcanal);
+    conexionbase->begin();
+    cursor2 *cursorcanal = conexionbase->cargacursor(query,"canales1");
+    conexionbase->commit();
+    if (!cursorcanal->eof()) {
+        nomcanal->setText(cursorcanal->valor(2));
+        desccanal->setText(cursorcanal->valor(1));
+    }// end if
+    i=0;
+    while (canales[i] != idcanal)
+        i++;
+    combocanal->setCurrentItem(i);
+    dialogChanges_cargaInicial();
 }// end mostrarplantilla
 
 
 void canalview::boton_guardar() {
-  QString nom = nomcanal->text();
-  QString desc = desccanal->text();
-  QString query;
-  query.sprintf ("UPDATE canal SET nombre='%s', descripcion='%s' WHERE idcanal=%d",nom.ascii(), desc.ascii(), idcanal);
-  conexionbase->begin();
-  conexionbase->ejecuta(query);
-  conexionbase->commit();
-  pintar();
+    QString nom = nomcanal->text();
+    QString desc = desccanal->text();
+    QString query;
+    query.sprintf ("UPDATE canal SET nombre='%s', descripcion='%s' WHERE idcanal=%d",nom.ascii(), desc.ascii(), idcanal);
+    conexionbase->begin();
+    conexionbase->ejecuta(query);
+    conexionbase->commit();
+    dialogChanges_cargaInicial();
+    pintar();
 }// end boton_guardar
 
 
 void canalview::boton_nuevo() {
-  QString query;
-  query.sprintf("INSERT INTO canal (nombre, descripcion) VALUES ('Nuevo Canal','Escriba su descripcion')");
-  conexionbase->begin();
-  conexionbase->ejecuta(query);
-  query.sprintf("SELECT MAX(idcanal) AS id FROM canal");
-  cursor2 *cur = conexionbase->cargacursor(query,"queryy");
-  idcanal= atoi(cur->valor("id").ascii());
-  delete cur;
-  conexionbase->commit();
-  pintar();
+    /// Si se ha modificado el contenido advertimos y guardamos.
+    if (dialogChanges_hayCambios()) {
+        if ( QMessageBox::warning( this, "Guardar Canal",
+                                   "Desea guardar los cambios.",
+                                   QMessageBox::Ok ,
+                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+            boton_guardar();
+    }// end if
+    QString query;
+    query.sprintf("INSERT INTO canal (nombre, descripcion) VALUES ('Nuevo Canal','Escriba su descripcion')");
+    conexionbase->begin();
+    conexionbase->ejecuta(query);
+    query.sprintf("SELECT MAX(idcanal) AS id FROM canal");
+    cursor2 *cur = conexionbase->cargacursor(query,"queryy");
+    idcanal= atoi(cur->valor("id").ascii());
+    delete cur;
+    conexionbase->commit();
+    pintar();
 }// end boton_nuevo
 
 
 void canalview::boton_borrar() {
-  QString query;
-  query.sprintf("DELETE FROM canal WHERE idcanal=%d", idcanal);
-  conexionbase->begin();
-  conexionbase->ejecuta(query);
-  conexionbase->commit();
-  idcanal=0;
-  pintar();
+    switch( QMessageBox::warning( this, "Borrar Canal",
+                                  "Se va a borrar la Forma de Pago,\n"
+                                  "Esto puede ocasionar pérdida de datos\n"
+                                  "Tal vez deberia pensarselo mejor antes\n"
+                                  "porque igual su trabajo se va a tomar por culo.",
+                                  QMessageBox::Ok ,
+                                  QMessageBox::Cancel )) {
+    case QMessageBox::Ok: // Retry clicked or Enter pressed
+        QString query;
+        query.sprintf("DELETE FROM canal WHERE idcanal=%d", idcanal);
+        conexionbase->begin();
+        conexionbase->ejecuta(query);
+        conexionbase->commit();
+        idcanal=0;
+        pintar();
+    }// end switch
 }// end boton_borrar
+
+
+/** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo */
+void canalview::close() {
+    /// Si se ha modificado el contenido advertimos y guardamos.
+    if (dialogChanges_hayCambios()) {
+    	    if ( QMessageBox::warning( this, "Guardar Canal",
+		"Desea guardar los cambios.",
+		QMessageBox::Ok ,
+		QMessageBox::Cancel ) == QMessageBox::Ok)
+		boton_guardar();	
+    }// end if
+    QDialog::close();
+}// end close
+

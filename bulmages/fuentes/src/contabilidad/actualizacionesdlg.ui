@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>actualizacionesdlg</class>
 <widget class="QDialog">
     <property name="name">
@@ -8,12 +8,19 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>478</width>
-            <height>393</height>
+            <width>1025</width>
+            <height>529</height>
         </rect>
     </property>
+    <property name="paletteBackgroundColor">
+        <color>
+            <red>255</red>
+            <green>255</green>
+            <blue>127</blue>
+        </color>
+    </property>
     <property name="caption">
-        <string>Actualizaciones</string>
+        <string>Ayuda</string>
     </property>
     <grid>
         <property name="name">
@@ -32,7 +39,7 @@
                 <cstring>pushButton1</cstring>
             </property>
             <property name="text">
-                <string>Aceptar</string>
+                <string>Cerrar</string>
             </property>
         </widget>
         <spacer row="1" column="0">
@@ -62,5 +69,5 @@
         <slot>close()</slot>
     </connection>
 </connections>
-<layoutdefaults spacing="6" margin="11"/>
+<layoutdefaults spacing="4" margin="4"/>
 </UI>

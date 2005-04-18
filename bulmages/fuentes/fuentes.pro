@@ -10,4 +10,5 @@ SUBDIRS += src/plugincorrector
 SUBDIRS += src/pluginadocumental
 SUBDIRS += src/pluginestadisticas/estadisticas
 SUBDIRS += src/pluginestadisticas
+SUBDIRS += src/pluginonline
 
