@@ -50,7 +50,28 @@ amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *na
 }// end amortizacionview
 
 
-void amortizacionview::accept() {
+void amortizacionview::s_newAmortizacion() {
+}
+
+void amortizacionview::s_deleteAmortizacion() {
+   QString codigo = idamortizacion;
+   if (codigo != "") {
+      QString query = "DELETE FROM linamortizacion WHERE idamortizacion ="+codigo;
+      conexionbase->begin();
+      conexionbase->ejecuta(query);
+      conexionbase->commit();
+      query = "DELETE FROM amortizacion WHERE idamortizacion="+codigo;
+      conexionbase->begin();
+      conexionbase->ejecuta(query);
+      conexionbase->commit();
+      done(1);
+   }// end if
+}// end s_deleteAmortizacion
+
+
+
+
+void amortizacionview::s_saveAmortizacion() {
 	QString query;
 	QString namortizacion = nomamortizacion->text();
 	double valorcompradbl = valorcompra->text().toDouble();
@@ -87,7 +108,6 @@ void amortizacionview::accept() {
                    conexionbase->ejecuta(query);
                    conexionbase->commit();
                 }// end for
-		done(1);
 	} else {
 		fprintf(stderr,"Se trata de una modificación\n");
 		query.sprintf("UPDATE amortizacion SET nomamortizacion='%s', valorcompra=%f, numcuotas=%d, fechacompra='%s', idcuentaactivo=%s, idcuentaamortizacion=%s, fecha1cuota='%s', agrupacion='%s' WHERE idamortizacion=%s", namortizacion.ascii(), valorcompradbl, numcuotasint,fechacomprastr.ascii(), idctaactivo.ascii(), idctaamortizacion.ascii(),fecha1cuotastr.ascii(),agrupacionstr.ascii(), idamortizacion.ascii());
@@ -110,8 +130,13 @@ void amortizacionview::accept() {
                         conexionbase->commit();
                    }// end if
                 }// end for
-		done(1);
 	}// end if
+}// end s_saveAmortizacion
+
+
+void amortizacionview::accept() {
+	s_saveAmortizacion();
+	done(1);
 }// end accept
 
 

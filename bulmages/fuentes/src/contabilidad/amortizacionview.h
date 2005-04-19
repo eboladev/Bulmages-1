@@ -55,5 +55,8 @@ public slots:
         virtual void codigo_lostfocus();
         virtual void return_ctaactivo();
         virtual void return_ctaamortizacion();
+	virtual void s_saveAmortizacion();
+	virtual void s_newAmortizacion();
+	virtual void s_deleteAmortizacion();
 };
 #endif
