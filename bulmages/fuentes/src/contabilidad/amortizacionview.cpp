@@ -140,6 +140,10 @@ void amortizacionview::accept() {
 }// end accept
 
 
+void amortizacionview::close() {
+	done(1);
+}// end close
+
 amortizacionview::~amortizacionview() {
 }
 

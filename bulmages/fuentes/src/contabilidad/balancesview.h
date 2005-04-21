@@ -73,6 +73,8 @@ private slots:
    virtual void boton_exportar();
 /// SLOT que responde a la pulsación del botón de importación de balances   
    virtual void boton_importar();
+/// SLOT que responde a la pulsación del botón de abrir balance
+   virtual void s_abrirBalance();
    
 };
 

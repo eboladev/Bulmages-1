@@ -44,6 +44,7 @@ public:
     ~amortizacionview();
     void inicializa(QString);
 public slots:
+	virtual void close();
 	virtual void accept();
 	virtual void cambiofechacompra();
 	virtual void cambiofecha1cuota();
