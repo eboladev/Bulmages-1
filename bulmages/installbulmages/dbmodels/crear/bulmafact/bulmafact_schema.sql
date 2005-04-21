@@ -637,7 +637,7 @@ CREATE TABLE tarifa (
 	finiciotarifa date,
 	ffintarifa date,
 	preciotarifa numeric(13, 4),
-	esofertatarifa character(1),
+	esofertatarifa character(1) NOT NULL CHECK(esofertatarifa='S' OR esofertatarifa='N'),
 	esmxntarifa character(1),
 	cantidadmtarifa numeric(5, 0),
 	cantidadntarifa numeric(5, 0)	
@@ -655,42 +655,25 @@ CREATE TABLE tarifa (
 CREATE FUNCTION restriccionestarifa () RETURNS "trigger"
 AS '
 DECLARE
-	cont RECORD;
+	cont INTEGER;
 BEGIN
-RAISE NOTICE '' IDTARIFA = %'',NEW.idtarifa;
- if (NOT(NEW.idtarifa ISNULL) AND NEW.idtarifa != 0) THEN
-	RAISE NOTICE ''--- UPDATE TARIFA --- '';
-	 SELECT INTO cont count(1) AS contador FROM tarifa 
+
+RAISE NOTICE '' IDTARIFA = % '',NEW.idtarifa;
+	 SELECT count(*) INTO cont FROM tarifa 
 		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
 			tarifa.idtarifa != NEW.idtarifa AND tarifa.finiciotarifa <= NEW.finiciotarifa AND tarifa.ffintarifa >= NEW.finiciotarifa;
-				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
+				if (NOT(cont ISNULL) AND cont > 0) THEN
  					RAISE EXCEPTION '' Solapamiento de fechas en fecha inicio '';
 				END IF;
-	RAISE NOTICE '' CONTADOR = %'', cont.contador;
- 	SELECT INTO cont count(1) AS contador FROM tarifa 
+	RAISE NOTICE '' CONTADOR = % '', cont;
+
+ 	SELECT count(*) INTO cont FROM tarifa 
 		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
 			tarifa.idtarifa != NEW.idtarifa AND tarifa.finiciotarifa <= NEW.ffintarifa AND tarifa.ffintarifa >= NEW.ffintarifa;
-				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
+				if (NOT(cont ISNULL) AND cont > 0) THEN
  					RAISE EXCEPTION '' Solapamiento de fechas en fecha fin '';
 				END IF;
-	RAISE NOTICE '' CONTADOR = %'', cont.contador;
-ELSE
-	RAISE NOTICE ''--- INSERT TARIFA --- '';
-	 SELECT INTO cont count(1) AS contador FROM tarifa 
-		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
-			 tarifa.finiciotarifa <= NEW.finiciotarifa AND tarifa.ffintarifa >= NEW.finiciotarifa;
-				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
- 					RAISE EXCEPTION '' Solapamiento de fechas en fecha inicio '';
-				END IF;
-	RAISE NOTICE '' CONTADOR = %'', cont.contador;
- 	SELECT INTO cont count(1) AS contador FROM tarifa 
-		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
-			tarifa.finiciotarifa <= NEW.ffintarifa AND tarifa.ffintarifa >= NEW.ffintarifa;
-				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
- 					RAISE EXCEPTION '' Solapamiento de fechas en fecha fin '';
-				END IF;
-	RAISE NOTICE '' CONTADOR = %'', cont.contador;
-END IF;
+	RAISE NOTICE '' CONTADOR = % '', cont;
 
         RETURN NEW;
 END;
@@ -701,3 +684,22 @@ CREATE TRIGGER restriccionestarifatrigger
     BEFORE INSERT OR UPDATE ON tarifa
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionestarifa();
+
+CREATE TABLE precio_compra (
+	idprecio_compra serial PRIMARY KEY,
+	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+	iddivision integer REFERENCES division(iddivision),
+	idalmacen integer REFERENCES almacen(idalmacen),
+	fechapreciocompra date,
+	valorpreciocompra numeric(13, 4) NOT NULL
+);
+
+
+CREATE TABLE codigobarras (
+	idcodigobarras serial PRIMARY KEY,
+	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+	ean14codigobarras numeric(14, 0) NOT NULL UNIQUE,
+	unixcajacodigobarras numeric(4, 0),
+	cajxpaletcodigobarras numeric(4, 0),
+	unidadcodigobarras character(1)
+);
