@@ -22,7 +22,7 @@ CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
 -- Los nombres de tabla estan escritos SIEMPRE en singular.
 -- Todos los campos de una tabla terminan siempre con el nombre de la tabla (salvo las claves foraneas).
 -- Las claves foraneas tienen el mismo nombre que el campo con que se corresponden en la tabla relacionada.
--- En caso de que haya diversas claves foraneas referentes al mismo campo, el criterio es que una de lleas tenga el nombre del campo con el que se corresponde y la otra tenga un nombre significativo.
+-- En caso de que haya diversas claves foraneas referentes al mismo campo, el criterio es que una de ellas tenga el nombre del campo con el que se corresponde y la otra tenga un nombre significativo.
 -- Los campos de clave automatica empiezan por id
 -- Los enums se simulan (normalmente) con campos numericos, el significado de los valores debe estar
 -- explicado en este archivo.
@@ -63,7 +63,32 @@ CREATE TABLE almacen (
  telalmacen character varying(20),
  faxalmacen character varying(20),
  emailalmacen character varying(100),
+ inactivoalmacen character(1),
  UNIQUE(codigoalmacen)
+);
+
+
+-- Tabla de países
+-- cod2: código de dos dígitos
+-- cod3: código de tres dígitos
+-- desc: descripción del país
+CREATE TABLE pais (
+   idpais serial PRIMARY KEY,
+   cod2pais character varying(2),
+   cod3pais character varying(3),
+	descpais character varying(50)
+);
+
+
+-- Tabla de monedas
+-- cod2: código de dos dígitos
+-- cod3: código de tres dígitos
+-- desc: descripción de la moneda
+CREATE TABLE moneda (
+   idmoneda serial PRIMARY KEY,
+   cod2moneda character varying(2),
+   cod3moneda character varying(3),
+	descmoneda character varying(50)
 );
 
 
@@ -189,7 +214,8 @@ CREATE TABLE articulo (
     idtipo_articulo numeric(2, 0) REFERENCES tipo_articulo(idtipo_articulo),
     idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
     codigocompletoarticulo character varying(100) UNIQUE,
-    idfamilia integer REFERENCES familia(idfamilia) NOT NULL
+    idfamilia integer REFERENCES familia(idfamilia) NOT NULL,
+	 inactivoarticulo character(1)
 );
 
 
@@ -253,7 +279,8 @@ CREATE TABLE proveedor (
    faxproveedor character varying(12),
    emailproveedor character varying(100),
    urlproveedor character varying(100),
-   clavewebproveedor character varying(100)
+   clavewebproveedor character varying(100),
+	inactivoproveedor character(1)
 );
 
 
@@ -272,7 +299,8 @@ CREATE TABLE division (
    teldivision character varying(20),
    faxdivision character varying(20),
    maildivision character varying(100),
-   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor)
+   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
+	inactivodivision character(1)
 );
 
 
@@ -308,7 +336,8 @@ CREATE TABLE cliente (
    urlcliente character varying(150),
    faltacliente date DEFAULT NOW(),
    fbajacliente date,
-   comentcliente character varying(2000)
+   comentcliente character varying(2000),
+	inactivocliente character(1)
 );
 
 
@@ -325,10 +354,6 @@ CREATE TABLE pedido (
    iddivision integer NOT NULL REFERENCES division(iddivision),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
-
-
-
-
 
 
 -- Any: Any de facturació.
@@ -467,8 +492,6 @@ CREATE TABLE factura (
 );
 
 
-
-
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 -- Numero: Numero de nofactura
@@ -487,7 +510,6 @@ CREATE TABLE nofactura (
 );
 
 
-
 -- COMPROVACIONS D'INTEGRITAT>Genèriques:
 -- Tots els albarans d'una factura corresponen al mateix client.
 -- FACTURACIO>Albarans:
@@ -501,7 +523,6 @@ CREATE TABLE albaran (
    fechaalbaran date,
    idusuario integer,
    comentalbaran character varying(3000),
-
 --   idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
    idcliente integer REFERENCES cliente(idcliente),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),
@@ -510,7 +531,6 @@ CREATE TABLE albaran (
 	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
 	UNIQUE (idalmacen, numalbaran)
 );
-
 
 
 -- Descuento albaran
@@ -565,6 +585,7 @@ CREATE TABLE suministra (
    idarticulo integer REFERENCES articulo(idarticulo)
 );
 
+
 -- ESTA TABLA DEBE DESAPARECER -- LO HARE CUANDO TOQUE EL LA ENTRADA DEL PRESUPUESTO.
 -- Presupuesto - forma de pago
 -- Esta tabla indica las formas de pago que tiene un presupuesto
@@ -583,5 +604,100 @@ CREATE TABLE usuarios (
     clave character varying(35),
     permisos text,
     PRIMARY KEY ("login")
-
 );
+
+
+-- Los tipos de tarifa permiten tener diferentes precios para un mismo artículo en función de alguna variable que queramos definir (para un cliente, para una zona, si es para un minorista, tienda propia franquiciada ...
+-- codigo: es un identificador pnemotécnico de la tarifa.
+-- desc: es un texto descriptivo del tipo de tarifa.
+
+CREATE TABLE tipo_tarifa ( 
+	idtipo_tarifa serial PRIMARY KEY,
+	codtipo_tarifa character varying(10) NOT NULL UNIQUE,
+	desctipo_tarifa character varying(50)
+);
+
+
+-- La tabla tarifa contiene los precios de venta y oferta incluidas las ofertas MxN.
+-- idalmacen: Almacén o tienda a la que corresponden los precios.
+-- idarticulo: idetificador del articulo al que corresponde el precio.
+-- finicio: fecha de inicio vigencia del precio
+-- ffin: fecha de finalización de vigencia del precio.
+-- esoferta: indica si el precio es de oferta.
+-- esmxn: indica si la oferta es mxn (p.e. 3x2).
+-- cantidadm: cantidad de unidades para primer valor en oferta mxn (valor de unidades llevadas).
+-- cantidadn: cantidad de unidades para segundo valor en oferta mxn (valor de unidades pagadas).
+-- FALTA DEFINIR LAS REGLAS PARA EVITAR SOLAPAMIENTOS ENTRE OFERTAS.
+
+CREATE TABLE tarifa (
+	idtarifa serial PRIMARY KEY,
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+	idtipo_tarifa integer NOT NULL REFERENCES tipo_tarifa(idtipo_tarifa),
+	finiciotarifa date,
+	ffintarifa date,
+	preciotarifa numeric(13, 4),
+	esofertatarifa character(1),
+	esmxntarifa character(1),
+	cantidadmtarifa numeric(5, 0),
+	cantidadntarifa numeric(5, 0)	
+);
+
+
+-- Restricciones para la tabla tarifa:
+-- Para un mismo almacén, artículo y tarifa, no puede haber más de un precio a una misma fecha
+-- Para un mismo almacén, artículo y tarifa, no puede haber más de una oferta precio a una misma fecha
+-- Sí que se permite que haya solapamiento entre la tarifa normal y una oferta. Prevalece siempre la oferta.
+
+--DROP TRIGGER restriccionestarifatrigger ON cuenta CASCADE;
+--DROP FUNCTION restriccionestarifa();
+
+CREATE FUNCTION restriccionestarifa () RETURNS "trigger"
+AS '
+DECLARE
+	cont RECORD;
+BEGIN
+RAISE NOTICE '' IDTARIFA = '',NEW.idtarifa;
+ if (NOT(NEW.idtarifa ISNULL) AND NEW.idtarifa != 0) THEN
+	RAISE NOTICE ''--- UPDATE TARIFA --- '';
+	 SELECT INTO cont count(1) AS contador FROM tarifa 
+		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
+			tarifa.idtarifa != NEW.idtarifa AND tarifa.finiciotarifa <= NEW.finiciotarifa AND tarifa.ffintarifa >= NEW.finiciotarifa;
+				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
+ 					RAISE EXCEPTION '' Solapamiento de fechas en fecha inicio '';
+				END IF;
+	RAISE NOTICE '' CONTADOR = '', cont.contador;
+ 	SELECT INTO cont count(1) AS contador FROM tarifa 
+		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
+			tarifa.idtarifa != NEW.idtarifa AND tarifa.finiciotarifa <= NEW.ffintarifa AND tarifa.ffintarifa >= NEW.ffintarifa;
+				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
+ 					RAISE EXCEPTION '' Solapamiento de fechas en fecha fin '';
+				END IF;
+	RAISE NOTICE '' CONTADOR = '', cont.contador;
+ELSE
+	RAISE NOTICE ''--- INSERT TARIFA --- '';
+	 SELECT INTO cont count(1) AS contador FROM tarifa 
+		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
+			 tarifa.finiciotarifa <= NEW.finiciotarifa AND tarifa.ffintarifa >= NEW.finiciotarifa;
+				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
+ 					RAISE EXCEPTION '' Solapamiento de fechas en fecha inicio '';
+				END IF;
+	RAISE NOTICE '' CONTADOR = '', cont.contador;
+ 	SELECT INTO cont count(1) AS contador FROM tarifa 
+		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
+			tarifa.finiciotarifa <= NEW.ffintarifa AND tarifa.ffintarifa >= NEW.ffintarifa;
+				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
+ 					RAISE EXCEPTION '' Solapamiento de fechas en fecha fin '';
+				END IF;
+	RAISE NOTICE '' CONTADOR = '', cont.contador;
+END IF;
+
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionestarifatrigger
+    BEFORE INSERT OR UPDATE ON tarifa
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionestarifa();

@@ -16,6 +16,8 @@ INSERT INTO configuracion (nombre, valor) VALUES ('NombreEmpresa', 'Sin Definir'
 INSERT INTO configuracion (nombre, valor) VALUES ('AlmacenDefecto', '100');
 
 
+INSERT INTO tipo_tarifa (codtipo_tarifa, desctipo_tarifa) VALUES('GENERAL', 'Tarifa General');
+
 INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES (100, 'La Botica del Abuelo', 'Camí Vell de Bunyola', 'Palma de Mallorca', '07009', '971434343', '971434344');
 INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES (200, 'Colmado de Mateo', 'Joan Maura', 'Palma de Mallorca', '07005', '971467911', '971776776');
 INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES (300, 'Almacén Norte', 'Polígono homogeneo', 'Alcudia', '07012', '971167911', '971111776');
