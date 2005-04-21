@@ -657,7 +657,7 @@ AS '
 DECLARE
 	cont RECORD;
 BEGIN
-RAISE NOTICE '' IDTARIFA = '',NEW.idtarifa;
+RAISE NOTICE '' IDTARIFA = %'',NEW.idtarifa;
  if (NOT(NEW.idtarifa ISNULL) AND NEW.idtarifa != 0) THEN
 	RAISE NOTICE ''--- UPDATE TARIFA --- '';
 	 SELECT INTO cont count(1) AS contador FROM tarifa 
@@ -666,14 +666,14 @@ RAISE NOTICE '' IDTARIFA = '',NEW.idtarifa;
 				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
  					RAISE EXCEPTION '' Solapamiento de fechas en fecha inicio '';
 				END IF;
-	RAISE NOTICE '' CONTADOR = '', cont.contador;
+	RAISE NOTICE '' CONTADOR = %'', cont.contador;
  	SELECT INTO cont count(1) AS contador FROM tarifa 
 		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
 			tarifa.idtarifa != NEW.idtarifa AND tarifa.finiciotarifa <= NEW.ffintarifa AND tarifa.ffintarifa >= NEW.ffintarifa;
 				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
  					RAISE EXCEPTION '' Solapamiento de fechas en fecha fin '';
 				END IF;
-	RAISE NOTICE '' CONTADOR = '', cont.contador;
+	RAISE NOTICE '' CONTADOR = %'', cont.contador;
 ELSE
 	RAISE NOTICE ''--- INSERT TARIFA --- '';
 	 SELECT INTO cont count(1) AS contador FROM tarifa 
@@ -682,14 +682,14 @@ ELSE
 				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
  					RAISE EXCEPTION '' Solapamiento de fechas en fecha inicio '';
 				END IF;
-	RAISE NOTICE '' CONTADOR = '', cont.contador;
+	RAISE NOTICE '' CONTADOR = %'', cont.contador;
  	SELECT INTO cont count(1) AS contador FROM tarifa 
 		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
 			tarifa.finiciotarifa <= NEW.ffintarifa AND tarifa.ffintarifa >= NEW.ffintarifa;
 				if (NOT(cont.contador ISNULL) AND cont.contador > 0) THEN
  					RAISE EXCEPTION '' Solapamiento de fechas en fecha fin '';
 				END IF;
-	RAISE NOTICE '' CONTADOR = '', cont.contador;
+	RAISE NOTICE '' CONTADOR = %'', cont.contador;
 END IF;
 
         RETURN NEW;
