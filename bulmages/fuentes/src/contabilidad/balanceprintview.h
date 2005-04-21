@@ -1,10 +1,10 @@
 /***************************************************************************
                           balanceprintview.h  -  description
                              -------------------
-    begin                : mié jun 25 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    begin                : miï¿½jun 25 2003
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Terés - amirabet@biada.org
+    modificat per        : (C) 2003 Antoni Mirabete i Terï¿½ - amirabet@biada.org
  ***************************************************************************/
 /***************************************************************************
  *                                                                         *
@@ -26,20 +26,20 @@
 class empresa;
 
 /** 
-  * @author Tomeu Borrás Riera 
+  * @author Tomeu Borrï¿½ Riera 
   * \class BalancePrintView balanceprintview.h
-  * \brief Formulario introducción de datos para la impresión del balance de sumas y saldos.
+  * \brief Formulario introducciï¿½ de datos para la impresiï¿½ del balance de sumas y saldos.
   * \todo Hay que cambiar el array de ccostes por un cursor
   *
-  * Clase que permite introducir los datos necesarios para la generación del balance (Fechas y rangos) y que se encarga de generar el balance en los formatos de impresión indicados.
+  * Clase que permite introducir los datos necesarios para la generaciï¿½ del balance (Fechas y rangos) y que se encarga de generar el balance en los formatos de impresiï¿½ indicados.
   */
 
 class BalancePrintView : public BalancePrintDlg  {
    Q_OBJECT
 private:
-/// La base de datos con la que la clase está trabajando   
+/// La base de datos con la que la clase estï¿½trabajando   
    postgresiface2 *conexionbase;   
-/// La empresa con la que la clase está trabajando   
+/// La empresa con la que la clase estï¿½trabajando   
    empresa *empresaactual;
    
 public: 
