@@ -91,8 +91,12 @@ void articleedit::s_familiaLostFocus() {
 
 void articleedit::s_searchFamily() {
 	familiasview *fam = new familiasview(companyact, 0,0);
-	fam->exec();
+	fam->setModoConsulta();
+	if (fam->exec() == 1) {
+		m_codigocompletofamilia->setText(fam->codigoCompletoFamilia());
+	}// end if
 	delete fam;
+	s_familiaLostFocus();
 }// end s_searchFamily
 
 /************************************************************************

@@ -13,34 +13,34 @@
 #define FAMILIASVIEW_H
 
 #include <familiasdlg.h>
+#include "dialogchanges.h"
 
-/**
-@author Tomeu Borras
-*/
+/** @author Tomeu Borras */
 class company;
 
-class familiasview : public familiasdlg  {
+class familiasview : public familiasdlg, dialogChanges  {
 Q_OBJECT
 private:
    company *companyact;
    QString m_idfamilia;			// Indica cual es el registro que se está modificando. Sirve para saber los cambios que hay que guardar cuando se ha modificado.
-   bool m_modificado;
+   bool m_modoConsulta;   /// Indica si es modo consulta o modo edición. (altera el comportamiento del doble click sobre la lista)
 public:
     familiasview(company *, QWidget *parent = 0, const char *name = 0);
 
     ~familiasview();
-    void trataModificado();
+    bool trataModificado();
     void mostrarplantilla();
-    
+    void setModoConsulta() {m_modoConsulta = TRUE;};
+    void setModoEdicion() {m_modoConsulta = FALSE;};
+    QString codigoCompletoFamilia();
 public slots:
-	virtual void s_setModificado() {m_modificado=TRUE;};
-	virtual void s_releaseModificado() {m_modificado=FALSE;};
 	virtual void pintar();
-	virtual void s_seleccionado(QListViewItem *);
+	virtual void s_doubleClicked(QListViewItem *);
 	virtual void close();
 	virtual void s_saveFamilia();
 	virtual void s_newFamilia();
-	
+	virtual void s_deleteFamilia();
+	virtual void s_changedFamilia();
 };
 
 #endif
