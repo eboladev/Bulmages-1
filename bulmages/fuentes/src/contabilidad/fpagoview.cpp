@@ -8,6 +8,8 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
+
+
 /** \file fpagoview.cpp
   * Contiene la implementación de la clase \ref fpagoview
   * \author Tomeu Borrás Riera
@@ -97,6 +99,7 @@ void fpagoview::cambiacombo(int) {
     fprintf(stderr,"cambiado el combo\n");
     mostrarplantilla();
 }// end cambiacombo
+
 
 /** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
   * Lo que hace es que se hace un update de todos los campos

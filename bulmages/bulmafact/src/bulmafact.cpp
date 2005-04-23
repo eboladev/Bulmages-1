@@ -155,3 +155,7 @@ void bulmafact::s_FPago() {
 }// end s_FPago
 
 
+void bulmafact::s_Familias() {
+	m_company.s_Familias();
+}// end s_Familias
+

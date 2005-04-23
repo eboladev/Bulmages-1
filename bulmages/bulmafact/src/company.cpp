@@ -37,6 +37,7 @@
 #include "linorderslist.h"
 #include "abreempresaview.h"
 #include "fpago.h"
+#include "familiasview.h"
 
 
 
@@ -175,3 +176,11 @@ void company::s_FPago() {
    f->exec();
    delete f;
 }// end newOrder
+
+
+void company::s_Familias() {
+	familiasview *fam = new familiasview(this, 0,0);
+	fam->exec();
+	delete fam;
+}// end s_Familias
+
