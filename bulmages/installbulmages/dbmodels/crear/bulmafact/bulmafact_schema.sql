@@ -408,6 +408,8 @@ CREATE TABLE lpedido (
    idarticulo integer REFERENCES articulo(idarticulo)
 --      PRIMARY KEY(idpedido, numlpedido)
 );
+
+
 -- Codi: Clau artificial.
 -- Descripcio: Nom identificatiu o descripció breu.
 -- Dies_1T: Dies abans del primer termini computant els blocs de 30 com a mesos naturals.
