@@ -35,7 +35,7 @@
                 </property>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1_3</cstring>
+                        <cstring>toolButton1_2_2</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -46,24 +46,13 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>toolButton1_2_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image1</iconset>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
                         <cstring>toolButton1_2_2_2</cstring>
                     </property>
                     <property name="text">
                         <string></string>
                     </property>
                     <property name="iconSet">
-                        <iconset>image2</iconset>
+                        <iconset>image1</iconset>
                     </property>
                 </widget>
                 <spacer>
@@ -921,7 +910,7 @@
                                     <string></string>
                                 </property>
                                 <property name="iconSet">
-                                    <iconset>image3</iconset>
+                                    <iconset>image2</iconset>
                                 </property>
                             </widget>
                             <spacer>
@@ -962,7 +951,7 @@
                                     <string></string>
                                 </property>
                                 <property name="iconSet">
-                                    <iconset>image3</iconset>
+                                    <iconset>image2</iconset>
                                 </property>
                             </widget>
                         </hbox>
@@ -1102,14 +1091,6 @@
                 </spacer>
                 <widget class="QPushButton">
                     <property name="name">
-                        <cstring>pushButton1</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Aceptar</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
                         <cstring>pushButton1_2</cstring>
                     </property>
                     <property name="text">
@@ -1122,25 +1103,16 @@
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="508">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001c3494441545885d595a16ec33010862f6cafd4bc421f65af30b6b2e10eed09865b38984c9a9482482d2830083008302888a6907fc077a9ec344bdad8d57652f5c701bdcb77ff9d0900210701a0ac840dd6abce1ac8f28c9cff9b70ee5eb24e8ea6b5aa6b29c600e65cc454752b2bfb897e8d93957d255501a8af23319f8061023b0d00501a4e3b2611e879606a7011d0de7b8dc9246e262061b80d59e956a16ab788381e1002dc0634de5961743a661368386971304005bcbd6717358e0724b80de091c4ceca2607d002cfeb0d88e82289f904bc69280ef6e1e34b73111a5803440404f74057052bef838e24931002713cc0045465ab10024569b81883973102a1f6c05ef1f968a5608de281f35d60bf5c08ec15eb91491c9b081ef0e75fdc2fbb48ee062612d40332f786938bfbe55654da235235013d205f2eae97f91f22a15d02b33c203def08889e5c023d121a013dd07a3a46a2760984f1804f82930f7aa246843d3046c02311740f0c12102f7804748d887bc02730e085b81ef0a7e10281f07be0c62998b7078608dcd5037f7a0ffc570f24599e51ba4829ffcc295da458bd6ee98996b4a22d3dd092be29cc39794c0840c279241ff57b428458bf291eb8bbfe0062975455e6c09c410000000049454e44ae426082</data>
-    </image>
-    <image name="image1">
         <data format="PNG" length="754">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002b9494441545885b59621681b5118c7ff818989898a898a89898a89899e6b4b454545a155838a0c26529818531373ab28eb5499cc60908a426a2a2a4a2b3731b81b0c52114845c48988131127268e51f39b78efa5bdeb5d93e62e1f1cff7c7790effbffdfff7def09100102e407be52791713161f944770e7ff72f2d1cb029c38926b83d1d03513437cd34411167606c8319b38fe1ae80d5c57c0f07e25aa5720b60a5c46008411a9e5c85560ac07260ddb0451e67d44a1129529e022b6cbe077d35d84c37413b3f18053c02e0349260fb9b33b2a5720b1453b57310ca075e2e7e26c3ce0c22e03764b7269e03c00aee173f31c49ccc403d9ddd0b9323f7efc896c13113441124ced813d6f4c17163f2c43ffd684b44a3805a6f34043f056854d380592ed39d810f1bae0103a5da384df8d39c82a30b1071a8243dd60b609b70bea73b0255817ac09560503e8f4d30a3ccc0341cb30770a38dcf58a99af896855b0247ac76d003afda4840782765a8186a029f8e815335f121cb5ccf730adc0741e704abc314fb22dd816c996729987b6783830ceec0d92121eb8ad445350177c95619dc7fcd8327753392ae3814c243f5bf7328f6c71773f08a3c42215cc0117456bbef1dc7c7767c0308de53ce014a8e7bb3d5c14bc14e19631a69b8823258654e08122e6b6382f040ba2b7eee52a51ca0345cca3dd1dc37cc1167f269817bd552fa54034a484078a989f9a21c3493b559ca78227a2b3e8e52af0200f245f5ee5328f4f8ddbdd3d203a6ac1bce8cc99e2fe2381446fef60a4c0f41e78e7a5999f59e6ee0c70a7e061db30b7c5a9ef54e781b8e119e66796b93b036c7177270cbfb70cf3faeb11f311969e03fd5e9a7956017723fa458a79a573c04591020eb373a09c07b2314e813193d00f7cd5fcc0d7caf28a82df411eb2ffed429fb4a97d5de8b136f54fd5e4b5f73501b5fb3d102049ccea99c40333c7fff9b45648c82c57e00000000049454e44ae426082</data>
     </image>
-    <image name="image2">
+    <image name="image1">
         <data format="PNG" length="1001">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000003b0494441545885b5973d6be45614865f8518fc17dca758811ac114d618f21b8c962922d6847849e3e0c2882d8c98c2cc4e60d14ec0e0148699c220376676178c4991b05b38485b4d52d90b295ca418c31653a498bdd8036f8a2b5deb633ea4d9e4c0e5cc9daf73ee73df7bce154882114112611462da1c009351e6fb55e6eacd591e0079478697217947e69359f4fb85ffbf2853003238497bd326afc96eaf4b5e17935986442502f6a6cdee7197ecb1e097253337d3f8cfc84b3e1048594222efab90999ba1c27f570c9eb765c92c543f29f10f3a83b9099421a31b7a814c69f52f2250868c69986cb55b6c1db45412e5d5ff99661a265b072d8e7f1dd3dbf728a3835f44ef23c002a2f711ea561dc91c00eaeb7544bf47f82f4c4c04c444a0f95b13cf7f7c8e973fbd941fe457ce12ea5fc60223a0bbe7727836641885720b6669a08afacb986ee874775deeecee70fbfb6d929caf8165d53f2f819b931b6e7f27831f758e088053eb4046fd63f2e2970b9a8649fd914eddd0974ac0344c3a5b0e9d2d87e165a882735a1d00c0b7efde92ffc8e0fc48f6cffae40d199c0432194367600495820f0e07b41b723be7d60100e488bc38bf208764701a9027713139268f0e8fc843d27fe19722a33fd2e9341ca525bfe3170964d43f22fbaffbe4df71f0bfe262f2471c3c22fdb6cff1bb31bda6c7d1f988ee9e3b934c6004b41b36079d4146fdc9a2b5300ad5f9dfa86fb07fd6c7e3fbc7389d9ce2c9b74fd439f63b3e3001841070e1a22dda6afe099f208490f389c0873f3f404c04f025a07fa563756515e25ee0d59b57d0340d24b5a4ee14f1df48dcaa16c4966e2aee3397a3d723eeecee28755f1d5fd1f9c6e1a033502b4e7b32abfe84bc22a0691a7942f4440f4f274fa1fda081246e6f6fb1b6b696a96a9aa6a9d7ce96232b9d1058855c295600dc43ad1c2b80bbeb62e3eb0d8451a825c4158144fddd9fe55e27425136ccf91c19ab6611c0d495a709a4d59f90cfe28fd59d0e3e1c0e177aab66b1d56e65b6c9deb46937ec99eacf9c8258994add2a816be9aeaeaf66cead758bfe0b9fbca4f2003204a6a99fe93a0040b6ca03d92a5502a9fbc02c6fd61e7a3cdb54bddedeb433e73fc13ff34e98c64792fc1817a305bebfde577d5e052fa1fe8206f2dd3019dd5ef7a112e6bc55b3e8ed7b1c372539af29e9252bb71b76a1f62ff55c908ca0272b63e2ad9ac5d1f988debea7fc3402d3d49fd1c0b4ccca90b16a16dd3d97ee3397ee9e5b49fda59e0b66dc940a64929b4e15f5cfd540559f3fff65d45f5a0355e7e96492f159cf86ffb7ff1700d79907fb64c78b0000000049454e44ae426082</data>
     </image>
-    <image name="image3">
+    <image name="image2">
         <data format="PNG" length="1773">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000006b4494441545885a59741681ce715c77f23c6f07d20c30cc8b0032e68c039c8b81089fa2041a112f460051facd242a3b4601c0aaddd829bc687d4cda1b8853a2a8612258756cda1960d31960f26f2a1b03d98ac4c6cef1a5c3407154620c10c64613ef0c23cd0c0f4f0cdac56b2158bf683e5f176bef9defffdbfff7bfbd679fad553280017a41094aba00011554a21784a011adf5364bdac7ab6bbdff3705ef57eed4f4d4e95546be14e93cee398e5eb17eaaf70eb976a9ba452fa4a118b202a2443a19526971c7f38201308558e989800485229838672f69fd30733b0d6d662e238eafb17afdfc579fad5d3fee6789b5229e81421fe711fa5c0532054b60055db02d22e344c8c9818dff5f04670f63331313951f28a75f5932f88feb389f365eb4b94ab88364c896e10a990b1131a006fd806f3156405965ac01f86bc00ed4262c0db8e315b311e0a3fc4196460e2b405b070ab09a288bb318b57e60198fad1358694ab889e27a54211a99336b80bc1086805e1082817420fd4b0059018d0552663c7811321deb11023593ff31a04c0e2bd36fa8822ed25685771e18fcb00b43ebfca90140285a6a343c646ad7802cfda860f68087c880d84becd3e1886bc0260c482e554035c4de7715c0e5ec3c2ad26e4c2fa564cd6159234c5a486999f5d0360287a9e9509108e06c840f0f028f84008286c50f3c282c0b5bee7ee6a240c34deb7c7f60ab0000a45dc4da00769374104b25e86b6e4309419831c1b83eab0bc80c6519b61ad610ffaa505e0f9202ea8a3c011f08e5810c1a980c4185a0f93520a0117e23426efc1669a400189491011922cb100340a351258c1610507367b55598d557f0d4601c191dd7dbade7f048230dc538a8b57e649d318e56af242502824cb68df5fb40072043d0ca6b09466153519bb767da72a456dadc632e4577bd480af3c8512f6f481bb7ff98dcdbc27981786f683c5ba1a717dcfdb53e7be824e6cb560ead3abe001bbcb1b080ef699004a294c61fa1a683f6e3b52081fff72ae7f8dadb556fff950bc9d92b3db64f2c2965ed6b3f72c850daeab60a6b2728035c6205295e040351ce4bbf4047ae0356c30043217c6be05b2b37bd775f03a736f20f3bcf205305b1979d50f06abe1207f2831196cc51801dfb587d08328b180e2eafe932ae060c6b51674e5b303ed271d28f46b33af7ddb099f35ad900a7bf7fd6a286c890d0aaecebcf6f5801f3d8a5128e6cf8f3bafcbbcaf81f9f3538e6cc7749ec568d782a8b5a05c303b364836700db0db09eb95e5b07c6795b4670e9579ed0fd548b27fae126fdbcceb8fa918a833940106f43e002bb79b681726df1c3f54e67d0d4821bcf7fe9c9376135a9f2d116de61669d5194d956add176a066a3f07963e69d27ed666fabbe3a4ddf45099d7fe9e79e0cf1fad945e23e0e4b939c6bf13a094ed6ec26e0f5003d67c0d2bb7bf20dedc64eeec34d1464ce3988ff6148de7bf835e8c7cffa63398f9fe79a13f0fd45ffee1a3955201de8990a933b3046f06348eeebd866c2b63ed418bf6a3085c61eecc0c9d2862767a86c424045bcba8de2aba80b8a7f1cede3c7062720e9a09173f5d2d8dd89950798aa011627a29799a637ac6763c117efbfe9cb372bf53ce9d1d779aff8acaa9e10e818a09dff0c8e326690a89d1a873af66e225065e65176f344b4150c0c5cbb3ce41fbb23b97cae0d418133f7e8f7cb389ee76c8e216c926445d4df89397997007c7a6c53b2d5a8f2396af5fa0fdb8edd46abd7879c639e80e070f33224cf90212a14fcc80abf151289a0839d167ef9463e7f7323154070768ae45441b766a9d383d512e3d8ccb89d313e561eb5a15b0723f2279b0042682e393e42363e8708a7014c2e19ccea7efec39cf29cbf21ba7d6ac9bb1f0f3d997a6dd83fcf8af974a23c2dcb906c1f72e8037069b6bd06d936f34e9fc1b3adb9ac9cb96893e80855b4d4420e9260353eb555a9f5febffa4be4e2bb5eddc78b7cc7672e6cf858467e661789c7cbb894ead263a4fa0b505b31fdc759cb22ccbc57b2d54a18892d8764511963e98dfc348ad89c332d1ba7ea9944298ff61c382f0c62b26d6c93756693e81b50dcdd0c2ad26790eedada83fb5a669c25bd5d4ba70abc90f7ebd74e8de5efb53573e761058fc47ccfafd65301d189d241f39897e638af004281443148a74dfd49af7a43f9a45cfecdfa9c3f6f6417fe6f77f733c7cfe7e3b65fd9e05a147a7c9648cd547016af26d9c5ffce96649a1d8dc8ea1107211a450c88ba43f3802b4d65a07d6ffeb6cf3c3774b43cef464c0c4d959566e34193d7791d587b115e15bbf5a40a1c97a195280f93a617d6070fc5f34b0df6f7e78a934089eabe0f4db18a349d264b70a667e7ad5ce723b09ed7b7b83ffbf0c7c93fd2f00a7b763da7497fa0000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
-    <connection>
-        <sender>pushButton1</sender>
-        <signal>clicked()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>accept()</slot>
-    </connection>
     <connection>
         <sender>pushButton1_2</sender>
         <signal>clicked()</signal>
@@ -1231,12 +1203,6 @@
         <receiver>amortizaciondlg</receiver>
         <slot>s_deleteAmortizacion()</slot>
     </connection>
-    <connection>
-        <sender>toolButton1_3</sender>
-        <signal>clicked()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>s_newAmortizacion()</slot>
-    </connection>
 </connections>
 <tabstops>
     <tabstop>nomamortizacion</tabstop>
@@ -1254,7 +1220,6 @@
     <tabstop>metodoporcentual</tabstop>
     <tabstop>botoncalcular</tabstop>
     <tabstop>table1</tabstop>
-    <tabstop>pushButton1</tabstop>
     <tabstop>pushButton1_2</tabstop>
     <tabstop>tabWidget3</tabstop>
     <tabstop>amortizado</tabstop>

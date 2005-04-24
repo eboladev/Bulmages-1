@@ -15,6 +15,7 @@
 
 #include "amortizaciondlg.h"
 #include "postgresiface2.h"
+#include "dialogchanges.h"
 
 class empresa;
 
@@ -24,7 +25,7 @@ class empresa;
   * \brief Formulario de introducción y/o visión de amortizaciones.
   */
   
-class amortizacionview : public amortizaciondlg {
+class amortizacionview : public amortizaciondlg , dialogChanges {
 Q_OBJECT
 public:
 /// Empresa con la que se trabaja
@@ -43,6 +44,7 @@ public:
     amortizacionview::amortizacionview(empresa *, QWidget *, const char *, bool );
     ~amortizacionview();
     void inicializa(QString);
+    void trataModificado();
 public slots:
 	virtual void close();
 	virtual void accept();

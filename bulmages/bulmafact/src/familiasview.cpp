@@ -109,11 +109,13 @@ void familiasview::s_doubleClicked(QListViewItem *it) {
   */
 void familiasview::s_changedFamilia() {
     QString idfamiliaold = m_listFamilias->currentItem()->text(COL_IDFAMILIA);
-    // Si usamos el trataModificado peta porque si se guarda se sobreescribe el puntero it.
-    trataModificado();
-    m_idfamilia = idfamiliaold;
-    m_listFamilias->findItem(m_idfamilia, COL_IDFAMILIA);
-    mostrarplantilla();
+    if (idfamiliaold != "") {
+	// Si usamos el trataModificado peta porque si se guarda se sobreescribe el puntero it.
+	trataModificado();
+	m_idfamilia = idfamiliaold;
+	m_listFamilias->findItem(m_idfamilia, COL_IDFAMILIA);
+	mostrarplantilla();
+    }// end if
 }// end seleccionado
 
 

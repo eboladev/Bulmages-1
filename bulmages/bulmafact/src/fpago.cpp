@@ -59,14 +59,16 @@ fpago::~fpago() {}
 
 
 void fpago::s_lista(QListViewItem *it) {
-    /// Si se ha modificado el contenido advertimos y guardamos.
-    trataModificado();
-    m_descforma_pago->setText(it->text(COL_NOMFPAGO));
-    m_dias1tforma_pago->setText(it->text(COL_DIASFPAGO));
-    m_descuentoforma_pago->setText(it->text(COL_DESCFPAGO));
-    m_idforma_pago = it->text(COL_IDFPAGO);
-    /// Comprobamos cual es la cadena inicial.
-    dialogChanges_cargaInicial();
+    if (it != NULL) {
+	/// Si se ha modificado el contenido advertimos y guardamos.
+	trataModificado();
+	m_descforma_pago->setText(it->text(COL_NOMFPAGO));
+	m_dias1tforma_pago->setText(it->text(COL_DIASFPAGO));
+	m_descuentoforma_pago->setText(it->text(COL_DESCFPAGO));
+	m_idforma_pago = it->text(COL_IDFPAGO);
+	/// Comprobamos cual es la cadena inicial.
+	dialogChanges_cargaInicial();
+    }// end if
 }// end s_lista
 
 

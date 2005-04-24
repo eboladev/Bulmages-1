@@ -23,12 +23,12 @@
 #define COL_ORDENASIENTO           5
 
 amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *name, bool flag ) 
-: amortizaciondlg(parent,name,flag,0) {
+: amortizaciondlg(parent,name,flag,0), dialogChanges(this) {
       empresaactual = emp;
       conexionbase = empresaactual->bdempresa();
       idamortizacion = "";
       
-      // Buscamos cual es el asiento inteligente que realiza la amortización.
+      /// Buscamos cual es el asiento inteligente que realiza la amortización.
       QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion=valor AND configuracion.nombre='Amortizacion'";
       conexionbase->begin();
       cursor2 *cur = conexionbase->cargacursor(query,"hola");
@@ -47,6 +47,8 @@ amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *na
    table1->hideColumn(COL_IDASIENTO);
    table1->hideColumn(COL_EJERCICIO);
    table1->hideColumn(COL_IDLINAMORTIZACION);
+   
+ 
 }// end amortizacionview
 
 
@@ -54,6 +56,7 @@ void amortizacionview::s_newAmortizacion() {
 }
 
 void amortizacionview::s_deleteAmortizacion() {
+   trataModificado();
    QString codigo = idamortizacion;
    if (codigo != "") {
       QString query = "DELETE FROM linamortizacion WHERE idamortizacion ="+codigo;
@@ -131,16 +134,18 @@ void amortizacionview::s_saveAmortizacion() {
                    }// end if
                 }// end for
 	}// end if
+    dialogChanges_cargaInicial(); 	
 }// end s_saveAmortizacion
 
 
 void amortizacionview::accept() {
-	s_saveAmortizacion();
-	done(1);
+//	s_saveAmortizacion();
+//	done(1);
 }// end accept
 
 
 void amortizacionview::close() {
+	trataModificado();
 	done(1);
 }// end close
 
@@ -228,6 +233,7 @@ void amortizacionview::inicializa(QString idamortiza) {
       
    // Desabilitamos el boton de calcular, porque la amortizacion ya està hecha.
    botoncalcular->setDisabled(TRUE);
+   dialogChanges_cargaInicial();   
 }// end inicializa
 
 
@@ -551,3 +557,15 @@ void amortizacionview::buscactaamortizacion() {
     ctaamortizacion->setText(listcuentas->codcuenta);
     delete listcuentas;
 }// end if
+
+void amortizacionview::trataModificado() {
+    fprintf(stderr,"mostrarplantilla\n");
+    /// Si se ha modificado el contenido advertimos y guardamos.
+    if (dialogChanges_hayCambios()) {
+    	    if ( QMessageBox::warning( this, "Guardar Amortizacion",
+		"Desea guardar los cambios.",
+		QMessageBox::Ok ,
+		QMessageBox::Cancel ) == QMessageBox::Ok)
+		s_saveAmortizacion();	
+    }// end if  
+}// end trataModificado
