@@ -35,13 +35,7 @@
 #include <unistd.h>
 #endif
 
-/*
-#ifdef REPORTS
-#include "rtkinputbges.h"
-#include "rtkqtreportviewer.h"
-using namespace RTK;
-#endif
-*/
+
 
 BalancePrintView::BalancePrintView(empresa *emp,QWidget *parent, const char *name ) : BalancePrintDlg(parent,name) {
    empresaactual=emp;
@@ -110,7 +104,7 @@ void BalancePrintView::boton_codigofinal() {
  **************************************************************/
 void BalancePrintView::presentar(char *tipus){
 #ifndef WIN32
-   int kugar, rtk, txt, html, txtapren, htmlapren;
+   int kugar, txt, html, txtapren, htmlapren;
    int error;
    int pid;
 
@@ -133,7 +127,7 @@ void BalancePrintView::presentar(char *tipus){
    QString cfinal = codigofinal->text();
    int nivel = combonivel->currentItem()+2;
 
-   if (txt | html | rtk | kugar) {
+   if (txt | html | kugar) {
 
       char *argstxt[]={"balance.txt","balance.txt",NULL}; //presentación txt normal
       char *argshtml[]={"balance.html","balance.html",NULL}; //presentación html normal
@@ -149,7 +143,7 @@ void BalancePrintView::presentar(char *tipus){
       
       QLocale spanish(QLocale::Spanish); // vamos a formatear los números con punto para los millares y coma para los decimales
 
-      if (txt | html | rtk | kugar) {                // nom� continuem si hem pogut crear algun fitxer
+      if (txt | html | kugar) {                // nom� continuem si hem pogut crear algun fitxer
 
 
          // Hacemos la consulta de los apuntes a listar en la base de datos.
@@ -247,29 +241,6 @@ void BalancePrintView::presentar(char *tipus){
 		 fitxersortidakugar << " finicial='"<< finicial.ascii() <<"'";		
 		 fitxersortidakugar << " ffinal='"<< ffinal.ascii() <<"'/>\n";
 	 }// end if
-	 
-         if(rtk) {
-            // Ahora vamos a hacer la presentacion como si fuese de RTK.
-/*
-            #ifdef REPORTS            
-            RTK::Report unReport;
-            unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"balance.rtk");
-            InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
-            inp->set(InputBGes::diario, empresaactual, cursorapt);
-            OutputQPainter *salida = new OutputQPainter(57, 59, A4, dots, 0,0,20,20,20,20);
-            unReport.print(*salida);
-            QReportViewer *mViewer = new QReportViewer(salida, true, 0, 0, WShowModal | WDestructiveClose );
-            mViewer->setCaption(tr("Balance", "Informe: "));
-            mViewer->setPageDimensions((int)(salida->getSizeX()), (int)(salida->getSizeY()));
-            mViewer->setPageCollection(salida->getPageCollection());
-            mViewer->show();
-            mViewer->slotFirstPage();
-            #else
-               fprintf(stderr,"No existe soporte para REPORTS \n");
-            #endif             
-            // FIN DE LA PRESENTACION CON RTK.
-*/
-         }// end if
 
                   
          if (txt) {

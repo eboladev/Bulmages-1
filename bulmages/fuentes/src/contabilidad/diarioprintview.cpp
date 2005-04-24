@@ -34,17 +34,9 @@ DiarioPrintView::DiarioPrintView(empresa *emp,QWidget *parent, const char *name 
 
 DiarioPrintView::~DiarioPrintView() {}
 
-/*
-#ifdef REPORTS
-#include "rtkinputbges.h"
-#include "rtkqtreportviewer.h"
-using namespace RTK;
-#endif
-*/
 
 // *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
 void DiarioPrintView::pruebasRTK() {
-#ifdef REPORTS
     	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
 	QString cadena;
 	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.
@@ -62,30 +54,10 @@ void DiarioPrintView::pruebasRTK() {
 	cadena += "/tmp/diario.rtk &";
 	fprintf(stderr,"%s\n",cadena.ascii());
 	system (cadena.ascii()); 
-#endif
 }// end pruebasRTK
 
 // *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
 void DiarioPrintView::pruebasRTKoo() {
-#ifdef REPORTS
-
-/*
-    cursor2 *cursoraux;
-    conexionbase->begin();
-    cursoraux=conexionbase->cargacursor("SELECT ordenasiento, asiento.idasiento AS idasiento, cuenta.descripcion AS descripcion, apunte.debe AS debe , apunte.haber AS haber, conceptocontable, idc_coste, codigo, cuenta.descripcion AS desc1, apunte.fecha AS fecha FROM (asiento LEFT JOIN apunte ON asiento.idasiento=apunte.idasiento) LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ORDER BY ordenasiento", "unquery");
-
-    conexionbase->commit();
-
-    RTK::Report unReport;
-    unReport.readXml(confpr->valor(CONF_DIR_REPORTS)+"diario.rtk");
-    InputBGes *inp = static_cast<InputBGes *>(unReport.getInput());
-    inp->set
-    (InputBGes::diario, empresaactual, cursoraux);
-    OutputOpenOffice *oo = new OutputOpenOffice("/tmp/pruebasbulmages.sxc");
-    unReport.print(*oo);
-    
-*/
-#endif
 }// end pruebasRTKoo
 
 

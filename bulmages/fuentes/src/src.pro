@@ -397,21 +397,6 @@ QMAKE_CLEAN += Makefile
 
 LANGUAGE = C++
 
-
-
-exists (reports){
-  HEADERS += rtkinputbges.h \
-  reports/rtkview/src/rtkqtreportviewer.h \
-  reports/rtkview/src/rtkqtpagedisplay.h
-  SOURCES += rtkinputbges.cpp \
-  reports/rtkview/src/rtkqtreportviewer.cpp \
-  reports/rtkview/src/rtkqtpagedisplay.cpp
-  LIBS += ../src/reports/lib/librtklib.a
-  INCLUDEPATH += reports/rtklib/src \
-  reports/rtkview/src \
-  reports/rtkserver/src
-  DEFINES += REPORTS
-}
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

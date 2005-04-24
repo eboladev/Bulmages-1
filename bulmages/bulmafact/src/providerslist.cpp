@@ -242,7 +242,6 @@ void providerslist::s_removeProvider() {
   */
 void providerslist::s_printProviders() {
 	fprintf(stderr,"Impresión del listado\n");
-#ifdef REPORTS
     	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
 	QString cadena;
 	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.
@@ -255,7 +254,6 @@ void providerslist::s_printProviders() {
 	cadena += "/tmp/providerslist.rtk &";
 	fprintf(stderr,"%s\n",cadena.ascii());
 	system (cadena.ascii());    
-#endif
 }// end s_printProviders.
 
 

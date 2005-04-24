@@ -216,7 +216,6 @@ void ClientsList::s_findClients() {
 
 void ClientsList::s_printClients() {
 	fprintf(stderr,"Impresión del listado\n");
-#ifdef REPORTS
     	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
 	QString cadena;
 	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.
@@ -229,7 +228,6 @@ void ClientsList::s_printClients() {
 	cadena += "/tmp/clientslist.rtk &";
 	fprintf(stderr,"%s\n",cadena.ascii());
 	system (cadena.ascii());    
-#endif
 }// end s_printClients
 
 

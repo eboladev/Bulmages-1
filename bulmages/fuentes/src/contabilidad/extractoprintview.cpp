@@ -23,13 +23,6 @@
 #include "selectcanalview.h"
 #include "empresa.h"
 
-/*
-#ifdef REPORTS
-#include "rtkinputbges.h"
-#include "rtkqtreportviewer.h"
-using namespace RTK;
-#endif
-*/
 
 /** \brief Constructor de la clase que inicializa los parametros necesarios para esta
   * @param emp Empresa con la que va a trabajar esta clase
@@ -242,7 +235,6 @@ QString ExtractoPrintView::montaQuery() {
 
 // *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
 void ExtractoPrintView::pruebasRTK() {
-#ifdef REPORTS
     	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
 	QString cadena;
 	cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"bulma-styles.xml   /tmp/bulma-styles.xml" ;
@@ -263,7 +255,6 @@ void ExtractoPrintView::pruebasRTK() {
 	cadena += "/tmp/extracto1.rtk &";
 	fprintf(stderr,"%s\n",cadena.ascii());
 	system (cadena.ascii());    
-#endif
 }// end pruebasRTK
 
 

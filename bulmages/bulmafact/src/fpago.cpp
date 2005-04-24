@@ -119,6 +119,7 @@ void fpago::s_newFPago() {
     pintar();
 }// end s_newTipoIVA
 
+
 /** SLOT que responde a la pulsación del botón de borrar la familia que se está editando.
   * Lo que hace es que se hace un update de todos los campos
   */

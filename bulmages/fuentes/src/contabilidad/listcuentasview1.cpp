@@ -452,13 +452,11 @@ void listcuentasview1::return_descripcion() {
   * el rango de cuentas entre el que se quiere el listado.
   */
 void listcuentasview1::s_PrintCuentas() {
-#ifdef REPORTS
 	QString cadena;
 	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
 	cadena += conexionbase->nameDB()+" ";
 	cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
 	fprintf(stderr,"%s\n",cadena.ascii());
 	system (cadena.ascii());
-#endif
 }// end s_PrintCuentas
 
