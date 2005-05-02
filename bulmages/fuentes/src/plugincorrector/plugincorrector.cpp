@@ -16,7 +16,7 @@ void entryPoint(Bulmages01 *bges) {
     
     fprintf(stderr,"Estoy dentro del plugin\n");
   // Vamos a probar con un docwindow.
-  QDockWindow  *doc1  = new  QDockWindow(QDockWindow::OutsideDock, bges, "Corrector1");
+  QDockWindow  *doc1  = new  QDockWindow(QDockWindow::OutsideDock, bges, "Corrector");
   doc1->setGeometry(100,100,100,500);
   doc1->setFixedExtentWidth(200);
   correctorwidget *corr = new correctorwidget(doc1,"correctorplugin");
