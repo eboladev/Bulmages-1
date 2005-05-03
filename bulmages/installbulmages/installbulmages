@@ -239,14 +239,13 @@ cp *.png /usr/share/bulmages
 
 info "Instalando ejecutable del programa y scripts auxiliares. \n"
 tiempo
-cp bulmages /usr/local/bin
-cp cargaemp /usr/local/bin
-cp guardaemp /usr/local/bin
-cp bulmafact /usr/local/bin
-cp bulmacont /usr/local/bin
-cp bulmatpv /usr/local/bin
-cp rtkview /usr/local/bin
-
+cp bulmages /usr/bin
+cp cargaemp /usr/bin
+cp guardaemp /usr/bin
+cp bulmafact /usr/bin
+cp bulmacont /usr/bin
+cp bulmatpv /usr/bin
+cp rtkview /usr/bin
 cp trml2pdf/* /usr/bin/
 
 info "Instalando archivos de revision del archivo de configuracion. \n"
@@ -268,6 +267,10 @@ cp -r balances /usr/share/bulmages
 cp -r kugar /usr/share/bulmages
 cp -r openreports /usr/share/bulmages
 
+
+info "Instalacion de plugins. \n"
+tiempo
+cp -r pluginsbulmages /usr/lib
 
    info "Creando bases de datos del sistema y empresas de ejemplo. \n"
    tiempo

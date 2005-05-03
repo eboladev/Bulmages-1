@@ -9,7 +9,7 @@ CONFIG = qt \
          plugin \
          warn_on
 	 	 
-TARGET = corrector
+TARGET = ../../../installbulmages/pluginsbulmages/corrector
 
 VERSION = 1.0.0
 

@@ -40,15 +40,15 @@ su postgres -c "dropdb bulmafact" > /dev/null 2> /dev/null
 rm /etc/bulmages.conf
 rm -rf /usr/share/bulmages
 rm -rf /var/www/bcontaweb
-rm -rf /usr/local/bin/bulmages
-rm -rf /usr/local/bin/cargaemp
-rm -rf /usr/local/bin/guardaemp
-rm -rf /usr/local/bin/bulmafact
-rm -rf /usr/local/bin/bulmacont
-rm -rf /usr/local/bin/bulmatpv
+rm -rf /usr/bin/bulmages
+rm -rf /usr/bin/cargaemp
+rm -rf /usr/bin/guardaemp
+rm -rf /usr/bin/bulmafact
+rm -rf /usr/bin/bulmacont
+rm -rf /usr/bin/bulmatpv
 
 rmdir -rf /usr/share/bulmages
-
+rmdir -rf /usr/lib/pluginsbulmages
 
 mensaje "BulmaGes ha sido completamente desinstalado.
 Puede que queden bases de datos en su ordenador que debera borrar manualmente"

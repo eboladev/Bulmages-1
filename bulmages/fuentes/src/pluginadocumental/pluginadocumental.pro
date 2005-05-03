@@ -9,7 +9,7 @@ CONFIG = qt \
          plugin \
          warn_on
 	 	 
-TARGET = adocumental
+TARGET = ../../../installbulmages/pluginsbulmages/adocumental
 
 VERSION = 1.0.0
 

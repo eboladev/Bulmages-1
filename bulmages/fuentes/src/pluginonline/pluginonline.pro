@@ -7,7 +7,7 @@ TEMPLATE = lib
 CONFIG = qt \
          plugin \
          warn_on
-TARGET = pluginonline
+TARGET = ../../../installbulmages/pluginsestadisticas/pluginonline
 VERSION = 1.0.0
 DESTDIR = .
 LIBS += -lqt-mt
