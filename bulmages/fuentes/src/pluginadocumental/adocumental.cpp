@@ -17,6 +17,10 @@
 #include "adocumental.h"
 #include "empresa.h"
 
+#include <qtextbrowser.h>
+
+
+
 #define COL_IDADOCUMENTAL 0
 #define COL_IDASIENTO 1
 #define COL_DESCRIPCIONADOCUMENTAL 2
@@ -98,15 +102,18 @@ adocumental::adocumental(empresa *emp,QWidget *parent, const char *name ) : adoc
 
     m_listado->setColumnWidth(COL_IDADOCUMENTAL,200);
     m_listado->setColumnWidth(COL_IDASIENTO,200);
-    m_listado->setColumnWidth(COL_DESCRIPCIONADOCUMENTAL,100);
+    m_listado->setColumnWidth(COL_DESCRIPCIONADOCUMENTAL,200);
     m_listado->setColumnWidth(COL_FECHAINTADOCUMENTAL,50);
     m_listado->setColumnWidth(COL_FECHAASADOCUMENTAL,50);
-    m_listado->setColumnWidth(COL_ARCHIVOADOCUMENTAL,150);
+    m_listado->setColumnWidth(COL_ARCHIVOADOCUMENTAL,250);
     m_listado->setColumnWidth(COL_ORDENASIENTO,25);
 
     m_listado->hideColumn(COL_IDADOCUMENTAL);
     m_listado->hideColumn(COL_IDASIENTO);
-
+    m_listado->hideColumn(COL_FECHAINTADOCUMENTAL);
+    m_listado->hideColumn(COL_FECHAASADOCUMENTAL);
+    
+    
     query = "SELECT * FROM configuracion WHERE nombre='RutaADocumental'";
     conexionbase->begin();
     cursor2 *cursoraux2=conexionbase->cargacursor(query,"thequery");
@@ -125,6 +132,8 @@ adocumental::~adocumental() {}// end adocumental
 
 
 void adocumental::inicializa() {
+    QString textoWeb="";
+    textoWeb = "<TABLE BORDER =\"1\">";
     QString query = "SELECT * FROM adocumental LEFT JOIN asiento ON adocumental.idasiento=asiento.idasiento ORDER BY ordenasiento";
     conexionbase->begin();
     cursor2 *cursoraux1=conexionbase->cargacursor(query,"elquery");
@@ -139,11 +148,19 @@ void adocumental::inicializa() {
         m_listado->setText(i,COL_FECHAASADOCUMENTAL, cursoraux1->valor("fechaasadocumental"));
         m_listado->setText(i,COL_ARCHIVOADOCUMENTAL, cursoraux1->valor("archivoadocumental"));
         m_listado->setText(i,COL_ORDENASIENTO, cursoraux1->valor("ordenasiento"));
-
+	textoWeb += "<TR>";
+	textoWeb +="<TD>"+cursoraux1->valor("descripcionadocumental")+"</TD>";
+	textoWeb +="<TD>"+cursoraux1->valor("archivoadocumental")+"</TD>";
+	textoWeb += "</TR>";
+	
         cursoraux1->siguienteregistro ();
         i++;
     }// end while
     delete cursoraux1;
+    
+    textoWeb += "</TABLE>";
+    
+    m_web->setText(textoWeb);
 }// end inicializa
 
 void adocumental::doubleclicked(int row, int, int, const QPoint &) {
@@ -216,3 +233,35 @@ void adocumental::boton_desasociar() {
     }// end if
     inicializa();
 }// end botondesasociar
+
+void adocumental::s_deleteADocumental() {
+    idadocumental = m_listado->text(m_listado->currentRow(), COL_IDADOCUMENTAL);
+    if (idadocumental != "") {
+        QString SQLQuery = "DELETE FROM  adocumental WHERE idadocumental="+idadocumental;
+        conexionbase->begin();
+        conexionbase->ejecuta(SQLQuery);
+        conexionbase->commit();
+    }// end if
+    inicializa();
+}// end s_deleteADocumental
+
+
+void adocumental::s_saveADocumental() {
+    int row = m_listado->currentRow();
+    idadocumental = m_listado->text(row, COL_IDADOCUMENTAL);
+    if (idadocumental != "") {
+        QString Query;
+//        m_listado->text(row,COL_IDASIENTO, cursoraux1->valor("idasiento"));
+        Query  = "UPDATE adocumental SET ";
+	Query += "descripcionadocumental='"+m_listado->text(row,COL_DESCRIPCIONADOCUMENTAL)+"'";
+	Query += " WHERE idadocumental = "+idadocumental;
+	conexionbase->begin();
+	conexionbase->ejecuta(Query);
+	conexionbase->commit();
+//        m_listado->text(row,COL_FECHAINTADOCUMENTAL);
+//        m_listado->text(row,COL_FECHAASADOCUMENTAL);
+//        m_listado->text(row,COL_ARCHIVOADOCUMENTAL);
+//        m_listado->text(row,COL_ORDENASIENTO);
+    }// end if
+    inicializa();
+} // end s_saveADocumental

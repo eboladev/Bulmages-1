@@ -72,7 +72,8 @@ public slots:
    virtual void doubleclicked(int, int, int, const QPoint &);
    virtual void boton_newadocumental();
    virtual void boton_desasociar();
-   
+   virtual void s_deleteADocumental();   
+   virtual void s_saveADocumental();
 };
 
 #endif
