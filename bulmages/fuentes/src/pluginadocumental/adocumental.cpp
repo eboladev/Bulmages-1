@@ -92,13 +92,13 @@ adocumental::adocumental(empresa *emp,QWidget *parent, const char *name ) : adoc
 
     m_listado->setNumRows(0);
     m_listado->setNumCols(7);
-    m_listado->horizontalHeader()->setLabel( COL_IDADOCUMENTAL, tr( "COL_IDADOCUMENTAL" ) );
-    m_listado->horizontalHeader()->setLabel( COL_IDASIENTO, tr( "COL_IDASIENTO" ) );
-    m_listado->horizontalHeader()->setLabel( COL_DESCRIPCIONADOCUMENTAL, tr( "COL_DESCRIPCIONADOCUMENTAL" ) );
-    m_listado->horizontalHeader()->setLabel( COL_FECHAINTADOCUMENTAL, tr( "FECHAINTADOCUMENTAL" ) );
-    m_listado->horizontalHeader()->setLabel( COL_FECHAASADOCUMENTAL, tr( "FECHAASADOCUMENTAL" ) );
-    m_listado->horizontalHeader()->setLabel( COL_ARCHIVOADOCUMENTAL, tr( "COL_ARCHIVOADOCUMENTAL" ) );
-    m_listado->horizontalHeader()->setLabel( COL_ORDENASIENTO, tr( "COL_ORDENASIENTO" ) );
+    m_listado->horizontalHeader()->setLabel( COL_IDADOCUMENTAL, tr( "idarchivodocumental" ) );
+    m_listado->horizontalHeader()->setLabel( COL_IDASIENTO, tr( "idasiento" ) );
+    m_listado->horizontalHeader()->setLabel( COL_DESCRIPCIONADOCUMENTAL, tr( "Descripcion" ) );
+    m_listado->horizontalHeader()->setLabel( COL_FECHAINTADOCUMENTAL, tr( "Fecha Doc" ) );
+    m_listado->horizontalHeader()->setLabel( COL_FECHAASADOCUMENTAL, tr( "Fecah Asoc" ) );
+    m_listado->horizontalHeader()->setLabel( COL_ARCHIVOADOCUMENTAL, tr( "Archivo" ) );
+    m_listado->horizontalHeader()->setLabel( COL_ORDENASIENTO, tr( "Asiento" ) );
 
     m_listado->setColumnWidth(COL_IDADOCUMENTAL,200);
     m_listado->setColumnWidth(COL_IDASIENTO,200);
@@ -251,17 +251,24 @@ void adocumental::s_saveADocumental() {
     idadocumental = m_listado->text(row, COL_IDADOCUMENTAL);
     if (idadocumental != "") {
         QString Query;
-//        m_listado->text(row,COL_IDASIENTO, cursoraux1->valor("idasiento"));
         Query  = "UPDATE adocumental SET ";
 	Query += "descripcionadocumental='"+m_listado->text(row,COL_DESCRIPCIONADOCUMENTAL)+"'";
 	Query += " WHERE idadocumental = "+idadocumental;
 	conexionbase->begin();
 	conexionbase->ejecuta(Query);
 	conexionbase->commit();
-//        m_listado->text(row,COL_FECHAINTADOCUMENTAL);
-//        m_listado->text(row,COL_FECHAASADOCUMENTAL);
-//        m_listado->text(row,COL_ARCHIVOADOCUMENTAL);
-//        m_listado->text(row,COL_ORDENASIENTO);
     }// end if
     inicializa();
 } // end s_saveADocumental
+
+void adocumental::s_agregarDirectorio() {    
+    QString fn = QFileDialog::getExistingDirectory(
+                    confpr->valor(CONF_DIR_USER),
+                    this,
+                    "get existing directory",
+                    "Choose a directory",
+                    TRUE );    
+    if (!fn.isEmpty()) {
+    }// end if
+    inicializa();
+}// end s_agregarDirectorio

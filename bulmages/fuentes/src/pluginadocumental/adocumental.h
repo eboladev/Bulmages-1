@@ -74,6 +74,7 @@ public slots:
    virtual void boton_desasociar();
    virtual void s_deleteADocumental();   
    virtual void s_saveADocumental();
+   virtual void s_agregarDirectorio();
 };
 
 #endif
