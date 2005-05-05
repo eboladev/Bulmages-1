@@ -68,6 +68,7 @@ public:
         void asociaasiento(QString);
         void presentaprimervacio();
         void inicializa(); // A veces es necesario repintar las cosas. Esta funcion es la que lo hace.
+	void newADocumental(QString);
 public slots:
    virtual void doubleclicked(int, int, int, const QPoint &);
    virtual void boton_newadocumental();
