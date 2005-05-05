@@ -104,7 +104,7 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
     tapunts->setColumnWidth(COL_CONCEPTO,tamletra*25);
     tapunts->setColumnWidth(COL_DEBE,tamletra*8);
     tapunts->setColumnWidth(COL_HABER,tamletra*8);
-    tapunts->setColumnWidth(COL_NOMCUENTA,tamletra*15);
+    tapunts->setColumnWidth(COL_NOMCUENTA,tamletra*20);
     tapunts->setColumnWidth(COL_CONTRAPARTIDA,tamletra*10);
     tapunts->setColumnWidth(COL_TIPOIVA,tamletra*8);
     tapunts->setColumnWidth(COL_IVA,tamletra*15);
@@ -135,7 +135,7 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
     // Consideramos que no hay row actual
     rowactual = -1;
 
-    /// Creamos el layout para Plugins y le damos los atributos públicos.
+    /// Creamos el layout para Plugins y le damos los atributos pblicos.
     layoutPlugins = new QHBoxLayout( 0, 0, 6, "LayoutPlugins");
     layoutPlugins->setMargin(0);
     layoutPlugins->setSpacing(0);
@@ -570,10 +570,10 @@ void intapunts3view::boton_abrirasiento() {
 }// end boton_abrirasiento
 
 
-/*********************************************************************
- * Esta funciï¿½ se activa cuando se pulsa sobre el boton cerrar asiento del
+/***************************************************************************
+ * Esta funciÃ³n se activa cuando se pulsa sobre el boton cerrar asiento del
  * formulario
- *********************************************************************/
+ **************************************************************************/
 void intapunts3view::boton_cerrarasiento() {
     int eleccion;
     guardaborrador(rowactual);
@@ -693,10 +693,11 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
     QPopupMenu *menucoste = new QPopupMenu( this );
     int opcion;
     cursor2 *cur;
-    QString query   ;
+    QString num_apuntes;
 
     if (abierto) {
         // Si el asiento esta abierto mostramos el popup para asientos abiertos
+	QString query;
         popup = new QPopupMenu;
         popup->insertItem(tr("Igual que la anterior (*)"),4);
         switch (col) {
@@ -740,6 +741,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
         popup->insertSeparator();
         popup->insertItem(tr("Duplicar Apunte"),1);
         popup->insertItem(tr("Borrar Apunte"),6);
+        popup->insertItem(tr("Vaciar Asiento"),7);
         popup->insertSeparator();
         popup->insertItem(tr("Subir (Ctrl Arriba)"),2);
         popup->insertItem(tr("Bajar (Ctrl Abajo)"),3);
@@ -764,9 +766,6 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
             break;
         case 4:
             duplicar(col);
-            break;
-        case 6:
-            borraborrador(row);
             break;
         case 5:
             switch(col) {
@@ -804,8 +803,17 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
                 tapunts->setText(row,COL_HABER, descuadre->text());
                 calculadescuadre();
                 break;
-            }// end switch
+            }// end switch		
+            break;	    
+        case 6:
+            borraborrador(row);
             break;
+	case 7:
+	    if(QMessageBox::question(this, tr("Â¡Cuidado!"), tr("Â¿Seguro que quiere borrar todos los apuntes del asiento?"), 
+				     tr("&NO"), tr("&SI"), QString::null, 1, 0)){
+		for(; tapunts->text(0,COL_IDBORRADOR); borraborrador(0));
+	    }// end if
+	    break;
         default:
             switch(col) {
             case COL_CANAL:
@@ -866,7 +874,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
         popup->insertSeparator();
         if (col == COL_NOMCUENTA || col == COL_CONTRAPARTIDA || col == COL_SUBCUENTA) {
             popup->insertItem(tr("Editar Cuenta"),130);
-            popup->insertItem(tr("Substituir Cuenta"), 140);
+            popup->insertItem(tr("Sustituir Cuenta"), 140);
         }// end if
         opcion = popup->exec(poin);
         switch(opcion) {
@@ -1016,7 +1024,7 @@ void intapunts3view::borraborrador(int row) {
         while (!tapunts->text(rowaux,COL_IDBORRADOR).isNull()) {
             for (int i=0; i < tapunts->numCols(); i++)
                 tapunts->setText(rowaux, i, tapunts->text(rowaux+1, i));
-	    guardaborrador(rowaux);  // Guardamos el borrador para que la base de datos esté en coherencia con esto.
+	    guardaborrador(rowaux);  // Guardamos el borrador para que la base de datos estï¿½en coherencia con esto.
             rowaux++;
         }// end while
         calculadescuadre();
@@ -1626,7 +1634,6 @@ void intapunts3view::boton_filtrar() {
     boton_inicio();
 }// end boton_filtrar
 
-
 void intapunts3view::eturn_fechaasiento() {
     QString query;
     int resultado;
@@ -1761,7 +1768,7 @@ void intapunts3view::asiento_regularizacion() {
         if (idasiento==-1)
             idasiento=atoi(IDASIENTO);
 
-        /// El parametro está en la configuración de empresa.
+        /// El parametro estï¿½en la configuraciï¿½ de empresa.
         QString query = "SELECT * FROM cuenta WHERE codigo in (SELECT valor FROM configuracion WHERE nombre='CuentaRegularizacion')";
         cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");
         idcuenta1 = atoi(cur->valor("idcuenta").ascii());
