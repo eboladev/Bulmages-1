@@ -1,5 +1,5 @@
-# Archivo generado por el gestor qmake de kdevelop.
-# -------------------------------------------
+# Archivo generado por el gestor qmake de kdevelop. 
+# ------------------------------------------- 
 # Subdirectorio relativo al directorio principal del proyecto: ./fuentes/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmacont
 
@@ -46,12 +46,12 @@ FORMS += comun/uiselector.ui \
          formularios/mod300dlg.ui \
          contabilidad/cobropagodlg.ui \
          contabilidad/tipoivadlg.ui \
-         contabilidad/fpagodlg.ui
+         contabilidad/fpagodlg.ui 
 TRANSLATIONS += contabilidad/bulmages_es.ts \
                 contabilidad/bulmages_ca.ts \
                 contabilidad/bulmages_en.ts \
                 contabilidad/bulmages_fr.ts \
-                contabilidad/bulmages_de.ts
+                contabilidad/bulmages_de.ts 
 IMAGES += images/kate.png \
           images/kfind.png \
           images/clock.png \
@@ -138,7 +138,7 @@ IMAGES += images/kate.png \
           images/pda_blue.png \
           images/tux1.png \
           images/filetypes.png \
-          images/edit.png
+          images/edit.png 
 IDLS += contabilidad/about.ui \
         contabilidad/int_apunts3.ui \
         contabilidad/aplinteligentesdlg.ui \
@@ -184,7 +184,7 @@ IDLS += contabilidad/about.ui \
         contabilidad/amortizacionesdlg.ui \
         contabilidad/uibloqfecha.ui \
         contabilidad/cobropagodlg.ui \
-        contabilidad/tipoivadlg.ui
+        contabilidad/tipoivadlg.ui 
 HEADERS += comun/splashscreen.h \
            contabilidad/bulmages01.h \
            contabilidad/aboutview.h \
@@ -238,7 +238,8 @@ HEADERS += comun/splashscreen.h \
            contabilidad/cobropagoview.h \
            contabilidad/bbloqfecha.h \
            contabilidad/tipoivaview.h \
-           contabilidad/fpagoview.h
+           contabilidad/fpagoview.h \
+           contabilidad/arbol.h 
 SOURCES += main.cpp \
            comun/splashscreen.cpp \
            contabilidad/bulmages01.cpp \
@@ -293,19 +294,97 @@ SOURCES += main.cpp \
            contabilidad/cobropagoview.cpp \
            contabilidad/bbloqfecha.cpp \
            contabilidad/tipoivaview.cpp \
-           contabilidad/fpagoview.cpp
-
-
-TEMPLATE = app
-
-TARGETDEPS += ../../bulmalib/libbulmalib.a
-
+           contabilidad/fpagoview.cpp \
+           contabilidad/arbol.cpp
+uibloqfecha.ui.target = contabilidad/uibloqfecha.ui
+uibloqfecha.ui.commands = $$IDL_COMPILER
+tipoivadlg.ui.target = contabilidad/tipoivadlg.ui
+tipoivadlg.ui.commands = contabilidad/tipoivadlg.ui
+regivaprintdlg.ui.target = contabilidad/regivaprintdlg.ui
+regivaprintdlg.ui.commands = $$IDL_COMPILER
+propiedemp.ui.target = contabilidad/propiedemp.ui
+propiedemp.ui.commands = $$IDL_COMPILER
+mpatrimonialesdlg.ui.target = contabilidad/mpatrimonialesdlg.ui
+mpatrimonialesdlg.ui.commands = $$IDL_COMPILER
+mpatrimonialdlg.ui.target = contabilidad/mpatrimonialdlg.ui
+mpatrimonialdlg.ui.commands = $$IDL_COMPILER
+mantComptes.ui.target = contabilidad/mantComptes.ui
+mantComptes.ui.commands = $$IDL_COMPILER
+listivadlg.ui.commands = $$IDL_COMPILER
+listcuentasdlg1.ui.target = contabilidad/listcuentasdlg1.ui
+listcuentasdlg1.ui.commands = $$IDL_COMPILER
+listadocuentas1.ui.target = contabilidad/listadocuentas1.ui
+listadocuentas1.ui.commands = $$IDL_COMPILER
+ivadlg.ui.target = contabilidad/tipoivadlg.ui
+ivadlg.ui.commands = contabilidad/tipoivadlg.ui
+int_apunts3.ui.target = contabilidad/int_apunts3.ui
+int_apunts3.ui.commands = $$IDL_COMPILER
+fpagodlg.ui.target = contabilidad/fpagodlg.ui
+fpagodlg.ui.commands = contabilidad/fpagodlg.ui
+filtrarextractosdlg.ui.target = contabilidad/filtrarextractosdlg.ui
+filtrarextractosdlg.ui.commands = $$IDL_COMPILER
+filtrardiariodlg.ui.target = contabilidad/filtrardiariodlg.ui
+filtrardiariodlg.ui.commands = $$IDL_COMPILER
+filtrarasientosdlg.ui.target = contabilidad/filtrarasientosdlg.ui
+filtrarasientosdlg.ui.commands = $$IDL_COMPILER
+extractoprintdlg.ui.target = contabilidad/extractoprintdlg.ui
+extractoprintdlg.ui.commands = $$IDL_COMPILER
+extractodlg1.ui.target = contabilidad/extractodlg1.ui
+extractodlg1.ui.commands = $$IDL_COMPILER
+diarioprintdlg.ui.target = contabilidad/diarioprintdlg.ui
+diarioprintdlg.ui.commands = $$IDL_COMPILER
+diariodlg1.ui.target = contabilidad/diariodlg1.ui
+diariodlg1.ui.commands = $$IDL_COMPILER
+cuentadlg.ui.target = contabilidad/cuentadlg.ui
+cuentadlg.ui.commands = $$IDL_COMPILER
+correctorwdt.ui.target = contabilidad/correctorwdt.ui
+correctorwdt.ui.commands = $$IDL_COMPILER
+compbalancedlg.ui.target = contabilidad/compbalancedlg.ui
+compbalancedlg.ui.commands = $$IDL_COMPILER
+cobropagodlg.ui.target = contabilidad/cobropagodlg.ui
+cobropagodlg.ui.commands = contabilidad/cobropagodlg.ui
+ccostedlg.ui.target = contabilidad/ccostedlg.ui
+ccostedlg.ui.commands = $$IDL_COMPILER
+canaldlg.ui.target = contabilidad/canaldlg.ui
+canaldlg.ui.commands = $$IDL_COMPILER
+balancesprintdlg.ui.target = contabilidad/balancesprintdlg.ui
+balancesprintdlg.ui.commands = $$IDL_COMPILER
+balancesdlg.ui.target = contabilidad/balancesdlg.ui
+balancesdlg.ui.commands = $$IDL_COMPILER
+balanceprintdlg.ui.target = contabilidad/balanceprintdlg.ui
+balanceprintdlg.ui.commands = $$IDL_COMPILER
+balancedlg.ui.target = contabilidad/balancedlg.ui
+balancedlg.ui.commands = $$IDL_COMPILER
+balance1dlg.ui.target = contabilidad/balance1dlg.ui
+balance1dlg.ui.commands = $$IDL_COMPILER
+asientosdlg.ui.target = contabilidad/asientosdlg.ui
+asientosdlg.ui.commands = $$IDL_COMPILER
+asientodlg.ui.target = contabilidad/asientodlg.ui
+asientodlg.ui.commands = $$IDL_COMPILER
+aplinteligentesdlg.ui.target = contabilidad/aplinteligentesdlg.ui
+aplinteligentesdlg.ui.commands = $$IDL_COMPILER
+amortizacionesdlg.ui.target = contabilidad/amortizacionesdlg.ui
+amortizacionesdlg.ui.commands = $$IDL_COMPILER
+ainteligentesdlg.ui.target = contabilidad/ainteligentesdlg.ui
+ainteligentesdlg.ui.commands = $$IDL_COMPILER
+adocumentalbase.ui.target = contabilidad/adocumentalbase.ui
+adocumentalbase.ui.commands = $$IDL_COMPILER
+actualizacionesdlg.ui.target = contabilidad/actualizacionesdlg.ui
+actualizacionesdlg.ui.commands = $$IDL_COMPILER
+about.ui.target = contabilidad/about.ui
+about.ui.commands = $$IDL_COMPILER
+QMAKE_CLEAN = Makefile
+LANGUAGE = C++
+TARGETDEPS += ../../bulmalib/libbulmalib.a \
+../../bulmalib/libbulmalib.a
 LIBS += ../../bulmalib/libbulmalib.a \
 -lqt-mt \
 -lpq \
+../../bulmalib/libbulmalib.a \
+-lqt-mt \
+-lpq \
 -rdynamic
-
-INCLUDEPATH = ../../bulmalib \
+INCLUDEPATH += ../../bulmalib \
 ../src \
 comun \
 contabilidad \
@@ -314,95 +393,16 @@ formularios \
 /usr/include/qt \
 ../../bulmalib/.ui
 TARGET = ../../installbulmages/bulmacont
-CONFIG += qt \
-          release \
-          warn_on
-contabilidad/uibloqfecha.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/uibloqfecha.ui.target
-contabilidad/uibloqfecha.ui.target = contabilidad/uibloqfecha.ui
-contabilidad/amortizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/amortizacionesdlg.ui.target
-contabilidad/amortizacionesdlg.ui.target = contabilidad/amortizacionesdlg.ui
-contabilidad/diarioprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/diarioprintdlg.ui.target
-contabilidad/diarioprintdlg.ui.target = contabilidad/diarioprintdlg.ui
-contabilidad/actualizacionesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/actualizacionesdlg.ui.target
-contabilidad/actualizacionesdlg.ui.target = contabilidad/actualizacionesdlg.ui
-contabilidad/extractoprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/extractoprintdlg.ui.target
-contabilidad/extractoprintdlg.ui.target = contabilidad/extractoprintdlg.ui
-contabilidad/filtrarextractosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/filtrarextractosdlg.ui.target
-contabilidad/filtrarextractosdlg.ui.target = contabilidad/filtrarextractosdlg.ui
-contabilidad/propiedemp.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/propiedemp.ui.target
-contabilidad/propiedemp.ui.target = contabilidad/propiedemp.ui
-contabilidad/ainteligentesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ainteligentesdlg.ui.target
-contabilidad/ainteligentesdlg.ui.target = contabilidad/ainteligentesdlg.ui
-contabilidad/ccostedlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ccostedlg.ui.target
-contabilidad/ccostedlg.ui.target = contabilidad/ccostedlg.ui
-contabilidad/canaldlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/canaldlg.ui.target
-contabilidad/canaldlg.ui.target = contabilidad/canaldlg.ui
-contabilidad/balancesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancesdlg.ui.target
-contabilidad/balancesdlg.ui.target = contabilidad/balancesdlg.ui
-contabilidad/balancesprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancesprintdlg.ui.target
-contabilidad/balancesprintdlg.ui.target = contabilidad/balancesprintdlg.ui
-contabilidad/balanceprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balanceprintdlg.ui.target
-contabilidad/balanceprintdlg.ui.target = contabilidad/balanceprintdlg.ui
-contabilidad/mpatrimonialesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/mpatrimonialesdlg.ui.target
-contabilidad/mpatrimonialesdlg.ui.target = contabilidad/mpatrimonialesdlg.ui
-contabilidad/mpatrimonialdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/mpatrimonialdlg.ui.target
-contabilidad/mpatrimonialdlg.ui.target = contabilidad/mpatrimonialdlg.ui
-contabilidad/compbalancedlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/compbalancedlg.ui.target
-contabilidad/compbalancedlg.ui.target = contabilidad/compbalancedlg.ui
-contabilidad/ivadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/ivadlg.ui.target
-contabilidad/ivadlg.ui.target = contabilidad/ivadlg.ui
-contabilidad/regivaprintdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/regivaprintdlg.ui.target
-contabilidad/regivaprintdlg.ui.target = contabilidad/regivaprintdlg.ui
-contabilidad/listivadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/listivadlg.ui.target
-contabilidad/listivadlg.ui.target = contabilidad/listivadlg.ui
-contabilidad/asientosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/asientosdlg.ui.target
-contabilidad/asientosdlg.ui.target = contabilidad/asientosdlg.ui
-contabilidad/filtrarasientosdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/filtrarasientosdlg.ui.target
-contabilidad/filtrarasientosdlg.ui.target = contabilidad/filtrarasientosdlg.ui
-contabilidad/aplinteligentesdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/aplinteligentesdlg.ui.target
-contabilidad/aplinteligentesdlg.ui.target = contabilidad/aplinteligentesdlg.ui
-contabilidad/asientodlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/asientodlg.ui.target
-contabilidad/asientodlg.ui.target = contabilidad/asientodlg.ui
-contabilidad/int_apunts3.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/int_apunts3.ui.target
-contabilidad/int_apunts3.ui.target = contabilidad/int_apunts3.ui
-contabilidad/balancedlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balancedlg.ui.target
-contabilidad/balancedlg.ui.target = contabilidad/balancedlg.ui
-contabilidad/balance1dlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/balance1dlg.ui.target
-contabilidad/balance1dlg.ui.target = contabilidad/balance1dlg.ui
-contabilidad/extractodlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/extractodlg1.ui.target
-contabilidad/extractodlg1.ui.target = contabilidad/extractodlg1.ui
-contabilidad/filtrardiariodlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/filtrardiariodlg.ui.target
-contabilidad/filtrardiariodlg.ui.target = contabilidad/filtrardiariodlg.ui
-contabilidad/diariodlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/diariodlg1.ui.target
-contabilidad/diariodlg1.ui.target = contabilidad/diariodlg1.ui
-contabilidad/cuentadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/cuentadlg.ui.target
-contabilidad/cuentadlg.ui.target = contabilidad/cuentadlg.ui
-contabilidad/listcuentasdlg1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/listcuentasdlg1.ui.target
-contabilidad/listcuentasdlg1.ui.target = contabilidad/listcuentasdlg1.ui
-contabilidad/mantComptes.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/mantComptes.ui.target
-contabilidad/mantComptes.ui.target = contabilidad/mantComptes.ui
-contabilidad/listadocuentas1.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/listadocuentas1.ui.target
-contabilidad/listadocuentas1.ui.target = contabilidad/listadocuentas1.ui
-contabilidad/about.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$contabilidad/about.ui.target
-contabilidad/about.ui.target = contabilidad/about.ui
-contabilidad/cobropagodlg.ui.target = contabilidad/cobropagodlg.ui
-contabilidad/cobropagodlg.ui.commands = contabilidad/cobropagodlg.ui
-contabilidad/tipoivadlg.ui.target = contabilidad/tipoivadlg.ui
-contabilidad/tipoivadlg.ui.commands = contabilidad/tipoivadlg.ui
-contabilidad/fpagodlg.ui.target = contabilidad/fpagodlg.ui
-contabilidad/fpagodlg.ui.commands = contabilidad/fpagodlg.ui
-
-
-QMAKE_CLEAN += Makefile
-
-LANGUAGE = C++
-
+CONFIG += debug \
+warn_on \
+qt
+TEMPLATE = app
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
   bulmages_install_script.path = .
-  bulmages_install_script.extra = echo; echo "**************************"; echo Para Instalar BULMAGES ejecute el script de instalación; echo "installbulmages"; echo que encontrara en la carpeta installbulmages.; echo Gracias.; echo "(El equipo de Bulmages)"; echo "**************************"; echo;
+  bulmages_install_script.extra = echo; echo "**************************"; echo Para Instalar BULMAGES ejecute el script de instalaci?; echo "installbulmages"; echo que encontrara en la carpeta installbulmages.; echo Gracias.; echo "(El equipo de Bulmages)"; echo "**************************"; echo;
   exists(/usr/include/postgresql/libpq-fe.h){
     DEFINES += DISTRO_DEBIAN
     DEFINES += QT_THREAD_SUPPORT
