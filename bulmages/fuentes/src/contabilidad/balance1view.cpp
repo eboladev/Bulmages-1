@@ -2,7 +2,7 @@
                           balance1view.cpp  -  description
                              -------------------
     begin                : lun jun 23 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -53,7 +53,7 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
       
    listado->clear();
 
-	CUENTA = listado->addColumn("código cuenta",150);
+	CUENTA = listado->addColumn("cï¿½igo cuenta",150);
 	DENOMINACION = listado->addColumn("nombre cuenta",350);
 	SALDO_ANT = listado->addColumn("Saldo Anterior",90);
 	DEBE = listado->addColumn("Debe",90);
@@ -94,7 +94,7 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
    connect( listado, SIGNAL( contextMenuRequested( QListViewItem *, const QPoint &, int) ), this, SLOT( contextmenu(QListViewItem *, const QPoint &, int) ) );
 
    // Iniciamos los componentes de la fecha para que al principio aparezcan
-   // Como el año inicial.
+   // Como el aï¿½ inicial.
    QString cadena;
    cadena.sprintf("%2.2d/%2.2d/%4.4d",1, 1, QDate::currentDate().year());
    fechainicial1->setText(cadena);
@@ -147,7 +147,7 @@ void balance1view::cargacostes() {
 // Si el parametro pasado es un:
 // 0 -> del dia actual
 // 1 -> del mes actual
-// 2 -> del año actual
+// 2 -> del aï¿½ actual
 void balance1view::boton_extracto1(int tipo) {
 	QDate fecha1, fecha2, fechaact, fechaact1;
 	if(!fechainicial1->text().isEmpty()) {
@@ -181,7 +181,7 @@ void balance1view::boton_extracto1(int tipo) {
 // Si el parametro pasado es un:
 // 0 -> del dia actual
 // 1 -> del mes actual
-// 2 -> del año actual
+// 2 -> del aï¿½ actual
 void balance1view::boton_diario1(int tipo) {
 	QDate fecha1, fecha2, fechaact, fechaact1;
 	if(!fechainicial1->text().isEmpty()) {
@@ -253,7 +253,7 @@ void balance1view::presentar() {
       int idc_coste;
       idc_coste = ccostes[combocoste->currentItem()];
 
-      // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
+      // La consulta es compleja, requiere la creaciï¿½ de una tabla temporal y de cierta mandanga por lo que puede
       // Causar problemas con el motor de base de datos.      
 	query= "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo, ejdebe, ejhaber, (ejdebe-ejhaber) AS ejsaldo FROM cuenta";
 	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '"+finicial+"' AND fecha<= '"+ffinal+"' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta";
@@ -267,7 +267,7 @@ void balance1view::presentar() {
       conexionbase->ejecuta(query);
       query.sprintf("DELETE FROM balancetemp WHERE debe=0 AND haber =0");
       conexionbase->ejecuta(query);
-      // Vamos a implementar el tema del código
+      // Vamos a implementar el tema del cï¿½igo
       if (cinicial != "") {
          query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'",cinicial.ascii());
          conexionbase->ejecuta(query);
@@ -366,7 +366,7 @@ void balance1view::presentar() {
       // Vaciamos el cursor de la base de datos.
       delete cursorapt1;
 
-      // Eliminamos la tabla temporal y cerramos la transacción.
+      // Eliminamos la tabla temporal y cerramos la transacciï¿½.
 ///      conexionbase->commit();
 ///      conexionbase->begin();
       query.sprintf("DROP TABLE balancetemp");
@@ -484,11 +484,11 @@ void balance1view::nivelactivated1 (int nivel, QListViewItem *ot) {
 }// end nivelactivated1
 
 
-/** \brief SLOT que responde a la petición de un menú contextual para un elemento del balance.
-  * @param poin Punto en el que se ha hecho la pulsación del ratón y que, por tanto, es donde querremos hacer aparecer el menu contextual.
+/** \brief SLOT que responde a la peticiï¿½ de un men contextual para un elemento del balance.
+  * @param poin Punto en el que se ha hecho la pulsaciï¿½ del ratï¿½ y que, por tanto, es donde querremos hacer aparecer el menu contextual.
   *
   * Creamos el objeto QPopupMenu con las opciones que queremos que aparezcan.
-  * Lo invocamos y según la opción que haya elegido el usuario llamamos a la función que da respuesta a dicha petición.
+  * Lo invocamos y segn la opciï¿½ que haya elegido el usuario llamamos a la funciï¿½ que da respuesta a dicha peticiï¿½.
   */
 void balance1view::contextmenu( QListViewItem *, const QPoint &poin, int) {
 	QPopupMenu *popup;
@@ -496,11 +496,11 @@ void balance1view::contextmenu( QListViewItem *, const QPoint &poin, int) {
 	popup = new QPopupMenu;
 	popup->insertItem(tr("Ver Diario (Este dia)"),101);
 	popup->insertItem(tr("Ver Diario (Este mes)"),103);
-	popup->insertItem(tr("Ver Diario (Este año)"),104);
+	popup->insertItem(tr("Ver Diario (Este aï¿½)"),104);
 	popup->insertSeparator();
 	popup->insertItem(tr("Ver Extracto (Este dia)"),111);
 	popup->insertItem(tr("Ver Extracto (Este mes)"),113);
-	popup->insertItem(tr("Ver Extracto (Este año)"),114);
+	popup->insertItem(tr("Ver Extracto (Este aï¿½)"),114);
 	opcion = popup->exec(poin);
 	switch(opcion) {
 		case 101:
@@ -525,22 +525,22 @@ void balance1view::contextmenu( QListViewItem *, const QPoint &poin, int) {
 }// end contextmenu
 
 
-/** \brief SLOT que responde a la pulsación del botón de imprimir
+/** \brief SLOT que responde a la pulsacion del boton de imprimir
   * Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del balance y lo ejecuta en modo Modal.
   */
 void balance1view::boton_imprimir() {
-   BalancePrintView *balan = new BalancePrintView(empresaactual,0,0);
+   BalancePrintView *balan = new BalancePrintView(empresaactual);
    balan->inicializa1(codigoinicial->text(), codigofinal->text(), fechainicial1->text(), fechafinal1->text(), TRUE);
    balan->exec();
 }// end boton_imprimir.
 
 
-/** \brief SLOT que responde a la pulsación de texto sobre el campo de codigo
-  * @param texto El valor del campo tras la pulsación.
+/** \brief SLOT que responde a la pulsaciï¿½ de texto sobre el campo de codigo
+  * @param texto El valor del campo tras la pulsaciï¿½.
   *
-  * Usamos la función sender() para saber quien genera la llamada y actuamos en consecuencia.
+  * Usamos la funciï¿½ sender() para saber quien genera la llamada y actuamos en consecuencia.
   * Si se pulsa el + hace aparecer el listado de cuentas \ref listcuentasview1 
-  * Pone el listado en modo selección y espera a que éste devuelva algún valor para recogerlo
+  * Pone el listado en modo selecciï¿½ y espera a que ï¿½te devuelva algn valor para recogerlo
   */
 void balance1view::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
@@ -559,9 +559,9 @@ void balance1view::codigo_textChanged(const QString &texto) {
   * @brief SLOT que tras pulsarse una tecla sobre un campo del tipo fecha busca caracteres especiales.
   *
   * Cuando se ha pulsado una tecla sobre la fecha del extracto
-  * Se evalua si la pulsación es un código de control o es un digitos
-  * Para la introducción de fechas.
-  * @param texto El valor del campo tras la modificación.
+  * Se evalua si la pulsaciï¿½ es un cï¿½igo de control o es un digitos
+  * Para la introducciï¿½ de fechas.
+  * @param texto El valor del campo tras la modificaciï¿½.
   */
 void balance1view::fecha_textChanged(const QString &texto) {
     QLineEdit *fecha = (QLineEdit *) sender();
@@ -579,10 +579,10 @@ void balance1view::fecha_textChanged(const QString &texto) {
 }// end fecha_textChanged
 
 /**
-  * @brief SLOT que tras pulsarse sobre el botón de fecha inicial saca el calendario.
+  * @brief SLOT que tras pulsarse sobre el botï¿½ de fecha inicial saca el calendario.
   *
-  * Ya que la acción es la misma que la pulsación de la tecla + en el campo de fecha
-  * Lo que hace esta función es escribir el + en dicho campo y esperar que se active el slot \ref fecha_textChanged
+  * Ya que la acciï¿½ es la misma que la pulsaciï¿½ de la tecla + en el campo de fecha
+  * Lo que hace esta funciï¿½ es escribir el + en dicho campo y esperar que se active el slot \ref fecha_textChanged
   */
 void balance1view::boton_fechainicial() {
    fechainicial1->setText("+");
@@ -592,10 +592,10 @@ void balance1view::boton_fechainicial() {
 
 
 /**
-  * @brief SLOT que tras pulsarse sobre el botón de fecha final saca el calendario.
+  * @brief SLOT que tras pulsarse sobre el botï¿½ de fecha final saca el calendario.
   *
-  * Ya que la acción es la misma que la pulsación de la tecla + en el campo de fecha
-  * Lo que hace esta función es escribir el + en dicho campo y esperar que se active el slot \ref fecha_textChanged
+  * Ya que la acciï¿½ es la misma que la pulsaciï¿½ de la tecla + en el campo de fecha
+  * Lo que hace esta funciï¿½ es escribir el + en dicho campo y esperar que se active el slot \ref fecha_textChanged
   */
 void balance1view::boton_fechafinal() {
    fechafinal1->setText("+");

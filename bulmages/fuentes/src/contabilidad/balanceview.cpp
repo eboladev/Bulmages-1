@@ -1,8 +1,8 @@
 /***************************************************************************
                           balanceview.cpp  -  description
                              -------------------
-    begin                : sáb abr 26 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    begin                : sï¿½ abr 26 2003
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -52,7 +52,7 @@
 /** \brief Constructor de clasee
   * \bug No es necesario borrar la tabla de designer para que esto funcione.
   * En el constructor  inicializa la empresa y base de datos.
-  * También se configura correctamente el objeto listado (que reemplaza al que está en el formulario
+  * Tambiï¿½ se configura correctamente el objeto listado (que reemplaza al que estï¿½en el formulario
   * Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
   */
 balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int  ) : balancedlg(parent,name) {
@@ -104,7 +104,7 @@ balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int  )
    connect( listado, SIGNAL( contextMenuRequested(int,int,const QPoint&) ), this, SLOT( contextmenu(int,int,const QPoint&) ) );
 
    // Iniciamos los componentes de la fecha para que al principio aparezcan
-   // Como el año inicial.
+   // Como el aï¿½ inicial.
    QString cadena;
    cadena.sprintf("%2.2d/%2.2d/%4.4d",1, 1, QDate::currentDate().year());
    fechainicial1->setText(cadena);
@@ -125,7 +125,7 @@ void balanceview::inicializa2(intapunts3view *inta, diarioview1 *diar, extractov
 }// end inicializa2
 
 
-/** \brief Esta funcioón se encarga de cargar el combo box de centros de coste para que se pueda seleccionar uno
+/** \brief Esta funcioï¿½ se encarga de cargar el combo box de centros de coste para que se pueda seleccionar uno
   * \bug Debe eliminarse el array ccoste.
   */
 void balanceview::cargacostes() {
@@ -157,7 +157,7 @@ void balanceview::cargacostes() {
   * Si el parametro pasado es un:
   * 0 -> del dia actual
   * 1 -> del mes actual
-  * 2 -> del año actual
+  * 2 -> del aï¿½ actual
   */
 void balanceview::boton_extracto1(int tipo) {
 	QDate fecha1, fecha2, fechaact, fechaact1;
@@ -190,7 +190,7 @@ void balanceview::boton_extracto1(int tipo) {
   * Si el parametro pasado es un:
   * 0 -> del dia actual
   * 1 -> del mes actual
-  * 2 -> del año actual
+  * 2 -> del aï¿½ actual
   */
 void balanceview::boton_diario1(int tipo) {
 	QDate fecha1, fecha2, fechaact, fechaact1;
@@ -226,7 +226,7 @@ void balanceview::boton_asiento() {
 
 
 /** \brief Se encarga  de inicializar la clase con los parametros que se le han pasado.
-  * Esta función sirve para que desde fuera se pueda preparar a la clase para presentar un listado predeterminado.
+  * Esta funciï¿½ sirve para que desde fuera se pueda preparar a la clase para presentar un listado predeterminado.
   */
 void balanceview::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste) {
 
@@ -264,7 +264,7 @@ void balanceview::presentar() {
       int idc_coste;
       idc_coste = ccostes[combocoste->currentItem()];
 
-      // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
+      // La consulta es compleja, requiere la creaciï¿½ de una tabla temporal y de cierta mandanga por lo que puede
 	// Causar problemas con el motor de base de datos.
 	fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
         conexionbase->begin();		
@@ -279,7 +279,7 @@ void balanceview::presentar() {
       query.sprintf("DELETE FROM balancetemp WHERE debe=0 AND haber =0");
       conexionbase->ejecuta(query);
 
-      // Vamos a implementar el tema del código
+      // Vamos a implementar el tema del cï¿½igo
       if (cinicial != "") {
          query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'",cinicial.ascii());
          conexionbase->ejecuta(query);
@@ -464,9 +464,9 @@ void balanceview::boton_buscacuentafinal() {
 }// end boton_buscacuentafinal
 
 
-/** \brief Responde a una petición de menu contextual sobre el balance.
+/** \brief Responde a una peticiï¿½ de menu contextual sobre el balance.
   * Saca un menu contextual que presenta las opciones necesarias sobre la cuenta.
-  * Espera a que se seleccione una opción o que se quite el menu contextual y llama a la función correspondiente
+  * Espera a que se seleccione una opciï¿½ o que se quite el menu contextual y llama a la funciï¿½ correspondiente
   * con la entrada de menu que se haya seleccionado.
   */
 void balanceview::contextmenu(int, int col, const QPoint &poin) {
@@ -476,13 +476,13 @@ void balanceview::contextmenu(int, int col, const QPoint &poin) {
    popup = new QPopupMenu;
         popup->insertItem(tr("Ver Extracto (Este dia)"),111);
         popup->insertItem(tr("Ver Extracto (Este mes)"),113);
-        popup->insertItem(tr("Ver Extracto (Este año)"),114);
+        popup->insertItem(tr("Ver Extracto (Este aï¿½)"),114);
         popup->insertSeparator();
         popup->insertItem(tr("Ver Diario (Este dia)"),101);
         popup->insertItem(tr("Ver Diario (Este mes)"),103);
-        popup->insertItem(tr("Ver Diario (Este año)"),104);
+        popup->insertItem(tr("Ver Diario (Este aï¿½)"),104);
         
-        // Si estamos sobre la columna del numero de cuenta añadiremos opciones al menu.
+        // Si estamos sobre la columna del numero de cuenta aï¿½diremos opciones al menu.
         if (col == CUENTA) {
         		popup->insertItem(tr("Editar Cuenta"), 105);
         }// end if
@@ -514,11 +514,11 @@ void balanceview::nivelactivated (int) {
 }// end nivelactivated1
 
 
-/** \BRIEF SLOT que responde a la pulsación del botón de imprimir
+/** \BRIEF SLOT que responde a la pulsaciï¿½ del botï¿½ de imprimir
   * Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del balance y lo ejecuta en modo Modal.
   */
 void balanceview::boton_imprimir() {
-   BalancePrintView * balan = new BalancePrintView(empresaactual,0,0);
+   BalancePrintView * balan = new BalancePrintView(empresaactual);
    balan->inicializa1(codigoinicial->text(), codigofinal->text(), fechainicial1->text(), fechafinal1->text(), FALSE);
    balan->exec();
 }// end boton_imprimir.
@@ -541,8 +541,8 @@ void balanceview::codigo_textChanged(const QString &texto) {
   * \note Deben existir tantas llamadas a este SLOT como fechas existan en el formulario para garantizar
   * la correcta respuesta.
   * Cuando se ha pulsado una tecla sobre la fecha del extracto
-  * Se evalua si la pulsación es un código de control o es un digitos
-  * Para la introducción de fechas.
+  * Se evalua si la pulsaciï¿½ es un cï¿½igo de control o es un digitos
+  * Para la introducciï¿½ de fechas.
   */
 void balanceview::fecha_textChanged(const QString &texto) {
 	QLineEdit *fecha = (QLineEdit *) sender();
