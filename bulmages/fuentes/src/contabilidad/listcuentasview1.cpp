@@ -2,7 +2,7 @@
                           listcuentasview.cpp  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -40,7 +40,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
     empresaactual = emp;
     modo=0;
     conexionbase= emp->bdempresa();
-    ccuenta=ListView1->addColumn("código cuenta",-1);
+    ccuenta=ListView1->addColumn("codigo cuenta",-1);
     cdesccuenta=ListView1->addColumn("nombre cuenta",-1);
     cidcuenta = ListView1->addColumn("id cuenta",0);
     cbloqueada = ListView1->addColumn("bloqueada",0);
@@ -141,10 +141,10 @@ int listcuentasview1::inicializa( ) {
     }// end while
     delete cursoraux1;
 
-    query = "SELECT * FROM cuenta WHERE padre IS NOT NULL ORDER BY padre";
+    query = "SELECT * FROM cuenta WHERE padre IS NOT NULL ORDER BY codigo";
     cursoraux2 = conexionbase->cargacursor(query, "cursor2");
     while (!cursoraux2->eof()) {
-        padre = atoi(cursoraux2->valor(4).ascii());
+        padre = atoi(cursoraux2->valor("padre").ascii());
         idcuenta1 = atoi(cursoraux2->valor("idcuenta").ascii());
         fprintf(stderr,"Cuentas de subnivel:%d",padre);
         if (padre != 0) {
@@ -179,7 +179,7 @@ int listcuentasview1::inicializa( ) {
         cursoraux2->siguienteregistro();
     }// end while
     delete cursoraux2;
-    // Vamos a cargar el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
+    // Vamos a cargar el numero de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
     query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
     cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
     numdigitos=cursoraux1->valor("valor").length();
@@ -324,8 +324,8 @@ void listcuentasview1::listdblpulsada(QListViewItem *it) {
 /********************************************************
  * Esta funcion es el slot que se activa al pulsar sobre el
  * boton nueva cuenta.
- * Su función es crear una nueva cuenta desde la ventana del plan de cuentas
- * La inserción de la nueva se hace como cuenta hija de la cuenta actualmente
+ * Su funciï¿½ es crear una nueva cuenta desde la ventana del plan de cuentas
+ * La inserciï¿½ de la nueva se hace como cuenta hija de la cuenta actualmente
  * seleccionada por lo que se hace que la ventana que se habre tenga el campo
  * del padre de la cuenta rellenado.
  *********************************************************/
@@ -363,8 +363,8 @@ void listcuentasview1::nuevacuenta()  {
 /********************************************************
  * Esta funcion es el slot que se activa al pulsar sobre el
  * boton nueva cuenta.
- * Su función es crear una nueva cuenta desde la ventana del plan de cuentas
- * La inserción de la nueva se hace como cuenta hija de la cuenta actualmente
+ * Su funciï¿½ es crear una nueva cuenta desde la ventana del plan de cuentas
+ * La inserciï¿½ de la nueva se hace como cuenta hija de la cuenta actualmente
  * seleccionada por lo que se hace que la ventana que se habre tenga el campo
  * del padre de la cuenta rellenado.
  *********************************************************/
@@ -444,11 +444,11 @@ void listcuentasview1::return_descripcion() {
 	}// end if
 }// end return_codigo
 
-/** \brief Responde a la pulsación del botón de imprimir en la ventana de cuentas.
+/** \brief Responde a la pulsacion del boton de imprimir en la ventana de cuentas.
   * Crea un string de llamada a rtkview y lo lanza como llamada de sistema.
-  * \todo La plantilla podría tener contenidos dinamicos mendiante marcas sustituibles por
+  * \todo La plantilla podria tener contenidos dinamicos mendiante marcas sustituibles por
   * un egrep, o un sedit que aun no estan realizados.
-  * \todo Esta función debería implementarse con una clase nueva de Qt que solicitase 
+  * \todo Esta funcion deberia implementarse con una clase nueva de Qt que solicitase 
   * el rango de cuentas entre el que se quiere el listado.
   */
 void listcuentasview1::s_PrintCuentas() {
