@@ -30,6 +30,7 @@
 #include <qlocale.h>
 
 #include "empresa.h"
+#include "arbol.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -37,16 +38,23 @@
 
 
 
-BalancePrintView::BalancePrintView(empresa *emp,QWidget *parent, const char *name ) : BalancePrintDlg(parent,name) {
+BalancePrintView::BalancePrintView(empresa *emp){
    empresaactual=emp;
    conexionbase = emp->bdempresa();
- // Inicializamos la tabla de nivel
-   combonivel->insertItem("2",0);
-   combonivel->insertItem("3",1);
-   combonivel->insertItem("4",2);
-   combonivel->insertItem("5",3);
-   combonivel->insertItem("6",4);
-   combonivel->insertItem("7",5);
+   
+   // Buscamos los diferentes niveles que existen segun existan en la tabla de cuentas
+   conexionbase->begin();
+   QString query = "SELECT nivel(codigo) FROM cuenta GROUP BY nivel ORDER BY nivel";
+   cursor2* niveles = conexionbase->cargacursor(query, "Niveles");
+   int i=0;
+   while(!niveles->eof()){
+       // Inicializamos la tabla de nivel
+       combonivel->insertItem(niveles->valor("nivel"),i);
+       niveles->siguienteregistro();
+       i++;
+   }
+   conexionbase->commit();
+   delete niveles;
 }
 
 BalancePrintView::~BalancePrintView(){
@@ -104,31 +112,26 @@ void BalancePrintView::boton_codigofinal() {
  **************************************************************/
 void BalancePrintView::presentar(char *tipus){
 #ifndef WIN32
-   int kugar, txt, html, txtapren, htmlapren;
-   int error;
-   int pid;
-
-   int num1;
-   double tsaldoant=0, tdebe=0, thaber=0, tsaldo=0, debeej=0, haberej=0, saldoej=0;
+   int kugar, txt, html, txtapren, htmlapren, error, pid;
+   double tsaldoant, tdebe, thaber, tsaldo, debeej, haberej, saldoej;
    QString query;
-   cursor2 *cursorapt;
 
-// tipos de presentaciones   rtk=!strcmp(tipus,"rtk");
-   txt=!strcmp(tipus,"txt");
-   html=!strcmp(tipus,"html");
-   txtapren=!strcmp(tipus,"txtapren");
-   htmlapren=!strcmp(tipus,"htmlapren");
-   kugar=!strcmp(tipus,"kugar");
+   // tipos de presentaciones
+   txt = !strcmp(tipus,"txt");
+   html = !strcmp(tipus,"html");
+   txtapren = !strcmp(tipus,"txtapren");
+   htmlapren = !strcmp(tipus,"htmlapren");
+   kugar = !strcmp(tipus,"kugar");
 
-// Cogemos los valores del formulario.
+   // Cogemos los valores del formulario
    QString finicial = fechainicial1->text();
    QString ffinal = fechafinal1->text();
    QString cinicial = codigoinicial->text();
    QString cfinal = codigofinal->text();
-   int nivel = combonivel->currentItem()+2;
+   int nivel = combonivel->currentText().toInt();
+   bool superiores = checksuperiores->isChecked();
 
    if (txt | html | kugar) {
-
       char *argstxt[]={"balance.txt","balance.txt",NULL}; //presentación txt normal
       char *argshtml[]={"balance.html","balance.html",NULL}; //presentación html normal
       char *argskugar[]={"balance.kud","balance.kud",NULL}; // presentación kugar normal
@@ -145,73 +148,25 @@ void BalancePrintView::presentar(char *tipus){
 
       if (txt | html | kugar) {                // nom� continuem si hem pogut crear algun fitxer
 
-
-         // Hacemos la consulta de los apuntes a listar en la base de datos.
-         // La consulta es compleja, requiere la creaci� de una tabla temporal y de cierta mandanga por lo que puede
-         // Causar problemas con el motor de base de datos.
-         fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
-         conexionbase->begin();
-         //query.sprintf( "CREATE TEMPORARY TABLE balancetmp AS SELECT 0 AS hoja, cuenta.idcuenta AS idcuenta, codigo AS codigo, nivel(codigo) AS nivel, cuenta.descripcion AS descripcion, padre AS padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii() );
-	 query.sprintf("CREATE TEMPORARY TABLE balancetmp AS SELECT 0 AS hoja, cuenta.idcuenta AS idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion AS descripcion, padre AS padre, tipocuenta, debeej, haberej, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debeej-haberej) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo FROM cuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS debeej, sum(haber) AS haberej FROM apunte NATURAL JOIN (SELECT idcuenta, idapunte, debe, haber FROM (SELECT idcuenta, idapunte, debe, haber, EXTRACT(year FROM fecha) AS fecha1, EXTRACT(year FROM TIMESTAMP '%s') AS fecha2 FROM apunte) AS fechas WHERE fecha1=fecha2 UNION SELECT idcuenta, idapunte, debe, haber FROM (SELECT idcuenta, idapunte, debe, haber, EXTRACT(year FROM fecha) AS fecha1, EXTRACT(year FROM TIMESTAMP '%s') AS fecha2 FROM apunte) AS fechas WHERE fecha1=fecha2) AS apuntesej GROUP BY idcuenta) AS t1 ON t1.idcuenta=cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '%s' AND fecha<= '%s' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta", finicial.ascii(), ffinal.ascii(), finicial.ascii(), ffinal.ascii(), finicial.ascii());
-         fprintf(stderr,"%s\n",query.ascii());
-         conexionbase->ejecuta(query);
-         query.sprintf("UPDATE balancetmp SET padre=0 WHERE padre ISNULL");
-         fprintf(stderr,"%s\n",query.ascii());
-         conexionbase->ejecuta(query);
-         query.sprintf("DELETE FROM balancetmp WHERE debeej=0 AND haberej=0");
-         fprintf(stderr,"%s\n",query.ascii());
-         conexionbase->ejecuta(query);
-
-         // Para evitar problemas con los nulls hacemos algunos updates
-         query.sprintf("UPDATE balancetmp SET tsaldo=0 WHERE tsaldo ISNULL");
-         fprintf(stderr,"%s\n",query.ascii());
-         conexionbase->ejecuta(query);
-         query.sprintf("UPDATE balancetmp SET tdebe=0 WHERE tdebe ISNULL");
-         fprintf(stderr,"%s\n",query.ascii());
-         conexionbase->ejecuta(query);
-         query.sprintf("UPDATE balancetmp SET thaber=0 WHERE thaber ISNULL");
-         fprintf(stderr,"%s\n",query.ascii());
-         conexionbase->ejecuta(query);
-         query.sprintf("UPDATE balancetmp SET asaldo=0 WHERE asaldo ISNULL");
-         fprintf(stderr,"%s\n",query.ascii());
-         conexionbase->ejecuta(query);
-
-         query.sprintf( "SELECT idcuenta FROM balancetmp ORDER BY padre DESC");
-         fprintf(stderr,"%s\n",query.ascii());
-         cursorapt = conexionbase->cargacursor(query,"Balance1view");
-         while (!cursorapt->eof())  {
-            query.sprintf("SELECT * FROM balancetmp WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
-            cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
-            query.sprintf("UPDATE balancetmp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
-            //fprintf(stderr,"%s para el código\n",query, cursorapt->valor("codigo").c_str());
-            conexionbase->ejecuta(query);
-            delete mycur;
-            cursorapt->siguienteregistro();
-         }// end while
-         delete cursorapt;
-         // Borramos todo lo que no es de este nivel
-
-         // Borramos los niveles inferiores
-         query.sprintf("DELETE FROM balancetmp where nivel(codigo)>%d",nivel);
-         conexionbase->ejecuta(query);
-
-         // No hay que incluir los niveles superiores.
-         if (!checksuperiores->isChecked()) {
-            //Borramos todo lo que tiene un hijo en el balancetmp
-            query.sprintf("DELETE FROM balancetmp WHERE idcuenta IN (SELECT padre FROM balancetmp)");
-            conexionbase->ejecuta(query);
-         } else {
-            // Si hay que incluir los niveles superiores
-            query.sprintf("UPDATE balancetmp SET hoja=1 WHERE idcuenta NOT IN (SELECT padre FROM balancetmp)");
-            conexionbase->ejecuta(query);
-         }
-
-         // Hacemos la consulta.
-         query.sprintf("SELECT * FROM balancetmp WHERE debeej <> 0  OR haberej <> 0 ORDER BY codigo");
-         cursorapt = conexionbase->cargacursor(query,"mycursor");
-         // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
-         num1 = cursorapt->numregistros();
-
+	 // Vamos a crear un arbol en la memoria dinamica con los distintos niveles de cuentas
+	 // Primero, averiguaremos la cantidad de ramas iniciales (tantos como numero de cuentas de nivel 2) y las vamos creando
+	 conexionbase->begin();
+	 query.sprintf("SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo");
+	 cursor2 *ramas;
+	 ramas = conexionbase->cargacursor(query,"Ramas");
+	 Arbol *arbol;
+	 arbol = new Arbol;
+	 while(!ramas->eof()){
+	     if(atoi(ramas->valor("nivel").ascii()) == 2) // Cuenta raiz
+		 arbol->nuevarama(ramas);
+	     ramas->siguienteregistro();
+	 }
+	 arbol->inicializa(ramas);
+	 delete ramas;
+	  
+	 // Ahora despues, usaremos el arbol para poner los datos a cada hoja (cuenta) según los periodos que necesitemos acotar.
+	 // Pero antes, preparamos las plantillas segun el tipo de salida seleccionado	  
+	 
          if (kugar) {
 		 fitxersortidakugar.setf(ios::fixed);
 		 fitxersortidakugar.precision(2);
@@ -242,7 +197,6 @@ void BalancePrintView::presentar(char *tipus){
 		 fitxersortidakugar << " ffinal='"<< ffinal.ascii() <<"'/>\n";
 	 }// end if
 
-                  
          if (txt) {
             //presentaci�txt normal
             fitxersortidatxt.setf(ios::fixed);
@@ -252,6 +206,7 @@ void BalancePrintView::presentar(char *tipus){
             fitxersortidatxt << "Cuenta            Denominaci�                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
             fitxersortidatxt << "______________________________________________________________________________________________________________________________________________\n";
          }// end if
+	 
          if (html) {
             //presentaci�html normal
             fitxersortidahtml.setf(ios::fixed);
@@ -269,50 +224,60 @@ void BalancePrintView::presentar(char *tipus){
             fitxersortidahtml << "<tr><td class=titolcolumnabalanc>lcuenta</td><td class=titolcolumnabalanc> ldenominacion</td><td class=titolcolumnabalanc>lsaldoant</td><td class=titolcolumnabalanc>ldebe</td><td class=titolcolumnabalanc>lhaber</td><td class=titolcolumnabalanc>lsaldo</td><td class=titolcolumnabalanc> ldebeej  </td><td class=titolcolumnabalanc> lhaberej </td><td class=titolcolumnabalanc> lsaldoej </td></tr>\n";
          }// end if
 
+	 // Vamos a recopilar todos los apuntes agrupados por cuenta para poder establecer asi los valores de cada cuenta
+	 query.sprintf("SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '%s') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '%s' AND fecha <= '%s' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo", finicial.ascii(), finicial.ascii(), ffinal.ascii(), finicial.ascii());
+	 cursor2 *cuentas;
+	 cuentas = conexionbase->cargacursor(query,"Periodo");
+	 while(!cuentas->eof()){ // Para cada cuenta con sus apuntes hechos hay que actualizar hojas del árbol
+	     arbol->actualizahojas(cuentas);
+	     cuentas->siguienteregistro();
+	 }// end while
+	 
 	 float linea = 1; // irá contando las líneas impresas en el impreso de kugar
-	 float lineaskugar = 51; // determina cuántas líneas caben en el impreso de kugar
-         while (!cursorapt->eof()) {
-	    QString lcuenta = cursorapt->valor("codigo");
-            QString ldenominacion = cursorapt->valor("descripcion").left(40);
-	    QString lsaldoant = cursorapt->valor("asaldo");
-            QString ldebe = cursorapt->valor("tdebe");
-            QString lhaber = cursorapt->valor("thaber");
-            QString lsaldo = cursorapt->valor("tsaldo");
-            QString ldebeej = cursorapt->valor("debeej");
-            QString lhaberej = cursorapt->valor("haberej");
-            QString lsaldoej = cursorapt->valor("saldo");
+	 float lineaskugar = 53; // determina cuántas líneas caben para el impreso de kugar
+	 tsaldoant = tdebe = thaber = tsaldo = debeej = haberej = saldoej = 0;
+	 // Ahora imprimimos los valores
+	 arbol->inicia();
+	 while (arbol->deshoja(nivel, superiores)){
+	    QString lcuenta = arbol->hojaactual("codigo");
+            QString ldenominacion = arbol->hojaactual("descripcion");
+	    QString lsaldoant = arbol->hojaactual("saldoant");
+            QString ldebe = arbol->hojaactual("debe");
+            QString lhaber = arbol->hojaactual("haber");
+            QString lsaldo = arbol->hojaactual("saldo");
+            QString ldebeej = arbol->hojaactual("debeej");
+            QString lhaberej = arbol->hojaactual("haberej");
+            QString lsaldoej = arbol->hojaactual("saldoej");
             
 	    // Acumulamos los totales para al final poder escribirlos
-            tsaldoant += atof(lsaldoant.ascii());
-            tsaldo += atof(lsaldo.ascii());
-            tdebe += atof(ldebe.ascii());
-            thaber += atof(lhaber.ascii());
-	    debeej += atof(ldebeej.ascii());
-	    haberej += atof(lhaberej.ascii());
-	    saldoej += atof(lsaldoej.ascii());
+            tsaldoant += lsaldoant.toDouble();
+            tsaldo += lsaldo.toDouble();
+            tdebe += ldebe.toDouble();
+            thaber += lhaber.toDouble();
+	    debeej += ldebeej.toDouble();
+	    haberej += lhaberej.toDouble();
+	    saldoej += lsaldoej.toDouble();
 
 	    // Las variables de las filas en formato español
-	    lsaldoant = spanish.toString(atof(lsaldoant.ascii()),'f',2);
-	    ldebe = spanish.toString(atof(ldebe.ascii()),'f',2);
-	    lhaber = spanish.toString(atof(lhaber.ascii()),'f',2);
-	    lsaldo = spanish.toString(atof(lsaldo.ascii()),'f',2);
-	    ldebeej = spanish.toString(atof(ldebeej.ascii()),'f',2);
-	    lhaberej = spanish.toString(atof(lhaberej.ascii()),'f',2);
-	    lsaldoej = spanish.toString(atof(lsaldoej.ascii()),'f',2);
+	    lsaldoant = spanish.toString(lsaldoant.toDouble(),'f',2);
+	    ldebe = spanish.toString(ldebe.toDouble(),'f',2);
+	    lhaber = spanish.toString(lhaber.toDouble(),'f',2);
+	    lsaldo = spanish.toString(lsaldo.toDouble(),'f',2);
+	    ldebeej = spanish.toString(ldebeej.toDouble(),'f',2);
+	    lhaberej = spanish.toString(lhaberej.toDouble(),'f',2);
+	    lsaldoej = spanish.toString(lsaldoej.toDouble(),'f',2);
 
-	    if (txt) {
-               //presentaci�txt normal
-               fitxersortidatxt << setiosflags(ios::left) << setw(10) <<  lcuenta.ascii() << " " << setw(40) <<  ldenominacion.ascii() << " " << resetiosflags(ios::left) << setw(12) <<  lsaldoant.ascii() << " " << setw(12) <<  ldebe.ascii() << " " << setw(12) <<  lhaber.ascii() << " " << setw(12) <<  lsaldo << " " << setw(12) <<  ldebeej.ascii() << " " << setw(12) <<  lhaberej.ascii() << " " << setw(12) <<  lsaldoej.ascii() << " " << setw(12) <<  endl;
+	    // Imprimimos linea segun formato
+	    if (txt) { //presentacion en txt normal
+               fitxersortidatxt << setiosflags(ios::left) << setw(10) <<  lcuenta.ascii() << " " << setw(40) <<  ldenominacion.left(40).ascii() << " " << resetiosflags(ios::left) << setw(12) <<  lsaldoant.ascii() << " " << setw(12) <<  ldebe.ascii() << " " << setw(12) <<  lhaber.ascii() << " " << setw(12) <<  lsaldo << " " << setw(12) <<  ldebeej.ascii() << " " << setw(12) <<  lhaberej.ascii() << " " << setw(12) <<  lsaldoej.ascii() << " " << setw(12) <<  endl;
             }// end if
 	    
-            if (html) {
-               //presentaci�html normal
-               fitxersortidahtml << "<tr><td class=comptebalanc>" << lcuenta.ascii() << "</td><td class=assentamentbalanc>" <<  ldenominacion.ascii() << "</td><td class=dosdecimals>" << lsaldoant.ascii() << "</td><td class=dosdecimals>" << ldebe.ascii() << "</td><td class=dosdecimals>" << lhaber.ascii() << "</td><td class=dosdecimals>" << lsaldo.ascii() << "</td><td class=dosdecimals>" << ldebeej.ascii() << "</td><td class=dosdecimals>" << lhaberej.ascii() << "</td><td class=dosdecimals>" << lsaldoej.ascii() << endl;
+            if (html) { //presentacion en html normal
+               fitxersortidahtml << "<tr><td class=comptebalanc>" << lcuenta.ascii() << "</td><td class=assentamentbalanc>" <<  ldenominacion.left(40).ascii() << "</td><td class=dosdecimals>" << lsaldoant.ascii() << "</td><td class=dosdecimals>" << ldebe.ascii() << "</td><td class=dosdecimals>" << lhaber.ascii() << "</td><td class=dosdecimals>" << lsaldo.ascii() << "</td><td class=dosdecimals>" << ldebeej.ascii() << "</td><td class=dosdecimals>" << lhaberej.ascii() << "</td><td class=dosdecimals>" << lsaldoej.ascii() << endl;
             }// end if
 	    
-	    if (kugar){
-		//presentación en kugar
-		// primero vamos a establecer si hay que imprimir una línea de cabecera (Detail 0 en balance.kut) con los datos del período
+	    if (kugar){ //presentacion en kugar segun plantilla balance.kut
+		// Primero vamos a establecer si hay que imprimir una línea de cabecera (Detail 0 en balance.kut) con los datos del período
 		if(fmod(linea,lineaskugar) == 0){
 		    fitxersortidakugar << "\t<Row";
 		    fitxersortidakugar << " level=\"0\"";
@@ -320,11 +285,11 @@ void BalancePrintView::presentar(char *tipus){
 		    fitxersortidakugar << " ffinal='"<< ffinal.ascii() <<"'/>\n";
 		}// end if
 		if(linea == lineaskugar){
-		    lineaskugar = 54; // a partir de la segunda página caben más líneas
+		    lineaskugar = 54; // a partir de la segunda página alguna linea mas
 		    linea = lineaskugar;
 		}
-		// ahora, imprimimos tantas líneas como nos permite la variable "lineaskugar" sin imprimir cabecera (Detail 1 en balance.kut)
-		ldenominacion = cursorapt->valor("descripcion").left(47); // aquí nos cabe una descripción algo más amplia	
+		// Ahora, imprimimos tantas líneas como nos permite la variable "lineaskugar" sin imprimir cabecera (Detail 1 en balance.kut)
+		// Una linea por cada iteracion del buble
 		fitxersortidakugar << "\t<Row";
 		fitxersortidakugar << " level=\"1\"";
 		fitxersortidakugar << " cuenta='"<< lcuenta.ascii() <<"'";		
@@ -338,18 +303,7 @@ void BalancePrintView::presentar(char *tipus){
 		fitxersortidakugar << " saldoej='"<< lsaldoej.ascii() <<"'/>\n";
 		linea++;
 	    }// end if
-
-            // Calculamos la siguiente cuenta registro y finalizamos el bucle
-            cursorapt->siguienteregistro();
          }// end while
-
-         // Vaciamos el cursor de la base de datos.
-         delete cursorapt;
-
-         // Borramos la tabla temporal y demás cosas.
-         query.sprintf("DROP TABLE balancetmp");
-         conexionbase->ejecuta(query);
-         conexionbase->commit();
 
          // Hacemos la actualizacion de los saldos totales en formato español
          QString totalsaldoant = spanish.toString(tsaldoant,'f',2);
@@ -359,18 +313,18 @@ void BalancePrintView::presentar(char *tipus){
 	 QString totaldebeej = spanish.toString(debeej,'f',2);
          QString totalhaberej = spanish.toString(haberej,'f',2);
          QString totalsaldoej = spanish.toString(saldoej,'f',2);
-	    	 
-         if (txt) {
-            //presentación txt normal
+	 
+	 // Imprimimos la linea con los resultados totalizados
+         if (txt) { //presentacion txt normal
 	    fitxersortidatxt << "                                            __________________________________________________________________________________________________\n";
             fitxersortidatxt << "                                            Totales " << setw(12) <<  totalsaldoant.ascii() << " " << setw(12) <<  totaldebe.ascii() << " " << setw(12) <<  totalhaber.ascii() << " " << setw(12) <<  totalsaldo.ascii()  << " " << setw(12) <<  totaldebeej.ascii() << " " << setw(12) <<  totalhaberej.ascii() << " " << setw(12) <<  totalsaldoej.ascii() << endl;
          }
-         if (html) {
-            //presentación html normal
+	 
+         if (html) { //presentacion html normal
             fitxersortidahtml << "<tr><td></td><td class=totalbalanc>Totals</td><td class=dosdecimals>" <<  totalsaldoant.ascii() << "</td><td class=dosdecimals>" << totaldebe.ascii() << "</td><td class=dosdecimals>" << totalhaber.ascii() << "</td><td class=dosdecimals>" << totalsaldo.ascii() << "</td></tr>\n</table>\n</body>\n</html>\n";
          }
-	 if (kugar){
-            //presentación kugar normal
+	 
+	 if (kugar){ //presentacion kugar
 	    fitxersortidakugar << "\t<Row";
 	    fitxersortidakugar << " level=\"2\"";
 	    fitxersortidakugar << " tsaldoant='"<< totalsaldoant.ascii() <<"'";		
@@ -381,12 +335,15 @@ void BalancePrintView::presentar(char *tipus){
 	    fitxersortidakugar << " thaberej='"<< totalhaberej.ascii() <<"'";
 	    fitxersortidakugar << " tsaldoej='"<< totalsaldoej.ascii() <<"'/>\n";	    
 	    fitxersortidakugar <<"</KugarData>\n";
-	    fitxersortidakugar.close();
 	 }
+	 
+ 	 // Eliminamos el arbol y cerramos la conexion con la BD
+ 	 delete arbol;
+         conexionbase->commit();
 
-         if (txt) {
+	 // Dependiendo del formato de salida ejecutaremos el programa correspondiente
+         if (txt) { //presentacion txt normal
             fitxersortidatxt.close();
-            //presentación txt normal
             if ((pid=fork()) < 0) {
                perror ("Fork failed");
                exit(errno);
@@ -395,9 +352,8 @@ void BalancePrintView::presentar(char *tipus){
                error = execvp(confpr->valor(CONF_EDITOR).ascii(),argstxt);
             }
          }
-         if (html) {
+         if (html) { //presentacion html normal
             fitxersortidahtml.close();
-            //presentación html normal
             if ((pid=fork()) < 0) {
                perror ("Fork failed");
                exit(errno);
@@ -406,23 +362,24 @@ void BalancePrintView::presentar(char *tipus){
                error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),argshtml);
             }
          }
-	 if (kugar){
-            //presentación kugar normal
-	    if ((pid=fork()) < 0) {
-               perror ("Fork failed");
-               exit(errno);
-            }
-            if (!pid) {
-               error = execvp("kugar",argskugar);
-            }
+	 if (kugar){ //presentacion kugar normal
+	     fitxersortidakugar.close();
+	     if ((pid=fork()) < 0) {
+		 perror ("Fork failed");
+		 exit(errno);
+	     }
+	     if (!pid) {
+		 error = execvp("kugar",argskugar);
+	     }
 	 }
+      	 
       }
-   }
+   }   
 #endif
 }
 
-/** \brief SLOT que responde a la pulsaci� del bot� de selecci� de canal.
-  * Presenta la ventana de selecci� de canales \ref selectcanalview
+/** \brief SLOT que responde a la pulsacion del boton de seleccion de canal.
+  * Presenta la ventana de seleccion de canales \ref selectcanalview
   */
 void BalancePrintView::boton_canales() {
     selectcanalview *selcanales = empresaactual->getselcanales();
@@ -431,8 +388,8 @@ void BalancePrintView::boton_canales() {
 }// end boton_canales
 
 
-/** \brief SLOT que responde a la pulsaci� del bot� de selecci� de centros de coste.
-  * Presenta la ventana de selecci� de centros de coste \ref selectccosteview
+/** \brief SLOT que responde a la pulsacion del boton de seleccion de centros de coste.
+  * Presenta la ventana de seleccion de centros de coste \ref selectccosteview
   */
 void BalancePrintView::boton_ccostes() {
     selectccosteview *selccostes = empresaactual->getselccostes();

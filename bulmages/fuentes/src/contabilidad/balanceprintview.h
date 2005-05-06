@@ -37,13 +37,13 @@ class empresa;
 class BalancePrintView : public BalancePrintDlg  {
    Q_OBJECT
 private:
-/// La base de datos con la que la clase est�trabajando   
+    /// La base de datos con la que la clase esta trabajando   
    postgresiface2 *conexionbase;   
-/// La empresa con la que la clase est�trabajando   
+   /// La empresa con la que la clase esta trabajando   
    empresa *empresaactual;
    
 public: 
-   BalancePrintView(empresa *emp, QWidget *parent=0, const char *name=0);
+   BalancePrintView(empresa *emp);
    ~BalancePrintView();
    void inicializa1(QString, QString, QString, QString, bool);
    
