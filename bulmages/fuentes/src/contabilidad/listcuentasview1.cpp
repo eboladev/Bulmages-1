@@ -330,29 +330,27 @@ void listcuentasview1::listdblpulsada(QListViewItem *it) {
  * del padre de la cuenta rellenado.
  *********************************************************/
 void listcuentasview1::nuevacuenta()  {
-
-    string cadena;
-    string codigo;
-    int idgrupo=0;
-    int idcuenta;
+    QString cadena, codigo;
+    int idcuenta, idgrupo=0;
     QListViewItem *it;
+    
     fprintf(stderr,"listcuentasview1::nuevacuenta\n");
     cuentaview *nuevae = new cuentaview(empresaactual,0,0,true);
     it = ListView1->currentItem();
-    codigo = (string) it->text(ccuenta).ascii();
-    cadena = (string) it->text(cgrupo).ascii();
-    idgrupo = atoi (cadena.c_str());
-    nuevae->nuevacuenta((char *) codigo.c_str(),idgrupo);
+    codigo = it->text(ccuenta);
+    cadena = it->text(cgrupo);
+    idgrupo = cadena.toInt();
+    nuevae->nuevacuenta(codigo,idgrupo);
     fprintf(stderr,"Llamamos a cuentaview\n");
     nuevae->exec();
     fprintf(stderr,"Ya volvemos de cuentaview\n");
 
     inicializa();
     idcuenta = nuevae->idcuenta;
-    cadena= Ttos(idcuenta);
+    cadena.setNum(idcuenta);
     // Para no perder el foco del elemento, al mismo tiempo que se
     // actualizan los cambios luego buscamos y enfocamos el item
-    it = ListView1->findItem(cadena.c_str(), cidcuenta, Qt::ExactMatch);
+    it = ListView1->findItem(cadena, cidcuenta, Qt::ExactMatch);
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);
     delete nuevae;
