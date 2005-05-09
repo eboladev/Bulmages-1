@@ -269,21 +269,21 @@ int cuentaview::cargacuenta(int idcuenta1){
 
 
 int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
-	// Suponiendo que las cuentas son numericas, al crear una nueva cuenta
-	// Buscamos entre las que seran sus hermanas y le asignamos el numero siguiente
-	// que le corresponda.
-	 QString cpadreaux;
-	 QString query;
-	 query.sprintf("SELECT max(codigo) as maximo FROM cuenta WHERE padre = id_cuenta('%s')",codpadre.ascii());
-	 conexionbase->begin();
-	 cursor2 *cur = conexionbase->cargacursor(query,"uncursor");
-	 conexionbase->commit();
-	 long int valor = atol(cur->valor("maximo").ascii());
-	 valor ++;
-	 cpadreaux.setNum(valor);
-	 codigo->setText(cpadreaux);
-	 
-	 // Establecemos el valor del padre y del grupo.
+    // Suponiendo que las cuentas son numericas, al crear una nueva cuenta
+    // Buscamos entre las que seran sus hermanas y le asignamos el numero siguiente
+    // que le corresponda.
+    QString cpadreaux;
+    QString query;
+    query.sprintf("SELECT max(codigo) as maximo FROM cuenta WHERE padre IN (SELECT id_cuenta('%s'))",codpadre.ascii());
+    conexionbase->begin();
+    cursor2 *cur = conexionbase->cargacursor(query,"uncursor");
+    conexionbase->commit();
+    long int valor = atol(cur->valor("maximo").ascii());
+    valor ++;
+    cpadreaux.setNum(valor);
+    codigo->setText(cpadreaux);
+    
+    // Establecemos el valor del padre y del grupo.
     codigopadre->setText(codpadre);
     int i=0;
     while (idgrupos[i]!=idgrupo && i<100) i++;
@@ -357,7 +357,7 @@ void cuentaview::saveAccount() {
 void cuentaview::deleteAccount() {
     switch( QMessageBox::warning( this, "Borrar Cuenta",
                                   "Se va a borrar la Forma de Pago,\n"
-                                  "Esto puede ocasionar pérdida de datos\n"
+                                  "Esto puede ocasionar pï¿½dida de datos\n"
                                   "Tal vez deberia pensarselo mejor antes\n"
                                   "porque igual su trabajo se va a tomar por culo.",
                                   QMessageBox::Ok ,
