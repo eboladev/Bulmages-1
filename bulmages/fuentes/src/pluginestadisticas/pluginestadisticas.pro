@@ -10,7 +10,7 @@ CONFIG = qt \
          plugin \
          warn_on
 	 
-TARGET = ../../../installbulmages/pluginsbulmages/estadisticas
+TARGET = ../../../installbulmages/plugins/estadisticas
 
 VERSION = 1.0.0
 DESTDIR = .

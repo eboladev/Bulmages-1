@@ -73,6 +73,9 @@
             <property name="name">
                 <cstring>TabWidget2</cstring>
             </property>
+            <property name="enabled">
+                <bool>true</bool>
+            </property>
             <widget class="QWidget">
                 <property name="name">
                     <cstring>TabPage</cstring>
@@ -288,11 +291,11 @@
                 <attribute name="title">
                     <string>Digitos de cuentas</string>
                 </attribute>
-                <grid>
+                <vbox>
                     <property name="name">
                         <cstring>unnamed</cstring>
                     </property>
-                    <widget class="QLabel" row="0" column="0">
+                    <widget class="QLabel">
                         <property name="name">
                             <cstring>TextLabel1</cstring>
                         </property>
@@ -300,7 +303,7 @@
                             <string>Modelo de Código Cuenta</string>
                         </property>
                     </widget>
-                    <widget class="QLayoutWidget" row="1" column="0">
+                    <widget class="QLayoutWidget">
                         <property name="name">
                             <cstring>layout22</cstring>
                         </property>
@@ -340,85 +343,6 @@ yyyy --&gt; Dígitos de cuenta.</string>
                                     </widget>
                                 </hbox>
                             </widget>
-                            <widget class="QLayoutWidget">
-                                <property name="name">
-                                    <cstring>layout21</cstring>
-                                </property>
-                                <hbox>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <widget class="QLabel">
-                                        <property name="name">
-                                            <cstring>TextLabel2_2</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>No alterar cuentas con menos de</string>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit">
-                                        <property name="name">
-                                            <cstring>mindigitos</cstring>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLabel">
-                                        <property name="name">
-                                            <cstring>TextLabel3</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>digitos</string>
-                                        </property>
-                                    </widget>
-                                </hbox>
-                            </widget>
-                            <widget class="QCheckBox">
-                                <property name="name">
-                                    <cstring>CheckBox1</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Ampliar sólo cuentas finales</string>
-                                </property>
-                            </widget>
-                            <widget class="QLabel">
-                                <property name="name">
-                                    <cstring>TextLabel4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Errores producidos</string>
-                                </property>
-                            </widget>
-                            <widget class="QListView">
-                                <column>
-                                    <property name="text">
-                                        <string>Column 1</string>
-                                    </property>
-                                    <property name="clickable">
-                                        <bool>true</bool>
-                                    </property>
-                                    <property name="resizable">
-                                        <bool>true</bool>
-                                    </property>
-                                </column>
-                            <item>
-                                <property name="text">
-                                    <string>New Item</string>
-                                </property>
-                                <property name="pixmap">
-                                    <pixmap></pixmap>
-                                </property>
-                            </item>
-                                <property name="name">
-                                    <cstring>ListView1</cstring>
-                                </property>
-                                <property name="sizePolicy">
-                                    <sizepolicy>
-                                        <hsizetype>7</hsizetype>
-                                        <vsizetype>7</vsizetype>
-                                        <horstretch>0</horstretch>
-                                        <verstretch>0</verstretch>
-                                    </sizepolicy>
-                                </property>
-                            </widget>
                             <widget class="QPushButton">
                                 <property name="name">
                                     <cstring>PushButton3</cstring>
@@ -429,7 +353,24 @@ yyyy --&gt; Dígitos de cuenta.</string>
                             </widget>
                         </vbox>
                     </widget>
-                </grid>
+                    <spacer>
+                        <property name="name">
+                            <cstring>spacer3</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Vertical</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>41</width>
+                                <height>71</height>
+                            </size>
+                        </property>
+                    </spacer>
+                </vbox>
             </widget>
             <widget class="QWidget">
                 <property name="name">
@@ -519,10 +460,10 @@ yyyy --&gt; Dígitos de cuenta.</string>
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="469">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000019c494441545885c557416e8330101caa2aafc84bb8f757892ac43bfa1472c3cf7024c42b72995e80acc9daac89699190b560ec99f178d78003414770207ad7e3afe3e5e17fb556a4e440d2911cc8292ed23f85507e1c6d011000dba665d774ebf7f378eb38544041164c128be7c9e5ddfd749cc6d3be3779c0c47cad4000a2e9d8362d95f1363d60626e51625e160162ed11d50366e63125bcf71a082ae3bf78209b794c097ac640cccc97e5d05cba4b01a31272be4581b7995b9410bb43f5c06ec65a6b31e4da0345986b5b930fbe7841e6810f373ae00cb8d1a13ed728128beb3ede8378eacfb97f2a77bfed819802b13c708807e46e986a45b4162c1faf9096f640b416a492c7eeda2015689b5657a0773d0c6b96c53ca580ac8a4f2436e36455c54426d4cf03561016e6da39413b0f7cc6f66f75aac007519d2a5cbfafcbf31b6ea851c3c105cfb72e373a5cbe2e41be9079e0b92689357cf74e7a40b61a08effdd242a9767b41444fc3a5586b4a4a10dbe7f6834198fe0b8e0491ff2713193847b9c0d829e6efc62655721528a558a04069e6594a1cadc09612bf3695c72034f03d520000000049454e44ae426082</data>
+        <data format="PNG" length="401">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000158494441545885c597c195c3201043a7751edda40fbb03ae94e016b417c302990161c3eec18f471283f4110c115c109c105c90e33ce4affbf9c3ff6a59a5c005e0047001777fc9ef7b0acb97cd56442022f0ce23b8d07e9fc66bfb350145593589d54f93974ff804dce369ef5319a09cb7042a112ec03b0f65bc610628e70c89b42c858836236a0668e7168918a32602caf85f1998766e914084252239cfcba1a5f411019244395f26f0da3943a2d81d6a061e3bd65a26906d069638d7b62680af2c68e7c036026516bcf3fa2ed895018b80750e6c2770d70ab316e4971ba5ab3360d682dee1f1b8362819d06b01b16653ce7b04caaaf8ab840bce5455ec9c84fa7d8015c138d7ee09c7e83e30c2979e54ef99892902d59a7444bc7dba1918918831e6b64df71b11e66d7895ebd16e18dfdb378ba0fe17ec1431ff4fc61878865c15ec9ef3b77d8aca2c8155c42a02ab9d4f91d84d6044e2076a6a3421dd7965920000000049454e44ae426082</data>
     </image>
     <image name="image1">
-        <data format="PNG" length="1276">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000004c3494441545885ad974f681b471487bf350ae8a0821c64f0eec90bbd8cc087f816e9d4985e726a65d2434828addd5ee24b10be2424a518078a137a2c6da54269f025897a09e450c82165e54bd14252341713152256020957108317bcb03d8c77b5bb5ef94f9301f3f4bcb333effdf69b37339ad3766004e4a133ea60e6cd23be51347c0e9bd376b493fa9fc59fea8c3ab18749df281abef3d2c17a61e1bc74308a866f940cdf281a7e5affb3fa99e09f4164491f54675110acdc5ac16a58c87f25625aa42a73d278493f138d2ccd827a490e250072203133267220b1ea16d2537e329893c60dac761c0346d1f077dbbbb843170ab07a6b9527bf3f09e6a1fe4b1d312d4245025bae94492a338901cd6a5a13232c97cabef5423d5fbd1b9f3cd9ea3fd53133261daf83c8885099c5e5c55830c9798e6700300b269d61073123264e0eb0fcf5725c9919a5489499c5cf167df9b78c2933918180fece50f972208f0d2016cc972a9812a55019399064c9b2beb10e9efabc4edbd132a7a5ff38f94fa3ccc2fc02952b15cc9c89ec4b76dbbb9c2f9ef727d60188d3ffaecdf55c5ccfc5eeda54af57a93fab033095c640403f23c5c0fb68222370f75ca5c048b2565dc3693ada545a850254e6f9a34befffb4e27c11f323937d6f9f56b715024efe508189f48f4ea6ffb46d36378bbbe772ffe67d1acf1a804af6c82a88d2afe7742e7e7a9185f9055ccf850cb45fb5cf3c79962c76d70694b2abd555aca6a5a5d681a093993369f7db983993db776fab6f37902a185c048227af4efe340bf30b880b42bd3f9488825274e25e006066c793db6f6c4ccfc47eabecf257cbcc318774e5a994713d175c906f25b57bb590fed4bdc0281afeebe66b5afd5698b1f98189ecc93083b9dc1cb22fd1f33ab22fc375fdfc8fe7a9ca2ccd2f810091175cfee232e55219a7e96801f031050045e981897c2bb9f6f9b570a0cd079be0813db23131915d091ec891649f7d2e5cbc009eca38aa8cf85090258b1c486ee46fa8c1269e07003da763f76c569657f0fd708745d3b4f07775ad8ac88bb1527da98ad6a122ae701179811cc9d0d6eed5d87ab615933fc68051347ceb570bf946627ae3e2d3ebf5d00bfac460ae5ebf0a80ddb5c34c39a7ce0dd973113f417f30ef548cfe3d9541cb6d8513e8051d86c001d053d6f7fdf06febb72d3ab243e3514331705837c48c88fb09fa8320a6a2b57fd69ba5d56db1565d53191f406fd88342c21e28653800c7710058df58a7f1a8c1c6cf1b341e35c2dd530e24b56fe3f44719980ae47f5a7f8adc93e8393dcc7e7f671f1d9df64e1b1d3dd55faa2c51b9524114049bdf6df2f8c7c7a102818dd6fe64dd990ae8b7bb36baa72bba0fdbc81bd1dc6932ed4dd3dc69a6fac12e27fb8a1dd91f671e3011adfdc9bd2763e64d9ca6a319a5f1a1d2f77dda7fb6c3cead7f5a13adc808f00eb7ee91e4ce3777942227d01f0411ae82289d9aa685c1d4ea354446b03dd83e62eb3fd4b9f4f1a571e619f54e6c354ca0ffd83361d09911449579587f8898117406e35d32c83c5acc02fae5e868ed3ff3bd201a79b9548e29038499cbbee4c1f70fa87c5219d39f52fb531538ed8d06c6a7d94099edbfb6a9deac86cfc3cc13f427ef054718388d8d9eeb272913ad8069b53ff566f43e6eb969cc042dca54b27fea99f05d7cab69694edbd1a2f6b8feff01fb0981ea4dfa4e690000000049454e44ae426082</data>
+        <data format="PNG" length="1282">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000004c9494441545885ad973f681b571cc73fcf38a040a6d04102619ad0454e3c4864b9331424e8164a90f1625232d81d4ad282111e8a494baa78084e86067b08484329cd9058ee941b52f20c81bbcd2434f51fb0918d1071362f267e90835f87f33dcbb263c9711e1c3ffdc4ddfbfd7e9ff7bdf77b873404090469087ee073940f487c7573ff497cfbe7c72c205217f15ffa227591f6643a3ddf71fe4e990251f08648f15a51eacfeb52a956a4febc7e28994f21d1133403dcb44bd00c200ded3e10f99b01007a43e3e0a03734f56a9dcaa30a4bd525549f12e52a517d4a8e9befd0fcc765ba5799c84bb1045a474ca2dd9e84ccb16b64f1d70f076f1f95471559aa2e49e55145ead5baf53b69a6a3faa5110970667ce6d804ba2193b99c3944a66bf57722d00d99ece5ac94a7ca52be53b64974adfed38eece5ac94ef94e545f5854cfe3c29d2885ee99e6ed57fda614283090ddeaac7dd1fee72ffe97d007ae2a06eda85661454f5a9084f13dc2fddcf9240be378fd931384987a01930519a40025147ee034054791a867e1aa2f677ed54c1fb07fa399b3fcb6eb88bb7ea45c502a4f708c4955b12449507cd80c285c2a982c7239bcc62760cd5db55669fce0251b1bdad042cfeba106c06649359b6bfd9263790c384067a61f9cdf289832748e0ad7a51d0cd805ba55bf881afdcb44b6fbb0600f4a6c6493ae8758d9b7499fc651237e9a23774940c863c7966dfcc760c9e1bc891c966a2e737b5d5541cef100100e78bfde0de8a871bba786b1e4ee830fafd68d40b8cee8a8c090d18d06b9adac39a55bf251eab9d34a83e25efff7d8fb7eed98add948b5ed3382987858d059c94835ed3e4d239f47a446a617d01fd8f3e92cccd819bbccbbca3902e901dce32e80e2281a858f0ca0f7c4b60d01d94b92773b81f5c74a8b97ee3ba9d68fac13484608cc1c5451b6dfd5d7631c6447e685879b562c964beca903893c07c30d41ed6507d0a69888a09f4b6e3cf2573786b1e63a36388884d4029657f97264ae4d3f97d52eb1a37edda65331943215d4037b5b5b587b503ea8f356009a83e25f53fea68a37142874b372f21226c6d6d914aa50eac6b6b3223df8d446b6d0c09a24a39037cc056ce1928fd5862f0eb41abfe38899e03eadf89d6da339e0d904aa5606bcfd9b32262afc77f3e66636583f9a7f3188cdd370a170a07fc76f5dbcdafb5fb2dfebe28d3f7a6a34eb537debe7ddbd13a571c294f950ff4fee2b5a214878b51236b884c3f88e66defba3d31fec5278be81d4d2e99db67bd02a97329965796499d4b1de90f1587280e17297c5960fade34fe5fbe2510dbd6bdbf7ddfe989f77e6fc52317e6d0ab7a3f810404af03fa13fd04af8323fdb8cbe9758d1b464284e8ec982011bdca2d7b7f7befe975d32e128852aeb2921711b65f6ddb9b9ffdf7eca3b6d05b80305a53ddd4dcfef57644a483fae324ec79c00f7c250d517ee02ba514e773e7b9faed55e65fcdd3bfdd7fa49dfa6d8a443e612b37a1d90317550e87f7fef6f3c791e781381909448d8d8e71f1c645c646c708c2a83bc616c0493be850e3a41d082382dda8dfbe7d27f992695579a55a11e78a23a5f19294264a521a2f9d48fd074ec5dd7ed1d07a9a6d49a6345e92b9077302c8ccf88c14878b32333e237ee047aff469be0d4f4aa678ad2823c32396409cf4277f1b9ed46f4d26be8ebdff7310388dfd1fcad723365808fa9e0000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -538,14 +479,17 @@ yyyy --&gt; Dígitos de cuenta.</string>
         <receiver>propiedemp</receiver>
         <slot>close()</slot>
     </connection>
+    <connection>
+        <sender>PushButton3</sender>
+        <signal>clicked()</signal>
+        <receiver>propiedemp</receiver>
+        <slot>extiendeCuentas()</slot>
+    </connection>
 </connections>
 <slots>
-    <slot>boton_usalectura()</slot>
-    <slot>boton_lecturaaus()</slot>
-    <slot>boton_usatotal()</slot>
-    <slot>boton_totalaus()</slot>
     <slot>s_saveConfig()</slot>
     <slot>close()</slot>
+    <slot>extiendeCuentas()</slot>
 </slots>
 <layoutdefaults spacing="4" margin="4"/>
 </UI>

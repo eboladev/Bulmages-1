@@ -45,7 +45,8 @@ int roundI(double);
 QDate normalizafecha(QString);
 /** \brief Proteje cadenas de texto pasandoles una sustitución de codigos especiales de XML  */
 QString XMLProtect( const QString& );
-
+/** \brief Ajusta un código de cuenta a una longitud determinada pasada como parametro */
+QString ajustacodigo( QString, unsigned int);
 
 template <typename T>
 std::string Ttos(T arg) {

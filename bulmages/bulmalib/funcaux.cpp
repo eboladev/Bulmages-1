@@ -49,12 +49,10 @@ string extiendecodigo (string cad, unsigned int num1) {
    if (cod.length() < num) {
      string str7 (num-cod.length()+1,'0');
      int pos = cod.find(".",0);
-     fprintf(stderr,"Encontrado en la posicion: %d\n",pos);
      if (pos > 0) {
        cod.replace(pos,1,str7);
      }// end if
    }// end if
-   fprintf(stderr,"Cadena resultante:%s\n",cod.c_str());
    return(cod);
 }
 
@@ -69,12 +67,10 @@ QString extiendecodigo (QString cad, unsigned int num1) {
    if (cod.length() < num) {
      string str7 (num-cod.length()+1,'0');
      int pos = cod.find(".",0);
-     fprintf(stderr,"Encontrado en la posicion: %d\n",pos);
      if (pos > 0) {
        cod.replace(pos,1,str7.c_str());
      }// end if
    }// end if
-   fprintf(stderr,"Cadena resultante:%s\n",cod.ascii());
    return(cod);
 }
 
@@ -151,4 +147,28 @@ QDate normalizafecha(QString fechaintro) {
   if (!fecharesult.setYMD(y,M,d)) fecharesult=QDate::currentDate();
   return(fecharesult);
 }// end normalizafecha
+
+
+/** Esta función ajusta el código pasado al número de digitos especificado.
+    Para ello búsca los ceros intermedios y los amplia hasta que el numero de caracteres sea el deseado.
+    Lo hace a partir del quinto dígito por defecto. Aunque este parametro debería ser configurable.
+  */
+QString ajustacodigo (QString cad, unsigned int num1) {
+   QString cod=cad;
+   unsigned int longcad = cad.length();
+   if (longcad > 4) { 
+	if (longcad < num1) {
+	string str7 (num1 -longcad,'0');
+	cod = cad.left(4);
+	cod += str7;
+	cod += cad.right(longcad-4);
+	}// end if
+	if (longcad > num1) {
+	cod = cad.left(4);
+	cod += cad.right(num1-4);
+	}// end if
+   }// end if
+   return(cod);
+}// end ajustacodigo
+
 

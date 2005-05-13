@@ -15,8 +15,10 @@
  ***************************************************************************/
 
 #include <qmessagebox.h>
- 
+
+#include "funcaux.h"
 #include "propiedadesempresa.h"
+
 using namespace std;
 
 propiedadesempresa::propiedadesempresa(QWidget *parent, const char *name, bool modal) : propiedemp(parent,name,modal) , dialogChanges(this) {
@@ -37,7 +39,7 @@ int propiedadesempresa::inicializa(postgresiface2 *conn) {
     conexionbase->commit();
     num = curs->numregistros();
     if (num >0) {
-        modcodigo->setText(curs->valor(2));
+        modcodigo->setText(curs->valor("valor"));
     }// end if
     delete curs;
 
@@ -146,8 +148,6 @@ void propiedadesempresa::s_saveConfig() {
     update_value(conexionbase,"Pais",linePais->text());
     conexionbase->commit();
     dialogChanges_cargaInicial(); 
-    
-    //done(1);
 }// end accept
 
 
@@ -176,3 +176,20 @@ void propiedadesempresa::close() {
     }// end if
     QDialog::close();
 }// end close
+
+
+void propiedadesempresa::extiendeCuentas() {
+	unsigned int nlong = modcodigo->text().length();
+	QString codigo;
+	QString query = "SELECT * FROM cuenta";
+	cursor2 *cur = conexionbase->cargacursor(query);
+	while (! cur->eof()) {
+		codigo = cur->valor("codigo");
+		codigo = ajustacodigo(codigo,nlong);
+		conexionbase->begin();
+		query = "UPDATE cuenta SET codigo='"+codigo+"' WHERE idcuenta="+cur->valor("idcuenta");
+		conexionbase->ejecuta(query);
+		conexionbase->commit();
+		cur->siguienteregistro();
+	}// end while
+}// end extiendeCuentas

@@ -112,18 +112,6 @@ adocumental::adocumental(empresa *emp,QWidget *parent, const char *name ) : adoc
     m_listado->hideColumn(COL_IDASIENTO);
     m_listado->hideColumn(COL_FECHAINTADOCUMENTAL);
     m_listado->hideColumn(COL_FECHAASADOCUMENTAL);
-
-/*
-    query = "SELECT * FROM configuracion WHERE nombre='RutaADocumental'";
-    conexionbase->begin();
-    cursor2 *cursoraux2=conexionbase->cargacursor(query,"thequery");
-    conexionbase->commit();
-    if (!cursoraux2->eof()) {
-        RutaADocumental = cursoraux2->valor("valor");
-    } else {
-        RutaADocumental = "/tmp";
-    }// end if
-*/
     // Iniciamos la presentación
     inicializa();
 }// end adocumental

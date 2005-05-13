@@ -43,6 +43,7 @@ public:
 public slots:
   virtual void s_saveConfig();
   virtual void close();
+  virtual void extiendeCuentas();
   
   private:
   void update_value(postgresiface2 *,QString ,QString);
