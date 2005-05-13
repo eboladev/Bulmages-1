@@ -48,7 +48,7 @@ rm -rf /usr/bin/bulmacont
 rm -rf /usr/bin/bulmatpv
 
 rmdir -rf /usr/share/bulmages
-rmdir -rf /usr/lib/pluginsbulmages
+rmdir -rf /usr/lib/bulmages
 
 mensaje "BulmaGes ha sido completamente desinstalado.
 Puede que queden bases de datos en su ordenador que debera borrar manualmente"
