@@ -84,12 +84,26 @@ if [ -e /usr/lib/postgresql/lib/plpgsql.so ]; then
    ENC="1"
 fi
 
+# Pruebas para mandrake
 if [ -e /usr/lib/pgsql/plpgsql.so ]; then
    info "PostgreSQL esta bien instalado, la distribucion parece una Mandrake."
    tiempo
    psql $2 < crear/bulmages/bulmages_mandrake.sql 2>> /tmp/errores1.txt > /dev/null
    ENC="1"
 fi
+
+#Pruebas para SUSE
+if [ -e /usr/lib/postgresql/plpgsql.so ]; then
+   LANG="/usr/lib/postgresql/plpgsql.so"
+   LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
+   info "PostgreSQL esta bien instalado, la distribucion parece una Debian."
+   tiempo
+   cat crear/bulmages/bulmages_generica.sql | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.sql
+
+   psql $2 < /tmp/bulmages_generica.sql 2>> /tmp/errores1.txt > /dev/null
+   ENC="1"
+fi
+
 
 
 if [ "$ENC" = "0" ]; then

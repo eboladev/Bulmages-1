@@ -260,7 +260,8 @@ int postgresiface2::formatofecha() {
     QString query="";
     PGresult   *res;
     begin();
-    query.sprintf("SET DateStyle TO 'SQL'");
+//    query.sprintf("SET DateStyle TO 'SQL'");
+    query= "SET DATESTYLE TO PostgreSQL,European";
     res = PQexec(conn, query.ascii());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         fprintf(stderr, "Cambio del formato de fecha command failed\n");
