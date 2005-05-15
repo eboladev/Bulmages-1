@@ -12,10 +12,8 @@
 #               $3 Tipo:  0.- Base (Vacia)
 #                         1.- Plan Contable.
 #                         2.- Juego de prueba de bulmages
-#                         3.- La metabase
 #               $4 Nombre de la Empresa.
 #               $5 Ejercicio (ano)
-#               $6 La metabase en la que se mete la empresa.
 #
 # La diferencia entre este script y el anterior es que este no hace falta que se ejecute como ROOT
 # ------------------------------------------------------------------------------------------------
@@ -30,12 +28,18 @@ else
   ptexto="--dialog"
 fi
 
+#Si el número de parametros no es el correcto salimos con un mensaje de error.
+if [ "$5" = "" ]; then
+   echo "creabulmages [--texto | --dialog] nombre [0 | 1 | 2] nomempresa ejercicio"
+   exit
+fi
+
 
 function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog --title "Creacion Base de Datos" --backtitle "Asociacion Iglues" --msgbox "$1" 15 60
+      dialog --title "Creación Base de Datos" --backtitle "Asociación Iglues" --msgbox "$1" 15 60
    fi
 }
 
@@ -44,7 +48,7 @@ function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog  --title "Creacion Base de Datos" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
+      dialog  --title "Creación Base de Datos" --backtitle "Asociación Iglues" --infobox "$1" 10 60
    fi
 }
 
@@ -58,17 +62,18 @@ function linea {
    fi
 }
 
+# Para que no se mezclen multiples ejecuciones borramos el sistema de errores.
 if [ -e /tmp/errores1.txt ]; then
     rm /tmp/errores1.txt
 fi
 touch /tmp/errores1.txt
 
 
-#Nos situamos en el directorio correcto.
+#Nos situamos en el directorio correcto. Este script no funciona si no estamos en dbmodels.
 cd /usr/share/bulmages/dbmodels
 
 
-info "Creamos la base de datos:$2 $3"
+info "Creamos la base de datos:$2 \n $4"
 linea
 tiempo
 
@@ -78,7 +83,7 @@ createdb -E SQL_ASCII $2 2>> /tmp/errores1.txt > /dev/null
 info "Comprobamos la existencia de PLPGSQL"
 ENC="0"
 if [ -e /usr/lib/postgresql/lib/plpgsql.so ]; then
-   info "PostgreSQL esta bien instalado, la distribucion parece una Debian o una Gentoo."
+   info "PostgreSQL esta bien instalado, la distribución parece una Debian o una Gentoo."
    tiempo
    psql $2 < crear/bulmages/bulmages_debian.sql 2>> /tmp/errores1.txt > /dev/null
    ENC="1"
@@ -86,7 +91,7 @@ fi
 
 # Pruebas para mandrake
 if [ -e /usr/lib/pgsql/plpgsql.so ]; then
-   info "PostgreSQL esta bien instalado, la distribucion parece una Mandrake."
+   info "PostgreSQL esta bien instalado, la distribución parece una Mandrake."
    tiempo
    psql $2 < crear/bulmages/bulmages_mandrake.sql 2>> /tmp/errores1.txt > /dev/null
    ENC="1"
@@ -96,16 +101,15 @@ fi
 if [ -e /usr/lib/postgresql/plpgsql.so ]; then
    LANG="/usr/lib/postgresql/plpgsql.so"
    LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
-   info "PostgreSQL esta bien instalado, la distribucion parece una Debian."
+   info "PostgreSQL esta bien instalado, la distribución parece una SUSE."
    tiempo
    cat crear/bulmages/bulmages_generica.sql | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.sql
-
    psql $2 < /tmp/bulmages_generica.sql 2>> /tmp/errores1.txt > /dev/null
    ENC="1"
 fi
 
 
-
+# Al no encontrarse ninguna de las distribuciones hacemos una búsqueda euristica.
 if [ "$ENC" = "0" ]; then
    LANG=`locate plpgsql.so`
    if [ $LANG ]; then
@@ -121,43 +125,29 @@ if [ "$ENC" = "0" ]; then
    fi
 fi
 
-# Creamos la base
+# Creamos la base importando sólo tablas, triggers y funciones
 if [ "$3" = "1" -o "$3" = "2" ]; then
    info "Importamos el esquema de base de datos de una empresa. \n"
    tiempo
    psql $2 < crear/bulmages/bulmages_schema.sql 2>> /tmp/errores1.txt > /dev/null
-#else
-#   info "Importamos el esquema de la metabd. \n"
-#   tiempo
-#   psql $2 < crear/metabd/metabd_schema.pgdump 2>> /tmp/errores1.txt > /dev/null
 fi
 
 
-#if [ "$3" = "3" ]; then
-   # Cargamos la metabase
-#   info "Cargamos la metabase. \n"
-#   tiempo
-#   psql $2 < crear/metabd/metabd_data.pgdump 2>> /tmp/errores1.txt > /dev/null
-#fi
-
-
 if [ "$3" = "1" -o "$3" = "2" ]; then
-   # Cargamos lo minimo
-   info "Cargamos el conjunto minimo de datos. \n"
-   tiempo
+   # Cargamos lo minimo, para dejar la empresa con un plan contable vacio.
+   info "Cargamos el conjunto mínimo de datos. \n Plan contable simple. \n"
    psql $2 < crear/bulmages/t_configuracion_data.sql 2>> /tmp/errores1.txt > /dev/null
-#   psql $2 < crear/bulmages/t_tiposiva_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_grupo_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_fpago_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_tipoiva_data.sql 2>> /tmp/errores1.txt > /dev/null
+   tiempo
 fi
 
 
 if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
-   info "Cargamos datos adicionales. \n"
-   tiempo
+   info "Cargamos datos adicionales. \n Ejemplo. \n"
    psql $2 < crear/bulmages/t_ejercicios_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data1.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_canal_data.sql 2>> /tmp/errores1.txt > /dev/null
@@ -174,50 +164,27 @@ if [ "$3" = "2" ]; then
    psql $2 < crear/bulmages/t_balance_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_amortizacion_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_linamortizacion_data.sql 2>> /tmp/errores1.txt > /dev/null
+   tiempo
 fi
 
 
-#VAmos a hacer la insercion en la metabase de los datos necesarios.
-#if [ "$3" = "1" -o "$3" = "2" ]; then
-   # Cargamos lo minimo
-#   info "Creamos la empresa en la MetaBase. \n"
-#   tiempo
-#   echo -e " INSERT INTO empresa (nombre, ano, nombredb) VALUES ('$4', $5, '$2')" | psql $6 2>> /tmp/errores1.txt   > /dev/null
-   #  Hacemos una actualizacion de las bases de datos.
-#   echo -e "\\pset tuples_only \n select MAX(idempresa) from empresa ;" | psql metabd > /tmp/listdb.lst
-#   for x in `tail +2 /tmp/listdb.lst`
-#   do
-#      info "Creamos los permisos necesarios. \n"
-#      tiempo
-#      echo -e "\\pset tuples_only \n select idusuario FROM usuario ;" | psql metabd > /tmp/listuser.lst
-#      for y in `tail +2 /tmp/listuser.lst`
-#      do
-#            echo "INSERT INTO usuario_empresa (idusuario,idempresa, permisos) VALUES ($y, $x, 1)" | psql $6   2>> /tmp/errores1.txt >> /tmp/errores1.txt
-#            info "Damos permisos a $y, $x. \n"
-#      done
-#      linea
-#   done
-#fi
-
+#Ponemos el nombre que corresponde
+info "Realizando configuraciones adicionales. \n"
+echo "UPDATE configuracion SET valor='$4' WHERE nombre='NombreEmpresa';" | psql $2 >/dev/null
+tiempo
 
 DBS=`cat /tmp/errores1.txt | grep ERROR`
 if [ "$DBS" ]; then
-   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortará la instalacion. Para mas informacion consulte en bulmages@bulma.net. \n"
+   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortará la instalación. Para mas información consulte en bulmages@bulma.net. \n"
    dropdb $2
    exit 1
 else
-   info "La instalacion de la base de datos $2 ha sido un exito. \n"
+   info "La instalación de la base de datos $2 $4 ha sido un éxito. \n"
   if [ -e /tmp/errores1.txt ]; then
     rm /tmp/errores1.txt
   fi
-  if [ -e /tmp/listdb.lst ]; then
-    rm /tmp/listdb.lst
-  fi
-  if [ -e /tmp/listuser.lst ]; then
-    rm /tmp/listuser.lst
-  fi
-  if [ -e /tmp/error.txt ]; then
-    rm /tmp/error.txt
+  if [ -e /tmp/bulmages_generica.sql ]; then
+    rm /tmp/bulmages_generica.sql
   fi
 fi
 

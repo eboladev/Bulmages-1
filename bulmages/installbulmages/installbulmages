@@ -43,39 +43,46 @@ rm /tmp/error.txt
 fi
 
 
+# Esta función presenta mensajes por pantalla
 function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$2" "$1"  "$3"
    else
-      dialog --title "Instalacion de BulmaGes v0.4.9" --backtitle "Asociacion Iglues" --msgbox "$1" 10 60
+      dialog --title "Instalación de BulmaGés v0.4.9" --backtitle "Asociación Iglues" --msgbox "$1" 10 60
    fi
 }
 
-
+# Esta función presenta mensajes.
 function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e  "$2" "$1"  "$3"
    else
-      dialog  --title "Instalacion de BulmaGes v0.4.9" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
+      dialog  --title "Instalación de BulmaGés v0.4.9" --backtitle "Asociación Iglues" --infobox "$1" 10 60
    fi
 }
 
-
+#Esta función crea usuarios que van a manejar la base de datos.
 function lee() {
-  if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
-   echo -e  "\033[33m""Indique el usuario que va a trabajar normalmente con el programa:"  "\033[0m"
-    read user
-    su - postgres -c "createuser --adduser --createdb $user"
-  else
-    dialog --title "Instalacion de BulmaGes v0.4.9" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes" 10 60  2>/tmp/dialog.ans
-    if [ $? = 1 ]; then
-       clear
-       exit 0
-    fi
-    user=`cat /tmp/dialog.ans`
-    su - postgres -c "createuser --adduser --createdb $user"
-    rm -f /tmp/dialog.ans # don't litter !
-  fi
+        if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
+                echo -e  "\033[33m""Indique el usuario que va a trabajar normalmente con el programa:"  "\033[0m"
+                read user
+        else
+                dialog --title "Instalacion de BulmaGes v0.4.9" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/dialog.ans
+                user=`cat /tmp/dialog.ans`
+                rm -f /tmp/dialog.ans # don't litter !
+        fi
+        while [ "$user" != "" ]
+        do
+                su - postgres -c "createuser --adduser --createdb $user"
+                if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
+                        echo -e  "\033[33m""Indique el usuario que va a trabajar normalmente con el programa:"  "\033[0m"
+                        read user
+                else
+                        dialog --title "Instalacion de BulmaGes v0.4.9" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/dialog.ans
+                        user=`cat /tmp/dialog.ans`
+                        rm -f /tmp/dialog.ans # don't litter !
+                fi
+        done
 }
 
 function tiempo {
@@ -90,7 +97,6 @@ function linea {
 
 # Comprobamos que estamos ejecutando como root el programa
 if [ ! $(whoami) = "root" ]; then
-#   echo -e "Este script de instalacion debe ejecutarse como root"
    mensaje "Este script de instalacion debe ejecutarse como root. \n"
    exit 1
 fi
@@ -104,7 +110,7 @@ touch /tmp/errores.txt
 
 #Comprobamos que estamos en el directorio adecuado
 if [ ! -e ./installbulmages ]; then
- mensaje "Directorio incorrecto. La instalacion debe ejecutarse desde el directorio donde se encuentra el script. \n"
+ mensaje "Directorio incorrecto. La instalación debe ejecutarse desde el directorio donde se encuentra el script. \n"
  exit 1
 fi
 
@@ -116,8 +122,8 @@ fi
 
 #Comprobamos que existe la libreria de qt adecuada.
 if [ ! -e ${QTDIR}/lib/libqt.so.3 ]; then
-	mensaje "Libreria de Qt libqt.so.3 no está instalada o no se encuentra en ${QTDIR} \n"
-	exit 1
+        mensaje "Libreria de Qt libqt.so.3 no está instalada o no se encuentra en ${QTDIR} \n"
+        exit 1
 fi
 
 
@@ -189,28 +195,28 @@ if [ -e /etc/bulmages.conf ]; then
    cat /tmp/errores.txt | grep ERROR
 else
 # Se trata de una instalación nueva
-	# Miramos donde está pg_hba.conf según distribuciones (habrá que discernir en más distros)
-	if [ -e	/var/lib/postgresql/data/pg_hba.conf ]; then
-		# GENTOO lo instala aquí
-		PGDIR="/var/lib/postgresql/data"
-	elif [ -e /etc/postgresql/pg_hba.conf ]; then
-		# el RESTO (no sé si en todas las demás será aquí)
-		PGDIR="/etc/postgresql"
-	else
-		PGDIR="0"
-		mensaje "No se encuentra el archivo de configuracion de postgresql.\n Esto puede ser debido a que no este instalado o a que no sea una distribucion con el directorio postgresql desconocido. Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
-	        tiempo					
-	fi
+        # Miramos donde está pg_hba.conf según distribuciones (habrá que discernir en más distros)
+        if [ -e /var/lib/postgresql/data/pg_hba.conf ]; then
+                # GENTOO lo instala aquí
+                PGDIR="/var/lib/postgresql/data"
+        elif [ -e /etc/postgresql/pg_hba.conf ]; then
+                # el RESTO (no sé si en todas las demás será aquí)
+                PGDIR="/etc/postgresql"
+        else
+                PGDIR="0"
+                mensaje "No se encuentra el archivo de configuracion de postgresql.\n Esto puede ser debido a que no este instalado o a que no sea una distribucion con el directorio postgresql desconocido. Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
+                tiempo
+        fi
 
         # Vamos a echar un vistacillo al pg_hba.conf
         if [ ! $PGDIR = "0" ]; then
                 info "Revisando archivo pg_hba.conf"
                 PGA=`cat $PGDIR/pg_hba.conf | grep reject | wc -l`
                 if [ ! "$PGA" -eq "0" ]; then
-                	mensaje "Alerta: Revise el archivo $PGDIR/pg_hba.conf, ya que puede tener restricciones de permisos.\n $PGA"
-	                tiempo
-        	        dialog --yesno "Si lo desea podemos instalar una copia personalizada del archivo pg_hba.conf  que configura los permisos de postgres. (Puede que con esta opcion pierda seguridad). \n" 15 60
-                	case $? in
+                        mensaje "Alerta: Revise el archivo $PGDIR/pg_hba.conf, ya que puede tener restricciones de permisos.\n $PGA"
+                        tiempo
+                        dialog --yesno "Si lo desea podemos instalar una copia personalizada del archivo pg_hba.conf  que configura los permisos de postgres. (Puede que con esta opcion pierda seguridad). \n" 15 60
+                        case $? in
                           0)
                            info "Modificando  la configuracion de postgres. \n"
                            mv $PGDIR/pg_hba.conf $PGDIR/pg_hba.conf.old
@@ -219,15 +225,13 @@ else
                            /etc/init.d/postgresql restart >/dev/null
                            tiempo;;
                           1)
-                           info "No se ha seleccionado. \n"
                            tiempo;;
                           255)
-                           info "ESC pulsado. \n"
                            tiempo;;
-	                esac
- 	        else
-	                mensaje "pg_hba esta correcto"
-        	fi
+                        esac
+                else
+                        mensaje "pg_hba es correcto"
+                fi
         fi
 
 # Hacemos una insercion inicial de las bases de datos.
@@ -274,17 +278,19 @@ cp -r kugar /usr/share/bulmages
 cp -r openreports /usr/share/bulmages
 
 
-info "Instalacion de plugins. \n"
-tiempo
-mkdir /usr/lib/bulmages
+info "Instalando plugins iniciales. \n"
+if [ ! -e /usr/lib/bulmages ]; then
+        mkdir /usr/lib/bulmages
+fi
 cp -r plugins /usr/lib/bulmages
+tiempo
 
-   info "Creando bases de datos del sistema y empresas de ejemplo. \n"
-   tiempo
+info "Creando bases de datos del sistema y empresas de ejemplo. \n"
+tiempo
 
 # Creamos las bases de datos para bulmacont.
-   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bulmages 2 Bulmages 2004 metabd"
-   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bgplangcont 1 \"Plan Contable Vacio\" 2004 metabd"
+   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bulmages 2 Bulmages 2004"
+   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bgplangcont 1 \"Plan Contable Vacio\" 2004"
 
 # Creamos las bases de datos para bulmafact.
    su - postgres -c "/usr/share/bulmages/dbmodels/creabulmafact $ptexto bulmafact 1 \"Facturacion Vacia\" 2004 metabd"
