@@ -252,6 +252,7 @@ tiempo
 cp bulmages /usr/bin
 cp cargaemp /usr/bin
 cp guardaemp /usr/bin
+cp nuevaemp  /usr/bin
 cp bulmafact /usr/bin
 cp bulmacont /usr/bin
 cp bulmatpv /usr/bin

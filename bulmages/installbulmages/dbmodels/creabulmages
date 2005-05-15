@@ -30,7 +30,7 @@ fi
 
 #Si el número de parametros no es el correcto salimos con un mensaje de error.
 if [ "$5" = "" ]; then
-   echo "creabulmages [--texto | --dialog] nombre [0 | 1 | 2] nomempresa ejercicio"
+   echo "creabulmages (--texto | --dialog) nombre (0 | 1 | 2) nomempresa ejercicio"
    exit
 fi
 

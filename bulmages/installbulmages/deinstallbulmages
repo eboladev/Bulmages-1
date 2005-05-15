@@ -14,7 +14,7 @@ function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog --title "Desinstalacion de BulmaGes v 0.4.9" --backtitle "Asociación Iglues" --msgbox "$1" 10 60
+      dialog --title "Desinstalación de BulmaGés v 0.4.9" --backtitle "Asociación Iglues" --msgbox "$1" 10 60
    fi
 }
 
@@ -23,7 +23,7 @@ function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog  --title "Desinstalacion de BulmaGes v 0.4.9" --backtitle "Asociación Iglues" --infobox "$1" 10 60
+      dialog  --title "Desinstalación de BulmaGés v 0.4.9" --backtitle "Asociación Iglues" --infobox "$1" 10 60
    fi
 }
 
@@ -32,7 +32,7 @@ function tiempo {
   sleep 1.5
 }
 
-info "BulmaGes esta siendo desinstalado"
+info "BulmaGés esta siendo desinstalado"
 tiempo
 su postgres -c "dropdb bulmages" > /dev/null 2> /dev/null
 su postgres -c "dropdb bgplangcont"  > /dev/null 2> /dev/null
@@ -43,6 +43,7 @@ rm -rf /var/www/bcontaweb
 rm -rf /usr/bin/bulmages
 rm -rf /usr/bin/cargaemp
 rm -rf /usr/bin/guardaemp
+rm -rf /usr/bin/nuevaemp
 rm -rf /usr/bin/bulmafact
 rm -rf /usr/bin/bulmacont
 rm -rf /usr/bin/bulmatpv
@@ -50,6 +51,6 @@ rm -rf /usr/bin/bulmatpv
 rmdir -rf /usr/share/bulmages
 rmdir -rf /usr/lib/bulmages
 
-mensaje "BulmaGes ha sido completamente desinstalado.
-Puede que queden bases de datos en su ordenador que debera borrar manualmente"
+mensaje "BulmaGés ha sido completamente desinstalado.
+Puede que queden bases de datos en su ordenador que deberá borrar manualmente."
 clear
