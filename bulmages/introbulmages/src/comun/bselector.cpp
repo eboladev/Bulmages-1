@@ -21,6 +21,8 @@
 
 #include "bselector.h"
 //#include "logpass.h"
+#include <qpushbutton.h>
+#include <qfile.h>
 
 #ifndef WIN32
 #include <unistd.h>
@@ -32,7 +34,17 @@
 BSelector::BSelector(QWidget * parent,const char * name) : UIselector(parent,name) {
 //Al crear el selector, todos los modulos estan cerrados = NULL
 	m_tipoempresa = "";
-}
+	// Mira si está instalado el bulmafact y de no estarlo desabilita el botón.
+	QFile f("/usr/bin/bulmafact");
+	if (! f.exists() )
+		m_bulmafact->setEnabled(FALSE);
+	QFile f1("/usr/bin/bulmatpv");
+	if (! f1.exists() )
+		m_bulmatpv->setEnabled(FALSE);
+	QFile f2("/usr/bin/bulmacont");
+	if (! f2.exists() )
+		m_bulmacont->setEnabled(FALSE);
+}// end BSelector
 
 
 BSelector::~BSelector() {
@@ -108,10 +120,8 @@ void BSelector::produccion_clicked() {
 
 
 //Boton para entrar en el modulo de STOCKS Y ALMACENES
-void BSelector::almacen_clicked() {
-   fprintf(stderr,"SE ha pulsado sobre la opción del BContawev");
+void BSelector::m_bcontaweb_clicked() {
    system("mozilla http://localhost/bcontaweb/ &");
-//   system("netscape http://localhost/bcontaweb/");
 }
 
 

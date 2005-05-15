@@ -57,7 +57,7 @@ private slots:
   virtual void m_bulmatpv_clicked();
   virtual void contabilidad_clicked();
   virtual void produccion_clicked();
-  virtual void almacen_clicked();
+  virtual void m_bcontaweb_clicked();
   virtual void m_bulmafact_clicked();
 };
 
