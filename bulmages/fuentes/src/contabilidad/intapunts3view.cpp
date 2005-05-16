@@ -124,8 +124,6 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
         tapunts->hideColumn(COL_CANAL);
     if (confpr->valor(CONF_CCOSTE_APUNTES) != "YES")
         tapunts->hideColumn(COL_CCOSTE);
-
-
     cursorasientos = NULL;
 
     // Creamos el objeto de filtrado de asientos para que el filtro funcione siempre bien
@@ -1177,21 +1175,20 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
     cursor2 *cur;
     int opcion;
     float tdebe;
+    QString ttdebe;
     fprintf(stderr,"Se ha pulsado la tecla (%i) sobre tapunts y se ha disparado el evento %d, %d\n",caracter, row, col);
     if (abierto) {
         //Siempre teniendo en cuenta que el asiento este abierto.
         switch (caracter) {
         case 47:  // El signo de dividir /
-            tdebe = m_saldoCuenta->text().toFloat();
-            if (tdebe < 0) {
-                tdebe = -tdebe;
-                QString cadena;
-                cadena.sprintf("%2.2f",tdebe);
-                tapunts->setText(row,COL_DEBE, cadena);
+            ttdebe = m_saldoCuenta->text();
+            if (ttdebe.toFloat() < 0) {
+                ttdebe = ttdebe.right(ttdebe.length()-1);
+                tapunts->setText(row,COL_DEBE, ttdebe);
                 tapunts->setText(row,COL_HABER, "0.00");
                 calculadescuadre();
             } else {
-                tapunts->setText(row, COL_HABER, descuadre->text());
+                tapunts->setText(row, COL_HABER, ttdebe);
                 tapunts->setText(row,COL_DEBE,"0.00");
                 calculadescuadre();
             }// end if

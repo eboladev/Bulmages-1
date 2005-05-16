@@ -50,8 +50,9 @@ public slots:
    virtual void boton_borrar();
    virtual void s_familiaLostFocus();
    virtual void s_searchFamily();
+   virtual void s_searchTipo();
    virtual void s_findArticulo();
-	virtual void s_grabarClicked();
+   virtual void s_grabarClicked();
 };
 
 #endif

@@ -22,6 +22,7 @@
 #include "company.h"
 #include "division.h"
 #include "familiasview.h"
+#include "tiposarticuloview.h"
 
 #include <qlineedit.h>
 #include <qmessagebox.h>
@@ -98,6 +99,21 @@ void articleedit::s_searchFamily() {
 	delete fam;
 	s_familiaLostFocus();
 }// end s_searchFamily
+
+
+/**
+  * Se dispara este SLOT cuando se pulsa sobre el botón de buscar tipo de artículo
+  */
+void articleedit::s_searchTipo() {
+	tiposarticuloview *tip = new tiposarticuloview(companyact, 0,0);
+	tip->setModoConsulta();
+	if (tip->exec() == 1) {
+		m_codtipo_articulo->setText(tip->codTipo());
+	}// end if
+	delete tip;
+//	s_familiaLostFocus();
+}// end s_searchFamily
+
 
 /************************************************************************
 * Esta función carga un artículo de la base de datos y lo presenta.     *
