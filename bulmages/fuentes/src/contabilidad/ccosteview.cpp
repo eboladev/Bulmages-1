@@ -100,10 +100,9 @@ void ccosteview::cambiacombo(int numcombo) {
 void ccosteview::seleccionado(QListViewItem *it) {
     int previdccoste = it->text(col_idc_coste).toInt();
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, "Guardar Centro de Coste",
-		"Desea guardar los cambios.",
-		QMessageBox::Ok ,
-		QMessageBox::Cancel ) == QMessageBox::Ok)
+    	    if ( QMessageBox::warning( this, tr("Guardar Centro de Coste"),
+		tr("Desea guardar los cambios."),
+		tr("Guardar"), tr("Cancelar"),0 , 0, 1) == 0)
 		boton_guardar();
 		fprintf(stderr,"Se ha guardado\n");	
     }// end if 
@@ -174,14 +173,11 @@ void ccosteview::boton_nuevo() {
 
 
 void ccosteview::boton_borrar() {
-    switch( QMessageBox::warning( this, "Borrar Centro de Coste",
-                                  "Se va a borrar la Forma de Pago,\n"
-                                  "Esto puede ocasionar pérdida de datos\n"
-                                  "Tal vez deberia pensarselo mejor antes\n"
-                                  "porque igual su trabajo se va a tomar por culo.",
-                                  QMessageBox::Ok ,
-                                  QMessageBox::Cancel )) {
-    case QMessageBox::Ok: // Retry clicked or Enter pressed
+    switch( QMessageBox::warning( this, tr("Borrar Centro de Coste"),
+                                  tr("Se va a borrar el Centro de Coste,\n"
+                                  "Esta operación puede ocasionar pérdida de datos\n"),
+                                  tr("Borrar") , tr("Cancelar"), 0 , 0 , 1 )) {
+    case 0: // Retry clicked or Enter pressed
 				  
 	QString query;
 	query.sprintf("DELETE FROM c_coste WHERE idc_coste=%d", idc_coste);
@@ -198,10 +194,9 @@ void ccosteview::boton_borrar() {
 void ccosteview::close() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, "Guardar Centro de Coste",
-		"Desea guardar los cambios.",
-		QMessageBox::Ok ,
-		QMessageBox::Cancel ) == QMessageBox::Ok)
+    	    if ( QMessageBox::warning( this, tr("Guardar Centro de Coste"),
+		tr("Desea guardar los cambios."),
+		tr("Guardar") , tr("Cancelar"), 0, 0,1 ) == 0)
 		boton_guardar();	
     }// end if
     QDialog::close();

@@ -40,6 +40,7 @@ public slots:
 	virtual void corregir();
 	virtual void link(const QString &);
 	virtual void alink(const QString &, const QString &);
+	virtual void s_configurarReglas();
 	virtual void cambia(bool a) {
 		fprintf(stderr,"CAmbia de corrector\n");
 	       if (a) dock->show();

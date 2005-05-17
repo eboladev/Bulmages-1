@@ -61,6 +61,7 @@ int main(int argc, char *argv[]) {
     confpr = new configuracion();
 
     QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
+//    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
     QApplication * mainApp = new QApplication (argc, argv);
     theApp = mainApp;
     mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
@@ -118,8 +119,6 @@ int main(int argc, char *argv[]) {
 		}// end if    
 	}// end if
     }// end for
-    
-
     
         
     valorsalida = mainApp->exec();

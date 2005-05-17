@@ -65,12 +65,10 @@ void canalview::cambiacombo(int numcombo) {
     //  fprintf(stderr,"idasientointeligente %d\n",listasientos[num]);
     int idcanal1 = canales[numcombo];
     if (dialogChanges_hayCambios()) {
-        if ( QMessageBox::warning( this, "Guardar Canal",
-                                   "Desea guardar los cambios.",
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+        if ( QMessageBox::warning( this, tr("Guardar Canal"),
+                                   tr("Desea guardar los cambios."),
+                                   tr("Guardar"), tr("Cancelar"), 0 , 0, 1) == 0)
             boton_guardar();
-        fprintf(stderr,"Se ha guardado\n");
     }// end if
     idcanal = idcanal1;
     mostrarplantilla();
@@ -84,12 +82,10 @@ void canalview::mostrarplantilla() {
     int i;
     QString query;
     query.sprintf("SELECT * from canal WHERE idcanal=%d",idcanal);
-    conexionbase->begin();
-    cursor2 *cursorcanal = conexionbase->cargacursor(query,"canales1");
-    conexionbase->commit();
+    cursor2 *cursorcanal = conexionbase->cargacursor(query);
     if (!cursorcanal->eof()) {
-        nomcanal->setText(cursorcanal->valor(2));
-        desccanal->setText(cursorcanal->valor(1));
+        nomcanal->setText(cursorcanal->valor("nombre"));
+        desccanal->setText(cursorcanal->valor("descripcion"));
     }// end if
     i=0;
     while (canales[i] != idcanal)
@@ -115,10 +111,9 @@ void canalview::boton_guardar() {
 void canalview::boton_nuevo() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-        if ( QMessageBox::warning( this, "Guardar Canal",
-                                   "Desea guardar los cambios.",
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+        if ( QMessageBox::warning( this, tr("Guardar Canal"),
+                                   tr("Desea guardar los cambios."),
+                                   tr("Guardar"), tr("Cancelar"), 0 ,0 ,1 ) == 0)
             boton_guardar();
     }// end if
     QString query;
@@ -135,14 +130,11 @@ void canalview::boton_nuevo() {
 
 
 void canalview::boton_borrar() {
-    switch( QMessageBox::warning( this, "Borrar Canal",
-                                  "Se va a borrar la Forma de Pago,\n"
-                                  "Esto puede ocasionar pérdida de datos\n"
-                                  "Tal vez deberia pensarselo mejor antes\n"
-                                  "porque igual su trabajo se va a tomar por culo.",
-                                  QMessageBox::Ok ,
-                                  QMessageBox::Cancel )) {
-    case QMessageBox::Ok: // Retry clicked or Enter pressed
+    switch( QMessageBox::warning( this, tr("Borrar Canal"),
+                                  tr("Se va a borrar la Forma de Pago,\n"
+                                  "Esto puede ocasionar pérdida de datos\n") ,
+                                  tr("Borrar"), tr("Cancelar"), 0 , 0, 1)) {
+    case 0: // Retry clicked or Enter pressed
         QString query;
         query.sprintf("DELETE FROM canal WHERE idcanal=%d", idcanal);
         conexionbase->begin();
@@ -158,10 +150,9 @@ void canalview::boton_borrar() {
 void canalview::close() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, "Guardar Canal",
-		"Desea guardar los cambios.",
-		QMessageBox::Ok ,
-		QMessageBox::Cancel ) == QMessageBox::Ok)
+    	    if ( QMessageBox::warning( this, tr("Guardar Canal"),
+		tr("Desea guardar los cambios."),
+		tr("Guardar"), tr("Cancelar"),0 , 0, 1 ) == 0)
 		boton_guardar();	
     }// end if
     QDialog::close();

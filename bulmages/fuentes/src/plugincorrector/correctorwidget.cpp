@@ -11,7 +11,7 @@
 //
 //
 #include "correctorwidget.h"
-
+#include "confreglasview.h"
 
 #include <qtable.h>
 #include <qheader.h>
@@ -163,4 +163,11 @@ query += " ORDER BY ordenasiento";
 	textBrowser += "</BODY></HTML>";
 	browser->setText(textBrowser);
 }// end corregir
+
+
+void correctorwidget::s_configurarReglas() {
+	confreglasview *conf = new confreglasview(0,0);
+	conf->exec();
+	delete conf;
+}
 
