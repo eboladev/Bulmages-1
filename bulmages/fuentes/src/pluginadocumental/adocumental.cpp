@@ -55,7 +55,7 @@ void myplugin1::boton_adjuntar() {
     adoc->exec();
     /// FAlta por resolver esta salvedad
     intapunts3view *intapunts = empresaactual->intapuntsempresa();
-    if (intapunts-idAsiento() != "-1")
+    if (intapunts->idAsiento() != "-1")
     	adoc->asociaasiento(intapunts->idAsiento());
     delete adoc;
 }// end boton_adjuntar
@@ -178,7 +178,7 @@ void adocumental::asociaasiento(QString idasiento) {
     fprintf(stderr,"AsociaAsiento: \n");
     fprintf(stderr,"idasiento:%s, idadocumental:%s\n", idasiento.ascii(), idadocumental.ascii());
     if ((idadocumental != "") && (idasiento != "")) {
-        QString SQLQuery = "UPDATE adocumental SET idasiento= "+idasiento+" WHERE idadocumental="+idadocumental;
+        QString SQLQuery = "UPDATE adocumental SET /*idasiento*/= "+idasiento+" WHERE idadocumental="+idadocumental;
         fprintf(stderr,"%s\n", SQLQuery.ascii());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
