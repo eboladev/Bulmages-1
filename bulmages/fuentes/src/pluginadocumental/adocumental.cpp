@@ -55,7 +55,8 @@ void myplugin1::boton_adjuntar() {
     adoc->exec();
     /// FAlta por resolver esta salvedad
     intapunts3view *intapunts = empresaactual->intapuntsempresa();
-    adoc->asociaasiento(intapunts->idAsiento());
+    if (intapunts-idAsiento() != "-1")
+    	adoc->asociaasiento(intapunts->idAsiento());
     delete adoc;
 }// end boton_adjuntar
 

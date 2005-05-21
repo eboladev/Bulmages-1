@@ -101,19 +101,18 @@ int empresa::inicializa1(QString nombreDB, QWorkspace *space) {
          delete selcanales;
    }// end if  
 
-  // Inicializamos los selectores de centros de coste y canales
+  /// Inicializamos los selectores de centros de coste y canales
   selccostes=new selectccosteview(this,0,"selccostes");   
   selcanales=new selectcanalview(this,0,"selcanales");
   
+  /// Inicializamos las ventanas de uso generalizado
   extracto = new extractoview1(this, pWorkspace,"extracto");
   diario = new diarioview1(this,pWorkspace,"diario");
   balance = new balanceview(this, pWorkspace,"balance");
   balance1 = new balance1view(this, pWorkspace,"balance2");
   introapunts1 = new intapunts3view(this, pWorkspace,"introapunts2");
   
-  introapunts1->inicializa(conexionbase2);
-  
-  // Pasamos parametros a las ventanas para que puedan coordinarse entre si.
+  /// Pasamos parametros a las ventanas para que puedan coordinarse entre si.\todo El paso de mensajes debería pasar por la clase \ref empresa siempre.
   introapunts1->inicializa1(extracto, diario, balance);
   extracto->inicializa2(introapunts1, diario, balance);
   diario->inicializa2(introapunts1,extracto, balance);

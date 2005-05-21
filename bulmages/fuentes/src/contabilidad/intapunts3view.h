@@ -42,6 +42,7 @@ class empresa;
  * \class intapunts3view intapunts3view.h
  * \brief Se encarga de controlar la ventana de introducción de apuntes.
  * \todo Eliminar los arrays de canales y centros de coste y sustituirlos por listas o por conjuntos.
+ *
  * Esta es una de las clases más complejas del programa ya que controla toda la acción y casi toda la interactuación del usuario con el programa. El intento es conseguir una interficia que resulte muy rápida y cómodo para el usuario que introduzca datos.
  Hereda intapunts3dlg  
 */
@@ -49,31 +50,24 @@ class empresa;
 class intapunts3view : public intapunts3dlg  {
     Q_OBJECT
 private:
-    int cidapunte;
-    int cdescapunte;
-    int cfechaapunte;
-    int idasiento;            // El identificador del asiento actual.
-    int rowactual;            // El identificador del row actual. Si no hay row seleccionado valdrá -1
-    float descuadre1;
-    int abierto;              // Indica que el asiento esta abierto.
-    extractoview1 *extracto;
-    diarioview1 *diario;
-    balanceview *balance;
-    QTable *tapunts;
-    postgresiface2 *conexionbase;
-    unsigned int numdigitos;
-    int ccostes[200];
-    int ccanales[200];
+    int idasiento;            /// El identificador del asiento que se está visualizando en cada momento. Si no existe asiento actual vale -1
+    int rowactual;            /// El identificador de la fila sobre la que está el cursor. Si no hay row seleccionado valdrá -1
+    float descuadre1;	      /// El valor calculado del descuadre. \todo Debe dejar de ser float para evitar errores.
+    int abierto;              /// Indica que el asiento esta abierto.
+    extractoview1 *extracto;  /// Puntero a la clase amiga \ref extractoview1 \todo el paso de mensajes deberá hacerse a traves de la clase empresa.
+    diarioview1 *diario;      /// Puntero a la clase amiga \ref diarioview1 \todo el paso de mensajes deberá hacerse a traves de la clase empresa y este puntero debe desaparacer.
+    balanceview *balance;     /// Puntero a la clase amiga \ref balanceview \todo el paso de mensajes deberá hacerse a través de la clase empresa.
+    postgresiface2 *conexionbase;	/// Puntero a la conexión de la base de datos abierta actualmente.
+    unsigned int numdigitos;		/// Indica el número de dígitos que usan por defecto las cuentas. Es un parametro sacado de la configuración de la empresa.
 public:
-    QString idAsiento();
-    cursor2 *cursorasientos;   // Este es el cursor que se usará para recorrer la lista de asientos.
-    filtrarasientosview *filt; // Este objeto contiene todas las opciones de filtraje necesarias para funcionar.
-    empresa *empresaactual;
-    QHBoxLayout *layoutPlugins;
+    QString idAsiento();	/// Devuelve el identificador del asiento que se está mostrando actualmente. De no existir un asiento actual devuelve "-1"
+    cursor2 *cursorasientos;   /// Este es el cursor que se usará para recorrer la lista de asientos.
+    filtrarasientosview *filt; /// Este objeto contiene todas las opciones de filtraje necesarias para funcionar. es un objeto del tipo \ref filtrarasientosview 
+    empresa *empresaactual;	/// ESte puntero del tipo \ref empresa contiene la referencia a la clase que ha inicializado este objeto.
+    QHBoxLayout *layoutPlugins;	///Para poder enganchar plugins a esta ventana se ha habilitado este layout.
 public:
     intapunts3view(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
     ~intapunts3view();
-    int inicializa(postgresiface2 *);
     int inicializa1(extractoview1 *, diarioview1 *, balanceview *);
     void cargarcursor();
     void repinta(int);
