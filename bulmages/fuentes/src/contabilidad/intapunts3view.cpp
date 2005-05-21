@@ -62,6 +62,7 @@
 #define TAPUNTS_NUM_ROWS 10000
 
 /** \brief Devuelve en un QString el valor del asiento que se está visualizando
+  *
   *  Si no hay ningún asiento viendose devuelve "-1"
   */
 QString intapunts3view::idAsiento() {
@@ -1989,6 +1990,7 @@ void intapunts3view::bajarapunte(int row) {
 
 
 /** \brief Responde al cambio de texto en el qlineedit de la fecha
+  *
   * Si se ha pulsado un + crea un objeto del tipo \ref calendario y lo llama para obtener la fecha
   * Si se ha pulsado el * pone la fecha actual
   */
@@ -2007,7 +2009,8 @@ void intapunts3view::fechaasiento1_textChanged( const QString & texto ) {
 }//fin fechaasiento1_textChanged
 
 
-/** SE ha pulsado sobre el botón de duplicar asiento
+/** \brief Se ha pulsado sobre el botón de duplicar asiento
+  *
   * Inicializa el dialogo de duplicación de asientos y lo presenta.
   * Cuando se ha terminado carga el cursor de presentación y repinta el asiento
   * para que actualize los cambios

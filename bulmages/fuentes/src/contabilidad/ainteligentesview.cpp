@@ -62,7 +62,12 @@
 
 
 
-
+/** \brief El constructor de la clase debe inicializar todos los componentes de la pantalla
+  *
+  * Inicializa la \brief conexionbase y \ref empresaactual
+  * Crea las filas y columnas en la tabla de detalle de los asientos inteligentes.
+  * Inicializa las variables auxiliares que usa la clase
+  */
 ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *name, bool modal ) : ainteligentesdlg(parent,name, modal) {
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
@@ -110,32 +115,32 @@ ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *
    tapunts->hideColumn(COL_CONTRAPARTIDA);
    tapunts->hideColumn(COL_CANAL);
    tapunts->hideColumn(COL_IDC_COSTE);
-
-
    
-   // El cursor que recorre los asientos inteligentes debe iniciarse a NULL
+   /// El cursor que recorre los asientos inteligentes debe iniciarse a NULL
    m_cAInteligentes = NULL;
    
-   // Hacemos la inicialización inicial.
+   /// Hacemos la inicialización inicial.
    m_oldRow=-1;
    cargacombo();
-   // Llamamos a boton_fin para que la pantalla aparezca con un asiento inteligente inicial.
+   /// Llamamos a boton_fin para que la pantalla aparezca con un asiento inteligente inicial.
    boton_fin();
-   
 }// end ainteligentesview
 
-/** \brief Se encarga de cargar el combo box m_ainteligente
+
+/** \brief Cargar el combo box \ref m_ainteligente que contiene todos los asientos cargados
+  *
+  * Certifica que el \ref cursor2 m_cAInteligentes este liberado.
+  * Crea un query cargando todos los asientos inteligentes que haya en la base de datos
+  * Agrega todos los componentes al comoboBox
   */
 void ainteligentesview::cargacombo() {
    m_ainteligente->clear();
    if (m_cAInteligentes != NULL) {
       delete m_cAInteligentes;
    }// end if
-   // Vamos a cargar el comboBox para que la cosa pinte mejor.
+   /// Vamos a cargar el comboBox para que la cosa pinte mejor.
    QString SQLQuery = "SELECT * FROM ainteligente";
-   conexionbase->begin();
-   m_cAInteligentes = conexionbase->cargacursor(SQLQuery,"uncursormas");
-   conexionbase->commit();
+   m_cAInteligentes = conexionbase->cargacursor(SQLQuery);
    while (!m_cAInteligentes->eof()) {
       m_ainteligente->insertItem(m_cAInteligentes->valor("idainteligente")+m_cAInteligentes->valor("descripcion"));
       m_cAInteligentes->siguienteregistro();
@@ -143,26 +148,32 @@ void ainteligentesview::cargacombo() {
 }// end if
 
 
+/** \brief Cuando se cambia el contenido del comoboBox de los asientos se cambia toda la pantalla
+  *
+  * Esta función es llamada cuando se ha seleccionado un item diferente en el comboBox m_aintelignete
+  * Entonces cambia la variable de clase \ref m_idAsientoInteligente con el valor que le corresponde y
+  * llama a la función de repintar la pantalla.
+  \todo No hay verificación ni control de cambios.
+  */
 void ainteligentesview::comboActivated(const QString &) {
    QString idasiento = m_cAInteligentes->valor("idainteligente",m_ainteligente->currentItem());
    m_idAsientoInteligente=idasiento.toInt();
    repinta();
 }// end comboActivated
 
+
 void ainteligentesview::cargacanales() {
    // Hacemos la carga de los canales. Rellenamos el combobox correspondiente.
    string query1;
    combocanal->clear();
    query1="SELECT * FROM canal";
-   conexionbase->begin();
-   cursor2 *cursorcanals = conexionbase->cargacursor(query1.c_str(),"canales");
-   conexionbase->commit();
+   cursor2 *cursorcanals = conexionbase->cargacursor(query1);
    combocanal->insertItem("--",-1);
    m_cCanales[0]=0;
    int j = 1;
    while (!cursorcanals->eof()) {
-      combocanal->insertItem((cursorcanals->valor(2)),-1);
-      m_cCanales[j++] = atoi(cursorcanals->valor(0).ascii());
+      combocanal->insertItem((cursorcanals->valor("nombre")),-1);
+      m_cCanales[j++] = atoi(cursorcanals->valor("idcanal").ascii());
       cursorcanals->siguienteregistro();
    }// end while
    delete cursorcanals;
@@ -173,15 +184,13 @@ void ainteligentesview::cargacostes() {
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
    combocoste->clear();
    string query="SELECT * FROM c_coste ORDER BY nombre";
-   conexionbase->begin();
    cursor2 *cursorcoste = conexionbase->cargacursor(query.c_str(),"costes");
-   conexionbase->commit();
    combocoste->insertItem("--",0);
    m_cCostes[0]=0;
    int i=1;
    while (!cursorcoste->eof()) {
-      combocoste->insertItem(cursorcoste->valor(2),-1);
-      m_cCostes[i++] = atoi(cursorcoste->valor(0).ascii());
+      combocoste->insertItem(cursorcoste->valor("nombre"),-1);
+      m_cCostes[i++] = atoi(cursorcoste->valor("idc_coste").ascii());
       cursorcoste->siguienteregistro();
    }// end while
    delete cursorcoste;

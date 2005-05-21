@@ -22,9 +22,6 @@
 #include <asientosdlg.h>
 #include <qtable.h>
 #include "postgresiface2.h"
-/*
-#include "intapuntsview2.h"
-*/
 #include "intapunts3view.h"
 #include "filtrarasientosview.h"
 #include "empresa.h"

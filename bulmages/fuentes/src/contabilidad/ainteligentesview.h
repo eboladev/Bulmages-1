@@ -24,10 +24,7 @@
 
 /**
  * \author Tomeu Borrás Riera
- * \class ainteligentesview ainteligentesview.h
  * \brief Edición de Asientos Inteligentes
- * \todo Cambiar el array de centros de coste por un cursor
- * \todo Cambiar el array de canales por un cursor
  * 
  * Clase que sirve para editar y crear asientos plantilla (inteligentes)
  * Los asientos intelignetes son un mecanismo mediante el cual podemos hacer la introducción de asientos de una forma mucho más rápida que la convencional.
@@ -46,10 +43,10 @@ private:
    postgresiface2 *conexionbase;
 /// El identificador del asiento inteligente con el que estamos trabajando.   
    int m_idAsientoInteligente;
-/// Listado de los centros de coste disponibles    
-   int m_cCostes[100];
+/// Listado de los centros de coste disponibles   
+    QMap <int, int> m_cCostes; 
 /// Listado de los canales disponibles   
-   int m_cCanales[100];
+   QMap <int,int> m_cCanales;
 /// Para la generación de los centros de coste y canales en el listado hacen falta estos dos campos   
    QComboBox *combocoste;
    QComboBox *combocanal;

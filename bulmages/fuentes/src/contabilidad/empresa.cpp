@@ -122,14 +122,18 @@ int empresa::inicializa1(QString nombreDB, QWorkspace *space) {
   return(0);
 }// end inicializa1
 
+/** \brief Maximiza todas las ventanas que están en el workspace de la aplicación
+  * 
+  * Envia un mensaje showMaximized a todos los objetos que deben ser maximizados
+  */
 void empresa::maximiza() {
-  
   diario->showMaximized();
   extracto->showMaximized();
   balance1->showMaximized();
   balance->showMaximized();
   introapunts1->showMaximized();
 }// end maximiza
+
 
 /** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
   * Al usuario debe seleccionar una empresa y el sistema empieza la inicialización de clases a partir de dicha inicialización.

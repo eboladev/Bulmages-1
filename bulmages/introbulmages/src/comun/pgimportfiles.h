@@ -24,8 +24,7 @@
 
 
 /** @autor Tomeu Borrás Riera
-  * @class pgimportifles pgimportifles.h
-  * @brief Clase para importación y exportación a distintos formatos
+  * @brief Clase para importación y exportación a distintos formatos de archivo de datos.
   */
 class pgimportfiles {
 private:
@@ -60,7 +59,10 @@ public:
 
 
 
-
+/** @autor Tomeu Borrás Riera
+  * @class pgimportifles pgimportifles.h
+  * @brief Clase para leer archivos de XML y hacer la importación de datos.
+  */
 class StructureParser : public QXmlDefaultHandler {
 private:
 	void (*alerta)(int,int);
