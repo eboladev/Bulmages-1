@@ -382,7 +382,7 @@ void ivaview::calculaTotales() {
   */
 void ivaview::boton_buscacuenta() {
     listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->modo=1;
+    listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
     contrapartida->setText(listcuentas->codcuenta);
@@ -399,7 +399,7 @@ void ivaview::cambiadacontrapartida() {
     if (texto == "+") {
         /// Hacemos aparecer la ventana de cuentas
         listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->modo=1;
+        listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
         codigo->setText(listcuentas->codcuenta);
@@ -1034,7 +1034,7 @@ void ivaview::cambiadasubcuenta(int row) {
     if (subcuenta == "") {
         // Hacemos aparecer la ventana de cuentas
         listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->modo=1;
+        listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
         m_listPrevision->setText(row,COL_PREV_CODCUENTA,listcuentas->codcuenta);

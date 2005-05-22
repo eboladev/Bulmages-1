@@ -25,6 +25,9 @@
 #define COL_ORDENASIENTO 0
 
 
+/** El constructor de la clase inicializa algunas estructuras y configura la visión
+  * de la pantalla.
+  */
 asientosview::asientosview(empresa *emp,QWidget *parent, const char *name, bool modal) : asientosdlg(parent,name,modal) {
   empresaactual=emp;
   tablaasientos->setNumCols(6);
@@ -40,9 +43,7 @@ asientosview::asientosview(empresa *emp,QWidget *parent, const char *name, bool 
   tablaasientos->setColumnWidth(COL_HABER,75);
   tablaasientos->setColumnWidth(COL_CERRADO,75);
   tablaasientos->setColumnWidth(COL_ORDENASIENTO,75);
-
   tablaasientos->hideColumn(COL_IDASIENTO);
-
 }// end asientosview
 
 
@@ -50,7 +51,10 @@ asientosview::~asientosview(){
 }// end ~asientosview
 
 
-void asientosview::pulsado(int a, int b, int c,const QPoint &punto) {
+/** Se ha pulsado sobre la tabla de asientos, con lo que se carga en introapunts
+  * el asiento seleccionado y se cierra la ventana.
+  */
+void asientosview::pulsado(int a, int , int ,const QPoint &) {
   int idasiento;
   idasiento = atoi(tablaasientos->text(a,COL_IDASIENTO).ascii());
   introapunts->cargarcursor();
@@ -58,16 +62,16 @@ void asientosview::pulsado(int a, int b, int c,const QPoint &punto) {
   introapunts->show();
   introapunts->setFocus();
   done(1);
-  // Para quitar el warning
-  a=b=c=0;
-  punto.isNull();
 }// end pulsado
 
 
+/** Inicializa la ventana, haciendo la consulta pertinente a la base de datos
+  * y presentando los resultados en pantalla.
+  */
 void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
    introapunts = inta;
    conexionbase = conn;
-   // Hacemos que tengan los dos el mismo filtro asi son compatibles uno con otro.
+   /// Hacemos que tengan tanto introapuntes como asientosview el mismo filtro asi son compatibles uno con otro.
    filt = inta->filt;
    QString cantapunt = filt->cantidadapunte->text().ascii();
    QString saldototal = filt->saldoasiento->text().ascii();
@@ -80,6 +84,7 @@ void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
    QString textnombreasiento= "";
    QString textejercicio = "";
    int pand=0;
+   /// Componemos el query a partir de la parte de filtrado.
    if (saldototal != "") {
       cadwhere = " WHERE ";
       textsaldototal = " asiento.idasiento IN (SELECT idasiento FROM (SELECT idasiento, sum(debe) AS total from apunte GROUP BY idasiento) AS foo WHERE foo.total="+saldototal+")";
@@ -104,9 +109,7 @@ void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
 	else textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ ejercicio +"'";
   }// end if
   query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha,  totaldebe, totalhaber, numap, numborr   from asiento  LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) as foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT sum(debe) as totaldebe, sum(haber) as totalhaber, count(idapunte) as numap, idasiento from apunte group by idasiento) as fula ON asiento.idasiento = fula.idasiento   "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
-  conexionbase->begin();
-  cursor2 *cursoraux= conexionbase->cargacursor(query, "query");
-  conexionbase->commit();
+  cursor2 *cursoraux= conexionbase->cargacursor(query);
   int numreg = cursoraux->numregistros();
   tablaasientos->setNumRows(numreg);
   int i =0;
@@ -116,10 +119,12 @@ void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
     tablaasientos->setText(i,COL_FECHA,cursoraux->valor("fecha").mid(0,10));
     tablaasientos->setText(i,COL_DEBE,cursoraux->valor("totaldebe"));
     tablaasientos->setText(i,COL_HABER,cursoraux->valor("totalhaber"));
-    if (atoi(cursoraux->valor("totaldebe").ascii()) == atoi(cursoraux->valor("totalhaber").ascii()) ) {
-      tablaasientos->setText(i,COL_CERRADO,tr("Si"));
+    
+    /// Para determinar si un asiento está abierto o no hay que saber que el número de apuntes de un asiento abierto es cero.
+    if (cursoraux->valor("numap").toInt() > 0 ) {
+      tablaasientos->setText(i,COL_CERRADO,tr("Cerrado"));
     } else {
-      tablaasientos->setText(i,COL_CERRADO,tr("No"));
+      tablaasientos->setText(i,COL_CERRADO,tr("Abierto"));
     }// end if
     i++;
     cursoraux->siguienteregistro();

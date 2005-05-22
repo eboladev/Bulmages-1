@@ -27,7 +27,7 @@ cambiactaview::~cambiactaview() {
 
 void cambiactaview::boton_buscactaorigen() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    codigoorigen->setText(listcuentas->codcuenta);
@@ -37,7 +37,7 @@ void cambiactaview::boton_buscactaorigen() {
 
 void cambiactaview::boton_buscactadestino() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    codigodestino->setText(listcuentas->codcuenta);
@@ -195,7 +195,7 @@ void cambiactaview::codigo_textChanged(const QString &texto) {
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
         listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->modo=1;
+        listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
         codigo->setText(listcuentas->codcuenta);

@@ -621,7 +621,7 @@ void ainteligentesview::accept() {
 
 void ainteligentesview::boton_cuentas() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    if (pestanas->currentPageIndex() == 0) {

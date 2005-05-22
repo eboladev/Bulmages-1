@@ -404,6 +404,60 @@ CREATE TABLE compbalance (
 \echo "Se ha creado la tabla compbalance"
 
 
+--
+-- TOC entry 56 (OID 1346100)
+-- Name: amortizacion; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE amortizacion (
+    idamortizacion serial NOT NULL,
+    idcuentaactivo integer,
+    idcuentaamortizacion integer,
+    descamortizacion character varying(2000),
+    nomamortizacion character varying(200),
+    fechacompra date,
+    fecha1cuota date,
+    valorcompra numeric(12,2),
+    periodicidad integer,
+    numcuotas integer,
+    metodo integer,
+    nifproveedor character varying(12),
+    nomproveedor character varying(150),
+    dirproveedor character varying(200),
+    telproveedor character varying(20),
+    agrupacion character varying(150)
+);
+
+\echo "Se ha creado la tabla amortizacion"
+
+--
+-- TOC entry 57 (OID 1346108)
+-- Name: linamortizacion; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE linamortizacion (
+    idlinamortizacion serial NOT NULL,
+    idamortizacion integer,
+    idasiento integer REFERENCES asiento(idasiento),
+    ejercicio integer,
+    fechaprevista date,
+    cantidad numeric(12,2)
+);
+\echo "Se ha creado la tabla linamortizacion"
+
+--
+-- TOC entry 58 (OID 1346111)
+-- Name: ejercicios; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE ejercicios (
+    ejercicio integer,
+    periodo smallint,
+    bloqueado boolean
+);
+
+\echo "Se ha creado la tabla ejercicios"
+
 
 --
 -- TOC entry 85 (OID 1346047)
@@ -1191,7 +1245,10 @@ END;
 '
     LANGUAGE plpgsql;
 
-
+CREATE TRIGGER nuevo_apunte
+    AFTER INSERT OR UPDATE ON apunte
+    FOR EACH ROW
+    EXECUTE PROCEDURE aumenta_valor();
 --
 -- TOC entry 103 (OID 1346065)
 -- Name: disminuye_valor(); Type: FUNCTION; Schema: public; Owner: postgres
@@ -1233,6 +1290,10 @@ END;
 '
     LANGUAGE plpgsql;
 
+CREATE TRIGGER nuevo_apunte1
+    BEFORE UPDATE ON apunte
+    FOR EACH ROW
+    EXECUTE PROCEDURE disminuye_valor();
 
 --
 -- TOC entry 104 (OID 1346066)
@@ -1275,6 +1336,11 @@ END;
     LANGUAGE plpgsql;
 
 
+CREATE TRIGGER nuevo_apunte2
+    BEFORE DELETE ON apunte
+    FOR EACH ROW
+    EXECUTE PROCEDURE disminuye_valor1();
+
 --
 -- TOC entry 105 (OID 1346067)
 -- Name: creacuenta(); Type: FUNCTION; Schema: public; Owner: postgres
@@ -1296,7 +1362,12 @@ END;
 '
     LANGUAGE plpgsql;
 
+CREATE TRIGGER nueva_cuenta
+    AFTER INSERT ON cuenta
+    FOR EACH ROW
+    EXECUTE PROCEDURE creacuenta();
 
+    
 --
 -- TOC entry 106 (OID 1346068)
 -- Name: borracuenta(); Type: FUNCTION; Schema: public; Owner: postgres
@@ -1319,6 +1390,11 @@ END;
     LANGUAGE plpgsql;
 
 
+CREATE TRIGGER borra_cuenta
+    BEFORE DELETE ON cuenta
+    FOR EACH ROW
+    EXECUTE PROCEDURE borracuenta();
+
 --
 -- TOC entry 107 (OID 1346069)
 -- Name: creacanal(); Type: FUNCTION; Schema: public; Owner: postgres
@@ -1337,7 +1413,12 @@ END;
 '
     LANGUAGE plpgsql;
 
-
+CREATE TRIGGER nuevo_canal
+    AFTER INSERT ON canal
+    FOR EACH ROW
+    EXECUTE PROCEDURE creacanal();
+    
+    
 --
 -- TOC entry 108 (OID 1346070)
 -- Name: borracanal(); Type: FUNCTION; Schema: public; Owner: postgres
@@ -1352,7 +1433,11 @@ END;
 '
     LANGUAGE plpgsql;
 
-
+CREATE TRIGGER borra_canal
+    BEFORE DELETE ON canal
+    FOR EACH ROW
+    EXECUTE PROCEDURE borracanal();
+    
 --
 -- TOC entry 109 (OID 1346071)
 -- Name: creaccoste(); Type: FUNCTION; Schema: public; Owner: postgres
@@ -1371,6 +1456,10 @@ END;
 '
     LANGUAGE plpgsql;
 
+CREATE TRIGGER nuevo_ccoste
+    AFTER INSERT ON c_coste
+    FOR EACH ROW
+    EXECUTE PROCEDURE creaccoste();
 
 --
 -- TOC entry 110 (OID 1346072)
@@ -1386,6 +1475,11 @@ END;
 '
     LANGUAGE plpgsql;
 
+
+CREATE TRIGGER borra_ccoste
+    BEFORE DELETE ON c_coste
+    FOR EACH ROW
+    EXECUTE PROCEDURE borraccoste();
 
 --
 -- TOC entry 111 (OID 1346073)
@@ -1409,6 +1503,10 @@ END;
 '
     LANGUAGE plpgsql;
 
+CREATE TRIGGER propaga_acumulado_cuenta
+    AFTER UPDATE ON cuenta
+    FOR EACH ROW
+    EXECUTE PROCEDURE propagaacumuladocuenta();
 
 --
 -- TOC entry 112 (OID 1346074)
@@ -1431,7 +1529,11 @@ END;
 '
     LANGUAGE plpgsql;
 
-
+CREATE TRIGGER propaga_acumulado_ccoste
+    AFTER UPDATE ON c_coste
+    FOR EACH ROW
+    EXECUTE PROCEDURE propagaacumuladoccoste();
+    
 --
 -- TOC entry 113 (OID 1346075)
 -- Name: acumulados_canal(); Type: FUNCTION; Schema: public; Owner: postgres
@@ -1458,93 +1560,15 @@ BEGIN
 END;
 '
     LANGUAGE plpgsql;
+    
+
+CREATE TRIGGER acumulados_canal_fk
+    AFTER UPDATE ON acumulado_canal
+    FOR EACH ROW
+    EXECUTE PROCEDURE acumulados_canal();
+    
 
 
---
--- TOC entry 48 (OID 1346076)
--- Name: pga_graphs; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE pga_graphs (
-    graphname character varying(64) NOT NULL,
-    graphsource text,
-    graphcode text
-);
-
-
---
--- TOC entry 49 (OID 1346076)
--- Name: pga_graphs; Type: ACL; Schema: public; Owner: postgres
---
-
-REVOKE ALL ON TABLE pga_graphs FROM PUBLIC;
-GRANT ALL ON TABLE pga_graphs TO PUBLIC;
-
-
---
--- TOC entry 50 (OID 1346081)
--- Name: pga_images; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE pga_images (
-    imagename character varying(64) NOT NULL,
-    imagesource text
-);
-
-
---
--- TOC entry 51 (OID 1346081)
--- Name: pga_images; Type: ACL; Schema: public; Owner: postgres
---
-
-REVOKE ALL ON TABLE pga_images FROM PUBLIC;
-GRANT ALL ON TABLE pga_images TO PUBLIC;
-
-
---
--- TOC entry 52 (OID 1346086)
--- Name: pga_diagrams; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE pga_diagrams (
-    diagramname character varying(64) NOT NULL,
-    diagramtables text,
-    diagramlinks text
-);
-
-
---
--- TOC entry 53 (OID 1346086)
--- Name: pga_diagrams; Type: ACL; Schema: public; Owner: postgres
---
-
-REVOKE ALL ON TABLE pga_diagrams FROM PUBLIC;
-GRANT ALL ON TABLE pga_diagrams TO PUBLIC;
-
-
---
--- TOC entry 54 (OID 1346091)
--- Name: pga_layout; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE pga_layout (
-    tablename character varying(64) NOT NULL,
-    nrcols smallint,
-    colnames text,
-    colwidth text
-);
-
-
---
--- TOC entry 55 (OID 1346091)
--- Name: pga_layout; Type: ACL; Schema: public; Owner: postgres
---
-
-REVOKE ALL ON TABLE pga_layout FROM PUBLIC;
-GRANT ALL ON TABLE pga_layout TO PUBLIC;
-
-
---
 -- TOC entry 114 (OID 1346096)
 -- Name: abreasiento(integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
@@ -1590,56 +1614,6 @@ END;
     LANGUAGE plpgsql;
 
 
---
--- TOC entry 56 (OID 1346100)
--- Name: amortizacion; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE amortizacion (
-    idamortizacion serial NOT NULL,
-    idcuentaactivo integer,
-    idcuentaamortizacion integer,
-    descamortizacion character varying(2000),
-    nomamortizacion character varying(200),
-    fechacompra date,
-    fecha1cuota date,
-    valorcompra numeric(12,2),
-    periodicidad integer,
-    numcuotas integer,
-    metodo integer,
-    nifproveedor character varying(12),
-    nomproveedor character varying(150),
-    dirproveedor character varying(200),
-    telproveedor character varying(20),
-    agrupacion character varying(150)
-);
-
-
---
--- TOC entry 57 (OID 1346108)
--- Name: linamortizacion; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE linamortizacion (
-    idlinamortizacion serial NOT NULL,
-    idamortizacion integer,
-    idasiento integer REFERENCES asiento(idasiento),
-    ejercicio integer,
-    fechaprevista date,
-    cantidad numeric(12,2)
-);
-
-
---
--- TOC entry 58 (OID 1346111)
--- Name: ejercicios; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE ejercicios (
-    ejercicio integer,
-    periodo smallint,
-    bloqueado boolean
-);
 
 
 --
@@ -1888,145 +1862,6 @@ CREATE TRIGGER civad
 -- FIN DEL APARTADO DE COMPROBACIONES.
 -- ******************************************************
 -- ******************************************************
-
-
-
---
--- TOC entry 186 (OID 1358703)
--- Name: nuevo_apunte; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER nuevo_apunte
-    AFTER INSERT OR UPDATE ON apunte
-    FOR EACH ROW
-    EXECUTE PROCEDURE aumenta_valor();
-
-
---
--- TOC entry 187 (OID 1358704)
--- Name: nuevo_apunte1; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER nuevo_apunte1
-    BEFORE UPDATE ON apunte
-    FOR EACH ROW
-    EXECUTE PROCEDURE disminuye_valor();
-
-
---
--- TOC entry 188 (OID 1358705)
--- Name: nuevo_apunte2; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER nuevo_apunte2
-    BEFORE DELETE ON apunte
-    FOR EACH ROW
-    EXECUTE PROCEDURE disminuye_valor1();
-
-
---
--- TOC entry 144 (OID 1358706)
--- Name: nueva_cuenta; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER nueva_cuenta
-    AFTER INSERT ON cuenta
-    FOR EACH ROW
-    EXECUTE PROCEDURE creacuenta();
-
-
---
--- TOC entry 143 (OID 1358707)
--- Name: borra_cuenta; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER borra_cuenta
-    BEFORE DELETE ON cuenta
-    FOR EACH ROW
-    EXECUTE PROCEDURE borracuenta();
-
-
---
--- TOC entry 153 (OID 1358708)
--- Name: nuevo_canal; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER nuevo_canal
-    AFTER INSERT ON canal
-    FOR EACH ROW
-    EXECUTE PROCEDURE creacanal();
-
-
---
--- TOC entry 152 (OID 1358709)
--- Name: borra_canal; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER borra_canal
-    BEFORE DELETE ON canal
-    FOR EACH ROW
-    EXECUTE PROCEDURE borracanal();
-
-
---
--- TOC entry 164 (OID 1358710)
--- Name: nuevo_ccoste; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER nuevo_ccoste
-    AFTER INSERT ON c_coste
-    FOR EACH ROW
-    EXECUTE PROCEDURE creaccoste();
-
-
---
--- TOC entry 163 (OID 1358711)
--- Name: borra_ccoste; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER borra_ccoste
-    BEFORE DELETE ON c_coste
-    FOR EACH ROW
-    EXECUTE PROCEDURE borraccoste();
-
-
---
--- TOC entry 145 (OID 1358712)
--- Name: propaga_acumulado_cuenta; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER propaga_acumulado_cuenta
-    AFTER UPDATE ON cuenta
-    FOR EACH ROW
-    EXECUTE PROCEDURE propagaacumuladocuenta();
-
-
---
--- TOC entry 165 (OID 1358713)
--- Name: propaga_acumulado_ccoste; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER propaga_acumulado_ccoste
-    AFTER UPDATE ON c_coste
-    FOR EACH ROW
-    EXECUTE PROCEDURE propagaacumuladoccoste();
-
-
---
--- TOC entry 170 (OID 1358714)
--- Name: acumulados_canal_fk; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER acumulados_canal_fk
-    AFTER UPDATE ON acumulado_canal
-    FOR EACH ROW
-    EXECUTE PROCEDURE acumulados_canal();
-
-
---
--- TOC entry 3 (OID 2200)
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
---
 
 COMMENT ON SCHEMA public IS 'Standard public schema';
 

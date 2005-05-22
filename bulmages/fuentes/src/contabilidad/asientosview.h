@@ -25,7 +25,10 @@
 #include "intapunts3view.h"
 #include "filtrarasientosview.h"
 #include "empresa.h"
-/** *@author Tomeu Borrás Riera */
+
+/** @author Tomeu Borrás Riera 
+  * \brief Muestra un listado de todos los asientos existentes e informa de si estan abiertos o cerrados.
+*/
 
 class asientosview : public asientosdlg  {
    Q_OBJECT

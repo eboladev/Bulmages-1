@@ -35,7 +35,7 @@ filtrardiarioview::~filtrardiarioview(){
 
 void filtrardiarioview::buscacontrapartida() {
   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    contrapartida->setText(listcuentas->codcuenta);
@@ -46,10 +46,8 @@ void filtrardiarioview::boton_canales() {
    fprintf(stderr,"Boton canales\n");
    selectcanalview *selcanales = empresaactual->getselcanales();
    selcanales->exec();
-   fprintf(stderr,"---------------INICIO---------------------\n");
    selcanales->firstcanal();
    while (selcanales->nextcanal());
-   fprintf(stderr,"-----------------FIN---------------------\n");
 //   selccostes->show();
 }// end boton_canales
 

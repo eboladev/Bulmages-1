@@ -458,11 +458,9 @@ void ExtractoPrintView::presentar(char *tipus) {
     }
 }
 
-
-
 void ExtractoPrintView::boton_codinicial() {
     listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->modo=1;
+    listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
     codigoinicial->setText(listcuentas->codcuenta);
@@ -471,7 +469,7 @@ void ExtractoPrintView::boton_codinicial() {
 
 void ExtractoPrintView::boton_codfinal() {
     listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->modo=1;
+    listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
     codigofinal->setText(listcuentas->codcuenta);

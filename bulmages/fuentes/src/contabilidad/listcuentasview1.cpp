@@ -23,10 +23,11 @@
 #include "images/cneto.xpm"
 #include "images/cingresos.xpm"
 #include "images/cgastos.xpm"
-#include "funcaux.h"
 
+#include "funcaux.h"
 #include "cuentaview.h"
 #include "empresa.h"
+
 #include <stdlib.h>
 #include <qmessagebox.h>
 #include <qlineedit.h>
@@ -42,6 +43,8 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
     conexionbase= emp->bdempresa();
     ccuenta=ListView1->addColumn("codigo cuenta",-1);
     cdesccuenta=ListView1->addColumn("nombre cuenta",-1);
+    cdebe = ListView1->addColumn(tr("debe"), -1);
+    chaber = ListView1->addColumn(tr("haber"), -1);
     cidcuenta = ListView1->addColumn("id cuenta",0);
     cbloqueada = ListView1->addColumn("bloqueada",0);
     cnodebe = ListView1->addColumn("nodebe",0);
@@ -89,11 +92,11 @@ bool listcuentasview1::eventFilter( QObject *obj, QEvent *event ) {
 }// end eventFilter
 
 
-/*************************************************************
- * Esta funcion se encarga de hacer las inicializaciones de todo el formulario.
+/**
+ * Se encarga de hacer las inicializaciones de todo el formulario.
  * Se llama asi y no desde el constructor pq asi la podemos llamar desde dentro
  * de la misma clase, etc etc etc
- *************************************************************/
+ */
 int listcuentasview1::inicializa( ) {
     QListViewItem * it;
     QMap <int, QListViewItem*> Lista1;
@@ -121,6 +124,8 @@ int listcuentasview1::inicializa( ) {
         it->setText(cregularizacion,cursoraux1->valor("regularizacion"));
         it->setText(cimputacion,cursoraux1->valor("imputacion"));
         it->setText(cgrupo,cursoraux1->valor("idgrupo"));
+        it->setText(cdebe,cursoraux1->valor("debe"));
+        it->setText(chaber,cursoraux1->valor("haber"));
 
         // Ponemos los iconos para que la cosa parezca mas guay.
         if (cursoraux1->valor("tipocuenta") == "1")
@@ -161,7 +166,8 @@ int listcuentasview1::inicializa( ) {
             it->setText(cregularizacion,cursoraux2->valor("regularizacion"));
             it->setText(cimputacion,cursoraux2->valor("imputacion"));
             it->setText(cgrupo,cursoraux2->valor("idgrupo"));
-
+            it->setText(cdebe,cursoraux2->valor("debe"));
+            it->setText(chaber,cursoraux2->valor("haber"));
             // Ponemos los iconos para que la cosa parezca mas guay.
             if (cursoraux2->valor("tipocuenta") == "1")
                 it->setPixmap(ccuenta, QPixmap(cactivo));
@@ -179,22 +185,29 @@ int listcuentasview1::inicializa( ) {
         cursoraux2->siguienteregistro();
     }// end while
     delete cursoraux2;
-    // Vamos a cargar el numero de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
-    query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-    cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
-    numdigitos=cursoraux1->valor("valor").length();
-    delete cursoraux1;
+    // Cargamos el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
+    /*   query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
+       cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
+       numdigitos=cursoraux1->valor("valor").length();
+       delete cursoraux1;
+    */
+    numdigitos = empresaactual->numdigitosempresa();
+
     inicializatabla();
     return(0);
 }// end inicializa
 
 
 
+/** Inicializa la tabla de cuentas, que es la segunda pestaña de la pantalla
+  * Dicha tabla sólo muestra las cuentas hoja del plan contable, y deja los demás elementos
+  * ocultos.
+  */
 void listcuentasview1::inicializatabla()  {
     QString query;
     query = "SELECT * FROM cuenta ORDER BY padre";
     cursor2 *cursoraux1 = conexionbase->cargacursor(query,"elquery");
-//    conexionbase->commit();
+    //    conexionbase->commit();
     tablacuentas->setNumRows(cursoraux1->numregistros());
     int i=0;
     while (!cursoraux1->eof()) {
@@ -203,7 +216,7 @@ void listcuentasview1::inicializatabla()  {
         tablacuentas->setText(i,2,cursoraux1->valor("idcuenta"));
 
 
-        // Ponemos los iconos para que la cosa parezca mas guay.
+        /// Ponemos los iconos.
         if (cursoraux1->valor("tipocuenta") == "1")
             tablacuentas->setPixmap(i,0, QPixmap(cactivo));
         else if (cursoraux1->valor("tipocuenta") == "2")
@@ -227,39 +240,13 @@ void listcuentasview1::inicializatabla()  {
 }// end inicializatabla
 
 
-void listcuentasview1::arbolcuentas(QListViewItem *itempadre, int padre ) {
-    QListViewItem * it;
-    cursor2 *cursoraux;
-    QString cadena;
-    QString cadena1;
-    int num, idcuenta;
-    cursoraux = conexionbase->cargacuentas(padre);
-    num = cursoraux->numregistros();
-    while (!cursoraux->eof()) {
-        it =new QListViewItem(itempadre);
-        it->setText(cdesccuenta,cursoraux->valor(2));
-        idcuenta = atoi(cursoraux->valor(1).ascii());
-        it->setText(ccuenta,cursoraux->valor(1));
-        it->setText(cidcuenta,cursoraux->valor(0).ascii());
-        it->setText(cbloqueada,cursoraux->valor(5));
-        it->setText(cnodebe,cursoraux->valor(10));
-        it->setText(cnohaber,cursoraux->valor(11));
-        it->setText(cregularizacion,cursoraux->valor(12));
-        it->setText(cimputacion,cursoraux->valor(3));
-        cursoraux->siguienteregistro();
-    }// end while
-    delete  cursoraux;
-}// end arbolcuentas
 
-
-
-/***************************************************************
+/**
  * Este es el slot que se activa al hacer click sobre el
  * ListView del formulario. Lo que hace es actualizar los valores
  * de la derecha del formulario con los valores almacenados en el
  * item que se acaba de pulsar.
- ****************************************************************/
-// OJO ahora no es de pulsacion, sino que es de cambio.
+ */
 void listcuentasview1::listpulsada(QListViewItem *it) {
     QString idcuenta = it->text(cidcuenta);
     QString cad;
@@ -275,6 +262,10 @@ void listcuentasview1::listpulsada(QListViewItem *it) {
 }// end listpulsada
 
 
+/** La pantalla lleva implicito un buscador de cuentas, cuando cambia el contenido
+  * del QLineEdit del buscador se lanza esta función que hace una búsqueda sobre el árbol
+  * de cuentas
+  */
 void listcuentasview1::descripcioncambiada(const QString &string1) {
     QListViewItem *it;
     QString cod = extiendecodigo(string1, numdigitos);
@@ -292,13 +283,14 @@ void listcuentasview1::descripcioncambiada(const QString &string1) {
     }// end if
 }// end descripcioncambiada
 
-/***************************************************************
- * Este es el slot que se activa al hacer doble click sobre el
- * ListView del formulario. Lo que hace es abrir la ventana de
- * detalle de cuenta para que se puedan modificar los parametros
- * y una vez terminado refresca el formulario para que aparezcan
- * los datos actualizados.
- ****************************************************************/
+
+/**
+  * Este es el slot que se activa al hacer doble click sobre el
+  * ListView del formulario. Lo que hace es abrir la ventana de
+  * detalle de cuenta para que se puedan modificar los parametros
+  * y una vez terminado refresca el formulario para que aparezcan
+  * los datos actualizados.
+  */
 void listcuentasview1::listdblpulsada(QListViewItem *it) {
     listpulsada(it);
     codcuenta = it->text(ccuenta);
@@ -321,19 +313,19 @@ void listcuentasview1::listdblpulsada(QListViewItem *it) {
 }// end listdblpulsada
 
 
-/********************************************************
- * Esta funcion es el slot que se activa al pulsar sobre el
- * boton nueva cuenta.
- * Su funciï¿½ es crear una nueva cuenta desde la ventana del plan de cuentas
- * La inserciï¿½ de la nueva se hace como cuenta hija de la cuenta actualmente
- * seleccionada por lo que se hace que la ventana que se habre tenga el campo
- * del padre de la cuenta rellenado.
- *********************************************************/
+/**
+  * Esta funcion es el slot que se activa al pulsar sobre el
+  * boton nueva cuenta.
+  * Su funciï¿½ es crear una nueva cuenta desde la ventana del plan de cuentas
+  * La inserciï¿½ de la nueva se hace como cuenta hija de la cuenta actualmente
+  * seleccionada por lo que se hace que la ventana que se habre tenga el campo
+  * del padre de la cuenta rellenado.
+  */
 void listcuentasview1::nuevacuenta()  {
     QString cadena, codigo;
     int idcuenta, idgrupo=0;
     QListViewItem *it;
-    
+
     fprintf(stderr,"listcuentasview1::nuevacuenta\n");
     cuentaview *nuevae = new cuentaview(empresaactual,0,0,true);
     it = ListView1->currentItem();
@@ -358,14 +350,14 @@ void listcuentasview1::nuevacuenta()  {
 }// end nuevacuenta
 
 
-/********************************************************
+/**
  * Esta funcion es el slot que se activa al pulsar sobre el
  * boton nueva cuenta.
  * Su funciï¿½ es crear una nueva cuenta desde la ventana del plan de cuentas
  * La inserciï¿½ de la nueva se hace como cuenta hija de la cuenta actualmente
  * seleccionada por lo que se hace que la ventana que se habre tenga el campo
  * del padre de la cuenta rellenado.
- *********************************************************/
+ */
 void listcuentasview1::editarcuenta()  {
 
     QListViewItem *it;
@@ -387,10 +379,10 @@ void listcuentasview1::editarcuenta()  {
 
 
 
-/********************************************************
- * Esta funcion es el slot que se activa al pulsar sobre el
- * boton borrar cuenta.
- *********************************************************/
+/**
+  * Esta funcion es el slot que se activa al pulsar sobre el
+  * boton borrar cuenta.
+  */
 void listcuentasview1::borrarcuenta()  {
     QListViewItem *it;
     int valor = QMessageBox::warning( 0, "Borrar Cuenta", "Se procedera a borrar la cuenta.", QMessageBox::Yes, QMessageBox::No);
@@ -416,31 +408,31 @@ void listcuentasview1::borrarcuenta()  {
 }// end borrarcuenta
 
 
-void listcuentasview1::dbtabla(int row, int colummn, int button,const QPoint &mouse) {
+/** \brief Se ha hecho una doble click sobre la tabla de cuentas
+  *
+  * Al hacer doble click sobre la tabla de cuentas, se encuentra el elemento análogo
+  * en el arbol contable y se simula una doble pulsación sobre ese elemento.
+  */
+void listcuentasview1::dbtabla(int row, int , int ,const QPoint &) {
     string idcuenta = tablacuentas->text(row,2).ascii();
     QListViewItem *it = ListView1->findItem(idcuenta.c_str(), cidcuenta, Qt::ExactMatch);
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);
     listdblpulsada(it);
-    //PAra quitar el warning
-    colummn=button=0;
-    mouse.isNull();
 }// end dbtabla
 
-void listcuentasview1::return_codigo() {
-	QListViewItem *it = ListView1->currentItem();
-	if (it != 0) {
-	listdblpulsada(it);
-	}// end if
+
+/** \brief Cuando se pulsa el Return sobre la búsqueda de cuentas
+  * 
+  * Actua como si fuese una doble pulsación con el ratón sobre la tabla de cuentas.
+  */
+void listcuentasview1::eturn_descripcion() {
+    QListViewItem *it = ListView1->currentItem();
+    if (it != 0) {
+        listdblpulsada(it);
+    }// end if
 }// end return_codigo
 
-
-void listcuentasview1::return_descripcion() {
-	QListViewItem *it = ListView1->currentItem();
-	if (it != 0) {
-		listdblpulsada(it);
-	}// end if
-}// end return_codigo
 
 /** \brief Responde a la pulsacion del boton de imprimir en la ventana de cuentas.
   * Crea un string de llamada a rtkview y lo lanza como llamada de sistema.
@@ -450,11 +442,11 @@ void listcuentasview1::return_descripcion() {
   * el rango de cuentas entre el que se quiere el listado.
   */
 void listcuentasview1::s_PrintCuentas() {
-	QString cadena;
-	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
-	cadena += conexionbase->nameDB()+" ";
-	cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
-	fprintf(stderr,"%s\n",cadena.ascii());
-	system (cadena.ascii());
+    QString cadena;
+    cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
+    cadena += conexionbase->nameDB()+" ";
+    cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
+    fprintf(stderr,"%s\n",cadena.ascii());
+    system (cadena.ascii());
 }// end s_PrintCuentas
 

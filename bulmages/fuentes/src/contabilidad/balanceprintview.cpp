@@ -90,7 +90,7 @@ void BalancePrintView::accept() {
 
 void BalancePrintView::boton_codigoinicial() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    codigoinicial->setText(listcuentas->codcuenta);
@@ -99,7 +99,7 @@ void BalancePrintView::boton_codigoinicial() {
 
 void BalancePrintView::boton_codigofinal() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    codigofinal->setText(listcuentas->codcuenta);

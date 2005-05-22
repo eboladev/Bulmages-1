@@ -155,7 +155,7 @@ void tipoivaview::s_deleteTipoIVA() {
 /** SLOT que responde a la pulsación del botón de buscar una cuenta */
 void tipoivaview::s_searchAccount() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    m_codigoCtaTipoIVA->setText(listcuentas->codcuenta);

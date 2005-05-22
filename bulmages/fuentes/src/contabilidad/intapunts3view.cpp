@@ -1418,7 +1418,7 @@ void intapunts3view::cambiadasubcuenta(int row) {
     if (subcuenta == "") {
         // Hacemos aparecer la ventana de cuentas
         listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->modo=1;
+        listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
         tapunts3->setText(row,COL_SUBCUENTA,listcuentas->codcuenta);
@@ -1465,7 +1465,7 @@ void intapunts3view::buscacontrapartida(int row) {
     QString subcuenta = tapunts3->text(row,COL_CONTRAPARTIDA);
     // Hacemos aparecer la ventana de cuentas
     listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->modo=1;
+    listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
     tapunts3->setText(row,COL_CONTRAPARTIDA,listcuentas->codcuenta);

@@ -211,7 +211,7 @@ void aplinteligentesview::boton_buscacuenta() {
         }// end if
     }// end for
     listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->modo=1;
+    listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
     if (lineaeditada != NULL)
@@ -777,7 +777,7 @@ void aplinteligentesview::codigo_textChanged(const QString &texto) {
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
         listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->modo=1;
+        listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
         codigo->setText(listcuentas->codcuenta);

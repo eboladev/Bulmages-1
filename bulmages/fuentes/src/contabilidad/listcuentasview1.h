@@ -23,30 +23,49 @@
 #include "listcuentasdlg1.h"
 
 
-/** * @author Tomeu Borrás Riera */
+/** @author Tomeu Borrás Riera 
+  * \brief Presenta un listado del plan contable.
+  *
+  * Esta pantalla tiene dos modos de funcionamiento, en uno actua como selector de cuentas y en el otro actua como soporte para la edición del plan contable.
+*/
 
 class empresa;
 
 class listcuentasview1 : public listcuentasdlg1  {
 Q_OBJECT
 
-public:
-int ccuenta,cdesccuenta;
-int cidcuenta, cbloqueada, cdebe, chaber, cnodebe, cnohaber, cregularizacion, cimputacion, ctipocuenta;
-int cgrupo;
-int modo;       // Esta variable indica si se abre para busqueda o para edicion.
-unsigned int numdigitos; // Esta variable indica el numero de digitos que tienen por defecto todas las cuentas que se crean.
-QString codcuenta;      // El codigo de la cuenta
-QString idcuenta;
+private:
+/// La base de datos con la que se trabaja
 postgresiface2 *conexionbase;
+/// La empresa que ha construido todo el tema.
 empresa *empresaactual;
+int ccuenta,cdesccuenta;
+int cidcuenta, cbloqueada, cnodebe, cnohaber, cregularizacion, cimputacion, ctipocuenta;
+/// Indice para la QListView de la columna que indica el debe actual de la cuenta
+int cdebe;
+/// Indice para la QListView de la columna que indica el haber actual de la cuenta
+int chaber;
+int cgrupo;
+ /// Indica si se abre para busqueda o para edicion.
+int modo;      
+/// Indica el numero de digitos que tienen por defecto todas las cuentas que se crean.
+unsigned int numdigitos;
+public:
+/// El codigo de la cuenta que se devuelve.
+QString codcuenta;      
+/// El identificador de la cuenta que se devuelve
+QString idcuenta;
+
 public:
    listcuentasview1(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);
    ~listcuentasview1();
-   void arbolcuentas(QListViewItem *, int );
+   int inicializa();
+   void setModoLista() {modo=1;};
+   void setModoEdicion(){modo=0;};
+
+private:
    void listpulsada(QListViewItem *);
    void listdblpulsada(QListViewItem *);
-   int inicializa();
    void inicializatabla();
 
 public slots:
@@ -55,8 +74,7 @@ public slots:
    virtual void borrarcuenta();
    virtual void nuevacuenta();
    virtual void descripcioncambiada(const QString &);
-   virtual void return_codigo();
-   virtual void return_descripcion();
+   virtual void eturn_descripcion();
    virtual bool eventFilter( QObject *, QEvent * );
    virtual void s_PrintCuentas();
 };

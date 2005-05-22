@@ -538,7 +538,7 @@ void extractoview1::inicializa1(QString codinicial, QString codfinal, QString fe
 
 void extractoview1::boton_buscacuentainicial() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    codigoinicial->setText(listcuentas->codcuenta);
@@ -552,7 +552,7 @@ void extractoview1::boton_buscacuentainicial() {
 
 void extractoview1::boton_buscacuentafinal() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    codigofinal->setText(listcuentas->codcuenta);
@@ -768,7 +768,7 @@ void extractoview1::codigo_textChanged(const QString &texto) {
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
         listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->modo=1;
+        listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
         codigo->setText(listcuentas->codcuenta);

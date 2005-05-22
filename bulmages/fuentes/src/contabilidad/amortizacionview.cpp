@@ -530,7 +530,7 @@ void amortizacionview::codigo_textChanged(const QString &texto) {
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
         listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->modo=1;
+        listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
         codigo->setText(listcuentas->codcuenta);
@@ -541,7 +541,7 @@ void amortizacionview::codigo_textChanged(const QString &texto) {
 
 void amortizacionview::buscactaactivo() {
     listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->modo=1;
+    listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
     ctaactivo->setText(listcuentas->codcuenta);
@@ -551,7 +551,7 @@ void amortizacionview::buscactaactivo() {
 
 void amortizacionview::buscactaamortizacion() {
     listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->modo=1;
+    listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
     ctaamortizacion->setText(listcuentas->codcuenta);

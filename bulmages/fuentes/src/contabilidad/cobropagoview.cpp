@@ -269,7 +269,7 @@ void cobropagoview::s_actualizar() {
   */
 void cobropagoview::s_searchAccount() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    m_cuenta->setText(listcuentas->codcuenta);
