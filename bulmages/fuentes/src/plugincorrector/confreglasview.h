@@ -15,8 +15,15 @@
 #include <confreglas.h>
 
 /**
-@author Tomeu Borras
+  * @author Tomeu Borras
+  * \brief Permite configurar reglas que el corrector monitoree.
+  *
+  * \ Una funcionalidad extra para el corrector es permitir al usuario configurar determinadas reglas
+  * para que haga un monitoreo de las mismas.
+  * De esta forma el usuairo puede controlar determinados detalles de la contabilidad que de otra forma
+  * le sería imposible controlar.
 */
+
 class confreglasview : public confreglas {
 Q_OBJECT
 public:

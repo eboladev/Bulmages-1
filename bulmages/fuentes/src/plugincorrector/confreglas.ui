@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>600</width>
-            <height>307</height>
+            <width>721</width>
+            <height>624</height>
         </rect>
     </property>
     <property name="caption">
@@ -90,6 +90,169 @@
                 <cstring>comboBox1_2</cstring>
             </property>
         </widget>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>groupBox2</cstring>
+            </property>
+            <property name="title">
+                <string>Regla</string>
+            </property>
+            <widget class="QCheckBox">
+                <property name="name">
+                    <cstring>checkBox2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>20</y>
+                        <width>210</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Comprobación por asientos</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lineEdit5</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>110</x>
+                        <y>50</y>
+                        <width>491</width>
+                        <height>21</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1_3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>50</y>
+                        <width>91</width>
+                        <height>21</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Nombre</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>groupBox1</cstring>
+            </property>
+            <property name="title">
+                <string>Condición</string>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>checkBox1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Deben existir registros que cumplan esta condición en el periodo</string>
+                    </property>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout8</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1_2_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Apunte con Cuenta</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>lineEdit2</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout7</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1_2_2_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Apunte con Saldo</string>
+                            </property>
+                        </widget>
+                        <widget class="QComboBox">
+                            <item>
+                                <property name="text">
+                                    <string>igual</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>menor</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>mayor</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>comboBox3</cstring>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>lineEdit2_2</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout6</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1_2_2_3</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Apunte con Descripcion</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>lineEdit2_3</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
+        </widget>
         <widget class="QLayoutWidget">
             <property name="name">
                 <cstring>layout4</cstring>
@@ -132,7 +295,7 @@
                         <cstring>textLabel1_2</cstring>
                     </property>
                     <property name="text">
-                        <string>Aplicación</string>
+                        <string>Periodicidad</string>
                     </property>
                 </widget>
                 <widget class="QLayoutWidget">
@@ -196,13 +359,13 @@
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="1082">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000401494441545885b597c16b1b4718c57f2a6b18ddc67f42a01727f860a514ec5b03bde4d428f14538042aa5a7dc842e096a0ec281d6085308148a6508047288e3de52e821811859109253eae4e89b676f3b50c10e78607b1879b4b6b4ab759cbecb6847333b6fdef7be6f664b144392fa5d2a38a7108abc2c79bfff1e630d22105c5db97adef9b9088a0c32d62085a4fda8cdce931db4d5c84072ebcead0b2b5388800804da6800b4d1fe79a7e7c88840b0565ffb2c32b30824076f0f30c6208400a0fe53ddffd9dbee2185445bfdd9cacc629af4dff4118160fdd7755efcf9227360ef8f1e22102e5c814c2b93bbdecc10082130c620cb32775c1165da1bede4d33f9f4e91c923e0dc6f9cfb75ac67711d93f9314566a48c361a81a0b3de010bed87ed0428e58520e9bfe97bf7e7c95f0495c50ad5d5aa2333d4d46ed4b8f2ed15beca9b9476ff4561acc15843a8436a376abcdc7b0990492039787b0016effe8b42061233340804da6a5acd16402953016d3404b0fe28dffd457079f1322bdfad10db18a51522186f2a938010a3949ae1fef3c00c0dcdbb4d067b03df372d0bbcfb01aab7ab54162b186b20808f1f3e9e7b61814069053865ef35ef415e1a9ea44c6422ca9479f0f30317bb583b32182492fd0ffb3317af2c5658585a70f38d468ad38a4e2520ec7871f5af42584168438415d4efd63db922ca186bc0803ed674ee77bcfbb30824fdbffba8a172b2c5ca334fb7d1308200aedfb8eefa87d9cac840bafeb23ce5fe4c0594568863972a6b77c6757ca3bb01162213f945b12e5c31314bcb4b60dd8ed3ca2c7cbde0c397767f6e084213d2a8374892f1a1564a15cd66ab890c24ca28ca945d7ea7caeda5854bfe403a693bf73bbcde7b9d4b20d979b2838e34c28e992aa590426692a9ddae01a087a3301d6b98c3ed786e7486cc4dba7faa027ae8645246f93e29241888a3180c209820b3fccd32837703aaab551feb89564caf27a70b91751e68355b2449421cc5ae220a4eb57114a394228e628e8e8e00e8ac77d87dbecbf6b36d769feffad353c79a4e6bd2fd6709245bbf6d3977a71086210ce1303c84e1f4e79bd59b5457abcc8b79367ed9e071f7b1536e5441b3dc3f1102a5d5d8dd23443af2b7e1437be86f3c679f8d351863980fe6894ce4777ee28169ee3f4ba034ba2038399284577fbd22b631e5a04c64a3cc5606d29d9a8120b211ed876de78519ee9f50202d4fa954f264b67a5bc84012da70a2edfddee3daf7d71056f8d313f0799fe7fe6904d2f0831bf58627f3b4f71429a4bb238e5c2d02e12fa0c6ba032c5df9b2dc3f8bc05432e9bbff566f0b70a94b00c618ba9b5daa3f545d7f3cbdf69f45ee952c637c092835ea0d06ef067437bbde0350dcfd2728f46594c2d40f8eee66d7f71775ffc44bbe2092297dffc73a5f06ff01d20d77d47f8400780000000049454e44ae426082</data>
+        <data format="PNG" length="1147">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000442494441545885b5974f681b4718c57f2a6b18830ca3dbee31211727f8601d0a3d36d08bc9a155e243539742a5160ab9393a944409c4a4a538c2f4d0148a5528717309762f2697420c8524509a5cd25837ef25780622d08216349085ed61ac956449abcd9f3e10a3f97666e7cddb37dfb79b231be281ffb98c733221cbcde2e77f3f2730015248cebc7fe675e7a7c2c9322830015edee3f28dcbecfebe8b361a57b89cfbecdc5b2b9389801412152a0074a8918e44879addc62e3ab2fd0be50b6f44661a81f8e0e901ddb08bcc4b00ca5f97938b8d5f1bb879176df41b2b338d69fcf0af874821a97d5763fb8fed89031bbf34908e2488025cc71d542675bda98f40e6254118e0ceb9a9e3b22853fdbe1a37ff6d0e91492360dd1f5af7eb8e9ec6b54fe6cb013247cae8502310acdd5c83086ad76b31904b5560d0fd69f2a7923952a6b850a4b45ca2e01450a1e2e0e901278b27e3f7d2260fbaff6d612283890c7ecba7bc5c667bcf6e681281f8e0e9011812f7bf2d5cc7c58406e94894515457ab00b9890aa8508180da8d74f767c1e985d3143f2cd28dbaf82d1f29fa9b9a4840e6258199eefeac108ec08486abdf5c656f6f2f898f3361e27ee108963e5da2b850c444061cd87fb6fffa8b23f05b3e6095bdb47a09d28e612fddaa4051700a5cb976c5bab7a32c190c2e2e0f9e3d98ba7871a1c8fce27c7214bdbc37747d2c01497f71ffa58f8c247e64dbf257657bdda84cca98c88001fd4a73ebdaadc4fd9308c44f1e3cc10f7cbb78db47cec87e01327d6566c52c4b9f2cd978a0272ae33aae8dcfb943ee9fa880dff229bc2aa022c5ca172b497cbdbe0e11b44d9b0205544b4104da68ba7459fc601122bbe34165e64fcd2310e88e1e72ff4402c211f81d9f4ab9421cf78b5a2ed7af23abd5555ce1e28756a976d0a6206c86938ee4c4fc095ce12635401b2bfffdbdfba904e2dddf76d12f3532ea33554ae1e5bd89642e7e7e31514e20d05d0d33a03b1a316377cecca8fb7b18ca03bd67ed1b3f8979790f42a00328dbc6719cfceedeb98bdff4d9b9b7933c6b0077ce1dea1f77ff580222b2e7b5ba5ab53bee1c65c4fcb1b66395a10387878700acdd5c63e7de0eb7efdc66e7de4e523d754773ebdb51f71f27106ffdb4850a15b3ce6c5ffe170a6104fb2ff611468ced9f2f9da7b45cc2cb7bacffb0cee68f9b8902bd769cfb7b483ce0b7fcbebb8fd00edb042dfb3ed06c3591428ef47b554e050acff150814a76def3c038f71f27903b7a41b072c4318ffe7c648f9c28d8bc30a1f51c0f22ec29308adaf51aa5e5d254f78f2830284f2e974bc86c3636711d9766d41c691b3f3738fbd1590a51c1eefce86ebd739fe6fe710406910cae942b0999adc616ee9c4bd0e95749296c5a96c2564f2071bf36a3b93f2b81b16456ca2b43ca00e8408363dbfa469dd2c7251bef8ccffdc791fa4a36617c0ec855ca151efff398fa461d2212a365757f0f99be8c0630f683a3be514fe259dd3f72937788784cecff58e7dde03f00527590ce2ed9750000000049454e44ae426082</data>
     </image>
     <image name="image1">
-        <data format="PNG" length="1117">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000424494441545885bd97c16b1b4714c67f2a2b98011d7621d02c041a97166af5e2ac73a8d35e1ac8a1870452d242ea3a102b971c7228491348a803494bff81a625a0e28be929eec1b83e14da5bdd837114dac8ce2174053196db8376898d678816a68759d9922c2bb2ecf681f434bb339aef7df3cd7b3319630cbbd9fc9f91711d814e403810279a5edb6165393c7766f8f55dff1c30c6d8afdd3ee5a54dd3ab6dbe30c6bc3066f51f6356578df9ed8f9a99fdb95c79198057ba75d049b7b7ad26b3a0340801510202c1c9f7f2afcdce2dae761bd71580707a07a0ea208505ed09d0498c94901f0afc07338bcffa021027ba6700326bbd2f80045ce10270d88513c78323b373e5b53d03701dd1330000b229fd02e224b6c024f887207f3cffeaec5c79071307a60100ea967e00810bca3e8b364000f9b7f2471ecc2cfedd3c24d36d1b2e2d2b931f947bc2a094f5cb9588e527557412231c7787fff4c3b733c618bacacc6a606f00a404b50e83473d060e79e804aa6b113af189128dc467be340f300c2c1eac06d8de0db1061ca8c61138a0d17842a0d0784d41ed5d030bd37027d8758ccc0209f86b21e2ee09fcd28f680487732e02f0732e11aa37003bf2c0c2347c770e564a16447de7185507b512a26e07c8e5df1193971858f8019d68444ea0d1885e1968c9038dc9d37dce5a09be6e63a20eb212226f074815a312100988c94bf84f7f45036ece43f7ca408b0692181c205d5b34968909cb84aa837a1aa26e0510c544da028d13eb23a5f1844427aa4f0d8c14e0e2d436030dbf52825b01f2f143e4ddd6c875c35f2ee2bd3f6ab59193fbd0c0c8288c152d031b1680da002a25d4c470c7c8e3cb45f8a0804e545aa8549f1a6867c2b113480750365bb447ce9522eee9022201376727f585ec53036d4ca8b1a26560dd02698f5c5f29224e17ec320a88b54a6b04fbcc03a9c9374e82e3768edc3d8a7baa905645522fb7dafd6ba061cf42d48dce6a8f35e8950a6be301e8f4b99306e3d8f6fe34500de146805cefa0760d6e0a443c29115e08707553302903fd6ba01aa2ae768e5c9f1adf62a0a109f9b844f871001b6a8b01adfbd5403584ab9d2317d7a7f0ef7c8f3b3185209d3cb1dae05189f0ccbb08ad2c33fd6a404d5eeb1839d78bc8b3a32805f2a351f8a2886cec0a6d19118f4a5427ef81b00cf4a501f9f9346ae0586be437a7f0ce166c0d908002ff4201f7aba9164dc8f3e30c7c760dd25373b306f6762f78614cede231537b07539b296edf078c319b69d7da73dbefaffb455306533eff89d97c6eef0bb59af5dfdcfbc500c32f3d11edc80359f0ee3f84ca12bc99b791676961c013f67e303056201a1c410ce52d130dfaf79d07b2d8c9d3dfaa9e7a05c874ed9df4743c94b75a693a21f5ad818eb60b03244dfb3e2ddd8d8cd8ae81ae4be03a822fbffd090f5b4205b6901c44bb615d8fe5994c06ece9f53f3163cc625700ff87fd0b693cef8354c18fa60000000049454e44ae426082</data>
+        <data format="PNG" length="1136">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000437494441545885bd97c16b1c551cc73f910dcc832dcc806006049dd282493dd8ad87543c88d083a10a113da429429b53c1d243a1428b2d548fdea482768b97f80f94b487407210520f256e894d5a6ad90d18326b12324312e63d9a819f8737c9269bdd75b3a9fe60f6c79b9d37effbfbbeeffce63b5d2242b378f08716df516803ca81d068da1d5716e62aa7078e1d6e7a734044ec4fb3a3fc4cda8ee485cd8b4b22ab4b225333ab3231599eff3700afb4ba409b56ffee0ed50dac839b87d0809bf3f8b03f7863627c76b1d5bc960094d33e00bd091c82d8809f87d884a02078bbcf1fbb3ffb57d389adb6606a26697f0f44445ed8637551647bfbb2f1c478b9da68ed960cf88e6a9f02806e880c3879084db87dcef3217827786d62bcbc878997a6010036c13b04a4e0e67cd0d97d227073d07b24787decfeecdf3ba774b57a0c2b7f22c1d1fd61d01a540e7e7f1e51791e139b10d7f1f7e4cf3e39dc2522e45add2c349a80fd6d8352c03a148e78f4beea6108081734861e4263e8cdf530f97012e00430fd723540ed69083700072a2b113810a7317ede214a637cbcedebf7af81d23db859683a4775031afc951075e33d82c7f7895345e0fa382904ae4f48d41e803d7da0740fbe3f0d0ba5a620f426500dd1d7fae0c96ff0d3597a1ffe42642294ab88d308a75d0642a3f72e9e075260a501884d500b215ceb43e91852f052707e3e4b30ff802805dff530ed32b04b03a60a3960835a5e28c1f542adf2f910fd551f443191b140c334cbeb317e1e22a33bd4c0c91138375a63602b574b70a5807a3a07377657ae53705330178af8a786c140e0aa0368e0e4300c152d03b105a06360be84be7aac61e5d50b45f87884d8e8ac43ea0e3550cf846317500ea0b1dda2ae722e16e9191cc131d0e32a4821c8ab0e3550c7841e2a5a0622bb707de5f1c5226a7084d80079a86e5806aa8603f6812cd45b0390731b57eebe89ffd10864af660cf4e45596398006b6220cd1971babbd6ac02ccc53f9a260cf1b6c27cc72d570400d2c8770b90fb5de40ed067a3220eed31273670af85b63876d063ad7c07288bed4b8f2f8d4f96d06b62af71e9798fbb400a6c640bcd1a9069643b8d4b872756514ffe61dbceba3b8648ba76052508f4a3c1928586d98cc3376a2017dfbcb86959b2b45181c466be0f361ccd745bcadbd37199847252ab7bf83bc6560a706f6e7092f1c17f90049de47927e44ee8ed6bca088487679726754ca79643a8794411687ce8b2422c9924892887c736b4c8013d2c977c1eab9e392f423ab778bbbbe07926cf1d5359bcb3f16a50c323b744624b1df0bc99acdc55b53ed01989d69e27e9fcdeeaebc8e0159b3e7925fcbdb953763a0b33e70b4cfe6eeec2dd86dbd200aa275c0b19d51bd1b582de46b0ea95e03fbef033b633373409b9917d4992b36e065cfbdef001bb58ee8d6f58196a6d47714dffe700f1f8f10eb640cd14b196f454b5bded5d505d6bdfe272122d32d01fc1ff10ff749eecf8f1e14e90000000049454e44ae426082</data>
     </image>
     <image name="image2">
-        <data format="PNG" length="1139">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000043a494441545885c597cf6b5d4514c73f2f4ee58c88de8b115e1685f70417af9045bb4ba50b05776e5da874110c5dbc145c17da9dffc20b3406b308d68dff814b69dd942a8d4d719540c1641173afc9e3cec137382e66de8f242f699a1ff4c0e5dc337367e67cbfe79cb933b51002af536a00339d9dabeacb5c5426d4178045b540c8515f80179c2fb15e705e0141b50404bc8217d41748cfc6efc9512d527f093e437d8978417d59f2fbdc6fc07f40a8cddcaf66f1fa7df3fd9cd23904281472a0500540bb2006caae824936a0aa38043439dd75602cba5724a7004f74024155c117a01bdff0c7ed25406b339dbfc2f5e929ea6f834d8b2bc3458a6eb2f7e26465376aa7c94e5a159c8fe3d483bad4ee87740ba05b8fc014f0f8b326b035914b16173771710148880b8dedb868ab874cd26c7d3b694c422b238bf9380ed278406825469804c4145a62b143a4dd3859d18d038b3ef2318821d92446fae34790ab1f3a03a0946032803781370c9271753279a80999ee67a0e842de67c8c43088898b8fda7da70a4ddfef81d8188e3e839475ee2d3f1a84c5a025d72fdb71157236e9019786dab90866735bb9b7920d3e9b10931d35c5d96464711c580b78c84cdecf81e840ace77394de884ec831435d6ad1cf81e800e7cdc011c8ad0114c4c805317000390790bb94e0a596fb19c8440ecd752a1945de23ee6a23c86dda273293ed67a0ecd7ce59651439879117eac63320e61c18380ef98f4df0908bbda01c380ef94a136e6dc04a73c040712807ce52052f8b39c3f0e6c6e214f2c339704a064e12730468011ccd00720a06c6215f69c277cd41b6e762e106c00cdcd0687bb02623ccce11ee371e0218ed96c4e3c72990dbb4c72f37a1bd01086e610a1bff7fd09e8f7afa6b48ed7514da25a004dfd836d9ab30701079fac170731d169b704bb1ed6bb0ba06224013980236e1530155ecf435e0092c0ab5f98d491373e0040c8c439e626e0d149faf912f5c81b644c44c11e32f40061fde05d681e7b020d4e6373e8293ee03472157b0c230e65facc3e21358ed24f439702539d184d51f62ff48754cc4d3eb09915f1a93ed5db76fa7735ec108904ec5901c2906fdb5e5a5c1f42633c7d0ff32e43adce1726361650adbfe24a1874839c06654adafb0ad7502b7a93d4e5dad3bcfc258f937e92aa92ab655bbb1addaad42a842d8d9a942d80da1ead443081242f83884b546a89ed643083f0d9eea693d84b546ec0f12aa4e3d00ef192487bd48273aa43726583ae76fbbc11931fe501431920e17c0cf1f60db5b11d1e23a78c51a81e907400694d85f259e9a7f594fd5b245a0b15d6bdd7916f016e70bf079bc38c41b0cfd1b9090a1ae6f170816f50e7cbc098917dccd394070286f2d2f812f090fee42cbc27347edcb6fc16454b373c37d02a106bc035c06de3d3e1b5f5d42a7fe90f6162c3406653722ff002fd2b58317c0d6793b30ac0200fe3cd0d9039c492f3d2e5414e0efb15d21840b7d62751cddff3f6308fe725eee90370000000049454e44ae426082</data>
+        <data format="PNG" length="1185">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000468494441545885c597cf8b1c4514c73fb376a45a26da8d0add6060e61070853dec21878de410bc79d383208b87249e268207c9219063ae1e772fbabb8718047fdc02fe01925c1250a24930423610b0fab066da6c33f5c8163e0f55f323e3ee66dd6cf0c1f09d3755fddefb7eeb55d5744b55f93fad05b0b03498175fe546b219f116c811b1184ac45bf039ce5b529fe17c0d6488544006be069f21de62b6f2309f129110076fc18738c66788af6a7efef827e06f405b0b2b7a0a71abb3654ab5095902b6813201db3848406ac80dd85ac0043f4ba06e049718682c2439520b1883f443d1e2014f28820c110905cb9d4ff9f5932f01692d2cfda1c7e74b0a03794c2ec93889ada3df0fc1ea26a093e8471401e7411a100fe2e2ef7e2cb701a4ba0689c08d77ba403553b663721392e709504336f40db009591a8215ed7134f15046c444b6ed89641e4c12fd040430cc4745780d3033b6b18179646a6b30262009d8c8bc1a621d993521b08de822ca703c32173f2e0640a82029015e045e486897cc66b050c4a06f0499b34e54e0cd504c39a1888d0a554dc4e8d74d606a9b38bf0ff961e86f429e42df8169ba9cfbe2da6859121acbf12365f05edfd3ced99b6d0187c6e81ca42958dbe7dc5a399a36939b72a710cf6613c989c971509a7cd803a1807e637788b04fdb9ac0c89c748cb6e90f7b2014c0412bb003f33425eca66905e4a0149862ce1473b70918a81afba402653b3b980226996f85a493cc53030814a67c5201dbd40753c024f343ff66de6fdcf60a1873000aecc6fcdb2e08e4ed141ac84c36dd03d5c124df8ef9a52e9cbe0f97ba23056c534df580299e3df94e6b8e8ca6e62628509a62ba07f6a9c05ed61c03cc02ecac00ed7d28b01df3afbbb0dc1d757bde4ee104c0493821c117c84d819e5a44573a570112a92ba0bb3fe6719fa76b5de8dd070c6eb9242556d1fb0ca861ee0c2c97802143a05703824a6783939f0f74cff6780a878f3e52d5958eaa16aafabeeacd8eeabd8eaa7ea5aa5703deeba8de8ce35aa8ae74147835a99a3d2ab01df3b8e6a981fe7bb7c997df821e307716c881f9f8f03c742f00ebc01d5836b4cede7f1b20d9d339b05bb71f0e98b753f8701d56bb70ec1acc7d1f8b2881dbc02cfc7211aec3e4ee78fa5df0b46eefbb274e3a27e18f29d8300162117634de5abb3c0a9f14bbdd867b65dec47dbe5692f6de8d090d7027301f16737491f4a8453943eb46cc317bfed6ee0d171b6d30c447616cf068a0fa58f5e1c381ea4075b054a8aa51d593aa773b3ab859a8ea1555fd4e55af04ff6e278cabd1c152119a907609514e9a29dc08e83642a3b92aca5e398c4947b2f34349da8b07daea3a88901a0373ab400154a4d74d58fa1fd7e1b490f62a94ce466bf6fc2d1dbef9e0e355e9876f38e10dc85020ae8abec59023be3f9a677c8efb681130388497d62e83b7e83717e0680abf3b5a1f5c84a464706a717c4e6068012f0347805776efc6ff6eba545ca557c17267b4ed26ec2fe04142e8ef07c0335e8bdb9999747e9b1adc025c12bf6cf15c4d00fedc7648559feb27ec8e9dc7ff016d57594f94a082e50000000049454e44ae426082</data>
     </image>
 </images>
 <layoutdefaults spacing="6" margin="11"/>
