@@ -1,5 +1,5 @@
-# Archivo generado por el gestor qmake de kdevelop.
-# -------------------------------------------
+# Archivo generado por el gestor qmake de kdevelop. 
+# ------------------------------------------- 
 # Subdirectorio relativo al directorio principal del proyecto: ./bulmafact/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmafact
 
@@ -21,13 +21,12 @@ FORMS += bulmafactbase.ui \
          clientinvoiceslistbase.ui \
          fpagobase.ui \
          familiasdlg.ui \
-         tiposarticulodlg.ui
-
+         tiposarticulodlg.ui 
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
                 bulmafact_fr.ts \
-                bulmafact_de.ts
+                bulmafact_de.ts 
 HEADERS += bulmafact.h \
            company.h \
            providerslist.h \
@@ -50,7 +49,8 @@ HEADERS += bulmafact.h \
            listventanas.h \
            fpago.h \
            familiasview.h \
-           tiposarticuloview.h
+           tiposarticuloview.h \
+           presupuesto.h 
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -74,7 +74,8 @@ SOURCES += bulmafact.cpp \
            listventanas.cpp \
            fpago.cpp \
            familiasview.cpp \
-           tiposarticuloview.cpp
+           tiposarticuloview.cpp \
+           presupuesto.cpp 
 TEMPLATE = app
 LANGUAGE = C++
 CONFIG += release \

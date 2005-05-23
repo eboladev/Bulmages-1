@@ -456,6 +456,7 @@ CREATE TABLE dpresupuesto (
    conceptdpresupuesto character varying(2000),
    proporciondpresupuesto float,
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
 );
 
 
@@ -473,10 +474,12 @@ CREATE TABLE lpresupuesto (
    cantlpresupuesto float,
    pvplpresupuesto float,
    descuentolpresupuesto float,
-
+-- Incluir porcentaje de IVA
    idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
+
+-- Falta poner por defecto el pvp y el iva
 
 
 -- FACTURACIO>Albarans:

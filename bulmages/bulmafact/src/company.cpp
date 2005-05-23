@@ -145,7 +145,7 @@ void company::listBudgets() {
 }// end listbudgets
 
 void company::newBudget() {
-   Budget *bud = new Budget(this,m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
+   Budget *bud = new Budget(this , m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
    bud->show();
 }// end bud
 

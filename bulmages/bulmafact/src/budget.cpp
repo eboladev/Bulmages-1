@@ -70,10 +70,9 @@ CREATE TABLE lpresupuesto (
 #include "articleslist.h"
 #include "configuracion.h"
 
-#include <qlineedit.h>
-#include <qtextedit.h>
+
 #include <qmessagebox.h>
-#include <qlabel.h>
+
 #include <qtable.h>
 #include <qwidget.h>
 #include <qobjectlist.h>
@@ -81,23 +80,14 @@ CREATE TABLE lpresupuesto (
 #include <qpopupmenu.h>
 #include <qtoolbutton.h>
 
+#include <qlayout.h>
+
 #include <fstream>
 using namespace std;
 
 #include "funcaux.h"
 
-#define COL_IDLPRESUPUESTO 0
-#define COL_IDARTICULO 1
-#define COL_CODARTICULO 2
-#define COL_NOMARTICULO 3
-#define COL_DESCLPRESUPUESTO 4
-#define COL_CANTLPRESUPUESTO 5
-#define COL_PVPLPRESUPUESTO 6
-#define COL_DESCUENTOLPRESUPUESTO 7
-#define COL_IDPRESUPUESTO 8
-#define COL_REMOVE 9
-#define COL_TASATIPO_IVA 10
-#define COL_TIPO_IVA 11
+
 
 #define COL_DESCUENTO_IDDPRESUPUESTO 0
 #define COL_DESCUENTO_CONCEPTDPRESUPUESTO 1
@@ -106,25 +96,39 @@ using namespace std;
 
 #define coma "'"
 
-Budget::Budget(company *comp, QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) {
-   companyact = comp;
-   m_idpresupuesto = "0";
-   m_idclient = "";
+Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) , presupuesto(comp) {
+	
+
+	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+	subform = new listlinpresupuestoview(companyact, tab_2);	
+	delete m_list;
+	m_list = subform;	
+	    layout46->addWidget( m_list );
+
+	setlislinpresupuesto(subform);
+	
    inicialize();
-   companyact->meteWindow(caption(),this);
+   comp->meteWindow(caption(),this);
 }// end Budget
+
 
 Budget::~Budget() {
 	companyact->refreshBudgets();
 	companyact->sacaWindow(this);
-}// end ~Budget
+
+	
+	}// end ~Budget
 
 
 void Budget::inicialize() {
+
+
 	installEventFilter(this);
 	m_list->installEventFilter( this );
 	m_listDiscounts->installEventFilter( this );
 	m_nomalmacen->setText("");
+	
+	// Tratamos la forma de pago.
 	m_comboformapago->clear();
 	QString query = "SELECT * FROM prfp WHERE idpresupuesto="+m_idpresupuesto;
 	companyact->begin();
@@ -136,56 +140,9 @@ void Budget::inicialize() {
 		cargarcomboformapago("0");	
 	}// end if
 	delete cur1;
+	
 
-	
-	
-// Inicializamos la tabla de lineas de presupuesto
-	m_list->setNumRows( 0 );
-	m_list->setNumCols( 0 );
-	m_list->setSelectionMode( QTable::SingleRow );
-	m_list->setSorting( TRUE );
-	m_list->setSelectionMode( QTable::SingleRow );
-	m_list->setColumnMovingEnabled( TRUE );
-	m_list->setNumCols(12);
-	m_list->horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "Nº Línea" ) );
-	m_list->horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripción" ) );
-	m_list->horizontalHeader()->setLabel( COL_CANTLPRESUPUESTO, tr( "Cantidad" ) );
-	m_list->horizontalHeader()->setLabel( COL_PVPLPRESUPUESTO, tr( "Precio" ) );
-	m_list->horizontalHeader()->setLabel( COL_DESCUENTOLPRESUPUESTO, tr( "Descuento" ) );
-	m_list->horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "Nº Pedido" ) );
-	m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
-	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
-	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
-	m_list->horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
-	m_list->horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
-   
-	m_list->setColumnWidth(COL_IDLPRESUPUESTO,100);
-	m_list->setColumnWidth(COL_DESCLPRESUPUESTO,300);
-	m_list->setColumnWidth(COL_CANTLPRESUPUESTO,100);
-	m_list->setColumnWidth(COL_PVPLPRESUPUESTO,100);
-	m_list->setColumnWidth(COL_DESCUENTOLPRESUPUESTO,100);
-	m_list->setColumnWidth(COL_IDPRESUPUESTO,100);
-	m_list->setColumnWidth(COL_IDARTICULO,100);
-	m_list->setColumnWidth(COL_CODARTICULO,100);
-	m_list->setColumnWidth(COL_NOMARTICULO,300);
-	m_list->setColumnWidth(COL_TASATIPO_IVA,50);
-	m_list->setColumnWidth(COL_TIPO_IVA,50);
 
-	
-	m_list->hideColumn(COL_IDLPRESUPUESTO);
-	m_list->hideColumn(COL_IDPRESUPUESTO);
-	m_list->hideColumn(COL_IDARTICULO);
-	m_list->hideColumn(COL_REMOVE);
-	m_list->hideColumn(COL_TASATIPO_IVA);
-	m_list->hideColumn(COL_TIPO_IVA);
-	
-	m_list->setNumRows(10);
-	
-//   listado->setPaletteBackgroundColor(QColor(150,230,230));
-	m_list->setColumnReadOnly(COL_NOMARTICULO,true);
-	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-	m_list->setPaletteBackgroundColor("#AFFAFA");   
-	m_list->setReadOnly(FALSE);
 	
 // Inicializamos la tabla de descuentos del presupuesto
 	m_listDiscounts->setNumRows( 0 );
@@ -223,9 +180,7 @@ void Budget::inicialize() {
 	m_totalBudget->setAlignment(Qt::AlignRight);
 	
 	if (m_idpresupuesto=="0") {	 
-		companyact->begin();
 		cursor2 * cur0= companyact->cargacursor("SELECT * FROM configuracion where nombre='AlmacenDefecto'","queryconfig");
-		companyact->commit(); 
 		if (!cur0->eof()) {
 			if (cur0->valor("valor")!="") {
 				m_codigoalmacen->setText(cur0->valor("valor"));
@@ -252,38 +207,6 @@ void Budget::inicialize() {
 }// end inicialize
 
 
-// Esta función carga un presupuesto.
-void Budget::chargeBudget(QString idbudget) {
-	m_idpresupuesto = idbudget;
-	inicialize();
-
-	QString query = "SELECT * FROM presupuesto LEFT JOIN cliente ON cliente.idcliente = presupuesto.idcliente LEFT JOIN almacen ON  presupuesto.idalmacen = almacen.idalmacen WHERE idpresupuesto="+idbudget;
-	companyact->begin();
-	cursor2 * cur= companyact->cargacursor(query, "querypresupuesto");
-	companyact->commit();
-	if (!cur->eof()) {
-		m_idclient = cur->valor("idcliente");	
-		m_idalmacen = cur->valor("idalmacen");
-		m_numpresupuesto->setText(cur->valor("numpresupuesto"));
-		m_fpresupuesto->setText(cur->valor("fpresupuesto"));
-		m_vencpresupuesto->setText(cur->valor("vencpresupuesto"));
-		m_contactpresupuesto->setText(cur->valor("contactpresupuesto"));
-		m_telpresupuesto->setText(cur->valor("telpresupuesto"));
-		m_comentpresupuesto->setText(cur->valor("comentpresupuesto"));
-		m_nomclient->setText(cur->valor("nomcliente"));
-		m_cifclient->setText(cur->valor("cifcliente"));
-		m_codigoalmacen-> setText(cur->valor("codigoalmacen"));
-		m_nomalmacen-> setText(cur->valor("nomalmacen"));
-   
-		chargeBudgetLines(idbudget);
-		chargeBudgetDiscounts(idbudget);
-		calculateImports();
-    }// end if
-     delete cur;   
-	  
-	m_initialValues = calculateValues();
-}// end chargeBudget
-
 
 void Budget::cargarcomboformapago(QString idformapago) {
 	m_cursorcombo = NULL;
@@ -306,36 +229,7 @@ void Budget::cargarcomboformapago(QString idformapago) {
  	} 
 } //end cargarcombodformapago
 
-// Carga líneas de presupuesto
-void Budget::chargeBudgetLines(QString idbudget) {
-	companyact->begin();
-	cursor2 * cur= companyact->cargacursor("SELECT * FROM lpresupuesto, articulo WHERE idpresupuesto="+idbudget+" AND articulo.idarticulo=lpresupuesto.idarticulo","unquery");
-	companyact->commit();
-	int i=0;
-	while (!cur->eof()) {
-		m_list->setText(i,COL_IDLPRESUPUESTO,cur->valor("idlpresupuesto"));
-		m_list->setText(i,COL_DESCLPRESUPUESTO,cur->valor("desclpresupuesto"));
-		m_list->setText(i,COL_CANTLPRESUPUESTO,QString().sprintf("%0.3f",cur->valor("cantlpresupuesto").toFloat()));
-		m_list->setText(i,COL_PVPLPRESUPUESTO,QString().sprintf("%0.2f",cur->valor("pvplpresupuesto").toFloat()));
-		m_list->setText(i,COL_DESCUENTOLPRESUPUESTO,QString().sprintf("%0.2f",cur->valor("descuentolpresupuesto").toFloat()));
-		m_list->setText(i,COL_IDPRESUPUESTO,cur->valor("idpresupuesto"));
-		m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
-		m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
-		m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
-		m_list->setText(i,COL_TIPO_IVA,cur->valor("idtipo_iva"));
-		companyact->begin();
-		cursor2 * cur2= companyact->cargacursor("SELECT porcentasa_iva FROM tasa_iva WHERE idtipo_iva="+cur->valor("idtipo_iva")+" AND fechatasa_iva<='"+m_fpresupuesto->text()+"' ORDER BY fechatasa_iva DESC","unquery2");
-		companyact->commit();
-		if (!cur2->eof()) {
-			m_list->setText(i,COL_TASATIPO_IVA,cur2->valor("porcentasa_iva"));
-		}
-		i++;
-		cur->siguienteregistro();
-	}// end while
-	if (i>0) m_list->setNumRows(i);
-	
-	delete cur;
-}// end chargeBudgetLines
+
 
 
 // Carga líneas descuentos presupuesto
