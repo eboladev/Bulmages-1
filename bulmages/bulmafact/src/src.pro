@@ -50,7 +50,10 @@ HEADERS += bulmafact.h \
            fpago.h \
            familiasview.h \
            tiposarticuloview.h \
-           presupuesto.h 
+           presupuesto.h \
+           listlinpresupuesto.h \
+           linpresupuesto.h \
+           listlinpresupuestoview.h 
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -75,7 +78,10 @@ SOURCES += bulmafact.cpp \
            fpago.cpp \
            familiasview.cpp \
            tiposarticuloview.cpp \
-           presupuesto.cpp 
+           presupuesto.cpp \
+           listlinpresupuesto.cpp \
+           linpresupuesto.cpp \
+           listlinpresupuestoview.cpp 
 TEMPLATE = app
 LANGUAGE = C++
 CONFIG += release \

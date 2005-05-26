@@ -86,7 +86,7 @@ CREATE TABLE lpresupuesto (
 using namespace std;
 
 #include "funcaux.h"
-
+#include "listlinpresupuestoview.h"
 
 
 #define COL_DESCUENTO_IDDPRESUPUESTO 0

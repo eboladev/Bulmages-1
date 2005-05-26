@@ -26,6 +26,7 @@
 #include "postgresiface2.h"
 
 #include "presupuesto.h"
+#include "listlinpresupuestoview.h"
 
 #include <qlineedit.h>
 #include <qtextedit.h>

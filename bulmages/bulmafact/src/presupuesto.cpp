@@ -90,50 +90,5 @@ void presupuesto::chargeBudget(QString idbudget) {
 
 
 
-// Carga líneas de presupuesto
-void listlinpresupuesto::chargeBudgetLines(QString idbudget) {
-	companyact->begin();
-	cursor2 * cur= companyact->cargacursor("SELECT * FROM lpresupuesto, articulo WHERE idpresupuesto="+idbudget+" AND articulo.idarticulo=lpresupuesto.idarticulo","unquery");
-	companyact->commit();
-	int i=0;
-	while (!cur->eof()) {
-	
-	
-		/// Creamos un elemento del tipo linpresupuesto y lo agregamos a la lista.
-		linpresupuesto *lin = new linpresupuesto(companyact,
-		cur->valor("idlpresupuesto"),
-		cur->valor("desclpresupuesto"),
-		cur->valor("cantlpresupuesto"),
-		cur->valor("pvplpresupuesto"),
-		cur->valor("descuentolpresupuesto"),
-		cur->valor("idpresupuesto"),
-		cur->valor("idarticulo")
-		);
-		m_lista.append(lin);
-/*		
-		m_list->setText(i,COL_IDLPRESUPUESTO,cur->valor("idlpresupuesto"));
-		m_list->setText(i,COL_DESCLPRESUPUESTO,cur->valor("desclpresupuesto"));
-		m_list->setText(i,COL_CANTLPRESUPUESTO,QString().sprintf("%0.3f",cur->valor("cantlpresupuesto").toFloat()));
-		m_list->setText(i,COL_PVPLPRESUPUESTO,QString().sprintf("%0.2f",cur->valor("pvplpresupuesto").toFloat()));
-		m_list->setText(i,COL_DESCUENTOLPRESUPUESTO,QString().sprintf("%0.2f",cur->valor("descuentolpresupuesto").toFloat()));
-		m_list->setText(i,COL_IDPRESUPUESTO,cur->valor("idpresupuesto"));
-		m_list->setText(i,COL_IDARTICULO,cur->valor("idarticulo"));
-		m_list->setText(i,COL_CODARTICULO,cur->valor("codarticulo"));
-		m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
-		m_list->setText(i,COL_TIPO_IVA,cur->valor("idtipo_iva"));
-		companyact->begin();
-		cursor2 * cur2= companyact->cargacursor("SELECT porcentasa_iva FROM tasa_iva WHERE idtipo_iva="+cur->valor("idtipo_iva")+" AND fechatasa_iva<='"+m_fpresupuesto->text()+"' ORDER BY fechatasa_iva DESC","unquery2");
-		companyact->commit();
-		if (!cur2->eof()) {
-			m_list->setText(i,COL_TASATIPO_IVA,cur2->valor("porcentasa_iva"));
-		}
-		delete cur2;
-*/
-		i++;
-		cur->siguienteregistro();
-	}// end while
-//	if (i>0) m_list->setNumRows(i);
-	delete cur;
-}// end chargeBudgetLines
 
 
