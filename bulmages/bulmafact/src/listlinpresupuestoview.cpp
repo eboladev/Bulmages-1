@@ -70,6 +70,7 @@ listlinpresupuestoview::listlinpresupuestoview(company *comp,  QWidget * parent,
     void listlinpresupuestoview::pintalistlinpresupuesto() {
     	fprintf(stderr,"INICIO de pintalistlinpresupuesto\n");
 
+	/// \todo Habría que vaciar la tabla para que el pintado fuera exacto.
         linpresupuesto *linea;
         uint i = 0;
         for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {

@@ -37,7 +37,7 @@ public:
     linpresupuesto(company *, QString , QString , QString , QString , QString , QString , QString, QString, QString );
     virtual ~linpresupuesto();
     virtual void pintalinpresupuesto() {};
-    void guardalinpresupuesto() {};
+    void guardalinpresupuesto();
     void vacialinpresupuesto();
     
     inline QString idlpresupuesto() {return mdb_idlpresupuesto;};

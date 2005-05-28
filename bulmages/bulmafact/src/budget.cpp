@@ -473,36 +473,6 @@ QString Budget::searchArticle() {
 }// end searchArticle
 
 
-void Budget::s_saveBudget() {
-	companyact->begin();
-	if (saveBudget()==0) {
-		if (m_idpresupuesto == "0") {
-			cursor2 * cur4= companyact->cargacursor("SELECT max(idpresupuesto) FROM presupuesto","unquery1");
-			if (!cur4->eof()) {
-				m_idpresupuesto=cur4->valor(0);
-				if (insertfpBudget()!=0) {
-					companyact->rollback();
-					return;
-				}
-			}
-			delete cur4;
-		} else {
-			if (updatefpBudget()!=0) {
-				companyact->rollback();
-				return;
-			}
-		 }
-		if (saveBudgetLines()==0 && saveBudgetDiscountLines()==0) {
-			companyact->commit();
-			m_initialValues = calculateValues();
-		} else {
-			companyact->rollback();
-		}
-	} else {
-		companyact->rollback();
-	}	
-	chargeBudget(m_idpresupuesto);
-}
 
 
 void Budget::s_contextMenu(int, int, int button, const QPoint &poin) {
@@ -543,6 +513,7 @@ void Budget::s_contextMenuDiscount(int, int, int button, const QPoint &poin) {
 
 void Budget::accept() {
 	fprintf(stderr,"accept button activated\n");
+/*	
 	companyact->begin();
 	if (saveBudget()==0) {
 		if (m_idpresupuesto == "0") {
@@ -571,44 +542,11 @@ void Budget::accept() {
 		}
 	} else {
 		companyact->rollback();
-	}	
+	}
+*/	
 } //end accept
 
 
-int Budget::saveBudget() {
-	buscarAlmacen();
-	if (m_idalmacen == "")  return 1;
-	
-	if (m_numpresupuesto->text() == "") {
-		m_numpresupuesto->setText(newBudgetNumber());
-	}
-	QString SQLQuery;
-	
-	if (m_idpresupuesto != "0") {
-		SQLQuery = "UPDATE presupuesto  SET numpresupuesto="+m_numpresupuesto->text();
-      SQLQuery += " , fpresupuesto='"+ m_fpresupuesto->text()+"'";
-      SQLQuery += " , contactpresupuesto='"+m_contactpresupuesto->text()+"'";
-      SQLQuery += " , telpresupuesto='"+m_telpresupuesto->text()+"'";
-      SQLQuery += " , vencpresupuesto='"+m_vencpresupuesto->text()+"'";
-      SQLQuery += " , comentpresupuesto='"+m_comentpresupuesto->text()+"'";
-		SQLQuery += " , idcliente="+m_idclient;
-		SQLQuery += " , idalmacen="+m_idalmacen;
-      SQLQuery += " WHERE idpresupuesto ="+m_idpresupuesto;
-	} else {
-		SQLQuery = "INSERT INTO presupuesto (idalmacen, numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idcliente)";
-		SQLQuery += " VALUES (";
-		SQLQuery += m_idalmacen;
-		SQLQuery += " , "+m_numpresupuesto->text();
-		SQLQuery += " , '"+m_fpresupuesto->text()+"'";
-      SQLQuery += " , '"+m_contactpresupuesto->text()+"'";
-		SQLQuery += " , '"+m_telpresupuesto->text()+"'";
-      SQLQuery += " , '"+m_vencpresupuesto->text()+"'";
-      SQLQuery += " , '"+m_comentpresupuesto->text()+"'";
-		SQLQuery += " , "+m_idclient;
-      SQLQuery += " ) ";
-	}
-	return companyact->ejecuta(SQLQuery);
-} //end saveBudget
 
 
 int Budget::insertfpBudget() {
@@ -628,29 +566,6 @@ int Budget::updatefpBudget() {
 	SQLQuery += " WHERE idpresupuesto ="+m_idpresupuesto;
 	return companyact->ejecuta(SQLQuery);
 } //end saveBudget
-
-
-int Budget::saveBudgetLines() {
-	int i = 0;
-	int error = 0;
-	while (i < m_list->numRows() && error==0) {
-		if (m_list->text(i,COL_REMOVE)=="S") {
-			if (m_list->text(i,COL_IDLPRESUPUESTO)!="") {
-				error = deleteBudgetLine(i);
-			}
-		} else {
-			if (m_list->text(i,COL_IDARTICULO)!="" || m_list->text(i,COL_NOMARTICULO)!="") {
-				if (m_list->text(i,COL_IDLPRESUPUESTO)!="") {
-					error = updateBudgetLine(i);
-				} else {
-					error = insertBudgetLine(i);
-				}
-			}
-		}
-		i ++;
-   }
-	return error;
-} // end saveBudgetLines
 
 
 int Budget::saveBudgetDiscountLines() {
@@ -676,30 +591,6 @@ int Budget::saveBudgetDiscountLines() {
 } // end saveBudgetDiscountLines
 
 
-int Budget::updateBudgetLine(int i) {
-	QString SQLQuery = "UPDATE lpresupuesto SET desclpresupuesto='"+m_list->text(i,COL_DESCLPRESUPUESTO)+"'";
-	SQLQuery += " , cantlpresupuesto="+ m_list->text(i,COL_CANTLPRESUPUESTO);
-	SQLQuery += " , pvplpresupuesto="+m_list->text(i,COL_PVPLPRESUPUESTO);
-	SQLQuery += " , descuentolpresupuesto="+m_list->text(i,COL_DESCUENTOLPRESUPUESTO);
-	SQLQuery += " , idarticulo="+m_list->text(i,COL_IDARTICULO);
-	SQLQuery += " WHERE idpresupuesto ="+m_idpresupuesto+" AND idlpresupuesto="+m_list->text(i,COL_IDLPRESUPUESTO);
-	return companyact->ejecuta(SQLQuery);
-} //end updateBudgetLine
-
-
-int Budget::insertBudgetLine(int i) {
-	QString SQLQuery ="";
-	SQLQuery = "INSERT INTO lpresupuesto (desclpresupuesto, cantlpresupuesto, pvplpresupuesto, descuentolpresupuesto, idpresupuesto, idarticulo)";
-	SQLQuery += " VALUES (";
-	SQLQuery += "'"+m_list->text(i,COL_DESCLPRESUPUESTO)+"'";
-	SQLQuery += " , "+m_list->text(i,COL_CANTLPRESUPUESTO);
-	SQLQuery += " , "+m_list->text(i,COL_PVPLPRESUPUESTO);
-	SQLQuery += " , "+m_list->text(i,COL_DESCUENTOLPRESUPUESTO);
-	SQLQuery += " , "+m_idpresupuesto;
-	SQLQuery += " , "+m_list->text(i,COL_IDARTICULO);
-	SQLQuery += " ) ";
-	return companyact->ejecuta(SQLQuery);
-} //end insertBudgetLine
 
 
 int Budget::deleteBudgetLine(int line) {

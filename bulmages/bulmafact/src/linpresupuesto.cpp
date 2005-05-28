@@ -33,7 +33,6 @@
 	} else {
 		vacialinpresupuesto();
 	}// end if
-    
     }// end linpresupuesto
     
     linpresupuesto::linpresupuesto(company *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i) {
@@ -64,3 +63,32 @@ void linpresupuesto::vacialinpresupuesto() {
 	mdb_codigocompletoarticulo = "";
 	mdb_nomarticulo = "";
 }
+
+
+void linpresupuesto::guardalinpresupuesto() {
+	/// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+	if (mdb_idlpresupuesto == "") {
+		QString SQLQuery = "INSERT INTO lpresupuesto (desclpresupuesto, cantlpresupuesto, pvplpresupuesto, descuentolpresupuesto, idpresupuesto, idarticulo) VALUES ('"+mdb_desclpresupuesto+"',"+mdb_cantlpresupuesto+","+mdb_pvplpresupuesto+","+mdb_descuentolpresupuesto+","+mdb_idpresupuesto+","+mdb_idarticulo+")";
+		companyact->begin();
+		companyact->ejecuta(SQLQuery);
+		cursor2 *cur = companyact->cargacursor("SELECT MAX(idlpresupuesto) AS m FROM lpresupuesto ");
+		if(!cur->eof()) 
+			mdb_idlpresupuesto = cur->valor("m");
+		delete cur;
+		companyact->commit();
+	} else {
+		QString SQLQuery = "UPDATE lpresupuesto SET ";
+		SQLQuery += " desclpresupuesto = '"+mdb_desclpresupuesto+"' ";
+		SQLQuery += " ,cantlpresupuesto = "+mdb_cantlpresupuesto+" ";
+		SQLQuery += " ,pvplpresupuesto = "+mdb_pvplpresupuesto+" ";
+		SQLQuery += " ,descuentolpresupuesto = "+mdb_descuentolpresupuesto+" ";
+		SQLQuery += " ,idpresupuesto = "+mdb_idpresupuesto+" ";
+		SQLQuery += " ,idarticulo = "+mdb_idarticulo+" ";
+		SQLQuery += " WHERE idlpresupuesto = "+mdb_idlpresupuesto;
+		companyact->begin();
+		companyact->ejecuta(SQLQuery);
+		companyact->commit();
+	}// end if
+}// end guardalinpresupuesto
+
+

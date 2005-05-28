@@ -35,20 +35,9 @@
 /** @author Tomeu Borrás Riera */
 class company;
 
-
-
-
 class Budget : public BudgetBase , public presupuesto  {
     Q_OBJECT
 private:
- /*
-    company *companyact2;
-    QString m_idpresupuesto;
-    QString m_idclient;
-    QString m_idalmacen;
-    QString m_initialValues;
-    cursor2 *m_cursorcombo;
-*/
 listlinpresupuestoview *subform;
 
 public:
@@ -76,13 +65,9 @@ void	pintaCodigoAlmacen(QString id) {m_codigoalmacen-> setText(id);};
 void	pintaNomAlmacen(QString id) {m_nomalmacen-> setText(id);};
 
 private:
-    int saveBudget();
     int insertfpBudget();
     int updatefpBudget();
-    int saveBudgetLines();
     int saveBudgetDiscountLines();
-    int insertBudgetLine(int);
-    int updateBudgetLine(int);
     int deleteBudgetLine(int);
     int insertBudgetDiscountLine(int);
     int updateBudgetDiscountLine(int);
@@ -113,15 +98,17 @@ public slots:
     virtual void valueBudgetDiscountLineChanged(int, int);
     virtual void accept();
     virtual void cancel();
-    virtual void s_saveBudget();
+    virtual void s_saveBudget() {guardapresupuesto();};
     virtual void s_removeBudget();
     virtual void s_contextMenu(int, int, int, const QPoint &);
     virtual void s_contextMenuDiscount(int, int, int, const QPoint &);
     virtual void s_almacenLostFocus();
     virtual void s_printBudget();
-
-
-
+    
+    
+    
+    virtual void s_comentariotextChanged() { setComentPresupuesto(m_comentpresupuesto->text()); };
+    virtual void s_cifclienttextChanged(const QString &str) {setCifClient(str);};
 };
 
 #endif

@@ -16,6 +16,7 @@
 
 listlinpresupuesto::listlinpresupuesto(company *comp) {
     companyact = comp;
+    m_lista.setAutoDelete(TRUE);
 }
 
 listlinpresupuesto::~listlinpresupuesto() {}
@@ -46,3 +47,17 @@ void listlinpresupuesto::chargeBudgetLines(QString idbudget) {
 	}// end while
 	delete cur;
 }// end chargeBudgetLines
+
+void listlinpresupuesto::guardalistlinpresupuesto() {
+        linpresupuesto *linea;
+        uint i = 0;
+        for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+	    linea->guardalinpresupuesto(); 
+	    i++;
+        }// end for
+}// en guardalistlinpresupuesto
+
+void listlinpresupuesto::vacialistlinpresupuesto() {
+        m_lista.clear();
+	pintalistlinpresupuesto();
+}// en guardalistlinpresupuesto

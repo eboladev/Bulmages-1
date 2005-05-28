@@ -25,8 +25,8 @@ public:
     company *companyact;
     listlinpresupuesto(company *comp);
     virtual ~listlinpresupuesto();
-    void cargalistlinpresupuesto(){};
-    
+    void guardalistlinpresupuesto();
+    void vacialistlinpresupuesto();
     virtual void pintalistlinpresupuesto() {fprintf(stderr,"La función pintalistlinpresupuesto aun no ha sido implementada\n");};
     void chargeBudgetLines(QString);
 };

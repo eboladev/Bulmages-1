@@ -24,12 +24,6 @@
 #include "company.h"
 #include "linpresupuesto.h"
 
-
-
-
-
-
-
 class presupuesto {
 protected:
     listlinpresupuesto *listalineas;
@@ -54,9 +48,10 @@ protected:
     QString mdb_codigoalmacen;
     QString mdb_nomalmacen;
     QString mdb_idpresupuesto;
+    QString mdb_idusuari;
 
 public:
-    // Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
+    /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setlislinpresupuesto ( listlinpresupuesto *a) {
         listalineas =a;
     };
@@ -64,40 +59,52 @@ public:
     virtual ~presupuesto();
     void chargeBudget(QString );
     void pintaPresupuesto();
-    virtual void	pintaIdClient(QString id) {}
-    ;
-    virtual void	pintaIdAlmacen(QString id) {}
-    ;
-    virtual void	pintaNumPresupuesto(QString id) {}
-    ;
-    virtual void	pintaFPresupuesto(QString id) {}
-    ;
-    virtual void	pintaVencPresupuesto(QString id) {}
-    ;
-    virtual void	pintaContractPresupuesto(QString id) {}
-    ;
-    virtual void	pintaTelPresupuesto(QString id) {}
-    ;
-    virtual void	pintaComentPresupuesto(QString id) {}
-    ;
-    virtual void	pintaNomClient(QString id) {}
-    ;
-    virtual void	pintaCifClient(QString id) {}
-    ;
-    virtual void	pintaCodigoAlmacen(QString id) {}
-    ;
-    virtual void	pintaNomAlmacen(QString id) {}
-    ;
+    void guardapresupuesto();
+    
+    virtual void pintaIdClient(QString id) {};
+    virtual void pintaIdAlmacen(QString id) {};
+    virtual void pintaNumPresupuesto(QString id) {};
+    virtual void pintaFPresupuesto(QString id) {};
+    virtual void pintaVencPresupuesto(QString id) {};
+    virtual void pintaContractPresupuesto(QString id) {};
+    virtual void pintaTelPresupuesto(QString id) {};
+    virtual void pintaComentPresupuesto(QString id) {};
+    virtual void pintaNomClient(QString id) {};
+    virtual void pintaCifClient(QString id) {};
+    virtual void pintaCodigoAlmacen(QString id) {};
+    virtual void pintaNomAlmacen(QString id) {};
 
+    void setIdClient(QString val) { mdb_idcliente=val;};
+    void setIdAlmacen(QString val) { mdb_idalmacen=val;};
+    void setNumPresupuesto(QString val) { mdb_numpresupuesto=val;};
+    void setFPresupuesto(QString val) { mdb_fpresupuesto=val;};
+    void setVencPresupuesto(QString val) { mdb_vencpresupuesto=val;};
+    void setContractPresupuesto(QString val) { mdb_contactpresupuesto=val;};
+    void setTelPresupuesto(QString val) { mdb_telpresupuesto=val;};
+    void setComentPresupuesto(QString val) { mdb_comentpresupuesto=val;};
+    void setNomClient(QString val) { mdb_nomcliente=val;};
+    void setCifClient(QString val) {
+       mdb_cifcliente=val;
+       QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente='"+mdb_cifcliente+"'";
+       cursor2 *cur = companyact->cargacursor(SQLQuery);
+       if(!cur->eof()) {
+       		mdb_idcliente = cur->valor("idcliente");
+		mdb_nomcliente = cur->valor("nomcliente");
+       } else {
+       		mdb_idcliente="";
+		mdb_nomcliente="";
+       }// end if
+       delete cur;
+       pintaNomClient(mdb_nomcliente);
+    };
+    void setCodigoAlmacen(QString val) { mdb_codigoalmacen=val;};
+    void setNomAlmacen(QString val) { mdb_nomalmacen=val;};
+    void setIdPresupuesto(QString val) {mdb_idpresupuesto=val;};
+    void setIdUsuari(QString val) {mdb_idusuari=val;};
 
-
-    virtual void chargeBudgetDiscounts(QString) {}
-    ;
-    virtual void calculateImports() {}
-    ;
-    virtual     void inicialize() {}
-    ;
-    virtual     QString calculateValues() {}
-    ;
+    virtual void chargeBudgetDiscounts(QString) {};
+    virtual void calculateImports() {};
+    virtual void inicialize() {};
+    virtual QString calculateValues() {};
 };
 #endif
