@@ -9,20 +9,17 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
+
+#include "articleslist.h"
 #include "listlinpresupuestoview.h"
-
 #include <qtable.h>
+#include <qmessagebox.h>
 
-listlinpresupuestoview::listlinpresupuestoview(company *comp,  QWidget * parent, const char * name) : QTable(parent, name) , listlinpresupuesto (comp) {
 
+listlinpresupuestoview::listlinpresupuestoview(company *comp,  QWidget * parent, const char * name) : QTable(parent, name), listlinpresupuesto (comp) {
 	/// Inicializamos la tabla de lineas de presupuesto
-	setNumRows( 0 );
-	setNumCols( 0 );
-	setSelectionMode( QTable::SingleRow );
-	setSorting( TRUE );
-	setSelectionMode( QTable::SingleRow );
-	setColumnMovingEnabled( TRUE );
 	setNumCols(12);
+	setNumRows(10);
 	horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "Nº Línea" ) );
 	horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripción" ) );
 	horizontalHeader()->setLabel( COL_CANTLPRESUPUESTO, tr( "Cantidad" ) );
@@ -53,23 +50,23 @@ listlinpresupuestoview::listlinpresupuestoview(company *comp,  QWidget * parent,
 	hideColumn(COL_REMOVE);
 	hideColumn(COL_TASATIPO_IVA);
 	hideColumn(COL_TIPO_IVA);
+	setSelectionMode( QTable::SingleRow );	
 	
-	setNumRows(10);
-	
-//   listado->setPaletteBackgroundColor(QColor(150,230,230));
 	setColumnReadOnly(COL_NOMARTICULO,true);
 	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-	setPaletteBackgroundColor("#AFFAFA");   
-	setReadOnly(FALSE);
-}
-    listlinpresupuestoview::~listlinpresupuestoview() {
-    }
-    
-    
-    
-    void listlinpresupuestoview::pintalistlinpresupuesto() {
-    	fprintf(stderr,"INICIO de pintalistlinpresupuesto\n");
+	setPaletteBackgroundColor("#DDDDDD");   
+	connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
+	installEventFilter(this);
 
+}
+
+
+listlinpresupuestoview::~listlinpresupuestoview() {
+}
+    
+    
+void listlinpresupuestoview::pintalistlinpresupuesto() {
+    	fprintf(stderr,"INICIO de pintalistlinpresupuesto\n");
 	/// \todo Habría que vaciar la tabla para que el pintado fuera exacto.
         linpresupuesto *linea;
         uint i = 0;
@@ -88,5 +85,112 @@ listlinpresupuestoview::listlinpresupuestoview(company *comp,  QWidget * parent,
         }// end for
 	fprintf(stderr,"FIN de pintalistlinpresupuesto\n");
 
-    }    
+}    
 
+    
+    
+bool listlinpresupuestoview::eventFilter( QObject *obj, QEvent *ev ) {
+		if ( ev->type() == QEvent::KeyRelease ) {
+			QKeyEvent *k = (QKeyEvent *)ev;
+			switch (k->key()) {
+				//esta linea ha sido modificada por Javier
+				case Qt::Key_Return:
+				case Qt::Key_Enter:
+					QMessageBox::warning( this, "Se ha pulsado el return", "Aun no está implementado.", "Sí", "No");
+					// Esto se hace porque en la última linea del qtable tiene un comportamiento raro. Se reportará como bug a trolltech.
+					return TRUE;
+				
+				case Qt::Key_Asterisk:
+
+					return TRUE;
+			} 
+		}
+
+	return QTable::eventFilter( obj, ev );
+} //end eventFilter  
+
+
+
+void listlinpresupuestoview::valueBudgetLineChanged(int row, int col) {
+QMessageBox::warning( this, "Se ha cambiado un valor", "Aun no está implementado.", "Sí", "No");
+	switch (col) {
+		case COL_DESCUENTOLPRESUPUESTO: {
+			setText(row, COL_DESCUENTOLPRESUPUESTO, text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
+			float discountLine = text(row, COL_DESCUENTOLPRESUPUESTO).toFloat();
+			setText(row, COL_DESCUENTOLPRESUPUESTO, QString().sprintf("%0.2f", discountLine));
+			break;
+		}
+		case COL_CODARTICULO: {
+			manageArticle(row);
+//			calculateImports();
+			break;
+		}
+		case COL_CANTLPRESUPUESTO: {
+			setText(row, COL_CANTLPRESUPUESTO, text(row, COL_CANTLPRESUPUESTO).replace(",","."));
+			float cantLine = text(row, COL_CANTLPRESUPUESTO).toFloat();
+			setText(row, COL_CANTLPRESUPUESTO, QString().sprintf("%0.3f", cantLine));
+//			calculateImports();
+			break;
+		}
+		case COL_PVPLPRESUPUESTO: {
+			setText(row, COL_PVPLPRESUPUESTO, text(row, COL_PVPLPRESUPUESTO).replace(",","."));
+			float pvpLine = text(row, COL_PVPLPRESUPUESTO).toFloat();
+			setText(row, COL_PVPLPRESUPUESTO, QString().sprintf("%0.2f", pvpLine));
+//			calculateImports();
+			break;
+		}
+	}
+} //end valueBudgetLineChanged  
+
+
+
+void listlinpresupuestoview::manageArticle(int row) {
+
+	QString articleCode = text(row, COL_CODARTICULO);
+	if (articleCode == "+") {
+		QString idArticle = "";
+		idArticle = searchArticle();
+		setText(row, COL_CODARTICULO, idArticle);
+		articleCode = idArticle;
+	}// end if
+	bool ok;
+	if (articleCode.toInt(&ok, 10)>0) {
+		setText(row, COL_NOMARTICULO, "");
+		setText(row, COL_IDARTICULO, "");
+		setText(row, COL_TASATIPO_IVA, "");
+		setText(row, COL_TIPO_IVA, "");
+		
+		cursor2 * cur2= companyact->cargacursor("SELECT * FROM articulo WHERE codarticulo="+text(row, COL_CODARTICULO),"unquery");
+		if (!cur2->eof()) {
+			setText(row, COL_NOMARTICULO, cur2->valor("nomarticulo"));
+			setText(row, COL_IDARTICULO, cur2->valor("idarticulo"));
+			QString taxType = cur2->valor("idtipo_iva");
+			companyact->begin();
+			cursor2 * cur3= companyact->cargacursor("SELECT idtipo_iva, porcentasa_iva FROM tasa_iva WHERE idtipo_iva="+taxType+" ORDER BY fechatasa_iva DESC","unquery");
+			companyact->commit();
+			if (!cur3->eof()) {
+				setText(row, COL_TASATIPO_IVA, cur3->valor("porcentasa_iva"));
+				setText(row, COL_TIPO_IVA, cur3->valor("idtipo_iva"));
+			}// end if
+			delete cur3;
+		}// end if
+		delete cur2;
+	}// end if
+} //end manageArticle
+
+
+QString listlinpresupuestoview::searchArticle() {
+
+   fprintf(stderr,"Busqueda de un artículo\n");
+   articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
+// , WType_Dialog| WShowModal   
+   artlist->modoseleccion();
+   // Esto es convertir un QWidget en un sistema modal de dialogo.
+   this->setEnabled(false);
+   artlist->show();
+   while(!artlist->isHidden()) theApp->processEvents();
+   this->setEnabled(true);
+   QString idArticle = artlist->idArticle();
+   delete artlist;
+	return idArticle;
+}// end searchArticle

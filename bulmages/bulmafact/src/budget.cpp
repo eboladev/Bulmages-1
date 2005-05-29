@@ -63,6 +63,8 @@ CREATE TABLE lpresupuesto (
 );
 */
 
+#include "listlinpresupuestoview.h"
+
 #include "budget.h"
 #include "company.h"
 #include "division.h"
@@ -86,7 +88,7 @@ CREATE TABLE lpresupuesto (
 using namespace std;
 
 #include "funcaux.h"
-#include "listlinpresupuestoview.h"
+
 
 
 #define COL_DESCUENTO_IDDPRESUPUESTO 0
@@ -97,16 +99,15 @@ using namespace std;
 #define coma "'"
 
 Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) , presupuesto(comp) {
-	
-
 	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-	subform = new listlinpresupuestoview(companyact, tab_2);	
-	delete m_list;
-	m_list = subform;	
-	    layout46->addWidget( m_list );
-
+	subform = new listlinpresupuestoview(companyact, tab_2);
+/*
+	m_list= new QTable(this,"hola mundo");
+	m_list->setNumRows(5);
+	m_list->setNumCols(5);
+*/
+//	m_list = subform;	
 	setlislinpresupuesto(subform);
-	
    inicialize();
    comp->meteWindow(caption(),this);
 }// end Budget
@@ -115,17 +116,13 @@ Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(
 Budget::~Budget() {
 	companyact->refreshBudgets();
 	companyact->sacaWindow(this);
-
-	
-	}// end ~Budget
+	delete subform;
+	delete m_list;
+}// end ~Budget
 
 
 void Budget::inicialize() {
 
-
-	installEventFilter(this);
-	m_list->installEventFilter( this );
-	m_listDiscounts->installEventFilter( this );
 	m_nomalmacen->setText("");
 	
 	// Tratamos la forma de pago.
@@ -164,11 +161,9 @@ void Budget::inicialize() {
 	
 	m_listDiscounts->setNumRows(10);
 
-//   listado->setPaletteBackgroundColor(QColor(150,230,230));
 	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
 	m_listDiscounts->setPaletteBackgroundColor("#AFFAFA");   
 	m_listDiscounts->setReadOnly(FALSE);    
-	m_listDiscounts->installEventFilter( this );
 	
 	m_totalBases->setReadOnly(TRUE);
 	m_totalBases->setAlignment(Qt::AlignRight);
@@ -203,7 +198,7 @@ void Budget::inicialize() {
 		}
 	}
 	
-	buscarAlmacen();
+//	buscarAlmacen();
 }// end inicialize
 
 
@@ -234,6 +229,7 @@ void Budget::cargarcomboformapago(QString idformapago) {
 
 // Carga líneas descuentos presupuesto
 void Budget::chargeBudgetDiscounts(QString idbudget) {
+/*
 	companyact->begin();
 	cursor2 * cur= companyact->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto="+idbudget,"unquery");
 	companyact->commit();
@@ -248,6 +244,7 @@ void Budget::chargeBudgetDiscounts(QString idbudget) {
 	if (i>0) m_listDiscounts->setNumRows(i);
 	
 	delete cur;
+*/
 }// end chargeBudgetDiscounts
 
 
@@ -276,16 +273,18 @@ void Budget::searchClient() {
 
 void Budget::budgetDateLostFocus() {
 	m_fpresupuesto->setText(normalizafecha(m_fpresupuesto->text()).toString("dd/MM/yyyy"));
+	setFPresupuesto(m_fpresupuesto->text());
 }
 
 
 void Budget::budgetExpiryLostFocus() {
 	m_vencpresupuesto->setText(normalizafecha(m_vencpresupuesto->text()).toString("dd/MM/yyyy"));
+	setVencPresupuesto(m_vencpresupuesto->text());
 }
 
 
 void Budget::s_almacenLostFocus() {
-	buscarAlmacen();
+	setCodigoAlmacen(m_codigoalmacen->text());
 }//end s_almacenLostFocus
 
 
@@ -295,24 +294,18 @@ void Budget::s_printBudget() {
 
 
 void Budget::buscarAlmacen() {
-	companyact->begin();
+	QMessageBox::warning( this, "BulmaFact - Presupuestos", "Aun no está implementado.", "Sí", "No");
 	cursor2 * cur= companyact->cargacursor("SELECT * FROM almacen where codigoalmacen ="+ m_codigoalmacen->text(),"unquery");
-	companyact->commit();
-	if (!cur->eof()) {
-		m_idalmacen = cur->valor("idalmacen");
-		m_nomalmacen->setText(cur->valor("nomalmacen"));
-	} else {
-		m_nomalmacen->setText(""); 
-		m_idalmacen = "";
-	}
 	delete cur;
 } // end buscarAlmacen
 
 
 void Budget::newBudgetLine() {
+/*
 	m_list->setNumRows( m_list->numRows()+1 );
 	m_list->setCurrentCell(m_list->numRows()-1, COL_CODARTICULO);	
 	m_list->editCell(m_list->numRows()-1, COL_CODARTICULO);
+*/
 }
 
 
@@ -347,44 +340,17 @@ void Budget::s_removeBudget() {
 
 
 void Budget::removeBudgetLine() {
+/*
 	if (m_list->currentRow() >= 0) {
 		int row = m_list->currentRow();
 		m_list->setText(row, COL_REMOVE, "S");
 		m_list->hideRow(row);
 	}
+*/
 }
 
 
-void Budget::valueBudgetLineChanged(int row, int col) {
-	
-	switch (col) {
-		case COL_DESCUENTOLPRESUPUESTO: {
-			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, m_list->text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
-			float discountLine = m_list->text(row, COL_DESCUENTOLPRESUPUESTO).toFloat();
-			m_list->setText(row, COL_DESCUENTOLPRESUPUESTO, QString().sprintf("%0.2f", discountLine));
-			break;
-		}
-		case COL_CODARTICULO: {
-			manageArticle(row);
-			calculateImports();
-			break;
-		}
-		case COL_CANTLPRESUPUESTO: {
-			m_list->setText(row, COL_CANTLPRESUPUESTO, m_list->text(row, COL_CANTLPRESUPUESTO).replace(",","."));
-			float cantLine = m_list->text(row, COL_CANTLPRESUPUESTO).toFloat();
-			m_list->setText(row, COL_CANTLPRESUPUESTO, QString().sprintf("%0.3f", cantLine));
-			calculateImports();
-			break;
-		}
-		case COL_PVPLPRESUPUESTO: {
-			m_list->setText(row, COL_PVPLPRESUPUESTO, m_list->text(row, COL_PVPLPRESUPUESTO).replace(",","."));
-			float pvpLine = m_list->text(row, COL_PVPLPRESUPUESTO).toFloat();
-			m_list->setText(row, COL_PVPLPRESUPUESTO, QString().sprintf("%0.2f", pvpLine));
-			calculateImports();
-			break;
-		}
-	}
-} //end valueBudgetLineChanged
+
 
 
 void Budget::newBudgetDiscountLine() {
@@ -415,67 +381,13 @@ void Budget::valueBudgetDiscountLineChanged(int row, int col) {
 	}
 } //end valueBudgetDiscountLineChanged
 
-void Budget::manageArticle(int row) {
-	QString articleCode = m_list->text(row, COL_CODARTICULO);
-	if (articleCode == "+") {
-		QString idArticle = "";
-		idArticle = searchArticle();
-		m_list->setText(row, COL_CODARTICULO, idArticle);
-		articleCode = idArticle;
-	}
-	
-	bool ok;
-	if (articleCode.toInt(&ok, 10)>0) {
-		m_list->setText(row, COL_NOMARTICULO, "");
-		m_list->setText(row, COL_IDARTICULO, "");
-		m_list->setText(row, COL_TASATIPO_IVA, "");
-		m_list->setText(row, COL_TIPO_IVA, "");
-		
-		companyact->begin();
-		cursor2 * cur2= companyact->cargacursor("SELECT * FROM articulo WHERE codarticulo="+m_list->text(row, COL_CODARTICULO),"unquery");
-		companyact->commit();
-		if (!cur2->eof()) {
-			m_list->setText(row, COL_NOMARTICULO, cur2->valor("nomarticulo"));
-			m_list->setText(row, COL_IDARTICULO, cur2->valor("idarticulo"));
-			QString taxType = cur2->valor("idtipo_iva");
-			companyact->begin();
-			cursor2 * cur3= companyact->cargacursor("SELECT idtipo_iva, porcentasa_iva FROM tasa_iva WHERE idtipo_iva="+taxType+" AND fechatasa_iva<='"+m_fpresupuesto->text()+"' ORDER BY fechatasa_iva DESC","unquery");
-			companyact->commit();
-			if (!cur3->eof()) {
-				m_list->setText(row, COL_TASATIPO_IVA, cur3->valor("porcentasa_iva"));
-				m_list->setText(row, COL_TIPO_IVA, cur3->valor("idtipo_iva"));
-			}
-			delete cur3;
-		}
-		delete cur2;
-	}
-} //end manageArticle
 
-
-QString Budget::searchArticle() {
-   fprintf(stderr,"Busqueda de un artículo\n");
-   articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
-   
-// , WType_Dialog| WShowModal   
-   artlist->modoseleccion();
-   
-   // Esto es convertir un QWidget en un sistema modal de dialogo.
-   this->setEnabled(false);
-   artlist->show();
-   while(!artlist->isHidden()) theApp->processEvents();
-   this->setEnabled(true);
-   
-   QString idArticle = artlist->idArticle();
-	
-   delete artlist;
-	
-	return idArticle;
-}// end searchArticle
 
 
 
 
 void Budget::s_contextMenu(int, int, int button, const QPoint &poin) {
+/*
 	qDebug("button = %d", button);
 	if (button == 2) {
 		QPopupMenu *popup;
@@ -490,6 +402,7 @@ void Budget::s_contextMenu(int, int, int button, const QPoint &poin) {
 		}// end switch
 		delete popup;
 	}
+*/
 }// end contextmenu
 
 
@@ -594,16 +507,20 @@ int Budget::saveBudgetDiscountLines() {
 
 
 int Budget::deleteBudgetLine(int line) {
+/*
 	QString SQLQuery = "DELETE FROM lpresupuesto WHERE idlpresupuesto ="+m_list->text(line,COL_IDLPRESUPUESTO)+" AND idpresupuesto="+m_idpresupuesto;
 	return companyact->ejecuta(SQLQuery);
+*/
 } //end deleteBudgetLine
 
 
 int Budget::updateBudgetDiscountLine(int i) {
+/*
 	QString SQLQuery = "UPDATE dpresupuesto SET conceptdpresupuesto='"+m_listDiscounts->text(i,COL_DESCUENTO_CONCEPTDPRESUPUESTO)+"'";
 	SQLQuery += " , proporciondpresupuesto="+ m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDPRESUPUESTO);
 	SQLQuery += " WHERE idpresupuesto ="+m_idpresupuesto+" AND iddpresupuesto="+m_listDiscounts->text(i,COL_DESCUENTO_IDDPRESUPUESTO);
 	return companyact->ejecuta(SQLQuery);
+*/
 } //end updateBudgetDiscountLine
 
 
@@ -630,6 +547,7 @@ void Budget::cancel() {
 
 
 void Budget::calculateImports() {
+/*
 	int i = 0;
 	float netImport = 0;
 	float taxImport = 0;
@@ -642,11 +560,11 @@ void Budget::calculateImports() {
 		}
 		i ++;
    }
-	
 	m_totalBases->setText(QString().sprintf("%0.2f", netImport));
 	m_totalTaxes->setText(QString().sprintf("%0.2f", taxImport));
 	m_totalDiscounts->setText(QString().sprintf("%0.2f", discountImport));
 	m_totalBudget->setText(QString().sprintf("%0.2f", netImport+taxImport));
+*/
 } // end calculateImports
 
 
@@ -658,53 +576,6 @@ QString Budget::calculateValues() {
 }
 
 
-bool Budget::eventFilter( QObject *obj, QEvent *ev ) {
-	if ( obj->isA("QTable")) {
-		QTable *t = (QTable *)obj;
-		if ( ev->type() == QEvent::KeyRelease ) {
-			QKeyEvent *k = (QKeyEvent *)ev;
-			switch (k->key()) {
-				//esta linea ha sido modificada por Javier
-				case Qt::Key_Return:
-				case Qt::Key_Enter:  {
-					// Esto se hace porque en la última linea del qtable tiene un comportamiento raro. Se reportará como bug a trolltech.
-					if (t->currentRow()==t->numRows()-1) {
-						antCell(obj);
-					}
-					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
-						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
-					}
-					if (QString(obj->name()).stripWhiteSpace() == "m_listDiscounts") {
-						valueBudgetDiscountLineChanged(t->currentRow(), t->currentColumn());
-					}
-					nextCell(obj);
-					return TRUE;
-				}
-				
-				case Qt::Key_Asterisk: {
-					duplicateCell(obj);
-					if (QString(obj->name()).stripWhiteSpace() == "m_list") {
-						valueBudgetLineChanged(t->currentRow(), t->currentColumn());
-					}
-					if (QString(obj->name()).stripWhiteSpace() == "m_listDiscount") {
-						valueBudgetDiscountLineChanged(t->currentRow(), t->currentColumn());
-					}
-					nextCell(obj);
-					return TRUE;
-				}
-			} 
-		}
-	} 
-	
-	if ( ev->type() == QEvent::Close ) {
-		if ( calculateValues() != m_initialValues ) {
-			if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Se perderán los cambios que haya realizado", "Aceptar", "Cancelar") != 0) {
-				return TRUE;
-			}
-		}
-	}
-	return QWidget::eventFilter( obj, ev );
-} //end eventFilter
 
 
 void Budget::nextCell(QObject *obj) {
@@ -781,6 +652,7 @@ void Budget::duplicateCell(QObject *obj) {
 
 
 QString Budget::retrieveValues(QString qsWidget) {
+/*
 	QObjectList *l = queryList( qsWidget );
 	QObjectListIt it( *l );
 	QObject *obj;
@@ -809,6 +681,7 @@ QString Budget::retrieveValues(QString qsWidget) {
 	}
 	delete l; // delete the list, not the objects
 	return values;
+*/
 }
 
 

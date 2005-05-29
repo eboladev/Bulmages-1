@@ -1,7 +1,7 @@
 //
 // C++ Interface: listlinpresupuestoview
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
@@ -36,11 +36,17 @@
 #define COL_TIPO_IVA 11
 
 
-class listlinpresupuestoview : public QTable, public listlinpresupuesto {
+class listlinpresupuestoview : public QTable , public listlinpresupuesto {
+    Q_OBJECT
 public:
-listlinpresupuestoview(company *comp,  QWidget *parent=0, const char *name=0);
+    listlinpresupuestoview(company *comp,  QWidget *parent=0, const char *name=0);
     ~listlinpresupuestoview();
-    void pintalistlinpresupuesto();
+    virtual void pintalistlinpresupuesto();
+    virtual bool eventFilter( QObject *obj, QEvent *ev );
+public slots:
+    virtual void valueBudgetLineChanged(int row, int col);
+    virtual QString searchArticle();
+    virtual void manageArticle(int row);
 };
 
 #endif

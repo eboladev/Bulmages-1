@@ -12,6 +12,8 @@
 #ifndef LISTLINPRESUPUESTO_H
 #define LISTLINPRESUPUESTO_H
 
+#include <qobject.h>
+
 /**
 @author Tomeu Borras
 */

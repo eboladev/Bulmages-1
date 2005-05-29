@@ -55,6 +55,7 @@ public:
     void setlislinpresupuesto ( listlinpresupuesto *a) {
         listalineas =a;
     };
+    
     presupuesto(company *);
     virtual ~presupuesto();
     void chargeBudget(QString );
@@ -97,7 +98,20 @@ public:
        delete cur;
        pintaNomClient(mdb_nomcliente);
     };
-    void setCodigoAlmacen(QString val) { mdb_codigoalmacen=val;};
+    void setCodigoAlmacen(QString val) {
+     mdb_codigoalmacen=val;
+       QString SQLQuery = "SELECT * FROM almacen WHERE codigoalmacen='"+mdb_codigoalmacen+"'";
+       cursor2 *cur = companyact->cargacursor(SQLQuery);
+       if(!cur->eof()) {
+       		mdb_idalmacen = cur->valor("idalmacen");
+		mdb_nomalmacen = cur->valor("nomalmacen");
+       } else {
+       		mdb_idalmacen="";
+		mdb_nomalmacen="";
+       }// end if
+       delete cur;
+       pintaNomAlmacen(mdb_nomalmacen);     
+     };
     void setNomAlmacen(QString val) { mdb_nomalmacen=val;};
     void setIdPresupuesto(QString val) {mdb_idpresupuesto=val;};
     void setIdUsuari(QString val) {mdb_idusuari=val;};

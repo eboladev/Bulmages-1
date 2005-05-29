@@ -74,12 +74,14 @@ void presupuesto::chargeBudget(QString idbudget) {
         mdb_codigoalmacen= cur->valor("codigoalmacen");
         mdb_nomalmacen= cur->valor("nomalmacen");
 	mdb_idusuari = cur->valor("idusuari");
-        chargeBudgetDiscounts(idbudget);
-        calculateImports();
+	
+//        chargeBudgetDiscounts(idbudget);
+//        calculateImports();
     }// end if
     delete cur;
 
-    m_initialValues = calculateValues();
+//    m_initialValues = calculateValues();
+
     listalineas->chargeBudgetLines(idbudget);
     pintaPresupuesto();
 }// end chargeBudget
