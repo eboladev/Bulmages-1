@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,7 +32,7 @@
 #include <qtextedit.h>
 #include <qlabel.h>
 
-/** @author Tomeu Borrás Riera */
+/** @author Tomeu Borrï¿½ Riera */
 class company;
 
 class Budget : public BudgetBase , public presupuesto  {
@@ -106,6 +106,7 @@ public slots:
     virtual void s_comentariotextChanged() { setComentPresupuesto(m_comentpresupuesto->text());};
     virtual void s_cifclienttextChanged(const QString &str) {setCifClient(str);};
     virtual void s_codigoalmacentextChanged(const QString &str) {setCodigoAlmacen(str);};
+	/// Este slot se activa cuando cambia la fecha del presupuesto.
     virtual void s_fpresupuestotextChanged(const QString &str) {/*setFPresupuesto(str);*/};
 };
 

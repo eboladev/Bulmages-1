@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
  
- // Implementación del listado de presupuestos.
+ // Implementaciï¿½ del listado de presupuestos.
 /*
--- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
--- hacemos a petición de un cliente determinado
+-- Entendemos que un presupuesto es una relaciï¿½ de materiales y trabajos cuantificada que
+-- hacemos a peticiï¿½ de un cliente determinado
 -- Numero
--- Data: Data d'emisió del presupost.
+-- Data: Data d'emisiï¿½del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
--- TelfContacte: Telèfon.
--- Venciment: Data màxima de validesa del presupost.
+-- TelfContacte: Telï¿½on.
+-- Venciment: Data mï¿½ima de validesa del presupost.
 -- Comentaris
 --  Pressupost a clients.
 CREATE TABLE presupuesto (
@@ -49,6 +49,7 @@ CREATE TABLE presupuesto (
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 #include "configuracion.h"
+
 
 #define COL_IDPRESUPUESTO 0
 #define COL_CODIGOALMACEN 1
@@ -87,12 +88,12 @@ void BudgetsList::inicializa() {
    m_list->setNumCols(12);
    m_list->horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "COL_IDPRESUPUESTO" ) );
 	m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-	m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
-   m_list->horizontalHeader()->setLabel( COL_NUMPRESUPUESTO, tr( "Nº Presupuesto" ) );
+	m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacï¿½" ) );
+   m_list->horizontalHeader()->setLabel( COL_NUMPRESUPUESTO, tr( "N Presupuesto" ) );
    m_list->horizontalHeader()->setLabel( COL_FPRESUPUESTO, tr( "Fecha" ) );
 	m_list->horizontalHeader()->setLabel( COL_VENCPRESUPUESTO, tr( "Fecha" ) );
    m_list->horizontalHeader()->setLabel( COL_CONTACTPRESUPUESTO, tr( "Persona Contacto" ) );
-   m_list->horizontalHeader()->setLabel( COL_TELPRESUPUESTO, tr( "Teléfono" ) );
+   m_list->horizontalHeader()->setLabel( COL_TELPRESUPUESTO, tr( "Telï¿½ono" ) );
    m_list->horizontalHeader()->setLabel( COL_COMENTPRESUPUESTO, tr( "Comentarios" ) );
    m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("COL_IDUSUARI") );
    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
@@ -190,7 +191,7 @@ void BudgetsList::newBudget() {
 void BudgetsList::s_removeBudget() {
 	fprintf(stderr,"Iniciamos el boton_borrar\n");
 	if (m_list->currentRow() >= 0) {
-		if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar el presupuesto seleccionado", "Sí", "No") == 0) {
+		if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar el presupuesto seleccionado", "Si", "No") == 0) {
 			companyact->begin();
 			QString SQLQuery = "DELETE FROM lpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
 			if (companyact->ejecuta(SQLQuery)==0){

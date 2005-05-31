@@ -15,8 +15,30 @@
 
 presupuesto::presupuesto(company *comp) {
     companyact=comp;
+	vaciaPresupuesto();
+}
+
+presupuesto::~presupuesto() {}
+
+
+void presupuesto::borraPresupuesto() {
+	if (mdb_idpresupuesto != "") {
+		listalineas->borrar();
+		companyact->begin();
+		companyact->ejecuta("DELETE FROM prfp WHERE idpresupuesto="+mdb_idpresupuesto);
+		companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
+		companyact->commit();
+		vaciaPresupuesto();
+		pintaPresupuesto();
+	}// end if
+}// end borraPresupuesto
+
+
+void presupuesto::vaciaPresupuesto() {
     m_idpresupuesto = "0";
+    
     m_idclient = "";
+	mdb_idpresupuesto = "";
     mdb_idcliente= "";
     mdb_idalmacen= "";
     mdb_numpresupuesto= "";
@@ -29,12 +51,9 @@ presupuesto::presupuesto(company *comp) {
     mdb_cifcliente= "";
     mdb_codigoalmacen= "";
     mdb_nomalmacen= "";
-}
-
-presupuesto::~presupuesto() {}
+}// end vaciaPresupuesto
 
 void presupuesto::pintaPresupuesto() {
-	fprintf(stderr,"INICIO de pintaPresupuesto\n");
     pintaIdClient(mdb_idcliente);
     pintaIdAlmacen(mdb_idalmacen);
     pintaNumPresupuesto(mdb_numpresupuesto);
@@ -49,11 +68,10 @@ void presupuesto::pintaPresupuesto() {
     pintaNomAlmacen(mdb_nomalmacen);
     // Pinta el subformulario de detalle del presupuesto.
     listalineas->pintalistlinpresupuesto();
-    fprintf(stderr,"FIN de pintaPresupuesto\n");
 }// end pintaPresupuesto
 
 
-// Esta función carga un presupuesto.
+// Esta funciï¿½ carga un presupuesto.
 void presupuesto::chargeBudget(QString idbudget) {
     m_idpresupuesto = idbudget;
     mdb_idpresupuesto = idbudget;
@@ -88,7 +106,7 @@ void presupuesto::chargeBudget(QString idbudget) {
 
 void presupuesto::guardapresupuesto() {
 	if (mdb_idpresupuesto == "") {
-		/// Se trata de una inserción
+		/// Se trata de una inserciï¿½
 		QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen) VALUES ("+mdb_numpresupuesto+","+mdb_fpresupuesto+","+mdb_contactpresupuesto+","+mdb_telpresupuesto+","+mdb_vencpresupuesto+","+mdb_comentpresupuesto+","+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+")";
 		companyact->begin();
 		companyact->ejecuta(SQLQuery);
@@ -98,7 +116,7 @@ void presupuesto::guardapresupuesto() {
 		delete cur;
 		companyact->commit();
 	} else {
-		/// Se trata de una modificación
+		/// Se trata de una modificaciï¿½
 		QString SQLQuery = "UPDATE presupuesto SET ";
 		SQLQuery += " numpresupuesto="+mdb_numpresupuesto;
 		SQLQuery += " ,fpresupuesto='"+mdb_fpresupuesto+"'";
@@ -118,4 +136,33 @@ void presupuesto::guardapresupuesto() {
 }// end guardapresupuesto
 
 
+void presupuesto::setCifClient(QString val) {
+       mdb_cifcliente=val;
+       QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente='"+mdb_cifcliente+"'";
+       cursor2 *cur = companyact->cargacursor(SQLQuery);
+       if(!cur->eof()) {
+       		mdb_idcliente = cur->valor("idcliente");
+		mdb_nomcliente = cur->valor("nomcliente");
+       } else {
+       		mdb_idcliente="";
+		mdb_nomcliente="";
+       }// end if
+       delete cur;
+       pintaNomClient(mdb_nomcliente);
+    }
+
+    void presupuesto::setCodigoAlmacen(QString val) {
+     mdb_codigoalmacen=val;
+       QString SQLQuery = "SELECT * FROM almacen WHERE codigoalmacen='"+mdb_codigoalmacen+"'";
+       cursor2 *cur = companyact->cargacursor(SQLQuery);
+       if(!cur->eof()) {
+       		mdb_idalmacen = cur->valor("idalmacen");
+		mdb_nomalmacen = cur->valor("nomalmacen");
+       } else {
+       		mdb_idalmacen="";
+		mdb_nomalmacen="";
+       }// end if
+       delete cur;
+       pintaNomAlmacen(mdb_nomalmacen);     
+     }
 

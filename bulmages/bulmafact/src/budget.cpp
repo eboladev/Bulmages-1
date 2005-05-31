@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,13 +20,13 @@
 
  // PRESUPUESTOS
 /*
--- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
--- hacemos a petición de un cliente determinado
+-- Entendemos que un presupuesto es una relaciï¿½ de materiales y trabajos cuantificada que
+-- hacemos a peticiï¿½ de un cliente determinado
 -- Numero
--- Data: Data d'emisió del presupost.
+-- Data: Data d'emisiï¿½del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
--- TelfContacte: Telèfon.
--- Venciment: Data màxima de validesa del presupost.
+-- TelfContacte: Telï¿½on.
+-- Venciment: Data mï¿½ima de validesa del presupost.
 -- Comentaris
 --  Pressupost a clients.
 CREATE TABLE presupuesto (
@@ -46,10 +46,10 @@ CREATE TABLE presupuesto (
 /*
 -- Linea de presupuesto
 -- Numero
--- Descripcio: Descripció de l'article en el moment de ser presupostat.
+-- Descripcio: Descripciï¿½de l'article en el moment de ser presupostat.
 -- Quantitat
 -- PVP: Preu de l'article en el moment de ser pressupostat
--- Descompte: Percentatge de descompte en línia.
+-- Descompte: Percentatge de descompte en lï¿½ia.
 -- Linia de pressupost a clients.
 CREATE TABLE lpresupuesto (
    idlpresupuesto integer PRIMARY KEY,
@@ -89,7 +89,18 @@ using namespace std;
 
 #include "funcaux.h"
 
-
+#define COL_IDLPRESUPUESTO 0
+#define COL_IDARTICULO 1
+#define COL_CODARTICULO 2
+#define COL_NOMARTICULO 3
+#define COL_DESCLPRESUPUESTO 4
+#define COL_CANTLPRESUPUESTO 5
+#define COL_PVPLPRESUPUESTO 6
+#define COL_DESCUENTOLPRESUPUESTO 7
+#define COL_IDPRESUPUESTO 8
+#define COL_REMOVE 9
+#define COL_TASATIPO_IVA 10
+#define COL_TIPO_IVA 11
 
 #define COL_DESCUENTO_IDDPRESUPUESTO 0
 #define COL_DESCUENTO_CONCEPTDPRESUPUESTO 1
@@ -151,7 +162,7 @@ void Budget::inicialize() {
 	m_listDiscounts->setNumCols(4);
 	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_IDDPRESUPUESTO, tr( "id" ) );
 	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_CONCEPTDPRESUPUESTO, tr( "Concepto" ) );
-	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_PROPORCIONDPRESUPUESTO, tr( "Proporción" ) );
+	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_PROPORCIONDPRESUPUESTO, tr( "Proporciï¿½" ) );
    
 	m_listDiscounts->setColumnWidth(COL_DESCUENTO_IDDPRESUPUESTO,100);
 	m_listDiscounts->setColumnWidth(COL_DESCUENTO_CONCEPTDPRESUPUESTO,400);
@@ -227,8 +238,8 @@ void Budget::cargarcomboformapago(QString idformapago) {
 
 
 
-// Carga líneas descuentos presupuesto
-void Budget::chargeBudgetDiscounts(QString idbudget) {
+// Carga lï¿½eas descuentos presupuesto
+void Budget::chargeBudgetDiscounts(QString ) {
 /*
 	companyact->begin();
 	cursor2 * cur= companyact->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto="+idbudget,"unquery");
@@ -248,7 +259,7 @@ void Budget::chargeBudgetDiscounts(QString idbudget) {
 }// end chargeBudgetDiscounts
 
 
-// Búsqueda de Clientes.
+// Bsqueda de Clientes.
 void Budget::searchClient() {
    fprintf(stderr,"Busqueda de un client\n");
    ClientsList *clients = new ClientsList(companyact, NULL, theApp->translate("Seleccione cliente","company"));
@@ -294,7 +305,7 @@ void Budget::s_printBudget() {
 
 
 void Budget::buscarAlmacen() {
-	QMessageBox::warning( this, "BulmaFact - Presupuestos", "Aun no está implementado.", "Sí", "No");
+	QMessageBox::warning( this, "BulmaFact - Presupuestos", "Aun no estï¿½implementado.", "Si", "No");
 	cursor2 * cur= companyact->cargacursor("SELECT * FROM almacen where codigoalmacen ="+ m_codigoalmacen->text(),"unquery");
 	delete cur;
 } // end buscarAlmacen
@@ -311,31 +322,9 @@ void Budget::newBudgetLine() {
 
 void Budget::s_removeBudget() {
 	fprintf(stderr,"Iniciamos el boton_borrar\n");
-	if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "Sí", "No") == 0) {
-		companyact->begin();
-		QString SQLQuery = "DELETE FROM lpresupuesto WHERE idpresupuesto ="+m_idpresupuesto;
-		if (companyact->ejecuta(SQLQuery)==0){
-			QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_idpresupuesto;
-				if (companyact->ejecuta(SQLQuery)==0){
-					QString SQLQuery = "DELETE FROM prfp WHERE idpresupuesto ="+m_idpresupuesto;
-					if (companyact->ejecuta(SQLQuery)==0){
-						QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_idpresupuesto;
-						if (companyact->ejecuta(SQLQuery)==0){
-							companyact->commit();
-							close();
-						} else {
-							companyact->rollback();
-						}
-					} else {
-						companyact->rollback();
-					}
-			} else {
-				companyact->rollback();
-			}
-		} else {
-			companyact->rollback();
-		}
-	}	
+	if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "SÃ­", "No") == 0) {
+		borraPresupuesto();
+	}// end if	
 }// end boton_borrar
 
 
@@ -514,7 +503,7 @@ int Budget::deleteBudgetLine(int line) {
 } //end deleteBudgetLine
 
 
-int Budget::updateBudgetDiscountLine(int i) {
+int Budget::updateBudgetDiscountLine(int) {
 /*
 	QString SQLQuery = "UPDATE dpresupuesto SET conceptdpresupuesto='"+m_listDiscounts->text(i,COL_DESCUENTO_CONCEPTDPRESUPUESTO)+"'";
 	SQLQuery += " , proporciondpresupuesto="+ m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDPRESUPUESTO);
@@ -738,7 +727,7 @@ void Budget::presentaReports() {
 	
 	QString a;
 	
-	char *argstxt[]={"presupuesto.csv","presupuesto.csv",NULL};      //presentació txt normal
+	char *argstxt[]={"presupuesto.csv","presupuesto.csv",NULL};      //presentaciï¿½txt normal
 	ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
 	if (!fitxersortidatxt) txt=0;    // verifiquem que s'hagin creat correctament els fitxers
 	
@@ -774,7 +763,7 @@ void Budget::presentaReports() {
 				tasas[m_list->text(i,COL_TIPO_IVA).toInt()]=m_list->text(i,COL_TASATIPO_IVA).toFloat();
 		
 				if (txt) {
-					//presentació txt normal
+					//presentaciï¿½txt normal
 					a = "'d';'" + nombre + "';'" + direccion + "';" +  cp + ";'" + poblacion + "';'" + telefono + "';'" + fax + "';'" + cif + "';'" + fecha + "';" + numero + ";" + "'" +codigoarticulo + "'" + ";'" + descripcionarticulo + "'" + ";" + preciolinea + ";" + cantidadlinea + ";" + descuentolinea + ";" + importelinea + "\n";    
 					fitxersortidatxt << a;
 				}
@@ -784,7 +773,7 @@ void Budget::presentaReports() {
    } //end while
 	
 	
-	// Línea de totales del presupuesto
+	// Lï¿½ea de totales del presupuesto
 	
 	/*
 	fitxersortidatxt << "\t<spacer length=\"2cm\" width=\"50mm\"/>\n" ;

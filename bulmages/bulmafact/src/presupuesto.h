@@ -61,6 +61,7 @@ public:
     void chargeBudget(QString );
     void pintaPresupuesto();
     void guardapresupuesto();
+	void borraPresupuesto();
     
     virtual void pintaIdClient(QString id) {};
     virtual void pintaIdAlmacen(QString id) {};
@@ -84,41 +85,17 @@ public:
     void setTelPresupuesto(QString val) { mdb_telpresupuesto=val;};
     void setComentPresupuesto(QString val) { mdb_comentpresupuesto=val;};
     void setNomClient(QString val) { mdb_nomcliente=val;};
-    void setCifClient(QString val) {
-       mdb_cifcliente=val;
-       QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente='"+mdb_cifcliente+"'";
-       cursor2 *cur = companyact->cargacursor(SQLQuery);
-       if(!cur->eof()) {
-       		mdb_idcliente = cur->valor("idcliente");
-		mdb_nomcliente = cur->valor("nomcliente");
-       } else {
-       		mdb_idcliente="";
-		mdb_nomcliente="";
-       }// end if
-       delete cur;
-       pintaNomClient(mdb_nomcliente);
-    };
-    void setCodigoAlmacen(QString val) {
-     mdb_codigoalmacen=val;
-       QString SQLQuery = "SELECT * FROM almacen WHERE codigoalmacen='"+mdb_codigoalmacen+"'";
-       cursor2 *cur = companyact->cargacursor(SQLQuery);
-       if(!cur->eof()) {
-       		mdb_idalmacen = cur->valor("idalmacen");
-		mdb_nomalmacen = cur->valor("nomalmacen");
-       } else {
-       		mdb_idalmacen="";
-		mdb_nomalmacen="";
-       }// end if
-       delete cur;
-       pintaNomAlmacen(mdb_nomalmacen);     
-     };
+    void setCifClient(QString);
+    void setCodigoAlmacen(QString);
     void setNomAlmacen(QString val) { mdb_nomalmacen=val;};
     void setIdPresupuesto(QString val) {mdb_idpresupuesto=val;};
     void setIdUsuari(QString val) {mdb_idusuari=val;};
 
+	void vaciaPresupuesto();
+
     virtual void chargeBudgetDiscounts(QString) {};
     virtual void calculateImports() {};
     virtual void inicialize() {};
-    virtual QString calculateValues() {};
+    virtual QString calculateValues() {return "";};
 };
 #endif

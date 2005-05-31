@@ -10,6 +10,20 @@
 //
 //
 
+#define COL_IDLPRESUPUESTO 0
+#define COL_IDARTICULO 1
+#define COL_CODARTICULO 2
+#define COL_NOMARTICULO 3
+#define COL_DESCLPRESUPUESTO 4
+#define COL_CANTLPRESUPUESTO 5
+#define COL_PVPLPRESUPUESTO 6
+#define COL_DESCUENTOLPRESUPUESTO 7
+#define COL_IDPRESUPUESTO 8
+#define COL_REMOVE 9
+#define COL_TASATIPO_IVA 10
+#define COL_TIPO_IVA 11
+
+
 #include "articleslist.h"
 #include "listlinpresupuestoview.h"
 #include <qtable.h>
@@ -20,15 +34,15 @@ listlinpresupuestoview::listlinpresupuestoview(company *comp,  QWidget * parent,
 	/// Inicializamos la tabla de lineas de presupuesto
 	setNumCols(12);
 	setNumRows(10);
-	horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "Nº Línea" ) );
-	horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripción" ) );
+	horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "N Lï¿½ea" ) );
+	horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripciï¿½" ) );
 	horizontalHeader()->setLabel( COL_CANTLPRESUPUESTO, tr( "Cantidad" ) );
 	horizontalHeader()->setLabel( COL_PVPLPRESUPUESTO, tr( "Precio" ) );
 	horizontalHeader()->setLabel( COL_DESCUENTOLPRESUPUESTO, tr( "Descuento" ) );
-	horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "Nº Pedido" ) );
-	horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
-	horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
-	horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
+	horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "N Pedido" ) );
+	horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artï¿½ulo" ) );
+	horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Cï¿½igo Artï¿½ulo" ) );
+	horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripciï¿½ Artï¿½ulo" ) );
 	horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
 	horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
    
@@ -67,7 +81,7 @@ listlinpresupuestoview::~listlinpresupuestoview() {
     
 void listlinpresupuestoview::pintalistlinpresupuesto() {
     	fprintf(stderr,"INICIO de pintalistlinpresupuesto\n");
-	/// \todo Habría que vaciar la tabla para que el pintado fuera exacto.
+	/// \todo Habrï¿½ que vaciar la tabla para que el pintado fuera exacto.
         linpresupuesto *linea;
         uint i = 0;
         for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
@@ -96,8 +110,8 @@ bool listlinpresupuestoview::eventFilter( QObject *obj, QEvent *ev ) {
 				//esta linea ha sido modificada por Javier
 				case Qt::Key_Return:
 				case Qt::Key_Enter:
-					QMessageBox::warning( this, "Se ha pulsado el return", "Aun no está implementado.", "Sí", "No");
-					// Esto se hace porque en la última linea del qtable tiene un comportamiento raro. Se reportará como bug a trolltech.
+					QMessageBox::warning( this, "Se ha pulsado el return", "Aun no estï¿½implementado.", "Si", "No");
+					// Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportarï¿½como bug a trolltech.
 					return TRUE;
 				
 				case Qt::Key_Asterisk:
@@ -112,7 +126,7 @@ bool listlinpresupuestoview::eventFilter( QObject *obj, QEvent *ev ) {
 
 
 void listlinpresupuestoview::valueBudgetLineChanged(int row, int col) {
-QMessageBox::warning( this, "Se ha cambiado un valor", "Aun no está implementado.", "Sí", "No");
+QMessageBox::warning( this, "Se ha cambiado un valor", "Aun no estï¿½implementado.", "Si", "No");
 	switch (col) {
 		case COL_DESCUENTOLPRESUPUESTO: {
 			setText(row, COL_DESCUENTOLPRESUPUESTO, text(row, COL_DESCUENTOLPRESUPUESTO).replace(",","."));
@@ -181,8 +195,8 @@ void listlinpresupuestoview::manageArticle(int row) {
 
 QString listlinpresupuestoview::searchArticle() {
 
-   fprintf(stderr,"Busqueda de un artículo\n");
-   articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
+   fprintf(stderr,"Busqueda de un artï¿½ulo\n");
+   articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artï¿½ulo","company"));
 // , WType_Dialog| WShowModal   
    artlist->modoseleccion();
    // Esto es convertir un QWidget en un sistema modal de dialogo.

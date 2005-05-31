@@ -22,18 +22,7 @@
 #include "company.h"
 #include "linpresupuesto.h"
 
-#define COL_IDLPRESUPUESTO 0
-#define COL_IDARTICULO 1
-#define COL_CODARTICULO 2
-#define COL_NOMARTICULO 3
-#define COL_DESCLPRESUPUESTO 4
-#define COL_CANTLPRESUPUESTO 5
-#define COL_PVPLPRESUPUESTO 6
-#define COL_DESCUENTOLPRESUPUESTO 7
-#define COL_IDPRESUPUESTO 8
-#define COL_REMOVE 9
-#define COL_TASATIPO_IVA 10
-#define COL_TIPO_IVA 11
+
 
 
 class listlinpresupuestoview : public QTable , public listlinpresupuesto {

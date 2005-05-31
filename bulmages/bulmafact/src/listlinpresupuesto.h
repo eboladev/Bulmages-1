@@ -22,6 +22,8 @@
 class linpresupuesto;
 
 class listlinpresupuesto {
+private:
+	QString mdb_idpresupuesto;
 public:
     QPtrList<linpresupuesto> m_lista;
     company *companyact;
@@ -29,8 +31,9 @@ public:
     virtual ~listlinpresupuesto();
     void guardalistlinpresupuesto();
     void vacialistlinpresupuesto();
-    virtual void pintalistlinpresupuesto() {fprintf(stderr,"La función pintalistlinpresupuesto aun no ha sido implementada\n");};
+    virtual void pintalistlinpresupuesto() {fprintf(stderr,"La funciï¿½ pintalistlinpresupuesto aun no ha sido implementada\n");};
     void chargeBudgetLines(QString);
+    void borrar();
 };
 
 #endif
