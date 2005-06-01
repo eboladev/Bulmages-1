@@ -1,7 +1,7 @@
 //
 // C++ Interface: listlinpresupuesto
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
@@ -23,17 +23,21 @@ class linpresupuesto;
 
 class listlinpresupuesto {
 private:
-	QString mdb_idpresupuesto;
+    QString mdb_idpresupuesto;
 public:
     QPtrList<linpresupuesto> m_lista;
     company *companyact;
     listlinpresupuesto(company *comp);
     virtual ~listlinpresupuesto();
     void guardalistlinpresupuesto();
-    void vacialistlinpresupuesto();
-    virtual void pintalistlinpresupuesto() {fprintf(stderr,"La funci� pintalistlinpresupuesto aun no ha sido implementada\n");};
+    void vaciar();
+    virtual void pintalistlinpresupuesto() {
+        fprintf(stderr,"La funci� pintalistlinpresupuesto aun no ha sido implementada\n");
+    };
     void chargeBudgetLines(QString);
     void borrar();
+    void nuevalinea(QString, QString, QString, QString, QString, QString, QString);
+    linpresupuesto *linpos(int);
 };
 
 #endif

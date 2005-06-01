@@ -15,30 +15,29 @@
 
 presupuesto::presupuesto(company *comp) {
     companyact=comp;
-	vaciaPresupuesto();
+    vaciaPresupuesto();
 }
 
 presupuesto::~presupuesto() {}
 
 
 void presupuesto::borraPresupuesto() {
-	if (mdb_idpresupuesto != "") {
-		listalineas->borrar();
-		companyact->begin();
-		companyact->ejecuta("DELETE FROM prfp WHERE idpresupuesto="+mdb_idpresupuesto);
-		companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
-		companyact->commit();
-		vaciaPresupuesto();
-		pintaPresupuesto();
-	}// end if
+    if (mdb_idpresupuesto != "") {
+        listalineas->borrar();
+        companyact->begin();
+        companyact->ejecuta("DELETE FROM prfp WHERE idpresupuesto="+mdb_idpresupuesto);
+        companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
+        companyact->commit();
+        vaciaPresupuesto();
+        pintaPresupuesto();
+    }// end if
 }// end borraPresupuesto
 
 
 void presupuesto::vaciaPresupuesto() {
     m_idpresupuesto = "0";
-    
     m_idclient = "";
-	mdb_idpresupuesto = "";
+    mdb_idpresupuesto = "";
     mdb_idcliente= "";
     mdb_idalmacen= "";
     mdb_numpresupuesto= "";
@@ -51,6 +50,7 @@ void presupuesto::vaciaPresupuesto() {
     mdb_cifcliente= "";
     mdb_codigoalmacen= "";
     mdb_nomalmacen= "";
+//    listalineas->vaciar();
 }// end vaciaPresupuesto
 
 void presupuesto::pintaPresupuesto() {
@@ -91,78 +91,89 @@ void presupuesto::chargeBudget(QString idbudget) {
         mdb_cifcliente= cur->valor("cifcliente");
         mdb_codigoalmacen= cur->valor("codigoalmacen");
         mdb_nomalmacen= cur->valor("nomalmacen");
-	mdb_idusuari = cur->valor("idusuari");
-	
-//        chargeBudgetDiscounts(idbudget);
-//        calculateImports();
+        mdb_idusuari = cur->valor("idusuari");
+
+        //        chargeBudgetDiscounts(idbudget);
+        //        calculateImports();
     }// end if
     delete cur;
 
-//    m_initialValues = calculateValues();
+    //    m_initialValues = calculateValues();
 
     listalineas->chargeBudgetLines(idbudget);
     pintaPresupuesto();
 }// end chargeBudget
 
+
 void presupuesto::guardapresupuesto() {
-	if (mdb_idpresupuesto == "") {
-		/// Se trata de una inserci�
-		QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen) VALUES ("+mdb_numpresupuesto+","+mdb_fpresupuesto+","+mdb_contactpresupuesto+","+mdb_telpresupuesto+","+mdb_vencpresupuesto+","+mdb_comentpresupuesto+","+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+")";
-		companyact->begin();
-		companyact->ejecuta(SQLQuery);
-		cursor2 *cur = companyact->cargacursor("SELECT MAX(idpresupuesto) AS m FROM presupuesto");
-		if (!cur->eof())
-			mdb_idpresupuesto = cur->valor("idpresupuesto");
-		delete cur;
-		companyact->commit();
-	} else {
-		/// Se trata de una modificaci�
-		QString SQLQuery = "UPDATE presupuesto SET ";
-		SQLQuery += " numpresupuesto="+mdb_numpresupuesto;
-		SQLQuery += " ,fpresupuesto='"+mdb_fpresupuesto+"'";
-		SQLQuery += " ,contactpresupuesto='"+mdb_contactpresupuesto+"'";
-		SQLQuery += " ,telpresupuesto='"+mdb_telpresupuesto+"'";
-		SQLQuery += " ,vencpresupuesto='"+mdb_vencpresupuesto+"'";
-		SQLQuery += " ,comentpresupuesto='"+mdb_comentpresupuesto+"'";
-		SQLQuery += " ,idusuari="+mdb_idusuari;
-		SQLQuery += " ,idcliente="+mdb_idcliente;
-		SQLQuery += " ,idalmacen="+mdb_idalmacen;
-		SQLQuery += " WHERE idpresupuesto="+mdb_idpresupuesto;
-		companyact->begin();
-		companyact->ejecuta(SQLQuery);
-		companyact->commit();
-	}// end if
-	listalineas->guardalistlinpresupuesto();
+    companyact->begin();
+    if (mdb_numpresupuesto == "") {
+        QString SQLQueryn = "SELECT MAX(numpresupuesto)+1 as num FROM presupuesto";
+        cursor2 *cur= companyact->cargacursor(SQLQueryn);
+        if (!cur->eof())
+            mdb_numpresupuesto = cur->valor("num");
+        delete cur;
+    }// end if
+    if (mdb_idusuari="")
+        mdb_idusuari="NULL";
+    if (mdb_idpresupuesto == "") {
+        /// Se trata de una inserci�
+        QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen) VALUES ("+mdb_numpresupuesto+",'"+mdb_fpresupuesto+"','"+mdb_contactpresupuesto+"','"+mdb_telpresupuesto+"','"+mdb_vencpresupuesto+"','"+mdb_comentpresupuesto+"',"+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+")";
+
+        companyact->ejecuta(SQLQuery);
+        cursor2 *cur = companyact->cargacursor("SELECT MAX(idpresupuesto) AS m FROM presupuesto");
+        if (!cur->eof())
+            mdb_idpresupuesto = cur->valor("idpresupuesto");
+        delete cur;
+        companyact->commit();
+    } else {
+        /// Se trata de una modificaci�
+        QString SQLQuery = "UPDATE presupuesto SET ";
+        SQLQuery += " numpresupuesto="+mdb_numpresupuesto;
+        SQLQuery += " ,fpresupuesto='"+mdb_fpresupuesto+"'";
+        SQLQuery += " ,contactpresupuesto='"+mdb_contactpresupuesto+"'";
+        SQLQuery += " ,telpresupuesto='"+mdb_telpresupuesto+"'";
+        SQLQuery += " ,vencpresupuesto='"+mdb_vencpresupuesto+"'";
+        SQLQuery += " ,comentpresupuesto='"+mdb_comentpresupuesto+"'";
+        SQLQuery += " ,idusuari="+mdb_idusuari;
+        SQLQuery += " ,idcliente="+mdb_idcliente;
+        SQLQuery += " ,idalmacen="+mdb_idalmacen;
+        SQLQuery += " WHERE idpresupuesto="+mdb_idpresupuesto;
+        companyact->begin();
+        companyact->ejecuta(SQLQuery);
+        companyact->commit();
+    }// end if
+    listalineas->guardalistlinpresupuesto();
 }// end guardapresupuesto
 
 
 void presupuesto::setCifClient(QString val) {
-       mdb_cifcliente=val;
-       QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente='"+mdb_cifcliente+"'";
-       cursor2 *cur = companyact->cargacursor(SQLQuery);
-       if(!cur->eof()) {
-       		mdb_idcliente = cur->valor("idcliente");
-		mdb_nomcliente = cur->valor("nomcliente");
-       } else {
-       		mdb_idcliente="";
-		mdb_nomcliente="";
-       }// end if
-       delete cur;
-       pintaNomClient(mdb_nomcliente);
-    }
+    mdb_cifcliente=val;
+    QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente='"+mdb_cifcliente+"'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if(!cur->eof()) {
+        mdb_idcliente = cur->valor("idcliente");
+        mdb_nomcliente = cur->valor("nomcliente");
+    } else {
+        mdb_idcliente="";
+        mdb_nomcliente="";
+    }// end if
+    delete cur;
+    pintaNomClient(mdb_nomcliente);
+}// end setCifClient
 
-    void presupuesto::setCodigoAlmacen(QString val) {
-     mdb_codigoalmacen=val;
-       QString SQLQuery = "SELECT * FROM almacen WHERE codigoalmacen='"+mdb_codigoalmacen+"'";
-       cursor2 *cur = companyact->cargacursor(SQLQuery);
-       if(!cur->eof()) {
-       		mdb_idalmacen = cur->valor("idalmacen");
-		mdb_nomalmacen = cur->valor("nomalmacen");
-       } else {
-       		mdb_idalmacen="";
-		mdb_nomalmacen="";
-       }// end if
-       delete cur;
-       pintaNomAlmacen(mdb_nomalmacen);     
-     }
+void presupuesto::setCodigoAlmacen(QString val) {
+    mdb_codigoalmacen=val;
+    QString SQLQuery = "SELECT * FROM almacen WHERE codigoalmacen='"+mdb_codigoalmacen+"'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if(!cur->eof()) {
+        mdb_idalmacen = cur->valor("idalmacen");
+        mdb_nomalmacen = cur->valor("nomalmacen");
+    } else {
+        mdb_idalmacen="";
+        mdb_nomalmacen="";
+    }// end if
+    delete cur;
+    pintaNomAlmacen(mdb_nomalmacen);
+}// end setCodigoAlmacen
 

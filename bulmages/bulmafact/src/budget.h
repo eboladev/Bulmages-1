@@ -106,6 +106,9 @@ public slots:
     virtual void s_comentariotextChanged() { setComentPresupuesto(m_comentpresupuesto->text());};
     virtual void s_cifclienttextChanged(const QString &str) {setCifClient(str);};
     virtual void s_codigoalmacentextChanged(const QString &str) {setCodigoAlmacen(str);};
+    virtual void s_contactotextChanged(const QString &str) {setContractPresupuesto(str);};
+    virtual void s_telpresupuestotextChanged(const QString &str) {setTelPresupuesto(str);};
+    
 	/// Este slot se activa cuando cambia la fecha del presupuesto.
     virtual void s_fpresupuestotextChanged(const QString &str) {/*setFPresupuesto(str);*/};
 };

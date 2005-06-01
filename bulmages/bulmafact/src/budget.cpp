@@ -194,7 +194,7 @@ void Budget::inicialize() {
 		}
 		delete cur0;
 	}
-	
+/*	
 	if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
 		m_codigoalmacen->setDisabled(true);
 		m_buscaralmacen->setDisabled(true);
@@ -208,8 +208,7 @@ void Budget::inicialize() {
 		  	m_codigoalmacen->setReadOnly(true);
 		}
 	}
-	
-//	buscarAlmacen();
+*/
 }// end inicialize
 
 
