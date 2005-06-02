@@ -199,8 +199,11 @@ else
         if [ -e /var/lib/postgresql/data/pg_hba.conf ]; then
                 # GENTOO lo instala aquí
                 PGDIR="/var/lib/postgresql/data"
-        elif [ -e /etc/postgresql/pg_hba.conf ]; then
-                # el RESTO (no sé si en todas las demás será aquí)
+        elif [ -e /var/lib/pgsql/data  ]; then
+		# MANDRIVA/MANDRAKE lo instala aquí
+		PGDIR="/var/lib/pgsql/data"
+	elif [ -e /etc/postgresql/pg_hba.conf ]; then		
+                # el RESTO de DISTROS (no sé si en todas las demás será aquí)
                 PGDIR="/etc/postgresql"
         else
                 PGDIR="0"
