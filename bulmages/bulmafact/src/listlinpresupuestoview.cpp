@@ -69,7 +69,7 @@ listlinpresupuestoview::listlinpresupuestoview(company *comp,  QWidget * parent,
     setColumnReadOnly(COL_NOMARTICULO,true);
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
     setPaletteBackgroundColor("#DDDDDD");
-    
+
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
     installEventFilter(this);
 
@@ -100,6 +100,21 @@ void listlinpresupuestoview::pintalistlinpresupuesto() {
     fprintf(stderr,"FIN de pintalistlinpresupuesto\n");
 }
 
+
+void listlinpresupuestoview::pintalinlistlinpresupuesto(int pos) {
+    linpresupuesto *linea;
+    linea = m_lista.at(pos);
+    setText(pos, COL_IDLPRESUPUESTO, linea->idlpresupuesto());
+    setText(pos, COL_IDARTICULO, linea->idarticulo());
+    setText(pos, COL_CODARTICULO, linea->codigocompletoarticulo());
+    setText(pos, COL_DESCLPRESUPUESTO, linea->nomarticulo());
+    setText(pos, COL_CANTLPRESUPUESTO, linea->cantlpresupuesto());
+    setText(pos, COL_DESCUENTOLPRESUPUESTO, linea->idlpresupuesto());
+    setText(pos, COL_IDPRESUPUESTO, linea->idpresupuesto());
+    setText(pos, COL_REMOVE, linea->descuentolpresupuesto());
+    setText(pos, COL_TASATIPO_IVA, linea->pvplpresupuesto());
+    setText(pos, COL_TIPO_IVA, linea->idlpresupuesto());
+}
 
 
 bool listlinpresupuestoview::eventFilter( QObject *obj, QEvent *ev ) {
@@ -133,11 +148,10 @@ void listlinpresupuestoview::valueBudgetLineChanged(int row, int col) {
             setText(row, COL_DESCUENTOLPRESUPUESTO, QString().sprintf("%0.2f", discountLine));
             break;
         }
-    case COL_CODARTICULO: {
-            manageArticle(row);
-            //calculateImports();
-            break;
-        }
+    case COL_CODARTICULO:
+        manageArticle(row);
+        //calculateImports();
+        break;
     case COL_CANTLPRESUPUESTO: {
             setText(row, COL_CANTLPRESUPUESTO, text(row, COL_CANTLPRESUPUESTO).replace(",","."));
             float cantLine = text(row, COL_CANTLPRESUPUESTO).toFloat();
@@ -145,13 +159,12 @@ void listlinpresupuestoview::valueBudgetLineChanged(int row, int col) {
             //calculateImports();
             break;
         }
-    case COL_PVPLPRESUPUESTO: {
-            setText(row, COL_PVPLPRESUPUESTO, text(row, COL_PVPLPRESUPUESTO).replace(",","."));
-            float pvpLine = text(row, COL_PVPLPRESUPUESTO).toFloat();
-            setText(row, COL_PVPLPRESUPUESTO, QString().sprintf("%0.2f", pvpLine));
-            //calculateImports();
-            break;
-        }
+    case COL_PVPLPRESUPUESTO:
+        setText(row, COL_PVPLPRESUPUESTO, text(row, COL_PVPLPRESUPUESTO).replace(",","."));
+        float pvpLine = text(row, COL_PVPLPRESUPUESTO).toFloat();
+        setText(row, COL_PVPLPRESUPUESTO, QString().sprintf("%0.2f", pvpLine));
+        //calculateImports();
+        break;
     }
 } //end valueBudgetLineChanged
 
@@ -167,28 +180,37 @@ void listlinpresupuestoview::manageArticle(int row) {
         articleCode = idArticle;
     }// end if
     bool ok;
-    if (articleCode.toInt(&ok, 10)>0) {
-        setText(row, COL_NOMARTICULO, "");
-        setText(row, COL_IDARTICULO, "");
-        setText(row, COL_TASATIPO_IVA, "");
-        setText(row, COL_TIPO_IVA, "");
 
-        cursor2 * cur2= companyact->cargacursor("SELECT * FROM articulo WHERE codarticulo="+text(row, COL_CODARTICULO),"unquery");
-        if (!cur2->eof()) {
-            setText(row, COL_NOMARTICULO, cur2->valor("nomarticulo"));
-            setText(row, COL_IDARTICULO, cur2->valor("idarticulo"));
-            QString taxType = cur2->valor("idtipo_iva");
-            companyact->begin();
-            cursor2 * cur3= companyact->cargacursor("SELECT idtipo_iva, porcentasa_iva FROM tasa_iva WHERE idtipo_iva="+taxType+" ORDER BY fechatasa_iva DESC","unquery");
-            companyact->commit();
-            if (!cur3->eof()) {
-                setText(row, COL_TASATIPO_IVA, cur3->valor("porcentasa_iva"));
-                setText(row, COL_TIPO_IVA, cur3->valor("idtipo_iva"));
+    linpresupuesto *linea;
+
+    while (m_lista.at(row) == 0 ) {
+        linea=new linpresupuesto(companyact);
+        m_lista.append(linea);
+    }// end while
+
+    linea= m_lista.at(row);
+    linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));
+    pintalinlistlinpresupuesto(row);
+    /*
+            setText(row, COL_NOMARTICULO, "");
+            setText(row, COL_IDARTICULO, "");
+            setText(row, COL_TASATIPO_IVA, "");
+            setText(row, COL_TIPO_IVA, "");
+     
+            cursor2 * cur2= companyact->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='"+text(row, COL_CODARTICULO)+"'");
+            if (!cur2->eof()) {
+                setText(row, COL_NOMARTICULO, cur2->valor("nomarticulo"));
+                setText(row, COL_IDARTICULO, cur2->valor("idarticulo"));
+                QString taxType = cur2->valor("idtipo_iva");
+                cursor2 * cur3= companyact->cargacursor("SELECT idtipo_iva, porcentasa_iva FROM tasa_iva WHERE idtipo_iva="+taxType+" ORDER BY fechatasa_iva DESC");
+                if (!cur3->eof()) {
+                    setText(row, COL_TASATIPO_IVA, cur3->valor("porcentasa_iva"));
+                    setText(row, COL_TIPO_IVA, cur3->valor("idtipo_iva"));
+                }// end if
+                delete cur3;
             }// end if
-            delete cur3;
-        }// end if
-        delete cur2;
-    }// end if
+            delete cur2;
+    */
 } //end manageArticle
 
 

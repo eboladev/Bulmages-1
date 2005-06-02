@@ -31,6 +31,7 @@ public:
     listlinpresupuestoview(company *comp,  QWidget *parent=0, const char *name=0);
     ~listlinpresupuestoview();
     virtual void pintalistlinpresupuesto();
+    virtual void pintalinlistlinpresupuesto(int);
     virtual bool eventFilter( QObject *obj, QEvent *ev );
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);

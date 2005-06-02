@@ -58,7 +58,7 @@ public:
     inline void setidpresupuesto(QString val) {mdb_idpresupuesto=val;};
     /// EStas funciones no estan como debe, el uso de cada una de ellas debe hacer cambios sobre la base de datos.
     inline void setidarticulo(QString val) {mdb_idarticulo=val;};    
-    inline void setcodigocompletoarticulo(QString val) {mdb_codigocompletoarticulo=val;};    
+    void setcodigocompletoarticulo(QString);    
     inline void setnomarticulo(QString val) {mdb_nomarticulo=val;};    
         
 };
