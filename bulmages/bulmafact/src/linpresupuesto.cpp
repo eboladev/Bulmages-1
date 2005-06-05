@@ -30,12 +30,14 @@ linpresupuesto::linpresupuesto(company *comp, QString idlinpresupuesto) {
         mdb_idarticulo = cur->valor("idarticulo");
         mdb_codigocompletoarticulo = cur->valor("codigocompletoarticulo");
         mdb_nomarticulo = cur->valor("nomarticulo");
+        mdb_ivalpresupuesto = cur->valor("ivalpresupuesto");
     } else {
         vacialinpresupuesto();
     }// end if
 }// end linpresupuesto
 
-linpresupuesto::linpresupuesto(company *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i) {
+
+linpresupuesto::linpresupuesto(company *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j) {
     companyact = comp;
     mdb_idlpresupuesto = a;
     mdb_desclpresupuesto = b;
@@ -46,6 +48,7 @@ linpresupuesto::linpresupuesto(company *comp, QString a, QString b, QString c, Q
     mdb_idarticulo = g;
     mdb_codigocompletoarticulo = h;
     mdb_nomarticulo = i;
+    mdb_ivalpresupuesto = j;
 }// end linpresupuesto
 
 
@@ -62,13 +65,23 @@ void linpresupuesto::vacialinpresupuesto() {
     mdb_idarticulo = "";
     mdb_codigocompletoarticulo = "";
     mdb_nomarticulo = "";
+    mdb_ivalpresupuesto="";
 }
 
+
+void linpresupuesto::borrar() {
+    if (mdb_idlpresupuesto != "") {
+        companyact->begin();
+        companyact->ejecuta("DELETE FROM lpresupuesto WHERE idlpresupuesto="+mdb_idlpresupuesto);
+        companyact->commit();
+        vacialinpresupuesto();
+    }// end if
+}// end delete
 
 void linpresupuesto::guardalinpresupuesto() {
     /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_idlpresupuesto == "") {
-        QString SQLQuery = "INSERT INTO lpresupuesto (desclpresupuesto, cantlpresupuesto, pvplpresupuesto, descuentolpresupuesto, idpresupuesto, idarticulo) VALUES ('"+mdb_desclpresupuesto+"',"+mdb_cantlpresupuesto+","+mdb_pvplpresupuesto+","+mdb_descuentolpresupuesto+","+mdb_idpresupuesto+","+mdb_idarticulo+")";
+        QString SQLQuery = "INSERT INTO lpresupuesto (desclpresupuesto, cantlpresupuesto, pvplpresupuesto, descuentolpresupuesto, idpresupuesto, idarticulo, ivalpresupuesto) VALUES ('"+mdb_desclpresupuesto+"',"+mdb_cantlpresupuesto+","+mdb_pvplpresupuesto+","+mdb_descuentolpresupuesto+","+mdb_idpresupuesto+","+mdb_idarticulo+", "+mdb_ivalpresupuesto+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idlpresupuesto) AS m FROM lpresupuesto ");
@@ -84,6 +97,7 @@ void linpresupuesto::guardalinpresupuesto() {
         SQLQuery += " ,descuentolpresupuesto = "+mdb_descuentolpresupuesto+" ";
         SQLQuery += " ,idpresupuesto = "+mdb_idpresupuesto+" ";
         SQLQuery += " ,idarticulo = "+mdb_idarticulo+" ";
+        SQLQuery += " ,ivalpresupuesto = "+mdb_ivalpresupuesto+" ";
         SQLQuery += " WHERE idlpresupuesto = "+mdb_idlpresupuesto;
         companyact->begin();
         companyact->ejecuta(SQLQuery);
@@ -93,12 +107,63 @@ void linpresupuesto::guardalinpresupuesto() {
 
 
 void linpresupuesto::setcodigocompletoarticulo(QString val) {
+    fprintf(stderr,"setcodigocompletoarticulo(%s)\n", val.ascii());
     mdb_codigocompletoarticulo=val;
-    QString SQLQuery = "SELECT nomarticulo, idarticulo FROM articulo WHERE codigocompletoarticulo='"+mdb_codigocompletoarticulo+"'";
+    QString SQLQuery = "SELECT nomarticulo, idarticulo, pvparticulo(idarticulo) AS pvp, ivaarticulo(idarticulo) AS iva FROM articulo WHERE codigocompletoarticulo='"+mdb_codigocompletoarticulo+"'";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         mdb_nomarticulo=cur->valor("nomarticulo");
+        mdb_desclpresupuesto = mdb_nomarticulo;
         mdb_idarticulo= cur->valor("idarticulo");
+        mdb_pvplpresupuesto = cur->valor("pvp");
+        mdb_ivalpresupuesto = cur->valor("iva");
+        if (mdb_cantlpresupuesto == "") {
+            mdb_cantlpresupuesto = "1";
+            mdb_descuentolpresupuesto = "0";
+        }// end if
     }// end if
+    delete cur;
 }// end setcodigocompletoarticulo
+
+
+void linpresupuesto::setidarticulo(QString val) {
+    fprintf(stderr,"setidarticulo(%s)\n", val.ascii());
+    mdb_idarticulo=val;
+    QString SQLQuery = "SELECT nomarticulo, codigocompletoarticulo, pvparticulo(idarticulo) AS pvp, ivaarticulo(idarticulo) AS iva FROM articulo WHERE idarticulo="+mdb_idarticulo+"";
+    cursor2 *cur=companyact->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+        mdb_nomarticulo=cur->valor("nomarticulo");
+        mdb_desclpresupuesto = mdb_nomarticulo;
+        mdb_codigocompletoarticulo= cur->valor("codigocompletoarticulo");
+        mdb_pvplpresupuesto = cur->valor("pvp");
+        mdb_ivalpresupuesto = cur->valor("iva");
+        if (mdb_cantlpresupuesto == "") {
+            mdb_cantlpresupuesto = "1";
+            mdb_descuentolpresupuesto = "0";
+        }// end if
+    }// end if
+    delete cur;
+    fprintf(stderr,"end setidarticulo\n");
+}// end setidarticulo
+
+float linpresupuesto::calculabase() {
+    fprintf(stderr,"calculabase()\n");
+    float cant=0;
+    if (mdb_cantlpresupuesto != "" && mdb_pvplpresupuesto != "" && mdb_desclpresupuesto != "") {
+        cant = mdb_cantlpresupuesto.toFloat() * mdb_pvplpresupuesto.toFloat();
+        cant = cant - (cant* mdb_desclpresupuesto.toFloat());
+    }// end if
+    return cant;
+}// end calculabase
+
+float linpresupuesto::calculaiva() {
+    fprintf(stderr,"calculaiva()\n");
+    float cant=0;
+    if (mdb_cantlpresupuesto != "" && mdb_pvplpresupuesto != "" && mdb_desclpresupuesto != "" && mdb_ivalpresupuesto != "") {
+        cant = mdb_cantlpresupuesto.toFloat() * mdb_pvplpresupuesto.toFloat();
+        cant = cant - (cant* mdb_desclpresupuesto.toFloat()/100);
+        cant = cant * mdb_ivalpresupuesto.toFloat()/100;
+    }// end if
+    return cant;
+}// end calculabase
 

@@ -54,6 +54,7 @@ public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setlislinpresupuesto ( listlinpresupuesto *a) {
         listalineas =a;
+	listalineas->setcompany(companyact);
     };
     
     presupuesto(company *);
@@ -61,7 +62,7 @@ public:
     void chargeBudget(QString );
     void pintaPresupuesto();
     void guardapresupuesto();
-	void borraPresupuesto();
+    void borraPresupuesto();
     
     virtual void pintaIdClient(QString id) {};
     virtual void pintaIdAlmacen(QString id) {};
@@ -75,6 +76,8 @@ public:
     virtual void pintaCifClient(QString id) {};
     virtual void pintaCodigoAlmacen(QString id) {};
     virtual void pintaNomAlmacen(QString id) {};
+    
+    virtual void pintatotales(float, float) {};
 
     void setIdClient(QString val) { mdb_idcliente=val;};
     void setIdAlmacen(QString val) { mdb_idalmacen=val;};
@@ -91,7 +94,7 @@ public:
     void setIdPresupuesto(QString val) {mdb_idpresupuesto=val;};
     void setIdUsuari(QString val) {mdb_idusuari=val;};
 
-	void vaciaPresupuesto();
+    void vaciaPresupuesto();
 
     virtual void chargeBudgetDiscounts(QString) {};
     virtual void calculateImports() {};

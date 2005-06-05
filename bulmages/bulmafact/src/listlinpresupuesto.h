@@ -19,15 +19,22 @@
 */
 
 #include "company.h"
-class linpresupuesto;
+#include "linpresupuesto.h"
 
 class listlinpresupuesto {
-private:
-    QString mdb_idpresupuesto;
 public:
-    QPtrList<linpresupuesto> m_lista;
     company *companyact;
+    QString mdb_idpresupuesto;
+    QPtrList<linpresupuesto> m_lista;
+public:
+   
     listlinpresupuesto(company *comp);
+    listlinpresupuesto();
+    void setcompany(company *c) {
+       fprintf(stderr,"listlinpresupuesto setCompany\n");
+       companyact=c;
+       fprintf(stderr,"listlinpresupuesto  fin de setCompany\n");
+    };
     virtual ~listlinpresupuesto();
     void guardalistlinpresupuesto();
     void vaciar();
@@ -36,8 +43,11 @@ public:
     };
     void chargeBudgetLines(QString);
     void borrar();
-    void nuevalinea(QString, QString, QString, QString, QString, QString, QString);
+    void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString);
     linpresupuesto *linpos(int);
+    float calculabase();
+    float calculaiva();
+    void borralinpresupuesto(int);
 };
 
 #endif

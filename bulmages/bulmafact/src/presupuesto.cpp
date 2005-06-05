@@ -68,6 +68,8 @@ void presupuesto::pintaPresupuesto() {
     pintaNomAlmacen(mdb_nomalmacen);
     // Pinta el subformulario de detalle del presupuesto.
     listalineas->pintalistlinpresupuesto();
+    
+    pintatotales(listalineas->calculabase(), listalineas->calculaiva());
 }// end pintaPresupuesto
 
 
@@ -99,7 +101,7 @@ void presupuesto::chargeBudget(QString idbudget) {
     delete cur;
 
     //    m_initialValues = calculateValues();
-
+    fprintf(stderr,"Vamos a cargar las lineas\n");
     listalineas->chargeBudgetLines(idbudget);
     pintaPresupuesto();
 }// end chargeBudget

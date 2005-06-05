@@ -17,11 +17,13 @@ FORMS += bulmafactbase.ui \
          budgetslistbase.ui \
          articleeditbase.ui \
          clientdelivnoteslistbase.ui \
-         clientdelivnotebase.ui \
+         albaranclientebase.ui \
          clientinvoiceslistbase.ui \
          fpagobase.ui \
          familiasdlg.ui \
-         tiposarticulodlg.ui 
+         tiposarticulodlg.ui \
+         facturaslistbase.ui \
+         facturabase.ui 
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
@@ -44,7 +46,7 @@ HEADERS += bulmafact.h \
            articleedit.h \
            EventHandler.h \
            clientdelivnoteslist.h \
-           clientdelivnote.h \
+           albaranclienteview.h \
            clientinvoiceslist.h \
            listventanas.h \
            fpago.h \
@@ -53,7 +55,17 @@ HEADERS += bulmafact.h \
            presupuesto.h \
            listlinpresupuesto.h \
            linpresupuesto.h \
-           listlinpresupuestoview.h 
+           listlinpresupuestoview.h \
+           facturaslist.h \
+           facturaview.h \
+           factura.h \
+           listlinfactura.h \
+           listlinfacturaview.h \
+           linfactura.h \
+           albarancliente.h \
+	   listlinalbarancliente.h \
+	   listlinalbaranclienteview.h \
+	   linalbarancliente.h
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -72,7 +84,7 @@ SOURCES += bulmafact.cpp \
            articleedit.cpp \
            EventHandler.cpp \
            clientdelivnoteslist.cpp \
-           clientdelivnote.cpp \
+           albaranclienteview.cpp \
            clientinvoiceslist.cpp \
            listventanas.cpp \
            fpago.cpp \
@@ -81,7 +93,17 @@ SOURCES += bulmafact.cpp \
            presupuesto.cpp \
            listlinpresupuesto.cpp \
            linpresupuesto.cpp \
-           listlinpresupuestoview.cpp 
+           listlinpresupuestoview.cpp \
+           facturaslist.cpp \
+           facturaview.cpp \
+           factura.cpp \
+           listlinfactura.cpp \
+           listlinfacturaview.cpp \
+           linfactura.cpp \
+           albarancliente.cpp \
+	   listlinalbarancliente.cpp \
+	   listlinalbaranclienteview.cpp \
+	   linalbarancliente.cpp
 TEMPLATE = app
 LANGUAGE = C++
 CONFIG += release \

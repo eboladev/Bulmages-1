@@ -42,7 +42,7 @@ CREATE TABLE albaran (
 */
 #include "clientdelivnoteslist.h"
 #include "company.h"
-#include "clientdelivnote.h"
+#include "albaranclienteview.h"
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
@@ -154,9 +154,9 @@ void ClientDelivNotesList::inicializa() {
 void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
     m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
     if (m_modo ==0 && m_idclidelivnote != "") {
-        fprintf(stderr,"Iniciamos el boton_crear\n");
-        ClientDelivNote *cDelivNote = new ClientDelivNote(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
-        cDelivNote->chargeClientDelivNote(m_idclidelivnote);
+        fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
+        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+        cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
         cDelivNote->show();
     } else {
         close();
@@ -184,7 +184,7 @@ void ClientDelivNotesList::s_contextMenu(int, int, int button, const QPoint &poi
 
 void ClientDelivNotesList::s_newClientDelivNote() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
-    ClientDelivNote *cDelivNote = new ClientDelivNote(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+    AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
     cDelivNote->show();
 }// end boton_crear
 

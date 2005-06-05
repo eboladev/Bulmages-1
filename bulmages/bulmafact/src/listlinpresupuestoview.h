@@ -26,17 +26,21 @@
 
 
 class listlinpresupuestoview : public QTable , public listlinpresupuesto {
-    Q_OBJECT
+Q_OBJECT
 public:
-    listlinpresupuestoview(company *comp,  QWidget *parent=0, const char *name=0);
+    listlinpresupuestoview(QWidget *parent=0, const char *name=0);
     ~listlinpresupuestoview();
     virtual void pintalistlinpresupuesto();
     virtual void pintalinlistlinpresupuesto(int);
     virtual bool eventFilter( QObject *obj, QEvent *ev );
+    linpresupuesto *lineaat(int);
+    linpresupuesto *lineaact();
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);
     virtual QString searchArticle();
     virtual void manageArticle(int row);
+    virtual void contextMenu ( int , int , const QPoint &  );
+    virtual void borralinpresupuestoact();
 };
 
 #endif

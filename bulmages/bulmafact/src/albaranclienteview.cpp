@@ -19,62 +19,11 @@
  ***************************************************************************/
 
  // ALBARANES DE CLIENTES
- // CLIENT DELIVERY NOTES
-/*
--- COMPROVACIONS D'INTEGRITAT>Genèriques:
--- Tots els albarans d'una factura corresponen al mateix client.
--- FACTURACIO>Albarans:
--- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
--- Numero
--- Data
--- Albarà a clients.
-CREATE TABLE albaran (
-   numalbaran integer PRIMARY KEY,
-   fechaalbaran date,
-   idusuario integer,
-
---   numalbaran integer REFERENCES presupuesto(numalbaran),
-   idcliente integer REFERENCES cliente(idcliente),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago),
-   numfactura integer REFERENCES factura(numfactura),
-   numnofactura integer REFERENCES nofactura(numnofactura)
-);
 
 
-
--- Descuento albaran
--- Numero
--- Concepte: Descripció del motiu de descompte.
--- Proporcio: Percentatge a descomptar.
--- Descompte d'albarà a clients.
-CREATE TABLE dalbaran (
-   numdalbaran integer PRIMARY KEY,
-   conceptdalbaran character varying(500),
-   propordalbaran float,
-   
-   numalbaran integer REFERENCES albaran(numalbaran)
-);
+#include "albaranclienteview.h"
 
 
--- Numero
--- Descripcio
--- Quantitat
--- PVP: Preu de l'article en el moment de la compra o de ser presupostat.
--- Descompte
--- Línia d'albarà a clients.
-CREATE TABLE lalbaran (
-   numlalbaran integer PRIMARY KEY,
-   desclalbaran character varying(100),
-   cantlalbaran float,
-   pvplalbaran float,
-   descontlalbaran float,
-   
-   numalbaran integer REFERENCES albaran(numalbaran),
-   idarticulo integer REFERENCES articulo(idarticulo)
-);
-*/
-
-#include "clientdelivnote.h"
 #include "company.h"
 #include "division.h"
 #include "clientslist.h"
@@ -93,129 +42,37 @@ CREATE TABLE lalbaran (
 #include <qtoolbutton.h>
 
 #include "funcaux.h"
-//#include "postgresiface2.h"
+#include "postgresiface2.h"
+#include "listlinalbaranclienteview.h"
 
-#define COL_NUMLALBARAN 0
-#define COL_IDARTICULO 1
-#define COL_CODARTICULO 2
-#define COL_NOMARTICULO 3
-#define COL_DESCLALBARAN 4
-#define COL_CANTLALBARAN 5
-#define COL_PVPLALBARAN 6
-#define COL_DESCUENTOLALBARAN 7
-#define COL_NUMALBARAN 8
-#define COL_REMOVE 9
-#define COL_TASATIPO_IVA 10
-
-#define COL_DESCUENTO_NUMDALBARAN 0
-#define COL_DESCUENTO_CONCEPTDALBARAN 1
-#define COL_DESCUENTO_PROPORCIONDALBARAN 2
-#define COL_DESCUENTO_REMOVE 3
-
-ClientDelivNote::ClientDelivNote(company *comp, QWidget *parent, const char *name) : ClientDelivNoteBase(parent, name, Qt::WDestructiveClose) {
-   companyact = comp;
-   m_idalbaran = "0";
-   m_idclient = "";
-	inicialize();
-	   companyact->meteWindow(caption(),this);
+AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const char *name) : AlbaranClienteBase(parent, name, Qt::WDestructiveClose), AlbaranCliente(comp) {
+    subform2->setcompany(comp);
+    setListLinAlbaranCliente(subform2);
+    m_cursorcombo=NULL;
+    inicialize();
+    comp->meteWindow(caption(),this);
+    fprintf(stderr,"Fin de la inicialización de AlbaranClienteView\n");
 }// end ClientDelivNote
 
-ClientDelivNote::~ClientDelivNote() {
+AlbaranClienteView::~AlbaranClienteView() {
 	companyact->refreshClientDelivNotes();
 	companyact->sacaWindow(this);
 }// end ~ClientDelivNote
 
 
-void ClientDelivNote::inicialize() {
-	installEventFilter(this);
-	m_list->installEventFilter( this );
-	m_listDiscounts->installEventFilter( this );	
-	
-// Inicializamos la tabla de lineas de albarán
-	m_list->setNumRows( 0 );
-	m_list->setNumCols( 0 );
-	m_list->setSelectionMode( QTable::SingleRow );
-	m_list->setSorting( TRUE );
-	m_list->setSelectionMode( QTable::SingleRow );
-	m_list->setColumnMovingEnabled( TRUE );
-	m_list->setNumCols(11);
-	m_list->horizontalHeader()->setLabel( COL_NUMLALBARAN, tr( "Nº Línea" ) );
-	m_list->horizontalHeader()->setLabel( COL_DESCLALBARAN, tr( "Descripción" ) );
-	m_list->horizontalHeader()->setLabel( COL_CANTLALBARAN, tr( "Cantidad" ) );
-	m_list->horizontalHeader()->setLabel( COL_PVPLALBARAN, tr( "Precio" ) );
-	m_list->horizontalHeader()->setLabel( COL_DESCUENTOLALBARAN, tr( "Descuento" ) );
-	m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "Nº Albarán" ) );
-	m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
-	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
-	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
-	m_list->horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
-   
-	m_list->setColumnWidth(COL_NUMLALBARAN,100);
-	m_list->setColumnWidth(COL_DESCLALBARAN,300);
-	m_list->setColumnWidth(COL_CANTLALBARAN,100);
-	m_list->setColumnWidth(COL_PVPLALBARAN,100);
-	m_list->setColumnWidth(COL_DESCUENTOLALBARAN,100);
-	m_list->setColumnWidth(COL_NUMALBARAN,100);
-	m_list->setColumnWidth(COL_IDARTICULO,100);
-	m_list->setColumnWidth(COL_CODARTICULO,100);
-	m_list->setColumnWidth(COL_NOMARTICULO,300);
-	m_list->setColumnWidth(COL_TASATIPO_IVA,50);
 
-	
-	m_list->hideColumn(COL_NUMLALBARAN);
-	m_list->hideColumn(COL_NUMALBARAN);
-	m_list->hideColumn(COL_IDARTICULO);
-	m_list->hideColumn(COL_REMOVE);
-	m_list->hideColumn(COL_TASATIPO_IVA);
-	
-	m_list->setNumRows(10);
-	
-//   listado->setPaletteBackgroundColor(QColor(150,230,230));
-	m_list->setColumnReadOnly(COL_NOMARTICULO,true);
-	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-	m_list->setPaletteBackgroundColor("#AFFAFA");   
-	m_list->setReadOnly(FALSE);
-	
-// Inicializamos la tabla de descuentos del albarán
-	m_listDiscounts->setNumRows( 0 );
-	m_listDiscounts->setNumCols( 0 );
-	m_listDiscounts->setSelectionMode( QTable::SingleRow );
-	m_listDiscounts->setSorting( TRUE );
-	m_listDiscounts->setSelectionMode( QTable::SingleRow );
-	m_listDiscounts->setColumnMovingEnabled( TRUE );
-	m_listDiscounts->setNumCols(4);
-	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_NUMDALBARAN, tr( "id" ) );
-	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_CONCEPTDALBARAN, tr( "Concepto" ) );
-	m_listDiscounts->horizontalHeader()->setLabel( COL_DESCUENTO_PROPORCIONDALBARAN, tr( "Proporción" ) );
-   
-	m_listDiscounts->setColumnWidth(COL_DESCUENTO_NUMDALBARAN,100);
-	m_listDiscounts->setColumnWidth(COL_DESCUENTO_CONCEPTDALBARAN,400);
-	m_listDiscounts->setColumnWidth(COL_DESCUENTO_PROPORCIONDALBARAN,100);
-	m_listDiscounts->hideColumn(COL_DESCUENTO_NUMDALBARAN);
-	m_listDiscounts->hideColumn(COL_DESCUENTO_REMOVE);
-	
-	m_listDiscounts->setNumRows(10);
 
-//   listado->setPaletteBackgroundColor(QColor(150,230,230));
-	// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-	m_listDiscounts->setPaletteBackgroundColor("#AFFAFA");   
-	m_listDiscounts->setReadOnly(FALSE);    
-	m_listDiscounts->installEventFilter( this );
-	
+void AlbaranClienteView::inicialize() {
 	m_totalBases->setReadOnly(TRUE);
 	m_totalBases->setAlignment(Qt::AlignRight);
 	m_totalTaxes->setReadOnly(TRUE);
 	m_totalTaxes->setAlignment(Qt::AlignRight);
 	m_totalDiscounts->setReadOnly(TRUE);
 	m_totalDiscounts->setAlignment(Qt::AlignRight);
-	m_totalClientDelivNote->setReadOnly(TRUE);
-	m_totalClientDelivNote->setAlignment(Qt::AlignRight);
+	m_totalalbaran->setReadOnly(TRUE);
+	m_totalalbaran->setAlignment(Qt::AlignRight);
 	
-	if (m_idalbaran=="0") {
-		cargarcomboformapago("0");
-	}
-	
-	if (m_idalbaran=="0") {	 
+	if (mdb_idalbaran=="0") {	 
 		companyact->begin();
 		cursor2 * cur0= companyact->cargacursor("SELECT * FROM configuracion where nombre='AlmacenDefecto'","queryconfig");
 		companyact->commit(); 
@@ -236,17 +93,16 @@ void ClientDelivNote::inicialize() {
 	
 	if (confpr->valor(CONF_NUM_AUT_PRESUP)=="YES") {
 		m_numalbaran->setReadOnly(true);
-		if (m_idalbaran!="0") {
+		if (mdb_idalbaran!="0") {
 		  	m_codigoalmacen->setReadOnly(true);
 		}
 	}
-	
-	buscarAlmacen();
 }// end inicialize
 
 
+/*
 // Esta función carga un albarán.
-void ClientDelivNote::chargeClientDelivNote(QString iddeliveryNote) {
+void AlbaranClienteView::chargeClientDelivNote(QString iddeliveryNote) {
 	m_idalbaran = iddeliveryNote;
 	inicialize();
 	
@@ -276,7 +132,7 @@ void ClientDelivNote::chargeClientDelivNote(QString iddeliveryNote) {
 }// end chargeClientDelivNote
 
 
-void ClientDelivNote::cargarcomboformapago(QString idformapago) {
+void AlbaranClienteView::cargarcomboformapago(QString idformapago) {
 	m_cursorcombo = NULL;
 	companyact->begin();
   	if (m_cursorcombo != NULL) delete m_cursorcombo;
@@ -298,7 +154,7 @@ void ClientDelivNote::cargarcomboformapago(QString idformapago) {
 } //end cargarcombodformapago
 
 // Carga líneas de albarán
-void ClientDelivNote::chargeClientDelivNoteLines(QString iddeliveryNote) {
+void AlbaranClienteView::chargeClientDelivNoteLines(QString iddeliveryNote) {
 	companyact->begin();
 	cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaran, articulo WHERE idalbaran="+iddeliveryNote+" AND articulo.idarticulo=lalbaran.idarticulo","unquery");
 	companyact->commit();
@@ -330,7 +186,7 @@ void ClientDelivNote::chargeClientDelivNoteLines(QString iddeliveryNote) {
 
 
 // Carga líneas descuentos albarán
-void ClientDelivNote::chargeClientDelivNoteDiscounts(QString iddeliveryNote) {
+void AlbaranClienteView::chargeClientDelivNoteDiscounts(QString iddeliveryNote) {
 	companyact->begin();
 	cursor2 * cur= companyact->cargacursor("SELECT * FROM dalbaran WHERE idalbaran="+iddeliveryNote,"unquery");
 	companyact->commit();
@@ -349,7 +205,7 @@ void ClientDelivNote::chargeClientDelivNoteDiscounts(QString iddeliveryNote) {
 
 
 // Búsqueda de Clientes.
-void ClientDelivNote::s_searchClient() {
+void AlbaranClienteView::s_searchClient() {
    fprintf(stderr,"Busqueda de un client\n");
    ClientsList *clients = new ClientsList(companyact, NULL, theApp->translate("Seleccione cliente","company"));
    
@@ -372,20 +228,20 @@ void ClientDelivNote::s_searchClient() {
 }// end searchClient
 
 
-void ClientDelivNote::s_clientDelivNoteDateLostFocus() {
+void AlbaranClienteView::s_clientDelivNoteDateLostFocus() {
 	m_fechaalbaran->setText(normalizafecha(m_fechaalbaran->text()).toString("dd/MM/yyyy"));
 }
 
 
 
-void ClientDelivNote::s_newClientDelivNoteLine() {
+void AlbaranClienteView::s_newClientDelivNoteLine() {
 	m_list->setNumRows( m_list->numRows()+1 );
 	m_list->setCurrentCell(m_list->numRows()-1, COL_CODARTICULO);	
 	m_list->editCell(m_list->numRows()-1, COL_CODARTICULO);
 }
 
 
-void ClientDelivNote::s_removeClientDelivNote() {
+void AlbaranClienteView::s_removeClientDelivNote() {
 	fprintf(stderr,"Iniciamos el boton_borrar\n");
 	if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este albarán", "Sí", "No") == 0) {
 		companyact->begin();
@@ -410,7 +266,7 @@ void ClientDelivNote::s_removeClientDelivNote() {
 }// end boton_borrar
 
 
-void ClientDelivNote::s_removeClientDelivNoteLine() {
+void AlbaranClienteView::s_removeClientDelivNoteLine() {
 	if (m_list->currentRow() >= 0) {
 		int row = m_list->currentRow();
 		m_list->setText(row, COL_REMOVE, "S");
@@ -419,7 +275,7 @@ void ClientDelivNote::s_removeClientDelivNoteLine() {
 }
 
 
-void ClientDelivNote::s_valueClientDelivNoteLineChanged(int row, int col) {
+void AlbaranClienteView::s_valueClientDelivNoteLineChanged(int row, int col) {
 	
 	switch (col) {
 		case COL_DESCUENTOLALBARAN: {
@@ -453,14 +309,14 @@ void ClientDelivNote::s_valueClientDelivNoteLineChanged(int row, int col) {
 } //end valueClientDelivNoteLineChanged
 
 
-void ClientDelivNote::s_newClientDelivNoteDiscountLine() {
+void AlbaranClienteView::s_newClientDelivNoteDiscountLine() {
 	m_listDiscounts->setNumRows( m_listDiscounts->numRows()+1 );
 	m_listDiscounts->editCell(m_listDiscounts->numRows()-1, COL_DESCUENTO_CONCEPTDALBARAN);
 	
 }
 
 
-void ClientDelivNote::s_removeClientDelivNoteDiscountLine() {
+void AlbaranClienteView::s_removeClientDelivNoteDiscountLine() {
 	if (m_listDiscounts->currentRow() >= 0) {
 		int row = m_listDiscounts->currentRow();
 		m_listDiscounts->setText(row, COL_DESCUENTO_REMOVE, "S");
@@ -469,7 +325,7 @@ void ClientDelivNote::s_removeClientDelivNoteDiscountLine() {
 }
 
 
-void ClientDelivNote::s_valueClientDelivNoteDiscountLineChanged(int row, int col) {
+void AlbaranClienteView::s_valueClientDelivNoteDiscountLineChanged(int row, int col) {
 	switch (col) {
 		case COL_DESCUENTO_PROPORCIONDALBARAN: {
 			m_listDiscounts->setText(row, COL_DESCUENTO_PROPORCIONDALBARAN, m_listDiscounts->text(row, COL_DESCUENTO_PROPORCIONDALBARAN).replace(",","."));
@@ -481,7 +337,7 @@ void ClientDelivNote::s_valueClientDelivNoteDiscountLineChanged(int row, int col
 	}
 } //end valueClientDelivNoteDiscountLineChanged
 
-void ClientDelivNote::manageArticle(int row) {
+void AlbaranClienteView::manageArticle(int row) {
 	QString articleCode = m_list->text(row, COL_CODARTICULO);
 	if (articleCode == "+") {
 		QString idArticle = "";
@@ -516,7 +372,7 @@ void ClientDelivNote::manageArticle(int row) {
 } //end manageArticle
 
 
-QString ClientDelivNote::searchArticle() {
+QString AlbaranClienteView::searchArticle() {
    fprintf(stderr,"Busqueda de un artículo\n");
    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
    
@@ -537,7 +393,7 @@ QString ClientDelivNote::searchArticle() {
 }// end searchArticle
 
 
-void ClientDelivNote::s_contextMenu(int, int, int button, const QPoint &poin) {
+void AlbaranClienteView::s_contextMenu(int, int, int button, const QPoint &poin) {
 	qDebug("button = %d", button);
 	if (button == 2) {
 		QPopupMenu *popup;
@@ -555,7 +411,7 @@ void ClientDelivNote::s_contextMenu(int, int, int button, const QPoint &poin) {
 }// end contextmenu
 
 
-void ClientDelivNote::s_contextMenuDiscount(int, int, int button, const QPoint &poin) {
+void AlbaranClienteView::s_contextMenuDiscount(int, int, int button, const QPoint &poin) {
 	qDebug("button = %d", button);
 	if (button == 2) {
 		QPopupMenu *popup;
@@ -573,7 +429,7 @@ void ClientDelivNote::s_contextMenuDiscount(int, int, int button, const QPoint &
 }// end contextmenu
 
 
-void ClientDelivNote::s_saveClientDelivNote() {
+void AlbaranClienteView::s_saveClientDelivNote() {
 	companyact->begin();
 	if (saveClientDelivNote()==0) {
 		if (m_idalbaran == "0") {
@@ -596,7 +452,7 @@ void ClientDelivNote::s_saveClientDelivNote() {
 }
 
 
-void ClientDelivNote::s_accept() {
+void AlbaranClienteView::s_accept() {
 	fprintf(stderr,"accept button activated\n");
 	companyact->begin();
 	if (saveClientDelivNote()==0) {
@@ -620,7 +476,7 @@ void ClientDelivNote::s_accept() {
 } //end accept
 
 
-int ClientDelivNote::saveClientDelivNote() {
+int AlbaranClienteView::saveClientDelivNote() {
 	buscarAlmacen();
 	
 	if (m_idalmacen == "")  return 1;
@@ -655,7 +511,7 @@ int ClientDelivNote::saveClientDelivNote() {
 } //end saveClientDelivNote
 
 
-int ClientDelivNote::saveClientDelivNoteLines() {
+int AlbaranClienteView::saveClientDelivNoteLines() {
 	int i = 0;
 	int error = 0;
 	while (i < m_list->numRows() && error==0) {
@@ -678,7 +534,7 @@ int ClientDelivNote::saveClientDelivNoteLines() {
 } // end saveClientDelivNoteLines
 
 
-int ClientDelivNote::saveClientDelivNoteDiscountLines() {
+int AlbaranClienteView::saveClientDelivNoteDiscountLines() {
 	int i = 0;
 	int error = 0;
 	while (i < m_listDiscounts->numRows() && error==0) {
@@ -701,7 +557,7 @@ int ClientDelivNote::saveClientDelivNoteDiscountLines() {
 } // end saveClientDelivNoteDiscountLines
 
 
-int ClientDelivNote::updateClientDelivNoteLine(int i) {
+int AlbaranClienteView::updateClientDelivNoteLine(int i) {
 	QString SQLQuery = "UPDATE lalbaran SET desclalbaran='"+m_list->text(i,COL_DESCLALBARAN)+"'";
 	SQLQuery += " , cantlalbaran="+ m_list->text(i,COL_CANTLALBARAN);
 	SQLQuery += " , pvplalbaran="+m_list->text(i,COL_PVPLALBARAN);
@@ -712,7 +568,7 @@ int ClientDelivNote::updateClientDelivNoteLine(int i) {
 } //end updateClientDelivNoteLine
 
 
-int ClientDelivNote::insertClientDelivNoteLine(int i) {
+int AlbaranClienteView::insertClientDelivNoteLine(int i) {
 	QString SQLQuery ="";
 	SQLQuery = "INSERT INTO lalbaran (desclalbaran, cantlalbaran, pvplalbaran, descontlalbaran, idalbaran, idarticulo)";
 	SQLQuery += " VALUES (";
@@ -727,13 +583,13 @@ int ClientDelivNote::insertClientDelivNoteLine(int i) {
 } //end insertClientDelivNoteLine
 
 
-int ClientDelivNote::deleteClientDelivNoteLine(int line) {
+int AlbaranClienteView::deleteClientDelivNoteLine(int line) {
 	QString SQLQuery = "DELETE FROM lalbaran WHERE numlalbaran ="+m_list->text(line,COL_NUMLALBARAN)+" and idalbaran="+m_idalbaran;
 	return companyact->ejecuta(SQLQuery);
 } //end deleteClientDelivNoteLine
 
 
-int ClientDelivNote::updateClientDelivNoteDiscountLine(int i) {
+int AlbaranClienteView::updateClientDelivNoteDiscountLine(int i) {
 	QString SQLQuery = "UPDATE dalbaran SET conceptdalbaran='"+m_listDiscounts->text(i,COL_DESCUENTO_CONCEPTDALBARAN)+"'";
 	SQLQuery += " , propordalbaran="+ m_listDiscounts->text(i,COL_DESCUENTO_PROPORCIONDALBARAN);
 	SQLQuery += " WHERE idalbaran ="+m_idalbaran+" AND numdalbaran="+m_listDiscounts->text(i,COL_DESCUENTO_NUMDALBARAN);
@@ -741,7 +597,7 @@ int ClientDelivNote::updateClientDelivNoteDiscountLine(int i) {
 } //end updateClientDelivNoteDiscountLine
 
 
-int ClientDelivNote::insertClientDelivNoteDiscountLine(int i) {
+int AlbaranClienteView::insertClientDelivNoteDiscountLine(int i) {
 	QString SQLQuery ="";
 	SQLQuery = "INSERT INTO dalbaran (conceptdalbaran, propordalbaran, idalbaran)";
 	SQLQuery += " VALUES (";
@@ -753,17 +609,17 @@ int ClientDelivNote::insertClientDelivNoteDiscountLine(int i) {
 } //end insertClientDelivNoteDiscountLine
 
 
-int ClientDelivNote::deleteClientDelivNoteDiscountLine(int line) {
+int AlbaranClienteView::deleteClientDelivNoteDiscountLine(int line) {
 	QString SQLQuery = "DELETE FROM dalbaran WHERE numdalbaran ="+m_listDiscounts->text(line,COL_DESCUENTO_NUMDALBARAN)+" and idalbaran="+m_idalbaran;
 	return companyact->ejecuta(SQLQuery);
 } //end deleteClientDelivNoteDiscountLine
 
-void ClientDelivNote::s_cancel() {
+void AlbaranClienteView::s_cancel() {
 	close();
 }//end cancel
 
 
-void ClientDelivNote::calculateImports() {
+void AlbaranClienteView::calculateImports() {
 	int i = 0;
 	float netImport = 0;
 	float taxImport = 0;
@@ -784,7 +640,7 @@ void ClientDelivNote::calculateImports() {
 } // end calculateImports
 
 
-QString ClientDelivNote::calculateValues() {
+QString AlbaranClienteView::calculateValues() {
 	QString values = retrieveValues("QTable");
 	values += retrieveValues("QLineEdit");
 	values += retrieveValues("QTextEdit");
@@ -792,7 +648,7 @@ QString ClientDelivNote::calculateValues() {
 }
 
 
-bool ClientDelivNote::eventFilter( QObject *obj, QEvent *ev ) {
+bool AlbaranClienteView::eventFilter( QObject *obj, QEvent *ev ) {
 	if ( obj->isA("QTable")) {
 		QTable *t = (QTable *)obj;
 		if ( ev->type() == QEvent::KeyRelease ) {
@@ -841,7 +697,7 @@ bool ClientDelivNote::eventFilter( QObject *obj, QEvent *ev ) {
 } //end eventFilter
 
 
-void ClientDelivNote::nextCell(QObject *obj) {
+void AlbaranClienteView::nextCell(QObject *obj) {
 	QTable *t = (QTable *)obj;
 	int row = t->currentRow();
 	int col = t->currentColumn();
@@ -871,7 +727,7 @@ void ClientDelivNote::nextCell(QObject *obj) {
 }
 
 
-void ClientDelivNote::antCell(QObject *obj) {
+void AlbaranClienteView::antCell(QObject *obj) {
 	QTable *t = (QTable *)obj;
 	int row = t->currentRow();
 	int col = t->currentColumn();
@@ -897,7 +753,7 @@ void ClientDelivNote::antCell(QObject *obj) {
 }
 
 
-void ClientDelivNote::duplicateCell(QObject *obj) {
+void AlbaranClienteView::duplicateCell(QObject *obj) {
 	QTable *t = (QTable *)obj;
 	int row = t->currentRow();
 	int col = t->currentColumn();
@@ -914,7 +770,7 @@ void ClientDelivNote::duplicateCell(QObject *obj) {
 }
 
 
-QString ClientDelivNote::retrieveValues(QString qsWidget) {
+QString AlbaranClienteView::retrieveValues(QString qsWidget) {
 	QObjectList *l = queryList( qsWidget );
 	QObjectListIt it( *l );
 	QObject *obj;
@@ -947,12 +803,12 @@ QString ClientDelivNote::retrieveValues(QString qsWidget) {
 
 
 
-void ClientDelivNote::s_almacenLostFocus() {
+void AlbaranClienteView::s_almacenLostFocus() {
 	buscarAlmacen();
 }//end s_almacenLostFocus
 
 
-void ClientDelivNote::buscarAlmacen() {
+void AlbaranClienteView::buscarAlmacen() {
 	companyact->begin();
 	cursor2 * cur= companyact->cargacursor("SELECT * FROM almacen where codigoalmacen ="+ m_codigoalmacen->text(),"unquery");
 	companyact->commit();
@@ -967,7 +823,7 @@ void ClientDelivNote::buscarAlmacen() {
 } // end buscarAlmacen
 
 
-QString ClientDelivNote::newDelivNoteNumber() {
+QString AlbaranClienteView::newDelivNoteNumber() {
 	QString rtnNumber;
 	companyact->begin();
 	cursor2 * cur4= companyact->cargacursor("SELECT max(numalbaran) FROM albaran WHERE idalmacen="+m_idalmacen,"unquery2");
@@ -980,4 +836,4 @@ QString ClientDelivNote::newDelivNoteNumber() {
 	delete cur4;
 	return rtnNumber;
 } // end newDelivNoteNumber
-
+*/

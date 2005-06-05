@@ -129,11 +129,12 @@ void articleedit::chargeArticle(QString idArt) {
         cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
         if (!cur->eof()) {
             idArticle = idArt;
-	    		m_idFamilia = cur->valor("idfamilia");
+	    m_idFamilia = cur->valor("idfamilia");
             m_codigocompletofamilia->setText(cur->valor("codigocompletofamilia"));
             m_codigoarticulo->setText(cur->valor("codarticulo"));
             m_nombrearticulo->setText(cur->valor("nomarticulo"));
             m_obserarticulo->setText(cur->valor("obserarticulo"));
+	    m_pvparticulo->setText(cur->valor("pvparticulo"));
             ivaType=cur->valor("idtipo_iva");
             m_codigocompletoarticulo->setText(cur->valor("codigocompletoarticulo"));
 
@@ -193,6 +194,7 @@ void articleedit::boton_nuevo() {
     m_codigoarticulo->setText("");
     m_nombrearticulo->setText("");
     m_obserarticulo->setText("");
+    m_pvparticulo->setText("0");
     m_combotipo_iva->setCurrentItem(0);
 }// end boton_nuevo
 
@@ -243,16 +245,18 @@ void articleedit::s_grabarClicked() {
         SQLQuery += " , nomarticulo='"+m_nombrearticulo->text()+"'"; 
 		  SQLQuery += " , idfamilia="+m_idFamilia;
         SQLQuery += " , obserarticulo='"+m_obserarticulo->text()+"'";
+	SQLQuery += " , pvparticulo="+m_pvparticulo->text()+" ";
         SQLQuery += " , idtipo_iva="+m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem());
         SQLQuery += " WHERE idarticulo ="+idArticle;
     } else {
-        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia)";
+        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia, pvparticulo)";
         SQLQuery += " VALUES (";
-        SQLQuery += " "+m_codigoarticulo->text();
+        SQLQuery += " '"+m_codigoarticulo->text()+"' ";
         SQLQuery += " , '"+m_nombrearticulo->text()+"'";
         SQLQuery += " , '"+m_obserarticulo->text()+"'";
         SQLQuery += " , "+m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem());
 	SQLQuery += " , "+m_idFamilia;
+	SQLQuery += " , "+m_pvparticulo->text()+" ";
         SQLQuery += ")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);

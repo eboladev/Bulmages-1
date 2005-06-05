@@ -92,6 +92,16 @@ INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpr
 INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen) VALUES (2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', '13/12/2004', 'Sin comentarios', 1, 1, 1);
 INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen) VALUES (3, '10/11/2004', 'Tercer Contacto', '971 29 06 29', '14/12/2004', 'Sin comentarios', 1, 2, 1);
 
+
+INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('DD', 'Serie de ejemplo');
+
+INSERT INTO factura (idserie_factura, numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES (1, 1, '30/11/2004', 'Primer Contacto', '971 32 32 78', 'Sin comentarios', 1, 1, 1);
+INSERT INTO factura (idserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES (1, 2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', 'Sin comentarios', 1, 1, 1);
+INSERT INTO factura (idserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES (1, 3, '10/11/2004', 'Tercer Contacto', '971 29 06 29',  'Sin comentarios', 1, 2, 1);
+
+
+
+
 INSERT INTO suministra (idarticulo, idproveedor) VALUES (1, 1);
 INSERT INTO suministra (idarticulo, idproveedor) VALUES (2, 1);
 INSERT INTO suministra (idarticulo, idproveedor) VALUES (3, 2);

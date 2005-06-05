@@ -111,31 +111,23 @@ using namespace std;
 
 Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) , presupuesto(comp) {
 	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-	subform = new listlinpresupuestoview(companyact, tab_2);
-/*
-	m_list= new QTable(this,"hola mundo");
-	m_list->setNumRows(5);
-	m_list->setNumCols(5);
-*/
-//	m_list = subform;	
-	setlislinpresupuesto(subform);
+	subform2->setcompany(comp);
+	setlislinpresupuesto(subform2);
    inicialize();
    comp->meteWindow(caption(),this);
+   	fprintf(stderr,"Fin de la inicialización de Budget\n");
 }// end Budget
 
 
 Budget::~Budget() {
 	companyact->refreshBudgets();
 	companyact->sacaWindow(this);
-	delete subform;
-	delete m_list;
 }// end ~Budget
 
 
 void Budget::inicialize() {
 
 	m_nomalmacen->setText("");
-	
 	// Tratamos la forma de pago.
 	m_comboformapago->clear();
 	QString query = "SELECT * FROM prfp WHERE idpresupuesto="+m_idpresupuesto;
@@ -148,9 +140,6 @@ void Budget::inicialize() {
 		cargarcomboformapago("0");	
 	}// end if
 	delete cur1;
-	
-
-
 	
 // Inicializamos la tabla de descuentos del presupuesto
 	m_listDiscounts->setNumRows( 0 );
@@ -321,7 +310,7 @@ void Budget::newBudgetLine() {
 
 void Budget::s_removeBudget() {
 	fprintf(stderr,"Iniciamos el boton_borrar\n");
-	if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "SÃ­", "No") == 0) {
+	if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "Si", "No") == 0) {
 		borraPresupuesto();
 	}// end if	
 }// end boton_borrar
@@ -371,27 +360,6 @@ void Budget::valueBudgetDiscountLineChanged(int row, int col) {
 
 
 
-
-
-
-void Budget::s_contextMenu(int, int, int button, const QPoint &poin) {
-/*
-	qDebug("button = %d", button);
-	if (button == 2) {
-		QPopupMenu *popup;
-		popup = new QPopupMenu;
-		popup->insertItem(tr("Eliminar"),101);
-		//popup->insertSeparator();
-		int opcion = popup->exec(m_list->mapToGlobal(poin));
-		switch(opcion) {
-			case 101:
-				removeBudgetLine();
-				break;
-		}// end switch
-		delete popup;
-	}
-*/
-}// end contextmenu
 
 
 void Budget::s_contextMenuDiscount(int, int, int button, const QPoint &poin) {
@@ -675,9 +643,7 @@ QString Budget::retrieveValues(QString qsWidget) {
 
 QString Budget::newBudgetNumber() {
 	QString rtnNumber;
-	companyact->begin();
 	cursor2 * cur4= companyact->cargacursor("SELECT max(numpresupuesto) FROM presupuesto WHERE idalmacen="+m_idalmacen,"unquery1");
-	//companyact->commit();
 	if (!cur4->eof()) {
 		rtnNumber = QString().sprintf("%d",cur4->valor(0).toInt()+1);
 	} else {
@@ -688,7 +654,15 @@ QString Budget::newBudgetNumber() {
 }
 
 
+void   Budget::pintatotales(float base, float iva) {
+	m_totalBases->setText(QString::number(base));
+	m_totalTaxes->setText(QString::number(iva));
+	m_totalBudget->setText(QString::number(iva+base));
+};// end pintatotales
+
+
 void Budget::presentaReports() {
+
 	int txt=1;
 	QString codigoarticulo;
 	QString descripcionarticulo;
@@ -747,19 +721,19 @@ void Budget::presentaReports() {
 	
 	int i = 0;
 	int error = 0;
-	while (i < m_list->numRows() && error==0) {
-		if (m_list->text(i,COL_REMOVE)!="S") {
-			if (m_list->text(i,COL_IDARTICULO)!="" || m_list->text(i,COL_NOMARTICULO)!="") {
-				codigoarticulo = m_list->text(i,COL_CODARTICULO).ascii();
-				descripcionarticulo = m_list->text(i,COL_NOMARTICULO).ascii();
-				preciolinea = m_list->text(i,COL_PVPLPRESUPUESTO).ascii();
-				cantidadlinea = m_list->text(i,COL_CANTLPRESUPUESTO).ascii();
-				descuentolinea = m_list->text(i,COL_DESCUENTOLPRESUPUESTO).ascii();
-				float importe = m_list->text(i, COL_PVPLPRESUPUESTO).toFloat() * m_list->text(i, COL_CANTLPRESUPUESTO).toFloat();
-				importe -=  (importe*m_list->text(i, COL_DESCUENTOLPRESUPUESTO).toFloat())/100;
+	while (i < subform2->numRows() && error==0) {
+		if (subform2->text(i,COL_REMOVE)!="S") {
+			if (subform2->text(i,COL_IDARTICULO)!="" || subform2->text(i,COL_NOMARTICULO)!="") {
+				codigoarticulo = subform2->text(i,COL_CODARTICULO).ascii();
+				descripcionarticulo = subform2->text(i,COL_NOMARTICULO).ascii();
+				preciolinea = subform2->text(i,COL_PVPLPRESUPUESTO).ascii();
+				cantidadlinea = subform2->text(i,COL_CANTLPRESUPUESTO).ascii();
+				descuentolinea = subform2->text(i,COL_DESCUENTOLPRESUPUESTO).ascii();
+				float importe = subform2->text(i, COL_PVPLPRESUPUESTO).toFloat() * subform2->text(i, COL_CANTLPRESUPUESTO).toFloat();
+				importe -=  (importe*subform2->text(i, COL_DESCUENTOLPRESUPUESTO).toFloat())/100;
 				importelinea = QString().sprintf("%0.2f",importe).ascii();
-				bases[m_list->text(i,COL_TIPO_IVA).toInt()]+=importe;
-				tasas[m_list->text(i,COL_TIPO_IVA).toInt()]=m_list->text(i,COL_TASATIPO_IVA).toFloat();
+				bases[subform2->text(i,COL_TIPO_IVA).toInt()]+=importe;
+				tasas[subform2->text(i,COL_TIPO_IVA).toInt()]=subform2->text(i,COL_TASATIPO_IVA).toFloat();
 		
 				if (txt) {
 					//presentaciï¿½txt normal

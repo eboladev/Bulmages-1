@@ -30,35 +30,32 @@ class company;
 
 
 class ClientInvoicesList : public ClientInvoicesListBase {
-Q_OBJECT
+    Q_OBJECT
 private:
-   company *companyact;
-   int m_modo; // == 0 es modo edición
-            // ==1 es modo selector.
-   QString m_idcliinvoice;
-   
+    company *companyact;
+    int m_modo; // == 0 es modo edición
+    // ==1 es modo selector.
+    QString m_idcliinvoice;
+
 public:
     ClientInvoicesList(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
     ~ClientInvoicesList();
     void inicializa();
-    void modoseleccion() {m_modo=1;};
-    void modoedicion() {m_modo=0;};
-    QString idCliInvoice() {return m_idcliinvoice;};
-    
+    void modoseleccion() {
+        m_modo=1;
+    };
+    void modoedicion() {
+        m_modo=0;
+    };
+    QString idCliInvoice() {
+        return m_idcliinvoice;
+    };
+
 public slots:
     virtual void s_doubleclicked(int, int, int, const QPoint &);
     virtual void s_newClientInvoice();
-	 virtual void s_removeClientInvoice();
-	 virtual void s_contextMenu(int, int, int, const QPoint &);
-    
-    /*
-    virtual void boton_editar();
-    
-    virtual void boton_duplicar();
-    virtual void boton_borrar();
-    virtual void boton_imprimir();
-    virtual void boton_filtrar();
-*/
+    virtual void s_removeClientInvoice();
+    virtual void s_contextMenu(int, int, int, const QPoint &);
 };
 
 #endif

@@ -104,8 +104,8 @@ CREATE TABLE tipo_iva (
 -- fechatasa_iva es la fecha de entrada en vigor del % de IVA para el tipo descrito.
 CREATE TABLE tasa_iva (
 	idtasa_iva serial PRIMARY KEY,
-	idtipo_iva integer REFERENCES tipo_iva(idtipo_iva),
-	porcentasa_iva NUMERIC(5, 2),
+	idtipo_iva integer REFERENCES tipo_iva(idtipo_iva) NOT NULL,
+	porcentasa_iva NUMERIC(5, 2) NOT NULL,
 	fechatasa_iva date NOT NULL,
 	UNIQUE (idtipo_iva, fechatasa_iva)
 );
@@ -158,7 +158,8 @@ CREATE TRIGGER calculacodigocompletofamiliatrigger
     BEFORE INSERT OR UPDATE ON familia
     FOR EACH ROW
     EXECUTE PROCEDURE calculacodigocompletofamilia();
-
+    
+    
 CREATE FUNCTION propagacodigocompletofamilia () RETURNS "trigger"
 AS '
 DECLARE
@@ -209,13 +210,17 @@ CREATE TABLE articulo (
     idarticulo serial PRIMARY KEY,
     codarticulo character varying(12),
     nomarticulo character varying(50),
-	 abrevarticulo character varying(30),
+    abrevarticulo character varying(30),
     obserarticulo character varying(2000),
     idtipo_articulo numeric(2, 0) REFERENCES tipo_articulo(idtipo_articulo),
     idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
     codigocompletoarticulo character varying(100) UNIQUE,
     idfamilia integer REFERENCES familia(idfamilia) NOT NULL,
-	 inactivoarticulo character(1)
+    inactivoarticulo character(1),
+    -- ATENCION, este campo no da el pvp real del artículo, solo es una de las multiples formas de acceder al precio del articulo.
+    -- Para obtener el precio de un artículo se debe usar la funcion pvparticulo.
+    -- Para saber el iva correspondiente a un articulo se debe usar la función ivaarticulo.
+    pvparticulo numeric(12,2) NOT NULL DEFAULT 0
 );
 
 
@@ -473,8 +478,8 @@ CREATE TABLE lpresupuesto (
    desclpresupuesto character varying(150),
    cantlpresupuesto float,
    pvplpresupuesto float,
+   ivalpresupuesto numeric(5,2),
    descuentolpresupuesto float,
--- Incluir porcentaje de IVA
    idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -488,14 +493,38 @@ CREATE TABLE lpresupuesto (
 -- Data
 -- Factura a clients.
 CREATE TABLE factura (
-	idfactura serial PRIMARY KEY,
-	idserie_factura char(2) NOT NULL,
+   idfactura serial PRIMARY KEY,
+   idserie_factura char(2) NOT NULL,
    numfactura integer NOT NULL,
-   fechafactura date,
-	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-	UNIQUE (idalmacen, idserie_factura, numfactura)
+   ffactura date,
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+   contactfactura character varying(90),
+   telfactura character varying(20),
+   comentfactura character varying(3000),
+   idusuari integer,
+   idcliente integer REFERENCES cliente(idcliente),
+   idforma_pago integer REFERENCES forma_pago(idforma_pago),   
+	UNIQUE (idalmacen, idserie_factura, numfactura)	
 );
 
+
+-- Linea de presupuesto
+-- Numero
+-- Descripcio: Descripció de l'article en el moment de ser presupostat.
+-- Quantitat
+-- PVP: Preu de l'article en el moment de ser pressupostat
+-- Descompte: Percentatge de descompte en línia.
+-- Linia de pressupost a clients.
+CREATE TABLE lfactura (
+   idlfactura serial PRIMARY KEY,
+   desclfactura character varying(150),
+   cantlfactura float,
+   pvplfactura float,
+   ivalfactura numeric(5,2),
+   descuentolfactura float,
+   idfactura integer NOT NULL REFERENCES factura(idfactura),
+   idarticulo integer REFERENCES articulo(idarticulo)
+);
 
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
@@ -533,8 +562,8 @@ CREATE TABLE albaran (
    idforma_pago integer REFERENCES forma_pago(idforma_pago),
    idfactura integer REFERENCES factura(idfactura),
    idnofactura integer REFERENCES nofactura(idnofactura),
-	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-	UNIQUE (idalmacen, numalbaran)
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+   UNIQUE (idalmacen, numalbaran)
 );
 
 
@@ -708,3 +737,34 @@ CREATE TABLE codigobarras (
 	cajxpaletcodigobarras numeric(4, 0),
 	unidadcodigobarras character(1)
 );
+
+-- FUNCIONES VARIAS DE SOPORTE.
+
+CREATE OR REPLACE FUNCTION ivaarticulo(integer) RETURNS numeric(5,2)
+AS'
+DECLARE
+	idarticulo ALIAS FOR $1;
+	as RECORD;
+BEGIN
+	SELECT INTO AS * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo ORDER BY fechatasa_iva;
+	IF FOUND THEN
+		RETURN as.porcentasa_iva;
+	END IF;
+	RETURN 0.0;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION pvparticulo(integer) RETURNS numeric(5,2)
+AS'
+DECLARE
+	idarticulo ALIAS FOR $1;
+	as RECORD;
+BEGIN
+	SELECT INTO AS pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
+	IF FOUND THEN
+		RETURN as.pvparticulo;
+	END IF;
+	RETURN 0.0;
+END;
+' LANGUAGE plpgsql;

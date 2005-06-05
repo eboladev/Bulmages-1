@@ -23,7 +23,7 @@
 #include "company.h"
 #include "stdio.h"
 #include "budget.h"
-#include "clientdelivnote.h"
+#include "albaranclienteview.h"
 #include "providerslist.h"
 #include "provedit.h"
 #include "qobject.h"
@@ -38,6 +38,7 @@
 #include "abreempresaview.h"
 #include "fpago.h"
 #include "familiasview.h"
+#include "facturaslist.h"
 
 
 
@@ -76,6 +77,7 @@ void company::createMainWindows() {
    m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos","company"));  
    m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Listado de Clientes","company"));   
    m_clientDelivNotesList = new ClientDelivNotesList(this, m_pWorkspace,theApp->translate("Listado de Albaranes de Clientes","company"));
+   m_facturasList = new FacturasList(this, m_pWorkspace,theApp->translate("Listado de Albaranes de Facturas","company"));
    fprintf(stderr,"Fin de createMainWindows\n");
 }// end createMainWindows
 
@@ -161,7 +163,7 @@ void company::listClientDelivNotes() {
 }// end listbudgets
 
 void company::newClientDelivNote() {
-   ClientDelivNote *cDelivNote = new ClientDelivNote(this,m_pWorkspace,theApp->translate("Edicion de Albaranes", "company"));
+   AlbaranClienteView *cDelivNote = new AlbaranClienteView(this,m_pWorkspace,theApp->translate("Edicion de Albaranes", "company"));
    cDelivNote->showMaximized();
 }// end newClientDelivNote
 

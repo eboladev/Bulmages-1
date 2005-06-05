@@ -1,5 +1,5 @@
 //
-// C++ Implementation: listlinpresupuestoview
+// C++ Implementation: ListLinFacturaView
 //
 // Description:
 //
@@ -10,57 +10,57 @@
 //
 //
 
-#define COL_IDLPRESUPUESTO 0
+#define COL_IDLFACTURA 0
 #define COL_IDARTICULO 1
 #define COL_CODARTICULO 2
 #define COL_NOMARTICULO 3
-#define COL_DESCLPRESUPUESTO 4
-#define COL_CANTLPRESUPUESTO 5
-#define COL_PVPLPRESUPUESTO 6
-#define COL_DESCUENTOLPRESUPUESTO 7
-#define COL_IDPRESUPUESTO 8
+#define COL_DESCLFACTURA 4
+#define COL_CANTLFACTURA 5
+#define COL_PVPLFACTURA 6
+#define COL_DESCUENTOLFACTURA 7
+#define COL_IDFACTURA 8
 #define COL_REMOVE 9
 #define COL_TASATIPO_IVA 10
 #define COL_TIPO_IVA 11
 
 
 #include "articleslist.h"
-#include "listlinpresupuestoview.h"
+#include "listlinfacturaview.h"
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 
 
-listlinpresupuestoview::listlinpresupuestoview(QWidget * parent, const char * name) : QTable(parent, name), listlinpresupuesto() {
-    /// Inicializamos la tabla de lineas de presupuesto
+ListLinFacturaView::ListLinFacturaView(QWidget * parent, const char * name) : QTable(parent, name), ListLinFactura() {
+    /// Inicializamos la tabla de lineas de Factura
     setNumCols(12);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "N L�ea" ) );
-    horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripci�" ) );
-    horizontalHeader()->setLabel( COL_CANTLPRESUPUESTO, tr( "Cantidad" ) );
-    horizontalHeader()->setLabel( COL_PVPLPRESUPUESTO, tr( "Precio" ) );
-    horizontalHeader()->setLabel( COL_DESCUENTOLPRESUPUESTO, tr( "Descuento" ) );
-    horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "N Pedido" ) );
+    horizontalHeader()->setLabel( COL_IDLFACTURA, tr( "N L�ea" ) );
+    horizontalHeader()->setLabel( COL_DESCLFACTURA, tr( "Descripci�" ) );
+    horizontalHeader()->setLabel( COL_CANTLFACTURA, tr( "Cantidad" ) );
+    horizontalHeader()->setLabel( COL_PVPLFACTURA, tr( "Precio" ) );
+    horizontalHeader()->setLabel( COL_DESCUENTOLFACTURA, tr( "Descuento" ) );
+    horizontalHeader()->setLabel( COL_IDFACTURA, tr( "N Pedido" ) );
     horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Art�ulo" ) );
     horizontalHeader()->setLabel( COL_CODARTICULO, tr( "C�igo Art�ulo" ) );
     horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripci� Art�ulo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
 
-    setColumnWidth(COL_IDLPRESUPUESTO,100);
-    setColumnWidth(COL_DESCLPRESUPUESTO,300);
-    setColumnWidth(COL_CANTLPRESUPUESTO,100);
-    setColumnWidth(COL_PVPLPRESUPUESTO,100);
-    setColumnWidth(COL_DESCUENTOLPRESUPUESTO,74);
-    setColumnWidth(COL_IDPRESUPUESTO,100);
+    setColumnWidth(COL_IDLFACTURA,100);
+    setColumnWidth(COL_DESCLFACTURA,300);
+    setColumnWidth(COL_CANTLFACTURA,100);
+    setColumnWidth(COL_PVPLFACTURA,100);
+    setColumnWidth(COL_DESCUENTOLFACTURA,74);
+    setColumnWidth(COL_IDFACTURA,100);
     setColumnWidth(COL_IDARTICULO,100);
     setColumnWidth(COL_CODARTICULO,100);
     setColumnWidth(COL_NOMARTICULO,300);
     setColumnWidth(COL_TASATIPO_IVA,50);
     setColumnWidth(COL_TIPO_IVA,50);
 
-    hideColumn(COL_IDLPRESUPUESTO);
-    hideColumn(COL_IDPRESUPUESTO);
+    hideColumn(COL_IDLFACTURA);
+    hideColumn(COL_IDFACTURA);
     hideColumn(COL_IDARTICULO);
     hideColumn(COL_REMOVE);
     hideColumn(COL_TASATIPO_IVA);
@@ -70,7 +70,7 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget * parent, const char * na
 
     setColumnReadOnly(COL_NOMARTICULO,true);
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-    setPaletteBackgroundColor("#DDDDDD");
+    setPaletteBackgroundColor("#DDAAAA");
 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
 
@@ -81,37 +81,37 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget * parent, const char * na
 }
 
 
-listlinpresupuestoview::~listlinpresupuestoview() {}
+ListLinFacturaView::~ListLinFacturaView() {}
 
 
-void listlinpresupuestoview::pintalistlinpresupuesto() {
-    fprintf(stderr,"INICIO de pintalistlinpresupuesto\n");
+void ListLinFacturaView::pintaListLinFactura() {
+    fprintf(stderr,"INICIO de pintaListLinFactura\n");
     setNumRows(0);
     setNumRows(100);
     /// \todo Habr� que vaciar la tabla para que el pintado fuera exacto.
-    linpresupuesto *linea;
+    LinFactura *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        setText(i, COL_IDLPRESUPUESTO, linea->idlpresupuesto());
+        setText(i, COL_IDLFACTURA, linea->idlFactura());
         setText(i, COL_IDARTICULO, linea->idarticulo());
         setText(i, COL_CODARTICULO, linea->codigocompletoarticulo());
         setText(i, COL_NOMARTICULO, linea->nomarticulo());
-        setText(i, COL_DESCLPRESUPUESTO, linea->desclpresupuesto());
-        setText(i, COL_CANTLPRESUPUESTO, linea->cantlpresupuesto());
-        setText(i, COL_DESCUENTOLPRESUPUESTO, linea->descuentolpresupuesto());
-        setText(i, COL_IDPRESUPUESTO, linea->idpresupuesto());
+        setText(i, COL_DESCLFACTURA, linea->desclFactura());
+        setText(i, COL_CANTLFACTURA, linea->cantlFactura());
+        setText(i, COL_DESCUENTOLFACTURA, linea->descuentolFactura());
+        setText(i, COL_IDFACTURA, linea->idFactura());
         setText(i, COL_REMOVE, "XX");
-        setText(i, COL_TASATIPO_IVA, linea->ivalpresupuesto()+"%");
-        setText(i, COL_TIPO_IVA, linea->idlpresupuesto());
-        setText(i, COL_PVPLPRESUPUESTO, linea->pvplpresupuesto());
+        setText(i, COL_TASATIPO_IVA, linea->ivalFactura()+"%");
+        setText(i, COL_TIPO_IVA, linea->idlFactura());
+        setText(i, COL_PVPLFACTURA, linea->pvplFactura());
         i++;
     }// end for
-    fprintf(stderr,"FIN de pintalistlinpresupuesto\n");
+    fprintf(stderr,"FIN de pintaListLinFactura\n");
 }
 
 
 
-void listlinpresupuestoview::contextMenu ( int row, int col, const QPoint & pos ) {
+void ListLinFacturaView::contextMenu ( int row, int, const QPoint & pos ) {
     QPopupMenu *popup;
     int opcion;
     popup = new QPopupMenu;
@@ -120,41 +120,41 @@ void listlinpresupuestoview::contextMenu ( int row, int col, const QPoint & pos 
     delete popup;
     switch(opcion) {
     case 1:
-        borralinpresupuesto(row);
+        borraLinFactura(row);
     }// end switch
 }// end contextMenuRequested
 
 
-void listlinpresupuestoview::borralinpresupuestoact() {
-    borralinpresupuesto(currentRow());
-}// end borralinpresupuestoact
+void ListLinFacturaView::borraLinFacturaact() {
+    borraLinFactura(currentRow());
+}// end borraLinFacturaact
 
 
-void listlinpresupuestoview::pintalinlistlinpresupuesto(int pos) {
-fprintf(stderr,"pintalinlistlinpresupuesto(%d)\n",pos);
-    linpresupuesto *linea;
+void ListLinFacturaView::pintalinListLinFactura(int pos) {
+fprintf(stderr,"pintalinListLinFactura(%d)\n",pos);
+    LinFactura *linea;
     linea = m_lista.at(pos);
-    setText(pos, COL_IDLPRESUPUESTO, linea->idlpresupuesto());
+    setText(pos, COL_IDLFACTURA, linea->idlFactura());
     setText(pos, COL_IDARTICULO, linea->idarticulo());
     setText(pos, COL_CODARTICULO, linea->codigocompletoarticulo());
     setText(pos, COL_NOMARTICULO, linea->nomarticulo());
-    setText(pos, COL_DESCLPRESUPUESTO, linea->desclpresupuesto());
-    setText(pos, COL_CANTLPRESUPUESTO, linea->cantlpresupuesto());
-    setText(pos, COL_DESCUENTOLPRESUPUESTO, linea->descuentolpresupuesto());
-    setText(pos, COL_IDPRESUPUESTO, linea->idpresupuesto());
+    setText(pos, COL_DESCLFACTURA, linea->desclFactura());
+    setText(pos, COL_CANTLFACTURA, linea->cantlFactura());
+    setText(pos, COL_DESCUENTOLFACTURA, linea->descuentolFactura());
+    setText(pos, COL_IDFACTURA, linea->idFactura());
     setText(pos, COL_REMOVE, "XX");
-    setText(pos, COL_TASATIPO_IVA, linea->ivalpresupuesto()+"%");
-    setText(pos, COL_TIPO_IVA, linea->idlpresupuesto());
-    setText(pos, COL_PVPLPRESUPUESTO, linea->pvplpresupuesto());
+    setText(pos, COL_TASATIPO_IVA, linea->ivalFactura()+"%");
+    setText(pos, COL_TIPO_IVA, linea->idlFactura());
+    setText(pos, COL_PVPLFACTURA, linea->pvplFactura());
 
 }
 
 
-bool listlinpresupuestoview::eventFilter( QObject *obj, QEvent *ev ) {
+bool ListLinFacturaView::eventFilter( QObject *obj, QEvent *ev ) {
 	fprintf(stderr,"eventFilter()\n");
     QString idArticle;
-//    linpresupuesto *linea=lineaact();
-    linpresupuesto *linea;//=m_lista.at(currentRow());
+//    LinFactura *linea=lineaact();
+    LinFactura *linea;//=m_lista.at(currentRow());
     
         if ( ev->type() == QEvent::KeyRelease ) {
 //        if ( ev->type() == QEvent::KeyPress ) {
@@ -168,7 +168,7 @@ bool listlinpresupuestoview::eventFilter( QObject *obj, QEvent *ev ) {
 	    	linea = lineaact();
                 idArticle = searchArticle();
                 linea->setidarticulo(idArticle);
-                pintalinlistlinpresupuesto(currentRow());
+                pintalinListLinFactura(currentRow());
 		return TRUE;
                 break;
             case Qt::Key_Return:
@@ -176,15 +176,15 @@ bool listlinpresupuestoview::eventFilter( QObject *obj, QEvent *ev ) {
                 // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
                 switch (col) {
                 case COL_CODARTICULO:
-                    setCurrentCell(row, COL_DESCLPRESUPUESTO);
+                    setCurrentCell(row, COL_DESCLFACTURA);
                     break;
-                case COL_DESCLPRESUPUESTO:
-                    setCurrentCell(row, COL_CANTLPRESUPUESTO);
+                case COL_DESCLFACTURA:
+                    setCurrentCell(row, COL_CANTLFACTURA);
                     break;
-                case COL_CANTLPRESUPUESTO:
-                    setCurrentCell(row, COL_PVPLPRESUPUESTO);
+                case COL_CANTLFACTURA:
+                    setCurrentCell(row, COL_PVPLFACTURA);
                     break;
-                case COL_PVPLPRESUPUESTO:
+                case COL_PVPLFACTURA:
                     setCurrentCell(row+1, COL_CODARTICULO);
                     break;
                 }// end switch
@@ -197,59 +197,60 @@ bool listlinpresupuestoview::eventFilter( QObject *obj, QEvent *ev ) {
 
 
 
-void listlinpresupuestoview::valueBudgetLineChanged(int row, int col) {
+void ListLinFacturaView::valueBudgetLineChanged(int row, int col) {
     fprintf(stderr,"valueBudgetLineChanged \n");
-    linpresupuesto *linea;
+    LinFactura *linea;
     linea = lineaat(row);
     if (linea != NULL) {
         switch (col) {
-        case COL_DESCUENTOLPRESUPUESTO: {
-                float discountLine = text(row, COL_DESCUENTOLPRESUPUESTO).replace(",",".").toFloat();
-                linea->setdescuentolpresupuesto(QString::number(discountLine));
+        case COL_DESCUENTOLFACTURA: {
+                float discountLine = text(row, COL_DESCUENTOLFACTURA).replace(",",".").toFloat();
+                linea->setdescuentolFactura(QString::number(discountLine));
                 break;
             }
         case COL_CODARTICULO:
             manageArticle(row);
             break;
-        case COL_DESCLPRESUPUESTO:
-            linea->setdesclpresupuesto(text(row,COL_DESCLPRESUPUESTO));
+        case COL_DESCLFACTURA:
+            linea->setdesclFactura(text(row,COL_DESCLFACTURA));
             break;
-        case COL_CANTLPRESUPUESTO: {
-                float cantLine = text(row, COL_CANTLPRESUPUESTO).replace(",",".").toFloat();
-                linea->setcantlpresupuesto(QString::number(cantLine));
+        case COL_CANTLFACTURA: {
+                float cantLine = text(row, COL_CANTLFACTURA).replace(",",".").toFloat();
+                linea->setcantlFactura(QString::number(cantLine));
                 break;
             }
-        case COL_PVPLPRESUPUESTO:  {
-                float pvpLine = text(row, COL_PVPLPRESUPUESTO).replace(",",".").toFloat();
-                linea->setpvplpresupuesto(QString::number(pvpLine));
+        case COL_PVPLFACTURA:  {
+                float pvpLine = text(row, COL_PVPLFACTURA).replace(",",".").toFloat();
+                linea->setpvplFactura(QString::number(pvpLine));
                 break;
             }
         case COL_TASATIPO_IVA: {
                 float ivaLine = text(row, COL_TASATIPO_IVA).replace(",",".").toFloat();
-                linea->setivalpresupuesto(QString::number(ivaLine));
+                linea->setivalFactura(QString::number(ivaLine));
                 break;
             }// end case
         }// end switch
-        pintalinlistlinpresupuesto(row);
+        pintalinListLinFactura(row);
     }// end if
 } //end valueBudgetLineChanged
 
 
 /// Devuelve la linea que se esta tratando actualmente
-linpresupuesto *listlinpresupuestoview::lineaact() {
-    fprintf(stderr,"listlinpresupuestoview::lineaact()\n");
+LinFactura *ListLinFacturaView::lineaact() {
+    fprintf(stderr,"ListLinFacturaView::lineaact()\n");
     return lineaat(currentRow());
 }// end lineaact
 
+
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
-linpresupuesto *listlinpresupuestoview::lineaat(int row) {
-    fprintf(stderr,"listlinpresupuesto::lineaat(%d)\n", row);
-    linpresupuesto *linea;
+LinFactura *ListLinFacturaView::lineaat(int row) {
+    fprintf(stderr,"ListLinFactura::lineaat(%d)\n", row);
+    LinFactura *linea;
     if (row >=0) {
         while (m_lista.at(row) == 0 ) {
 	    fprintf(stderr,"Creamos la linea\n");
-            linea=new linpresupuesto(companyact);
-            linea->setidpresupuesto(mdb_idpresupuesto);
+            linea=new LinFactura(companyact);
+            linea->setidFactura(mdb_idfactura);
             m_lista.append(linea);  
         }// end while	
 	      return(m_lista.at(row));
@@ -261,16 +262,16 @@ linpresupuesto *listlinpresupuestoview::lineaat(int row) {
 }// end lineaat
 
 
-void listlinpresupuestoview::manageArticle(int row) {
+void ListLinFacturaView::manageArticle(int row) {
 	fprintf(stderr,"manageArticle(%d)\n",row);
-    linpresupuesto *linea= lineaat(row);
+    LinFactura *linea= lineaat(row);
     QString articleCode = text(row, COL_CODARTICULO);
     linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));
-    pintalinlistlinpresupuesto(row);
+    pintalinListLinFactura(row);
 } //end manageArticle
 
 
-QString listlinpresupuestoview::searchArticle() {
+QString ListLinFacturaView::searchArticle() {
     fprintf(stderr,"Busqueda de un art�ulo\n");
     articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"));
     // , WType_Dialog| WShowModal

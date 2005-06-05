@@ -43,6 +43,7 @@ CREATE TABLE albaran (
 #include "clientinvoiceslist.h"
 #include "company.h"
 //#include "clientinvoice.h"
+#include "albaranclienteview.h"
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
@@ -60,7 +61,7 @@ CREATE TABLE albaran (
 #define COL_COMENTALBARAN 10
 
 ClientInvoicesList::ClientInvoicesList(company *comp, QWidget *parent, const char *name, int flag)
-        : ClientInvoicesListBase(parent, name, flag) {
+: ClientInvoicesListBase(parent, name, flag) {
     companyact = comp;
     inicializa();
     m_modo=0;
@@ -74,6 +75,8 @@ ClientInvoicesList::~ClientInvoicesList() {
 }// end ~providerslist
 
 void ClientInvoicesList::inicializa() {
+
+    fprintf(stderr,"ClientInvoicesList::inicializa()\n");
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
@@ -143,12 +146,13 @@ void ClientInvoicesList::inicializa() {
 
 
 void ClientInvoicesList::s_doubleclicked(int a, int , int , const QPoint &) {
+    fprintf(stderr,"ClientInvoicesList::s_doubleclicked\n");
     m_idcliinvoice = m_list->text(a,COL_IDALBARAN);
     if (m_modo ==0 && m_idcliinvoice != "") {
-        fprintf(stderr,"Iniciamos el boton_crear\n");
-        /*		ClientInvoice *cInvoice = new ClientInvoice(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
-        		cInvoice->chargeClientInvoice(m_idcliinvoice);
-        		cInvoice->show(); */
+        fprintf(stderr,"Cargamos la pantalla de edición AlbaranClienteView\n");
+        AlbaranClienteView *cInvoice = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+        cInvoice->cargaAlbaranCliente(m_idcliinvoice);
+        cInvoice->show();
     } else {
         close();
     }// end if
@@ -174,9 +178,9 @@ void ClientInvoicesList::s_contextMenu(int, int, int button, const QPoint &poin)
 
 
 void ClientInvoicesList::s_newClientInvoice() {
-    fprintf(stderr,"Iniciamos el boton_crear\n");
-    /*	ClientInvoice *cInvoice = new ClientInvoice(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
-     	cInvoice->show(); */
+    fprintf(stderr,"ClientInvoicesList::s_newClientInvoice\n");
+    AlbaranClienteView *cInvoice = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+    cInvoice->show();
 }// end boton_crear
 
 

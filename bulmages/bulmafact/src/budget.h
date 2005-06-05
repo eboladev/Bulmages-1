@@ -37,9 +37,6 @@ class company;
 
 class Budget : public BudgetBase , public presupuesto  {
     Q_OBJECT
-private:
-listlinpresupuestoview *subform;
-
 public:
     Budget(company *, QWidget *, const char *);
     ~Budget();
@@ -63,6 +60,7 @@ void	pintaNomClient(QString id) {m_nomclient->setText(id);};
 void	pintaCifClient(QString id) {m_cifclient->setText(id);};
 void	pintaCodigoAlmacen(QString id) {m_codigoalmacen-> setText(id);};
 void	pintaNomAlmacen(QString id) {m_nomalmacen-> setText(id);};
+void   pintatotales(float base, float iva);
 
 private:
     int insertfpBudget();
@@ -96,11 +94,10 @@ public slots:
     virtual void cancel();
     virtual void s_saveBudget() {guardapresupuesto();};
     virtual void s_removeBudget();
-    virtual void s_contextMenu(int, int, int, const QPoint &);
     virtual void s_contextMenuDiscount(int, int, int, const QPoint &);
     virtual void s_almacenLostFocus();
     virtual void s_printBudget();
-    
+    virtual void s_removeBudgetLine() {subform2->borralinpresupuestoact();};
     
     
     virtual void s_comentariotextChanged() { setComentPresupuesto(m_comentpresupuesto->text());};
@@ -111,6 +108,11 @@ public slots:
     
 	/// Este slot se activa cuando cambia la fecha del presupuesto.
     virtual void s_fpresupuestotextChanged(const QString &str) {/*setFPresupuesto(str);*/};
+    
+    	/// Este slot se activa cuando hay cambios en los subformularios.
+    virtual void s_pintaTotales() {  
+   	 pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+    }// end pintaTotales
 };
 
 #endif

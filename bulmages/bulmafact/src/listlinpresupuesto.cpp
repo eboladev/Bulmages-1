@@ -20,10 +20,17 @@ listlinpresupuesto::listlinpresupuesto(company *comp) {
     mdb_idpresupuesto="";
 }// end listlinpresupuesto
 
+listlinpresupuesto::listlinpresupuesto() {
+    	   fprintf(stderr,"Constructor de listlinpresupuesto\n");
+           companyact=NULL;
+           m_lista.setAutoDelete(TRUE);
+           mdb_idpresupuesto="";
+}// end listlinpresupuesto
+
 listlinpresupuesto::~listlinpresupuesto() {}
 
 
-void listlinpresupuesto::nuevalinea(QString desc, QString cantl, QString pvpl, QString descl, QString idart, QString codart, QString nomart) {
+void listlinpresupuesto::nuevalinea(QString desc, QString cantl, QString pvpl, QString descl, QString idart, QString codart, QString nomart, QString ivapres) {
         linpresupuesto *lin = new linpresupuesto(companyact,
                               "",
                               desc,
@@ -33,7 +40,8 @@ void listlinpresupuesto::nuevalinea(QString desc, QString cantl, QString pvpl, Q
                               mdb_idpresupuesto,
                               idart,
                               codart,
-                              nomart);
+                              nomart,
+			      ivapres);
 	m_lista.append(lin);
 }// end nuevalinea
 
@@ -44,10 +52,10 @@ linpresupuesto *listlinpresupuesto::linpos(int pos) {
 
 // Carga l�eas de presupuesto
 void listlinpresupuesto::chargeBudgetLines(QString idbudget) {
+    fprintf(stderr,"listlinpresupuesto::chargeBudgetLines\n");
     mdb_idpresupuesto = idbudget;
-    companyact->begin();
+    fprintf(stderr,"Hacemos la carga del cursor\n");
     cursor2 * cur= companyact->cargacursor("SELECT * FROM lpresupuesto, articulo WHERE idpresupuesto="+idbudget+" AND articulo.idarticulo=lpresupuesto.idarticulo","unquery");
-    companyact->commit();
     int i=0;
     while (!cur->eof())   {
         /// Creamos un elemento del tipo linpresupuesto y lo agregamos a la lista.
@@ -60,13 +68,15 @@ void listlinpresupuesto::chargeBudgetLines(QString idbudget) {
                               cur->valor("idpresupuesto"),
                               cur->valor("idarticulo"),
                               cur->valor("codigocompletoarticulo"),
-                              cur->valor("nomarticulo")
+                              cur->valor("nomarticulo"),
+			      cur->valor("ivalpresupuesto")
                                                 );
         m_lista.append(lin);
         i++;
         cur->siguienteregistro();
     }// end while
     delete cur;
+    fprintf(stderr,"Fin de listlinpresupuesto::chargeBudgetLines\n");
 }// end chargeBudgetLines
 
 
@@ -79,7 +89,29 @@ void listlinpresupuesto::guardalistlinpresupuesto() {
     }// end for
 }// en guardalistlinpresupuesto
 
+ float listlinpresupuesto::calculabase() {
+     float base=0;
+     linpresupuesto *linea;
+    uint i = 0;
+    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+        base += linea->calculabase();
+        i++;
+    }// end for
+    return base;
+ }// end calculabase
 
+ float listlinpresupuesto::calculaiva() {
+     float iva=0;
+     linpresupuesto *linea;
+    uint i = 0;
+    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+        iva += linea->calculaiva();
+        i++;
+    }// end for
+    return iva;
+ }// end calculabase
+
+ 
 void listlinpresupuesto::vaciar() {
     mdb_idpresupuesto = "";
     m_lista.clear();
@@ -93,3 +125,12 @@ void listlinpresupuesto::borrar() {
         companyact->commit();
     }// end if
 }// end borrar
+
+
+void listlinpresupuesto::borralinpresupuesto(int pos) {
+    linpresupuesto *linea;
+    linea = m_lista.at(pos);
+    linea->borrar();
+    m_lista.remove(pos);
+    pintalistlinpresupuesto();
+}// end borralinpresupuesto
