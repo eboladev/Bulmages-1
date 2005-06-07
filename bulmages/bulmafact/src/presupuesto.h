@@ -49,6 +49,8 @@ protected:
     QString mdb_nomalmacen;
     QString mdb_idpresupuesto;
     QString mdb_idusuari;
+    QString mdb_procesadopresupuesto;
+    QString mdb_descpresupuesto;
 
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
@@ -76,7 +78,8 @@ public:
     virtual void pintaCifClient(QString id) {};
     virtual void pintaCodigoAlmacen(QString id) {};
     virtual void pintaNomAlmacen(QString id) {};
-    
+    virtual void pintaprocesadopresupuesto(QString) {};
+    virtual void pintadescpresupuesto(QString) {};
     virtual void pintatotales(float, float) {};
 
     void setIdClient(QString val) { mdb_idcliente=val;};
@@ -93,6 +96,8 @@ public:
     void setNomAlmacen(QString val) { mdb_nomalmacen=val;};
     void setIdPresupuesto(QString val) {mdb_idpresupuesto=val;};
     void setIdUsuari(QString val) {mdb_idusuari=val;};
+    void setprocesadopresupuesto(QString val) {mdb_procesadopresupuesto = val;};
+    void setdescpresupuesto(QString val) {mdb_descpresupuesto = val;};
 
     void vaciaPresupuesto();
 

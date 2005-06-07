@@ -70,6 +70,7 @@ INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) V
 INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-2', '30/10/2004', 'Pedido especial noche halloween', 2, 3);
 INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-3', '02/11/2004', 'Frutos secos de temporada', 3, 2);
 INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-4', '02/10/2004', 'Pedido semanal de lencería', 6, 1);
+\echo "Hemos insertado los pedidos"
 
 INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 10, 1.2, '30/10/2004', 1, 1);
 INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 100, 2.23, '02/11/2004', 1, 2);
@@ -83,6 +84,14 @@ INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido
 INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 15, 3.2, '15/11/2004', 4, 1);
 INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 10, 8.59, '10/11/2004', 4, 2);
 INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 6, 6.15, '25/11/2004', 4, 3);
+
+
+
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES('PC-1', '25/10/2004', 'Pedido  carne y pescado', 1, 1);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES('PC-2', '30/10/2004', 'Pedido especial noche ', 2, 3);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES('PC-3', '02/11/2004', 'Frutos de temporada', 1, 2);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES('PC-4', '02/10/2004', 'Pedido de lencería', 2, 1);
+\echo "Hemos insertado los pedidos de cliente"
 
 INSERT INTO alb_pro (ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(1, '123', '01/12/2004', '30/11/2004', 'Albarán nº 123', 2);
 INSERT INTO alb_pro (ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(2, '2323', '15/11/2004', '10/11/2004', 'Albarán nº 2323', 1);

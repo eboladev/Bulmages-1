@@ -46,13 +46,17 @@ protected:
 public:
     AlbaranCliente(company *);
     virtual ~AlbaranCliente();
-    /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
+    /// Establece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setListLinAlbaranCliente ( ListLinAlbaranCliente *a) {
         listalineas =a;
 	listalineas->setcompany(companyact);
     };    
     void cargaAlbaranCliente(QString);
     void pintaAlbaranCliente();
+    void guardaAlbaranCliente();
+    void borraAlbaranCliente();
+    void setCifCliente(QString);
+    void setCodigoAlmacen(QString);
 
     virtual void pintaIdAlbaran(QString) {};
     virtual void pintaNumAlbaran(QString) {};
@@ -79,9 +83,7 @@ public:
     void setIdForma_Pago(QString val) { mdb_idforma_pago=val;};
     void setIdFactura(QString val) { mdb_idfactura=val;};
     void setIdAlmacen(QString val) {mdb_idalmacen=val;};
-    void setCodigoAlmacen(QString val) {mdb_codigoalmacen=val;};
     void setNomAlmacen(QString val) { mdb_nomalmacen=val;};
-    void setCifCliente(QString val) {mdb_cifcliente=val;};
     void setNomCliente(QString val) {mdb_nomcliente=val;};
     void setNumFactura(QString val) {mdb_numfactura=val;};
     

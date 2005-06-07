@@ -50,7 +50,7 @@ public:
     void pintaIdUsuario(QString) {};
     void pintaComentAlbaran(QString val) {m_comentalbaran->setText(val);};
     void pintaIdCliente(QString ) {};
-    void pintaIdForma_Pago(QString) {};
+    void pintaIdForma_Pago(QString);
     void pintaIdFactura(QString){};
     void pintaIdAlmacen(QString){};
     void pintaCodigoAlmacen(QString val) {m_codigoalmacen->setText(val);};
@@ -59,7 +59,29 @@ public:
     void pintaNomCliente(QString val) {m_nomcliente->setText(val);};
     void pintaNumFactura(QString) {};
     
-    void pintatotales(float, float) {};	
+    void pintatotales(float, float);	
+
+     
+public slots:
+    virtual void s_comentalbarantextChanged() { setComentAlbaran(m_comentalbaran->text());};
+    
+    virtual void s_codigoalmacentextChanged(const QString &val) {setCodigoAlmacen(val);};
+    virtual void s_numfacturatextChanged(const QString &val) {setNumFactura(val);};
+    virtual void s_cifclientetextChanged(const QString &val) {setCifCliente(val);};
+    virtual void s_fechaalbarantextChanged(const QString &val) {setFechaAlbaran(val);};
+    virtual void s_formapagoactivated(int a) {setIdForma_Pago(m_cursorcombo->valor("idforma_pago",a));};
+    
+    virtual void s_saveAlbaranCliente() {guardaAlbaranCliente();};
+    virtual void s_deleteAlbaranCliente() {borraAlbaranCliente();};
+    virtual void s_printAlbaranCliente(){};
+    virtual void s_searchCliente();
+    
+     /// Este slot se activa cuando hay cambios en los subformularios.
+    virtual void s_pintaTotales() {  
+   	 pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+    }// end pintaTotales     
+     
+     
 };
 
 #endif

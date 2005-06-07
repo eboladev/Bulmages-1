@@ -23,7 +23,10 @@ FORMS += bulmafactbase.ui \
          familiasdlg.ui \
          tiposarticulodlg.ui \
          facturaslistbase.ui \
-         facturabase.ui 
+         facturabase.ui \
+         pedidosclientelistbase.ui \
+	 pedidoclientebase.ui
+	 
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
@@ -63,9 +66,16 @@ HEADERS += bulmafact.h \
            listlinfacturaview.h \
            linfactura.h \
            albarancliente.h \
-	   listlinalbarancliente.h \
-	   listlinalbaranclienteview.h \
-	   linalbarancliente.h
+           listlinalbarancliente.h \
+           listlinalbaranclienteview.h \
+           linalbarancliente.h \
+           pedidosclientelist.h \
+	   pedidocliente.h \
+	   pedidoclienteview.h \
+	   linpedidocliente.h \
+	   listlinpedidocliente.h \
+	   listlinpedidoclienteview.h
+	   
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -101,9 +111,16 @@ SOURCES += bulmafact.cpp \
            listlinfacturaview.cpp \
            linfactura.cpp \
            albarancliente.cpp \
-	   listlinalbarancliente.cpp \
-	   listlinalbaranclienteview.cpp \
-	   linalbarancliente.cpp
+           listlinalbarancliente.cpp \
+           listlinalbaranclienteview.cpp \
+           linalbarancliente.cpp \
+           pedidosclientelist.cpp  \
+	   pedidocliente.cpp \
+	   pedidoclienteview.cpp \
+	   linpedidocliente.cpp \
+	   listlinpedidocliente.cpp \
+	   listlinpedidoclienteview.cpp 
+	   
 TEMPLATE = app
 LANGUAGE = C++
 CONFIG += release \

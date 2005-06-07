@@ -42,6 +42,18 @@ CREATE TABLE configuracion (
 );
 
 
+-- Codi: Clau artificial.
+-- Descripcio: Nom identificatiu o descripció breu.
+-- Dies_1T: Dies abans del primer termini computant els blocs de 30 com a mesos naturals.
+-- Descompte: Descompte automàtic per l'ús d'aquesta forma de pagament.
+CREATE TABLE forma_pago (
+   idforma_pago serial PRIMARY KEY,
+   descforma_pago character varying(500),
+   dias1tforma_pago integer,
+   descuentoforma_pago float
+);
+
+
 -- Codigo: Clave artificial.
 -- Nombre: Nombre identificativo del almacén.
 -- diralmacen: Dirección del almacén.
@@ -342,7 +354,7 @@ CREATE TABLE cliente (
    faltacliente date DEFAULT NOW(),
    fbajacliente date,
    comentcliente character varying(2000),
-	inactivocliente character(1)
+   inactivocliente character(1)
 );
 
 
@@ -355,9 +367,42 @@ CREATE TABLE pedido (
    numpedido character varying(60),
    fechapedido date,
    descpedido character varying(500),
-
    iddivision integer NOT NULL REFERENCES division(iddivision),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
+);
+
+
+-- Any: Any en que s'efectua la comanda.
+-- Numero: Número de comanda (començant de 1 cada any).
+-- Descripcio: Breu descripció o comentari opcional.
+-- Data: Data d'emisió de la comanda.
+CREATE TABLE pedidocliente (
+   idpedidocliente serial PRIMARY KEY,
+   numpedidocliente character varying(60),
+   fechapedidocliente date,
+   descpedidocliente character varying(500),
+   comentpedidocliente character varying(3000),   
+   idcliente integer NOT NULL REFERENCES cliente(idcliente),
+   idforma_pago integer REFERENCES forma_pago(idforma_pago),    
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
+);
+
+-- Linea de pedido
+-- Numero: Número de línia.
+-- Descripcio: Descripcio de l'article.
+-- Quantitat
+-- PVD
+-- Previsió: Data prevista de recepció
+CREATE TABLE lpedidocliente (
+   numlpedidocliente serial PRIMARY KEY,
+   desclpedidocliente character varying(150),
+   cantlpedidocliente float,
+   pvplpedidocliente float,
+   prevlpedidocliente date,
+   ivalpedidocliente numeric(5,2),
+   descuentolpedidocliente float,   
+   idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
+   idarticulo integer REFERENCES articulo(idarticulo)
 );
 
 
@@ -407,7 +452,8 @@ CREATE TABLE lpedido (
    cantlpedido float,
    pvdlpedido float,
    prevlpedido date,
-
+   ivalpedido numeric(5,2),
+   descuentolpedido float,
    idpedido integer NOT NULL REFERENCES pedido(idpedido),
    idalb_pro integer REFERENCES alb_pro(idalb_pro),
    idarticulo integer REFERENCES articulo(idarticulo)
@@ -415,16 +461,7 @@ CREATE TABLE lpedido (
 );
 
 
--- Codi: Clau artificial.
--- Descripcio: Nom identificatiu o descripció breu.
--- Dies_1T: Dies abans del primer termini computant els blocs de 30 com a mesos naturals.
--- Descompte: Descompte automàtic per l'ús d'aquesta forma de pagament.
-CREATE TABLE forma_pago (
-   idforma_pago serial PRIMARY KEY,
-   descforma_pago character varying(500),
-   dias1tforma_pago integer,
-   descuentoforma_pago float
-);
+
 
 -- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
 -- hacemos a petición de un cliente determinado
@@ -439,12 +476,13 @@ CREATE TABLE presupuesto (
    idpresupuesto serial PRIMARY KEY,
    numpresupuesto integer NOT NULL,
    fpresupuesto date,
+   descpresupuesto character varying(150),
    contactpresupuesto character varying(90),
    telpresupuesto character varying(20),
    vencpresupuesto date,
    comentpresupuesto character varying(3000),
    idusuari integer,
-
+   procesadopresupuesto boolean DEFAULT FALSE,
    idcliente integer REFERENCES cliente(idcliente),
 	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
 	UNIQUE (idalmacen, numpresupuesto)

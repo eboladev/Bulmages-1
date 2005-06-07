@@ -72,7 +72,7 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget * parent, const cha
 
     setColumnReadOnly(COL_NOMARTICULO,true);
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-    setPaletteBackgroundColor("#DDAAAA");
+    setPaletteBackgroundColor("#DDAADD");
 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
 

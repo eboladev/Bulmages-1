@@ -31,6 +31,7 @@
 #include <qlineedit.h>
 #include <qtextedit.h>
 #include <qlabel.h>
+#include <qcheckbox.h>
 
 /** @author Tomeu Borr� Riera */
 class company;
@@ -60,6 +61,12 @@ void	pintaNomClient(QString id) {m_nomclient->setText(id);};
 void	pintaCifClient(QString id) {m_cifclient->setText(id);};
 void	pintaCodigoAlmacen(QString id) {m_codigoalmacen-> setText(id);};
 void	pintaNomAlmacen(QString id) {m_nomalmacen-> setText(id);};
+void    pintaprocesadopresupuesto(QString id) {
+	if (id == "t" || id == "TRUE") m_procesadopresupuesto->setChecked(TRUE);
+	else m_procesadopresupuesto->setChecked(FALSE);
+};
+void pintadescpresupuesto(QString id) {m_descpresupuesto->setText(id);};
+
 void   pintatotales(float base, float iva);
 
 private:
@@ -105,7 +112,11 @@ public slots:
     virtual void s_codigoalmacentextChanged(const QString &str) {setCodigoAlmacen(str);};
     virtual void s_contactotextChanged(const QString &str) {setContractPresupuesto(str);};
     virtual void s_telpresupuestotextChanged(const QString &str) {setTelPresupuesto(str);};
-    
+    virtual void s_procesadopresupuestostateChanged(int i) {
+    	if (i) setprocesadopresupuesto("TRUE");
+	else setprocesadopresupuesto("FALSE");
+    }    
+    virtual void s_descpresupuestotextChanged(const QString &str) {setdescpresupuesto(str);};
 	/// Este slot se activa cuando cambia la fecha del presupuesto.
     virtual void s_fpresupuestotextChanged(const QString &str) {/*setFPresupuesto(str);*/};
     

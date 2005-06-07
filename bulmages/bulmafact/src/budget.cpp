@@ -663,123 +663,54 @@ void   Budget::pintatotales(float base, float iva) {
 
 void Budget::presentaReports() {
 
-	int txt=1;
-	QString codigoarticulo;
-	QString descripcionarticulo;
-	QString cantidadlinea;
-	QString preciolinea;
-	QString descuentolinea;
-	QString importelinea;
-	
-	QString cif;
-	QString fecha;
-	QString numero;
-	QString observaciones;
-	
-	QString nombre;
-	QString direccion;
-	QString poblacion;
-	QString cp;
-	QString telefono;
-	QString fax;
-	
-	float bases [99];
-	float tasas [99];
-	for (int i=0;i<100;i++) {
-		bases[i]=0;
-		tasas[i]=0;
-	}
-	
-
-	cif = m_cifclient->text().ascii();
-	fecha = m_fpresupuesto->text().ascii();
-	numero = m_numpresupuesto->text().ascii();
-	observaciones = m_comentpresupuesto->text().ascii();
-	
-
-	
-	QString a;
-	
-	char *argstxt[]={"presupuesto.csv","presupuesto.csv",NULL};      //presentaci�txt normal
+	system ("cp /home/tborras/Desktop/prueba.rml /tmp/prueba.rml");
+	char *argstxt[]={"/tmp/presupuesto.rml","/tmp/presupuesto.rml",NULL};      //presentaci�txt normal
 	ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
-	if (!fitxersortidatxt) txt=0;    // verifiquem que s'hagin creat correctament els fitxers
-	
-	// dades del client
-	QString query = "SELECT * FROM cliente WHERE idcliente="+m_idclient;
-	companyact->begin();
-	cursor2 * cur= companyact->cargacursor(query, "querypresupuesto");
-	companyact->commit(); 
-	if (!cur->eof()) {
-		nombre = cur->valor("nomcliente").ascii();	
-		direccion = cur->valor("dircliente").ascii();
-		poblacion = cur->valor("poblcliente").ascii();
-		cp = cur->valor("cpcliente").ascii();
-		telefono = cur->valor("telcliente").ascii();
-		fax = cur->valor("faxcliente").ascii();
-    }// end if
-	 delete cur;
-	
-	int i = 0;
-	int error = 0;
-	while (i < subform2->numRows() && error==0) {
-		if (subform2->text(i,COL_REMOVE)!="S") {
-			if (subform2->text(i,COL_IDARTICULO)!="" || subform2->text(i,COL_NOMARTICULO)!="") {
-				codigoarticulo = subform2->text(i,COL_CODARTICULO).ascii();
-				descripcionarticulo = subform2->text(i,COL_NOMARTICULO).ascii();
-				preciolinea = subform2->text(i,COL_PVPLPRESUPUESTO).ascii();
-				cantidadlinea = subform2->text(i,COL_CANTLPRESUPUESTO).ascii();
-				descuentolinea = subform2->text(i,COL_DESCUENTOLPRESUPUESTO).ascii();
-				float importe = subform2->text(i, COL_PVPLPRESUPUESTO).toFloat() * subform2->text(i, COL_CANTLPRESUPUESTO).toFloat();
-				importe -=  (importe*subform2->text(i, COL_DESCUENTOLPRESUPUESTO).toFloat())/100;
-				importelinea = QString().sprintf("%0.2f",importe).ascii();
-				bases[subform2->text(i,COL_TIPO_IVA).toInt()]+=importe;
-				tasas[subform2->text(i,COL_TIPO_IVA).toInt()]=subform2->text(i,COL_TASATIPO_IVA).toFloat();
-		
-				if (txt) {
-					//presentaci�txt normal
-					a = "'d';'" + nombre + "';'" + direccion + "';" +  cp + ";'" + poblacion + "';'" + telefono + "';'" + fax + "';'" + cif + "';'" + fecha + "';" + numero + ";" + "'" +codigoarticulo + "'" + ";'" + descripcionarticulo + "'" + ";" + preciolinea + ";" + cantidadlinea + ";" + descuentolinea + ";" + importelinea + "\n";    
-					fitxersortidatxt << a;
-				}
-			}
-		}
-		i ++;
-   } //end while
+	if (!fitxersortidatxt) return;    // verifiquem que s'hagin creat correctament els fitxers
+
 	
 	
 	// L�ea de totales del presupuesto
-	
-	/*
-	fitxersortidatxt << "\t<spacer length=\"2cm\" width=\"50mm\"/>\n" ;
-	
-	fitxersortidatxt << "\t<blockTable colWidths=\"2.5cm, 2.5cm, 2.5cm, 2.5cm\" style=\"products2\">\n" ;
-	fitxersortidatxt << "\t<tr><td>NETO</td><td>CUOTA IVA</td><td>IVA</td><td>TOTAL</td></tr>\n" ;
-	
-	for (int i=0;i<100;i++) {
-		if (bases[i]!=0 && bases[i]!=NULL) {
-			string base = QString().sprintf("%0.2f",bases[i]).ascii();
-			string tasa = QString().sprintf("%0.2f",tasas[i]).ascii();
-			string cuota = QString().sprintf("%0.2f",(bases[i]*tasas[i])/100).ascii();
-			string total = QString().sprintf("%0.2f",(bases[i] + (bases[i]*tasas[i])/100)).ascii();
-			fitxersortidatxt << "\t<tr>\n" ;
-			fitxersortidatxt << "\t\t<td>" << base.c_str() << "</td>\n" ;
-			fitxersortidatxt << "\t\t<td>" << tasa.c_str() << "</td>\n" ;
-			fitxersortidatxt << "\t\t<td>" << cuota.c_str() << "</td>\n" ;
-			fitxersortidatxt << "\t\t<td>" << total.c_str() << "</td>\n" ;
-			fitxersortidatxt << "\t</tr>\n" ;
-		}
-	} //end for
-	
-	fitxersortidatxt << "\t</blockTable>\n" ;
-	fitxersortidatxt << "\t<spacer length=\"2cm\" width=\"1mm\"/>\n" ;
-	fitxersortidatxt << "\t<para style=\"payment\">\n" ;
-	fitxersortidatxt << "\t" << observaciones.c_str() << "\n" ;
-	fitxersortidatxt << "\t</para>\n" ;
-	fitxersortidatxt << "</story>\n" ;
-	fitxersortidatxt << "</document>\n" ;
-	*/
+fitxersortidatxt << "<story>";
+fitxersortidatxt << "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\">";
+fitxersortidatxt << "<tr>";
+fitxersortidatxt << "	<td>"+mdb_nomcliente+"</td>";
+fitxersortidatxt << "	<td>Cantidad</td>";
+fitxersortidatxt << "	<td>Precio Und.</td>";
+fitxersortidatxt << "	<td>Total</td>";
+fitxersortidatxt << "</tr>";
+fitxersortidatxt << "<tr>";
+fitxersortidatxt << "	<td></td>";
+fitxersortidatxt << "	<td></td>";
+fitxersortidatxt << "	<td>Base</td>";
+fitxersortidatxt << "	<td>6.00</td>";
+fitxersortidatxt << "</tr>";
+fitxersortidatxt << "<tr>";
+fitxersortidatxt << "	<td></td>";
+fitxersortidatxt << "	<td></td>";
+fitxersortidatxt << "	<td>Iva</td>";
+fitxersortidatxt << "	<td>6.00</td>";
+fitxersortidatxt << "</tr>";
+fitxersortidatxt << "<tr>";
+fitxersortidatxt << "	<td></td>";
+fitxersortidatxt << "	<td></td>";
+fitxersortidatxt << "	<td>Total</td>";
+fitxersortidatxt << "	<td>6.00</td>";
+fitxersortidatxt << "</tr>";
+fitxersortidatxt << "</blockTable>";
+fitxersortidatxt << "<nextFrame/>";
+fitxersortidatxt << "<blockTable colWidths=\"5cm\">";
+fitxersortidatxt << "<tr><td>"+mdb_nomcliente+"</td></tr>";
+fitxersortidatxt << "<tr><td>"+mdb_cifcliente+"</td></tr>";
+fitxersortidatxt << "<tr><td>Precio Und.</td></tr>";
+fitxersortidatxt << "<tr><td>Total</td></tr>";
+fitxersortidatxt << "</blockTable>";
+fitxersortidatxt << "</story>";
+fitxersortidatxt << "</document>";
 	
 	fitxersortidatxt.close();
-/*	system("trml2pdf.py presupuesto.jm.rml > pressupost.pdf");
-	system("kprinter pressupost.pdf"); */
+	system("cat /tmp/prueba.rml /tmp/presupuesto.rml > /tmp/pressupost.rml");	
+	system("trml2pdf.py /tmp/pressupost.rml > /tmp/pressupost.pdf");
+	system("kpdf /tmp/pressupost.pdf"); 
 } //end presentaReports
 

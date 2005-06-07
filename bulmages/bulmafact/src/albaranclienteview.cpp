@@ -100,6 +100,53 @@ void AlbaranClienteView::inicialize() {
 }// end inicialize
 
 
+void AlbaranClienteView::pintaIdForma_Pago(QString idformapago) {
+    fprintf(stderr,"pintaFormaPago(%s)\n",idformapago.ascii());
+    // Tratamos la forma de pago.
+    m_comboformapago->clear();
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+    m_cursorcombo = companyact->cargacursor("SELECT * FROM forma_pago");
+    int i = 0;
+    int i1 = 0;
+    while (!m_cursorcombo->eof()) {
+        i ++;
+        if (m_cursorcombo->valor("idforma_pago") == idformapago) {
+            i1 = i;
+        }
+        m_comboformapago->insertItem(m_cursorcombo->valor("descforma_pago"));
+        m_cursorcombo->siguienteregistro();
+    }
+    if (i1 != 0 ) {
+        m_comboformapago->setCurrentItem(i1-1);
+    }
+} //end cargarcombodformapago
+
+void   AlbaranClienteView::pintatotales(float base, float iva) {
+    m_totalBases->setText(QString::number(base));
+    m_totalTaxes->setText(QString::number(iva));
+    m_totalalbaran->setText(QString::number(iva+base));
+}// end pintatotales
+
+
+// Bsqueda de Clientes.
+void AlbaranClienteView::s_searchCliente() {
+    fprintf(stderr,"Busqueda de un client\n");
+    ClientsList *clients = new ClientsList(companyact, NULL, theApp->translate("Seleccione cliente","company"));
+    clients->selectMode();
+    // Esto es convertir un QWidget en un sistema modal de dialogo.
+    this->setEnabled(false);
+    clients->show();
+    while(!clients->isHidden())
+        theApp->processEvents();
+    this->setEnabled(true);
+    if (clients->cifclient() !="" && clients->cifclient() !=NULL) {
+        m_cifcliente->setText(clients->cifclient());
+    }// end if
+    delete clients;
+}// end searchClient
+
+
 /*
 // Esta función carga un albarán.
 void AlbaranClienteView::chargeClientDelivNote(QString iddeliveryNote) {
