@@ -26,6 +26,8 @@
 
 #ifdef DISTRO_DEBIAN
     #include <postgresql/libpq-fe.h>
+#elif DISTRO_DEBIAN_8_0
+    #include <postgresql/8.0/libpq-fe.h>
 #elif  DISTRO_RED_HAT
     #include <pgsql/libpq-fe.h>
 #elif  DISTRO_GENTOO

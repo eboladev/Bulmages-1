@@ -9,9 +9,11 @@
 SET SESSION AUTHORIZATION 'postgres';
 SET search_path = public, pg_catalog;
 
+SET DATESTYLE TO European;
+
 
 CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
-    AS '/usr/lib/postgresql/lib/plpgsql.so', 'plpgsql_call_handler'
+    AS '/usr/lib/postgresql/8.0/lib/plpgsql.so', 'plpgsql_call_handler'
     LANGUAGE c;
     
 CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
@@ -372,38 +374,6 @@ CREATE TABLE pedido (
 );
 
 
--- Any: Any en que s'efectua la comanda.
--- Numero: Número de comanda (començant de 1 cada any).
--- Descripcio: Breu descripció o comentari opcional.
--- Data: Data d'emisió de la comanda.
-CREATE TABLE pedidocliente (
-   idpedidocliente serial PRIMARY KEY,
-   numpedidocliente character varying(60),
-   fechapedidocliente date,
-   descpedidocliente character varying(500),
-   comentpedidocliente character varying(3000),   
-   idcliente integer NOT NULL REFERENCES cliente(idcliente),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago),    
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
-);
-
--- Linea de pedido
--- Numero: Número de línia.
--- Descripcio: Descripcio de l'article.
--- Quantitat
--- PVD
--- Previsió: Data prevista de recepció
-CREATE TABLE lpedidocliente (
-   numlpedidocliente serial PRIMARY KEY,
-   desclpedidocliente character varying(150),
-   cantlpedidocliente float,
-   pvplpedidocliente float,
-   prevlpedidocliente date,
-   ivalpedidocliente numeric(5,2),
-   descuentolpedidocliente float,   
-   idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
-   idarticulo integer REFERENCES articulo(idarticulo)
-);
 
 
 -- Any: Any de facturació.
@@ -474,7 +444,8 @@ CREATE TABLE lpedido (
 --  Pressupost a clients.
 CREATE TABLE presupuesto (
    idpresupuesto serial PRIMARY KEY,
-   numpresupuesto integer NOT NULL,
+   numpresupuesto integer NOT NULL UNIQUE,
+   refpresupuesto character varying(12) UNIQUE,
    fpresupuesto date,
    descpresupuesto character varying(150),
    contactpresupuesto character varying(90),
@@ -484,8 +455,9 @@ CREATE TABLE presupuesto (
    idusuari integer,
    procesadopresupuesto boolean DEFAULT FALSE,
    idcliente integer REFERENCES cliente(idcliente),
-	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-	UNIQUE (idalmacen, numpresupuesto)
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+   idforma_pago integer REFERENCES forma_pago(idforma_pago),
+   UNIQUE (idalmacen, numpresupuesto)
 );
 
 
@@ -523,6 +495,45 @@ CREATE TABLE lpresupuesto (
 );
 
 -- Falta poner por defecto el pvp y el iva
+
+
+-- Any: Any en que s'efectua la comanda.
+-- Numero: Número de comanda (començant de 1 cada any).
+-- Descripcio: Breu descripció o comentari opcional.
+-- Data: Data d'emisió de la comanda.
+CREATE TABLE pedidocliente (
+   idpedidocliente serial PRIMARY KEY,
+   numpedidocliente character varying(60),
+   fechapedidocliente date,
+   refpedidocliente character varying(12) UNIQUE,   
+   descpedidocliente character varying(500),
+   comentpedidocliente character varying(3000),
+   idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
+   procesadopedidocliente boolean DEFAULT FALSE,   
+   idcliente integer NOT NULL REFERENCES cliente(idcliente),
+   idforma_pago integer REFERENCES forma_pago(idforma_pago),    
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
+);
+
+-- Linea de pedido
+-- Numero: Número de línia.
+-- Descripcio: Descripcio de l'article.
+-- Quantitat
+-- PVD
+-- Previsió: Data prevista de recepció
+CREATE TABLE lpedidocliente (
+   numlpedidocliente serial PRIMARY KEY,
+   desclpedidocliente character varying(150),
+   cantlpedidocliente float,
+   pvplpedidocliente float,
+   prevlpedidocliente date,
+   ivalpedidocliente numeric(5,2),
+   descuentolpedidocliente float,   
+   idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
+   idarticulo integer REFERENCES articulo(idarticulo)
+);
+
+
 
 
 -- FACTURACIO>Albarans:
@@ -658,14 +669,6 @@ CREATE TABLE suministra (
 );
 
 
--- ESTA TABLA DEBE DESAPARECER -- LO HARE CUANDO TOQUE EL LA ENTRADA DEL PRESUPUESTO.
--- Presupuesto - forma de pago
--- Esta tabla indica las formas de pago que tiene un presupuesto
-CREATE TABLE prfp (
-  idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
-  idforma_pago integer REFERENCES forma_pago(idforma_pago),
-  descprfp float
-);
 
 
 CREATE TABLE usuarios (

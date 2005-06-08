@@ -52,6 +52,12 @@ protected:
     QString mdb_cifcliente;
     QString mdb_idforma_pago;
     QString mdb_comentpedidocliente;
+    QString mdb_idpresupuesto;
+    QString mdb_descpresupuesto;
+    QString mdb_refpresupuesto;
+    QString mdb_refpedidocliente;
+    QString mdb_procesadopedidocliente;
+    
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setListLinPedidoCliente ( ListLinPedidoCliente *a) {
@@ -66,6 +72,8 @@ public:
     void guardaPedidoCliente();
     void borraPedidoCliente();
     
+    ListLinPedidoCliente* getlistalineas() {return listalineas;};
+    
     virtual void pintaidcliente(QString ) {};
     virtual void pintaidalmacen(QString ) {};
     virtual void pintaidpedidocliente(QString ) {};
@@ -78,12 +86,18 @@ public:
     virtual void pintacodigoalmacen(QString ) {};
     virtual void pintacifcliente(QString ) {};
     virtual void pintacomentpedidocliente(QString) {};
+    virtual void pintaidpresupuesto(QString) {};
+    virtual void pintadescpresupuesto(QString) {};
+    virtual void pintarefpresupuesto(QString) {};
+    virtual void pintarefpedidocliente(QString) {};
+    virtual void pintaprocesadopedidocliente(QString) {};
+    
     virtual void pintatotales(float, float) {};
 
 
     void setidcliente(QString val) { mdb_idcliente=val;};
     void setidalmacen(QString val) { mdb_idalmacen=val;};
-    void setidpedidocliente(QString val) { mdb_idpedidocliente=val;};
+    void setidpedidocliente(QString val) { mdb_idpedidocliente=val;listalineas->setidpedidocliente(val);};
     void setnumpedidocliente(QString val) { mdb_numpedidocliente=val;};
     void setfechapedidocliente(QString val) { mdb_fechapedidocliente=val;};
     void setdescpedidocliente(QString val) { mdb_descpedidocliente=val;};
@@ -93,11 +107,10 @@ public:
     void setcomentpedidocliente(QString val) {mdb_comentpedidocliente=val;};
     void setcodigoalmacen(QString val);
     void setcifcliente(QString val);
+    void setidpresupuesto(QString val);
+    void setrefpedidocliente(QString val) {mdb_refpedidocliente=val;};
+    void setprocesadopedidocliente(QString val) {mdb_procesadopedidocliente=val;};
     
     void vaciaPedidoCliente();
-
-    virtual void cargaPedidoClienteDescuentas(QString) {};
-    virtual void calculateImports() {};
-    virtual QString calculateValues() {return "";};
 };
 #endif

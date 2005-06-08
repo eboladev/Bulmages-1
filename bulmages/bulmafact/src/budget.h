@@ -38,19 +38,16 @@ class company;
 
 class Budget : public BudgetBase , public presupuesto  {
     Q_OBJECT
+private:
+    cursor2 *m_cursorcombo;
 public:
     Budget(company *, QWidget *, const char *);
     ~Budget();
-    void chargeBudgetLines(QString);
-    void chargeBudgetDiscounts(QString);
     void inicialize();
     void manageArticle(int);
-    QString searchArticle();
 
     
     
-void	pintaIdClient(QString id) { m_idclient = id;};	
-void	pintaIdAlmacen(QString id) {m_idalmacen = id;};
 void	pintaNumPresupuesto(QString id) {m_numpresupuesto->setText(id);};
 void	pintaFPresupuesto(QString id) {	m_fpresupuesto->setText(id);};
 void	pintaVencPresupuesto(QString id) {m_vencpresupuesto->setText(id);};
@@ -61,6 +58,8 @@ void	pintaNomClient(QString id) {m_nomclient->setText(id);};
 void	pintaCifClient(QString id) {m_cifclient->setText(id);};
 void	pintaCodigoAlmacen(QString id) {m_codigoalmacen-> setText(id);};
 void	pintaNomAlmacen(QString id) {m_nomalmacen-> setText(id);};
+void    pintarefpresupuesto(QString id) {m_refpresupuesto->setText(id);};
+void    pintaidforma_pago(QString);
 void    pintaprocesadopresupuesto(QString id) {
 	if (id == "t" || id == "TRUE") m_procesadopresupuesto->setChecked(TRUE);
 	else m_procesadopresupuesto->setChecked(FALSE);
@@ -70,48 +69,26 @@ void pintadescpresupuesto(QString id) {m_descpresupuesto->setText(id);};
 void   pintatotales(float base, float iva);
 
 private:
-    int insertfpBudget();
-    int updatefpBudget();
-    int saveBudgetDiscountLines();
-    int deleteBudgetLine(int);
-    int insertBudgetDiscountLine(int);
-    int updateBudgetDiscountLine(int);
-    int deleteBudgetDiscountLine(int);
-    void nextCell(QObject *);
-    void antCell(QObject *);
-    void duplicateCell(QObject *);
-    void calculateImports();
-    QString retrieveValues(QString);
-    QString calculateValues();
-    void cargarcomboformapago(QString);
+//    void cargarcomboformapago(QString);
     void buscarAlmacen();
-    QString newBudgetNumber();
-    void presentaReports();
+    void generarPedidoCliente();
 
 public slots:
-    virtual void searchClient();
     virtual void budgetDateLostFocus();
     virtual void budgetExpiryLostFocus();
-    virtual void newBudgetLine();
-    virtual void removeBudgetLine();
-    virtual void newBudgetDiscountLine();
-    virtual void removeBudgetDiscountLine();
-    virtual void valueBudgetDiscountLineChanged(int, int);
-    virtual void accept();
-    virtual void cancel();
+    virtual void searchClient();
     virtual void s_saveBudget() {guardapresupuesto();};
     virtual void s_removeBudget();
-    virtual void s_contextMenuDiscount(int, int, int, const QPoint &);
     virtual void s_almacenLostFocus();
     virtual void s_printBudget();
     virtual void s_removeBudgetLine() {subform2->borralinpresupuestoact();};
-    
     
     virtual void s_comentariotextChanged() { setComentPresupuesto(m_comentpresupuesto->text());};
     virtual void s_cifclienttextChanged(const QString &str) {setCifClient(str);};
     virtual void s_codigoalmacentextChanged(const QString &str) {setCodigoAlmacen(str);};
     virtual void s_contactotextChanged(const QString &str) {setContractPresupuesto(str);};
     virtual void s_telpresupuestotextChanged(const QString &str) {setTelPresupuesto(str);};
+    virtual void s_refpresupuestotextChanged(const QString &str) {setrefpresupuesto(str);};
     virtual void s_procesadopresupuestostateChanged(int i) {
     	if (i) setprocesadopresupuesto("TRUE");
 	else setprocesadopresupuesto("FALSE");
@@ -124,6 +101,9 @@ public slots:
     virtual void s_pintaTotales() {  
    	 pintatotales(listalineas->calculabase(), listalineas->calculaiva());
     }// end pintaTotales
+    
+    virtual void s_realizarPedidoCliente() {generarPedidoCliente();};
+    virtual void s_idforma_pagoactivated(int a) {setidforma_pago(m_cursorcombo->valor("idforma_pago",a));};
 };
 
 #endif

@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
- // Implementaci� del listado de presupuestos.
+
+// Implementaci� del listado de presupuestos.
 /*
 -- Entendemos que un presupuesto es una relaci� de materiales y trabajos cuantificada que
 -- hacemos a petici� de un cliente determinado
@@ -48,173 +48,240 @@ CREATE TABLE presupuesto (
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
+#include <qfile.h>
+
 #include "configuracion.h"
 
 
 #define COL_IDPRESUPUESTO 0
 #define COL_CODIGOALMACEN 1
 #define COL_NUMPRESUPUESTO 2
-#define COL_NOMCLIENTE 3
-#define COL_FPRESUPUESTO 4
-#define COL_VENCPRESUPUESTO 5
-#define COL_CONTACTPRESUPUESTO 6
-#define COL_TELPRESUPUESTO 7
-#define COL_COMENTPRESUPUESTO 8
-#define COL_IDUSUARI 9
-#define COL_IDCLIENTE 10
-#define COL_IDALMACEN 11
+#define COL_REFPRESUPUESTO 3
+#define COL_NOMCLIENTE 4
+#define COL_DESCPRESUPUESTO 5
+#define COL_FPRESUPUESTO 6
+#define COL_VENCPRESUPUESTO 7
+#define COL_CONTACTPRESUPUESTO 8
+#define COL_TELPRESUPUESTO 9
+#define COL_COMENTPRESUPUESTO 10
+#define COL_IDUSUARI 11
+#define COL_IDCLIENTE 12
+#define COL_IDALMACEN 13
 
 
 BudgetsList::BudgetsList(company *comp, QWidget *parent, const char *name, int flag)
- : BudgetsListBase(parent, name, flag) {
-      companyact = comp;
-      inicializa();
-      m_modo=0;
-      m_idpresupuesto="";
-      companyact->meteWindow(caption(),this);
+: BudgetsListBase(parent, name, flag) {
+    companyact = comp;
+    inicializa();
+    m_modo=0;
+    m_idpresupuesto="";
+    companyact->meteWindow(caption(),this);
 }// end providerslist
 
 BudgetsList::~BudgetsList() {
-	companyact->sacaWindow(this);
+    companyact->sacaWindow(this);
 }// end ~providerslist
 
 void BudgetsList::inicializa() {
-   m_list->setNumRows( 0 );
-   m_list->setNumCols( 0 );
-   m_list->setSelectionMode( QTable::SingleRow );
-   m_list->setSorting( TRUE );
-   m_list->setSelectionMode( QTable::SingleRow );
-   m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(12);
-   m_list->horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "COL_IDPRESUPUESTO" ) );
-	m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-	m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almac�" ) );
-   m_list->horizontalHeader()->setLabel( COL_NUMPRESUPUESTO, tr( "N Presupuesto" ) );
-   m_list->horizontalHeader()->setLabel( COL_FPRESUPUESTO, tr( "Fecha" ) );
-	m_list->horizontalHeader()->setLabel( COL_VENCPRESUPUESTO, tr( "Fecha" ) );
-   m_list->horizontalHeader()->setLabel( COL_CONTACTPRESUPUESTO, tr( "Persona Contacto" ) );
-   m_list->horizontalHeader()->setLabel( COL_TELPRESUPUESTO, tr( "Tel�ono" ) );
-   m_list->horizontalHeader()->setLabel( COL_COMENTPRESUPUESTO, tr( "Comentarios" ) );
-   m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("COL_IDUSUARI") );
-   m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
-	m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("COL_IDALMACEN") );
-   m_list->setColumnWidth(COL_IDPRESUPUESTO,75);
-   m_list->setColumnWidth(COL_NUMPRESUPUESTO,75);
-   m_list->setColumnWidth(COL_FPRESUPUESTO,100);
-	m_list->setColumnWidth(COL_VENCPRESUPUESTO,100);
-   m_list->setColumnWidth(COL_CONTACTPRESUPUESTO,200);
-   m_list->setColumnWidth(COL_TELPRESUPUESTO,150);
-   m_list->setColumnWidth(COL_COMENTPRESUPUESTO,300);
-   m_list->setColumnWidth(COL_IDUSUARI,75);
-   m_list->setColumnWidth(COL_IDCLIENTE,75);
-	m_list->setColumnWidth(COL_IDALMACEN,75);
-	m_list->setColumnWidth(COL_NOMCLIENTE,200);
-	m_list->setColumnWidth(COL_CODIGOALMACEN,75);
-	m_list->hideColumn(COL_IDPRESUPUESTO);
-	m_list->hideColumn(COL_IDCLIENTE);
-	m_list->hideColumn(COL_IDALMACEN);
-	//m_list->hideColumn(COL_IDUSUARI);
-	 
-	if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
-		m_list->hideColumn(COL_CODIGOALMACEN);
-	}
-	
+    m_list->setNumRows( 0 );
+    m_list->setNumCols( 0 );
+    m_list->setSelectionMode( QTable::SingleRow );
+    m_list->setSorting( TRUE );
+    m_list->setSelectionMode( QTable::SingleRow );
+    m_list->setColumnMovingEnabled( TRUE );
+    m_list->setNumCols(14);
+    m_list->horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "COL_IDPRESUPUESTO" ) );
+    m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almac�" ) );
+    m_list->horizontalHeader()->setLabel( COL_NUMPRESUPUESTO, tr( "N Presupuesto" ) );
+    m_list->horizontalHeader()->setLabel( COL_FPRESUPUESTO, tr( "Fecha" ) );
+    m_list->horizontalHeader()->setLabel( COL_VENCPRESUPUESTO, tr( "Vencimiento" ) );
+    m_list->horizontalHeader()->setLabel( COL_CONTACTPRESUPUESTO, tr( "Persona Contacto" ) );
+    m_list->horizontalHeader()->setLabel( COL_TELPRESUPUESTO, tr( "Tel�ono" ) );
+    m_list->horizontalHeader()->setLabel( COL_COMENTPRESUPUESTO, tr( "Comentarios" ) );
+    m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("COL_IDUSUARI") );
+    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
+    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("COL_IDALMACEN") );
+    m_list->horizontalHeader()->setLabel( COL_DESCPRESUPUESTO, tr("Descripcion") );
+    m_list->horizontalHeader()->setLabel( COL_REFPRESUPUESTO, tr("Ref.") );
+    m_list->setColumnWidth(COL_IDPRESUPUESTO,75);
+    m_list->setColumnWidth(COL_NUMPRESUPUESTO,75);
+    m_list->setColumnWidth(COL_FPRESUPUESTO,100);
+    m_list->setColumnWidth(COL_VENCPRESUPUESTO,100);
+    m_list->setColumnWidth(COL_CONTACTPRESUPUESTO,200);
+    m_list->setColumnWidth(COL_TELPRESUPUESTO,150);
+    m_list->setColumnWidth(COL_COMENTPRESUPUESTO,300);
+    m_list->setColumnWidth(COL_DESCPRESUPUESTO, 300);
+    m_list->setColumnWidth(COL_REFPRESUPUESTO,100);
+    m_list->setColumnWidth(COL_IDUSUARI,75);
+    m_list->setColumnWidth(COL_IDCLIENTE,75);
+    m_list->setColumnWidth(COL_IDALMACEN,75);
+    m_list->setColumnWidth(COL_NOMCLIENTE,200);
+    m_list->setColumnWidth(COL_CODIGOALMACEN,75);
+    m_list->hideColumn(COL_IDPRESUPUESTO);
+    m_list->hideColumn(COL_IDCLIENTE);
+    m_list->hideColumn(COL_IDALMACEN);
+    m_list->hideColumn(COL_CODIGOALMACEN);
+    m_list->hideColumn(COL_NUMPRESUPUESTO);
+    m_list->hideColumn(COL_FPRESUPUESTO);
+    m_list->hideColumn(COL_CONTACTPRESUPUESTO);
+    m_list->hideColumn(COL_TELPRESUPUESTO);
+    m_list->hideColumn(COL_COMENTPRESUPUESTO);
+    m_list->hideColumn(COL_IDUSUARI);
+    m_list->hideColumn(COL_IDCLIENTE);
+    if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
+        m_list->hideColumn(COL_CODIGOALMACEN);
+    }// end if
 
-      
-//   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#EEFFFF");   
-    m_list->setReadOnly(TRUE);        
-    companyact->begin();
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM presupuesto, cliente, almacen where presupuesto.idcliente=cliente.idcliente AND presupuesto.idalmacen=almacen.idalmacen","querypresupuesto");
-    companyact->commit();
+    m_list->setPaletteBackgroundColor("#EEFFFF");
+    m_list->setReadOnly(TRUE);
+    
+    QString filtro;
+    if (m_filtro->text() != "") {
+    	filtro = " AND ( descpresupuesto LIKE '%"+m_filtro->text()+"%' ";
+	filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
+    } else {
+    	filtro = "";
+    }// end if
+    
+    
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM presupuesto, cliente, almacen where presupuesto.idcliente=cliente.idcliente AND presupuesto.idalmacen=almacen.idalmacen "+filtro);
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {
-         m_list->setText(i,COL_IDPRESUPUESTO,cur->valor("idpresupuesto"));
-         m_list->setText(i,COL_NUMPRESUPUESTO,cur->valor("numpresupuesto"));
-         m_list->setText(i,COL_FPRESUPUESTO,cur->valor("fpresupuesto"));
-			m_list->setText(i,COL_VENCPRESUPUESTO,cur->valor("vencpresupuesto"));
-         m_list->setText(i,COL_CONTACTPRESUPUESTO,cur->valor("contactpresupuesto"));
-         m_list->setText(i,COL_TELPRESUPUESTO,cur->valor("telpresupuesto"));
-         m_list->setText(i,COL_COMENTPRESUPUESTO,cur->valor("comentpresupuesto"));
-         m_list->setText(i,COL_IDUSUARI,cur->valor("idusuari"));
-         m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
-			m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
-			m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
-			m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
-         i++;
-         cur->siguienteregistro();
+        m_list->setText(i,COL_IDPRESUPUESTO,cur->valor("idpresupuesto"));
+        m_list->setText(i,COL_NUMPRESUPUESTO,cur->valor("numpresupuesto"));
+        m_list->setText(i,COL_FPRESUPUESTO,cur->valor("fpresupuesto"));
+        m_list->setText(i,COL_VENCPRESUPUESTO,cur->valor("vencpresupuesto"));
+        m_list->setText(i,COL_CONTACTPRESUPUESTO,cur->valor("contactpresupuesto"));
+        m_list->setText(i,COL_TELPRESUPUESTO,cur->valor("telpresupuesto"));
+        m_list->setText(i,COL_COMENTPRESUPUESTO,cur->valor("comentpresupuesto"));
+        m_list->setText(i,COL_IDUSUARI,cur->valor("idusuari"));
+        m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
+        m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
+        m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
+        m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
+        m_list->setText(i,COL_REFPRESUPUESTO,cur->valor("refpresupuesto"));
+        m_list->setText(i,COL_DESCPRESUPUESTO,cur->valor("descpresupuesto"));
+        i++;
+        cur->siguienteregistro();
     }// end while
-      delete cur;
+    delete cur;
 }// end inicializa
 
 
 
 void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
-   m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
-   if (m_modo ==0 && m_idpresupuesto != "") {
-      Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
-      bud->chargeBudget(m_idpresupuesto);
-      bud->show();
-   } else {
-      close();
-   }// end if
+    m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
+    if (m_modo ==0 && m_idpresupuesto != "") {
+        Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+        bud->chargeBudget(m_idpresupuesto);
+        bud->show();
+    } else {
+        close();
+    }// end if
 }
 
 
 void BudgetsList::s_contextMenu(int, int, int button, const QPoint &poin) {
-	qDebug("button = %d", button);
-	if (button == 2) {
-		QPopupMenu *popup;
-		popup = new QPopupMenu;
-		popup->insertItem(tr("Borrar Presupuesto"),101);
-		//popup->insertSeparator();
-		int opcion = popup->exec(m_list->mapToGlobal(poin));
-		switch(opcion) {
-			case 101:
-				s_removeBudget();
-				break;
-		}// end switch
-		delete popup;
-	}
+    qDebug("button = %d", button);
+    if (button == 2) {
+        QPopupMenu *popup;
+        popup = new QPopupMenu;
+        popup->insertItem(tr("Borrar Presupuesto"),101);
+        //popup->insertSeparator();
+        int opcion = popup->exec(m_list->mapToGlobal(poin));
+        switch(opcion) {
+        case 101:
+            s_removeBudget();
+            break;
+        }// end switch
+        delete popup;
+    }
 }// end contextmenu
 
 
 void BudgetsList::newBudget() {
-   fprintf(stderr,"Iniciamos el boton_crear\n");
-   Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
-   bud->show();
+    fprintf(stderr,"Iniciamos el boton_crear\n");
+    Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+    bud->show();
 }// end boton_crear
 
 
+void BudgetsList::imprimir() {
+    system ("cp /home/tborras/Desktop/prueba1.rml /tmp/presupuesto.rml");
+    QFile file;
+    file.setName( "/tmp/presupuesto.rml" );
+    file.open( IO_ReadOnly );
+    QTextStream stream(&file);
+    QString buff = stream.read();
+    file.close();
+    QString fitxersortidatxt;
+    // L�ea de totales del presupuesto
+
+    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td>Descripicon</td>";
+    fitxersortidatxt += "	<td>Referencia</td>";
+    fitxersortidatxt += "	<td>Cliente</td>";
+    fitxersortidatxt += "	<td>Contacto</td>";
+    fitxersortidatxt += "</tr>";    
+    
+    QString SQLQuery = "SELECT * FROM presupuesto";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    while(!cur->eof()) {
+    	fitxersortidatxt += "<tr>";
+    	fitxersortidatxt += "<td>"+cur->valor("descpresupuesto")+"</td>";
+    	fitxersortidatxt += "<td>"+cur->valor("refpresupuesto")+"</td>";
+    	fitxersortidatxt += "<td>"+cur->valor("idcliente")+"</td>";
+    	fitxersortidatxt += "<td>"+cur->valor("contactpresupuesto")+"</td>";
+    	fitxersortidatxt += "</tr>";
+	cur->siguienteregistro();
+    }// end if
+    delete cur;
+    fitxersortidatxt += "</blockTable>";
+
+    buff.replace("[story]",fitxersortidatxt);
+
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << buff;
+        file.close();
+    }
+    system("trml2pdf.py /tmp/presupuesto.rml > /tmp/pressupost.pdf");
+    system("kpdf /tmp/pressupost.pdf");
+
+}// end imprimir
+
+
 void BudgetsList::s_removeBudget() {
-	fprintf(stderr,"Iniciamos el boton_borrar\n");
-	if (m_list->currentRow() >= 0) {
-		if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar el presupuesto seleccionado", "Si", "No") == 0) {
-			companyact->begin();
-			QString SQLQuery = "DELETE FROM lpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-			if (companyact->ejecuta(SQLQuery)==0){
-				QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-					if (companyact->ejecuta(SQLQuery)==0){
-						QString SQLQuery = "DELETE FROM prfp WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-						if (companyact->ejecuta(SQLQuery)==0){
-							QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-							if (companyact->ejecuta(SQLQuery)==0){
-								companyact->commit();
-							} else {
-								companyact->rollback();
-							}
-						} else {
-							companyact->rollback();
-						}
-				} else {
-					companyact->rollback();
-				}
-			} else {
-				companyact->rollback();
-			}
-		}	
-	}
-	inicializa();
+    fprintf(stderr,"Iniciamos el boton_borrar\n");
+    if (m_list->currentRow() >= 0) {
+        if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar el presupuesto seleccionado", "Si", "No") == 0) {
+            companyact->begin();
+            QString SQLQuery = "DELETE FROM lpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+            if (companyact->ejecuta(SQLQuery)==0) {
+                QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+                if (companyact->ejecuta(SQLQuery)==0) {
+                    QString SQLQuery = "DELETE FROM prfp WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+                    if (companyact->ejecuta(SQLQuery)==0) {
+                        QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+                        if (companyact->ejecuta(SQLQuery)==0) {
+                            companyact->commit();
+                        } else {
+                            companyact->rollback();
+                        }
+                    } else {
+                        companyact->rollback();
+                    }
+                } else {
+                    companyact->rollback();
+                }
+            } else {
+                companyact->rollback();
+            }
+        }
+    }
+    inicializa();
 }// end boton_borrar

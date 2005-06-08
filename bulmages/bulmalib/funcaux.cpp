@@ -171,4 +171,7 @@ QString ajustacodigo (QString cad, unsigned int num1) {
    return(cod);
 }// end ajustacodigo
 
-
+void reemplazaarchivo (QString archivo, QString texto1, QString texto2, QString archivo2) {
+	QString cadena = " sed -e \"s&"+texto1+"&"+texto2+"&g\"  "+archivo+" > "+archivo2+"";
+	system (cadena.ascii());
+}

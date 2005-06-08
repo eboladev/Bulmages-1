@@ -48,6 +48,15 @@ public:
     float calculabase();
     float calculaiva();
     void borralinpresupuesto(int);
+    void setidpresupuesto(QString id) {
+        mdb_idpresupuesto=id;
+        linpresupuesto *linea;
+        uint i = 0;
+        for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+            linea->setidpresupuesto(mdb_idpresupuesto);
+            i++;
+        }// end for
+    };    
 };
 
 #endif

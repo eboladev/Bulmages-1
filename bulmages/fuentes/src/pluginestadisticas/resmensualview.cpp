@@ -143,7 +143,7 @@ void resmensualview::presentar() {
 
 void resmensualview::buscacodigocta() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    cod1->setText(listcuentas->codcuenta);
@@ -153,7 +153,7 @@ void resmensualview::buscacodigocta() {
 
 void resmensualview::buscacodigocta1() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    cod2->setText(listcuentas->codcuenta);
@@ -161,7 +161,7 @@ void resmensualview::buscacodigocta1() {
 
 void resmensualview::buscacodigocta2() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->modo=1;
+   listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
    cod3->setText(listcuentas->codcuenta);

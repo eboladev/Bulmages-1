@@ -228,9 +228,15 @@ int postgresiface2::inicializa(QString nomdb, QString user, QString passwd) {
     pgtty = "";               /** debugging tty for the backend server */
     QString conexion;
 
-    if (pghost != "localhost") {
-        conexion = "hostaddr="+pghost+" port="+pgport;
+//    if (pghost != "localhost") {
+//        conexion = "hostaddr="+pghost+" port="+pgport;
+//    }// end if
+/// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
+/// Ahora si se pone -- se considera conexión local.
+    if (pghost != "--") {
+        conexion = "host="+pghost;
     }// end if
+    conexion += " port="+pgport;
     conexion += " dbname="+dbName;
     if (user != "") {
         conexion += " user="+user;

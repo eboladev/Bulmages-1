@@ -27,17 +27,26 @@ public:
     QString mdb_idpedidocliente;
     QPtrList<LinPedidoCliente> m_lista;
 public:
-   
+
     ListLinPedidoCliente(company *comp);
     ListLinPedidoCliente();
     void setcompany(company *c) {
-       fprintf(stderr,"ListLinPedidoCliente setCompany\n");
-       companyact=c;
-       fprintf(stderr,"ListLinPedidoCliente  fin de setCompany\n");
+        fprintf(stderr,"ListLinPedidoCliente setCompany\n");
+        companyact=c;
+        fprintf(stderr,"ListLinPedidoCliente  fin de setCompany\n");
     };
     virtual ~ListLinPedidoCliente();
     void guardaListLinPedidoCliente();
     void vaciar();
+    void setidpedidocliente(QString id) {
+        mdb_idpedidocliente=id;
+        LinPedidoCliente *linea;
+        uint i = 0;
+        for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+            linea->setidpedidocliente(mdb_idpedidocliente);
+            i++;
+        }// end for
+    };
     virtual void pintaListLinPedidoCliente() {
         fprintf(stderr,"La funci� pintaListLinPedidoCliente aun no ha sido implementada\n");
     };

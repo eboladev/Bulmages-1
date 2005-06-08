@@ -83,9 +83,15 @@ void LinPedidoCliente::borrar() {
 
 
 void LinPedidoCliente::guardaLinPedidoCliente() {
+    QString prevlpedidocliente;
+    if (mdb_prevlpedidocliente == "") {
+    	prevlpedidocliente = "NULL";
+    } else {
+    	prevlpedidocliente = "'"+mdb_prevlpedidocliente+"'";
+    }// end if
     /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_numlpedidocliente == "") {
-        QString SQLQuery = "INSERT INTO lpedidocliente (desclpedidocliente, cantlpedidocliente, pvplpedidocliente, prevlpedidocliente, ivalpedidocliente, descuentolpedidocliente, idpedidocliente, idarticulo) VALUES ('"+mdb_desclpedidocliente+"',"+mdb_cantlpedidocliente+","+mdb_pvplpedidocliente+",'"+mdb_prevlpedidocliente+"',"+mdb_ivalpedidocliente+","+mdb_descuentolpedidocliente+", "+mdb_idpedidocliente+","+mdb_idarticulo+")";
+        QString SQLQuery = "INSERT INTO lpedidocliente (desclpedidocliente, cantlpedidocliente, pvplpedidocliente, prevlpedidocliente, ivalpedidocliente, descuentolpedidocliente, idpedidocliente, idarticulo) VALUES ('"+mdb_desclpedidocliente+"',"+mdb_cantlpedidocliente+","+mdb_pvplpedidocliente+","+prevlpedidocliente+","+mdb_ivalpedidocliente+","+mdb_descuentolpedidocliente+", "+mdb_idpedidocliente+","+mdb_idarticulo+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(numlpedidocliente) AS m FROM lpedidocliente ");
@@ -98,7 +104,7 @@ void LinPedidoCliente::guardaLinPedidoCliente() {
         SQLQuery += " desclpedidocliente = '"+mdb_desclpedidocliente+"' ";
         SQLQuery += " ,cantlpedidocliente = "+mdb_cantlpedidocliente+" ";
         SQLQuery += " ,pvplpedidocliente = "+mdb_pvplpedidocliente+" ";
-        SQLQuery += " ,prevlpedidocliente = '"+mdb_prevlpedidocliente+"' ";
+        SQLQuery += " ,prevlpedidocliente = "+prevlpedidocliente;
         SQLQuery += " ,ivalpedidocliente = "+mdb_ivalpedidocliente+" ";
         SQLQuery += " ,descuentolpedidocliente = "+mdb_descuentolpedidocliente+" ";
         SQLQuery += " ,idpedidocliente = "+mdb_idpedidocliente+" ";

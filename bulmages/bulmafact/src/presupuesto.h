@@ -29,11 +29,7 @@ protected:
     listlinpresupuesto *listalineas;
 
     company *companyact;
-    QString m_idpresupuesto;
-    QString m_idclient;
-    QString m_idalmacen;
-    QString m_initialValues;
-    cursor2 *m_cursorcombo;
+
 
     QString mdb_idcliente;
     QString mdb_idalmacen;
@@ -51,6 +47,8 @@ protected:
     QString mdb_idusuari;
     QString mdb_procesadopresupuesto;
     QString mdb_descpresupuesto;
+    QString mdb_refpresupuesto;
+    QString mdb_idforma_pago;
 
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
@@ -65,6 +63,7 @@ public:
     void pintaPresupuesto();
     void guardapresupuesto();
     void borraPresupuesto();
+    void imprimirPresupuesto();
     
     virtual void pintaIdClient(QString id) {};
     virtual void pintaIdAlmacen(QString id) {};
@@ -80,6 +79,8 @@ public:
     virtual void pintaNomAlmacen(QString id) {};
     virtual void pintaprocesadopresupuesto(QString) {};
     virtual void pintadescpresupuesto(QString) {};
+    virtual void pintarefpresupuesto(QString) {};
+    virtual void pintaidforma_pago(QString){};
     virtual void pintatotales(float, float) {};
 
     void setIdClient(QString val) { mdb_idcliente=val;};
@@ -94,16 +95,13 @@ public:
     void setCifClient(QString);
     void setCodigoAlmacen(QString);
     void setNomAlmacen(QString val) { mdb_nomalmacen=val;};
-    void setIdPresupuesto(QString val) {mdb_idpresupuesto=val;};
+    void setidpresupuesto(QString val) { mdb_idpresupuesto=val;listalineas->setidpresupuesto(val);};    
     void setIdUsuari(QString val) {mdb_idusuari=val;};
     void setprocesadopresupuesto(QString val) {mdb_procesadopresupuesto = val;};
     void setdescpresupuesto(QString val) {mdb_descpresupuesto = val;};
+    void setrefpresupuesto(QString val) {mdb_refpresupuesto = val;};
+    void setidforma_pago(QString val) {mdb_idforma_pago = val;};
 
     void vaciaPresupuesto();
-
-    virtual void chargeBudgetDiscounts(QString) {};
-    virtual void calculateImports() {};
-    virtual void inicialize() {};
-    virtual QString calculateValues() {return "";};
 };
 #endif

@@ -140,6 +140,9 @@ unix{
   exists(/usr/include/postgresql/libpq-fe.h){
     DEFINES += DISTRO_DEBIAN
   }
+  exists(/usr/include/postgresql/8.0/libpq-fe.h){
+    DEFINES += DISTRO_DEBIAN_8_0
+  }
   exists(/usr/include/pgsql/libpq-fe.h){
     DEFINES += DISTRO_RED_HAT
   }

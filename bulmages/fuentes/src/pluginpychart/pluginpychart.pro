@@ -47,6 +47,10 @@ unix{
     DEFINES += DISTRO_DEBIAN
     DEFINES += QT_THREAD_SUPPORT
   }
+  exists(/usr/include/postgresql/8.0/libpq-fe.h){
+    DEFINES += DISTRO_DEBIAN_8_0
+    DEFINES += QT_THREAD_SUPPORT
+  }
   exists(/usr/include/pgsql/libpq-fe.h){
     DEFINES += DISTRO_RED_HAT
   }

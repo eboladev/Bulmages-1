@@ -43,21 +43,24 @@ public:
     void modoseleccion() {m_modo=1;};
     void modoedicion() {m_modo=0;};
     QString idpresupuesto() {return m_idpresupuesto;};
+    void imprimir();
     
 public slots:
     virtual void doubleclicked(int, int, int, const QPoint &);
     virtual void s_contextMenu(int, int, int, const QPoint &);
     virtual void newBudget();
-	 virtual void s_removeBudget();
+    virtual void s_removeBudget();
+    virtual void s_imprimir() {imprimir();};
     
-    /*
+/*
     virtual void boton_editar();
     
     virtual void boton_duplicar();
     virtual void boton_borrar();
     virtual void boton_imprimir();
-    virtual void boton_filtrar();
 */
+    virtual void s_filtrar() {inicializa();};
+
 };
 
 #endif

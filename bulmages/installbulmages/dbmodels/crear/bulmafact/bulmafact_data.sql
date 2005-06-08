@@ -1,3 +1,5 @@
+SET DATESTYLE TO European;
+
 INSERT INTO configuracion (nombre, valor) VALUES ('CodCuenta', 'xxxxyyy');
 INSERT INTO configuracion (nombre, valor) VALUES ('CIF', '--');
 INSERT INTO configuracion (nombre, valor) VALUES ('TipoVia', '--');
@@ -124,9 +126,6 @@ INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) V
 INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 60 días', 60, 0);
 INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Talón 15 dias', 15, 1);
 
-INSERT INTO prfp (idpresupuesto, idforma_pago) VALUES (1, 1);
-INSERT INTO prfp (idpresupuesto, idforma_pago) VALUES (2, 2);
-INSERT INTO prfp (idpresupuesto, idforma_pago) VALUES (3, 3);
 
 INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago, idalmacen) VALUES (1, '01/01/2005', 1, 1, 1, 1);
 INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago, idalmacen) VALUES (2, '02/01/2005', 1, 1, 2, 1);

@@ -47,6 +47,8 @@ QDate normalizafecha(QString);
 QString XMLProtect( const QString& );
 /** \brief Ajusta un código de cuenta a una longitud determinada pasada como parametro */
 QString ajustacodigo( QString, unsigned int);
+void reemplazaarchivo(QString, QString, QString, QString);
+
 
 template <typename T>
 std::string Ttos(T arg) {

@@ -35,6 +35,7 @@ logpass::~logpass() {
 /** @brief Valida si postgres puede abrir bases de datos y si no es así pide loggin y password
   */
 void logpass::validar() {
+   fprintf(stderr,"logpass::validar()\n");
    m_login->setText(postgresiface2::sanearCadena(m_login->text()));
    m_authOK = false;
    

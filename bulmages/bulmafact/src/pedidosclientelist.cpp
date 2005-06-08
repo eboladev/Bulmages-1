@@ -10,12 +10,13 @@
 //
 //
 #include "pedidosclientelist.h"
-#include "pedidoclienteview.h"
+
 #include "company.h"
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 #include "configuracion.h"
+#include "pedidoclienteview.h"
 
 #define COL_IDPEDIDOCLIENTE 0
 #define COL_CODIGOALMACEN 1
@@ -31,26 +32,24 @@
 #define COL_IDSERIE_FACTURA 12
 
 
-PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const char *name)
- : PedidosClienteListBase(parent, name)
-{
-
+PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const char *name) : PedidosClienteListBase(parent, name) {
 
     companyact = comp;
     inicializa();
     m_modo=0;
     m_idpedidocliente="";
     companyact->meteWindow(caption(),this);
+
 }
 
 
-PedidosClienteList::~PedidosClienteList()
-{
+PedidosClienteList::~PedidosClienteList() {
 }
 
 
 
 void PedidosClienteList::inicializa() {
+
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
@@ -77,15 +76,6 @@ void PedidosClienteList::inicializa() {
     m_list->setColumnWidth(COL_COMENTFACTURA,300);
     m_list->setColumnWidth(COL_IDUSUARI,75);
     m_list->setColumnWidth(COL_IDCLIENTE,75);
-    /*
-    	m_list->setColumnWidth(COL_IDALMACEN,75);
-    	m_list->setColumnWidth(COL_NOMCLIENTE,200);
-    	m_list->setColumnWidth(COL_CODIGOALMACEN,75);
-    	m_list->hideColumn(COL_IDPEDIDOCLIENTE);
-    	m_list->hideColumn(COL_IDCLIENTE);
-    	m_list->hideColumn(COL_IDALMACEN);
-    */
-
     if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
         m_list->hideColumn(COL_CODIGOALMACEN);
     }// end if
@@ -109,10 +99,12 @@ void PedidosClienteList::inicializa() {
         cur->siguienteregistro();
     }// end while
     delete cur;
+
 }// end inicializa
 
 
 void PedidosClienteList::doubleclicked(int a, int , int , const QPoint &) {
+
    fprintf(stderr,"PedidosClienteList::doubleclicked()\n");
    m_idpedidocliente = m_list->text(a,COL_IDPEDIDOCLIENTE);
    if (m_modo == 0 && m_idpedidocliente != "") {
@@ -124,5 +116,6 @@ void PedidosClienteList::doubleclicked(int a, int , int , const QPoint &) {
    } else {
       close();
    }// end if
+
 }
 
