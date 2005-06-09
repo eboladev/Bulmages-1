@@ -77,10 +77,12 @@ public:
    void newBudget();
    void newClientDelivNote();
    void newOrder();
+   void newPedidoCliente();
    void createMainWindows();
    void refreshOrders();
    void refreshArticles();
    void refreshBudgets();
+   void refreshPedidosCliente();
    void refreshClientDelivNotes();
    void meteWindow(QString nom, QObject *obj) {m_listventanas->meteWindow(nom, obj);};
    void sacaWindow(QObject *nom) {m_listventanas->sacaWindow(nom);};

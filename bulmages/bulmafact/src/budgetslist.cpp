@@ -210,9 +210,18 @@ void BudgetsList::newBudget() {
 
 
 void BudgetsList::imprimir() {
-    system ("cp /home/tborras/Desktop/prueba1.rml /tmp/presupuesto.rml");
+    /// Copiamos el archivo
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuestos.rml";
+    archivo = "cp "+archivo+" /tmp/presupuestos.rml";
+    system (archivo.ascii());
+    
+    /// Copiamos el logo
+    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    archivo = "cp "+archivo+" /tmp/logo.jpg";
+    system (archivo.ascii());
+
     QFile file;
-    file.setName( "/tmp/presupuesto.rml" );
+    file.setName( "/tmp/presupuestos.rml" );
     file.open( IO_ReadOnly );
     QTextStream stream(&file);
     QString buff = stream.read();
@@ -249,7 +258,7 @@ void BudgetsList::imprimir() {
         stream << buff;
         file.close();
     }
-    system("trml2pdf.py /tmp/presupuesto.rml > /tmp/pressupost.pdf");
+    system("trml2pdf.py /tmp/presupuestos.rml > /tmp/pressupost.pdf");
     system("kpdf /tmp/pressupost.pdf");
 
 }// end imprimir

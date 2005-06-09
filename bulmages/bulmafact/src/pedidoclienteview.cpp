@@ -14,7 +14,7 @@
 #include "listlinpedidoclienteview.h"
 #include "pedidocliente.h"
 #include "clientslist.h"
-
+#include "budget.h"
 
 #include <qmessagebox.h>
 #include <qtable.h>
@@ -42,7 +42,7 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char 
 
 
 PedidoClienteView::~PedidoClienteView() {
-    companyact->refreshBudgets();
+    companyact->refreshPedidosCliente();
     companyact->sacaWindow(this);
 }
 
@@ -116,4 +116,17 @@ void PedidoClienteView::s_searchClient() {
     }
     delete clients;
 }// end searchClient
+
+
+void PedidoClienteView::s_verpresupuesto() {
+    QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='"+mdb_refpedidocliente+"'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+        Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+        bud->chargeBudget(cur->valor("idpresupuesto"));
+        bud->show();
+    }// end if
+    delete cur;
+}// end s_verpresupuesto
+
 

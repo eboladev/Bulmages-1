@@ -11,7 +11,7 @@
 //
 #include "pedidocliente.h"
 #include "company.h"
-
+#include <qfile.h>
 
 PedidoCliente::PedidoCliente(company *comp) {
     companyact=comp;
@@ -129,6 +129,8 @@ void PedidoCliente::guardaPedidoCliente() {
     if (mdb_idpresupuesto == "") {
     	mdb_idpresupuesto = "NULL";
     }// end if 
+    if (mdb_idforma_pago == "")
+    	mdb_idforma_pago = "NULL";    
     if (mdb_idpedidocliente == "") {
         /// Se trata de una inserción
         QString SQLQuery = "INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, idcliente, idalmacen, idforma_pago, idpresupuesto, refpedidocliente, procesadopedidocliente, descpedidocliente) VALUES ('"+mdb_numpedidocliente+"','"+mdb_fechapedidocliente+"',"+mdb_idcliente+","+mdb_idalmacen+","+mdb_idforma_pago+","+mdb_idpresupuesto+",'"+mdb_refpedidocliente+"',"+mdb_procesadopedidocliente+",'"+mdb_descpedidocliente+"')";
@@ -203,4 +205,99 @@ void PedidoCliente::setidpresupuesto(QString val) {
     delete cur;
     pintanomalmacen(mdb_nomalmacen);
 }// end setCodigoAlmacen
+
+
+void PedidoCliente::imprimirPedidoCliente() {
+    /// Copiamos el archivo
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"pedidocliente.rml";
+    archivo = "cp "+archivo+" /tmp/pedidocliente.rml";
+    system (archivo.ascii());
+    
+    /// Copiamos el logo
+    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    archivo = "cp "+archivo+" /tmp/logo.jpg";
+    system (archivo.ascii());
+    
+    QFile file;
+    file.setName( "/tmp/pedidocliente.rml" );
+    file.open( IO_ReadOnly );
+    QTextStream stream(&file);
+    QString buff = stream.read();
+    file.close();
+    QString fitxersortidatxt;
+    // Lï¿½ea de totales del presupuesto
+
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if(!cur->eof()) {
+        buff.replace("[dircliente]",cur->valor("dircliente"));
+        buff.replace("[poblcliente]",cur->valor("poblcliente"));
+        buff.replace("[telcliente]",cur->valor("telcliente"));
+        buff.replace("[nomcliente]",cur->valor("nomcliente"));
+        buff.replace("[cifcliente]",cur->valor("cifcliente"));
+    }// end if
+
+    buff.replace("[numpedidocliente]",mdb_numpedidocliente);
+    buff.replace("[fechapedidocliente]",mdb_fechapedidocliente);
+    buff.replace("[comentpedidocliente]",mdb_comentpedidocliente);
+    buff.replace("[codigoalmacen]",mdb_codigoalmacen);
+    buff.replace("[nomalmacen]",mdb_nomalmacen);
+    buff.replace("[descpedidocliente]",mdb_descpedidocliente);
+    buff.replace("[refpedidocliente]",mdb_refpedidocliente);
+
+
+
+    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td>Concepto</td>";
+    fitxersortidatxt += "	<td>Cantidad</td>";
+    fitxersortidatxt += "	<td>Precio Und.</td>";
+    fitxersortidatxt += "	<td>Total</td>";
+    fitxersortidatxt += "</tr>";
+
+    QString l;
+    LinPedidoCliente *linea;
+    uint i = 0;
+    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+        fitxersortidatxt += "<tr>";
+        fitxersortidatxt += "	<td>"+linea->desclpedidocliente()+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpedidocliente().toFloat())+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplpedidocliente().toFloat())+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpedidocliente().toFloat() * linea->pvplpedidocliente().toFloat())+"</td>";
+        fitxersortidatxt += "</tr>";
+        i++;
+    }// end for
+
+
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td>Base</td>";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>";
+    fitxersortidatxt += "</tr>";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td>Iva</td>";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>";
+    fitxersortidatxt += "</tr>";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td>Total</td>";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>";
+    fitxersortidatxt += "</tr>";
+    fitxersortidatxt += "</blockTable>";
+
+    buff.replace("[story]",fitxersortidatxt);
+
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << buff;
+        file.close();
+    }
+
+    system("trml2pdf.py /tmp/pedidocliente.rml > /tmp/pedidocliente.pdf");
+    system("kpdf /tmp/pedidocliente.pdf");
+} //end imprimirPedidoCliente
 

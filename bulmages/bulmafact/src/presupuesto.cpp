@@ -11,9 +11,11 @@
 //
 #include "presupuesto.h"
 #include "company.h"
-
+#include "configuracion.h"
 #include <qfile.h>
 #include <qtextstream.h>
+
+
 
 presupuesto::presupuesto(company *comp) {
     companyact=comp;
@@ -129,6 +131,8 @@ void presupuesto::guardapresupuesto() {
     }// end if
     if (mdb_idusuari="")
         mdb_idusuari="NULL";
+    if (mdb_idforma_pago == "")
+    	mdb_idforma_pago = "NULL";	
     if (mdb_idpresupuesto == "") {
         /// Se trata de una inserci�
         QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, procesadopresupuesto, descpresupuesto, refpresupuesto, idforma_pago) VALUES ("+mdb_numpresupuesto+",'"+mdb_fpresupuesto+"','"+mdb_contactpresupuesto+"','"+mdb_telpresupuesto+"','"+mdb_vencpresupuesto+"','"+mdb_comentpresupuesto+"',"+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+","+mdb_procesadopresupuesto+",'"+mdb_descpresupuesto+"','"+mdb_refpresupuesto+"',"+mdb_idforma_pago+")";
@@ -196,7 +200,18 @@ void presupuesto::setCodigoAlmacen(QString val) {
 
 
 void presupuesto::imprimirPresupuesto() {
-    system ("cp /home/tborras/Desktop/prueba.rml /tmp/presupuesto.rml");
+
+    /// Copiamos el archivo
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml";
+    archivo = "cp "+archivo+" /tmp/presupuesto.rml";
+    system (archivo.ascii());
+    
+    /// Copiamos el logo
+    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    archivo = "cp "+archivo+" /tmp/logo.jpg";
+    system (archivo.ascii());
+    
+    
     QFile file;
     file.setName( "/tmp/presupuesto.rml" );
     file.open( IO_ReadOnly );

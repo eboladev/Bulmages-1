@@ -95,7 +95,7 @@ public slots:
     }    
     virtual void s_descpresupuestotextChanged(const QString &str) {setdescpresupuesto(str);};
 	/// Este slot se activa cuando cambia la fecha del presupuesto.
-    virtual void s_fpresupuestotextChanged(const QString &str) {/*setFPresupuesto(str);*/};
+    virtual void s_fpresupuestotextChanged(const QString &) {/*setFPresupuesto(str);*/};
     
     	/// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {  

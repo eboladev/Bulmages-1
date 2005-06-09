@@ -13,13 +13,10 @@
 #define PEDIDOSCLIENTELIST_H
 
 #include <pedidosclientelistbase.h>
-
+#include "company.h"
 /**
 @author Tomeu Borras
 */
-
-
-class company;
 
 class PedidosClienteList : public PedidosClienteListBase
 {
@@ -37,10 +34,13 @@ public:
     void inicializa();
     void modoseleccion() {m_modo=1;};
     void modoedicion() {m_modo=0;};
+    void imprimir();
     QString idpedidocliente() {return m_idpedidocliente;}; 
 public slots:
-
-	virtual void doubleclicked(int, int , int , const QPoint &) ;    
+	virtual void doubleclicked(int, int , int , const QPoint &) ;  
+	virtual void s_printPedidosCliente() {imprimir();};
+	virtual void s_searchPedidosCliente() {inicializa();};
+	virtual void s_newPedidoCliente() {companyact->newPedidoCliente();};
 };
 
 #endif

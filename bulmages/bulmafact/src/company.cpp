@@ -40,6 +40,7 @@
 #include "familiasview.h"
 #include "facturaslist.h"
 #include "pedidosclientelist.h"
+#include "pedidoclienteview.h"
 
 
 
@@ -172,6 +173,17 @@ void company::newClientDelivNote() {
 void company::refreshClientDelivNotes() {
    m_clientDelivNotesList->inicializa();
 }// end refreshClientDelivNotes
+
+
+
+void company::newPedidoCliente() {
+   PedidoClienteView *bud = new PedidoClienteView(this , m_pWorkspace,theApp->translate("Edicion de Pedidos de Cliente", "company"));
+   bud->show();
+}// end bud
+
+void company::refreshPedidosCliente() {
+   m_pedidosclienteList->inicializa();
+}// end refreshPedidosCliente
 
 
 /** Presenta la ventana de formas de pago y espera la ejecución de la misma */

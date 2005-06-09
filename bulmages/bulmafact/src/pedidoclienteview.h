@@ -35,10 +35,10 @@ public:
     PedidoClienteView(company *, QWidget *parent = 0, const char *name = 0);
     ~PedidoClienteView();
     void inicialize();
-    void pintaidcliente(QString id) {};
-    void pintaidalmacen(QString id) {};
+    void pintaidcliente(QString) {};
+    void pintaidalmacen(QString) {};
     void pintacodigoalmacen(QString id) {m_codigoalmacen-> setText(id);}; 
-    void pintaidpedidocliente(QString id) {};
+    void pintaidpedidocliente(QString) {};
     void pintanumpedidocliente(QString id) {m_numpedidocliente->setText(id);};
     void pintafechapedidocliente(QString id) {m_fechapedidocliente->setText(id);};
     void pintadescpedidocliente(QString id) {m_descpedidocliente->setText(id);};
@@ -66,7 +66,7 @@ public slots:
 
     virtual void s_savePedidoCliente() {guardaPedidoCliente();};
     virtual void s_deletePedidoCliente() {borraPedidoCliente();};
-    virtual void s_printPedidoCliente(){};
+    virtual void s_printPedidoCliente(){imprimirPedidoCliente();};
     virtual void s_procesadopedidoclientestateChanged(int i) {
     	if (i) setprocesadopedidocliente("TRUE");
 	else setprocesadopedidocliente("FALSE");
@@ -78,6 +78,8 @@ public slots:
     virtual void s_pintaTotales() {  
    	 pintatotales(listalineas->calculabase(), listalineas->calculaiva());
     }// end pintaTotales
+    
+    virtual void s_verpresupuesto();
 };
 
 #endif

@@ -71,6 +71,7 @@ public:
     void pintaPedidoCliente();
     void guardaPedidoCliente();
     void borraPedidoCliente();
+    void imprimirPedidoCliente();
     
     ListLinPedidoCliente* getlistalineas() {return listalineas;};
     

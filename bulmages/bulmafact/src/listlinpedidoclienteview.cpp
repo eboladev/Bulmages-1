@@ -51,15 +51,15 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget * parent, const char 
     /// Inicializamos la tabla de lineas de Factura
     setNumCols(14);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_NUMLPEDIDOCLIENTE, tr( "N Lï¿½ea" ) );
-    horizontalHeader()->setLabel( COL_DESCLPEDIDOCLIENTE, tr( "Descripciï¿½" ) );
+    horizontalHeader()->setLabel( COL_NUMLPEDIDOCLIENTE, tr( "N Línea" ) );
+    horizontalHeader()->setLabel( COL_DESCLPEDIDOCLIENTE, tr( "Descripción" ) );
     horizontalHeader()->setLabel( COL_CANTLPEDIDOCLIENTE, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_PVPLPEDIDOCLIENTE, tr( "Precio" ) );
     horizontalHeader()->setLabel( COL_DESCUENTOLPEDIDOCLIENTE, tr( "Descuento" ) );
     horizontalHeader()->setLabel( COL_IDPEDIDOCLIENTE, tr( "N Pedido" ) );
-    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artï¿½ulo" ) );
-    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Cï¿½igo Artï¿½ulo" ) );
-    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripciï¿½ Artï¿½ulo" ) );
+    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
+    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artílo" ) );
+    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
     horizontalHeader()->setLabel( COL_PREVLPEDIDOCLIENTE, tr( "COL_PREVLPEDIDOCLIENTE" ) );
@@ -76,14 +76,14 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget * parent, const char 
     setColumnWidth(COL_NOMARTICULO,300);
     setColumnWidth(COL_TASATIPO_IVA,50);
     setColumnWidth(COL_TIPO_IVA,50);
-/*
+
     hideColumn(COL_NUMLPEDIDOCLIENTE);
     hideColumn(COL_IDPEDIDOCLIENTE);
     hideColumn(COL_IDARTICULO);
     hideColumn(COL_REMOVE);
     hideColumn(COL_TASATIPO_IVA);
     hideColumn(COL_TIPO_IVA);
-*/
+
     setSelectionMode( QTable::SingleRow );
 
     setColumnReadOnly(COL_NOMARTICULO,true);

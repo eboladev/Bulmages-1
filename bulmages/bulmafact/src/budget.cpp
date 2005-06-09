@@ -290,6 +290,17 @@ void   Budget::pintatotales(float base, float iva) {
 #include "pedidoclienteview.h"
 /// Se encarga de generar un pedido a partir del presupuesto.
 void Budget::generarPedidoCliente() {
+    QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='"+mdb_refpresupuesto+"'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if(!cur->eof()) {
+      PedidoClienteView *bud = new PedidoClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Clientes", "company"));
+      bud->cargaPedidoCliente(cur->valor("idpedidocliente"));
+      bud->show();
+      return;
+    }
+    delete cur;
+
+
     PedidoClienteView *bud = new PedidoClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Clientes", "company"));
     bud->vaciaPedidoCliente();
     bud->setcifcliente(mdb_cifcliente);
