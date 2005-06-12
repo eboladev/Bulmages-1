@@ -1,0 +1,94 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>BusquedaArticuloBase</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>BusquedaArticuloBase</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>581</width>
+            <height>34</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Form1</string>
+    </property>
+    <hbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>m_codigocompletoarticulo</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>5</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+        </widget>
+        <widget class="QToolButton">
+            <property name="name">
+                <cstring>m_searcharticulo</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>32</width>
+                    <height>32</height>
+                </size>
+            </property>
+            <property name="text">
+                <string></string>
+            </property>
+            <property name="iconSet">
+                <iconset>image0</iconset>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>m_nomarticulo</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>5</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="text">
+                <string>Articulo</string>
+            </property>
+        </widget>
+    </hbox>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="771">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000002ca49444154388d959531481b511cc6bfb41dcecdf10a1d329ae290d00c461c0c740821c3f5ba9d145470e8952e8d2d4a70283789a45048bad40c42b2142729a10822083a945aa1542d1da274b0d04182c8f570f93abcffe572e755db07c777dcf17eeffb7ff77fef8098516e90246955b74992f9f955e648e64be65d0003717348d234ca8c7b874a8bb41bfb24c9ed13053fbd50da39238b0ba43e552380db00b4feb9a6613393350900ac3258802429309e313c044e57090a0e010c45e1c122e2bcd222377e8459aec04e0576228bed9ec4c39d8565f229c351f899f69c45d5afe054b443a244023000e895e735fa19735ce0766337e4f06f4ef77f297dff3d50941c0248db8f49d3b0592cd8cc8d590cb2f59d44b28c3aed410f427118f9fbd3e438991bb198498b63abba1172782953c97ef58be8e740258e4900c9dc88c5cc7031d20d3279df77ee977d1086353f8aee841c4f02b877a93572f3ab0ad28994eb3b14d8f296e8ba2aa9b6eefa194f024802b81965ebc999e5b0c328745d696d4de9d2bb5e0c737e67c4f5b3a63fea73e8972de5d6daaec05c7285ac345c3a0d15030902180730180706005d330287cd2d1faad459515a791d642b772407e37761a5d549c8c321949cdea4da9acb2592ce8a4bd6c9f2a2645a70c87a52a0e4763545ce68576e714d5e1a28382ac3a80273bc0059d795e16a2a80479c2700606991dcdc7c82f687370392972e5f3a9a5d1740d74a63b398d130315cc40e0e31faec003bafee62f4db11126fbd14806300ea34ca64d58e21d50eea83f75fba2c36c42cd89cd2ae721e1a778a259b99b4197f604762b3d202af9a02edcb9c249d97aa8faf81c5c22f3b4fb139a5f1c6ec8b3a8e8e7fe2e18359e4c7a67b7f00d3285fb79807e038f109a9f69e87d6f400801426328798b885e05fc502999723cf34cacc65f9af55f49c5be95e5fcf258a259bbf3d0fdeb907efbc8bbdafedc47f46e2c393501f6d1040f70f29d4b91ca08b8d460000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>m_searcharticulo</sender>
+        <signal>clicked()</signal>
+        <receiver>BusquedaArticuloBase</receiver>
+        <slot>s_searchArticulo()</slot>
+    </connection>
+    <connection>
+        <sender>m_codigocompletoarticulo</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>BusquedaArticuloBase</receiver>
+        <slot>s_codigocompletoarticulotextChanged(const QString&amp;)</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>s_searchArticulo()</slot>
+    <slot>s_codigocompletoarticulotextChanged(const QString &amp;)</slot>
+</slots>
+<layoutdefaults spacing="0" margin="0"/>
+</UI>
