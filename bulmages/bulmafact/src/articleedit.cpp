@@ -160,6 +160,7 @@ void articleedit::chargeArticle(QString idArt) {
         delete cur;
     }
     cargarcomboiva(ivaType);
+    setCaption("Artículo "+m_codigocompletoarticulo->text());companyact->meteWindow(caption(),this);
 }// end chargeArticle
 
 

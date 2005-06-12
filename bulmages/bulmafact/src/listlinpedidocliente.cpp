@@ -54,6 +54,7 @@ LinPedidoCliente *ListLinPedidoCliente::linpos(int pos) {
 
 // Carga l�eas de Factura
 void ListLinPedidoCliente::cargaListLinPedidoCliente(QString idbudget) {
+    vaciar();
     fprintf(stderr,"ListLinPedidoCliente::cargaListLinPedidoCliente(%s)\n", idbudget.ascii());
     mdb_idpedidocliente = idbudget;
     fprintf(stderr,"Hacemos la carga del cursor\n");

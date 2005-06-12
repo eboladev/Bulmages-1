@@ -18,6 +18,12 @@ INSERT INTO configuracion (nombre, valor) VALUES ('NombreEmpresa', 'Sin Definir'
 INSERT INTO configuracion (nombre, valor) VALUES ('AlmacenDefecto', '100');
 
 
+INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Contado', 1, 5);
+INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 30 días', 30, 0);
+INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 60 días', 60, 0);
+INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Talón 15 dias', 15, 1);
+
+
 INSERT INTO tipo_tarifa (codtipo_tarifa, desctipo_tarifa) VALUES('GENERAL', 'Tarifa General');
 
 INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES (100, 'La Botica del Abuelo', 'Camí Vell de Bunyola', 'Palma de Mallorca', '07009', '971434343', '971434344');
@@ -89,26 +95,30 @@ INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido
 
 
 
-INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES('PC-1', '25/10/2004', 'Pedido  carne y pescado', 1, 1);
-INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES('PC-2', '30/10/2004', 'Pedido especial noche ', 2, 3);
-INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES('PC-3', '02/11/2004', 'Frutos de temporada', 1, 2);
-INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES('PC-4', '02/10/2004', 'Pedido de lencería', 2, 1);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(1, '25/10/2004', 'Pedido  carne y pescado', 1, 1);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(2, '30/10/2004', 'Pedido especial noche ', 2, 3);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(3, '02/11/2004', 'Frutos de temporada', 1, 2);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(4, '02/10/2004', 'Pedido de lencería', 2, 1);
 \echo "Hemos insertado los pedidos de cliente"
 
 INSERT INTO alb_pro (ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(1, '123', '01/12/2004', '30/11/2004', 'Albarán nº 123', 2);
 INSERT INTO alb_pro (ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(2, '2323', '15/11/2004', '10/11/2004', 'Albarán nº 2323', 1);
 INSERT INTO alb_pro (ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(3, '34', '23/11/2004', '23/11/2004', 'Albarán nº 34', 3);
 
-INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen) VALUES (1, '30/11/2004', 'Primer Contacto', '971 32 32 78', '12/12/2004', 'Sin comentarios', 1, 1, 1);
-INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen) VALUES (2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', '13/12/2004', 'Sin comentarios', 1, 1, 1);
-INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen) VALUES (3, '10/11/2004', 'Tercer Contacto', '971 29 06 29', '14/12/2004', 'Sin comentarios', 1, 2, 1);
+
+
+INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, idforma_pago) VALUES (1, '30/11/2004', 'Primer Contacto', '971 32 32 78', '12/12/2004', 'Sin comentarios', 1, 1, 1,1);
+INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, idforma_pago) VALUES (2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', '13/12/2004', 'Sin comentarios', 1, 1, 1,1);
+INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, idforma_pago) VALUES (3, '10/11/2004', 'Tercer Contacto', '971 29 06 29', '14/12/2004', 'Sin comentarios', 1, 2, 1,1);
 
 
 INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('DD', 'Serie de ejemplo');
+INSERT INTO serie_factura (codigoserie_factura, descserie_factura) VALUES ('REC', 'Facturas Rectificativas');
 
-INSERT INTO factura (idserie_factura, numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES (1, 1, '30/11/2004', 'Primer Contacto', '971 32 32 78', 'Sin comentarios', 1, 1, 1);
-INSERT INTO factura (idserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES (1, 2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', 'Sin comentarios', 1, 1, 1);
-INSERT INTO factura (idserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES (1, 3, '10/11/2004', 'Tercer Contacto', '971 29 06 29',  'Sin comentarios', 1, 2, 1);
+
+INSERT INTO factura (codigoserie_factura, numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES ('DD', 1, '30/11/2004', 'Primer Contacto', '971 32 32 78', 'Sin comentarios', 1, 1, 1);
+INSERT INTO factura (codigoserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES ('DD', 2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', 'Sin comentarios', 1, 1, 1);
+INSERT INTO factura (codigoserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES ('REC', 3, '10/11/2004', 'Tercer Contacto', '971 29 06 29',  'Sin comentarios', 1, 2, 1);
 
 
 
@@ -121,15 +131,12 @@ INSERT INTO suministra (idarticulo, idproveedor) VALUES (2, 3);
 INSERT INTO suministra (idarticulo, idproveedor) VALUES (3, 3);
 INSERT INTO suministra (idarticulo, idproveedor) VALUES (4, 1);
 
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Contado', 1, 5);
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 30 días', 30, 0);
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 60 días', 60, 0);
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Talón 15 dias', 15, 1);
 
 
-INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago, idalmacen) VALUES (1, '01/01/2005', 1, 1, 1, 1);
-INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago, idalmacen) VALUES (2, '02/01/2005', 1, 1, 2, 1);
-INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago, idalmacen) VALUES (3, '03/01/2005', 1, 2, 3, 1);
-INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago, idalmacen) VALUES (4, '01/01/2005', 1, 2, 4, 1);
-INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago, idalmacen) VALUES (5, '02/01/2005', 1, 3, 2, 1);
-INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, idcliente, idforma_pago, idalmacen) VALUES (6, '03/01/2005', 1, 4, 1, 1);
+
+INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, idcliente, idforma_pago, idalmacen, refalbaran) VALUES (1, '01/01/2005', NULL, 1, 1, 1,'R1');
+INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, idcliente, idforma_pago, idalmacen, refalbaran) VALUES (2, '02/01/2005', NULL, 1, 2, 1,'R2');
+INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, idcliente, idforma_pago, idalmacen, refalbaran) VALUES (3, '03/01/2005', NULL, 2, 3, 1,'R3');
+INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, idcliente, idforma_pago, idalmacen, refalbaran) VALUES (4, '01/01/2005', NULL, 2, 4, 1,'R4');
+INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, idcliente, idforma_pago, idalmacen, refalbaran) VALUES (5, '02/01/2005', NULL, 3, 2, 1,'R5');
+INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, idcliente, idforma_pago, idalmacen, refalbaran) VALUES (6, '03/01/2005', NULL, 4, 1, 1,'R6');

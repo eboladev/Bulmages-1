@@ -27,6 +27,10 @@
 
 #include "presupuesto.h"
 #include "listlinpresupuestoview.h"
+#include "busquedacliente.h"
+#include "busquedaformapago.h"
+#include "busquedafecha.h"
+#include "busquedaalmacen.h"
 
 #include <qlineedit.h>
 #include <qtextedit.h>
@@ -54,12 +58,10 @@ void	pintaVencPresupuesto(QString id) {m_vencpresupuesto->setText(id);};
 void	pintaContractPresupuesto(QString id) {m_contactpresupuesto->setText(id);};
 void	pintaTelPresupuesto(QString id) {m_telpresupuesto->setText(id);};
 void	pintaComentPresupuesto(QString id) {m_comentpresupuesto->setText(id);};
-void	pintaNomClient(QString id) {m_nomclient->setText(id);};
-void	pintaCifClient(QString id) {m_cifclient->setText(id);};
-void	pintaCodigoAlmacen(QString id) {m_codigoalmacen-> setText(id);};
-void	pintaNomAlmacen(QString id) {m_nomalmacen-> setText(id);};
+void    pintaidcliente(QString id) {m_cliente->setidcliente(id);};
 void    pintarefpresupuesto(QString id) {m_refpresupuesto->setText(id);};
-void    pintaidforma_pago(QString);
+void    pintaidforma_pago(QString id) {m_forma_pago->setidforma_pago(id);};
+void    pintaidalmacen(QString id) {m_almacen->setidalmacen(id);};
 void    pintaprocesadopresupuesto(QString id) {
 	if (id == "t" || id == "TRUE") m_procesadopresupuesto->setChecked(TRUE);
 	else m_procesadopresupuesto->setChecked(FALSE);
@@ -69,41 +71,42 @@ void pintadescpresupuesto(QString id) {m_descpresupuesto->setText(id);};
 void   pintatotales(float base, float iva);
 
 private:
-//    void cargarcomboformapago(QString);
-    void buscarAlmacen();
     void generarPedidoCliente();
+    void generarAlbaranCliente();
 
 public slots:
-    virtual void budgetDateLostFocus();
-    virtual void budgetExpiryLostFocus();
-    virtual void searchClient();
     virtual void s_saveBudget() {guardapresupuesto();};
+    virtual void chargeBudget(QString id) {presupuesto::chargeBudget(id);setCaption("presupuesto "+mdb_refpresupuesto);    companyact->meteWindow(caption(),this);};
     virtual void s_removeBudget();
-    virtual void s_almacenLostFocus();
     virtual void s_printBudget();
     virtual void s_removeBudgetLine() {subform2->borralinpresupuestoact();};
     
     virtual void s_comentariotextChanged() { setComentPresupuesto(m_comentpresupuesto->text());};
-    virtual void s_cifclienttextChanged(const QString &str) {setCifClient(str);};
-    virtual void s_codigoalmacentextChanged(const QString &str) {setCodigoAlmacen(str);};
     virtual void s_contactotextChanged(const QString &str) {setContractPresupuesto(str);};
     virtual void s_telpresupuestotextChanged(const QString &str) {setTelPresupuesto(str);};
     virtual void s_refpresupuestotextChanged(const QString &str) {setrefpresupuesto(str);};
+    
     virtual void s_procesadopresupuestostateChanged(int i) {
     	if (i) setprocesadopresupuesto("TRUE");
 	else setprocesadopresupuesto("FALSE");
     }    
-    virtual void s_descpresupuestotextChanged(const QString &str) {setdescpresupuesto(str);};
+    virtual void s_descpresupuestotextChanged(const QString &str){setdescpresupuesto(str);};
 	/// Este slot se activa cuando cambia la fecha del presupuesto.
-    virtual void s_fpresupuestotextChanged(const QString &) {/*setFPresupuesto(str);*/};
     
     	/// Este slot se activa cuando hay cambios en los subformularios.
-    virtual void s_pintaTotales() {  
-   	 pintatotales(listalineas->calculabase(), listalineas->calculaiva());
-    }// end pintaTotales
+    virtual void s_pintaTotales() {pintatotales(listalineas->calculabase(),listalineas->calculaiva());};
     
+
+    virtual void s_formapagovalueChanged(QString val) {setidforma_pago(val);};
+    virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
+    
+    virtual void s_clientevalueChanged(QString id) {setidcliente(id);};
+    virtual void s_fpresupuestovalueChanged(QString id) {setFPresupuesto(id);};
+    virtual void s_vencpresupuestovalueChanged(QString id) {setVencPresupuesto(id);};
+    
+
     virtual void s_realizarPedidoCliente() {generarPedidoCliente();};
-    virtual void s_idforma_pagoactivated(int a) {setidforma_pago(m_cursorcombo->valor("idforma_pago",a));};
+    virtual void s_realizarAlbaranCliente() {generarAlbaranCliente();};
 };
 
 #endif

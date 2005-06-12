@@ -250,7 +250,7 @@ LinFactura *ListLinFacturaView::lineaat(int row) {
         while (m_lista.at(row) == 0 ) {
 	    fprintf(stderr,"Creamos la linea\n");
             linea=new LinFactura(companyact);
-            linea->setidFactura(mdb_idfactura);
+            linea->setidfactura(mdb_idfactura);
             m_lista.append(linea);  
         }// end while	
 	      return(m_lista.at(row));

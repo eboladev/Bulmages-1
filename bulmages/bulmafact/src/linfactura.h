@@ -61,7 +61,7 @@ public:
     inline void setcantlFactura(QString val) {mdb_cantlfactura=val;};
     inline void setpvplFactura(QString val)  {mdb_pvplfactura=val;};
     inline void setdescuentolFactura(QString val) {mdb_descuentolfactura=val;};
-    inline void setidFactura(QString val) {mdb_idfactura=val;};
+    inline void setidfactura(QString val) {mdb_idfactura=val;};
     inline void setivalFactura(QString val) {mdb_ivalfactura=val;};
     void setcodigocompletoarticulo(QString);  
 

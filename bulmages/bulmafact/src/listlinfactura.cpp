@@ -54,6 +54,7 @@ LinFactura *ListLinFactura::linpos(int pos) {
 // Carga l�eas de Factura
 void ListLinFactura::cargaListLinFactura(QString idbudget) {
     fprintf(stderr,"ListLinFactura::cargaListLinFactura(%s)\n", idbudget.ascii());
+    vaciar();
     mdb_idfactura = idbudget;
     fprintf(stderr,"Hacemos la carga del cursor\n");
     cursor2 * cur= companyact->cargacursor("SELECT * FROM lfactura, articulo WHERE idfactura="+idbudget+" AND articulo.idarticulo=lfactura.idarticulo");

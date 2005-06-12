@@ -34,6 +34,8 @@ public:
 	int m_modo;	// == 0 es modo edición
 					// ==1 es modo selector.
 	QString m_idArticle;
+	QString mdb_nomarticulo;
+	QString mdb_codigocompletoarticulo;
    
 public:
     articleslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
@@ -41,6 +43,9 @@ public:
     void modoseleccion() {m_modo=1;};
     void modoedicion() {m_modo=0;};
     QString idArticle() {return m_idArticle;};
+    QString idarticulo() {return m_idArticle;};
+    QString nomarticulo() {return mdb_nomarticulo;};
+    QString codigocompletoarticulo() {return mdb_codigocompletoarticulo;};
     ~articleslist();
     
 public slots:

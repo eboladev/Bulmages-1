@@ -30,17 +30,13 @@ protected:
     QString mdb_idalbaran;
     QString mdb_numalbaran;
     QString mdb_fechaalbaran;
-    QString mdb_idusuario;
+    QString mdb_loginusuario;
     QString mdb_comentalbaran;
     QString mdb_idcliente;
     QString mdb_idforma_pago;
-    QString mdb_idfactura;
     QString mdb_idalmacen;
-    
-    QString mdb_codigoalmacen;
-    QString mdb_nomalmacen;
-    QString mdb_cifcliente;
-    QString mdb_nomcliente;
+    QString mdb_refalbaran;
+    QString mdb_descalbaran;
     QString mdb_numfactura;
 
 public:
@@ -51,42 +47,38 @@ public:
         listalineas =a;
 	listalineas->setcompany(companyact);
     };    
-    void cargaAlbaranCliente(QString);
+    virtual void cargaAlbaranCliente(QString);
     void pintaAlbaranCliente();
     void guardaAlbaranCliente();
     void borraAlbaranCliente();
-    void setCifCliente(QString);
-    void setCodigoAlmacen(QString);
+    ListLinAlbaranCliente* getlistalineas() {return listalineas;};
 
     virtual void pintaIdAlbaran(QString) {};
     virtual void pintaNumAlbaran(QString) {};
-    virtual void pintaFechaAlbaran(QString) {};
-    virtual void pintaIdUsuario(QString) {};
+    virtual void pintafechaalbaran(QString) {};
+    virtual void pintaloginusuario(QString) {};
     virtual void pintaComentAlbaran(QString) {};
-    virtual void pintaIdCliente(QString ) {};
-    virtual void pintaIdForma_Pago(QString) {};
+    virtual void pintaidcliente(QString ) {};
+    virtual void pintaidforma_pago(QString) {};
     virtual void pintaIdFactura(QString){};
-    virtual void pintaIdAlmacen(QString){};
-    virtual void pintaCodigoAlmacen(QString) {};
-    virtual void pintaNomAlmacen(QString) {};
-    virtual void pintaCifCliente(QString) {};
-    virtual void pintaNomCliente(QString) {};
+    virtual void pintaidalmacen(QString){};
     virtual void pintaNumFactura(QString) {};
+    virtual void pintadescalbaran(QString) {};
+    virtual void pintarefalbaran(QString) {};
     virtual void pintatotales(float, float) {};
 
-    void setIdAlbaran(QString val) { mdb_idalbaran=val;};
+    void setidalbaran(QString val) { mdb_idalbaran=val;listalineas->setidalbaran(val);};
     void setNumAlbaran(QString val) { mdb_numalbaran=val;};
-    void setFechaAlbaran(QString val) { mdb_fechaalbaran=val;};
-    void setIdUsuario(QString val) { mdb_idusuario=val;};
-    void setComentAlbaran(QString val) { mdb_comentalbaran=val;};
-    void setIdCliente(QString val) { mdb_idcliente=val;};
-    void setIdForma_Pago(QString val) { mdb_idforma_pago=val;};
-    void setIdFactura(QString val) { mdb_idfactura=val;};
-    void setIdAlmacen(QString val) {mdb_idalmacen=val;};
-    void setNomAlmacen(QString val) { mdb_nomalmacen=val;};
-    void setNomCliente(QString val) {mdb_nomcliente=val;};
+    void setfechaalbaran(QString val) { mdb_fechaalbaran=val;};
+    void setloginusuario(QString val) { mdb_loginusuario=val;};
+    void setcomentalbaran(QString val) { mdb_comentalbaran=val;};
+    void setidcliente(QString val) { mdb_idcliente=val;};
+    void setidforma_pago(QString val) { mdb_idforma_pago=val;};
+    void setidalmacen(QString val) {mdb_idalmacen=val;};
     void setNumFactura(QString val) {mdb_numfactura=val;};
-    
+    void setrefalbaran(QString val) {mdb_refalbaran=val;};
+    void setdescalbaran(QString val) {mdb_descalbaran=val;};  
+    void imprimirAlbaranCliente();
     void vaciaAlbaranCliente();    
 };
 

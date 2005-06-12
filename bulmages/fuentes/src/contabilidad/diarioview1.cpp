@@ -514,7 +514,7 @@ void diarioview1::textChanged(const QString &texto) {
 // cuando pulsamos el boton de la fecha
 // es como si escribiesemos un + en el texto
 void diarioview1::boton_fechainicial() {
-	fechainicial1->setText("+");
+   fechainicial1->setText("+");
    fechainicial1->selectAll();
    fechainicial1->setFocus();
 }// end boton_fechainicial
@@ -522,7 +522,7 @@ void diarioview1::boton_fechainicial() {
 // cuando pulsamos el boton de la fecha
 // es como si escribiesemos un + en el texto
 void diarioview1::boton_fechafinal() {
-	fechafinal1->setText("+");
+   fechafinal1->setText("+");
    fechafinal1->selectAll();
    fechafinal1->setFocus();
 }// end boton_fechainicial

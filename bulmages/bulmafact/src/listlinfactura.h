@@ -30,6 +30,16 @@ public:
    
     ListLinFactura(company *comp);
     ListLinFactura();
+    void setidfactura(QString id) {
+        mdb_idfactura=id;
+        LinFactura *linea;
+        uint i = 0;
+        for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+            linea->setidfactura(mdb_idfactura);
+            i++;
+        }// end for
+    }; 
+    
     void setcompany(company *c) {
        fprintf(stderr,"ListLinFactura setCompany\n");
        companyact=c;

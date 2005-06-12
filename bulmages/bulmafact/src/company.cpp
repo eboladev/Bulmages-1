@@ -72,15 +72,18 @@ QString company::searchCompany() {
 
 
 void company::createMainWindows() {
-   m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Proveedores","company"));   
    m_articleslist = new articleslist(this, m_pWorkspace,theApp->translate("Artículos","company"));
+   m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Proveedores","company"));   
+   m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Clientes","company"));   
+   
+   m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos a Clientes","company"));  
+   m_pedidosclienteList = new PedidosClienteList(this, m_pWorkspace,theApp->translate("Pedidos de Clientes","company")); 
+   m_clientDelivNotesList = new ClientDelivNotesList(this, m_pWorkspace,theApp->translate("Albaranes de Clientes","company"));
+   m_facturasList = new FacturasList(this, m_pWorkspace,theApp->translate("Facturas a Cliente","company"));
+   
    m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Pedidos a Proveedores","company"));
    m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Albaranes","company"));   
-   m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos","company"));  
-   m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Clientes","company"));   
-   m_clientDelivNotesList = new ClientDelivNotesList(this, m_pWorkspace,theApp->translate("Listado de Albaranes de Clientes","company"));
-   m_facturasList = new FacturasList(this, m_pWorkspace,theApp->translate("Facturas","company"));
-   m_pedidosclienteList = new PedidosClienteList(this, m_pWorkspace,theApp->translate("Pedidos de Clientes","company"));   
+ 
    fprintf(stderr,"Fin de createMainWindows\n");
 }// end createMainWindows
 
@@ -157,6 +160,10 @@ void company::newBudget() {
 void company::refreshBudgets() {
    m_budgetsList->inicializa();
 }// end refreshBudgets
+
+void company::refreshFacturas() {
+   m_facturasList->inicializa();
+}// end refreshFacturas
 
 
 void company::listClientDelivNotes() {

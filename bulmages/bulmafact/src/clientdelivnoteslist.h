@@ -24,41 +24,79 @@
 // Clients delivery notes list.
 
 #include "clientdelivnoteslistbase.h"
-
-
-class company;
+#include "busquedacliente.h"
+#include "company.h"
 
 
 class ClientDelivNotesList : public ClientDelivNotesListBase {
-Q_OBJECT
+    Q_OBJECT
 private:
-   company *companyact;
-   int m_modo; // == 0 es modo edición
-            // ==1 es modo selector.
-   QString m_idclidelivnote;
-   
+    company *companyact;
+    int m_modo; // == 0 es modo edición
+    // ==1 es modo selector.
+    QString m_idclidelivnote;
+
 public:
+    ClientDelivNotesList(QWidget *parent = 0, const char *name = 0, int flag = 0);
     ClientDelivNotesList(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
     ~ClientDelivNotesList();
     void inicializa();
-    void modoseleccion() {m_modo=1;};
-    void modoedicion() {m_modo=0;};
-    QString idCliDelivNote() {return m_idclidelivnote;};
-    
+    void modoseleccion() {
+        m_modo=1;
+    };
+    void modoedicion() {
+        m_modo=0;
+    };
+    void imprimir();
+    void setcompany (company *comp) {
+        companyact=comp;
+        m_cliente->setcompany(comp);
+    };
+    void hideBotonera() {
+        m_botonera->hide();
+    };
+    void showBotonera() {
+        m_botonera->show();
+    };
+    void hideBusqueda() {
+        fprintf(stderr,"Ocultar busqueda\n");
+        m_busqueda->hide();
+    };
+    void showBusqueda() {
+        m_busqueda->show();
+    };
+    void setidcliente(QString val) {
+        m_cliente->setidcliente(val);
+    };
+    QString idCliDelivNote() {
+        return m_idclidelivnote;
+    };
+    void meteWindow(QString nom, QObject *obj) {
+        if (companyact != NULL)
+            companyact->meteWindow(nom, obj);
+    };
+    QString generarFiltro();
 public slots:
     virtual void s_doubleclicked(int, int, int, const QPoint &);
     virtual void s_newClientDelivNote();
-	 virtual void s_removeClientDelivNote();
-	 virtual void s_contextMenu(int, int, int, const QPoint &);
-    
-    /*
-    virtual void boton_editar();
-    
-    virtual void boton_duplicar();
-    virtual void boton_borrar();
-    virtual void boton_imprimir();
-    virtual void boton_filtrar();
-*/
+    virtual void s_removeClientDelivNote();
+    virtual void s_contextMenu(int, int, int, const QPoint &);
+    virtual void s_searchClientDelivNote() {
+        inicializa();
+    };
+    virtual void s_printClientDelivNote() {
+        imprimir();
+    };
+    virtual void s_filtrar() {
+        inicializa();
+    };
+    virtual void s_mostrarBusqueda() {
+        fprintf(stderr,"s_mostrarBusqueda\n");
+        if (m_busqueda->isVisible())
+            hideBusqueda();
+        else
+            showBusqueda();
+    };
 };
 
 #endif

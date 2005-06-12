@@ -175,6 +175,8 @@ void articleslist::inicializa() {
 
 void articleslist::articleSelected(int a, int b, int c, const QPoint &) {
    m_idArticle = m_list->text(a,COL_IDARTICULO);
+   mdb_nomarticulo = m_list->text(a,COL_NOMARTICULO);
+   mdb_codigocompletoarticulo = m_list->text(a,COL_CODCOMPLETOARTICULO);
    if (m_modo ==0 ) {
       QString idArt = m_list->text(a, COL_IDARTICULO);
       fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);

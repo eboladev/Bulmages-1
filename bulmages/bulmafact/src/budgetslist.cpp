@@ -48,7 +48,9 @@ CREATE TABLE presupuesto (
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
+#include <qcheckbox.h>
 #include <qfile.h>
+#include <qcheckbox.h>
 
 #include "configuracion.h"
 
@@ -69,13 +71,99 @@ CREATE TABLE presupuesto (
 #define COL_IDALMACEN 13
 
 
+void BudgetsList::s_configurar() {
+
+    if(mver_idpresupuesto->isChecked() )
+        m_list->showColumn(COL_IDPRESUPUESTO);
+    else
+        m_list->hideColumn(COL_IDPRESUPUESTO);
+
+    if(mver_codigoalmacen->isChecked() )
+        m_list->showColumn(COL_CODIGOALMACEN);
+    else
+        m_list->hideColumn(COL_CODIGOALMACEN);
+
+    if(mver_refpresupuesto->isChecked() )
+        m_list->showColumn(COL_REFPRESUPUESTO);
+    else
+        m_list->hideColumn(COL_REFPRESUPUESTO);
+
+    if(mver_nomcliente->isChecked() )
+        m_list->showColumn(COL_NOMCLIENTE);
+    else
+        m_list->hideColumn(COL_NOMCLIENTE);
+
+    if(mver_descpresupuesto->isChecked() )
+        m_list->showColumn(COL_DESCPRESUPUESTO);
+    else
+        m_list->hideColumn(COL_DESCPRESUPUESTO);
+
+    if(mver_fechapresupuesto->isChecked() )
+        m_list->showColumn(COL_FPRESUPUESTO);
+    else
+        m_list->hideColumn(COL_FPRESUPUESTO);
+
+    if(mver_vencpresupuesto->isChecked() )
+        m_list->showColumn(COL_VENCPRESUPUESTO);
+    else
+        m_list->hideColumn(COL_VENCPRESUPUESTO);
+
+    if(mver_contactpresupuesto->isChecked() )
+        m_list->showColumn(COL_CONTACTPRESUPUESTO);
+    else
+        m_list->hideColumn(COL_CONTACTPRESUPUESTO);
+
+    if(mver_numpresupuesto->isChecked() )
+        m_list->showColumn(COL_NUMPRESUPUESTO);
+    else
+        m_list->hideColumn(COL_NUMPRESUPUESTO);
+
+    if(mver_telpresupuesto->isChecked() )
+        m_list->showColumn(COL_TELPRESUPUESTO);
+    else
+        m_list->hideColumn(COL_TELPRESUPUESTO);
+
+    if(mver_idcliente->isChecked() )
+        m_list->showColumn(COL_IDCLIENTE);
+    else
+        m_list->hideColumn(COL_IDCLIENTE);
+
+    if(mver_idusuario->isChecked() )
+        m_list->showColumn(COL_IDUSUARI);
+    else
+        m_list->hideColumn(COL_IDUSUARI);
+
+    if(mver_idalmacen->isChecked() )
+        m_list->showColumn(COL_IDALMACEN);
+    else
+        m_list->hideColumn(COL_IDALMACEN);
+
+    m_list->hideColumn(COL_COMENTPRESUPUESTO);
+
+}
+
+
+BudgetsList::BudgetsList(QWidget *parent, const char *name, int flag)
+: BudgetsListBase(parent, name, flag) {
+    companyact = NULL;
+    m_modo=0;
+    m_idpresupuesto="";
+    meteWindow(caption(),this);
+    hideBusqueda();
+    hideConfiguracion();
+}// end providerslist
+
 BudgetsList::BudgetsList(company *comp, QWidget *parent, const char *name, int flag)
 : BudgetsListBase(parent, name, flag) {
     companyact = comp;
+    m_cliente->setcompany(comp);
+    m_articulo->setcompany(comp);
     inicializa();
     m_modo=0;
     m_idpresupuesto="";
-    companyact->meteWindow(caption(),this);
+    meteWindow(caption(),this);
+    hideBusqueda();
+    hideConfiguracion();
 }// end providerslist
 
 BudgetsList::~BudgetsList() {
@@ -83,6 +171,7 @@ BudgetsList::~BudgetsList() {
 }// end ~providerslist
 
 void BudgetsList::inicializa() {
+    fprintf(stderr,"BudgetsList::inicializa()\n");
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
@@ -118,17 +207,7 @@ void BudgetsList::inicializa() {
     m_list->setColumnWidth(COL_IDALMACEN,75);
     m_list->setColumnWidth(COL_NOMCLIENTE,200);
     m_list->setColumnWidth(COL_CODIGOALMACEN,75);
-    m_list->hideColumn(COL_IDPRESUPUESTO);
-    m_list->hideColumn(COL_IDCLIENTE);
-    m_list->hideColumn(COL_IDALMACEN);
-    m_list->hideColumn(COL_CODIGOALMACEN);
-    m_list->hideColumn(COL_NUMPRESUPUESTO);
-    m_list->hideColumn(COL_FPRESUPUESTO);
-    m_list->hideColumn(COL_CONTACTPRESUPUESTO);
-    m_list->hideColumn(COL_TELPRESUPUESTO);
-    m_list->hideColumn(COL_COMENTPRESUPUESTO);
-    m_list->hideColumn(COL_IDUSUARI);
-    m_list->hideColumn(COL_IDCLIENTE);
+
     if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
         m_list->hideColumn(COL_CODIGOALMACEN);
     }// end if
@@ -136,41 +215,75 @@ void BudgetsList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");
     m_list->setReadOnly(TRUE);
-    
-    QString filtro;
-    if (m_filtro->text() != "") {
-    	filtro = " AND ( descpresupuesto LIKE '%"+m_filtro->text()+"%' ";
-	filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
-    } else {
-    	filtro = "";
+
+
+
+    if (companyact != NULL ) {
+        cursor2 * cur= companyact->cargacursor("SELECT * FROM presupuesto, cliente, almacen where presupuesto.idcliente=cliente.idcliente AND presupuesto.idalmacen=almacen.idalmacen "+generaFiltro());
+        m_list->setNumRows( cur->numregistros() );
+        int i=0;
+        while (!cur->eof()) {
+            m_list->setText(i,COL_IDPRESUPUESTO,cur->valor("idpresupuesto"));
+            m_list->setText(i,COL_NUMPRESUPUESTO,cur->valor("numpresupuesto"));
+            m_list->setText(i,COL_FPRESUPUESTO,cur->valor("fpresupuesto"));
+            m_list->setText(i,COL_VENCPRESUPUESTO,cur->valor("vencpresupuesto"));
+            m_list->setText(i,COL_CONTACTPRESUPUESTO,cur->valor("contactpresupuesto"));
+            m_list->setText(i,COL_TELPRESUPUESTO,cur->valor("telpresupuesto"));
+            m_list->setText(i,COL_COMENTPRESUPUESTO,cur->valor("comentpresupuesto"));
+            m_list->setText(i,COL_IDUSUARI,cur->valor("idusuari"));
+            m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
+            m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
+            m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
+            m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
+            m_list->setText(i,COL_REFPRESUPUESTO,cur->valor("refpresupuesto"));
+            m_list->setText(i,COL_DESCPRESUPUESTO,cur->valor("descpresupuesto"));
+            i++;
+            cur->siguienteregistro();
+        }// end while
+        delete cur;
     }// end if
-    
-    
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM presupuesto, cliente, almacen where presupuesto.idcliente=cliente.idcliente AND presupuesto.idalmacen=almacen.idalmacen "+filtro);
-    m_list->setNumRows( cur->numregistros() );
-    int i=0;
-    while (!cur->eof()) {
-        m_list->setText(i,COL_IDPRESUPUESTO,cur->valor("idpresupuesto"));
-        m_list->setText(i,COL_NUMPRESUPUESTO,cur->valor("numpresupuesto"));
-        m_list->setText(i,COL_FPRESUPUESTO,cur->valor("fpresupuesto"));
-        m_list->setText(i,COL_VENCPRESUPUESTO,cur->valor("vencpresupuesto"));
-        m_list->setText(i,COL_CONTACTPRESUPUESTO,cur->valor("contactpresupuesto"));
-        m_list->setText(i,COL_TELPRESUPUESTO,cur->valor("telpresupuesto"));
-        m_list->setText(i,COL_COMENTPRESUPUESTO,cur->valor("comentpresupuesto"));
-        m_list->setText(i,COL_IDUSUARI,cur->valor("idusuari"));
-        m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
-        m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
-        m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
-        m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
-        m_list->setText(i,COL_REFPRESUPUESTO,cur->valor("refpresupuesto"));
-        m_list->setText(i,COL_DESCPRESUPUESTO,cur->valor("descpresupuesto"));
-        i++;
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
+    s_configurar();
+    fprintf(stderr,"end BudgetsList::inicializa()\n");
 }// end inicializa
 
 
+
+QString BudgetsList::generaFiltro() {
+    /// Tratamiento de los filtros.
+    fprintf(stderr,"Tratamos el filtro \n");
+    QString filtro="";
+    if (m_filtro->text() != "") {
+        filtro = " AND ( descpresupuesto LIKE '%"+m_filtro->text()+"%' ";
+        filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
+    } else {
+        filtro = "";
+    }// end if
+    if (m_cliente->idcliente() != "") {
+        filtro += " AND presupuesto.idcliente="+m_cliente->idcliente();
+    }// end if
+    if (!m_procesados->isChecked() ) {
+        filtro += " AND NOT procesadopresupuesto";
+    }// end if
+    if (m_articulo->idarticulo() != "") {
+        filtro += " AND idpresupuesto IN (SELECT DISTINCT idpresupuesto FROM lpresupuesto WHERE idarticulo='"+m_articulo->idarticulo()+"')";
+    }// end if
+    filtro += " ORDER BY idpresupuesto";
+    return (filtro);
+}// end generaFiltro
+
+
+
+void BudgetsList::s_editar() {
+    int a = m_list->currentRow();
+    m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
+    if (m_modo ==0 && m_idpresupuesto != "") {
+        Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+        bud->chargeBudget(m_idpresupuesto);
+        bud->show();
+    } else {
+        close();
+    }// end if
+}
 
 void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
     m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
@@ -214,7 +327,7 @@ void BudgetsList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuestos.rml";
     archivo = "cp "+archivo+" /tmp/presupuestos.rml";
     system (archivo.ascii());
-    
+
     /// Copiamos el logo
     archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
     archivo = "cp "+archivo+" /tmp/logo.jpg";
@@ -235,18 +348,18 @@ void BudgetsList::imprimir() {
     fitxersortidatxt += "	<td>Referencia</td>";
     fitxersortidatxt += "	<td>Cliente</td>";
     fitxersortidatxt += "	<td>Contacto</td>";
-    fitxersortidatxt += "</tr>";    
-    
-    QString SQLQuery = "SELECT * FROM presupuesto";
+    fitxersortidatxt += "</tr>";
+
+    QString SQLQuery = "SELECT * FROM presupuesto, cliente, almacen where presupuesto.idcliente=cliente.idcliente AND presupuesto.idalmacen=almacen.idalmacen "+generaFiltro();
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     while(!cur->eof()) {
-    	fitxersortidatxt += "<tr>";
-    	fitxersortidatxt += "<td>"+cur->valor("descpresupuesto")+"</td>";
-    	fitxersortidatxt += "<td>"+cur->valor("refpresupuesto")+"</td>";
-    	fitxersortidatxt += "<td>"+cur->valor("idcliente")+"</td>";
-    	fitxersortidatxt += "<td>"+cur->valor("contactpresupuesto")+"</td>";
-    	fitxersortidatxt += "</tr>";
-	cur->siguienteregistro();
+        fitxersortidatxt += "<tr>";
+        fitxersortidatxt += "<td>"+cur->valor("descpresupuesto")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("refpresupuesto")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("idcliente")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("contactpresupuesto")+"</td>";
+        fitxersortidatxt += "</tr>";
+        cur->siguienteregistro();
     }// end if
     delete cur;
     fitxersortidatxt += "</blockTable>";
@@ -259,7 +372,7 @@ void BudgetsList::imprimir() {
         file.close();
     }
     system("trml2pdf.py /tmp/presupuestos.rml > /tmp/pressupost.pdf");
-    system("kpdf /tmp/pressupost.pdf");
+    system("kpdf /tmp/pressupost.pdf &");
 
 }// end imprimir
 
@@ -273,17 +386,13 @@ void BudgetsList::s_removeBudget() {
             if (companyact->ejecuta(SQLQuery)==0) {
                 QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
                 if (companyact->ejecuta(SQLQuery)==0) {
-                    QString SQLQuery = "DELETE FROM prfp WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-                    if (companyact->ejecuta(SQLQuery)==0) {
                         QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
                         if (companyact->ejecuta(SQLQuery)==0) {
                             companyact->commit();
                         } else {
                             companyact->rollback();
                         }
-                    } else {
-                        companyact->rollback();
-                    }
+
                 } else {
                     companyact->rollback();
                 }

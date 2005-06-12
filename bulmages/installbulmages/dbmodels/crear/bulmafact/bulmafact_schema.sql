@@ -66,7 +66,7 @@ CREATE TABLE forma_pago (
 -- emailalmacen: correo electrónico del almacén.
 -- presupuestoautoalmacen el numero de presupuesto es automatico? N=No, 
 -- albaranautoalmacen el numero de albaran es automatico? N=No, 
--- facturaautoalmacen el numero de factura es automatico? N=No, 
+-- facturaautoalmacen el numero de  es automatico? N=No, 
 CREATE TABLE almacen (
  idalmacen serial PRIMARY KEY,
  codigoalmacen numeric(5, 0) NOT NULL,
@@ -129,8 +129,8 @@ CREATE TABLE tasa_iva (
 -- Básicamente sirve para garantizar la integridad referencial en las  series de facturación
 -- Deberían existir en contabilidad tambien.
 CREATE TABLE serie_factura (
-	idserie_factura serial PRIMARY KEY,
-	codigoserie_factura character(2),
+--	idserie_factura serial PRIMARY KEY,
+	codigoserie_factura character varying (6) PRIMARY KEY,
 	descserie_factura character varying(50) NOT NULL,
 	UNIQUE (codigoserie_factura)
 );
@@ -375,6 +375,16 @@ CREATE TABLE pedido (
 
 
 
+CREATE TABLE usuario (
+    loginusuario character varying(15) PRIMARY KEY,
+    nombreusuario character varying(35),
+    apellido1usuario character varying(35),
+    apellido2usuario character varying(35),
+    claveusuario character varying(35),
+    permisosusuario text
+);
+
+
 
 -- Any: Any de facturació.
 -- Numero: Número de factura.
@@ -445,7 +455,7 @@ CREATE TABLE lpedido (
 CREATE TABLE presupuesto (
    idpresupuesto serial PRIMARY KEY,
    numpresupuesto integer NOT NULL UNIQUE,
-   refpresupuesto character varying(12) UNIQUE,
+   refpresupuesto character varying(12) NOT NULL,
    fpresupuesto date,
    descpresupuesto character varying(150),
    contactpresupuesto character varying(90),
@@ -456,9 +466,38 @@ CREATE TABLE presupuesto (
    procesadopresupuesto boolean DEFAULT FALSE,
    idcliente integer REFERENCES cliente(idcliente),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago),
+   idforma_pago integer NOT NULL REFERENCES forma_pago(idforma_pago),
    UNIQUE (idalmacen, numpresupuesto)
 );
+
+CREATE FUNCTION restriccionespresupuesto () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+        IF NEW.numpresupuesto IS NULL THEN
+                SELECT INTO asd max(numpresupuesto) AS m FROM presupuesto;
+		IF FOUND THEN
+			NEW.numpresupuesto := asd.m + 1;
+		ELSE
+			NEW.numpresupuesto := 1;
+		END IF;
+        END IF;
+	IF NEW.refpresupuesto IS NULL OR NEW.refpresupuesto = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.refpresupuesto := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionespresupuestotrigger
+    BEFORE INSERT OR UPDATE ON presupuesto
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionespresupuesto();
 
 
 -- Descuento de presupuesto.
@@ -503,9 +542,9 @@ CREATE TABLE lpresupuesto (
 -- Data: Data d'emisió de la comanda.
 CREATE TABLE pedidocliente (
    idpedidocliente serial PRIMARY KEY,
-   numpedidocliente character varying(60),
+   numpedidocliente integer UNIQUE NOT NULL,
    fechapedidocliente date,
-   refpedidocliente character varying(12) UNIQUE,   
+   refpedidocliente character varying(12) NOT NULL,   
    descpedidocliente character varying(500),
    comentpedidocliente character varying(3000),
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
@@ -514,6 +553,36 @@ CREATE TABLE pedidocliente (
    idforma_pago integer REFERENCES forma_pago(idforma_pago),    
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
+
+CREATE FUNCTION restriccionespedidocliente () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+        IF NEW.numpedidocliente IS NULL THEN
+                SELECT INTO asd max(numpedidocliente) AS m FROM pedidocliente;
+		IF FOUND THEN
+			NEW.numpedidocliente := asd.m + 1;
+		ELSE
+			NEW.numpedidocliente := 1;
+		END IF;
+        END IF;
+	IF NEW.refpedidocliente IS NULL OR NEW.refpedidocliente = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.refpedidocliente := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionespedidoclientetrigger
+    BEFORE INSERT OR UPDATE ON pedidocliente
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionespedidocliente();
+
 
 -- Linea de pedido
 -- Numero: Número de línia.
@@ -543,18 +612,49 @@ CREATE TABLE lpedidocliente (
 -- Factura a clients.
 CREATE TABLE factura (
    idfactura serial PRIMARY KEY,
-   idserie_factura char(2) NOT NULL,
+   codigoserie_factura character varying (6) NOT NULL REFERENCES serie_factura(codigoserie_factura),
    numfactura integer NOT NULL,
+   reffactura character varying(15) NOT NULL,
    ffactura date,
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
    contactfactura character varying(90),
    telfactura character varying(20),
    comentfactura character varying(3000),
+   procesadafactura boolean DEFAULT FALSE, 
    idusuari integer,
    idcliente integer REFERENCES cliente(idcliente),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),   
-	UNIQUE (idalmacen, idserie_factura, numfactura)	
+   UNIQUE (idalmacen, codigoserie_factura, numfactura)	
 );
+
+CREATE FUNCTION restriccionesfactura () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+        IF NEW.numfactura IS NULL THEN
+                SELECT INTO asd max(numfactura) AS m FROM factura WHERE idserie_factura=NEW.idserie_factura AND idalmacen = NEW.idalmacen;
+		IF FOUND THEN
+			NEW.numfactura := asd.m + 1;
+		ELSE
+			NEW.numfactura := 1;
+		END IF;
+        END IF;
+	IF NEW.reffactura IS NULL OR NEW.reffactura = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.reffactura := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionesfacturatrigger
+    BEFORE INSERT OR UPDATE ON factura
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesfactura();
 
 
 -- Linea de presupuesto
@@ -602,11 +702,13 @@ CREATE TABLE nofactura (
 -- Albarà a clients.
 CREATE TABLE albaran (
    idalbaran serial PRIMARY KEY,
-   numalbaran integer NOT NULL,
+   numalbaran integer NOT NULL UNIQUE,
+   descalbaran character varying(150),
+   refalbaran character varying(12) NOT NULL,
    fechaalbaran date,
-   idusuario integer,
+   loginusuario character varying(15) REFERENCES usuario(loginusuario),
    comentalbaran character varying(3000),
---   idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
+   procesadoalbaran boolean DEFAULT FALSE,
    idcliente integer REFERENCES cliente(idcliente),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),
    idfactura integer REFERENCES factura(idfactura),
@@ -615,6 +717,90 @@ CREATE TABLE albaran (
    UNIQUE (idalmacen, numalbaran)
 );
 
+-- **********************************************************************
+-- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCIÓN DE ERRORES.
+-- **********************************************************************
+-- **********************************************************************
+
+CREATE FUNCTION restriccionesalbaran () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+        IF NEW.numalbaran IS NULL THEN
+                SELECT INTO asd max(numalbaran) AS m FROM albaran;
+		IF FOUND THEN
+			NEW.numalbaran := asd.m + 1;
+		ELSE
+			NEW.numalbaran := 1;
+		END IF;
+        END IF;
+	IF NEW.refalbaran IS NULL OR NEW.refalbaran = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.refalbaran := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionesalbarantrigger
+    BEFORE INSERT OR UPDATE ON albaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesalbaran();
+
+    
+CREATE FUNCTION random_string(int4) RETURNS "varchar" AS '
+DECLARE
+iLoop int4;
+result varchar;
+BEGIN
+result = '''';
+IF ($1>0) AND ($1 < 255) THEN
+  FOR iLoop in 1 .. $1 LOOP
+    result = result || chr(int4(random()*26)+65);
+  END LOOP;
+  RETURN result;
+ELSE
+  RETURN ''f'';
+END IF;
+END;
+'  LANGUAGE 'plpgsql';
+    
+
+CREATE FUNCTION crearef () RETURNS character varying (15)
+AS '
+DECLARE
+asd RECORD;
+result character varying(15);
+efound boolean;
+BEGIN
+	efound := FALSE;
+	WHILE efound = FALSE LOOP
+		result := random_string(6);
+		efound := TRUE;
+		SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto=result;
+		IF FOUND THEN
+			efound := FALSE;
+		END IF;
+		SELECT  INTO asd idpedidocliente FROM pedidocliente WHERE refpedidocliente=result;
+		IF FOUND THEN
+			efound := FALSE;
+		END IF;
+		SELECT  INTO asd idalbaran FROM albaran WHERE refalbaran=result;
+		IF FOUND THEN
+			efound := FALSE;
+		END IF;	
+		SELECT INTO asd  idfactura FROM factura WHERE reffactura=result;
+		IF FOUND THEN
+			efound := FALSE;
+		END IF;	
+	END LOOP;
+	RETURN result;
+END;
+' LANGUAGE plpgsql;
 
 -- Descuento albaran
 -- Numero
@@ -671,15 +857,6 @@ CREATE TABLE suministra (
 
 
 
-CREATE TABLE usuarios (
-    login character varying(15) NOT NULL,
-    nombre character varying(35),
-    apellido1 character varying(35),
-    apellido2 character varying(35),
-    clave character varying(35),
-    permisos text,
-    PRIMARY KEY ("login")
-);
 
 
 -- Los tipos de tarifa permiten tener diferentes precios para un mismo artículo en función de alguna variable que queramos definir (para un cliente, para una zona, si es para un minorista, tienda propia franquiciada ...

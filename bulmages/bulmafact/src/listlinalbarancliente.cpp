@@ -52,6 +52,7 @@ LinAlbaranCliente *ListLinAlbaranCliente::linpos(int pos) {
 
 // Carga l�eas de Factura
 void ListLinAlbaranCliente::cargaListLinAlbaranCliente(QString idbudget) {
+    vaciar();
     fprintf(stderr,"ListLinAlbaranCliente::cargaListLinAlbaranCliente(%s)\n", idbudget.ascii());
     mdb_idalbaran = idbudget;
     fprintf(stderr,"Hacemos la carga del cursor\n");

@@ -24,7 +24,10 @@
 #include <qlineedit.h>
 #include <qtextedit.h>
 #include <qlabel.h>
-
+#include "busquedacliente.h"
+#include "busquedafecha.h"
+#include "busquedaformapago.h"
+#include "busquedaalmacen.h"
 #include "albaranclientebase.h"
 #include "albarancliente.h"
 #include "postgresiface2.h"
@@ -35,8 +38,6 @@ class company;
 
 class AlbaranClienteView : public AlbaranClienteBase, public AlbaranCliente {
 Q_OBJECT
-private:
-	cursor2 *m_cursorcombo;
 	
 public:
 	AlbaranClienteView(company *, QWidget *, const char *);
@@ -46,42 +47,48 @@ public:
 	
     void pintaIdAlbaran(QString) {};
     void pintaNumAlbaran(QString val) {m_numalbaran->setText(val);};
-    void pintaFechaAlbaran(QString val) {m_fechaalbaran->setText(val);};
+    void pintafechaalbaran(QString val) {m_fechaalbaran->setText(val);};
     void pintaIdUsuario(QString) {};
     void pintaComentAlbaran(QString val) {m_comentalbaran->setText(val);};
-    void pintaIdCliente(QString ) {};
-    void pintaIdForma_Pago(QString);
+    void pintaidcliente(QString val) {m_cliente->setidcliente(val);};
+    void pintaidforma_pago(QString val) {m_forma_pago->setidforma_pago(val);};
     void pintaIdFactura(QString){};
-    void pintaIdAlmacen(QString){};
-    void pintaCodigoAlmacen(QString val) {m_codigoalmacen->setText(val);};
-    void pintaNomAlmacen(QString val) {m_nomalmacen->setText(val);};
-    void pintaCifCliente(QString val) {m_cifcliente->setText(val);};
-    void pintaNomCliente(QString val) {m_nomcliente->setText(val);};
+    void pintaidalmacen(QString id){m_almacen->setidalmacen(id);};
+
+    void pintadescalbaran(QString val) {m_descalbaran->setText(val);};
+    void pintarefalbaran(QString val) {m_refalbaran->setText(val);};
     void pintaNumFactura(QString) {};
     
     void pintatotales(float, float);	
+    void generarFactura();
 
      
 public slots:
-    virtual void s_comentalbarantextChanged() { setComentAlbaran(m_comentalbaran->text());};
+    virtual void s_comentalbarantextChanged() { setcomentalbaran(m_comentalbaran->text());};
+    virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
+    virtual void s_numalbarantextChanged(const QString &val) {setNumAlbaran(val);};
+    virtual void s_clientevalueChanged(QString val) {setidcliente(val);};
     
-    virtual void s_codigoalmacentextChanged(const QString &val) {setCodigoAlmacen(val);};
-    virtual void s_numfacturatextChanged(const QString &val) {setNumFactura(val);};
-    virtual void s_cifclientetextChanged(const QString &val) {setCifCliente(val);};
-    virtual void s_fechaalbarantextChanged(const QString &val) {setFechaAlbaran(val);};
-    virtual void s_formapagoactivated(int a) {setIdForma_Pago(m_cursorcombo->valor("idforma_pago",a));};
-    
+    virtual void s_fechaalbaranvalueChanged(QString val) {
+    fprintf(stderr,"s_fechaalbaranvalueChanged()\n");
+    setfechaalbaran(val);};
+    virtual void s_forma_pagovalueChanged(QString val) {setidforma_pago(val);};
+    virtual void s_refalbarantextChanged(const QString &val) {setrefalbaran(val);};
+    virtual void s_descalbarantextChanged(const QString &val) {setdescalbaran(val);};
     virtual void s_saveAlbaranCliente() {guardaAlbaranCliente();};
+    virtual void cargaAlbaranCliente(QString id) {AlbaranCliente::cargaAlbaranCliente(id);setCaption("Albaran Cliente  "+mdb_refalbaran);companyact->meteWindow(caption(),this);};    
     virtual void s_deleteAlbaranCliente() {borraAlbaranCliente();};
     virtual void s_printAlbaranCliente(){};
-    virtual void s_searchCliente();
     
      /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {  
    	 pintatotales(listalineas->calculabase(), listalineas->calculaiva());
     }// end pintaTotales     
      
-     
+    virtual void s_verpresupuesto();
+    virtual void s_verpedidocliente();
+    virtual void s_imprimirAlbaranCliente() {imprimirAlbaranCliente();};
+    virtual void s_generarFactura() {generarFactura();};
 };
 
 #endif

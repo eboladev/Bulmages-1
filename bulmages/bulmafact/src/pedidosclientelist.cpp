@@ -36,13 +36,24 @@
 #define COL_IDSERIE_FACTURA 13
 
 
+PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, int flag)
+: PedidosClienteListBase(parent, name, flag) {
+    companyact = NULL;
+    m_modo=0;
+    m_idpedidocliente="";
+    meteWindow(caption(),this);
+    hideBusqueda();
+}// end providerslist
 
-PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const char *name) : PedidosClienteListBase(parent, name) {
+
+PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const char *name, int flag) : PedidosClienteListBase(parent, name, flag) {
     companyact = comp;
+    m_cliente->setcompany(comp);
     inicializa();
     m_modo=0;
     m_idpedidocliente="";
-    companyact->meteWindow(caption(),this);
+    meteWindow(caption(),this);
+    hideBusqueda();
 }
 
 
@@ -99,17 +110,9 @@ void PedidosClienteList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#FFEEFF");
     m_list->setReadOnly(TRUE);
+     
     
-    
-    QString filtro;
-    if (m_filtro->text() != "") {
-    	filtro = " AND ( descpedidocliente LIKE '%"+m_filtro->text()+"%' ";
-	filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
-    } else {
-    	filtro = "";
-    }// end if    
-    
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM pedidocliente, cliente, almacen where pedidocliente.idcliente=cliente.idcliente AND pedidocliente.idalmacen=almacen.idalmacen"+filtro);
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM pedidocliente, cliente, almacen where pedidocliente.idcliente=cliente.idcliente AND pedidocliente.idalmacen=almacen.idalmacen "+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {
@@ -127,6 +130,30 @@ void PedidosClienteList::inicializa() {
     }// end while
     delete cur;
 }// end inicializa
+
+QString PedidosClienteList::generarFiltro() {
+    /// Tratamiento de los filtros.
+    fprintf(stderr,"Tratamos el filtro \n");
+    QString filtro="";
+    if (m_filtro->text() != "") {
+        filtro = " AND ( descpresupuesto LIKE '%"+m_filtro->text()+"%' ";
+        filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
+    } else {
+        filtro = "";
+    }// end if
+    if (m_cliente->idcliente() != "") {
+        filtro += " AND pedidocliente.idcliente='"+m_cliente->idcliente()+"'";
+    }// end if
+    if (!m_procesados->isChecked() ) {
+        filtro += " AND NOT procesadopedidocliente";
+    }// end if
+    if (m_codigocompletoarticulo->text() != "") {
+    	filtro += " AND pedidocliente IN (SELECT DISTINCT idpresupuesto FROM (lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo) AS j WHERE j.codigocompletoarticulo='"+m_codigocompletoarticulo->text()+"')";
+    }// end if
+    filtro += " ORDER BY idpedidocliente";
+    return (filtro);
+}// end generaFiltro
+
 
 
 void PedidosClienteList::doubleclicked(int a, int , int , const QPoint &) {

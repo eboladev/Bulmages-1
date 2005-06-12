@@ -46,6 +46,9 @@ CREATE TABLE albaran (
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
+#include <qfile.h>
+#include <qcheckbox.h>
+
 
 #define COL_CODIGOALMACEN 0
 #define COL_NUMALBARAN 1
@@ -61,13 +64,26 @@ CREATE TABLE albaran (
 #define COL_COMENTALBARAN 11
 #define COL_IDALMACEN 12
 
+
+
+ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, int flag)
+: ClientDelivNotesListBase(parent, name, flag) {
+    companyact = NULL;
+    m_modo=0;
+    m_idclidelivnote="";
+    meteWindow(caption(),this);
+    hideBusqueda();
+}// end providerslist
+
 ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const char *name, int flag)
         : ClientDelivNotesListBase(parent, name, flag) {
     companyact = comp;
+    m_cliente->setcompany(comp);
     inicializa();
     m_modo=0;
     m_idclidelivnote="";
     companyact->meteWindow(caption(), this);
+    hideBusqueda();
 }// end providerslist
 
 ClientDelivNotesList::~ClientDelivNotesList() {
@@ -118,11 +134,15 @@ void ClientDelivNotesList::inicializa() {
         m_list->hideColumn(COL_CODIGOALMACEN);
     }
 
+    
+    
+    
+    
     //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");
     m_list->setReadOnly(TRUE);
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran, cliente, almacen where albaran.idcliente=cliente.idcliente AND albaran.idalmacen=almacen.idalmacen","queryalbaran");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran, cliente, almacen where albaran.idcliente=cliente.idcliente AND albaran.idalmacen=almacen.idalmacen"+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {
@@ -148,6 +168,8 @@ void ClientDelivNotesList::inicializa() {
     }// end while
     delete cur;
 }// end inicializa
+
+
 
 
 
@@ -185,6 +207,8 @@ void ClientDelivNotesList::s_contextMenu(int, int, int button, const QPoint &poi
 void ClientDelivNotesList::s_newClientDelivNote() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
     AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+    /// Pintamos para que se carguen los combos y los demás elementos.
+    cDelivNote->pintaAlbaranCliente();
     cDelivNote->show();
 }// end boton_crear
 
@@ -214,3 +238,81 @@ void ClientDelivNotesList::s_removeClientDelivNote() {
     }
     inicializa();
 }// end boton_borrar
+
+
+void ClientDelivNotesList::imprimir() {
+    /// Copiamos el archivo
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albaranescliente.rml";
+    archivo = "cp "+archivo+" /tmp/albaranescliente.rml";
+    system (archivo.ascii());
+    
+    /// Copiamos el logo
+    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    archivo = "cp "+archivo+" /tmp/logo.jpg";
+    system (archivo.ascii());
+
+    QFile file;
+    file.setName( "/tmp/albaranescliente.rml" );
+    file.open( IO_ReadOnly );
+    QTextStream stream(&file);
+    QString buff = stream.read();
+    file.close();
+    QString fitxersortidatxt;
+    // Lï¿½ea de totales del presupuesto
+
+    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td>Descripicon</td>";
+    fitxersortidatxt += "	<td>Referencia</td>";
+    fitxersortidatxt += "	<td>Cliente</td>";
+    fitxersortidatxt += "	<td>Contacto</td>";
+    fitxersortidatxt += "</tr>";    
+    
+    QString SQLQuery = "SELECT * FROM albaran, cliente, almacen where albaran.idcliente=cliente.idcliente AND albaran.idalmacen=almacen.idalmacen"+generarFiltro();
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    while(!cur->eof()) {
+    	fitxersortidatxt += "<tr>";
+    	fitxersortidatxt += "<td>"+cur->valor("descalbaran")+"</td>";
+    	fitxersortidatxt += "<td>"+cur->valor("refalbaran")+"</td>";
+    	fitxersortidatxt += "<td>"+cur->valor("idcliente")+"</td>";
+    	fitxersortidatxt += "<td>"+cur->valor("contactalbaran")+"</td>";
+    	fitxersortidatxt += "</tr>";
+	cur->siguienteregistro();
+    }// end if
+    delete cur;
+    fitxersortidatxt += "</blockTable>";
+
+    buff.replace("[story]",fitxersortidatxt);
+
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << buff;
+        file.close();
+    }
+    system("trml2pdf.py /tmp/albaranescliente.rml > /tmp/albaranescliente.pdf");
+    system("kpdf /tmp/albaranescliente.pdf");
+
+}// end imprimir
+
+QString ClientDelivNotesList::generarFiltro() {
+    /// Tratamiento de los filtros.
+    fprintf(stderr,"Tratamos el filtro \n");
+    QString filtro="";
+    if (m_filtro->text() != "") {
+        filtro = " AND ( descalbaran LIKE '%"+m_filtro->text()+"%' ";
+        filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
+    } else {
+        filtro = "";
+    }// end if
+    if (m_cliente->idcliente() != "") {
+        filtro += " AND albaran.idcliente='"+m_cliente->idcliente()+"'";
+    }// end if
+    if (!m_procesados->isChecked() ) {
+        filtro += " AND NOT procesadoalbaran";
+    }// end if
+    if (m_codigocompletoarticulo->text() != "") {
+    	filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM (lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo) AS j WHERE j.codigocompletoarticulo='"+m_codigocompletoarticulo->text()+"')";
+    }// end if
+    filtro += " ORDER BY idalbaran";
+    return (filtro);
+}// end generaFiltro

@@ -29,23 +29,20 @@ protected:
     ListLinFactura *listalineas;
 
     company *companyact;
-    QString m_idfactura;
-    QString m_idclient;
-    QString m_idalmacen;
-    QString m_initialValues;
 
+    QString mdb_codigoserie_factura;
 
     QString mdb_idcliente;
     QString mdb_idalmacen;
     QString mdb_numfactura;
     QString mdb_ffactura;
-    QString mdb_contactfactura;
-    QString mdb_telfactura;
+    QString mdb_procesadafactura;
+    
+    
     QString mdb_comentfactura;
-    QString mdb_nomcliente;
-    QString mdb_cifcliente;
-    QString mdb_codigoalmacen;
-    QString mdb_nomalmacen;
+
+    QString mdb_reffactura;
+
     QString mdb_idfactura;
     QString mdb_idusuari;
     QString mdb_idforma_pago;
@@ -57,41 +54,43 @@ public:
 	listalineas->setcompany(companyact);
     };
     
+    ListLinFactura* getlistalineas() {return listalineas;};    
+    
     Factura(company *);
     virtual ~Factura();
-    void cargaFactura(QString );
+    virtual void cargaFactura(QString );
     void pintaFactura();
     void guardaFactura();
     void borraFactura();
     
-    virtual void pintaIdClient(QString ) {};
-    virtual void pintaIdAlmacen(QString ) {};
+    virtual void pintaidcliente(QString ) {};
+
+    virtual void pintareffactura(QString) {};
     virtual void pintaNumFactura(QString ) {};
-    virtual void pintaFFactura(QString ) {};
-    virtual void pintaContractFactura(QString ) {};
-    virtual void pintaTelFactura(QString ) {};
+    virtual void pintafechafactura(QString ) {};
+
+    virtual void pintacodigoserie_factura(QString) {};
     virtual void pintaComentFactura(QString ) {};
-    virtual void pintaNomClient(QString ) {};
-    virtual void pintaCifClient(QString ) {};
-    virtual void pintaCodigoAlmacen(QString ) {};
-    virtual void pintaNomAlmacen(QString ) {};
-    virtual void pintaFormaPago(QString) {};
+
+    virtual void pintaidalmacen(QString ) {};
+
+    virtual void pintaidforma_pago(QString) {};
+    virtual void pintaprocesadafactura(QString) {};
     virtual void pintatotales(float, float) {};
 
-    void setIdClient(QString val) { mdb_idcliente=val;};
-    void setIdAlmacen(QString val) { mdb_idalmacen=val;};
+    void setidcliente(QString val) { mdb_idcliente=val;};
+    void setidalmacen(QString val) { mdb_idalmacen=val;};
+    void setreffactura(QString val) {mdb_reffactura=val;};
     void setNumFactura(QString val) { mdb_numfactura=val;};
-    void setFFactura(QString val) { mdb_ffactura=val;};
-    void setContactFactura(QString val) { mdb_contactfactura=val;};
-    void setTelFactura(QString val) { mdb_telfactura=val;};
-    void setComentFactura(QString val) { mdb_comentfactura=val;};
-    void setNomClient(QString val) { mdb_nomcliente=val;};
-    void setCifClient(QString);
-    void setCodigoAlmacen(QString);
-    void setNomAlmacen(QString val) { mdb_nomalmacen=val;};
-    void setIdFactura(QString val) {mdb_idfactura=val;};
+    void setfechafactura(QString val) { mdb_ffactura=val;};
+
+    void setcodigoserie_factura(QString val) {mdb_codigoserie_factura=val;};
+    void setcomentfactura(QString val) { mdb_comentfactura=val;};
+
+    void setidfactura(QString val) {mdb_idfactura=val;listalineas->setidfactura(val);};
     void setIdUsuari(QString val) {mdb_idusuari=val;};
-    void setFormaPago(QString val) {mdb_idforma_pago=val;};
+    void setidforma_pago(QString val) {mdb_idforma_pago=val;};
+    void setprocesadafactura(QString val) {mdb_procesadafactura=val;};
     void vaciaFactura();
 
     virtual void cargaFacturaDescuentas(QString) {};

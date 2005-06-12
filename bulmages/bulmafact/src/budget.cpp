@@ -37,7 +37,7 @@ CREATE TABLE presupuesto (
    telpresupuesto character varying(20),
    vencpresupuesto date,
    comentpresupuesto character varying(3000),
-   idusuari integer,
+   idusuari integer,busquedaAlmacen1
    
    idcliente integer REFERENCES cliente(idcliente)
 );
@@ -71,8 +71,10 @@ CREATE TABLE lpresupuesto (
 #include "clientslist.h"
 #include "articleslist.h"
 #include "configuracion.h"
-
-
+#include "pedidoclienteview.h"
+#include "albaranclienteview.h"
+#include "busquedacliente.h"
+#include "busquedaformapago.h"
 #include <qmessagebox.h>
 
 #include <qtable.h>
@@ -84,6 +86,7 @@ CREATE TABLE lpresupuesto (
 #include <qfile.h>
 #include <qtextstream.h>
 #include <qlayout.h>
+#include <qmessagebox.h>
 
 #include <fstream>
 using namespace std;
@@ -113,6 +116,9 @@ using namespace std;
 Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) , presupuesto(comp) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform2->setcompany(comp);
+    m_cliente->setcompany(comp);
+    m_forma_pago->setcompany(comp);
+    m_almacen->setcompany(comp);
     setlislinpresupuesto(subform2);
     inicialize();
     comp->meteWindow(caption(),this);
@@ -127,8 +133,6 @@ Budget::~Budget() {
 
 
 void Budget::inicialize() {
-
-    m_nomalmacen->setText("");
 
 
     // Inicializamos la tabla de descuentos del presupuesto
@@ -162,113 +166,18 @@ void Budget::inicialize() {
     m_totalDiscounts->setReadOnly(TRUE);
     m_totalDiscounts->setAlignment(Qt::AlignRight);
     m_totalBudget->setReadOnly(TRUE);
-    m_totalBudget->setAlignment(Qt::AlignRight);
-
-    if (mdb_idpresupuesto=="0") {
-        cursor2 * cur0= companyact->cargacursor("SELECT * FROM configuracion where nombre='AlmacenDefecto'","queryconfig");
-        if (!cur0->eof()) {
-            if (cur0->valor("valor")!="") {
-                m_codigoalmacen->setText(cur0->valor("valor"));
-            }
-        }
-        delete cur0;
-    }
-    /*
-    	if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
-    		m_codigoalmacen->setDisabled(true);
-    		m_buscaralmacen->setDisabled(true);
-    		m_lblalmacen->setDisabled(true);
-    		m_nomalmacen->setDisabled(true);
-    	}
-    	
-    	if (confpr->valor(CONF_NUM_AUT_PRESUP)=="YES") {
-    		m_numpresupuesto->setReadOnly(true);
-    		if (m_idpresupuesto!="0") {
-    		  	m_codigoalmacen->setReadOnly(true);
-    		}
-    	}
-    */
+    m_totalBudget->setAlignment(Qt::AlignRight);    
     // Inicializamos la forma de pago para que no se quede sin ser pintada.
     pintaidforma_pago("0");
+    pintaidalmacen("0");
 }// end inicialize
 
-
-
-void Budget::pintaidforma_pago(QString idformapago) {
-    m_cursorcombo = NULL;
-    if (m_cursorcombo != NULL)
-        delete m_cursorcombo;
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM forma_pago","unquery");
-    int i = 0;
-    int i1 = 0;
-    while (!m_cursorcombo->eof()) {
-        i ++;
-        if (m_cursorcombo->valor("idforma_pago") == idformapago)
-            i1 = i;
-        m_comboformapago->insertItem(m_cursorcombo->valor("descforma_pago"));
-        m_cursorcombo->siguienteregistro();
-    }
-    if (i1 != 0 )
-        m_comboformapago->setCurrentItem(i1-1);
-} //end cargarcombodformapago
-
-
-
-
-
-
-// Bsqueda de Clientes.
-void Budget::searchClient() {
-    fprintf(stderr,"Busqueda de un client\n");
-    ClientsList *clients = new ClientsList(companyact, NULL, theApp->translate("Seleccione cliente","company"));
-
-    // , WType_Dialog| WShowModal
-    clients->selectMode();
-
-    // Esto es convertir un QWidget en un sistema modal de dialogo.
-    this->setEnabled(false);
-    clients->show();
-    while(!clients->isHidden())
-        theApp->processEvents();
-    this->setEnabled(true);
-
-    if (clients->cifclient() !="" && clients->cifclient() !=NULL) {
-    // HAY QUE VIGILAR QUE ESTO ESTE BIEN
-//        setIdcliente( clients->idclient());
-        m_cifclient->setText(clients->cifclient());
-        m_nomclient->setText(clients->nomclient());
-    }
-    delete clients;
-}// end searchClient
-
-
-void Budget::budgetDateLostFocus() {
-    m_fpresupuesto->setText(normalizafecha(m_fpresupuesto->text()).toString("dd/MM/yyyy"));
-    setFPresupuesto(m_fpresupuesto->text());
-}
-
-
-void Budget::budgetExpiryLostFocus() {
-    m_vencpresupuesto->setText(normalizafecha(m_vencpresupuesto->text()).toString("dd/MM/yyyy"));
-    setVencPresupuesto(m_vencpresupuesto->text());
-}
-
-
-void Budget::s_almacenLostFocus() {
-    setCodigoAlmacen(m_codigoalmacen->text());
-}//end s_almacenLostFocus
 
 
 void Budget::s_printBudget() {
     imprimirPresupuesto();
 }//end s_printBudget
 
-
-void Budget::buscarAlmacen() {
-    QMessageBox::warning( this, "BulmaFact - Presupuestos", "Aun no estï¿½implementado.", "Si", "No");
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM almacen where codigoalmacen ="+ m_codigoalmacen->text(),"unquery");
-    delete cur;
-} // end buscarAlmacen
 
 
 
@@ -287,9 +196,10 @@ void   Budget::pintatotales(float base, float iva) {
 ;// end pintatotales
 
 
-#include "pedidoclienteview.h"
+
 /// Se encarga de generar un pedido a partir del presupuesto.
 void Budget::generarPedidoCliente() {
+    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la función.
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='"+mdb_refpresupuesto+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
@@ -301,16 +211,27 @@ void Budget::generarPedidoCliente() {
     delete cur;
 
 
+    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la función.
+    if (QMessageBox::question(
+            this,
+            tr("Pedido Cliente Inexistente"),
+            tr("No existe un pedido asociado a este presupuesto."
+                "Desea Crearlo ?"),
+            tr("&Yes"), tr("&No"),
+            QString::null, 0, 1 ) )
+        return;
+    
+    /// Creamos el pedido.
     PedidoClienteView *bud = new PedidoClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Clientes", "company"));
     bud->vaciaPedidoCliente();
-    bud->setcifcliente(mdb_cifcliente);
-    bud->setcodigoalmacen(mdb_codigoalmacen);
+    bud->setidcliente(mdb_idcliente);
     bud->setcomentpedidocliente(mdb_comentpresupuesto);
     bud->setdescpedidocliente(mdb_descpresupuesto);
     bud->setfechapedidocliente(mdb_fpresupuesto);
     bud->setidforma_pago(mdb_idforma_pago);
     bud->setrefpedidocliente(mdb_refpresupuesto);
-    bud->setidpresupuesto(mdb_idpresupuesto);
+    bud->setprocesadopedidocliente(mdb_procesadopresupuesto);
+    bud->setidalmacen(mdb_idalmacen);
     QString l;
     linpresupuesto *linea;
     uint i = 0;
@@ -322,6 +243,52 @@ void Budget::generarPedidoCliente() {
     bud->show();
 }// end generaPedidoCliente
 
+
+
+/// Se encarga de generar un pedido a partir del presupuesto.
+void Budget::generarAlbaranCliente() {
+    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la función.
+    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='"+mdb_refpresupuesto+"'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if(!cur->eof()) {
+      AlbaranClienteView *bud = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albaranes de Clientes", "company"));
+      bud->cargaAlbaranCliente(cur->valor("idalbaran"));
+      bud->show();
+      return;
+    }
+    delete cur;
+
+
+    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la función.
+    if (QMessageBox::question(
+            this,
+            tr("Albaran Cliente Inexistente"),
+            tr("No existe un albaran asociado a este presupuesto."
+                "Desea Crearlo ?"),
+            tr("&Yes"), tr("&No"),
+            QString::null, 0, 1 ) )
+        return;
+    
+    /// Creamos el pedido.
+    AlbaranClienteView *bud = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Clientes", "company"));
+    bud->vaciaAlbaranCliente();
+    bud->setidcliente(mdb_idcliente);
+    bud->setcomentalbaran(mdb_comentpresupuesto);
+    bud->setdescalbaran(mdb_descpresupuesto);
+    bud->setfechaalbaran(mdb_fpresupuesto);
+    bud->setidforma_pago(mdb_idforma_pago);
+    bud->setrefalbaran(mdb_refpresupuesto);
+    QString l;
+    
+    linpresupuesto *linea;
+    uint i = 0;
+    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+        bud->getlistalineas()->nuevalinea(linea->desclpresupuesto(), linea->cantlpresupuesto(), linea->pvplpresupuesto(), linea->descuentolpresupuesto(), linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo());
+        i++;
+    }// end for
+    bud->pintaAlbaranCliente();
+    bud->show();
+}// end generaPedidoCliente
 
 
 

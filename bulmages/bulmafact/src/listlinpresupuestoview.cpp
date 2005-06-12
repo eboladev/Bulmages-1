@@ -111,7 +111,7 @@ void listlinpresupuestoview::pintalistlinpresupuesto() {
 
 
 
-void listlinpresupuestoview::contextMenu ( int row, int col, const QPoint & pos ) {
+void listlinpresupuestoview::contextMenu ( int row, int, const QPoint & pos ) {
     QPopupMenu *popup;
     int opcion;
     popup = new QPopupMenu;

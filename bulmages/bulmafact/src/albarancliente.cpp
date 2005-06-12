@@ -11,6 +11,9 @@
 //
 #include "albarancliente.h"
 
+#include <qfile.h>
+
+
 AlbaranCliente::AlbaranCliente(company *comp) {
 	companyact=comp;
 }
@@ -21,7 +24,7 @@ AlbaranCliente::~AlbaranCliente()
 }
 
 void AlbaranCliente::borraAlbaranCliente() {
-    if (mdb_idfactura != "") {
+    if (mdb_idalbaran != "") {
         listalineas->borrar();
         companyact->begin();
         companyact->ejecuta("DELETE FROM albaran WHERE idalbaran="+mdb_idalbaran);
@@ -36,18 +39,14 @@ void AlbaranCliente::vaciaAlbaranCliente() {
     mdb_idalbaran="";
     mdb_numalbaran="";
     mdb_fechaalbaran="";
-    mdb_idusuario="";
+    mdb_loginusuario="";
     mdb_comentalbaran="";
     mdb_idcliente="";
     mdb_idforma_pago="";
-    mdb_idfactura="";
     mdb_idalmacen="";
-    
-    mdb_codigoalmacen="";
-    mdb_nomalmacen="";
-    mdb_cifcliente="";
-    mdb_nomcliente="";
     mdb_numfactura="";
+    mdb_descalbaran="";
+    mdb_refalbaran="";
 }// end vaciaAlbaranCliente
 
 
@@ -55,19 +54,14 @@ void AlbaranCliente::pintaAlbaranCliente() {
     fprintf(stderr,"pintaAlbaranCliente\n");
     pintaIdAlbaran(mdb_idalbaran);
     pintaNumAlbaran(mdb_numalbaran);
-    pintaFechaAlbaran(mdb_fechaalbaran);
-    pintaIdUsuario(mdb_idusuario);
+    pintafechaalbaran(mdb_fechaalbaran);
+    pintaloginusuario(mdb_loginusuario);
     pintaComentAlbaran(mdb_comentalbaran);
-    pintaIdCliente(mdb_idcliente);
-    pintaIdForma_Pago(mdb_idforma_pago);
-    pintaIdAlbaran(mdb_idfactura);
-    pintaIdAlmacen(mdb_idalmacen);
-    pintaCodigoAlmacen(mdb_codigoalmacen);
-    pintaNomAlmacen(mdb_nomalmacen);
-    pintaCifCliente(mdb_cifcliente);
-    pintaNomCliente(mdb_nomcliente);
-    pintaNumAlbaran(mdb_numfactura);
-        
+    pintaidcliente(mdb_idcliente);
+    pintaidforma_pago(mdb_idforma_pago);
+    pintaidalmacen(mdb_idalmacen);
+    pintarefalbaran(mdb_refalbaran);
+    pintadescalbaran(mdb_descalbaran);
     /// Pinta el subformulario de detalle del AlbaranCliente.
     listalineas->pintaListLinAlbaranCliente();
     /// Pintamos los totales
@@ -80,8 +74,7 @@ void AlbaranCliente::pintaAlbaranCliente() {
 void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
     fprintf(stderr,"AlbaranCliente::cargaAlbaranCliente(%s)\n",idbudget.ascii());
     mdb_idalbaran = idbudget;
-//    inicialize();
-    QString query = "SELECT * FROM albaran LEFT JOIN cliente ON cliente.idcliente = albaran.idcliente LEFT JOIN almacen ON  albaran.idalmacen = almacen.idalmacen WHERE idalbaran="+idbudget;
+    QString query = "SELECT * FROM albaran WHERE idalbaran="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
         mdb_idcliente= cur->valor("idcliente");
@@ -89,17 +82,13 @@ void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
         mdb_numalbaran= cur->valor("numalbaran");
         mdb_fechaalbaran= cur->valor("fechaalbaran");
         mdb_comentalbaran= cur->valor("comentalbaran");
-        mdb_nomcliente= cur->valor("nomcliente");
-        mdb_cifcliente= cur->valor("cifcliente");
-        mdb_codigoalmacen= cur->valor("codigoalmacen");
-        mdb_nomalmacen= cur->valor("nomalmacen");
-        mdb_idusuario = cur->valor("idusuario");
+        mdb_loginusuario = cur->valor("loginusuario");
 	mdb_idforma_pago = cur->valor("idforma_pago");
+	mdb_descalbaran = cur->valor("descalbaran");
+	mdb_refalbaran = cur->valor("refalbaran");
     }// end if
     delete cur;
-    fprintf(stderr,"Vamos a cargar las lineas\n");
     listalineas->cargaListLinAlbaranCliente(idbudget);
-    fprintf(stderr,"vamos a hacer el pintado del Albaran\n");
     pintaAlbaranCliente();
 }// end chargeBudget
 
@@ -108,71 +97,129 @@ void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
 void AlbaranCliente::guardaAlbaranCliente() {
     /// Todo el guardado es una transacción
     companyact->begin();
-    if (mdb_idalbaran == "") {
-        QString SQLQueryn = "SELECT MAX(numalbaran)+1 as num FROM albaran";
-        cursor2 *cur= companyact->cargacursor(SQLQueryn);
-        if (!cur->eof())
-            mdb_numfactura = cur->valor("num");
-        delete cur;
-    }// end if
-    if (mdb_idusuario="")
-        mdb_idusuario="NULL";
-    if (mdb_idfactura="")
-    	mdb_idfactura="NULL";
+    if (mdb_loginusuario=="")
+    	mdb_loginusuario="NULL";
+    else
+    	mdb_loginusuario="'"+mdb_loginusuario+"'";
+    if (mdb_numalbaran=="") 
+    	mdb_numalbaran="NULL";
     if (mdb_idalbaran == "") {
         /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, idusuario, comentalbaran, idcliente, idforma_pago, idfactura, idalmacen) VALUES ("+mdb_numalbaran+",'"+mdb_fechaalbaran+"',"+mdb_idusuario+",'"+mdb_comentalbaran+"',"+mdb_idcliente+","+mdb_idforma_pago+","+mdb_idfactura+","+mdb_idalmacen+")";
+        QString SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, comentalbaran, idcliente, idforma_pago, idalmacen, descalbaran, refalbaran) VALUES ("+mdb_numalbaran+",'"+mdb_fechaalbaran+"',"+mdb_loginusuario+",'"+mdb_comentalbaran+"',"+mdb_idcliente+","+mdb_idforma_pago+","+mdb_idalmacen+",'"+mdb_descalbaran+"','"+mdb_refalbaran+"')";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idalbaran) AS m FROM albaran");
         if (!cur->eof())
-            mdb_idalbaran = cur->valor("m");
+            setidalbaran(cur->valor("m"));
         delete cur;
     } else {
         /// Se trata de una modificacion
         QString SQLQuery = "UPDATE albaran SET ";
         SQLQuery += " numalbaran="+mdb_numalbaran;
         SQLQuery += " ,fechaalbaran='"+mdb_fechaalbaran+"'";
-        SQLQuery += " ,idusuario="+mdb_idusuario+"";
+        SQLQuery += " ,loginusuario="+mdb_loginusuario+"";
         SQLQuery += " ,comentalbaran='"+mdb_comentalbaran+"'";
         SQLQuery += " ,idcliente="+mdb_idcliente+"";
         SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
-        SQLQuery += " ,idfactura="+mdb_idfactura;
         SQLQuery += " ,idalmacen="+mdb_idalmacen;
+	SQLQuery += " ,descalbaran='"+mdb_descalbaran+"'";
+	SQLQuery += " ,refalbaran='"+mdb_refalbaran+"'";
         SQLQuery += " WHERE idalbaran="+mdb_idalbaran;
         companyact->ejecuta(SQLQuery);
     }// end if
        companyact->commit();
        listalineas->guardaListLinAlbaranCliente();
+       cargaAlbaranCliente(mdb_idalbaran);
 }// end guardaAlbaranCliente
 
 
-void AlbaranCliente::setCifCliente(QString val) {
-    mdb_cifcliente=val;
-    QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente='"+mdb_cifcliente+"'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
-        mdb_idcliente = cur->valor("idcliente");
-        mdb_nomcliente = cur->valor("nomcliente");
-    } else {
-        mdb_idcliente="";
-        mdb_nomcliente="";
-    }// end if
-    delete cur;
-    pintaNomCliente(mdb_nomcliente);
-}// end setCifClient
+void AlbaranCliente::imprimirAlbaranCliente() {
+    /// Copiamos el archivo
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albarancliente.rml";
+    archivo = "cp "+archivo+" /tmp/albarancliente.rml";
+    system (archivo.ascii());
+    
+    /// Copiamos el logo
+    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    archivo = "cp "+archivo+" /tmp/logo.jpg";
+    system (archivo.ascii());
+    
+    
+    QFile file;
+    file.setName( "/tmp/albarancliente.rml" );
+    file.open( IO_ReadOnly );
+    QTextStream stream(&file);
+    QString buff = stream.read();
+    file.close();
+    QString fitxersortidatxt;
+    // Lï¿½ea de totales del presupuesto
 
-void AlbaranCliente::setCodigoAlmacen(QString val) {
-    mdb_codigoalmacen=val;
-    QString SQLQuery = "SELECT * FROM almacen WHERE codigoalmacen='"+mdb_codigoalmacen+"'";
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        mdb_idalmacen = cur->valor("idalmacen");
-        mdb_nomalmacen = cur->valor("nomalmacen");
-    } else {
-        mdb_idalmacen="";
-        mdb_nomalmacen="";
+        buff.replace("[dircliente]",cur->valor("dircliente"));
+        buff.replace("[poblcliente]",cur->valor("poblcliente"));
+        buff.replace("[telcliente]",cur->valor("telcliente"));
+        buff.replace("[nomcliente]",cur->valor("nomcliente"));
+        buff.replace("[cifcliente]",cur->valor("cifcliente"));
     }// end if
-    delete cur;
-    pintaNomAlmacen(mdb_nomalmacen);
-}// end setCodigoAlmacen
+
+    buff.replace("[numalbaran]",mdb_numalbaran);
+    buff.replace("[fechaalbaran]",mdb_fechaalbaran);
+    buff.replace("[comentalbaran]",mdb_comentalbaran);
+    buff.replace("[descalbaran]",mdb_descalbaran);
+    buff.replace("[refalbaran]",mdb_refalbaran);
+
+    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td>Concepto</td>";
+    fitxersortidatxt += "	<td>Cantidad</td>";
+    fitxersortidatxt += "	<td>Precio Und.</td>";
+    fitxersortidatxt += "	<td>Total</td>";
+    fitxersortidatxt += "</tr>";
+
+    QString l;
+    LinAlbaranCliente *linea;
+    uint i = 0;
+    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+        fitxersortidatxt += "<tr>";
+        fitxersortidatxt += "	<td>"+linea->desclalbaran()+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlalbaran().toFloat())+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplalbaran().toFloat())+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlalbaran().toFloat() * linea->pvplalbaran().toFloat())+"</td>";
+        fitxersortidatxt += "</tr>";
+        i++;
+    }// end for
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td>Base</td>";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>";
+    fitxersortidatxt += "</tr>";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td>Iva</td>";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>";
+    fitxersortidatxt += "</tr>";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td>Total</td>";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>";
+    fitxersortidatxt += "</tr>";
+    fitxersortidatxt += "</blockTable>";
+
+    buff.replace("[story]",fitxersortidatxt);
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << buff;
+        file.close();
+    }
+
+    system("trml2pdf.py /tmp/albarancliente.rml > /tmp/albarancliente.pdf");
+    system("kpdf /tmp/albarancliente.pdf");
+} //end imprimirAlbaranCliente
+
+
+
 

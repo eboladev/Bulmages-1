@@ -52,6 +52,9 @@ Restricciones de llave foránea:
 #include <qtable.h>
 #include <qtoolbutton.h>
 #include <qwidget.h>
+#include "budgetslist.h"
+#include "pedidosclientelist.h"
+#include "clientdelivnoteslist.h"
 
 #define COL_DIVISION_IDDIVISION 0
 #define COL_DIVISION_DESCDIVISION 1
@@ -64,8 +67,11 @@ Restricciones de llave foránea:
 
 #define NEW_CLIENT "0"
 ClientEdit::ClientEdit(company *comp, QWidget *parent, const char *name)
- : ClientEditBase(parent, name) {
+ : ClientEditBase(parent, name, Qt::WDestructiveClose) {
    companyact = comp;
+      m_listpresupuestos->setcompany(companyact);
+      m_listpedidos->setcompany(companyact);
+      m_listalbaranes->setcompany(companyact);
    clientId = NEW_CLIENT;
    //clientId = "0";
    
@@ -97,6 +103,12 @@ ClientEdit::ClientEdit(company *comp, QWidget *parent, const char *name)
    
    emptyForm();
    companyact->meteWindow(caption(),this);
+   
+   
+   fprintf(stderr,"Vamos a tratar el listado de presupuestos\n");
+
+//   fprintf(stderr,"Vamos a ocultar la botonera\n");
+//   m_listpresupuestos->hideBotonera();
 }// end ClientEdit
 
 ClientEdit::~ClientEdit() {
@@ -133,36 +145,18 @@ void ClientEdit::loadClient(QString client) {
          m_clientFax->setText(cur->valor("faxcliente"));
          m_clientEmail->setText(cur->valor("mailcliente"));
          m_clientUrl->setText(cur->valor("urlcliente"));
-         
-         /*
-         
-         // Providers division loading
-         // Cargamos las divisiones del proveedor.
-         QString SQLQuery1 = "SELECT * FROM division WHERE idproveedor="+idprov;
-         companyact->begin();
-         cursor2 *cur1 = companyact->cargacursor(SQLQuery1, "cargadivisiones");
-         companyact->commit();
-         m_divisiones->setNumRows(cur1->numregistros());
-         int i=0;
-         while (!cur1->eof()) {
-            m_divisiones->setText(i,COL_DIVISION_IDDIVISION,cur1->valor("iddivision"));
-            m_divisiones->setText(i,COL_DIVISION_DESCDIVISION,cur1->valor("descdivision"));
-            m_divisiones->setText(i,COL_DIVISION_CONTACTODIVISION,cur1->valor("contactodivision"));
-            m_divisiones->setText(i,COL_DIVISION_COMENTDIVISION,cur1->valor("comentdivision"));
-            m_divisiones->setText(i,COL_DIVISION_TELDIVISION,cur1->valor("teldivision"));
-            m_divisiones->setText(i,COL_DIVISION_FAXDIVISION,cur1->valor("faxdivision"));
-            m_divisiones->setText(i,COL_DIVISION_MAILDIVISION,cur1->valor("maildivision"));
-            m_divisiones->setText(i++,COL_DIVISION_IDPROVEEDOR,cur1->valor("idproveedor"));
-            cur1->siguienteregistro();
-         }// end while
-         delete cur1;
-         
-         */
+	 
+	 /// Hacemos que el listado de presupuestos de un cliente se inicialize.
+	 m_listpresupuestos->setidcliente(cur->valor("idcliente"));
+	 m_listpresupuestos->inicializa();
+	 m_listpedidos->setidcliente(cur->valor("idcliente"));
+	 m_listpedidos->inicializa();
+	 m_listalbaranes->setidcliente(cur->valor("idcliente"));
+	 m_listalbaranes->inicializa();
       } else {
           emptyForm();
       }// end if
       delete cur;
-
       setModified(false);      
    }// end if
 }// end loadClient

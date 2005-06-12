@@ -41,6 +41,17 @@ public:
     virtual void pintaListLinAlbaranCliente() {
         fprintf(stderr,"La funci� pintaListLinAlbaranCliente aun no ha sido implementada\n");
     };
+    void setidalbaran(QString id) {
+        mdb_idalbaran=id;
+        LinAlbaranCliente *linea;
+        uint i = 0;
+        for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+            linea->setidalbaran(mdb_idalbaran);
+            i++;
+        }// end for
+    };    
+    
+    
     void cargaListLinAlbaranCliente(QString);
     void borrar();
     void nuevalinea(QString desclalbaran, QString cantlalbaran, QString pvplalbaran, QString descontlalbaran, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo);

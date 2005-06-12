@@ -23,9 +23,11 @@
 // Listado de presupuestos.
 
 #include "budgetslistbase.h"
-
-
-class company;
+#include "company.h"
+#include "busquedacliente.h"
+#include "busquedaarticulo.h"
+#include <qlineedit.h>
+#include <qtable.h>
 
 
 class BudgetsList : public BudgetsListBase {
@@ -37,30 +39,55 @@ private:
    QString m_idpresupuesto;
    
 public:
-    BudgetsList(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
+    BudgetsList(QWidget *parent = 0, const char *name = 0, int flag = 0);
+    BudgetsList(company *comp = NULL, QWidget *parent = 0, const char *name = 0, int flag = 0);
     ~BudgetsList();
     void inicializa();
     void modoseleccion() {m_modo=1;};
     void modoedicion() {m_modo=0;};
+    void setcompany (company *comp) {companyact=comp;m_cliente->setcompany(comp);m_articulo->setcompany(comp);};
     QString idpresupuesto() {return m_idpresupuesto;};
+    void hideBotonera() {m_botonera->hide();};
+    void showBotonera() {m_botonera->show();};
+    void hideBusqueda() {fprintf(stderr,"Ocultar busqueda\n");m_busqueda->hide();};
+    void showBusqueda() {m_busqueda->show();};
+    void hideConfiguracion() {m_configuracion->hide();};
+    void showConfiguracion() {m_configuracion->show();};
+    
     void imprimir();
+    void meteWindow(QString nom, QObject *obj) {
+    if (companyact != NULL)
+    companyact->meteWindow(nom, obj);
+    };
+    void setidcliente(QString val) {m_cliente->setidcliente(val);};
+    void setidarticulo(QString val) {m_articulo->setidarticulo(val);};
+    QString generaFiltro();
     
 public slots:
     virtual void doubleclicked(int, int, int, const QPoint &);
     virtual void s_contextMenu(int, int, int, const QPoint &);
+    virtual void s_editar();
     virtual void newBudget();
     virtual void s_removeBudget();
     virtual void s_imprimir() {imprimir();};
-    
-/*
-    virtual void boton_editar();
-    
-    virtual void boton_duplicar();
-    virtual void boton_borrar();
-    virtual void boton_imprimir();
-*/
     virtual void s_filtrar() {inicializa();};
-
+    virtual void s_mostrarBusqueda() {
+    	fprintf(stderr,"s_mostrarBusqueda\n");
+    	if (m_busqueda->isVisible())
+		hideBusqueda();
+	else
+		 showBusqueda();
+	};
+	
+    virtual void s_mostrarConfiguracion() {
+    	fprintf(stderr,"s_mostrarConfiguracion\n");
+    	if (m_configuracion->isVisible())
+		hideConfiguracion();
+	else
+		 showConfiguracion();
+	};	
+	
+virtual void s_configurar();
 };
 
 #endif
