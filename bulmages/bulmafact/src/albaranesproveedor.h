@@ -17,36 +17,36 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef BUDGETSLIST_H
-#define BUDGETSLIST_H
+#ifndef ALBARANESPROVEEDOR_H
+#define ALBARANESPROVEEDOR_H
 
-// Listado de presupuestos.
+// Listado de albaranps.
 
-#include "budgetslistbase.h"
+#include "albaranesproveedorbase.h"
 #include "company.h"
-#include "busquedacliente.h"
+#include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include <qlineedit.h>
 #include <qtable.h>
 
 
-class BudgetsList : public BudgetsListBase {
+class AlbaranesProveedor : public AlbaranesProveedorBase {
 Q_OBJECT
 private:
    company *companyact;
    int m_modo; // == 0 es modo edición
             // ==1 es modo selector.
-   QString m_idpresupuesto;
+   QString m_idalbaranp;
    
 public:
-    BudgetsList(QWidget *parent = 0, const char *name = 0, int flag = 0);
-    BudgetsList(company *comp = NULL, QWidget *parent = 0, const char *name = 0, int flag = 0);
-    ~BudgetsList();
+    AlbaranesProveedor(QWidget *parent = 0, const char *name = 0, int flag = 0);
+    AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, const char *name = 0, int flag = 0);
+    ~AlbaranesProveedor();
     void inicializa();
     void modoseleccion() {m_modo=1;};
     void modoedicion() {m_modo=0;};
-    void setcompany (company *comp) {companyact=comp;m_cliente->setcompany(comp);m_articulo->setcompany(comp);};
-    QString idpresupuesto() {return m_idpresupuesto;};
+    void setcompany (company *comp) {companyact=comp;m_proveedor->setcompany(comp);m_articulo->setcompany(comp);};
+    QString idalbaranp() {return m_idalbaranp;};
     void hideBotonera() {m_botonera->hide();};
     void showBotonera() {m_botonera->show();};
     void hideBusqueda() {m_busqueda->hide();};
@@ -59,7 +59,7 @@ public:
     if (companyact != NULL)
     companyact->meteWindow(nom, obj);
     };
-    void setidcliente(QString val) {m_cliente->setidcliente(val);};
+    void setidproveedor(QString val) {m_proveedor->setidproveedor(val);};
     void setidarticulo(QString val) {m_articulo->setidarticulo(val);};
     QString generaFiltro();
     

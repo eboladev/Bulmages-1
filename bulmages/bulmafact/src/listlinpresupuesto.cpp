@@ -52,6 +52,7 @@ linpresupuesto *listlinpresupuesto::linpos(int pos) {
 
 // Carga l�eas de presupuesto
 void listlinpresupuesto::chargeBudgetLines(QString idbudget) {
+    vaciar();
     fprintf(stderr,"listlinpresupuesto::chargeBudgetLines\n");
     mdb_idpresupuesto = idbudget;
     fprintf(stderr,"Hacemos la carga del cursor\n");

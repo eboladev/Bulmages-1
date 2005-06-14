@@ -99,8 +99,9 @@ void bulmafact::newOrder() {
 
 void bulmafact::listdelivnotes() {
    fprintf(stderr,"listdelivnotes activado \n");
-   m_company.listdelivnotes();
+   m_company.lAlbaranesProveedor();
 }// end listdelivnotesaction
+
 
 void bulmafact::proveedores() {
    fprintf(stderr,"provideraction activado \n");

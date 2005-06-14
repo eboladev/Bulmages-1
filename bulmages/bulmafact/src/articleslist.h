@@ -21,12 +21,10 @@
 #define ARTICLESLIST_H
 
 #include "articleslistbase.h"
+#include <qframe.h>
+#include "company.h"
 
-
-class company;
-
-
-class articleslist : public articleslistbase
+class articleslist : public articleslistbase 
 {
  Q_OBJECT
 public:
@@ -47,11 +45,33 @@ public:
     QString nomarticulo() {return mdb_nomarticulo;};
     QString codigocompletoarticulo() {return mdb_codigocompletoarticulo;};
     ~articleslist();
+    void Imprimir();
+    QString formaQuery();
+    QString detalleArticulos();
+    void hideBusqueda() {m_busqueda->hide();};
+    void showBusqueda() {m_busqueda->show();};    
+    void hideConfiguracion() {m_configuracion->hide();};
+    void showConfiguracion() {m_configuracion->show();};     
     
 public slots:
 	virtual void articleSelected(int, int, int, const QPoint &);
 	virtual void newArticle();
 	virtual void removeArticle();
+	virtual void s_imprimir() {Imprimir();};
+	virtual void s_filtrar() {inicializa();};
+	virtual void s_configurar();
+    virtual void s_mostrarBusqueda() {
+    	if (m_busqueda->isVisible())
+		hideBusqueda();
+	else
+		 showBusqueda();
+	};	
+    virtual void s_mostrarConfiguracion() {
+    	if (m_configuracion->isVisible())
+		hideConfiguracion();
+	else
+		 showConfiguracion();
+	};	
 };
 
 #endif

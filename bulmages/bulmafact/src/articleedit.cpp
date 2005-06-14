@@ -30,6 +30,8 @@
 #include <qcombobox.h>
 #include <qtextedit.h>
 #include <qlabel.h>
+#include <qpixmap.h>
+#include <qcheckbox.h>
 
 #define COL_SUMINISTRA_IDSUMINISTRA 0
 #define COL_SUMINISTRA_IDPROVEEDOR 0
@@ -43,6 +45,7 @@ articleedit::articleedit(company *comp, QWidget *parent, const char *name)
         : articleeditbase(parent, name, Qt::WDestructiveClose) {
     companyact = comp;
     idArticle = "0";
+    m_archivoimagen="";
 
 
     // Arreglamos la tabla de proveedores del artículo
@@ -69,6 +72,9 @@ articleedit::articleedit(company *comp, QWidget *parent, const char *name)
     m_suministra->setColumnReadOnly(COL_SUMINISTRA_NOMPROVEEDOR,true);
 
     companyact->meteWindow("Articulo Edicion",this);
+    
+    m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
+    
 }// end articleedit
 
 articleedit::~articleedit() {
@@ -136,6 +142,21 @@ void articleedit::chargeArticle(QString idArt) {
             m_obserarticulo->setText(cur->valor("obserarticulo"));
 	    m_pvparticulo->setText(cur->valor("pvparticulo"));
             ivaType=cur->valor("idtipo_iva");
+	    
+	    // Pintamos el stockable y el presentable
+	    if (cur->valor("presentablearticulo") == "t") {
+	    	m_presentablearticulo->setChecked(TRUE);
+	    } else {
+	    	m_presentablearticulo->setChecked(FALSE);
+	    }// end if
+	    
+	    if (cur->valor("controlstockarticulo") == "t") {
+	    	m_controlstockarticulo->setChecked(TRUE);
+	    } else {
+	    	m_controlstockarticulo->setChecked(FALSE);
+	    }// end if	    
+	    
+	    
             m_codigocompletoarticulo->setText(cur->valor("codigocompletoarticulo"));
 
             // Cargamos las relaciones artículo - proveedor.
@@ -159,6 +180,8 @@ void articleedit::chargeArticle(QString idArt) {
         }// end if
         delete cur;
     }
+    
+    m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES)+m_codigocompletoarticulo->text()+".jpg"));     
     cargarcomboiva(ivaType);
     setCaption("Artículo "+m_codigocompletoarticulo->text());companyact->meteWindow(caption(),this);
 }// end chargeArticle
@@ -239,7 +262,9 @@ void articleedit::s_findArticulo() {
 
 
 void articleedit::s_grabarClicked() {
-	
+	QString presentablearticulo = m_presentablearticulo->isChecked() ? "TRUE" : "FALSE";	
+	QString controlstockarticulo = m_controlstockarticulo->isChecked() ? "TRUE" : "FALSE";	
+
     QString SQLQuery;
     if (idArticle != "0") {
         SQLQuery = "UPDATE articulo SET codarticulo='"+m_codigoarticulo->text()+"'";
@@ -248,9 +273,14 @@ void articleedit::s_grabarClicked() {
         SQLQuery += " , obserarticulo='"+m_obserarticulo->text()+"'";
 	SQLQuery += " , pvparticulo="+m_pvparticulo->text()+" ";
         SQLQuery += " , idtipo_iva="+m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem());
+	SQLQuery += " , controlstockarticulo="+controlstockarticulo;
+	SQLQuery += " , presentablearticulo="+presentablearticulo;
         SQLQuery += " WHERE idarticulo ="+idArticle;
+        companyact->begin();
+        companyact->ejecuta(SQLQuery);
+        companyact->commit();	
     } else {
-        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia, pvparticulo)";
+        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia, pvparticulo, presentablearticulo, controlstockarticulo)";
         SQLQuery += " VALUES (";
         SQLQuery += " '"+m_codigoarticulo->text()+"' ";
         SQLQuery += " , '"+m_nombrearticulo->text()+"'";
@@ -258,16 +288,40 @@ void articleedit::s_grabarClicked() {
         SQLQuery += " , "+m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem());
 	SQLQuery += " , "+m_idFamilia;
 	SQLQuery += " , "+m_pvparticulo->text()+" ";
+	SQLQuery += " , "+presentablearticulo;
+	SQLQuery += " , "+controlstockarticulo;
         SQLQuery += ")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
+	cursor2 *cur= companyact->cargacursor("SELECT max(idarticulo) AS m FROM articulo");
         companyact->commit();
-        close();
+	if (!cur->eof()) {
+		idArticle = cur->valor("m");
+	}// end if
+	delete cur;	
+
     }// end if */
     companyact->begin();
-    if (companyact->ejecuta(SQLQuery)==0) {
-        companyact->commit();
-    } else {
-        companyact->rollback();
+    if (m_archivoimagen != "") {
+	cursor2 *cur1 = companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo="+idArticle);
+    	QString cadena = "cp "+m_archivoimagen+" "+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur1->valor("codigocompletoarticulo")+".jpg";
+	delete cur1;
+	fprintf(stderr,"%s\n",cadena.ascii());
+	system(cadena.ascii());
     }// end if
+	chargeArticle(idArticle);  
 }// end s_grabarClicked
+
+
+#include <qfiledialog.h>
+void articleedit::s_cambiarimagen() {
+    m_archivoimagen = QFileDialog::getOpenFileName(
+                    "",
+                    "Images (*.jpg)",
+                    this,
+                    "open file dialog",
+                    "Choose a file" );
+    fprintf(stderr," Archivo Seleccionado: %s\n",m_archivoimagen.ascii());
+    m_imagen->setPixmap(QPixmap(m_archivoimagen));   
+}// end s_cambiarimagen
+

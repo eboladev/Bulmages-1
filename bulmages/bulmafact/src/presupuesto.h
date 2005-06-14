@@ -61,6 +61,8 @@ public:
     void borraPresupuesto();
     void imprimirPresupuesto();
     
+    QString detalleArticulos();
+    
     virtual void pintaidcliente(QString) {};
     virtual void pintaIdAlmacen(QString) {};
     virtual void pintaNumPresupuesto(QString) {};
@@ -69,8 +71,6 @@ public:
     virtual void pintaContractPresupuesto(QString) {};
     virtual void pintaTelPresupuesto(QString) {};
     virtual void pintaComentPresupuesto(QString) {};
-//    virtual void pintaNomClient(QString) {};
-//    virtual void pintaCifClient(QString) {};
     virtual void pintaidalmacen(QString) {};
     virtual void pintaCodigoAlmacen(QString) {};
     virtual void pintaNomAlmacen(QString) {};
@@ -81,7 +81,6 @@ public:
     virtual void pintatotales(float, float) {};
 
     void setidcliente(QString val) { mdb_idcliente=val;};
-//    void setIdAlmacen(QString val) { mdb_idalmacen=val;};
     void setidalmacen(QString val) {mdb_idalmacen=val;};
     void setNumPresupuesto(QString val) { mdb_numpresupuesto=val;};
     void setFPresupuesto(QString val) { mdb_fpresupuesto=val;};
@@ -89,10 +88,6 @@ public:
     void setContractPresupuesto(QString val) { mdb_contactpresupuesto=val;};
     void setTelPresupuesto(QString val) { mdb_telpresupuesto=val;};
     void setComentPresupuesto(QString val) { mdb_comentpresupuesto=val;};
-//    void setNomClient(QString val) { mdb_nomcliente=val;};
-//    void setCifClient(QString);
-//    void setCodigoAlmacen(QString);
-//    void setNomAlmacen(QString val) { mdb_nomalmacen=val;};
     void setidpresupuesto(QString val) { mdb_idpresupuesto=val;listalineas->setidpresupuesto(val);};    
     void setIdUsuari(QString val) {mdb_idusuari=val;};
     void setprocesadopresupuesto(QString val) {mdb_procesadopresupuesto = val;};

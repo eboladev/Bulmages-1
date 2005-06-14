@@ -94,6 +94,7 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
       m_modo=0;
       m_idprovider="";
       m_cifprovider="";
+      m_nomprovider="";
       companyact->meteWindow(caption(),this);
 }// end providerslist
 
@@ -174,6 +175,7 @@ void providerslist::inicializa() {
 void providerslist::doubleclicked(int a, int b, int c, const QPoint &) {
    m_idprovider = m_list->text(a,COL_IDPROVEEDOR);
    m_cifprovider = m_list->text(a,COL_CIFPROVEEDOR);
+   m_nomprovider = m_list->text(a,COL_NOMPROVEEDOR);
    if (m_modo ==0 ) {
       QString idprov = m_list->text(a, COL_IDPROVEEDOR);
       fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);

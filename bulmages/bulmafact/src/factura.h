@@ -42,6 +42,7 @@ protected:
     QString mdb_comentfactura;
 
     QString mdb_reffactura;
+    QString mdb_descfactura;
 
     QString mdb_idfactura;
     QString mdb_idusuari;
@@ -62,12 +63,14 @@ public:
     void pintaFactura();
     void guardaFactura();
     void borraFactura();
+    void imprimirFactura();
     
     virtual void pintaidcliente(QString ) {};
 
     virtual void pintareffactura(QString) {};
     virtual void pintaNumFactura(QString ) {};
     virtual void pintafechafactura(QString ) {};
+    virtual void pintadescfactura(QString) {};
 
     virtual void pintacodigoserie_factura(QString) {};
     virtual void pintaComentFactura(QString ) {};
@@ -83,6 +86,7 @@ public:
     void setreffactura(QString val) {mdb_reffactura=val;};
     void setNumFactura(QString val) { mdb_numfactura=val;};
     void setfechafactura(QString val) { mdb_ffactura=val;};
+    void setdescfactura(QString val) {mdb_descfactura=val;};
 
     void setcodigoserie_factura(QString val) {mdb_codigoserie_factura=val;};
     void setcomentfactura(QString val) { mdb_comentfactura=val;};

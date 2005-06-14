@@ -14,6 +14,8 @@
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
+#include "busquedaproveedor.h"
+
 #include "configuracion.h"
 #include "facturaview.h"
 
@@ -74,12 +76,13 @@ CREATE TABLE lfactura (
 
 FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
 : FacturasListBase(parent, name) {
-
     companyact = comp;
+    m_proveedor->setcompany(companyact);
     inicializa();
     m_modo=0;
     m_idfactura="";
     companyact->meteWindow(caption(),this);
+    hideBusqueda();
 }
 
 

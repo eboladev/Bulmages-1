@@ -87,7 +87,7 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>boton_albaranear</cstring>
+                        <cstring>toolButton1_2_3</cstring>
                     </property>
                     <property name="minimumSize">
                         <size>
@@ -104,50 +104,13 @@
                 </widget>
                 <widget class="QToolButton">
                     <property name="name">
-                        <cstring>boton_albaranear_2</cstring>
-                    </property>
-                    <property name="minimumSize">
-                        <size>
-                            <width>32</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image4</iconset>
-                    </property>
-                    <property name="usesBigPixmap">
-                        <bool>false</bool>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>toolButton1_2_3</cstring>
-                    </property>
-                    <property name="minimumSize">
-                        <size>
-                            <width>32</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image5</iconset>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
                         <cstring>botonduplicar</cstring>
                     </property>
                     <property name="text">
                         <string></string>
                     </property>
                     <property name="iconSet">
-                        <iconset>image6</iconset>
+                        <iconset>image4</iconset>
                     </property>
                 </widget>
                 <spacer>
@@ -596,7 +559,7 @@
                                             <string></string>
                                         </property>
                                         <property name="iconSet">
-                                            <iconset>image7</iconset>
+                                            <iconset>image5</iconset>
                                         </property>
                                     </widget>
                                     <widget class="QToolButton">
@@ -607,7 +570,7 @@
                                             <string></string>
                                         </property>
                                         <property name="iconSet">
-                                            <iconset>image5</iconset>
+                                            <iconset>image3</iconset>
                                         </property>
                                     </widget>
                                     <spacer>
@@ -839,6 +802,74 @@
 </widget>
 <customwidgets>
     <customwidget>
+        <class>BusquedaCliente</class>
+        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedacliente.h</header>
+        <sizehint>
+            <width>20</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image6</pixmap>
+        <signal>valueChanged(QString)</signal>
+    </customwidget>
+    <customwidget>
+        <class>BusquedaFormaPago</class>
+        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedaformapago.h</header>
+        <sizehint>
+            <width>20</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image6</pixmap>
+        <signal>valueChanged(QString)</signal>
+    </customwidget>
+    <customwidget>
+        <class>BusquedaFecha</class>
+        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedafecha.h</header>
+        <sizehint>
+            <width>20</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image6</pixmap>
+        <signal>valueChanged(QString)</signal>
+    </customwidget>
+    <customwidget>
+        <class>BusquedaAlmacen</class>
+        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedaalmacen.h</header>
+        <sizehint>
+            <width>20</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image6</pixmap>
+        <signal>valueChanged(QString)</signal>
+    </customwidget>
+    <customwidget>
         <class>listlinpresupuestoview</class>
         <header location="local">listlinpresupuestoview.h</header>
         <sizehint>
@@ -852,76 +883,8 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
         </sizepolicy>
-        <pixmap>image8</pixmap>
+        <pixmap>image7</pixmap>
         <signal>valueChanged(int, int)</signal>
-    </customwidget>
-    <customwidget>
-        <class>BusquedaCliente</class>
-        <header location="global">/home/tborras/bulmages/bulmafact/src/busquedacliente.h</header>
-        <sizehint>
-            <width>20</width>
-            <height>20</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image8</pixmap>
-        <signal>valueChanged(QString)</signal>
-    </customwidget>
-    <customwidget>
-        <class>BusquedaFormaPago</class>
-        <header location="global">/home/tborras/bulmages/bulmafact/src/busquedaformapago.h</header>
-        <sizehint>
-            <width>20</width>
-            <height>20</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image8</pixmap>
-        <signal>valueChanged(QString)</signal>
-    </customwidget>
-    <customwidget>
-        <class>BusquedaFecha</class>
-        <header location="global">/home/tborras/bulmages/bulmafact/src/busquedafecha.h</header>
-        <sizehint>
-            <width>20</width>
-            <height>20</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image8</pixmap>
-        <signal>valueChanged(QString)</signal>
-    </customwidget>
-    <customwidget>
-        <class>BusquedaAlmacen</class>
-        <header location="global">/home/tborras/bulmages/bulmafact/src/busquedaalmacen.h</header>
-        <sizehint>
-            <width>20</width>
-            <height>20</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image8</pixmap>
-        <signal>valueChanged(QString)</signal>
     </customwidget>
 </customwidgets>
 <images>
@@ -932,25 +895,22 @@
         <data format="PNG" length="1521">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000005b8494441545885cd9751685bd719c77f197e90210f2e64a0401fec87406d3a884d038959a1160d6cb60b89451f66d1874aeca1111b14270fc16e21d87de8ac6c645885146990e0eb416225d04a0964e806da59816c5621c57249c02adb88cb5a62d386fac00efcf7708e9c5cbb76491e961d101fe74ae77effffff7edfffd3dd238967b97ef24cb3ff3f0068db7aa174b5a6e4f17e828b21a9b604810d49d904455321c3103953029bc4d880099b62c214810cc6e4c991256bf260b3189b037b927533c5dada3aebdfac51ffacb8671b02499b9ff295054992feade8baebc2d25d3dddfac4858157c6f4783e49ecd952845a5d5d63fffee768dc5ba5e7c07e00dabbb3c4f7b5d31e8b116b83faf5a927d3f922e46c88f92641fe0f4956574b8f94781ccd6cf0c34c3b0e9e9024a54fcd3e950033c5aa2469f2ccac3a9f5744854811a62c34ffb946cf01a87fdedcbc1e8bb5937d37a0184f91fbb0f264ec810d9b60ea830a13eb298c4d46bf7c1c4dc123d59d2883dee149c7e442f5a91498ce972549e9b7a6158f47158800d07969e9ee7d49d2c2ed954777382795c32549d2e29dfb4f8ee03de9c4e982d26f4e2bbe6f646700331ee9c2ed27cfb1db3a71ba20491a7d63729b02911ac8da21eacbabf41f82f0d30600cde62a008d7b3e2ebb586f455f2bf5cf5cacf918de72e78b7321c664c8fc368f3113183bb4730d4cbf3fef20fbbe6dc93e7fcded673f5a74f192db1702e71b3345b79f3eef141c7fcfdde7c429c73cfd9b1949d2e0b171c5f7451588f840ee772871b4495f6f1795bfd4193ada47e97a9de42ffb08aed6481defa778b946e6f57ef21743b224c8d9909324983215ccc321ccc3221b3683b1de114d1ec862cc14e6eb756a7f5d666dadf2c33e3079c6f579f9c616e6de210b9e79ab1b36197be5c6de71e7d36f3bc6a36fb938f2e6b42469e0d5317574eca200efa2da6b4dfa0f7551fab84ef2b53ec24f1b245eeea172b3c1d040cfa622c5b9908c4d903715b27e469cb449266c003685b101399b226b8b7cf5af558c316c7cbdc6adbf7fc9c6773b2830eeabb5c57cdbfad6c7d6acf8878fad59d1f20fdf450b9f3825075f773e72e4e7e96d0a44008c9d92aafe50a13598fc7af0e07b49d2fdfb0f24492b2bce0f561a2e2ed69d6f2cd6dcf9aa2fe0eab5450d1e938e0c8fa9f7705ab1bd83bb0078db2930bb25b91ef8d8f2a0964735e493fb7dcd33f7c9e5951c181e9386a5de83a3ead81b5520e2031b3643e56683d47157e500e1cd263c0795eb0dd80f958febd005a5cb75e88660ae46dfe750fc5308cb90ff20a47fb987fc1f2b700f4a576b180b7d268b018c4decec03e95fbbaa2df8a9b8f9ac7fe419eb860b65ef13f357dc7e3670dd72e4d5311d7945ea7e61647705b01b94aed7c91898fa7d097e0af5bf35e100d46e35e9f91984371b70082ad7ebf4bfdc43e56a1d8e42e9728da1effa082e8624d7a0f86185d4c304c15c88b11bac9b0c1b3fa6c0e81bae5f27cf7a47f4555ef5be50fe489ea17744afd4ac9fa285f36e3f73cef943cb59bb0fa7a5c35267e7a062b1a8025100bf920a971634febe34e64d69c54fc7a53bbeca6f2f45e4afde58f4e05ce1ce5faa4a81347ba12a5d900ae7cbea3e9c56e74ba3eaec1c146d033b031839e6fab595bcf5ece75b4c2f2c4499e6bd239ef58cfd0c983ce3e2f869779fee97d2ea3e28c59f1fd85d81c1e171cd14cbd23b8f06c926d3d033bdd62ab405ff1816a4402a14ab52512ae4cb525e9a39372f9d75b1f3e0a8e22f8e281e1fd85d81815f8c4b7a945cbebf17bcb928540444f94a4ba1aa57485e21a7c8cc39a744fcc51175be2075ec1b506c0b80c82c480ca0c4d180e52f9a186b28cd4d11cc55483144602ba4ec10455b224392bc09c89222b7e9fd4526c83061f2c4c8626c9e299be5a4cd51fcf335b0060cac3f04a9b6390bb6fe2d875ed4b59e021bd0be374383223da480800d9ba249401729da5bfbb6802eebbec7ff0ebf37248951e2cbaf12c40003e83f61e4e5643b80fff17ae6ef86cf1cc07f01e6b443e79dbb4c740000000049454e44ae426082</data>
     </image>
     <image name="image2">
-        <data format="PNG" length="357">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000012c494441545885ed57bdb1c2300cfeccbd31188041600844474f979abb50b342caf80d0135ac9009b48629c0603b60d921dc7b40be46766cfddc27453a03030638a03919aed8f429b39cbf02c94170c52f09802b8e06f06317c5be40bdacbd43b551c90c028059b77d15fb22aa33b28bed74eb3b3f5e9ccf902cef051cda0d71d5a039995adf18b0c6a8a1a801177aa201f84c2c6801fdab652ac31ac00106254c4e6da084c101c62d68a906ae2968e56af7e0bb849dbfed5c0336b7520e5b98f95b497f60e0ff33a0571a6aa3a08e4a9400c063f6cc3cdd0772400dc1b501c87d406480c70c6a284986ceefda7d187d300d519e1bd1b353b2f3348c7542dbf1dc7b5686e752277c6f06624c7c1703df5b03eebdcfab01ab9cfb17840c7566a02f643f4efa7e192533f05738011a6b10eb0bd6de580000000049454e44ae426082</data>
+        <data format="PNG" length="359">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000012e494441545885ed57cb91c2300c7ddea1108e94b2941031b315e4b20dec4ca8210de4105302d4000da40ab5e03d2c06db01cb0e616021ef223bb63ef3a4486360c204075490e186cd9832cbf93d901c04377c9700b8e1680033bb287725daafd63b546b95cc2000989fbeaf725746753eeca2feac7de787a3f32592e5a58043bb214e1a549069f599016b8c3a8a1a70a1171a80cfc48a56d01b2d5319d600f630a860726a03150cf6306e414b35704a412f57db2bdf256cfdede01ab0b99572d8c3d2df4afa1303cfcf80fed6506b057550a204009eb367e6e63e9003ea08ae0d40ee0322033c6750474932747ed1eed5e8836988eaaf11dd3a25074fc35827b41dcfbd6765782e75c2ffcd408c89f762e07d6bc0bdf77a35609573ff8290a1c10c8c85ecc7c9d82fa364061e855f3b67155f8962ab710000000049454e44ae426082</data>
     </image>
     <image name="image3">
-        <data format="PNG" length="317">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000104494441545885ed97c11583200c86435f9724de3a03476fba86477009f77003d6480f3e2a2d8250a3ed6bcd258041c2e71f7c009c769a6728916c6789d3172dbe876527613bbb4b02b6b3c904aeaea10605faa69f1e0a0100d07a2375b24f54070ba8416501080800100134c5be9480700d9448dacc0484987786724c266f7a0d8e04ca11fcf7545881e98d884c5d2790ab8d58fc1a016f97f8f2c2096b6e75c4e2dfae82a3085c5c23546b1b198fd972fce62a383550ead93530f93abbcfae018735f5d7db42e0615b34307de703cf01b7d892567c220c049ac22a08e377259022c144e00bce811c02ffab013feef734e0269756019b06b8acf872c27d33ca26f029bb03e755a7e2f42326aa0000000049454e44ae426082</data>
-    </image>
-    <image name="image4">
-        <data format="PNG" length="299">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000000f2494441545885ed97cd11832010851f993429de5203c7dca40d8f9a26ec231dd006394492f5078400896378174050966fdeae03505444c42bae55ab74ca3668f31cf20e42b52a4b00aa55ce00cea6230681eed24d67198324c32be01eebe55e62105e00960400dd00e16d2001663abce2baebdf04247b4edd2bee778251f41b0050f31afdad6796e5db0462bdb145e0a5791618acb1d9f179167c89c0c974e66e9596e7a18ace82e281dc7560d30312d38ae71aafd58c241ef0fdfb1dd3036b2733c1d175d403743e8a40b377024e122908ecde03b63af03f1ea0eb0ee881f1e5e02cd0893c904ac19793d437236f02bfd2031571e9401b677ca10000000049454e44ae426082</data>
-    </image>
-    <image name="image5">
         <data format="PNG" length="1433">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000560494441545885ad974d68146718c77f236b79173c6c4061030a092874a305a7687145c1555bda8d429c6d3c686fd283117ba83d55bdd47828eaad692ff1d0127350a3d0262928a6a07505255b503211852c28b8504b163c64170dfc7b988f9dc9ee5a95be303c33b3b3f33effdffb7cbc8324321b3244add3ef487ba4dc8e9cb44db237d9b237d8caaccda8abab4be9745ae99569991546c61801e12189349006e4de46122a8dc34ac2c7f448defd47d3a0f967e477e7c9edc821099e80d3e7686e6e4e92fed3ceb83392a4f1c9f19813036618002d2c00e0f439defb5f08808527330c18d1f050de0f00f93d79bdd598f74c3a9d96a4d009bc13cf12bc5fe8a5c2fbcb2ccb02bb97e94b43a1032c42b95ce68d470754ab554840e95e8933df9fc1b2ac9813d5bb13fec315acf72c86ac1ef47343b447626e1a2520bffb2d09f823f37ec63bb9ab1809a7dfc77fd860646236c1618301ac81a4e7c99786dce31ae57299eeeeee37a700a45229ef647313092b787f7d008c6f019a3c3232e476e4de89406ef792ff4548b49a87c38665812751cfea8bf5b78b017f74767452bc536cdc8890a85b75459507f3b52490dd927d27024ebf2349ca7f9a576e5b4ef6465b5aab589d3032a878399ccf9bf4b07fe11fd94dd930cfdf762ccc7b3939737f5a92343cf483745a3a76742070a2919a52330119616fb4df69f270bcf4ed13cfdc98bc2c291e0b002a5e26f464c00c238914606fb4df99c05227e6e7bc4a79e3ca658f4084f480f1eb802e9c097a40d013fe97c9f5c2b73e0996d405a7dfc172fa1ccc7243fd551d9603af60f6e1ac262627e275c0b262e5baed785583e549d85f800d19387a043a3a71ef4db1fea35d64b7642d808e951d180c2cf548125d6bbb9a55258cbcd6f106cafb1d2961742a78feeff6049615f6150028ec2b603014f6155af682cadc1c247c125f7fd35af9293ce557af30b858e78444ad528655e0de9af0415a8c5d1ce3fc8f4350a30d81d52d08046bd98a443be5cf5e13037b220442e540ed79993a6d2ae19a2524f61ff4d7dcbf8e2a7f5e864ea83d75610db87f8cc549270a8d140c9467b7649144d0d7db8e2889886da75c73d36d63c072fa9c30fa836c98fa734aa5bba5d776c3ca6397ce9ef5b0082460709170cd939dddd49eba24d7f4507b5c24b96e2beef531d67ff2394e9f6345e76b1903a954eaf50496ac7948e2ca485cf9234fb9dce61800903b0db96d39d2abd3de8644c2e97348ad48b5af84b1c9f1b027f09ce83f103ab1e04f3eefde90244d4f8e0890d3e770a0ff40b8fc2d0918635a4f1ad8a3c7e26b5eba1dcf8e93c763ca757f3c2410f69ca00ef4eeed6dae0344ea4010e535df7e75047e3a17c97317ecadb837271ad9f1b00cdf9e800c54ff9a800f7a29fd761e80fcbe3cce3ff970be9604481057bce0db6b375e1fed37c7e3242efa3171b7d10d83fc0f09849ebc82ec463b5e099703b52a24810725c8ef8a2b8fe479ed7111b6f7e25e1b6990b83449f5de186c2e50f277dd85449c741301c2db11e5f36aad3c88d325d13e3339ec910862a138d220d0ae17f4eeedf548f89b8572b9ec29af56a0036acf5c4ff9535f79b904ddbef2751f527d3015ae79cf6787a81647e0bb412ab72e40f620a5d1b361ac7925b7d61c037a117eb134944b6137d3b39925ca6fc7a3bd341e5b73dd1c89d98040f45b34d60b0a870a8d2c7850820e70ef15bd6e76670a3a7bbcaed6edd7f6755b717fbf0019bc28b77b295d1df2d7fc2c6caf501a1d84f2418abf0c8604ec8c176b994ca63906522b5210d9c5fedf8780e95f87c36f522bbf278f499ab0360f9f3bce17c74e86d7a3974671fa1d666767b133766ce73476758c9d1fef64eafa9497d7919d55bd5627954c31baf20a004e25efbdfff41192ebb6c2f30aaceae45fc343229d23d9e4e20000000049454e44ae426082</data>
     </image>
-    <image name="image6">
+    <image name="image4">
         <data format="PNG" length="575">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000206494441545885c597c16e8240108687be818fd067f0797bd34b637a6829377a68a2378ff6602224b6a1898735f140132f7f0fbb03ccc00a02b693989f9545fef97667c00000fd6b00200048920cd7e858f70e0010a504babfe2ca23114d88822008861ab82322ba78f31f77cfa33d48d36fa209d1ebcbdbd7282400101234c7d969eef4e4d45809a37837c40480720f78c399c84fb9d8033c8ea365dad74469c04740937004168f614d89687a5b026e198cb107d9de92d87c58f7c30c7425c07b2173ba9544d6ab8dfd827f2f29cff727c0f7660299dd81ba2f8451d8781d9f9fcdeb26703581835326b02f33ac8e3d55f3a949e02281b3d462ed1d01ad05014fd538dd5549a095009b304a1589820093515553843d9f32097421c0993001736035426b04dc32cce661a312d1145e022d1d50936825c0f32b55230d340467c004ea248c186b02507d23d96642fb11d0197525c0d521fb8287805ac33cf71190635f1514d5e23a67b6373d08f8f68226a0fb80ee1b95aaf11228339799b412780ee53c5d2d99d4db5441e2997fa8cf6fad829a19652a2f10b91f7d5ad8615bd53832c240d3f3bd8f7a09341013065c4cbb7ef000c4510ca05cfbe5fbb285801c3719e8fe22b1921915bb9f33ef5035c30c54a373df909d7398015d35be7ef11704faf68d7109e8f0946e51b26310f03de7bb2a1b080050cfbf7857bf863724b20efa1018337e01654833b469fe186d0000000049454e44ae426082</data>
     </image>
-    <image name="image7">
+    <image name="image5">
         <data format="PNG" length="911">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000356494441545885bd973188db561c873f9514e4e1201e3c68f0e0c1430c855ac4d0f39433044a3c15932ca65d322653b831639626a19b3bf50e5a721de23a1952d1e1e079285120a65268a80d3988a0860a7a50410f2a530b5e07a997b3f27c917c260fccdfb6fcfc7edff7f4deb33529e52552ad7bad3bdc7bb847e7b30e0306b4a3365664d18a5a0804ada80511cca219363666644204ee0b1729e556fafb4e6be7965d70460e83c7039c9183d5b070460ea22116aad93011fb02e7b2c3ceee0e8ffa8fd0346d982784a632d0b9d6190e1e0eb263f88001edcb6dac7d0b4dd3329bf860d90567e4640f60803ff5d1751d67e470efcb7b689a365c3dc01ccc86993d0060940d66cc301b26db5bdb48293385588f81a49d2f9c8f9f34c86c626980bc0600d017fb6731b15603fa391dfb99fde68d0c26d4cb305acd80aeeb34ef3617f78d4870737693cd8b9bca25ba5603bdaf7b78773dac2716e29685f85c707feb36f6964da56aa83b49292fa51f573ebd22cfd4fe48eaf3b83cf8f61b29a594f1708b63add5000073c080c0f7a10163d7a6fbc5757a5fdd517e7cbdab00e043e0088a860153a8d59be0c28d5bb7f30558d94018c20684810f65f00fc65007abbf933d401885f90cccffef08140a700485a2013e18d51a1c38b4af5ecf1e00721898136b0f4328407814c4060ebdf85e988ea16a62f57b390264dd078e07e70df946110228942ae043b15c030fda576fe408400603cbc8031f8a270c780e5440e432c03b0c9c465e34e03031308562c504cfa6b536036f91fb29f23194209c8ea10cc1810d9526f65aee0125b99122af810f85720d3c8762b50913689ed9c03c4c060f16c90f15e406049e0d153336700144ffbe7a20d559b0f9c9e6e2defe6f52ff49eadf49fd2bb5f7ff9ed4d7bfc4f555f27afce319ce82a5e45e4ceec7c4e1d489e7fc985c401582890517da88efd567c1e9069691ff99aac7e44f95e4f2d7550d9c240f4e909712f2529abcf916b9ef0ee0a336e23bf561a43450bf587fc79cff9691fc87b83e7fb0a28134f9f19cd79693bf3c49dec11fed41a38bd8ddce61e0e3ba7aceb3923b8be4ab19f8d9820db0f70750027b7f0f8c1af64f3b5006fb492fdee11ef7a00a76ff0eb86e7cb74f3af19c4f2631f9cb2e6257bd1129ff1b9a7573e8be7097653b5393a95fc5ca00efb3fd07de39ea12429403310000000049454e44ae426082</data>
     </image>
-    <image name="image8">
+    <image name="image6">
         <data format="PNG" length="826">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000030149444154388db59531681b5718c77f0e377c070e3c810a3a70e0041eac51852e0a19e45134830a1d9a4c69a04bc8928e990a693a640e1d0c8642b08742321894c1507991b484c890902bb8701a047760c3bd21701fe4201dde49b6a41a32b8df72dcbbeffdbefffbbfefbd5b1b0c07cce266ebe667ae2006c3c1dada0cdc3be87d6e6c35b0d692a409d9c7ec8b20d65ae29398d19b1114e7e3de4ce98b3f5e10dc0053cf0951b4506496e1b964bf7ce6c585d9054c62d01d617ca48be0596553cf496d8f2c8b01c5f795fc93904e85ec4c01a152857a5d9175d0b2805c872080f18595ccc1499a10a225d4e2fbc2877786fe81253ab6c04c8d106e09db5d43ab0d146e5c64d1a23938fb98a185cea1c33eecfd9eba49eb427dcb201e245365f2b7b2fb5b4a3a31dcb927178afe07d86901df870fefa4842aed6f6b74ba42e52b4014d580e1eb9cbd9d94de7e4aad16d2f9be02d805f0b5e532f927a1ffcacea1777f122a8105b164a7c25faf323a5d9f1f1fd600e1e5bec59e2d4b5c7ef5209d0ad17b8b31864e57c0b3e0815ac3ee33253ab664a770ff5185d1a1cb8d2267d3e58aa1dc7d2508cbe597d0e74fdd269aaaf0f52d414c4ea3e9762c996869e42560d7a72e41c4799a2586e74f95e8d8151481fa86efbe7b3398ac58b1a2b8527589f15451ad303ac2293542ad6648a796278f13a27185e4c4754310facb98c53a79e19a3fdc1426ff28c3d7399d1f7cb25343eb96106cf83c790ce9c4f2eb831855c55485663327992eb6dc8a6259874ed700b0b793323cccb9ffa842b30d6133e3e75fea989ac15a8b16ca76b746b0b92278d919774c5b6d48a78697fb29bbcf52468742a32120909c24e899ce67beed5be2db01e22d1e9485bb620e47f9ee9e606a21bd3f5d3744c7e7c54d55e87443867d8b554515ac5db4620e8e4f62263170fd1cdee90aad7640141992891b0f367c9adfe4049bb07d3b7022bd8c687c0978f46684ee084150b65ac1fcca94591b7a90a496e4c095164fb016a2b192a497795cc0f84817aebe25f7bf70ccc54a575c555c03f78ffa5fc0570d1f0c076bff0232285a09643cc7ce0000000049454e44ae426082</data>
+    </image>
+    <image name="image7">
+        <data format="PNG" length="881">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000033849444154388dad9431681c471486bf3353bc05096641c52d38700711e88a1417111772544890e6888b33b848828ba448235205dcb88ae354c6659242e0c64429ecd885402914a43477074a4e27706003173815821dd0c10ec4b0af58508ad149bac488147ab0c5ecce7cf3cddb7fb7d2dfeb43091858bcb178c21554bfdbaf543add0e6284172f5f9c34179a38efc85d4ef63afb5f10ef3da3e188deefbd20785a468cb07863f1e4f90fcf4912259e87a2f434014a2512a140898c20281821d7302e5022847408ac0bbd5ff51cac6518b8b123aec368fc13793e02947856c90bc11d09f95801219e83c6bc8204809660638893e993183161463ece294a8ffe3d023cf1acb03fb0f4363d83030f4c6c84da82d0ba63797719acd1009ff91778629cf98c264a5106e8ce366c7cef026a46a82f58c44076a41cfea97cf7b5a3f591e5e34f052b01fe46e3c844502af12cec0fe414aaac7c58a5d5169204d42894093b9b051beb8ead1f1db5eb3556db3162fc14f8dac4b8280b2281bc10765ffa33e8279f0bc95b1e351e3d16b69ee5dcbe13f1d9175540d878ea517fdea8371a1728de09e91f1e6b2dadb620e2c3a2d7966f1f29e981273f86b57b31bded3077f0ca62651a3c6d6c20730a2849edf4f8a7d0c70f3ce981c7ce094bcb0233058d66a065878a96d3e46b178d05988cad849eeab1e5f103253d081b8a40723d229e01cc0426c865c618886c98981e2994313bbf104cad50ad5adc91e7e1fd8cfddf62b261589bd4a2cb5391abd298576a6f0b877f293b9b05b7efc6e4c7caea8a1057231ede0777e8f9666d84aa62e78466b32077d3afef3f3d46a0d5b6006cac3b767ece59bb17d35886c67b395f7e55c7562dde7bb45456db55ea0b5c6e5c9c6eb2b402de59369e3a9e3c72f4b685e63b821ac886193a563001b0bfeb496f2558112e86eefccb1b674426ec2ca2b4ee0a325763eb5948437a706e63e78456bb4677d7e355a104379e6ec599f16838221d82c417e06d61f5833a835739f951b85fafc5349a39f50558bd9520a5a064a4836970a5d3ed7073e9e609069aef87ec8a70f6f3c780989094c9f143296204ef211d289953bcbbf0b8bfd70738b9eaeb2c15575dd7c408fd6ebf72e5602d43743addce95c1fb7bfdca3fdcb3ae17a3e19dbf0000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -1037,12 +997,6 @@
         <signal>clicked()</signal>
         <receiver>BudgetBase</receiver>
         <slot>s_realizarPedidoCliente()</slot>
-    </connection>
-    <connection>
-        <sender>boton_albaranear</sender>
-        <signal>clicked()</signal>
-        <receiver>BudgetBase</receiver>
-        <slot>s_realizarAlbaranCliente()</slot>
     </connection>
     <connection>
         <sender>m_forma_pago</sender>

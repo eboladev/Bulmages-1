@@ -36,12 +36,13 @@ class ClientsList;
 class ClientEdit;
 class articleslist;
 class orderslist;
-class delivnoteslist;
+// class delivnoteslist;
 class BudgetsList;
 class ClientDelivNotesList;
 class linorderslist;
 class FacturasList;
 class PedidosClienteList;
+class AlbaranesProveedor;
 
 
 class company : public postgresiface2 {
@@ -51,13 +52,14 @@ private:
    ClientEdit *m_clientEdit;
    articleslist *m_articleslist;
    orderslist *m_orderslist;
-   delivnoteslist *m_delivnoteslist;
+//   delivnoteslist *m_delivnoteslist;
    linorderslist *m_linorderslist;
    BudgetsList *m_budgetsList;
    ClientDelivNotesList *m_clientDelivNotesList;
    FacturasList *m_facturasList;
    PedidosClienteList *m_pedidosclienteList;
    listventanas *m_listventanas;
+   AlbaranesProveedor *m_albaranesproveedor;
 public:
    QWidget *m_pWorkspace;
 public:
@@ -70,7 +72,8 @@ public:
    void newClient();
    void listarticles();
    void listorders();
-   void listdelivnotes();
+//   void listdelivnotes();
+   void lAlbaranesProveedor();
    void listBudgets();
    void listClientDelivNotes();
    void setWorkspace(QWidget *qw) {m_pWorkspace=qw;}
@@ -84,6 +87,8 @@ public:
    void refreshBudgets();
    void refreshPedidosCliente();
    void refreshClientDelivNotes();
+   void refreshAlbaranesCliente();
+   void refreshAlbaranesProveedor();
    void refreshFacturas();
    void meteWindow(QString nom, QObject *obj) {m_listventanas->meteWindow(nom, obj);};
    void sacaWindow(QObject *nom) {m_listventanas->sacaWindow(nom);};

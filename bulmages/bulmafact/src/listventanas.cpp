@@ -22,12 +22,14 @@ listventanas::listventanas(QWidget *a, const char *b): QDockWindow (a,b) {
 }// end listventanas
 
 void listventanas::clicked() {
-    fprintf(stderr,"Se ha pulsado\n");
+    fprintf(stderr,"listventanas::clicked()\n");
     int item = m_listBox->currentItem();
     QWidget *widget = (QWidget *)elmapa[item];
-    //	widget->hide();
-    widget->showMaximized();
-    widget->setActiveWindow();
+    if (widget != NULL) {
+        widget->showMaximized();
+        widget->setActiveWindow();
+    }// end if
+    fprintf(stderr,"END listventanas::clicked()\n");
 }// end clicked
 
 
@@ -43,7 +45,7 @@ void  listventanas::meteWindow(QString nombre, QObject *obj) {
     mapa::iterator iterador = elmapa.begin();
     while (iterador != elmapa.end()) {
         if ((*iterador).second == obj) {
-             m_listBox->removeItem((*iterador).first);
+            m_listBox->removeItem((*iterador).first);
             elmapa.erase((*iterador).first);
         }// end if
         iterador++;
@@ -56,6 +58,7 @@ void  listventanas::meteWindow(QString nombre, QObject *obj) {
 
 
 void listventanas::sacaWindow(QObject *obj) {
+    fprintf(stderr,"listventanas::sacaWindow()\n");
     mapa::iterator iterador = elmapa.begin();
     while (iterador != elmapa.end()) {
         if ((*iterador).second == obj) {

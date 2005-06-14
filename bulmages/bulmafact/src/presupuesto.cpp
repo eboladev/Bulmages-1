@@ -22,8 +22,7 @@ presupuesto::presupuesto(company *comp) {
     vaciaPresupuesto();
 }
 
-presupuesto::~presupuesto() {
-}
+presupuesto::~presupuesto() {}
 
 
 void presupuesto::borraPresupuesto() {
@@ -48,10 +47,6 @@ void presupuesto::vaciaPresupuesto() {
     mdb_contactpresupuesto= "";
     mdb_telpresupuesto= "";
     mdb_comentpresupuesto= "";
-//    mdb_nomcliente= "";
-//    mdb_cifcliente= "";
-//    mdb_codigoalmacen= "";
-//    mdb_nomalmacen= "";
     mdb_procesadopresupuesto = "FALSE";
     mdb_descpresupuesto = "";
     mdb_refpresupuesto = "";
@@ -94,19 +89,16 @@ void presupuesto::chargeBudget(QString idbudget) {
         mdb_contactpresupuesto= cur->valor("contactpresupuesto");
         mdb_telpresupuesto= cur->valor("telpresupuesto");
         mdb_comentpresupuesto= cur->valor("comentpresupuesto");
-
         mdb_idusuari = cur->valor("idusuari");
         mdb_descpresupuesto = cur->valor("descpresupuesto");
         mdb_refpresupuesto = cur->valor("refpresupuesto");
-	mdb_idforma_pago = cur->valor("idforma_pago");
+        mdb_idforma_pago = cur->valor("idforma_pago");
         if (cur->valor("procesadopresupuesto") == "t")
             mdb_procesadopresupuesto = "TRUE";
         else
             mdb_procesadopresupuesto = "FALSE";
     }// end if
     delete cur;
-
-    //    m_initialValues = calculateValues();
     fprintf(stderr,"Vamos a cargar las lineas\n");
     listalineas->chargeBudgetLines(idbudget);
     pintaPresupuesto();
@@ -125,11 +117,10 @@ void presupuesto::guardapresupuesto() {
     if (mdb_idusuari="")
         mdb_idusuari="NULL";
     if (mdb_idforma_pago == "")
-    	mdb_idforma_pago = "NULL";	
+        mdb_idforma_pago = "NULL";
     if (mdb_idpresupuesto == "") {
         /// Se trata de una inserci�
         QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, procesadopresupuesto, descpresupuesto, refpresupuesto, idforma_pago) VALUES ("+mdb_numpresupuesto+",'"+mdb_fpresupuesto+"','"+mdb_contactpresupuesto+"','"+mdb_telpresupuesto+"','"+mdb_vencpresupuesto+"','"+mdb_comentpresupuesto+"',"+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+","+mdb_procesadopresupuesto+",'"+mdb_descpresupuesto+"','"+mdb_refpresupuesto+"',"+mdb_idforma_pago+")";
-
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpresupuesto) AS m FROM presupuesto");
         if (!cur->eof())
@@ -151,7 +142,7 @@ void presupuesto::guardapresupuesto() {
         SQLQuery += " ,procesadopresupuesto="+mdb_procesadopresupuesto;
         SQLQuery += " ,descpresupuesto='"+mdb_descpresupuesto+"'";
         SQLQuery += " ,refpresupuesto= '"+mdb_refpresupuesto+"'";
-	SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
+        SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
         SQLQuery += " WHERE idpresupuesto="+mdb_idpresupuesto;
         companyact->begin();
         companyact->ejecuta(SQLQuery);
@@ -162,19 +153,55 @@ void presupuesto::guardapresupuesto() {
 }// end guardapresupuesto
 
 
-void presupuesto::imprimirPresupuesto() {
+QString presupuesto::detalleArticulos() {
+    QString texto="";
 
+
+    cursor2 *cur=companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto="+mdb_idpresupuesto);
+    int i=0;
+    while(!cur->eof()) {
+            i= !i;
+    if (i) {
+    texto += "<blockTable style=\"tabla1\" colWidths=\"5cm, 8cm\" rowHeights=\"5.5cm\">\n";
+    } else {
+     texto += "<blockTable style=\"tabla2\" colWidths=\"8cm, 5cm\" rowHeights=\"5.5cm\">\n";
+        }// end if    
+        texto += "<tr>\n";
+
+        if (i) {
+            texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";
+	    texto += "<para><pre>"+cur->valor("obserarticulo")+"</pre></para></td>\n";
+        }// end if
+        texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
+                 "<image file=\""+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
+                 "</illustration></td>\n";
+
+        if (!i) {
+            texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";
+	    texto += "<pre>"+cur->valor("obserarticulo")+"</pre></td>\n";
+        }// end if
+        texto += "</tr>\n";
+    texto += "</blockTable>";	
+        cur->siguienteregistro();
+    }// end while
+    delete cur;
+
+    return texto;
+}// end detalleArticulos
+
+
+void presupuesto::imprimirPresupuesto() {
     /// Copiamos el archivo
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml";
     archivo = "cp "+archivo+" /tmp/presupuesto.rml";
     system (archivo.ascii());
-    
+
     /// Copiamos el logo
     archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
     archivo = "cp "+archivo+" /tmp/logo.jpg";
     system (archivo.ascii());
-    
-    
+
+
     QFile file;
     file.setName( "/tmp/presupuesto.rml" );
     file.open( IO_ReadOnly );
@@ -193,6 +220,7 @@ void presupuesto::imprimirPresupuesto() {
         buff.replace("[nomcliente]",cur->valor("nomcliente"));
         buff.replace("[cifcliente]",cur->valor("cifcliente"));
     }// end if
+    delete cur;
 
     buff.replace("[numpresupuesto]",mdb_numpresupuesto);
     buff.replace("[fpresupuesto]",mdb_fpresupuesto);
@@ -200,56 +228,56 @@ void presupuesto::imprimirPresupuesto() {
     buff.replace("[contactpresupuesto]",mdb_contactpresupuesto);
     buff.replace("[telpresupuesto]",mdb_telpresupuesto);
     buff.replace("[comentpresupuesto]",mdb_comentpresupuesto);
-//    buff.replace("[codigoalmacen]",mdb_codigoalmacen);
-//    buff.replace("[nomalmacen]",mdb_nomalmacen);
     buff.replace("[descpresupuesto]",mdb_descpresupuesto);
     buff.replace("[refpresupuesto]",mdb_refpresupuesto);
 
 
 
-    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td>Concepto</td>";
-    fitxersortidatxt += "	<td>Cantidad</td>";
-    fitxersortidatxt += "	<td>Precio Und.</td>";
-    fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "</tr>";
+    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">\n";
+    fitxersortidatxt += "<tr>\n";
+    fitxersortidatxt += "	<td>Concepto</td>\n";
+    fitxersortidatxt += "	<td>Cantidad</td>\n";
+    fitxersortidatxt += "	<td>Precio Und.</td>\n";
+    fitxersortidatxt += "	<td>Total</td>\n";
+    fitxersortidatxt += "</tr>\n";
 
     QString l;
     linpresupuesto *linea;
     uint i = 0;
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td>"+linea->desclpresupuesto()+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpresupuesto().toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplpresupuesto().toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpresupuesto().toFloat() * linea->pvplpresupuesto().toFloat())+"</td>";
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "	<td>"+linea->desclpresupuesto()+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpresupuesto().toFloat())+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplpresupuesto().toFloat())+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpresupuesto().toFloat() * linea->pvplpresupuesto().toFloat())+"</td>\n";
         fitxersortidatxt += "</tr>";
         i++;
     }// end for
 
 
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Base</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Iva</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "</blockTable>";
+    fitxersortidatxt += "<tr>\n";
+    fitxersortidatxt += "	<td></td>\n";
+    fitxersortidatxt += "	<td></td>\n";
+    fitxersortidatxt += "	<td>Base</td>\n";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>\n";
+    fitxersortidatxt += "</tr>\n";
+    fitxersortidatxt += "<tr>\n";
+    fitxersortidatxt += "	<td></td>\n";
+    fitxersortidatxt += "	<td></td>\n";
+    fitxersortidatxt += "	<td>Iva</td>\n";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>\n";
+    fitxersortidatxt += "</tr>\n";
+    fitxersortidatxt += "<tr>\n";
+    fitxersortidatxt += "	<td></td>\n";
+    fitxersortidatxt += "	<td></td>\n";
+    fitxersortidatxt += "	<td>Total</td>\n";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>\n";
+    fitxersortidatxt += "</tr>\n";
+    fitxersortidatxt += "</blockTable>\n";
 
     buff.replace("[story]",fitxersortidatxt);
+
+    buff.replace("[detallearticulos]",detalleArticulos());
 
     if ( file.open( IO_WriteOnly ) ) {
         QTextStream stream( &file );
@@ -258,6 +286,6 @@ void presupuesto::imprimirPresupuesto() {
     }
 
     system("trml2pdf.py /tmp/presupuesto.rml > /tmp/pressupost.pdf");
-    system("kpdf /tmp/pressupost.pdf");
+    system("kpdf /tmp/pressupost.pdf &");
 } //end imprimirPresupuesto
 

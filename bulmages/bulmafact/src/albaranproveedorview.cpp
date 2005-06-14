@@ -21,18 +21,17 @@
  // ALBARANES DE CLIENTES
 
 
-#include "albaranclienteview.h"
+#include "albaranproveedorview.h"
 
 
 #include "company.h"
 #include "division.h"
-#include "clientslist.h"
 #include "articleslist.h"
 #include "configuracion.h"
 #include "budgetslist.h"
 #include "budget.h"
-#include "pedidosclientelist.h"
-#include "pedidoclienteview.h"
+//#include "pedidosproveedorlist.h"
+//#include "pedidoproveedorview.h"
 
 #include <qlineedit.h>
 #include <qtextedit.h>
@@ -47,42 +46,42 @@
 
 #include "funcaux.h"
 #include "postgresiface2.h"
-#include "listlinalbaranclienteview.h"
+#include "listlinalbaranproveedorview.h"
 
-AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const char *name) : AlbaranClienteBase(parent, name, Qt::WDestructiveClose), AlbaranCliente(comp) {
+AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const char *name) : AlbaranProveedorBase(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp) {
     subform2->setcompany(comp);
     m_almacen->setcompany(comp);
     m_forma_pago->setcompany(comp);
-    m_cliente->setcompany(comp);
-    setListLinAlbaranCliente(subform2);
+    m_proveedor->setcompany(comp);
+    setListLinAlbaranProveedor(subform2);
     inicialize();
     comp->meteWindow(caption(),this);
-    fprintf(stderr,"Fin de la inicialización de AlbaranClienteView\n");
+    fprintf(stderr,"Fin de la inicialización de AlbaranProveedorView\n");
 }// end ClientDelivNote
 
 
-AlbaranClienteView::~AlbaranClienteView() {
-	companyact->refreshAlbaranesCliente();
+AlbaranProveedorView::~AlbaranProveedorView() {
+	companyact->refreshAlbaranesProveedor();
 	companyact->sacaWindow(this);
 }// end ~ClientDelivNote
 
 
-void AlbaranClienteView::inicialize() {
+void AlbaranProveedorView::inicialize() {
 	m_totalBases->setReadOnly(TRUE);
 	m_totalBases->setAlignment(Qt::AlignRight);
 	m_totalTaxes->setReadOnly(TRUE);
 	m_totalTaxes->setAlignment(Qt::AlignRight);
 	m_totalDiscounts->setReadOnly(TRUE);
 	m_totalDiscounts->setAlignment(Qt::AlignRight);
-	m_totalalbaran->setReadOnly(TRUE);
-	m_totalalbaran->setAlignment(Qt::AlignRight);
+	m_totalalbaranp->setReadOnly(TRUE);
+	m_totalalbaranp->setAlignment(Qt::AlignRight);
 }// end inicialize
 
 
-void   AlbaranClienteView::pintatotales(float base, float iva) {
+void   AlbaranProveedorView::pintatotales(float base, float iva) {
     m_totalBases->setText(QString::number(base));
     m_totalTaxes->setText(QString::number(iva));
-    m_totalalbaran->setText(QString::number(iva+base));
+    m_totalalbaranp->setText(QString::number(iva+base));
 }// end pintatotales
 
 
@@ -91,63 +90,43 @@ void   AlbaranClienteView::pintatotales(float base, float iva) {
 
 
 
-void AlbaranClienteView::s_verpresupuesto() {
-    QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='"+mdb_refalbaran+"'";
+
+
+void AlbaranProveedorView::s_verpedidoproveedor() {
+/*
+    QString SQLQuery= "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor='"+mdb_refalbaranp+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (cur->numregistros() > 1) {
-        BudgetsList *list = new BudgetsList(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
+        PedidosProveedorList *list = new PedidosProveedorList(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
         list->modoseleccion();
         list->show();
         while(!list->isHidden())
             theApp->processEvents();
         this->setEnabled(true);
-        if (list->idpresupuesto() !="" && list->idpresupuesto() !=NULL) {
-            Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
-            bud->chargeBudget(list->idpresupuesto());
+        if (list->idpedidoproveedor() !="" && list->idpedidoproveedor() !=NULL) {
+            PedidoProveedorView *bud = new PedidoProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+            bud->cargaPedidoProveedor(list->idpedidoproveedor());
             bud->show();
         }// end if
     } else if (!cur->eof()) {
-        Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
-        bud->chargeBudget(cur->valor("idpresupuesto"));
+        PedidoProveedorView *bud = new PedidoProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+        bud->cargaPedidoProveedor(cur->valor("idpedidoproveedor"));
         bud->show();
     }// end if
     delete cur;
-}// end s_verpresupuesto
-
-
-
-void AlbaranClienteView::s_verpedidocliente() {
-    QString SQLQuery= "SELECT * FROM pedidocliente WHERE refpedidocliente='"+mdb_refalbaran+"'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if (cur->numregistros() > 1) {
-        PedidosClienteList *list = new PedidosClienteList(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
-        list->modoseleccion();
-        list->show();
-        while(!list->isHidden())
-            theApp->processEvents();
-        this->setEnabled(true);
-        if (list->idpedidocliente() !="" && list->idpedidocliente() !=NULL) {
-            PedidoClienteView *bud = new PedidoClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
-            bud->cargaPedidoCliente(list->idpedidocliente());
-            bud->show();
-        }// end if
-    } else if (!cur->eof()) {
-        PedidoClienteView *bud = new PedidoClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
-        bud->cargaPedidoCliente(cur->valor("idpedidocliente"));
-        bud->show();
-    }// end if
-    delete cur;
-}// end s_verpedidocliente
+*/
+}// end s_verpedidoproveedor
 
 
 #include "facturaview.h"
 /// Se encarga de generar un pedido a partir del presupuesto.
-void AlbaranClienteView::generarFactura() {
+void AlbaranProveedorView::generarFactura() {
+/*
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la función.
-    QString SQLQuery = "SELECT * FROM factura WHERE reffactura='"+mdb_refalbaran+"'";
+    QString SQLQuery = "SELECT * FROM factura WHERE reffactura='"+mdb_refalbaranp+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-      FacturaView *bud = new FacturaView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Facturas de Clientes", "company"));
+      FacturaView *bud = new FacturaView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Facturas de Proveedors", "company"));
       bud->cargaFactura(cur->valor("idfactura"));
       bud->show();
       return;
@@ -159,7 +138,7 @@ void AlbaranClienteView::generarFactura() {
     if (QMessageBox::question(
             this,
             tr("Factura Inexistente"),
-            tr("No existe una factura asociada a este albaran."
+            tr("No existe una factura asociada a este albaranp."
                 "Desea Crearla ?"),
             tr("&Yes"), tr("&No"),
             QString::null, 0, 1 ) )
@@ -167,29 +146,30 @@ void AlbaranClienteView::generarFactura() {
     
 	
     /// Creamos la factura.
-    FacturaView *bud = new FacturaView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Clientes", "company"));
+    FacturaView *bud = new FacturaView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Proveedors", "company"));
     bud->vaciaFactura();
 //    bud->setcodigoalmacen(mdb_codigoalmacen);
-    bud->setcomentfactura(mdb_comentalbaran);
-//    bud->setdescfactura(mdb_descalbaran);
-    bud->setfechafactura(mdb_fechaalbaran);
+    bud->setcomentfactura(mdb_comentalbaranp);
+//    bud->setdescfactura(mdb_descalbaranp);
+    bud->setfechafactura(mdb_fechaalbaranp);
     bud->setidforma_pago(mdb_idforma_pago);
-    bud->setreffactura(mdb_refalbaran);
-    bud->setidcliente(mdb_idcliente);
+    bud->setreffactura(mdb_refalbaranp);
+    bud->setidproveedor(mdb_idproveedor);
     bud->setidalmacen(mdb_idalmacen);
     QString l;
-    LinAlbaranCliente *linea;
+    LinAlbaranProveedor *linea;
     
 //    QString desclfactura, QString cantlfactura, QString pvplfactura, QString descuentolfactura, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString ivalfactura
     
     
     uint i = 0;
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        bud->getlistalineas()->nuevalinea(linea->desclalbaran(), linea->cantlalbaran(), linea->pvplalbaran(),"0",  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(),"0");
+        bud->getlistalineas()->nuevalinea(linea->desclalbaranp(), linea->cantlalbaranp(), linea->pvplalbaranp(),"0",  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(),"0");
         i++;
     }// end for
     bud->pintaFactura();
     bud->show();
+*/
 }// end generarAlbaran
 
 

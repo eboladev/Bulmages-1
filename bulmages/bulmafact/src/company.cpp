@@ -17,7 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
+
 #include <qnamespace.h>
 
 #include "company.h"
@@ -41,169 +41,175 @@
 #include "facturaslist.h"
 #include "pedidosclientelist.h"
 #include "pedidoclienteview.h"
+#include "albaranesproveedor.h"
 
 
 
-company::company(){
-}// end company
+company::company() {}// end company
 
 
 void company::init(QString bd) {
-   if (bd == "") 
-   	bd = searchCompany();
-   inicializa(bd);
+    if (bd == "")
+        bd = searchCompany();
+    inicializa(bd);
 }// end init
 
 /** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
   * Al usuario debe seleccionar una empresa y el sistema empieza la inicialización de clases a partir de dicha inicialización.
   */
 QString company::searchCompany() {
-//El cambio de empresa se realiza desde el selector.
-  fprintf(stderr,"empresa::searchCompany vamos a mostrar el abreempresaview\n");
-  abreempresaview *nuevae = new abreempresaview(0,"BulmaFact" );
-  nuevae->exec();
-   fprintf(stderr,"Vamos a cambiar la empresa \n");
-   QString bd= nuevae->nomDB();
-   fprintf(stderr,"Empresa cambiada a %s\n", bd.ascii());
-   delete nuevae;
-  return(bd);
+    //El cambio de empresa se realiza desde el selector.
+    fprintf(stderr,"empresa::searchCompany vamos a mostrar el abreempresaview\n");
+    abreempresaview *nuevae = new abreempresaview(0,"BulmaFact" );
+    nuevae->exec();
+    fprintf(stderr,"Vamos a cambiar la empresa \n");
+    QString bd= nuevae->nomDB();
+    fprintf(stderr,"Empresa cambiada a %s\n", bd.ascii());
+    delete nuevae;
+    return(bd);
 }// end searchCompany
 
 
 
 void company::createMainWindows() {
-   m_articleslist = new articleslist(this, m_pWorkspace,theApp->translate("Artículos","company"));
-   m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Proveedores","company"));   
-   m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Clientes","company"));   
-   
-   m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos a Clientes","company"));  
-   m_pedidosclienteList = new PedidosClienteList(this, m_pWorkspace,theApp->translate("Pedidos de Clientes","company")); 
-   m_clientDelivNotesList = new ClientDelivNotesList(this, m_pWorkspace,theApp->translate("Albaranes de Clientes","company"));
-   m_facturasList = new FacturasList(this, m_pWorkspace,theApp->translate("Facturas a Cliente","company"));
-   
-   m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Pedidos a Proveedores","company"));
-   m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Albaranes","company"));   
- 
-   fprintf(stderr,"Fin de createMainWindows\n");
+    m_articleslist = new articleslist(this, m_pWorkspace,theApp->translate("Artículos","company"));
+    m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Proveedores","company"));
+    m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Clientes","company"));
+
+    m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos a Clientes","company"));
+    m_pedidosclienteList = new PedidosClienteList(this, m_pWorkspace,theApp->translate("Pedidos de Clientes","company"));
+    m_clientDelivNotesList = new ClientDelivNotesList(this, m_pWorkspace,theApp->translate("Albaranes de Clientes","company"));
+    m_facturasList = new FacturasList(this, m_pWorkspace,theApp->translate("Facturas a Cliente","company"));
+
+    m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Pedidos a Proveedores","company"));
+ //   m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Albaranes","company"));
+    m_albaranesproveedor = new AlbaranesProveedor(this, m_pWorkspace,theApp->translate("Albaranes Proveedor","company"));
+
+    fprintf(stderr,"Fin de createMainWindows\n");
 }// end createMainWindows
 
 
-company::~company(){
-}
+company::~company() {}
 
 
 void company::listproviders () {
-   m_providerslist->hide();
-   m_providerslist->showMaximized();
-   m_providerslist->setActiveWindow();
+    m_providerslist->hide();
+    m_providerslist->showMaximized();
+    m_providerslist->setActiveWindow();
 }
 
 void company::listClients () {
-   m_clientsList->hide();
-   m_clientsList->showMaximized();
-   m_clientsList->setActiveWindow();
+    m_clientsList->hide();
+    m_clientsList->showMaximized();
+    m_clientsList->setActiveWindow();
 }
 
 void company::newClient() {
-   m_clientEdit = new ClientEdit(this, m_pWorkspace,theApp->translate("Editar/Añadir cliente","company"));
-   m_clientEdit->hide();
-   m_clientEdit->showMaximized();
-   m_clientEdit->setActiveWindow();
-}   
+    m_clientEdit = new ClientEdit(this, m_pWorkspace,theApp->translate("Editar/Añadir cliente","company"));
+    m_clientEdit->hide();
+    m_clientEdit->showMaximized();
+    m_clientEdit->setActiveWindow();
+}
 
 void company::listarticles () {
-   m_articleslist->hide();
-   m_articleslist->showMaximized();
-   m_articleslist->setActiveWindow();
+    m_articleslist->hide();
+    m_articleslist->showMaximized();
+    m_articleslist->setActiveWindow();
 }
 
 void company::refreshArticles() {
-   m_articleslist->inicializa();
+    m_articleslist->inicializa();
 }// end refreshOrders
 
 
 void company::listorders () {
-   m_orderslist->hide();
-   m_orderslist->showMaximized();
-   m_orderslist->setActiveWindow();
+    m_orderslist->hide();
+    m_orderslist->showMaximized();
+    m_orderslist->setActiveWindow();
 }
 
 void company::refreshOrders() {
-   m_orderslist->inicializa();
+    m_orderslist->inicializa();
 }// end refreshOrders
 
 void company::newOrder() {
-   linorderslist *order = new linorderslist(this,m_pWorkspace,theApp->translate("Nuevo Pedido", "company"));
-	order->chargelinorders("0");
-   order->show();
+    linorderslist *order = new linorderslist(this,m_pWorkspace,theApp->translate("Nuevo Pedido", "company"));
+    order->chargelinorders("0");
+    order->show();
 }// end newOrder
 
 
-void company::listdelivnotes () {
-   m_delivnoteslist->hide();
-   m_delivnoteslist->showMaximized();
-   m_delivnoteslist->setActiveWindow();
+
+void company::lAlbaranesProveedor () {
+    m_albaranesproveedor->hide();
+    m_albaranesproveedor->showMaximized();
+    m_albaranesproveedor->setActiveWindow();
 }
 
 
 void company::listBudgets() {
-   m_budgetsList->hide();
-   m_budgetsList->showMaximized();
-   m_budgetsList->setActiveWindow();
+    m_budgetsList->hide();
+    m_budgetsList->showMaximized();
+    m_budgetsList->setActiveWindow();
 }// end listbudgets
 
 void company::newBudget() {
-   Budget *bud = new Budget(this , m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
-   bud->show();
+    Budget *bud = new Budget(this , m_pWorkspace,theApp->translate("Edicion de Proveedores", "company"));
+    bud->show();
 }// end bud
 
 void company::refreshBudgets() {
-   m_budgetsList->inicializa();
+    m_budgetsList->inicializa();
 }// end refreshBudgets
 
 void company::refreshFacturas() {
-   m_facturasList->inicializa();
+    m_facturasList->inicializa();
 }// end refreshFacturas
 
 
 void company::listClientDelivNotes() {
-   m_clientDelivNotesList->hide();
-   m_clientDelivNotesList->showMaximized();
-   m_clientDelivNotesList->setActiveWindow();
+    m_clientDelivNotesList->hide();
+    m_clientDelivNotesList->showMaximized();
+    m_clientDelivNotesList->setActiveWindow();
 }// end listbudgets
 
 void company::newClientDelivNote() {
-   AlbaranClienteView *cDelivNote = new AlbaranClienteView(this,m_pWorkspace,theApp->translate("Edicion de Albaranes", "company"));
-   cDelivNote->showMaximized();
+    AlbaranClienteView *cDelivNote = new AlbaranClienteView(this,m_pWorkspace,theApp->translate("Edicion de Albaranes", "company"));
+    cDelivNote->showMaximized();
 }// end newClientDelivNote
 
 void company::refreshClientDelivNotes() {
-   m_clientDelivNotesList->inicializa();
-}// end refreshClientDelivNotes
+    m_clientDelivNotesList->inicializa();
+}
+void company::refreshAlbaranesCliente() {
+    m_clientDelivNotesList->inicializa();
+}
 
-
+void company::refreshAlbaranesProveedor() {
+    m_albaranesproveedor->inicializa();
+}
 
 void company::newPedidoCliente() {
-   PedidoClienteView *bud = new PedidoClienteView(this , m_pWorkspace,theApp->translate("Edicion de Pedidos de Cliente", "company"));
-   bud->show();
+    PedidoClienteView *bud = new PedidoClienteView(this , m_pWorkspace,theApp->translate("Edicion de Pedidos de Cliente", "company"));
+    bud->show();
 }// end bud
 
 void company::refreshPedidosCliente() {
-   m_pedidosclienteList->inicializa();
+    m_pedidosclienteList->inicializa();
 }// end refreshPedidosCliente
 
 
 /** Presenta la ventana de formas de pago y espera la ejecución de la misma */
 void company::s_FPago() {
-   fpago *f = new fpago(this,NULL,theApp->translate("Formas de Pago", "company"));
-   f->exec();
-   delete f;
+    fpago *f = new fpago(this,NULL,theApp->translate("Formas de Pago", "company"));
+    f->exec();
+    delete f;
 }// end newOrder
 
 
 void company::s_Familias() {
-	familiasview *fam = new familiasview(this, 0,0);
-	fam->exec();
-	delete fam;
+    familiasview *fam = new familiasview(this, 0,0);
+    fam->exec();
+    delete fam;
 }// end s_Familias
 

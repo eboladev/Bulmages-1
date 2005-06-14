@@ -92,7 +92,7 @@ void LinAlbaranCliente::guardaLinAlbaranCliente() {
         SQLQuery += " ,pvplalbaran = "+mdb_pvplalbaran+" ";
         SQLQuery += " ,descontlalbaran = "+mdb_descontlalbaran+" ";
         SQLQuery += " ,idarticulo = "+mdb_idarticulo+" ";
-        SQLQuery += " WHERE idalbaran = "+mdb_idalbaran;
+        SQLQuery += " WHERE numlalbaran = "+mdb_numlalbaran;
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

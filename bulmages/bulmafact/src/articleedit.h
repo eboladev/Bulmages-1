@@ -34,6 +34,7 @@ private:
    QString idArticle;
 	cursor2 *m_cursorcombo;
    QString m_idFamilia;
+   QString m_archivoimagen;
 	
 public:
     articleedit(company *emp, QWidget *parent = 0, const char *name = 0);
@@ -52,6 +53,7 @@ public slots:
    virtual void s_searchTipo();
    virtual void s_findArticulo();
    virtual void s_grabarClicked();
+   virtual void s_cambiarimagen();
 };
 
 #endif

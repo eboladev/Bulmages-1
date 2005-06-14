@@ -12,7 +12,8 @@
 #ifndef FACTURASLIST_H
 #define FACTURASLIST_H
 
-#include <facturaslistbase.h>
+#include "facturaslistbase.h"
+#include <qframe.h>
 
 /**
 @author Tomeu Borras
@@ -35,9 +36,18 @@ public:
     void modoseleccion() {m_modo=1;};
     void modoedicion() {m_modo=0;};
     QString idfactura() {return m_idfactura;};   
+    void hideBusqueda() {m_busqueda->hide();};
+    void showBusqueda() {m_busqueda->show();};    
 public slots:
 
 	virtual void doubleclicked(int, int , int , const QPoint &) ;
+    virtual void s_mostrarBusqueda() {
+    	fprintf(stderr,"s_mostrarBusqueda\n");
+    	if (m_busqueda->isVisible())
+		hideBusqueda();
+	else
+		 showBusqueda();
+	};	
 };
 
 #endif

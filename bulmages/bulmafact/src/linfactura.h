@@ -44,16 +44,16 @@ public:
     void vaciaLinFactura();
 
 
-    inline QString idlFactura() {return mdb_idlfactura;};
-    inline QString desclFactura() {return mdb_desclfactura;};
-    inline QString cantlFactura() {return mdb_cantlfactura;};
-    inline QString pvplFactura()  {return mdb_pvplfactura;};
-    inline QString descuentolFactura() {return mdb_descuentolfactura;};
-    inline QString idFactura() {return mdb_idfactura;};
+    inline QString idlfactura() {return mdb_idlfactura;};
+    inline QString desclfactura() {return mdb_desclfactura;};
+    inline QString cantlfactura() {return mdb_cantlfactura;};
+    inline QString pvplfactura()  {return mdb_pvplfactura;};
+    inline QString descuentolfactura() {return mdb_descuentolfactura;};
+    inline QString idfactura() {return mdb_idfactura;};
     inline QString idarticulo() {return mdb_idarticulo;};
     inline QString codigocompletoarticulo() {return mdb_codigocompletoarticulo;};
     inline QString nomarticulo() {return mdb_nomarticulo;};
-    inline QString ivalFactura() {return mdb_ivalfactura;};
+    inline QString ivalfactura() {return mdb_ivalfactura;};
 
     
     inline void setidlFactura(QString val) {mdb_idlfactura=val;};

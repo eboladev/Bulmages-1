@@ -45,6 +45,7 @@ void	pintaNumFactura(QString id) {m_numfactura->setText(id);};
 void    pintacodigoserie_factura(QString id) {m_codigoserie_factura->setText(id);};
 
 void    pintafechafactura(QString id) {m_fechafactura->setText(id);};
+void    pintadescfactura(QString id) {m_descfactura->setText(id);};
 
 void	pintaComentFactura(QString id) {m_comentfactura->setText(id);};
 void    pintareffactura(QString id) {m_reffactura->setText(id);};
@@ -70,15 +71,14 @@ public slots:
     
     virtual void s_clientevalueChanged(QString val) {setidcliente(val);};
     virtual void s_fechafacturavalueChanged(QString val) {setfechafactura(val);};
+    virtual void s_descfacturatextChanged(const QString &val) {setdescfactura(val);};
     
-
-
     virtual void s_forma_pagovalueChanged(QString val) {setidforma_pago(val);};
     
     virtual void s_saveFactura() {guardaFactura();};
     virtual void cargaFactura(QString id) {Factura::cargaFactura(id);setCaption("Factura   "+mdb_reffactura);companyact->meteWindow(caption(),this);};     
     virtual void s_deleteFactura() {borraFactura();};
-    virtual void s_printFactura(){};
+    virtual void s_printFactura(){imprimirFactura();};
     
      /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {  

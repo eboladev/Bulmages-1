@@ -92,18 +92,18 @@ void ListLinFacturaView::pintaListLinFactura() {
     LinFactura *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        setText(i, COL_IDLFACTURA, linea->idlFactura());
+        setText(i, COL_IDLFACTURA, linea->idlfactura());
         setText(i, COL_IDARTICULO, linea->idarticulo());
         setText(i, COL_CODARTICULO, linea->codigocompletoarticulo());
         setText(i, COL_NOMARTICULO, linea->nomarticulo());
-        setText(i, COL_DESCLFACTURA, linea->desclFactura());
-        setText(i, COL_CANTLFACTURA, linea->cantlFactura());
-        setText(i, COL_DESCUENTOLFACTURA, linea->descuentolFactura());
-        setText(i, COL_IDFACTURA, linea->idFactura());
+        setText(i, COL_DESCLFACTURA, linea->desclfactura());
+        setText(i, COL_CANTLFACTURA, linea->cantlfactura());
+        setText(i, COL_DESCUENTOLFACTURA, linea->descuentolfactura());
+        setText(i, COL_IDFACTURA, linea->idfactura());
         setText(i, COL_REMOVE, "XX");
-        setText(i, COL_TASATIPO_IVA, linea->ivalFactura()+"%");
-        setText(i, COL_TIPO_IVA, linea->idlFactura());
-        setText(i, COL_PVPLFACTURA, linea->pvplFactura());
+        setText(i, COL_TASATIPO_IVA, linea->ivalfactura()+"%");
+        setText(i, COL_TIPO_IVA, linea->idlfactura());
+        setText(i, COL_PVPLFACTURA, linea->pvplfactura());
         i++;
     }// end for
     fprintf(stderr,"FIN de pintaListLinFactura\n");
@@ -131,66 +131,63 @@ void ListLinFacturaView::borraLinFacturaact() {
 
 
 void ListLinFacturaView::pintalinListLinFactura(int pos) {
-fprintf(stderr,"pintalinListLinFactura(%d)\n",pos);
+    fprintf(stderr,"pintalinListLinFactura(%d)\n",pos);
     LinFactura *linea;
     linea = m_lista.at(pos);
-    setText(pos, COL_IDLFACTURA, linea->idlFactura());
+    setText(pos, COL_IDLFACTURA, linea->idlfactura());
     setText(pos, COL_IDARTICULO, linea->idarticulo());
     setText(pos, COL_CODARTICULO, linea->codigocompletoarticulo());
     setText(pos, COL_NOMARTICULO, linea->nomarticulo());
-    setText(pos, COL_DESCLFACTURA, linea->desclFactura());
-    setText(pos, COL_CANTLFACTURA, linea->cantlFactura());
-    setText(pos, COL_DESCUENTOLFACTURA, linea->descuentolFactura());
-    setText(pos, COL_IDFACTURA, linea->idFactura());
+    setText(pos, COL_DESCLFACTURA, linea->desclfactura());
+    setText(pos, COL_CANTLFACTURA, linea->cantlfactura());
+    setText(pos, COL_DESCUENTOLFACTURA, linea->descuentolfactura());
+    setText(pos, COL_IDFACTURA, linea->idfactura());
     setText(pos, COL_REMOVE, "XX");
-    setText(pos, COL_TASATIPO_IVA, linea->ivalFactura()+"%");
-    setText(pos, COL_TIPO_IVA, linea->idlFactura());
-    setText(pos, COL_PVPLFACTURA, linea->pvplFactura());
+    setText(pos, COL_TASATIPO_IVA, linea->ivalfactura()+"%");
+    setText(pos, COL_TIPO_IVA, linea->idlfactura());
+    setText(pos, COL_PVPLFACTURA, linea->pvplfactura());
 
 }
 
 
 bool ListLinFacturaView::eventFilter( QObject *obj, QEvent *ev ) {
-	fprintf(stderr,"eventFilter()\n");
+    fprintf(stderr,"eventFilter()\n");
     QString idArticle;
-//    LinFactura *linea=lineaact();
-    LinFactura *linea;//=m_lista.at(currentRow());
-    
-        if ( ev->type() == QEvent::KeyRelease ) {
-//        if ( ev->type() == QEvent::KeyPress ) {
-            QKeyEvent *k = (QKeyEvent *)ev;
-            int col=currentColumn();
-            int row=currentRow();
-            switch (k->key()) {
-            case Qt::Key_Plus:
+    LinFactura *linea;
+    if ( ev->type() == QEvent::KeyRelease ) {
+        QKeyEvent *k = (QKeyEvent *)ev;
+        int col=currentColumn();
+        int row=currentRow();
+        switch (k->key()) {
+        case Qt::Key_Plus:
+            break;
+        case Qt::Key_Asterisk:
+            linea = lineaact();
+            idArticle = searchArticle();
+            linea->setidarticulo(idArticle);
+            pintalinListLinFactura(currentRow());
+            return TRUE;
+            break;
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
+            switch (col) {
+            case COL_CODARTICULO:
+                setCurrentCell(row, COL_DESCLFACTURA);
                 break;
-            case Qt::Key_Asterisk:
-	    	linea = lineaact();
-                idArticle = searchArticle();
-                linea->setidarticulo(idArticle);
-                pintalinListLinFactura(currentRow());
-		return TRUE;
+            case COL_DESCLFACTURA:
+                setCurrentCell(row, COL_CANTLFACTURA);
                 break;
-            case Qt::Key_Return:
-            case Qt::Key_Enter:
-                // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
-                switch (col) {
-                case COL_CODARTICULO:
-                    setCurrentCell(row, COL_DESCLFACTURA);
-                    break;
-                case COL_DESCLFACTURA:
-                    setCurrentCell(row, COL_CANTLFACTURA);
-                    break;
-                case COL_CANTLFACTURA:
-                    setCurrentCell(row, COL_PVPLFACTURA);
-                    break;
-                case COL_PVPLFACTURA:
-                    setCurrentCell(row+1, COL_CODARTICULO);
-                    break;
-                }// end switch
-                return TRUE;
+            case COL_CANTLFACTURA:
+                setCurrentCell(row, COL_PVPLFACTURA);
+                break;
+            case COL_PVPLFACTURA:
+                setCurrentCell(row+1, COL_CODARTICULO);
                 break;
             }// end switch
+            return TRUE;
+            break;
+        }// end switch
     }// end if
     return QTable::eventFilter( obj, ev );
 } //end eventFilter
@@ -248,22 +245,21 @@ LinFactura *ListLinFacturaView::lineaat(int row) {
     LinFactura *linea;
     if (row >=0) {
         while (m_lista.at(row) == 0 ) {
-	    fprintf(stderr,"Creamos la linea\n");
+            fprintf(stderr,"Creamos la linea\n");
             linea=new LinFactura(companyact);
             linea->setidfactura(mdb_idfactura);
-            m_lista.append(linea);  
-        }// end while	
-	      return(m_lista.at(row));
+            m_lista.append(linea);
+        }// end while
+        return(m_lista.at(row));
     } else {
-    	fprintf(stderr,"Linea inexistente\n");
+        fprintf(stderr,"Linea inexistente\n");
         return NULL;
     }// end if
-
 }// end lineaat
 
 
 void ListLinFacturaView::manageArticle(int row) {
-	fprintf(stderr,"manageArticle(%d)\n",row);
+    fprintf(stderr,"manageArticle(%d)\n",row);
     LinFactura *linea= lineaat(row);
     QString articleCode = text(row, COL_CODARTICULO);
     linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));

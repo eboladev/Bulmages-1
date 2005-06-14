@@ -34,6 +34,7 @@ private:
             // ==1 es modo selector.
    QString m_idprovider;
    QString m_cifprovider;
+   QString m_nomprovider;
    
 public:
     providerslist(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
@@ -43,6 +44,7 @@ public:
     void modoedicion() {m_modo=0;};
     QString idprovider() {return m_idprovider;};
     QString cifprovider() {return m_cifprovider;};
+    QString nomprovider() {return m_nomprovider;};
     
 public slots:
     virtual void doubleclicked(int, int, int, const QPoint &);

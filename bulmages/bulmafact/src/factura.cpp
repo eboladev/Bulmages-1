@@ -11,7 +11,7 @@
 //
 #include "factura.h"
 #include "company.h"
-
+#include <qfile.h>
 
 Factura::Factura(company *comp) {
     companyact=comp;
@@ -44,6 +44,7 @@ void Factura::vaciaFactura() {
     mdb_procesadafactura="FALSE";
     mdb_codigoserie_factura="";
     mdb_idforma_pago="";
+    mdb_descfactura="";
 }// end vaciaFactura
 
 void Factura::pintaFactura() {
@@ -57,6 +58,7 @@ void Factura::pintaFactura() {
     pintaprocesadafactura(mdb_procesadafactura);
     pintacodigoserie_factura(mdb_codigoserie_factura);
     pintaidforma_pago(mdb_idforma_pago);
+    pintadescfactura(mdb_descfactura);
     // Pinta el subformulario de detalle del Factura.
     listalineas->pintaListLinFactura();
 
@@ -85,6 +87,7 @@ void Factura::cargaFactura(QString idbudget) {
             mdb_procesadafactura = "FALSE";
         mdb_idusuari = cur->valor("idusuari");
         mdb_idforma_pago = cur->valor("idforma_pago");
+	mdb_descfactura  = cur->valor("descfactura");
     }// end if
     delete cur;
     listalineas->cargaListLinFactura(idbudget);
@@ -107,7 +110,7 @@ void Factura::guardaFactura() {
         mdb_idforma_pago = "NULL";
     if (mdb_idfactura == "") {
         /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO factura (codigoserie_factura, procesadafactura, reffactura, numfactura, ffactura, comentfactura, idusuari, idcliente, idalmacen, idforma_pago) VALUES ('"+mdb_codigoserie_factura+"',"+mdb_procesadafactura+",'"+mdb_reffactura+"',"+mdb_numfactura+",'"+mdb_ffactura+"','"+mdb_comentfactura+"',"+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+","+mdb_idforma_pago+")";
+        QString SQLQuery = "INSERT INTO factura (descfactura, codigoserie_factura, procesadafactura, reffactura, numfactura, ffactura, comentfactura, idusuari, idcliente, idalmacen, idforma_pago) VALUES ('"+mdb_descfactura+"','"+mdb_codigoserie_factura+"',"+mdb_procesadafactura+",'"+mdb_reffactura+"',"+mdb_numfactura+",'"+mdb_ffactura+"','"+mdb_comentfactura+"',"+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+","+mdb_idforma_pago+")";
 
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idFactura) AS m FROM Factura");
@@ -128,6 +131,7 @@ void Factura::guardaFactura() {
         SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
         SQLQuery += " ,procesadafactura="+mdb_procesadafactura;
 	SQLQuery += " ,codigoserie_factura='"+mdb_codigoserie_factura+"'";
+	SQLQuery += " ,descfactura='"+mdb_descfactura+"'";
         SQLQuery += " WHERE idFactura="+mdb_idfactura;
         companyact->begin();
         companyact->ejecuta(SQLQuery);
@@ -138,6 +142,90 @@ void Factura::guardaFactura() {
 }// end guardaFactura
 
 
+void Factura::imprimirFactura() {
+    /// Copiamos el archivo
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"factura.rml";
+    archivo = "cp "+archivo+" /tmp/factura.rml";
+    system (archivo.ascii());
+    
+    /// Copiamos el logo
+    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    archivo = "cp "+archivo+" /tmp/logo.jpg";
+    system (archivo.ascii());
+    
+    QFile file;
+    file.setName( "/tmp/factura.rml" );
+    file.open( IO_ReadOnly );
+    QTextStream stream(&file);
+    QString buff = stream.read();
+    file.close();
+    QString fitxersortidatxt;
+    // Lï¿½ea de totales del presupuesto
+
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if(!cur->eof()) {
+        buff.replace("[dircliente]",cur->valor("dircliente"));
+        buff.replace("[poblcliente]",cur->valor("poblcliente"));
+        buff.replace("[telcliente]",cur->valor("telcliente"));
+        buff.replace("[nomcliente]",cur->valor("nomcliente"));
+        buff.replace("[cifcliente]",cur->valor("cifcliente"));
+    }// end if
+    buff.replace("[numfactura]",mdb_numfactura);
+    buff.replace("[ffactura]",mdb_ffactura);
+    buff.replace("[comentfactura]",mdb_comentfactura);
+    buff.replace("[descfactura]",mdb_descfactura);
+    buff.replace("[reffactura]",mdb_reffactura);
+    buff.replace("[codigoserie_factura]",mdb_codigoserie_factura);
+    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td>Concepto</td>";
+    fitxersortidatxt += "	<td>Cantidad</td>";
+    fitxersortidatxt += "	<td>Precio Und.</td>";
+    fitxersortidatxt += "	<td>Total</td>";
+    fitxersortidatxt += "</tr>";
+
+    QString l;
+    LinFactura *linea;
+    uint i = 0;
+    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+        fitxersortidatxt += "<tr>";
+        fitxersortidatxt += "	<td>"+linea->desclfactura()+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlfactura().toFloat())+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplfactura().toFloat())+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlfactura().toFloat() * linea->pvplfactura().toFloat())+"</td>";
+        fitxersortidatxt += "</tr>";
+        i++;
+    }// end for
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td>Base</td>";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>";
+    fitxersortidatxt += "</tr>";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td>Iva</td>";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>";
+    fitxersortidatxt += "</tr>";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td></td>";
+    fitxersortidatxt += "	<td>Total</td>";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>";
+    fitxersortidatxt += "</tr>";
+    fitxersortidatxt += "</blockTable>";
+
+    buff.replace("[story]",fitxersortidatxt);
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << buff;
+        file.close();
+    }// end if
+    system("trml2pdf.py /tmp/factura.rml > /tmp/factura.pdf");
+    system("kpdf /tmp/factura.pdf");
+} //end imprimirFactura
 
 
 
