@@ -33,6 +33,8 @@ public:
     void setModoConsulta() {m_modoConsulta = TRUE;};
     void setModoEdicion() {m_modoConsulta = FALSE;};
     QString codigoCompletoFamilia();
+    QString idFamilia();
+    QString nombreFamilia();
 public slots:
 	virtual void pintar();
 	virtual void s_doubleClicked(QListViewItem *);

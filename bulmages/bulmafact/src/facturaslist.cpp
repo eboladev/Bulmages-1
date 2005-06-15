@@ -14,7 +14,8 @@
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
-#include "busquedaproveedor.h"
+#include "busquedacliente.h"
+#include "busquedaarticulo.h"
 
 #include "configuracion.h"
 #include "facturaview.h"
@@ -72,17 +73,27 @@ CREATE TABLE lfactura (
 );
 */
 
-
+FacturasList::FacturasList(QWidget *parent, const char *name, int flag)
+: FacturasListBase(parent, name, flag) {
+    companyact = NULL;
+    m_modo=0;
+    m_idfactura="";
+    meteWindow(caption(),this);
+    hideBusqueda();
+    hideConfiguracion();
+}// end providerslist
 
 FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
 : FacturasListBase(parent, name) {
     companyact = comp;
-    m_proveedor->setcompany(companyact);
+    m_cliente->setcompany(companyact);
+    m_articulo->setcompany(companyact);
     inicializa();
     m_modo=0;
     m_idfactura="";
-    companyact->meteWindow(caption(),this);
+    meteWindow(caption(),this);
     hideBusqueda();
+    hideConfiguracion();
 }
 
 
@@ -133,7 +144,7 @@ void FacturasList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");
     m_list->setReadOnly(TRUE);
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM factura, cliente, almacen where factura.idcliente=cliente.idcliente AND factura.idalmacen=almacen.idalmacen");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM factura LEFT JOIN cliente ON factura.idcliente=cliente.idcliente LEFT JOIN  almacen ON  factura.idalmacen=almacen.idalmacen WHERE 1=1  "+generaFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {
@@ -154,6 +165,29 @@ void FacturasList::inicializa() {
     delete cur;
 }// end inicializa
 
+
+QString FacturasList::generaFiltro() {
+    /// Tratamiento de los filtros.
+    fprintf(stderr,"Tratamos el filtro \n");
+    QString filtro="";
+    if (m_filtro->text() != "") {
+        filtro = " AND ( descfactura LIKE '%"+m_filtro->text()+"%' ";
+        filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
+    } else {
+        filtro = "";
+    }// end if
+    if (m_cliente->idcliente() != "") {
+        filtro += " AND factura.idcliente="+m_cliente->idcliente();
+    }// end if
+    if (!m_procesada->isChecked() ) {
+        filtro += " AND NOT procesadafactura";
+    }// end if
+    if (m_articulo->idarticulo() != "") {
+        filtro += " AND idfactura IN (SELECT DISTINCT idfactura FROM lfactura WHERE idarticulo='"+m_articulo->idarticulo()+"')";
+    }// end if
+    filtro += " ORDER BY numfactura";
+    return (filtro);
+}// end generaFiltro
 
 void FacturasList::doubleclicked(int a, int , int , const QPoint &) {
    m_idfactura = m_list->text(a,COL_IDFACTURA);

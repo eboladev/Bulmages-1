@@ -88,6 +88,16 @@ QString familiasview::codigoCompletoFamilia() {
     return it->text(COL_CODCOMPLETOFAMILIA);
 };
 
+QString familiasview::idFamilia() {
+    QListViewItem *it = m_listFamilias->currentItem();
+    return it->text(COL_IDFAMILIA);
+};
+
+
+QString familiasview::nombreFamilia() {
+    QListViewItem *it = m_listFamilias->currentItem();
+    return it->text(COL_NOMFAMILIA);
+};
 
 /**
   * Se ha seleccionado un item en la lista

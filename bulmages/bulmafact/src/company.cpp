@@ -42,6 +42,7 @@
 #include "pedidosclientelist.h"
 #include "pedidoclienteview.h"
 #include "albaranesproveedor.h"
+#include "cobroslist.h"
 
 
 
@@ -75,7 +76,8 @@ void company::createMainWindows() {
     m_articleslist = new articleslist(this, m_pWorkspace,theApp->translate("Artículos","company"));
     m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Proveedores","company"));
     m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Clientes","company"));
-
+    m_cobrosList = new CobrosList(this, m_pWorkspace,theApp->translate("Cobros","company"));
+    
     m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos a Clientes","company"));
     m_pedidosclienteList = new PedidosClienteList(this, m_pWorkspace,theApp->translate("Pedidos de Clientes","company"));
     m_clientDelivNotesList = new ClientDelivNotesList(this, m_pWorkspace,theApp->translate("Albaranes de Clientes","company"));

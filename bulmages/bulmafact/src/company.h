@@ -43,6 +43,7 @@ class linorderslist;
 class FacturasList;
 class PedidosClienteList;
 class AlbaranesProveedor;
+class CobrosList;
 
 
 class company : public postgresiface2 {
@@ -60,6 +61,7 @@ private:
    PedidosClienteList *m_pedidosclienteList;
    listventanas *m_listventanas;
    AlbaranesProveedor *m_albaranesproveedor;
+   CobrosList *m_cobrosList;
 public:
    QWidget *m_pWorkspace;
 public:

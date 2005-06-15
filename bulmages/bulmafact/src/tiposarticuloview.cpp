@@ -60,9 +60,19 @@ void tiposarticuloview::pintar() {
 }// end pintar
 
 
-QString tiposarticuloview::codTipo() {
+QString tiposarticuloview::codtipo_articulo() {
     QListViewItem *it = m_listTipos->currentItem();
     return it->text(COL_CODTIPOARTICULO);
+};
+
+QString tiposarticuloview::idtipo_articulo() {
+    QListViewItem *it = m_listTipos->currentItem();
+    return it->text(COL_IDTIPOARTICULO);
+};
+
+QString tiposarticuloview::desctipo_articulo() {
+    QListViewItem *it = m_listTipos->currentItem();
+    return it->text(COL_DESCTIPOARTICULO);
 };
 
 
@@ -162,7 +172,7 @@ void tiposarticuloview::s_newTipo() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
 
-    QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('NUEVo TIPO de ARTICULO','Descripcion del tipo')";
+    QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('XXXXXX','Descripcion del tipo')";
     companyact->begin();
     companyact->ejecuta(query);
     cursor2 *cur = companyact->cargacursor("SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo");

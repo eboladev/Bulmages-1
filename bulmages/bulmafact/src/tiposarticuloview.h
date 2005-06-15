@@ -32,7 +32,9 @@ public:
     void mostrarplantilla();
     void setModoConsulta() {m_modoConsulta = TRUE;};
     void setModoEdicion() {m_modoConsulta = FALSE;};
-    QString codTipo();
+    QString codtipo_articulo();
+    QString idtipo_articulo();
+    QString desctipo_articulo();
 public slots:
         virtual void pintar();
         virtual void s_doubleClicked(QListViewItem *);

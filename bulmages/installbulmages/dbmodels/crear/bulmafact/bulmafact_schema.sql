@@ -226,10 +226,13 @@ CREATE TABLE articulo (
     nomarticulo character varying(50),
     abrevarticulo character varying(30),
     obserarticulo character varying(2000),
+    presentablearticulo boolean NOT NULL DEFAULT TRUE,
+    controlstockarticulo boolean NOT NULL DEFAULT TRUE,
     idtipo_articulo numeric(2, 0) REFERENCES tipo_articulo(idtipo_articulo),
     idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
     codigocompletoarticulo character varying(100) UNIQUE,
     idfamilia integer REFERENCES familia(idfamilia) NOT NULL,
+    stockarticulo numeric(5,2) DEFAULT 0,    
     inactivoarticulo character(1),
     -- ATENCION, este campo no da el pvp real del artículo, solo es una de las multiples formas de acceder al precio del articulo.
     -- Para obtener el precio de un artículo se debe usar la funcion pvparticulo.
@@ -299,7 +302,7 @@ CREATE TABLE proveedor (
    emailproveedor character varying(100),
    urlproveedor character varying(100),
    clavewebproveedor character varying(100),
-	inactivoproveedor character(1)
+   inactivoproveedor character(1)
 );
 
 
@@ -319,7 +322,7 @@ CREATE TABLE division (
    faxdivision character varying(20),
    maildivision character varying(100),
    idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
-	inactivodivision character(1)
+   inactivodivision character(1)
 );
 
 
@@ -359,6 +362,26 @@ CREATE TABLE cliente (
    inactivocliente character(1)
 );
 
+CREATE TABLE cobro (
+   idcobro serial PRIMARY KEY,
+   idcliente integer NOT NULL REFERENCES cliente(idcliente),
+   fechacobro date DEFAULT NOW(),
+   cantcobro numeric(5,2) DEFAULT 0,
+   refcobro character varying(12) NOT NULL,
+   previsioncobro boolean DEFAULT FALSE,
+   comentcobro character varying(500)
+);
+   
+
+CREATE TABLE pago (
+   idpago serial PRIMARY KEY,
+   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
+   fechapago date DEFAULT NOW(),
+   cantpago numeric(5,2) DEFAULT 0,
+   refpago character varying(12) NOT NULL,
+   previsionpago boolean DEFAULT FALSE,
+   comentpago character varying(500)
+);
 
 -- Any: Any en que s'efectua la comanda.
 -- Numero: Número de comanda (començant de 1 cada any).
@@ -616,6 +639,7 @@ CREATE TABLE factura (
    numfactura integer NOT NULL,
    reffactura character varying(15) NOT NULL,
    ffactura date,
+   descfactura character varying(500),   
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
    contactfactura character varying(90),
    telfactura character varying(20),
@@ -693,6 +717,110 @@ CREATE TABLE nofactura (
 );
 
 
+
+-- COMPROVACIONS D'INTEGRITAT>Genèriques:
+-- Tots els albarans d'una factura corresponen al mateix client.
+-- FACTURACIO>Albarans:
+-- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
+-- Numero
+-- Data
+-- Albarà a clients.
+CREATE TABLE albaranp (
+   idalbaranp serial PRIMARY KEY,
+   numalbaranp integer NOT NULL UNIQUE,
+   descalbaranp character varying(150),
+   refalbaranp character varying(12) NOT NULL,
+   fechaalbaranp date DEFAULT now(),
+   loginusuario character varying(15) REFERENCES usuario(loginusuario),
+   comentalbaranp character varying(3000),
+   procesadoalbaranp boolean DEFAULT FALSE,
+   idproveedor integer REFERENCES proveedor(idproveedor),
+   idforma_pago integer REFERENCES forma_pago(idforma_pago),
+--   idfactura integer REFERENCES factura(idfactura),
+--   idnofactura integer REFERENCES nofactura(idnofactura),
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+   UNIQUE (idalmacen, numalbaranp)
+);
+
+CREATE FUNCTION restriccionesalbaranp () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+        IF NEW.numalbaranp IS NULL THEN
+                SELECT INTO asd max(numalbaranp) AS m FROM albaranp;
+		IF FOUND THEN
+			NEW.numalbaranp := asd.m + 1;
+		ELSE
+			NEW.numalbaranp := 1;
+		END IF;
+        END IF;
+	IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.refalbaranp := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionesalbaranptrigger
+    BEFORE INSERT OR UPDATE ON albaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesalbaranp();
+
+
+-- Numero
+-- Descripcio
+-- Quantitat
+-- PVP: Preu de l'article en el moment de la compra o de ser presupostat.
+-- Descompte
+-- Línia d'albarà a clients.
+CREATE TABLE lalbaranp (
+   numlalbaranp serial PRIMARY KEY,
+   desclalbaranp character varying(100),
+   cantlalbaranp numeric(5,2),
+   ivalalbaranp numeric(5,2),
+   pvplalbaranp numeric(5,2),
+   descontlalbaranp numeric(5,2),
+   idalbaranp integer NOT NULL REFERENCES albaranp(idalbaranp),
+   idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
+);
+
+CREATE FUNCTION disminuyestockp () RETURNS "trigger"
+AS '
+DECLARE
+BEGIN
+	UPDATE articulo SET stockarticulo = stockarticulo - OLD.cantlalbaranp WHERE idarticulo= OLD.idarticulo;
+	RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER disminuyestockpt
+    AFTER DELETE OR UPDATE ON lalbaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE disminuyestockp();
+
+
+CREATE FUNCTION aumentastockp () RETURNS "trigger"
+AS '
+DECLARE
+BEGIN
+	UPDATE articulo SET stockarticulo = stockarticulo + NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER aumentastockpt
+    AFTER INSERT OR UPDATE ON lalbaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE aumentastockp(); 
+
+
 -- COMPROVACIONS D'INTEGRITAT>Genèriques:
 -- Tots els albarans d'una factura corresponen al mateix client.
 -- FACTURACIO>Albarans:
@@ -721,7 +849,6 @@ CREATE TABLE albaran (
 -- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCIÓN DE ERRORES.
 -- **********************************************************************
 -- **********************************************************************
-
 CREATE FUNCTION restriccionesalbaran () RETURNS "trigger"
 AS '
 DECLARE
@@ -811,8 +938,7 @@ CREATE TABLE dalbaran (
    numdalbaran serial PRIMARY KEY,
    conceptdalbaran character varying(500),
    propordalbaran float,
-
-   idalbaran integer REFERENCES albaran(idalbaran)
+   idalbaran integer NOT NULL REFERENCES albaran(idalbaran)
 );
 
 
@@ -825,15 +951,44 @@ CREATE TABLE dalbaran (
 CREATE TABLE lalbaran (
    numlalbaran serial PRIMARY KEY,
    desclalbaran character varying(100),
-   cantlalbaran float,
-   pvplalbaran float,
-   descontlalbaran float,
-
-   idalbaran integer REFERENCES albaran(idalbaran),
-   idarticulo integer REFERENCES articulo(idarticulo)
+   cantlalbaran numeric(5,2),
+   pvplalbaran numeric(5,2),
+   descontlalbaran numeric(5,2),
+   idalbaran integer NOT NULL REFERENCES albaran(idalbaran),
+   idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
 );
+CREATE FUNCTION disminuyestock () RETURNS "trigger"
+AS '
+DECLARE
+BEGIN
+	UPDATE articulo SET stockarticulo = stockarticulo + OLD.cantlalbaran WHERE idarticulo= OLD.idarticulo;
+	RETURN OLD;
+END;
+' LANGUAGE plpgsql;
 
 
+CREATE TRIGGER disminuyestockt
+    AFTER DELETE OR UPDATE ON lalbaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE disminuyestock();
+
+
+CREATE FUNCTION aumentastock () RETURNS "trigger"
+AS '
+DECLARE
+BEGIN
+	UPDATE articulo SET stockarticulo = stockarticulo - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER aumentastockt
+    AFTER INSERT OR UPDATE ON lalbaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE aumentastock();    
+    
+    
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 CREATE TABLE ticket (
@@ -849,7 +1004,6 @@ CREATE TABLE suministra (
    idsuministra serial PRIMARY KEY,
    refpro character varying(100),
    principalsuministra float,
-
    idproveedor integer REFERENCES proveedor(idproveedor),
    idarticulo integer REFERENCES articulo(idarticulo)
 );

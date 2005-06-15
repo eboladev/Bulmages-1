@@ -31,7 +31,11 @@ FORMS += bulmafactbase.ui \
 	 busquedaarticulobase.ui \
 	 busquedaproveedorbase.ui \
 	 albaranproveedorbase.ui \
-	 albaranesproveedorbase.ui
+	 albaranesproveedorbase.ui \
+	 busquedafamiliabase.ui \
+	 busquedatipoarticulobase.ui \
+	 cobrobase.ui \
+	 cobroslistbase.ui
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
@@ -91,7 +95,12 @@ HEADERS += bulmafact.h \
 	   linalbaranproveedor.h \
 	   listlinalbaranproveedor.h \
 	   listlinalbaranproveedorview.h \
-	   albaranesproveedor.h
+	   albaranesproveedor.h \
+	   busquedafamilia.h \
+	   busquedatipoarticulo.h \
+	   cobro.h \
+	   cobroview.h \
+	   cobroslist.h
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -147,7 +156,12 @@ SOURCES += bulmafact.cpp \
 	   linalbaranproveedor.cpp \
 	   listlinalbaranproveedor.cpp \
 	   listlinalbaranproveedorview.cpp \
-	   albaranesproveedor.cpp
+	   albaranesproveedor.cpp \
+	   busquedafamilia.cpp \
+	   busquedatipoarticulo.cpp \
+	   cobro.cpp \
+	   cobroview.cpp \
+	   cobroslist.cpp
 TEMPLATE = app
 LANGUAGE = C++
 CONFIG += release \

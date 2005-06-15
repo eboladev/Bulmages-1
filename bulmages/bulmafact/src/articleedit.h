@@ -33,7 +33,6 @@ private:
    company *companyact;
    QString idArticle;
 	cursor2 *m_cursorcombo;
-   QString m_idFamilia;
    QString m_archivoimagen;
 	
 public:
@@ -48,9 +47,6 @@ public slots:
    virtual void accept();
    virtual void boton_nuevo();
    virtual void boton_borrar();
-   virtual void s_familiaLostFocus();
-   virtual void s_searchFamily();
-   virtual void s_searchTipo();
    virtual void s_findArticulo();
    virtual void s_grabarClicked();
    virtual void s_cambiarimagen();

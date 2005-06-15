@@ -33,6 +33,9 @@
 #include <qpixmap.h>
 #include <qcheckbox.h>
 
+#include "busquedafamilia.h"
+#include "busquedatipoarticulo.h"
+
 #define COL_SUMINISTRA_IDSUMINISTRA 0
 #define COL_SUMINISTRA_IDPROVEEDOR 0
 #define COL_SUMINISTRA_NOMPROVEEDOR 1
@@ -44,6 +47,8 @@
 articleedit::articleedit(company *comp, QWidget *parent, const char *name)
         : articleeditbase(parent, name, Qt::WDestructiveClose) {
     companyact = comp;
+    m_familia->setcompany(comp);
+    m_tipoarticulo->setcompany(comp);
     idArticle = "0";
     m_archivoimagen="";
 
@@ -84,42 +89,6 @@ articleedit::~articleedit() {
 
 
 
-void articleedit::s_familiaLostFocus() {
-        QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='"+m_codigocompletofamilia->text()+"'";
-        cursor2 *cur= companyact->cargacursor(SQLQuery);
-        if (!cur->eof()) {
-	    m_idFamilia = cur->valor("idfamilia");
-	    fprintf(stderr,"idfamilia:%s\n", m_idFamilia.ascii());
-            m_nombrefamilia->setText(cur->valor("nombrefamilia"));	    
-	}// end if
-	delete cur;
-}// end s_familiaLostFocus
-
-
-void articleedit::s_searchFamily() {
-	familiasview *fam = new familiasview(companyact, 0,0);
-	fam->setModoConsulta();
-	if (fam->exec() == 1) {
-		m_codigocompletofamilia->setText(fam->codigoCompletoFamilia());
-	}// end if
-	delete fam;
-	s_familiaLostFocus();
-}// end s_searchFamily
-
-
-/**
-  * Se dispara este SLOT cuando se pulsa sobre el botón de buscar tipo de artículo
-  */
-void articleedit::s_searchTipo() {
-	tiposarticuloview *tip = new tiposarticuloview(companyact, 0,0);
-	tip->setModoConsulta();
-	if (tip->exec() == 1) {
-		m_codtipo_articulo->setText(tip->codTipo());
-	}// end if
-	delete tip;
-//	s_familiaLostFocus();
-}// end s_searchFamily
-
 
 /************************************************************************
 * Esta función carga un artículo de la base de datos y lo presenta.     *
@@ -135,13 +104,14 @@ void articleedit::chargeArticle(QString idArt) {
         cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
         if (!cur->eof()) {
             idArticle = idArt;
-	    m_idFamilia = cur->valor("idfamilia");
-            m_codigocompletofamilia->setText(cur->valor("codigocompletofamilia"));
+	    m_familia->setidfamilia(cur->valor("idfamilia"));
+	    m_tipoarticulo->setidtipo_articulo(cur->valor("idtipo_articulo"));
             m_codigoarticulo->setText(cur->valor("codarticulo"));
             m_nombrearticulo->setText(cur->valor("nomarticulo"));
             m_obserarticulo->setText(cur->valor("obserarticulo"));
 	    m_pvparticulo->setText(cur->valor("pvparticulo"));
             ivaType=cur->valor("idtipo_iva");
+	    m_codigocompletoarticulo->setText(cur->valor("codigocompletoarticulo"));
 	    
 	    // Pintamos el stockable y el presentable
 	    if (cur->valor("presentablearticulo") == "t") {
@@ -155,9 +125,6 @@ void articleedit::chargeArticle(QString idArt) {
 	    } else {
 	    	m_controlstockarticulo->setChecked(FALSE);
 	    }// end if	    
-	    
-	    
-            m_codigocompletoarticulo->setText(cur->valor("codigocompletoarticulo"));
 
             // Cargamos las relaciones artículo - proveedor.
             QString SQLQuery1 = "SELECT * FROM suministra, proveedor WHERE suministra.idproveedor=proveedor.idproveedor and idarticulo="+idArt;
@@ -264,32 +231,36 @@ void articleedit::s_findArticulo() {
 void articleedit::s_grabarClicked() {
 	QString presentablearticulo = m_presentablearticulo->isChecked() ? "TRUE" : "FALSE";	
 	QString controlstockarticulo = m_controlstockarticulo->isChecked() ? "TRUE" : "FALSE";	
+	QString idtipo_articulo = m_tipoarticulo->idtipo_articulo();
+	if (idtipo_articulo == "") idtipo_articulo="NULL";
 
     QString SQLQuery;
     if (idArticle != "0") {
         SQLQuery = "UPDATE articulo SET codarticulo='"+m_codigoarticulo->text()+"'";
         SQLQuery += " , nomarticulo='"+m_nombrearticulo->text()+"'"; 
-		  SQLQuery += " , idfamilia="+m_idFamilia;
+	SQLQuery += " , idfamilia="+m_familia->idfamilia();
         SQLQuery += " , obserarticulo='"+m_obserarticulo->text()+"'";
 	SQLQuery += " , pvparticulo="+m_pvparticulo->text()+" ";
         SQLQuery += " , idtipo_iva="+m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem());
 	SQLQuery += " , controlstockarticulo="+controlstockarticulo;
 	SQLQuery += " , presentablearticulo="+presentablearticulo;
+	SQLQuery += " , idtipo_articulo="+idtipo_articulo;
         SQLQuery += " WHERE idarticulo ="+idArticle;
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();	
     } else {
-        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia, pvparticulo, presentablearticulo, controlstockarticulo)";
+        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia, pvparticulo, presentablearticulo, controlstockarticulo, idtipo_articulo)";
         SQLQuery += " VALUES (";
         SQLQuery += " '"+m_codigoarticulo->text()+"' ";
         SQLQuery += " , '"+m_nombrearticulo->text()+"'";
         SQLQuery += " , '"+m_obserarticulo->text()+"'";
         SQLQuery += " , "+m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem());
-	SQLQuery += " , "+m_idFamilia;
+	SQLQuery += " , "+m_familia->idfamilia();
 	SQLQuery += " , "+m_pvparticulo->text()+" ";
 	SQLQuery += " , "+presentablearticulo;
 	SQLQuery += " , "+controlstockarticulo;
+	SQLQuery += " , "+idtipo_articulo;
         SQLQuery += ")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);

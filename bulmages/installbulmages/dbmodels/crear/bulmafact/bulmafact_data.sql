@@ -101,10 +101,6 @@ INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidoclien
 INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(4, '02/10/2004', 'Pedido de lencería', 2, 1);
 \echo "Hemos insertado los pedidos de cliente"
 
-INSERT INTO alb_pro (ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(1, '123', '01/12/2004', '30/11/2004', 'Albarán nº 123', 2);
-INSERT INTO alb_pro (ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(2, '2323', '15/11/2004', '10/11/2004', 'Albarán nº 2323', 1);
-INSERT INTO alb_pro (ncompraalb_pro, nalbalb_pro, fcrealb_pro, frecepalb_pro, comentalb_pro, idalmacen) VALUES(3, '34', '23/11/2004', '23/11/2004', 'Albarán nº 34', 3);
-
 
 
 INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, idforma_pago) VALUES (1, '30/11/2004', 'Primer Contacto', '971 32 32 78', '12/12/2004', 'Sin comentarios', 1, 1, 1,1);
@@ -140,3 +136,11 @@ INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, idcliente, idforma_
 INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, idcliente, idforma_pago, idalmacen, refalbaran) VALUES (4, '01/01/2005', NULL, 2, 4, 1,'R4');
 INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, idcliente, idforma_pago, idalmacen, refalbaran) VALUES (5, '02/01/2005', NULL, 3, 2, 1,'R5');
 INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, idcliente, idforma_pago, idalmacen, refalbaran) VALUES (6, '03/01/2005', NULL, 4, 1, 1,'R6');
+
+
+INSERT INTO albaranp (numalbaranp, fechaalbaranp, loginusuario, idproveedor, idforma_pago, idalmacen, refalbaranp) VALUES (1, '01/01/2005', NULL, 1, 1, 1,'RP1');
+INSERT INTO albaranp (numalbaranp, fechaalbaranp, loginusuario, idproveedor, idforma_pago, idalmacen, refalbaranp) VALUES (2, '02/01/2005', NULL, 1, 2, 1,'RP2');
+INSERT INTO albaranp (numalbaranp, fechaalbaranp, loginusuario, idproveedor, idforma_pago, idalmacen, refalbaranp) VALUES (3, '03/01/2005', NULL, 2, 3, 1,'RP3');
+INSERT INTO albaranp (numalbaranp, fechaalbaranp, loginusuario, idproveedor, idforma_pago, idalmacen, refalbaranp) VALUES (4, '01/01/2005', NULL, 2, 4, 1,'RP4');
+INSERT INTO albaranp (numalbaranp, fechaalbaranp, loginusuario, idproveedor, idforma_pago, idalmacen, refalbaranp) VALUES (5, '02/01/2005', NULL, 3, 2, 1,'RP5');
+INSERT INTO albaranp (numalbaranp, fechaalbaranp, loginusuario, idproveedor, idforma_pago, idalmacen, refalbaranp) VALUES (6, '03/01/2005', NULL, 4, 1, 1,'RP6');

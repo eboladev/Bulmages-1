@@ -63,6 +63,9 @@ CREATE TABLE articulo (
 #include "company.h"
 #include "articleedit.h"
 
+#include "busquedafamilia.h"
+#include "busquedatipoarticulo.h"
+
 
 #define COL_IDARTICULO 0
 #define COL_CODCOMPLETOARTICULO 1
@@ -187,6 +190,8 @@ void articleslist::s_configurar() {
 articleslist::articleslist(company *comp, QWidget *parent, const char *name, int flag)
 : articleslistbase(parent, name, flag) {
     companyact = comp;
+    m_tipoarticulo->setcompany(comp);
+    m_familia->setcompany(comp);
     inicializa();
     m_modo=0;
     comp->meteWindow("Articulos",this);
@@ -328,6 +333,25 @@ QString articleslist::formaQuery() {
         query += " AND presentablearticulo ";
     if(m_filtro->text() != "")
         query += " AND nomarticulo LIKE '%"+m_filtro->text()+"%' ";
+	
+    if(m_familia->idfamilia() != "" ) {
+    /*
+    	QString listfam=m_familia->idfamilia();
+	QString SQLQuery = "SELECT idfamilia, padre FROM familia WHERE idfamilia="+listfam;
+	cursor2 *cur= companyact->cargacursor(SQLQuery);
+	while (!cur->eof()) {
+		listfam += ","+cur->valor("idfamilia");
+		SQLQuery = "SELECT idfamilia, padre FROM familia WHERE idfamilia="+cur->valor("padre");
+		delete cur;
+		cur = companyact->cargacursor(SQLQuery);
+	}// end while
+	delete cur;
+	*/
+	query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '"+m_familia->codigocompletofamilia()+"%')";
+    }// end if
+    if (m_tipoarticulo->idtipo_articulo() != "") {
+    	query += " AND idtipo_articulo = "+m_tipoarticulo->idtipo_articulo();
+    }// end if
     query +=" ORDER BY codigocompletoarticulo";
     return (query);
 }// end formaQuery
