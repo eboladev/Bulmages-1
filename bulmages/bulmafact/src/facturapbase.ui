@@ -1,0 +1,824 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>FacturaProveedorBase</class>
+<author>Tomeu Borras</author>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>FacturaProveedorBase</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>622</width>
+            <height>495</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Factura de Proveedor</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout16</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2_2</cstring>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>32</width>
+                            <height>32</height>
+                        </size>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image0</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2_3</cstring>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>32</width>
+                            <height>32</height>
+                        </size>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>boton_facturar</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>32</width>
+                            <height>32</height>
+                        </size>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image2</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>boton_cobro</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>32</width>
+                            <height>32</height>
+                        </size>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image3</iconset>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>190</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>m_reffacturap</cstring>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout15</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_5</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Descripción</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>m_descfacturap</cstring>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout15</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_2_2_3</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>5</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="text">
+                        <string>Num. Factura</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>m_numfacturap</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_3</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Forma de Pago</string>
+                    </property>
+                </widget>
+                <widget class="BusquedaFormaPago">
+                    <property name="name">
+                        <cstring>m_forma_pago</cstring>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer3</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>170</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout16</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Fecha Creación</string>
+                    </property>
+                </widget>
+                <widget class="BusquedaFecha">
+                    <property name="name">
+                        <cstring>m_fechafacturap</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>5</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>5</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="text">
+                        <string>Proveedor</string>
+                    </property>
+                </widget>
+                <widget class="BusquedaProveedor">
+                    <property name="name">
+                        <cstring>m_proveedor</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>5</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer6</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>270</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>m_procesadafacturap</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Procesada</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QTabWidget">
+            <property name="name">
+                <cstring>discounts</cstring>
+            </property>
+            <property name="enabled">
+                <bool>true</bool>
+            </property>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Detalle</string>
+                </attribute>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="ListLinFacturaProveedorView">
+                        <property name="name">
+                            <cstring>subform2</cstring>
+                        </property>
+                    </widget>
+                </vbox>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Comentarios</string>
+                </attribute>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout14</cstring>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>textLabel1_2_2_2_2_2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Comentarios</string>
+                                </property>
+                            </widget>
+                            <widget class="QTextEdit">
+                                <property name="name">
+                                    <cstring>m_comentfacturap</cstring>
+                                </property>
+                            </widget>
+                        </vbox>
+                    </widget>
+                </vbox>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>TabPage</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Descuentos</string>
+                </attribute>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout45</cstring>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout17_2</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QToolButton">
+                                        <property name="name">
+                                            <cstring>m_newBudgetLine_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string></string>
+                                        </property>
+                                        <property name="iconSet">
+                                            <iconset>image4</iconset>
+                                        </property>
+                                    </widget>
+                                    <widget class="QToolButton">
+                                        <property name="name">
+                                            <cstring>m_removeBudgetLine_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string></string>
+                                        </property>
+                                        <property name="iconSet">
+                                            <iconset>image1</iconset>
+                                        </property>
+                                    </widget>
+                                    <spacer>
+                                        <property name="name">
+                                            <cstring>spacer4_2</cstring>
+                                        </property>
+                                        <property name="orientation">
+                                            <enum>Horizontal</enum>
+                                        </property>
+                                        <property name="sizeType">
+                                            <enum>Expanding</enum>
+                                        </property>
+                                        <property name="sizeHint">
+                                            <size>
+                                                <width>40</width>
+                                                <height>20</height>
+                                            </size>
+                                        </property>
+                                    </spacer>
+                                </hbox>
+                            </widget>
+                            <widget class="QTable">
+                                <property name="name">
+                                    <cstring>m_listDiscounts</cstring>
+                                </property>
+                                <property name="numRows">
+                                    <number>3</number>
+                                </property>
+                                <property name="numCols">
+                                    <number>3</number>
+                                </property>
+                            </widget>
+                        </vbox>
+                    </widget>
+                </vbox>
+            </widget>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout42</cstring>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout34</cstring>
+                    </property>
+                    <vbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout33</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLayoutWidget">
+                                    <property name="name">
+                                        <cstring>layout26</cstring>
+                                    </property>
+                                    <vbox>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <widget class="QLabel">
+                                            <property name="name">
+                                                <cstring>textLabel1_4</cstring>
+                                            </property>
+                                            <property name="sizePolicy">
+                                                <sizepolicy>
+                                                    <hsizetype>0</hsizetype>
+                                                    <vsizetype>5</vsizetype>
+                                                    <horstretch>0</horstretch>
+                                                    <verstretch>0</verstretch>
+                                                </sizepolicy>
+                                            </property>
+                                            <property name="text">
+                                                <string>Total bases Imponibles</string>
+                                            </property>
+                                        </widget>
+                                        <widget class="QLineEdit">
+                                            <property name="name">
+                                                <cstring>m_totalBases</cstring>
+                                            </property>
+                                            <property name="font">
+                                                <font>
+                                                    <bold>1</bold>
+                                                </font>
+                                            </property>
+                                        </widget>
+                                    </vbox>
+                                </widget>
+                                <widget class="QLayoutWidget">
+                                    <property name="name">
+                                        <cstring>layout28</cstring>
+                                    </property>
+                                    <vbox>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <widget class="QLabel">
+                                            <property name="name">
+                                                <cstring>textLabel1_4_2</cstring>
+                                            </property>
+                                            <property name="sizePolicy">
+                                                <sizepolicy>
+                                                    <hsizetype>0</hsizetype>
+                                                    <vsizetype>5</vsizetype>
+                                                    <horstretch>0</horstretch>
+                                                    <verstretch>0</verstretch>
+                                                </sizepolicy>
+                                            </property>
+                                            <property name="text">
+                                                <string>Total descuentos</string>
+                                            </property>
+                                        </widget>
+                                        <widget class="QLineEdit">
+                                            <property name="name">
+                                                <cstring>m_totalDiscounts</cstring>
+                                            </property>
+                                            <property name="font">
+                                                <font>
+                                                    <bold>1</bold>
+                                                </font>
+                                            </property>
+                                        </widget>
+                                    </vbox>
+                                </widget>
+                                <widget class="QLayoutWidget">
+                                    <property name="name">
+                                        <cstring>layout30</cstring>
+                                    </property>
+                                    <vbox>
+                                        <property name="name">
+                                            <cstring>unnamed</cstring>
+                                        </property>
+                                        <widget class="QLabel">
+                                            <property name="name">
+                                                <cstring>textLabel1_4_3</cstring>
+                                            </property>
+                                            <property name="sizePolicy">
+                                                <sizepolicy>
+                                                    <hsizetype>0</hsizetype>
+                                                    <vsizetype>5</vsizetype>
+                                                    <horstretch>0</horstretch>
+                                                    <verstretch>0</verstretch>
+                                                </sizepolicy>
+                                            </property>
+                                            <property name="text">
+                                                <string>Total impuestos</string>
+                                            </property>
+                                        </widget>
+                                        <widget class="QLineEdit">
+                                            <property name="name">
+                                                <cstring>m_totalTaxes</cstring>
+                                            </property>
+                                            <property name="font">
+                                                <font>
+                                                    <bold>1</bold>
+                                                </font>
+                                            </property>
+                                        </widget>
+                                    </vbox>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout32</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel1_4_4</cstring>
+                                    </property>
+                                    <property name="sizePolicy">
+                                        <sizepolicy>
+                                            <hsizetype>0</hsizetype>
+                                            <vsizetype>5</vsizetype>
+                                            <horstretch>0</horstretch>
+                                            <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                    </property>
+                                    <property name="text">
+                                        <string>Total Factura</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>m_totalfacturap</cstring>
+                                    </property>
+                                    <property name="enabled">
+                                        <bool>true</bool>
+                                    </property>
+                                    <property name="paletteBackgroundColor">
+                                        <color>
+                                            <red>255</red>
+                                            <green>255</green>
+                                            <blue>127</blue>
+                                        </color>
+                                    </property>
+                                    <property name="font">
+                                        <font>
+                                            <family>Arial</family>
+                                            <pointsize>28</pointsize>
+                                            <bold>1</bold>
+                                        </font>
+                                    </property>
+                                    <property name="text">
+                                        <string></string>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                    </vbox>
+                </widget>
+            </vbox>
+        </widget>
+    </vbox>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>BusquedaFormaPago</class>
+        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedaformapago.h</header>
+        <sizehint>
+            <width>20</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image5</pixmap>
+        <signal>valueChanged(QString)</signal>
+    </customwidget>
+    <customwidget>
+        <class>BusquedaFecha</class>
+        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedafecha.h</header>
+        <sizehint>
+            <width>20</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image5</pixmap>
+        <signal>valueChanged(QString)</signal>
+    </customwidget>
+    <customwidget>
+        <class>BusquedaProveedor</class>
+        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedaproveedor.h</header>
+        <sizehint>
+            <width>50</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image5</pixmap>
+        <signal>valueChanged(QString)</signal>
+    </customwidget>
+    <customwidget>
+        <class>ListLinFacturaProveedorView</class>
+        <header location="local">/home/tborras/bulmages/bulmafact/src/listlinfacturapview.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image5</pixmap>
+        <signal>valueChanged(int, int)</signal>
+    </customwidget>
+</customwidgets>
+<images>
+    <image name="image0">
+        <data format="PNG" length="1521">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000005b8494441545885cd9751685bd719c77f197e90210f2e64a0401fec87406d3a884d038959a1160d6cb60b89451f66d1874aeca1111b14270fc16e21d87de8ac6c645885146990e0eb416225d04a0964e806da59816c5621c57249c02adb88cb5a62d386fac00efcf7708e9c5cbb76491e961d101fe74ae77effffff7edfffd3dd238967b97ef24cb3ff3f0068db7aa174b5a6e4f17e828b21a9b604810d49d904455321c3103953029bc4d880099b62c214810cc6e4c991256bf260b3189b037b927533c5dada3aebdfac51ffacb8671b02499b9ff295054992feade8baebc2d25d3dddfac4858157c6f4783e49ecd952845a5d5d63fffee768dc5ba5e7c07e00dabbb3c4f7b5d31e8b116b83faf5a927d3f922e46c88f92641fe0f4956574b8f94781ccd6cf0c34c3b0e9e9024a54fcd3e950033c5aa2469f2ccac3a9f5744854811a62c34ffb946cf01a87fdedcbc1e8bb5937d37a0184f91fbb0f264ec810d9b60ea830a13eb298c4d46bf7c1c4dc123d59d2883dee149c7e442f5a91498ce972549e9b7a6158f47158800d07969e9ee7d49d2c2ed954777382795c32549d2e29dfb4f8ee03de9c4e982d26f4e2bbe6f646700331ee9c2ed27cfb1db3a71ba20491a7d63729b02911ac8da21eacbabf41f82f0d30600cde62a008d7b3e2ebb586f455f2bf5cf5cacf918de72e78b7321c664c8fc368f3113183bb4730d4cbf3fef20fbbe6dc93e7fcded673f5a74f192db1702e71b3345b79f3eef141c7fcfdde7c429c73cfd9b1949d2e0b171c5f7451588f840ee772871b4495f6f1795bfd4193ada47e97a9de42ffb08aed6481defa778b946e6f57ef21743b224c8d9909324983215ccc321ccc3221b3683b1de114d1ec862cc14e6eb756a7f5d666dadf2c33e3079c6f579f9c616e6de210b9e79ab1b36197be5c6de71e7d36f3bc6a36fb938f2e6b42469e0d5317574eca200efa2da6b4dfa0f7551fab84ef2b53ec24f1b245eeea172b3c1d040cfa622c5b9908c4d903715b27e469cb449266c003685b101399b226b8b7cf5af558c316c7cbdc6adbf7fc9c6773b2830eeabb5c57cdbfad6c7d6acf8878fad59d1f20fdf450b9f3825075f773e72e4e7e96d0a44008c9d92aafe50a13598fc7af0e07b49d2fdfb0f24492b2bce0f561a2e2ed69d6f2cd6dcf9aa2fe0eab5450d1e938e0c8fa9f7705ab1bd83bb0078db2930bb25b91ef8d8f2a0964735e493fb7dcd33f7c9e5951c181e9386a5de83a3ead81b5520e2031b3643e56683d47157e500e1cd263c0795eb0dd80f958febd005a5cb75e88660ae46dfe750fc5308cb90ff20a47fb987fc1f2b700f4a576b180b7d268b018c4decec03e95fbbaa2df8a9b8f9ac7fe419eb860b65ef13f357dc7e3670dd72e4d5311d7945ea7e61647705b01b94aed7c91898fa7d097e0af5bf35e100d46e35e9f91984371b70082ad7ebf4bfdc43e56a1d8e42e9728da1effa082e8624d7a0f86185d4c304c15c88b11bac9b0c1b3fa6c0e81bae5f27cf7a47f4555ef5be50fe489ea17744afd4ac9fa285f36e3f73cef943cb59bb0fa7a5c35267e7a062b1a8025100bf920a971634febe34e64d69c54fc7a53bbeca6f2f45e4afde58f4e05ce1ce5faa4a81347ba12a5d900ae7cbea3e9c56e74ba3eaec1c146d033b031839e6fab595bcf5ece75b4c2f2c4499e6bd239ef58cfd0c983ce3e2f869779fee97d2ea3e28c59f1fd85d81c1e171cd14cbd23b8f06c926d3d033bdd62ab405ff1816a4402a14ab52512ae4cb525e9a39372f9d75b1f3e0a8e22f8e281e1fd85d81815f8c4b7a945cbebf17bcb928540444f94a4ba1aa57485e21a7c8cc39a744fcc51175be2075ec1b506c0b80c82c480ca0c4d180e52f9a186b28cd4d11cc55483144602ba4ec10455b224392bc09c89222b7e9fd4526c83061f2c4c8626c9e299be5a4cd51fcf335b0060cac3f04a9b6390bb6fe2d875ed4b59e021bd0be374383223da480800d9ba249401729da5bfbb6802eebbec7ff0ebf37248951e2cbaf12c40003e83f61e4e5643b80fff17ae6ef86cf1cc07f01e6b443e79dbb4c740000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="1483">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000592494441545885ad9741681cd71dc67f63d6e52d98b02a0eec420c12d8d0957df0b449f01a277863b7b42bb74833dd1cec9c9cf66019f750f796e6d22885e2e456b517f9d022ab105b3634925a12ac4252afc1461b88d1a8d8a0051bbc90c02ef8a05d62c1d7c39b999d91761ddbe4c1f09f999d9dfffffbdef7beff1b24513c502419bdaa279d90ca47cbd211c97dd9957bc055716f51c3c3c3cae7f3caefcecbec3232c608880f49e4813ca0e00692507d0176133fa6bbb2f7efae805a0fa91caf503e5a4612dc076fdcd3fafaba247d6b5c0d5625490b4b0ba92226cd0c00dad800c01bf7ecfb1f09808dfbab4c1ad1ab50f60780ca898a9e69b46cc8e7f3921417813db191e8fd42df28bebfc3711c70c758b93c1d17c026341a0d9e7a0c41bbdd860cd46fd7b9f0a70b388e932aa27d6b317cb889f33d87696714fdad07da32b1be82325039fe8c0c84a3f883a23db9a514135ed5432dc119839149c50c670c067026b3b6925f1bcaf73a341a0d4646469e9e052097cbd99357b631e144efef4e820923c0b68a8c0ce5a3e5e762a07c7ccbff124cf4cbc319c38ea8926465ddcdeeb369201c85a102b59bb5de8d04135da7ab24f2285f5f064a874acfc58057f5a49654f96945e52365b9075d69af523e616450ed4a9ccf263d135e8447e9e552bcce9f756cb4ec9a5cfd7245923433fd67e97de9fcb9c9a888ded294b6332023dc83ee73258fc73761bc6fc3f5a52b92d25a0050ed0a712593660649e400f7a0fbdc0c6c2da2b56e9df2fad52b968104d39326f4015dba10f580a8277c27c9f5288c211380d4eaf98257f570bc710fb3d3d07ddc859dc06358fbdf9a169716d33ee03829bb1e381e77606716def4e14011ce9d85a102c1ed65f6bf7a8cd2a1920330b47b088381ad15a92586f70e6f479531b2ade32990573d2963f45ef4fc578319d8e19ff601f04ffb180cfe69bf6f2f68aeaf432664e2b7bfeb8ffc3d2cf26b5799daecf27b894eb3012f42f0b9ed05cef71de63f9ae7e23fa6a1c300065eeac3403497fd981884fce113347022c1408c1ce86c36e832c009f76c61e2cd53e19c87d749e45f37a0009d0701ec81e03ff369a6337eb80212c84b874aa825a2be3e70249948c441c8b5be3250038e37eec5ea8f56c3f27f9755bf557f62376cde0b288cee874d2003539bc4739e2d8cd0791090dd334ae75e8decbec3049fceb3ff27bfc41bf79c64bebe1ac8e5724f6660cb9cc74c5c9d4d23bf6b912b486820f41b00052b503e5226ff52de6e4824bc718fdcaedc60274c25c7d29ec116513d1917b111266f05d725492b4bb302e48d7b9cac9eb40548fd1930c6f44f1ac573e7d3735ebfd163e291a477df4921d7970b310371cf8934503951c1644d4a034bff5e521004560391b3753a90cdc26fcec25fff9298f3806c6194e0e632a3af1fb39aa89e84bd23f0c729da5f2c32e48e51fff8223ffac5af9e4e03644823de08e327d79facf6cf16d24c7c146ae256af1b46eb3fe5840603bba074d04d3be14ea0d3862c70a70e956309870b52ebbc73af06af8d117c326b7de205072e2fd1be3d0faff8d4c35db79f49fb4e0f79429d440823e42df5471ee9748bda5797662c1391166ab33d0606f582b19f8f5926c2cd42a3d1b0c8db4d1882cec3c0227f10226fd4612444beef87b4ef2c4311da5f2c32fab3b769d766e10f53343fbf04a553d4e73e889d1000d3d9d20d25f428fe62e92197e26ea687ab5b90df48abbdbe909a737d369b8a910f24bf457bbd60c2c77fdbc79fb01536eed4610882db35dbcd6e2e4361d476b591d0dbf71d26f8d7252842fde38be08e51bf361dcef907f05a93fadc14344e51fbfb946560c2c72dbaf8133ec56271fb2ac8edca416217fb5d1f0256fe39137f936ef381990fdfe1adf3efc6d77397e7f0aa1e6b6b6bb84537b5739abf36cf1b3f7e83e54f97f127fcd4ceaadbe992cbe698db7d1500af59b1ef7fff2cd97d87e1eb26bc58e0ff9baa244aa96eee1d0000000049454e44ae426082</data>
+    </image>
+    <image name="image2">
+        <data format="PNG" length="314">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000101494441545885ed97c11583200c86435f9724de3b05375dc201c035dcc21babd0838f4a8b2029d1f6b5e612c000f1f30f3e004e3b2d3094e86c6f1da7276dbe871527617bbb4b02b6b7d904aebea14605faa69f1e0a0100d005232adb774e451ba8311e2b2200e01c404bf65402c23750a2d3662120c4f26628a76cf266d0e049a09c205ca7c106cc604462ea3681526da4e2b708046f892f0bce584bab2315ff76151c45e0e21bb15abbc478cad6e3ababe0d400d5b36b60f6aab8cfae018f35f7d7ab21f0b01a0dccdff9c073c06fb6a6959008038196580571fcae04722498087cc1395042e07f3510c6fd9e06fc646a15b06980cbc89713ee9b5131814fd91d1449a386b44e3c7a0000000049454e44ae426082</data>
+    </image>
+    <image name="image3">
+        <data format="XPM.GZ" length="4687">789c9596d972ea461086effd1494fbee54aa0f0209a44ae5c2d8e07ddf9dcac520b11de305307849e5ddd39afe7b8c8f9d4a5262409f7a9d9e9e11dfbf55ae8ef62bdfbeafcc9edcd328afe44337ad7c2be67777afbffff1db9f2babf5a8229fa851abd4567f5959a5834a5ea12895abea793b705a32d74bae55035f8073655a572e354a767dcf591437eb9e7be05499cf954b0b6f3f03a7b5cceb0f4aae47a6ef1ec179b3ebf98772ad0af9021cab9ca660f8a363700effb79e255eeaeda9af5cafd623cf044e95390eacf645c97154afaabd9b8363653e03e7d01f7976f534d5fca7e05c99c6ca7135d6f8d7e058d9b992935a1c67b197c760d487b6c079ec3c378c1bcab7ca4935d1f54e3c3b93bb9931fc4f9483fe21385176be3e8d5a9240bf0ece30bf27e32cf7dcf5ec8ca9092ea03f3686fc45b9913534de7dc9cd7a23723e9e1b821365ba016758ff9a31f42781359f37e566a44c91e7aee95335b097f30db880fc28b0daef2937911f7702ab7d0d9ca0ff3363d85f1a7735df35b0c5f7f54f43beecc0b0e7ae31ec1fc099326d800bd4e7c418fd3a33567dbe5496edaef2537082fde2eb9f76d308fe1dd8e44f81757d9f8de1bf15b8f0fa9b60eb9f176395b33f3fb2d8eca900434e0370817ebc30c67a8c8ca13f37ce13cf6de52c527b3e365639fbf326cbb308f66bc6b07f05633ff0b631ecd7c199b26b8311df75949dc5f3fe5c2cfa1aef0a8cfdc107c62a772d65b3771b8155be0e4ee0cf9fbf4ee2a1ff7e1843fe08c6fee21763c83b60077b365639fbf3a81b3b57e87caae09e329d2a776be887c818f214dc80bd9f4fb7303927e006faa33086fc3970cffbcbc1c8875a81bd9c1be01efcf9fd9d2766cf39d8f41fc13df09a725e03fbf3252f023f18f71a9e096cfe27c62a77af60c4a3cc58e57407eea1defe7c2c1293f313b807de552eac7e0363c4e3c09a4f138c7a92af67d1337dee83912f0f03abfd09d8eab50746bda86b0c7dbfde3d394ec177c67d9def19d8ec778c917f6e0cfd9e720ff9d222b0b77777c6aacf5760cbdf9f47921ce4b40f36f9d818f63b60cb7f610cfb51e0bee77bb0e5ebfba3df3039ef8321e76960955f2bf72dbfddc0eaff0d6cf9b503abbdff3fd0ef079e8311fff809dc373e7e6262c75d19ee7ffce6a5a57ae0827bdce7010fff650c96eefb3ce2423d70ce3f4a6fff74f12d8ff98eeff9811f79c2d325c98c4977050fbfb49cf34264cffcc2af12ef8dd7b8c5ebbcc16dc8db927b47dfb3dcff64bd29f1b6785b6c0af1b3c3bbbcc7fbe2b3cb07bc19722bf850dfdc1f7310df477c2cb116727fc2a77cc6e77c21d7a5f095f81cfafce67c2d1e6ee0a1ff21f72a47885113db3ac77cc90937b8e9a5334e8366841cb2f71ce4e984d8df9d109591c9d9bc91df8cba764ff9e73af09c8af2977ad417fb3a0d78fe715d6848a3a09b7fac43a9cb0bf22b4bb7de7e2c73bde56bf177a756744f05ef2fadc5521d34163d48b7ecd063692fe38c2632a63423cb614173cb4a665c7cae032de8995ea4fa17be06afb28a57f466fe45dea5b5a519b790c3721d521e4bce133ea775191bd42627df9d1075c0074b558f50c9a57e108d056dd2166dfb3a4cc47e53ae9d90f9365743bebb5cd0decffd20dd2f7592fe2bfbe082c6b4ff53af767447a25fbeea8735f12cf1a82df607320ea52bc37af2231df1043368d3bd78f85c8747b61c3b34f5791cd3099dd219efd1395dd0250f4215beec076a49147411bdd1155d633e07529503ba917cd32fd662a91fa4a7ab7444918c23eec838a41ad529a6841ad4146e95fb2d7848bfe8874c3cd44a7bb96a3af8467eab7856f0ed9287fc731d1cf30d1f96d1350f9fcba1fff5b9f1eb875dfc553f0c55db91fccfeabee711069bb5f6c3e7f3c1e5656c27af55d77783d2c60dddc8fd70b76eecf37930fb7fda17ee4ee20fc55eaf7b8ac4bee7fd39995f97b2f73df2751dc4c783c41d799b473791fba91b080ddc4cea3373f9721d7eee073c8fcadafb3a3c9573978ce6e26be18632bf7036583f7cde17657d684de65f0db5b34bd682b73eacc497fde0cf29f1ed9edd83efa81befa7f457752fefdd64b370affa3f50de79b253e40cbce769b9b3703f9419c91bc33db837d993234e25bf5d39e7764bb9ecac5d8992e3bdb9e1d6f8c5b5dcba5b9757b07ccbfd866bcbe8c868c95bc69e791dd195e7542bcf8af0eece2de7ff3ae4fbadb45cfdebd795bf01133ba096</data>
+    </image>
+    <image name="image4">
+        <data format="PNG" length="910">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000355494441545885bd973188db561c873f9514e4e1201e3c68f0e0c1430c855ac4d0f39433044a3c9a6431cd923199c28d19b33409dddca93e68c975a8e36448458783e7a15485983e8586daa50715d450410f2ae841656ac1eb20f57256e48be4337d60feb6e5e7f7fbbea7f79ead29a5ae9068dd1bddd17e7f9fcecd0e4386b4c3365668d10a5b0804adb00521ccc339363666684208ce4b07a5d44ef2fbce6a17565d903f4b86cf86c8b1c46a58c8b14434c452351b26e24020af4afa7b7d9e0e9ea269da284f082dcd40e7466734fc6a981dc3030c685f6d631d58689a96d9c43bab2ec8b1cc1ec0006fe6a1eb3a722c79f8f143344d1bad1f600166c3cc1e0030ca0673e6980d93dd9d5d945299426cc640dc2e162e464f1a6436b132405e0300e8cbfdb398d8a801fd828efdbdfdfa8d0c26d29761b89e015dd7693e682eef1ba1e0cefc0edb97b75397e8460df43eede13e70b19e5b88bb16e223c1a39d7bd83b3695aa91de49297525f9b8f6e13575aef67b5c5f44e5f1e79f29a5948a865b1e6ba30600580006f89e070d983836dd9bb7e87d723ff5e39b5d0500ef02c750340c9841adde04076edfbd972fc0da068200b620f03d28837738813a58837ef6004118e433b0f8af235028c031148a067860546b7028695fbf953d00e430b020d21e045080e0d88f0c1cb9d1bd309b40d5c41af47204c8ba0f9c0cce6bf2ad22f8502855c08362b9062eb4afdfce11800c065691fb1e144f1970255440e432c05b0c9c455e34e02836308362c504d7a6b531036f907b09f2099420984da00cfea10d9526f646ee81547223415e030f0ae51ab89262b50953689edbc0228807f797c98f52c80df05d1b2a6664e01288c1a3f481d2ce82ed0fb697f7f67fe2fa775cff8aeb9f89bdffb7b8fefa43547f895f4fbe3ec759b092dc8dc8bd883898c968ce4fc80554c19f5a70a98df832fd2c38dbc02af23f12f584fcbb5472f5e3ba064e93fba7c84b31792949de7c83dc7386f05e1bf145fa61946aa07eb9fe9639ff2923f993a8be78bca68124f9c99cd75693bf3a4ddec11bef43a38bd8dbcd61e0fd7afa9c672597cbe4eb19f8d6822db00f865002fb601f8c1af6377d2883fdbc17ed70cf7a50057b701f1c27badba79d68cea7d388fc5517b197be11a5fe3734ebe6c879e9acca76aea612bf8a5303fc9fed5fa7d5ea1f77234b9b0000000049454e44ae426082</data>
+    </image>
+    <image name="image5">
+        <data format="PNG" length="826">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000030149444154388db59531681b5718c77f0e377c070e3c810a3a70e0041eac51852e0a19e45134830a1d9a4c69a04bc8928e990a693a640e1d0c8642b08742321894c1507991b484c890902bb8701a047760c3bd21701fe4201dde49b6a41a32b8df72dcbbeffdbefffbbfefbd5b1b0c07cce266ebe667ae2006c3c1dada0cdc3be87d6e6c35b0d692a409d9c7ec8b20d65ae29398d19b1114e7e3de4ce98b3f5e10dc0053cf0951b4506496e1b964bf7ce6c585d9054c62d01d617ca48be0596553cf496d8f2c8b01c5f795fc93904e85ec4c01a152857a5d9175d0b2805c872080f18595ccc1499a10a225d4e2fbc2877786fe81253ab6c04c8d106e09db5d43ab0d146e5c64d1a23938fb98a185cea1c33eecfd9eba49eb427dcb201e245365f2b7b2fb5b4a3a31dcb927178afe07d86901df870fefa4842aed6f6b74ba42e52b4014d580e1eb9cbd9d94de7e4aad16d2f9be02d805f0b5e532f927a1ffcacea1777f122a8105b164a7c25faf323a5d9f1f1fd600e1e5bec59e2d4b5c7ef5209d0ad17b8b31864e57c0b3e0815ac3ee33253ab664a770ff5185d1a1cb8d2267d3e58aa1dc7d2508cbe597d0e74fdd269aaaf0f52d414c4ea3e9762c996869e42560d7a72e41c4799a2586e74f95e8d8151481fa86efbe7b3398ac58b1a2b8527589f15451ad303ac2293542ad6648a796278f13a27185e4c4754310facb98c53a79e19a3fdc1426ff28c3d7399d1f7cb25343eb96106cf83c790ce9c4f2eb831855c55485663327992eb6dc8a6259874ed700b0b793323cccb9ffa842b30d6133e3e75fea989ac15a8b16ca76b746b0b92278d919774c5b6d48a78697fb29bbcf52468742a32120909c24e899ce67beed5be2db01e22d1e9485bb620e47f9ee9e606a21bd3f5d3744c7e7c54d55e87443867d8b554515ac5db4620e8e4f62263170fd1cdee90aad7640141992891b0f367c9adfe4049bb07d3b7022bd8c687c0978f46684ee084150b65ac1fcca94591b7a90a496e4c095164fb016a2b192a497795cc0f84817aebe25f7bf70ccc54a575c555c03f78ffa5fc0570d1f0c076bff0232285a09643cc7ce0000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>m_comentfacturap</sender>
+        <signal>textChanged()</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_comentfacturaptextChanged()</slot>
+    </connection>
+    <connection>
+        <sender>m_forma_pago</sender>
+        <signal>valueChanged(QString)</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_forma_pagovalueChanged(QString)</slot>
+    </connection>
+    <connection>
+        <sender>m_fechafacturap</sender>
+        <signal>valueChanged(QString)</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_fechafacturapvalueChanged(QString)</slot>
+    </connection>
+    <connection>
+        <sender>m_reffacturap</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_reffacturaptextChanged(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>m_procesadafacturap</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_procesadafacturapstateChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>m_descfacturap</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_descfacturaptextChanged(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>boton_cobro</sender>
+        <signal>clicked()</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_nuevoCobro()</slot>
+    </connection>
+    <connection>
+        <sender>subform2</sender>
+        <signal>valueChanged(int,int)</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_pintaTotales()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1_2_2</sender>
+        <signal>clicked()</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_saveFacturaProveedor()</slot>
+    </connection>
+    <connection>
+        <sender>m_proveedor</sender>
+        <signal>valueChanged(QString)</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_proveedorvalueChanged(QString)</slot>
+    </connection>
+    <connection>
+        <sender>m_numfacturap</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>FacturaProveedorBase</receiver>
+        <slot>s_numfacturaptextChanged(const QString&amp;)</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>s_numfacturaptextChanged(const QString &amp;)</slot>
+    <slot>s_comentfacturaptextChanged()</slot>
+    <slot>s_saveFacturaProveedor()</slot>
+    <slot>s_deleteFacturaProveedor()</slot>
+    <slot>s_printFacturaProveedor()</slot>
+    <slot>s_pintaTotales()</slot>
+    <slot>s_forma_pagovalueChanged(QString)</slot>
+    <slot>s_fechafacturapvalueChanged(QString)</slot>
+    <slot>s_clientevalueChanged(QString)</slot>
+    <slot>s_almacenvalueChanged(QString)</slot>
+    <slot>s_reffacturaptextChanged(const QString &amp;)</slot>
+    <slot>s_procesadafacturapstateChanged(int)</slot>
+    <slot>s_descfacturaptextChanged(const QString &amp;)</slot>
+    <slot>s_nuevoCobro()</slot>
+    <slot>s_proveedorvalueChanged(QString)</slot>
+</slots>
+<layoutdefaults spacing="3" margin="10"/>
+<includehints>
+    <includehint>busquedaformapago.h</includehint>
+    <includehint>busquedafecha.h</includehint>
+    <includehint>busquedaproveedor.h</includehint>
+    <includehint>listlinfacturaproveedorview.h</includehint>
+</includehints>
+</UI>
