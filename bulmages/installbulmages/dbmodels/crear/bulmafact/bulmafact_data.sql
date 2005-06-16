@@ -117,6 +117,11 @@ INSERT INTO factura (codigoserie_factura,numfactura, ffactura, contactfactura, t
 INSERT INTO factura (codigoserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES ('REC', 3, '10/11/2004', 'Tercer Contacto', '971 29 06 29',  'Sin comentarios', 1, 2, 1);
 
 
+INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES ( 1, '30/11/2004', 'Primer Contacto', '971 32 32 78', 'Sin comentarios', 1, 1);
+INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES ( 2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', 'Sin comentarios', 1, 1);
+INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES ( 3, '10/11/2004', 'Tercer Contacto', '971 29 06 29',  'Sin comentarios', 1, 2);
+
+
 
 
 INSERT INTO suministra (idarticulo, idproveedor) VALUES (1, 1);

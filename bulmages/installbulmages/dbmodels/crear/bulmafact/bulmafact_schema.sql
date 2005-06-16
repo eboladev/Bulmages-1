@@ -52,7 +52,7 @@ CREATE TABLE forma_pago (
    idforma_pago serial PRIMARY KEY,
    descforma_pago character varying(500),
    dias1tforma_pago integer,
-   descuentoforma_pago float
+   descuentoforma_pago numeric(5,2)
 );
 
 
@@ -452,11 +452,11 @@ CREATE TABLE alb_pro (
 CREATE TABLE lpedido (
    numlpedido serial PRIMARY KEY,
    desclpedido character varying(150),
-   cantlpedido float,
-   pvdlpedido float,
+   cantlpedido numeric(5,2),
+   pvdlpedido numeric(5,2),
    prevlpedido date,
    ivalpedido numeric(5,2),
-   descuentolpedido float,
+   descuentolpedido numeric(5,2),
    idpedido integer NOT NULL REFERENCES pedido(idpedido),
    idalb_pro integer REFERENCES alb_pro(idalb_pro),
    idarticulo integer REFERENCES articulo(idarticulo)
@@ -531,7 +531,7 @@ CREATE TRIGGER restriccionespresupuestotrigger
 CREATE TABLE dpresupuesto (
    iddpresupuesto serial PRIMARY KEY,
    conceptdpresupuesto character varying(2000),
-   proporciondpresupuesto float,
+   proporciondpresupuesto numeric(5,2),
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
    -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
 );
@@ -548,10 +548,10 @@ CREATE TABLE dpresupuesto (
 CREATE TABLE lpresupuesto (
    idlpresupuesto serial PRIMARY KEY,
    desclpresupuesto character varying(150),
-   cantlpresupuesto float,
-   pvplpresupuesto float,
+   cantlpresupuesto numeric(5,2),
+   pvplpresupuesto numeric(5,2),
    ivalpresupuesto numeric(5,2),
-   descuentolpresupuesto float,
+   descuentolpresupuesto numeric(5,2),
    idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -616,11 +616,11 @@ CREATE TRIGGER restriccionespedidoclientetrigger
 CREATE TABLE lpedidocliente (
    numlpedidocliente serial PRIMARY KEY,
    desclpedidocliente character varying(150),
-   cantlpedidocliente float,
-   pvplpedidocliente float,
+   cantlpedidocliente numeric(5,2),
+   pvplpedidocliente numeric(5,2),
    prevlpedidocliente date,
    ivalpedidocliente numeric(5,2),
-   descuentolpedidocliente float,   
+   descuentolpedidocliente numeric(5,2),   
    idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -691,13 +691,76 @@ CREATE TRIGGER restriccionesfacturatrigger
 CREATE TABLE lfactura (
    idlfactura serial PRIMARY KEY,
    desclfactura character varying(150),
-   cantlfactura float,
-   pvplfactura float,
+   cantlfactura numeric(5,2),
+   pvplfactura numeric(5,2),
    ivalfactura numeric(5,2),
-   descuentolfactura float,
+   descuentolfactura numeric(5,2),
    idfactura integer NOT NULL REFERENCES factura(idfactura),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
+
+
+-- -------------------------------------------------------------------------------------------
+-- FACTURACIO>Albarans:
+-- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
+-- Numero
+-- Data
+-- Factura a clients.
+CREATE TABLE facturap (
+   idfacturap serial PRIMARY KEY,
+   numfacturap character varying (20) NOT NULL UNIQUE,
+   reffacturap character varying(15) NOT NULL,
+   ffacturap date,
+   descfacturap character varying(500),   
+   contactfacturap character varying(90),
+   telfacturap character varying(20),
+   comentfacturap character varying(3000),
+   procesadafacturap boolean DEFAULT FALSE, 
+   idusuari integer,
+   idproveedor integer REFERENCES proveedor(idproveedor),
+   idforma_pago integer REFERENCES forma_pago(idforma_pago)
+);
+
+CREATE FUNCTION restriccionesfacturap () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+	IF NEW.reffacturap IS NULL OR NEW.reffacturap = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.reffacturap := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionesfacturaptrigger
+    BEFORE INSERT OR UPDATE ON facturap
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesfacturap();
+
+
+-- Linea de presupuesto
+-- Numero
+-- Descripcio: Descripció de l'article en el moment de ser presupostat.
+-- Quantitat
+-- PVP: Preu de l'article en el moment de ser pressupostat
+-- Descompte: Percentatge de descompte en línia.
+-- Linia de pressupost a clients.
+CREATE TABLE lfacturap (
+   idlfacturap serial PRIMARY KEY,
+   desclfacturap character varying(150),
+   cantlfacturap numeric(5,2),
+   pvplfacturap numeric(5,2),
+   ivalfacturap numeric(5,2),
+   descuentolfacturap numeric(5,2),
+   idfacturap integer NOT NULL REFERENCES facturap(idfacturap),
+   idarticulo integer REFERENCES articulo(idarticulo)
+);
+-- -------------------------------------------------------------------------------------------
 
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
@@ -937,7 +1000,7 @@ END;
 CREATE TABLE dalbaran (
    numdalbaran serial PRIMARY KEY,
    conceptdalbaran character varying(500),
-   propordalbaran float,
+   propordalbaran numeric(5,2),
    idalbaran integer NOT NULL REFERENCES albaran(idalbaran)
 );
 
@@ -1003,7 +1066,7 @@ CREATE TABLE ticket (
 CREATE TABLE suministra (
    idsuministra serial PRIMARY KEY,
    refpro character varying(100),
-   principalsuministra float,
+   principalsuministra numeric(5,2),
    idproveedor integer REFERENCES proveedor(idproveedor),
    idarticulo integer REFERENCES articulo(idarticulo)
 );

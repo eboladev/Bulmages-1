@@ -27,7 +27,8 @@
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="24"/>
 		<drawString x="1cm" y="23cm">Presupuesto</drawString>
-		<drawString x="7cm" y="23cm">[refpresupuesto]</drawString>
+		<drawString x="6.5cm" y="23cm">[numpresupuesto]</drawString>
+		<drawString x="8cm" y="23cm">[refpresupuesto]</drawString>
 		<setFont name="Helvetica" size="14"/>
 		<drawString x="1cm" y="22.3cm">[descpresupuesto]</drawString>
 		<setFont name="Helvetica" size="14"/>
@@ -37,7 +38,7 @@
 		<drawString x="12.5cm" y="21.5cm">[dircliente]</drawString>
 		<drawString x="12.5cm" y="21cm">[poblcliente]</drawString>
 		</pageGraphics>
-	<frame id="column" x1="1cm" y1="5cm" width="19cm" height="16cm"/>
+	<frame id="column" x1="1cm" y1="5cm" width="19cm" height="15cm"/>
 	</pageTemplate>
 	
 	
@@ -50,7 +51,7 @@
 			<stroke color="(1,0.9,0.9)"/>
 			<translate dx="15cm" dy="-5.5cm"/>
 			<rotate degrees="50"/>
-			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
+			<drawString x="23mm" y="15.7cm">BORRADORs</drawString>
 			<lineMode width="4mm"/>
 			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
 		

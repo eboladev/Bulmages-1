@@ -109,12 +109,13 @@ if [ -e /usr/lib/postgresql/plpgsql.so ]; then
 fi
 
 if [ -e /usr/lib/postgresql/8.0/lib/plpgsql.so ]; then
-   LANG=`/usr/lib/postgresql/8.0/lib/plpgsql.so`
-   if [ $LANG ]; then
+   LANG="/usr/lib/postgresql/8.0/lib/plpgsql.so"
       LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
       mensaje "No se ha encontrado plpgsql.o en los sitios mas usuales, se ha encontrado dicho archivo en $LANG. Intentando la instalacion con dicho archivo"
       tiempo
       cat crear/bulmages/bulmages_generica.sql | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.sql
+      psql $2 < /tmp/bulmages_generica.sql 2>> /tmp/errores1.txt > /dev/null
+      ENC="1"
 fi
 
 
