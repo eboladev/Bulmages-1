@@ -42,6 +42,7 @@
 #include "pedidosclientelist.h"
 #include "pedidoclienteview.h"
 #include "albaranesproveedor.h"
+#include "facturasplist.h"
 #include "cobroslist.h"
 
 
@@ -84,9 +85,8 @@ void company::createMainWindows() {
     m_facturasList = new FacturasList(this, m_pWorkspace,theApp->translate("Facturas a Cliente","company"));
 
     m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Pedidos a Proveedores","company"));
- //   m_delivnoteslist = new delivnoteslist(this, m_pWorkspace,theApp->translate("Albaranes","company"));
     m_albaranesproveedor = new AlbaranesProveedor(this, m_pWorkspace,theApp->translate("Albaranes Proveedor","company"));
-
+    m_facturasproveedorlist = new FacturasProveedorList(this, m_pWorkspace,theApp->translate("Facturas Proveedor","company"));
     fprintf(stderr,"Fin de createMainWindows\n");
 }// end createMainWindows
 

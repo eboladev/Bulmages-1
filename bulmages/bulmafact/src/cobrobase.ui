@@ -9,8 +9,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>432</width>
-            <height>228</height>
+            <width>393</width>
+            <height>219</height>
         </rect>
     </property>
     <property name="caption">
@@ -27,6 +27,12 @@
             <hbox>
                 <property name="name">
                     <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
                 </property>
                 <widget class="QToolButton">
                     <property name="name">
@@ -107,6 +113,13 @@
                             <verstretch>0</verstretch>
                         </sizepolicy>
                     </property>
+                    <property name="paletteBackgroundColor">
+                        <color>
+                            <red>255</red>
+                            <green>255</green>
+                            <blue>127</blue>
+                        </color>
+                    </property>
                 </widget>
             </hbox>
         </widget>
@@ -161,6 +174,14 @@
                     <property name="name">
                         <cstring>m_fechacobro</cstring>
                     </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>5</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
                 </widget>
                 <spacer>
                     <property name="name">
@@ -170,7 +191,7 @@
                         <enum>Horizontal</enum>
                     </property>
                     <property name="sizeType">
-                        <enum>Expanding</enum>
+                        <enum>MinimumExpanding</enum>
                     </property>
                     <property name="sizeHint">
                         <size>

@@ -111,7 +111,7 @@ CobroView::CobroView( company *comp , QWidget *parent, const char *name) : Cobro
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     m_cliente->setcompany(comp);
     inicialize();
-    comp->meteWindow(caption(),this);
+//    comp->meteWindow(caption(),this);
     fprintf(stderr,"Fin de la inicialización de CobroView\n");
 }// end CobroView
 

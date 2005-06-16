@@ -14,22 +14,21 @@
 #include "listlinfacturaview.h"
 #include "factura.h"
 #include "clientslist.h"
+#include "cobroview.h"
+#include "funcaux.h"
 
 #include <qmessagebox.h>
-
 #include <qtable.h>
 #include <qwidget.h>
 #include <qobjectlist.h>
 #include <qcombobox.h>
 #include <qpopupmenu.h>
 #include <qtoolbutton.h>
-
 #include <qlayout.h>
-
 #include <fstream>
 using namespace std;
 
-#include "funcaux.h"
+
 
 
 FacturaView::FacturaView(company *comp, QWidget *parent, const char *name)
@@ -68,5 +67,16 @@ void   FacturaView::pintatotales(float base, float iva) {
     m_totalTaxes->setText(QString::number(iva));
     m_totalfactura->setText(QString::number(iva+base));
 }// end pintatotales
+
+
+void FacturaView::s_nuevoCobro() {
+    CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
+    bud->setidcliente(mdb_idcliente);
+    bud->setcantcobro(m_totalfactura->text());
+    bud->setrefcobro(mdb_reffactura);
+    bud->setcomentcobro(mdb_descfactura);
+    bud->pintaCobro();
+    bud->show();
+}// end s_nuevoCobro
 
 

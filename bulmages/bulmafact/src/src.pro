@@ -35,7 +35,9 @@ FORMS += bulmafactbase.ui \
 	 busquedafamiliabase.ui \
 	 busquedatipoarticulobase.ui \
 	 cobrobase.ui \
-	 cobroslistbase.ui
+	 cobroslistbase.ui \
+	 facturasplistbase.ui \
+	 facturapbase.ui
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
@@ -100,7 +102,13 @@ HEADERS += bulmafact.h \
 	   busquedatipoarticulo.h \
 	   cobro.h \
 	   cobroview.h \
-	   cobroslist.h
+	   cobroslist.h \
+	   facturasplist.h  \
+	   linfacturap.h \
+	   listlinfacturap.h \
+	   listlinfacturapview.h \
+	   facturap.h \
+	   facturapview.h 
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -161,7 +169,13 @@ SOURCES += bulmafact.cpp \
 	   busquedatipoarticulo.cpp \
 	   cobro.cpp \
 	   cobroview.cpp \
-	   cobroslist.cpp
+	   cobroslist.cpp \
+	   facturasplist.cpp \
+	   linfacturap.cpp \
+	   listlinfacturap.cpp \
+	   listlinfacturapview.cpp \
+	   facturap.cpp \
+	   facturapview.cpp
 TEMPLATE = app
 LANGUAGE = C++
 CONFIG += release \

@@ -90,6 +90,8 @@ public slots:
     	if (i) setprocesadafactura("TRUE");
 	else setprocesadafactura("FALSE");
     };
+    
+    virtual void s_nuevoCobro();
 };
 
 #endif

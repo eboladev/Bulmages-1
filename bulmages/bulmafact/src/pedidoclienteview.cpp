@@ -16,6 +16,7 @@
 #include "clientslist.h"
 #include "budget.h"
 #include "budgetslist.h"
+#include "cobroview.h"
 
 #include <qmessagebox.h>
 #include <qtable.h>
@@ -142,5 +143,16 @@ void PedidoClienteView::generarAlbaran() {
     bud->pintaAlbaranCliente();
     bud->show();
 }// end generarAlbaran
+
+
+void PedidoClienteView::s_nuevoCobro() {
+    CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
+    bud->setidcliente(mdb_idcliente);
+    bud->setcantcobro(m_totalpedidocliente->text());
+    bud->setrefcobro(mdb_refpedidocliente);
+    bud->setcomentcobro(mdb_descpedidocliente);
+    bud->pintaCobro();
+    bud->show();
+}// end s_nuevoCobro
 
 

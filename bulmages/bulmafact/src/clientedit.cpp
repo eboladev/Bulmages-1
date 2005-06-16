@@ -55,6 +55,7 @@ Restricciones de llave foránea:
 #include "budgetslist.h"
 #include "pedidosclientelist.h"
 #include "clientdelivnoteslist.h"
+#include "cobroslist.h"
 #include "facturaslist.h"
 
 #define COL_DIVISION_IDDIVISION 0
@@ -74,6 +75,7 @@ ClientEdit::ClientEdit(company *comp, QWidget *parent, const char *name)
       m_listpedidos->setcompany(companyact);
       m_listalbaranes->setcompany(companyact);
       m_listfacturas->setcompany(companyact);
+      m_listcobros->setcompany(companyact);
    clientId = NEW_CLIENT;
    //clientId = "0";
    
@@ -156,7 +158,9 @@ void ClientEdit::loadClient(QString client) {
 	 m_listalbaranes->setidcliente(cur->valor("idcliente"));
 	 m_listalbaranes->inicializa();
 	 m_listfacturas->setidcliente(cur->valor("idcliente"));
-	 m_listfacturas->inicializa();	 
+	 m_listfacturas->inicializa();	
+	 m_listcobros->setidcliente(cur->valor("idcliente"));
+	 m_listcobros->inicializa();	  
       } else {
           emptyForm();
       }// end if

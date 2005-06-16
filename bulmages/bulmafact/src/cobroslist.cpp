@@ -228,6 +228,8 @@ void CobrosList::s_nuevoCobro() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
     CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
     bud->show();
+    bud->setidcliente(m_cliente->idcliente());
+    bud->pintaCobro();
 }// end boton_crear
 
 
