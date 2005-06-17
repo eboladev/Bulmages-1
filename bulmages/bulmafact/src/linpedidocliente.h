@@ -12,27 +12,6 @@
 #ifndef LINPEDIDOCLIENTE_H
 #define LINPEDIDOCLIENTE_H
 
-/*
--- Linea de pedido
--- Numero: Número de línia.
--- Descripcio: Descripcio de l'article.
--- Quantitat
--- PVD
--- Previsió: Data prevista de recepció
-CREATE TABLE lpedidocliente (
-   numlpedidocliente serial PRIMARY KEY,
-   desclpedidocliente character varying(150),
-   cantlpedidocliente float,
-   pvplpedidocliente float,
-   prevlpedidocliente date,
-   ivalpedidocliente numeric(5,2),
-   descuentolpedidocliente float,   
-   idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
-   idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
-   idarticulo integer REFERENCES articulo(idarticulo)
-);
-*/
-
 /**
 @author Tomeu Borras
 */

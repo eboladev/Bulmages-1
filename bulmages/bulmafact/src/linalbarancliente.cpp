@@ -29,13 +29,14 @@ LinAlbaranCliente::LinAlbaranCliente(company *comp, QString numlalbaran) {
         mdb_idarticulo = cur->valor("idarticulo");
         mdb_codigocompletoarticulo = cur->valor("codigocompletoarticulo");
         mdb_nomarticulo = cur->valor("nomarticulo");
+	mdb_ivalalbaran = cur->valor("ivalalbaran");
     } else {
         vaciaLinAlbaranCliente();
     }// end if
 }// end LinAlbaranCliente
 
 
-LinAlbaranCliente::LinAlbaranCliente(company *comp, QString numlalbaran, QString desclalbaran, QString cantlalbaran, QString pvplalbaran, QString descontlalbaran, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString idalbaran) {
+LinAlbaranCliente::LinAlbaranCliente(company *comp, QString numlalbaran, QString desclalbaran, QString cantlalbaran, QString pvplalbaran, QString descontlalbaran, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString idalbaran, QString iva) {
     companyact = comp;
     mdb_numlalbaran = numlalbaran;
     mdb_desclalbaran = desclalbaran;
@@ -46,6 +47,7 @@ LinAlbaranCliente::LinAlbaranCliente(company *comp, QString numlalbaran, QString
     mdb_codigocompletoarticulo = codigocompletoarticulo;
     mdb_nomarticulo = nomarticulo;
     mdb_idalbaran = idalbaran;
+    mdb_ivalalbaran = iva;
 }// end LinAlbaranCliente
 
 
@@ -62,6 +64,7 @@ void LinAlbaranCliente::vaciaLinAlbaranCliente() {
     mdb_codigocompletoarticulo = "";
     mdb_nomarticulo = "";
     mdb_idalbaran = "";
+    mdb_ivalalbaran = "";
 }
 
 
@@ -77,7 +80,7 @@ void LinAlbaranCliente::borrar() {
 void LinAlbaranCliente::guardaLinAlbaranCliente() {
     /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_numlalbaran == "") {
-        QString SQLQuery = "INSERT INTO lalbaran (desclalbaran, cantlalbaran, pvplalbaran, descontlalbaran, idalbaran, idarticulo) VALUES ('"+mdb_desclalbaran+"',"+mdb_cantlalbaran+","+mdb_pvplalbaran+","+mdb_descontlalbaran+","+mdb_idalbaran+","+mdb_idarticulo+")";
+        QString SQLQuery = "INSERT INTO lalbaran (desclalbaran, cantlalbaran, pvplalbaran, descontlalbaran, idalbaran, idarticulo, ivalalbaran) VALUES ('"+mdb_desclalbaran+"',"+mdb_cantlalbaran+","+mdb_pvplalbaran+","+mdb_descontlalbaran+","+mdb_idalbaran+","+mdb_idarticulo+","+mdb_ivalalbaran+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(numlalbaran) AS m FROM lalbaran ");
@@ -92,6 +95,7 @@ void LinAlbaranCliente::guardaLinAlbaranCliente() {
         SQLQuery += " ,pvplalbaran = "+mdb_pvplalbaran+" ";
         SQLQuery += " ,descontlalbaran = "+mdb_descontlalbaran+" ";
         SQLQuery += " ,idarticulo = "+mdb_idarticulo+" ";
+	SQLQuery += " ,ivalalbaran = "+mdb_ivalalbaran+" ";
         SQLQuery += " WHERE numlalbaran = "+mdb_numlalbaran;
         companyact->begin();
         companyact->ejecuta(SQLQuery);
@@ -110,9 +114,11 @@ void LinAlbaranCliente::setcodigocompletoarticulo(QString val) {
         mdb_desclalbaran = mdb_nomarticulo;
         mdb_idarticulo= cur->valor("idarticulo");
         mdb_pvplalbaran = cur->valor("pvp");
+	mdb_ivalalbaran = cur->valor("iva");
         if (mdb_cantlalbaran == "") {
             mdb_cantlalbaran = "1";
             mdb_descontlalbaran = "0";
+	    mdb_ivalalbaran = "0";
         }// end if
     }// end if
     delete cur;
@@ -129,35 +135,14 @@ void LinAlbaranCliente::setidarticulo(QString val) {
         mdb_desclalbaran = mdb_nomarticulo;
         mdb_codigocompletoarticulo= cur->valor("codigocompletoarticulo");
         mdb_pvplalbaran = cur->valor("pvp");
+	mdb_ivalalbaran = cur->valor("iva");
         if (mdb_cantlalbaran == "") {
             mdb_cantlalbaran = "1";
             mdb_descontlalbaran = "0";
+	    mdb_ivalalbaran = "0";
         }// end if
     }// end if
     delete cur;
     fprintf(stderr,"end setidarticulo\n");
 }// end setidarticulo
-
-float LinAlbaranCliente::calculabase() {
-    fprintf(stderr,"calculabase()\n");
-    float cant=0;
-    if (mdb_cantlalbaran != "" && mdb_pvplalbaran != "" && mdb_descontlalbaran != "") {
-        cant = mdb_cantlalbaran.toFloat() * mdb_pvplalbaran.toFloat();
-        cant = cant - (cant* mdb_descontlalbaran.toFloat());
-    }// end if
-    return cant;
-}// end calculabase
-
-float LinAlbaranCliente::calculaiva() {
-    fprintf(stderr,"calculaiva()\n");
-    float cant=0;
-    /* DE momento como no aparece el iva en la tabla lalbaran no se implementa esto
-    if (mdb_cantlalbaran != "" && mdb_pvplalbaran != "" && mdb_desclfactura != "" && mdb_ivalfactura != "") {
-        cant = mdb_cantlalbaran.toFloat() * mdb_pvplalbaran.toFloat();
-        cant = cant - (cant* mdb_descontlalbaran.toFloat()/100);
-        cant = cant * mdb_ivalfactura.toFloat()/100;
-    }// end if
-    */
-    return cant;
-}// end calculabase
 

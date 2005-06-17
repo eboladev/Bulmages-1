@@ -28,6 +28,8 @@ CREATE TABLE pedidocliente (
 #include <qptrlist.h>
 
 #include "listlinpedidocliente.h"
+#include "listdescpedidocliente.h"
+
 #include "company.h"
 #include "linpedidocliente.h"
 /** @author Tomeu Borras & Alvaro de Miguel
@@ -38,7 +40,7 @@ CREATE TABLE pedidocliente (
 class PedidoCliente {
 protected:
     ListLinPedidoCliente *listalineas;
-
+    ListDescuentoPedidoCliente *listadescuentos;
     company *companyact;
     QString mdb_idcliente;
     QString mdb_idalmacen;
@@ -57,7 +59,11 @@ public:
         listalineas =a;
 	listalineas->setcompany(companyact);
     };
-    
+    void setListDescuentoPedidoCliente ( ListDescuentoPedidoCliente *a) {
+        listadescuentos =a;
+	listadescuentos->setcompany(companyact);
+    }; 
+        
     PedidoCliente(company *);
     virtual ~PedidoCliente();
     virtual void cargaPedidoCliente(QString);
@@ -65,7 +71,8 @@ public:
     void guardaPedidoCliente();
     void borraPedidoCliente();
     void imprimirPedidoCliente();
-    
+    void calculaypintatotales();   
+     
     ListLinPedidoCliente* getlistalineas() {return listalineas;};
     
     virtual void pintaidcliente(QString ) {};
@@ -74,19 +81,16 @@ public:
     virtual void pintanumpedidocliente(QString ) {};
     virtual void pintafechapedidocliente(QString ) {};
     virtual void pintadescpedidocliente(QString ) {};
-
     virtual void pintanomalmacen(QString ) {};
     virtual void pintaidforma_pago(QString ) {};
     virtual void pintacodigoalmacen(QString ) {};
-
     virtual void pintacomentpedidocliente(QString) {};
     virtual void pintaidpresupuesto(QString) {};
     virtual void pintadescpresupuesto(QString) {};
     virtual void pintarefpresupuesto(QString) {};
     virtual void pintarefpedidocliente(QString) {};
     virtual void pintaprocesadopedidocliente(QString) {};
-    
-    virtual void pintatotales(float, float) {};
+    virtual void pintatotales(float, float, float, float) {};
 
 
     void setidcliente(QString val) { mdb_idcliente=val;};
@@ -95,13 +99,8 @@ public:
     void setnumpedidocliente(QString val) { mdb_numpedidocliente=val;};
     void setfechapedidocliente(QString val) { mdb_fechapedidocliente=val;};
     void setdescpedidocliente(QString val) { mdb_descpedidocliente=val;};
-
-//    void setnomalmacen(QString val) {mdb_nomalmacen=val;};
     void setidforma_pago(QString val) {mdb_idforma_pago=val;};
     void setcomentpedidocliente(QString val) {mdb_comentpedidocliente=val;};
-//    void setcodigoalmacen(QString val);
-
-//    void setidpresupuesto(QString val);
     void setrefpedidocliente(QString val) {mdb_refpedidocliente=val;};
     void setprocesadopedidocliente(QString val) {mdb_procesadopedidocliente=val;};
     

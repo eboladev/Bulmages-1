@@ -15,7 +15,7 @@
 #include <qfile.h>
 #include <qtextstream.h>
 
-
+typedef QMap<QString, float> base;
 
 presupuesto::presupuesto(company *comp) {
     companyact=comp;
@@ -70,8 +70,10 @@ void presupuesto::pintaPresupuesto() {
     pintaidalmacen(mdb_idalmacen);
     // Pinta el subformulario de detalle del presupuesto.
     listalineas->pintalistlinpresupuesto();
+    // Pinta el subformulario de descuentos del presupuesto
+    listadescuentos->pintaListDescuentoPresupuesto();
 
-    pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+    calculaypintatotales();
 }// end pintaPresupuesto
 
 
@@ -101,6 +103,7 @@ void presupuesto::chargeBudget(QString idbudget) {
     delete cur;
     fprintf(stderr,"Vamos a cargar las lineas\n");
     listalineas->chargeBudgetLines(idbudget);
+    listadescuentos->cargaDescuentos(idbudget);
     pintaPresupuesto();
 }// end chargeBudget
 
@@ -149,6 +152,7 @@ void presupuesto::guardapresupuesto() {
         companyact->commit();
     }// end if
     listalineas->guardalistlinpresupuesto();
+    listadescuentos->guardaListDescuentoPresupuesto();
     chargeBudget(mdb_idpresupuesto);
 }// end guardapresupuesto
 
@@ -160,17 +164,17 @@ QString presupuesto::detalleArticulos() {
     cursor2 *cur=companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto="+mdb_idpresupuesto);
     int i=0;
     while(!cur->eof()) {
-            i= !i;
-    if (i) {
-    texto += "<blockTable style=\"tabla1\" colWidths=\"5cm, 8cm\" rowHeights=\"5.5cm\">\n";
-    } else {
-     texto += "<blockTable style=\"tabla2\" colWidths=\"8cm, 5cm\" rowHeights=\"5.5cm\">\n";
-        }// end if    
+        i= !i;
+        if (i) {
+            texto += "<blockTable style=\"tabladetalle1\" colWidths=\"5cm, 8cm\" rowHeights=\"5.5cm\">\n";
+        } else {
+            texto += "<blockTable style=\"tabladetalle2\" colWidths=\"8cm, 5cm\" rowHeights=\"5.5cm\">\n";
+        }// end if
         texto += "<tr>\n";
 
         if (i) {
             texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";
-	    texto += "<para><pre>"+cur->valor("obserarticulo")+"</pre></para></td>\n";
+            texto += "<para><pre>"+cur->valor("obserarticulo")+"</pre></para></td>\n";
         }// end if
         texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
                  "<image file=\""+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
@@ -178,10 +182,10 @@ QString presupuesto::detalleArticulos() {
 
         if (!i) {
             texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";
-	    texto += "<pre>"+cur->valor("obserarticulo")+"</pre></td>\n";
+            texto += "<pre>"+cur->valor("obserarticulo")+"</pre></td>\n";
         }// end if
         texto += "</tr>\n";
-    texto += "</blockTable>";	
+        texto += "</blockTable>";
         cur->siguienteregistro();
     }// end while
     delete cur;
@@ -190,7 +194,12 @@ QString presupuesto::detalleArticulos() {
 }// end detalleArticulos
 
 
+
+
+
 void presupuesto::imprimirPresupuesto() {
+    base basesimp;
+
     /// Copiamos el archivo
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml";
     archivo = "cp "+archivo+" /tmp/presupuesto.rml";
@@ -208,7 +217,7 @@ void presupuesto::imprimirPresupuesto() {
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
-    QString fitxersortidatxt;
+    QString fitxersortidatxt="";
     // Lï¿½ea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
@@ -232,53 +241,118 @@ void presupuesto::imprimirPresupuesto() {
     buff.replace("[refpresupuesto]",mdb_refpresupuesto);
 
 
-
-    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">\n";
+    linpresupuesto *linea;
+    /// Impresión de los contenidos
+    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"7cm, 2cm, 2cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
     fitxersortidatxt += "	<td>Concepto</td>\n";
     fitxersortidatxt += "	<td>Cantidad</td>\n";
     fitxersortidatxt += "	<td>Precio Und.</td>\n";
-    fitxersortidatxt += "	<td>Total</td>\n";
+    fitxersortidatxt += "	<td>Descuento</td>\n"; 
+        fitxersortidatxt += "	<td>Total</td>\n";
     fitxersortidatxt += "</tr>\n";
-
     QString l;
-    linpresupuesto *linea;
-    uint i = 0;
+
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+    	float base = linea->cantlpresupuesto().toFloat() * linea->pvplpresupuesto().toFloat();
+        basesimp[linea->ivalpresupuesto()] +=  base - base * linea->descuentolpresupuesto().toFloat()/100;
+	
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "	<td>"+linea->desclpresupuesto()+"</td>\n";
         fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpresupuesto().toFloat())+"</td>\n";
         fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplpresupuesto().toFloat())+"</td>\n";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpresupuesto().toFloat() * linea->pvplpresupuesto().toFloat())+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->descuentolpresupuesto().toFloat())+" %</td>\n";	
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",base - base * linea->descuentolpresupuesto().toFloat()/100)+"</td>\n";
         fitxersortidatxt += "</tr>";
-        i++;
+    }// end for
+    fitxersortidatxt += "</blockTable>\n";
+    float basei=0;
+    base::Iterator it;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        basei+=it.data();
     }// end for
 
 
+
+        /// Impresión de los descuentos
+    float porcentt=0;
+    DescuentoPresupuesto *linea1;
+    if (listadescuentos->m_lista.first()) {
+        fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">\n";
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "	<td>Descuento</td>\n";
+        fitxersortidatxt += "	<td></td>\n";
+        fitxersortidatxt += "	<td>Porcentaje</td>\n";
+        fitxersortidatxt += "	<td>Total</td>\n";
+        fitxersortidatxt += "</tr>\n";
+        for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
+            porcentt += linea1->proporciondpresupuesto().toFloat();
+            fitxersortidatxt += "<tr>\n";
+            fitxersortidatxt += "	<td>"+linea1->conceptdpresupuesto()+"</td>\n";
+            fitxersortidatxt += "	<td></td>\n";
+            fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea1->proporciondpresupuesto().toFloat())+" %</td>\n";
+            fitxersortidatxt += "	<td>"+l.sprintf("-%2.2f",linea1->proporciondpresupuesto().toFloat()*basei/100)+"</td>\n";
+            fitxersortidatxt += "</tr>";
+        }// end for
+    fitxersortidatxt += "</blockTable>\n";	
+    }// end if
+
+    fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
+    fitxersortidatxt += "	<td>Totales</td>\n";
     fitxersortidatxt += "	<td></td>\n";
     fitxersortidatxt += "	<td></td>\n";
-    fitxersortidatxt += "	<td>Base</td>\n";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>\n";
+    fitxersortidatxt += "	<td></td>\n";
     fitxersortidatxt += "</tr>\n";
+
+
+    float totbaseimp=0;
+    float parbaseimp=0;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0.01) {
+            parbaseimp = it.data()-it.data()*porcentt/100;
+            totbaseimp += parbaseimp;
+        } else {
+            parbaseimp = it.data();
+            totbaseimp += parbaseimp;
+        }// end if
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "	<td></td>\n";
+        fitxersortidatxt += "	<td></td>\n";
+        fitxersortidatxt += "	<td>Base "+it.key()+" %</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",parbaseimp)+"</td>\n";
+        fitxersortidatxt += "</tr>\n";
+    }// end for
+
+    float totiva=0;
+    float pariva=0;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0.01) {
+            pariva = (it.data()-it.data()*porcentt/100)*it.key().toFloat()/100;
+            totiva += pariva;
+        } else {
+            pariva = it.data()*it.key().toFloat()/100;
+            totiva += pariva;
+        }// end if
+
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "	<td></td>\n";
+        fitxersortidatxt += "	<td></td>\n";
+        fitxersortidatxt += "	<td>Iva "+it.key()+" %</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", pariva)+"</td>\n";
+        fitxersortidatxt += "</tr>\n";
+    }// end for
+
     fitxersortidatxt += "<tr>\n";
     fitxersortidatxt += "	<td></td>\n";
     fitxersortidatxt += "	<td></td>\n";
-    fitxersortidatxt += "	<td>Iva</td>\n";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>\n";
-    fitxersortidatxt += "</tr>\n";
-    fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "	<td></td>\n";
-    fitxersortidatxt += "	<td></td>\n";
-    fitxersortidatxt += "	<td>Total</td>\n";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>\n";
+    fitxersortidatxt += "	<td>Total </td>\n";
+    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",totiva+totbaseimp)+"</td>\n";
     fitxersortidatxt += "</tr>\n";
     fitxersortidatxt += "</blockTable>\n";
 
     buff.replace("[story]",fitxersortidatxt);
-
     buff.replace("[detallearticulos]",detalleArticulos());
-
     if ( file.open( IO_WriteOnly ) ) {
         QTextStream stream( &file );
         stream << buff;
@@ -289,3 +363,58 @@ void presupuesto::imprimirPresupuesto() {
     system("kpdf /tmp/pressupost.pdf &");
 } //end imprimirPresupuesto
 
+
+
+
+void presupuesto::calculaypintatotales() {
+    base basesimp;
+    linpresupuesto *linea;
+    /// Impresión de los contenidos
+    QString l;
+
+    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+    	float base = linea->cantlpresupuesto().toFloat() * linea->pvplpresupuesto().toFloat();
+        basesimp[linea->ivalpresupuesto()] +=  base - base * linea->descuentolpresupuesto().toFloat()/100;
+    }// end for
+    float basei=0;
+    base::Iterator it;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        basei+=it.data();
+    }// end for
+    
+    
+    /// Impresión de los descuentos
+    float porcentt=0;
+    DescuentoPresupuesto *linea1;
+    if (listadescuentos->m_lista.first()) {
+        for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
+            porcentt += linea1->proporciondpresupuesto().toFloat();
+        }// end for	
+    }// end if
+
+
+    float totbaseimp=0;
+    float parbaseimp=0;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0.01) {
+            parbaseimp = it.data()-it.data()*porcentt/100;
+            totbaseimp += parbaseimp;
+        } else {
+            parbaseimp = it.data();
+            totbaseimp += parbaseimp;
+        }// end if
+    }// end for
+
+    float totiva=0;
+    float pariva=0;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0.01) {
+            pariva = (it.data()-it.data()*porcentt/100)*it.key().toFloat()/100;
+            totiva += pariva;
+        } else {
+            pariva = it.data()*it.key().toFloat()/100;
+            totiva += pariva;
+        }// end if
+    }// end for
+    pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
+}// end calculaypintatotales

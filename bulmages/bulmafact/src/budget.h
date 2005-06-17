@@ -27,6 +27,7 @@
 
 #include "presupuesto.h"
 #include "listlinpresupuestoview.h"
+#include "listdescpresupuestoview.h"
 #include "busquedacliente.h"
 #include "busquedaformapago.h"
 #include "busquedafecha.h"
@@ -37,10 +38,12 @@
 #include <qlabel.h>
 #include <qcheckbox.h>
 
+#include "dialogchanges.h"
+
 /** @author Tomeu Borr� Riera */
 class company;
 
-class Budget : public BudgetBase , public presupuesto  {
+class Budget : public BudgetBase , public presupuesto, public dialogChanges  {
     Q_OBJECT
 private:
     cursor2 *m_cursorcombo;
@@ -68,7 +71,7 @@ void    pintaprocesadopresupuesto(QString id) {
 };
 void pintadescpresupuesto(QString id) {m_descpresupuesto->setText(id);};
 
-void   pintatotales(float base, float iva);
+void   pintatotales(float iva, float base, float total, float desc);
 
 private:
     void generarPedidoCliente();
@@ -76,10 +79,11 @@ private:
 
 public slots:
     virtual void s_saveBudget() {guardapresupuesto();};
-    virtual void chargeBudget(QString id) {presupuesto::chargeBudget(id);setCaption("presupuesto "+mdb_refpresupuesto);    companyact->meteWindow(caption(),this);};
+    virtual void chargeBudget(QString id);
     virtual void s_removeBudget();
     virtual void s_printBudget();
     virtual void s_removeBudgetLine() {subform2->borralinpresupuestoact();};
+    virtual bool close(bool);
     
     virtual void s_comentariotextChanged() { setComentPresupuesto(m_comentpresupuesto->text());};
     virtual void s_contactotextChanged(const QString &str) {setContractPresupuesto(str);};
@@ -94,7 +98,7 @@ public slots:
 	/// Este slot se activa cuando cambia la fecha del presupuesto.
     
     	/// Este slot se activa cuando hay cambios en los subformularios.
-    virtual void s_pintaTotales() {pintatotales(listalineas->calculabase(),listalineas->calculaiva());};
+    virtual void s_pintaTotales() {calculaypintatotales();};
     
 
     virtual void s_formapagovalueChanged(QString val) {setidforma_pago(val);};

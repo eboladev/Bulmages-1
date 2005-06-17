@@ -17,6 +17,7 @@
 #include <qptrlist.h>
 
 #include "listlinpresupuesto.h"
+#include "listdescpresupuesto.h"
 
 /** @author Tomeu Borras & Alvaro de Miguel
   * \brief Clase que hace de intermediaria entre la tabla de presupuesto de la base de datos y el programa.
@@ -27,10 +28,8 @@
 class presupuesto {
 protected:
     listlinpresupuesto *listalineas;
-
+    ListDescuentoPresupuesto *listadescuentos;
     company *companyact;
-
-
     QString mdb_idcliente;
     QString mdb_idalmacen;
     QString mdb_numpresupuesto;
@@ -45,14 +44,16 @@ protected:
     QString mdb_descpresupuesto;
     QString mdb_refpresupuesto;
     QString mdb_idforma_pago;
-
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setlislinpresupuesto ( listlinpresupuesto *a) {
         listalineas =a;
 	listalineas->setcompany(companyact);
     };
-    
+    void setlisdescpresupuesto ( ListDescuentoPresupuesto *a) {
+        listadescuentos =a;
+	listadescuentos->setcompany(companyact);
+    };    
     presupuesto(company *);
     virtual ~presupuesto();
     virtual void chargeBudget(QString );
@@ -60,9 +61,8 @@ public:
     void guardapresupuesto();
     void borraPresupuesto();
     void imprimirPresupuesto();
-    
+    void calculaypintatotales();
     QString detalleArticulos();
-    
     virtual void pintaidcliente(QString) {};
     virtual void pintaIdAlmacen(QString) {};
     virtual void pintaNumPresupuesto(QString) {};
@@ -78,7 +78,7 @@ public:
     virtual void pintadescpresupuesto(QString) {};
     virtual void pintarefpresupuesto(QString) {};
     virtual void pintaidforma_pago(QString){};
-    virtual void pintatotales(float, float) {};
+    virtual void pintatotales(float, float, float, float) {};
 
     void setidcliente(QString val) { mdb_idcliente=val;};
     void setidalmacen(QString val) {mdb_idalmacen=val;};
@@ -94,7 +94,6 @@ public:
     void setdescpresupuesto(QString val) {mdb_descpresupuesto = val;};
     void setrefpresupuesto(QString val) {mdb_refpresupuesto = val;};
     void setidforma_pago(QString val) {mdb_idforma_pago = val;};
-
     void vaciaPresupuesto();
 };
 #endif

@@ -108,7 +108,16 @@ HEADERS += bulmafact.h \
 	   listlinfacturap.h \
 	   listlinfacturapview.h \
 	   facturap.h \
-	   facturapview.h 
+	   facturapview.h  \
+	   descpresupuesto.h \
+	   listdescpresupuesto.h \
+	   listdescpresupuestoview.h \
+	   descpedidocliente.h \
+	   listdescpedidocliente.h \
+	   listdescpedidoclienteview.h \
+	   descalbarancliente.h \
+	   listdescalbarancliente.h \
+	   listdescalbaranclienteview.h
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -175,7 +184,16 @@ SOURCES += bulmafact.cpp \
 	   listlinfacturap.cpp \
 	   listlinfacturapview.cpp \
 	   facturap.cpp \
-	   facturapview.cpp
+	   facturapview.cpp \
+	   descpresupuesto.cpp \
+	   listdescpresupuesto.cpp \
+	   listdescpresupuestoview.cpp \
+	   descpedidocliente.cpp \
+	   listdescpedidocliente.cpp \
+	   listdescpedidoclienteview.cpp \
+	   descalbarancliente.cpp \
+	   listdescalbarancliente.cpp \
+	   listdescalbaranclienteview.cpp
 TEMPLATE = app
 LANGUAGE = C++
 CONFIG += release \

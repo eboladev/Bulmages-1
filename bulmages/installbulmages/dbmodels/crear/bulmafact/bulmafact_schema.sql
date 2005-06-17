@@ -607,6 +607,19 @@ CREATE TRIGGER restriccionespedidoclientetrigger
     EXECUTE PROCEDURE restriccionespedidocliente();
 
 
+-- Descuento de pedidocliente.
+-- Numero
+--Concepte: Descripció del motiu de descompte.
+--Proporcio: Percentatge a descomptar.
+-- Descompte de pressupost a clients.
+CREATE TABLE dpedidocliente (
+   iddpedidocliente serial PRIMARY KEY,
+   conceptdpedidocliente character varying(2000),
+   proporciondpedidocliente numeric(5,2),
+   idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente)
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
+);    
+    
 -- Linea de pedido
 -- Numero: Número de línia.
 -- Descripcio: Descripcio de l'article.
@@ -998,9 +1011,9 @@ END;
 -- Proporcio: Percentatge a descomptar.
 -- Descompte d'albarà a clients.
 CREATE TABLE dalbaran (
-   numdalbaran serial PRIMARY KEY,
+   iddalbaran serial PRIMARY KEY,
    conceptdalbaran character varying(500),
-   propordalbaran numeric(5,2),
+   proporciondalbaran numeric(5,2),
    idalbaran integer NOT NULL REFERENCES albaran(idalbaran)
 );
 
@@ -1017,6 +1030,7 @@ CREATE TABLE lalbaran (
    cantlalbaran numeric(5,2),
    pvplalbaran numeric(5,2),
    descontlalbaran numeric(5,2),
+   ivalalbaran numeric(5,2),
    idalbaran integer NOT NULL REFERENCES albaran(idalbaran),
    idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
 );

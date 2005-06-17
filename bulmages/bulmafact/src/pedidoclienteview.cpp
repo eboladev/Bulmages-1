@@ -32,16 +32,29 @@ using namespace std;
 
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char *name)
-: PedidoClienteBase(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp) {
+: PedidoClienteBase(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp) ,dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform3->setcompany(comp);
     m_cliente->setcompany(comp);
     m_forma_pago->setcompany(comp);
+    m_descuentos->setcompany(comp);    
     m_almacen->setcompany(comp);
     setListLinPedidoCliente(subform3);
+    setListDescuentoPedidoCliente(m_descuentos);    
     inicialize();
     comp->meteWindow(caption(),this);
     fprintf(stderr,"Fin de la inicialización de PedidoCliente\n");
+}
+
+bool PedidoClienteView::close(bool fil) {
+    if (dialogChanges_hayCambios())  {
+        if ( QMessageBox::warning( this, "Guardar Pedido Cliente",
+                                   "Desea guardar los cambios.",
+                                   QMessageBox::Ok ,
+                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+            s_savePedidoCliente();
+    }// end if
+    return (QWidget::close(fil));
 }
 
 
@@ -63,12 +76,12 @@ void PedidoClienteView::inicialize() {
 
 
 
-void   PedidoClienteView::pintatotales(float base, float iva) {
+void   PedidoClienteView::pintatotales(float iva, float base, float total, float desc) {
     m_totalBases->setText(QString::number(base));
     m_totalTaxes->setText(QString::number(iva));
-    m_totalpedidocliente->setText(QString::number(iva+base));
+    m_totalpedidocliente->setText(QString::number(total));
+    m_totalDiscounts->setText(QString::number(desc));
 }// end pintatotales
-
 
 
 void PedidoClienteView::s_verpresupuesto() {
@@ -137,7 +150,7 @@ void PedidoClienteView::generarAlbaran() {
     LinPedidoCliente *linea;
     uint i = 0;
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        bud->getlistalineas()->nuevalinea(linea->desclpedidocliente(), linea->cantlpedidocliente(), linea->pvplpedidocliente(),linea->descuentolpedidocliente(),  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo());
+        bud->getlistalineas()->nuevalinea(linea->desclpedidocliente(), linea->cantlpedidocliente(), linea->pvplpedidocliente(),linea->descuentolpedidocliente(),  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(), linea->ivalpedidocliente());
         i++;
     }// end for
     bud->pintaAlbaranCliente();
@@ -155,4 +168,9 @@ void PedidoClienteView::s_nuevoCobro() {
     bud->show();
 }// end s_nuevoCobro
 
-
+    void PedidoClienteView::cargaPedidoCliente(QString id) {
+    PedidoCliente::cargaPedidoCliente(id);
+    setCaption("Pedido Cliente  "+mdb_refpedidocliente);
+    companyact->meteWindow(caption(),this);
+        dialogChanges_cargaInicial();
+	}

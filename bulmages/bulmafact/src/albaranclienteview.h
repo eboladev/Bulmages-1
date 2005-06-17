@@ -24,6 +24,9 @@
 #include <qlineedit.h>
 #include <qtextedit.h>
 #include <qlabel.h>
+#include "listdescalbarancliente.h"
+#include "dialogchanges.h"
+
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
@@ -36,14 +39,14 @@
 class company;
 
 
-class AlbaranClienteView : public AlbaranClienteBase, public AlbaranCliente {
+class AlbaranClienteView : public AlbaranClienteBase, public AlbaranCliente, public dialogChanges {
 Q_OBJECT
 	
 public:
 	AlbaranClienteView(company *, QWidget *, const char *);
 	~AlbaranClienteView();
 	void inicialize();
-	
+
 	
     void pintaIdAlbaran(QString) {};
     void pintaNumAlbaran(QString val) {m_numalbaran->setText(val);};
@@ -59,11 +62,12 @@ public:
     void pintarefalbaran(QString val) {m_refalbaran->setText(val);};
     void pintaNumFactura(QString) {};
     
-    void pintatotales(float, float);	
+    void pintatotales(float, float, float, float);	
     void generarFactura();
 
      
 public slots:
+	    virtual bool close(bool);
     virtual void s_comentalbarantextChanged() { setcomentalbaran(m_comentalbaran->text());};
     virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
     virtual void s_numalbarantextChanged(const QString &val) {setNumAlbaran(val);};
@@ -76,13 +80,13 @@ public slots:
     virtual void s_refalbarantextChanged(const QString &val) {setrefalbaran(val);};
     virtual void s_descalbarantextChanged(const QString &val) {setdescalbaran(val);};
     virtual void s_saveAlbaranCliente() {guardaAlbaranCliente();};
-    virtual void cargaAlbaranCliente(QString id) {AlbaranCliente::cargaAlbaranCliente(id);setCaption("Albaran Cliente  "+mdb_refalbaran);companyact->meteWindow(caption(),this);};    
+    virtual void cargaAlbaranCliente(QString id);    
     virtual void s_deleteAlbaranCliente() {borraAlbaranCliente();};
     virtual void s_printAlbaranCliente(){};
     
      /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {  
-   	 pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+   	 calculaypintatotales();
     }// end pintaTotales     
      
     virtual void s_verpresupuesto();

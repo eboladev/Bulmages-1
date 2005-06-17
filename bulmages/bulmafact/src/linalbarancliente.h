@@ -24,6 +24,7 @@ private:
     QString mdb_cantlalbaran;
     QString mdb_pvplalbaran;
     QString mdb_descontlalbaran;
+    QString mdb_ivalalbaran;
     QString mdb_idarticulo;
     /// Aunque no es un elemento de la tabla, si es importante que este incluido pq se pinta en muchas partes.
     QString mdb_codigocompletoarticulo; 
@@ -36,7 +37,7 @@ public:
     LinAlbaranCliente(company *);
     LinAlbaranCliente(company *, QString );
     /// La carga rápida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
-    LinAlbaranCliente(company *comp, QString numlalbaran, QString desclalbaran, QString cantlalbaran, QString pvplalbaran, QString descontlalbaran, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString idalbaran);
+    LinAlbaranCliente(company *comp, QString numlalbaran, QString desclalbaran, QString cantlalbaran, QString pvplalbaran, QString descontlalbaran, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString idalbaran, QString iva);
     virtual ~LinAlbaranCliente();
     virtual void pintaLinAlbaranCliente() {};
     void guardaLinAlbaranCliente();
@@ -52,6 +53,7 @@ public:
     inline QString codigocompletoarticulo() {return mdb_codigocompletoarticulo;};
     inline QString nomarticulo() {return mdb_nomarticulo;};
     inline QString idalbaran() {return mdb_idalbaran;};
+    inline QString ivalalbaran() {return mdb_ivalalbaran;};
 
     
     inline void setnumlalbaran(QString val) {mdb_numlalbaran=val;};
@@ -59,15 +61,11 @@ public:
     inline void setcantlalbaran(QString val) {mdb_cantlalbaran=val;};
     inline void setpvplalbaran(QString val)  {mdb_pvplalbaran=val;};
     inline void setdescontlalbaran(QString val) {mdb_descontlalbaran=val;};
+    inline void setivalalbaran(QString val) {mdb_ivalalbaran=val;};
     void setcodigocompletoarticulo(QString val);
     inline void setnomarticulo(QString val) {mdb_nomarticulo=val;};  
     inline void setidalbaran(QString val) {mdb_idalbaran=val;};
     void setidarticulo(QString);
-   
-    /// Hace el calculo de la base imponible de la línea  
-    float calculabase();
-    /// Hace el calculo del IVA de la línea.
-    float calculaiva();
     void borrar();  
 };
 

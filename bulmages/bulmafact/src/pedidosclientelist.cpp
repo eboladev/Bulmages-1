@@ -49,11 +49,13 @@ PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, int fl
 PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const char *name, int flag) : PedidosClienteListBase(parent, name, flag) {
     companyact = comp;
     m_cliente->setcompany(comp);
+    m_articulo->setcompany(comp);
     inicializa();
     m_modo=0;
     m_idpedidocliente="";
     meteWindow(caption(),this);
     hideBusqueda();
+    hideConfiguracion();
 }
 
 
@@ -63,24 +65,23 @@ PedidosClienteList::~PedidosClienteList() {
 
 void PedidosClienteList::inicializa() {
     m_list->setNumRows( 0 );
-    m_list->setNumCols( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
-    m_list->setSorting( TRUE );
+    m_list->setSorting( FALSE );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(14);
     m_list->horizontalHeader()->setLabel( COL_IDPEDIDOCLIENTE, tr( "COL_IDPEDIDOCLIENTE" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacï¿½" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMPEDIDOCLIENTE, tr( "N Presupuesto" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
+    m_list->horizontalHeader()->setLabel( COL_NUMPEDIDOCLIENTE, tr( "Num. Pedido" ) );
     m_list->horizontalHeader()->setLabel( COL_FECHAPEDIDOCLIENTE, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_IDSERIE_FACTURA, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_CONTACTFACTURA, tr( "Persona Contacto" ) );
-    m_list->horizontalHeader()->setLabel( COL_TELFACTURA, tr( "Telï¿½ono" ) );
+    m_list->horizontalHeader()->setLabel( COL_TELFACTURA, tr( "Teléfono" ) );
     m_list->horizontalHeader()->setLabel( COL_COMENTFACTURA, tr( "Comentarios" ) );
-    m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("COL_IDUSUARI") );
-    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
-    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("COL_IDALMACEN") );
-    m_list->horizontalHeader()->setLabel( COL_DESCPEDIDOCLIENTE, tr("Descripcion") );
+    m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("Id. Usuari") );
+    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("Id. Cliente") );
+    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacén") );
+    m_list->horizontalHeader()->setLabel( COL_DESCPEDIDOCLIENTE, tr("Descripción") );
     m_list->horizontalHeader()->setLabel( COL_REFPEDIDOCLIENTE, tr("Referencia") );
     
     m_list->setColumnWidth(COL_IDPEDIDOCLIENTE,75);
@@ -102,17 +103,13 @@ void PedidosClienteList::inicializa() {
     m_list->hideColumn(COL_IDCLIENTE);
     m_list->hideColumn(COL_IDALMACEN);
     m_list->hideColumn(COL_CODIGOALMACEN);
-    
-    if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
-        m_list->hideColumn(COL_CODIGOALMACEN);
-    }// end if
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#FFEEFF");
     m_list->setReadOnly(TRUE);
      
     
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM pedidocliente, cliente, almacen where pedidocliente.idcliente=cliente.idcliente AND pedidocliente.idalmacen=almacen.idalmacen "+generarFiltro());
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {
@@ -132,25 +129,29 @@ void PedidosClienteList::inicializa() {
 }// end inicializa
 
 QString PedidosClienteList::generarFiltro() {
+
     /// Tratamiento de los filtros.
     fprintf(stderr,"Tratamos el filtro \n");
+    
+    QString orden[] = {"fechapedidocliente","cifcliente","nomcliente","refpedidocliente","numpedidocliente"};
+    
     QString filtro="";
     if (m_filtro->text() != "") {
-        filtro = " AND ( descpresupuesto LIKE '%"+m_filtro->text()+"%' ";
+        filtro = " AND ( descpedidocliente LIKE '%"+m_filtro->text()+"%' ";
         filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
     } else {
         filtro = "";
     }// end if
     if (m_cliente->idcliente() != "") {
-        filtro += " AND pedidocliente.idcliente='"+m_cliente->idcliente()+"'";
+        filtro += " AND pedidocliente.idcliente="+m_cliente->idcliente();
     }// end if
     if (!m_procesados->isChecked() ) {
         filtro += " AND NOT procesadopedidocliente";
     }// end if
-    if (m_codigocompletoarticulo->text() != "") {
-    	filtro += " AND pedidocliente IN (SELECT DISTINCT idpresupuesto FROM (lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo) AS j WHERE j.codigocompletoarticulo='"+m_codigocompletoarticulo->text()+"')";
+    if (m_articulo->idarticulo() != "") {
+        filtro += " AND idpedidocliente IN (SELECT DISTINCT idpedidocliente FROM lpedidocliente WHERE idarticulo='"+m_articulo->idarticulo()+"')";
     }// end if
-    filtro += " ORDER BY idpedidocliente";
+    filtro += " ORDER BY "+orden[m_orden->currentItem()];
     return (filtro);
 }// end generaFiltro
 

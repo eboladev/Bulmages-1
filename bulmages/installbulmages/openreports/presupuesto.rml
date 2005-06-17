@@ -51,7 +51,7 @@
 			<stroke color="(1,0.9,0.9)"/>
 			<translate dx="15cm" dy="-5.5cm"/>
 			<rotate degrees="50"/>
-			<drawString x="23mm" y="15.7cm">BORRADORs</drawString>
+			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
 			<lineMode width="4mm"/>
 			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
 		
@@ -78,30 +78,33 @@
 	
 </template>
 <stylesheet>
-	<blockTableStyle id="tabla">
-		<lineStyle kind="INNERGRID" colorName="grey" start="0,1" stop="-1,-4"/>
-		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-4"/>
-		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,0"/>
-		<lineStyle kind="OUTLINE" colorName="black"  start="-2,-1" stop="-1,-1"/>
-		<lineStyle kind="OUTLINE" colorName="black"  start="-2,-2" stop="-1,-2"/>		
-		<lineStyle kind="OUTLINE" colorName="black"  start="-2,-3" stop="-1,-3"/>		
+	<blockTableStyle id="tablacontenido">	
 		<blockAlignment value="RIGHT" start="1,1" stop="-1,-1"/>
 		<blockBackground colorName="(0.8,0.4,0.4)" start="0,0" stop="-1,0"/>
 	</blockTableStyle>
-	<blockTableStyle id="tabla1">
+	<blockTableStyle id="tabladescuento">		
+		<blockAlignment value="RIGHT" start="1,1" stop="-1,-1"/>
+		<blockBackground colorName="(0.8,0.4,0.4)" start="0,0" stop="-1,0"/>
+	</blockTableStyle>
+	<blockTableStyle id="tablatotales">		
+		<blockAlignment value="RIGHT" start="1,1" stop="-1,-1"/>
+		<blockBackground colorName="(0.8,0.4,0.4)" start="0,0" stop="-1,0"/>
+		<blockFont name="Helvetica" size="12" start="0,0" stop="-1,-1"/>
+		<blockFont name="Helvetica" size="16" start="0,-1" stop="-1,-1"/>	</blockTableStyle>	
+	<blockTableStyle id="tabladetalle1">
 		<!--lineStyle kind="OUTLINE" colorName="white"  start="0,0" stop="-1,-1"/-->
 		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
 		<blockAlignment value="RIGHT" start="-1,0" stop="-1,-1"/>				
 		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
 		<!--blockBackground colorName="(0.8,0.4,0.4)" start="0,0" stop="-1,0"/-->
 	</blockTableStyle>	
-	<blockTableStyle id="tabla2">
+	<blockTableStyle id="tabladetalle2">
 		<!--lineStyle kind="OUTLINE" colorName="white"  start="0,0" stop="-1,-1"/-->
 		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
-		<blockAlignment value="LEFT" start="-1,0" stop="-1,-1"/>				
+		<blockAlignment value="RIGHT" start="-1,0" stop="-1,-1"/>				
 		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
 		<!--blockBackground colorName="(0.8,0.4,0.4)" start="0,0" stop="-1,0"/-->
-	</blockTableStyle>	
+	</blockTableStyle>			
 </stylesheet>
 
 <story>

@@ -30,7 +30,7 @@ ListLinAlbaranCliente::ListLinAlbaranCliente() {
 ListLinAlbaranCliente::~ListLinAlbaranCliente() {}
 
 
-void ListLinAlbaranCliente::nuevalinea(QString desclalbaran, QString cantlalbaran, QString pvplalbaran, QString descontlalbaran, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo) {
+void ListLinAlbaranCliente::nuevalinea(QString desclalbaran, QString cantlalbaran, QString pvplalbaran, QString descontlalbaran, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString iva) {
         LinAlbaranCliente *lin = new LinAlbaranCliente(companyact,
                               "",
                               desclalbaran,
@@ -40,7 +40,8 @@ void ListLinAlbaranCliente::nuevalinea(QString desclalbaran, QString cantlalbara
                               idarticulo,
                               codigocompletoarticulo,
                               nomarticulo,
-                              mdb_idalbaran
+                              mdb_idalbaran,
+			      iva
 			      );
 	m_lista.append(lin);
 }// end nuevalinea
@@ -69,7 +70,8 @@ void ListLinAlbaranCliente::cargaListLinAlbaranCliente(QString idbudget) {
                               cur->valor("idarticulo"),
                               cur->valor("codigocompletoarticulo"),
                               cur->valor("nomarticulo"),
-			      cur->valor("idalbaran"));
+			      cur->valor("idalbaran"),
+			      cur->valor("ivalalbaran"));
         m_lista.append(lin);
         i++;
         cur->siguienteregistro();
@@ -87,29 +89,6 @@ void ListLinAlbaranCliente::guardaListLinAlbaranCliente() {
         i++;
     }// end for
 }// en guardaListLinAlbaranCliente
-
-
- float ListLinAlbaranCliente::calculabase() {
-     float base=0;
-     LinAlbaranCliente *linea;
-    uint i = 0;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        base += linea->calculabase();
-        i++;
-    }// end for
-    return base;
- }// end calculabase
-
- float ListLinAlbaranCliente::calculaiva() {
-     float iva=0;
-     LinAlbaranCliente *linea;
-    uint i = 0;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        iva += linea->calculaiva();
-        i++;
-    }// end for
-    return iva;
- }// end calculabase
 
  
 void ListLinAlbaranCliente::vaciar() {

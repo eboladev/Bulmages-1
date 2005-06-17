@@ -13,6 +13,8 @@
 
 #include <qfile.h>
 
+typedef QMap<QString, float> base;
+
 
 AlbaranCliente::AlbaranCliente(company *comp) {
 	companyact=comp;
@@ -26,6 +28,7 @@ AlbaranCliente::~AlbaranCliente()
 void AlbaranCliente::borraAlbaranCliente() {
     if (mdb_idalbaran != "") {
         listalineas->borrar();
+	listadescuentos->borrar();
         companyact->begin();
         companyact->ejecuta("DELETE FROM albaran WHERE idalbaran="+mdb_idalbaran);
         companyact->commit();
@@ -64,8 +67,9 @@ void AlbaranCliente::pintaAlbaranCliente() {
     pintadescalbaran(mdb_descalbaran);
     /// Pinta el subformulario de detalle del AlbaranCliente.
     listalineas->pintaListLinAlbaranCliente();
+    listadescuentos->pintaListDescuentoAlbaranCliente();
     /// Pintamos los totales
-    pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+    calculaypintatotales();
 }// end pintaAlbaranCliente
 
 
@@ -89,6 +93,7 @@ void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
     }// end if
     delete cur;
     listalineas->cargaListLinAlbaranCliente(idbudget);
+    listadescuentos->cargaDescuentos(idbudget);
     pintaAlbaranCliente();
 }// end chargeBudget
 
@@ -128,98 +133,67 @@ void AlbaranCliente::guardaAlbaranCliente() {
     }// end if
        companyact->commit();
        listalineas->guardaListLinAlbaranCliente();
+       listadescuentos->guardaListDescuentoAlbaranCliente();
        cargaAlbaranCliente(mdb_idalbaran);
 }// end guardaAlbaranCliente
 
 
 void AlbaranCliente::imprimirAlbaranCliente() {
-    /// Copiamos el archivo
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albarancliente.rml";
-    archivo = "cp "+archivo+" /tmp/albarancliente.rml";
-    system (archivo.ascii());
-    
-    /// Copiamos el logo
-    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
-    archivo = "cp "+archivo+" /tmp/logo.jpg";
-    system (archivo.ascii());
-    
-    
-    QFile file;
-    file.setName( "/tmp/albarancliente.rml" );
-    file.open( IO_ReadOnly );
-    QTextStream stream(&file);
-    QString buff = stream.read();
-    file.close();
-    QString fitxersortidatxt;
-    // Lï¿½ea de totales del presupuesto
-
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
-        buff.replace("[dircliente]",cur->valor("dircliente"));
-        buff.replace("[poblcliente]",cur->valor("poblcliente"));
-        buff.replace("[telcliente]",cur->valor("telcliente"));
-        buff.replace("[nomcliente]",cur->valor("nomcliente"));
-        buff.replace("[cifcliente]",cur->valor("cifcliente"));
-    }// end if
-
-    buff.replace("[numalbaran]",mdb_numalbaran);
-    buff.replace("[fechaalbaran]",mdb_fechaalbaran);
-    buff.replace("[comentalbaran]",mdb_comentalbaran);
-    buff.replace("[descalbaran]",mdb_descalbaran);
-    buff.replace("[refalbaran]",mdb_refalbaran);
-
-    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td>Concepto</td>";
-    fitxersortidatxt += "	<td>Cantidad</td>";
-    fitxersortidatxt += "	<td>Precio Und.</td>";
-    fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "</tr>";
-
-    QString l;
-    LinAlbaranCliente *linea;
-    uint i = 0;
-    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td>"+linea->desclalbaran()+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlalbaran().toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplalbaran().toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlalbaran().toFloat() * linea->pvplalbaran().toFloat())+"</td>";
-        fitxersortidatxt += "</tr>";
-        i++;
-    }// end for
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Base</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Iva</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "</blockTable>";
-
-    buff.replace("[story]",fitxersortidatxt);
-    if ( file.open( IO_WriteOnly ) ) {
-        QTextStream stream( &file );
-        stream << buff;
-        file.close();
-    }
-
-    system("trml2pdf.py /tmp/albarancliente.rml > /tmp/albarancliente.pdf");
-    system("kpdf /tmp/albarancliente.pdf");
 } //end imprimirAlbaranCliente
 
 
+
+void AlbaranCliente::calculaypintatotales() {
+    base basesimp;
+    LinAlbaranCliente *linea;
+    /// Impresión de los contenidos
+    QString l;
+
+    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+    	float base = linea->cantlalbaran().toFloat() * linea->pvplalbaran().toFloat();
+        basesimp[linea->ivalalbaran()] +=  base - base * linea->descontlalbaran().toFloat()/100;
+    }// end for
+    float basei=0;
+    base::Iterator it;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        basei+=it.data();
+    }// end for
+    
+    
+    /// Impresión de los descuentos
+    float porcentt=0;
+    DescuentoAlbaranCliente *linea1;
+    if (listadescuentos->m_lista.first()) {
+        for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
+            porcentt += linea1->proporciondalbaran().toFloat();
+        }// end for	
+    }// end if
+
+
+    float totbaseimp=0;
+    float parbaseimp=0;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0.01) {
+            parbaseimp = it.data()-it.data()*porcentt/100;
+            totbaseimp += parbaseimp;
+        } else {
+            parbaseimp = it.data();
+            totbaseimp += parbaseimp;
+        }// end if
+    }// end for
+
+    float totiva=0;
+    float pariva=0;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0.01) {
+            pariva = (it.data()-it.data()*porcentt/100)*it.key().toFloat()/100;
+            totiva += pariva;
+        } else {
+            pariva = it.data()*it.key().toFloat()/100;
+            totiva += pariva;
+        }// end if
+    }// end for
+    pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
+}// end calculaypintatotales
 
 

@@ -18,12 +18,14 @@
 
 #include "company.h"
 #include "listlinalbarancliente.h"
+#include "listdescalbarancliente.h"
 /**
 @author Tomeu Borras
 */
 class AlbaranCliente{
 protected:
     ListLinAlbaranCliente *listalineas;
+    ListDescuentoAlbaranCliente *listadescuentos;
 
     company *companyact;
 
@@ -47,12 +49,18 @@ public:
         listalineas =a;
 	listalineas->setcompany(companyact);
     };    
+    void setListDescuentoAlbaranCliente ( ListDescuentoAlbaranCliente *a) {
+        listadescuentos =a;
+	listadescuentos->setcompany(companyact);
+    };    
     virtual void cargaAlbaranCliente(QString);
     void pintaAlbaranCliente();
     void guardaAlbaranCliente();
     void borraAlbaranCliente();
     ListLinAlbaranCliente* getlistalineas() {return listalineas;};
-
+    ListDescuentoAlbaranCliente* getlistadescuentos() {return listadescuentos;};
+    void calculaypintatotales();
+    
     virtual void pintaIdAlbaran(QString) {};
     virtual void pintaNumAlbaran(QString) {};
     virtual void pintafechaalbaran(QString) {};
@@ -65,9 +73,9 @@ public:
     virtual void pintaNumFactura(QString) {};
     virtual void pintadescalbaran(QString) {};
     virtual void pintarefalbaran(QString) {};
-    virtual void pintatotales(float, float) {};
+    virtual void pintatotales(float, float, float, float) {};
 
-    void setidalbaran(QString val) { mdb_idalbaran=val;listalineas->setidalbaran(val);};
+    void setidalbaran(QString val) { mdb_idalbaran=val;listalineas->setidalbaran(val);listadescuentos->setidalbaran(val);};
     void setNumAlbaran(QString val) { mdb_numalbaran=val;};
     void setfechaalbaran(QString val) { mdb_fechaalbaran=val;};
     void setloginusuario(QString val) { mdb_loginusuario=val;};

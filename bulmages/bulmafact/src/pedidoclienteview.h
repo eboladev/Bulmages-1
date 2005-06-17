@@ -15,10 +15,12 @@
 #include <pedidoclientebase.h>
 #include "factura.h"
 #include "listlinpedidoclienteview.h"
+#include "listdescpedidoclienteview.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
+#include "dialogchanges.h"
 
 #include "pedidocliente.h"
 #include <qlineedit.h>
@@ -32,7 +34,7 @@
 @author Tomeu Borras
 */
 
-class PedidoClienteView : public PedidoClienteBase, public PedidoCliente {
+class PedidoClienteView : public PedidoClienteBase, public PedidoCliente, public dialogChanges {
 Q_OBJECT
 public:
     PedidoClienteView(company *, QWidget *parent = 0, const char *name = 0);
@@ -53,13 +55,17 @@ public:
     void pintaidforma_pago(QString id) {m_forma_pago->setidforma_pago(id);};
     void pintacomentpedidocliente(QString id) {m_comentpedidocliente->setText(id);};
     void pintarefpedidocliente(QString id) {m_refpedidocliente->setText(id);};
-    void pintatotales(float base, float iva);   
+    void pintatotales(float iva, float base, float total, float desc);   
     void pintaprocesadopedidocliente(QString id) {
 	if (id == "t" || id == "TRUE") m_procesadopedidocliente->setChecked(TRUE);
 	else m_procesadopedidocliente->setChecked(FALSE);
 };    
 
+
+
+    
 public slots:
+    virtual bool close(bool);
     virtual void s_comentpedidoclientetextChanged() { setcomentpedidocliente(m_comentpedidocliente->text());};
     virtual void s_numpedidoclientetextChanged(const QString &val) {setnumpedidocliente(val);};
     virtual void s_clientevalueChanged(QString val) {setidcliente(val);};
@@ -71,7 +77,7 @@ public slots:
     virtual void s_descpedidoclientetextChanged(const QString &val) {setdescpedidocliente(val);};
 
     virtual void s_savePedidoCliente() {guardaPedidoCliente();};
-    virtual void cargaPedidoCliente(QString id) {PedidoCliente::cargaPedidoCliente(id);setCaption("Pedido Cliente  "+mdb_refpedidocliente);companyact->meteWindow(caption(),this);};
+    virtual void cargaPedidoCliente(QString id);
     
     virtual void s_deletePedidoCliente() {borraPedidoCliente();};
     virtual void s_printPedidoCliente(){imprimirPedidoCliente();};
@@ -84,7 +90,7 @@ public slots:
      /// Este slot se activa cuando hay cambios en los subformularios.
      
     virtual void s_pintaTotales() {  
-   	 pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+   	 calculaypintatotales();
     }// end pintaTotales
     
     virtual void s_verpresupuesto();

@@ -54,10 +54,8 @@ public:
     
     void cargaListLinAlbaranCliente(QString);
     void borrar();
-    void nuevalinea(QString desclalbaran, QString cantlalbaran, QString pvplalbaran, QString descontlalbaran, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo);
+    void nuevalinea(QString desclalbaran, QString cantlalbaran, QString pvplalbaran, QString descontlalbaran, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString iva);
     LinAlbaranCliente *linpos(int);
-    float calculabase();
-    float calculaiva();
     void borraLinAlbaranCliente(int);
 };
 

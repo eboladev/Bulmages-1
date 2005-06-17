@@ -14,6 +14,7 @@
 
 #include <pedidosclientelistbase.h>
 #include "busquedacliente.h"
+#include "busquedaarticulo.h"
 #include "company.h"
 /**
 @author Tomeu Borras
@@ -41,6 +42,8 @@ public:
     void showBotonera() {m_botonera->show();};
     void hideBusqueda() {fprintf(stderr,"Ocultar busqueda\n");m_busqueda->hide();};
     void showBusqueda() {m_busqueda->show();};    
+    void hideConfiguracion() {m_configuracion->hide();};
+    void showConfiguracion() {m_configuracion->show();};    
     QString idpedidocliente() {return m_idpedidocliente;}; 
     void setidcliente(QString val) {m_cliente->setidcliente(val);};  
         void meteWindow(QString nom, QObject *obj) {
@@ -60,7 +63,15 @@ public slots:
 		hideBusqueda();
 	else
 		 showBusqueda();
-	};	
+	};
+	
+    virtual void s_mostrarConfiguracion() {
+    	fprintf(stderr,"s_mostrarConfiguracion\n");
+    	if (m_configuracion->isVisible())
+		hideConfiguracion();
+	else
+		 showConfiguracion();
+	};		
 };
 
 #endif
