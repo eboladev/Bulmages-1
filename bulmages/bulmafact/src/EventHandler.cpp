@@ -5,12 +5,12 @@
 #include "funcaux.h"
 
 
-EventHandler::EventHandler(QWidget *EH, const int textEditType=0 ){
+EventHandler::EventHandler(QWidget *, const int textEditType=0 ){
 	m_TextEditType=textEditType;
 };
 
 
-EventHandler::EventHandler(QWidget *EH, QTable *table ){
+EventHandler::EventHandler(QWidget *, QTable * ){
 	
 };
 

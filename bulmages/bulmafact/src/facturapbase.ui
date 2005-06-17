@@ -642,7 +642,7 @@
 <customwidgets>
     <customwidget>
         <class>BusquedaFormaPago</class>
-        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedaformapago.h</header>
+        <header location="local">busquedaformapago.h</header>
         <sizehint>
             <width>20</width>
             <height>20</height>
@@ -659,7 +659,7 @@
     </customwidget>
     <customwidget>
         <class>BusquedaFecha</class>
-        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedafecha.h</header>
+        <header location="local">busquedafecha.h</header>
         <sizehint>
             <width>20</width>
             <height>20</height>
@@ -676,7 +676,7 @@
     </customwidget>
     <customwidget>
         <class>BusquedaProveedor</class>
-        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedaproveedor.h</header>
+        <header location="local">busquedaproveedor.h</header>
         <sizehint>
             <width>50</width>
             <height>20</height>
@@ -693,7 +693,7 @@
     </customwidget>
     <customwidget>
         <class>ListLinFacturaProveedorView</class>
-        <header location="local">/home/tborras/bulmages/bulmafact/src/listlinfacturapview.h</header>
+        <header location="local">listlinfacturapview.h</header>
         <sizehint>
             <width>-1</width>
             <height>-1</height>

@@ -119,7 +119,7 @@ public:
   /// \brief Destructor de la clase que libera memoria.
   ~postgresiface2();
   /// \brief la clase debe ser inicializada con algunos parametros  para poder funcionar.
-  int inicializa(QString nomdb, QString user="", QString passwd="");
+  int inicializa(QString nomdb);
   /// \brief Inicia una transacción.
   int begin();
   /// \brief Termina una transacción

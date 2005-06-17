@@ -331,7 +331,7 @@
 <customwidgets>
     <customwidget>
         <class>BusquedaCliente</class>
-        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedacliente.h</header>
+        <header location="local">busquedacliente.h</header>
         <sizehint>
             <width>20</width>
             <height>20</height>
@@ -348,7 +348,7 @@
     </customwidget>
     <customwidget>
         <class>BusquedaFecha</class>
-        <header location="local">/home/tborras/bulmages/bulmafact/src/busquedafecha.h</header>
+        <header location="local">busquedafecha.h</header>
         <sizehint>
             <width>20</width>
             <height>20</height>

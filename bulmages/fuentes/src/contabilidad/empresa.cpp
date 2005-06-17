@@ -76,10 +76,9 @@ empresa::~empresa(){
 int empresa::inicializa1(QString nombreDB, QWorkspace *space) {
    fprintf(stderr,"EMPRESA::inicializa1()\n");
    pWorkspace = space;
-   nombre = confpr->valor(CONF_LOGIN_USER);
-   contrasenya = confpr->valor(CONF_PASSWORD_USER);
+
    fprintf(stderr,"conexionbase->inicializa\n");
-   conexionbase2->inicializa(nombreDB, nombre, contrasenya);
+   conexionbase2->inicializa(nombreDB);
    fprintf(stderr,"fin de conexionbase->inicializa\n");
 
   

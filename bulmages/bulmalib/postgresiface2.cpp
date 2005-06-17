@@ -220,13 +220,16 @@ postgresiface2::~postgresiface2() {
   * \param passwd Indica la contrase� que utiliza el usuario para autentificarse
   * \return Si todo va bien devuelve 0, en caso contrario devuelve 1
   */
-int postgresiface2::inicializa(QString nomdb, QString user, QString passwd) {
+int postgresiface2::inicializa(QString nomdb) {
     dbName=nomdb;
     pghost = confpr->valor(CONF_SERVIDOR);             /** host name of the backend server */
     pgport = confpr->valor(CONF_PUERTO);              /** port of the backend server */
     pgoptions = "";           /** special options to start up the backend server */
     pgtty = "";               /** debugging tty for the backend server */
     QString conexion;
+    
+    QString user = confpr->valor(CONF_LOGIN_USER);
+    QString passwd = confpr->valor(CONF_PASSWORD_USER);
 
 //    if (pghost != "localhost") {
 //        conexion = "hostaddr="+pghost+" port="+pgport;
@@ -246,7 +249,7 @@ int postgresiface2::inicializa(QString nomdb, QString user, QString passwd) {
     }// end if
 
     fprintf(stderr,"%s\n",conexion.ascii());
-    conn = PQconnectdb(conexion);
+    conn = PQconnectdb(conexion.ascii());
     if (PQstatus(conn) == CONNECTION_BAD)  {
         fprintf(stderr, "Connection to database '%s' failed.\n", dbName.ascii());
         fprintf(stderr, "%s", PQerrorMessage(conn));

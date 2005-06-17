@@ -112,7 +112,7 @@ void BConfiguracion::BotonA_10aceptar() {}// BotonA_10aceptar
 /// Responde a la pusación de importar datos de Contaplus a BulmaGés
 void BConfiguracion::BotonContaplus() {
     postgresiface2 *DBconn = new postgresiface2();
-    DBconn->inicializa(PunteroAlSelector->empresaDB(), confpr->valor(CONF_LOGIN_USER).ascii(), confpr->valor(CONF_PASSWORD_USER).ascii());
+    DBconn->inicializa(PunteroAlSelector->empresaDB());
     importContaplus *import= new importContaplus(DBconn,0,0,0);
     import->exec();
     delete import;

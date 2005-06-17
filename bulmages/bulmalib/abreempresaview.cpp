@@ -126,7 +126,7 @@ void abreempresaview::guardaArchivo() {
         confpr->setValor(CONF_ALERTAS_DB,"No");
         postgresiface2 *db, *db1;
         db = new postgresiface2();
-        db->inicializa(QString("template1"), confpr->valor(CONF_LOGIN_USER), confpr->valor(CONF_PASSWORD_USER));
+        db->inicializa(QString("template1"));
         db->begin();
         QString nombre;
         QString nomdb="";
@@ -136,7 +136,7 @@ void abreempresaview::guardaArchivo() {
         db->commit();
         while (! curs->eof()) {
                 db1 = new postgresiface2();
-                db1->inicializa(curs->valor("datname"), confpr->valor(CONF_LOGIN_USER), confpr->valor(CONF_PASSWORD_USER));
+                db1->inicializa(curs->valor("datname"));
                 db1->begin();
                 cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre='Tipo'","masquery");
                 if (!curs1->eof() ) {

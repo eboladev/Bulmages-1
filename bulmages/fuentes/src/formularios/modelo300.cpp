@@ -47,7 +47,9 @@ Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
   QString query="select descripcion,bancoent_cuenta,codigo from cuenta where codigo like '572%%' and codigo>572";
 
   postgresiface2 *metabase = new postgresiface2();
+  
    metabase->inicializa("bulmages");//[TODO] CAMBIAR!!!!
+   
   metabase->begin();
   fprintf(stderr,"%s\n",query.ascii());
   cursor2 *cur = metabase->cargacursor(query,"bancos");
