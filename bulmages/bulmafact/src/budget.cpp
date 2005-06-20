@@ -30,6 +30,9 @@
 #include "albaranclienteview.h"
 #include "busquedacliente.h"
 #include "busquedaformapago.h"
+
+#include "informereferencia.h"
+
 #include <qmessagebox.h>
 
 #include <qtable.h>
@@ -131,11 +134,12 @@ void Budget::s_removeBudget() {
     }// end if
 }// end boton_borrar
 
-void   Budget::pintatotales(float iva, float base, float total, float desc) {
-    m_totalBases->setText(QString::number(base));
-    m_totalTaxes->setText(QString::number(iva));
-    m_totalBudget->setText(QString::number(total));
-    m_totalDiscounts->setText(QString::number(desc));
+void   Budget::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+    fprintf(stderr,"pintatotales()\n");
+    m_totalBases->setText(QString(base.toQString()));
+    m_totalTaxes->setText(QString(iva.toQString()));
+    m_totalBudget->setText(QString(total.toQString()));
+    m_totalDiscounts->setText(QString(desc.toQString()));
 }// end pintatotales
 
 
@@ -175,6 +179,8 @@ void Budget::generarPedidoCliente() {
     bud->setrefpedidocliente(mdb_refpresupuesto);
     bud->setprocesadopedidocliente(mdb_procesadopresupuesto);
     bud->setidalmacen(mdb_idalmacen);
+    bud->setcontactpedidocliente(mdb_contactpresupuesto);
+    bud->settelpedidocliente(mdb_telpresupuesto);
     QString l;
     linpresupuesto *linea;
     uint i = 0;
@@ -182,61 +188,35 @@ void Budget::generarPedidoCliente() {
         bud->getlistalineas()->nuevalinea(linea->desclpresupuesto(), linea->cantlpresupuesto(), linea->pvplpresupuesto(), "", linea->ivalpresupuesto(), linea->descuentolpresupuesto(), linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo());
         i++;
     }// end for
+
+    DescuentoPresupuesto *linea1;
+    i = 0;
+    for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
+        bud->getlistadescuentos()->nuevalinea(linea1->conceptdpresupuesto(), linea1->proporciondpresupuesto());
+        i++;
+    }// end for
+
     bud->pintaPedidoCliente();
     bud->show();
 }// end generaPedidoCliente
 
 
 
-/// Se encarga de generar un pedido a partir del presupuesto.
-void Budget::generarAlbaranCliente() {
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la función.
-    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='"+mdb_refpresupuesto+"'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
-        AlbaranClienteView *bud = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albaranes de Clientes", "company"));
-        bud->cargaAlbaranCliente(cur->valor("idalbaran"));
-        bud->show();
-        return;
-    }
-    delete cur;
-
-
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la función.
-    if (QMessageBox::question(
-                this,
-                tr("Albaran Cliente Inexistente"),
-                tr("No existe un albaran asociado a este presupuesto."
-                   "Desea Crearlo ?"),
-                tr("&Yes"), tr("&No"),
-                QString::null, 0, 1 ) )
-        return;
-
-    /// Creamos el pedido.
-    AlbaranClienteView *bud = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Clientes", "company"));
-    bud->vaciaAlbaranCliente();
-    bud->setidcliente(mdb_idcliente);
-    bud->setcomentalbaran(mdb_comentpresupuesto);
-    bud->setdescalbaran(mdb_descpresupuesto);
-    bud->setfechaalbaran(mdb_fpresupuesto);
-    bud->setidforma_pago(mdb_idforma_pago);
-    bud->setrefalbaran(mdb_refpresupuesto);
-    QString l;
-
-    linpresupuesto *linea;
-    uint i = 0;
-    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        bud->getlistalineas()->nuevalinea(linea->desclpresupuesto(), linea->cantlpresupuesto(), linea->pvplpresupuesto(), linea->descuentolpresupuesto(), linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(), linea->ivalpresupuesto());
-        i++;
-    }// end for
-    bud->pintaAlbaranCliente();
-    bud->show();
-}// end generaPedidoCliente
 
 void Budget::chargeBudget(QString id) {
     presupuesto::chargeBudget(id);
     setCaption("presupuesto "+mdb_refpresupuesto);
     companyact->meteWindow(caption(),this);
     dialogChanges_cargaInicial();
+}
+
+
+
+void Budget::s_informeReferencia() {
+    InformeReferencia *inf = new InformeReferencia(companyact);
+    inf->setreferencia(mdb_refpresupuesto);
+    inf->generarinforme();
+    delete inf;
+
 }
 

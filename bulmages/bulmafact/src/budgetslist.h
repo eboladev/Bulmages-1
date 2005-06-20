@@ -72,7 +72,6 @@ public slots:
     virtual void s_imprimir() {imprimir();};
     virtual void s_filtrar() {inicializa();};
     virtual void s_mostrarBusqueda() {
-    	fprintf(stderr,"s_mostrarBusqueda\n");
     	if (m_busqueda->isVisible())
 		hideBusqueda();
 	else
@@ -80,7 +79,6 @@ public slots:
 	};
 	
     virtual void s_mostrarConfiguracion() {
-    	fprintf(stderr,"s_mostrarConfiguracion\n");
     	if (m_configuracion->isVisible())
 		hideConfiguracion();
 	else

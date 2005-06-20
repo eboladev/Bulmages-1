@@ -52,7 +52,7 @@ CREATE TABLE forma_pago (
    idforma_pago serial PRIMARY KEY,
    descforma_pago character varying(500),
    dias1tforma_pago integer,
-   descuentoforma_pago numeric(5,2)
+   descuentoforma_pago numeric(12,2)
 );
 
 
@@ -232,7 +232,7 @@ CREATE TABLE articulo (
     idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
     codigocompletoarticulo character varying(100) UNIQUE,
     idfamilia integer REFERENCES familia(idfamilia) NOT NULL,
-    stockarticulo numeric(5,2) DEFAULT 0,    
+    stockarticulo numeric(12,2) DEFAULT 0,    
     inactivoarticulo character(1),
     -- ATENCION, este campo no da el pvp real del artículo, solo es una de las multiples formas de acceder al precio del articulo.
     -- Para obtener el precio de un artículo se debe usar la funcion pvparticulo.
@@ -366,7 +366,7 @@ CREATE TABLE cobro (
    idcobro serial PRIMARY KEY,
    idcliente integer NOT NULL REFERENCES cliente(idcliente),
    fechacobro date DEFAULT NOW(),
-   cantcobro numeric(5,2) DEFAULT 0,
+   cantcobro numeric(12,2) DEFAULT 0,
    refcobro character varying(12) NOT NULL,
    previsioncobro boolean DEFAULT FALSE,
    comentcobro character varying(500)
@@ -377,7 +377,7 @@ CREATE TABLE pago (
    idpago serial PRIMARY KEY,
    idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
    fechapago date DEFAULT NOW(),
-   cantpago numeric(5,2) DEFAULT 0,
+   cantpago numeric(12,2) DEFAULT 0,
    refpago character varying(12) NOT NULL,
    previsionpago boolean DEFAULT FALSE,
    comentpago character varying(500)
@@ -452,11 +452,11 @@ CREATE TABLE alb_pro (
 CREATE TABLE lpedido (
    numlpedido serial PRIMARY KEY,
    desclpedido character varying(150),
-   cantlpedido numeric(5,2),
-   pvdlpedido numeric(5,2),
+   cantlpedido numeric(12,2),
+   pvdlpedido numeric(12,2),
    prevlpedido date,
-   ivalpedido numeric(5,2),
-   descuentolpedido numeric(5,2),
+   ivalpedido numeric(12,2),
+   descuentolpedido numeric(12,2),
    idpedido integer NOT NULL REFERENCES pedido(idpedido),
    idalb_pro integer REFERENCES alb_pro(idalb_pro),
    idarticulo integer REFERENCES articulo(idarticulo)
@@ -531,7 +531,7 @@ CREATE TRIGGER restriccionespresupuestotrigger
 CREATE TABLE dpresupuesto (
    iddpresupuesto serial PRIMARY KEY,
    conceptdpresupuesto character varying(2000),
-   proporciondpresupuesto numeric(5,2),
+   proporciondpresupuesto numeric(12,2),
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
    -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
 );
@@ -548,10 +548,10 @@ CREATE TABLE dpresupuesto (
 CREATE TABLE lpresupuesto (
    idlpresupuesto serial PRIMARY KEY,
    desclpresupuesto character varying(150),
-   cantlpresupuesto numeric(5,2),
-   pvplpresupuesto numeric(5,2),
-   ivalpresupuesto numeric(5,2),
-   descuentolpresupuesto numeric(5,2),
+   cantlpresupuesto numeric(12,2),
+   pvplpresupuesto numeric(12,2),
+   ivalpresupuesto numeric(12,2),
+   descuentolpresupuesto numeric(12,2),
    idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -570,6 +570,8 @@ CREATE TABLE pedidocliente (
    refpedidocliente character varying(12) NOT NULL,   
    descpedidocliente character varying(500),
    comentpedidocliente character varying(3000),
+   contactpedidocliente character varying(90),
+   telpedidocliente character varying(20),   
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
    procesadopedidocliente boolean DEFAULT FALSE,   
    idcliente integer NOT NULL REFERENCES cliente(idcliente),
@@ -615,7 +617,7 @@ CREATE TRIGGER restriccionespedidoclientetrigger
 CREATE TABLE dpedidocliente (
    iddpedidocliente serial PRIMARY KEY,
    conceptdpedidocliente character varying(2000),
-   proporciondpedidocliente numeric(5,2),
+   proporciondpedidocliente numeric(12,2),
    idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente)
    -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
 );    
@@ -629,11 +631,11 @@ CREATE TABLE dpedidocliente (
 CREATE TABLE lpedidocliente (
    numlpedidocliente serial PRIMARY KEY,
    desclpedidocliente character varying(150),
-   cantlpedidocliente numeric(5,2),
-   pvplpedidocliente numeric(5,2),
+   cantlpedidocliente numeric(12,2),
+   pvplpedidocliente numeric(12,2),
    prevlpedidocliente date,
-   ivalpedidocliente numeric(5,2),
-   descuentolpedidocliente numeric(5,2),   
+   ivalpedidocliente numeric(12,2),
+   descuentolpedidocliente numeric(12,2),   
    idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -693,6 +695,20 @@ CREATE TRIGGER restriccionesfacturatrigger
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesfactura();
 
+    
+-- Descuento de pedidocliente.
+-- Numero
+--Concepte: Descripció del motiu de descompte.
+--Proporcio: Percentatge a descomptar.
+-- Descompte de pressupost a clients.
+CREATE TABLE dfactura (
+   iddfactura serial PRIMARY KEY,
+   conceptdfactura character varying(2000),
+   proporciondfactura numeric(12,2),
+   idfactura integer NOT NULL REFERENCES factura(idfactura)
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
+); 
+    
 
 -- Linea de presupuesto
 -- Numero
@@ -704,10 +720,10 @@ CREATE TRIGGER restriccionesfacturatrigger
 CREATE TABLE lfactura (
    idlfactura serial PRIMARY KEY,
    desclfactura character varying(150),
-   cantlfactura numeric(5,2),
-   pvplfactura numeric(5,2),
-   ivalfactura numeric(5,2),
-   descuentolfactura numeric(5,2),
+   cantlfactura numeric(12,2),
+   pvplfactura numeric(12,2),
+   ivalfactura numeric(12,2),
+   descuentolfactura numeric(12,2),
    idfactura integer NOT NULL REFERENCES factura(idfactura),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -766,10 +782,10 @@ CREATE TRIGGER restriccionesfacturaptrigger
 CREATE TABLE lfacturap (
    idlfacturap serial PRIMARY KEY,
    desclfacturap character varying(150),
-   cantlfacturap numeric(5,2),
-   pvplfacturap numeric(5,2),
-   ivalfacturap numeric(5,2),
-   descuentolfacturap numeric(5,2),
+   cantlfacturap numeric(12,2),
+   pvplfacturap numeric(12,2),
+   ivalfacturap numeric(12,2),
+   descuentolfacturap numeric(12,2),
    idfacturap integer NOT NULL REFERENCES facturap(idfacturap),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -857,10 +873,10 @@ CREATE TRIGGER restriccionesalbaranptrigger
 CREATE TABLE lalbaranp (
    numlalbaranp serial PRIMARY KEY,
    desclalbaranp character varying(100),
-   cantlalbaranp numeric(5,2),
-   ivalalbaranp numeric(5,2),
-   pvplalbaranp numeric(5,2),
-   descontlalbaranp numeric(5,2),
+   cantlalbaranp numeric(12,2),
+   ivalalbaranp numeric(12,2),
+   pvplalbaranp numeric(12,2),
+   descontlalbaranp numeric(12,2),
    idalbaranp integer NOT NULL REFERENCES albaranp(idalbaranp),
    idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
 );
@@ -1013,7 +1029,7 @@ END;
 CREATE TABLE dalbaran (
    iddalbaran serial PRIMARY KEY,
    conceptdalbaran character varying(500),
-   proporciondalbaran numeric(5,2),
+   proporciondalbaran numeric(12,2),
    idalbaran integer NOT NULL REFERENCES albaran(idalbaran)
 );
 
@@ -1027,10 +1043,10 @@ CREATE TABLE dalbaran (
 CREATE TABLE lalbaran (
    numlalbaran serial PRIMARY KEY,
    desclalbaran character varying(100),
-   cantlalbaran numeric(5,2),
-   pvplalbaran numeric(5,2),
-   descontlalbaran numeric(5,2),
-   ivalalbaran numeric(5,2),
+   cantlalbaran numeric(12,2),
+   pvplalbaran numeric(12,2),
+   descontlalbaran numeric(12,2),
+   ivalalbaran numeric(12,2),
    idalbaran integer NOT NULL REFERENCES albaran(idalbaran),
    idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
 );
@@ -1080,7 +1096,7 @@ CREATE TABLE ticket (
 CREATE TABLE suministra (
    idsuministra serial PRIMARY KEY,
    refpro character varying(100),
-   principalsuministra numeric(5,2),
+   principalsuministra numeric(12,2),
    idproveedor integer REFERENCES proveedor(idproveedor),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -1189,7 +1205,7 @@ CREATE TABLE codigobarras (
 
 -- FUNCIONES VARIAS DE SOPORTE.
 
-CREATE OR REPLACE FUNCTION ivaarticulo(integer) RETURNS numeric(5,2)
+CREATE OR REPLACE FUNCTION ivaarticulo(integer) RETURNS numeric(12,2)
 AS'
 DECLARE
 	idarticulo ALIAS FOR $1;
@@ -1204,7 +1220,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-CREATE OR REPLACE FUNCTION pvparticulo(integer) RETURNS numeric(5,2)
+CREATE OR REPLACE FUNCTION pvparticulo(integer) RETURNS numeric(12,2)
 AS'
 DECLARE
 	idarticulo ALIAS FOR $1;

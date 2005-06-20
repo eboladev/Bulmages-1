@@ -21,7 +21,7 @@
 #define clientslist_H
 
 #include "clientslistbase.h"
-
+#include <qframe.h>
 
 class company;
 
@@ -42,11 +42,18 @@ public:
     ~ClientsList();
     void selectMode() {m_mode=1;};
     void editMode() {m_mode=0;};
-    void initClients();
+    void inicializa();
     QString idclient() {return m_idclient;};
     QString nomclient() {return m_nomclient;};
     QString cifclient() {return m_cifclient;};
-
+    void hideBotonera() {m_botonera->hide();};
+    void showBotonera() {m_botonera->show();};
+    void hideBusqueda() {m_busqueda->hide();};
+    void showBusqueda() {m_busqueda->show();};
+    void hideConfiguracion() {m_configuracion->hide();};
+    void showConfiguracion() {m_configuracion->show();};
+    
+    
 public slots:
     virtual void newClient();
     //virtual void selectClient(int, int, int, const QPoint &);
@@ -55,6 +62,23 @@ public slots:
     virtual void m_clientList_doubleClicked(int, int, int, const QPoint &);
     virtual void s_printClients();    
     virtual void s_findClients();
+    
+    virtual void s_mostrarBusqueda() {
+    	fprintf(stderr,"s_mostrarBusqueda\n");
+    	if (m_busqueda->isVisible())
+		hideBusqueda();
+	else
+		 showBusqueda();
+	};
+	
+    virtual void s_mostrarConfiguracion() {
+    	fprintf(stderr,"s_mostrarConfiguracion\n");
+    	if (m_configuracion->isVisible())
+		hideConfiguracion();
+	else
+		 showConfiguracion();
+	};    
+    virtual void s_filtrar() {inicializa();};    
 };
 
 #endif

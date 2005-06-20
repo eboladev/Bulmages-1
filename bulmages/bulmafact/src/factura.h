@@ -17,6 +17,8 @@
 #include <qptrlist.h>
 
 #include "listlinfactura.h"
+#include "listdescfactura.h"
+
 #include "company.h"
 #include "linfactura.h"
 /** @author Tomeu Borras & Alvaro de Miguel
@@ -27,6 +29,7 @@
 class Factura {
 protected:
     ListLinFactura *listalineas;
+    ListDescuentoFactura *listadescuentos;
 
     company *companyact;
 
@@ -54,8 +57,14 @@ public:
         listalineas =a;
 	listalineas->setcompany(companyact);
     };
-    
+
+    void setListDescuentoFactura ( ListDescuentoFactura *a) {
+        listadescuentos =a;
+	listadescuentos->setcompany(companyact);
+    }; 
+            
     ListLinFactura* getlistalineas() {return listalineas;};    
+    ListDescuentoFactura* getlistadescuentos() {return listadescuentos;};
     
     Factura(company *);
     virtual ~Factura();
@@ -64,6 +73,7 @@ public:
     void guardaFactura();
     void borraFactura();
     void imprimirFactura();
+    void calculaypintatotales(); 
     
     virtual void pintaidcliente(QString ) {};
 
@@ -79,7 +89,7 @@ public:
 
     virtual void pintaidforma_pago(QString) {};
     virtual void pintaprocesadafactura(QString) {};
-    virtual void pintatotales(float, float) {};
+    virtual void pintatotales(float, float,float, float) {};
 
     void setidcliente(QString val) { mdb_idcliente=val;};
     void setidalmacen(QString val) { mdb_idalmacen=val;};
@@ -91,7 +101,7 @@ public:
     void setcodigoserie_factura(QString val) {mdb_codigoserie_factura=val;};
     void setcomentfactura(QString val) { mdb_comentfactura=val;};
 
-    void setidfactura(QString val) {mdb_idfactura=val;listalineas->setidfactura(val);};
+    void setidfactura(QString val) {mdb_idfactura=val;listalineas->setidfactura(val);listadescuentos->setidfactura(val);};
     void setIdUsuari(QString val) {mdb_idusuari=val;};
     void setidforma_pago(QString val) {mdb_idforma_pago=val;};
     void setprocesadafactura(QString val) {mdb_procesadafactura=val;};

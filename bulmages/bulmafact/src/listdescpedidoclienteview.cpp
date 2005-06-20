@@ -45,7 +45,7 @@ ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView(QWidget * parent,
     setSelectionMode( QTable::SingleRow );
 
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-    setPaletteBackgroundColor("#DDDDDD");
+    setPaletteBackgroundColor(confpr->valor(CONF_BG_DESCPEDIDOSCLIENTE));
 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
 

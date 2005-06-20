@@ -105,7 +105,7 @@ void PedidosClienteList::inicializa() {
     m_list->hideColumn(COL_CODIGOALMACEN);
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#FFEEFF");
+    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPEDIDOSCLIENTE));
     m_list->setReadOnly(TRUE);
      
     

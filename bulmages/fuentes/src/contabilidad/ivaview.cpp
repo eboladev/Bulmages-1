@@ -118,6 +118,11 @@ CREATE TABLE fpago (
 #define COL_IVA_BASEIVA 6
 #define COL_IVA_IVAIVA 7
 
+
+#include "fixed.h"
+
+//class fixed;
+
 /**
   * \brief constructor de la clase
   * Inicializa la clase cargando el puntero de empresaactual y de conexionbase para que apunten a las clases amigas apropiadas.
@@ -145,7 +150,6 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
     m_listIva->hideColumn(COL_IVA_IDIVA);
     m_listIva->hideColumn(COL_IVA_IDTIPOIVA);
     m_listIva->hideColumn(COL_IVA_IDREGISTROIVA);
-//    m_listIva->hideColumn(COL_IVA_PORCENTAJETIPOIVA);
 
     m_listPrevision->setNumCols(13);
     m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDPREVCOBRO, tr( "IDPREVCOBRO") );
@@ -161,7 +165,6 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
     m_listPrevision->horizontalHeader()->setLabel( COL_PREV_TIPOCOBRO, tr( "COBRO/PAGO") );
     m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDASIENTO, tr( "IDASIENTO") );
     m_listPrevision->horizontalHeader()->setLabel( COL_PREV_ORDENASIENTO, tr( "ORDENASIENTO") );
-    
     
     m_listPrevision->setColumnWidth(COL_PREV_FPREVISTAPREVCOBRO,90);
     m_listPrevision->setColumnWidth(COL_PREV_FCOBROPREVCOBRO,90);
@@ -359,14 +362,14 @@ void ivaview::boton_borrar() {
   * \todo Con esta forma de hacer las cosas hay un problema si los nmeros no llevan el formato de . y dos cifras decimales. (Hay que tenerlo muy en cuenta)
   */
 void ivaview::calculaTotales() {
-    double base=0;
-    double iva=0;
+    Fixed base("0");
+    Fixed iva("0");
     for (int i=0;i< m_listIva->numRows(); i++) {
-        base += m_listIva->text(i,COL_IVA_BASEIVA).toDouble();
-        iva += m_listIva->text(i,COL_IVA_IVAIVA).toDouble();
+        base = base + Fixed(m_listIva->text(i,COL_IVA_BASEIVA).ascii());
+        iva = iva + Fixed(m_listIva->text(i,COL_IVA_IVAIVA).ascii());
     }// end for
-    QString ivastr = QString::number(iva);
-    ivastr = ivastr.left(ivastr.length()-2)+"."+ivastr.right(2);
+    QString ivastr = iva.toQString();
+//    ivastr = ivastr.left(ivastr.length()-2)+"."+ivastr.right(2);
     importeiva->setText(ivastr);
 }// end calculaTotales
 
@@ -575,8 +578,32 @@ int ivaview::buscaborradorcliente(int idborrador) {
     SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
     conexionbase->ejecuta(SQLQuery);
     conexionbase->commit();
+    
+        /// Cogemos de la configuraci� las cuentas que queremos que se apunten.
+    /// Montamos los querys en base a la cadena cuentas.
+    // SE consideran cuentas de Derechos o de Obligaciones a Clientes y Proveedores.
+    // Los campos sirven para encontrar la cuenta que corresponde a quien hace el pago de la factura.
+    
+    QString cuentas="";
+    SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasDerechos'";
+    cursor2 *cur1=conexionbase->cargacursor(SQLQuery);
+    if (!cur1->eof()) {
+    	cuentas += cur1->valor("valor"); 
+    }// end if
+    delete cur1;
+    SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasObligaciones'";
+    cur1=conexionbase->cargacursor(SQLQuery);
+    if (!cur1->eof()) {
+    	cuentas += ";"+cur1->valor("valor"); 
+    }// end if
+    delete cur1;
+    cuentas.replace(';',"%|^");
+    cuentas = "'^"+cuentas+"%'"; 
+    
+    
+    
     /// Atentos aqu�que aqui es donde se incorpora el parametro.
-    SQLQuery = "SELECT * FROM lacosa WHERE codigo LIKE '43%' OR codigo LIKE '40%' OR codigo LIKE '41%'";
+    SQLQuery = "SELECT * FROM lacosa WHERE codigo SIMILAR TO "+cuentas;
     cursor2 * cur=conexionbase->cargacursor(SQLQuery, "buscaapunte");
     while (! cur->eof() ) {
         /// Ponemos la cuenta de Cliente y los valores adyacentes

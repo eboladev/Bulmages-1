@@ -35,15 +35,15 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget * parent, const char * na
     /// Inicializamos la tabla de lineas de presupuesto
     setNumCols(12);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "N Lï¿½ea" ) );
-    horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripciï¿½" ) );
+    horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "N. Línea" ) );
+    horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripción" ) );
     horizontalHeader()->setLabel( COL_CANTLPRESUPUESTO, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_PVPLPRESUPUESTO, tr( "Precio" ) );
     horizontalHeader()->setLabel( COL_DESCUENTOLPRESUPUESTO, tr( "Descuento" ) );
     horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "N Pedido" ) );
-    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artï¿½ulo" ) );
-    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Cï¿½igo Artï¿½ulo" ) );
-    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripciï¿½ Artï¿½ulo" ) );
+    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
+    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
+    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
 
@@ -70,7 +70,7 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget * parent, const char * na
 
     setColumnReadOnly(COL_NOMARTICULO,true);
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-    setPaletteBackgroundColor("#DDDDDD");
+    setPaletteBackgroundColor(confpr->valor(CONF_BG_LINPRESUPUESTOS));
 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
 

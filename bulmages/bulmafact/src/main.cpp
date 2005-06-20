@@ -6,10 +6,13 @@
 #include "qtextcodec.h"
 #include "logpass.h"
 
+#include "fixed.h"
+
 QApplication *theApp;
 bulmafact * mainClass;
 
 int main( int argc, char ** argv ) {
+
     // Leemos la configuracion que luego podremos usar siempre
     confpr = new configuracion();
     theApp = new QApplication( argc, argv );  

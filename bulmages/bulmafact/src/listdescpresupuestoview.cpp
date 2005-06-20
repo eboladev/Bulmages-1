@@ -26,10 +26,10 @@ ListDescuentoPresupuestoView::ListDescuentoPresupuestoView(QWidget * parent, con
     /// Inicializamos la tabla de lineas de presupuesto
     setNumCols(4);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_IDDPRESUPUESTO, tr( "N Lï¿½ea" ) );
-    horizontalHeader()->setLabel( COL_CONCEPTDPRESUPUESTO, tr( "Descripciï¿½" ) );
-    horizontalHeader()->setLabel( COL_PROPORCIONDPRESUPUESTO, tr( "Cantidad" ) );
-    horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "Precio" ) );
+    horizontalHeader()->setLabel( COL_IDDPRESUPUESTO, tr( "Id Línea" ) );
+    horizontalHeader()->setLabel( COL_CONCEPTDPRESUPUESTO, tr( "Descripción" ) );
+    horizontalHeader()->setLabel( COL_PROPORCIONDPRESUPUESTO, tr( "Porcentaje" ) );
+    horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "Presupuesto" ) );
 
 
     setColumnWidth(COL_IDDPRESUPUESTO,100);
@@ -45,7 +45,7 @@ ListDescuentoPresupuestoView::ListDescuentoPresupuestoView(QWidget * parent, con
     setSelectionMode( QTable::SingleRow );
 
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-    setPaletteBackgroundColor("#DDDDDD");
+    setPaletteBackgroundColor(confpr->valor(CONF_BG_DESCPRESUPUESTOS));
 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
 

@@ -59,12 +59,22 @@ public:
         m_botonera->show();
     };
     void hideBusqueda() {
-        fprintf(stderr,"Ocultar busqueda\n");
         m_busqueda->hide();
     };
+        
     void showBusqueda() {
         m_busqueda->show();
     };
+    
+    
+    void hideConfiguracion() {
+        m_configuracion->hide();
+    };
+        
+    void showConfiguracion() {
+        m_configuracion->show();
+    };    
+    
     void setidcliente(QString val) {
         m_cliente->setidcliente(val);
     };
@@ -91,12 +101,17 @@ public slots:
         inicializa();
     };
     virtual void s_mostrarBusqueda() {
-        fprintf(stderr,"s_mostrarBusqueda\n");
         if (m_busqueda->isVisible())
             hideBusqueda();
         else
             showBusqueda();
     };
+    virtual void s_mostrarConfiguracion() {
+        if (m_configuracion->isVisible())
+            hideConfiguracion();
+        else
+            showConfiguracion();
+    };    
 };
 
 #endif

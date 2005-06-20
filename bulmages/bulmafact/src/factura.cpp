@@ -13,6 +13,9 @@
 #include "company.h"
 #include <qfile.h>
 
+typedef QMap<QString, float> base;
+
+
 Factura::Factura(company *comp) {
     companyact=comp;
     vaciaFactura();
@@ -25,7 +28,7 @@ void Factura::borraFactura() {
     if (mdb_idfactura != "") {
         listalineas->borrar();
         companyact->begin();
-        companyact->ejecuta("DELETE FROM Factura WHERE idFactura="+mdb_idfactura);
+        companyact->ejecuta("DELETE FROM factura WHERE idfactura="+mdb_idfactura);
         companyact->commit();
         vaciaFactura();
         pintaFactura();
@@ -61,8 +64,9 @@ void Factura::pintaFactura() {
     pintadescfactura(mdb_descfactura);
     // Pinta el subformulario de detalle del Factura.
     listalineas->pintaListLinFactura();
+    listadescuentos->pintaListDescuentoFactura();
 
-    pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+    calculaypintatotales();
 }// end pintaFactura
 
 
@@ -91,6 +95,7 @@ void Factura::cargaFactura(QString idbudget) {
     }// end if
     delete cur;
     listalineas->cargaListLinFactura(idbudget);
+    listadescuentos->cargaDescuentos(idbudget);
     pintaFactura();
 }// end chargeBudget
 
@@ -138,6 +143,7 @@ void Factura::guardaFactura() {
         companyact->commit();
     }// end if
     listalineas->guardaListLinFactura();
+    listadescuentos->guardaListDescuentoFactura();
     cargaFactura(mdb_idfactura);
 }// end guardaFactura
 
@@ -228,4 +234,57 @@ void Factura::imprimirFactura() {
 } //end imprimirFactura
 
 
+
+void Factura::calculaypintatotales() {
+    base basesimp;
+    LinFactura *linea;
+    /// Impresión de los contenidos
+    QString l;
+
+    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+        float base = linea->cantlfactura().toFloat() * linea->pvplfactura().toFloat();
+        basesimp[linea->ivalfactura()] +=  base - base * linea->descuentolfactura().toFloat()/100;
+    }// end for
+    float basei=0;
+    base::Iterator it;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        basei+=it.data();
+    }// end for
+
+
+    /// Impresión de los descuentos
+    float porcentt=0;
+    DescuentoFactura *linea1;
+    if (listadescuentos->m_lista.first()) {
+        for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
+            porcentt += linea1->proporciondfactura().toFloat();
+        }// end for
+    }// end if
+
+
+    float totbaseimp=0;
+    float parbaseimp=0;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0.01) {
+            parbaseimp = it.data()-it.data()*porcentt/100;
+            totbaseimp += parbaseimp;
+        } else {
+            parbaseimp = it.data();
+            totbaseimp += parbaseimp;
+        }// end if
+    }// end for
+
+    float totiva=0;
+    float pariva=0;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0.01) {
+            pariva = (it.data()-it.data()*porcentt/100)*it.key().toFloat()/100;
+            totiva += pariva;
+        } else {
+            pariva = it.data()*it.key().toFloat()/100;
+            totiva += pariva;
+        }// end if
+    }// end for
+    pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
+}// end calculaypintatotales
 

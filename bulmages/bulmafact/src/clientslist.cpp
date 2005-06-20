@@ -90,6 +90,8 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
    m_cifclient="";
    m_nomclient="";
    m_mode = EDIT_MODE;
+   hideBusqueda();
+   hideConfiguracion();
  
    m_clientList->setNumRows( 0 );
    m_clientList->setSelectionMode( QTable::SingleRow );
@@ -134,7 +136,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
     m_clientList->setPaletteBackgroundColor("#DDDDFF");   
     m_clientList->setReadOnly(TRUE);        
     
-   initClients();
+   inicializa();
    companyact->meteWindow(caption(),this);
 
 }// end clientslist
@@ -148,7 +150,7 @@ ClientsList::~ClientsList() {
   * Iniciamos los clientes.
   * Hacemos la consulta a la base de datos y presentamos el listado.
   */
-void ClientsList::initClients() {
+void ClientsList::inicializa() {
        companyact->begin();
        cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente","unquery");
        companyact->commit();
@@ -210,7 +212,7 @@ void ClientsList::m_clientList_doubleClicked(int a, int , int , const QPoint &) 
 
 
 void ClientsList::s_findClients() {
-	initClients();
+	inicializa();
 }// end s_findClients
 
 

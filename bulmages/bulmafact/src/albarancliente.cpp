@@ -12,8 +12,10 @@
 #include "albarancliente.h"
 
 #include <qfile.h>
+#include "fixed.h"
 
-typedef QMap<QString, float> base;
+
+typedef QMap<QString, Fixed> base;
 
 
 AlbaranCliente::AlbaranCliente(company *comp) {
@@ -144,56 +146,62 @@ void AlbaranCliente::imprimirAlbaranCliente() {
 
 
 void AlbaranCliente::calculaypintatotales() {
+    fprintf(stderr,"calculaypintatotales \n");
     base basesimp;
     LinAlbaranCliente *linea;
     /// Impresión de los contenidos
     QString l;
-
+    
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-    	float base = linea->cantlalbaran().toFloat() * linea->pvplalbaran().toFloat();
-        basesimp[linea->ivalalbaran()] +=  base - base * linea->descontlalbaran().toFloat()/100;
+    	Fixed cant(linea->cantlalbaran().ascii());
+	Fixed pvpund(linea->pvplalbaran().ascii());
+	Fixed desc1(linea->descontlalbaran().ascii());
+	Fixed cantpvp = cant * pvpund;
+	Fixed base = cantpvp - cantpvp * desc1 / 100;
+        basesimp[linea->ivalalbaran()] =  basesimp[linea->ivalalbaran()]+ base;
     }// end for
-    float basei=0;
+    
+
+    Fixed basei("0.00");
     base::Iterator it;
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        basei+=it.data();
+        basei = basei + it.data();
     }// end for
-    
-    
     /// Impresión de los descuentos
-    float porcentt=0;
+    Fixed porcentt("0.00");
     DescuentoAlbaranCliente *linea1;
     if (listadescuentos->m_lista.first()) {
         for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
-            porcentt += linea1->proporciondalbaran().toFloat();
+	    Fixed propor(linea1->proporciondalbaran().ascii());
+            porcentt = porcentt + propor;
         }// end for	
     }// end if
 
 
-    float totbaseimp=0;
-    float parbaseimp=0;
+    Fixed totbaseimp("0.00");
+    Fixed parbaseimp("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if (porcentt > 0.01) {
+        if (porcentt > Fixed("0.00") ) {
             parbaseimp = it.data()-it.data()*porcentt/100;
-            totbaseimp += parbaseimp;
         } else {
             parbaseimp = it.data();
-            totbaseimp += parbaseimp;
         }// end if
+	totbaseimp = totbaseimp + parbaseimp;
     }// end for
 
-    float totiva=0;
-    float pariva=0;
+    Fixed totiva("0.00");
+    Fixed pariva("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if (porcentt > 0.01) {
-            pariva = (it.data()-it.data()*porcentt/100)*it.key().toFloat()/100;
-            totiva += pariva;
+	    Fixed piva(it.key().ascii());
+        if (porcentt > Fixed("0.00")) {
+            pariva = (it.data()-it.data()*porcentt/100)* piva/100;
         } else {
-            pariva = it.data()*it.key().toFloat()/100;
-            totiva += pariva;
+            pariva = it.data()* piva/100;
         }// end if
+	totiva = totiva + pariva;
     }// end for
     pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
+
 }// end calculaypintatotales
 
 

@@ -33,6 +33,9 @@
 #include "budget.h"
 #include "pedidosclientelist.h"
 #include "pedidoclienteview.h"
+#include "facturaview.h"
+#include "informereferencia.h"
+
 
 #include <qlineedit.h>
 #include <qtextedit.h>
@@ -94,11 +97,11 @@ void AlbaranClienteView::inicialize() {
 
 
 
-void   AlbaranClienteView::pintatotales(float iva, float base, float total, float desc) {
-    m_totalBases->setText(QString::number(base));
-    m_totalTaxes->setText(QString::number(iva));
-    m_totalalbaran->setText(QString::number(total));
-    m_totalDiscounts->setText(QString::number(desc));
+void   AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+    m_totalBases->setText(base.toQString());
+    m_totalTaxes->setText(iva.toQString());
+    m_totalalbaran->setText(total.toQString());
+    m_totalDiscounts->setText(desc.toQString());
 }// end pintatotales
 
 
@@ -151,8 +154,8 @@ void AlbaranClienteView::s_verpedidocliente() {
 }// end s_verpedidocliente
 
 
-#include "facturaview.h"
-/// Se encarga de generar un pedido a partir del presupuesto.
+
+/// Se encarga de generar una factura a partir de un albarán
 void AlbaranClienteView::generarFactura() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la función.
     QString SQLQuery = "SELECT * FROM factura WHERE reffactura='"+mdb_refalbaran+"'";
@@ -164,8 +167,6 @@ void AlbaranClienteView::generarFactura() {
         return;
     }
     delete cur;
-
-
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la función.
     if (QMessageBox::question(
                 this,
@@ -175,7 +176,6 @@ void AlbaranClienteView::generarFactura() {
                 tr("&Yes"), tr("&No"),
                 QString::null, 0, 1 ) )
         return;
-
 
     /// Creamos la factura.
     FacturaView *bud = new FacturaView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Clientes", "company"));
@@ -190,10 +190,6 @@ void AlbaranClienteView::generarFactura() {
     bud->setidalmacen(mdb_idalmacen);
     QString l;
     LinAlbaranCliente *linea;
-
-    //    QString desclfactura, QString cantlfactura, QString pvplfactura, QString descuentolfactura, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString ivalfactura
-
-
     uint i = 0;
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
         bud->getlistalineas()->nuevalinea(linea->desclalbaran(), linea->cantlalbaran(), linea->pvplalbaran(),"0",  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(),"0");
@@ -205,11 +201,56 @@ void AlbaranClienteView::generarFactura() {
 
 
 
+#include "facturaslist.h"
+/// Se encarga de agregar un albarán a una factura
+void AlbaranClienteView::agregarFactura() {
+	
+	// Pedimos la factura a la que agregar
+	    fprintf(stderr,"Busqueda de una factura\n");
+    FacturasList *fac = new FacturasList(companyact, NULL, tr("Seleccione factura","company"));
+    // , WType_Dialog| WShowModal
+    fac->modoseleccion();
+    // Esto es convertir un QWidget en un sistema modal de dialogo.
+    this->setEnabled(false);
+    fac->show();
+    while(!fac->isHidden())
+        theApp->processEvents();
+    this->setEnabled(true);
+    QString idfactura = fac->idfactura();
+    delete fac;
+
+
+    /// Creamos la factura.
+    FacturaView *bud = new FacturaView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Clientes", "company"));
+    bud->cargaFactura(idfactura);
+    /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE, pero por ahora pasamos de hacerlo.
+    
+    QString l;
+    LinAlbaranCliente *linea;
+    uint i = 0;
+    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+        bud->getlistalineas()->nuevalinea(linea->desclalbaran(), linea->cantlalbaran(), linea->pvplalbaran(),"0",  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(),"0");
+        i++;
+    }// end for
+    bud->pintaFactura();
+    bud->show();
+}// end generarAlbaran
+
 
 void AlbaranClienteView::cargaAlbaranCliente(QString id) {
     AlbaranCliente::cargaAlbaranCliente(id);
     setCaption("Albaran Cliente  "+mdb_refalbaran);
     companyact->meteWindow(caption(),this);
     dialogChanges_cargaInicial();
+}
+
+
+
+void AlbaranClienteView::s_informeReferencia() {
+    InformeReferencia *inf = new InformeReferencia(companyact);
+    inf->setreferencia(mdb_refalbaran);
+    inf->generarinforme();
+    delete inf;
+
 }
 

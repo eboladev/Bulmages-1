@@ -188,7 +188,8 @@ void BudgetsList::inicializa() {
     }// end if
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#EEFFFF");
+    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPRESUPUESTOS));
+    fprintf(stderr,"---------> Color del presupuesto\n\n\n%s\n\n\n",confpr->valor(CONF_BG_LISTPRESUPUESTOS).ascii());
     m_list->setReadOnly(TRUE);
 
 

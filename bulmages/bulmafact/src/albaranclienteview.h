@@ -27,6 +27,8 @@
 #include "listdescalbarancliente.h"
 #include "dialogchanges.h"
 
+#include "fixed.h"
+
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
@@ -62,8 +64,9 @@ public:
     void pintarefalbaran(QString val) {m_refalbaran->setText(val);};
     void pintaNumFactura(QString) {};
     
-    void pintatotales(float, float, float, float);	
+    void pintatotales(Fixed, Fixed, Fixed, Fixed);	
     void generarFactura();
+    void agregarFactura();
 
      
 public slots:
@@ -93,6 +96,8 @@ public slots:
     virtual void s_verpedidocliente();
     virtual void s_imprimirAlbaranCliente() {imprimirAlbaranCliente();};
     virtual void s_generarFactura() {generarFactura();};
+    virtual void s_informeReferencia();
+    virtual void s_agregarFactura() {agregarFactura();};
 };
 
 #endif

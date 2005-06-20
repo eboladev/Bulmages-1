@@ -29,6 +29,7 @@ CREATE TABLE pedidocliente (
 
 #include "listlinpedidocliente.h"
 #include "listdescpedidocliente.h"
+#include "fixed.h"
 
 #include "company.h"
 #include "linpedidocliente.h"
@@ -53,6 +54,9 @@ protected:
     QString mdb_refpedidocliente;
     QString mdb_procesadopedidocliente;
     
+    QString mdb_contactpedidocliente;
+    QString mdb_telpedidocliente;
+    
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setListLinPedidoCliente ( ListLinPedidoCliente *a) {
@@ -74,6 +78,7 @@ public:
     void calculaypintatotales();   
      
     ListLinPedidoCliente* getlistalineas() {return listalineas;};
+    ListDescuentoPedidoCliente* getlistadescuentos() {return listadescuentos;};
     
     virtual void pintaidcliente(QString ) {};
     virtual void pintaidalmacen(QString ) {};
@@ -90,12 +95,14 @@ public:
     virtual void pintarefpresupuesto(QString) {};
     virtual void pintarefpedidocliente(QString) {};
     virtual void pintaprocesadopedidocliente(QString) {};
-    virtual void pintatotales(float, float, float, float) {};
+    virtual void pintacontactpedidocliente(QString) {};
+    virtual void pintatelpedidocliente(QString) {};
+    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {};
 
 
     void setidcliente(QString val) { mdb_idcliente=val;};
     void setidalmacen(QString val) { mdb_idalmacen=val;};
-    void setidpedidocliente(QString val) { mdb_idpedidocliente=val;listalineas->setidpedidocliente(val);};
+    void setidpedidocliente(QString val) { mdb_idpedidocliente=val;listalineas->setidpedidocliente(val);listadescuentos->setidpedidocliente(val);};
     void setnumpedidocliente(QString val) { mdb_numpedidocliente=val;};
     void setfechapedidocliente(QString val) { mdb_fechapedidocliente=val;};
     void setdescpedidocliente(QString val) { mdb_descpedidocliente=val;};
@@ -103,6 +110,8 @@ public:
     void setcomentpedidocliente(QString val) {mdb_comentpedidocliente=val;};
     void setrefpedidocliente(QString val) {mdb_refpedidocliente=val;};
     void setprocesadopedidocliente(QString val) {mdb_procesadopedidocliente=val;};
+    void setcontactpedidocliente(QString val) {mdb_contactpedidocliente=val;};
+    void settelpedidocliente(QString val) {mdb_telpedidocliente=val;};
     
     void vaciaPedidoCliente();
 };

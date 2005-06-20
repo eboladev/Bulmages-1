@@ -84,6 +84,7 @@ ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const
     m_idclidelivnote="";
     companyact->meteWindow(caption(), this);
     hideBusqueda();
+    hideConfiguracion();
 }// end providerslist
 
 ClientDelivNotesList::~ClientDelivNotesList() {
@@ -140,7 +141,7 @@ void ClientDelivNotesList::inicializa() {
     
     //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#EEFFFF");
+    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTALBARANESCLIENTE));
     m_list->setReadOnly(TRUE);
     cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran, cliente, almacen where albaran.idcliente=cliente.idcliente AND albaran.idalmacen=almacen.idalmacen"+generarFiltro());
     m_list->setNumRows( cur->numregistros() );

@@ -1645,14 +1645,14 @@ END;
 -- Name: reordenaasientosall(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION reordenaasientosall() RETURNS integer
+CREATE OR REPLACE FUNCTION reordenaasientosall() RETURNS integer
     AS '
 DECLARE
-    as RECORD;
+    bs RECORD;
     ejercicio integer;
 BEGIN
-    FOR as IN SELECT DISTINCT EXTRACT (YEAR  FROM FECHA) AS ano FROM asiento ORDER BY ano LOOP
-        ejercicio := as.ano;
+    FOR bs IN SELECT DISTINCT EXTRACT (YEAR  FROM FECHA) AS ano FROM asiento ORDER BY ano LOOP
+        ejercicio = bs.ano;
         PERFORM reordenaasientos(ejercicio);
     END LOOP;
     RETURN 0;

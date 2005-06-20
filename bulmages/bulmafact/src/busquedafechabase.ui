@@ -8,9 +8,23 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>404</width>
-            <height>44</height>
+            <width>167</width>
+            <height>24</height>
         </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>150</width>
+            <height>22</height>
+        </size>
     </property>
     <property name="caption">
         <string>Form1</string>
@@ -46,8 +60,14 @@
             </property>
             <property name="minimumSize">
                 <size>
-                    <width>32</width>
-                    <height>32</height>
+                    <width>22</width>
+                    <height>22</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>22</width>
+                    <height>22</height>
                 </size>
             </property>
             <property name="text">
@@ -61,7 +81,7 @@
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="252">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000000c3494441545885dd97d10d80200c055f8d53c9244ee824b816fea0128d1568a1c6fb3351395e0b22f9d5c3921100dce482c5e07ef5341e5773e72416070018fa8e7ae74c201a990984d0b70d8808c0a74a70251adeb826f574dfdb7311f304cc059e4b9046c6c5cc356f4679cc13e823c0a4d44e207375fcb404e9ec5f76d89f26b093f17dd117c8dd9a9b0914a22b50d07c6d042a68235070b8d113286c3e7d814a74042a9a4f5740805c40307b803b11a5702f161ee7cd4b70244095cb480a59ff9e6f247f28d010b954060000000049454e44ae426082</data>
+        <data format="PNG" length="313">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000100494441545885dd97418e83300c459f2b2f7ca6e12c73bede0529f7f12212b3608094b6014a43107f133902e47cbebf63096d80082878744cedd0583d3acd4fd35101a10da2a6d647bf1313448724d322f1bd8108378fde27f0b05af9983e9989817bb39bd2ad183500d075c7ca404430356e2303351099187882c8ebfd3953ef9e5b7a0f40a9cb80474faaa0024c2da9823952ca7234e7c4bbf47b1e7ca0060ed3c01b96ca6a6045759cc207ca30909e3e27d2ebfbc0427f29a381b5d60c57f481b5e2fbc7297a41992a587bb9f9aa06b6886fc0757c60a3f8065ca4177c787a603617e490fbf08eebfc297c6064403e29a3bd18e682d0061946e7235714fe007f8af3646898efd40000000049454e44ae426082</data>
     </image>
 </images>
 <connections>

@@ -2,8 +2,6 @@
 // C++ Implementation: PedidoCliente
 //
 // Description:
-//
-//
 // Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
 //
 // Copyright: See COPYING file that comes with this distribution
@@ -15,7 +13,9 @@
 
 #include <qfile.h>
 
-typedef QMap<QString, float> base;
+#include "fixed.h"
+
+typedef QMap<QString, Fixed> base;
 
 PedidoCliente::PedidoCliente(company *comp) {
     companyact=comp;
@@ -50,6 +50,8 @@ void PedidoCliente::vaciaPedidoCliente() {
     mdb_comentpedidocliente = "";
     mdb_refpedidocliente = "";
     mdb_procesadopedidocliente = "FALSE";
+    mdb_contactpedidocliente = "";
+    mdb_telpedidocliente = "";
     //    listalineas->vaciar();
 }// end vaciaPedidoCliente
 
@@ -68,6 +70,8 @@ void PedidoCliente::pintaPedidoCliente() {
 
     pintarefpedidocliente(mdb_refpedidocliente);
     pintaprocesadopedidocliente(mdb_procesadopedidocliente);
+    pintacontactpedidocliente(mdb_contactpedidocliente);
+    pintatelpedidocliente(mdb_telpedidocliente);
 
     /// Pinta el subformulario de detalle del PedidoCliente.
     listalineas->pintaListLinPedidoCliente();
@@ -91,17 +95,14 @@ void PedidoCliente::cargaPedidoCliente(QString idbudget) {
         mdb_numpedidocliente = cur->valor("numpedidocliente");
         mdb_fechapedidocliente = cur->valor("fechapedidocliente");
         mdb_descpedidocliente = cur->valor("descpedidocliente");
-        //        mdb_nomalmacen = cur->valor("nomalmacen");
-        //        mdb_codigoalmacen = cur->valor("codigoalmacen");
         mdb_idforma_pago = cur->valor("idforma_pago");
         mdb_refpedidocliente = cur->valor("refpedidocliente");
-        //	mdb_idpedidocliente = cur->valor("idpedidocliente");
+	mdb_contactpedidocliente = cur->valor("contactpedidocliente");
+	mdb_telpedidocliente = cur->valor("telpedidocliente");
         if (cur->valor("procesadopedidocliente") == "t")
             mdb_procesadopedidocliente = "TRUE";
         else
             mdb_procesadopedidocliente = "FALSE";
-
-
 
         mdb_comentpedidocliente = cur->valor("comentpedidocliente");
     }// end if
@@ -122,7 +123,7 @@ void PedidoCliente::guardaPedidoCliente() {
         mdb_numpedidocliente = "NULL";
     if (mdb_idpedidocliente == "") {
         /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, idcliente, idalmacen, idforma_pago, refpedidocliente, procesadopedidocliente, descpedidocliente, comentpedidocliente) VALUES ("+mdb_numpedidocliente+",'"+mdb_fechapedidocliente+"',"+mdb_idcliente+","+mdb_idalmacen+","+mdb_idforma_pago+",'"+mdb_refpedidocliente+"',"+mdb_procesadopedidocliente+",'"+mdb_descpedidocliente+"','"+mdb_comentpedidocliente+"')";
+        QString SQLQuery = "INSERT INTO pedidocliente (contactpedidocliente, telpedidocliente, numpedidocliente, fechapedidocliente, idcliente, idalmacen, idforma_pago, refpedidocliente, procesadopedidocliente, descpedidocliente, comentpedidocliente) VALUES ('"+mdb_contactpedidocliente+"','"+mdb_telpedidocliente+"',"+mdb_numpedidocliente+",'"+mdb_fechapedidocliente+"',"+mdb_idcliente+","+mdb_idalmacen+","+mdb_idforma_pago+",'"+mdb_refpedidocliente+"',"+mdb_procesadopedidocliente+",'"+mdb_descpedidocliente+"','"+mdb_comentpedidocliente+"')";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpedidocliente) AS m FROM pedidocliente");
         if (!cur->eof())
@@ -141,7 +142,9 @@ void PedidoCliente::guardaPedidoCliente() {
         SQLQuery += " ,procesadopedidocliente="+mdb_procesadopedidocliente;
         SQLQuery += " ,descpedidocliente='"+mdb_descpedidocliente+"'";
         SQLQuery += " ,comentpedidocliente='"+mdb_comentpedidocliente+"'";
-        SQLQuery += " WHERE idpedidocliente="+mdb_idpedidocliente;
+        SQLQuery += " ,contactpedidocliente='"+mdb_contactpedidocliente+"'"; 
+	SQLQuery += " ,telpedidocliente='"+mdb_telpedidocliente+"'"; 
+	SQLQuery += " WHERE idpedidocliente="+mdb_idpedidocliente;
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();
@@ -188,12 +191,8 @@ void PedidoCliente::imprimirPedidoCliente() {
     buff.replace("[numpedidocliente]",mdb_numpedidocliente);
     buff.replace("[fechapedidocliente]",mdb_fechapedidocliente);
     buff.replace("[comentpedidocliente]",mdb_comentpedidocliente);
-    //    buff.replace("[codigoalmacen]",mdb_codigoalmacen);
-    //    buff.replace("[nomalmacen]",mdb_nomalmacen);
     buff.replace("[descpedidocliente]",mdb_descpedidocliente);
     buff.replace("[refpedidocliente]",mdb_refpedidocliente);
-
-
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
@@ -215,8 +214,6 @@ void PedidoCliente::imprimirPedidoCliente() {
         fitxersortidatxt += "</tr>";
         i++;
     }// end for
-
-
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td></td>";
@@ -244,7 +241,6 @@ void PedidoCliente::imprimirPedidoCliente() {
         stream << buff;
         file.close();
     }
-
     system("trml2pdf.py /tmp/pedidocliente.rml > /tmp/pedidocliente.pdf");
     system("kpdf /tmp/pedidocliente.pdf");
 } //end imprimirPedidoCliente
@@ -256,54 +252,58 @@ void PedidoCliente::imprimirPedidoCliente() {
 
 
 void PedidoCliente::calculaypintatotales() {
+    fprintf(stderr,"calculaypintatotales \n");
     base basesimp;
     LinPedidoCliente *linea;
     /// Impresión de los contenidos
     QString l;
-
+    
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        float base = linea->cantlpedidocliente().toFloat() * linea->pvplpedidocliente().toFloat();
-        basesimp[linea->ivalpedidocliente()] +=  base - base * linea->descuentolpedidocliente().toFloat()/100;
+    	Fixed cant(linea->cantlpedidocliente().ascii());
+	Fixed pvpund(linea->pvplpedidocliente().ascii());
+	Fixed desc1(linea->descuentolpedidocliente().ascii());
+	Fixed cantpvp = cant * pvpund;
+	Fixed base = cantpvp - cantpvp * desc1 / 100;
+        basesimp[linea->ivalpedidocliente()] =  basesimp[linea->ivalpedidocliente()]+ base;
     }// end for
-    float basei=0;
+    
+
+    Fixed basei("0.00");
     base::Iterator it;
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        basei+=it.data();
+        basei = basei + it.data();
     }// end for
-
-
     /// Impresión de los descuentos
-    float porcentt=0;
+    Fixed porcentt("0.00");
     DescuentoPedidoCliente *linea1;
     if (listadescuentos->m_lista.first()) {
         for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
-            porcentt += linea1->proporciondpedidocliente().toFloat();
-        }// end for
+	    Fixed propor(linea1->proporciondpedidocliente().ascii());
+            porcentt = porcentt + propor;
+        }// end for	
     }// end if
 
 
-    float totbaseimp=0;
-    float parbaseimp=0;
+    Fixed totbaseimp("0.00");
+    Fixed parbaseimp("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if (porcentt > 0.01) {
+        if (porcentt > Fixed("0.00") ) {
             parbaseimp = it.data()-it.data()*porcentt/100;
-            totbaseimp += parbaseimp;
         } else {
             parbaseimp = it.data();
-            totbaseimp += parbaseimp;
         }// end if
+	totbaseimp = totbaseimp + parbaseimp;
     }// end for
 
-    float totiva=0;
-    float pariva=0;
+    Fixed totiva("0.00");
+    Fixed pariva("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if (porcentt > 0.01) {
-            pariva = (it.data()-it.data()*porcentt/100)*it.key().toFloat()/100;
-            totiva += pariva;
+	    Fixed piva(it.key().ascii());
+        if (porcentt > Fixed("0.00")) {
+            pariva = (it.data()-it.data()*porcentt/100)* piva/100;
         } else {
-            pariva = it.data()*it.key().toFloat()/100;
-            totiva += pariva;
+            pariva = it.data()* piva/100;
         }// end if
+	totiva = totiva + pariva;
     }// end for
-    pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
-}// end calculaypintatotales
+    pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);}// end calculaypintatotales

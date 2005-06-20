@@ -19,6 +19,7 @@
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
+#include "dialogchanges.h"
 
 #include <qlineedit.h>
 #include <qtextedit.h>
@@ -31,7 +32,7 @@
 @author Tomeu Borras
 */
 
-class FacturaView : public FacturaBase, public Factura {
+class FacturaView : public FacturaBase, public Factura, public dialogChanges {
 Q_OBJECT
     
 public:
@@ -59,9 +60,10 @@ void    pintaidforma_pago(QString id) {m_forma_pago->setidforma_pago(id);};
 };
 
 
-void    pintatotales(float base, float iva);   
+    void pintatotales(float iva, float base, float total, float desc);   
 
 public slots:
+    virtual bool close(bool);
     virtual void s_comentfacturatextChanged() { setcomentfactura(m_comentfactura->text());};
     
     virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
@@ -76,13 +78,13 @@ public slots:
     virtual void s_forma_pagovalueChanged(QString val) {setidforma_pago(val);};
     
     virtual void s_saveFactura() {guardaFactura();};
-    virtual void cargaFactura(QString id) {Factura::cargaFactura(id);setCaption("Factura   "+mdb_reffactura);companyact->meteWindow(caption(),this);};     
+    virtual void cargaFactura(QString id);    
     virtual void s_deleteFactura() {borraFactura();};
     virtual void s_printFactura(){imprimirFactura();};
     
      /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {  
-   	 pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+   	 calculaypintatotales();
     }// end pintaTotales
      
     virtual void s_procesadafacturastateChanged(int i) {
@@ -92,6 +94,7 @@ public slots:
     };
     
     virtual void s_nuevoCobro();
+    virtual void s_informeReferencia();
 };
 
 #endif

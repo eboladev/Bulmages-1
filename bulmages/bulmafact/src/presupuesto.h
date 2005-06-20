@@ -16,6 +16,8 @@
 #include <qtable.h>
 #include <qptrlist.h>
 
+#include "fixed.h"
+
 #include "listlinpresupuesto.h"
 #include "listdescpresupuesto.h"
 
@@ -78,7 +80,7 @@ public:
     virtual void pintadescpresupuesto(QString) {};
     virtual void pintarefpresupuesto(QString) {};
     virtual void pintaidforma_pago(QString){};
-    virtual void pintatotales(float, float, float, float) {};
+    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {};
 
     void setidcliente(QString val) { mdb_idcliente=val;};
     void setidalmacen(QString val) {mdb_idalmacen=val;};

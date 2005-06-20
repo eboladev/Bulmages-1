@@ -14,8 +14,10 @@
 #include "configuracion.h"
 #include <qfile.h>
 #include <qtextstream.h>
+#include "fixed.h"
 
-typedef QMap<QString, float> base;
+
+typedef QMap<QString, Fixed> base;
 
 presupuesto::presupuesto(company *comp) {
     companyact=comp;
@@ -75,7 +77,6 @@ void presupuesto::pintaPresupuesto() {
 
     calculaypintatotales();
 }// end pintaPresupuesto
-
 
 // Esta funciï¿½ carga un presupuesto.
 void presupuesto::chargeBudget(QString idbudget) {
@@ -194,10 +195,8 @@ QString presupuesto::detalleArticulos() {
 }// end detalleArticulos
 
 
-
-
-
 void presupuesto::imprimirPresupuesto() {
+
     base basesimp;
 
     /// Copiamos el archivo
@@ -254,28 +253,28 @@ void presupuesto::imprimirPresupuesto() {
     QString l;
 
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-    	float base = linea->cantlpresupuesto().toFloat() * linea->pvplpresupuesto().toFloat();
-        basesimp[linea->ivalpresupuesto()] +=  base - base * linea->descuentolpresupuesto().toFloat()/100;
+    	Fixed base = Fixed(linea->cantlpresupuesto().ascii()) * Fixed(linea->pvplpresupuesto().ascii());
+        basesimp[linea->ivalpresupuesto()] = basesimp[linea->ivalpresupuesto()] + base - base * Fixed(linea->descuentolpresupuesto().ascii()) /100;
 	
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "	<td>"+linea->desclpresupuesto()+"</td>\n";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpresupuesto().toFloat())+"</td>\n";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplpresupuesto().toFloat())+"</td>\n";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->descuentolpresupuesto().toFloat())+" %</td>\n";	
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",base - base * linea->descuentolpresupuesto().toFloat()/100)+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->cantlpresupuesto().ascii())+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->pvplpresupuesto().ascii())+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->descuentolpresupuesto().ascii())+" %</td>\n";	
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",(base - base * Fixed (linea->descuentolpresupuesto()) /100).toQString().ascii())+"</td>\n";
         fitxersortidatxt += "</tr>";
     }// end for
     fitxersortidatxt += "</blockTable>\n";
-    float basei=0;
+    Fixed basei("0.00");
     base::Iterator it;
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        basei+=it.data();
+        basei =basei + it.data();
     }// end for
 
 
 
         /// Impresión de los descuentos
-    float porcentt=0;
+    Fixed porcentt("0.00");
     DescuentoPresupuesto *linea1;
     if (listadescuentos->m_lista.first()) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">\n";
@@ -286,12 +285,12 @@ void presupuesto::imprimirPresupuesto() {
         fitxersortidatxt += "	<td>Total</td>\n";
         fitxersortidatxt += "</tr>\n";
         for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
-            porcentt += linea1->proporciondpresupuesto().toFloat();
+            porcentt = porcentt + Fixed(linea1->proporciondpresupuesto().ascii());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "	<td>"+linea1->conceptdpresupuesto()+"</td>\n";
             fitxersortidatxt += "	<td></td>\n";
-            fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea1->proporciondpresupuesto().toFloat())+" %</td>\n";
-            fitxersortidatxt += "	<td>"+l.sprintf("-%2.2f",linea1->proporciondpresupuesto().toFloat()*basei/100)+"</td>\n";
+            fitxersortidatxt += "	<td>"+l.sprintf("%s",linea1->proporciondpresupuesto().ascii())+" %</td>\n";
+            fitxersortidatxt += "	<td>"+l.sprintf("-%s",( Fixed(linea1->proporciondpresupuesto())*basei/100).toQString().ascii())+"</td>\n";
             fitxersortidatxt += "</tr>";
         }// end for
     fitxersortidatxt += "</blockTable>\n";	
@@ -306,40 +305,38 @@ void presupuesto::imprimirPresupuesto() {
     fitxersortidatxt += "</tr>\n";
 
 
-    float totbaseimp=0;
-    float parbaseimp=0;
+    Fixed totbaseimp("0.00");
+    Fixed parbaseimp("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if (porcentt > 0.01) {
+        if (porcentt > 0) {
             parbaseimp = it.data()-it.data()*porcentt/100;
-            totbaseimp += parbaseimp;
         } else {
             parbaseimp = it.data();
-            totbaseimp += parbaseimp;
         }// end if
+	 totbaseimp = totbaseimp + parbaseimp;
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "	<td></td>\n";
         fitxersortidatxt += "	<td></td>\n";
         fitxersortidatxt += "	<td>Base "+it.key()+" %</td>\n";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",parbaseimp)+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",parbaseimp.toQString().ascii())+"</td>\n";
         fitxersortidatxt += "</tr>\n";
     }// end for
 
-    float totiva=0;
-    float pariva=0;
+    Fixed totiva("0.0");
+    Fixed pariva("0.0");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if (porcentt > 0.01) {
-            pariva = (it.data()-it.data()*porcentt/100)*it.key().toFloat()/100;
-            totiva += pariva;
+        if (porcentt > 0) {
+            pariva = (it.data()-it.data()*porcentt/100)* Fixed(it.key()) /100;
         } else {
-            pariva = it.data()*it.key().toFloat()/100;
-            totiva += pariva;
+            pariva = it.data()* Fixed(it.key()) /100;
         }// end if
+	totiva = totiva + pariva;
 
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "	<td></td>\n";
         fitxersortidatxt += "	<td></td>\n";
         fitxersortidatxt += "	<td>Iva "+it.key()+" %</td>\n";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", pariva)+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s", pariva.toQString().ascii())+"</td>\n";
         fitxersortidatxt += "</tr>\n";
     }// end for
 
@@ -347,7 +344,7 @@ void presupuesto::imprimirPresupuesto() {
     fitxersortidatxt += "	<td></td>\n";
     fitxersortidatxt += "	<td></td>\n";
     fitxersortidatxt += "	<td>Total </td>\n";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",totiva+totbaseimp)+"</td>\n";
+    fitxersortidatxt += "	<td>"+l.sprintf("%s",(totiva+totbaseimp).toQString().ascii())+"</td>\n";
     fitxersortidatxt += "</tr>\n";
     fitxersortidatxt += "</blockTable>\n";
 
@@ -364,57 +361,60 @@ void presupuesto::imprimirPresupuesto() {
 } //end imprimirPresupuesto
 
 
-
-
 void presupuesto::calculaypintatotales() {
+    fprintf(stderr,"calculaypintatotales \n");
     base basesimp;
     linpresupuesto *linea;
     /// Impresión de los contenidos
     QString l;
-
+    
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-    	float base = linea->cantlpresupuesto().toFloat() * linea->pvplpresupuesto().toFloat();
-        basesimp[linea->ivalpresupuesto()] +=  base - base * linea->descuentolpresupuesto().toFloat()/100;
+    	Fixed cant(linea->cantlpresupuesto().ascii());
+	Fixed pvpund(linea->pvplpresupuesto().ascii());
+	Fixed desc1(linea->descuentolpresupuesto().ascii());
+	Fixed cantpvp = cant * pvpund;
+	Fixed base = cantpvp - cantpvp * desc1 / 100;
+        basesimp[linea->ivalpresupuesto()] =  basesimp[linea->ivalpresupuesto()]+ base;
     }// end for
-    float basei=0;
+    
+
+    Fixed basei("0.00");
     base::Iterator it;
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        basei+=it.data();
+        basei = basei + it.data();
     }// end for
-    
-    
     /// Impresión de los descuentos
-    float porcentt=0;
+    Fixed porcentt("0.00");
     DescuentoPresupuesto *linea1;
     if (listadescuentos->m_lista.first()) {
         for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
-            porcentt += linea1->proporciondpresupuesto().toFloat();
+	    Fixed propor(linea1->proporciondpresupuesto().ascii());
+            porcentt = porcentt + propor;
         }// end for	
     }// end if
 
 
-    float totbaseimp=0;
-    float parbaseimp=0;
+    Fixed totbaseimp("0.00");
+    Fixed parbaseimp("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if (porcentt > 0.01) {
+        if (porcentt > Fixed("0.00") ) {
             parbaseimp = it.data()-it.data()*porcentt/100;
-            totbaseimp += parbaseimp;
         } else {
             parbaseimp = it.data();
-            totbaseimp += parbaseimp;
         }// end if
+	totbaseimp = totbaseimp + parbaseimp;
     }// end for
 
-    float totiva=0;
-    float pariva=0;
+    Fixed totiva("0.00");
+    Fixed pariva("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if (porcentt > 0.01) {
-            pariva = (it.data()-it.data()*porcentt/100)*it.key().toFloat()/100;
-            totiva += pariva;
+	    Fixed piva(it.key().ascii());
+        if (porcentt > Fixed("0.00")) {
+            pariva = (it.data()-it.data()*porcentt/100)* piva/100;
         } else {
-            pariva = it.data()*it.key().toFloat()/100;
-            totiva += pariva;
+            pariva = it.data()* piva/100;
         }// end if
+	totiva = totiva + pariva;
     }// end for
     pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
 }// end calculaypintatotales

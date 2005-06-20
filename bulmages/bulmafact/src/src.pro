@@ -3,6 +3,18 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./bulmafact/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmafact
 
+LANGUAGE = C++ 
+TARGETDEPS += ../../bulmalib/libbulmalib.a 
+LIBS += ../../bulmalib/libbulmalib.a \
+        -lpq 
+INCLUDEPATH += ../../bulmalib 
+DEFINES = REPORTS 
+TARGET = ../../installbulmages/bulmafact 
+CONFIG += release \
+          warn_on \
+          qt \
+          thread 
+TEMPLATE = app 
 FORMS += bulmafactbase.ui \
          providerslistbase.ui \
          provedit_base.ui \
@@ -28,16 +40,16 @@ FORMS += bulmafactbase.ui \
          pedidoclientebase.ui \
          busquedaclientebase.ui \
          busquedafechabase.ui \
-	 busquedaarticulobase.ui \
-	 busquedaproveedorbase.ui \
-	 albaranproveedorbase.ui \
-	 albaranesproveedorbase.ui \
-	 busquedafamiliabase.ui \
-	 busquedatipoarticulobase.ui \
-	 cobrobase.ui \
-	 cobroslistbase.ui \
-	 facturasplistbase.ui \
-	 facturapbase.ui
+         busquedaarticulobase.ui \
+         busquedaproveedorbase.ui \
+         albaranproveedorbase.ui \
+         albaranesproveedorbase.ui \
+         busquedafamiliabase.ui \
+         busquedatipoarticulobase.ui \
+         cobrobase.ui \
+         cobroslistbase.ui \
+         facturasplistbase.ui \
+         facturapbase.ui 
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
@@ -89,35 +101,39 @@ HEADERS += bulmafact.h \
            busquedacliente.h \
            busquedaformapago.h \
            busquedafecha.h \
-	   busquedaalmacen.h \
-	   busquedaarticulo.h \
-	   busquedaproveedor.h \
-	   albaranproveedor.h \
-	   albaranproveedorview.h \
-	   linalbaranproveedor.h \
-	   listlinalbaranproveedor.h \
-	   listlinalbaranproveedorview.h \
-	   albaranesproveedor.h \
-	   busquedafamilia.h \
-	   busquedatipoarticulo.h \
-	   cobro.h \
-	   cobroview.h \
-	   cobroslist.h \
-	   facturasplist.h  \
-	   linfacturap.h \
-	   listlinfacturap.h \
-	   listlinfacturapview.h \
-	   facturap.h \
-	   facturapview.h  \
-	   descpresupuesto.h \
-	   listdescpresupuesto.h \
-	   listdescpresupuestoview.h \
-	   descpedidocliente.h \
-	   listdescpedidocliente.h \
-	   listdescpedidoclienteview.h \
-	   descalbarancliente.h \
-	   listdescalbarancliente.h \
-	   listdescalbaranclienteview.h
+           busquedaalmacen.h \
+           busquedaarticulo.h \
+           busquedaproveedor.h \
+           albaranproveedor.h \
+           albaranproveedorview.h \
+           linalbaranproveedor.h \
+           listlinalbaranproveedor.h \
+           listlinalbaranproveedorview.h \
+           albaranesproveedor.h \
+           busquedafamilia.h \
+           busquedatipoarticulo.h \
+           cobro.h \
+           cobroview.h \
+           cobroslist.h \
+           facturasplist.h \
+           linfacturap.h \
+           listlinfacturap.h \
+           listlinfacturapview.h \
+           facturap.h \
+           facturapview.h \
+           descpresupuesto.h \
+           listdescpresupuesto.h \
+           listdescpresupuestoview.h \
+           descpedidocliente.h \
+           listdescpedidocliente.h \
+           listdescpedidoclienteview.h \
+           descalbarancliente.h \
+           listdescalbarancliente.h \
+           listdescalbaranclienteview.h  \
+	   descfactura.h \
+	   listdescfactura.h \
+	   listdescfacturaview.h \
+	   informereferencia.h
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -165,45 +181,39 @@ SOURCES += bulmafact.cpp \
            busquedacliente.cpp \
            busquedaformapago.cpp \
            busquedafecha.cpp \
-	   busquedaalmacen.cpp \
-	   busquedaarticulo.cpp \
-	   busquedaproveedor.cpp \
-	   albaranproveedor.cpp \
-	   albaranproveedorview.cpp \
-	   linalbaranproveedor.cpp \
-	   listlinalbaranproveedor.cpp \
-	   listlinalbaranproveedorview.cpp \
-	   albaranesproveedor.cpp \
-	   busquedafamilia.cpp \
-	   busquedatipoarticulo.cpp \
-	   cobro.cpp \
-	   cobroview.cpp \
-	   cobroslist.cpp \
-	   facturasplist.cpp \
-	   linfacturap.cpp \
-	   listlinfacturap.cpp \
-	   listlinfacturapview.cpp \
-	   facturap.cpp \
-	   facturapview.cpp \
-	   descpresupuesto.cpp \
-	   listdescpresupuesto.cpp \
-	   listdescpresupuestoview.cpp \
-	   descpedidocliente.cpp \
-	   listdescpedidocliente.cpp \
-	   listdescpedidoclienteview.cpp \
-	   descalbarancliente.cpp \
-	   listdescalbarancliente.cpp \
-	   listdescalbaranclienteview.cpp
-TEMPLATE = app
-LANGUAGE = C++
-CONFIG += release \
-warn_on \
-thread \
-qt
-LIBS += ../../bulmalib/libbulmalib.a -lpq
-INCLUDEPATH += ../../bulmalib
-TARGET = ../../installbulmages/bulmafact
-DEFINES += REPORTS
+           busquedaalmacen.cpp \
+           busquedaarticulo.cpp \
+           busquedaproveedor.cpp \
+           albaranproveedor.cpp \
+           albaranproveedorview.cpp \
+           linalbaranproveedor.cpp \
+           listlinalbaranproveedor.cpp \
+           listlinalbaranproveedorview.cpp \
+           albaranesproveedor.cpp \
+           busquedafamilia.cpp \
+           busquedatipoarticulo.cpp \
+           cobro.cpp \
+           cobroview.cpp \
+           cobroslist.cpp \
+           facturasplist.cpp \
+           linfacturap.cpp \
+           listlinfacturap.cpp \
+           listlinfacturapview.cpp \
+           facturap.cpp \
+           facturapview.cpp \
+           descpresupuesto.cpp \
+           listdescpresupuesto.cpp \
+           listdescpresupuestoview.cpp \
+           descpedidocliente.cpp \
+           listdescpedidocliente.cpp \
+           listdescpedidoclienteview.cpp \
+           descalbarancliente.cpp \
+           listdescalbarancliente.cpp \
+           listdescalbaranclienteview.cpp \
+	   descfactura.cpp \
+	   listdescfactura.cpp \
+	   listdescfacturaview.cpp \
+	   informereferencia.cpp
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

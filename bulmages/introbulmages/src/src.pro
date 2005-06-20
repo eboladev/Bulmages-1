@@ -3,23 +3,24 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./introbulmages/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmages
 
+uiselector.ui.commands = $$IDL_COMPILER 
+uiconfiguracion.ui.commands = $$IDL_COMPILER 
+nuevafactbase.ui.commands = $$IDL_COMPILER 
+nuevaempresadlg.ui.commands = $$IDL_COMPILER 
+importContaplusBase.ui.commands = $$IDL_COMPILER 
+TARGETDEPS += ../../bulmalib/libbulmalib.a 
 LIBS += ../../bulmalib/libbulmalib.a \
         -lpq 
-INCLUDEPATH = ../../bulmalib 
+INCLUDEPATH += ../../bulmalib 
 TARGET = ../../installbulmages/bulmages 
 CONFIG += release \
           warn_on \
           qt \
           thread 
-comun/importContaplusBase.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$comun/importContaplusBase.ui.target 
 comun/importContaplusBase.ui.target = comun/importContaplusBase.ui 
-comun/nuevafactbase.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$comun/nuevafactbase.ui.target 
 comun/nuevafactbase.ui.target = comun/nuevafactbase.ui 
-comun/nuevaempresadlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$comun/nuevaempresadlg.ui.target 
 comun/nuevaempresadlg.ui.target = comun/nuevaempresadlg.ui 
-comun/uiconfiguracion.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$comun/uiconfiguracion.ui.target 
 comun/uiconfiguracion.ui.target = comun/uiconfiguracion.ui 
-comun/uiselector.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$comun/uiselector.ui.target 
 comun/uiselector.ui.target = comun/uiselector.ui 
 TEMPLATE = app 
 FORMS += comun/uiselector.ui \
@@ -47,6 +48,11 @@ SOURCES += main.cpp \
            comun/gongimportfiles.cpp \
            comun/pgimportfiles.cpp \
            comun/importContaplus.cpp 
+comun/importContaplusBase.ui.target = comun/importContaplusBase.ui
+comun/nuevafactbase.ui.target = comun/nuevafactbase.ui
+comun/nuevaempresadlg.ui.target = comun/nuevaempresadlg.ui
+comun/uiconfiguracion.ui.target = comun/uiconfiguracion.ui
+comun/uiselector.ui.target = comun/uiselector.ui
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

@@ -19,6 +19,8 @@
 #include "company.h"
 #include "listlinalbarancliente.h"
 #include "listdescalbarancliente.h"
+#include "fixed.h"
+
 /**
 @author Tomeu Borras
 */
@@ -73,7 +75,7 @@ public:
     virtual void pintaNumFactura(QString) {};
     virtual void pintadescalbaran(QString) {};
     virtual void pintarefalbaran(QString) {};
-    virtual void pintatotales(float, float, float, float) {};
+    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {};
 
     void setidalbaran(QString val) { mdb_idalbaran=val;listalineas->setidalbaran(val);listadescuentos->setidalbaran(val);};
     void setNumAlbaran(QString val) { mdb_numalbaran=val;};

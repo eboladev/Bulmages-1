@@ -88,7 +88,7 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget * parent, const char 
 
     setColumnReadOnly(COL_NOMARTICULO,true);
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-    setPaletteBackgroundColor("#AADDAA");
+    setPaletteBackgroundColor(confpr->valor(CONF_BG_LINPEDIDOSCLIENTE));
 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
 

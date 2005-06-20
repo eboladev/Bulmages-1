@@ -21,6 +21,8 @@
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
 #include "dialogchanges.h"
+#include "fixed.h"
+
 
 #include "pedidocliente.h"
 #include <qlineedit.h>
@@ -55,7 +57,11 @@ public:
     void pintaidforma_pago(QString id) {m_forma_pago->setidforma_pago(id);};
     void pintacomentpedidocliente(QString id) {m_comentpedidocliente->setText(id);};
     void pintarefpedidocliente(QString id) {m_refpedidocliente->setText(id);};
-    void pintatotales(float iva, float base, float total, float desc);   
+    void pintacontactpedidocliente(QString id) {m_contactpedidocliente->setText(id);};
+    void pintatelpedidocliente(QString id) {m_telpedidocliente->setText(id);};
+    
+    
+    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);   
     void pintaprocesadopedidocliente(QString id) {
 	if (id == "t" || id == "TRUE") m_procesadopedidocliente->setChecked(TRUE);
 	else m_procesadopedidocliente->setChecked(FALSE);
@@ -81,6 +87,9 @@ public slots:
     
     virtual void s_deletePedidoCliente() {borraPedidoCliente();};
     virtual void s_printPedidoCliente(){imprimirPedidoCliente();};
+    
+    virtual void s_contactpedidoclientetextChanged(const QString &val) {setcontactpedidocliente(val);};
+    virtual void s_telpedidoclientetextChanged(const QString &val) {settelpedidocliente(val);};
     
     virtual void s_procesadopedidoclientestateChanged(int i) {
     	if (i) setprocesadopedidocliente("TRUE");

@@ -21,8 +21,6 @@
 #include "listivaview.h"
 #include "asientosview.h"
 #include "balancesview.h"
-//#include "estadisticasview.h"
-//#include "resmensualview.h"
 #include "mpatrimonialesview.h"
 #include "canalview.h"
 #include "ccosteview.h"
@@ -30,7 +28,6 @@
 #include "propiedadesempresa.h"
 #include "cambiactaview.h"
 #include "amortizacionesview.h"
-//#include "adocumental.h"
 #include "cobropagoview.h"
 #include "tipoivaview.h"
 #include "fpagoview.h"
@@ -438,8 +435,9 @@ int empresa::librobalancetree() {
 
 void empresa::Abrirasientos() {
    conexionbase2->begin();
-   conexionbase2->ejecuta("SELECT abreasientos()");
+   cursor2 *cur = conexionbase2->cargacursor("SELECT abreasientos()");
    conexionbase2->commit();
+   delete cur;   
    introapunts1->cargarcursor();
    introapunts1->boton_fin();
    introapunts1->show();

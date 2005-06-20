@@ -18,47 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/*
---- Codi: Clau artificial.
--- Nom: Descripció curta de l'article.
--- Descripcio: Descripció completa (llarga) de l'article.
--- CBarres: Codi de barres.
--- Tipus: [Simple | Compost calculat | Compost escalat | Ampliat]. Determina el tipus d'article i com --  calcular-ne el preu. Simple = Article no compost amb preu PVP; Compost = Article compost amb preu suma dels PVPs dels components (Calculat) o PVP (escalat); Ampliat = Compost d'ell mateix més els components amb preu suma de PVP i PVPs dels components.
--- Descompte: Descompte "invisible" que s'aplica al preu resultant. Útil sobretot per a diferenciar el preu dels articles composts del preu de compra per separat.
--- Especificacions: Camp de text per a comentaris i informacions varies.
--- Icona: Icona de l'article.
--- Fotografia: Fotografia de l'article.
--- Poster: Fotografia de gran tamany de l'article.
--- Marge: (Per defecte) Percentatge de càlcul del PVP sobre el PVD. Vàlid només quan no estigui definit un marge específic per aquest article i el proveïdor corresponent.
--- Sobrecost: (Per defecte) Import a sumar en el càlcul del PVP en concepte de despeses de transport o altres.
--- Model: Referència, o nom identificatiu del fabricant.
-CREATE TABLE articulo (
-   idarticulo serial PRIMARY KEY,
-   codarticulo character varying(12),
-   nomarticulo character varying(50),
-   descarticulo character varying(500),
-   cbarrasarticulo character varying(22),
-   tipoarticulo integer,
-   descuentoarticulo float,
-   especificacionesarticulo character varying(2000),
-   iconoarticulo oid,
-   fotoarticulo oid,
-   posterarticulo oid,
-   margenarticulo float,
-   sobrecostearticulo float,
-   modeloarticulo character varying(1000),
-   
-   idtipo_iva integer REFERENCES tipo_iva (idtipo_iva),
-   idlinea_prod integer REFERENCES linea_prod(idlinea_prod)
-);
-*/
-
 #include "articleslist.h"
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qfile.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
+#include <qcombobox.h>
 
 #include "company.h"
 #include "articleedit.h"
@@ -250,7 +216,7 @@ void articleslist::inicializa() {
     
     //listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#FAAFFA");
+    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTARTICULOS));
     m_list->setReadOnly(TRUE);
     m_list->hideColumn(COL_IDARTICULO);
     m_list->hideColumn(COL_IDTIPO_IVA);
@@ -327,6 +293,8 @@ void articleslist::removeArticle() {
 
 
 QString articleslist::formaQuery() {
+    QString orden[] = {"nomarticulo","codigocompletoarticulo","stockarticulo"};
+    
     QString query="";
     query += "SELECT * FROM articulo LEFT JOIN tipo_iva ON articulo.idtipo_iva = tipo_iva.idtipo_iva WHERE 1=1 ";
     if(m_presentablearticulo->isChecked())
@@ -335,24 +303,13 @@ QString articleslist::formaQuery() {
         query += " AND nomarticulo LIKE '%"+m_filtro->text()+"%' ";
 	
     if(m_familia->idfamilia() != "" ) {
-    /*
-    	QString listfam=m_familia->idfamilia();
-	QString SQLQuery = "SELECT idfamilia, padre FROM familia WHERE idfamilia="+listfam;
-	cursor2 *cur= companyact->cargacursor(SQLQuery);
-	while (!cur->eof()) {
-		listfam += ","+cur->valor("idfamilia");
-		SQLQuery = "SELECT idfamilia, padre FROM familia WHERE idfamilia="+cur->valor("padre");
-		delete cur;
-		cur = companyact->cargacursor(SQLQuery);
-	}// end while
-	delete cur;
-	*/
+
 	query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '"+m_familia->codigocompletofamilia()+"%')";
     }// end if
     if (m_tipoarticulo->idtipo_articulo() != "") {
     	query += " AND idtipo_articulo = "+m_tipoarticulo->idtipo_articulo();
     }// end if
-    query +=" ORDER BY codigocompletoarticulo";
+    query +=" ORDER BY "+orden[m_orden->currentItem()];
     return (query);
 }// end formaQuery
 

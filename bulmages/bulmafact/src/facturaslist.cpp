@@ -33,46 +33,6 @@
 #define COL_IDALMACEN 11
 #define COL_IDSERIE_FACTURA 12
 
-/*
-- FACTURACIO>Albarans:
--- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
--- Numero
--- Data
--- Factura a clients.
-CREATE TABLE factura (
-	idfactura serial PRIMARY KEY,
-	idserie_factura char(2) NOT NULL,
-   numfactura integer NOT NULL,
-   ffactura date,
-	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-   contactfactura character varying(90),
-   telfactura character varying(20),
-   comentfactura character varying(3000),
-   idusuari integer,
-   idcliente integer REFERENCES cliente(idcliente),
-	UNIQUE (idalmacen, idserie_factura, numfactura)	
-);
- 
- 
--- Linea de presupuesto
--- Numero
--- Descripcio: Descripció de l'article en el moment de ser presupostat.
--- Quantitat
--- PVP: Preu de l'article en el moment de ser pressupostat
--- Descompte: Percentatge de descompte en línia.
--- Linia de pressupost a clients.
-CREATE TABLE lfactura (
-   idlfactura serial PRIMARY KEY,
-   desclfactura character varying(150),
-   cantlfactura float,
-   pvplfactura float,
-   ivalfactura numeric(5,2),
-   descuentolfactura float,
-   idfactura integer NOT NULL REFERENCES factura(idfactura),
-   idarticulo integer REFERENCES articulo(idarticulo)
-);
-*/
-
 FacturasList::FacturasList(QWidget *parent, const char *name, int flag)
 : FacturasListBase(parent, name, flag) {
     companyact = NULL;
@@ -127,14 +87,6 @@ void FacturasList::inicializa() {
     m_list->setColumnWidth(COL_COMENTFACTURA,300);
     m_list->setColumnWidth(COL_IDUSUARI,75);
     m_list->setColumnWidth(COL_IDCLIENTE,75);
-    /*
-    	m_list->setColumnWidth(COL_IDALMACEN,75);
-    	m_list->setColumnWidth(COL_NOMCLIENTE,200);
-    	m_list->setColumnWidth(COL_CODIGOALMACEN,75);
-    	m_list->hideColumn(COL_IDFACTURA);
-    	m_list->hideColumn(COL_IDCLIENTE);
-    	m_list->hideColumn(COL_IDALMACEN);
-    */
 
     if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
         m_list->hideColumn(COL_CODIGOALMACEN);
@@ -142,7 +94,7 @@ void FacturasList::inicializa() {
 
     //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#EEFFFF");
+    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTFACTURASCLIENTE));
     m_list->setReadOnly(TRUE);
     cursor2 * cur= companyact->cargacursor("SELECT * FROM factura LEFT JOIN cliente ON factura.idcliente=cliente.idcliente LEFT JOIN  almacen ON  factura.idalmacen=almacen.idalmacen WHERE 1=1  "+generaFiltro());
     m_list->setNumRows( cur->numregistros() );

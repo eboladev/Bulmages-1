@@ -32,6 +32,8 @@
 #include "busquedaformapago.h"
 #include "busquedafecha.h"
 #include "busquedaalmacen.h"
+#include "fixed.h"
+
 
 #include <qlineedit.h>
 #include <qtextedit.h>
@@ -71,11 +73,10 @@ void    pintaprocesadopresupuesto(QString id) {
 };
 void pintadescpresupuesto(QString id) {m_descpresupuesto->setText(id);};
 
-void   pintatotales(float iva, float base, float total, float desc);
+void   pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
 
 private:
     void generarPedidoCliente();
-    void generarAlbaranCliente();
 
 public slots:
     virtual void s_saveBudget() {guardapresupuesto();};
@@ -110,7 +111,8 @@ public slots:
     
 
     virtual void s_realizarPedidoCliente() {generarPedidoCliente();};
-    virtual void s_realizarAlbaranCliente() {generarAlbaranCliente();};
+    
+    virtual void s_informeReferencia();
 };
 
 #endif

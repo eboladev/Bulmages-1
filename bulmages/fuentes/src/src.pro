@@ -393,7 +393,7 @@ formularios \
 /usr/include/qt \
 ../../bulmalib/.ui
 TARGET = ../../installbulmages/bulmacont
-CONFIG += debug \
+CONFIG += release \
 warn_on \
 qt
 TEMPLATE = app

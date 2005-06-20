@@ -32,15 +32,15 @@ using namespace std;
 
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char *name)
-: PedidoClienteBase(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp) ,dialogChanges(this) {
+: PedidoClienteBase(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp),dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform3->setcompany(comp);
     m_cliente->setcompany(comp);
     m_forma_pago->setcompany(comp);
-    m_descuentos->setcompany(comp);    
+    m_descuentos->setcompany(comp);
     m_almacen->setcompany(comp);
     setListLinPedidoCliente(subform3);
-    setListDescuentoPedidoCliente(m_descuentos);    
+    setListDescuentoPedidoCliente(m_descuentos);
     inicialize();
     comp->meteWindow(caption(),this);
     fprintf(stderr,"Fin de la inicialización de PedidoCliente\n");
@@ -76,11 +76,11 @@ void PedidoClienteView::inicialize() {
 
 
 
-void   PedidoClienteView::pintatotales(float iva, float base, float total, float desc) {
-    m_totalBases->setText(QString::number(base));
-    m_totalTaxes->setText(QString::number(iva));
-    m_totalpedidocliente->setText(QString::number(total));
-    m_totalDiscounts->setText(QString::number(desc));
+void   PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+    m_totalBases->setText(base.toQString());
+    m_totalTaxes->setText(iva.toQString());
+    m_totalpedidocliente->setText(total.toQString());
+    m_totalDiscounts->setText(desc.toQString());
 }// end pintatotales
 
 
@@ -116,29 +116,28 @@ void PedidoClienteView::generarAlbaran() {
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='"+mdb_refpedidocliente+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-      AlbaranClienteView *bud = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albaranes de Clientes", "company"));
-      bud->cargaAlbaranCliente(cur->valor("idalbaran"));
-      bud->show();
-      return;
+        AlbaranClienteView *bud = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albaranes de Clientes", "company"));
+        bud->cargaAlbaranCliente(cur->valor("idalbaran"));
+        bud->show();
+        return;
     }
     delete cur;
 
 
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la función.
     if (QMessageBox::question(
-            this,
-            tr("Albaran Cliente Inexistente"),
-            tr("No existe un albaran asociado a este pedido."
-                "Desea Crearlo ?"),
-            tr("&Yes"), tr("&No"),
-            QString::null, 0, 1 ) )
+                this,
+                tr("Albaran Cliente Inexistente"),
+                tr("No existe un albaran asociado a este pedido."
+                   "Desea Crearlo ?"),
+                tr("&Yes"), tr("&No"),
+                QString::null, 0, 1 ) )
         return;
-    
-	
+
+
     /// Creamos el pedido.
     AlbaranClienteView *bud = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Clientes", "company"));
     bud->vaciaAlbaranCliente();
-//    bud->setcodigoalmacen(mdb_codigoalmacen);
     bud->setcomentalbaran(mdb_comentpedidocliente);
     bud->setdescalbaran(mdb_descpedidocliente);
     bud->setfechaalbaran(mdb_fechapedidocliente);
@@ -153,6 +152,14 @@ void PedidoClienteView::generarAlbaran() {
         bud->getlistalineas()->nuevalinea(linea->desclpedidocliente(), linea->cantlpedidocliente(), linea->pvplpedidocliente(),linea->descuentolpedidocliente(),  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(), linea->ivalpedidocliente());
         i++;
     }// end for
+
+    DescuentoPedidoCliente *linea1;
+    i = 0;
+    for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
+        bud->getlistadescuentos()->nuevalinea(linea1->conceptdpedidocliente(), linea1->proporciondpedidocliente());
+        i++;
+    }// end for
+
     bud->pintaAlbaranCliente();
     bud->show();
 }// end generarAlbaran
@@ -168,9 +175,9 @@ void PedidoClienteView::s_nuevoCobro() {
     bud->show();
 }// end s_nuevoCobro
 
-    void PedidoClienteView::cargaPedidoCliente(QString id) {
+void PedidoClienteView::cargaPedidoCliente(QString id) {
     PedidoCliente::cargaPedidoCliente(id);
     setCaption("Pedido Cliente  "+mdb_refpedidocliente);
     companyact->meteWindow(caption(),this);
-        dialogChanges_cargaInicial();
-	}
+    dialogChanges_cargaInicial();
+}

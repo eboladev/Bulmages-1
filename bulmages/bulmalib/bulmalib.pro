@@ -11,7 +11,8 @@ HEADERS += postgresiface2.h \
 	   abreempresaview.h \
 	   calendario.h \
 	   qmcdatenav.h \
-	   dialogchanges.h
+	   dialogchanges.h \
+	   fixed.h
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp  \
@@ -20,7 +21,8 @@ SOURCES += postgresiface2.cpp \
 	   abreempresaview.cpp \
 	   calendario.cpp \
 	   qmcdatenav.cpp \
-	   dialogchanges.cpp 
+	   dialogchanges.cpp \
+	   fixed.cpp
 IDLS += logpassbase.ui \
 	abreempresadlg.ui
 FORMS += logpassbase.ui \
@@ -28,7 +30,8 @@ FORMS += logpassbase.ui \
 	 
 TEMPLATE = lib
 LANGUAGE = C++
-CONFIG += qt \
+CONFIG += release \
+	  qt\
 	  warn_on \
 	  staticlib
 	  
