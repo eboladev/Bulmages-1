@@ -298,10 +298,8 @@ void ExtractoPrintView::presentar(char *tipus) {
         if (txt) {
             //presentaci�txt
 
-            fitxersortidatxt.setf(ios::fixed)
-                ;
+            fitxersortidatxt.setf(ios::fixed);
             fitxersortidatxt.precision(2);
-
             fitxersortidatxt << "                                    MAYOR \n" ;
             fitxersortidatxt << "Fecha Inicial: " << finicial.ascii() << "   Fecha Final: " << ffinal.ascii() << endl;
             fitxersortidatxt << "_________________________________________________________________________________________________________\n";
@@ -309,8 +307,7 @@ void ExtractoPrintView::presentar(char *tipus) {
         if (html) {
             //presentaci�html
 
-            fitxersortidahtml.setf(ios::fixed)
-                ;
+            fitxersortidahtml.setf(ios::fixed);
             fitxersortidahtml.precision(2);
             fitxersortidahtml << "<html>\n";
             fitxersortidahtml << "<head>\n";
@@ -342,7 +339,6 @@ void ExtractoPrintView::presentar(char *tipus) {
                     } else {
                         fitxersortidatxt << " Cuenta de pasivo";
                     }
-
                 }
 
                 if (html) {
@@ -354,6 +350,7 @@ void ExtractoPrintView::presentar(char *tipus) {
                     }
 
                 }
+		
                 conexionbase->begin();
                 cursoraux2 = conexionbase->cargasaldoscuentafecha(idcuenta, (char *)finicial.ascii());
                 conexionbase->commit();
