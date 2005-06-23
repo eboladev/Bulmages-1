@@ -552,6 +552,7 @@ void intapunts3view::asientoabiertop() {
     tapunts3->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTESA).ascii());
     tapunts3->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTESA).ascii());
     tapunts3->setReadOnly(FALSE);
+    botonborrarasiento->setEnabled(FALSE);
     botoniva->setEnabled(TRUE);
     botoninteligente->setEnabled(TRUE);
     abierto = 1;
@@ -570,6 +571,7 @@ void intapunts3view::asientocerradop() {
     tapunts3->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTES).ascii());
     tapunts3->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTES).ascii());
     tapunts3->setReadOnly(TRUE);
+    botonborrarasiento->setEnabled(TRUE);    
     botoniva->setEnabled(FALSE);
     botoninteligente->setEnabled(FALSE);
 }// end asientocerradop
@@ -638,29 +640,15 @@ void intapunts3view::buscaFactura() {
 
     /// Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
     /// Esta versión se basa en la base de datos pq es mejor ya que así somos más eficaces.
-    
-    //QString SQLQuery = "SELECT * FROM (SELECT * FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta WHERE idasiento="+QString::number(atoi(IDASIENTO))+") AS asiento WHERE asiento.codigo SIMILAR TO '"+cuentas.ascii()+"'";
-    
     QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+QString::number(atoi(IDASIENTO))+" AND codigo SIMILAR TO '"+cuentas.ascii()+"' GROUP BY contra";
     
     cursor2 *cursborr= conexionbase->cargacursor(SQLQuery);
     while (!cursborr->eof()) {
-        //QString codcuenta = cursborr->valor("codigo");
         int idborrador = cursborr->valor("contra").toInt();
-        //QString query= "SELECT bcontrapartidaborr("+QString::number(idborrador)+") AS idborrador";
-        //conexionbase->begin();
-        //cursor2 *curss = conexionbase->cargacursor(query,"elquerybuscaalgo");
-        //conexionbase->commit();
-        //if (!curss->eof()) {
-        //    idborrador = curss->valor("idborrador").toInt();
-        //}// end if
-        //delete curss;
-        //if (idborrador != 0) {
-            ivaview *regivaview=new ivaview(empresaactual,0,"");
-            regivaview->inicializa1(idborrador);
-            regivaview->exec();
-            delete regivaview;
-        //}// end if
+	ivaview *regivaview=new ivaview(empresaactual,0,"");
+	regivaview->inicializa1(idborrador);
+	regivaview->exec();
+	delete regivaview;
         cursborr->siguienteregistro();
     }// end while
     delete cursborr;
