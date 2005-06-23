@@ -61,9 +61,9 @@
 /// Define el numero de filas que va a tener la tabla de apuntes.
 #define TAPUNTS_NUM_ROWS 10000
 
-/** \brief Devuelve en un QString el valor del asiento que se está visualizando
+/** \brief Devuelve en un QString el valor del asiento que se estï¿½visualizando
   *
-  *  Si no hay ningún asiento viendose devuelve "-1"
+  *  Si no hay ningn asiento viendose devuelve "-1"
   */
 QString intapunts3view::idAsiento() {
     if (cursorasientos->eof())
@@ -73,7 +73,7 @@ QString intapunts3view::idAsiento() {
 
 /** \brief Constructor de la clase, inicializa los componentes
   * \param emp empresa que llama al objeto 
-  * \param parent widget padre de éste
+  * \param parent widget padre de ï¿½te
   * \param nam Nombre que recibe el widget o ventana
   */
 intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, int  ) : intapunts3dlg(parent,name) {
@@ -136,7 +136,7 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
     if (confpr->valor(CONF_CCOSTE_APUNTES) != "YES")
         tapunts3->hideColumn(COL_CCOSTE);
 	
-    /// Al construir la clase cursorasientos debe valer NULL, indicando que no tiene ningún valor válido.
+    /// Al construir la clase cursorasientos debe valer NULL, indicando que no tiene ningn valor vï¿½ido.
     cursorasientos = NULL;
 
     /// Creamos el objeto de filtrado de asientos para que el filtro funcione siempre bien desde esta ventana.
@@ -152,7 +152,7 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
     layout6->addLayout( layoutPlugins);
 
 
-    /// Calculamos el número de dígitos que gastan las cuentas
+    /// Calculamos el nmero de dï¿½itos que gastan las cuentas
     numdigitos = empresaactual->numdigitosempresa();
 
     /// Indicamos que el asiento por defecto esta cerrado.
@@ -247,7 +247,7 @@ void intapunts3view::cargarcursor() {
             textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ ejercicio +"'";
     }// end if
 
-    /// Se ordenan los asientos por año y por numero de orden.
+    /// Se ordenan los asientos por aï¿½ y por numero de orden.
     query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY EXTRACT (YEAR FROM fecha), ordenasiento";
     //   }// end if
 
@@ -261,7 +261,7 @@ void intapunts3view::cargarcursor() {
 }// end cargarcursor
 
 
-/** \brief Slot que responde a la pulsación del botón de inicio
+/** \brief Slot que responde a la pulsaciï¿½ del botï¿½ de inicio
   *
   * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al primer registro y lo muestra.
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
@@ -276,7 +276,7 @@ void intapunts3view::boton_inicio() {
 }
 
 
-/** \brief Slot que responde a la pulsación del botón de fin
+/** \brief Slot que responde a la pulsaciï¿½ del botï¿½ de fin
   *
   * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al ultimo registro y lo muestra.
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
@@ -290,7 +290,7 @@ void intapunts3view::boton_fin() {
     }// end if
 }
 
-/** \brief Slot que responde a la pulsación del botón de siguiente registro
+/** \brief Slot que responde a la pulsaciï¿½ del botï¿½ de siguiente registro
   *
   * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al siguiente registro y lo muestra.
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
@@ -307,7 +307,7 @@ void intapunts3view::boton_siguiente() {
     }// end if
 }
 
-/** \brief Slot que responde a la pulsación del botón de anterior registro
+/** \brief Slot que responde a la pulsaciï¿½ del botï¿½ de anterior registro
   *
   * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al registro anterior y lo muestra.
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
@@ -343,7 +343,7 @@ void intapunts3view::muestraasiento(int numasiento) {
         int valor = QMessageBox::warning( 0, tr("Cerrar Asiento"), tr("El asiento actual esta abierto, debe cerrarlo antes de continuar, Cerrar?."), tr("Cerrar"), tr("Dejar Abierto"),0,0,1);
         if (valor == 0) {
             boton_cerrarasiento();
-            /// Si el asiento se mantiene abierto, entonces abortamos la función.
+            /// Si el asiento se mantiene abierto, entonces abortamos la funciï¿½.
             if (abierto) {
                 return;
             }// end if
@@ -533,7 +533,7 @@ void intapunts3view::repinta(int numasiento) {
 
 
 /**
- * Esta funcion se encarga de vaciar toda la tabla de apuntes
+ * \brief Esta funcion se encarga de vaciar toda la tabla de apuntes
  * que aparece en el formulario.
  */
 void intapunts3view::vaciarapuntes() {
@@ -571,7 +571,7 @@ void intapunts3view::asientocerradop() {
     tapunts3->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTES).ascii());
     tapunts3->setReadOnly(TRUE);
     botoniva->setEnabled(FALSE);
-    botoninteligente->setEnabled(TRUE);
+    botoninteligente->setEnabled(FALSE);
 }// end asientocerradop
 
 
@@ -638,25 +638,29 @@ void intapunts3view::buscaFactura() {
 
     /// Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
     /// Esta versiÃ³n se basa en la base de datos pq es mejor ya que asÃ­ somos mÃ¡s eficaces.
-    QString SQLQuery = "SELECT * FROM (SELECT * FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta WHERE idasiento="+QString::number(atoi(IDASIENTO))+") AS asiento WHERE asiento.codigo SIMILAR TO '"+cuentas.ascii()+"'";
+    
+    //QString SQLQuery = "SELECT * FROM (SELECT * FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta WHERE idasiento="+QString::number(atoi(IDASIENTO))+") AS asiento WHERE asiento.codigo SIMILAR TO '"+cuentas.ascii()+"'";
+    
+    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+QString::number(atoi(IDASIENTO))+" AND codigo SIMILAR TO '"+cuentas.ascii()+"' GROUP BY contra";
+    
     cursor2 *cursborr= conexionbase->cargacursor(SQLQuery);
     while (!cursborr->eof()) {
-        QString codcuenta = cursborr->valor("codigo");
-        int idborrador = cursborr->valor("idborrador").toInt();
-        QString query= "SELECT bcontrapartidaborr("+QString::number(idborrador)+") AS idborrador";
-        conexionbase->begin();
-        cursor2 *curss = conexionbase->cargacursor(query,"elquerybuscaalgo");
-        conexionbase->commit();
-        if (!curss->eof()) {
-            idborrador = curss->valor("idborrador").toInt();
-        }// end if
-        delete curss;
-        if (idborrador != 0) {
+        //QString codcuenta = cursborr->valor("codigo");
+        int idborrador = cursborr->valor("contra").toInt();
+        //QString query= "SELECT bcontrapartidaborr("+QString::number(idborrador)+") AS idborrador";
+        //conexionbase->begin();
+        //cursor2 *curss = conexionbase->cargacursor(query,"elquerybuscaalgo");
+        //conexionbase->commit();
+        //if (!curss->eof()) {
+        //    idborrador = curss->valor("idborrador").toInt();
+        //}// end if
+        //delete curss;
+        //if (idborrador != 0) {
             ivaview *regivaview=new ivaview(empresaactual,0,"");
             regivaview->inicializa1(idborrador);
             regivaview->exec();
             delete regivaview;
-        }// end if
+        //}// end if
         cursborr->siguienteregistro();
     }// end while
     delete cursborr;
@@ -829,7 +833,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
             borraborrador(row);
             break;
         case 7:
-            if(QMessageBox::question(this, tr("¡Cuidado!"), tr("¿Seguro que quiere borrar todos los apuntes del asiento?"),
+            if(QMessageBox::question(this, tr("Cuidado!"), tr("Seguro que quiere borrar todos los apuntes del asiento?"),
                                      tr("&NO"), tr("&SI"), QString::null, 1, 0)) {
                 for(; tapunts3->text(0,COL_IDBORRADOR); borraborrador(0))
                     ;
@@ -979,7 +983,7 @@ void intapunts3view::apuntecambiadogrid(int row, int col) {
 
 /** Cuando se cambia de fila en la tabla del apunte se guarda el contenido 
   * en la base de datos 
-  * Esta función se encarga de determinar si ha habido un cambio de fila y
+  * Esta funciï¿½ se encarga de determinar si ha habido un cambio de fila y
   * actua en consecuencia guardando y calculando el descuadre
   */
 void intapunts3view::tcambiaseleccion() {
@@ -1018,7 +1022,7 @@ void intapunts3view::duplicar(int col) {
 
 
 /** \brief Calcula el desucadre del asiento que se estï¿½viendo
-  * Esta función se conecta a la base de datos y calcula los descuadres basandose en la tabla de borradores.
+  * Esta funciï¿½ se conecta a la base de datos y calcula los descuadres basandose en la tabla de borradores.
   */
 void intapunts3view::calculadescuadre() {
     QString query = "SELECT sum(debe) as tdebe, sum(haber) AS thaber, sum(debe)-sum(haber) AS desc FROM borrador WHERE idasiento="+QS_IDASIENTO;
@@ -1531,7 +1535,7 @@ void intapunts3view::cambiadohaber(int row) {
 }// end cambiadohaber
 
 
-/** Se ha pulsado sobre el botón de generar asientos inteligentes. Se inicializa la clase \ref aplinteligentesview y se muestra ese diàlogo para que se opere con los asientos plantilla
+/** Se ha pulsado sobre el botï¿½ de generar asientos inteligentes. Se inicializa la clase \ref aplinteligentesview y se muestra ese diï¿½ogo para que se opere con los asientos plantilla
 */
 void intapunts3view::boton_inteligente() {
     int numasiento;
@@ -1690,8 +1694,8 @@ void intapunts3view::eturn_fechaasiento() {
 }// end return_fechaasiento
 
 /**
-  * Esta función sirve para inicializar la clase con las clases amigas \ref extractoview1 , \ref diarioview1 y \ref balanceview1
-  * Esta función se llama una única vez desde la clase \ref empresa
+  * Esta funciï¿½ sirve para inicializar la clase con las clases amigas \ref extractoview1 , \ref diarioview1 y \ref balanceview1
+  * Esta funciï¿½ se llama una nica vez desde la clase \ref empresa
   */
 int intapunts3view::inicializa1(extractoview1 *ext, diarioview1 *diar, balanceview *bal ) {
     extracto=ext;
@@ -1958,7 +1962,7 @@ void intapunts3view::editarasiento() {
 }// end editarasiento
 
 
-/** Altera el orden de los apuntes subiendo el apunte sobre el que nos encontramos para ello lo que hace esta función es intercambiarlo con el apunte que está encima
+/** Altera el orden de los apuntes subiendo el apunte sobre el que nos encontramos para ello lo que hace esta funciï¿½ es intercambiarlo con el apunte que estï¿½encima
   */
 void intapunts3view::subirapunte(int row) {
     /// Como existen resticciones en la base de datos sobre el campo orden
@@ -1973,7 +1977,7 @@ void intapunts3view::subirapunte(int row) {
     }// end if
 }// end subirapunte
 
-/** Altera el orden de los apuntes subiendo el apunte sobre el que nos encontramos para ello lo que hace esta función es intercambiarlo con el apunte que está debajo
+/** Altera el orden de los apuntes subiendo el apunte sobre el que nos encontramos para ello lo que hace esta funciï¿½ es intercambiarlo con el apunte que estï¿½debajo
   */
 void intapunts3view::bajarapunte(int row) {
     /// Como existen resticciones en la base de datos sobre el campo orden
@@ -2009,10 +2013,10 @@ void intapunts3view::fechaasiento1_textChanged( const QString & texto ) {
 }//fin fechaasiento1_textChanged
 
 
-/** \brief Se ha pulsado sobre el botón de duplicar asiento
+/** \brief Se ha pulsado sobre el botï¿½ de duplicar asiento
   *
-  * Inicializa el dialogo de duplicación de asientos y lo presenta.
-  * Cuando se ha terminado carga el cursor de presentación y repinta el asiento
+  * Inicializa el dialogo de duplicaciï¿½ de asientos y lo presenta.
+  * Cuando se ha terminado carga el cursor de presentaciï¿½ y repinta el asiento
   * para que actualize los cambios
   */
 void intapunts3view::boton_duplicarasiento() {
