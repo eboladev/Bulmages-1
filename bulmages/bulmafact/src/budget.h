@@ -32,6 +32,7 @@
 #include "busquedaformapago.h"
 #include "busquedafecha.h"
 #include "busquedaalmacen.h"
+#include "busquedatrabajador.h"
 #include "fixed.h"
 
 
@@ -67,6 +68,7 @@ void    pintaidcliente(QString id) {m_cliente->setidcliente(id);};
 void    pintarefpresupuesto(QString id) {m_refpresupuesto->setText(id);};
 void    pintaidforma_pago(QString id) {m_forma_pago->setidforma_pago(id);};
 void    pintaidalmacen(QString id) {m_almacen->setidalmacen(id);};
+void    pintaidtrabajador(QString id) {m_trabajador->setidtrabajador(id);};
 void    pintaprocesadopresupuesto(QString id) {
 	if (id == "t" || id == "TRUE") m_procesadopresupuesto->setChecked(TRUE);
 	else m_procesadopresupuesto->setChecked(FALSE);
@@ -103,6 +105,7 @@ public slots:
     
 
     virtual void s_formapagovalueChanged(QString val) {setidforma_pago(val);};
+    virtual void s_trabajadorvalueChanged(QString val) {setidtrabajador(val);};
     virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
     
     virtual void s_clientevalueChanged(QString id) {setidcliente(id);};

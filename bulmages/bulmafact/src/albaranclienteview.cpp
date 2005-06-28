@@ -59,6 +59,7 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const cha
     m_almacen->setcompany(comp);
     m_forma_pago->setcompany(comp);
     m_cliente->setcompany(comp);
+    m_trabajador->setcompany(comp);
     setListLinAlbaranCliente(subform2);
     setListDescuentoAlbaranCliente(m_descuentos);
     inicialize();

@@ -13,7 +13,7 @@ myplugin::~myplugin() {}
 
 
 void myplugin::elslot() {
-   char *args[]={"http://www.conetxia.com/bulmages/manualindex.php?version=0.4.9","http://www.conetxia.com/bulmages/manualindex.php?version=0.4.9",NULL};
+   char *args[]={"http://www.conetxia.com/bulmages/manualindex.php?version=0.5.1","http://www.conetxia.com/bulmages/manualindex.php?version=0.5.1",NULL};
    int pid;
    int error;
 #ifndef WIN32

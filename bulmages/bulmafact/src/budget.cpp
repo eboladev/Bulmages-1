@@ -78,6 +78,7 @@ Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(
     m_cliente->setcompany(comp);
     m_forma_pago->setcompany(comp);
     m_almacen->setcompany(comp);
+    m_trabajador->setcompany(comp);
     setlislinpresupuesto(subform2);
     setlisdescpresupuesto(m_descuentos);
     inicialize();

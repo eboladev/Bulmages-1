@@ -165,6 +165,7 @@
 
 /// Esta variable indica donde se van a guardar los archivos de imagenes de los articulos en BulmaFact
 #define CONF_DIR_IMG_ARTICLES       425
+#define CONF_DIR_IMG_PERSONAL       426
 
 
 /// CONF_NUM_AUT_*		Determina si se utilizarán numeradores automaticos para presupuestos, albaranes y facturas  Inicialmente vale ""

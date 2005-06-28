@@ -98,6 +98,7 @@ public:
    void sacaWindow(QObject *nom) {m_listventanas->sacaWindow(nom);};
    void s_FPago();
    void s_Familias();
+   void s_trabajadores();
    QString searchCompany();
 };
 

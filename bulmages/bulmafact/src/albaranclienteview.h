@@ -33,6 +33,7 @@
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
+#include "busquedatrabajador.h"
 #include "albaranclientebase.h"
 #include "albarancliente.h"
 #include "postgresiface2.h"
@@ -59,6 +60,7 @@ public:
     void pintaidforma_pago(QString val) {m_forma_pago->setidforma_pago(val);};
     void pintaIdFactura(QString){};
     void pintaidalmacen(QString id){m_almacen->setidalmacen(id);};
+    void pintaidtrabajador(QString id) {m_trabajador->setidtrabajador(id);};
 
     void pintadescalbaran(QString val) {m_descalbaran->setText(val);};
     void pintarefalbaran(QString val) {m_refalbaran->setText(val);};
@@ -80,6 +82,7 @@ public slots:
     fprintf(stderr,"s_fechaalbaranvalueChanged()\n");
     setfechaalbaran(val);};
     virtual void s_forma_pagovalueChanged(QString val) {setidforma_pago(val);};
+    virtual void s_trabajadorvalueChanged(QString val) {setidtrabajador(val);};
     virtual void s_refalbarantextChanged(const QString &val) {setrefalbaran(val);};
     virtual void s_descalbarantextChanged(const QString &val) {setdescalbaran(val);};
     virtual void s_saveAlbaranCliente() {guardaAlbaranCliente();};

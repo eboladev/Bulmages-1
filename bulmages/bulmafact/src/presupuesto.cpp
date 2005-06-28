@@ -53,6 +53,7 @@ void presupuesto::vaciaPresupuesto() {
     mdb_descpresupuesto = "";
     mdb_refpresupuesto = "";
     mdb_idforma_pago = "";
+    mdb_idtrabajador = "";
     //    listalineas->vaciar();
 }// end vaciaPresupuesto
 
@@ -70,6 +71,7 @@ void presupuesto::pintaPresupuesto() {
     pintarefpresupuesto(mdb_refpresupuesto);
     pintaidforma_pago(mdb_idforma_pago);
     pintaidalmacen(mdb_idalmacen);
+    pintaidtrabajador(mdb_idtrabajador);
     // Pinta el subformulario de detalle del presupuesto.
     listalineas->pintalistlinpresupuesto();
     // Pinta el subformulario de descuentos del presupuesto
@@ -96,6 +98,7 @@ void presupuesto::chargeBudget(QString idbudget) {
         mdb_descpresupuesto = cur->valor("descpresupuesto");
         mdb_refpresupuesto = cur->valor("refpresupuesto");
         mdb_idforma_pago = cur->valor("idforma_pago");
+	mdb_idtrabajador = cur->valor("idtrabajador");
         if (cur->valor("procesadopresupuesto") == "t")
             mdb_procesadopresupuesto = "TRUE";
         else
@@ -122,9 +125,11 @@ void presupuesto::guardapresupuesto() {
         mdb_idusuari="NULL";
     if (mdb_idforma_pago == "")
         mdb_idforma_pago = "NULL";
+    if (mdb_idtrabajador== "")
+    	mdb_idtrabajador = "NULL";
     if (mdb_idpresupuesto == "") {
         /// Se trata de una inserci�
-        QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, procesadopresupuesto, descpresupuesto, refpresupuesto, idforma_pago) VALUES ("+mdb_numpresupuesto+",'"+mdb_fpresupuesto+"','"+mdb_contactpresupuesto+"','"+mdb_telpresupuesto+"','"+mdb_vencpresupuesto+"','"+mdb_comentpresupuesto+"',"+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+","+mdb_procesadopresupuesto+",'"+mdb_descpresupuesto+"','"+mdb_refpresupuesto+"',"+mdb_idforma_pago+")";
+        QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, procesadopresupuesto, descpresupuesto, refpresupuesto, idforma_pago, idtrabajador) VALUES ("+mdb_numpresupuesto+",'"+mdb_fpresupuesto+"','"+mdb_contactpresupuesto+"','"+mdb_telpresupuesto+"','"+mdb_vencpresupuesto+"','"+mdb_comentpresupuesto+"',"+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+","+mdb_procesadopresupuesto+",'"+mdb_descpresupuesto+"','"+mdb_refpresupuesto+"',"+mdb_idforma_pago+","+mdb_idtrabajador+")";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpresupuesto) AS m FROM presupuesto");
         if (!cur->eof())
@@ -147,6 +152,7 @@ void presupuesto::guardapresupuesto() {
         SQLQuery += " ,descpresupuesto='"+mdb_descpresupuesto+"'";
         SQLQuery += " ,refpresupuesto= '"+mdb_refpresupuesto+"'";
         SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
+	SQLQuery += " ,idtrabajador="+mdb_idtrabajador;
         SQLQuery += " WHERE idpresupuesto="+mdb_idpresupuesto;
         companyact->begin();
         companyact->ejecuta(SQLQuery);

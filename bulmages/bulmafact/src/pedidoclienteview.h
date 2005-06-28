@@ -20,6 +20,7 @@
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
+#include "busquedatrabajador.h"
 #include "dialogchanges.h"
 #include "fixed.h"
 
@@ -55,6 +56,7 @@ public:
     
     void pintadescpedidocliente(QString id) {m_descpedidocliente->setText(id);};
     void pintaidforma_pago(QString id) {m_forma_pago->setidforma_pago(id);};
+    void pintaidtrabajador(QString id) {m_trabajador->setidtrabajador(id);};
     void pintacomentpedidocliente(QString id) {m_comentpedidocliente->setText(id);};
     void pintarefpedidocliente(QString id) {m_refpedidocliente->setText(id);};
     void pintacontactpedidocliente(QString id) {m_contactpedidocliente->setText(id);};
@@ -77,6 +79,7 @@ public slots:
     virtual void s_clientevalueChanged(QString val) {setidcliente(val);};
     virtual void s_fechapedidoclientevalueChanged(QString val) {setfechapedidocliente(val);};
     virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
+    virtual void s_trabajadorvalueChanged(QString val) {setidtrabajador(val);};
     
     virtual void s_forma_pagovalueChanged(QString val) {setidforma_pago(val);};
     virtual void s_refpedidoclientetextChanged(const QString &val) {setrefpedidocliente(val);};

@@ -11,10 +11,13 @@ SET search_path = public, pg_catalog;
 
 SET DATESTYLE TO European;
 
-
 CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
-    AS '/usr/lib/postgresql/8.0/lib/plpgsql.so', 'plpgsql_call_handler'
+    AS '$libdir/plpgsql', 'plpgsql_call_handler'
     LANGUAGE c;
+    
+--CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
+--    AS '/usr/lib/postgresql/8.0/lib/plpgsql.so', 'plpgsql_call_handler'
+--    LANGUAGE c;
     
 CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
 
@@ -79,6 +82,25 @@ CREATE TABLE almacen (
  emailalmacen character varying(100),
  inactivoalmacen character(1),
  UNIQUE(codigoalmacen)
+);
+
+
+--
+-- TOC entry 47 (OID 3090354)
+-- Name: staff; Type: TABLE; Schema: public; Owner: fewa
+--
+
+CREATE TABLE trabajador (
+    idtrabajador serial PRIMARY KEY,
+    nomtrabajador character varying NOT NULL,
+    apellidostrabajador character varying,
+    dirtrabajador character varying,
+    nsstrabajador character varying,
+    teltrabajador character varying,
+    moviltrabajador character varying,
+    emailtrabajador character varying,
+    fototrabajador character varying,
+    activotrabajador boolean DEFAULT TRUE NOT NULL
 );
 
 
@@ -369,7 +391,8 @@ CREATE TABLE cobro (
    cantcobro numeric(12,2) DEFAULT 0,
    refcobro character varying(12) NOT NULL,
    previsioncobro boolean DEFAULT FALSE,
-   comentcobro character varying(500)
+   comentcobro character varying(500),
+   idtrabajador integer REFERENCES trabajador(idtrabajador)
 );
    
 
@@ -380,7 +403,8 @@ CREATE TABLE pago (
    cantpago numeric(12,2) DEFAULT 0,
    refpago character varying(12) NOT NULL,
    previsionpago boolean DEFAULT FALSE,
-   comentpago character varying(500)
+   comentpago character varying(500),
+   idtrabajador integer REFERENCES trabajador(idtrabajador)   
 );
 
 -- Any: Any en que s'efectua la comanda.
@@ -393,7 +417,8 @@ CREATE TABLE pedido (
    fechapedido date,
    descpedido character varying(500),
    iddivision integer NOT NULL REFERENCES division(iddivision),
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+   idtrabajador integer REFERENCES trabajador(idtrabajador)   
 );
 
 
@@ -490,6 +515,7 @@ CREATE TABLE presupuesto (
    idcliente integer REFERENCES cliente(idcliente),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
    idforma_pago integer NOT NULL REFERENCES forma_pago(idforma_pago),
+   idtrabajador integer REFERENCES trabajador(idtrabajador),   
    UNIQUE (idalmacen, numpresupuesto)
 );
 
@@ -576,7 +602,8 @@ CREATE TABLE pedidocliente (
    procesadopedidocliente boolean DEFAULT FALSE,   
    idcliente integer NOT NULL REFERENCES cliente(idcliente),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),    
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+   idtrabajador integer REFERENCES trabajador(idtrabajador)   
 );
 
 CREATE FUNCTION restriccionespedidocliente () RETURNS "trigger"
@@ -663,7 +690,8 @@ CREATE TABLE factura (
    idusuari integer,
    idcliente integer REFERENCES cliente(idcliente),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),   
-   UNIQUE (idalmacen, codigoserie_factura, numfactura)	
+   UNIQUE (idalmacen, codigoserie_factura, numfactura),
+   idtrabajador integer REFERENCES trabajador(idtrabajador)
 );
 
 CREATE FUNCTION restriccionesfactura () RETURNS "trigger"
@@ -747,7 +775,8 @@ CREATE TABLE facturap (
    procesadafacturap boolean DEFAULT FALSE, 
    idusuari integer,
    idproveedor integer REFERENCES proveedor(idproveedor),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago)
+   idforma_pago integer REFERENCES forma_pago(idforma_pago),
+   idtrabajador integer REFERENCES trabajador(idtrabajador)   
 );
 
 CREATE FUNCTION restriccionesfacturap () RETURNS "trigger"
@@ -823,7 +852,7 @@ CREATE TABLE albaranp (
    descalbaranp character varying(150),
    refalbaranp character varying(12) NOT NULL,
    fechaalbaranp date DEFAULT now(),
-   loginusuario character varying(15) REFERENCES usuario(loginusuario),
+--   loginusuario character varying(15) REFERENCES usuario(loginusuario),
    comentalbaranp character varying(3000),
    procesadoalbaranp boolean DEFAULT FALSE,
    idproveedor integer REFERENCES proveedor(idproveedor),
@@ -831,6 +860,7 @@ CREATE TABLE albaranp (
 --   idfactura integer REFERENCES factura(idfactura),
 --   idnofactura integer REFERENCES nofactura(idnofactura),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+   idtrabajador integer REFERENCES trabajador(idtrabajador),   
    UNIQUE (idalmacen, numalbaranp)
 );
 
@@ -926,7 +956,7 @@ CREATE TABLE albaran (
    descalbaran character varying(150),
    refalbaran character varying(12) NOT NULL,
    fechaalbaran date,
-   loginusuario character varying(15) REFERENCES usuario(loginusuario),
+--   loginusuario character varying(15) REFERENCES usuario(loginusuario),
    comentalbaran character varying(3000),
    procesadoalbaran boolean DEFAULT FALSE,
    idcliente integer REFERENCES cliente(idcliente),
@@ -934,6 +964,7 @@ CREATE TABLE albaran (
    idfactura integer REFERENCES factura(idfactura),
    idnofactura integer REFERENCES nofactura(idnofactura),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+   idtrabajador integer REFERENCES trabajador(idtrabajador),   
    UNIQUE (idalmacen, numalbaran)
 );
 

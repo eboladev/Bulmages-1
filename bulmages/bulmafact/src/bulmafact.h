@@ -40,6 +40,7 @@ public slots:
 	 virtual void listClientDelivNotes();
     virtual void s_FPago();
     virtual void s_Familias();
+    virtual void s_trabajadores();
     void about();
     void aboutQt();
 /*

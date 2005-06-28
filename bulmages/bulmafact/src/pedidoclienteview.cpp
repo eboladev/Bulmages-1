@@ -39,6 +39,7 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char 
     m_forma_pago->setcompany(comp);
     m_descuentos->setcompany(comp);
     m_almacen->setcompany(comp);
+    m_trabajador->setcompany(comp);
     setListLinPedidoCliente(subform3);
     setListDescuentoPedidoCliente(m_descuentos);
     inicialize();

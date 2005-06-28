@@ -53,6 +53,7 @@ protected:
     QString mdb_comentpedidocliente;
     QString mdb_refpedidocliente;
     QString mdb_procesadopedidocliente;
+    QString mdb_idtrabajador;
     
     QString mdb_contactpedidocliente;
     QString mdb_telpedidocliente;
@@ -97,6 +98,7 @@ public:
     virtual void pintaprocesadopedidocliente(QString) {};
     virtual void pintacontactpedidocliente(QString) {};
     virtual void pintatelpedidocliente(QString) {};
+    virtual void pintaidtrabajador(QString) {};
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {};
 
 
@@ -112,6 +114,7 @@ public:
     void setprocesadopedidocliente(QString val) {mdb_procesadopedidocliente=val;};
     void setcontactpedidocliente(QString val) {mdb_contactpedidocliente=val;};
     void settelpedidocliente(QString val) {mdb_telpedidocliente=val;};
+    void setidtrabajador(QString val) {mdb_idtrabajador=val;};
     
     void vaciaPedidoCliente();
 };

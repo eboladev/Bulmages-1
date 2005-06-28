@@ -82,6 +82,10 @@ void bulmafact::listClientDelivNotes() {
    m_company.listClientDelivNotes();
 }
 
+void bulmafact::s_trabajadores() {
+   m_company.s_trabajadores();
+}
+
 void bulmafact::listarticles() {
    fprintf(stderr,"listarticlesaction activado \n");
    m_company.listarticles();

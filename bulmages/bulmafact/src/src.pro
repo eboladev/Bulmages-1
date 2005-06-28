@@ -49,7 +49,8 @@ FORMS += bulmafactbase.ui \
          cobrobase.ui \
          cobroslistbase.ui \
          facturasplistbase.ui \
-         facturapbase.ui 
+         facturapbase.ui \
+	 trabajadorbase.ui
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
@@ -133,7 +134,9 @@ HEADERS += bulmafact.h \
 	   descfactura.h \
 	   listdescfactura.h \
 	   listdescfacturaview.h \
-	   informereferencia.h
+	   informereferencia.h \
+	   trabajador.h \
+	   busquedatrabajador.h
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -213,7 +216,9 @@ SOURCES += bulmafact.cpp \
 	   descfactura.cpp \
 	   listdescfactura.cpp \
 	   listdescfacturaview.cpp \
-	   informereferencia.cpp
+	   informereferencia.cpp \
+	   trabajador.cpp \
+	   busquedatrabajador.cpp
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

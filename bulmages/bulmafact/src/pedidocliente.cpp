@@ -52,6 +52,7 @@ void PedidoCliente::vaciaPedidoCliente() {
     mdb_procesadopedidocliente = "FALSE";
     mdb_contactpedidocliente = "";
     mdb_telpedidocliente = "";
+    mdb_idtrabajador = "";
     //    listalineas->vaciar();
 }// end vaciaPedidoCliente
 
@@ -72,6 +73,7 @@ void PedidoCliente::pintaPedidoCliente() {
     pintaprocesadopedidocliente(mdb_procesadopedidocliente);
     pintacontactpedidocliente(mdb_contactpedidocliente);
     pintatelpedidocliente(mdb_telpedidocliente);
+    pintaidtrabajador(mdb_idtrabajador);
 
     /// Pinta el subformulario de detalle del PedidoCliente.
     listalineas->pintaListLinPedidoCliente();
@@ -99,6 +101,7 @@ void PedidoCliente::cargaPedidoCliente(QString idbudget) {
         mdb_refpedidocliente = cur->valor("refpedidocliente");
 	mdb_contactpedidocliente = cur->valor("contactpedidocliente");
 	mdb_telpedidocliente = cur->valor("telpedidocliente");
+	mdb_idtrabajador = cur->valor("idtrabajador");
         if (cur->valor("procesadopedidocliente") == "t")
             mdb_procesadopedidocliente = "TRUE";
         else
@@ -121,9 +124,11 @@ void PedidoCliente::guardaPedidoCliente() {
         mdb_idforma_pago = "NULL";
     if (mdb_numpedidocliente == "")
         mdb_numpedidocliente = "NULL";
+    if (mdb_idtrabajador == "")
+        mdb_idtrabajador = "NULL";
     if (mdb_idpedidocliente == "") {
         /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO pedidocliente (contactpedidocliente, telpedidocliente, numpedidocliente, fechapedidocliente, idcliente, idalmacen, idforma_pago, refpedidocliente, procesadopedidocliente, descpedidocliente, comentpedidocliente) VALUES ('"+mdb_contactpedidocliente+"','"+mdb_telpedidocliente+"',"+mdb_numpedidocliente+",'"+mdb_fechapedidocliente+"',"+mdb_idcliente+","+mdb_idalmacen+","+mdb_idforma_pago+",'"+mdb_refpedidocliente+"',"+mdb_procesadopedidocliente+",'"+mdb_descpedidocliente+"','"+mdb_comentpedidocliente+"')";
+        QString SQLQuery = "INSERT INTO pedidocliente (contactpedidocliente, telpedidocliente, numpedidocliente, fechapedidocliente, idcliente, idalmacen, idforma_pago, refpedidocliente, procesadopedidocliente, descpedidocliente, comentpedidocliente, idtrabajador) VALUES ('"+mdb_contactpedidocliente+"','"+mdb_telpedidocliente+"',"+mdb_numpedidocliente+",'"+mdb_fechapedidocliente+"',"+mdb_idcliente+","+mdb_idalmacen+","+mdb_idforma_pago+",'"+mdb_refpedidocliente+"',"+mdb_procesadopedidocliente+",'"+mdb_descpedidocliente+"','"+mdb_comentpedidocliente+"', "+mdb_idtrabajador+")";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpedidocliente) AS m FROM pedidocliente");
         if (!cur->eof())
@@ -144,6 +149,7 @@ void PedidoCliente::guardaPedidoCliente() {
         SQLQuery += " ,comentpedidocliente='"+mdb_comentpedidocliente+"'";
         SQLQuery += " ,contactpedidocliente='"+mdb_contactpedidocliente+"'"; 
 	SQLQuery += " ,telpedidocliente='"+mdb_telpedidocliente+"'"; 
+	SQLQuery += " ,idtrabajador ="+mdb_idtrabajador;
 	SQLQuery += " WHERE idpedidocliente="+mdb_idpedidocliente;
         companyact->begin();
         companyact->ejecuta(SQLQuery);

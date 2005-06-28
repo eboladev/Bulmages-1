@@ -17,7 +17,7 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   l1->setFont( QFont( "Arial", 20, QFont::Bold ) );
   l1->setPaletteForegroundColor(QColor("#333388"));
   l1->setText( tr("BulmaCont") );
-  l1->setGeometry(10,10,150,25);
+  l1->setGeometry(250,250,150,25);
   l1->setBackgroundOrigin(QWidget::ParentOrigin);
   l1->setBackgroundPixmap(image0);
 
@@ -26,12 +26,12 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   l0->setPaletteForegroundColor(QColor("#FF0000"));
   l0->setAlignment( AlignVCenter );
   l0->setFont( QFont( "Arial", 20, QFont::Bold ) );
-  l0->setText( tr("v 0.4.9") );
-  l0->setGeometry(100,35,150,25);
+  l0->setText( tr("v 0.5.1") );
+  l0->setGeometry(290,270,150,25);
   l0->setBackgroundOrigin(QWidget::ParentOrigin);
   l0->setBackgroundPixmap(image0);
 
-
+/*
   QLabel *l21 = new QLabel( this );
   l21->setAlignment( AlignVCenter );
   l21->setFont( QFont( "helvetica", 7, QFont::Normal ) );
@@ -39,13 +39,13 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   l21->setGeometry(0,image0.height()-38,image0.width(),58);
   l21->setPaletteForegroundColor(QColor("#000066"));
   l21->setPaletteBackgroundColor(QColor("#000000"));
-    
+*/    
   l2 = new QTextBrowser(this);
   l2->setVScrollBarMode(QScrollView::AlwaysOff);
   l2->setAlignment( AlignBottom );
   l2->setFont( QFont( "helvetica", 11, QFont::Normal ) );
   l2->setText( tr("BULMACONT") );
-  l2->setGeometry(0,image0.height()-38,image0.width(),58);
+  l2->setGeometry(0,image0.height(),image0.width(),58);
   l2->setPaletteForegroundColor(QColor("#000066"));
   l2->setPaletteBackgroundColor(QColor("#DDDDDD"));
 

@@ -1,5 +1,5 @@
-#ifndef BUSQUEDAFORMAPAGO_H
-#define BUSQUEDAFORMAPAGO_H
+#ifndef BUSQUEDAFORMA_PAGO_H
+#define BUSQUEDAFORMA_PAGO_H
 
 #include <qcombobox.h>
 
@@ -20,7 +20,7 @@ public:
     BusquedaFormaPago(QWidget *parent = 0, const char *name = 0);
     ~BusquedaFormaPago();
     void setcompany(company *comp) {companyact = comp;};
-    virtual void setidforma_pago(QString idformapago);
+    virtual void setidforma_pago(QString idforma_pago);
 public slots:
     void m_activated(int index) {
     	fprintf(stderr,"Activado el combo box\n");

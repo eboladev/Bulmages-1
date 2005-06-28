@@ -46,6 +46,7 @@ protected:
     QString mdb_descpresupuesto;
     QString mdb_refpresupuesto;
     QString mdb_idforma_pago;
+    QString mdb_idtrabajador;
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setlislinpresupuesto ( listlinpresupuesto *a) {
@@ -80,10 +81,12 @@ public:
     virtual void pintadescpresupuesto(QString) {};
     virtual void pintarefpresupuesto(QString) {};
     virtual void pintaidforma_pago(QString){};
+    virtual void pintaidtrabajador(QString){};
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {};
 
     void setidcliente(QString val) { mdb_idcliente=val;};
     void setidalmacen(QString val) {mdb_idalmacen=val;};
+    void setidtrabajador(QString val) {mdb_idtrabajador=val;};
     void setNumPresupuesto(QString val) { mdb_numpresupuesto=val;};
     void setFPresupuesto(QString val) { mdb_fpresupuesto=val;};
     void setVencPresupuesto(QString val) { mdb_vencpresupuesto=val;};

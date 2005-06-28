@@ -44,7 +44,7 @@
 #include "albaranesproveedor.h"
 #include "facturasplist.h"
 #include "cobroslist.h"
-
+#include "trabajador.h"
 
 
 company::company() {}// end company
@@ -205,9 +205,16 @@ void company::refreshPedidosCliente() {
 void company::s_FPago() {
     fpago *f = new fpago(this,NULL,theApp->translate("Formas de Pago", "company"));
     f->exec();
+    fprintf(stderr,"Vamos a liberar memoria\n");
     delete f;
 }// end newOrder
 
+
+void company::s_trabajadores() {
+   Trabajador *t = new Trabajador(this, NULL, theApp->translate("Trabajadores", "company"));
+   t->exec();
+   delete t;
+}
 
 void company::s_Familias() {
     familiasview *fam = new familiasview(this, 0,0);

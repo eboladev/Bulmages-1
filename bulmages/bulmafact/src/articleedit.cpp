@@ -272,7 +272,7 @@ void articleedit::s_grabarClicked() {
 	delete cur;	
 
     }// end if */
-    companyact->begin();
+//    companyact->begin();
     if (m_archivoimagen != "") {
 	cursor2 *cur1 = companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo="+idArticle);
     	QString cadena = "cp "+m_archivoimagen+" "+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur1->valor("codigocompletoarticulo")+".jpg";

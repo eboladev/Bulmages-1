@@ -44,7 +44,6 @@ void AlbaranCliente::vaciaAlbaranCliente() {
     mdb_idalbaran="";
     mdb_numalbaran="";
     mdb_fechaalbaran="";
-    mdb_loginusuario="";
     mdb_comentalbaran="";
     mdb_idcliente="";
     mdb_idforma_pago="";
@@ -52,6 +51,7 @@ void AlbaranCliente::vaciaAlbaranCliente() {
     mdb_numfactura="";
     mdb_descalbaran="";
     mdb_refalbaran="";
+    mdb_idtrabajador = "";
 }// end vaciaAlbaranCliente
 
 
@@ -60,13 +60,13 @@ void AlbaranCliente::pintaAlbaranCliente() {
     pintaIdAlbaran(mdb_idalbaran);
     pintaNumAlbaran(mdb_numalbaran);
     pintafechaalbaran(mdb_fechaalbaran);
-    pintaloginusuario(mdb_loginusuario);
     pintaComentAlbaran(mdb_comentalbaran);
     pintaidcliente(mdb_idcliente);
     pintaidforma_pago(mdb_idforma_pago);
     pintaidalmacen(mdb_idalmacen);
     pintarefalbaran(mdb_refalbaran);
     pintadescalbaran(mdb_descalbaran);
+    pintaidtrabajador(mdb_idtrabajador);
     /// Pinta el subformulario de detalle del AlbaranCliente.
     listalineas->pintaListLinAlbaranCliente();
     listadescuentos->pintaListDescuentoAlbaranCliente();
@@ -88,10 +88,10 @@ void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
         mdb_numalbaran= cur->valor("numalbaran");
         mdb_fechaalbaran= cur->valor("fechaalbaran");
         mdb_comentalbaran= cur->valor("comentalbaran");
-        mdb_loginusuario = cur->valor("loginusuario");
 	mdb_idforma_pago = cur->valor("idforma_pago");
 	mdb_descalbaran = cur->valor("descalbaran");
 	mdb_refalbaran = cur->valor("refalbaran");
+	mdb_idtrabajador = cur->valor("idtrabajador");
     }// end if
     delete cur;
     listalineas->cargaListLinAlbaranCliente(idbudget);
@@ -104,15 +104,13 @@ void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
 void AlbaranCliente::guardaAlbaranCliente() {
     /// Todo el guardado es una transacción
     companyact->begin();
-    if (mdb_loginusuario=="")
-    	mdb_loginusuario="NULL";
-    else
-    	mdb_loginusuario="'"+mdb_loginusuario+"'";
     if (mdb_numalbaran=="") 
     	mdb_numalbaran="NULL";
+    if (mdb_idtrabajador == "")
+    	mdb_idtrabajador="NULL";
     if (mdb_idalbaran == "") {
         /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, loginusuario, comentalbaran, idcliente, idforma_pago, idalmacen, descalbaran, refalbaran) VALUES ("+mdb_numalbaran+",'"+mdb_fechaalbaran+"',"+mdb_loginusuario+",'"+mdb_comentalbaran+"',"+mdb_idcliente+","+mdb_idforma_pago+","+mdb_idalmacen+",'"+mdb_descalbaran+"','"+mdb_refalbaran+"')";
+        QString SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran, idcliente, idforma_pago, idalmacen, descalbaran, refalbaran, idtrabajador) VALUES ("+mdb_numalbaran+",'"+mdb_fechaalbaran+"','"+mdb_comentalbaran+"',"+mdb_idcliente+","+mdb_idforma_pago+","+mdb_idalmacen+",'"+mdb_descalbaran+"','"+mdb_refalbaran+"',"+mdb_idtrabajador+")";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idalbaran) AS m FROM albaran");
         if (!cur->eof())
@@ -123,13 +121,13 @@ void AlbaranCliente::guardaAlbaranCliente() {
         QString SQLQuery = "UPDATE albaran SET ";
         SQLQuery += " numalbaran="+mdb_numalbaran;
         SQLQuery += " ,fechaalbaran='"+mdb_fechaalbaran+"'";
-        SQLQuery += " ,loginusuario="+mdb_loginusuario+"";
         SQLQuery += " ,comentalbaran='"+mdb_comentalbaran+"'";
         SQLQuery += " ,idcliente="+mdb_idcliente+"";
         SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
         SQLQuery += " ,idalmacen="+mdb_idalmacen;
 	SQLQuery += " ,descalbaran='"+mdb_descalbaran+"'";
 	SQLQuery += " ,refalbaran='"+mdb_refalbaran+"'";
+	SQLQuery += " ,idtrabajador="+mdb_idtrabajador;
         SQLQuery += " WHERE idalbaran="+mdb_idalbaran;
         companyact->ejecuta(SQLQuery);
     }// end if

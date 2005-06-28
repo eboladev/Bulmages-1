@@ -24,7 +24,7 @@ BusquedaFormaPago::BusquedaFormaPago(QWidget *parent, const char *name)
 
 BusquedaFormaPago::~BusquedaFormaPago() {}
 
-void BusquedaFormaPago::setidforma_pago(QString idformapago) {
+void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = companyact->cargacursor("SELECT * FROM forma_pago");
@@ -34,7 +34,7 @@ void BusquedaFormaPago::setidforma_pago(QString idformapago) {
     insertItem("--");
     while (!m_cursorcombo->eof()) {
         i ++;
-        if (m_cursorcombo->valor("idforma_pago") == idformapago)
+        if (m_cursorcombo->valor("idforma_pago") == idforma_pago)
             i1 = i;
         insertItem(m_cursorcombo->valor("descforma_pago"));
         m_cursorcombo->siguienteregistro();
