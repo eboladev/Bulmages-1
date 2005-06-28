@@ -25,6 +25,6 @@ INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (20, 'Database
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (21, 'CuentaRegularizacion', '129');
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (22, 'CuentasIngresos', '60;62');
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (23, 'CuentasGastos', '70');
-INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (24, 'CuentasDerechos', '40;41');
-INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (25, 'CuentasObligaciones', '43;3');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (24, 'CuentasDerechos', '43;3');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (25, 'CuentasObligaciones', '40;41');
 
