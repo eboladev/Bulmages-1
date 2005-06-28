@@ -450,7 +450,6 @@ void ivaview::buscafecha(int idborrador) {
     delete cur;
 }
 
-
 /** \brief busca la cuenta de IVA en el apunte que se ha seleccionado.
   * Esta funcion carga, dado un apunte y un asiento todas las cuentas de iva en el registro de iva 
   * que corresponden con la partida del asiento.
@@ -468,7 +467,8 @@ int ivaview::buscaborradoriva(int idborrador) {
     conexionbase->commit();
     
     // Cargamos los registros que quedan pq seguro que son de IVA.
-    SQLQuery = "SELECT * FROM tipoiva LEFT JOIN lacosa ON tipoiva.idcuenta=lacosa.idcuenta LEFT JOIN (SELECT idcuenta, contrapartida, IVAdebe AS debe, IVAhaber AS haber FROM lacosa) AS base ON (base.debe*porcentajetipoiva/100)::NUMERIC(12,2)=lacosa.ivadebe AND (base.haber*porcentajetipoiva/100)::NUMERIC(12,2)=lacosa.ivahaber ORDER BY idtipoiva";
+    // NOTA: Como con los cálculos de IVA a veces no funciona bien el redondeo a 2 decimales, vamos a tener siempre en cuenta 1 decimal para la comparacion.
+    SQLQuery = "SELECT * FROM tipoiva LEFT JOIN lacosa ON tipoiva.idcuenta=lacosa.idcuenta LEFT JOIN (SELECT idcuenta, contrapartida, IVAdebe AS debe, IVAhaber AS haber FROM lacosa) AS base ON (base.debe*porcentajetipoiva/100)::NUMERIC(12,1)=lacosa.ivadebe::NUMERIC(12,1) AND (base.haber*porcentajetipoiva/100)::NUMERIC(12,2)=lacosa.ivahaber::NUMERIC(12,1) ORDER BY idtipoiva";
     
     cursor2 * cur=conexionbase->cargacursor(SQLQuery);
     m_listIva->setNumRows(cur->numregistros());
@@ -563,7 +563,8 @@ int ivaview::buscaborradorservicio(int idborrador) {
     delete cur;
 
     /// Atentos que aqui es donde se calcula el total
-    SQLQuery = "SELECT abs(sum(baseimp)) AS subtotal FROM lacosa, (SELECT baseimp AS iva FROM lacosa WHERE codigo SIMILAR TO "+cuentasIVA+") AS iva WHERE codigo SIMILAR TO "+cuentas+" AND (iva.iva*100/baseimp)::integer IN (SELECT porcentajetipoiva FROM tipoiva)";
+    /// El cálculo se compara con el formato conocido de IVA (16, 7, 4: por tanto, formato de 2 dígitos con 0 decimales)
+    SQLQuery = "SELECT abs(sum(baseimp)) AS subtotal FROM lacosa, (SELECT baseimp AS iva FROM lacosa WHERE codigo SIMILAR TO "+cuentasIVA+") AS iva WHERE codigo SIMILAR TO "+cuentas+" AND (iva.iva*100/baseimp)::NUMERIC(2,0) IN (SELECT porcentajetipoiva FROM tipoiva)";
     cur=conexionbase->cargacursor(SQLQuery);
     conexionbase->commit();
     if (! cur->eof() ) {
@@ -587,9 +588,9 @@ int ivaview::buscaborradorservicio(int idborrador) {
 int ivaview::buscaborradorcliente(int idborrador) {
     QString SQLQuery;
     int registro=0;
-    SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.debe AS debe, borrador.haber AS haber, borrador.debe+borrador.haber AS totalfactura FROM borrador, cuenta where borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador);
-
+    
     conexionbase->begin();
+    SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.debe AS debe, borrador.haber AS haber, borrador.debe+borrador.haber AS totalfactura FROM borrador, cuenta where borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador);
     conexionbase->ejecuta(SQLQuery);
     SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
     conexionbase->ejecuta(SQLQuery);
@@ -597,7 +598,7 @@ int ivaview::buscaborradorcliente(int idborrador) {
     
     /// Cogemos de la configuracion las cuentas que queremos que se apunten.
     /// Montamos los querys en base a la cadena cuentas.
-    /// Se consideran cuentas de Derechos o de Obligaciones a Clientes y Proveedores.
+    /// Se consideran cuentas de Derechos y de Obligaciones a Clientes y Proveedores, respectivamente.
     /// Los campos sirven para encontrar la cuenta que corresponde a quien hace el pago de la factura.
     QString cuentas="";
     SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasDerechos'";
