@@ -21,7 +21,7 @@ BbloqFecha::BbloqFecha(QString *NombreBaseDatos, QWidget * parent, const char * 
   listView1->setSorting(-1);
   
   postgresiface2 *DBconn = new postgresiface2();
-  DBconn->inicializa( *NombreBaseDatos );
+  DBconn->inicializa(*NombreBaseDatos);
   DBconn->begin();
   query.sprintf("SELECT * FROM ejercicios WHERE periodo=0 ORDER BY ejercicio DESC");
   cursor2 *curPeri,*curEjer = DBconn->cargacursor(query,"curEjer");
