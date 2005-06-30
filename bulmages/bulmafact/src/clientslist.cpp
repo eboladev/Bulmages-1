@@ -233,4 +233,10 @@ void ClientsList::s_printClients() {
 }// end s_printClients
 
 
+void ClientsList::s_borrarCliente() {
+   QString SQLQuery = "DELETE FROM cliente WHERE idcliente = "+m_idclient;
+   companyact->ejecuta(SQLQuery);
+   inicializa();
+}// end s_borrarCliente
+
 

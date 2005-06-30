@@ -53,6 +53,9 @@
 #define COL_IDCANAL         14
 #define COL_IDCCOSTE        15
 
+
+/// Usar esta macro es peligroso ya que el cursor puede estar vacio.
+/// es preferible usar la función idAsiento() que hace la comprobación.
 #define IDASIENTO cursorasientos->valor("idasiento").ascii()
 #define QS_IDASIENTO cursorasientos->valor("idasiento")
 #define ORDENASIENTO cursorasientos->valor("ordenasiento").ascii()
@@ -354,7 +357,11 @@ void intapunts3view::muestraasiento(int numasiento) {
 
 
     cursorasientos->primerregistro();
-    while (atoi(IDASIENTO) != numasiento && !cursorasientos->esultimoregistro())
+    if (cursorasientos->eof()) {
+    	QMessageBox::warning(0,tr("No hay asiento"), tr("No hay asiento para mostrar"),"OK",0,0);
+	return;
+    }//
+    while (idAsiento().toInt() != numasiento && !cursorasientos->esultimoregistro())
         cursorasientos->siguienteregistro();
 
     vaciarapuntes();
@@ -582,12 +589,15 @@ void intapunts3view::asientocerradop() {
  * formulario
  */
 void intapunts3view::boton_abrirasiento() {
-    conexionbase->begin();
-    if (idasiento==-1)
-        idasiento=atoi(IDASIENTO);
-    if ((conexionbase->abreasiento(idasiento))==42501)
+    idasiento=idAsiento().toInt();
+    if (idasiento == -1) {
+    	QMessageBox::warning(0, tr("No hay asiento"), tr("No hay ningún asiento"),"OK",0,0);
+	return;
+    }
+    if ((conexionbase->abreasiento(idasiento))==42501) {
         QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acciï¿½."), QMessageBox::Yes, 0);
-    conexionbase->commit();
+	return;
+     }
     asientoabiertop();
 }// end boton_abrirasiento
 
@@ -609,8 +619,11 @@ void intapunts3view::boton_cerrarasiento() {
     buscaFactura();
 
     /// Realizamos la operaciï¿½ en la base de datos.
-    if (idasiento==-1)
-        idasiento=atoi(IDASIENTO);
+    idasiento = idAsiento().toInt();
+    if (idasiento==-1) {
+        QMessageBox::warning(0,tr("No hay asiento para cerrar"),tr("No hay ningún asiento para cerrarlo"),"OK",0,0);
+	return;
+    }// end if
     conexionbase->begin();
     conexionbase->cierraasiento(idasiento);
     conexionbase->commit();
@@ -640,7 +653,7 @@ void intapunts3view::buscaFactura() {
 
     /// Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
     /// Esta versiÃ³n se basa en la base de datos pq es mejor ya que asÃ­ somos mÃ¡s eficaces.
-    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+QString::number(atoi(IDASIENTO))+" AND codigo SIMILAR TO '"+cuentas.ascii()+"' GROUP BY contra";
+    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+QString::number(idAsiento().toInt())+" AND codigo SIMILAR TO '"+cuentas.ascii()+"' GROUP BY contra";
     
     cursor2 *cursborr= conexionbase->cargacursor(SQLQuery);
     while (!cursborr->eof()) {
@@ -768,12 +781,12 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
             break;
         case 2:
             subirapunte(row);
-            repinta(atoi(IDASIENTO));
+            repinta(idAsiento().toInt());
             tapunts3->setCurrentCell(row-1,col);
             break;
         case 3:
             bajarapunte(row);
-            repinta(atoi(IDASIENTO));
+            repinta(idAsiento().toInt());
             tapunts3->setCurrentCell(row+1,col);
             break;
         case 4:
@@ -935,7 +948,7 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
             nuevae->cargacuenta(atoi(idcuenta.ascii()));
             nuevae->exec();
             delete nuevae;
-            repinta(atoi(IDASIENTO));
+            repinta(idAsiento().toInt());
             break;
         }// end switch
         delete popup;
@@ -1063,8 +1076,12 @@ void intapunts3view::guardaborrador(int row) {
     QString idc_coste;
     int datos=0;
     // Si no hay asiento lo calculamos.
-    if (idasiento==-1)
-        idasiento=atoi(IDASIENTO);
+    idasiento = idAsiento().toInt();
+    if (idasiento==-1) {
+        QMessageBox::warning(0,tr("No hay asiento"), tr("No hay asiento para guardar"),"OK",0,0);
+	return;
+    }// end if
+	
     // Hacemos la recoleccion de datos.
     if ( !tapunts3->text(row, COL_IDBORRADOR).isEmpty()) {
         idborrador = tapunts3->text(row,COL_IDBORRADOR);
@@ -1530,7 +1547,7 @@ void intapunts3view::boton_inteligente() {
     if (abierto==1) {
         // El asiento esta abierto y por tanto se muestra como abierto
         asientoabiertop();
-        numasiento = atoi(IDASIENTO);
+        numasiento = idAsiento().toInt();
     } else {
         numasiento = 0;
     }// end if
@@ -1668,7 +1685,7 @@ void intapunts3view::eturn_fechaasiento() {
     fechaasiento1->setText(normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
     if (abierto) { //cambiar la fecha del asiento
         conexionbase->begin();
-        query.sprintf("UPDATE asiento SET fecha='%s' WHERE idasiento='%s'",fechaasiento1->text().ascii(),IDASIENTO);
+        query.sprintf("UPDATE asiento SET fecha='%s' WHERE idasiento='%s'",fechaasiento1->text().ascii(),idAsiento().ascii());
         fprintf(stderr,"%s\n",query.ascii());
         resultado = conexionbase->ejecuta(query);
         if (resultado != 0 && resultado != 42501) {
@@ -1702,8 +1719,12 @@ void intapunts3view::asiento_cierre() {
         int idcuenta;
         QString snuevodebe, snuevohaber;
         // Si no hay asiento lo calculamos.
-        if (idasiento==-1)
-            idasiento=atoi(IDASIENTO);
+	idasiento = idAsiento().toInt();
+        if (idasiento==-1) {
+	    QMessageBox::warning(0,tr("No hay asiento"), tr("No hay asiento"),"OK",0,0);
+	    return;
+	}// end if
+	    
         QString query ="SELECT idcuenta, sum(debe) AS sumdebe, sum(haber) AS sumhaber, sum(debe)-sum(haber) AS saldito FROM apunte WHERE idcuenta NOT IN (SELECT idcuenta FROM cuenta WHERE idgrupo=6 OR idgrupo=7)  AND fecha <= '"+fechaasiento1->text()+"' GROUP BY idcuenta ORDER BY saldito";
         conexionbase->begin();
         cursor2 *cursor=conexionbase->cargacursor(query, "cursor");
@@ -1746,8 +1767,12 @@ void intapunts3view::asiento_apertura() {
     /// Preparamos los datos.
     QString concepto="Asiento de Apertura";
     QString fecha = fechaasiento1->text();
-    if (idasiento==-1)
-        idasiento=atoi(IDASIENTO);
+    idasiento= idAsiento().toInt();
+    // Si no existe ningún asiento abortamos
+    if (idasiento == -1) {
+    	QMessageBox::warning(0,tr("No hay asientos"), tr("No existe ningún asiento para realizar el asiento de apertura"), tr("Cerrar"),0,0);
+    	return;
+    }// end if
     QString idasientocierre;
 
     if (abierto) {
@@ -1797,9 +1822,12 @@ void intapunts3view::asiento_regularizacion() {
         QString concepto="Asiento de RegularizaciÃ³n";
         QString fecha = fechaasiento1->text();
         // Si no hay asiento lo calculamos.
-        if (idasiento==-1)
-            idasiento=atoi(IDASIENTO);
 
+            idasiento=idAsiento().toInt();
+        if (idasiento==-1) {
+		QMessageBox::warning(0,tr("No existe asiento"),tr("No existe asiento"),"OK",0,0);
+		return;
+	}// end if
         /// El parametro estï¿½en la configuraciï¿½ de empresa.
         QString query = "SELECT * FROM cuenta WHERE codigo in (SELECT valor FROM configuracion WHERE nombre='CuentaRegularizacion')";
         cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");
@@ -1904,7 +1932,7 @@ void intapunts3view::borrar_asiento(bool confirmarBorrado) {
     }// end if
 
 
-    if (atoi(IDASIENTO) != 0) {
+    if (idAsiento().toInt() > 0) {
         if (confirmarBorrado) {
             valor = QMessageBox::warning( 0, "Borrar Asiento", "Se procedera a borrar el asiento.", QMessageBox::Yes, QMessageBox::No);
         } else {
@@ -1942,11 +1970,10 @@ void intapunts3view::editarasiento() {
     guardaborrador(rowactual);
     asientoview *nuevoasiento= new asientoview(empresaactual,0,"",true);
     nuevoasiento->inicializa(conexionbase);
-    nuevoasiento->cargaasiento(atoi(IDASIENTO));
+    nuevoasiento->cargaasiento(idAsiento().toInt());
     nuevoasiento->exec();
     cargarcursor();
-    repinta(atoi(IDASIENTO));
-    // muestraasiento(atoi(IDASIENTO));
+    repinta(idAsiento().toInt());
 }// end editarasiento
 
 
@@ -2014,7 +2041,7 @@ void intapunts3view::boton_duplicarasiento() {
     dupli->exec();
     cargarcursor();
     boton_fin();
-    repinta(atoi(IDASIENTO));
+    repinta(idAsiento().toInt());
     delete dupli;
 }// end boton_duplicarasiento
 

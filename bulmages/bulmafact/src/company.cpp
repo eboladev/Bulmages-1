@@ -191,6 +191,11 @@ void company::refreshAlbaranesProveedor() {
     m_albaranesproveedor->inicializa();
 }
 
+void company::refreshClientes() {
+	m_clientsList->inicializa();
+}
+
+
 void company::newPedidoCliente() {
     PedidoClienteView *bud = new PedidoClienteView(this , m_pWorkspace,theApp->translate("Edicion de Pedidos de Cliente", "company"));
     bud->show();

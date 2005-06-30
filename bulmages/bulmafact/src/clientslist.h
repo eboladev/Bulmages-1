@@ -62,6 +62,7 @@ public slots:
     virtual void m_clientList_doubleClicked(int, int, int, const QPoint &);
     virtual void s_printClients();    
     virtual void s_findClients();
+    virtual void s_refreshClientes() {inicializa();};
     
     virtual void s_mostrarBusqueda() {
     	fprintf(stderr,"s_mostrarBusqueda\n");
@@ -79,6 +80,7 @@ public slots:
 		 showConfiguracion();
 	};    
     virtual void s_filtrar() {inicializa();};    
+    virtual void s_borrarCliente();
 };
 
 #endif

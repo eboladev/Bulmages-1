@@ -117,6 +117,7 @@ ClientEdit::ClientEdit(company *comp, QWidget *parent, const char *name)
 
 ClientEdit::~ClientEdit() {
 	companyact->sacaWindow(this);
+	companyact->refreshClientes();
 }// end ~ClientEdit
 
 /**
@@ -137,7 +138,6 @@ void ClientEdit::loadClient(QString client) {
       cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
       companyact->commit();
       if (!cur->eof()) {
-         m_clientId->setText(cur->valor("idcliente"));
          m_clientName->setText(cur->valor("nomcliente"));
          m_altClientName->setText(cur->valor("nomaltcliente"));
          m_clientCif->setText(cur->valor("cifcliente"));
@@ -177,11 +177,9 @@ void ClientEdit::loadClient(QString client) {
 void ClientEdit::setModified(bool formContentsChanged) {   
    if (formContentsChanged) {
       m_modified = true;
-      saveButton->setEnabled(true);
       setCaption(tr("Cliente (modificado)"));
    } else {
       m_modified = false;
-      saveButton->setEnabled(false);
       setCaption(tr("Cliente"));
    }
 }// end setModified
@@ -192,10 +190,7 @@ void ClientEdit::setModified(bool formContentsChanged) {
 *
 */
 void ClientEdit::emptyForm() {
-   
-      deleteButton->setEnabled(false);
       clientId = "0";
-      m_clientId->setText( tr("Cliente nuevo"));
       m_clientName->setText("");
       m_altClientName->setText("");
       m_clientCif->setText("");
@@ -267,12 +262,9 @@ void ClientEdit::saveClient() {
 * mark it as deleted on an appropiate field in the DB
 */
 void ClientEdit::deleteClient() {
-   QMessageBox::information(this,tr("Edición de clientes"),
-         tr("Qué peligro tienes, majete!\n"
-            "En vez de salir este mensaje tendría que borrar el cliente."),
-         QMessageBox::Yes | QMessageBox::Default,
-         QMessageBox::No,
-         QMessageBox::Cancel | QMessageBox::Escape);
+	 QString SQLQuery = "DELETE FROM cliente WHERE idcliente="+clientId;
+	 companyact->ejecuta(SQLQuery);
+	 clientId = "";
    emptyForm();
 }// end deleteClient()
 
@@ -291,9 +283,7 @@ void ClientEdit::deleteButton_clicked() {
                   QMessageBox::Cancel | QMessageBox::Escape);
    if (ret == QMessageBox::Yes) {
       deleteClient();
-      close();
-   } else if (ret == QMessageBox::No) 
-      close();
+   }// end if
 }
 
 
