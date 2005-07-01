@@ -39,7 +39,7 @@ public:
     void guardalistlinpresupuesto();
     void vaciar();
     virtual void pintalistlinpresupuesto() {
-        fprintf(stderr,"La funciï¿½ pintalistlinpresupuesto aun no ha sido implementada\n");
+        fprintf(stderr,"La función pintalistlinpresupuesto aun no ha sido implementada\n");
     };
     void chargeBudgetLines(QString);
     void borrar();

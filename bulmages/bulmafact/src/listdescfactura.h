@@ -39,7 +39,7 @@ public:
     void guardaListDescuentoFactura();
     void vaciar();
     virtual void pintaListDescuentoFactura() {
-        fprintf(stderr,"La funciï¿½ pintaListDescuentoFactura aun no ha sido implementada\n");
+        fprintf(stderr,"La función pintaListDescuentoFactura aun no ha sido implementada\n");
     };
     void cargaDescuentos(QString);
     void borrar();

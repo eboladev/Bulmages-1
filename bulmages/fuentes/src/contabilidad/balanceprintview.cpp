@@ -2,7 +2,7 @@
                           balanceprintview.cpp  -  description
                              -------------------
     begin                : miï¿½jun 25 2003
-    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
     modificat per        : (C) 2003 Antoni Mirabete i Terï¿½ - amirabet@biada.org
  ***************************************************************************/
@@ -198,17 +198,17 @@ void BalancePrintView::presentar(char *tipus){
 	 }// end if
 
          if (txt) {
-            //presentaciï¿½txt normal
+            //presentacióntxt normal
             fitxersortidatxt.setf(ios::fixed);
             fitxersortidatxt.precision(2);
             fitxersortidatxt << "                                        Balance \n" ;
             fitxersortidatxt << "Fecha Inicial: " << finicial.ascii() << "   Fecha Final: " << ffinal.ascii() << endl;
-            fitxersortidatxt << "Cuenta            Denominaciï¿½                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
+            fitxersortidatxt << "Cuenta            Denominación                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
             fitxersortidatxt << "______________________________________________________________________________________________________________________________________________\n";
          }// end if
 	 
          if (html) {
-            //presentaciï¿½html normal
+            //presentaciónhtml normal
             fitxersortidahtml.setf(ios::fixed);
             fitxersortidahtml.precision(2);
             fitxersortidahtml << "<html>\n";

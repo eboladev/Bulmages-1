@@ -37,15 +37,15 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget * parent, const cha
     /// Inicializamos la tabla de lineas de Factura
     setNumCols(12);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_NUMLALBARAN, tr( "N Lï¿½ea" ) );
-    horizontalHeader()->setLabel( COL_DESCLALBARAN, tr( "Descripciï¿½" ) );
+    horizontalHeader()->setLabel( COL_NUMLALBARAN, tr( "N Línea" ) );
+    horizontalHeader()->setLabel( COL_DESCLALBARAN, tr( "Descripción" ) );
     horizontalHeader()->setLabel( COL_CANTLALBARAN, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_PVPLALBARAN, tr( "Precio" ) );
     horizontalHeader()->setLabel( COL_DESCONTLALBARAN, tr( "Descuento" ) );
     horizontalHeader()->setLabel( COL_IDALBARAN, tr( "N Pedido" ) );
-    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artï¿½ulo" ) );
-    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Cï¿½igo Artï¿½ulo" ) );
-    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripciï¿½ Artï¿½ulo" ) );
+    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
+    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
+    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
 
@@ -269,7 +269,7 @@ void ListLinAlbaranClienteView::manageArticle(int row) {
 
 
 QString ListLinAlbaranClienteView::searchArticle() {
-    fprintf(stderr,"Busqueda de un artï¿½ulo\n");
+    fprintf(stderr,"Busqueda de un artículo\n");
     articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
     // , WType_Dialog| WShowModal
     artlist->modoseleccion();

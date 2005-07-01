@@ -26,8 +26,8 @@ ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView(QWidget * paren
     /// Inicializamos la tabla de lineas de albaran
     setNumCols(4);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_IDDALBARAN, tr( "N Lï¿½ea" ) );
-    horizontalHeader()->setLabel( COL_CONCEPTDALBARAN, tr( "Descripciï¿½" ) );
+    horizontalHeader()->setLabel( COL_IDDALBARAN, tr( "N Línea" ) );
+    horizontalHeader()->setLabel( COL_CONCEPTDALBARAN, tr( "Descripción" ) );
     horizontalHeader()->setLabel( COL_PROPORCIONDALBARAN, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_IDALBARAN, tr( "Precio" ) );
 

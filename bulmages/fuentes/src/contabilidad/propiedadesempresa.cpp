@@ -2,7 +2,7 @@
                           propiedadesempresa.cpp  -  description
                              -------------------
     begin                : Fri Nov 29 2002
-    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
+    copyright            : (C) 2002 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************

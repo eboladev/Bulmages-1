@@ -2,7 +2,7 @@
                           diarioview1.h  -  description
                              -------------------
     begin                : Thu Jan 9 2003
-    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************

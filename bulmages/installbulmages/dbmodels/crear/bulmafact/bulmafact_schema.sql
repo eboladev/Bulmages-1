@@ -285,6 +285,37 @@ CREATE TRIGGER calculacodigocompletoarticulotrigger
     FOR EACH ROW
     EXECUTE PROCEDURE calculacodigocompletoarticulo();
 
+    
+CREATE OR REPLACE FUNCTION modificadostock () RETURNS "trigger"
+AS '
+DECLARE 
+	cant numeric;
+	as RECORD;
+BEGIN
+	IF NEW.stockarticulo <> OLD.stockarticulo THEN
+		cant := NEW.stockarticulo - OLD.stockarticulo;
+		FOR as IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
+			UPDATE articulo SET stockarticulo = stockarticulo + cant * as.cantcomparticulo WHERE idarticulo = as.idcomponente;
+		END LOOP;
+	END IF;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER modificastocktrigger
+	AFTER UPDATE ON articulo
+	FOR EACH ROW
+	EXECUTE PROCEDURE modificadostock();
+	
+        
+-- Componentes de Artículo
+CREATE TABLE comparticulo (
+	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+	cantcomparticulo integer NOT NULL DEFAULT 1,
+	idcomponente integer NOT NULL REFERENCES articulo(idarticulo),
+	PRIMARY KEY (idarticulo, idcomponente)
+);
+
 
 -- Los proveedores son los que nos suminstran articulos y/o servicios.
 -- COMPROVACIONS D'INTEGRITAT>Genèriques:

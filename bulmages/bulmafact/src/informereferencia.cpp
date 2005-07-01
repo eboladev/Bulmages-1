@@ -33,7 +33,7 @@ void InformeReferencia::generarinforme() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt="";
-    // Lï¿½ea de totales del presupuesto
+    // Línea de totales del presupuesto
 
 
 

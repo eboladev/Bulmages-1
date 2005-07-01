@@ -95,7 +95,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
  
    m_clientList->setNumRows( 0 );
    m_clientList->setSelectionMode( QTable::SingleRow );
-   m_clientList->setSorting( TRUE );
+   m_clientList->setSorting( FALSE );
    m_clientList->setColumnMovingEnabled( TRUE );
    m_clientList->setNumCols(16);
    m_clientList->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "Código" ) );
@@ -189,6 +189,7 @@ void ClientsList::newClient() {
 }// end newClient
 
 void ClientsList::editClient() {
+   m_idclient = m_clientList->text(m_clientList->currentRow(),COL_IDCLIENTE);
    ClientEdit *cli = new ClientEdit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Clientes", "company"));
    cli->loadClient(m_idclient);
    cli->show();
@@ -234,6 +235,7 @@ void ClientsList::s_printClients() {
 
 
 void ClientsList::s_borrarCliente() {
+   m_idclient = m_clientList->text(m_clientList->currentRow(),COL_IDCLIENTE);
    QString SQLQuery = "DELETE FROM cliente WHERE idcliente = "+m_idclient;
    companyact->ejecuta(SQLQuery);
    inicializa();

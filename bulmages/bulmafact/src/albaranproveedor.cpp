@@ -70,7 +70,7 @@ void AlbaranProveedor::pintaAlbaranProveedor() {
 
 
 
-// Esta funciï¿½ carga un AlbaranProveedor.
+// Esta función carga un AlbaranProveedor.
 void AlbaranProveedor::cargaAlbaranProveedor(QString idbudget) {
     fprintf(stderr,"AlbaranProveedor::cargaAlbaranProveedor(%s)\n",idbudget.ascii());
     mdb_idalbaranp = idbudget;
@@ -105,7 +105,7 @@ void AlbaranProveedor::guardaAlbaranProveedor() {
     	mdb_numalbaranp="NULL";
     if (mdb_idalbaranp == "") {
         /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO albaranp (numalbaranp, fechaalbaranp, loginusuario, comentalbaranp, idproveedor, idforma_pago, idalmacen, descalbaranp, refalbaranp) VALUES ("+mdb_numalbaranp+",'"+mdb_fechaalbaranp+"',"+mdb_loginusuario+",'"+mdb_comentalbaranp+"',"+mdb_idproveedor+","+mdb_idforma_pago+","+mdb_idalmacen+",'"+mdb_descalbaranp+"','"+mdb_refalbaranp+"')";
+        QString SQLQuery = "INSERT INTO albaranp (numalbaranp, fechaalbaranp, comentalbaranp, idproveedor, idforma_pago, idalmacen, descalbaranp, refalbaranp) VALUES ("+mdb_numalbaranp+",'"+mdb_fechaalbaranp+"','"+mdb_comentalbaranp+"',"+mdb_idproveedor+","+mdb_idforma_pago+","+mdb_idalmacen+",'"+mdb_descalbaranp+"','"+mdb_refalbaranp+"')";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idalbaranp) AS m FROM albaranp");
         if (!cur->eof())
@@ -116,7 +116,6 @@ void AlbaranProveedor::guardaAlbaranProveedor() {
         QString SQLQuery = "UPDATE albaranp SET ";
         SQLQuery += " numalbaranp="+mdb_numalbaranp;
         SQLQuery += " ,fechaalbaranp='"+mdb_fechaalbaranp+"'";
-        SQLQuery += " ,loginusuario="+mdb_loginusuario+"";
         SQLQuery += " ,comentalbaranp='"+mdb_comentalbaranp+"'";
         SQLQuery += " ,idproveedor="+mdb_idproveedor+"";
         SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
@@ -151,7 +150,7 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Lï¿½ea de totales del presupuesto
+    // Línea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+mdb_idproveedor;
     cursor2 *cur = companyact->cargacursor(SQLQuery);

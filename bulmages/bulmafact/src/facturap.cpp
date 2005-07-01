@@ -66,7 +66,7 @@ void FacturaProveedor::pintaFacturaProveedor() {
 }// end pintaFacturaProveedor
 
 
-// Esta funciï¿½ carga un FacturaProveedor.
+// Esta función carga un FacturaProveedor.
 void FacturaProveedor::cargaFacturaProveedor(QString idbudget) {
     mdb_idfacturap = idbudget;
     inicialize();
@@ -112,7 +112,7 @@ void FacturaProveedor::guardaFacturaProveedor() {
         delete cur;
         companyact->commit();
     } else {
-        /// Se trata de una modificaciï¿½
+        /// Se trata de una modificación
         QString SQLQuery = "UPDATE facturap SET ";
         SQLQuery += " numfacturap="+mdb_numfacturap;
         SQLQuery += " ,ffacturap='"+mdb_ffacturap+"'";
@@ -150,7 +150,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Lï¿½ea de totales del presupuesto
+    // Línea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+mdb_idproveedor;
     cursor2 *cur = companyact->cargacursor(SQLQuery);

@@ -47,8 +47,13 @@ private:
     QString user;
    /// Almacena el password del usuario que desa acceder a la contabilidad.
     QString password;
+    /// Indica  el modo en que opera la ventana. Cerrando la aplicación al cancelar o cerrando sólo la ventana. Por defecto es 0 -> cerrar aplicación.
+    int m_modo;
        
 public:
+   /// \brief Establece el modo no destructivo
+   void mododestructivo() {m_modo=0;};
+   void modonodestructivo() {m_modo=1;};
    /// \brief Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la presentación.
    abreempresaview(QWidget *parent=0,QString tipo=0, const char *name=0, bool modal=true);
    ~abreempresaview();
@@ -69,10 +74,22 @@ private:
     void insertCompany(QString , QString , QString , QString);
 
 private slots:
+
     /// \brief Responde al evento de cerrar la venta, en cuyo caso devuelve el control al llamante.
-    virtual void closeEvent(QCloseEvent * e);
+//    virtual void closeEvent(QCloseEvent * e);
+    
     /// \brief Al pulsar el botón de cancelar se aborta la ejecución del programa.
-    virtual void s_botonCancelar() {exit(1);};
+    virtual void s_botonCancelar() {
+      if(m_modo==0)
+    	exit(1);
+      else
+         done(1);
+     };
+     
+     bool close(bool) {
+     	s_botonCancelar();
+	return true;
+     }
         
 public slots:
    /// \brief This SLOT is activated to select a company and to press enter.

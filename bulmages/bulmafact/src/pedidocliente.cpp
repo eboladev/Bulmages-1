@@ -84,7 +84,7 @@ void PedidoCliente::pintaPedidoCliente() {
 }// end pintaPedidoCliente
 
 
-// Esta funciï¿½ carga un PedidoCliente.
+// Esta función carga un PedidoCliente.
 void PedidoCliente::cargaPedidoCliente(QString idbudget) {
     fprintf(stderr,"cargaPedidoCliente(%s)\n",idbudget.ascii());
     mdb_idpedidocliente = idbudget;
@@ -182,7 +182,7 @@ void PedidoCliente::imprimirPedidoCliente() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Lï¿½ea de totales del pedidocliente
+    // Línea de totales del pedidocliente
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);

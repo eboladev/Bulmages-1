@@ -365,7 +365,7 @@ void articleslist::Imprimir() {
     QString buff = stream.read();
     file.close();
     QString texto;
-    // L�ea de totales del presupuesto
+    // Linea de totales del presupuesto
 
 
     buff.replace("[detallearticulos]",detalleArticulos());

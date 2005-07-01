@@ -57,7 +57,7 @@ void Cobro::pintaCobro() {
 }// end pintaCobro
 
 
-// Esta funciï¿½ carga un Cobro.
+// Esta función carga un Cobro.
 void Cobro::cargaCobro(QString idbudget) {
     mdb_idcobro = idbudget;
     QString query = "SELECT * FROM cobro WHERE idCobro="+idbudget;
@@ -83,7 +83,7 @@ void Cobro::cargaCobro(QString idbudget) {
 void Cobro::guardaCobro() {
     companyact->begin();
     if (mdb_idcobro == "") {
-        /// Se trata de una inserciï¿½
+        /// Se trata de una inserción
         QString SQLQuery = "INSERT INTO cobro (idcliente, fechacobro, cantcobro, refcobro, comentcobro, previsioncobro) VALUES ("+mdb_idcliente+",'"+mdb_fechacobro+"',"+mdb_cantcobro+",'"+mdb_refcobro+"','"+mdb_comentcobro+"',"+mdb_previsioncobro+")";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idcobro) AS m FROM cobro");
@@ -92,7 +92,7 @@ void Cobro::guardaCobro() {
         delete cur;
         companyact->commit();
     } else {
-        /// Se trata de una modificaciï¿½
+        /// Se trata de una modificación
         QString SQLQuery = "UPDATE cobro SET ";
         SQLQuery += " idcliente="+mdb_idcliente;
         SQLQuery += " ,fechacobro='"+mdb_fechacobro+"'";

@@ -35,15 +35,15 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget * parent, const
     /// Inicializamos la tabla de lineas de FacturaProveedor
     setNumCols(12);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_IDLFACTURA, tr( "N Lï¿½ea" ) );
-    horizontalHeader()->setLabel( COL_DESCLFACTURA, tr( "Descripciï¿½" ) );
+    horizontalHeader()->setLabel( COL_IDLFACTURA, tr( "N Línea" ) );
+    horizontalHeader()->setLabel( COL_DESCLFACTURA, tr( "Descripción" ) );
     horizontalHeader()->setLabel( COL_CANTLFACTURA, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_PVPLFACTURA, tr( "Precio" ) );
     horizontalHeader()->setLabel( COL_DESCUENTOLFACTURA, tr( "Descuento" ) );
     horizontalHeader()->setLabel( COL_IDFACTURA, tr( "N Pedido" ) );
-    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artï¿½ulo" ) );
-    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Cï¿½igo Artï¿½ulo" ) );
-    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripciï¿½ Artï¿½ulo" ) );
+    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
+    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
+    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
 
@@ -268,8 +268,8 @@ void ListLinFacturaProveedorView::manageArticle(int row) {
 
 
 QString ListLinFacturaProveedorView::searchArticle() {
-    fprintf(stderr,"Busqueda de un artï¿½ulo\n");
-    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artï¿½ulo","company"));
+    fprintf(stderr,"Busqueda de un artículo\n");
+    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
     // , WType_Dialog| WShowModal
     artlist->modoseleccion();
     // Esto es convertir un QWidget en un sistema modal de dialogo.

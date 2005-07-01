@@ -32,9 +32,14 @@
 #include <qlabel.h>
 #include <qpixmap.h>
 #include <qcheckbox.h>
+#include <qfiledialog.h>
+
 
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
+
+#include "listcomparticuloview.h"
+#include "listcomparticulo.h"
 
 #define COL_SUMINISTRA_IDSUMINISTRA 0
 #define COL_SUMINISTRA_IDPROVEEDOR 0
@@ -49,6 +54,7 @@ articleedit::articleedit(company *comp, QWidget *parent, const char *name)
     companyact = comp;
     m_familia->setcompany(comp);
     m_tipoarticulo->setcompany(comp);
+    m_componentes->setcompany(comp);
     idArticle = "0";
     m_archivoimagen="";
 
@@ -151,6 +157,8 @@ void articleedit::chargeArticle(QString idArt) {
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES)+m_codigocompletoarticulo->text()+".jpg"));     
     cargarcomboiva(ivaType);
     setCaption("Artículo "+m_codigocompletoarticulo->text());companyact->meteWindow(caption(),this);
+    m_componentes->cargaListCompArticulo(idArt);
+    m_componentes->pintaListCompArticulo();
 }// end chargeArticle
 
 
@@ -204,6 +212,7 @@ void articleedit::accept() {
   */
 void articleedit::boton_borrar() {
     if (idArticle != "0") {
+        m_componentes->borrar();
         if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artículo","Esta a punto de borrar un artículo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
             QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+idArticle;
             companyact->begin();
@@ -280,11 +289,12 @@ void articleedit::s_grabarClicked() {
 	fprintf(stderr,"%s\n",cadena.ascii());
 	system(cadena.ascii());
     }// end if
+    m_componentes->guardaListCompArticulo();
 	chargeArticle(idArticle);  
 }// end s_grabarClicked
 
 
-#include <qfiledialog.h>
+
 void articleedit::s_cambiarimagen() {
     m_archivoimagen = QFileDialog::getOpenFileName(
                     "",

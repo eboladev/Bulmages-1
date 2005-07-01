@@ -48,7 +48,7 @@ public:
         }// end for
     };
     virtual void pintaListLinPedidoCliente() {
-        fprintf(stderr,"La funciï¿½ pintaListLinPedidoCliente aun no ha sido implementada\n");
+        fprintf(stderr,"La función pintaListLinPedidoCliente aun no ha sido implementada\n");
     };
     void cargaListLinPedidoCliente(QString);
     void borrar();

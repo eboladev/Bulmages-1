@@ -76,7 +76,7 @@ void AlbaranCliente::pintaAlbaranCliente() {
 
 
 
-// Esta funciï¿½ carga un AlbaranCliente.
+// Esta función carga un AlbaranCliente.
 void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
     fprintf(stderr,"AlbaranCliente::cargaAlbaranCliente(%s)\n",idbudget.ascii());
     mdb_idalbaran = idbudget;

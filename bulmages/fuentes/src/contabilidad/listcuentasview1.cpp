@@ -2,7 +2,7 @@
                           listcuentasview.cpp  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
+    copyright            : (C) 2002 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -316,8 +316,8 @@ void listcuentasview1::listdblpulsada(QListViewItem *it) {
 /**
   * Esta funcion es el slot que se activa al pulsar sobre el
   * boton nueva cuenta.
-  * Su funciï¿½ es crear una nueva cuenta desde la ventana del plan de cuentas
-  * La inserciï¿½ de la nueva se hace como cuenta hija de la cuenta actualmente
+  * Su función es crear una nueva cuenta desde la ventana del plan de cuentas
+  * La inserción de la nueva se hace como cuenta hija de la cuenta actualmente
   * seleccionada por lo que se hace que la ventana que se habre tenga el campo
   * del padre de la cuenta rellenado.
   */
@@ -353,8 +353,8 @@ void listcuentasview1::nuevacuenta()  {
 /**
  * Esta funcion es el slot que se activa al pulsar sobre el
  * boton nueva cuenta.
- * Su funciï¿½ es crear una nueva cuenta desde la ventana del plan de cuentas
- * La inserciï¿½ de la nueva se hace como cuenta hija de la cuenta actualmente
+ * Su función es crear una nueva cuenta desde la ventana del plan de cuentas
+ * La inserción de la nueva se hace como cuenta hija de la cuenta actualmente
  * seleccionada por lo que se hace que la ventana que se habre tenga el campo
  * del padre de la cuenta rellenado.
  */

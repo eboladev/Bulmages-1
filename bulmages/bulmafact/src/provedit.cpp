@@ -132,7 +132,6 @@ void provedit::chargeprovider(QString idprov) {
       companyact->commit();
       if (!cur->eof()) {
          idprovider = idprov;
-         m_idproveedor->setText(cur->valor("idproveedor"));
          m_nomproveedor->setText(cur->valor("nomproveedor"));
          m_nomaltproveedor->setText(cur->valor("nomaltproveedor"));
          m_cifproveedor->setText(cur->valor("cifproveedor"));
@@ -187,7 +186,6 @@ void provedit::boton_nuevo() {
    }// end if
 
       idprovider = "0";
-      m_idproveedor->setText("");
       m_nomproveedor->setText("");
       m_nomaltproveedor->setText("");
       m_cifproveedor->setText("");
@@ -244,6 +242,9 @@ void provedit::s_saveProvider() {
       SQLQuery += ")";
       companyact->begin();
       companyact->ejecuta(SQLQuery);
+      cursor2 * cur = companyact->cargacursor("SELECT max(idproveedor) AS id FROM proveedor");
+      idprovider = cur->valor("id");
+      delete cur;
       companyact->commit();
    }// end if
    s_releaseModificado();

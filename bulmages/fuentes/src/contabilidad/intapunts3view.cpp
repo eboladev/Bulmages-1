@@ -2,7 +2,7 @@
                           intapunts3view.cpp  -  description
                              -------------------
     begin                : mar may 27 2003
-    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -131,7 +131,7 @@ intapunts3view::intapunts3view(empresa *emp,QWidget *parent, const char *name, i
     tapunts3->hideColumn(COL_IDCANAL);
     tapunts3->hideColumn(COL_IDCCOSTE);
 
-    /// Dependiendo de la configuraciï¿½ mostramos o no mostramos la contrapartida, los canales y los centros de coste
+    /// Dependiendo de la configuración mostramos o no mostramos la contrapartida, los canales y los centros de coste
     if (confpr->valor(CONF_CONTRAPARTIDA_APUNTES) != "YES")
         tapunts3->hideColumn(COL_CONTRAPARTIDA);
     if (confpr->valor(CONF_CANAL_APUNTES) != "YES")
@@ -190,7 +190,7 @@ intapunts3view::~intapunts3view() {
  *            -1 indica el ultimo asiento.
            otros indica el asiento o el inmediatamente mï¿½ bajo
  
-  Esta funcion no hace cambios en la presentaciï¿½, solo realiza una
+  Esta funcion no hace cambios en la presentación, solo realiza una
   carga del cursor que sirve para recorrer los asientos.
  */
 void intapunts3view::cargarcursor() {
@@ -212,13 +212,13 @@ void intapunts3view::cargarcursor() {
     nombreasiento = filt->nombreasiento->text();
     ejercicio = filt->ejercicio();
 
-    fprintf(stderr," Inicio de la perdiciï¿½ del cursorasientos\n");
+    fprintf(stderr," Inicio de la perdición del cursorasientos\n");
 
     if (cursorasientos != NULL ) {
         delete cursorasientos;
     }// end if
 
-    fprintf(stderr," Inicio de creaciï¿½ del query\n");
+    fprintf(stderr," Inicio de creación del query\n");
 
     int pand=0; /// Indica si se tiene que agregar el AND o no en el select
     if (saldototal != "") {
@@ -242,7 +242,7 @@ void intapunts3view::cargarcursor() {
     }// end if
 
 
-    /// Los ejercicios los pondremos como filtraje de la introducciï¿½ de asientos
+    /// Los ejercicios los pondremos como filtraje de la introducción de asientos
     if (ejercicio != "--") {
         if (pand)
             textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ ejercicio +"'";
@@ -264,7 +264,7 @@ void intapunts3view::cargarcursor() {
 }// end cargarcursor
 
 
-/** \brief Slot que responde a la pulsaciï¿½ del botï¿½ de inicio
+/** \brief Slot que responde a la pulsación del botï¿½ de inicio
   *
   * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al primer registro y lo muestra.
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
@@ -279,7 +279,7 @@ void intapunts3view::boton_inicio() {
 }
 
 
-/** \brief Slot que responde a la pulsaciï¿½ del botï¿½ de fin
+/** \brief Slot que responde a la pulsación del botï¿½ de fin
   *
   * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al ultimo registro y lo muestra.
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
@@ -293,7 +293,7 @@ void intapunts3view::boton_fin() {
     }// end if
 }
 
-/** \brief Slot que responde a la pulsaciï¿½ del botï¿½ de siguiente registro
+/** \brief Slot que responde a la pulsación del botï¿½ de siguiente registro
   *
   * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al siguiente registro y lo muestra.
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
@@ -310,7 +310,7 @@ void intapunts3view::boton_siguiente() {
     }// end if
 }
 
-/** \brief Slot que responde a la pulsaciï¿½ del botï¿½ de anterior registro
+/** \brief Slot que responde a la pulsación del botï¿½ de anterior registro
   *
   * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al registro anterior y lo muestra.
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
@@ -346,7 +346,7 @@ void intapunts3view::muestraasiento(int numasiento) {
         int valor = QMessageBox::warning( 0, tr("Cerrar Asiento"), tr("El asiento actual esta abierto, debe cerrarlo antes de continuar, Cerrar?."), tr("Cerrar"), tr("Dejar Abierto"),0,0,1);
         if (valor == 0) {
             boton_cerrarasiento();
-            /// Si el asiento se mantiene abierto, entonces abortamos la funciï¿½.
+            /// Si el asiento se mantiene abierto, entonces abortamos la función.
             if (abierto) {
                 return;
             }// end if
@@ -585,7 +585,7 @@ void intapunts3view::asientocerradop() {
 
 
 /**
- * Esta funciï¿½ se activa cuando se pulsa sobre el boton abrir asiento del
+ * Esta función se activa cuando se pulsa sobre el boton abrir asiento del
  * formulario
  */
 void intapunts3view::boton_abrirasiento() {
@@ -595,7 +595,7 @@ void intapunts3view::boton_abrirasiento() {
 	return;
     }
     if ((conexionbase->abreasiento(idasiento))==42501) {
-        QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acciï¿½."), QMessageBox::Yes, 0);
+        QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
 	return;
      }
     asientoabiertop();
@@ -618,7 +618,7 @@ void intapunts3view::boton_cerrarasiento() {
     /// Busca si es necesario presentar la ventana de registro de facturas.
     buscaFactura();
 
-    /// Realizamos la operaciï¿½ en la base de datos.
+    /// Realizamos la operación en la base de datos.
     idasiento = idAsiento().toInt();
     if (idasiento==-1) {
         QMessageBox::warning(0,tr("No hay asiento para cerrar"),tr("No hay ningún asiento para cerrarlo"),"OK",0,0);
@@ -669,7 +669,7 @@ void intapunts3view::buscaFactura() {
 
 
 /**
- * Esta funciï¿½ se activa cuando se pulsa sobre el boton nuevo asiento del
+ * Esta función se activa cuando se pulsa sobre el boton nuevo asiento del
  * formulario
  */
 void intapunts3view::boton_nuevoasiento() {
@@ -933,12 +933,12 @@ void intapunts3view::contextmenu(int row, int col, const QPoint &poin) {
             boton_balance1(2);
             break;
         case 140:
-            /// Aun no esta implementada la sustituciï¿½ de cuentas desde el menu contextual.
-            fprintf(stderr,"Aun no esta implementada la sustituciï¿½ de cuentas desde el menu contextual\n");
+            /// Aun no esta implementada la sustitución de cuentas desde el menu contextual.
+            fprintf(stderr,"Aun no esta implementada la sustitución de cuentas desde el menu contextual\n");
             break;
         case 130:
-            // Se ha elegido la opciï¿½ de editar cuenta.
-            // Abrimos la ventana de ediciï¿½ de cuentas.
+            // Se ha elegido la opción de editar cuenta.
+            // Abrimos la ventana de edición de cuentas.
             QString idcuenta;
             if (col == COL_SUBCUENTA || col == COL_NOMCUENTA)
                 idcuenta = tapunts3->text(row,COL_IDCUENTA);
@@ -984,7 +984,7 @@ void intapunts3view::apuntecambiadogrid(int row, int col) {
 
 /** Cuando se cambia de fila en la tabla del apunte se guarda el contenido 
   * en la base de datos 
-  * Esta funciï¿½ se encarga de determinar si ha habido un cambio de fila y
+  * Esta función se encarga de determinar si ha habido un cambio de fila y
   * actua en consecuencia guardando y calculando el descuadre
   */
 void intapunts3view::tcambiaseleccion() {
@@ -999,7 +999,7 @@ void intapunts3view::tcambiaseleccion() {
 
 /** \brief Se va a hacer que el contenido de la casilla actual sea igual que el de la anterior.
  
-En la introducciï¿½ de apuntes, al pulsar el * o con el correspondiente menu contextual se consigue el 
+En la introducción de apuntes, al pulsar el * o con el correspondiente menu contextual se consigue el 
 efecto del duplicado de contenido basado en la linea anterior.
 \sa \ref pulsadomas \ref calculadescuadre
  */
@@ -1023,7 +1023,7 @@ void intapunts3view::duplicar(int col) {
 
 
 /** \brief Calcula el desucadre del asiento que se estï¿½viendo
-  * Esta funciï¿½ se conecta a la base de datos y calcula los descuadres basandose en la tabla de borradores.
+  * Esta función se conecta a la base de datos y calcula los descuadres basandose en la tabla de borradores.
   */
 void intapunts3view::calculadescuadre() {
     QString query = "SELECT sum(debe) as tdebe, sum(haber) AS thaber, sum(debe)-sum(haber) AS desc FROM borrador WHERE idasiento="+QS_IDASIENTO;
@@ -1147,14 +1147,14 @@ void intapunts3view::guardaborrador(int row) {
             //fprintf(stderr,"%s\n",query.ascii());
             conexionbase->begin();
             if (conexionbase->ejecuta(query)==42501)
-                QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acciï¿½."), QMessageBox::Yes, 0);
+                QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
             conexionbase->commit();
         } else if (idcuenta != "NULL") {
             // El borrador no existe, por lo que hay que hacer un insert
             query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES (%s,%s,%s,%s,%s,%s,'%d',%s,%s,%s)",QString::number(row+1).ascii(),concepto.ascii(),fecha.ascii(),idcuenta.ascii(),debe.ascii(),haber.ascii(),idasiento,contrapartida.ascii(),idcanal.ascii(),idc_coste.ascii());
             conexionbase->begin();
             if (conexionbase->ejecuta(query)==42501)
-                QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acciï¿½."), QMessageBox::Yes, 0);
+                QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
             query = "SELECT MAX (idborrador) AS id from borrador";
             cursor2 *cur= conexionbase->cargacursor(query,"cursorm");
             conexionbase->commit();
@@ -1185,9 +1185,9 @@ void intapunts3view::duplicarapunte() {
 }// end duplicarapunte
 
 
-/** \brief SLOT que responde a la pulsaciï¿½ del botï¿½ de iva.
+/** \brief SLOT que responde a la pulsación del botï¿½ de iva.
   * Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se presente con los datos ya introducidos.
-  * La clase ivaview hace una inserciï¿½ o una modificaciï¿½ segun exista o no una entrada de iva para dicho borrador.
+  * La clase ivaview hace una inserción o una modificación segun exista o no una entrada de iva para dicho borrador.
   */
 void intapunts3view::boton_iva() {
     guardaborrador(ROWACTUAL);
@@ -1202,7 +1202,7 @@ void intapunts3view::boton_iva() {
 }// end boton_iva
 
 
-/** Esta funciï¿½ captura la pulsaciï¿½ de una tecla. No es muy acertado el nombre de pulsadomas
+/** Esta función captura la pulsación de una tecla. No es muy acertado el nombre de pulsadomas
   * Ya que captura cualquier tecla.
   */
 void intapunts3view::pulsadomas(int row, int col, int caracter) {
@@ -1454,12 +1454,12 @@ void intapunts3view::cambiadasubcuenta(int row) {
             valor = QMessageBox::warning( 0, tr("No existe cuenta"), tr("No existe una cuenta con el codigo proporcionado, desea crear una?."), QMessageBox::Yes, QMessageBox::No);
             if (valor == QMessageBox::Yes) {
                 cuentaview *cta = new cuentaview(empresaactual,0,0,true);
-                /// Preparamos la clase para una inserciï¿½ de una nueva cuenta.
+                /// Preparamos la clase para una inserción de una nueva cuenta.
                 cta->cuentanueva(cad);
                 fprintf(stderr,"Vamos a ejecutar la ventana de nueva cuenta\n");
                 cta->exec();
                 delete cta;
-                /// PAra no hacer rollos rellamamos a la funciï¿½ ya que se supone que ya se ha hecho la inserciï¿½.
+                /// PAra no hacer rollos rellamamos a la función ya que se supone que ya se ha hecho la inserción.
                 cambiadasubcuenta(row);
             }// end if
         }// end if
@@ -1559,7 +1559,7 @@ void intapunts3view::boton_inteligente() {
 
 
 /**
-  * Esta funciï¿½ se activa cuando se pulsa sobre el boton nuevo asiento del
+  * Esta función se activa cuando se pulsa sobre el boton nuevo asiento del
   * formulario
   */
 void intapunts3view::boton_buscacuenta() {
@@ -1659,7 +1659,7 @@ void intapunts3view::boton_balance1(int tipo) {
         balance->inicializa1(tapunts3->text(tapunts3->currentRow(), COL_SUBCUENTA), tapunts3->text(tapunts3->currentRow(), COL_SUBCUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
     balance->accept();
-    // La presentaciï¿½ que la haga la clase empresa. Que es quien se encarga de ello.
+    // La presentación que la haga la clase empresa. Que es quien se encarga de ello.
     empresaactual->librobalance();
 }// end boton_balance1
 
@@ -1699,8 +1699,8 @@ void intapunts3view::eturn_fechaasiento() {
 }// end return_fechaasiento
 
 /**
-  * Esta funciï¿½ sirve para inicializar la clase con las clases amigas \ref extractoview1 , \ref diarioview1 y \ref balanceview1
-  * Esta funciï¿½ se llama una nica vez desde la clase \ref empresa
+  * Esta función sirve para inicializar la clase con las clases amigas \ref extractoview1 , \ref diarioview1 y \ref balanceview1
+  * Esta función se llama una nica vez desde la clase \ref empresa
   */
 int intapunts3view::inicializa1(extractoview1 *ext, diarioview1 *diar, balanceview *bal ) {
     extracto=ext;
@@ -1743,13 +1743,13 @@ void intapunts3view::asiento_cierre() {
                 snuevohaber = "0";
             }// end if
             if (cursor->valor("saldito") != "0.00") {
-                // Inserciï¿½ de Borrador
+                // Inserción de Borrador
                 // El borrador no existe, por lo que hay que hacer un insert
                 query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%s,%s,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta,snuevodebe.ascii(),snuevohaber.ascii(),idasiento);
                 conexionbase->begin();
                 conexionbase->ejecuta(query);
                 conexionbase->commit();
-                // Fin de la inserciï¿½ de Borrador
+                // Fin de la inserción de Borrador
             }// end if
             cursor->siguienteregistro();
         }// end while
@@ -1828,7 +1828,7 @@ void intapunts3view::asiento_regularizacion() {
 		QMessageBox::warning(0,tr("No existe asiento"),tr("No existe asiento"),"OK",0,0);
 		return;
 	}// end if
-        /// El parametro estï¿½en la configuraciï¿½ de empresa.
+        /// El parametro estï¿½en la configuración de empresa.
         QString query = "SELECT * FROM cuenta WHERE codigo in (SELECT valor FROM configuracion WHERE nombre='CuentaRegularizacion')";
         cursor2 *cur = conexionbase->cargacursor(query,"idcuenta");
         idcuenta1 = atoi(cur->valor("idcuenta").ascii());
@@ -1851,13 +1851,13 @@ void intapunts3view::asiento_regularizacion() {
             }// end if
             totaldebe1 += totaldebe;
             totalhaber1 += totalhaber;
-            // Inserciï¿½ de Borrador
+            // Inserción de Borrador
             // El borrador no existe, por lo que hay que hacer un insert
             query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%f,%f,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta,totaldebe,totalhaber,idasiento);
             conexionbase->begin();
             conexionbase->ejecuta(query);
             conexionbase->commit();
-            // Fin de la inserciï¿½ de Borrador
+            // Fin de la inserción de Borrador
             cur->siguienteregistro();
         }// end while
         delete cur;
@@ -1911,7 +1911,7 @@ void intapunts3view::boton_cargarasiento() {
 }// end boton_cargarasiento
 
 /**
-  * Esta funciï¿½ se activa cuando se pulsa sobre el boton borrar asiento
+  * Esta función se activa cuando se pulsa sobre el boton borrar asiento
   * del formulario
 */
 void intapunts3view::boton_borrar_asiento() {
@@ -1942,7 +1942,7 @@ void intapunts3view::borrar_asiento(bool confirmarBorrado) {
             conexionbase->begin();
             query.sprintf("DELETE FROM apunte where idasiento=%s",IDASIENTO);
             if ((resultado = conexionbase->ejecuta(query))==42501)
-                QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acciï¿½."), QMessageBox::Yes, 0);
+                QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
             query.sprintf("DELETE FROM iva WHERE idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=%s))",IDASIENTO);
             resultado += conexionbase->ejecuta(query);
             query.sprintf("DELETE FROM registroiva where idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=%s)",IDASIENTO);
@@ -1977,7 +1977,7 @@ void intapunts3view::editarasiento() {
 }// end editarasiento
 
 
-/** Altera el orden de los apuntes subiendo el apunte sobre el que nos encontramos para ello lo que hace esta funciï¿½ es intercambiarlo con el apunte que estï¿½encima
+/** Altera el orden de los apuntes subiendo el apunte sobre el que nos encontramos para ello lo que hace esta función es intercambiarlo con el apunte que estï¿½encima
   */
 void intapunts3view::subirapunte(int row) {
     /// Como existen resticciones en la base de datos sobre el campo orden
@@ -1992,7 +1992,7 @@ void intapunts3view::subirapunte(int row) {
     }// end if
 }// end subirapunte
 
-/** Altera el orden de los apuntes subiendo el apunte sobre el que nos encontramos para ello lo que hace esta funciï¿½ es intercambiarlo con el apunte que estï¿½debajo
+/** Altera el orden de los apuntes subiendo el apunte sobre el que nos encontramos para ello lo que hace esta función es intercambiarlo con el apunte que estï¿½debajo
   */
 void intapunts3view::bajarapunte(int row) {
     /// Como existen resticciones en la base de datos sobre el campo orden
@@ -2030,8 +2030,8 @@ void intapunts3view::fechaasiento1_textChanged( const QString & texto ) {
 
 /** \brief Se ha pulsado sobre el botï¿½ de duplicar asiento
   *
-  * Inicializa el dialogo de duplicaciï¿½ de asientos y lo presenta.
-  * Cuando se ha terminado carga el cursor de presentaciï¿½ y repinta el asiento
+  * Inicializa el dialogo de duplicación de asientos y lo presenta.
+  * Cuando se ha terminado carga el cursor de presentación y repinta el asiento
   * para que actualize los cambios
   */
 void intapunts3view::boton_duplicarasiento() {

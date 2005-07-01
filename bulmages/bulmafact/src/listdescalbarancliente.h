@@ -39,7 +39,7 @@ public:
     void guardaListDescuentoAlbaranCliente();
     void vaciar();
     virtual void pintaListDescuentoAlbaranCliente() {
-        fprintf(stderr,"La funciï¿½ pintaListDescuentoAlbaranCliente aun no ha sido implementada\n");
+        fprintf(stderr,"La función pintaListDescuentoAlbaranCliente aun no ha sido implementada\n");
     };
     void cargaDescuentos(QString);
     void borrar();

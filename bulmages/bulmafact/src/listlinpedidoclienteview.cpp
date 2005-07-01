@@ -293,8 +293,8 @@ void ListLinPedidoClienteView::manageArticle(int row) {
 
 
 QString ListLinPedidoClienteView::searchArticle() {
-    fprintf(stderr,"Busqueda de un artï¿½ulo\n");
-    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artï¿½ulo","company"));
+    fprintf(stderr,"Busqueda de un artículo\n");
+    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
     // , WType_Dialog| WShowModal
     artlist->modoseleccion();
     // Esto es convertir un QWidget en un sistema modal de dialogo.

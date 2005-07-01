@@ -90,19 +90,14 @@ CREATE TABLE proveedor (
 providerslist::providerslist(company *comp, QWidget *parent, const char *name, int flag)
  : providerslistbase(parent, name, flag) {
       companyact = comp;
-      inicializa();
-      m_modo=0;
+   hideBusqueda();
+   hideConfiguracion();     
+       m_modo=0;
       m_idprovider="";
       m_cifprovider="";
       m_nomprovider="";
-      companyact->meteWindow(caption(),this);
-}// end providerslist
-
-providerslist::~providerslist() {
-	companyact->sacaWindow(this);
-}// end ~providerslist
-
-void providerslist::inicializa() {
+      companyact->meteWindow(caption(),this);  
+    
    m_list->setNumRows( 0 );
    m_list->setNumCols( 0 );
    m_list->setSelectionMode( QTable::SingleRow );
@@ -139,13 +134,26 @@ void providerslist::inicializa() {
    m_list->setColumnWidth(COL_FAXPROVEEDOR,100);
    m_list->setColumnWidth(COL_EMAILPROVEEDOR,300);
    m_list->setColumnWidth(COL_URLPROVEEDOR,300);
-   m_list->setColumnWidth(COL_CLAVEWEBPROVEEDOR,300);
+   m_list->setColumnWidth(COL_CLAVEWEBPROVEEDOR,300); 
+        
+	
+	inicializa();
+
+}// end providerslist
+
+providerslist::~providerslist() {
+	companyact->sacaWindow(this);
+}// end ~providerslist
+
+void providerslist::inicializa() {
+
          
 //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).ascii());   
     m_list->setReadOnly(TRUE);
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%"+m_findProvider->text()+"%'");
+    m_list->setSorting(FALSE);
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%"+m_filtro->text()+"%'");
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {

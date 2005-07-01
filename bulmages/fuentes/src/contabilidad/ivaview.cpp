@@ -2,7 +2,7 @@
                           ivaview.cpp  -  description
                              -------------------
     begin                : Tue Jan 28 2003
-    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera & Josep Burciï¿½
+    copyright            : (C) 2003 by Tomeu Borrás Riera & Josep Burción
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -188,9 +188,9 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
 /**
   * \brief Carga el combo de las formas de pago
   * 
-  Esta funciï¿½ se encarga de cargar la tabla de formas de pago en el combo box correspondiente.
+  Esta función se encarga de cargar la tabla de formas de pago en el combo box correspondiente.
   Usa un cursor de clase (m_cursorFPago) que es construido al usar esta funcion y destruido en el destructor de clase.
-  Esta funciï¿½ se llama con la inicializaciï¿½ de clase y cuando se quieren cargar datos.
+  Esta función se llama con la inicialización de clase y cuando se quieren cargar datos.
 */
 void ivaview::cargarComboFPago(QString idfpago) {
     conexionbase->begin();
@@ -378,10 +378,10 @@ void ivaview::calculaTotales() {
 /**
   * \brief SLOT que se ejecuta al pulsar sobre el boton de buscar una cuenta determinada
   * 
-  * Crea una ventana \ref listcuentasview1 la pone en modo selecciï¿½
+  * Crea una ventana \ref listcuentasview1 la pone en modo selección
   * La ejecuta en modo modal y espera a que termine
   * Pone en el campo contrapartida el valor devuelto por el selector de cuentas.
-  * Simula la introducciï¿½ de la cuenta con la llamada \ref chContrapartida
+  * Simula la introducción de la cuenta con la llamada \ref chContrapartida
   * Para que se actualize lo que se tenga que actualizar.
   */
 void ivaview::boton_buscacuenta() {
@@ -836,7 +836,7 @@ void ivaview::cargacobros () {
 
 
 /**
-  * \brief Esta funciï¿½ guarda todas las previsiones.
+  * \brief Esta función guarda todas las previsiones.
   *
   * Se van guardando las previsiones linea por linea.
   */
@@ -851,7 +851,7 @@ void ivaview::guardaprevpago() {
 
 
 /**
-  * \brief Esta funciï¿½ guarda una linea de la tabla de previsiones
+  * \brief Esta función guarda una linea de la tabla de previsiones
   *
   * La linea se guarda en la base de datos prevcobro, la tabla afectada es m_listPrevision
   * El parametro que se pasa es la columna de la tabla que queremos guardar en la base de datos.
@@ -989,9 +989,9 @@ void ivaview::boton_generarPrevisiones() {
 
 
 /**
-  * \brief SLOT que captura la pulsaciï¿½ de determinadas telcas especiales para la aplicacion
-  * Se emite cuando se han pulsado determinadas teclas en la ediciï¿½ de la tabla de cobros/pagos.
-  * Responde a la pulsaciï¿½ del '+' y del '*'
+  * \brief SLOT que captura la pulsación de determinadas telcas especiales para la aplicacion
+  * Se emite cuando se han pulsado determinadas teclas en la edición de la tabla de cobros/pagos.
+  * Responde a la pulsación del '+' y del '*'
   */
 void ivaview::pulsadomas(int row, int col, int caracter) {
     QString query, fecha;
@@ -1061,7 +1061,7 @@ void ivaview::pulsadomas(int row, int col, int caracter) {
 
 
 /**
-  * \brief Esta funciï¿½ se llama cada vez que se sospecha que se ha cambiado la cuenta.
+  * \brief Esta función se llama cada vez que se sospecha que se ha cambiado la cuenta.
   *
   * Comprueba cual es la cadena que se ha metido como cuenta y le hace todos los tratamientos posibles
   * hasta determinar si es una cuenta del plan contable o no.

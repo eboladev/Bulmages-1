@@ -80,7 +80,7 @@ void presupuesto::pintaPresupuesto() {
     calculaypintatotales();
 }// end pintaPresupuesto
 
-// Esta funciï¿½ carga un presupuesto.
+// Esta función carga un presupuesto.
 void presupuesto::chargeBudget(QString idbudget) {
     mdb_idpresupuesto = idbudget;
     QString query = "SELECT * FROM presupuesto LEFT JOIN almacen ON  presupuesto.idalmacen = almacen.idalmacen WHERE idpresupuesto="+idbudget;
@@ -128,7 +128,7 @@ void presupuesto::guardapresupuesto() {
     if (mdb_idtrabajador== "")
     	mdb_idtrabajador = "NULL";
     if (mdb_idpresupuesto == "") {
-        /// Se trata de una inserciï¿½
+        /// Se trata de una inserción
         QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, procesadopresupuesto, descpresupuesto, refpresupuesto, idforma_pago, idtrabajador) VALUES ("+mdb_numpresupuesto+",'"+mdb_fpresupuesto+"','"+mdb_contactpresupuesto+"','"+mdb_telpresupuesto+"','"+mdb_vencpresupuesto+"','"+mdb_comentpresupuesto+"',"+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+","+mdb_procesadopresupuesto+",'"+mdb_descpresupuesto+"','"+mdb_refpresupuesto+"',"+mdb_idforma_pago+","+mdb_idtrabajador+")";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpresupuesto) AS m FROM presupuesto");
@@ -137,7 +137,7 @@ void presupuesto::guardapresupuesto() {
         delete cur;
         companyact->commit();
     } else {
-        /// Se trata de una modificaciï¿½
+        /// Se trata de una modificación
         QString SQLQuery = "UPDATE presupuesto SET ";
         SQLQuery += " numpresupuesto="+mdb_numpresupuesto;
         SQLQuery += " ,fpresupuesto='"+mdb_fpresupuesto+"'";
@@ -223,7 +223,7 @@ void presupuesto::imprimirPresupuesto() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt="";
-    // Lï¿½ea de totales del presupuesto
+    // Línea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);

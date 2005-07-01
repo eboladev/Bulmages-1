@@ -70,7 +70,7 @@ void Factura::pintaFactura() {
 }// end pintaFactura
 
 
-// Esta funciï¿½ carga un Factura.
+// Esta función carga un Factura.
 void Factura::cargaFactura(QString idbudget) {
     mdb_idfactura = idbudget;
     inicialize();
@@ -124,7 +124,7 @@ void Factura::guardaFactura() {
         delete cur;
         companyact->commit();
     } else {
-        /// Se trata de una modificaciï¿½
+        /// Se trata de una modificación
         QString SQLQuery = "UPDATE Factura SET ";
         SQLQuery += " numFactura="+mdb_numfactura;
         SQLQuery += " ,fFactura='"+mdb_ffactura+"'";
@@ -166,7 +166,7 @@ void Factura::imprimirFactura() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Lï¿½ea de totales del presupuesto
+    // Línea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);

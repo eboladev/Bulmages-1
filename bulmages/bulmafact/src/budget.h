@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -43,7 +43,7 @@
 
 #include "dialogchanges.h"
 
-/** @author Tomeu Borrï¿½ Riera */
+/** @author Tomeu Borrás Riera */
 class company;
 
 class Budget : public BudgetBase , public presupuesto, public dialogChanges  {

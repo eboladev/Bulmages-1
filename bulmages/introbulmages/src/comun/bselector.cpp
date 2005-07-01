@@ -72,6 +72,7 @@ void BSelector::m_iglues_clicked() {
 void BSelector::m_bulmatpv_clicked() {
    if (m_tipoempresa != "BulmaFact" ) {
       abreempresaview *empcont = new abreempresaview(0,"BulmaFact", "abreempresa", true);
+      empcont->modonodestructivo();
       empcont->exec();
       m_empresabd = empcont->nomDB();
 //      tipo = empcont->tipo;
@@ -87,6 +88,7 @@ void BSelector::m_bulmatpv_clicked() {
 //Boton cambio de Empresa y/o Usuario
 void BSelector::seleccionaempresa_clicked() {
    abreempresaview *empcont = new abreempresaview(0, "","abreempresa", true);
+      empcont->modonodestructivo();   
    empcont->exec();
    m_empresabd = empcont->nomDB();
    // Cambiamos el nombre en la pantalla.
@@ -100,6 +102,7 @@ void BSelector::seleccionaempresa_clicked() {
 void BSelector::contabilidad_clicked() {
    if (m_tipoempresa != "BulmaCont" ) {
       abreempresaview *empcont = new abreempresaview(0,"BulmaCont", "abreempresa", true);
+      empcont->modonodestructivo();      
       empcont->exec();
       m_empresabd = empcont->nomDB();
    }// end if
@@ -129,6 +132,7 @@ void BSelector::m_bcontaweb_clicked() {
 void BSelector::m_bulmafact_clicked() {
    if (m_tipoempresa != "BulmaFact" ) {
       abreempresaview *empcont = new abreempresaview(0,"BulmaFact", "abreempresa", true);
+      empcont->modonodestructivo();      
       empcont->exec();
       m_empresabd = empcont->nomDB();
    }// end while

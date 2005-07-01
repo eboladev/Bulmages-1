@@ -230,6 +230,9 @@ void ClientEdit::saveClient() {
       SQLQuery += " , faxcliente='"+companyact->sanearCadena(m_clientFax->text())+"'";
       SQLQuery += " , mailcliente='"+companyact->sanearCadena(m_clientEmail->text())+"'";
       SQLQuery += " WHERE idcliente ="+clientId;
+   companyact->begin();
+   companyact->ejecuta(SQLQuery);
+   companyact->commit();       
    } else {
       SQLQuery = " INSERT INTO cliente (nomcliente, nomaltcliente, cifcliente, bancocliente, dircliente, poblcliente, cpcliente, telcliente, faxcliente, urlcliente, mailcliente)";
       SQLQuery += " VALUES (";
@@ -245,11 +248,13 @@ void ClientEdit::saveClient() {
       SQLQuery += ",'"+companyact->sanearCadena(m_clientUrl->text())+"'";
       SQLQuery += ",'"+companyact->sanearCadena(m_clientEmail->text())+"'";
       SQLQuery += ")";
-   }// end if
-   
    companyact->begin();
    companyact->ejecuta(SQLQuery);
-   companyact->commit(); 
+   cursor2 *cur = companyact->cargacursor("SELECT max(idcliente) AS id FROM cliente");
+   clientId = cur->valor("id");
+   delete cur;
+   companyact->commit();       
+   }// end if
    setModified(false);  
 }// end accept
 

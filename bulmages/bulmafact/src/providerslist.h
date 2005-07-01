@@ -21,7 +21,7 @@
 #define PROVIDERSLIST_H
 
 #include "providerslistbase.h"
-
+#include <qframe.h>
 
 class company;
 
@@ -45,7 +45,13 @@ public:
     QString idprovider() {return m_idprovider;};
     QString cifprovider() {return m_cifprovider;};
     QString nomprovider() {return m_nomprovider;};
-    
+    void hideBotonera() {m_botonera->hide();};
+    void showBotonera() {m_botonera->show();};
+    void hideBusqueda() {m_busqueda->hide();};
+    void showBusqueda() {m_busqueda->show();};
+    void hideConfiguracion() {m_configuracion->hide();};
+    void showConfiguracion() {m_configuracion->show();};
+        
 public slots:
     virtual void doubleclicked(int, int, int, const QPoint &);
     virtual void contextMenu(int, int, const QPoint &);
@@ -54,6 +60,21 @@ public slots:
     virtual void s_editProvider();
     virtual void s_removeProvider();
     virtual void s_printProviders();
+    virtual void s_refreshProveedores() {inicializa();};
+    
+    virtual void s_mostrarBusqueda() {
+    	if (m_busqueda->isVisible())
+		hideBusqueda();
+	else
+		 showBusqueda();
+	};
+	
+    virtual void s_mostrarConfiguracion() {
+    	if (m_configuracion->isVisible())
+		hideConfiguracion();
+	else
+		 showConfiguracion();
+	};      
 };
 
 #endif

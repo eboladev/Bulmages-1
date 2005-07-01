@@ -51,6 +51,7 @@ using namespace std;
 abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name, bool modal) : abreempresadlg(parent,name,modal) {
     m_tipo = tipo;
     m_tipoempresa = "";
+    m_modo=0;
     cargaArchivo();
 }// end abreempresaview
 
@@ -83,16 +84,18 @@ void abreempresaview::accept() {
         m_empresabd= it->text(ABRE_ARCHIVO);
         m_nombreempresa= it->text(ABRE_NOMBRE);
         m_tipoempresa = it->text(ABRE_TIPO);
-        close();
+        done(0);
     }// end if
 }// end accept
 
 /** Realiza la misma acción que el \ref accept
   */
+/*  
 void abreempresaview::closeEvent(QCloseEvent * e) {
-    e->accept();
+    //e->accept();
+    s_botonCancelar();
 }// end closeEvent
-
+*/
 
 /** Carga del archivo de empresas las empresas disponibles.
   */

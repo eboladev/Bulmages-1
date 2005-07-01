@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementaciï¿½ del listado de presupuestos.
+// Implementación del listado de presupuestos.
 #include "budgetslist.h"
 #include "company.h"
 #include "budget.h"
@@ -319,7 +319,7 @@ void BudgetsList::imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Lï¿½ea de totales del presupuesto
+    // Línea de totales del presupuesto
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";

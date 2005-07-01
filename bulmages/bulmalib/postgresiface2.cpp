@@ -2,7 +2,7 @@
                           postgresiface2.cpp  -  description
                              -------------------
     begin                : Tue Nov 26 2003
-    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -14,7 +14,7 @@
  *                                                                         *
  ***************************************************************************/
 /** \file postgresifac2.cpp
-  * Contiene la implementaciï¿½ de las clases \ref cursor2 y \ref postgresiface2 que proveen acceso a las bases de datos
+  * Contiene la implementación de las clases \ref cursor2 y \ref postgresiface2 que proveen acceso a las bases de datos
   * de postgres de forma sencilla y eficiente.
   */
   
@@ -26,7 +26,7 @@
 /** Constructor de la clase 
   * Realiza la consulta en la base de datos y almacena el resultado en las variables de clase para poder ser manupuladas.
   * Tambiï¿½ almacena en variables globales algunos resultados para poder acelerar las consultas (nregistros y ncampos).
-  * Si todo falla (y en funciï¿½ de la configuraciï¿½) Da un mensaje de alerta o no.
+  * Si todo falla (y en función de la configuración) Da un mensaje de alerta o no.
   * \param nombre Nombre que obtendrï¿½el query (OBSOLETO)
   * \param conn1 Conexiï¿½ con la base de datos (Inicializada en \ref postgresiface2
   * \param SQLQuery Query en formato SQL a realizar en la base de datos.
@@ -79,8 +79,8 @@ int cursor2::numcampos() {
     return(ncampos);
 }
 
-/** \return Devuelve el nombre del campo de una posiciï¿½ determinada.
-  * \param campo Posiciï¿½ de la que se quiere que devuelva el nombre.
+/** \return Devuelve el nombre del campo de una posición determinada.
+  * \param campo Posición de la que se quiere que devuelva el nombre.
   */
 QString cursor2::nomcampo(int campo) {
     return((QString) PQfname(result, campo));
@@ -88,10 +88,10 @@ QString cursor2::nomcampo(int campo) {
 
 
 /**
-  * Dado un campo esta funciï¿½ devuelve devuelve la posiciï¿½ que le
+  * Dado un campo esta función devuelve devuelve la posición que le
   * corresponde, y si no le corresponde ninguno devuelve -1
   * \param campo Nombre del campo.
-  * \return Devuelve la posiciï¿½ si el nombre del campo existe, y si no devuelve -1
+  * \return Devuelve la posición si el nombre del campo existe, y si no devuelve -1
   * \todo Tal vez deberï¿½ crearse una estructura intermedia que indexe los nombres con las posiciones para hacer la bsqueda mï¿½ rï¿½ida, pero al ser el nmero de registros siempre muy reducido seguramente no arreglariamos nada de nada.
   */
 int cursor2::numcampo(QString campo) {
@@ -107,9 +107,9 @@ int cursor2::numcampo(QString campo) {
 
 /** Esta funcion devuelve el valor del campo posicion del registro
   * pasado, si se pasa -1 como registro se devuelve el registro actual
-  * \param posicion El nmero de campo del que se quiere la posiciï¿½.
+  * \param posicion El nmero de campo del que se quiere la posición.
   * \param registro El registro del que se quiere devolver el campo. Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
-  * \return El valor de la posiciï¿½.
+  * \return El valor de la posición.
   */
 QString cursor2::valor(int posicion, int registro) {
     if (registro == -1) {
@@ -119,11 +119,11 @@ QString cursor2::valor(int posicion, int registro) {
 }// end valor
 
 
-/** Esta funciï¿½ devuelve el valor del campo especificado (por nombre) del registro
+/** Esta función devuelve el valor del campo especificado (por nombre) del registro
   * pasado, si se pasa como registro -1 se devuelve el registro actual.
   * \param campo Nombre del campo a devolver
   * \param registro El registro del que se quiere devolver el campo. Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
-  * \return El valor de la posiciï¿½.
+  * \return El valor de la posición.
   */
 QString cursor2::valor(QString campo, int registro) {
     int i=0;
@@ -137,19 +137,19 @@ QString cursor2::valor(QString campo, int registro) {
 }// end valor
 
 
-/** \return Devuelve la posiciï¿½ siguiente al registro que se estï¿½recorriendo
+/** \return Devuelve la posición siguiente al registro que se estï¿½recorriendo
   */
 int cursor2::siguienteregistro() {
     return (++registroactual);
 }
 
-/** \return Devuelve la posiciï¿½ anterior al registro que se estï¿½recorriendo
+/** \return Devuelve la posición anterior al registro que se estï¿½recorriendo
   */
 int cursor2::registroanterior() {
     return (--registroactual);
 }
 
-/** \return Devuelve la posiciï¿½ del primer registro de la tabla de registros
+/** \return Devuelve la posición del primer registro de la tabla de registros
   */
 int cursor2::primerregistro() {
     registroactual=0;
@@ -165,7 +165,7 @@ int cursor2::ultimoregistro() {
 }// end ultimoregistro
 
 
-/** \return Devuelve TRUE si el registro estï¿½en la posiciï¿½ final, o si estï¿½vacio
+/** \return Devuelve TRUE si el registro estï¿½en la posición final, o si estï¿½vacio
   */
 bool cursor2::eof() {
     if (nregistros == 0) {
@@ -175,7 +175,7 @@ bool cursor2::eof() {
 }// end if
 
 
-/** \return Devuelve TRUE si el registro estï¿½en la posiciï¿½ inicial, o si estï¿½vacio
+/** \return Devuelve TRUE si el registro estï¿½en la posición inicial, o si estï¿½vacio
   */
 bool cursor2::bof() {
     if (nregistros == 0) {
@@ -216,7 +216,7 @@ postgresiface2::~postgresiface2() {
 /** Inicializa la conexiï¿½ con la base de datos mediante los parï¿½etro especificados
   * Precisamente no lo hace el constructor debido a la ausencia de dichos datos.
   * \param nomdb Indica el nombre de la base de datos
-  * \param user Indica el usuario que hace la operaciï¿½ a ojos de la base de datos.
+  * \param user Indica el usuario que hace la operación a ojos de la base de datos.
   * \param passwd Indica la contraseï¿½ que utiliza el usuario para autentificarse
   * \return Si todo va bien devuelve 0, en caso contrario devuelve 1
   */
@@ -281,9 +281,9 @@ int postgresiface2::formatofecha() {
 }// end formatofecha
 
 
-/** Con esta sentencia se inicia una transacciï¿½ en la base de datos
+/** Con esta sentencia se inicia una transacción en la base de datos
   * Las transacciones lo que indican es que el usuario se ha apoderado de la base de datos durante
-  * un tiempo y que la operaciï¿½ que va a transcurrir debe hacerse sin concurrencia.
+  * un tiempo y que la operación que va a transcurrir debe hacerse sin concurrencia.
   * \return Si todo ha funcionado bien devuelve un 0, en caso contrario devuelve un 1
   */
 int postgresiface2::begin() {
@@ -300,7 +300,7 @@ int postgresiface2::begin() {
 }// end begin
 
 
-/** Con esta sentencia se termina un bloque de transacciï¿½ dando por buenos todos los resultados que
+/** Con esta sentencia se termina un bloque de transacción dando por buenos todos los resultados que
   * Se han almacenado dentro de ï¿½te. Y quedando almacenados en la base de datos de forma definitiva.
   */
 void postgresiface2::commit() {
@@ -311,8 +311,8 @@ void postgresiface2::commit() {
 }// end commit
 
 
-/** Con esta sentencia se termina un bloque de transacciï¿½ dando por malos los resultados de la operaciï¿½
-  * Y dejandose la base de datos en el mismo estado que cuando se iniciï¿½la transacciï¿½.
+/** Con esta sentencia se termina un bloque de transacción dando por malos los resultados de la operación
+  * Y dejandose la base de datos en el mismo estado que cuando se iniciónla transacción.
   */
 void postgresiface2::rollback() {
     PGresult   *res;
@@ -334,7 +334,7 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
 
 /** \brief Ejecuta un comando SQL
 \param Query Comando a ejecutar. Debe ser un comando que no devuelva ningn valor (como \c select).
-\retval 0 Si la ejecuciï¿½ fue correcta
+\retval 0 Si la ejecución fue correcta
 \retval 1 en caso contrario
 */
 int postgresiface2::ejecuta(QString Query) {
@@ -681,11 +681,11 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
 
 
 int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento, int clase) {
-    // clase => 0=Apertura, 1=Normal, 98=Regularizaciï¿½ 99=Cierre
+    // clase => 0=Apertura, 1=Normal, 98=Regularización 99=Cierre
     QString query="";
     int val;
     int ordenasiento;
-    //0=Apertura, 1=Normal, 98=Regularizaciï¿½ 99=Cierre
+    //0=Apertura, 1=Normal, 98=Regularización 99=Cierre
     if (numasiento == 0) {
         query="SELECT max(idasiento) FROM asiento";
         cursor2 *cur=cargacursor(query,"cargaasientoseq");
@@ -721,9 +721,9 @@ cursor2 *postgresiface2::cargaempresas() {
 
 
 
-/** Esta funciï¿½ carga de la metabase la combinaciï¿½ usuario password y basde de datos y
+/** Esta función carga de la metabase la combinación usuario password y basde de datos y
   * devuelve el nmero de tuplas encontrados.
-  * Sirve como comprobaciï¿½ de que los datos introducidos (usuario/password y la empresa seleccionada) son verï¿½icos.
+  * Sirve como comprobación de que los datos introducidos (usuario/password y la empresa seleccionada) son verï¿½icos.
   */
 int postgresiface2::cargaempresa(QString nomempresa, QString login, QString password) {
     fprintf(stderr,"postgresiface2::cargaempresa\n");
@@ -768,7 +768,7 @@ int postgresiface2::cargaempresa(QString nomempresa, QString login, QString pass
 }// end cargaempresa
 
 
-/** Esta funciï¿½ estï¿½ica devuelve una cadena "saneada" para pasarsela a Postgresql.
+/** Esta función estï¿½ica devuelve una cadena "saneada" para pasarsela a Postgresql.
   * Neutraliza (escapes) los caracteres problemï¿½icos por ser caracteres especiales
   * de Postgresql. Ejemplo, comillas, contrabarras,...
   */

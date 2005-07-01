@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,8 +20,8 @@
 
 // PRESUPUESTOS
 /*
--- Entendemos que un presupuesto es una relaciï¿½ de materiales y trabajos cuantificada que
--- hacemos a peticiï¿½ de un cliente determinado
+-- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
+-- hacemos a petición de un cliente determinado
 -- Numero
 -- Data: Data d'emisiï¿½del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
@@ -46,7 +46,7 @@ CREATE TABLE presupuesto (
 /*
 -- Linea de presupuesto
 -- Numero
--- Descripcio: Descripciï¿½de l'article en el moment de ser presupostat.
+-- Descripcio: Descripciónde l'article en el moment de ser presupostat.
 -- Quantitat
 -- PVP: Preu de l'article en el moment de ser pressupostat
 -- Descompte: Percentatge de descompte en lï¿½ia.

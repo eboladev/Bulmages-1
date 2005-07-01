@@ -39,7 +39,7 @@ public:
     void guardaListLinAlbaranCliente();
     void vaciar();
     virtual void pintaListLinAlbaranCliente() {
-        fprintf(stderr,"La funciï¿½ pintaListLinAlbaranCliente aun no ha sido implementada\n");
+        fprintf(stderr,"La función pintaListLinAlbaranCliente aun no ha sido implementada\n");
     };
     void setidalbaran(QString id) {
         mdb_idalbaran=id;

@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementaciï¿½ del listado de presupuestos.
+// Implementación del listado de presupuestos.
 /*
--- Entendemos que un presupuesto es una relaciï¿½ de materiales y trabajos cuantificada que
--- hacemos a peticiï¿½ de un cliente determinado
+-- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
+-- hacemos a petición de un cliente determinado
 -- Numero
 -- Data: Data d'emisiï¿½del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
@@ -68,14 +68,6 @@ CREATE TABLE presupuesto (
 
 
 void CobrosList::s_configurar() {
-/*
-    if(mver_idpresupuesto->isChecked() )
-        m_list->showColumn(COL_IDPRESUPUESTO);
-    else
-        m_list->hideColumn(COL_IDPRESUPUESTO);
-
-*/
-
 }
 
 
@@ -110,7 +102,7 @@ void CobrosList::inicializa() {
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
-    m_list->setSorting( TRUE );
+    m_list->setSorting( FALSE );
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(7);
@@ -166,7 +158,6 @@ QString CobrosList::generaFiltro() {
     QString filtro="";
     if (m_filtro->text() != "") {
         filtro = " AND ( desccobro LIKE '%"+m_filtro->text()+"%' ";
-  //      filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
     } else {
         filtro = "";
     }// end if
@@ -251,7 +242,7 @@ void CobrosList::imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Lï¿½ea de totales del presupuesto
+    // Línea de totales del presupuesto
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";

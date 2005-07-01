@@ -2,7 +2,7 @@
                           balanceview.cpp  -  description
                              -------------------
     begin                : sï¿½ abr 26 2003
-    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -226,7 +226,7 @@ void balanceview::boton_asiento() {
 
 
 /** \brief Se encarga  de inicializar la clase con los parametros que se le han pasado.
-  * Esta funciï¿½ sirve para que desde fuera se pueda preparar a la clase para presentar un listado predeterminado.
+  * Esta función sirve para que desde fuera se pueda preparar a la clase para presentar un listado predeterminado.
   */
 void balanceview::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste) {
 
@@ -264,7 +264,7 @@ void balanceview::presentar() {
       int idc_coste;
       idc_coste = ccostes[combocoste->currentItem()];
 
-      // La consulta es compleja, requiere la creaciï¿½ de una tabla temporal y de cierta mandanga por lo que puede
+      // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
 	// Causar problemas con el motor de base de datos.
 	fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
         conexionbase->begin();		
@@ -464,9 +464,9 @@ void balanceview::boton_buscacuentafinal() {
 }// end boton_buscacuentafinal
 
 
-/** \brief Responde a una peticiï¿½ de menu contextual sobre el balance.
+/** \brief Responde a una petición de menu contextual sobre el balance.
   * Saca un menu contextual que presenta las opciones necesarias sobre la cuenta.
-  * Espera a que se seleccione una opciï¿½ o que se quite el menu contextual y llama a la funciï¿½ correspondiente
+  * Espera a que se seleccione una opción o que se quite el menu contextual y llama a la función correspondiente
   * con la entrada de menu que se haya seleccionado.
   */
 void balanceview::contextmenu(int, int col, const QPoint &poin) {
@@ -514,7 +514,7 @@ void balanceview::nivelactivated (int) {
 }// end nivelactivated1
 
 
-/** \BRIEF SLOT que responde a la pulsaciï¿½ del botï¿½ de imprimir
+/** \BRIEF SLOT que responde a la pulsación del botï¿½ de imprimir
   * Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del balance y lo ejecuta en modo Modal.
   */
 void balanceview::boton_imprimir() {
@@ -541,8 +541,8 @@ void balanceview::codigo_textChanged(const QString &texto) {
   * \note Deben existir tantas llamadas a este SLOT como fechas existan en el formulario para garantizar
   * la correcta respuesta.
   * Cuando se ha pulsado una tecla sobre la fecha del extracto
-  * Se evalua si la pulsaciï¿½ es un cï¿½igo de control o es un digitos
-  * Para la introducciï¿½ de fechas.
+  * Se evalua si la pulsación es un cï¿½igo de control o es un digitos
+  * Para la introducción de fechas.
   */
 void balanceview::fecha_textChanged(const QString &texto) {
 	QLineEdit *fecha = (QLineEdit *) sender();

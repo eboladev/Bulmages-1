@@ -26,8 +26,8 @@ ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView(QWidget * parent,
     /// Inicializamos la tabla de lineas de pedidocliente
     setNumCols(4);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_IDDPEDIDOCLIENTE, tr( "N Lï¿½ea" ) );
-    horizontalHeader()->setLabel( COL_CONCEPTDPEDIDOCLIENTE, tr( "Descripciï¿½" ) );
+    horizontalHeader()->setLabel( COL_IDDPEDIDOCLIENTE, tr( "N Línea" ) );
+    horizontalHeader()->setLabel( COL_CONCEPTDPEDIDOCLIENTE, tr( "Descripción" ) );
     horizontalHeader()->setLabel( COL_PROPORCIONDPEDIDOCLIENTE, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_IDPEDIDOCLIENTE, tr( "Precio" ) );
 

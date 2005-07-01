@@ -271,8 +271,8 @@ void listlinpresupuestoview::manageArticle(int row) {
 
 
 QString listlinpresupuestoview::searchArticle() {
-    fprintf(stderr,"Busqueda de un artï¿½ulo\n");
-    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artï¿½ulo","company"));
+    fprintf(stderr,"Busqueda de un artículo\n");
+    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
     // , WType_Dialog| WShowModal
     artlist->modoseleccion();
     // Esto es convertir un QWidget en un sistema modal de dialogo.

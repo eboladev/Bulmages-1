@@ -2,7 +2,7 @@
                           cuentaview.cpp  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
+    copyright            : (C) 2002 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -104,7 +104,7 @@ cuentaview::~cuentaview(){
 
 
 /*********************************************************************
- * Esta funciï¿½ se activa cada vez quese pulsa una tecla sobre la cuenta
+ * Esta función se activa cada vez quese pulsa una tecla sobre la cuenta
  *********************************************************************/
 void cuentaview::cambiapadre(const QString &cadena)  {
   QString cad;

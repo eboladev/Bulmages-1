@@ -49,7 +49,7 @@ public:
     void guardaListLinFactura();
     void vaciar();
     virtual void pintaListLinFactura() {
-        fprintf(stderr,"La funciï¿½ pintaListLinFactura aun no ha sido implementada\n");
+        fprintf(stderr,"La función pintaListLinFactura aun no ha sido implementada\n");
     };
     void cargaListLinFactura(QString);
     void borrar();

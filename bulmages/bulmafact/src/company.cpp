@@ -45,6 +45,7 @@
 #include "facturasplist.h"
 #include "cobroslist.h"
 #include "trabajador.h"
+#include "pagoslist.h"
 
 
 company::company() {}// end company
@@ -78,13 +79,14 @@ void company::createMainWindows() {
     m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Proveedores","company"));
     m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Clientes","company"));
     m_cobrosList = new CobrosList(this, m_pWorkspace,theApp->translate("Cobros","company"));
+    m_pagosList =  new PagosList (this, m_pWorkspace, theApp->translate("Pagos","company"));
     
     m_budgetsList = new BudgetsList(this, m_pWorkspace,theApp->translate("Presupuestos a Clientes","company"));
     m_pedidosclienteList = new PedidosClienteList(this, m_pWorkspace,theApp->translate("Pedidos de Clientes","company"));
     m_clientDelivNotesList = new ClientDelivNotesList(this, m_pWorkspace,theApp->translate("Albaranes de Clientes","company"));
     m_facturasList = new FacturasList(this, m_pWorkspace,theApp->translate("Facturas a Cliente","company"));
 
-    m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Pedidos a Proveedores","company"));
+//    m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Pedidos a Proveedores","company"));
     m_albaranesproveedor = new AlbaranesProveedor(this, m_pWorkspace,theApp->translate("Albaranes Proveedor","company"));
     m_facturasproveedorlist = new FacturasProveedorList(this, m_pWorkspace,theApp->translate("Facturas Proveedor","company"));
     fprintf(stderr,"Fin de createMainWindows\n");
