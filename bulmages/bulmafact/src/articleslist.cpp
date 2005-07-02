@@ -170,7 +170,7 @@ void articleslist::inicializa() {
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
-    m_list->setSorting( TRUE );
+    m_list->setSorting( FALSE );
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(19);
