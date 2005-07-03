@@ -343,7 +343,7 @@ CREATE TABLE proveedor (
    idproveedor serial PRIMARY KEY,
    nomproveedor character varying(200),
    nomaltproveedor character varying(200),
-   cifproveedor character varying(12),
+   cifproveedor character varying(12) UNIQUE,
    codicliproveedor character varying(30),
    cbancproveedor character varying(20),
    comentproveedor character varying(2000),
@@ -400,7 +400,7 @@ CREATE TABLE cliente (
    idcliente serial PRIMARY KEY,
    nomcliente character varying(100),
    nomaltcliente character varying(300),
-   cifcliente character varying(200),
+   cifcliente character varying(200) UNIQUE,
    bancocliente character varying(35),
    dircliente character varying(100),
    poblcliente character varying(40),
@@ -414,6 +414,7 @@ CREATE TABLE cliente (
    comentcliente character varying(2000),
    inactivocliente character(1)
 );
+
 
 CREATE TABLE cobro (
    idcobro serial PRIMARY KEY,
@@ -1295,3 +1296,87 @@ BEGIN
 	RETURN 0.0;
 END;
 ' LANGUAGE plpgsql;
+
+
+-- Any: Any en que s'efectua la comanda.
+-- Numero: Número de comanda (començant de 1 cada any).
+-- Descripcio: Breu descripció o comentari opcional.
+-- Data: Data d'emisió de la comanda.
+CREATE TABLE pedidoproveedor (
+   idpedidoproveedor serial PRIMARY KEY,
+   numpedidoproveedor integer UNIQUE NOT NULL,
+   fechapedidoproveedor date,
+   refpedidoproveedor character varying(12) NOT NULL,   
+   descpedidoproveedor character varying(500),
+   comentpedidoproveedor character varying(3000),
+   contactpedidoproveedor character varying(90),
+   telpedidoproveedor character varying(20),   
+   procesadopedidoproveedor boolean DEFAULT FALSE,   
+   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
+   idforma_pago integer REFERENCES forma_pago(idforma_pago),    
+   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+   idtrabajador integer REFERENCES trabajador(idtrabajador)   
+);
+
+CREATE FUNCTION restriccionespedidoproveedor () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+        IF NEW.numpedidoproveedor IS NULL THEN
+                SELECT INTO asd max(numpedidoproveedor) AS m FROM pedidoproveedor;
+		IF FOUND THEN
+			NEW.numpedidoproveedor := asd.m + 1;
+		ELSE
+			NEW.numpedidoproveedor := 1;
+		END IF;
+        END IF;
+	IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.refpedidoproveedor := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionespedidoproveedortrigger
+    BEFORE INSERT OR UPDATE ON pedidoproveedor
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionespedidoproveedor();
+
+
+-- Descuento de pedidocliente.
+-- Numero
+--Concepte: Descripció del motiu de descompte.
+--Proporcio: Percentatge a descomptar.
+-- Descompte de pressupost a clients.
+CREATE TABLE dpedidoproveedor (
+   iddpedidoproveedor serial PRIMARY KEY,
+   conceptdpedidoproveedor character varying(2000),
+   proporciondpedidoproveedor numeric(12,2),
+   idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor)
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
+);    
+    
+-- Linea de pedido
+-- Numero: Número de línia.
+-- Descripcio: Descripcio de l'article.
+-- Quantitat
+-- PVD
+-- Previsió: Data prevista de recepció
+CREATE TABLE lpedidoproveedor (
+   numlpedidoproveedor serial PRIMARY KEY,
+   desclpedidoproveedor character varying(150),
+   cantlpedidoproveedor numeric(12,2),
+   pvplpedidoproveedor numeric(12,2),
+   prevlpedidoproveedor date,
+   ivalpedidoproveedor numeric(12,2),
+   descuentolpedidoproveedor numeric(12,2),   
+   idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor),
+   idarticulo integer REFERENCES articulo(idarticulo)
+);
+
+
