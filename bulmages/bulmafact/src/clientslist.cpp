@@ -172,7 +172,7 @@ void ClientsList::inicializa() {
          m_clientList->setText(i,COL_FALTACLIENTE,cur->valor("faltacliente"));
          m_clientList->setText(i,COL_FBAJACLIENTE,cur->valor("fbajacliente"));
          m_clientList->setText(i,COL_COMENTCLIENTE,cur->valor("comentcliente"));
-         m_clientList->setText(i,COL_IDRECARGO,cur->valor("idrecargo"));
+//         m_clientList->setText(i,COL_IDRECARGO,cur->valor("idrecargo"));
          i++;
          cur->siguienteregistro();
        }// end while

@@ -226,3 +226,43 @@ void PedidosClienteList::imprimir() {
 
 
 
+void PedidosClienteList::s_borrarPedidosCliente() {
+    fprintf(stderr,"Iniciamos el boton_borrar\n");
+    if (m_list->currentRow() >= 0) {
+        if (QMessageBox::warning( this, "BulmaFact - Pedidos Cliente", "Desea borrar el pedido seleccionado", "Si", "No") == 0) {
+            companyact->begin();
+            QString SQLQuery = "DELETE FROM lpedidocliente WHERE idpedidocliente ="+m_list->text(m_list->currentRow(),COL_IDPEDIDOCLIENTE);
+            if (companyact->ejecuta(SQLQuery)==0) {
+                QString SQLQuery = "DELETE FROM dpedidocliente WHERE idpedidocliente ="+m_list->text(m_list->currentRow(),COL_IDPEDIDOCLIENTE);
+                if (companyact->ejecuta(SQLQuery)==0) {
+                        QString SQLQuery = "DELETE FROM pedidocliente WHERE idpedidocliente ="+m_list->text(m_list->currentRow(),COL_IDPEDIDOCLIENTE);
+                        if (companyact->ejecuta(SQLQuery)==0) {
+                            companyact->commit();
+                        } else {
+                            companyact->rollback();
+                        }
+
+                } else {
+                    companyact->rollback();
+                }
+            } else {
+                companyact->rollback();
+            }
+        }
+    }
+    inicializa();
+}// end boton_borrar
+
+
+void PedidosClienteList::s_editarPedidosCliente() {
+    int a = m_list->currentRow();
+    m_idpedidocliente = m_list->text(a,COL_IDPEDIDOCLIENTE);
+    if (m_modo ==0 && m_idpedidocliente != "") {
+        PedidoClienteView *bud = new PedidoClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+        bud->cargaPedidoCliente(m_idpedidocliente);
+        bud->show();
+    } else {
+        close();
+    }// end if
+}
+

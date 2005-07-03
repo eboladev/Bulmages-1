@@ -1,5 +1,5 @@
 //
-// C++ Interface: pedidosclientelist
+// C++ Interface: pedidosproveedorlist
 //
 // Description: 
 //
@@ -9,43 +9,43 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#ifndef PEDIDOSCLIENTELIST_H
-#define PEDIDOSCLIENTELIST_H
+#ifndef PEDIDOSPROVEEDORLIST_H
+#define PEDIDOSPROVEEDORLIST_H
 
-#include <pedidosclientelistbase.h>
-#include "busquedacliente.h"
+#include <pedidosproveedorlistbase.h>
+#include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 /**
 @author Tomeu Borras
 */
 
-class PedidosClienteList : public PedidosClienteListBase
+class PedidosProveedorList : public PedidosProveedorListBase
 {
 Q_OBJECT
 public:
    company *companyact;
    int m_modo; // == 0 es modo edición
             // ==1 es modo selector.
-   QString m_idpedidocliente;
+   QString m_idpedidoproveedor;
 
-    PedidosClienteList(QWidget *parent = 0, const char *name = 0, int flag = 0);
-    PedidosClienteList(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
+    PedidosProveedorList(QWidget *parent = 0, const char *name = 0, int flag = 0);
+    PedidosProveedorList(company *, QWidget *parent = 0, const char *name = 0, int flag = 0);
 
-    ~PedidosClienteList();
+    ~PedidosProveedorList();
     void inicializa();
     void modoseleccion() {m_modo=1;};
     void modoedicion() {m_modo=0;};
     void imprimir();
-    void setcompany (company *comp) {companyact=comp;m_cliente->setcompany(comp);};
+    void setcompany (company *comp) {companyact=comp;m_proveedor->setcompany(comp);};
     void hideBotonera() {m_botonera->hide();};
     void showBotonera() {m_botonera->show();};
     void hideBusqueda() {fprintf(stderr,"Ocultar busqueda\n");m_busqueda->hide();};
     void showBusqueda() {m_busqueda->show();};    
     void hideConfiguracion() {m_configuracion->hide();};
     void showConfiguracion() {m_configuracion->show();};    
-    QString idpedidocliente() {return m_idpedidocliente;}; 
-    void setidcliente(QString val) {m_cliente->setidcliente(val);};  
+    QString idpedidoproveedor() {return m_idpedidoproveedor;}; 
+    void setidproveedor(QString val) {m_proveedor->setidproveedor(val);};  
         void meteWindow(QString nom, QObject *obj) {
     if (companyact != NULL)
     companyact->meteWindow(nom, obj);
@@ -53,13 +53,13 @@ public:
     QString generarFiltro();
 public slots:
 	virtual void doubleclicked(int, int , int , const QPoint &) ;  
-	virtual void s_printPedidosCliente() {imprimir();};
-	virtual void s_searchPedidosCliente() {inicializa();};
-	virtual void s_newPedidoCliente() {companyact->newPedidoCliente();};
+	virtual void s_printPedidosProveedor() {imprimir();};
+	virtual void s_searchPedidosProveedor() {inicializa();};
+	virtual void s_newPedidoProveedor() {companyact->newPedidoProveedor();};
 	virtual void s_filtrar() {inicializa();};
 	
-	virtual void s_borrarPedidosCliente();
-	virtual void s_editarPedidosCliente();
+	virtual void s_borrarPedidosProveedor();
+	virtual void s_editarPedidosProveedor();
 	
     virtual void s_mostrarBusqueda() {
     	fprintf(stderr,"s_mostrarBusqueda\n");

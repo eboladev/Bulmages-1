@@ -40,7 +40,9 @@
 #include "familiasview.h"
 #include "facturaslist.h"
 #include "pedidosclientelist.h"
+#include "pedidosproveedorlist.h"
 #include "pedidoclienteview.h"
+#include "pedidoproveedorview.h"
 #include "albaranesproveedor.h"
 #include "facturasplist.h"
 #include "cobroslist.h"
@@ -87,6 +89,8 @@ void company::createMainWindows() {
     m_facturasList = new FacturasList(this, m_pWorkspace,theApp->translate("Facturas a Cliente","company"));
 
 //    m_orderslist= new orderslist(this, m_pWorkspace,theApp->translate("Pedidos a Proveedores","company"));
+    m_pedidosproveedorList = new PedidosProveedorList(this, m_pWorkspace,theApp->translate("Pedidos a Proveedor","company"));
+
     m_albaranesproveedor = new AlbaranesProveedor(this, m_pWorkspace,theApp->translate("Albaranes Proveedor","company"));
     m_facturasproveedorlist = new FacturasProveedorList(this, m_pWorkspace,theApp->translate("Facturas Proveedor","company"));
     fprintf(stderr,"Fin de createMainWindows\n");
@@ -203,10 +207,20 @@ void company::newPedidoCliente() {
     bud->show();
 }// end bud
 
+void company::newPedidoProveedor() {
+    PedidoProveedorView *bud = new PedidoProveedorView(this , m_pWorkspace,theApp->translate("Edicion de Pedidos de Proveedor", "company"));
+    bud->show();
+    fprintf(stderr,"Fin de newPedidoProveedor\n");
+}// end bud
+
 void company::refreshPedidosCliente() {
     m_pedidosclienteList->inicializa();
 }// end refreshPedidosCliente
 
+
+void company::refreshPedidosProveedor() {
+    m_pedidosproveedorList->inicializa();
+}// end refreshPedidosCliente
 
 /** Presenta la ventana de formas de pago y espera la ejecución de la misma */
 void company::s_FPago() {

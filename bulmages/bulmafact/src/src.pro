@@ -52,7 +52,9 @@ FORMS += bulmafactbase.ui \
          facturapbase.ui \
 	 trabajadorbase.ui \
 	 pagobase.ui \
-	 pagoslistbase.ui
+	 pagoslistbase.ui \
+	 pedidosproveedorlistbase.ui \
+	 pedidoproveedorbase.ui
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
@@ -144,7 +146,16 @@ HEADERS += bulmafact.h \
 	   listcomparticuloview.h \
 	   pago.h \
 	   pagoview.h \
-	   pagoslist.h 
+	   pagoslist.h \
+	   pedidosproveedorlist.h \
+	   pedidoproveedor.h \
+	   pedidoproveedorview.h \
+	   listlinpedidoproveedor.h\
+	   listlinpedidoproveedorview.h \
+	   linpedidoproveedor.h \
+	   descpedidoproveedor.h \
+	   listdescpedidoproveedor.h \
+	   listdescpedidoproveedorview.h 
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -232,7 +243,16 @@ SOURCES += bulmafact.cpp \
 	   listcomparticuloview.cpp \
 	   pago.cpp \
 	   pagoview.cpp \
-	   pagoslist.cpp
+	   pagoslist.cpp \
+	   pedidosproveedorlist.cpp \
+	   pedidoproveedor.cpp \
+	   pedidoproveedorview.cpp \
+	   listlinpedidoproveedor.cpp\
+	   listlinpedidoproveedorview.cpp \
+	   linpedidoproveedor.cpp \
+	   descpedidoproveedor.cpp \
+	   listdescpedidoproveedor.cpp \
+	   listdescpedidoproveedorview.cpp 	   
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
