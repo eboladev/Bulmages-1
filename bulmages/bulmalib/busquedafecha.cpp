@@ -15,7 +15,6 @@
 
 BusquedaFecha::BusquedaFecha(QWidget *parent, const char *name)
  : BusquedaFechaBase(parent, name) {
-	companyact=NULL;
 }
 
 

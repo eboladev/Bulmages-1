@@ -13,7 +13,6 @@
 #define BUSQUEDAFECHA_H
 
 #include <busquedafechabase.h>
-#include <company.h>
 #include <qlineedit.h>
 
 /**
@@ -23,11 +22,9 @@ class BusquedaFecha : public BusquedaFechaBase
 {
 Q_OBJECT
 private:
-company *companyact;
 public:
     BusquedaFecha(QWidget *parent = 0, const char *name = 0);
     ~BusquedaFecha();
-    void setcompany(company *comp) {companyact = comp;}; 
         virtual void setfecha(QString val) {m_fecha->setText(val);};   
 	virtual void setText(QString val) {m_fecha->setText(val);};
 public slots:
