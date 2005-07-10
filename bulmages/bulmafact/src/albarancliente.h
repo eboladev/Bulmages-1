@@ -42,6 +42,9 @@ protected:
     QString mdb_descalbaran;
     QString mdb_numfactura;
     QString mdb_idtrabajador;
+    QString mdb_procesadoalbaran;
+    QString mdb_contactalbaran;
+    QString mdb_telalbaran;
 
 public:
     AlbaranCliente(company *);
@@ -75,6 +78,10 @@ public:
     virtual void pintadescalbaran(QString) {};
     virtual void pintarefalbaran(QString) {};
     virtual void pintaidtrabajador(QString) {};
+    virtual void pintacontactalbaran(QString) {};
+    virtual void pintatelalbaran(QString) {};
+    virtual void pintaprocesadoalbaran(QString) {};
+    
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {};
 
     void setidalbaran(QString val) { mdb_idalbaran=val;listalineas->setidalbaran(val);listadescuentos->setidalbaran(val);};
@@ -87,7 +94,10 @@ public:
     void setidalmacen(QString val) {mdb_idalmacen=val;};
     void setNumFactura(QString val) {mdb_numfactura=val;};
     void setrefalbaran(QString val) {mdb_refalbaran=val;};
-    void setdescalbaran(QString val) {mdb_descalbaran=val;};  
+    void setdescalbaran(QString val) {mdb_descalbaran=val;};
+    void setcontactalbaran(QString val) {mdb_contactalbaran=val;};
+    void settelalbaran(QString val) {mdb_telalbaran=val;};
+    void setprocesadoalbaran(QString val) {mdb_procesadoalbaran=val;};
     void imprimirAlbaranCliente();
     void vaciaAlbaranCliente();    
 };

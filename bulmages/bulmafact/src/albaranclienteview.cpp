@@ -230,7 +230,7 @@ void AlbaranClienteView::agregarFactura() {
     LinAlbaranCliente *linea;
     uint i = 0;
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        bud->getlistalineas()->nuevalinea(linea->desclalbaran(), linea->cantlalbaran(), linea->pvplalbaran(),"0",  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(),"0");
+        bud->getlistalineas()->nuevalinea(linea->desclalbaran(), linea->cantlalbaran(), linea->pvplalbaran(),linea->descontlalbaran(),  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(),linea->ivalalbaran());
         i++;
     }// end for
     bud->pintaFactura();

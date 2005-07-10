@@ -103,8 +103,8 @@ void ListLinAlbaranClienteView::pintaListLinAlbaranCliente() {
         setText(i, COL_DESCONTLALBARAN, linea->descontlalbaran());
         setText(i, COL_IDALBARAN, linea->idalbaran());
         setText(i, COL_REMOVE, "XX");
-        setText(i, COL_TASATIPO_IVA, "XX");
-        setText(i, COL_TIPO_IVA, "XX");
+        setText(i, COL_TASATIPO_IVA, linea->ivalalbaran());
+        setText(i, COL_TIPO_IVA, linea->ivalalbaran());
         setText(i, COL_PVPLALBARAN, linea->pvplalbaran());
         i++;
     }// end for
@@ -145,8 +145,8 @@ fprintf(stderr,"pintalinListLinAlbaranCliente(%d)\n",pos);
     setText(pos, COL_DESCONTLALBARAN, linea->descontlalbaran());
     setText(pos, COL_IDALBARAN, linea->idalbaran());
     setText(pos, COL_REMOVE, "XX");
-    setText(pos, COL_TASATIPO_IVA, "XX");
-    setText(pos, COL_TIPO_IVA, "XX");
+    setText(pos, COL_TASATIPO_IVA, linea->ivalalbaran());
+    setText(pos, COL_TIPO_IVA, linea->ivalalbaran());
     setText(pos, COL_PVPLALBARAN, linea->pvplalbaran());
 
 }

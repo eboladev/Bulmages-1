@@ -114,13 +114,8 @@ void presupuesto::chargeBudget(QString idbudget) {
 
 void presupuesto::guardapresupuesto() {
     companyact->begin();
-    if (mdb_numpresupuesto == "") {
-        QString SQLQueryn = "SELECT MAX(numpresupuesto)+1 as num FROM presupuesto";
-        cursor2 *cur= companyact->cargacursor(SQLQueryn);
-        if (!cur->eof())
-            mdb_numpresupuesto = cur->valor("num");
-        delete cur;
-    }// end if
+    if (mdb_numpresupuesto == "")
+        mdb_numpresupuesto = "NULL";
     if (mdb_idusuari="")
         mdb_idusuari="NULL";
     if (mdb_idforma_pago == "")

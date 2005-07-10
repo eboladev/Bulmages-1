@@ -65,6 +65,74 @@ CREATE TABLE albaran (
 #define COL_IDALMACEN 12
 
 
+void ClientDelivNotesList::s_configurar() {
+
+    if(mver_codigoalmacen->isChecked() )
+        m_list->showColumn(COL_CODIGOALMACEN);
+    else
+        m_list->hideColumn(COL_CODIGOALMACEN);
+
+    if(mver_numalbaran->isChecked() )
+        m_list->showColumn(COL_NUMALBARAN);
+    else
+        m_list->hideColumn(COL_NUMALBARAN);
+
+    if(mver_fechaalbaran->isChecked() )
+        m_list->showColumn(COL_FECHAALBARAN);
+    else
+        m_list->hideColumn(COL_FECHAALBARAN);
+
+    if(mver_nomcliente->isChecked() )
+        m_list->showColumn(COL_NOMCLIENTE);
+    else
+        m_list->hideColumn(COL_NOMCLIENTE);
+
+    if(mver_idforma_pago->isChecked() )
+        m_list->showColumn(COL_IDFORMA_PAGO);
+    else
+        m_list->hideColumn(COL_IDFORMA_PAGO);
+
+    if(mver_descformapago->isChecked() )
+        m_list->showColumn(COL_DESCFORMA_PAGO);
+    else
+        m_list->hideColumn(COL_DESCFORMA_PAGO);
+
+    if(mver_numfactura->isChecked() )
+        m_list->showColumn(COL_NUMFACTURA);
+    else
+        m_list->hideColumn(COL_NUMFACTURA);
+	
+    if(mver_numnofactura->isChecked() )
+        m_list->showColumn(COL_NUMNOFACTURA);
+    else
+        m_list->hideColumn(COL_NUMNOFACTURA);
+
+    if(mver_idusuario->isChecked() )
+        m_list->showColumn(COL_IDUSUARIO);
+    else
+        m_list->hideColumn(COL_IDUSUARIO);
+
+    if(mver_idcliente->isChecked() )
+        m_list->showColumn(COL_IDCLIENTE);
+    else
+        m_list->hideColumn(COL_IDCLIENTE);
+
+    if(mver_idalbaran->isChecked() )
+        m_list->showColumn(COL_IDALBARAN);
+    else
+        m_list->hideColumn(COL_IDALBARAN);
+
+    if(mver_comentalbaran->isChecked() )
+        m_list->showColumn(COL_COMENTALBARAN);
+    else
+        m_list->hideColumn(COL_COMENTALBARAN);
+	
+    if(mver_idalmacen->isChecked() )
+        m_list->showColumn(COL_IDALMACEN);
+    else
+        m_list->hideColumn(COL_IDALMACEN);
+	
+}
 
 ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, int flag)
 : ClientDelivNotesListBase(parent, name, flag) {
@@ -79,6 +147,7 @@ ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const
         : ClientDelivNotesListBase(parent, name, flag) {
     companyact = comp;
     m_cliente->setcompany(comp);
+    m_articulo->setcompany(comp);
     inicializa();
     m_modo=0;
     m_idclidelivnote="";
@@ -91,12 +160,14 @@ ClientDelivNotesList::~ClientDelivNotesList() {
     companyact->sacaWindow(this);
 }// end ~providerslist
 
+
+
 void ClientDelivNotesList::inicializa() {
     fprintf(stderr,"ClientDelivNotesList::inicializa\n");
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
-    m_list->setSorting( TRUE );
+    m_list->setSorting( FALSE );
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(13);
@@ -125,18 +196,6 @@ void ClientDelivNotesList::inicializa() {
     m_list->setColumnWidth(COL_COMENTALBARAN,200);
     m_list->setColumnWidth(COL_DESCFORMA_PAGO,200);
 
-    m_list->hideColumn(COL_IDCLIENTE);
-    m_list->hideColumn(COL_IDALBARAN);
-    m_list->hideColumn(COL_IDFORMA_PAGO);
-    m_list->hideColumn(COL_IDALMACEN);
-    //m_list->hideColumn(COL_IDUSUARI);
-
-    if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
-        m_list->hideColumn(COL_CODIGOALMACEN);
-    }
-
-    
-    
     
     
     //   listado->setPaletteBackgroundColor(QColor(150,230,230));
@@ -183,6 +242,20 @@ void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
         cDelivNote->show();
     } else {
         close();
+    }// end if
+}
+
+
+void ClientDelivNotesList::s_edit() {
+int a = m_list->currentRow();
+if (a >= 0) {
+    m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
+    if (m_idclidelivnote != "") {
+        fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
+        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+        cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
+        cDelivNote->show();
+    }// end if
     }// end if
 }
 
@@ -295,7 +368,10 @@ void ClientDelivNotesList::imprimir() {
 
 }// end imprimir
 
+
 QString ClientDelivNotesList::generarFiltro() {
+    QString orden[] = {"fechaalbaran","cifcliente","nomcliente","refalbaran","numalbaran"};
+    
     /// Tratamiento de los filtros.
     fprintf(stderr,"Tratamos el filtro \n");
     QString filtro="";
@@ -308,12 +384,12 @@ QString ClientDelivNotesList::generarFiltro() {
     if (m_cliente->idcliente() != "") {
         filtro += " AND albaran.idcliente='"+m_cliente->idcliente()+"'";
     }// end if
+    if (m_articulo->idarticulo() != "") {
+        filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='"+m_articulo->idarticulo()+"')";
+    }// end if
     if (!m_procesados->isChecked() ) {
         filtro += " AND NOT procesadoalbaran";
     }// end if
-    if (m_codigocompletoarticulo->text() != "") {
-    	filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM (lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo) AS j WHERE j.codigocompletoarticulo='"+m_codigocompletoarticulo->text()+"')";
-    }// end if
-    filtro += " ORDER BY idalbaran";
+    filtro += " ORDER BY "+orden[m_orden->currentItem()];
     return (filtro);
 }// end generaFiltro

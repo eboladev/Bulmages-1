@@ -57,7 +57,9 @@ FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
 }
 
 
-FacturasList::~FacturasList() {}
+FacturasList::~FacturasList() {
+    companyact->sacaWindow(this);
+}
 
 
 void FacturasList::inicializa() {

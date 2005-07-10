@@ -37,6 +37,7 @@
 #include "albaranclientebase.h"
 #include "albarancliente.h"
 #include "postgresiface2.h"
+#include <qcheckbox.h>
 
 /** @author Tomeu Borrás & Alvaro de Miguel */
 class company;
@@ -64,6 +65,15 @@ public:
 
     void pintadescalbaran(QString val) {m_descalbaran->setText(val);};
     void pintarefalbaran(QString val) {m_refalbaran->setText(val);};
+    void pintacontactalbaran(QString val) {m_contactalbaran->setText(val);};
+    void pintatelalbaran(QString val) {m_telalbaran->setText(val);};
+    
+void    pintaprocesadoalbaran(QString id) {
+	if (id == "t" || id == "TRUE") m_procesadoalbaran->setChecked(TRUE);
+	else m_procesadoalbaran->setChecked(FALSE);
+};    
+    
+    
     void pintaNumFactura(QString) {};
     
     void pintatotales(Fixed, Fixed, Fixed, Fixed);	
@@ -77,6 +87,16 @@ public slots:
     virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
     virtual void s_numalbarantextChanged(const QString &val) {setNumAlbaran(val);};
     virtual void s_clientevalueChanged(QString val) {setidcliente(val);};
+    
+    virtual void s_procesadoalbaranstateChanged(int val) {
+        if (val) setprocesadoalbaran("TRUE");
+	else setprocesadoalbaran("FALSE");
+    } 
+    
+    virtual void s_contactalbarantextChanged(const QString &val){setcontactalbaran(val);};
+    
+    virtual void s_telalbarantextChanged(const QString &val){settelalbaran(val);};
+    
     
     virtual void s_fechaalbaranvalueChanged(QString val) {
     fprintf(stderr,"s_fechaalbaranvalueChanged()\n");

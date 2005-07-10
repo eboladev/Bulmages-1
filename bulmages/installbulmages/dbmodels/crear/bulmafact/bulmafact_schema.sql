@@ -412,7 +412,8 @@ CREATE TABLE cliente (
    faltacliente date DEFAULT NOW(),
    fbajacliente date,
    comentcliente character varying(2000),
-   inactivocliente character(1)
+   inactivocliente character(1),
+   provcliente character varying
 );
 
 
@@ -558,11 +559,12 @@ asd RECORD;
 BEGIN
         IF NEW.numpresupuesto IS NULL THEN
                 SELECT INTO asd max(numpresupuesto) AS m FROM presupuesto;
-		IF FOUND THEN
+		IF asd.m IS NOT NULL THEN	
 			NEW.numpresupuesto := asd.m + 1;
 		ELSE
+
 			NEW.numpresupuesto := 1;
-		END IF;
+		END IF;			
         END IF;
 	IF NEW.refpresupuesto IS NULL OR NEW.refpresupuesto = '''' THEN
 		SELECT INTO asd crearef() AS m;
@@ -645,7 +647,7 @@ asd RECORD;
 BEGIN
         IF NEW.numpedidocliente IS NULL THEN
                 SELECT INTO asd max(numpedidocliente) AS m FROM pedidocliente;
-		IF FOUND THEN
+		IF asd.m IS NOT NULL THEN
 			NEW.numpedidocliente := asd.m + 1;
 		ELSE
 			NEW.numpedidocliente := 1;
@@ -733,7 +735,7 @@ asd RECORD;
 BEGIN
         IF NEW.numfactura IS NULL THEN
                 SELECT INTO asd max(numfactura) AS m FROM factura WHERE idserie_factura=NEW.idserie_factura AND idalmacen = NEW.idalmacen;
-		IF FOUND THEN
+		IF asd.m IS NOT NULL THEN
 			NEW.numfactura := asd.m + 1;
 		ELSE
 			NEW.numfactura := 1;
@@ -903,7 +905,7 @@ asd RECORD;
 BEGIN
         IF NEW.numalbaranp IS NULL THEN
                 SELECT INTO asd max(numalbaranp) AS m FROM albaranp;
-		IF FOUND THEN
+		IF asd.m IS NOT NULL THEN
 			NEW.numalbaranp := asd.m + 1;
 		ELSE
 			NEW.numalbaranp := 1;
@@ -991,6 +993,8 @@ CREATE TABLE albaran (
 --   loginusuario character varying(15) REFERENCES usuario(loginusuario),
    comentalbaran character varying(3000),
    procesadoalbaran boolean DEFAULT FALSE,
+   contactalbaran character varying,
+   telalbaran character varying,
    idcliente integer REFERENCES cliente(idcliente),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),
    idfactura integer REFERENCES factura(idfactura),
@@ -1011,7 +1015,7 @@ asd RECORD;
 BEGIN
         IF NEW.numalbaran IS NULL THEN
                 SELECT INTO asd max(numalbaran) AS m FROM albaran;
-		IF FOUND THEN
+		IF asd.m IS NOT NULL THEN
 			NEW.numalbaran := asd.m + 1;
 		ELSE
 			NEW.numalbaran := 1;
@@ -1325,7 +1329,7 @@ asd RECORD;
 BEGIN
         IF NEW.numpedidoproveedor IS NULL THEN
                 SELECT INTO asd max(numpedidoproveedor) AS m FROM pedidoproveedor;
-		IF FOUND THEN
+		IF asd.m IS NOT NULL THEN
 			NEW.numpedidoproveedor := asd.m + 1;
 		ELSE
 			NEW.numpedidoproveedor := 1;

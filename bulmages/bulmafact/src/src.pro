@@ -39,7 +39,7 @@ FORMS += bulmafactbase.ui \
          pedidosclientelistbase.ui \
          pedidoclientebase.ui \
          busquedaclientebase.ui \
-         busquedafechabase.ui \
+#         busquedafechabase.ui \
          busquedaarticulobase.ui \
          busquedaproveedorbase.ui \
          albaranproveedorbase.ui \
@@ -105,7 +105,7 @@ HEADERS += bulmafact.h \
            listlinpedidoclienteview.h \
            busquedacliente.h \
            busquedaformapago.h \
-           busquedafecha.h \
+#           busquedafecha.h \
            busquedaalmacen.h \
            busquedaarticulo.h \
            busquedaproveedor.h \
@@ -202,7 +202,7 @@ SOURCES += bulmafact.cpp \
            listlinpedidoclienteview.cpp \
            busquedacliente.cpp \
            busquedaformapago.cpp \
-           busquedafecha.cpp \
+#           busquedafecha.cpp \
            busquedaalmacen.cpp \
            busquedaarticulo.cpp \
            busquedaproveedor.cpp \

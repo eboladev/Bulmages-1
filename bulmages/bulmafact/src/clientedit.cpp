@@ -52,6 +52,8 @@ Restricciones de llave foránea:
 #include <qtable.h>
 #include <qtoolbutton.h>
 #include <qwidget.h>
+#include <qcombobox.h>
+
 #include "budgetslist.h"
 #include "pedidosclientelist.h"
 #include "clientdelivnoteslist.h"
@@ -150,6 +152,13 @@ void ClientEdit::loadClient(QString client) {
          m_clientEmail->setText(cur->valor("mailcliente"));
          m_clientUrl->setText(cur->valor("urlcliente"));
 	 
+	 /// Ponemos la provincia correspondiente al cliente.
+	 int i = 0;
+	 while (i< m_provcliente->count() && m_provcliente->text(i) != cur->valor("provcliente") ) {
+	 	i++;
+	 }// end while
+	 m_provcliente->setCurrentItem(i);
+	 
 	 /// Hacemos que el listado de presupuestos de un cliente se inicialize.
 	 m_listpresupuestos->setidcliente(cur->valor("idcliente"));
 	 m_listpresupuestos->inicializa();
@@ -202,6 +211,7 @@ void ClientEdit::emptyForm() {
       m_clientFax->setText("");
       m_clientEmail->setText("");
       m_clientUrl->setText("");
+      m_provcliente->setCurrentItem(0);
       setModified(false);
 }// end newClient
 
@@ -229,12 +239,13 @@ void ClientEdit::saveClient() {
       SQLQuery += " , telcliente='"+companyact->sanearCadena(m_clientPhone->text())+"'";
       SQLQuery += " , faxcliente='"+companyact->sanearCadena(m_clientFax->text())+"'";
       SQLQuery += " , mailcliente='"+companyact->sanearCadena(m_clientEmail->text())+"'";
+      SQLQuery += " , provcliente='"+companyact->sanearCadena(m_provcliente->currentText())+"'";
       SQLQuery += " WHERE idcliente ="+clientId;
    companyact->begin();
    companyact->ejecuta(SQLQuery);
    companyact->commit();       
    } else {
-      SQLQuery = " INSERT INTO cliente (nomcliente, nomaltcliente, cifcliente, bancocliente, dircliente, poblcliente, cpcliente, telcliente, faxcliente, urlcliente, mailcliente)";
+      SQLQuery = " INSERT INTO cliente (nomcliente, nomaltcliente, cifcliente, bancocliente, dircliente, poblcliente, cpcliente, telcliente, faxcliente, urlcliente, mailcliente, provcliente)";
       SQLQuery += " VALUES (";
       SQLQuery += "'"+companyact->sanearCadena(m_clientName->text())+"'";
       SQLQuery += ",'"+companyact->sanearCadena(m_altClientName->text())+"'";
@@ -247,6 +258,7 @@ void ClientEdit::saveClient() {
       SQLQuery += ",'"+companyact->sanearCadena(m_clientFax->text())+"'";
       SQLQuery += ",'"+companyact->sanearCadena(m_clientUrl->text())+"'";
       SQLQuery += ",'"+companyact->sanearCadena(m_clientEmail->text())+"'";
+      SQLQuery += ",'"+companyact->sanearCadena(m_provcliente->currentText())+"'";
       SQLQuery += ")";
    companyact->begin();
    companyact->ejecuta(SQLQuery);

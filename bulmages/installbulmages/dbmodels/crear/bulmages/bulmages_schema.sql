@@ -1689,12 +1689,31 @@ BEGIN
 END;
 ' LANGUAGE plpgsql;
 
-
 CREATE TRIGGER restriccionescuentatrigger
     BEFORE INSERT OR UPDATE ON cuenta
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionescuenta();
 
+    
+    
+CREATE OR REPLACE FUNCTION restriccionesborradocuenta () RETURNS "trigger"
+AS '
+DECLARE
+	cta RECORD;
+BEGIN
+        SELECT INTO cta * FROM cuenta WHERE padre = OLD.idcuenta;
+	IF FOUND THEN
+                RAISE EXCEPTION '' La cuenta tiene hijos. '';
+        END IF;
+        RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER restriccionesborradocuentatrigger
+    BEFORE DELETE ON cuenta
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesborradocuenta();    
+    
 
 CREATE FUNCTION restriccionesborrador () RETURNS "trigger"
 AS '

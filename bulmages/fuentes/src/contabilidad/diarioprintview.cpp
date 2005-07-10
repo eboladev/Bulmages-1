@@ -238,7 +238,8 @@ void DiarioPrintView::presentar(char * tipus) {
     string cad;
     cursor2 *cursoraux;
 
-    // tipus de presentación    txt=!strcmp(tipus,"txt");
+    // tipus de presentación   
+    txt=!strcmp(tipus,"txt");
     html=!strcmp(tipus,"html");
     txtapren=!strcmp(tipus,"txtapren");
     htmlapren=!strcmp(tipus,"htmlapren");

@@ -667,7 +667,7 @@
     </customwidget>
     <customwidget>
         <class>BusquedaFecha</class>
-        <header location="local">busquedafecha.h</header>
+        <header location="local">../../bulmalib/busquedafecha.h</header>
         <sizehint>
             <width>20</width>
             <height>20</height>
@@ -866,7 +866,7 @@
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>busquedafecha.h</includehint>
+    <includehint>../../bulmalib/busquedafecha.h</includehint>
     <includehint>busquedaproveedor.h</includehint>
     <includehint>busquedaformapago.h</includehint>
     <includehint>busquedaalmacen.h</includehint>

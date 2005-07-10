@@ -88,6 +88,28 @@ SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
 \echo "Actualizada la revisión de la base de datos"
 
+
+CREATE OR REPLACE FUNCTION restriccionesborradocuenta () RETURNS "trigger"
+AS '
+DECLARE
+	cta RECORD;
+BEGIN
+        SELECT INTO cta * FROM cuenta WHERE padre = OLD.idcuenta;
+	IF FOUND THEN
+                RAISE EXCEPTION '' La cuenta tiene hijos. '';
+        END IF;
+        RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER restriccionescuentatrigger
+    BEFORE DELETE ON cuenta
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesborradocuenta(); 
+
+\echo "Agregadas restricciones sobre los padres"
+
+
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
 

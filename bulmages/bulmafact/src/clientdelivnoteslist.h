@@ -25,6 +25,7 @@
 
 #include "clientdelivnoteslistbase.h"
 #include "busquedacliente.h"
+#include "busquedaarticulo.h"
 #include "company.h"
 
 
@@ -91,6 +92,8 @@ public slots:
     virtual void s_newClientDelivNote();
     virtual void s_removeClientDelivNote();
     virtual void s_contextMenu(int, int, int, const QPoint &);
+    virtual void s_configurar();
+    virtual void s_edit();
     virtual void s_searchClientDelivNote() {
         inicializa();
     };

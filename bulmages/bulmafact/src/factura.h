@@ -18,7 +18,7 @@
 
 #include "listlinfactura.h"
 #include "listdescfactura.h"
-
+#include "fixed.h"
 #include "company.h"
 #include "linfactura.h"
 /** @author Tomeu Borras & Alvaro de Miguel
@@ -89,7 +89,7 @@ public:
 
     virtual void pintaidforma_pago(QString) {};
     virtual void pintaprocesadafactura(QString) {};
-    virtual void pintatotales(float, float,float, float) {};
+    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {};
 
     void setidcliente(QString val) { mdb_idcliente=val;};
     void setidalmacen(QString val) { mdb_idalmacen=val;};

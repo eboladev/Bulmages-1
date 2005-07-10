@@ -22,6 +22,7 @@
 #include <qmessagebox.h>
 #include <qapplication.h>
 
+#include "msgerror.h"
 
 /** Constructor de la clase 
   * Realiza la consulta en la base de datos y almacena el resultado en las variables de clase para poder ser manupuladas.
@@ -42,7 +43,11 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery) {
         fprintf(stderr,"%s\n", PQerrorMessage(conn));
         fprintf(stderr, "QUERY command failed [%s]\n", Query.ascii());
         if (confpr->valor(CONF_ALERTAS_DB) == "Yes")
-            QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurriï¿½un error con la carga de un query de la base de datos\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
+     //       QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurrió un error con la carga de un query de la base de datos\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
+	    
+	    msgError("Ha ocurrido un error al hacer una consulta con la base de datos.",Query+"\n"+PQerrorMessage(conn));
+	    
+	    
         PQclear(result);
         return;
     }// end if
@@ -348,7 +353,8 @@ int postgresiface2::ejecuta(QString Query) {
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
         fprintf(stderr, "SQL command failed: %s\n", Query.ascii());
         fprintf(stderr,"%s\n", PQerrorMessage(conn));
-        QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurriï¿½un error con la Base de Datos:\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
+     //   QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurriï¿½un error con la Base de Datos:\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
+	msgError("Error al intentar modificar la base de datos",Query+"\n"+PQerrorMessage(conn));
         PQclear(result);
         return(1);
     }// end if

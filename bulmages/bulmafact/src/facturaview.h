@@ -60,7 +60,7 @@ void    pintaidforma_pago(QString id) {m_forma_pago->setidforma_pago(id);};
 };
 
 
-    void pintatotales(float iva, float base, float total, float desc);   
+    void pintatotales(Fixed , Fixed , Fixed , Fixed );   
 
 public slots:
     virtual bool close(bool);

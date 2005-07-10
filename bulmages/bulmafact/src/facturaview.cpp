@@ -80,11 +80,11 @@ void FacturaView::inicialize() {
 }// end inicialize
 
 
-void   FacturaView::pintatotales(float base, float iva, float total, float desc) {
-    m_totalBases->setText(QString::number(base));
-    m_totalTaxes->setText(QString::number(iva));
-    m_totalDiscounts->setText(QString::number(desc));
-    m_totalfactura->setText(QString::number(total));
+void   FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) { 
+    m_totalBases->setText(base.toQString());
+    m_totalTaxes->setText(iva.toQString());
+    m_totalfactura->setText(total.toQString());
+    m_totalDiscounts->setText(desc.toQString());    
 }// end pintatotales
 
 
