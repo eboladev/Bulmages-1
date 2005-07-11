@@ -19,6 +19,9 @@
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
+        <property name="resizeMode">
+            <enum>Fixed</enum>
+        </property>
         <widget class="QLabel">
             <property name="name">
                 <cstring>m_mensaje</cstring>
@@ -70,6 +73,23 @@
                 </widget>
             </hbox>
         </widget>
+        <spacer>
+            <property name="name">
+                <cstring>spacer2</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Vertical</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>21</width>
+                    <height>31</height>
+                </size>
+            </property>
+        </spacer>
         <widget class="QFrame">
             <property name="name">
                 <cstring>m_framedetalles</cstring>
@@ -80,16 +100,16 @@
             <property name="frameShadow">
                 <enum>Raised</enum>
             </property>
-            <vbox>
+            <grid>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="QTextEdit">
+                <widget class="QTextEdit" row="0" column="0">
                     <property name="name">
                         <cstring>m_detalles</cstring>
                     </property>
                 </widget>
-            </vbox>
+            </grid>
         </widget>
     </vbox>
 </widget>

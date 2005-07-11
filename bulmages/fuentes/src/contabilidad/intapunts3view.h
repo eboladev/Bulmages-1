@@ -55,9 +55,6 @@ private:
     int idasiento;
     /// El identificador de la fila sobre la que está el cursor. Si no hay row seleccionado valdrá -1
     int rowactual;
-    /// El valor calculado del descuadre. \todo Debe dejar de ser float para evitar errores.
-//    float descuadre1;
-//    Fixed descuadre2;
     /// Indica que el asiento esta abierto.
     int abierto;
     /// Puntero a la clase amiga \ref extractoview1 \todo el paso de mensajes deberá hacerse a traves de la clase empresa.

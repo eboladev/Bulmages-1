@@ -377,13 +377,14 @@ QMAKE_CLEAN = Makefile
 LANGUAGE = C++
 TARGETDEPS += ../../bulmalib/libbulmalib.a \
 ../../bulmalib/libbulmalib.a
+
 LIBS += ../../bulmalib/libbulmalib.a \
 -lqt-mt \
 -lpq \
 ../../bulmalib/libbulmalib.a \
--lqt-mt \
 -lpq \
 -rdynamic
+
 INCLUDEPATH += ../../bulmalib \
 ../src \
 comun \
@@ -396,6 +397,7 @@ TARGET = ../../installbulmages/bulmacont
 CONFIG += release \
 warn_on \
 qt
+
 TEMPLATE = app
 unix{
   UI_DIR = .ui

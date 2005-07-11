@@ -25,6 +25,7 @@
 
 #include "importainteligente.h"
 #include "empresa.h"
+#include "postgresiface2.h"
 
 
 // Estas son las columnas que van con la talba de apuntes.
@@ -237,9 +238,7 @@ void ainteligentesview::boton_nuevo() {
 void ainteligentesview::boton_inicio() {
   QString query;
   query.sprintf("SELECT MIN(idainteligente) AS id FROM ainteligente");
-  conexionbase->begin();
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
-  conexionbase->commit();
   if (atoi(cur->valor(0).ascii()) != 0) {
     m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
@@ -250,9 +249,7 @@ void ainteligentesview::boton_inicio() {
 void ainteligentesview::boton_fin() {
   QString query;
   query.sprintf("SELECT MAX(idainteligente) AS id FROM ainteligente");
-  conexionbase->begin();
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
-  conexionbase->commit();
   if (atoi(cur->valor(0).ascii()) != 0) {
     m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
@@ -263,9 +260,7 @@ void ainteligentesview::boton_fin() {
 void ainteligentesview::boton_siguiente() {
   QString query;
   query.sprintf("SELECT MIN(idainteligente) AS id FROM ainteligente WHERE idainteligente > %d",m_idAsientoInteligente);
-  conexionbase->begin();
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
-  conexionbase->commit();
   if (atoi(cur->valor(0).ascii()) != 0) {
     m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
@@ -276,9 +271,7 @@ void ainteligentesview::boton_siguiente() {
 void ainteligentesview::boton_anterior() {
   QString query;
   query.sprintf("SELECT MAX(idainteligente) AS id FROM ainteligente WHERE idainteligente < %d",m_idAsientoInteligente);
-  conexionbase->begin();
   cursor2 * cur = conexionbase->cargacursor(query,"miquery");
-  conexionbase->commit();
   if (atoi(cur->valor(0).ascii()) != 0) {
     m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
@@ -328,57 +321,49 @@ void ainteligentesview::boton_igualant() {
  ******************************************************/
 void ainteligentesview::boton_save() {
   int i;
-  string cadena;
-  string codigocta;
-  char desc[300];
-  char cod[100];
-  char fecha[100];
-  char concontable[300];
-  char debe[100];
-  char haber[100];
-  char contrapartida[100];
-  char comentario[300];
-  char canal[100];
-  char marcaconciliacion[100];
-  char idc_coste[100];
-  char iddiario[100];
-  char query[1000];
+  
+  QString codigocta;
 
-  string contrapartidaiva;
-  string baseimp;
-  string iva;
-  string factura;
-  string idborrador;
-  string incregistro;
-  string regularizacion;
-  string plan349;
-  string numorden;
-  string cif;
+  
+  QString desc;
+  QString cod;
+  QString fecha;
+  QString concontable;
+  QString debe;
+  QString haber;
+  QString contrapartida;
+  QString comentario;
+  QString canal;
+  QString marcaconciliacion;
+  QString idc_coste;
+  QString iddiario;
+  QString query;
   
   QString canalillo;
 
   cursor2 *cur;
 
-  conexionbase->begin();
-  sprintf(query,"SELECT * FROM ainteligente WHERE idainteligente=%d",m_idAsientoInteligente);
+  query.sprintf("SELECT * FROM ainteligente WHERE idainteligente=%d",m_idAsientoInteligente);
   cursor2 *asiento = conexionbase->cargacursor(query,"micursor");
-  conexionbase->commit();
   if (asiento->eof()) {
-      sprintf(query,"INSERT INTO ainteligente (idainteligente,descripcion, comenatiosasiento) VALUES   (%d,'%s', '%s')",m_idAsientoInteligente,descasiento->text().ascii(), comainteligente->text().ascii());
-      fprintf(stderr,"%s\n",query);
+      query.sprintf("INSERT INTO ainteligente (idainteligente,descripcion, comenatiosasiento) VALUES   (%d,'%s', '%s')",
+      m_idAsientoInteligente,
+      conexionbase->sanearCadena(descasiento->text()).ascii(), 
+      conexionbase->sanearCadena(comainteligente->text()).ascii());
       conexionbase->ejecuta(query);
   } else {
-    sprintf(query,"UPDATE ainteligente SET descripcion='%s', comentariosasiento='%s' WHERE idainteligente=%d",descasiento->text().ascii(),comainteligente->text().ascii(), m_idAsientoInteligente);
-    fprintf(stderr,"%s\n",query);
+    query.sprintf("UPDATE ainteligente SET descripcion='%s', comentariosasiento='%s' WHERE idainteligente=%d",
+    conexionbase->sanearCadena(descasiento->text()).ascii(),
+    conexionbase->sanearCadena(comainteligente->text()).ascii(),
+     m_idAsientoInteligente);
     conexionbase->ejecuta(query);
   }// end if
   delete asiento;
   
 
   // Hacemos la grabacion de los apuntes (tapunts)
-  sprintf(query,"DELETE FROM binteligente WHERE idainteligente=%d", m_idAsientoInteligente);
+  query.sprintf("DELETE FROM binteligente WHERE idainteligente=%d", m_idAsientoInteligente);
   conexionbase->ejecuta(query);
-  conexionbase->commit();
   // Cambiamos el foco de tapunts para que coja el ultimo cambio realizado.
   tapunts->setCurrentCell(0,0);
   for (i=0;i<tapunts->numRows();i++) {
@@ -386,70 +371,81 @@ void ainteligentesview::boton_save() {
         codigocta = tapunts->text(i,COL_CODCUENTA).ascii();
         if (codigocta.length() != 0) {
            if (!tapunts->text(i,COL_DESCRIPCION).isNull())
-             sprintf(desc,"'%s'",tapunts->text(i,COL_DESCRIPCION).ascii());
+             desc ="'"+tapunts->text(i,COL_DESCRIPCION)+"'";
            else
-             sprintf(desc,"NULL");
+             desc = "NULL";
              
            if (!tapunts->text(i,COL_CODCUENTA).isNull())
-             sprintf(cod,"'%s'",tapunts->text(i,COL_CODCUENTA).ascii());
+             cod = "'"+tapunts->text(i,COL_CODCUENTA)+"'";
            else
-             sprintf(cod,"NULL");
+             cod = "NULL";
            
            if (!tapunts->text(i,COL_FECHA).isNull())
-             sprintf(fecha,"'%s'",tapunts->text(i,COL_FECHA).ascii());
+             fecha = "'"+tapunts->text(i,COL_FECHA)+"'";
            else
-             sprintf(fecha,"NULL");
+             fecha = "NULL";
            
            if (!tapunts->text(i,COL_CONCEPTOCONTABLE).isNull())
-             sprintf(concontable,"'%s'",tapunts->text(i,COL_CONCEPTOCONTABLE).ascii());
+             concontable = "'"+tapunts->text(i,COL_CONCEPTOCONTABLE)+"'";
            else
-             sprintf(concontable,"NULL");
+             concontable = "NULL";
              
            if (!tapunts->text(i,COL_DEBE).isNull())
-             sprintf(debe,"'%s'",tapunts->text(i,COL_DEBE).ascii());
+             debe = "'"+tapunts->text(i,COL_DEBE)+"'";
            else
-             sprintf(debe,"NULL");
+             debe = "NULL";
              
            if (!tapunts->text(i,COL_HABER).isNull())
-             sprintf(haber,"'%s'",tapunts->text(i,COL_HABER).ascii());
+             haber = "'"+tapunts->text(i,COL_HABER)+"'";
            else
-             sprintf(haber,"NULL");
+             haber = "NULL";
            
            if (!tapunts->text(i,COL_CONTRAPARTIDA).isNull())
-             sprintf(contrapartida,"'%s'",tapunts->text(i,COL_CONTRAPARTIDA).ascii());
+             contrapartida = "'"+tapunts->text(i,COL_CONTRAPARTIDA)+"'";
            else
-             sprintf(contrapartida,"NULL");
+             contrapartida = "NULL";
 
            if (!tapunts->text(i,COL_COMENTARIO).isNull())
-             sprintf(comentario,"'%s'",tapunts->text(i,COL_COMENTARIO).ascii());
+             comentario = "'"+tapunts->text(i,COL_COMENTARIO)+"'";
            else
-             sprintf(comentario,"NULL");
+             comentario = "NULL";
 
            if (!tapunts->text(i,COL_CANAL).isNull() && (string) tapunts->text(i,COL_CANAL).ascii() != "0")
-             sprintf(canal,"'%s'",tapunts->text(i,COL_CANAL).ascii());
+             canal = "'"+tapunts->text(i,COL_CANAL)+"'";
            else
-             sprintf(canal,"NULL");
+             canal = "NULL";
            
            if (!tapunts->text(i,COL_MARCACONCILIACION).isNull())
-             sprintf(marcaconciliacion,"'%s'",tapunts->text(i,COL_MARCACONCILIACION).ascii());
+             marcaconciliacion = "'"+tapunts->text(i,COL_MARCACONCILIACION)+"'";
            else
-             sprintf(marcaconciliacion,"NULL");
+             marcaconciliacion = "NULL";
 
            if (!tapunts->text(i,COL_IDC_COSTE).isNull() && (string) tapunts->text(i,COL_IDC_COSTE).ascii() != "0")
-             sprintf(idc_coste,"'%s'",tapunts->text(i,COL_IDC_COSTE).ascii());
+             idc_coste = "'"+tapunts->text(i,COL_IDC_COSTE)+"'";
            else
-             sprintf(idc_coste,"NULL");
+             idc_coste = "NULL";
 
-           
            if (!tapunts->text(i,COL_IDDIARIO).isNull())
-             sprintf(iddiario,"'%s'",tapunts->text(i,COL_IDDIARIO).ascii());
+             iddiario = "'"+tapunts->text(i,COL_IDDIARIO)+ "'";
            else
-             sprintf(iddiario,"NULL");
+             iddiario = "NULL";
 
-           sprintf(query,"INSERT INTO binteligente (idainteligente, codcuenta, descripcion, fecha, conceptocontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario) VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",m_idAsientoInteligente, cod, desc, fecha,concontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario);
+	     
+	   cod = conexionbase->sanearCadena(cod);
+	   desc = conexionbase->sanearCadena(desc);
+	   fecha = conexionbase->sanearCadena(fecha);
+	   concontable = conexionbase->sanearCadena(concontable);
+	   debe = conexionbase->sanearCadena(debe);
+	   haber = conexionbase->sanearCadena(haber);
+	   contrapartida = conexionbase->sanearCadena(contrapartida);
+	   comentario = conexionbase->sanearCadena(comentario);
+	   canal = conexionbase->sanearCadena(canal);
+	   marcaconciliacion = conexionbase->sanearCadena(marcaconciliacion);
+	   
+           query.sprintf("INSERT INTO binteligente (idainteligente, codcuenta, descripcion, fecha, conceptocontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario) VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",m_idAsientoInteligente, cod.ascii(), desc.ascii(), fecha.ascii(),concontable.ascii(), debe.ascii(), haber.ascii(), contrapartida.ascii(), comentario.ascii(), canal.ascii(), marcaconciliacion.ascii(), idc_coste.ascii(), iddiario.ascii());
            conexionbase->begin();
            conexionbase->ejecuta(query);
-           sprintf(query,"SELECT max(idbinteligente) AS id FROM binteligente");
+           query.sprintf("SELECT max(idbinteligente) AS id FROM binteligente");
            cur = conexionbase->cargacursor(query,"identificador");
            if (atoi(cur->valor(0).ascii()) != 0) 
              tapunts->setText(i,COL_IDBINTELIGENTE, cur->valor(0));

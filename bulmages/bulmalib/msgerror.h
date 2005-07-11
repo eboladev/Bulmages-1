@@ -26,11 +26,12 @@ Q_OBJECT
 public:
     msgError(QWidget *parent = 0, const char *name = 0);
     msgError(QString, QString);
-    ~msgError(); 
+    virtual ~msgError(); 
     
     void hideFrame() {m_framedetalles->hide();};
     void showFrame() {m_framedetalles->show();};  
     
+public slots:    
     virtual void s_mostrarDetalles() {
     	if (m_framedetalles->isVisible())
 		hideFrame();

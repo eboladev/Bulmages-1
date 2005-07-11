@@ -354,7 +354,7 @@ int postgresiface2::ejecuta(QString Query) {
         fprintf(stderr, "SQL command failed: %s\n", Query.ascii());
         fprintf(stderr,"%s\n", PQerrorMessage(conn));
      //   QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurri�un error con la Base de Datos:\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
-	msgError("Error al intentar modificar la base de datos",Query+"\n"+PQerrorMessage(conn));
+	msgError(QString("Error al intentar modificar la base de datos:\n")+PQerrorMessage(conn),Query+"\n"+PQerrorMessage(conn));
         PQclear(result);
         return(1);
     }// end if

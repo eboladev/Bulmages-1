@@ -13,7 +13,7 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 #include "bmodelo347.h"
-
+#include <errno.h>
 
 BModelo347::BModelo347(postgresiface2 *DBconnect,QString ejerActual, QWidget * parent, const char * name, WFlags f) : UImodelo347(parent,name,f) 
 {

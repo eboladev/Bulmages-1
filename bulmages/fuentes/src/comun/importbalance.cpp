@@ -174,7 +174,7 @@ bool importbalance::endElement2( const QString& , const QString& , const QString
     /// En el segundo paso se hacen las inserciones por el flanco de final en lugar de por el flanco de principio.
     /// Así nos aseguramos que ya existen los valores de idmpatrimonial y masaperteneciente.
     if (m_tag == "compmasap") {
-       SQLQuery.sprintf("INSERT INTO compmasap (masaperteneciente) VALUES ( %s)\n", m_identmasasp[m_tvalores["masaperteneciente"]].ascii());
+       SQLQuery.sprintf("INSERT INTO compmasap (masaperteneciente) VALUES ( %s)\n", conexionbase->sanearCadena(m_identmasasp[m_tvalores["masaperteneciente"]]).ascii());
        conexionbase->begin();
        conexionbase->ejecuta(SQLQuery);
        SQLQuery = "SELECT max(idcompmasap) AS idcompmasap FROM compmasap";
@@ -186,7 +186,7 @@ bool importbalance::endElement2( const QString& , const QString& , const QString
        delete cur; 
     }// end if
     if (m_tag == "compbalance") {
-       SQLQuery.sprintf("INSERT INTO compbalance (idbalance) VALUES ( %s)\n", m_tvalores["idbalance"].ascii());
+       SQLQuery.sprintf("INSERT INTO compbalance (idbalance) VALUES ( %s)\n", conexionbase->sanearCadena(m_tvalores["idbalance"]).ascii());
        conexionbase->begin();
        conexionbase->ejecuta(SQLQuery);
        SQLQuery = "SELECT max(idcompbalance) AS idcompbalance FROM compbalance";
@@ -201,24 +201,30 @@ bool importbalance::endElement2( const QString& , const QString& , const QString
     if (m_tag == "compmasap") {
          // Actualizamos el idmasapatrimonial del compmasap, que es el que más dolores de cabeza causa.
          if (m_tvalores["idmpatrimonial"] != "" && m_tvalores["codigo"] == "") {
-            SQLQuery.sprintf("UPDATE compmasap SET idmpatrimonial=%s WHERE idcompmasap=%s\n", m_identmasasp[m_tvalores["idmpatrimonial"]].ascii(), m_tvalores["idcompmasap"].ascii());
+            SQLQuery.sprintf("UPDATE compmasap SET idmpatrimonial=%s WHERE idcompmasap=%s\n", conexionbase->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).ascii(), conexionbase->sanearCadena(m_tvalores["idcompmasap"]).ascii());
             conexionbase->begin();
             conexionbase->ejecuta(SQLQuery);
             conexionbase->commit();         
          }// end if
          if (m_tvalores["codigo"] != "") {
-            SQLQuery.sprintf("UPDATE compmasap SET idcuenta=id_cuenta('%s') WHERE idcompmasap=%s\n", m_tvalores["codigo"].ascii(), m_tvalores["idcompmasap"].ascii());
+            SQLQuery.sprintf("UPDATE compmasap SET idcuenta=id_cuenta('%s') WHERE idcompmasap=%s\n",
+	    conexionbase->sanearCadena(m_tvalores["codigo"]).ascii(),
+	    conexionbase->sanearCadena(m_tvalores["idcompmasap"]).ascii());
             conexionbase->begin();
             conexionbase->ejecuta(SQLQuery);
             conexionbase->commit();         
          }// end if
     
-         SQLQuery.sprintf("UPDATE compmasap SET signo='%s' WHERE idcompmasap=%s\n", m_tvalores["signo"].ascii(), m_tvalores["idcompmasap"].ascii());
+         SQLQuery.sprintf("UPDATE compmasap SET signo='%s' WHERE idcompmasap=%s\n",
+	 conexionbase->sanearCadena(m_tvalores["signo"]).ascii(),
+	 conexionbase->sanearCadena(m_tvalores["idcompmasap"]).ascii());
          conexionbase->begin();
          conexionbase->ejecuta(SQLQuery);
          conexionbase->commit();
 
-         SQLQuery.sprintf("UPDATE compmasap SET nombre='%s' WHERE idcompmasap=%s\n", m_tvalores["nombre"].ascii(), m_tvalores["idcompmasap"].ascii());
+         SQLQuery.sprintf("UPDATE compmasap SET nombre='%s' WHERE idcompmasap=%s\n",
+	 conexionbase->sanearCadena(m_tvalores["nombre"]).ascii(),
+	 conexionbase->sanearCadena(m_tvalores["idcompmasap"]).ascii());
          conexionbase->begin();
          conexionbase->ejecuta(SQLQuery);
          conexionbase->commit();         
@@ -228,22 +234,30 @@ bool importbalance::endElement2( const QString& , const QString& , const QString
       }// end compmasap      
     if (m_tag == "compbalance") {
          // Con los componentes del balance también intervienen las masas patrimoniales.
-         SQLQuery.sprintf("UPDATE compbalance SET idmpatrimonial=%s WHERE idcompbalance=%s\n", m_identmasasp[m_tvalores["idmpatrimonial"]].ascii(), m_tvalores["idcompbalance"].ascii());
+         SQLQuery.sprintf("UPDATE compbalance SET idmpatrimonial=%s WHERE idcompbalance=%s\n",
+	 conexionbase->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).ascii(),
+	 conexionbase->sanearCadena(m_tvalores["idcompbalance"]).ascii());
          conexionbase->begin();
          conexionbase->ejecuta(SQLQuery);
          conexionbase->commit();
          
-         SQLQuery.sprintf("UPDATE compbalance SET orden=%s WHERE idcompbalance=%s\n", m_tvalores["orden"].ascii(), m_tvalores["idcompbalance"].ascii());
+         SQLQuery.sprintf("UPDATE compbalance SET orden=%s WHERE idcompbalance=%s\n",
+	 conexionbase->sanearCadena(m_tvalores["orden"]).ascii(),
+	 conexionbase->sanearCadena(m_tvalores["idcompbalance"]).ascii());
          conexionbase->begin();
          conexionbase->ejecuta(SQLQuery);
          conexionbase->commit();
          
-         SQLQuery.sprintf("UPDATE compbalance SET concepto='%s' WHERE idcompbalance=%s\n", m_tvalores["concepto"].ascii(), m_tvalores["idcompbalance"].ascii());
+         SQLQuery.sprintf("UPDATE compbalance SET concepto='%s' WHERE idcompbalance=%s\n",
+	 conexionbase->sanearCadena(m_tvalores["concepto"]).ascii(),
+	 conexionbase->sanearCadena(m_tvalores["idcompbalance"]).ascii());
          conexionbase->begin();
          conexionbase->ejecuta(SQLQuery);
          conexionbase->commit();
 
-         SQLQuery.sprintf("UPDATE compbalance SET tabulacion=%s WHERE idcompbalance=%s\n", m_tvalores["tabulacion"].ascii(), m_tvalores["idcompbalance"].ascii());
+         SQLQuery.sprintf("UPDATE compbalance SET tabulacion=%s WHERE idcompbalance=%s\n",
+	 conexionbase->sanearCadena(m_tvalores["tabulacion"]).ascii(),
+	 conexionbase->sanearCadena(m_tvalores["idcompbalance"]).ascii());
          conexionbase->begin();
          conexionbase->ejecuta(SQLQuery);
          conexionbase->commit();         

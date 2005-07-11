@@ -209,10 +209,10 @@ void intapunts3view::cargarcursor() {
 
     fprintf(stderr," Inicio de la carga del cursor\n");
 
-    cantapunt = filt->cantidadapunte->text();
-    saldototal = filt->saldoasiento->text();
-    nombreasiento = filt->nombreasiento->text();
-    ejercicio = filt->ejercicio();
+    cantapunt = conexionbase->sanearCadena(filt->cantidadapunte->text());
+    saldototal = conexionbase->sanearCadena(filt->saldoasiento->text());
+    nombreasiento = conexionbase->sanearCadena(filt->nombreasiento->text());
+    ejercicio = conexionbase->sanearCadena(filt->ejercicio());
 
     fprintf(stderr," Inicio de la perdición del cursorasientos\n");
 
@@ -259,7 +259,7 @@ void intapunts3view::cargarcursor() {
     fprintf(stderr," Carga del cursor\n");
     cursorasientos = conexionbase->cargacursor(query,"cursorasientos");
     if (cursorasientos->eof()) {
-        QMessageBox::warning( 0, "No existe asiento", "No existe ningun asiento para mostrar.", QMessageBox::Yes, QMessageBox::No);
+        QMessageBox::warning( 0, tr("No existe asiento"), tr("No existe ningún asiento para mostrar."), tr("Cerrar"),0,0);
         return;
     }// end if
     fprintf(stderr,"Fin del cargar cursor\n");
@@ -514,7 +514,6 @@ void intapunts3view::repinta(int numasiento) {
         cadena=cursorasiento->valor("contrapartida");
         if (cadena.stripWhiteSpace() !="") {
             query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%s",cadena.ascii());
-            fprintf(stderr,"%s\n",query.ascii());
             conexionbase->begin();
             cursor2 *cursorcontrapartida = conexionbase->cargacursor(query,"cursorcontrapartida");
             conexionbase->commit();
@@ -656,7 +655,7 @@ void intapunts3view::buscaFactura() {
 
     /// Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
     /// Esta versiÃ³n se basa en la base de datos pq es mejor ya que asÃ­ somos mÃ¡s eficaces.
-    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+QString::number(idAsiento().toInt())+" AND codigo SIMILAR TO '"+cuentas.ascii()+"' GROUP BY contra";
+    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+QString::number(idAsiento().toInt())+" AND codigo SIMILAR TO '"+conexionbase->sanearCadena(cuentas.ascii())+"' GROUP BY contra";
     
     cursor2 *cursborr= conexionbase->cargacursor(SQLQuery);
     while (!cursborr->eof()) {
@@ -1092,13 +1091,13 @@ void intapunts3view::guardaborrador(int row) {
         datos = 1;
     }// end if
     if (!tapunts3->text(row, COL_DEBE).isEmpty()) {
-        debe = tapunts3->text(row, COL_DEBE);
+        debe = conexionbase->sanearCadena(tapunts3->text(row, COL_DEBE));
         datos = 1;
     } else {
         debe = "0";
     }// end if
     if (!tapunts3->text(row, COL_HABER).isEmpty()) {
-        haber = tapunts3->text(row, COL_HABER);
+        haber = conexionbase->sanearCadena(tapunts3->text(row, COL_HABER));
         datos = 1;
     } else {
         haber = "0";
@@ -1117,7 +1116,7 @@ void intapunts3view::guardaborrador(int row) {
     }// end if
 
     if (!tapunts3->text(row,COL_FECHA).isEmpty()) {
-        fecha = "'"+ tapunts3->text(row, COL_FECHA)+"'";
+        fecha = "'"+ conexionbase->sanearCadena(tapunts3->text(row, COL_FECHA))+"'";
         datos = 1;
     } else {
         fecha = "NULL";
@@ -1138,7 +1137,7 @@ void intapunts3view::guardaborrador(int row) {
     }// end if
 
     if (!tapunts3->text(row,COL_CONCEPTO).isEmpty()) {
-        concepto = "'"+ tapunts3->text(row, COL_CONCEPTO)+"'";
+        concepto = "'"+ conexionbase->sanearCadena(tapunts3->text(row, COL_CONCEPTO))+"'";
         datos = 1;
     } else {
         concepto = "''";
@@ -1153,14 +1152,14 @@ void intapunts3view::guardaborrador(int row) {
     
     if (datos) {
         if (idborrador != "") {
-            // El borrador existe, por lo que solo hay que hacer un update
+            /// El borrador existe, por lo que solo hay que hacer un update
             query = "UPDATE borrador SET orden="+orden+", conceptocontable="+concepto+", fecha="+fecha+", debe="+debe+",haber="+haber+", idcuenta="+idcuenta+", contrapartida="+contrapartida+", idcanal="+idcanal+", idc_coste="+idc_coste+" WHERE idborrador="+idborrador;
             conexionbase->begin();
             if (conexionbase->ejecuta(query)==42501)
                 QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
             conexionbase->commit();
         } else if (idcuenta != "NULL") {
-            // El borrador no existe, por lo que hay que hacer un insert
+            /// El borrador no existe, por lo que hay que hacer un insert
             query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES (%s,%s,%s,%s,%s,%s,'%d',%s,%s,%s)",orden.ascii(),concepto.ascii(),fecha.ascii(),idcuenta.ascii(),debe.ascii(),haber.ascii(),idasiento,contrapartida.ascii(),idcanal.ascii(),idc_coste.ascii());
             conexionbase->begin();
             if (conexionbase->ejecuta(query)==42501)
@@ -1172,7 +1171,7 @@ void intapunts3view::guardaborrador(int row) {
             delete cur;
         }// end if
     }// end if
-    /// Ponemos el Saldo de Cuenta sin valor para que no haya problemas.
+    /// Ponemos el Saldo de Cuenta sin valor ya que este punto es un buen lugar para hacerlo.
     m_saldoCuenta->setText("");
 }// end guardaborrador
 
