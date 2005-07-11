@@ -84,7 +84,7 @@ void PedidoCliente::pintaPedidoCliente() {
 }// end pintaPedidoCliente
 
 
-// Esta función carga un PedidoCliente.
+// Esta funciï¿½ carga un PedidoCliente.
 void PedidoCliente::cargaPedidoCliente(QString idbudget) {
     fprintf(stderr,"cargaPedidoCliente(%s)\n",idbudget.ascii());
     mdb_idpedidocliente = idbudget;
@@ -127,8 +127,20 @@ void PedidoCliente::guardaPedidoCliente() {
     if (mdb_idtrabajador == "")
         mdb_idtrabajador = "NULL";
     if (mdb_idpedidocliente == "") {
-        /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO pedidocliente (contactpedidocliente, telpedidocliente, numpedidocliente, fechapedidocliente, idcliente, idalmacen, idforma_pago, refpedidocliente, procesadopedidocliente, descpedidocliente, comentpedidocliente, idtrabajador) VALUES ('"+mdb_contactpedidocliente+"','"+mdb_telpedidocliente+"',"+mdb_numpedidocliente+",'"+mdb_fechapedidocliente+"',"+mdb_idcliente+","+mdb_idalmacen+","+mdb_idforma_pago+",'"+mdb_refpedidocliente+"',"+mdb_procesadopedidocliente+",'"+mdb_descpedidocliente+"','"+mdb_comentpedidocliente+"', "+mdb_idtrabajador+")";
+        /// Se trata de una inserciï¿½
+        QString SQLQuery = "INSERT INTO pedidocliente (contactpedidocliente, telpedidocliente, numpedidocliente, fechapedidocliente, idcliente, idalmacen, idforma_pago, refpedidocliente, procesadopedidocliente, descpedidocliente, comentpedidocliente, idtrabajador) VALUES ('"+
+	companyact->sanearCadena(mdb_contactpedidocliente)+"','"+
+	companyact->sanearCadena(mdb_telpedidocliente)+"',"+
+	companyact->sanearCadena(mdb_numpedidocliente)+",'"+
+	companyact->sanearCadena(mdb_fechapedidocliente)+"',"+
+	companyact->sanearCadena(mdb_idcliente)+","+
+	companyact->sanearCadena(mdb_idalmacen)+","+
+	companyact->sanearCadena(mdb_idforma_pago)+",'"+
+	companyact->sanearCadena(mdb_refpedidocliente)+"',"+
+	companyact->sanearCadena(mdb_procesadopedidocliente)+",'"+
+	companyact->sanearCadena(mdb_descpedidocliente)+"','"+
+	companyact->sanearCadena(mdb_comentpedidocliente)+"', "+
+	companyact->sanearCadena(mdb_idtrabajador)+")";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpedidocliente) AS m FROM pedidocliente");
         if (!cur->eof())
@@ -136,21 +148,21 @@ void PedidoCliente::guardaPedidoCliente() {
         delete cur;
         companyact->commit();
     } else {
-        /// Se trata de una modificación
+        /// Se trata de una modificaciï¿½
         QString SQLQuery = "UPDATE pedidocliente SET ";
-        SQLQuery += " numpedidocliente="+mdb_numpedidocliente+"";
-        SQLQuery += " ,fechapedidocliente='"+mdb_fechapedidocliente+"'";
-        SQLQuery += " ,idcliente="+mdb_idcliente;
-        SQLQuery += " ,idalmacen="+mdb_idalmacen;
-        SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
-        SQLQuery += " ,refpedidocliente='"+mdb_refpedidocliente+"'";
-        SQLQuery += " ,procesadopedidocliente="+mdb_procesadopedidocliente;
-        SQLQuery += " ,descpedidocliente='"+mdb_descpedidocliente+"'";
-        SQLQuery += " ,comentpedidocliente='"+mdb_comentpedidocliente+"'";
-        SQLQuery += " ,contactpedidocliente='"+mdb_contactpedidocliente+"'"; 
-	SQLQuery += " ,telpedidocliente='"+mdb_telpedidocliente+"'"; 
-	SQLQuery += " ,idtrabajador ="+mdb_idtrabajador;
-	SQLQuery += " WHERE idpedidocliente="+mdb_idpedidocliente;
+        SQLQuery += " numpedidocliente="+companyact->sanearCadena(mdb_numpedidocliente)+"";
+        SQLQuery += " ,fechapedidocliente='"+companyact->sanearCadena(mdb_fechapedidocliente)+"'";
+        SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente);
+        SQLQuery += " ,idalmacen="+companyact->sanearCadena(mdb_idalmacen);
+        SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
+        SQLQuery += " ,refpedidocliente='"+companyact->sanearCadena(mdb_refpedidocliente)+"'";
+        SQLQuery += " ,procesadopedidocliente="+companyact->sanearCadena(mdb_procesadopedidocliente);
+        SQLQuery += " ,descpedidocliente='"+companyact->sanearCadena(mdb_descpedidocliente)+"'";
+        SQLQuery += " ,comentpedidocliente='"+companyact->sanearCadena(mdb_comentpedidocliente)+"'";
+        SQLQuery += " ,contactpedidocliente='"+companyact->sanearCadena(mdb_contactpedidocliente)+"'"; 
+	SQLQuery += " ,telpedidocliente='"+companyact->sanearCadena(mdb_telpedidocliente)+"'"; 
+	SQLQuery += " ,idtrabajador ="+companyact->sanearCadena(mdb_idtrabajador);
+	SQLQuery += " WHERE idpedidocliente="+companyact->sanearCadena(mdb_idpedidocliente);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();
@@ -182,7 +194,7 @@ void PedidoCliente::imprimirPedidoCliente() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Línea de totales del pedidocliente
+    // Lï¿½ea de totales del pedidocliente
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -261,7 +273,7 @@ void PedidoCliente::calculaypintatotales() {
     fprintf(stderr,"calculaypintatotales \n");
     base basesimp;
     LinPedidoCliente *linea;
-    /// Impresión de los contenidos
+    /// Impresiï¿½ de los contenidos
     QString l;
     
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
@@ -279,7 +291,7 @@ void PedidoCliente::calculaypintatotales() {
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.data();
     }// end for
-    /// Impresión de los descuentos
+    /// Impresiï¿½ de los descuentos
     Fixed porcentt("0.00");
     DescuentoPedidoCliente *linea1;
     if (listadescuentos->m_lista.first()) {

@@ -64,10 +64,13 @@ void CompArticulo::borrar() {
 }// end delete
 
 void CompArticulo::guardaCompArticulo() {
-    /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun estï¿½la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_idarticulo != "" && mdb_idcomponente != "") {
 
-        QString SQLQuery = "INSERT INTO comparticulo (idarticulo, idcomponente, cantcomparticulo) VALUES ("+mdb_idarticulo+","+mdb_idcomponente+","+mdb_cantcomparticulo+")";
+        QString SQLQuery = "INSERT INTO comparticulo (idarticulo, idcomponente, cantcomparticulo) VALUES ("+
+	companyact->sanearCadena(mdb_idarticulo)+","+
+	companyact->sanearCadena(mdb_idcomponente)+","+
+	companyact->sanearCadena(mdb_cantcomparticulo)+")";
         companyact->begin();
           companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+mdb_idarticulo+" AND idcomponente="+mdb_idcomponente);
 	         companyact->ejecuta(SQLQuery);

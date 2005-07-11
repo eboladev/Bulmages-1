@@ -57,7 +57,7 @@ void Cobro::pintaCobro() {
 }// end pintaCobro
 
 
-// Esta función carga un Cobro.
+// Esta funciï¿½ carga un Cobro.
 void Cobro::cargaCobro(QString idbudget) {
     mdb_idcobro = idbudget;
     QString query = "SELECT * FROM cobro WHERE idCobro="+idbudget;
@@ -68,7 +68,6 @@ void Cobro::cargaCobro(QString idbudget) {
         mdb_cantcobro= cur->valor("cantcobro");
         mdb_refcobro= cur->valor("refcobro");
         mdb_comentcobro= cur->valor("comentcobro");
-
         if (cur->valor("previsioncobro") == "t")
             mdb_previsioncobro = "TRUE";
         else
@@ -83,8 +82,14 @@ void Cobro::cargaCobro(QString idbudget) {
 void Cobro::guardaCobro() {
     companyact->begin();
     if (mdb_idcobro == "") {
-        /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO cobro (idcliente, fechacobro, cantcobro, refcobro, comentcobro, previsioncobro) VALUES ("+mdb_idcliente+",'"+mdb_fechacobro+"',"+mdb_cantcobro+",'"+mdb_refcobro+"','"+mdb_comentcobro+"',"+mdb_previsioncobro+")";
+        /// Se trata de una inserciï¿½
+        QString SQLQuery = "INSERT INTO cobro (idcliente, fechacobro, cantcobro, refcobro, comentcobro, previsioncobro) VALUES ("+
+	companyact->sanearCadena(mdb_idcliente)+",'"+
+	companyact->sanearCadena(mdb_fechacobro)+"',"+
+	companyact->sanearCadena(mdb_cantcobro)+",'"+
+	companyact->sanearCadena(mdb_refcobro)+"','"+
+	companyact->sanearCadena(mdb_comentcobro)+"',"+
+	companyact->sanearCadena(mdb_previsioncobro)+")";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idcobro) AS m FROM cobro");
         if (!cur->eof())
@@ -92,15 +97,15 @@ void Cobro::guardaCobro() {
         delete cur;
         companyact->commit();
     } else {
-        /// Se trata de una modificación
+        /// Se trata de una modificaciï¿½
         QString SQLQuery = "UPDATE cobro SET ";
-        SQLQuery += " idcliente="+mdb_idcliente;
-        SQLQuery += " ,fechacobro='"+mdb_fechacobro+"'";
-        SQLQuery += " ,cantcobro='"+mdb_cantcobro+"'";
-        SQLQuery += " ,refcobro='"+mdb_refcobro+"'";
-        SQLQuery += " ,comentcobro='"+mdb_comentcobro+"'";
-        SQLQuery += " ,previsioncobro='"+mdb_previsioncobro+"'";
-        SQLQuery += " WHERE idcobro="+mdb_idcobro;
+        SQLQuery += " idcliente="+companyact->sanearCadena(mdb_idcliente);
+        SQLQuery += " ,fechacobro='"+companyact->sanearCadena(mdb_fechacobro)+"'";
+        SQLQuery += " ,cantcobro='"+companyact->sanearCadena(mdb_cantcobro)+"'";
+        SQLQuery += " ,refcobro='"+companyact->sanearCadena(mdb_refcobro)+"'";
+        SQLQuery += " ,comentcobro='"+companyact->sanearCadena(mdb_comentcobro)+"'";
+        SQLQuery += " ,previsioncobro='"+companyact->sanearCadena(mdb_previsioncobro)+"'";
+        SQLQuery += " WHERE idcobro="+companyact->sanearCadena(mdb_idcobro);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

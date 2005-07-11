@@ -89,9 +89,17 @@ void LinPedidoProveedor::guardaLinPedidoProveedor() {
     } else {
     	prevlpedidoproveedor = "'"+mdb_prevlpedidoproveedor+"'";
     }// end if
-    /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun estï¿½la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_numlpedidoproveedor == "") {
-        QString SQLQuery = "INSERT INTO lpedidoproveedor (desclpedidoproveedor, cantlpedidoproveedor, pvplpedidoproveedor, prevlpedidoproveedor, ivalpedidoproveedor, descuentolpedidoproveedor, idpedidoproveedor, idarticulo) VALUES ('"+mdb_desclpedidoproveedor+"',"+mdb_cantlpedidoproveedor+","+mdb_pvplpedidoproveedor+","+prevlpedidoproveedor+","+mdb_ivalpedidoproveedor+","+mdb_descuentolpedidoproveedor+", "+mdb_idpedidoproveedor+","+mdb_idarticulo+")";
+        QString SQLQuery = "INSERT INTO lpedidoproveedor (desclpedidoproveedor, cantlpedidoproveedor, pvplpedidoproveedor, prevlpedidoproveedor, ivalpedidoproveedor, descuentolpedidoproveedor, idpedidoproveedor, idarticulo) VALUES ('"+
+	companyact->sanearCadena(mdb_desclpedidoproveedor)+"',"+
+	companyact->sanearCadena(mdb_cantlpedidoproveedor)+","+
+	companyact->sanearCadena(mdb_pvplpedidoproveedor)+","+
+	companyact->sanearCadena(prevlpedidoproveedor)+","+
+	companyact->sanearCadena(mdb_ivalpedidoproveedor)+","+
+	companyact->sanearCadena(mdb_descuentolpedidoproveedor)+", "+
+	companyact->sanearCadena(mdb_idpedidoproveedor)+","+
+	companyact->sanearCadena(mdb_idarticulo)+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(numlpedidoproveedor) AS m FROM lpedidoproveedor ");
@@ -101,15 +109,15 @@ void LinPedidoProveedor::guardaLinPedidoProveedor() {
         companyact->commit();
     } else {
         QString SQLQuery = "UPDATE lpedidoproveedor SET ";
-        SQLQuery += " desclpedidoproveedor = '"+mdb_desclpedidoproveedor+"' ";
-        SQLQuery += " ,cantlpedidoproveedor = "+mdb_cantlpedidoproveedor+" ";
-        SQLQuery += " ,pvplpedidoproveedor = "+mdb_pvplpedidoproveedor+" ";
-        SQLQuery += " ,prevlpedidoproveedor = "+prevlpedidoproveedor;
-        SQLQuery += " ,ivalpedidoproveedor = "+mdb_ivalpedidoproveedor+" ";
-        SQLQuery += " ,descuentolpedidoproveedor = "+mdb_descuentolpedidoproveedor+" ";
-        SQLQuery += " ,idpedidoproveedor = "+mdb_idpedidoproveedor+" ";
-        SQLQuery += " ,idarticulo = "+mdb_idarticulo+" ";
-        SQLQuery += " WHERE numlpedidoproveedor = "+mdb_numlpedidoproveedor;
+        SQLQuery += " desclpedidoproveedor = '"+companyact->sanearCadena(mdb_desclpedidoproveedor)+"' ";
+        SQLQuery += " ,cantlpedidoproveedor = "+companyact->sanearCadena(mdb_cantlpedidoproveedor)+" ";
+        SQLQuery += " ,pvplpedidoproveedor = "+companyact->sanearCadena(mdb_pvplpedidoproveedor)+" ";
+        SQLQuery += " ,prevlpedidoproveedor = "+companyact->sanearCadena(prevlpedidoproveedor);
+        SQLQuery += " ,ivalpedidoproveedor = "+companyact->sanearCadena(mdb_ivalpedidoproveedor)+" ";
+        SQLQuery += " ,descuentolpedidoproveedor = "+companyact->sanearCadena(mdb_descuentolpedidoproveedor)+" ";
+        SQLQuery += " ,idpedidoproveedor = "+companyact->sanearCadena(mdb_idpedidoproveedor)+" ";
+        SQLQuery += " ,idarticulo = "+companyact->sanearCadena(mdb_idarticulo)+" ";
+        SQLQuery += " WHERE numlpedidoproveedor = "+companyact->sanearCadena(mdb_numlpedidoproveedor);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

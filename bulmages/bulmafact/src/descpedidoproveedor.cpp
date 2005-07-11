@@ -61,9 +61,12 @@ void DescuentoPedidoProveedor::borrar() {
 }// end delete
 
 void DescuentoPedidoProveedor::guardaDescuentoPedidoProveedor() {
-    /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun estï¿½la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_iddpedidoproveedor == "") {
-        QString SQLQuery = "INSERT INTO dpedidoproveedor (conceptdpedidoproveedor, proporciondpedidoproveedor, idpedidoproveedor) VALUES ('"+mdb_conceptdpedidoproveedor+"',"+mdb_proporciondpedidoproveedor+","+mdb_idpedidoproveedor+")";
+        QString SQLQuery = "INSERT INTO dpedidoproveedor (conceptdpedidoproveedor, proporciondpedidoproveedor, idpedidoproveedor) VALUES ('"+
+	companyact->sanearCadena(mdb_conceptdpedidoproveedor)+"',"+
+	companyact->sanearCadena(mdb_proporciondpedidoproveedor)+","+
+	companyact->sanearCadena(mdb_idpedidoproveedor)+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(iddpedidoproveedor) AS m FROM dpedidoproveedor ");
@@ -73,10 +76,10 @@ void DescuentoPedidoProveedor::guardaDescuentoPedidoProveedor() {
         companyact->commit();
     } else {
         QString SQLQuery = "UPDATE dpedidoproveedor SET ";
-        SQLQuery += " conceptdpedidoproveedor = '"+mdb_conceptdpedidoproveedor+"' ";
-        SQLQuery += " ,proporciondpedidoproveedor = "+mdb_proporciondpedidoproveedor+" ";
-        SQLQuery += " ,idpedidoproveedor = "+mdb_idpedidoproveedor+" ";
-        SQLQuery += " WHERE iddpedidoproveedor = "+mdb_iddpedidoproveedor;
+        SQLQuery += " conceptdpedidoproveedor = '"+companyact->sanearCadena(mdb_conceptdpedidoproveedor)+"' ";
+        SQLQuery += " ,proporciondpedidoproveedor = "+companyact->sanearCadena(mdb_proporciondpedidoproveedor)+" ";
+        SQLQuery += " ,idpedidoproveedor = "+companyact->sanearCadena(mdb_idpedidoproveedor)+" ";
+        SQLQuery += " WHERE iddpedidoproveedor = "+companyact->sanearCadena(mdb_iddpedidoproveedor);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

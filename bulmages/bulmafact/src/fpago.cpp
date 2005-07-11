@@ -4,7 +4,7 @@
 // Description:
 //
 //
-// Author: Tomeu Borrás Riera, (C) 2005
+// Author: Tomeu Borrï¿½ Riera, (C) 2005
 //
 // Copyright: See COPYING file that comes with this distribution
 //
@@ -81,7 +81,10 @@ void fpago::close() {
 
 
 void fpago::s_saveFPago() {
-    QString query = "UPDATE forma_pago SET descforma_pago='"+m_descforma_pago->text()+"', dias1tforma_pago= "+m_dias1tforma_pago->text()+" , descuentoforma_pago = "+m_descuentoforma_pago->text()+" WHERE idforma_pago="+m_idforma_pago;
+    QString query = "UPDATE forma_pago SET descforma_pago='"+
+	companyact->sanearCadena(m_descforma_pago->text())+"', dias1tforma_pago= "+
+	companyact->sanearCadena(m_dias1tforma_pago->text())+" , descuentoforma_pago = "+
+	companyact->sanearCadena(m_descuentoforma_pago->text())+" WHERE idforma_pago="+m_idforma_pago;
     companyact->ejecuta(query);
     QListViewItem *it =  m_listFPago->findItem(m_idforma_pago, COL_IDFPAGO);
     it->setText(COL_IDFPAGO, m_idforma_pago);
@@ -105,7 +108,7 @@ bool fpago::trataModificado() {
 }// end trataModificado
 
 
-/** SLOT que responde a la pulsación del botón de nuevo tipo de iva
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
 void fpago::s_newFPago() {
@@ -122,7 +125,7 @@ void fpago::s_newFPago() {
 }// end s_newTipoIVA
 
 
-/** SLOT que responde a la pulsación del botón de borrar la familia que se está editando.
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de borrar la familia que se estï¿½editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void fpago::s_deleteFPago() {

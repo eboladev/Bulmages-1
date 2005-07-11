@@ -79,9 +79,16 @@ void linpresupuesto::borrar() {
 }// end delete
 
 void linpresupuesto::guardalinpresupuesto() {
-    /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun estï¿½la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_idlpresupuesto == "") {
-        QString SQLQuery = "INSERT INTO lpresupuesto (desclpresupuesto, cantlpresupuesto, pvplpresupuesto, descuentolpresupuesto, idpresupuesto, idarticulo, ivalpresupuesto) VALUES ('"+mdb_desclpresupuesto+"',"+mdb_cantlpresupuesto+","+mdb_pvplpresupuesto+","+mdb_descuentolpresupuesto+","+mdb_idpresupuesto+","+mdb_idarticulo+", "+mdb_ivalpresupuesto+")";
+        QString SQLQuery = "INSERT INTO lpresupuesto (desclpresupuesto, cantlpresupuesto, pvplpresupuesto, descuentolpresupuesto, idpresupuesto, idarticulo, ivalpresupuesto) VALUES ('"+
+	companyact->sanearCadena(mdb_desclpresupuesto)+"',"+
+	companyact->sanearCadena(mdb_cantlpresupuesto)+","+
+	companyact->sanearCadena(mdb_pvplpresupuesto)+","+
+	companyact->sanearCadena(mdb_descuentolpresupuesto)+","+
+	companyact->sanearCadena(mdb_idpresupuesto)+","+
+	companyact->sanearCadena(mdb_idarticulo)+", "+
+	companyact->sanearCadena(mdb_ivalpresupuesto)+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idlpresupuesto) AS m FROM lpresupuesto ");
@@ -91,14 +98,14 @@ void linpresupuesto::guardalinpresupuesto() {
         companyact->commit();
     } else {
         QString SQLQuery = "UPDATE lpresupuesto SET ";
-        SQLQuery += " desclpresupuesto = '"+mdb_desclpresupuesto+"' ";
-        SQLQuery += " ,cantlpresupuesto = "+mdb_cantlpresupuesto+" ";
-        SQLQuery += " ,pvplpresupuesto = "+mdb_pvplpresupuesto+" ";
-        SQLQuery += " ,descuentolpresupuesto = "+mdb_descuentolpresupuesto+" ";
-        SQLQuery += " ,idpresupuesto = "+mdb_idpresupuesto+" ";
-        SQLQuery += " ,idarticulo = "+mdb_idarticulo+" ";
-        SQLQuery += " ,ivalpresupuesto = "+mdb_ivalpresupuesto+" ";
-        SQLQuery += " WHERE idlpresupuesto = "+mdb_idlpresupuesto;
+        SQLQuery += " desclpresupuesto = '"+companyact->sanearCadena(mdb_desclpresupuesto)+"' ";
+        SQLQuery += " ,cantlpresupuesto = "+companyact->sanearCadena(mdb_cantlpresupuesto)+" ";
+        SQLQuery += " ,pvplpresupuesto = "+companyact->sanearCadena(mdb_pvplpresupuesto)+" ";
+        SQLQuery += " ,descuentolpresupuesto = "+companyact->sanearCadena(mdb_descuentolpresupuesto)+" ";
+        SQLQuery += " ,idpresupuesto = "+companyact->sanearCadena(mdb_idpresupuesto)+" ";
+        SQLQuery += " ,idarticulo = "+companyact->sanearCadena(mdb_idarticulo)+" ";
+        SQLQuery += " ,ivalpresupuesto = "+companyact->sanearCadena(mdb_ivalpresupuesto)+" ";
+        SQLQuery += " WHERE idlpresupuesto = "+companyact->sanearCadena(mdb_idlpresupuesto);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

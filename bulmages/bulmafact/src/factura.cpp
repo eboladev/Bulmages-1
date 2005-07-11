@@ -71,7 +71,7 @@ void Factura::pintaFactura() {
 }// end pintaFactura
 
 
-// Esta función carga un Factura.
+// Esta funciï¿½ carga un Factura.
 void Factura::cargaFactura(QString idbudget) {
     mdb_idfactura = idbudget;
     inicialize();
@@ -115,8 +115,19 @@ void Factura::guardaFactura() {
     if (mdb_idforma_pago == "")
         mdb_idforma_pago = "NULL";
     if (mdb_idfactura == "") {
-        /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO factura (descfactura, codigoserie_factura, procesadafactura, reffactura, numfactura, ffactura, comentfactura, idusuari, idcliente, idalmacen, idforma_pago) VALUES ('"+mdb_descfactura+"','"+mdb_codigoserie_factura+"',"+mdb_procesadafactura+",'"+mdb_reffactura+"',"+mdb_numfactura+",'"+mdb_ffactura+"','"+mdb_comentfactura+"',"+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+","+mdb_idforma_pago+")";
+        /// Se trata de una inserciï¿½
+        QString SQLQuery = "INSERT INTO factura (descfactura, codigoserie_factura, procesadafactura, reffactura, numfactura, ffactura, comentfactura, idusuari, idcliente, idalmacen, idforma_pago) VALUES ('"+
+	companyact->sanearCadena(mdb_descfactura)+"','"+
+	companyact->sanearCadena(mdb_codigoserie_factura)+"',"+
+	companyact->sanearCadena(mdb_procesadafactura)+",'"+
+	companyact->sanearCadena(mdb_reffactura)+"',"+
+	companyact->sanearCadena(mdb_numfactura)+",'"+
+	companyact->sanearCadena(mdb_ffactura)+"','"+
+	companyact->sanearCadena(mdb_comentfactura)+"',"+
+	companyact->sanearCadena(mdb_idusuari)+","+
+	companyact->sanearCadena(mdb_idcliente)+","+
+	companyact->sanearCadena(mdb_idalmacen)+","+
+	companyact->sanearCadena(mdb_idforma_pago)+")";
 
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idFactura) AS m FROM Factura");
@@ -125,20 +136,20 @@ void Factura::guardaFactura() {
         delete cur;
         companyact->commit();
     } else {
-        /// Se trata de una modificación
+        /// Se trata de una modificaciï¿½
         QString SQLQuery = "UPDATE Factura SET ";
-        SQLQuery += " numFactura="+mdb_numfactura;
-        SQLQuery += " ,fFactura='"+mdb_ffactura+"'";
-        SQLQuery += " ,comentFactura='"+mdb_comentfactura+"'";
-        SQLQuery += " ,idusuari="+mdb_idusuari;
-        SQLQuery += " ,idcliente="+mdb_idcliente;
-        SQLQuery += " ,idalmacen="+mdb_idalmacen;
-        SQLQuery += " ,reffactura='"+mdb_reffactura+"'";
-        SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
-        SQLQuery += " ,procesadafactura="+mdb_procesadafactura;
-	SQLQuery += " ,codigoserie_factura='"+mdb_codigoserie_factura+"'";
-	SQLQuery += " ,descfactura='"+mdb_descfactura+"'";
-        SQLQuery += " WHERE idFactura="+mdb_idfactura;
+        SQLQuery += " numFactura="+companyact->sanearCadena(mdb_numfactura);
+        SQLQuery += " ,fFactura='"+companyact->sanearCadena(mdb_ffactura)+"'";
+        SQLQuery += " ,comentFactura='"+companyact->sanearCadena(mdb_comentfactura)+"'";
+        SQLQuery += " ,idusuari="+companyact->sanearCadena(mdb_idusuari);
+        SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente);
+        SQLQuery += " ,idalmacen="+companyact->sanearCadena(mdb_idalmacen);
+        SQLQuery += " ,reffactura='"+companyact->sanearCadena(mdb_reffactura)+"'";
+        SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
+        SQLQuery += " ,procesadafactura="+companyact->sanearCadena(mdb_procesadafactura);
+	SQLQuery += " ,codigoserie_factura='"+companyact->sanearCadena(mdb_codigoserie_factura)+"'";
+	SQLQuery += " ,descfactura='"+companyact->sanearCadena(mdb_descfactura)+"'";
+        SQLQuery += " WHERE idFactura="+companyact->sanearCadena(mdb_idfactura);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();
@@ -169,7 +180,7 @@ void Factura::imprimirFactura() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Línea de totales del presupuesto
+    // Lï¿½ea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -241,7 +252,7 @@ void Factura::imprimirFactura() {
 void Factura::calculaypintatotales() {
     base basesimp;
     LinFactura *linea;
-    /// Impresión de los contenidos
+    /// Impresiï¿½ de los contenidos
     QString l;
 
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
@@ -261,8 +272,8 @@ void Factura::calculaypintatotales() {
     }// end for
 
 
-    /// Impresión de los descuentos
-    /// Impresión de los descuentos
+    /// Impresiï¿½ de los descuentos
+    /// Impresiï¿½ de los descuentos
     Fixed porcentt("0.00");
     DescuentoFactura *linea1;
     if (listadescuentos->m_lista.first()) {

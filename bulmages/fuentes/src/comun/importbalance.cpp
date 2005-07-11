@@ -1,5 +1,5 @@
 /***************************************************************************
- *Copyright (C) 2004 by  Tomeu Borrás Riera                                *
+ *Copyright (C) 2004 by  Tomeu Borrï¿½ Riera                                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,8 +17,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
  /** \file importbalance.cpp
-   * Contiene la implementación de la clase \ref importbalance y sus métodos.
-   * \author Tomeu Borrás Riera
+   * Contiene la implementaciï¿½ de la clase \ref importbalance y sus mï¿½odos.
+   * \author Tomeu Borrï¿½ Riera
    */
 #include "importbalance.h"
 #include "empresa.h"
@@ -26,8 +26,8 @@
 
 /** Constructor de la clase que inicializa  la empresa actual
   * La base de datos
-  * Establece que de momento no se ha visitado ningún tag 
-  * Establece que no hay ningún dato recogido del XML
+  * Establece que de momento no se ha visitado ningn tag 
+  * Establece que no hay ningn dato recogido del XML
   * Inidca que el paso que vamos a procesar es el 0
   */
 importbalance::importbalance( empresa *emp) : QXmlDefaultHandler() {
@@ -49,7 +49,7 @@ bool importbalance::startElement( const QString &a , const QString &b , const QS
    }// end if
 }// end startElement
 
-/** Dependiendo del paso en que nos encontremos hace la llamada a una función u a otra
+/** Dependiendo del paso en que nos encontremos hace la llamada a una funciï¿½ u a otra
   */
 bool importbalance::endElement( const QString &a , const QString &b , const QString &c ) {
    if (m_paso == 0) {
@@ -60,12 +60,12 @@ bool importbalance::endElement( const QString &a , const QString &b , const QStr
 }// end endElement
 
 
-/** En el primer paso de la importación se hace la inserción de todos los tags balance y mpatrimonial
-  * También se guarda en m_tvalores los identificadores obtenidos puesto que posteriormente seran utilizados
-  * Además se asigna la variable global m_tag con el nombre del tag para poder hacer el almacenamiento de datos en 
+/** En el primer paso de la importaciï¿½ se hace la inserciï¿½ de todos los tags balance y mpatrimonial
+  * Tambiï¿½ se guarda en m_tvalores los identificadores obtenidos puesto que posteriormente seran utilizados
+  * Ademï¿½ se asigna la variable global m_tag con el nombre del tag para poder hacer el almacenamiento de datos en 
   * el caso de que sea un tag secundario.
   * \param qName el nombre del tag que se ha encontrado
-  * \return TRUE pàra no detener la ejecución del parser en caso de error.
+  * \return TRUE pï¿½a no detener la ejecuciï¿½ del parser en caso de error.
   */
 bool importbalance::startElement1( const QString& , const QString& , const QString& qName, const QXmlAttributes&) {
     m_tag=qName;
@@ -83,7 +83,7 @@ bool importbalance::startElement1( const QString& , const QString& , const QStri
        delete cur;
     }// end if
     if (m_tag == "mpatrimonial") {
-       SQLQuery.sprintf("INSERT INTO mpatrimonial (idbalance) VALUES (%s)\n", m_tvalores["idbalance"].ascii());
+       SQLQuery.sprintf("INSERT INTO mpatrimonial (idbalance) VALUES (%s)\n", conexionbase->sanearCadena(m_tvalores["idbalance"]).ascii());
        conexionbase->begin();
        conexionbase->ejecuta(SQLQuery);
        SQLQuery = "SELECT max(idmpatrimonial) AS idmpatrimonial FROM mpatrimonial";
@@ -98,13 +98,13 @@ bool importbalance::startElement1( const QString& , const QString& , const QStri
 }// end startElement1
 
 /** En el primer paso al encontrar un tag de cierre o bien es el de balance o bien es el de mpatrimonial
-  * Lo que hacemos en ambos casos es hacer un update de la información puesto que toda la información que precisamos
+  * Lo que hacemos en ambos casos es hacer un update de la informaciï¿½ puesto que toda la informaciï¿½ que precisamos
   * ya ha sido extraida del archivo XML.
-  * Al finalizar el método establecemos el campo m_tag a "" para que no se asignen posibles transfugas a este valor
-  * el mapa m_identmasasp guarda la correlación entre identificadores de masa para que las que son valores argumentados en el paso 1
-  * puedan coincidir. (Es el problema de los identificadores autonuméricos).
+  * Al finalizar el mï¿½odo establecemos el campo m_tag a "" para que no se asignen posibles transfugas a este valor
+  * el mapa m_identmasasp guarda la correlaciï¿½ entre identificadores de masa para que las que son valores argumentados en el paso 1
+  * puedan coincidir. (Es el problema de los identificadores autonumï¿½icos).
   * \param qName El nombre del tag cerrado
-  * \return TRUE para no detener la ejecución del parser SAX
+  * \return TRUE para no detener la ejecuciï¿½ del parser SAX
   */
 bool importbalance::endElement1( const QString& , const QString& , const QString& qName ) {
    m_tag=qName;
@@ -116,7 +116,7 @@ bool importbalance::endElement1( const QString& , const QString& , const QString
          conexionbase->commit();
       }// end balance
       if (qName == "mpatrimonial") {
-         /// En la inserción de masas patrimoniales hay que hacer una reconversión de la clave.
+         /// En la inserciï¿½ de masas patrimoniales hay que hacer una reconversiï¿½ de la clave.
          /// Cuando todo haya terminado debemos actualizar el cambo idmpatrimonial de los compmasap para que la cosa funcione.
          m_identmasasp[m_tvalores["idmasa"]]=m_tvalores["idmpatrimonial_nueva"];
          SQLQuery.sprintf("UPDATE mpatrimonial SET descmpatrimonial='%s' WHERE idmpatrimonial=%s\n", m_tvalores["descmpatrimonial"].ascii(), m_tvalores["idmpatrimonial_nueva"].ascii());
@@ -152,9 +152,9 @@ bool importbalance::endElement1( const QString& , const QString& , const QString
 
 
 /** En el segundo paso se registran compmasap y compbalance
-  * Estos elementos no requieren que se haga primero una inserción y luego una actualización
+  * Estos elementos no requieren que se haga primero una inserciï¿½ y luego una actualizaciï¿½
   * \param qName el nombre del tag abierto
-  * \return TRUE para no detener la ejecución del algoritmo
+  * \return TRUE para no detener la ejecuciï¿½ del algoritmo
   */
 bool importbalance::startElement2( const QString& , const QString& , const QString &qName , const QXmlAttributes&) {
    m_tag=qName;
@@ -166,13 +166,13 @@ bool importbalance::startElement2( const QString& , const QString& , const QStri
   * Siempre se insertan por flanco final porque no tienen dependencias de nada y son sencillos.
   * Se usa el mapa m_identmasasp para saber que identificadores de masa se han usado en el paso 0
   * \param qName contiene el valor del tag que se acaba de cerrar
-  * \return TRUE para no detener nunca la ejecución del algoritmo
+  * \return TRUE para no detener nunca la ejecuciï¿½ del algoritmo
   */
 bool importbalance::endElement2( const QString& , const QString& , const QString &qName  ) {
     m_tag=qName;
     QString SQLQuery;
     /// En el segundo paso se hacen las inserciones por el flanco de final en lugar de por el flanco de principio.
-    /// Así nos aseguramos que ya existen los valores de idmpatrimonial y masaperteneciente.
+    /// Asï¿½nos aseguramos que ya existen los valores de idmpatrimonial y masaperteneciente.
     if (m_tag == "compmasap") {
        SQLQuery.sprintf("INSERT INTO compmasap (masaperteneciente) VALUES ( %s)\n", conexionbase->sanearCadena(m_identmasasp[m_tvalores["masaperteneciente"]]).ascii());
        conexionbase->begin();
@@ -197,9 +197,9 @@ bool importbalance::endElement2( const QString& , const QString& , const QString
        }// end if
        delete cur; 
     }// end if    
-    /// Como la inserción está hecha, podemos hacer los updates sin miedo a que no exista el registro.
+    /// Como la inserciï¿½ estï¿½hecha, podemos hacer los updates sin miedo a que no exista el registro.
     if (m_tag == "compmasap") {
-         // Actualizamos el idmasapatrimonial del compmasap, que es el que más dolores de cabeza causa.
+         // Actualizamos el idmasapatrimonial del compmasap, que es el que mï¿½ dolores de cabeza causa.
          if (m_tvalores["idmpatrimonial"] != "" && m_tvalores["codigo"] == "") {
             SQLQuery.sprintf("UPDATE compmasap SET idmpatrimonial=%s WHERE idcompmasap=%s\n", conexionbase->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).ascii(), conexionbase->sanearCadena(m_tvalores["idcompmasap"]).ascii());
             conexionbase->begin();
@@ -233,7 +233,7 @@ bool importbalance::endElement2( const QString& , const QString& , const QString
          m_tvalores["idmpatrimonial"]=""; 
       }// end compmasap      
     if (m_tag == "compbalance") {
-         // Con los componentes del balance también intervienen las masas patrimoniales.
+         // Con los componentes del balance tambiï¿½ intervienen las masas patrimoniales.
          SQLQuery.sprintf("UPDATE compbalance SET idmpatrimonial=%s WHERE idcompbalance=%s\n",
 	 conexionbase->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).ascii(),
 	 conexionbase->sanearCadena(m_tvalores["idcompbalance"]).ascii());
@@ -269,10 +269,10 @@ bool importbalance::endElement2( const QString& , const QString& , const QString
    return TRUE;
 }// endElement2
 
-/** Ha ocurrido una inserción de valor en un tag y almacenamos el valor de la tupla (tag, valor) en el mapa m_tvalores
+/** Ha ocurrido una inserciï¿½ de valor en un tag y almacenamos el valor de la tupla (tag, valor) en el mapa m_tvalores
   * Para que pueda ser utilizado posteriormente
   * \param ch El valor del tag abierto
-  * \return TRUE porque no nos interesa abortar la ejecución del algoritmo.
+  * \return TRUE porque no nos interesa abortar la ejecuciï¿½ del algoritmo.
   */
 bool importbalance::characters( const QString& ch ) {
     if(m_tag != "") {

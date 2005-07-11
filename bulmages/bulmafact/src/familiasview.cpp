@@ -143,12 +143,12 @@ void familiasview::mostrarplantilla() {
     delete cursorfamilia;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    fprintf(stderr,"Terminamos la ejecución de familiasview::mostrarplantilla\n");
+    fprintf(stderr,"Terminamos la ejecuciï¿½ de familiasview::mostrarplantilla\n");
 }// end mostrarplantilla
 
 
-/** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo
-  * Esta función está dedicada a Francina, Bienvenida al mundo 
+/** Antes de salir de la ventana debemos hacer la comprobaciï¿½ de si se ha modificado algo
+  * Esta funciï¿½ estï¿½dedicada a Francina, Bienvenida al mundo 
   */
 void familiasview::close() {
     trataModificado();
@@ -170,13 +170,15 @@ bool familiasview::trataModificado() {
 }// end trataModificado
 
 
-/** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de guardar el tipo de iva que se estï¿½editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void familiasview::s_saveFamilia() {
-    QString query = "UPDATE familia SET nombrefamilia='"+m_nomFamilia->text()+"', descfamilia= '"+m_descFamilia->text()+"' , codigofamilia = '"+m_codFamilia->text()+"' WHERE idfamilia="+m_idfamilia;
+    QString query = "UPDATE familia SET nombrefamilia='"+
+	companyact->sanearCadena(m_nomFamilia->text())+"', descfamilia= '"+
+	companyact->sanearCadena(m_descFamilia->text())+"' , codigofamilia = '"+
+	companyact->sanearCadena(m_codFamilia->text())+"' WHERE idfamilia="+m_idfamilia;
     companyact->ejecuta(query);
-    //pintar();
     // Vamos a hacer algo no reentrante.
     QListViewItem *it =  m_listFamilias->findItem(m_idfamilia, COL_IDFAMILIA);
     cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia="+m_idfamilia);
@@ -191,7 +193,7 @@ void familiasview::s_saveFamilia() {
 }// end s_saveTipoIVA
 
 
-/** SLOT que responde a la pulsación del botón de nuevo tipo de iva
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
 void familiasview::s_newFamilia() {
@@ -213,7 +215,7 @@ void familiasview::s_newFamilia() {
     pintar();
 }// end s_newTipoIVA
 
-/** SLOT que responde a la pulsación del botón de borrar la familia que se está editando.
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de borrar la familia que se estï¿½editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void familiasview::s_deleteFamilia() {

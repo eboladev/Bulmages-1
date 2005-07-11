@@ -118,12 +118,12 @@ void tiposarticuloview::mostrarplantilla() {
     delete cursortipo;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    fprintf(stderr,"Terminamos la ejecución de tiposarticuloview::mostrarplantilla\n");
+    fprintf(stderr,"Terminamos la ejecuciï¿½ de tiposarticuloview::mostrarplantilla\n");
 }// end mostrarplantilla
 
 
-/** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo
-  * Esta función está dedicada a Francina, Bienvenida al mundo
+/** Antes de salir de la ventana debemos hacer la comprobaciï¿½ de si se ha modificado algo
+  * Esta funciï¿½ estï¿½dedicada a Francina, Bienvenida al mundo
   */
 void tiposarticuloview::close() {
     trataModificado();
@@ -145,11 +145,13 @@ bool tiposarticuloview::trataModificado() {
 }// end trataModificado
 
 
-/** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de guardar el tipo de iva que se estï¿½editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void tiposarticuloview::s_saveTipo() {
-    QString query = "UPDATE tipo_articulo SET codtipo_articulo='"+m_codTipo->text()+"', desctipo_articulo= '"+m_descTipo->text()+"' WHERE idtipo_articulo="+m_idtipo;
+    QString query = "UPDATE tipo_articulo SET codtipo_articulo='"+
+	companyact->sanearCadena(m_codTipo->text())+"', desctipo_articulo= '"+
+	companyact->sanearCadena(m_descTipo->text())+"' WHERE idtipo_articulo="+m_idtipo;
     companyact->ejecuta(query);
     //pintar();
     // Vamos a hacer algo no reentrante.
@@ -159,13 +161,12 @@ void tiposarticuloview::s_saveTipo() {
         it->setText(COL_IDTIPOARTICULO, cursoraux1->valor("idtipo_articulo"));
         it->setText(COL_CODTIPOARTICULO,cursoraux1->valor("codtipo_articulo"));
         it->setText(COL_DESCTIPOARTICULO, cursoraux1->valor("desctipo_articulo"));
-
     }// end if
     delete cursoraux1;
 }// end s_saveTipoIVA
 
 
-/** SLOT que responde a la pulsación del botón de nuevo tipo de iva
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
 void tiposarticuloview::s_newTipo() {
@@ -182,7 +183,7 @@ void tiposarticuloview::s_newTipo() {
     pintar();
 }// end s_newTipoIVA
 
-/** SLOT que responde a la pulsación del botón de borrar la familia que se está editando.
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de borrar la familia que se estï¿½editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void tiposarticuloview::s_deleteTipo() {

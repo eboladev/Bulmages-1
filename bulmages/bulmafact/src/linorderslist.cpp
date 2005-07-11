@@ -18,17 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Para laura con cariño
-// Esta línea en honor a bruli y a la asociación de jovenes empresarios de Valencia
+// Para laura con cariï¿½
+// Esta lï¿½ea en honor a bruli y a la asociaciï¿½ de jovenes empresarios de Valencia
  
  /*
 -- Linea de pedido
--- Numero: Número de línia.
+-- Numero: Nmero de lï¿½ia.
 -- Descripcio: Descripcio de l'article.
 -- Quantitat
 -- PVD
--- Previsió: Data prevista de recepció
-CREATE TABLE lpedido (
+-- Previsiï¿½ Data prevista de recepciï¿½CREATE TABLE lpedido (
    numlpedido integer PRIMARY KEY,
    desclpedido character varying(150),
    cantlpedido integer,
@@ -120,7 +119,7 @@ void linorderslist::chargelinorders(QString idpedido) {
 // Cargamos datos generales pedido y proveedor
 	chargeorder(idpedido);
 	
-// Cargamos la tabla con las líneas del pedido
+// Cargamos la tabla con las lï¿½eas del pedido
 	m_list->setNumRows( 0 );
 	m_list->setNumCols( 0 );
 	m_list->setSelectionMode( QTable::SingleRow );
@@ -128,16 +127,16 @@ void linorderslist::chargelinorders(QString idpedido) {
 	m_list->setSelectionMode( QTable::SingleRow );
 	m_list->setColumnMovingEnabled( TRUE );
 	m_list->setNumCols(12);
-	m_list->horizontalHeader()->setLabel( COL_NUMLPEDIDO, tr( "Nº Línea" ) );
-	m_list->horizontalHeader()->setLabel( COL_DESCLPEDIDO, tr( "Descripción" ) );
+	m_list->horizontalHeader()->setLabel( COL_NUMLPEDIDO, tr( "N Lï¿½ea" ) );
+	m_list->horizontalHeader()->setLabel( COL_DESCLPEDIDO, tr( "Descripciï¿½" ) );
 	m_list->horizontalHeader()->setLabel( COL_CANTLPEDIDO, tr( "Cantidad" ) );
 	m_list->horizontalHeader()->setLabel( COL_PVDLPEDIDO, tr( "Precio" ) );
 	m_list->horizontalHeader()->setLabel( COL_PREVLPEDIDO, tr( "Fecha Prevista Entrega" ) );
-	m_list->horizontalHeader()->setLabel( COL_IDPEDIDO, tr( "Nº Pedido" ) );
-	m_list->horizontalHeader()->setLabel( COL_IDALB_PRO, tr( "Albarán" ) );
-	m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
-	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
-	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
+	m_list->horizontalHeader()->setLabel( COL_IDPEDIDO, tr( "N Pedido" ) );
+	m_list->horizontalHeader()->setLabel( COL_IDALB_PRO, tr( "Albarï¿½" ) );
+	m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artï¿½ulo" ) );
+	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Cï¿½igo Artï¿½ulo" ) );
+	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripciï¿½ Artï¿½ulo" ) );
 	m_list->horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
    
 	m_list->setColumnWidth(COL_NUMLPEDIDO,100);
@@ -266,22 +265,22 @@ int linorderslist::saveOrder() {
 	QString SQLQuery;
 	
 	if (idpedido != "0") {
-		SQLQuery = "UPDATE pedido SET numpedido='"+m_numpedido->text()+"'";
-      SQLQuery += " , anopedido="+ m_fechapedido->text().right(4);
-      SQLQuery += " , fechapedido='"+m_fechapedido->text()+"'";
-      SQLQuery += " , descpedido='"+m_descpedido->text()+"'";
-      SQLQuery += " , iddivision="+m_cursorcombo->valor("iddivision",m_combodivision->currentItem());
-      SQLQuery += " , idalmacen="+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem());
+		SQLQuery = "UPDATE pedido SET numpedido='"+companyact->sanearCadena(m_numpedido->text())+"'";
+      SQLQuery += " , anopedido="+ companyact->sanearCadena(m_fechapedido->text().right(4));
+      SQLQuery += " , fechapedido='"+companyact->sanearCadena(m_fechapedido->text())+"'";
+      SQLQuery += " , descpedido='"+companyact->sanearCadena(m_descpedido->text())+"'";
+      SQLQuery += " , iddivision="+companyact->sanearCadena(m_cursorcombo->valor("iddivision",m_combodivision->currentItem()));
+      SQLQuery += " , idalmacen="+companyact->sanearCadena(m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem()));
       SQLQuery += " WHERE idpedido ="+idpedido;
 	} else {
 		SQLQuery = "INSERT INTO pedido (numpedido, anopedido, fechapedido, descpedido, iddivision, idalmacen)";
 		SQLQuery += " VALUES (";
-		SQLQuery += "'"+m_numpedido->text()+"'";
-		SQLQuery += " , "+m_fechapedido->text().right(4);
-		SQLQuery += " , '"+m_fechapedido->text()+"'";
-		SQLQuery += " , '"+m_descpedido->text()+"'";
-		SQLQuery += " , "+m_cursorcombo->valor("iddivision",m_combodivision->currentItem());
-		SQLQuery += " , "+m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem());
+		SQLQuery += "'"+companyact->sanearCadena(m_numpedido->text())+"'";
+		SQLQuery += " , "+companyact->sanearCadena(m_fechapedido->text().right(4));
+		SQLQuery += " , '"+companyact->sanearCadena(m_fechapedido->text())+"'";
+		SQLQuery += " , '"+companyact->sanearCadena(m_descpedido->text())+"'";
+		SQLQuery += " , "+companyact->sanearCadena(m_cursorcombo->valor("iddivision",m_combodivision->currentItem()));
+		SQLQuery += " , "+companyact->sanearCadena(m_cursorcombo2->valor("idalmacen",m_comboalmacen->currentItem()));
 		SQLQuery += " ) ";
 	}
 	return companyact->ejecuta(SQLQuery);
@@ -310,13 +309,13 @@ int linorderslist::saveOrderLines() {
 
 
 int linorderslist::updateOrderLine(int i) {
-	QString SQLQuery = "UPDATE lpedido SET desclpedido='"+m_list->text(i,COL_DESCLPEDIDO)+"'";
-	SQLQuery += " , cantlpedido="+ m_list->text(i,COL_CANTLPEDIDO);
-	SQLQuery += " , pvdlpedido="+m_list->text(i,COL_PVDLPEDIDO);
-	SQLQuery += " , prevlpedido='"+m_list->text(i,COL_PREVLPEDIDO)+"'";
-	SQLQuery += " , idarticulo="+m_list->text(i,COL_IDARTICULO);
+	QString SQLQuery = "UPDATE lpedido SET desclpedido='"+companyact->sanearCadena(m_list->text(i,COL_DESCLPEDIDO))+"'";
+	SQLQuery += " , cantlpedido="+ companyact->sanearCadena(m_list->text(i,COL_CANTLPEDIDO));
+	SQLQuery += " , pvdlpedido="+companyact->sanearCadena(m_list->text(i,COL_PVDLPEDIDO));
+	SQLQuery += " , prevlpedido='"+companyact->sanearCadena(m_list->text(i,COL_PREVLPEDIDO))+"'";
+	SQLQuery += " , idarticulo="+companyact->sanearCadena(m_list->text(i,COL_IDARTICULO));
 	if (m_list->text(i,COL_IDALB_PRO) != "") {
-		SQLQuery += " , idalb_pro="+m_list->text(i,COL_IDALB_PRO);
+		SQLQuery += " , idalb_pro="+companyact->sanearCadena(m_list->text(i,COL_IDALB_PRO));
 	}
 	SQLQuery += " WHERE idpedido ="+idpedido+" AND numlpedido="+m_list->text(i,COL_NUMLPEDIDO);
 	return companyact->ejecuta(SQLQuery);
@@ -331,10 +330,10 @@ int linorderslist::insertOrderLine(int i) {
 		SQLQuery = "INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo)";
 	}
 	SQLQuery += " VALUES (";
-	SQLQuery += "'"+m_list->text(i,COL_DESCLPEDIDO)+"'";
-	SQLQuery += " , "+m_list->text(i,COL_CANTLPEDIDO);
-	SQLQuery += " , "+m_list->text(i,COL_PVDLPEDIDO);
-	SQLQuery += " , '"+m_list->text(i,COL_PREVLPEDIDO)+"'";
+	SQLQuery += "'"+companyact->sanearCadena(m_list->text(i,COL_DESCLPEDIDO))+"'";
+	SQLQuery += " , "+companyact->sanearCadena(m_list->text(i,COL_CANTLPEDIDO));
+	SQLQuery += " , "+companyact->sanearCadena(m_list->text(i,COL_PVDLPEDIDO));
+	SQLQuery += " , '"+companyact->sanearCadena(m_list->text(i,COL_PREVLPEDIDO))+"'";
 	SQLQuery += " , "+idpedido;
 	SQLQuery += " , "+m_list->text(i,COL_IDARTICULO);
 	if (m_list->text(i,COL_IDALB_PRO) != "") {
@@ -460,8 +459,8 @@ void linorderslist::manageArticle(int row) {
 
 
 void linorderslist::searchArticle() {
-   fprintf(stderr,"Busqueda de un artículo\n");
-   articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
+   fprintf(stderr,"Busqueda de un artï¿½ulo\n");
+   articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artï¿½ulo","company"));
    
 // , WType_Dialog| WShowModal   
    artlist->modoseleccion();
@@ -489,7 +488,7 @@ void linorderslist::removeOrderLin() {
 
 void linorderslist::cancelOrderLinChanges() {
 	if (QMessageBox::warning( this, "BulmaFact - Pedidos",
-    "Se perderán los cambios que haya realizado", "Aceptar", "Cancelar") == 0) {
+    "Se perderï¿½ los cambios que haya realizado", "Aceptar", "Cancelar") == 0) {
 		close();
 	}
 }

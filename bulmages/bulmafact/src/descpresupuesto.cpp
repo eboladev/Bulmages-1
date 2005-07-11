@@ -14,7 +14,7 @@
 /*
 -- Descuento de presupuesto.
 -- Numero
---Concepte: Descripció del motiu de descompte.
+--Concepte: Descripciï¿½del motiu de descompte.
 --Proporcio: Percentatge a descomptar.
 -- Descompte de pressupost a clients.
 CREATE TABLE dpresupuesto (
@@ -22,7 +22,7 @@ CREATE TABLE dpresupuesto (
    conceptdpresupuesto character varying(2000),
    proporciondpresupuesto numeric(5,2),
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despuï¿½ de ï¿½ta.
 );
 */
 
@@ -76,9 +76,12 @@ void DescuentoPresupuesto::borrar() {
 }// end delete
 
 void DescuentoPresupuesto::guardaDescuentoPresupuesto() {
-    /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun estï¿½la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_iddpresupuesto == "") {
-        QString SQLQuery = "INSERT INTO dpresupuesto (conceptdpresupuesto, proporciondpresupuesto, idpresupuesto) VALUES ('"+mdb_conceptdpresupuesto+"',"+mdb_proporciondpresupuesto+","+mdb_idpresupuesto+")";
+        QString SQLQuery = "INSERT INTO dpresupuesto (conceptdpresupuesto, proporciondpresupuesto, idpresupuesto) VALUES ('"+
+	companyact->sanearCadena(mdb_conceptdpresupuesto)+"',"+
+	companyact->sanearCadena(mdb_proporciondpresupuesto)+","+
+	companyact->sanearCadena(mdb_idpresupuesto)+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(iddpresupuesto) AS m FROM dpresupuesto ");
@@ -88,10 +91,10 @@ void DescuentoPresupuesto::guardaDescuentoPresupuesto() {
         companyact->commit();
     } else {
         QString SQLQuery = "UPDATE dpresupuesto SET ";
-        SQLQuery += " conceptdpresupuesto = '"+mdb_conceptdpresupuesto+"' ";
-        SQLQuery += " ,proporciondpresupuesto = "+mdb_proporciondpresupuesto+" ";
-        SQLQuery += " ,idpresupuesto = "+mdb_idpresupuesto+" ";
-        SQLQuery += " WHERE iddpresupuesto = "+mdb_iddpresupuesto;
+        SQLQuery += " conceptdpresupuesto = '"+companyact->sanearCadena(mdb_conceptdpresupuesto)+"' ";
+        SQLQuery += " ,proporciondpresupuesto = "+companyact->sanearCadena(mdb_proporciondpresupuesto)+" ";
+        SQLQuery += " ,idpresupuesto = "+companyact->sanearCadena(mdb_idpresupuesto)+" ";
+        SQLQuery += " WHERE iddpresupuesto = "+companyact->sanearCadena(mdb_iddpresupuesto);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

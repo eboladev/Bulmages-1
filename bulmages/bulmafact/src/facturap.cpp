@@ -66,7 +66,7 @@ void FacturaProveedor::pintaFacturaProveedor() {
 }// end pintaFacturaProveedor
 
 
-// Esta función carga un FacturaProveedor.
+// Esta funciï¿½ carga un FacturaProveedor.
 void FacturaProveedor::cargaFacturaProveedor(QString idbudget) {
     mdb_idfacturap = idbudget;
     inicialize();
@@ -102,8 +102,16 @@ void FacturaProveedor::guardaFacturaProveedor() {
     if (mdb_idforma_pago == "")
         mdb_idforma_pago = "NULL";
     if (mdb_idfacturap == "") {
-        /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO facturap (descfacturap, procesadafacturap, reffacturap, numfacturap, ffacturap, comentfacturap, idproveedor, idforma_pago) VALUES ('"+mdb_descfacturap+"',"+mdb_procesadafacturap+",'"+mdb_reffacturap+"','"+mdb_numfacturap+"','"+mdb_ffacturap+"','"+mdb_comentfacturap+"',"+mdb_idproveedor+","+mdb_idforma_pago+")";
+        /// Se trata de una inserciï¿½
+        QString SQLQuery = "INSERT INTO facturap (descfacturap, procesadafacturap, reffacturap, numfacturap, ffacturap, comentfacturap, idproveedor, idforma_pago) VALUES ('"+
+	companyact->sanearCadena(mdb_descfacturap)+"',"+
+	companyact->sanearCadena(mdb_procesadafacturap)+",'"+
+	companyact->sanearCadena(mdb_reffacturap)+"','"+
+	companyact->sanearCadena(mdb_numfacturap)+"','"+
+	companyact->sanearCadena(mdb_ffacturap)+"','"+
+	companyact->sanearCadena(mdb_comentfacturap)+"',"+
+	companyact->sanearCadena(mdb_idproveedor)+","+
+	companyact->sanearCadena(mdb_idforma_pago)+")";
 
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idfacturap) AS m FROM facturap");
@@ -112,17 +120,17 @@ void FacturaProveedor::guardaFacturaProveedor() {
         delete cur;
         companyact->commit();
     } else {
-        /// Se trata de una modificación
+        /// Se trata de una modificaciï¿½
         QString SQLQuery = "UPDATE facturap SET ";
-        SQLQuery += " numfacturap="+mdb_numfacturap;
-        SQLQuery += " ,ffacturap='"+mdb_ffacturap+"'";
-        SQLQuery += " ,comentfacturap='"+mdb_comentfacturap+"'";
-        SQLQuery += " ,idproveedor="+mdb_idproveedor;
-        SQLQuery += " ,reffacturap='"+mdb_reffacturap+"'";
-        SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
-        SQLQuery += " ,procesadafacturap="+mdb_procesadafacturap;
-	SQLQuery += " ,descfacturap='"+mdb_descfacturap+"'";
-        SQLQuery += " WHERE idfacturap="+mdb_idfacturap;
+        SQLQuery += " numfacturap="+companyact->sanearCadena(mdb_numfacturap);
+        SQLQuery += " ,ffacturap='"+companyact->sanearCadena(mdb_ffacturap)+"'";
+        SQLQuery += " ,comentfacturap='"+companyact->sanearCadena(mdb_comentfacturap)+"'";
+        SQLQuery += " ,idproveedor="+companyact->sanearCadena(mdb_idproveedor);
+        SQLQuery += " ,reffacturap='"+companyact->sanearCadena(mdb_reffacturap)+"'";
+        SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
+        SQLQuery += " ,procesadafacturap="+companyact->sanearCadena(mdb_procesadafacturap);
+	SQLQuery += " ,descfacturap='"+companyact->sanearCadena(mdb_descfacturap)+"'";
+        SQLQuery += " WHERE idfacturap="+companyact->sanearCadena(mdb_idfacturap);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();
@@ -150,7 +158,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Línea de totales del presupuesto
+    // Lï¿½ea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+mdb_idproveedor;
     cursor2 *cur = companyact->cargacursor(SQLQuery);

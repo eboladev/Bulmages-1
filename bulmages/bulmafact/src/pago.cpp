@@ -57,7 +57,7 @@ void Pago::pintaPago() {
 }// end pintaPago
 
 
-// Esta función carga un Pago.
+// Esta funciï¿½ carga un Pago.
 void Pago::cargaPago(QString idbudget) {
     mdb_idpago = idbudget;
     QString query = "SELECT * FROM pago WHERE idPago="+idbudget;
@@ -83,8 +83,14 @@ void Pago::cargaPago(QString idbudget) {
 void Pago::guardaPago() {
     companyact->begin();
     if (mdb_idpago == "") {
-        /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO pago (idproveedor, fechapago, cantpago, refpago, comentpago, previsionpago) VALUES ("+mdb_idproveedor+",'"+mdb_fechapago+"',"+mdb_cantpago+",'"+mdb_refpago+"','"+mdb_comentpago+"',"+mdb_previsionpago+")";
+        /// Se trata de una inserciï¿½
+        QString SQLQuery = "INSERT INTO pago (idproveedor, fechapago, cantpago, refpago, comentpago, previsionpago) VALUES ("+
+	companyact->sanearCadena(mdb_idproveedor)+",'"+
+	companyact->sanearCadena(mdb_fechapago)+"',"+
+	companyact->sanearCadena(mdb_cantpago)+",'"+
+	companyact->sanearCadena(mdb_refpago)+"','"+
+	companyact->sanearCadena(mdb_comentpago)+"',"+
+	companyact->sanearCadena(mdb_previsionpago)+")";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpago) AS m FROM pago");
         if (!cur->eof())
@@ -92,15 +98,15 @@ void Pago::guardaPago() {
         delete cur;
         companyact->commit();
     } else {
-        /// Se trata de una modificación
+        /// Se trata de una modificaciï¿½
         QString SQLQuery = "UPDATE pago SET ";
-        SQLQuery += " idproveedor="+mdb_idproveedor;
-        SQLQuery += " ,fechapago='"+mdb_fechapago+"'";
-        SQLQuery += " ,cantpago='"+mdb_cantpago+"'";
-        SQLQuery += " ,refpago='"+mdb_refpago+"'";
-        SQLQuery += " ,comentpago='"+mdb_comentpago+"'";
-        SQLQuery += " ,previsionpago='"+mdb_previsionpago+"'";
-        SQLQuery += " WHERE idpago="+mdb_idpago;
+        SQLQuery += " idproveedor="+companyact->sanearCadena(mdb_idproveedor);
+        SQLQuery += " ,fechapago='"+companyact->sanearCadena(mdb_fechapago)+"'";
+        SQLQuery += " ,cantpago='"+companyact->sanearCadena(mdb_cantpago)+"'";
+        SQLQuery += " ,refpago='"+companyact->sanearCadena(mdb_refpago)+"'";
+        SQLQuery += " ,comentpago='"+companyact->sanearCadena(mdb_comentpago)+"'";
+        SQLQuery += " ,previsionpago='"+companyact->sanearCadena(mdb_previsionpago)+"'";
+        SQLQuery += " WHERE idpago="+companyact->sanearCadena(mdb_idpago);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

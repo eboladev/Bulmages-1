@@ -79,9 +79,16 @@ void LinFactura::borrar() {
 }// end delete
 
 void LinFactura::guardaLinFactura() {
-    /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun estï¿½la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_idlfactura == "") {
-        QString SQLQuery = "INSERT INTO lFactura (desclFactura, cantlFactura, pvplFactura, descuentolFactura, idFactura, idarticulo, ivalFactura) VALUES ('"+mdb_desclfactura+"',"+mdb_cantlfactura+","+mdb_pvplfactura+","+mdb_descuentolfactura+","+mdb_idfactura+","+mdb_idarticulo+", "+mdb_ivalfactura+")";
+        QString SQLQuery = "INSERT INTO lFactura (desclFactura, cantlFactura, pvplFactura, descuentolFactura, idFactura, idarticulo, ivalFactura) VALUES ('"+
+	companyact->sanearCadena(mdb_desclfactura)+"',"+
+	companyact->sanearCadena(mdb_cantlfactura)+","+
+	companyact->sanearCadena(mdb_pvplfactura)+","+
+	companyact->sanearCadena(mdb_descuentolfactura)+","+
+	companyact->sanearCadena(mdb_idfactura)+","+
+	companyact->sanearCadena(mdb_idarticulo)+", "+
+	companyact->sanearCadena(mdb_ivalfactura)+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idlFactura) AS m FROM lFactura ");
@@ -91,14 +98,14 @@ void LinFactura::guardaLinFactura() {
         companyact->commit();
     } else {
         QString SQLQuery = "UPDATE lFactura SET ";
-        SQLQuery += " desclfactura = '"+mdb_desclfactura+"' ";
-        SQLQuery += " ,cantlfactura = "+mdb_cantlfactura+" ";
-        SQLQuery += " ,pvplfactura = "+mdb_pvplfactura+" ";
-        SQLQuery += " ,descuentolfactura = "+mdb_descuentolfactura+" ";
-        SQLQuery += " ,idfactura = "+mdb_idfactura+" ";
-        SQLQuery += " ,idarticulo = "+mdb_idarticulo+" ";
-        SQLQuery += " ,ivalfactura = "+mdb_ivalfactura+" ";
-        SQLQuery += " WHERE idlfactura = "+mdb_idlfactura;
+        SQLQuery += " desclfactura = '"+companyact->sanearCadena(mdb_desclfactura)+"' ";
+        SQLQuery += " ,cantlfactura = "+companyact->sanearCadena(mdb_cantlfactura)+" ";
+        SQLQuery += " ,pvplfactura = "+companyact->sanearCadena(mdb_pvplfactura)+" ";
+        SQLQuery += " ,descuentolfactura = "+companyact->sanearCadena(mdb_descuentolfactura)+" ";
+        SQLQuery += " ,idfactura = "+companyact->sanearCadena(mdb_idfactura)+" ";
+        SQLQuery += " ,idarticulo = "+companyact->sanearCadena(mdb_idarticulo)+" ";
+        SQLQuery += " ,ivalfactura = "+companyact->sanearCadena(mdb_ivalfactura)+" ";
+        SQLQuery += " WHERE idlfactura = "+companyact->sanearCadena(mdb_idlfactura);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

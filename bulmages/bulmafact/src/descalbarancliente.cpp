@@ -62,9 +62,12 @@ void DescuentoAlbaranCliente::borrar() {
 }// end delete
 
 void DescuentoAlbaranCliente::guardaDescuentoAlbaranCliente() {
-    /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun estï¿½la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_iddalbaran == "") {
-        QString SQLQuery = "INSERT INTO dalbaran (conceptdalbaran, proporciondalbaran, idalbaran) VALUES ('"+mdb_conceptdalbaran+"',"+mdb_proporciondalbaran+","+mdb_idalbaran+")";
+        QString SQLQuery = "INSERT INTO dalbaran (conceptdalbaran, proporciondalbaran, idalbaran) VALUES ('"+
+	companyact->sanearCadena(mdb_conceptdalbaran)+"',"+
+	companyact->sanearCadena(mdb_proporciondalbaran)+","+
+	companyact->sanearCadena(mdb_idalbaran)+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(iddalbaran) AS m FROM dalbaran ");
@@ -74,10 +77,10 @@ void DescuentoAlbaranCliente::guardaDescuentoAlbaranCliente() {
         companyact->commit();
     } else {
         QString SQLQuery = "UPDATE dalbaran SET ";
-        SQLQuery += " conceptdalbaran = '"+mdb_conceptdalbaran+"' ";
-        SQLQuery += " ,proporciondalbaran = "+mdb_proporciondalbaran+" ";
-        SQLQuery += " ,idalbaran = "+mdb_idalbaran+" ";
-        SQLQuery += " WHERE iddalbaran = "+mdb_iddalbaran;
+        SQLQuery += " conceptdalbaran = '"+companyact->sanearCadena(mdb_conceptdalbaran)+"' ";
+        SQLQuery += " ,proporciondalbaran = "+companyact->sanearCadena(mdb_proporciondalbaran)+" ";
+        SQLQuery += " ,idalbaran = "+companyact->sanearCadena(mdb_idalbaran)+" ";
+        SQLQuery += " WHERE iddalbaran = "+companyact->sanearCadena(mdb_iddalbaran);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

@@ -80,7 +80,7 @@ void presupuesto::pintaPresupuesto() {
     calculaypintatotales();
 }// end pintaPresupuesto
 
-// Esta función carga un presupuesto.
+// Esta funciï¿½ carga un presupuesto.
 void presupuesto::chargeBudget(QString idbudget) {
     mdb_idpresupuesto = idbudget;
     QString query = "SELECT * FROM presupuesto LEFT JOIN almacen ON  presupuesto.idalmacen = almacen.idalmacen WHERE idpresupuesto="+idbudget;
@@ -123,8 +123,22 @@ void presupuesto::guardapresupuesto() {
     if (mdb_idtrabajador== "")
     	mdb_idtrabajador = "NULL";
     if (mdb_idpresupuesto == "") {
-        /// Se trata de una inserción
-        QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, procesadopresupuesto, descpresupuesto, refpresupuesto, idforma_pago, idtrabajador) VALUES ("+mdb_numpresupuesto+",'"+mdb_fpresupuesto+"','"+mdb_contactpresupuesto+"','"+mdb_telpresupuesto+"','"+mdb_vencpresupuesto+"','"+mdb_comentpresupuesto+"',"+mdb_idusuari+","+mdb_idcliente+","+mdb_idalmacen+","+mdb_procesadopresupuesto+",'"+mdb_descpresupuesto+"','"+mdb_refpresupuesto+"',"+mdb_idforma_pago+","+mdb_idtrabajador+")";
+        /// Se trata de una inserciï¿½
+        QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, procesadopresupuesto, descpresupuesto, refpresupuesto, idforma_pago, idtrabajador) VALUES ("+
+	companyact->sanearCadena(mdb_numpresupuesto)+",'"+
+	companyact->sanearCadena(mdb_fpresupuesto)+"','"+
+	companyact->sanearCadena(mdb_contactpresupuesto)+"','"+
+	companyact->sanearCadena(mdb_telpresupuesto)+"','"+
+	companyact->sanearCadena(mdb_vencpresupuesto)+"','"+
+	companyact->sanearCadena(mdb_comentpresupuesto)+"',"+
+	companyact->sanearCadena(mdb_idusuari)+","+
+	companyact->sanearCadena(mdb_idcliente)+","+
+	companyact->sanearCadena(mdb_idalmacen)+","+
+	companyact->sanearCadena(mdb_procesadopresupuesto)+",'"+
+	companyact->sanearCadena(mdb_descpresupuesto)+"','"+
+	companyact->sanearCadena(mdb_refpresupuesto)+"',"+
+	companyact->sanearCadena(mdb_idforma_pago)+","+
+	companyact->sanearCadena(mdb_idtrabajador)+")";
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpresupuesto) AS m FROM presupuesto");
         if (!cur->eof())
@@ -132,23 +146,23 @@ void presupuesto::guardapresupuesto() {
         delete cur;
         companyact->commit();
     } else {
-        /// Se trata de una modificación
+        /// Se trata de una modificaciï¿½
         QString SQLQuery = "UPDATE presupuesto SET ";
-        SQLQuery += " numpresupuesto="+mdb_numpresupuesto;
-        SQLQuery += " ,fpresupuesto='"+mdb_fpresupuesto+"'";
-        SQLQuery += " ,contactpresupuesto='"+mdb_contactpresupuesto+"'";
-        SQLQuery += " ,telpresupuesto='"+mdb_telpresupuesto+"'";
-        SQLQuery += " ,vencpresupuesto='"+mdb_vencpresupuesto+"'";
-        SQLQuery += " ,comentpresupuesto='"+mdb_comentpresupuesto+"'";
-        SQLQuery += " ,idusuari="+mdb_idusuari;
-        SQLQuery += " ,idcliente="+mdb_idcliente;
-        SQLQuery += " ,idalmacen="+mdb_idalmacen;
-        SQLQuery += " ,procesadopresupuesto="+mdb_procesadopresupuesto;
-        SQLQuery += " ,descpresupuesto='"+mdb_descpresupuesto+"'";
-        SQLQuery += " ,refpresupuesto= '"+mdb_refpresupuesto+"'";
-        SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
-	SQLQuery += " ,idtrabajador="+mdb_idtrabajador;
-        SQLQuery += " WHERE idpresupuesto="+mdb_idpresupuesto;
+        SQLQuery += " numpresupuesto="+companyact->sanearCadena(mdb_numpresupuesto);
+        SQLQuery += " ,fpresupuesto='"+companyact->sanearCadena(mdb_fpresupuesto)+"'";
+        SQLQuery += " ,contactpresupuesto='"+companyact->sanearCadena(mdb_contactpresupuesto)+"'";
+        SQLQuery += " ,telpresupuesto='"+companyact->sanearCadena(mdb_telpresupuesto)+"'";
+        SQLQuery += " ,vencpresupuesto='"+companyact->sanearCadena(mdb_vencpresupuesto)+"'";
+        SQLQuery += " ,comentpresupuesto='"+companyact->sanearCadena(mdb_comentpresupuesto)+"'";
+        SQLQuery += " ,idusuari="+companyact->sanearCadena(mdb_idusuari);
+        SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente);
+        SQLQuery += " ,idalmacen="+companyact->sanearCadena(mdb_idalmacen);
+        SQLQuery += " ,procesadopresupuesto="+companyact->sanearCadena(mdb_procesadopresupuesto);
+        SQLQuery += " ,descpresupuesto='"+companyact->sanearCadena(mdb_descpresupuesto)+"'";
+        SQLQuery += " ,refpresupuesto= '"+companyact->sanearCadena(mdb_refpresupuesto)+"'";
+        SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
+	SQLQuery += " ,idtrabajador="+companyact->sanearCadena(mdb_idtrabajador);
+        SQLQuery += " WHERE idpresupuesto="+companyact->sanearCadena(mdb_idpresupuesto);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();
@@ -218,7 +232,7 @@ void presupuesto::imprimirPresupuesto() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt="";
-    // Línea de totales del presupuesto
+    // Lï¿½ea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -242,7 +256,7 @@ void presupuesto::imprimirPresupuesto() {
 
 
     linpresupuesto *linea;
-    /// Impresión de los contenidos
+    /// Impresiï¿½ de los contenidos
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"7cm, 2cm, 2cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
     fitxersortidatxt += "	<td>Concepto</td>\n";
@@ -274,7 +288,7 @@ void presupuesto::imprimirPresupuesto() {
 
 
 
-        /// Impresión de los descuentos
+        /// Impresiï¿½ de los descuentos
     Fixed porcentt("0.00");
     DescuentoPresupuesto *linea1;
     if (listadescuentos->m_lista.first()) {
@@ -366,7 +380,7 @@ void presupuesto::calculaypintatotales() {
     fprintf(stderr,"calculaypintatotales \n");
     base basesimp;
     linpresupuesto *linea;
-    /// Impresión de los contenidos
+    /// Impresiï¿½ de los contenidos
     QString l;
     
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
@@ -384,7 +398,7 @@ void presupuesto::calculaypintatotales() {
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.data();
     }// end for
-    /// Impresión de los descuentos
+    /// Impresiï¿½ de los descuentos
     Fixed porcentt("0.00");
     DescuentoPresupuesto *linea1;
     if (listadescuentos->m_lista.first()) {

@@ -1,5 +1,5 @@
 /***************************************************************************
- *Copyright (C) 2004 by  Tomeu Borrás Riera                                *
+ *Copyright (C) 2004 by  Tomeu Borrï¿½ Riera                                *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,7 +17,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
  /** \file importainteligente.cpp
-   * Contiene la implementación de la clase importainteligente que sirve para importar ficheros de XML a la base de datos de
+   * Contiene la implementaciï¿½ de la clase importainteligente que sirve para importar ficheros de XML a la base de datos de
    * BulmaCont
    */
 #include "importainteligente.h"
@@ -25,7 +25,7 @@
 #include <qstring.h>
 
 /** Constructor de la claseque inicializa las variables y coge los datos de base de datos a usar y empresa 
-  * \param emp Empresa que construye el objeto y que sirve para inicialización de la base de datos
+  * \param emp Empresa que construye el objeto y que sirve para inicializaciï¿½ de la base de datos
   */
 importainteligente::importainteligente( empresa *emp) : QXmlDefaultHandler() {
    fprintf(stderr,"Inicializador de importainteligente\n");
@@ -37,12 +37,12 @@ importainteligente::importainteligente( empresa *emp) : QXmlDefaultHandler() {
 
 
 /** Se ha encontrado en el parser del XML un tag de inicio
-  * La acutación normal es hacer una inserción del elemento e introducir en el Mapa tvalores el identificador encontrado
+  * La acutaciï¿½ normal es hacer una inserciï¿½ del elemento e introducir en el Mapa tvalores el identificador encontrado
   * para que al encontrar el tag de fin se haga un update del registro con los valores hayados en el XML.
   * Se asigna a la variable global tag el nombre del tag para indicar que estamos dentro de dicho tag
-  * \todo debería usarse una pila en lugar de una simple variable.
+  * \todo deberï¿½ usarse una pila en lugar de una simple variable.
   * \param qName Nombre del tag encontrado
-  * \returns Devuelve TRUE porque no queremos que se detenga la ejecución del parseo aun habiendo encontrado errores.
+  * \returns Devuelve TRUE porque no queremos que se detenga la ejecuciï¿½ del parseo aun habiendo encontrado errores.
   */
 bool importainteligente::startElement( const QString& , const QString& , const QString& qName, const QXmlAttributes&) {
     tag=qName;
@@ -60,7 +60,7 @@ bool importainteligente::startElement( const QString& , const QString& , const Q
        delete cur;
     }// end ainteligente
     if (tag == "binteligente") {
-       SQLQuery.sprintf("INSERT INTO binteligente (idainteligente) VALUES (%s)\n", tvalores["idainteligente"].ascii());
+       SQLQuery.sprintf("INSERT INTO binteligente (idainteligente) VALUES (%s)\n", conexionbase->sanearCadena(tvalores["idainteligente"]).ascii());
        conexionbase->begin();
        conexionbase->ejecuta(SQLQuery);
        SQLQuery = "SELECT max(idbinteligente) AS idbinteligente FROM binteligente";
@@ -75,13 +75,13 @@ bool importainteligente::startElement( const QString& , const QString& , const Q
 }// end startElement
 
 
-/** Se ha encontrado en el parseo del XML un tag de finalización
-  * La función identificará mediante el parametro \ref qName que tag ha finalizado y hará los UPDATES necesarios en la
+/** Se ha encontrado en el parseo del XML un tag de finalizaciï¿½
+  * La funciï¿½ identificarï¿½mediante el parametro \ref qName que tag ha finalizado y harï¿½los UPDATES necesarios en la
   * base de datos con los valores almacenados en el mapa \ref tvalores
-  * La variable global tag es puesta a "" para que no se hagan consideraciones en los demás elementos de que se está 
+  * La variable global tag es puesta a "" para que no se hagan consideraciones en los demï¿½ elementos de que se estï¿½
   * en el tag que acaba de cerrarse.
-  * \todo Se debería vaciar el Mapa \ref tvalores para que no haya propagación de valores en caso de ausencia de elementos en el XML
-  * \todo Debería usarse una pila en lugar de la variable global tag
+  * \todo Se deberï¿½ vaciar el Mapa \ref tvalores para que no haya propagaciï¿½ de valores en caso de ausencia de elementos en el XML
+  * \todo Deberï¿½ usarse una pila en lugar de la variable global tag
   * \todo Deberian agruparse los UPDATES de la base de datos para que ocupen menos tiempo de proceso.
   * \param qName Nombre del tag del que se ha encontrado el final.
   */
@@ -159,8 +159,8 @@ bool importainteligente::endElement( const QString& , const QString& , const QSt
 }// endElement
 
 
-/** Se ha encontrado información de contenido en el XML
-  * La función almacena en el mapa de clase \ref tvalores la información contenida asignandolo al último tag que se ha abierto
+/** Se ha encontrado informaciï¿½ de contenido en el XML
+  * La funciï¿½ almacena en el mapa de clase \ref tvalores la informaciï¿½ contenida asignandolo al ltimo tag que se ha abierto
   */
 bool importainteligente::characters( const QString& ch ) {
     if (tag != "") {

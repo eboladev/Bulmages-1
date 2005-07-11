@@ -61,9 +61,12 @@ void DescuentoFactura::borrar() {
 }// end delete
 
 void DescuentoFactura::guardaDescuentoFactura() {
-    /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun estï¿½la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_iddfactura == "") {
-        QString SQLQuery = "INSERT INTO dfactura (conceptdfactura, proporciondfactura, idfactura) VALUES ('"+mdb_conceptdfactura+"',"+mdb_proporciondfactura+","+mdb_idfactura+")";
+        QString SQLQuery = "INSERT INTO dfactura (conceptdfactura, proporciondfactura, idfactura) VALUES ('"+
+	companyact->sanearCadena(mdb_conceptdfactura)+"',"+
+	companyact->sanearCadena(mdb_proporciondfactura)+","+
+	companyact->sanearCadena(mdb_idfactura)+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(iddfactura) AS m FROM dfactura ");
@@ -73,10 +76,10 @@ void DescuentoFactura::guardaDescuentoFactura() {
         companyact->commit();
     } else {
         QString SQLQuery = "UPDATE dfactura SET ";
-        SQLQuery += " conceptdfactura = '"+mdb_conceptdfactura+"' ";
-        SQLQuery += " ,proporciondfactura = "+mdb_proporciondfactura+" ";
-        SQLQuery += " ,idfactura = "+mdb_idfactura+" ";
-        SQLQuery += " WHERE iddfactura = "+mdb_iddfactura;
+        SQLQuery += " conceptdfactura = '"+companyact->sanearCadena(mdb_conceptdfactura)+"' ";
+        SQLQuery += " ,proporciondfactura = "+companyact->sanearCadena(mdb_proporciondfactura)+" ";
+        SQLQuery += " ,idfactura = "+companyact->sanearCadena(mdb_idfactura)+" ";
+        SQLQuery += " WHERE iddfactura = "+companyact->sanearCadena(mdb_iddfactura);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

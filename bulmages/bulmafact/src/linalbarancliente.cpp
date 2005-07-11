@@ -78,9 +78,16 @@ void LinAlbaranCliente::borrar() {
 }// end delete
 
 void LinAlbaranCliente::guardaLinAlbaranCliente() {
-    /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun estï¿½la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_numlalbaran == "") {
-        QString SQLQuery = "INSERT INTO lalbaran (desclalbaran, cantlalbaran, pvplalbaran, descontlalbaran, idalbaran, idarticulo, ivalalbaran) VALUES ('"+mdb_desclalbaran+"',"+mdb_cantlalbaran+","+mdb_pvplalbaran+","+mdb_descontlalbaran+","+mdb_idalbaran+","+mdb_idarticulo+","+mdb_ivalalbaran+")";
+        QString SQLQuery = "INSERT INTO lalbaran (desclalbaran, cantlalbaran, pvplalbaran, descontlalbaran, idalbaran, idarticulo, ivalalbaran) VALUES ('"+
+	companyact->sanearCadena(mdb_desclalbaran)+"',"+
+	companyact->sanearCadena(mdb_cantlalbaran)+","+
+	companyact->sanearCadena(mdb_pvplalbaran)+","+
+	companyact->sanearCadena(mdb_descontlalbaran)+","+
+	companyact->sanearCadena(mdb_idalbaran)+","+
+	companyact->sanearCadena(mdb_idarticulo)+","+
+	companyact->sanearCadena(mdb_ivalalbaran)+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(numlalbaran) AS m FROM lalbaran ");
@@ -90,13 +97,13 @@ void LinAlbaranCliente::guardaLinAlbaranCliente() {
         companyact->commit();
     } else {
         QString SQLQuery = "UPDATE lalbaran SET ";
-        SQLQuery += " desclalbaran = '"+mdb_desclalbaran+"' ";
-        SQLQuery += " ,cantlalbaran = "+mdb_cantlalbaran+" ";
-        SQLQuery += " ,pvplalbaran = "+mdb_pvplalbaran+" ";
-        SQLQuery += " ,descontlalbaran = "+mdb_descontlalbaran+" ";
-        SQLQuery += " ,idarticulo = "+mdb_idarticulo+" ";
-	SQLQuery += " ,ivalalbaran = "+mdb_ivalalbaran+" ";
-        SQLQuery += " WHERE numlalbaran = "+mdb_numlalbaran;
+        SQLQuery += " desclalbaran = '"+companyact->sanearCadena(mdb_desclalbaran)+"' ";
+        SQLQuery += " ,cantlalbaran = "+companyact->sanearCadena(mdb_cantlalbaran)+" ";
+        SQLQuery += " ,pvplalbaran = "+companyact->sanearCadena(mdb_pvplalbaran)+" ";
+        SQLQuery += " ,descontlalbaran = "+companyact->sanearCadena(mdb_descontlalbaran)+" ";
+        SQLQuery += " ,idarticulo = "+companyact->sanearCadena(mdb_idarticulo)+" ";
+	SQLQuery += " ,ivalalbaran = "+companyact->sanearCadena(mdb_ivalalbaran)+" ";
+        SQLQuery += " WHERE numlalbaran = "+companyact->sanearCadena(mdb_numlalbaran);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

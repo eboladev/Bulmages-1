@@ -4,7 +4,7 @@
 // Description:
 //
 //
-// Author: Tomeu Borrás Riera, (C) 2005
+// Author: Tomeu Borrï¿½ Riera, (C) 2005
 //
 // Copyright: See COPYING file that comes with this distribution
 //
@@ -135,15 +135,15 @@ QString m_textactivotrabajador = "FALSE";
 		m_textactivotrabajador = "TRUE";
 
     QString query = "UPDATE trabajador SET ";
-    query += "  nomtrabajador='"+m_nomtrabajador->text()+"'";
-    query += ", apellidostrabajador= '"+m_apellidostrabajador->text()+"'";
-    query += ", nsstrabajador = '"+m_nsstrabajador->text()+"'";
-    query += ", dirtrabajador = '"+m_dirtrabajador->text()+"'";
-    query += ", teltrabajador = '"+m_teltrabajador->text()+"'";
-    query += ", moviltrabajador = '"+m_moviltrabajador->text()+"'";
-    query += ", emailtrabajador = '"+m_emailtrabajador->text()+"'";
-    query += ", activotrabajador = "+m_textactivotrabajador;
-    query += " WHERE idtrabajador="+m_idtrabajador;
+    query += "  nomtrabajador='"+companyact->sanearCadena(m_nomtrabajador->text())+"'";
+    query += ", apellidostrabajador= '"+companyact->sanearCadena(m_apellidostrabajador->text())+"'";
+    query += ", nsstrabajador = '"+companyact->sanearCadena(m_nsstrabajador->text())+"'";
+    query += ", dirtrabajador = '"+companyact->sanearCadena(m_dirtrabajador->text())+"'";
+    query += ", teltrabajador = '"+companyact->sanearCadena(m_teltrabajador->text())+"'";
+    query += ", moviltrabajador = '"+companyact->sanearCadena(m_moviltrabajador->text())+"'";
+    query += ", emailtrabajador = '"+companyact->sanearCadena(m_emailtrabajador->text())+"'";
+    query += ", activotrabajador = "+companyact->sanearCadena(m_textactivotrabajador);
+    query += " WHERE idtrabajador="+companyact->sanearCadena(m_idtrabajador);
     
     companyact->ejecuta(query);
     QListViewItem *it =  m_listTrabajador->findItem(m_idtrabajador, COL_IDTRABAJADOR);
@@ -173,7 +173,7 @@ fprintf(stderr,"TrataModificado\n");
 }// end trataModificado
 
 
-/** SLOT que responde a la pulsación del botón de nuevo tipo de iva
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
 void Trabajador::s_newTrabajador() {
@@ -190,7 +190,7 @@ void Trabajador::s_newTrabajador() {
 }// end s_newTipoIVA
 
 
-/** SLOT que responde a la pulsación del botón de borrar la familia que se está editando.
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de borrar la familia que se estï¿½editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void Trabajador::s_deleteTrabajador() {

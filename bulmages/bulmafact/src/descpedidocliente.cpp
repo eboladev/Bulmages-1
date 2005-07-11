@@ -61,9 +61,12 @@ void DescuentoPedidoCliente::borrar() {
 }// end delete
 
 void DescuentoPedidoCliente::guardaDescuentoPedidoCliente() {
-    /// Segun esté la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun estï¿½la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_iddpedidocliente == "") {
-        QString SQLQuery = "INSERT INTO dpedidocliente (conceptdpedidocliente, proporciondpedidocliente, idpedidocliente) VALUES ('"+mdb_conceptdpedidocliente+"',"+mdb_proporciondpedidocliente+","+mdb_idpedidocliente+")";
+        QString SQLQuery = "INSERT INTO dpedidocliente (conceptdpedidocliente, proporciondpedidocliente, idpedidocliente) VALUES ('"+
+	companyact->sanearCadena(mdb_conceptdpedidocliente)+"',"+
+	companyact->sanearCadena(mdb_proporciondpedidocliente)+","+
+	companyact->sanearCadena(mdb_idpedidocliente)+")";
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         cursor2 *cur = companyact->cargacursor("SELECT MAX(iddpedidocliente) AS m FROM dpedidocliente ");
@@ -73,10 +76,10 @@ void DescuentoPedidoCliente::guardaDescuentoPedidoCliente() {
         companyact->commit();
     } else {
         QString SQLQuery = "UPDATE dpedidocliente SET ";
-        SQLQuery += " conceptdpedidocliente = '"+mdb_conceptdpedidocliente+"' ";
-        SQLQuery += " ,proporciondpedidocliente = "+mdb_proporciondpedidocliente+" ";
-        SQLQuery += " ,idpedidocliente = "+mdb_idpedidocliente+" ";
-        SQLQuery += " WHERE iddpedidocliente = "+mdb_iddpedidocliente;
+        SQLQuery += " conceptdpedidocliente = '"+companyact->sanearCadena(mdb_conceptdpedidocliente)+"' ";
+        SQLQuery += " ,proporciondpedidocliente = "+companyact->sanearCadena(mdb_proporciondpedidocliente)+" ";
+        SQLQuery += " ,idpedidocliente = "+companyact->sanearCadena(mdb_idpedidocliente)+" ";
+        SQLQuery += " WHERE iddpedidocliente = "+companyact->sanearCadena(mdb_iddpedidocliente);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
         companyact->commit();

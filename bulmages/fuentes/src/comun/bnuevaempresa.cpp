@@ -41,7 +41,10 @@ void BNuevaEmpresa::accept() {
    QString query;
    cursor2 *cursoraux;
    conexionbase->begin();
-   query.sprintf("INSERT INTO  empresa (nombre, ano, nombredb) VALUES('%s','%d','%s')",nombreEmp.ascii(),ejercicio,nombredb.ascii());
+   query.sprintf("INSERT INTO  empresa (nombre, ano, nombredb) VALUES('%s','%d','%s')",
+	conexionbase->sanearCadena(nombreEmp).ascii(),
+	ejercicio,
+	conexionbase->sanearCadena(nombredb).ascii());
    conexionbase->ejecuta(query);
    
    // Agregamos el SUPERUSUARIO "BULMAGES" en la nueva empresa.
