@@ -17,6 +17,7 @@
 
 #include "libromayorprint.h"
 #include <unistd.h>
+#include "fixed.h"
 
 libromayorprint::libromayorprint(){
    fichero = NULL;
@@ -57,9 +58,14 @@ void libromayorprint::accept() {
    }// end if
    int error;
    int pid;
-   float debe, haber,saldo;
-   float debeinicial=0, haberinicial=0, saldoinicial=0;
-   float debefinal, haberfinal, saldofinal;
+   
+//   float debe, haber,saldo;
+   Fixed debe("0"), haber("0"), saldo("0");
+//   float debeinicial=0, haberinicial=0, saldoinicial=0;
+   Fixed debeinicial("0"), haberinicial("0"), saldoinicial("0");
+//   float debefinal, haberfinal, saldofinal;
+   Fixed debefinal("0"), haberfinal("0"), saldofinal("0");
+   
    int idcuenta;
    int idasiento;
    char *textasiento;
@@ -85,8 +91,8 @@ void libromayorprint::accept() {
             }// end if
             cursoraux2 = conexionbase->cargasaldoscuentafecha(idcuenta, finicial);
             if (!cursoraux2->eof()) {
-               debeinicial = atof(cursoraux2->valor(0).ascii());
-               haberinicial = atof(cursoraux2->valor(1).ascii());
+               debeinicial = Fixed(cursoraux2->valor(0).ascii());
+               haberinicial = Fixed(cursoraux2->valor(1).ascii());
                if (activo) {
                   saldoinicial = debeinicial - haberinicial;
                } else {
@@ -102,17 +108,17 @@ void libromayorprint::accept() {
             for(;!cursoraux1->eof();cursoraux1->siguienteregistro()) {
                idasiento=atoi(cursoraux1->valor(2).ascii());
                textasiento = (char *) cursoraux1->valor(5).ascii();
-               debe=atof(cursoraux1->valor(8).ascii());
-               haber=atof(cursoraux1->valor(9).ascii());
+               debe=Fixed(cursoraux1->valor(8).ascii());
+               haber=Fixed(cursoraux1->valor(9).ascii());
                if (activo) {
-                  saldo += debe - haber;
+                  saldo = saldo + debe - haber;
                } else {
-                  saldo += haber -debe;
+                  saldo = saldo +haber -debe;
                }// end if
-               debefinal += debe;
-               haberfinal += haber;
+               debefinal = debefinal + debe;
+               haberfinal = haberfinal + haber;
                cad = cursoraux1->valor(4).ascii();
-               fprintf(mifile,"%5.5d %10.10s %10.10s %-40.40s %10.2f %10.2f %10.2f\n",idasiento, cad.substr(1,10).c_str(),textasiento, cursoraux1->valor(5).ascii(),debe,haber,saldo);
+               fprintf(mifile,"%5.5d %10.10s %10.10s %-40.40s %10.2f %10.2f %10.2f\n",idasiento, cad.substr(1,10).c_str(),textasiento, cursoraux1->valor(5).ascii(),debe.toQString().ascii(),haber.toQString().ascii(),saldo.toQString().ascii());
             }// end for
             if (activo) {
                saldofinal = debefinal - haberfinal;
@@ -120,7 +126,7 @@ void libromayorprint::accept() {
                saldofinal = haberfinal -debefinal;
             }// end if
             fprintf(mifile,"                                       -----------------------------------------------------------------\n");
-            fprintf(mifile, "                                                  TOTAL SUBCUENTA... %10.2f %10.2f %10.2f\n",debefinal, haberfinal, saldofinal);
+            fprintf(mifile, "                                                  TOTAL SUBCUENTA... %10.2f %10.2f %10.2f\n",debefinal.toQString().ascii(), haberfinal.toQString().ascii(), saldofinal.toQString().ascii());
             cursoraux2->cerrar();
             delete cursoraux2;
          }// end if

@@ -30,6 +30,44 @@
                 <string>textLabel1</string>
             </property>
         </widget>
+        <widget class="QFrame">
+            <property name="name">
+                <cstring>m_framedetalles</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QTextEdit" row="0" column="0">
+                    <property name="name">
+                        <cstring>m_detalles</cstring>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <spacer>
+            <property name="name">
+                <cstring>spacer2</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Vertical</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>21</width>
+                    <height>16</height>
+                </size>
+            </property>
+        </spacer>
         <widget class="QLayoutWidget">
             <property name="name">
                 <cstring>layout1</cstring>
@@ -72,44 +110,6 @@
                     </property>
                 </widget>
             </hbox>
-        </widget>
-        <spacer>
-            <property name="name">
-                <cstring>spacer2</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>21</width>
-                    <height>31</height>
-                </size>
-            </property>
-        </spacer>
-        <widget class="QFrame">
-            <property name="name">
-                <cstring>m_framedetalles</cstring>
-            </property>
-            <property name="frameShape">
-                <enum>StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-                <enum>Raised</enum>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QTextEdit" row="0" column="0">
-                    <property name="name">
-                        <cstring>m_detalles</cstring>
-                    </property>
-                </widget>
-            </grid>
         </widget>
     </vbox>
 </widget>

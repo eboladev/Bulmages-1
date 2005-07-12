@@ -99,7 +99,10 @@ void canalview::boton_guardar() {
     QString nom = nomcanal->text();
     QString desc = desccanal->text();
     QString query;
-    query.sprintf ("UPDATE canal SET nombre='%s', descripcion='%s' WHERE idcanal=%d",nom.ascii(), desc.ascii(), idcanal);
+    query.sprintf ("UPDATE canal SET nombre='%s', descripcion='%s' WHERE idcanal=%d",
+    conexionbase->sanearCadena(nom).ascii(), 
+    conexionbase->sanearCadena(desc).ascii(), 
+    idcanal);
     conexionbase->begin();
     conexionbase->ejecuta(query);
     conexionbase->commit();

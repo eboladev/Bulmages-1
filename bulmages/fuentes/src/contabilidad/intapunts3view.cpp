@@ -1461,7 +1461,6 @@ void intapunts3view::cambiadasubcuenta(int row) {
                 cuentaview *cta = new cuentaview(empresaactual,0,0,true);
                 /// Preparamos la clase para una inserción de una nueva cuenta.
                 cta->cuentanueva(cad);
-                fprintf(stderr,"Vamos a ejecutar la ventana de nueva cuenta\n");
                 cta->exec();
                 delete cta;
                 /// PAra no hacer rollos rellamamos a la función ya que se supone que ya se ha hecho la inserción.
@@ -1626,8 +1625,6 @@ void intapunts3view::boton_diario1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         }// end switch
-        fprintf(stderr,"la fecha actual vale:%s\n", fechaact.toString("dd/MM/yyyy").ascii());
-        fprintf(stderr,"el diario va a ir de %s a %s\n",fecha1.toString("dd/MM/yyyy").ascii(), fecha2.toString("dd/MM/yyyy").ascii());
         diario->inicializa1( fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
     diario->accept();
@@ -1688,7 +1685,7 @@ void intapunts3view::eturn_fechaasiento() {
     fechaasiento1->setText(normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
     if (abierto) { //cambiar la fecha del asiento
         conexionbase->begin();
-        query.sprintf("UPDATE asiento SET fecha='%s' WHERE idasiento='%s'",fechaasiento1->text().ascii(),idAsiento().ascii());
+        query.sprintf("UPDATE asiento SET fecha='%s' WHERE idasiento='%s'",conexionbase->sanearCadena(fechaasiento1->text()).ascii(),idAsiento().ascii());
         fprintf(stderr,"%s\n",query.ascii());
         resultado = conexionbase->ejecuta(query);
         if (resultado != 0 && resultado != 42501) {
@@ -1748,7 +1745,14 @@ void intapunts3view::asiento_cierre() {
             if (cursor->valor("saldito") != "0.00") {
                 // Inserción de Borrador
                 // El borrador no existe, por lo que hay que hacer un insert
-                query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%s,%s,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta,snuevodebe.ascii(),snuevohaber.ascii(),idasiento);
+                query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%s,%s,%d)",
+		orden,
+		conexionbase->sanearCadena(concepto).ascii(),
+		conexionbase->sanearCadena(fecha).ascii(),
+		idcuenta,
+		snuevodebe.ascii(),
+		snuevohaber.ascii(),
+		idasiento);
                 conexionbase->begin();
                 conexionbase->ejecuta(query);
                 conexionbase->commit();
@@ -1798,7 +1802,14 @@ void intapunts3view::asiento_apertura() {
             QString idcuenta = cur->valor("idcuenta");
             QString totaldebe = cur->valor("debe");
             QString totalhaber = cur->valor("haber");
-            SQLQuery1.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%s,%s,%d)",orden.toInt(),concepto.ascii(),fecha.ascii(),idcuenta.toInt(),totalhaber.ascii(),totaldebe.ascii(),idasiento);
+            SQLQuery1.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%s,%s,%d)",
+	    orden.toInt(),
+	    conexionbase->sanearCadena(concepto).ascii(),
+	    conexionbase->sanearCadena(fecha).ascii(),
+	    idcuenta.toInt(),
+	    totalhaber.ascii(),
+	    totaldebe.ascii(),
+	    idasiento);
             conexionbase->begin();
             conexionbase->ejecuta(SQLQuery1);
             conexionbase->commit();
@@ -1856,7 +1867,14 @@ void intapunts3view::asiento_regularizacion() {
             totalhaber1 = totalhaber1 + totalhaber;
             // Inserción de Borrador
             // El borrador no existe, por lo que hay que hacer un insert
-            query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%s,%s,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta,totaldebe.toQString().ascii(),totalhaber.toQString().ascii(),idasiento);
+            query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%s,%s,%d)",
+	    orden,
+	    conexionbase->sanearCadena(concepto).ascii(),
+	    conexionbase->sanearCadena(fecha).ascii(),
+	    idcuenta,
+	    totaldebe.toQString().ascii(),
+	    totalhaber.toQString().ascii(),
+	    idasiento);
             conexionbase->begin();
             conexionbase->ejecuta(query);
             conexionbase->commit();
@@ -1866,14 +1884,27 @@ void intapunts3view::asiento_regularizacion() {
         delete cur;
         if (totaldebe1 > 0) {
             orden++;
-            query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,0,%s,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta1,totaldebe1.toQString().ascii(),idasiento);
+            query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,0,%s,%d)",
+	    orden,
+	    conexionbase->sanearCadena(concepto).ascii(),
+	    conexionbase->sanearCadena(fecha).ascii(),
+	    idcuenta1,
+	    totaldebe1.toQString().ascii(),
+	    idasiento);
             conexionbase->begin();
             conexionbase->ejecuta(query);
             conexionbase->commit();
         } // end if
         if (totalhaber1 > 0) {
             orden++;
-            query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%s,0,%d)",orden,concepto.ascii(),fecha.ascii(),idcuenta1,totalhaber1.toQString().ascii(),idasiento);
+            query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento) VALUES (%d,'%s','%s',%d,%s,0,%d)",
+	    orden,
+	    conexionbase->sanearCadena(concepto).ascii(),
+	    conexionbase->sanearCadena(fecha).ascii(),
+	    idcuenta1,
+	    totalhaber1.toQString().ascii()
+	    ,idasiento);
+	    
             conexionbase->begin();
             conexionbase->ejecuta(query);
             conexionbase->commit();

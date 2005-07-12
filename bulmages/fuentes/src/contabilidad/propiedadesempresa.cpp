@@ -132,7 +132,9 @@ void propiedadesempresa::s_saveConfig()
   while (tpropiedades->text(i,0) != "")
   {
     QString SQLQuery;
-    SQLQuery.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (%d,'%s','%s')",i,tpropiedades->text(i,0).ascii(),tpropiedades->text(i,1).ascii());
+    SQLQuery.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (%d,'%s','%s')",i,
+    conexionbase->sanearCadena(tpropiedades->text(i,0)).ascii(),
+    conexionbase->sanearCadena(tpropiedades->text(i,1)).ascii());
     conexionbase->begin();
     conexionbase->ejecuta(SQLQuery);
     conexionbase->commit();

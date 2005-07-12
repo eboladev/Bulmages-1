@@ -257,11 +257,14 @@ void mpatrimonialview::accept() {
      QString id = item->text(0);
      QString tipo = item->text(3);
      if (tipo == "cuenta") {
-        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (%s,NULL,%s,true)",id.ascii(), idmpatrimonial.ascii() );
+        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (%s,NULL,%s,true)",
+	conexionbase->sanearCadena(id).ascii(), 
+	conexionbase->sanearCadena(idmpatrimonial).ascii() );
      } else {
-        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (NULL,%s,%s,true)",id.ascii(), idmpatrimonial.ascii() );
+        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (NULL,%s,%s,true)",
+	conexionbase->sanearCadena(id).ascii(), 
+	conexionbase->sanearCadena(idmpatrimonial).ascii() );
      }// end if        
-     fprintf(stderr,"%s\n",query.ascii());
      conexionbase->ejecuta(query);
      item = item->nextSibling();
    }// end while
@@ -271,11 +274,14 @@ void mpatrimonialview::accept() {
      QString id = item->text(0).ascii();
      QString tipo = item->text(3).ascii();
      if (tipo == "cuenta") {
-        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (%s,NULL,%s,false)",id.ascii(), idmpatrimonial.ascii() );
+        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (%s,NULL,%s,false)",
+	conexionbase->sanearCadena(id).ascii(), 
+	conexionbase->sanearCadena(idmpatrimonial).ascii() );
      } else {
-        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (NULL,%s,%s,false)",id.ascii(), idmpatrimonial.ascii() );
+        query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial,masaperteneciente,signo) VALUES (NULL,%s,%s,false)",
+	conexionbase->sanearCadena(id).ascii(), 
+	conexionbase->sanearCadena(idmpatrimonial).ascii() );
      }// end if   
-     fprintf(stderr,"%s\n",query.ascii());
      conexionbase->ejecuta(query);
      item = item->nextSibling();
    }// end while

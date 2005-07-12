@@ -155,7 +155,7 @@ void adocumental::doubleclicked(int row, int, int, const QPoint &) {
 
 
 void adocumental::newADocumental(QString archivo) {
-        QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('"+archivo+"')";
+        QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('"+conexionbase->sanearCadena(archivo)+"')";
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();

@@ -877,20 +877,19 @@ void ivaview::guardaprevpago (int numrow) {
         conexionbase->commit();
     } else {                    // Hay que hacer un INSERT
         QString SQLQuery = "INSERT INTO prevcobro (idcuenta, fprevistaprevcobro, fcobroprevcobro, cantidadprevistaprevcobro, cantidadprevcobro, docprevcobro, idregistroiva, tipoprevcobro) VALUES (";
-        SQLQuery += m_listPrevision->text(numrow, COL_PREV_IDCUENTA);
-        SQLQuery += ", '"+m_listPrevision->text(numrow, COL_PREV_FPREVISTAPREVCOBRO)+"'";
-        SQLQuery += ", '"+m_listPrevision->text(numrow, COL_PREV_FCOBROPREVCOBRO)+"'";
-        SQLQuery += ", "+m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVISTAPREVCOBRO);
-        SQLQuery += ", "+m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVCOBRO);
-        SQLQuery += ", '"+m_listPrevision->text(numrow, COL_PREV_DOCPREVCOBRO)+"'";
-        SQLQuery += ", "+QString::number(idregistroiva);
+        SQLQuery += conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_IDCUENTA));
+        SQLQuery += ", '"+conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_FPREVISTAPREVCOBRO))+"'";
+        SQLQuery += ", '"+conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_FCOBROPREVCOBRO))+"'";
+        SQLQuery += ", "+conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVISTAPREVCOBRO));
+        SQLQuery += ", "+conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVCOBRO));
+        SQLQuery += ", '"+conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_DOCPREVCOBRO))+"'";
+        SQLQuery += ", "+conexionbase->sanearCadena(QString::number(idregistroiva));
         if (m_listPrevision->text(numrow, COL_PREV_TIPOCOBRO) == "COBRO") {
             SQLQuery += ", TRUE";
         } else {
             SQLQuery += ", FALSE";
         }// end if
         SQLQuery += ") ";
-        fprintf(stderr,"El query: %s", SQLQuery.ascii());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
@@ -957,16 +956,18 @@ void ivaview::boton_fecha() {
   1.- Vacia la lista de Prevision de Cobros
   2.- Calcula la fecha inicial a partir de la fecha de factura y la forma de pago.
   3.- Itera para cada plazo en la forma de pago calculando el nuevo plazo.
+  
+  // Falta usar las cuentas de servicio para saber si es cobro o pago.
   */
 void ivaview::boton_generarPrevisiones() {
     QString snumpagos = m_cursorFPago->valor("nplazosfpago",m_fPago->currentItem());
     QString splazoprimerpago = m_cursorFPago->valor("plazoprimerpagofpago",m_fPago->currentItem());
     QString splazoentrerecibo = m_cursorFPago->valor("plazoentrerecibofpago",m_fPago->currentItem());
-    float totalfactura = m_baseImponible->text().toFloat() + importeiva->text().toFloat();
+    Fixed totalfactura = Fixed(m_baseImponible->text()) + Fixed(importeiva->text());
     int plazoentrerecibo = splazoentrerecibo.toInt();
     int plazoprimerpago = splazoprimerpago.toInt();
     int numpagos = snumpagos.toInt();
-    float totalplazo = totalfactura / numpagos;
+    Fixed totalplazo = totalfactura / numpagos;
 
     // Vaciamos la lista de prevision para que no haga cosas raras
     m_listPrevision->setNumRows(0);
@@ -976,8 +977,8 @@ void ivaview::boton_generarPrevisiones() {
     for (int i =0; i< numpagos; i++) {
         m_listPrevision->setText(i,COL_PREV_FPREVISTAPREVCOBRO,fpcobro.toString("dd/MM/yyyy"));
         m_listPrevision->setText(i,COL_PREV_FCOBROPREVCOBRO,fpcobro.toString("dd/MM/yyyy"));
-        m_listPrevision->setText(i, COL_PREV_CANTIDADPREVCOBRO, QString::number(totalplazo));
-        m_listPrevision->setText(i, COL_PREV_CANTIDADPREVISTAPREVCOBRO, QString::number(totalplazo));
+        m_listPrevision->setText(i, COL_PREV_CANTIDADPREVCOBRO, totalplazo.toQString());
+        m_listPrevision->setText(i, COL_PREV_CANTIDADPREVISTAPREVCOBRO, totalplazo.toQString());
 	/// Hay que saber si es un cobro o un pago
 	if (contrapartida->text().left(2) == "43") // Si es un cliente es un cobro, si es un proveedor es un pago.
 	        m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, "COBRO"); // Cobro
