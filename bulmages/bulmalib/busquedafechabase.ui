@@ -81,7 +81,7 @@
 </widget>
 <images>
     <image name="image0">
-        <data format="PNG" length="313">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000100494441545885dd97418e83300c459f2b2f7ca6e12c73bede0529f7f12212b3608094b6014a43107f133902e47cbebf63096d80082878744cedd0583d3acd4fd35101a10da2a6d647bf1313448724d322f1bd8108378fde27f0b05af9983e9989817bb39bd2ad183500d075c7ca404430356e2303351099187882c8ebfd3953ef9e5b7a0f40a9cb80474faaa0024c2da9823952ca7234e7c4bbf47b1e7ca0060ed3c01b96ca6a6045759cc207ca30909e3e27d2ebfbc0427f29a381b5d60c57f481b5e2fbc7297a41992a587bb9f9aa06b6886fc0757c60a3f8065ca4177c787a603617e490fbf08eebfc297c6064403e29a3bd18e682d0061946e7235714fe007f8af3646898efd40000000049454e44ae426082</data>
+        <data format="PNG" length="250">89504e470d0a1a0a0000000d494844520000002000000020080300000044a48ac600000015504c5445000000ffffffff0000ffffcc003dae0066cc000000e7f1013a0000000774524e53ffffffffffff001a4b03460000008d49444154388da593810e80200844854bffff939b620a4ec5ea560bf485801a92a390c25619b8625c3e05d8ccc770b4041168fe125560ad067051b7c48307b8116c0e75c87a02c0038a90877a8dccd82ef1389f81663b005415392dc94b80b1d53602ff0420d6a60f2a9bb193f29b2a671a81df037637d53ca611cc9e74a0755237747aaa61be67c7debb598e6ea38b077dcc807e3d0000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -97,11 +97,18 @@
         <receiver>BusquedaFechaBase</receiver>
         <slot>s_fechalostFocus()</slot>
     </connection>
+    <connection>
+        <sender>m_fecha</sender>
+        <signal>returnPressed()</signal>
+        <receiver>BusquedaFechaBase</receiver>
+        <slot>s_returnPressed()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>s_searchFecha()</slot>
     <slot>s_fechatextChanged(const QString &amp;)</slot>
     <slot>s_fechalostFocus()</slot>
+    <slot>s_returnPressed()</slot>
 </slots>
 <layoutdefaults spacing="0" margin="0"/>
 </UI>

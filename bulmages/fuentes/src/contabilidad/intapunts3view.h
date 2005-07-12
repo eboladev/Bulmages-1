@@ -2,7 +2,7 @@
                           intapunts3view.h  -  description
                              -------------------
     begin                : mar may 27 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera and Josep Burcion
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera and Josep Burcion
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -33,6 +33,7 @@
 #include "configuracion.h"
 
 #include "fixed.h"
+#include "busquedafecha.h"
 
 class extractoview1;
 class diarioview1;
@@ -40,36 +41,36 @@ class balanceview;
 class empresa;
 
 /**
-  *@author Tomeu Borrás Riera 
+  *@author Tomeu Borrï¿½ Riera 
  * \class intapunts3view intapunts3view.h
- * \brief Se encarga de controlar la ventana de introducción de apuntes.
+ * \brief Se encarga de controlar la ventana de introducciï¿½ de apuntes.
  *
- * Esta es una de las clases más complejas del programa ya que controla toda la acción y casi toda la interactuación del usuario con el programa. Pretende conseguir una interficie que resulte muy rápida y cómodo para el usuario que introduzca datos.
+ * Esta es una de las clases mï¿½ complejas del programa ya que controla toda la acciï¿½ y casi toda la interactuaciï¿½ del usuario con el programa. Pretende conseguir una interficie que resulte muy rï¿½ida y cï¿½odo para el usuario que introduzca datos.
  Hereda intapunts3dlg  
 */
 
 class intapunts3view : public intapunts3dlg  {
     Q_OBJECT
 private:
-    /// El identificador del asiento que se está visualizando en cada momento. Si no existe asiento actual vale -1
+    /// El identificador del asiento que se estï¿½visualizando en cada momento. Si no existe asiento actual vale -1
     int idasiento;
-    /// El identificador de la fila sobre la que está el cursor. Si no hay row seleccionado valdrá -1
+    /// El identificador de la fila sobre la que estï¿½el cursor. Si no hay row seleccionado valdrï¿½-1
     int rowactual;
     /// Indica que el asiento esta abierto.
     int abierto;
-    /// Puntero a la clase amiga \ref extractoview1 \todo el paso de mensajes deberá hacerse a traves de la clase empresa.
+    /// Puntero a la clase amiga \ref extractoview1 \todo el paso de mensajes deberï¿½hacerse a traves de la clase empresa.
     extractoview1 *extracto;
-    /// Puntero a la clase amiga \ref diarioview1 \todo el paso de mensajes deberá hacerse a traves de la clase empresa y este puntero debe desaparacer.
+    /// Puntero a la clase amiga \ref diarioview1 \todo el paso de mensajes deberï¿½hacerse a traves de la clase empresa y este puntero debe desaparacer.
     diarioview1 *diario;
-    /// Puntero a la clase amiga \ref balanceview \todo el paso de mensajes deberá hacerse a través de la clase empresa.
+    /// Puntero a la clase amiga \ref balanceview \todo el paso de mensajes deberï¿½hacerse a travï¿½ de la clase empresa.
     balanceview *balance;
-    /// Puntero a la conexión de la base de datos abierta actualmente.
+    /// Puntero a la conexiï¿½ de la base de datos abierta actualmente.
     postgresiface2 *conexionbase;
-    /// Indica el número de dígitos que usan por defecto las cuentas. Es un parametro sacado de la configuración de la empresa.
+    /// Indica el nmero de dï¿½itos que usan por defecto las cuentas. Es un parametro sacado de la configuraciï¿½ de la empresa.
     unsigned int numdigitos;
 public:
 
-    /// Este es el cursor que se usará para recorrer la lista de asientos.
+    /// Este es el cursor que se usarï¿½para recorrer la lista de asientos.
     cursor2 *cursorasientos;
     /// Este objeto contiene todas las opciones de filtraje necesarias para funcionar. es un objeto del tipo \ref filtrarasientosview
     filtrarasientosview *filt;
@@ -78,6 +79,8 @@ public:
     ///Para poder enganchar plugins a esta ventana se ha habilitado este layout.
     QHBoxLayout *layoutPlugins;
 public:
+    void setFecha(QString val) {m_fecha->setText(val);};
+
     QString idAsiento();
     intapunts3view(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
     ~intapunts3view();
@@ -128,12 +131,10 @@ public slots:
     virtual void boton_siguiente();
     virtual void boton_anterior();
     virtual void eturn_fechaasiento();
-    virtual void fechaasiento1_textChanged( const QString & );
     virtual void boton_cargarasiento();
     virtual void eturn_numasiento();
     virtual void editarasiento();
     virtual void boton_duplicarasiento();
-    virtual void boton_fecha();
 };
 
 #endif

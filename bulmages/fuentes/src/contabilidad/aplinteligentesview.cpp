@@ -2,7 +2,7 @@
                           aplinteligentesview.cpp  -  description
                              -------------------
     begin                : Mon Feb 10 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -25,7 +25,7 @@
 #define TIPO_PREDEFINIDO 4
 
 // Estos defines indican posiciones de las variables de apunte.
-// son de uso interno, así que solo deben conocerse si se agregan variables de apunte.
+// son de uso interno, asï¿½que solo deben conocerse si se agregan variables de apunte.
 #define VAR_APUNT_CIFCUENTA 0
 
 // Estos defines indican posiciones de las variables predefinidas
@@ -41,7 +41,7 @@ aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent, const ch
     indvariablesfecha=0;
     indvariablesnumero=0;
     indvariablestexto=0;
-    indvariablespredefinidas=0;  // Este array es estático, pero como no se modifica nunca se ponen los valores al principio y la parte dinámica queda igual.
+    indvariablespredefinidas=0;  // Este array es estï¿½ico, pero como no se modifica nunca se ponen los valores al principio y la parte dinï¿½ica queda igual.
     indvariablesapunte=1;  // Cada apunte la tiene o no la tiene, pero no se debe aplicar.
     variablesapunte[VAR_APUNT_CIFCUENTA][0] ="$cifcuenta$";
     setmodo(0);
@@ -71,7 +71,7 @@ void aplinteligentesview::inicializa(int idasiento, intapunts3view *inta) {
         cur->siguienteregistro();
     }// end while
     delete cur;
-    // Calculamos el número de dígitos que tiene una cuenta.
+    // Calculamos el nmero de dï¿½itos que tiene una cuenta.
     conexionbase->begin();
     QString query1 = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
     cursor2 *cursoraux1 = conexionbase->cargacursor(query1,"codcuenta");
@@ -109,7 +109,7 @@ void aplinteligentesview::inicializavariables() {
 }// end inicializavariables
 
 /*
-// Existen variables de asientos inteligentes que cambian con la inserción
+// Existen variables de asientos inteligentes que cambian con la inserciï¿½
 // de cada apunte.
 void aplinteligentesview::inicializavariablesapunte(int idborrador) {
     fprintf(stderr,"aplicavariablesapunte %d\n",idborrador);
@@ -137,7 +137,7 @@ void aplinteligentesview::inicializavariablesapunte(int idborrador) {
 }// end inicializavariablesapunte
 */
 
-// Esta función carga la variable de uso temporal $cifcuenta$
+// Esta funciï¿½ carga la variable de uso temporal $cifcuenta$
 // con el valor del nif de la cuenta introducida.
 // NOTA: Notese que el sistema normalmente carga el NIF de la contrapartida del asiento inteligente
 // Y que este campo normalmente va en la parte de CIFCUENTA
@@ -186,7 +186,7 @@ void aplinteligentesview::return_cta() {
 void aplinteligentesview::return_numero() {
     QLineEdit *numero;
     numero = (QLineEdit *) sender();
-    fprintf (stderr,"Se ha pulsado return sobre el número: %s\n",numero->text().ascii());
+    fprintf (stderr,"Se ha pulsado return sobre el nmero: %s\n",numero->text().ascii());
     selectsiguiente(numero);
 }// end return_numero
 
@@ -220,16 +220,16 @@ void aplinteligentesview::boton_buscacuenta() {
 }// end if
 
 
-// Esta función se llama a través del array de asientos inteligentes.
-// El valor que se pasa es un valor numérico del combo-box
-// Seguro que la función que interesa es muestraplantilla.
+// Esta funciï¿½ se llama a travï¿½ del array de asientos inteligentes.
+// El valor que se pasa es un valor numï¿½ico del combo-box
+// Seguro que la funciï¿½ que interesa es muestraplantilla.
 void aplinteligentesview::cambiada_plantilla(int num) {
     idainteligente = listasientos[num];
     mostrarplantilla();
 }// end cambiada_plantilla
 
-// Esta función muestra la plantilla correspondiente con el idainteligente.
-// También pone el combo box en la posición adecuada.
+// Esta funciï¿½ muestra la plantilla correspondiente con el idainteligente.
+// Tambiï¿½ pone el combo box en la posiciï¿½ adecuada.
 // Si la plantilla no existe el resultado es indefinido.
 void aplinteligentesview::muestraplantilla(int numplantilla) {
    int i;
@@ -240,9 +240,9 @@ void aplinteligentesview::muestraplantilla(int numplantilla) {
 }// end muestraplantilla
 
 
-// La pulsación sobre el boton de creación del asiento.
+// La pulsaciï¿½ sobre el boton de creaciï¿½ del asiento.
 void aplinteligentesview::boton_crear() {
-    // Se está insertando sobre un asiento abierto, con lo que debemos
+    // Se estï¿½insertando sobre un asiento abierto, con lo que debemos
     // Cerrar la ventana, ya que es un introduccion de asiento normal
     if (numasiento != 0) {
         recogevalores();
@@ -250,10 +250,10 @@ void aplinteligentesview::boton_crear() {
         intapunts->repinta(numasiento);
         selectfirst();
     } else {
-        // Se está insertando de forma sistemática asientos inteligentes
-        // Asi que debemos facilitar las cosas al máximo.
+        // Se estï¿½insertando de forma sistemï¿½ica asientos inteligentes
+        // Asi que debemos facilitar las cosas al mï¿½imo.
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1]=fechaasiento->text().ascii();
-        intapunts->fechaasiento1->setText(fechaasiento->text());
+        intapunts->setFecha(fechaasiento->text());
         intapunts->iniciar_asiento_nuevo();
         numasiento= intapunts->cursorasientos->valor("idasiento").toInt();
         recogevalores();
@@ -263,7 +263,7 @@ void aplinteligentesview::boton_crear() {
         fechaasiento->selectAll();
         fechaasiento->setFocus();
     }// end if
-    // Si estamos en modo exclusivo cerramos la ventana. Y así devolvemos el control a la aplicacion principal.
+    // Si estamos en modo exclusivo cerramos la ventana. Y asï¿½devolvemos el control a la aplicacion principal.
     if (modo == 1) {
        close();
     }// end if
@@ -366,7 +366,7 @@ void aplinteligentesview::mostrarplantilla() {
 }// end mostrarplantilla
 
 
-// Esta función permite establecer los valores de las variables.
+// Esta funciï¿½ permite establecer los valores de las variables.
 // Siempre y cuando estas variables existan.
 // De esta forma podemos establecer valores por defecto de determinados asientos de obligada
 // existencia. Como los de Amortizaciones.
@@ -399,7 +399,7 @@ void aplinteligentesview::setvalores(QString var, QString val) {
 }// end setvalores
 
 /***************************************************************
- * Esta función recoge los valores de los cuadros de texto y   *
+ * Esta funciï¿½ recoge los valores de los cuadros de texto y   *
  * y rellena las tablas de variables con los valores recogidos.*
  ***************************************************************/
 void aplinteligentesview::recogevalores() {
@@ -506,7 +506,7 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
                 nomvar = subcadena;
                 descvar = "";
             }// end if
-            // Buscamos si es una variable predefinida, y en caso de serlo obviamos una inserción de ésta.
+            // Buscamos si es una variable predefinida, y en caso de serlo obviamos una inserciï¿½ de ï¿½ta.
             j=0;
             while(j<indvariablespredefinidas && variablespredefinidas[j][0] != nomvar) {
                 j++;
@@ -525,7 +525,7 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
                     for(j=0;j<indvariablescta && variablescta[j][0] != nomvar;j++)
                         ;
                     if (j == indvariablescta) {
-                        // Se trata de una inserción
+                        // Se trata de una inserciï¿½
                         variablescta[indvariablescta][0]=nomvar;
                         variablescta[indvariablescta][2]=descvar;
                         indvariablescta++;
@@ -692,7 +692,7 @@ void aplinteligentesview::selectfirst() {
 }// end selectfirst
 
 // Esta funcion sirve para cambiar de un widget a otro dentro de la pantalla creada virtualmente.
-// Si el widget es el último de la lista se hace un aceptar.
+// Si el widget es el ltimo de la lista se hace un aceptar.
 void aplinteligentesview::selectsiguiente(QLineEdit *edit) {
     int encontrado=0;
     int i=0;
@@ -736,7 +736,7 @@ void aplinteligentesview::selectsiguiente(QLineEdit *edit) {
             encontrado = 1;
         }// end if
     }// end for
-    // En caso de que se haya encontrado el edit, y sea el último
+    // En caso de que se haya encontrado el edit, y sea el ltimo
     // Se hace un accept
     if (encontrado == 1) {
         boton_crear();
