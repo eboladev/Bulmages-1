@@ -2,7 +2,7 @@
                           balance1view.h  -  description
                              -------------------
     begin                : lun jun 23 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -42,11 +42,11 @@ class extractoview1;
 class empresa;
 
 /** 
-  * @author Tomeu Borrás Riera 
+  * @author Tomeu Borrï¿½ Riera 
   * \class balance1view balance1view.h
-  * \brief Pantalla de presentación del balnace de sumas y saldos (no jerarquica)
+  * \brief Pantalla de presentaciï¿½ del balnace de sumas y saldos (no jerarquica)
   * \todo Hay que eliminar el array de ccostes y sustituirlo por un cursor2
-  * \bug El array de ccostes no permite más de 200 centros de coste siendo este un error.
+  * \bug El array de ccostes no permite mï¿½ de 200 centros de coste siendo este un error.
   * \todo Hay que eliminar los punteros de extracto - diario - introaputnes y hacerlo pasar todo por la clase empresa.
   * Clase que sirve para presentar en balance de sumas y saldos  en forma de tabla. Permite presentar el balance entre unos rangos definidos y incluyendo las cuentas de un nivel determinado.
   */
@@ -58,7 +58,7 @@ private:
   empresa *empresaactual;
 /// Base de datos con la que trabaja la empresa
   postgresiface2 *conexionbase;
-/// Indica el número de dígitos que tienen por defecto las cuentas.
+/// Indica el nmero de dï¿½itos que tienen por defecto las cuentas.
   int numdigitos;
   
 /// Puntero a una clase amiga que se podra acceder de otra forma  
@@ -94,14 +94,10 @@ private:
   void presentar();
 
 private slots:
-  virtual void return_fechafinal();
-  virtual void return_fechainicial();
   virtual void return_codigoinicial();
   virtual void return_codigofinal();
   virtual void boton_buscacuentainicial();
   virtual void boton_buscacuentafinal();
-  virtual void boton_fechainicial();
-  virtual void boton_fechafinal();
   virtual void contextmenu( QListViewItem *, const QPoint &, int);
   virtual void nivelactivated(int);
   virtual void nivelactivated1(int, QListViewItem *);

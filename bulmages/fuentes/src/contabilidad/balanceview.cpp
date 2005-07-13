@@ -2,7 +2,7 @@
                           balanceview.cpp  -  description
                              -------------------
     begin                : sï¿½ abr 26 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -22,7 +22,6 @@
 #include <qlineedit.h>
 #include <qdatetimeedit.h>
 #include <qfiledialog.h>
-#include <qtable.h>
 #include <qtoolbutton.h>
 
 #include "balanceprintview.h"
@@ -36,6 +35,9 @@
 #include "images/cgastos.xpm"
 
 #include <qstring.h>
+
+#include "qtable1.h"
+#include "busquedafecha.h"
 
 #define CUENTA           0
 #define DENOMINACION     1
@@ -52,46 +54,48 @@
 /** \brief Constructor de clasee
   * \bug No es necesario borrar la tabla de designer para que esto funcione.
   * En el constructor  inicializa la empresa y base de datos.
-  * Tambiï¿½ se configura correctamente el objeto listado (que reemplaza al que estï¿½en el formulario
+  * Tambiï¿½ se configura correctamente el objeto m_listado (que reemplaza al que estï¿½en el formulario
   * Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
   */
 balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int  ) : balancedlg(parent,name) {
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
-   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-   cargacostes();
 
-   delete listado1;
-   listado = new QTable1(this,"listado");
-   listado->setNumRows( 0 );
-   listado->setNumCols( 0 );
-   listado->setSelectionMode( QTable::SingleRow );
-   listado->setSorting( TRUE );
-   listado->setSelectionMode( QTable::SingleRow );
-   balancedlgLayout->addWidget( listado, 1, 0 );
-   listado->setColumnMovingEnabled( TRUE );
-   listado->setNumCols(9);
-   listado->horizontalHeader()->setLabel( CUENTA, tr( "Cuenta" ) );
-   listado->horizontalHeader()->setLabel( DENOMINACION, tr( "Denominacion" ) );
-   listado->horizontalHeader()->setLabel( SALDO_ANT, tr( "Saldo Ant." ) );
-   listado->horizontalHeader()->setLabel( DEBE, tr( "Debe Periodo" ) );
-   listado->horizontalHeader()->setLabel( HABER, tr( "Haber Periodo" ) );
-   listado->horizontalHeader()->setLabel( SALDO, tr( "Saldo Periodo" ) );
-   listado->horizontalHeader()->setLabel( DEBEEJ, tr("Debe Ejercicio") );
-   listado->horizontalHeader()->setLabel( HABEREJ, tr("Haber Ejercicio") );
-   listado->horizontalHeader()->setLabel( SALDOEJ, tr("Saldo Ejercicio") );
+    QFont tapunts_font(  m_listado->font() );
+    tapunts_font.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_APUNTES).ascii()));
+    tapunts_font.setFamily(confpr->valor(CONF_FONTFAMILY_APUNTES).ascii());
+    m_listado->setFont( tapunts_font );
 
-   listado->setColumnWidth(CUENTA,75);
-   listado->setColumnWidth(DENOMINACION,300);
-   listado->setColumnWidth(SALDO_ANT,75);
-   listado->setColumnWidth(DEBE,75);
-   listado->setColumnWidth(HABER,75);
-   listado->setColumnWidth(SALDO,100);
-    
+   fprintf(stderr,"BALANCEVIEW CONSTRUCTOR\n");
+   m_listado->setNumRows( 0 );
+   fprintf(stderr,"setNumCols\n");
+   m_listado->setNumCols( 0 );
+   m_listado->setSelectionMode( QTable::SingleRow );
+   m_listado->setSorting( TRUE );
+   m_listado->setSelectionMode( QTable::SingleRow );
+   m_listado->setColumnMovingEnabled( TRUE );
+   m_listado->setNumCols(9);
+   m_listado->horizontalHeader()->setLabel( CUENTA, tr( "Cuenta" ) );
+   m_listado->horizontalHeader()->setLabel( DENOMINACION, tr( "Denominacion" ) );
+   m_listado->horizontalHeader()->setLabel( SALDO_ANT, tr( "Saldo Ant." ) );
+   m_listado->horizontalHeader()->setLabel( DEBE, tr( "Debe Periodo" ) );
+   m_listado->horizontalHeader()->setLabel( HABER, tr( "Haber Periodo" ) );
+   m_listado->horizontalHeader()->setLabel( SALDO, tr( "Saldo Periodo" ) );
+   m_listado->horizontalHeader()->setLabel( DEBEEJ, tr("Debe Ejercicio") );
+   m_listado->horizontalHeader()->setLabel( HABEREJ, tr("Haber Ejercicio") );
+   m_listado->horizontalHeader()->setLabel( SALDOEJ, tr("Saldo Ejercicio") );
+
+   m_listado->setColumnWidth(CUENTA,75);
+   m_listado->setColumnWidth(DENOMINACION,300);
+   m_listado->setColumnWidth(SALDO_ANT,75);
+   m_listado->setColumnWidth(DEBE,75);
+   m_listado->setColumnWidth(HABER,75);
+   m_listado->setColumnWidth(SALDO,100);
+
    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-   listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).ascii());
-   listado->setReadOnly(TRUE);
+   m_listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).ascii());
+   m_listado->setReadOnly(TRUE);
 
    // Inicializamos la tabla de nivel
    combonivel->insertItem("2",0);
@@ -100,16 +104,18 @@ balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int  )
    combonivel->insertItem("5",3);
    combonivel->insertItem("6",4);
    combonivel->insertItem("7",5);
-   
-   connect( listado, SIGNAL( contextMenuRequested(int,int,const QPoint&) ), this, SLOT( contextmenu(int,int,const QPoint&) ) );
+
+   connect( m_listado, SIGNAL( contextMenuRequested(int,int,const QPoint&) ), this, SLOT( contextmenu(int,int,const QPoint&) ) );
 
    // Iniciamos los componentes de la fecha para que al principio aparezcan
    // Como el aï¿½ inicial.
    QString cadena;
    cadena.sprintf("%2.2d/%2.2d/%4.4d",1, 1, QDate::currentDate().year());
-   fechainicial1->setText(cadena);
+   m_fechainicial1->setText(cadena);
    cadena.sprintf("%2.2d/%2.2d/%4.4d",31, 12, QDate::currentDate().year());
-   fechafinal1->setText(cadena);
+   m_fechafinal1->setText(cadena);
+   // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
+   cargacostes();
 }// end balanceview
 
 balanceview::~balanceview(){
@@ -161,9 +167,9 @@ void balanceview::cargacostes() {
   */
 void balanceview::boton_extracto1(int tipo) {
 	QDate fecha1, fecha2, fechaact, fechaact1;
-	if(!fechainicial1->text().isEmpty()) {
-        fechaact = normalizafecha(fechainicial1->text());
-        fechaact1 =normalizafecha(fechafinal1->text());
+	if(!m_fechainicial1->text().isEmpty()) {
+        fechaact = normalizafecha(m_fechainicial1->text());
+        fechaact1 =normalizafecha(m_fechafinal1->text());
 		switch(tipo) {
 			case 0:
 				fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
@@ -178,7 +184,7 @@ void balanceview::boton_extracto1(int tipo) {
 				fecha2.setYMD(fechaact.year(), 12, 31);
 			break;
 		}// end switch
- 		  extracto->inicializa1( listado->text(listado->currentRow(), CUENTA), listado->text(listado->currentRow(), CUENTA),fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"),  ccostes[combocoste->currentItem()]);
+ 		  extracto->inicializa1( m_listado->text(m_listado->currentRow(), CUENTA), m_listado->text(m_listado->currentRow(), CUENTA),fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"),  ccostes[combocoste->currentItem()]);
    }// end if
    extracto->accept();
    empresaactual->libromayor();
@@ -194,9 +200,9 @@ void balanceview::boton_extracto1(int tipo) {
   */
 void balanceview::boton_diario1(int tipo) {
 	QDate fecha1, fecha2, fechaact, fechaact1;
-	if(!fechainicial1->text().isEmpty()) {
-        fechaact = normalizafecha(fechainicial1->text());
-        fechaact1 =normalizafecha(fechafinal1->text());
+	if(!m_fechainicial1->text().isEmpty()) {
+        fechaact = normalizafecha(m_fechainicial1->text());
+        fechaact1 =normalizafecha(m_fechafinal1->text());
 		switch(tipo) {
 			case 0:
 				fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
@@ -226,7 +232,7 @@ void balanceview::boton_asiento() {
 
 
 /** \brief Se encarga  de inicializar la clase con los parametros que se le han pasado.
-  * Esta función sirve para que desde fuera se pueda preparar a la clase para presentar un listado predeterminado.
+  * Esta funciï¿½ sirve para que desde fuera se pueda preparar a la clase para presentar un m_listado predeterminado.
   */
 void balanceview::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste) {
 
@@ -234,8 +240,8 @@ void balanceview::inicializa1(QString codinicial, QString codfinal, QString fech
   fprintf(stderr,"balanceview::inicializa1\n");
   codigoinicial->setText(codinicial);
   codigofinal->setText(codfinal);
-  fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
-  fechafinal1->setText(normalizafecha(fecha2).toString("dd/MM/yyyy"));
+  m_fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
+  m_fechafinal1->setText(normalizafecha(fecha2).toString("dd/MM/yyyy"));
   // Establecemos el centro de coste correspondiente.
   int i=0;
   while (ccostes[i]!=idc_coste && i<100) i++;
@@ -254,8 +260,8 @@ void balanceview::presentar() {
       double tsaldoant=0, tdebe=0, thaber=0, tsaldo=0;
       QString query;
       cursor2 *cursorapt;
-      QString finicial = fechainicial1->text();
-      QString ffinal = fechafinal1->text();
+      QString finicial = m_fechainicial1->text();
+      QString ffinal = m_fechafinal1->text();
       QString cinicial = codigoinicial->text();
       QString cfinal = codigofinal->text();
       QString ejercicio = ffinal.right(4);
@@ -264,7 +270,7 @@ void balanceview::presentar() {
       int idc_coste;
       idc_coste = ccostes[combocoste->currentItem()];
 
-      // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
+      // La consulta es compleja, requiere la creaciï¿½ de una tabla temporal y de cierta mandanga por lo que puede
 	// Causar problemas con el motor de base de datos.
 	fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
         conexionbase->begin();		
@@ -333,8 +339,8 @@ void balanceview::presentar() {
       
       // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
       num1 = cursorapt->numregistros();
-      listado->setNumRows(0);
-      listado->setNumRows(num1);
+      m_listado->setNumRows(0);
+      m_listado->setNumRows(num1);
       j=0;
       while (!cursorapt->eof()) {
          // Acumulamos los totales para al final poder escribirlos
@@ -344,28 +350,28 @@ void balanceview::presentar() {
          thaber += atof(cursorapt->valor("thaber").ascii());
       
          // Hacemos la insercion de los campos en la tabla.
-         listado->setText(j,CUENTA,cursorapt->valor("codigo"));
-         listado->setText(j,DENOMINACION,cursorapt->valor("descripcion"));
-         listado->setText(j,SALDO_ANT,QString::number(atof(cursorapt->valor("asaldo").ascii()),'f',2));
-         listado->setText(j,DEBE,QString::number(atof(cursorapt->valor("tdebe").ascii()),'f',2));
-         listado->setText(j,HABER,QString::number(atof(cursorapt->valor("thaber").ascii()),'f',2));
-         listado->setText(j,SALDO,QString::number(atof(cursorapt->valor("tsaldo").ascii()),'f',2));
-         listado->setText(j, DEBEEJ,QString::number(atof(cursorapt->valor("ejdebe").ascii()),'f',2));
-         listado->setText(j, HABEREJ,QString::number(atof(cursorapt->valor("ejhaber").ascii()),'f',2));
-         listado->setText(j, SALDOEJ,QString::number(atof(cursorapt->valor("ejsaldo").ascii()),'f',2));
+         m_listado->setText(j,CUENTA,cursorapt->valor("codigo"));
+         m_listado->setText(j,DENOMINACION,cursorapt->valor("descripcion"));
+         m_listado->setText(j,SALDO_ANT,QString::number(atof(cursorapt->valor("asaldo").ascii()),'f',2));
+         m_listado->setText(j,DEBE,QString::number(atof(cursorapt->valor("tdebe").ascii()),'f',2));
+         m_listado->setText(j,HABER,QString::number(atof(cursorapt->valor("thaber").ascii()),'f',2));
+         m_listado->setText(j,SALDO,QString::number(atof(cursorapt->valor("tsaldo").ascii()),'f',2));
+         m_listado->setText(j, DEBEEJ,QString::number(atof(cursorapt->valor("ejdebe").ascii()),'f',2));
+         m_listado->setText(j, HABEREJ,QString::number(atof(cursorapt->valor("ejhaber").ascii()),'f',2));
+         m_listado->setText(j, SALDOEJ,QString::number(atof(cursorapt->valor("ejsaldo").ascii()),'f',2));
 
 
          // Ponemos los iconos para que la cosa parezca mas guay.
          if (cursorapt->valor("tipocuenta") == "1")
-            listado->setPixmap(j,CUENTA, QPixmap(cactivo));
+            m_listado->setPixmap(j,CUENTA, QPixmap(cactivo));
          else if (cursorapt->valor("tipocuenta") == "2")
-            listado->setPixmap(j,CUENTA, QPixmap(cpasivo));
+            m_listado->setPixmap(j,CUENTA, QPixmap(cpasivo));
          else if (cursorapt->valor("tipocuenta") == "3")
-            listado->setPixmap(j,CUENTA, QPixmap(cneto));
+            m_listado->setPixmap(j,CUENTA, QPixmap(cneto));
          else if (cursorapt->valor("tipocuenta") == "4")
-            listado->setPixmap(j,CUENTA, QPixmap(cingresos));
+            m_listado->setPixmap(j,CUENTA, QPixmap(cingresos));
          else if (cursorapt->valor("tipocuenta") == "5")
-            listado->setPixmap(j,CUENTA, QPixmap(cgastos));      
+            m_listado->setPixmap(j,CUENTA, QPixmap(cgastos));      
 
          // Calculamos la siguiente cuenta registro y finalizamos el bucle
          cursorapt->siguienteregistro();
@@ -390,18 +396,6 @@ void balanceview::presentar() {
 void balanceview::accept() {
   presentar();
 }// end accept
-
-
-void balanceview::return_fechafinal() {
-  fechafinal1->setText(normalizafecha(fechafinal1->text()).toString("dd/MM/yyyy"));
-  accept();  
-}// end return_fechafinal
-
-
-void balanceview::return_fechainicial() {
-  fechainicial1->setText(normalizafecha(fechainicial1->text()).toString("dd/MM/yyyy"));
-}// end return_fechainicial
-
 
 void balanceview::return_codigoinicial() {
    QString cad = codigoinicial->text();
@@ -464,9 +458,9 @@ void balanceview::boton_buscacuentafinal() {
 }// end boton_buscacuentafinal
 
 
-/** \brief Responde a una petición de menu contextual sobre el balance.
+/** \brief Responde a una peticiï¿½ de menu contextual sobre el balance.
   * Saca un menu contextual que presenta las opciones necesarias sobre la cuenta.
-  * Espera a que se seleccione una opción o que se quite el menu contextual y llama a la función correspondiente
+  * Espera a que se seleccione una opciï¿½ o que se quite el menu contextual y llama a la funciï¿½ correspondiente
   * con la entrada de menu que se haya seleccionado.
   */
 void balanceview::contextmenu(int, int col, const QPoint &poin) {
@@ -514,12 +508,12 @@ void balanceview::nivelactivated (int) {
 }// end nivelactivated1
 
 
-/** \BRIEF SLOT que responde a la pulsación del botï¿½ de imprimir
+/** \BRIEF SLOT que responde a la pulsaciï¿½ del botï¿½ de imprimir
   * Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del balance y lo ejecuta en modo Modal.
   */
 void balanceview::boton_imprimir() {
    BalancePrintView * balan = new BalancePrintView(empresaactual);
-   balan->inicializa1(codigoinicial->text(), codigofinal->text(), fechainicial1->text(), fechafinal1->text(), FALSE);
+   balan->inicializa1(codigoinicial->text(), codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), FALSE);
    balan->exec();
 }// end boton_imprimir.
 
@@ -541,8 +535,8 @@ void balanceview::codigo_textChanged(const QString &texto) {
   * \note Deben existir tantas llamadas a este SLOT como fechas existan en el formulario para garantizar
   * la correcta respuesta.
   * Cuando se ha pulsado una tecla sobre la fecha del extracto
-  * Se evalua si la pulsación es un cï¿½igo de control o es un digitos
-  * Para la introducción de fechas.
+  * Se evalua si la pulsaciï¿½ es un cï¿½igo de control o es un digitos
+  * Para la introducciï¿½ de fechas.
   */
 void balanceview::fecha_textChanged(const QString &texto) {
 	QLineEdit *fecha = (QLineEdit *) sender();
@@ -558,18 +552,5 @@ void balanceview::fecha_textChanged(const QString &texto) {
     if (texto=="*")
         fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
 }// end fecha_textChanged
-
-void balanceview::boton_fechainicial() {
-   fechainicial1->setText("+");
-   fechainicial1->selectAll();
-   fechainicial1->setFocus();
-}// end boton_fechainicial
-
-// This function represents the slot tat executes wen the finaldate button in the balance is clicked.
-void balanceview::boton_fechafinal() {
-   fechafinal1->setText("+");
-   fechafinal1->selectAll();
-   fechafinal1->setFocus();
-}// end boton_fechainicial
 
 

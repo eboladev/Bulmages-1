@@ -15,31 +15,22 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
   QLabel *l1 = new QLabel( this );
   l1->setAlignment( AlignVCenter|AlignHCenter );
   l1->setFont( QFont( "Arial", 20, QFont::Bold ) );
-  l1->setPaletteForegroundColor(QColor("#333388"));
+  l1->setPaletteForegroundColor(QColor("#666688"));
   l1->setText( tr("BulmaCont") );
-  l1->setGeometry(250,250,150,25);
+  l1->setGeometry(270,10,130,25);
   l1->setBackgroundOrigin(QWidget::ParentOrigin);
   l1->setBackgroundPixmap(image0);
 
 
   QLabel *l0 = new QLabel( this );
-  l0->setPaletteForegroundColor(QColor("#FF0000"));
+  l0->setPaletteForegroundColor(QColor("#CC6666"));
   l0->setAlignment( AlignVCenter );
   l0->setFont( QFont( "Arial", 20, QFont::Bold ) );
   l0->setText( tr("v 0.5.1") );
-  l0->setGeometry(290,270,150,25);
+  l0->setGeometry(300,30,130,25);
   l0->setBackgroundOrigin(QWidget::ParentOrigin);
   l0->setBackgroundPixmap(image0);
 
-/*
-  QLabel *l21 = new QLabel( this );
-  l21->setAlignment( AlignVCenter );
-  l21->setFont( QFont( "helvetica", 7, QFont::Normal ) );
-  l21->setText( "" );
-  l21->setGeometry(0,image0.height()-38,image0.width(),58);
-  l21->setPaletteForegroundColor(QColor("#000066"));
-  l21->setPaletteBackgroundColor(QColor("#000000"));
-*/    
   l2 = new QTextBrowser(this);
   l2->setVScrollBarMode(QScrollView::AlwaysOff);
   l2->setAlignment( AlignBottom );
@@ -51,11 +42,11 @@ Splash::Splash() : QDialog( 0, "", true, WStyle_NoBorder |WStyle_Customize ) {
 
   QTimer timer(this);
   connect( &timer, SIGNAL(timeout()), SLOT(close()) );
-  timer.start(10000 ); //timer->start( 10000);
+  timer.start(10000 );
 
   QTimer timer1(this);
   connect( &timer1, SIGNAL(timeout()), SLOT(paint()) );
-  timer1.start( 1750 ); //timer1->start( 1750);
+  timer1.start( 1750 );
   exec();
   delete l1;
 }// end splash
@@ -83,16 +74,16 @@ void Splash::paint() {
                     tr("Comprobando nivel de combustible"),
                     tr("Calibrando los lasers del lector de CD"),
                     tr("Comprobando la disquetera y la Memoria Fisica"),
-                    tr("Induciendo energía quantica, entre su RAM y su ROM"),
-                    tr("Pequeños golpecitos de reajuste del HD"),
+                    tr("Induciendo energï¿½ quantica, entre su RAM y su ROM"),
+                    tr("Golpecitos de reajuste del HD"),
                     tr("Probando la Velocidad el Ventilador de la CPU y su Frecuencia"),
                     tr("Haciendo PING contra el servidor de la MetaBase"),
                     tr("Violando a Segmento"),
                     tr("Dejando tiempo libre al sistema"),
                     tr("Sincronizando fases Alfa Beta"),
                     tr("Flusheando Datos con vidas inteligentes superiores"),
-                    tr("Permutando las tablas de partición del sistema operativo"),
-		    tr("Crackeando BulmaGés")};
+                    tr("Permutando las tablas de particiï¿½ del sistema operativo"),
+		    tr("Crackeando BulmaGï¿½")};
   if (a) {
     cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";
   }// end if

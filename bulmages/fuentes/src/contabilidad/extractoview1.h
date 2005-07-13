@@ -2,7 +2,7 @@
                           extractoview1.h  -  description
                              -------------------
     begin                : Thu Jan 9 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -14,8 +14,8 @@
  *                                                                         *
  ***************************************************************************/
 /** \file extractoview1.h
-  * Este fichero contiene la definición de la clase \ref extractoview1
-  * \author Tomeu Borrás Riera
+  * Este fichero contiene la definiciï¿½ de la clase \ref extractoview1
+  * \author Tomeu Borrï¿½ Riera
   */
 #ifndef EXTRACTOVIEW1_H
 #define EXTRACTOVIEW1_H
@@ -33,30 +33,30 @@ class balanceview;
 class empresa;
 
 
-/** @brief Esta clase Mantiene la generación de extractos contables
+/** @brief Esta clase Mantiene la generaciï¿½ de extractos contables
   * 
-  * A partir de esta panalla se pueden llevar a cabo todos los temas de punteo y casación.
-  * Y acceso a filtrado. También desde esta pantalla se puede pedir más información de una cuenta
+  * A partir de esta panalla se pueden llevar a cabo todos los temas de punteo y casaciï¿½.
+  * Y acceso a filtrado. Tambiï¿½ desde esta pantalla se puede pedir mï¿½ informaciï¿½ de una cuenta
   * determinada.
   */
 class extractoview1 : public extractodlg1  {
     Q_OBJECT
 public:
-    /// Indica el número de registros que estamos viendo.
+    /// Indica el nmero de registros que estamos viendo.
     int numregistro;
-    /// Indica el número de registros que tiene el cursor2 \ref cursorcta
+    /// Indica el nmero de registros que tiene el cursor2 \ref cursorcta
     int numregistros;
-    /// Indica el número de dígitos que tienen las cuentas. (TAL VEZ DEBERIA ESTAR EN CONFPR)
+    /// Indica el nmero de dï¿½itos que tienen las cuentas. (TAL VEZ DEBERIA ESTAR EN CONFPR)
     int numdigitos;
-    /// El extracto se realiza sobre un cursor que siempre está en memoria.
+    /// El extracto se realiza sobre un cursor que siempre estï¿½en memoria.
     cursor2 *cursorcta;
     /// Siempre se propaga la empresa a estos objetos.
     empresa *empresaactual;
-    /// Este objeto debería pasar por la empresa para no tener problemas (Que es quien debería hacer el paso de mensajes).
+    /// Este objeto deberï¿½ pasar por la empresa para no tener problemas (Que es quien deberï¿½ hacer el paso de mensajes).
     diarioview1 *diario;
-    /// Este puntero debería estar ubicado en la clase empresa (Que es quien debería hacer el paso de mensajes).
+    /// Este puntero deberï¿½ estar ubicado en la clase empresa (Que es quien deberï¿½ hacer el paso de mensajes).
     intapunts3view *introapunts;
-    /// Este puntero debería estar ubicado en la clase empresa (Que es quien debería hacer el paso de mensajes).
+    /// Este puntero deberï¿½ estar ubicado en la clase empresa (Que es quien deberï¿½ hacer el paso de mensajes).
     balanceview *balance;
     /// Base de datos con la que se inicializa la clase para hacer todas sus operaciones
     postgresiface2* conexionbase;
@@ -87,13 +87,9 @@ public slots:
     virtual void boton_guardar();
     virtual void boton_asiento();
     virtual void boton_diario1(int);
-    virtual void boton_fechainicial();
-    virtual void boton_fechafinal();
     virtual void boton_balance1(int);
     virtual void return_codigoinicial();
     virtual void return_codigofinal();
-    virtual void return_fechainicial();
-    virtual void return_fechafinal();
     virtual void contextmenu(int , int , const QPoint &);
     virtual void apuntecambiadogrid (int, int);
     virtual void boton_casacion();

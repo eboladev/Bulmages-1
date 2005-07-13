@@ -2,7 +2,7 @@
                           balance1view.cpp  -  description
                              -------------------
     begin                : lun jun 23 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -27,6 +27,8 @@
 #include "images/cneto.xpm"
 #include "images/cingresos.xpm"
 #include "images/cgastos.xpm"
+
+#include "busquedafecha.h"
 
 #define CUENTA           m_ccuenta
 #define DENOMINACION     m_cdenominacion
@@ -97,9 +99,9 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
    // Como el aï¿½ inicial.
    QString cadena;
    cadena.sprintf("%2.2d/%2.2d/%4.4d",1, 1, QDate::currentDate().year());
-   fechainicial1->setText(cadena);
+   m_fechainicial1->setText(cadena);
    cadena.sprintf("%2.2d/%2.2d/%4.4d",31, 12, QDate::currentDate().year());
-   fechafinal1->setText(cadena);
+   m_fechafinal1->setText(cadena);
    fprintf(stderr,"FIN de balance1view: Constructor\n");
 
 }
@@ -150,9 +152,9 @@ void balance1view::cargacostes() {
 // 2 -> del aï¿½ actual
 void balance1view::boton_extracto1(int tipo) {
 	QDate fecha1, fecha2, fechaact, fechaact1;
-	if(!fechainicial1->text().isEmpty()) {
-        fechaact = normalizafecha(fechainicial1->text());
-        fechaact1 =normalizafecha(fechafinal1->text());
+	if(!m_fechainicial1->text().isEmpty()) {
+        fechaact = normalizafecha(m_fechainicial1->text());
+        fechaact1 =normalizafecha(m_fechafinal1->text());
 		switch(tipo) {
 			case 0:
 				fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
@@ -167,7 +169,6 @@ void balance1view::boton_extracto1(int tipo) {
 				fecha2.setYMD(fechaact.year(), 12, 31);
 			break;
 		}// end switch
- //     extracto->inicializa1((char *)codigoinicial->text().ascii(),(char *)codigofinal->text().ascii() ,(char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *)fecha2.toString("dd/MM/yyyy").ascii(),  ccostes[combocoste->currentItem()]);
  		  extracto->inicializa1( listado->currentItem()->text(CUENTA),  listado->currentItem()->text(CUENTA), fecha1.toString("dd/MM/yyyy"),fecha2.toString("dd/MM/yyyy"),  ccostes[combocoste->currentItem()]);
    }// end if
    extracto->accept();
@@ -184,9 +185,9 @@ void balance1view::boton_extracto1(int tipo) {
 // 2 -> del aï¿½ actual
 void balance1view::boton_diario1(int tipo) {
 	QDate fecha1, fecha2, fechaact, fechaact1;
-	if(!fechainicial1->text().isEmpty()) {
-        fechaact = normalizafecha(fechainicial1->text());
-        fechaact1 =normalizafecha(fechafinal1->text());
+	if(!m_fechainicial1->text().isEmpty()) {
+        fechaact = normalizafecha(m_fechainicial1->text());
+        fechaact1 =normalizafecha(m_fechafinal1->text());
 		switch(tipo) {
 			case 0:
 				fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
@@ -223,8 +224,8 @@ void balance1view::inicializa1(QString codinicial, QString codfinal, QString fec
   fprintf(stderr,"balance1view::inicializa1\n");
   codigoinicial->setText(codinicial);
   codigofinal->setText(codfinal);
-  fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
-  fechafinal1->setText(normalizafecha(fecha2).toString("dd/MM/yyyy"));
+  m_fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
+  m_fechafinal1->setText(normalizafecha(fecha2).toString("dd/MM/yyyy"));
 
    // Establecemos el centro de coste correspondiente.
    int i=0;
@@ -242,8 +243,8 @@ void balance1view::presentar() {
       double tsaldoant=0, tdebe=0, thaber=0, tsaldo=0;
       QString query;
       cursor2 *cursorapt;
-      QString finicial = fechainicial1->text();
-      QString ffinal = fechafinal1->text();
+      QString finicial = m_fechainicial1->text();
+      QString ffinal = m_fechafinal1->text();
       QString cinicial = codigoinicial->text();
       QString cfinal = codigofinal->text();
 
@@ -253,7 +254,7 @@ void balance1view::presentar() {
       int idc_coste;
       idc_coste = ccostes[combocoste->currentItem()];
 
-      // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
+      // La consulta es compleja, requiere la creaciï¿½ de una tabla temporal y de cierta mandanga por lo que puede
       // Causar problemas con el motor de base de datos.      
 	query= "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo, ejdebe, ejhaber, (ejdebe-ejhaber) AS ejsaldo FROM cuenta";
 	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '"+finicial+"' AND fecha<= '"+ffinal+"' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta";
@@ -366,14 +367,11 @@ void balance1view::presentar() {
       // Vaciamos el cursor de la base de datos.
       delete cursorapt1;
 
-      // Eliminamos la tabla temporal y cerramos la transacción.
-///      conexionbase->commit();
-///      conexionbase->begin();
+      // Eliminamos la tabla temporal y cerramos la transacciï¿½.
       query.sprintf("DROP TABLE balancetemp");
       conexionbase->ejecuta(query);
       conexionbase->commit();
-      
-      
+
       // Hacemos la actualizacion de los saldos totales
       totalsaldoant->setText(QString::number(tsaldoant,'f',2));
       totaldebe->setText(QString::number(tdebe,'f',2));
@@ -388,17 +386,6 @@ void balance1view::presentar() {
 void balance1view::accept() {
   presentar();
 }// end accept
-
-
-void balance1view::return_fechafinal() {
-  fechafinal1->setText(normalizafecha(fechafinal1->text()).toString("dd/MM/yyyy"));
-  accept();
-}// end return_fechafinal
-
-
-void balance1view::return_fechainicial() {
-  fechainicial1->setText(normalizafecha(fechainicial1->text()).toString("dd/MM/yyyy"));
-}// end return_fechainicial
 
 
 void balance1view::return_codigoinicial() {
@@ -484,11 +471,11 @@ void balance1view::nivelactivated1 (int nivel, QListViewItem *ot) {
 }// end nivelactivated1
 
 
-/** \brief SLOT que responde a la petición de un men contextual para un elemento del balance.
-  * @param poin Punto en el que se ha hecho la pulsación del ratï¿½ y que, por tanto, es donde querremos hacer aparecer el menu contextual.
+/** \brief SLOT que responde a la peticiï¿½ de un men contextual para un elemento del balance.
+  * @param poin Punto en el que se ha hecho la pulsaciï¿½ del ratï¿½ y que, por tanto, es donde querremos hacer aparecer el menu contextual.
   *
   * Creamos el objeto QPopupMenu con las opciones que queremos que aparezcan.
-  * Lo invocamos y segn la opción que haya elegido el usuario llamamos a la función que da respuesta a dicha petición.
+  * Lo invocamos y segn la opciï¿½ que haya elegido el usuario llamamos a la funciï¿½ que da respuesta a dicha peticiï¿½.
   */
 void balance1view::contextmenu( QListViewItem *, const QPoint &poin, int) {
 	QPopupMenu *popup;
@@ -530,17 +517,17 @@ void balance1view::contextmenu( QListViewItem *, const QPoint &poin, int) {
   */
 void balance1view::boton_imprimir() {
    BalancePrintView *balan = new BalancePrintView(empresaactual);
-   balan->inicializa1(codigoinicial->text(), codigofinal->text(), fechainicial1->text(), fechafinal1->text(), TRUE);
+   balan->inicializa1(codigoinicial->text(), codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), TRUE);
    balan->exec();
 }// end boton_imprimir.
 
 
-/** \brief SLOT que responde a la pulsación de texto sobre el campo de codigo
-  * @param texto El valor del campo tras la pulsación.
+/** \brief SLOT que responde a la pulsaciï¿½ de texto sobre el campo de codigo
+  * @param texto El valor del campo tras la pulsaciï¿½.
   *
-  * Usamos la función sender() para saber quien genera la llamada y actuamos en consecuencia.
+  * Usamos la funciï¿½ sender() para saber quien genera la llamada y actuamos en consecuencia.
   * Si se pulsa el + hace aparecer el listado de cuentas \ref listcuentasview1 
-  * Pone el listado en modo selección y espera a que ï¿½te devuelva algn valor para recogerlo
+  * Pone el listado en modo selecciï¿½ y espera a que ï¿½te devuelva algn valor para recogerlo
   */
 void balance1view::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
@@ -559,9 +546,9 @@ void balance1view::codigo_textChanged(const QString &texto) {
   * @brief SLOT que tras pulsarse una tecla sobre un campo del tipo fecha busca caracteres especiales.
   *
   * Cuando se ha pulsado una tecla sobre la fecha del extracto
-  * Se evalua si la pulsación es un cï¿½igo de control o es un digitos
-  * Para la introducción de fechas.
-  * @param texto El valor del campo tras la modificación.
+  * Se evalua si la pulsaciï¿½ es un cï¿½igo de control o es un digitos
+  * Para la introducciï¿½ de fechas.
+  * @param texto El valor del campo tras la modificaciï¿½.
   */
 void balance1view::fecha_textChanged(const QString &texto) {
     QLineEdit *fecha = (QLineEdit *) sender();
@@ -578,30 +565,7 @@ void balance1view::fecha_textChanged(const QString &texto) {
         fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
 }// end fecha_textChanged
 
-/**
-  * @brief SLOT que tras pulsarse sobre el botï¿½ de fecha inicial saca el calendario.
-  *
-  * Ya que la acción es la misma que la pulsación de la tecla + en el campo de fecha
-  * Lo que hace esta función es escribir el + en dicho campo y esperar que se active el slot \ref fecha_textChanged
-  */
-void balance1view::boton_fechainicial() {
-   fechainicial1->setText("+");
-   fechainicial1->selectAll();
-   fechainicial1->setFocus();
-}// end boton_fechainicial
 
-
-/**
-  * @brief SLOT que tras pulsarse sobre el botï¿½ de fecha final saca el calendario.
-  *
-  * Ya que la acción es la misma que la pulsación de la tecla + en el campo de fecha
-  * Lo que hace esta función es escribir el + en dicho campo y esperar que se active el slot \ref fecha_textChanged
-  */
-void balance1view::boton_fechafinal() {
-   fechafinal1->setText("+");
-   fechafinal1->selectAll();
-   fechafinal1->setFocus();
-}// end boton_fechainicial
 
 
 
