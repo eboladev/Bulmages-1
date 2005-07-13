@@ -1,0 +1,113 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>BusquedaCuentaBase</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>BusquedaCuentaBase</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>577</width>
+            <height>44</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Form1</string>
+    </property>
+    <hbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>m_codigocuenta</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>5</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+        </widget>
+        <widget class="QToolButton">
+            <property name="name">
+                <cstring>m_searchcliente</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>22</width>
+                    <height>22</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>22</width>
+                    <height>22</height>
+                </size>
+            </property>
+            <property name="text">
+                <string></string>
+            </property>
+            <property name="iconSet">
+                <iconset>image0</iconset>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>m_nomcuenta</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>5</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="text">
+                <string>Cuenta</string>
+            </property>
+        </widget>
+    </hbox>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="375">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000013e494441545885ed96bd9184300c859f886980d40550805dbf5c800b50ea06c87dc19d38b3ebbf9dbdf525286134c6a0f7fc214412043800ac403c22b6759b9a2ff18897c5d9394990a7cacc6e12008817fab4134ba9b2332638412506d401f64cffc3c04f4c634015f7a2c7c4e873004082d0c9c070f494bd103703771f683270ff0b66e6450666e67fca40de0925088dac2ff18830d624b39b54abb4b7ae0f9720c49e4982d0e3fdb5e2966dddc09e09f8be493769e5cebaa49b70fc36275dbf34af4ade72e664a05484b126e59b5a67ca9e499d72d625f64c2de555065471bee9534c14fb803a31aabcc5444b79b50fa8edbdcadf555eec03f99997987847b9d94d2a7d4d2703f9cb4b4c8c38d17a792d5f1e95d79818e903d533c7f3bc7161402b6a9db1b32eb5e6839e53f9d7954f5ac49e2fcd65f6f59e07ee79e00b4fcfdb72931037710000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>m_searchcliente</sender>
+        <signal>clicked()</signal>
+        <receiver>BusquedaCuentaBase</receiver>
+        <slot>s_searchCuenta()</slot>
+    </connection>
+    <connection>
+        <sender>m_codigocuenta</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>BusquedaCuentaBase</receiver>
+        <slot>s_codigocuentatextChanged(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>m_codigocuenta</sender>
+        <signal>lostFocus()</signal>
+        <receiver>BusquedaCuentaBase</receiver>
+        <slot>s_lostFocus()</slot>
+    </connection>
+    <connection>
+        <sender>m_codigocuenta</sender>
+        <signal>returnPressed()</signal>
+        <receiver>BusquedaCuentaBase</receiver>
+        <slot>s_lostFocus()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>s_searchCuenta()</slot>
+    <slot>s_codigocuentatextChanged(const QString &amp;)</slot>
+    <slot>s_lostFocus()</slot>
+</slots>
+<layoutdefaults spacing="0" margin="0"/>
+</UI>
