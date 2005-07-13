@@ -2,7 +2,7 @@
                           listcuentasview.cpp  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -185,12 +185,7 @@ int listcuentasview1::inicializa( ) {
         cursoraux2->siguienteregistro();
     }// end while
     delete cursoraux2;
-    // Cargamos el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
-    /*   query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-       cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
-       numdigitos=cursoraux1->valor("valor").length();
-       delete cursoraux1;
-    */
+    // Cargamos el nmero de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
     numdigitos = empresaactual->numdigitosempresa();
 
     inicializatabla();
@@ -199,8 +194,8 @@ int listcuentasview1::inicializa( ) {
 
 
 
-/** Inicializa la tabla de cuentas, que es la segunda pestaña de la pantalla
-  * Dicha tabla sólo muestra las cuentas hoja del plan contable, y deja los demás elementos
+/** Inicializa la tabla de cuentas, que es la segunda pestaï¿½ de la pantalla
+  * Dicha tabla sï¿½o muestra las cuentas hoja del plan contable, y deja los demï¿½ elementos
   * ocultos.
   */
 void listcuentasview1::inicializatabla()  {
@@ -263,7 +258,7 @@ void listcuentasview1::listpulsada(QListViewItem *it) {
 
 
 /** La pantalla lleva implicito un buscador de cuentas, cuando cambia el contenido
-  * del QLineEdit del buscador se lanza esta función que hace una búsqueda sobre el árbol
+  * del QLineEdit del buscador se lanza esta funciï¿½ que hace una bsqueda sobre el ï¿½bol
   * de cuentas
   */
 void listcuentasview1::descripcioncambiada(const QString &string1) {
@@ -293,18 +288,19 @@ void listcuentasview1::descripcioncambiada(const QString &string1) {
   */
 void listcuentasview1::listdblpulsada(QListViewItem *it) {
     listpulsada(it);
-    codcuenta = it->text(ccuenta);
-    idcuenta = it->text(cidcuenta);
+    mdb_codcuenta = it->text(ccuenta);
+    mdb_idcuenta = it->text(cidcuenta);
+    mdb_desccuenta = it->text(cdesccuenta);
     if (modo == 0) {
 
         cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
-        nuevae->cargacuenta(atoi(idcuenta.ascii()));
+        nuevae->cargacuenta(atoi(idcuenta().ascii()));
         nuevae->exec();
         inicializa();
         delete nuevae;
         // Para no perder el foco del elemento, al mismo tiempo que se
         // actualizan los cambios luego buscamos y enfocamos el item
-        it = ListView1->findItem(idcuenta, cidcuenta, Qt::ExactMatch);
+        it = ListView1->findItem(mdb_idcuenta, cidcuenta, Qt::ExactMatch);
         ListView1->setCurrentItem(it);
         ListView1->ensureItemVisible(it);
     } else {
@@ -316,8 +312,8 @@ void listcuentasview1::listdblpulsada(QListViewItem *it) {
 /**
   * Esta funcion es el slot que se activa al pulsar sobre el
   * boton nueva cuenta.
-  * Su función es crear una nueva cuenta desde la ventana del plan de cuentas
-  * La inserción de la nueva se hace como cuenta hija de la cuenta actualmente
+  * Su funciï¿½ es crear una nueva cuenta desde la ventana del plan de cuentas
+  * La inserciï¿½ de la nueva se hace como cuenta hija de la cuenta actualmente
   * seleccionada por lo que se hace que la ventana que se habre tenga el campo
   * del padre de la cuenta rellenado.
   */
@@ -353,8 +349,8 @@ void listcuentasview1::nuevacuenta()  {
 /**
  * Esta funcion es el slot que se activa al pulsar sobre el
  * boton nueva cuenta.
- * Su función es crear una nueva cuenta desde la ventana del plan de cuentas
- * La inserción de la nueva se hace como cuenta hija de la cuenta actualmente
+ * Su funciï¿½ es crear una nueva cuenta desde la ventana del plan de cuentas
+ * La inserciï¿½ de la nueva se hace como cuenta hija de la cuenta actualmente
  * seleccionada por lo que se hace que la ventana que se habre tenga el campo
  * del padre de la cuenta rellenado.
  */
@@ -363,15 +359,16 @@ void listcuentasview1::editarcuenta()  {
     QListViewItem *it;
     it = ListView1->currentItem();
     listpulsada(it);
-    codcuenta = it->text(ccuenta);
-    idcuenta = it->text(cidcuenta);
+    mdb_codcuenta = it->text(ccuenta);
+    mdb_idcuenta = it->text(cidcuenta);
+    mdb_desccuenta = it->text(cdesccuenta);
     cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
-    nuevae->cargacuenta(atoi(idcuenta.ascii()));
+    nuevae->cargacuenta(atoi(idcuenta().ascii()));
     nuevae->exec();
     inicializa();
     // Para no perder el foco del elemento, al mismo tiempo que se
     // actualizan los cambios luego buscamos y enfocamos el item
-    it = ListView1->findItem(idcuenta, cidcuenta, Qt::ExactMatch);
+    it = ListView1->findItem(mdb_idcuenta, cidcuenta, Qt::ExactMatch);
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);
     delete nuevae;
@@ -410,8 +407,8 @@ void listcuentasview1::borrarcuenta()  {
 
 /** \brief Se ha hecho una doble click sobre la tabla de cuentas
   *
-  * Al hacer doble click sobre la tabla de cuentas, se encuentra el elemento análogo
-  * en el arbol contable y se simula una doble pulsación sobre ese elemento.
+  * Al hacer doble click sobre la tabla de cuentas, se encuentra el elemento anï¿½ogo
+  * en el arbol contable y se simula una doble pulsaciï¿½ sobre ese elemento.
   */
 void listcuentasview1::dbtabla(int row, int , int ,const QPoint &) {
     string idcuenta = tablacuentas->text(row,2).ascii();
@@ -422,9 +419,9 @@ void listcuentasview1::dbtabla(int row, int , int ,const QPoint &) {
 }// end dbtabla
 
 
-/** \brief Cuando se pulsa el Return sobre la búsqueda de cuentas
+/** \brief Cuando se pulsa el Return sobre la bsqueda de cuentas
   * 
-  * Actua como si fuese una doble pulsación con el ratón sobre la tabla de cuentas.
+  * Actua como si fuese una doble pulsaciï¿½ con el ratï¿½ sobre la tabla de cuentas.
   */
 void listcuentasview1::eturn_descripcion() {
     QListViewItem *it = ListView1->currentItem();

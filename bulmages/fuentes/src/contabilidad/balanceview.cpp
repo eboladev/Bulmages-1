@@ -443,7 +443,7 @@ void balanceview::boton_buscacuentainicial() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   codigoinicial->setText(listcuentas->codcuenta);
+   codigoinicial->setText(listcuentas->codcuenta());
    delete listcuentas;
 }// end boton_buscacuentainicial
 
@@ -453,7 +453,7 @@ void balanceview::boton_buscacuentafinal() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   codigofinal->setText(listcuentas->codcuenta);
+   codigofinal->setText(listcuentas->codcuenta());
    delete listcuentas;
 }// end boton_buscacuentafinal
 
@@ -526,7 +526,7 @@ void balanceview::codigo_textChanged(const QString &texto) {
         listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
-        codigo->setText(listcuentas->codcuenta);
+        codigo->setText(listcuentas->codcuenta());
         delete listcuentas;
     }// end if
 }// end codigo_textChanged

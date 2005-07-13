@@ -2,7 +2,7 @@
                           listcuentasview.h  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -23,10 +23,10 @@
 #include "listcuentasdlg1.h"
 
 
-/** @author Tomeu Borrás Riera 
+/** @author Tomeu Borrï¿½ Riera 
   * \brief Presenta un listado del plan contable.
   *
-  * Esta pantalla tiene dos modos de funcionamiento, en uno actua como selector de cuentas y en el otro actua como soporte para la edición del plan contable.
+  * Esta pantalla tiene dos modos de funcionamiento, en uno actua como selector de cuentas y en el otro actua como soporte para la ediciï¿½ del plan contable.
 */
 
 class empresa;
@@ -50,11 +50,18 @@ int cgrupo;
 int modo;      
 /// Indica el numero de digitos que tienen por defecto todas las cuentas que se crean.
 unsigned int numdigitos;
-public:
 /// El codigo de la cuenta que se devuelve.
-QString codcuenta;      
+QString mdb_codcuenta;      
 /// El identificador de la cuenta que se devuelve
-QString idcuenta;
+QString mdb_idcuenta;
+QString mdb_desccuenta;
+
+public:
+
+
+QString codcuenta() {return mdb_codcuenta;};
+QString idcuenta() {return mdb_idcuenta;};
+QString desccuenta() {return mdb_desccuenta;};
 
 public:
    listcuentasview1(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);

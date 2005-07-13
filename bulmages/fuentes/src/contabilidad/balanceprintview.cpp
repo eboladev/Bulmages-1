@@ -2,7 +2,7 @@
                           balanceprintview.cpp  -  description
                              -------------------
     begin                : miï¿½jun 25 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
     modificat per        : (C) 2003 Antoni Mirabete i Terï¿½ - amirabet@biada.org
  ***************************************************************************/
@@ -93,7 +93,7 @@ void BalancePrintView::boton_codigoinicial() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   codigoinicial->setText(listcuentas->codcuenta);
+   codigoinicial->setText(listcuentas->codcuenta());
    delete listcuentas;
 }
 
@@ -102,7 +102,7 @@ void BalancePrintView::boton_codigofinal() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   codigofinal->setText(listcuentas->codcuenta);
+   codigofinal->setText(listcuentas->codcuenta());
    delete listcuentas;
 }
 
@@ -198,17 +198,17 @@ void BalancePrintView::presentar(char *tipus){
 	 }// end if
 
          if (txt) {
-            //presentacióntxt normal
+            //presentaciï¿½txt normal
             fitxersortidatxt.setf(ios::fixed);
             fitxersortidatxt.precision(2);
             fitxersortidatxt << "                                        Balance \n" ;
             fitxersortidatxt << "Fecha Inicial: " << finicial.ascii() << "   Fecha Final: " << ffinal.ascii() << endl;
-            fitxersortidatxt << "Cuenta            Denominación                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
+            fitxersortidatxt << "Cuenta            Denominaciï¿½                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
             fitxersortidatxt << "______________________________________________________________________________________________________________________________________________\n";
          }// end if
 	 
          if (html) {
-            //presentaciónhtml normal
+            //presentaciï¿½html normal
             fitxersortidahtml.setf(ios::fixed);
             fitxersortidahtml.precision(2);
             fitxersortidahtml << "<html>\n";

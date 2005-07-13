@@ -2,7 +2,7 @@
                           filtrardiarioview.cpp  -  description
                              -------------------
     begin                : mar jul 29 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 
@@ -38,7 +38,7 @@ void filtrardiarioview::buscacontrapartida() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   contrapartida->setText(listcuentas->codcuenta);
+   contrapartida->setText(listcuentas->codcuenta());
    delete listcuentas;
 }// end buscacontrapartida
 

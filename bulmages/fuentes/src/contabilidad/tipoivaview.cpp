@@ -10,14 +10,14 @@
 //
 //
 /** \file tipoivaview.cpp
-  * Contiene la implementación de la clase \ref tipoivaview
-  * \author Tomeu Borrás Riera
+  * Contiene la implementaciï¿½ de la clase \ref tipoivaview
+  * \author Tomeu Borrï¿½ Riera
   */
   
 #include "tipoivaview.h"
 #include "empresa.h"
 
-/** El constructor de la clase prepara las variables globales y llama a la función pintar
+/** El constructor de la clase prepara las variables globales y llama a la funciï¿½ pintar
   */
 tipoivaview::tipoivaview(empresa *emp,QWidget *parent, const char *name) : tipoivadlg(parent, name) , dialogChanges(this) {
     empresaactual = emp;
@@ -62,7 +62,7 @@ void tipoivaview::pintar(QString idtipoiva) {
 
 /**
   * Esta funcion muestra el tipo de iva en la ventana.
-  * \param pos si es distinto de cero se busca en el combo la posición indicada sino se usa la posición actual del combo.
+  * \param pos si es distinto de cero se busca en el combo la posiciï¿½ indicada sino se usa la posiciï¿½ actual del combo.
   */
 void tipoivaview::mostrarplantilla(int pos) {
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -95,7 +95,7 @@ void tipoivaview::cambiacombo(int) {
 }// end cambiacombo
 
 
-/** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de guardar el tipo de iva que se estï¿½editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void tipoivaview::s_saveTipoIVA() {
@@ -108,7 +108,7 @@ void tipoivaview::s_saveTipoIVA() {
 }// end s_saveTipoIVA
 
 
-/** SLOT que responde a la pulsación del botón de nuevo tipo de iva
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
 void tipoivaview::s_newTipoIVA() {
@@ -130,14 +130,14 @@ void tipoivaview::s_newTipoIVA() {
 }// end s_newTipoIVA
 
 
-/** SLOT que responde a la pulsación del botón de borrar un tipo de IVA
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de borrar un tipo de IVA
   * Borra en la tabla de tiposiva el TIPO de iva concreto
   */
 void tipoivaview::s_deleteTipoIVA() {
 
     switch( QMessageBox::warning( this, "Borrar Tipo de IVA",
         "Se va a borrar el Tipo de IVA,\n"
-        "Esto puede ocasionar pérdida de datos\n"
+        "Esto puede ocasionar pï¿½dida de datos\n"
         "Tal vez deberia pensarselo mejor antes\n"
         "porque igual su trabajo se va a tomar por culo.",
         QMessageBox::Ok ,
@@ -152,19 +152,19 @@ void tipoivaview::s_deleteTipoIVA() {
 
 }// s_deleteTipoIVA
 
-/** SLOT que responde a la pulsación del botón de buscar una cuenta */
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de buscar una cuenta */
 void tipoivaview::s_searchAccount() {
    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   m_codigoCtaTipoIVA->setText(listcuentas->codcuenta);
+   m_codigoCtaTipoIVA->setText(listcuentas->codcuenta());
    delete listcuentas;
 }// end s_searchAccount
 
 
-/** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo
-  * Esta función está dedicada a Francina, Bienvenida al mundo 
+/** Antes de salir de la ventana debemos hacer la comprobaciï¿½ de si se ha modificado algo
+  * Esta funciï¿½ estï¿½dedicada a Francina, Bienvenida al mundo 
   */
 void tipoivaview::close() {
     /// Si se ha modificado el contenido advertimos y guardamos.

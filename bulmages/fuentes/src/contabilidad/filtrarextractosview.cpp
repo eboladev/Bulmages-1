@@ -2,7 +2,7 @@
                           filtrarextractosview.cpp  -  description
                              -------------------
     begin                : dom jul 27 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -50,7 +50,7 @@ void filtrarextractosview::codigo_textChanged(const QString &texto) {
         listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
-        codigo->setText(listcuentas->codcuenta);
+        codigo->setText(listcuentas->codcuenta());
         delete listcuentas;
     }// end if
 }// end codigo_textChanged
@@ -60,7 +60,7 @@ void filtrarextractosview::boton_buscacontrapartida() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   codigocontrapartida->setText(listcuentas->codcuenta);
+   codigocontrapartida->setText(listcuentas->codcuenta());
    delete listcuentas;
 }// end boton_buscacuentainicial
 

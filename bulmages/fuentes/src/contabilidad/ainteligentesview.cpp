@@ -2,7 +2,7 @@
                           ainteligentesview.cpp  -  description
                              -------------------
     begin                : Thu Feb 6 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -120,7 +120,7 @@ ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *
    /// El cursor que recorre los asientos inteligentes debe iniciarse a NULL
    m_cAInteligentes = NULL;
    
-   /// Hacemos la inicialización inicial.
+   /// Hacemos la inicializaciï¿½ inicial.
    m_oldRow=-1;
    cargacombo();
    /// Llamamos a boton_fin para que la pantalla aparezca con un asiento inteligente inicial.
@@ -151,10 +151,10 @@ void ainteligentesview::cargacombo() {
 
 /** \brief Cuando se cambia el contenido del comoboBox de los asientos se cambia toda la pantalla
   *
-  * Esta función es llamada cuando se ha seleccionado un item diferente en el comboBox m_aintelignete
+  * Esta funciï¿½ es llamada cuando se ha seleccionado un item diferente en el comboBox m_aintelignete
   * Entonces cambia la variable de clase \ref m_idAsientoInteligente con el valor que le corresponde y
-  * llama a la función de repintar la pantalla.
-  \todo No hay verificación ni control de cambios.
+  * llama a la funciï¿½ de repintar la pantalla.
+  \todo No hay verificaciï¿½ ni control de cambios.
   */
 void ainteligentesview::comboActivated(const QString &) {
    QString idasiento = m_cAInteligentes->valor("idainteligente",m_ainteligente->currentItem());
@@ -316,7 +316,7 @@ void ainteligentesview::boton_igualant() {
 
 
 /******************************************************
- * Esta función se activa cuando pulsamos sobre el    *
+ * Esta funciï¿½ se activa cuando pulsamos sobre el    *
  * boton guardar                                      *
  ******************************************************/
 void ainteligentesview::boton_save() {
@@ -621,7 +621,7 @@ void ainteligentesview::boton_cuentas() {
    listcuentas->inicializa();
    listcuentas->exec();
    if (pestanas->currentPageIndex() == 0) {
-     tapunts->setText(tapunts->currentRow(), tapunts->currentColumn(), listcuentas->codcuenta);
+     tapunts->setText(tapunts->currentRow(), tapunts->currentColumn(), listcuentas->codcuenta());
    }// end if
    delete listcuentas;  
 }// end boton_cuentas
@@ -674,7 +674,7 @@ void ainteligentesview::boton_exportar() {
          fclose(mifile);
       }// end if
   }// end if   
-  QMessageBox::warning( this,"BulmaGés", "Se ha exportado el asiento inteligente.", "OK",  "No OK", 0, 0, 1 );  
+  QMessageBox::warning( this,"BulmaGï¿½", "Se ha exportado el asiento inteligente.", "OK",  "No OK", 0, 0, 1 );  
 }// end boton_exportar
 
 
@@ -683,7 +683,7 @@ void ainteligentesview::boton_importar() {
    if (!fn.isEmpty()) {      
       // Hacemos el parsing del XML
       QFile xmlFile( fn);              // Declaramos el ficheros
-      QXmlInputSource source( &xmlFile ); // Declaramos el inputsource, con el fichero como parámetro
+      QXmlInputSource source( &xmlFile ); // Declaramos el inputsource, con el fichero como parï¿½etro
       QXmlSimpleReader reader;            // Declaramos el lector
       
       importainteligente * handler = new importainteligente( empresaactual );

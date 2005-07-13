@@ -1447,8 +1447,8 @@ void intapunts3view::cambiadasubcuenta(int row) {
         listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
-        tapunts3->setText(row,COL_SUBCUENTA,listcuentas->codcuenta);
-        tapunts3->setText(row,COL_IDCUENTA,listcuentas->idcuenta);
+        tapunts3->setText(row,COL_SUBCUENTA,listcuentas->codcuenta());
+        tapunts3->setText(row,COL_IDCUENTA,listcuentas->idcuenta());
         delete listcuentas;
     }// end if
     // Hacemos la recodificacin
@@ -1493,8 +1493,8 @@ void intapunts3view::buscacontrapartida(int row) {
     listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
-    tapunts3->setText(row,COL_CONTRAPARTIDA,listcuentas->codcuenta);
-    tapunts3->setText(row,COL_IDCONTRAPARTIDA,listcuentas->idcuenta);
+    tapunts3->setText(row,COL_CONTRAPARTIDA,listcuentas->codcuenta());
+    tapunts3->setText(row,COL_IDCONTRAPARTIDA,listcuentas->idcuenta());
     delete listcuentas;
 }// end buscacontrapartida
 

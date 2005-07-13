@@ -30,7 +30,7 @@ void cambiactaview::boton_buscactaorigen() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   codigoorigen->setText(listcuentas->codcuenta);
+   codigoorigen->setText(listcuentas->codcuenta());
    delete listcuentas;
 }// end boton_buscacuentainicial
 
@@ -40,7 +40,7 @@ void cambiactaview::boton_buscactadestino() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   codigodestino->setText(listcuentas->codcuenta);
+   codigodestino->setText(listcuentas->codcuenta());
    delete listcuentas;
 }// end boton_buscacuentafinal
 
@@ -84,7 +84,7 @@ void cambiactaview::accept() {
 	}// end if
 	
 		
-	// Modificamos también los apuntes
+	// Modificamos tambiï¿½ los apuntes
 	QString query1 = "UPDATE apunte SET idcuenta = id_cuenta('"+destino+"') WHERE idcuenta = id_cuenta('"+origen+"')";
 	if (ainicial != "") {
 		query1 = query1 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= "+ainicial+")";
@@ -99,7 +99,7 @@ void cambiactaview::accept() {
 		query1 = query1 + " AND fecha <= '"+ffinal+"'";
 	}// end if
 	
-	// Modificamos también las contrapartidas de los apuntes
+	// Modificamos tambiï¿½ las contrapartidas de los apuntes
 	QString query3 = "UPDATE apunte SET contrapartida = id_cuenta('"+destino+"') WHERE contrapartida = id_cuenta('"+origen+"')";
 	if (ainicial != "") {
 		query3 = query3 + " AND idasiento IN (SELECT idasiento FROM asiento WHERE ordenasiento >= "+ainicial+")";
@@ -198,7 +198,7 @@ void cambiactaview::codigo_textChanged(const QString &texto) {
         listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
-        codigo->setText(listcuentas->codcuenta);
+        codigo->setText(listcuentas->codcuenta());
         delete listcuentas;
     }// end if
 }// end codigo_textChanged

@@ -46,7 +46,8 @@ FORMS += comun/uiselector.ui \
          formularios/mod300dlg.ui \
          contabilidad/cobropagodlg.ui \
          contabilidad/tipoivadlg.ui \
-         contabilidad/fpagodlg.ui 
+         contabilidad/fpagodlg.ui \
+	 comun/busquedacuentabase.ui
 TRANSLATIONS += contabilidad/bulmages_es.ts \
                 contabilidad/bulmages_ca.ts \
                 contabilidad/bulmages_en.ts \
@@ -184,7 +185,8 @@ IDLS += contabilidad/about.ui \
         contabilidad/amortizacionesdlg.ui \
         contabilidad/uibloqfecha.ui \
         contabilidad/cobropagodlg.ui \
-        contabilidad/tipoivadlg.ui 
+        contabilidad/tipoivadlg.ui \
+	comun/busquedacuentabase.ui
 HEADERS += comun/splashscreen.h \
            contabilidad/bulmages01.h \
            contabilidad/aboutview.h \
@@ -239,7 +241,8 @@ HEADERS += comun/splashscreen.h \
            contabilidad/bbloqfecha.h \
            contabilidad/tipoivaview.h \
            contabilidad/fpagoview.h \
-           contabilidad/arbol.h 
+           contabilidad/arbol.h \
+	   comun/busquedacuenta.h
 SOURCES += main.cpp \
            comun/splashscreen.cpp \
            contabilidad/bulmages01.cpp \
@@ -295,7 +298,8 @@ SOURCES += main.cpp \
            contabilidad/bbloqfecha.cpp \
            contabilidad/tipoivaview.cpp \
            contabilidad/fpagoview.cpp \
-           contabilidad/arbol.cpp
+           contabilidad/arbol.cpp \
+	   comun/busquedacuenta.cpp
 uibloqfecha.ui.target = contabilidad/uibloqfecha.ui
 uibloqfecha.ui.commands = $$IDL_COMPILER
 tipoivadlg.ui.target = contabilidad/tipoivadlg.ui

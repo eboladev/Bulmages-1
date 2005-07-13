@@ -2,7 +2,7 @@
                           extractoprintview.cpp  -  description
                              -------------------
     begin                : jue jun 26 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
     modificat per        : (C) 2003 Antoni Mirabete i Terï¿½ - amirabet@biada.org
  ***************************************************************************/
@@ -89,7 +89,7 @@ void ExtractoPrintView::presentakugar() {
 
 
     /// La impresiï¿½ siempre se hace en el archivo extracte.kud situado en el directorio de trabajo
-    char *argstxt[]={"extracte.kud","extracte.kud",NULL};      //presentacióntxt normal
+    char *argstxt[]={"extracte.kud","extracte.kud",NULL};      //presentaciï¿½txt normal
     ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
     if (!fitxersortidatxt)
         txt=0;    // verifiquem que s'hagin creat correctament els fitxers
@@ -153,7 +153,7 @@ void ExtractoPrintView::presentakugar() {
             fitxersortidatxt << " desccontrapartida=\""<< desccontrapartida <<"\"/>\n" ;
         }// end if
         if (txt) {
-            //presentacióntxt normal
+            //presentaciï¿½txt normal
             fitxersortidatxt << "\t<Row level=\"1\" asiento=\""<< idasiento <<"\"";
             fitxersortidatxt << " descripcion =\""<< conceptocontable.c_str() <<"\"";
             fitxersortidatxt << " fecha=\""<< fecha <<"\"";
@@ -176,8 +176,8 @@ void ExtractoPrintView::presentakugar() {
 }// end presentakugar
 
 
-/** \brief Esta función monta la consulta que se va a realizar contra la base de datos
-  * La consulta es de bastante detalle y por eso es conveniente dedicar una función a realizarla
+/** \brief Esta funciï¿½ monta la consulta que se va a realizar contra la base de datos
+  * La consulta es de bastante detalle y por eso es conveniente dedicar una funciï¿½ a realizarla
   * Ademï¿½ dicha consulta puede ser invocada desde distintos sitios
   */
 QString ExtractoPrintView::montaQuery() {
@@ -279,12 +279,12 @@ void ExtractoPrintView::presentar(char *tipus) {
     QString cinicial = codigoinicial->text();
     QString cfinal = codigofinal->text();
 
-    // tipus de presentación
+    // tipus de presentaciï¿½
     txt=!strcmp(tipus,"txt");
     html=!strcmp(tipus,"html");
 
-    char *argstxt[]={"mayor.txt","mayor.txt",NULL};      //presentacióntxt normal
-    char *argshtml[]={"mayor.html","mayor.html",NULL};   //presentaciónhtml normal
+    char *argstxt[]={"mayor.txt","mayor.txt",NULL};      //presentaciï¿½txt normal
+    char *argshtml[]={"mayor.html","mayor.html",NULL};   //presentaciï¿½html normal
 
     ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
     ofstream fitxersortidahtml(argshtml[0]);
@@ -296,7 +296,7 @@ void ExtractoPrintView::presentar(char *tipus) {
 
     if (txt | html) {                 // nomï¿½ continuem si hem pogut crear algun fitxer
         if (txt) {
-            //presentacióntxt
+            //presentaciï¿½txt
 
             fitxersortidatxt.setf(ios::fixed);
             fitxersortidatxt.precision(2);
@@ -305,7 +305,7 @@ void ExtractoPrintView::presentar(char *tipus) {
             fitxersortidatxt << "_________________________________________________________________________________________________________\n";
         }
         if (html) {
-            //presentaciónhtml
+            //presentaciï¿½html
 
             fitxersortidahtml.setf(ios::fixed);
             fitxersortidahtml.precision(2);
@@ -364,14 +364,14 @@ void ExtractoPrintView::presentar(char *tipus) {
                     }
 
                     if (txt) {
-                        //presentacióntxt
+                        //presentaciï¿½txt
                         fitxersortidatxt << "\nAsiento  Fecha   Contrapartida   Descripcion                          Debe         Haber         Saldo\n";
                         fitxersortidatxt << "                                                 SUMAS ANTERIORES...   " << setw(10) << debeinicial << setw(10) << haberinicial << setw(10) << saldoinicial << endl;
                         fitxersortidatxt << "_________________________________________________________________________________________________________\n";
                     }
 
                     if (html) {
-                        //presentaciónhtml
+                        //presentaciï¿½html
                         fitxersortidahtml << "<tr><td class=titolcolumnamajor> Asiento </td><td class=titolcolumnamajor> Fecha </td><td class=titolcolumnamajor> Contrapartida </td><td class=titolcolumnamajor> Descripcion </td><td class=titolcolumnamajor> Debe </td><td class=titolcolumnamajor> Haber </td><td class=titolcolumnamajor> Saldo </td></tr>\n";
                         fitxersortidahtml << "<tr><td></td><td></td><td></td><td class=sumamajor> Sumes anteriors...</td><td class=dosdecimals> " << debeinicial << " </td><td class=dosdecimals> " << haberinicial << " </td><td class=dosdecimals> " << saldoinicial << "</td><td>\n";
                     }
@@ -397,10 +397,10 @@ void ExtractoPrintView::presentar(char *tipus) {
                         debefinal += debe;
                         haberfinal += haber;
                         cad = cursoraux1->valor("fecha").ascii();
-                        //presentacióntxt
+                        //presentaciï¿½txt
                         if (txt)
                             fitxersortidatxt <<  setw(5) << idasiento << setw(14) << cad.substr(0,10).c_str() << setw(10) << codcontrapartida << "  " << setw(40)  << setiosflags(ios::left) << cursoraux1->valor("conceptocontable").ascii() << setw(10) << resetiosflags(ios::left) << debe << setw(10) << haber << setw(10) << saldo << endl;
-                        //presentaciónhtml
+                        //presentaciï¿½html
                         if (html)
                             fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(0,10).c_str() << " </td><td class=contrapartidamajor> " << codcontrapartida << " </td><td> " << cursoraux1->valor("conceptocontable").ascii() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
 			cursoraux3->cerrar();
@@ -412,12 +412,12 @@ void ExtractoPrintView::presentar(char *tipus) {
                         saldofinal = haberfinal - debefinal;
                     }
                     if (txt) {
-                        //presentacióntxt
+                        //presentaciï¿½txt
                         fitxersortidatxt << "                                               __________________________________________________________\n";
                         fitxersortidatxt << "                                                  TOTAL SUBCUENTA...   " << setw(10) << debefinal << setw(10) << haberfinal << setw(10) << saldofinal << endl;
                     }
                     if (html) {
-                        //presentaciónhtml
+                        //presentaciï¿½html
                         fitxersortidahtml << "<tr><td></td><td></td><td></td><td class=sumamajor> Total subcompte... </td><td class=dosdecimals>" << debefinal << " </td><td class=dosdecimals> " << haberfinal << " </td><td class=dosdecimals> " << saldofinal << "</td></tr>\n\n";
                     }
                     cursoraux2->cerrar();
@@ -427,12 +427,12 @@ void ExtractoPrintView::presentar(char *tipus) {
             cursoraux->siguienteregistro();
         }
         if (html)
-            fitxersortidahtml << "\n</table></body></html>\n";     //presentaciónhtml
+            fitxersortidahtml << "\n</table></body></html>\n";     //presentaciï¿½html
         conexionbase->commit();
         delete cursoraux;
     }
     if (txt) {
-        //presentacióntxt
+        //presentaciï¿½txt
         fitxersortidatxt.close();
         if ((pid=fork()) < 0) {
             perror ("Fork failed");
@@ -443,7 +443,7 @@ void ExtractoPrintView::presentar(char *tipus) {
         }
     }
     if (html) {
-        //presentaciónhtml
+        //presentaciï¿½html
         fitxersortidahtml.close();
         if ((pid=fork()) < 0) {
             perror ("Fork failed");
@@ -460,7 +460,7 @@ void ExtractoPrintView::boton_codinicial() {
     listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
-    codigoinicial->setText(listcuentas->codcuenta);
+    codigoinicial->setText(listcuentas->codcuenta());
     delete listcuentas;
 }// end boton_codinicial
 
@@ -469,7 +469,7 @@ void ExtractoPrintView::boton_codfinal() {
     listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
-    codigofinal->setText(listcuentas->codcuenta);
+    codigofinal->setText(listcuentas->codcuenta());
     delete listcuentas;
 }// end boton_codfinal
 

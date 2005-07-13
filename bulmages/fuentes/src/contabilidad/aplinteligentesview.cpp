@@ -215,7 +215,7 @@ void aplinteligentesview::boton_buscacuenta() {
     listcuentas->inicializa();
     listcuentas->exec();
     if (lineaeditada != NULL)
-        lineaeditada->setText(listcuentas->codcuenta);
+        lineaeditada->setText(listcuentas->codcuenta());
     delete listcuentas;
 }// end if
 
@@ -780,7 +780,7 @@ void aplinteligentesview::codigo_textChanged(const QString &texto) {
         listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();
-        codigo->setText(listcuentas->codcuenta);
+        codigo->setText(listcuentas->codcuenta());
         delete listcuentas;
     }// end if
 }// end codigo_textChanged

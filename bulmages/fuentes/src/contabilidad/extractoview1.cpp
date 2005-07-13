@@ -42,6 +42,7 @@
 #include "listcuentasview1.h"
 
 #include "busquedafecha.h"
+#include "busquedacuenta.h"
 
 #define PUNTEO          0
 #define FECHA           1
@@ -62,6 +63,8 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
     numdigitos = empresaactual->numdigitosempresa();
+    m_codigoinicial1->setempresa(emp);
+
     listado->setNumRows( 0 );
     listado->setNumCols( 0 );
     listado->setSelectionMode( QTable::SingleRow );
@@ -535,7 +538,7 @@ void extractoview1::boton_buscacuentainicial() {
     listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
-    codigoinicial->setText(listcuentas->codcuenta);
+    codigoinicial->setText(listcuentas->codcuenta());
     delete listcuentas;
     codigofinal->setText(codigoinicial->text());
     codigofinal->selectAll();
@@ -549,7 +552,7 @@ void extractoview1::boton_buscacuentafinal() {
     listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
-    codigofinal->setText(listcuentas->codcuenta);
+    codigofinal->setText(listcuentas->codcuenta());
     delete listcuentas;
     m_fechainicial1->selectAll();
     m_fechainicial1->setFocus();
@@ -754,7 +757,7 @@ void extractoview1::return_codigoinicial() {
                                                             listcuentas->setModoLista();
                                                             listcuentas->inicializa();
                                                             listcuentas->exec();
-                                                            codigo->setText(listcuentas->codcuenta);
+                                                            codigo->setText(listcuentas->codcuenta());
                                                             delete listcuentas;
                                                         }// end if
                                                     }// end codigo_textChanged
