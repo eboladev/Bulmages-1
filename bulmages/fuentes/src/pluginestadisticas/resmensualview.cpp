@@ -146,7 +146,7 @@ void resmensualview::buscacodigocta() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   cod1->setText(listcuentas->codcuenta);
+   cod1->setText(listcuentas->codcuenta());
    delete listcuentas;   
 }// end buscacodigocta
 
@@ -156,7 +156,7 @@ void resmensualview::buscacodigocta1() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   cod2->setText(listcuentas->codcuenta);
+   cod2->setText(listcuentas->codcuenta());
    delete listcuentas;}// end buscacodigocta
 
 void resmensualview::buscacodigocta2() {
@@ -164,7 +164,7 @@ void resmensualview::buscacodigocta2() {
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
-   cod3->setText(listcuentas->codcuenta);
+   cod3->setText(listcuentas->codcuenta());
    delete listcuentas;
 }// end buscacodigocta
 
