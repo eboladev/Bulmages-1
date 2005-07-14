@@ -20,7 +20,8 @@ HEADERS += postgresiface2.h \
            dialogchanges.h \
            fixed.h \
            msgerror.h \
-	   busquedafecha.h
+	   busquedafecha.h \
+	   qtable1.h
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp \
@@ -32,7 +33,8 @@ SOURCES += postgresiface2.cpp \
            dialogchanges.cpp \
            fixed.cpp \
            msgerror.cpp \
-	   busquedafecha.cpp
+	   busquedafecha.cpp \
+	   qtable1.cpp
 TEMPLATE = lib
 LANGUAGE = C++
 CONFIG += release \

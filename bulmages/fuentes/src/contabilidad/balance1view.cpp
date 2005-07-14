@@ -29,6 +29,8 @@
 #include "images/cgastos.xpm"
 
 #include "busquedafecha.h"
+#include "busquedacuenta.h"
+
 
 #define CUENTA           m_ccuenta
 #define DENOMINACION     m_cdenominacion
@@ -49,6 +51,12 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
    empresaactual = emp;
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
+
+	m_codigoinicial->setempresa(emp);
+	m_codigofinal->setempresa(emp);
+
+	m_codigoinicial->hideNombre();
+	m_codigofinal->hideNombre();
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
    cargacostes();
    
@@ -222,8 +230,8 @@ void balance1view::boton_asiento() {
 *****************************************************************************/
 void balance1view::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste) {
   fprintf(stderr,"balance1view::inicializa1\n");
-  codigoinicial->setText(codinicial);
-  codigofinal->setText(codfinal);
+  m_codigoinicial->setText(codinicial);
+  m_codigofinal->setText(codfinal);
   m_fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
   m_fechafinal1->setText(normalizafecha(fecha2).toString("dd/MM/yyyy"));
 
@@ -245,8 +253,8 @@ void balance1view::presentar() {
       cursor2 *cursorapt;
       QString finicial = m_fechainicial1->text();
       QString ffinal = m_fechafinal1->text();
-      QString cinicial = codigoinicial->text();
-      QString cfinal = codigofinal->text();
+      QString cinicial = m_codigoinicial->codigocuenta();
+      QString cfinal = m_codigofinal->codigocuenta();
 
       QString ejercicio = ffinal.right(4);
             
@@ -388,66 +396,6 @@ void balance1view::accept() {
 }// end accept
 
 
-void balance1view::return_codigoinicial() {
-   QString cad = codigoinicial->text();
-   if (cad != "") {
-      cad = extiendecodigo(cad,numdigitos);
-      conexionbase->begin();
-      cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-      conexionbase->commit();
-      int num = cursorcta->numregistros();
-      if (num >0) {
-         codigoinicial->setText(cursorcta->valor(1));
-         codigofinal->selectAll();
-         // Simulamos la pulsacion del boton recargar.
-         accept();
-      } else {
-        codigoinicial->selectAll();
-        codigoinicial->setFocus();
-      }// end if
-      delete cursorcta;
-   }// end if
-}// end return_codigoinicial
-
-
-void balance1view::return_codigofinal() {
-   QString cad = codigofinal->text();
-   if (cad != "") {
-      cad = extiendecodigo(cad,numdigitos);
-      conexionbase->begin();
-      cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-      conexionbase->commit();
-      int num = cursorcta->numregistros();
-      if (num >0) {
-         codigofinal->setText(cursorcta->valor(1));
-      } else {
-        codigofinal->selectAll();
-        codigofinal->setFocus();
-      }// end if
-      delete cursorcta;
-   }// end if
-}// end return_codigofinal
-
-
-void balance1view::boton_buscacuentainicial() {
-   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->setModoLista();
-   listcuentas->inicializa();
-   listcuentas->exec();
-   codigoinicial->setText(listcuentas->codcuenta());
-   delete listcuentas;
-}// end boton_buscacuentainicial
-
-
-void balance1view::boton_buscacuentafinal() {
-   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->setModoLista();
-   listcuentas->inicializa();
-   listcuentas->exec();
-   codigofinal->setText(listcuentas->codcuenta());
-   delete listcuentas;
-}// end boton_buscacuentafinal
-
 
 void balance1view::nivelactivated(int nivel) {
    int nivel1 = atoi(combonivel->text(nivel).ascii());
@@ -517,56 +465,8 @@ void balance1view::contextmenu( QListViewItem *, const QPoint &poin, int) {
   */
 void balance1view::boton_imprimir() {
    BalancePrintView *balan = new BalancePrintView(empresaactual);
-   balan->inicializa1(codigoinicial->text(), codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), TRUE);
+   balan->inicializa1(m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), TRUE);
    balan->exec();
 }// end boton_imprimir.
-
-
-/** \brief SLOT que responde a la pulsaci� de texto sobre el campo de codigo
-  * @param texto El valor del campo tras la pulsaci�.
-  *
-  * Usamos la funci� sender() para saber quien genera la llamada y actuamos en consecuencia.
-  * Si se pulsa el + hace aparecer el listado de cuentas \ref listcuentasview1 
-  * Pone el listado en modo selecci� y espera a que �te devuelva algn valor para recogerlo
-  */
-void balance1view::codigo_textChanged(const QString &texto) {
-    QLineEdit *codigo = (QLineEdit *) sender();
-    if (texto == "+") {
-        // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->setModoLista();
-        listcuentas->inicializa();
-        listcuentas->exec();
-        codigo->setText(listcuentas->codcuenta());
-        delete listcuentas;
-    }// end if
-}// end codigo_textChanged
-
-/**
-  * @brief SLOT que tras pulsarse una tecla sobre un campo del tipo fecha busca caracteres especiales.
-  *
-  * Cuando se ha pulsado una tecla sobre la fecha del extracto
-  * Se evalua si la pulsaci� es un c�igo de control o es un digitos
-  * Para la introducci� de fechas.
-  * @param texto El valor del campo tras la modificaci�.
-  */
-void balance1view::fecha_textChanged(const QString &texto) {
-    QLineEdit *fecha = (QLineEdit *) sender();
-    if (texto=="+") {
-        QList<QDate> a;
-        fecha->setText("");
-        calendario *cal = new calendario(0,0);
-        cal->exec();
-        a = cal->dn->selectedDates();
-        fecha->setText(a.first()->toString("dd/MM/yyyy"));
-        delete cal;
-    }// end if
-    if (texto=="*")
-        fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}// end fecha_textChanged
-
-
-
-
 
 

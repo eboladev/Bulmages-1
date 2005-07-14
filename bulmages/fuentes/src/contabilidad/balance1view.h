@@ -94,15 +94,9 @@ private:
   void presentar();
 
 private slots:
-  virtual void return_codigoinicial();
-  virtual void return_codigofinal();
-  virtual void boton_buscacuentainicial();
-  virtual void boton_buscacuentafinal();
   virtual void contextmenu( QListViewItem *, const QPoint &, int);
   virtual void nivelactivated(int);
   virtual void nivelactivated1(int, QListViewItem *);
-  virtual void codigo_textChanged(const QString &);
-  virtual void fecha_textChanged(const QString &);  
   virtual void boton_extracto1(int);
   virtual void boton_asiento();
   virtual void boton_diario1(int);

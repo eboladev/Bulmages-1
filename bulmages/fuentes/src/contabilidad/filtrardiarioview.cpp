@@ -19,9 +19,12 @@
 #include "filtrardiarioview.h"
 #include "empresa.h"
 
+#include "busquedacuenta.h"
+
 filtrardiarioview::filtrardiarioview(empresa *emp, QWidget *parent, const char *name ) : filtrardiariodlg(parent,name) {
 	fprintf(stderr,"CONSTRUCTOR de filtrardiarioview\n");
 	empresaactual = emp;
+	m_contrapartida->setempresa(emp);
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
    
@@ -33,14 +36,6 @@ filtrardiarioview::~filtrardiarioview(){
 }
 
 
-void filtrardiarioview::buscacontrapartida() {
-  listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->setModoLista();
-   listcuentas->inicializa();
-   listcuentas->exec();
-   contrapartida->setText(listcuentas->codcuenta());
-   delete listcuentas;
-}// end buscacontrapartida
 
 void filtrardiarioview::boton_canales() {
    fprintf(stderr,"Boton canales\n");

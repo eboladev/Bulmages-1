@@ -17,9 +17,16 @@
 #include "filtrarextractosview.h"
 #include "empresa.h"
 
+#include "busquedacuenta.h"
+
+   QString filtrarextractosview::codigocontrapartida() {
+	return m_codigocontrapartida->text();
+}
+
 filtrarextractosview::filtrarextractosview(empresa *emp,QWidget *parent, const char *name ) : filtrarextractosdlg(parent,name) {
    fprintf(stderr,"Constructor de filtrarextractosview\n");
    empresaactual = emp;
+m_codigocontrapartida->setempresa(emp);
    conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
    fprintf(stderr,"Fin del constructor de fitrarextractosview\n");
@@ -42,46 +49,7 @@ void filtrarextractosview::boton_canales() {
    selcanales->exec();
 }// end boton_ccostes
 
-void filtrarextractosview::codigo_textChanged(const QString &texto) {
-    QLineEdit *codigo = (QLineEdit *) sender();
-    if (texto == "+") {
-        // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->setModoLista();
-        listcuentas->inicializa();
-        listcuentas->exec();
-        codigo->setText(listcuentas->codcuenta());
-        delete listcuentas;
-    }// end if
-}// end codigo_textChanged
 
-void filtrarextractosview::boton_buscacontrapartida() {
-   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->setModoLista();
-   listcuentas->inicializa();
-   listcuentas->exec();
-   codigocontrapartida->setText(listcuentas->codcuenta());
-   delete listcuentas;
-}// end boton_buscacuentainicial
-
-
-void filtrarextractosview::return_codigo() {
-   QString cad = codigocontrapartida->text();
-   if (cad != "") {
-      cad = extiendecodigo(cad,numdigitos);
-      conexionbase->begin();
-      cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-      conexionbase->commit();
-      int num = cursorcta->numregistros();
-      if (num >0) {
-         codigocontrapartida->setText(cursorcta->valor(1));
-      } else {
-        codigocontrapartida->selectAll();
-        codigocontrapartida->setFocus();
-      }// end if
-      delete cursorcta;
-   }// end if
-}// end return_codigofinal
 
 
 

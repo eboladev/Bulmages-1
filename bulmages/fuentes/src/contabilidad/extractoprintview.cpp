@@ -23,6 +23,10 @@
 #include "selectcanalview.h"
 #include "empresa.h"
 
+#include "busquedafecha.h"
+#include "busquedacuenta.h"
+
+
 
 /** \brief Constructor de la clase que inicializa los parametros necesarios para esta
   * @param emp Empresa con la que va a trabajar esta clase
@@ -34,6 +38,8 @@ ExtractoPrintView::ExtractoPrintView(empresa *emp, QWidget *parent=0, const char
     fichero=NULL;
     empresaactual=emp;
     conexionbase = emp->bdempresa();
+    m_codigoinicial->setempresa(emp);
+    m_codigofinal->setempresa(emp);
     m_filt = NULL;
 }// end ExtractoPrintView
 
@@ -46,10 +52,10 @@ ExtractoPrintView::~ExtractoPrintView() {}
   * @param codf Codigo de cuenta final del extracto
   */
 void ExtractoPrintView::inicializa1(QString fechainicial, QString fechafinal, QString codi, QString codf) {
-    fechainicial1->setText(fechainicial);
-    fechafinal1->setText(fechafinal);
-    codigoinicial->setText(codi);
-    codigofinal->setText(codf);
+    m_fechainicial->setText(fechainicial);
+    m_fechafinal->setText(fechafinal);
+    m_codigoinicial->setText(codi);
+    m_codigofinal->setText(codf);
 }// end inicializa1
 
 /**************************************************************
@@ -183,11 +189,11 @@ void ExtractoPrintView::presentakugar() {
 QString ExtractoPrintView::montaQuery() {
     fprintf(stderr,"Presentar\n");
     /// Cogemos los valores del formulario para poder hacer un filtraje adecuado
-    QString finicial = fechainicial1->text();
-    QString ffinal = fechafinal1->text();
-    QString cinicial = codigoinicial->text();
-    QString cfinal = codigofinal->text();
-    QString contra = m_filt->codigocontrapartida->text();
+    QString finicial = m_fechainicial->text();
+    QString ffinal = m_fechafinal->text();
+    QString cinicial = m_codigoinicial->text();
+    QString cfinal = m_codigofinal->text();
+    QString contra = m_filt->codigocontrapartida();
 
     // Preparamos el string para que aparezca una u otra cosa segun el punteo.
     QString tipopunteo;
@@ -235,26 +241,26 @@ QString ExtractoPrintView::montaQuery() {
 
 // *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
 void ExtractoPrintView::pruebasRTK() {
-    	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
-	QString cadena;
-	cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"bulma-styles.xml   /tmp/bulma-styles.xml" ;
-	system (cadena.ascii());	
-	cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"extracto1.rtk   /tmp/extracto1.rtk" ;
-	system (cadena.ascii());
-	cadena = "sed -e \"s/###codigoinicial###/"+codigoinicial->text()+"/g\" /tmp/extracto1.rtk > /tmp/extracto2.rtk";
-	system (cadena.ascii());
-	cadena = " sed -e \"s/###codigofinal###/"+codigofinal->text()+"/g\"  /tmp/extracto2.rtk > /tmp/extracto1.rtk";
-	system (cadena.ascii());
-	cadena = " sed -e \"s&###fechainicial###&"+fechainicial1->text()+"&g\"  /tmp/extracto1.rtk > /tmp/extracto2.rtk";
-	system (cadena.ascii());
-	cadena = " sed -e \"s&###fechafinal###&"+fechafinal1->text()+"&g\"  /tmp/extracto2.rtk > /tmp/extracto1.rtk";
-	system (cadena.ascii());
-	
-	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
-	cadena += conexionbase->nameDB()+" ";
-	cadena += "/tmp/extracto1.rtk &";
-	fprintf(stderr,"%s\n",cadena.ascii());
-	system (cadena.ascii());    
+    /// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
+    QString cadena;
+    cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"bulma-styles.xml   /tmp/bulma-styles.xml" ;
+    system (cadena.ascii());
+    cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"extracto1.rtk   /tmp/extracto1.rtk" ;
+    system (cadena.ascii());
+    cadena = "sed -e \"s/###codigoinicial###/"+m_codigoinicial->text()+"/g\" /tmp/extracto1.rtk > /tmp/extracto2.rtk";
+    system (cadena.ascii());
+    cadena = " sed -e \"s/###codigofinal###/"+m_codigofinal->text()+"/g\"  /tmp/extracto2.rtk > /tmp/extracto1.rtk";
+    system (cadena.ascii());
+    cadena = " sed -e \"s&###fechainicial###&"+m_fechainicial->text()+"&g\"  /tmp/extracto1.rtk > /tmp/extracto2.rtk";
+    system (cadena.ascii());
+    cadena = " sed -e \"s&###fechafinal###&"+m_fechafinal->text()+"&g\"  /tmp/extracto2.rtk > /tmp/extracto1.rtk";
+    system (cadena.ascii());
+
+    cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
+    cadena += conexionbase->nameDB()+" ";
+    cadena += "/tmp/extracto1.rtk &";
+    fprintf(stderr,"%s\n",cadena.ascii());
+    system (cadena.ascii());
 }// end pruebasRTK
 
 
@@ -274,10 +280,10 @@ void ExtractoPrintView::presentar(char *tipus) {
     string cad;
     cursor2 *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
 
-    QString finicial = fechainicial1->text();
-    QString ffinal = fechafinal1->text();
-    QString cinicial = codigoinicial->text();
-    QString cfinal = codigofinal->text();
+    QString finicial = m_fechainicial->text();
+    QString ffinal = m_fechafinal->text();
+    QString cinicial = m_codigoinicial->text();
+    QString cfinal = m_codigofinal->text();
 
     // tipus de presentaci�
     txt=!strcmp(tipus,"txt");
@@ -298,7 +304,8 @@ void ExtractoPrintView::presentar(char *tipus) {
         if (txt) {
             //presentaci�txt
 
-            fitxersortidatxt.setf(ios::fixed);
+            fitxersortidatxt.setf(ios::fixed)
+                ;
             fitxersortidatxt.precision(2);
             fitxersortidatxt << "                                    MAYOR \n" ;
             fitxersortidatxt << "Fecha Inicial: " << finicial.ascii() << "   Fecha Final: " << ffinal.ascii() << endl;
@@ -307,7 +314,8 @@ void ExtractoPrintView::presentar(char *tipus) {
         if (html) {
             //presentaci�html
 
-            fitxersortidahtml.setf(ios::fixed);
+            fitxersortidahtml.setf(ios::fixed)
+                ;
             fitxersortidahtml.precision(2);
             fitxersortidahtml << "<html>\n";
             fitxersortidahtml << "<head>\n";
@@ -350,7 +358,7 @@ void ExtractoPrintView::presentar(char *tipus) {
                     }
 
                 }
-		
+
                 conexionbase->begin();
                 cursoraux2 = conexionbase->cargasaldoscuentafecha(idcuenta, (char *)finicial.ascii());
                 conexionbase->commit();
@@ -383,10 +391,10 @@ void ExtractoPrintView::presentar(char *tipus) {
                     for(;!cursoraux1->eof();cursoraux1->siguienteregistro()) {
                         idasiento=atoi(cursoraux1->valor("idasiento").ascii());
                         contrapartida = atoi(cursoraux1->valor("contrapartida").ascii());
-			conexionbase->begin();
-			cursoraux3 = conexionbase->cargacuenta(contrapartida);
-			codcontrapartida = cursoraux3->valor("codigo").ascii();
-			conexionbase->commit(); 
+                        conexionbase->begin();
+                        cursoraux3 = conexionbase->cargacuenta(contrapartida);
+                        codcontrapartida = cursoraux3->valor("codigo").ascii();
+                        conexionbase->commit();
                         debe=atof(cursoraux1->valor("debe").ascii());
                         haber=atof(cursoraux1->valor("haber").ascii());
                         if (activo) {
@@ -403,7 +411,7 @@ void ExtractoPrintView::presentar(char *tipus) {
                         //presentaci�html
                         if (html)
                             fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(0,10).c_str() << " </td><td class=contrapartidamajor> " << codcontrapartida << " </td><td> " << cursoraux1->valor("conceptocontable").ascii() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
-			cursoraux3->cerrar();
+                        cursoraux3->cerrar();
                     }
 
                     if (activo) {
@@ -455,24 +463,6 @@ void ExtractoPrintView::presentar(char *tipus) {
     }
 }
 
-void ExtractoPrintView::boton_codinicial() {
-    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->setModoLista();
-    listcuentas->inicializa();
-    listcuentas->exec();
-    codigoinicial->setText(listcuentas->codcuenta());
-    delete listcuentas;
-}// end boton_codinicial
-
-void ExtractoPrintView::boton_codfinal() {
-    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->setModoLista();
-    listcuentas->inicializa();
-    listcuentas->exec();
-    codigofinal->setText(listcuentas->codcuenta());
-    delete listcuentas;
-}// end boton_codfinal
-
 
 
 void ExtractoPrintView::boton_ccostes() {
@@ -487,7 +477,7 @@ void ExtractoPrintView::boton_canales() {
 }// end boton_ccostes
 
 void ExtractoPrintView::s_botonFiltrar() {
-	   m_filt->exec();
+    m_filt->exec();
 }// end s_botonFiltrar();
 
 

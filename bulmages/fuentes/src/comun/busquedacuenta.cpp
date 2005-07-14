@@ -82,7 +82,6 @@ void BusquedaCuenta::s_codigocuentatextChanged(const QString &val) {
         s_searchCuenta();
         emit(valueChanged(m_codigocuenta->text()));
     }// end if
-
 }// end setCifClient
 
 

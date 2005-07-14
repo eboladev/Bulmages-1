@@ -195,7 +195,6 @@ HEADERS += comun/splashscreen.h \
            contabilidad/cuentaview.h \
            contabilidad/diarioview1.h \
            contabilidad/qlineedit1.h \
-           contabilidad/qtable1.h \
            contabilidad/filtrardiarioview.h \
            contabilidad/extractoview1.h \
            contabilidad/balance1view.h \
@@ -252,7 +251,6 @@ SOURCES += main.cpp \
            contabilidad/cuentaview.cpp \
            contabilidad/diarioview1.cpp \
            contabilidad/qlineedit1.cpp \
-           contabilidad/qtable1.cpp \
            contabilidad/filtrardiarioview.cpp \
            contabilidad/extractoview1.cpp \
            contabilidad/balance1view.cpp \

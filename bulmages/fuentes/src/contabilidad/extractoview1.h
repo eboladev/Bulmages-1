@@ -80,23 +80,17 @@ public slots:
     virtual void boton_anterior();
     virtual void boton_fin();
     virtual void boton_inicio();
-    virtual void boton_buscacuentainicial();
-    virtual void boton_buscacuentafinal();
     virtual void boton_borrapunteo();
     virtual void boton_imprimir();
     virtual void boton_guardar();
     virtual void boton_asiento();
     virtual void boton_diario1(int);
     virtual void boton_balance1(int);
-    virtual void return_codigoinicial();
-    virtual void return_codigofinal();
     virtual void contextmenu(int , int , const QPoint &);
     virtual void apuntecambiadogrid (int, int);
     virtual void boton_casacion();
     virtual void boton_guardarpunteo();
     virtual void boton_cargarpunteos();
-    virtual void codigo_textChanged(const QString &);
-    virtual void fecha_textChanged(const QString &);
 };
 
 #endif

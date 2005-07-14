@@ -2,9 +2,9 @@
                           extractoprintview.h  -  description
                              -------------------
     begin                : jue jun 26 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Terés - amirabet@biada.org
+    modificat per        : (C) 2003 Antoni Mirabete i Terï¿½ - amirabet@biada.org
  ***************************************************************************/
 
 /***************************************************************************
@@ -34,9 +34,9 @@
 
 #include "filtrarextractosview.h"
 #include "postgresiface2.h"
-/** @author Tomeu Borrás Riera
+/** @author Tomeu Borrï¿½ Riera
   * \class ExtractoPrintView extractoprintview.h
-  * \brief Clase que corresponde con la ventana de impresión de extractos.
+  * \brief Clase que corresponde con la ventana de impresiï¿½ de extractos.
   * \todo Falta hacer que en los campos se haga el autocompletado.
   * \todo Falta incluir el filtrado en el extracto.
 */
@@ -62,8 +62,6 @@ private:
    QString montaQuery();
 public slots:
    virtual void accept();
-   virtual void boton_codinicial();
-   virtual void boton_codfinal();
    virtual void boton_ccostes();
    virtual void boton_canales();
    virtual void s_botonFiltrar();

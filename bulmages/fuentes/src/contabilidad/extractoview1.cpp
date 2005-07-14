@@ -63,7 +63,10 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
     numdigitos = empresaactual->numdigitosempresa();
-    m_codigoinicial1->setempresa(emp);
+    m_codigoinicial->setempresa(emp);
+    m_codigofinal->setempresa(emp);
+    m_codigoinicial->hideNombre();
+    m_codigofinal->hideNombre();
 
     listado->setNumRows( 0 );
     listado->setNumCols( 0 );
@@ -164,8 +167,8 @@ void extractoview1::inicializa2(intapunts3view *inta, diarioview1 *diar, balance
   */
 void extractoview1::accept() {
     fprintf(stderr,"accept inicializado\n");
-    QString codinicial= codigoinicial->text();
-    QString codfinal = codigofinal->text();
+    QString codinicial= m_codigoinicial->codigocuenta();
+    QString codfinal = m_codigofinal->codigocuenta();
     QString query;
     /// Si los datos de codigo inicial y final estan vacios los ponemos nosotros.
     if (codinicial == "")
@@ -247,7 +250,7 @@ void extractoview1::boton_balance1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         }// end switch
-        balance->inicializa1(codigoinicial->text(),codigofinal->text(), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        balance->inicializa1(m_codigoinicial->text(),m_codigofinal->text(), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
     balance->accept();
     empresaactual->librobalance();
@@ -298,7 +301,7 @@ void extractoview1::boton_fin() {
 
 void extractoview1::boton_imprimir() {
     ExtractoPrintView *print = new ExtractoPrintView(empresaactual, 0,0);
-    print->inicializa1(m_fechainicial1->text(), m_fechafinal1->text(), codigoinicial->text(), codigofinal->text());
+    print->inicializa1(m_fechainicial1->text(), m_fechafinal1->text(), m_codigoinicial->text(), m_codigofinal->text());
     print->setFiltro(filt);
     print->exec();
 }// end if
@@ -311,7 +314,7 @@ void extractoview1::boton_guardar() {
         QString finicial = m_fechainicial1->text().ascii();
         QString ffinal = m_fechafinal1->text().ascii();
         libromayor.inicializa(conexionbase);
-        libromayor.inicializa1(codigoinicial->text(), codigofinal->text(), finicial, ffinal);
+        libromayor.inicializa1(m_codigoinicial->text(), m_codigofinal->text(), finicial, ffinal);
         libromayor.inicializa2((char *) fn.ascii());
         libromayor.accept();
     }// end if
@@ -344,7 +347,7 @@ void extractoview1::presentar() {
     int idasiento;
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
-    QString contra = filt->codigocontrapartida->text();
+    QString contra = filt->codigocontrapartida();
 
     // Preparamos el string para que aparezca una u otra cosa segun el punteo.
     QString tipopunteo;
@@ -526,260 +529,160 @@ void extractoview1::presentar() {
 
 
 void extractoview1::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int ) {
-    codigoinicial->setText(codinicial);
-    codigofinal->setText(codfinal);
+    m_codigoinicial->setText(codinicial);
+    m_codigofinal->setText(codfinal);
     m_fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
     m_fechafinal1->setText(normalizafecha(fecha2).toString("dd/MM/yyyy"));
 }// end inicializa1
 
 
-void extractoview1::boton_buscacuentainicial() {
-    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->setModoLista();
-    listcuentas->inicializa();
-    listcuentas->exec();
-    codigoinicial->setText(listcuentas->codcuenta());
-    delete listcuentas;
-    codigofinal->setText(codigoinicial->text());
-    codigofinal->selectAll();
-    codigofinal->setFocus();
+
+void extractoview1::contextmenu(int row, int col, const QPoint &poin) {
+    // Si el asiento esta cerrado el menu a mostrar es diferente
+    QPopupMenu *popup = new QPopupMenu;
+    popup->insertItem(tr("Ver Asiento"), 0);
+    popup->insertSeparator();
+    popup->insertItem(tr("Ver Diario (Este dia)"),101);
+    popup->insertItem(tr("Ver Diario (Este mes)"),103);
+    popup->insertItem(tr("Ver Diario (Este a�)"),104);
+    popup->insertSeparator();
+    popup->insertItem(tr("Ver Balance (Este dia)"),121);
+    popup->insertItem(tr("Ver Balance (Este mes)"),123);
+    popup->insertItem(tr("Ver Balance (Este a�)"),124);
+    int opcion = popup->exec(poin);
+    switch(opcion) {
+    case 0:
+        boton_asiento();
+        break;
+    case 101:
+        boton_diario1(0);
+        break;
+    case 103:
+        boton_diario1(1);
+        break;
+    case 104:
+        boton_diario1(2);
+        break;
+    case 121:
+        boton_balance1(0);
+        break;
+    case 123:
+        boton_balance1(1);
+        break;
+    case 124:
+        boton_balance1(2);
+    }// end switch
+    delete popup;
+    // Para evitar los warnings establecemos las variables a 0
+    row=col=0;
+}// end contextmenu
+
+
+void extractoview1::apuntecambiadogrid(int row,int col) {
+    fprintf(stderr,"Se ha cambiado algo en el extracto \n");
+    QCheckTableItem *check =(QCheckTableItem *) listado->item(row,col);
+    QString query;
+    if (check->isChecked()) {
+        query.sprintf("UPDATE APUNTE SET punteo = TRUE WHERE idapunte=%s",listado->text(row,IDAPUNTE).ascii());
+    } else {
+        query.sprintf("UPDATE APUNTE SET punteo = FALSE WHERE idapunte=%s",listado->text(row,IDAPUNTE).ascii());
+    }// end if
+    conexionbase->begin();
+    conexionbase->ejecuta(query.ascii());
+    conexionbase->commit();
+}// end if
+
+void extractoview1::boton_filtrar() {
+    filt->exec();
     accept();
-}// end boton_buscacuentainicial
+}// end boton_filtrar
 
+void extractoview1::boton_casacion() {
+    QString query;
+    query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND haber <>0  AND idcuenta=%s ORDER BY fecha",cursorcta->valor("idcuenta").ascii());
+    conexionbase->begin();
+    cursor2 *curshaber = conexionbase->cargacursor(query, "curshaber");
+    conexionbase->commit();
+    while (!curshaber->eof()) {
+        query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor("haber").ascii(), cursorcta->valor("idcuenta").ascii());
+        conexionbase->begin();
+        cursor2 *cursdebe = conexionbase->cargacursor(query.ascii(), "cursdebe");
+        conexionbase->commit();
+        if (!cursdebe->eof()) {
+            query.sprintf("UPDATE apunte set punteo=TRUE WHERE idapunte=%s",curshaber->valor("idapunte").ascii());
+            conexionbase->begin();
+            conexionbase->ejecuta(query);
+            query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",cursdebe->valor("idapunte").ascii());
+            conexionbase->ejecuta(query);
+            conexionbase->commit();
+        }// end if
+        delete cursdebe;
+        curshaber->siguienteregistro();
+    }// end while
+    delete curshaber;
+    presentar();
+}// end boton_casacion
 
-void extractoview1::boton_buscacuentafinal() {
-    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->setModoLista();
-    listcuentas->inicializa();
-    listcuentas->exec();
-    codigofinal->setText(listcuentas->codcuenta());
-    delete listcuentas;
-    m_fechainicial1->selectAll();
-    m_fechainicial1->setFocus();
-}// end boton_buscacuentafinal
-
-
-void extractoview1::return_codigoinicial() {
-                              fprintf(stderr,"return_codigoinicial se inicia bien \n");
-                              QString cad = codigoinicial->text();
-                              if (cad != "") {
-                                  cad = extiendecodigo(cad,numdigitos);
-                                  cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-                                  int num = cursorcta->numregistros();
-                                  if (num >0) {
-                                      fprintf(stderr,"Hay registros que  se muestran \n");
-                                      codigoinicial->setText(cursorcta->valor("codigo"));
-                                      codigofinal->setText(cursorcta->valor("codigo"));
-                                      codigofinal->selectAll();
-                                      accept();
-                                  } else {
-                                      codigoinicial->selectAll();
-                                      codigoinicial->setFocus();
-                                  }// end if
-                                  delete cursorcta;
-                              }// end if
-                          }// end return_codigoinicial
-
-
-                          void extractoview1::return_codigofinal() {
-                                                        QString cad = codigofinal->text();
-                                                        if (cad != "") {
-                                                            cad = extiendecodigo(cad,numdigitos);
-                                                            cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-                                                            int num = cursorcta->numregistros();
-                                                            if (num >0) {
-                                                                codigofinal->setText(cursorcta->valor("codigo"));
-                                                            } else {
-                                                                codigofinal->selectAll();
-                                                                codigofinal->setFocus();
-                                                            }// end if
-                                                            delete cursorcta;
-                                                        }// end if
-                                                    }// end return_codigofinal
+void extractoview1::boton_guardarpunteo() {
+    QString fn = QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("Punteos (*.pto)"), 0,tr("Guardar Punteo"),tr("Elige el nombre de archivo"));
+    if (!fn.isEmpty()) {
+        FILE *mifile;
+        mifile = fopen((char *) fn.ascii(),"wt");
+        if (mifile != NULL) {
+            QString query;
+            query = "SELECT * FROM apunte WHERE punteo=TRUE";
+            cursor2 *cursp = conexionbase->cargacursor(query,"punteos");
+            while (!cursp->eof()) {
+                fprintf(mifile,"%s\n", cursp->valor("idapunte").ascii());
+                cursp->siguienteregistro();
+            }// end while
+            delete cursp;
+            fclose(mifile);
+        }// end if
+    }// end if
+}// end boton_guardarpunteo
 
 
 
-                                                    void extractoview1::contextmenu(int row, int col, const QPoint &poin) {
-                                                        // Si el asiento esta cerrado el menu a mostrar es diferente
-                                                        QPopupMenu *popup = new QPopupMenu;
-                                                        popup->insertItem(tr("Ver Asiento"), 0);
-                                                        popup->insertSeparator();
-                                                        popup->insertItem(tr("Ver Diario (Este dia)"),101);
-                                                        //       popup->insertItem("Ver Diario (Esta semana)",102);
-                                                        popup->insertItem(tr("Ver Diario (Este mes)"),103);
-                                                        popup->insertItem(tr("Ver Diario (Este a�)"),104);
-                                                        popup->insertSeparator();
-                                                        popup->insertItem(tr("Ver Balance (Este dia)"),121);
-                                                        popup->insertItem(tr("Ver Balance (Este mes)"),123);
-                                                        popup->insertItem(tr("Ver Balance (Este a�)"),124);
-                                                        int opcion = popup->exec(poin);
-                                                        switch(opcion) {
-                                                        case 0:
-                                                            boton_asiento();
-                                                            break;
-                                                        case 101:
-                                                            boton_diario1(0);
-                                                            break;
-                                                        case 103:
-                                                            boton_diario1(1);
-                                                            break;
-                                                        case 104:
-                                                            boton_diario1(2);
-                                                            break;
-                                                        case 121:
-                                                            boton_balance1(0);
-                                                            break;
-                                                        case 123:
-                                                            boton_balance1(1);
-                                                            break;
-                                                        case 124:
-                                                            boton_balance1(2);
-                                                        }// end switch
-                                                        delete popup;
-                                                        // Para evitar los warnings establecemos las variables a 0
-                                                        row=col=0;
-                                                    }// end contextmenu
+/** \brief Esta funci� borra todo el punteo de un extracto y lo pone a cero
+  * Esta funci� se activa justo cuando se pulsa sobre el bot� de resetear el punteo.
+  * Por supuesto cuando se pulsa dicho boton se borra el punteo.
+  */
+void extractoview1::boton_borrapunteo() {
+    int valor = QMessageBox::warning( 0, tr("Borrar Punteo"), "Se dispone a borrar el punteo. Este cambio es irrecuperable si no ha guardado su el punte. Desea continuar?", QMessageBox::Yes, QMessageBox::No);
+    if (valor == QMessageBox::Yes) {
+        conexionbase->begin();
+        conexionbase->ejecuta("UPDATE apunte SET punteo=FALSE");
+        conexionbase->commit();
+        presentar();
+    }// end if
+}// end boton_cargarpunteo
 
 
-                                                    void extractoview1::apuntecambiadogrid(int row,int col) {
-                                                        fprintf(stderr,"Se ha cambiado algo en el extracto \n");
-                                                        QCheckTableItem *check =(QCheckTableItem *) listado->item(row,col);
-                                                        QString query;
-                                                        if (check->isChecked()) {
-                                                            query.sprintf("UPDATE APUNTE SET punteo = TRUE WHERE idapunte=%s",listado->text(row,IDAPUNTE).ascii());
-                                                        } else {
-                                                            query.sprintf("UPDATE APUNTE SET punteo = FALSE WHERE idapunte=%s",listado->text(row,IDAPUNTE).ascii());
-                                                        }// end if
-                                                        conexionbase->begin();
-                                                        conexionbase->ejecuta(query.ascii());
-                                                        conexionbase->commit();
-                                                    }// end if
-
-                                                    void extractoview1::boton_filtrar() {
-                                                        filt->exec();
-                                                        accept();
-                                                    }// end boton_filtrar
-
-                                                    void extractoview1::boton_casacion() {
-                                                        QString query;
-                                                        query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND haber <>0  AND idcuenta=%s ORDER BY fecha",cursorcta->valor("idcuenta").ascii());
-                                                        conexionbase->begin();
-                                                        cursor2 *curshaber = conexionbase->cargacursor(query, "curshaber");
-                                                        conexionbase->commit();
-                                                        while (!curshaber->eof()) {
-                                                            query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor("haber").ascii(), cursorcta->valor("idcuenta").ascii());
-                                                            conexionbase->begin();
-                                                            cursor2 *cursdebe = conexionbase->cargacursor(query.ascii(), "cursdebe");
-                                                            conexionbase->commit();
-                                                            if (!cursdebe->eof()) {
-                                                                query.sprintf("UPDATE apunte set punteo=TRUE WHERE idapunte=%s",curshaber->valor("idapunte").ascii());
-                                                                conexionbase->begin();
-                                                                conexionbase->ejecuta(query);
-                                                                query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",cursdebe->valor("idapunte").ascii());
-                                                                conexionbase->ejecuta(query);
-                                                                conexionbase->commit();
-                                                            }// end if
-                                                            delete cursdebe;
-                                                            curshaber->siguienteregistro();
-                                                        }// end while
-                                                        delete curshaber;
-                                                        presentar();
-                                                    }// end boton_casacion
-
-                                                    void extractoview1::boton_guardarpunteo() {
-                                                        QString fn = QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("Punteos (*.pto)"), 0,tr("Guardar Punteo"),tr("Elige el nombre de archivo"));
-                                                        if (!fn.isEmpty()) {
-                                                            FILE *mifile;
-                                                            mifile = fopen((char *) fn.ascii(),"wt");
-                                                            if (mifile != NULL) {
-                                                                QString query;
-                                                                query = "SELECT * FROM apunte WHERE punteo=TRUE";
-                                                                cursor2 *cursp = conexionbase->cargacursor(query,"punteos");
-                                                                while (!cursp->eof()) {
-                                                                    fprintf(mifile,"%s\n", cursp->valor("idapunte").ascii());
-                                                                    cursp->siguienteregistro();
-                                                                }// end while
-                                                                delete cursp;
-                                                                fclose(mifile);
-                                                            }// end if
-                                                        }// end if
-                                                    }// end boton_guardarpunteo
-
-
-
-                                                    /** \brief Esta funci� borra todo el punteo de un extracto y lo pone a cero
-                                                      * Esta funci� se activa justo cuando se pulsa sobre el bot� de resetear el punteo.
-                                                      * Por supuesto cuando se pulsa dicho boton se borra el punteo.
-                                                      */
-                                                    void extractoview1::boton_borrapunteo() {
-                                                        int valor = QMessageBox::warning( 0, tr("Borrar Punteo"), "Se dispone a borrar el punteo. Este cambio es irrecuperable si no ha guardado su el punte. Desea continuar?", QMessageBox::Yes, QMessageBox::No);
-                                                        if (valor == QMessageBox::Yes) {
-                                                            conexionbase->begin();
-                                                            conexionbase->ejecuta("UPDATE apunte SET punteo=FALSE");
-                                                            conexionbase->commit();
-                                                            presentar();
-                                                        }// end if
-                                                    }// end boton_cargarpunteo
-
-
-                                                    /** \brief Carga los punteos desde un fichero de texto que se solicita mediante un QFileDialog
-                                                      * El fichero de punteos requiere que no se hayan modificado los identificadores de borrador.
-                                                      * Para ello es preciso que no se hayan abierto y cerrado los asientos correspondientes ya que en dicho caso
-                                                      * La carga del punteo no funciona correctamente.
-                                                      */
-                                                    void extractoview1::boton_cargarpunteos() {
-                                                        QString fn = QFileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), tr("Punteos (*.pto)"), 0,tr("Cargar Punteo"),tr("Elige el nombre de archivo"));
-                                                        if (!fn.isEmpty()) {
-                                                            ifstream filestr((char *) fn.ascii());
-                                                            string a;
-                                                            conexionbase->begin();
-                                                            conexionbase->ejecuta("UPDATE apunte SET punteo=FALSE");
-                                                            conexionbase->commit();
-                                                            while (filestr.good()) {
-                                                                filestr >> a;
-                                                                QString query;
-                                                                query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",a.c_str());
-                                                                conexionbase->begin();
-                                                                conexionbase->ejecuta(query);
-                                                                conexionbase->commit();
-                                                            }// end while
-                                                            filestr.close();
-                                                        }// end if
-                                                        presentar();
-                                                    }// end boton_cargarpunteo
-
-
-                                                    void extractoview1::codigo_textChanged(const QString &texto) {
-                                                        QLineEdit *codigo = (QLineEdit *) sender();
-                                                        if (texto == "+") {
-                                                            // Hacemos aparecer la ventana de cuentas
-                                                            listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-                                                            listcuentas->setModoLista();
-                                                            listcuentas->inicializa();
-                                                            listcuentas->exec();
-                                                            codigo->setText(listcuentas->codcuenta());
-                                                            delete listcuentas;
-                                                        }// end if
-                                                    }// end codigo_textChanged
-
-
-                                                    // Cuando se ha pulsado una tecla sobre la fecha del extracto
-                                                    // Se evalua si la pulsaci� es un c�igo de control o es un digitos
-                                                    // Para la introducci� de fechas.
-                                                    void extractoview1::fecha_textChanged(const QString &texto) {
-                                                        QLineEdit *fecha = (QLineEdit *) sender();
-                                                        if (texto=="+") {
-                                                            QList<QDate> a;
-                                                            fecha->setText("");
-                                                            calendario *cal = new calendario(0,0);
-                                                            cal->exec();
-                                                            a = cal->dn->selectedDates();
-                                                            fecha->setText(a.first()->toString("dd/MM/yyyy"));
-                                                            delete cal;
-                                                        }// end if
-                                                        if (texto=="*")
-                                                            fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-                                                    }// end fecha_textChanged
-
+/** \brief Carga los punteos desde un fichero de texto que se solicita mediante un QFileDialog
+  * El fichero de punteos requiere que no se hayan modificado los identificadores de borrador.
+  * Para ello es preciso que no se hayan abierto y cerrado los asientos correspondientes ya que en dicho caso
+  * La carga del punteo no funciona correctamente.
+  */
+void extractoview1::boton_cargarpunteos() {
+    QString fn = QFileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), tr("Punteos (*.pto)"), 0,tr("Cargar Punteo"),tr("Elige el nombre de archivo"));
+    if (!fn.isEmpty()) {
+        ifstream filestr((char *) fn.ascii());
+        string a;
+        conexionbase->begin();
+        conexionbase->ejecuta("UPDATE apunte SET punteo=FALSE");
+        conexionbase->commit();
+        while (filestr.good()) {
+            filestr >> a;
+            QString query;
+            query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",a.c_str());
+            conexionbase->begin();
+            conexionbase->ejecuta(query);
+            conexionbase->commit();
+        }// end while
+        filestr.close();
+    }// end if
+    presentar();
+}// end boton_cargarpunteo
 
 

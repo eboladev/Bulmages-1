@@ -2,7 +2,7 @@
                           filtrarextractosview.h  -  description
                              -------------------
     begin                : dom jul 27 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -27,7 +27,7 @@
 
 class empresa;
 
-/***@ author Tomeu Borrás Riera  */
+/***@ author Tomeu Borrï¿½ Riera  */
 
 class filtrarextractosview : public filtrarextractosdlg  {
 Q_OBJECT
@@ -43,10 +43,9 @@ public:
   filtrarextractosview(empresa *, QWidget *parent=0, const char *name=0);
   ~filtrarextractosview();
 
+   QString codigocontrapartida();
+
 public slots:
-  virtual void codigo_textChanged(const QString &);
-  virtual void boton_buscacontrapartida();
-  virtual void return_codigo();
   virtual void boton_ccostes();
   virtual void boton_canales();
 };

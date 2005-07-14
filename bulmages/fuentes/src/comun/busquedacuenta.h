@@ -12,7 +12,7 @@
 #ifndef BUSQUEDACUENTA_H
 #define BUSQUEDACUENTA_H
 
-#include <busquedacuentabase.h>
+#include "busquedacuentabase.h"
 #include <qlineedit.h>
 #include <qlabel.h>
 
@@ -35,15 +35,23 @@ int numdigitos;
 public:
     BusquedaCuenta(QWidget *parent = 0, const char *name = 0);
     ~BusquedaCuenta();
-    void setempresa(empresa *comp) {empresaactual = comp; conexionbase= comp->bdempresa(); numdigitos=comp->numdigitosempresa();};
-    virtual QString text()  {return mdb_codigocuenta;};
-    virtual void setText(QString &val) {setcodigocuenta(val);};
+
+    void setempresa(empresa *comp) {
+	empresaactual = comp; 
+	conexionbase= empresaactual->bdempresa(); 
+	numdigitos=empresaactual->numdigitosempresa();
+	};
+
+    QString text()  {return mdb_codigocuenta;};
+    virtual void setText(QString val) {setcodigocuenta(val);};
 
     virtual QString codigocuenta() {return m_codigocuenta->text();};
     virtual QString idcuenta() {return mdb_idcuenta;};
     virtual QString nomcuenta() {return mdb_nomcuenta;};
     virtual void setidcuenta(QString val);
     virtual void setcodigocuenta(QString val);
+	void hideNombre() {m_nomcuenta->hide();};
+	void showNombre() {m_nomcuenta->show();};
 public slots:
 	virtual void s_searchCuenta();
 	virtual void s_codigocuentatextChanged(const QString &);

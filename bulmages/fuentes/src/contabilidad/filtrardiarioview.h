@@ -2,7 +2,7 @@
                           filtrardiarioview.h  -  description
                              -------------------
     begin                : mar jul 29 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -23,25 +23,26 @@
 
 #include "filtrardiariodlg.h"
 #include "postgresiface2.h"
+#include "busquedacuenta.h"
 
-
-/***@author Tomeu Borrás Riera */
+/***@author Tomeu Borrï¿½ Riera */
 class empresa;
 
 class filtrardiarioview : public filtrardiariodlg  {
    Q_OBJECT
-public: 
+private: 
   postgresiface2* conexionbase;
   int numdigitos;
   int ccostes[200];
   empresa *empresaactual;
-  QString idcontrapartida; // Si hay una este campo vale su id
+//  QString idcontrapartida; // Si hay una este campo vale su id
   
+public:
+   QString idcontrapartida() {return m_contrapartida->idcuenta();};
    filtrardiarioview(empresa *, QWidget *parent=0, const char *name=0);
 	~filtrardiarioview();
    
    public slots:
-   virtual void buscacontrapartida();
    virtual void boton_canales();
    virtual void boton_ccostes();
 };

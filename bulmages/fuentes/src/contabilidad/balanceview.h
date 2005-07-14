@@ -75,14 +75,7 @@ public slots:
   virtual void accept();
   virtual void boton_imprimir();
 private slots:
-  virtual void return_codigoinicial();
-  virtual void return_codigofinal();
-  virtual void boton_buscacuentainicial();
-  virtual void boton_buscacuentafinal();
   virtual void contextmenu(int , int , const QPoint &);
   virtual void nivelactivated(int);
-  virtual void codigo_textChanged(const QString &);
-  virtual void fecha_textChanged(const QString &);
-
 };
 #endif

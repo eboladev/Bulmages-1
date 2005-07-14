@@ -2,7 +2,7 @@
                           diarioprintview.cpp  -  description
                              -------------------
     begin                : jue jun 26 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
     modificat per        : (C) 2003 Antoni Mirabete i Terï¿½ - amirabet@biada.org
  ***************************************************************************/
@@ -44,9 +44,9 @@ void DiarioPrintView::pruebasRTK() {
 	system (cadena.ascii());	
 	cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"diario.rtk   /tmp/diario.rtk" ;
 	system (cadena.ascii());
-	cadena = " sed -e \"s&###fechainicial###&"+fechainicial1->text()+"&g\"  /tmp/diario.rtk > /tmp/diario1.rtk";
+	cadena = " sed -e \"s&###fechainicial###&"+m_fechainicial->text()+"&g\"  /tmp/diario.rtk > /tmp/diario1.rtk";
 	system (cadena.ascii());
-	cadena = " sed -e \"s&###fechafinal###&"+fechafinal1->text()+"&g\"  /tmp/diario1.rtk > /tmp/diario.rtk";
+	cadena = " sed -e \"s&###fechafinal###&"+m_fechafinal->text()+"&g\"  /tmp/diario1.rtk > /tmp/diario.rtk";
 	system (cadena.ascii());
 	
 	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
@@ -61,8 +61,8 @@ void DiarioPrintView::pruebasRTKoo() {
 }// end pruebasRTKoo
 
 
-/** \brief Esta función monta la consulta que se va a realizar contra la base de datos
-  * La consulta es de bastante detalle y por eso es conveniente dedicar una función a realizarla
+/** \brief Esta funciï¿½ monta la consulta que se va a realizar contra la base de datos
+  * La consulta es de bastante detalle y por eso es conveniente dedicar una funciï¿½ a realizarla
   * Ademï¿½ dicha consulta puede ser invocada desde distintos sitios
   */
 QString DiarioPrintView::montaQuery() {
@@ -75,8 +75,8 @@ QString DiarioPrintView::montaQuery() {
     QString nomcuenta;
     QString cadaux;
 
-    QString finicial = fechainicial1->text();
-    QString ffinal = fechafinal1->text();
+    QString finicial = m_fechainicial->text();
+    QString ffinal = m_fechafinal->text();
     QString cad;
 
     // Consideraciones para centros de coste y canales
@@ -101,15 +101,15 @@ QString DiarioPrintView::montaQuery() {
 }// end montaQuery
 
 void DiarioPrintView::inicializa1(QString fechai, QString fechaf) {
-    fechainicial1->setText(fechai);
-    fechafinal1->setText(fechaf);
+    m_fechainicial->setText(fechai);
+    m_fechafinal->setText(fechaf);
 }// end inicializa1
 
 /**************************************************************
  * Se ha pulsado sobre el boton aceptar del formulario
  **************************************************************/
 void DiarioPrintView::accept() {
-    // Versiï¿½per si nomï¿½ permetem escollir una opción
+    // Versiï¿½per si nomï¿½ permetem escollir una opciï¿½
     if (radiotexto->isChecked()) {
         if (radionormal->isChecked()) {
             presentar("txt");
@@ -138,17 +138,17 @@ void DiarioPrintView::presentakugar() {
     cursor2 *cursoraux;
 
     // Cogemos los valores del formulario.
-    QString finicial = fechainicial1->text();
-    QString ffinal = fechafinal1->text();
+    QString finicial = m_fechainicial->text();
+    QString ffinal = m_fechafinal->text();
 
 
-    char *argstxt[]={"diari.kud","diari.kud",NULL};      //presentacióntxt normal
+    char *argstxt[]={"diari.kud","diari.kud",NULL};      //presentaciï¿½txt normal
     ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
     if (!fitxersortidatxt)
         txt=0;    // verifiquem que s'hagin creat correctament els fitxers
 
     if (txt) {
-        //presentacióntxt normal
+        //presentaciï¿½txt normal
         fitxersortidatxt.setf(ios::fixed);
         fitxersortidatxt.precision(2);
         fitxersortidatxt << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" ;
@@ -200,7 +200,7 @@ void DiarioPrintView::presentakugar() {
 	haber += p_decimal.ascii();
 
         if (txt) {
-            //presentacióntxt normal
+            //presentaciï¿½txt normal
 	    // OJO!! Se han tenido que cambiar las \" por ' porque petan algunas asignaciones de
 	    // strings que contienen \" cuando se entrecomilla algÃºn texto descriptivo o las pulgadas.
             fitxersortidatxt << "\t<Row level=\"0\" asiento='"<< idasiento.ascii() <<"'";
@@ -238,19 +238,19 @@ void DiarioPrintView::presentar(char * tipus) {
     string cad;
     cursor2 *cursoraux;
 
-    // tipus de presentación   
+    // tipus de presentaciï¿½   
     txt=!strcmp(tipus,"txt");
     html=!strcmp(tipus,"html");
     txtapren=!strcmp(tipus,"txtapren");
     htmlapren=!strcmp(tipus,"htmlapren");
 
     // Cogemos los valores del formulario.
-    QString finicial = fechainicial1->text();
-    QString ffinal = fechafinal1->text();
+    QString finicial = m_fechainicial->text();
+    QString ffinal = m_fechafinal->text();
 
     if (txt | html) {
-        char *argstxt[]={"diari.txt","diari.txt",NULL};      //presentacióntxt normal
-        char *argshtml[]={"diari.html","diari.html",NULL};   //presentaciónhtml normal
+        char *argstxt[]={"diari.txt","diari.txt",NULL};      //presentaciï¿½txt normal
+        char *argshtml[]={"diari.html","diari.html",NULL};   //presentaciï¿½html normal
 
         ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
         ofstream fitxersortidahtml(argshtml[0]);
@@ -262,7 +262,7 @@ void DiarioPrintView::presentar(char * tipus) {
 	    
         if (txt | html) {                // nomï¿½ continuem si hem pogut crear algun fitxer
             if (txt) {
-                //presentacióntxt normal
+                //presentaciï¿½txt normal
 
                 fitxersortidatxt.setf(ios::fixed);
                 fitxersortidatxt.precision(2);
@@ -273,7 +273,7 @@ void DiarioPrintView::presentar(char * tipus) {
                 fitxersortidatxt << "_______________________________________________________________________________________________\n";
             }// end if
             if (html) {
-                //presentaciónhtml normal
+                //presentaciï¿½html normal
                 fitxersortidahtml.setf(ios::fixed);
                 fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
@@ -286,7 +286,7 @@ void DiarioPrintView::presentar(char * tipus) {
                 fitxersortidahtml << "<body>\n";
                 fitxersortidahtml << "<table><tr><td colspan=\"6\" class=titoldiari> Llibre diari <hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td colspan=\"6\" class=periodediari> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td class=titolcolumnadiari>Assentament</td><td class=titolcolumnadiari>Data</td><td class=titolcolumnadiari>Subcompte</td><td class=titolcolumnadiari>Descripción/td><td class=titolcolumnadiari>Deure</td><td class=titolcolumnadiari>Haver</td></tr>\n";
+                fitxersortidahtml << "<tr><td class=titolcolumnadiari>Assentament</td><td class=titolcolumnadiari>Data</td><td class=titolcolumnadiari>Subcompte</td><td class=titolcolumnadiari>Descripciï¿½/td><td class=titolcolumnadiari>Deure</td><td class=titolcolumnadiari>Haver</td></tr>\n";
             }
 
             QString query = montaQuery();
@@ -307,17 +307,17 @@ void DiarioPrintView::presentar(char * tipus) {
                 strncpy(data,fecha.c_str(),10);
                 data[10]='\0';
                 if (txt) {
-                    //presentacióntxt normal
+                    //presentaciï¿½txt normal
                     fitxersortidatxt << setw(5) << idasiento << "  " << setw(10) << data << " " << setw(10) << codigocuenta.c_str() <<  "  " << setw(40) <<  setiosflags(ios::left) << descripcion.c_str() <<  resetiosflags(ios::left)<< " " << setw(10) << debe << " " << setw(10) << haber << endl;
                 }// end if
                 if (html) {
-                    //presentaciónhtml normal
+                    //presentaciï¿½html normal
                     fitxersortidahtml << "<tr><td class=assentamentdiari>" << idasiento << "</td><td class=datadiari>" << data << "</td><td class=codicomptediari>" << codigocuenta.c_str() << "</td><td class=descripciodiari>" <<  descripcion.c_str() << "</td><td class=dosdecimals>" << debe << "</td><td class=dosdecimals>" << haber << "</td></tr>\n";
                 }// end if
             }// end for
             delete cursoraux;
             if (html) {
-                fitxersortidahtml << "</table>\n<hr>\n</body>\n</html>\n";     //presentaciónhtml normal
+                fitxersortidahtml << "</table>\n<hr>\n</body>\n</html>\n";     //presentaciï¿½html normal
                 fitxersortidahtml.close();
             }// end if
             if (txt) {
@@ -332,13 +332,13 @@ void DiarioPrintView::presentar(char * tipus) {
         }
 
         if (txt) {
-            //presentacióntxt normal
+            //presentaciï¿½txt normal
             if (!pid) {
                 error = execvp(confpr->valor(CONF_EDITOR).ascii(),argstxt);
             }
         }
         if (html) {
-            //presentaciónhtml normal
+            //presentaciï¿½html normal
             if (!pid) {
                 error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),argshtml);
             }// end if
@@ -346,8 +346,8 @@ void DiarioPrintView::presentar(char * tipus) {
     }
     if (txtapren | htmlapren ) {
 
-        char *argstxt[]={"diariaprenentatge.txt","diariaprenentatge.txt",NULL};      //presentacióntxt normal
-        char *argshtml[]={"diariaprenentatge.html","diariaprenentatge.html",NULL};   //presentaciónhtml normal
+        char *argstxt[]={"diariaprenentatge.txt","diariaprenentatge.txt",NULL};      //presentaciï¿½txt normal
+        char *argshtml[]={"diariaprenentatge.html","diariaprenentatge.html",NULL};   //presentaciï¿½html normal
 
         ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
         ofstream fitxersortidahtml(argshtml[0]);
@@ -359,7 +359,7 @@ void DiarioPrintView::presentar(char * tipus) {
 
         if (txtapren | htmlapren) {       // nomï¿½ continuem si hem pogut crear algun fitxer
             if (txtapren) {
-                //presentacióntxt format aprenentatge
+                //presentaciï¿½txt format aprenentatge
 
                 fitxersortidatxt.setf(ios::fixed);
                 fitxersortidatxt.precision(2);
@@ -370,7 +370,7 @@ void DiarioPrintView::presentar(char * tipus) {
 
             }
             if (htmlapren) {
-                //presentaciónhtml format aprenentatge
+                //presentaciï¿½html format aprenentatge
 
                 fitxersortidahtml.setf(ios::fixed)
                     ;
@@ -394,11 +394,11 @@ void DiarioPrintView::presentar(char * tipus) {
                 int idasiento=atoi(cursoraux->valor("idasiento").ascii());
 
                 if (txtapren) {
-                    //presentacióntxt format aprenentatge
+                    //presentaciï¿½txt format aprenentatge
                     fitxersortidatxt << "_________________________________________________________   " << idasiento << "   ___________________________________________________________________\n";
                 }
                 if (htmlapren) {
-                    //presentaciónhtml format aprenentatge
+                    //presentaciï¿½html format aprenentatge
                     fitxersortidahtml << "\n<tr><td colspan=\"7\" class=liniadiariapren>____________________________________________________   " << idasiento << "   _____________________________________________________</td></tr>\n" ;
                 }
 
@@ -412,12 +412,12 @@ void DiarioPrintView::presentar(char * tipus) {
                 while (!cursasiento->eof()) {
 
                     if (txtapren) {
-                        //presentacióntxt format aprenentatge
+                        //presentaciï¿½txt format aprenentatge
                         sprintf(codicompte,"( %s )",cursasiento->valor("codigo").ascii());
                         fitxersortidatxt << setw(12) << atof(cursasiento->valor("debe").ascii()) << "  " << setw(10) << codicompte << "  " << cursasiento->valor("nomcuenta").ascii() << endl;
                     }
                     if (htmlapren) {
-                        //presentaciónhtml format aprenentatge
+                        //presentaciï¿½html format aprenentatge
                         fitxersortidahtml << " <tr><td class=deurediariapren> " << atof(cursasiento->valor("debe").ascii()) << " </td><td class=codidiariapren> ( " << cursasiento->valor("codigo").ascii() << " ) </td><td class=nomcomptediariapren> " << cursasiento->valor("nomcuenta").ascii() << " </td><td> </td><td> </td><td> </td><td> </td></tr>\n";
                     }
                     cursasiento->siguienteregistro();
@@ -433,12 +433,12 @@ void DiarioPrintView::presentar(char * tipus) {
                 while (!cursasiento->eof()) {
 
                     if (txtapren) {
-                        //presentacióntxt format aprenentatge
+                        //presentaciï¿½txt format aprenentatge
                         sprintf(codicompte,"( %s )",cursasiento->valor("codigo").ascii());
                         fitxersortidatxt << "                                                                 a  " << setw(30) << cursasiento->valor("nomcuenta").ascii() << "  " << setw(10) << codicompte << "  " << setw(12) <<  atof(cursasiento->valor("haber").ascii()) <<endl;
                     }// end if
                     if (htmlapren) {
-                        //presentaciónhtml format aprenentatge
+                        //presentaciï¿½html format aprenentatge
                         fitxersortidahtml << " <tr><td> </td><td> </td><td> </td><td class=adiariapren>  a  </td><td class=nomcomptediariapren> " << cursasiento->valor("nomcuenta").ascii() << " </td><td class=codidiariapren> ( " << cursasiento->valor("codigo").ascii() << " ) </td><td class=haverdiariapren> " <<  atof(cursasiento->valor("haber").ascii()) << " </td></tr>\n";
                     }// end if
                     cursasiento->siguienteregistro();
@@ -450,19 +450,19 @@ void DiarioPrintView::presentar(char * tipus) {
             conexionbase->commit();
 
             if (txtapren) {
-                fitxersortidatxt << "____________________________________________________________________________________________________________________________________\n" ;//presentacióntext format aprenentatge
+                fitxersortidatxt << "____________________________________________________________________________________________________________________________________\n" ;//presentaciï¿½text format aprenentatge
                 fitxersortidatxt.close();
             }// end if
 
             if (htmlapren) {
-                fitxersortidahtml << "<tr><td colspan=\"7\"  class=liniadiariapren>\n_____________________________________________________________________________________________________________\n<hr></td></tr>\n</table>\n</body></html>\n";     //presentaciónhtml format aprenentatge
+                fitxersortidahtml << "<tr><td colspan=\"7\"  class=liniadiariapren>\n_____________________________________________________________________________________________________________\n<hr></td></tr>\n</table>\n</body></html>\n";     //presentaciï¿½html format aprenentatge
                 fitxersortidahtml.close();
             }// end if
 
 
 
             if (txtapren) {
-                //presentacióntxt format aprenentatge
+                //presentaciï¿½txt format aprenentatge
                 if ((pid=fork()) < 0) {
                     perror ("Fork failed");
                     exit(errno);
@@ -473,7 +473,7 @@ void DiarioPrintView::presentar(char * tipus) {
             }// end if
 
             if (htmlapren) {
-                //presentaciónhtml format aprenentatge
+                //presentaciï¿½html format aprenentatge
                 if ((pid=fork()) < 0) {
                     perror ("Fork failed");
                     exit(errno);
@@ -487,7 +487,7 @@ void DiarioPrintView::presentar(char * tipus) {
 }// end presentar
 
 
-/** \brief SLOT que responde a la pulsación del botï¿½ de canales.
+/** \brief SLOT que responde a la pulsaciï¿½ del botï¿½ de canales.
   * Sirve para que se puedan establecer en las opciones de filtrado los canales.
   * En realidad no hace una nueva intancia de los canales sino que llama a una clase global.
   */
@@ -499,7 +499,7 @@ void DiarioPrintView::boton_canales() {
 }// end boton_canales
 
 
-/** \brief SLOT que responde a la pulsación del botï¿½ de centros de coste.
+/** \brief SLOT que responde a la pulsaciï¿½ del botï¿½ de centros de coste.
   */
 void DiarioPrintView::boton_ccostes() {
     fprintf(stderr,"Boton ccostes\n");
@@ -508,7 +508,7 @@ void DiarioPrintView::boton_ccostes() {
     selccostes->firstccoste();
 }// end boton_ccostes
 
-/** \brief SLOT que responde a la pulsación del botï¿½ de filtrado
+/** \brief SLOT que responde a la pulsaciï¿½ del botï¿½ de filtrado
   * Muestra la ventana de filtrado.
   */
 void DiarioPrintView::s_botonFiltrar() {

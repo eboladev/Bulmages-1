@@ -740,7 +740,7 @@
     </customwidget>
     <customwidget>
         <class>QTable1</class>
-        <header location="local">qtable1.h</header>
+        <header location="local">../../../bulmalib/qtable1.h</header>
         <sizehint>
             <width>50</width>
             <height>50</height>
@@ -805,6 +805,6 @@
 <includehints>
     <includehint>busquedafecha.h</includehint>
     <includehint>busquedafecha.h</includehint>
-    <includehint>qtable1.h</includehint>
+    <includehint>../../../bulmalib/qtable1.h</includehint>
 </includehints>
 </UI>
