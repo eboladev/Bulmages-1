@@ -2,7 +2,7 @@
                           qtable1.h  -  description
                              -------------------
     begin                : Mon Jan 13 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -19,7 +19,7 @@
 
 #include <qtable.h>
 
-/** *@author Tomeu Borrás Riera */
+/** *@author Tomeu Borrï¿½ Riera */
 
 
 class QTableItem1 : public QTableItem {

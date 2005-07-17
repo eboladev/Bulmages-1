@@ -31,7 +31,7 @@
 
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
-
+#include "qtable1.h"
 
 #define COL_IDARTICULO 0
 #define COL_CODCOMPLETOARTICULO 1
@@ -162,25 +162,26 @@ articleslist::articleslist(company *comp, QWidget *parent, const char *name, int
     m_modo=0;
     comp->meteWindow("Articulos",this);
     hideBusqueda();
-    hideConfiguracion();    
+    hideConfiguracion();
+
 }// end articleslist
 
 
 void articleslist::inicializa() {
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
-    m_list->setSelectionMode( QTable::SingleRow );
-    m_list->setSorting( FALSE );
-    m_list->setSelectionMode( QTable::SingleRow );
+    m_list->setRowMovingEnabled( TRUE );
     m_list->setColumnMovingEnabled( TRUE );
+    m_list->setSorting( TRUE );
+    m_list->setSelectionMode( QTable::SingleRow );
     m_list->setNumCols(19);
     m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Identificador" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODCOMPLETOARTICULO, tr( "Código Completo" ) );
-    m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción" ) );
-    m_list->horizontalHeader()->setLabel( COL_DESCARTICULO, tr( "Descripción Completa" ) );
-    m_list->horizontalHeader()->setLabel( COL_CBARRASARTICULO, tr( "Código de Barras" ) );
-    m_list->horizontalHeader()->setLabel( COL_TIPOARTICULO, tr( "Tipo de Artículo" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Cï¿½igo" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODCOMPLETOARTICULO, tr( "Cï¿½igo Completo" ) );
+    m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripciï¿½" ) );
+    m_list->horizontalHeader()->setLabel( COL_DESCARTICULO, tr( "Descripciï¿½ Completa" ) );
+    m_list->horizontalHeader()->setLabel( COL_CBARRASARTICULO, tr( "Cï¿½igo de Barras" ) );
+    m_list->horizontalHeader()->setLabel( COL_TIPOARTICULO, tr( "Tipo de Artï¿½ulo" ) );
     m_list->horizontalHeader()->setLabel( COL_DESCUENTOARTICULO, tr( "Descuento" ) );
     m_list->horizontalHeader()->setLabel( COL_ESPECIFICACIONESARTICULO, tr("Especificaciones") );
     m_list->horizontalHeader()->setLabel( COL_ICONOARTICULO, tr("Icono") );
@@ -191,7 +192,7 @@ void articleslist::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_MODELOARTICULO, tr("Modelo") );
     m_list->horizontalHeader()->setLabel( COL_IDTIPO_IVA, tr("Tipo de IVA") );
     m_list->horizontalHeader()->setLabel( COL_DESCTIPO_IVA, tr("Tipo de IVA") );
-    m_list->horizontalHeader()->setLabel( COL_IDLINEA_PROD, tr("Línea de Producción") );
+    m_list->horizontalHeader()->setLabel( COL_IDLINEA_PROD, tr("Lï¿½ea de Producciï¿½") );
     m_list->horizontalHeader()->setLabel( COL_STOCKARTICULO, tr("Stock") );
     
     m_list->setColumnWidth(COL_IDARTICULO,100);
@@ -282,7 +283,7 @@ void articleslist::newArticle() {
 
 
 void articleslist::removeArticle() {
-    if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artículo","Esta a punto de borrar un artículo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
+    if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artï¿½ulo","Esta a punto de borrar un artï¿½ulo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
         QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+m_list->text(m_list->currentRow(),COL_IDARTICULO);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
@@ -293,8 +294,6 @@ void articleslist::removeArticle() {
 
 
 QString articleslist::formaQuery() {
-    QString orden[] = {"nomarticulo","codigocompletoarticulo","stockarticulo"};
-    
     QString query="";
     query += "SELECT * FROM articulo LEFT JOIN tipo_iva ON articulo.idtipo_iva = tipo_iva.idtipo_iva WHERE 1=1 ";
     if(m_presentablearticulo->isChecked())
@@ -309,7 +308,7 @@ QString articleslist::formaQuery() {
     if (m_tipoarticulo->idtipo_articulo() != "") {
     	query += " AND idtipo_articulo = "+m_tipoarticulo->idtipo_articulo();
     }// end if
-    query +=" ORDER BY "+orden[m_orden->currentItem()];
+    query +=" ORDER BY codigocompletoarticulo";
     return (query);
 }// end formaQuery
 

@@ -19,17 +19,17 @@
  ***************************************************************************/
 
  /*
--- El cliente siempre tiene la razón, bueno, o por lo menos eso cree.
+-- El cliente siempre tiene la razï¿½, bueno, o por lo menos eso cree.
 --Codi: Clau artificial.
 --Nom: Nom comercial o fiscal.
 --Nom_alternatiu: Nom comercial o fiscal.
---CIF: Codi d'Identificació Fiscal.
+--CIF: Codi d'Identificaciï¿½Fiscal.
 --C_Banc: Compte Bancari.
---Adr: Adreça.
---Pobl: Població.
---CProv: Codi de provincia (dos primers dígits del codi postal).
---sCP: Tres darrers dígits del codi postal.
---Telf: Telèfon.
+--Adr: Adreï¿½.
+--Pobl: Poblaciï¿½
+--CProv: Codi de provincia (dos primers dï¿½its del codi postal).
+--sCP: Tres darrers dï¿½its del codi postal.
+--Telf: Telï¿½on.
 --Fax: Fax.
 --Email: eMail.
 --Url: Url.
@@ -61,7 +61,7 @@ CREATE TABLE cliente (
 #include "clientedit.h"
 #include "company.h"
 #include <qmessagebox.h>
-#include <qtable.h>
+#include "qtable1.h"
 #include <qlineedit.h>
 
 #define COL_IDCLIENTE 0
@@ -95,21 +95,21 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
  
    m_clientList->setNumRows( 0 );
    m_clientList->setSelectionMode( QTable::SingleRow );
-   m_clientList->setSorting( FALSE );
+   m_clientList->setSorting( TRUE );
    m_clientList->setColumnMovingEnabled( TRUE );
    m_clientList->setNumCols(16);
-   m_clientList->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "Código" ) );
+   m_clientList->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "Cï¿½igo" ) );
    m_clientList->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Nombre Fiscal" ) );
    m_clientList->horizontalHeader()->setLabel( COL_NOMALTCLIENTE, tr( "Nombre Comercial" ) );
    m_clientList->horizontalHeader()->setLabel( COL_CIFCLIENTE, tr( "CIF/NIF" ) );
    m_clientList->horizontalHeader()->setLabel( COL_BANCOCLIENTE, tr( "Cuenta Bancaria" ) );
    m_clientList->horizontalHeader()->setLabel( COL_DIRCLIENTE, tr( "Domicilio" ) );
-   m_clientList->horizontalHeader()->setLabel( COL_POBLCLIENTE, tr("Población") );
+   m_clientList->horizontalHeader()->setLabel( COL_POBLCLIENTE, tr("Poblaciï¿½") );
    m_clientList->horizontalHeader()->setLabel( COL_CPCLIENTE, tr("C.P.") );
-   m_clientList->horizontalHeader()->setLabel( COL_TELCLIENTE, tr("Teléfono") );
+   m_clientList->horizontalHeader()->setLabel( COL_TELCLIENTE, tr("Telï¿½ono") );
    m_clientList->horizontalHeader()->setLabel( COL_FAXCLIENTE, tr("Fax") );
-   m_clientList->horizontalHeader()->setLabel( COL_MAILCLIENTE, tr("Correo Electrónico") );
-   m_clientList->horizontalHeader()->setLabel( COL_URLCLIENTE, tr("Página Web") );
+   m_clientList->horizontalHeader()->setLabel( COL_MAILCLIENTE, tr("Correo Electrï¿½ico") );
+   m_clientList->horizontalHeader()->setLabel( COL_URLCLIENTE, tr("Pï¿½ina Web") );
    m_clientList->horizontalHeader()->setLabel( COL_FALTACLIENTE, tr("Fecha de Alta") );
    m_clientList->horizontalHeader()->setLabel( COL_FBAJACLIENTE, tr("Fecha de Baja") );
    m_clientList->horizontalHeader()->setLabel( COL_COMENTCLIENTE, tr("Observaciones") );
@@ -151,9 +151,7 @@ ClientsList::~ClientsList() {
   * Hacemos la consulta a la base de datos y presentamos el listado.
   */
 void ClientsList::inicializa() {
-       companyact->begin();
-       cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente","unquery");
-       companyact->commit();
+       cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente");
        m_clientList->setNumRows( cur->numregistros() );
        int i=0;
        while (!cur->eof()) {
@@ -172,7 +170,6 @@ void ClientsList::inicializa() {
          m_clientList->setText(i,COL_FALTACLIENTE,cur->valor("faltacliente"));
          m_clientList->setText(i,COL_FBAJACLIENTE,cur->valor("fbajacliente"));
          m_clientList->setText(i,COL_COMENTCLIENTE,cur->valor("comentcliente"));
-//         m_clientList->setText(i,COL_IDRECARGO,cur->valor("idrecargo"));
          i++;
          cur->siguienteregistro();
        }// end while
@@ -218,7 +215,7 @@ void ClientsList::s_findClients() {
 
 
 void ClientsList::s_printClients() {
-	fprintf(stderr,"Impresión del listado\n");
+	fprintf(stderr,"Impresiï¿½ del listado\n");
     	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
 	QString cadena;
 	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.

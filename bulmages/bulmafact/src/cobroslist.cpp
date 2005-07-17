@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementación del listado de presupuestos.
+// Implementaciï¿½ del listado de presupuestos.
 /*
--- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
--- hacemos a petición de un cliente determinado
+-- Entendemos que un presupuesto es una relaciï¿½ de materiales y trabajos cuantificada que
+-- hacemos a peticiï¿½ de un cliente determinado
 -- Numero
 -- Data: Data d'emisiï¿½del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
@@ -45,7 +45,7 @@ CREATE TABLE presupuesto (
 #include "cobroslist.h"
 #include "company.h"
 #include "cobroview.h"
-#include <qtable.h>
+#include "qtable1.h"
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 #include <qcheckbox.h>
@@ -102,7 +102,7 @@ void CobrosList::inicializa() {
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
-    m_list->setSorting( FALSE );
+    m_list->setSorting( TRUE );
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(7);
@@ -242,7 +242,7 @@ void CobrosList::imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Línea de totales del presupuesto
+    // Lï¿½ea de totales del presupuesto
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";

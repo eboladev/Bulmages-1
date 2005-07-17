@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementación del listado de presupuestos.
+// Implementaciï¿½ del listado de presupuestos.
 #include "budgetslist.h"
 #include "company.h"
 #include "budget.h"
-#include <qtable.h>
+#include "qtable1.h"
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 #include <qcheckbox.h>
@@ -150,23 +150,23 @@ BudgetsList::~BudgetsList() {
 void BudgetsList::inicializa() {
     fprintf(stderr,"BudgetsList::inicializa()\n");
     m_list->setNumRows( 0 );
-    m_list->setSorting( FALSE );
+    m_list->setSorting( TRUE );
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(14);
     m_list->horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "Id. Presupuesto" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacï¿½" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMPRESUPUESTO, tr( "Num. Presupuesto" ) );
     m_list->horizontalHeader()->setLabel( COL_FPRESUPUESTO, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_VENCPRESUPUESTO, tr( "Vencimiento" ) );
     m_list->horizontalHeader()->setLabel( COL_CONTACTPRESUPUESTO, tr( "Persona Contacto" ) );
-    m_list->horizontalHeader()->setLabel( COL_TELPRESUPUESTO, tr( "Teléfono" ) );
+    m_list->horizontalHeader()->setLabel( COL_TELPRESUPUESTO, tr( "Telï¿½ono" ) );
     m_list->horizontalHeader()->setLabel( COL_COMENTPRESUPUESTO, tr( "Comentarios" ) );
     m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("Id. Usuario") );
     m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("Id. Cliente") );
-    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacén") );
-    m_list->horizontalHeader()->setLabel( COL_DESCPRESUPUESTO, tr("Descripción") );
+    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacï¿½") );
+    m_list->horizontalHeader()->setLabel( COL_DESCPRESUPUESTO, tr("Descripciï¿½") );
     m_list->horizontalHeader()->setLabel( COL_REFPRESUPUESTO, tr("Referencia.") );
     m_list->setColumnWidth(COL_IDPRESUPUESTO,75);
     m_list->setColumnWidth(COL_NUMPRESUPUESTO,75);
@@ -226,10 +226,6 @@ void BudgetsList::inicializa() {
 
 QString BudgetsList::generaFiltro() {
     /// Tratamiento de los filtros.
-    fprintf(stderr,"Tratamos el filtro \n");
-    
-    QString orden[] = {"fpresupuesto","vencpresupuesto","cifcliente","nomcliente","refpresupuesto","numpresupuesto"};
-    
     QString filtro="";
     if (m_filtro->text() != "") {
         filtro = " AND ( descpresupuesto LIKE '%"+m_filtro->text()+"%' ";
@@ -246,7 +242,7 @@ QString BudgetsList::generaFiltro() {
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpresupuesto IN (SELECT DISTINCT idpresupuesto FROM lpresupuesto WHERE idarticulo='"+m_articulo->idarticulo()+"')";
     }// end if
-    filtro += " ORDER BY "+orden[m_orden->currentItem()];
+    filtro += " ORDER BY fpresupuesto";
     return (filtro);
 }// end generaFiltro
 
@@ -319,7 +315,7 @@ void BudgetsList::imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Línea de totales del presupuesto
+    // Lï¿½ea de totales del presupuesto
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";

@@ -11,7 +11,7 @@
 //
 #include "facturaslist.h"
 #include "company.h"
-#include <qtable.h>
+#include "qtable1.h"
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 #include "busquedacliente.h"
@@ -71,12 +71,12 @@ void FacturasList::inicializa() {
     m_list->setNumCols(13);
     m_list->horizontalHeader()->setLabel( COL_IDFACTURA, tr( "COL_IDFACTURA" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacï¿½" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMFACTURA, tr( "N Presupuesto" ) );
     m_list->horizontalHeader()->setLabel( COL_FFACTURA, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_IDSERIE_FACTURA, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_CONTACTFACTURA, tr( "Persona Contacto" ) );
-    m_list->horizontalHeader()->setLabel( COL_TELFACTURA, tr( "Teléfono" ) );
+    m_list->horizontalHeader()->setLabel( COL_TELFACTURA, tr( "Telï¿½ono" ) );
     m_list->horizontalHeader()->setLabel( COL_COMENTFACTURA, tr( "Comentarios" ) );
     m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("COL_IDUSUARI") );
     m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
@@ -93,8 +93,6 @@ void FacturasList::inicializa() {
     if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
         m_list->hideColumn(COL_CODIGOALMACEN);
     }// end if
-
-    //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTFACTURASCLIENTE));
     m_list->setReadOnly(TRUE);

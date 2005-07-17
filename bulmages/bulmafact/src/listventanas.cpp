@@ -37,6 +37,8 @@ listventanas::~listventanas() {
     delete m_listBox;
 }// end ~listventanas
 
+#include <qimage.h>
+
 /** \brief This function provides the ability of push a window in the dock window
  ** \param  nombre This QStrin is the name of the window that was shown in the listbox
  ** \param obj This QObject * contains the pointer of the window for furtner reference.
@@ -51,7 +53,15 @@ void  listventanas::meteWindow(QString nombre, QObject *obj) {
         iterador++;
     }// end while
     if( iterador == elmapa.end()) {
-        m_listBox->insertItem(nombre,-1);
+	if (((QWidget *)obj)->icon()) {
+		QPixmap icon = *((QWidget *)obj)->icon();
+		QImage imgicon = icon.convertToImage();
+		imgicon = imgicon.scale(32,32);
+		icon = imgicon;
+       		m_listBox->insertItem(icon,nombre,-1);
+	} else {
+		m_listBox->insertItem(nombre,-1);
+	}
         elmapa[m_listBox->count()-1]=obj;
     }// end if
 }// end meteWindow

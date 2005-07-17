@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementación del listado de albaranes.
+// Implementaciï¿½ del listado de albaranes.
 /*
--- COMPROVACIONS D'INTEGRITAT>Genèriques:
+-- COMPROVACIONS D'INTEGRITAT>Genï¿½iques:
 -- Tots els albarans d'una factura corresponen al mateix client.
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 -- Numero
 -- Data
--- Albarà a clients.
+-- Albarï¿½a clients.
 CREATE TABLE albaran (
    numalbaran integer PRIMARY KEY,
    fechaalbaran date,
@@ -43,7 +43,7 @@ CREATE TABLE albaran (
 #include "clientdelivnoteslist.h"
 #include "company.h"
 #include "albaranclienteview.h"
-#include <qtable.h>
+#include "qtable1.h"
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 #include <qfile.h>
@@ -167,17 +167,17 @@ void ClientDelivNotesList::inicializa() {
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
-    m_list->setSorting( FALSE );
+    m_list->setSorting( TRUE );
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(13);
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacï¿½" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "Nº Albarán" ) );
+    m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "N Albarï¿½" ) );
     m_list->horizontalHeader()->setLabel( COL_FECHAALBARAN, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_IDFORMA_PAGO, tr( "COL_IDFORMA_PAGO" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMFACTURA, tr( "Nº Factura" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMNOFACTURA, tr( "Nº No Fra." ) );
+    m_list->horizontalHeader()->setLabel( COL_NUMFACTURA, tr( "N Factura" ) );
+    m_list->horizontalHeader()->setLabel( COL_NUMNOFACTURA, tr( "N No Fra." ) );
     m_list->horizontalHeader()->setLabel( COL_IDUSUARIO, tr("COL_IDUSUARIO") );
     m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
     m_list->horizontalHeader()->setLabel( COL_IDALBARAN, tr("COL_IDALBARAN") );
@@ -237,7 +237,7 @@ void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
     m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
     if (m_modo ==0 && m_idclidelivnote != "") {
         fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
-        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarï¿½ de Cliente", "company"));
         cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
         cDelivNote->show();
     } else {
@@ -252,7 +252,7 @@ if (a >= 0) {
     m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
     if (m_idclidelivnote != "") {
         fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
-        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarï¿½ de Cliente", "company"));
         cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
         cDelivNote->show();
     }// end if
@@ -280,8 +280,8 @@ void ClientDelivNotesList::s_contextMenu(int, int, int button, const QPoint &poi
 
 void ClientDelivNotesList::s_newClientDelivNote() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
-    AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
-    /// Pintamos para que se carguen los combos y los demás elementos.
+    AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarï¿½ de Cliente", "company"));
+    /// Pintamos para que se carguen los combos y los demï¿½ elementos.
     cDelivNote->pintaAlbaranCliente();
     cDelivNote->show();
 }// end boton_crear
@@ -290,7 +290,7 @@ void ClientDelivNotesList::s_newClientDelivNote() {
 void ClientDelivNotesList::s_removeClientDelivNote() {
     fprintf(stderr,"Iniciamos el boton_borrar\n");
     if (m_list->currentRow() >= 0) {
-        if (QMessageBox::warning( this, "BulmaFact - Albaranes", "Desea borrar el albarán seleccionado", "Sí", "No") == 0) {
+        if (QMessageBox::warning( this, tr("BulmaFact - Albaranes", "Desea borrar el albarï¿½ seleccionado"),tr("Si"), tr("No"), 0, 0, 1) == 0) {
             companyact->begin();
             QString SQLQuery = "DELETE FROM lalbaran WHERE idalbaran ="+m_list->text(m_list->currentRow(),COL_IDALBARAN);
             if (companyact->ejecuta(SQLQuery)==0) {
@@ -332,7 +332,7 @@ void ClientDelivNotesList::imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Línea de totales del presupuesto
+    // Lï¿½ea de totales del presupuesto
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
@@ -370,8 +370,6 @@ void ClientDelivNotesList::imprimir() {
 
 
 QString ClientDelivNotesList::generarFiltro() {
-    QString orden[] = {"fechaalbaran","cifcliente","nomcliente","refalbaran","numalbaran"};
-    
     /// Tratamiento de los filtros.
     fprintf(stderr,"Tratamos el filtro \n");
     QString filtro="";
@@ -390,6 +388,6 @@ QString ClientDelivNotesList::generarFiltro() {
     if (!m_procesados->isChecked() ) {
         filtro += " AND NOT procesadoalbaran";
     }// end if
-    filtro += " ORDER BY "+orden[m_orden->currentItem()];
+    filtro += " ORDER BY nomcliente";
     return (filtro);
 }// end generaFiltro

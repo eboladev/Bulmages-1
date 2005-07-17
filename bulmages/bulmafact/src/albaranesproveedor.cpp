@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementación del listado de albaranps.
+// Implementaciï¿½ del listado de albaranps.
 /*
--- Entendemos que un albaranp es una relación de materiales y trabajos cuantificada que
--- hacemos a petición de un cliente determinado
+-- Entendemos que un albaranp es una relaciï¿½ de materiales y trabajos cuantificada que
+-- hacemos a peticiï¿½ de un cliente determinado
 -- Numero
 -- Data: Data d'emisiï¿½del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
@@ -46,7 +46,7 @@ CREATE TABLE albaranp (
 #include "albaranproveedorview.h"
 #include "company.h"
 #include "budget.h"
-#include <qtable.h>
+#include "qtable1.h"
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 #include <qcheckbox.h>
@@ -350,7 +350,7 @@ void AlbaranesProveedor::imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Línea de totales del albaranp
+    // Lï¿½ea de totales del albaranp
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
