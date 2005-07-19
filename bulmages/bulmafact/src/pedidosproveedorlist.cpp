@@ -12,7 +12,7 @@
 #include "pedidosproveedorlist.h"
 
 #include "company.h"
-#include <qtable.h>
+#include "qtable1.h"
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 #include <qfile.h>
@@ -66,22 +66,22 @@ PedidosProveedorList::~PedidosProveedorList() {
 void PedidosProveedorList::inicializa() {
     m_list->setNumRows( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
-    m_list->setSorting( FALSE );
+    m_list->setSorting( TRUE );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(14);
     m_list->horizontalHeader()->setLabel( COL_IDPEDIDOPROVEEDOR, tr( "COL_IDPEDIDOPROVEEDOR" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMPROVEEDOR, tr( "Proveedor" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacï¿½" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMPEDIDOPROVEEDOR, tr( "Num. Pedido" ) );
     m_list->horizontalHeader()->setLabel( COL_FECHAPEDIDOPROVEEDOR, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_IDSERIE_FACTURA, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_CONTACTFACTURA, tr( "Persona Contacto" ) );
-    m_list->horizontalHeader()->setLabel( COL_TELFACTURA, tr( "Teléfono" ) );
+    m_list->horizontalHeader()->setLabel( COL_TELFACTURA, tr( "Telï¿½ono" ) );
     m_list->horizontalHeader()->setLabel( COL_COMENTFACTURA, tr( "Comentarios" ) );
     m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("Id. Usuari") );
     m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr("Id. Proveedor") );
-    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacén") );
-    m_list->horizontalHeader()->setLabel( COL_DESCPEDIDOPROVEEDOR, tr("Descripción") );
+    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacï¿½") );
+    m_list->horizontalHeader()->setLabel( COL_DESCPEDIDOPROVEEDOR, tr("Descripciï¿½") );
     m_list->horizontalHeader()->setLabel( COL_REFPEDIDOPROVEEDOR, tr("Referencia") );
     
     m_list->setColumnWidth(COL_IDPEDIDOPROVEEDOR,75);
@@ -188,7 +188,7 @@ void PedidosProveedorList::imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Línea de totales del presupuesto
+    // Lï¿½ea de totales del presupuesto
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
