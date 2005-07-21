@@ -29,7 +29,7 @@ class articleslist : public articleslistbase
  Q_OBJECT
 public:
    company *companyact;
-	int m_modo;	// == 0 es modo edición
+	int m_modo;	// == 0 es modo ediciï¿½
 					// ==1 es modo selector.
 	QString m_idArticle;
 	QString mdb_nomarticulo;
@@ -60,6 +60,7 @@ public slots:
 	virtual void s_imprimir() {Imprimir();};
 	virtual void s_filtrar() {inicializa();};
 	virtual void s_configurar();
+	virtual void s_imprimir1();
     virtual void s_mostrarBusqueda() {
     	if (m_busqueda->isVisible())
 		hideBusqueda();

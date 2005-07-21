@@ -164,3 +164,11 @@ void bulmafact::s_Familias() {
 	m_company.s_Familias();
 }// end s_Familias
 
+void bulmafact::s_ventanaCompleta() {
+	if (isFullScreen()) {
+		showNormal();
+	} else {
+		showFullScreen();
+	}// end if
+}// end s_ventanaCompleta
+

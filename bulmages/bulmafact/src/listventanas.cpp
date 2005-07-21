@@ -3,6 +3,10 @@
 
 #include <map>
 
+#include "bulmafact.h"
+
+extern bulmafact *bges;
+
 using namespace std;
 typedef QObject *pQObject;
 
@@ -18,20 +22,47 @@ listventanas::listventanas(QWidget *a, const char *b): QDockWindow (a,b) {
     setWidget(m_listBox);
     setResizeEnabled(TRUE);
     setMovingEnabled(TRUE);
-    connect(m_listBox, SIGNAL(doubleClicked(QListBoxItem *)), this, SLOT(clicked()));
+    connect(m_listBox, SIGNAL(doubleClicked(QListBoxItem *)), this, SLOT(dclicked()));
+    connect(m_listBox, SIGNAL(clicked(QListBoxItem *)), this, SLOT(clicked()));
 }// end listventanas
+
+void listventanas::dclicked() {
+    fprintf(stderr,"listventanas::clicked()\n");
+    int item = m_listBox->currentItem();
+    QWidget *widget = (QWidget *)elmapa[item];
+    if (widget != NULL) {
+	fprintf(stderr,"El estado de la ventana es: %d, deberia ser %d\n",widget->windowState(),Qt::WindowMaximized);
+	QWidget *punt = bges->workspace()->activeWindow();
+	if (widget != punt) {
+		widget->showMaximized();
+	} else {
+		if (!(widget->windowState() & Qt::WindowMaximized)) {
+			widget->showMaximized();
+		} else {
+			widget->hide();
+		}// end if
+	}// end if
+    }// end if
+    fprintf(stderr,"END listventanas::clicked()\n");
+}// end clicked
+
+
 
 void listventanas::clicked() {
     fprintf(stderr,"listventanas::clicked()\n");
     int item = m_listBox->currentItem();
     QWidget *widget = (QWidget *)elmapa[item];
     if (widget != NULL) {
-        widget->showMaximized();
-        widget->setActiveWindow();
+	fprintf(stderr,"El estado de la ventana es: %d, deberia ser %d\n",widget->windowState(),Qt::WindowMaximized);
+	QWidget *punt = bges->workspace()->activeWindow();
+	if (widget != punt) {
+		widget->showNormal();
+	} else {
+		widget->hide();
+	}// end if
     }// end if
     fprintf(stderr,"END listventanas::clicked()\n");
 }// end clicked
-
 
 listventanas::~listventanas() {
     delete m_listBox;

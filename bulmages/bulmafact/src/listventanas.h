@@ -1,4 +1,4 @@
-// (C) Tomeu Borrás Riera, Febrero 2005
+// (C) Tomeu Borrï¿½ Riera, Febrero 2005
 
 #ifndef __LISTVENTANAS__
 #define __LISTVENTANAS__
@@ -20,6 +20,7 @@ Q_OBJECT
 	void meteWindow(QString, QObject *);
 	void sacaWindow(QObject *);
 public slots:
+	virtual void dclicked();
 	virtual void clicked();
 };
 

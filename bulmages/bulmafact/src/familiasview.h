@@ -22,8 +22,8 @@ class familiasview : public familiasdlg, dialogChanges  {
 Q_OBJECT
 private:
    company *companyact;
-   QString m_idfamilia;			// Indica cual es el registro que se está modificando. Sirve para saber los cambios que hay que guardar cuando se ha modificado.
-   bool m_modoConsulta;   /// Indica si es modo consulta o modo edición. (altera el comportamiento del doble click sobre la lista)
+   QString m_idfamilia;			// Indica cual es el registro que se estï¿½modificando. Sirve para saber los cambios que hay que guardar cuando se ha modificado.
+   bool m_modoConsulta;   /// Indica si es modo consulta o modo ediciï¿½. (altera el comportamiento del doble click sobre la lista)
 public:
     familiasview(company *, QWidget *parent = 0, const char *name = 0);
 
@@ -43,6 +43,7 @@ public slots:
 	virtual void s_newFamilia();
 	virtual void s_deleteFamilia();
 	virtual void s_changedFamilia();
+	virtual void s_imprimir();
 };
 
 #endif

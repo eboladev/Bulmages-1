@@ -20,6 +20,7 @@ private:
 public:
     bulmafact(QString bd);
     ~bulmafact();
+    QWorkspace *workspace() {return pWorkspace;};
     
 public slots:
     virtual void listproviders();
@@ -41,6 +42,7 @@ public slots:
     virtual void s_FPago();
     virtual void s_Familias();
     virtual void s_trabajadores();
+    virtual void s_ventanaCompleta();
     void about();
     void aboutQt();
 /*

@@ -281,7 +281,6 @@ void articleslist::newArticle() {
     inicializa();
 }
 
-
 void articleslist::removeArticle() {
     if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Art�ulo","Esta a punto de borrar un art�ulo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
         QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+m_list->text(m_list->currentRow(),COL_IDARTICULO);
@@ -292,7 +291,6 @@ void articleslist::removeArticle() {
     }// end if
 }
 
-
 QString articleslist::formaQuery() {
     QString query="";
     query += "SELECT * FROM articulo LEFT JOIN tipo_iva ON articulo.idtipo_iva = tipo_iva.idtipo_iva WHERE 1=1 ";
@@ -300,9 +298,7 @@ QString articleslist::formaQuery() {
         query += " AND presentablearticulo ";
     if(m_filtro->text() != "")
         query += " AND nomarticulo LIKE '%"+m_filtro->text()+"%' ";
-	
     if(m_familia->idfamilia() != "" ) {
-
 	query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '"+m_familia->codigocompletofamilia()+"%')";
     }// end if
     if (m_tipoarticulo->idtipo_articulo() != "") {
@@ -325,14 +321,19 @@ QString articleslist::detalleArticulos() {
             texto += "<blockTable style=\"tabla2\" colWidths=\"8cm, 5cm\" rowHeights=\"5.5cm\">\n";
         }// end if
         texto += "<tr>\n";
-
         if (i) {
             texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";
             texto += "<para><pre>"+cur->valor("obserarticulo")+"</pre></para></td>\n";
         }// end if
+	QString file = confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg";
+        QFile f( file );
+	if (f.exists() ) {
         texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
                  "<image file=\""+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
                  "</illustration></td>\n";
+	} else {
+		texto += "<td></td>\n";
+	}
         if (!i) {
             texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";
             texto += "<pre>"+cur->valor("obserarticulo")+"</pre></td>\n";
@@ -345,18 +346,17 @@ QString articleslist::detalleArticulos() {
     return texto;
 }// end detalleArticulos
 
+
+
 void articleslist::Imprimir() {
     /// Copiamos el archivo
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"articulos.rml";
     archivo = "cp "+archivo+" /tmp/articulos.rml";
     system (archivo.ascii());
-
     /// Copiamos el logo
     archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
     archivo = "cp "+archivo+" /tmp/logo.jpg";
     system (archivo.ascii());
-
-
     QFile file;
     file.setName( "/tmp/articulos.rml" );
     file.open( IO_ReadOnly );
@@ -365,17 +365,63 @@ void articleslist::Imprimir() {
     file.close();
     QString texto;
     // Linea de totales del presupuesto
-
-
     buff.replace("[detallearticulos]",detalleArticulos());
-
     if ( file.open( IO_WriteOnly ) ) {
         QTextStream stream( &file );
         stream << buff;
         file.close();
     }// end if
-
     system("trml2pdf.py /tmp/articulos.rml > /tmp/articulos.pdf");
     system("kpdf /tmp/articulos.pdf &");
-
 }// end Imprimir
+
+
+void articleslist::s_imprimir1() {
+    /// Copiamos el archivo
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"articulos1.rml";
+    archivo = "cp "+archivo+" /tmp/articulos1.rml";
+    system (archivo.ascii());
+    /// Copiamos el logo
+    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    archivo = "cp "+archivo+" /tmp/logo.jpg";
+    system (archivo.ascii());
+    QFile file;
+    file.setName( "/tmp/articulos1.rml" );
+    file.open( IO_ReadOnly );
+    QTextStream stream(&file);
+    QString buff = stream.read();
+    file.close();
+    QString fitxersortidatxt;
+    // L�ea de totales del presupuesto
+    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"3cm, 10cm, 2cm, 2cm\" repeatRows=\"1\">";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td>Codigo</td>";
+    fitxersortidatxt += "	<td>Nombre</td>";
+    fitxersortidatxt += "	<td>Precio</td>";
+    fitxersortidatxt += "	<td>Stock</td>";
+    fitxersortidatxt += "</tr>";
+
+    cursor2 *cur=companyact->cargacursor(formaQuery());
+    while(!cur->eof()) {
+        fitxersortidatxt += "<tr>";
+        fitxersortidatxt += "<td>"+cur->valor("codigocompletoarticulo")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("nomarticulo")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("pvparticulo")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("stockarticulo")+"</td>";
+        fitxersortidatxt += "</tr>";
+        cur->siguienteregistro();
+    }// end if
+    delete cur;
+    fitxersortidatxt += "</blockTable>";
+
+    buff.replace("[story]",fitxersortidatxt);
+
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << buff;
+        file.close();
+    }
+    system("trml2pdf.py /tmp/articulos1.rml > /tmp/articulos1.pdf");
+    system("kpdf /tmp/articulos1.pdf &");
+
+}// end imprimir

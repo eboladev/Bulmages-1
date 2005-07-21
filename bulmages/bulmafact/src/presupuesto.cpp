@@ -176,7 +176,6 @@ void presupuesto::guardapresupuesto() {
 QString presupuesto::detalleArticulos() {
     QString texto="";
 
-
     cursor2 *cur=companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto="+mdb_idpresupuesto);
     int i=0;
     while(!cur->eof()) {
@@ -192,9 +191,16 @@ QString presupuesto::detalleArticulos() {
             texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";
             texto += "<para><pre>"+cur->valor("obserarticulo")+"</pre></para></td>\n";
         }// end if
+
+	QString file = confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg";
+        QFile f( file );
+	if (f.exists() ) {
         texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
                  "<image file=\""+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
                  "</illustration></td>\n";
+	} else {
+		texto += "<td></td>\n";
+	}
 
         if (!i) {
             texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";

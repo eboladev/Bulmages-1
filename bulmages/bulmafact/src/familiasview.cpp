@@ -16,6 +16,8 @@
 #include <qlineedit.h>
 #include <qtextedit.h>
 #include <qmessagebox.h>
+#include <qfile.h>
+
 
 #define COL_NOMFAMILIA 0
 #define COL_CODFAMILIA 1
@@ -224,5 +226,52 @@ void familiasview::s_deleteFamilia() {
     companyact->ejecuta(query);
     pintar();
 }// end s_saveTipoIVA
+
+
+void familiasview::s_imprimir() {
+    /// Copiamos el archivo
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"familias.rml";
+    archivo = "cp "+archivo+" /tmp/familias.rml";
+    system (archivo.ascii());
+    /// Copiamos el logo
+    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    archivo = "cp "+archivo+" /tmp/logo.jpg";
+    system (archivo.ascii());
+    QFile file;
+    file.setName( "/tmp/familias.rml" );
+    file.open( IO_ReadOnly );
+    QTextStream stream(&file);
+    QString buff = stream.read();
+    file.close();
+    QString fitxersortidatxt;
+    // L�ea de totales del presupuesto
+    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"3cm, 15cm\" repeatRows=\"1\">";
+    fitxersortidatxt += "<tr>";
+    fitxersortidatxt += "	<td>Código</td>";
+    fitxersortidatxt += "	<td>Nombre</td>";
+    fitxersortidatxt += "</tr>";
+
+    cursor2 *cur=companyact->cargacursor("SELECT * FROM familia ORDER BY codigocompletofamilia");
+    while(!cur->eof()) {
+        fitxersortidatxt += "<tr>";
+        fitxersortidatxt += "<td>"+cur->valor("codigocompletofamilia")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("nombrefamilia")+"</td>";
+        fitxersortidatxt += "</tr>";
+        cur->siguienteregistro();
+    }// end if
+    delete cur;
+    fitxersortidatxt += "</blockTable>";
+
+    buff.replace("[story]",fitxersortidatxt);
+
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << buff;
+        file.close();
+    }
+    system("trml2pdf.py /tmp/familias.rml > /tmp/familias.pdf");
+    system("kpdf /tmp/familias.pdf &");
+
+}// end imprimir
 
 

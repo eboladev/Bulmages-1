@@ -9,7 +9,8 @@
 #include "fixed.h"
 
 QApplication *theApp;
-bulmafact * mainClass;
+//bulmafact * mainClass;
+bulmafact *bges;
 
 int main( int argc, char ** argv ) {
 
@@ -21,7 +22,7 @@ int main( int argc, char ** argv ) {
     QString pass=argv[4];
     Splash *splashScr = new Splash();
     delete splashScr;
-    bulmafact *bges;
+
     if (argc == 5) {
         confpr->setValor(CONF_LOGIN_USER, us);
         confpr->setValor(CONF_PASSWORD_USER, pass);
@@ -36,9 +37,7 @@ int main( int argc, char ** argv ) {
     }// end if    
     
     
-//    mainClass = new bulmafact();
     bges->setCaption( "BulmaFact" );
-//    bges->show();
     theApp->connect( theApp, SIGNAL(lastWindowClosed()), theApp, SLOT(quit()) );
     return theApp->exec();
 }// end main
