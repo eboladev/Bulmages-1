@@ -14,7 +14,7 @@ SET search_path = public, pg_catalog;
 --
 
 CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
-    AS '__REPLACE__', 'plpgsql_call_handler'
+    AS '$libdir/plpgsql.so', 'plpgsql_call_handler'
     LANGUAGE c;
 
 

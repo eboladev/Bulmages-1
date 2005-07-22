@@ -82,58 +82,63 @@ createdb -E SQL_ASCII $2 2>> /tmp/errores1.txt > /dev/null
 
 info "Comprobamos la existencia de PLPGSQL"
 ENC="0"
-if [ -e /usr/lib/postgresql/lib/plpgsql.so ]; then
-   info "PostgreSQL esta bien instalado, la distribución parece una Debian o una Gentoo."
+#if [ -e /usr/lib/postgresql/lib/plpgsql.so ]; then
+# comento lo de buscar en diferentes posiciones, uso directamente $libdir/plpgsql.so
+if [ -e $libdir/plpgsql.so ]; then
+   info "PostgreSQL esta instalado."
    tiempo
-   psql $2 < crear/bulmages/bulmages_debian.sql 2>> /tmp/errores1.txt > /dev/null
-   ENC="1"
+   #psql $2 < crear/bulmages/bulmages_debian.sql 2>> /tmp/errores1.txt > /dev/null
+   # comento la linea especifica de debian para ejecutar una que sea valida para todos
+   psql $2 < crear/bulmages/bulmages_generica.sql 2>> /tmp/errores1.txt > /dev/null
+####||||||   queda pendiente modificar el crear/bulmages/bulmages_debian.sql y quitar del nombre el _debian  ||||||||||###################################################################
+ENC="1"
 fi
 
 # Pruebas para mandrake
-if [ -e /usr/lib/pgsql/plpgsql.so ]; then
-   info "PostgreSQL esta bien instalado, la distribución parece una Mandrake."
-   tiempo
-   psql $2 < crear/bulmages/bulmages_mandrake.sql 2>> /tmp/errores1.txt > /dev/null
-   ENC="1"
-fi
+#if [ -e /usr/lib/pgsql/plpgsql.so ]; then
+#   info "PostgreSQL esta bien instalado, la distribución parece una Mandrake."
+#   tiempo
+#   psql $2 < crear/bulmages/bulmages_mandrake.sql 2>> /tmp/errores1.txt > /dev/null
+#   ENC="1"
+#fi
 
 #Pruebas para SUSE
-if [ -e /usr/lib/postgresql/plpgsql.so ]; then
-   LANG="/usr/lib/postgresql/plpgsql.so"
-   LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
-   info "PostgreSQL esta bien instalado, la distribución parece una SUSE."
-   tiempo
-   cat crear/bulmages/bulmages_generica.sql | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.sql
-   psql $2 < /tmp/bulmages_generica.sql 2>> /tmp/errores1.txt > /dev/null
-   ENC="1"
-fi
+#if [ -e /usr/lib/postgresql/plpgsql.so ]; then
+#   LANG="/usr/lib/postgresql/plpgsql.so"
+#   LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
+#   info "PostgreSQL esta bien instalado, la distribución parece una SUSE."
+#   tiempo
+#   cat crear/bulmages/bulmages_generica.sql | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.sql
+#   psql $2 < /tmp/bulmages_generica.sql 2>> /tmp/errores1.txt > /dev/null
+#   ENC="1"
+#fi
 
-if [ -e /usr/lib/postgresql/8.0/lib/plpgsql.so ]; then
-   LANG="/usr/lib/postgresql/8.0/lib/plpgsql.so"
-      LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
-      mensaje "No se ha encontrado plpgsql.o en los sitios mas usuales, se ha encontrado dicho archivo en $LANG. Intentando la instalacion con dicho archivo"
-      tiempo
-      cat crear/bulmages/bulmages_generica.sql | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.sql
-      psql $2 < /tmp/bulmages_generica.sql 2>> /tmp/errores1.txt > /dev/null
-      ENC="1"
-fi
+#if [ -e /usr/lib/postgresql/8.0/lib/plpgsql.so ]; then
+#   LANG="/usr/lib/postgresql/8.0/lib/plpgsql.so"
+#      LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
+#      mensaje "No se ha encontrado plpgsql.o en los sitios mas usuales, se ha encontrado dicho archivo en $LANG. Intentando la instalacion con dicho archivo"
+#      tiempo
+#      cat crear/bulmages/bulmages_generica.sql | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.sql
+#      psql $2 < /tmp/bulmages_generica.sql 2>> /tmp/errores1.txt > /dev/null
+#      ENC="1"
+#fi
 
 
 
 # Al no encontrarse ninguna de las distribuciones hacemos una búsqueda euristica.
 if [ "$ENC" = "0" ]; then
-   LANG=`locate plpgsql.so`
-   if [ $LANG ]; then
-      LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
-      mensaje "No se ha encontrado plpgsql.o en los sitios mas usuales, se ha encontrado dicho archivo en $LANG. Intentando la instalacion con dicho archivo"
-      tiempo
-      cat crear/bulmages/bulmages_generica.sql | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.sql
-   else
+#   LANG=`locate plpgsql.so`
+#   if [ $LANG ]; then
+#      LENG=`echo "$LANG"  | sed -e 's#\/#\\\/#g'`
+#      mensaje "No se ha encontrado plpgsql.o en los sitios mas usuales, se ha encontrado dicho archivo en $LANG. Intentando la instalacion con dicho archivo"
+#      tiempo
+#      cat crear/bulmages/bulmages_generica.sql | sed -e "s#__REPLACE__#$LENG#g" > /tmp/bulmages_generica.sql
+#   else
       mensaje "PostgreSQL no esta bien instalado o la distribucion no es una \n de las soportadas por el instalador. \
    No se ha encontrado la libreria plpgsql.so necesaria para instalar las \n bases de datos
    Por favor, localicela e intente una instalacion manual\n"
       exit 1
-   fi
+#   fi
 fi
 
 # Creamos la base importando sólo tablas, triggers y funciones
