@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borrás                                    *
+ *   Copyright (C) 2003 by Tomeu Borrï¿½                                    *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -16,16 +16,20 @@
 #define _IMPORTCONTAPLUS_H_
  
 #include "importContaplusBase.h"
+#include "pgimportfiles.h"
 #include "postgresiface2.h" 
  
  
-class importContaplus: public importContaplusBase {
+class importContaplus: public importContaplusBase , public pgimportfiles {
 Q_OBJECT
 private:
 	postgresiface2 *conexionbase;
 public:
     importContaplus(postgresiface2 *, QWidget *, const char *, WFlags );
     ~importContaplus(){};
+
+    void alerta(int, int);
+	void mensajeria(QString);
     
 public slots:
 	virtual void botonBuscarSubCta();
@@ -33,9 +37,6 @@ public slots:
 	virtual void botonBuscarXML();
 	virtual void botonImportar();
 	virtual void botonExportar();
-	virtual void botonBuscarFInicial();
-	virtual void botonBuscarFFinal();
-
 };
 
 

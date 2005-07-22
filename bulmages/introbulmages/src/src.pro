@@ -11,7 +11,9 @@ importContaplusBase.ui.commands = $$IDL_COMPILER
 TARGETDEPS += ../../bulmalib/libbulmalib.a 
 LIBS += ../../bulmalib/libbulmalib.a \
         -lpq 
-INCLUDEPATH += ../../bulmalib 
+INCLUDEPATH += ../../bulmalib \
+		../../bulmalib/.ui \
+		../../bulmalib/.moc
 TARGET = ../../installbulmages/bulmages 
 CONFIG += release \
           warn_on \
@@ -37,7 +39,6 @@ HEADERS += comun/bselector.h \
            comun/bconfiguracion.h \
            comun/bnuevaempresa.h \
            comun/nuevafact.h \
-           comun/pgimportfiles.h \
            comun/gongimportfiles.h \
            comun/importContaplus.h 
 SOURCES += main.cpp \
@@ -46,7 +47,6 @@ SOURCES += main.cpp \
            comun/bnuevaempresa.cpp \
            comun/nuevafact.cpp \
            comun/gongimportfiles.cpp \
-           comun/pgimportfiles.cpp \
            comun/importContaplus.cpp 
 comun/importContaplusBase.ui.target = comun/importContaplusBase.ui
 comun/nuevafactbase.ui.target = comun/nuevafactbase.ui
@@ -58,7 +58,7 @@ unix{
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
   bulmages_install_script.path = .
-  bulmages_install_script.extra = echo; echo "**************************"; echo Para Instalar BULMAGES ejecute el script de instalación; echo "installbulmages"; echo que encontrara en la carpeta installbulmages.; echo Gracias.; echo "(El equipo de Bulmages)"; echo "**************************"; echo;
+  bulmages_install_script.extra = echo; echo "**************************"; echo Para Instalar BULMAGES ejecute el script de instalaciï¿½; echo "installbulmages"; echo que encontrara en la carpeta installbulmages.; echo Gracias.; echo "(El equipo de Bulmages)"; echo "**************************"; echo;
   exists(/usr/include/postgresql/libpq-fe.h){
     DEFINES += DISTRO_DEBIAN
   }

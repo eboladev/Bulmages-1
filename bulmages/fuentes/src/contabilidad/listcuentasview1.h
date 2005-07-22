@@ -22,6 +22,7 @@
 #include "postgresiface2.h"
 #include "listcuentasdlg1.h"
 
+#include "pgimportfiles.h"
 
 /** @author Tomeu Borr� Riera 
   * \brief Presenta un listado del plan contable.
@@ -31,7 +32,7 @@
 
 class empresa;
 
-class listcuentasview1 : public listcuentasdlg1  {
+class listcuentasview1 : public listcuentasdlg1 , public pgimportfiles  {
 Q_OBJECT
 
 private:
@@ -84,5 +85,7 @@ public slots:
    virtual void eturn_descripcion();
    virtual bool eventFilter( QObject *, QEvent * );
    virtual void s_PrintCuentas();
+	virtual void s_exportar();
+	virtual void s_importar();
 };
 #endif

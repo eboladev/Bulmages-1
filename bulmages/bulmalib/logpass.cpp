@@ -31,7 +31,7 @@ logpass::logpass(QWidget *parent, const char *name)
 
 logpass::~logpass() {}
 
-/** @brief Valida si postgres puede abrir bases de datos y si no es así pide loggin y password
+/** @brief Valida si postgres puede abrir bases de datos y si no es asï¿½pide loggin y password
   */
 void logpass::validar() {
     fprintf(stderr,"logpass::validar()\n");
@@ -42,7 +42,7 @@ void logpass::validar() {
     confpr->setValor(CONF_LOGIN_USER,m_login->text());
     confpr->setValor(CONF_PASSWORD_USER,m_password->text());
 
-    ///Comprobamos si es un usuario válido
+    ///Comprobamos si es un usuario vï¿½ido
     metabase = new postgresiface2();
     if(!metabase->inicializa( "template1") ) {
         m_authOK = true;
@@ -51,9 +51,9 @@ void logpass::validar() {
 
     ///Si es valido abrimos el selector y si no mostramos un error y limpiamos el formulario
     if (m_authOK) {
-        close();
+        close(TRUE);
     } else {
-        lblAuthError->setText(tr("Error: usuario y/o contraseña incorrectos"));
+        lblAuthError->setText(tr("Error: usuario y/o contraseï¿½ incorrectos"));
         m_login->setText("");
         m_password->setText("");
         m_login->setFocus();

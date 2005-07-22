@@ -27,8 +27,7 @@
 /**
 @author Tomeu Borras
 */
-class logpass : public logpassbase
-{
+class logpass : public logpassbase {
 Q_OBJECT
 private:
    bool m_authOK;
@@ -42,7 +41,7 @@ public:
     bool authOK() {return m_authOK;};
 public slots:
    virtual void validar();
-
+   bool close(bool) {if (!m_authOK) exit(1); else done(1); return TRUE;};
 };
 
 #endif

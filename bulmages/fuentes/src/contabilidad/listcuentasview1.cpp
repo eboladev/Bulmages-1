@@ -37,7 +37,7 @@
 #include <qmap.h>
 
 
-listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : listcuentasdlg1(parent,name, modal) {
+listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : listcuentasdlg1(parent,name, modal), pgimportfiles(emp->bdempresa()) {
     empresaactual = emp;
     modo=0;
     conexionbase= emp->bdempresa();
@@ -321,7 +321,6 @@ void listcuentasview1::nuevacuenta()  {
     QString cadena, codigo;
     int idcuenta, idgrupo=0;
     QListViewItem *it;
-
     fprintf(stderr,"listcuentasview1::nuevacuenta\n");
     cuentaview *nuevae = new cuentaview(empresaactual,0,0,true);
     it = ListView1->currentItem();
@@ -332,7 +331,6 @@ void listcuentasview1::nuevacuenta()  {
     fprintf(stderr,"Llamamos a cuentaview\n");
     nuevae->exec();
     fprintf(stderr,"Ya volvemos de cuentaview\n");
-
     inicializa();
     idcuenta = nuevae->idcuenta;
     cadena.setNum(idcuenta);
@@ -342,7 +340,6 @@ void listcuentasview1::nuevacuenta()  {
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);
     delete nuevae;
-
 }// end nuevacuenta
 
 
@@ -446,4 +443,27 @@ void listcuentasview1::s_PrintCuentas() {
     fprintf(stderr,"%s\n",cadena.ascii());
     system (cadena.ascii());
 }// end s_PrintCuentas
+
+
+void listcuentasview1::s_exportar() {
+    QFile filexml (QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Plan Contable (*.xml)", this, "select file", "Elija el Archivo"));
+    if(filexml.open(IO_WriteOnly)) {
+        bulmages2XML(filexml, IMPORT_CUENTAS);
+        filexml.close();
+    } else {
+        fprintf(stderr,"ERROR AL ABRIR ARCHIVO\n");
+    }// end if
+}
+
+void listcuentasview1::s_importar() {
+    QFile filexml (QFileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Plan Contable (*.xml)", this, "select file", "Elija el Archivo"));
+    if (filexml.open(IO_ReadOnly)) {
+        XML2Bulmages(filexml, IMPORT_CUENTAS);
+        filexml.close();
+        inicializa();
+    } else {
+        fprintf(stderr,"ERROR AL ABRIR ARCHIVO\n");
+    }// end if
+}
+
 
