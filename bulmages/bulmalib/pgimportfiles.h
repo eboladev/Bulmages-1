@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Santiago Capel                                  *
  *   Santiago Capel Torres (GestiONG)                                      *
- *   Tomeu Borrás Riera                                                    *
+ *   Tomeu Borrï¿½ Riera                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,23 +22,31 @@
 
 #include "postgresiface2.h"
 
+#define IMPORT_TODO 255
+#define IMPORT_CUENTAS 1
+#define IMPORT_TIPOSIVA 2
+#define IMPORT_ASIENTOS 4
+#define IMPORT_AINTELIGENTES 8
+#define IMPORT_BALANCES 16
+#define IMPORT_COBROS 32
+#define IMPORT_FACTURAS 64
 
-/** @autor Tomeu Borrás Riera
-  * @brief Clase para importación y exportación a distintos formatos de archivo de datos.
+/** @autor Tomeu Borrï¿½ Riera
+  * @brief Clase para importaciï¿½ y exportaciï¿½ a distintos formatos de archivo de datos.
   */
 class pgimportfiles {
 private:
-	/// Base de datos con la que trabaja la clase y de la que se hace importación / exportación
+	/// Base de datos con la que trabaja la clase y de la que se hace importaciï¿½ / exportaciï¿½
 	postgresiface2 *conexionbase;
-	/// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero a función.
-	void (*alerta)(int,int);
-	/// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un puntero de función.
-	void (*mensajeria) (QString);
-	/// La clase puede hacer una simulación o no dependiendo del valor de esta variable
+	/// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero a funciï¿½.
+	virtual void alerta(int,int) {};
+	/// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un puntero de funciï¿½.
+	virtual void mensajeria (QString) {};
+	/// La clase puede hacer una simulaciï¿½ o no dependiendo del valor de esta variable
 	bool m_modoTest;
-	/// Las importaciones y exportaciones pueden ser entre dos fechas, m_fInicial indica la fecha inicial a partir de la que hacer la importación
+	/// Las importaciones y exportaciones pueden ser entre dos fechas, m_fInicial indica la fecha inicial a partir de la que hacer la importaciï¿½
 	QString m_fInicial;
-	/// Las importaciones y exportaciones pueden ser entre dos fechas, m_fFinal indica la fecha final a partir de la que hacer la importación
+	/// Las importaciones y exportaciones pueden ser entre dos fechas, m_fFinal indica la fecha final a partir de la que hacer la importaciï¿½
 	QString m_fFinal;
 public:
 	void setFInicial(QString f) {m_fInicial = f;};
@@ -46,26 +54,25 @@ public:
 	void setModoTest() {m_modoTest=TRUE;};
 	void setModoNormal() {m_modoTest=FALSE;};
 	bool modoTest() {return m_modoTest == TRUE;};
-	pgimportfiles(postgresiface2 *, void(*)(int,int), void(*) (QString));
-	~pgimportfiles(){};
+	pgimportfiles(postgresiface2 *);
+	virtual ~pgimportfiles(){};
 	int contaplus2Bulmages(QFile &, QFile &);
 	int bulmages2Contaplus(QFile &, QFile &);
-	/// Esta función pasa datos de una empresa al formato XML.
-	int bulmages2XML(QFile &);
-	/// Esta función pasa datos de XML a bulmagés.
-	int XML2Bulmages(QFile &);
+	/// Esta funciï¿½ pasa datos de una empresa al formato XML.
+	int bulmages2XML(QFile &, unsigned int tipo = IMPORT_TODO);
+	/// Esta funciï¿½ pasa datos de XML a bulmagï¿½.
+	int XML2Bulmages(QFile &, unsigned int tip = IMPORT_TODO);
 	QString searchParent(QString);
 };
 
 
 
-/** @autor Tomeu Borrás Riera
+/** @autor Tomeu Borrï¿½ Riera
   * @class pgimportifles pgimportifles.h
-  * @brief Clase para leer archivos de XML y hacer la importación de datos.
+  * @brief Clase para leer archivos de XML y hacer la importaciï¿½ de datos.
   */
 class StructureParser : public QXmlDefaultHandler {
 private:
-	void (*alerta)(int,int);
 	postgresiface2 *conexionbase;
 	QString cadintermedia;		/// ESta variable va almacenando los valores que van saliendo en la clase.
 	/// Variables usadas para almacenar los datos de un asiento.
@@ -104,10 +111,10 @@ private:
 	QString m_baseIva;
 	QString m_nombreTipoIva;
 	
-	/// El tagpadre indica en que posición estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc
+	/// El tagpadre indica en que posiciï¿½ estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc
 	QString tagpadre;
 public:
-    StructureParser(postgresiface2 *,void (*)(int,int));
+    StructureParser(postgresiface2 *, unsigned int tip=IMPORT_TODO);
     ~StructureParser();
     bool startDocument();
     bool startElement( const QString&, const QString&, const QString& ,
@@ -117,6 +124,7 @@ public:
 
 private:
     QString indent;
+unsigned int m_tipo;
 };
 
 

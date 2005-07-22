@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2003 by Santiago Capel                                  *
  *   Santiago Capel Torres (GestiONG)                                      *
- *   Tomeu Borrás Riera                                                    *
+ *   Tomeu Borrï¿½ Riera                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -74,16 +74,14 @@
 #define LEN_NUMEROINV  10
 
 
-pgimportfiles::pgimportfiles(postgresiface2 *con, void (*func)(int,int), void (*func1) (QString)) {
+pgimportfiles::pgimportfiles(postgresiface2 *con) {
 	conexionbase = con;
-	alerta = func;
-	mensajeria = func1;
 	m_fInicial="";
 	m_fFinal="";
 	setModoNormal();
 }// end pgimportfiles
 
-/** \brief Esta función se encarga de pasar los datos de BulmaGés a Contaplus.
+/** \brief Esta funciï¿½ se encarga de pasar los datos de BulmaGï¿½ a Contaplus.
   */
 int pgimportfiles::bulmages2Contaplus(QFile &subcuentas, QFile &asientos) {
 	QString codigo, descripcion;
@@ -92,7 +90,7 @@ int pgimportfiles::bulmages2Contaplus(QFile &subcuentas, QFile &asientos) {
 	QTextStream streamas( &asientos );
 	// Se supone que ho hay campos mayores de 100 caracteres para que el algoritmo funcione.
 	strblancomax.fill(' ',100);
-	/// Sólo se van a exportar las cuentas utilizadas, Ya que contaplus no hace ordenación en árbol.
+	/// Sï¿½o se van a exportar las cuentas utilizadas, Ya que contaplus no hace ordenaciï¿½ en ï¿½bol.
 	QString query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT DISTINCT idcuenta FROM apunte)";
 	conexionbase->begin();
 	cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
@@ -226,7 +224,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 		pos += LEN_AJUSTAME;
 		QString tipoiva = line.mid(pos,LEN_TIPOIVA).stripWhiteSpace();
 		pos += LEN_TIPOIVA;
-		/// Antes de hacer una inserción comprobamos que la cuenta no exista ya en el sistema.
+		/// Antes de hacer una inserciï¿½ comprobamos que la cuenta no exista ya en el sistema.
 		QString query = "SELECT * FROM cuenta WHERE codigo = '"+cod+"'";
 		conexionbase->begin();
 		cursor2 *cursaux=conexionbase->cargacursor(query,"hol");
@@ -242,7 +240,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 				mensajeria("<LI>Se ha insertado la cuenta "+cod+"</LI>\n");
 			}// end if
 		} else {
-			mensajeria("<LI>Ya hay una cuenta con el código "+cod+"</LI>\n");
+			mensajeria("<LI>Ya hay una cuenta con el cï¿½igo "+cod+"</LI>\n");
 		}// end if
 		delete cursaux;
 	}// end while
@@ -349,12 +347,12 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 					napunte = 0;
 					lastasiento = asiento;
 					orden = 0;
-					mensajeria("<LI>Inserción de Asiento" + idasiento+"</LI>\n");
+					mensajeria("<LI>Inserciï¿½ de Asiento" + idasiento+"</LI>\n");
 				}// end if
 			}// end if
 			napunte++;
 			if( monedauso == "1" ) { // Ptas
-			/// Aqui está el peor error cometido, usar punto flotante
+			/// Aqui estï¿½el peor error cometido, usar punto flotante
 				debe = ptahaber +"/"+S_EURO;
 				haber = ptadebe+"/"+S_EURO;
 			} else {
@@ -373,7 +371,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
 						conexionbase->ejecuta(query);
 						conexionbase->commit();
 					}// end if
-					mensajeria("<LI>Inserción de Apunte"+subcta+","+concepto+"</LI>\n");
+					mensajeria("<LI>Inserciï¿½ de Apunte"+subcta+","+concepto+"</LI>\n");
 				} else {
 					mensajeria("<LI>Apunte fuera de fecha</LI>\n");
 				}// end if
@@ -421,188 +419,197 @@ QString pgimportfiles::searchParent(QString cod) {
 
 
 
-/** \brief Esta función se encarga de pasar los datos de BulmaGés a XML
+/** \brief Esta funciï¿½ se encarga de pasar los datos de BulmaGï¿½ a XML
   *
-  * Los datos pasados de esta forma son mucho más sencillos de pasar.
+  * Los datos pasados de esta forma son mucho mï¿½ sencillos de pasar.
   */
-int pgimportfiles::bulmages2XML(QFile &xmlfile) {
+int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned int tipo) {
 	QString codigo, descripcion;
 	QString strblancomax;
 	QString query;
+	int numreg=0;
 	QTextStream stream( &xmlfile );
 	stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
 	"<!DOCTYPE FUGIT>\n"
-	"<FUGIT version='0.3.1' origen='BulmaGés'"
+	"<FUGIT version='0.3.1' origen='BulmaGes'"
         " date='" << QDate().toString(Qt::ISODate) << "'>\n";
+
+	/// Comprobamos que tenemos que importar cuentas o no
+	if(tipo & IMPORT_CUENTAS) {
 	
-	/// Se exporta todo el plan contable
-	query = "SELECT * FROM cuenta WHERE padre ISNULL ORDER BY codigo";
-	conexionbase->begin();
-	cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
-	conexionbase->commit();
-	while (!curcta->eof()) {
-		stream << "<CUENTA>\n";
-		stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
-		stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
-		stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
-		stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
-		stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
-		stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
-		stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
-		stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
-		stream << "</CUENTA>\n";
-		curcta->siguienteregistro();
-	}// end while
-	delete curcta;	
-	query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre WHERE padre IS NOT NULL ORDER BY idpadre";
-	conexionbase->begin();
-	curcta = conexionbase->cargacursor(query,"elquery");
-	conexionbase->commit();
-	while (!curcta->eof()) {
-		stream << "<CUENTA>\n";
-		stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
-		stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
-		stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
-		stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
-		stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
-		stream << "\t<CODPADRE>"       << XMLProtect(curcta->valor("codpadre"))      << "</CODPADRE>\n";
-		stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
-		stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
-		stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
-		stream << "</CUENTA>\n";
-		curcta->siguienteregistro();
-	}// end while
-	delete curcta;
-
-	
-	/// Se vana exportar los tipos de IVA
-	query = "SELECT * from tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta";
-	conexionbase->begin();
-	cursor2 *curtiva = conexionbase->cargacursor(query, "querytiva");
-	conexionbase->commit();
-	while (!curtiva->eof()) {
-		stream << "<TIPOIVA>\n";
-		stream << "\t<IDTIPOIVA>"       << XMLProtect(curtiva->valor("idtipoiva"))      << "</IDTIPOIVA>\n";
-		stream << "\t<NOMBRETIPOIVA>"   << XMLProtect(curtiva->valor("nombretipoiva"))      << "</NOMBRETIPOIVA>\n";
-		stream << "\t<PORCENTAJETIPOIVA>"       << XMLProtect(curtiva->valor("porcentajetipoiva"))      << "</PORCENTAJETIPOIVA>\n";
-		stream << "\t<CUENTATIPOIVA>"       << XMLProtect(curtiva->valor("codigo"))      << "</CUENTATIPOIVA>\n";
-
-		stream << "</TIPOIVA>\n";
-		curtiva->siguienteregistro();
-
-	}// end while
-	delete curtiva;
-
-
-	/// Hacemos la exportación de asientos
-	query = "SELECT * FROM asiento WHERE 1=1 ";
-	if (m_fInicial != "") 
-		query += " AND asiento.fecha >= '"+m_fInicial+"'";
-	if (m_fFinal != "") 
-		query += " AND asiento.fecha <= '"+m_fFinal+"'";
-	query +=" ORDER BY asiento.fecha, asiento.idasiento ";	
-	conexionbase->begin();
-	cursor2 *curas = conexionbase->cargacursor(query, "masquery");
-	conexionbase->commit();
-	int i =0;
-	int numreg = curas->numregistros()+1;	
-	while (!curas->eof()) {
-		alerta(i++,numreg);    
-		stream << "<ASIENTO>\n";
-		stream << "\t<ORDENASIENTO>" << curas->valor("ordenasiento") << "</ORDENASIENTO>\n";
-		QString fechas = curas->valor("fecha");
-		fechas = fechas.mid(6,4)+fechas.mid(3,2)+fechas.mid(0,2);
-		stream << "\t<FECHA>" << fechas << "</FECHA>\n";
-		query = "SELECT * FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ";
-		query += "LEFT JOIN (SELECT nombre AS nomcanal, idcanal FROM canal) AS canal1 ON apunte.idcanal = canal1.idcanal "; query += "LEFT JOIN (SELECT nombre AS nc_coste, idc_coste FROM c_coste) AS c_coste1 ON c_coste1.idc_coste = apunte.idc_coste ";
-		query += "LEFT JOIN (SELECT codigo AS codcontrapartida,  idcuenta FROM cuenta) AS contra ON contra.idcuenta=apunte.contrapartida ";
-		query +=" WHERE "+curas->valor("idasiento")+"= apunte.idasiento ";
+		/// Se exporta todo el plan contable
+		query = "SELECT * FROM cuenta WHERE padre ISNULL ORDER BY codigo";
 		conexionbase->begin();
-		cursor2 *curap = conexionbase->cargacursor(query, "masquery1");
+		cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
 		conexionbase->commit();
-		while (!curap->eof()) {   
-			stream << "\t<APUNTE>\n";
-			QString fecha = curap->valor("fecha");
-			fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
-			stream << "\t\t<FECHA>"               << XMLProtect(fecha) << "</FECHA>\n";
-			stream << "\t\t<CODIGO>"              << XMLProtect(curap->valor("codigo"))             << "</CODIGO>\n";
-			stream << "\t\t<DEBE>"                << XMLProtect(curap->valor("debe"))               << "</DEBE>\n";
-			stream << "\t\t<HABER>"               << XMLProtect(curap->valor("haber"))              << "</HABER>\n";
-			stream << "\t\t<CONCEPTOCONTABLE>"    << XMLProtect(curap->valor("conceptocontable"))   << "</CONCEPTOCONTABLE>\n";
-			stream << "\t\t<IDCANAL>"      << XMLProtect(curap->valor("idcanal"))     << "</IDCANAL>\n";
-			stream << "\t\t<CANAL>"        << XMLProtect(curap->valor("nomcanal"))    << "</CANAL>\n";
-			stream << "\t\t<IDC_COSTE>"    << XMLProtect(curap->valor("idc_coste"))   << "</IDC_COSTE>\n";	
-			stream << "\t\t<C_COSTE>"      << XMLProtect(curap->valor("nc_coste"))    << "</C_COSTE>\n";
-			stream << "\t\t<PUNTEO>"       << XMLProtect(curap->valor("punteo"))      << "</PUNTEO>\n";
-			stream << "\t\t<ORDEN>"        << XMLProtect(curap->valor("orden"))       << "</ORDEN>\n";
-			stream << "\t\t<CONTRAPARTIDA>"<< XMLProtect(curap->valor("codcontrapartida"))<< "</CONTRAPARTIDA>\n";
-			
-			
-			/// Hacemos la exportación de registros de IVA
-			query  = "SELECT * FROM registroiva";
-			query += " LEFT JOIN (SELECT codigo, idcuenta FROM cuenta) AS t1 ON registroiva.contrapartida = t1.idcuenta ";
-			query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento="+curas->valor("idasiento")+" AND orden = "+curap->valor("orden")+")";
-			conexionbase->begin();
-			cursor2 *curreg = conexionbase->cargacursor(query, "queryregiva");
-			conexionbase->commit();
-			while (!curreg->eof()) {
-				stream << "\t\t<REGISTROIVA>\n";
-				stream << "\t\t\t<CONTRAPARTIDA>"  << XMLProtect(curreg->valor("codigo"))  << "</CONTRAPARTIDA>\n";
-				stream << "\t\t\t<BASEIMP>"        << XMLProtect(curreg->valor("baseimp"))        << "</BASEIMP>\n";
-				stream << "\t\t\t<IVA>"            << XMLProtect(curreg->valor("iva"))            << "</IVA>\n";
-				stream << "\t\t\t<FFACTURA>"       << XMLProtect(curreg->valor("ffactura"))       << "</FFACTURA>\n";
-				stream << "\t\t\t<FACTURA>"        << XMLProtect(curreg->valor("factura"))        << "</FACTURA>\n";
-				stream << "\t\t\t<NUMORDEN>"       << XMLProtect(curreg->valor("numorden"))       << "</NUMORDEN>\n";
-				stream << "\t\t\t<CIF>"            << XMLProtect(curreg->valor("cif"))            << "</CIF>\n";
-				stream << "\t\t\t<IDFPAGO>"        << XMLProtect(curreg->valor("idfpago"))        << "</IDFPAGO>\n";
-				stream << "\t\t\t<RECTIFICAAREGISTROIVA>"        << XMLProtect(curreg->valor("rectificaaregistroiva"))        << "</RECTIFICAAREGISTROIVA>\n";
-				
-				
-				/// Hacemos la exportación deIVAs
-				query  = "SELECT * FROM iva ";
-				query += " LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva ";
-				query += " WHERE idregistroiva = "+curreg->valor("idregistroiva");
-				conexionbase->begin();
-				cursor2 *curiva = conexionbase->cargacursor(query, "queryiva");
-				conexionbase->commit();
-				while (!curiva->eof()) {
-					stream << "\t\t\t<RIVA>\n";
-					stream << "\t\t\t\t<IDTIPOIVA>"        << XMLProtect(curiva->valor("idtipoiva"))        << "</IDTIPOIVA>\n";
-					stream << "\t\t\t\t<NOMBRETIPOIVA>"    << XMLProtect(curiva->valor("nombretipoiva"))    << "</NOMBRETIPOIVA>\n";
-					stream << "\t\t\t\t<BASEIVA>"          << XMLProtect(curiva->valor("baseiva"))          << "</BASEIVA>\n";
-					stream << "\t\t\t</RIVA>\n";
-					curiva->siguienteregistro();
-				}// end while
-				delete curiva;	
-					
-				
-				stream << "\t\t</REGISTROIVA>\n";
-				curreg->siguienteregistro();
-			}// end while
-			delete curreg;		
-			mensajeria("Exportando :"   + curap->valor("codigo")   + "--" +fecha+"\n");
-			curap->siguienteregistro();
-			stream << "\t</APUNTE>\n";
+		while (!curcta->eof()) {
+			stream << "<CUENTA>\n";
+			stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
+			stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
+			stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
+			stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
+			stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
+			stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
+			stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
+			stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
+			stream << "</CUENTA>\n";
+			curcta->siguienteregistro();
 		}// end while
-		delete curap;
-		stream << "</ASIENTO>\n";
-		curas->siguienteregistro();
-	}// end while
-	delete curas;
+		delete curcta;	
+		query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre WHERE padre IS NOT NULL ORDER BY idpadre";
+		conexionbase->begin();
+		curcta = conexionbase->cargacursor(query,"elquery");
+		conexionbase->commit();
+		while (!curcta->eof()) {
+			stream << "<CUENTA>\n";
+			stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
+			stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
+			stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
+			stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
+			stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
+			stream << "\t<CODPADRE>"       << XMLProtect(curcta->valor("codpadre"))      << "</CODPADRE>\n";
+			stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
+			stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
+			stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
+			stream << "</CUENTA>\n";
+			curcta->siguienteregistro();
+		}// end while
+		delete curcta;
+
+	}// end if	
+
+	/// Se va a comprobar si hay que exportar los tipos de IVA
+
+	if (tipo & IMPORT_TIPOSIVA) {
+		/// Se vana exportar los tipos de IVA
+		query = "SELECT * from tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta";
+		conexionbase->begin();
+		cursor2 *curtiva = conexionbase->cargacursor(query, "querytiva");
+		conexionbase->commit();
+		while (!curtiva->eof()) {
+			stream << "<TIPOIVA>\n";
+			stream << "\t<IDTIPOIVA>"       << XMLProtect(curtiva->valor("idtipoiva"))      << "</IDTIPOIVA>\n";
+			stream << "\t<NOMBRETIPOIVA>"   << XMLProtect(curtiva->valor("nombretipoiva"))      << "</NOMBRETIPOIVA>\n";
+			stream << "\t<PORCENTAJETIPOIVA>"       << XMLProtect(curtiva->valor("porcentajetipoiva"))      << "</PORCENTAJETIPOIVA>\n";
+			stream << "\t<CUENTATIPOIVA>"       << XMLProtect(curtiva->valor("codigo"))      << "</CUENTATIPOIVA>\n";
 	
+			stream << "</TIPOIVA>\n";
+			curtiva->siguienteregistro();
+		}// end while
+		delete curtiva;
+	}// end if
+
+	if (tipo & IMPORT_ASIENTOS) {
+		/// Hacemos la exportaciï¿½ de asientos
+		query = "SELECT * FROM asiento WHERE 1=1 ";
+		if (m_fInicial != "") 
+			query += " AND asiento.fecha >= '"+m_fInicial+"'";
+		if (m_fFinal != "") 
+			query += " AND asiento.fecha <= '"+m_fFinal+"'";
+		query +=" ORDER BY asiento.fecha, asiento.idasiento ";	
+		conexionbase->begin();
+		cursor2 *curas = conexionbase->cargacursor(query, "masquery");
+		conexionbase->commit();
+		int i =0;
+		numreg = curas->numregistros()+1;	
+		while (!curas->eof()) {
+			alerta(i++,numreg);    
+			stream << "<ASIENTO>\n";
+			stream << "\t<ORDENASIENTO>" << curas->valor("ordenasiento") << "</ORDENASIENTO>\n";
+			QString fechas = curas->valor("fecha");
+			fechas = fechas.mid(6,4)+fechas.mid(3,2)+fechas.mid(0,2);
+			stream << "\t<FECHA>" << fechas << "</FECHA>\n";
+			query = "SELECT * FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ";
+			query += "LEFT JOIN (SELECT nombre AS nomcanal, idcanal FROM canal) AS canal1 ON apunte.idcanal = canal1.idcanal "; query += "LEFT JOIN (SELECT nombre AS nc_coste, idc_coste FROM c_coste) AS c_coste1 ON c_coste1.idc_coste = apunte.idc_coste ";
+			query += "LEFT JOIN (SELECT codigo AS codcontrapartida,  idcuenta FROM cuenta) AS contra ON contra.idcuenta=apunte.contrapartida ";
+			query +=" WHERE "+curas->valor("idasiento")+"= apunte.idasiento ";
+			conexionbase->begin();
+			cursor2 *curap = conexionbase->cargacursor(query, "masquery1");
+			conexionbase->commit();
+			while (!curap->eof()) {   
+				stream << "\t<APUNTE>\n";
+				QString fecha = curap->valor("fecha");
+				fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
+				stream << "\t\t<FECHA>"               << XMLProtect(fecha) << "</FECHA>\n";
+				stream << "\t\t<CODIGO>"              << XMLProtect(curap->valor("codigo"))             << "</CODIGO>\n";
+				stream << "\t\t<DEBE>"                << XMLProtect(curap->valor("debe"))               << "</DEBE>\n";
+				stream << "\t\t<HABER>"               << XMLProtect(curap->valor("haber"))              << "</HABER>\n";
+				stream << "\t\t<CONCEPTOCONTABLE>"    << XMLProtect(curap->valor("conceptocontable"))   << "</CONCEPTOCONTABLE>\n";
+				stream << "\t\t<IDCANAL>"      << XMLProtect(curap->valor("idcanal"))     << "</IDCANAL>\n";
+				stream << "\t\t<CANAL>"        << XMLProtect(curap->valor("nomcanal"))    << "</CANAL>\n";
+				stream << "\t\t<IDC_COSTE>"    << XMLProtect(curap->valor("idc_coste"))   << "</IDC_COSTE>\n";	
+				stream << "\t\t<C_COSTE>"      << XMLProtect(curap->valor("nc_coste"))    << "</C_COSTE>\n";
+				stream << "\t\t<PUNTEO>"       << XMLProtect(curap->valor("punteo"))      << "</PUNTEO>\n";
+				stream << "\t\t<ORDEN>"        << XMLProtect(curap->valor("orden"))       << "</ORDEN>\n";
+				stream << "\t\t<CONTRAPARTIDA>"<< XMLProtect(curap->valor("codcontrapartida"))<< "</CONTRAPARTIDA>\n";
+				
+				
+				/// Hacemos la exportaciï¿½ de registros de IVA
+				query  = "SELECT * FROM registroiva";
+				query += " LEFT JOIN (SELECT codigo, idcuenta FROM cuenta) AS t1 ON registroiva.contrapartida = t1.idcuenta ";
+				query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento="+curas->valor("idasiento")+" AND orden = "+curap->valor("orden")+")";
+				conexionbase->begin();
+				cursor2 *curreg = conexionbase->cargacursor(query, "queryregiva");
+				conexionbase->commit();
+				while (!curreg->eof()) {
+					stream << "\t\t<REGISTROIVA>\n";
+					stream << "\t\t\t<CONTRAPARTIDA>"  << XMLProtect(curreg->valor("codigo"))  << "</CONTRAPARTIDA>\n";
+					stream << "\t\t\t<BASEIMP>"        << XMLProtect(curreg->valor("baseimp"))        << "</BASEIMP>\n";
+					stream << "\t\t\t<IVA>"            << XMLProtect(curreg->valor("iva"))            << "</IVA>\n";
+					stream << "\t\t\t<FFACTURA>"       << XMLProtect(curreg->valor("ffactura"))       << "</FFACTURA>\n";
+					stream << "\t\t\t<FACTURA>"        << XMLProtect(curreg->valor("factura"))        << "</FACTURA>\n";
+					stream << "\t\t\t<NUMORDEN>"       << XMLProtect(curreg->valor("numorden"))       << "</NUMORDEN>\n";
+					stream << "\t\t\t<CIF>"            << XMLProtect(curreg->valor("cif"))            << "</CIF>\n";
+					stream << "\t\t\t<IDFPAGO>"        << XMLProtect(curreg->valor("idfpago"))        << "</IDFPAGO>\n";
+					stream << "\t\t\t<RECTIFICAAREGISTROIVA>"        << XMLProtect(curreg->valor("rectificaaregistroiva"))        << "</RECTIFICAAREGISTROIVA>\n";
+					
+					
+					/// Hacemos la exportaciï¿½ deIVAs
+					query  = "SELECT * FROM iva ";
+					query += " LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva ";
+					query += " WHERE idregistroiva = "+curreg->valor("idregistroiva");
+					conexionbase->begin();
+					cursor2 *curiva = conexionbase->cargacursor(query, "queryiva");
+					conexionbase->commit();
+					while (!curiva->eof()) {
+						stream << "\t\t\t<RIVA>\n";
+						stream << "\t\t\t\t<IDTIPOIVA>"        << XMLProtect(curiva->valor("idtipoiva"))        << "</IDTIPOIVA>\n";
+						stream << "\t\t\t\t<NOMBRETIPOIVA>"    << XMLProtect(curiva->valor("nombretipoiva"))    << "</NOMBRETIPOIVA>\n";
+						stream << "\t\t\t\t<BASEIVA>"          << XMLProtect(curiva->valor("baseiva"))          << "</BASEIVA>\n";
+						stream << "\t\t\t</RIVA>\n";
+						curiva->siguienteregistro();
+					}// end while
+					delete curiva;	
+					stream << "\t\t</REGISTROIVA>\n";
+					curreg->siguienteregistro();
+				}// end while
+				delete curreg;		
+				mensajeria("Exportando :"   + curap->valor("codigo")   + "--" +fecha+"\n");
+				curap->siguienteregistro();
+				stream << "\t</APUNTE>\n";
+			}// end while
+			delete curap;
+			stream << "</ASIENTO>\n";
+			curas->siguienteregistro();
+		}// end while
+		delete curas;
+	}// end if
+
+
+
 	stream << "</FUGIT>\n";
 	alerta (numreg,numreg);
 	return 0;
 }// end if
 
 
-/** \brief Función para pasar de un archivo XML a Bulmagés
+/** \brief Funciï¿½ para pasar de un archivo XML a Bulmagï¿½
   *
   * Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX) y lo ejecuta para 
-  * que haga la imporación del archivo XML
+  * que haga la imporaciï¿½ del archivo XML
   */
-int pgimportfiles::XML2Bulmages (QFile &fichero) {
-        StructureParser handler(conexionbase, alerta);
+int pgimportfiles::XML2Bulmages (QFile &fichero, unsigned int tip) {
+        StructureParser handler(conexionbase, tip);
         QXmlInputSource source( &fichero );
         QXmlSimpleReader reader;
         reader.setContentHandler( &handler );
@@ -612,13 +619,11 @@ int pgimportfiles::XML2Bulmages (QFile &fichero) {
 }// end XML2Bulmages
 
 
-StructureParser::StructureParser(postgresiface2 *con,void (*func)(int,int) ) {
-	alerta = func;
+StructureParser::StructureParser(postgresiface2 *con, unsigned int tip) {
 	conexionbase = con;
+	m_tipo = tip;
 	QString query = "INSERT INTO cuenta (codigo, descripcion, idgrupo) VALUES ('AUX','Una descripcion auxiliar de cuenta', 1)";
-//	conexionbase->begin();
 	conexionbase->ejecuta(query);
-//	conexionbase->commit();	
 	for (int i=0; i<=12;i++) {
 		QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, "+QString::number(i)+", FALSE)";
 		conexionbase->begin();
@@ -629,9 +634,7 @@ StructureParser::StructureParser(postgresiface2 *con,void (*func)(int,int) ) {
 
 StructureParser::~StructureParser() {
 	QString query = "DELETE FROM cuenta WHERE codigo='AUX'";
-//	conexionbase->begin();
 	conexionbase->ejecuta(query);
-//	conexionbase->commit();
 }// end StructureParser
 
 
@@ -643,7 +646,7 @@ bool StructureParser::startDocument() {
 bool StructureParser::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& ) {
     fprintf( stderr, "%s<%s>", (const char*)indent, (const char*)qName);
     indent += "..";
-    if (qName == "ASIENTO") {
+    if (qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS) {
     	tagpadre = "ASIENTO";
 	QString query = "INSERT INTO ASIENTO (descripcion, fecha) VALUES ('un nuevo asiento', '01/01/2005')";
 	conexionbase->begin();
@@ -658,7 +661,7 @@ bool StructureParser::startElement( const QString&, const QString&, const QStrin
 	m_ordenapunte=0;
 	delete cur;
     }// end if
-    if (qName == "APUNTE") {
+    if (qName == "APUNTE" && m_tipo & IMPORT_ASIENTOS) {
     	QString query = "INSERT INTO borrador (idasiento, debe, haber, idcuenta, fecha, orden) VALUES ("+idasiento+",0,0,id_cuenta('AUX'), '01/01/2003', "+QString::number(m_ordenapunte++)+")";
 	conexionbase->begin();
 	conexionbase->ejecuta(query);
@@ -671,7 +674,7 @@ bool StructureParser::startElement( const QString&, const QString&, const QStrin
 	delete cur;   
     	tagpadre = "APUNTE";
     }// end if
-    if (qName == "REGISTROIVA") {
+    if (qName == "REGISTROIVA" && m_tipo & IMPORT_FACTURAS) {
     	QString query = "INSERT INTO registroiva (contrapartida, idborrador) VALUES (id_cuenta('AUX'), "+idborrador+")";
 	conexionbase->begin();
 	conexionbase->ejecuta(query);
@@ -684,10 +687,10 @@ bool StructureParser::startElement( const QString&, const QString&, const QStrin
 	delete cur;   
     	tagpadre = "REGISTROIVA";
     }// end if
-    if (qName == "RIVA") {
+    if (qName == "RIVA" && m_tipo & IMPORT_FACTURAS) {
     	tagpadre = "RIVA";
     }// end if
-    if (qName == "CUENTA") {
+    if (qName == "CUENTA" && m_tipo & IMPORT_CUENTAS) {
     	tagpadre = "CUENTA";
     }// end if
     cadintermedia = "";    
@@ -696,10 +699,10 @@ bool StructureParser::startElement( const QString&, const QString&, const QStrin
 
 bool StructureParser::endElement( const QString&, const QString&, const QString& qName) {
     indent.remove( (uint)0, 2 );
-    fprintf( stderr,"<\\%s>\n", (const char*)qName);
-/// VAmos a ir distinguiendo casos y actuando segun cada caso. En la mayoría de casos iremos actuando en consecuencia.  
-    /// Ha terminado un asiento, por tanto hacemos el update de los campos de éste.  
-    if (qName == "ASIENTO") {
+//    fprintf( stderr,"<\\%s>\n", (const char*)qName);
+/// VAmos a ir distinguiendo casos y actuando segun cada caso. En la mayorï¿½ de casos iremos actuando en consecuencia.  
+    /// Ha terminado un asiento, por tanto hacemos el update de los campos de ï¿½te.  
+    if (qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS) {
     	fprintf(stderr,"Fin de Asiento");
 	QString query = "UPDATE asiento set fecha='"+fechaasiento+"' WHERE idasiento="+idasiento;
 	conexionbase->begin();
@@ -708,12 +711,10 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
 	conexionbase->commit();
 	delete cur;
     }// end if
-/// Si es una punte hacemos su inserción.
-    if (qName == "APUNTE") {
+/// Si es una punte hacemos su inserciï¿½.
+    if (qName == "APUNTE" && m_tipo & IMPORT_ASIENTOS) {
     	QString query = "UPDATE borrador SET debe = "+debeapunte+", haber="+haberapunte+", idcuenta=id_cuenta('"+codigocuentaapunte+"'), fecha='"+fechaapunte+"', conceptocontable='"+conceptocontableapunte+"' WHERE idborrador="+idborrador;
-//	conexionbase->begin();
 	conexionbase->ejecuta(query);
-//	conexionbase->commit();
     }// end if
     if (qName == "FECHA" && tagpadre == "ASIENTO")
     	fechaasiento = cadintermedia;
@@ -728,12 +729,12 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
     if (qName == "CONCEPTOCONTABLE" && tagpadre == "APUNTE")
     	conceptocontableapunte = cadintermedia;
  
-    if (qName == "CUENTA" ) {
-	/// Ha terminado una cuenta, por tanto hacemos la inserción de la misma.
-	/// Podemos hacer la inserción y no un sistema de update pq la cuenta no tiene hijos en el XML
+    if (qName == "CUENTA" && m_tipo & IMPORT_CUENTAS) {
+	/// Ha terminado una cuenta, por tanto hacemos la inserciï¿½ de la misma.
+	/// Podemos hacer la inserciï¿½ y no un sistema de update pq la cuenta no tiene hijos en el XML
 	/// Nuevo Socio M.Mezo
     	QString idgrupo = codigocuenta.left(1);
-	/// Primero debemos determinar si existe o no dicha cuenta para hacer la inserción o la modificación.
+	/// Primero debemos determinar si existe o no dicha cuenta para hacer la inserciï¿½ o la modificaciï¿½.
 	QString query = "SELECT * FROM cuenta WHERE codigo='"+codigocuenta+"'";
 	conexionbase->begin();
 	cursor2 *cur = conexionbase->cargacursor(query, "elquery23");
@@ -742,7 +743,7 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
 		QString query = "INSERT INTO cuenta (codigo, descripcion, padre, idgrupo, bloqueada, nodebe, nohaber) VALUES ('"+codigocuenta+"','"+descripcioncuenta+"', id_cuenta('"+codigopadre+"'), "+idgrupo+", '"+m_bloqueadaCuenta+"','"+m_nodebeCuenta+"','"+m_nohaberCuenta+"')";
 		conexionbase->ejecuta(query);
 	} else {
-		QString query = "UPDATE cuenta SET bloqueada='"+m_bloqueadaCuenta+"', nodebe='"+m_nodebeCuenta+"', nohaber='"+m_nohaberCuenta+"' WHERE codigo='"+codigocuenta+"'";
+		QString query = "UPDATE cuenta SET descripcion='"+descripcioncuenta+"', bloqueada='"+m_bloqueadaCuenta+"', nodebe='"+m_nodebeCuenta+"', nohaber='"+m_nohaberCuenta+"' WHERE codigo='"+codigocuenta+"'";
 		conexionbase->ejecuta(query);
 	}//end if
 	codigocuenta = "";
@@ -768,7 +769,7 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
 	
     
     /// Si es un registro de iva vamos a por el
-    if (qName == "REGISTROIVA") {
+    if (qName == "REGISTROIVA" && m_tipo & IMPORT_FACTURAS) {
     	QString query = "UPDATE registroiva SET contrapartida=id_cuenta('"+m_rIvaContrapartida+"'), ffactura='"+m_rIvaFFactura+"'";
 	
 	if (m_rIvaBaseImp != "") 
@@ -776,9 +777,7 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
 	if (m_rIvaIva != "") 
 		query +=", iva="+m_rIvaIva;
 	query +="  WHERE idregistroiva="+m_idRegistroIva;
-//	conexionbase->begin();
 	conexionbase->ejecuta(query);
-//	conexionbase->commit();
     }// end if    
     if (qName == "CONTRAPARTIDA" && tagpadre == "REGISTROIVA")
     	m_rIvaContrapartida = cadintermedia;
@@ -797,8 +796,8 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
     if (qName == "RECTIFICAAREGISTROIVA" && tagpadre == "REGISTROIVA")
     	m_rIvRecRegIva = cadintermedia;
 
-    /// Inserción de IVA's dentro del registro de IVA
-    if (qName == "RIVA") {
+    /// Inserciï¿½ de IVA's dentro del registro de IVA
+    if (qName == "RIVA" && m_tipo & IMPORT_FACTURAS) {
     	QString query1 = "SELECT idtipoiva FROM tipoiva WHERE nombretipoiva = '"+m_nombreTipoIva+"'";
 	conexionbase->begin();
 	cursor2 * cur = conexionbase->cargacursor(query1,"elqueryd");
@@ -822,7 +821,7 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
 
 
 bool StructureParser::characters( const QString& n1) {
-    fprintf( stderr,"[%s]", (const char*)n1);
+//    fprintf( stderr,"[%s]", (const char*)n1);
     cadintermedia += n1;
     return TRUE;
 }// end endElement
