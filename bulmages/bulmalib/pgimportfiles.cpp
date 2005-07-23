@@ -75,108 +75,108 @@
 
 
 pgimportfiles::pgimportfiles(postgresiface2 *con) {
-	conexionbase = con;
-	m_fInicial="";
-	m_fFinal="";
-	setModoNormal();
+    conexionbase = con;
+    m_fInicial="";
+    m_fFinal="";
+    setModoNormal();
 }// end pgimportfiles
 
 /** \brief Esta funci� se encarga de pasar los datos de BulmaG� a Contaplus.
   */
 int pgimportfiles::bulmages2Contaplus(QFile &subcuentas, QFile &asientos) {
-	QString codigo, descripcion;
-	QString strblancomax;
-	QTextStream stream( &subcuentas );
-	QTextStream streamas( &asientos );
-	// Se supone que ho hay campos mayores de 100 caracteres para que el algoritmo funcione.
-	strblancomax.fill(' ',100);
-	/// S�o se van a exportar las cuentas utilizadas, Ya que contaplus no hace ordenaci� en �bol.
-	QString query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT DISTINCT idcuenta FROM apunte)";
-	conexionbase->begin();
-	cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
-	conexionbase->commit();
-	while (!curcta->eof()) {
-		QString linea="";
-		linea += (curcta->valor("codigo")        +strblancomax).left(LEN_CODIGO_CUENTA);
-		linea += (curcta->valor("descripcion")   +strblancomax).left(LEN_TITULO);
-		linea += (curcta->valor("cifent_cuenta") +strblancomax).left(LEN_NIF);
-		linea += (curcta->valor("dirent_cuenta") +strblancomax).left(LEN_DOMICILIO);
-		linea += (                                strblancomax).left(LEN_POBLACION);
-		linea += (                                strblancomax).left(LEN_CODPOSTAL);
-		linea += (                                strblancomax).left(LEN_DIVISA);
-		linea += (                                strblancomax).left(LEN_CTA_CODDIVISA);
-		linea += (                                strblancomax).left(LEN_CTA_DOCUMENTO);
-		linea += (                                strblancomax).left(LEN_AJUSTAME);
-		linea += (                                strblancomax).left(LEN_TIPOIVA);
-		linea += "\n";		
-		stream << linea;
-		curcta->siguienteregistro();
-	}// end while
-	delete curcta;
-	query = "SELECT * FROM asiento, apunte, cuenta WHERE asiento.idasiento = apunte.idasiento AND cuenta.idcuenta = apunte.idcuenta ";
-	if (m_fInicial != "") 
-		query += " AND asiento.fecha >= '"+m_fInicial+"'";
-	if (m_fFinal != "") 
-		query += " AND asiento.fecha <= '"+m_fFinal+"'";
-	query +=" ORDER BY asiento.idasiento ";
-	conexionbase->begin();
-	cursor2 *curas = conexionbase->cargacursor(query, "masquery");
-	conexionbase->commit();
-	int i =0;
-	int numreg = curas->numregistros()+1;
-	while (!curas->eof()) {
-		alerta(i++,numreg);    
-		QString linea = "";
-		linea += (strblancomax + curas->valor("ordenasiento")).right(LEN_ASIEN);
-		QString fecha = curas->valor("fecha");
-		fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
-		linea += (fecha                            +strblancomax).left(LEN_FECHA);
-		linea += (curas->valor("codigo")           +strblancomax).left(LEN_SUBCTA);
-		linea += (                                  strblancomax).left(LEN_CONTRA);
-		QString cadaux;
-		cadaux.sprintf("%2.2f", curas->valor("debe").toFloat());
-		linea += (strblancomax + cadaux).right(LEN_PTADEBE);
-		linea += (curas->valor("conceptocontable") +strblancomax).left(LEN_CONCEPTO);
-		cadaux.sprintf("%2.2f", curas->valor("haber").toFloat());
-		linea += (strblancomax + cadaux).right(LEN_PTAHABER);
-		linea += (                                  strblancomax).left(LEN_FACTURA);
-		linea += (                                  strblancomax).left(LEN_BASEIMPO);
-		linea += (                                  strblancomax).left(LEN_IVA);
-		linea += (                                  strblancomax).left(LEN_RECEQUIV);
-		linea += (                                  strblancomax).left(LEN_DOCUMENTO);
-		linea += (                                  strblancomax).left(LEN_DEPARTA);
-		linea += (                                  strblancomax).left(LEN_CLAVE);
-		linea += (                                  strblancomax).left(LEN_ESTADO);
-		linea += (                                  strblancomax).left(LEN_NCASADO);
-		linea += (                                  strblancomax).left(LEN_TCASADO);
-		linea += (                                  strblancomax).left(LEN_TRANS);
-		linea += (                                  strblancomax).left(LEN_CAMBIO);
-		linea += (strblancomax+"0.00").right(LEN_DEBEME);
-		linea += (strblancomax+"0.00").right(LEN_HABERME);
-		linea += (                                  strblancomax).left(LEN_AUXILIAR);
-		linea += (                                  strblancomax).left(LEN_SERIE);
-		linea += (                                  strblancomax).left(LEN_SUCURSAL);
-		linea += (                                  strblancomax).left(LEN_CODDIVISA);
-		linea += (                                  strblancomax).left(LEN_IMPAUXME);
-		linea += ("2"                              +strblancomax).left(LEN_MONEDAUSO);
-		/// Para evitar redondeos usamos el valor devuelto en forma de texto por la base de datos que ya opera ella en punto fijo
-		cadaux.sprintf("%2.2f", curas->valor("debe").toFloat());
-		cadaux=curas->valor("debe");
-		linea += (strblancomax+cadaux).right(LEN_EURODEBE);
-		cadaux.sprintf("%2.2f", curas->valor("haber").toFloat());
-		cadaux = curas->valor("haber");
-		linea += (strblancomax+cadaux).right(LEN_EUROHABER);
-		linea += (strblancomax+"0.00").right(LEN_BASEEURO);
-		linea += ( "F"+strblancomax).left(LEN_NOCONV);
-		linea += (                                  strblancomax).left(LEN_NUMEROINV);
-		linea += "\n";
-		mensajeria("Exportando :"+curas->valor("codigo")+"--"+fecha+"\n");
-		streamas << linea;
-		curas->siguienteregistro();
-	}// end while
-	delete curas;
-	alerta (100,100);
-	return 0;
+    QString codigo, descripcion;
+    QString strblancomax;
+    QTextStream stream( &subcuentas );
+    QTextStream streamas( &asientos );
+    // Se supone que ho hay campos mayores de 100 caracteres para que el algoritmo funcione.
+    strblancomax.fill(' ',100);
+    /// S�o se van a exportar las cuentas utilizadas, Ya que contaplus no hace ordenaci� en �bol.
+    QString query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT DISTINCT idcuenta FROM apunte)";
+    conexionbase->begin();
+    cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
+    conexionbase->commit();
+    while (!curcta->eof()) {
+        QString linea="";
+        linea += (curcta->valor("codigo")        +strblancomax).left(LEN_CODIGO_CUENTA);
+        linea += (curcta->valor("descripcion")   +strblancomax).left(LEN_TITULO);
+        linea += (curcta->valor("cifent_cuenta") +strblancomax).left(LEN_NIF);
+        linea += (curcta->valor("dirent_cuenta") +strblancomax).left(LEN_DOMICILIO);
+        linea += (                                strblancomax).left(LEN_POBLACION);
+        linea += (                                strblancomax).left(LEN_CODPOSTAL);
+        linea += (                                strblancomax).left(LEN_DIVISA);
+        linea += (                                strblancomax).left(LEN_CTA_CODDIVISA);
+        linea += (                                strblancomax).left(LEN_CTA_DOCUMENTO);
+        linea += (                                strblancomax).left(LEN_AJUSTAME);
+        linea += (                                strblancomax).left(LEN_TIPOIVA);
+        linea += "\n";
+        stream << linea;
+        curcta->siguienteregistro();
+    }// end while
+    delete curcta;
+    query = "SELECT * FROM asiento, apunte, cuenta WHERE asiento.idasiento = apunte.idasiento AND cuenta.idcuenta = apunte.idcuenta ";
+    if (m_fInicial != "")
+        query += " AND asiento.fecha >= '"+m_fInicial+"'";
+    if (m_fFinal != "")
+        query += " AND asiento.fecha <= '"+m_fFinal+"'";
+    query +=" ORDER BY asiento.idasiento ";
+    conexionbase->begin();
+    cursor2 *curas = conexionbase->cargacursor(query, "masquery");
+    conexionbase->commit();
+    int i =0;
+    int numreg = curas->numregistros()+1;
+    while (!curas->eof()) {
+        alerta(i++,numreg);
+        QString linea = "";
+        linea += (strblancomax + curas->valor("ordenasiento")).right(LEN_ASIEN);
+        QString fecha = curas->valor("fecha");
+        fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
+        linea += (fecha                            +strblancomax).left(LEN_FECHA);
+        linea += (curas->valor("codigo")           +strblancomax).left(LEN_SUBCTA);
+        linea += (                                  strblancomax).left(LEN_CONTRA);
+        QString cadaux;
+        cadaux.sprintf("%2.2f", curas->valor("debe").toFloat());
+        linea += (strblancomax + cadaux).right(LEN_PTADEBE);
+        linea += (curas->valor("conceptocontable") +strblancomax).left(LEN_CONCEPTO);
+        cadaux.sprintf("%2.2f", curas->valor("haber").toFloat());
+        linea += (strblancomax + cadaux).right(LEN_PTAHABER);
+        linea += (                                  strblancomax).left(LEN_FACTURA);
+        linea += (                                  strblancomax).left(LEN_BASEIMPO);
+        linea += (                                  strblancomax).left(LEN_IVA);
+        linea += (                                  strblancomax).left(LEN_RECEQUIV);
+        linea += (                                  strblancomax).left(LEN_DOCUMENTO);
+        linea += (                                  strblancomax).left(LEN_DEPARTA);
+        linea += (                                  strblancomax).left(LEN_CLAVE);
+        linea += (                                  strblancomax).left(LEN_ESTADO);
+        linea += (                                  strblancomax).left(LEN_NCASADO);
+        linea += (                                  strblancomax).left(LEN_TCASADO);
+        linea += (                                  strblancomax).left(LEN_TRANS);
+        linea += (                                  strblancomax).left(LEN_CAMBIO);
+        linea += (strblancomax+"0.00").right(LEN_DEBEME);
+        linea += (strblancomax+"0.00").right(LEN_HABERME);
+        linea += (                                  strblancomax).left(LEN_AUXILIAR);
+        linea += (                                  strblancomax).left(LEN_SERIE);
+        linea += (                                  strblancomax).left(LEN_SUCURSAL);
+        linea += (                                  strblancomax).left(LEN_CODDIVISA);
+        linea += (                                  strblancomax).left(LEN_IMPAUXME);
+        linea += ("2"                              +strblancomax).left(LEN_MONEDAUSO);
+        /// Para evitar redondeos usamos el valor devuelto en forma de texto por la base de datos que ya opera ella en punto fijo
+        cadaux.sprintf("%2.2f", curas->valor("debe").toFloat());
+        cadaux=curas->valor("debe");
+        linea += (strblancomax+cadaux).right(LEN_EURODEBE);
+        cadaux.sprintf("%2.2f", curas->valor("haber").toFloat());
+        cadaux = curas->valor("haber");
+        linea += (strblancomax+cadaux).right(LEN_EUROHABER);
+        linea += (strblancomax+"0.00").right(LEN_BASEEURO);
+        linea += ( "F"+strblancomax).left(LEN_NOCONV);
+        linea += (                                  strblancomax).left(LEN_NUMEROINV);
+        linea += "\n";
+        mensajeria("Exportando :"+curas->valor("codigo")+"--"+fecha+"\n");
+        streamas << linea;
+        curas->siguienteregistro();
+    }// end while
+    delete curas;
+    alerta (100,100);
+    return 0;
 }// end if
 
 int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
@@ -189,206 +189,206 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
     QDate fechafi(2999,12,31);
     int orden=0;
     if (m_fInicial != "")
-    	fechain.setYMD(m_fInicial.mid(6,4).toInt(), m_fInicial.mid(3,2).toInt(), m_fInicial.mid(0,2).toInt());
+        fechain.setYMD(m_fInicial.mid(6,4).toInt(), m_fInicial.mid(3,2).toInt(), m_fInicial.mid(0,2).toInt());
     if (m_fFinal != "")
-    	fechafi.setYMD(m_fFinal.mid(6,4).toInt(), m_fFinal.mid(3,2).toInt(), m_fFinal.mid(0,2).toInt());
-	// Subcuentas
-	QTextStream stream( &subcuentas );
-	while( !subcuentas.atEnd() ) {
-		alerta(subcuentas.at()+asientos.at(),subcuentas.size()+asientos.size());    
-		QString line = stream.readLine();
-		if( line.length()<2 )
-		break;
-		int pos = 0;
-		QString cod = line.mid(pos,LEN_CODIGO_CUENTA).stripWhiteSpace();
-		pos += LEN_CODIGO_CUENTA;
-		QString titulo = line.mid(pos,LEN_TITULO).stripWhiteSpace();
-		pos += LEN_TITULO;
-		QString nif = line.mid(pos,LEN_NIF).stripWhiteSpace();
-		pos += LEN_NIF;
-		QString domicilio = line.mid(pos,LEN_DOMICILIO).stripWhiteSpace();
-		pos += LEN_DOMICILIO;
-		QString poblacion = line.mid(pos,LEN_POBLACION).stripWhiteSpace();
-		pos += LEN_POBLACION;
-		QString provincia = line.mid(pos,LEN_PROVINCIA).stripWhiteSpace();
-		pos += LEN_PROVINCIA;
-		QString codpostal = line.mid(pos,LEN_CODPOSTAL).stripWhiteSpace();
-		pos += LEN_CODPOSTAL;
-		QString divisa = line.mid(pos,LEN_DIVISA).stripWhiteSpace();
-		pos += LEN_DIVISA;
-		QString cta_coddivisa = line.mid(pos,LEN_CTA_CODDIVISA).stripWhiteSpace();
-		pos += LEN_CTA_CODDIVISA;
-		QString cta_documento = line.mid(pos,LEN_CTA_DOCUMENTO).stripWhiteSpace();
-		pos += LEN_CTA_DOCUMENTO;
-		QString ajustame = line.mid(pos,LEN_AJUSTAME).stripWhiteSpace();
-		pos += LEN_AJUSTAME;
-		QString tipoiva = line.mid(pos,LEN_TIPOIVA).stripWhiteSpace();
-		pos += LEN_TIPOIVA;
-		/// Antes de hacer una inserci� comprobamos que la cuenta no exista ya en el sistema.
-		QString query = "SELECT * FROM cuenta WHERE codigo = '"+cod+"'";
-		conexionbase->begin();
-		cursor2 *cursaux=conexionbase->cargacursor(query,"hol");
-		conexionbase->commit();
-		if (cursaux->eof()) {
-			if( !cod.isEmpty() ) {
-				QString padre = searchParent(cod);
-				QString idgrupo = cod.left(1);
-				query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, idgrupo, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (TRUE, TRUE, 1,'"+cod+"', '"+titulo+"', '"+nif+"', "+padre+", "+idgrupo+", 'importada de ContaPlus','"+domicilio + poblacion+ provincia+codpostal+"','','','','','')";
-				conexionbase->begin();
-				conexionbase->ejecuta(query);
-				conexionbase->commit();
-				mensajeria("<LI>Se ha insertado la cuenta "+cod+"</LI>\n");
-			}// end if
-		} else {
-			mensajeria("<LI>Ya hay una cuenta con el c�igo "+cod+"</LI>\n");
-		}// end if
-		delete cursaux;
-	}// end while
+        fechafi.setYMD(m_fFinal.mid(6,4).toInt(), m_fFinal.mid(3,2).toInt(), m_fFinal.mid(0,2).toInt());
+    // Subcuentas
+    QTextStream stream( &subcuentas );
+    while( !subcuentas.atEnd() ) {
+        alerta(subcuentas.at()+asientos.at(),subcuentas.size()+asientos.size());
+        QString line = stream.readLine();
+        if( line.length()<2 )
+            break;
+        int pos = 0;
+        QString cod = line.mid(pos,LEN_CODIGO_CUENTA).stripWhiteSpace();
+        pos += LEN_CODIGO_CUENTA;
+        QString titulo = line.mid(pos,LEN_TITULO).stripWhiteSpace();
+        pos += LEN_TITULO;
+        QString nif = line.mid(pos,LEN_NIF).stripWhiteSpace();
+        pos += LEN_NIF;
+        QString domicilio = line.mid(pos,LEN_DOMICILIO).stripWhiteSpace();
+        pos += LEN_DOMICILIO;
+        QString poblacion = line.mid(pos,LEN_POBLACION).stripWhiteSpace();
+        pos += LEN_POBLACION;
+        QString provincia = line.mid(pos,LEN_PROVINCIA).stripWhiteSpace();
+        pos += LEN_PROVINCIA;
+        QString codpostal = line.mid(pos,LEN_CODPOSTAL).stripWhiteSpace();
+        pos += LEN_CODPOSTAL;
+        QString divisa = line.mid(pos,LEN_DIVISA).stripWhiteSpace();
+        pos += LEN_DIVISA;
+        QString cta_coddivisa = line.mid(pos,LEN_CTA_CODDIVISA).stripWhiteSpace();
+        pos += LEN_CTA_CODDIVISA;
+        QString cta_documento = line.mid(pos,LEN_CTA_DOCUMENTO).stripWhiteSpace();
+        pos += LEN_CTA_DOCUMENTO;
+        QString ajustame = line.mid(pos,LEN_AJUSTAME).stripWhiteSpace();
+        pos += LEN_AJUSTAME;
+        QString tipoiva = line.mid(pos,LEN_TIPOIVA).stripWhiteSpace();
+        pos += LEN_TIPOIVA;
+        /// Antes de hacer una inserci� comprobamos que la cuenta no exista ya en el sistema.
+        QString query = "SELECT * FROM cuenta WHERE codigo = '"+cod+"'";
+        conexionbase->begin();
+        cursor2 *cursaux=conexionbase->cargacursor(query,"hol");
+        conexionbase->commit();
+        if (cursaux->eof()) {
+            if( !cod.isEmpty() ) {
+                QString padre = searchParent(cod);
+                QString idgrupo = cod.left(1);
+                query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, idgrupo, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (TRUE, TRUE, 1,'"+cod+"', '"+titulo+"', '"+nif+"', "+padre+", "+idgrupo+", 'importada de ContaPlus','"+domicilio + poblacion+ provincia+codpostal+"','','','','','')";
+                conexionbase->begin();
+                conexionbase->ejecuta(query);
+                conexionbase->commit();
+                mensajeria("<LI>Se ha insertado la cuenta "+cod+"</LI>\n");
+            }// end if
+        } else {
+            mensajeria("<LI>Ya hay una cuenta con el c�igo "+cod+"</LI>\n");
+        }// end if
+        delete cursaux;
+    }// end while
 
     QTextStream stream2( &asientos );
     QString lastasiento="0";
     int napunte=0;
     while( !asientos.atEnd() ) {
-        		alerta(subcuentas.at()+asientos.at(),subcuentas.size()+asientos.size());
-			QString line = stream2.readLine();
-			if( line.length()<2 )
-	  		  break;
-			int pos=0;
-			QString asiento = line.mid(pos,LEN_ASIEN).stripWhiteSpace();
-			pos += LEN_ASIEN;
-			QString fecha = line.mid(pos,LEN_FECHA).stripWhiteSpace();
-			fecha1.setYMD(fecha.mid(0,4).toInt() ,fecha.mid(4,2).toInt() ,fecha.mid(6,2).toInt());
-			fecha = fecha.mid(0,4) + "-" + fecha.mid(4,2) + "-" + fecha.mid(6,2);
-			pos += LEN_FECHA;
-			QString subcta = line.mid(pos,LEN_SUBCTA).stripWhiteSpace();
-			pos += LEN_SUBCTA;
-			QString contra = line.mid(pos,LEN_CONTRA).stripWhiteSpace();
-			pos += LEN_CONTRA;
-			QString ptadebe = line.mid(pos,LEN_PTADEBE).stripWhiteSpace();
-			pos += LEN_PTADEBE;
-			QString concepto = line.mid(pos,LEN_CONCEPTO).stripWhiteSpace();
-			pos += LEN_CONCEPTO;
-			QString ptahaber = line.mid(pos,LEN_PTAHABER).stripWhiteSpace();
-			pos += LEN_PTAHABER;
-			QString factura = line.mid(pos,LEN_FACTURA).stripWhiteSpace();
-			pos += LEN_FACTURA;
-			QString baseimpo = line.mid(pos,LEN_BASEIMPO).stripWhiteSpace();
-			pos += LEN_BASEIMPO;
-			QString iva = line.mid(pos,LEN_IVA).stripWhiteSpace();
-			pos += LEN_IVA;
-			QString recequiv = line.mid(pos,LEN_RECEQUIV).stripWhiteSpace();
-			pos += LEN_RECEQUIV;
-			QString documento = line.mid(pos,LEN_DOCUMENTO).stripWhiteSpace();
-			pos += LEN_DOCUMENTO;
-			QString departa = line.mid(pos,LEN_DEPARTA).stripWhiteSpace();
-			pos += LEN_DEPARTA;
-			QString clave = line.mid(pos,LEN_CLAVE).stripWhiteSpace();
-			pos += LEN_CLAVE;
-			QString estado = line.mid(pos,LEN_ESTADO).stripWhiteSpace();
-			pos += LEN_ESTADO;
-			QString ncasado = line.mid(pos,LEN_NCASADO).stripWhiteSpace();
-			pos += LEN_NCASADO;
-			QString tcasado = line.mid(pos,LEN_TCASADO).stripWhiteSpace();
-			pos += LEN_TCASADO;
-			QString trans = line.mid(pos,LEN_TRANS).stripWhiteSpace();
-			pos += LEN_TRANS;
-			QString cambio = line.mid(pos,LEN_CAMBIO).stripWhiteSpace();
-			pos += LEN_CAMBIO;
-			QString debeme = line.mid(pos,LEN_DEBEME).stripWhiteSpace();
-			pos += LEN_DEBEME;
-			QString haberme = line.mid(pos,LEN_HABERME).stripWhiteSpace();
-			pos += LEN_HABERME;
-			QString auxiliar = line.mid(pos,LEN_AUXILIAR).stripWhiteSpace();
-			pos += LEN_AUXILIAR;
-			QString serie = line.mid(pos,LEN_SERIE).stripWhiteSpace();
-			pos += LEN_SERIE;
-			QString sucursal = line.mid(pos,LEN_SUCURSAL).stripWhiteSpace();
-			pos += LEN_SUCURSAL;
-			QString coddivisa = line.mid(pos,LEN_CODDIVISA).stripWhiteSpace();
-			pos += LEN_CODDIVISA;
-			QString impauxme = line.mid(pos,LEN_IMPAUXME).stripWhiteSpace();
-			pos += LEN_IMPAUXME;
-			QString monedauso = line.mid(pos,LEN_MONEDAUSO).stripWhiteSpace();
-			pos += LEN_MONEDAUSO;
-			QString eurodebe = line.mid(pos,LEN_EURODEBE).stripWhiteSpace();
-			pos += LEN_EURODEBE;
-			QString eurohaber = line.mid(pos,LEN_EUROHABER).stripWhiteSpace();
-			pos += LEN_EUROHABER;
-			QString baseeuro = line.mid(pos,LEN_BASEEURO).stripWhiteSpace();
-			pos += LEN_BASEEURO;
-			QString noconv = line.mid(pos,LEN_NOCONV).stripWhiteSpace();
-			pos += LEN_NOCONV;
-			QString numeroinv = line.mid(pos,LEN_NUMEROINV).stripWhiteSpace();
-			pos += LEN_NUMEROINV;
-	
-			if( asiento != lastasiento ) {
-				if (lastasiento != "0") {
-					query = "SELECT cierraasiento("+idasiento+")";
-					if (!modoTest()) {
-						conexionbase->begin();
-						cursor2 * cur = conexionbase->cargacursor(query,"hola"); 
-						conexionbase->commit();
-						delete cur;
-					}// end if
-				}// end if
-				if (fecha1 >= fechain && fecha1 <= fechafi) {
-					query="INSERT INTO asiento (fecha, comentariosasiento, clase) VALUES ('"+fecha+"','Importado de Contaplus', 1 )";
-					if (!modoTest()) {
-						conexionbase->begin();
-						conexionbase->ejecuta(query);
-						conexionbase->commit();
-					}// end if
-					query = "SELECT max(idasiento) as idasiento FROM asiento";
-					conexionbase->begin();
-					cursor2 *cur=conexionbase->cargacursor(query,"lolailo");
-					idasiento = cur->valor("idasiento");
-					conexionbase->commit();
-					delete cur;
-					napunte = 0;
-					lastasiento = asiento;
-					orden = 0;
-					mensajeria("<LI>Inserci� de Asiento" + idasiento+"</LI>\n");
-				}// end if
-			}// end if
-			napunte++;
-			if( monedauso == "1" ) { // Ptas
-			/// Aqui est�el peor error cometido, usar punto flotante
-				debe = ptahaber +"/"+S_EURO;
-				haber = ptadebe+"/"+S_EURO;
-			} else {
-				debe = eurodebe;
-				haber = eurohaber;
-			}// end if	
-			query = "SELECT * FROM cuenta WHERE codigo='"+subcta+"'";
-			conexionbase->begin();
-			cursor2 *cur=conexionbase->cargacursor(query,"elquery");
-			conexionbase->commit();
-			if (!cur->eof()) {
-				if (fecha1 >= fechain && fecha1 <= fechafi) {
-					if (!modoTest() ) {
-						query="INSERT INTO borrador (idasiento,idcuenta,fecha, conceptocontable, debe, haber, orden) VALUES ("+idasiento+",id_cuenta('"+subcta+"'), '"+fecha+"','"+concepto+"',"+debe+","+haber+","+QString::number(orden++)+" )";
-						conexionbase->begin();
-						conexionbase->ejecuta(query);
-						conexionbase->commit();
-					}// end if
-					mensajeria("<LI>Inserci� de Apunte"+subcta+","+concepto+"</LI>\n");
-				} else {
-					mensajeria("<LI>Apunte fuera de fecha</LI>\n");
-				}// end if
-			}// end if
-	}// end while
-	if (lastasiento != "0") {
-		if(!modoTest()) {
-			query = "SELECT cierraasiento("+idasiento+")";
-			conexionbase->begin();
-			cursor2 * cur = conexionbase->cargacursor(query,"hola"); 
-			conexionbase->commit();
-			delete cur;
-		}// end if
-	}// end if
-	mensajeria("<LI>Terminado</LI>\n");
-    alerta(subcuentas.size()+asientos.size(),subcuentas.size()+asientos.size());    
-   return 1;
+        alerta(subcuentas.at()+asientos.at(),subcuentas.size()+asientos.size());
+        QString line = stream2.readLine();
+        if( line.length()<2 )
+            break;
+        int pos=0;
+        QString asiento = line.mid(pos,LEN_ASIEN).stripWhiteSpace();
+        pos += LEN_ASIEN;
+        QString fecha = line.mid(pos,LEN_FECHA).stripWhiteSpace();
+        fecha1.setYMD(fecha.mid(0,4).toInt() ,fecha.mid(4,2).toInt() ,fecha.mid(6,2).toInt());
+        fecha = fecha.mid(0,4) + "-" + fecha.mid(4,2) + "-" + fecha.mid(6,2);
+        pos += LEN_FECHA;
+        QString subcta = line.mid(pos,LEN_SUBCTA).stripWhiteSpace();
+        pos += LEN_SUBCTA;
+        QString contra = line.mid(pos,LEN_CONTRA).stripWhiteSpace();
+        pos += LEN_CONTRA;
+        QString ptadebe = line.mid(pos,LEN_PTADEBE).stripWhiteSpace();
+        pos += LEN_PTADEBE;
+        QString concepto = line.mid(pos,LEN_CONCEPTO).stripWhiteSpace();
+        pos += LEN_CONCEPTO;
+        QString ptahaber = line.mid(pos,LEN_PTAHABER).stripWhiteSpace();
+        pos += LEN_PTAHABER;
+        QString factura = line.mid(pos,LEN_FACTURA).stripWhiteSpace();
+        pos += LEN_FACTURA;
+        QString baseimpo = line.mid(pos,LEN_BASEIMPO).stripWhiteSpace();
+        pos += LEN_BASEIMPO;
+        QString iva = line.mid(pos,LEN_IVA).stripWhiteSpace();
+        pos += LEN_IVA;
+        QString recequiv = line.mid(pos,LEN_RECEQUIV).stripWhiteSpace();
+        pos += LEN_RECEQUIV;
+        QString documento = line.mid(pos,LEN_DOCUMENTO).stripWhiteSpace();
+        pos += LEN_DOCUMENTO;
+        QString departa = line.mid(pos,LEN_DEPARTA).stripWhiteSpace();
+        pos += LEN_DEPARTA;
+        QString clave = line.mid(pos,LEN_CLAVE).stripWhiteSpace();
+        pos += LEN_CLAVE;
+        QString estado = line.mid(pos,LEN_ESTADO).stripWhiteSpace();
+        pos += LEN_ESTADO;
+        QString ncasado = line.mid(pos,LEN_NCASADO).stripWhiteSpace();
+        pos += LEN_NCASADO;
+        QString tcasado = line.mid(pos,LEN_TCASADO).stripWhiteSpace();
+        pos += LEN_TCASADO;
+        QString trans = line.mid(pos,LEN_TRANS).stripWhiteSpace();
+        pos += LEN_TRANS;
+        QString cambio = line.mid(pos,LEN_CAMBIO).stripWhiteSpace();
+        pos += LEN_CAMBIO;
+        QString debeme = line.mid(pos,LEN_DEBEME).stripWhiteSpace();
+        pos += LEN_DEBEME;
+        QString haberme = line.mid(pos,LEN_HABERME).stripWhiteSpace();
+        pos += LEN_HABERME;
+        QString auxiliar = line.mid(pos,LEN_AUXILIAR).stripWhiteSpace();
+        pos += LEN_AUXILIAR;
+        QString serie = line.mid(pos,LEN_SERIE).stripWhiteSpace();
+        pos += LEN_SERIE;
+        QString sucursal = line.mid(pos,LEN_SUCURSAL).stripWhiteSpace();
+        pos += LEN_SUCURSAL;
+        QString coddivisa = line.mid(pos,LEN_CODDIVISA).stripWhiteSpace();
+        pos += LEN_CODDIVISA;
+        QString impauxme = line.mid(pos,LEN_IMPAUXME).stripWhiteSpace();
+        pos += LEN_IMPAUXME;
+        QString monedauso = line.mid(pos,LEN_MONEDAUSO).stripWhiteSpace();
+        pos += LEN_MONEDAUSO;
+        QString eurodebe = line.mid(pos,LEN_EURODEBE).stripWhiteSpace();
+        pos += LEN_EURODEBE;
+        QString eurohaber = line.mid(pos,LEN_EUROHABER).stripWhiteSpace();
+        pos += LEN_EUROHABER;
+        QString baseeuro = line.mid(pos,LEN_BASEEURO).stripWhiteSpace();
+        pos += LEN_BASEEURO;
+        QString noconv = line.mid(pos,LEN_NOCONV).stripWhiteSpace();
+        pos += LEN_NOCONV;
+        QString numeroinv = line.mid(pos,LEN_NUMEROINV).stripWhiteSpace();
+        pos += LEN_NUMEROINV;
+
+        if( asiento != lastasiento ) {
+            if (lastasiento != "0") {
+                query = "SELECT cierraasiento("+idasiento+")";
+                if (!modoTest()) {
+                    conexionbase->begin();
+                    cursor2 * cur = conexionbase->cargacursor(query,"hola");
+                    conexionbase->commit();
+                    delete cur;
+                }// end if
+            }// end if
+            if (fecha1 >= fechain && fecha1 <= fechafi) {
+                query="INSERT INTO asiento (fecha, comentariosasiento, clase) VALUES ('"+fecha+"','Importado de Contaplus', 1 )";
+                if (!modoTest()) {
+                    conexionbase->begin();
+                    conexionbase->ejecuta(query);
+                    conexionbase->commit();
+                }// end if
+                query = "SELECT max(idasiento) as idasiento FROM asiento";
+                conexionbase->begin();
+                cursor2 *cur=conexionbase->cargacursor(query,"lolailo");
+                idasiento = cur->valor("idasiento");
+                conexionbase->commit();
+                delete cur;
+                napunte = 0;
+                lastasiento = asiento;
+                orden = 0;
+                mensajeria("<LI>Inserci� de Asiento" + idasiento+"</LI>\n");
+            }// end if
+        }// end if
+        napunte++;
+        if( monedauso == "1" ) { // Ptas
+            /// Aqui est�el peor error cometido, usar punto flotante
+            debe = ptahaber +"/"+S_EURO;
+            haber = ptadebe+"/"+S_EURO;
+        } else {
+            debe = eurodebe;
+            haber = eurohaber;
+        }// end if
+        query = "SELECT * FROM cuenta WHERE codigo='"+subcta+"'";
+        conexionbase->begin();
+        cursor2 *cur=conexionbase->cargacursor(query,"elquery");
+        conexionbase->commit();
+        if (!cur->eof()) {
+            if (fecha1 >= fechain && fecha1 <= fechafi) {
+                if (!modoTest() ) {
+                    query="INSERT INTO borrador (idasiento,idcuenta,fecha, conceptocontable, debe, haber, orden) VALUES ("+idasiento+",id_cuenta('"+subcta+"'), '"+fecha+"','"+concepto+"',"+debe+","+haber+","+QString::number(orden++)+" )";
+                    conexionbase->begin();
+                    conexionbase->ejecuta(query);
+                    conexionbase->commit();
+                }// end if
+                mensajeria("<LI>Inserci� de Apunte"+subcta+","+concepto+"</LI>\n");
+            } else {
+                mensajeria("<LI>Apunte fuera de fecha</LI>\n");
+            }// end if
+        }// end if
+    }// end while
+    if (lastasiento != "0") {
+        if(!modoTest()) {
+            query = "SELECT cierraasiento("+idasiento+")";
+            conexionbase->begin();
+            cursor2 * cur = conexionbase->cargacursor(query,"hola");
+            conexionbase->commit();
+            delete cur;
+        }// end if
+    }// end if
+    mensajeria("<LI>Terminado</LI>\n");
+    alerta(subcuentas.size()+asientos.size(),subcuentas.size()+asientos.size());
+    return 1;
 }
 
 /**
@@ -396,24 +396,24 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
   * if there are not parent returns NULL
   */
 QString pgimportfiles::searchParent(QString cod) {
-	QString padre="NULL"; //almacena el padre de la cuenta.
-	QString query;
-	int i = 2;
-	int fin=0;
-	while (!fin) {
-		query = "SELECT * FROM cuenta WHERE codigo = '"+cod.left(i)+"'";
-		conexionbase->begin();
-		cursor2 *cur = conexionbase->cargacursor(query,"unquery");
-		conexionbase->commit();
-		if (!cur->eof()) {
-			padre = cur->valor("idcuenta");
-		} else {
-			fin=1;
-		}// end if
-		delete cur;
-		i++;
-	}// end while
-	return padre;
+    QString padre="NULL"; //almacena el padre de la cuenta.
+    QString query;
+    int i = 2;
+    int fin=0;
+    while (!fin) {
+        query = "SELECT * FROM cuenta WHERE codigo = '"+cod.left(i)+"'";
+        conexionbase->begin();
+        cursor2 *cur = conexionbase->cargacursor(query,"unquery");
+        conexionbase->commit();
+        if (!cur->eof()) {
+            padre = cur->valor("idcuenta");
+        } else {
+            fin=1;
+        }// end if
+        delete cur;
+        i++;
+    }// end while
+    return padre;
 }// end searchParent
 
 
@@ -424,182 +424,205 @@ QString pgimportfiles::searchParent(QString cod) {
   * Los datos pasados de esta forma son mucho m� sencillos de pasar.
   */
 int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned int tipo) {
-	QString codigo, descripcion;
-	QString strblancomax;
-	QString query;
-	int numreg=0;
-	QTextStream stream( &xmlfile );
-	stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
-	"<!DOCTYPE FUGIT>\n"
-	"<FUGIT version='0.3.1' origen='BulmaGes'"
-        " date='" << QDate().toString(Qt::ISODate) << "'>\n";
+    QString codigo, descripcion;
+    QString strblancomax;
+    QString query;
+    int numreg=0;
+    QTextStream stream( &xmlfile );
+    stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
+    "<!DOCTYPE FUGIT>\n"
+    "<FUGIT version='0.3.1' origen='BulmaGes'"
+    " date='" << QDate().toString(Qt::ISODate) << "'>\n";
 
-	/// Comprobamos que tenemos que importar cuentas o no
-	if(tipo & IMPORT_CUENTAS) {
-	
-		/// Se exporta todo el plan contable
-		query = "SELECT * FROM cuenta WHERE padre ISNULL ORDER BY codigo";
-		conexionbase->begin();
-		cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
-		conexionbase->commit();
-		while (!curcta->eof()) {
-			stream << "<CUENTA>\n";
-			stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
-			stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
-			stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
-			stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
-			stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
-			stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
-			stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
-			stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
-			stream << "</CUENTA>\n";
-			curcta->siguienteregistro();
-		}// end while
-		delete curcta;	
-		query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre WHERE padre IS NOT NULL ORDER BY idpadre";
-		conexionbase->begin();
-		curcta = conexionbase->cargacursor(query,"elquery");
-		conexionbase->commit();
-		while (!curcta->eof()) {
-			stream << "<CUENTA>\n";
-			stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
-			stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
-			stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
-			stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
-			stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
-			stream << "\t<CODPADRE>"       << XMLProtect(curcta->valor("codpadre"))      << "</CODPADRE>\n";
-			stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
-			stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
-			stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
-			stream << "</CUENTA>\n";
-			curcta->siguienteregistro();
-		}// end while
-		delete curcta;
+    /// Comprobamos que tenemos que importar cuentas o no
+    if(tipo & IMPORT_CUENTAS) {
 
-	}// end if	
+        /// Se exporta todo el plan contable
+        query = "SELECT * FROM cuenta WHERE padre ISNULL ORDER BY codigo";
+        conexionbase->begin();
+        cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
+        conexionbase->commit();
+        while (!curcta->eof()) {
+            stream << "<CUENTA>\n";
+            stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
+            stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
+            stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
+            stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
+            stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
+            stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
+            stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
+            stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
+            stream << "\t<NOMBREENT_CUENTA>"    << XMLProtect(curcta->valor("nombreent_cuenta"))    << "</NOMBREENT_CUENTA>\n";
+            stream << "\t<TIPOCUENTA>"        << XMLProtect(curcta->valor("tipocuenta"))       << "</TIPOCUENTA>\n";
+            stream << "\t<WEBENT_CUENTA>"        << XMLProtect(curcta->valor("webent_cuenta"))       << "</WEBENT_CUENTA>\n";
+            stream << "\t<EMAILENT_CUENTA>"        << XMLProtect(curcta->valor("emailent_cuenta"))       << "</EMAILENT_CUENTA>\n";
+            stream << "\t<BANCOENT_CUENTA>"        << XMLProtect(curcta->valor("bancoent_cuenta"))       << "</BANCOENT_CUENTA>\n";
+            stream << "\t<COMENT_CUENTA>"        << XMLProtect(curcta->valor("coment_cuenta"))       << "</COMENT_CUENTA>\n";
+            stream << "\t<TELENT_CUENTA>"        << XMLProtect(curcta->valor("telent_cuenta"))       << "</TELENT_CUENTA>\n";
+            stream << "\t<CPENT_CUENTA>"        << XMLProtect(curcta->valor("cpent_cuenta"))       << "</CPENT_CUENTA>\n";
+            stream << "\t<IDGRUPO>"        << XMLProtect(curcta->valor("idgrupo"))       << "</IDGRUPO>\n";
+            stream << "\t<REGULARIZACION>"        << XMLProtect(curcta->valor("regularizacion"))     << "</REGULARIZACION>\n";
+            stream << "\t<IMPUTACION>"        << XMLProtect(curcta->valor("imputacion"))       << "</IMPUTACION>\n";	
+            stream << "</CUENTA>\n";
+            curcta->siguienteregistro();
+        }// end while
+        delete curcta;
+        query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre WHERE padre IS NOT NULL ORDER BY idpadre";
+        conexionbase->begin();
+        curcta = conexionbase->cargacursor(query,"elquery");
+        conexionbase->commit();
+        while (!curcta->eof()) {
+            stream << "<CUENTA>\n";
+            stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
+            stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
+            stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
+            stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
+            stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
+            stream << "\t<CODPADRE>"       << XMLProtect(curcta->valor("codpadre"))      << "</CODPADRE>\n";
+            stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
+            stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
+            stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
+            stream << "\t<NOMBREENT_CUENTA>"    << XMLProtect(curcta->valor("nombreent_cuenta"))    << "</NOMBREENT_CUENTA>\n";
+            stream << "\t<TIPOCUENTA>"        << XMLProtect(curcta->valor("tipocuenta"))       << "</TIPOCUENTA>\n";
+            stream << "\t<WEBENT_CUENTA>"        << XMLProtect(curcta->valor("webent_cuenta"))       << "</WEBENT_CUENTA>\n";
+            stream << "\t<EMAILENT_CUENTA>"        << XMLProtect(curcta->valor("emailent_cuenta"))       << "</EMAILENT_CUENTA>\n";
+            stream << "\t<BANCOENT_CUENTA>"        << XMLProtect(curcta->valor("bancoent_cuenta"))       << "</BANCOENT_CUENTA>\n";
+            stream << "\t<COMENT_CUENTA>"        << XMLProtect(curcta->valor("coment_cuenta"))       << "</COMENT_CUENTA>\n";
+            stream << "\t<TELENT_CUENTA>"        << XMLProtect(curcta->valor("telent_cuenta"))       << "</TELENT_CUENTA>\n";
+            stream << "\t<CPENT_CUENTA>"        << XMLProtect(curcta->valor("cpent_cuenta"))       << "</CPENT_CUENTA>\n";
+            stream << "\t<IDGRUPO>"        << XMLProtect(curcta->valor("idgrupo"))       << "</IDGRUPO>\n";
+            stream << "\t<REGULARIZACION>"        << XMLProtect(curcta->valor("regularizacion"))       << "</REGULARIZACION>\n";
+            stream << "\t<IMPUTACION>"        << XMLProtect(curcta->valor("imputacion"))       << "</IMPUTACION>\n";
+            stream << "</CUENTA>\n";
+            curcta->siguienteregistro();
+        }// end while
+        delete curcta;
 
-	/// Se va a comprobar si hay que exportar los tipos de IVA
+    }// end if
 
-	if (tipo & IMPORT_TIPOSIVA) {
-		/// Se vana exportar los tipos de IVA
-		query = "SELECT * from tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta";
-		conexionbase->begin();
-		cursor2 *curtiva = conexionbase->cargacursor(query, "querytiva");
-		conexionbase->commit();
-		while (!curtiva->eof()) {
-			stream << "<TIPOIVA>\n";
-			stream << "\t<IDTIPOIVA>"       << XMLProtect(curtiva->valor("idtipoiva"))      << "</IDTIPOIVA>\n";
-			stream << "\t<NOMBRETIPOIVA>"   << XMLProtect(curtiva->valor("nombretipoiva"))      << "</NOMBRETIPOIVA>\n";
-			stream << "\t<PORCENTAJETIPOIVA>"       << XMLProtect(curtiva->valor("porcentajetipoiva"))      << "</PORCENTAJETIPOIVA>\n";
-			stream << "\t<CUENTATIPOIVA>"       << XMLProtect(curtiva->valor("codigo"))      << "</CUENTATIPOIVA>\n";
-	
-			stream << "</TIPOIVA>\n";
-			curtiva->siguienteregistro();
-		}// end while
-		delete curtiva;
-	}// end if
+    /// Se va a comprobar si hay que exportar los tipos de IVA
 
-	if (tipo & IMPORT_ASIENTOS) {
-		/// Hacemos la exportaci� de asientos
-		query = "SELECT * FROM asiento WHERE 1=1 ";
-		if (m_fInicial != "") 
-			query += " AND asiento.fecha >= '"+m_fInicial+"'";
-		if (m_fFinal != "") 
-			query += " AND asiento.fecha <= '"+m_fFinal+"'";
-		query +=" ORDER BY asiento.fecha, asiento.idasiento ";	
-		conexionbase->begin();
-		cursor2 *curas = conexionbase->cargacursor(query, "masquery");
-		conexionbase->commit();
-		int i =0;
-		numreg = curas->numregistros()+1;	
-		while (!curas->eof()) {
-			alerta(i++,numreg);    
-			stream << "<ASIENTO>\n";
-			stream << "\t<ORDENASIENTO>" << curas->valor("ordenasiento") << "</ORDENASIENTO>\n";
-			QString fechas = curas->valor("fecha");
-			fechas = fechas.mid(6,4)+fechas.mid(3,2)+fechas.mid(0,2);
-			stream << "\t<FECHA>" << fechas << "</FECHA>\n";
-			query = "SELECT * FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ";
-			query += "LEFT JOIN (SELECT nombre AS nomcanal, idcanal FROM canal) AS canal1 ON apunte.idcanal = canal1.idcanal "; query += "LEFT JOIN (SELECT nombre AS nc_coste, idc_coste FROM c_coste) AS c_coste1 ON c_coste1.idc_coste = apunte.idc_coste ";
-			query += "LEFT JOIN (SELECT codigo AS codcontrapartida,  idcuenta FROM cuenta) AS contra ON contra.idcuenta=apunte.contrapartida ";
-			query +=" WHERE "+curas->valor("idasiento")+"= apunte.idasiento ";
-			conexionbase->begin();
-			cursor2 *curap = conexionbase->cargacursor(query, "masquery1");
-			conexionbase->commit();
-			while (!curap->eof()) {   
-				stream << "\t<APUNTE>\n";
-				QString fecha = curap->valor("fecha");
-				fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
-				stream << "\t\t<FECHA>"               << XMLProtect(fecha) << "</FECHA>\n";
-				stream << "\t\t<CODIGO>"              << XMLProtect(curap->valor("codigo"))             << "</CODIGO>\n";
-				stream << "\t\t<DEBE>"                << XMLProtect(curap->valor("debe"))               << "</DEBE>\n";
-				stream << "\t\t<HABER>"               << XMLProtect(curap->valor("haber"))              << "</HABER>\n";
-				stream << "\t\t<CONCEPTOCONTABLE>"    << XMLProtect(curap->valor("conceptocontable"))   << "</CONCEPTOCONTABLE>\n";
-				stream << "\t\t<IDCANAL>"      << XMLProtect(curap->valor("idcanal"))     << "</IDCANAL>\n";
-				stream << "\t\t<CANAL>"        << XMLProtect(curap->valor("nomcanal"))    << "</CANAL>\n";
-				stream << "\t\t<IDC_COSTE>"    << XMLProtect(curap->valor("idc_coste"))   << "</IDC_COSTE>\n";	
-				stream << "\t\t<C_COSTE>"      << XMLProtect(curap->valor("nc_coste"))    << "</C_COSTE>\n";
-				stream << "\t\t<PUNTEO>"       << XMLProtect(curap->valor("punteo"))      << "</PUNTEO>\n";
-				stream << "\t\t<ORDEN>"        << XMLProtect(curap->valor("orden"))       << "</ORDEN>\n";
-				stream << "\t\t<CONTRAPARTIDA>"<< XMLProtect(curap->valor("codcontrapartida"))<< "</CONTRAPARTIDA>\n";
-				
-				
-				/// Hacemos la exportaci� de registros de IVA
-				query  = "SELECT * FROM registroiva";
-				query += " LEFT JOIN (SELECT codigo, idcuenta FROM cuenta) AS t1 ON registroiva.contrapartida = t1.idcuenta ";
-				query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento="+curas->valor("idasiento")+" AND orden = "+curap->valor("orden")+")";
-				conexionbase->begin();
-				cursor2 *curreg = conexionbase->cargacursor(query, "queryregiva");
-				conexionbase->commit();
-				while (!curreg->eof()) {
-					stream << "\t\t<REGISTROIVA>\n";
-					stream << "\t\t\t<CONTRAPARTIDA>"  << XMLProtect(curreg->valor("codigo"))  << "</CONTRAPARTIDA>\n";
-					stream << "\t\t\t<BASEIMP>"        << XMLProtect(curreg->valor("baseimp"))        << "</BASEIMP>\n";
-					stream << "\t\t\t<IVA>"            << XMLProtect(curreg->valor("iva"))            << "</IVA>\n";
-					stream << "\t\t\t<FFACTURA>"       << XMLProtect(curreg->valor("ffactura"))       << "</FFACTURA>\n";
-					stream << "\t\t\t<FACTURA>"        << XMLProtect(curreg->valor("factura"))        << "</FACTURA>\n";
-					stream << "\t\t\t<NUMORDEN>"       << XMLProtect(curreg->valor("numorden"))       << "</NUMORDEN>\n";
-					stream << "\t\t\t<CIF>"            << XMLProtect(curreg->valor("cif"))            << "</CIF>\n";
-					stream << "\t\t\t<IDFPAGO>"        << XMLProtect(curreg->valor("idfpago"))        << "</IDFPAGO>\n";
-					stream << "\t\t\t<RECTIFICAAREGISTROIVA>"        << XMLProtect(curreg->valor("rectificaaregistroiva"))        << "</RECTIFICAAREGISTROIVA>\n";
-					
-					
-					/// Hacemos la exportaci� deIVAs
-					query  = "SELECT * FROM iva ";
-					query += " LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva ";
-					query += " WHERE idregistroiva = "+curreg->valor("idregistroiva");
-					conexionbase->begin();
-					cursor2 *curiva = conexionbase->cargacursor(query, "queryiva");
-					conexionbase->commit();
-					while (!curiva->eof()) {
-						stream << "\t\t\t<RIVA>\n";
-						stream << "\t\t\t\t<IDTIPOIVA>"        << XMLProtect(curiva->valor("idtipoiva"))        << "</IDTIPOIVA>\n";
-						stream << "\t\t\t\t<NOMBRETIPOIVA>"    << XMLProtect(curiva->valor("nombretipoiva"))    << "</NOMBRETIPOIVA>\n";
-						stream << "\t\t\t\t<BASEIVA>"          << XMLProtect(curiva->valor("baseiva"))          << "</BASEIVA>\n";
-						stream << "\t\t\t</RIVA>\n";
-						curiva->siguienteregistro();
-					}// end while
-					delete curiva;	
-					stream << "\t\t</REGISTROIVA>\n";
-					curreg->siguienteregistro();
-				}// end while
-				delete curreg;		
-				mensajeria("Exportando :"   + curap->valor("codigo")   + "--" +fecha+"\n");
-				curap->siguienteregistro();
-				stream << "\t</APUNTE>\n";
-			}// end while
-			delete curap;
-			stream << "</ASIENTO>\n";
-			curas->siguienteregistro();
-		}// end while
-		delete curas;
-	}// end if
+    if (tipo & IMPORT_TIPOSIVA) {
+        /// Se vana exportar los tipos de IVA
+        query = "SELECT * from tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta";
+        conexionbase->begin();
+        cursor2 *curtiva = conexionbase->cargacursor(query, "querytiva");
+        conexionbase->commit();
+        while (!curtiva->eof()) {
+            stream << "<TIPOIVA>\n";
+            stream << "\t<IDTIPOIVA>"       << XMLProtect(curtiva->valor("idtipoiva"))      << "</IDTIPOIVA>\n";
+            stream << "\t<NOMBRETIPOIVA>"   << XMLProtect(curtiva->valor("nombretipoiva"))      << "</NOMBRETIPOIVA>\n";
+            stream << "\t<PORCENTAJETIPOIVA>"       << XMLProtect(curtiva->valor("porcentajetipoiva"))      << "</PORCENTAJETIPOIVA>\n";
+            stream << "\t<CUENTATIPOIVA>"       << XMLProtect(curtiva->valor("codigo"))      << "</CUENTATIPOIVA>\n";
+
+            stream << "</TIPOIVA>\n";
+            curtiva->siguienteregistro();
+        }// end while
+        delete curtiva;
+    }// end if
+
+    if (tipo & IMPORT_ASIENTOS) {
+        /// Hacemos la exportaci� de asientos
+        query = "SELECT * FROM asiento WHERE 1=1 ";
+        if (m_fInicial != "")
+            query += " AND asiento.fecha >= '"+m_fInicial+"'";
+        if (m_fFinal != "")
+            query += " AND asiento.fecha <= '"+m_fFinal+"'";
+        query +=" ORDER BY asiento.fecha, asiento.idasiento ";
+        conexionbase->begin();
+        cursor2 *curas = conexionbase->cargacursor(query, "masquery");
+        conexionbase->commit();
+        int i =0;
+        numreg = curas->numregistros()+1;
+        while (!curas->eof()) {
+            alerta(i++,numreg);
+            stream << "<ASIENTO>\n";
+            stream << "\t<ORDENASIENTO>" << curas->valor("ordenasiento") << "</ORDENASIENTO>\n";
+            QString fechas = curas->valor("fecha");
+            fechas = fechas.mid(6,4)+fechas.mid(3,2)+fechas.mid(0,2);
+            stream << "\t<FECHA>" << fechas << "</FECHA>\n";
+            query = "SELECT * FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ";
+            query += "LEFT JOIN (SELECT nombre AS nomcanal, idcanal FROM canal) AS canal1 ON apunte.idcanal = canal1.idcanal ";
+            query += "LEFT JOIN (SELECT nombre AS nc_coste, idc_coste FROM c_coste) AS c_coste1 ON c_coste1.idc_coste = apunte.idc_coste ";
+            query += "LEFT JOIN (SELECT codigo AS codcontrapartida,  idcuenta FROM cuenta) AS contra ON contra.idcuenta=apunte.contrapartida ";
+            query +=" WHERE "+curas->valor("idasiento")+"= apunte.idasiento ";
+            conexionbase->begin();
+            cursor2 *curap = conexionbase->cargacursor(query, "masquery1");
+            conexionbase->commit();
+            while (!curap->eof()) {
+                stream << "\t<APUNTE>\n";
+                QString fecha = curap->valor("fecha");
+                fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
+                stream << "\t\t<FECHA>"               << XMLProtect(fecha) << "</FECHA>\n";
+                stream << "\t\t<CODIGO>"              << XMLProtect(curap->valor("codigo"))             << "</CODIGO>\n";
+                stream << "\t\t<DEBE>"                << XMLProtect(curap->valor("debe"))               << "</DEBE>\n";
+                stream << "\t\t<HABER>"               << XMLProtect(curap->valor("haber"))              << "</HABER>\n";
+                stream << "\t\t<CONCEPTOCONTABLE>"    << XMLProtect(curap->valor("conceptocontable"))   << "</CONCEPTOCONTABLE>\n";
+                stream << "\t\t<IDCANAL>"      << XMLProtect(curap->valor("idcanal"))     << "</IDCANAL>\n";
+                stream << "\t\t<CANAL>"        << XMLProtect(curap->valor("nomcanal"))    << "</CANAL>\n";
+                stream << "\t\t<IDC_COSTE>"    << XMLProtect(curap->valor("idc_coste"))   << "</IDC_COSTE>\n";
+                stream << "\t\t<C_COSTE>"      << XMLProtect(curap->valor("nc_coste"))    << "</C_COSTE>\n";
+                stream << "\t\t<PUNTEO>"       << XMLProtect(curap->valor("punteo"))      << "</PUNTEO>\n";
+                stream << "\t\t<ORDEN>"        << XMLProtect(curap->valor("orden"))       << "</ORDEN>\n";
+                stream << "\t\t<CONTRAPARTIDA>"<< XMLProtect(curap->valor("codcontrapartida"))<< "</CONTRAPARTIDA>\n";
 
 
+                /// Hacemos la exportaci� de registros de IVA
+                query  = "SELECT * FROM registroiva";
+                query += " LEFT JOIN (SELECT codigo, idcuenta FROM cuenta) AS t1 ON registroiva.contrapartida = t1.idcuenta ";
+                query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento="+curas->valor("idasiento")+" AND orden = "+curap->valor("orden")+")";
+                conexionbase->begin();
+                cursor2 *curreg = conexionbase->cargacursor(query, "queryregiva");
+                conexionbase->commit();
+                while (!curreg->eof()) {
+                    stream << "\t\t<REGISTROIVA>\n";
+                    stream << "\t\t\t<CONTRAPARTIDA>"  << XMLProtect(curreg->valor("codigo"))  << "</CONTRAPARTIDA>\n";
+                    stream << "\t\t\t<BASEIMP>"        << XMLProtect(curreg->valor("baseimp"))        << "</BASEIMP>\n";
+                    stream << "\t\t\t<IVA>"            << XMLProtect(curreg->valor("iva"))            << "</IVA>\n";
+                    stream << "\t\t\t<FFACTURA>"       << XMLProtect(curreg->valor("ffactura"))       << "</FFACTURA>\n";
+                    stream << "\t\t\t<FACTURA>"        << XMLProtect(curreg->valor("factura"))        << "</FACTURA>\n";
+                    stream << "\t\t\t<NUMORDEN>"       << XMLProtect(curreg->valor("numorden"))       << "</NUMORDEN>\n";
+                    stream << "\t\t\t<CIF>"            << XMLProtect(curreg->valor("cif"))            << "</CIF>\n";
+                    stream << "\t\t\t<IDFPAGO>"        << XMLProtect(curreg->valor("idfpago"))        << "</IDFPAGO>\n";
+                    stream << "\t\t\t<RECTIFICAAREGISTROIVA>"        << XMLProtect(curreg->valor("rectificaaregistroiva"))        << "</RECTIFICAAREGISTROIVA>\n";
 
-	stream << "</FUGIT>\n";
-	alerta (numreg,numreg);
-	return 0;
+
+                    /// Hacemos la exportaci� deIVAs
+                    query  = "SELECT * FROM iva ";
+                    query += " LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva ";
+                    query += " WHERE idregistroiva = "+curreg->valor("idregistroiva");
+                    conexionbase->begin();
+                    cursor2 *curiva = conexionbase->cargacursor(query, "queryiva");
+                    conexionbase->commit();
+                    while (!curiva->eof()) {
+                        stream << "\t\t\t<RIVA>\n";
+                        stream << "\t\t\t\t<IDTIPOIVA>"        << XMLProtect(curiva->valor("idtipoiva"))        << "</IDTIPOIVA>\n";
+                        stream << "\t\t\t\t<NOMBRETIPOIVA>"    << XMLProtect(curiva->valor("nombretipoiva"))    << "</NOMBRETIPOIVA>\n";
+                        stream << "\t\t\t\t<BASEIVA>"          << XMLProtect(curiva->valor("baseiva"))          << "</BASEIVA>\n";
+                        stream << "\t\t\t</RIVA>\n";
+                        curiva->siguienteregistro();
+                    }// end while
+                    delete curiva;
+                    stream << "\t\t</REGISTROIVA>\n";
+                    curreg->siguienteregistro();
+                }// end while
+                delete curreg;
+                mensajeria("Exportando :"   + curap->valor("codigo")   + "--" +fecha+"\n");
+                curap->siguienteregistro();
+                stream << "\t</APUNTE>\n";
+            }// end while
+            delete curap;
+            stream << "</ASIENTO>\n";
+            curas->siguienteregistro();
+        }// end while
+        delete curas;
+    }// end if
+
+
+
+    stream << "</FUGIT>\n";
+    alerta (numreg,numreg);
+    return 0;
 }// end if
 
 
@@ -609,32 +632,32 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned int tipo) {
   * que haga la imporaci� del archivo XML
   */
 int pgimportfiles::XML2Bulmages (QFile &fichero, unsigned int tip) {
-        StructureParser handler(conexionbase, tip);
-        QXmlInputSource source( &fichero );
-        QXmlSimpleReader reader;
-        reader.setContentHandler( &handler );
-        reader.parse( source );
-	alerta(100,100);
-	return 0;
+    StructureParser handler(conexionbase, tip);
+    QXmlInputSource source( &fichero );
+    QXmlSimpleReader reader;
+    reader.setContentHandler( &handler );
+    reader.parse( source );
+    alerta(100,100);
+    return 0;
 }// end XML2Bulmages
 
 
 StructureParser::StructureParser(postgresiface2 *con, unsigned int tip) {
-	conexionbase = con;
-	m_tipo = tip;
-	QString query = "INSERT INTO cuenta (codigo, descripcion, idgrupo) VALUES ('AUX','Una descripcion auxiliar de cuenta', 1)";
-	conexionbase->ejecuta(query);
-	for (int i=0; i<=12;i++) {
-		QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, "+QString::number(i)+", FALSE)";
-		conexionbase->begin();
-		conexionbase->ejecuta(query2);
-		conexionbase->commit();	
-	}// end for
+    conexionbase = con;
+    m_tipo = tip;
+    QString query = "INSERT INTO cuenta (codigo, descripcion, idgrupo) VALUES ('AUX','Una descripcion auxiliar de cuenta', 1)";
+    conexionbase->ejecuta(query);
+    for (int i=0; i<=12;i++) {
+        QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, "+QString::number(i)+", FALSE)";
+        conexionbase->begin();
+        conexionbase->ejecuta(query2);
+        conexionbase->commit();
+    }// end for
 }// end StructureParser
 
 StructureParser::~StructureParser() {
-	QString query = "DELETE FROM cuenta WHERE codigo='AUX'";
-	conexionbase->ejecuta(query);
+    QString query = "DELETE FROM cuenta WHERE codigo='AUX'";
+    conexionbase->ejecuta(query);
 }// end StructureParser
 
 
@@ -644,184 +667,215 @@ bool StructureParser::startDocument() {
 }// end startDocument
 
 bool StructureParser::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& ) {
-    fprintf( stderr, "%s<%s>", (const char*)indent, (const char*)qName);
+    fprintf( stderr, "%s<%s>\n", (const char*)indent, (const char*)qName);
     indent += "..";
     if (qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS) {
-    	tagpadre = "ASIENTO";
-	QString query = "INSERT INTO ASIENTO (descripcion, fecha) VALUES ('un nuevo asiento', '01/01/2005')";
-	conexionbase->begin();
-	conexionbase->ejecuta(query);
-	cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idasiento) AS max FROM asiento","otroquery");
-	conexionbase->commit();
-	if (!cur->eof() ) {
-		idasiento = cur->valor("max");
-		fprintf(stderr,"INSERCION DE ASIENTO:%s",idasiento.ascii());
-	}// end if
-	// Iniciamos el orden para que los apuntes salgan en orden empezando desde cero
-	m_ordenapunte=0;
-	delete cur;
+        tagpadre = "ASIENTO";
+        QString query = "INSERT INTO ASIENTO (descripcion, fecha) VALUES ('un nuevo asiento', '01/01/2005')";
+        conexionbase->begin();
+        conexionbase->ejecuta(query);
+        cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idasiento) AS max FROM asiento","otroquery");
+        conexionbase->commit();
+        if (!cur->eof() ) {
+            idasiento = cur->valor("max");
+            fprintf(stderr,"INSERCION DE ASIENTO:%s\n",idasiento.ascii());
+        }// end if
+        // Iniciamos el orden para que los apuntes salgan en orden empezando desde cero
+        m_ordenapunte=0;
+        delete cur;
     }// end if
     if (qName == "APUNTE" && m_tipo & IMPORT_ASIENTOS) {
-    	QString query = "INSERT INTO borrador (idasiento, debe, haber, idcuenta, fecha, orden) VALUES ("+idasiento+",0,0,id_cuenta('AUX'), '01/01/2003', "+QString::number(m_ordenapunte++)+")";
-	conexionbase->begin();
-	conexionbase->ejecuta(query);
-	cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idborrador) AS max FROM borrador","otroquery1");
-	conexionbase->commit();
-	if (!cur->eof() ) {
-		idborrador = cur->valor("max");
-		fprintf(stderr,"INSERCION DE APUNTE:%s",idborrador.ascii());
-	}// end if
-	delete cur;   
-    	tagpadre = "APUNTE";
+        QString query = "INSERT INTO borrador (idasiento, debe, haber, idcuenta, fecha, orden) VALUES ("+idasiento+",0,0,id_cuenta('AUX'), '01/01/2003', "+QString::number(m_ordenapunte++)+")";
+        conexionbase->begin();
+        conexionbase->ejecuta(query);
+        cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idborrador) AS max FROM borrador","otroquery1");
+        conexionbase->commit();
+        if (!cur->eof() ) {
+            idborrador = cur->valor("max");
+            fprintf(stderr,"INSERCION DE APUNTE:%s\n",idborrador.ascii());
+        }// end if
+        delete cur;
+        tagpadre = "APUNTE";
     }// end if
     if (qName == "REGISTROIVA" && m_tipo & IMPORT_FACTURAS) {
-    	QString query = "INSERT INTO registroiva (contrapartida, idborrador) VALUES (id_cuenta('AUX'), "+idborrador+")";
-	conexionbase->begin();
-	conexionbase->ejecuta(query);
-	cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idregistroiva) AS max FROM registroiva","otroquery13");
-	conexionbase->commit();
-	if (!cur->eof() ) {
-		m_idRegistroIva = cur->valor("max");
-		fprintf(stderr,"INSERCION DE REGISTRO DE IVA:%s",idborrador.ascii());
-	}// end if
-	delete cur;   
-    	tagpadre = "REGISTROIVA";
+        QString query = "INSERT INTO registroiva (contrapartida, idborrador) VALUES (id_cuenta('AUX'), "+idborrador+")";
+        conexionbase->begin();
+        conexionbase->ejecuta(query);
+        cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idregistroiva) AS max FROM registroiva","otroquery13");
+        conexionbase->commit();
+        if (!cur->eof() ) {
+            m_idRegistroIva = cur->valor("max");
+            fprintf(stderr,"INSERCION DE REGISTRO DE IVA:%s\n",idborrador.ascii());
+        }// end if
+        delete cur;
+        tagpadre = "REGISTROIVA";
     }// end if
     if (qName == "RIVA" && m_tipo & IMPORT_FACTURAS) {
-    	tagpadre = "RIVA";
+        tagpadre = "RIVA";
     }// end if
     if (qName == "CUENTA" && m_tipo & IMPORT_CUENTAS) {
-    	tagpadre = "CUENTA";
+        tagpadre = "CUENTA";
+        /// Borramos todos los elementos para que no haya traspasos de información.
+        codigocuenta = "";
+        descripcioncuenta = "";
+        codigopadre = "";
+        m_bloqueadaCuenta = "";
+        m_nodebeCuenta = "";
+        m_nohaberCuenta = "";
+	m_tipoCuenta = "";
     }// end if
-    cadintermedia = "";    
+    cadintermedia = "";
     return TRUE;
 }// end startElement
 
 bool StructureParser::endElement( const QString&, const QString&, const QString& qName) {
     indent.remove( (uint)0, 2 );
-//    fprintf( stderr,"<\\%s>\n", (const char*)qName);
-/// VAmos a ir distinguiendo casos y actuando segun cada caso. En la mayor� de casos iremos actuando en consecuencia.  
-    /// Ha terminado un asiento, por tanto hacemos el update de los campos de �te.  
+    //    fprintf( stderr,"<\\%s>\n", (const char*)qName);
+    /// VAmos a ir distinguiendo casos y actuando segun cada caso. En la mayor� de casos iremos actuando en consecuencia.
+    /// Ha terminado un asiento, por tanto hacemos el update de los campos de �te.
     if (qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS) {
-    	fprintf(stderr,"Fin de Asiento");
-	QString query = "UPDATE asiento set fecha='"+fechaasiento+"' WHERE idasiento="+idasiento;
-	conexionbase->begin();
-	conexionbase->ejecuta(query);
-	cursor2 *cur = conexionbase->cargacursor("SELECT cierraasiento("+idasiento+")", "elauery");
-	conexionbase->commit();
-	delete cur;
+        fprintf(stderr,"Fin de Asiento");
+        QString query = "UPDATE asiento set fecha='"+
+	conexionbase->sanearCadena(fechaasiento)+"' WHERE idasiento="+
+	conexionbase->sanearCadena(idasiento);
+        conexionbase->begin();
+        conexionbase->ejecuta(query);
+        cursor2 *cur = conexionbase->cargacursor("SELECT cierraasiento("+idasiento+")");
+        conexionbase->commit();
+        delete cur;
     }// end if
-/// Si es una punte hacemos su inserci�.
+    /// Si es una punte hacemos su inserci�.
     if (qName == "APUNTE" && m_tipo & IMPORT_ASIENTOS) {
-    	QString query = "UPDATE borrador SET debe = "+debeapunte+", haber="+haberapunte+", idcuenta=id_cuenta('"+codigocuentaapunte+"'), fecha='"+fechaapunte+"', conceptocontable='"+conceptocontableapunte+"' WHERE idborrador="+idborrador;
-	conexionbase->ejecuta(query);
+        QString query = "UPDATE borrador SET debe = "+
+	conexionbase->sanearCadena(debeapunte)+", haber="+
+	conexionbase->sanearCadena(haberapunte)+", idcuenta=id_cuenta('"+
+	conexionbase->sanearCadena(codigocuentaapunte)+"'), fecha='"+
+	conexionbase->sanearCadena(fechaapunte)+"', conceptocontable='"+
+	conexionbase->sanearCadena(conceptocontableapunte)+"' WHERE idborrador="+idborrador;
+        conexionbase->ejecuta(query);
     }// end if
     if (qName == "FECHA" && tagpadre == "ASIENTO")
-    	fechaasiento = cadintermedia;
+        fechaasiento = cadintermedia;
     if (qName == "FECHA" && tagpadre == "APUNTE")
-    	fechaapunte = cadintermedia;
+        fechaapunte = cadintermedia;
     if (qName == "DEBE" && tagpadre == "APUNTE")
-    	debeapunte = cadintermedia;
+        debeapunte = cadintermedia;
     if (qName == "HABER" && tagpadre == "APUNTE")
-    	haberapunte = cadintermedia;
+        haberapunte = cadintermedia;
     if (qName == "CODIGO" && tagpadre == "APUNTE")
-    	codigocuentaapunte = cadintermedia;
+        codigocuentaapunte = cadintermedia;
     if (qName == "CONCEPTOCONTABLE" && tagpadre == "APUNTE")
-    	conceptocontableapunte = cadintermedia;
- 
+        conceptocontableapunte = cadintermedia;
+
     if (qName == "CUENTA" && m_tipo & IMPORT_CUENTAS) {
-	/// Ha terminado una cuenta, por tanto hacemos la inserci� de la misma.
-	/// Podemos hacer la inserci� y no un sistema de update pq la cuenta no tiene hijos en el XML
-	/// Nuevo Socio M.Mezo
-    	QString idgrupo = codigocuenta.left(1);
-	/// Primero debemos determinar si existe o no dicha cuenta para hacer la inserci� o la modificaci�.
-	QString query = "SELECT * FROM cuenta WHERE codigo='"+codigocuenta+"'";
-	conexionbase->begin();
-	cursor2 *cur = conexionbase->cargacursor(query, "elquery23");
-	conexionbase->commit();
-	if (cur->eof()) {
-		QString query = "INSERT INTO cuenta (codigo, descripcion, padre, idgrupo, bloqueada, nodebe, nohaber) VALUES ('"+codigocuenta+"','"+descripcioncuenta+"', id_cuenta('"+codigopadre+"'), "+idgrupo+", '"+m_bloqueadaCuenta+"','"+m_nodebeCuenta+"','"+m_nohaberCuenta+"')";
-		conexionbase->ejecuta(query);
-	} else {
-		QString query = "UPDATE cuenta SET descripcion='"+descripcioncuenta+"', bloqueada='"+m_bloqueadaCuenta+"', nodebe='"+m_nodebeCuenta+"', nohaber='"+m_nohaberCuenta+"' WHERE codigo='"+codigocuenta+"'";
-		conexionbase->ejecuta(query);
-	}//end if
-	codigocuenta = "";
-	descripcioncuenta = "";
-	codigopadre = "";
-	m_bloqueadaCuenta = "";
-	m_nodebeCuenta="";
-	m_nohaberCuenta="";	
-	delete cur;
+        /// Ha terminado una cuenta, por tanto hacemos la inserci� de la misma.
+        /// Podemos hacer la inserci� y no un sistema de update pq la cuenta no tiene hijos en el XML
+        /// Nuevo Socio M.Mezo
+        QString idgrupo = codigocuenta.left(1);
+        /// Primero debemos determinar si existe o no dicha cuenta para hacer la inserci� o la modificaci�.
+        QString vidcuenta;
+        if (codigopadre != "")  {
+            vidcuenta = "id_cuenta('"+conexionbase->sanearCadena(codigopadre)+"')";
+        } else {
+            vidcuenta = "NULL";
+        }// end if 
+	// Si el tipo de cuenta está vacio lo ponemos a NULL para que no haya error en la base de datos.
+	if (m_tipoCuenta == "") m_tipoCuenta="NULL";
+
+       QString query = "SELECT * FROM cuenta WHERE codigo='"+codigocuenta+"'";
+        cursor2 *cur = conexionbase->cargacursor(query);
+        if (cur->eof()) {
+            QString query = "INSERT INTO cuenta (tipocuenta, codigo, descripcion, padre, idgrupo, bloqueada, nodebe, nohaber) VALUES ("+
+		conexionbase->sanearCadena(m_tipoCuenta)+",'"+
+		conexionbase->sanearCadena(codigocuenta)+"','"+
+		conexionbase->sanearCadena(descripcioncuenta)+"', "+
+		vidcuenta+", "+
+		conexionbase->sanearCadena(idgrupo)+", '"+
+		conexionbase->sanearCadena(m_bloqueadaCuenta)+"','"+
+		conexionbase->sanearCadena(m_nodebeCuenta)+"','"+
+		conexionbase->sanearCadena(m_nohaberCuenta)+"')";
+            conexionbase->ejecuta(query);
+        } else {
+            QString query = "UPDATE cuenta SET ";
+		query+="descripcion='"+conexionbase->sanearCadena(descripcioncuenta)+"'";
+		query+=", tipocuenta="+conexionbase->sanearCadena(m_tipoCuenta);
+		query+=", bloqueada='"+conexionbase->sanearCadena(m_bloqueadaCuenta)+"'";
+		query+=", nodebe='"+conexionbase->sanearCadena(m_nodebeCuenta)+"'";
+		query+=", nohaber='"+conexionbase->sanearCadena(m_nohaberCuenta)+"'";
+		query+=" WHERE codigo='"+conexionbase->sanearCadena(codigocuenta)+"'";
+            conexionbase->ejecuta(query);
+        }//end if
+        delete cur;
     }// end if
     if (qName == "CODIGO" && tagpadre == "CUENTA")
-    	codigocuenta = cadintermedia;
+        codigocuenta = cadintermedia;
     if (qName == "DESCRIPCION" && tagpadre == "CUENTA")
-    	descripcioncuenta = cadintermedia;
+        descripcioncuenta = cadintermedia;
     if (qName == "CODPADRE" && tagpadre == "CUENTA")
-    	codigopadre = cadintermedia;
+        codigopadre = cadintermedia;
     if (qName == "BLOQUEADA" && tagpadre == "CUENTA")
-    	m_bloqueadaCuenta = cadintermedia;
+        m_bloqueadaCuenta = cadintermedia;
     if (qName == "NODEBE" && tagpadre == "CUENTA")
-    	m_nodebeCuenta = cadintermedia;
+        m_nodebeCuenta = cadintermedia;
     if (qName == "NOHABER" && tagpadre == "CUENTA")
-    	m_nohaberCuenta = cadintermedia;
-	
-    
+        m_nohaberCuenta = cadintermedia;
+    if (qName == "TIPOCUENTA" && tagpadre == "CUENTA")
+        m_tipoCuenta = cadintermedia;
+
     /// Si es un registro de iva vamos a por el
     if (qName == "REGISTROIVA" && m_tipo & IMPORT_FACTURAS) {
-    	QString query = "UPDATE registroiva SET contrapartida=id_cuenta('"+m_rIvaContrapartida+"'), ffactura='"+m_rIvaFFactura+"'";
-	
-	if (m_rIvaBaseImp != "") 
-		query += ", baseimp="+m_rIvaBaseImp;
-	if (m_rIvaIva != "") 
-		query +=", iva="+m_rIvaIva;
-	query +="  WHERE idregistroiva="+m_idRegistroIva;
-	conexionbase->ejecuta(query);
-    }// end if    
+        QString query = "UPDATE registroiva SET contrapartida=id_cuenta('"+m_rIvaContrapartida+"'), ffactura='"+m_rIvaFFactura+"'";
+
+        if (m_rIvaBaseImp != "")
+            query += ", baseimp="+m_rIvaBaseImp;
+        if (m_rIvaIva != "")
+            query +=", iva="+m_rIvaIva;
+        query +="  WHERE idregistroiva="+m_idRegistroIva;
+        conexionbase->ejecuta(query);
+    }// end if
     if (qName == "CONTRAPARTIDA" && tagpadre == "REGISTROIVA")
-    	m_rIvaContrapartida = cadintermedia;
+        m_rIvaContrapartida = cadintermedia;
     if (qName == "BASEIMP" && tagpadre == "REGISTROIVA")
-    	m_rIvaBaseImp = cadintermedia;	
+        m_rIvaBaseImp = cadintermedia;
     if (qName == "IVA" && tagpadre == "REGISTROIVA")
-    	m_rIvaIva = cadintermedia;
+        m_rIvaIva = cadintermedia;
     if (qName == "FFACTURA" && tagpadre == "REGISTROIVA")
-    	m_rIvaFFactura = cadintermedia;
+        m_rIvaFFactura = cadintermedia;
     if (qName == "FACTURA" && tagpadre == "REGISTROIVA")
-    	m_rIvaFactura = cadintermedia;
+        m_rIvaFactura = cadintermedia;
     if (qName == "CIF" && tagpadre == "REGISTROIVA")
-    	m_rIvaCIF = cadintermedia;
+        m_rIvaCIF = cadintermedia;
     if (qName == "IDFPAGO" && tagpadre == "REGISTROIVA")
-    	m_rIvaIdFPago = cadintermedia;
+        m_rIvaIdFPago = cadintermedia;
     if (qName == "RECTIFICAAREGISTROIVA" && tagpadre == "REGISTROIVA")
-    	m_rIvRecRegIva = cadintermedia;
+        m_rIvRecRegIva = cadintermedia;
 
     /// Inserci� de IVA's dentro del registro de IVA
     if (qName == "RIVA" && m_tipo & IMPORT_FACTURAS) {
-    	QString query1 = "SELECT idtipoiva FROM tipoiva WHERE nombretipoiva = '"+m_nombreTipoIva+"'";
-	conexionbase->begin();
-	cursor2 * cur = conexionbase->cargacursor(query1,"elqueryd");
-	if ( !cur->eof() ) {
-		QString query = "INSERT INTO IVA (idregistroiva, idtipoiva, baseiva) VALUES ("+m_idRegistroIva+", "+cur->valor("idtipoiva")+", "+m_baseIva+")";
-		conexionbase->ejecuta(query);
-	}// end if
-	delete cur;
-	conexionbase->commit();
+        QString query1 = "SELECT idtipoiva FROM tipoiva WHERE nombretipoiva = '"+m_nombreTipoIva+"'";
+        conexionbase->begin();
+        cursor2 * cur = conexionbase->cargacursor(query1,"elqueryd");
+        if ( !cur->eof() ) {
+            QString query = "INSERT INTO IVA (idregistroiva, idtipoiva, baseiva) VALUES ("+m_idRegistroIva+", "+cur->valor("idtipoiva")+", "+m_baseIva+")";
+            conexionbase->ejecuta(query);
+        }// end if
+        delete cur;
+        conexionbase->commit();
     }// end if
     if (qName == "IDTIPOIVA" && tagpadre == "RIVA")
-    	m_idTipoIva = cadintermedia;
-    if (qName == "NOMBRETIPOIVA" && tagpadre == "RIVA") 
-    	m_nombreTipoIva = cadintermedia;
+        m_idTipoIva = cadintermedia;
+    if (qName == "NOMBRETIPOIVA" && tagpadre == "RIVA")
+        m_nombreTipoIva = cadintermedia;
     if (qName == "BASEIVA" && tagpadre == "RIVA")
-    	m_baseIva = cadintermedia;
-	    
+        m_baseIva = cadintermedia;
+
     cadintermedia = "";
     return TRUE;
 }// end endElement
 
 
 bool StructureParser::characters( const QString& n1) {
-//    fprintf( stderr,"[%s]", (const char*)n1);
+    //    fprintf( stderr,"[%s]", (const char*)n1);
     cadintermedia += n1;
     return TRUE;
 }// end endElement

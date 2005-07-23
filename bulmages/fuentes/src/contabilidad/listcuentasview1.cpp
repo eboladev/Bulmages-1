@@ -107,7 +107,7 @@ int listcuentasview1::inicializa( ) {
 
     ListView1->clear();
 
-    QString query = "SELECT * FROM cuenta where padre ISNULL ORDER BY padre";
+    QString query = "SELECT * FROM cuenta where padre ISNULL OR PADRE=0 ORDER BY padre";
     cursoraux1 = conexionbase->cargacursor(query,"elquery2");
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").ascii());
@@ -151,11 +151,10 @@ int listcuentasview1::inicializa( ) {
     while (!cursoraux2->eof()) {
         padre = atoi(cursoraux2->valor("padre").ascii());
         idcuenta1 = atoi(cursoraux2->valor("idcuenta").ascii());
-        fprintf(stderr,"Cuentas de subnivel:%d",padre);
+        fprintf(stderr,"Cuentas de subnivel:%d\n",padre);
         if (padre != 0) {
             it = new QListViewItem(Lista1[padre]);
             Lista1[idcuenta1]=it;
-
             it->setText(ccuenta,cursoraux2->valor("codigo"));
             it->setText(cdesccuenta, cursoraux2->valor("descripcion"));
             idcuenta = atoi(cursoraux2->valor("idcuenta").ascii());
@@ -179,7 +178,6 @@ int listcuentasview1::inicializa( ) {
                 it->setPixmap(ccuenta, QPixmap(cingresos));
             else if (cursoraux2->valor("tipocuenta") == "5")
                 it->setPixmap(ccuenta, QPixmap(cgastos));
-
             it->setOpen(true);
         }// end if
         cursoraux2->siguienteregistro();

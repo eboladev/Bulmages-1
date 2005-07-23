@@ -96,6 +96,7 @@ private:
 	QString m_bloqueadaCuenta;
 	QString m_nodebeCuenta;
 	QString m_nohaberCuenta;
+	QString m_tipoCuenta;
 	/// Variables usadas para almacenar los datos del registro de IVA
     	QString m_idRegistroIva;   
     	QString m_rIvaContrapartida;
