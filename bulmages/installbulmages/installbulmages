@@ -212,7 +212,7 @@ else
 #                PGDIR="0"
 #                mensaje "No se encuentra el archivo de configuracion de postgresql.\n Esto puede ser debido a que no este instalado o a que no sea una distribucion con el directorio postgresql desconocido. Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
 #                tiempo
-        fi
+
 
 # 2 comento todas las lineas referentes al pg_hba.conf; desde ahora la configuración del postgres no se toca en la instalacion.
 
