@@ -7,7 +7,9 @@ LANGUAGE = C++
 TARGETDEPS += ../../bulmalib/libbulmalib.a 
 LIBS += ../../bulmalib/libbulmalib.a \
         -lpq 
-INCLUDEPATH += ../../bulmalib 
+INCLUDEPATH += ../../bulmalib  \
+	       ../../bulmalib/.ui \
+	       ../../bulmalib/.moc
 DEFINES = REPORTS 
 TARGET = ../../installbulmages/bulmafact 
 CONFIG += release \
