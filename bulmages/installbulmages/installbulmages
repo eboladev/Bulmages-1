@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############################################################################
-# Script de instalación de BulmaGés
-# (C) Tomeu Borrás, Septiempbre 2004
+# Script de instalaciï¿½ de BulmaGï¿½
+# (C) Tomeu Borrï¿½, Septiempbre 2004
 # Este documento es GPL
 #------------------------------------------------------------------------------
 # Parametros
@@ -43,25 +43,25 @@ rm /tmp/error.txt
 fi
 
 
-# Esta función presenta mensajes por pantalla
+# Esta funciï¿½ presenta mensajes por pantalla
 function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$2" "$1"  "$3"
    else
-      dialog --title "Instalación de BulmaGés v0.4.9" --backtitle "Asociación Iglues" --msgbox "$1" 10 60
+      dialog --title "Instalaciï¿½ de BulmaGï¿½ v0.4.9" --backtitle "Asociaciï¿½ Iglues" --msgbox "$1" 10 60
    fi
 }
 
-# Esta función presenta mensajes.
+# Esta funciï¿½ presenta mensajes.
 function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e  "$2" "$1"  "$3"
    else
-      dialog  --title "Instalación de BulmaGés v0.4.9" --backtitle "Asociación Iglues" --infobox "$1" 10 60
+      dialog  --title "Instalaciï¿½ de BulmaGï¿½ v0.4.9" --backtitle "Asociaciï¿½ Iglues" --infobox "$1" 10 60
    fi
 }
 
-#Esta función crea usuarios que van a manejar la base de datos.
+#Esta funciï¿½ crea usuarios que van a manejar la base de datos.
 function lee() {
         if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
                 echo -e  "\033[33m""Indique el usuario que va a trabajar normalmente con el programa:"  "\033[0m"
@@ -110,24 +110,22 @@ touch /tmp/errores.txt
 
 #Comprobamos que estamos en el directorio adecuado
 if [ ! -e ./installbulmages ]; then
- mensaje "Directorio incorrecto. La instalación debe ejecutarse desde el directorio donde se encuentra el script. \n"
+ mensaje "Directorio incorrecto. La instalaciÃ³n debe ejecutarse desde el directorio donde se encuentra el script. \n"
  exit 1
 fi
 
 
-#Comprobamos que es una Debian y tiene la libreria adecuada
-if [ -e /usr/lib/libqt-mt.so.3 ]; then
-    export QTDIR=/usr
-fi
+
 
 #Comprobamos que existe la libreria de qt adecuada.
-if [ ! -e ${QTDIR}/lib/libqt-mt.so.3 ]; then
-        mensaje "Libreria de Qt libqt.so.3 no está instalada o no se encuentra en ${QTDIR} \n"
-        exit 1
+LANG=`locate libqt-mt.so.3`
+if [ "$LANG" = "" ]; then
+	mensaje "Libreria de Qt libqt.so.3 no estÃ¡ instalada o no se encuentra. \n"
+	exit 1
 fi
 
 
-# Distinguimos entre una instalación y una actualización
+# Distinguimos entre una instalaciï¿½ y una actualizaciï¿½
 info "Comprobando versiones anteriores. \n" "\033[32m" "\033[0m"
 tiempo
 
@@ -142,43 +140,8 @@ if [ -e /etc/bulmages.conf ]; then
       mkdir /tmp/backup
    fi
 
-#  Hacemos una actualizacion de las bases de datos.
-#   su - postgres -c "echo -e \"\\pset tuples_only \n select nombredb from empresa;\" | psql metabd" > /tmp/listdb.lst
-#   for x in `tail +2 /tmp/listdb.lst`
-#   do
-#      info "Efectuando cambios sobre la base de datos $x \n Realizando copia de seguridad. \n"
-#      tiempo
-#      su - postgres -c "pg_dump $x" > /tmp/backup/$x.pgdump
-#      for y in `ls dbmodels/actualizar/rev-*.sql | sort`
-#      do
-#         info "Evaluamos el archivo de revision:\n\n $y"
-#         if [ ! -e /usr/share/bulmages/$y ]; then
-#           su - postgres -c "psql $x "  < $y  2>> /tmp/errores.txt >> /tmp/errores.txt
-#           info "Actualizando la base de datos $x con la revision version $y"
-#           tiempo
-#         fi
-#      done
-#      linea
-#   done
 
-#   info "Efectuando cambios sobre la metabase."
-#   tiempo
-
-
-
-#   for y in `ls dbmodels/actualizar/revmeta-*.sql | sort`
-#   do
-#      info "Evaluamos la revision $y."
-#      if [ ! -e /usr/share/bulmages/$y ]; then
-#         su - postgres -c "psql metabd " < $y 2>> /tmp/errores.txt >> /tmp/errores.txt
-#        info "Actualizando a la version $y"
-#        tiempo
-#      fi
-#   done
-#   linea
-
-
-   # También actualizarmos el fichero de backup.
+   # Tambiï¿½ actualizarmos el fichero de backup.
    info "Realizando backup del archivo de configuracion."
    tiempo
    cp /etc/bulmages.conf bulmages.conf.old
@@ -194,53 +157,7 @@ if [ -e /etc/bulmages.conf ]; then
    # Presentamos los errores acaecidos
    cat /tmp/errores.txt | grep ERROR
 else
-# Se trata de una instalación nueva
-        # Miramos donde está pg_hba.conf según distribuciones (habrá que discernir en más distros)
 
-# 1 comento todas las lineas referentes al pg_hba.conf; desde ahora la configuración del postgres no se toca en la instalacion.
-
-#        if [ -e /var/lib/postgresql/data/pg_hba.conf ]; then
-#                # GENTOO lo instala aquí
-#                PGDIR="/var/lib/postgresql/data"
-#        elif [ -e /var/lib/pgsql/data  ]; then
-#		# MANDRIVA/MANDRAKE lo instala aquí
-#		PGDIR="/var/lib/pgsql/data"
-#	elif [ -e /etc/postgresql/pg_hba.conf ]; then		
-#                # el RESTO de DISTROS (no sé si en todas las demás será aquí)
-#                PGDIR="/etc/postgresql"
-#        else
-#                PGDIR="0"
-#                mensaje "No se encuentra el archivo de configuracion de postgresql.\n Esto puede ser debido a que no este instalado o a que no sea una distribucion con el directorio postgresql desconocido. Sin embargo continuamos con la instalacion, ya que este error puede arreglarlo a posteriori."
-#                tiempo
-#        fi
-
-# 2 comento todas las lineas referentes al pg_hba.conf; desde ahora la configuración del postgres no se toca en la instalacion.
-
-        # Vamos a echar un vistacillo al pg_hba.conf
-#        if [ ! $PGDIR = "0" ]; then
-#               info "Revisando archivo pg_hba.conf"
-#                PGA=`cat $PGDIR/pg_hba.conf | grep reject | wc -l`
-#                if [ ! "$PGA" -eq "0" ]; then
-#                        mensaje "Alerta: Revise el archivo $PGDIR/pg_hba.conf, ya que puede tener restricciones de permisos.\n $PGA"
-#                        tiempo
-#                        dialog --yesno "Si lo desea podemos instalar una copia personalizada del archivo pg_hba.conf  que configura los permisos de postgres. (Puede que con esta opcion pierda seguridad). \n" 15 60
-#                        case $? in
-#                          0)
-#                           info "Modificando  la configuracion de postgres. \n"
-#                           mv $PGDIR/pg_hba.conf $PGDIR/pg_hba.conf.old
-#                           cp pg_hba.conf $PGDIR/pg_hba.conf
-#                           info "Reiniciando Postgres. \n"
-#                           /etc/init.d/postgresql restart >/dev/null
-#                           tiempo;;
-#                          1)
-#                           tiempo;;
-#                          255)
-#                           tiempo;;
-#                        esac
-#                else
-#                        mensaje "pg_hba es correcto"
-#                fi
-#        fi
 
 # Hacemos una insercion inicial de las bases de datos.
    info "Inicializando directorio /usr/share/bulmages.\n"
@@ -298,11 +215,11 @@ info "Creando bases de datos del sistema y empresas de ejemplo. \n"
 tiempo
 
 # Creamos las bases de datos para bulmacont.
-   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bulmages 2 Bulmages 2004"
-   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bgplangcont 1 \"Plan Contable Vacio\" 2004"
+   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bulmages 2 Bulmages 2005"
+   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bgplangcont 1 \"Plan Contable Vacio\" 2005"
 
 # Creamos las bases de datos para bulmafact.
-   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmafact $ptexto bulmafact 1 \"Facturacion Vacia\" 2004 metabd"
+   su - postgres -c "/usr/share/bulmages/dbmodels/creabulmafact $ptexto bulmafact 1 \"Facturacion Vacia\" 2005 metabd"
 
    # Tratamos el archivo de configuracion
    info "Instalando la nueva version del archivo de configuracion. \n"
@@ -312,7 +229,7 @@ tiempo
    cat /tmp/errores.txt | grep ERROR
 
 
-   # Dejamos que la inserción del usuario la haga una función y asi encapsulamos un poco.
+   # Dejamos que la inserciï¿½ del usuario la haga una funciï¿½ y asi encapsulamos un poco.
    lee
 fi
 

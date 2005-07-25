@@ -1,9 +1,9 @@
 #!/bin/bash
-#  (C) Tomeu Borrás Riera, Setiembre 2004
+#  (C) Tomeu Borrï¿½ Riera, Setiembre 2004
 # Lo ejecuta un usuario con privilegios para crear bases de datos. Si no no funciona.
 #
 # Este script se encarga de crear bases de datos de bulmages.
-# para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos que será)
+# para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos que serï¿½
 # Este script no se encarga de hacer las inserciones oportunas en la metabd.
 # Aunque es una tarea muy sencilla que puede hacer posteriormente.
 # PARAMETROS:
@@ -15,8 +15,8 @@
 #               $4 Nombre de la Empresa.
 #               $5 Ejercicio (ano)
 #
-# La diferencia entre este script y el anterior es que este no hace falta que se ejecute como ROOT
-# ------------------------------------------------------------------------------------------------
+# La diferencia entre este script y el installbulmages es que este no hace falta que se ejecute como ROOT
+# -------------------------------------------------------------------------------------------------------
 
 
 #Buscamos el parametro para saber si es texto o no
@@ -28,7 +28,7 @@ else
   ptexto="--dialog"
 fi
 
-#Si el número de parametros no es el correcto salimos con un mensaje de error.
+#Si el nmero de parametros no es el correcto salimos con un mensaje de error.
 if [ "$5" = "" ]; then
    echo "creabulmages (--texto | --dialog) nombre (0 | 1 | 2) nomempresa ejercicio"
    exit
@@ -39,7 +39,7 @@ function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog --title "Creación Base de Datos" --backtitle "Asociación Iglues" --msgbox "$1" 15 60
+      dialog --title "CreaciÃ³n Base de Datos" --backtitle "AsociaciÃ³n Iglues" --msgbox "$1" 15 60
    fi
 }
 
@@ -48,7 +48,7 @@ function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog  --title "Creación Base de Datos" --backtitle "Asociación Iglues" --infobox "$1" 10 60
+      dialog  --title "CreaciÃ³n Base de Datos" --backtitle "AsociaciÃ³n Iglues" --infobox "$1" 10 60
    fi
 }
 
@@ -57,7 +57,7 @@ function tiempo {
 }
 
 function linea {
-   if [ ! -e /usr/bin/dialog ]; then
+   if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
      echo -e "\033[32m----------------------------------------------\033[0m\n"
    fi
 }
@@ -77,32 +77,38 @@ info "Creamos la base de datos:$2 \n $4"
 linea
 tiempo
 
-dropdb  $2 2>> /tmp/error.txt > /dev/null
-createdb -E SQL_ASCII $2 2>> /tmp/errores1.txt > /dev/null
+LANG=`psql -l | grep $2`
+if [ "$LANG" != "" ]; then
+	mensaje "No se puede crear la base de datos $2 porque ya existe en el sistema"
+	exit 1
+fi;
+
 
 info "Comprobamos la existencia de PLPGSQL"
-
    LANG=`locate plpgsql.so`
-   if [ ! $LANG ]; then
+   if [ "$LANG" = "" ]; then
       mensaje "PostgreSQL no esta bien instalado o la distribucion no es una \n de las soportadas por el instalador. \
    No se ha encontrado la libreria plpgsql.so necesaria para instalar las \n bases de datos
    Por favor, localicela e intente una instalacion manual\n"
       exit 1
    fi
-#fi
+
+
+createdb -E SQL_ASCII $2 2>> /tmp/errores1.txt > /dev/null
+
 
 # Si no ha salido en el exit 1 es que si ha encontrado el plpgsql y continuamos
-
-if [ "$3" = "1" -o "$3" = "2" ]; then
+if [ "$3" = "1" -o "$3" = "2" -o "$3" = "0" ]; then
 	info "Importamos el esquema de base de datos de una empresa. \n"
 	tiempo
 	psql $2 < crear/bulmages/bulmages_schema.sql 2>> /tmp/errores1.txt > /dev/null
 fi
 
 
+
 if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo, para dejar la empresa con un plan contable vacio.
-   info "Cargamos el conjunto mínimo de datos. \n Plan contable simple. \n"
+   info "Cargamos el conjunto mï¿½imo de datos. \n Plan contable simple. \n"
    psql $2 < crear/bulmages/t_configuracion_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_grupo_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data.sql 2>> /tmp/errores1.txt > /dev/null
@@ -142,11 +148,11 @@ tiempo
 
 DBS=`cat /tmp/errores1.txt | grep ERROR`
 if [ "$DBS" ]; then
-   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortará la instalación. Para mas información consulte en bulmages@bulma.net. \n"
+   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortarï¿½la instalaciï¿½. Para mas informaciï¿½ consulte en bulmages@bulma.net. \n"
    dropdb $2
    exit 1
 else
-   info "La instalación de la base de datos $2 $4 ha sido un éxito. \n"
+   info "La instalaciï¿½ de la base de datos $2 $4 ha sido un ï¿½ito. \n"
   if [ -e /tmp/errores1.txt ]; then
     rm /tmp/errores1.txt
   fi

@@ -14,7 +14,7 @@ function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog --title "Desinstalación de BulmaGés v 0.4.9" --backtitle "Asociación Iglues" --msgbox "$1" 10 60
+      dialog --title "DesinstalaciÃ³n de BulmaGÃ©s v 0.5.1" --backtitle "AsociaciÃ³n Iglues" --msgbox "$1" 10 60
    fi
 }
 
@@ -23,7 +23,7 @@ function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog  --title "Desinstalación de BulmaGés v 0.4.9" --backtitle "Asociación Iglues" --infobox "$1" 10 60
+      dialog  --title "DesinstalaciÃ³n de BulmaGÃ©s v 0.5.1" --backtitle "AsociaciÃ³n Iglues" --infobox "$1" 10 60
    fi
 }
 
@@ -32,11 +32,11 @@ function tiempo {
   sleep 1.5
 }
 
-info "BulmaGés esta siendo desinstalado"
+info "BulmaGÃ©s esta siendo desinstalado"
 tiempo
-su postgres -c "dropdb bulmages" > /dev/null 2> /dev/null
-su postgres -c "dropdb bgplangcont"  > /dev/null 2> /dev/null
-su postgres -c "dropdb bulmafact" > /dev/null 2> /dev/null
+
+info "Borrando archivos"
+tiempo
 rm /etc/bulmages.conf
 rm -rf /usr/share/bulmages
 rm -rf /var/www/bcontaweb
@@ -48,9 +48,42 @@ rm -rf /usr/bin/bulmafact
 rm -rf /usr/bin/bulmacont
 rm -rf /usr/bin/bulmatpv
 
-rmdir -rf /usr/share/bulmages
-rmdir -rf /usr/lib/bulmages
+rm -rf /usr/lib/bulmages
 
-mensaje "BulmaGés ha sido completamente desinstalado.
-Puede que queden bases de datos en su ordenador que deberá borrar manualmente."
+
+info "Eliminando bases de datos del programa"
+tiempo
+
+LANG=`su postgres -c "psql -l" | grep bulmages`
+if [ "$LANG" != "" ]; then
+	info "Eliminando base de datos bulmages"
+	su postgres -c "dropdb bulmages" > /dev/null 2> /dev/null
+
+else
+	info "La base de datos bulmages no existe en el sistema"
+fi;
+tiempo
+
+LANG=`su postgres -c "psql -l" | grep bgplangcont`
+if [ "$LANG" != "" ]; then
+	info "Eliminando base de datos bgplangcont"
+	su postgres -c "dropdb bgplangcont"  > /dev/null 2> /dev/null
+else
+	info "La base de datos bgplangcont no existe en el sistema"
+fi;
+tiempo
+
+LANG=`su postgres -c "psql -l" | grep bulmafact`
+if [ "$LANG" != "" ]; then
+	info "Eliminando base de datos bulmafact"
+	su postgres -c "dropdb bulmafact" > /dev/null 2> /dev/null
+else
+	info "La base de datos bulmafact no existe en el sistema"
+fi;
+tiempo
+
+mensaje "BulmaGÃ©s ha sido completamente desinstalado.
+Puede que queden bases de datos en su ordenador que debe borrar manualmente."
+if [ $texto != 1 ]; then
 clear
+fi;

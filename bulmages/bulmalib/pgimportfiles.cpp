@@ -417,6 +417,15 @@ QString pgimportfiles::searchParent(QString cod) {
 }// end searchParent
 
 
+int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
+    QTextStream stream( &xmlfile );
+    stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
+    "<!DOCTYPE FUGIT>\n"
+    "<FUGIT version='0.3.1' origen='BulmaGes'"
+    " date='" << QDate().toString(Qt::ISODate) << "'>\n";
+
+    return 0;
+}
 
 
 /** \brief Esta funci� se encarga de pasar los datos de BulmaG� a XML
@@ -436,7 +445,6 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned int tipo) {
 
     /// Comprobamos que tenemos que importar cuentas o no
     if(tipo & IMPORT_CUENTAS) {
-
         /// Se exporta todo el plan contable
         query = "SELECT * FROM cuenta WHERE padre ISNULL ORDER BY codigo";
         conexionbase->begin();
@@ -505,9 +513,7 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned int tipo) {
     if (tipo & IMPORT_TIPOSIVA) {
         /// Se vana exportar los tipos de IVA
         query = "SELECT * from tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta";
-        conexionbase->begin();
-        cursor2 *curtiva = conexionbase->cargacursor(query, "querytiva");
-        conexionbase->commit();
+        cursor2 *curtiva = conexionbase->cargacursor(query);
         while (!curtiva->eof()) {
             stream << "<TIPOIVA>\n";
             stream << "\t<IDTIPOIVA>"       << XMLProtect(curtiva->valor("idtipoiva"))      << "</IDTIPOIVA>\n";
@@ -523,16 +529,16 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned int tipo) {
 
     if (tipo & IMPORT_ASIENTOS) {
         /// Hacemos la exportaci� de asientos
+	/// Montamos el query
         query = "SELECT * FROM asiento WHERE 1=1 ";
         if (m_fInicial != "")
             query += " AND asiento.fecha >= '"+m_fInicial+"'";
         if (m_fFinal != "")
             query += " AND asiento.fecha <= '"+m_fFinal+"'";
         query +=" ORDER BY asiento.fecha, asiento.idasiento ";
-        conexionbase->begin();
-        cursor2 *curas = conexionbase->cargacursor(query, "masquery");
-        conexionbase->commit();
-        int i =0;
+        cursor2 *curas = conexionbase->cargacursor(query);
+        int i =0; 
+	/// Iteramos
         numreg = curas->numregistros()+1;
         while (!curas->eof()) {
             alerta(i++,numreg);

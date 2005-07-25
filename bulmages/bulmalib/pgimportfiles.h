@@ -60,6 +60,7 @@ public:
 	int bulmages2Contaplus(QFile &, QFile &);
 	/// Esta funci� pasa datos de una empresa al formato XML.
 	int bulmages2XML(QFile &, unsigned int tipo = IMPORT_TODO);
+	int bulmafact2XML(QFile &, unsigned int tipo = IMPORT_TODO);
 	/// Esta funci� pasa datos de XML a bulmag�.
 	int XML2Bulmages(QFile &, unsigned int tip = IMPORT_TODO);
 	QString searchParent(QString);

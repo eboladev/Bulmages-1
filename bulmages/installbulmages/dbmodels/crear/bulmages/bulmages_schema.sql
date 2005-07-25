@@ -37,12 +37,12 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 
--- La tabla de configuración.
+-- La tabla de configuraciï¿½.
 -- En esta tabla se guardan parametros que el programa va a utilizar.
--- Como por ejemplo el numero de dígitos por defecto de las cuentas o el asiento inteligente que se enlaza con
+-- Como por ejemplo el numero de dï¿½itos por defecto de las cuentas o el asiento inteligente que se enlaza con
 -- facturacion.
 -- Tiene tres campos
--- idconfiguracion: el identificador (No tiene ningún uso especial).
+-- idconfiguracion: el identificador (No tiene ningn uso especial).
 -- nombre: El nombre del parametro de configuracion.
 -- valor: El valor que toma dicho parametro.
 CREATE TABLE configuracion (
@@ -80,7 +80,7 @@ CREATE TABLE grupo (
 -- nombreent_cuenta: Si hay una entidad ligada a la cuenta aqui ponemos su nombre.
 -- cifent_cuenta: Si hay una entidad ligada a la cuenta aqui ponemos su CIF
 -- dirent_cuenta: Direccion de una entidad ligada con la cuenta
--- cpent_cuenta: Código Postal de una entidad ligada con la cuenta
+-- cpent_cuenta: Cï¿½igo Postal de una entidad ligada con la cuenta
 -- telent_cuenta: Telefono de una entidad ligada con la cuetna.
 -- coment_cuenta: Comentarios de una entidad ligada con la cuenta.
 -- bancoent_cuenta: Cuenta bancaria de una entidad ligada con la cuenta.
@@ -168,10 +168,10 @@ CREATE TABLE diario (
     descripcion character varying(100)
 );
 
-\echo "La tabla diario está en desuso, aunque de momento se crea."
+\echo "La tabla diario estï¿½en desuso, aunque de momento se crea."
 
 
--- El campo ordenasiento se puede dejar en nulo sólo porque luego el trigger lo reasigna. Con un default sería más adecuado pero
+-- El campo ordenasiento se puede dejar en nulo sï¿½o porque luego el trigger lo reasigna. Con un default serï¿½ mï¿½ adecuado pero
 -- no se como se implementa un default tan complicado.
 CREATE TABLE asiento (
     idasiento serial PRIMARY KEY,
@@ -253,7 +253,7 @@ CREATE TABLE borrador (
 --                      0 - dias
 --                      1 - semanas
 --                      2 - meses
---                      3 - años
+--                      3 - aï¿½s
 -- plazoentrerecibofpago numero de plazos en los siguientes recibos
 -- tipoplazoentrerecibofpago (Igual que tipoplazoprimerpagofpago)
 
@@ -290,7 +290,7 @@ CREATE TABLE tipoiva (
 -- Name: registroiva; Type: TABLE; Schema: public; Owner: postgres
 --
 -- ffactura fecha de la factura.
--- El campo iva es un campo de sólo lectura que se actualiza con los valores del IVA.
+-- El campo iva es un campo de sï¿½o lectura que se actualiza con los valores del IVA.
 -- El campo factemitida indica si es una factura emitida o recibida.
 
 CREATE TABLE registroiva (
@@ -316,8 +316,8 @@ CREATE TABLE registroiva (
 
 -- tipoprevcobro indica si es un cobro (true) o un pago (false).
 -- fpagoprevcobro es un identificador a la otra tabla de Formas de Pago.
--- idcuenta La cuenta sobre la que se hará el cobro / pago.
--- idasiento Asiento de cobro (Si está hecho).
+-- idcuenta La cuenta sobre la que se harï¿½el cobro / pago.
+-- idasiento Asiento de cobro (Si estï¿½hecho).
 -- cantidadprevistaprevcobro Cantidad Prevista del cobro.
 -- cantidadprevcobro         Cantidad Cobrada.
 -- fprevistaprevcobro        Fecha en que se prevee el cobro / pago.
@@ -561,7 +561,7 @@ DECLARE
 BEGIN
     SELECT INTO apt * FROM apunte WHERE idapunte= midapunte;
 -- Este metodo de buscar contrapartidas es poco eficaz por lo que de momento
--- Tenemos desabilitada la opción de las contrapartidas asi como debe ser.    
+-- Tenemos desabilitada la opciï¿½ de las contrapartidas asi como debe ser.    
 -- MUCHO OJO, PUEDE TENER GRAVES CONSECUENCIAS
     IF apt.contrapartida ISNULL THEN
 --          RETURN apt.idcuenta;
@@ -580,13 +580,13 @@ END;
 
 
     
--- Creo que haciendo una función que cierre todas las contrapartidas de un asiento dado tendré muchos
+-- Creo que haciendo una funciï¿½ que cierre todas las contrapartidas de un asiento dado tendrï¿½muchos
 -- mejores rendimientos que mediante las funciones particulares y al cerrar el asiento se pueden 
 -- Recalcular todos los cierres.
 
--- Recorremos el asiento en una única pasada y almacenamos contrapartidas de paso (maximas) al llegar a un punto de descuadre cero asignamos contrapartidas e inicializamos marcadores.
--- Esta función es invocada desde cierraasiento ya que al cerrar el asiento se calculan las contrapartidas de todos los apuntes.
--- Esta es de momento la forma más eficiente de calcular contrapartidas. 
+-- Recorremos el asiento en una nica pasada y almacenamos contrapartidas de paso (maximas) al llegar a un punto de descuadre cero asignamos contrapartidas e inicializamos marcadores.
+-- Esta funciï¿½ es invocada desde cierraasiento ya que al cerrar el asiento se calculan las contrapartidas de todos los apuntes.
+-- Esta es de momento la forma mï¿½ eficiente de calcular contrapartidas. 
 
 CREATE FUNCTION contraasiento(integer) RETURNS NUMERIC(12,2)
    AS '
@@ -705,7 +705,7 @@ BEGIN
             descuadre := descuadre + cont.debe;
             descuadre := descuadre - cont.haber;
             -- Si es el descuadre inicializamos las variables.
-            IF (descuadre = 0) THEN  -- Asi nos aseguramos que valores positivos también entran.
+            IF (descuadre = 0) THEN  -- Asi nos aseguramos que valores positivos tambiï¿½ entran.
                 IF (salidadebe = TRUE) THEN
                     RETURN apmaxdebe;
                 END IF;
@@ -788,7 +788,7 @@ BEGIN
             descuadre := descuadre + cont.debe;
             descuadre := descuadre - cont.haber;
             -- Si es el descuadre inicializamos las variables.
-            IF (descuadre*descuadre < 0.001) THEN  -- Asi nos aseguramos que valores positivos también entran.
+            IF (descuadre*descuadre < 0.001) THEN  -- Asi nos aseguramos que valores positivos tambiï¿½ entran.
                 IF (salidadebe = TRUE) THEN
                     RETURN apmaxdebe;
                 END IF;
@@ -1202,29 +1202,29 @@ BEGIN
    -- De momento, la haremos funcionar para un sistema de cuentas xxxxyyy
    SELECT INTO niveles strpos(valor, ''y'')-1 AS numx FROM configuracion WHERE nombre=''CodCuenta'';
    IF niveles.numx <> 4 THEN
-   	RAISE NOTICE ''Lo siento, pero esta función sólo funciona de momento con 4 niveles de cuentas'';
+   	RAISE NOTICE ''Lo siento, pero esta funciï¿½ sï¿½o funciona de momento con 4 niveles de cuentas'';
 	RETURN -1;
    END IF;
    
-   -- Creamos la tabla con el árbol de cuentas y sus valores (se ha considerado hasta nivel 4)
+   -- Creamos la tabla con el ï¿½bol de cuentas y sus valores (se ha considerado hasta nivel 4)
    CREATE TEMPORARY TABLE temp4 AS (SELECT n1.codigo AS cod1, n1.debe AS debe1, n1.haber AS haber1, n2.codigo AS cod2, n2.debe AS debe2, n2.haber AS haber2, n3.codigo AS cod3, n3.debe AS debe3, n3.haber AS haber3, n4.codigo AS cod4, n4.debe AS debe4, n4.haber AS haber4 FROM (SELECT idcuenta, codigo, debe, haber FROM cuenta WHERE padre IS NULL) AS n1 INNER JOIN (SELECT idcuenta, padre, codigo, debe, haber FROM cuenta) AS n2 ON n1.idcuenta=n2.padre INNER JOIN (SELECT idcuenta, padre, codigo, debe, haber FROM cuenta) AS n3 ON n2.idcuenta=n3.padre LEFT JOIN (SELECT padre, codigo, debe, haber FROM cuenta) AS n4 ON n3.idcuenta=n4.padre);
    
-   -- Ahora iremos actualizando las ramas desde las hojas hasta las raíces
-   -- Primero, tendremos en cuenta aquellas cuentas que están en un nivel 4, calculamos la suma de su nivel y subimos el dato al nivel 3
+   -- Ahora iremos actualizando las ramas desde las hojas hasta las raï¿½es
+   -- Primero, tendremos en cuenta aquellas cuentas que estï¿½ en un nivel 4, calculamos la suma de su nivel y subimos el dato al nivel 3
    CREATE TEMPORARY TABLE temp3 AS (SELECT cod1,cod2,cod3,sum(debe4) AS debe3,sum(haber4) AS haber3 FROM temp4 WHERE debe4 IS NOT NULL group by cod1,cod2,cod3 order by cod3);
-   -- Seguidamente, añadimos las hojas del nivel 3 que descartamos en la acción anterior porque no tenían cuentas hijas en el nivel 4
+   -- Seguidamente, aï¿½dimos las hojas del nivel 3 que descartamos en la acciï¿½ anterior porque no tenï¿½n cuentas hijas en el nivel 4
    INSERT INTO temp3 SELECT cod1,cod2,cod3,debe3,haber3 FROM temp4 WHERE debe4 IS NULL;
    -- Se calculan las sumas del nivel 3 y les pasamos el dato a las cuentas padre del nivel 2
    CREATE TEMPORARY TABLE temp2 AS (SELECT cod1,cod2,sum(debe3) AS debe2,sum(haber3) AS haber2 FROM temp3 group by cod1,cod2 order by cod2);
    -- Y finalmente, hacemos lo mismo con el nivel 2 y subimos las sumas al nivel 1
    CREATE TEMPORARY TABLE temp1 AS (SELECT cod1,sum(debe2) AS debe1,sum(haber2) AS haber1 FROM temp2 group by cod1 order by cod1);
 
-   -- Ahora vamos a eliminar de las tablas aquellas cuentas que no será necesario actualizar por ya estar con los valores correctos
+   -- Ahora vamos a eliminar de las tablas aquellas cuentas que no serï¿½necesario actualizar por ya estar con los valores correctos
    CREATE TEMPORARY TABLE nivel1 AS (SELECT t1.cod1,t1.debe1,t1.haber1 FROM (SELECT * FROM temp1) AS t1 INNER JOIN (SELECT codigo,debe,haber FROM cuenta) AS t2 ON t1.cod1=t2.codigo WHERE t1.debe1<>t2.debe OR t1.haber1<>t2.haber);
    CREATE TEMPORARY TABLE nivel2 AS (SELECT t1.cod2,t1.debe2,t1.haber2 FROM (SELECT * FROM temp2) AS t1 INNER JOIN (SELECT codigo,debe,haber FROM cuenta) AS t2 ON t1.cod2=t2.codigo WHERE t1.debe2<>t2.debe OR t1.haber2<>t2.haber);
    CREATE TEMPORARY TABLE nivel3 AS (SELECT t1.cod3,t1.debe3,t1.haber3 FROM (SELECT * FROM temp3) AS t1 INNER JOIN (SELECT codigo,debe,haber FROM cuenta) AS t2 ON t1.cod3=t2.codigo WHERE t1.debe3<>t2.debe OR t1.haber3<>t2.haber);
    
-   -- Como colofón, hay que introducir los valores actualizados en las cuentas padre.
+   -- Como colofï¿½, hay que introducir los valores actualizados en las cuentas padre.
    FOR cta IN SELECT * FROM nivel1 ORDER BY cod1 LOOP
 	RAISE NOTICE ''Cuenta %	-> debe: %	haber: %'',cta.cod1,cta.debe1,cta.haber1;
 	UPDATE cuenta SET debe=cta.debe1, haber=cta.haber1 WHERE idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo=cta.cod1);
@@ -1330,7 +1330,7 @@ END;
     LANGUAGE plpgsql;
 
 CREATE TRIGGER nuevo_apunte1
-    BEFORE UPDATE ON apunte
+    AFTER UPDATE ON apunte
     FOR EACH ROW
     EXECUTE PROCEDURE disminuye_valor();
 
@@ -1376,7 +1376,7 @@ END;
 
 
 CREATE TRIGGER nuevo_apunte2
-    BEFORE DELETE ON apunte
+    AFTER DELETE ON apunte
     FOR EACH ROW
     EXECUTE PROCEDURE disminuye_valor1();
 
@@ -1702,11 +1702,11 @@ END;
 
 
 -- **********************************************************************
--- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCIÓN DE ERRORES.
+-- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCIï¿½ DE ERRORES.
 -- **********************************************************************
 -- **********************************************************************
 
--- Las comprobaciones saltan como disparadores y abortan la ejecución si no se cumplen las restricciones.
+-- Las comprobaciones saltan como disparadores y abortan la ejecuciï¿½ si no se cumplen las restricciones.
 --DROP TRIGGER restriccionescuentatrigger ON cuenta CASCADE;
 --DROP FUNCTION restriccionescuenta();
 
@@ -1716,7 +1716,7 @@ AS '
 DECLARE
 BEGIN
         IF NEW.codigo = '''' THEN
-                RAISE EXCEPTION '' No se puede dejar el código de cuenta vacio '';
+                RAISE EXCEPTION '' No se puede dejar el cï¿½igo de cuenta vacio '';
         END IF;
 	IF NEW.descripcion = '''' THEN
 		RAISE EXCEPTION '' Nombre de cuenta vacio '';
@@ -1783,7 +1783,7 @@ BEGIN
 	
 	SELECT INTO ord * FROM borrador WHERE idasiento = NEW.idasiento AND orden=NEW.orden AND idborrador <> NEW.idborrador;
 	IF FOUND THEN
-		RAISE EXCEPTION '' El campo orden está duplicado '';
+		RAISE EXCEPTION '' El campo orden estï¿½duplicado '';
 	END IF;
 	
 	SELECT INTO  ej  * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo =0;
