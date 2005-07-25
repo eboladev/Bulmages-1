@@ -63,6 +63,9 @@ CREATE TABLE cliente (
 #include <qmessagebox.h>
 #include "qtable1.h"
 #include <qlineedit.h>
+#include "pgimportfiles.h"
+#include <qfiledialog.h>
+
 
 #define COL_IDCLIENTE 0
 #define COL_NOMCLIENTE 1
@@ -84,7 +87,7 @@ CREATE TABLE cliente (
 #define EDIT_MODE 0
 
 ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int flag)
- : ClientsListBase(parent, name, flag) {
+ : ClientsListBase(parent, name, flag) , pgimportfiles(comp){
    companyact = comp;
    m_idclient="";
    m_cifclient="";
@@ -238,4 +241,27 @@ void ClientsList::s_borrarCliente() {
    inicializa();
 }// end s_borrarCliente
 
+
+void ClientsList::s_exportar() {
+    QFile filexml (QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Plan Contable (*.xml)", this, "select file", "Elija el Archivo"));
+    if(filexml.open(IO_WriteOnly)) {
+        bulmafact2XML(filexml, IMPORT_CLIENTES);
+        filexml.close();
+    } else {
+        fprintf(stderr,"ERROR AL ABRIR ARCHIVO\n");
+    }// end if
+}// 
+
+
+void ClientsList::s_importar() {
+    QFile filexml (QFileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Plan Contable (*.xml)", this, "select file", "Elija el Archivo"));
+    if (filexml.open(IO_ReadOnly)) {
+//        XML2Bulmages(filexml, IMPORT_CUENTAS);
+	
+        filexml.close();
+        inicializa();
+    } else {
+        fprintf(stderr,"ERROR AL ABRIR ARCHIVO\n");
+    }// end if
+}
 

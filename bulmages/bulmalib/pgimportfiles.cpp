@@ -423,6 +423,87 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
     "<!DOCTYPE FUGIT>\n"
     "<FUGIT version='0.3.1' origen='BulmaGes'"
     " date='" << QDate().toString(Qt::ISODate) << "'>\n";
+	if (tipo & IMPORT_CLIENTES) {
+	      QString query = "SELECT * FROM cliente ORDER BY cifcliente";
+  	      cursor2 *curc = conexionbase->cargacursor(query);
+        	while (!curc->eof()) {
+			stream << "<CLIENTE>\n";
+			stream << "\t<IDCLIENTE>"       << XMLProtect(curc->valor("idcliente"))      << "</IDCLIENTE>\n";
+			stream << "\t<NOMCLIENTE>"      << XMLProtect(curc->valor("nomcliente"))        << "</NOMCLIENTE>\n";
+			stream << "\t<NOMALTCLIENTE>"   << XMLProtect(curc->valor("nomaltcliente"))   << "</NOMALTCLIENTE>\n";
+			stream << "\t<CIFCLIENTE>"  << XMLProtect(curc->valor("cifcliente")) << "</CIFCLIENTE>\n";
+			stream << "\t<BANCOCLIENTE>"    << XMLProtect(curc->valor("bancocliente"))      << "</BANCOCLIENTE>\n";
+			stream << "\t<DIRCLIENTE>"     << XMLProtect(curc->valor("dircliente"))        << "</DIRCLIENTE>\n";
+			stream << "\t<POBLCLIENTE>"    << XMLProtect(curc->valor("poblcliente"))   << "</POBLCLIENTE>\n";
+			stream << "\t<CPCLIENTE>"  << XMLProtect(curc->valor("cpcliente")) << "</CPCLIENTE>\n";
+			stream << "\t<TELCLIENTE>"  << XMLProtect(curc->valor("telcliente")) << "</TELCLIENTE>\n";
+			stream << "\t<FAXCLIENTE>"    << XMLProtect(curc->valor("faxcliente"))      << "</FAXCLIENTE>\n";
+			stream << "\t<MAILCLIENTE>"   << XMLProtect(curc->valor("mailcliente"))        << "</MAILCLIENTE>\n";
+			stream << "\t<URLCLIENTE>"    << XMLProtect(curc->valor("urlcliente"))   << "</URLCLIENTE>\n";
+			stream << "\t<FALTACLIENTE>"  << XMLProtect(curc->valor("faltacliente")) << "</FALTACLIENTE>\n";
+			stream << "\t<FBAJACLIENTE>"  << XMLProtect(curc->valor("fbajacliente")) << "</FBAJACLIENTE>\n";
+			stream << "\t<COMENTCLIENTE>"    << XMLProtect(curc->valor("comentcliente"))      << "</COMENTCLIENTE>\n";
+			stream << "\t<INACTIVOCLIENTE>"  << XMLProtect(curc->valor("inactivocliente"))        << "</INACTIVOCLIENTE>\n";
+			stream << "\t<PROVCLIENTE>"    << XMLProtect(curc->valor("provcliente"))   << "</PROVCLIENTE>\n";
+			stream << "</CLIENTE>\n";
+			curc->siguienteregistro();
+		}// end while
+		delete curc;
+	}// end if
+
+	if (tipo & IMPORT_PROVEEDORES) {
+	      QString query = "SELECT * FROM proveedor ORDER BY cifproveedor";
+  	      cursor2 *curc = conexionbase->cargacursor(query);
+        	while (!curc->eof()) {
+			stream << "<PROVEEDOR>\n";
+			stream << "\t<IDPROVEEDOR>"    << XMLProtect(curc->valor("idproveedor"))   << "</IDPROVEEDOR>\n";
+			stream << "\t<NOMPROVEEDOR>"    << XMLProtect(curc->valor("nomproveedor"))   << "</NOMPROVEEDOR>\n";
+			stream << "\t<NOMALTPROVEEDOR>"    << XMLProtect(curc->valor("nomaltproveedor"))   << "</NOMALTPROVEEDOR>\n";
+			stream << "\t<CIFPROVEEDOR>"    << XMLProtect(curc->valor("cifproveedor"))   << "</CIFPROVEEDOR>\n";
+			stream << "\t<CODICLIPROVEEDOR>"    << XMLProtect(curc->valor("codicliproveedor"))   << "</CODICLIPROVEEDOR>\n";
+			stream << "\t<CBANCPROVEEDOR>"    << XMLProtect(curc->valor("cbancproveedor"))   << "</CBANCPROVEEDOR>\n";
+			stream << "\t<COMENTPROVEEDOR>"    << XMLProtect(curc->valor("comentproveedor"))   << "</COMENTPROVEEDOR>\n";
+			stream << "\t<DIRPROVEEDOR>"    << XMLProtect(curc->valor("dirproveedor"))   << "</DIRPROVEEDOR>\n";
+			stream << "\t<POBLPROVEEDOR>"    << XMLProtect(curc->valor("poblproveedor"))   << "</POBLPROVEEDOR>\n";
+			stream << "\t<CPPROVEEDOR>"    << XMLProtect(curc->valor("cpproveedor"))   << "</CPPROVEEDOR>\n";
+			stream << "\t<TELPROVEEDOR>"    << XMLProtect(curc->valor("telproveedor"))   << "</TELPROVEEDOR>\n";
+			stream << "\t<FAXPROVEEDOR>"    << XMLProtect(curc->valor("faxproveedor"))   << "</FAXPROVEEDOR>\n";
+			stream << "\t<EMAILPROVEEDOR>"    << XMLProtect(curc->valor("emailproveedor"))   << "</EMAILPROVEEDOR>\n";
+			stream << "\t<URLPROVEEDOR>"    << XMLProtect(curc->valor("urlproveedor"))   << "</URLPROVEEDOR>\n";
+			stream << "\t<CLAVEPROVEEDOR>"    << XMLProtect(curc->valor("clavewebproveedor"))   << "</CLAVEPROVEEDOR>\n";
+			stream << "\t<INACTIVOPROVEEDOR>"    << XMLProtect(curc->valor("inactivoproveedor"))   << "</INACTIVOPROVEEDOR>\n";
+			stream << "</PROVEEDOR>\n";
+			curc->siguienteregistro();
+		}// end while
+		delete curc;
+	}// end if
+
+
+
+	if (tipo & IMPORT_ARTICULOS) {
+	      QString query = "SELECT * FROM articulo ORDER BY codigocompletoarticulo";
+  	      cursor2 *curc = conexionbase->cargacursor(query);
+        	while (!curc->eof()) {
+			stream << "<ARTICULO>\n";
+			stream << "\t<IDARTICULO>"    << XMLProtect(curc->valor("idarticulo"))   << "</IDARTICULO>\n";
+			stream << "\t<CODARTICULO>"    << XMLProtect(curc->valor("codarticulo"))   << "</CODARTICULO>\n";
+			stream << "\t<NOMARTICULO>"    << XMLProtect(curc->valor("nomarticulo"))   << "</NOMARTICULO>\n";
+			stream << "\t<ABREVARTICULO>"    << XMLProtect(curc->valor("abrevarticulo"))   << "</ABREVARTICULO>\n";
+			stream << "\t<OBSERARTICULO>"    << XMLProtect(curc->valor("obserarticulo"))   << "</OBSERARTICULO>\n";
+			stream << "\t<PRESENTABLEARTICULO>"    << XMLProtect(curc->valor("presentablearticulo"))   << "</PRESENTABLEARTICULO>\n";
+			stream << "\t<CONTROLSTOCKARTICULO>"    << XMLProtect(curc->valor("controlstockarticulo"))   << "</CONTROLSTOCKARTICULO>\n";
+			stream << "\t<IDTIPO_ARTICULO>"    << XMLProtect(curc->valor("idtipo_articulo"))   << "</IDTIPO_ARTICULO>\n";
+			stream << "\t<IDTIPO_IVA>"    << XMLProtect(curc->valor("idtipo_iva"))   << "</IDTIPO_IVA>\n";
+			stream << "\t<CODIGOCOMPLETOARTICULO>"    << XMLProtect(curc->valor("codigocompletoarticulo"))   << "</CODIGOCOMPLETOARTICULO>\n";
+			stream << "\t<IDFAMILIA>"    << XMLProtect(curc->valor("idfamilia"))   << "</IDFAMILIA>\n";
+			stream << "\t<STOCKARTICULO>"    << XMLProtect(curc->valor("stockarticulo"))   << "</STOCKARTICULO>\n";
+			stream << "\t<INACTIVOARTICULO>"    << XMLProtect(curc->valor("inactivoarticulo"))   << "</INACTIVOARTICULO>\n";
+			stream << "\t<PVPARTICULO>"    << XMLProtect(curc->valor("pvparticulo"))   << "</PVPARTICULO>\n";
+			stream << "</ARTICULO>\n";
+			curc->siguienteregistro();
+		}// end while
+		delete curc;
+	}// end if
 
     return 0;
 }
@@ -447,9 +528,7 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned int tipo) {
     if(tipo & IMPORT_CUENTAS) {
         /// Se exporta todo el plan contable
         query = "SELECT * FROM cuenta WHERE padre ISNULL ORDER BY codigo";
-        conexionbase->begin();
-        cursor2 *curcta = conexionbase->cargacursor(query,"elquery");
-        conexionbase->commit();
+        cursor2 *curcta = conexionbase->cargacursor(query);
         while (!curcta->eof()) {
             stream << "<CUENTA>\n";
             stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";

@@ -22,7 +22,8 @@
 
 #include "postgresiface2.h"
 
-#define IMPORT_TODO 255
+#define IMPORT_TODO 65535
+// Tipos para BulmaCont
 #define IMPORT_CUENTAS 1
 #define IMPORT_TIPOSIVA 2
 #define IMPORT_ASIENTOS 4
@@ -30,6 +31,11 @@
 #define IMPORT_BALANCES 16
 #define IMPORT_COBROS 32
 #define IMPORT_FACTURAS 64
+// Tipos para BulmaFact
+#define IMPORT_CLIENTES 128
+#define IMPORT_PROVEEDORES 256
+#define IMPORT_ARTICULOS 512
+
 
 /** @autor Tomeu Borr� Riera
   * @brief Clase para importaci� y exportaci� a distintos formatos de archivo de datos.

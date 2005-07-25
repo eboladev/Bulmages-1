@@ -22,12 +22,11 @@
 
 #include "clientslistbase.h"
 #include <qframe.h>
+#include "pgimportfiles.h"
 
 class company;
 
-
-class ClientsList : public ClientsListBase
-{
+class ClientsList : public ClientsListBase, public pgimportfiles {
  Q_OBJECT
 private:
    int m_mode;
@@ -62,7 +61,9 @@ public slots:
     virtual void s_printClients();    
     virtual void s_findClients();
     virtual void s_refreshClientes() {inicializa();};
-    
+    virtual void s_exportar();
+    virtual void s_importar();
+
     virtual void s_mostrarBusqueda() {
     	fprintf(stderr,"s_mostrarBusqueda\n");
     	if (m_busqueda->isVisible())
