@@ -28,7 +28,7 @@
                     <cstring>tab</cstring>
                 </property>
                 <attribute name="title">
-                    <string>BulmaGés</string>
+                    <string>B&amp;ulmaGés</string>
                 </attribute>
                 <vbox>
                     <property name="name">
@@ -111,7 +111,7 @@
                                     <cstring>pushButtonA_5</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Nuevo Ejercicio</string>
+                                    <string>&amp;Nuevo Ejercicio</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
                                     <string>Crea un nuevo ejercicio contable</string>
@@ -149,7 +149,7 @@
                                     <cstring>m_backup</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Hacer copia de Seguridad
+                                    <string>Hacer copia &amp;de Seguridad
  (BACKUP)</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
@@ -161,7 +161,7 @@
                                     <cstring>pushButtonA_4</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Restaurar copia
+                                    <string>Res&amp;taurar copia
  (RESTORE)</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
@@ -183,7 +183,7 @@
                                     <cstring>pushButtonA_1</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Crear Nueva Empresa</string>
+                                    <string>&amp;Crear Nueva Empresa</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
                                     <string>Crea una empresa nueva sin datos</string>
@@ -194,7 +194,7 @@
                                     <cstring>m_borrarempresa</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Borrar Empresa</string>
+                                    <string>&amp;Borrar Empresa</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
                                     <string>Borra por completo una empresa</string>
@@ -207,7 +207,10 @@
                             <cstring>pushButton32</cstring>
                         </property>
                         <property name="text">
-                            <string>Importar / Exportar Datos</string>
+                            <string>&amp;Importar / Exportar Datos</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+I</string>
                         </property>
                     </widget>
                     <spacer>
@@ -234,7 +237,7 @@
                     <cstring>TabPage</cstring>
                 </property>
                 <attribute name="title">
-                    <string>BulmaFact</string>
+                    <string>Bulma&amp;Fact</string>
                 </attribute>
                 <vbox>
                     <property name="name">
@@ -312,7 +315,7 @@
                                     <cstring>pushButtonA_61_2</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Clonar Empresa</string>
+                                    <string>&amp;Clonar Empresa</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
                                     <string>Crea una nueva empresa identica a otra existente</string>
@@ -323,7 +326,7 @@
                                     <cstring>m_backup_2</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Copia de Seguridad
+                                    <string>Copia &amp;de Seguridad
  (BACKUP)</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
@@ -345,7 +348,7 @@
                                     <cstring>pushButtonA_1_2</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Crear Nueva Empresa</string>
+                                    <string>Crear &amp;Nueva Empresa</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
                                     <string>Crea una empresa nueva sin datos</string>
@@ -356,7 +359,7 @@
                                     <cstring>m_borrarempresa_2</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Borrar Empresa</string>
+                                    <string>&amp;Borrar Empresa</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
                                     <string>Borra por completo una empresa</string>
@@ -367,7 +370,7 @@
                                     <cstring>pushButtonA_4_2</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Restaurar copia
+                                    <string>Res&amp;taurar copia
  (RESTORE)</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
@@ -375,6 +378,17 @@
                                 </property>
                             </widget>
                         </hbox>
+                    </widget>
+                    <widget class="QPushButton">
+                        <property name="name">
+                            <cstring>pushButton32_2</cstring>
+                        </property>
+                        <property name="text">
+                            <string>&amp;Importar / Exportar Datos</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+I</string>
+                        </property>
                     </widget>
                     <spacer>
                         <property name="name">
@@ -389,361 +403,7 @@
                         <property name="sizeHint">
                             <size>
                                 <width>81</width>
-                                <height>161</height>
-                            </size>
-                        </property>
-                    </spacer>
-                </vbox>
-            </widget>
-            <widget class="QWidget">
-                <property name="name">
-                    <cstring>TabPage</cstring>
-                </property>
-                <attribute name="title">
-                    <string>BContaWeb</string>
-                </attribute>
-                <vbox>
-                    <property name="name">
-                        <cstring>unnamed</cstring>
-                    </property>
-                    <widget class="QLayoutWidget">
-                        <property name="name">
-                            <cstring>layout4_3</cstring>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QLineEdit">
-                                <property name="name">
-                                    <cstring>lineEditA_1_3</cstring>
-                                </property>
-                                <property name="enabled">
-                                    <bool>true</bool>
-                                </property>
-                                <property name="paletteBackgroundColor">
-                                    <color>
-                                        <red>255</red>
-                                        <green>255</green>
-                                        <blue>0</blue>
-                                    </color>
-                                </property>
-                                <property name="text">
-                                    <string>Nom Empresa</string>
-                                </property>
-                                <property name="readOnly">
-                                    <bool>true</bool>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Nombre de la empresa</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_6_3</cstring>
-                                </property>
-                                <property name="text">
-                                    <string></string>
-                                </property>
-                            </widget>
-                            <spacer>
-                                <property name="name">
-                                    <cstring>spacer2_3</cstring>
-                                </property>
-                                <property name="orientation">
-                                    <enum>Horizontal</enum>
-                                </property>
-                                <property name="sizeType">
-                                    <enum>Expanding</enum>
-                                </property>
-                                <property name="sizeHint">
-                                    <size>
-                                        <width>211</width>
-                                        <height>21</height>
-                                    </size>
-                                </property>
-                            </spacer>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget">
-                        <property name="name">
-                            <cstring>layout2_3</cstring>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_5_3</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Nuevo Ejercicio</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Crea un nuevo ejercicio contable</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_61_3</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Clonar Empresa</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Crea una nueva empresa identica a otra existente</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>m_backup_3</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Copia de Seguridad
- (BACKUP)</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Guarda una copia de seguridad de una empresa</string>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget">
-                        <property name="name">
-                            <cstring>layout3_3</cstring>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_1_3</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Crear Nueva Empresa</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Crea una empresa nueva sin datos</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>m_borrarempresa_3</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Borrar Empresa</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Borra por completo una empresa</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_4_3</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Restaurar copia
- (RESTORE)</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Restaura la copia de seguridad de una empresa</string>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <spacer>
-                        <property name="name">
-                            <cstring>spacer9</cstring>
-                        </property>
-                        <property name="orientation">
-                            <enum>Vertical</enum>
-                        </property>
-                        <property name="sizeType">
-                            <enum>Expanding</enum>
-                        </property>
-                        <property name="sizeHint">
-                            <size>
-                                <width>51</width>
-                                <height>71</height>
-                            </size>
-                        </property>
-                    </spacer>
-                </vbox>
-            </widget>
-            <widget class="QWidget">
-                <property name="name">
-                    <cstring>TabPage</cstring>
-                </property>
-                <attribute name="title">
-                    <string>Galopin</string>
-                </attribute>
-                <vbox>
-                    <property name="name">
-                        <cstring>unnamed</cstring>
-                    </property>
-                    <widget class="QLayoutWidget">
-                        <property name="name">
-                            <cstring>layout4_4</cstring>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QLineEdit">
-                                <property name="name">
-                                    <cstring>lineEditA_1_4</cstring>
-                                </property>
-                                <property name="enabled">
-                                    <bool>true</bool>
-                                </property>
-                                <property name="paletteBackgroundColor">
-                                    <color>
-                                        <red>255</red>
-                                        <green>255</green>
-                                        <blue>0</blue>
-                                    </color>
-                                </property>
-                                <property name="text">
-                                    <string>Nom Empresa</string>
-                                </property>
-                                <property name="readOnly">
-                                    <bool>true</bool>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Nombre de la empresa</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_6_4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string></string>
-                                </property>
-                            </widget>
-                            <spacer>
-                                <property name="name">
-                                    <cstring>spacer2_4</cstring>
-                                </property>
-                                <property name="orientation">
-                                    <enum>Horizontal</enum>
-                                </property>
-                                <property name="sizeType">
-                                    <enum>Expanding</enum>
-                                </property>
-                                <property name="sizeHint">
-                                    <size>
-                                        <width>211</width>
-                                        <height>21</height>
-                                    </size>
-                                </property>
-                            </spacer>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget">
-                        <property name="name">
-                            <cstring>layout2_4</cstring>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_5_4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Nuevo Ejercicio</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Crea un nuevo ejercicio contable</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_61_4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Clonar Empresa</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Crea una nueva empresa identica a otra existente</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>m_backup_4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Copia de Seguridad
- (BACKUP)</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Guarda una copia de seguridad de una empresa</string>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget">
-                        <property name="name">
-                            <cstring>layout3_4</cstring>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_1_4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Crear Nueva Empresa</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Crea una empresa nueva sin datos</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>m_borrarempresa_4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Borrar Empresa</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Borra por completo una empresa</string>
-                                </property>
-                            </widget>
-                            <widget class="QPushButton">
-                                <property name="name">
-                                    <cstring>pushButtonA_4_4</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Restaurar copia
- (RESTORE)</string>
-                                </property>
-                                <property name="toolTip" stdset="0">
-                                    <string>Restaura la copia de seguridad de una empresa</string>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <spacer>
-                        <property name="name">
-                            <cstring>spacer7</cstring>
-                        </property>
-                        <property name="orientation">
-                            <enum>Vertical</enum>
-                        </property>
-                        <property name="sizeType">
-                            <enum>Expanding</enum>
-                        </property>
-                        <property name="sizeHint">
-                            <size>
-                                <width>71</width>
-                                <height>151</height>
+                                <height>60</height>
                             </size>
                         </property>
                     </spacer>
@@ -837,7 +497,7 @@
                         <cstring>pushButtonF_X</cstring>
                     </property>
                     <property name="text">
-                        <string>Salir</string>
+                        <string>Sal&amp;ir</string>
                     </property>
                 </widget>
             </hbox>
@@ -893,6 +553,12 @@
         <receiver>UIconfiguracion</receiver>
         <slot>nuevoEjercicio()</slot>
     </connection>
+    <connection>
+        <sender>pushButton32_2</sender>
+        <signal>clicked()</signal>
+        <receiver>UIconfiguracion</receiver>
+        <slot>s_importexportbulmafact()</slot>
+    </connection>
 </connections>
 <tabstops>
     <tabstop>pushButtonA_5</tabstop>
@@ -923,6 +589,7 @@
     <slot>BotonA_61clonarEmpresa()</slot>
     <slot>nuevaFacturacion()</slot>
     <slot>BotonContaplus()</slot>
+    <slot>s_importexportbulmafact()</slot>
 </slots>
 <pixmapinproject/>
 <layoutdefaults spacing="6" margin="11"/>

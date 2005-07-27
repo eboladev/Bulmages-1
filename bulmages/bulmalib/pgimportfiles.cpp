@@ -423,6 +423,66 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
     "<!DOCTYPE FUGIT>\n"
     "<FUGIT version='0.3.1' origen='BulmaGes'"
     " date='" << QDate().toString(Qt::ISODate) << "'>\n";
+
+	if (tipo & IMPORT_FORMAS_PAGO) {
+	      QString query = "SELECT * FROM forma_pago";
+  	      cursor2 *curc = conexionbase->cargacursor(query);
+        	while (!curc->eof()) {
+			stream << "<FORMA_PAGO>\n";
+			stream << "\t<IDFORMA_PAGO>"   << XMLProtect(curc->valor("idforma_pago"))   << "</IDFORMA_PAGO>\n";
+			stream << "\t<DESCFORMA_PAGO>"   << XMLProtect(curc->valor("descforma_pago"))   << "</DESCFORMA_PAGO>\n";
+			stream << "\t<DIAS1TFORMA_PAGO>"   << XMLProtect(curc->valor("dias1tforma_pago"))   << "</DIAS1TFORMA_PAGO>\n";
+			stream << "\t<DESCUENTOFORMA_PAGO>"   << XMLProtect(curc->valor("descuentoforma_pago"))   << "</DESCUENTOFORMA_PAGO>\n";
+			stream << "</FORMA_PAGO>\n";
+			curc->siguienteregistro();
+		}// end while
+		delete curc;
+	}// end if
+
+
+	if (tipo & IMPORT_ALMACENES) {
+	      QString query = "SELECT * FROM almacen";
+  	      cursor2 *curc = conexionbase->cargacursor(query);
+        	while (!curc->eof()) {
+			stream << "<ALMACEN>\n";
+			stream << "\t<IDALMACEN>"   << XMLProtect(curc->valor("idalmacen"))   << "</IDALMACEN>\n";
+			stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
+			stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
+			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
+			stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
+			stream << "\t<FAXALMACEN>"   << XMLProtect(curc->valor("faxalmacen"))   << "</FAXALMACEN>\n";
+			stream << "\t<EMAILALMACEN>"   << XMLProtect(curc->valor("emailalmacen"))   << "</EMAILALMACEN>\n";
+			stream << "\t<INACTIVOALMACEN>"   << XMLProtect(curc->valor("inactivoalmacen"))   << "</INACTIVOALMACEN>\n";
+			stream << "</ALMACEN>\n";
+			curc->siguienteregistro();
+		}// end while
+		delete curc;
+	}// end if
+
+	if (tipo & IMPORT_TRABAJADORES) {
+	      QString query = "SELECT * FROM trabajador";
+  	      cursor2 *curc = conexionbase->cargacursor(query);
+        	while (!curc->eof()) {
+			stream << "<TRABAJADOR>\n";
+			stream << "\t<IDTRABAJADOR>"   << XMLProtect(curc->valor("idtrabajador"))   << "</IDTRABAJADOR>\n";
+			stream << "\t<NOMTRABAJADOR>"   << XMLProtect(curc->valor("nomtrabajador"))   << "</NOMTRABAJADOR>\n";
+			stream << "\t<APELLIDOSTRABAJADOR>"   << XMLProtect(curc->valor("apellidostrabajador"))   << "</APELLIDOSTRABAJADOR>\n";
+			stream << "\t<DIRTRABAJADOR>"   << XMLProtect(curc->valor("dirtrabajador"))   << "</DIRTRABAJADOR>\n";
+			stream << "\t<NSSTRABAJADOR>"   << XMLProtect(curc->valor("nsstrabajador"))   << "</NSSTRABAJADOR>\n";
+			stream << "\t<TELTRABAJADOR>"   << XMLProtect(curc->valor("teltrabajador"))   << "</TELTRABAJADOR>\n";
+			stream << "\t<MOVILTRABAJADOR>"   << XMLProtect(curc->valor("moviltrabajador"))   << "</MOVILTRABAJADOR>\n";
+			stream << "\t<EMAILTRABAJADOR>"   << XMLProtect(curc->valor("emailtrabajador"))   << "</EMAILTRABAJADOR>\n";
+			stream << "\t<FOTOTRABAJADOR>"   << XMLProtect(curc->valor("fototrabajador"))   << "</FOTOTRABAJADOR>\n";
+			stream << "\t<ACTIVOTRABAJADOR>"   << XMLProtect(curc->valor("activotrabajador"))   << "</ACTIVOTRABAJADOR>\n";
+			stream << "</TRABAJADOR>\n";
+			curc->siguienteregistro();
+		}// end while
+		delete curc;
+	}// end if
+
+
 	if (tipo & IMPORT_CLIENTES) {
 	      QString query = "SELECT * FROM cliente ORDER BY cifcliente";
   	      cursor2 *curc = conexionbase->cargacursor(query);
@@ -479,9 +539,11 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
 	}// end if
 
 
-
 	if (tipo & IMPORT_ARTICULOS) {
-	      QString query = "SELECT * FROM articulo ORDER BY codigocompletoarticulo";
+	      QString query = "SELECT * FROM articulo LEFT JOIN familia ON familia.idfamilia = articulo.idfamilia ";
+		query += " LEFT JOIN tipo_articulo ON articulo.idtipo_articulo = tipo_articulo.idtipo_articulo ";
+		query += " LEFT JOIN tipo_iva ON articulo.idtipo_iva = tipo_iva.idtipo_iva ";
+		query += " ORDER BY codigocompletoarticulo ";
   	      cursor2 *curc = conexionbase->cargacursor(query);
         	while (!curc->eof()) {
 			stream << "<ARTICULO>\n";
@@ -499,12 +561,407 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
 			stream << "\t<STOCKARTICULO>"    << XMLProtect(curc->valor("stockarticulo"))   << "</STOCKARTICULO>\n";
 			stream << "\t<INACTIVOARTICULO>"    << XMLProtect(curc->valor("inactivoarticulo"))   << "</INACTIVOARTICULO>\n";
 			stream << "\t<PVPARTICULO>"    << XMLProtect(curc->valor("pvparticulo"))   << "</PVPARTICULO>\n";
+			/// Campos adicionales a los artículos
+			stream << "\t<CODIGOCOMPLETOFAMILIA>"    << XMLProtect(curc->valor("codigocompletofamilia"))   << "</CODIGOCOMPLETOFAMILIA>\n";
+			stream << "\t<NOMBREFAMILIA>"    << XMLProtect(curc->valor("nombrefamilia"))   << "</NOMBREFAMILIA>\n";
+			stream << "\t<CODTIPO_ARTICULO>"    << XMLProtect(curc->valor("codtipo_articulo"))   << "</CODTIPO_ARTICULO>\n";
+			stream << "\t<DESCTIPO_ARTICULO>"    << XMLProtect(curc->valor("desctipo_articulo"))   << "</DESCTIPO_ARTICULO>\n";
+			stream << "\t<DESCTIPO_IVA>"    << XMLProtect(curc->valor("desctipo_iva"))   << "</DESCTIPO_IVA>\n";
 			stream << "</ARTICULO>\n";
 			curc->siguienteregistro();
 		}// end while
 		delete curc;
 	}// end if
 
+	/// Hacemos la exportación de facturas de clientes.
+	if (tipo & IMPORT_FACTURASCLIENTE) {
+	      QString query = "SELECT * FROM factura ";
+		      query += " LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen ";
+		      query += " LEFT JOIN cliente ON cliente.idcliente = factura.idcliente ";
+		      query += " LEFT JOIN trabajador ON trabajador.idtrabajador = factura.idtrabajador ";
+		      query += " LEFT JOIN forma_pago ON forma_pago.idforma_pago = factura.idforma_pago ";
+  	      cursor2 *curc = conexionbase->cargacursor(query);
+        	while (!curc->eof()) {
+			stream << "<FACTURA>\n";
+			stream << "\t<IDFACTURA>"    << XMLProtect(curc->valor("idfactura"))   << "</IDFACTURA>\n";
+			stream << "\t<CODIGOSERIE_FACTURA>"    << XMLProtect(curc->valor("codigoserie_factura"))   << "</CODIGOSERIE_FACTURA>\n";
+			stream << "\t<NUMFACTURA>"    << XMLProtect(curc->valor("numfactura"))   << "</NUMFACTURA>\n";
+			stream << "\t<REFFACTURA>"    << XMLProtect(curc->valor("reffactura"))   << "</REFFACTURA>\n";
+			stream << "\t<FFACTURA>"    << XMLProtect(curc->valor("ffactura"))   << "</FFACTURA>\n";
+			stream << "\t<DESCFACTURA>"    << XMLProtect(curc->valor("descfactura"))   << "</DESCFACTURA>\n";
+			stream << "\t<IDALMACEN>"    << XMLProtect(curc->valor("idalmacen"))   << "</IDALMACEN>\n";
+			stream << "\t<CONTACTFACTURA>"    << XMLProtect(curc->valor("contactfactura"))   << "</CONTACTFACTURA>\n";
+			stream << "\t<TELFACTURA>"    << XMLProtect(curc->valor("telfactura"))   << "</TELFACTURA>\n";
+			stream << "\t<COMENTFACTURA>"    << XMLProtect(curc->valor("comentfactura"))   << "</COMENTFACTURA>\n";
+			stream << "\t<PROCESADAFACTURA>"    << XMLProtect(curc->valor("procesadafactura"))   << "</PROCESADAFACTURA>\n";
+			stream << "\t<IDUSUARI>"    << XMLProtect(curc->valor("idusuari"))   << "</IDUSUARI>\n";
+			stream << "\t<IDCLIENTE>"    << XMLProtect(curc->valor("idcliente"))   << "</IDCLIENTE>\n";
+			stream << "\t<IDFORMA_PAGO>"    << XMLProtect(curc->valor("idforma_pago"))   << "</IDFORMA_PAGO>\n";
+			stream << "\t<IDTRABAJADOR>"    << XMLProtect(curc->valor("idtrabajador"))   << "</IDTRABAJADOR>\n";
+			/// Datos iniciales para la factura que pueden ser de utilidad.
+			stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
+			stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
+			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
+			stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
+			/// Datos referentes al cliente.
+			stream << "\t<NOMCLIENTE>"      << XMLProtect(curc->valor("nomcliente"))        << "</NOMCLIENTE>\n";
+			stream << "\t<NOMALTCLIENTE>"   << XMLProtect(curc->valor("nomaltcliente"))   << "</NOMALTCLIENTE>\n";
+			stream << "\t<CIFCLIENTE>"  << XMLProtect(curc->valor("cifcliente")) << "</CIFCLIENTE>\n";
+			stream << "\t<BANCOCLIENTE>"    << XMLProtect(curc->valor("bancocliente"))      << "</BANCOCLIENTE>\n";
+			stream << "\t<DIRCLIENTE>"     << XMLProtect(curc->valor("dircliente"))        << "</DIRCLIENTE>\n";
+			stream << "\t<POBLCLIENTE>"    << XMLProtect(curc->valor("poblcliente"))   << "</POBLCLIENTE>\n";
+			stream << "\t<CPCLIENTE>"  << XMLProtect(curc->valor("cpcliente")) << "</CPCLIENTE>\n";
+			stream << "\t<TELCLIENTE>"  << XMLProtect(curc->valor("telcliente")) << "</TELCLIENTE>\n";
+			stream << "\t<FAXCLIENTE>"    << XMLProtect(curc->valor("faxcliente"))      << "</FAXCLIENTE>\n";
+			stream << "\t<MAILCLIENTE>"   << XMLProtect(curc->valor("mailcliente"))        << "</MAILCLIENTE>\n";
+			stream << "\t<URLCLIENTE>"    << XMLProtect(curc->valor("urlcliente"))   << "</URLCLIENTE>\n";
+			stream << "\t<PROVCLIENTE>"    << XMLProtect(curc->valor("provcliente"))   << "</PROVCLIENTE>\n";
+			/// Datos sobre el trabajador
+			stream << "\t<NOMTRABAJADOR>"   << XMLProtect(curc->valor("nomtrabajador"))   << "</NOMTRABAJADOR>\n";
+			stream << "\t<APELLIDOSTRABAJADOR>"   << XMLProtect(curc->valor("apellidostrabajador"))   << "</APELLIDOSTRABAJADOR>\n";
+			stream << "\t<DIRTRABAJADOR>"   << XMLProtect(curc->valor("dirtrabajador"))   << "</DIRTRABAJADOR>\n";
+			stream << "\t<NSSTRABAJADOR>"   << XMLProtect(curc->valor("nsstrabajador"))   << "</NSSTRABAJADOR>\n";
+			stream << "\t<TELTRABAJADOR>"   << XMLProtect(curc->valor("teltrabajador"))   << "</TELTRABAJADOR>\n";
+			stream << "\t<MOVILTRABAJADOR>"   << XMLProtect(curc->valor("moviltrabajador"))   << "</MOVILTRABAJADOR>\n";
+			stream << "\t<EMAILTRABAJADOR>"   << XMLProtect(curc->valor("emailtrabajador"))   << "</EMAILTRABAJADOR>\n";
+			/// Datos sobre la forma de pago
+			stream << "\t<DESCFORMA_PAGO>"   << XMLProtect(curc->valor("descforma_pago"))   << "</DESCFORMA_PAGO>\n";
+			stream << "\t<DIAS1TFORMA_PAGO>"   << XMLProtect(curc->valor("dias1tforma_pago"))   << "</DIAS1TFORMA_PAGO>\n";
+			stream << "\t<DESCUENTOFORMA_PAGO>"   << XMLProtect(curc->valor("descuentoforma_pago"))   << "</DESCUENTOFORMA_PAGO>\n";
+
+			/// Incorporamos las lineas de detalles de la factura.
+			cursor2 *curlc = conexionbase->cargacursor("SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura ="+curc->valor("idfactura"));
+			while (!curlc->eof()) {
+				stream << "\t\t<LFACTURA>\n";
+				stream << "\t\t\t<IDLFACTURA>"    << XMLProtect(curlc->valor("idlfactura"))   << "</IDLFACTURA>\n";
+				stream << "\t\t\t<DESCLFACTURA>"    << XMLProtect(curlc->valor("desclfactura"))   << "</DESCLFACTURA>\n";
+				stream << "\t\t\t<CANTLFACTURA>"    << XMLProtect(curlc->valor("cantlfactura"))   << "</CANTLFACTURA>\n";
+				stream << "\t\t\t<PVPLFACTURA>"    << XMLProtect(curlc->valor("pvplfactura"))   << "</PVPLFACTURA>\n";
+				stream << "\t\t\t<IVALFACTURA>"    << XMLProtect(curlc->valor("ivalfactura"))   << "</IVALFACTURA>\n";
+				stream << "\t\t\t<DESCUENTOLFACTURA>"    << XMLProtect(curlc->valor("descuentolfactura"))   << "</DESCUENTOLFACTURA>\n";
+				stream << "\t\t\t<IDFACTURA>"    << XMLProtect(curlc->valor("idfactura"))   << "</IDFACTURA>\n";
+				stream << "\t\t\t<IDARTICULO>"    << XMLProtect(curlc->valor("idarticulo"))   << "</IDARTICULO>\n";
+				/// Los datos relacionados con el artículo
+				stream << "\t\t\t<CODARTICULO>"    << XMLProtect(curc->valor("codarticulo"))   << "</CODARTICULO>\n";
+				stream << "\t\t\t<NOMARTICULO>"    << XMLProtect(curc->valor("nomarticulo"))   << "</NOMARTICULO>\n";
+				stream << "\t\t\t<ABREVARTICULO>"    << XMLProtect(curc->valor("abrevarticulo"))   << "</ABREVARTICULO>\n";
+				stream << "\t<CODIGOCOMPLETOARTICULO>"    << XMLProtect(curc->valor("codigocompletoarticulo"))   << "</CODIGOCOMPLETOARTICULO>\n";
+				stream << "\t\t</LFACTURA>\n";
+				curlc->siguienteregistro();
+			}// end while
+			delete curlc;
+			/// Incorporamos los descuentos de la factura.
+			curlc = conexionbase->cargacursor("SELECT * FROM dfactura WHERE idfactura ="+curc->valor("idfactura"));
+			while (!curlc->eof()) {
+				stream << "\t\t<DFACTURA>\n";
+				stream << "\t\t\t<IDDFACTURA>"    << XMLProtect(curlc->valor("iddfactura"))   << "</IDDFACTURA>\n";
+				stream << "\t\t\t<CONCEPTDFACTURA>"    << XMLProtect(curlc->valor("conceptdfactura"))   << "</CONCEPTDFACTURA>\n";
+				stream << "\t\t\t<PROPORCIONDFACTURA>"    << XMLProtect(curlc->valor("proporciondfactura"))   << "</PROPORCIONDFACTURA>\n";
+				stream << "\t\t\t<IDFACTURA>"    << XMLProtect(curlc->valor("idfactura"))   << "</IDFACTURA>\n";
+				stream << "\t\t</DFACTURA>\n";
+				curlc->siguienteregistro();
+			}// end while
+			delete curlc;
+			stream << "</FACTURA>\n";
+			curc->siguienteregistro();
+		}// end while
+		delete curc;
+	}// end if
+
+	/// Hacemos la exportación de facturas de clientes.
+	if (tipo & IMPORT_PRESUPUESTOSCLIENTE) {
+	      QString query = "SELECT * FROM presupuesto ";
+		      query += " LEFT JOIN almacen ON presupuesto.idalmacen = almacen.idalmacen ";
+		      query += " LEFT JOIN cliente ON cliente.idcliente = presupuesto.idcliente ";
+		      query += " LEFT JOIN trabajador ON trabajador.idtrabajador = presupuesto.idtrabajador ";
+		      query += " LEFT JOIN forma_pago ON forma_pago.idforma_pago = presupuesto.idforma_pago ";
+  	      cursor2 *curc = conexionbase->cargacursor(query);
+        	while (!curc->eof()) {
+			stream << "<PRESUPUESTO>\n";
+			stream << "\t<IDPRESUPUESTO>"    << XMLProtect(curc->valor("idpresupuesto"))   << "</IDPRESUPUESTO>\n";
+			stream << "\t<NUMPRESUPUESTO>"    << XMLProtect(curc->valor("numpresupuesto"))   << "</NUMPRESUPUESTO>\n";
+			stream << "\t<REFPRESUPUESTO>"    << XMLProtect(curc->valor("refpresupuesto"))   << "</REFPRESUPUESTO>\n";
+			stream << "\t<FPRESUPUESTO>"    << XMLProtect(curc->valor("fpresupuesto"))   << "</FPRESUPUESTO>\n";
+			stream << "\t<DESCPRESUPUESTO>"    << XMLProtect(curc->valor("descpresupuesto"))   << "</DESCPRESUPUESTO>\n";
+			stream << "\t<CONTACTPRESUPUESTO>"    << XMLProtect(curc->valor("contactpresupuesto"))   << "</CONTACTPRESUPUESTO>\n";
+			stream << "\t<TELPRESUPUESTO>"    << XMLProtect(curc->valor("telpresupuesto"))   << "</TELPRESUPUESTO>\n";
+			stream << "\t<VENCPRESUPUESTO>"    << XMLProtect(curc->valor("vencpresupuesto"))   << "</VENCPRESUPUESTO>\n";
+			stream << "\t<COMENTPRESUPUESTO>"    << XMLProtect(curc->valor("comentpresupuesto"))   << "</COMENTPRESUPUESTO>\n";
+			stream << "\t<IDUSUARI>"    << XMLProtect(curc->valor("idusuari"))   << "</IDUSUARI>\n";
+			stream << "\t<PROCESADOPRESUPUESTO>"    << XMLProtect(curc->valor("procesadopresupuesto"))   << "</PROCESADOPRESUPUESTO>\n";
+			stream << "\t<IDCLIENTE>"    << XMLProtect(curc->valor("idcliente"))   << "</IDCLIENTE>\n";
+			stream << "\t<IDALMACEN>"    << XMLProtect(curc->valor("idalmacen"))   << "</IDALMACEN>\n";
+			stream << "\t<IDFORMA_PAGO>"    << XMLProtect(curc->valor("idforma_pago"))   << "</IDFORMA_PAGO>\n";
+			stream << "\t<IDTRABAJADOR>"    << XMLProtect(curc->valor("idtrabajador"))   << "</IDTRABAJADOR>\n";
+			/// Datos iniciales para el presupuesto  que pueden ser de utilidad.
+			stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
+			stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
+			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
+			stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
+			/// Datos referentes al cliente.
+			stream << "\t<NOMCLIENTE>"      << XMLProtect(curc->valor("nomcliente"))        << "</NOMCLIENTE>\n";
+			stream << "\t<NOMALTCLIENTE>"   << XMLProtect(curc->valor("nomaltcliente"))   << "</NOMALTCLIENTE>\n";
+			stream << "\t<CIFCLIENTE>"  << XMLProtect(curc->valor("cifcliente")) << "</CIFCLIENTE>\n";
+			stream << "\t<BANCOCLIENTE>"    << XMLProtect(curc->valor("bancocliente"))      << "</BANCOCLIENTE>\n";
+			stream << "\t<DIRCLIENTE>"     << XMLProtect(curc->valor("dircliente"))        << "</DIRCLIENTE>\n";
+			stream << "\t<POBLCLIENTE>"    << XMLProtect(curc->valor("poblcliente"))   << "</POBLCLIENTE>\n";
+			stream << "\t<CPCLIENTE>"  << XMLProtect(curc->valor("cpcliente")) << "</CPCLIENTE>\n";
+			stream << "\t<TELCLIENTE>"  << XMLProtect(curc->valor("telcliente")) << "</TELCLIENTE>\n";
+			stream << "\t<FAXCLIENTE>"    << XMLProtect(curc->valor("faxcliente"))      << "</FAXCLIENTE>\n";
+			stream << "\t<MAILCLIENTE>"   << XMLProtect(curc->valor("mailcliente"))        << "</MAILCLIENTE>\n";
+			stream << "\t<URLCLIENTE>"    << XMLProtect(curc->valor("urlcliente"))   << "</URLCLIENTE>\n";
+			stream << "\t<PROVCLIENTE>"    << XMLProtect(curc->valor("provcliente"))   << "</PROVCLIENTE>\n";
+			/// Datos sobre el trabajador
+			stream << "\t<NOMTRABAJADOR>"   << XMLProtect(curc->valor("nomtrabajador"))   << "</NOMTRABAJADOR>\n";
+			stream << "\t<APELLIDOSTRABAJADOR>"   << XMLProtect(curc->valor("apellidostrabajador"))   << "</APELLIDOSTRABAJADOR>\n";
+			stream << "\t<DIRTRABAJADOR>"   << XMLProtect(curc->valor("dirtrabajador"))   << "</DIRTRABAJADOR>\n";
+			stream << "\t<NSSTRABAJADOR>"   << XMLProtect(curc->valor("nsstrabajador"))   << "</NSSTRABAJADOR>\n";
+			stream << "\t<TELTRABAJADOR>"   << XMLProtect(curc->valor("teltrabajador"))   << "</TELTRABAJADOR>\n";
+			stream << "\t<MOVILTRABAJADOR>"   << XMLProtect(curc->valor("moviltrabajador"))   << "</MOVILTRABAJADOR>\n";
+			stream << "\t<EMAILTRABAJADOR>"   << XMLProtect(curc->valor("emailtrabajador"))   << "</EMAILTRABAJADOR>\n";
+			/// Datos sobre la forma de pago
+			stream << "\t<DESCFORMA_PAGO>"   << XMLProtect(curc->valor("descforma_pago"))   << "</DESCFORMA_PAGO>\n";
+			stream << "\t<DIAS1TFORMA_PAGO>"   << XMLProtect(curc->valor("dias1tforma_pago"))   << "</DIAS1TFORMA_PAGO>\n";
+			stream << "\t<DESCUENTOFORMA_PAGO>"   << XMLProtect(curc->valor("descuentoforma_pago"))   << "</DESCUENTOFORMA_PAGO>\n";
+			/// Incorporamos las lineas de detalles del presupuesto.
+			cursor2 *curlc = conexionbase->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto ="+curc->valor("idpresupuesto"));
+			while (!curlc->eof()) {
+				stream << "\t\t<LPRESUPUESTO>\n";
+				stream << "\t\t\t<IDLPRESUPUESTO>"    << XMLProtect(curlc->valor("idlpresupuesto"))   << "</IDLPRESUPUESTO>\n";
+				stream << "\t\t\t<DESCLPRESUPUESTO>"    << XMLProtect(curlc->valor("desclpresupuesto"))   << "</DESCLPRESUPUESTO>\n";
+				stream << "\t\t\t<CANTLPRESUPUESTORA>"    << XMLProtect(curlc->valor("cantlpresupuesto"))   << "</CANTLPRESUPUESTORA>\n";
+				stream << "\t\t\t<PVPLPRESUPUESTO>"    << XMLProtect(curlc->valor("pvplpresupuesto"))   << "</PVPLPRESUPUESTO>\n";
+				stream << "\t\t\t<IVALPRESUPUESTO>"    << XMLProtect(curlc->valor("ivalpresupuesto"))   << "</IVALPRESUPUESTO>\n";
+				stream << "\t\t\t<DESCUENTOLPRESUPUESTO>"    << XMLProtect(curlc->valor("descuentolpresupuesto"))   << "</DESCUENTOLPRESUPUESTO>\n";
+				stream << "\t\t\t<IDPRESUPUESTO>"    << XMLProtect(curlc->valor("idpresupuesto"))   << "</IDPRESUPUESTO>\n";
+				stream << "\t\t\t<IDARTICULO>"    << XMLProtect(curlc->valor("idarticulo"))   << "</IDARTICULO>\n";
+				/// Los datos relacionados con el artículo
+				stream << "\t\t\t<CODARTICULO>"    << XMLProtect(curc->valor("codarticulo"))   << "</CODARTICULO>\n";
+				stream << "\t\t\t<NOMARTICULO>"    << XMLProtect(curc->valor("nomarticulo"))   << "</NOMARTICULO>\n";
+				stream << "\t\t\t<ABREVARTICULO>"    << XMLProtect(curc->valor("abrevarticulo"))   << "</ABREVARTICULO>\n";
+				stream << "\t<CODIGOCOMPLETOARTICULO>"    << XMLProtect(curc->valor("codigocompletoarticulo"))   << "</CODIGOCOMPLETOARTICULO>\n";
+				stream << "\t\t</LPRESUPUESTO>\n";
+				curlc->siguienteregistro();
+			}// end while
+			delete curlc;
+			/// Incorporamos los descuentos del presupuesto.
+			curlc = conexionbase->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto ="+curc->valor("idpresupuesto"));
+			while (!curlc->eof()) {
+				stream << "\t\t<DPRESUPUESTO>\n";
+				stream << "\t\t\t<IDDPRESUPUESTO>"    << XMLProtect(curlc->valor("iddpresupuesto"))   << "</IDDPRESUPUESTO>\n";
+				stream << "\t\t\t<CONCEPTDPRESUPUESTO>"    << XMLProtect(curlc->valor("conceptdpresupuesto"))   << "</CONCEPTDPRESUPUESTO>\n";
+				stream << "\t\t\t<PROPORCIONDPRESUPUESTO>"    << XMLProtect(curlc->valor("proporciondpresupuesto"))   << "</PROPORCIONDPRESUPUESTO>\n";
+				stream << "\t\t\t<IDPRESUPUESTO>"    << XMLProtect(curlc->valor("idpresupuesto"))   << "</IDPRESUPUESTO>\n";
+				stream << "\t\t</DPRESUPUESTO>\n";
+				curlc->siguienteregistro();
+			}// end while
+			delete curlc;
+			stream << "</PRESUPUESTO>\n";
+			curc->siguienteregistro();
+		}// end while
+		delete curc;
+	}// end if
+
+
+	/// Hacemos la exportación de facturas de clientes.
+	if (tipo & IMPORT_PEDIDOSCLIENTE) {
+	      QString query = "SELECT * FROM pedidocliente ";
+		      query += " LEFT JOIN almacen ON pedidocliente.idalmacen = almacen.idalmacen ";
+		      query += " LEFT JOIN cliente ON cliente.idcliente = presupupedidocliente.idcliente ";
+		      query += " LEFT JOIN trabajador ON trabajador.idtrabajador = pedidocliente.idtrabajador ";
+		      query += " LEFT JOIN forma_pago ON forma_pago.idforma_pago = pedidocliente.idforma_pago ";
+  	      cursor2 *curc = conexionbase->cargacursor(query);
+        	while (!curc->eof()) {
+			stream << "<PEDIDOCLIENTE>\n";
+			stream << "\t<IDPEDIDOCLIENTE>"    << XMLProtect(curc->valor("idpedidocliente"))   << "</IDPEDIDOCLIENTE>\n";
+			stream << "\t<NUMPEDIDOCLIENTE>"    << XMLProtect(curc->valor("numpedidocliente"))   << "</NUMPEDIDOCLIENTE>\n";
+			stream << "\t<FECHAPEDIDOCLIENTE>"    << XMLProtect(curc->valor("fechapedidocliente"))   << "</FECHAPEDIDOCLIENTE>\n";
+			stream << "\t<REFPEDIDOCLIENTE>"    << XMLProtect(curc->valor("refpedidocliente"))   << "</REFPEDIDOCLIENTE>\n";
+			stream << "\t<DESCPEDIDOCLIENTE>"    << XMLProtect(curc->valor("descpedidocliente"))   << "</DESCPEDIDOCLIENTE>\n";
+			stream << "\t<CONTACTPEDIDOCLIENTE>"    << XMLProtect(curc->valor("contactpedidocliente"))   << "</CONTACTPEDIDOCLIENTE>\n";
+			stream << "\t<TELPEDIDOCLIENTE>"    << XMLProtect(curc->valor("telpedidocliente"))   << "</TELPEDIDOCLIENTE>\n";
+			stream << "\t<IDPRESUPUESTO>"    << XMLProtect(curc->valor("idpresupuesto"))   << "</IDPRESUPUESTO>\n";
+			stream << "\t<COMENTPEDIDOCLIENTE>"    << XMLProtect(curc->valor("comentpedidocliente"))   << "</COMENTPEDIDOCLIENTE>\n";
+			stream << "\t<IDUSUARI>"    << XMLProtect(curc->valor("idusuari"))   << "</IDUSUARI>\n";
+			stream << "\t<PROCESADOPEDIDOCLIENTE>"    << XMLProtect(curc->valor("procesadopedidocliente"))   << "</PROCESADOPEDIDOCLIENTE>\n";
+			stream << "\t<IDCLIENTE>"    << XMLProtect(curc->valor("idcliente"))   << "</IDCLIENTE>\n";
+			stream << "\t<IDALMACEN>"    << XMLProtect(curc->valor("idalmacen"))   << "</IDALMACEN>\n";
+			stream << "\t<IDFORMA_PAGO>"    << XMLProtect(curc->valor("idforma_pago"))   << "</IDFORMA_PAGO>\n";
+			stream << "\t<IDTRABAJADOR>"    << XMLProtect(curc->valor("idtrabajador"))   << "</IDTRABAJADOR>\n";
+			/// Datos iniciales para el presupuesto  que pueden ser de utilidad.
+			stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
+			stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
+			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
+			stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
+			/// Datos referentes al cliente.
+			stream << "\t<NOMCLIENTE>"      << XMLProtect(curc->valor("nomcliente"))        << "</NOMCLIENTE>\n";
+			stream << "\t<NOMALTCLIENTE>"   << XMLProtect(curc->valor("nomaltcliente"))   << "</NOMALTCLIENTE>\n";
+			stream << "\t<CIFCLIENTE>"  << XMLProtect(curc->valor("cifcliente")) << "</CIFCLIENTE>\n";
+			stream << "\t<BANCOCLIENTE>"    << XMLProtect(curc->valor("bancocliente"))      << "</BANCOCLIENTE>\n";
+			stream << "\t<DIRCLIENTE>"     << XMLProtect(curc->valor("dircliente"))        << "</DIRCLIENTE>\n";
+			stream << "\t<POBLCLIENTE>"    << XMLProtect(curc->valor("poblcliente"))   << "</POBLCLIENTE>\n";
+			stream << "\t<CPCLIENTE>"  << XMLProtect(curc->valor("cpcliente")) << "</CPCLIENTE>\n";
+			stream << "\t<TELCLIENTE>"  << XMLProtect(curc->valor("telcliente")) << "</TELCLIENTE>\n";
+			stream << "\t<FAXCLIENTE>"    << XMLProtect(curc->valor("faxcliente"))      << "</FAXCLIENTE>\n";
+			stream << "\t<MAILCLIENTE>"   << XMLProtect(curc->valor("mailcliente"))        << "</MAILCLIENTE>\n";
+			stream << "\t<URLCLIENTE>"    << XMLProtect(curc->valor("urlcliente"))   << "</URLCLIENTE>\n";
+			stream << "\t<PROVCLIENTE>"    << XMLProtect(curc->valor("provcliente"))   << "</PROVCLIENTE>\n";
+			/// Datos sobre el trabajador
+			stream << "\t<NOMTRABAJADOR>"   << XMLProtect(curc->valor("nomtrabajador"))   << "</NOMTRABAJADOR>\n";
+			stream << "\t<APELLIDOSTRABAJADOR>"   << XMLProtect(curc->valor("apellidostrabajador"))   << "</APELLIDOSTRABAJADOR>\n";
+			stream << "\t<DIRTRABAJADOR>"   << XMLProtect(curc->valor("dirtrabajador"))   << "</DIRTRABAJADOR>\n";
+			stream << "\t<NSSTRABAJADOR>"   << XMLProtect(curc->valor("nsstrabajador"))   << "</NSSTRABAJADOR>\n";
+			stream << "\t<TELTRABAJADOR>"   << XMLProtect(curc->valor("teltrabajador"))   << "</TELTRABAJADOR>\n";
+			stream << "\t<MOVILTRABAJADOR>"   << XMLProtect(curc->valor("moviltrabajador"))   << "</MOVILTRABAJADOR>\n";
+			stream << "\t<EMAILTRABAJADOR>"   << XMLProtect(curc->valor("emailtrabajador"))   << "</EMAILTRABAJADOR>\n";
+			/// Datos sobre la forma de pago
+			stream << "\t<DESCFORMA_PAGO>"   << XMLProtect(curc->valor("descforma_pago"))   << "</DESCFORMA_PAGO>\n";
+			stream << "\t<DIAS1TFORMA_PAGO>"   << XMLProtect(curc->valor("dias1tforma_pago"))   << "</DIAS1TFORMA_PAGO>\n";
+			stream << "\t<DESCUENTOFORMA_PAGO>"   << XMLProtect(curc->valor("descuentoforma_pago"))   << "</DESCUENTOFORMA_PAGO>\n";
+			/// Incorporamos las lineas de detalles del presupuesto.
+			cursor2 *curlc = conexionbase->cargacursor("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente ="+curc->valor("idpedidocliente"));
+			while (!curlc->eof()) {
+				stream << "\t\t<LPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<IDLPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("idlpedidocliente"))   << "</IDLPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<DESCLPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("desclpedidocliente"))   << "</DESCLPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<CANTLPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("cantlpedidocliente"))   << "</CANTLPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<PVPLPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("pvplpedidocliente"))   << "</PVPLPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<IVALPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("ivalpedidocliente"))   << "</IVALPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<DESCUENTOLPEDIDOCLIENTEO>"    << XMLProtect(curlc->valor("descuentolpedidocliente"))   << "</DESCUENTOLPEDIDOCLIENTEO>\n";
+				stream << "\t\t\t<IDPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("idpresupuesto"))   << "</IDPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<IDARTICULO>"    << XMLProtect(curlc->valor("idarticulo"))   << "</IDARTICULO>\n";
+				/// Los datos relacionados con el artículo
+				stream << "\t\t\t<CODARTICULO>"    << XMLProtect(curc->valor("codarticulo"))   << "</CODARTICULO>\n";
+				stream << "\t\t\t<NOMARTICULO>"    << XMLProtect(curc->valor("nomarticulo"))   << "</NOMARTICULO>\n";
+				stream << "\t\t\t<ABREVARTICULO>"    << XMLProtect(curc->valor("abrevarticulo"))   << "</ABREVARTICULO>\n";
+				stream << "\t<CODIGOCOMPLETOARTICULO>"    << XMLProtect(curc->valor("codigocompletoarticulo"))   << "</CODIGOCOMPLETOARTICULO>\n";
+				stream << "\t\t</LPRESUPUESTO>\n";
+				curlc->siguienteregistro();
+			}// end while
+			delete curlc;
+			/// Incorporamos los descuentos del presupuesto.
+			curlc = conexionbase->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente ="+curc->valor("idpedidocliente"));
+			while (!curlc->eof()) {
+				stream << "\t\t<DPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<IDDPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("iddpedidocliente"))   << "</IDDPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<CONCEPTDPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("conceptdpedidocliente"))   << "</CONCEPTDPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<PROPORCIONDPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("proporciondpedidocliente"))   << "</PROPORCIONDPEDIDOCLIENTE>\n";
+				stream << "\t\t\t<IDPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("idpedidocliente"))   << "</IDPEDIDOCLIENTE>\n";
+				stream << "\t\t</DPEDIDOCLIENTE>\n";
+				curlc->siguienteregistro();
+			}// end while
+			delete curlc;
+			stream << "</PEDIDOCLIENTE>\n";
+			curc->siguienteregistro();
+		}// end while
+		delete curc;
+	}// end if
+
+
+	/// Hacemos la exportación de facturas de clientes.
+	if (tipo & IMPORT_ALBARANESCLIENTE) {
+	      QString query = "SELECT * FROM albaran ";
+		      query += " LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen ";
+		      query += " LEFT JOIN cliente ON cliente.idcliente = albaran.idcliente ";
+		      query += " LEFT JOIN trabajador ON trabajador.idtrabajador = albaran.idtrabajador ";
+		      query += " LEFT JOIN forma_pago ON forma_pago.idforma_pago = albaran.idforma_pago ";
+  	      cursor2 *curc = conexionbase->cargacursor(query);
+        	while (!curc->eof()) {
+			stream << "<ALBARAN>\n";
+			stream << "\t<IDALBARAN>"    << XMLProtect(curc->valor("idalbaran"))   << "</IDALBARAN>\n";
+			stream << "\t<NUMALBARAN>"    << XMLProtect(curc->valor("numalbaran"))   << "</NUMALBARAN>\n";
+			stream << "\t<DESCALBARAN>"    << XMLProtect(curc->valor("descalbaran"))   << "</DESCALBARAN>\n";
+			stream << "\t<REFALBARAN>"    << XMLProtect(curc->valor("refalbaran"))   << "</REFALBARAN>\n";
+			stream << "\t<FECHAALBARAN>"    << XMLProtect(curc->valor("fechaalbaran"))   << "</FECHAALBARAN>\n";
+			stream << "\t<COMENTALBARAN>"    << XMLProtect(curc->valor("comentalbaran"))   << "</COMENTALBARAN>\n";
+			stream << "\t<PROCESADOALBARAN>"    << XMLProtect(curc->valor("procesadoalbaran"))   << "</PROCESADOALBARAN>\n";
+			stream << "\t<CONTACTALBARAN>"    << XMLProtect(curc->valor("contactalbaran"))   << "</CONTACTALBARAN>\n";
+			stream << "\t<TELALBARAN>"    << XMLProtect(curc->valor("telalbaran"))   << "</TELALBARAN>\n";
+			stream << "\t<IDUSUARI>"    << XMLProtect(curc->valor("idusuari"))   << "</IDUSUARI>\n";
+			stream << "\t<IDCLIENTE>"    << XMLProtect(curc->valor("idcliente"))   << "</IDCLIENTE>\n";
+			stream << "\t<IDALMACEN>"    << XMLProtect(curc->valor("idalmacen"))   << "</IDALMACEN>\n";
+			stream << "\t<IDFORMA_PAGO>"    << XMLProtect(curc->valor("idforma_pago"))   << "</IDFORMA_PAGO>\n";
+			stream << "\t<IDTRABAJADOR>"    << XMLProtect(curc->valor("idtrabajador"))   << "</IDTRABAJADOR>\n";
+			/// Datos iniciales para el presupuesto  que pueden ser de utilidad.
+			stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
+			stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
+			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
+			stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
+			/// Datos referentes al cliente.
+			stream << "\t<NOMCLIENTE>"      << XMLProtect(curc->valor("nomcliente"))        << "</NOMCLIENTE>\n";
+			stream << "\t<NOMALTCLIENTE>"   << XMLProtect(curc->valor("nomaltcliente"))   << "</NOMALTCLIENTE>\n";
+			stream << "\t<CIFCLIENTE>"  << XMLProtect(curc->valor("cifcliente")) << "</CIFCLIENTE>\n";
+			stream << "\t<BANCOCLIENTE>"    << XMLProtect(curc->valor("bancocliente"))      << "</BANCOCLIENTE>\n";
+			stream << "\t<DIRCLIENTE>"     << XMLProtect(curc->valor("dircliente"))        << "</DIRCLIENTE>\n";
+			stream << "\t<POBLCLIENTE>"    << XMLProtect(curc->valor("poblcliente"))   << "</POBLCLIENTE>\n";
+			stream << "\t<CPCLIENTE>"  << XMLProtect(curc->valor("cpcliente")) << "</CPCLIENTE>\n";
+			stream << "\t<TELCLIENTE>"  << XMLProtect(curc->valor("telcliente")) << "</TELCLIENTE>\n";
+			stream << "\t<FAXCLIENTE>"    << XMLProtect(curc->valor("faxcliente"))      << "</FAXCLIENTE>\n";
+			stream << "\t<MAILCLIENTE>"   << XMLProtect(curc->valor("mailcliente"))        << "</MAILCLIENTE>\n";
+			stream << "\t<URLCLIENTE>"    << XMLProtect(curc->valor("urlcliente"))   << "</URLCLIENTE>\n";
+			stream << "\t<PROVCLIENTE>"    << XMLProtect(curc->valor("provcliente"))   << "</PROVCLIENTE>\n";
+			/// Datos sobre el trabajador
+			stream << "\t<NOMTRABAJADOR>"   << XMLProtect(curc->valor("nomtrabajador"))   << "</NOMTRABAJADOR>\n";
+			stream << "\t<APELLIDOSTRABAJADOR>"   << XMLProtect(curc->valor("apellidostrabajador"))   << "</APELLIDOSTRABAJADOR>\n";
+			stream << "\t<DIRTRABAJADOR>"   << XMLProtect(curc->valor("dirtrabajador"))   << "</DIRTRABAJADOR>\n";
+			stream << "\t<NSSTRABAJADOR>"   << XMLProtect(curc->valor("nsstrabajador"))   << "</NSSTRABAJADOR>\n";
+			stream << "\t<TELTRABAJADOR>"   << XMLProtect(curc->valor("teltrabajador"))   << "</TELTRABAJADOR>\n";
+			stream << "\t<MOVILTRABAJADOR>"   << XMLProtect(curc->valor("moviltrabajador"))   << "</MOVILTRABAJADOR>\n";
+			stream << "\t<EMAILTRABAJADOR>"   << XMLProtect(curc->valor("emailtrabajador"))   << "</EMAILTRABAJADOR>\n";
+			/// Datos sobre la forma de pago
+			stream << "\t<DESCFORMA_PAGO>"   << XMLProtect(curc->valor("descforma_pago"))   << "</DESCFORMA_PAGO>\n";
+			stream << "\t<DIAS1TFORMA_PAGO>"   << XMLProtect(curc->valor("dias1tforma_pago"))   << "</DIAS1TFORMA_PAGO>\n";
+			stream << "\t<DESCUENTOFORMA_PAGO>"   << XMLProtect(curc->valor("descuentoforma_pago"))   << "</DESCUENTOFORMA_PAGO>\n";
+			/// Incorporamos las lineas de detalles del presupuesto.
+			cursor2 *curlc = conexionbase->cargacursor("SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran ="+curc->valor("idalbaran"));
+			while (!curlc->eof()) {
+				stream << "\t\t<LALBARAN>\n";
+				stream << "\t\t\t<IDLALBARAN>"    << XMLProtect(curlc->valor("idlalbaran"))   << "</IDLALBARAN>\n";
+				stream << "\t\t\t<DESCLALBARAN>"    << XMLProtect(curlc->valor("desclalbaran"))   << "</DESCLPRESUPUESTO>\n";
+				stream << "\t\t\t<CANTLALBARANE>"    << XMLProtect(curlc->valor("cantlalbaran"))   << "</CANTLALBARANE>\n";
+				stream << "\t\t\t<PVPLALBARAN>"    << XMLProtect(curlc->valor("pvplalbaran"))   << "</PVPLALBARAN>\n";
+				stream << "\t\t\t<IVALALBARAN>"    << XMLProtect(curlc->valor("ivalalbaran"))   << "</IVALALBARAN>\n";
+				stream << "\t\t\t<DESCUENTOLALBARAN>"    << XMLProtect(curlc->valor("descuentolalbaran"))   << "</DESCUENTOLALBARAN>\n";
+				stream << "\t\t\t<IDALBARAN>"    << XMLProtect(curlc->valor("idalbaran"))   << "</IDALBARAN>\n";
+				stream << "\t\t\t<IDARTICULO>"    << XMLProtect(curlc->valor("idarticulo"))   << "</IDARTICULO>\n";
+				/// Los datos relacionados con el artículo
+				stream << "\t\t\t<CODARTICULO>"    << XMLProtect(curc->valor("codarticulo"))   << "</CODARTICULO>\n";
+				stream << "\t\t\t<NOMARTICULO>"    << XMLProtect(curc->valor("nomarticulo"))   << "</NOMARTICULO>\n";
+				stream << "\t\t\t<ABREVARTICULO>"    << XMLProtect(curc->valor("abrevarticulo"))   << "</ABREVARTICULO>\n";
+				stream << "\t<CODIGOCOMPLETOARTICULO>"    << XMLProtect(curc->valor("codigocompletoarticulo"))   << "</CODIGOCOMPLETOARTICULO>\n";
+				stream << "\t\t</LALBARAN>\n";
+				curlc->siguienteregistro();
+			}// end while
+			delete curlc;
+			/// Incorporamos los descuentos del presupuesto.
+			curlc = conexionbase->cargacursor("SELECT * FROM dalbaran WHERE idalbaran ="+curc->valor("idalbaran"));
+			while (!curlc->eof()) {
+				stream << "\t\t<DALBARAN>\n";
+				stream << "\t\t\t<IDDALBARAN>"    << XMLProtect(curlc->valor("iddalbaran"))   << "</IDDALBARAN>\n";
+				stream << "\t\t\t<CONCEPTDALBARAN>"    << XMLProtect(curlc->valor("conceptdalbaran"))   << "</CONCEPTDALBARAN>\n";
+				stream << "\t\t\t<PROPORCIONDALBARAN>"    << XMLProtect(curlc->valor("proporciondalbaran"))   << "</PROPORCIONDALBARAN>\n";
+				stream << "\t\t\t<IDALBARAN>"    << XMLProtect(curlc->valor("idalbaran"))   << "</IDALBARAN>\n";
+				stream << "\t\t</DALBARAN>\n";
+				curlc->siguienteregistro();
+			}// end while
+			delete curlc;
+			stream << "</ALBARAN>\n";
+			curc->siguienteregistro();
+		}// end while
+		delete curc;
+	}// end if
+
+
+    stream << "</FUGIT>\n";
+    alerta (100,100);
     return 0;
 }
 
@@ -960,6 +1417,40 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
 
 
 bool StructureParser::characters( const QString& n1) {
+    //    fprintf( stderr,"[%s]", (const char*)n1);
+    cadintermedia += n1;
+    return TRUE;
+}// end endElement
+
+
+
+// ==================================================================================0
+
+
+ImportBulmaFact::ImportBulmaFact(postgresiface2 *con, unsigned int tip) {
+    conexionbase = con;
+    m_tipo = tip;
+}// end StructureParser
+
+ImportBulmaFact::~ImportBulmaFact() {
+}// end StructureParser
+
+
+bool ImportBulmaFact::startDocument() {
+    indent = "";
+    return TRUE;
+}// end startDocument
+
+bool ImportBulmaFact::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& ) {
+    return TRUE;
+}// end startElement
+
+bool ImportBulmaFact::endElement( const QString&, const QString&, const QString& qName) {
+    return TRUE;
+}// end endElement
+
+
+bool ImportBulmaFact::characters( const QString& n1) {
     //    fprintf( stderr,"[%s]", (const char*)n1);
     cadintermedia += n1;
     return TRUE;

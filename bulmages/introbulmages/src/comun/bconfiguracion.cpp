@@ -55,7 +55,7 @@ BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * n
 BConfiguracion::~BConfiguracion() {}
 
 void BConfiguracion::cerrar() {
-    // Guardamos la configuración.
+    // Guardamos la configuraciï¿½.
     for (int i =0;i<1000;i++) {
         if (confpr->nombre(i) != "") {
             confpr->setValor(i,m_tconfiguracion->text(i,1).ascii());
@@ -65,12 +65,12 @@ void BConfiguracion::cerrar() {
     confpr->saveconfig();
     //  traductor->load(archivo.c_str(),confpr->valor(CONF_DIR_TRADUCCION).c_str());
     //Cargo la nueva fuente
-    //Cierro la ventana de Configuración
+    //Cierro la ventana de Configuraciï¿½
     close();
 }
 
 
-/// Esta función rellena la tabla de configuración del programa.
+/// Esta funciï¿½ rellena la tabla de configuraciï¿½ del programa.
 /// Para luego poder guardar los parametros que haga falta.
 void BConfiguracion::tablaconfiguracion() {
     m_tconfiguracion->setLeftMargin(0);
@@ -109,7 +109,7 @@ void BConfiguracion::BotonA_10aceptar() {}// BotonA_10aceptar
 
 
 #include "importContaplus.h"
-/// Responde a la pusación de importar datos de Contaplus a BulmaGés
+/// Responde a la pusaciï¿½ de importar datos de Contaplus a BulmaGï¿½
 void BConfiguracion::BotonContaplus() {
     postgresiface2 *DBconn = new postgresiface2();
     DBconn->inicializa(PunteroAlSelector->empresaDB());
@@ -120,6 +120,18 @@ void BConfiguracion::BotonContaplus() {
 }// end BotonContaplus
 
 
+
+#include "importexportbulmafactview.h"
+/// Responde a la pusaciï¿½ de importar datos de Contaplus a BulmaGï¿½
+void BConfiguracion::s_importexportbulmafact() {
+    postgresiface2 *DBconn = new postgresiface2();
+    DBconn->inicializa(PunteroAlSelector->empresaDB());
+    ImportExportBulmafactView *import= new ImportExportBulmafactView(DBconn,0,0,0);
+    import->exec();
+    delete import;
+    delete DBconn;
+}// end BotonContaplus
+
 void BConfiguracion::BotonA_11rechazar() {
     //poner el comboBoxFuente y el comboBoxIdioma a sus valores anteriores.
     if (PunteroAlSelector->tipoEmpresa() == "BulmaCont") {
@@ -129,7 +141,7 @@ void BConfiguracion::BotonA_11rechazar() {
 
 
 /**
-  * Esta función se ejecuta cuando se lanza el cambio de nombre de la empresa.|
+  * Esta funciï¿½ se ejecuta cuando se lanza el cambio de nombre de la empresa.|
   */
 void BConfiguracion::BotonA_6nombreEmpresa() {
     if (lineEditA_1->isReadOnly() ) { //Activa el line edit para que pueda ser editado.
@@ -178,7 +190,7 @@ void BConfiguracion::BotonA_61clonarEmpresa() {
 /**
   * Aqui borramos una empresa entera. No nos permite borrar la base de datos bgplangcont ni la base      
   * de datos de la empresa que tengamos abierta en este momento.
-  * \todo Sólo borra bases de datos en local, con bases de datos remotas no funciona. 
+  * \todo Sï¿½o borra bases de datos en local, con bases de datos remotas no funciona. 
   */
 void BConfiguracion::borrarEmpresa() {
     QString dbEmpresa;
@@ -189,11 +201,11 @@ void BConfiguracion::borrarEmpresa() {
     dbEmpresa = PunteroAlSelector->empresaDB();
     if (dbEmpresa!="") {
         if (dbEmpresa=="bgplangcont") {
-            QMessageBox::information( this, tr("Atención"), tr("Esta Base de Datos no puede ser eliminada.\n\r Es la plantilla para generar nuevas empresas."), QMessageBox::Ok);
+            QMessageBox::information( this, tr("Atenciï¿½"), tr("Esta Base de Datos no puede ser eliminada.\n\r Es la plantilla para generar nuevas empresas."), QMessageBox::Ok);
         } else if (dbEmpresa != PunteroAlSelector->empresaDB()) {
-            QMessageBox::warning( this, tr("Atención"), tr("No Está permitido eliminar la base \n\r de datos actualmente abierta."), QMessageBox::Ok,0);
+            QMessageBox::warning( this, tr("Atenciï¿½"), tr("No Estï¿½permitido eliminar la base \n\r de datos actualmente abierta."), QMessageBox::Ok,0);
         } else {
-	    int mensaje = QMessageBox::warning( this, tr("Atención"), tr("Borrar una empresa puede suponer perdida de datos\n ¿Desea continuar?\n"), QMessageBox::Yes,QMessageBox::No,0);
+	    int mensaje = QMessageBox::warning( this, tr("Atenciï¿½"), tr("Borrar una empresa puede suponer perdida de datos\n Desea continuar?\n"), QMessageBox::Yes,QMessageBox::No,0);
 	    if (mensaje == QMessageBox::Yes) { 
 		QString sentencia = "dropdb "+dbEmpresa;
 		system(sentencia.ascii());

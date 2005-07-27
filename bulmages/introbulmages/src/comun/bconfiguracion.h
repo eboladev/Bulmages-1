@@ -67,6 +67,7 @@ private slots:
   virtual void BotonB_2Desacer();
   virtual void nuevaFacturacion();
   virtual void BotonContaplus();
+  virtual void s_importexportbulmafact();
 };
 
 #endif

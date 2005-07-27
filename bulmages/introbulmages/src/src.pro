@@ -19,40 +19,51 @@ CONFIG += release \
           warn_on \
           qt \
           thread 
+
 comun/importContaplusBase.ui.target = comun/importContaplusBase.ui 
 comun/nuevafactbase.ui.target = comun/nuevafactbase.ui 
 comun/nuevaempresadlg.ui.target = comun/nuevaempresadlg.ui 
 comun/uiconfiguracion.ui.target = comun/uiconfiguracion.ui 
 comun/uiselector.ui.target = comun/uiselector.ui 
+
 TEMPLATE = app 
 FORMS += comun/uiselector.ui \
          comun/uiconfiguracion.ui \
          comun/nuevaempresadlg.ui \
          comun/nuevafactbase.ui \
-         comun/importContaplusBase.ui 
+         comun/importContaplusBase.ui \
+	 comun/importexportbulmafactbase.ui
+
 IDLS += comun/uiselector.ui \
         comun/uiconfiguracion.ui \
         comun/nuevaempresadlg.ui \
         comun/nuevafactbase.ui \
-        comun/importContaplusBase.ui 
+        comun/importContaplusBase.ui \
+	comun/importexportbulmafactbase.ui
+
 HEADERS += comun/bselector.h \
            comun/bconfiguracion.h \
            comun/bnuevaempresa.h \
            comun/nuevafact.h \
            comun/gongimportfiles.h \
-           comun/importContaplus.h 
+           comun/importContaplus.h \
+	   comun/importexportbulmafactview.h
+
 SOURCES += main.cpp \
            comun/bselector.cpp \
            comun/bconfiguracion.cpp \
            comun/bnuevaempresa.cpp \
            comun/nuevafact.cpp \
            comun/gongimportfiles.cpp \
-           comun/importContaplus.cpp 
+           comun/importContaplus.cpp \
+	   comun/importexportbulmafactview.cpp
+
 comun/importContaplusBase.ui.target = comun/importContaplusBase.ui
 comun/nuevafactbase.ui.target = comun/nuevafactbase.ui
 comun/nuevaempresadlg.ui.target = comun/nuevaempresadlg.ui
 comun/uiconfiguracion.ui.target = comun/uiconfiguracion.ui
 comun/uiselector.ui.target = comun/uiselector.ui
+
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
@@ -75,6 +86,7 @@ unix{
     DEFINES += DISTRO_NO_SE_QUE
   }
 }
+
 win32{
   DEFINES += WIN32
   INCLUDEPATH += lpqwin32/include

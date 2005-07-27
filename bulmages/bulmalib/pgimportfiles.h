@@ -35,6 +35,13 @@
 #define IMPORT_CLIENTES 128
 #define IMPORT_PROVEEDORES 256
 #define IMPORT_ARTICULOS 512
+#define IMPORT_FACTURASCLIENTE 1024
+#define IMPORT_ALMACENES 2048
+#define IMPORT_TRABAJADORES 4096
+#define IMPORT_FORMAS_PAGO 8192
+#define IMPORT_PRESUPUESTOSCLIENTE 16384
+#define IMPORT_PEDIDOSCLIENTE  32768
+#define IMPORT_ALBARANESCLIENTE 65536
 
 
 /** @autor Tomeu Borr� Riera
@@ -135,5 +142,32 @@ private:
 unsigned int m_tipo;
 };
 
+
+
+/** @autor Tomeu Borr� Riera
+  * @class pgimportifles pgimportifles.h
+  * @brief Clase para leer archivos de XML y hacer la importaci� de datos.
+  */
+class ImportBulmaFact : public QXmlDefaultHandler {
+private:
+	postgresiface2 *conexionbase;
+	QString cadintermedia;		/// ESta variable va almacenando los valores que van saliendo en la clase.
+	/// Variables usadas para almacenar los datos de un asiento.
+	QMap <QString, QString> valores;
+	/// El tagpadre indica en que posici� estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc
+	QString tagpadre;
+public:
+    ImportBulmaFact(postgresiface2 *, unsigned int tip=IMPORT_TODO);
+    ~ImportBulmaFact();
+    bool startDocument();
+    bool startElement( const QString&, const QString&, const QString& ,
+                       const QXmlAttributes& );
+    bool endElement( const QString&, const QString&, const QString& );
+    bool characters (const QString&);
+
+private:
+    QString indent;
+    unsigned int m_tipo;
+};
 
 #endif

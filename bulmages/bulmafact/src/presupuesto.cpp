@@ -429,7 +429,7 @@ void presupuesto::calculaypintatotales() {
     Fixed totiva("0.00");
     Fixed pariva("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-	    Fixed piva(it.key().ascii());
+	Fixed piva(it.key().ascii());
         if (porcentt > Fixed("0.00")) {
             pariva = (it.data()-it.data()*porcentt/100)* piva/100;
         } else {
