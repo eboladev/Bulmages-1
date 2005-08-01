@@ -439,10 +439,18 @@ void aplinteligentesview::creaasiento() {
     cursor2 *cur1;
     
     query.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d",numainteligente);
-    conexionbase->begin();
-    cur= conexionbase->cargacursor(query,"superquery");
-    conexionbase->commit();
+    cur= conexionbase->cargacursor(query);
+
+    /// Calculamos a partir de que orden debemos empezar.
     int orden=0;
+    query = "SELECT max(orden) AS ordmax FROM borrador WHERE idasiento ="+QString::number(numasiento);
+    cur1 = conexionbase->cargacursor(query);
+    if (!cur1->eof()) {
+	orden = cur1->valor("ordmax").toInt() +1;
+    }// end if
+    delete cur1;
+
+
     while (!cur->eof()) {
         codcuenta = aplicavariable(cur->valor("codcuenta"));
         query.sprintf("SELECT * FROM cuenta where codigo='%s'",codcuenta.ascii());
