@@ -34,16 +34,15 @@ void ImportExportBulmafactView::alerta(int a, int b) {
 }// end realizado
 
 void ImportExportBulmafactView::mensajeria(QString mensaje) {
-	QString mensajein = m_mensajes->text();
-	mensajein += mensaje;
-	m_mensajes->setText(mensajein);
-	m_mensajes->scrollBy(0,400);
+	static QString mensajein = "";
+//	fprintf(stderr,"Mensajeria -------------------- %s\n",mensaje.ascii());
+	mensajein += mensaje+"<BR>";
+	m_mensajes->setText("<HTML><BODY>"+mensajein+"</BODY></HTML>");
+ 	m_mensajes->scrollBy(0,400);
 }// end publicamensaje
 
 
 ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 * con, QWidget * parent, const char * name, WFlags f=0) :  ImportExportBulmafactBase(parent,name,f), pgimportfiles(con) {
-//	progress = m_progressbar;
-//	mensajes = m_mensajes;
 	conexionbase = con;
 }//end importContaplus
 
@@ -54,18 +53,18 @@ void ImportExportBulmafactView::botonBuscarXML() {
 	
 
 void ImportExportBulmafactView::botonImportar() {
+	fprintf(stderr,"ImportExportBulmafactView::botonImportar()\n");
 	QString finicial = m_fechainicial->text();
 	QString ffinal = m_fechafinal->text();
-
 		QFile filexml (m_XML->text());
 		filexml.open(IO_ReadOnly);
-		XML2Bulmages(filexml);
+		XML2BulmaFact(filexml);
 		filexml.close();
-	m_mensajes->setText("");
+//	m_mensajes->setText("");
 }// end botonImportar 
 
 
-/** \brief SLOT que responde a la pulsaci� del bot� de exportar
+/** \brief SLOT que responde a la pulsacion� del boton� de exportar
   * 
   * Se ha pulsado sobre el bot� de exportar. Lee los campos del formulario
   * mira si la opci� de exportaci� es XML o contaplus y llama a las funciones apropiadas
@@ -90,7 +89,7 @@ void ImportExportBulmafactView::botonExportar() {
 		bulmafact2XML(filexml);
 		filexml.close();
 	}// end if
-	m_mensajes->setText("");
+//	m_mensajes->setText("");
 }// end botonExportar
 
 

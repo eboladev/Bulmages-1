@@ -434,6 +434,7 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
 			stream << "\t<DIAS1TFORMA_PAGO>"   << XMLProtect(curc->valor("dias1tforma_pago"))   << "</DIAS1TFORMA_PAGO>\n";
 			stream << "\t<DESCUENTOFORMA_PAGO>"   << XMLProtect(curc->valor("descuentoforma_pago"))   << "</DESCUENTOFORMA_PAGO>\n";
 			stream << "</FORMA_PAGO>\n";
+			mensajeria("<LI>Exportando Nueva Forma de Pago</LI>\n");
 			curc->siguienteregistro();
 		}// end while
 		delete curc;
@@ -448,7 +449,7 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
 			stream << "\t<IDALMACEN>"   << XMLProtect(curc->valor("idalmacen"))   << "</IDALMACEN>\n";
 			stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
 			stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
-			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</DIRALMACEN>\n";
 			stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
 			stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
 			stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
@@ -601,7 +602,7 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
 			/// Datos iniciales para la factura que pueden ser de utilidad.
 			stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
 			stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
-			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</DIRALMACEN>\n";
 			stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
 			stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
 			stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
@@ -698,7 +699,7 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
 			/// Datos iniciales para el presupuesto  que pueden ser de utilidad.
 			stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
 			stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
-			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</DIRALMACEN>\n";
 			stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
 			stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
 			stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
@@ -795,7 +796,7 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
 			/// Datos iniciales para el presupuesto  que pueden ser de utilidad.
 			stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
 			stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
-			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</DIRALMACEN>\n";
 			stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
 			stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
 			stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
@@ -891,7 +892,7 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned int tipo) {
 			/// Datos iniciales para el presupuesto  que pueden ser de utilidad.
 			stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
 			stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
-			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</POBLALMACEN>\n";
+			stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</DIRALMACEN>\n";
 			stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
 			stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
 			stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
@@ -1184,6 +1185,31 @@ int pgimportfiles::XML2Bulmages (QFile &fichero, unsigned int tip) {
 }// end XML2Bulmages
 
 
+
+/** \brief Funci� para pasar de un archivo XML a Bulmag�
+  *
+  * Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX) y lo ejecuta para 
+  * que haga la imporaci� del archivo XML
+  */
+#include <qmessagebox.h>
+#include <qobject.h>
+
+int pgimportfiles::XML2BulmaFact (QFile &fichero, unsigned int tip) {
+    bool noerror = TRUE;
+    fprintf(stderr,"pgimportfiles::XML2BulmaFact()\n");
+    ImportBulmaFact handler(this, conexionbase, tip);
+    QXmlInputSource source( &fichero );
+    QXmlSimpleReader reader;
+    reader.setContentHandler( &handler );
+    noerror = reader.parse( source );
+    if (! noerror) {
+	QMessageBox::warning(0,"Application name","Error en el XML.\nDocumento mal formado.","OK",0,0);
+	// reader.parseContinue();
+    }
+    alerta(100,100);
+    return 0;
+}// end XML2Bulmages
+
 StructureParser::StructureParser(postgresiface2 *con, unsigned int tip) {
     conexionbase = con;
     m_tipo = tip;
@@ -1427,14 +1453,14 @@ bool StructureParser::characters( const QString& n1) {
 // ==================================================================================0
 
 
-ImportBulmaFact::ImportBulmaFact(postgresiface2 *con, unsigned int tip) {
+ImportBulmaFact::ImportBulmaFact(pgimportfiles *imp, postgresiface2 *con, unsigned int tip) {
     conexionbase = con;
+    pgimport = imp;
     m_tipo = tip;
 }// end StructureParser
 
 ImportBulmaFact::~ImportBulmaFact() {
 }// end StructureParser
-
 
 bool ImportBulmaFact::startDocument() {
     indent = "";
@@ -1442,17 +1468,127 @@ bool ImportBulmaFact::startDocument() {
 }// end startDocument
 
 bool ImportBulmaFact::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& ) {
+    cadintermedia = "";
     return TRUE;
 }// end startElement
 
 bool ImportBulmaFact::endElement( const QString&, const QString&, const QString& qName) {
+	valores[qName]= cadintermedia;
+	cadintermedia = "";
+	fprintf(stderr,"Tag de Cierre: %s\n", qName.ascii());
+	if (qName == "CLIENTE") 
+		trataCliente();
+	if (qName == "PROVEEDOR")
+		trataProveedor();
+	if (qName == "FORMA_PAGO")
+		trataFormaPago();
+	if (qName == "ALMACEN")
+		trataAlmacen();
+	if (qName == "ARTICULO")
+		trataArticulo();
+	if (qName == "PRESUPUESTO")
+		trataPresupuesto();
     return TRUE;
 }// end endElement
 
 
 bool ImportBulmaFact::characters( const QString& n1) {
-    //    fprintf( stderr,"[%s]", (const char*)n1);
-    cadintermedia += n1;
+	QString val= n1;
+	if (val == "\n") 
+		val = "";
+    printf("Encontrado caracter [%s]\n",val.ascii());
+    	cadintermedia += val;
     return TRUE;
 }// end endElement
 
+
+void ImportBulmaFact::printcontents() {
+	fprintf(stderr,"Impresión de contenidos\n");
+        tvalores::Iterator it;
+        for ( it = valores.begin(); it != valores.end(); ++it ) {
+            fprintf(stderr, "VAlores encontrados Clave: %s Valor:%s\n",
+                    it.key().ascii(),
+                    it.data().ascii());
+        }// end for
+	fprintf(stderr,"Fin de impresión de contenidos\n");
+}
+
+
+
+int ImportBulmaFact::trataCliente() {
+	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
+	pgimport->mensajeria("Se ha encontrado un cliente "+valores["CIFCLIENTE"]);
+	printcontents();
+	/// En la importación de un cliente hay que hacer la comprobación del DNI para saber si existe o no.
+	QString dcif = valores["CIFCLIENTE"];
+	if (dcif != "") {
+		QString query = "SELECT * FROM cliente WHERE cifcliente SIMILAR TO '"+dcif+"'";
+		cursor2 *cur = conexionbase->cargacursor(query);
+		if (!cur->eof()) {
+			/// El cliente ya existe se pueden hacer modificaciones
+			pgimport->mensajeria("<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n");
+			QString query1 = "UPDATE cliente SET nomcliente='"+valores["NOMCLIENTE"]+"' WHERE cifcliente='"+valores["CIFCLIENTE"]+"'";
+			conexionbase->ejecuta(query1);
+			delete cur;
+			return 1;
+		} else {
+			/// El cliente no existe, se debe hacer una inserción de éste.
+			pgimport->mensajeria("<LI> El cliente no existe, se debe hacer una inserción de éste</LI>\n");
+			QString query1 = "INSERT INTO cliente (cifcliente, nomcliente) VALUES ('"+valores["CIFCLIENTE"]+"','"+valores["NOMCLIENTE"]+"')";
+			conexionbase->ejecuta(query1);
+			delete cur;
+			return 1;
+		}// end if
+		delete cur;
+	}// end if
+	valores.clear();
+	return 0;
+}
+
+int ImportBulmaFact::trataProveedor() {
+	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
+	pgimport->mensajeria("Se ha encontrado un proveedor "+valores["CIFPROVEEDOR"]);
+	printcontents();
+	valores.clear();
+	return 0;
+}
+
+int ImportBulmaFact::trataFormaPago() {
+	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
+	pgimport->mensajeria("Se ha encontrado una froma de pago "+valores["DESCFORMA_PAGO"]);
+	printcontents();
+	valores.clear();
+	return 0;
+}
+
+int ImportBulmaFact::trataAlmacen() {
+	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
+	fprintf(stderr,"Se ha encontrado un almacen \n");
+	printcontents();
+	valores.clear();
+	return 0;
+}
+
+int ImportBulmaFact::trataArticulo() {
+	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
+	fprintf(stderr,"Se ha encontrado un articulo \n");
+	printcontents();
+	valores.clear();
+	return 0;
+}
+
+int ImportBulmaFact::trataFactura() {
+	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
+	fprintf(stderr,"Se ha encontrado una Factura \n");
+	printcontents();
+	valores.clear();
+	return 0;
+}
+
+int ImportBulmaFact::trataPresupuesto() {
+	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
+	fprintf(stderr,"Se ha encontrado un presupuesto \n");
+	printcontents();
+	valores.clear();
+	return 0;
+}

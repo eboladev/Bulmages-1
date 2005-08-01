@@ -44,6 +44,9 @@
 #define IMPORT_ALBARANESCLIENTE 65536
 
 
+
+
+
 /** @autor Tomeu Borr� Riera
   * @brief Clase para importaci� y exportaci� a distintos formatos de archivo de datos.
   */
@@ -51,10 +54,7 @@ class pgimportfiles {
 private:
 	/// Base de datos con la que trabaja la clase y de la que se hace importaci� / exportaci�
 	postgresiface2 *conexionbase;
-	/// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero a funci�.
-	virtual void alerta(int,int) {};
-	/// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un puntero de funci�.
-	virtual void mensajeria (QString) {};
+
 	/// La clase puede hacer una simulaci� o no dependiendo del valor de esta variable
 	bool m_modoTest;
 	/// Las importaciones y exportaciones pueden ser entre dos fechas, m_fInicial indica la fecha inicial a partir de la que hacer la importaci�
@@ -62,6 +62,11 @@ private:
 	/// Las importaciones y exportaciones pueden ser entre dos fechas, m_fFinal indica la fecha final a partir de la que hacer la importaci�
 	QString m_fFinal;
 public:
+	/// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero a funci�.
+	virtual void alerta(int,int) {};
+	/// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un puntero de funci�.
+	virtual void mensajeria (QString) {};
+
 	void setFInicial(QString f) {m_fInicial = f;};
 	void setFFinal(QString f) {m_fFinal = f;};
 	void setModoTest() {m_modoTest=TRUE;};
@@ -76,9 +81,9 @@ public:
 	int bulmafact2XML(QFile &, unsigned int tipo = IMPORT_TODO);
 	/// Esta funci� pasa datos de XML a bulmag�.
 	int XML2Bulmages(QFile &, unsigned int tip = IMPORT_TODO);
+	int XML2BulmaFact(QFile &, unsigned int tip = IMPORT_TODO);
 	QString searchParent(QString);
 };
-
 
 
 /** @autor Tomeu Borr� Riera
@@ -148,26 +153,44 @@ unsigned int m_tipo;
   * @class pgimportifles pgimportifles.h
   * @brief Clase para leer archivos de XML y hacer la importaci� de datos.
   */
+/// Usamos este tipo para almacenar todos los valores que va recogiendo la clase.
+typedef QMap<QString, QString> tvalores;
+
 class ImportBulmaFact : public QXmlDefaultHandler {
 private:
 	postgresiface2 *conexionbase;
 	QString cadintermedia;		/// ESta variable va almacenando los valores que van saliendo en la clase.
 	/// Variables usadas para almacenar los datos de un asiento.
-	QMap <QString, QString> valores;
+	tvalores valores;
 	/// El tagpadre indica en que posici� estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc
 	QString tagpadre;
+	pgimportfiles *pgimport;
 public:
-    ImportBulmaFact(postgresiface2 *, unsigned int tip=IMPORT_TODO);
+    ImportBulmaFact(pgimportfiles *, postgresiface2 *, unsigned int tip=IMPORT_TODO);
     ~ImportBulmaFact();
     bool startDocument();
     bool startElement( const QString&, const QString&, const QString& ,
                        const QXmlAttributes& );
     bool endElement( const QString&, const QString&, const QString& );
     bool characters (const QString&);
-
+/*
+	/// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero a funci�.
+	virtual void alerta(int,int) {};
+	/// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un puntero de funci�.
+	virtual void mensajeria (QString) {};
+*/
 private:
     QString indent;
     unsigned int m_tipo;
+    void printcontents();
+	int trataCliente();
+	int trataProveedor();
+	int trataFormaPago();
+	int trataAlmacen();
+	int trataArticulo();
+	int trataFactura();
+	int trataPresupuesto();
+
 };
 
 #endif

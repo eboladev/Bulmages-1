@@ -586,7 +586,7 @@ void intapunts3view::asientocerradop() {
     tapunts3->setReadOnly(TRUE);
     botonborrarasiento->setEnabled(TRUE);    
     botoniva->setEnabled(FALSE);
-    botoninteligente->setEnabled(FALSE);
+    botoninteligente->setEnabled(TRUE);
 }// end asientocerradop
 
 

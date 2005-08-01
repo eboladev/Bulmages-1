@@ -27,9 +27,8 @@ private:
 public:
     ImportExportBulmafactView(postgresiface2 *, QWidget *, const char *, WFlags );
     ~ImportExportBulmafactView(){};
-
-    void alerta(int, int);
-	void mensajeria(QString);
+    virtual void alerta(int, int);
+    virtual void mensajeria(QString);
     
 public slots:
 	virtual void botonBuscarXML();

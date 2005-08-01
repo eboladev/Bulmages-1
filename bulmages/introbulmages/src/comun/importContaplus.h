@@ -14,29 +14,28 @@
  ***************************************************************************/
 #ifndef _IMPORTCONTAPLUS_H_
 #define _IMPORTCONTAPLUS_H_
- 
+
 #include "importContaplusBase.h"
 #include "pgimportfiles.h"
-#include "postgresiface2.h" 
- 
- 
+#include "postgresiface2.h"
+
+
 class importContaplus: public importContaplusBase , public pgimportfiles {
-Q_OBJECT
+    Q_OBJECT
 private:
-	postgresiface2 *conexionbase;
+    postgresiface2 *conexionbase;
 public:
     importContaplus(postgresiface2 *, QWidget *, const char *, WFlags );
-    ~importContaplus(){};
-
+    ~importContaplus() {};
     void alerta(int, int);
-	void mensajeria(QString);
-    
+    void mensajeria(QString);
+
 public slots:
-	virtual void botonBuscarSubCta();
-	virtual void botonBuscarDiario();
-	virtual void botonBuscarXML();
-	virtual void botonImportar();
-	virtual void botonExportar();
+    virtual void botonBuscarSubCta();
+    virtual void botonBuscarDiario();
+    virtual void botonBuscarXML();
+    virtual void botonImportar();
+    virtual void botonExportar();
 };
 
 
