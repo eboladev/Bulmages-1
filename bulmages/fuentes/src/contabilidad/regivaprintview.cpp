@@ -2,9 +2,9 @@
                           regivaprintview.cpp  -  description
                              -------------------
     begin                : dom jul 13 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Terés - amirabet@biada.org
+    modificat per        : (C) 2003 Antoni Mirabete i Terï¿½ - amirabet@biada.org
  ***************************************************************************/
 
 /***************************************************************************
@@ -25,6 +25,9 @@
 #include <unistd.h>
 #endif
 #include <fstream>
+#include <qlocale.h>
+#include "fixed.h"
+
 using namespace std;
 
 extern Mod300ps *modelo;
@@ -88,8 +91,8 @@ void regivaprintview::presentar(char *tipus) {
 
     if (txt | html) {
 
-        char *argstxt[]={"iva.txt","iva.txt",NULL};      //presentació txt normal
-        char *argshtml[]={"iva.html","iva.html",NULL};   //presentació html normal
+        char *argstxt[]={"iva.txt","iva.txt",NULL};      //presentaciï¿½txt normal
+        char *argshtml[]={"iva.html","iva.html",NULL};   //presentaciï¿½html normal
 
         ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
         ofstream fitxersortidahtml(argshtml[0]);
@@ -98,12 +101,11 @@ void regivaprintview::presentar(char *tipus) {
             txt=0;    // verifiquem que s'hagin creat correctament els fitxers
         if (!fitxersortidahtml)
             html=0;  // es pot millorar el tractament d'errors
-        if (txt | html) {                // només continuem si hem pogut crear algun fitxer
+        if (txt | html) {                // nomï¿½ continuem si hem pogut crear algun fitxer
             int num1;
             cursor2 *cursorapt;
             conexionbase->begin();
-            query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha>='%s' AND borrador.fecha<='%s'",fechainicial1->text().ascii(), fechafinal1->text().ascii());
-
+            query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha>='%s' AND borrador.fecha<='%s' ORDER BY asiento.ordenasiento",fechainicial1->text().ascii(), fechafinal1->text().ascii());
             fprintf(stderr,"%s\n",query.ascii());
             cursorapt = conexionbase->cargacursor(query,"mycursor");
             conexionbase->commit();
@@ -112,17 +114,17 @@ void regivaprintview::presentar(char *tipus) {
             int hoja=0;
 
             if (txt) {
-                //presentació txt normal
+                //presentacion txt normal
                 fitxersortidatxt.setf(ios::fixed);
                 fitxersortidatxt.precision(2);
-                fitxersortidatxt << "                                        IVA Repercutit \n" ;
-                fitxersortidatxt << "Data Inicial: " << finicial.ascii() << 
-		"   Data Final: " << ffinal.ascii() << endl;
-                fitxersortidatxt << "Assentament  Data   Compte  Descripció   Base Imponible    Factura \n" ;
+                fitxersortidatxt << "                                        IVA Repercutido \n" ;
+                fitxersortidatxt << "Fecha Inicial: " << finicial.ascii() << 
+		"   Fecha Final: " << ffinal.ascii() << endl;
+		fitxersortidatxt << "Asiento  Fecha   Cuenta   Descripcion                        Base Imponible    Factura \n" ;
                 fitxersortidatxt << "__________________________________________________________________________________________________________\n";
             }// end if
             if (html) {
-                //presentació html normal
+                //presentacion html normal
                 fitxersortidahtml.setf(ios::fixed);
                 fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
@@ -133,21 +135,20 @@ void regivaprintview::presentar(char *tipus) {
                 fitxersortidahtml << "  <title> IVA Repercutit </title>\n";
                 fitxersortidahtml << "</head>\n";
                 fitxersortidahtml << "<body>\n";
-                fitxersortidahtml << "<table><tr><td colspan=\"10\" class=titoliva> IVA Repercutit <hr></td></tr>\n\n";
+                fitxersortidahtml << "<table><tr><td colspan=\"10\" class=titoliva> IVA Repercutido <hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td colspan=\"10\" class periodeiva> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td class=titolcolumnaiva> Assentament </td><td class=titolcolumnaiva> Data </td><td class=titolcolumnaiva> Compte </td><td class=titolcolumnaiva> Descripció </td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> Cif </td><td class=titolcolumnaiva> Compte IVA </td></tr>\n";
+                fitxersortidahtml << "<tr><td class=titolcolumnaiva> Asiento </td><td class=titolcolumnaiva> Data </td><td class=titolcolumnaiva> Cuenta </td><td class=titolcolumnaiva> Descripciï¿½</td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> CIF </td><td class=titolcolumnaiva> Cuenta IVA </td></tr>\n";
             }// end if
             while (!cursorapt->eof()) {
                 datahora=cursorapt->valor("fecha");
                 data=datahora.mid(0,10);
-
 		int baseimp = cursorapt->valor("baseimp").replace(".","").toInt();
-		int total = baseimp * cursorapt->valor("baseimp").replace(".","").toInt() / 10000;
+		int total = baseimp * cursorapt->valor("baseimp").replace(".","").toInt()/10000;
 		QString numberstr = QString::number(total);
     		numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2);
                 if (txt) {
-                    //presentació txt normal
-                    fitxersortidatxt << setw(10) << cursorapt->valor("idasiento") << " " <<
+                    //presentacion txt normal
+                    fitxersortidatxt << setw(10) << cursorapt->valor("ordenasiento") << " " <<
 		     data.ascii() << " " << 
 		     cursorapt->valor("contrapartida").ascii() << " " << cursorapt->valor("descripcion").ascii() << " " << cursorapt->valor("baseimp").ascii() << " " << 
 		     cursorapt->valor("iva").ascii() << " " << 
@@ -157,7 +158,7 @@ void regivaprintview::presentar(char *tipus) {
 		     endl;
                 }// end if
                 if (html) {
-                    //presentació html normal
+                    //presentacion html normal
                     fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor("idasiento").ascii() << "</td><td class=dataiva>" << data.ascii() << "</td><td class=contrapartidaiva>" << cursorapt->valor("contrapartida").ascii() << "</td><td class=descripcioiva>" << cursorapt->valor("descripcion").ascii() << "</td><td class=baseimponibleiva>" << cursorapt->valor("baseimp").ascii() << "</td><td class=tipusiva>" << cursorapt->valor("iva").ascii() << "</td><td class=quotaiva>" << numberstr.ascii() << "</td><td class=facturaiva>" << cursorapt->valor("factura").ascii() << "</td><td class=cifiva>" << cursorapt->valor("cif").ascii() << "</td></tr> \n";
                 }// end if
                 // Calculamos la siguiente cuenta registro y finalizamos el bucle
@@ -165,11 +166,39 @@ void regivaprintview::presentar(char *tipus) {
             }// end while
             // Vaciamos el cursor de la base de datos.
             delete cursorapt;
-
+	    
+	    QLocale spanish(QLocale::Spanish); // vamos a formatear los nÃºmeros con punto para los millares y coma para los decimales
+	    /// AHORA PONEMOS EL RESUMEN DEL IVA REPERCUTIDO
+	    QString SQLQuery = "SELECT * FROM cuenta, tipoiva  LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+fechainicial1->text()+"' AND ffactura <='"+fechafinal1->text()+"' ) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '477%'";
+	    conexionbase->begin();
+	    cursor2* cur = conexionbase->cargacursor(SQLQuery, "elcursor");
+	    conexionbase->commit();
+	    int j=0;
+	    Fixed tivar("0");
+	    Fixed tbaseimpr("0");    
+	    while (! cur->eof() ) {
+		Fixed baseiva(cur->valor("tbaseiva").replace(".","").ascii());
+		Fixed porcent(cur->valor("porcentajetipoiva").replace(".","").ascii());
+		Fixed baseimp = baseiva*1000000/porcent;
+		QString numberstr = baseimp.toQString();
+		
+		// Pasamos al formato de representacion espaÃ±ol las cantidades a mostrar
+		QString iva = spanish.toString(cursorapt->valor("tbaseiva").toDouble(),'f',2);
+		QString bi = spanish.toString(numberstr.toDouble(),'f',2);
+		
+		fitxersortidatxt << setiosflags( ios::left ) << setw(16) << cur->valor("nombretipoiva").ascii() << " IVA: ";
+		fitxersortidatxt << resetiosflags( ios::left ) << setw(12) << iva.ascii() << " BI: ";
+		fitxersortidatxt << setw(10) << bi.ascii() << endl;
+		
+		tivar = tivar+baseiva;
+		tbaseimpr = tbaseimpr+baseimp;           
+		cur->siguienteregistro();
+		j++;
+	    }// end while    
+	    delete cur;
 
             conexionbase->begin();
-            query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo NOT LIKE '43%%' AND cuenta.codigo NOT LIKE '600%%') AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha",fechainicial1->text().ascii(), fechafinal1->text().ascii());
-
+            query.sprintf("SELECT *,(baseimp+iva) AS total, (iva/baseimp*100)::INTEGER AS cuota FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo NOT LIKE '43%%' AND cuenta.codigo NOT LIKE '600%%') AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY cuota,borrador.fecha",fechainicial1->text().ascii(), fechafinal1->text().ascii());
             fprintf(stderr,"%s\n",query.ascii());
             cursorapt = conexionbase->cargacursor(query,"mycursor");
             conexionbase->commit();
@@ -177,16 +206,15 @@ void regivaprintview::presentar(char *tipus) {
             num1 = cursorapt->numregistros();
             hoja=0;
             if (txt) {
-                //presentació txt normal
-
+                //presentacion txt normal
                 fitxersortidatxt.setf(ios::fixed);
                 fitxersortidatxt.precision(2);
-                fitxersortidatxt << "                                        IVA Soportat \n" ;
-                fitxersortidatxt << "Assentament  Data   Compte  Descripció   Base Imponible  % IVA  Quota IVA   Factura  Cif Compte IVA \n" ;
-                fitxersortidatxt << "___________________________________________________________________________________________________________\n";
+                fitxersortidatxt << "                                        IVA Soportado \n" ;
+		fitxersortidatxt << "Asiento   Fecha     Cuenta   Descripcion                        Subtotal Cuota   IVA       Total   Factura    CIF\n" ;
+                fitxersortidatxt << "_______________________________________________________________________________________________________________________\n";
             }
             if (html) {
-                //presentació html normal
+                //presentacion html normal
                 fitxersortidahtml.setf(ios::fixed);
                 fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
@@ -197,33 +225,28 @@ void regivaprintview::presentar(char *tipus) {
                 fitxersortidahtml << "  <title> IVA Soportat </title>\n";
                 fitxersortidahtml << "</head>\n";
                 fitxersortidahtml << "<body>\n";
-                fitxersortidahtml << "<tr><td colspan=\"10\" class=titoliva> IVA Soportat <hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td class=titolcolumnaiva> Assentament </td><td class=titolcolumnaiva> Data </td><td class=titolcolumnaiva> Compte </td><td class=titolcolumnaiva> Descripció </td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> Cif </td><td class=titolcolumnaiva> Compte IVA </td></tr>\n";
+                fitxersortidahtml << "<tr><td colspan=\"10\" class=titoliva> IVA Soportado <hr></td></tr>\n\n";
+                fitxersortidahtml << "<tr><td class=titolcolumnaiva> Asiento </td><td class=titolcolumnaiva> Fecha </td><td class=titolcolumnaiva> Cuenta </td><td class=titolcolumnaiva> Descripcion</td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> CIF </td><td class=titolcolumnaiva> Cuenta IVA </td></tr>\n";
             }
             while (!cursorapt->eof()) {
-
                 datahora=cursorapt->valor("fecha");
                 data=datahora.mid(0,10);
-		// Hacemos los cálculos con punto fijo, para evitar el error del punto flotante.
-		int baseimp = cursorapt->valor("baseimp").replace(".","").toInt();
-		int total = baseimp * cursorapt->valor("baseimp").replace(".","").toInt() / 10000;
-		QString numberstr = QString::number(total);
-    		numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2);
+		// Pasamos al formato de representacion espaÃ±ol las cantidades a mostrar
+		QString bi = spanish.toString(cursorapt->valor("baseimp").toDouble(),'f',2);
+		QString iva = spanish.toString(cursorapt->valor("iva").toDouble(),'f',2);
+		QString total = spanish.toString(cursorapt->valor("total").toDouble(),'f',2);
+		// Hacemos el calculo de la cuota (asi nos sirve para ver si se calculo el % correcto)
+		//int calculo = round(cursorapt->valor("iva").toDouble()/cursorapt->valor("baseimp").toDouble()*100);
+		//QString cuota = QString::number(calculo);
+		QString cuota = spanish.toString(cursorapt->valor("cuota").toInt());
                 // Acumulamos los totales para al final poder escribirlos
                 if (txt) {
-                    //presentació txt normal
-                    fitxersortidatxt << setw(10) << cursorapt->valor("idasiento").ascii() << " " 
-		    << data.ascii() << " "
-		     << cursorapt->valor("contrapartida").ascii() << " " << cursorapt->valor("descripcion").ascii() << " " << cursorapt->valor("baseimp").ascii() << " "  <<
-		      cursorapt->valor("iva").ascii() << " " <<
-		      numberstr.ascii() << "-" << 
-		      cursorapt->valor("factura").ascii() << " " << 
-		      cursorapt->valor("cif").ascii() << " "  << 
-		       endl;
+                    //presentacion txt normal
+                    fitxersortidatxt << setiosflags( ios::left ) << setw(8) << cursorapt->valor("ordenasiento").ascii() << setw(12) << data.ascii() << setw(9) << cursorapt->valor("codigo").ascii() << setw(30) << cursorapt->valor("descripcion").left(30).ascii() << " " << resetiosflags( ios::left ) << setw(12) << bi.ascii() << " " << setw(3) << cuota.ascii() << "%" << setw(9) << iva.ascii() << setw(12) << total.ascii() << setiosflags( ios::left ) << "  " << setw(10) << cursorapt->valor("factura").right(8).ascii() <<  setw(10) << cursorapt->valor("cif").ascii() << endl;
                 }
                 if (html) {
-                    //presentació html normal
-                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor("idasiento").ascii() << "</td><td class=dataiva>" << data.ascii() << "</td><td class=contrapartidaiva>" << cursorapt->valor("contrapartida").ascii() << "</td><td class=descripcioiva>" << cursorapt->valor("descripcion").ascii() << "</td><td class=baseimponibleiva>" << cursorapt->valor("baseimp").ascii() << "</td><td class=tipusiva>" << cursorapt->valor("iva").ascii() << "</td><td class=quotaiva>" << numberstr.ascii() << "</td><td class=facturaiva>" << cursorapt->valor("factura").ascii() << "</td><td class=cifiva>" << cursorapt->valor("cif").ascii() << "</td></tr> \n";
+                    //presentacion html normal
+                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor("ordenasiento").ascii() << "</td><td class=dataiva>" << data.ascii() << "</td><td class=contrapartidaiva>" << cursorapt->valor("contrapartida").ascii() << "</td><td class=descripcioiva>" << cursorapt->valor("descripcion").ascii() << "</td><td class=baseimponibleiva>" << cursorapt->valor("baseimp").ascii() << "</td><td class=tipusiva>" << cursorapt->valor("iva").ascii() << "</td><td class=quotaiva>" << total.ascii() << "</td><td class=facturaiva>" << cursorapt->valor("factura").ascii() << "</td><td class=cifiva>" << cursorapt->valor("cif").ascii() << "</td></tr> \n";
                 }
                 // Calculamos la siguiente cuenta registro y finalizamos el bucle
                 cursorapt->siguienteregistro();
@@ -231,67 +254,40 @@ void regivaprintview::presentar(char *tipus) {
             // Vaciamos el cursor de la base de datos.
             delete cursorapt;
 
+	    /// AHORA PONEMOS EL RESUMEN DEL IVA SOPORTADO
+	    SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva  WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+fechainicial1->text()+"' AND ffactura <='"+fechafinal1->text()+"' ) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '472%'";
+	    conexionbase->begin();
+	    cur = conexionbase->cargacursor(SQLQuery, "elcursor");
+	    conexionbase->commit();
+	    j=0;
+	    Fixed tivas("0");
+	    Fixed tbaseimps("0");
+	    while (! cur->eof() ) {
+		Fixed baseiva(cur->valor("tbaseiva").ascii());
+		Fixed porcent(cur->valor("porcentajetipoiva").ascii());
+		Fixed ivacalculado = baseiva*porcent/100;
+		QString numberstr = ivacalculado.toQString();
+		
+		// Pasamos al formato de representacion espaÃ±ol las cantidades a mostrar
+		QString bi = spanish.toString(cur->valor("tbaseiva").toDouble(),'f',2);
+		QString iva = spanish.toString(numberstr.toDouble(),'f',2);
+		
+		if(j==0) fitxersortidatxt << endl;
+		fitxersortidatxt << setiosflags( ios::left ) << setw(16) << cur->valor("nombretipoiva").ascii() << " BI: ";
+		fitxersortidatxt << resetiosflags( ios::left ) << setw(12) << bi.ascii() << " IVA: ";
+		fitxersortidatxt << setw(10) << iva.ascii() << endl;
+		
+		tivas = tivas+ivacalculado;
+		tbaseimps = tbaseimps+baseiva;
+		cur->siguienteregistro();
+		j++;
+	    }// end while
+	    delete cur;
 
-/// AHORA PONEMOS EL RESUMEN	    
-	    
-	long int tivas=0;
-	long int tivar=0;
-	long int tbaseimps =0;
-	long int tbaseimpr =0;
-	    
-    QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva  WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+fechainicial1->text()+"' AND ffactura <='"+fechafinal1->text()+"' ) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '472%'";
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(SQLQuery, "elcursor");
-    conexionbase->commit();
-//    m_listSoportado->setNumRows(cur->numregistros());
-    int j =0;
-    while (! cur->eof() ) {
-       long int baseiva = cur->valor("tbaseiva").replace(".","").toInt();
-       long int porcent = cur->valor("porcentajetipoiva").replace(".","").toInt();
-       long int baseimp = baseiva *10000 / porcent;
-       QString numberstr = QString::number(baseimp);
-       numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2);
-
-       fitxersortidatxt << cur->valor("nombretipoiva").ascii();
-       fitxersortidatxt << cur->valor("tbaseiva").ascii();
-       fitxersortidatxt << numberstr.ascii();
-
-       tivas+= baseiva;
-       tbaseimps+=baseimp;
-       cur->siguienteregistro();
-       j++;
-    }// end while
-    delete cur;
-    
-    SQLQuery = "SELECT * FROM cuenta, tipoiva  LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+fechainicial1->text()+"' AND ffactura <='"+fechafinal1->text()+"' ) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '477%'";
-    conexionbase->begin();
-    cur = conexionbase->cargacursor(SQLQuery, "elcursor");
-    conexionbase->commit();
-//    m_listRepercutido->setNumRows(cur->numregistros());
-    j =0;
-    while (! cur->eof() ) {
-       long int baseiva = cur->valor("tbaseiva").replace(".","").toInt();
-       long int porcent = cur->valor("porcentajetipoiva").replace(".","").toInt();
-       long int baseimp = baseiva*10000 / porcent;
-       QString numberstr = QString::number(baseimp);
-       numberstr = numberstr.left(numberstr.length()-2)+"."+numberstr.right(2); 
-       fitxersortidatxt << cur->valor("nombretipoiva").ascii();
-       fitxersortidatxt << cur->valor("tbaseiva").ascii();
-       fitxersortidatxt << numberstr.ascii();  
-       tivar+= baseiva;
-       tbaseimpr+=baseimp;           
-       cur->siguienteregistro();
-       j++;
-    }// end while    
-    delete cur;
-
-  
-	    
-	    
-/// AHORA CERRAMOS LOS FICHEROS
+            /// AHORA CERRAMOS LOS FICHEROS
             if (txt) {
                 fitxersortidatxt.close();
-                //presentació txt normal
+                //presentaciï¿½txt normal
                 if ((pid=fork()) < 0) {
                     perror ("Fork failed");
                     exit(errno);
@@ -303,7 +299,7 @@ void regivaprintview::presentar(char *tipus) {
             if (html) {
                 fitxersortidahtml << "\n</table>\n</body>\n</html>\n";
                 fitxersortidahtml.close();
-                //presentació html normal
+                //presentaciï¿½html normal
                 if ((pid=fork()) < 0) {
                     perror ("Fork failed");
                     exit(errno);
