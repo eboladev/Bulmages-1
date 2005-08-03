@@ -559,7 +559,7 @@ int ivaview::buscaborradorservicio(int idborrador) {
         fprintf(stderr,"idborrador: %s contrapartida: %s cuenta: %s\n",cur->valor("idborrador").ascii(), cur->valor("contrapartida").ascii(), cur->valor("codigo").ascii());
         registro = atoi(cur->valor("idborrador").ascii());
         cur->siguienteregistro();
-    }// end while
+    }//end while
     delete cur;
 
     /// Atentos que aqui es donde se calcula el total
@@ -645,7 +645,7 @@ int ivaview::buscaborradorcliente(int idborrador) {
 /** \brief Esta funcion se encarga de cargar la tabla de registro de IVA
   */
 void ivaview::cargaiva(QString idregistroiva) {
-    QString SQLQuery = "SELECT * FROM cuenta,tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva = "+idregistroiva+" ) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE cuenta.idcuenta = tipoiva.idcuenta";
+    QString SQLQuery = "SELECT * FROM cuenta,tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva="+idregistroiva+" ) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE cuenta.idcuenta=tipoiva.idcuenta ORDER BY tipoiva.idtipoiva";
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(SQLQuery, "Masquerys");
     conexionbase->commit();
