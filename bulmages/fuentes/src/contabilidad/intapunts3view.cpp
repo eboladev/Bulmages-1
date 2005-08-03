@@ -559,7 +559,7 @@ void intapunts3view::vaciarapuntes() {
   */
 void intapunts3view::asientoabiertop() {
     descuadre->setEnabled(TRUE);
-    nuevoasiento->setEnabled(FALSE);
+    nuevoasiento->setEnabled(TRUE);
     botonabrirasiento->setEnabled(FALSE);
     botoncerrarasiento->setEnabled(TRUE);
     tapunts3->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTESA).ascii());
@@ -1369,7 +1369,15 @@ void intapunts3view::pulsadomas(int row, int col, int caracter) {
                 tapunts3->setCurrentCell(row, COL_SUBCUENTA);
                 break;
             case COL_SUBCUENTA:
-                tapunts3->setCurrentCell(row, COL_DEBE);
+		tapunts3->setCurrentCell(row, COL_DEBE);
+		/// Si la subcuenta tiene el DEBE bloqueado entonces pasamos el cursor al haber.
+		query = "SELECT nodebe FROM cuenta WHERE codigo='"+conexionbase->sanearCadena(tapunts3->text(row,COL_SUBCUENTA))+"'";
+		cur = conexionbase->cargacursor(query);
+		if (!cur->eof()) {
+			if (cur->valor("nodebe") == "t") 
+				tapunts3->setCurrentCell(row, COL_HABER);
+		}// end if
+		delete cur;
                 break;
             case COL_CONTRAPARTIDA:
                 tapunts3->setCurrentCell(row, COL_DEBE);

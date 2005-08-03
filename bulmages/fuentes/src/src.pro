@@ -5,6 +5,7 @@
 
 FORMS += comun/uiselector.ui \
          contabilidad/about.ui \
+	 contabilidad/bulmacontbase.ui \
          contabilidad/listcuentasdlg1.ui \
          contabilidad/cuentadlg.ui \
          contabilidad/diariodlg1.ui \

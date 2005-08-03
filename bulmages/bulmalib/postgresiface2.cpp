@@ -685,7 +685,7 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
     if (padre == 0) {
         tpadre="NULL";
     }  else  {
-        tpadre.sprintf("'%d'",padre);
+        tpadre.sprintf("%d",padre);
     }// end if
     QString nodebe = cnodebe ? "TRUE" : "FALSE";
     QString nohaber = cnohaber ? "TRUE" : "FALSE";

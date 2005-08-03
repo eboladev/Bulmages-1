@@ -1517,8 +1517,8 @@ void ImportBulmaFact::printcontents() {
 
 int ImportBulmaFact::trataCliente() {
 	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
-	pgimport->mensajeria("Se ha encontrado un cliente "+valores["CIFCLIENTE"]);
-	printcontents();
+	pgimport->mensajeria("<B>Tratando el cliente "+valores["CIFCLIENTE"]+" "+valores["NOMCLIENTE"]+"</B><BR>");
+//	printcontents();
 	/// En la importación de un cliente hay que hacer la comprobación del DNI para saber si existe o no.
 	QString dcif = valores["CIFCLIENTE"];
 	if (dcif != "") {
@@ -1529,34 +1529,50 @@ int ImportBulmaFact::trataCliente() {
 			pgimport->mensajeria("<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n");
 			QString query1 = "UPDATE cliente SET nomcliente='"+valores["NOMCLIENTE"]+"' WHERE cifcliente='"+valores["CIFCLIENTE"]+"'";
 			conexionbase->ejecuta(query1);
-			delete cur;
-			return 1;
 		} else {
 			/// El cliente no existe, se debe hacer una inserción de éste.
 			pgimport->mensajeria("<LI> El cliente no existe, se debe hacer una inserción de éste</LI>\n");
 			QString query1 = "INSERT INTO cliente (cifcliente, nomcliente) VALUES ('"+valores["CIFCLIENTE"]+"','"+valores["NOMCLIENTE"]+"')";
 			conexionbase->ejecuta(query1);
-			delete cur;
-			return 1;
 		}// end if
 		delete cur;
 	}// end if
+	pgimport->mensajeria("<HR>");
 	valores.clear();
 	return 0;
 }
 
 int ImportBulmaFact::trataProveedor() {
 	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
-	pgimport->mensajeria("Se ha encontrado un proveedor "+valores["CIFPROVEEDOR"]);
-	printcontents();
+	pgimport->mensajeria("<B>Tratando el proveedor "+valores["CIFPROVEEDOR"]+"</b><BR>");
+//	printcontents();
+	/// En la importación de un proveedor hay que hacer la comprobación del DNI para saber si existe o no.
+	QString cifprov = valores["CIFPROVEEDOR"];
+	if (cifprov != "") {
+		QString query = "SELECT * FROM proveedor WHERE cifproveedor SIMILAR TO '"+cifprov+"'";
+		cursor2 *cur = conexionbase->cargacursor(query);
+		if (!cur->eof()) {
+			/// El cliente ya existe se pueden hacer modificaciones
+			pgimport->mensajeria("<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n");
+			QString query1 = "UPDATE proveedor SET nomproveedor='"+valores["NOMPROVEEDOR"]+"' WHERE cifproveedor='"+valores["CIFPROVEEDOR"]+"'";
+			conexionbase->ejecuta(query1);
+		} else {
+			/// El cliente no existe, se debe hacer una inserción de éste.
+			pgimport->mensajeria("<LI> El proveedor no existe, se debe hacer una inserción de éste</LI>\n");
+			QString query1 = "INSERT INTO proveedor (cifproveedor, nomproveedor) VALUES ('"+valores["CIFPROVEEDOR"]+"','"+valores["NOMPROVEEDOR"]+"')";
+			conexionbase->ejecuta(query1);
+		}// end if
+		delete cur;
+	}// end if
+	pgimport->mensajeria("<HR>");
 	valores.clear();
 	return 0;
 }
 
 int ImportBulmaFact::trataFormaPago() {
 	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
-	pgimport->mensajeria("Se ha encontrado una froma de pago "+valores["DESCFORMA_PAGO"]);
-	printcontents();
+	pgimport->mensajeria("<B>Tratando la froma de pago "+valores["DESCFORMA_PAGO"]+"</B><BR>");
+//	printcontents();
 	valores.clear();
 	return 0;
 }
@@ -1564,7 +1580,7 @@ int ImportBulmaFact::trataFormaPago() {
 int ImportBulmaFact::trataAlmacen() {
 	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
 	fprintf(stderr,"Se ha encontrado un almacen \n");
-	printcontents();
+//	printcontents();
 	valores.clear();
 	return 0;
 }
@@ -1572,7 +1588,7 @@ int ImportBulmaFact::trataAlmacen() {
 int ImportBulmaFact::trataArticulo() {
 	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
 	fprintf(stderr,"Se ha encontrado un articulo \n");
-	printcontents();
+//	printcontents();
 	valores.clear();
 	return 0;
 }
@@ -1580,7 +1596,7 @@ int ImportBulmaFact::trataArticulo() {
 int ImportBulmaFact::trataFactura() {
 	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
 	fprintf(stderr,"Se ha encontrado una Factura \n");
-	printcontents();
+//	printcontents();
 	valores.clear();
 	return 0;
 }
@@ -1588,7 +1604,7 @@ int ImportBulmaFact::trataFactura() {
 int ImportBulmaFact::trataPresupuesto() {
 	/// En el XML se ha encontrado un tag de cliente que está almacenado en la estructura valores
 	fprintf(stderr,"Se ha encontrado un presupuesto \n");
-	printcontents();
+//	printcontents();
 	valores.clear();
 	return 0;
 }
