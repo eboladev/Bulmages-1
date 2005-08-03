@@ -1,5 +1,6 @@
 #!/bin/bash
-#  (C) Tomeu Borr� Riera, Setiembre 2004
+#  (C) Tomeu Borras Riera y Rene Merou Setiembre 2004-Octubre 2005
+# Distribuido bajo la liencia GPL
 # Lo ejecuta un usuario con privilegios para crear bases de datos. Si no no funciona.
 #
 # Este script se encarga de crear bases de datos de bulmages.
@@ -77,16 +78,16 @@ info "Creamos la base de datos:$2 \n $4"
 linea
 tiempo
 
-LANG=`psql -l | grep $2`
-if [ "$LANG" != "" ]; then
+LANG_PSQL=`psql -l | grep $2`
+if [ "$LANG_PSQL" != "" ]; then
 	mensaje "No se puede crear la base de datos $2 porque ya existe en el sistema"
 	exit 1
 fi;
 
 
 info "Comprobamos la existencia de PLPGSQL"
-   LANG=`locate plpgsql.so`
-   if [ "$LANG" = "" ]; then
+   LANG_PSQL=`locate plpgsql.so`
+   if [ "$LANG_PSQL" = "" ]; then
       mensaje "PostgreSQL no esta bien instalado o la distribucion no es una \n de las soportadas por el instalador. \
    No se ha encontrado la libreria plpgsql.so necesaria para instalar las \n bases de datos
    Por favor, localicela e intente una instalacion manual\n"

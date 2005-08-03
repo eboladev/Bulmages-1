@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############################################################################
-# Script de instalaci� de BulmaG�
-# (C) Tomeu Borr�, Septiempbre 2004
+# Script de instalaciï¿œ de BulmaGï¿œ
+# (C) Tomeu Borrï¿œ, y Rene Merou Septiempbre 2004
 # Este documento es GPL
 #------------------------------------------------------------------------------
 # Parametros
@@ -43,25 +43,25 @@ rm /tmp/error.txt
 fi
 
 
-# Esta funci� presenta mensajes por pantalla
+# Esta funciï¿œ presenta mensajes por pantalla
 function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$2" "$1"  "$3"
    else
-      dialog --title "Instalaci� de BulmaG� v0.4.9" --backtitle "Asociaci� Iglues" --msgbox "$1" 10 60
+      dialog --title "Instalaciï¿œ de BulmaGï¿œ v0.4.9" --backtitle "Asociaciï¿œ Iglues" --msgbox "$1" 10 60
    fi
 }
 
-# Esta funci� presenta mensajes.
+# Esta funciï¿œ presenta mensajes.
 function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e  "$2" "$1"  "$3"
    else
-      dialog  --title "Instalaci� de BulmaG� v0.4.9" --backtitle "Asociaci� Iglues" --infobox "$1" 10 60
+      dialog  --title "Instalaciï¿œ de BulmaGï¿œ v0.4.9" --backtitle "Asociaciï¿œ Iglues" --infobox "$1" 10 60
    fi
 }
 
-#Esta funci� crea usuarios que van a manejar la base de datos.
+#Esta funciï¿œ crea usuarios que van a manejar la base de datos.
 function lee() {
         if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
                 echo -e  "\033[33m""Indique el usuario que va a trabajar normalmente con el programa:"  "\033[0m"
@@ -110,7 +110,7 @@ touch /tmp/errores.txt
 
 #Comprobamos que estamos en el directorio adecuado
 if [ ! -e ./installbulmages ]; then
- mensaje "Directorio incorrecto. La instalación debe ejecutarse desde el directorio donde se encuentra el script. \n"
+ mensaje "Directorio incorrecto. La instalaciÃ³n debe ejecutarse desde el directorio donde se encuentra el script. \n"
  exit 1
 fi
 
@@ -118,14 +118,14 @@ fi
 
 
 #Comprobamos que existe la libreria de qt adecuada.
-LANG=`locate libqt-mt.so.3`
-if [ "$LANG" = "" ]; then
-	mensaje "Libreria de Qt libqt.so.3 no está instalada o no se encuentra. \n"
+LANG_PSQL=`locate libqt-mt.so.3`
+if [ "$LANG_PSQL" = "" ]; then
+	mensaje "Libreria de Qt libqt.so.3 no estÃ¡ instalada o no se encuentra. \n"
 	exit 1
 fi
 
 
-# Distinguimos entre una instalaci� y una actualizaci�
+# Distinguimos entre una instalaciï¿œ y una actualizaciï¿œ
 info "Comprobando versiones anteriores. \n" "\033[32m" "\033[0m"
 tiempo
 
@@ -141,7 +141,7 @@ if [ -e /etc/bulmages.conf ]; then
    fi
 
 
-   # Tambi� actualizarmos el fichero de backup.
+   # Tambiï¿œ actualizarmos el fichero de backup.
    info "Realizando backup del archivo de configuracion."
    tiempo
    cp /etc/bulmages.conf bulmages.conf.old
@@ -229,7 +229,7 @@ tiempo
    cat /tmp/errores.txt | grep ERROR
 
 
-   # Dejamos que la inserci� del usuario la haga una funci� y asi encapsulamos un poco.
+   # Dejamos que la inserciï¿œ del usuario la haga una funciï¿œ y asi encapsulamos un poco.
    lee
 fi
 

@@ -1,5 +1,10 @@
 #!/bin/bash
-
+###############################################################################
+# Script de desinstalacion de BulmaGes
+# (C) Tomeu Borras, y Rene Merou
+# Este documento es GPL
+#------------------------------------------------------------------------------
+###############################################################################
 
 #Buscamos el parametro para saber si es texto o no
 if [ "$1" = "--texto" ]; then
@@ -54,8 +59,8 @@ rm -rf /usr/lib/bulmages
 info "Eliminando bases de datos del programa"
 tiempo
 
-LANG=`su postgres -c "psql -l" | grep bulmages`
-if [ "$LANG" != "" ]; then
+LANG_PSQL=`su postgres -c "psql -l" | grep bulmages`
+if [ "$LANG_PSQL" != "" ]; then
 	info "Eliminando base de datos bulmages"
 	su postgres -c "dropdb bulmages" > /dev/null 2> /dev/null
 
@@ -64,8 +69,8 @@ else
 fi;
 tiempo
 
-LANG=`su postgres -c "psql -l" | grep bgplangcont`
-if [ "$LANG" != "" ]; then
+LANG_PSQL=`su postgres -c "psql -l" | grep bgplangcont`
+if [ "$LANG_PSQL" != "" ]; then
 	info "Eliminando base de datos bgplangcont"
 	su postgres -c "dropdb bgplangcont"  > /dev/null 2> /dev/null
 else
@@ -73,8 +78,8 @@ else
 fi;
 tiempo
 
-LANG=`su postgres -c "psql -l" | grep bulmafact`
-if [ "$LANG" != "" ]; then
+LANG_PSQL=`su postgres -c "psql -l" | grep bulmafact`
+if [ "$LANG_PSQL" != "" ]; then
 	info "Eliminando base de datos bulmafact"
 	su postgres -c "dropdb bulmafact" > /dev/null 2> /dev/null
 else
