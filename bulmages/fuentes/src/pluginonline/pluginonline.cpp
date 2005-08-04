@@ -31,10 +31,10 @@ void myplugin::elslot() {
 void myplugin::inicializa(Bulmages01 *bges) {
     //El menu de empresa
     QAction *planCuentas = new QAction("Ayuda On-Line", "&Ayuda On-Line", 0, 0);
-    planCuentas->setStatusTip("Ayuda a través de Internet");
-    planCuentas->setWhatsThis("Ayuda a través de Internet");
-    bges->pHelpMenu->insertSeparator();
-    planCuentas->addTo(bges->pHelpMenu);
+    planCuentas->setStatusTip("Ayuda a travï¿½ de Internet");
+    planCuentas->setWhatsThis("Ayuda a travï¿½ de Internet");
+    bges->pAyudaMenu()->insertSeparator();
+    planCuentas->addTo(bges->pAyudaMenu());
     connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
 }// end inicializa
 

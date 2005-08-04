@@ -29,16 +29,14 @@
 #include "calendario.h"
 
 void ImportExportBulmafactView::alerta(int a, int b) {
-	fprintf(stderr,"mensaje publicado");
 	m_progressbar->setProgress(a,b);
 }// end realizado
 
 void ImportExportBulmafactView::mensajeria(QString mensaje) {
 	static QString mensajein = "";
-//	fprintf(stderr,"Mensajeria -------------------- %s\n",mensaje.ascii());
 	mensajein += mensaje+"<BR>";
-	m_mensajes->setText("<HTML><BODY>"+mensajein+"</BODY></HTML>");
- 	m_mensajes->scrollBy(0,400);
+	m_mensajes->setText("<HTML><BODY BGCOLOR='#CCCCCC'>"+mensajein+"</BODY></HTML>");
+ //	m_mensajes->scrollBy(0,400);
 }// end publicamensaje
 
 

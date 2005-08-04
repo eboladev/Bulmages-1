@@ -35,7 +35,7 @@ void entryPoint(Bulmages01 *bges) {
   viewCorrector->setStatusTip("Muestra/Oculta el corrector");
   viewCorrector->setWhatsThis("Corrector\n\nMuestra/oculta el corrector");
   QObject::connect(viewCorrector, SIGNAL(toggled(bool)), corr, SLOT(cambia(bool)));    
-  viewCorrector->addTo(bges->pViewMenu);
+  viewCorrector->addTo(bges->pVerMenu());
    
 }
 

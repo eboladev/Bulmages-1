@@ -4,8 +4,7 @@
 #include "intapunts3view.h"
 #include "adocumental.h"
 
-
-// Inclusión de imagenes
+// Inclusiï¿½ de imagenes
 #include "napuntedoc.xpm"
 #include "ndoc.xpm"
 
@@ -21,7 +20,7 @@
 void entryPoint(Bulmages01 *bges) {
     QPixmap *img = new QPixmap(napuntedoc);
     QPixmap *img1 = new QPixmap(ndoc);
-    
+
     empresa *emp = &(bges->empresaactual);
     intapunts3view* intapunts = emp->intapuntsempresa();
     myplugin1 *pub = new myplugin1(emp);
@@ -40,19 +39,15 @@ void entryPoint(Bulmages01 *bges) {
     m_adocumental1->setIconSet( QIconSet( *img1 ) );
     layoutPlugins->addWidget( m_adocumental1 );
     QObject::connect(m_adocumental1, SIGNAL(clicked()), pub, SLOT(boton_nuevoasientodocumental()));
-
     intapunts->showMaximized();
 
-    
     /// Hacemos la entrada de menu
   QAction *ArchDoc = new QAction("Archivo Documental",*img1, "&Archivo Documental", 0, bges);
   ArchDoc->setStatusTip("Archivo Documental");
   ArchDoc->setWhatsThis("Archivo Documental");
-  bges->pHerramientasMenu->insertSeparator();
-  ArchDoc->addTo(bges->pHerramientasMenu);
+  bges->pHerramientas()->insertSeparator();
+  ArchDoc->addTo(bges->pHerramientas());
   QObject::connect(ArchDoc, SIGNAL(activated()), pub, SLOT(archDoc()));    
-    
-    
 }
 
 
