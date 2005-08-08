@@ -46,7 +46,6 @@ bulmafact::bulmafact(QString bd) : bulmafactbase( 0, "bulmafact", WDestructiveCl
   m_company.createMainWindows();
   showMaximized();
   statusBar()->message( tr("Ready"), 2000 );
-//  resize( 450, 600 );
   fprintf(stderr,"Fin de bulmafact constructor\n");
 }// end bulmafact
 

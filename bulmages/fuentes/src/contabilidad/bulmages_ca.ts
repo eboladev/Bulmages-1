@@ -30,11 +30,11 @@
     </message>
     <message>
         <source>Incluir niveles superiores.</source>
-        <translation>Incloure nivells superiors.</translation>
+        <translation type="obsolete">Incloure nivells superiors.</translation>
     </message>
     <message>
         <source>Incluir resultados parciales</source>
-        <translation>Incloure resultats parcials</translation>
+        <translation type="obsolete">Incloure resultats parcials</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
@@ -60,19 +60,19 @@
     </message>
     <message>
         <source>Texto Plano</source>
-        <translation>Text Pla</translation>
+        <translation type="obsolete">Text Pla</translation>
     </message>
     <message>
         <source>HTML</source>
-        <translation>HTML</translation>
+        <translation type="obsolete">HTML</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Anul·lar</translation>
+        <translation type="obsolete">Anul·lar</translation>
     </message>
     <message>
         <source>Imprimir</source>
-        <translation>Imprimir</translation>
+        <translation type="obsolete">Imprimir</translation>
     </message>
     <message encoding="UTF-8">
         <source>Impresión del Balance</source>
@@ -89,6 +89,34 @@
     <message>
         <source>Propietario</source>
         <translation type="unfinished">Propietari</translation>
+    </message>
+    <message>
+        <source>&amp;Texto Plano</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HT&amp;ML</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Kugar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Imprimir</source>
+        <translation type="unfinished">&amp;Imprimir</translation>
+    </message>
+    <message>
+        <source>Incluir &amp;niveles superiores.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Incl&amp;uir resultados parciales</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -151,6 +179,249 @@
     </message>
 </context>
 <context>
+    <name>BulmaContBase</name>
+    <message>
+        <source>BulmaContBase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Empresa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Asiento</source>
+        <translation type="unfinished">Assentament</translation>
+    </message>
+    <message>
+        <source>Listados</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ventana</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Herramientas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver</source>
+        <translation type="unfinished">Veure</translation>
+    </message>
+    <message>
+        <source>ToolBars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ayuda</source>
+        <translation type="unfinished">Ajuda</translation>
+    </message>
+    <message>
+        <source>Ventanas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Navegación</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Utilerias</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Primero</source>
+        <translation type="unfinished">Primer</translation>
+    </message>
+    <message>
+        <source>Alt+Arriba</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anterior</source>
+        <translation type="unfinished">Anterior</translation>
+    </message>
+    <message>
+        <source>Alt+Izquierda</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Siguiente</source>
+        <translation type="unfinished">Següent</translation>
+    </message>
+    <message>
+        <source>Alt+Derecha</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ultimo</source>
+        <translation type="unfinished">Darrer</translation>
+    </message>
+    <message>
+        <source>Alt+Down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Propiedades Empresa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plan Contable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Apuntes Contables</source>
+        <translation type="unfinished">Apunts Contables</translation>
+    </message>
+    <message>
+        <source>Libro Mayor</source>
+        <translation type="unfinished">Llibre Major</translation>
+    </message>
+    <message>
+        <source>Libro Diario</source>
+        <translation type="unfinished">Llibre Diari</translation>
+    </message>
+    <message>
+        <source>Balance de Sumas y Saldos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Balance Jerárquico de Sumas y Saldos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Asientos</source>
+        <translation type="unfinished">Assentaments</translation>
+    </message>
+    <message>
+        <source>Centros de Coste</source>
+        <translation type="unfinished">Centres de Cost</translation>
+    </message>
+    <message>
+        <source>Canales</source>
+        <translation type="unfinished">Canals</translation>
+    </message>
+    <message>
+        <source>Asientos Inteligentes</source>
+        <translation type="unfinished">Assentaments Inteligents</translation>
+    </message>
+    <message>
+        <source>Imprimir</source>
+        <translation type="unfinished">Imprimir</translation>
+    </message>
+    <message>
+        <source>Guardar</source>
+        <translation type="unfinished">Desar</translation>
+    </message>
+    <message>
+        <source>Actualizar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Formas de Pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipos de IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cobros y Pagos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recalcular Saldos Iniciales</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Centro de Coste por Defecto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Canal por Defecto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sustituir Cuentas</source>
+        <translation type="unfinished">Substituïr contes</translation>
+    </message>
+    <message>
+        <source>Balances</source>
+        <translation type="unfinished">Balanços</translation>
+    </message>
+    <message>
+        <source>Masas Patrimoniales</source>
+        <translation type="unfinished">Masses Patrimonials</translation>
+    </message>
+    <message>
+        <source>Ordenar Asientos</source>
+        <translation type="unfinished">Comprimir Assentaments</translation>
+    </message>
+    <message>
+        <source>Abrir Asientos</source>
+        <translation type="unfinished">Obrir Assentaments</translation>
+    </message>
+    <message>
+        <source>Bloquear Fechas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Amortizaciones</source>
+        <translation type="unfinished">Amortitzacions</translation>
+    </message>
+    <message>
+        <source>Registro de IVA</source>
+        <translation type="unfinished">Registre d&apos;IVA</translation>
+    </message>
+    <message>
+        <source>Modelo 347 no oficial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Asiento de Apertura</source>
+        <translation type="unfinished">Assentament d&apos;Apertura</translation>
+    </message>
+    <message>
+        <source>Asiento de Regularizacion</source>
+        <translation type="unfinished">Assentament de Regularització</translation>
+    </message>
+    <message>
+        <source>Asiento de Cierre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Grupos Contables</source>
+        <translation type="unfinished">Grups Contables</translation>
+    </message>
+    <message>
+        <source>Acerca de ...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ordenar Ventanas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Organizacion en cascada</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pantalla Completa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Statusbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Bulmages01</name>
     <message>
         <source>Bulmages </source>
@@ -158,157 +429,157 @@
     </message>
     <message>
         <source>Cut</source>
-        <translation>Tallar</translation>
+        <translation type="obsolete">Tallar</translation>
     </message>
     <message>
         <source>Cu&amp;t</source>
-        <translation>&amp;Tallar</translation>
+        <translation type="obsolete">&amp;Tallar</translation>
     </message>
     <message>
         <source>Ctrl+X</source>
-        <translation>Ctrl+X</translation>
+        <translation type="obsolete">Ctrl+X</translation>
     </message>
     <message>
         <source>Cuts the selected section and puts it to the clipboard</source>
-        <translation>Talla la selecció i la copia al portapapers</translation>
+        <translation type="obsolete">Talla la selecció i la copia al portapapers</translation>
     </message>
     <message>
         <source>Cut
 
 Cuts the selected section and puts it to the clipboard</source>
-        <translation>Tallar
+        <translation type="obsolete">Tallar
 
 Talla la selecció i la copia al portapapers</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation>Copiar</translation>
+        <translation type="obsolete">Copiar</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
-        <translation>&amp;Copiar</translation>
+        <translation type="obsolete">&amp;Copiar</translation>
     </message>
     <message>
         <source>Ctrl+C</source>
-        <translation>Ctrl+C</translation>
+        <translation type="obsolete">Ctrl+C</translation>
     </message>
     <message>
         <source>Copies the selected section to the clipboard</source>
-        <translation>Copia la selecció al portapapers</translation>
+        <translation type="obsolete">Copia la selecció al portapapers</translation>
     </message>
     <message>
         <source>Copy
 
 Copies the selected section to the clipboard</source>
-        <translation>Copiar
+        <translation type="obsolete">Copiar
 
 Copia la selecció al portapapers</translation>
     </message>
     <message>
         <source>Undo</source>
-        <translation>Desfés</translation>
+        <translation type="obsolete">Desfés</translation>
     </message>
     <message>
         <source>&amp;Undo</source>
-        <translation>&amp;Desfés</translation>
+        <translation type="obsolete">&amp;Desfés</translation>
     </message>
     <message>
         <source>Ctrl+Z</source>
-        <translation>Ctrl+Z</translation>
+        <translation type="obsolete">Ctrl+Z</translation>
     </message>
     <message>
         <source>Reverts the last editing action</source>
-        <translation>Desfà la darrera acció</translation>
+        <translation type="obsolete">Desfà la darrera acció</translation>
     </message>
     <message>
         <source>Undo
 
 Reverts the last editing action</source>
-        <translation>Desfés
+        <translation type="obsolete">Desfés
 
 Desfà la darrera acció</translation>
     </message>
     <message>
         <source>Paste</source>
-        <translation>Enganxa</translation>
+        <translation type="obsolete">Enganxa</translation>
     </message>
     <message>
         <source>&amp;Paste</source>
-        <translation>&amp;Enganxa</translation>
+        <translation type="obsolete">&amp;Enganxa</translation>
     </message>
     <message>
         <source>Ctrl+V</source>
-        <translation>Ctrl+V</translation>
+        <translation type="obsolete">Ctrl+V</translation>
     </message>
     <message>
         <source>Pastes the clipboard contents to actual position</source>
-        <translation>Enganxa el contingut del portapapers a la posició actual</translation>
+        <translation type="obsolete">Enganxa el contingut del portapapers a la posició actual</translation>
     </message>
     <message>
         <source>Paste
 
 Pastes the clipboard contents to actual position</source>
-        <translation>Enganxar
+        <translation type="obsolete">Enganxar
 
 Enganxa el contingut del portapapers a la posició actual</translation>
     </message>
     <message>
         <source>Toolbar</source>
-        <translation>Barra d&apos;eines</translation>
+        <translation type="obsolete">Barra d&apos;eines</translation>
     </message>
     <message>
         <source>Tool&amp;bar</source>
-        <translation>&amp;Barra d&apos;eines</translation>
+        <translation type="obsolete">&amp;Barra d&apos;eines</translation>
     </message>
     <message>
         <source>Enables/disables the toolbar</source>
-        <translation>Habilita/deshabilita la barra d&apos;eines</translation>
+        <translation type="obsolete">Habilita/deshabilita la barra d&apos;eines</translation>
     </message>
     <message>
         <source>Toolbar
 
 Enables/disables the toolbar</source>
-        <translation>Barra d&apos;eines
+        <translation type="obsolete">Barra d&apos;eines
 
 Habilita/deshabilita la barra d&apos;eines</translation>
     </message>
     <message>
         <source>Statusbar</source>
-        <translation>Barra d&apos;estat</translation>
+        <translation type="obsolete">Barra d&apos;estat</translation>
     </message>
     <message>
         <source>&amp;Statusbar</source>
-        <translation>&amp;Barra d&apos;estat</translation>
+        <translation type="obsolete">&amp;Barra d&apos;estat</translation>
     </message>
     <message>
         <source>Enables/disables the statusbar</source>
-        <translation>Habilita/Desabilita la barra d&apos;estat</translation>
+        <translation type="obsolete">Habilita/Desabilita la barra d&apos;estat</translation>
     </message>
     <message>
         <source>Statusbar
 
 Enables/disables the statusbar</source>
-        <translation>Barra d&apos;estat
+        <translation type="obsolete">Barra d&apos;estat
 
 Habilita/Desabilita la barra d&apos;estat</translation>
     </message>
     <message>
         <source>FullScreen</source>
-        <translation>Pantalla Completa</translation>
+        <translation type="obsolete">Pantalla Completa</translation>
     </message>
     <message>
         <source>&amp;FullScreen</source>
-        <translation>&amp;Pantalla Completa</translation>
+        <translation type="obsolete">&amp;Pantalla Completa</translation>
     </message>
     <message>
         <source>Enables/disables the full screen</source>
-        <translation>Habilita/Desabilita la modalitat de pantalla completa</translation>
+        <translation type="obsolete">Habilita/Desabilita la modalitat de pantalla completa</translation>
     </message>
     <message>
         <source>FullScreen
 
 Enables/disables the full screen mode</source>
-        <translation>Pantalla completa
+        <translation type="obsolete">Pantalla completa
 
 Habilita/desabilita la modalitat de pantalla completa</translation>
     </message>
@@ -334,93 +605,93 @@ Mostrar/Ocultar el corrector</translation>
     </message>
     <message>
         <source>New Window</source>
-        <translation>Nova Finestra</translation>
+        <translation type="obsolete">Nova Finestra</translation>
     </message>
     <message>
         <source>&amp;New Window</source>
-        <translation>&amp;Nova Finestra</translation>
+        <translation type="obsolete">&amp;Nova Finestra</translation>
     </message>
     <message>
         <source>Opens a new view for the current document</source>
-        <translation>Nova Finestra Obre una nova vista per al document actual</translation>
+        <translation type="obsolete">Nova Finestra Obre una nova vista per al document actual</translation>
     </message>
     <message>
         <source>New Window
 
 Opens a new view for the current document</source>
-        <translation>Nova finestra
+        <translation type="obsolete">Nova finestra
 
 Obre una nova vista per al document actual</translation>
     </message>
     <message>
         <source>Cascade</source>
-        <translation>Cascada</translation>
+        <translation type="obsolete">Cascada</translation>
     </message>
     <message>
         <source>&amp;Cascade</source>
-        <translation>&amp;Cascada</translation>
+        <translation type="obsolete">&amp;Cascada</translation>
     </message>
     <message>
         <source>Cascades all windows</source>
-        <translation>Cascada de totes les finestres</translation>
+        <translation type="obsolete">Cascada de totes les finestres</translation>
     </message>
     <message>
         <source>Cascade
 
 Cascades all windows</source>
-        <translation>Cascada
+        <translation type="obsolete">Cascada
 
 Cascada de totes les finestres</translation>
     </message>
     <message>
         <source>Tile</source>
-        <translation>Ordena</translation>
+        <translation type="obsolete">Ordena</translation>
     </message>
     <message>
         <source>&amp;Tile</source>
-        <translation>&amp;Ordena</translation>
+        <translation type="obsolete">&amp;Ordena</translation>
     </message>
     <message>
         <source>Tiles all windows</source>
-        <translation>Ordena totes les finestres</translation>
+        <translation type="obsolete">Ordena totes les finestres</translation>
     </message>
     <message>
         <source>Tile
 
 Tiles all windows</source>
-        <translation>Ordena
+        <translation type="obsolete">Ordena
 
 Ordena totes les finestres</translation>
     </message>
     <message>
         <source>Acerca de </source>
-        <translation>Sobre la aplicació</translation>
+        <translation type="obsolete">Sobre la aplicació</translation>
     </message>
     <message>
         <source>&amp;Acerca de ...</source>
-        <translation>&amp;Sobre la aplicació...</translation>
+        <translation type="obsolete">&amp;Sobre la aplicació...</translation>
     </message>
     <message>
         <source>Sobre la aplicacion</source>
-        <translation>Sobre la aplicació</translation>
+        <translation type="obsolete">Sobre la aplicació</translation>
     </message>
     <message>
         <source>Acerca de ...
 
 Informacion sobre los autores de la aplicacion</source>
-        <translation>Sobre la aplicació ..... Informació sobre els autors de l&apos;aplicació</translation>
+        <translation type="obsolete">Sobre la aplicació ..... Informació sobre els autors de l&apos;aplicació</translation>
     </message>
     <message>
         <source>Plan Contable</source>
-        <translation>Pla de Comptes</translation>
+        <translation type="obsolete">Pla de Comptes</translation>
     </message>
     <message>
         <source>&amp;Plan Contable</source>
-        <translation>&amp;Pla de Comptes</translation>
+        <translation type="obsolete">&amp;Pla de Comptes</translation>
     </message>
     <message>
         <source>Muestra el plan contable</source>
-        <translation>Mostra el pla de comptes</translation>
+        <translation type="obsolete">Mostra el pla de comptes</translation>
     </message>
     <message>
         <source>Grupos Contables</source>
@@ -428,11 +699,11 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>&amp;Grupos Contables</source>
-        <translation>&amp;Grups Contables</translation>
+        <translation type="obsolete">&amp;Grups Contables</translation>
     </message>
     <message>
         <source>Muestra los grupos contables</source>
-        <translation>Mostra els grups contables</translation>
+        <translation type="obsolete">Mostra els grups contables</translation>
     </message>
     <message>
         <source>Listado de Cuentas</source>
@@ -440,23 +711,23 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>&amp;Listado de Cuentas</source>
-        <translation>&amp;Llistat de Contes</translation>
+        <translation type="obsolete">&amp;Llistat de Contes</translation>
     </message>
     <message>
         <source>Muestra los listados de las cuentas</source>
-        <translation>Mostra els llistats de les contes</translation>
+        <translation type="obsolete">Mostra els llistats de les contes</translation>
     </message>
     <message>
         <source>Introducci&#xf3;n de Apuntes</source>
-        <translation>Introducció d&apos;Apunts</translation>
+        <translation type="obsolete">Introducció d&apos;Apunts</translation>
     </message>
     <message>
         <source>&amp;Introducci&#xf3;n de Apuntes</source>
-        <translation>&amp;Introducció d&apos;Apunts</translation>
+        <translation type="obsolete">&amp;Introducció d&apos;Apunts</translation>
     </message>
     <message>
         <source>Permite introducir Apuntes Contables</source>
-        <translation>Permet introduïr Apunts Contables</translation>
+        <translation type="obsolete">Permet introduïr Apunts Contables</translation>
     </message>
     <message>
         <source>Asientos Inteligentes</source>
@@ -464,23 +735,23 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>&amp;Asientos Inteligentes</source>
-        <translation>&amp;Assentaments Inteligents</translation>
+        <translation type="obsolete">&amp;Assentaments Inteligents</translation>
     </message>
     <message>
         <source>Permite introducir Apuntes Contables Mediante Plantillas</source>
-        <translation>Permet introduïr Apunts Contables Mitjançant Plantilles</translation>
+        <translation type="obsolete">Permet introduïr Apunts Contables Mitjançant Plantilles</translation>
     </message>
     <message>
         <source>Listado de Apuntes</source>
-        <translation>Llistat d&apos;Apunts</translation>
+        <translation type="obsolete">Llistat d&apos;Apunts</translation>
     </message>
     <message>
         <source>&amp;Listado de Apuntes</source>
-        <translation>&amp;Llistat d&apos;Apunts</translation>
+        <translation type="obsolete">&amp;Llistat d&apos;Apunts</translation>
     </message>
     <message>
         <source>Listar Apuntes Contables</source>
-        <translation>Llistar Apunts Contables</translation>
+        <translation type="obsolete">Llistar Apunts Contables</translation>
     </message>
     <message>
         <source>Propiedades Empresa</source>
@@ -488,11 +759,11 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>&amp;Propiedades Empresa</source>
-        <translation>&amp;Propietats de l&apos;Empresa</translation>
+        <translation type="obsolete">&amp;Propietats de l&apos;Empresa</translation>
     </message>
     <message>
         <source>Propiedades de la Empresa</source>
-        <translation>Propietats de la Empresa</translation>
+        <translation type="obsolete">Propietats de la Empresa</translation>
     </message>
     <message>
         <source>Copia Seguridad Empresa</source>
@@ -536,39 +807,39 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Asiento de Cierre</source>
-        <translation>Assentaments de Tancament</translation>
+        <translation type="obsolete">Assentaments de Tancament</translation>
     </message>
     <message>
         <source>Asiento de &amp;Cierre</source>
-        <translation>Assentaments de &amp;Tancament</translation>
+        <translation type="obsolete">Assentaments de &amp;Tancament</translation>
     </message>
     <message>
         <source>Crear el asiento de cierre</source>
-        <translation>Crear un assentament de tancament</translation>
+        <translation type="obsolete">Crear un assentament de tancament</translation>
     </message>
     <message>
         <source>Asiento de Regularizaci&#xf3;n</source>
-        <translation>Assentament de Regularització</translation>
+        <translation type="obsolete">Assentament de Regularització</translation>
     </message>
     <message>
         <source>Asiento de &amp;Regularizaci&#xf3;n</source>
-        <translation>Assentament de &amp;Regularització</translation>
+        <translation type="obsolete">Assentament de &amp;Regularització</translation>
     </message>
     <message>
         <source>Regularizar Empresa</source>
-        <translation>Regularitzar empresa</translation>
+        <translation type="obsolete">Regularitzar empresa</translation>
     </message>
     <message>
         <source>Asiento de Apertura</source>
-        <translation>Assentament d&apos;Apertura</translation>
+        <translation type="obsolete">Assentament d&apos;Apertura</translation>
     </message>
     <message>
         <source>Asiento de &amp;Apertura</source>
-        <translation>Assentament d&apos;&amp;Apertura</translation>
+        <translation type="obsolete">Assentament d&apos;&amp;Apertura</translation>
     </message>
     <message>
         <source>Abrir el asiento de apertura</source>
-        <translation>Obrir l&apos;assentament d&apos;apertura</translation>
+        <translation type="obsolete">Obrir l&apos;assentament d&apos;apertura</translation>
     </message>
     <message>
         <source>Borrar Empresa</source>
@@ -608,11 +879,11 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>&amp;Libro Mayor</source>
-        <translation>&amp;Llibre Major</translation>
+        <translation type="obsolete">&amp;Llibre Major</translation>
     </message>
     <message>
         <source>Ver el libro Mayor</source>
-        <translation>Veure el llibre Major</translation>
+        <translation type="obsolete">Veure el llibre Major</translation>
     </message>
     <message>
         <source>Libro Diario</source>
@@ -620,39 +891,39 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>&amp;Libro Diario</source>
-        <translation>&amp;Llibre Diari</translation>
+        <translation type="obsolete">&amp;Llibre Diari</translation>
     </message>
     <message>
         <source>Ver el libro Diario</source>
-        <translation>Veure el llibre Diari</translation>
+        <translation type="obsolete">Veure el llibre Diari</translation>
     </message>
     <message>
         <source>Balance</source>
-        <translation>Balanç</translation>
+        <translation type="obsolete">Balanç</translation>
     </message>
     <message>
         <source>&amp;Balance</source>
-        <translation>&amp;Balanç</translation>
+        <translation type="obsolete">&amp;Balanç</translation>
     </message>
     <message>
         <source>Ver balance</source>
-        <translation>Veure el Balanç</translation>
+        <translation type="obsolete">Veure el Balanç</translation>
     </message>
     <message>
         <source>Balance Jerarquico</source>
-        <translation>Balanç Jeràrquic</translation>
+        <translation type="obsolete">Balanç Jeràrquic</translation>
     </message>
     <message>
         <source>&amp;Balance Jerarquico</source>
-        <translation>&amp;Balanç Jeràrquic</translation>
+        <translation type="obsolete">&amp;Balanç Jeràrquic</translation>
     </message>
     <message>
         <source>Ver balance Jerarquico</source>
-        <translation>Veure balanç Jeràrquic</translation>
+        <translation type="obsolete">Veure balanç Jeràrquic</translation>
     </message>
     <message>
         <source>Ver balance jerarquico</source>
-        <translation>Veure balanç jeràrquic</translation>
+        <translation type="obsolete">Veure balanç jeràrquic</translation>
     </message>
     <message>
         <source>Perdidas y ganancias av</source>
@@ -680,111 +951,111 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Registro de IVA</source>
-        <translation>Registre d&apos;IVA</translation>
+        <translation type="obsolete">Registre d&apos;IVA</translation>
     </message>
     <message>
         <source>&amp;Registro de IVA</source>
-        <translation>&amp;Registre d&apos;IVA</translation>
+        <translation type="obsolete">&amp;Registre d&apos;IVA</translation>
     </message>
     <message>
         <source>Ver Libro Registro de IVA</source>
-        <translation>Veure el llibre d&apos;IVA</translation>
+        <translation type="obsolete">Veure el llibre d&apos;IVA</translation>
     </message>
     <message>
         <source>Centros de Coste</source>
-        <translation>Centres de Cost</translation>
+        <translation type="obsolete">Centres de Cost</translation>
     </message>
     <message>
         <source>&amp;Centros de Coste</source>
-        <translation>&amp;Centres de Cost</translation>
+        <translation type="obsolete">&amp;Centres de Cost</translation>
     </message>
     <message>
         <source>Administracion de Centros de Coste</source>
-        <translation>Administracó de Centres de Cost</translation>
+        <translation type="obsolete">Administracó de Centres de Cost</translation>
     </message>
     <message>
         <source>Canales</source>
-        <translation>Canals</translation>
+        <translation type="obsolete">Canals</translation>
     </message>
     <message>
         <source>C&amp;anales</source>
-        <translation>C&amp;anals</translation>
+        <translation type="obsolete">C&amp;anals</translation>
     </message>
     <message>
         <source>Administracion de Canales</source>
-        <translation>Administració de Canals</translation>
+        <translation type="obsolete">Administració de Canals</translation>
     </message>
     <message>
         <source>Asientos</source>
-        <translation>Assentaments</translation>
+        <translation type="obsolete">Assentaments</translation>
     </message>
     <message>
         <source>&amp;Asientos</source>
-        <translation>&amp;Assentaments</translation>
+        <translation type="obsolete">&amp;Assentaments</translation>
     </message>
     <message>
         <source>Introduccion de asientos</source>
-        <translation>Introducció d&apos;assentaments</translation>
+        <translation type="obsolete">Introducció d&apos;assentaments</translation>
     </message>
     <message>
         <source>Introduccion de ASientos</source>
-        <translation>Introducció d&apos;Assentaments</translation>
+        <translation type="obsolete">Introducció d&apos;Assentaments</translation>
     </message>
     <message>
         <source>Siguiente</source>
-        <translation>Següent</translation>
+        <translation type="obsolete">Següent</translation>
     </message>
     <message>
         <source>&amp;Siguiente</source>
-        <translation>&amp;Següent</translation>
+        <translation type="obsolete">&amp;Següent</translation>
     </message>
     <message>
         <source>Anterior</source>
-        <translation>Anterior</translation>
+        <translation type="obsolete">Anterior</translation>
     </message>
     <message>
         <source>&amp;Anterior</source>
-        <translation>&amp;Anterior</translation>
+        <translation type="obsolete">&amp;Anterior</translation>
     </message>
     <message>
         <source>Ultimo</source>
-        <translation>Darrer</translation>
+        <translation type="obsolete">Darrer</translation>
     </message>
     <message>
         <source>&amp;Ultimo</source>
-        <translation>&amp;Darrer</translation>
+        <translation type="obsolete">&amp;Darrer</translation>
     </message>
     <message>
         <source>Primero</source>
-        <translation>Primer</translation>
+        <translation type="obsolete">Primer</translation>
     </message>
     <message>
         <source>&amp;Primero</source>
-        <translation>&amp;Primer</translation>
+        <translation type="obsolete">&amp;Primer</translation>
     </message>
     <message>
         <source>Guardar</source>
-        <translation>Desar</translation>
+        <translation type="obsolete">Desar</translation>
     </message>
     <message>
         <source>&amp;Guardar</source>
-        <translation>&amp;Desar</translation>
+        <translation type="obsolete">&amp;Desar</translation>
     </message>
     <message>
         <source>Imprimir</source>
-        <translation>Imprimir</translation>
+        <translation type="obsolete">Imprimir</translation>
     </message>
     <message>
         <source>&amp;Imprimir</source>
-        <translation>&amp;Imprimir</translation>
+        <translation type="obsolete">&amp;Imprimir</translation>
     </message>
     <message>
         <source>Recargar</source>
-        <translation>Recarregar</translation>
+        <translation type="obsolete">Recarregar</translation>
     </message>
     <message>
         <source>&amp;Recargar</source>
-        <translation>&amp;Recarregar</translation>
+        <translation type="obsolete">&amp;Recarregar</translation>
     </message>
     <message>
         <source>Usuarios</source>
@@ -796,55 +1067,55 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Amortizaciones</source>
-        <translation>Amortitzacions</translation>
+        <translation type="obsolete">Amortitzacions</translation>
     </message>
     <message>
         <source>&amp;Amortizaciones</source>
-        <translation>&amp;Amortitzacions</translation>
+        <translation type="obsolete">&amp;Amortitzacions</translation>
     </message>
     <message>
         <source>Ayuda</source>
-        <translation>Ajuda</translation>
+        <translation type="obsolete">Ajuda</translation>
     </message>
     <message>
         <source>&amp;Ayuda</source>
-        <translation>&amp;Ajuda</translation>
+        <translation type="obsolete">&amp;Ajuda</translation>
     </message>
     <message>
         <source>Ayuda en Internet</source>
-        <translation>Ajuda a Internet</translation>
+        <translation type="obsolete">Ajuda a Internet</translation>
     </message>
     <message>
         <source>&amp;Ayuda en Internet</source>
-        <translation>&amp;Ajuda a Internet</translation>
+        <translation type="obsolete">&amp;Ajuda a Internet</translation>
     </message>
     <message>
         <source>Ayuda en la web del proyecto</source>
-        <translation>Ajuda al web del projecte</translation>
+        <translation type="obsolete">Ajuda al web del projecte</translation>
     </message>
     <message>
         <source>Abrir Asientos</source>
-        <translation>Obrir Assentaments</translation>
+        <translation type="obsolete">Obrir Assentaments</translation>
     </message>
     <message>
         <source>&amp;Abrir Asientos</source>
-        <translation>&amp;Obrir Assentaments</translation>
+        <translation type="obsolete">&amp;Obrir Assentaments</translation>
     </message>
     <message>
         <source>Espacia los Asientos</source>
-        <translation>Espaiar Assentaments</translation>
+        <translation type="obsolete">Espaiar Assentaments</translation>
     </message>
     <message>
         <source>Ordenar Asientos</source>
-        <translation>Comprimir Assentaments</translation>
+        <translation type="obsolete">Comprimir Assentaments</translation>
     </message>
     <message>
         <source>&amp;Ordenar Asientos</source>
-        <translation>&amp;Comprimir Assentaments</translation>
+        <translation type="obsolete">&amp;Comprimir Assentaments</translation>
     </message>
     <message>
         <source>Reorganiza los Asientos</source>
-        <translation>Reorganitzar Assentaments</translation>
+        <translation type="obsolete">Reorganitzar Assentaments</translation>
     </message>
     <message>
         <source>Seguimiento de Cuentas</source>
@@ -864,27 +1135,27 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Filtro</source>
-        <translation>Filtre</translation>
+        <translation type="obsolete">Filtre</translation>
     </message>
     <message>
         <source>&amp;Filtro</source>
-        <translation>&amp;Filtre</translation>
+        <translation type="obsolete">&amp;Filtre</translation>
     </message>
     <message>
         <source>Masas Patrimoniales</source>
-        <translation>Masses Patrimonials</translation>
+        <translation type="obsolete">Masses Patrimonials</translation>
     </message>
     <message>
         <source>&amp;Masas Patrimoniales</source>
-        <translation>&amp;Masses Patrimonials</translation>
+        <translation type="obsolete">&amp;Masses Patrimonials</translation>
     </message>
     <message>
         <source>Balances</source>
-        <translation>Balanços</translation>
+        <translation type="obsolete">Balanços</translation>
     </message>
     <message>
         <source>&amp;Balances</source>
-        <translation>&amp;Balanços</translation>
+        <translation type="obsolete">&amp;Balanços</translation>
     </message>
     <message>
         <source>Nuevo Ejercicio</source>
@@ -896,11 +1167,11 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Sustituir Cuentas</source>
-        <translation>Substituïr contes</translation>
+        <translation type="obsolete">Substituïr contes</translation>
     </message>
     <message>
         <source>&amp;Sustituir Cuentas</source>
-        <translation>&amp;Substituïr Contes</translation>
+        <translation type="obsolete">&amp;Substituïr Contes</translation>
     </message>
     <message>
         <source>Que es ??</source>
@@ -908,15 +1179,15 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>&amp;Empresa</source>
-        <translation>&amp;Empresa</translation>
+        <translation type="obsolete">&amp;Empresa</translation>
     </message>
     <message>
         <source>&amp;Asiento</source>
-        <translation>&amp;Assentament</translation>
+        <translation type="obsolete">&amp;Assentament</translation>
     </message>
     <message>
         <source>&amp;Listados</source>
-        <translation>&amp;Llistats</translation>
+        <translation type="obsolete">&amp;Llistats</translation>
     </message>
     <message>
         <source>&amp;Estadistica</source>
@@ -924,15 +1195,15 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>&amp;Ventana</source>
-        <translation>&amp;Finestra</translation>
+        <translation type="obsolete">&amp;Finestra</translation>
     </message>
     <message>
         <source>&amp;Herramientas</source>
-        <translation>&amp;Estris de fer feina</translation>
+        <translation type="obsolete">&amp;Estris de fer feina</translation>
     </message>
     <message>
         <source>&amp;Ver</source>
-        <translation>&amp;Veure</translation>
+        <translation type="obsolete">&amp;Veure</translation>
     </message>
     <message>
         <source>Listo.</source>
@@ -980,7 +1251,7 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Introducci&#xf3;n de Borrador</source>
-        <translation>Introducció de Borrador</translation>
+        <translation type="obsolete">Introducció de Borrador</translation>
     </message>
     <message>
         <source>Guardar Empresa</source>
@@ -995,79 +1266,15 @@ Informacion sobre los autores de la aplicacion</source>
         <translation type="obsolete">Gestió d&apos;Usuaris</translation>
     </message>
     <message>
-        <source>BulmaG&#xe9;s </source>
+        <source>BulmaG&#xc3;&#xa9;s:  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Modelo 347 no oficial</source>
+        <source>Introducci&#xef;&#xbf;&#xbd; de Apuntes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Modelo 347</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lista en pantalla los saldos acumulados superirores a ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Bloquear Fechas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Bloquear Fechas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Canal por Defecto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Canal por Defecto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Centro de Coste por Defecto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Centro de Coste por Defecto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recalcular Saldos Iniciales</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Recalcular Saldos Iniciales</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cobros y Pagos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Cobros y Pagos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tipos de IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Tipos de IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CTipos de IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Formas de Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Formas de Pago</source>
+        <source>Introducci&#xef;&#xbf;&#xbd; de Borrador</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1767,6 +1974,17 @@ Mostrar/Ocultar el corrector</translation>
     </message>
 </context>
 <context>
+    <name>BusquedaCuentaBase</name>
+    <message>
+        <source>Form1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cuenta</source>
+        <translation type="unfinished">Conta</translation>
+    </message>
+</context>
+<context>
     <name>DiarioPrintDlg</name>
     <message encoding="UTF-8">
         <source>Impresión del Diario</source>
@@ -1798,11 +2016,11 @@ Mostrar/Ocultar el corrector</translation>
     </message>
     <message>
         <source>Texto Plano</source>
-        <translation>Text Pla</translation>
+        <translation type="obsolete">Text Pla</translation>
     </message>
     <message>
         <source>HTML</source>
-        <translation>HTML</translation>
+        <translation type="obsolete">HTML</translation>
     </message>
     <message>
         <source>Propietario</source>
@@ -1814,23 +2032,47 @@ Mostrar/Ocultar el corrector</translation>
     </message>
     <message>
         <source>Formato Aprendizaje</source>
-        <translation>Format d&apos;Aprenentatje</translation>
+        <translation type="obsolete">Format d&apos;Aprenentatje</translation>
     </message>
     <message>
         <source>Formato Normal</source>
-        <translation>Format Normal</translation>
+        <translation type="obsolete">Format Normal</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Anul·lar</translation>
+        <translation type="obsolete">Anul·lar</translation>
     </message>
     <message>
         <source>Imprimir</source>
-        <translation>Imprimir</translation>
+        <translation type="obsolete">Imprimir</translation>
     </message>
     <message>
-        <source>Kugar</source>
+        <source>&amp;Texto Plano</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HT&amp;ML</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Kugar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Formato Aprendizaje</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Formato &amp;Normal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Imprimir</source>
+        <translation type="unfinished">&amp;Imprimir</translation>
     </message>
 </context>
 <context>
@@ -1883,27 +2125,43 @@ Mostrar/Ocultar el corrector</translation>
     </message>
     <message>
         <source>Texto Plano</source>
-        <translation>Text Pla</translation>
+        <translation type="obsolete">Text Pla</translation>
     </message>
     <message>
         <source>HTML</source>
-        <translation>HTML</translation>
+        <translation type="obsolete">HTML</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Anul·lar</translation>
+        <translation type="obsolete">Anul·lar</translation>
     </message>
     <message>
         <source>Imprimir</source>
-        <translation>Imprimir</translation>
+        <translation type="obsolete">Imprimir</translation>
     </message>
     <message>
         <source>Propietario</source>
         <translation type="unfinished">Propietari</translation>
     </message>
     <message>
-        <source>Kugar</source>
+        <source>&amp;Texto Plano</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HT&amp;ML</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Kugar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Imprimir</source>
+        <translation type="unfinished">&amp;Imprimir</translation>
     </message>
 </context>
 <context>
@@ -2052,11 +2310,11 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
     </message>
     <message>
         <source>Induciendo energ&#xed;a quantica, entre su RAM y su ROM</source>
-        <translation>Recalentant la CPU</translation>
+        <translation type="obsolete">Recalentant la CPU</translation>
     </message>
     <message>
         <source>Peque&#xf1;os golpecitos de reajuste del HD</source>
-        <translation>Entrant a l&apos;IRC</translation>
+        <translation type="obsolete">Entrant a l&apos;IRC</translation>
     </message>
     <message>
         <source>Probando la Velocidad el Ventilador de la CPU y su Frecuencia</source>
@@ -2080,7 +2338,7 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
     </message>
     <message>
         <source>Permutando las tablas de partici&#xf3;n del sistema operativo</source>
-        <translation>Publicant a la clau d&apos;accés a la llista de correu BulmaGés</translation>
+        <translation type="obsolete">Publicant a la clau d&apos;accés a la llista de correu BulmaGés</translation>
     </message>
     <message>
         <source>BulmaG&#xe9;s</source>
@@ -2103,19 +2361,35 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Crackeando BulmaG&#xe9;s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>BulmaCont</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>v 0.4.7</source>
-        <translation type="unfinished">v0.4.7</translation>
+        <translation type="obsolete">v0.4.7</translation>
     </message>
     <message>
         <source>BULMACONT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>v 0.5.1</source>
+        <translation type="unfinished">v0.5.1</translation>
+    </message>
+    <message>
+        <source>Induciendo energ&#xef;&#xbf;&#xbd; quantica, entre su RAM y su ROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Golpecitos de reajuste del HD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Permutando las tablas de partici&#xef;&#xbf;&#xbd; del sistema operativo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Crackeando BulmaG&#xef;&#xbf;&#xbd;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3781,7 +4055,11 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message encoding="UTF-8">
         <source>Versión 0.4.9</source>
-        <translation type="unfinished">Versió 0.4.9</translation>
+        <translation type="obsolete">Versió 0.4.9</translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Versión 0.5.1</source>
+        <translation type="unfinished">Versió 0.5.1</translation>
     </message>
 </context>
 <context>
@@ -3836,7 +4114,7 @@ Jean René Mèrou &lt;br /&gt;
     <name>actualizacionesdlg</name>
     <message>
         <source>Actualizaciones</source>
-        <translation>Actualitzacions</translation>
+        <translation type="obsolete">Actualitzacions</translation>
     </message>
     <message>
         <source>http://www.conetxia.com</source>
@@ -3844,7 +4122,15 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Acceptar</translation>
+        <translation type="obsolete">Acceptar</translation>
+    </message>
+    <message>
+        <source>Ayuda</source>
+        <translation type="unfinished">Ajuda</translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished">Tancar</translation>
     </message>
 </context>
 <context>
@@ -3881,19 +4167,19 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message encoding="UTF-8">
         <source>Aplicación Automática</source>
-        <translation>Aplicació Automàtica</translation>
+        <translation type="obsolete">Aplicació Automàtica</translation>
     </message>
     <message>
         <source>Usar Aplicacion Automatica del Asiento</source>
-        <translation>Usar Amplicació Automàtica de l&apos;Asiento</translation>
+        <translation type="obsolete">Usar Amplicació Automàtica de l&apos;Asiento</translation>
     </message>
     <message>
         <source>Periodicidad</source>
-        <translation>Periodicitat</translation>
+        <translation type="obsolete">Periodicitat</translation>
     </message>
     <message encoding="UTF-8">
         <source>Normas de Aplicación</source>
-        <translation>Normes de l&apos;Aplicació</translation>
+        <translation type="obsolete">Normes de l&apos;Aplicació</translation>
     </message>
     <message>
         <source>Comentarios</source>
@@ -3901,11 +4187,11 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Acceptar</translation>
+        <translation type="obsolete">Acceptar</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Anul·lar</translation>
+        <translation type="obsolete">Anul·lar</translation>
     </message>
     <message>
         <source>Exportar</source>
@@ -3914,6 +4200,10 @@ Jean René Mèrou &lt;br /&gt;
     <message>
         <source>Importar</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished">Tancar</translation>
     </message>
 </context>
 <context>
@@ -4059,15 +4349,15 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Borrar</source>
-        <translation>Borrar</translation>
+        <translation type="obsolete">Borrar</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Acceptar</translation>
+        <translation type="obsolete">Acceptar</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Anul·lar</translation>
+        <translation type="obsolete">Anul·lar</translation>
     </message>
     <message encoding="UTF-8">
         <source>Amortización</source>
@@ -4167,7 +4457,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Datos Proveedor</source>
-        <translation>Dades del Proveedor</translation>
+        <translation type="obsolete">Dades del Proveedor</translation>
     </message>
     <message>
         <source>Nombre</source>
@@ -4188,6 +4478,10 @@ Jean René Mèrou &lt;br /&gt;
     <message encoding="UTF-8">
         <source>Agrupación</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished">Tancar</translation>
     </message>
 </context>
 <context>
@@ -4224,10 +4518,6 @@ Jean René Mèrou &lt;br /&gt;
     <name>amortizacionview</name>
     <message>
         <source>Error...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ocurri&#xf3; un error con la Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4272,6 +4562,10 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Borrar Cuota</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ocurri&#xef;&#xbf;&#xbd;un error con la Base de Datos</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4396,11 +4690,15 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Si</source>
-        <translation>Sí</translation>
+        <translation type="obsolete">Sí</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>No</translation>
+        <translation type="obsolete">No</translation>
+    </message>
+    <message>
+        <source>Abierto</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4450,7 +4748,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Ver Diario (Este a&#xf1;o)</source>
-        <translation>Veure el Diari (Aquest any)</translation>
+        <translation type="obsolete">Veure el Diari (Aquest any)</translation>
     </message>
     <message>
         <source>Ver Extracto (Este dia)</source>
@@ -4462,7 +4760,15 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Ver Extracto (Este a&#xf1;o)</source>
-        <translation>Veure Extracte (Aquest any)</translation>
+        <translation type="obsolete">Veure Extracte (Aquest any)</translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este a&#xef;&#xbf;&#xbd;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este a&#xef;&#xbf;&#xbd;)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4637,7 +4943,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Ver Extracto (Este a&#xf1;o)</source>
-        <translation>Veure Extracte (Aquest any)</translation>
+        <translation type="obsolete">Veure Extracte (Aquest any)</translation>
     </message>
     <message>
         <source>Ver Diario (Este dia)</source>
@@ -4649,11 +4955,19 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Ver Diario (Este a&#xf1;o)</source>
-        <translation>Veure el Diari (Aquest any)</translation>
+        <translation type="obsolete">Veure el Diari (Aquest any)</translation>
     </message>
     <message>
         <source>Editar Cuenta</source>
         <translation>Editar Conta</translation>
+    </message>
+    <message>
+        <source>Ver Extracto (Este a&#xef;&#xbf;&#xbd;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este a&#xef;&#xbf;&#xbd;)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4762,6 +5076,39 @@ Jean René Mèrou &lt;br /&gt;
     </message>
 </context>
 <context>
+    <name>canalview</name>
+    <message>
+        <source>Guardar Canal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Desea guardar los cambios.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Guardar</source>
+        <translation type="unfinished">Desar</translation>
+    </message>
+    <message>
+        <source>Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar Canal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Se va a borrar la Forma de Pago,
+Esto puede ocasionar p&#xe9;rdida de datos
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar</source>
+        <translation type="unfinished">Borrar</translation>
+    </message>
+</context>
+<context>
     <name>ccostedlg</name>
     <message>
         <source>Centros de Coste</source>
@@ -4786,6 +5133,39 @@ Jean René Mèrou &lt;br /&gt;
     <message>
         <source>Descripcion</source>
         <translation>Descripció</translation>
+    </message>
+</context>
+<context>
+    <name>ccosteview</name>
+    <message>
+        <source>Guardar Centro de Coste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Desea guardar los cambios.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Guardar</source>
+        <translation type="unfinished">Desar</translation>
+    </message>
+    <message>
+        <source>Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar Centro de Coste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Se va a borrar el Centro de Coste,
+Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar</source>
+        <translation type="unfinished">Borrar</translation>
     </message>
 </context>
 <context>
@@ -5157,7 +5537,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Denominaci&#xf3;n</source>
-        <translation>Denominació</translation>
+        <translation type="obsolete">Denominació</translation>
     </message>
     <message>
         <source>Debe</source>
@@ -5186,6 +5566,10 @@ Jean René Mèrou &lt;br /&gt;
     <message>
         <source>Asiento</source>
         <translation>Assentament</translation>
+    </message>
+    <message>
+        <source>Denominaci&#xef;&#xbf;&#xbd;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context encoding="UTF-8">
@@ -5304,15 +5688,23 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Fecha inicial</source>
-        <translation>Data Inicial</translation>
+        <translation type="obsolete">Data Inicial</translation>
     </message>
     <message>
         <source>Fecha final</source>
-        <translation>Data final</translation>
+        <translation type="obsolete">Data final</translation>
     </message>
     <message>
         <source>Totales:</source>
         <translation>Totals:</translation>
+    </message>
+    <message>
+        <source>Fecha Inicial</source>
+        <translation type="unfinished">Data Inicial</translation>
+    </message>
+    <message>
+        <source>Fecha Final</source>
+        <translation type="unfinished">Data Final</translation>
     </message>
 </context>
 <context>
@@ -5387,7 +5779,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Ver Diario (Este a&#xf1;o)</source>
-        <translation>Veure el Diari (Aquest any)</translation>
+        <translation type="obsolete">Veure el Diari (Aquest any)</translation>
     </message>
     <message>
         <source>Ver Balance (Este dia)</source>
@@ -5399,7 +5791,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Ver Balance (Este a&#xf1;o)</source>
-        <translation>Veure Balanç (Aquest any)</translation>
+        <translation type="obsolete">Veure Balanç (Aquest any)</translation>
     </message>
     <message>
         <source>Punteos (*.pto)</source>
@@ -5415,6 +5807,14 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Borrar Punteo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Diario (Este a&#xef;&#xbf;&#xbd;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ver Balance (Este a&#xef;&#xbf;&#xbd;)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5469,11 +5869,11 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Reset</source>
-        <translation>Buidar</translation>
+        <translation type="obsolete">Buidar</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Acceptar</translation>
+        <translation type="obsolete">Acceptar</translation>
     </message>
     <message>
         <source>Apuntes con saldo inferior a</source>
@@ -5488,7 +5888,15 @@ Jean René Mèrou &lt;br /&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Incluir asientos abiertos</source>
+        <source>&amp;Incluir asientos abiertos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rese&amp;t</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A&amp;ceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5512,7 +5920,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Todos</source>
-        <translation>Tots</translation>
+        <translation type="obsolete">Tots</translation>
     </message>
     <message>
         <source>Apuntes No Puteados</source>
@@ -5532,7 +5940,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Acceptar</translation>
+        <translation type="obsolete">Acceptar</translation>
     </message>
     <message>
         <source>Apuntes con saldo inferior a</source>
@@ -5543,15 +5951,23 @@ Jean René Mèrou &lt;br /&gt;
         <translation>Apunts amb contrapartida:</translation>
     </message>
     <message>
-        <source>Apuntes Punteados</source>
+        <source>Ap&amp;untes Punteados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Apuntes No Punteados</source>
+        <source>&amp;Todos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Incluir asientos abiertos</source>
+        <source>Apuntes &amp;No Punteados</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Incluir asientos abiertos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A&amp;ceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5630,7 +6046,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Nuevo Asiento</source>
-        <translation>Nou Assentament</translation>
+        <translation type="obsolete">Nou Assentament</translation>
     </message>
     <message>
         <source>Editar Atributos</source>
@@ -5687,6 +6103,18 @@ Jean René Mèrou &lt;br /&gt;
     <message>
         <source>Saldo</source>
         <translation type="unfinished">Saldo</translation>
+    </message>
+    <message>
+        <source>Abrir Asiento Ctrl + A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cerrar Asiento Ctrl + C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo Asiento Ctrl+N</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5852,10 +6280,6 @@ Jean René Mèrou &lt;br /&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Substituir Cuenta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Asiento de Apertura</source>
         <translation type="obsolete">Assentament d&apos;Apertura</translation>
     </message>
@@ -5889,6 +6313,86 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Debe abrir un asiento primero..</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No existe asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No existe ningn asiento para mostrar.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cerrar</source>
+        <translation type="unfinished">Tancar</translation>
+    </message>
+    <message>
+        <source>Cerrar Asiento</source>
+        <translation type="unfinished">Tancar Assentament</translation>
+    </message>
+    <message>
+        <source>El asiento actual esta abierto, debe cerrarlo antes de continuar, Cerrar?.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dejar Abierto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No hay asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No hay asiento para mostrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No hay ningn asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No hay asiento para cerrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No hay ningn asiento para cerrarlo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vaciar Asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cuidado!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seguro que quiere borrar todos los apuntes del asiento?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;NO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;SI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sustituir Cuenta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No hay asiento para guardar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No hay asientos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No existe ningn asiento para realizar el asiento de apertura</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6046,19 +6550,11 @@ Jean René Mèrou &lt;br /&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tipo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Cuenta</source>
         <translation type="unfinished">Conta</translation>
     </message>
     <message>
         <source>COL_IVA_IDREGISTROIVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>COL_IVA_PORCENTAJETIPOIVA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6114,20 +6610,28 @@ Jean René Mèrou &lt;br /&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Base del IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>COL_IVA_IVAIVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>IDASIENTO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>ORDENASIENTO</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipo de IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Base Imponible</source>
+        <translation type="unfinished">Base Imponible</translation>
+    </message>
+    <message>
+        <source>Porcentaje</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IVA</source>
+        <translation type="unfinished">IVA</translation>
     </message>
 </context>
 <context>
@@ -6151,18 +6655,34 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Plan Contable</source>
-        <translation>Pla Contable</translation>
+        <translation type="obsolete">Pla Contable</translation>
     </message>
     <message>
         <source>Subcuentas</source>
-        <translation>Subcontes</translation>
+        <translation type="obsolete">Subcontes</translation>
     </message>
     <message>
         <source>&amp;Salir</source>
-        <translation>&amp;Sortir</translation>
+        <translation type="obsolete">&amp;Sortir</translation>
     </message>
     <message encoding="UTF-8">
         <source>Búsqueda</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exportar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plan &amp;Contable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S&amp;ubcuentas</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6175,6 +6695,14 @@ Jean René Mèrou &lt;br /&gt;
     <message>
         <source>NOMBRE</source>
         <translation>NOM</translation>
+    </message>
+    <message>
+        <source>debe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>haber</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6205,7 +6733,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Iva Repercutido</source>
-        <translation>Iva Repercutit</translation>
+        <translation type="obsolete">Iva Repercutit</translation>
     </message>
     <message>
         <source>Total Iva</source>
@@ -6237,7 +6765,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>IVA Soportado</source>
-        <translation>IVA Suportat</translation>
+        <translation type="obsolete">IVA Suportat</translation>
     </message>
     <message>
         <source>1</source>
@@ -6254,6 +6782,14 @@ Jean René Mèrou &lt;br /&gt;
     <message>
         <source>Cerrar</source>
         <translation type="unfinished">Tancar</translation>
+    </message>
+    <message>
+        <source>IVA Repercutido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Iva Soportado</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6610,27 +7146,27 @@ yyyy --&gt; Dígits de la conta.</translation>
     </message>
     <message>
         <source>No alterar cuentas con menos de</source>
-        <translation>No alterar contes amb menys de</translation>
+        <translation type="obsolete">No alterar contes amb menys de</translation>
     </message>
     <message>
         <source>digitos</source>
-        <translation>dígits</translation>
+        <translation type="obsolete">dígits</translation>
     </message>
     <message encoding="UTF-8">
         <source>Ampliar sólo cuentas finales</source>
-        <translation>Ampliar només contes finals</translation>
+        <translation type="obsolete">Ampliar només contes finals</translation>
     </message>
     <message>
         <source>Errores producidos</source>
-        <translation>Errors produïts</translation>
+        <translation type="obsolete">Errors produïts</translation>
     </message>
     <message>
         <source>Column 1</source>
-        <translation>Columna 1</translation>
+        <translation type="obsolete">Columna 1</translation>
     </message>
     <message>
         <source>New Item</source>
-        <translation>Nou Ítem</translation>
+        <translation type="obsolete">Nou Ítem</translation>
     </message>
     <message>
         <source>Modificar plan contable</source>

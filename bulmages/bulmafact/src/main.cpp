@@ -1,4 +1,5 @@
 #include <qapplication.h>
+#include <qtranslator.h>
 #include "configuracion.h"
 #include "bulmafact.h"
 #include "splashscreen.h"
@@ -9,19 +10,31 @@
 #include "fixed.h"
 
 QApplication *theApp;
-//bulmafact * mainClass;
 bulmafact *bges;
+QTranslator * traductor;
 
 int main( int argc, char ** argv ) {
-
+    /// Definimos la codificación a Unicode.
     // Leemos la configuracion que luego podremos usar siempre
     confpr = new configuracion();
-    theApp = new QApplication( argc, argv );  
+    theApp = new QApplication( argc, argv );
     QString db= argv[2];
     QString us=argv[3];
     QString pass=argv[4];
     Splash *splashScr = new Splash();
     delete splashScr;
+
+    theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
+
+    traductor = new QTranslator ( 0 );
+    if (confpr->valor(CONF_TRADUCCION) == "locales") {
+        traductor->load( QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
+    } else {
+        QString archivo = "bulmafact_"+confpr->valor(CONF_TRADUCCION);
+        traductor->load(archivo,confpr->valor(CONF_DIR_TRADUCCION).ascii());
+    }// end if
+    theApp->installTranslator( traductor );
+
 
     if (argc == 5) {
         confpr->setValor(CONF_LOGIN_USER, us);
@@ -34,10 +47,11 @@ int main( int argc, char ** argv ) {
         if (!login1->authOK())
             login1->exec();
         bges = new bulmafact("");
-    }// end if    
-    
-    
-    bges->setCaption( "BulmaFact" );
-    theApp->connect( theApp, SIGNAL(lastWindowClosed()), theApp, SLOT(quit()) );
-    return theApp->exec();
+    }// end if
+
+    theApp->setMainWidget(bges);
+    theApp->exec();
+    delete bges;
+    delete confpr;
+    return 1;
 }// end main

@@ -24,6 +24,10 @@ class ImportExportBulmafactView: public ImportExportBulmafactBase , public pgimp
 Q_OBJECT
 private:
 	postgresiface2 *conexionbase;
+	QString mensajein;
+
+private:
+	void inicializaMensajeria() {mensajein="";};
 public:
     ImportExportBulmafactView(postgresiface2 *, QWidget *, const char *, WFlags );
     ~ImportExportBulmafactView(){};

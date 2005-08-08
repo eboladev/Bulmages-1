@@ -74,6 +74,9 @@ public:
 
   private slots:
 
+	virtual void tile();
+	virtual void cascade();
+
     /** reverts the last editing action */
     void slotEditUndo();
     /** put the marked text/object into the clipboard and remove

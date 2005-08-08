@@ -19,16 +19,16 @@ INSERT INTO configuracion (nombre, valor) VALUES ('AlmacenDefecto', '100');
 
 
 INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Contado', 1, 5);
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 30 días', 30, 0);
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 60 días', 60, 0);
-INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Talón 15 dias', 15, 1);
+INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 30 dÃ­as', 30, 0);
+INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('Pagare 60 dÃ­as', 60, 0);
+INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('TalÃ³n 15 dias', 15, 1);
 
 
 INSERT INTO tipo_tarifa (codtipo_tarifa, desctipo_tarifa) VALUES('GENERAL', 'Tarifa General');
 
-INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES (100, 'La Botica del Abuelo', 'Camí Vell de Bunyola', 'Palma de Mallorca', '07009', '971434343', '971434344');
+INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES (100, 'La Botica del Abuelo', 'CamÃ­ Vell de Bunyola', 'Palma de Mallorca', '07009', '971434343', '971434344');
 INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES (200, 'Colmado de Mateo', 'Joan Maura', 'Palma de Mallorca', '07005', '971467911', '971776776');
-INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES (300, 'Almacén Norte', 'Polígono homogeneo', 'Alcudia', '07012', '971167911', '971111776');
+INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen, poblalmacen, cpalmacen, telalmacen, faxalmacen) VALUES (300, 'AlmacÃ©n Norte', 'PolÃ­ono homogeneo', 'Alcudia', '07012', '971167911', '971111776');
 
 
 INSERT INTO proveedor (nomproveedor, cifproveedor, cpproveedor) VALUES ('Tomeu', '45678098D', '07008');
@@ -44,9 +44,9 @@ INSERT INTO division (idproveedor, descdivision) VALUES (2, 'division 3 de crist
 INSERT INTO division (idproveedor, descdivision) VALUES (4, 'division 1 de Torrijas');
 
 
-INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Jorge Gutiérrez', '39881444W', '971998877', 'Palma de Mallorca');
+INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Jorge Gutiï¿½rez', '39881444W', '971998877', 'Palma de Mallorca');
 INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Carlos Santana', '43881555Z', '871998877', 'Campos');
-INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Dolores Martínez', '66881444E', '666998877', 'Muro');
+INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Dolores Martï¿½ez', '66881444E', '666998877', 'Muro');
 INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Pepe Infante', '55881444W', '9321998877', 'Barcelona');
 
 INSERT INTO tipo_iva (desctipo_iva) VALUES('Exento');
@@ -71,13 +71,13 @@ INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('IN', 'I
 INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia) VALUES('1', 'Leche Entera', 'Brick leche entera 1 litro', 1, 4);
 INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia) VALUES('2', 'Natillas', 'Pack dos envases de natillas de vainilla', 2, 4);
 INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia) VALUES('3', 'Iogurt', 'Pack 4 unidades yogures sabores', 1, 5);
-INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia) VALUES('4', 'Nestcafé', 'Bote 400 gramos café soluble natural', 1, 5);
+INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia) VALUES('4', 'NestcafÃ©', 'Bote 400 gramos cafÃ© soluble natural', 1, 5);
 \echo "Hemos insertado los articulos"
 
 INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-1', '25/10/2004', 'Pedido semanal de carne y pescado', 1, 1);
 INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-2', '30/10/2004', 'Pedido especial noche halloween', 2, 3);
 INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-3', '02/11/2004', 'Frutos secos de temporada', 3, 2);
-INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-4', '02/10/2004', 'Pedido semanal de lencería', 6, 1);
+INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-4', '02/10/2004', 'Pedido semanal de lencerï¿½', 6, 1);
 \echo "Hemos insertado los pedidos"
 
 INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 10, 1.2, '30/10/2004', 1, 1);
@@ -98,7 +98,7 @@ INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido
 INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(1, '25/10/2004', 'Pedido  carne y pescado', 1, 1);
 INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(2, '30/10/2004', 'Pedido especial noche ', 2, 3);
 INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(3, '02/11/2004', 'Frutos de temporada', 1, 2);
-INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(4, '02/10/2004', 'Pedido de lencería', 2, 1);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(4, '02/10/2004', 'Pedido de lencerÃ­a', 2, 1);
 \echo "Hemos insertado los pedidos de cliente"
 
 

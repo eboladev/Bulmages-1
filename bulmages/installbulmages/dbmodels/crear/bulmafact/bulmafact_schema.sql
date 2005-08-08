@@ -23,7 +23,7 @@ CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
 
 
 -- NOTACION:
--- Considerar las siguientes opciones de codificación:
+-- Considerar las siguientes opciones de codificaciï¿½:
 -- Los nombres de tabla estan escritos SIEMPRE en singular.
 -- Todos los campos de una tabla terminan siempre con el nombre de la tabla (salvo las claves foraneas).
 -- Las claves foraneas tienen el mismo nombre que el campo con que se corresponden en la tabla relacionada.
@@ -33,12 +33,12 @@ CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
 -- explicado en este archivo.
 
 
--- La tabla de configuración.
+-- La tabla de configuraciï¿½.
 -- En esta tabla se guardan parametros que el programa va a utilizar.
--- Como por ejemplo el numero de dígitos por defecto de las cuentas o el asiento inteligente que se enlaza con
+-- Como por ejemplo el numero de dï¿½itos por defecto de las cuentas o el asiento inteligente que se enlaza con
 -- facturacion.
 -- Tiene tres campos
--- idconfiguracion: el identificador (No tiene ningún uso especial).
+-- idconfiguracion: el identificador (No tiene ningn uso especial).
 -- nombre: El nombre del parametro de configuracion.
 -- valor: El valor que toma dicho parametro.
 CREATE TABLE configuracion (
@@ -48,9 +48,9 @@ CREATE TABLE configuracion (
 
 
 -- Codi: Clau artificial.
--- Descripcio: Nom identificatiu o descripció breu.
+-- Descripcio: Nom identificatiu o descripciï¿½breu.
 -- Dies_1T: Dies abans del primer termini computant els blocs de 30 com a mesos naturals.
--- Descompte: Descompte automàtic per l'ús d'aquesta forma de pagament.
+-- Descompte: Descompte automï¿½ic per l's d'aquesta forma de pagament.
 CREATE TABLE forma_pago (
    idforma_pago serial PRIMARY KEY,
    descforma_pago character varying(500),
@@ -60,13 +60,13 @@ CREATE TABLE forma_pago (
 
 
 -- Codigo: Clave artificial.
--- Nombre: Nombre identificativo del almacén.
--- diralmacen: Dirección del almacén.
--- poblalmacen: Población del almacén.
--- cpalmacenc: código postal almacén.
--- telfalmacen: Teléfono del almacén.
--- faxalmacen: Fax del almacén.
--- emailalmacen: correo electrónico del almacén.
+-- Nombre: Nombre identificativo del almacï¿½.
+-- diralmacen: Direcciï¿½ del almacï¿½.
+-- poblalmacen: Poblaciï¿½ del almacï¿½.
+-- cpalmacenc: cï¿½igo postal almacï¿½.
+-- telfalmacen: Telï¿½ono del almacï¿½.
+-- faxalmacen: Fax del almacï¿½.
+-- emailalmacen: correo electrï¿½ico del almacï¿½.
 -- presupuestoautoalmacen el numero de presupuesto es automatico? N=No, 
 -- albaranautoalmacen el numero de albaran es automatico? N=No, 
 -- facturaautoalmacen el numero de  es automatico? N=No, 
@@ -104,10 +104,10 @@ CREATE TABLE trabajador (
 );
 
 
--- Tabla de países
--- cod2: código de dos dígitos
--- cod3: código de tres dígitos
--- desc: descripción del país
+-- Tabla de paï¿½es
+-- cod2: cï¿½igo de dos dï¿½itos
+-- cod3: cï¿½igo de tres dï¿½itos
+-- desc: descripciï¿½ del paï¿½
 CREATE TABLE pais (
    idpais serial PRIMARY KEY,
    cod2pais character varying(2),
@@ -117,9 +117,9 @@ CREATE TABLE pais (
 
 
 -- Tabla de monedas
--- cod2: código de dos dígitos
--- cod3: código de tres dígitos
--- desc: descripción de la moneda
+-- cod2: cï¿½igo de dos dï¿½itos
+-- cod3: cï¿½igo de tres dï¿½itos
+-- desc: descripciï¿½ de la moneda
 CREATE TABLE moneda (
    idmoneda serial PRIMARY KEY,
    cod2moneda character varying(2),
@@ -147,9 +147,9 @@ CREATE TABLE tasa_iva (
 );
 
 
--- Tabla con series de Iva, código i descripción
--- Básicamente sirve para garantizar la integridad referencial en las  series de facturación
--- Deberían existir en contabilidad tambien.
+-- Tabla con series de Iva, cï¿½igo i descripciï¿½
+-- Bï¿½icamente sirve para garantizar la integridad referencial en las  series de facturaciï¿½
+-- Deberï¿½n existir en contabilidad tambien.
 CREATE TABLE serie_factura (
 --	idserie_factura serial PRIMARY KEY,
 	codigoserie_factura character varying (6) PRIMARY KEY,
@@ -158,11 +158,11 @@ CREATE TABLE serie_factura (
 );
 
 
--- codigofamilia código de la familia.
+-- codigofamilia cï¿½igo de la familia.
 -- nombrefamilia nombre de la familia
--- descfamilia descripción extendida de la familia.
--- codcompfamilia código compuesto de familia: Es la concatenación del código de familia con sus códigos padres. 
--- codigocompletofamilia Este campo es de sólo lectura, no se puede escribir sobre él.
+-- descfamilia descripciï¿½ extendida de la familia.
+-- codcompfamilia cï¿½igo compuesto de familia: Es la concatenaciï¿½ del cï¿½igo de familia con sus cï¿½igos padres. 
+-- codigocompletofamilia Este campo es de sï¿½o lectura, no se puede escribir sobre ï¿½.
 
 CREATE TABLE familia (
 	idfamilia serial PRIMARY KEY,
@@ -211,7 +211,7 @@ CREATE TRIGGER propagacodigocompletofamiliatrigger
     FOR EACH ROW
     EXECUTE PROCEDURE propagacodigocompletofamilia();
 
--- Esta función nos da el identificador de familia dado un código.
+-- Esta funciï¿½ nos da el identificador de familia dado un cï¿½igo.
 --CREATE OR REPLACE FUNCTION idfamilia (text) RETURNS "trigger"
 --    AS '
 --DECLARE
@@ -226,7 +226,7 @@ CREATE TRIGGER propagacodigocompletofamiliatrigger
 --'    LANGUAGE plpgsql;
 
 
--- El tipo de artículo es una tabla que permite crear una forma alternativa de agrupar los artículos.
+-- El tipo de artï¿½ulo es una tabla que permite crear una forma alternativa de agrupar los artï¿½ulos.
 -- codigo: identificador del tipo.
 -- desc:
 CREATE TABLE tipo_articulo (
@@ -237,11 +237,11 @@ CREATE TABLE tipo_articulo (
 
 
 -- Codigo: Clave artificial.
--- Nombre: Descripción corta del artículo.
+-- Nombre: Descripciï¿½ corta del artï¿½ulo.
 -- abrev: Nombre abreviado del articulo (para tpv o cartelitos estanterias...)
--- idtipo_articulo: identificador de tipo de artículo que se utilizará para agrupar artículos como clasificación alternativa a el surtido (familias).
+-- idtipo_articulo: identificador de tipo de artï¿½ulo que se utilizarï¿½para agrupar artï¿½ulos como clasificaciï¿½ alternativa a el surtido (familias).
 -- Observaciones: Campo de texto para a comentarios y observaciones.
--- El campo codigocompletoarticulo sólo puede ser de lectura.
+-- El campo codigocompletoarticulo sï¿½o puede ser de lectura.
 CREATE TABLE articulo (
     idarticulo serial PRIMARY KEY,
     codarticulo character varying(12),
@@ -256,9 +256,9 @@ CREATE TABLE articulo (
     idfamilia integer REFERENCES familia(idfamilia) NOT NULL,
     stockarticulo numeric(12,2) DEFAULT 0,    
     inactivoarticulo character(1),
-    -- ATENCION, este campo no da el pvp real del artículo, solo es una de las multiples formas de acceder al precio del articulo.
-    -- Para obtener el precio de un artículo se debe usar la funcion pvparticulo.
-    -- Para saber el iva correspondiente a un articulo se debe usar la función ivaarticulo.
+    -- ATENCION, este campo no da el pvp real del artï¿½ulo, solo es una de las multiples formas de acceder al precio del articulo.
+    -- Para obtener el precio de un artï¿½ulo se debe usar la funcion pvparticulo.
+    -- Para saber el iva correspondiente a un articulo se debe usar la funciï¿½ ivaarticulo.
     pvparticulo numeric(12,2) NOT NULL DEFAULT 0
 );
 
@@ -308,7 +308,7 @@ CREATE TRIGGER modificastocktrigger
 	EXECUTE PROCEDURE modificadostock();
 	
         
--- Componentes de Artículo
+-- Componentes de Artï¿½ulo
 CREATE TABLE comparticulo (
 	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
 	cantcomparticulo integer NOT NULL DEFAULT 1,
@@ -318,27 +318,27 @@ CREATE TABLE comparticulo (
 
 
 -- Los proveedores son los que nos suminstran articulos y/o servicios.
--- COMPROVACIONS D'INTEGRITAT>Genèriques:
--- 1 Article té 1 sol proveïdor principal.
--- 1 Article té 1 sol proveïdor referent.
+-- COMPROVACIONS D'INTEGRITAT>Genï¿½iques:
+-- 1 Article tï¿½1 sol proveï¿½or principal.
+-- 1 Article tï¿½1 sol proveï¿½or referent.
 -- CAMPOS
 -- ======
 -- Codi: Clau artificial.
 -- Nom: Nom comercial o fiscal.
 -- Nom_alternatiu: Nom comercial o fiscal.
--- CIF: Codi d'Identificació Fiscal.
--- CodiCli: Codi de client amb que ens facturen. Útil per a identificar-nos.
+-- CIF: Codi d'Identificaciï¿½Fiscal.
+-- CodiCli: Codi de client amb que ens facturen. ï¿½il per a identificar-nos.
 -- C_Banc
 -- Comentaris
--- Adreça: Adreça.
--- Població: Població.
--- CProv: Codi de provincia (dos primers dígits del codi postal).
--- sCP: Tres darrers dígits del codi postal.
--- Telf: Telèfon.
+-- Adreï¿½: Adreï¿½.
+-- Poblaciï¿½ Poblaciï¿½
+-- CProv: Codi de provincia (dos primers dï¿½its del codi postal).
+-- sCP: Tres darrers dï¿½its del codi postal.
+-- Telf: Telï¿½on.
 -- Fax: Fax.
 -- Email: eMail.
 -- Url: Url.
--- CompteWeb: Dades de login si disposen de tenda o tarifes en línia
+-- CompteWeb: Dades de login si disposen de tenda o tarifes en lï¿½ia
 CREATE TABLE proveedor (
    idproveedor serial PRIMARY KEY,
    nomproveedor character varying(200),
@@ -359,11 +359,11 @@ CREATE TABLE proveedor (
 );
 
 
---Numero: Número de divisió (clau artificial).
---Descripcio: Nom o descripció de la divisió.
+--Numero: Nmero de divisiï¿½(clau artificial).
+--Descripcio: Nom o descripciï¿½de la divisiï¿½
 --Contactes: Nom de persona o persones de contacte.
 --Comentaris
---Telf: Telèfon.
+--Telf: Telï¿½on.
 --Fax: Fax.
 --Email
 CREATE TABLE division (
@@ -379,17 +379,17 @@ CREATE TABLE division (
 );
 
 
--- El cliente siempre tiene la razón, bueno, o por lo menos eso cree.
+-- El cliente siempre tiene la razï¿½, bueno, o por lo menos eso cree.
 --Codi: Clau artificial.
 --Nom: Nom comercial o fiscal.
 --Nom_alternatiu: Nom comercial o fiscal.
---CIF: Codi d'Identificació Fiscal.
+--CIF: Codi d'Identificaciï¿½Fiscal.
 --C_Banc: Compte Bancari.
---Adr: Adreça.
---Pobl: Població.
---CProv: Codi de provincia (dos primers dígits del codi postal).
---sCP: Tres darrers dígits del codi postal.
---Telf: Telèfon.
+--Adr: Adreï¿½.
+--Pobl: Poblaciï¿½
+--CProv: Codi de provincia (dos primers dï¿½its del codi postal).
+--sCP: Tres darrers dï¿½its del codi postal.
+--Telf: Telï¿½on.
 --Fax: Fax.
 --Email: eMail.
 --Url: Url.
@@ -441,9 +441,9 @@ CREATE TABLE pago (
 );
 
 -- Any: Any en que s'efectua la comanda.
--- Numero: Número de comanda (començant de 1 cada any).
--- Descripcio: Breu descripció o comentari opcional.
--- Data: Data d'emisió de la comanda.
+-- Numero: Nmero de comanda (comenï¿½nt de 1 cada any).
+-- Descripcio: Breu descripciï¿½o comentari opcional.
+-- Data: Data d'emisiï¿½de la comanda.
 CREATE TABLE pedido (
    idpedido serial PRIMARY KEY,
    numpedido character varying(60),
@@ -467,10 +467,10 @@ CREATE TABLE usuario (
 
 
 
--- Any: Any de facturació.
--- Numero: Número de factura.
+-- Any: Any de facturaciï¿½
+-- Numero: Nmero de factura.
 -- Data Comentaris
--- Factura de proveïdor.
+-- Factura de proveï¿½or.
 CREATE TABLE fra_pro (
    idfra_pro serial PRIMARY KEY,
    numfra_pro character varying(60),
@@ -482,10 +482,9 @@ CREATE TABLE fra_pro (
 
 -- Albaran de proveedor
 -- Any: Any en que s'efectua la comanda.
--- NumCompra: Numero de Compra (Clau artificial per poder registrar recepcions que ens arribin sense l'albarà postposant la cumplimentació del número d'albarà).
--- NumAlbara: Número d'albarà.
--- Data: Data de l'albarà
--- Recepcio: Data de recepció.
+-- NumCompra: Numero de Compra (Clau artificial per poder registrar recepcions que ens arribin sense l'albarï¿½postposant la cumplimentaciï¿½del nmero d'albarï¿½.
+-- NumAlbara: Nmero d'albarï¿½
+-- Data: Data de l'albarï¿½-- Recepcio: Data de recepciï¿½
 -- Comentaris
 CREATE TABLE alb_pro (
    idalb_pro serial PRIMARY KEY,
@@ -502,11 +501,12 @@ CREATE TABLE alb_pro (
 
 
 -- Linea de pedido
--- Numero: Número de línia.
+-- Numero: Nmero de lï¿½ia.
 -- Descripcio: Descripcio de l'article.
 -- Quantitat
 -- PVD
--- Previsió: Data prevista de recepció
+-- Previsiï¿½ Data prevista de recepciï¿½
+
 CREATE TABLE lpedido (
    numlpedido serial PRIMARY KEY,
    desclpedido character varying(150),
@@ -524,13 +524,13 @@ CREATE TABLE lpedido (
 
 
 
--- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
--- hacemos a petición de un cliente determinado
+-- Entendemos que un presupuesto es una relaciï¿½ de materiales y trabajos cuantificada que
+-- hacemos a peticiï¿½ de un cliente determinado
 -- Numero
--- Data: Data d'emisió del presupost.
+-- Data: Data d'emisiï¿½del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
--- TelfContacte: Telèfon.
--- Venciment: Data màxima de validesa del presupost.
+-- TelfContacte: Telï¿½on.
+-- Venciment: Data mï¿½ima de validesa del presupost.
 -- Comentaris
 --  Pressupost a clients.
 CREATE TABLE presupuesto (
@@ -585,7 +585,7 @@ CREATE TRIGGER restriccionespresupuestotrigger
 
 -- Descuento de presupuesto.
 -- Numero
---Concepte: Descripció del motiu de descompte.
+--Concepte: Descripciï¿½del motiu de descompte.
 --Proporcio: Percentatge a descomptar.
 -- Descompte de pressupost a clients.
 CREATE TABLE dpresupuesto (
@@ -593,17 +593,17 @@ CREATE TABLE dpresupuesto (
    conceptdpresupuesto character varying(2000),
    proporciondpresupuesto numeric(12,2),
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despuï¿½ de ï¿½ta.
 );
 
 
 
 -- Linea de presupuesto
 -- Numero
--- Descripcio: Descripció de l'article en el moment de ser presupostat.
+-- Descripcio: Descripciï¿½de l'article en el moment de ser presupostat.
 -- Quantitat
 -- PVP: Preu de l'article en el moment de ser pressupostat
--- Descompte: Percentatge de descompte en línia.
+-- Descompte: Percentatge de descompte en lï¿½ia.
 -- Linia de pressupost a clients.
 CREATE TABLE lpresupuesto (
    idlpresupuesto serial PRIMARY KEY,
@@ -620,9 +620,9 @@ CREATE TABLE lpresupuesto (
 
 
 -- Any: Any en que s'efectua la comanda.
--- Numero: Número de comanda (començant de 1 cada any).
--- Descripcio: Breu descripció o comentari opcional.
--- Data: Data d'emisió de la comanda.
+-- Numero: Nmero de comanda (comenï¿½nt de 1 cada any).
+-- Descripcio: Breu descripciï¿½o comentari opcional.
+-- Data: Data d'emisiï¿½de la comanda.
 CREATE TABLE pedidocliente (
    idpedidocliente serial PRIMARY KEY,
    numpedidocliente integer UNIQUE NOT NULL,
@@ -672,7 +672,7 @@ CREATE TRIGGER restriccionespedidoclientetrigger
 
 -- Descuento de pedidocliente.
 -- Numero
---Concepte: Descripció del motiu de descompte.
+--Concepte: Descripciï¿½del motiu de descompte.
 --Proporcio: Percentatge a descomptar.
 -- Descompte de pressupost a clients.
 CREATE TABLE dpedidocliente (
@@ -680,15 +680,15 @@ CREATE TABLE dpedidocliente (
    conceptdpedidocliente character varying(2000),
    proporciondpedidocliente numeric(12,2),
    idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despuï¿½ de ï¿½ta.
 );    
     
 -- Linea de pedido
--- Numero: Número de línia.
+-- Numero: Nmero de lï¿½ia.
 -- Descripcio: Descripcio de l'article.
 -- Quantitat
 -- PVD
--- Previsió: Data prevista de recepció
+-- Previsiï¿½ Data prevista de recepciï¿½
 CREATE TABLE lpedidocliente (
    numlpedidocliente serial PRIMARY KEY,
    desclpedidocliente character varying(150),
@@ -760,7 +760,7 @@ CREATE TRIGGER restriccionesfacturatrigger
     
 -- Descuento de pedidocliente.
 -- Numero
---Concepte: Descripció del motiu de descompte.
+--Concepte: Descripciï¿½del motiu de descompte.
 --Proporcio: Percentatge a descomptar.
 -- Descompte de pressupost a clients.
 CREATE TABLE dfactura (
@@ -768,16 +768,16 @@ CREATE TABLE dfactura (
    conceptdfactura character varying(2000),
    proporciondfactura numeric(12,2),
    idfactura integer NOT NULL REFERENCES factura(idfactura)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despuï¿½ de ï¿½ta.
 ); 
     
 
 -- Linea de presupuesto
 -- Numero
--- Descripcio: Descripció de l'article en el moment de ser presupostat.
+-- Descripcio: Descripciï¿½de l'article en el moment de ser presupostat.
 -- Quantitat
 -- PVP: Preu de l'article en el moment de ser pressupostat
--- Descompte: Percentatge de descompte en línia.
+-- Descompte: Percentatge de descompte en lï¿½ia.
 -- Linia de pressupost a clients.
 CREATE TABLE lfactura (
    idlfactura serial PRIMARY KEY,
@@ -837,10 +837,10 @@ CREATE TRIGGER restriccionesfacturaptrigger
 
 -- Linea de presupuesto
 -- Numero
--- Descripcio: Descripció de l'article en el moment de ser presupostat.
+-- Descripcio: Descripciï¿½de l'article en el moment de ser presupostat.
 -- Quantitat
 -- PVP: Preu de l'article en el moment de ser pressupostat
--- Descompte: Percentatge de descompte en línia.
+-- Descompte: Percentatge de descompte en lï¿½ia.
 -- Linia de pressupost a clients.
 CREATE TABLE lfacturap (
    idlfacturap serial PRIMARY KEY,
@@ -860,7 +860,7 @@ CREATE TABLE lfacturap (
 -- Data
 -- Concepte: Descripcio del concepte pel qual no es poden facturar els albarans aqui agrupats (garantia, -- contracte de manteniment, regals a clients, etc...).
 -- Observacions
--- Agrupacio d'albarans no facturables en funció d'un determinat concepte.
+-- Agrupacio d'albarans no facturables en funciï¿½d'un determinat concepte.
 CREATE TABLE nofactura (
 	idnofactura serial PRIMARY KEY,
    numnofactura integer NOT NULL,
@@ -873,13 +873,13 @@ CREATE TABLE nofactura (
 
 
 
--- COMPROVACIONS D'INTEGRITAT>Genèriques:
+-- COMPROVACIONS D'INTEGRITAT>Genï¿½iques:
 -- Tots els albarans d'una factura corresponen al mateix client.
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 -- Numero
 -- Data
--- Albarà a clients.
+-- Albarï¿½a clients.
 CREATE TABLE albaranp (
    idalbaranp serial PRIMARY KEY,
    numalbaranp integer NOT NULL UNIQUE,
@@ -933,7 +933,7 @@ CREATE TRIGGER restriccionesalbaranptrigger
 -- Quantitat
 -- PVP: Preu de l'article en el moment de la compra o de ser presupostat.
 -- Descompte
--- Línia d'albarà a clients.
+-- Lï¿½ia d'albarï¿½a clients.
 CREATE TABLE lalbaranp (
    numlalbaranp serial PRIMARY KEY,
    desclalbaranp character varying(100),
@@ -977,13 +977,13 @@ CREATE TRIGGER aumentastockpt
     EXECUTE PROCEDURE aumentastockp(); 
 
 
--- COMPROVACIONS D'INTEGRITAT>Genèriques:
+-- COMPROVACIONS D'INTEGRITAT>Genï¿½iques:
 -- Tots els albarans d'una factura corresponen al mateix client.
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 -- Numero
 -- Data
--- Albarà a clients.
+-- Albarï¿½a clients.
 CREATE TABLE albaran (
    idalbaran serial PRIMARY KEY,
    numalbaran integer NOT NULL UNIQUE,
@@ -1005,7 +1005,7 @@ CREATE TABLE albaran (
 );
 
 -- **********************************************************************
--- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCIÓN DE ERRORES.
+-- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCIï¿½ DE ERRORES.
 -- **********************************************************************
 -- **********************************************************************
 CREATE FUNCTION restriccionesalbaran () RETURNS "trigger"
@@ -1090,9 +1090,9 @@ END;
 
 -- Descuento albaran
 -- Numero
--- Concepte: Descripció del motiu de descompte.
+-- Concepte: Descripciï¿½del motiu de descompte.
 -- Proporcio: Percentatge a descomptar.
--- Descompte d'albarà a clients.
+-- Descompte d'albarï¿½a clients.
 CREATE TABLE dalbaran (
    iddalbaran serial PRIMARY KEY,
    conceptdalbaran character varying(500),
@@ -1106,7 +1106,7 @@ CREATE TABLE dalbaran (
 -- Quantitat
 -- PVP: Preu de l'article en el moment de la compra o de ser presupostat.
 -- Descompte
--- Línia d'albarà a clients.
+-- Lï¿½ia d'albarï¿½a clients.
 CREATE TABLE lalbaran (
    numlalbaran serial PRIMARY KEY,
    desclalbaran character varying(100),
@@ -1157,9 +1157,9 @@ CREATE TABLE ticket (
 );
 
 
--- COMPROVACIONS D'INTEGRITAT>Genèriques:
--- 1 Article té 1 sol proveïdor principal.
--- 1 Article té 1 sol proveïdor referent.
+-- COMPROVACIONS D'INTEGRITAT>Genï¿½iques:
+-- 1 Article tï¿½1 sol proveï¿½or principal.
+-- 1 Article tï¿½1 sol proveï¿½or referent.
 CREATE TABLE suministra (
    idsuministra serial PRIMARY KEY,
    refpro character varying(100),
@@ -1173,8 +1173,8 @@ CREATE TABLE suministra (
 
 
 
--- Los tipos de tarifa permiten tener diferentes precios para un mismo artículo en función de alguna variable que queramos definir (para un cliente, para una zona, si es para un minorista, tienda propia franquiciada ...
--- codigo: es un identificador pnemotécnico de la tarifa.
+-- Los tipos de tarifa permiten tener diferentes precios para un mismo artï¿½ulo en funciï¿½ de alguna variable que queramos definir (para un cliente, para una zona, si es para un minorista, tienda propia franquiciada ...
+-- codigo: es un identificador pnemotï¿½nico de la tarifa.
 -- desc: es un texto descriptivo del tipo de tarifa.
 
 CREATE TABLE tipo_tarifa ( 
@@ -1185,10 +1185,10 @@ CREATE TABLE tipo_tarifa (
 
 
 -- La tabla tarifa contiene los precios de venta y oferta incluidas las ofertas MxN.
--- idalmacen: Almacén o tienda a la que corresponden los precios.
+-- idalmacen: Almacï¿½ o tienda a la que corresponden los precios.
 -- idarticulo: idetificador del articulo al que corresponde el precio.
 -- finicio: fecha de inicio vigencia del precio
--- ffin: fecha de finalización de vigencia del precio.
+-- ffin: fecha de finalizaciï¿½ de vigencia del precio.
 -- esoferta: indica si el precio es de oferta.
 -- esmxn: indica si la oferta es mxn (p.e. 3x2).
 -- cantidadm: cantidad de unidades para primer valor en oferta mxn (valor de unidades llevadas).
@@ -1211,9 +1211,9 @@ CREATE TABLE tarifa (
 
 
 -- Restricciones para la tabla tarifa:
--- Para un mismo almacén, artículo y tarifa, no puede haber más de un precio a una misma fecha
--- Para un mismo almacén, artículo y tarifa, no puede haber más de una oferta precio a una misma fecha
--- Sí que se permite que haya solapamiento entre la tarifa normal y una oferta. Prevalece siempre la oferta.
+-- Para un mismo almacï¿½, artï¿½ulo y tarifa, no puede haber mï¿½ de un precio a una misma fecha
+-- Para un mismo almacï¿½, artï¿½ulo y tarifa, no puede haber mï¿½ de una oferta precio a una misma fecha
+-- Sï¿½que se permite que haya solapamiento entre la tarifa normal y una oferta. Prevalece siempre la oferta.
 
 --DROP TRIGGER restriccionestarifatrigger ON cuenta CASCADE;
 --DROP FUNCTION restriccionestarifa();
@@ -1303,9 +1303,9 @@ END;
 
 
 -- Any: Any en que s'efectua la comanda.
--- Numero: Número de comanda (començant de 1 cada any).
--- Descripcio: Breu descripció o comentari opcional.
--- Data: Data d'emisió de la comanda.
+-- Numero: Nmero de comanda (comenï¿½nt de 1 cada any).
+-- Descripcio: Breu descripciï¿½o comentari opcional.
+-- Data: Data d'emisiï¿½de la comanda.
 CREATE TABLE pedidoproveedor (
    idpedidoproveedor serial PRIMARY KEY,
    numpedidoproveedor integer UNIQUE NOT NULL,
@@ -1354,7 +1354,7 @@ CREATE TRIGGER restriccionespedidoproveedortrigger
 
 -- Descuento de pedidocliente.
 -- Numero
---Concepte: Descripció del motiu de descompte.
+--Concepte: Descripciï¿½del motiu de descompte.
 --Proporcio: Percentatge a descomptar.
 -- Descompte de pressupost a clients.
 CREATE TABLE dpedidoproveedor (
@@ -1362,15 +1362,15 @@ CREATE TABLE dpedidoproveedor (
    conceptdpedidoproveedor character varying(2000),
    proporciondpedidoproveedor numeric(12,2),
    idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despuï¿½ de ï¿½ta.
 );    
     
 -- Linea de pedido
--- Numero: Número de línia.
+-- Numero: Nmero de lï¿½ia.
 -- Descripcio: Descripcio de l'article.
 -- Quantitat
 -- PVD
--- Previsió: Data prevista de recepció
+-- Previsiï¿½ Data prevista de recepciï¿½
 CREATE TABLE lpedidoproveedor (
    numlpedidoproveedor serial PRIMARY KEY,
    desclpedidoproveedor character varying(150),

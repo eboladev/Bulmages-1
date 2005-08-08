@@ -17,14 +17,14 @@
   * Contiene la implementaci� de las clases \ref cursor2 y \ref postgresiface2 que proveen acceso a las bases de datos
   * de postgres de forma sencilla y eficiente.
   */
-  
+
 #include "postgresiface2.h"
 #include <qmessagebox.h>
 #include <qapplication.h>
 
 #include "msgerror.h"
 
-/** Constructor de la clase 
+/** Constructor de la clase
   * Realiza la consulta en la base de datos y almacena el resultado en las variables de clase para poder ser manupuladas.
   * Tambi� almacena en variables globales algunos resultados para poder acelerar las consultas (nregistros y ncampos).
   * Si todo falla (y en funci� de la configuraci�) Da un mensaje de alerta o no.
@@ -43,11 +43,11 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery) {
         fprintf(stderr,"%s\n", PQerrorMessage(conn));
         fprintf(stderr, "QUERY command failed [%s]\n", Query.ascii());
         if (confpr->valor(CONF_ALERTAS_DB) == "Yes")
-     //       QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurri�un error con la carga de un query de la base de datos\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
-	    
-	    msgError("Ha ocurrido un error al hacer una consulta con la base de datos.",Query+"\n"+PQerrorMessage(conn));
-	    
-	    
+            //       QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurri�un error con la carga de un query de la base de datos\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
+
+            msgError("Ha ocurrido un error al hacer una consulta con la base de datos.",Query+"\n"+PQerrorMessage(conn));
+
+
         PQclear(result);
         return;
     }// end if
@@ -120,7 +120,7 @@ QString cursor2::valor(int posicion, int registro) {
     if (registro == -1) {
         registro = registroactual;
     }// end if
-    return (PQgetvalue(result, registro, posicion));
+    return (QString::fromLocal8Bit(PQgetvalue(result, registro, posicion)));
 }// end valor
 
 
@@ -138,7 +138,7 @@ QString cursor2::valor(QString campo, int registro) {
     while (i<numcampos() && campo != nomcampo(i) ) {
         i++;
     }// end while
-    return(PQgetvalue(result, registro, i));
+    return(QString::fromLocal8Bit(PQgetvalue(result, registro, i)));
 }// end valor
 
 
@@ -232,15 +232,12 @@ int postgresiface2::inicializa(QString nomdb) {
     pgoptions = "";           /** special options to start up the backend server */
     pgtty = "";               /** debugging tty for the backend server */
     QString conexion;
-    
+
     QString user = confpr->valor(CONF_LOGIN_USER);
     QString passwd = confpr->valor(CONF_PASSWORD_USER);
 
-//    if (pghost != "localhost") {
-//        conexion = "hostaddr="+pghost+" port="+pgport;
-//    }// end if
-/// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
-/// Ahora si se pone -- se considera conexi� local.
+    /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
+    /// Ahora si se pone -- se considera conexi� local.
     if (pghost != "--") {
         conexion = "host="+pghost;
     }// end if
@@ -273,15 +270,22 @@ int postgresiface2::inicializa(QString nomdb) {
 int postgresiface2::formatofecha() {
     QString query="";
     PGresult   *res;
-    begin();
-//    query.sprintf("SET DateStyle TO 'SQL'");
+    //    begin();
     query= "SET DATESTYLE TO SQL,European";
     res = PQexec(conn, query.ascii());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         fprintf(stderr, "Cambio del formato de fecha command failed\n");
     }// end if
     PQclear(res);
-    commit();
+
+    /// Establecemos la codificación por defecto a UNICODE.
+    query = "SET client_encoding = 'UNICODE'";
+    res = PQexec(conn, query.ascii());
+    if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
+        fprintf(stderr, "Cambio del formato de Codificación\n");
+    }// end if
+    PQclear(res);
+    //    commit();
     return(0);
 }// end formatofecha
 
@@ -342,19 +346,27 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
 \retval 0 Si la ejecuci� fue correcta
 \retval 1 en caso contrario
 */
+#include <qtextcodec.h>
 int postgresiface2::ejecuta(QString Query) {
+
     PGresult *result;
-    fprintf(stderr,"%s\n",Query.ascii());
-    //Prova de control de permisos
+/*
+    fprintf(stderr,"El decod es: %s\n", (const char *) Query.utf8());
+    fprintf(stderr,"El decod es: %s\n", Query.latin1());
+    fprintf(stderr,"El decod es: %s\n", Query.ascii());
+    fprintf(stderr,"El decod es: %s\n", (const char *) Query.local8Bit());
+*/
+
+  //Prova de control de permisos
     if (confpr->valor(CONF_PRIVILEGIOS_USUARIO) != "1" && (Query.left(6)=="DELETE" || Query.left(6)=="UPDATE" || Query.left(6)=="INSERT"))
         return (42501);
     //Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard
-    result = PQexec(conn, Query.ascii());
+    result = PQexec(conn,  (const char *) Query.local8Bit());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
         fprintf(stderr, "SQL command failed: %s\n", Query.ascii());
         fprintf(stderr,"%s\n", PQerrorMessage(conn));
-	QString mensaje = "Error al intentar modificar la base de datos:\n";
-	msgError(mensaje+PQerrorMessage(conn),Query+"\n"+PQerrorMessage(conn));
+        QString mensaje = "Error al intentar modificar la base de datos:\n";
+        msgError(mensaje+PQerrorMessage(conn),Query+"\n"+PQerrorMessage(conn));
         PQclear(result);
         return(1);
     }// end if
@@ -418,17 +430,17 @@ int postgresiface2::nuevoborrador(int idcuenta, int idasiento, QString concepto,
         textidcanal.sprintf("%d",idcanal);
     }// end if
     query.sprintf("INSERT INTO borrador (idcuenta,idasiento,conceptocontable, descripcion, debe, haber, fecha, contrapartida, idtipoiva, idc_coste, idcanal) VALUES (%s, %d,'%s','%s', %2.2f, %2.2f,'%s', %s, %d, %s, %s)",
-	sanearCadena(textcuenta).ascii(), 
-	idasiento, 
-	sanearCadena(concepto).ascii(), 
-	sanearCadena(descripcion).ascii(), 
-	debe, 
-	haber, 
-	sanearCadena(fecha).ascii(), 
-	sanearCadena(textcontrapartida).ascii(), 
-	idtipoiva, 
-	sanearCadena(textidccoste).ascii(), 
-	sanearCadena(textidcanal).ascii());
+                  sanearCadena(textcuenta).ascii(),
+                  idasiento,
+                  sanearCadena(concepto).ascii(),
+                  sanearCadena(descripcion).ascii(),
+                  debe,
+                  haber,
+                  sanearCadena(fecha).ascii(),
+                  sanearCadena(textcontrapartida).ascii(),
+                  idtipoiva,
+                  sanearCadena(textidccoste).ascii(),
+                  sanearCadena(textidcanal).ascii());
     return(ejecuta(query));
 }// end nuevoborrador
 
@@ -691,22 +703,22 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
     QString nohaber = cnohaber ? "TRUE" : "FALSE";
 
     query.sprintf("INSERT INTO cuenta (descripcion, padre,codigo, idgrupo, nombreent_cuenta, cifent_cuenta, dirent_cuenta, cpent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta, tipocuenta, nodebe, nohaber) VALUES('%s',%s,'%s',%d, '%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d, %s, %s)",
-	sanearCadena(desccuenta).ascii(),
-	sanearCadena(tpadre).ascii(), 
-	sanearCadena(codigo).ascii(), 
-	idgrupo, 
-	sanearCadena(nombreent).ascii(), 
-	sanearCadena(cifent).ascii(), 
-	sanearCadena(dir).ascii(), 
-	sanearCadena(cp).ascii(), 
-	sanearCadena(tel).ascii() ,
-	sanearCadena(comm).ascii(), 
-	sanearCadena(banco).ascii(), 
-	sanearCadena(email).ascii(), 
-	sanearCadena(web).ascii(), 
-	tipocuenta, 
-	sanearCadena(nodebe).ascii(), 
-	sanearCadena(nohaber).ascii() );
+                  sanearCadena(desccuenta).ascii(),
+                  sanearCadena(tpadre).ascii(),
+                  sanearCadena(codigo).ascii(),
+                  idgrupo,
+                  sanearCadena(nombreent).ascii(),
+                  sanearCadena(cifent).ascii(),
+                  sanearCadena(dir).ascii(),
+                  sanearCadena(cp).ascii(),
+                  sanearCadena(tel).ascii() ,
+                  sanearCadena(comm).ascii(),
+                  sanearCadena(banco).ascii(),
+                  sanearCadena(email).ascii(),
+                  sanearCadena(web).ascii(),
+                  tipocuenta,
+                  sanearCadena(nodebe).ascii(),
+                  sanearCadena(nohaber).ascii() );
     return(ejecuta(query));
 }// end nuevacuenta
 
@@ -738,11 +750,11 @@ int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento, 
     ordenasiento++;
     delete cur;
     query.sprintf("INSERT INTO asiento (idasiento,descripcion, fecha, ordenasiento, clase) VALUES (%d,'%s','%s', %d, %d)",
-	val,
-	sanearCadena(nombre).ascii(), 
-	sanearCadena(fecha).ascii(), 
-	ordenasiento, 
-	clase);
+                  val,
+                  sanearCadena(nombre).ascii(),
+                  sanearCadena(fecha).ascii(),
+                  ordenasiento,
+                  clase);
     ejecuta(query);
     return(val);
 }// end nuevoasiento

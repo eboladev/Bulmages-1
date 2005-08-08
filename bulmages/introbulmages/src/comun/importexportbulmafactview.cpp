@@ -33,15 +33,15 @@ void ImportExportBulmafactView::alerta(int a, int b) {
 }// end realizado
 
 void ImportExportBulmafactView::mensajeria(QString mensaje) {
-	static QString mensajein = "";
 	mensajein += mensaje+"<BR>";
-	m_mensajes->setText("<HTML><BODY BGCOLOR='#CCCCCC'>"+mensajein+"</BODY></HTML>");
+	m_mensajes->setText("<HTML><BODY BGCOLOR='#CCCCCC'>"+QString(mensajein.latin1())+"</BODY></HTML>");
  //	m_mensajes->scrollBy(0,400);
 }// end publicamensaje
 
 
 ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 * con, QWidget * parent, const char * name, WFlags f=0) :  ImportExportBulmafactBase(parent,name,f), pgimportfiles(con) {
 	conexionbase = con;
+	inicializaMensajeria();
 }//end importContaplus
 
 /// Se ha pulsado sobre el bot� de bsqueda de una subcuenta.
@@ -51,6 +51,7 @@ void ImportExportBulmafactView::botonBuscarXML() {
 	
 
 void ImportExportBulmafactView::botonImportar() {
+	inicializaMensajeria();
 	fprintf(stderr,"ImportExportBulmafactView::botonImportar()\n");
 	QString finicial = m_fechainicial->text();
 	QString ffinal = m_fechafinal->text();
@@ -73,6 +74,7 @@ void ImportExportBulmafactView::botonImportar() {
   */
 void ImportExportBulmafactView::botonExportar() {
 	/// Leemos las fechas entre las que tiene que ser el listado.
+	inicializaMensajeria();
 	QString finicial = m_fechainicial->text();
 	QString ffinal = m_fechafinal->text();
 

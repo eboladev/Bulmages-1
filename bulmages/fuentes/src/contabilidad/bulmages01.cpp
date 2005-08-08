@@ -22,7 +22,6 @@
 
 // Hacemos algunas pruebas con una docwindow. Para el corrector de contabilidad
 #include <qdockwindow.h>
-//#include "correctorwidget.h"
 
 // application specific includes
 #include "bulmages01.h"
@@ -42,7 +41,7 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
         while (DBName == "")
             DBName = empresaactual.searchCompany();
     }// end if
-    setCaption(tr("BulmaGés:  ") + DBName +" --");
+    setCaption(tr("BulmaGÃ©s:  ") + DBName +" --");
     initView();
     initActions();
     initMenuBar();
@@ -52,7 +51,7 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
 
     ctllog->setempresa(&empresaactual);
     ctllog->add
-    (LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario a entrado en bulmacont");
+    (LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario ha entrado en bulmacont");
 }// end Bulmages01
 
 
@@ -163,6 +162,14 @@ void Bulmages01::slotViewToolBar(bool toggle)  {
     }// end if
     statusBar()->message(tr("Listo."));
 }// end slotViewToolBar
+
+void Bulmages01::tile() {
+	pWorkspace->tile();
+}// end tile
+
+void Bulmages01::cascade() {
+	pWorkspace->cascade();
+}// end tile
 
 
 ///////////////////////////////////////////////////////////////////

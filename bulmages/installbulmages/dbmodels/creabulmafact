@@ -68,7 +68,7 @@ linea
 tiempo
 
 dropdb  $2 2>> /tmp/error.txt > /dev/null
-createdb -E SQL_ASCII $2 2>> /tmp/errores1.txt > /dev/null
+createdb -E UNICODE $2 2>> /tmp/errores1.txt > /dev/null
 
 
 # Creamos la base

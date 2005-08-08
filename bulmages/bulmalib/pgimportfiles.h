@@ -32,6 +32,7 @@
 #define IMPORT_COBROS 32
 #define IMPORT_FACTURAS 64
 // Tipos para BulmaFact
+#define IMPORT_FAMILIAS 1
 #define IMPORT_CLIENTES 128
 #define IMPORT_PROVEEDORES 256
 #define IMPORT_ARTICULOS 512
@@ -165,6 +166,11 @@ private:
 	/// El tagpadre indica en que posici� estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc
 	QString tagpadre;
 	pgimportfiles *pgimport;
+	/// Estas estructuras sirven para guardar datos intermedios.
+	QPtrList<tvalores> listalpresupuesto;
+	QPtrList<tvalores> listadpresupuesto;
+	QPtrList<tvalores> listalfactura;
+	QPtrList<tvalores> listadfactura;
 public:
     ImportBulmaFact(pgimportfiles *, postgresiface2 *, unsigned int tip=IMPORT_TODO);
     ~ImportBulmaFact();
@@ -190,7 +196,8 @@ private:
 	int trataArticulo();
 	int trataFactura();
 	int trataPresupuesto();
-
+	int trataLPresupuesto();
+	int trataFamilia();
 };
 
 #endif

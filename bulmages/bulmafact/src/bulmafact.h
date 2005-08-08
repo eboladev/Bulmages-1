@@ -9,19 +9,19 @@
 #include "company.h"
 
 
-class bulmafact: public bulmafactbase
-{
+class bulmafact: public bulmafactbase {
     Q_OBJECT
 private:
-   company m_company;
-   QVBox *view_back; 
-   QWorkspace *pWorkspace;
+    company m_company;
+    QVBox *view_back;
+    QWorkspace *pWorkspace;
 
 public:
     bulmafact(QString bd);
     ~bulmafact();
-    QWorkspace *workspace() {return pWorkspace;};
-    
+    QWorkspace *workspace() {
+        return pWorkspace;
+    };
 public slots:
     virtual void listproviders();
     virtual void proveedores();
@@ -35,23 +35,16 @@ public slots:
     virtual void listorders();
     virtual void listdelivnotes();
     virtual void newBudget();
-	 virtual void newClientDelivNote();
+    virtual void newClientDelivNote();
     virtual void listBudgets();
-	 virtual void newOrder();
-	 virtual void listClientDelivNotes();
+    virtual void newOrder();
+    virtual void listClientDelivNotes();
     virtual void s_FPago();
     virtual void s_Familias();
     virtual void s_trabajadores();
     virtual void s_ventanaCompleta();
     void about();
     void aboutQt();
-/*
-private:
-
-    QPrinter *printer;
-    QTextEdit *e;
-    QString filename;
-*/
 };
 
 

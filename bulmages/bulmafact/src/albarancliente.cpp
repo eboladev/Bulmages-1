@@ -120,6 +120,8 @@ void AlbaranCliente::guardaAlbaranCliente() {
     	mdb_numalbaran="NULL";
     if (mdb_idtrabajador == "")
     	mdb_idtrabajador="NULL";
+    if (mdb_procesadoalbaran == "")
+	mdb_procesadoalbaran = "FALSE";
     if (mdb_idalbaran == "") {
         /// Se trata de una inserci�
         QString SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran, idcliente, idforma_pago, idalmacen, descalbaran, refalbaran, idtrabajador, contactalbaran, telalbaran, procesadoalbaran) VALUES ("+
