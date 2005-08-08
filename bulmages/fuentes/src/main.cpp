@@ -36,8 +36,8 @@
 #include "logpass.h"
 
 
-/// Estas son las variables globales de la aplicación.
-/// El puntero de la aplicación
+/// Estas son las variables globales de la aplicaciï¿½.
+/// El puntero de la aplicaciï¿½
 QApplication * theApp;
 /// El traductor.
 QTranslator * traductor;
@@ -46,10 +46,10 @@ QTranslator * traductor;
     typedef void (*MyPrototype)(Bulmages01 *);
     MyPrototype myFunction;
     
-/** \brief los datos de ejecución del programa son sencillos
-  * La ejecución primero crea e inicializa los objetos configuración, idioma, splash, etc
+/** \brief los datos de ejecuciï¿½ del programa son sencillos
+  * La ejecuciï¿½ primero crea e inicializa los objetos configuraciï¿½, idioma, splash, etc
   * luego intenta entrar en el sistema de base de datos
-  * Y por último crea el objeto del tipo \ref Bulmages01 que es la aplicación de ventanas.
+  * Y por ltimo crea el objeto del tipo \ref Bulmages01 que es la aplicaciï¿½ de ventanas.
   */
 int main(int argc, char *argv[]) {
     Bulmages01 *bges;
@@ -60,26 +60,24 @@ int main(int argc, char *argv[]) {
     /// Leemos la configuracion que luego podremos usar siempre
     confpr = new configuracion();
 
-    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
+//    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
 //    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
     QApplication * mainApp = new QApplication (argc, argv);
     theApp = mainApp;
     mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
+
     traductor = new QTranslator ( 0 );
-    // set the location where your .qm files are in load() below as the last parameter instead of "."
-    // for development, use "/" to use the english original as
-    // .qm files are stored in the base project directory.
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
         traductor->load( QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
     } else {
-        string archivo = "bulmages_"+confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo.c_str(),confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        QString archivo = "bulmages_"+confpr->valor(CONF_TRADUCCION);
+        traductor->load(archivo,confpr->valor(CONF_DIR_TRADUCCION).ascii());
     }// end if
     mainApp->installTranslator( traductor );
 
-    /// Iniciamos el sistema de log del programa para que se pueda seguir la ejecución del mismo.
+    /// Iniciamos el sistema de log del programa para que se pueda seguir la ejecuciï¿½ del mismo.
     ctllog = new bitacora();
-    ctllog->add(LOG_SEG, 1,"MaiMai003", "---- Iniciación del programa ----");
+    ctllog->add(LOG_SEG, 1,"MaiMai003", "---- Iniciaciï¿½ del programa ----");
 
 
     Splash *splashScr = new Splash();
@@ -98,7 +96,7 @@ int main(int argc, char *argv[]) {
             login1->exec();
         bges = new Bulmages01(NULL, "bulmages",0, NULL);
     }// end if
-    mainApp->setMainWidget(bges);
+
     
     
     
@@ -120,8 +118,9 @@ int main(int argc, char *argv[]) {
 	}// end if
     }// end for
     
-        
+    mainApp->setMainWidget(bges);
     valorsalida = mainApp->exec();
     delete confpr;
+    delete bges;
     return valorsalida;
 }// end main
