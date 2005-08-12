@@ -34,7 +34,7 @@
 BSelector::BSelector(QWidget * parent,const char * name) : UIselector(parent,name) {
 //Al crear el selector, todos los modulos estan cerrados = NULL
 	m_tipoempresa = "";
-	// Mira si está instalado el bulmafact y de no estarlo desabilita el botón.
+	// Mira si estï¿½instalado el bulmafact y de no estarlo desabilita el botï¿½.
 	QFile f("/usr/bin/bulmafact");
 	if (! f.exists() )
 		m_bulmafact->setEnabled(FALSE);
@@ -52,7 +52,7 @@ BSelector::~BSelector() {
 
 //Boton Salir
 void BSelector::salir_clicked() {
-//ctllog->add(LOG_SEG | LOG_TRA, 1,"BslSld002","---Saliendo de la aplicación---" );
+//ctllog->add(LOG_SEG | LOG_TRA, 1,"BslSld002","---Saliendo de la aplicaciï¿½---" );
     close();
 }
 
@@ -65,7 +65,7 @@ void BSelector::configura_clicked() {
 
 //Boton para entrar en la ventana de Iglues
 void BSelector::m_iglues_clicked() {
-   system("mozilla http://www.iglues.org");
+   system(confpr->valor(CONF_NAVEGADOR)+" http://www.iglues.org");
 }
 
 //Boton para entrar en el modulo de TPV
@@ -118,17 +118,17 @@ void BSelector::contabilidad_clicked() {
 void BSelector::produccion_clicked() {
 //Al crear un nuevo modulo, le paso como primer parametro un puntero al selector.
 //De este modo puedo acceder facilmente al selector desde el modulo.
-   system("mozilla http://localhost/galopin/ &");
+   system(confpr->valor(CONF_NAVEGADOR)+" http://localhost/galopin/ &");
 }
 
 
 //Boton para entrar en el modulo de STOCKS Y ALMACENES
 void BSelector::m_bcontaweb_clicked() {
-   system("mozilla http://localhost/bcontaweb/ &");
+   system(confpr->valor(CONF_NAVEGADOR)+" http://localhost/bcontaweb/ &");
 }
 
 
-//Boton para entrar en el modulo de Facturación
+//Boton para entrar en el modulo de Facturaciï¿½
 void BSelector::m_bulmafact_clicked() {
    if (m_tipoempresa != "BulmaFact" ) {
       abreempresaview *empcont = new abreempresaview(0,"BulmaFact", "abreempresa", true);
