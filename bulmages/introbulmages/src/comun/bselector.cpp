@@ -20,7 +20,6 @@
 
 
 #include "bselector.h"
-//#include "logpass.h"
 #include <qpushbutton.h>
 #include <qfile.h>
 
@@ -32,9 +31,9 @@
 
 
 BSelector::BSelector(QWidget * parent,const char * name) : UIselector(parent,name) {
-//Al crear el selector, todos los modulos estan cerrados = NULL
+///Al crear el selector, todos los modulos estan cerrados = NULL
 	m_tipoempresa = "";
-	// Mira si est�instalado el bulmafact y de no estarlo desabilita el bot�.
+	// Mira si está�instalado el bulmafact y de no estarlo desabilita el bot�.
 	QFile f("/usr/bin/bulmafact");
 	if (! f.exists() )
 		m_bulmafact->setEnabled(FALSE);
@@ -44,19 +43,25 @@ BSelector::BSelector(QWidget * parent,const char * name) : UIselector(parent,nam
 	QFile f2("/usr/bin/bulmacont");
 	if (! f2.exists() )
 		m_bulmacont->setEnabled(FALSE);
+	QFile f3("/var/www/galopin");
+	if ( ! f3.exists())
+		m_galopin->setEnabled(FALSE);
+	QFile f4("/var/www/bcontaweb");
+	if ( ! f4.exists())
+		m_bcontaweb->setEnabled(FALSE);
 }// end BSelector
 
 
 BSelector::~BSelector() {
 }
 
-//Boton Salir
+///Boton Salir
 void BSelector::salir_clicked() {
 //ctllog->add(LOG_SEG | LOG_TRA, 1,"BslSld002","---Saliendo de la aplicaci�---" );
     close();
 }
 
-//Boton para abrir el dialogo de configuraciones personalizadas
+///Boton para abrir el dialogo de configuraciones personalizadas
 void BSelector::configura_clicked() {
     BConfiguracion * VentanaConfiguracion = new BConfiguracion(this, 0,"Ventana Configuracion",0);
     VentanaConfiguracion->exec();
@@ -68,14 +73,13 @@ void BSelector::m_iglues_clicked() {
    system(confpr->valor(CONF_NAVEGADOR)+" http://www.iglues.org");
 }
 
-//Boton para entrar en el modulo de TPV
+///Boton para entrar en el modulo de TPV
 void BSelector::m_bulmatpv_clicked() {
    if (m_tipoempresa != "BulmaFact" ) {
       abreempresaview *empcont = new abreempresaview(0,"BulmaFact", "abreempresa", true);
       empcont->modonodestructivo();
       empcont->exec();
       m_empresabd = empcont->nomDB();
-//      tipo = empcont->tipo;
    }// end while
    if (m_empresabd != "") {
       char cadena[300];
@@ -85,13 +89,13 @@ void BSelector::m_bulmatpv_clicked() {
 }// end m_bulmatpv_clicked
 
 
-//Boton cambio de Empresa y/o Usuario
+///Boton cambio de Empresa y/o Usuario
 void BSelector::seleccionaempresa_clicked() {
    abreempresaview *empcont = new abreempresaview(0, "","abreempresa", true);
       empcont->modonodestructivo();   
    empcont->exec();
    m_empresabd = empcont->nomDB();
-   // Cambiamos el nombre en la pantalla.
+   /// Cambiamos el nombre en la pantalla.
    nombreempresa->setText(empcont->nomEmpresa());
    m_tipoempresa = empcont->tipoEmpresa();
    delete empcont;
@@ -114,7 +118,7 @@ void BSelector::contabilidad_clicked() {
 }// end contabilidad_clicked
 
 
-//Boton para entrar en el modulo de PRODUCCION
+///Boton para entrar en el modulo de PRODUCCION
 void BSelector::produccion_clicked() {
 //Al crear un nuevo modulo, le paso como primer parametro un puntero al selector.
 //De este modo puedo acceder facilmente al selector desde el modulo.
@@ -122,13 +126,13 @@ void BSelector::produccion_clicked() {
 }
 
 
-//Boton para entrar en el modulo de STOCKS Y ALMACENES
+///Boton para entrar en el modulo de STOCKS Y ALMACENES
 void BSelector::m_bcontaweb_clicked() {
    system(confpr->valor(CONF_NAVEGADOR)+" http://localhost/bcontaweb/ &");
 }
 
 
-//Boton para entrar en el modulo de Facturaci�
+///Boton para entrar en el modulo de Facturación
 void BSelector::m_bulmafact_clicked() {
    if (m_tipoempresa != "BulmaFact" ) {
       abreempresaview *empcont = new abreempresaview(0,"BulmaFact", "abreempresa", true);
