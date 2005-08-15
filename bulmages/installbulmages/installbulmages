@@ -180,7 +180,7 @@ cp guardaemp /usr/bin
 cp nuevaemp  /usr/bin
 cp bulmafact /usr/bin
 cp bulmacont /usr/bin
-cp bulmatpv /usr/bin
+#cp bulmatpv /usr/bin
 cp rtkview /usr/bin
 cp trml2pdf/* /usr/bin/
 

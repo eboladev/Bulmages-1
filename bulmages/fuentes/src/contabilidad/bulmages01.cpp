@@ -41,7 +41,7 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
         while (DBName == "")
             DBName = empresaactual.searchCompany();
     }// end if
-    setCaption(tr("BulmaGés:  ") + DBName +" --");
+    setCaption(tr("BulmaGés -- ") + DBName +" --");
     initView();
     initActions();
     initMenuBar();
@@ -223,11 +223,6 @@ void Bulmages01::slotPlanCuentas()  {
     statusBar()->message(tr("Plan de Cuentas"));
     empresaactual.muestracuentas();
 }// end slotPlanCuentas
-
-
-void Bulmages01::slotGruposContables()  {
-    statusBar()->message(tr("Grupos Contables"));
-}// end slotGruposContables
 
 
 void Bulmages01::slotListadoCuentas()  {

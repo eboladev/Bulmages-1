@@ -32,6 +32,7 @@ public:
        void inicializa(Bulmages01 *);
 public slots:
 	void elslot();
+	void soporte();
 };
 
 

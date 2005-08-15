@@ -11,10 +11,17 @@
 #include <qmainwindow.h>
 
 
+#include <qwidgetplugin.h>
+#include <qstringlist.h>
+#include <qwidget.h>
+#include <qiconset.h>
+#include <qapplication.h>
+#include <qobject.h>
+#include <qdockwindow.h>
+
 void entryPoint(Bulmages01 *bges) {
-    empresa *emp = &(bges->empresaactual);
-    
     fprintf(stderr,"Estoy dentro del plugin\n");
+    empresa *emp = &(bges->empresaactual);
   // Vamos a probar con un docwindow.
   QDockWindow  *doc1  = new  QDockWindow(QDockWindow::OutsideDock, bges, "Corrector");
   doc1->setGeometry(100,100,100,500);

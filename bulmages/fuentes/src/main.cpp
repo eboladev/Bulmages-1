@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
     /// Leemos la configuracion que luego podremos usar siempre
     confpr = new configuracion();
 
-//    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
+    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
 //    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
     QApplication * mainApp = new QApplication (argc, argv);
     theApp = mainApp;
@@ -102,13 +102,14 @@ int main(int argc, char *argv[]) {
     
     /// Hacemos la carga de los plugins.
     QString cad= confpr->valor(CONF_PLUGINS_BULMACONT);
-    fprintf(stderr,"carga de plugins: %s\n",cad.ascii());
+    fprintf(stderr,"Carga de plugins: %s\n",cad.ascii());
     QStringList plugins = QStringList::split( ";", cad );
     for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
 	QLibrary *lib= new QLibrary(*it);
 	if (!lib->load()) {
-		printf("No se ha podido cargar la libreria\n");
+		fprintf(stderr,"No se ha podido cargar la libreria\n");
 	} else {
+		fprintf(stderr,"Resolviendo la libreria: %s\n", (*it).ascii());
 		myFunction = (MyPrototype) lib->resolve( "entryPoint" );
 		if ( myFunction ) {
 			myFunction(bges);

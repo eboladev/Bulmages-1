@@ -263,7 +263,6 @@ void BConfiguracion::salvarEmpresa() {
     dbEmpresa = PunteroAlSelector->empresaDB();
     fprintf(stderr,"VAmos a guardar la empresa %s\n", dbEmpresa.ascii());
 
-    //  (new BVisorEmpresas(& dbEmpresa, this,"Backup",true))->exec();
     if (dbEmpresa!="") {
         QString fn = QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Empresas (*.pgdump)", 0,"Guardar Empresa","Elige el nombre de empresa con el que guardar");
         if (!fn.isEmpty()) {

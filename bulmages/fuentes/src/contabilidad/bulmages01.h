@@ -101,7 +101,6 @@ public:
     void slotLibroMayor();
     void slotLibroDiario();
     void slotAsientos();
-    void slotGruposContables();
     void slotPerdidas();
     void slot347();
     void slotBalan();

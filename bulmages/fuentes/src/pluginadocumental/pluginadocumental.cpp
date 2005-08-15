@@ -4,7 +4,7 @@
 #include "intapunts3view.h"
 #include "adocumental.h"
 
-// Inclusi� de imagenes
+/// Inclusión� de imagenes
 #include "napuntedoc.xpm"
 #include "ndoc.xpm"
 
@@ -18,6 +18,7 @@
 #include <qlabel.h>
 
 void entryPoint(Bulmages01 *bges) {
+    fprintf(stderr,"Entrada del Plugin ADocumental\n");
     QPixmap *img = new QPixmap(napuntedoc);
     QPixmap *img1 = new QPixmap(ndoc);
 

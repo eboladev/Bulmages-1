@@ -10,12 +10,6 @@
 #include "empresa.h"
 
 
-#include <qwidgetplugin.h>
-#include <qstringlist.h>
-#include <qwidget.h>
-#include <qiconset.h>
-#include <qapplication.h>
-#include <qobject.h>
-#include <qdockwindow.h>
+
 
 extern "C" MY_EXPORT void entryPoint(Bulmages01 *);
