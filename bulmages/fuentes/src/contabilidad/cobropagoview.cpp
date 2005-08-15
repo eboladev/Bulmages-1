@@ -23,6 +23,7 @@
 #include "aplinteligentesview.h"
 #include "calendario.h"
 #include "intapunts3view.h"
+#include "busquedacuenta.h"
 
 #include <qtable.h>
 
@@ -66,6 +67,7 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) :
     conexionbase = emp->bdempresa();
     empresaactual = emp;
     numdigitos = emp->numdigitosempresa();
+m_cuenta->setempresa(emp);
     m_list->setNumCols(16);
     m_list->horizontalHeader()->setLabel(COL_IDPREVCOBRO,tr("COL_IDPREVCOBRO") );
     m_list->horizontalHeader()->setLabel(COL_FPREVISTAPREVCOBRO,tr("Fecha Prevista") );
@@ -263,18 +265,6 @@ void cobropagoview::s_actualizar() {
 	fprintf(stderr,"actualizar \n");
 }// end s_actualizar
 
-
-/**
-  * \brief SOLT que responde a la pulsaci� de la busqueda de una cuenta.
-  */
-void cobropagoview::s_searchAccount() {
-   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->setModoLista();
-   listcuentas->inicializa();
-   listcuentas->exec();
-   m_cuenta->setText(listcuentas->codcuenta());
-   delete listcuentas;   
-}// end s_searchAccount
 
 /**
   * \brief Busqueda de una fecha inicial del listado.

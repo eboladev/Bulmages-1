@@ -47,7 +47,6 @@ public:
    int nextcanal();
    QString cadcanal();
    QString nomcanal();
-   
 public slots:
    void boton_todo();
    void boton_nada();

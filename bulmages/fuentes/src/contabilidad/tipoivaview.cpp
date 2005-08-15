@@ -13,17 +13,19 @@
   * Contiene la implementaci� de la clase \ref tipoivaview
   * \author Tomeu Borr� Riera
   */
-  
+
 #include "tipoivaview.h"
 #include "empresa.h"
+#include "busquedacuenta.h"
 
 /** El constructor de la clase prepara las variables globales y llama a la funci� pintar
   */
 tipoivaview::tipoivaview(empresa *emp,QWidget *parent, const char *name) : tipoivadlg(parent, name) , dialogChanges(this) {
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
+    m_codigoCtaTipoIVA->setempresa(emp);
     m_curtipoiva = NULL;
-    dialogChanges_cargaInicial(); 
+    dialogChanges_cargaInicial();
     pintar();
 }// end tipoivaview
 
@@ -67,11 +69,11 @@ void tipoivaview::pintar(QString idtipoiva) {
 void tipoivaview::mostrarplantilla(int pos) {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, "Guardar Tipo de IVA",
-		"Desea guardar los cambios.",
-		QMessageBox::Ok ,
-		QMessageBox::Cancel ) == QMessageBox::Ok)
-		s_saveTipoIVA();	
+        if ( QMessageBox::warning( this, "Guardar Tipo de IVA",
+                                   "Desea guardar los cambios.",
+                                   QMessageBox::Ok ,
+                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+            s_saveTipoIVA();
     }// end if
     if (m_comboTipoIVA->count() > 0) {
         if (pos != 0)
@@ -80,8 +82,8 @@ void tipoivaview::mostrarplantilla(int pos) {
         m_nombreTipoIVA->setText(m_curtipoiva->valor("nombretipoiva", m_posactual));
         m_codigoCtaTipoIVA->setText(m_curtipoiva->valor("codigo",m_posactual));
         m_porcentTipoIVA->setText(m_curtipoiva->valor("porcentajetipoiva",m_posactual));
-	/// Comprobamos cual es la cadena inicial.
-	dialogChanges_cargaInicial();
+        /// Comprobamos cual es la cadena inicial.
+        dialogChanges_cargaInicial();
     }// end if
 }// end mostrarplantilla
 
@@ -114,11 +116,11 @@ void tipoivaview::s_saveTipoIVA() {
 void tipoivaview::s_newTipoIVA() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, "Guardar Tipo de IVA",
-		"Desea guardar los cambios.",
-		QMessageBox::Ok ,
-		QMessageBox::Cancel ) == QMessageBox::Ok)
-		s_saveTipoIVA();	
+        if ( QMessageBox::warning( this, "Guardar Tipo de IVA",
+                                   "Desea guardar los cambios.",
+                                   QMessageBox::Ok ,
+                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+            s_saveTipoIVA();
     }// end if
     QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('NUEVO TIPO IVA',0,id_cuenta('47'))";
     conexionbase->begin();
@@ -136,46 +138,35 @@ void tipoivaview::s_newTipoIVA() {
 void tipoivaview::s_deleteTipoIVA() {
 
     switch( QMessageBox::warning( this, "Borrar Tipo de IVA",
-        "Se va a borrar el Tipo de IVA,\n"
-        "Esto puede ocasionar p�dida de datos\n"
-        "Tal vez deberia pensarselo mejor antes\n"
-        "porque igual su trabajo se va a tomar por culo.",
-        QMessageBox::Ok ,
-        QMessageBox::Cancel )) {
+                                  "Se va a borrar el Tipo de IVA,\n"
+                                  "Esto puede ocasionar p�dida de datos\n"
+                                  "Tal vez deberia pensarselo mejor antes\n"
+                                  "porque igual su trabajo se va a tomar por culo.",
+                                  QMessageBox::Ok ,
+                                  QMessageBox::Cancel )) {
     case QMessageBox::Ok: // Retry clicked or Enter pressed
-	conexionbase->ejecuta("DELETE FROM tipoiva WHERE idtipoiva ="+m_curtipoiva->valor("idtipoiva",m_comboTipoIVA->currentItem()));
-	pintar();	
+        conexionbase->ejecuta("DELETE FROM tipoiva WHERE idtipoiva ="+m_curtipoiva->valor("idtipoiva",m_comboTipoIVA->currentItem()));
+        pintar();
         break;
     case QMessageBox::Cancel: // Abort clicked or Escape pressed
         break;
     }// end switch
-
 }// s_deleteTipoIVA
-
-/** SLOT que responde a la pulsaci� del bot� de buscar una cuenta */
-void tipoivaview::s_searchAccount() {
-   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->setModoLista();
-   listcuentas->inicializa();
-   listcuentas->exec();
-   m_codigoCtaTipoIVA->setText(listcuentas->codcuenta());
-   delete listcuentas;
-}// end s_searchAccount
 
 
 /** Antes de salir de la ventana debemos hacer la comprobaci� de si se ha modificado algo
-  * Esta funci� est�dedicada a Francina, Bienvenida al mundo 
+  * Esta función� est�dedicada a Francina, Bienvenida al mundo 
   */
-void tipoivaview::close() {
+bool tipoivaview::close(bool ok) {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, "Guardar Tipo de IVA",
-		"Desea guardar los cambios.",
-		QMessageBox::Ok ,
-		QMessageBox::Cancel ) == QMessageBox::Ok)
-		s_saveTipoIVA();	
+        if ( QMessageBox::warning( this, "Guardar Tipo de IVA",
+                                   "Desea guardar los cambios.",
+                                   QMessageBox::Ok ,
+                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+            s_saveTipoIVA();
     }// end if
-    QDialog::close();
+    return QWidget::close(ok);
 }// end close
 
 

@@ -2,7 +2,7 @@
                           balancesprintview.cpp  -  description
                              -------------------
     begin                : jue oct 9 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -22,6 +22,11 @@
 #include "calendario.h"
 #include "empresa.h"
 
+#ifndef WIN32
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#endif
 
 balancesprintview::balancesprintview(empresa *emp,QWidget *parent, const char *name ) : balancesprintdlg(parent,name) {
    empresaactual = emp;
@@ -36,7 +41,7 @@ balancesprintview::~balancesprintview(){
 
 /*********************************************************************************
  * Se ha pulsado sobre el boton de aceptar del formulario con lo que podemos     *
- * pasar a hacer la impresión.                                                   *
+ * pasar a hacer la impresiï¿½.                                                   *
  *********************************************************************************/
 void balancesprintview::accept() {
    char *args[]={"balance.txt","balance.txt",NULL};
@@ -44,8 +49,6 @@ void balancesprintview::accept() {
       args[0]= fichero;
       args[1]= fichero;
    }// end if
-   int error;
-   int pid;
    string cad;
    string fechainicial = fechain->text().ascii();
    string fechafinal = fechafin->text().ascii();
@@ -88,16 +91,9 @@ void balancesprintview::accept() {
        delete cursor;
        fclose(mifile);
    }// end if
-#ifndef WIN32
-   if ((pid=fork()) < 0) {
-        perror ("Fork failed");
-        exit(errno);
-   }// end if
-   if (!pid) {
-      error = execvp(confpr->valor(CONF_EDITOR).ascii(),args);
-   }// end if
-#endif
-//   done(1);
+
+   QString cadena = confpr->valor(CONF_EDITOR)+" balances.txt &";
+   system(cadena.ascii());
 }// end accept
 
 
@@ -113,51 +109,5 @@ void balancesprintview::setidbalance(QString id) {
    delete cur;
 }// end setidbalance
 
-void balancesprintview::finicial_textChanged( const QString & texto ) {
-    if (texto=="+") {
-        QList<QDate> a;
-        fechain->setText("");
-        calendario *cal = new calendario(0,0);
-        cal->exec();
-        a = cal->dn->selectedDates();
-        fechain->setText(a.first()->toString("dd/MM/yyyy"));
-        delete cal;
-    }// end if
-    if (texto=="*")
-        fechain->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}//fin fechaasiento1_textChanged
 
-
-void balancesprintview::ffinal_textChanged( const QString & texto ) {
-    if (texto=="+") {
-        QList<QDate> a;
-        fechafin->setText("");
-        calendario *cal = new calendario(0,0);
-        cal->exec();
-        a = cal->dn->selectedDates();
-        fechafin->setText(a.first()->toString("dd/MM/yyyy"));
-        delete cal;
-    }// end if
-    if (texto=="*")
-        fechafin->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}//fin fechaasiento1_textChanged
-
-
-
-
-void balancesprintview::fechaincambiada() {
-  fechain->setText(normalizafecha(fechain->text()).toString("dd/MM/yyyy"));
-}// end fechaincambiada
-
-void balancesprintview::fechafincambiada() {
-  fechafin->setText(normalizafecha(fechafin->text()).toString("dd/MM/yyyy"));
-}// end fechaincambiada
-
-void balancesprintview::boton_finicial() {
-  fechain->setText("+");
-}// end boton_finicial
-
-void balancesprintview::boton_ffinal() {
-   fechafin->setText("+");
-}// end boton_ffinal
 

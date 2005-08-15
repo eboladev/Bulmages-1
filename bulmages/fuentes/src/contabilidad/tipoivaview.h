@@ -18,10 +18,7 @@
 
 #include "postgresiface2.h"
 #include "dialogchanges.h"
-
 #include <tipoivadlg.h>
-
-
 
 class empresa;
 
@@ -33,9 +30,8 @@ Q_OBJECT
 private:
    empresa *empresaactual;
    postgresiface2 *conexionbase;
-//   QString m_idtipoiva;
    cursor2 *m_curtipoiva;
-   int m_posactual; /// Indica la posición en el combobox que está seleccionada. Se usa para hacer saves en caso de modificaciones.
+   int m_posactual; /// Indica la posiciï¿½ en el combobox que estï¿½seleccionada. Se usa para hacer saves en caso de modificaciones.
 public:
     tipoivaview(empresa *, QWidget *parent = 0, const char *name = 0);
     ~tipoivaview();
@@ -47,8 +43,7 @@ private slots:
     virtual void s_saveTipoIVA();
     virtual void s_newTipoIVA();
     virtual void s_deleteTipoIVA();
-    virtual void s_searchAccount();
-    virtual void close();
+    virtual bool close(bool);
 };
 
 #endif

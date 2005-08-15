@@ -25,7 +25,7 @@
   *
   * Inicializa las variables de empresa y de base de datos
   * Luego crea las columnas para el objeto m_listCanales que es la lista en que se basa el programa
-  * Luego llama al métido cargacanales que hace la carga de los canales a partir de la base de datos
+  * Luego llama al mï¿½ido cargacanales que hace la carga de los canales a partir de la base de datos
   */
 selectcanalview::selectcanalview(empresa *emp,QWidget *parent, const char *name) : selectcanaldlg(parent, name) {
    fprintf(stderr,"Inicializacion del selector de canales\n");
@@ -73,7 +73,7 @@ void selectcanalview::cargacanales() {
 }// end cargacostes
 
 
-// Esta función devuelve el primer centro de coste seleccionado de la vita.
+// Esta funciï¿½ devuelve el primer centro de coste seleccionado de la vita.
 // Devuelve el idc_coste. Si no hay ningun centro de coste seleccionado devuelve
 // cero
 int selectcanalview::firstcanal() {
@@ -82,7 +82,7 @@ int selectcanalview::firstcanal() {
    return nextcanal();
 }// end firstccoste
 
-// Esta función devuelve el siguiente centro de coste seleccionado de la vista.
+// Esta funciï¿½ devuelve el siguiente centro de coste seleccionado de la vista.
 int selectcanalview::nextcanal() {
    int idcanal=0;
    QCheckListItem *item;
@@ -92,6 +92,7 @@ int selectcanalview::nextcanal() {
       if (item->isOn()) {
          idcanal = item->text(m_colIdCoste).toInt();
          fprintf(stderr,"primer canal:%d\n",idcanal);
+	 return idcanal;
       }// end if
      (*m_iterador)++;
    }// end while
@@ -115,12 +116,10 @@ QString selectcanalview::cadcanal() {
 }// end cadcoste
 
 
-// Esta función devuelve el nombre de un canal determinado
+// Esta funciï¿½ devuelve el nombre de un canal determinado
 QString selectcanalview::nomcanal() {
    QCheckListItem *item;
-   (*m_iterador)--;
    item = (QCheckListItem *) m_iterador->current();
-   (*m_iterador)++;
    if (item->isOn()) {
          fprintf(stderr,"nomcanal: %s\n", item->text(m_colNomCoste).ascii());
          return item->text(m_colNomCoste);
@@ -139,6 +138,7 @@ void selectcanalview::boton_todo() {
       item->setOn(TRUE);
      (*m_iterador)++;
    }// end while
+   delete m_iterador;
 }// end boton_todo
 
 void selectcanalview::boton_nada() {
@@ -150,6 +150,7 @@ void selectcanalview::boton_nada() {
       item->setOn(FALSE);
      (*m_iterador)++;
    }// end while
+   delete m_iterador;
 }// end boton_todo
 
 
@@ -165,4 +166,5 @@ void selectcanalview::boton_invertir() {
          item->setOn(TRUE);
      (*m_iterador)++;
    }//end while
+   delete m_iterador;
 }// end boton_invertir

@@ -88,6 +88,9 @@ CREATE TABLE fpago (
 #include "listcuentasview1.h"
 #include "empresa.h"
 #include "calendario.h"
+#include "busquedafecha.h"
+#include "busquedacuenta.h"
+
 
 #include <qregexp.h>
 #include <qradiobutton.h>
@@ -134,6 +137,7 @@ CREATE TABLE fpago (
 ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(parent,name) {
     empresaactual = emp;
     conexionbase = emp->bdempresa();
+    contrapartida->setempresa(emp);
     idborrador=0;
     idregistroiva =0;
     m_listIva->setNumCols(8);
@@ -252,7 +256,6 @@ void ivaview::accept() {
 	    } else {
 	    	factemitida="FALSE";
 	    }// end if  
-	          
     if (!cursorcuenta->eof()) {
         int idcuenta= atoi(cursorcuenta->valor("idcuenta").ascii());
         if (idregistroiva !=0) {
@@ -375,41 +378,6 @@ void ivaview::calculaTotales() {
 }// end calculaTotales
 
 
-/**
-  * \brief SLOT que se ejecuta al pulsar sobre el boton de buscar una cuenta determinada
-  * 
-  * Crea una ventana \ref listcuentasview1 la pone en modo selecci�
-  * La ejecuta en modo modal y espera a que termine
-  * Pone en el campo contrapartida el valor devuelto por el selector de cuentas.
-  * Simula la introducci� de la cuenta con la llamada \ref chContrapartida
-  * Para que se actualize lo que se tenga que actualizar.
-  */
-void ivaview::boton_buscacuenta() {
-    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->setModoLista();
-    listcuentas->inicializa();
-    listcuentas->exec();
-    contrapartida->setText(listcuentas->codcuenta());
-    chContrapartida();
-    delete listcuentas;
-}// end boton_buscacuenta
-
-/**
-  * \brief SLOT que se ejecuta al cambiar la cuenta
-  */
-void ivaview::cambiadacontrapartida() {
-    QLineEdit *codigo = (QLineEdit *) sender();
-    QString texto = contrapartida->text();
-    if (texto == "+") {
-        /// Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->setModoLista();
-        listcuentas->inicializa();
-        listcuentas->exec();
-        codigo->setText(listcuentas->codcuenta());
-        delete listcuentas;
-    }// end if
-}// end cambiadacontrapartida
 
 
 
@@ -417,38 +385,17 @@ void ivaview::cambiadacontrapartida() {
   */
 void ivaview::chContrapartida() {
     QString cad = contrapartida->text();
-    int numdigitos = empresaactual->numdigitosempresa();
     if (cad != "") {
-        cad = extiendecodigo(cad,numdigitos);
-        conexionbase->begin();
-        cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-        conexionbase->commit();
-        int num = cursorcta->numregistros();
-        if (num >0) {
-            contrapartida->setText(cursorcta->valor("codigo"));
-        }// end if
         QString SQLQuery = "SELECT * FROM cuenta WHERE codigo='"+contrapartida->text()+"'";
-        conexionbase->begin();
-        cursor2 *cur = conexionbase->cargacursor(SQLQuery,"buscacuenta");
-        conexionbase->commit();
+        cursor2 *cur = conexionbase->cargacursor(SQLQuery);
         if (!cur->eof()) {
             cif->setText(cur->valor("cifent_cuenta"));
-            empfactura->setText(cur->valor("nombreent_cuenta"));
         }// end if
-        delete cursorcta;
+        delete cur;
     }// end if
 }// end return_codigofinal
 
-/** \brief SLOT que se dispara cuando se ha hecho el bot� de bsqueda de una fecha.
-  */
-void ivaview::buscafecha(int idborrador) {
-    QString SQLQuery;
-    cursor2 * cur = conexionbase->cargacursor("SELECT fecha from borrador WHERE idborrador = "+QString::number(idborrador));
-    if (!cur->eof()) {
-        m_ffactura->setText(cur->valor("fecha").left(10));
-    }// end if
-    delete cur;
-}
+
 
 /** \brief busca la cuenta de IVA en el apunte que se ha seleccionado.
   * Esta funcion carga, dado un apunte y un asiento todas las cuentas de iva en el registro de iva 
@@ -622,6 +569,7 @@ int ivaview::buscaborradorcliente(int idborrador) {
     while (! cur->eof() ) {
         /// Ponemos la cuenta de Cliente y los valores adyacentes
         contrapartida->setText(cur->valor("codigo"));
+        chContrapartida();
 	/// Comprobamos si es un cliente o un proveedor y segun sea actuamos en consecuencia.
 	if (cur->valor("codigo").left(2) == "43") {
 		m_factEmitida->setChecked(TRUE);
@@ -629,7 +577,7 @@ int ivaview::buscaborradorcliente(int idborrador) {
 		m_factSoportada->setChecked(TRUE);
 	}// end if
 	m_totalFactura->setText(cur->valor("totalfactura"));
-        chContrapartida();
+
         registro = atoi(cur->valor("idborrador").ascii());
         cur->siguienteregistro();
     }// end while
@@ -698,7 +646,6 @@ void ivaview::inicializa1(int idapunte1) {
         idregistroiva=atoi(cursoriva->valor("idregistroiva").ascii());
         contrapartida->setText(cursoriva->valor("codigo"));
         chContrapartida();
-        empfactura->setText(cursoriva->valor("nombreent_cuenta"));
         factura->setText(cursoriva->valor("factura"));
         numorden->setText(cursoriva->valor("numorden"));
         cif->setText(cursoriva->valor("cif"));
@@ -795,6 +742,18 @@ void ivaview::inicializa1(int idapunte1) {
     // Hacemos la carga de los cobros.
     cargacobros();
 }// end inicializa1
+
+/** \brief SLOT que se dispara cuando se ha hecho el bot� de bsqueda de una fecha.
+  */
+void ivaview::buscafecha(int idborrador) {
+    QString SQLQuery;
+    cursor2 * cur = conexionbase->cargacursor("SELECT fecha from borrador WHERE idborrador = "+QString::number(idborrador));
+    if (!cur->eof()) {
+        m_ffactura->setText(cur->valor("fecha").left(10));
+    }// end if
+    delete cur;
+}
+
 
 /**
   * \brief Se encarga de cargar la rejilla de los cobros
@@ -937,17 +896,7 @@ void ivaview::cambiadogrid(int row, int col) {
     }// end switch
 }// end apuntecambiadogrid
 
-/** Se ha pulsado sobre el bot� de calcular la fecha.
-  */
-void ivaview::boton_fecha() {
-    QList<QDate> a;
-    m_ffactura->setText("");
-    calendario *cal = new calendario(0,0);
-    cal->exec();
-    a = cal->dn->selectedDates();
-    m_ffactura->setText(a.first()->toString("dd/MM/yyyy"));
-    delete cal;
-}// end boton_fecha
+
 
 
 /**

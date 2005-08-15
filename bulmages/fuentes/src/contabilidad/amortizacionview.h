@@ -20,9 +20,9 @@
 class empresa;
 
 /** 
-  * @author Tomeu Borrás Riera 
+  * @author Tomeu Borrï¿½ Riera 
   * \class amortizacionview amortizacionview.h
-  * \brief Formulario de introducción y/o visión de amortizaciones.
+  * \brief Formulario de introducciï¿½ y/o visiï¿½ de amortizaciones.
   */
   
 class amortizacionview : public amortizaciondlg , dialogChanges {
@@ -32,13 +32,13 @@ public:
 empresa *empresaactual;
 /// Base de datos con la que se trabaja  
 postgresiface2 *conexionbase;
-/// Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
+/// Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que estamos viendo. Si no se estï¿½mostrando una cuenta este valor vale "".
 QString idctaactivo; 
- /// Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
+ /// Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion que estamos viendo. Si no se estï¿½mostrando una cuenta este valor vale "".
 QString idctaamortizacion;
-/// Esta variable indica cual es la amortizacion que se està enseñando. Si no tiene valor es que no se esta mostrando ninguna.
+/// Esta variable indica cual es la amortizacion que se estï¿½enseï¿½ndo. Si no tiene valor es que no se esta mostrando ninguna.
 QString idamortizacion;  
-/// Esta variable indica cual es el asiento plantilla de amortización.
+/// Esta variable indica cual es el asiento plantilla de amortizaciï¿½.
 QString idainteligente;   
 public:
     amortizacionview::amortizacionview(empresa *, QWidget *, const char *, bool );
@@ -46,18 +46,10 @@ public:
     void inicializa(QString);
     void trataModificado();
 public slots:
-	virtual void close();
+	virtual bool close(bool);
 	virtual void accept();
-	virtual void cambiofechacompra();
-	virtual void cambiofecha1cuota();
         virtual void calculaamortizacion();
         virtual void contextMenuRequested(int, int, const QPoint &);
-        virtual void buscactaactivo();
-        virtual void buscactaamortizacion();
-        virtual void codigo_textChanged(const QString &);
-        virtual void codigo_lostfocus();
-        virtual void return_ctaactivo();
-        virtual void return_ctaamortizacion();
 	virtual void s_saveAmortizacion();
 	virtual void s_newAmortizacion();
 	virtual void s_deleteAmortizacion();

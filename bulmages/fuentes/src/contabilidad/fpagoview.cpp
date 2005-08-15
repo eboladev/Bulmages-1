@@ -11,14 +11,14 @@
 
 
 /** \file fpagoview.cpp
-  * Contiene la implementación de la clase \ref fpagoview
-  * \author Tomeu Borrás Riera
+  * Contiene la implementaciï¿½ de la clase \ref fpagoview
+  * \author Tomeu Borrï¿½ Riera
   */
 
 #include "fpagoview.h"
 #include "empresa.h"
 
-/** El constructor de la clase prepara las variables globales y llama a la función pintar
+/** El constructor de la clase prepara las variables globales y llama a la funciï¿½ pintar
   */
 fpagoview::fpagoview(empresa *emp, QWidget *parent, const char *name) : fpagodlg(parent, name) , dialogChanges(this) {
     empresaactual=emp;
@@ -63,7 +63,7 @@ void fpagoview::pintar(QString idfpago) {
 
 /**
   * Esta funcion muestra la forma de pago en la ventana.
-  * \param pos si es distinto de cero se busca en el combo la posición indicada sino se usa la posición actual del combo.
+  * \param pos si es distinto de cero se busca en el combo la posiciï¿½ indicada sino se usa la posiciï¿½ actual del combo.
   */
 void fpagoview::mostrarplantilla(int pos) {
     fprintf(stderr,"mostrarplantilla\n");
@@ -101,7 +101,7 @@ void fpagoview::cambiacombo(int) {
 }// end cambiacombo
 
 
-/** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de guardar el tipo de iva que se estï¿½editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void fpagoview::s_saveFPago() {
@@ -113,7 +113,7 @@ void fpagoview::s_saveFPago() {
 }// end s_saveFPago
 
 
-/** SLOT que responde a la pulsación del botón de nuevo tipo de iva
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
 void fpagoview::s_newFPago() {
@@ -136,13 +136,13 @@ void fpagoview::s_newFPago() {
 
 
 
-/** SLOT que responde a la pulsación del botón de borrar un tipo de IVA
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de borrar un tipo de IVA
   * Borra en la tabla de tiposiva el TIPO de iva concreto
   */
 void fpagoview::s_deleteFPago() {
     switch( QMessageBox::warning( this, "Borrar Forma de Pago",
                                   "Se va a borrar la Forma de Pago,\n"
-                                  "Esto puede ocasionar pérdida de datos\n"
+                                  "Esto puede ocasionar pï¿½dida de datos\n"
                                   "Tal vez deberia pensarselo mejor antes\n"
                                   "porque igual su trabajo se va a tomar por culo.",
                                   QMessageBox::Ok ,
@@ -158,8 +158,8 @@ void fpagoview::s_deleteFPago() {
 
 
 
-/** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo */
-void fpagoview::close() {
+/** Antes de salir de la ventana debemos hacer la comprobaciï¿½ de si se ha modificado algo */
+bool fpagoview::close(bool ok) {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
     	    if ( QMessageBox::warning( this, "Guardar Forma de Pago",
@@ -168,7 +168,7 @@ void fpagoview::close() {
 		QMessageBox::Cancel ) == QMessageBox::Ok)
 		s_saveFPago();	
     }// end if
-    QDialog::close();
+    return QDialog::close(ok);
 }// end close
 
 

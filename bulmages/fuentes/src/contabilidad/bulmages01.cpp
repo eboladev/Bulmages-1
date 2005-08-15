@@ -41,7 +41,7 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
         while (DBName == "")
             DBName = empresaactual.searchCompany();
     }// end if
-    setCaption(tr("BulmaGés -- ") + DBName +" --");
+    setCaption(tr("BulmaCont -- ") + DBName +" --");
     initView();
     initActions();
     initMenuBar();

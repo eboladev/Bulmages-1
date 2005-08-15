@@ -2,7 +2,7 @@
                           propiedadesempresa.h  -  description
                              -------------------
     begin                : Fri Nov 29 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -26,14 +26,13 @@
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 
-/** *@author Tomeu Borrás Riera */
+/** *@author Tomeu BorrÃ¡sï¿½ Riera */
 
 class propiedadesempresa : public propiedemp , dialogChanges {
    Q_OBJECT
 public:
    QString empresadb;
    postgresiface2 *conexionbase;
-   
 public: 
   propiedadesempresa(QWidget *parent=0, const char *name=0,bool modal=true);
   ~propiedadesempresa();
@@ -42,9 +41,8 @@ public:
 //  void accept();
 public slots:
   virtual void s_saveConfig();
-  virtual void close();
+  virtual bool close(bool);
   virtual void extiendeCuentas();
-  
   private:
   void update_value(postgresiface2 *,QString ,QString);
 };

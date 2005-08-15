@@ -49,79 +49,37 @@
         </widget>
         <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>layout5</cstring>
+                <cstring>layout7</cstring>
             </property>
             <hbox>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="QLayoutWidget">
+                <widget class="QLabel">
                     <property name="name">
-                        <cstring>layout2</cstring>
+                        <cstring>textLabel1_2</cstring>
                     </property>
-                    <hbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel1_2</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Fecha Inicial</string>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit">
-                            <property name="name">
-                                <cstring>fechain</cstring>
-                            </property>
-                        </widget>
-                        <widget class="QToolButton">
-                            <property name="name">
-                                <cstring>toolButton1</cstring>
-                            </property>
-                            <property name="text">
-                                <string></string>
-                            </property>
-                            <property name="iconSet">
-                                <iconset>image0</iconset>
-                            </property>
-                        </widget>
-                    </hbox>
+                    <property name="text">
+                        <string>Fecha Inicial</string>
+                    </property>
                 </widget>
-                <widget class="QLayoutWidget">
+                <widget class="BusquedaFecha">
                     <property name="name">
-                        <cstring>layout1</cstring>
+                        <cstring>fechain</cstring>
                     </property>
-                    <hbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel1_2_2</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Fecha Final</string>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit">
-                            <property name="name">
-                                <cstring>fechafin</cstring>
-                            </property>
-                        </widget>
-                        <widget class="QToolButton">
-                            <property name="name">
-                                <cstring>toolButton1_2</cstring>
-                            </property>
-                            <property name="text">
-                                <string></string>
-                            </property>
-                            <property name="iconSet">
-                                <iconset>image1</iconset>
-                            </property>
-                        </widget>
-                    </hbox>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Fecha Final</string>
+                    </property>
+                </widget>
+                <widget class="BusquedaFecha">
+                    <property name="name">
+                        <cstring>fechafin</cstring>
+                    </property>
                 </widget>
             </hbox>
         </widget>
@@ -132,15 +90,15 @@
         </widget>
         <widget class="QLayoutWidget">
             <property name="name">
-                <cstring>layout7</cstring>
+                <cstring>layout8</cstring>
             </property>
             <hbox>
                 <property name="name">
                     <cstring>unnamed</cstring>
                 </property>
-                <widget class="QGroupBox">
+                <widget class="QButtonGroup">
                     <property name="name">
-                        <cstring>groupBox1</cstring>
+                        <cstring>buttonGroup1</cstring>
                     </property>
                     <property name="title">
                         <string>Formato</string>
@@ -154,7 +112,10 @@
                                 <cstring>radioButton1</cstring>
                             </property>
                             <property name="text">
-                                <string>texto plano</string>
+                                <string>&amp;texto plano</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+T</string>
                             </property>
                             <property name="checked">
                                 <bool>true</bool>
@@ -182,7 +143,7 @@
                     </property>
                     <property name="sizeHint">
                         <size>
-                            <width>151</width>
+                            <width>60</width>
                             <height>20</height>
                         </size>
                     </property>
@@ -219,7 +180,7 @@
                         <cstring>pushButton1</cstring>
                     </property>
                     <property name="text">
-                        <string>Aceptar</string>
+                        <string>Acep&amp;tar</string>
                     </property>
                     <property name="autoDefault">
                         <bool>false</bool>
@@ -230,7 +191,7 @@
                         <cstring>pushButton1_2</cstring>
                     </property>
                     <property name="text">
-                        <string>Cancelar</string>
+                        <string>&amp;Cancelar</string>
                     </property>
                     <property name="autoDefault">
                         <bool>false</bool>
@@ -240,12 +201,31 @@
         </widget>
     </vbox>
 </widget>
+<customwidgets>
+    <customwidget>
+        <class>BusquedaFecha</class>
+        <header location="global">../../../bulmalib/busquedafecha.h</header>
+        <sizehint>
+            <width>50</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+        <signal>valueChanged()</signal>
+        <signal>returnPressed()</signal>
+        <slot access="public" specifier="">selectAll()</slot>
+        <slot access="public" specifier="">setFocus()</slot>
+    </customwidget>
+</customwidgets>
 <images>
     <image name="image0">
-        <data format="PNG" length="1630">89504e470d0a1a0a0000000d494844520000001f0000001f08060000001fae163900000625494441544889b5975d6c1c5715c77f6b6fcd4cb5a633ea4699810df51825cabaaed45db915bb4a10dd0421d94da586280f89e0a5122f855688f0002d3c50457d09e209419556804888a89400eeda0f44d920d1d8551479239578236a7656aae53b6dccde51bcf25c9c6986879975fd115a270d473a3a3a3bf7defff9bae79e4df1bf2995306b64b446469b76dc074a0165e024f01eb092f0bf80df02fb011de85d63d47d037eadb4a714b59bed285a8e625a89c5c2e585a8b4a71401a7818781befb65400af8eba9d3a7d6012e2f2f47cd99e6c7facde5e8c21b1722600ab001edb31a90025e3bf5bbf5c05daa4e5613e4e4877614554f5723e06c62c0678a40b9305258f574a301d537aaeb3c8f56a2a8fd613b2a3c5e88806f13a7a0f75ebd3ed9bcdcdc94e32ebdf4939736791e2d475175bc1a0155e0cbc08377eb7d4fb2e16b46ce001d82208007d62f12f30202e2ef4b016440fa92b1af8c01148087b887d077c11f31b326b58b35745d875beb17b9ae8bf42404a0f7ebe08368090801d80e7c3ef1fc01207d07ee4db867a301bdc04afbc376d4bcdc8c73ba21f70bb30b919135a2e64c336ab7e32b589dac46d1cda8db6cb6c2bf048681cf758d4825e0ff8c6e46838480092c01fdac869a2570e75c068b835cbb7c8da18121c840e0050c3ef9055efee1284f3d56c0c4838c85ebbb3886835a74d10c9bc9e9694effa6c6c539f5474dd37ea0945a0456d289f77f9f787b62706cff18524a4cd324580ad0fbf555690c185c9bbac6a34f3e4ab41c211605a225d034c5ecd51aa25523af69b8a1023454a8b00111a7067b3730c7c1c2b0f1ebe92b5e00dc4a2521a814460ae7672667c0003a4904e41a9901fcf5b2f8d522a37b4771861d0af9027ec7c7322c1a5e83bc95c7f33dac8c858ece733f7e8e8b6f5f6420671c68cdfb75e0839e241f97ea57ea7f387be62cd297a081bc21e3aabe91e87eac0b5f40064e9c3c0121d8033695272a68598dc2ee420c9ccda35b3a95910a18e00c3b711f045af37e94a43ad5055f015e38f4e2a1e9da5b35f0c1cc987155cf0926fe36b1aadb199b13274f30f9ab494a7b4b588685bbe8628626624ea084a2eed6d13a1aee9c0b3ecc7ab3d8caee1678aa5b846bbb5208bcf5e6f89bcef885f17cee911cbb72bb081f0c29ee2ae22eb8b84d977d87f6215a82a3df3b8a79dbe1fddb8b1cdef70caa4f31383048ff8e7e763ebc13958973bf888fddb78df1e9711ad71b0067800f804eb7e022e2dbdd06be5bbf5affcbd3cf3c7d98b8816c4fd6dcd0329af5faf1d7d16c0def7dc0f0a8e44bfcfc4fe778f95b47a9bd53c3c93a108295b598bc3e8d9db6901d85155a1baff8ba4bdf0dffbf8109e045e000f014f00de0d523cf1ec179c2c1b1f2c8d0a3b0b3800c0566c760666e06044cbd3b051a4ccfd53131d0b20a5f08bcb4b7093cbd41ef46c007961343fa9275878b2345ca23e5f86bdaa4f6ee1479dbc17a4c511c2e420e6447626a26f6801dafdb01c7ce1c23bf23ffa9e05d033e0214f01fe202e901bef3fc0bcf874110a4f56d3afed50647f7963172067abf8e9492c695065a56c31c3691bec4344c661bb3b8efb958761c764da357a9cd61bf9311b71343b2af7cff150848eb4a2770034ac3251aad06bad2910d89f2141289166ac839090a665bb3a879052114078a31785afb44cfef44a5f28172dc6a7570afbb781d8fcafe0a4118606e33114250de5d46a515a661223a92a1dc10c77e7f0ce94b94a6ba67ad0ea69fe479977a80b3953d1585049660283784a559e0413712b22599ba3a8591369878678adaf906e27ac04c5d62664d0a3b0b003839a3eb7a6a2b9e77df680d337ecff51d3a76da8e0728403775867243389e03068c7dbd8c100235efd1f8c724079f3d88500200a954d43d732be03dc0cf527da99f021cd973043fe393b7f38850606b36ee0d17c77690a1249fcdd3986f60676c6af51aa38f8f62676d1cc3894f0bf968a3579f069e01be443c2efdf9d2e4254447602e99b8a18b155ab4c21603e9015aaa85111a88b4a0982d22758993753877fe1cc75f3d8e6569dff43c7505105bc006e209e521e08bc08fd8fa00b1917f0154881396be9b99ab87f835ca249bb7138f4eb0b50846c48d4b000b40e75e66ed7402aaf3f1a8b955f05b89010110deeba0dfed7a6bf5ad8043dcb8fe2f7f32ef8afe0b0c2842eef19d85800000000049454e44ae426082</data>
-    </image>
-    <image name="image1">
-        <data format="PNG" length="1626">89504e470d0a1a0a0000000d494844520000001f0000001f08060000001fae163900000621494441544889b5976f881c7719c73f7b378933656367714b76ea9ebd89a174424e3243107789d42c42c925d57a42030928f65d83da17b62fb4d5176229d280af2496d2aa70b9606c8e1aef2e10bd3da1c915626e37547a7b2431b3a4cbceb6b7ce0edeb1335ca6fdf962662ef7c7c8268d0f3c3cfc767fbff93ecff7f93dcf3c93e2ce928a953556acb162d389fb2029a008bc0e5c035662fd27f03be0eb8002f4af71eabe01bf56d85710dd9b5d21ba229295c8b8975c51d85710c049e073c0d6fbe5400a383f7a72741d60b7db15cdf79ab7d7ffee8a8b6f5c14c02ca001f2a7752005bc36fafbf5c0894c4c4dc4c8f10fae10d3a7a705702676e053315034f79aab916e7460fa8de975910b2184fb912bcc3da600be439482fe7b8dfaf566a5b929c789bcf8d31737452e568498383b218009e08bc003771b7d5f7ce06b724e06057cdf872deb37390d077ca2ff977cc840a7dde1e0be830026f020f7407d02fe4846cb509e29a3280adc5abfc9b66dfcb60f3e28db145804afe14100c076e0b371e45b00e9bf687fac7d1b1de80756dc8f5cd1ac345773ba36f7ee5557a8595534df6b0ad77523caa72684e88aa4d9f4a2bf0676039f499c48c5e0574557ec200032c012b08d55aa5902a7eef0f0971ee646e5067a5e07156880f6e50c2fbd30ccb059440d6d50756aed798cec2e82d63c725667fc9d19c67f5b66ea7af00759967f1404411b5891e2e8df99fcdbe48e83070ed2e974c86432f84b3eca3665d5ca79991b976eb0c3da815811382d874ea3832c07cc5f29e3d4cb98b24c2d0c0099a9701c1db0c308407d0cb8ce88b95bfdcdbb975b3e702b15535032f79a7fa94c55e021a01333b0d12e1245dc8eac55b418d93f82f6984661a840cb6ba167752a8d0a56dec26edbe8aa8e1cca1cfdc951662ecc3098579fac37bc2af0615f9c8f8bd5cbd5b1c9539374163b9026b219d6af5570da0ea870fcc471082193cf305c1806150abb0b1170ce822c94be52c24ffb687bb4a80f02f58627e254a712f015e087879e3bf4eeecb959684346cd44b7baee31f9d7c968dd064dd5387ee238332766287cb5c06076905aab8686466ba1058b307b6d16355071161c946585f9c63c7aa027173c955cc2b55d2904fe3cf6f6987e76faac911fc8f3e8e0a3045b03ac5d16f64d1be7a6c3e34f3d8e537738fc83c3689f185c0b1b7cf789c3787d1e033b07503485a1ed4378b28724a5f92074d01f18e0f4c5d3d4166a00a7800f81e5e4c209a2ea7681ef57af54ff74e81b879e266a20dbe33d8b725ace8dfe72141e02cf9109d43ac343fbf9c51f4ff2d2f78e52be50c6c81910809ed539b350469775bce5003dd4d9286b8b3ea1ff5fc024f01cf024b01f780278e5c8b78ea0991a46dec209ea148c024e60a32d6b54162ac88e4cb95a8634941766d1a41ca81d3a8e832dd99bc0a50deb84010fe8c68e6c8df73d6dedb528168ad1ad978e30552d630d18a8431e9669411eccc04491144a83c5a82a06e0f953cf63ea26e38c6f72e04e9294613f51db1442885b49e79b3e3f2ddcabeeedb79ceb8ab9f37362eed25cd4159bae105d21de9f7f5f8c3c35228e3d7b4c004296f966e412d2a65ebb81854f808f81ecab2fbc0a3e92122a6043694f89eaf52a4aa8e0d77c6883133a64c8e02ff8c8a1ccfcf5796801211477160190257915e07f81af958275c08a5aed36b0db36e52b654a074af8b28f622804e980d2ee12724e46d9a9e04901bb8676f1e6b937e9781d3cc95bcb68aa57f03ee04c697f29a003f8a0e774f4b40e1f40c244d008285f2ea3c91a931766999db1e9fc032a559f4c3643c12800a0e7d524f49e5ebffdc0e649a6e9ae9f38568410cddb6fc366b3299a95a6c8e572e2d8b3c7c45be36f09400c0eaa878147802d1b6ffb9d22ff796a6bea6700cfec7b8656ba8539606207367a5aa7e6d430060c9cc0c1ca5954ea15745567eaef538cec1941cb6a1859237a5ac8c7c9837b09bd0f48035f201a97de9e3b3f87edd9684b1ab5b0861eead4c21a8664500b6ae4c21cb66453cc16711407236730766e8c975f79995c4efe76ab155c069c5e6887a8d41e043e0ffc98de07888dfa2ba04434f14a77337325359f8e0f6f271a9da037060551e3728026b07c2fb3b614832adc1e357b05bf153be003e1bd0efa49f75bbbee051ca2c6f57ff9c8bc2bf90f92a880731c9e65550000000049454e44ae426082</data>
+        <data format="PNG" length="1102">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000041549444154388db5954f681c6518c67f13a7f55b09f20dae300b9b92814a9d60d11dbcec921e1ae8c185485be8c5638b60255ab439488df662156d4b519353ac22d1e4d4b9082b98120f85cdc176b6d0345368e8aeff3a039db21f18dcaf32ed78d8ddb4a5b6e8c1175e868f197edf332f0fcf6b645946bf0cc318001e034c6000307afda8ca7a7d074881db5996dd31fb6fa78e4c3d79e1eb0baf2dabe5fd3291dbeaaa4e8e1c1d3a78780404ff786eab36e1d5706df9fcf23c29a7819b8661dc32b22cc3308c81cb3f5c9eb4ccf0638a16415c6324efb09a048cd81eab4980677b90ac427e84300970f3fdb383bf5c23f8aac19767d571e033a0dd076f9afe74fad2de5deeb6dada07387f3409528d370441042a1644b14620c8e5a15a86e6bac695d048a09487639f2b6a0bfa17e065e07a7f14a68dbd2d486a38c2226837f01c496d11a2ef35f3e76384093ad508537266ab60f2a045d3ed502e4223d694870535f416c002da033df0c0d2da1223f93641b484372439bda039f951ccfc79859402e7054969d446dad05ad34c1c6ae2cf419840a907ef550ed8dc576c78b6c76a52c77304b545f06715a47078b78d3d0e63db3d4215e00c5acccc75f06715fe5c8bb1e75c9a3b72946c8d8fa6e72aa3afd808e28091bc20f8156adf2974aaa9eeb671f74365bba6a19628dcc87172b6cde18316afbc21c1144c9d8a70e82aefb3ee05e3d91eab4a53482b84173552daec1c875251d354e0880213c7dbd4e6149347220ebf6ae13e2bd089c63fd7a154bcdfdc1be0200ef06cc1d24a1d4c280c43c58546a2299816136f46842b0a210507765884ba8d5b92e85413fd068df821e0ae4fc1cb0b4835e54168ae83438189b7db345734a4200705aa089522608230053a8552513c5c317968029812bfa5710673cc2c74ba4a07057651d26ac59c381ae12f5a444d8d4e35ce708ef0ae2bbafebd577198d4d95b8633c382b8a59999ebf0ee5b15da379638b0cf429970e228b4d662a60e45e875856d4bdc12c8f4113376f382705d53dd27d0a9c69f55ccccd599feb080703b547775987caf806d4b5412430a95714975f43e1f3fa89824c09502b1032c6d73ec548bf953b0bca8d8bb5332af206ab65189eece164d784ee39fcd51290ae6d10f80b3fa953ad57dd0b8a229dbc04b82d74d177f21225cd11cbbd8ea7e9d82cc4bc6f648821f35d1bac29116335736a019906d80c3abe19aff93d85a7a46d04834a52288f10e07f68ce19f0b901ac218c65ef46028a43a0afed91cae1c2354759a9700b80edc06b27ebae53079a73c2adeb70a5d4b69ad41742d247ad70b133420004d771c4a41d8d044b146c57c0b7c015ca3b74136015b804f809fb9bb15fe6dff0e7c03ec019e079ede087abaa964014ff59e397a81c2a32bebfd7e07680337e9073d80611826f038f0440fba99ffb6f3feeac1ff046e19ffd732fd1b7054f024ad43c3200000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -261,47 +241,9 @@
         <receiver>balancesprintdlg</receiver>
         <slot>close()</slot>
     </connection>
-    <connection>
-        <sender>fechain</sender>
-        <signal>lostFocus()</signal>
-        <receiver>balancesprintdlg</receiver>
-        <slot>fechaincambiada()</slot>
-    </connection>
-    <connection>
-        <sender>fechafin</sender>
-        <signal>lostFocus()</signal>
-        <receiver>balancesprintdlg</receiver>
-        <slot>fechafincambiada()</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1</sender>
-        <signal>clicked()</signal>
-        <receiver>balancesprintdlg</receiver>
-        <slot>boton_finicial()</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1_2</sender>
-        <signal>clicked()</signal>
-        <receiver>balancesprintdlg</receiver>
-        <slot>boton_ffinal()</slot>
-    </connection>
-    <connection>
-        <sender>fechain</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>balancesprintdlg</receiver>
-        <slot>finicial_textChanged(const QString&amp;)</slot>
-    </connection>
-    <connection>
-        <sender>fechafin</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>balancesprintdlg</receiver>
-        <slot>ffinal_textChanged(const QString&amp;)</slot>
-    </connection>
 </connections>
 <tabstops>
     <tabstop>m_nomBalance</tabstop>
-    <tabstop>fechain</tabstop>
-    <tabstop>fechafin</tabstop>
     <tabstop>radioButton1</tabstop>
     <tabstop>radioButton1_2</tabstop>
     <tabstop>pushButton1</tabstop>
@@ -316,4 +258,8 @@
     <slot>ffinal_textChanged(const QString &amp;)</slot>
 </slots>
 <layoutdefaults spacing="6" margin="12"/>
+<includehints>
+    <includehint>busquedafecha.h</includehint>
+    <includehint>busquedafecha.h</includehint>
+</includehints>
 </UI>

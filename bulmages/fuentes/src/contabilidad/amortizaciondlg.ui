@@ -139,21 +139,13 @@
                     <cstring>tab</cstring>
                 </property>
                 <attribute name="title">
-                    <string>Amortización</string>
+                    <string>Amor&amp;tización</string>
                 </attribute>
                 <grid>
                     <property name="name">
                         <cstring>unnamed</cstring>
                     </property>
-                    <widget class="QLabel" row="4" column="0" rowspan="1" colspan="2">
-                        <property name="name">
-                            <cstring>textLabel1_2_3_3</cstring>
-                        </property>
-                        <property name="text">
-                            <string>Cuotas</string>
-                        </property>
-                    </widget>
-                    <widget class="QLayoutWidget" row="6" column="0" rowspan="1" colspan="2">
+                    <widget class="QLayoutWidget" row="9" column="0" rowspan="1" colspan="2">
                         <property name="name">
                             <cstring>layout2</cstring>
                         </property>
@@ -719,7 +711,138 @@
                             </widget>
                         </hbox>
                     </widget>
-                    <widget class="QLayoutWidget" row="2" column="0" rowspan="1" colspan="2">
+                    <widget class="QLayoutWidget" row="0" column="0">
+                        <property name="name">
+                            <cstring>layout9</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>textLabel1_2_4</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Cuenta de Activo</string>
+                                </property>
+                            </widget>
+                            <widget class="BusquedaCuenta">
+                                <property name="name">
+                                    <cstring>ctaactivo</cstring>
+                                </property>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QTable" row="8" column="0" rowspan="1" colspan="2">
+                        <column>
+                            <property name="text">
+                                <string>Fecha</string>
+                            </property>
+                        </column>
+                        <column>
+                            <property name="text">
+                                <string>Cantidad</string>
+                            </property>
+                        </column>
+                        <column>
+                            <property name="text">
+                                <string>Nº Asiento</string>
+                            </property>
+                        </column>
+                        <column>
+                            <property name="text">
+                                <string>Ejercicio</string>
+                            </property>
+                        </column>
+                        <column>
+                            <property name="text">
+                                <string>IdLinAmortizacion</string>
+                            </property>
+                        </column>
+                        <column>
+                            <property name="text">
+                                <string>Num. Asiento</string>
+                            </property>
+                        </column>
+                        <property name="name">
+                            <cstring>table1</cstring>
+                        </property>
+                        <property name="numRows">
+                            <number>3</number>
+                        </property>
+                        <property name="numCols">
+                            <number>6</number>
+                        </property>
+                        <property name="selectionMode">
+                            <enum>SingleRow</enum>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="7" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>textLabel1_2_3_3</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Cuotas</string>
+                        </property>
+                    </widget>
+                    <widget class="QButtonGroup" row="6" column="0">
+                        <property name="name">
+                            <cstring>buttonGroup1</cstring>
+                        </property>
+                        <property name="sizePolicy">
+                            <sizepolicy>
+                                <hsizetype>7</hsizetype>
+                                <vsizetype>5</vsizetype>
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                            </sizepolicy>
+                        </property>
+                        <property name="title">
+                            <string>Método</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QRadioButton" row="0" column="1">
+                                <property name="name">
+                                    <cstring>metodoincremental</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>&amp;Incremental</string>
+                                </property>
+                                <property name="accel">
+                                    <string>Alt+I</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton" row="0" column="0">
+                                <property name="name">
+                                    <cstring>metodolineal</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Li&amp;neal</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton" row="0" column="2">
+                                <property name="name">
+                                    <cstring>metododecremental</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>&amp;Decremental</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton" row="0" column="3">
+                                <property name="name">
+                                    <cstring>metodoporcentual</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Porcent&amp;ual</string>
+                                </property>
+                            </widget>
+                        </grid>
+                    </widget>
+                    <widget class="QLayoutWidget" row="5" column="0" rowspan="1" colspan="2">
                         <property name="name">
                             <cstring>layout3</cstring>
                         </property>
@@ -828,9 +951,9 @@
                             </widget>
                         </hbox>
                     </widget>
-                    <widget class="QLayoutWidget" row="1" column="0" rowspan="1" colspan="2">
+                    <widget class="QLayoutWidget" row="1" column="0">
                         <property name="name">
-                            <cstring>layout4</cstring>
+                            <cstring>layout10</cstring>
                         </property>
                         <hbox>
                             <property name="name">
@@ -838,20 +961,43 @@
                             </property>
                             <widget class="QLabel">
                                 <property name="name">
-                                    <cstring>textLabel1_2_3</cstring>
+                                    <cstring>textLabel1_2_2_2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Cuenta de Amortización</string>
+                                </property>
+                            </widget>
+                            <widget class="BusquedaCuenta">
+                                <property name="name">
+                                    <cstring>ctaamortizacion</cstring>
+                                </property>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget" row="2" column="0">
+                        <property name="name">
+                            <cstring>layout12</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>textLabel1_2_3_5</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Fecha de Compra</string>
                                 </property>
                             </widget>
-                            <widget class="QLineEdit">
+                            <widget class="BusquedaFecha">
                                 <property name="name">
                                     <cstring>fechacompra</cstring>
                                 </property>
                             </widget>
                             <spacer>
                                 <property name="name">
-                                    <cstring>spacer5</cstring>
+                                    <cstring>spacer5_2</cstring>
                                 </property>
                                 <property name="orientation">
                                     <enum>Horizontal</enum>
@@ -861,264 +1007,99 @@
                                 </property>
                                 <property name="sizeHint">
                                     <size>
-                                        <width>71</width>
+                                        <width>145</width>
                                         <height>21</height>
                                     </size>
                                 </property>
                             </spacer>
                             <widget class="QLabel">
                                 <property name="name">
-                                    <cstring>textLabel1_2_3_2</cstring>
+                                    <cstring>textLabel1_2_3_2_2</cstring>
                                 </property>
                                 <property name="text">
                                     <string>Fecha 1ª Cuota</string>
                                 </property>
                             </widget>
-                            <widget class="QLineEdit">
+                            <widget class="BusquedaFecha">
                                 <property name="name">
                                     <cstring>fecha1cuota</cstring>
                                 </property>
                             </widget>
                         </hbox>
                     </widget>
-                    <widget class="QLayoutWidget" row="0" column="0" rowspan="1" colspan="2">
-                        <property name="name">
-                            <cstring>layout5</cstring>
-                        </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QLabel">
-                                <property name="name">
-                                    <cstring>textLabel1_2</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Cuenta de Activo</string>
-                                </property>
-                            </widget>
-                            <widget class="QLineEdit">
-                                <property name="name">
-                                    <cstring>ctaactivo</cstring>
-                                </property>
-                            </widget>
-                            <widget class="QToolButton">
-                                <property name="name">
-                                    <cstring>toolButton1</cstring>
-                                </property>
-                                <property name="text">
-                                    <string></string>
-                                </property>
-                                <property name="iconSet">
-                                    <iconset>image2</iconset>
-                                </property>
-                            </widget>
-                            <spacer>
-                                <property name="name">
-                                    <cstring>spacer6</cstring>
-                                </property>
-                                <property name="orientation">
-                                    <enum>Horizontal</enum>
-                                </property>
-                                <property name="sizeType">
-                                    <enum>Expanding</enum>
-                                </property>
-                                <property name="sizeHint">
-                                    <size>
-                                        <width>21</width>
-                                        <height>21</height>
-                                    </size>
-                                </property>
-                            </spacer>
-                            <widget class="QLabel">
-                                <property name="name">
-                                    <cstring>textLabel1_2_2</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Cuenta de Amortización</string>
-                                </property>
-                            </widget>
-                            <widget class="QLineEdit">
-                                <property name="name">
-                                    <cstring>ctaamortizacion</cstring>
-                                </property>
-                            </widget>
-                            <widget class="QToolButton">
-                                <property name="name">
-                                    <cstring>toolButton1_2</cstring>
-                                </property>
-                                <property name="text">
-                                    <string></string>
-                                </property>
-                                <property name="iconSet">
-                                    <iconset>image2</iconset>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QButtonGroup" row="3" column="0">
-                        <property name="name">
-                            <cstring>buttonGroup1</cstring>
-                        </property>
-                        <property name="sizePolicy">
-                            <sizepolicy>
-                                <hsizetype>7</hsizetype>
-                                <vsizetype>5</vsizetype>
-                                <horstretch>0</horstretch>
-                                <verstretch>0</verstretch>
-                            </sizepolicy>
-                        </property>
-                        <property name="title">
-                            <string>Método</string>
-                        </property>
-                        <grid>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QRadioButton" row="0" column="1">
-                                <property name="name">
-                                    <cstring>metodoincremental</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Incremental</string>
-                                </property>
-                            </widget>
-                            <widget class="QRadioButton" row="0" column="0">
-                                <property name="name">
-                                    <cstring>metodolineal</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Lineal</string>
-                                </property>
-                            </widget>
-                            <widget class="QRadioButton" row="0" column="2">
-                                <property name="name">
-                                    <cstring>metododecremental</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Decremental</string>
-                                </property>
-                            </widget>
-                            <widget class="QRadioButton" row="0" column="3">
-                                <property name="name">
-                                    <cstring>metodoporcentual</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Porcentual</string>
-                                </property>
-                            </widget>
-                        </grid>
-                    </widget>
-                    <widget class="QTable" row="5" column="0" rowspan="1" colspan="2">
-                        <column>
-                            <property name="text">
-                                <string>Fecha</string>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>Cantidad</string>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>Nº Asiento</string>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>Ejercicio</string>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>IdLinAmortizacion</string>
-                            </property>
-                        </column>
-                        <column>
-                            <property name="text">
-                                <string>Num. Asiento</string>
-                            </property>
-                        </column>
-                        <property name="name">
-                            <cstring>table1</cstring>
-                        </property>
-                        <property name="numRows">
-                            <number>3</number>
-                        </property>
-                        <property name="numCols">
-                            <number>6</number>
-                        </property>
-                        <property name="selectionMode">
-                            <enum>SingleRow</enum>
-                        </property>
-                    </widget>
-                    <widget class="QPushButton" row="3" column="1">
+                    <widget class="QPushButton" row="6" column="1">
                         <property name="name">
                             <cstring>botoncalcular</cstring>
                         </property>
                         <property name="text">
-                            <string>Calcular</string>
+                            <string>&amp;Calcular</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+C</string>
                         </property>
                     </widget>
                 </grid>
             </widget>
         </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout1</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <spacer>
-                    <property name="name">
-                        <cstring>spacer1</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>221</width>
-                            <height>21</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButton1_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Cerrar</string>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
     </vbox>
 </widget>
+<customwidgets>
+    <customwidget>
+        <class>BusquedaCuenta</class>
+        <header location="local">../comun/busquedacuenta.h</header>
+        <sizehint>
+            <width>100</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image2</pixmap>
+        <signal>valueChanged(QString)</signal>
+        <signal>returnPressed()</signal>
+        <slot access="public" specifier="">selectAll()</slot>
+        <slot access="public" specifier="">setFocus()</slot>
+    </customwidget>
+    <customwidget>
+        <class>BusquedaFecha</class>
+        <header location="global">../../../bulmalib/busquedafecha.h</header>
+        <sizehint>
+            <width>50</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image3</pixmap>
+        <signal>valueChanged()</signal>
+        <signal>returnPressed()</signal>
+        <slot access="public" specifier="">selectAll()</slot>
+        <slot access="public" specifier="">setFocus()</slot>
+    </customwidget>
+</customwidgets>
 <images>
     <image name="image0">
-        <data format="PNG" length="754">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002b9494441545885b59621681b5118c7ff818989898a898a89898a89899e6b4b454545a155838a0c26529818531373ab28eb5499cc60908a426a2a2a4a2b3731b81b0c52114845c48988131127268e51f39b78efa5bdeb5d93e62e1f1cff7c7790effbffdfff7def09100102e407be52791713161f944770e7ff72f2d1cb029c38926b83d1d03513437cd34411167606c8319b38fe1ae80d5c57c0f07e25aa5720b60a5c46008411a9e5c85560ac07260ddb0451e67d44a1129529e022b6cbe077d35d84c37413b3f18053c02e0349260fb9b33b2a5720b1453b57310ca075e2e7e26c3ce0c22e03764b7269e03c00aee173f31c49ccc403d9ddd0b9323f7efc896c13113441124ced813d6f4c17163f2c43ffd684b44a3805a6f34043f056854d380592ed39d810f1bae0103a5da384df8d39c82a30b1071a8243dd60b609b70bea73b0255817ac09560503e8f4d30a3ccc0341cb30770a38dcf58a99af896855b0247ac76d003afda4840782765a8186a029f8e815335f121cb5ccf730adc0741e704abc314fb22dd816c996729987b6783830ceec0d92121eb8ad445350177c95619dc7fcd8327753392ae3814c243f5bf7328f6c71773f08a3c42215cc0117456bbef1dc7c7767c0308de53ce014a8e7bb3d5c14bc14e19631a69b8823258654e08122e6b6382f040ba2b7eee52a51ca0345cca3dd1dc37cc1167f269817bd552fa54034a484078a989f9a21c3493b559ca78227a2b3e8e52af0200f245f5ee5328f4f8ddbdd3d203a6ac1bce8cc99e2fe2381446fef60a4c0f41e78e7a5999f59e6ee0c70a7e061db30b7c5a9ef54e781b8e119e66796b93b036c7177270cbfb70cf3faeb11f311969e03fd5e9a7956017723fa458a79a573c04591020eb373a09c07b2314e813193d00f7cd5fcc0d7caf28a82df411eb2ffed429fb4a97d5de8b136f54fd5e4b5f73501b5fb3d102049ccea99c40333c7fff9b45648c82c57e00000000049454e44ae426082</data>
+        <data format="PNG" length="750">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002b5494441545885b596214c1c411885df25151515880a444505a2a282754010080409a826886b52712488a6aaa2ae0852aad034697208923b83401090ad68b2dba4c92148168158815871620562d360be8a99b9b2cbeedd71bbf7279bb7b39bccffbf376ffe1901224080fcc057667c89098b8f1aa7f060be82f1e063098e1de99dc1b8ef8a490c0e9f5fa5950172ccc68e5b03e18dab0ab81bae44fd0a2456818b18802826b31c850a8cf4c0b8618b20ce7d8f2955a236055c247619fccb6c15513f5bc4743ce014b0cb409a1b473cd81db52b90daa4bdab046ea17dec17e2743ce0c22e03764b7261e02c30f8e5e00c494cc503f9ddd0bb322f3ffec4b688180e40124cec815d6f4415163f2e42ff5e87b44a380526f3404bb0add2229c02e9e60cac89645570083dd7192f13f6f30a8ced8196e044ff315f84db05cd19d810ac0a5604cb825be85d6715789c0782b661ee1470b8e395335f11f1b2604184dd0e00bdebb48207824e568196a02bf8e495335f101cb5cdff28abc0641e704abc334fba29d814e9860a9947367974639c19dea4153c705f89aea0293894615dc4bc6b99bbae1c57f1402ed29feda1cc639bdcdd0fa238b5480d7dc045d99aafbd34ffdd19d0cf62350f38059ac56e8fe605af45b4618ce93ae240893e3578a08cb94dce2bc19c0857bd42252a79a08c79bcb36598cfd9e42f04b3225cf6320ac47d2a78a08cf98969321c7732c9792e78267af35ea1028ff240faf54d21f3e4c4b8dddd03e2a336cc8ade8c49ee3f114884bbfb030526f7c07b2fcbfcd4327767803b050f3b86b94d4e73ab3e0f242dcf303fb5ccdd196093bb3b61f4bd6d9837df0e980fb0721fb80eb3ccf30ab81bd12f32cc6bed032eca147098ef03d53c908f510a8ce8847ee0abe107be96169714fc0e8a90bd6fe7faac75ede95c4fb5aebfaa67dcf8d010d018ee810049625acf381e983afe03d1b85792664d14c00000000049454e44ae426082</data>
     </image>
     <image name="image1">
-        <data format="PNG" length="1001">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000003b0494441545885b5973d6be45614865f8518fc17dca758811ac114d618f21b8c962922d6847849e3e0c2882d8c98c2cc4e60d14ec0e0148699c220376676178c4991b05b38485b4d52d90b295ca418c31653a498bdd8036f8a2b5deb633ea4d9e4c0e5cc9daf73ee73df7bce154882114112611462da1c009351e6fb55e6eacd591e0079478697217947e69359f4fb85ffbf2853003238497bd326afc96eaf4b5e17935986442502f6a6cdee7197ecb1e097253337d3f8cfc84b3e1048594222efab90999ba1c27f570c9eb765c92c543f29f10f3a83b9099421a31b7a814c69f52f2250868c69986cb55b6c1db45412e5d5ff99661a265b072d8e7f1dd3dbf728a3835f44ef23c002a2f711ea561dc91c00eaeb7544bf47f82f4c4c04c444a0f95b13cf7f7c8e973fbd941fe457ce12ea5fc60223a0bbe7727836641885720b6669a08afacb986ee874775deeecee70fbfb6d929caf8165d53f2f819b931b6e7f27831f758e088053eb4046fd63f2e2970b9a8649fd914eddd0974ac0344c3a5b0e9d2d87e165a882735a1d00c0b7efde92ffc8e0fc48f6cffae40d199c0432194367600495820f0e07b41b723be7d60100e488bc38bf208764701a9027713139268f0e8fc843d27fe19722a33fd2e9341ca525bfe3170964d43f22fbaffbe4df71f0bfe262f2471c3c22fdb6cff1bb31bda6c7d1f988ee9e3b934c6004b41b36079d4146fdc9a2b5300ad5f9dfa86fb07fd6c7e3fbc7389d9ce2c9b74fd439f63b3e3001841070e1a22dda6afe099f208490f389c0873f3f404c04f025a07fa563756515e25ee0d59b57d0340d24b5a4ee14f1df48dcaa16c4966e2aee3397a3d723eeecee28755f1d5fd1f9c6e1a033502b4e7b32abfe84bc22a0691a7942f4440f4f274fa1fda081246e6f6fb1b6b696a96a9aa6a9d7ce96232b9d1058855c295600dc43ad1c2b80bbeb62e3eb0d8451a825c4158144fddd9fe55e27425136ccf91c19ab6611c0d495a709a4d59f90cfe28fd59d0e3e1c0e177aab66b1d56e65b6c9deb46937ec99eacf9c8258994add2a816be9aeaeaf66cead758bfe0b9fbca4f2003204a6a99fe93a0040b6ca03d92a5502a9fbc02c6fd61e7a3cdb54bddedeb433e73fc13ff34e98c64792fc1817a305bebfde577d5e052fa1fe8206f2dd3019dd5ef7a112e6bc55b3e8ed7b1c372539af29e9252bb71b76a1f62ff55c908ca0272b63e2ad9ac5d1f988debea7fc3402d3d49fd1c0b4ccca90b16a16dd3d97ee3397ee9e5b49fda59e0b66dc940a64929b4e15f5cfd540559f3fff65d45f5a0355e7e96492f159cf86ffb7ff1700d79907fb64c78b0000000049454e44ae426082</data>
+        <data format="PNG" length="947">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000037a494441545885b597bf6bdc4814c7bf8233f85f707f85056a045b446bc8df6064b6888839e290c6870b33b8086b17667111848b805304568561dd98cd1d0493e2c029164681401208c4ee52ae21858a148e8817be29463396f68756bbbe3c18de8e58e9bdf9cc57ef8d40128c099290b1c4b83900ea51e5ffb3cccdc5493e0b4ad993a4ba504866dafd539f3f2d530026b8bfea937db21db5c9fe6832f390988980bfeab3fdb24d461cf1f39229cd5407678fb70472a6490cfb59c894663882bfc4e6253355fd1a7f1225a5095421633bf60899caea9f46a00a19d771d93a68b1b5df32495457ff1dcd755cb6f65be47bb2f9b449151dd5d57f57b3976d36f79a143b8224191e862a01cea1fe794c3a92625b90ff9132966a0b2669e0ffc66f3b36c596e0e6d626379e6c9064b906e6557f59027c4d6e3c52c18f0e8f088063ebc0b0facfde9cd1755cdacbb67ad01ce63a2e83f580c17a40d9932638c7d501003c7f7b6e82f327d93ded9209d939eea8641c9bd29133054f8e13fa0db59da5754013387b7d465e939d930e799c159397e4d1f323f239193e0b2b91b1976d068dc06849ab7f6c2fd0c1bbff74c9ef59f06f5931f99a05bf20c38390fc4836f79a648f14db622219e948fa0d9f499414d4af176dc958a2eed511bf8bb1525f61f7b48bb59b359c0c4ef0f0af87d0161e86c00048d314bbd8c56eba6be63ff003699aaaf920c5e5a74ba48314f803b0ffb4b1b8b088f426c5ab7f5fc1b22c90b4e27731ea5e1da3f81385dbd482ccf24d45ec08f22db9b9b569d47d7d7acde041c0244acc8af39e2caa5f9337042ccb228f89288df078f018d6df1648e2eaea0a4b4b4bc89b6559e677b01e00502416a1568a050037302bc70220b60456eeaf40c6d2d2c40d01adfef60bb5d75a28c6fa437e888c57f30860eccaf304c69d0f8af83375e783f7fbfda9deab796c1db40adbe4affaf41bfe44f517de020005759b042e94fb72f165e2dcbbe7317c16929f693c80028171ea67be0e0050ad725fb5ca3c015d112779b776dbe37940d3ebfd55bff0fe979e88b40672a715f267568ca6f80ff73e983e6f825750ff880686bba11eeda87d5b0987bc57f3d4e1624f916bee297a7ae57ec31fa9fd737d17e8d1895465d4deab79642f3be1f46eb7af8afa0b1a18975915325ecda3d816143b82625bcca4fe4adf05134e4a2364f4496716f5976a60563ffcfe57517f650dcc3acf27a3c79dbe0d7fb7ff053954f67759eef6130000000049454e44ae426082</data>
     </image>
     <image name="image2">
-        <data format="PNG" length="1773">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000006b4494441545885a59741681ce715c77f23c6f07d20c30cc8b0032e68c039c8b81089fa2041a112f460051facd242a3b4601c0aaddd829bc687d4cda1b8853a2a8612258756cda1960d31960f26f2a1b03d98ac4c6cef1a5c3407154620c10c64613ef0c23cd0c0f4f0cdac56b2158bf683e5f176bef9defffdbfff7bfbd679fad553280017a41094aba00011554a21784a011adf5364bdac7ab6bbdff3705ef57eed4f4d4e95546be14e93cee398e5eb17eaaf70eb976a9ba452fa4a118b202a2443a19526971c7f38201308558e989800485229838672f69fd30733b0d6d662e238eafb17afdfc579fad5d3fee6789b5229e81421fe711fa5c0532054b60055db02d22e344c8c9818dff5f04670f63331313951f28a75f5932f88feb389f365eb4b94ab88364c896e10a990b1131a006fd806f3156405965ac01f86bc00ed4262c0db8e315b311e0a3fc4196460e2b405b070ab09a288bb318b57e60198fad1358694ab889e27a54211a99336b80bc1086805e1082817420fd4b0059018d0552663c7811321deb11023593ff31a04c0e2bd36fa8822ed25685771e18fcb00b43ebfca90140285a6a343c646ad7802cfda860f68087c880d84becd3e1886bc0260c482e554035c4de7715c0e5ec3c2ad26e4c2fa564cd6159234c5a486999f5d0360287a9e9509108e06c840f0f028f84008286c50f3c282c0b5bee7ee6a240c34deb7c7f60ab0000a45dc4da00769374104b25e86b6e4309419831c1b83eab0bc80c6519b61ad610ffaa505e0f9202ea8a3c011f08e5810c1a980c4185a0f93520a0117e23426efc1669a400189491011922cb100340a351258c1610507367b55598d557f0d4601c191dd7dbade7f048230dc538a8b57e649d318e56af242502824cb68df5fb40072043d0ca6b09466153519bb767da72a456dadc632e4577bd480af3c8512f6f481bb7ff98dcdbc27981786f683c5ba1a717dcfdb53e7be824e6cb560ead3abe001bbcb1b080ef699004a294c61fa1a683f6e3b52081fff72ae7f8dadb556fff950bc9d92b3db64f2c2965ed6b3f72c850daeab60a6b2728035c6205295e040351ce4bbf4047ae0356c30043217c6be05b2b37bd775f03a736f20f3bcf205305b1979d50f06abe1207f2831196cc51801dfb587d08328b180e2eafe932ae060c6b51674e5b303ed271d28f46b33af7ddb099f35ad900a7bf7fd6a286c890d0aaecebcf6f5801f3d8a5128e6cf8f3bafcbbcaf81f9f3538e6cc7749ec568d782a8b5a05c303b364836700db0db09eb95e5b07c6795b4670e9579ed0fd548b27fae126fdbcceb8fa918a833940106f43e002bb79b681726df1c3f54e67d0d4821bcf7fe9c9376135a9f2d116de61669d5194d956add176a066a3f07963e69d27ed666fabbe3a4ddf45099d7fe9e79e0cf1fad945e23e0e4b939c6bf13a094ed6ec26e0f5003d67c0d2bb7bf20dedc64eeec34d1464ce3988ff6148de7bf835e8c7cffa63398f9fe79a13f0fd45ffee1a3955201de8990a933b3046f06348eeebd866c2b63ed418bf6a3085c61eecc0c9d2862767a86c424045bcba8de2aba80b8a7f1cede3c7062720e9a09173f5d2d8dd89950798aa011627a29799a637ac6763c117efbfe9cb372bf53ce9d1d779aff8acaa9e10e818a09dff0c8e326690a89d1a873af66e225065e65176f344b4150c0c5cbb3ce41fbb23b97cae0d418133f7e8f7cb389ee76c8e216c926445d4df89397997007c7a6c53b2d5a8f2396af5fa0fdb8edd46abd7879c639e80e070f33224cf90212a14fcc80abf151289a0839d167ef9463e7f7323154070768ae45441b766a9d383d512e3d8ccb89d313e561eb5a15b0723f2279b0042682e393e42363e8708a7014c2e19ccea7efec39cf29cbf21ba7d6ac9bb1f0f3d997a6dd83fcf8af974a23c2dcb906c1f72e8037069b6bd06d936f34e9fc1b3adb9ac9cb96893e80855b4d4420e9260353eb555a9f5febffa4be4e2bb5eddc78b7cc7672e6cf858467e661789c7cbb894ead263a4fa0b505b31fdc759cb22ccbc57b2d54a18892d8764511963e98dfc348ad89c332d1ba7ea9944298ff61c382f0c62b26d6c93756693e81b50dcdd0c2ad26790eedada83fb5a669c25bd5d4ba70abc90f7ebd74e8de5efb53573e761058fc47ccfafd65301d189d241f39897e638af004281443148a74dfd49af7a43f9a45cfecdfa9c3f6f6417fe6f77f733c7cfe7e3b65fd9e05a147a7c9648cd547016af26d9c5ffce96649a1d8dc8ea1107211a450c88ba43f3802b4d65a07d6ffeb6cf3c3774b43cef464c0c4d959566e34193d7791d587b115e15bbf5a40a1c97a195280f93a617d6070fc5f34b0df6f7e78a934089eabe0f4db18a349d264b70a667e7ad5ce723b09ed7b7b83ffbf0c7c93fd2f00a7b763da7497fa0000000049454e44ae426082</data>
+        <data format="PNG" length="1102">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000041549444154388db5954f681c6518c67f13a7f55b09f20dae300b9b92814a9d60d11dbcec921e1ae8c185485be8c5638b60255ab439488df662156d4b519353ac22d1e4d4b9082b98120f85cdc176b6d0345368e8aeff3a039db21f18dcaf32ed78d8ddb4a5b6e8c1175e868f197edf332f0fcf6b645946bf0cc318001e034c6000307afda8ca7a7d074881db5996dd31fb6fa78e4c3d79e1eb0baf2dabe5fd3291dbeaaa4e8e1c1d3a78780404ff786eab36e1d5706df9fcf23c29a7819b8661dc32b22cc3308c81cb3f5c9eb4ccf0638a16415c6324efb09a048cd81eab4980677b90ac427e84300970f3fdb383bf5c23f8aac19767d571e033a0dd076f9afe74fad2de5deeb6dada07387f3409528d370441042a1644b14620c8e5a15a86e6bac695d048a09487639f2b6a0bfa17e065e07a7f14a68dbd2d486a38c2226837f01c496d11a2ef35f3e76384093ad508537266ab60f2a045d3ed502e4223d694870535f416c002da033df0c0d2da1223f93641b484372439bda039f951ccfc79859402e7054969d446dad05ad34c1c6ae2cf419840a907ef550ed8dc576c78b6c76a52c77304b545f06715a47078b78d3d0e63db3d4215e00c5acccc75f06715fe5c8bb1e75c9a3b72946c8d8fa6e72aa3afd808e28091bc20f8156adf2974aaa9eeb671f74365bba6a19628dcc87172b6cde18316afbc21c1144c9d8a70e82aefb3ee05e3d91eab4a53482b84173552daec1c875251d354e0880213c7dbd4e6149347220ebf6ae13e2bd089c63fd7a154bcdfdc1be0200ef06cc1d24a1d4c280c43c58546a2299816136f46842b0a210507765884ba8d5b92e85413fd068df821e0ae4fc1cb0b4835e54168ae83438189b7db345734a4200705aa089522608230053a8552513c5c317968029812bfa5710673cc2c74ba4a07057651d26ac59c381ae12f5a444d8d4e35ce708ef0ae2bbafebd577198d4d95b8633c382b8a59999ebf0ee5b15da379638b0cf429970e228b4d662a60e45e875856d4bdc12c8f4113376f382705d53dd27d0a9c69f55ccccd599feb080703b547775987caf806d4b5412430a95714975f43e1f3fa89824c09502b1032c6d73ec548bf953b0bca8d8bb5332af206ab65189eece164d784ee39fcd51290ae6d10f80b3fa953ad57dd0b8a229dbc04b82d74d177f21225cd11cbbd8ea7e9d82cc4bc6f648821f35d1bac29116335736a019906d80c3abe19aff93d85a7a46d04834a52288f10e07f68ce19f0b901ac218c65ef46028a43a0afed91cae1c2354759a9700b80edc06b27ebae53079a73c2adeb70a5d4b69ad41742d247ad70b133420004d771c4a41d8d044b146c57c0b7c015ca3b74136015b804f809fb9bb15fe6dff0e7c03ec019e079ede087abaa964014ff59e397a81c2a32bebfd7e07680337e9073d80611826f038f0440fba99ffb6f3feeac1ff046e19ffd732fd1b7054f024ad43c3200000000049454e44ae426082</data>
+    </image>
+    <image name="image3">
+        <data format="PNG" length="1117">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000042449444154388db5954f881b7514c73fb34eeb2f12e4175c6102a14ca0a58e20367b324317ba811e1a5869177a708f750fdab57aa92276d71ea488dd2ea2547ba8ed22abe9a9f120a405257b284c2e252974eb14ba34d1c666a029f3038bf955a61d0f49b696fe410f3e78fc78cc8fcfbc797ce7fb8c388e1986611823c03380098c00c6209f16f120ef0311702f8ee3fbe6f0e9dc4773cf5ff9f6ca5b2b6a659fd5b5b656559504097af47071f1f01e5b872ac4bfe6afd52ed64a449c026e1b8671d788e318c33046ae57af1f94d43fc34ee3b5cb8c590ef5c0632ce3520f3cdc8c0b411dac311a8147ce1ad62f53ba70965f961a7cfdb35a00be04c22178c3f12f8e5f9ede95db5abe3a87f347132fd2b859f06e800a049d4023102446616a1c7ca5c98d422d80bc05f39f2b2a67f46fc0ebc0cde1284cdbb4b77a41192799c60b1bb85b24e573109ed39cbe18204cd091469892b39b05730752f8668f091b6a6dcdc4664105bd094801e1c8003c52b95a61cc0af16e5470b392af96358b9f069cbea8905290dd26c96db79016b4d63433b34dcacbd008203f800f22016c1c766cb819977a50c5dd22289f83f24905111cda6d2127a1987369743d1c996271a947f9a4a2bcdca2b8cdc14f26c867346534035519c38e0dafed316609bc26547e54e84853dc6d91dd07859ca6d6ad90bd95e0c889904307524c1f90600a0e2e7470cc7ee743d63fc1b819977a5793a5807f4923a5c5c424e46d8ddf052799666621a4b2ac78e7830e736fa7705e12e8aea6b4d2c3b51f16f73ad86b7bb81941e552154c48db5078056a81262b52ccecefe0af2a8414cc8ea7a8df097172121d693a6df0da4f00f7750aae2520d24c24c157e0986966de0d69ae6a8840260541060a36608230053a02d7160f81d7ff3cafed51b4c08f0053526a69de94298e9ce8e1af2a6452209382562be0d8610d64e9343be84893b513d4dbeaf16037e3d208aa4c8fc3595b10b4348b4b3d3e79bf4078abc2ec1b2902e0d86168ad05ccbdd741df515896c4c9411a38fda419e72c4143698a7b053ad2944f2a1697aa9c3a9a862d3da676f538389fc6b224aa1b4004eea4646a07780f74fc68c7041eb951811887746431bfd0a2f439d47e524cef9494bad06986a8aeeecf168d7f41533a9fa0600b4ae847c07175b54a712fd45635131960a7603f0ee5331dfc55cdfca556ff7604725452d823a9af683a7714ce688ac51fd6a13110af83fd6bfe5aa92636e71d412dd0e46d10933d66f71629ad78a423a8b7a1f89a8b4e3798da01a5f30972a3451add2acdcb00dc04ee01f1d0dd12987c98df2e3e4ea5fb92d25a83e84b480c5e2f4cd0800034fd7128057e43d309342ae07be01be03a830db201d8041c057ee5c156f8b7f93bf01db00778157871dde8e9bb520a7861702618180a4f8f78f0f93d20046e33347a00c3304ce059e0b9017423ff6de7fd3580ff09dc35feaf65fa37f796eef1a4053c5b0000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
-    <connection>
-        <sender>pushButton1_2</sender>
-        <signal>clicked()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>close()</slot>
-    </connection>
     <connection>
         <sender>botoncalcular</sender>
         <signal>clicked()</signal>
@@ -1130,66 +1111,6 @@
         <signal>contextMenuRequested(int,int,const QPoint&amp;)</signal>
         <receiver>amortizaciondlg</receiver>
         <slot>contextMenuRequested(int,int,const QPoint&amp;)</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1_2</sender>
-        <signal>clicked()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>buscactaamortizacion()</slot>
-    </connection>
-    <connection>
-        <sender>ctaamortizacion</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>codigo_textChanged(const QString&amp;)</slot>
-    </connection>
-    <connection>
-        <sender>ctaamortizacion</sender>
-        <signal>lostFocus()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>return_ctaamortizacion()</slot>
-    </connection>
-    <connection>
-        <sender>ctaamortizacion</sender>
-        <signal>returnPressed()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>return_ctaamortizacion()</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1</sender>
-        <signal>clicked()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>buscactaactivo()</slot>
-    </connection>
-    <connection>
-        <sender>ctaactivo</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>codigo_textChanged(const QString&amp;)</slot>
-    </connection>
-    <connection>
-        <sender>ctaactivo</sender>
-        <signal>lostFocus()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>return_ctaactivo()</slot>
-    </connection>
-    <connection>
-        <sender>ctaactivo</sender>
-        <signal>returnPressed()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>return_ctaactivo()</slot>
-    </connection>
-    <connection>
-        <sender>fecha1cuota</sender>
-        <signal>lostFocus()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>cambiofecha1cuota()</slot>
-    </connection>
-    <connection>
-        <sender>fechacompra</sender>
-        <signal>lostFocus()</signal>
-        <receiver>amortizaciondlg</receiver>
-        <slot>cambiofechacompra()</slot>
     </connection>
     <connection>
         <sender>toolButton1_2_2_2</sender>
@@ -1207,10 +1128,6 @@
 <tabstops>
     <tabstop>nomamortizacion</tabstop>
     <tabstop>agrupacion</tabstop>
-    <tabstop>ctaactivo</tabstop>
-    <tabstop>ctaamortizacion</tabstop>
-    <tabstop>fechacompra</tabstop>
-    <tabstop>fecha1cuota</tabstop>
     <tabstop>numcuotas</tabstop>
     <tabstop>periodicidad</tabstop>
     <tabstop>valorcompra</tabstop>
@@ -1220,7 +1137,6 @@
     <tabstop>metodoporcentual</tabstop>
     <tabstop>botoncalcular</tabstop>
     <tabstop>table1</tabstop>
-    <tabstop>pushButton1_2</tabstop>
     <tabstop>tabWidget3</tabstop>
     <tabstop>amortizado</tabstop>
     <tabstop>pendiente</tabstop>
@@ -1241,4 +1157,10 @@
     <slot>close()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>busquedacuenta.h</includehint>
+    <includehint>busquedacuenta.h</includehint>
+    <includehint>busquedafecha.h</includehint>
+    <includehint>busquedafecha.h</includehint>
+</includehints>
 </UI>

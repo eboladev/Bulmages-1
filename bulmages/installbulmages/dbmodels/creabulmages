@@ -18,20 +18,24 @@
 #
 # La diferencia entre este script y el installbulmages es que este no hace falta que se ejecute como ROOT
 # -------------------------------------------------------------------------------------------------------
-
+version = "v0.5.1"
+  texto="1"
+  ptexto="--texto"
 
 #Buscamos el parametro para saber si es texto o no
 if [ "$1" = "--texto" ]; then
   texto="1"
   ptexto="--texto"
-else
+fi
+
+if [ "$1" = "--dialog" ]; then
   texto="0"
   ptexto="--dialog"
 fi
 
 #Si el nmero de parametros no es el correcto salimos con un mensaje de error.
 if [ "$5" = "" ]; then
-   echo "creabulmages (--texto | --dialog) nombre (0 | 1 | 2) nomempresa ejercicio"
+   echo "creabulmages [--texto | --dialog] nombre [0 | 1 | 2] nomempresa ejercicio"
    exit
 fi
 
@@ -40,7 +44,7 @@ function mensaje() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog --title "Creación Base de Datos" --backtitle "Asociación Iglues" --msgbox "$1" 15 60
+      dialog --title "Creación Base de Datos $version" --backtitle "Asociación Iglues" --msgbox "$1" 15 60
    fi
 }
 
@@ -49,7 +53,7 @@ function info() {
    if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
       echo -e "$1"
    else
-      dialog  --title "Creación Base de Datos" --backtitle "Asociación Iglues" --infobox "$1" 10 60
+      dialog  --title "Creación Base de Datos $version" --backtitle "Asociación Iglues" --infobox "$1" 10 60
    fi
 }
 
@@ -109,7 +113,7 @@ fi
 
 if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo, para dejar la empresa con un plan contable vacio.
-   info "Cargamos el conjunto m�imo de datos. \n Plan contable simple. \n"
+   info "Cargamos el conjunto mínimo de datos. \n Plan contable simple. \n"
    psql $2 < crear/bulmages/t_configuracion_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_grupo_data.sql 2>> /tmp/errores1.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data.sql 2>> /tmp/errores1.txt > /dev/null
@@ -149,11 +153,11 @@ tiempo
 
 DBS=`cat /tmp/errores1.txt | grep ERROR`
 if [ "$DBS" ]; then
-   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortar�la instalaci�. Para mas informaci� consulte en bulmages@bulma.net. \n"
+   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortará la instalación. Para mas información consulte en bulmages@bulma.net. \n"
    dropdb $2
    exit 1
 else
-   info "La instalaci� de la base de datos $2 $4 ha sido un �ito. \n"
+   info "La instalación de la base de datos $2 $4 ha sido un éito. \n"
   if [ -e /tmp/errores1.txt ]; then
     rm /tmp/errores1.txt
   fi

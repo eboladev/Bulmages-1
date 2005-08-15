@@ -61,6 +61,7 @@ int main(int argc, char *argv[]) {
     confpr = new configuracion();
 
     QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
+
 //    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
     QApplication * mainApp = new QApplication (argc, argv);
     theApp = mainApp;

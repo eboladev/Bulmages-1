@@ -23,7 +23,7 @@
 #include <cobropagodlg.h>
 
 /** 
-  * @author Tomeu Borrás Riera 
+  * @author Tomeu Borrï¿½ Riera 
   * \class cobropagoview cobropagoview.h
   * \brief Listado de gestion de cobros y pagos.
   */
@@ -45,7 +45,6 @@ public:
 public slots:
     virtual void s_creaPago();
     virtual void s_actualizar();
-    virtual void s_searchAccount();
     virtual void s_searchFirstDate();
     virtual void s_searchLastDate();
 };
