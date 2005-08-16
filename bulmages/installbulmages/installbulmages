@@ -1,8 +1,8 @@
 #!/bin/bash
 ###############################################################################
-# Script de instalaciï¿œ de BulmaGï¿œ
-# (C) Tomeu Borrï¿œ, y Rene Merou Septiempbre 2004
-# Este documento es GPL
+# Script de instalación de BulmaGés
+# (C) Tomeu Borràs, y Rene Merou Septiempbre 2004
+# Este documento/script se distribuye bajo licencia GPL
 #------------------------------------------------------------------------------
 # Parametros
 #     $1 : --texto
@@ -110,7 +110,7 @@ touch /tmp/errores.txt
 
 #Comprobamos que estamos en el directorio adecuado
 if [ ! -e ./installbulmages ]; then
- mensaje "Directorio incorrecto. La instalaciÃ³n debe ejecutarse desde el directorio donde se encuentra el script. \n"
+ mensaje "Directorio incorrecto. La instalación debe ejecutarse desde el directorio donde se encuentra el script. \n"
  exit 1
 fi
 
@@ -120,7 +120,7 @@ fi
 #Comprobamos que existe la libreria de qt adecuada.
 LANG_PSQL=`locate libqt-mt.so.3`
 if [ "$LANG_PSQL" = "" ]; then
-	mensaje "Libreria de Qt libqt.so.3 no estÃ¡ instalada o no se encuentra. \n"
+	mensaje "Libreria de Qt libqt.so.3 no está instalada o no se encuentra. \n"
 	exit 1
 fi
 
