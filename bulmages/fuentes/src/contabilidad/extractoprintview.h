@@ -2,9 +2,9 @@
                           extractoprintview.h  -  description
                              -------------------
     begin                : jue jun 26 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Ter� - amirabet@biada.org
+    modificat per        : (C) 2003 Antoni Mirabete i Terés - amirabet@biada.org
  ***************************************************************************/
 
 /***************************************************************************
@@ -34,9 +34,9 @@
 
 #include "filtrarextractosview.h"
 #include "postgresiface2.h"
-/** @author Tomeu Borr� Riera
+/** @author Tomeu Borrás Riera
   * \class ExtractoPrintView extractoprintview.h
-  * \brief Clase que corresponde con la ventana de impresi� de extractos.
+  * \brief Clase que corresponde con la ventana de impresión de extractos.
   * \todo Falta hacer que en los campos se haga el autocompletado.
   * \todo Falta incluir el filtrado en el extracto.
 */

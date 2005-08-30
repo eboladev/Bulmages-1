@@ -2,7 +2,7 @@
                           extractoview1.h  -  description
                              -------------------
     begin                : Thu Jan 9 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -14,8 +14,8 @@
  *                                                                         *
  ***************************************************************************/
 /** \file extractoview1.h
-  * Este fichero contiene la definici� de la clase \ref extractoview1
-  * \author Tomeu Borr� Riera
+  * Este fichero contiene la definición de la clase \ref extractoview1
+  * \author Tomeu Borrás Riera
   */
 #ifndef EXTRACTOVIEW1_H
 #define EXTRACTOVIEW1_H
@@ -33,30 +33,30 @@ class balanceview;
 class empresa;
 
 
-/** @brief Esta clase Mantiene la generaci� de extractos contables
+/** @brief Esta clase Mantiene la generación de extractos contables
   * 
-  * A partir de esta panalla se pueden llevar a cabo todos los temas de punteo y casaci�.
-  * Y acceso a filtrado. Tambi� desde esta pantalla se puede pedir m� informaci� de una cuenta
+  * A partir de esta panalla se pueden llevar a cabo todos los temas de punteo y casación.
+  * Y acceso a filtrado. También desde esta pantalla se puede pedir más información de una cuenta
   * determinada.
   */
 class extractoview1 : public extractodlg1  {
     Q_OBJECT
 public:
-    /// Indica el nmero de registros que estamos viendo.
+    /// Indica el número de registros que estamos viendo.
     int numregistro;
-    /// Indica el nmero de registros que tiene el cursor2 \ref cursorcta
+    /// Indica el número de registros que tiene el cursor2 \ref cursorcta
     int numregistros;
-    /// Indica el nmero de d�itos que tienen las cuentas. (TAL VEZ DEBERIA ESTAR EN CONFPR)
+    /// Indica el número de dígitos que tienen las cuentas. (TAL VEZ DEBERIA ESTAR EN CONFPR)
     int numdigitos;
-    /// El extracto se realiza sobre un cursor que siempre est�en memoria.
+    /// El extracto se realiza sobre un cursor que siempre esté en memoria.
     cursor2 *cursorcta;
     /// Siempre se propaga la empresa a estos objetos.
     empresa *empresaactual;
-    /// Este objeto deber� pasar por la empresa para no tener problemas (Que es quien deber� hacer el paso de mensajes).
+    /// Este objeto debería pasar por la empresa para no tener problemas (Que es quien debería hacer el paso de mensajes).
     diarioview1 *diario;
-    /// Este puntero deber� estar ubicado en la clase empresa (Que es quien deber� hacer el paso de mensajes).
+    /// Este puntero debería estar ubicado en la clase empresa (Que es quien debería hacer el paso de mensajes).
     intapunts3view *introapunts;
-    /// Este puntero deber� estar ubicado en la clase empresa (Que es quien deber� hacer el paso de mensajes).
+    /// Este puntero debería estar ubicado en la clase empresa (Que es quien debería hacer el paso de mensajes).
     balanceview *balance;
     /// Base de datos con la que se inicializa la clase para hacer todas sus operaciones
     postgresiface2* conexionbase;

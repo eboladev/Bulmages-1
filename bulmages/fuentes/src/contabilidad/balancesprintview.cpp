@@ -2,7 +2,7 @@
                           balancesprintview.cpp  -  description
                              -------------------
     begin                : jue oct 9 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -41,7 +41,7 @@ balancesprintview::~balancesprintview(){
 
 /*********************************************************************************
  * Se ha pulsado sobre el boton de aceptar del formulario con lo que podemos     *
- * pasar a hacer la impresi�.                                                   *
+ * pasar a hacer la impresión.                                                   *
  *********************************************************************************/
 void balancesprintview::accept() {
    char *args[]={"balance.txt","balance.txt",NULL};

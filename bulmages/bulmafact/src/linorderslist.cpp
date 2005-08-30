@@ -127,16 +127,16 @@ void linorderslist::chargelinorders(QString idpedido) {
 	m_list->setSelectionMode( QTable::SingleRow );
 	m_list->setColumnMovingEnabled( TRUE );
 	m_list->setNumCols(12);
-	m_list->horizontalHeader()->setLabel( COL_NUMLPEDIDO, tr( "N L�ea" ) );
-	m_list->horizontalHeader()->setLabel( COL_DESCLPEDIDO, tr( "Descripci�" ) );
+	m_list->horizontalHeader()->setLabel( COL_NUMLPEDIDO, tr( "N Línea" ) );
+	m_list->horizontalHeader()->setLabel( COL_DESCLPEDIDO, tr( "Descripción" ) );
 	m_list->horizontalHeader()->setLabel( COL_CANTLPEDIDO, tr( "Cantidad" ) );
 	m_list->horizontalHeader()->setLabel( COL_PVDLPEDIDO, tr( "Precio" ) );
 	m_list->horizontalHeader()->setLabel( COL_PREVLPEDIDO, tr( "Fecha Prevista Entrega" ) );
 	m_list->horizontalHeader()->setLabel( COL_IDPEDIDO, tr( "N Pedido" ) );
-	m_list->horizontalHeader()->setLabel( COL_IDALB_PRO, tr( "Albar�" ) );
-	m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Art�ulo" ) );
-	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "C�igo Art�ulo" ) );
-	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripci� Art�ulo" ) );
+	m_list->horizontalHeader()->setLabel( COL_IDALB_PRO, tr( "Albarán" ) );
+	m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
+	m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
+	m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
 	m_list->horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
    
 	m_list->setColumnWidth(COL_NUMLPEDIDO,100);
@@ -459,8 +459,8 @@ void linorderslist::manageArticle(int row) {
 
 
 void linorderslist::searchArticle() {
-   fprintf(stderr,"Busqueda de un art�ulo\n");
-   articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"));
+   fprintf(stderr,"Busqueda de un artículo\n");
+   articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
    
 // , WType_Dialog| WShowModal   
    artlist->modoseleccion();
@@ -488,7 +488,7 @@ void linorderslist::removeOrderLin() {
 
 void linorderslist::cancelOrderLinChanges() {
 	if (QMessageBox::warning( this, "BulmaFact - Pedidos",
-    "Se perder� los cambios que haya realizado", "Aceptar", "Cancelar") == 0) {
+    "Se perderán los cambios que haya realizado", "Aceptar", "Cancelar") == 0) {
 		close();
 	}
 }

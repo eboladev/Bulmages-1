@@ -19,7 +19,7 @@
 
 #include <qtable.h>
 
-/** *@author Tomeu Borr� Riera */
+/** *@author Tomeu Borrás Riera */
 
 
 class QTableItem1 : public QTableItem {

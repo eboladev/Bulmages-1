@@ -3,7 +3,7 @@
 <FUGIT version='0.3.1' origen='BulmaGes' date=''><CUENTA>
 <IDCUENTA>1</IDCUENTA>
     <CODIGO>1</CODIGO>
-    <DESCRIPCION>Finan�ment b�ic</DESCRIPCION>
+    <DESCRIPCION>Finançament bàsic</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 
@@ -58,7 +58,7 @@
 <CUENTA>
 <IDCUENTA>6</IDCUENTA>
     <CODIGO>111</CODIGO>
-    <DESCRIPCION>Reserves de revaloraci�</DESCRIPCION>
+    <DESCRIPCION>Reserves de revaloració</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>11</CODPADRE>
@@ -69,7 +69,7 @@
 <CUENTA>
 <IDCUENTA>7</IDCUENTA>
     <CODIGO>12</CODIGO>
-    <DESCRIPCION>EXCEDENTS PENDENTS D'APLICACI�</DESCRIPCION>
+    <DESCRIPCION>EXCEDENTS PENDENTS D'APLICACIÓ</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 
@@ -102,7 +102,7 @@
 <CUENTA>
 <IDCUENTA>10</IDCUENTA>
     <CODIGO>124</CODIGO>
-    <DESCRIPCION>Excedents pendents d'aplicaci�en activitats fundacionals</DESCRIPCION>
+    <DESCRIPCION>Excedents pendents d'aplicació en activitats fundacionals</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>12</CODPADRE>
@@ -168,7 +168,7 @@
 <CUENTA>
 <IDCUENTA>16</IDCUENTA>
     <CODIGO>136</CODIGO>
-    <DESCRIPCION>Difer�cies positives en moneda estrangera.</DESCRIPCION>
+    <DESCRIPCION>Diferències positives en moneda estrangera.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>13</CODPADRE>
@@ -190,7 +190,7 @@
 <CUENTA>
 <IDCUENTA>18</IDCUENTA>
     <CODIGO>140</CODIGO>
-    <DESCRIPCION>Provisi�per a pensions i obligacions similars.</DESCRIPCION>
+    <DESCRIPCION>Provisió per a pensions i obligacions similars.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>14</CODPADRE>
@@ -201,7 +201,7 @@
 <CUENTA>
 <IDCUENTA>19</IDCUENTA>
     <CODIGO>141</CODIGO>
-    <DESCRIPCION>Provisi�per a impostos.</DESCRIPCION>
+    <DESCRIPCION>Provisió per a impostos.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>14</CODPADRE>
@@ -212,7 +212,7 @@
 <CUENTA>
 <IDCUENTA>20</IDCUENTA>
     <CODIGO>142</CODIGO>
-    <DESCRIPCION>Provisi�per a responsabilitats.</DESCRIPCION>
+    <DESCRIPCION>Provisió per a responsabilitats.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>14</CODPADRE>
@@ -223,7 +223,7 @@
 <CUENTA>
 <IDCUENTA>21</IDCUENTA>
     <CODIGO>143</CODIGO>
-    <DESCRIPCION>Provisi�per a grans reparacions.</DESCRIPCION>
+    <DESCRIPCION>Provisió per a grans reparacions.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>14</CODPADRE>
@@ -234,7 +234,7 @@
 <CUENTA>
 <IDCUENTA>22</IDCUENTA>
     <CODIGO>144</CODIGO>
-    <DESCRIPCION>Fons de reversi�</DESCRIPCION>
+    <DESCRIPCION>Fons de reversió</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>14</CODPADRE>
@@ -245,7 +245,7 @@
 <CUENTA>
 <IDCUENTA>23</IDCUENTA>
     <CODIGO>145</CODIGO>
-    <DESCRIPCION>Provisi�per a reparacions i conservaci�de b�s del patrimoni cultural.</DESCRIPCION>
+    <DESCRIPCION>Provisió per a reparacions i conservació de béns del patrimoni cultural.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>14</CODPADRE>
@@ -289,7 +289,7 @@
 <CUENTA>
 <IDCUENTA>27</IDCUENTA>
     <CODIGO>162</CODIGO>
-    <DESCRIPCION>Deutes a llarg termini amb entitats de cr�it del grup.</DESCRIPCION>
+    <DESCRIPCION>Deutes a llarg termini amb entitats de crítit del grup.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>16</CODPADRE>
@@ -300,7 +300,7 @@
 <CUENTA>
 <IDCUENTA>28</IDCUENTA>
     <CODIGO>163</CODIGO>
-    <DESCRIPCION>Deutes a llarg termini amb entitats de cr�it associades.</DESCRIPCION>
+    <DESCRIPCION>Deutes a llarg termini amb entitats de crítit associades.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>16</CODPADRE>
@@ -322,7 +322,7 @@
 <CUENTA>
 <IDCUENTA>30</IDCUENTA>
     <CODIGO>165</CODIGO>
-    <DESCRIPCION>Prove�ors d'immobilitzat a llarg termini, entitats associades.</DESCRIPCION>
+    <DESCRIPCION>Proveídors d'immobilitzat a llarg termini, entitats associades.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>16</CODPADRE>
@@ -344,7 +344,7 @@
 <CUENTA>
 <IDCUENTA>32</IDCUENTA>
     <CODIGO>170</CODIGO>
-    <DESCRIPCION>Deutes a llarg termini amb entitats de cr�it.</DESCRIPCION>
+    <DESCRIPCION>Deutes a llarg termini amb entitats de crítit.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 <CODPADRE>17</CODPADRE>
@@ -432,7 +432,7 @@
 <CUENTA>
 <IDCUENTA>40</IDCUENTA>
     <CODIGO>19</CODIGO>
-    <DESCRIPCION>SITUACIONS TRANSIT�IES DE FINAN�MENT.</DESCRIPCION>
+    <DESCRIPCION>SITUACIONS TRANSITÒrIES DE FINANÇAMENT.</DESCRIPCION>
     <CIFENT_CUENTA></CIFENT_CUENTA>
     <DIRENT_CUENTA></DIRENT_CUENTA>
 

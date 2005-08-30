@@ -10,8 +10,8 @@
 //
 //
 /** \file fpagoview.h
-  * Fichero que contiene la declaraci� de la clase \ref fpagoview que trata la ventana de gesti� de formas de pago
-  * \author Tomeu Borr� Riera
+  * Fichero que contiene la declaración de la clase \ref fpagoview que trata la ventana de gestión de formas de pago
+  * \author Tomeu Borrás Riera
   */
 #ifndef FPAGOVIEW_H
 #define FPAGOVIEW_H
@@ -23,7 +23,7 @@
 class empresa;
 
 /**
-  * \brief la clase fpagoview se encarga de la gesti� de formas de pago
+  * \brief la clase fpagoview se encarga de la gestión de formas de pago
   *
   * Las formas de pago son unas plantillas que se usan para determinar las formas en que se pagan  o se
   * cobran las facturas emitidas o recibidas
@@ -34,7 +34,7 @@ private:
     empresa *empresaactual;
     postgresiface2 *conexionbase;
    cursor2 *m_curfpago;   
-   int m_posactual; /// Indica la posici� en el combobox que est�seleccionada. Se usa para hacer saves en caso de modificaciones.
+   int m_posactual; /// Indica la posición en el combobox que está seleccionada. Se usa para hacer saves en caso de modificaciones.
 private:
     void pintar(QString idtipoiva="");
     void mostrarplantilla(int pos=0); 

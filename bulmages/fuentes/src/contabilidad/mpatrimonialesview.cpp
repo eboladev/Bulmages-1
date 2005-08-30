@@ -27,8 +27,8 @@ mpatrimonialesview::~mpatrimonialesview(){
 
 
 /*************************************************************
- * Esta funcion se encarga de hacer las inicializaciones de todo el formulario.
- * Se llama asi y no desde el constructor pq asi la podemos llamar desde dentro
+ * Esta función se encarga de hacer las inicializaciones de todo el formulario.
+ * Se llama así y no desde el constructor pq así la podemos llamar desde dentro
  * de la misma clase, etc etc etc
  *************************************************************/
 int mpatrimonialesview::inicializa(postgresiface2 *conn ) {

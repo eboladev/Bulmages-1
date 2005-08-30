@@ -112,7 +112,7 @@ public:
   void setfechaasiento(QString fecha) {fechaasiento->setText(fecha);}
   
   // La funcion sirve para especificar el modo de funcionamiento de los asientos intelgientes.
-  // Consultar la variable modo para más detalles.
+  // Consultar la variable método para más detalles.
   void setmodo(int i) { modo=i;}
   
 public slots:

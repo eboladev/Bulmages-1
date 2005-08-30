@@ -2,7 +2,7 @@
                           propiedadesempresa.h  -  description
                              -------------------
     begin                : Fri Nov 29 2002
-    copyright            : (C) 2002 by Tomeu Borr� Riera
+    copyright            : (C) 2002 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -26,7 +26,7 @@
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 
-/** *@author Tomeu Borrás� Riera */
+/** *@author Tomeu Borrás Riera */
 
 class propiedadesempresa : public propiedemp , dialogChanges {
    Q_OBJECT

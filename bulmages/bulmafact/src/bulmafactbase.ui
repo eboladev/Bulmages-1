@@ -28,7 +28,7 @@
             <x>0</x>
             <y>0</y>
             <width>598</width>
-            <height>23</height>
+            <height>22</height>
         </rect>
     </property>
     <item text="Ventas" name="Ventas">
@@ -298,7 +298,7 @@
             <iconset>image9</iconset>
         </property>
         <property name="text">
-            <string>Articulo</string>
+            <string>Artículo</string>
         </property>
         <property name="menuText">
             <string>Articulo</string>
@@ -624,7 +624,7 @@
             <string>Ventana Completa</string>
         </property>
         <property name="accel">
-            <string>Ctrl+Mayúsculas+F</string>
+            <string>Ctrl+ </string>
         </property>
     </action>
 </actions>

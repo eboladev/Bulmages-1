@@ -2,7 +2,7 @@
                           listcuentasview.h  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borr� Riera
+    copyright            : (C) 2002 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -24,10 +24,10 @@
 
 #include "pgimportfiles.h"
 
-/** @author Tomeu Borr� Riera 
+/** @author Tomeu Borrás Riera 
   * \brief Presenta un listado del plan contable.
   *
-  * Esta pantalla tiene dos modos de funcionamiento, en uno actua como selector de cuentas y en el otro actua como soporte para la edici� del plan contable.
+  * Esta pantalla tiene dos modos de funcionamiento, en uno actua como selector de cuentas y en el otro actua como soporte para la edición del plan contable.
 */
 
 class empresa;

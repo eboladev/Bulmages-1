@@ -36,7 +36,7 @@ public:
   postgresiface2 *conexionbase;
   int canales[100];
   int idcanal;    // Indica cual es el canal que se esta visualizando
-                    // Si su valor es 0 entonces es que no se está visualizando ningun centro de coste.
+                    // Si su valor es 0 entonces es que no se está visualizando ningún centro de coste.
   empresa *empresaactual;
 public: 
 	canalview(empresa *, QWidget *parent=0, const char *name=0,  bool modal=true);

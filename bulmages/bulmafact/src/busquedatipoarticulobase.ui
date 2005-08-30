@@ -62,7 +62,7 @@
                 </sizepolicy>
             </property>
             <property name="text">
-                <string>Tipo Articulo</string>
+                <string>Tipo Artículo</string>
             </property>
         </widget>
     </hbox>

@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementaci� del listado de presupuestos.
+// Implementación del listado de presupuestos.
 /*
--- Entendemos que un presupuesto es una relaci� de materiales y trabajos cuantificada que
--- hacemos a petici� de un cliente determinado
+-- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
+-- hacemos a petición de un cliente determinado
 -- Numero
--- Data: Data d'emisi�del presupost.
+-- Data: Data d'emisió del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
--- TelfContacte: Tel�on.
--- Venciment: Data m�ima de validesa del presupost.
+-- TelfContacte: Teléfon.
+-- Venciment: Data máxima de validesa del presupost.
 -- Comentaris
 --  Pressupost a clients.
 CREATE TABLE presupuesto (

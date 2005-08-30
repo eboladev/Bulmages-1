@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras                               *
+ *   Copyright (C) 2003 by Tomeu Borrás                               *
  *   tborras@conetxia.com                                            *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,7 @@
   *
   * Inicializa las variables de empresa y de base de datos
   * Luego crea las columnas para el objeto m_listCanales que es la lista en que se basa el programa
-  * Luego llama al m�ido cargacanales que hace la carga de los canales a partir de la base de datos
+  * Luego llama al método cargacanales que hace la carga de los canales a partir de la base de datos
   */
 selectcanalview::selectcanalview(empresa *emp,QWidget *parent, const char *name) : selectcanaldlg(parent, name) {
    fprintf(stderr,"Inicializacion del selector de canales\n");
@@ -73,7 +73,7 @@ void selectcanalview::cargacanales() {
 }// end cargacostes
 
 
-// Esta funci� devuelve el primer centro de coste seleccionado de la vita.
+// Esta función devuelve el primer centro de coste seleccionado de la vita.
 // Devuelve el idc_coste. Si no hay ningun centro de coste seleccionado devuelve
 // cero
 int selectcanalview::firstcanal() {
@@ -82,7 +82,7 @@ int selectcanalview::firstcanal() {
    return nextcanal();
 }// end firstccoste
 
-// Esta funci� devuelve el siguiente centro de coste seleccionado de la vista.
+// Esta función devuelve el siguiente centro de coste seleccionado de la vista.
 int selectcanalview::nextcanal() {
    int idcanal=0;
    QCheckListItem *item;
@@ -116,7 +116,7 @@ QString selectcanalview::cadcanal() {
 }// end cadcoste
 
 
-// Esta funci� devuelve el nombre de un canal determinado
+// Esta función devuelve el nombre de un canal determinado
 QString selectcanalview::nomcanal() {
    QCheckListItem *item;
    item = (QCheckListItem *) m_iterador->current();

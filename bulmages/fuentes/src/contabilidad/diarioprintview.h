@@ -60,7 +60,7 @@ public:
    DiarioPrintView(empresa *emp, QWidget *parent, const char *name);
    ~DiarioPrintView();
    void presentar(char *tipus="html");
-   // OJO con esta función que es una funcion para probar el Report Tool Kit
+   // OJO con esta función que es una función para probar el Report Tool Kit
    void pruebasRTK();
    void pruebasRTKoo();
    void presentakugar();

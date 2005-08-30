@@ -266,7 +266,7 @@ void listivaview::inicializa( intapunts3view *inta) {
     tablarepercutido->hideColumn(R_COL_PORCENT_IVA);
 
 
-    // Hacemos el calculo de los que no pertenecen a iva soportado pq así entran todos.
+    // Hacemos el cálculo de los que no pertenecen a iva soportado pq así entran todos.
     query.sprintf("SELECT *, (registroiva.baseimp+registroiva.iva) AS totalfactura FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND NOT factemitida AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha",finicial->text().ascii(), ffinal->text().ascii());
     conexionbase->begin();
     cursorreg = conexionbase->cargacursor(query,"cmquery");
@@ -369,7 +369,7 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
     delete popup;
 }// end contextmenu
 
-/** \brief ESta funcion responde a la pulsación del boton de busqueda de fecha inicial
+/** \brief ESta funcion responde a la pulsación del botón de busqueda de fecha inicial
 **/
 void listivaview::boton_finicial() {
     finicial->setText("+");

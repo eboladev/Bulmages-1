@@ -36,8 +36,8 @@
 #include "logpass.h"
 
 
-/// Estas son las variables globales de la aplicaci�.
-/// El puntero de la aplicaci�
+/// Estas son las variables globales de la aplicación.
+/// El puntero de la aplicación
 QApplication * theApp;
 /// El traductor.
 QTranslator * traductor;
@@ -46,10 +46,10 @@ QTranslator * traductor;
     typedef void (*MyPrototype)(Bulmages01 *);
     MyPrototype myFunction;
     
-/** \brief los datos de ejecuci� del programa son sencillos
-  * La ejecuci� primero crea e inicializa los objetos configuraci�, idioma, splash, etc
+/** \brief los datos de ejecución del programa son sencillos
+  * La ejecución primero crea e inicializa los objetos configuración, idioma, splash, etc
   * luego intenta entrar en el sistema de base de datos
-  * Y por ltimo crea el objeto del tipo \ref Bulmages01 que es la aplicaci� de ventanas.
+  * Y por último crea el objeto del tipo \ref Bulmages01 que es la aplicación de ventanas.
   */
 int main(int argc, char *argv[]) {
     Bulmages01 *bges;
@@ -76,9 +76,9 @@ int main(int argc, char *argv[]) {
     }// end if
     mainApp->installTranslator( traductor );
 
-    /// Iniciamos el sistema de log del programa para que se pueda seguir la ejecuci� del mismo.
+    /// Iniciamos el sistema de log del programa para que se pueda seguir la ejecución del mismo.
     ctllog = new bitacora();
-    ctllog->add(LOG_SEG, 1,"MaiMai003", "---- Iniciaci� del programa ----");
+    ctllog->add(LOG_SEG, 1,"MaiMai003", "---- Iniciación del programa ----");
 
 
     Splash *splashScr = new Splash();

@@ -2,7 +2,7 @@
                           intapunts3view.h  -  description
                              -------------------
     begin                : mar may 27 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera and Josep Burcion
+    copyright            : (C) 2003 by Tomeu Borrás Riera and Josep Burcion
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -41,36 +41,36 @@ class balanceview;
 class empresa;
 
 /**
-  *@author Tomeu Borr� Riera 
+  *@author Tomeu Borrás Riera 
  * \class intapunts3view intapunts3view.h
- * \brief Se encarga de controlar la ventana de introducci� de apuntes.
+ * \brief Se encarga de controlar la ventana de introducción de apuntes.
  *
- * Esta es una de las clases m� complejas del programa ya que controla toda la acci� y casi toda la interactuaci� del usuario con el programa. Pretende conseguir una interficie que resulte muy r�ida y c�odo para el usuario que introduzca datos.
+ * Esta es una de las clases mas complejas del programa ya que controla toda la acción y casi toda la interactuación del usuario con el programa. Pretende conseguir una interficie que resulte muy rígida y cómodo para el usuario que introduzca datos.
  Hereda intapunts3dlg  
 */
 
 class intapunts3view : public intapunts3dlg  {
     Q_OBJECT
 private:
-    /// El identificador del asiento que se est�visualizando en cada momento. Si no existe asiento actual vale -1
+    /// El identificador del asiento que se está visualizando en cada momento. Si no existe asiento actual vale -1
     int idasiento;
-    /// El identificador de la fila sobre la que est�el cursor. Si no hay row seleccionado valdr�-1
+    /// El identificador de la fila sobre la que está el cursor. Si no hay row seleccionado valdrá-1
     int rowactual;
     /// Indica que el asiento esta abierto.
     int abierto;
-    /// Puntero a la clase amiga \ref extractoview1 \todo el paso de mensajes deber�hacerse a traves de la clase empresa.
+    /// Puntero a la clase amiga \ref extractoview1 \todo el paso de mensajes debería hacerse a traves de la clase empresa.
     extractoview1 *extracto;
-    /// Puntero a la clase amiga \ref diarioview1 \todo el paso de mensajes deber�hacerse a traves de la clase empresa y este puntero debe desaparacer.
+    /// Puntero a la clase amiga \ref diarioview1 \todo el paso de mensajes debería hacerse a través de la clase empresa y este puntero debe desaparacer.
     diarioview1 *diario;
-    /// Puntero a la clase amiga \ref balanceview \todo el paso de mensajes deber�hacerse a trav� de la clase empresa.
+    /// Puntero a la clase amiga \ref balanceview \todo el paso de mensajes debería hacerse a través de la clase empresa.
     balanceview *balance;
-    /// Puntero a la conexi� de la base de datos abierta actualmente.
+    /// Puntero a la conexión de la base de datos abierta actualmente.
     postgresiface2 *conexionbase;
-    /// Indica el nmero de d�itos que usan por defecto las cuentas. Es un parametro sacado de la configuraci� de la empresa.
+    /// Indica el nmero de dígitos que usan por defecto las cuentas. Es un parametro sacado de la configuración de la empresa.
     unsigned int numdigitos;
 public:
 
-    /// Este es el cursor que se usar�para recorrer la lista de asientos.
+    /// Este es el cursor que se usará para recorrer la lista de asientos.
     cursor2 *cursorasientos;
     /// Este objeto contiene todas las opciones de filtraje necesarias para funcionar. es un objeto del tipo \ref filtrarasientosview
     filtrarasientosview *filt;

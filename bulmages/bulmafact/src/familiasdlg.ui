@@ -174,7 +174,7 @@
                                         <cstring>labelalgo</cstring>
                                     </property>
                                     <property name="text">
-                                        <string>Codigo</string>
+                                        <string>Código</string>
                                     </property>
                                 </widget>
                                 <widget class="QLineEdit">
@@ -199,7 +199,7 @@
                                 <cstring>m_codFamilia_2</cstring>
                             </property>
                             <property name="text">
-                                <string>Codigo Completo</string>
+                                <string>Código Completo</string>
                             </property>
                         </widget>
                         <widget class="QLineEdit">
@@ -237,7 +237,7 @@
                                 </sizepolicy>
                             </property>
                             <property name="text">
-                                <string>Descripcion</string>
+                                <string>Descripción</string>
                             </property>
                         </widget>
                         <widget class="QTextEdit">

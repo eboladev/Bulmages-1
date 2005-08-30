@@ -240,7 +240,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
                 mensajeria("<LI>Se ha insertado la cuenta "+cod+"</LI>\n");
             }// end if
         } else {
-            mensajeria("<LI>Ya hay una cuenta con el c�igo "+cod+"</LI>\n");
+            mensajeria("<LI>Ya hay una cuenta con el código "+cod+"</LI>\n");
         }// end if
         delete cursaux;
     }// end while
@@ -347,7 +347,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
                 napunte = 0;
                 lastasiento = asiento;
                 orden = 0;
-                mensajeria("<LI>Inserci� de Asiento" + idasiento+"</LI>\n");
+                mensajeria("<LI>Inserción de Asiento" + idasiento+"</LI>\n");
             }// end if
         }// end if
         napunte++;
@@ -371,7 +371,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
                     conexionbase->ejecuta(query);
                     conexionbase->commit();
                 }// end if
-                mensajeria("<LI>Inserci� de Apunte"+subcta+","+concepto+"</LI>\n");
+                mensajeria("<LI>Inserción de Apunte"+subcta+","+concepto+"</LI>\n");
             } else {
                 mensajeria("<LI>Apunte fuera de fecha</LI>\n");
             }// end if

@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementaci� del listado de albaranps.
+// Implementación del listado de albaranps.
 /*
--- Entendemos que un albaranp es una relaci� de materiales y trabajos cuantificada que
--- hacemos a petici� de un cliente determinado
+-- Entendemos que un albaranp es una relación de materiales y trabajos cuantificada que
+-- hacemos a petición de un cliente determinado
 -- Numero
--- Data: Data d'emisi�del presupost.
+-- Data: Data d'emisió del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
--- TelfContacte: Tel�on.
--- Venciment: Data m�ima de validesa del presupost.
+-- TelfContacte: Teléfon.
+-- Venciment: Data máxima de validesa del presupost.
 -- Comentaris
 --  Pressupost a clients.
 CREATE TABLE albaranp (
@@ -221,7 +221,7 @@ void AlbaranesProveedor::inicializa() {
 
 
 
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
+    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");
     m_list->setReadOnly(TRUE);
 
@@ -286,7 +286,7 @@ void AlbaranesProveedor::s_editar() {
     int a = m_list->currentRow();
     m_idalbaranp = m_list->text(a,COL_IDALBARANP);
     if (m_modo ==0 && m_idalbaranp != "") {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albaranes de Proveedores", "company"));
+        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edición de Albaranes de Proveedores", "company"));
         bud->cargaAlbaranProveedor(m_idalbaranp);
         bud->show();
     } else {
@@ -297,7 +297,7 @@ void AlbaranesProveedor::s_editar() {
 void AlbaranesProveedor::doubleclicked(int a, int , int , const QPoint &) {
     m_idalbaranp = m_list->text(a,COL_IDALBARANP);
     if (m_modo ==0 && m_idalbaranp != "") {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edición de Presupuestos", "company"));
         bud->cargaAlbaranProveedor(m_idalbaranp);
         bud->show();
     } else {
@@ -326,7 +326,7 @@ void AlbaranesProveedor::s_contextMenu(int, int, int button, const QPoint &poin)
 
 void AlbaranesProveedor::newBudget() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
-    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edición de Presupuestos", "company"));
     bud->show();
     bud->pintaAlbaranProveedor();
 }// end boton_crear
@@ -392,7 +392,7 @@ void AlbaranesProveedor::s_removeBudget() {
     int a = m_list->currentRow();
     m_idalbaranp = m_list->text(a,COL_IDALBARANP);
     if (m_modo ==0 && m_idalbaranp != "") {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albaranes de Proveedores", "company"));
+        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edición de Albaranes de Proveedores", "company"));
         bud->cargaAlbaranProveedor(m_idalbaranp);
         bud->s_deleteAlbaranProveedor();
 	bud->close();

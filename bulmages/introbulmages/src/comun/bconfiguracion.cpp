@@ -201,11 +201,11 @@ void BConfiguracion::borrarEmpresa() {
     dbEmpresa = PunteroAlSelector->empresaDB();
     if (dbEmpresa!="") {
         if (dbEmpresa=="bgplangcont") {
-            QMessageBox::information( this, tr("Atenci�"), tr("Esta Base de Datos no puede ser eliminada.\n\r Es la plantilla para generar nuevas empresas."), QMessageBox::Ok);
+            QMessageBox::information( this, tr("Atencion"), tr("Esta Base de Datos no puede ser eliminada.\n\r Es la plantilla para generar nuevas empresas."), QMessageBox::Ok);
         } else if (dbEmpresa != PunteroAlSelector->empresaDB()) {
-            QMessageBox::warning( this, tr("Atenci�"), tr("No Est�permitido eliminar la base \n\r de datos actualmente abierta."), QMessageBox::Ok,0);
+            QMessageBox::warning( this, tr("Atención"), tr("No Está permitido eliminar la base \n\r de datos actualmente abierta."), QMessageBox::Ok,0);
         } else {
-	    int mensaje = QMessageBox::warning( this, tr("Atenci�"), tr("Borrar una empresa puede suponer perdida de datos\n Desea continuar?\n"), QMessageBox::Yes,QMessageBox::No,0);
+	    int mensaje = QMessageBox::warning( this, tr("Atención"), tr("Borrar una empresa puede suponer perdida de datos\n Desea continuar?\n"), QMessageBox::Yes,QMessageBox::No,0);
 	    if (mensaje == QMessageBox::Yes) { 
 		QString sentencia = "dropdb "+dbEmpresa;
 		system(sentencia.ascii());

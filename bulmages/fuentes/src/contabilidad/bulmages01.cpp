@@ -58,8 +58,8 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, WFlags f, QString * 
 Bulmages01::~Bulmages01() {
     //En el constructor asignamos un puntero a empresa { ctllog->setempresa(&empresaactual); }
     //Al destruir la clase empresa no podemos seguir apuntando a un objeto que ya no existe.
-    //es necesario eliminar la referencia a este objeto, por ejemplo aqu�
-    //justo antes logeo la salida del usuario (Ren�
+    //es necesario eliminar la referencia a este objeto, por ejemplo aquí
+    //justo antes logeo la salida del usuario (René)
     ctllog->add
     (LOG_SEG | LOG_TRA, 1,"BmgDtt017","El usuario sale de bulmacont." );
     ctllog->setempresa(NULL);
@@ -237,12 +237,12 @@ void Bulmages01::slotAsientosInteligentes()  {
 
 
 void Bulmages01::slotIntroducirApuntes()  {
-    statusBar()->message(tr("Introducci� de Apuntes"));
+    statusBar()->message(tr("Introducción de Apuntes"));
     empresaactual.muestraapuntes();
 }// end slotIntroducirApuntes
 
 void Bulmages01::slotIntroducirApuntes1()  {
-    statusBar()->message(tr("Introducci� de Borrador"));
+    statusBar()->message(tr("Introducción de Borrador"));
     empresaactual.muestraapuntes1();
 }// end slotIntroducirApuntes1
 

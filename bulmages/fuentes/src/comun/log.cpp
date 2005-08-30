@@ -1,5 +1,5 @@
 /***************************************************************************
- *Copyright (C) 2003 by Fco. Javier MC, Jean René Mérou, Víctor G. Marimón *
+ *Copyright (C) 2003 by Fco. Javier MC, Jean RenÃ© MÃ©rou, VÃ­ctor G. MarimÃ³n *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -44,7 +44,7 @@ void bitacora::add (int tipoLog, int nivellog, QString logdebug , QString qsTxt 
      QString horastr = hora.toString(Qt::LocalDate);
      QString tipoLogtxt;
      
-    /*switch(tipoLog) { //  Lo he comentado porque el tipoLogtxt podría ser variado si se considera que el numero puede ser tipo filtro
+    /*switch(tipoLog) { //  Lo he comentado porque el tipoLogtxt podrÃ­a ser variado si se considera que el numero puede ser tipo filtro
     	case LOG_SEG:
 		tipoLogtxt = "SEG";
 	break;
@@ -58,9 +58,9 @@ void bitacora::add (int tipoLog, int nivellog, QString logdebug , QString qsTxt 
    // printf("empresa actual: %s  usuario actual: %s",empresaactual->nomuserempresa().ascii(),usuario );
    if (empresaactual != NULL) {
    // el int tipo de log da idea de si es un log de seguridad, de acceso a base de datos, ... etc
-   // el int nivel log da idea de la profundidad del log, ejemplos los más generales=1, absolutamente todos 9
-   // el qstring logdebug sirve para saber donde está la orden de un log para ayudar a programar, tiene 3 partes:
-   //                                          1- nombre de la clase (abreviado), 2- nombre funcion abr. 3- número de log (general)
+   // el int nivel log da idea de la profundidad del log, ejemplos los mÃ¡s generales=1, absolutamente todos 9
+   // el qstring logdebug sirve para saber donde estÃ¡ la orden de un log para ayudar a programar, tiene 3 partes:
+   //                                          1- nombre de la clase (abreviado), 2- nombre funcion abr. 3- nmero de log (general)
     
     *archivolog << tipoLog <<  ", "  << nivellog << ", " << logdebug << ", " << horastr.ascii() << ", usuario:" << empresaactual->nomuserempresa().ascii() << ", BD:" << empresaactual->nombreDB<< ", "<< qsTxt.ascii() << endl;
     //", DB:" << empresaactual.nombreDB.ascii()

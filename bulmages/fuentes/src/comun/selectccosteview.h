@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras                                    *
+ *   Copyright (C) 2003 by Tomeu BorrÃ¡s                                    *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,9 +29,9 @@ class empresa;
   * @brief Maneja la ventana de selector de centros de coste.
   *
   * Esta clase es instanciada en la clase empresa y a partir de entonces se utiliza siempre una
-  * única instancia de ésta en todo el programa \ref selccostes de este modo evitamos tener que andar
+  * Ãºnica instancia de Ã©sta en todo el programa \ref selccostes de este modo evitamos tener que andar
   * reconstruyendo la clase e introducirle los datos.
-  * También se utiliza para establecer el centro de coste por defecto, utlidad que permite introducir
+  * TambiÃ©n se utiliza para establecer el centro de coste por defecto, utlidad que permite introducir
   * asientos directamente en un centro de coste sin tener que teclearlo en cada apunte.
   */
 
@@ -49,7 +49,7 @@ private:
     int m_colCheck;		/// Indica la columna que tiene el checkbos para el centro de coste.
     /// Base de datos que va a utilizar la clase.
     postgresiface2* conexionbase;
-    /// Numero de dígitos que tienen, por defecto, las cuentas
+    /// NÃºmero de dÃ­gitos que tienen, por defecto, las cuentas
     int numdigitos;
     /// Iterador de la lista que se presenta en este formulario.
     QListViewItemIterator* m_iterador;

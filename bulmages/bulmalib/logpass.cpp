@@ -53,7 +53,7 @@ void logpass::validar() {
     if (m_authOK) {
         close(TRUE);
     } else {
-        lblAuthError->setText(tr("Error: usuario y/o contrase� incorrectos"));
+        lblAuthError->setText(tr("Error: usuario y/o contraseña incorrectos"));
         m_login->setText("");
         m_password->setText("");
         m_login->setFocus();

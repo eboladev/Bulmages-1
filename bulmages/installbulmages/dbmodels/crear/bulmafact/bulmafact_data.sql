@@ -44,9 +44,9 @@ INSERT INTO division (idproveedor, descdivision) VALUES (2, 'division 3 de crist
 INSERT INTO division (idproveedor, descdivision) VALUES (4, 'division 1 de Torrijas');
 
 
-INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Jorge Guti�rez', '39881444W', '971998877', 'Palma de Mallorca');
+INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Jorge Gutiérrez', '39881444W', '971998877', 'Palma de Mallorca');
 INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Carlos Santana', '43881555Z', '871998877', 'Campos');
-INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Dolores Mart�ez', '66881444E', '666998877', 'Muro');
+INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Dolores Martínez', '66881444E', '666998877', 'Muro');
 INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Pepe Infante', '55881444W', '9321998877', 'Barcelona');
 
 INSERT INTO tipo_iva (desctipo_iva) VALUES('Exento');
@@ -77,7 +77,7 @@ INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfam
 INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-1', '25/10/2004', 'Pedido semanal de carne y pescado', 1, 1);
 INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-2', '30/10/2004', 'Pedido especial noche halloween', 2, 3);
 INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-3', '02/11/2004', 'Frutos secos de temporada', 3, 2);
-INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-4', '02/10/2004', 'Pedido semanal de lencer�', 6, 1);
+INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-4', '02/10/2004', 'Pedido semanal de lencería', 6, 1);
 \echo "Hemos insertado los pedidos"
 
 INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 10, 1.2, '30/10/2004', 1, 1);

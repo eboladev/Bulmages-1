@@ -31,7 +31,7 @@ private:
    empresa *empresaactual;
    postgresiface2 *conexionbase;
    cursor2 *m_curtipoiva;
-   int m_posactual; /// Indica la posici� en el combobox que est�seleccionada. Se usa para hacer saves en caso de modificaciones.
+   int m_posactual; /// Indica la posición en el combobox que está seleccionada. Se usa para hacer saves en caso de modificaciones.
 public:
     tipoivaview(empresa *, QWidget *parent = 0, const char *name = 0);
     ~tipoivaview();

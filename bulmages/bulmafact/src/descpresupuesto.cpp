@@ -14,7 +14,7 @@
 /*
 -- Descuento de presupuesto.
 -- Numero
---Concepte: Descripci�del motiu de descompte.
+--Concepte: Descripció del motiu de descompte.
 --Proporcio: Percentatge a descomptar.
 -- Descompte de pressupost a clients.
 CREATE TABLE dpresupuesto (
@@ -22,7 +22,7 @@ CREATE TABLE dpresupuesto (
    conceptdpresupuesto character varying(2000),
    proporciondpresupuesto numeric(5,2),
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despu� de �ta.
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
 );
 */
 

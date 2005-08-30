@@ -8,7 +8,7 @@
 
 
 /** 
-  * @author Tomeu Borr·s Riera 
+  * @author Tomeu Borr√°s Riera 
   * \class splashscreen splashscreen.h
   * \brief Pantalla de bienvenida
   *

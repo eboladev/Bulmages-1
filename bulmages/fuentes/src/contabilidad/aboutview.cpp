@@ -2,7 +2,7 @@
                           aboutview.cpp  -  description
                              -------------------
     begin                : Fri Dec 27 2002
-    copyright            : (C) 2002 by Tomeu Borr醩 Riera
+    copyright            : (C) 2002 by Tomeu Borr谩s Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 
@@ -19,14 +19,14 @@
 
 /** \brief Constructor de la clase
   *
-  * En realidad no hace nada pq el dialogo s髄o requiere visualizaci髇 y no realiza acciones.
+  * En realidad no hace nada pq el dialogo s贸lo requiere visualizaci贸n y no realiza acciones.
   */
 aboutview::aboutview(QWidget *parent, const char *name ) : aboutdlg(parent,name,false,0) {
 }
 
 /** \brief Destructor de la clase
   *
-  * En realidad no hace nada pq el dialogo s髄o requiere visualizaci髇 y no realiza acciones.
+  * En realidad no hace nada pq el dialogo s贸lo requiere visualizaci贸n y no realiza acciones.
   */
 
 aboutview::~aboutview(){

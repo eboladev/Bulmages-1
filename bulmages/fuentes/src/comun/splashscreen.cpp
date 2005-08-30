@@ -74,7 +74,7 @@ void Splash::paint() {
                     tr("Comprobando nivel de combustible"),
                     tr("Calibrando los lasers del lector de CD"),
                     tr("Comprobando la disquetera y la Memoria Fisica"),
-                    tr("Induciendo energ� quantica, entre su RAM y su ROM"),
+                    tr("Induciendo energía quantica, entre su RAM y su ROM"),
                     tr("Golpecitos de reajuste del HD"),
                     tr("Probando la Velocidad el Ventilador de la CPU y su Frecuencia"),
                     tr("Haciendo PING contra el servidor de la MetaBase"),
@@ -82,8 +82,8 @@ void Splash::paint() {
                     tr("Dejando tiempo libre al sistema"),
                     tr("Sincronizando fases Alfa Beta"),
                     tr("Flusheando Datos con vidas inteligentes superiores"),
-                    tr("Permutando las tablas de partici� del sistema operativo"),
-		    tr("Crackeando BulmaG�")};
+                    tr("Permutando las tablas de partición del sistema operativo"),
+		    tr("Crackeando BulmaGés")};
   if (a) {
     cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";
   }// end if

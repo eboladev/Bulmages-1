@@ -2,7 +2,7 @@
                           cuentaview.cpp  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borr� Riera
+    copyright            : (C) 2002 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -31,12 +31,12 @@ void cuentaview::cuentanueva(QString cod) {
     /// VAmos a buscar el posible padre de una cuenta y lo pondremos como toca.
     QString cpadre = conexionbase->searchParent(cod);
     codigopadre->setText(cpadre);
-    /// Tambi� buscaremos el grupo y lo pondremos como toca
+    /// También buscaremos el grupo y lo pondremos como toca
     QString query = "SELECT * FROM cuenta WHERE codigo = '"+cpadre+"'";
     conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(query,"elquery");
     conexionbase->commit();
-    /// Y tambi� buscaremos los tipos y los usaremos.
+    /// Y también buscaremos los tipos y los usaremos.
     if (!cur->eof()) {
 
         descripcion->setText(cur->valor("descripcion"));
@@ -104,7 +104,7 @@ cuentaview::~cuentaview() {}// end ~cuentaview
 
 
 /*********************************************************************
- * Esta funci� se activa cada vez quese pulsa una tecla sobre la cuenta
+ * Esta función se activa cada vez quese pulsa una tecla sobre la cuenta
  *********************************************************************/
 void cuentaview::cambiapadre(const QString &cadena) {
     QString cad;
@@ -237,7 +237,7 @@ int cuentaview::cargacuenta(int idcuenta1) {
     while (idgrupos[i]!=idgrupo && i<100)
         i++;
     combogrupos->setCurrentItem(i);
-    // Vamos a coger el c�igo del padre de la cuenta para que tambi�
+    // Vamos a coger el código del padre de la cuenta para que también
     // aparezca en el formulario.
     cpadre = atoi( cursorcuenta->valor(4).ascii());
     if (cpadre != 0) {
@@ -390,9 +390,9 @@ void cuentaview::codigo_return() {
                               void cuentaview::deleteAccount() {
                                   switch( QMessageBox::warning( this, "Borrar Cuenta",
                                                                 "Se va a borrar la Cuenta,\n"
-                                                                "Esto puede ocasionar p�dida de datos\n"
-                                                                "Tal vez deberia pensarselo mejor antes\n"
-                                                                "porque igual su trabajo se va a tomar por culo.",
+                                                                "Esto puede ocasionar pérdida de datos\n"
+                                                                "Tal vez debería pensarselo mejor antes\n"
+                                                                "porque igual su trabajo se pierde.",
                                                                 QMessageBox::Ok ,
                                                                 QMessageBox::Cancel )) {
                                   case QMessageBox::Ok: // Retry clicked or Enter pressed

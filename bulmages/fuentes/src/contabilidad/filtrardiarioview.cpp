@@ -2,7 +2,7 @@
                           filtrardiarioview.cpp  -  description
                              -------------------
     begin                : mar jul 29 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 

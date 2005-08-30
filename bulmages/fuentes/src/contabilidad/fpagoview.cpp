@@ -11,14 +11,14 @@
 
 
 /** \file fpagoview.cpp
-  * Contiene la implementaci� de la clase \ref fpagoview
-  * \author Tomeu Borr� Riera
+  * Contiene la implementación de la clase \ref fpagoview
+  * \author Tomeu Borrás Riera
   */
 
 #include "fpagoview.h"
 #include "empresa.h"
 
-/** El constructor de la clase prepara las variables globales y llama a la funci� pintar
+/** El constructor de la clase prepara las variables globales y llama a la función pintar
   */
 fpagoview::fpagoview(empresa *emp, QWidget *parent, const char *name) : fpagodlg(parent, name) , dialogChanges(this) {
     empresaactual=emp;
@@ -63,7 +63,7 @@ void fpagoview::pintar(QString idfpago) {
 
 /**
   * Esta funcion muestra la forma de pago en la ventana.
-  * \param pos si es distinto de cero se busca en el combo la posici� indicada sino se usa la posici� actual del combo.
+  * \param pos si es distinto de cero se busca en el combo la posición indicada sino se usa la posición actual del combo.
   */
 void fpagoview::mostrarplantilla(int pos) {
     fprintf(stderr,"mostrarplantilla\n");
@@ -101,7 +101,7 @@ void fpagoview::cambiacombo(int) {
 }// end cambiacombo
 
 
-/** SLOT que responde a la pulsaci� del bot� de guardar el tipo de iva que se est�editando.
+/** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void fpagoview::s_saveFPago() {
@@ -113,7 +113,7 @@ void fpagoview::s_saveFPago() {
 }// end s_saveFPago
 
 
-/** SLOT que responde a la pulsaci� del bot� de nuevo tipo de iva
+/** SLOT que responde a la pulsación del botón de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
 void fpagoview::s_newFPago() {
@@ -136,15 +136,15 @@ void fpagoview::s_newFPago() {
 
 
 
-/** SLOT que responde a la pulsaci� del bot� de borrar un tipo de IVA
+/** SLOT que responde a la pulsación del botón de borrar un tipo de IVA
   * Borra en la tabla de tiposiva el TIPO de iva concreto
   */
 void fpagoview::s_deleteFPago() {
     switch( QMessageBox::warning( this, "Borrar Forma de Pago",
                                   "Se va a borrar la Forma de Pago,\n"
-                                  "Esto puede ocasionar p�dida de datos\n"
+                                  "Esto puede ocasionar pérdida de datos\n"
                                   "Tal vez deberia pensarselo mejor antes\n"
-                                  "porque igual su trabajo se va a tomar por culo.",
+                                  "porque igual su trabajo se pierde.",
                                   QMessageBox::Ok ,
                                   QMessageBox::Cancel )) {
     case QMessageBox::Ok: // Retry clicked or Enter pressed
@@ -158,7 +158,7 @@ void fpagoview::s_deleteFPago() {
 
 
 
-/** Antes de salir de la ventana debemos hacer la comprobaci� de si se ha modificado algo */
+/** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo */
 bool fpagoview::close(bool ok) {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {

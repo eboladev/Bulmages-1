@@ -35,7 +35,7 @@ public:
 	compbalanceview(empresa *, QWidget *parent=0, const char *name=0);
 	~compbalanceview();
    void inicializa1(QString);
-   QString idmpatrimonial;   //este campo acompaña a la descripcion de la masa, pero no aparece pq no puede editarse.
+   QString idmpatrimonial;   //este campo acompaña a la descripcón de la masa, pero no aparece pq no puede editarse.
 
 public slots:
    virtual void agregalinea();

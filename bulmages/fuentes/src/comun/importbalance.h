@@ -1,5 +1,5 @@
 /***************************************************************************
- *Copyright (C) 2004 by Tomeu Borr·s Riera                                 *
+ *Copyright (C) 2004 by Tomeu Borr√°s Riera                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,8 +17,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
   /** \file importbalance.h
-   * Contiene la declaraciÛn de la clase \ref importbalance y sus mÈtodos.
-   * \author Tomeu Borr·s Riera
+   * Contiene la declaraci√≥n de la clase \ref importbalance y sus m√©todos.
+   * \author Tomeu Borr√°s Riera
    */
 #ifndef importbalance_H
 #define importbalance_H
@@ -31,8 +31,8 @@ class QString;
 class empresa;
 class postgresiface2;
 
-/** Es una implementaciÛn de un parser XML hecho en SAX de Qt que utiliza del sistema de diversas pasadas
-  * para asegurar hacer la importaciÛn de datos.
+/** Es una implementaci√≥n de un parser XML hecho en SAX de Qt que utiliza del sistema de diversas pasadas
+  * para asegurar hacer la importaci√≥n de datos.
   * En una primera pasada introduce en el sistema las masas patrimoniales y en una segunda pasada introduce los componentes del balance
   * Es preciso mantener en memoria algunos identificadores y esto se hace mediante el uso de un mapa
   */
@@ -42,33 +42,33 @@ private:
    postgresiface2 *conexionbase;
    /// La empresa con la que se inicializa. Esta variable se introduce en el constructor de la clase y queda definida.
    empresa *empresaactual;
-   /// Esta variable global indica siempre el tag que est· procesando el parser
+   /// Esta variable global indica siempre el tag que est√° procesando el parser
    QString m_tag;
-   /// Esta variable global indica la informaciÛn que se acaba de recolectar en el parser. De modo que al llegar a un tag de cierre siempre sea m_data quien tenga el valor introducido para poder utilizarlo.
+   /// Esta variable global indica la informaci√≥n que se acaba de recolectar en el parser. De modo que al llegar a un tag de cierre siempre sea m_data quien tenga el valor introducido para poder utilizarlo.
    QString m_data;
    /// En este mapa se almacenan los valores que se van rescatando del XML, de tal forma que al llegar a un tag de cierre importante se recuperen de aqui los datos a ser introducidos en la base de datos.
    QMap<QString, QString> m_tvalores;
    /// En el caso de las masas patrimoniales hay un problema para los identificadores.
    QMap<QString, QString> m_identmasasp;  /// Este hash sirve para almacenar las claves provisionales de las masas patrimoniales.
-   int m_paso; /// Indica que paso estamos realizando. Recordemos que en esta ocasiÛn se hacen dos pasadas de parser para hacer la importaciÛn completamente.
+   int m_paso; /// Indica que paso estamos realizando. Recordemos que en esta ocasi√≥n se hacen dos pasadas de parser para hacer la importaci√≥n completamente.
 public:
     /// \brief constructor de la clase que inicializa determinadas variables de clase.
     importbalance( empresa * );
-    /// \brief ImplementaciÛn del parser que procesa un tag de inicio 
+    /// \brief Implementaci√≥n del parser que procesa un tag de inicio 
     bool startElement( const QString&, const QString&, const QString& , const QXmlAttributes& );
-    /// \brief ImplementaciÛn del parser que procesa un tag de cierre 
+    /// \brief Implementaci√≥n del parser que procesa un tag de cierre 
     bool endElement( const QString&, const QString&, const QString& );
-    /// \brief ImplementaciÛn del parser que procesa un tag de inicio en la primera pasada.
+    /// \brief Implementaci√≥n del parser que procesa un tag de inicio en la primera pasada.
     bool startElement1( const QString&, const QString&, const QString& , const QXmlAttributes& );
-    /// \brief ImplementaciÛn del parser que procesa un tag de cierre en la primera pasada.
+    /// \brief Implementaci√≥n del parser que procesa un tag de cierre en la primera pasada.
     bool endElement1( const QString&, const QString&, const QString& );
-    /// \brief ImplementaciÛn del parser que procesa un tag de inicio en la segunda pasada.
+    /// \brief Implementaci√≥n del parser que procesa un tag de inicio en la segunda pasada.
     bool startElement2( const QString&, const QString&, const QString& , const QXmlAttributes& );
-    /// \brief ImplementaciÛn del parser que procesa un tag de cierre en la primera pasada.
+    /// \brief Implementaci√≥n del parser que procesa un tag de cierre en la primera pasada.
     bool endElement2( const QString&, const QString&, const QString& );
     /// \brief Recoge valores asignados a un determinado tag y los almacena en la variable m_data
     bool characters (const QString &);
-    /// \brief Cambia de numero de paso. Recordar que en este caso la importaciÛn se hace en dos pasos.
+    /// \brief Cambia de numero de paso. Recordar que en este caso la importaci√≥n se hace en dos pasos.
     void cambiapaso() {m_paso=1;};
 };
 

@@ -269,7 +269,10 @@
                                 <cstring>mver_numalbaranp</cstring>
                             </property>
                             <property name="text">
-                                <string>&amp;Num. Albaran</string>
+                                <string>&amp;Núm. Albaran</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+N</string>
                             </property>
                             <property name="checked">
                                 <bool>true</bool>
@@ -280,7 +283,10 @@
                                 <cstring>mver_descalbaranp</cstring>
                             </property>
                             <property name="text">
-                                <string>&amp;Descripcion</string>
+                                <string>&amp;Descripción</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+D</string>
                             </property>
                             <property name="checked">
                                 <bool>true</bool>
@@ -379,7 +385,7 @@
                                 <cstring>mver_idalmacen</cstring>
                             </property>
                             <property name="text">
-                                <string>Id. almacen</string>
+                                <string>Id. almacén</string>
                             </property>
                         </widget>
                         <widget class="QCheckBox">
@@ -405,7 +411,7 @@
                                 <cstring>mver_nomalmacen</cstring>
                             </property>
                             <property name="text">
-                                <string>Nom Almacen</string>
+                                <string>Nom Almacén</string>
                             </property>
                             <property name="checked">
                                 <bool>false</bool>

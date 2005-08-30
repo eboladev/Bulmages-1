@@ -1,10 +1,10 @@
 /***************************************************************************
                           balanceprintview.h  -  description
                              -------------------
-    begin                : mi�jun 25 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    begin                : mié jun 25 2003
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Ter� - amirabet@biada.org
+    modificat per        : (C) 2003 Antoni Mirabete i Terés - amirabet@biada.org
  ***************************************************************************/
 /***************************************************************************
  *                                                                         *
@@ -26,12 +26,12 @@
 class empresa;
 
 /** 
-  * @author Tomeu Borr� Riera 
+  * @author Tomeu Borrás Riera 
   * \class BalancePrintView balanceprintview.h
-  * \brief Formulario introducci� de datos para la impresi� del balance de sumas y saldos.
+  * \brief Formulario introducción de datos para la impresión del balance de sumas y saldos.
   * \todo Hay que cambiar el array de ccostes por un cursor
   *
-  * Clase que permite introducir los datos necesarios para la generaci� del balance (Fechas y rangos) y que se encarga de generar el balance en los formatos de impresi� indicados.
+  * Clase que permite introducir los datos necesarios para la generación del balance (Fechas y rangos) y que se encarga de generar el balance en los formatos de impresión indicados.
   */
 
 class BalancePrintView : public BalancePrintDlg  {

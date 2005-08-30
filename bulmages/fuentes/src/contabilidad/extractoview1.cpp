@@ -2,7 +2,7 @@
                           extractoview11.cpp  -  description
                              -------------------
     begin                : Thu Jan 9 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -14,10 +14,10 @@
  *                                                                         *
  ***************************************************************************/
 /** \file extractiview1.cpp
-  * Este archivo contiene la implementaci� de la clase extractoview1 que saca el extracto por pantalla de
+  * Este archivo contiene la implementación de la clase extractoview1 que saca el extracto por pantalla de
   * una o varias cuentas determinadas. Esta clase es una de las tres principales junto a \ref introapuntes1 y 
   * \ref diarioview1
-  * \author Tomeu Borr� Riera
+  * \author Tomeu Borrás Riera
   */
 
 #include <qwidget.h>
@@ -103,7 +103,7 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
 
     listado->hideColumn(IDAPUNTE);
     listado->hideColumn(NUM_ASIENTO);
-    // Dependiendo de la configuraci� mostramos o no mostramos la contrapartida, los canales y los centros de coste
+    // Dependiendo de la configuración mostramos o no mostramos la contrapartida, los canales y los centros de coste
     if (confpr->valor(CONF_CONTRAPARTIDA_EXTRACTO) != "YES")
         listado->hideColumn(CONTRAPARTIDA);
     if (confpr->valor(CONF_CANAL_EXTRACTO) != "YES")
@@ -127,13 +127,13 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_EXTRACTO).ascii());
 
-    // Hacemos la conexion de se�les, para la petici� de menu contextual y para el punteo.
+    // Hacemos la conexion de señales, para la petición de menu contextual y para el punteo.
     connect( listado, SIGNAL( contextMenuRequested(int,int,const QPoint&) ), this, SLOT( contextmenu(int,int,const QPoint&) ) );
     connect( listado, SIGNAL( valueChanged(int,int) ), this, SLOT( apuntecambiadogrid(int,int) ) );
 
 
     // Iniciamos los componentes de la fecha para que al principio aparezcan
-    // Como el a� inicial.
+    // Como el año inicial.
     QString cadena;
     cadena.sprintf("%2.2d/%2.2d/%4.4d",1, 1, QDate::currentDate().year());
     m_fechainicial1->setText(cadena);
@@ -161,8 +161,8 @@ void extractoview1::inicializa2(intapunts3view *inta, diarioview1 *diar, balance
 }// end inicializa2
 
 
-/** \brief Esta funci� carga el cursor de cuentas que forman el todo por el todo.
-  * Tambi� sera la encargada de recoger la informaci� de filtraci� para que
+/** \brief Esta función carga el cursor de cuentas que forman el todo por el todo.
+  * También sera la encargada de recoger la información de filtración para que
   * todo sea correcto.
   */
 void extractoview1::accept() {
@@ -198,9 +198,9 @@ void extractoview1::boton_asiento() {
 
 
 // Si el parametro pasado es un:
-// 0 -> del dia actual
+// 0 -> del día actual
 // 1 -> del mes actual
-// 2 -> del a� actual
+// 2 -> del año actual
 void extractoview1::boton_diario1(int tipo) {
     QDate fecha1, fecha2, fechaact, fechaact1;
     if(!m_fechainicial1->text().isEmpty()) {
@@ -230,7 +230,7 @@ void extractoview1::boton_diario1(int tipo) {
 // Si el parametro pasado es un:
 // 0 -> del periodo actual.
 // 1 -> del mes actual mirado a partir de la fecha de inicio.
-// 2 -> del a� actual mirado a partir de la fecha de inicio.
+// 2 -> del año actual mirado a partir de la fecha de inicio.
 void extractoview1::boton_balance1(int tipo) {
     QDate fecha1, fecha2, fechaact, fechaact1;
     if(!m_fechainicial1->text().isEmpty()) {
@@ -335,7 +335,7 @@ void extractoview1::vaciar() {
 void extractoview1::ajustes() {}// end ajustes
 
 
-/** \brief Esta funci� se encarga de montar el query que va a hacer la consulta en la base de datos
+/** \brief Esta función se encarga de montar el query que va a hacer la consulta en la base de datos
   */
 void extractoview1::presentar() {
     fprintf(stderr,"Presentar\n");
@@ -378,7 +378,7 @@ void extractoview1::presentar() {
     fprintf(stderr,"Vamos a presentar\n");
     if (!cursorcta->eof() && !cursorcta->bof()) {
         idcuenta = atoi(cursorcta->valor("idcuenta").ascii());
-        // Escribimos el nombre de la cuenta y el c�igo de la misma.
+        // Escribimos el nombre de la cuenta y el código de la misma.
         codigocuenta->setText(cursorcta->valor("codigo"));
         nombrecuenta->setText(cursorcta->valor("descripcion"));
         // Hacemos la consulta de los apuntes a listar en la base de datos.
@@ -441,7 +441,7 @@ void extractoview1::presentar() {
                 int ordenasiento = atoi(cursorapt->valor("ordenasiento").ascii());
 
 
-                // Aqui vamos a poner el tema del Punteo, por lo menos la presentaci�.
+                // Aquí vamos a poner el tema del Punteo, por lo menos la presentación.
                 QCheckTableItem *check = new QCheckTableItem(listado,0);
                 listado->setItem(j,PUNTEO,check);
                 if (cursorapt->valor("punteo")== "t") {
@@ -542,13 +542,13 @@ void extractoview1::contextmenu(int row, int col, const QPoint &poin) {
     QPopupMenu *popup = new QPopupMenu;
     popup->insertItem(tr("Ver Asiento"), 0);
     popup->insertSeparator();
-    popup->insertItem(tr("Ver Diario (Este dia)"),101);
+    popup->insertItem(tr("Ver Diario (Este día)"),101);
     popup->insertItem(tr("Ver Diario (Este mes)"),103);
-    popup->insertItem(tr("Ver Diario (Este a�)"),104);
+    popup->insertItem(tr("Ver Diario (Este año)"),104);
     popup->insertSeparator();
-    popup->insertItem(tr("Ver Balance (Este dia)"),121);
+    popup->insertItem(tr("Ver Balance (Este día)"),121);
     popup->insertItem(tr("Ver Balance (Este mes)"),123);
-    popup->insertItem(tr("Ver Balance (Este a�)"),124);
+    popup->insertItem(tr("Ver Balance (Este año)"),124);
     int opcion = popup->exec(poin);
     switch(opcion) {
     case 0:
@@ -644,8 +644,8 @@ void extractoview1::boton_guardarpunteo() {
 
 
 
-/** \brief Esta funci� borra todo el punteo de un extracto y lo pone a cero
-  * Esta funci� se activa justo cuando se pulsa sobre el bot� de resetear el punteo.
+/** \brief Esta función borra todo el punteo de un extracto y lo pone a cero
+  * Esta función se activa justo cuando se pulsa sobre el botón de resetear el punteo.
   * Por supuesto cuando se pulsa dicho boton se borra el punteo.
   */
 void extractoview1::boton_borrapunteo() {

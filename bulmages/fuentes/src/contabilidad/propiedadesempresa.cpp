@@ -2,7 +2,7 @@
                           propiedadesempresa.cpp  -  description
                              -------------------
     begin                : Fri Nov 29 2002
-    copyright            : (C) 2002 by Tomeu Borr� Riera
+    copyright            : (C) 2002 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -63,7 +63,7 @@ int propiedadesempresa::inicializa(postgresiface2 *conn) {
     delete curs;
 
 
-    //Este bloque de c�igo realiza la consulta para obtener los datos fiscales de la empresa
+    //Este bloque de código realiza la consulta para obtener los datos fiscales de la empresa
     QString empresa, ano;
 
 

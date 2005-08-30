@@ -1,8 +1,8 @@
 /***************************************************************************
                           balanceview.h  -  description
                              -------------------
-    begin                : s� abr 26 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    begin                : sáb abr 26 2003
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -33,14 +33,14 @@ class extractoview1;
 class empresa;
 
 /**
- * \author Tomeu Borr� Riera
+ * \author Tomeu Borrás Riera
  * \class balanceview balanceview.h
  * \brief Balance de Sumas y Saldos plano
  * \todo Hay que eliminar el ccostes[200] y cambiarlo por un cursor
  * 
  * Clase que muestra un balance de sumas y saldos de la empresa abierta. 
  Esta clase  genera el balance de sumas y saldos y lo muestra por pantalla en una
- ventana dise�da espec�icamente para ello.
+ ventana diseñada específicamente para ello.
  */
 
 class balanceview : public balancedlg  {
@@ -48,7 +48,7 @@ class balanceview : public balancedlg  {
 private:
 /// Empresa con la que se ha inicializado la clase
   empresa *empresaactual;
-/// Base de datos con la que trabaja la conexi�
+/// Base de datos con la que trabaja la conexión
   postgresiface2* conexionbase;
 /// Estas tres clases deben ser sustituidas por algo en la clase empresa
   intapunts3view *introapunts;
@@ -56,7 +56,7 @@ private:
   extractoview1 *extracto;
 /// Cursor para recorrer las cuentas
   cursor2 *cursorcta;
-/// El nmero de d�itos que tienen las cuentas de la empresa
+/// El nmero de dígitos que tienen las cuentas de la empresa
   int numdigitos;
 /// Array que almacena los identificadores de los centros de coste
   int ccostes[200];

@@ -40,7 +40,7 @@ private:
    empresa *empresaactual;
 /// Base de datos con la que trabaja toda la clase (Inicializada con el constructor de clase)
    postgresiface2 *conexionbase;
-/// Esta variable indica si se abre para busqueda o para edicion.  (edición =0; seleccion = 1 )  
+/// Esta variable indica si se abre para busqueda o para edición.  (edición =0; seleccion = 1 )  
    int m_modo;
 /// Indica el nombre del balance seleccionado
    QString m_nomBalance;         

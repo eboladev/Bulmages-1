@@ -151,7 +151,7 @@ bool operator == (int x, Fixed y) {
 
 
 void Fixed::equalize_precision(Fixed &x) {
-    fprintf(stderr,"Ecualizar precisi�\n");
+    fprintf(stderr,"Ecualizar precisión\n");
     while (precision < x.precision)   {
         value *= 10; //value * SCALE.x[x.precision - precision];
         precision ++;
@@ -161,7 +161,7 @@ void Fixed::equalize_precision(Fixed &x) {
         x.value *= 10 ; //x.value * SCALE.x[precision - x.precision];
         x.precision ++;
     }// end if
-    fprintf(stderr,"Fin de ecualizar precisi�\n");
+    fprintf(stderr,"Fin de ecualizar precisión\n");
 }
 
 

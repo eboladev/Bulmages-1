@@ -23,7 +23,7 @@
 -- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
 -- hacemos a petición de un cliente determinado
 -- Numero
--- Data: Data d'emisiï¿½del presupost.
+-- Data: Data d'emisió del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
 -- TelfContacte: Telï¿½on.
 -- Venciment: Data mï¿½ima de validesa del presupost.

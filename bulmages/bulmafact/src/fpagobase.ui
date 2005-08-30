@@ -160,6 +160,12 @@
                                     <property name="name">
                                         <cstring>m_descforma_pago</cstring>
                                     </property>
+                                    <property name="frameShape">
+                                        <enum>LineEditPanel</enum>
+                                    </property>
+                                    <property name="frameShadow">
+                                        <enum>Sunken</enum>
+                                    </property>
                                 </widget>
                             </hbox>
                         </widget>
@@ -184,7 +190,7 @@
                                         </sizepolicy>
                                     </property>
                                     <property name="text">
-                                        <string>Plazo primer Recibo (dias)</string>
+                                        <string>Plazo primer Recibo (días)</string>
                                     </property>
                                 </widget>
                                 <widget class="QLineEdit">
@@ -314,7 +320,7 @@
                                         </sizepolicy>
                                     </property>
                                     <property name="text">
-                                        <string>Plazo entre Recibos (dias)</string>
+                                        <string>Plazo entre Recibos (días)</string>
                                     </property>
                                 </widget>
                                 <widget class="QLineEdit">

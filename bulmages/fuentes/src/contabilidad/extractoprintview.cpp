@@ -2,9 +2,9 @@
                           extractoprintview.cpp  -  description
                              -------------------
     begin                : jue jun 26 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Ter� - amirabet@biada.org
+    modificat per        : (C) 2003 Antoni Mirabete i Terés - amirabet@biada.org
  ***************************************************************************/
 /***************************************************************************
  *                                                                         *
@@ -32,7 +32,7 @@
   * @param emp Empresa con la que va a trabajar esta clase
   * @param parent Ventana que llama a esta ventana
   * @param name Nombre de la ventana
-  * Aqui tambi� se inicializa la variable global conexionbase.
+  * Aqui también se inicializa la variable global conexionbase.
   */
 ExtractoPrintView::ExtractoPrintView(empresa *emp, QWidget *parent=0, const char *name=0 ) : ExtractoPrintDlg(parent,name) {
     fichero=NULL;
@@ -45,11 +45,11 @@ ExtractoPrintView::ExtractoPrintView(empresa *emp, QWidget *parent=0, const char
 
 ExtractoPrintView::~ExtractoPrintView() {}
 
-/** \brief Inicializa la clase con algunos par�etros por defecto
+/** \brief Inicializa la clase con algunos parámetros por defecto
   * @param fechainicial Fecha para empezar el extracto
   * @param fechafinal  Fecha para terminar el extracto
-  * @param codi Codigo de cuenta inicial del extracto
-  * @param codf Codigo de cuenta final del extracto
+  * @param codi Código de cuenta inicial del extracto
+  * @param codf Código de cuenta final del extracto
   */
 void ExtractoPrintView::inicializa1(QString fechainicial, QString fechafinal, QString codi, QString codf) {
     m_fechainicial->setText(fechainicial);
@@ -59,10 +59,10 @@ void ExtractoPrintView::inicializa1(QString fechainicial, QString fechafinal, QS
 }// end inicializa1
 
 /**************************************************************
- * Se ha pulsado sobre el boton aceptar del formulario
+ * Se ha pulsado sobre el botón aceptar del formulario
  **************************************************************/
 void ExtractoPrintView::accept() {
-    // Versi�per si nom� permetem escollir una opci
+    // Versió per si només permetem escollir una opció
     if (radiotexto->isChecked())
         presentar("txt");
     else if (radiohtml->isChecked())
@@ -73,7 +73,7 @@ void ExtractoPrintView::accept() {
         pruebasRTK();
 }
 
-/** \brief se va a hacer una impresi� de Libro Mayor con kugar
+/** \brief se va a hacer una impresión de Libro Mayor con kugar
   */
 void ExtractoPrintView::presentakugar() {
     int txt=1;
@@ -94,8 +94,8 @@ void ExtractoPrintView::presentakugar() {
 
 
 
-    /// La impresi� siempre se hace en el archivo extracte.kud situado en el directorio de trabajo
-    char *argstxt[]={"extracte.kud","extracte.kud",NULL};      //presentaci�txt normal
+    /// La impresión siempre se hace en el archivo extracte.kud situado en el directorio de trabajo
+    char *argstxt[]={"extracte.kud","extracte.kud",NULL};      //presentació txt normal
     ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
     if (!fitxersortidatxt)
         txt=0;    // verifiquem que s'hagin creat correctament els fitxers
@@ -182,9 +182,9 @@ void ExtractoPrintView::presentakugar() {
 }// end presentakugar
 
 
-/** \brief Esta funci� monta la consulta que se va a realizar contra la base de datos
-  * La consulta es de bastante detalle y por eso es conveniente dedicar una funci� a realizarla
-  * Adem� dicha consulta puede ser invocada desde distintos sitios
+/** \brief Esta función monta la consulta que se va a realizar contra la base de datos
+  * La consulta es de bastante detalle y por eso es conveniente dedicar una función a realizarla
+  * Además dicha consulta puede ser invocada desde distintos sitios
   */
 QString ExtractoPrintView::montaQuery() {
     fprintf(stderr,"Presentar\n");
@@ -195,7 +195,7 @@ QString ExtractoPrintView::montaQuery() {
     QString cfinal = m_codigofinal->text();
     QString contra = m_filt->codigocontrapartida();
 
-    // Preparamos el string para que aparezca una u otra cosa segun el punteo.
+    // Preparamos el string para que aparezca una u otra cosa según el punteo.
     QString tipopunteo;
     tipopunteo="";
     if (m_filt->punteotodos->isChecked()) {
@@ -285,12 +285,12 @@ void ExtractoPrintView::presentar(char *tipus) {
     QString cinicial = m_codigoinicial->text();
     QString cfinal = m_codigofinal->text();
 
-    // tipus de presentaci�
+    // tipus de presentació
     txt=!strcmp(tipus,"txt");
     html=!strcmp(tipus,"html");
 
-    char *argstxt[]={"mayor.txt","mayor.txt",NULL};      //presentaci�txt normal
-    char *argshtml[]={"mayor.html","mayor.html",NULL};   //presentaci�html normal
+    char *argstxt[]={"mayor.txt","mayor.txt",NULL};      //presentació txt normal
+    char *argshtml[]={"mayor.html","mayor.html",NULL};   //presentació html normal
 
     ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
     ofstream fitxersortidahtml(argshtml[0]);
@@ -300,9 +300,9 @@ void ExtractoPrintView::presentar(char *tipus) {
     if (!fitxersortidahtml)
         html=0;  // es pot millorar el tractament d'errors
 
-    if (txt | html) {                 // nom� continuem si hem pogut crear algun fitxer
+    if (txt | html) {                 // només continuem si hem pogut crear algun fitxer
         if (txt) {
-            //presentaci�txt
+            //presentació txt
 
             fitxersortidatxt.setf(ios::fixed)
                 ;
@@ -312,7 +312,7 @@ void ExtractoPrintView::presentar(char *tipus) {
             fitxersortidatxt << "_________________________________________________________________________________________________________\n";
         }
         if (html) {
-            //presentaci�html
+            //presentació html
 
             fitxersortidahtml.setf(ios::fixed)
                 ;
@@ -372,14 +372,14 @@ void ExtractoPrintView::presentar(char *tipus) {
                     }
 
                     if (txt) {
-                        //presentaci�txt
+                        //presentació txt
                         fitxersortidatxt << "\nAsiento  Fecha   Contrapartida   Descripcion                          Debe         Haber         Saldo\n";
                         fitxersortidatxt << "                                                 SUMAS ANTERIORES...   " << setw(10) << debeinicial << setw(10) << haberinicial << setw(10) << saldoinicial << endl;
                         fitxersortidatxt << "_________________________________________________________________________________________________________\n";
                     }
 
                     if (html) {
-                        //presentaci�html
+                        //presentació html
                         fitxersortidahtml << "<tr><td class=titolcolumnamajor> Asiento </td><td class=titolcolumnamajor> Fecha </td><td class=titolcolumnamajor> Contrapartida </td><td class=titolcolumnamajor> Descripcion </td><td class=titolcolumnamajor> Debe </td><td class=titolcolumnamajor> Haber </td><td class=titolcolumnamajor> Saldo </td></tr>\n";
                         fitxersortidahtml << "<tr><td></td><td></td><td></td><td class=sumamajor> Sumes anteriors...</td><td class=dosdecimals> " << debeinicial << " </td><td class=dosdecimals> " << haberinicial << " </td><td class=dosdecimals> " << saldoinicial << "</td><td>\n";
                     }
@@ -405,10 +405,10 @@ void ExtractoPrintView::presentar(char *tipus) {
                         debefinal += debe;
                         haberfinal += haber;
                         cad = cursoraux1->valor("fecha").ascii();
-                        //presentaci�txt
+                        //presentació txt
                         if (txt)
                             fitxersortidatxt <<  setw(5) << idasiento << setw(14) << cad.substr(0,10).c_str() << setw(10) << codcontrapartida << "  " << setw(40)  << setiosflags(ios::left) << cursoraux1->valor("conceptocontable").ascii() << setw(10) << resetiosflags(ios::left) << debe << setw(10) << haber << setw(10) << saldo << endl;
-                        //presentaci�html
+                        //presentació html
                         if (html)
                             fitxersortidahtml << " <tr><td class=assentamentmajor> " << idasiento << " </td><td> " << cad.substr(0,10).c_str() << " </td><td class=contrapartidamajor> " << codcontrapartida << " </td><td> " << cursoraux1->valor("conceptocontable").ascii() << " </td><td class=dosdecimals> " << debe << " </td><td class=dosdecimals> " << haber << " </td><td class=dosdecimals> " << saldo << " </td></tr>\n ";
                         cursoraux3->cerrar();
@@ -420,12 +420,12 @@ void ExtractoPrintView::presentar(char *tipus) {
                         saldofinal = haberfinal - debefinal;
                     }
                     if (txt) {
-                        //presentaci�txt
+                        //presentació txt
                         fitxersortidatxt << "                                               __________________________________________________________\n";
                         fitxersortidatxt << "                                                  TOTAL SUBCUENTA...   " << setw(10) << debefinal << setw(10) << haberfinal << setw(10) << saldofinal << endl;
                     }
                     if (html) {
-                        //presentaci�html
+                        //presentació html
                         fitxersortidahtml << "<tr><td></td><td></td><td></td><td class=sumamajor> Total subcompte... </td><td class=dosdecimals>" << debefinal << " </td><td class=dosdecimals> " << haberfinal << " </td><td class=dosdecimals> " << saldofinal << "</td></tr>\n\n";
                     }
                     cursoraux2->cerrar();
@@ -435,12 +435,12 @@ void ExtractoPrintView::presentar(char *tipus) {
             cursoraux->siguienteregistro();
         }
         if (html)
-            fitxersortidahtml << "\n</table></body></html>\n";     //presentaci�html
+            fitxersortidahtml << "\n</table></body></html>\n";     //presentació html
         conexionbase->commit();
         delete cursoraux;
     }
     if (txt) {
-        //presentaci�txt
+        //presentació txt
         fitxersortidatxt.close();
         if ((pid=fork()) < 0) {
             perror ("Fork failed");
@@ -451,7 +451,7 @@ void ExtractoPrintView::presentar(char *tipus) {
         }
     }
     if (html) {
-        //presentaci�html
+        //presentació html
         fitxersortidahtml.close();
         if ((pid=fork()) < 0) {
             perror ("Fork failed");

@@ -44,14 +44,14 @@ BSelector::~BSelector()
 
 //Boton Salir
 void BSelector::salir_clicked() {
-ctllog->add(LOG_SEG | LOG_TRA, 1,"BslSld002","---Saliendo de la aplicación---" );
+ctllog->add(LOG_SEG | LOG_TRA, 1,"BslSld002","---Saliendo de la aplicaciÃ³n---" );
     close();
 }
 
 //Boton cambio de Empresa y/o Usuario
 void BSelector::seleccionaempresa_clicked() {
     if (ModuloContabilidad || ModuloVentas || ModuloCompras || ModuloAlmacen || ModuloProduccion || ModuloNominas) 
-        QMessageBox::warning(0, "Atención...", QString("Cierre todas las aplicaciones antes de cambiar de usuario o empresa."));
+        QMessageBox::warning(0, "AtenciÃ³n...", QString("Cierre todas las aplicaciones antes de cambiar de usuario o empresa."));
     else  
         (new abreempresaview("validar",true))->show(); 
 }

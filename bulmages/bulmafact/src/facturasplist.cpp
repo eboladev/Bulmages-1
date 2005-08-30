@@ -68,12 +68,12 @@ void FacturasProveedorList::inicializa() {
     m_list->setNumCols(13);
     m_list->horizontalHeader()->setLabel( COL_IDFACTURAP, tr( "COL_IDFACTURAP" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almac�" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMFACTURAP, tr( "N Presupuesto" ) );
     m_list->horizontalHeader()->setLabel( COL_FFACTURAP, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_IDSERIE_FACTURAP, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_CONTACTFACTURAP, tr( "Persona Contacto" ) );
-    m_list->horizontalHeader()->setLabel( COL_TELFACTURAP, tr( "Tel�ono" ) );
+    m_list->horizontalHeader()->setLabel( COL_TELFACTURAP, tr( "Teléfono" ) );
     m_list->horizontalHeader()->setLabel( COL_COMENTFACTURAP, tr( "Comentarios" ) );
     m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("COL_IDUSUARI") );
     m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
@@ -91,7 +91,7 @@ void FacturasProveedorList::inicializa() {
     }// end if
 
     //   listado->setPaletteBackgroundColor(QColor(150,230,230));
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
+    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");
     m_list->setReadOnly(TRUE);
     cursor2 * cur= companyact->cargacursor("SELECT * FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  "+generaFiltro());

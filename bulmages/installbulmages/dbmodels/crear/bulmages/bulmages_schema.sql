@@ -1202,7 +1202,7 @@ BEGIN
    -- De momento, la haremos funcionar para un sistema de cuentas xxxxyyy
    SELECT INTO niveles strpos(valor, ''y'')-1 AS numx FROM configuracion WHERE nombre=''CodCuenta'';
    IF niveles.numx <> 4 THEN
-   	RAISE NOTICE ''Lo siento, pero esta funci� s�o funciona de momento con 4 niveles de cuentas'';
+   	RAISE NOTICE ''Lo siento, pero esta función sólo funciona de momento con 4 niveles de cuentas'';
 	RETURN -1;
    END IF;
    
@@ -1716,7 +1716,7 @@ AS '
 DECLARE
 BEGIN
         IF NEW.codigo = '''' THEN
-                RAISE EXCEPTION '' No se puede dejar el c�igo de cuenta vacio '';
+                RAISE EXCEPTION '' No se puede dejar el código de cuenta vacio '';
         END IF;
 	IF NEW.descripcion = '''' THEN
 		RAISE EXCEPTION '' Nombre de cuenta vacio '';
@@ -1783,7 +1783,7 @@ BEGIN
 	
 	SELECT INTO ord * FROM borrador WHERE idasiento = NEW.idasiento AND orden=NEW.orden AND idborrador <> NEW.idborrador;
 	IF FOUND THEN
-		RAISE EXCEPTION '' El campo orden est�duplicado '';
+		RAISE EXCEPTION '' El campo orden está duplicado '';
 	END IF;
 	
 	SELECT INTO  ej  * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo =0;

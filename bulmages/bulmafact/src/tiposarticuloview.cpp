@@ -118,7 +118,7 @@ void tiposarticuloview::mostrarplantilla() {
     delete cursortipo;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    fprintf(stderr,"Terminamos la ejecuci� de tiposarticuloview::mostrarplantilla\n");
+    fprintf(stderr,"Terminamos la ejecución de tiposarticuloview::mostrarplantilla\n");
 }// end mostrarplantilla
 
 

@@ -2,7 +2,7 @@
                           aboutview.h  -  description
                              -------------------
     begin                : Fri Dec 27 2002
-    copyright            : (C) 2002 by Tomeu Borr·s Riera
+    copyright            : (C) 2002 by Tomeu Borr√°s Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 
@@ -22,11 +22,11 @@
 #include <about.h>
 
 /**
-  *@author Tomeu Borr·s Riera
+  *@author Tomeu Borr√°s Riera
  * \class aboutview aboutview.h
  * \brief Presentar el About del programa
  *  
- * Esta clase muestra el dialogo de About. Presentan los crÈditos del programa.
+ * Esta clase muestra el dialogo de About. Presentan los cr√©ditos del programa.
  * this class presents the about of the program.
  */
 

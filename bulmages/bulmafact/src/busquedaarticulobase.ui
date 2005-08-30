@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>581</width>
-            <height>34</height>
+            <height>54</height>
         </rect>
     </property>
     <property name="caption">
@@ -62,7 +62,7 @@
                 </sizepolicy>
             </property>
             <property name="text">
-                <string>Articulo</string>
+                <string>Artículo</string>
             </property>
         </widget>
     </hbox>

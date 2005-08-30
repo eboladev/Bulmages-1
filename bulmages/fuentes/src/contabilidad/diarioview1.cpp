@@ -2,7 +2,7 @@
                           diarioview1.cpp  -  description
                              -------------------
     begin                : Thu Jan 9 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -79,7 +79,7 @@ diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int  )
     m_listado->horizontalHeader()->setLabel( COL_FECHA, tr( "Fecha" ) );
     m_listado->horizontalHeader()->setLabel( COL_NUMASIENTO, tr( "N.Asiento." ) );
     m_listado->horizontalHeader()->setLabel( COL_CUENTA, tr( "Cuenta" ) );
-    m_listado->horizontalHeader()->setLabel( COL_DENOMINACION, tr( "Denominaci�" ) );
+    m_listado->horizontalHeader()->setLabel( COL_DENOMINACION, tr( "Denominación" ) );
     m_listado->horizontalHeader()->setLabel( COL_DEBE, tr( "Debe" ) );
     m_listado->horizontalHeader()->setLabel( COL_HABER, tr( "Haber" ) );
     m_listado->horizontalHeader()->setLabel( COL_CONCEPTO, tr( "Concepto" ) );
@@ -101,11 +101,11 @@ diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int  )
     m_listado->setColumnWidth(COL_CANAL,75);
     m_listado->setColumnWidth(COL_CONTRAPARTIDA,100);
 
-    // Establecemos el color de fondo, segun la configuracion.
+    // Establecemos el color de fondo, segun la configuración.
     m_listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_DIARIO).ascii());
 
     m_listado->hideColumn(COL_NUMASIENTO);
-    // Dependiendo de la configuraci� mostramos o no mostramos la contrapartida, los canales y los centros de coste
+    // Dependiendo de la configuración mostramos o no mostramos la contrapartida, los canales y los centros de coste
     if (confpr->valor(CONF_CONTRAPARTIDA_DIARIO) != "YES")
         m_listado->hideColumn(COL_CONTRAPARTIDA);
     if (confpr->valor(CONF_CANAL_DIARIO) != "YES")
@@ -118,7 +118,7 @@ diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int  )
 
 
     // Iniciamos los componentes de la fecha para que al principio aparezcan
-    // Como el a� inicial.
+    // Como el año inicial.
     char cadena[10];
     sprintf(cadena,"%2.2d/%2.2d/%4.4d",1, 1, QDate::currentDate().year());
     m_fechainicial1->setText(cadena);
@@ -173,8 +173,8 @@ void diarioview1::inicializa1(QString finicial, QString ffinal, int ) {
 }// end inicializa1
 
 
-/** \brief SLOT que responde a la pulsaci� del bot� de imprimir.
- * Muestra el formulario de impresi� de diario y lo ejecuta \ref DiarioPrintView
+/** \brief SLOT que responde a la pulsación del botón de imprimir.
+ * Muestra el formulario de impresión de diario y lo ejecuta \ref DiarioPrintView
  */
 void diarioview1::boton_imprimir() {
     DiarioPrintView *print = new DiarioPrintView(empresaactual,0,0);
@@ -185,7 +185,7 @@ void diarioview1::boton_imprimir() {
 
 
 /**************************************************************
- * Se ha pulsado sobre el boton guardar del formulario
+ * Se ha pulsado sobre el botón guardar del formulario
  **************************************************************/
 void diarioview1::boton_guardar() {
     QString fn = QFileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Diarios (*.txt)", 0,"Guardar Libro Diario","Elige el nombre de archivo");
@@ -213,7 +213,7 @@ void diarioview1::accept() {
 // Si el parametro pasado es un:
 // 0 -> del dia actual
 // 1 -> del mes actual
-// 2 -> del a� actual
+// 2 -> del año actual
 void diarioview1::boton_extracto1(int tipo) {
     QDate fecha1, fecha2, fechaact;
     if(!m_listado->text(m_listado->currentRow(),2).isEmpty()) {
@@ -242,7 +242,7 @@ void diarioview1::boton_extracto1(int tipo) {
 // Si el parametro pasado es un:
 // 0 -> del periodo actual.
 // 1 -> del mes actual mirado a partir de la fecha de inicio.
-// 2 -> del a� actual mirado a partir de la fecha de inicio.
+// 2 -> del año actual mirado a partir de la fecha de inicio.
 void diarioview1::boton_balance1(int tipo) {
     QDate fecha1, fecha2, fechaact, fechaact1;
     if(!m_fechainicial1->text().isEmpty()) {
@@ -445,13 +445,13 @@ void diarioview1::contextmenu(int , int , const QPoint &poin) {
     popup = new QPopupMenu;
     popup->insertItem("Mostrar Apunte",0);
     popup->insertSeparator();
-    popup->insertItem("Ver Extracto (Este dia)",111);
+    popup->insertItem("Ver Extracto (Este día)",111);
     popup->insertItem("Ver Extracto (Este mes)",113);
-    popup->insertItem("Ver Extracto (Este a�)",114);
+    popup->insertItem("Ver Extracto (Este año)",114);
     popup->insertSeparator();
-    popup->insertItem("Ver Balance (Este dia)",121);
+    popup->insertItem("Ver Balance (Este día)",121);
     popup->insertItem("Ver Balance (Este mes)",123);
-    popup->insertItem("Ver Balance (Este a�)",124);
+    popup->insertItem("Ver Balance (Este año)",124);
     opcion = popup->exec(poin);
     switch(opcion) {
     case 0:
@@ -485,8 +485,8 @@ void diarioview1::boton_filtrar() {
 
 
 // Cuando se ha pulsado una tecla sobre la fecha del extracto
-// Se evalua si la pulsaci� es un c�igo de control o es un digitos
-// Para la introducci� de fechas.
+// Se evalua si la pulsación es un código de control o es un digitos
+// Para la introducción de fechas.
 void diarioview1::textChanged(const QString &texto) {
     QLineEdit *fecha = (QLineEdit *) sender();
     if (texto=="+") {

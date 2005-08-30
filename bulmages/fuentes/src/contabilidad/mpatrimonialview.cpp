@@ -128,7 +128,7 @@ void mpatrimonialview::inicializa1(QString idmpatrimonial1) {
 
 
 /********************************************************************************
- * Se ha pulsado sobre el boton de agregar donde está la suma                   *
+ * Se ha pulsado sobre el botón de agregar donde está la suma                   *
  * Tenemos que añadir la masa patrimonial o la cuenta a la suma                 *
  ********************************************************************************/
 void mpatrimonialview::nuevasuma() {
@@ -175,7 +175,7 @@ void mpatrimonialview::borrasuma() {
 
 
 /********************************************************************************
- * Se ha pulsado sobre el boton de agregar donde está la suma                   *
+ * Se ha pulsado sobre el botón de agregar donde está la suma                   *
  * Tenemos que añadir la masa patrimonial o la cuenta a la suma                 *
  ********************************************************************************/
 void mpatrimonialview::nuevaresta() {

@@ -145,12 +145,12 @@ void familiasview::mostrarplantilla() {
     delete cursorfamilia;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    fprintf(stderr,"Terminamos la ejecuci� de familiasview::mostrarplantilla\n");
+    fprintf(stderr,"Terminamos la ejecución de familiasview::mostrarplantilla\n");
 }// end mostrarplantilla
 
 
-/** Antes de salir de la ventana debemos hacer la comprobaci� de si se ha modificado algo
-  * Esta funci� est�dedicada a Francina, Bienvenida al mundo 
+/** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo
+  * Esta función está dedicada a Francina, Bienvenida al mundo :))
   */
 void familiasview::close() {
     trataModificado();
@@ -172,7 +172,7 @@ bool familiasview::trataModificado() {
 }// end trataModificado
 
 
-/** SLOT que responde a la pulsaci� del bot� de guardar el tipo de iva que se est�editando.
+/** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se est�editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void familiasview::s_saveFamilia() {
@@ -195,7 +195,7 @@ void familiasview::s_saveFamilia() {
 }// end s_saveTipoIVA
 
 
-/** SLOT que responde a la pulsaci� del bot� de nuevo tipo de iva
+/** SLOT que responde a la pulsación del botón de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
 void familiasview::s_newFamilia() {
@@ -217,7 +217,7 @@ void familiasview::s_newFamilia() {
     pintar();
 }// end s_newTipoIVA
 
-/** SLOT que responde a la pulsaci� del bot� de borrar la familia que se est�editando.
+/** SLOT que responde a la pulsación del botón de borrar la familia que se está editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void familiasview::s_deleteFamilia() {
@@ -244,7 +244,7 @@ void familiasview::s_imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // L�ea de totales del presupuesto
+    // Línea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"3cm, 15cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "	<td>Código</td>";

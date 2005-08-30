@@ -89,7 +89,7 @@ void correctorwidget::corregir() {
     }// end while
     delete(cur);
 
-    /// Calculo de inserción en cuentas intermedias (con hijos)
+    /// Cálculo de inserción en cuentas intermedias (con hijos)
     //--------------------------------------------------------
     query.sprintf("SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.idcuenta IN (SELECT padre FROM cuenta) AND apunte.idasiento=asiento.idasiento");
     cur = conexionbase->cargacursor(query);
@@ -101,7 +101,7 @@ void correctorwidget::corregir() {
     }// end while
     delete(cur);
 
-    /// Calculo de la ecuación fundamental contable A+I= P+N+G
+    /// Cálculo de la ecuación fundamental contable A+I= P+N+G
     //--------------------------------------------------------
     query = " SELECT asiento.idasiento AS idasiento, asiento.ordenasiento AS ordenasiento, ingresos,activos, gastos, netos, pasivos FROM asiento ";
     query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe)-sum(apunte.haber) AS ingresos  FROM cuenta,apunte WHERE  apunte.idcuenta=cuenta.idcuenta AND cuenta.tipocuenta=4 GROUP BY idasiento) AS ing ON asiento.idasiento = ing.idasiento ";

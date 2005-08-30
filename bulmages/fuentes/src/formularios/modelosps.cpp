@@ -41,7 +41,7 @@ void Modgenps::formatdigits(QString *cad1,QString *cad2,float x)
   tempstr.sprintf("%.2f",x);//Formatea numero x con 2 cifras decimales (centimos de euro)
   *cad2=tempstr.section('.',1,1);
   *cad1=tempstr.section('.',0,0);
-  cad1->append(',');//Se le añade a la parte entera la coma (aun no se si dejarlo o no)
+  cad1->append(',');//Se le añade a la parte entera la coma (aún no sé si dejarlo o no)
 }
 
 

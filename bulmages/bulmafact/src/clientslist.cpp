@@ -19,17 +19,17 @@
  ***************************************************************************/
 
  /*
--- El cliente siempre tiene la raz�, bueno, o por lo menos eso cree.
+-- El cliente siempre tiene la razón, bueno, o por lo menos eso cree.
 --Codi: Clau artificial.
 --Nom: Nom comercial o fiscal.
 --Nom_alternatiu: Nom comercial o fiscal.
---CIF: Codi d'Identificaci�Fiscal.
+--CIF: Codi d'Identificación Fiscal.
 --C_Banc: Compte Bancari.
---Adr: Adre�.
---Pobl: Poblaci�
+--Adr: Adreça.
+--Pobl: Població
 --CProv: Codi de provincia (dos primers d�its del codi postal).
---sCP: Tres darrers d�its del codi postal.
---Telf: Tel�on.
+--sCP: Tres darrers dígits del codi postal.
+--Telf: Teléfon.
 --Fax: Fax.
 --Email: eMail.
 --Url: Url.
@@ -101,18 +101,18 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
    m_clientList->setSorting( TRUE );
    m_clientList->setColumnMovingEnabled( TRUE );
    m_clientList->setNumCols(16);
-   m_clientList->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "C�igo" ) );
+   m_clientList->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "Código" ) );
    m_clientList->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Nombre Fiscal" ) );
    m_clientList->horizontalHeader()->setLabel( COL_NOMALTCLIENTE, tr( "Nombre Comercial" ) );
    m_clientList->horizontalHeader()->setLabel( COL_CIFCLIENTE, tr( "CIF/NIF" ) );
    m_clientList->horizontalHeader()->setLabel( COL_BANCOCLIENTE, tr( "Cuenta Bancaria" ) );
    m_clientList->horizontalHeader()->setLabel( COL_DIRCLIENTE, tr( "Domicilio" ) );
-   m_clientList->horizontalHeader()->setLabel( COL_POBLCLIENTE, tr("Poblaci�") );
+   m_clientList->horizontalHeader()->setLabel( COL_POBLCLIENTE, tr("Població") );
    m_clientList->horizontalHeader()->setLabel( COL_CPCLIENTE, tr("C.P.") );
-   m_clientList->horizontalHeader()->setLabel( COL_TELCLIENTE, tr("Tel�ono") );
+   m_clientList->horizontalHeader()->setLabel( COL_TELCLIENTE, tr("Teléfono") );
    m_clientList->horizontalHeader()->setLabel( COL_FAXCLIENTE, tr("Fax") );
-   m_clientList->horizontalHeader()->setLabel( COL_MAILCLIENTE, tr("Correo Electr�ico") );
-   m_clientList->horizontalHeader()->setLabel( COL_URLCLIENTE, tr("P�ina Web") );
+   m_clientList->horizontalHeader()->setLabel( COL_MAILCLIENTE, tr("Correo Electrónico") );
+   m_clientList->horizontalHeader()->setLabel( COL_URLCLIENTE, tr("Página Web") );
    m_clientList->horizontalHeader()->setLabel( COL_FALTACLIENTE, tr("Fecha de Alta") );
    m_clientList->horizontalHeader()->setLabel( COL_FBAJACLIENTE, tr("Fecha de Baja") );
    m_clientList->horizontalHeader()->setLabel( COL_COMENTCLIENTE, tr("Observaciones") );
@@ -135,7 +135,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
    m_clientList->setColumnWidth(COL_COMENTCLIENTE,1000);
    m_clientList->setColumnWidth(COL_IDRECARGO,50);
    
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
+    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
     m_clientList->setPaletteBackgroundColor("#DDDDFF");   
     m_clientList->setReadOnly(TRUE);        
     
@@ -218,7 +218,7 @@ void ClientsList::s_findClients() {
 
 
 void ClientsList::s_printClients() {
-	fprintf(stderr,"Impresi� del listado\n");
+	fprintf(stderr,"Impresió del listado\n");
     	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
 	QString cadena;
 	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.

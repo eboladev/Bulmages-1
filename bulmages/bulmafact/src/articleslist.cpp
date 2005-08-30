@@ -176,23 +176,23 @@ void articleslist::inicializa() {
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setNumCols(19);
     m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Identificador" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "C�igo" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODCOMPLETOARTICULO, tr( "C�igo Completo" ) );
-    m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripci�" ) );
-    m_list->horizontalHeader()->setLabel( COL_DESCARTICULO, tr( "Descripci� Completa" ) );
-    m_list->horizontalHeader()->setLabel( COL_CBARRASARTICULO, tr( "C�igo de Barras" ) );
-    m_list->horizontalHeader()->setLabel( COL_TIPOARTICULO, tr( "Tipo de Art�ulo" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODCOMPLETOARTICULO, tr( "Código Completo" ) );
+    m_list->horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción" ) );
+    m_list->horizontalHeader()->setLabel( COL_DESCARTICULO, tr( "Descripción Completa" ) );
+    m_list->horizontalHeader()->setLabel( COL_CBARRASARTICULO, tr( "Código de Barras" ) );
+    m_list->horizontalHeader()->setLabel( COL_TIPOARTICULO, tr( "Tipo de Artículo" ) );
     m_list->horizontalHeader()->setLabel( COL_DESCUENTOARTICULO, tr( "Descuento" ) );
     m_list->horizontalHeader()->setLabel( COL_ESPECIFICACIONESARTICULO, tr("Especificaciones") );
     m_list->horizontalHeader()->setLabel( COL_ICONOARTICULO, tr("Icono") );
     m_list->horizontalHeader()->setLabel( COL_FOTOARTICULO, tr("Foto") );
-    m_list->horizontalHeader()->setLabel( COL_POSTERARTICULO, tr("Poster") );
+    m_list->horizontalHeader()->setLabel( COL_POSTERARTICULO, tr("Póster") );
     m_list->horizontalHeader()->setLabel( COL_MARGENARTICULO, tr("Margen") );
     m_list->horizontalHeader()->setLabel( COL_SOBRECOSTEARTICULO, tr("Sobrecoste") );
     m_list->horizontalHeader()->setLabel( COL_MODELOARTICULO, tr("Modelo") );
     m_list->horizontalHeader()->setLabel( COL_IDTIPO_IVA, tr("Tipo de IVA") );
     m_list->horizontalHeader()->setLabel( COL_DESCTIPO_IVA, tr("Tipo de IVA") );
-    m_list->horizontalHeader()->setLabel( COL_IDLINEA_PROD, tr("L�ea de Producci�") );
+    m_list->horizontalHeader()->setLabel( COL_IDLINEA_PROD, tr("Línea de Producción") );
     m_list->horizontalHeader()->setLabel( COL_STOCKARTICULO, tr("Stock") );
     
     m_list->setColumnWidth(COL_IDARTICULO,100);
@@ -216,7 +216,7 @@ void articleslist::inicializa() {
     m_list->setColumnWidth(COL_STOCKARTICULO,50);
     
     //listado->setPaletteBackgroundColor(QColor(150,230,230));
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
+    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTARTICULOS));
     m_list->setReadOnly(TRUE);
     m_list->hideColumn(COL_IDARTICULO);
@@ -259,7 +259,7 @@ void articleslist::articleSelected(int a, int b, int c, const QPoint &) {
     if (m_modo ==0 ) {
         QString idArt = m_list->text(a, COL_IDARTICULO);
         fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
-        articleedit *art = new articleedit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Articulos", "company"));
+        articleedit *art = new articleedit(companyact,companyact->m_pWorkspace,theApp->translate("Edición de Artículos", "company"));
         art->chargeArticle(idArt);
         art->show();
         inicializa();
@@ -275,14 +275,14 @@ articleslist::~articleslist() {
 
 void articleslist::newArticle() {
     QString idArt = "0";
-    articleedit *art = new articleedit(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Articulos", "company"));
+    articleedit *art = new articleedit(companyact,companyact->m_pWorkspace,theApp->translate("Edición de Artículos", "company"));
     art->chargeArticle(idArt);
     art->show();
     inicializa();
 }
 
 void articleslist::removeArticle() {
-    if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Art�ulo","Esta a punto de borrar un art�ulo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
+    if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artículo","Esta a punto de borrar un artículo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
         QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+m_list->text(m_list->currentRow(),COL_IDARTICULO);
         companyact->begin();
         companyact->ejecuta(SQLQuery);
@@ -395,7 +395,7 @@ void articleslist::s_imprimir1() {
     // L�ea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"3cm, 10cm, 2cm, 2cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td>Codigo</td>";
+    fitxersortidatxt += "	<td>Código</td>";
     fitxersortidatxt += "	<td>Nombre</td>";
     fitxersortidatxt += "	<td>Precio</td>";
     fitxersortidatxt += "	<td>Stock</td>";

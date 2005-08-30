@@ -1,5 +1,5 @@
 /***************************************************************************
- *Copyright (C) 2004 by Tomeu Borr·s Riera                                 *
+ *Copyright (C) 2004 by Tomeu Borr√°s Riera                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,9 +17,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
  /** \file importainteligente.h
-   * Contiene la declaraciÛn de la clase importainteligente que sirve para importar ficheros de XML a la base de datos de
+   * Contiene la declaraci√≥n de la clase importainteligente que sirve para importar ficheros de XML a la base de datos de
    * BulmaCont
-   * \author Tomeu Borr·s Riera
+   * \author Tomeu Borr√°s Riera
    */
 #ifndef importainteligente_H
 #define importainteligente_H
@@ -32,21 +32,21 @@ class QString;
 class empresa;
 class postgresiface2;
 
-/** @author Tomeu Borr·s Riera
+/** @author Tomeu Borr√°s Riera
   * \brief Sirve para importar asientos inteligentes (plantillas) dentro de la empresa en uso.
   *
-  * Esta clase es un parser XML cuya funciÛn es importar a la base de datos abierta una plantilla de
+  * Esta clase es un parser XML cuya funci√≥n es importar a la base de datos abierta una plantilla de
   * asiento inteligente. Para ello utiliza las clases SAX de Qt.
   */
 class importainteligente: public QXmlDefaultHandler {
 private:
-   /// Indica el tag que el parser est· procesando en este preciso momento.
+   /// Indica el tag que el parser est√° procesando en este preciso momento.
    QString tag;	
-   /// Indica los datos adicionales que est·n contenidos en el tag.
+   /// Indica los datos adicionales que est√°m contenidos en el tag.
    QString data;			
    /// Este mapa de valores sirve para almacenar de forma sencilla los valores que se han ido recogiendo y para poder ser recogidos en el momento de escritura en la base de datos.
    QMap<QString, QString> tvalores;
-   /// Base de datos que se est· utilizando.
+   /// Base de datos que se est√°n utilizando.
    postgresiface2 *conexionbase;
    /// Empresa que sirve de base a todos estos elementos.
    empresa *empresaactual;		

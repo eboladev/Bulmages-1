@@ -2,7 +2,7 @@
                           ivaview.h  -  description
                              -------------------
     begin                : Tue Jan 28 2003
-    copyright            : (C) 2003 by Josep Burcion and Tomeu Borr� Riera
+    copyright            : (C) 2003 by Josep Burcion and Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 
@@ -29,12 +29,12 @@
 
 class empresa;
 
-/** @author Tomeu Borr� Riera
-  * \brief Formulario de introducci� y/o visi� de una factura emitida o recibida.
+/** @author Tomeu Borrás Riera
+  * \brief Formulario de introducción y/o visión de una factura emitida o recibida.
   *
-  * Clase que sirve para introducir toda la informaci� relacionada con facturas emitidas o soportadas.
-  Con la finalidad de almacenar la informaci� necesaria para cumplimentar determinados documentos fiscales y
-  tambi� para almacenar toda la gesti� de cobros y pagos.
+  * Clase que sirve para introducir toda la información relacionada con facturas emitidas o soportadas.
+  Con la finalidad de almacenar la información necesaria para cumplimentar determinados documentos fiscales y
+  también para almacenar toda la gestión de cobros y pagos.
   */
 class ivaview : public ivadlg  {
     Q_OBJECT

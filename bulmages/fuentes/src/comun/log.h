@@ -1,5 +1,5 @@
 /***************************************************************************
- *Copyright (C) 2003 by Fco. Javier MC, Jean René Mérou, Víctor G. Marimón *
+ *Copyright (C) 2003 by Fco. Javier MC, Jean RenÃ© MÃ©rou, VÃ­ctor G. MarimÃ³n *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -26,7 +26,7 @@ using namespace std;
 
 #include "empresa.h"
 
-// Estos tipos son utilizados para poder hacer los logs. Se determinan en la función add.
+// Estos tipos son utilizados para poder hacer los logs. Se determinan en la funciÃ³n add.
 #define LOG_SEG 1 // seguridad
 #define LOG_SIS 2 // sistema
 #define LOG_DBD 4 // de base de datos
@@ -38,8 +38,8 @@ using namespace std;
 We want to log everything
 @authors:
 - Fco. Javier MC
-- René Mérou, http://h.says.it  ,   h@myjabber.net
-- Víctor G. Marimón
+- RenÃ© MÃ©rou, http://h.says.it  ,   h@myjabber.net
+- VÃ­ctor G. MarimÃ³n
 */
 
 

@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementaci� del listado de albaranes.
+// Implementación del listado de albaranes.
 /*
--- COMPROVACIONS D'INTEGRITAT>Gen�iques:
+-- COMPROVACIONS D'INTEGRITAT>Genèriques:
 -- Tots els albarans d'una factura corresponen al mateix client.
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 -- Numero
 -- Data
--- Albar�a clients.
+-- Albará a clients.
 CREATE TABLE albaran (
    numalbaran integer PRIMARY KEY,
    fechaalbaran date,
@@ -171,9 +171,9 @@ void ClientDelivNotesList::inicializa() {
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(13);
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almac�" ) );
+    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "N Albar�" ) );
+    m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "N Albarán" ) );
     m_list->horizontalHeader()->setLabel( COL_FECHAALBARAN, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_IDFORMA_PAGO, tr( "COL_IDFORMA_PAGO" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMFACTURA, tr( "N Factura" ) );
@@ -237,7 +237,7 @@ void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
     m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
     if (m_modo ==0 && m_idclidelivnote != "") {
         fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
-        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albar� de Cliente", "company"));
+        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
         cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
         cDelivNote->show();
     } else {
@@ -252,7 +252,7 @@ if (a >= 0) {
     m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
     if (m_idclidelivnote != "") {
         fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
-        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albar� de Cliente", "company"));
+        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
         cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
         cDelivNote->show();
     }// end if
@@ -280,7 +280,7 @@ void ClientDelivNotesList::s_contextMenu(int, int, int button, const QPoint &poi
 
 void ClientDelivNotesList::s_newClientDelivNote() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
-    AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albar� de Cliente", "company"));
+    AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
     /// Pintamos para que se carguen los combos y los dem� elementos.
     cDelivNote->pintaAlbaranCliente();
     cDelivNote->show();
@@ -290,7 +290,7 @@ void ClientDelivNotesList::s_newClientDelivNote() {
 void ClientDelivNotesList::s_removeClientDelivNote() {
     fprintf(stderr,"Iniciamos el boton_borrar\n");
     if (m_list->currentRow() >= 0) {
-        if (QMessageBox::warning( this, tr("BulmaFact - Albaranes", "Desea borrar el albar� seleccionado"),tr("Si"), tr("No"), 0, 0, 1) == 0) {
+        if (QMessageBox::warning( this, tr("BulmaFact - Albaranes", "Desea borrar el albarán seleccionado"),tr("Si"), tr("No"), 0, 0, 1) == 0) {
             companyact->begin();
             QString SQLQuery = "DELETE FROM lalbaran WHERE idalbaran ="+m_list->text(m_list->currentRow(),COL_IDALBARAN);
             if (companyact->ejecuta(SQLQuery)==0) {

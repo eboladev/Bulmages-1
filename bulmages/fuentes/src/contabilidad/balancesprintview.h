@@ -2,7 +2,7 @@
                           balancesprintview.h  -  description
                              -------------------
     begin                : jue oct 9 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -27,7 +27,7 @@
 #include <sys/types.h>
 #include "postgresiface2.h"
 
-/** *@author Tomeu Borr� Riera */
+/** *@author Tomeu Borrás Riera */
 
 class empresa;
 
@@ -41,7 +41,7 @@ private:
 public:
 	balancesprintview(empresa *emp,QWidget *parent=0, const char *name=0);
 	~balancesprintview();
-   void setidbalance(QString);       // Establece cual ser�el balance a imprimir
+   void setidbalance(QString);       // Establece cual será el balance a imprimir
 
 public slots:
    virtual void accept();

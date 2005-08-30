@@ -2,7 +2,7 @@
                           actualizacionesview.h  -  description
                              -------------------
     begin                : mar jul 22 2003
-    copyright            : (C) 2003 by Tomeu Borr·s Riera
+    copyright            : (C) 2003 by Tomeu Borr√°s Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 
@@ -22,7 +22,7 @@
 #include <actualizacionesdlg.h>
 
 /**
-  *@author Tomeu Borr·s Riera
+  *@author Tomeu Borr√°s Riera
   */
 
 class actualizacionesview : public actualizacionesdlg  {

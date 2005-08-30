@@ -46,8 +46,8 @@ void myplugin::soporte() {
 void myplugin::inicializa(Bulmages01 *bges) {
     //El menu de empresa
     QAction *planCuentas = new QAction("Ayuda On-Line", "&Ayuda On-Line", 0, 0);
-    planCuentas->setStatusTip("Ayuda a través� de Internet");
-    planCuentas->setWhatsThis("Ayuda a través� de Internet");
+    planCuentas->setStatusTip("Ayuda a través de Internet");
+    planCuentas->setWhatsThis("Ayuda a través de Internet");
     //El menu de empresa
     QAction *eSoporte = new QAction("Soporte Profesional", "&Soporte Profesional", 0, 0);
     eSoporte->setStatusTip("Encontrar empresas que dan soporte al programa");

@@ -2,7 +2,7 @@
                           balance1view.cpp  -  description
                              -------------------
     begin                : lun jun 23 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -63,7 +63,7 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
       
    listado->clear();
 
-	CUENTA = listado->addColumn("c�igo cuenta",150);
+	CUENTA = listado->addColumn("código cuenta",150);
 	DENOMINACION = listado->addColumn("nombre cuenta",350);
 	SALDO_ANT = listado->addColumn("Saldo Anterior",90);
 	DEBE = listado->addColumn("Debe",90);
@@ -89,7 +89,7 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
       listado->setColumnAlignment(NIVEL,Qt::AlignRight);
       listado->setColumnAlignment(PADRE,Qt::AlignRight);
 //	 listado->setPaletteBackgroundColor("#FFFFFF");
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
+    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
     listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCETREE).ascii());
       
       // Inicializamos la tabla de nivel
@@ -104,7 +104,8 @@ balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int 
    connect( listado, SIGNAL( contextMenuRequested( QListViewItem *, const QPoint &, int) ), this, SLOT( contextmenu(QListViewItem *, const QPoint &, int) ) );
 
    // Iniciamos los componentes de la fecha para que al principio aparezcan
-   // Como el a� inicial.
+   // Como el año inicial.
+   // 
    QString cadena;
    cadena.sprintf("%2.2d/%2.2d/%4.4d",1, 1, QDate::currentDate().year());
    m_fechainicial1->setText(cadena);
@@ -148,7 +149,7 @@ void balance1view::cargacostes() {
 
 
 /**********************************************************************************
- Esta funcion inicializa la ventana de extracto con los mismos datos
+ Esta función inicializa la ventana de extracto con los mismos datos
  que la ventana de balance, cuentas, fechas y centros de coste
  y pone la ventan de estracto como la ventana principal.
  De esta forma cuando se pulsa sobre el boton extracto estando en la de balance
@@ -157,7 +158,7 @@ void balance1view::cargacostes() {
 // Si el parametro pasado es un:
 // 0 -> del dia actual
 // 1 -> del mes actual
-// 2 -> del a� actual
+// 2 -> del año actual
 void balance1view::boton_extracto1(int tipo) {
 	QDate fecha1, fecha2, fechaact, fechaact1;
 	if(!m_fechainicial1->text().isEmpty()) {
@@ -190,7 +191,7 @@ void balance1view::boton_extracto1(int tipo) {
 // Si el parametro pasado es un:
 // 0 -> del dia actual
 // 1 -> del mes actual
-// 2 -> del a� actual
+// 2 -> del año actual
 void balance1view::boton_diario1(int tipo) {
 	QDate fecha1, fecha2, fechaact, fechaact1;
 	if(!m_fechainicial1->text().isEmpty()) {
@@ -262,7 +263,7 @@ void balance1view::presentar() {
       int idc_coste;
       idc_coste = ccostes[combocoste->currentItem()];
 
-      // La consulta es compleja, requiere la creaci� de una tabla temporal y de cierta mandanga por lo que puede
+      // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
       // Causar problemas con el motor de base de datos.      
 	query= "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo, ejdebe, ejhaber, (ejdebe-ejhaber) AS ejsaldo FROM cuenta";
 	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '"+finicial+"' AND fecha<= '"+ffinal+"' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta";
@@ -276,7 +277,7 @@ void balance1view::presentar() {
       conexionbase->ejecuta(query);
       query.sprintf("DELETE FROM balancetemp WHERE debe=0 AND haber =0");
       conexionbase->ejecuta(query);
-      // Vamos a implementar el tema del c�igo
+      // Vamos a implementar el tema del código
       if (cinicial != "") {
          query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'",cinicial.ascii());
          conexionbase->ejecuta(query);
@@ -375,7 +376,7 @@ void balance1view::presentar() {
       // Vaciamos el cursor de la base de datos.
       delete cursorapt1;
 
-      // Eliminamos la tabla temporal y cerramos la transacci�.
+      // Eliminamos la tabla temporal y cerramos la transacción.
       query.sprintf("DROP TABLE balancetemp");
       conexionbase->ejecuta(query);
       conexionbase->commit();
@@ -429,13 +430,13 @@ void balance1view::contextmenu( QListViewItem *, const QPoint &poin, int) {
 	QPopupMenu *popup;
 	int opcion;
 	popup = new QPopupMenu;
-	popup->insertItem(tr("Ver Diario (Este dia)"),101);
+	popup->insertItem(tr("Ver Diario (Este día)"),101);
 	popup->insertItem(tr("Ver Diario (Este mes)"),103);
-	popup->insertItem(tr("Ver Diario (Este a�)"),104);
+	popup->insertItem(tr("Ver Diario (Este año)"),104);
 	popup->insertSeparator();
-	popup->insertItem(tr("Ver Extracto (Este dia)"),111);
+	popup->insertItem(tr("Ver Extracto (Este día)"),111);
 	popup->insertItem(tr("Ver Extracto (Este mes)"),113);
-	popup->insertItem(tr("Ver Extracto (Este a�)"),114);
+	popup->insertItem(tr("Ver Extracto (Este año)"),114);
 	opcion = popup->exec(poin);
 	switch(opcion) {
 		case 101:
@@ -460,7 +461,7 @@ void balance1view::contextmenu( QListViewItem *, const QPoint &poin, int) {
 }// end contextmenu
 
 
-/** \brief SLOT que responde a la pulsacion del boton de imprimir
+/** \brief SLOT que responde a la pulsación del boton de imprimir
   * Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del balance y lo ejecuta en modo Modal.
   */
 void balance1view::boton_imprimir() {

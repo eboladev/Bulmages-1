@@ -2,7 +2,7 @@
                           filtrardiarioview.h  -  description
                              -------------------
     begin                : mar jul 29 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -25,7 +25,7 @@
 #include "postgresiface2.h"
 #include "busquedacuenta.h"
 
-/***@author Tomeu Borr� Riera */
+/***@author Tomeu Borrás Riera */
 class empresa;
 
 class filtrardiarioview : public filtrardiariodlg  {

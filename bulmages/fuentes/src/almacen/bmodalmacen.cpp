@@ -23,7 +23,7 @@
 BModAlmacen::BModAlmacen(BSelector * ref, QWidget * parent, const char * name, WFlags f)
  : UIalmacen(parent,name,f)
 {
-ctllog->add(LOG_SEG | LOG_TRA, 2,"AlmCtt005","El usuario entra en el Módulo de Almacén." );
+ctllog->add(LOG_SEG | LOG_TRA, 2,"AlmCtt005","El usuario entra en el MÃ³dulo de AlmacÃ©n." );
 PunteroAlSelector=ref;
 QVBox* vb = new QVBox( this );
 vb->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
@@ -37,13 +37,13 @@ BModAlmacen::~BModAlmacen()
 {
 PunteroAlSelector->ModuloAlmacen=NULL;
 PunteroAlSelector->showNormal();
-ctllog->add(LOG_SEG | LOG_TRA, 2,"AlmDtt006","El usuario sale   del  Módulo de Almacén." );
+ctllog->add(LOG_SEG | LOG_TRA, 2,"AlmDtt006","El usuario sale   del  MÃ³dulo de AlmacÃ©n." );
 }
 
 
 void BModAlmacen::mostrar_selector()
 {
-//Muestra el selector si está oculto
+//Muestra el selector si estÃ¡ oculto
 PunteroAlSelector->hide();
 PunteroAlSelector->showNormal();
 }

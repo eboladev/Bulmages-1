@@ -97,9 +97,9 @@ articleedit::~articleedit() {
 
 
 /************************************************************************
-* Esta funci� carga un art�ulo de la base de datos y lo presenta.     *
-* Si el parametro pasado no es un identificador v�ido entonces se pone *
-* la ventana de edici� en modo de inserci�                            *
+* Esta función carga un artículo de la base de datos y lo presenta.     *
+* Si el parametro pasado no es un identificador válido entonces se pone *
+* la ventana de edición en modo de inserción                            *
 *************************************************************************/
 void articleedit::chargeArticle(QString idArt) {
     idArticle = idArt;
@@ -132,7 +132,7 @@ void articleedit::chargeArticle(QString idArt) {
 	    	m_controlstockarticulo->setChecked(FALSE);
 	    }// end if	    
 
-            // Cargamos las relaciones art�ulo - proveedor.
+            // Cargamos las relaciones artículo - proveedor.
             QString SQLQuery1 = "SELECT * FROM suministra, proveedor WHERE suministra.idproveedor=proveedor.idproveedor and idarticulo="+idArt;
             companyact->begin();
             cursor2 *cur1 = companyact->cargacursor(SQLQuery1, "cargaSuministra");
@@ -156,7 +156,7 @@ void articleedit::chargeArticle(QString idArt) {
     
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES)+m_codigocompletoarticulo->text()+".jpg"));     
     cargarcomboiva(ivaType);
-    setCaption("Art�ulo "+m_codigocompletoarticulo->text());companyact->meteWindow(caption(),this);
+    setCaption("Artículo "+m_codigocompletoarticulo->text());companyact->meteWindow(caption(),this);
     m_componentes->cargaListCompArticulo(idArt);
     m_componentes->pintaListCompArticulo();
 }// end chargeArticle
@@ -186,7 +186,7 @@ void articleedit::cargarcomboiva(QString idIva) {
 
 
 /************************************************************************
-* Esta funci� se ejecuta cuando se ha pulsado sobre el bot� de nuevo  *
+* Esta función se ejecuta cuando se ha pulsado sobre el botón de nuevo  *
 *************************************************************************/
 void articleedit::boton_nuevo() {
     idArticle = "0";
@@ -198,8 +198,8 @@ void articleedit::boton_nuevo() {
 }// end boton_nuevo
 
 /*************************************************************************
-* Esta funci� es la respuesta a la pulsaci� del boton de guardar       *
-* Comprueba si es una inserci� o una modificaci� y hace los pasos      *
+* Esta función es la respuesta a la pulsación del boton de guardar       *
+* Comprueba si es una inserción o una modificación y hace los pasos      *
 * pertinentes                                                            *
 **************************************************************************/
 void articleedit::accept() {
@@ -208,12 +208,12 @@ void articleedit::accept() {
 
 
 /**
-  * Esta funci� se ejecuta cuando se ha pulsado sobre el bot� de borrar *
+  * Esta función se ejecuta cuando se ha pulsado sobre el botón de borrar *
   */
 void articleedit::boton_borrar() {
     if (idArticle != "0") {
         m_componentes->borrar();
-        if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Art�ulo","Esta a punto de borrar un art�ulo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
+        if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artículo","Esta a punto de borrar un artículo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
             QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+idArticle;
             companyact->begin();
             if (companyact->ejecuta(SQLQuery)==0) {

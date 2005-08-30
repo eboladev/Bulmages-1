@@ -37,7 +37,7 @@ myplugin1::myplugin1(empresa *emp) {
 
 myplugin1::~myplugin1() {}
 
-// Esto debe coger un asiento y asociarle un archivo documental y abrirlo y enseï¿½r ambas cosas
+// Esto debe coger un asiento y asociarle un archivo documental y abrirlo y enseñar ambas cosas
 void myplugin1::boton_nuevoasientodocumental() {
     fprintf(stderr,"boton_nuevoasientodocumental\n");
     adocumental *adoc= new adocumental(empresaactual,0,"adjuntar documento");

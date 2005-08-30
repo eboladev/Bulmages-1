@@ -4,7 +4,7 @@
 #include "intapunts3view.h"
 #include "adocumental.h"
 
-/// Inclusión� de imagenes
+/// Inclusión de imágenes
 #include "napuntedoc.xpm"
 #include "ndoc.xpm"
 

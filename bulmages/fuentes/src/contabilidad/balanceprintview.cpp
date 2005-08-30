@@ -1,10 +1,10 @@
 /***************************************************************************
                           balanceprintview.cpp  -  description
                              -------------------
-    begin                : mi�jun 25 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    begin                : mié jun 25 2003
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Ter� - amirabet@biada.org
+    modificat per        : (C) 2003 Antoni Mirabete i Terés - amirabet@biada.org
  ***************************************************************************/
 /***************************************************************************
  *                                                                         *
@@ -66,13 +66,13 @@ BalancePrintView::BalancePrintView(empresa *emp) {
 BalancePrintView::~BalancePrintView() {}
 
 
-/** \brief inicializa la clase para que tenga parametros por defecto (no es obligatorio)
+/** \brief inicializa la clase para que tenga parámetros por defecto (no es obligatorio)
   * codinicial, codfinal, finicial, ffinal, arbol)
-  * codinicial indica el c�igo inicial para mostrar el balance
-  * cofinal indica el codigo de cuenta para no mostrar m� balances
+  * codinicial indica el cóigo inicial para mostrar el balance
+  * cofinal indica el codigo de cuenta para no mostrar más balances
   * finicial indica la fecha a partir de la cual comenzar los saldos
   * ffinal indica la fecha para terminar de contar los saldos
-  * arbol indica si hay que representar el balance en forma de �bol o no.
+  * arbol indica si hay que representar el balance en forma de árbol o no.
   */
 void BalancePrintView::inicializa1(QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1, bool arbol) {
     m_fechainicial1->setText(finicial1);
@@ -142,7 +142,7 @@ void BalancePrintView::presentar(char *tipus) {
 
         QLocale spanish(QLocale::Spanish); // vamos a formatear los números con punto para los millares y coma para los decimales
 
-        if (txt | html | kugar) {                // nom� continuem si hem pogut crear algun fitxer
+        if (txt | html | kugar) {                // només continuem si hem pogut crear algun fitxer
 
             // Vamos a crear un arbol en la memoria dinamica con los distintos niveles de cuentas
             // Primero, averiguaremos la cantidad de ramas iniciales (tantos como numero de cuentas de nivel 2) y las vamos creando
@@ -195,35 +195,34 @@ void BalancePrintView::presentar(char *tipus) {
             }// end if
 
             if (txt) {
-                //presentaci�txt normal
+                //presentació txt normal
                 fitxersortidatxt.setf(ios::fixed)
                     ;
                 fitxersortidatxt.precision(2);
                 fitxersortidatxt << "                                        Balance \n" ;
                 fitxersortidatxt << "Fecha Inicial: " << finicial.ascii() << "   Fecha Final: " << ffinal.ascii() << endl;
-                fitxersortidatxt << "Cuenta            Denominaci�                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
+                fitxersortidatxt << "Cuenta            Denominación                        Saldo ant.         Debe        Haber        Saldo     Debe ej.    Haber ej.    Saldo ej.\n" ;
                 fitxersortidatxt << "______________________________________________________________________________________________________________________________________________\n";
             }// end if
 
             if (html) {
-                //presentaci�html normal
-                fitxersortidahtml.setf(ios::fixed)
-                    ;
+                //presentació html normal
+                fitxersortidahtml.setf(ios::fixed);
                 fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
                 fitxersortidahtml << "<head>\n";
                 fitxersortidahtml << "  <!DOCTYPE / public \"-//w3c//dtd xhtml 1.0 transitional//en\"\n";
                 fitxersortidahtml << "    \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n";
                 fitxersortidahtml << "  <LINK REL=StyleSheet HREF=\"estils.css\" TYPE=\"text/css\" MEDIA=screen>\n";
-                fitxersortidahtml << "  <title> Balan�</title>\n";
+                fitxersortidahtml << "  <title> Balance </title>\n";
                 fitxersortidahtml << "</head>\n";
                 fitxersortidahtml << "<body>\n";
-                fitxersortidahtml << "<table><tr><td colspan=\"9\" class=titolbalanc> Balan�<hr></td></tr>\n\n";
+                fitxersortidahtml << "<table><tr><td colspan=\"9\" class=titolbalanc> Balance <hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td colspan=\"9\" class=periodebalanc> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td class=titolcolumnabalanc>lcuenta</td><td class=titolcolumnabalanc> ldenominacion</td><td class=titolcolumnabalanc>lsaldoant</td><td class=titolcolumnabalanc>ldebe</td><td class=titolcolumnabalanc>lhaber</td><td class=titolcolumnabalanc>lsaldo</td><td class=titolcolumnabalanc> ldebeej  </td><td class=titolcolumnabalanc> lhaberej </td><td class=titolcolumnabalanc> lsaldoej </td></tr>\n";
             }// end if
 
-            // Vamos a recopilar todos los apuntes agrupados por cuenta para poder establecer asi los valores de cada cuenta
+            // Vamos a recopilar todos los apuntes agrupados por cuenta para poder establecer así los valores de cada cuenta
             query.sprintf("SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '%s') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '%s' AND fecha <= '%s' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '%s' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo", finicial.ascii(), finicial.ascii(), ffinal.ascii(), finicial.ascii());
             cursor2 *cuentas;
             cuentas = conexionbase->cargacursor(query,"Periodo");

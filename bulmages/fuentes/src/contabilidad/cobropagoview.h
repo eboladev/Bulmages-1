@@ -23,7 +23,7 @@
 #include <cobropagodlg.h>
 
 /** 
-  * @author Tomeu Borr� Riera 
+  * @author Tomeu Borrás Riera 
   * \class cobropagoview cobropagoview.h
   * \brief Listado de gestion de cobros y pagos.
   */

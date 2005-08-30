@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras                               *
+ *   Copyright (C) 2003 by Tomeu Borrás                               *
  *   tborras@conetxia.com                                            *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -50,7 +50,7 @@ selectccosteview::~selectccosteview() {
 
 void selectccosteview::cargacostes() {
 // Rellenamnos la listbox que va a sustituir al combobox correspondiente.
-// Para que en los listados puedan salir m� cosas de las que se dicen.   
+// Para que en los listados puedan salir más cosas de las que se dicen.   
    fprintf(stderr,"Ahora nos toca rellenar las listas.\n");
     QCheckListItem *it;
     QMap <int,QListViewItem *>Lista;
@@ -72,7 +72,7 @@ void selectccosteview::cargacostes() {
         cursoraux1->siguienteregistro ();
     }// end while
     delete cursoraux1;
-    // Una vez que hemos puesto los centros de coste padre, todo lo dem� es una
+    // Una vez que hemos puesto los centros de coste padre, todo lo demás es una
     // Tarea de ir colocando centros de coste a sus respectivos
     // deja de ser recursivo y pasa a ser lineal.
     cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
@@ -91,8 +91,8 @@ void selectccosteview::cargacostes() {
     delete cursoraux2;
 }// end cargacostes
 
-// Esta funci� devuelve el primer centro de coste seleccionado de la vita.
-// Devuelve el idc_coste. Si no hay ningun centro de coste seleccionado devuelve
+// Esta función devuelve el primer centro de coste seleccionado de la vita.
+// Devuelve el idc_coste. Si no hay ningún centro de coste seleccionado devuelve
 // cero
 int selectccosteview::firstccoste() {
    delete m_iterador;
@@ -112,7 +112,7 @@ int selectccosteview::firstccoste() {
   return idccoste;
 }// end firstccoste
 
-// Esta funci� devuelve el siguiente centro de coste seleccionado de la vista.
+// Esta función devuelve el siguiente centro de coste seleccionado de la vista.
 int selectccosteview::nextccoste() {
    int idccoste=0;
    QCheckListItem *item;
@@ -146,7 +146,7 @@ QString selectccosteview::cadcoste() {
   return ccostes; ;
 }// end cadcoste
 
-// Esta funci� devuelve el nombre del centro de coste actual
+// Esta función devuelve el nombre del centro de coste actual
 // Si no existe devuelve ""
 QString selectccosteview::nomcoste() {
    QCheckListItem *item;

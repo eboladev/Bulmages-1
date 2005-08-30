@@ -21,10 +21,9 @@
  /*
 -- Albaran de proveedor
 -- Any: Any en que s'efectua la comanda.
--- NumCompra: Numero de Compra (Clau artificial per poder registrar recepcions que ens arribin sense l'albarà postposant la cumplimentació del número d'albarà).
--- NumAlbara: Número d'albarà.
--- Data: Data de l'albarà
--- Recepcio: Data de recepció.
+-- NumCompra: Numero de Compra (Clau artificial per poder registrar recepcions que ens arribin sense l'albarÃ¡n postposant la cumplimentaciÃ³n del nmero d'albarÃ¡n.
+-- NumAlbara: Nmero d'albarÃ¡n
+-- Data: Data de l'albarÃ¡n-- Recepcio: Data de recepciÃ³n
 -- Comentaris
 CREATE TABLE alb_pro (
    idalb_pro serial PRIMARY KEY,
@@ -71,14 +70,14 @@ void delivnoteslist::inicializa() {
    m_list->setColumnMovingEnabled( TRUE );
    m_list->setNumCols(9);
    m_list->horizontalHeader()->setLabel( COL_IDALB_PRO, tr( "Identificador" ) );
-   m_list->horizontalHeader()->setLabel( COL_ANOALB_PRO, tr( "Año" ) );
-   m_list->horizontalHeader()->setLabel( COL_NCOMPRAALB_PRO, tr( "Nº Compra" ) );
-   m_list->horizontalHeader()->setLabel( COL_NALBALB_PRO, tr( "Nº Albarán" ) );
+   m_list->horizontalHeader()->setLabel( COL_ANOALB_PRO, tr( "AÃ±o" ) );
+   m_list->horizontalHeader()->setLabel( COL_NCOMPRAALB_PRO, tr( "N Compra" ) );
+   m_list->horizontalHeader()->setLabel( COL_NALBALB_PRO, tr( "N AlbarÃ¡n" ) );
    m_list->horizontalHeader()->setLabel( COL_FCREALB_PRO, tr( "Fecha Alta" ) );
-   m_list->horizontalHeader()->setLabel( COL_FRECEPALB_PRO, tr( "Fecha Recepción" ) );
+   m_list->horizontalHeader()->setLabel( COL_FRECEPALB_PRO, tr( "Fecha RecepciÃ³n" ) );
    m_list->horizontalHeader()->setLabel( COL_COMENTALB_PRO, tr( "Observaciones" ) );
    m_list->horizontalHeader()->setLabel( COL_IDFRA_PRO, tr( "Factura" ) );
-   m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr( "Almacén" ) );
+   m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr( "AlmacÃ©n" ) );
    
    m_list->setColumnWidth(COL_IDALB_PRO,100);
    m_list->setColumnWidth(COL_ANOALB_PRO,100);

@@ -2,9 +2,9 @@
                           regivaprintview.cpp  -  description
                              -------------------
     begin                : dom jul 13 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
+    copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Ter� - amirabet@biada.org
+    modificat per        : (C) 2003 Antoni Mirabete i Terés - amirabet@biada.org
  ***************************************************************************/
 
 /***************************************************************************
@@ -91,8 +91,8 @@ void regivaprintview::presentar(char *tipus) {
 
     if (txt | html) {
 
-        char *argstxt[]={"iva.txt","iva.txt",NULL};      //presentaci�txt normal
-        char *argshtml[]={"iva.html","iva.html",NULL};   //presentaci�html normal
+        char *argstxt[]={"iva.txt","iva.txt",NULL};      //presentació txt normal
+        char *argshtml[]={"iva.html","iva.html",NULL};   //presentació html normal
 
         ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
         ofstream fitxersortidahtml(argshtml[0]);
@@ -101,7 +101,7 @@ void regivaprintview::presentar(char *tipus) {
             txt=0;    // verifiquem que s'hagin creat correctament els fitxers
         if (!fitxersortidahtml)
             html=0;  // es pot millorar el tractament d'errors
-        if (txt | html) {                // nom� continuem si hem pogut crear algun fitxer
+        if (txt | html) {                // només continuem si hem pogut crear algun fitxer
             int num1;
             cursor2 *cursorapt;
             conexionbase->begin();
@@ -109,22 +109,22 @@ void regivaprintview::presentar(char *tipus) {
             fprintf(stderr,"%s\n",query.ascii());
             cursorapt = conexionbase->cargacursor(query,"mycursor");
             conexionbase->commit();
-            // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
+            // Calculamos cuántos registros van a crearse y dimensionamos la tabla.
             num1 = cursorapt->numregistros();
             int hoja=0;
 
             if (txt) {
-                //presentacion txt normal
+                //presentación txt normal
                 fitxersortidatxt.setf(ios::fixed);
                 fitxersortidatxt.precision(2);
                 fitxersortidatxt << "                                        IVA Repercutido \n" ;
                 fitxersortidatxt << "Fecha Inicial: " << finicial.ascii() << 
 		"   Fecha Final: " << ffinal.ascii() << endl;
-		fitxersortidatxt << "Asiento  Fecha   Cuenta   Descripcion                        Base Imponible    Factura \n" ;
+		fitxersortidatxt << "Asiento  Fecha   Cuenta   Descripción                        Base Imponible    Factura \n" ;
                 fitxersortidatxt << "__________________________________________________________________________________________________________\n";
             }// end if
             if (html) {
-                //presentacion html normal
+                //presentación html normal
                 fitxersortidahtml.setf(ios::fixed);
                 fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
@@ -137,7 +137,7 @@ void regivaprintview::presentar(char *tipus) {
                 fitxersortidahtml << "<body>\n";
                 fitxersortidahtml << "<table><tr><td colspan=\"10\" class=titoliva> IVA Repercutido <hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td colspan=\"10\" class periodeiva> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td class=titolcolumnaiva> Asiento </td><td class=titolcolumnaiva> Data </td><td class=titolcolumnaiva> Cuenta </td><td class=titolcolumnaiva> Descripci�</td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> CIF </td><td class=titolcolumnaiva> Cuenta IVA </td></tr>\n";
+                fitxersortidahtml << "<tr><td class=titolcolumnaiva> Asiento </td><td class=titolcolumnaiva> Data </td><td class=titolcolumnaiva> Cuenta </td><td class=titolcolumnaiva> Descripción</td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> CIF </td><td class=titolcolumnaiva> Cuenta IVA </td></tr>\n";
             }// end if
             while (!cursorapt->eof()) {
                 datahora=cursorapt->valor("fecha");
@@ -182,7 +182,7 @@ void regivaprintview::presentar(char *tipus) {
 		Fixed baseimp = baseiva*1000000/porcent;
 		QString numberstr = baseimp.toQString();
 		
-		// Pasamos al formato de representacion español las cantidades a mostrar
+		// Pasamos al formato de representación español las cantidades a mostrar
 		QString iva = spanish.toString(cursorapt->valor("tbaseiva").toDouble(),'f',2);
 		QString bi = spanish.toString(numberstr.toDouble(),'f',2);
 		
@@ -206,15 +206,15 @@ void regivaprintview::presentar(char *tipus) {
             num1 = cursorapt->numregistros();
             hoja=0;
             if (txt) {
-                //presentacion txt normal
+                //presentación txt normal
                 fitxersortidatxt.setf(ios::fixed);
                 fitxersortidatxt.precision(2);
                 fitxersortidatxt << "                                        IVA Soportado \n" ;
-		fitxersortidatxt << "Asiento   Fecha     Cuenta   Descripcion                        Subtotal Cuota   IVA       Total   Factura    CIF\n" ;
+		fitxersortidatxt << "Asiento   Fecha     Cuenta   Descripción                        Subtotal Cuota   IVA       Total   Factura    CIF\n" ;
                 fitxersortidatxt << "_______________________________________________________________________________________________________________________\n";
             }
             if (html) {
-                //presentacion html normal
+                //presentación html normal
                 fitxersortidahtml.setf(ios::fixed);
                 fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
@@ -287,7 +287,7 @@ void regivaprintview::presentar(char *tipus) {
             /// AHORA CERRAMOS LOS FICHEROS
             if (txt) {
                 fitxersortidatxt.close();
-                //presentaci�txt normal
+                //presentación txt normal
                 if ((pid=fork()) < 0) {
                     perror ("Fork failed");
                     exit(errno);
@@ -299,7 +299,7 @@ void regivaprintview::presentar(char *tipus) {
             if (html) {
                 fitxersortidahtml << "\n</table>\n</body>\n</html>\n";
                 fitxersortidahtml.close();
-                //presentaci�html normal
+                //presentación html normal
                 if ((pid=fork()) < 0) {
                     perror ("Fork failed");
                     exit(errno);
