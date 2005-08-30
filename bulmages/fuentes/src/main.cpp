@@ -60,21 +60,30 @@ int main(int argc, char *argv[]) {
     /// Leemos la configuracion que luego podremos usar siempre
     confpr = new configuracion();
 
-    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
+    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
 
-//    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
+    //    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
     QApplication * mainApp = new QApplication (argc, argv);
     theApp = mainApp;
     mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
 
     traductor = new QTranslator ( 0 );
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
+        traductor->load( QString("bulmalib_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
+    } else {
+        QString archivo = "bulmalib_"+confpr->valor(CONF_TRADUCCION);
+        traductor->load(archivo,confpr->valor(CONF_DIR_TRADUCCION).ascii());
+    }// end if
+    theApp->installTranslator( traductor );
+
+    traductor = new QTranslator ( 0 );
+    if (confpr->valor(CONF_TRADUCCION) == "locales") {
         traductor->load( QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
     } else {
         QString archivo = "bulmages_"+confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo,confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        traductor->load(archivo.ascii(),confpr->valor(CONF_DIR_TRADUCCION).ascii());
     }// end if
-    mainApp->installTranslator( traductor );
+    theApp->installTranslator( traductor );
 
     /// Iniciamos el sistema de log del programa para que se pueda seguir la ejecución del mismo.
     ctllog = new bitacora();
@@ -98,9 +107,9 @@ int main(int argc, char *argv[]) {
         bges = new Bulmages01(NULL, "bulmages",0, NULL);
     }// end if
 
-    
-    
-    
+
+
+
     /// Hacemos la carga de los plugins.
     QString cad= confpr->valor(CONF_PLUGINS_BULMACONT);
     fprintf(stderr,"Carga de plugins: %s\n",cad.ascii());
@@ -119,7 +128,7 @@ int main(int argc, char *argv[]) {
 		}// end if    
 	}// end if
     }// end for
-    
+
     mainApp->setMainWidget(bges);
     valorsalida = mainApp->exec();
     delete confpr;
