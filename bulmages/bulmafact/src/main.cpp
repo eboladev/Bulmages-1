@@ -30,10 +30,19 @@ int main( int argc, char ** argv ) {
 
     traductor = new QTranslator ( 0 );
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load( QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
+        traductor->load( QString("bulmalib_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
+    } else {
+        QString archivo = "bulmalib_"+confpr->valor(CONF_TRADUCCION);
+        traductor->load(archivo,confpr->valor(CONF_DIR_TRADUCCION).ascii());
+    }// end if
+    theApp->installTranslator( traductor );
+
+    traductor = new QTranslator ( 0 );
+    if (confpr->valor(CONF_TRADUCCION) == "locales") {
+        traductor->load( QString("bulmafact_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
     } else {
         QString archivo = "bulmafact_"+confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo,confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        traductor->load(archivo.ascii(),confpr->valor(CONF_DIR_TRADUCCION).ascii());
     }// end if
     theApp->installTranslator( traductor );
 
