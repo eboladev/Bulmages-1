@@ -33,9 +33,10 @@ void ImportExportBulmafactView::alerta(int a, int b) {
 }// end realizado
 
 void ImportExportBulmafactView::mensajeria(QString mensaje) {
+	fprintf(stderr,"MENSAJE:\n\n\n%s\n\n\n", mensaje.ascii());
 	mensajein += mensaje+"<BR>";
 	m_mensajes->setText("<HTML><BODY BGCOLOR='#CCCCCC'>"+QString(mensajein.latin1())+"</BODY></HTML>");
- //	m_mensajes->scrollBy(0,400);
+//	m_mensajes->scrollBy(0,400);
 }// end publicamensaje
 
 

@@ -631,13 +631,14 @@ CREATE TABLE pedidocliente (
    descpedidocliente character varying(500),
    comentpedidocliente character varying(3000),
    contactpedidocliente character varying(90),
-   telpedidocliente character varying(20),   
+   telpedidocliente character varying(20),
+   idusuari integer,
    idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
    procesadopedidocliente boolean DEFAULT FALSE,   
    idcliente integer NOT NULL REFERENCES cliente(idcliente),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago),    
+   idforma_pago integer REFERENCES forma_pago(idforma_pago),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-   idtrabajador integer REFERENCES trabajador(idtrabajador)   
+   idtrabajador integer REFERENCES trabajador(idtrabajador)
 );
 
 CREATE FUNCTION restriccionespedidocliente () RETURNS "trigger"
@@ -891,6 +892,7 @@ CREATE TABLE albaranp (
    procesadoalbaranp boolean DEFAULT FALSE,
    idproveedor integer REFERENCES proveedor(idproveedor),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),
+   idusuari integer,
 --   idfactura integer REFERENCES factura(idfactura),
 --   idnofactura integer REFERENCES nofactura(idnofactura),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
@@ -995,6 +997,7 @@ CREATE TABLE albaran (
    procesadoalbaran boolean DEFAULT FALSE,
    contactalbaran character varying,
    telalbaran character varying,
+   idusuari integer,
    idcliente integer REFERENCES cliente(idcliente),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),
    idfactura integer REFERENCES factura(idfactura),

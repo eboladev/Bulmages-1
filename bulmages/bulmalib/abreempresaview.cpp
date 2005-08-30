@@ -2,7 +2,7 @@
                           abreempresaview.cpp  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -14,8 +14,8 @@
  *                                                                         *
  ***************************************************************************/
 /** \file abreempresaview.cpp
-  * Contiene la implementación de la clase \ref abreempresaview y sus métodos.
-  * \author Tomeu Borrás Riera
+  * Contiene la implementaciï¿½ de la clase \ref abreempresaview y sus mï¿½odos.
+  * \author Tomeu Borrï¿½ Riera
   */
 
 #include <fstream>
@@ -32,16 +32,16 @@ using namespace std;
 
 /// \brief Este es el archivo en el que se almacenan las empresas que existen. Es un archivo separado por comas, que se suele alojar en el <i>home/.bulmages</i> del usuario.
 #define LISTEMPRESAS "listempresas.lst"
-/// \brief Número de columna para el nombre en la lista.
+/// \brief Nmero de columna para el nombre en la lista.
 #define ABRE_NOMBRE  0
-/// \brief Número de columna que almacena el ejercicio de la empresa.
+/// \brief Nmero de columna que almacena el ejercicio de la empresa.
 #define ABRE_ANO     1
-/// \brief Número de columna que almacena el nombre de la base de datos de la empresa.
+/// \brief Nmero de columna que almacena el nombre de la base de datos de la empresa.
 #define ABRE_ARCHIVO 2
-/// \brief Número de columna que almacena el tipo de datos al que hace referencia la linea (bulmacont o bulmafact).
+/// \brief Nmero de columna que almacena el tipo de datos al que hace referencia la linea (bulmacont o bulmafact).
 #define ABRE_TIPO    3
 
-/** Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la presentación.
+/** Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la presentaciï¿½.
   * Llama a la funcion \ref cargaArchivo
   * @param parent La ventana que hace la llamada
   * @param tipo   String que indica si es contabilidad o facturacion (bulmacont, bulmafact)
@@ -59,8 +59,8 @@ abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name
 abreempresaview::~abreempresaview() {}// end ~abreempresaview
 
 
-/** Inserta una compañia en el QList empresas definido en el diálogo
-  * Crea un objeto QListViewItem para la QListView \ref empresas y rellena sus columnas con los datos pasados al método.
+/** Inserta una compaï¿½a en el QList empresas definido en el diï¿½ogo
+  * Crea un objeto QListViewItem para la QListView \ref empresas y rellena sus columnas con los datos pasados al mï¿½odo.
   * @param nombre Nombre de la empresa
   * @param ano Ejercicio de la empresa (aunque pueden ser varios)
   * @param archivo Nombre de la base de datos
@@ -75,7 +75,7 @@ void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo
 }// end insertCompany
 
 
-/** Se ha pulsado sobre el botón de aceptar con lo que iniciamos la variables y cerramos esta ventana ya que ha cumplico con su cometido
+/** Se ha pulsado sobre el botï¿½ de aceptar con lo que iniciamos la variables y cerramos esta ventana ya que ha cumplico con su cometido
   */
 void abreempresaview::accept() {
     QListViewItem *it;
@@ -88,7 +88,7 @@ void abreempresaview::accept() {
     }// end if
 }// end accept
 
-/** Realiza la misma acción que el \ref accept
+/** Realiza la misma acciï¿½ que el \ref accept
   */
 /*  
 void abreempresaview::closeEvent(QCloseEvent * e) {
@@ -120,7 +120,7 @@ void abreempresaview::cargaArchivo() {
 }// end cargaArchivo
 
 /** Guarda en el archivo de empresas las empresas disponibles
-  * También actualiza el listado de empresas visibles.
+  * Tambiï¿½ actualiza el listado de empresas visibles.
   */
 void abreempresaview::guardaArchivo() {
     string dir1 = getenv("HOME");

@@ -394,7 +394,7 @@
     </message>
     <message>
         <source>Grupos Contables</source>
-        <translation type="unfinished">Grups Contables</translation>
+        <translation type="obsolete">Grups Contables</translation>
     </message>
     <message>
         <source>Acerca de ...</source>
@@ -418,6 +418,22 @@
     </message>
     <message>
         <source>Ver Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maestro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Salir</source>
+        <translation type="unfinished">Sortir</translation>
+    </message>
+    <message>
+        <source>Unnamed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>w item</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -695,7 +711,7 @@ Informacion sobre los autores de la aplicacion</source>
     </message>
     <message>
         <source>Grupos Contables</source>
-        <translation>Grups Contables</translation>
+        <translation type="obsolete">Grups Contables</translation>
     </message>
     <message>
         <source>&amp;Grupos Contables</source>
@@ -1266,15 +1282,15 @@ Informacion sobre los autores de la aplicacion</source>
         <translation type="obsolete">Gestió d&apos;Usuaris</translation>
     </message>
     <message>
-        <source>BulmaG&#xc3;&#xa9;s:  </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Introducci&#xef;&#xbf;&#xbd; de Apuntes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Introducci&#xef;&#xbf;&#xbd; de Borrador</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BulmaCont -- </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3265,7 +3281,7 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
     </message>
     <message>
         <source>About</source>
-        <translation>Crèdits</translation>
+        <translation type="obsolete">Crèdits</translation>
     </message>
     <message encoding="UTF-8">
         <source>Versión 0.3.5</source>
@@ -3277,7 +3293,7 @@ Prueba a descargarlo desde www.aeat.es y gu&#xe1;rdalo en
     </message>
     <message>
         <source>Autores</source>
-        <translation>Autors</translation>
+        <translation type="obsolete">Autors</translation>
     </message>
     <message encoding="UTF-8">
         <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot;font-size:-1pt;font-family:helvetica&quot; bgcolor=&quot;#FFFFFF&quot;&gt;
@@ -3303,7 +3319,7 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     </message>
     <message>
         <source>Soporte</source>
-        <translation>Suport</translation>
+        <translation type="obsolete">Suport</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot;font-size:-1pt;font-family:helvetica&quot; bgcolor=&quot;#FFFFFF&quot;&gt;
@@ -3320,7 +3336,7 @@ Oscar serna &lt;a href=&quot;mailto:oserna@regamallorca.com&quot;&gt;oserna@rega
     </message>
     <message>
         <source>Licencia</source>
-        <translation>Llicència</translation>
+        <translation type="obsolete">Llicència</translation>
     </message>
     <message encoding="UTF-8">
         <source>&lt;PRE&gt;
@@ -4016,7 +4032,7 @@ Public License instead of this License.
     </message>
     <message>
         <source>Cerrar</source>
-        <translation>Tancar</translation>
+        <translation type="obsolete">Tancar</translation>
     </message>
     <message encoding="UTF-8">
         <source>Versión 0.4.3</source>
@@ -4060,6 +4076,26 @@ Jean René Mèrou &lt;br /&gt;
     <message encoding="UTF-8">
         <source>Versión 0.5.1</source>
         <translation type="unfinished">Versió 0.5.1</translation>
+    </message>
+    <message>
+        <source>A&amp;bout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BulmaCont</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A&amp;utores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sopor&amp;te</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L&amp;icencia</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4361,7 +4397,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message encoding="UTF-8">
         <source>Amortización</source>
-        <translation>Amortització</translation>
+        <translation type="obsolete">Amortització</translation>
     </message>
     <message>
         <source>Cuotas</source>
@@ -4441,19 +4477,19 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Incremental</source>
-        <translation>Incremental</translation>
+        <translation type="obsolete">Incremental</translation>
     </message>
     <message>
         <source>Lineal</source>
-        <translation>Lineal</translation>
+        <translation type="obsolete">Lineal</translation>
     </message>
     <message>
         <source>Decremental</source>
-        <translation>Decremental</translation>
+        <translation type="obsolete">Decremental</translation>
     </message>
     <message>
         <source>Porcentual</source>
-        <translation>Percentual</translation>
+        <translation type="obsolete">Percentual</translation>
     </message>
     <message>
         <source>Datos Proveedor</source>
@@ -4471,17 +4507,45 @@ Jean René Mèrou &lt;br /&gt;
         <source>Num. Asiento</source>
         <translation type="unfinished">Num. Assentament</translation>
     </message>
-    <message>
-        <source>Calcular</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message encoding="UTF-8">
         <source>Agrupación</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cerrar</source>
-        <translation type="unfinished">Tancar</translation>
+        <translation type="obsolete">Tancar</translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Amor&amp;tización</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Incremental</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+I</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Li&amp;neal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Decremental</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Porcent&amp;ual</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Calcular</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+C</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4492,7 +4556,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Cerrar</source>
-        <translation type="unfinished">Tancar</translation>
+        <translation type="obsolete">Tancar</translation>
     </message>
     <message>
         <source>Borrar Amortizacion</source>
@@ -4814,7 +4878,7 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>Cerrar</source>
-        <translation>Tancar</translation>
+        <translation type="obsolete">Tancar</translation>
     </message>
     <message>
         <source>Exportar</source>
@@ -4853,15 +4917,31 @@ Jean René Mèrou &lt;br /&gt;
     </message>
     <message>
         <source>texto plano</source>
-        <translation>text pla</translation>
+        <translation type="obsolete">text pla</translation>
     </message>
     <message>
         <source>Aceptar</source>
-        <translation>Acceptar</translation>
+        <translation type="obsolete">Acceptar</translation>
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Anul·lar</translation>
+        <translation type="obsolete">Anul·lar</translation>
+    </message>
+    <message>
+        <source>&amp;texto plano</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Acep&amp;tar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5200,7 +5280,7 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
     </message>
     <message>
         <source>Cerrar</source>
-        <translation type="unfinished">Tancar</translation>
+        <translation type="obsolete">Tancar</translation>
     </message>
 </context>
 <context>
@@ -5983,7 +6063,7 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
     </message>
     <message>
         <source>Salir</source>
-        <translation type="unfinished">Sortir</translation>
+        <translation type="obsolete">Sortir</translation>
     </message>
     <message encoding="UTF-8">
         <source>Información de la Forma de Pago</source>
@@ -6432,7 +6512,7 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
     </message>
     <message>
         <source>Cancelar</source>
-        <translation>Anul·lar</translation>
+        <translation type="obsolete">Anul·lar</translation>
     </message>
     <message>
         <source>Datos Empresa</source>
@@ -6440,7 +6520,7 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Nom</translation>
+        <translation type="obsolete">Nom</translation>
     </message>
     <message>
         <source>Cuenta Empresa</source>
@@ -6503,16 +6583,8 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cobros / Pagos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Comentarios</source>
         <translation type="obsolete">Comentaris</translation>
-    </message>
-    <message>
-        <source>Tener en cuenta para el registro de IVA</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Serie</source>
@@ -6527,15 +6599,39 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Emitida</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recibida</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Total Factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Tener en cuenta para el registro de IVA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Datos Factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Em&amp;itida</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+I</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reci&amp;bida</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cobros / Pagos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ca&amp;ncelar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6721,15 +6817,15 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
     </message>
     <message>
         <source>Soportado</source>
-        <translation>Suportat</translation>
+        <translation type="obsolete">Suportat</translation>
     </message>
     <message>
         <source>Repercutido</source>
-        <translation>Repercutit</translation>
+        <translation type="obsolete">Repercutit</translation>
     </message>
     <message>
         <source>Resumen</source>
-        <translation>Resum</translation>
+        <translation type="obsolete">Resum</translation>
     </message>
     <message>
         <source>Iva Repercutido</source>
@@ -6781,7 +6877,7 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
     </message>
     <message>
         <source>Cerrar</source>
-        <translation type="unfinished">Tancar</translation>
+        <translation type="obsolete">Tancar</translation>
     </message>
     <message>
         <source>IVA Repercutido</source>
@@ -6789,6 +6885,18 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
     </message>
     <message>
         <source>Iva Soportado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Repercuti&amp;do</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sopor&amp;tado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Res&amp;umen</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -7111,6 +7219,30 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
         <source>Nombre</source>
         <translation type="obsolete">Nom</translation>
     </message>
+    <message>
+        <source>Propiedad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Guardar Cambios</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Desea guardar los cambios.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Guardar</source>
+        <translation type="unfinished">Desar</translation>
+    </message>
+    <message>
+        <source>No Guardar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>propiedemp</name>
@@ -7128,7 +7260,7 @@ Esta operaci&#xf3;n puede ocasionar p&#xe9;rdida de datos
     </message>
     <message>
         <source>Digitos de cuentas</source>
-        <translation>Dígits de contes</translation>
+        <translation type="obsolete">Dígits de contes</translation>
     </message>
     <message encoding="UTF-8">
         <source>Modelo de Código Cuenta</source>
@@ -7170,11 +7302,11 @@ yyyy --&gt; Dígits de la conta.</translation>
     </message>
     <message>
         <source>Modificar plan contable</source>
-        <translation>Mostra el pla de contes</translation>
+        <translation type="obsolete">Mostra el pla de contes</translation>
     </message>
     <message>
         <source>Propiedades Generales</source>
-        <translation>Propietats Generals</translation>
+        <translation type="obsolete">Propietats Generals</translation>
     </message>
     <message>
         <source>Usuarios</source>
@@ -7187,10 +7319,6 @@ yyyy --&gt; Dígits de la conta.</translation>
     <message>
         <source>Modificar</source>
         <translation type="obsolete">Modificar</translation>
-    </message>
-    <message>
-        <source>Datos Fiscales</source>
-        <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
         <source>Tipo de vía:</source>
@@ -7242,7 +7370,23 @@ yyyy --&gt; Dígits de la conta.</translation>
     </message>
     <message>
         <source>Cerrar</source>
-        <translation type="unfinished">Tancar</translation>
+        <translation type="obsolete">Tancar</translation>
+    </message>
+    <message>
+        <source>&amp;Datos Fiscales</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>D&amp;igitos de cuentas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modi&amp;ficar plan contable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Propiedades &amp;Generales</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -7416,7 +7560,7 @@ yyyy --&gt; Dígits de la conta.</translation>
     </message>
     <message>
         <source>Salir</source>
-        <translation type="unfinished">Sortir</translation>
+        <translation type="obsolete">Sortir</translation>
     </message>
     <message encoding="UTF-8">
         <source>Información del canal</source>

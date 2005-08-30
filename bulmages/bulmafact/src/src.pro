@@ -254,7 +254,14 @@ SOURCES += bulmafact.cpp \
 	   linpedidoproveedor.cpp \
 	   descpedidoproveedor.cpp \
 	   listdescpedidoproveedor.cpp \
-	   listdescpedidoproveedorview.cpp 	   
+	   listdescpedidoproveedorview.cpp
+
+TRANSLATIONS += bulmafact_es.ts \
+                bulmafact_ca.ts \
+                bulmafact_en.ts \
+                bulmafact_fr.ts \
+                bulmafact_de.ts 
+
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

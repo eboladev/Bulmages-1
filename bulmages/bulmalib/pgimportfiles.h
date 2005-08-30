@@ -22,7 +22,7 @@
 
 #include "postgresiface2.h"
 
-#define IMPORT_TODO 65535
+#define IMPORT_TODO 0xFFFFFFFF
 // Tipos para BulmaCont
 #define IMPORT_CUENTAS 1
 #define IMPORT_TIPOSIVA 2
@@ -33,6 +33,7 @@
 #define IMPORT_FACTURAS 64
 // Tipos para BulmaFact
 #define IMPORT_FAMILIAS 1
+#define IMPORT_ALBARANESCLIENTE 2
 #define IMPORT_CLIENTES 128
 #define IMPORT_PROVEEDORES 256
 #define IMPORT_ARTICULOS 512
@@ -41,15 +42,15 @@
 #define IMPORT_TRABAJADORES 4096
 #define IMPORT_FORMAS_PAGO 8192
 #define IMPORT_PRESUPUESTOSCLIENTE 16384
-#define IMPORT_PEDIDOSCLIENTE  32768
-#define IMPORT_ALBARANESCLIENTE 65536
+#define IMPORT_PEDIDOSCLIENTE  4
 
 
 
 
 
-/** @autor Tomeu Borr� Riera
-  * @brief Clase para importaci� y exportaci� a distintos formatos de archivo de datos.
+
+/** @autor Tomeu Borrás� Riera
+  * @brief Clase para importación� y exportación� a distintos formatos de archivo de datos.
   */
 class pgimportfiles {
 private:
@@ -66,7 +67,7 @@ public:
 	/// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero a funci�.
 	virtual void alerta(int,int) {};
 	/// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un puntero de funci�.
-	virtual void mensajeria (QString) {};
+	virtual void mensajeria(QString) {  fprintf(stderr,"Funcion no implementada en esta clase\n");};
 
 	void setFInicial(QString f) {m_fInicial = f;};
 	void setFFinal(QString f) {m_fFinal = f;};
@@ -78,11 +79,11 @@ public:
 	int contaplus2Bulmages(QFile &, QFile &);
 	int bulmages2Contaplus(QFile &, QFile &);
 	/// Esta funci� pasa datos de una empresa al formato XML.
-	int bulmages2XML(QFile &, unsigned int tipo = IMPORT_TODO);
-	int bulmafact2XML(QFile &, unsigned int tipo = IMPORT_TODO);
+	int bulmages2XML(QFile &, unsigned long long int tipo = IMPORT_TODO);
+	int bulmafact2XML(QFile &, unsigned long long int tipo = IMPORT_TODO);
 	/// Esta funci� pasa datos de XML a bulmag�.
-	int XML2Bulmages(QFile &, unsigned int tip = IMPORT_TODO);
-	int XML2BulmaFact(QFile &, unsigned int tip = IMPORT_TODO);
+	int XML2Bulmages(QFile &, unsigned long long int tip = IMPORT_TODO);
+	int XML2BulmaFact(QFile &, unsigned long long int tip = IMPORT_TODO);
 	QString searchParent(QString);
 };
 
@@ -152,7 +153,7 @@ unsigned int m_tipo;
 
 /** @autor Tomeu Borr� Riera
   * @class pgimportifles pgimportifles.h
-  * @brief Clase para leer archivos de XML y hacer la importaci� de datos.
+  * @brief Clase para leer archivos de XML y hacer la importación� de datos.
   */
 /// Usamos este tipo para almacenar todos los valores que va recogiendo la clase.
 typedef QMap<QString, QString> tvalores;
@@ -171,20 +172,18 @@ private:
 	QPtrList<tvalores> listadpresupuesto;
 	QPtrList<tvalores> listalfactura;
 	QPtrList<tvalores> listadfactura;
+	QPtrList<tvalores> listalalbaran;
+	QPtrList<tvalores> listadalbaran;
+	QPtrList<tvalores> listalpedidocliente;
+	QPtrList<tvalores> listadpedidocliente;
+
 public:
-    ImportBulmaFact(pgimportfiles *, postgresiface2 *, unsigned int tip=IMPORT_TODO);
+    ImportBulmaFact(pgimportfiles *, postgresiface2 *, unsigned long long int tip=IMPORT_TODO);
     ~ImportBulmaFact();
     bool startDocument();
-    bool startElement( const QString&, const QString&, const QString& ,
-                       const QXmlAttributes& );
+    bool startElement( const QString&, const QString&, const QString& ,  const QXmlAttributes& );
     bool endElement( const QString&, const QString&, const QString& );
     bool characters (const QString&);
-/*
-	/// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero a funci�.
-	virtual void alerta(int,int) {};
-	/// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un puntero de funci�.
-	virtual void mensajeria (QString) {};
-*/
 private:
     QString indent;
     unsigned int m_tipo;
@@ -195,9 +194,19 @@ private:
 	int trataAlmacen();
 	int trataArticulo();
 	int trataFactura();
+	int trataLFactura();
+	int trataDFactura();
 	int trataPresupuesto();
 	int trataLPresupuesto();
+	int trataDPresupuesto();
 	int trataFamilia();
+	int trataAlbaran();
+	int trataLAlbaran();
+	int trataDAlbaran();
+	int trataPedidoCliente();
+	int trataLPedidoCliente();
+	int trataDPedidoCliente();
 };
+
 
 #endif

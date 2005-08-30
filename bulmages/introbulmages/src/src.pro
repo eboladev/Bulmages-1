@@ -64,6 +64,12 @@ comun/nuevaempresadlg.ui.target = comun/nuevaempresadlg.ui
 comun/uiconfiguracion.ui.target = comun/uiconfiguracion.ui
 comun/uiselector.ui.target = comun/uiselector.ui
 
+TRANSLATIONS += ibulmages_es.ts \
+                ibulmages_ca.ts \
+                ibulmages_en.ts \
+                ibulmages_fr.ts \
+                ibulmages_de.ts 
+
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc

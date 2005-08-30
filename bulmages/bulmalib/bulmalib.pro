@@ -37,6 +37,13 @@ SOURCES += postgresiface2.cpp \
 	   busquedafecha.cpp \
 	   qtable1.cpp \
 	   pgimportfiles.cpp
+
+TRANSLATIONS += bulmalib_es.ts \
+                bulmalib_ca.ts \
+                bulmalib_en.ts \
+                bulmalib_fr.ts \
+                bulmalib_de.ts 
+
 TEMPLATE = lib
 LANGUAGE = C++
 CONFIG += release \

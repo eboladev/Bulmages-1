@@ -1,23 +1,23 @@
 --
--- Modificación de campos y funciones de la BD para la adaptación al tipo de datos monetario
+-- Modificaciï¿½ de campos y funciones de la BD para la adaptaciï¿½ al tipo de datos monetario
 --
 
 BEGIN;
 
 --
--- Estas primeras funciones cambiarán los tipos de columnas que están como flotantes a NUMERIC.
+-- Estas primeras funciones cambiarï¿½ los tipos de columnas que estï¿½ como flotantes a NUMERIC.
 -- Se trata de un parche que se desea aplicar para almacenar los tipos monetarios
 -- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
 -- que se almacenen como tipo 'numeric'.
--- Todas devuelven como valor numérico el número de filas influenciadas por el cambio
--- NOTA: Si alguien sabe como pasar por parámetro un nombre de tabla y campo a modificar se
--- haría mucho más sencillito porque sólo habría que implementar un función ya que siempre
+-- Todas devuelven como valor numï¿½ico el nmero de filas influenciadas por el cambio
+-- NOTA: Si alguien sabe como pasar por parï¿½etro un nombre de tabla y campo a modificar se
+-- harï¿½ mucho mï¿½ sencillito porque sï¿½o habrï¿½ que implementar un funciï¿½ ya que siempre
 -- hay que hacer lo mismo.
 --
 
 
 --
--- Función auxiliar para borrar funciones limpiamente
+-- Funciï¿½ auxiliar para borrar funciones limpiamente
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
@@ -64,10 +64,10 @@ BEGIN
 END;
 '    LANGUAGE plpgsql;
 
-\echo "Cambiamos la función de reordenar asientos pq daba problemas."
+\echo "Cambiamos la funciï¿½ de reordenar asientos pq daba problemas."
  
 --
--- Agregamos nuevos parametros de configuración.
+-- Agregamos nuevos parametros de configuraciï¿½.
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
@@ -86,7 +86,7 @@ END;
 '   LANGUAGE plpgsql;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revisión de la base de datos"
+\echo "Actualizada la revisiï¿½ de la base de datos"
 
 
 CREATE OR REPLACE FUNCTION restriccionesborradocuenta () RETURNS "trigger"
@@ -101,6 +101,9 @@ BEGIN
         RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
+
+
+DROP TRIGGER restriccionescuentatrigger ON cuenta;
 
 CREATE TRIGGER restriccionescuentatrigger
     BEFORE DELETE ON cuenta

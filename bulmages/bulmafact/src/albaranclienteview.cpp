@@ -64,14 +64,14 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const cha
     setListDescuentoAlbaranCliente(m_descuentos);
     inicialize();
     comp->meteWindow(caption(),this);
-    fprintf(stderr,"Fin de la inicialización de AlbaranClienteView\n");
+    fprintf(stderr,"Fin de la inicializaciï¿½ de AlbaranClienteView\n");
 }// end ClientDelivNote
 
 
 bool AlbaranClienteView::close(bool fil) {
     if (dialogChanges_hayCambios())  {
-        if ( QMessageBox::warning( this, "Guardar Albaran",
-                                   "Desea guardar los cambios.",
+        if ( QMessageBox::warning( this, tr("Guardar Albaran"),
+                                   tr("Desea guardar los cambios."),
                                    QMessageBox::Ok ,
                                    QMessageBox::Cancel ) == QMessageBox::Ok)
             s_saveAlbaranCliente();
@@ -156,9 +156,9 @@ void AlbaranClienteView::s_verpedidocliente() {
 
 
 
-/// Se encarga de generar una factura a partir de un albarán
+/// Se encarga de generar una factura a partir de un albarï¿½
 void AlbaranClienteView::generarFactura() {
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la función.
+    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funciï¿½.
     QString SQLQuery = "SELECT * FROM factura WHERE reffactura='"+mdb_refalbaran+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
@@ -168,7 +168,7 @@ void AlbaranClienteView::generarFactura() {
         return;
     }
     delete cur;
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la función.
+    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funciï¿½.
     if (QMessageBox::question(
                 this,
                 tr("Factura Inexistente"),
@@ -203,7 +203,7 @@ void AlbaranClienteView::generarFactura() {
 
 
 #include "facturaslist.h"
-/// Se encarga de agregar un albarán a una factura
+/// Se encarga de agregar un albarï¿½ a una factura
 void AlbaranClienteView::agregarFactura() {
 	
 	// Pedimos la factura a la que agregar
