@@ -101,6 +101,14 @@
         <comment>company</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Guardar Albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Desea guardar los cambios.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context encoding="UTF-8">
     <name>AlbaranProveedorBase</name>
@@ -269,14 +277,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Num. Albaran</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Descripcion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Referencia</source>
         <translation type="unfinished"></translation>
     </message>
@@ -305,19 +305,35 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Id. almacen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nom Proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nom Almacen</source>
+        <source>Forma PA&amp;go</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>&amp;Núm. Albaran</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Forma PA&amp;go</source>
+        <source>Alt+N</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>&amp;Descripción</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Id. almacén</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Nom Almacén</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -457,19 +473,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Almac&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Num. Presupuesto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Vencimiento</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tel&#xef;&#xbf;&#xbd;ono</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -481,15 +489,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Id. Almac&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Descripci&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Referencia.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almac&#xc3;&#xa9;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tel&#xc3;&#xa9;fono</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. Almac&#xc3;&#xa9;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripci&#xc3;&#xb3;n</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -576,14 +592,14 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>BusquedaArticuloBase</name>
     <message>
         <source>Form1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Articulo</source>
+    <message encoding="UTF-8">
+        <source>Artículo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -642,8 +658,8 @@
         <source>Form1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Tipo Articulo</source>
+    <message encoding="UTF-8">
+        <source>Tipo Artículo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -686,24 +702,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Almac&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>N Albar&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>N Factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>N No Fra.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>BulmaFact - Albaranes</source>
-        <comment>Desea borrar el albar&#xef;&#xbf;&#xbd; seleccionado</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -714,8 +717,21 @@
         <source>No</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Almac&#xc3;&#xa9;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N Albar&#xc3;&#xa1;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BulmaFact - Albaranes</source>
+        <comment>Desea borrar el albar&#xc3;&#xa1;n seleccionado</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>ClientDelivNotesListBase</name>
     <message>
         <source>Buscar</source>
@@ -737,16 +753,8 @@
         <source>Cliente</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>&amp;Codigo Almacen</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message encoding="UTF-8">
         <source>&amp;Num. Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Fecha Albaran</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -778,15 +786,35 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Id. Al&amp;baran</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Comen&amp;tarios</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
         <source>Id. Almac&amp;én</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>&amp;Codigo Almacén</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>&amp;Fecha Albarán</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Id. Al&amp;barán</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+B</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1378,23 +1406,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>C&#xef;&#xbf;&#xbd;igo</source>
+        <source>C&#xc3;&#xb3;digo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Poblaci&#xef;&#xbf;&#xbd;</source>
+        <source>Poblaci&#xc3;&#xb3;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tel&#xef;&#xbf;&#xbd;ono</source>
+        <source>Tel&#xc3;&#xa9;fono</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Correo Electr&#xef;&#xbf;&#xbd;ico</source>
+        <source>Correo Electr&#xc3;&#xb3;nico</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>P&#xef;&#xbf;&#xbd;ina Web</source>
+        <source>P&#xc3;&#xa1;gina Web</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1546,7 +1574,7 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
-<context>
+<context encoding="UTF-8">
     <name>CobrosListBase</name>
     <message>
         <source>Cobros</source>
@@ -1566,10 +1594,6 @@
     </message>
     <message>
         <source>&amp;Id. Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Codigo Almacen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1601,10 +1625,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Telefono</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Id. Cliente</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1612,8 +1632,24 @@
         <source>Id. &amp;Usuario</source>
         <translation type="unfinished"></translation>
     </message>
+    <message encoding="UTF-8">
+        <source>&amp;Código Almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
-        <source>Id. Almacen</source>
+        <source>Alt+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>&amp;Teléfono</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Id. Almacén</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1639,7 +1675,7 @@
     </message>
 </context>
 <context>
-    <name>Edicion de Albaranes de Proveedores</name>
+    <name>Edicion de Albar&#xc3;&#xa1;n de Cliente</name>
     <message>
         <source>company</source>
         <translation type="unfinished"></translation>
@@ -1647,20 +1683,6 @@
 </context>
 <context>
     <name>Edicion de Albar&#xe1;n de Cliente</name>
-    <message>
-        <source>company</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Edicion de Albar&#xef;&#xbf;&#xbd; de Cliente</name>
-    <message>
-        <source>company</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Edicion de Articulos</name>
     <message>
         <source>company</source>
         <translation type="unfinished"></translation>
@@ -1745,6 +1767,27 @@
 </context>
 <context>
     <name>Edicion de Proveedores</name>
+    <message>
+        <source>company</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Edici&#xc3;&#xb3;n de Albaranes de Proveedores</name>
+    <message>
+        <source>company</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Edici&#xc3;&#xb3;n de Art&#xc3;&#xad;culos</name>
+    <message>
+        <source>company</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Edici&#xc3;&#xb3;n de Presupuestos</name>
     <message>
         <source>company</source>
         <translation type="unfinished"></translation>
@@ -1912,10 +1955,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Almac&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>N Presupuesto</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1925,10 +1964,6 @@
     </message>
     <message>
         <source>Persona Contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tel&#xef;&#xbf;&#xbd;ono</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1945,6 +1980,14 @@
     </message>
     <message>
         <source>COL_IDALMACEN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almac&#xc3;&#xa9;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tel&#xc3;&#xa9;fono</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2058,10 +2101,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Almac&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>N Presupuesto</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2071,10 +2110,6 @@
     </message>
     <message>
         <source>Persona Contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tel&#xef;&#xbf;&#xbd;ono</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2091,6 +2126,14 @@
     </message>
     <message>
         <source>COL_IDALMACEN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almac&#xc3;&#xa9;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tel&#xc3;&#xa9;fono</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2965,10 +3008,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Almac&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Num. Pedido</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2978,10 +3017,6 @@
     </message>
     <message>
         <source>Persona Contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tel&#xef;&#xbf;&#xbd;ono</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2997,15 +3032,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Id. Almac&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Descripci&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Referencia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almac&#xc3;&#xa9;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tel&#xc3;&#xa9;fono</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. Almac&#xc3;&#xa9;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripci&#xc3;&#xb3;n</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3119,10 +3162,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Almac&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Num. Pedido</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3132,10 +3171,6 @@
     </message>
     <message>
         <source>Persona Contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tel&#xef;&#xbf;&#xbd;ono</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3151,15 +3186,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Id. Almac&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Descripci&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Referencia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almac&#xc3;&#xa9;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tel&#xc3;&#xa9;fono</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. Almac&#xc3;&#xa9;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripci&#xc3;&#xb3;n</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3222,19 +3265,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Telefono</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Id. Cliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Id. &amp;Usuario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. Almacen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3261,6 +3296,18 @@
         <source>Numero</source>
         <translation type="unfinished"></translation>
     </message>
+    <message encoding="UTF-8">
+        <source>&amp;Teléfono</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Id. Almacén</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Presupuestos a Clientes</name>
@@ -3277,14 +3324,14 @@
     </message>
 </context>
 <context>
-    <name>Seleccione Art&#xed;culo</name>
+    <name>Seleccione Art&#xc3;&#xad;culo</name>
     <message>
         <source>company</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>Seleccione Art&#xef;&#xbf;&#xbd;ulo</name>
+    <name>Seleccione Art&#xed;culo</name>
     <message>
         <source>company</source>
         <translation type="unfinished"></translation>
@@ -3602,10 +3649,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Poster</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Margen</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3622,35 +3665,39 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>C&#xef;&#xbf;&#xbd;igo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C&#xef;&#xbf;&#xbd;igo Completo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Descripci&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Descripci&#xef;&#xbf;&#xbd; Completa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>C&#xef;&#xbf;&#xbd;igo de Barras</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tipo de Art&#xef;&#xbf;&#xbd;ulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>L&#xef;&#xbf;&#xbd;ea de Producci&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Stock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C&#xc3;&#xb3;digo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C&#xc3;&#xb3;digo Completo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripci&#xc3;&#xb3;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripci&#xc3;&#xb3;n Completa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C&#xc3;&#xb3;digo de Barras</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipo de Art&#xc3;&#xad;culo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P&#xc3;&#xb3;ster</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L&#xc3;&#xad;nea de Producci&#xc3;&#xb3;n</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3677,19 +3724,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Id. Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Codigo Completo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Nombre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Descripcion</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
@@ -3741,10 +3780,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Id. Linea Prod</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Cod. Articulo</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3754,6 +3789,26 @@
     </message>
     <message>
         <source>Alt+K</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>&amp;Id. Artículo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+I</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>&amp;Descripción</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt+D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Id. Línea Prod</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3984,7 +4039,11 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <source>Ctrl+Mayúsculas+F</source>
+        <source>Artículo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3995,23 +4054,7 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>A&#xf1;o</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>N&#xba; Compra</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>N&#xba; Albar&#xe1;n</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Fecha Alta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Recepci&#xf3;n</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4023,7 +4066,23 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Almac&#xe9;n</source>
+        <source>A&#xc3;&#xb1;o</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N Compra</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N Albar&#xc3;&#xa1;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha Recepci&#xc3;&#xb3;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almac&#xc3;&#xa9;n</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4123,16 +4182,16 @@ QMenuBar and QToolBar.</source>
         <source>Nombre</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Codigo</source>
+    <message encoding="UTF-8">
+        <source>Código</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Codigo Completo</source>
+    <message encoding="UTF-8">
+        <source>Código Completo</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Descripcion</source>
+    <message encoding="UTF-8">
+        <source>Descripción</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4151,10 +4210,6 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Plazo primer Recibo (dias)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Descuento</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4167,15 +4222,19 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Plazo entre Recibos (dias)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>tipoplazoentrerecibofpago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Salir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Plazo primer Recibo (días)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Plazo entre Recibos (días)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4198,31 +4257,31 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>N L&#xef;&#xbf;&#xbd;ea</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Descripci&#xef;&#xbf;&#xbd;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>N Pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Albar&#xef;&#xbf;&#xbd;</source>
+        <source>N L&#xc3;&#xad;nea</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Art&#xef;&#xbf;&#xbd;ulo</source>
+        <source>Descripci&#xc3;&#xb3;n</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>C&#xef;&#xbf;&#xbd;igo Art&#xef;&#xbf;&#xbd;ulo</source>
+        <source>Albar&#xc3;&#xa1;n</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Descripci&#xef;&#xbf;&#xbd; Art&#xef;&#xbf;&#xbd;ulo</source>
+        <source>Art&#xc3;&#xad;culo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C&#xc3;&#xb3;digo Art&#xc3;&#xad;culo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripci&#xc3;&#xb3;n Art&#xc3;&#xad;culo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4496,7 +4555,7 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Descripci&#xef;&#xbf;&#xbd;</source>
+        <source>Descripci&#xc3;&#xb3;n</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5064,15 +5123,15 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Codigo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Descripcion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Salir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Código</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Descripción</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
