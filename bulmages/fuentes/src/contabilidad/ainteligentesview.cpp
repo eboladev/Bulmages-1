@@ -380,6 +380,8 @@ void ainteligentesview::boton_save() {
            else
              cod = "NULL";
            
+		fprintf(stderr,"Codigo cuenta: %s\n",cod.ascii());
+
            if (!tapunts->text(i,COL_FECHA).isNull())
              fecha = "'"+tapunts->text(i,COL_FECHA)+"'";
            else
@@ -430,7 +432,8 @@ void ainteligentesview::boton_save() {
            else
              iddiario = "NULL";
 
-	     
+// AL SANEAR LAS CADENAS DE CARACTERES DA ALGUNOS ERRORES.
+/*
 	   cod = conexionbase->sanearCadena(cod);
 	   desc = conexionbase->sanearCadena(desc);
 	   fecha = conexionbase->sanearCadena(fecha);
@@ -441,7 +444,8 @@ void ainteligentesview::boton_save() {
 	   comentario = conexionbase->sanearCadena(comentario);
 	   canal = conexionbase->sanearCadena(canal);
 	   marcaconciliacion = conexionbase->sanearCadena(marcaconciliacion);
-	   
+*/
+
            query.sprintf("INSERT INTO binteligente (idainteligente, codcuenta, descripcion, fecha, conceptocontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario) VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",m_idAsientoInteligente, cod.ascii(), desc.ascii(), fecha.ascii(),concontable.ascii(), debe.ascii(), haber.ascii(), contrapartida.ascii(), comentario.ascii(), canal.ascii(), marcaconciliacion.ascii(), idc_coste.ascii(), iddiario.ascii());
            conexionbase->begin();
            conexionbase->ejecuta(query);
