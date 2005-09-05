@@ -14,9 +14,9 @@
  ***************************************************************************/
 #include "bnuevaempresa.h"
 
+#include <qmessagebox.h>
 
-BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, WFlags f) : nuevaempresadlg(parent,name,f) {
-}// end BNuevaEmpresa
+BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, WFlags f) : nuevaempresadlg(parent,name,f) {}// end BNuevaEmpresa
 
 
 BNuevaEmpresa::~BNuevaEmpresa() {}
@@ -25,9 +25,21 @@ void BNuevaEmpresa::accept() {
     // Falta comprobar que tengas permisos para crear nuevas empresas.
     QString nombredb;
     QString nombreEmp;
+    QString ejemp = ejercicioempresa->text();
 
     nombredb = bdempresa->text().stripWhiteSpace()+ejercicioempresa->text().stripWhiteSpace();
     nombreEmp = nombreempresa->text().stripWhiteSpace();
+
+
+    /// Comprobamos que se han introducido todos los datos para avisar en caso contrario.
+    if ( (nombredb == "")
+            || (nombreEmp == "")
+            || (ejemp == "") ) {
+        QMessageBox::warning( this, tr("Datos Incompletos"),
+                              tr("No puede dejar campos en blanco para crear una nueva empresa.\n"),tr("Aceptar"),0, 0 );
+        return;
+    }// end if
+
     QString cadena = confpr->valor(CONF_PROGDATA);
     cadena += "dbmodels/creabulmages --texto "+nombredb+" 1 "+nombreEmp+" "+ ejercicioempresa->text().stripWhiteSpace()+" "+"";
     system(cadena.ascii());
@@ -39,7 +51,7 @@ void BNuevaEmpresa::accept() {
 
     /// Creamos el ejercicio
     for (int x=0; x<=12; x++) {
-        query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')",ejercicioempresa->text().ascii(),x);
+        query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')",ejemp.ascii(),x);
         DBconn->ejecuta(query);
     }// end for
     DBconn->commit();
