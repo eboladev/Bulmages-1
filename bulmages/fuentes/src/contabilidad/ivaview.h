@@ -55,12 +55,9 @@ public:
     ivaview(empresa *, QWidget *parent=0, const char *name=0);
     ~ivaview();
     void inicializa1(int );
-    void guardaprevpago(int );
-    void guardaprevpago();
     void guardaiva(int );
     void guardaiva();
     void cambiadasubcuenta(int);
-    void cargacobros();
 private:
     void cargarComboFPago(QString);
     int buscaborradoriva(int);
@@ -78,9 +75,6 @@ public slots:
     virtual void boton_generarPrevisiones();
 
 private slots:
-    virtual void tcambiaseleccion();
-    virtual void cambiadogrid(int, int);
-    virtual void pulsadomas(int, int, int);
     virtual void currentIvaChanged(int, int);
 
 };

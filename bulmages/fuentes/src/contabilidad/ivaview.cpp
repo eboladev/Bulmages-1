@@ -98,20 +98,6 @@ CREATE TABLE fpago (
 #define IVA_SOPORTADO    1
 #define IVA_REPERCUTIDO  2
 
-#define COL_PREV_IDPREVCOBRO 0
-#define COL_PREV_FPREVISTAPREVCOBRO 1
-#define COL_PREV_FCOBROPREVCOBRO     2
-#define COL_PREV_IDCUENTA  3
-#define COL_PREV_CODCUENTA 4
-#define COL_PREV_NOMCUENTA 5
-#define COL_PREV_CANTIDADPREVISTAPREVCOBRO 6
-#define COL_PREV_CANTIDADPREVCOBRO 7
-#define COL_PREV_TIPOCOBRO 8
-#define COL_PREV_IDREGISTROIVA 9
-#define COL_PREV_DOCPREVCOBRO 10
-#define COL_PREV_IDASIENTO 11
-#define COL_PREV_ORDENASIENTO 12
-
 #define COL_IVA_IDIVA 0
 #define COL_IVA_IDTIPOIVA 1
 #define COL_IVA_NOMBRETIPOIVA 2
@@ -121,9 +107,8 @@ CREATE TABLE fpago (
 #define COL_IVA_BASEIVA 6
 #define COL_IVA_IVAIVA 7
 
-
 #include "fixed.h"
-
+#include "listlinprevcobroview.h"
 //class fixed;
 
 /**
@@ -138,6 +123,7 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
     empresaactual = emp;
     conexionbase = emp->bdempresa();
     contrapartida->setempresa(emp);
+    m_listprevcobro->setcompany(emp);
     idborrador=0;
     idregistroiva =0;
     m_listIva->setNumCols(8);
@@ -155,34 +141,6 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
     m_listIva->hideColumn(COL_IVA_IDTIPOIVA);
     m_listIva->hideColumn(COL_IVA_IDREGISTROIVA);
 
-    m_listPrevision->setNumCols(13);
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDPREVCOBRO, tr( "IDPREVCOBRO") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FPREVISTAPREVCOBRO, tr( "FPREVISTAPREVCOBRO") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_FCOBROPREVCOBRO, tr( "FCOBROPREVCOBRO") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDCUENTA, tr( "IDCUENTA") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CODCUENTA, tr( "CODCUENTA") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_NOMCUENTA, tr( "NOMCUENTA") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CANTIDADPREVISTAPREVCOBRO, tr( "CANTIDADPREVISTAPREVCOBRO") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_CANTIDADPREVCOBRO, tr( "CANTIDADPREVCOBRO") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDREGISTROIVA, tr( "IDREGISTROIVA") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_DOCPREVCOBRO, tr( "DOCPREVCOBRO") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_TIPOCOBRO, tr( "COBRO/PAGO") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_IDASIENTO, tr( "IDASIENTO") );
-    m_listPrevision->horizontalHeader()->setLabel( COL_PREV_ORDENASIENTO, tr( "ORDENASIENTO") );
-    
-    m_listPrevision->setColumnWidth(COL_PREV_FPREVISTAPREVCOBRO,90);
-    m_listPrevision->setColumnWidth(COL_PREV_FCOBROPREVCOBRO,90);
-    m_listPrevision->setColumnWidth(COL_PREV_CODCUENTA,75);
-    m_listPrevision->setColumnWidth(COL_PREV_CANTIDADPREVISTAPREVCOBRO,75);
-    m_listPrevision->setColumnWidth(COL_PREV_CANTIDADPREVCOBRO,75);
-    // Ocultamos las columnas que son de un tipo específico.
-    m_listPrevision->hideColumn(COL_PREV_IDCUENTA);
-    m_listPrevision->hideColumn(COL_PREV_IDPREVCOBRO);
-    m_listPrevision->hideColumn(COL_PREV_IDREGISTROIVA);
-    m_listPrevision->hideColumn(COL_PREV_IDASIENTO);  
-    m_listPrevision->hideColumn(COL_PREV_FCOBROPREVCOBRO);
-    m_listPrevision->hideColumn(COL_PREV_CANTIDADPREVCOBRO);
-    m_listPrevision->setNumRows(50);
     // CAlculamos las formas de pago.
     m_cursorFPago = NULL;
     cargarComboFPago("NULL");
@@ -197,11 +155,9 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
   Esta función se llama con la inicialización de clase y cuando se quieren cargar datos.
 */
 void ivaview::cargarComboFPago(QString idfpago) {
-    conexionbase->begin();
     if (m_cursorFPago != NULL)
         delete m_cursorFPago;
-    m_cursorFPago = conexionbase->cargacursor("SELECT * FROM fpago","unquery");
-    conexionbase->commit();
+    m_cursorFPago = conexionbase->cargacursor("SELECT * FROM fpago");
     int i = 0;
     int i1 = 0;
     while (!m_cursorFPago->eof()) {
@@ -271,17 +227,19 @@ void ivaview::accept() {
             conexionbase->begin();
             conexionbase->ejecuta(query);
             /// Cargamos el identificador del registro de factura para poder mantener la clase.
-            cursor2 *cur = conexionbase->cargacursor("SELECT MAX(idregistroiva) AS idregistroiva FROM registroiva", "elquery");
+            cursor2 *cur = conexionbase->cargacursor("SELECT MAX(idregistroiva) AS idregistroiva FROM registroiva");
             conexionbase->commit();
-            if (!cur->eof() )
+            if (!cur->eof() ) {
                 idregistroiva = cur->valor("idregistroiva").toInt();
+		m_listprevcobro->setidregistroiva(cur->valor("idregistroiva"));
+	    }// end if
             delete cur;
         }// end if
     }// end if
     delete cursorcuenta;
-    /// Guardamos todas las previsiones de pago y asi nos curamos en salud
-    guardaprevpago();
     guardaiva();
+    /// Guardamos todas las previsiones de pago
+    m_listprevcobro->guardalistlinprevcobro();
     done(1);
 }// end accept
 
@@ -414,15 +372,12 @@ int ivaview::buscaborradoriva(int idborrador) {
     conexionbase->commit();
     
     // Cargamos los registros que quedan pq seguro que son de IVA.
-    // NOTA: Como con los cálculos de IVA a veces no funciona bien el redondeo a 2 decimales, vamos a tener siempre en cuenta 1 decimal para la comparacion.
     SQLQuery = "SELECT * FROM tipoiva LEFT JOIN lacosa ON tipoiva.idcuenta=lacosa.idcuenta LEFT JOIN (SELECT idcuenta, contrapartida, IVAdebe AS debe, IVAhaber AS haber FROM lacosa) AS base ON (base.debe*porcentajetipoiva/100)::NUMERIC(12,1)=lacosa.ivadebe::NUMERIC(12,1) AND (base.haber*porcentajetipoiva/100)::NUMERIC(12,2)=lacosa.ivahaber::NUMERIC(12,1) ORDER BY idtipoiva";
     
     cursor2 * cur=conexionbase->cargacursor(SQLQuery);
     m_listIva->setNumRows(cur->numregistros());
     int i=0;
     while (! cur->eof() ) {
-        //fprintf(stderr,"BUSCABORRADORIVA: idborrador: %s contrapartida: %s cuenta: %s idtipoiva %s fecha %s\n",cur->valor("idborrador").ascii(), cur->valor("contrapartida").ascii(), cur->valor("codigo").ascii(), cur->valor("idtipoiva").ascii(), cur->valor("fecha").ascii());
-	//fprintf(stderr,"BUSCABORRADORIVA: debe: %s pdebe: %s haber: %s phaber %s\n",cur->valor("debe").ascii(), cur->valor("pdebe").ascii(), cur->valor("haber").ascii(), cur->valor("phaber").ascii());
         m_listIva->setText(i,COL_IVA_IDIVA, cur->valor("idiva"));
         m_listIva->setText(i,COL_IVA_IDTIPOIVA, cur->valor("idtipoiva"));
         m_listIva->setText(i,COL_IVA_NOMBRETIPOIVA, cur->valor("nombretipoiva"));
@@ -613,6 +568,11 @@ void ivaview::cargaiva(QString idregistroiva) {
     }// end while
     delete cur;
     calculaTotales();
+
+	/// Hacemos la carga de las previsiones de cobro.
+	fprintf(stderr,"Hacemos la carga de las PREV COBRO\n");
+	m_listprevcobro->chargeBudgetLines(idregistroiva);
+	m_listprevcobro->pintalistlinprevcobro();
 }// end cargaiva
 
 
@@ -733,14 +693,13 @@ void ivaview::inicializa1(int idapunte1) {
 		}// end if
 		cadena.sprintf("%i",numord);
                 numorden->setText(cadena);
-		
             }// end if
         }// end if
         delete recordset;//Fin proposicion numeros factura y orden.
     }// end if
     delete cursoriva;
     // Hacemos la carga de los cobros.
-    cargacobros();
+//    cargacobros();
 }// end inicializa1
 
 /** \brief SLOT que se dispara cuando se ha hecho el bot� de bsqueda de una fecha.
@@ -754,149 +713,11 @@ void ivaview::buscafecha(int idborrador) {
     delete cur;
 }
 
-
-/**
-  * \brief Se encarga de cargar la rejilla de los cobros
-  */
-void ivaview::cargacobros () {
-    // Cargamos las formas de pago correspondientes y las ponemos como toca.
-    QString SQLQuery;
-    SQLQuery.sprintf("SELECT * FROM prevcobro LEFT JOIN cuenta ON prevcobro.idcuenta = cuenta.idcuenta LEFT JOIN asiento ON asiento.idasiento = prevcobro.idasiento WHERE idregistroiva=%d", idregistroiva);
-    conexionbase->begin();
-    cursor2 *curprevcobros = conexionbase->cargacursor(SQLQuery, "queryprevcobros");
-    conexionbase->commit();
-    int i =0;
-    while ( ! curprevcobros->eof()) {
-        m_listPrevision->setText(i, COL_PREV_IDPREVCOBRO,curprevcobros->valor("idprevcobro"));
-        m_listPrevision->setText(i, COL_PREV_FPREVISTAPREVCOBRO,curprevcobros->valor("fprevistaprevcobro"));
-        m_listPrevision->setText(i, COL_PREV_FCOBROPREVCOBRO,curprevcobros->valor("fcobroprevcobro"));
-        m_listPrevision->setText(i, COL_PREV_IDCUENTA,curprevcobros->valor("idcuenta"));
-        m_listPrevision->setText(i, COL_PREV_CODCUENTA,curprevcobros->valor("codigo"));
-        m_listPrevision->setText(i, COL_PREV_NOMCUENTA,curprevcobros->valor("descripcion"));
-        m_listPrevision->setText(i, COL_PREV_CANTIDADPREVISTAPREVCOBRO,curprevcobros->valor("cantidadprevistaprevcobro"));
-        m_listPrevision->setText(i, COL_PREV_CANTIDADPREVCOBRO,curprevcobros->valor("cantidadprevcobro"));
-        m_listPrevision->setText(i, COL_PREV_DOCPREVCOBRO,curprevcobros->valor("docprevcobro"));
-        m_listPrevision->setText(i, COL_PREV_IDREGISTROIVA,curprevcobros->valor("idregistroiva"));
-        m_listPrevision->setText(i, COL_PREV_IDASIENTO,curprevcobros->valor("idasiento"));
-        m_listPrevision->setText(i, COL_PREV_ORDENASIENTO,curprevcobros->valor("ordenasiento"));
-	if (curprevcobros->valor("idasiento") != "") {
-		m_listPrevision->setRowReadOnly(i, TRUE);
-	}// end if
-        if (curprevcobros->valor("tipoprevcobro") == "t") {
-            m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, "COBRO");
-        } else {
-            m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, "PAGO");
-        }// end if
-        i++;
-        curprevcobros->siguienteregistro();
-    }// end while
-    delete curprevcobros;
-}// end cargacobros
-
-
-/**
-  * \brief Esta función guarda todas las previsiones.
-  *
-  * Se van guardando las previsiones linea por linea.
-  */
-void ivaview::guardaprevpago() {
-    int i;
-    i=0;
-    while (m_listPrevision->text(i,COL_PREV_FPREVISTAPREVCOBRO) != "") {
-        guardaprevpago(i++);
-    }// end while
-    cargacobros();
-}// end guardaprevpago
-
-
-/**
-  * \brief Esta función guarda una linea de la tabla de previsiones
-  *
-  * La linea se guarda en la base de datos prevcobro, la tabla afectada es m_listPrevision
-  * El parametro que se pasa es la columna de la tabla que queremos guardar en la base de datos.
-  */
-void ivaview::guardaprevpago (int numrow) {
-    QString idprevpago = m_listPrevision->text(numrow, COL_PREV_IDPREVCOBRO);
-    if (idprevpago != "") {       // Ya un elemento, debemos hacer un UPDATE
-        QString SQLQuery = "UPDATE prevcobro SET ";
-        SQLQuery += " idcuenta="+m_listPrevision->text(numrow, COL_PREV_IDCUENTA)+" ";
-        SQLQuery += " , fprevistaprevcobro = '"+m_listPrevision->text(numrow, COL_PREV_FPREVISTAPREVCOBRO)+"' ";
-        SQLQuery += " , fcobroprevcobro = '"+m_listPrevision->text(numrow, COL_PREV_FCOBROPREVCOBRO)+"' ";
-        SQLQuery += " , cantidadprevistaprevcobro = "+m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVISTAPREVCOBRO)+" ";
-        SQLQuery += " , cantidadprevcobro = "+m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVCOBRO)+" ";
-        SQLQuery += " , docprevcobro = '"+m_listPrevision->text(numrow, COL_PREV_DOCPREVCOBRO)+"' ";
-        if (m_listPrevision->text(numrow, COL_PREV_TIPOCOBRO) == "COBRO" ) {
-            SQLQuery += " , tipoprevcobro = TRUE";
-        } else {
-            SQLQuery += " , tipoprevcobro = FALSE";
-        }// end if
-        SQLQuery += " WHERE idprevcobro="+idprevpago;
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
-    } else {                    // Hay que hacer un INSERT
-        QString SQLQuery = "INSERT INTO prevcobro (idcuenta, fprevistaprevcobro, fcobroprevcobro, cantidadprevistaprevcobro, cantidadprevcobro, docprevcobro, idregistroiva, tipoprevcobro) VALUES (";
-        SQLQuery += conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_IDCUENTA));
-        SQLQuery += ", '"+conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_FPREVISTAPREVCOBRO))+"'";
-        SQLQuery += ", '"+conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_FCOBROPREVCOBRO))+"'";
-        SQLQuery += ", "+conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVISTAPREVCOBRO));
-        SQLQuery += ", "+conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_CANTIDADPREVCOBRO));
-        SQLQuery += ", '"+conexionbase->sanearCadena(m_listPrevision->text(numrow, COL_PREV_DOCPREVCOBRO))+"'";
-        SQLQuery += ", "+conexionbase->sanearCadena(QString::number(idregistroiva));
-        if (m_listPrevision->text(numrow, COL_PREV_TIPOCOBRO) == "COBRO") {
-            SQLQuery += ", TRUE";
-        } else {
-            SQLQuery += ", FALSE";
-        }// end if
-        SQLQuery += ") ";
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
-    }// end if
-}// end guardaprevpago
-
-
-/**
-  * \brief SLOT que captura el cambio de foco en la rejilla de Previsiones de cobros y pagos.
-  * Detecta si se ha cambiado de fila y si es el caso se guarda el registro.
-  * EN DESUSO
-  */
-void ivaview::tcambiaseleccion() {
-    static int rowactual=0;
-    fprintf(stderr,"tcambiaseleccion\n");
-    if (rowactual != m_listPrevision->currentRow())
-        guardaprevpago(rowactual);
-    rowactual = m_listPrevision->currentRow();
-}// end ivaview
-
 /** EN DESUSO
   */
 void ivaview::currentIvaChanged(int, int) {
     calculaTotales();
 }// end cambiadoIvaGrid
-
-/**
-  * \brief SLOT que captura el cambio de foco en la rejilla de Previsiones de cobros y pagos.
-  * Detecta si se ha cambiado de fila y si es el caso se guarda el registro.
-  */
-void ivaview::cambiadogrid(int row, int col) {
-    QString fecha;
-    switch (col) {
-    case COL_PREV_FPREVISTAPREVCOBRO:
-        fecha = normalizafecha(m_listPrevision->text(row,col)).toString("dd/MM/yyyy");
-        m_listPrevision->setText(row, col, fecha);
-        break;
-    case COL_PREV_FCOBROPREVCOBRO:
-        fecha = normalizafecha(m_listPrevision->text(row,col)).toString("dd/MM/yyyy");
-        m_listPrevision->setText(row, col, fecha);
-        break;
-    case COL_PREV_CODCUENTA:
-        cambiadasubcuenta(row);
-        break;
-    }// end switch
-}// end apuntecambiadogrid
-
-
 
 
 /**
@@ -917,134 +738,33 @@ void ivaview::boton_generarPrevisiones() {
     int plazoprimerpago = splazoprimerpago.toInt();
     int numpagos = snumpagos.toInt();
     Fixed totalplazo = totalfactura / numpagos;
+    QString tipocobro;
 
     // Vaciamos la lista de prevision para que no haga cosas raras
-    m_listPrevision->setNumRows(0);
-    m_listPrevision->setNumRows(50);
     QDate ffactura = normalizafecha(m_ffactura->text());
     QDate fpcobro = ffactura.addDays(plazoprimerpago);
     for (int i =0; i< numpagos; i++) {
-        m_listPrevision->setText(i,COL_PREV_FPREVISTAPREVCOBRO,fpcobro.toString("dd/MM/yyyy"));
-        m_listPrevision->setText(i,COL_PREV_FCOBROPREVCOBRO,fpcobro.toString("dd/MM/yyyy"));
-        m_listPrevision->setText(i, COL_PREV_CANTIDADPREVCOBRO, totalplazo.toQString());
-        m_listPrevision->setText(i, COL_PREV_CANTIDADPREVISTAPREVCOBRO, totalplazo.toQString());
 	/// Hay que saber si es un cobro o un pago
-	if (contrapartida->text().left(2) == "43") // Si es un cliente es un cobro, si es un proveedor es un pago.
-	        m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, "COBRO"); // Cobro
-	else
-	        m_listPrevision->setText(i, COL_PREV_TIPOCOBRO, "PAGO"); // Pago
+	if (contrapartida->text().left(2) == "43") { // Si es un cliente es un cobro, si es un proveedor es un pago.
+		tipocobro = "t";
+	} else {
+		tipocobro = "f";
+	}// end if
+	m_listprevcobro->nuevalinea(
+			fpcobro.toString("dd/MM/yyyy"),
+			fpcobro.toString("dd/MM/yyyy")
+			,"","","",
+			 totalplazo.toQString(),
+			 totalplazo.toQString(),
+			tipocobro,
+			"","",""
+			);
         fpcobro = fpcobro.addDays(plazoentrerecibo);
     }// end for
+	m_listprevcobro->pintalistlinprevcobro();
 }// end boton_generarPrevisiones
 
 
-/**
-  * \brief SLOT que captura la pulsación de determinadas telcas especiales para la aplicacion
-  * Se emite cuando se han pulsado determinadas teclas en la edición de la tabla de cobros/pagos.
-  * Responde a la pulsación del '+' y del '*'
-  */
-void ivaview::pulsadomas(int row, int col, int caracter) {
-    QString query, fecha;
-    calendario *cal;
-    int dia, mes, ano;
-    QList<QDate> a;
-    QString cadena;
-    switch (caracter) {
-    case '+':
-        switch(col) {
-        case COL_PREV_FPREVISTAPREVCOBRO:
-            cal = new calendario(0,0);
-            cal->exec();
-            a = cal->dn->selectedDates();
-            dia = a.first()->day();
-            mes = a.first()->month();
-            ano = a.first()->year();
-            cadena.sprintf( "%2.2d/%2.2d/%d",dia, mes, ano);
-            fprintf(stderr,"Se ha pulsado:%s\n", cadena.ascii());
-            m_listPrevision->setText(row, COL_PREV_FPREVISTAPREVCOBRO, cadena);
-            delete cal;
-            break;
-        case COL_PREV_FCOBROPREVCOBRO:
-            cal = new calendario(0,0);
-            cal->exec();
-            a = cal->dn->selectedDates();
-            dia = a.first()->day();
-            mes = a.first()->month();
-            ano = a.first()->year();
-            cadena.sprintf( "%2.2d/%2.2d/%d",dia, mes, ano);
-            fprintf(stderr,"Se ha pulsado:%s\n", cadena.ascii());
-            m_listPrevision->setText(row, COL_PREV_FCOBROPREVCOBRO, cadena);
-            delete cal;
-            break;
-        case COL_PREV_CODCUENTA:
-            cambiadasubcuenta(row);
-            break;
-        }// end switch
-    case '*':
-        fprintf(stderr,"Se ha pulsado el *\n");
-        //duplicar(col);
-        break;
-    case 4100:
-        fprintf(stderr,"Se ha pulsado el enter\n");
-        switch (col) {
-        case COL_PREV_FPREVISTAPREVCOBRO:
-            fecha = normalizafecha(m_listPrevision->text(row,col)).toString("dd/MM/yyyy");
-            m_listPrevision->setText(row, col, fecha);
-            m_listPrevision->setCurrentCell(row, COL_PREV_FCOBROPREVCOBRO);
-            break;
-        case COL_PREV_FCOBROPREVCOBRO:
-            fecha = normalizafecha(m_listPrevision->text(row,col)).toString("dd/MM/yyyy");
-            m_listPrevision->setText(row, col, fecha);
-            m_listPrevision->setCurrentCell(row, COL_PREV_CODCUENTA);
-            break;
-        case COL_PREV_CODCUENTA:
-            cambiadasubcuenta(row);
-            m_listPrevision->setCurrentCell(row, COL_PREV_CANTIDADPREVISTAPREVCOBRO);
-            break;
-        default:
-            m_listPrevision->setCurrentCell(row, col+1);
-            break;
-        }// end switch
-        break;
-    }// end switch
-}// end pulsadomas
 
 
-/**
-  * \brief Esta función se llama cada vez que se sospecha que se ha cambiado la cuenta.
-  *
-  * Comprueba cual es la cadena que se ha metido como cuenta y le hace todos los tratamientos posibles
-  * hasta determinar si es una cuenta del plan contable o no.
-  */
-void ivaview::cambiadasubcuenta(int row) {
-    int numdigitos = empresaactual->numdigitosempresa();
-    QString subcuenta = m_listPrevision->text(row,COL_PREV_CODCUENTA);
-    if (subcuenta == "") {
-        // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->setModoLista();
-        listcuentas->inicializa();
-        listcuentas->exec();
-        m_listPrevision->setText(row,COL_PREV_CODCUENTA,listcuentas->codcuenta());
-        m_listPrevision->setText(row,COL_PREV_IDCUENTA,listcuentas->idcuenta());
-        delete listcuentas;
-    }// end if
-    // Hacemos la recodificacin
-    QString cad = m_listPrevision->text(row,COL_PREV_CODCUENTA);
-    if (cad != "") {
-        cad = extiendecodigo(cad,numdigitos);
-        conexionbase->begin();
-        cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-        conexionbase->commit();
-        int num = cursorcta->numregistros();
-        if (num >0) {
-            m_listPrevision->setText(row,COL_PREV_CODCUENTA,cursorcta->valor("codigo"));
-            m_listPrevision->setText(row,COL_PREV_NOMCUENTA,cursorcta->valor("descripcion"));
-            m_listPrevision->setText(row,COL_PREV_IDCUENTA,cursorcta->valor("idcuenta"));
-        } else {
-            QMessageBox::warning( 0, tr("No existe cuenta"), tr("No existe una cuenta con el código proporcionado, ¿desea crear una?."), QMessageBox::Yes, QMessageBox::No);
-        }// end if
-        delete cursorcta;
-    }// end if
-}// end cambiadasubcuenta
 

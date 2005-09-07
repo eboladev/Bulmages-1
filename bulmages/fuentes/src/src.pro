@@ -242,7 +242,10 @@ HEADERS += comun/splashscreen.h \
            contabilidad/tipoivaview.h \
            contabilidad/fpagoview.h \
            contabilidad/arbol.h \
-	   comun/busquedacuenta.h
+	   comun/busquedacuenta.h \
+	   contabilidad/listlinprevcobro.h \
+	   contabilidad/listlinprevcobroview.h \
+	   contabilidad/linprevcobro.h
 SOURCES += main.cpp \
            comun/splashscreen.cpp \
            contabilidad/bulmages01.cpp \
@@ -298,7 +301,12 @@ SOURCES += main.cpp \
            contabilidad/tipoivaview.cpp \
            contabilidad/fpagoview.cpp \
            contabilidad/arbol.cpp \
-	   comun/busquedacuenta.cpp
+	   comun/busquedacuenta.cpp \
+	   contabilidad/listlinprevcobro.cpp \
+	   contabilidad/listlinprevcobroview.cpp \
+	   contabilidad/linprevcobro.cpp
+	   
+	   
 uibloqfecha.ui.target = contabilidad/uibloqfecha.ui
 uibloqfecha.ui.commands = $$IDL_COMPILER
 tipoivadlg.ui.target = contabilidad/tipoivadlg.ui
