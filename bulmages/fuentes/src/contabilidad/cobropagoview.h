@@ -47,6 +47,7 @@ public slots:
     virtual void s_actualizar();
     virtual void s_searchFirstDate();
     virtual void s_searchLastDate();
+    virtual void s_guardar();
 };
 
 #endif

@@ -14,13 +14,11 @@
  *                                                                         *
  ***************************************************************************/
 #include <stdlib.h>
-
 #include <qapplication.h>
 #include <qfont.h>
 #include <qstring.h>
 #include <qtextcodec.h>
 #include <qtranslator.h>
-
 #include <qlibrary.h>
 
 #ifndef WIN32
@@ -30,7 +28,6 @@
 #include "bulmages01.h"
 #include "splashscreen.h"
 #include "configuracion.h"
-
 #include "qtextcodec.h"
 #include "log.h"
 #include "logpass.h"
@@ -61,8 +58,6 @@ int main(int argc, char *argv[]) {
     confpr = new configuracion();
 
     QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
-
-    //    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
     QApplication * mainApp = new QApplication (argc, argv);
     theApp = mainApp;
     mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
@@ -106,9 +101,6 @@ int main(int argc, char *argv[]) {
             login1->exec();
         bges = new Bulmages01(NULL, "bulmages",0, NULL);
     }// end if
-
-
-
 
     /// Hacemos la carga de los plugins.
     QString cad= confpr->valor(CONF_PLUGINS_BULMACONT);

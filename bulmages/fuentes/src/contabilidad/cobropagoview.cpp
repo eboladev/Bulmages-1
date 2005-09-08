@@ -59,6 +59,7 @@ CREATE TABLE prevcobro (
 #define COL_TIPOPREVCOBRO              14
 #define COL_DOCPREVCOBRO               15
 
+#include "listlinprevcobroview.h"
 
 /**
   * \brief Inicia los encabezados de la tabla y llama a la presentación del listado.
@@ -66,7 +67,13 @@ CREATE TABLE prevcobro (
 cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) : cobropagodlg(parent, name) {
     conexionbase = emp->bdempresa();
     empresaactual = emp;
+//listlinprevcobroview1
     numdigitos = emp->numdigitosempresa();
+    m_listprevcobro->setcompany(empresaactual);
+
+    m_listprevcobro->chargeBudgetLines();
+    m_listprevcobro->pintalistlinprevcobro();
+
 m_cuenta->setempresa(emp);
     m_list->setNumCols(16);
     m_list->horizontalHeader()->setLabel(COL_IDPREVCOBRO,tr("COL_IDPREVCOBRO") );
@@ -292,5 +299,7 @@ void cobropagoview::s_searchLastDate() {
 
 
 
-
+void cobropagoview::s_guardar() {
+	m_listprevcobro->guardalistlinprevcobro();
+}
 

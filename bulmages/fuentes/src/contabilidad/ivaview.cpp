@@ -120,10 +120,12 @@ CREATE TABLE fpago (
   * También carga el cursor de las formas de pago.
   */
 ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(parent,name) {
+	fprintf(stderr,"Inicialización de ivaview\n");
     empresaactual = emp;
     conexionbase = emp->bdempresa();
     contrapartida->setempresa(emp);
     m_listprevcobro->setcompany(emp);
+	fprintf(stderr,"Aqui llegamos\n");
     idborrador=0;
     idregistroiva =0;
     m_listIva->setNumCols(8);
@@ -144,6 +146,7 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
     // CAlculamos las formas de pago.
     m_cursorFPago = NULL;
     cargarComboFPago("NULL");
+    fprintf(stderr,"Fin de la inicialización de ivaview\n");
 }// end ivaview
 
 
@@ -571,7 +574,8 @@ void ivaview::cargaiva(QString idregistroiva) {
 
 	/// Hacemos la carga de las previsiones de cobro.
 	fprintf(stderr,"Hacemos la carga de las PREV COBRO\n");
-	m_listprevcobro->chargeBudgetLines(idregistroiva);
+	m_listprevcobro->setidregistroiva(idregistroiva);
+	m_listprevcobro->chargeBudgetLines();
 	m_listprevcobro->pintalistlinprevcobro();
 }// end cargaiva
 

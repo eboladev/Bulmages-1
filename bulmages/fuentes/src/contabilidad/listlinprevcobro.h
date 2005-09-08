@@ -24,12 +24,21 @@ class listlinprevcobro {
 public:
     empresa *empresaactual;
     postgresiface2 *conexionbase;
+
+/// Opciones para filtrado y otros.
+protected:
     QString mdb_idregistroiva;
+	QString mdb_tipoprevcobro;
+	QString mdb_codigocuentaprevcobro;
+	QString mdb_finprevcobro;
+	QString mdb_ffiprevcobro;
+protected:
     QPtrList<linprevcobro> m_lista;
 public:
    
     listlinprevcobro(empresa *comp);
     listlinprevcobro();
+    void inicializaVariables();
     void setcompany(empresa *c) {
        fprintf(stderr,"listlinprevcobro setCompany\n");
        empresaactual=c;
@@ -42,7 +51,7 @@ public:
     virtual void pintalistlinprevcobro() {
         fprintf(stderr,"La funci� pintalistlinprevcobro aun no ha sido implementada\n");
     };
-    void chargeBudgetLines(QString);
+    void chargeBudgetLines();
     void borrar();
     void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
     linprevcobro *linpos(int);

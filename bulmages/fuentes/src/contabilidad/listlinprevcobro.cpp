@@ -13,20 +13,26 @@
 #include "empresa.h"
 #include "linprevcobro.h"
 
+void listlinprevcobro::inicializaVariables() {
+    empresaactual=NULL;
+    conexionbase = NULL;
+    mdb_idregistroiva = "";
+	mdb_tipoprevcobro = "";
+	mdb_codigocuentaprevcobro = "";
+	mdb_finprevcobro = "";
+	mdb_ffiprevcobro = "";
+    m_lista.setAutoDelete(TRUE);
+}
+
 
 listlinprevcobro::listlinprevcobro(empresa *comp) {
+    inicializaVariables();
     empresaactual = comp;
     conexionbase = comp->bdempresa();
-    m_lista.setAutoDelete(TRUE);
-    mdb_idregistroiva="";
 }// end listlinprevcobro
 
 listlinprevcobro::listlinprevcobro() {
-    fprintf(stderr,"Constructor de listlinprevcobro\n");
-    empresaactual=NULL;
-    conexionbase = NULL;
-    m_lista.setAutoDelete(TRUE);
-    mdb_idregistroiva="";
+    inicializaVariables();
 }// end listlinprevcobro
 
 listlinprevcobro::~listlinprevcobro() {}
@@ -56,12 +62,15 @@ linprevcobro *listlinprevcobro::linpos(int pos) {
 
 
 // Carga l�eas de una factura.
-void listlinprevcobro::chargeBudgetLines(QString idregistroiva) {
+void listlinprevcobro::chargeBudgetLines() {
+	QString cadwhere = "";
     vaciar();
     fprintf(stderr,"listlinprevcobro::chargeBudgetLines\n");
-    mdb_idregistroiva = idregistroiva;
     fprintf(stderr,"Hacemos la carga del cursor\n");
-    cursor2 * cur= conexionbase->cargacursor("SELECT * FROM prevcobro, cuenta WHERE idregistroiva="+idregistroiva+" AND cuenta.idcuenta=prevcobro.idcuenta");
+	if (mdb_idregistroiva != "") cadwhere = "AND idregistroiva = "+mdb_idregistroiva;
+		
+    cursor2 * cur= conexionbase->cargacursor("SELECT * FROM prevcobro, cuenta WHERE cuenta.idcuenta=prevcobro.idcuenta "+ cadwhere);
+
     int i=0;
     while (!cur->eof())   {
         /// Creamos un elemento del tipo linprevcobro y lo agregamos a la lista.
@@ -101,7 +110,7 @@ void listlinprevcobro::guardalistlinprevcobro() {
 
 
 void listlinprevcobro::vaciar() {
-    mdb_idregistroiva = "";
+//    mdb_idregistroiva = "";
     m_lista.clear();
 }// end guardalistlinprevcobro
 

@@ -93,6 +93,8 @@ void linprevcobro::borrar() {
 void linprevcobro::guardalinprevcobro() {
 	if (mdb_idfpago == "") mdb_idfpago = "NULL";
 	if (mdb_idasiento == "") mdb_idasiento = "NULL";
+	if (mdb_idregistroiva == "") mdb_idregistroiva = "NULL";
+
     /// Segun est�la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_idprevcobro == "") {
         QString SQLQuery = "INSERT INTO prevcobro (fprevistaprevcobro, fcobroprevcobro, idfpago, idcuenta, idasiento, cantidadprevistaprevcobro, cantidadprevcobro, idregistroiva, tipoprevcobro, docprevcobro) VALUES ('"+

@@ -17,6 +17,7 @@
 */
 
 #include <qtable.h>
+#include "qtable1.h"
 #include "listlinprevcobro.h"
 #include "empresa.h"
 #include "linprevcobro.h"
@@ -32,6 +33,9 @@ public:
     virtual bool eventFilter( QObject *obj, QEvent *ev );
     linprevcobro *lineaat(int);
     linprevcobro *lineaact();
+    void arreglaPosicion(int, int);
+private:
+    virtual void pintalistlinprevcobro(linprevcobro *, int);
 public slots:
     virtual void valueLineChanged(int row, int col);
     virtual QString searchCuenta();

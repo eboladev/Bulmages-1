@@ -10,23 +10,33 @@
 //
 //
 
-#define COL_IDPREVCOBRO 0
-#define COL_FPREVISTAPREVCOBRO 1
-#define COL_FCOBROPREVCOBRO 2
-#define COL_IDFPAGO 3
-#define COL_IDCUENTA 4
-#define COL_CODIGOCUENTA 5
-#define COL_NOMCUENTA 6
-#define COL_IDASIENTO 7
-#define COL_CANTIDADPREVISTAPREVCOBRO 8
-#define COL_CANTIDADPREVCOBRO 9
-#define COL_IDREGISTROIVA 10
-#define COL_TIPOPREVCOBRO 11
-#define COL_DOCPREVCOBRO 12
+// Incluimos las imagenes que catalogan los tipos de cuentas.
+#include "images/cactivo.xpm"
+#include "images/cpasivo.xpm"
+#include "images/cneto.xpm"
+#include "images/cingresos.xpm"
+#include "images/cgastos.xpm"
+
+#define COL_SELECCION 0
+#define COL_FCOBROPREVCOBRO 1
+#define COL_CODIGOCUENTA 2
+#define COL_NOMCUENTA 3
+#define COL_CANTIDADPREVCOBRO 4
+#define COL_IDREGISTROIVA 5
+#define COL_TIPOPREVCOBRO 6
+#define COL_DOCPREVCOBRO 7
+#define COL_IDPREVCOBRO 8
+#define COL_FPREVISTAPREVCOBRO 9
+#define COL_IDFPAGO 10
+#define COL_IDCUENTA 11
+#define COL_IDASIENTO 12
+#define COL_CANTIDADPREVISTAPREVCOBRO 13
+
 
 //#include "articleslist.h"
 #include "listlinprevcobroview.h"
 #include <qtable.h>
+#include "qtable1.h"
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
 #include "configuracion.h"
@@ -34,7 +44,7 @@
 
 listlinprevcobroview::listlinprevcobroview(QWidget * parent, const char * name) : QTable(parent, name), listlinprevcobro() {
     /// Inicializamos la tabla de lineas de presupuesto
-    setNumCols(13);
+    setNumCols(14);
     setNumRows(100);
     horizontalHeader()->setLabel( COL_IDPREVCOBRO, tr( "COL_IDPREVCOBRO" ) );
     horizontalHeader()->setLabel( COL_FPREVISTAPREVCOBRO, tr( "COL_FPREVISTAPREVCOBRO" ) );
@@ -64,31 +74,75 @@ listlinprevcobroview::listlinprevcobroview(QWidget * parent, const char * name) 
     setColumnWidth(COL_TIPOPREVCOBRO,100);
     setColumnWidth(COL_DOCPREVCOBRO,100);
 
-    hideColumn(COL_IDPREVCOBRO);
-    hideColumn(COL_IDFPAGO);
-    hideColumn(COL_IDCUENTA);
-    hideColumn(COL_IDASIENTO);
-    hideColumn(COL_IDREGISTROIVA);
-    //        hideColumn(COL_TIPOPREVCOBRO);
+    /*
+        hideColumn(COL_IDPREVCOBRO);
+        hideColumn(COL_IDFPAGO);
+        hideColumn(COL_IDCUENTA);
+        hideColumn(COL_IDASIENTO);
+        hideColumn(COL_IDREGISTROIVA);
+        hideColumn(COL_FPREVISTAPREVCOBRO);
+        hideColumn(COL_CANTIDADPREVISTAPREVCOBRO);
+    */
 
     setSelectionMode( QTable::SingleRow );
-
+    /*
+        setFocusPolicy(QWidget::WheelFocus);
+        setFrameShape(QFrame::StyledPanel);
+        setFocusStyle(QTable::SpreadSheet);
+    */
     setColumnReadOnly(COL_NOMCUENTA,true);
 
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
     setPaletteBackgroundColor("#FFFFFF");
 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueLineChanged(int , int )));
-
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
-
     installEventFilter(this);
-
 }
 
 
 listlinprevcobroview::~listlinprevcobroview() {}
 
+
+void listlinprevcobroview::pintalistlinprevcobro(linprevcobro *linea, int pos) {
+    setText(pos, COL_IDPREVCOBRO, linea->idprevcobro());
+    setText(pos, COL_FPREVISTAPREVCOBRO, linea->fprevistaprevcobro());
+    setText(pos, COL_FCOBROPREVCOBRO, linea->fcobroprevcobro());
+    setText(pos, COL_IDFPAGO, linea->idfpago());
+    setText(pos, COL_IDCUENTA, linea->idcuenta());
+    setText(pos, COL_CODIGOCUENTA, linea->codigocuenta());
+    setText(pos, COL_NOMCUENTA, linea->nomcuenta());
+    setText(pos, COL_IDASIENTO, linea->idasiento());
+
+    if (linea->idasiento() == "") {
+        QCheckTableItem *item = new QCheckTableItem(this, "");
+        setItem(pos,COL_SELECCION,item);
+    }// end if
+
+    setText(pos, COL_CANTIDADPREVISTAPREVCOBRO, linea->cantidadprevistaprevcobro());
+    setText(pos, COL_CANTIDADPREVCOBRO, linea->cantidadprevcobro());
+    setText(pos, COL_IDREGISTROIVA, linea->idregistroiva());
+    if (linea->tipoprevcobro() == "t")
+        setText(pos, COL_TIPOPREVCOBRO,"COBRO");
+    else
+        setText(pos, COL_TIPOPREVCOBRO,"PAGO");
+    setText(pos, COL_DOCPREVCOBRO, linea->docprevcobro());
+    cursor2 *cursoraux1= conexionbase->cargacursor("SELECT tipocuenta FROM cuenta WHERE idcuenta="+linea->idcuenta());
+    if (!cursoraux1->eof()) {
+        // Ponemos los iconos para que la cosa parezca mas guay.
+        if (cursoraux1->valor("tipocuenta") == "1")
+            setPixmap(pos, COL_CODIGOCUENTA, QPixmap(cactivo));
+        else if (cursoraux1->valor("tipocuenta") == "2")
+            setPixmap(pos, COL_CODIGOCUENTA, QPixmap(cpasivo));
+        else if (cursoraux1->valor("tipocuenta") == "3")
+            setPixmap(pos, COL_CODIGOCUENTA, QPixmap(cneto));
+        else if (cursoraux1->valor("tipocuenta") == "4")
+            setPixmap(pos, COL_CODIGOCUENTA, QPixmap(cingresos));
+        else if (cursoraux1->valor("tipocuenta") == "5")
+            setPixmap(pos, COL_CODIGOCUENTA, QPixmap(cgastos));
+    }// end if
+    delete cursoraux1;
+}
 
 void listlinprevcobroview::pintalistlinprevcobro() {
     fprintf(stderr,"INICIO de pintalistlinprevcobro\n");
@@ -98,28 +152,11 @@ void listlinprevcobroview::pintalistlinprevcobro() {
     linprevcobro *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        setText(i, COL_IDPREVCOBRO, linea->idprevcobro());
-        setText(i, COL_FPREVISTAPREVCOBRO, linea->fprevistaprevcobro());
-        setText(i, COL_FCOBROPREVCOBRO, linea->fcobroprevcobro());
-        setText(i, COL_IDFPAGO, linea->idfpago());
-        setText(i, COL_IDCUENTA, linea->idcuenta());
-        setText(i, COL_CODIGOCUENTA, linea->codigocuenta());
-        setText(i, COL_NOMCUENTA, linea->nomcuenta());
-        setText(i, COL_IDASIENTO, linea->idasiento());
-        setText(i, COL_CANTIDADPREVISTAPREVCOBRO, linea->cantidadprevistaprevcobro());
-        setText(i, COL_CANTIDADPREVCOBRO, linea->cantidadprevcobro());
-        setText(i, COL_IDREGISTROIVA, linea->idregistroiva());
-        if (linea->tipoprevcobro() == "t")
-            setText(i, COL_TIPOPREVCOBRO,"COBRO");
-        else
-            setText(i, COL_TIPOPREVCOBRO,"PAGO");
-        setText(i, COL_DOCPREVCOBRO, linea->docprevcobro());
+        pintalistlinprevcobro(linea, i);
         i++;
     }// end for
     fprintf(stderr,"FIN de pintalistlinprevcobro\n");
 }
-
-
 
 void listlinprevcobroview::contextMenu ( int row, int, const QPoint & pos ) {
     QPopupMenu *popup;
@@ -144,84 +181,66 @@ void listlinprevcobroview::pintalinlistlinprevcobro(int pos) {
     fprintf(stderr,"pintalinlistlinprevcobro(%d)\n",pos);
     linprevcobro *linea;
     linea = m_lista.at(pos);
-    setText(pos, COL_IDPREVCOBRO, linea->idprevcobro());
-    setText(pos, COL_FPREVISTAPREVCOBRO, linea->fprevistaprevcobro());
-    setText(pos, COL_FCOBROPREVCOBRO, linea->fcobroprevcobro());
-    setText(pos, COL_IDFPAGO, linea->idfpago());
-    setText(pos, COL_IDCUENTA, linea->idcuenta());
-    setText(pos, COL_CODIGOCUENTA, linea->codigocuenta());
-    setText(pos, COL_NOMCUENTA, linea->nomcuenta());
-    setText(pos, COL_IDASIENTO, linea->idasiento());
-    setText(pos, COL_CANTIDADPREVISTAPREVCOBRO, linea->cantidadprevistaprevcobro());
-    setText(pos, COL_CANTIDADPREVCOBRO, linea->cantidadprevcobro());
-    setText(pos, COL_IDREGISTROIVA, linea->idregistroiva());
-    if (linea->tipoprevcobro() == "t")
-        setText(pos, COL_TIPOPREVCOBRO,"COBRO");
-    else
-        setText(pos, COL_TIPOPREVCOBRO,"PAGO");
-    setText(pos, COL_DOCPREVCOBRO, linea->docprevcobro());
+    pintalistlinprevcobro(linea, pos);
 }
 
 
 bool listlinprevcobroview::eventFilter( QObject *obj, QEvent *ev ) {
-    fprintf(stderr,"eventFilter()\n");
+    static int semaforo =0;
+    //    if  (semaforo == 1)
+    //        return TRUE;
     QString idcuenta;
     linprevcobro *linea;
     if ( ev->type() == QEvent::KeyRelease ) {
         QKeyEvent *k = (QKeyEvent *)ev;
         int col=currentColumn();
         int row=currentRow();
+        fprintf(stderr,"eventFilter(%d, %d)\n",row, col);
         switch (k->key()) {
         case Qt::Key_Plus:
+            semaforo = 1;
             if ((col == COL_FCOBROPREVCOBRO)) {
                 QList<QDate> a;
                 calendario *cal = new calendario(0,0);
                 cal->exec();
                 a = cal->dn->selectedDates();
+                delete cal;
                 linea = lineaact();
                 linea->setfcobroprevcobro(a.first()->toString("dd/MM/yyyy"));
                 pintalinlistlinprevcobro(currentRow());
-                delete cal;
-                return TRUE;
-            }// end if
-            if ((col == COL_FPREVISTAPREVCOBRO)) {
-                QList<QDate> a;
-                calendario *cal = new calendario(0,0);
-                cal->exec();
-                a = cal->dn->selectedDates();
-                linea = lineaact();
-                linea->setfprevistaprevcobro(a.first()->toString("dd/MM/yyyy"));
-                pintalinlistlinprevcobro(row);
-                delete cal;
-                return TRUE;
-            }// end if
-            if (col == COL_CODIGOCUENTA) {
+            } else if (col == COL_CODIGOCUENTA) {
                 linea = lineaact();
                 idcuenta = searchCuenta();
                 linea->setidcuenta(idcuenta);
                 pintalinlistlinprevcobro(row);
-                return TRUE;
             }// end if
+            semaforo = 0;
+            return TRUE;
             break;
         case Qt::Key_Asterisk:
-                linea = lineaact();
-            if (row > 1) {
-		QString valor= text(row-1,col);
+            semaforo = 1;
+            linea = lineaact();
+            if (row > 0) {
+                QString valor= text(row-1,col);
                 switch (col) {
                 case COL_FPREVISTAPREVCOBRO:
                     linea->setfprevistaprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
                     break;
                 case COL_FCOBROPREVCOBRO:
                     linea->setfcobroprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
+                    linea->setfprevistaprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
+                    setText(row,col,linea->fprevistaprevcobro());
                     break;
                 case COL_CODIGOCUENTA:
                     linea->setcodigocuenta(valor);
+                    setText(row,col,linea->codigocuenta());
                     break;
                 case COL_CANTIDADPREVISTAPREVCOBRO:
                     linea->setcantidadprevistaprevcobro(valor);
                     break;
                 case COL_CANTIDADPREVCOBRO:
                     linea->setcantidadprevcobro(valor);
+                    linea->setcantidadprevistaprevcobro(valor);
                     break;
                 case COL_DOCPREVCOBRO:
                     linea->setdocprevcobro(valor);
@@ -233,44 +252,18 @@ bool listlinprevcobroview::eventFilter( QObject *obj, QEvent *ev ) {
                         linea->settipoprevcobro("f");
                     break;
                 }// end switch
-                pintalinlistlinprevcobro(row);
+                //                pintalinlistlinprevcobro(row);
+                //                arreglaPosicion(row,col);
             }// end if
-		return TRUE;
-	break;
+            semaforo = 0;
+            return TRUE;
+            break;
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
-            switch (col) {
-            case COL_FPREVISTAPREVCOBRO:
-                setCurrentCell(row, COL_FCOBROPREVCOBRO);
-                return TRUE;
-                break;
-            case COL_FCOBROPREVCOBRO:
-                setCurrentCell(row, COL_CODIGOCUENTA);
-                return TRUE;
-                break;
-            case COL_CODIGOCUENTA:
-                setCurrentCell(row, COL_CANTIDADPREVISTAPREVCOBRO);
-                return TRUE;
-                break;
-            case COL_CANTIDADPREVISTAPREVCOBRO:
-                setCurrentCell(row, COL_CANTIDADPREVCOBRO);
-                return TRUE;
-                break;
-            case COL_CANTIDADPREVCOBRO:
-                setCurrentCell(row, COL_TIPOPREVCOBRO);
-                return TRUE;
-                break;
-            case COL_DOCPREVCOBRO:
-                setCurrentCell(row+1, COL_FPREVISTAPREVCOBRO);
-                return TRUE;
-                break;
-            case COL_TIPOPREVCOBRO:
-                setCurrentCell(row, COL_DOCPREVCOBRO);
-                return TRUE;
-                break;
-            }// end switch
-            break;
+            semaforo = 1;
+            arreglaPosicion(row, col);
+            semaforo = 0;
+            return TRUE;
         }// end switch
     }// end if
     return QTable::eventFilter( obj, ev );
@@ -278,39 +271,80 @@ bool listlinprevcobroview::eventFilter( QObject *obj, QEvent *ev ) {
 
 
 
+/// Este método se encarga de asegurar que la posición del foco es la correcta para la tabla.
+
+void listlinprevcobroview::arreglaPosicion(int row, int col) {
+    int newcol = col;
+    int newrow = row;
+    switch (col) {
+    case COL_DOCPREVCOBRO:
+        newcol = COL_FPREVISTAPREVCOBRO;
+        newrow++;
+        break;
+    case COL_CODIGOCUENTA:
+        newcol = COL_CANTIDADPREVCOBRO;
+        break;
+    default:
+        newcol++;
+        break;
+    }// end switch
+    //    ensureCellVisible(newrow,newcol);
+    setCurrentCell(newrow,newcol);
+}
+
 void listlinprevcobroview::valueLineChanged(int row, int col) {
+    static int semaforo =0;
+    //    if  (semaforo == 1)
+    //        return;
     fprintf(stderr,"valueLineChanged \n");
     QString valor = text(row,col);
     linprevcobro *linea;
     linea = lineaat(row);
     if (linea != NULL) {
+        semaforo = 1;
         switch (col) {
         case COL_FPREVISTAPREVCOBRO:
             linea->setfprevistaprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
+            setText(row, col, linea->fprevistaprevcobro());
             break;
         case COL_FCOBROPREVCOBRO:
             linea->setfcobroprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
+            linea->setfprevistaprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
+            setText(row,col, linea->fcobroprevcobro());
+            setText(row, COL_FPREVISTAPREVCOBRO, linea->fprevistaprevcobro());
             break;
         case COL_CODIGOCUENTA:
             linea->setcodigocuenta(valor);
+            setText(row, col, linea->codigocuenta());
+            setText(row, COL_NOMCUENTA, linea->nomcuenta());
+            setText(row, COL_IDCUENTA, linea->idcuenta());
             break;
         case COL_CANTIDADPREVISTAPREVCOBRO:
             linea->setcantidadprevistaprevcobro(valor);
+            setText(row,col, linea->cantidadprevistaprevcobro());
             break;
         case COL_CANTIDADPREVCOBRO:
             linea->setcantidadprevcobro(valor);
+            linea->setcantidadprevistaprevcobro(valor);
+            setText(row,col, linea->cantidadprevcobro());
+            setText(row, COL_CANTIDADPREVISTAPREVCOBRO, linea->cantidadprevistaprevcobro());
             break;
         case COL_DOCPREVCOBRO:
             linea->setdocprevcobro(valor);
+            setText(row,col, linea->docprevcobro());
             break;
         case COL_TIPOPREVCOBRO:
-            if (valor == "COBRO")
+            if (valor == "COBRO") {
                 linea->settipoprevcobro("t");
-            else
+                setText(row, col, "COBRO");
+            } else {
                 linea->settipoprevcobro("f");
+                setText(row, col, "PAGO");
+            }// end if
             break;
+
         }// end switch
-        pintalinlistlinprevcobro(row);
+        semaforo = 0;
     }// end if
 } //end valueBudgetLineChanged
 
@@ -330,6 +364,8 @@ linprevcobro *listlinprevcobroview::lineaat(int row) {
             fprintf(stderr,"Creamos la linea\n");
             linea=new linprevcobro(empresaactual);
             linea->setidregistroiva(mdb_idregistroiva);
+            linea->setcodigocuenta(mdb_codigocuentaprevcobro);
+            linea->settipoprevcobro(mdb_tipoprevcobro);
             m_lista.append(linea);
         }// end while
         return(m_lista.at(row));
@@ -339,8 +375,6 @@ linprevcobro *listlinprevcobroview::lineaat(int row) {
     }// end if
 
 }// end lineaat
-
-
 
 QString listlinprevcobroview::searchCuenta() {
     QString idcuenta;
