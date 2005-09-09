@@ -60,6 +60,7 @@ listlinprevcobroview::listlinprevcobroview(QWidget * parent, const char * name) 
     horizontalHeader()->setLabel( COL_TIPOPREVCOBRO, tr( "COL_TIPOPREVCOBRO" ) );
     horizontalHeader()->setLabel( COL_DOCPREVCOBRO, tr( "COL_DOCPREVCOBRO" ) );
 
+    setColumnWidth(COL_SELECCION, 25);
     setColumnWidth(COL_IDPREVCOBRO,100);
     setColumnWidth(COL_FPREVISTAPREVCOBRO,100);
     setColumnWidth(COL_FCOBROPREVCOBRO,100);
@@ -162,12 +163,21 @@ void listlinprevcobroview::contextMenu ( int row, int, const QPoint & pos ) {
     QPopupMenu *popup;
     int opcion;
     popup = new QPopupMenu;
-    popup->insertItem(tr(tr("Borrar Linea")),1);
+    popup->insertItem(tr("Borrar Linea"),1);
+    popup->insertItem(tr("Generar Asiento de Cobro/Pago"),2);
     opcion = popup->exec(pos);
     delete popup;
     switch(opcion) {
     case 1:
         borralinprevcobro(row);
+	break;
+	case 2:
+	/// Poner aqui el código necesario para generar el asiento.
+	linprevcobro *linea = lineaact();
+	/// Intentamos la creación del asiento y si funciona repintamos todo.
+	if (linea->creaPago())
+		pintalistlinprevcobro();
+	break;
     }// end switch
 }// end contextMenuRequested
 
@@ -364,8 +374,8 @@ linprevcobro *listlinprevcobroview::lineaat(int row) {
             fprintf(stderr,"Creamos la linea\n");
             linea=new linprevcobro(empresaactual);
             linea->setidregistroiva(mdb_idregistroiva);
-            linea->setcodigocuenta(mdb_codigocuentaprevcobro);
-            linea->settipoprevcobro(mdb_tipoprevcobro);
+//            linea->setcodigocuenta(mdb_codigocuentaprevcobro);
+//            linea->settipoprevcobro(mdb_tipoprevcobro);
             m_lista.append(linea);
         }// end while
         return(m_lista.at(row));
@@ -387,3 +397,35 @@ QString listlinprevcobroview::searchCuenta() {
     delete listcuentas;
     return idcuenta;
 }// end searchArticle
+
+
+/**
+  * \brief SLOT que respoonde a la creación de un asiento de cobro o pago a partir de la gestion de cobros y pagos.
+  * Descripción:
+  * 1.- Calculamos los campos Total, Tipo de Asiento (compra/venta), Cuenta bancaria y cuenta de cliente
+  * 2.- Determinamos si es un cobro o un pago.
+  * 3.- Cargamos la plantilla de cobro o pago y le metemos los valores necesarios
+  * 4.- Generamos el asiento a partir del asiento inteligente.
+  */
+void listlinprevcobroview::s_creaPago() {
+      /// Calculamos los campos necesarios.
+      /* El cálculo de los campos requeridos es una iteración por la tabla. */
+
+      /// Actualizamos los campos que haga falta.
+      for (int i=0; i< numRows(); i++) {
+      		fprintf(stderr,"Iteración para los elementos de la lista %d\n", i);
+		QTableItem *check = item(i,COL_SELECCION);
+		fprintf(stderr,"Vamos a testear \n");
+			if (check != NULL) {
+				QCheckTableItem *check1 = (QCheckTableItem *) check;
+				if (check1->isChecked()) {
+					linprevcobro *linea = lineaat(i);
+					linea->creaPago();
+				}// end if
+			}// end if
+
+      }// end for      
+      /// Inicializamos para que se muestren las cosas estas.
+      pintalistlinprevcobro();
+}// end s_creaPago
+

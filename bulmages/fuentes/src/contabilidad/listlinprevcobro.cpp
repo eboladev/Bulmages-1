@@ -17,10 +17,11 @@ void listlinprevcobro::inicializaVariables() {
     empresaactual=NULL;
     conexionbase = NULL;
     mdb_idregistroiva = "";
-	mdb_tipoprevcobro = "";
-	mdb_codigocuentaprevcobro = "";
-	mdb_finprevcobro = "";
-	mdb_ffiprevcobro = "";
+    mfilt_idregistroiva = "";
+    mfilt_tipoprevcobro = "";
+    mfilt_codigocuentaprevcobro = "";
+    mfilt_finprevcobro = "";
+    mfilt_ffiprevcobro = "";
     m_lista.setAutoDelete(TRUE);
 }
 
@@ -63,13 +64,24 @@ linprevcobro *listlinprevcobro::linpos(int pos) {
 
 // Carga l�eas de una factura.
 void listlinprevcobro::chargeBudgetLines() {
-	QString cadwhere = "";
+    QString cadwhere = "";
     vaciar();
     fprintf(stderr,"listlinprevcobro::chargeBudgetLines\n");
     fprintf(stderr,"Hacemos la carga del cursor\n");
-	if (mdb_idregistroiva != "") cadwhere = "AND idregistroiva = "+mdb_idregistroiva;
-		
-    cursor2 * cur= conexionbase->cargacursor("SELECT * FROM prevcobro, cuenta WHERE cuenta.idcuenta=prevcobro.idcuenta "+ cadwhere);
+    if (mfilt_idregistroiva != "")
+        cadwhere = " AND idregistroiva = "+mfilt_idregistroiva;
+    if (mfilt_finprevcobro != "")
+	cadwhere += " AND fcobroprevcobro >= '"+mfilt_finprevcobro+"'";
+   if ( mfilt_codigocuentaprevcobro != "")
+	cadwhere += " AND idcuenta = id_cuenta('"+mfilt_codigocuentaprevcobro+"')";
+   if ( mfilt_tipoprevcobro != "")
+	cadwhere += " AND tipoprevcobro = '"+mfilt_tipoprevcobro+"'";
+   if (mfilt_procesado == "PROCESADO")
+	cadwhere += " AND idasiento IS NOT NULL ";
+   if (mfilt_procesado == "NO PROCESADO")
+	cadwhere += " AND idasiento IS NULL ";
+
+    cursor2 * cur= conexionbase->cargacursor("SELECT * FROM prevcobro, cuenta WHERE cuenta.idcuenta=prevcobro.idcuenta "+ cadwhere+ " ORDER BY fcobroprevcobro");
 
     int i=0;
     while (!cur->eof())   {
@@ -99,7 +111,7 @@ void listlinprevcobro::chargeBudgetLines() {
 
 
 void listlinprevcobro::guardalistlinprevcobro() {
-	fprintf(stderr,"guardalistlinprevcobro()\n");
+    fprintf(stderr,"guardalistlinprevcobro()\n");
     linprevcobro *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
@@ -110,7 +122,7 @@ void listlinprevcobro::guardalistlinprevcobro() {
 
 
 void listlinprevcobro::vaciar() {
-//    mdb_idregistroiva = "";
+    //    mdb_idregistroiva = "";
     m_lista.clear();
 }// end guardalistlinprevcobro
 

@@ -26,6 +26,8 @@
 class listlinprevcobroview : public QTable , public listlinprevcobro {
 Q_OBJECT
 public:
+
+
     listlinprevcobroview(QWidget *parent=0, const char *name=0);
     ~listlinprevcobroview();
     virtual void pintalistlinprevcobro();
@@ -34,6 +36,8 @@ public:
     linprevcobro *lineaat(int);
     linprevcobro *lineaact();
     void arreglaPosicion(int, int);
+
+
 private:
     virtual void pintalistlinprevcobro(linprevcobro *, int);
 public slots:
@@ -41,6 +45,14 @@ public slots:
     virtual QString searchCuenta();
     virtual void contextMenu ( int , int , const QPoint &  );
     virtual void borralinprevcobroact();
+    virtual void s_creaPago();
+
+    virtual void s_settipoprevcobro(QString tip) {mfilt_tipoprevcobro = tip;};
+    virtual void s_setcodigocuentaprevcobro(QString tip) {mfilt_codigocuentaprevcobro = tip;};
+    virtual void s_setfinprevcobro(QString tip) {mfilt_finprevcobro = tip;};
+    virtual void s_setffiprevcobro(QString tip) {mfilt_ffiprevcobro = tip;};
+    virtual void s_setprocesado(QString tip) {mfilt_procesado = tip;};
+    virtual void s_setidregistroiva(QString tip) {mfilt_idregistroiva = tip;};
 };
 
 #endif

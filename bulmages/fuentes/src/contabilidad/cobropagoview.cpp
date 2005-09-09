@@ -26,7 +26,7 @@
 #include "busquedacuenta.h"
 
 #include <qtable.h>
-
+#include <qcombobox.h>
 /*
 CREATE TABLE prevcobro (
     idprevcobro serial PRIMARY KEY,
@@ -75,194 +75,15 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) :
     m_listprevcobro->pintalistlinprevcobro();
 
 m_cuenta->setempresa(emp);
-    m_list->setNumCols(16);
-    m_list->horizontalHeader()->setLabel(COL_IDPREVCOBRO,tr("COL_IDPREVCOBRO") );
-    m_list->horizontalHeader()->setLabel(COL_FPREVISTAPREVCOBRO,tr("Fecha Prevista") );
-    m_list->horizontalHeader()->setLabel(COL_FCOBROPREVCOBRO,tr("Fecha Efectiva") );
-    m_list->horizontalHeader()->setLabel(COL_IDCUENTA,tr("IDCUENTA") );
-    m_list->horizontalHeader()->setLabel(COL_CODIGO,tr("Cuenta Bancaria") );
-    m_list->horizontalHeader()->setLabel(COL_NOMCTA,tr("Nombre Cuenta Bancaria") );
-    m_list->horizontalHeader()->setLabel(COL_IDASIENTO,tr("COL_IDASIENTO") );
-    m_list->horizontalHeader()->setLabel(COL_ORDENASIENTO, tr("Asiento") );
-    m_list->horizontalHeader()->setLabel(COL_CANTIDADPREVISTAPREVCOBRO,tr("Cantidad Prevista") );
-    m_list->horizontalHeader()->setLabel(COL_CANTIDADPREVCOBRO,tr("Cantidad Efectiva") );
-    m_list->horizontalHeader()->setLabel(COL_IDREGISTROIVA,tr("COL_IDREGISTROIVA") );
-    m_list->horizontalHeader()->setLabel(COL_CODIGOCTAREGISTROIVA, tr("Cuenta Cliente/Proveedor") );
-    m_list->horizontalHeader()->setLabel(COL_TIPOPREVCOBRO,tr("Tipo") );
-    m_list->horizontalHeader()->setLabel(COL_DOCPREVCOBRO,tr("Documento") );
-    m_list->horizontalHeader()->setLabel(COL_CODIGOCTAREGISTROIVA,tr("COL_CODIGOCTAREGISTROIVA") );
-    m_list->horizontalHeader()->setLabel(COL_ENTREGISTROIVA,tr("COL_ENTREGISTROIVA") );
-    m_list->setColumnWidth(COL_SELECCION,25);
-    m_list->hideColumn(COL_IDPREVCOBRO);
-    m_list->hideColumn(COL_IDCUENTA);
-    m_list->hideColumn(COL_IDASIENTO);
-    m_list->hideColumn(COL_IDREGISTROIVA);
-    m_list->hideColumn(COL_FCOBROPREVCOBRO);
-    m_list->hideColumn(COL_CANTIDADPREVCOBRO);
-    /// Hacemos casi todas las columnas ineditables para evitar problemas
-    m_list->setColumnReadOnly(COL_IDPREVCOBRO, TRUE);
-    m_list->setColumnReadOnly(COL_FPREVISTAPREVCOBRO, TRUE);
-    m_list->setColumnReadOnly(COL_FCOBROPREVCOBRO, TRUE);
-    m_list->setColumnReadOnly(COL_IDCUENTA, TRUE);
-    m_list->setColumnReadOnly(COL_CODIGO, TRUE);
-    m_list->setColumnReadOnly(COL_NOMCTA, TRUE);
-    m_list->setColumnReadOnly(COL_ORDENASIENTO, TRUE);
-    m_list->setColumnReadOnly(COL_CANTIDADPREVISTAPREVCOBRO, TRUE);
-    m_list->setColumnReadOnly(COL_CANTIDADPREVCOBRO, TRUE);
-    m_list->setColumnReadOnly(COL_IDREGISTROIVA, TRUE);
-    m_list->setColumnReadOnly(COL_CODIGOCTAREGISTROIVA, TRUE);
-    m_list->setColumnReadOnly(COL_TIPOPREVCOBRO, TRUE);
-    m_list->setColumnReadOnly(COL_DOCPREVCOBRO, TRUE);
-    m_list->setColumnReadOnly(COL_CODIGOCTAREGISTROIVA, TRUE);
-    m_list->setColumnReadOnly(COL_ENTREGISTROIVA, TRUE);
-    inicializa();
+
 }// end cobropagoview
 
 
 cobropagoview::~cobropagoview() {}
 
 
-/** \brief Inicializa el listado para que muestre los cobros y pagos iniciales.
-  * Selecciona los prevcobros de la base de datos
-  * Dimensiona las tablas.
-  * Itera para cada elemento y pone los valores correspondientes.
-  * También crea el checkbox para cada elemento y lo pone en la tabla.
-  */
-void cobropagoview::inicializa() {
-    QString SQLQuery = "SELECT * FROM prevcobro ";
-    SQLQuery += " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta ";
-    SQLQuery += " LEFT JOIN asiento ON prevcobro.idasiento=asiento.idasiento ";
-    SQLQuery += " LEFT JOIN (SELECT idregistroiva, contrapartida, codigo AS ccontrapartida, descripcion AS nomcontrapartida FROM REGISTROIVA LEFT JOIN cuenta ON registroiva.contrapartida = cuenta.idcuenta) AS tt ON tt.idregistroiva = prevcobro.idregistroiva ";
-    SQLQuery += " ORDER BY fprevistaprevcobro ";
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(SQLQuery, "Masquerys");
-    conexionbase->commit();
-    m_list->setNumRows(cur->numregistros());
-    int i=0;
-    while (! cur->eof()) {
-        m_list->setText(i,COL_IDPREVCOBRO, cur->valor("idprevcobro"));
-        m_list->setText(i,COL_FPREVISTAPREVCOBRO, cur->valor("fprevistaprevcobro"));
-        m_list->setText(i,COL_FCOBROPREVCOBRO, cur->valor("fcobroprevcobro"));
-        m_list->setText(i,COL_IDCUENTA, cur->valor("idcuenta"));
-        m_list->setText(i,COL_CODIGO, cur->valor("codigo"));
-        m_list->setText(i,COL_NOMCTA, cur->valor("descripcion"));
-        m_list->setText(i,COL_CODIGOCTAREGISTROIVA, cur->valor("ccontrapartida") );
-        m_list->setText(i,COL_ENTREGISTROIVA, cur->valor("nomcontrapartida") );
-        m_list->setText(i,COL_IDASIENTO, cur->valor("idasiento"));
-        m_list->setText(i,COL_ORDENASIENTO, cur->valor("ordenasiento"));
-        m_list->setText(i,COL_CANTIDADPREVISTAPREVCOBRO, cur->valor("cantidadprevistaprevcobro"));
-        m_list->setText(i,COL_CANTIDADPREVCOBRO, cur->valor("cantidadprevcobro"));
-        m_list->setText(i,COL_IDREGISTROIVA, cur->valor("idregistroiva"));
-	if ( cur->valor("tipoprevcobro") == "t" ) {
-        	m_list->setText(i,COL_TIPOPREVCOBRO, "COBRO");
-	} else {
-	        m_list->setText(i,COL_TIPOPREVCOBRO, "PAGO");
-	} // end if
-        m_list->setText(i,COL_DOCPREVCOBRO, cur->valor("docprevcobro"));
-        if (cur->valor("idasiento") == "") {
-            QCheckTableItem *item = new QCheckTableItem(m_list, "");
-            m_list->setItem(i,COL_SELECCION,item);
-        }// end if
-        cur->siguienteregistro();
-        i++;
-    }// end while
-    delete cur;
-}// end inicializa
 
-/**
-  * \brief SLOT que respoonde a la creación de un asiento de cobro o pago a partir de la gestion de cobros y pagos.
-  * Descripción:
-  * 1.- Calculamos los campos Total, Tipo de Asiento (compra/venta), Cuenta bancaria y cuenta de cliente
-  * 2.- Determinamos si es un cobro o un pago.
-  * 3.- Cargamos la plantilla de cobro o pago y le metemos los valores necesarios
-  * 4.- Generamos el asiento a partir del asiento inteligente.
-  */
-void cobropagoview::s_creaPago() {
-      QString idainteligente;
-      double total=0;
-      QString codcuenta;
-      QString codbanco;
-      QString tipo;
-      QString fecha;
-      /// Calculamos los campos necesarios.
-      /* El cálculo de los campos requeridos es una iteración por la tabla. */
-      for (int i=0; i< m_list->numRows(); i++) {
-      		fprintf(stderr,"Iteración para los elementos de la lista %d\n", i);
-		if (m_list->text(i,COL_IDPREVCOBRO) != "") {
-			fprintf(stderr,"Existe el elemento %d\n", i);
-			QTableItem *check = m_list->item(i,COL_SELECCION);
-			fprintf(stderr,"Vamos a testear \n");
-//			if (check->rtti()==2) {
-			if (check != NULL) {
-				QCheckTableItem *check1 = (QCheckTableItem *) check;
-				if (check1->isChecked()) {
-					fprintf(stderr,"Este entra \n");
-					total += m_list->text(i, COL_CANTIDADPREVISTAPREVCOBRO).toFloat();
-					codbanco = m_list->text(i, COL_CODIGO);
-					codcuenta =  m_list->text(i, COL_CODIGOCTAREGISTROIVA);
-					tipo = m_list->text(i, COL_TIPOPREVCOBRO);
-					fecha = m_list->text(i, COL_FPREVISTAPREVCOBRO);
-					if ( tipo == "t") {
-					   tipo = "COBRO"; 
-					} else {
-					   tipo = "PAGO";
-					}// end if
-				}// end if
-			}// end if
-		}// end if
-      }// end for
-      
-      fprintf(stderr,"------------\n");
-      fprintf(stderr,"total: %2.2f -- banco %s -- cliente %s -- tipo %s\n", total, codbanco.ascii(), codcuenta.ascii(), tipo.ascii());
-      fprintf(stderr,"------------\n");
-      
-      /// Buscamos cual es el asiento inteligente que realiza la amortización.
-      QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion=valor AND configuracion.nombre='Cobro'";
-      conexionbase->begin();
-      cursor2 *cur = conexionbase->cargacursor(query,"asiento_de_cobro");
-      conexionbase->commit();
-      if (!cur->eof()) {
-         idainteligente = cur->valor("idainteligente");
-      }// end if
-      delete cur;	
-	
-      /// Se va a generar el asiento
-      int numasiento = 0; 
-      aplinteligentesview *nueva=new aplinteligentesview(empresaactual, 0,"");
-      nueva->inicializa(numasiento, empresaactual->intapuntsempresa());
-      nueva->muestraplantilla(idainteligente.toInt());
-      nueva->setfechaasiento(fecha);
-      nueva->setvalores("$fecha$",fecha);
-      nueva->setvalores("$codbanco$",codbanco);
-      nueva->setvalores("$codcuenta$",codcuenta);
-      nueva->setvalores("$total$",QString::number(total));  
-      nueva->setmodo(1);
-      nueva->exec();
-      QString numasientodevuelto= empresaactual->intapuntsempresa()->cursorasientos->valor("idasiento");
-      delete nueva;
-      
-      /// Actualizamos los campos que haga falta.
-      for (int i=0; i< m_list->numRows(); i++) {
-      		fprintf(stderr,"Iteración para los elementos de la lista %d\n", i);
-		if (m_list->text(i,COL_IDPREVCOBRO) != "") {
-			fprintf(stderr,"Existe el elemento %d\n", i);
-			QTableItem *check = m_list->item(i,COL_SELECCION);
-			fprintf(stderr,"Vamos a testear \n");
-//			if (check->rtti()==2) {
-			if (check != NULL) {
-				QCheckTableItem *check1 = (QCheckTableItem *) check;
-				if (check1->isChecked()) {
-					QString query = "UPDATE prevcobro SET idasiento= "+ numasientodevuelto +" WHERE idprevcobro = "+ m_list->text(i,COL_IDPREVCOBRO);
-					conexionbase->begin();
-					conexionbase->ejecuta(query);
-					conexionbase->commit();
-				}// end if
-			}// end if
-		}// end if
-      }// end for      
-      /// Inicializamos para que se muestren las cosas estas.
-      inicializa();
-}// end s_creaPago
+
 
 
 /**
@@ -270,32 +91,26 @@ void cobropagoview::s_creaPago() {
   */
 void cobropagoview::s_actualizar() {
 	fprintf(stderr,"actualizar \n");
+
+	m_listprevcobro->s_setfinprevcobro(m_firstDate->text());
+	m_listprevcobro->s_setffiprevcobro(m_lastDate->text());
+
+	if (m_tipoprevcobro->currentText() == "COBROS")
+		m_listprevcobro->s_settipoprevcobro("t");
+
+	if (m_tipoprevcobro->currentText() == "PAGOS")
+		m_listprevcobro->s_settipoprevcobro("f");
+
+	if (m_tipoprevcobro->currentText() == "TODO")
+		m_listprevcobro->s_settipoprevcobro("");
+	m_listprevcobro->s_setprocesado(m_procesado->currentText());
+
+    m_listprevcobro->chargeBudgetLines();
+    m_listprevcobro->pintalistlinprevcobro();
+
 }// end s_actualizar
 
 
-/**
-  * \brief Busqueda de una fecha inicial del listado.
-  */
-void cobropagoview::s_searchFirstDate() {
-        QList<QDate> a;
-        calendario *cal = new calendario(0,0);
-        cal->exec();
-        a = cal->dn->selectedDates();
-        m_fistDate->setText(a.first()->toString("dd/MM/yyyy"));
-        delete cal;
-}// end s_searchFistDate
-
-/**
-  * \brief Bsqueda de una fecha final del listado.
-  */
-void cobropagoview::s_searchLastDate() {
-        QList<QDate> a;
-        calendario *cal = new calendario(0,0);
-        cal->exec();
-        a = cal->dn->selectedDates();
-        m_lastDate->setText(a.first()->toString("dd/MM/yyyy"));
-        delete cal;
-}// end s_searchLastDate
 
 
 

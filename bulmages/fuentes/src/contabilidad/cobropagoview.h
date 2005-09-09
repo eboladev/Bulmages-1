@@ -41,12 +41,8 @@ public:
 public:
     cobropagoview(empresa *, QWidget *parent = 0, const char *name = 0);
     ~cobropagoview();
-    void inicializa();
 public slots:
-    virtual void s_creaPago();
     virtual void s_actualizar();
-    virtual void s_searchFirstDate();
-    virtual void s_searchLastDate();
     virtual void s_guardar();
 };
 

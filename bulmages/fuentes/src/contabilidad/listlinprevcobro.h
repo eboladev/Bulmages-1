@@ -27,15 +27,17 @@ public:
 
 /// Opciones para filtrado y otros.
 protected:
-    QString mdb_idregistroiva;
-	QString mdb_tipoprevcobro;
-	QString mdb_codigocuentaprevcobro;
-	QString mdb_finprevcobro;
-	QString mdb_ffiprevcobro;
+        QString mdb_idregistroiva;
+	QString mfilt_idregistroiva;
+	QString mfilt_tipoprevcobro;
+	QString mfilt_codigocuentaprevcobro;
+	QString mfilt_finprevcobro;
+	QString mfilt_ffiprevcobro;
+	QString mfilt_procesado;
 protected:
     QPtrList<linprevcobro> m_lista;
 public:
-   
+
     listlinprevcobro(empresa *comp);
     listlinprevcobro();
     void inicializaVariables();
@@ -56,6 +58,7 @@ public:
     void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
     linprevcobro *linpos(int);
     void borralinprevcobro(int);
+
     void setidregistroiva(QString id) {
         mdb_idregistroiva=id;
         linprevcobro *linea;

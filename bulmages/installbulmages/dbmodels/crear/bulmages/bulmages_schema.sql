@@ -333,10 +333,10 @@ CREATE TABLE prevcobro (
     idfpago integer REFERENCES fpago(idfpago),
     idcuenta integer REFERENCES cuenta(idcuenta),
     idasiento integer REFERENCES asiento(idasiento),
-    cantidadprevistaprevcobro numeric(12,2),
-    cantidadprevcobro  numeric(12,2),
-    idregistroiva integer NOT NULL REFERENCES registroiva(idregistroiva),
-    tipoprevcobro boolean,
+    cantidadprevistaprevcobro numeric(12,2) DEFAULT 0,
+    cantidadprevcobro  numeric(12,2) DEFAULT 0,
+    idregistroiva integer REFERENCES registroiva(idregistroiva),
+    tipoprevcobro boolean NOT NULL DEFAULT FALSE,
     docprevcobro character varying(50)
 );
 
@@ -1845,7 +1845,22 @@ CREATE TRIGGER restriccionesasientotrigger
    BEFORE INSERT OR UPDATE ON asiento
    FOR EACH ROW
    EXECUTE PROCEDURE restriccionesasiento();
-    
+
+
+CREATE FUNCTION tr_borradoasiento() RETURNS "trigger"
+AS '
+BEGIN
+	UPDATE prevcobro SET idasiento = NULL WHERE idasiento=OLD.idasiento;
+	RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER restriccionesborradoasientotrigger
+   BEFORE DELETE ON asiento
+   FOR EACH ROW
+   EXECUTE PROCEDURE tr_borradoasiento();
+
+
    
 -- Propaga los acumulados de IVA 
 CREATE FUNCTION inserttipoiva () RETURNS "trigger"

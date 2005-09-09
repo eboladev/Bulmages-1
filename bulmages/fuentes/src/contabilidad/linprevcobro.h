@@ -38,6 +38,7 @@ private:
     empresa *empresaactual;
     postgresiface2 *conexionbase;
 public:
+
     linprevcobro(empresa *);
     linprevcobro(empresa *, QString );
     /// La carga r�ida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
@@ -47,6 +48,7 @@ public:
     ;
     void guardalinprevcobro();
     void vacialinprevcobro();
+    int creaPago();
 
 
     inline QString idprevcobro() {

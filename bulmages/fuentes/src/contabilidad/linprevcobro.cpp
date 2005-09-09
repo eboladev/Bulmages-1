@@ -11,6 +11,8 @@
 //
 #include "linprevcobro.h"
 
+#include "aplinteligentesview.h"
+
 linprevcobro::linprevcobro(empresa *comp) {
     empresaactual = comp;
     conexionbase = comp->bdempresa();
@@ -91,9 +93,12 @@ void linprevcobro::borrar() {
 }// end delete
 
 void linprevcobro::guardalinprevcobro() {
-	if (mdb_idfpago == "") mdb_idfpago = "NULL";
-	if (mdb_idasiento == "") mdb_idasiento = "NULL";
-	if (mdb_idregistroiva == "") mdb_idregistroiva = "NULL";
+    if (mdb_idfpago == "")
+        mdb_idfpago = "NULL";
+    if (mdb_idasiento == "")
+        mdb_idasiento = "NULL";
+    if (mdb_idregistroiva == "")
+        mdb_idregistroiva = "NULL";
 
     /// Segun est�la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_idprevcobro == "") {
@@ -155,9 +160,68 @@ void linprevcobro::setidcuenta(QString val) {
     cursor2 *cur=conexionbase->cargacursor(SQLQuery);
     if (!cur->eof()) {
         mdb_nomcuenta=cur->valor("descripcion");
-	mdb_codigocuenta = cur->valor("codigo");
+        mdb_codigocuenta = cur->valor("codigo");
     }// end if
     delete cur;
     fprintf(stderr,"end setidcuenta\n");
 }// end setidarticulo
 
+
+
+/**
+  * \brief SLOT que respoonde a la creación de un asiento de cobro o pago a partir de la gestion de cobros y pagos.
+  * Descripción:
+  * 1.- Calculamos los campos Total, Tipo de Asiento (compra/venta), Cuenta bancaria y cuenta de cliente
+  * 2.- Determinamos si es un cobro o un pago.
+  * 3.- Cargamos la plantilla de cobro o pago y le metemos los valores necesarios
+  * 4.- Generamos el asiento a partir del asiento inteligente.
+  */
+int linprevcobro::creaPago() {
+
+    /// Si la previsión no está guardada en la base de datos salimos para que no haya problemas.
+    if (idprevcobro() == "")
+        return 0;
+
+    QString idainteligente;
+    QString total=cantidadprevcobro();
+    QString codcuenta = codigocuenta();
+    QString codbanco = codigocuenta(); /// Hay que hacer que en cobros y pagos aparezca el código de cuenta.
+    QString tipo = tipoprevcobro();
+    QString fecha = fcobroprevcobro();
+
+    /// Buscamos cual es el asiento inteligente que realiza la amortización.
+    QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion=valor AND configuracion.nombre='Cobro'";
+    conexionbase->begin();
+    cursor2 *cur = conexionbase->cargacursor(query,"asiento_de_cobro");
+    conexionbase->commit();
+    if (!cur->eof()) {
+        idainteligente = cur->valor("idainteligente");
+    } else {
+        return 0;
+    }// end if
+    delete cur;
+
+    QString idasiento = empresaactual->intapuntsempresa()->cursorasientos->valor("idasiento");
+
+    /// Se va a generar el asiento
+    int numasiento = 0;
+    aplinteligentesview *nueva=new aplinteligentesview(empresaactual, 0,"");
+    nueva->inicializa(numasiento, empresaactual->intapuntsempresa());
+    nueva->muestraplantilla(idainteligente.toInt());
+    nueva->setfechaasiento(fecha);
+    nueva->setvalores("$fecha$",fecha);
+    nueva->setvalores("$codbanco$",codbanco);
+    nueva->setvalores("$codcuenta$",codcuenta);
+    nueva->setvalores("$total$",total);
+    nueva->setmodo(1);
+    nueva->exec();
+    delete nueva;
+
+    QString idasiento1 = empresaactual->intapuntsempresa()->cursorasientos->valor("idasiento");
+    if (idasiento1 == idasiento) {
+        return 0;
+    }// end if
+    mdb_idasiento= idasiento1;
+    guardalinprevcobro();
+    return 1;
+}// end s_creaPago
