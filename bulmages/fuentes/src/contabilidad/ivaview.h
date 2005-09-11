@@ -63,16 +63,17 @@ private:
     int buscaborradoriva(int);
     int buscaborradorcliente(int);
     int buscaborradorservicio(int);
-    void cargaiva(QString);
     void cargaComboTipoIva();
     void calculaTotales();
     void buscafecha(int);
+    void cargaiva(QString);
 
 public slots:
     virtual void accept();
     virtual void boton_borrar();
     virtual void chContrapartida();
     virtual void boton_generarPrevisiones();
+    virtual void s_guardar();
 
 private slots:
     virtual void currentIvaChanged(int, int);

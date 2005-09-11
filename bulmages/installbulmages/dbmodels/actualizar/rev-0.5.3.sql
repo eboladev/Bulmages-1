@@ -1,5 +1,5 @@
 --
--- Modificaci� de campos y funciones de la BD para la adaptaci� al tipo de datos monetario
+-- Modificación de campos y funciones de la BD para la adaptaci� al tipo de datos monetario
 --
 
 BEGIN;
@@ -17,7 +17,7 @@ BEGIN;
 
 
 --
--- Funci� auxiliar para borrar funciones limpiamente
+-- Función auxiliar para borrar funciones limpiamente
 --
 create or replace function drop_if_exists_table (text) returns INTEGER AS '
 DECLARE
@@ -64,6 +64,9 @@ CREATE TRIGGER restriccionesborradoasientotrigger
 
 ALTER TABLE prevcobro ALTER COLUMN tipoprevcobro SET NOT NULL;
 ALTER TABLE prevcobro ALTER COLUMN idregistroiva DROP NOT NULL;
+
+ALTER TABLE prevcobro ADD COLUMN idctacliente integer REFERENCES cuenta(idcuenta);
+
 \echo "Quitmaos la restricción que vincula gestión de cobros y pagos con facturas"
 
 --

@@ -55,7 +55,7 @@ public:
     };
     void chargeBudgetLines();
     void borrar();
-    void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
+    void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
     linprevcobro *linpos(int);
     void borralinprevcobro(int);
 

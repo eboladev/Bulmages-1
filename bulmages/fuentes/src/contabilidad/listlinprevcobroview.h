@@ -24,7 +24,7 @@
 
 
 class listlinprevcobroview : public QTable , public listlinprevcobro {
-Q_OBJECT
+    Q_OBJECT
 public:
 
 
@@ -36,6 +36,8 @@ public:
     linprevcobro *lineaat(int);
     linprevcobro *lineaact();
     void arreglaPosicion(int, int);
+    void presentacionFactura();
+    void presentacionListado();
 
 
 private:
@@ -47,12 +49,26 @@ public slots:
     virtual void borralinprevcobroact();
     virtual void s_creaPago();
 
-    virtual void s_settipoprevcobro(QString tip) {mfilt_tipoprevcobro = tip;};
-    virtual void s_setcodigocuentaprevcobro(QString tip) {mfilt_codigocuentaprevcobro = tip;};
-    virtual void s_setfinprevcobro(QString tip) {mfilt_finprevcobro = tip;};
-    virtual void s_setffiprevcobro(QString tip) {mfilt_ffiprevcobro = tip;};
-    virtual void s_setprocesado(QString tip) {mfilt_procesado = tip;};
-    virtual void s_setidregistroiva(QString tip) {mfilt_idregistroiva = tip;};
+    /// Esto activa a las variables de filtro con lo que los nombres de las funciones no son
+    /// muy acertados.
+    virtual void s_settipoprevcobro(QString tip) {
+        mfilt_tipoprevcobro = tip;
+    };
+    virtual void s_setcodigocuentaprevcobro(QString tip) {
+        mfilt_codigocuentaprevcobro = tip;
+    };
+    virtual void s_setfinprevcobro(QString tip) {
+        mfilt_finprevcobro = tip;
+    };
+    virtual void s_setffiprevcobro(QString tip) {
+        mfilt_ffiprevcobro = tip;
+    };
+    virtual void s_setprocesado(QString tip) {
+        mfilt_procesado = tip;
+    };
+    virtual void s_setidregistroiva(QString tip) {
+        mfilt_idregistroiva = tip;
+    };
 };
 
 #endif

@@ -5,16 +5,16 @@
 // Description:
 //
 //
-// Author: Tomeu Borrás Riera <tborras@conetxia.com>, (C) 2003
+// Author: Tomeu Borrï¿½ Riera <tborras@conetxia.com>, (C) 2003
 //
 // Copyright: See COPYING file that comes with this distribution
 //
 //
 /** \file configuracion.cpp
-  * Este fichero contiene la implementación de la clase \ref configuracion que se encarga
-  * de recoger todos los parametros de configuración de la aplicación y los centraliza 
-  * en un único objeto que luego es instanciado como objeto global \ref confpr
-  * De este modo cualquier objeto de la aplicación puede consultar (sin demasiados problemas cual es la configuración que le corresponde).
+  * Este fichero contiene la implementaciï¿½ de la clase \ref configuracion que se encarga
+  * de recoger todos los parametros de configuraciï¿½ de la aplicaciï¿½ y los centraliza 
+  * en un nico objeto que luego es instanciado como objeto global \ref confpr
+  * De este modo cualquier objeto de la aplicaciï¿½ puede consultar (sin demasiados problemas cual es la configuraciï¿½ que le corresponde).
   */
 
 #include "configuracion.h"
@@ -26,28 +26,41 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <qdir.h>
 using namespace std;
 
+#include "abreempresaview.h"
 
 #define CONFGLOBAL "/etc/bulmages.conf"
 #define CONFLOCAL "bulmages.conf"
 
-/// The global object confpr is the instance of configuracion that is available to all BulmaGés aplications
-/// El objeto global confpr es la instancia de la clase configuracion. Este objeto puede ser accedido desde todas las clases de la aplicación.
+/// The global object confpr is the instance of configuracion that is available to all BulmaGï¿½ aplications
+/// El objeto global confpr es la instancia de la clase configuracion. Este objeto puede ser accedido desde todas las clases de la aplicaciï¿½.
 configuracion *confpr;
 
 
 /** Constructor de la clase que hace directamente la lectura de los dos posibles
-  * archivos que pueden tener información de configuración de Bulmages
+  * archivos que pueden tener informaciï¿½ de configuraciï¿½ de Bulmages
   * /etc/bulmages.conf y
   * ~/bulmages.conf
   */
 configuracion::configuracion() {
-   /// Creamos el directorio personalizado de bulmages.
-   system ("mkdir ~/.bulmages");
+
+   QDir homedir;
    /// Cambiamos a ~/.bulmages como directorio de trabajo.
    QString dir = getenv("HOME");
    dir = dir + "/.bulmages";
+
+   /// Comprobamos la existencia del directorio personalizado de bulmages. Y si no 
+   if (! homedir.exists(dir)) {
+	homedir.mkdir(dir);
+	/// Hacemos una recarga de empresas pq sabemos a ciencia cierta que ha cambiado el listado.
+	abreempresaview *abre= new abreempresaview(NULL,"hola","hola");
+	abre->s_reloadButton();
+	delete abre;
+   }// end if
+ //  	system ("mkdir ~/.bulmages");
+
 
 #ifndef WIN32
     /// Solo cambiamos de directorio si no es windows
@@ -56,7 +69,7 @@ configuracion::configuracion() {
 
    /// Primero leemos la configuracion global
    leeconfig (CONFGLOBAL);
-   /// Y  luego añadimos la configuracion local, asi los valores por defecto son los globales
+   /// Y  luego aï¿½dimos la configuracion local, asi los valores por defecto son los globales
    /// Y los que estan en local sustituyen a los existentes.
    QString dir1 = getenv("HOME");
    dir1 = dir1 + "/"+ CONFLOCAL;
@@ -74,10 +87,10 @@ configuracion::~configuracion() {
 }// end ~configuracion
 
 
-/** Puesto que la configuración funciona sobre un array y sobre defines en dicho array
-  * esta función dado un define devuelve el nombre utilizado.
-  * Esta función es útil para hacer la inserción inicial de elementos
-  * También es útil para hacer nosotros el guardado de los parametros.
+/** Puesto que la configuraciï¿½ funciona sobre un array y sobre defines en dicho array
+  * esta funciï¿½ dado un define devuelve el nombre utilizado.
+  * Esta funciï¿½ es til para hacer la inserciï¿½ inicial de elementos
+  * Tambiï¿½ es til para hacer nosotros el guardado de los parametros.
   */
 QString configuracion::nombre(int i) {
 if (i== CONF_BG_APUNTES) return "CONF_BG_APUNTES";
@@ -167,7 +180,7 @@ return "";
 
 
 /** This method writes the configuration of the system to the home bulmages.conf file
-  * Este metodo escribe la configuración del sistema en el fichero bulmages.conf del home del usuario.
+  * Este metodo escribe la configuraciï¿½ del sistema en el fichero bulmages.conf del home del usuario.
   */
 void configuracion::saveconfig() {
    QString dir1 = getenv("HOME");
@@ -187,7 +200,7 @@ void configuracion::saveconfig() {
 
 /** This method reads the configuration params from a file
   * \param fich File that contains the configuration.
-  * Lee la configuración del fichero de configuración pasado y rellena la estructura.
+  * Lee la configuraciï¿½ del fichero de configuraciï¿½ pasado y rellena la estructura.
   */
 void configuracion::leeconfig(char *fich) {
 	ifstream filestr(fich);
@@ -217,7 +230,7 @@ QString configuracion::valor(int i) {
 
 /** Establece el valor de un campo determinado con la tupla que se pasa como parametro
   * \param i El indice del parametro a cambiar
-  * \param valor El valor que tomará dicho parámetro
+  * \param valor El valor que tomarï¿½dicho parï¿½etro
   */
 void configuracion::setValor(int i, QString valor) {
   m_valores[i] = valor;

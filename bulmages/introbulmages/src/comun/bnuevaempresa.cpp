@@ -13,6 +13,7 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 #include "bnuevaempresa.h"
+#include "abreempresaview.h"
 
 #include <qmessagebox.h>
 
@@ -49,6 +50,8 @@ void BNuevaEmpresa::accept() {
     DBconn->begin();
     DBconn->ejecuta(query);
 
+	query = "UPDATE configuracion SET valor='"+ejercicioempresa->text()+"' WHERE nombre='Ejercicio'";
+	DBconn->ejecuta(query);
     /// Creamos el ejercicio
     for (int x=0; x<=12; x++) {
         query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')",ejemp.ascii(),x);
@@ -56,5 +59,10 @@ void BNuevaEmpresa::accept() {
     }// end for
     DBconn->commit();
     delete DBconn;
+
+	/// Hacemos una recarga de empresas pq sabemos a ciencia cierta que ha cambiado el listado.
+	abreempresaview *abre= new abreempresaview(NULL,"hola","hola");
+	abre->s_reloadButton();
+	delete abre;
     close();
 }// end accept

@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include "logpass.h"
+#include "funcaux.h"
+
 #include "postgresiface2.h"
 #include <qlineedit.h>
 #include <qstring.h>
@@ -34,7 +36,7 @@ logpass::~logpass() {}
 /** @brief Valida si postgres puede abrir bases de datos y si no es as�pide loggin y password
   */
 void logpass::validar() {
-    fprintf(stderr,"logpass::validar()\n");
+    _depura("logpass::validar()");
     m_login->setText(postgresiface2::sanearCadena(m_login->text()));
     m_authOK = false;
 

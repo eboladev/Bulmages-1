@@ -81,7 +81,6 @@ CREATE TABLE fpago (
     plazoentrerecibofpago integer,
     tipoplazoentrerecibofpago integer
 );
- 
 */
 
 #include "ivaview.h"
@@ -143,6 +142,9 @@ ivaview::ivaview(empresa *emp,QWidget *parent, const char *name ) : ivadlg(paren
     m_listIva->hideColumn(COL_IVA_IDTIPOIVA);
     m_listIva->hideColumn(COL_IVA_IDREGISTROIVA);
 
+
+    /// Preparamos la lista de cobros y pagos
+    m_listprevcobro->presentacionFactura();
     // CAlculamos las formas de pago.
     m_cursorFPago = NULL;
     cargarComboFPago("NULL");
@@ -186,11 +188,7 @@ ivaview::~ivaview() {
 
 
 
-/** \brief Este slot se ejeccuta cuando pusamos sobre el botón aceptar.
-  * Si se trata de una modificacion modificamos.
-  * Si se trata de una inserción insertamos.
-  */
-void ivaview::accept() {
+void ivaview::s_guardar() {
     QString query;
     QString idfactrectificada= "NULL";
     QString factura1= factura->text();
@@ -244,6 +242,16 @@ void ivaview::accept() {
     guardaiva();
     /// Guardamos todas las previsiones de pago
     m_listprevcobro->guardalistlinprevcobro();
+
+}// end s_guardar
+
+
+/** \brief Este slot se ejeccuta cuando pusamos sobre el botón aceptar.
+  * Si se trata de una modificacion modificamos.
+  * Si se trata de una inserción insertamos.
+  */
+void ivaview::accept() {
+	s_guardar();
     done(1);
 }// end accept
 
@@ -764,7 +772,10 @@ void ivaview::boton_generarPrevisiones() {
             totalplazo.toQString(),
             totalplazo.toQString(),
             tipocobro,
-            "","",""
+            "","","",
+            contrapartida->idcuenta(),
+            contrapartida->codigocuenta(),
+            contrapartida->nomcuenta()
         );
         fpcobro = fpcobro.addDays(plazoentrerecibo);
     }// end for

@@ -31,10 +31,13 @@ private:
     QString mdb_idregistroiva;
     QString mdb_tipoprevcobro;
     QString mdb_docprevcobro;
+    QString mdb_idctacliente;
     /// Aunque no es un elemento de la tabla, si es importante que este incluido pq se pinta en muchas partes.
     QString mdb_codigocuenta;
+    QString mdb_codigoctacliente;
     /// Aunque no es un elemento de la tabla, si es importante que este incluido pq se pinta en muchas partes.
     QString mdb_nomcuenta;
+    QString mdb_nomctacliente;
     empresa *empresaactual;
     postgresiface2 *conexionbase;
 public:
@@ -42,10 +45,9 @@ public:
     linprevcobro(empresa *);
     linprevcobro(empresa *, QString );
     /// La carga r�ida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
-    linprevcobro(empresa *, QString , QString , QString , QString , QString , QString , QString, QString, QString, QString, QString, QString, QString );
+    linprevcobro(empresa *, QString , QString , QString , QString , QString , QString , QString, QString, QString, QString, QString, QString, QString, QString, QString , QString );
     virtual ~linprevcobro();
-    virtual void pintalinprevcobro() {}
-    ;
+    virtual void pintalinprevcobro() {};
     void guardalinprevcobro();
     void vacialinprevcobro();
     int creaPago();
@@ -65,6 +67,9 @@ public:
     };
     inline QString idcuenta() {
         return mdb_idcuenta;
+    };
+    inline QString idctacliente() {
+	return mdb_idctacliente;
     };
     inline QString idasiento() {
         return mdb_idasiento;
@@ -88,8 +93,15 @@ public:
         return mdb_codigocuenta;
     };
 
+    inline QString codigoctacliente() {
+        return mdb_codigoctacliente;
+    };
+
     inline QString nomcuenta() {
         return mdb_nomcuenta;
+    };
+    inline QString nomctacliente() {
+        return mdb_nomctacliente;
     };
 
     inline void setidprevcobro(QString val) {
@@ -129,6 +141,13 @@ public:
     inline void setnomcuenta(QString val) {
         mdb_nomcuenta=val;
     };
+
+    void setcodigoctacliente(QString);
+    void setidctacliente(QString);
+    inline void setnomctacliente(QString val) {
+        mdb_nomctacliente=val;
+    };
+
     void borrar();
 };
 

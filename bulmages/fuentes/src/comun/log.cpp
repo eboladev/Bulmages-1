@@ -21,16 +21,17 @@
 #include "empresa.h"
 
 #include <qdatetime.h>
+#include "funcaux.h"
 
 /// Esta variable global es el objeto del sistema de debug del programa
 bitacora *ctllog;
 
 bitacora::bitacora() {
-   fprintf(stderr,"Constructor de Bitacora\n");
+   _depura("Constructor de Bitacora");
     // abre archivo Log.
     archivolog = new ofstream(confpr->valor(CONF_ARCHIVO_LOG).ascii(),ios::out | ios::app);      
     empresaactual = NULL;
-    fprintf(stderr,"Fin de Constructor de Bitacora\n");
+    _depura("Fin de Constructor de Bitacora");
 }
 
 

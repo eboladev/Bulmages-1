@@ -39,7 +39,7 @@ listlinprevcobro::listlinprevcobro() {
 listlinprevcobro::~listlinprevcobro() {}
 
 
-void listlinprevcobro::nuevalinea(QString desc, QString cantl, QString pvpl, QString descl,QString idart, QString codart, QString nomart, QString ivapres, QString k, QString l, QString m) {
+void listlinprevcobro::nuevalinea(QString desc, QString cantl, QString pvpl, QString descl,QString idart, QString codart, QString nomart, QString ivapres, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente) {
     linprevcobro *lin = new linprevcobro(empresaactual,
                                          "",
                                          desc,
@@ -53,7 +53,10 @@ void listlinprevcobro::nuevalinea(QString desc, QString cantl, QString pvpl, QSt
                                          ivapres,
                                          k,
                                          l,
-                                         m);
+                                         m,
+					idctacliente,
+					codigoctacliente,
+					nomctacliente);
     m_lista.append(lin);
 }// end nuevalinea
 
@@ -81,7 +84,10 @@ void listlinprevcobro::chargeBudgetLines() {
    if (mfilt_procesado == "NO PROCESADO")
 	cadwhere += " AND idasiento IS NULL ";
 
-    cursor2 * cur= conexionbase->cargacursor("SELECT * FROM prevcobro, cuenta WHERE cuenta.idcuenta=prevcobro.idcuenta "+ cadwhere+ " ORDER BY fcobroprevcobro");
+    cursor2 * cur= conexionbase->cargacursor("SELECT * FROM prevcobro "
+	" LEFT JOIN cuenta ON cuenta.idcuenta=prevcobro.idcuenta "
+	" LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
+	" WHERE 1=1 "+ cadwhere+ " ORDER BY fcobroprevcobro ");
 
     int i=0;
     while (!cur->eof())   {
@@ -99,7 +105,10 @@ void listlinprevcobro::chargeBudgetLines() {
                                              cur->valor("tipoprevcobro"),
                                              cur->valor("docprevcobro"),
                                              cur->valor("codigo"),
-                                             cur->valor("descripcion")
+                                             cur->valor("descripcion"),
+						cur->valor("idctacliente"),
+						cur->valor("codigoctacliente"),
+						cur->valor("nomctacliente")
                                             );
         m_lista.append(lin);
         i++;

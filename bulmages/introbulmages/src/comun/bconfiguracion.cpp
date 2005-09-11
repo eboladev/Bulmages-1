@@ -197,7 +197,7 @@ void BConfiguracion::borrarEmpresa() {
     QString nombreEmpresa;
     QString idEmpresa;
     QString ejercicio;
-    // Siempre se borra la empresa actual.
+    /// Siempre se borra la empresa actual.
     dbEmpresa = PunteroAlSelector->empresaDB();
     if (dbEmpresa!="") {
         if (dbEmpresa=="bgplangcont") {
@@ -205,12 +205,16 @@ void BConfiguracion::borrarEmpresa() {
         } else if (dbEmpresa != PunteroAlSelector->empresaDB()) {
             QMessageBox::warning( this, tr("Atención"), tr("No Está permitido eliminar la base \n\r de datos actualmente abierta."), QMessageBox::Ok,0);
         } else {
-	    int mensaje = QMessageBox::warning( this, tr("Atención"), tr("Borrar una empresa puede suponer perdida de datos\n Desea continuar?\n"), QMessageBox::Yes,QMessageBox::No,0);
-	    if (mensaje == QMessageBox::Yes) { 
-		QString sentencia = "dropdb "+dbEmpresa;
-		system(sentencia.ascii());
-		PunteroAlSelector->seleccionaempresa_clicked();
-	    }// end if
+            int mensaje = QMessageBox::warning( this, tr("Atención"), tr("Borrar una empresa puede suponer perdida de datos\n Desea continuar?\n"), QMessageBox::Yes,QMessageBox::No,0);
+            if (mensaje == QMessageBox::Yes) {
+                QString sentencia = "dropdb "+dbEmpresa;
+                system(sentencia.ascii());
+                /// Hacemos una recarga de empresas pq sabemos a ciencia cierta que ha cambiado el listado.
+                abreempresaview *abre= new abreempresaview(NULL,"hola","hola");
+                abre->s_reloadButton();
+                delete abre;
+                done(1);
+            }// end if
         }// end if
     }// end if
     close();

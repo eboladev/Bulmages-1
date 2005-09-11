@@ -5,6 +5,7 @@
 #include "stdio.h"
 #include <qstring.h>
 
+#include "funcaux.h"
 
 Fixed operator + (Fixed x, Fixed y) {
     x.equalize_precision(y);
@@ -82,7 +83,6 @@ QString Fixed::toQString() {
 QString Fixed::toQString() {
     setprecision(2);
     int options=COMMAS;
-    fprintf(stderr,"Fixed::edit(%d, %d)\n", value, precision);
     Fixed_numerator x = value;
     bool negative;
     if (x < 0)  {
@@ -109,7 +109,6 @@ QString Fixed::toQString() {
         y = (Fixed_numerator)x / 10;
         buffer[sizeof(buffer) - ++n] = integer(x - y*10) + '0';
         x = y;
-        fprintf(stderr," x: %d, precision: %d\n",x, precision);
     } while (n <= precision || x != 0);
     if (negative)
         buffer[sizeof(buffer) - ++n] = '-';
@@ -117,7 +116,6 @@ QString Fixed::toQString() {
         while (n - units < MAX_FIXED_LENGTH-2)
             buffer[sizeof(buffer) - ++n] = ' ';
     }
-    fprintf(stderr,"fin Fixed::edit %s\n", (const char *) buffer + sizeof(buffer) - n );
     QString a((const char *) buffer + sizeof(buffer) - n);
     return a;
 }
@@ -151,7 +149,7 @@ bool operator == (int x, Fixed y) {
 
 
 void Fixed::equalize_precision(Fixed &x) {
-    fprintf(stderr,"Ecualizar precisión\n");
+    _depura("equalize_precision");
     while (precision < x.precision)   {
         value *= 10; //value * SCALE.x[x.precision - precision];
         precision ++;
@@ -161,8 +159,8 @@ void Fixed::equalize_precision(Fixed &x) {
         x.value *= 10 ; //x.value * SCALE.x[precision - x.precision];
         x.precision ++;
     }// end if
-    fprintf(stderr,"Fin de ecualizar precisión\n");
-}
+    _depura("Fin equalize_precision");
+}// end equalize_precision
 
 
 void Fixed::setprecision(int prec) {
@@ -218,8 +216,6 @@ Fixed::Fixed(const char *s) {
         value = - value;
     if (value==0)
         precision=1;
-
-    fprintf(stderr,"Fixed: Valor: %d, Precision %d\n", value, precision);
 }
 
 //=============================== LSS.CPP      ===============================
@@ -277,7 +273,7 @@ Fixed operator * (Fixed x, Fixed y) {
 
 
 Fixed Fixed::operator [] (int p) const {
-    fprintf(stderr,"Fixed::operator[]\n");
+    _depura("Fixed::operator[]");
     Fixed x(0, p);
     /*
     x.value =
@@ -287,7 +283,7 @@ Fixed Fixed::operator [] (int p) const {
         value * SCALE.x[p - precision] :
       value;
     */
-    fprintf(stderr,"END Fixed::operator[]\n");
+    _depura("END Fixed::operator[]");
     return x;
 }
 

@@ -22,7 +22,10 @@ linprevcobro::linprevcobro(empresa *comp) {
 linprevcobro::linprevcobro(empresa *comp, QString idprevcobro) {
     empresaactual = comp;
     conexionbase = comp->bdempresa();
-    QString SQLQuery = "SELECT * FROM prevcobro, cuenta WHERE prevcobro.idcuenta=cuenta.idcuenta AND idprevcobro="+idprevcobro;
+    QString SQLQuery = "SELECT * FROM prevcobro "
+	"LEFT JOIN  cuenta ON prevcobro.idcuenta = cuenta.idcuenta "
+	"LEFT JOIN (SELECT codigo AS codigoctacliente, descripcion AS nomctacliente, idcuenta AS idctacliente FROM cuenta) AS T1 ON T1.idctacliente = prevcobro.idctacliente "
+	"WHERE idprevcobro="+idprevcobro;
     cursor2 *cur = conexionbase->cargacursor(SQLQuery);
     if (!cur->eof()) {
         mdb_idprevcobro = cur->valor("idprevcobro");
@@ -38,13 +41,17 @@ linprevcobro::linprevcobro(empresa *comp, QString idprevcobro) {
         mdb_docprevcobro = cur->valor("docprevcobro");
         mdb_codigocuenta = cur->valor("codigo");
         mdb_nomcuenta = cur->valor("descripcion");
+
+	mdb_idctacliente = cur->valor("idctacliente");
+	mdb_codigoctacliente = cur->valor("codigoctacliente");
+	mdb_nomctacliente = cur->valor("nomctacliente");
     } else {
         vacialinprevcobro();
     }// end if
 }// end linprevcobro
 
 
-linprevcobro::linprevcobro(empresa *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j, QString k, QString l, QString m) {
+linprevcobro::linprevcobro(empresa *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente) {
     empresaactual = comp;
     conexionbase = comp->bdempresa();
     mdb_idprevcobro = a;
@@ -60,6 +67,10 @@ linprevcobro::linprevcobro(empresa *comp, QString a, QString b, QString c, QStri
     mdb_docprevcobro = k;
     mdb_codigocuenta = l;
     mdb_nomcuenta = m;
+
+    mdb_idctacliente = idctacliente;
+   mdb_codigoctacliente = codigoctacliente;
+	mdb_nomctacliente = nomctacliente;
 }// end linprevcobro
 
 
@@ -80,6 +91,10 @@ void linprevcobro::vacialinprevcobro() {
     mdb_docprevcobro = "";
     mdb_codigocuenta = "";
     mdb_nomcuenta = "";
+
+	mdb_idctacliente = "";
+	mdb_codigoctacliente = "";
+	mdb_nomctacliente = "";
 }// end vacialinprevcobro
 
 
@@ -102,7 +117,7 @@ void linprevcobro::guardalinprevcobro() {
 
     /// Segun est�la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_idprevcobro == "") {
-        QString SQLQuery = "INSERT INTO prevcobro (fprevistaprevcobro, fcobroprevcobro, idfpago, idcuenta, idasiento, cantidadprevistaprevcobro, cantidadprevcobro, idregistroiva, tipoprevcobro, docprevcobro) VALUES ('"+
+        QString SQLQuery = "INSERT INTO prevcobro (fprevistaprevcobro, fcobroprevcobro, idfpago, idcuenta, idasiento, cantidadprevistaprevcobro, cantidadprevcobro, idregistroiva, tipoprevcobro, docprevcobro, idctacliente) VALUES ('"+
                            conexionbase->sanearCadena(mdb_fprevistaprevcobro)+"',"+
                            "'"+conexionbase->sanearCadena(mdb_fcobroprevcobro)+"',"+
                            conexionbase->sanearCadena(mdb_idfpago)+","+
@@ -112,7 +127,8 @@ void linprevcobro::guardalinprevcobro() {
                            conexionbase->sanearCadena(mdb_cantidadprevcobro)+", "+
                            conexionbase->sanearCadena(mdb_idregistroiva)+", "+
                            "'"+conexionbase->sanearCadena(mdb_tipoprevcobro)+"', "+
-                           "'"+conexionbase->sanearCadena(mdb_docprevcobro)+"')";
+                           "'"+conexionbase->sanearCadena(mdb_docprevcobro)+"', "+
+			   conexionbase->sanearCadena(mdb_idctacliente)+")";
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         cursor2 *cur = conexionbase->cargacursor("SELECT MAX(idprevcobro) AS m FROM prevcobro ");
@@ -132,6 +148,7 @@ void linprevcobro::guardalinprevcobro() {
         SQLQuery += " ,idregistroiva = "+conexionbase->sanearCadena(mdb_idregistroiva)+" ";
         SQLQuery += " ,tipoprevcobro = '"+conexionbase->sanearCadena(mdb_tipoprevcobro)+"' ";
         SQLQuery += " ,docprevcobro = '"+conexionbase->sanearCadena(mdb_docprevcobro)+"' ";
+	SQLQuery += " ,idctacliente = "+conexionbase->sanearCadena(mdb_idctacliente)+" ";
         SQLQuery += " WHERE idprevcobro = "+conexionbase->sanearCadena(mdb_idprevcobro);
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
@@ -184,24 +201,36 @@ int linprevcobro::creaPago() {
 
     QString idainteligente;
     QString total=cantidadprevcobro();
-    QString codcuenta = codigocuenta();
+    QString codcuenta = codigoctacliente();
     QString codbanco = codigocuenta(); /// Hay que hacer que en cobros y pagos aparezca el código de cuenta.
     QString tipo = tipoprevcobro();
     QString fecha = fcobroprevcobro();
 
-    /// Buscamos cual es el asiento inteligente que realiza la amortización.
+if (tipo == "t") {
+    /// Buscamos cual es el asiento inteligente que realiza los cobros
     QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion=valor AND configuracion.nombre='Cobro'";
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(query,"asiento_de_cobro");
-    conexionbase->commit();
+    cursor2 *cur = conexionbase->cargacursor(query);
     if (!cur->eof()) {
         idainteligente = cur->valor("idainteligente");
     } else {
         return 0;
     }// end if
     delete cur;
+} else {
+    /// Buscamos cual es el asiento inteligente que realiza los pagos.
+    QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion=valor AND configuracion.nombre='Pago'";
+    cursor2 *cur = conexionbase->cargacursor(query);
+    if (!cur->eof()) {
+        idainteligente = cur->valor("idainteligente");
+    } else {
+        return 0;
+    }// end if
+    delete cur;
+}// end if
 
+	/// PAra saber si al final se ha hecho el asiento o no almacenamos el valor actual del asiento para ver después cual es el número de asiento y comprobar si ha cambiado o no.
     QString idasiento = empresaactual->intapuntsempresa()->cursorasientos->valor("idasiento");
+
 
     /// Se va a generar el asiento
     int numasiento = 0;
@@ -225,3 +254,33 @@ int linprevcobro::creaPago() {
     guardalinprevcobro();
     return 1;
 }// end s_creaPago
+
+
+
+
+
+void linprevcobro::setcodigoctacliente(QString val) {
+    fprintf(stderr,"setcodigocuenta(%s)\n", val.ascii());
+    mdb_codigoctacliente=extiendecodigo(val, empresaactual->numdigitosempresa());
+    QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo='"+mdb_codigoctacliente+"'";
+    cursor2 *cur=conexionbase->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+        mdb_nomctacliente=cur->valor("descripcion");
+        mdb_idctacliente = cur->valor("idcuenta");
+    }// end if
+    delete cur;
+}// end setcodigocompletoarticulo
+
+
+void linprevcobro::setidctacliente(QString val) {
+    fprintf(stderr,"setidcuenta(%s)\n", val.ascii());
+    mdb_idctacliente=val;
+    QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta="+mdb_idctacliente+"";
+    cursor2 *cur=conexionbase->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+        mdb_nomctacliente=cur->valor("descripcion");
+        mdb_codigoctacliente = cur->valor("codigo");
+    }// end if
+    delete cur;
+    fprintf(stderr,"end setidcuenta\n");
+}// end setidarticulo

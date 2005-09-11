@@ -23,6 +23,7 @@
 #include <qapplication.h>
 
 #include "msgerror.h"
+#include "funcaux.h"
 
 /** Constructor de la clase
   * Realiza la consulta en la base de datos y almacena el resultado en las variables de clase para poder ser manupuladas.
@@ -40,14 +41,10 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery) {
     QString Query = SQLQuery;
     result = PQexec(conn, Query.ascii());
     if (!result ) {
-        fprintf(stderr,"%s\n", PQerrorMessage(conn));
-        fprintf(stderr, "QUERY command failed [%s]\n", Query.ascii());
+        _depura( PQerrorMessage(conn));
+        _depura( "QUERY command failed ["+Query+"]");
         if (confpr->valor(CONF_ALERTAS_DB) == "Yes")
-            //       QMessageBox::warning(NULL, theApp->translate("postgresiface","Error...",""), theApp->translate("postgresiface","Ocurri�un error con la carga de un query de la base de datos\n"+Query+"\n"+PQerrorMessage(conn),""), theApp->translate("postgresiface","Aceptar",""));
-
             msgError("Ha ocurrido un error al hacer una consulta con la base de datos.",Query+"\n"+PQerrorMessage(conn));
-
-
         PQclear(result);
         return;
     }// end if
@@ -250,14 +247,14 @@ int postgresiface2::inicializa(QString nomdb) {
         conexion += " password="+passwd;
     }// end if
 
-    fprintf(stderr,"%s\n",conexion.ascii());
+    _depura(conexion);
     conn = PQconnectdb(conexion.ascii());
     if (PQstatus(conn) == CONNECTION_BAD)  {
         fprintf(stderr, "Connection to database '%s' failed.\n", dbName.ascii());
         fprintf(stderr, "%s", PQerrorMessage(conn));
         return(1);
     }// end if
-    fprintf(stderr,"La conexion con la base de datos ha ido bien, ahora vamos a por la fecha\n");
+    _depura("La conexion con la base de datos ha ido bien, ahora vamos a por la fecha");
     formatofecha();
     return(0);
 }// end inicializa
@@ -274,7 +271,7 @@ int postgresiface2::formatofecha() {
     query= "SET DATESTYLE TO SQL,European";
     res = PQexec(conn, query.ascii());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "Cambio del formato de fecha command failed\n");
+        _depura( "Cambio del formato de fecha command failed");
     }// end if
     PQclear(res);
 
@@ -282,7 +279,7 @@ int postgresiface2::formatofecha() {
     query = "SET client_encoding = 'UNICODE'";
     res = PQexec(conn, query.ascii());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "Cambio del formato de Codificación\n");
+        _depura( "Cambio del formato de Codificación");
     }// end if
     PQclear(res);
     //    commit();
@@ -298,9 +295,9 @@ int postgresiface2::formatofecha() {
 int postgresiface2::begin() {
     PGresult   *res;
     res = PQexec(conn, "BEGIN");
-    fprintf(stderr,"-- BEGIN TRANSACTION --\n");
+    _depura("-- BEGIN TRANSACTION --");
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK)  {
-        fprintf(stderr, "BEGIN command failed\n");
+        _depura( "BEGIN command failed");
         PQclear(res);
         return (1);
     }// end if
@@ -314,7 +311,7 @@ int postgresiface2::begin() {
   */
 void postgresiface2::commit() {
     PGresult   *res;
-    fprintf(stderr,"-- COMMIT TRANSACTION --\n");
+    _depura("-- COMMIT TRANSACTION --");
     res = PQexec(conn, "COMMIT");
     PQclear(res);
 }// end commit
@@ -335,7 +332,7 @@ void postgresiface2::rollback() {
   * \return Devuelve un apuntador al objeto \ref cursor2 generado e inicializado con la respuesta al query.
   */
 cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
-    fprintf(stderr,"%s\n",Query.ascii());
+    _depura(Query);
     cursor2 *cur=new cursor2(nomcursor,conn,Query);
     return(cur);
 }// end cargacursor
@@ -363,7 +360,7 @@ int postgresiface2::ejecuta(QString Query) {
     //Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard
     result = PQexec(conn,  (const char *) Query.local8Bit());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "SQL command failed: %s\n", Query.ascii());
+        _depura("SQL command failed: "+Query);
         fprintf(stderr,"%s\n", PQerrorMessage(conn));
         QString mensaje = "Error al intentar modificar la base de datos:\n";
         msgError(mensaje+PQerrorMessage(conn),Query+"\n"+PQerrorMessage(conn));
@@ -471,7 +468,7 @@ int postgresiface2::modificaborrador(int idborrador, int idcuenta, float idebe, 
     }// end if
 
     query.sprintf("UPDATE borrador SET idcuenta=%d, debe=%2.2f, haber=%2.2f, conceptocontable='%s', fecha='%s', contrapartida=%s, idtipoiva=%d, idc_coste=%s, idcanal=%s WHERE idborrador=%d",idcuenta,idebe,ihaber,concepto.ascii(),fecha.ascii(),textcontrapartida.ascii(),idtipoiva,textidccoste.ascii(),textocanal.ascii(), idborrador);
-    fprintf(stderr,"%s\n",query.ascii());
+    _depura(query);
     return(ejecuta(query));
 }// end modificaborrador
 
@@ -666,7 +663,7 @@ int postgresiface2::borrarcuenta(int idcuenta) {
  * correspondiente.
  ***********************************************************************/
 int postgresiface2::abreasiento(int idasiento) {
-    fprintf(stderr,"Funcion abreasiento\n");
+    _depura("Funcion abreasiento\n");
     QString query="";
 
     query.sprintf("SELECT abreasiento(%d)",idasiento);
@@ -686,7 +683,7 @@ int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString cod
     QString nodebe = cnodebe ? "TRUE" : "FALSE";
     QString nohaber = cnohaber ? "TRUE" : "FALSE";
     query.sprintf("UPDATE cuenta SET descripcion='%s', codigo='%s', imputacion=%s, bloqueada=%s, idgrupo=%d, activo=%s, nombreent_cuenta='%s', cifent_cuenta='%s', dirent_cuenta='%s', cpent_cuenta='%s', telent_cuenta='%s', coment_cuenta='%s', bancoent_cuenta='%s', emailent_cuenta='%s', webent_cuenta='%s', tipocuenta=%d, nodebe=%s, nohaber = %s WHERE idcuenta=%d\n",desccuenta.ascii(),codigo.ascii(),imputacion.ascii(),bloqueada.ascii(),idgrupo,activo.ascii(),nombreent.ascii(), cifent.ascii(),dir.ascii(),cp.ascii(),tel.ascii(),comm.ascii(),banco.ascii(), email.ascii(), web.ascii(),tipocuenta,nodebe.ascii(), nohaber.ascii(), idcuenta);
-    fprintf(stderr,"%s\n",query.ascii());
+    _depura(query);
     return(ejecuta(query));
 }// end modificacuenta
 
@@ -774,7 +771,7 @@ cursor2 *postgresiface2::cargaempresas() {
   * Sirve como comprobaci� de que los datos introducidos (usuario/password y la empresa seleccionada) son ver�icos.
   */
 int postgresiface2::cargaempresa(QString nomempresa, QString login, QString password) {
-    fprintf(stderr,"postgresiface2::cargaempresa\n");
+    _depura("postgresiface2::cargaempresa");
     QString query="";
     PGresult   *res;
     /* make a connection to the database */
@@ -789,7 +786,7 @@ int postgresiface2::cargaempresa(QString nomempresa, QString login, QString pass
     conn = PQconnectdb(conexion);
 
     if (PQstatus(conn) == CONNECTION_BAD) {
-        fprintf(stderr, "Connection to database '%s' failed.\n", dbName.ascii());
+        _depura( "Connection to database '"+dbName+"' failed.");
         fprintf(stderr, "%s", PQerrorMessage(conn));
     }// end if
     begin();

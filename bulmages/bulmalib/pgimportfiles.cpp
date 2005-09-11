@@ -1493,7 +1493,7 @@ bool ImportBulmaFact::startDocument() {
     return TRUE;
 }// end startDocument
 
-bool ImportBulmaFact::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& ) {
+bool ImportBulmaFact::startElement( const QString&, const QString&, const QString&, const QXmlAttributes& ) {
     cadintermedia = "";
     return TRUE;
 }// end startElement

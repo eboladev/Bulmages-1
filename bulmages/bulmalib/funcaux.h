@@ -2,7 +2,7 @@
                           funcaux.h  -  description
                              -------------------
     begin                : Fri Jan 24 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -14,12 +14,12 @@
  *                                                                         *
  ***************************************************************************/
  /** \file funcaux.h
-  * Fichero de definición de funciones auxiliares que no es preciso encapsular<BR>
+  * Fichero de definiciï¿½ de funciones auxiliares que no es preciso encapsular<BR>
   * <P>En este fichero se definen todas aquellas funciones que por su brevedad o aislamiento son
   * utilizadas de forma regular en el programa. Implementadas en \ref funcaux.cpp </P>
   * <P>Dichas funciones normalmente son de uso general, por lo que es normal ver este archivo incluido
-  * en la práctica totalidad de los demás ficheros</P>
-  * \author Tomeu Borrás Riera
+  * en la prï¿½tica totalidad de los demï¿½ ficheros</P>
+  * \author Tomeu Borrï¿½ Riera
   */
 #ifndef FUNCAUX_H
 #define FUNCAUX_H
@@ -32,6 +32,8 @@ using std::string;
 #include <math.h>
 #include <qstring.h>
 
+#define __DEBUG__
+
 
 /** \brief Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.  */
 string extiendecodigo (string , unsigned int );
@@ -39,13 +41,13 @@ string extiendecodigo (string , unsigned int );
 QString extiendecodigo (QString, unsigned int);
 /** \brief Redondeo de numeros en punto flotante. */
 float fround(float, unsigned);
-/** \brief Esta función convierte un numero con decimales a un entero. */
+/** \brief Esta funciï¿½ convierte un numero con decimales a un entero. */
 int roundI(double);
 /** \brief Procesa el string pasado como parametro y devuelve una estructura del tipo QDate */
 QDate normalizafecha(QString);
-/** \brief Proteje cadenas de texto pasandoles una sustitución de codigos especiales de XML  */
+/** \brief Proteje cadenas de texto pasandoles una sustituciï¿½ de codigos especiales de XML  */
 QString XMLProtect( const QString& );
-/** \brief Ajusta un código de cuenta a una longitud determinada pasada como parametro */
+/** \brief Ajusta un cï¿½igo de cuenta a una longitud determinada pasada como parametro */
 QString ajustacodigo( QString, unsigned int);
 void reemplazaarchivo(QString, QString, QString, QString);
 
@@ -57,5 +59,11 @@ std::string Ttos(T arg) {
    return buffer.str(); // capture the string
 }// end Ttos
 
+
+inline void _depura(QString cad) {
+#ifdef __DEBUG__
+	fprintf(stdout,"%s\n",cad.ascii());
+#endif
+}// end depura
 #endif
 
