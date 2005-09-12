@@ -6,7 +6,7 @@
       <binteligente>
          <fecha>$fecha, Fecha del Cobro$</fecha>
          <conceptocontable>Cobro </conceptocontable>
-         <codcuenta>$codbanco, Cuenta de cobro$</codcuenta>
+         <codcuenta>$codbanco, Cuenta de Cobro$</codcuenta>
          <descripcionb></descripcionb>
          <debe>0</debe>
          <haber>$total, Total Cobro$</haber>
@@ -19,7 +19,7 @@
       <binteligente>
          <fecha>$fecha$</fecha>
          <conceptocontable>Cobro</conceptocontable>
-         <codcuenta>$codcuenta, Cuenta de proveedor$</codcuenta>
+         <codcuenta>$codcuenta, Cuenta de Cliente$</codcuenta>
          <descripcionb></descripcionb>
          <debe>$total$</debe>
          <haber>0</haber>

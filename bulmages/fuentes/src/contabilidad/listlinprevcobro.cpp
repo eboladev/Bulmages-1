@@ -54,9 +54,9 @@ void listlinprevcobro::nuevalinea(QString desc, QString cantl, QString pvpl, QSt
                                          k,
                                          l,
                                          m,
-					idctacliente,
-					codigoctacliente,
-					nomctacliente);
+                                         idctacliente,
+                                         codigoctacliente,
+                                         nomctacliente);
     m_lista.append(lin);
 }// end nuevalinea
 
@@ -74,20 +74,20 @@ void listlinprevcobro::chargeBudgetLines() {
     if (mfilt_idregistroiva != "")
         cadwhere = " AND idregistroiva = "+mfilt_idregistroiva;
     if (mfilt_finprevcobro != "")
-	cadwhere += " AND fcobroprevcobro >= '"+mfilt_finprevcobro+"'";
-   if ( mfilt_codigocuentaprevcobro != "")
-	cadwhere += " AND idcuenta = id_cuenta('"+mfilt_codigocuentaprevcobro+"')";
-   if ( mfilt_tipoprevcobro != "")
-	cadwhere += " AND tipoprevcobro = '"+mfilt_tipoprevcobro+"'";
-   if (mfilt_procesado == "PROCESADO")
-	cadwhere += " AND idasiento IS NOT NULL ";
-   if (mfilt_procesado == "NO PROCESADO")
-	cadwhere += " AND idasiento IS NULL ";
+        cadwhere += " AND fcobroprevcobro >= '"+mfilt_finprevcobro+"'";
+    if ( mfilt_codigocuentaprevcobro != "")
+        cadwhere += " AND idcuenta = id_cuenta('"+mfilt_codigocuentaprevcobro+"')";
+    if ( mfilt_tipoprevcobro != "")
+        cadwhere += " AND tipoprevcobro = '"+mfilt_tipoprevcobro+"'";
+    if (mfilt_procesado == "PROCESADO")
+        cadwhere += " AND idasiento IS NOT NULL ";
+    if (mfilt_procesado == "NO PROCESADO")
+        cadwhere += " AND idasiento IS NULL ";
 
     cursor2 * cur= conexionbase->cargacursor("SELECT * FROM prevcobro "
-	" LEFT JOIN cuenta ON cuenta.idcuenta=prevcobro.idcuenta "
-	" LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
-	" WHERE 1=1 "+ cadwhere+ " ORDER BY fcobroprevcobro ");
+                   " LEFT JOIN cuenta ON cuenta.idcuenta=prevcobro.idcuenta "
+                   " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
+                   " WHERE 1=1 "+ cadwhere+ " ORDER BY fcobroprevcobro ");
 
     int i=0;
     while (!cur->eof())   {
@@ -106,9 +106,9 @@ void listlinprevcobro::chargeBudgetLines() {
                                              cur->valor("docprevcobro"),
                                              cur->valor("codigo"),
                                              cur->valor("descripcion"),
-						cur->valor("idctacliente"),
-						cur->valor("codigoctacliente"),
-						cur->valor("nomctacliente")
+                                             cur->valor("idctacliente"),
+                                             cur->valor("codigoctacliente"),
+                                             cur->valor("nomctacliente")
                                             );
         m_lista.append(lin);
         i++;
@@ -120,7 +120,7 @@ void listlinprevcobro::chargeBudgetLines() {
 
 
 void listlinprevcobro::guardalistlinprevcobro() {
-    fprintf(stderr,"guardalistlinprevcobro()\n");
+    _depura("guardalistlinprevcobro()");
     linprevcobro *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
@@ -152,3 +152,25 @@ void listlinprevcobro::borralinprevcobro(int pos) {
     m_lista.remove(pos);
     pintalistlinprevcobro();
 }// end borralinprevcobro
+
+
+Fixed listlinprevcobro::totalCobro() {
+    linprevcobro *linea;
+    Fixed tcobro("0");
+    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+        if (linea->tipoprevcobro() == "t")
+            tcobro = tcobro + Fixed(linea->cantidadprevcobro());
+    }// end for
+    return tcobro;
+}// end totalCobro
+
+Fixed listlinprevcobro::totalPago() {
+    linprevcobro *linea;
+    Fixed tpago("0");
+    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+        if (linea->tipoprevcobro() == "f")
+            tpago = tpago + Fixed(linea->cantidadprevcobro());
+    }// end for
+    return tpago;
+}// end totalPago
+

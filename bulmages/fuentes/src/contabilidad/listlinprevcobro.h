@@ -25,27 +25,29 @@ public:
     empresa *empresaactual;
     postgresiface2 *conexionbase;
 
-/// Opciones para filtrado y otros.
+    /// Opciones para filtrado y otros.
 protected:
-        QString mdb_idregistroiva;
-	QString mfilt_idregistroiva;
-	QString mfilt_tipoprevcobro;
-	QString mfilt_codigocuentaprevcobro;
-	QString mfilt_finprevcobro;
-	QString mfilt_ffiprevcobro;
-	QString mfilt_procesado;
+    QString mdb_idregistroiva;
+    QString mfilt_idregistroiva;
+    QString mfilt_tipoprevcobro;
+    QString mfilt_codigocuentaprevcobro;
+    QString mfilt_finprevcobro;
+    QString mfilt_ffiprevcobro;
+    QString mfilt_procesado;
 protected:
     QPtrList<linprevcobro> m_lista;
 public:
 
+    Fixed totalCobro();
+    Fixed totalPago();
     listlinprevcobro(empresa *comp);
     listlinprevcobro();
     void inicializaVariables();
     void setcompany(empresa *c) {
-       fprintf(stderr,"listlinprevcobro setCompany\n");
-       empresaactual=c;
-	conexionbase = c->bdempresa();
-       fprintf(stderr,"listlinprevcobro  fin de setCompany\n");
+        fprintf(stderr,"listlinprevcobro setCompany\n");
+        empresaactual=c;
+        conexionbase = c->bdempresa();
+        fprintf(stderr,"listlinprevcobro  fin de setCompany\n");
     };
     virtual ~listlinprevcobro();
     void guardalistlinprevcobro();
@@ -67,7 +69,7 @@ public:
             linea->setidregistroiva(mdb_idregistroiva);
             i++;
         }// end for
-    };    
+    };
 };
 
 #endif

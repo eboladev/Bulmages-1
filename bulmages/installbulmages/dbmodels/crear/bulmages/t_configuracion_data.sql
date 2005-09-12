@@ -27,4 +27,5 @@ INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (22, 'CuentasI
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (23, 'CuentasGastos', '70');
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (24, 'CuentasDerechos', '43;3');
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (25, 'CuentasObligaciones', '40;41');
+INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (26, 'Pago', 'Pago');
 

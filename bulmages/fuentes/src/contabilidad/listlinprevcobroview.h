@@ -26,8 +26,6 @@
 class listlinprevcobroview : public QTable , public listlinprevcobro {
     Q_OBJECT
 public:
-
-
     listlinprevcobroview(QWidget *parent=0, const char *name=0);
     ~listlinprevcobroview();
     virtual void pintalistlinprevcobro();
@@ -38,7 +36,6 @@ public:
     void arreglaPosicion(int, int);
     void presentacionFactura();
     void presentacionListado();
-
 
 private:
     virtual void pintalistlinprevcobro(linprevcobro *, int);

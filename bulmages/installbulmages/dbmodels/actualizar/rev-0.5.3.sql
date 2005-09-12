@@ -62,12 +62,46 @@ CREATE TRIGGER restriccionesborradoasientotrigger
    EXECUTE PROCEDURE tr_borradoasiento();
 
 
-ALTER TABLE prevcobro ALTER COLUMN tipoprevcobro SET NOT NULL;
-ALTER TABLE prevcobro ALTER COLUMN idregistroiva DROP NOT NULL;
 
-ALTER TABLE prevcobro ADD COLUMN idctacliente integer REFERENCES cuenta(idcuenta);
-
+--
+-- Agregamos el campo fractemitida que indica si es una factura emitida o recibida
+--
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''idctacliente'';
+	IF NOT FOUND THEN
+		UPDATE prevcobro SET tipoprevcobro = TRUE WHERE tipoprevcobro IS NULL;
+		ALTER TABLE prevcobro ALTER COLUMN tipoprevcobro SET NOT NULL;
+		ALTER TABLE prevcobro ALTER COLUMN idregistroiva DROP NOT NULL;
+		ALTER TABLE prevcobro ADD COLUMN idctacliente integer REFERENCES cuenta(idcuenta);
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
 \echo "Quitmaos la restricción que vincula gestión de cobros y pagos con facturas"
+
+--
+-- Agregamos el campo fractemitida que indica si es una factura emitida o recibida
+--
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM configuracion WHERE nombre=''Pago'';
+	IF NOT FOUND THEN
+		INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (26, ''Pago'', ''Pago'');  
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregada la fila en la configuraci� para Asientos de Pago"
+
 
 --
 -- Agregamos nuevos parametros de configuraci�.

@@ -67,54 +67,57 @@ CREATE TABLE prevcobro (
 cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) : cobropagodlg(parent, name) {
     conexionbase = emp->bdempresa();
     empresaactual = emp;
-//listlinprevcobroview1
+
     numdigitos = emp->numdigitosempresa();
     m_listprevcobro->setcompany(empresaactual);
 
     m_listprevcobro->chargeBudgetLines();
     m_listprevcobro->pintalistlinprevcobro();
 
-m_cuenta->setempresa(emp);
-
+    m_cuenta->setempresa(emp);
+    s_recalculaSaldo();
 }// end cobropagoview
 
 
 cobropagoview::~cobropagoview() {}
 
 
-
-
-
-
 /**
   * \brief SLOT que responde a la pulsacion del botón de actualizar
   */
 void cobropagoview::s_actualizar() {
-	fprintf(stderr,"actualizar \n");
+    fprintf(stderr,"actualizar \n");
 
-	m_listprevcobro->s_setfinprevcobro(m_firstDate->text());
-	m_listprevcobro->s_setffiprevcobro(m_lastDate->text());
+    m_listprevcobro->s_setfinprevcobro(m_firstDate->text());
+    m_listprevcobro->s_setffiprevcobro(m_lastDate->text());
 
-	if (m_tipoprevcobro->currentText() == "COBROS")
-		m_listprevcobro->s_settipoprevcobro("t");
+    if (m_tipoprevcobro->currentText() == "COBROS")
+        m_listprevcobro->s_settipoprevcobro("t");
 
-	if (m_tipoprevcobro->currentText() == "PAGOS")
-		m_listprevcobro->s_settipoprevcobro("f");
+    if (m_tipoprevcobro->currentText() == "PAGOS")
+        m_listprevcobro->s_settipoprevcobro("f");
 
-	if (m_tipoprevcobro->currentText() == "TODO")
-		m_listprevcobro->s_settipoprevcobro("");
-	m_listprevcobro->s_setprocesado(m_procesado->currentText());
+    if (m_tipoprevcobro->currentText() == "TODO")
+        m_listprevcobro->s_settipoprevcobro("");
+    m_listprevcobro->s_setprocesado(m_procesado->currentText());
 
     m_listprevcobro->chargeBudgetLines();
     m_listprevcobro->pintalistlinprevcobro();
-
+    s_recalculaSaldo();
 }// end s_actualizar
 
 
-
-
-
 void cobropagoview::s_guardar() {
-	m_listprevcobro->guardalistlinprevcobro();
-}
+    m_listprevcobro->guardalistlinprevcobro();
+}// end s_guardar
+
+
+void cobropagoview::s_recalculaSaldo() {
+    _depura("s_recalculaSaldo()");
+    m_totalCobros->setText(m_listprevcobro->totalCobro().toQString());
+    m_totalPagos->setText(m_listprevcobro->totalPago().toQString());
+}// end s_recalculaSaldo
+
+
+
 
