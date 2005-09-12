@@ -617,7 +617,7 @@ void intapunts3view::boton_cerrarasiento() {
     guardaborrador(rowactual);
     calculadescuadre();
     if (( descuadre->text() != "0.00") && ( descuadre->text() != "-0.00")) {
-        eleccion = QMessageBox::information( 0, "Asiento descuadrado, no se puede cerrar", "El asiento no puede guardarse, ¿desea dejarlo abierto ?");
+        eleccion = QMessageBox::information( 0, "Asiento descuadrado, no se puede cerrar", "No se pueden cerrar asientos descuadrados.");
         return;
     }// end if
 
