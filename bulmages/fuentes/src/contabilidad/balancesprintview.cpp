@@ -29,13 +29,12 @@
 #endif
 
 balancesprintview::balancesprintview(empresa *emp,QWidget *parent, const char *name ) : balancesprintdlg(parent,name) {
-   empresaactual = emp;
-   conexionbase = emp->bdempresa();
-   fichero = NULL;
+    empresaactual = emp;
+    conexionbase = emp->bdempresa();
+    fichero = NULL;
 }// end balancesprintview
 
-balancesprintview::~balancesprintview(){
-}// end ~balancesprintview
+balancesprintview::~balancesprintview() {}// end ~balancesprintview
 
 
 
@@ -44,69 +43,66 @@ balancesprintview::~balancesprintview(){
  * pasar a hacer la impresión.                                                   *
  *********************************************************************************/
 void balancesprintview::accept() {
-   char *args[]={"balance.txt","balance.txt",NULL};
-   if (fichero != NULL) {
-      args[0]= fichero;
-      args[1]= fichero;
-   }// end if
-   string cad;
-   string fechainicial = fechain->text().ascii();
-   string fechafinal = fechafin->text().ascii();
-   
-   FILE *mifile;
-   mifile = fopen(args[0],"wt");
-   if (mifile != NULL) {
-      string query1 = "SELECT * FROM compbalance WHERE idbalance = "+idbalance+" ORDER BY orden";
-       conexionbase->begin();
-       cursor2 *cursor = conexionbase->cargacursor(query1.c_str(), "compbalancequery9");
-       conexionbase->commit();
-       int numregistros = cursor->numregistros();
-       progreso->reset();
-       progreso->setTotalSteps(numregistros);
-       progreso->setProgress(1);
-       while (!cursor->eof()) {
-                QString query = "SELECT saldototalmpatrimonial("+cursor->valor("idmpatrimonial")+") AS saldot";
-                conexionbase->begin();
-                cursor2 *mycursor = conexionbase->cargacursor(query, "compbalancequery");
-                conexionbase->commit();
-                int i=0;
-		double valor;
-                while (!mycursor->eof()) {
-                   int orden = atoi (cursor->valor("tabulacion").ascii());
-                   QString texto = "";
-                   for (int j=0; j<orden; j++)
-                      texto += "   ";
-                   texto += cursor->valor("concepto");
-		   valor = mycursor->valor("saldot").toDouble();
-//		   if (valor > 0.001 || valor < -0.001)
-                   	fprintf(mifile, "%-60.60s %10.2f\n", texto.ascii(), valor);
-                   i++;
-                   mycursor->siguienteregistro();
-                }// end while
-                delete mycursor;
-                // Actualizamos la barra de progreso
-                progreso->setProgress(progreso->progress()+1);
-                cursor->siguienteregistro();
-       }// end while
-       delete cursor;
-       fclose(mifile);
-   }// end if
+    QString arch = confpr->valor(CONF_DIR_USER)+"/balance.txt";
 
-   QString cadena = confpr->valor(CONF_EDITOR)+" balances.txt &";
-   system(cadena.ascii());
+    string cad;
+    string fechainicial = fechain->text().ascii();
+    string fechafinal = fechafin->text().ascii();
+
+    FILE *mifile;
+    mifile = fopen(arch.ascii(),"wt");
+    if (mifile != NULL) {
+        string query1 = "SELECT * FROM compbalance WHERE idbalance = "+idbalance+" ORDER BY orden";
+        conexionbase->begin();
+        cursor2 *cursor = conexionbase->cargacursor(query1.c_str(), "compbalancequery9");
+        conexionbase->commit();
+        int numregistros = cursor->numregistros();
+        progreso->reset();
+        progreso->setTotalSteps(numregistros);
+        progreso->setProgress(1);
+        while (!cursor->eof()) {
+            QString query = "SELECT saldototalmpatrimonial("+cursor->valor("idmpatrimonial")+") AS saldot";
+            conexionbase->begin();
+            cursor2 *mycursor = conexionbase->cargacursor(query, "compbalancequery");
+            conexionbase->commit();
+            int i=0;
+            double valor;
+            while (!mycursor->eof()) {
+                int orden = atoi (cursor->valor("tabulacion").ascii());
+                QString texto = "";
+                for (int j=0; j<orden; j++)
+                    texto += "   ";
+                texto += cursor->valor("concepto");
+                valor = mycursor->valor("saldot").toDouble();
+                //		   if (valor > 0.001 || valor < -0.001)
+                fprintf(mifile, "%-60.60s %10.2f\n", texto.ascii(), valor);
+                i++;
+                mycursor->siguienteregistro();
+            }// end while
+            delete mycursor;
+            // Actualizamos la barra de progreso
+            progreso->setProgress(progreso->progress()+1);
+            cursor->siguienteregistro();
+        }// end while
+        delete cursor;
+        fclose(mifile);
+    }// end if
+
+    QString cadena = confpr->valor(CONF_EDITOR)+" "+confpr->valor(CONF_DIR_USER)+"/balance.txt &";
+    system(cadena.ascii());
 }// end accept
 
 
 void balancesprintview::setidbalance(QString id) {
-   idbalance = id;
-   QString query ="SELECT * FROM balance WHERE idbalance="+idbalance;
-   conexionbase->begin();
-   cursor2 *cur = conexionbase->cargacursor(query, "micurs");
-   conexionbase->commit();
-   if (!cur->eof()) {
-      m_nomBalance->setText(cur->valor("nombrebalance"));
-   }// end if
-   delete cur;
+    idbalance = id;
+    QString query ="SELECT * FROM balance WHERE idbalance="+idbalance;
+    conexionbase->begin();
+    cursor2 *cur = conexionbase->cargacursor(query, "micurs");
+    conexionbase->commit();
+    if (!cur->eof()) {
+        m_nomBalance->setText(cur->valor("nombrebalance"));
+    }// end if
+    delete cur;
 }// end setidbalance
 
 

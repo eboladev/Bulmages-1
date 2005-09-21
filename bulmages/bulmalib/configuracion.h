@@ -168,6 +168,7 @@
 #define CONF_DIR_IMG_PERSONAL       426
 
 
+
 /// CONF_NUM_AUT_*		Determina si se utilizarán numeradores automaticos para presupuestos, albaranes y facturas  Inicialmente vale ""
 #define CONF_NUM_AUT_PRESUP 500
 #define CONF_NUM_AUT_ALBARAN 501

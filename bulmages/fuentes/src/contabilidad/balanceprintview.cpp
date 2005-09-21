@@ -125,13 +125,14 @@ void BalancePrintView::presentar(char *tipus) {
     bool superiores = checksuperiores->isChecked();
 
     if (txt | html | kugar) {
-        char *argstxt[]={"balance.txt","balance.txt",NULL}; //presentación txt normal
-        char *argshtml[]={"balance.html","balance.html",NULL}; //presentación html normal
-        char *argskugar[]={"balance.kud","balance.kud",NULL}; // presentación kugar normal
+	QString archivo = confpr->valor(CONF_DIR_USER)+"/balance.txt";
+	QString archivokugar = confpr->valor(CONF_DIR_USER)+"/balance.kud";
+	QString archivohtml = confpr->valor(CONF_DIR_USER)+"/balance.html";
+	fprintf(stderr,"%s\n",archivo.ascii());
 
-        ofstream fitxersortidakugar(argskugar[0]);   // creamos los ficheros de salida
-        ofstream fitxersortidatxt(argstxt[0]);
-        ofstream fitxersortidahtml(argshtml[0]);
+        ofstream fitxersortidakugar(archivokugar.ascii());   // creamos los ficheros de salida
+        ofstream fitxersortidatxt(archivo.ascii());
+        ofstream fitxersortidahtml(archivohtml.ascii());
 
         if (!fitxersortidatxt)
             txt=0;    // verifiquem que s'hagin creat correctament els fitxers
@@ -339,36 +340,19 @@ void BalancePrintView::presentar(char *tipus) {
             delete arbol;
             conexionbase->commit();
 
+            fitxersortidatxt.close();
             // Dependiendo del formato de salida ejecutaremos el programa correspondiente
             if (txt) { //presentacion txt normal
-                fitxersortidatxt.close();
-                if ((pid=fork()) < 0) {
-                    perror ("Fork failed");
-                    exit(errno);
-                }
-                if (!pid) {
-                    error = execvp(confpr->valor(CONF_EDITOR).ascii(),argstxt);
-                }
-            }
+		QString cadena = confpr->valor(CONF_EDITOR)+" "+confpr->valor(CONF_DIR_USER)+"/balance.txt";
+		system (cadena.ascii());
+            }// end if
             if (html) { //presentacion html normal
-                fitxersortidahtml.close();
-                if ((pid=fork()) < 0) {
-                    perror ("Fork failed");
-                    exit(errno);
-                }
-                if (!pid) {
-                    error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),argshtml);
-                }
+		QString cadena = confpr->valor(CONF_NAVEGADOR)+" "+confpr->valor(CONF_DIR_USER)+"/balance.txt";
+		system (cadena.ascii());
             }
             if (kugar) { //presentacion kugar normal
-                fitxersortidakugar.close();
-                if ((pid=fork()) < 0) {
-                    perror ("Fork failed");
-                    exit(errno);
-                }
-                if (!pid) {
-                    error = execvp("kugar",argskugar);
-                }
+		QString cadena = "kugar "+confpr->valor(CONF_DIR_USER)+"/balance.txt";
+		system (cadena.ascii());
             }
 
         }

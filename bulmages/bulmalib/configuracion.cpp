@@ -59,7 +59,6 @@ configuracion::configuracion() {
 	abre->s_reloadButton();
 	delete abre;
    }// end if
- //  	system ("mkdir ~/.bulmages");
 
 
 #ifndef WIN32
