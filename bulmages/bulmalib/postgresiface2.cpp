@@ -117,7 +117,7 @@ QString cursor2::valor(int posicion, int registro) {
     if (registro == -1) {
         registro = registroactual;
     }// end if
-    return (QString::fromLocal8Bit(PQgetvalue(result, registro, posicion)));
+    return (QString::fromLatin1(PQgetvalue(result, registro, posicion)));
 }// end valor
 
 
@@ -135,7 +135,7 @@ QString cursor2::valor(QString campo, int registro) {
     while (i<numcampos() && campo != nomcampo(i) ) {
         i++;
     }// end while
-    return(QString::fromLocal8Bit(PQgetvalue(result, registro, i)));
+    return(QString::fromLatin1(PQgetvalue(result, registro, i)));
 }// end valor
 
 
@@ -276,7 +276,7 @@ int postgresiface2::formatofecha() {
     PQclear(res);
 
     /// Establecemos la codificación por defecto a UNICODE.
-    query = "SET client_encoding = 'UNICODE'";
+    query = "SET client_encoding = 'LATIN1'";
     res = PQexec(conn, query.ascii());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         _depura( "Cambio del formato de Codificación");
@@ -358,7 +358,7 @@ int postgresiface2::ejecuta(QString Query) {
     if (confpr->valor(CONF_PRIVILEGIOS_USUARIO) != "1" && (Query.left(6)=="DELETE" || Query.left(6)=="UPDATE" || Query.left(6)=="INSERT"))
         return (42501);
     //Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard
-    result = PQexec(conn,  (const char *) Query.local8Bit());
+    result = PQexec(conn,  (const char *) Query.latin1());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
         _depura("SQL command failed: "+Query);
         fprintf(stderr,"%s\n", PQerrorMessage(conn));

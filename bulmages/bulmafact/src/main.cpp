@@ -24,7 +24,7 @@ int main( int argc, char ** argv ) {
     Splash *splashScr = new Splash();
     delete splashScr;
 
-    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
+//    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("utf8"));
 
     theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
 
