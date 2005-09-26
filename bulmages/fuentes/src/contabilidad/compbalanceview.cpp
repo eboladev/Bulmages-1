@@ -1,8 +1,8 @@
 /***************************************************************************
                           compbalanceview.cpp  -  description
                              -------------------
-    begin                : sáb sep 13 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    begin                : sï¿½ sep 13 2003
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -124,6 +124,7 @@ void compbalanceview::borralinea() {
    }// end if
 }// end borralinea
 
+
 void compbalanceview::agregalinea() {
    QString elorden;
    int row = listado->currentRow();
@@ -171,17 +172,28 @@ void compbalanceview::agregalinea() {
                signo = "TRUE";
             }// end if
 
+
+            QString tipocompmasap;
+            if (componente[0] == '>') {
+               tipocompmasap = "1";
+               componente = componente.mid(1,componente.length());
+            } else if (componente[0] == '<') {
+               tipocompmasap = "2";
+               componente = componente.mid(1,componente.length());
+            } else {
+               tipocompmasap = "0";
+            }// end if
+
             // Comprobamos si se trata de una masa patrimonial o de una cuenta.
             QString idmpatrimonial;
             QString codcuenta;
             if (componente[0] == 'M') {
                idmpatrimonial =  componente.mid(1,componente.length());
-               query.sprintf("INSERT INTO compmasap(idmpatrimonial, masaperteneciente, signo) VALUES (%s,%s,%s)",idmpatrimonial.ascii(), idmpatrimonialnueva.ascii(), signo.ascii());
+               query.sprintf("INSERT INTO compmasap(idmpatrimonial, masaperteneciente, signo, tipocompmasap) VALUES (%s,%s,%s,%s)",idmpatrimonial.ascii(), idmpatrimonialnueva.ascii(), signo.ascii(), tipocompmasap.ascii());
             } else {
                codcuenta = componente;
-               query.sprintf("INSERT INTO compmasap(idcuenta, masaperteneciente, signo) VALUES (id_cuenta('%s'),%s,%s)",codcuenta.ascii(), idmpatrimonialnueva.ascii(), signo.ascii());
+               query.sprintf("INSERT INTO compmasap(idcuenta, masaperteneciente, signo, tipocompmasap) VALUES (id_cuenta('%s'),%s,%s, %s)",codcuenta.ascii(), idmpatrimonialnueva.ascii(), signo.ascii(), tipocompmasap.ascii());
             }// end if
-            fprintf(stderr,"%s\n",query.ascii());
             conexionbase->ejecuta(query);
             iant = i;
          }// end if
@@ -278,18 +290,23 @@ void compbalanceview::listadopulsado(int row, int col, int a, const QPoint &mous
          conexionbase->commit();
          while (!curs1->eof()) {
             if (curs1->valor("signo") == "t") {
-               if (curs1->valor("codigo") == "") {
-                  formula1 += " + M"+curs1->valor("idmpatrimonial");
-               } else {
-                  formula1 += " + "+curs1->valor("codigo");
-               }// end if               
+			formula1 += " +";
             } else {
-               if (curs1->valor("codigo") == "") {
-                  formula1 += " - M"+curs1->valor("idmpatrimonial");
-               } else {
-                  formula1 += " - "+curs1->valor("codigo");
-               }// end if
+			formula1 += " -";
             }// end if
+
+	
+            if (curs1->valor("tipocompmasap") == "1") {
+			formula1 += ">";
+            } else if (curs1->valor("tipocompmasap") == "2") {
+			formula1 += "<";
+            }// end if
+
+               if (curs1->valor("codigo") == "") {
+                  formula1 += " M"+curs1->valor("idmpatrimonial");
+               } else {
+                  formula1 += curs1->valor("codigo");
+               }// end if
             curs1->siguienteregistro();
          }// end while
          delete curs1;
@@ -346,9 +363,9 @@ void compbalanceview::modificalinea() {
       idmpatrimonial="NULL";
    }// end if
    conexionbase->begin();
-      QString comentario = concepto->text();    // El concepto de la línea
-      QString formula1 = formula->text();       // La fórmula de la linea de balance
-      QString componente;                       // Esta variable es utilizada para desglosar la fórmula
+      QString comentario = concepto->text();    // El concepto de la lï¿½ea
+      QString formula1 = formula->text();       // La fï¿½mula de la linea de balance
+      QString componente;                       // Esta variable es utilizada para desglosar la fï¿½mula
 
       // es una formula, hay que insertar una masa patrimonial
       query.sprintf("UPDATE mpatrimonial SET idbalance=%s WHERE idmpatrimonial=%s", idbalance.ascii(), idmpatrimonial.ascii());
@@ -379,17 +396,30 @@ void compbalanceview::modificalinea() {
                signo = "TRUE";
             }// end if
 
+
+            QString tipocompmasap;
+            if (componente[0] == '>') {
+               tipocompmasap = "1";
+               componente = componente.mid(1,componente.length());
+            } else if (componente[0] == '<') {
+               tipocompmasap = "2";
+               componente = componente.mid(1,componente.length());
+            } else {
+               tipocompmasap = "0";
+            }// end if
+
             // Comprobamos si se trata de una masa patrimonial o de una cuenta.
             QString idmpatrimonialcomp;
             QString codcuenta;
+
             if (componente[0] == 'M') {
-               idmpatrimonialcomp =  componente.mid(1,componente.length());
-               query.sprintf("INSERT INTO compmasap(idmpatrimonial, masaperteneciente, signo) VALUES (%s,%s,%s)",idmpatrimonialcomp.ascii(), idmpatrimonial.ascii(), signo.ascii());
+               idmpatrimonial =  componente.mid(1,componente.length());
+               query.sprintf("INSERT INTO compmasap(idmpatrimonial, masaperteneciente, signo, tipocompmasap) VALUES (%s,%s,%s,%s)",idmpatrimonial.ascii(), idmpatrimonial.ascii(), signo.ascii(), tipocompmasap.ascii());
             } else {
                codcuenta = componente;
-               query.sprintf("INSERT INTO compmasap(idcuenta, masaperteneciente, signo) VALUES (id_cuenta('%s'),%s,%s)",codcuenta.ascii(), idmpatrimonial.ascii(), signo.ascii());
+               query.sprintf("INSERT INTO compmasap(idcuenta, masaperteneciente, signo, tipocompmasap) VALUES (id_cuenta('%s'),%s,%s, %s)",codcuenta.ascii(), idmpatrimonial.ascii(), signo.ascii(), tipocompmasap.ascii());
             }// end if
-            fprintf(stderr,"%s\n",query.ascii());
+
             conexionbase->ejecuta(query);
             iant = i;
          }// end if

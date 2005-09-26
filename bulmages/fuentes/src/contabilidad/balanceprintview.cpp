@@ -105,7 +105,7 @@ void BalancePrintView::accept() {
  **************************************************************/
 void BalancePrintView::presentar(char *tipus) {
 #ifndef WIN32
-    int kugar, txt, html, txtapren, htmlapren, error, pid;
+    int kugar, txt, html, txtapren, htmlapren;
     double tsaldoant, tdebe, thaber, tsaldo, debeej, haberej, saldoej;
     QString query;
 

@@ -21,6 +21,7 @@
 #include "funcaux.h"
 #include "calendario.h"
 #include "empresa.h"
+#include "fixed.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -46,36 +47,38 @@ void balancesprintview::accept() {
     QString arch = confpr->valor(CONF_DIR_USER)+"/balance.txt";
 
     string cad;
-    string fechainicial = fechain->text().ascii();
-    string fechafinal = fechafin->text().ascii();
+    QString fechainicial = fechain->text();
+    QString fechafinal = fechafin->text();
 
     FILE *mifile;
     mifile = fopen(arch.ascii(),"wt");
     if (mifile != NULL) {
         string query1 = "SELECT * FROM compbalance WHERE idbalance = "+idbalance+" ORDER BY orden";
-        conexionbase->begin();
-        cursor2 *cursor = conexionbase->cargacursor(query1.c_str(), "compbalancequery9");
-        conexionbase->commit();
+        cursor2 *cursor = conexionbase->cargacursor(query1.c_str());
         int numregistros = cursor->numregistros();
         progreso->reset();
         progreso->setTotalSteps(numregistros);
         progreso->setProgress(1);
         while (!cursor->eof()) {
-            QString query = "SELECT saldototalmpatrimonial("+cursor->valor("idmpatrimonial")+") AS saldot";
+            QString query = "SELECT saldompatrimonial("+cursor->valor("idmpatrimonial")+",'"+fechainicial+"','"+fechafinal+"') AS saldot";
             conexionbase->begin();
-            cursor2 *mycursor = conexionbase->cargacursor(query, "compbalancequery");
+            cursor2 *mycursor = conexionbase->cargacursor(query);
             conexionbase->commit();
             int i=0;
-            double valor;
+            Fixed valor("0");
             while (!mycursor->eof()) {
-                int orden = atoi (cursor->valor("tabulacion").ascii());
+                int orden = cursor->valor("tabulacion").toInt();
                 QString texto = "";
                 for (int j=0; j<orden; j++)
                     texto += "   ";
                 texto += cursor->valor("concepto");
-                valor = mycursor->valor("saldot").toDouble();
-                //		   if (valor > 0.001 || valor < -0.001)
-                fprintf(mifile, "%-60.60s %10.2f\n", texto.ascii(), valor);
+                valor = Fixed(mycursor->valor("saldot"));
+		if (valor != Fixed("0") || orden <=1) 
+			if (valor != Fixed("0")) {
+                		fprintf(mifile, "%-60.60s %10.10s\n", texto.ascii(), valor.toQString().ascii());
+			} else {
+                		fprintf(mifile, "%-60.60s\n", texto.ascii());
+			}// end if
                 i++;
                 mycursor->siguienteregistro();
             }// end while
@@ -96,9 +99,7 @@ void balancesprintview::accept() {
 void balancesprintview::setidbalance(QString id) {
     idbalance = id;
     QString query ="SELECT * FROM balance WHERE idbalance="+idbalance;
-    conexionbase->begin();
     cursor2 *cur = conexionbase->cargacursor(query, "micurs");
-    conexionbase->commit();
     if (!cur->eof()) {
         m_nomBalance->setText(cur->valor("nombrebalance"));
     }// end if

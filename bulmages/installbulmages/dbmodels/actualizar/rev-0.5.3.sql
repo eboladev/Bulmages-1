@@ -84,6 +84,29 @@ SELECT aux();
 DROP FUNCTION aux() CASCADE;
 \echo "Quitmaos la restricción que vincula gestión de cobros y pagos con facturas"
 
+
+
+--
+-- Alteramos la tabla compmasap para que permita hacer presentacions sólo si el saldo es mayor o menor que cero
+--
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''tipocompmasap'';
+	IF NOT FOUND THEN
+		ALTER TABLE compmasap ADD COLUMN tipocompmasap integer;
+ 		ALTER TABLE compmasap ALTER COLUMN tipocompmasap SET DEFAULT 0;
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregamos tipocompmasap a compmasap"
+
+
+
 --
 -- Agregamos el campo fractemitida que indica si es una factura emitida o recibida
 --
@@ -101,6 +124,109 @@ END;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
 \echo "Agregada la fila en la configuraci� para Asientos de Pago"
+
+
+CREATE OR REPLACE FUNCTION saldompatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
+    AS '
+DECLARE
+    identmpatrimonial ALIAS FOR $1;
+    fechain ALIAS FOR $2;
+    fechafin ALIAS FOR $3;
+    aptsum RECORD;
+    aptrest RECORD;
+   rsaldo RECORD;
+   rsaldo1 RECORD;
+    smpatrimonialsum RECORD;
+    smpatrimonialrest RECORD;
+    saldo NUMERIC(12,2);
+    saldoi NUMERIC(12,2);
+BEGIN
+    saldo := 0;
+    FOR rsaldo IN SELECT * FROM cuenta LEFT JOIN compmasap ON cuenta.idcuenta = compmasap.idcuenta WHERE masaperteneciente = identmpatrimonial AND compmasap.idcuenta IS NOT NULL AND signo = TRUE LOOP
+	saldoi := saldototal(rsaldo.codigo, fechain, fechafin);
+		IF (rsaldo.tipocompmasap = 0 OR (rsaldo.tipocompmasap = 1 AND saldoi > 0) OR (rsaldo.tipocompmasap = 2 AND saldoi < 0)) THEN
+           		saldo := saldo + saldoi;
+		END IF;
+    END LOOP;
+    FOR rsaldo1 IN SELECT  * FROM cuenta LEFT JOIN compmasap ON cuenta.idcuenta = compmasap.idcuenta WHERE masaperteneciente = identmpatrimonial AND compmasap.idcuenta IS NOT NULL AND signo = FALSE LOOP
+		saldoi := saldototal(rsaldo1.codigo, fechain, fechafin);
+		IF (rsaldo1.tipocompmasap = 0 OR (rsaldo1.tipocompmasap = 1 AND saldoi > 0) OR (rsaldo1.tipocompmasap = 2 AND saldoi < 0)) THEN
+         		 saldo := saldo - saldoi;
+       END IF;
+    END LOOP;
+    FOR smpatrimonialsum IN SELECT idmpatrimonial, tipocompmasap FROM compmasap WHERE masaperteneciente = identmpatrimonial AND idmpatrimonial IS NOT NULL AND signo = true LOOP
+	saldoi := saldompatrimonial (smpatrimonialsum.idmpatrimonial, fechain, fechafin);
+		IF (smpatrimonialsum.tipocompmasap = 0 OR (smpatrimonialsum.tipocompmasap = 1 AND saldoi > 0) OR (smpatrimonialsum.tipocompmasap = 2 AND saldoi < 0)) THEN
+       			 saldo := saldo + saldoi;
+		END IF;
+
+    END LOOP;
+    FOR smpatrimonialrest IN SELECT idmpatrimonial, tipocompmasap FROM compmasap WHERE masaperteneciente = identmpatrimonial AND idmpatrimonial IS NOT NULL AND signo = false LOOP
+
+	saldoi := saldompatrimonial (smpatrimonialrest.idmpatrimonial, fechain, fechafin);
+		IF (smpatrimonialrest.tipocompmasap = 0 OR (smpatrimonialrest.tipocompmasap = 1 AND saldoi > 0) OR (smpatrimonialrest.tipocompmasap = 2 AND saldoi < 0)) THEN
+       			 saldo := saldo - saldoi;
+		END IF;
+
+    END LOOP;
+    RETURN saldo;
+END;
+' LANGUAGE plpgsql;
+
+select saldompatrimonial(7,'01/01/2003','01/01/2005');
+
+
+CREATE OR REPLACE FUNCTION saldototalmpatrimonial(integer) RETURNS NUMERIC(12,2)
+    AS '
+DECLARE
+   identmpatrimonial ALIAS FOR $1;
+   saldo NUMERIC(12,2);
+   saldoi NUMERIC(12,2);
+   rsaldo RECORD;
+   rsaldo1 RECORD;
+   smpatrimonialsum RECORD;
+   smpatrimonialrest RECORD;
+BEGIN
+    saldo := 0;
+    FOR rsaldo IN SELECT  (debe-haber) AS total, tipocompmasap FROM cuenta LEFT JOIN compmasap ON cuenta.idcuenta = compmasap.idcuenta WHERE masaperteneciente = identmpatrimonial AND compmasap.idcuenta IS NOT NULL AND signo = TRUE LOOP
+       IF (rsaldo.total IS NOT NULL) THEN
+		IF (rsaldo.tipocompmasap = 0 OR (rsaldo.tipocompmasap = 1 AND rsaldo.total > 0) OR (rsaldo.tipocompmasap = 2 AND rsaldo.total < 0)) THEN
+           		saldo := saldo + rsaldo.total;
+		END IF;
+       END IF;
+    END LOOP;
+    FOR rsaldo1 IN SELECT  (debe-haber) AS total, tipocompmasap FROM cuenta LEFT JOIN compmasap ON cuenta.idcuenta = compmasap.idcuenta WHERE masaperteneciente = identmpatrimonial AND compmasap.idcuenta IS NOT NULL AND signo = FALSE LOOP
+       IF (rsaldo1.total IS NOT NULL) THEN
+		IF (rsaldo1.tipocompmasap = 0 OR (rsaldo1.tipocompmasap = 1 AND rsaldo1.total > 0) OR (rsaldo1.tipocompmasap = 2 AND rsaldo1.total < 0)) THEN
+         		 saldo := saldo - rsaldo1.total;
+		END IF;
+       END IF;
+    END LOOP;
+    FOR smpatrimonialsum IN SELECT idmpatrimonial, tipocompmasap FROM compmasap WHERE masaperteneciente = identmpatrimonial AND idmpatrimonial IS NOT NULL AND signo = true LOOP
+	saldoi := saldototalmpatrimonial (smpatrimonialsum.idmpatrimonial);
+		IF (smpatrimonialsum.tipocompmasap = 0 OR (smpatrimonialsum.tipocompmasap = 1 AND saldoi > 0) OR (smpatrimonialsum.tipocompmasap = 2 AND saldoi < 0)) THEN
+       			 saldo := saldo + saldoi;
+		END IF;
+
+    END LOOP;
+    FOR smpatrimonialrest IN SELECT idmpatrimonial, tipocompmasap FROM compmasap WHERE masaperteneciente = identmpatrimonial AND idmpatrimonial IS NOT NULL AND signo = false LOOP
+
+	saldoi := saldototalmpatrimonial (smpatrimonialrest.idmpatrimonial);
+		IF (smpatrimonialrest.tipocompmasap = 0 OR (smpatrimonialrest.tipocompmasap = 1 AND saldoi > 0) OR (smpatrimonialrest.tipocompmasap = 2 AND saldoi < 0)) THEN
+       			 saldo := saldo - saldoi;
+		END IF;
+
+    END LOOP;
+    RETURN saldo;
+END;
+' LANGUAGE plpgsql;
+
+
+
+
+
+
+
 
 
 --

@@ -1,8 +1,8 @@
 /***************************************************************************
                           balancesview.cpp  -  description
                              -------------------
-    begin                : sáb oct 18 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    begin                : sï¿½ oct 18 2003
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -70,7 +70,7 @@ void balancesview::nuevo() {
     conexionbase->begin();
     conexionbase->ejecuta(query);
     conexionbase->commit();
-    // Cogemos el identificador del balance insertado y abrimos la ventana de edición de balances.
+    // Cogemos el identificador del balance insertado y abrimos la ventana de ediciï¿½ de balances.
     query.sprintf("SELECT max(idbalance) AS idbalance FROM balance");
     conexionbase->begin();
     cursor2 *cursoraux = conexionbase->cargacursor(query, "cursor1");
@@ -87,7 +87,7 @@ void balancesview::nuevo() {
 
 
 void balancesview::borrar() {
-    // Borrar un balance es borrar tanto la entrada de balance como todas las lineas asociadas a éste.
+    // Borrar un balance es borrar tanto la entrada de balance como todas las lineas asociadas a ï¿½te.
     // Borramos primero todas las compbalance y luego la entrada en balance.
     QString idbalance = listado->text(listado->currentRow(), COL_CODIGO);
     QString query;
@@ -188,6 +188,7 @@ void balancesview::boton_exportar() {
                         fprintf(mifile,"            <saldo>%s</saldo>\n", XMLProtect(cursp6->valor("saldo")).ascii());
                         fprintf(mifile,"            <signo>%s</signo>\n", XMLProtect(cursp6->valor("signo")).ascii());
                         fprintf(mifile,"            <nombre>%s</nombre>\n", XMLProtect(cursp6->valor("nombre")).ascii());
+                        fprintf(mifile,"            <tipocompmasap>%s</tipocompmasap>\n", XMLProtect(cursp6->valor("tipocompmasap")).ascii());
                         fprintf(mifile,"         </compmasap>\n");
                         cursp6->siguienteregistro();
                     }// end while
@@ -220,7 +221,7 @@ void balancesview::boton_exportar() {
             fclose(mifile);
         }// end if
     }// end if
-    QMessageBox::warning( this,"BulmaGés", "Se ha exportado el Balance.", "OK",  "No OK", 0, 0, 1 );
+    QMessageBox::warning( this,"BulmaGï¿½", "Se ha exportado el Balance.", "OK",  "No OK", 0, 0, 1 );
 }// end boton_exportar
 
 void balancesview::boton_importar() {
@@ -229,7 +230,7 @@ void balancesview::boton_importar() {
     if (!fn.isEmpty()) {
         // Hacemos el parsing del XML
         QFile xmlFile( fn);                 // Declaramos el ficheros
-        QXmlInputSource source( &xmlFile ); // Declaramos el inputsource, con el fichero como parámetro
+        QXmlInputSource source( &xmlFile ); // Declaramos el inputsource, con el fichero como parï¿½etro
         QXmlSimpleReader reader;            // Declaramos el lector
 
         importbalance * handler = new importbalance( empresaactual );
