@@ -18,9 +18,10 @@
 #
 # La diferencia entre este script y el installbulmages es que este no hace falta que se ejecute como ROOT
 # -------------------------------------------------------------------------------------------------------
-version = "v0.5.1"
-  texto="1"
-  ptexto="--texto"
+
+version="v0.5.3"
+texto="1"
+ptexto="--texto"
 
 #Buscamos el parametro para saber si es texto o no
 if [ "$1" = "--texto" ]; then
