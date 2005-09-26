@@ -50,13 +50,20 @@ void listventanas::dclicked() {
 
 void listventanas::clicked() {
     fprintf(stderr,"listventanas::clicked()\n");
+    mapa::iterator iterador = elmapa.begin();
+    while (iterador != elmapa.end()) {
+	((QWidget*)(*iterador).second)->hide();
+        iterador++;
+    }// end while
+
     int item = m_listBox->currentItem();
     QWidget *widget = (QWidget *)elmapa[item];
     if (widget != NULL) {
 	fprintf(stderr,"El estado de la ventana es: %d, deberia ser %d\n",widget->windowState(),Qt::WindowMaximized);
 	QWidget *punt = bges->workspace()->activeWindow();
 	if (widget != punt) {
-		widget->showNormal();
+		//widget->showNormal();
+		widget->showMaximized();
 	} else {
 		widget->hide();
 	}// end if

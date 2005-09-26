@@ -7,7 +7,6 @@
 const int MAX_FIXED_PRECISION = 12;
 const int MAX_FIXED_LENGTH = 25;
 
-//typedef __int64 Fixed_numerator;
 typedef long long int Fixed_numerator;
 
 
