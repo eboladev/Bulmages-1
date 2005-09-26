@@ -422,7 +422,7 @@ CREATE TABLE compmasap (
     masaperteneciente integer,
     saldo numeric(12,2),
     signo boolean,
-    int tipocompmasap integer DEFAULT 0,
+    tipocompmasap integer DEFAULT 0,
     nombre character varying(150)
 );
 
