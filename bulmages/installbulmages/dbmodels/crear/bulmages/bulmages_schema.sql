@@ -904,7 +904,6 @@ END;
 -- TOC entry 93 (OID 1346055)
 -- Name: saldompatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
-
 CREATE OR REPLACE FUNCTION saldompatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
     AS '
 DECLARE
@@ -916,7 +915,7 @@ DECLARE
    rsaldo RECORD;
    rsaldo1 RECORD;
     smpatrimonialsum RECORD;
-    smpatrimonialres RECORD;
+    smpatrimonialrest RECORD;
     saldo NUMERIC(12,2);
     saldoi NUMERIC(12,2);
 BEGIN
@@ -954,7 +953,6 @@ END;
 
 
 
---
 -- TOC entry 94 (OID 1346056)
 -- Name: debempatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --

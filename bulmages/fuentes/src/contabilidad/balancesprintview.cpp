@@ -92,6 +92,7 @@ void balancesprintview::accept() {
     }// end if
 
     QString cadena = confpr->valor(CONF_EDITOR)+" "+confpr->valor(CONF_DIR_USER)+"/balance.txt &";
+//    fprintf(stderr,"%s\n",cadena.ascii());
     system(cadena.ascii());
 }// end accept
 

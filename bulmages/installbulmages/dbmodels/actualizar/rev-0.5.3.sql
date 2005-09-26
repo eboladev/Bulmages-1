@@ -173,7 +173,7 @@ BEGIN
 END;
 ' LANGUAGE plpgsql;
 
-select saldompatrimonial(7,'01/01/2003','01/01/2005');
+
 
 
 CREATE OR REPLACE FUNCTION saldototalmpatrimonial(integer) RETURNS NUMERIC(12,2)
