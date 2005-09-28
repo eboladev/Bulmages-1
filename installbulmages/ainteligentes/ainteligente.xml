@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<DOCUMENT>
+   <ainteligente>
+      <descripcion>Emision de Facturas por prestación de Servicios</descripcion>
+      <comentarios>(null)</comentarios>
+      <binteligente>
+         <fecha>$fechaasiento$</fecha>
+         <conceptocontable>FRA. $numfact, Num. Fact$</conceptocontable>
+         <codcuenta>$codcliente, Código de Cliente$</codcuenta>
+         <descripcionb></descripcionb>
+         <debe>$total,Total Factura$</debe>
+         <haber>0</haber>
+         <contrapartida></contrapartida>
+         <comentario></comentario>
+         <canal></canal>
+         <marcaconciliacion></marcaconciliacion>
+         <idc_coste></idc_coste>
+      </binteligente>
+      <binteligente>
+         <fecha>$fechaasiento$</fecha>
+         <conceptocontable>FRA. $numfact$</conceptocontable>
+         <codcuenta>7050001</codcuenta>
+         <descripcionb></descripcionb>
+         <debe>0</debe>
+         <haber>$total$/1.16</haber>
+         <contrapartida></contrapartida>
+         <comentario></comentario>
+         <canal></canal>
+         <marcaconciliacion></marcaconciliacion>
+         <idc_coste></idc_coste>
+      </binteligente>
+      <binteligente>
+         <fecha>$fechaasiento$</fecha>
+         <conceptocontable>FRA. $numfact$</conceptocontable>
+         <codcuenta>4770016</codcuenta>
+         <descripcionb></descripcionb>
+         <debe>0</debe>
+         <haber>$total$-$total$/1.16</haber>
+         <contrapartida></contrapartida>
+         <comentario></comentario>
+         <canal></canal>
+         <marcaconciliacion></marcaconciliacion>
+         <idc_coste></idc_coste>
+      </binteligente>
+   </ainteligente>
+</DOCUMENT>

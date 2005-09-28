@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding = "iso-8859-1"?>
+<!DOCTYPE REPORT  
+    [
+    <!ELEMENT REPORT ( ( STYLE* | INPUT* | OUTPUT* | SECTION* )+ )>
+<!-- <<<<<REPORT -->
+	<!ATTLIST REPORT
+		units	CDATA	#IMPLIED
+		name	ID	#REQUIRED
+		value	CDATA	#IMPLIED
+		posx	CDATA	#IMPLIED
+		posy	CDATA	#IMPLIED
+		sizex	CDATA	#IMPLIED
+		sizey	CDATA	#IMPLIED
+	>
+<!-- >>>>>REPORT -->
+    <!ELEMENT INPUT (INPUTFIELD+)>
+<!-- <<<<<INPUT -->
+	<!ATTLIST INPUT
+		name	ID	#REQUIRED
+		driver	CDATA	""
+	>
+<!-- >>>>>INPUT -->
+    <!ELEMENT STYLE (#PCDATA)>
+<!-- <<<<<STYLE -->
+	<!ATTLIST STYLE
+		name	ID	#REQUIRED
+		fontfamily	CDATA	""
+		fontsize	CDATA	"12"
+		fontweight	CDATA	"0"
+		fontitalic	CDATA	#IMPLIED
+		mask	CDATA	""
+		format	CDATA	""
+		halignment	CDATA	#IMPLIED
+		valignment	CDATA	#IMPLIED
+		maxlines	CDATA	"0"
+		minfontsize	CDATA	"8"
+		adjustment	CDATA	#IMPLIED
+		textcolor	CDATA	#IMPLIED
+		backcolor	CDATA	#IMPLIED
+	>
+<!-- >>>>>STYLE -->
+    <!ELEMENT OUTPUT (#PCDATA)>
+    <!ELEMENT SECTION (OBJECT*)>
+<!-- <<<<<SECTION -->
+	<!ATTLIST SECTION
+		type	CDATA	#IMPLIED
+		groupname	CDATA	""
+		pagebefore	CDATA	#IMPLIED
+		pageafter	CDATA	#IMPLIED
+		resetnpage	CDATA	#IMPLIED
+		supifblank	CDATA	#IMPLIED
+		repeatheader	CDATA	#IMPLIED
+	>
+<!-- >>>>>SECTION -->
+    <!ELEMENT OBJECT (#PCDATA)>
+<!-- <<<<<OBJECT -->
+	<!ATTLIST OBJECT
+		name	ID	#REQUIRED
+		value	CDATA	#IMPLIED
+		posx	CDATA	#IMPLIED
+		posy	CDATA	#IMPLIED
+		sizex	CDATA	#IMPLIED
+		sizey	CDATA	#IMPLIED
+		marginleft	CDATA	#IMPLIED
+		marginright	CDATA	#IMPLIED
+		margintop	CDATA	#IMPLIED
+		marginbottom	CDATA	#IMPLIED
+		unitposx	CDATA	#IMPLIED
+		unitposy	CDATA	#IMPLIED
+		unitsizex	CDATA	#IMPLIED
+		unitsizey	CDATA	#IMPLIED
+		unitmarginleft	CDATA	#IMPLIED
+		unitmarginright	CDATA	#IMPLIED
+		unitmargintop	CDATA	#IMPLIED
+		unitmarginbottom	CDATA	#IMPLIED
+		style	CDATA	""
+		borderstyle	CDATA	""
+		httplink	CDATA	""
+		visible	CDATA	#IMPLIED
+		supressed	CDATA	#IMPLIED
+		image	CDATA	#IMPLIED
+		fontfamily	CDATA	""
+		fontsize	CDATA	"12"
+		fontweight	CDATA	"0"
+		fontitalic	CDATA	#IMPLIED
+		mask	CDATA	""
+		format	CDATA	""
+		halignment	CDATA	#IMPLIED
+		valignment	CDATA	#IMPLIED
+		maxlines	CDATA	"0"
+		minfontsize	CDATA	"8"
+		adjustment	CDATA	#IMPLIED
+		textcolor	CDATA	#IMPLIED
+		backcolor	CDATA	#IMPLIED
+	>
+<!-- >>>>>OBJECT -->
+
+    <!ELEMENT INPUTFIELD (#PCDATA)>
+<!-- <<<<<INPUTFIELD -->
+	<!ATTLIST INPUTFIELD
+		name	ID	#REQUIRED
+		dataname	CDATA	""
+	>
+<!-- >>>>>INPUTFIELD -->
+
+    <!ENTITY basic-styles SYSTEM "basic-styles.xml">
+    ]
+>
+<REPORT name="lopd.rtk" title="Informe de cuentas" units="chars" 
+  sizex="80" sizey="60">
+  
+  
+  <STYLE name="header" 
+    fontfamily="Chancery I" fontsize="12" fontweight="bold" 
+    halignment="left"
+    textcolor="blue" backcolor="gray"/>
+  <STYLE name="title-text" halignment="center"
+    fontfamily="Caption" fontsize="14" fontweight="bold" fontitalic="no"
+    textcolor="red"/>
+
+  <STYLE name="normal-text" 
+    fontfamily="Courier 10 Pitch" fontsize="12" fontweight="normal" fontitalic="no"
+    textcolor="black" backcolor="white"/>
+  <STYLE name="normal-number" halignment="right"/>
+
+  <STYLE name="footer" fontfamily="Chancery I" 
+    fontsize="10" fontweight="normal" fontitalic="no"
+    textcolor="black" backcolor="gray"/>
+
+  <STYLE name="date" format="%x"/>
+  <STYLE name="currency" format="$,###,##0.00" halignment="right"/>
+  <STYLE name="currency-total" format="$,###,##0.00" halignment="right"
+    textcolor="blue" fontweight="bold"/>
+  <STYLE name="total" textcolor="blue" fontweight="bold"/>
+
+
+
+  <INPUT name="default" driver="psql" sqldriver="QPSQL7" user="tborras"
+    password="natamael" host="localhost" database="gestiong001"
+    select="SELECT *  FROM cuenta" from="cuenta" where=""
+    orderby="codigo">
+    <INPUTFIELD name="codigo" source="codigo" type="text"></INPUTFIELD>
+    <INPUTFIELD name="nomcuenta" source="nomcuenta" type="text"></INPUTFIELD>
+    <INPUTFIELD name="debe" source="debe" type="number"></INPUTFIELD>
+    <INPUTFIELD name="haber" source="haber" type="number"></INPUTFIELD>
+  </INPUT>
+
+  <SECTION name="pageheader" type="page-header" 
+    sizey="4" sizex="80" 
+    style="header">
+    <OBJECT name="titulo" fontsize="20" halignment="center" 
+      posx="0" posy="0" sizex="80" sizey="2" 
+      value="ReportTitle()" 
+      ></OBJECT>
+    <OBJECT name="header-cuenta" 
+      posx="0" posy="2" sizex="12" sizey="1" 
+      fontweight="normal"
+      value="Cuenta"
+      ></OBJECT>
+    <OBJECT name="header-descripcion" 
+      posx="14" posy="2" sizex="30" sizey="1" 
+      fontweight="Normal"
+      value="Descripción"
+      ></OBJECT>
+    <OBJECT name="header-saldo" 
+      posx="74" posy="2" sizex="5" sizey="1" 
+      value="Saldo"
+      ></OBJECT>
+</SECTION>
+  <SECTION name="details" type="details" level="1" style="normal-text"
+    sizey="1" sizex="80">
+    <OBJECT name="idasiento" value="input.ordenasiento"
+    posx="0" posy="0" sizex="12" sizey="1"
+    ></OBJECT>
+    <OBJECT name="cuenta" value="input.codigo" 
+      posx="10" posy="0" sizex="12" sizey="1" 
+      ></OBJECT>
+    <OBJECT name="descripcion" value="input.nomcuenta"
+      posx="24" posy="0" sizex="44" sizey="1" 
+      ></OBJECT>
+    <OBJECT name="debe" value="input.debe"
+      posx="60" posy="0" sizex="10" sizey="1" 
+      ></OBJECT>
+    <OBJECT name="haber" value="input.haber"
+    posx="75" posy="0" sizex="10" sizey="1"
+    ></OBJECT>
+  </SECTION>
+  <SECTION name="pagefooter" type="page-footer" style="footer"
+    sizey="2" sizex="80">
+    <OBJECT name="report-date" style="date" 
+      posx="0" sizex="10" posy="0" sizey="1"
+      value="reportdate()"
+      ></OBJECT>
+    <OBJECT name="nrecords" 
+      posx="0" sizex="10" posy="1" sizey="1"
+      aggregate="count" value="input.cuenta"
+      style="normal-number"
+      ></OBJECT>
+    <OBJECT name="text-saldototal" style="total"
+      posx="56" sizex="12" posy="0" sizey="1"
+      value="Saldo total:"
+      ></OBJECT>
+    <OBJECT name="saldo-total" 
+      posx="65" sizex="15" posy="0" sizey="1"
+      aggregate="sum" value="input.saldo"
+      style="currency-total"
+      ></OBJECT>
+    <OBJECT name="text-pagina" style="normal-number"
+      posx="68" sizex="7" posy="1" sizey="1"
+      value="Página:"
+      ></OBJECT>
+    <OBJECT name="npagina" style="normal-number" halignment="right"
+      posx="75" sizex="5" posy="1" sizey="1"
+      value="PageNumber()"
+      ></OBJECT>
+  </SECTION>
+</REPORT>
