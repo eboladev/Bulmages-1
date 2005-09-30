@@ -2,7 +2,7 @@
                           qtable1.cpp  -  description
                              -------------------
     begin                : Mon Jan 13 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -18,20 +18,59 @@
 #include <qfont.h>
 #include <qpainter.h>
 #include <qcolor.h>
+#include <qdatetime.h>
+
 
 #include "configuracion.h"
+#include "funcaux.h"
 
 QTable1::QTable1(QWidget * parent, const char * name ):QTable(parent, name ) {
-    // 	qApp->installEventFilter( this );
-    // 	connect( this, SIGNAL(found()), this, name );
-
 }
 
-void QTable1::sortColumn ( int col, bool ascending, bool wholeRows) {
-    QTable::sortColumn(col,ascending,true);
-    
-    // Para quitar el warning
-    wholeRows=FALSE;
+void QTable1::sortColumn ( int col, bool ascending, bool) {
+    insertColumns(0,3);
+    hideColumn(0);
+    hideColumn(1);
+    hideColumn(2);
+    col +=3;
+     bool oknumero = TRUE;
+     bool okfecha = TRUE;
+
+    for (int x = 0; x < numRows(); x++) {
+		QString cad = text(x,col);
+		if (cad != "") {
+			setText(x,0,cad);
+			/// Comprobamos si es un nÃºmero.
+			cad.toDouble(&oknumero);
+			if (oknumero) {
+				while (cad.length() < 10)
+					cad.insert(0,"0");
+				setText(x,1,cad);
+			}// end if
+
+			if (okfecha) {
+				if (cad[2] == '/') {
+					QDate fech = normalizafecha(cad);
+					cad = fech.toString(Qt::ISODate);
+				} else {
+					okfecha = FALSE;
+				}// end if
+				setText(x,2,cad);
+			}// end if
+		}// end if
+
+    } // end for
+
+	if (oknumero)
+  		  QTable::sortColumn(1,ascending,true);
+	else if (okfecha) 
+  		  QTable::sortColumn(2,ascending,true);	
+	else 
+  		  QTable::sortColumn(0,ascending,true);	
+
+    removeColumn(0);
+    removeColumn(0);
+    removeColumn(0);
 }
 
 QWidget *QTable1::beginEdit(int row, int col, bool type) {
