@@ -17,6 +17,8 @@
 #include "budget.h"
 #include "budgetslist.h"
 #include "cobroview.h"
+#include "albaranclienteview.h"
+
 
 #include <qmessagebox.h>
 #include <qtable.h>
@@ -32,7 +34,7 @@ using namespace std;
 
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char *name)
-: PedidoClienteBase(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp),dialogChanges(this) {
+        : PedidoClienteBase(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp),dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform3->setcompany(comp);
     m_cliente->setcompany(comp);
@@ -44,7 +46,7 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char 
     setListDescuentoPedidoCliente(m_descuentos);
     inicialize();
     comp->meteWindow(caption(),this);
-    fprintf(stderr,"Fin de la inicialización de PedidoCliente\n");
+    fprintf(stderr,"Fin de la inicializaciï¿½ de PedidoCliente\n");
 }
 
 bool PedidoClienteView::close(bool fil) {
@@ -64,6 +66,8 @@ PedidoClienteView::~PedidoClienteView() {
     companyact->sacaWindow(this);
 }
 
+/** Inicializa los elementos del formulario para que al invocarlo aparezcan los elementos inicializados
+**/
 void PedidoClienteView::inicialize() {
     m_totalBases->setReadOnly(TRUE);
     m_totalBases->setAlignment(Qt::AlignRight);
@@ -73,6 +77,11 @@ void PedidoClienteView::inicialize() {
     m_totalDiscounts->setAlignment(Qt::AlignRight);
     m_totalpedidocliente->setReadOnly(TRUE);
     m_totalpedidocliente->setAlignment(Qt::AlignRight);
+    /// Pintamos los combos para que al hacer un nuevo salga algo.
+    pintaidtrabajador("0");
+    pintaidforma_pago("0");
+    pintaidalmacen("0");
+
 }// end inicialize
 
 
@@ -109,11 +118,9 @@ void PedidoClienteView::s_verpresupuesto() {
 }// end s_verpresupuesto
 
 
-
-#include "albaranclienteview.h"
-/// Se encarga de generar un pedido a partir del presupuesto.
+/// Se encarga de generar un albaran a partir del pedido.
 void PedidoClienteView::generarAlbaran() {
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la función.
+    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funciï¿½.
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='"+mdb_refpedidocliente+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
@@ -125,7 +132,7 @@ void PedidoClienteView::generarAlbaran() {
     delete cur;
 
 
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la función.
+    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funciï¿½.
     if (QMessageBox::question(
                 this,
                 tr("Albaran Cliente Inexistente"),

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -83,7 +83,7 @@ Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(
     setlisdescpresupuesto(m_descuentos);
     inicialize();
     comp->meteWindow(caption(),this);
-    fprintf(stderr,"Fin de la inicialización de Budget\n");
+    fprintf(stderr,"Fin de la inicializaciï¿½ de Budget\n");
 }// end Budget
 
 
@@ -117,6 +117,7 @@ void Budget::inicialize() {
     // Inicializamos la forma de pago para que no se quede sin ser pintada.
     pintaidforma_pago("0");
     pintaidalmacen("0");
+    pintaidtrabajador("0");
 }// end inicialize
 
 
@@ -147,7 +148,7 @@ void   Budget::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
 
 /// Se encarga de generar un pedido a partir del presupuesto.
 void Budget::generarPedidoCliente() {
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la función.
+    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funciï¿½.
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='"+mdb_refpresupuesto+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
@@ -159,7 +160,7 @@ void Budget::generarPedidoCliente() {
     delete cur;
 
 
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la función.
+    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funciï¿½.
     if (QMessageBox::question(
                 this,
                 tr("Pedido Cliente Inexistente"),
