@@ -103,87 +103,57 @@ int listcuentasview1::inicializa( ) {
     int idcuenta;
     int padre;
     int idcuenta1;
-    cursor2 *cursoraux1, *cursoraux2;
-
     ListView1->clear();
 
-    QString query = "SELECT * FROM cuenta where padre ISNULL OR PADRE=0 ORDER BY padre";
-    cursoraux1 = conexionbase->cargacursor(query,"elquery2");
-    while (!cursoraux1->eof()) {
-        padre = atoi( cursoraux1->valor("padre").ascii());
-        idcuenta1 = atoi( cursoraux1->valor("idcuenta").ascii());
-        it =new QListViewItem(ListView1);
-        Lista1[idcuenta1]=it;
-        it->setText(ccuenta, cursoraux1->valor("codigo"));
-        it->setText(cdesccuenta,cursoraux1->valor("descripcion"));
-        idcuenta = atoi(cursoraux1->valor("idcuenta").ascii());
-        it->setText(cidcuenta,cursoraux1->valor("idcuenta"));
-        it->setText(cbloqueada,cursoraux1->valor("bloqueada"));
-        it->setText(cnodebe,cursoraux1->valor("nodebe"));
-        it->setText(cnohaber,cursoraux1->valor("nohaber"));
-        it->setText(cregularizacion,cursoraux1->valor("regularizacion"));
-        it->setText(cimputacion,cursoraux1->valor("imputacion"));
-        it->setText(cgrupo,cursoraux1->valor("idgrupo"));
-        it->setText(cdebe,cursoraux1->valor("debe"));
-        it->setText(chaber,cursoraux1->valor("haber"));
-
-        // Ponemos los iconos para que la cosa parezca mas guay.
-        if (cursoraux1->valor("tipocuenta") == "1")
-            it->setPixmap(ccuenta, QPixmap(cactivo));
-        else if (cursoraux1->valor("tipocuenta") == "2")
-            it->setPixmap(ccuenta, QPixmap(cpasivo));
-        else if (cursoraux1->valor("tipocuenta") == "3")
-            it->setPixmap(ccuenta, QPixmap(cneto));
-        else if (cursoraux1->valor("tipocuenta") == "4")
-            it->setPixmap(ccuenta, QPixmap(cingresos));
-        else if (cursoraux1->valor("tipocuenta") == "5")
-            it->setPixmap(ccuenta, QPixmap(cgastos));
-
-
-        it->setText(ctipocuenta, cursoraux1->valor("tipocuenta"));
-        it->setOpen(true);
-        cursoraux1->siguienteregistro ();
-    }// end while
-    delete cursoraux1;
-
-    query = "SELECT * FROM cuenta WHERE padre IS NOT NULL ORDER BY codigo";
-    cursoraux2 = conexionbase->cargacursor(query, "cursor2");
-    while (!cursoraux2->eof()) {
-        padre = atoi(cursoraux2->valor("padre").ascii());
-        idcuenta1 = atoi(cursoraux2->valor("idcuenta").ascii());
+    /// Cargamos y pintamos las cuentas hijas.
+	/// OJO AQUI, Hay que crear la restricción pertinente en la base de datos para hacer el campo padre NOT NULL y además hay que borrar este update que hace perder eficiencia.
+    conexionbase->ejecuta("UPDATE cuenta SET padre=0 WHERE padre IS NULL");
+    cursor2 *ctas = conexionbase->cargacursor("SELECT * FROM cuenta ORDER BY padre");
+    if (ctas->eof()) {
+        fprintf(stderr,"El query está vacia\n");
+    } else {
+        fprintf(stderr,"El query tiene registros \n");
+    }// end if
+    while (!ctas->eof()) {
         fprintf(stderr,"Cuentas de subnivel:%d\n",padre);
+        padre = ctas->valor("padre").toInt();
+        idcuenta1 = ctas->valor("idcuenta").toInt();
         if (padre != 0) {
             it = new QListViewItem(Lista1[padre]);
             Lista1[idcuenta1]=it;
-            it->setText(ccuenta,cursoraux2->valor("codigo"));
-            it->setText(cdesccuenta, cursoraux2->valor("descripcion"));
-            idcuenta = atoi(cursoraux2->valor("idcuenta").ascii());
-            it->setText(cidcuenta,cursoraux2->valor("idcuenta"));
-            it->setText(cbloqueada,cursoraux2->valor("bloqueada"));
-            it->setText(cnodebe,cursoraux2->valor("nodebe"));
-            it->setText(cnohaber,cursoraux2->valor("nohaber"));
-            it->setText(cregularizacion,cursoraux2->valor("regularizacion"));
-            it->setText(cimputacion,cursoraux2->valor("imputacion"));
-            it->setText(cgrupo,cursoraux2->valor("idgrupo"));
-            it->setText(cdebe,cursoraux2->valor("debe"));
-            it->setText(chaber,cursoraux2->valor("haber"));
-            // Ponemos los iconos para que la cosa parezca mas guay.
-            if (cursoraux2->valor("tipocuenta") == "1")
-                it->setPixmap(ccuenta, QPixmap(cactivo));
-            else if (cursoraux2->valor("tipocuenta") == "2")
-                it->setPixmap(ccuenta, QPixmap(cpasivo));
-            else if (cursoraux2->valor("tipocuenta") == "3")
-                it->setPixmap(ccuenta, QPixmap(cneto));
-            else if (cursoraux2->valor("tipocuenta") == "4")
-                it->setPixmap(ccuenta, QPixmap(cingresos));
-            else if (cursoraux2->valor("tipocuenta") == "5")
-                it->setPixmap(ccuenta, QPixmap(cgastos));
-            it->setOpen(true);
+        } else {
+            it =new QListViewItem(ListView1);
+            Lista1[idcuenta1]=it;
         }// end if
-        cursoraux2->siguienteregistro();
+        it->setText(ccuenta,ctas->valor("codigo"));
+        it->setText(cdesccuenta, ctas->valor("descripcion"));
+        idcuenta = atoi(ctas->valor("idcuenta").ascii());
+        it->setText(cidcuenta,ctas->valor("idcuenta"));
+        it->setText(cbloqueada,ctas->valor("bloqueada"));
+        it->setText(cnodebe,ctas->valor("nodebe"));
+        it->setText(cnohaber,ctas->valor("nohaber"));
+        it->setText(cregularizacion,ctas->valor("regularizacion"));
+        it->setText(cimputacion,ctas->valor("imputacion"));
+        it->setText(cgrupo,ctas->valor("idgrupo"));
+        it->setText(cdebe,ctas->valor("debe"));
+        it->setText(chaber,ctas->valor("haber"));
+        /// Ponemos los iconos.
+        if (ctas->valor("tipocuenta") == "1")
+            it->setPixmap(ccuenta, QPixmap(cactivo));
+        else if (ctas->valor("tipocuenta") == "2")
+            it->setPixmap(ccuenta, QPixmap(cpasivo));
+        else if (ctas->valor("tipocuenta") == "3")
+            it->setPixmap(ccuenta, QPixmap(cneto));
+        else if (ctas->valor("tipocuenta") == "4")
+            it->setPixmap(ccuenta, QPixmap(cingresos));
+        else if (ctas->valor("tipocuenta") == "5")
+            it->setPixmap(ccuenta, QPixmap(cgastos));
+        it->setOpen(true);
+        ctas->siguienteregistro();
     }// end while
-    delete cursoraux2;
-    // Cargamos el número de digitos de cuenta para poder hacer una introducción de números de cuenta más práctica.
+    delete ctas;
+
+    /// Cargamos el número de digitos de cuenta para poder hacer una introducción de números de cuenta más práctica.
     numdigitos = empresaactual->numdigitosempresa();
 
     inicializatabla();
@@ -199,8 +169,7 @@ int listcuentasview1::inicializa( ) {
 void listcuentasview1::inicializatabla()  {
     QString query;
     query = "SELECT * FROM cuenta ORDER BY padre";
-    cursor2 *cursoraux1 = conexionbase->cargacursor(query,"elquery");
-    //    conexionbase->commit();
+    cursor2 *cursoraux1 = conexionbase->cargacursor(query);
     tablacuentas->setNumRows(cursoraux1->numregistros());
     int i=0;
     while (!cursoraux1->eof()) {
@@ -449,7 +418,7 @@ void listcuentasview1::s_exportar() {
         bulmages2XML(filexml, IMPORT_CUENTAS);
         filexml.close();
     } else {
-        fprintf(stderr,"ERROR AL ABRIR ARCHIVO\n");
+        _depura("ERROR AL ABRIR ARCHIVO\n");
     }// end if
 }
 
@@ -460,7 +429,7 @@ void listcuentasview1::s_importar() {
         filexml.close();
         inicializa();
     } else {
-        fprintf(stderr,"ERROR AL ABRIR ARCHIVO\n");
+        _depura("ERROR AL ABRIR ARCHIVO\n");
     }// end if
 }
 

@@ -62,7 +62,7 @@ std::string Ttos(T arg) {
 
 inline void _depura(QString cad) {
 #ifdef __DEBUG__
-	fprintf(stdout,"%s\n",cad.ascii());
+	fprintf(stderr,"%s\n",cad.ascii());
 #endif
 }// end depura
 #endif

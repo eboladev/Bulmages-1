@@ -21,6 +21,7 @@ cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int fl):
     idcuenta=0;
     empresaactual = emp;
     conexionbase = emp->bdempresa();
+    numdigitos = emp->numdigitosempresa();
     inicializa();
 }// end cuentaview
 
@@ -33,12 +34,10 @@ void cuentaview::cuentanueva(QString cod) {
     codigopadre->setText(cpadre);
     /// También buscaremos el grupo y lo pondremos como toca
     QString query = "SELECT * FROM cuenta WHERE codigo = '"+cpadre+"'";
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(query,"elquery");
-    conexionbase->commit();
+    cursor2 *cur = conexionbase->cargacursor(query);
+
     /// Y también buscaremos los tipos y los usaremos.
     if (!cur->eof()) {
-
         descripcion->setText(cur->valor("descripcion"));
         debe->setText("0");
         haber->setText("0");
@@ -67,7 +66,7 @@ void cuentaview::cuentanueva(QString cod) {
         } else {
             regularizacion->setChecked(false);
         }// end if
-        // Vamos a hacer la carga del tipocuenta
+        /// Vamos a hacer la carga del tipocuenta
         int tipocuenta = atoi(cur->valor("tipocuenta").ascii());
         switch(tipocuenta) {
         case 0:
@@ -147,7 +146,7 @@ void cuentaview::close() {
 }// end accept
 
 int cuentaview::inicializa() {
-    cursor2 *cursorgrupos, *cursoraux1;
+    cursor2 *cursorgrupos;
     for (int i=0;i<100;i++) {
         idgrupos[i]=-1;
     }// end for
@@ -160,14 +159,6 @@ int cuentaview::inicializa() {
         cursorgrupos->siguienteregistro();
     }// end while
     delete cursorgrupos;
-
-    // Vamos a cargar el nmero de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
-    conexionbase->begin();
-    QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-    cursoraux1 = conexionbase->cargacursor(query,"codcuenta");
-    numdigitos=cursoraux1->valor("valor").length();
-    conexionbase->commit();
-    delete cursoraux1;
     return(0);
 }// end inicializa
 
@@ -275,12 +266,21 @@ int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
     // que le corresponda.
     QString cpadreaux;
     QString query;
-    query.sprintf("SELECT max(codigo) as maximo FROM cuenta WHERE padre IN (SELECT id_cuenta('%s'))",codpadre.ascii());
+    query.sprintf("SELECT codigo FROM cuenta WHERE padre = id_cuenta('%s') ORDER BY codigo DESC",codpadre.ascii());
     cursor2 *cur = conexionbase->cargacursor(query);
-    long int valor = atol(cur->valor("maximo").ascii());
-    valor ++;
-    cpadreaux.setNum(valor);
-    codigo->setText(cpadreaux);
+    if (!cur->eof()) {
+        long int valor = atol(cur->valor("codigo").ascii());
+        valor ++;
+        cpadreaux.setNum(valor);
+        codigo->setText(cpadreaux);
+    } else {
+        QString codint = codpadre;
+        while (codint.length() < numdigitos-1) {
+            codint = codint +"0";
+        }// end while
+        codint = codint+"0";
+        codigo->setText(codint);
+    }
 
     // Establecemos el valor del padre y del grupo.
     codigopadre->setText(codpadre);
@@ -296,113 +296,111 @@ int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
  * Esta funcion se dispara cuando se ha pulsado
  * return sobre el boton del codigo                *
  ***************************************************/
-void cuentaview::codigo_return() {
-                                  QString cod=codigo->text();
-                                  cod = extiendecodigo(cod,numdigitos);
-                                  codigo->setText(cod);
-                              }// end codigo_return
+void cuentaview::codigo_ret() {
+    QString cod=codigo->text();
+    cod = extiendecodigo(cod,numdigitos);
+    codigo->setText(cod);
+}// end codigo_return
 
+void cuentaview::saveAccount() {
+    fprintf(stderr,"cuentaview::aceptar()\n");
+    QString codigocuenta;
+    int idpadre=0;
+    cursor2 *cursoraux;
+    // Comprobamos que el campo codigopadre tiene un numero de cuenta y
+    // calculamos el id correspondiente consultando en la base de datos.
+    codigocuenta = codigopadre->text();
+    if (codigocuenta!="") {
+        conexionbase->begin();
+        cursoraux = conexionbase->cargacuenta(0,codigocuenta);
+        conexionbase->commit();
+        idpadre = atoi(cursoraux->valor("idcuenta").ascii());
+        delete cursoraux;
+    }// end if
+    // Recogemos el valor de tipocuenta
+    int tipocuenta=0;
+    if (cuentaactivo->isChecked())
+        tipocuenta= 1;
+    else if (cuentapasivo->isChecked())
+        tipocuenta = 2;
+    else if (cuentaneto->isChecked())
+        tipocuenta = 3;
+    else if (cuentaingreso->isChecked())
+        tipocuenta = 4;
+    else if (cuentagasto->isChecked())
+        tipocuenta = 5;
+    else
+        tipocuenta = 0;
+    // Si se trata de una modificacion modificamos y si se trata de
+    // una insercion insertamos.
+    if (idcuenta != 0) {
+        conexionbase->begin();
+        conexionbase->modificacuenta(idcuenta,
+                                     conexionbase->sanearCadena(descripcion->text()) ,
+                                     conexionbase->sanearCadena(codigo->text()),
+                                     imputacion->isChecked(),
+                                     bloqueada->isChecked(),
+                                     idgrupos[combogrupos->currentItem()],
+                                     TRUE,
+                                     conexionbase->sanearCadena(nombreent->text()),
+                                     conexionbase->sanearCadena(cif->text()),
+                                     conexionbase->sanearCadena(direccion->text()),
+                                     conexionbase->sanearCadena(cp->text()),
+                                     conexionbase->sanearCadena(telf->text()),
+                                     conexionbase->sanearCadena(coments->text()),
+                                     conexionbase->sanearCadena(banco->text()),
+                                     conexionbase->sanearCadena(email->text()),
+                                     conexionbase->sanearCadena(web->text()),
+                                     tipocuenta ,
+                                     nodebe->isChecked(),
+                                     nohaber->isChecked());
+        conexionbase->commit();
+    } else {
+        conexionbase->begin();
+        conexionbase->nuevacuenta(
+            conexionbase->sanearCadena(descripcion->text()),
+            conexionbase->sanearCadena(codigo->text()),
+            idpadre,
+            idgrupos[combogrupos->currentItem()],
+            conexionbase->sanearCadena(nombreent->text()),
+            conexionbase->sanearCadena(cif->text()),
+            conexionbase->sanearCadena(direccion->text()),
+            conexionbase->sanearCadena(cp->text()),
+            conexionbase->sanearCadena(telf->text()),
+            conexionbase->sanearCadena(coments->text()),
+            conexionbase->sanearCadena(banco->text()),
+            conexionbase->sanearCadena(email->text()),
+            conexionbase->sanearCadena(web->text()),
+            tipocuenta,
+            nodebe->isChecked(),
+            nohaber->isChecked() );
+        QString query = "SELECT max(idcuenta) AS id from cuenta";
+        cursoraux = conexionbase->cargacursor(query, "maxidcuenta");
+        idcuenta = atoi(cursoraux->valor("id").ascii());
+        conexionbase->commit();
+        delete cursoraux;
+    }// end if
 
+    // Estamos probando la nueva forma de almacenar cambios
+    dialogChanges_cargaInicial();
+}// end saveAccount
 
-                              void cuentaview::saveAccount() {
-                                  fprintf(stderr,"cuentaview::aceptar()\n");
-                                  QString codigocuenta;
-                                  int idpadre=0;
-                                  cursor2 *cursoraux;
-                                  // Comprobamos que el campo codigopadre tiene un numero de cuenta y
-                                  // calculamos el id correspondiente consultando en la base de datos.
-                                  codigocuenta = codigopadre->text();
-                                  if (codigocuenta!="") {
-                                      conexionbase->begin();
-                                      cursoraux = conexionbase->cargacuenta(0,codigocuenta);
-                                      conexionbase->commit();
-                                      idpadre = atoi(cursoraux->valor("idcuenta").ascii());
-                                      delete cursoraux;
-                                  }// end if
-                                  // Recogemos el valor de tipocuenta
-                                  int tipocuenta=0;
-                                  if (cuentaactivo->isChecked())
-                                      tipocuenta= 1;
-                                  else if (cuentapasivo->isChecked())
-                                      tipocuenta = 2;
-                                  else if (cuentaneto->isChecked())
-                                      tipocuenta = 3;
-                                  else if (cuentaingreso->isChecked())
-                                      tipocuenta = 4;
-                                  else if (cuentagasto->isChecked())
-                                      tipocuenta = 5;
-                                  else
-                                      tipocuenta = 0;
-                                  // Si se trata de una modificacion modificamos y si se trata de
-                                  // una insercion insertamos.
-                                  if (idcuenta != 0) {
-                                      conexionbase->begin();
-                                      conexionbase->modificacuenta(idcuenta,
-                                                                   conexionbase->sanearCadena(descripcion->text()) ,
-                                                                   conexionbase->sanearCadena(codigo->text()),
-                                                                   imputacion->isChecked(),
-                                                                   bloqueada->isChecked(),
-                                                                   idgrupos[combogrupos->currentItem()],
-                                                                   TRUE,
-                                                                   conexionbase->sanearCadena(nombreent->text()),
-                                                                   conexionbase->sanearCadena(cif->text()),
-                                                                   conexionbase->sanearCadena(direccion->text()),
-                                                                   conexionbase->sanearCadena(cp->text()),
-                                                                   conexionbase->sanearCadena(telf->text()),
-                                                                   conexionbase->sanearCadena(coments->text()),
-                                                                   conexionbase->sanearCadena(banco->text()),
-                                                                   conexionbase->sanearCadena(email->text()),
-                                                                   conexionbase->sanearCadena(web->text()),
-                                                                   tipocuenta ,
-                                                                   nodebe->isChecked(),
-                                                                   nohaber->isChecked());
-                                      conexionbase->commit();
-                                  } else {
-                                      conexionbase->begin();
-                                      conexionbase->nuevacuenta(
-                                          conexionbase->sanearCadena(descripcion->text()),
-                                          conexionbase->sanearCadena(codigo->text()),
-                                          idpadre,
-                                          idgrupos[combogrupos->currentItem()],
-                                          conexionbase->sanearCadena(nombreent->text()),
-                                          conexionbase->sanearCadena(cif->text()),
-                                          conexionbase->sanearCadena(direccion->text()),
-                                          conexionbase->sanearCadena(cp->text()),
-                                          conexionbase->sanearCadena(telf->text()),
-                                          conexionbase->sanearCadena(coments->text()),
-                                          conexionbase->sanearCadena(banco->text()),
-                                          conexionbase->sanearCadena(email->text()),
-                                          conexionbase->sanearCadena(web->text()),
-                                          tipocuenta,
-                                          nodebe->isChecked(),
-                                          nohaber->isChecked() );
-                                      QString query = "SELECT max(idcuenta) AS id from cuenta";
-                                      cursoraux = conexionbase->cargacursor(query, "maxidcuenta");
-                                      idcuenta = atoi(cursoraux->valor("id").ascii());
-                                      conexionbase->commit();
-                                      delete cursoraux;
-                                  }// end if
-
-                                  // Estamos probando la nueva forma de almacenar cambios
-                                  dialogChanges_cargaInicial();
-                              }// end saveAccount
-
-                              void cuentaview::deleteAccount() {
-                                  switch( QMessageBox::warning( this, "Borrar Cuenta",
-                                                                "Se va a borrar la Cuenta,\n"
-                                                                "Esto puede ocasionar pérdida de datos\n"
-                                                                "Tal vez debería pensarselo mejor antes\n"
-                                                                "porque igual su trabajo se pierde.",
-                                                                QMessageBox::Ok ,
-                                                                QMessageBox::Cancel )) {
-                                  case QMessageBox::Ok: // Retry clicked or Enter pressed
-                                      conexionbase->ejecuta("DELETE FROM cuenta WHERE idcuenta ="+QString::number(idcuenta));
-                                      done(1);
-                                      break;
-                                  case QMessageBox::Cancel: // Abort clicked or Escape pressed
-                                      break;
-                                  }// end switch
-                              }// end deleteAccount
+void cuentaview::deleteAccount() {
+    switch( QMessageBox::warning( this, "Borrar Cuenta",
+                                  "Se va a borrar la Cuenta,\n"
+                                  "Esto puede ocasionar pérdida de datos\n"
+                                  "Tal vez debería pensarselo mejor antes\n"
+                                  "porque igual su trabajo se pierde.",
+                                  QMessageBox::Ok ,
+                                  QMessageBox::Cancel )) {
+    case QMessageBox::Ok: // Retry clicked or Enter pressed
+        conexionbase->ejecuta("DELETE FROM cuenta WHERE idcuenta ="+QString::number(idcuenta));
+        done(1);
+        break;
+    case QMessageBox::Cancel: // Abort clicked or Escape pressed
+        break;
+    }// end switch
+}// end deleteAccount
 
 
 

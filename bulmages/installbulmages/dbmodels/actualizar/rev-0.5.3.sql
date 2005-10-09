@@ -87,6 +87,24 @@ DROP FUNCTION aux() CASCADE;
 
 
 --
+-- Agregamos el campo fractemitida que indica si es una factura emitida o recibida
+--
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	UPDATE cuenta SET padre=0 WHERE padre IS NULL;
+	UPDATE prevcobro SET tipoprevcobro = TRUE WHERE tipoprevcobro IS NULL;
+	ALTER TABLE cuenta ALTER COLUMN padre SET NOT NULL;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Hacemos como toca el campo padre en las cuentas."
+
+
+--
 -- Alteramos la tabla compmasap para que permita hacer presentacions sólo si el saldo es mayor o menor que cero
 --
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
@@ -248,6 +266,48 @@ END;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
 \echo "Actualizada la revisión de la base de datos"
+
+
+
+SELECT drop_if_exists_proc ('restriccionescuenta','');
+CREATE FUNCTION restriccionescuenta () RETURNS "trigger"
+AS '
+DECLARE
+   cta RECORD;
+BEGIN
+	SELECT INTO cta * FROM cuenta WHERE idcuenta= NEW.padre;
+	IF NOT FOUND THEN
+                RAISE EXCEPTION '' La cuenta padre no existe. '';
+	END IF;
+        IF NEW.codigo = '''' THEN
+                RAISE EXCEPTION '' No se puede dejar el código de cuenta vacio '';
+        END IF;
+	IF NEW.descripcion = '''' THEN
+		RAISE EXCEPTION '' Nombre de cuenta vacio '';
+	END IF;
+	IF NEW.nombreent_cuenta = '''' THEN
+		NEW.nombreent_cuenta = NEW.descripcion;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER restriccionescuentatrigger
+    BEFORE INSERT OR UPDATE ON cuenta
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionescuenta();
+
+
+
+
+
+
+
+
+
+
+
+
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;

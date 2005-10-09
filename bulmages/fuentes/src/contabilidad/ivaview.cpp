@@ -506,6 +506,7 @@ int ivaview::buscaborradorcliente(int idborrador) {
     conexionbase->begin();
     SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.debe AS debe, borrador.haber AS haber, borrador.debe+borrador.haber AS totalfactura FROM borrador, cuenta where borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador);
     conexionbase->ejecuta(SQLQuery);
+
     SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
     conexionbase->ejecuta(SQLQuery);
     conexionbase->commit();
@@ -543,6 +544,8 @@ int ivaview::buscaborradorcliente(int idborrador) {
         } else {
             m_factSoportada->setChecked(TRUE);
         }// end if
+
+	/// Ponemos el total de Factura.
         m_totalFactura->setText(cur->valor("totalfactura"));
 
         registro = atoi(cur->valor("idborrador").ascii());

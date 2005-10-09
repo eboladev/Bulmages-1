@@ -38,19 +38,24 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery) {
     nomcursor = nombre;
     nregistros=0;
     registroactual=0;
-    QString Query = SQLQuery;
-    result = PQexec(conn, Query.ascii());
+    result = PQexec(conn, SQLQuery.ascii());
     if (!result ) {
         _depura( PQerrorMessage(conn));
-        _depura( "QUERY command failed ["+Query+"]");
+        _depura( "QUERY command failed ["+SQLQuery+"]");
         if (confpr->valor(CONF_ALERTAS_DB) == "Yes")
-            msgError("Ha ocurrido un error al hacer una consulta con la base de datos.",Query+"\n"+PQerrorMessage(conn));
+            msgError("Ha ocurrido un error al hacer una consulta con la base de datos.",SQLQuery+"\n"+PQerrorMessage(conn));
         PQclear(result);
         return;
     }// end if
     nregistros = PQntuples(result);
     ncampos = PQnfields(result);
     registroactual=0;
+	/// Depuramos todo
+	_depura("--------- RESULTADO DE QUERY ----------------");
+	QString err;
+	err.sprintf("Num. Registros: %d, Num. Campos: %d",nregistros, ncampos);
+	_depura(err);
+	_depura("--------- FIN RESULTADO DE QUERY ----------------");
 }// end cursor2
 
 
@@ -276,12 +281,14 @@ int postgresiface2::formatofecha() {
     PQclear(res);
 
     /// Establecemos la codificación por defecto a UNICODE.
+/*
     query = "SET client_encoding = 'LATIN1'";
     res = PQexec(conn, query.ascii());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         _depura( "Cambio del formato de Codificación");
     }// end if
     PQclear(res);
+*/
     //    commit();
     return(0);
 }// end formatofecha
@@ -764,53 +771,6 @@ cursor2 *postgresiface2::cargaempresas() {
     return(cur);
 }// end cargaempresas
 
-
-
-/** Esta funci� carga de la metabase la combinaci� usuario password y basde de datos y
-  * devuelve el nmero de tuplas encontrados.
-  * Sirve como comprobaci� de que los datos introducidos (usuario/password y la empresa seleccionada) son ver�icos.
-  */
-int postgresiface2::cargaempresa(QString nomempresa, QString login, QString password) {
-    _depura("postgresiface2::cargaempresa");
-    QString query="";
-    PGresult   *res;
-    /* make a connection to the database */
-    QString conexion;
-
-    if (confpr->valor(CONF_SERVIDOR) == "localhost") {
-        conexion.sprintf( "dbname = %s", (char *)confpr->valor(CONF_METABASE).ascii());
-    } else {
-        conexion.sprintf("hostaddr=%s port=%s dbname=%s", (char *) confpr->valor(CONF_SERVIDOR).ascii(), (char *) confpr->valor(CONF_PUERTO).ascii(), (char *) confpr->valor(CONF_METABASE).ascii());
-    }// end if
-
-    conn = PQconnectdb(conexion);
-
-    if (PQstatus(conn) == CONNECTION_BAD) {
-        _depura( "Connection to database '"+dbName+"' failed.");
-        fprintf(stderr, "%s", PQerrorMessage(conn));
-    }// end if
-    begin();
-
-    /** fetch rows from the pg_database, the system catalog of
-     * databases
-     */
-    query.sprintf("DECLARE mycursor CURSOR FOR SELECT * FROM empresa, usuario, usuario_empresa where usuario.idusuario=usuario_empresa.idusuario AND empresa.idempresa=usuario_empresa.idempresa AND usuario.login='%s' AND empresa.nombredb='%s' AND usuario.password='%s'",login.ascii(), nomempresa.ascii(), password.ascii());
-    res = PQexec(conn, query.ascii());
-    commit();
-    if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "DECLARE CURSOR command failed\n");
-        PQclear(res);
-    }// end if
-    PQclear(res);
-    res = PQexec(conn, "FETCH ALL in mycursor");
-    if (!res || PQresultStatus(res) != PGRES_TUPLES_OK) {
-        fprintf(stderr, "FETCH ALL command didn't return tuples properly\n");
-        PQclear(res);
-    } // end if
-    nFields = PQntuples(res);
-    open=1;
-    return nFields;
-}// end cargaempresa
 
 
 /** Esta funci� est�ica devuelve una cadena "saneada" para pasarsela a Postgresql.

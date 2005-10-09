@@ -2,7 +2,7 @@
                           cuentaview.h  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -31,7 +31,7 @@
 #include "postgresiface2.h"
 #include "funcaux.h"
 #include "dialogchanges.h"
-/** *@author Tomeu Borrás Riera */
+/** *@author Tomeu Borrï¿½ Riera */
 
 class empresa;
 
@@ -43,7 +43,7 @@ empresa *empresaactual;
 int idcuenta;
 int idgrupos[100];
 postgresiface2 *conexionbase;
-unsigned int numdigitos; // Esta variable indica el número de dígitos que tiene la contabilidad en sus cuentas
+unsigned int numdigitos; // Esta variable indica el nmero de dï¿½itos que tiene la contabilidad en sus cuentas
 
 public:
   cuentaview(empresa *emp,QWidget *, const char *name =0, int fl=0);
@@ -55,7 +55,7 @@ public:
   void cambiapadre( const QString &);  
   
 public slots:
-  virtual void codigo_return();
+  virtual void codigo_ret();
   virtual void close();
   virtual void saveAccount();
   virtual void deleteAccount();

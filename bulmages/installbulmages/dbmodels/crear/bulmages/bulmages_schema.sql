@@ -93,7 +93,7 @@ CREATE TABLE cuenta (
     codigo character varying(12) NOT NULL,
     descripcion character varying(100) NOT NULL,
     imputacion boolean NOT NULL DEFAULT TRUE,
-    padre integer,
+    padre integer NOT NULL,
     bloqueada boolean NOT NULL DEFAULT FALSE,
     idgrupo integer NOT NULL REFERENCES grupo(idgrupo),
     msg character varying(500),
@@ -1741,7 +1741,12 @@ END;
 CREATE FUNCTION restriccionescuenta () RETURNS "trigger"
 AS '
 DECLARE
+   cta RECORD;
 BEGIN
+	SELECT INTO cta * FROM cuenta WHERE idcuenta= NEW.padre;
+	IF NOT FOUND THEN
+                RAISE EXCEPTION '' La cuenta padre no existe. '';
+	END IF;
         IF NEW.codigo = '''' THEN
                 RAISE EXCEPTION '' No se puede dejar el código de cuenta vacio '';
         END IF;
