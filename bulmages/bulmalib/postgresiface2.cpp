@@ -281,14 +281,15 @@ int postgresiface2::formatofecha() {
     PQclear(res);
 
     /// Establecemos la codificación por defecto a UNICODE.
-/*
-    query = "SET client_encoding = 'LATIN1'";
+	/// Pero con los problemas que está teniendo el UNICODE lo vamos a dejar en SQL_ASCII QUE funciona bastante mejor.
+
+    query = "SET client_encoding = 'SQL_ASCII'";
     res = PQexec(conn, query.ascii());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         _depura( "Cambio del formato de Codificación");
     }// end if
     PQclear(res);
-*/
+
     //    commit();
     return(0);
 }// end formatofecha

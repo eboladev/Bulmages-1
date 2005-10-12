@@ -275,9 +275,11 @@ AS '
 DECLARE
    cta RECORD;
 BEGIN
-	SELECT INTO cta * FROM cuenta WHERE idcuenta= NEW.padre;
-	IF NOT FOUND THEN
-                RAISE EXCEPTION '' La cuenta padre no existe. '';
+	IF NEW.padre <> 0 THEN
+		SELECT INTO cta * FROM cuenta WHERE idcuenta= NEW.padre;
+		IF NOT FOUND THEN
+			RAISE EXCEPTION '' La cuenta padre no existe. '';
+		END IF;
 	END IF;
         IF NEW.codigo = '''' THEN
                 RAISE EXCEPTION '' No se puede dejar el código de cuenta vacio '';

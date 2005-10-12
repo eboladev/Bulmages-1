@@ -1060,15 +1060,26 @@ void intapunts3view::borraborrador(int row) {
         QString idborrador = tapunts3->text(row, COL_IDBORRADOR);
         conexionbase->begin();
         QString query = "DELETE FROM registroiva WHERE idborrador="+idborrador;
-        conexionbase->ejecuta(query);
+        int error = conexionbase->ejecuta(query);
+	if (error) {
+		conexionbase->rollback();
+		return;
+	}// end if
         query = "DELETE FROM borrador WHERE idborrador="+idborrador;
-        conexionbase->ejecuta(query);
+        error = conexionbase->ejecuta(query);
+	if (error) {
+		conexionbase->rollback();
+		return;
+	}// end if
         conexionbase->commit();
         int rowaux = row;
         while (!tapunts3->text(rowaux,COL_IDBORRADOR).isNull()) {
             for (int i=0; i < tapunts3->numCols(); i++)
                 tapunts3->setText(rowaux, i, tapunts3->text(rowaux+1, i));
-            guardaborrador(rowaux);  // Guardamos el borrador para que la base de datos está en coherencia con esto.
+            error = guardaborrador(rowaux);  // Guardamos el borrador para que la base de datos está en coherencia con esto.
+		if (error) {
+			return;
+		}// end if
             rowaux++;
         }// end while
         calculadescuadre();
@@ -1077,7 +1088,9 @@ void intapunts3view::borraborrador(int row) {
 
 
 /// Esta funcion guarda en la base de datos el borrador de la columna que se ha pasado.
-void intapunts3view::guardaborrador(int row) {
+/// Si todo va bien devuelve 0
+/// Si hay errores devuelve 1
+int intapunts3view::guardaborrador(int row) {
     QString query;
     QString idborrador;
     QString debe;
@@ -1094,7 +1107,7 @@ void intapunts3view::guardaborrador(int row) {
     idasiento = idAsiento().toInt();
     if (idasiento==-1) {
         QMessageBox::warning(0,tr("No hay asiento"), tr("No hay asiento para guardar"),"OK",0,0);
-	return;
+	return 1;
     }// end if
 	
     // Hacemos la recoleccion de datos.
@@ -1167,15 +1180,21 @@ void intapunts3view::guardaborrador(int row) {
             /// El borrador existe, por lo que solo hay que hacer un update
             query = "UPDATE borrador SET orden="+orden+", conceptocontable="+concepto+", fecha="+fecha+", debe="+debe+",haber="+haber+", idcuenta="+idcuenta+", contrapartida="+contrapartida+", idcanal="+idcanal+", idc_coste="+idc_coste+" WHERE idborrador="+idborrador;
             conexionbase->begin();
-            if (conexionbase->ejecuta(query)==42501)
-                QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
+		int error = conexionbase->ejecuta(query);
+		if (error) {
+			conexionbase->rollback();
+			return 1;
+		}// end if
             conexionbase->commit();
         } else if (idcuenta != "NULL") {
             /// El borrador no existe, por lo que hay que hacer un insert
             query.sprintf("INSERT INTO borrador (orden, conceptocontable, fecha, idcuenta, debe, haber, idasiento, contrapartida, idcanal, idc_coste) VALUES (%s,%s,%s,%s,%s,%s,'%d',%s,%s,%s)",orden.ascii(),concepto.ascii(),fecha.ascii(),idcuenta.ascii(),debe.ascii(),haber.ascii(),idasiento,contrapartida.ascii(),idcanal.ascii(),idc_coste.ascii());
             conexionbase->begin();
-            if (conexionbase->ejecuta(query)==42501)
-                QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
+            int error = conexionbase->ejecuta(query);
+            if (error) {
+		conexionbase->rollback();
+		return 1;
+	    }// end if
             query = "SELECT MAX (idborrador) AS id from borrador";
             cursor2 *cur= conexionbase->cargacursor(query,"cursorm");
             conexionbase->commit();
@@ -1185,6 +1204,7 @@ void intapunts3view::guardaborrador(int row) {
     }// end if
     /// Ponemos el Saldo de Cuenta sin valor ya que este punto es un buen lugar para hacerlo.
     m_saldoCuenta->setText("");
+	return 0;
 }// end guardaborrador
 
 /** Duplica un apunte entero, desplaza el contenido hacia abajo e inserta un
@@ -1701,15 +1721,13 @@ void intapunts3view::boton_filtrar() {
 
 void intapunts3view::eturn_fechaasiento() {
     QString query;
-    int resultado;
-//    fechaasiento1->setText(normalizafecha(fechaasiento1->text()).toString("dd/MM/yyyy"));
     if (abierto) { //cambiar la fecha del asiento
         conexionbase->begin();
         query.sprintf("UPDATE asiento SET fecha='%s' WHERE idasiento='%s'",conexionbase->sanearCadena(m_fecha->text()).ascii(),idAsiento().ascii());
         fprintf(stderr,"%s\n",query.ascii());
-        resultado = conexionbase->ejecuta(query);
-        if (resultado != 0 && resultado != 42501) {
-            conexionbase->rollback();
+        int error = conexionbase->ejecuta(query);
+        if (error) {
+            return;
         } else {
             conexionbase->commit();
         }// end if
@@ -1774,7 +1792,12 @@ void intapunts3view::asiento_cierre() {
 		snuevohaber.ascii(),
 		idasiento);
                 conexionbase->begin();
-                conexionbase->ejecuta(query);
+                int error = conexionbase->ejecuta(query);
+		if (error) {
+			conexionbase->rollback();
+			delete cursor;
+			return;
+		}// end if
                 conexionbase->commit();
                 // Fin de la inserci� de Borrador
             }// end if
@@ -1831,7 +1854,12 @@ void intapunts3view::asiento_apertura() {
 	    totaldebe.ascii(),
 	    idasiento);
             conexionbase->begin();
-            conexionbase->ejecuta(SQLQuery1);
+            int error = conexionbase->ejecuta(SQLQuery1);
+		if(error) {
+			conexionbase->rollback();
+			delete cur;
+			return;
+		}// end if
             conexionbase->commit();
             cur->siguienteregistro();
         }// end while
@@ -1896,7 +1924,12 @@ void intapunts3view::asiento_regularizacion() {
 	    totalhaber.toQString().ascii(),
 	    idasiento);
             conexionbase->begin();
-            conexionbase->ejecuta(query);
+            int error = conexionbase->ejecuta(query);
+		if (error) {
+			conexionbase->rollback();
+			delete cur;
+			return;
+		}// end if
             conexionbase->commit();
             // Fin de la inserci� de Borrador
             cur->siguienteregistro();
@@ -1912,7 +1945,11 @@ void intapunts3view::asiento_regularizacion() {
 	    totaldebe1.toQString().ascii(),
 	    idasiento);
             conexionbase->begin();
-            conexionbase->ejecuta(query);
+            int error = conexionbase->ejecuta(query);
+		if (error) {
+			conexionbase->rollback();
+			return;
+		}// end if
             conexionbase->commit();
         } // end if
         if (totalhaber1 > 0) {
@@ -1926,7 +1963,11 @@ void intapunts3view::asiento_regularizacion() {
 	    ,idasiento);
 	    
             conexionbase->begin();
-            conexionbase->ejecuta(query);
+            int error = conexionbase->ejecuta(query);
+		if (error) {
+			conexionbase->rollback();
+			return;
+		}// end if
             conexionbase->commit();
         }// end if
         muestraasiento(idasiento);
@@ -1975,7 +2016,6 @@ void intapunts3view::boton_borrar_asiento() {
 void intapunts3view::borrar_asiento(bool confirmarBorrado) {
     QString query;
     int valor;
-    int resultado;
 
     /// Vamos a necesitar el asiento anterior (Si es que existe.).
     int asientoant=-1;
@@ -1995,21 +2035,34 @@ void intapunts3view::borrar_asiento(bool confirmarBorrado) {
         if (valor ==  QMessageBox::Yes) {
             conexionbase->begin();
             query.sprintf("DELETE FROM apunte where idasiento=%s",IDASIENTO);
-            if ((resultado = conexionbase->ejecuta(query))==42501)
-                QMessageBox::warning( 0, tr("PRIVILEGIOS"), tr("No tiene suficientes privilegios para realizar esta acción."), QMessageBox::Yes, 0);
+            int error = conexionbase->ejecuta(query);
+            if (error) {
+		conexionbase->rollback();
+		return;
+		}// end if
             query.sprintf("DELETE FROM iva WHERE idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=%s))",IDASIENTO);
-            resultado += conexionbase->ejecuta(query);
+            error = conexionbase->ejecuta(query);
+		if (error) {
+			conexionbase->rollback();
+			return;
+		}// end if
             query.sprintf("DELETE FROM registroiva where idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=%s)",IDASIENTO);
-            resultado += conexionbase->ejecuta(query);
+            error = conexionbase->ejecuta(query);
+		if (error) {
+			conexionbase->rollback();
+			return;
+		}// end if
             query.sprintf("DELETE FROM borrador where idasiento=%s",IDASIENTO);
-            resultado += conexionbase->ejecuta(query);
-            resultado += conexionbase->borrarasiento(atoi(IDASIENTO));
-
-            if (resultado != 0) {
-                conexionbase->rollback();
-            } else {
-                conexionbase->commit();
-            }// end if
+            error = conexionbase->ejecuta(query);
+		if (error) {
+			conexionbase->rollback();
+			return;
+		}// end if
+            error = conexionbase->borrarasiento(atoi(IDASIENTO));
+		if (error) {
+			conexionbase->rollback();
+			return;
+		}// end if
             cargarcursor();
             repinta(asientoant);
         }// end if

@@ -93,7 +93,7 @@ public:
     void asientoabiertop();
     void asientocerradop();
     void tcambiaseleccion();
-    void guardaborrador(int);
+    int guardaborrador(int);
     void calculadescuadre();
     void duplicar(int);
     void duplicarapunte();

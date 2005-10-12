@@ -238,7 +238,11 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
                 QString idgrupo = cod.left(1);
                 query = "INSERT INTO cuenta (imputacion, activo, tipocuenta, codigo, descripcion, cifent_cuenta, padre, idgrupo, nombreent_cuenta, dirent_cuenta, telent_cuenta, coment_cuenta, bancoent_cuenta, emailent_cuenta, webent_cuenta) VALUES  (TRUE, TRUE, 1,'"+cod+"', '"+titulo+"', '"+nif+"', "+padre+", "+idgrupo+", 'importada de ContaPlus','"+domicilio + poblacion+ provincia+codpostal+"','','','','','')";
                 conexionbase->begin();
-                conexionbase->ejecuta(query);
+                int error = conexionbase->ejecuta(query);
+		if (error) {
+			conexionbase->rollback();
+			return;
+		}// end if
                 conexionbase->commit();
                 mensajeria(theApp->translate("pgimportfiles","<LI>Se ha insertado la cuenta ")+cod+"</LI>\n");
             }// end if
@@ -336,14 +340,16 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
             }// end if
             if (fecha1 >= fechain && fecha1 <= fechafi) {
                 query="INSERT INTO asiento (fecha, comentariosasiento, clase) VALUES ('"+fecha+"','Importado de Contaplus', 1 )";
-                if (!modoTest()) {
-                    conexionbase->begin();
-                    conexionbase->ejecuta(query);
-                    conexionbase->commit();
+                    conexionbase->begin(); 
+               if (!modoTest()) {
+                    int error = conexionbase->ejecuta(query);
+			if (error) {
+				conexionbase->rollback();
+				return;
+			}// end if
                 }// end if
                 query = "SELECT max(idasiento) as idasiento FROM asiento";
-                conexionbase->begin();
-                cursor2 *cur=conexionbase->cargacursor(query,"lolailo");
+                cursor2 *cur=conexionbase->cargacursor(query);
                 idasiento = cur->valor("idasiento");
                 conexionbase->commit();
                 delete cur;
@@ -371,7 +377,11 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
                 if (!modoTest() ) {
                     query="INSERT INTO borrador (idasiento,idcuenta,fecha, conceptocontable, debe, haber, orden) VALUES ("+idasiento+",id_cuenta('"+subcta+"'), '"+fecha+"','"+concepto+"',"+debe+","+haber+","+QString::number(orden++)+" )";
                     conexionbase->begin();
-                    conexionbase->ejecuta(query);
+                    int error = conexionbase->ejecuta(query);
+			if (error) {
+				conexionbase->rollback();
+				return;
+			}// end if
                     conexionbase->commit();
                 }// end if
                 mensajeria(theApp->translate("pgimportfiles","<LI>Inserción de Apunte")+subcta+","+concepto+"</LI>\n");
@@ -383,9 +393,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
     if (lastasiento != "0") {
         if(!modoTest()) {
             query = "SELECT cierraasiento("+idasiento+")";
-            conexionbase->begin();
-            cursor2 * cur = conexionbase->cargacursor(query,"hola");
-            conexionbase->commit();
+            cursor2 * cur = conexionbase->cargacursor(query);
             delete cur;
         }// end if
     }// end if
@@ -1232,14 +1240,14 @@ int pgimportfiles::XML2BulmaFact (QFile &fichero, unsigned long long int tip) {
 StructureParser::StructureParser(postgresiface2 *con, unsigned int tip) {
     conexionbase = con;
     m_tipo = tip;
+        conexionbase->begin();
     QString query = "INSERT INTO cuenta (codigo, descripcion, idgrupo) VALUES ('AUX','Una descripcion auxiliar de cuenta', 1)";
     conexionbase->ejecuta(query);
     for (int i=0; i<=12;i++) {
-        QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2003, "+QString::number(i)+", FALSE)";
-        conexionbase->begin();
+        QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2005, "+QString::number(i)+", FALSE)";
         conexionbase->ejecuta(query2);
-        conexionbase->commit();
     }// end for
+        conexionbase->commit();
 }// end StructureParser
 
 StructureParser::~StructureParser() {
