@@ -285,7 +285,11 @@ void articleslist::removeArticle() {
     if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artículo","Esta a punto de borrar un artículo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
         QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+m_list->text(m_list->currentRow(),COL_IDARTICULO);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         inicializa();
     }// end if

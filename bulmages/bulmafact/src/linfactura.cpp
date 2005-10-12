@@ -72,7 +72,11 @@ void LinFactura::vaciaLinFactura() {
 void LinFactura::borrar() {
     if (mdb_idlfactura != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM lfactura WHERE idlfactura="+mdb_idlfactura);
+        int error = companyact->ejecuta("DELETE FROM lfactura WHERE idlfactura="+mdb_idlfactura);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaLinFactura();
     }// end if
@@ -90,7 +94,11 @@ void LinFactura::guardaLinFactura() {
 	companyact->sanearCadena(mdb_idarticulo)+", "+
 	companyact->sanearCadena(mdb_ivalfactura)+")";
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idlFactura) AS m FROM lFactura ");
         if(!cur->eof())
             mdb_idlfactura = cur->valor("m");
@@ -107,7 +115,11 @@ void LinFactura::guardaLinFactura() {
         SQLQuery += " ,ivalfactura = "+companyact->sanearCadena(mdb_ivalfactura)+" ";
         SQLQuery += " WHERE idlfactura = "+companyact->sanearCadena(mdb_idlfactura);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end guardaLinFactura

@@ -72,7 +72,11 @@ void linpresupuesto::vacialinpresupuesto() {
 void linpresupuesto::borrar() {
     if (mdb_idlpresupuesto != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM lpresupuesto WHERE idlpresupuesto="+mdb_idlpresupuesto);
+        int error = companyact->ejecuta("DELETE FROM lpresupuesto WHERE idlpresupuesto="+mdb_idlpresupuesto);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vacialinpresupuesto();
     }// end if
@@ -90,7 +94,11 @@ void linpresupuesto::guardalinpresupuesto() {
 	companyact->sanearCadena(mdb_idarticulo)+", "+
 	companyact->sanearCadena(mdb_ivalpresupuesto)+")";
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idlpresupuesto) AS m FROM lpresupuesto ");
         if(!cur->eof())
             mdb_idlpresupuesto = cur->valor("m");
@@ -107,7 +115,11 @@ void linpresupuesto::guardalinpresupuesto() {
         SQLQuery += " ,ivalpresupuesto = "+companyact->sanearCadena(mdb_ivalpresupuesto)+" ";
         SQLQuery += " WHERE idlpresupuesto = "+companyact->sanearCadena(mdb_idlpresupuesto);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end guardalinpresupuesto

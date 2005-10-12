@@ -123,7 +123,11 @@ void ListLinFactura::vaciar() {
 void ListLinFactura::borrar() {
     if (mdb_idfactura != "")  {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM lfactura WHERE idfactura="+mdb_idfactura);
+        int error = companyact->ejecuta("DELETE FROM lfactura WHERE idfactura="+mdb_idfactura);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end borrar

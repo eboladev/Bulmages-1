@@ -54,7 +54,11 @@ void DescuentoPedidoProveedor::vaciaDescuentoPedidoProveedor() {
 void DescuentoPedidoProveedor::borrar() {
     if (mdb_iddpedidoproveedor != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM dpedidoproveedor WHERE iddpedidoproveedor="+mdb_iddpedidoproveedor);
+        int error = companyact->ejecuta("DELETE FROM dpedidoproveedor WHERE iddpedidoproveedor="+mdb_iddpedidoproveedor);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaDescuentoPedidoProveedor();
     }// end if
@@ -68,7 +72,11 @@ void DescuentoPedidoProveedor::guardaDescuentoPedidoProveedor() {
 	companyact->sanearCadena(mdb_proporciondpedidoproveedor)+","+
 	companyact->sanearCadena(mdb_idpedidoproveedor)+")";
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(iddpedidoproveedor) AS m FROM dpedidoproveedor ");
         if(!cur->eof())
             mdb_iddpedidoproveedor = cur->valor("m");
@@ -81,7 +89,11 @@ void DescuentoPedidoProveedor::guardaDescuentoPedidoProveedor() {
         SQLQuery += " ,idpedidoproveedor = "+companyact->sanearCadena(mdb_idpedidoproveedor)+" ";
         SQLQuery += " WHERE iddpedidoproveedor = "+companyact->sanearCadena(mdb_iddpedidoproveedor);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end guardaDescuentoPedidoProveedor

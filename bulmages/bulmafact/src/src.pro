@@ -56,7 +56,8 @@ FORMS += bulmafactbase.ui \
 	 pagobase.ui \
 	 pagoslistbase.ui \
 	 pedidosproveedorlistbase.ui \
-	 pedidoproveedorbase.ui
+	 pedidoproveedorbase.ui \
+	 listseriefacturabase.ui
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
@@ -157,7 +158,9 @@ HEADERS += bulmafact.h \
 	   linpedidoproveedor.h \
 	   descpedidoproveedor.h \
 	   listdescpedidoproveedor.h \
-	   listdescpedidoproveedorview.h 
+	   listdescpedidoproveedorview.h \
+	   listseriefacturaview.h \
+	   busquedaseriefactura.h
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -254,7 +257,9 @@ SOURCES += bulmafact.cpp \
 	   linpedidoproveedor.cpp \
 	   descpedidoproveedor.cpp \
 	   listdescpedidoproveedor.cpp \
-	   listdescpedidoproveedorview.cpp
+	   listdescpedidoproveedorview.cpp \
+	   listseriefacturaview.cpp \
+	   busquedaseriefactura.cpp
 
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \

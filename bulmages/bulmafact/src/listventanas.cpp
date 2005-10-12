@@ -2,6 +2,7 @@
 #include <qobject.h>
 
 #include <map>
+#include <qptrlist.h>
 
 #include "bulmafact.h"
 
@@ -13,6 +14,7 @@ typedef QObject *pQObject;
 typedef map<int, pQObject> mapa;
 
 mapa elmapa;
+
 
 listventanas::listventanas(QWidget *a, const char *b): QDockWindow (a,b) {
     m_listBox = new QListBox( this ,0 );
@@ -31,17 +33,17 @@ void listventanas::dclicked() {
     int item = m_listBox->currentItem();
     QWidget *widget = (QWidget *)elmapa[item];
     if (widget != NULL) {
-	fprintf(stderr,"El estado de la ventana es: %d, deberia ser %d\n",widget->windowState(),Qt::WindowMaximized);
-	QWidget *punt = bges->workspace()->activeWindow();
-	if (widget != punt) {
-		widget->showMaximized();
-	} else {
-		if (!(widget->windowState() & Qt::WindowMaximized)) {
-			widget->showMaximized();
-		} else {
-			widget->hide();
-		}// end if
-	}// end if
+        fprintf(stderr,"El estado de la ventana es: %d, deberia ser %d\n",widget->windowState(),Qt::WindowMaximized);
+        QWidget *punt = bges->workspace()->activeWindow();
+        if (widget != punt) {
+            widget->showMaximized();
+        } else {
+            if (!(widget->windowState() & Qt::WindowMaximized)) {
+                widget->showMaximized();
+            } else {
+                widget->hide();
+            }// end if
+        }// end if
     }// end if
     fprintf(stderr,"END listventanas::clicked()\n");
 }// end clicked
@@ -52,22 +54,28 @@ void listventanas::clicked() {
     fprintf(stderr,"listventanas::clicked()\n");
     mapa::iterator iterador = elmapa.begin();
     while (iterador != elmapa.end()) {
-	((QWidget*)(*iterador).second)->hide();
+        ((QWidget*)(*iterador).second)->hide();
         iterador++;
     }// end while
+
+
+
 
     int item = m_listBox->currentItem();
     QWidget *widget = (QWidget *)elmapa[item];
     if (widget != NULL) {
-	fprintf(stderr,"El estado de la ventana es: %d, deberia ser %d\n",widget->windowState(),Qt::WindowMaximized);
-	QWidget *punt = bges->workspace()->activeWindow();
-	if (widget != punt) {
-		//widget->showNormal();
-		widget->showMaximized();
-	} else {
-		widget->hide();
-	}// end if
+        fprintf(stderr,"El estado de la ventana es: %d, deberia ser %d\n",widget->windowState(),Qt::WindowMaximized);
+        QWidget *punt = bges->workspace()->activeWindow();
+        if (widget != punt) {
+            //widget->showNormal();
+            widget->showMaximized();
+        } else {
+            widget->hide();
+        }// end if
     }// end if
+
+
+
     fprintf(stderr,"END listventanas::clicked()\n");
 }// end clicked
 
@@ -91,29 +99,53 @@ void  listventanas::meteWindow(QString nombre, QObject *obj) {
         iterador++;
     }// end while
     if( iterador == elmapa.end()) {
-	if (((QWidget *)obj)->icon()) {
-		QPixmap icon = *((QWidget *)obj)->icon();
-		QImage imgicon = icon.convertToImage();
-		imgicon = imgicon.scale(32,32);
-		icon = imgicon;
-       		m_listBox->insertItem(icon,nombre,-1);
-	} else {
-		m_listBox->insertItem(nombre,-1);
-	}
+        if (((QWidget *)obj)->icon()) {
+            QPixmap icon = *((QWidget *)obj)->icon();
+            QImage imgicon = icon.convertToImage();
+            imgicon = imgicon.scale(32,32);
+            icon = imgicon;
+            m_listBox->insertItem(icon,nombre,-1);
+        } else {
+            m_listBox->insertItem(nombre,-1);
+        }// end if
         elmapa[m_listBox->count()-1]=obj;
     }// end if
 }// end meteWindow
 
 
 void listventanas::sacaWindow(QObject *obj) {
+    mapa mapaaux;
+
     fprintf(stderr,"listventanas::sacaWindow()\n");
+    /// Buscamos la ventana correspondiente y la borramos.
     mapa::iterator iterador = elmapa.begin();
     while (iterador != elmapa.end()) {
         if ((*iterador).second == obj) {
-            m_listBox->removeItem((*iterador).first);
             elmapa.erase((*iterador).first);
+            m_listBox->removeItem((*iterador).first);
         }
         iterador++;
     }// end while
+
+
+    /// Reorganizamos los elementos para que el listbox corresponda con el mapa.
+    iterador = elmapa.begin();
+    int i = 0;
+    while (iterador != elmapa.end()) {
+        mapaaux[i++]= (*iterador).second;
+        iterador++;
+    }// end while
+
+    /// Borramos el mapa para que no haya elementos basura.
+    elmapa.clear();
+
+    /// Rehacemos el mapa a partir de mapaaux.
+    iterador = mapaaux.begin();
+    while (iterador != mapaaux.end()) {
+        elmapa[(*iterador).first] = (*iterador).second;
+        iterador ++;
+    }// end while
+
+
 }// end sacaWindow
 

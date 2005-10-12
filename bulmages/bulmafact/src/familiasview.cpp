@@ -180,7 +180,8 @@ void familiasview::s_saveFamilia() {
 	companyact->sanearCadena(m_nomFamilia->text())+"', descfamilia= '"+
 	companyact->sanearCadena(m_descFamilia->text())+"' , codigofamilia = '"+
 	companyact->sanearCadena(m_codFamilia->text())+"' WHERE idfamilia="+m_idfamilia;
-    companyact->ejecuta(query);
+    int error = companyact->ejecuta(query);
+	if (error) return;
     // Vamos a hacer algo no reentrante.
     QListViewItem *it =  m_listFamilias->findItem(m_idfamilia, COL_IDFAMILIA);
     cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia="+m_idfamilia);
@@ -209,7 +210,11 @@ void familiasview::s_newFamilia() {
 
     QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA','Descripcion de la familia',"+padrefamilia+",'XXX')";
     companyact->begin();
-    companyact->ejecuta(query);
+    int error = companyact->ejecuta(query);
+    if (error) {
+		companyact->rollback();
+		return;
+	}// end if
     cursor2 *cur = companyact->cargacursor("SELECT max(idfamilia) AS idfamilia FROM familia");
     companyact->commit();
     m_idfamilia = cur->valor("idfamilia");
@@ -223,7 +228,8 @@ void familiasview::s_newFamilia() {
 void familiasview::s_deleteFamilia() {
     trataModificado();
     QString query = "DELETE FROM FAMILIA WHERE idfamilia="+m_idfamilia;
-    companyact->ejecuta(query);
+    int error = companyact->ejecuta(query);
+	if (error) return;
     pintar();
 }// end s_saveTipoIVA
 

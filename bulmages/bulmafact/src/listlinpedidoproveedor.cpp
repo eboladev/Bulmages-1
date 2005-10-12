@@ -125,7 +125,11 @@ void ListLinPedidoProveedor::vaciar() {
 void ListLinPedidoProveedor::borrar() {
     if (mdb_idpedidoproveedor != "")  {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM lpedidoproveedor WHERE idpedidoproveedor="+mdb_idpedidoproveedor);
+        int error = companyact->ejecuta("DELETE FROM lpedidoproveedor WHERE idpedidoproveedor="+mdb_idpedidoproveedor);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end borrar

@@ -20,27 +20,27 @@
  
  /*
  -- Los proveedores son los que nos suminstran articulos y/o servicios.
--- COMPROVACIONS D'INTEGRITAT>Genèriques:
--- 1 Article té 1 sol proveïdor principal.
--- 1 Article té 1 sol proveïdor referent.
+-- COMPROVACIONS D'INTEGRITAT>Genï¿½iques:
+-- 1 Article tï¿½1 sol proveï¿½or principal.
+-- 1 Article tï¿½1 sol proveï¿½or referent.
 -- CAMPOS
 -- ======
 -- Codi: Clau artificial.
 -- Nom: Nom comercial o fiscal.
 -- Nom_alternatiu: Nom comercial o fiscal.
--- CIF: Codi d'Identificació Fiscal.
--- CodiCli: Codi de client amb que ens facturen. Útil per a identificar-nos.
+-- CIF: Codi d'Identificaciï¿½Fiscal.
+-- CodiCli: Codi de client amb que ens facturen. ï¿½il per a identificar-nos.
 -- C_Banc
 -- Comentaris
--- Adreça: Adreça.
--- Població: Població.
--- CProv: Codi de provincia (dos primers dígits del codi postal).
--- sCP: Tres darrers dígits del codi postal.
--- Telf: Telèfon.
+-- Adreï¿½: Adreï¿½.
+-- Poblaciï¿½ Poblaciï¿½
+-- CProv: Codi de provincia (dos primers dï¿½its del codi postal).
+-- sCP: Tres darrers dï¿½its del codi postal.
+-- Telf: Telï¿½on.
 -- Fax: Fax.
 -- Email: eMail.
 -- Url: Url.
--- CompteWeb: Dades de login si disposen de tenda o tarifes en línia
+-- CompteWeb: Dades de login si disposen de tenda o tarifes en lï¿½ia
 CREATE TABLE proveedor (
    idproveedor serial PRIMARY KEY,
    nomproveedor character varying(200),
@@ -105,20 +105,20 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, i
    m_list->setSelectionMode( QTable::SingleRow );
    m_list->setColumnMovingEnabled( TRUE );
    m_list->setNumCols(15);
-   m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr( "Código" ) );
+   m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr( "Cï¿½igo" ) );
    m_list->horizontalHeader()->setLabel( COL_NOMPROVEEDOR, tr( "Nombre Fiscal" ) );
    m_list->horizontalHeader()->setLabel( COL_NOMALTPROVEEDOR, tr( "Nombre Comercial" ) );
    m_list->horizontalHeader()->setLabel( COL_CIFPROVEEDOR, tr( "CIF/NIF" ) );
-   m_list->horizontalHeader()->setLabel( COL_CODICLIPROVEEDOR, tr( "Código de cliente" ) );
+   m_list->horizontalHeader()->setLabel( COL_CODICLIPROVEEDOR, tr( "Cï¿½igo de cliente" ) );
    m_list->horizontalHeader()->setLabel( COL_CBANCPROVEEDOR, tr( "Cuenta Bancaria" ) );
    m_list->horizontalHeader()->setLabel( COL_COMENTPROVEEDOR, tr("Observaciones") );
    m_list->horizontalHeader()->setLabel( COL_DIRPROVEEDOR, tr("Domicilio") );
-   m_list->horizontalHeader()->setLabel( COL_POBLPROVEEDOR, tr("Población") );
+   m_list->horizontalHeader()->setLabel( COL_POBLPROVEEDOR, tr("Poblaciï¿½") );
    m_list->horizontalHeader()->setLabel( COL_CPPROVEEDOR, tr("C.P.") );
-   m_list->horizontalHeader()->setLabel( COL_TELPROVEEDOR, tr("Nº Teléfono") );
-   m_list->horizontalHeader()->setLabel( COL_FAXPROVEEDOR, tr("Nº Fax") );
-   m_list->horizontalHeader()->setLabel( COL_EMAILPROVEEDOR, tr("Correo Electrónico") );
-   m_list->horizontalHeader()->setLabel( COL_URLPROVEEDOR, tr("Página Web") );
+   m_list->horizontalHeader()->setLabel( COL_TELPROVEEDOR, tr("N Telï¿½ono") );
+   m_list->horizontalHeader()->setLabel( COL_FAXPROVEEDOR, tr("N Fax") );
+   m_list->horizontalHeader()->setLabel( COL_EMAILPROVEEDOR, tr("Correo Electrï¿½ico") );
+   m_list->horizontalHeader()->setLabel( COL_URLPROVEEDOR, tr("Pï¿½ina Web") );
    m_list->horizontalHeader()->setLabel( COL_CLAVEWEBPROVEEDOR, tr("Clave propia web proveedor") );
    m_list->setColumnWidth(COL_IDPROVEEDOR,75);
    m_list->setColumnWidth(COL_NOMPROVEEDOR,300);
@@ -228,30 +228,34 @@ void providerslist::s_editProvider() {
 }// end s_editProvider
 
 
-/** SLOT que responde a la pulsación de borrar un determinado proveedor
-  * Dicha función avisa de la perdida de datos y si se decide continuar
+/** SLOT que responde a la pulsaciï¿½ de borrar un determinado proveedor
+  * Dicha funciï¿½ avisa de la perdida de datos y si se decide continuar
   * Se procede a borrar el proveedor
   */
 void providerslist::s_removeProvider() {
 	fprintf(stderr, "removeOrder button activated");
 	if (QMessageBox::warning( this, "BulmaFact - Proveedores",
-    "¿Seguro que desea borrar el proveedor?", "Aceptar", "Cancelar") == 0) {
+    "Seguro que desea borrar el proveedor?", "Aceptar", "Cancelar") == 0) {
 		int row = m_list->currentRow();
 		QString idProvider = m_list->text(row,COL_IDPROVEEDOR);
 		QString SQLQuery = "DELETE FROM proveedor WHERE idproveedor ="+idProvider;
 		companyact->begin();
-		companyact->ejecuta(SQLQuery);
+		int error = companyact->ejecuta(SQLQuery);
+		if (error) {
+			companyact->rollback();
+			return;
+		}// end if
 		companyact->commit();
 		inicializa();
 	}
 }// end s_removeProvider
 
 
-/** SLOT que se ejecuta al pulsar sobre el botón de imprimir en la ventana de proveedores
-  * La función llama a rtkview para generar el listado predefinido en reports/providerslist.rtk
+/** SLOT que se ejecuta al pulsar sobre el botï¿½ de imprimir en la ventana de proveedores
+  * La funciï¿½ llama a rtkview para generar el listado predefinido en reports/providerslist.rtk
   */
 void providerslist::s_printProviders() {
-	fprintf(stderr,"Impresión del listado\n");
+	fprintf(stderr,"Impresiï¿½ del listado\n");
     	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
 	QString cadena;
 	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.

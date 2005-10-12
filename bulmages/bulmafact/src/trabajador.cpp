@@ -57,10 +57,10 @@ Trabajador::Trabajador(company *emp,QWidget *parent, const char *name)
     m_listTrabajador->addColumn("descuento",0);
     m_listTrabajador->addColumn("aux",0);
     m_listTrabajador->addColumn("aux",0);
-    m_listTrabajador->addColumn("aux",0);    
-    m_listTrabajador->addColumn("aux",0);    
-    m_listTrabajador->addColumn("aux",0);    
-    m_listTrabajador->addColumn("aux",0);    
+    m_listTrabajador->addColumn("aux",0);
+    m_listTrabajador->addColumn("aux",0);
+    m_listTrabajador->addColumn("aux",0);
+    m_listTrabajador->addColumn("aux",0);
     m_archivoimagen="";
     setModoEdicion();
     pintar();
@@ -78,12 +78,12 @@ void Trabajador::pintar() {
         it->setText(COL_IDTRABAJADOR, cursoraux1->valor("idtrabajador"));
         it->setText(COL_NOMTRABAJADOR, cursoraux1->valor("nomtrabajador"));
         it->setText(COL_APELLIDOSTRABAJADOR, cursoraux1->valor("apellidostrabajador"));
-	it->setText(COL_DIRTRABAJADOR, cursoraux1->valor("dirtrabajador"));
-	it->setText(COL_TELTRABAJADOR, cursoraux1->valor("teltrabajador"));
-	it->setText(COL_MOVILTRABAJADOR, cursoraux1->valor("moviltrabajador"));
-	it->setText(COL_EMAILTRABAJADOR, cursoraux1->valor("emailtrabajador"));
-	it->setText(COL_FOTOTRABAJADOR, cursoraux1->valor("fototrabajador"));
-	it->setText(COL_ACTIVOTRABAJADOR, cursoraux1->valor("activotrabajador"));
+        it->setText(COL_DIRTRABAJADOR, cursoraux1->valor("dirtrabajador"));
+        it->setText(COL_TELTRABAJADOR, cursoraux1->valor("teltrabajador"));
+        it->setText(COL_MOVILTRABAJADOR, cursoraux1->valor("moviltrabajador"));
+        it->setText(COL_EMAILTRABAJADOR, cursoraux1->valor("emailtrabajador"));
+        it->setText(COL_FOTOTRABAJADOR, cursoraux1->valor("fototrabajador"));
+        it->setText(COL_ACTIVOTRABAJADOR, cursoraux1->valor("activotrabajador"));
         it->setText(COL_NSSTRABAJADOR, cursoraux1->valor("nsstrabajador"));
         cursoraux1->siguienteregistro ();
     }// end while
@@ -98,31 +98,31 @@ Trabajador::~Trabajador() {}
 #include <qcheckbox.h>
 void Trabajador::s_lista(QListViewItem *it) {
     if (it != NULL) {
-	/// Si se ha modificado el contenido advertimos y guardamos.
-	trataModificado();
-	m_nomtrabajador->setText(it->text(COL_NOMTRABAJADOR));
-	m_apellidostrabajador->setText(it->text(COL_APELLIDOSTRABAJADOR));
-	m_nsstrabajador->setText(it->text(COL_NSSTRABAJADOR));
-	m_idtrabajador= it->text(COL_IDTRABAJADOR);
-	m_dirtrabajador->setText(it->text(COL_DIRTRABAJADOR));
-	m_teltrabajador->setText(it->text(COL_TELTRABAJADOR));
-	m_moviltrabajador->setText(it->text(COL_MOVILTRABAJADOR));
-	m_emailtrabajador->setText(it->text(COL_EMAILTRABAJADOR));
-	if (it->text(COL_ACTIVOTRABAJADOR) == "t") {
-		m_activotrabajador->setChecked(TRUE);
-	} else {
-		m_activotrabajador->setChecked(FALSE);
-	}// end if
-	/// Comprobamos cual es la cadena inicial.
-	dialogChanges_cargaInicial();
-   	m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_PERSONAL)+m_idtrabajador+".jpg")); 	
+        /// Si se ha modificado el contenido advertimos y guardamos.
+        trataModificado();
+        m_nomtrabajador->setText(it->text(COL_NOMTRABAJADOR));
+        m_apellidostrabajador->setText(it->text(COL_APELLIDOSTRABAJADOR));
+        m_nsstrabajador->setText(it->text(COL_NSSTRABAJADOR));
+        m_idtrabajador= it->text(COL_IDTRABAJADOR);
+        m_dirtrabajador->setText(it->text(COL_DIRTRABAJADOR));
+        m_teltrabajador->setText(it->text(COL_TELTRABAJADOR));
+        m_moviltrabajador->setText(it->text(COL_MOVILTRABAJADOR));
+        m_emailtrabajador->setText(it->text(COL_EMAILTRABAJADOR));
+        if (it->text(COL_ACTIVOTRABAJADOR) == "t") {
+            m_activotrabajador->setChecked(TRUE);
+        } else {
+            m_activotrabajador->setChecked(FALSE);
+        }// end if
+        /// Comprobamos cual es la cadena inicial.
+        dialogChanges_cargaInicial();
+        m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_PERSONAL)+m_idtrabajador+".jpg"));
     }// end if
 }// end s_lista
 
 
 
 bool Trabajador::close(bool p) {
-fprintf (stderr,"close()\n");
+    fprintf (stderr,"close()\n");
     /// Si se ha modificado el contenido advertimos y guardamos.
     fprintf(stderr,"dialogo cierra\n");
     return QDialog::close(p);
@@ -130,9 +130,9 @@ fprintf (stderr,"close()\n");
 
 
 void Trabajador::s_saveTrabajador() {
-QString m_textactivotrabajador = "FALSE";
-	if (m_activotrabajador->isChecked()) 
-		m_textactivotrabajador = "TRUE";
+    QString m_textactivotrabajador = "FALSE";
+    if (m_activotrabajador->isChecked())
+        m_textactivotrabajador = "TRUE";
 
     QString query = "UPDATE trabajador SET ";
     query += "  nomtrabajador='"+companyact->sanearCadena(m_nomtrabajador->text())+"'";
@@ -144,23 +144,27 @@ QString m_textactivotrabajador = "FALSE";
     query += ", emailtrabajador = '"+companyact->sanearCadena(m_emailtrabajador->text())+"'";
     query += ", activotrabajador = "+companyact->sanearCadena(m_textactivotrabajador);
     query += " WHERE idtrabajador="+companyact->sanearCadena(m_idtrabajador);
-    
-    companyact->ejecuta(query);
+
+    int error = companyact->ejecuta(query);
+    if (error) {
+        companyact->rollback();
+        return;
+    }// end if
     QListViewItem *it =  m_listTrabajador->findItem(m_idtrabajador, COL_IDTRABAJADOR);
     it->setText(COL_IDTRABAJADOR, m_idtrabajador);
     it->setText(COL_NOMTRABAJADOR, m_nomtrabajador->text());
     it->setText(COL_APELLIDOSTRABAJADOR, m_apellidostrabajador->text());
     it->setText(COL_NSSTRABAJADOR, m_nsstrabajador->text());
     if (m_archivoimagen != "") {
-    	QString cadena = "cp "+m_archivoimagen+" "+confpr->valor(CONF_DIR_IMG_PERSONAL)+m_idtrabajador+".jpg";
-	fprintf(stderr,"%s\n",cadena.ascii());
-	system(cadena.ascii());
-    }// end if    
+        QString cadena = "cp "+m_archivoimagen+" "+confpr->valor(CONF_DIR_IMG_PERSONAL)+m_idtrabajador+".jpg";
+        fprintf(stderr,"%s\n",cadena.ascii());
+        system(cadena.ascii());
+    }// end if
 }// end if
 
 
 bool Trabajador::trataModificado() {
-fprintf(stderr,"TrataModificado\n");
+    fprintf(stderr,"TrataModificado\n");
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if ( QMessageBox::warning( this, "Guardar Trabajador",
@@ -181,7 +185,11 @@ void Trabajador::s_newTrabajador() {
     trataModificado();
     QString query = "INSERT INTO trabajador (nomtrabajador, apellidostrabajador, nsstrabajador) VALUES ('NUEVO TRABAJADOR','NUEVO TRABAJADOR','000000000000')";
     companyact->begin();
-    companyact->ejecuta(query);
+    int error = companyact->ejecuta(query);
+    if (error) {
+        companyact->rollback();
+        return;
+    }// end if
     cursor2 *cur = companyact->cargacursor("SELECT max(idtrabajador) AS idtrabajador FROM trabajador");
     companyact->commit();
     m_idtrabajador = cur->valor("idtrabajador");
@@ -195,20 +203,26 @@ void Trabajador::s_newTrabajador() {
   */
 void Trabajador::s_deleteTrabajador() {
     trataModificado();
+    companyact->begin();
     QString query = "DELETE FROM trabajador WHERE idtrabajador="+m_idtrabajador;
-    companyact->ejecuta(query);
+    int error = companyact->ejecuta(query);
+    if (error) {
+        companyact->rollback();
+        return;
+    }// end if
+    companyact->commit();
     pintar();
 }// end s_saveTipoIVA
 
 
 void Trabajador::s_cambiarImagen() {
     m_archivoimagen = QFileDialog::getOpenFileName(
-                    "",
-                    "Images (*.jpg)",
-                    this,
-                    "open file dialog",
-                    "Choose a file" );
+                          "",
+                          "Images (*.jpg)",
+                          this,
+                          "open file dialog",
+                          "Choose a file" );
     fprintf(stderr," Archivo Seleccionado: %s\n",m_archivoimagen.ascii());
-    m_imagen->setPixmap(QPixmap(m_archivoimagen));   
+    m_imagen->setPixmap(QPixmap(m_archivoimagen));
 }// end s_cambiarimagen
 

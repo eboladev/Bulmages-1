@@ -237,7 +237,10 @@ void ClientsList::s_printClients() {
 void ClientsList::s_borrarCliente() {
    m_idclient = m_clientList->text(m_clientList->currentRow(),COL_IDCLIENTE);
    QString SQLQuery = "DELETE FROM cliente WHERE idcliente = "+m_idclient;
-   companyact->ejecuta(SQLQuery);
+   int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		return;
+	}// end if
    inicializa();
 }// end s_borrarCliente
 

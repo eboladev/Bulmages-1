@@ -18,6 +18,7 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
+#include "busquedaseriefactura.h"
 #include "busquedaalmacen.h"
 #include "dialogchanges.h"
 
@@ -43,7 +44,7 @@ public:
 void	pintaidcliente(QString id) {m_cliente->setidcliente(id);};	
 void	pintaidalmacen(QString id) {m_almacen->setidalmacen(id);};
 void	pintaNumFactura(QString id) {m_numfactura->setText(id);};
-void    pintacodigoserie_factura(QString id) {m_codigoserie_factura->setText(id);};
+void    pintacodigoserie_factura(QString id) {m_codigoserie_factura->setcodigoserie_factura(id);};
 
 void    pintafechafactura(QString id) {m_fechafactura->setText(id);};
 void    pintadescfactura(QString id) {m_descfactura->setText(id);};
@@ -69,13 +70,14 @@ public slots:
     virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
     virtual void s_numfacturatextChanged(const QString &val) {setNumFactura(val);};
     virtual void s_reffacturatextChanged(const QString &val) {setreffactura(val);};
-    virtual void s_codigoserie_facturatextChanged(const QString &val) {setcodigoserie_factura(val);};
+//    virtual void s_codigoserie_facturatextChanged(const QString &val) {setcodigoserie_factura(val);};
     
     virtual void s_clientevalueChanged(QString val) {setidcliente(val);};
     virtual void s_fechafacturavalueChanged(QString val) {setfechafactura(val);};
     virtual void s_descfacturatextChanged(const QString &val) {setdescfactura(val);};
     
     virtual void s_forma_pagovalueChanged(QString val) {setidforma_pago(val);};
+    virtual void s_serie_facturavalueChanged(QString val) {setcodigoserie_factura(val);};
     
     virtual void s_saveFactura() {guardaFactura();};
     virtual void cargaFactura(QString id);    

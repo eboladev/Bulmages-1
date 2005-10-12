@@ -57,7 +57,11 @@ void CompArticulo::vaciaCompArticulo() {
 void CompArticulo::borrar() {
     if (mdb_idarticulo != "" && mdb_idcomponente != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+mdb_idarticulo+" AND idcomponente="+mdb_idcomponente);
+        int error = companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+mdb_idarticulo+" AND idcomponente="+mdb_idcomponente);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaCompArticulo();
     }// end if
@@ -72,8 +76,16 @@ void CompArticulo::guardaCompArticulo() {
 	companyact->sanearCadena(mdb_idcomponente)+","+
 	companyact->sanearCadena(mdb_cantcomparticulo)+")";
         companyact->begin();
-          companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+mdb_idarticulo+" AND idcomponente="+mdb_idcomponente);
-	         companyact->ejecuta(SQLQuery);
+          int error = companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+mdb_idarticulo+" AND idcomponente="+mdb_idcomponente);
+	  if (error) {
+		companyact->rollback();
+		return;
+		}// end if
+	  error = companyact->ejecuta(SQLQuery);
+	 if (error) {
+		companyact->rollback();
+		return;
+	 }// end if
         companyact->commit();
     }
 }// end guardaCompArticulo

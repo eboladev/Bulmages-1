@@ -85,7 +85,11 @@ void fpago::s_saveFPago() {
 	companyact->sanearCadena(m_descforma_pago->text())+"', dias1tforma_pago= "+
 	companyact->sanearCadena(m_dias1tforma_pago->text())+" , descuentoforma_pago = "+
 	companyact->sanearCadena(m_descuentoforma_pago->text())+" WHERE idforma_pago="+m_idforma_pago;
-    companyact->ejecuta(query);
+    int error = companyact->ejecuta(query);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
     QListViewItem *it =  m_listFPago->findItem(m_idforma_pago, COL_IDFPAGO);
     it->setText(COL_IDFPAGO, m_idforma_pago);
     it->setText(COL_NOMFPAGO, m_descforma_pago->text());
@@ -116,7 +120,11 @@ void fpago::s_newFPago() {
     trataModificado();
     QString query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('NUEVA FORMA DE PAGO',0,0)";
     companyact->begin();
-    companyact->ejecuta(query);
+    int error = companyact->ejecuta(query);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
     cursor2 *cur = companyact->cargacursor("SELECT max(idforma_pago) AS idfpago FROM forma_pago");
     companyact->commit();
     m_idforma_pago = cur->valor("idfpago");
@@ -130,8 +138,14 @@ void fpago::s_newFPago() {
   */
 void fpago::s_deleteFPago() {
     trataModificado();
+	companyact->begin();
     QString query = "DELETE FROM forma_pago WHERE idforma_pago="+m_idforma_pago;
-    companyact->ejecuta(query);
+    int error = companyact->ejecuta(query);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
+	companyact->commit();
     pintar();
 }// end s_saveTipoIVA
 

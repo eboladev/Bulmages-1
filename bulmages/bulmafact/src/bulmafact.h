@@ -43,6 +43,7 @@ public slots:
     virtual void s_Familias();
     virtual void s_trabajadores();
     virtual void s_ventanaCompleta();
+	virtual void s_seriesFactura();
     void about();
     void aboutQt();
 };

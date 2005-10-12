@@ -54,7 +54,11 @@ void DescuentoFactura::vaciaDescuentoFactura() {
 void DescuentoFactura::borrar() {
     if (mdb_iddfactura != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM dfactura WHERE iddfactura="+mdb_iddfactura);
+        int error = companyact->ejecuta("DELETE FROM dfactura WHERE iddfactura="+mdb_iddfactura);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaDescuentoFactura();
     }// end if
@@ -68,7 +72,11 @@ void DescuentoFactura::guardaDescuentoFactura() {
 	companyact->sanearCadena(mdb_proporciondfactura)+","+
 	companyact->sanearCadena(mdb_idfactura)+")";
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(iddfactura) AS m FROM dfactura ");
         if(!cur->eof())
             mdb_iddfactura = cur->valor("m");
@@ -81,7 +89,11 @@ void DescuentoFactura::guardaDescuentoFactura() {
         SQLQuery += " ,idfactura = "+companyact->sanearCadena(mdb_idfactura)+" ";
         SQLQuery += " WHERE iddfactura = "+companyact->sanearCadena(mdb_iddfactura);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end guardaDescuentoFactura

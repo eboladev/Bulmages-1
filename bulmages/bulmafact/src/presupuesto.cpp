@@ -31,7 +31,11 @@ void presupuesto::borraPresupuesto() {
     if (mdb_idpresupuesto != "") {
         listalineas->borrar();
         companyact->begin();
-        companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
+        int error = companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaPresupuesto();
         pintaPresupuesto();
@@ -98,7 +102,7 @@ void presupuesto::chargeBudget(QString idbudget) {
         mdb_descpresupuesto = cur->valor("descpresupuesto");
         mdb_refpresupuesto = cur->valor("refpresupuesto");
         mdb_idforma_pago = cur->valor("idforma_pago");
-	mdb_idtrabajador = cur->valor("idtrabajador");
+        mdb_idtrabajador = cur->valor("idtrabajador");
         if (cur->valor("procesadopresupuesto") == "t")
             mdb_procesadopresupuesto = "TRUE";
         else
@@ -121,25 +125,33 @@ void presupuesto::guardapresupuesto() {
     if (mdb_idforma_pago == "")
         mdb_idforma_pago = "NULL";
     if (mdb_idtrabajador== "")
-    	mdb_idtrabajador = "NULL";
+        mdb_idtrabajador = "NULL";
+    if(mdb_idalmacen == "")
+        mdb_idalmacen = "NULL";
+    if (mdb_idcliente == "")
+        mdb_idcliente = "NULL";
     if (mdb_idpresupuesto == "") {
         /// Se trata de una inserci�
         QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, procesadopresupuesto, descpresupuesto, refpresupuesto, idforma_pago, idtrabajador) VALUES ("+
-	companyact->sanearCadena(mdb_numpresupuesto)+",'"+
-	companyact->sanearCadena(mdb_fpresupuesto)+"','"+
-	companyact->sanearCadena(mdb_contactpresupuesto)+"','"+
-	companyact->sanearCadena(mdb_telpresupuesto)+"','"+
-	companyact->sanearCadena(mdb_vencpresupuesto)+"','"+
-	companyact->sanearCadena(mdb_comentpresupuesto)+"',"+
-	companyact->sanearCadena(mdb_idusuari)+","+
-	companyact->sanearCadena(mdb_idcliente)+","+
-	companyact->sanearCadena(mdb_idalmacen)+","+
-	companyact->sanearCadena(mdb_procesadopresupuesto)+",'"+
-	companyact->sanearCadena(mdb_descpresupuesto)+"','"+
-	companyact->sanearCadena(mdb_refpresupuesto)+"',"+
-	companyact->sanearCadena(mdb_idforma_pago)+","+
-	companyact->sanearCadena(mdb_idtrabajador)+")";
-        companyact->ejecuta(SQLQuery);
+                           companyact->sanearCadena(mdb_numpresupuesto)+",'"+
+                           companyact->sanearCadena(mdb_fpresupuesto)+"','"+
+                           companyact->sanearCadena(mdb_contactpresupuesto)+"','"+
+                           companyact->sanearCadena(mdb_telpresupuesto)+"','"+
+                           companyact->sanearCadena(mdb_vencpresupuesto)+"','"+
+                           companyact->sanearCadena(mdb_comentpresupuesto)+"',"+
+                           companyact->sanearCadena(mdb_idusuari)+","+
+                           companyact->sanearCadena(mdb_idcliente)+","+
+                           companyact->sanearCadena(mdb_idalmacen)+","+
+                           companyact->sanearCadena(mdb_procesadopresupuesto)+",'"+
+                           companyact->sanearCadena(mdb_descpresupuesto)+"','"+
+                           companyact->sanearCadena(mdb_refpresupuesto)+"',"+
+                           companyact->sanearCadena(mdb_idforma_pago)+","+
+                           companyact->sanearCadena(mdb_idtrabajador)+")";
+        int error = companyact->ejecuta(SQLQuery);
+	if (error ) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpresupuesto) AS m FROM presupuesto");
         if (!cur->eof())
             setidpresupuesto(cur->valor("m"));
@@ -161,10 +173,14 @@ void presupuesto::guardapresupuesto() {
         SQLQuery += " ,descpresupuesto='"+companyact->sanearCadena(mdb_descpresupuesto)+"'";
         SQLQuery += " ,refpresupuesto= '"+companyact->sanearCadena(mdb_refpresupuesto)+"'";
         SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
-	SQLQuery += " ,idtrabajador="+companyact->sanearCadena(mdb_idtrabajador);
+        SQLQuery += " ,idtrabajador="+companyact->sanearCadena(mdb_idtrabajador);
         SQLQuery += " WHERE idpresupuesto="+companyact->sanearCadena(mdb_idpresupuesto);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
     listalineas->guardalistlinpresupuesto();
@@ -192,15 +208,15 @@ QString presupuesto::detalleArticulos() {
             texto += "<para><pre>"+cur->valor("obserarticulo")+"</pre></para></td>\n";
         }// end if
 
-	QString file = confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg";
+        QString file = confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg";
         QFile f( file );
-	if (f.exists() ) {
-        texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
-                 "<image file=\""+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
-                 "</illustration></td>\n";
-	} else {
-		texto += "<td></td>\n";
-	}
+        if (f.exists() ) {
+            texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
+                     "<image file=\""+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
+                     "</illustration></td>\n";
+        } else {
+            texto += "<td></td>\n";
+        }
 
         if (!i) {
             texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";
@@ -269,30 +285,30 @@ void presupuesto::imprimirPresupuesto() {
     fitxersortidatxt += "	<td>Concepto</td>\n";
     fitxersortidatxt += "	<td>Cant.</td>\n";
     fitxersortidatxt += "	<td>Precio</td>\n";
-    fitxersortidatxt += "	<td>Desc.</td>\n"; 
-        fitxersortidatxt += "	<td>Total</td>\n";
+    fitxersortidatxt += "	<td>Desc.</td>\n";
+    fitxersortidatxt += "	<td>Total</td>\n";
     fitxersortidatxt += "</tr>\n";
     QString l;
 
     int i=0;// Contador que sirve para poner lineas de más en caso de que sea preciso.
 
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-    	Fixed base = Fixed(linea->cantlpresupuesto().ascii()) * Fixed(linea->pvplpresupuesto().ascii());
+        Fixed base = Fixed(linea->cantlpresupuesto().ascii()) * Fixed(linea->pvplpresupuesto().ascii());
         basesimp[linea->ivalpresupuesto()] = basesimp[linea->ivalpresupuesto()] + base - base * Fixed(linea->descuentolpresupuesto().ascii()) /100;
-	
+
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "	<td>"+linea->codigocompletoarticulo()+"</td>\n";
         fitxersortidatxt += "	<td>"+linea->desclpresupuesto()+"</td>\n";
         fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->cantlpresupuesto().ascii())+"</td>\n";
         fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->pvplpresupuesto().ascii())+"</td>\n";
-        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->descuentolpresupuesto().ascii())+" %</td>\n";	
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->descuentolpresupuesto().ascii())+" %</td>\n";
         fitxersortidatxt += "	<td>"+l.sprintf("%s",(base - base * Fixed (linea->descuentolpresupuesto()) /100).toQString().ascii())+"</td>\n";
         fitxersortidatxt += "</tr>";
-	i++;
+        i++;
     }// end for
 
-	while (i++ < 15)
-		fitxersortidatxt += "<tr></tr>";
+    while (i++ < 15)
+        fitxersortidatxt += "<tr></tr>";
 
     fitxersortidatxt += "</blockTable>\n";
     buff.replace("[story]",fitxersortidatxt);
@@ -304,7 +320,7 @@ void presupuesto::imprimirPresupuesto() {
         basei =basei + it.data();
     }// end for
 
-        /// Impresi� de los descuentos
+    /// Impresi� de los descuentos
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     DescuentoPresupuesto *linea1;
@@ -323,14 +339,14 @@ void presupuesto::imprimirPresupuesto() {
             fitxersortidatxt += "	<td>"+l.sprintf("-%s",( Fixed(linea1->proporciondpresupuesto())*basei/100).toQString().ascii())+"</td>\n";
             fitxersortidatxt += "</tr>";
         }// end for
-    fitxersortidatxt += "</blockTable>\n";	
+        fitxersortidatxt += "</blockTable>\n";
     }// end if
     buff.replace("[descuentos]",fitxersortidatxt);
 
-	/// Impresión de los totales
-	fitxersortidatxt= "";
-	QString tr1 = "";	// Rellena el primer tr de titulares
-	QString tr2 = "";	// Rellena el segundo tr de cantidades
+    /// Impresión de los totales
+    fitxersortidatxt= "";
+    QString tr1 = "";	// Rellena el primer tr de titulares
+    QString tr2 = "";	// Rellena el segundo tr de cantidades
     fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
 
 
@@ -342,7 +358,7 @@ void presupuesto::imprimirPresupuesto() {
         } else {
             parbaseimp = it.data();
         }// end if
-	 totbaseimp = totbaseimp + parbaseimp;
+        totbaseimp = totbaseimp + parbaseimp;
         tr1 += "	<td>Base "+it.key()+" %</td>\n";
         tr2 += "	<td>"+l.sprintf("%s",parbaseimp.toQString().ascii())+"</td>\n";
     }// end for
@@ -355,7 +371,7 @@ void presupuesto::imprimirPresupuesto() {
         } else {
             pariva = it.data()* Fixed(it.key()) /100;
         }// end if
-	totiva = totiva + pariva;
+        totiva = totiva + pariva;
         tr1 += "	<td>Iva "+it.key()+" %</td>\n";
         tr2 += "	<td>"+l.sprintf("%s", pariva.toQString().ascii())+"</td>\n";
     }// end for
@@ -383,16 +399,16 @@ void presupuesto::calculaypintatotales() {
     linpresupuesto *linea;
     /// Impresi� de los contenidos
     QString l;
-    
+
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-    	Fixed cant(linea->cantlpresupuesto().ascii());
-	Fixed pvpund(linea->pvplpresupuesto().ascii());
-	Fixed desc1(linea->descuentolpresupuesto().ascii());
-	Fixed cantpvp = cant * pvpund;
-	Fixed base = cantpvp - cantpvp * desc1 / 100;
+        Fixed cant(linea->cantlpresupuesto().ascii());
+        Fixed pvpund(linea->pvplpresupuesto().ascii());
+        Fixed desc1(linea->descuentolpresupuesto().ascii());
+        Fixed cantpvp = cant * pvpund;
+        Fixed base = cantpvp - cantpvp * desc1 / 100;
         basesimp[linea->ivalpresupuesto()] =  basesimp[linea->ivalpresupuesto()]+ base;
     }// end for
-    
+
 
     Fixed basei("0.00");
     base::Iterator it;
@@ -404,9 +420,9 @@ void presupuesto::calculaypintatotales() {
     DescuentoPresupuesto *linea1;
     if (listadescuentos->m_lista.first()) {
         for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
-	    Fixed propor(linea1->proporciondpresupuesto().ascii());
+            Fixed propor(linea1->proporciondpresupuesto().ascii());
             porcentt = porcentt + propor;
-        }// end for	
+        }// end for
     }// end if
 
 
@@ -418,19 +434,19 @@ void presupuesto::calculaypintatotales() {
         } else {
             parbaseimp = it.data();
         }// end if
-	totbaseimp = totbaseimp + parbaseimp;
+        totbaseimp = totbaseimp + parbaseimp;
     }// end for
 
     Fixed totiva("0.00");
     Fixed pariva("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-	Fixed piva(it.key().ascii());
+        Fixed piva(it.key().ascii());
         if (porcentt > Fixed("0.00")) {
             pariva = (it.data()-it.data()*porcentt/100)* piva/100;
         } else {
             pariva = it.data()* piva/100;
         }// end if
-	totiva = totiva + pariva;
+        totiva = totiva + pariva;
     }// end for
     pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
 }// end calculaypintatotales

@@ -41,11 +41,12 @@ FacturaView::FacturaView(company *comp, QWidget *parent, const char *name)
     m_forma_pago->setcompany(comp);
     m_cliente->setcompany(comp);
     m_descuentos->setcompany(comp);
+    m_codigoserie_factura->setcompany(comp);
     setListLinFactura(subform2);
     setListDescuentoFactura(m_descuentos);
     inicialize();
     comp->meteWindow(caption(),this);
-    fprintf(stderr,"Fin de la inicialización de Factura\n");
+    fprintf(stderr,"Fin de la inicializaciï¿½ de Factura\n");
 }
 
 

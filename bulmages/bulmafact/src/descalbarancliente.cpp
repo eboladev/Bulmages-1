@@ -55,7 +55,11 @@ void DescuentoAlbaranCliente::vaciaDescuentoAlbaranCliente() {
 void DescuentoAlbaranCliente::borrar() {
     if (mdb_iddalbaran != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM dalbaran WHERE iddalbaran="+mdb_iddalbaran);
+        int error = companyact->ejecuta("DELETE FROM dalbaran WHERE iddalbaran="+mdb_iddalbaran);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaDescuentoAlbaranCliente();
     }// end if
@@ -69,7 +73,11 @@ void DescuentoAlbaranCliente::guardaDescuentoAlbaranCliente() {
 	companyact->sanearCadena(mdb_proporciondalbaran)+","+
 	companyact->sanearCadena(mdb_idalbaran)+")";
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(iddalbaran) AS m FROM dalbaran ");
         if(!cur->eof())
             mdb_iddalbaran = cur->valor("m");
@@ -82,7 +90,11 @@ void DescuentoAlbaranCliente::guardaDescuentoAlbaranCliente() {
         SQLQuery += " ,idalbaran = "+companyact->sanearCadena(mdb_idalbaran)+" ";
         SQLQuery += " WHERE iddalbaran = "+companyact->sanearCadena(mdb_iddalbaran);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end guardaDescuentoAlbaranCliente

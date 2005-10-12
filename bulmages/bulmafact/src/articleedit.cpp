@@ -256,7 +256,11 @@ void articleedit::s_grabarClicked() {
 	SQLQuery += " , idtipo_articulo="+idtipo_articulo;
         SQLQuery += " WHERE idarticulo ="+idArticle;
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();	
     } else {
         QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia, pvparticulo, presentablearticulo, controlstockarticulo, idtipo_articulo)";
@@ -272,7 +276,11 @@ void articleedit::s_grabarClicked() {
 	SQLQuery += " , "+idtipo_articulo;
         SQLQuery += ")";
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
 	cursor2 *cur= companyact->cargacursor("SELECT max(idarticulo) AS m FROM articulo");
         companyact->commit();
 	if (!cur->eof()) {

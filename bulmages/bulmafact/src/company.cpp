@@ -48,6 +48,8 @@
 #include "cobroslist.h"
 #include "trabajador.h"
 #include "pagoslist.h"
+#include "listseriefacturaview.h"
+
 
 
 company::company() {}// end company
@@ -60,7 +62,7 @@ void company::init(QString bd) {
 }// end init
 
 /** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
-  * Al usuario debe seleccionar una empresa y el sistema empieza la inicialización de clases a partir de dicha inicialización.
+  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializaciï¿½ de clases a partir de dicha inicializaciï¿½.
   */
 QString company::searchCompany() {
     //El cambio de empresa se realiza desde el selector.
@@ -77,7 +79,7 @@ QString company::searchCompany() {
 
 
 void company::createMainWindows() {
-    m_articleslist = new articleslist(this, m_pWorkspace,theApp->translate("Artículos","company"));
+    m_articleslist = new articleslist(this, m_pWorkspace,theApp->translate("Artï¿½ulos","company"));
     m_providerslist = new providerslist(this, m_pWorkspace,theApp->translate("Proveedores","company"));
     m_clientsList = new ClientsList(this, m_pWorkspace,theApp->translate("Clientes","company"));
     m_cobrosList = new CobrosList(this, m_pWorkspace,theApp->translate("Cobros","company"));
@@ -113,7 +115,7 @@ void company::listClients () {
 }
 
 void company::newClient() {
-    m_clientEdit = new ClientEdit(this, m_pWorkspace,theApp->translate("Editar/Añadir cliente","company"));
+    m_clientEdit = new ClientEdit(this, m_pWorkspace,theApp->translate("Editar/Aï¿½dir cliente","company"));
     m_clientEdit->hide();
     m_clientEdit->showMaximized();
     m_clientEdit->setActiveWindow();
@@ -222,7 +224,7 @@ void company::refreshPedidosProveedor() {
     m_pedidosproveedorList->inicializa();
 }// end refreshPedidosCliente
 
-/** Presenta la ventana de formas de pago y espera la ejecución de la misma */
+/** Presenta la ventana de formas de pago y espera la ejecuciï¿½ de la misma */
 void company::s_FPago() {
     fpago *f = new fpago(this,NULL,theApp->translate("Formas de Pago", "company"));
     f->exec();
@@ -242,4 +244,11 @@ void company::s_Familias() {
     fam->exec();
     delete fam;
 }// end s_Familias
+
+
+void company::s_seriesFactura() {
+    ListSerieFacturaView *lser = new ListSerieFacturaView(this, 0,0);
+    lser->exec();
+    delete lser;
+}// end s_seriesFactura
 

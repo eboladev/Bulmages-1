@@ -69,7 +69,11 @@ void DescuentoPresupuesto::vaciaDescuentoPresupuesto() {
 void DescuentoPresupuesto::borrar() {
     if (mdb_iddpresupuesto != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM dpresupuesto WHERE iddpresupuesto="+mdb_iddpresupuesto);
+        int error = companyact->ejecuta("DELETE FROM dpresupuesto WHERE iddpresupuesto="+mdb_iddpresupuesto);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaDescuentoPresupuesto();
     }// end if
@@ -83,7 +87,11 @@ void DescuentoPresupuesto::guardaDescuentoPresupuesto() {
 	companyact->sanearCadena(mdb_proporciondpresupuesto)+","+
 	companyact->sanearCadena(mdb_idpresupuesto)+")";
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(iddpresupuesto) AS m FROM dpresupuesto ");
         if(!cur->eof())
             mdb_iddpresupuesto = cur->valor("m");
@@ -96,7 +104,11 @@ void DescuentoPresupuesto::guardaDescuentoPresupuesto() {
         SQLQuery += " ,idpresupuesto = "+companyact->sanearCadena(mdb_idpresupuesto)+" ";
         SQLQuery += " WHERE iddpresupuesto = "+companyact->sanearCadena(mdb_iddpresupuesto);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end guardaDescuentoPresupuesto

@@ -30,7 +30,11 @@ void PedidoCliente::borraPedidoCliente() {
         listalineas->borrar();
         listadescuentos->borrar();
         companyact->begin();
-        companyact->ejecuta("DELETE FROM pedidocliente WHERE idpedidocliente="+mdb_idpedidocliente);
+        int error = companyact->ejecuta("DELETE FROM pedidocliente WHERE idpedidocliente="+mdb_idpedidocliente);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaPedidoCliente();
         pintaPedidoCliente();
@@ -141,7 +145,11 @@ void PedidoCliente::guardaPedidoCliente() {
 	companyact->sanearCadena(mdb_descpedidocliente)+"','"+
 	companyact->sanearCadena(mdb_comentpedidocliente)+"', "+
 	companyact->sanearCadena(mdb_idtrabajador)+")";
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpedidocliente) AS m FROM pedidocliente");
         if (!cur->eof())
             setidpedidocliente(cur->valor("m"));
@@ -164,7 +172,11 @@ void PedidoCliente::guardaPedidoCliente() {
 	SQLQuery += " ,idtrabajador ="+companyact->sanearCadena(mdb_idtrabajador);
 	SQLQuery += " WHERE idpedidocliente="+companyact->sanearCadena(mdb_idpedidocliente);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
     listalineas->guardaListLinPedidoCliente();

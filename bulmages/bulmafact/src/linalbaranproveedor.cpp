@@ -71,7 +71,11 @@ void LinAlbaranProveedor::vaciaLinAlbaranProveedor() {
 void LinAlbaranProveedor::borrar() {
     if (mdb_numlalbaranp != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM lalbaranp WHERE numlalbaranp="+mdb_numlalbaranp);
+        int error = companyact->ejecuta("DELETE FROM lalbaranp WHERE numlalbaranp="+mdb_numlalbaranp);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaLinAlbaranProveedor();
     }// end if
@@ -89,7 +93,11 @@ void LinAlbaranProveedor::guardaLinAlbaranProveedor() {
 	companyact->sanearCadena(mdb_idalbaranp)+","+
 	companyact->sanearCadena(mdb_idarticulo)+")";
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(numlalbaranp) AS m FROM lalbaranp ");
         if(!cur->eof())
             mdb_numlalbaranp = cur->valor("m");
@@ -105,7 +113,11 @@ void LinAlbaranProveedor::guardaLinAlbaranProveedor() {
 	SQLQuery += " ,ivalalbaranp = "+companyact->sanearCadena(mdb_ivalalbaranp)+" ";
         SQLQuery += " WHERE numlalbaranp = "+companyact->sanearCadena(mdb_numlalbaranp);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end guardaLinAlbaranProveedor

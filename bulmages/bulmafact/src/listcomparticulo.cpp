@@ -90,7 +90,11 @@ void ListCompArticulo::vaciar() {
 void ListCompArticulo::borrar() {
     if (mdb_idarticulo != "")  {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+mdb_idarticulo);
+        int error = companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+mdb_idarticulo);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end borrar

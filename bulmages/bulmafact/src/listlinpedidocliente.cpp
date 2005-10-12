@@ -125,7 +125,11 @@ void ListLinPedidoCliente::vaciar() {
 void ListLinPedidoCliente::borrar() {
     if (mdb_idpedidocliente != "")  {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM lpedidocliente WHERE idpedidocliente="+mdb_idpedidocliente);
+        int error = companyact->ejecuta("DELETE FROM lpedidocliente WHERE idpedidocliente="+mdb_idpedidocliente);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end borrar

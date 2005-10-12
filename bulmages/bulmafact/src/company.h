@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,7 +28,7 @@
 
 /**
 Company class gives the application something like a standard interface to access each company in the same way.
-@author Tomeu Borrás
+@author Tomeu Borrï¿½
 */
 
 class providerslist;
@@ -106,6 +106,7 @@ public:
    void s_FPago();
    void s_Familias();
    void s_trabajadores();
+   void s_seriesFactura();
    QString searchCompany();
 };
 

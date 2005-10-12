@@ -122,7 +122,11 @@ void listlinpresupuesto::vaciar() {
 void listlinpresupuesto::borrar() {
     if (mdb_idpresupuesto != "")  {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM lpresupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
+        int error = companyact->ejecuta("DELETE FROM lpresupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end borrar

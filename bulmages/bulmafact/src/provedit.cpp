@@ -222,7 +222,11 @@ void provedit::s_saveProvider() {
       SQLQuery += " , emailproveedor='"+companyact->sanearCadena(m_emailproveedor->text())+"'";
       SQLQuery += " WHERE idproveedor ="+idprovider;
       companyact->begin();
-      companyact->ejecuta(SQLQuery);
+      int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
       companyact->commit();
    } else {
       QString SQLQuery = " INSERT INTO proveedor (nomproveedor, nomaltproveedor, cifproveedor, codicliproveedor, cbancproveedor, dirproveedor, poblproveedor, cpproveedor, telproveedor, faxproveedor, urlproveedor, emailproveedor)";
@@ -241,7 +245,11 @@ void provedit::s_saveProvider() {
       SQLQuery += ",'"+companyact->sanearCadena(m_emailproveedor->text())+"'";
       SQLQuery += ")";
       companyact->begin();
-      companyact->ejecuta(SQLQuery);
+      int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
       cursor2 * cur = companyact->cargacursor("SELECT max(idproveedor) AS id FROM proveedor");
       idprovider = cur->valor("id");
       delete cur;
@@ -258,7 +266,11 @@ void provedit::boton_borrar() {
       if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Proveedor","Esta a punto de borrar un proveedor, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
          QString SQLQuery="DELETE FROM proveedor WHERE idproveedor="+idprovider;
          companyact->begin();
-         companyact->ejecuta(SQLQuery);
+         int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
          companyact->commit();
          close();
       }// end if

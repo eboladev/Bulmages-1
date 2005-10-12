@@ -123,7 +123,11 @@ void ListLinAlbaranProveedor::vaciar() {
 void ListLinAlbaranProveedor::borrar() {
     if (mdb_idalbaranp != "")  {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM lalbaranp WHERE idalbaranp="+mdb_idalbaranp);
+        int error = companyact->ejecuta("DELETE FROM lalbaranp WHERE idalbaranp="+mdb_idalbaranp);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end borrar

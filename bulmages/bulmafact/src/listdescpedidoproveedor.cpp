@@ -89,7 +89,11 @@ void ListDescuentoPedidoProveedor::vaciar() {
 void ListDescuentoPedidoProveedor::borrar() {
     if (mdb_idpedidoproveedor != "")  {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM dpedidoproveedor WHERE idpedidoproveedor="+mdb_idpedidoproveedor);
+        int error = companyact->ejecuta("DELETE FROM dpedidoproveedor WHERE idpedidoproveedor="+mdb_idpedidoproveedor);
+	if (error ) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end borrar

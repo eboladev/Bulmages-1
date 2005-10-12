@@ -72,7 +72,11 @@ void LinFacturaProveedor::vaciaLinFacturaProveedor() {
 void LinFacturaProveedor::borrar() {
     if (mdb_idlfacturap != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM lfacturap WHERE idlfacturap="+mdb_idlfacturap);
+        int error = companyact->ejecuta("DELETE FROM lfacturap WHERE idlfacturap="+mdb_idlfacturap);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaLinFacturaProveedor();
     }// end if
@@ -90,7 +94,11 @@ void LinFacturaProveedor::guardaLinFacturaProveedor() {
 	companyact->sanearCadena(mdb_idarticulo)+", "+
 	companyact->sanearCadena(mdb_ivalfacturap)+")";
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idlFactura) AS m FROM lFactura ");
         if(!cur->eof())
             mdb_idlfacturap = cur->valor("m");
@@ -107,7 +115,11 @@ void LinFacturaProveedor::guardaLinFacturaProveedor() {
         SQLQuery += " ,ivalfacturap = "+companyact->sanearCadena(mdb_ivalfacturap)+" ";
         SQLQuery += " WHERE idlfacturap = "+companyact->sanearCadena(mdb_idlfacturap);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end guardaLinFacturaProveedor

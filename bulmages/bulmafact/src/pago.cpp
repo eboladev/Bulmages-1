@@ -28,7 +28,11 @@ Pago::~Pago() {}
 void Pago::borraPago() {
     if (mdb_idpago != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM pago WHERE idpago="+mdb_idpago);
+        int error = companyact->ejecuta("DELETE FROM pago WHERE idpago="+mdb_idpago);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// en dif
         companyact->commit();
         vaciaPago();
         pintaPago();
@@ -91,7 +95,11 @@ void Pago::guardaPago() {
 	companyact->sanearCadena(mdb_refpago)+"','"+
 	companyact->sanearCadena(mdb_comentpago)+"',"+
 	companyact->sanearCadena(mdb_previsionpago)+")";
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idpago) AS m FROM pago");
         if (!cur->eof())
             setidpago(cur->valor("m"));
@@ -108,7 +116,11 @@ void Pago::guardaPago() {
         SQLQuery += " ,previsionpago='"+companyact->sanearCadena(mdb_previsionpago)+"'";
         SQLQuery += " WHERE idpago="+companyact->sanearCadena(mdb_idpago);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// en dif
         companyact->commit();
     }// end if
     cargaPago(mdb_idpago);

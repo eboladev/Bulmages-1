@@ -100,7 +100,11 @@ void ListLinAlbaranCliente::vaciar() {
 void ListLinAlbaranCliente::borrar() {
     if (mdb_idalbaran != "")  {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM lalbaran WHERE idalbaran="+mdb_idalbaran);
+        int error = companyact->ejecuta("DELETE FROM lalbaran WHERE idalbaran="+mdb_idalbaran);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
 }// end borrar

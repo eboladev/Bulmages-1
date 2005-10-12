@@ -18,20 +18,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
- /*
+/*
 -- Any: Any en que s'efectua la comanda.
--- Numero: Número de comanda (començant de 1 cada any).
--- Descripcio: Breu descripció o comentari opcional.
--- Data: Data d'emisió de la comanda.
+-- Numero: Nmero de comanda (comenï¿½nt de 1 cada any).
+-- Descripcio: Breu descripciï¿½o comentari opcional.
+-- Data: Data d'emisiï¿½de la comanda.
 CREATE TABLE pedido (
-   idpedido serial PRIMARY KEY,
-   numpedido integer,
-   anopedido integer,
-   fechapedido date,
-   descpedido character varying(500),
-   
-   iddivision integer NOT NULL REFERENCES division(iddivision),
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
+  idpedido serial PRIMARY KEY,
+  numpedido integer,
+  anopedido integer,
+  fechapedido date,
+  descpedido character varying(500),
+  
+  iddivision integer NOT NULL REFERENCES division(iddivision),
+  idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
 */
 
@@ -50,105 +50,109 @@ CREATE TABLE pedido (
 #define COL_IDALMACEN 6
 
 orderslist::orderslist(company *comp, QWidget *parent, const char *name, int flag)
- : orderslistbase(parent, name, flag) {
-      companyact = comp;
-      inicializa();
-         companyact->meteWindow(caption(),this);
+        : orderslistbase(parent, name, flag) {
+    companyact = comp;
+    inicializa();
+    companyact->meteWindow(caption(),this);
 
 }// end orderslist
 
 void orderslist::inicializa() {
-	
-   m_list->setNumRows( 0 );
-   m_list->setNumCols( 0 );
-   m_list->setSelectionMode( QTable::SingleRow );
-   m_list->setSorting( TRUE );
-   m_list->setSelectionMode( QTable::SingleRow );
-   m_list->setColumnMovingEnabled( TRUE );
-   m_list->setNumCols(7);
-   m_list->horizontalHeader()->setLabel( COL_IDPEDIDO, tr( "Identificador" ) );
-   m_list->horizontalHeader()->setLabel( COL_NUMPEDIDO, tr( "Número de pedido" ) );
-   m_list->horizontalHeader()->setLabel( COL_ANOPEDIDO, tr( "Año" ) );
-   m_list->horizontalHeader()->setLabel( COL_FECHAPEDIDO, tr( "Fecha Emisión" ) );
-   m_list->horizontalHeader()->setLabel( COL_DESCPEDIDO, tr( "Descripción" ) );
-   m_list->horizontalHeader()->setLabel( COL_IDDIVISION, tr( "Proveedor/División" ) );
-   m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr( "Almacén" ) );
-   
-   m_list->setColumnWidth(COL_IDPEDIDO,100);
-   m_list->setColumnWidth(COL_NUMPEDIDO,200);
-   m_list->setColumnWidth(COL_ANOPEDIDO,75);
-   m_list->setColumnWidth(COL_FECHAPEDIDO,100);
-   m_list->setColumnWidth(COL_DESCPEDIDO,300);
-   m_list->setColumnWidth(COL_IDDIVISION,100);
-   m_list->setColumnWidth(COL_IDALMACEN,100);
-   
-//   listado->setPaletteBackgroundColor(QColor(150,230,230));
+
+    m_list->setNumRows( 0 );
+    m_list->setNumCols( 0 );
+    m_list->setSelectionMode( QTable::SingleRow );
+    m_list->setSorting( TRUE );
+    m_list->setSelectionMode( QTable::SingleRow );
+    m_list->setColumnMovingEnabled( TRUE );
+    m_list->setNumCols(7);
+    m_list->horizontalHeader()->setLabel( COL_IDPEDIDO, tr( "Identificador" ) );
+    m_list->horizontalHeader()->setLabel( COL_NUMPEDIDO, tr( "Nmero de pedido" ) );
+    m_list->horizontalHeader()->setLabel( COL_ANOPEDIDO, tr( "Aï¿½" ) );
+    m_list->horizontalHeader()->setLabel( COL_FECHAPEDIDO, tr( "Fecha Emisiï¿½" ) );
+    m_list->horizontalHeader()->setLabel( COL_DESCPEDIDO, tr( "Descripciï¿½" ) );
+    m_list->horizontalHeader()->setLabel( COL_IDDIVISION, tr( "Proveedor/Divisiï¿½" ) );
+    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr( "Almacï¿½" ) );
+
+    m_list->setColumnWidth(COL_IDPEDIDO,100);
+    m_list->setColumnWidth(COL_NUMPEDIDO,200);
+    m_list->setColumnWidth(COL_ANOPEDIDO,75);
+    m_list->setColumnWidth(COL_FECHAPEDIDO,100);
+    m_list->setColumnWidth(COL_DESCPEDIDO,300);
+    m_list->setColumnWidth(COL_IDDIVISION,100);
+    m_list->setColumnWidth(COL_IDALMACEN,100);
+
+    //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#AAAAAA");   
-    m_list->setReadOnly(TRUE);        
-       companyact->begin();
-       cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido","unquery");
-       companyact->commit();
-       m_list->setNumRows( cur->numregistros() );
-       int i=0;
-       while (!cur->eof()) {
-         m_list->setText(i,COL_IDPEDIDO,cur->valor("idpedido"));
-	 		m_list->setText(i,COL_NUMPEDIDO,cur->valor("numpedido"));
-         m_list->setText(i,COL_ANOPEDIDO,cur->valor("anopedido"));
-         m_list->setText(i,COL_FECHAPEDIDO,cur->valor("fechapedido"));
-	 		m_list->setText(i,COL_DESCPEDIDO,cur->valor("descpedido"));
-         m_list->setText(i,COL_IDDIVISION,cur->valor("iddivision"));
-	 		m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
-         i++;
-         cur->siguienteregistro();
-       }// end while
-      
-      delete cur;
+    m_list->setPaletteBackgroundColor("#AAAAAA");
+    m_list->setReadOnly(TRUE);
+    companyact->begin();
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM pedido","unquery");
+    companyact->commit();
+    m_list->setNumRows( cur->numregistros() );
+    int i=0;
+    while (!cur->eof()) {
+        m_list->setText(i,COL_IDPEDIDO,cur->valor("idpedido"));
+        m_list->setText(i,COL_NUMPEDIDO,cur->valor("numpedido"));
+        m_list->setText(i,COL_ANOPEDIDO,cur->valor("anopedido"));
+        m_list->setText(i,COL_FECHAPEDIDO,cur->valor("fechapedido"));
+        m_list->setText(i,COL_DESCPEDIDO,cur->valor("descpedido"));
+        m_list->setText(i,COL_IDDIVISION,cur->valor("iddivision"));
+        m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
+        i++;
+        cur->siguienteregistro();
+    }// end while
+
+    delete cur;
 }// end orderslist
 
 
 void orderslist::dobleclick(int a, int b, int c, const QPoint &) {
-   QString idpedido = m_list->text(a, COL_IDPEDIDO);
-   fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
-   linorderslist *linea = new linorderslist(companyact,companyact->m_pWorkspace,theApp->translate("Detalle Pedido", "company"));
-   linea->chargelinorders(idpedido);
-   linea->show();
+    QString idpedido = m_list->text(a, COL_IDPEDIDO);
+    fprintf(stderr, "parm a: %d  parm b: %d  parm c %d \n", a, b, c);
+    linorderslist *linea = new linorderslist(companyact,companyact->m_pWorkspace,theApp->translate("Detalle Pedido", "company"));
+    linea->chargelinorders(idpedido);
+    linea->show();
 }
 
 
 void orderslist::neworder() {
-   fprintf(stderr, "neworder button activated");
-   linorderslist *linea = new linorderslist(companyact,companyact->m_pWorkspace,theApp->translate("Detalle Pedido", "company"));
-   linea->chargelinorders(QString("0"));
-   linea->show();
+    fprintf(stderr, "neworder button activated");
+    linorderslist *linea = new linorderslist(companyact,companyact->m_pWorkspace,theApp->translate("Detalle Pedido", "company"));
+    linea->chargelinorders(QString("0"));
+    linea->show();
 }// end neworder
 
 
 void orderslist::removeOrder() {
-	fprintf(stderr, "removeOrder button activated");
-	if (QMessageBox::warning( this, "BulmaFact - Pedidos",
-    "¿Seguro que desea borrar el pedido?", "Aceptar", "Cancelar") == 0) {
-		int row = m_list->currentRow();
-		QString idOrder = m_list->text(row,COL_IDPEDIDO);
-		QString SQLQuery = "DELETE FROM lpedido WHERE idpedido ="+idOrder;
-		companyact->begin();
-		int ok=companyact->ejecuta(SQLQuery);
-		companyact->commit();
-		if (ok==0) {
-			QString SQLQuery = "DELETE FROM pedido WHERE idpedido ="+idOrder;
-			companyact->begin();
-			companyact->ejecuta(SQLQuery);
-			companyact->commit();
-		}// end if
-		inicializa();
-	}// end if
+    fprintf(stderr, "removeOrder button activated");
+    if (QMessageBox::warning( this, "BulmaFact - Pedidos",
+                              "Seguro que desea borrar el pedido?", "Aceptar", "Cancelar") == 0) {
+        int row = m_list->currentRow();
+        QString idOrder = m_list->text(row,COL_IDPEDIDO);
+        QString SQLQuery = "DELETE FROM lpedido WHERE idpedido ="+idOrder;
+        companyact->begin();
+        int error=companyact->ejecuta(SQLQuery);
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
+        SQLQuery = "DELETE FROM pedido WHERE idpedido ="+idOrder;
+        error = companyact->ejecuta(SQLQuery);
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
+        companyact->commit();
+        inicializa();
+    }// end if
 }// end removeOrder
 
 
 
 
 orderslist::~orderslist() {
-	companyact->sacaWindow(this);
+    companyact->sacaWindow(this);
 }// end ~orderslist
 
 

@@ -28,7 +28,11 @@ Cobro::~Cobro() {}
 void Cobro::borraCobro() {
     if (mdb_idcobro != "") {
         companyact->begin();
-        companyact->ejecuta("DELETE FROM cobro WHERE idcobro="+mdb_idcobro);
+        int error = companyact->ejecuta("DELETE FROM cobro WHERE idcobro="+mdb_idcobro);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
         vaciaCobro();
         pintaCobro();
@@ -90,7 +94,11 @@ void Cobro::guardaCobro() {
 	companyact->sanearCadena(mdb_refcobro)+"','"+
 	companyact->sanearCadena(mdb_comentcobro)+"',"+
 	companyact->sanearCadena(mdb_previsioncobro)+")";
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	 }// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idcobro) AS m FROM cobro");
         if (!cur->eof())
             setidcobro(cur->valor("m"));
@@ -107,7 +115,11 @@ void Cobro::guardaCobro() {
         SQLQuery += " ,previsioncobro='"+companyact->sanearCadena(mdb_previsioncobro)+"'";
         SQLQuery += " WHERE idcobro="+companyact->sanearCadena(mdb_idcobro);
         companyact->begin();
-        companyact->ejecuta(SQLQuery);
+        int error = companyact->ejecuta(SQLQuery);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
         companyact->commit();
     }// end if
     cargaCobro(mdb_idcobro);

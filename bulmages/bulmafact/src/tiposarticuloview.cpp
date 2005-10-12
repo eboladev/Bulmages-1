@@ -150,9 +150,15 @@ bool tiposarticuloview::trataModificado() {
   */
 void tiposarticuloview::s_saveTipo() {
     QString query = "UPDATE tipo_articulo SET codtipo_articulo='"+
-	companyact->sanearCadena(m_codTipo->text())+"', desctipo_articulo= '"+
-	companyact->sanearCadena(m_descTipo->text())+"' WHERE idtipo_articulo="+m_idtipo;
-    companyact->ejecuta(query);
+                    companyact->sanearCadena(m_codTipo->text())+"', desctipo_articulo= '"+
+                    companyact->sanearCadena(m_descTipo->text())+"' WHERE idtipo_articulo="+m_idtipo;
+    companyact->begin();
+    int error = companyact->ejecuta(query);
+    if (error) {
+        companyact->rollback();
+        return;
+    }// end if
+    companyact->commit();
     //pintar();
     // Vamos a hacer algo no reentrante.
     QListViewItem *it =  m_listTipos->findItem(m_idtipo, COL_IDTIPOARTICULO);
@@ -175,7 +181,11 @@ void tiposarticuloview::s_newTipo() {
 
     QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('XXXXXX','Descripcion del tipo')";
     companyact->begin();
-    companyact->ejecuta(query);
+    int error = companyact->ejecuta(query);
+	if (error) {
+		companyact->rollback();
+		return;
+	}// end if
     cursor2 *cur = companyact->cargacursor("SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo");
     companyact->commit();
     m_idtipo = cur->valor("idtipo");
@@ -189,7 +199,8 @@ void tiposarticuloview::s_newTipo() {
 void tiposarticuloview::s_deleteTipo() {
     trataModificado();
     QString query = "DELETE FROM tipo_articulo WHERE idtipo_articulo="+m_idtipo;
-    companyact->ejecuta(query);
+    int error = companyact->ejecuta(query);
+	if (error) return;
     pintar();
 }// end s_saveTipoIVA
 
