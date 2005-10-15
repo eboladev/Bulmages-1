@@ -1387,3 +1387,17 @@ CREATE TABLE lpedidoproveedor (
 );
 
 
+CREATE OR REPLACE FUNCTION calctotalpres(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto/100) *(1+ ivalpresupuesto/100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;

@@ -66,7 +66,7 @@ bool FacturaView::close(bool fil) {
             s_saveFactura();
     }// end if
     return (QWidget::close(fil));
-}
+}// end close
 
 
 void FacturaView::inicialize() {
@@ -89,6 +89,7 @@ void   FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc)
 }// end pintatotales
 
 
+/// Crea un nuevo cobro para la factura seleccionada.
 void FacturaView::s_nuevoCobro() {
     CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
     bud->setidcliente(mdb_idcliente);
@@ -105,15 +106,14 @@ void FacturaView::cargaFactura(QString id) {
     setCaption("Factura   "+mdb_reffactura);
     companyact->meteWindow(caption(),this);
     dialogChanges_cargaInicial();
+}// end cargaFactura
 
-}
 
-
+/// Imprime el informe de referencia.
 void FacturaView::s_informeReferencia() {
     InformeReferencia *inf = new InformeReferencia(companyact);
     inf->setreferencia(mdb_reffactura);
     inf->generarinforme();
     delete inf;
-
-}
+}// end s_informeReferencia
 

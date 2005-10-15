@@ -100,7 +100,10 @@ info "Comprobamos la existencia de PLPGSQL"
    fi
 
 
-createdb -E UNICODE $2 2>> /tmp/errores1.txt > /dev/null
+# La creacion de las bases de datos como UNICODE da muchos problemas con los caracteres especiales
+# Por ese motivo de momento crearemos las bases de datos como SQL_ASCII
+#createdb -E UNICODE $2 2>> /tmp/errores1.txt > /dev/null
+createdb -E SQL_ASCII $2 2>> /tmp/errores1.txt > /dev/null
 
 
 # Si no ha salido en el exit 1 es que si ha encontrado el plpgsql y continuamos

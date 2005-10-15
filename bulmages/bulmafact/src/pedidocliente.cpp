@@ -185,10 +185,9 @@ void PedidoCliente::guardaPedidoCliente() {
 }// end guardaPedidoCliente
 
 
-
-
-
 void PedidoCliente::imprimirPedidoCliente() {
+
+    base basesimp;
     /// Copiamos el archivo
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"pedidocliente.rml";
     archivo = "cp "+archivo+" /tmp/pedidocliente.rml";
@@ -199,14 +198,15 @@ void PedidoCliente::imprimirPedidoCliente() {
     archivo = "cp "+archivo+" /tmp/logo.jpg";
     system (archivo.ascii());
 
+
     QFile file;
     file.setName( "/tmp/pedidocliente.rml" );
     file.open( IO_ReadOnly );
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
-    QString fitxersortidatxt;
-    // L�ea de totales del pedidocliente
+    QString fitxersortidatxt="";
+    // L�ea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -216,69 +216,131 @@ void PedidoCliente::imprimirPedidoCliente() {
         buff.replace("[telcliente]",cur->valor("telcliente"));
         buff.replace("[nomcliente]",cur->valor("nomcliente"));
         buff.replace("[cifcliente]",cur->valor("cifcliente"));
+        buff.replace("[idcliente]",cur->valor("idcliente"));
     }// end if
+    delete cur;
 
     buff.replace("[numpedidocliente]",mdb_numpedidocliente);
     buff.replace("[fechapedidocliente]",mdb_fechapedidocliente);
+    buff.replace("[contactpedidocliente]",mdb_contactpedidocliente);
+    buff.replace("[telpedidocliente]",mdb_telpedidocliente);
     buff.replace("[comentpedidocliente]",mdb_comentpedidocliente);
     buff.replace("[descpedidocliente]",mdb_descpedidocliente);
     buff.replace("[refpedidocliente]",mdb_refpedidocliente);
 
-    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td>Concepto</td>";
-    fitxersortidatxt += "	<td>Cantidad</td>";
-    fitxersortidatxt += "	<td>Precio Und.</td>";
-    fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "</tr>";
 
-    QString l;
     LinPedidoCliente *linea;
-    uint i = 0;
+    /// Impresi� de la tabla de contenidos.
+    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
+    fitxersortidatxt += "<tr>\n";
+    fitxersortidatxt += "	<td>Cod.</td>\n";
+    fitxersortidatxt += "	<td>Concepto</td>\n";
+    fitxersortidatxt += "	<td>Cant.</td>\n";
+    fitxersortidatxt += "	<td>Precio</td>\n";
+    fitxersortidatxt += "	<td>Desc.</td>\n";
+    fitxersortidatxt += "	<td>Total</td>\n";
+    fitxersortidatxt += "</tr>\n";
+    QString l;
+
+    int i=0;// Contador que sirve para poner lineas de más en caso de que sea preciso.
+
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td>"+linea->desclpedidocliente()+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpedidocliente().toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplpedidocliente().toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpedidocliente().toFloat() * linea->pvplpedidocliente().toFloat())+"</td>";
+        Fixed base = Fixed(linea->cantlpedidocliente().ascii()) * Fixed(linea->pvplpedidocliente().ascii());
+        basesimp[linea->ivalpedidocliente()] = basesimp[linea->ivalpedidocliente()] + base - base * Fixed(linea->descuentolpedidocliente().ascii()) /100;
+
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "	<td>"+linea->codigocompletoarticulo()+"</td>\n";
+        fitxersortidatxt += "	<td>"+linea->desclpedidocliente()+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->cantlpedidocliente().ascii())+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->pvplpedidocliente().ascii())+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->descuentolpedidocliente().ascii())+" %</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",(base - base * Fixed (linea->descuentolpedidocliente()) /100).toQString().ascii())+"</td>\n";
         fitxersortidatxt += "</tr>";
         i++;
     }// end for
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Base</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Iva</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "</blockTable>";
 
+    while (i++ < 15)
+        fitxersortidatxt += "<tr></tr>";
+
+    fitxersortidatxt += "</blockTable>\n";
     buff.replace("[story]",fitxersortidatxt);
+
+
+    Fixed basei("0.00");
+    base::Iterator it;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        basei =basei + it.data();
+    }// end for
+
+    /// Impresi� de los descuentos
+    fitxersortidatxt = "";
+    Fixed porcentt("0.00");
+    DescuentoPedidoCliente *linea1;
+    if (listadescuentos->m_lista.first()) {
+        fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "	<td>Descuento</td>\n";
+        fitxersortidatxt += "	<td>Porcentaje</td>\n";
+        fitxersortidatxt += "	<td>Total</td>\n";
+        fitxersortidatxt += "</tr>\n";
+        for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
+            porcentt = porcentt + Fixed(linea1->proporciondpedidocliente().ascii());
+            fitxersortidatxt += "<tr>\n";
+            fitxersortidatxt += "	<td>"+linea1->conceptdpedidocliente()+"</td>\n";
+            fitxersortidatxt += "	<td>"+l.sprintf("%s",linea1->proporciondpedidocliente().ascii())+" %</td>\n";
+            fitxersortidatxt += "	<td>"+l.sprintf("-%s",( Fixed(linea1->proporciondpedidocliente())*basei/100).toQString().ascii())+"</td>\n";
+            fitxersortidatxt += "</tr>";
+        }// end for
+        fitxersortidatxt += "</blockTable>\n";
+    }// end if
+    buff.replace("[descuentos]",fitxersortidatxt);
+
+    /// Impresión de los totales
+    fitxersortidatxt= "";
+    QString tr1 = "";	// Rellena el primer tr de titulares
+    QString tr2 = "";	// Rellena el segundo tr de cantidades
+    fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
+
+
+    Fixed totbaseimp("0.00");
+    Fixed parbaseimp("0.00");
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0) {
+            parbaseimp = it.data()-it.data()*porcentt/100;
+        } else {
+            parbaseimp = it.data();
+        }// end if
+        totbaseimp = totbaseimp + parbaseimp;
+        tr1 += "	<td>Base "+it.key()+" %</td>\n";
+        tr2 += "	<td>"+l.sprintf("%s",parbaseimp.toQString().ascii())+"</td>\n";
+    }// end for
+
+    Fixed totiva("0.0");
+    Fixed pariva("0.0");
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0) {
+            pariva = (it.data()-it.data()*porcentt/100)* Fixed(it.key()) /100;
+        } else {
+            pariva = it.data()* Fixed(it.key()) /100;
+        }// end if
+        totiva = totiva + pariva;
+        tr1 += "	<td>Iva "+it.key()+" %</td>\n";
+        tr2 += "	<td>"+l.sprintf("%s", pariva.toQString().ascii())+"</td>\n";
+    }// end for
+    tr1 += "	<td>Total </td>\n";
+    tr2 += "	<td>"+l.sprintf("%s",(totiva+totbaseimp).toQString().ascii())+"</td>\n";
+    fitxersortidatxt += "<tr>"+tr1+"</tr><tr>"+tr2+"</tr></blockTable>\n";
+    buff.replace("[totales]",fitxersortidatxt);
 
     if ( file.open( IO_WriteOnly ) ) {
         QTextStream stream( &file );
         stream << buff;
         file.close();
     }
+
     system("trml2pdf.py /tmp/pedidocliente.rml > /tmp/pedidocliente.pdf");
-    system("kpdf /tmp/pedidocliente.pdf");
-} //end imprimirPedidoCliente
-
-
-
-
-
+    system("kpdf /tmp/pedidocliente.pdf &");
+} //end imprimirPresupuesto
 
 
 void PedidoCliente::calculaypintatotales() {

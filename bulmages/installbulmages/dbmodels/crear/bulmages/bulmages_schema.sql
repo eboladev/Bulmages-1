@@ -93,7 +93,7 @@ CREATE TABLE cuenta (
     codigo character varying(12) NOT NULL,
     descripcion character varying(100) NOT NULL,
     imputacion boolean NOT NULL DEFAULT TRUE,
-    padre integer NOT NULL,
+    padre integer,
     bloqueada boolean NOT NULL DEFAULT FALSE,
     idgrupo integer NOT NULL REFERENCES grupo(idgrupo),
     msg character varying(500),

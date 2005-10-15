@@ -241,7 +241,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
                 int error = conexionbase->ejecuta(query);
 		if (error) {
 			conexionbase->rollback();
-			return;
+			return 1;
 		}// end if
                 conexionbase->commit();
                 mensajeria(theApp->translate("pgimportfiles","<LI>Se ha insertado la cuenta ")+cod+"</LI>\n");
@@ -345,7 +345,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
                     int error = conexionbase->ejecuta(query);
 			if (error) {
 				conexionbase->rollback();
-				return;
+				return 1;
 			}// end if
                 }// end if
                 query = "SELECT max(idasiento) as idasiento FROM asiento";
@@ -380,7 +380,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
                     int error = conexionbase->ejecuta(query);
 			if (error) {
 				conexionbase->rollback();
-				return;
+				return 1;
 			}// end if
                     conexionbase->commit();
                 }// end if
@@ -399,7 +399,7 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
     }// end if
     mensajeria(theApp->translate("pgimportfiles","<LI>Terminado</LI>\n"));
     alerta(subcuentas.size()+asientos.size(),subcuentas.size()+asientos.size());
-    return 1;
+    return 0;
 }
 
 /**

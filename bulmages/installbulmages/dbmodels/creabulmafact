@@ -1,9 +1,9 @@
 #!/bin/bash
-#  (C) Tomeu Borrás Riera, Octubre 2004
+#  (C) Tomeu Borrï¿½ Riera, Octubre 2004
 # Lo ejecuta un usuario con privilegios para crear bases de datos. Si no no funciona.
 #
 # Este script se encarga de crear bases de datos de bulmages.
-# para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos que será)
+# para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos que serï¿½
 # Este script no se encarga de hacer las inserciones oportunas en la metabd.
 # Aunque es una tarea muy sencilla que puede hacer posteriormente.
 # PARAMETROS:
@@ -68,8 +68,9 @@ linea
 tiempo
 
 dropdb  $2 2>> /tmp/error.txt > /dev/null
-createdb -E UNICODE $2 2>> /tmp/errores1.txt > /dev/null
-
+# La creaciÃ³n de bases de datos con unicode da muchos problemas con los caracteres especiales.
+#createdb -E UNICODE $2 2>> /tmp/errores1.txt > /dev/null
+createdb -E SQL_ASCII $2 2>> /tmp/errores1.txt > /dev/null
 
 # Creamos la base
 if [ "$3" = "1" -o "$3" = "2" ]; then
@@ -150,7 +151,7 @@ fi
 
 DBS=`cat /tmp/errores1.txt | grep ERROR`
 if [ "$DBS" ]; then
-   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortará la instalacion. Para mas informacion consulte en bulmages@bulma.net. \n$DBS"
+   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortarï¿½la instalacion. Para mas informacion consulte en bulmages@bulma.net. \n$DBS"
    dropdb $2
    exit 1
 else

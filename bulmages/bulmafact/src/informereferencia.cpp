@@ -8,10 +8,7 @@ InformeReferencia::InformeReferencia (company *comp) {
 	companyact = comp;
 }
 
-
 InformeReferencia::~InformeReferencia() {}
-
-
 
 void InformeReferencia::generarinforme() {
 
@@ -33,12 +30,7 @@ void InformeReferencia::generarinforme() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt="";
-    // Línea de totales del presupuesto
-
-
-
-
-
+    // Lï¿½ea de totales del presupuesto
 
     fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\"7cm, 3cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
@@ -52,7 +44,7 @@ void InformeReferencia::generarinforme() {
 
 	fprintf(stderr,"GENERACION DEL INFORME \n");
 	QString SQLQuery = " SELECT * FROM articulo ";
-	
+
 	SQLQuery        += " LEFT JOIN (SELECT idarticulo, SUM(cantlpresupuesto) AS cantlpresupuestot  FROM lpresupuesto WHERE idpresupuesto IN (SELECT idpresupuesto FROM presupuesto WHERE refpresupuesto = '"+m_referencia+"') GROUP BY idarticulo) AS t1 ON t1.idarticulo = articulo.idarticulo ";
 	
 	SQLQuery        += " LEFT JOIN (SELECT idarticulo, SUM(cantlpedidocliente) AS cantlpedidoclientet  FROM lpedidocliente WHERE idpedidocliente IN (SELECT idpedidocliente FROM pedidocliente WHERE refpedidocliente = '"+m_referencia+"') GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo ";	
