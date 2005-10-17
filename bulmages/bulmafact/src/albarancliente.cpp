@@ -49,6 +49,7 @@ void AlbaranCliente::vaciaAlbaranCliente() {
     mdb_numalbaran="";
     mdb_fechaalbaran="";
     mdb_comentalbaran="";
+    mdb_comentprivalbaran="";
     mdb_idcliente="";
     mdb_idforma_pago="";
     mdb_idalmacen="";
@@ -68,6 +69,7 @@ void AlbaranCliente::pintaAlbaranCliente() {
     pintaNumAlbaran(mdb_numalbaran);
     pintafechaalbaran(mdb_fechaalbaran);
     pintaComentAlbaran(mdb_comentalbaran);
+    pintaComentPrivAlbaran(mdb_comentprivalbaran);
     pintaidcliente(mdb_idcliente);
     pintaidforma_pago(mdb_idforma_pago);
     pintaidalmacen(mdb_idalmacen);
@@ -98,6 +100,7 @@ void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
         mdb_numalbaran= cur->valor("numalbaran");
         mdb_fechaalbaran= cur->valor("fechaalbaran");
         mdb_comentalbaran= cur->valor("comentalbaran");
+	mdb_comentprivalbaran = cur->valor("comentprivalbaran");
 	mdb_idforma_pago = cur->valor("idforma_pago");
 	mdb_descalbaran = cur->valor("descalbaran");
 	mdb_refalbaran = cur->valor("refalbaran");
@@ -128,10 +131,11 @@ void AlbaranCliente::guardaAlbaranCliente() {
 	mdb_procesadoalbaran = "FALSE";
     if (mdb_idalbaran == "") {
         /// Se trata de una inserci�
-        QString SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran, idcliente, idforma_pago, idalmacen, descalbaran, refalbaran, idtrabajador, contactalbaran, telalbaran, procesadoalbaran) VALUES ("+
+        QString SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran,comentprivalbaran, idcliente, idforma_pago, idalmacen, descalbaran, refalbaran, idtrabajador, contactalbaran, telalbaran, procesadoalbaran) VALUES ("+
 	companyact->sanearCadena(mdb_numalbaran)+",'"+
 	companyact->sanearCadena(mdb_fechaalbaran)+"','"+
 	companyact->sanearCadena(mdb_comentalbaran)+"',"+
+	companyact->sanearCadena(mdb_comentprivalbaran)+"',"+
 	companyact->sanearCadena(mdb_idcliente)+","+
 	companyact->sanearCadena(mdb_idforma_pago)+","+
 	companyact->sanearCadena(mdb_idalmacen)+",'"+
@@ -156,6 +160,7 @@ void AlbaranCliente::guardaAlbaranCliente() {
         SQLQuery += " numalbaran="+companyact->sanearCadena(mdb_numalbaran);
         SQLQuery += " ,fechaalbaran='"+companyact->sanearCadena(mdb_fechaalbaran)+"'";
         SQLQuery += " ,comentalbaran='"+companyact->sanearCadena(mdb_comentalbaran)+"'";
+        SQLQuery += " ,comentprivalbaran='"+companyact->sanearCadena(mdb_comentprivalbaran)+"'";
         SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente)+"";
         SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
         SQLQuery += " ,idalmacen="+companyact->sanearCadena(mdb_idalmacen);

@@ -35,6 +35,7 @@ protected:
     QString mdb_numalbaran;
     QString mdb_fechaalbaran;
     QString mdb_comentalbaran;
+    QString mdb_comentprivalbaran;
     QString mdb_idcliente;
     QString mdb_idforma_pago;
     QString mdb_idalmacen;
@@ -70,6 +71,7 @@ public:
     virtual void pintaNumAlbaran(QString) {};
     virtual void pintafechaalbaran(QString) {};
     virtual void pintaComentAlbaran(QString) {};
+    virtual void pintaComentPrivAlbaran(QString) {};
     virtual void pintaidcliente(QString ) {};
     virtual void pintaidforma_pago(QString) {};
     virtual void pintaIdFactura(QString){};
@@ -88,6 +90,7 @@ public:
     void setNumAlbaran(QString val) { mdb_numalbaran=val;};
     void setfechaalbaran(QString val) { mdb_fechaalbaran=val;};
     void setcomentalbaran(QString val) { mdb_comentalbaran=val;};
+    void setcomentprivalbaran(QString val) {mdb_comentprivalbaran=val;};
     void setidcliente(QString val) { mdb_idcliente=val;};
     void setidforma_pago(QString val) { mdb_idforma_pago=val;};
     void setidtrabajador(QString val) {mdb_idtrabajador=val;};

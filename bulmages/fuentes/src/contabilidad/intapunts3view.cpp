@@ -565,7 +565,7 @@ void intapunts3view::asientoabiertop() {
     tapunts3->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTESA).ascii());
     tapunts3->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTESA).ascii());
     tapunts3->setReadOnly(FALSE);
-    botonborrarasiento->setEnabled(FALSE);
+    botonborrarasiento->setEnabled(TRUE);
     botoniva->setEnabled(TRUE);
     botoninteligente->setEnabled(TRUE);
     abierto = 1;

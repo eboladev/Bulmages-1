@@ -39,7 +39,7 @@
 #include "postgresiface2.h"
 #include <qcheckbox.h>
 
-/** @author Tomeu Borrás & Alvaro de Miguel */
+/** @author Tomeu Borrï¿½ & Alvaro de Miguel */
 class company;
 
 
@@ -57,6 +57,7 @@ public:
     void pintafechaalbaran(QString val) {m_fechaalbaran->setText(val);};
     void pintaIdUsuario(QString) {};
     void pintaComentAlbaran(QString val) {m_comentalbaran->setText(val);};
+    void pintaComentPrivAlbaran(QString val) {m_comentprivalbaran->setText(val);};
     void pintaidcliente(QString val) {m_cliente->setidcliente(val);};
     void pintaidforma_pago(QString val) {m_forma_pago->setidforma_pago(val);};
     void pintaIdFactura(QString){};
@@ -84,6 +85,7 @@ void    pintaprocesadoalbaran(QString id) {
 public slots:
 	    virtual bool close(bool);
     virtual void s_comentalbarantextChanged() { setcomentalbaran(m_comentalbaran->text());};
+    virtual void s_comentprivalbarantextChanged() {setcomentprivalbaran(m_comentprivalbaran->text());};
     virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
     virtual void s_numalbarantextChanged(const QString &val) {setNumAlbaran(val);};
     virtual void s_clientevalueChanged(QString val) {setidcliente(val);};

@@ -994,6 +994,7 @@ CREATE TABLE albaran (
    fechaalbaran date,
 --   loginusuario character varying(15) REFERENCES usuario(loginusuario),
    comentalbaran character varying(3000),
+   comentprivalbaran character varying(3000),
    procesadoalbaran boolean DEFAULT FALSE,
    contactalbaran character varying,
    telalbaran character varying,
@@ -1387,6 +1388,7 @@ CREATE TABLE lpedidoproveedor (
 );
 
 
+-- Aun estoy experimentando con esta funcion y las ventajas de incorporarla en la base de datos.
 CREATE OR REPLACE FUNCTION calctotalpres(integer) RETURNS numeric(12,2)
 AS '
 DECLARE
@@ -1397,6 +1399,9 @@ BEGIN
 	total := 0;
 	FOR  res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto/100) *(1+ ivalpresupuesto/100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
 		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+		total := total * (1 - res.proporciondpresupuesto/100);
 	END LOOP;
 	RETURN total;
 END;
