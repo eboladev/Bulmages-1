@@ -398,6 +398,12 @@ CREATE TABLE balance (
 -- Name: mpatrimonial; Type: TABLE; Schema: public; Owner: postgres
 --
 
+--  La casilla tipomasapatrimonial : 
+-- 0.- normal, presentar siempre
+-- 1.- Sólo presentar si el saldo es >0, 
+-- 2.- Sólo presentar si el saldo es <0 
+-- 3.- Presentar en valor absoluto.
+
 CREATE TABLE mpatrimonial (
     idmpatrimonial serial PRIMARY KEY,
     idbalance integer REFERENCES balance(idbalance),
@@ -405,7 +411,8 @@ CREATE TABLE mpatrimonial (
     orden integer,
     tabulacion integer,
     saldo numeric(12,2),
-    opdesc integer
+    opdesc integer,
+    tipompatrimonial integer DEFAULT 0
 );
 
 \echo "Se ha creado la tabla mpatrimonial"
@@ -864,6 +871,7 @@ DECLARE
    rsaldo1 RECORD;
    smpatrimonialsum RECORD;
    smpatrimonialrest RECORD;
+   mp RECORD;
 BEGIN
     saldo := 0;
     FOR rsaldo IN SELECT  (debe-haber) AS total, tipocompmasap FROM cuenta LEFT JOIN compmasap ON cuenta.idcuenta = compmasap.idcuenta WHERE masaperteneciente = identmpatrimonial AND compmasap.idcuenta IS NOT NULL AND signo = TRUE LOOP
@@ -893,8 +901,32 @@ BEGIN
 		IF (smpatrimonialrest.tipocompmasap = 0 OR (smpatrimonialrest.tipocompmasap = 1 AND saldoi > 0) OR (smpatrimonialrest.tipocompmasap = 2 AND saldoi < 0)) THEN
        			 saldo := saldo - saldoi;
 		END IF;
-
     END LOOP;
+
+    SELECT INTO mp tipompatrimonial FROM mpatrimonial WHERE idmpatrimonial = identmpatrimonial;
+    IF FOUND THEN
+	IF mp.tipompatrimonial = 1 THEN
+		IF saldo > 0 THEN
+			RETURN saldo;
+		ELSE
+			RETURN 0;
+		END IF;
+	END IF;
+	IF mp.tipompatrimonial = 2 THEN
+		IF saldo < 0 THEN
+			RETURN saldo;
+		ELSE
+			RETURN 0;
+		END IF;
+	END IF;
+	IF mp.tipompatrimonial = 3 THEN
+		IF saldo > 0 THEN
+			RETURN saldo;
+		ELSE
+			RETURN -saldo;
+		END IF;
+	END IF;
+    END IF;
     RETURN saldo;
 END;
 ' LANGUAGE plpgsql;
@@ -947,6 +979,33 @@ BEGIN
 		END IF;
 
     END LOOP;
+
+    SELECT INTO mp tipompatrimonial FROM mpatrimonial WHERE idmpatrimonial = identmpatrimonial;
+    IF FOUND THEN
+	IF mp.tipompatrimonial = 1 THEN
+		IF saldo > 0 THEN
+			RETURN saldo;
+		ELSE
+			RETURN 0;
+		END IF;
+	END IF;
+	IF mp.tipompatrimonial = 2 THEN
+		IF saldo < 0 THEN
+			RETURN saldo;
+		ELSE
+			RETURN 0;
+		END IF;
+	END IF;
+	IF mp.tipompatrimonial = 3 THEN
+		IF saldo > 0 THEN
+			RETURN saldo;
+		ELSE
+			RETURN -saldo;
+		END IF;
+	END IF;
+    END IF;
+
+
     RETURN saldo;
 END;
 ' LANGUAGE plpgsql;

@@ -24,6 +24,7 @@
 
 #include <qlineedit.h>
 #include <qtable.h>
+#include <qcombobox.h>
 
 #define COL_IDCOMPBALANCE  0
 #define COL_DESCRIPCION    2
@@ -136,19 +137,22 @@ void compbalanceview::agregalinea() {
    if (idmpatrimonial == "") {
       idmpatrimonial = "NULL";
    }// end if
-   
+	int mdb_tipompatrimonial = m_tipompatrimonial->currentItem();
       conexionbase->begin();
       QString comentario = concepto->text();
       fprintf(stderr,"INSERCION POR FORMULA\n");
       // Lo primero es crear una masa patrimonial.
       QString query;
-      query.sprintf("INSERT INTO mpatrimonial (idbalance, descmpatrimonial) VALUES (%s,'%s')",idbalance.ascii(),comentario.ascii());
-      conexionbase->ejecuta(query);
+      query.sprintf("INSERT INTO mpatrimonial (idbalance, descmpatrimonial, tipompatrimonial) VALUES (%s,'%s', %d)",idbalance.ascii(),comentario.ascii(), mdb_tipompatrimonial);
+      int error = conexionbase->ejecuta(query);
+	if (error) {
+		conexionbase->rollback();
+		return;
+	}// end if
       query.sprintf("SELECT max(idmpatrimonial) AS maxim FROM mpatrimonial");
       cursor2 * curs= conexionbase->cargacursor(query, "micursorcillo");
       QString idmpatrimonialnueva = curs->valor("maxim");
       delete curs;
-      fprintf(stderr,"%s\n",(char *)query.ascii());
       // Hay que interpretar la linea de la formula y insertar la masa patrimonial.
       // es una formula, hay que insertar una masa patrimonial
       //string query = "INSERT INTO mpatrinonial (idbalance, descmpatrimonial) VALUES("++","++")"
@@ -276,18 +280,22 @@ void compbalanceview::botonabajo() {
 void compbalanceview::listadopulsado(int row, int col, int a, const QPoint &mouse) {
       concepto->setText("");
       QString query = "SELECT * FROM compbalance WHERE idcompbalance = "+(string) listado->text(row,COL_IDCOMPBALANCE).ascii();
-      conexionbase->begin();
-      cursor2 *curs = conexionbase->cargacursor(query,"supmycursor");
-      conexionbase->commit();
+      cursor2 *curs = conexionbase->cargacursor(query);
       if (!curs->eof()) {
          concepto->setText(curs->valor("concepto"));
-         idmpatrimonial = curs->valor("idmpatrimonial").ascii();
+         idmpatrimonial = curs->valor("idmpatrimonial");
+
+
+	 /// Ponemos en el combo del tipo de masa el valor adecuado.
+	 query = "SELECT tipompatrimonial FROM mpatrimonial WHERE idmpatrimonial="+idmpatrimonial;
+	 cursor2 *mp = conexionbase->cargacursor(query);
+	 m_tipompatrimonial->setCurrentItem(mp->valor("tipompatrimonial").toInt());
+	 delete mp;
+
 
          query = "SELECT * FROM compmasap LEFT JOIN cuenta ON compmasap.idcuenta = cuenta.idcuenta LEFT JOIN mpatrimonial ON compmasap.idmpatrimonial = mpatrimonial.idmpatrimonial WHERE masaperteneciente = "+idmpatrimonial;
          QString formula1;
-         conexionbase->begin();
-         cursor2 *curs1 = conexionbase->cargacursor(query,"cursdf");
-         conexionbase->commit();
+         cursor2 *curs1 = conexionbase->cargacursor(query);
          while (!curs1->eof()) {
             if (curs1->valor("signo") == "t") {
 			formula1 += " +";
@@ -368,7 +376,7 @@ void compbalanceview::modificalinea() {
       QString componente;                       // Esta variable es utilizada para desglosar la f�mula
 
       // es una formula, hay que insertar una masa patrimonial
-      query.sprintf("UPDATE mpatrimonial SET idbalance=%s WHERE idmpatrimonial=%s", idbalance.ascii(), idmpatrimonial.ascii());
+      query.sprintf("UPDATE mpatrimonial SET idbalance=%s, tipompatrimonial=%d WHERE idmpatrimonial=%s", idbalance.ascii(),m_tipompatrimonial->currentItem(), idmpatrimonial.ascii());
       fprintf(stderr,"%s\n",query.ascii());
       conexionbase->ejecuta(query);
 

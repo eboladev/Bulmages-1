@@ -263,12 +263,44 @@ CREATE TABLE articulo (
 );
 
 
-CREATE FUNCTION calculacodigocompletoarticulo () RETURNS "trigger"
+
+create or replace function is_number(varchar) returns boolean as
+'select $1 ~ ''^[-+]?[0-9]+$''' strict immutable language sql;
+
+CREATE OR REPLACE FUNCTION to_number(character varying) RETURNS INT8 AS '
+DECLARE
+BEGIN
+	RAISE NOTICE ''to_number %'', $1;
+        RETURN CAST(text($1) AS INT8);
+END
+' LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo () RETURNS "trigger"
 AS '
 DECLARE
 	as RECORD;
 	codigocompleto character varying(100);
+	codnumeric integer;
 BEGIN
+	-- Lo primero comprobamos el el código del articulo no esté vacio y de ser así lo llenamos.
+	IF NEW.codarticulo = '''' THEN
+		SELECT INTO as max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
+		IF FOUND THEN
+			IF is_number(as.m) THEN
+				codnumeric := to_number(as.m);
+				codnumeric := codnumeric +1;
+				NEW.codarticulo := CAST (codnumeric AS varchar);
+				WHILE length(NEW.codarticulo) < 4 LOOP
+					NEW.codarticulo := ''0'' || NEW.codarticulo;
+				END LOOP;
+			ELSE
+				NEW.codarticulo := ''0000'';
+			END IF;
+		ELSE
+			NEW.codarticulo = ''0000'';
+		END IF;
+	END IF;
+
 	codigocompleto := NEW.codarticulo;
 	SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
 	IF FOUND THEN
@@ -284,6 +316,8 @@ CREATE TRIGGER calculacodigocompletoarticulotrigger
     BEFORE INSERT OR UPDATE ON articulo
     FOR EACH ROW
     EXECUTE PROCEDURE calculacodigocompletoarticulo();
+
+
 
     
 CREATE OR REPLACE FUNCTION modificadostock () RETURNS "trigger"

@@ -144,6 +144,13 @@ bool importbalance::endElement1( const QString& , const QString& , const QString
             conexionbase->commit();
             m_tvalores["opdesc"] = "";
          }// end if
+         if (m_tvalores["tipompatrimonial"] != "") {
+            SQLQuery.sprintf("UPDATE mpatrimonial SET tipompatrimonial=%s WHERE idmpatrimonial=%s\n", m_tvalores["tipompatrimonial"].ascii(), m_tvalores["idmpatrimonial_nueva"].ascii());
+            conexionbase->begin();
+            conexionbase->ejecuta(SQLQuery);
+            conexionbase->commit();
+            m_tvalores["tipompatrimonial"] = "";
+         }// end if
       }// end mpatrimonial
       m_tag="";
       m_data="";

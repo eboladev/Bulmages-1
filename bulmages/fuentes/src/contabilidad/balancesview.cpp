@@ -171,6 +171,7 @@ void balancesview::boton_exportar() {
                     fprintf(mifile,"         <idmasa>%s</idmasa>\n", XMLProtect(cursp5->valor("idmpatrimonial")).ascii());
                     //               fprintf(mifile,"         <idmpatrimonial>%s</idmpatrimonial>\n", cursp5->valor("idmpatrimonial").ascii());
                     fprintf(mifile,"         <descmpatrimonial>%s</descmpatrimonial>\n", XMLProtect(cursp5->valor("descmpatrimonial")).ascii());
+                    fprintf(mifile,"         <tipompatrimonial>%s</tipompatrimonial>\n", XMLProtect(cursp5->valor("tipompatrimonial")).ascii());
                     fprintf(mifile,"         <orden>%s</orden>\n", XMLProtect(cursp5->valor("orden")).ascii());
                     fprintf(mifile,"         <tabulacion>%s</tabulacion>\n", XMLProtect(cursp5->valor("tabulacion")).ascii());
                     fprintf(mifile,"         <saldo>%s</saldo>\n", XMLProtect(cursp5->valor("saldo")).ascii());
