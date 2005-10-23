@@ -25,7 +25,7 @@ class PedidosProveedorList : public PedidosProveedorListBase
 Q_OBJECT
 public:
    company *companyact;
-   int m_modo; // == 0 es modo edición
+   int m_modo; // == 0 es modo ediciï¿½
             // ==1 es modo selector.
    QString m_idpedidoproveedor;
 
@@ -75,7 +75,9 @@ public slots:
 		hideConfiguracion();
 	else
 		 showConfiguracion();
-	};		
+	};	
+
+	virtual void s_configurar();	
 };
 
 #endif

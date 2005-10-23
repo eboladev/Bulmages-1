@@ -27,13 +27,80 @@
 #define COL_DESCPEDIDOCLIENTE 4
 #define COL_NOMCLIENTE 5
 #define COL_FECHAPEDIDOCLIENTE 6
-#define COL_CONTACTFACTURA 7
-#define COL_TELFACTURA 8
-#define COL_COMENTFACTURA 9
+#define COL_CONTACTPEDIDOCLIENTE 7
+#define COL_TELPEDIDOCLIENTE 8
+#define COL_COMENTPEDIDOCLIENTE 9
 #define COL_IDUSUARI 10
 #define COL_IDCLIENTE 11
 #define COL_IDALMACEN 12
-#define COL_IDSERIE_FACTURA 13
+
+void PedidosClienteList::s_configurar() {
+
+    if(mver_idpedidocliente->isChecked() )
+        m_list->showColumn(COL_IDPEDIDOCLIENTE);
+    else
+        m_list->hideColumn(COL_IDPEDIDOCLIENTE);
+
+    if(mver_codigoalmacen->isChecked() )
+        m_list->showColumn(COL_CODIGOALMACEN);
+    else
+        m_list->hideColumn(COL_CODIGOALMACEN);
+
+    if(mver_refpedidocliente->isChecked() )
+        m_list->showColumn(COL_REFPEDIDOCLIENTE);
+    else
+        m_list->hideColumn(COL_REFPEDIDOCLIENTE);
+
+    if(mver_numpedidocliente->isChecked() )
+        m_list->showColumn(COL_NUMPEDIDOCLIENTE);
+    else
+        m_list->hideColumn(COL_NUMPEDIDOCLIENTE);
+
+    if(mver_descpedidocliente->isChecked() )
+        m_list->showColumn(COL_DESCPEDIDOCLIENTE);
+    else
+        m_list->hideColumn(COL_DESCPEDIDOCLIENTE);
+
+    if(mver_nomcliente->isChecked() )
+        m_list->showColumn(COL_NOMCLIENTE);
+    else
+        m_list->hideColumn(COL_NOMCLIENTE);
+
+    if(mver_fechapedidocliente->isChecked() )
+        m_list->showColumn(COL_FECHAPEDIDOCLIENTE);
+    else
+        m_list->hideColumn(COL_FECHAPEDIDOCLIENTE);
+
+    if(mver_contactpedidocliente->isChecked() )
+        m_list->showColumn(COL_CONTACTPEDIDOCLIENTE);
+    else
+        m_list->hideColumn(COL_CONTACTPEDIDOCLIENTE);
+
+    if(mver_telpedidocliente->isChecked() )
+        m_list->showColumn(COL_TELPEDIDOCLIENTE);
+    else
+        m_list->hideColumn(COL_TELPEDIDOCLIENTE);
+
+    if(mver_comentpedidocliente->isChecked() )
+        m_list->showColumn(COL_COMENTPEDIDOCLIENTE);
+    else
+        m_list->hideColumn(COL_COMENTPEDIDOCLIENTE);
+
+    if(mver_idusuari->isChecked() )
+        m_list->showColumn(COL_IDUSUARI);
+    else
+        m_list->hideColumn(COL_IDUSUARI);
+
+    if(mver_idcliente->isChecked() )
+        m_list->showColumn(COL_IDCLIENTE);
+    else
+        m_list->hideColumn(COL_IDCLIENTE);
+
+    if(mver_idalmacen->isChecked() )
+        m_list->showColumn(COL_IDALMACEN);
+    else
+        m_list->hideColumn(COL_IDALMACEN);
+}// end s_configurar
 
 
 PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, int flag)
@@ -68,16 +135,15 @@ void PedidosClienteList::inicializa() {
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setSorting( TRUE );
     m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(14);
+    m_list->setNumCols(13);
     m_list->horizontalHeader()->setLabel( COL_IDPEDIDOCLIENTE, tr( "COL_IDPEDIDOCLIENTE" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
     m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMPEDIDOCLIENTE, tr( "Num. Pedido" ) );
     m_list->horizontalHeader()->setLabel( COL_FECHAPEDIDOCLIENTE, tr( "Fecha" ) );
-    m_list->horizontalHeader()->setLabel( COL_IDSERIE_FACTURA, tr( "Fecha" ) );
-    m_list->horizontalHeader()->setLabel( COL_CONTACTFACTURA, tr( "Persona Contacto" ) );
-    m_list->horizontalHeader()->setLabel( COL_TELFACTURA, tr( "Teléfono" ) );
-    m_list->horizontalHeader()->setLabel( COL_COMENTFACTURA, tr( "Comentarios" ) );
+    m_list->horizontalHeader()->setLabel( COL_CONTACTPEDIDOCLIENTE, tr( "Persona Contacto" ) );
+    m_list->horizontalHeader()->setLabel( COL_TELPEDIDOCLIENTE, tr( "Teléfono" ) );
+    m_list->horizontalHeader()->setLabel( COL_COMENTPEDIDOCLIENTE, tr( "Comentarios" ) );
     m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("Id. Usuari") );
     m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("Id. Cliente") );
     m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacén") );
@@ -87,28 +153,21 @@ void PedidosClienteList::inicializa() {
     m_list->setColumnWidth(COL_IDPEDIDOCLIENTE,75);
     m_list->setColumnWidth(COL_NUMPEDIDOCLIENTE,75);
     m_list->setColumnWidth(COL_FECHAPEDIDOCLIENTE,100);
-    m_list->setColumnWidth(COL_CONTACTFACTURA,200);
-    m_list->setColumnWidth(COL_TELFACTURA,150);
-    m_list->setColumnWidth(COL_COMENTFACTURA,300);
+    m_list->setColumnWidth(COL_CONTACTPEDIDOCLIENTE,200);
+    m_list->setColumnWidth(COL_TELPEDIDOCLIENTE,150);
+    m_list->setColumnWidth(COL_COMENTPEDIDOCLIENTE,300);
     m_list->setColumnWidth(COL_IDUSUARI,75);
     m_list->setColumnWidth(COL_IDCLIENTE,75);
     m_list->setColumnWidth(COL_DESCPEDIDOCLIENTE, 300);
     m_list->setColumnWidth(COL_REFPEDIDOCLIENTE, 75);
     
-    m_list->hideColumn(COL_IDPEDIDOCLIENTE);
-    m_list->hideColumn(COL_IDSERIE_FACTURA);
-    m_list->hideColumn(COL_CONTACTFACTURA);
-    m_list->hideColumn(COL_COMENTFACTURA);
-    m_list->hideColumn(COL_IDUSUARI);
-    m_list->hideColumn(COL_IDCLIENTE);
-    m_list->hideColumn(COL_IDALMACEN);
-    m_list->hideColumn(COL_CODIGOALMACEN);
+
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPEDIDOSCLIENTE));
     m_list->setReadOnly(TRUE);
      
-    
+    /// Hacemos el listado y lo presentamos.
     cursor2 * cur= companyact->cargacursor("SELECT * FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -126,14 +185,21 @@ void PedidosClienteList::inicializa() {
         cur->siguienteregistro();
     }// end while
     delete cur;
+
+
+	/// Hacemos el calculo del total.
+	cur = companyact->cargacursor("SELECT SUM(calctotalpedcli(idpedidocliente)) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1"+generarFiltro());
+	m_total->setText(cur->valor("total"));
+	delete cur;
+
+
+	s_configurar();
 }// end inicializa
 
 QString PedidosClienteList::generarFiltro() {
 
     /// Tratamiento de los filtros.
     fprintf(stderr,"Tratamos el filtro \n");
-    
-    QString orden[] = {"fechapedidocliente","cifcliente","nomcliente","refpedidocliente","numpedidocliente"};
     
     QString filtro="";
     if (m_filtro->text() != "") {
@@ -151,7 +217,13 @@ QString PedidosClienteList::generarFiltro() {
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpedidocliente IN (SELECT DISTINCT idpedidocliente FROM lpedidocliente WHERE idarticulo='"+m_articulo->idarticulo()+"')";
     }// end if
-    filtro += " ORDER BY "+orden[m_orden->currentItem()];
+
+    if (m_fechain->text() != "")
+	filtro += " AND fechapedidocliente >= '"+m_fechain->text()+"' ";
+
+    if (m_fechafin->text() != "") 
+	filtro += " AND fechapedidocliente <= '"+m_fechafin->text()+"' ";
+
     return (filtro);
 }// end generaFiltro
 

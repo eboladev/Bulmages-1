@@ -30,7 +30,7 @@
 #include <qcheckbox.h>
 
 #include "configuracion.h"
-
+#include "funcaux.h"
 
 #define COL_IDPRESUPUESTO 0
 #define COL_CODIGOALMACEN 1
@@ -148,7 +148,7 @@ BudgetsList::~BudgetsList() {
 }// end ~providerslist
 
 void BudgetsList::inicializa() {
-    fprintf(stderr,"BudgetsList::inicializa()\n");
+    _depura("BudgetsList::inicializa()\n");
     m_list->setNumRows( 0 );
     m_list->setSorting( TRUE );
     m_list->setSelectionMode( QTable::SingleRow );
@@ -189,13 +189,12 @@ void BudgetsList::inicializa() {
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPRESUPUESTOS));
-    fprintf(stderr,"---------> Color del presupuesto\n\n\n%s\n\n\n",confpr->valor(CONF_BG_LISTPRESUPUESTOS).ascii());
     m_list->setReadOnly(TRUE);
 
 
 
     if (companyact != NULL ) {
-        cursor2 * cur= companyact->cargacursor("SELECT * FROM presupuesto, cliente, almacen where presupuesto.idcliente=cliente.idcliente AND presupuesto.idalmacen=almacen.idalmacen "+generaFiltro());
+        cursor2 * cur= companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
         m_list->setNumRows( cur->numregistros() );
         int i=0;
         while (!cur->eof()) {
@@ -217,9 +216,18 @@ void BudgetsList::inicializa() {
             cur->siguienteregistro();
         }// end while
         delete cur;
+
+
+
+
+	/// Hacemos el calculo del total.
+	cur = companyact->cargacursor("SELECT SUM(calctotalpres(idpresupuesto)) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
+	m_total->setText(cur->valor("total"));
+	delete cur;
     }// end if
+
     s_configurar();
-    fprintf(stderr,"end BudgetsList::inicializa()\n");
+    _depura("end BudgetsList::inicializa()\n");
 }// end inicializa
 
 
@@ -242,7 +250,15 @@ QString BudgetsList::generaFiltro() {
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpresupuesto IN (SELECT DISTINCT idpresupuesto FROM lpresupuesto WHERE idarticulo='"+m_articulo->idarticulo()+"')";
     }// end if
-    filtro += " ORDER BY fpresupuesto";
+
+
+    if (m_fechain->text() != "")
+	filtro += " AND fpresupuesto >= '"+m_fechain->text()+"' ";
+
+    if (m_fechafin->text() != "") 
+	filtro += " AND fpresupuesto <= '"+m_fechafin->text()+"' ";
+
+
     return (filtro);
 }// end generaFiltro
 

@@ -81,6 +81,8 @@ public slots:
 	};    
     virtual void s_filtrar() {inicializa();};    
     virtual void s_borrarCliente();
+
+    virtual void s_configurar();
 };
 
 #endif

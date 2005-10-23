@@ -301,13 +301,6 @@ END;
 ' LANGUAGE plpgsql;
 
 
-
-
-
-
-
-
-
 --
 -- Agregamos nuevos parametros de configuraci�.
 --
@@ -359,16 +352,6 @@ CREATE TRIGGER restriccionescuentatrigger
     BEFORE INSERT OR UPDATE ON cuenta
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionescuenta();
-
-
-
-
-
-
-
-
-
-
 
 
 

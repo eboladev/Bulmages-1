@@ -27,13 +27,79 @@
 #define COL_DESCPEDIDOPROVEEDOR 4
 #define COL_NOMPROVEEDOR 5
 #define COL_FECHAPEDIDOPROVEEDOR 6
-#define COL_CONTACTFACTURA 7
-#define COL_TELFACTURA 8
-#define COL_COMENTFACTURA 9
+#define COL_CONTACPEDIDOPROVEEDOR 7
+#define COL_TELPEDIDOPROVEEDOR 8
+#define COL_COMENTPEDIDOPROVEEDOR 9
 #define COL_IDUSUARI 10
 #define COL_IDPROVEEDOR 11
 #define COL_IDALMACEN 12
-#define COL_IDSERIE_FACTURA 13
+
+void PedidosProveedorList::s_configurar() {
+    if(mver_idpedidoproveedor->isChecked() )
+        m_list->showColumn(COL_IDPEDIDOPROVEEDOR);
+    else
+        m_list->hideColumn(COL_IDPEDIDOPROVEEDOR);
+
+    if(mver_codigoalmacen->isChecked() )
+        m_list->showColumn(COL_CODIGOALMACEN);
+    else
+        m_list->hideColumn(COL_CODIGOALMACEN);
+
+    if(mver_refpedidoproveedor->isChecked() )
+        m_list->showColumn(COL_REFPEDIDOPROVEEDOR);
+    else
+        m_list->hideColumn(COL_REFPEDIDOPROVEEDOR);
+
+    if(mver_numpedidoproveedor->isChecked() )
+        m_list->showColumn(COL_NUMPEDIDOPROVEEDOR);
+    else
+        m_list->hideColumn(COL_NUMPEDIDOPROVEEDOR);
+
+    if(mver_descpedidoproveedor->isChecked() )
+        m_list->showColumn(COL_DESCPEDIDOPROVEEDOR);
+    else
+        m_list->hideColumn(COL_DESCPEDIDOPROVEEDOR);
+
+    if(mver_nomproveedor->isChecked() )
+        m_list->showColumn(COL_NOMPROVEEDOR);
+    else
+        m_list->hideColumn(COL_NOMPROVEEDOR);
+
+    if(mver_fechapedidoproveedor->isChecked() )
+        m_list->showColumn(COL_FECHAPEDIDOPROVEEDOR);
+    else
+        m_list->hideColumn(COL_FECHAPEDIDOPROVEEDOR);
+
+    if(mver_contacpedidoproveedor->isChecked() )
+        m_list->showColumn(COL_CONTACPEDIDOPROVEEDOR);
+    else
+        m_list->hideColumn(COL_CONTACPEDIDOPROVEEDOR);
+
+    if(mver_telpedidoproveedor->isChecked() )
+        m_list->showColumn(COL_TELPEDIDOPROVEEDOR);
+    else
+        m_list->hideColumn(COL_TELPEDIDOPROVEEDOR);
+
+    if(mver_comentpedidoproveedor->isChecked() )
+        m_list->showColumn(COL_COMENTPEDIDOPROVEEDOR);
+    else
+        m_list->hideColumn(COL_COMENTPEDIDOPROVEEDOR);
+
+    if(mver_idusuari->isChecked() )
+        m_list->showColumn(COL_IDUSUARI);
+    else
+        m_list->hideColumn(COL_IDUSUARI);
+
+    if(mver_idproveedor->isChecked() )
+        m_list->showColumn(COL_IDPROVEEDOR);
+    else
+        m_list->hideColumn(COL_IDPROVEEDOR);
+
+    if(mver_idalmacen->isChecked() )
+        m_list->showColumn(COL_IDALMACEN);
+    else
+        m_list->hideColumn(COL_IDALMACEN);
+}// end s_configurar
 
 
 PedidosProveedorList::PedidosProveedorList(QWidget *parent, const char *name, int flag)
@@ -68,16 +134,15 @@ void PedidosProveedorList::inicializa() {
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setSorting( TRUE );
     m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(14);
+    m_list->setNumCols(13);
     m_list->horizontalHeader()->setLabel( COL_IDPEDIDOPROVEEDOR, tr( "COL_IDPEDIDOPROVEEDOR" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMPROVEEDOR, tr( "Proveedor" ) );
     m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMPEDIDOPROVEEDOR, tr( "Num. Pedido" ) );
     m_list->horizontalHeader()->setLabel( COL_FECHAPEDIDOPROVEEDOR, tr( "Fecha" ) );
-    m_list->horizontalHeader()->setLabel( COL_IDSERIE_FACTURA, tr( "Fecha" ) );
-    m_list->horizontalHeader()->setLabel( COL_CONTACTFACTURA, tr( "Persona Contacto" ) );
-    m_list->horizontalHeader()->setLabel( COL_TELFACTURA, tr( "Teléfono" ) );
-    m_list->horizontalHeader()->setLabel( COL_COMENTFACTURA, tr( "Comentarios" ) );
+    m_list->horizontalHeader()->setLabel( COL_CONTACPEDIDOPROVEEDOR, tr( "Persona Contacto" ) );
+    m_list->horizontalHeader()->setLabel( COL_TELPEDIDOPROVEEDOR, tr( "Teléfono" ) );
+    m_list->horizontalHeader()->setLabel( COL_COMENTPEDIDOPROVEEDOR, tr( "Comentarios" ) );
     m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("Id. Usuari") );
     m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr("Id. Proveedor") );
     m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacén") );
@@ -87,22 +152,14 @@ void PedidosProveedorList::inicializa() {
     m_list->setColumnWidth(COL_IDPEDIDOPROVEEDOR,75);
     m_list->setColumnWidth(COL_NUMPEDIDOPROVEEDOR,75);
     m_list->setColumnWidth(COL_FECHAPEDIDOPROVEEDOR,100);
-    m_list->setColumnWidth(COL_CONTACTFACTURA,200);
-    m_list->setColumnWidth(COL_TELFACTURA,150);
-    m_list->setColumnWidth(COL_COMENTFACTURA,300);
+    m_list->setColumnWidth(COL_CONTACPEDIDOPROVEEDOR,200);
+    m_list->setColumnWidth(COL_TELPEDIDOPROVEEDOR,150);
+    m_list->setColumnWidth(COL_COMENTPEDIDOPROVEEDOR,300);
     m_list->setColumnWidth(COL_IDUSUARI,75);
     m_list->setColumnWidth(COL_IDPROVEEDOR,75);
     m_list->setColumnWidth(COL_DESCPEDIDOPROVEEDOR, 300);
     m_list->setColumnWidth(COL_REFPEDIDOPROVEEDOR, 75);
-    
-    m_list->hideColumn(COL_IDPEDIDOPROVEEDOR);
-    m_list->hideColumn(COL_IDSERIE_FACTURA);
-    m_list->hideColumn(COL_CONTACTFACTURA);
-    m_list->hideColumn(COL_COMENTFACTURA);
-    m_list->hideColumn(COL_IDUSUARI);
-    m_list->hideColumn(COL_IDPROVEEDOR);
-    m_list->hideColumn(COL_IDALMACEN);
-    m_list->hideColumn(COL_CODIGOALMACEN);
+
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPEDIDOSCLIENTE));
@@ -126,6 +183,13 @@ void PedidosProveedorList::inicializa() {
         cur->siguienteregistro();
     }// end while
     delete cur;
+
+	/// Hacemos el calculo del total.
+	cur = companyact->cargacursor("SELECT SUM(calctotalpedpro(idpedidoproveedor)) AS total FROM pedidoproveedor LEFT JOIN  proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
+	m_total->setText(cur->valor("total"));
+	delete cur;
+
+	s_configurar();
 }// end inicializa
 
 QString PedidosProveedorList::generarFiltro() {
@@ -133,7 +197,7 @@ QString PedidosProveedorList::generarFiltro() {
     /// Tratamiento de los filtros.
     fprintf(stderr,"Tratamos el filtro \n");
     
-    QString orden[] = {"fechapedidoproveedor","cifproveedor","nomproveedor","refpedidoproveedor","numpedidoproveedor"};
+//    QString orden[] = {"fechapedidoproveedor","cifproveedor","nomproveedor","refpedidoproveedor","numpedidoproveedor"};
     
     QString filtro="";
     if (m_filtro->text() != "") {
@@ -151,7 +215,14 @@ QString PedidosProveedorList::generarFiltro() {
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpedidoproveedor IN (SELECT DISTINCT idpedidoproveedor FROM lpedidoproveedor WHERE idarticulo='"+m_articulo->idarticulo()+"')";
     }// end if
-    filtro += " ORDER BY "+orden[m_orden->currentItem()];
+
+    if (m_fechain->text() != "")
+	filtro += " AND fechapedidoproveedor >= '"+m_fechain->text()+"' ";
+
+    if (m_fechafin->text() != "") 
+	filtro += " AND fechapedidoproveedor <= '"+m_fechafin->text()+"' ";
+
+//    filtro += " ORDER BY "+orden[m_orden->currentItem()];
     return (filtro);
 }// end generaFiltro
 

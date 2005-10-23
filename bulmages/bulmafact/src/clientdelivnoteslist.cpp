@@ -49,20 +49,20 @@ CREATE TABLE albaran (
 #include <qfile.h>
 #include <qcheckbox.h>
 
-
-#define COL_CODIGOALMACEN 0
-#define COL_NUMALBARAN 1
-#define COL_FECHAALBARAN 2
-#define COL_NOMCLIENTE 3
-#define COL_IDFORMA_PAGO 4
-#define COL_DESCFORMA_PAGO 5
-#define COL_NUMFACTURA 6
-#define COL_NUMNOFACTURA 7
-#define COL_IDUSUARIO 8
-#define COL_IDCLIENTE 9
-#define COL_IDALBARAN 10
-#define COL_COMENTALBARAN 11
-#define COL_IDALMACEN 12
+#define COL_REFALBARAN 0
+#define COL_CODIGOALMACEN 1
+#define COL_NUMALBARAN 2
+#define COL_FECHAALBARAN 3
+#define COL_NOMCLIENTE 4
+#define COL_IDFORMA_PAGO 5
+#define COL_DESCFORMA_PAGO 6
+#define COL_NUMFACTURA 7
+#define COL_NUMNOFACTURA 8
+#define COL_IDUSUARIO 9
+#define COL_IDCLIENTE 10
+#define COL_IDALBARAN 11
+#define COL_COMENTALBARAN 12
+#define COL_IDALMACEN 13
 
 
 void ClientDelivNotesList::s_configurar() {
@@ -171,6 +171,7 @@ void ClientDelivNotesList::inicializa() {
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(13);
+    m_list->horizontalHeader()->setLabel( COL_REFALBARAN, tr( "Referencia" ) );
     m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "N Albarán" ) );
@@ -183,6 +184,7 @@ void ClientDelivNotesList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_IDALBARAN, tr("COL_IDALBARAN") );
     m_list->horizontalHeader()->setLabel( COL_COMENTALBARAN, tr("Comentario") );
     m_list->horizontalHeader()->setLabel( COL_DESCFORMA_PAGO, tr("Forma de Pago") );
+    m_list->setColumnWidth(COL_REFALBARAN,75);
     m_list->setColumnWidth(COL_CODIGOALMACEN,75);
     m_list->setColumnWidth(COL_NUMALBARAN,75);
     m_list->setColumnWidth(COL_FECHAALBARAN,100);
@@ -202,12 +204,11 @@ void ClientDelivNotesList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTALBARANESCLIENTE));
     m_list->setReadOnly(TRUE);
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran, cliente, almacen where albaran.idcliente=cliente.idcliente AND albaran.idalmacen=almacen.idalmacen"+generarFiltro());
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {
-    
-        m_list->setText(i,COL_NUMALBARAN,cur->valor("numalbaran"));
+        m_list->setText(i,COL_REFALBARAN,cur->valor("refalbaran"));        m_list->setText(i,COL_NUMALBARAN,cur->valor("numalbaran"));
         m_list->setText(i,COL_FECHAALBARAN,cur->valor("fechaalbaran"));
         m_list->setText(i,COL_IDFORMA_PAGO,cur->valor("idforma_pago"));
         m_list->setText(i,COL_NUMFACTURA,cur->valor("numfactura"));
@@ -220,13 +221,19 @@ void ClientDelivNotesList::inicializa() {
         m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
         m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
 
-        cursor2 * cur2= companyact->cargacursor("SELECT * FROM forma_pago WHERE idforma_pago="+cur->valor("idforma_pago"),"qryforma_pago");
+        cursor2 * cur2= companyact->cargacursor("SELECT * FROM forma_pago WHERE idforma_pago="+cur->valor("idforma_pago"));
         m_list->setText(i,COL_DESCFORMA_PAGO,cur2->valor("descforma_pago"));
         delete cur2; 
 	i++;
         cur->siguienteregistro();
     }// end while
     delete cur;
+
+	/// Hacemos el calculo del total.
+	cur = companyact->cargacursor("SELECT SUM(calctotalalbaran(idalbaran)) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
+	m_total->setText(cur->valor("total"));
+	delete cur;
+
 }// end inicializa
 
 
@@ -290,7 +297,7 @@ void ClientDelivNotesList::s_newClientDelivNote() {
 void ClientDelivNotesList::s_removeClientDelivNote() {
     fprintf(stderr,"Iniciamos el boton_borrar\n");
     if (m_list->currentRow() >= 0) {
-        if (QMessageBox::warning( this, tr("BulmaFact - Albaranes", "Desea borrar el albarán seleccionado"),tr("Si"), tr("No"), 0, 0, 1) == 0) {
+        if (QMessageBox::warning( this, tr("BulmaFact - Albaranes"), tr("Desea borrar el albaran seleccionado"),tr("Si"), tr("No"),0,0,1) == 0) {
             companyact->begin();
             QString SQLQuery = "DELETE FROM lalbaran WHERE idalbaran ="+m_list->text(m_list->currentRow(),COL_IDALBARAN);
             if (companyact->ejecuta(SQLQuery)==0) {
@@ -373,21 +380,28 @@ QString ClientDelivNotesList::generarFiltro() {
     /// Tratamiento de los filtros.
     fprintf(stderr,"Tratamos el filtro \n");
     QString filtro="";
+
     if (m_filtro->text() != "") {
         filtro = " AND ( descalbaran LIKE '%"+m_filtro->text()+"%' ";
         filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
     } else {
         filtro = "";
     }// end if
-    if (m_cliente->idcliente() != "") {
+
+    if (m_cliente->idcliente() != "")
         filtro += " AND albaran.idcliente='"+m_cliente->idcliente()+"'";
-    }// end if
-    if (m_articulo->idarticulo() != "") {
+
+    if (m_articulo->idarticulo() != "")
         filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='"+m_articulo->idarticulo()+"')";
-    }// end if
-    if (!m_procesados->isChecked() ) {
+
+    if (!m_procesados->isChecked() ) 
         filtro += " AND NOT procesadoalbaran";
-    }// end if
-    filtro += " ORDER BY nomcliente";
+
+    if (m_fechain->text() != "")
+	filtro += " AND fechaalbaran >= '"+m_fechain->text()+"' ";
+
+    if (m_fechafin->text() != "") 
+	filtro += " AND fechaalbaran <= '"+m_fechafin->text()+"' ";
+
     return (filtro);
 }// end generaFiltro

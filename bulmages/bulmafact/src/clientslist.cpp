@@ -65,7 +65,7 @@ CREATE TABLE cliente (
 #include <qlineedit.h>
 #include "pgimportfiles.h"
 #include <qfiledialog.h>
-
+#include <qcheckbox.h>
 
 #define COL_IDCLIENTE 0
 #define COL_NOMCLIENTE 1
@@ -85,6 +85,88 @@ CREATE TABLE cliente (
 #define COL_IDRECARGO 15
 
 #define EDIT_MODE 0
+
+void ClientsList::s_configurar() {
+    if(mver_idcliente->isChecked() )
+        m_clientList->showColumn(COL_IDCLIENTE);
+    else
+        m_clientList->hideColumn(COL_IDCLIENTE);
+
+    if(mver_nomcliente->isChecked() )
+        m_clientList->showColumn(COL_NOMCLIENTE);
+    else
+        m_clientList->hideColumn(COL_NOMCLIENTE);
+
+    if(mver_nomaltcliente->isChecked() )
+        m_clientList->showColumn(COL_NOMALTCLIENTE);
+    else
+        m_clientList->hideColumn(COL_NOMALTCLIENTE);
+
+    if(mver_cifcliente->isChecked() )
+        m_clientList->showColumn(COL_CIFCLIENTE);
+    else
+        m_clientList->hideColumn(COL_CIFCLIENTE);
+
+    if(mver_bancocliente->isChecked() )
+        m_clientList->showColumn(COL_BANCOCLIENTE);
+    else
+        m_clientList->hideColumn(COL_BANCOCLIENTE);
+
+    if(mver_dircliente->isChecked() )
+        m_clientList->showColumn(COL_DIRCLIENTE);
+    else
+        m_clientList->hideColumn(COL_DIRCLIENTE);
+
+    if(mver_poblcliente->isChecked() )
+        m_clientList->showColumn(COL_POBLCLIENTE);
+    else
+        m_clientList->hideColumn(COL_POBLCLIENTE);
+
+    if(mver_cpcliente->isChecked() )
+        m_clientList->showColumn(COL_CPCLIENTE);
+    else
+        m_clientList->hideColumn(COL_CPCLIENTE);
+
+    if(mver_telcliente->isChecked() )
+        m_clientList->showColumn(COL_TELCLIENTE);
+    else
+        m_clientList->hideColumn(COL_TELCLIENTE);
+
+    if(mver_faxcliente->isChecked() )
+        m_clientList->showColumn(COL_FAXCLIENTE);
+    else
+        m_clientList->hideColumn(COL_FAXCLIENTE);
+
+    if(mver_mailcliente->isChecked() )
+        m_clientList->showColumn(COL_MAILCLIENTE);
+    else
+        m_clientList->hideColumn(COL_MAILCLIENTE);
+
+    if(mver_urlcliente->isChecked() )
+        m_clientList->showColumn(COL_URLCLIENTE);
+    else
+        m_clientList->hideColumn(COL_URLCLIENTE);
+
+    if(mver_faltacliente->isChecked() )
+        m_clientList->showColumn(COL_FALTACLIENTE);
+    else
+        m_clientList->hideColumn(COL_FALTACLIENTE);
+
+    if(mver_fbajacliente->isChecked() )
+        m_clientList->showColumn(COL_FBAJACLIENTE);
+    else
+        m_clientList->hideColumn(COL_FBAJACLIENTE);
+
+    if(mver_comentcliente->isChecked() )
+        m_clientList->showColumn(COL_COMENTCLIENTE);
+    else
+        m_clientList->hideColumn(COL_COMENTCLIENTE);
+
+    if(mver_idrecargo->isChecked() )
+        m_clientList->showColumn(COL_IDRECARGO);
+    else
+        m_clientList->hideColumn(COL_IDRECARGO);
+}// end s_configurar
 
 ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int flag)
  : ClientsListBase(parent, name, flag) , pgimportfiles(comp){
@@ -141,6 +223,8 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int f
     
    inicializa();
    companyact->meteWindow(caption(),this);
+
+	s_configurar();
 
 }// end clientslist
 

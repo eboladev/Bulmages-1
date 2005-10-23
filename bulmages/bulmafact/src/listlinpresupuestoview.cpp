@@ -35,15 +35,15 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget * parent, const char * na
     /// Inicializamos la tabla de lineas de presupuesto
     setNumCols(12);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "N. Línea" ) );
-    horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripción" ) );
+    horizontalHeader()->setLabel( COL_IDLPRESUPUESTO, tr( "N. Linea" ) );
+    horizontalHeader()->setLabel( COL_DESCLPRESUPUESTO, tr( "Descripcion" ) );
     horizontalHeader()->setLabel( COL_CANTLPRESUPUESTO, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_PVPLPRESUPUESTO, tr( "Precio" ) );
     horizontalHeader()->setLabel( COL_DESCUENTOLPRESUPUESTO, tr( "Descuento" ) );
     horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "N Pedido" ) );
-    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
-    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artículo" ) );
-    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
+    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Articulo" ) );
+    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Codigo Articulo" ) );
+    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripcionï¿½ Articulo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
 
@@ -271,8 +271,8 @@ void listlinpresupuestoview::manageArticle(int row) {
 
 
 QString listlinpresupuestoview::searchArticle() {
-    fprintf(stderr,"Busqueda de un artículo\n");
-    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
+    fprintf(stderr,"Busqueda de un artï¿½ulo\n");
+    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artï¿½ulo","company"));
     // , WType_Dialog| WShowModal
     artlist->modoseleccion();
     // Esto es convertir un QWidget en un sistema modal de dialogo.

@@ -44,7 +44,7 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const c
     setListDescuentoPedidoProveedor(m_descuentos);
     inicialize();
     comp->meteWindow(caption(),this);
-    fprintf(stderr,"Fin de la inicialización de PedidoProveedor\n");
+    fprintf(stderr,"Fin de la inicializaciï¿½ de PedidoProveedor\n");
 }
 
 bool PedidoProveedorView::close(bool fil) {
@@ -73,6 +73,10 @@ void PedidoProveedorView::inicialize() {
     m_totalDiscounts->setAlignment(Qt::AlignRight);
     m_totalpedidoproveedor->setReadOnly(TRUE);
     m_totalpedidoproveedor->setAlignment(Qt::AlignRight);
+    /// Inicializamos la forma de pago para que no se quede sin ser pintada.
+    pintaidforma_pago("0");
+    pintaidalmacen("0");
+    pintaidtrabajador("0");
 }// end inicialize
 
 
@@ -114,7 +118,7 @@ void PedidoProveedorView::s_verpresupuesto() {
 /// Se encarga de generar un pedido a partir del presupuesto.
 void PedidoProveedorView::generarAlbaran() {
 /*
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la función.
+    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funciï¿½.
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='"+mdb_refpedidoproveedor+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
@@ -126,7 +130,7 @@ void PedidoProveedorView::generarAlbaran() {
     delete cur;
 
 
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la función.
+    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funciï¿½.
     if (QMessageBox::question(
                 this,
                 tr("Albaran Proveedor Inexistente"),

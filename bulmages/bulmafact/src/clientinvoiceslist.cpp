@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementación del listado de albaranes.
+// Implementaciï¿½ del listado de albaranes.
 /*
--- COMPROVACIONS D'INTEGRITAT>Genèriques:
+-- COMPROVACIONS D'INTEGRITAT>Genï¿½iques:
 -- Tots els albarans d'una factura corresponen al mateix client.
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 -- Numero
 -- Data
--- Albarà a clients.
+-- Albarï¿½a clients.
 CREATE TABLE albaran (
    numalbaran integer PRIMARY KEY,
    fechaalbaran date,
@@ -85,11 +85,11 @@ void ClientInvoicesList::inicializa() {
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(11);
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "Nº Presupuesto" ) );
+    m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "N Presupuesto" ) );
     m_list->horizontalHeader()->setLabel( COL_FECHAALBARAN, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_IDFORMA_PAGO, tr( "COL_IDFORMA_PAGO" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMFACTURA, tr( "Nº Factura" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMNOFACTURA, tr( "Nº No Fra." ) );
+    m_list->horizontalHeader()->setLabel( COL_NUMFACTURA, tr( "N Factura" ) );
+    m_list->horizontalHeader()->setLabel( COL_NUMNOFACTURA, tr( "N No Fra." ) );
     m_list->horizontalHeader()->setLabel( COL_IDUSUARIO, tr("COL_IDUSUARIO") );
     m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
     m_list->horizontalHeader()->setLabel( COL_IDALBARAN, tr("COL_IDALBARAN") );
@@ -149,8 +149,8 @@ void ClientInvoicesList::s_doubleclicked(int a, int , int , const QPoint &) {
     fprintf(stderr,"ClientInvoicesList::s_doubleclicked\n");
     m_idcliinvoice = m_list->text(a,COL_IDALBARAN);
     if (m_modo ==0 && m_idcliinvoice != "") {
-        fprintf(stderr,"Cargamos la pantalla de edición AlbaranClienteView\n");
-        AlbaranClienteView *cInvoice = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+        fprintf(stderr,"Cargamos la pantalla de ediciï¿½ AlbaranClienteView\n");
+        AlbaranClienteView *cInvoice = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarï¿½ de Cliente", "company"));
         cInvoice->cargaAlbaranCliente(m_idcliinvoice);
         cInvoice->show();
     } else {
@@ -179,15 +179,15 @@ void ClientInvoicesList::s_contextMenu(int, int, int button, const QPoint &poin)
 
 void ClientInvoicesList::s_newClientInvoice() {
     fprintf(stderr,"ClientInvoicesList::s_newClientInvoice\n");
-    AlbaranClienteView *cInvoice = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+    AlbaranClienteView *cInvoice = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albaranï¿½ de Cliente", "company"));
     cInvoice->show();
 }// end boton_crear
 
 
 void ClientInvoicesList::s_removeClientInvoice() {
-    fprintf(stderr,"Iniciamos el boton_borrar\n");
+    fprintf(stderr,"s_removeClientInvoice\n");
     if (m_list->currentRow() >= 0) {
-        if (QMessageBox::warning( this, "BulmaFact - Albaranes", "Desea borrar el albarán seleccionado", "Sí", "No") == 0) {
+        if (QMessageBox::warning( this, "BulmaFact - Albaranes", "Desea borrar el albaran seleccionado", "Si", "No") == 0) {
             companyact->begin();
             QString SQLQuery = "DELETE FROM lalbaran WHERE idalbaran ="+m_list->text(m_list->currentRow(),COL_IDALBARAN);
             if (companyact->ejecuta(SQLQuery)==0) {
@@ -198,14 +198,14 @@ void ClientInvoicesList::s_removeClientInvoice() {
                         companyact->commit();
                     } else {
                         companyact->rollback();
-                    }
+                    }// end if
                 } else {
                     companyact->rollback();
-                }
+                }// end if
             } else {
                 companyact->rollback();
-            }
-        }
-    }
+            }// end if
+        }// end if
+    }// end if
     inicializa();
 }// end boton_borrar

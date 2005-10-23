@@ -30,7 +30,7 @@ class providerslist : public providerslistbase {
  Q_OBJECT
 private:
    company *companyact;
-   int m_modo; // == 0 es modo edición
+   int m_modo; // == 0 es modo ediciï¿½
             // ==1 es modo selector.
    QString m_idprovider;
    QString m_cifprovider;
@@ -75,6 +75,8 @@ public slots:
 	else
 		 showConfiguracion();
 	};      
+
+	virtual void s_configurar();
 };
 
 #endif
