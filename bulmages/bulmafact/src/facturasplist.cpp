@@ -32,6 +32,68 @@
 #define COL_IDALMACEN 11
 #define COL_IDSERIE_FACTURAP 12
 
+void FacturasProveedorList::s_configurar() {
+    if(mver_idfacturap->isChecked() )
+        m_list->showColumn(COL_IDFACTURAP);
+    else
+        m_list->hideColumn(COL_IDFACTURAP);
+
+    if(mver_codigoalmacen->isChecked() )
+        m_list->showColumn(COL_CODIGOALMACEN);
+    else
+        m_list->hideColumn(COL_CODIGOALMACEN);
+
+    if(mver_numfacturap->isChecked() )
+        m_list->showColumn(COL_NUMFACTURAP);
+    else
+        m_list->hideColumn(COL_NUMFACTURAP);
+
+    if(mver_nomcliente->isChecked() )
+        m_list->showColumn(COL_NOMCLIENTE);
+    else
+        m_list->hideColumn(COL_NOMCLIENTE);
+
+    if(mver_ffacturap->isChecked() )
+        m_list->showColumn(COL_FFACTURAP);
+    else
+        m_list->hideColumn(COL_FFACTURAP);
+
+    if(mver_contactfacturap->isChecked() )
+        m_list->showColumn(COL_CONTACTFACTURAP);
+    else
+        m_list->hideColumn(COL_CONTACTFACTURAP);
+
+    if(mver_telfacturap->isChecked() )
+        m_list->showColumn(COL_TELFACTURAP);
+    else
+        m_list->hideColumn(COL_TELFACTURAP);
+
+    if(mver_comentfacturap->isChecked() )
+        m_list->showColumn(COL_COMENTFACTURAP);
+    else
+        m_list->hideColumn(COL_COMENTFACTURAP);
+
+    if(mver_idusuari->isChecked() )
+        m_list->showColumn(COL_IDUSUARI);
+    else
+        m_list->hideColumn(COL_IDUSUARI);
+
+    if(mver_idcliente->isChecked() )
+        m_list->showColumn(COL_IDCLIENTE);
+    else
+        m_list->hideColumn(COL_IDCLIENTE);
+
+    if(mver_idalmacen->isChecked() )
+        m_list->showColumn(COL_IDALMACEN);
+    else
+        m_list->hideColumn(COL_IDALMACEN);
+
+    if(mver_idserie_facturap->isChecked() )
+        m_list->showColumn(COL_IDSERIE_FACTURAP);
+    else
+        m_list->hideColumn(COL_IDSERIE_FACTURAP);
+}// end s_configurar
+
 FacturasProveedorList::FacturasProveedorList(QWidget *parent, const char *name, int flag)
 : FacturasProveedorListBase(parent, name, flag) {
     companyact = NULL;
@@ -111,6 +173,13 @@ void FacturasProveedorList::inicializa() {
         cur->siguienteregistro();
     }// end while
     delete cur;
+
+
+	/// Hacemos el calculo del total.
+	cur = companyact->cargacursor("SELECT SUM(calctotalfacpro(idfacturap)) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  "+generaFiltro());
+	m_total->setText(cur->valor("total"));
+	delete cur;
+
 }// end inicializa
 
 
@@ -133,7 +202,14 @@ QString FacturasProveedorList::generaFiltro() {
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idfacturap IN (SELECT DISTINCT idfacturap FROM lfacturap WHERE idarticulo='"+m_articulo->idarticulo()+"')";
     }// end if
-    filtro += " ORDER BY numfacturap";
+
+    if (m_fechain->text() != "")
+	filtro += " AND ffacturap >= '"+m_fechain->text()+"' ";
+
+    if (m_fechafin->text() != "") 
+	filtro += " AND ffacturap <= '"+m_fechafin->text()+"' ";
+
+//    filtro += " ORDER BY numfacturap";
     return (filtro);
 }// end generaFiltro
 

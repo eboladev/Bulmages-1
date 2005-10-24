@@ -887,6 +887,22 @@ CREATE TABLE lfacturap (
    idfacturap integer NOT NULL REFERENCES facturap(idfacturap),
    idarticulo integer REFERENCES articulo(idarticulo)
 );
+
+
+
+-- Descuento de factura proveedor
+-- Numero
+--Concepte: Descripci�del motiu de descompte.
+--Proporcio: Percentatge a descomptar.
+-- Descompte de pressupost a clients.
+CREATE TABLE dfacturap (
+   iddfacturap serial PRIMARY KEY,
+   conceptdfacturap character varying(2000),
+   proporciondfacturap numeric(12,2),
+   idfacturap integer NOT NULL REFERENCES factura(idfactura)
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despu� de �ta.
+); 
+
 -- -------------------------------------------------------------------------------------------
 
 -- FACTURACIO>Albarans:
@@ -1011,6 +1027,21 @@ CREATE TRIGGER aumentastockpt
     AFTER INSERT OR UPDATE ON lalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE aumentastockp(); 
+
+
+-- Descuento albaran proveedor
+-- Numero
+-- Concepte: Descripci�del motiu de descompte.
+-- Proporcio: Percentatge a descomptar.
+-- Descompte d'albar�a clients.
+CREATE TABLE dalbaranp (
+   iddalbaranp serial PRIMARY KEY,
+   conceptdalbaranp character varying(500),
+   proporciondalbaranp numeric(12,2),
+   idalbaranp integer NOT NULL REFERENCES albaran(idalbaran)
+);
+
+
 
 
 -- COMPROVACIONS D'INTEGRITAT>Gen�iques:
@@ -1520,3 +1551,46 @@ BEGIN
 	RETURN total;
 END;
 ' language plpgsql;
+
+-- Cálculo de totales para albaaran proveedor
+CREATE OR REPLACE FUNCTION calctotalalbpro(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp/100) *(1+ ivalalbaranp/100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+		total := total * (1 - res.proporciondalbaranp/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+
+-- Cálculo de totales para factura proveedor
+CREATE OR REPLACE FUNCTION calctotalfacpro(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap/100) *(1+ ivalfacturap/100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
+		total := total * (1 - res.proporciondfacturap/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+
+
+

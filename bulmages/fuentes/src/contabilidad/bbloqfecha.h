@@ -24,8 +24,20 @@
 @author Josep Burcion
 */
 
-class BbloqFecha : public UIbloqFecha
-{
+
+class myQListViewItem : public QListViewItem {
+public:
+	myQListViewItem(QListView *parent, QString label1);
+	myQListViewItem(myQListViewItem *parent, QString label1);
+	~myQListViewItem() {return;};
+	QString ej;
+	QString per;
+};
+
+
+class BbloqFecha : public UIbloqFecha {
+private:
+	postgresiface2 *conexionbase;
 
 public:
     BbloqFecha(QString * NombreBaseDatos=0, QWidget * parent = 0, const char * name = 0, WFlags f = WType_TopLevel);
@@ -35,11 +47,6 @@ public:
 public slots:
     virtual void dobleClick (QListViewItem *item);
     virtual void boto1_click();
-
-private:
-        //QWorkspace * zona0;
-        //BSelector * PunteroAlSelector;
-
 };
 
 #endif

@@ -2,7 +2,7 @@
                           listivaview.cpp  -  description
                              -------------------
     begin                : Thu Jan 30 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -266,7 +266,7 @@ void listivaview::inicializa( intapunts3view *inta) {
     tablarepercutido->hideColumn(R_COL_PORCENT_IVA);
 
 
-    // Hacemos el cálculo de los que no pertenecen a iva soportado pq así entran todos.
+    // Hacemos el cï¿½culo de los que no pertenecen a iva soportado pq asï¿½entran todos.
     query.sprintf("SELECT *, (registroiva.baseimp+registroiva.iva) AS totalfactura FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND NOT factemitida AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha",finicial->text().ascii(), ffinal->text().ascii());
     conexionbase->begin();
     cursorreg = conexionbase->cargacursor(query,"cmquery");
@@ -308,6 +308,7 @@ void listivaview::inicializa( intapunts3view *inta) {
 
 void listivaview::menu_contextual(int row, int , const QPoint &poin) {
     // Si el asiento esta cerrado el menu a mostrar es diferente
+    int idborrador =0;
     QPopupMenu *popup = new QPopupMenu;
     popup->insertItem(tr("Ver Asiento"), 0);
     popup->insertSeparator();
@@ -318,14 +319,13 @@ void listivaview::menu_contextual(int row, int , const QPoint &poin) {
     case 0:
         int idasiento;
         idasiento = atoi(tablasoportado->text(row,S_COL_IDASIENTO).ascii());
-        //introapunts->muestraasiento(idasiento);
         introapunts->flashAsiento(idasiento);
         introapunts->show();
         introapunts->setFocus();
         done(1);
         break;
     case 101:
-        int idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
+        idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
             ivaview *nuevae=new ivaview(empresaactual,0,"");
             nuevae->inicializa1(idborrador);
@@ -333,6 +333,18 @@ void listivaview::menu_contextual(int row, int , const QPoint &poin) {
             delete nuevae;
         }// end if
         break;
+    case 103:
+        idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
+        if (idborrador != 0) {
+            ivaview *nuevae=new ivaview(empresaactual,0,"");
+            nuevae->inicializa1(idborrador);
+            nuevae->boton_borrar();
+            delete nuevae;
+	    boton_reload();
+        }// end if
+        break;
+
+
     }// end switch
     delete popup;
 
@@ -341,6 +353,7 @@ void listivaview::menu_contextual(int row, int , const QPoint &poin) {
 
 void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
     // Si el asiento esta cerrado el menu a mostrar es diferente
+    int idborrador=0;
     QPopupMenu *popup = new QPopupMenu;
     popup->insertItem(tr("Ver Asiento"), 0);
     popup->insertSeparator();
@@ -357,7 +370,7 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
         done(1);
         break;
     case 101:
-        int idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
+        idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
             ivaview *nuevae=new ivaview(empresaactual, 0,"");
             nuevae->inicializa1(idborrador);
@@ -365,11 +378,21 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
             delete nuevae;
         }// end if
         break;
+    case 103:
+        idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
+        if (idborrador != 0) {
+            ivaview *nuevae=new ivaview(empresaactual, 0,"");
+            nuevae->inicializa1(idborrador);
+            nuevae->boton_borrar();
+            delete nuevae;
+	    boton_reload();
+        }// end if
+        break;
     }// end switch
     delete popup;
 }// end contextmenu
 
-/** \brief ESta funcion responde a la pulsación del botón de busqueda de fecha inicial
+/** \brief ESta funcion responde a la pulsaciï¿½ del botï¿½ de busqueda de fecha inicial
 **/
 void listivaview::boton_finicial() {
     finicial->setText("+");
@@ -391,7 +414,7 @@ void listivaview::finicial_textChanged( const QString & texto ) {
 }//fin fechaasiento1_textChanged
 
 
-/** Esta función responde a la pulsación del boton de busqueda de fecha final
+/** Esta funciï¿½ responde a la pulsaciï¿½ del boton de busqueda de fecha final
 **/
 void listivaview::boton_ffinal() {
     ffinal->setText("+");

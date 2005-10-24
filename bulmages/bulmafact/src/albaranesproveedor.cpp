@@ -250,6 +250,13 @@ void AlbaranesProveedor::inicializa() {
             cur->siguienteregistro();
         }// end while
         delete cur;
+
+
+	/// Hacemos el calculo del total.
+	cur = companyact->cargacursor("SELECT SUM(calctotalalbpro(idalbaranp)) AS total FROM albaranp LEFT JOIN proveedor ON albaranp.idproveedor = proveedor.idproveedor LEFT JOIN almacen ON   albaranp.idalmacen=almacen.idalmacen WHERE 1=1 "+generaFiltro());
+	m_total->setText(cur->valor("total"));
+	delete cur;
+
     }// end if
     s_configurar();
     fprintf(stderr,"end AlbaranesProveedor::inicializa()\n");
@@ -276,7 +283,15 @@ QString AlbaranesProveedor::generaFiltro() {
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idalbaranp IN (SELECT DISTINCT idalbaranp FROM lalbaranp WHERE idarticulo='"+m_articulo->idarticulo()+"')";
     }// end if
-    filtro += " ORDER BY idalbaranp";
+
+    if (m_fechain->text() != "")
+	filtro += " AND fechaalbaranp >= '"+m_fechain->text()+"' ";
+
+    if (m_fechafin->text() != "") 
+	filtro += " AND fechaalbaranp <= '"+m_fechafin->text()+"' ";
+
+
+//    filtro += " ORDER BY idalbaranp";
     return (filtro);
 }// end generaFiltro
 

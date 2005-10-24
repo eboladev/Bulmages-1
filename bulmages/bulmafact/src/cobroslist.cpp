@@ -68,7 +68,42 @@ CREATE TABLE presupuesto (
 
 
 void CobrosList::s_configurar() {
-}
+    if(mver_idcobro->isChecked() )
+        m_list->showColumn(COL_IDCOBRO);
+    else
+        m_list->hideColumn(COL_IDCOBRO);
+
+    if(mver_idcliente->isChecked() )
+        m_list->showColumn(COL_IDCLIENTE);
+    else
+        m_list->hideColumn(COL_IDCLIENTE);
+
+    if(mver_fechacobro->isChecked() )
+        m_list->showColumn(COL_FECHACOBRO);
+    else
+        m_list->hideColumn(COL_FECHACOBRO);
+
+    if(mver_cantcobro->isChecked() )
+        m_list->showColumn(COL_CANTCOBRO);
+    else
+        m_list->hideColumn(COL_CANTCOBRO);
+
+    if(mver_refcobro->isChecked() )
+        m_list->showColumn(COL_REFCOBRO);
+    else
+        m_list->hideColumn(COL_REFCOBRO);
+
+    if(mver_previsioncobro->isChecked() )
+        m_list->showColumn(COL_PREVISIONCOBRO);
+    else
+        m_list->hideColumn(COL_PREVISIONCOBRO);
+
+    if(mver_comentcobro->isChecked() )
+        m_list->showColumn(COL_COMENTCOBRO);
+    else
+        m_list->hideColumn(COL_COMENTCOBRO);
+
+}// end s_configurar
 
 
 CobrosList::CobrosList(QWidget *parent, const char *name, int flag)
@@ -145,6 +180,11 @@ void CobrosList::inicializa() {
             cur->siguienteregistro();
         }// end while
         delete cur;
+
+	/// Hacemos el calculo del total.
+	cur = companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro where 1=1"+generaFiltro());
+	m_total->setText(cur->valor("total"));
+	delete cur;
     }// end if
     s_configurar();
     fprintf(stderr,"end CobrosList::inicializa()\n");
@@ -167,7 +207,14 @@ QString CobrosList::generaFiltro() {
     if (!m_procesados->isChecked() ) {
         filtro += " AND NOT previsioncobro";
     }// end if
-    filtro += " ORDER BY idcobro";
+
+    if (m_fechain->text() != "")
+	filtro += " AND fechacobro >= '"+m_fechain->text()+"' ";
+
+    if (m_fechafin->text() != "") 
+	filtro += " AND fechacobro <= '"+m_fechafin->text()+"' ";
+
+//    filtro += " ORDER BY idcobro";
     return (filtro);
 }// end generaFiltro
 

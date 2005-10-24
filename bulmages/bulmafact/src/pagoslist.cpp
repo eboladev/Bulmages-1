@@ -61,19 +61,42 @@ CREATE TABLE presupuesto (
 #define COL_REFPAGO 4
 #define COL_PREVISIONPAGO 5
 #define COL_COMENTPAGO 6
-    
-    
-
-
-
 
 void PagosList::s_configurar() {
-/*
-    if(mver_idpresupuesto->isChecked() )
-        m_list->showColumn(COL_IDPRESUPUESTO);
+    if(mver_idpago->isChecked() )
+        m_list->showColumn(COL_IDPAGO);
     else
-        m_list->hideColumn(COL_IDPRESUPUESTO);
-*/
+        m_list->hideColumn(COL_IDPAGO);
+
+    if(mver_idproveedor->isChecked() )
+        m_list->showColumn(COL_IDPROVEEDOR);
+    else
+        m_list->hideColumn(COL_IDPROVEEDOR);
+
+    if(mver_fechapago->isChecked() )
+        m_list->showColumn(COL_FECHAPAGO);
+    else
+        m_list->hideColumn(COL_FECHAPAGO);
+
+    if(mver_cantpago->isChecked() )
+        m_list->showColumn(COL_CANTPAGO);
+    else
+        m_list->hideColumn(COL_CANTPAGO);
+
+    if(mver_refpago->isChecked() )
+        m_list->showColumn(COL_REFPAGO);
+    else
+        m_list->hideColumn(COL_REFPAGO);
+
+    if(mver_previsionpago->isChecked() )
+        m_list->showColumn(COL_PREVISIONPAGO);
+    else
+        m_list->hideColumn(COL_PREVISIONPAGO);
+
+    if(mver_comentpago->isChecked() )
+        m_list->showColumn(COL_COMENTPAGO);
+    else
+        m_list->hideColumn(COL_COMENTPAGO);
 }
 
 
@@ -156,6 +179,12 @@ void PagosList::inicializa() {
             cur->siguienteregistro();
         }// end while
         delete cur;
+
+	/// Hacemos el calculo del total.
+	cur = companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago where 1=1"+generaFiltro());
+	m_total->setText(cur->valor("total"));
+	delete cur;
+
     }// end if
     s_configurar();
     fprintf(stderr,"end PagosList::inicializa()\n");
@@ -178,7 +207,13 @@ QString PagosList::generaFiltro() {
     if (!m_procesados->isChecked() ) {
         filtro += " AND NOT previsionpago";
     }// end if
-    filtro += " ORDER BY idpago";
+
+    if (m_fechain->text() != "")
+	filtro += " AND fechapago >= '"+m_fechain->text()+"' ";
+
+    if (m_fechafin->text() != "") 
+	filtro += " AND fechapago <= '"+m_fechafin->text()+"' ";
+
     return (filtro);
 }// end generaFiltro
 
