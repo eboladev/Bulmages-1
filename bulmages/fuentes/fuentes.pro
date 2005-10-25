@@ -8,7 +8,6 @@ SUBDIRS += src
 SUBDIRS += src/plugin
 SUBDIRS += src/plugincorrector
 SUBDIRS += src/pluginadocumental
-SUBDIRS += src/pluginestadisticas/estadisticas
 SUBDIRS += src/pluginestadisticas
 SUBDIRS += src/pluginonline
 SUBDIRS += src/pluginpychart

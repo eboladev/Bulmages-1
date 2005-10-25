@@ -31,27 +31,38 @@ INCLUDEPATH = ../../../bulmalib \
 
 HEADERS += estadisticasview.h \
            resmensualview.h \
-	   pluginestadisticas.h
+	   pluginestadisticas.h \
+	   estadisticas/tobarchart.h \
+           estadisticas/topiechart.h \ 
+	   estadisticas/tolinechart.h
 
 SOURCES += estadisticasview.cpp \
            resmensualview.cpp \
-	   pluginestadisticas.cpp
+	   pluginestadisticas.cpp \
+	   estadisticas/tobarchart.cpp \
+           estadisticas/tolinechart.cpp \
+           estadisticas/topiechart.cpp
 
 
-exists (estadisticas){
-  LIBS += estadisticas/libestadisticas.lib.a
-  INCLUDEPATH += estadisticas
+  estadisticas/tolinechartsetupui.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$tolinechartsetupui.ui.target
+  estadisticas/tolinechartsetupui.ui.target = tolinechartsetupui.ui
+  estadisticasdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$estadisticasdlg.ui.target
+  estadisticasdlg.ui.target = estadisticasdlg.ui
+
   estadisticasdlg.ui.target = contabilidad/estadisticasdlg.ui
   estadisticasdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$estadisticasdlg.ui.target
   resmensualdlg.ui.target = contabilidad/resmensualdlg.ui
   resmensualdlg.ui.commands = $$IDL_COMPILER $$IDL_OPTIONS $$resmensualdlg.ui.target
   DEFINES += ESTADISTICAS
   IDLS += estadisticasdlg.ui \
-  resmensualdlg.ui
-  FORMS += estadisticasdlg.ui \
-  resmensualdlg.ui
-}
+  resmensualdlg.ui\
+  estadisticas/tolinechartsetupui.ui
 
+  FORMS += estadisticasdlg.ui \
+  resmensualdlg.ui \
+  estadisticas/tolinechartsetupui.ui
+
+  IMAGES += estadisticas/print.xpm
 
 unix{
   UI_DIR = .ui
