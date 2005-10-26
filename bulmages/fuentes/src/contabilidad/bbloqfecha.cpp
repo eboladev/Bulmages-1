@@ -19,6 +19,7 @@
 myQListViewItem::myQListViewItem(myQListViewItem *parent, QString label1):QListViewItem(parent, label1) {
     return;
 };
+
 myQListViewItem::myQListViewItem(QListView *parent, QString label1):QListViewItem(parent, label1) {
     return;
 };

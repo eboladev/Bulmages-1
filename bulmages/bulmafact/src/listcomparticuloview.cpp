@@ -39,10 +39,10 @@ ListCompArticuloView::ListCompArticuloView(QWidget * parent, const char * name) 
     setColumnWidth(COL_CODCOMPLETOCOMPONENTE,100);
     setColumnWidth(COL_NOMCOMPONENTE,100);
     setColumnWidth(COL_CANTCOMPARTICULO,74);
-/*
+
     hideColumn(COL_IDARTICULO);
     hideColumn(COL_IDCOMPONENTE);
-*/
+
 
     setSelectionMode( QTable::SingleRow );
 
@@ -210,8 +210,8 @@ void ListCompArticuloView::manageArticle(int row) {
 
 
 QString ListCompArticuloView::searchArticle() {
-    fprintf(stderr,"Busqueda de un artículo\n");
-    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
+    fprintf(stderr,"Busqueda de un artï¿½ulo\n");
+    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artï¿½ulo","company"));
     // , WType_Dialog| WShowModal
     artlist->modoseleccion();
     // Esto es convertir un QWidget en un sistema modal de dialogo.
