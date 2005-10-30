@@ -1,7 +1,7 @@
 //
 // C++ Implementation: pedidosproveedorlist
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
@@ -33,6 +33,65 @@
 #define COL_IDUSUARI 10
 #define COL_IDPROVEEDOR 11
 #define COL_IDALMACEN 12
+#define COL_TOTALPEDIDOPROVEEDOR 13
+#define COL_TOTALBASEIMP 14
+#define COL_TOTALIMPUESTOS 15
+
+void PedidosProveedorList::guardaconfig() {
+    QString aux = "";
+    mver_idpedidoproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_refpedidoproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_numpedidoproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_descpedidoproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_fechapedidoproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_contacpedidoproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_telpedidoproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_comentpedidoproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_idusuari->isChecked() ? aux += "1,":aux+="0,";
+    mver_idproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_idalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalpedidoproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confpedidosproveedorlist.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void PedidosProveedorList::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confpedidosproveedorlist.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_idpedidoproveedor->setChecked(line.at(0)=='1');
+    mver_codigoalmacen->setChecked(line.at(2)=='1');
+    mver_refpedidoproveedor->setChecked(line.at(4)=='1');
+    mver_numpedidoproveedor->setChecked(line.at(6)=='1');
+    mver_descpedidoproveedor->setChecked(line.at(8)=='1');
+    mver_nomproveedor->setChecked(line.at(10)=='1');
+    mver_fechapedidoproveedor->setChecked(line.at(12)=='1');
+    mver_contacpedidoproveedor->setChecked(line.at(14)=='1');
+    mver_telpedidoproveedor->setChecked(line.at(16)=='1');
+    mver_comentpedidoproveedor->setChecked(line.at(18)=='1');
+    mver_idusuari->setChecked(line.at(20)=='1');
+    mver_idproveedor->setChecked(line.at(22)=='1');
+    mver_idalmacen->setChecked(line.at(24)=='1');
+    mver_totalpedidoproveedor->setChecked(line.at(26)=='1');
+    mver_totalbaseimp->setChecked(line.at(28)=='1');
+    mver_totalimpuestos->setChecked(line.at(30)=='1');
+}// end cargaconfig
+
 
 void PedidosProveedorList::s_configurar() {
     if(mver_idpedidoproveedor->isChecked() )
@@ -99,11 +158,29 @@ void PedidosProveedorList::s_configurar() {
         m_list->showColumn(COL_IDALMACEN);
     else
         m_list->hideColumn(COL_IDALMACEN);
+
+    if(mver_totalpedidoproveedor->isChecked() )
+        m_list->showColumn(COL_TOTALPEDIDOPROVEEDOR);
+    else
+        m_list->hideColumn(COL_TOTALPEDIDOPROVEEDOR);
+
+    if(mver_totalbaseimp->isChecked() )
+        m_list->showColumn(COL_TOTALBASEIMP);
+    else
+        m_list->hideColumn(COL_TOTALBASEIMP);
+
+    if(mver_totalimpuestos->isChecked() )
+        m_list->showColumn(COL_TOTALIMPUESTOS);
+    else
+        m_list->hideColumn(COL_TOTALIMPUESTOS);
+
+    guardaconfig();
 }// end s_configurar
 
 
 PedidosProveedorList::PedidosProveedorList(QWidget *parent, const char *name, int flag)
-: PedidosProveedorListBase(parent, name, flag) {
+        : PedidosProveedorListBase(parent, name, flag) {
+    cargaconfig();
     companyact = NULL;
     m_modo=0;
     m_idpedidoproveedor="";
@@ -116,6 +193,7 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const
     companyact = comp;
     m_proveedor->setcompany(comp);
     m_articulo->setcompany(comp);
+    cargaconfig();
     inicializa();
     m_modo=0;
     m_idpedidoproveedor="";
@@ -125,8 +203,7 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const
 }
 
 
-PedidosProveedorList::~PedidosProveedorList() {
-}
+PedidosProveedorList::~PedidosProveedorList() {}
 
 
 void PedidosProveedorList::inicializa() {
@@ -134,7 +211,7 @@ void PedidosProveedorList::inicializa() {
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setSorting( TRUE );
     m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(13);
+    m_list->setNumCols(16);
     m_list->horizontalHeader()->setLabel( COL_IDPEDIDOPROVEEDOR, tr( "COL_IDPEDIDOPROVEEDOR" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMPROVEEDOR, tr( "Proveedor" ) );
     m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
@@ -148,7 +225,10 @@ void PedidosProveedorList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacén") );
     m_list->horizontalHeader()->setLabel( COL_DESCPEDIDOPROVEEDOR, tr("Descripción") );
     m_list->horizontalHeader()->setLabel( COL_REFPEDIDOPROVEEDOR, tr("Referencia") );
-    
+    m_list->horizontalHeader()->setLabel( COL_TOTALPEDIDOPROVEEDOR, tr("Total") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
+
     m_list->setColumnWidth(COL_IDPEDIDOPROVEEDOR,75);
     m_list->setColumnWidth(COL_NUMPEDIDOPROVEEDOR,75);
     m_list->setColumnWidth(COL_FECHAPEDIDOPROVEEDOR,100);
@@ -160,12 +240,11 @@ void PedidosProveedorList::inicializa() {
     m_list->setColumnWidth(COL_DESCPEDIDOPROVEEDOR, 300);
     m_list->setColumnWidth(COL_REFPEDIDOPROVEEDOR, 75);
 
-
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPEDIDOSCLIENTE));
     m_list->setReadOnly(TRUE);
-     
-    
+
+
     cursor2 * cur= companyact->cargacursor("SELECT * FROM pedidoproveedor LEFT JOIN  proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -177,28 +256,38 @@ void PedidosProveedorList::inicializa() {
         m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
         m_list->setText(i,COL_NOMPROVEEDOR,cur->valor("nomproveedor"));
         m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
-	m_list->setText(i,COL_DESCPEDIDOPROVEEDOR,cur->valor("descpedidoproveedor"));
-	m_list->setText(i,COL_REFPEDIDOPROVEEDOR,cur->valor("refpedidoproveedor"));	
+        m_list->setText(i,COL_DESCPEDIDOPROVEEDOR,cur->valor("descpedidoproveedor"));
+        m_list->setText(i,COL_REFPEDIDOPROVEEDOR,cur->valor("refpedidoproveedor"));
+
+
+        /// Calculamos el total del presupuesto y lo presentamos.
+        cursor2 *cur1 = companyact->cargacursor("SELECT calctotalpedpro("+cur->valor("idpedidoproveedor")+") AS total, calcbimppedpro("+cur->valor("idpedidoproveedor")+") AS base, calcimpuestospedpro("+cur->valor("idpedidoproveedor")+") AS impuestos");
+        m_list->setText(i,COL_TOTALPEDIDOPROVEEDOR,cur1->valor("total"));
+        m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
+        m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
+        delete cur1;
+
+
         i++;
         cur->siguienteregistro();
     }// end while
     delete cur;
 
-	/// Hacemos el calculo del total.
-	cur = companyact->cargacursor("SELECT SUM(calctotalpedpro(idpedidoproveedor)) AS total FROM pedidoproveedor LEFT JOIN  proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
-	m_total->setText(cur->valor("total"));
-	delete cur;
+    /// Hacemos el calculo del total.
+    cur = companyact->cargacursor("SELECT SUM(calctotalpedpro(idpedidoproveedor)) AS total FROM pedidoproveedor LEFT JOIN  proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
+    m_total->setText(cur->valor("total"));
+    delete cur;
 
-	s_configurar();
+    s_configurar();
 }// end inicializa
 
 QString PedidosProveedorList::generarFiltro() {
 
     /// Tratamiento de los filtros.
     fprintf(stderr,"Tratamos el filtro \n");
-    
-//    QString orden[] = {"fechapedidoproveedor","cifproveedor","nomproveedor","refpedidoproveedor","numpedidoproveedor"};
-    
+
+    //    QString orden[] = {"fechapedidoproveedor","cifproveedor","nomproveedor","refpedidoproveedor","numpedidoproveedor"};
+
     QString filtro="";
     if (m_filtro->text() != "") {
         filtro = " AND ( descpedidoproveedor LIKE '%"+m_filtro->text()+"%' ";
@@ -217,27 +306,27 @@ QString PedidosProveedorList::generarFiltro() {
     }// end if
 
     if (m_fechain->text() != "")
-	filtro += " AND fechapedidoproveedor >= '"+m_fechain->text()+"' ";
+        filtro += " AND fechapedidoproveedor >= '"+m_fechain->text()+"' ";
 
-    if (m_fechafin->text() != "") 
-	filtro += " AND fechapedidoproveedor <= '"+m_fechafin->text()+"' ";
+    if (m_fechafin->text() != "")
+        filtro += " AND fechapedidoproveedor <= '"+m_fechafin->text()+"' ";
 
-//    filtro += " ORDER BY "+orden[m_orden->currentItem()];
+    //    filtro += " ORDER BY "+orden[m_orden->currentItem()];
     return (filtro);
 }// end generaFiltro
 
 
 
 void PedidosProveedorList::doubleclicked(int a, int , int , const QPoint &) {
-   fprintf(stderr,"PedidosProveedorList::doubleclicked()\n");
-   m_idpedidoproveedor = m_list->text(a,COL_IDPEDIDOPROVEEDOR);
-   if (m_modo == 0 && m_idpedidoproveedor != "") {
-      PedidoProveedorView *bud = new PedidoProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Proveedors", "company"));
-      bud->cargaPedidoProveedor(m_idpedidoproveedor);
-      bud->show();
-   } else {
-      close();
-   }// end if
+    fprintf(stderr,"PedidosProveedorList::doubleclicked()\n");
+    m_idpedidoproveedor = m_list->text(a,COL_IDPEDIDOPROVEEDOR);
+    if (m_modo == 0 && m_idpedidoproveedor != "") {
+        PedidoProveedorView *bud = new PedidoProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Proveedors", "company"));
+        bud->cargaPedidoProveedor(m_idpedidoproveedor);
+        bud->show();
+    } else {
+        close();
+    }// end if
 }
 
 
@@ -246,7 +335,7 @@ void PedidosProveedorList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"pedidosproveedor.rml";
     archivo = "cp "+archivo+" /tmp/pedidosproveedor.rml";
     system (archivo.ascii());
-    
+
     /// Copiamos el logo
     archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
     archivo = "cp "+archivo+" /tmp/logo.jpg";
@@ -267,18 +356,18 @@ void PedidosProveedorList::imprimir() {
     fitxersortidatxt += "	<td>Referencia</td>";
     fitxersortidatxt += "	<td>Proveedor</td>";
     fitxersortidatxt += "	<td>Contacto</td>";
-    fitxersortidatxt += "</tr>";    
-    
+    fitxersortidatxt += "</tr>";
+
     QString SQLQuery = "SELECT * FROM pedidoproveedor";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     while(!cur->eof()) {
-    	fitxersortidatxt += "<tr>";
-    	fitxersortidatxt += "<td>"+cur->valor("descpedidoproveedor")+"</td>";
-    	fitxersortidatxt += "<td>"+cur->valor("refpedidoproveedor")+"</td>";
-    	fitxersortidatxt += "<td>"+cur->valor("idproveedor")+"</td>";
-    	fitxersortidatxt += "<td>"+cur->valor("contactpedidoproveedor")+"</td>";
-    	fitxersortidatxt += "</tr>";
-	cur->siguienteregistro();
+        fitxersortidatxt += "<tr>";
+        fitxersortidatxt += "<td>"+cur->valor("descpedidoproveedor")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("refpedidoproveedor")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("idproveedor")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("contactpedidoproveedor")+"</td>";
+        fitxersortidatxt += "</tr>";
+        cur->siguienteregistro();
     }// end if
     delete cur;
     fitxersortidatxt += "</blockTable>";
@@ -306,12 +395,12 @@ void PedidosProveedorList::s_borrarPedidosProveedor() {
             if (companyact->ejecuta(SQLQuery)==0) {
                 QString SQLQuery = "DELETE FROM dpedidoproveedor WHERE idpedidoproveedor ="+m_list->text(m_list->currentRow(),COL_IDPEDIDOPROVEEDOR);
                 if (companyact->ejecuta(SQLQuery)==0) {
-                        QString SQLQuery = "DELETE FROM pedidoproveedor WHERE idpedidoproveedor ="+m_list->text(m_list->currentRow(),COL_IDPEDIDOPROVEEDOR);
-                        if (companyact->ejecuta(SQLQuery)==0) {
-                            companyact->commit();
-                        } else {
-                            companyact->rollback();
-                        }
+                    QString SQLQuery = "DELETE FROM pedidoproveedor WHERE idpedidoproveedor ="+m_list->text(m_list->currentRow(),COL_IDPEDIDOPROVEEDOR);
+                    if (companyact->ejecuta(SQLQuery)==0) {
+                        companyact->commit();
+                    } else {
+                        companyact->rollback();
+                    }
 
                 } else {
                     companyact->rollback();

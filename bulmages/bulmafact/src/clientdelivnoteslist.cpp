@@ -63,9 +63,77 @@ CREATE TABLE albaran (
 #define COL_IDALBARAN 11
 #define COL_COMENTALBARAN 12
 #define COL_IDALMACEN 13
+#define COL_TOTALALBARAN 14
+#define COL_TOTALBASEIMP 15
+#define COL_TOTALIMPUESTOS 16
+
+void ClientDelivNotesList::guardaconfig() {
+    QString aux = "";
+    mver_refalbaran->isChecked() ? aux += "1,":aux+="0,";
+    mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_numalbaran->isChecked() ? aux += "1,":aux+="0,";
+    mver_fechaalbaran->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_idforma_pago->isChecked() ? aux += "1,":aux+="0,";
+    mver_descforma_pago->isChecked() ? aux += "1,":aux+="0,";
+    mver_numfactura->isChecked() ? aux += "1,":aux+="0,";
+    mver_numnofactura->isChecked() ? aux += "1,":aux+="0,";
+    mver_idusuario->isChecked() ? aux += "1,":aux+="0,";
+    //	mver_comentpresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    mver_idcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_idalbaran->isChecked() ? aux += "1,":aux+="0,";
+    mver_comentalbaran->isChecked() ? aux += "1,":aux+="0,";
+    mver_idalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalalbaran->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confclientdelivnoteslist.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void ClientDelivNotesList::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confclientdelivnoteslist.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_refalbaran->setChecked(line.at(0)=='1');
+    mver_codigoalmacen->setChecked(line.at(2)=='1');
+    mver_numalbaran->setChecked(line.at(4)=='1');
+    mver_fechaalbaran->setChecked(line.at(6)=='1');
+    mver_nomcliente->setChecked(line.at(8)=='1');
+    mver_idforma_pago->setChecked(line.at(10)=='1');
+    mver_descforma_pago->setChecked(line.at(12)=='1');
+    mver_numfactura->setChecked(line.at(14)=='1');
+    mver_numnofactura->setChecked(line.at(16)=='1');
+    mver_idusuario->setChecked(line.at(18)=='1');
+    mver_idcliente->setChecked(line.at(20)=='1');
+    mver_idalbaran->setChecked(line.at(22)=='1');
+    mver_comentalbaran->setChecked(line.at(24)=='1');
+    mver_idalmacen->setChecked(line.at(26)=='1');
+    mver_totalalbaran->setChecked(line.at(28)=='1');
+    mver_totalbaseimp->setChecked(line.at(30)=='1');
+    mver_totalimpuestos->setChecked(line.at(32)=='1');
+}// end cargaconfig
+
+
 
 
 void ClientDelivNotesList::s_configurar() {
+
+    if(mver_refalbaran->isChecked() )
+        m_list->showColumn(COL_REFALBARAN);
+    else
+        m_list->hideColumn(COL_REFALBARAN);
 
     if(mver_codigoalmacen->isChecked() )
         m_list->showColumn(COL_CODIGOALMACEN);
@@ -92,7 +160,7 @@ void ClientDelivNotesList::s_configurar() {
     else
         m_list->hideColumn(COL_IDFORMA_PAGO);
 
-    if(mver_descformapago->isChecked() )
+    if(mver_descforma_pago->isChecked() )
         m_list->showColumn(COL_DESCFORMA_PAGO);
     else
         m_list->hideColumn(COL_DESCFORMA_PAGO);
@@ -101,7 +169,7 @@ void ClientDelivNotesList::s_configurar() {
         m_list->showColumn(COL_NUMFACTURA);
     else
         m_list->hideColumn(COL_NUMFACTURA);
-	
+
     if(mver_numnofactura->isChecked() )
         m_list->showColumn(COL_NUMNOFACTURA);
     else
@@ -126,17 +194,34 @@ void ClientDelivNotesList::s_configurar() {
         m_list->showColumn(COL_COMENTALBARAN);
     else
         m_list->hideColumn(COL_COMENTALBARAN);
-	
+
     if(mver_idalmacen->isChecked() )
         m_list->showColumn(COL_IDALMACEN);
     else
         m_list->hideColumn(COL_IDALMACEN);
-	
-}
+
+    if(mver_totalalbaran->isChecked() )
+        m_list->showColumn(COL_TOTALALBARAN);
+    else
+        m_list->hideColumn(COL_TOTALALBARAN);
+
+    if(mver_totalbaseimp->isChecked() )
+        m_list->showColumn(COL_TOTALBASEIMP);
+    else
+        m_list->hideColumn(COL_TOTALBASEIMP);
+
+    if(mver_totalimpuestos->isChecked() )
+        m_list->showColumn(COL_TOTALIMPUESTOS);
+    else
+        m_list->hideColumn(COL_TOTALIMPUESTOS);
+
+	guardaconfig();
+}// end s_configurar
 
 ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, int flag)
-: ClientDelivNotesListBase(parent, name, flag) {
+        : ClientDelivNotesListBase(parent, name, flag) {
     companyact = NULL;
+    cargaconfig();
     m_modo=0;
     m_idclidelivnote="";
     meteWindow(caption(),this);
@@ -148,6 +233,7 @@ ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const
     companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
+    cargaconfig();
     inicializa();
     m_modo=0;
     m_idclidelivnote="";
@@ -170,7 +256,7 @@ void ClientDelivNotesList::inicializa() {
     m_list->setSorting( TRUE );
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(13);
+    m_list->setNumCols(17);
     m_list->horizontalHeader()->setLabel( COL_REFALBARAN, tr( "Referencia" ) );
     m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
@@ -184,6 +270,12 @@ void ClientDelivNotesList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_IDALBARAN, tr("COL_IDALBARAN") );
     m_list->horizontalHeader()->setLabel( COL_COMENTALBARAN, tr("Comentario") );
     m_list->horizontalHeader()->setLabel( COL_DESCFORMA_PAGO, tr("Forma de Pago") );
+
+    m_list->horizontalHeader()->setLabel( COL_TOTALALBARAN, tr("Total") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
+
+
     m_list->setColumnWidth(COL_REFALBARAN,75);
     m_list->setColumnWidth(COL_CODIGOALMACEN,75);
     m_list->setColumnWidth(COL_NUMALBARAN,75);
@@ -198,9 +290,6 @@ void ClientDelivNotesList::inicializa() {
     m_list->setColumnWidth(COL_COMENTALBARAN,200);
     m_list->setColumnWidth(COL_DESCFORMA_PAGO,200);
 
-    
-    
-    //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTALBARANESCLIENTE));
     m_list->setReadOnly(TRUE);
@@ -208,7 +297,8 @@ void ClientDelivNotesList::inicializa() {
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {
-        m_list->setText(i,COL_REFALBARAN,cur->valor("refalbaran"));        m_list->setText(i,COL_NUMALBARAN,cur->valor("numalbaran"));
+        m_list->setText(i,COL_REFALBARAN,cur->valor("refalbaran"));
+        m_list->setText(i,COL_NUMALBARAN,cur->valor("numalbaran"));
         m_list->setText(i,COL_FECHAALBARAN,cur->valor("fechaalbaran"));
         m_list->setText(i,COL_IDFORMA_PAGO,cur->valor("idforma_pago"));
         m_list->setText(i,COL_NUMFACTURA,cur->valor("numfactura"));
@@ -223,16 +313,28 @@ void ClientDelivNotesList::inicializa() {
 
         cursor2 * cur2= companyact->cargacursor("SELECT * FROM forma_pago WHERE idforma_pago="+cur->valor("idforma_pago"));
         m_list->setText(i,COL_DESCFORMA_PAGO,cur2->valor("descforma_pago"));
-        delete cur2; 
-	i++;
+        delete cur2;
+
+        /// Calculamos el total del presupuesto y lo presentamos.
+        cursor2 *cur1 = companyact->cargacursor("SELECT calctotalalbaran("+cur->valor("idalbaran")+") AS total, calcbimpalbaran("+cur->valor("idalbaran")+") AS base, calcimpuestosalbaran("+cur->valor("idalbaran")+") AS impuestos");
+        m_list->setText(i,COL_TOTALALBARAN,cur1->valor("total"));
+        m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
+        m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
+        delete cur1;
+
+
+        i++;
         cur->siguienteregistro();
     }// end while
     delete cur;
 
-	/// Hacemos el calculo del total.
-	cur = companyact->cargacursor("SELECT SUM(calctotalalbaran(idalbaran)) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
-	m_total->setText(cur->valor("total"));
-	delete cur;
+    /// Hacemos el calculo del total.
+    cur = companyact->cargacursor("SELECT SUM(calctotalalbaran(idalbaran)) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
+    m_total->setText(cur->valor("total"));
+    delete cur;
+
+
+    s_configurar();
 
 }// end inicializa
 
@@ -254,15 +356,15 @@ void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
 
 
 void ClientDelivNotesList::s_edit() {
-int a = m_list->currentRow();
-if (a >= 0) {
-    m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
-    if (m_idclidelivnote != "") {
-        fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
-        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
-        cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
-        cDelivNote->show();
-    }// end if
+    int a = m_list->currentRow();
+    if (a >= 0) {
+        m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
+        if (m_idclidelivnote != "") {
+            fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
+            AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albarán de Cliente", "company"));
+            cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
+            cDelivNote->show();
+        }// end if
     }// end if
 }
 
@@ -326,7 +428,7 @@ void ClientDelivNotesList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albaranescliente.rml";
     archivo = "cp "+archivo+" /tmp/albaranescliente.rml";
     system (archivo.ascii());
-    
+
     /// Copiamos el logo
     archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
     archivo = "cp "+archivo+" /tmp/logo.jpg";
@@ -347,18 +449,18 @@ void ClientDelivNotesList::imprimir() {
     fitxersortidatxt += "	<td>Referencia</td>";
     fitxersortidatxt += "	<td>Cliente</td>";
     fitxersortidatxt += "	<td>Contacto</td>";
-    fitxersortidatxt += "</tr>";    
-    
+    fitxersortidatxt += "</tr>";
+
     QString SQLQuery = "SELECT * FROM albaran, cliente, almacen where albaran.idcliente=cliente.idcliente AND albaran.idalmacen=almacen.idalmacen"+generarFiltro();
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     while(!cur->eof()) {
-    	fitxersortidatxt += "<tr>";
-    	fitxersortidatxt += "<td>"+cur->valor("descalbaran")+"</td>";
-    	fitxersortidatxt += "<td>"+cur->valor("refalbaran")+"</td>";
-    	fitxersortidatxt += "<td>"+cur->valor("idcliente")+"</td>";
-    	fitxersortidatxt += "<td>"+cur->valor("contactalbaran")+"</td>";
-    	fitxersortidatxt += "</tr>";
-	cur->siguienteregistro();
+        fitxersortidatxt += "<tr>";
+        fitxersortidatxt += "<td>"+cur->valor("descalbaran")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("refalbaran")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("idcliente")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("contactalbaran")+"</td>";
+        fitxersortidatxt += "</tr>";
+        cur->siguienteregistro();
     }// end if
     delete cur;
     fitxersortidatxt += "</blockTable>";
@@ -394,14 +496,14 @@ QString ClientDelivNotesList::generarFiltro() {
     if (m_articulo->idarticulo() != "")
         filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='"+m_articulo->idarticulo()+"')";
 
-    if (!m_procesados->isChecked() ) 
+    if (!m_procesados->isChecked() )
         filtro += " AND NOT procesadoalbaran";
 
     if (m_fechain->text() != "")
-	filtro += " AND fechaalbaran >= '"+m_fechain->text()+"' ";
+        filtro += " AND fechaalbaran >= '"+m_fechain->text()+"' ";
 
-    if (m_fechafin->text() != "") 
-	filtro += " AND fechaalbaran <= '"+m_fechafin->text()+"' ";
+    if (m_fechafin->text() != "")
+        filtro += " AND fechaalbaran <= '"+m_fechafin->text()+"' ";
 
     return (filtro);
 }// end generaFiltro

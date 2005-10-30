@@ -193,12 +193,12 @@ void AlbaranClienteView::generarFactura() {
     LinAlbaranCliente *linea;
     uint i = 0;
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        bud->getlistalineas()->nuevalinea(linea->desclalbaran(), linea->cantlalbaran(), linea->pvplalbaran(),"0",  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(),"0");
+        bud->getlistalineas()->nuevalinea(linea->desclalbaran(), linea->cantlalbaran(), linea->pvplalbaran(),linea->descontlalbaran() ,  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(), linea->ivalalbaran());
         i++;
     }// end for
     bud->pintaFactura();
     bud->show();
-}// end generarAlbaran
+}// end generarFactura
 
 
 
@@ -207,7 +207,7 @@ void AlbaranClienteView::generarFactura() {
 void AlbaranClienteView::agregarFactura() {
 	
 	// Pedimos la factura a la que agregar
-	    fprintf(stderr,"Busqueda de una factura\n");
+	    _depura("Busqueda de una factura\n");
     FacturasList *fac = new FacturasList(companyact, NULL, tr("Seleccione factura","company"));
     // , WType_Dialog| WShowModal
     fac->modoseleccion();

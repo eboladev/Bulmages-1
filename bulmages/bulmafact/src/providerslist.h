@@ -51,7 +51,9 @@ public:
     void showBusqueda() {m_busqueda->show();};
     void hideConfiguracion() {m_configuracion->hide();};
     void showConfiguracion() {m_configuracion->show();};
-        
+   /// Funciones que se encarga en guardar y cargar la configuracion del listado.
+    void guardaconfig();
+    void cargaconfig();
 public slots:
     virtual void doubleclicked(int, int, int, const QPoint &);
     virtual void contextMenu(int, int, const QPoint &);

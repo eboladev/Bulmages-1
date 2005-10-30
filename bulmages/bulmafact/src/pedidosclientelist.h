@@ -51,6 +51,11 @@ public:
     companyact->meteWindow(nom, obj);
     };  
     QString generarFiltro();
+
+   /// Funciones que se encarga en guardar y cargar la configuracion del listado.
+    void guardaconfig();
+    void cargaconfig();
+
 public slots:
 	virtual void doubleclicked(int, int , int , const QPoint &) ;  
 	virtual void s_printPedidosCliente() {imprimir();};

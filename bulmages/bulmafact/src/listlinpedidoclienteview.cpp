@@ -24,24 +24,26 @@ CREATE TABLE lpedidocliente (
 );
 */
 
-#define COL_NUMLPEDIDOCLIENTE 0
-#define COL_IDARTICULO 1
-#define COL_CODARTICULO 2
-#define COL_NOMARTICULO 3
-#define COL_DESCLPEDIDOCLIENTE 4
-#define COL_CANTLPEDIDOCLIENTE 5
-#define COL_PVPLPEDIDOCLIENTE 6
-#define COL_DESCUENTOLPEDIDOCLIENTE 7
-#define COL_IDPEDIDOCLIENTE 8
-#define COL_REMOVE 9
-#define COL_TASATIPO_IVA 10
-#define COL_TIPO_IVA 11
-#define COL_PREVLPEDIDOCLIENTE 12
-#define COL_IVALPEDIDOCLIENTE 13
+#define COL_PUNTEO 0
+#define COL_NUMLPEDIDOCLIENTE 1
+#define COL_IDARTICULO 2
+#define COL_CODARTICULO 3
+#define COL_NOMARTICULO 4
+#define COL_DESCLPEDIDOCLIENTE 5
+#define COL_CANTLPEDIDOCLIENTE 6
+#define COL_PVPLPEDIDOCLIENTE 7
+#define COL_DESCUENTOLPEDIDOCLIENTE 8
+#define COL_IDPEDIDOCLIENTE 9
+#define COL_REMOVE 10
+#define COL_TASATIPO_IVA 11
+#define COL_TIPO_IVA 12
+#define COL_PREVLPEDIDOCLIENTE 13
+#define COL_IVALPEDIDOCLIENTE 14
 
 #include "articleslist.h"
 #include "listlinpedidoclienteview.h"
 #include "linpedidocliente.h"
+#include "funcaux.h"
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
@@ -49,17 +51,17 @@ CREATE TABLE lpedidocliente (
 
 ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget * parent, const char * name) : QTable(parent, name), ListLinPedidoCliente() {
     /// Inicializamos la tabla de lineas de Factura
-    setNumCols(14);
+    setNumCols(15);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_NUMLPEDIDOCLIENTE, tr( "N Línea" ) );
-    horizontalHeader()->setLabel( COL_DESCLPEDIDOCLIENTE, tr( "Descripción" ) );
+    horizontalHeader()->setLabel( COL_NUMLPEDIDOCLIENTE, tr( "N Lï¿½ea" ) );
+    horizontalHeader()->setLabel( COL_DESCLPEDIDOCLIENTE, tr( "Descripciï¿½" ) );
     horizontalHeader()->setLabel( COL_CANTLPEDIDOCLIENTE, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_PVPLPEDIDOCLIENTE, tr( "Precio" ) );
     horizontalHeader()->setLabel( COL_DESCUENTOLPEDIDOCLIENTE, tr( "Descuento" ) );
     horizontalHeader()->setLabel( COL_IDPEDIDOCLIENTE, tr( "N Pedido" ) );
-    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
-    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artílo" ) );
-    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
+    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artï¿½ulo" ) );
+    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Cï¿½igo Artï¿½o" ) );
+    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripciï¿½ Artï¿½ulo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
     horizontalHeader()->setLabel( COL_PREVLPEDIDOCLIENTE, tr( "COL_PREVLPEDIDOCLIENTE" ) );
@@ -76,6 +78,7 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget * parent, const char 
     setColumnWidth(COL_NOMARTICULO,300);
     setColumnWidth(COL_TASATIPO_IVA,50);
     setColumnWidth(COL_TIPO_IVA,50);
+    setColumnWidth(COL_PUNTEO, 15);
 
     hideColumn(COL_NUMLPEDIDOCLIENTE);
     hideColumn(COL_IDPEDIDOCLIENTE);
@@ -106,6 +109,12 @@ void ListLinPedidoClienteView::pintaListLinPedidoCliente() {
     fprintf(stderr,"INICIO de pintaListLinPedidoCliente\n");
     setNumRows(0);
     setNumRows(100);
+
+   for (int j=0;j<100;j++) {
+	QCheckTableItem *check = new QCheckTableItem(this,0);
+        setItem(j,COL_PUNTEO,check);
+   }// end for
+
     /// \todo Habrï¿½ que vaciar la tabla para que el pintado fuera exacto.
     LinPedidoCliente *linea;
     uint i = 0;
@@ -122,11 +131,18 @@ void ListLinPedidoClienteView::pintaListLinPedidoCliente() {
         setText(i, COL_TASATIPO_IVA, "XX");
         setText(i, COL_TIPO_IVA, "XX");
         setText(i, COL_PVPLPEDIDOCLIENTE, linea->pvplpedidocliente());
-	setText(i, COL_PREVLPEDIDOCLIENTE, linea->prevlpedidocliente());
-	setText(i, COL_IVALPEDIDOCLIENTE, linea->ivalpedidocliente());
+        setText(i, COL_PREVLPEDIDOCLIENTE, linea->prevlpedidocliente());
+        setText(i, COL_IVALPEDIDOCLIENTE, linea->ivalpedidocliente());
+
+
+        /// Ponemos un checkbox para el punteo.
+        QCheckTableItem *check =(QCheckTableItem *) item(i,COL_PUNTEO);
+        if (linea->puntlpedidocliente() == "TRUE")
+            check->setChecked(TRUE);
+
         i++;
     }// end for
-    fprintf(stderr,"FIN de pintaListLinPedidoCliente\n");
+    _depura("FIN de pintaListLinPedidoCliente\n");
 }
 
 
@@ -151,67 +167,71 @@ void ListLinPedidoClienteView::borraLinPedidoClienteact() {
 
 
 void ListLinPedidoClienteView::pintalinListLinPedidoCliente(int pos) {
-fprintf(stderr,"pintalinListLinPedidoCliente(%d)\n",pos);
+    fprintf(stderr,"pintalinListLinPedidoCliente(%d)\n",pos);
     LinPedidoCliente *linea;
     linea = m_lista.at(pos);
-        setText(pos, COL_NUMLPEDIDOCLIENTE, linea->numlpedidocliente());
-        setText(pos, COL_IDARTICULO, linea->idarticulo());
-        setText(pos, COL_CODARTICULO, linea->codigocompletoarticulo());
-        setText(pos, COL_NOMARTICULO, linea->nomarticulo());
-        setText(pos, COL_DESCLPEDIDOCLIENTE, linea->desclpedidocliente());
-        setText(pos, COL_CANTLPEDIDOCLIENTE, linea->cantlpedidocliente());
-        setText(pos, COL_DESCUENTOLPEDIDOCLIENTE, linea->descuentolpedidocliente());
-        setText(pos, COL_IDPEDIDOCLIENTE, linea->idpedidocliente());
-        setText(pos, COL_REMOVE, "XX");
-        setText(pos, COL_TASATIPO_IVA, "XX");
-        setText(pos, COL_TIPO_IVA, "XX");
-        setText(pos, COL_PVPLPEDIDOCLIENTE, linea->pvplpedidocliente());
-	setText(pos, COL_PREVLPEDIDOCLIENTE, linea->prevlpedidocliente());
-	setText(pos, COL_IVALPEDIDOCLIENTE, linea->ivalpedidocliente());
+    setText(pos, COL_NUMLPEDIDOCLIENTE, linea->numlpedidocliente());
+    setText(pos, COL_IDARTICULO, linea->idarticulo());
+    setText(pos, COL_CODARTICULO, linea->codigocompletoarticulo());
+    setText(pos, COL_NOMARTICULO, linea->nomarticulo());
+    setText(pos, COL_DESCLPEDIDOCLIENTE, linea->desclpedidocliente());
+    setText(pos, COL_CANTLPEDIDOCLIENTE, linea->cantlpedidocliente());
+    setText(pos, COL_DESCUENTOLPEDIDOCLIENTE, linea->descuentolpedidocliente());
+    setText(pos, COL_IDPEDIDOCLIENTE, linea->idpedidocliente());
+    setText(pos, COL_REMOVE, "XX");
+    setText(pos, COL_TASATIPO_IVA, "XX");
+    setText(pos, COL_TIPO_IVA, "XX");
+    setText(pos, COL_PVPLPEDIDOCLIENTE, linea->pvplpedidocliente());
+    setText(pos, COL_PREVLPEDIDOCLIENTE, linea->prevlpedidocliente());
+    setText(pos, COL_IVALPEDIDOCLIENTE, linea->ivalpedidocliente());
+    QCheckTableItem *check = (QCheckTableItem *) item(pos, COL_PUNTEO);
+    if (linea->puntlpedidocliente() == "TRUE")
+        check->setChecked(TRUE);
+    else
+        check->setChecked(FALSE);
+
 }
 
 
 bool ListLinPedidoClienteView::eventFilter( QObject *obj, QEvent *ev ) {
-	fprintf(stderr,"eventFilter()\n");
+    fprintf(stderr,"eventFilter()\n");
     QString idArticle;
-//    LinPedidoCliente *linea=lineaact();
-    LinPedidoCliente *linea;//=m_lista.at(currentRow());
-    
-        if ( ev->type() == QEvent::KeyRelease ) {
-//        if ( ev->type() == QEvent::KeyPress ) {
-            QKeyEvent *k = (QKeyEvent *)ev;
-            int col=currentColumn();
-            int row=currentRow();
-            switch (k->key()) {
-            case Qt::Key_Plus:
+    LinPedidoCliente *linea;
+
+    if ( ev->type() == QEvent::KeyRelease ) {
+        QKeyEvent *k = (QKeyEvent *)ev;
+        int col=currentColumn();
+        int row=currentRow();
+        switch (k->key()) {
+        case Qt::Key_Plus:
+            break;
+        case Qt::Key_Asterisk:
+            linea = lineaact();
+            idArticle = searchArticle();
+            linea->setidarticulo(idArticle);
+            pintalinListLinPedidoCliente(currentRow());
+            return TRUE;
+            break;
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportarï¿½como bug a trolltech.
+            switch (col) {
+            case COL_CODARTICULO:
+                setCurrentCell(row, COL_DESCLPEDIDOCLIENTE);
                 break;
-            case Qt::Key_Asterisk:
-	    	linea = lineaact();
-                idArticle = searchArticle();
-                linea->setidarticulo(idArticle);
-                pintalinListLinPedidoCliente(currentRow());
-		return TRUE;
+            case COL_DESCLPEDIDOCLIENTE:
+                setCurrentCell(row, COL_CANTLPEDIDOCLIENTE);
                 break;
-            case Qt::Key_Return:
-            case Qt::Key_Enter:
-                // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportarï¿½como bug a trolltech.
-                switch (col) {
-                case COL_CODARTICULO:
-                    setCurrentCell(row, COL_DESCLPEDIDOCLIENTE);
-                    break;
-                case COL_DESCLPEDIDOCLIENTE:
-                    setCurrentCell(row, COL_CANTLPEDIDOCLIENTE);
-                    break;
-                case COL_CANTLPEDIDOCLIENTE:
-                    setCurrentCell(row, COL_PVPLPEDIDOCLIENTE);
-                    break;
-                case COL_PVPLPEDIDOCLIENTE:
-                    setCurrentCell(row+1, COL_CODARTICULO);
-                    break;
-                }// end switch
-                return TRUE;
+            case COL_CANTLPEDIDOCLIENTE:
+                setCurrentCell(row, COL_PVPLPEDIDOCLIENTE);
+                break;
+            case COL_PVPLPEDIDOCLIENTE:
+                setCurrentCell(row+1, COL_CODARTICULO);
                 break;
             }// end switch
+            return TRUE;
+            break;
+        }// end switch
     }// end if
     return QTable::eventFilter( obj, ev );
 } //end eventFilter
@@ -250,6 +270,13 @@ void ListLinPedidoClienteView::valueBudgetLineChanged(int row, int col) {
                 linea->setivalpedidocliente(QString::number(ivaLine));
                 break;
             }// end case
+        case COL_PUNTEO: {
+                QCheckTableItem *check = (QCheckTableItem *) item(row, COL_PUNTEO);
+                if (check->isChecked())
+                    linea->setpuntlpedidocliente("TRUE");
+                else
+                    linea->setpuntlpedidocliente("FALSE");
+            }// end case
         }// end switch
         pintalinListLinPedidoCliente(row);
     }// end if
@@ -269,14 +296,14 @@ LinPedidoCliente *ListLinPedidoClienteView::lineaat(int row) {
     LinPedidoCliente *linea;
     if (row >=0) {
         while (m_lista.at(row) == 0 ) {
-	    fprintf(stderr,"Creamos la linea\n");
+            fprintf(stderr,"Creamos la linea\n");
             linea=new LinPedidoCliente(companyact);
             linea->setidpedidocliente(mdb_idpedidocliente);
-            m_lista.append(linea);  
-        }// end while	
-	      return(m_lista.at(row));
+            m_lista.append(linea);
+        }// end while
+        return(m_lista.at(row));
     } else {
-    	fprintf(stderr,"Linea inexistente\n");
+        fprintf(stderr,"Linea inexistente\n");
         return NULL;
     }// end if
 
@@ -284,7 +311,7 @@ LinPedidoCliente *ListLinPedidoClienteView::lineaat(int row) {
 
 
 void ListLinPedidoClienteView::manageArticle(int row) {
-	fprintf(stderr,"manageArticle(%d)\n",row);
+    fprintf(stderr,"manageArticle(%d)\n",row);
     LinPedidoCliente *linea= lineaat(row);
     QString articleCode = text(row, COL_CODARTICULO);
     linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));
@@ -293,8 +320,8 @@ void ListLinPedidoClienteView::manageArticle(int row) {
 
 
 QString ListLinPedidoClienteView::searchArticle() {
-    fprintf(stderr,"Busqueda de un artículo\n");
-    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
+    fprintf(stderr,"Busqueda de un artï¿½ulo\n");
+    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artï¿½ulo","company"));
     // , WType_Dialog| WShowModal
     artlist->modoseleccion();
     // Esto es convertir un QWidget en un sistema modal de dialogo.

@@ -187,7 +187,7 @@ void Budget::generarPedidoCliente() {
     linpresupuesto *linea;
     uint i = 0;
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        bud->getlistalineas()->nuevalinea(linea->desclpresupuesto(), linea->cantlpresupuesto(), linea->pvplpresupuesto(), "", linea->ivalpresupuesto(), linea->descuentolpresupuesto(), linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo());
+        bud->getlistalineas()->nuevalinea(linea->desclpresupuesto(), linea->cantlpresupuesto(), linea->pvplpresupuesto(), "", linea->ivalpresupuesto(), linea->descuentolpresupuesto(), linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(),"FALSE");
         i++;
     }// end for
 

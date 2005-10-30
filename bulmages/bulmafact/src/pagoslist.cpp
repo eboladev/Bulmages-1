@@ -62,6 +62,44 @@ CREATE TABLE presupuesto (
 #define COL_PREVISIONPAGO 5
 #define COL_COMENTPAGO 6
 
+void PagosList::guardaconfig() {
+    QString aux = "";
+    mver_idpago->isChecked() ? aux += "1,":aux+="0,";
+    mver_idproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_fechapago->isChecked() ? aux += "1,":aux+="0,";
+    mver_cantpago->isChecked() ? aux += "1,":aux+="0,";
+    mver_refpago->isChecked() ? aux += "1,":aux+="0,";
+    mver_previsionpago->isChecked() ? aux += "1,":aux+="0,";
+    mver_comentpago->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confpagoslist.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void PagosList::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confpagoslist.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_idpago->setChecked(line.at(0)=='1');
+    mver_idproveedor->setChecked(line.at(2)=='1');
+    mver_fechapago->setChecked(line.at(4)=='1');
+    mver_cantpago->setChecked(line.at(6)=='1');
+    mver_refpago->setChecked(line.at(8)=='1');
+    mver_previsionpago->setChecked(line.at(10)=='1');
+    mver_comentpago->setChecked(line.at(12)=='1');
+}// end cargaconfig
+
+
 void PagosList::s_configurar() {
     if(mver_idpago->isChecked() )
         m_list->showColumn(COL_IDPAGO);
@@ -97,11 +135,14 @@ void PagosList::s_configurar() {
         m_list->showColumn(COL_COMENTPAGO);
     else
         m_list->hideColumn(COL_COMENTPAGO);
+
+    guardaconfig();
 }
 
 
 PagosList::PagosList(QWidget *parent, const char *name, int flag)
-: PagosListBase(parent, name, flag) {
+        : PagosListBase(parent, name, flag) {
+    cargaconfig();
     companyact = NULL;
     m_modo=0;
     m_idpago="";
@@ -112,9 +153,10 @@ PagosList::PagosList(QWidget *parent, const char *name, int flag)
 
 
 PagosList::PagosList(company *comp, QWidget *parent, const char *name, int flag)
-: PagosListBase(parent, name, flag) {
+        : PagosListBase(parent, name, flag) {
     companyact = comp;
     m_proveedor->setcompany(comp);
+    cargaconfig();
     inicializa();
     m_modo=0;
     m_idpago="";
@@ -140,7 +182,7 @@ void PagosList::inicializa() {
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(7);
-    
+
     m_list->horizontalHeader()->setLabel( COL_IDPAGO, tr( "COL_IDPAGO" ) );
     m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr( "COL_IDPROVEEDOR" ) );
     m_list->horizontalHeader()->setLabel( COL_FECHAPAGO, tr( "COL_FECHAPAGO" ) );
@@ -148,7 +190,7 @@ void PagosList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_REFPAGO, tr( "COL_REFPAGO" ) );
     m_list->horizontalHeader()->setLabel( COL_PREVISIONPAGO, tr( "COL_PREVISIONPAGO" ) );
     m_list->horizontalHeader()->setLabel( COL_COMENTPAGO, tr( "COL_COMENTPAGO" ) );
-    
+
     m_list->setColumnWidth(COL_IDPAGO,75);
     m_list->setColumnWidth(COL_IDPROVEEDOR,75);
     m_list->setColumnWidth(COL_FECHAPAGO,100);
@@ -180,10 +222,10 @@ void PagosList::inicializa() {
         }// end while
         delete cur;
 
-	/// Hacemos el calculo del total.
-	cur = companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago where 1=1"+generaFiltro());
-	m_total->setText(cur->valor("total"));
-	delete cur;
+        /// Hacemos el calculo del total.
+        cur = companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago where 1=1"+generaFiltro());
+        m_total->setText(cur->valor("total"));
+        delete cur;
 
     }// end if
     s_configurar();
@@ -209,10 +251,10 @@ QString PagosList::generaFiltro() {
     }// end if
 
     if (m_fechain->text() != "")
-	filtro += " AND fechapago >= '"+m_fechain->text()+"' ";
+        filtro += " AND fechapago >= '"+m_fechain->text()+"' ";
 
-    if (m_fechafin->text() != "") 
-	filtro += " AND fechapago <= '"+m_fechafin->text()+"' ";
+    if (m_fechafin->text() != "")
+        filtro += " AND fechapago <= '"+m_fechafin->text()+"' ";
 
     return (filtro);
 }// end generaFiltro

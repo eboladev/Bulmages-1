@@ -86,6 +86,63 @@ CREATE TABLE cliente (
 
 #define EDIT_MODE 0
 
+void ClientsList::guardaconfig() {
+    QString aux = "";
+    mver_idcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomaltcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_cifcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_bancocliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_dircliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_poblcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_cpcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_telcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_faxcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_mailcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_urlcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_faltacliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_fbajacliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_comentcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_idrecargo->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confclientslist.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void ClientsList::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confclientslist.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_idcliente->setChecked(line.at(0)=='1');
+    mver_nomcliente->setChecked(line.at(2)=='1');
+    mver_nomaltcliente->setChecked(line.at(4)=='1');
+    mver_cifcliente->setChecked(line.at(6)=='1');
+    mver_bancocliente->setChecked(line.at(8)=='1');
+    mver_dircliente->setChecked(line.at(10)=='1');
+    mver_poblcliente->setChecked(line.at(12)=='1');
+    mver_cpcliente->setChecked(line.at(14)=='1');
+    mver_telcliente->setChecked(line.at(16)=='1');
+    mver_faxcliente->setChecked(line.at(18)=='1');
+    mver_mailcliente->setChecked(line.at(20)=='1');
+    mver_urlcliente->setChecked(line.at(22)=='1');
+    mver_faltacliente->setChecked(line.at(24)=='1');
+    mver_fbajacliente->setChecked(line.at(26)=='1');
+    mver_comentcliente->setChecked(line.at(28)=='1');
+    mver_idrecargo->setChecked(line.at(30)=='1');
+}// end cargaconfig
+
+
+
 void ClientsList::s_configurar() {
     if(mver_idcliente->isChecked() )
         m_clientList->showColumn(COL_IDCLIENTE);
@@ -166,10 +223,13 @@ void ClientsList::s_configurar() {
         m_clientList->showColumn(COL_IDRECARGO);
     else
         m_clientList->hideColumn(COL_IDRECARGO);
+
+    guardaconfig();
 }// end s_configurar
 
 ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, int flag)
  : ClientsListBase(parent, name, flag) , pgimportfiles(comp){
+   cargaconfig();
    companyact = comp;
    m_idclient="";
    m_cifclient="";

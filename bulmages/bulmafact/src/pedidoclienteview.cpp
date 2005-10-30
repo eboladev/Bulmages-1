@@ -18,7 +18,7 @@
 #include "budgetslist.h"
 #include "cobroview.h"
 #include "albaranclienteview.h"
-
+#include "informereferencia.h"
 
 #include <qmessagebox.h>
 #include <qtable.h>
@@ -189,3 +189,12 @@ void PedidoClienteView::cargaPedidoCliente(QString id) {
     companyact->meteWindow(caption(),this);
     dialogChanges_cargaInicial();
 }
+
+/// Imprime el informe de referencia.
+void PedidoClienteView::s_informeReferencia() {
+    InformeReferencia *inf = new InformeReferencia(companyact);
+    inf->setreferencia(mdb_refpedidocliente);
+    inf->generarinforme();
+    delete inf;
+}// end s_informeReferencia
+

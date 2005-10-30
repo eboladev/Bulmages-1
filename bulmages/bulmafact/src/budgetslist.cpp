@@ -46,6 +46,63 @@
 #define COL_IDUSUARI 11
 #define COL_IDCLIENTE 12
 #define COL_IDALMACEN 13
+#define COL_TOTALPRESUPUESTO 14
+#define COL_TOTALBASEIMP 15
+#define COL_TOTALIMPUESTOS 16
+
+void BudgetsList::guardaconfig() {
+    QString aux = "";
+    mver_idpresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_numpresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    mver_refpresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_descpresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    mver_fechapresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    mver_vencpresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    mver_contactpresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    mver_telpresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    //	mver_comentpresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    mver_idusuario->isChecked() ? aux += "1,":aux+="0,";
+    mver_idalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalpresupuesto->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confbudgetslist.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void BudgetsList::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confbudgetslist.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_idpresupuesto->setChecked(line.at(0)=='1');
+    mver_codigoalmacen->setChecked(line.at(2)=='1');
+    mver_numpresupuesto->setChecked(line.at(4)=='1');
+    mver_refpresupuesto->setChecked(line.at(6)=='1');
+    mver_nomcliente->setChecked(line.at(8)=='1');
+    mver_descpresupuesto->setChecked(line.at(10)=='1');
+    mver_fechapresupuesto->setChecked(line.at(12)=='1');
+    mver_vencpresupuesto->setChecked(line.at(14)=='1');
+    mver_contactpresupuesto->setChecked(line.at(16)=='1');
+    mver_telpresupuesto->setChecked(line.at(18)=='1');
+    mver_idusuario->setChecked(line.at(20)=='1');
+    mver_idalmacen->setChecked(line.at(22)=='1');
+    mver_totalpresupuesto->setChecked(line.at(24)=='1');
+    mver_totalbaseimp->setChecked(line.at(26)=='1');
+    mver_totalimpuestos->setChecked(line.at(28)=='1');
+}// end cargaconfig
 
 
 void BudgetsList::s_configurar() {
@@ -115,33 +172,52 @@ void BudgetsList::s_configurar() {
     else
         m_list->hideColumn(COL_IDALMACEN);
 
-    m_list->hideColumn(COL_COMENTPRESUPUESTO);
 
-}
+    if(mver_totalpresupuesto->isChecked() )
+        m_list->showColumn(COL_TOTALPRESUPUESTO);
+    else
+        m_list->hideColumn(COL_TOTALPRESUPUESTO);
+
+    if(mver_totalbaseimp->isChecked() )
+        m_list->showColumn(COL_TOTALBASEIMP);
+    else
+        m_list->hideColumn(COL_TOTALBASEIMP);
+
+
+    if(mver_totalimpuestos->isChecked() )
+        m_list->showColumn(COL_TOTALIMPUESTOS);
+    else
+        m_list->hideColumn(COL_TOTALIMPUESTOS);
+
+    m_list->hideColumn(COL_COMENTPRESUPUESTO);
+    guardaconfig();
+}// end s_configurar
 
 
 BudgetsList::BudgetsList(QWidget *parent, const char *name, int flag)
-: BudgetsListBase(parent, name, flag) {
+        : BudgetsListBase(parent, name, flag) {
     companyact = NULL;
     m_modo=0;
     m_idpresupuesto="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-}// end providerslist
+    cargaconfig();
+}// end BudgetsList
 
 BudgetsList::BudgetsList(company *comp, QWidget *parent, const char *name, int flag)
-: BudgetsListBase(parent, name, flag) {
+        : BudgetsListBase(parent, name, flag) {
     companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
+    cargaconfig();
     inicializa();
     m_modo=0;
     m_idpresupuesto="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-}// end providerslist
+}// end BudgetsList
 
 BudgetsList::~BudgetsList() {
     companyact->sacaWindow(this);
@@ -153,7 +229,7 @@ void BudgetsList::inicializa() {
     m_list->setSorting( TRUE );
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(14);
+    m_list->setNumCols(17);
     m_list->horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "Id. Presupuesto" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
     m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
@@ -168,6 +244,12 @@ void BudgetsList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacén") );
     m_list->horizontalHeader()->setLabel( COL_DESCPRESUPUESTO, tr("Descripción") );
     m_list->horizontalHeader()->setLabel( COL_REFPRESUPUESTO, tr("Referencia.") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALPRESUPUESTO, tr("Total") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos.") );
+
+
+
     m_list->setColumnWidth(COL_IDPRESUPUESTO,75);
     m_list->setColumnWidth(COL_NUMPRESUPUESTO,75);
     m_list->setColumnWidth(COL_FPRESUPUESTO,100);
@@ -182,10 +264,9 @@ void BudgetsList::inicializa() {
     m_list->setColumnWidth(COL_IDALMACEN,75);
     m_list->setColumnWidth(COL_NOMCLIENTE,200);
     m_list->setColumnWidth(COL_CODIGOALMACEN,75);
-
-    if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
-        m_list->hideColumn(COL_CODIGOALMACEN);
-    }// end if
+    m_list->setColumnWidth(COL_TOTALPRESUPUESTO,75);
+    m_list->setColumnWidth(COL_TOTALBASEIMP,75);
+    m_list->setColumnWidth(COL_TOTALIMPUESTOS,75);
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPRESUPUESTOS));
@@ -212,18 +293,24 @@ void BudgetsList::inicializa() {
             m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
             m_list->setText(i,COL_REFPRESUPUESTO,cur->valor("refpresupuesto"));
             m_list->setText(i,COL_DESCPRESUPUESTO,cur->valor("descpresupuesto"));
+
+            /// Calculamos el total del presupuesto y lo presentamos.
+            cursor2 *cur1 = companyact->cargacursor("SELECT calctotalpres("+cur->valor("idpresupuesto")+") AS total, calcbimppres("+cur->valor("idpresupuesto")+") AS base, calcimpuestospres("+cur->valor("idpresupuesto")+") AS impuestos");
+            m_list->setText(i,COL_TOTALPRESUPUESTO,cur1->valor("total"));
+            m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
+            m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
+            delete cur1;
+
             i++;
             cur->siguienteregistro();
         }// end while
         delete cur;
 
 
-
-
-	/// Hacemos el calculo del total.
-	cur = companyact->cargacursor("SELECT SUM(calctotalpres(idpresupuesto)) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
-	m_total->setText(cur->valor("total"));
-	delete cur;
+        /// Hacemos el calculo del total.
+        cur = companyact->cargacursor("SELECT SUM(calctotalpres(idpresupuesto)) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
+        m_total->setText(cur->valor("total"));
+        delete cur;
     }// end if
 
     s_configurar();
@@ -253,10 +340,10 @@ QString BudgetsList::generaFiltro() {
 
 
     if (m_fechain->text() != "")
-	filtro += " AND fpresupuesto >= '"+m_fechain->text()+"' ";
+        filtro += " AND fpresupuesto >= '"+m_fechain->text()+"' ";
 
-    if (m_fechafin->text() != "") 
-	filtro += " AND fpresupuesto <= '"+m_fechafin->text()+"' ";
+    if (m_fechafin->text() != "")
+        filtro += " AND fpresupuesto <= '"+m_fechafin->text()+"' ";
 
 
     return (filtro);
@@ -377,12 +464,12 @@ void BudgetsList::s_removeBudget() {
             if (companyact->ejecuta(SQLQuery)==0) {
                 QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
                 if (companyact->ejecuta(SQLQuery)==0) {
-                        QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-                        if (companyact->ejecuta(SQLQuery)==0) {
-                            companyact->commit();
-                        } else {
-                            companyact->rollback();
-                        }
+                    QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
+                    if (companyact->ejecuta(SQLQuery)==0) {
+                        companyact->commit();
+                    } else {
+                        companyact->rollback();
+                    }
 
                 } else {
                     companyact->rollback();

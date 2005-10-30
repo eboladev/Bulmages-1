@@ -53,6 +53,68 @@
 #define COL_CODARTICULO 17
 #define COL_STOCKARTICULO 18
 
+void articleslist::guardaconfig() {
+    QString aux = "";
+    mver_idarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_codcompletoarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_descarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_cbarrasarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_tipoarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_descuentoarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_especificacionesarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_iconoarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_fotoarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_posterarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_margenarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_sobrecostearticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_modeloarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_idtipo_iva->isChecked() ? aux += "1,":aux+="0,";
+    mver_desctipo_iva->isChecked() ? aux += "1,":aux+="0,";
+    mver_idlinea_prod->isChecked() ? aux += "1,":aux+="0,";
+    mver_codarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_stockarticulo->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confarticleslist.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void articleslist::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confarticleslist.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_idarticulo->setChecked(line.at(0)=='1');
+    mver_codcompletoarticulo->setChecked(line.at(2)=='1');
+    mver_nomarticulo->setChecked(line.at(4)=='1');
+    mver_descarticulo->setChecked(line.at(6)=='1');
+    mver_cbarrasarticulo->setChecked(line.at(8)=='1');
+    mver_tipoarticulo->setChecked(line.at(10)=='1');
+    mver_descuentoarticulo->setChecked(line.at(12)=='1');
+    mver_especificacionesarticulo->setChecked(line.at(14)=='1');
+    mver_iconoarticulo->setChecked(line.at(16)=='1');
+    mver_fotoarticulo->setChecked(line.at(18)=='1');
+    mver_posterarticulo->setChecked(line.at(20)=='1');
+    mver_margenarticulo->setChecked(line.at(22)=='1');
+    mver_sobrecostearticulo->setChecked(line.at(24)=='1');
+    mver_modeloarticulo->setChecked(line.at(26)=='1');
+    mver_idtipo_iva->setChecked(line.at(28)=='1');
+    mver_desctipo_iva->setChecked(line.at(30)=='1');
+    mver_idlinea_prod->setChecked(line.at(32)=='1');
+    mver_codarticulo->setChecked(line.at(34)=='1');
+    mver_stockarticulo->setChecked(line.at(36)=='1');
+}// end cargaconfig
+
+
 
 void articleslist::s_configurar() {
 
@@ -150,11 +212,14 @@ void articleslist::s_configurar() {
         m_list->showColumn(COL_STOCKARTICULO);
     else
         m_list->hideColumn(COL_STOCKARTICULO);
+
+    guardaconfig();
 }// end s_configurar
 
 
 articleslist::articleslist(company *comp, QWidget *parent, const char *name, int flag)
-: articleslistbase(parent, name, flag) {
+        : articleslistbase(parent, name, flag) {
+    cargaconfig();
     companyact = comp;
     m_tipoarticulo->setcompany(comp);
     m_familia->setcompany(comp);
@@ -194,7 +259,7 @@ void articleslist::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_DESCTIPO_IVA, tr("Tipo de IVA") );
     m_list->horizontalHeader()->setLabel( COL_IDLINEA_PROD, tr("Línea de Producción") );
     m_list->horizontalHeader()->setLabel( COL_STOCKARTICULO, tr("Stock") );
-    
+
     m_list->setColumnWidth(COL_IDARTICULO,100);
     m_list->setColumnWidth(COL_CODARTICULO,100);
     m_list->setColumnWidth(COL_CODCOMPLETOARTICULO, 100);
@@ -214,7 +279,7 @@ void articleslist::inicializa() {
     m_list->setColumnWidth(COL_DESCTIPO_IVA,50);
     m_list->setColumnWidth(COL_IDLINEA_PROD,50);
     m_list->setColumnWidth(COL_STOCKARTICULO,50);
-    
+
     //listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTARTICULOS));
@@ -230,20 +295,20 @@ void articleslist::inicializa() {
         m_list->setText(i,COL_CODCOMPLETOARTICULO, cur->valor("codigocompletoarticulo"));
         m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
         m_list->setText(i,COL_DESCARTICULO,cur->valor("obserarticulo"));
-//        m_list->setText(i,COL_CBARRASARTICULO,cur->valor("cbarrasarticulo"));
-//        m_list->setText(i,COL_TIPOARTICULO,cur->valor("tipoarticulo"));
-//        m_list->setText(i,COL_DESCUENTOARTICULO,cur->valor("descuentoarticulo"));
-//        m_list->setText(i,COL_ESPECIFICACIONESARTICULO,cur->valor("especificacionesarticulo"));
-//        m_list->setText(i,COL_ICONOARTICULO,cur->valor("iconoarticulo"));
-//        m_list->setText(i,COL_FOTOARTICULO,cur->valor("fotoarticulo"));
-//        m_list->setText(i,COL_POSTERARTICULO,cur->valor("posterarticulo"));
-//        m_list->setText(i,COL_MARGENARTICULO,cur->valor("margenarticulo"));
-//        m_list->setText(i,COL_SOBRECOSTEARTICULO,cur->valor("sobrecostearticulo"));
-//        m_list->setText(i,COL_MODELOARTICULO,cur->valor("modeloarticulo"));
+        //        m_list->setText(i,COL_CBARRASARTICULO,cur->valor("cbarrasarticulo"));
+        //        m_list->setText(i,COL_TIPOARTICULO,cur->valor("tipoarticulo"));
+        //        m_list->setText(i,COL_DESCUENTOARTICULO,cur->valor("descuentoarticulo"));
+        //        m_list->setText(i,COL_ESPECIFICACIONESARTICULO,cur->valor("especificacionesarticulo"));
+        //        m_list->setText(i,COL_ICONOARTICULO,cur->valor("iconoarticulo"));
+        //        m_list->setText(i,COL_FOTOARTICULO,cur->valor("fotoarticulo"));
+        //        m_list->setText(i,COL_POSTERARTICULO,cur->valor("posterarticulo"));
+        //        m_list->setText(i,COL_MARGENARTICULO,cur->valor("margenarticulo"));
+        //        m_list->setText(i,COL_SOBRECOSTEARTICULO,cur->valor("sobrecostearticulo"));
+        //        m_list->setText(i,COL_MODELOARTICULO,cur->valor("modeloarticulo"));
         m_list->setText(i,COL_IDTIPO_IVA,cur->valor("idtipo_iva"));
         m_list->setText(i,COL_DESCTIPO_IVA,cur->valor("desctipo_iva"));
-//        m_list->setText(i,COL_IDLINEA_PROD,cur->valor("idlinea_prod"));
-	m_list->setText(i,COL_STOCKARTICULO, cur->valor("stockarticulo"));
+        //        m_list->setText(i,COL_IDLINEA_PROD,cur->valor("idlinea_prod"));
+        m_list->setText(i,COL_STOCKARTICULO, cur->valor("stockarticulo"));
         i++;
         cur->siguienteregistro();
     }// end while
@@ -286,10 +351,10 @@ void articleslist::removeArticle() {
         QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+m_list->text(m_list->currentRow(),COL_IDARTICULO);
         companyact->begin();
         int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
         companyact->commit();
         inicializa();
     }// end if
@@ -303,10 +368,10 @@ QString articleslist::formaQuery() {
     if(m_filtro->text() != "")
         query += " AND nomarticulo LIKE '%"+m_filtro->text()+"%' ";
     if(m_familia->idfamilia() != "" ) {
-	query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '"+m_familia->codigocompletofamilia()+"%')";
+        query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '"+m_familia->codigocompletofamilia()+"%')";
     }// end if
     if (m_tipoarticulo->idtipo_articulo() != "") {
-    	query += " AND idtipo_articulo = "+m_tipoarticulo->idtipo_articulo();
+        query += " AND idtipo_articulo = "+m_tipoarticulo->idtipo_articulo();
     }// end if
     query +=" ORDER BY codigocompletoarticulo";
     return (query);
@@ -329,15 +394,15 @@ QString articleslist::detalleArticulos() {
             texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";
             texto += "<para><pre>"+cur->valor("obserarticulo")+"</pre></para></td>\n";
         }// end if
-	QString file = confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg";
+        QString file = confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg";
         QFile f( file );
-	if (f.exists() ) {
-        texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
-                 "<image file=\""+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
-                 "</illustration></td>\n";
-	} else {
-		texto += "<td></td>\n";
-	}
+        if (f.exists() ) {
+            texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
+                     "<image file=\""+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur->valor("codigocompletoarticulo")+".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
+                     "</illustration></td>\n";
+        } else {
+            texto += "<td></td>\n";
+        }
         if (!i) {
             texto += "<td><h1>"+cur->valor("nomarticulo")+"</h1>";
             texto += "<pre>"+cur->valor("obserarticulo")+"</pre></td>\n";

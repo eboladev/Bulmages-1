@@ -52,6 +52,11 @@ public:
     void setidcliente(QString val) {m_cliente->setidcliente(val);};
     void setidarticulo(QString val) {m_articulo->setidarticulo(val);};     
     QString generaFiltro(); 
+
+   /// Funciones que se encarga en guardar y cargar la configuracion del listado.
+    void guardaconfig();
+    void cargaconfig();
+
 public slots:
 
 	virtual void doubleclicked(int, int , int , const QPoint &) ;

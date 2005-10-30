@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borr·s Riera                              *
+ *   Copyright (C) 2004 by Tomeu BorrÔøΩ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,7 +34,7 @@ class BudgetsList : public BudgetsListBase {
 Q_OBJECT
 private:
    company *companyact;
-   int m_modo; // == 0 es modo ediciÛn
+   int m_modo; // == 0 es modo ediciÔøΩ
             // ==1 es modo selector.
    QString m_idpresupuesto;
    
@@ -62,6 +62,11 @@ public:
     void setidcliente(QString val) {m_cliente->setidcliente(val);};
     void setidarticulo(QString val) {m_articulo->setidarticulo(val);};
     QString generaFiltro();
+
+    /// Estas funciones guardan y cargan la configuraci√≥n de presentaci√≥n del listado.
+    void guardaconfig();
+    void cargaconfig();
+
     
 public slots:
     virtual void doubleclicked(int, int, int, const QPoint &);

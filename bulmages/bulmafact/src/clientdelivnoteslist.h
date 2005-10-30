@@ -33,7 +33,7 @@ class ClientDelivNotesList : public ClientDelivNotesListBase {
     Q_OBJECT
 private:
     company *companyact;
-    int m_modo; // == 0 es modo edición
+    int m_modo; // == 0 es modo ediciï¿½
     // ==1 es modo selector.
     QString m_idclidelivnote;
 
@@ -87,6 +87,11 @@ public:
             companyact->meteWindow(nom, obj);
     };
     QString generarFiltro();
+
+   /// Funciones que se encarga en guardar y cargar la configuracion del listado.
+    void guardaconfig();
+    void cargaconfig();
+
 public slots:
     virtual void s_doubleclicked(int, int, int, const QPoint &);
     virtual void s_newClientDelivNote();

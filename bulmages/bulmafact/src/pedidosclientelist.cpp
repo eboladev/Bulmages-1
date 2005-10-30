@@ -33,6 +33,66 @@
 #define COL_IDUSUARI 10
 #define COL_IDCLIENTE 11
 #define COL_IDALMACEN 12
+#define COL_TOTALPEDIDOCLIENTE 13
+#define COL_TOTALBASEIMP 14
+#define COL_TOTALIMPUESTOS 15
+
+
+void PedidosClienteList::guardaconfig() {
+    QString aux = "";
+    mver_idpedidocliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_refpedidocliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_numpedidocliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_descpedidocliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_fechapedidocliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_contactpedidocliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_telpedidocliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_comentpedidocliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_idusuari->isChecked() ? aux += "1,":aux+="0,";
+    mver_idcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_idalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalpedidocliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confpedidosclientelist.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void PedidosClienteList::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confpedidosclientelist.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_idpedidocliente->setChecked(line.at(0)=='1');
+    mver_codigoalmacen->setChecked(line.at(2)=='1');
+    mver_refpedidocliente->setChecked(line.at(4)=='1');
+    mver_numpedidocliente->setChecked(line.at(6)=='1');
+    mver_descpedidocliente->setChecked(line.at(8)=='1');
+    mver_nomcliente->setChecked(line.at(10)=='1');
+    mver_fechapedidocliente->setChecked(line.at(12)=='1');
+    mver_contactpedidocliente->setChecked(line.at(14)=='1');
+    mver_telpedidocliente->setChecked(line.at(16)=='1');
+    mver_comentpedidocliente->setChecked(line.at(18)=='1');
+    mver_idusuari->setChecked(line.at(20)=='1');
+    mver_idcliente->setChecked(line.at(22)=='1');
+    mver_idalmacen->setChecked(line.at(24)=='1');
+    mver_totalpedidocliente->setChecked(line.at(26)=='1');
+    mver_totalbaseimp->setChecked(line.at(28)=='1');
+    mver_totalimpuestos->setChecked(line.at(30)=='1');
+}// end cargaconfig
+
 
 void PedidosClienteList::s_configurar() {
 
@@ -100,6 +160,25 @@ void PedidosClienteList::s_configurar() {
         m_list->showColumn(COL_IDALMACEN);
     else
         m_list->hideColumn(COL_IDALMACEN);
+
+
+    if(mver_totalpedidocliente->isChecked() )
+        m_list->showColumn(COL_TOTALPEDIDOCLIENTE);
+    else
+        m_list->hideColumn(COL_TOTALPEDIDOCLIENTE);
+
+    if(mver_totalbaseimp->isChecked() )
+        m_list->showColumn(COL_TOTALBASEIMP);
+    else
+        m_list->hideColumn(COL_TOTALBASEIMP);
+
+    if(mver_totalimpuestos->isChecked() )
+        m_list->showColumn(COL_TOTALIMPUESTOS);
+    else
+        m_list->hideColumn(COL_TOTALIMPUESTOS);
+
+   guardaconfig();
+
 }// end s_configurar
 
 
@@ -110,6 +189,7 @@ PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, int fl
     m_idpedidocliente="";
     meteWindow(caption(),this);
     hideBusqueda();
+    cargaconfig();
 }// end providerslist
 
 
@@ -117,6 +197,7 @@ PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const cha
     companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
+    cargaconfig();
     inicializa();
     m_modo=0;
     m_idpedidocliente="";
@@ -135,7 +216,7 @@ void PedidosClienteList::inicializa() {
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setSorting( TRUE );
     m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(13);
+    m_list->setNumCols(16);
     m_list->horizontalHeader()->setLabel( COL_IDPEDIDOCLIENTE, tr( "COL_IDPEDIDOCLIENTE" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
     m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
@@ -149,6 +230,9 @@ void PedidosClienteList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacén") );
     m_list->horizontalHeader()->setLabel( COL_DESCPEDIDOCLIENTE, tr("Descripción") );
     m_list->horizontalHeader()->setLabel( COL_REFPEDIDOCLIENTE, tr("Referencia") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALPEDIDOCLIENTE, tr("Total") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
     
     m_list->setColumnWidth(COL_IDPEDIDOCLIENTE,75);
     m_list->setColumnWidth(COL_NUMPEDIDOCLIENTE,75);
@@ -181,6 +265,14 @@ void PedidosClienteList::inicializa() {
         m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
 	m_list->setText(i,COL_DESCPEDIDOCLIENTE,cur->valor("descpedidocliente"));
 	m_list->setText(i,COL_REFPEDIDOCLIENTE,cur->valor("refpedidocliente"));	
+
+            /// Calculamos el total del presupuesto y lo presentamos.
+            cursor2 *cur1 = companyact->cargacursor("SELECT calctotalpedcli("+cur->valor("idpedidocliente")+") AS total, calcbimppedcli("+cur->valor("idpedidocliente")+") AS base, calcimpuestospedcli("+cur->valor("idpedidocliente")+") AS impuestos");
+            m_list->setText(i,COL_TOTALPEDIDOCLIENTE,cur1->valor("total"));
+            m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
+            m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
+            delete cur1;
+
         i++;
         cur->siguienteregistro();
     }// end while

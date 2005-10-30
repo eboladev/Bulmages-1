@@ -54,7 +54,7 @@ CREATE TABLE albaranp (
 #include <qcheckbox.h>
 
 #include "configuracion.h"
-
+#include "funcaux.h"
 
 #define COL_IDALBARANP 0
 #define COL_NUMALBARANP 1
@@ -70,7 +70,66 @@ CREATE TABLE albaranp (
 #define COL_NOMPROVEEDOR 11
 #define COL_NOMALMACEN 12
 #define COL_DESCFORMA_PAGO 13
+#define COL_TOTALALBARANPROVEEDOR 14
+#define COL_TOTALBASEIMP 15
+#define COL_TOTALIMPUESTOS 16
 
+void AlbaranesProveedor::guardaconfig() {
+    QString aux = "";
+    mver_idalbaranp->isChecked() ? aux += "1,":aux+="0,";
+    mver_numalbaranp->isChecked() ? aux += "1,":aux+="0,";
+    mver_descalbaranp->isChecked() ? aux += "1,":aux+="0,";
+    mver_refalbaranp->isChecked() ? aux += "1,":aux+="0,";
+    mver_fechaalbaranp->isChecked() ? aux += "1,":aux+="0,";
+    mver_loginusuario->isChecked() ? aux += "1,":aux+="0,";
+    mver_comentalbaranp->isChecked() ? aux += "1,":aux+="0,";
+    mver_procesadoalbaranp->isChecked() ? aux += "1,":aux+="0,";
+    mver_idproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_idforma_pago->isChecked() ? aux += "1,":aux+="0,";
+    mver_idalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_descforma_pago->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalalbaranproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confalbaranesproveedor.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void AlbaranesProveedor::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confalbaranesproveedor.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_idalbaranp->setChecked(line.at(0)=='1');
+    mver_numalbaranp->setChecked(line.at(2)=='1');
+    mver_descalbaranp->setChecked(line.at(4)=='1');
+    mver_refalbaranp->setChecked(line.at(6)=='1');
+    mver_fechaalbaranp->setChecked(line.at(8)=='1');
+    mver_loginusuario->setChecked(line.at(10)=='1');
+    mver_comentalbaranp->setChecked(line.at(12)=='1');
+    mver_procesadoalbaranp->setChecked(line.at(14)=='1');
+    mver_idproveedor->setChecked(line.at(16)=='1');
+    mver_idforma_pago->setChecked(line.at(18)=='1');
+    mver_idalmacen->setChecked(line.at(20)=='1');
+    mver_nomproveedor->setChecked(line.at(22)=='1');
+    mver_nomalmacen->setChecked(line.at(24)=='1');
+    mver_descforma_pago->setChecked(line.at(26)=='1');
+    mver_totalalbaranproveedor->setChecked(line.at(28)=='1');
+    mver_totalbaseimp->setChecked(line.at(30)=='1');
+    mver_totalimpuestos->setChecked(line.at(32)=='1');
+}// end cargaconfig
 
 
 void AlbaranesProveedor::s_configurar() {
@@ -145,14 +204,32 @@ void AlbaranesProveedor::s_configurar() {
     else
         m_list->hideColumn(COL_DESCFORMA_PAGO);
 
+    if(mver_totalalbaranproveedor->isChecked() )
+        m_list->showColumn(COL_TOTALALBARANPROVEEDOR);
+    else
+        m_list->hideColumn(COL_TOTALALBARANPROVEEDOR);
+
+    if(mver_totalbaseimp->isChecked() )
+        m_list->showColumn(COL_TOTALBASEIMP);
+    else
+        m_list->hideColumn(COL_TOTALBASEIMP);
+
+    if(mver_totalimpuestos->isChecked() )
+        m_list->showColumn(COL_TOTALIMPUESTOS);
+    else
+        m_list->hideColumn(COL_TOTALIMPUESTOS);
+
     if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
         m_list->hideColumn(COL_NOMALMACEN);
     }// end if
+
+guardaconfig();
 }
 
 
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, int flag)
 : AlbaranesProveedorBase(parent, name, flag) {
+	cargaconfig();
     companyact = NULL;
     m_modo=0;
     m_idalbaranp="";
@@ -163,6 +240,7 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, int fl
 
 AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const char *name, int flag)
 : AlbaranesProveedorBase(parent, name, flag) {
+	cargaconfig();
     companyact = comp;
     m_proveedor->setcompany(comp);
     m_articulo->setcompany(comp);
@@ -180,14 +258,14 @@ AlbaranesProveedor::~AlbaranesProveedor() {
 }// end ~providerslist
 
 void AlbaranesProveedor::inicializa() {
-    fprintf(stderr,"AlbaranesProveedor::inicializa()\n");
+    _depura("AlbaranesProveedor::inicializa()\n");
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setSorting( TRUE );
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(14);
+    m_list->setNumCols(17);
        
     m_list->horizontalHeader()->setLabel( COL_IDALBARANP, tr( "COL_IDALBARANP" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMALBARANP, tr( "COL_NUMALBARANP" ) );
@@ -203,6 +281,9 @@ void AlbaranesProveedor::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_NOMPROVEEDOR, tr("COL_NOMPROVEEDOR") );
     m_list->horizontalHeader()->setLabel( COL_NOMALMACEN, tr("COL_NOMALMACEN") );
     m_list->horizontalHeader()->setLabel( COL_DESCFORMA_PAGO, tr("COL_DESCFORMA_PAGO") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALALBARANPROVEEDOR, tr("Total") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
     
     m_list->setColumnWidth(COL_IDALBARANP,75);
     m_list->setColumnWidth(COL_NUMALBARANP,75);
@@ -246,6 +327,14 @@ void AlbaranesProveedor::inicializa() {
             m_list->setText(i,COL_NOMPROVEEDOR,cur->valor("nomproveedor"));
             m_list->setText(i,COL_NOMALMACEN,cur->valor("nomalmacen"));
             m_list->setText(i,COL_DESCFORMA_PAGO,cur->valor("descforma_pago"));
+
+            /// Calculamos el total del presupuesto y lo presentamos.
+            cursor2 *cur1 = companyact->cargacursor("SELECT calctotalalbpro("+cur->valor("idalbaranp")+") AS total, calcbimpalbpro("+cur->valor("idalbaranp")+") AS base, calcimpuestosalbpro("+cur->valor("idalbaranp")+") AS impuestos");
+            m_list->setText(i,COL_TOTALALBARANPROVEEDOR,cur1->valor("total"));
+            m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
+            m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
+            delete cur1;
+
             i++;
             cur->siguienteregistro();
         }// end while

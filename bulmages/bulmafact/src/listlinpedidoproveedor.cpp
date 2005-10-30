@@ -30,7 +30,7 @@ ListLinPedidoProveedor::ListLinPedidoProveedor() {
 ListLinPedidoProveedor::~ListLinPedidoProveedor() {}
 
 
-void ListLinPedidoProveedor::nuevalinea(QString desclpedidoproveedor, QString cantlpedidoproveedor, QString pvplpedidoproveedor, QString prevlpedidoproveedor, QString ivalpedidoproveedor, QString descuentolpedidoproveedor, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo) {
+void ListLinPedidoProveedor::nuevalinea(QString desclpedidoproveedor, QString cantlpedidoproveedor, QString pvplpedidoproveedor, QString prevlpedidoproveedor, QString ivalpedidoproveedor, QString descuentolpedidoproveedor, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString puntlpedidoproveedor) {
         LinPedidoProveedor *lin = new LinPedidoProveedor(companyact,
                               "",
                               desclpedidoproveedor,
@@ -42,7 +42,8 @@ void ListLinPedidoProveedor::nuevalinea(QString desclpedidoproveedor, QString ca
                               mdb_idpedidoproveedor,
                               idarticulo,
 			      codigocompletoarticulo,
-			      nomarticulo
+			      nomarticulo,
+			      puntlpedidoproveedor
 			      );
 	m_lista.append(lin);
 }// end nuevalinea
@@ -73,7 +74,8 @@ void ListLinPedidoProveedor::cargaListLinPedidoProveedor(QString idbudget) {
                               cur->valor("idpedidoproveedor"),
                               cur->valor("idarticulo"),
 			      cur->valor("codigocompletoarticulo"),
-			      cur->valor("nomarticulo"));
+			      cur->valor("nomarticulo"),
+			      cur->valor("puntlpedidoproveedor"));
         m_lista.append(lin);
         i++;
         cur->siguienteregistro();

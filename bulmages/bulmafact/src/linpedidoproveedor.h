@@ -30,12 +30,14 @@ private:
     QString mdb_idarticulo;
     QString mdb_codigocompletoarticulo;
     QString mdb_nomarticulo;
+    QString mdb_puntlpedidoproveedor;
+
     company *companyact;
 public:
     LinPedidoProveedor(company *);
     LinPedidoProveedor(company *, QString );
-    /// La carga rápida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
-    LinPedidoProveedor(company *comp, QString numlpedidoproveedor, QString desclpedidoproveedor, QString cantlpedidoproveedor, QString pvplpedidoproveedor, QString prevlpedidoproveedor, QString ivalpedidoproveedor, QString descuentolpedidoproveedor, QString idpedidoproveedor, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo);
+    /// La carga rï¿½ida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
+    LinPedidoProveedor(company *comp, QString numlpedidoproveedor, QString desclpedidoproveedor, QString cantlpedidoproveedor, QString pvplpedidoproveedor, QString prevlpedidoproveedor, QString ivalpedidoproveedor, QString descuentolpedidoproveedor, QString idpedidoproveedor, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString puntlpedidoproveedor);
     virtual ~LinPedidoProveedor();
     virtual void pintaLinPedidoProveedor() {};
     void guardaLinPedidoProveedor();
@@ -53,6 +55,7 @@ public:
     inline QString idarticulo() {return mdb_idarticulo;};
     inline QString codigocompletoarticulo() {return mdb_codigocompletoarticulo;};
     inline QString nomarticulo() {return mdb_nomarticulo;};
+    inline QString puntlpedidoproveedor() {return mdb_puntlpedidoproveedor;};
 
     
     
@@ -66,7 +69,8 @@ public:
     inline void setidpedidoproveedor(QString val) {mdb_idpedidoproveedor=val;};
     void setidarticulo(QString val);
     void setcodigocompletoarticulo(QString val);
-    inline void setnomarticulo(QString val) {mdb_nomarticulo=val;};    
+    inline void setnomarticulo(QString val) {mdb_nomarticulo=val;};
+    inline void setpuntlpedidoproveedor(QString val) {mdb_puntlpedidoproveedor = val;};
     
     
 /*    
@@ -77,9 +81,9 @@ public:
     void setidarticulo(QString);    
     inline void setnomarticulo(QString val) {mdb_nomarticulo=val;};
 */    
-    /// Hace el calculo de la base imponible de la línea  
+    /// Hace el calculo de la base imponible de la lï¿½ea  
     float calculabase();
-    /// Hace el calculo del IVA de la línea.
+    /// Hace el calculo del IVA de la lï¿½ea.
     float calculaiva();
     void borrar();  
         

@@ -48,11 +48,11 @@ public:
         }// end for
     };
     virtual void pintaListLinPedidoProveedor() {
-        fprintf(stderr,"La función pintaListLinPedidoProveedor aun no ha sido implementada\n");
+        fprintf(stderr,"La funciï¿½ pintaListLinPedidoProveedor aun no ha sido implementada\n");
     };
     void cargaListLinPedidoProveedor(QString);
     void borrar();
-    void nuevalinea(QString desclpedidoproveedor, QString cantlpedidoproveedor, QString pvplpedidoproveedor, QString prevlpedidoproveedor, QString ivalpedidoproveedor, QString descuentolpedidoproveedor, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo);
+    void nuevalinea(QString desclpedidoproveedor, QString cantlpedidoproveedor, QString pvplpedidoproveedor, QString prevlpedidoproveedor, QString ivalpedidoproveedor, QString descuentolpedidoproveedor, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString puntlpedidoproveedor);
     LinPedidoProveedor *linpos(int);
     float calculabase();
     float calculaiva();

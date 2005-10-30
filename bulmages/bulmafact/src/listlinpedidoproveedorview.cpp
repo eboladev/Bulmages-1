@@ -24,24 +24,26 @@ CREATE TABLE lpedidoproveedor (
 );
 */
 
-#define COL_NUMLPEDIDOPROVEEDOR 0
-#define COL_IDARTICULO 1
-#define COL_CODARTICULO 2
-#define COL_NOMARTICULO 3
-#define COL_DESCLPEDIDOPROVEEDOR 4
-#define COL_CANTLPEDIDOPROVEEDOR 5
-#define COL_PVPLPEDIDOPROVEEDOR 6
-#define COL_DESCUENTOLPEDIDOPROVEEDOR 7
-#define COL_IDPEDIDOPROVEEDOR 8
-#define COL_REMOVE 9
-#define COL_TASATIPO_IVA 10
-#define COL_TIPO_IVA 11
-#define COL_PREVLPEDIDOPROVEEDOR 12
-#define COL_IVALPEDIDOPROVEEDOR 13
+#define COL_PUNTEO 0
+#define COL_NUMLPEDIDOPROVEEDOR 1
+#define COL_IDARTICULO 2
+#define COL_CODARTICULO 3
+#define COL_NOMARTICULO 4
+#define COL_DESCLPEDIDOPROVEEDOR 5
+#define COL_CANTLPEDIDOPROVEEDOR 6
+#define COL_PVPLPEDIDOPROVEEDOR 7
+#define COL_DESCUENTOLPEDIDOPROVEEDOR 8
+#define COL_IDPEDIDOPROVEEDOR 9
+#define COL_REMOVE 10
+#define COL_TASATIPO_IVA 11
+#define COL_TIPO_IVA 12
+#define COL_PREVLPEDIDOPROVEEDOR 13
+#define COL_IVALPEDIDOPROVEEDOR 14
 
 #include "articleslist.h"
 #include "listlinpedidoproveedorview.h"
 #include "linpedidoproveedor.h"
+#include "funcaux.h"
 #include <qtable.h>
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
@@ -49,22 +51,24 @@ CREATE TABLE lpedidoproveedor (
 
 ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget * parent, const char * name) : QTable(parent, name), ListLinPedidoProveedor() {
     /// Inicializamos la tabla de lineas de Factura
-    setNumCols(14);
+    setNumCols(15);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_NUMLPEDIDOPROVEEDOR, tr( "N Línea" ) );
-    horizontalHeader()->setLabel( COL_DESCLPEDIDOPROVEEDOR, tr( "Descripción" ) );
+    horizontalHeader()->setLabel( COL_PUNTEO, tr( "P" ) );
+    horizontalHeader()->setLabel( COL_NUMLPEDIDOPROVEEDOR, tr( "N Lï¿½ea" ) );
+    horizontalHeader()->setLabel( COL_DESCLPEDIDOPROVEEDOR, tr( "Descripciï¿½" ) );
     horizontalHeader()->setLabel( COL_CANTLPEDIDOPROVEEDOR, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_PVPLPEDIDOPROVEEDOR, tr( "Precio" ) );
     horizontalHeader()->setLabel( COL_DESCUENTOLPEDIDOPROVEEDOR, tr( "Descuento" ) );
     horizontalHeader()->setLabel( COL_IDPEDIDOPROVEEDOR, tr( "N Pedido" ) );
-    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artículo" ) );
-    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código Artílo" ) );
-    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripción Artículo" ) );
+    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Artï¿½ulo" ) );
+    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Cï¿½igo Artï¿½o" ) );
+    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripciï¿½ Artï¿½ulo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
     horizontalHeader()->setLabel( COL_PREVLPEDIDOPROVEEDOR, tr( "COL_PREVLPEDIDOPROVEEDOR" ) );
     horizontalHeader()->setLabel( COL_IVALPEDIDOPROVEEDOR, tr( "COL_IVALPEDIDOPROVEEDOR" ) );
 
+    setColumnWidth(COL_PUNTEO,15);
     setColumnWidth(COL_NUMLPEDIDOPROVEEDOR,100);
     setColumnWidth(COL_DESCLPEDIDOPROVEEDOR,300);
     setColumnWidth(COL_CANTLPEDIDOPROVEEDOR,100);
@@ -106,6 +110,12 @@ void ListLinPedidoProveedorView::pintaListLinPedidoProveedor() {
     fprintf(stderr,"INICIO de pintaListLinPedidoProveedor\n");
     setNumRows(0);
     setNumRows(100);
+
+   for (int j=0;j<100;j++) {
+	QCheckTableItem *check = new QCheckTableItem(this,0);
+        setItem(j,COL_PUNTEO,check);
+   }// end for
+
     /// \todo Habrï¿½ que vaciar la tabla para que el pintado fuera exacto.
     LinPedidoProveedor *linea;
     uint i = 0;
@@ -124,9 +134,15 @@ void ListLinPedidoProveedorView::pintaListLinPedidoProveedor() {
         setText(i, COL_PVPLPEDIDOPROVEEDOR, linea->pvplpedidoproveedor());
 	setText(i, COL_PREVLPEDIDOPROVEEDOR, linea->prevlpedidoproveedor());
 	setText(i, COL_IVALPEDIDOPROVEEDOR, linea->ivalpedidoproveedor());
+
+        /// Ponemos un checkbox para el punteo.
+        QCheckTableItem *check =(QCheckTableItem *) item(i,COL_PUNTEO);
+        if (linea->puntlpedidoproveedor() == "TRUE")
+            check->setChecked(TRUE);
+
         i++;
     }// end for
-    fprintf(stderr,"FIN de pintaListLinPedidoProveedor\n");
+    _depura("FIN de pintaListLinPedidoProveedor\n");
 }
 
 
@@ -168,6 +184,11 @@ fprintf(stderr,"pintalinListLinPedidoProveedor(%d)\n",pos);
         setText(pos, COL_PVPLPEDIDOPROVEEDOR, linea->pvplpedidoproveedor());
 	setText(pos, COL_PREVLPEDIDOPROVEEDOR, linea->prevlpedidoproveedor());
 	setText(pos, COL_IVALPEDIDOPROVEEDOR, linea->ivalpedidoproveedor());
+    QCheckTableItem *check = (QCheckTableItem *) item(pos, COL_PUNTEO);
+    if (linea->puntlpedidoproveedor() == "TRUE")
+        check->setChecked(TRUE);
+    else
+        check->setChecked(FALSE);
 }
 
 
@@ -250,6 +271,13 @@ void ListLinPedidoProveedorView::valueBudgetLineChanged(int row, int col) {
                 linea->setivalpedidoproveedor(QString::number(ivaLine));
                 break;
             }// end case
+        case COL_PUNTEO: {
+                QCheckTableItem *check = (QCheckTableItem *) item(row, COL_PUNTEO);
+                if (check->isChecked())
+                    linea->setpuntlpedidoproveedor("TRUE");
+                else
+                    linea->setpuntlpedidoproveedor("FALSE");
+            }// end case
         }// end switch
         pintalinListLinPedidoProveedor(row);
     }// end if
@@ -293,8 +321,8 @@ void ListLinPedidoProveedorView::manageArticle(int row) {
 
 
 QString ListLinPedidoProveedorView::searchArticle() {
-    fprintf(stderr,"Busqueda de un artículo\n");
-    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artículo","company"));
+    fprintf(stderr,"Busqueda de un artï¿½ulo\n");
+    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Artï¿½ulo","company"));
     // , WType_Dialog| WShowModal
     artlist->modoseleccion();
     // Esto es convertir un QWidget en un sistema modal de dialogo.

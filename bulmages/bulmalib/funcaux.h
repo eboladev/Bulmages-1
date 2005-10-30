@@ -25,6 +25,7 @@
 #define FUNCAUX_H
 
 #include <qdatetime.h>
+#include <qmessagebox.h>
 #include <stdio.h>
 #include <sstream>
 #include <string>
@@ -60,9 +61,20 @@ std::string Ttos(T arg) {
 }// end Ttos
 
 
-inline void _depura(QString cad) {
+inline void _depura(QString cad, int nivel=0) {
 #ifdef __DEBUG__
-	fprintf(stderr,"%s\n",cad.ascii());
+	if (nivel == 0) {
+		fprintf(stdout,"%s\n",cad.ascii());
+	} else if (nivel == 1) {
+		fprintf(stderr,"%s\n",cad.ascii());
+	} else if (nivel == 2) {
+		QMessageBox::question(
+                NULL,
+                "Información de depuracion",
+                cad,
+                "&Salir",
+                QString::null, 0);
+	}// end if
 #endif
 }// end depura
 #endif

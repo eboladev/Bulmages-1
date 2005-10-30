@@ -32,13 +32,14 @@ LinPedidoProveedor::LinPedidoProveedor(company *comp, QString idLinPedidoProveed
      mdb_idarticulo = cur->valor("idarticulo");
      mdb_codigocompletoarticulo = cur->valor("codigocompletoarticulo");
      mdb_nomarticulo = cur->valor("nomarticulo");
+     mdb_puntlpedidoproveedor = cur->valor("puntlpedidoproveedor");
     } else {
         vaciaLinPedidoProveedor();
     }// end if
 }// end LinPedidoProveedor
 
 
-LinPedidoProveedor::LinPedidoProveedor(company *comp, QString numlpedidoproveedor, QString desclpedidoproveedor, QString cantlpedidoproveedor, QString pvplpedidoproveedor, QString prevlpedidoproveedor, QString ivalpedidoproveedor, QString descuentolpedidoproveedor, QString idpedidoproveedor, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo) {
+LinPedidoProveedor::LinPedidoProveedor(company *comp, QString numlpedidoproveedor, QString desclpedidoproveedor, QString cantlpedidoproveedor, QString pvplpedidoproveedor, QString prevlpedidoproveedor, QString ivalpedidoproveedor, QString descuentolpedidoproveedor, QString idpedidoproveedor, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString puntlpedidoproveedor) {
     companyact = comp;
      mdb_numlpedidoproveedor = numlpedidoproveedor;
      mdb_desclpedidoproveedor = desclpedidoproveedor;
@@ -51,6 +52,10 @@ LinPedidoProveedor::LinPedidoProveedor(company *comp, QString numlpedidoproveedo
      mdb_idarticulo = idarticulo;
      mdb_codigocompletoarticulo = codigocompletoarticulo;
      mdb_nomarticulo = nomarticulo;
+    if (puntlpedidoproveedor == "TRUE" || puntlpedidoproveedor == "t")
+        mdb_puntlpedidoproveedor = "TRUE";
+    else
+        mdb_puntlpedidoproveedor = "FALSE";
 }// end LinPedidoProveedor
 
 
@@ -69,6 +74,7 @@ void LinPedidoProveedor::vaciaLinPedidoProveedor() {
      mdb_idarticulo = "";
      mdb_codigocompletoarticulo = "";
      mdb_nomarticulo = "";
+     mdb_puntlpedidoproveedor = "FALSE";
 }
 
 
@@ -93,9 +99,11 @@ void LinPedidoProveedor::guardaLinPedidoProveedor() {
     } else {
     	prevlpedidoproveedor = "'"+mdb_prevlpedidoproveedor+"'";
     }// end if
+    if (mdb_puntlpedidoproveedor == "")
+        mdb_puntlpedidoproveedor = "FALSE";
     /// Segun est�la linea en la base de datos o no se hace una cosa u otra.
     if (mdb_numlpedidoproveedor == "") {
-        QString SQLQuery = "INSERT INTO lpedidoproveedor (desclpedidoproveedor, cantlpedidoproveedor, pvplpedidoproveedor, prevlpedidoproveedor, ivalpedidoproveedor, descuentolpedidoproveedor, idpedidoproveedor, idarticulo) VALUES ('"+
+        QString SQLQuery = "INSERT INTO lpedidoproveedor (desclpedidoproveedor, cantlpedidoproveedor, pvplpedidoproveedor, prevlpedidoproveedor, ivalpedidoproveedor, descuentolpedidoproveedor, idpedidoproveedor, idarticulo, puntlpedidoproveedor) VALUES ('"+
 	companyact->sanearCadena(mdb_desclpedidoproveedor)+"',"+
 	companyact->sanearCadena(mdb_cantlpedidoproveedor)+","+
 	companyact->sanearCadena(mdb_pvplpedidoproveedor)+","+
@@ -103,7 +111,8 @@ void LinPedidoProveedor::guardaLinPedidoProveedor() {
 	companyact->sanearCadena(mdb_ivalpedidoproveedor)+","+
 	companyact->sanearCadena(mdb_descuentolpedidoproveedor)+", "+
 	companyact->sanearCadena(mdb_idpedidoproveedor)+","+
-	companyact->sanearCadena(mdb_idarticulo)+")";
+	companyact->sanearCadena(mdb_idarticulo)+", "+
+	companyact->sanearCadena(mdb_puntlpedidoproveedor)+")";
         companyact->begin();
         int error = companyact->ejecuta(SQLQuery);
 	if (error) {
@@ -125,6 +134,7 @@ void LinPedidoProveedor::guardaLinPedidoProveedor() {
         SQLQuery += " ,descuentolpedidoproveedor = "+companyact->sanearCadena(mdb_descuentolpedidoproveedor)+" ";
         SQLQuery += " ,idpedidoproveedor = "+companyact->sanearCadena(mdb_idpedidoproveedor)+" ";
         SQLQuery += " ,idarticulo = "+companyact->sanearCadena(mdb_idarticulo)+" ";
+        SQLQuery += " ,puntlpedidoproveedor = "+companyact->sanearCadena(mdb_puntlpedidoproveedor)+" ";
         SQLQuery += " WHERE numlpedidoproveedor = "+companyact->sanearCadena(mdb_numlpedidoproveedor);
         companyact->begin();
         int error = companyact->ejecuta(SQLQuery);

@@ -60,9 +60,7 @@ public:
     virtual void pintacomentalbaranp(QString) {};
     virtual void pintaidproveedor(QString ) {};
     virtual void pintaidforma_pago(QString) {};
-//    virtual void pintaidfacturap(QString){};
     virtual void pintaidalmacen(QString){};
-//    virtual void pintanumfacturap(QString) {};
     virtual void pintadescalbaranp(QString) {};
     virtual void pintarefalbaranp(QString) {};
     virtual void pintatotales(float, float) {};
@@ -75,7 +73,6 @@ public:
     void setidproveedor(QString val) { mdb_idproveedor=val;};
     void setidforma_pago(QString val) { mdb_idforma_pago=val;};
     void setidalmacen(QString val) {mdb_idalmacen=val;};
-//    void setNumFactura(QString val) {mdb_numfactura=val;};
     void setrefalbaranp(QString val) {mdb_refalbaranp=val;};
     void setdescalbaranp(QString val) {mdb_descalbaranp=val;};  
     void imprimirAlbaranProveedor();

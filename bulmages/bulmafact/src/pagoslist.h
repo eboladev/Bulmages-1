@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,7 +33,7 @@ class PagosList : public PagosListBase {
 Q_OBJECT
 private:
    company *companyact;
-   int m_modo; // == 0 es modo edición
+   int m_modo; // == 0 es modo ediciï¿½
             // ==1 es modo selector.
    QString m_idpago;
    
@@ -60,7 +60,9 @@ public:
     };
     void setidproveedor(QString val) {m_proveedor->setidproveedor(val);};
     QString generaFiltro();
-    
+   /// Funciones que se encarga en guardar y cargar la configuracion del listado.
+    void guardaconfig();
+    void cargaconfig();
 public slots:
     virtual void doubleclicked(int, int, int, const QPoint &);
     virtual void s_contextMenu(int, int, int, const QPoint &);

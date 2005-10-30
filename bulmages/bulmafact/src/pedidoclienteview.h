@@ -109,6 +109,8 @@ public slots:
     virtual void s_generarAlbaran() {generarAlbaran();};
     
     virtual void s_nuevoCobro();
+
+	virtual void s_informeReferencia();
     
 };
 

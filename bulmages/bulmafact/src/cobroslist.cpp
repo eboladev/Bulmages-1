@@ -64,6 +64,43 @@ CREATE TABLE presupuesto (
     
     
 
+void CobrosList::guardaconfig() {
+    QString aux = "";
+    mver_idcobro->isChecked() ? aux += "1,":aux+="0,";
+    mver_idcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_fechacobro->isChecked() ? aux += "1,":aux+="0,";
+    mver_cantcobro->isChecked() ? aux += "1,":aux+="0,";
+    mver_refcobro->isChecked() ? aux += "1,":aux+="0,";
+    mver_previsioncobro->isChecked() ? aux += "1,":aux+="0,";
+    mver_comentcobro->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confcobroslist.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void CobrosList::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confcobroslist.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_idcobro->setChecked(line.at(0)=='1');
+    mver_idcliente->setChecked(line.at(2)=='1');
+    mver_fechacobro->setChecked(line.at(4)=='1');
+    mver_cantcobro->setChecked(line.at(6)=='1');
+    mver_refcobro->setChecked(line.at(8)=='1');
+    mver_previsioncobro->setChecked(line.at(10)=='1');
+    mver_comentcobro->setChecked(line.at(12)=='1');
+}// end cargaconfig
+
 
 
 
@@ -103,11 +140,14 @@ void CobrosList::s_configurar() {
     else
         m_list->hideColumn(COL_COMENTCOBRO);
 
+	guardaconfig();
+
 }// end s_configurar
 
 
 CobrosList::CobrosList(QWidget *parent, const char *name, int flag)
 : CobrosListBase(parent, name, flag) {
+	cargaconfig();
     companyact = NULL;
     m_modo=0;
     m_idcobro="";
@@ -120,6 +160,7 @@ CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, int fla
 : CobrosListBase(parent, name, flag) {
     companyact = comp;
     m_cliente->setcompany(comp);
+	cargaconfig();
     inicializa();
     m_modo=0;
     m_idcobro="";

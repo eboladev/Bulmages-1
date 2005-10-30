@@ -66,6 +66,7 @@ CREATE TABLE proveedor (
 #include <qlineedit.h>
 #include <qmessagebox.h>
 #include <qcheckbox.h>
+#include <qfile.h>
 
 #include "company.h"
 #include "provedit.h"
@@ -85,6 +86,59 @@ CREATE TABLE proveedor (
 #define COL_EMAILPROVEEDOR 12
 #define COL_URLPROVEEDOR 13
 #define COL_CLAVEWEBPROVEEDOR 14
+
+void providerslist::guardaconfig() {
+    QString aux = "";
+    mver_idproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomaltproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_cifproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_codicliproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_cbancproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_comentproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_dirproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_poblproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_cpproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_telproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_faxproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_emailproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_urlproveedor->isChecked() ? aux += "1,":aux+="0,";
+    mver_clavewebproveedor->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confproviderslist.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void providerslist::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/confproviderslist.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_idproveedor->setChecked(line.at(0)=='1');
+    mver_nomproveedor->setChecked(line.at(2)=='1');
+    mver_nomaltproveedor->setChecked(line.at(4)=='1');
+    mver_cifproveedor->setChecked(line.at(6)=='1');
+    mver_codicliproveedor->setChecked(line.at(8)=='1');
+    mver_cbancproveedor->setChecked(line.at(10)=='1');
+    mver_dirproveedor->setChecked(line.at(12)=='1');
+    mver_poblproveedor->setChecked(line.at(14)=='1');
+    mver_cpproveedor->setChecked(line.at(16)=='1');
+    mver_telproveedor->setChecked(line.at(18)=='1');
+    mver_faxproveedor->setChecked(line.at(20)=='1');
+    mver_urlproveedor->setChecked(line.at(22)=='1');
+    mver_clavewebproveedor->setChecked(line.at(24)=='1');
+}// end cargaconfig
+
+
 
 void providerslist::s_configurar() {
     if(mver_idproveedor->isChecked() )
@@ -161,10 +215,13 @@ void providerslist::s_configurar() {
         m_list->showColumn(COL_CLAVEWEBPROVEEDOR);
     else
         m_list->hideColumn(COL_CLAVEWEBPROVEEDOR);
+
+	guardaconfig();
 }// end s_configurar
 
 providerslist::providerslist(company *comp, QWidget *parent, const char *name, int flag)
         : providerslistbase(parent, name, flag) {
+    cargaconfig();
     companyact = comp;
     hideBusqueda();
     hideConfiguracion();

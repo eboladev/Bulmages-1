@@ -14,6 +14,7 @@
 #include "qtable1.h"
 #include <qmessagebox.h>
 #include <qpopupmenu.h>
+#include <qfile.h>
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "busquedafecha.h"
@@ -34,6 +35,70 @@
 #define COL_IDCLIENTE 10
 #define COL_IDALMACEN 11
 #define COL_IDSERIE_FACTURA 12
+#define COL_TOTALFACTURA 13
+#define COL_TOTALBASEIMP 14
+#define COL_TOTALIMPUESTOS 15
+
+void FacturasList::guardaconfig() {
+    QString aux = "";
+    mver_reffactura->isChecked() ? aux += "1,":aux+="0,";
+    mver_idfactura->isChecked() ? aux += "1,":aux+="0,";
+    mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_numfactura->isChecked() ? aux += "1,":aux+="0,";
+    mver_nomcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_ffactura->isChecked() ? aux += "1,":aux+="0,";
+    mver_contactfactura->isChecked() ? aux += "1,":aux+="0,";
+    mver_telfactura->isChecked() ? aux += "1,":aux+="0,";
+    mver_comentfactura->isChecked() ? aux += "1,":aux+="0,";
+    mver_idusuari->isChecked() ? aux += "1,":aux+="0,";
+    mver_idcliente->isChecked() ? aux += "1,":aux+="0,";
+    mver_idalmacen->isChecked() ? aux += "1,":aux+="0,";
+    mver_idserie_factura->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalfactura->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
+    mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conffacturaslist.cfn" );
+    if ( file.open( IO_WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << aux << "\n";
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void FacturasList::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conffacturaslist.cfn" );
+    QString line;
+    if ( file.open( IO_ReadOnly ) ) {
+        QTextStream stream( &file );
+        line = stream.readLine(); // line of text excluding '\n'
+        file.close();
+    } else
+        return;
+
+    mver_reffactura->setChecked(line.at(0)=='1');
+    mver_idfactura->setChecked(line.at(2)=='1');
+    mver_codigoalmacen->setChecked(line.at(4)=='1');
+    mver_numfactura->setChecked(line.at(6)=='1');
+    mver_nomcliente->setChecked(line.at(8)=='1');
+    mver_ffactura->setChecked(line.at(10)=='1');
+    mver_contactfactura->setChecked(line.at(12)=='1');
+    mver_telfactura->setChecked(line.at(14)=='1');
+    mver_comentfactura->setChecked(line.at(16)=='1');
+    mver_idusuari->setChecked(line.at(18)=='1');
+    mver_idcliente->setChecked(line.at(20)=='1');
+    mver_idalmacen->setChecked(line.at(22)=='1');
+    mver_idserie_factura->setChecked(line.at(24)=='1');
+    mver_totalfactura->setChecked(line.at(26)=='1');
+    mver_totalbaseimp->setChecked(line.at(28)=='1');
+    mver_totalimpuestos->setChecked(line.at(30)=='1');
+}// end cargaconfig
+
+
+
+
+
+
 
 void FacturasList::s_configurar() {
     if(mver_reffactura->isChecked() )
@@ -100,6 +165,23 @@ void FacturasList::s_configurar() {
         m_list->showColumn(COL_IDSERIE_FACTURA);
     else
         m_list->hideColumn(COL_IDSERIE_FACTURA);
+
+    if(mver_totalfactura->isChecked() )
+        m_list->showColumn(COL_TOTALFACTURA);
+    else
+        m_list->hideColumn(COL_TOTALFACTURA);
+
+    if(mver_totalbaseimp->isChecked() )
+        m_list->showColumn(COL_TOTALBASEIMP);
+    else
+        m_list->hideColumn(COL_TOTALBASEIMP);
+
+    if(mver_totalimpuestos->isChecked() )
+        m_list->showColumn(COL_TOTALIMPUESTOS);
+    else
+        m_list->hideColumn(COL_TOTALIMPUESTOS);
+
+	guardaconfig();
 }// end s_configurar
 
 FacturasList::FacturasList(QWidget *parent, const char *name, int flag)
@@ -110,6 +192,7 @@ FacturasList::FacturasList(QWidget *parent, const char *name, int flag)
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
+    cargaconfig();
 }// end providerslist
 
 FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
@@ -117,6 +200,7 @@ FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
     companyact = comp;
     m_cliente->setcompany(companyact);
     m_articulo->setcompany(companyact);
+    cargaconfig();
     inicializa();
     m_modo=0;
     m_idfactura="";
@@ -137,7 +221,7 @@ void FacturasList::inicializa() {
     m_list->setSelectionMode( QTable::SingleRow );
     m_list->setSorting( TRUE );
     m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(13);
+    m_list->setNumCols(16);
     m_list->horizontalHeader()->setLabel( COL_REFFACTURA, tr( "COL_REFFACTURA" ) );
     m_list->horizontalHeader()->setLabel( COL_IDFACTURA, tr( "COL_IDFACTURA" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
@@ -151,6 +235,10 @@ void FacturasList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("COL_IDUSUARI") );
     m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
     m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("COL_IDALMACEN") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALFACTURA, tr("Total") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
+    m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
+
     m_list->setColumnWidth(COL_REFFACTURA,75);
     m_list->setColumnWidth(COL_IDFACTURA,75);
     m_list->setColumnWidth(COL_NUMFACTURA,75);
@@ -183,6 +271,14 @@ void FacturasList::inicializa() {
         m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
         m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
         m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
+
+        /// Calculamos el total del presupuesto y lo presentamos.
+        cursor2 *cur1 = companyact->cargacursor("SELECT calctotalfactura("+cur->valor("idfactura")+") AS total, calcbimpfactura("+cur->valor("idfactura")+") AS base, calcimpuestosfactura("+cur->valor("idfactura")+") AS impuestos");
+        m_list->setText(i,COL_TOTALFACTURA,cur1->valor("total"));
+        m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
+        m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
+        delete cur1;
+
         i++;
         cur->siguienteregistro();
     }// end while

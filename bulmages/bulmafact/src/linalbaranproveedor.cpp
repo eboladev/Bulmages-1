@@ -137,7 +137,6 @@ void LinAlbaranProveedor::setcodigocompletoarticulo(QString val) {
         if (mdb_cantlalbaranp == "") {
             mdb_cantlalbaranp = "1";
             mdb_descontlalbaranp = "0";
-	    mdb_ivalalbaranp = "0";
         }// end if
     }// end if
     delete cur;
@@ -158,7 +157,6 @@ void LinAlbaranProveedor::setidarticulo(QString val) {
         if (mdb_cantlalbaranp == "") {
             mdb_cantlalbaranp = "1";
             mdb_descontlalbaranp = "0";
-	    mdb_ivalalbaranp = "0";
         }// end if
     }// end if
     delete cur;

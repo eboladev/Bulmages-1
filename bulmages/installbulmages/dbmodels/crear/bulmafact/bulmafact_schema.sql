@@ -733,6 +733,7 @@ CREATE TABLE lpedidocliente (
    ivalpedidocliente numeric(12,2),
    descuentolpedidocliente numeric(12,2),   
    idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
+   puntlpedidocliente boolean DEFAULT FALSE,
    idarticulo integer REFERENCES articulo(idarticulo)
 );
 
@@ -1449,6 +1450,7 @@ CREATE TABLE lpedidoproveedor (
    ivalpedidoproveedor numeric(12,2),
    descuentolpedidoproveedor numeric(12,2),   
    idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor),
+   puntlpedidoproveedor boolean DEFAULT FALSE,
    idarticulo integer REFERENCES articulo(idarticulo)
 );
 
@@ -1472,6 +1474,45 @@ BEGIN
 END;
 ' language plpgsql;
 
+-- Calculo de totales para presupuestos.
+CREATE OR REPLACE FUNCTION calcbimppres(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto/100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+		total := total * (1 - res.proporciondpresupuesto/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+-- Calculo de totales para presupuestos.
+CREATE OR REPLACE FUNCTION calcimpuestospres(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto/100) * (ivalpresupuesto/100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+		total := total * (1 - res.proporciondpresupuesto/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+
 
 -- Cálculo de totales para pedido cliente.
 CREATE OR REPLACE FUNCTION calctotalpedcli(integer) RETURNS numeric(12,2)
@@ -1493,6 +1534,46 @@ END;
 ' language plpgsql;
 
 
+-- Cálculo de totales para pedido cliente.
+CREATE OR REPLACE FUNCTION calcbimppedcli(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente/100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+		total := total * (1 - res.proporciondpedidocliente/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+-- Cálculo de totales para pedido cliente.
+CREATE OR REPLACE FUNCTION calcimpuestospedcli(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente/100) *( ivalpedidocliente/100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+		total := total * (1 - res.proporciondpedidocliente/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+
+
 -- Cálculo de totales para albaranes.
 CREATE OR REPLACE FUNCTION calctotalalbaran(integer) RETURNS numeric(12,2)
 AS '
@@ -1503,6 +1584,44 @@ res RECORD;
 BEGIN
 	total := 0;
 	FOR  res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran/100) *(1+ ivalalbaran/100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+		total := total * (1 - res.proporciondalbaran/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+-- Cálculo de totales para albaranes.
+CREATE OR REPLACE FUNCTION calcbimpalbaran(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran/100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+		total := total * (1 - res.proporciondalbaran/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+-- Cálculo de totales para albaranes.
+CREATE OR REPLACE FUNCTION calcimpuestosalbaran(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran/100)*(ivalalbaran/100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
 		total := total + res.subtotal1;
 	END LOOP;
 	FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
@@ -1532,6 +1651,43 @@ BEGIN
 END;
 ' language plpgsql;
 
+-- Cálculo de totales para facturas
+CREATE OR REPLACE FUNCTION calcbimpfactura(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura/100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+		total := total * (1 - res.proporciondfactura/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+-- Cálculo de totales para facturas
+CREATE OR REPLACE FUNCTION calcimpuestosfactura(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura/100) *(ivalfactura/100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+		total := total * (1 - res.proporciondfactura/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
 
 -- Cálculo de totales para pedido proveedor
 CREATE OR REPLACE FUNCTION calctotalpedpro(integer) RETURNS numeric(12,2)
@@ -1543,6 +1699,43 @@ res RECORD;
 BEGIN
 	total := 0;
 	FOR  res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor/100) *(1+ ivalpedidoproveedor/100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+		total := total * (1 - res.proporciondpedidoproveedor/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+CREATE OR REPLACE FUNCTION calcbimppedpro(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor/100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+		total := total * (1 - res.proporciondpedidoproveedor/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+
+
+CREATE OR REPLACE FUNCTION calcimpuestospedpro(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor/100) *( ivalpedidoproveedor/100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
 		total := total + res.subtotal1;
 	END LOOP;
 	FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
@@ -1571,6 +1764,42 @@ BEGIN
 END;
 ' language plpgsql;
 
+CREATE OR REPLACE FUNCTION calcbimpalbpro(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp/100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+		total := total * (1 - res.proporciondalbaranp/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
+\echo "Cálculo de totales para albaranes de proveedor"
+
+CREATE OR REPLACE FUNCTION calcimpuestosalbpro(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp/100) *(ivalalbaranp/100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+		total := total * (1 - res.proporciondalbaranp/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
 
 -- Cálculo de totales para factura proveedor
 CREATE OR REPLACE FUNCTION calctotalfacpro(integer) RETURNS numeric(12,2)
@@ -1592,5 +1821,41 @@ END;
 ' language plpgsql;
 
 
+-- Cálculo de totales para factura proveedor
+CREATE OR REPLACE FUNCTION calcbimpfacpro(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap/100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
+		total := total * (1 - res.proporciondfacturap/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
 
+-- Cálculo de totales para factura proveedor
+CREATE OR REPLACE FUNCTION calcimpuestosfacpro(integer) RETURNS numeric(12,2)
+AS '
+DECLARE
+idp ALIAS FOR $1;
+total numeric(12,2);
+res RECORD;
+BEGIN
+	total := 0;
+	FOR  res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap/100) *(ivalfacturap/100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+		total := total + res.subtotal1;
+	END LOOP;
+	FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
+		total := total * (1 - res.proporciondfacturap/100);
+	END LOOP;
+	RETURN total;
+END;
+' language plpgsql;
 
