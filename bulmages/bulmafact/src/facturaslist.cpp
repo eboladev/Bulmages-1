@@ -335,3 +335,26 @@ void FacturasList::doubleclicked(int a, int , int , const QPoint &) {
    }// end if
 }
 
+
+void FacturasList::s_new() {
+    fprintf(stderr,"Iniciamos el boton_crear\n");
+    FacturaView *fac = new FacturaView(companyact,companyact->m_pWorkspace,theApp->translate("Nueva Factura", "company"));
+    /// Pintamos para que se carguen los combos y los dem� elementos.
+    fac->pintaFactura();
+    fac->show();
+}// end boton_crear
+
+
+void FacturasList::s_edit() {
+    int a = m_list->currentRow();
+    if (a >= 0) {
+        m_idfactura = m_list->text(a,COL_IDFACTURA);
+        if (m_idfactura != "") {
+            fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
+            FacturaView *fac = new FacturaView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Factura de Cliente", "company"));
+            fac->cargaFactura(m_idfactura);
+            fac->show();
+        }// end if
+    }// end if
+}// end s_edit
+

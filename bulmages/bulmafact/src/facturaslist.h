@@ -77,6 +77,9 @@ public slots:
 	};	
 	
 	virtual void s_configurar();
+
+	virtual void s_new();
+    	virtual void s_edit();
 };
 
 #endif
