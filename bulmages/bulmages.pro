@@ -10,4 +10,6 @@
   SUBDIRS += bulmafact
   SUBDIRS += bulmatpv
   SUBDIRS += introbulmages
-  
+exists(ntpv-qmake) {
+  SUBDIRS += ntpv-qmake
+}
