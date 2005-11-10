@@ -134,7 +134,7 @@ void AlbaranCliente::guardaAlbaranCliente() {
         QString SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran,comentprivalbaran, idcliente, idforma_pago, idalmacen, descalbaran, refalbaran, idtrabajador, contactalbaran, telalbaran, procesadoalbaran) VALUES ("+
 	companyact->sanearCadena(mdb_numalbaran)+",'"+
 	companyact->sanearCadena(mdb_fechaalbaran)+"','"+
-	companyact->sanearCadena(mdb_comentalbaran)+"',"+
+	companyact->sanearCadena(mdb_comentalbaran)+"','"+
 	companyact->sanearCadena(mdb_comentprivalbaran)+"',"+
 	companyact->sanearCadena(mdb_idcliente)+","+
 	companyact->sanearCadena(mdb_idforma_pago)+","+
