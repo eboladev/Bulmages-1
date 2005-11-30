@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+
+
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">
+<META name="GENERATOR" content="hevea 1.08">
+<LINK rel="stylesheet" type="text/css" href="manual.css">
+<TITLE>
+Asientos inteligentes
+</TITLE>
+</HEAD>
+<BODY >
+<A HREF="manual006.html"><IMG SRC ="previous_motif.gif" ALT="Previous"></A>
+<A HREF="index.html"><IMG SRC ="contents_motif.gif" ALT="Up"></A>
+<A HREF="manual008.html"><IMG SRC ="next_motif.gif" ALT="Next"></A>
+<HR>
+
+<H1 CLASS="chapter"><A NAME="htoc40">Capítulo&nbsp;6</A>&nbsp;&nbsp;Asientos inteligentes</H1>
+<A NAME="toc16"></A>
+<H2 CLASS="section"><A NAME="htoc41">6.1</A>&nbsp;&nbsp;Introducción de asientos inteligentes</H2>
+Los asientos inteligentes son asientos predefinidos por el usuario que, invariablemente, siguen una pauta específica para la introducción de apuntes. Por ejemplo,
+una factura de un acreedor de servicios concreto siempre utilizará las mismas cuentas y llevará una imputación en el debe, en el haber y un registro de IVA. Si
+habitualmente se contabilizan muchas facturas iguales por el mismo concepto puede usarse un asiento inteligente que, al ejecutarlo, pregunte el importe total de
+la factura y rellene automáticamente los apuntes necesarios para que quede un asiento completo y cuadrado, listo para cerrar en breves segundos.<BR>
+<BR>
+Puede introducir un asiento completo de este tipo pulsando sobre el botón de ?Asiento Inteligente? representado con una varita mágica (es importante que no tenga
+en pantalla ningún asiento abierto en ese momento). Aparecerá entonces la siguiente pantalla:<BR>
+<BR>
+Una vez rellenados los datos, presione el ?botón aceptar? y automáticamente se crearán los apuntes que formen el asiento en un asiento nuevo.<BR>
+<BR>
+Puede introducir tantos asientos inteligentes como desee en un mismo asiento inicial.
+5.2 CONFIGURACIÓN DE LOS ASIENTOS INTELIGENTES
+Puede configurar tantos asientos inteligentes como precise para su contabilidad. Para ello dispone de la opción ?botón asiento inteligente? en la barra de
+herramientas y en el menú de la aplicación. 
+La generación de nuevos asientos inteligentes funciona igual que la introducción de un asiento simple, con la excepción de que en los campos en los que se
+deberían introducri conceptos, cuentas y demás datos, se introducen variables u operaciones con variables. <BR>
+<BR>
+Para convertir cualquiera de los campos en varible basta introducir el nombre de la variable entre signos de dólar ($). Esto hará que cuando esté trabajando con
+el asiento inteligente, el programa pregunte al usuario el concepto o la cantidad a introducir en este valor mediante lilice la variable y que será aplicada al
+usar la plantilla de asientos inteligentes. Por ejemplo, se puede especificar que apra determinado asiento siempre se calcule un IVA del 7%. Al introducir el
+asiento inteligente a un asiento abierto, el programa preguntará el proveedor, la cantidad total y, automáticamente, apuntará, gracias a las operaciones con
+variables que se han especificado al generar ese asiento, la base imponible y el IVA del 7% correspondiente a esa base.<BR>
+<BR>
+Existen variables predefinidas por el programa, que, aún siendo variables, no provocan que el sistema pregunte por ellas ya que son calculadas de forma
+automática.<BR>
+<BR>
+Por ejemplo:
+<PRE CLASS="verbatim">
+$fechaactual$ -- será sustituída por la fehca del día actual
+$fechaasiento$ -- la fecha del asiento.
+</PRE>
+Puede, al mismo tiempo que crea todo el asiento, crear entradas en el registro de IVA de forma utomática. Para ello dispone de la pestaña adicional Registro IVA.
+Note que si deja un asiento inteligente sin entradas de registro de IVA, al cerrar el asiento inicial, BulmaCont le preguntará por este.<BR>
+<BR>
+Es importante mencionar que el programa incluye la opción de importar y exportar asientos inteligentes, de forma que guardará la configuración del asiento
+inteligente elegido en formato XML para poder recuperarla después. Puede realizar estas acciones mediante los botones que aparecen en la esquina superior derecha
+de la ventana de Asientos Inteligentes.<BR>
+<BR>
+<HR>
+<A HREF="manual006.html"><IMG SRC ="previous_motif.gif" ALT="Previous"></A>
+<A HREF="index.html"><IMG SRC ="contents_motif.gif" ALT="Up"></A>
+<A HREF="manual008.html"><IMG SRC ="next_motif.gif" ALT="Next"></A>
+</BODY>
+</HTML>

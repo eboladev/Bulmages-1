@@ -1,0 +1,1357 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+
+<HEAD>
+
+<TITLE>Manual de BulmaGés</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">
+<META name="GENERATOR" content="hevea 1.08">
+<STYLE type="text/css">
+.toc{list-style:none;}
+.title{margin:auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+.part{margin:auto;text-align:center}
+.lstlisting{font-family:monospace;white-space:pre;margin-right:auto;margin-left:0pt;text-align:left}
+</STYLE>
+</HEAD>
+
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea ../manual.tex -->
+<!--HTMLHEAD-->
+<!--ENDHTML-->
+<!--PREFIX <ARG ></ARG>-->
+<!--CUT DEF chapter 1 -->
+
+
+<TABLE CLASS="title">
+<TR><TD>
+<H1 CLASS="titlemain">Manual de BulmaGés</H1>
+<H3 CLASS="titlerest">Cristina Marco Hernández</H3>
+<H3 CLASS="titlerest">30-11-05</H3></TD>
+</TR></TABLE>Copyright (c) 2005 Cristina Marco Hernández. Se concede permiso para copiar, distribuir y/o modificar este documento bajo los términos de la Licencia de
+Documentación Libre de GNU, Versión 1.2 o cualquier otra versión posterior publicada por la Free Software Foundation; sin Secciones Invariantes ni Textos de
+Cubierta Delantera ni Textos de Cubierta Trasera. Una copia de la licencia está incluida en la sección titulada GNU Free Documentation License.<BR>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=1>
+<TR><TD ALIGN=left NOWRAP>0.2</TD>
+<TD ALIGN=left NOWRAP>Conversión a L<sup>A</sup>T<sub>E</sub>X. Conversión a Html</TD>
+<TD ALIGN=left NOWRAP>Leo</TD>
+<TD ALIGN=left NOWRAP>2005-11-30</TD>
+</TR>
+<TR><TD ALIGN=left NOWRAP>0.1</TD>
+<TD ALIGN=left NOWRAP>Versión inicial de la Cris</TD>
+<TD ALIGN=left NOWRAP>Cris</TD>
+<TD ALIGN=left NOWRAP>2005-06-27</TD>
+</TR></TABLE><BR>
+<!--TOC chapter Índice-->
+
+<H1 CLASS="chapter">Índice</H1><!--SEC END -->
+
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc1">Capítulo&nbsp;1&nbsp;&nbsp;Introducción a Bulmagés</A>
+<LI CLASS="li-toc"><A HREF="#htoc2">Capítulo&nbsp;2&nbsp;&nbsp;Instalación de Bulmagés</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc3">2.1&nbsp;&nbsp;Instalación Rapida</A>
+<LI CLASS="li-toc"><A HREF="#htoc4">2.2&nbsp;&nbsp;Instalación Manual</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc5">2.2.1&nbsp;&nbsp;Instalacion de los servicios</A>
+<LI CLASS="li-toc"><A HREF="#htoc6">2.2.2&nbsp;&nbsp;Instalación del cliente de contabilidad</A>
+<LI CLASS="li-toc"><A HREF="#htoc7">2.2.3&nbsp;&nbsp;Configuración del motor de bases de datos PostgreSQL</A>
+</UL>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc8">Capítulo&nbsp;3&nbsp;&nbsp;El selector de Bulmagés</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc9">3.1&nbsp;&nbsp;Inicio del selector</A>
+<LI CLASS="li-toc"><A HREF="#htoc10">3.2&nbsp;&nbsp;Configuración de bulmagés en el selector</A>
+<LI CLASS="li-toc"><A HREF="#htoc11">3.3&nbsp;&nbsp;Opciones de aplicación</A>
+<LI CLASS="li-toc"><A HREF="#htoc12">3.4&nbsp;&nbsp;Parámetros del selector</A>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc13">Capítulo&nbsp;4&nbsp;&nbsp;Primeros pasos en bulmacont</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc14">4.1&nbsp;&nbsp;Ejecución del programa bulmacont</A>
+<LI CLASS="li-toc"><A HREF="#htoc15">4.2&nbsp;&nbsp;Primeros pasos con el programa</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc16">4.2.1&nbsp;&nbsp;Introducción al programa</A>
+<LI CLASS="li-toc"><A HREF="#htoc17">4.2.2&nbsp;&nbsp;Pantalla principal</A>
+<LI CLASS="li-toc"><A HREF="#htoc18">4.2.3&nbsp;&nbsp;Propiedades de empresas</A>
+</UL>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc19">Capítulo&nbsp;5&nbsp;&nbsp;Tareas habituales</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc20">5.1&nbsp;&nbsp;El plan contable</A>
+<LI CLASS="li-toc"><A HREF="#htoc21">5.2&nbsp;&nbsp;Edición de cuentas</A>
+<LI CLASS="li-toc"><A HREF="#htoc22">5.3&nbsp;&nbsp;Asientos / Introducción de apuntes</A>
+<LI CLASS="li-toc"><A HREF="#htoc23">5.4&nbsp;&nbsp;Navegación a través del sistema de asientos</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc24">5.4.1&nbsp;&nbsp;Filtrado de asientos</A>
+<LI CLASS="li-toc"><A HREF="#htoc25">5.4.2&nbsp;&nbsp;Orden de asientos</A>
+<LI CLASS="li-toc"><A HREF="#htoc26">5.4.3&nbsp;&nbsp;Asientos de apertura</A>
+<LI CLASS="li-toc"><A HREF="#htoc27">5.4.4&nbsp;&nbsp;Asientos de cierre</A>
+<LI CLASS="li-toc"><A HREF="#htoc28">5.4.5&nbsp;&nbsp;Asientos simples</A>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc29">5.5&nbsp;&nbsp;Libro mayor</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc30">5.5.1&nbsp;&nbsp;Guardado e impresión de extractos</A>
+<LI CLASS="li-toc"><A HREF="#htoc31">5.5.2&nbsp;&nbsp;Punteo y casación</A>
+<LI CLASS="li-toc"><A HREF="#htoc32">5.5.3&nbsp;&nbsp;Filtrado del extracto</A>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc33">5.6&nbsp;&nbsp;Libro diario</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc34">5.6.1&nbsp;&nbsp;Filtrado del diario</A>
+<LI CLASS="li-toc"><A HREF="#htoc35">5.6.2&nbsp;&nbsp;Impresión del diario</A>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc36">5.7&nbsp;&nbsp;Balance de cuentas</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc37">5.7.1&nbsp;&nbsp;Balance de cuentas normal</A>
+<LI CLASS="li-toc"><A HREF="#htoc38">5.7.2&nbsp;&nbsp;Balance jerárquico de cuentas</A>
+<LI CLASS="li-toc"><A HREF="#htoc39">5.7.3&nbsp;&nbsp;Impresión del balance</A>
+</UL>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc40">Capítulo&nbsp;6&nbsp;&nbsp;Asientos inteligentes</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc41">6.1&nbsp;&nbsp;Introducción de asientos inteligentes</A>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc42">Capítulo&nbsp;7&nbsp;&nbsp;El menú listados</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc43">7.1&nbsp;&nbsp;Registro de iva</A>
+<LI CLASS="li-toc"><A HREF="#htoc44">7.2&nbsp;&nbsp;Listado de balances</A>
+<LI CLASS="li-toc"><A HREF="#htoc45">7.3&nbsp;&nbsp;Listado de masas patrimoniales</A>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc46">Capítulo&nbsp;8&nbsp;&nbsp;El menú herramientas</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc47">8.1&nbsp;&nbsp;Amortizaciones</A>
+<LI CLASS="li-toc"><A HREF="#htoc48">8.2&nbsp;&nbsp;Sustituir cuentas</A>
+<LI CLASS="li-toc"><A HREF="#htoc49">8.3&nbsp;&nbsp;Bloquear fechas</A>
+<LI CLASS="li-toc"><A HREF="#htoc50">8.4&nbsp;&nbsp;Centro de coste por defecto</A>
+<LI CLASS="li-toc"><A HREF="#htoc51">8.5&nbsp;&nbsp;Canal por defecto</A>
+<LI CLASS="li-toc"><A HREF="#htoc52">8.6&nbsp;&nbsp;Recalcular saldos iniciales</A>
+<LI CLASS="li-toc"><A HREF="#htoc53">8.7&nbsp;&nbsp;Cobros y pagos</A>
+<LI CLASS="li-toc"><A HREF="#htoc54">8.8&nbsp;&nbsp;Archivo documental</A>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc55">Capítulo&nbsp;9&nbsp;&nbsp;Otras opciones</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc56">9.1&nbsp;&nbsp;El menú ver</A>
+<LI CLASS="li-toc"><A HREF="#htoc57">9.2&nbsp;&nbsp;El menú ayuda</A>
+</UL>
+<LI CLASS="li-toc"><A HREF="#htoc58">Capítulo&nbsp;10&nbsp;&nbsp;Plugins</A>
+<LI CLASS="li-toc"><A HREF="#htoc59">Capítulo&nbsp;11&nbsp;&nbsp;Importación y exportación de datos desde otras aplicaciones</A>
+<LI CLASS="li-toc"><A HREF="#htoc60">Apéndice&nbsp;A&nbsp;&nbsp;El archivo de configuración bulmages.conf: parámetros del selector</A>
+<LI CLASS="li-toc"><A HREF="#htoc61">Apéndice&nbsp;B&nbsp;&nbsp;GNU Free Document License</A>
+<UL CLASS="toc"><LI CLASS="li-toc">
+<A HREF="#htoc62">B.1&nbsp;&nbsp;Preámbulo</A>
+<LI CLASS="li-toc"><A HREF="#htoc63">B.2&nbsp;&nbsp;Aplicabilidad y definiciones</A>
+<LI CLASS="li-toc"><A HREF="#htoc64">B.3&nbsp;&nbsp;Copia literal</A>
+<LI CLASS="li-toc"><A HREF="#htoc65">B.4&nbsp;&nbsp;Copiado en cantidad</A>
+<LI CLASS="li-toc"><A HREF="#htoc66">B.5&nbsp;&nbsp;Modificaciones</A>
+<LI CLASS="li-toc"><A HREF="#htoc67">B.6&nbsp;&nbsp;Combinación de documentos</A>
+<LI CLASS="li-toc"><A HREF="#htoc68">B.7&nbsp;&nbsp;Colecciones de documentos</A>
+<LI CLASS="li-toc"><A HREF="#htoc69">B.8&nbsp;&nbsp;Agregación con trabajos independientes</A>
+<LI CLASS="li-toc"><A HREF="#htoc70">B.9&nbsp;&nbsp;Traducción</A>
+<LI CLASS="li-toc"><A HREF="#htoc71">B.10&nbsp;&nbsp;Terminación</A>
+<LI CLASS="li-toc"><A HREF="#htoc72">B.11&nbsp;&nbsp;Revisiones futuras de esta licencia</A>
+</UL>
+</UL>
+<!--TOC chapter Introducción a Bulmagés-->
+
+<H1 CLASS="chapter"><A NAME="htoc1">Capítulo&nbsp;1</A>&nbsp;&nbsp;Introducción a Bulmagés</H1><!--SEC END -->
+
+En los meses de Junio, Julio del 2001 surgió en la lista de distribución de Bulma (<A HREF="http://bulmalug.net"><TT>http://bulmalug.net</TT></A>), la idea de realizar programas de gestión para
+empresas. El objetivo era claro, hacer posible el uso de Linux en el día a día de una empresa. Para ello es preciso que las empresas cuenten con software de
+calidad que les permita abordar todas las tareas que ya tienen informatizadas.<BR>
+<BR>
+BulmaGés nació como un único programa de contabilidad. Esta fue escogida como primera candidata a ser implementada por los siguientes motivos:
+Es un programa aislado, que sólo influye a un departamento, no es vital para el funcionamiento de la empresa, no es necesario migrar todo el parque informático de
+la empresa para utilizar BulmaGes, basta con un ordenador.
+Los requisitos para un programa contable estan bien definidos y son prácticamente los mismos para cualquier empresa, con lo que el programa sería mayormente
+utilizado que cualquier otro candidato. 
+No existia ningún programa que atacase a la contabilidad, aun hoy dia existen muy pocas alternativas reales. Y la mayoria de los proyectos dedicados a ello han
+quedado olvidados. 
+Tras dos años de aparente inmovilidad del proyecto, por fin, en Noviembre de 2002 se empezó la codificación del programa.<BR>
+<BR>
+En el año 2004 se creó una asociación denominada iglues (www.iglues.org) que no sólo abarca la contabilidad, sino que engloba una serie de programas destinados a
+la gestión empresarial. BulmaGés pasa así a ser una herramienta completa que se subdivide en diferentes módulos de contabilidad (BulmaCont) Facturación
+(BulmaFact), TPV (BulmaTPV), etc.<BR>
+<BR>
+Cada uno de estos módulos están pensados para funcionar de forma conjunta, si bien pueden funcionar cada uno por separado sin necesitar la instalación o ejecución
+de los demás salvo en los casos lógicos<BR>
+<BR>
+<!--TOC chapter Instalación de Bulmagés-->
+
+<H1 CLASS="chapter"><A NAME="htoc2">Capítulo&nbsp;2</A>&nbsp;&nbsp;Instalación de Bulmagés</H1><!--SEC END -->
+
+<!--TOC section Instalación Rapida-->
+
+<H2 CLASS="section"><A NAME="htoc3">2.1</A>&nbsp;&nbsp;Instalación Rapida</H2><!--SEC END -->
+
+<UL CLASS="itemize"><LI CLASS="li-itemize">
+El primer paso para instalar un programa es descargarlo. Puede obtener un archivo tgz con todos los archivos necesarios para el programa en 
+<A HREF="https://developer.berlios.de/project/showfiles.php?group_id=4472"><TT>https://developer.berlios.de/project/showfiles.php?group_id=4472</TT></A>
+<LI CLASS="li-itemize">A continuación descomprima el archivo tgz en un directorio
+<LI CLASS="li-itemize">Ejecute como root el script de instalación install-bulmages 
+<LI CLASS="li-itemize">Compruebe que el directorio /usr/local/bin se encuentra en el path. 
+<LI CLASS="li-itemize">Para arrancar el programa basta con escribir bulmages. 
+</UL>
+Para el correcto funcionamiento del programa se requiere:
+<UL CLASS="itemize"><LI CLASS="li-itemize">
+postgresql <SUP><A NAME="text1" HREF="#note1">1</A></SUP>
+<LI CLASS="li-itemize">libpq 
+</UL>
+<!--TOC section Instalación Manual-->
+
+<H2 CLASS="section"><A NAME="htoc4">2.2</A>&nbsp;&nbsp;Instalación Manual</H2><!--SEC END -->
+
+En este punto se detallará todos los requisitos necesarios para poner en funcionamiento el programa, sin necesidad de utilizar el script de instalación. De esta
+forma, será más fácil comprender los componentes del programa.<BR>
+<BR>
+Esta instalación es un poco más laboriosa, pero permite tener mayor control sobre los componentes de la aplicación. No es precios ejecutar el script de
+instalación installbulmages para que funcione, pero si lo es tener acceso de root en la máquina en la que se vaya a instalar el programa.<BR>
+<BR>
+<!--TOC subsection Instalacion de los servicios-->
+
+<H3 CLASS="subsection"><A NAME="htoc5">2.2.1</A>&nbsp;&nbsp;Instalacion de los servicios</H3><!--SEC END -->
+
+Supondremos que tenemos el servidor de postgresql instalado y correctamente configurado. Para instalar las bases de datos requeridas para que funcione Bulmagés
+podemos acceder al directorio dbmodels y buscar en ella tres archivos de bases de datos (pgdump). Si nuestro usuario no esta dado de alta en postgres podemos
+hacerlo mediante el comando (supondremos que el usuario tborras no tiene permisos para acceder a bases de datos de postgres):
+<PRE CLASS="verbatim">
+/root/:# su postgres
+/home/postgres:$ createuser tborras
+</PRE>
+El primer comando hace que el sistema entre en la cuenta de superusuario de postgres, de esta forma podemos ejecutar comandos en la base de datos. El segundo
+comando crea el usuario tborras, para que pueda acceder a la base de datos.<BR>
+<BR>
+Tras estos dos comandos se nos harán algunas preguntas sobre si queremos que nuestro usuario pueda crear nuevas bases de datos (Responderemos que SI).<BR>
+<BR>
+Hecho esto ya podemos crear las bases de datos del programa mediante los comandos :
+<PRE CLASS="verbatim">
+/home/tborras:$ createdb bulmages
+/home/tborras:$ createdb metabd
+/home/tborras:$ createdb bgplangcont
+
+</PRE>
+Si todo ha funcionado bien el sistema nos devolverá el mensaje CREATE DATABASE indicando que la base de datos ha sido creada.<BR>
+<BR>
+Luego podemos volcar los datos que se suministran con la instalacióndel programa 
+<PRE CLASS="verbatim">
+/home/tborras:$ psql bulmages &lt; bulmages.pgdump
+/home/tborras:$ psql metabd &lt; metabd.pgdump
+/home/tborras:$ psql bgplangcont &lt; bgplangcont.pgdump
+</PRE>
+Estos comandos deben generar bastante salida en pantalla. Si todo ha ido correctamente, y no ha salido ningun mensaje de error, en el sistema estarán creadas las
+bases de datos que va a utlizar el programa.<BR>
+<BR>
+Si se ha producido algún error, o queremos volver a instalar siempre podemos borrar la base de datos con el comando:
+<PRE CLASS="verbatim">
+/home/tborras:$ dropdb bulmages
+/home/tborras:$ dropdb metabd
+/home/tborras:$ dropdb bgplangcont
+</PRE>
+Le recomendamos que la el manual de referéncia de postgreSQL (<A HREF="http://www.postgresql.org"><TT>http://www.postgresql.org</TT></A>) para más información sobre la administración de bases de datos.<BR>
+<BR>
+<!--TOC subsection Instalación del cliente de contabilidad-->
+
+<H3 CLASS="subsection"><A NAME="htoc6">2.2.2</A>&nbsp;&nbsp;Instalación del cliente de contabilidad</H3><!--SEC END -->
+
+Para instalar el cliente de contabilidad lo único que debemos hacer es copiar una serie de archivos en determinadas ubicaciones.
+<OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">
+Copiar bulmages.conf en el directorio etc/
+Este es el archivo de configuración del programa y debe tener permisos de lectura.<BR>
+<BR>
+<LI CLASS="li-enumerate">Copiar bulmages, borraremp, cargaemp, guardaemp y nuevaemp en /usr/local/bin
+Estos archivos son los ejecutables y deben tener permisos de ejecución. Además, el directorio /usr/local/bin debe estar en el PATH para que pueda ser ejecutado.<BR>
+<BR>
+<LI CLASS="li-enumerate">Copiar el resto de archivos en /usr/share/bulmages
+Estos son los archivos auxilares del programa y deben tener permisos de lectura.
+Es posible que la parte cliente y la parte servidor estén alojadas en distintas máquinas. Incluso pueden tener diversos clientes atacando a una misma base de
+datos. Para hacerlo, existen dos parámetros en el archivo /etc/bulmages.conf que indican a qué servidor de bases de datos ha de dirigirse el programa. Estos
+parámetros son CONF_SERVIDOR y CONF_PUERTO, donde se puede indicar a qué servidor de bases de datos y puerto de conexión debe realizar el programa las
+peticiones de base de datos.
+</OL>
+<!--TOC subsection Configuración del motor de bases de datos PostgreSQL-->
+
+<H3 CLASS="subsection"><A NAME="htoc7">2.2.3</A>&nbsp;&nbsp;Configuración del motor de bases de datos PostgreSQL</H3><!--SEC END -->
+
+La mayor complicación que puede surgir con el programa es la correcta instalación de las bases de datos.<BR>
+<BR>
+<!--TOC subsubsection Permisos de los usuarios-->
+
+<H4 CLASS="subsubsection">Permisos de los usuarios</H4><!--SEC END -->
+
+Postgres trabaja con diversos métodos de autentificación. Estas opciones se configuran en el archivo pg_hba.conf. Esta es la principal causa de problemas en la
+instalación del programa. (En Debian este archivo se encuentra en el directorio /etc/postgresql/)
+La opción de autentificación trust permite que todos los usuarios tengan acceso a la base de datos. De esta forma no habrña problemas con los rama funcionará
+correctamente.
+La opción de autentificación ident sameuser sólo permite el acceso a la base de datos a aquellos usuarios que han sido creados previamente. Esta opción es más
+segura ya que sólo los usuarios que tengan cuenta en el ordenador tendrán acceso a la base de datos. Para utilizar Bulmagés con este modelo es importante
+asegurarse de que los usuarios que van a usar el programa están dados de alta en la base de datos. Para ello se puede utilizar el comando:
+<PRE CLASS="verbatim">
+/home/postgres:$ create user xxxxxxxx
+
+</PRE>
+donde xxxxxxxxx es el login del usuario al que se le otorgan permisos de acceso a la base de datos.<BR>
+<BR>
+<!--BEGIN NOTES chapter-->
+<HR WIDTH="50%" SIZE=1><DL CLASS="list"><DT CLASS="dt-list"><A NAME="note1" HREF="#text1"><FONT SIZE=5>1</FONT></A><DD CLASS="dd-list">Revise el apartado de Configuración del Motor de la Base de Datos PostgreSQL de esta misma sección para comprobar que la base de datos
+está correctamente instalda.
+</DL>
+<!--END NOTES-->
+<!--TOC chapter El selector de Bulmagés-->
+
+<H1 CLASS="chapter"><A NAME="htoc8">Capítulo&nbsp;3</A>&nbsp;&nbsp;El selector de Bulmagés</H1><!--SEC END -->
+
+<!--TOC section Inicio del selector-->
+
+<H2 CLASS="section"><A NAME="htoc9">3.1</A>&nbsp;&nbsp;Inicio del selector</H2><!--SEC END -->
+
+Al iniciar BulmaGés, aparece un selector que permite seleccionar qué módulo utilizar. BulmaGés incluye, actualmente, dos módulos propios y operativos, BulmaCont,
+programa de contabilidad, y BulmaFact, programa de Facturación.
+BulmaGés no precisa instalar todas las aplicaciones que lo componen para funcionar ya que son independientes en ejecución. Pero si se utiliza con todos sus
+módulos, BulmaGés los coodina para compartir y traspasar datos automáticamente de unos a otros. Por ejemplo, la emisión de facturas en BulmaFact convertirse en
+entradas en asientos contables de BulmaCont, con lo que no habría que repetir el proceso manualmente.<BR>
+<BR>
+El Selector permite seleccionar la empresa con la cual se desea trabajar. Recordemos que BulmaCont es multiempresa y multiusuario, por lo que puede contener
+diferentes ejercicios y empresas operativos y almacenados. <BR>
+<BR>
+El selector siempre permanece en segundo plano minetras ejecuta cualquier aplicación de BulmaGés, de forma que siemrpe puede trabajar con él para abrir nuevas
+aplicaciones o nuevas sesiones dentro de estas. Si no desea mantener abierto el selector puede cerrarlo pulsando sobre el ?aspa? de la ventana que lo contiene (en
+la esquina superior derecha). Puede seguir trabajando normalmente con cualquiera de las aplicaciones sin necesidad de mantener el selector en segundo plano. Para
+volver a mostrarlo, buelva a ejecutar BulmaGés.
+Si pulsa sobre cualquier de las opciones disponibles (actualmente sólo BulmaCont y BulmaFact) entrará en la empresa por defecto del programa, habitualmente la
+empresa principal en el ejercicio en curso. 
+Para abrir una empresa diferente, o la misma empresa en otro ejercicio, debe pulsar sobre el icono de la ?fábrica? siatuado en la parte inferior izquierda del
+selector. Aparecerá una pantalla que incluye el nombre que se le haya proporcionado a la empresa, el ejercicio fiscal al que se refiere y el nombre del archivo en
+el cual se guardan los datos relativos al ejercicio en curso. 
+Todo esto será posible siempre que la empresa que se vaya a seleccionar haya sido creada anteriormente. Puede cambiar de empresa tantas veces como desee siempre
+que no esté a la mitad del proceso de introducción de datos.
+También es posible cambiar el usuario mediante esta ventana, iniciando así una nueva sesión en el programa con permisos diferentes sin necesidad de tener que
+cerrar y abrir la aplicación de nuevo.
+Si desea cambiar de empresa mientras está ejecutando BulmaCont sólo tiene que cerrar la aplicación y volver al selector para seleccionar un usuario o empresa
+diferentes.<BR>
+<BR>
+Para comenzar a utilzar BulmaCont es imprescindible abrir una empresa. BulmaCont incluye por defecto un plan contable estándard y una empresa de pruebas.
+El programa preguntará por defecto el login y el password del usuario, si es que se han creado varios en su instalación, o cogerá el usuario por defecto si sólo
+se ha creado uno.<BR>
+<BR>
+<!--TOC section Configuración de bulmagés en el selector-->
+
+<H2 CLASS="section"><A NAME="htoc10">3.2</A>&nbsp;&nbsp;Configuración de bulmagés en el selector</H2><!--SEC END -->
+
+Mediante el icono de la ?llave inglesa? situado en la parte inferior izquierda del selector se puede acceder a los parámetros de configuración de BulmaGés y a las
+acciones más importantes con respecto a la gestión de empresas introducidas en cada uno de los programas que lo conforman.<BR>
+<BR>
+<!--TOC section Opciones de aplicación-->
+
+<H2 CLASS="section"><A NAME="htoc11">3.3</A>&nbsp;&nbsp;Opciones de aplicación</H2><!--SEC END -->
+
+El Selector contiene una pestaña por cada aplicación que incluye (BulmaCont, BulmaFact, etc.) Dentro de cada una de ellas puede encontrar las siguientes opciones:<BR>
+<BR>
+<!--TOC subsubsection Nuevo ejercicio-->
+
+<H4 CLASS="subsubsection">Nuevo ejercicio</H4><!--SEC END -->
+
+Mediante esta opción se crea el asiento de cierre de la empresa seleccionada asignándole un número de ejercicio correlativo en función del año en curso. El
+programa genera, también el asiento de apertura de este nuevo ejercicio con los datos pre-existentes.
+Es posible generar tantos asientos de cierre y de apertura como se desee durante el ejercicio contable.<BR>
+<BR>
+<!--TOC subsubsection Hacer copia de seguridad-->
+
+<H4 CLASS="subsubsection">Hacer copia de seguridad</H4><!--SEC END -->
+
+Permite hacer una copia de seguridad de la empresa activa. La totalidad de los datos introducidos hasta el momento en la base de datos de esa empresa se guardarán
+en un archivo en la ubicación que se indique.<BR>
+<BR>
+<!--TOC subsubsection Restaurar copia de seguridad (<I>restore</I>)-->
+
+<H4 CLASS="subsubsection">Restaurar copia de seguridad (<I>restore</I>)</H4><!--SEC END -->
+
+Opción para restaurar una copia de seguridad realizada anteriormente de la empresa seleccionada. Esta opción también puede servir para importar los datos de una
+empresa almacenados en archivo.<BR>
+<BR>
+<!--TOC subsubsection Crear nueva empresa-->
+
+<H4 CLASS="subsubsection">Crear nueva empresa</H4><!--SEC END -->
+
+Permite añadir una nueva empresa con su correspondiente ejercicio contable. 
+Al crear una nueva empresa, el programa solicita el nombre de la empresa, el nombre del archivo de la base de datos que la va a contener y el ejercicio contable
+en el que se va a operar.
+En la misma ventana se pueden asignar los diferentes usuarios que tienen permisos de acceso a la empresa y los tipos de permisos que poseen (lectura o
+modificación).
+La creación de una empresa implica la creación de una base de datos nueva. Por lo tanto, el usuario que ejecuta el programa debe tener privilegios para crear
+bases de datos en postgres.<BR>
+<BR>
+<!--TOC subsubsection Borrar empresa-->
+
+<H4 CLASS="subsubsection">Borrar empresa</H4><!--SEC END -->
+
+Le permite borrar una empresa existente de forma definitiva, incluyendo todos los datos que se hayan introducido hasta el momento.
+Para borrar una empresa primero es necesario seleccionar la empresa que se desee eliminar. Una vez usada esta opción, la empresa queda borrada automáticamente.<BR>
+<BR>
+<!--TOC section Parámetros del selector-->
+
+<H2 CLASS="section"><A NAME="htoc12">3.4</A>&nbsp;&nbsp;Parámetros del selector</H2><!--SEC END -->
+
+La sección de parámetros define las características de muchas de las opciones que ofrece el programa. Para más información sobre este tema, consulte al final del
+manual el ANEXO I: EL ARCHIVO DE CONFIGURACIÓN BULMAGES.CONF (PARÁMETROS DEL SELECTOR)<BR>
+<BR>
+<!--TOC chapter Primeros pasos en bulmacont-->
+
+<H1 CLASS="chapter"><A NAME="htoc13">Capítulo&nbsp;4</A>&nbsp;&nbsp;Primeros pasos en bulmacont</H1><!--SEC END -->
+
+<!--TOC section Ejecución del programa bulmacont-->
+
+<H2 CLASS="section"><A NAME="htoc14">4.1</A>&nbsp;&nbsp;Ejecución del programa bulmacont</H2><!--SEC END -->
+
+Una vez que el programa está correctamente configurado, el siguiente paso es ejecutarlo. El programa se ejecuta mediante la orden bulmages. <BR>
+<BR>
+<!--TOC section Primeros pasos con el programa-->
+
+<H2 CLASS="section"><A NAME="htoc15">4.2</A>&nbsp;&nbsp;Primeros pasos con el programa</H2><!--SEC END -->
+
+<!--TOC subsection Introducción al programa-->
+
+<H3 CLASS="subsection"><A NAME="htoc16">4.2.1</A>&nbsp;&nbsp;Introducción al programa</H3><!--SEC END -->
+
+BulmaGés es un proyecto dedicado a resolver la tarea de la contabilidad en la empresa de una forma sencilla y elegante y siempre bajo el punto de vista del
+Software Libre.
+El programa está diseñado pensando el el usuario final. Intenta que la mayoría de las tareas de contabilidad sean completamente accesibles y fáciles de llevar a
+término mediante un sistema muy intuitivo de utilización.
+BulmaGést ofrece una interface amigable y totalmente configurable con la cual se pretende facilitar la compresión del programa, facilitar el entorno de trabajo y
+confundir lo menos posible al usuario, permitiendo que opciones susceptibles de no ser utilizadas puedan desaparecer de la pantalla. 
+Al mismo tiempo, BulmaGés realiza todas las tareas propias de un programa de Contabilidad que podrían surgir en una empresa, sin importar su tamaño o la gestión
+que realizen. El objetivo es que el programa sea lo más completo posible, para que luego el usuario final decida qué quiere utilizar y qué no, pero sin prescindir
+de ninguna opción en el resultado final.<BR>
+<BR>
+<!--TOC subsection Pantalla principal-->
+
+<H3 CLASS="subsection"><A NAME="htoc17">4.2.2</A>&nbsp;&nbsp;Pantalla principal</H3><!--SEC END -->
+
+La pantalla principal de BulmaCont le ofrece, en su parte superior, las opciones generales del programa en dos modalidades: el menú principal y la barra de acceso
+rápido inferior. Dentro de la pantalla general se abren las pantallas correspondientes a las opciones específicas del programa. Por ejemplo, la pantalla de
+Apuntes Contables o la Gestión de Asientos, etc.)
+Al iniciar una sesión de trabajo en una empresa seleccionada en BulmaGés aparece la pantalla principal por defecto con las siguientes subpantallas abiertas:<BR>
+<BR>
+BALANCE DE CUENTAS
+INTRODUCCIÓNN DE APUNTES CONTABLES
+LIBRO DIARIO DE APUNTES
+LIBRO MAYOR o EXTRACTO DE CUENTAS
+BALANCE JERÀRQUICO.<BR>
+<BR>
+<!--TOC subsection Propiedades de empresas-->
+
+<H3 CLASS="subsection"><A NAME="htoc18">4.2.3</A>&nbsp;&nbsp;Propiedades de empresas</H3><!--SEC END -->
+
+Es la primera opción del menú superior (representada con un icono de ?llave inglesa?)<BR>
+<BR>
+Permite consultar y modificar los parámetros especificados para la empresa activa (con la que se ha ejecutado el programa).<BR>
+<BR>
+Mediante esta pantalla se pueden cambiar parámetros de configuración de la empresa como sus datos fiscales, el número de dígitos que por defecto tienen las
+cuentas de esa empresa la cuenta por defecto de regularización y, muy importante, los permisos que tienen los usuarios del programa sobre esa empresa. <BR>
+<BR>
+<!--TOC chapter Tareas habituales-->
+
+<H1 CLASS="chapter"><A NAME="htoc19">Capítulo&nbsp;5</A>&nbsp;&nbsp;Tareas habituales</H1><!--SEC END -->
+
+<!--TOC section El plan contable-->
+
+<H2 CLASS="section"><A NAME="htoc20">5.1</A>&nbsp;&nbsp;El plan contable</H2><!--SEC END -->
+
+En esta pantalla puede ver, modificar y borrar todas las cuentas y subcuentas del Plan Contable de la empresa. Puede acceder a ella mediante el icono de acceso
+rápido representado con los signos de + - x y ·/. o a través del menú ?ventana? en ?plan contable?.<BR>
+<BR>
+El plan de cuentas muestra el plan contable con el que trabaja la empresa activa. BulmaCont se suministra con el Nuevo Plan Contable Básico por defecto, pero
+ofrece la posibilidad de moficiarlo y personalizarlo. De esta forma, cada empresa puede operar con un plan contable personalizado y totalmente adaptado.
+La pantalla presenta dos pestañas: 
+En la primera (Plan Contable) se pueden ver las cuentas de la empresa en diagrama de árbol. 
+En la segunda (Subcuentas) aparece un listado de las subcuentas pertenecientes a esa empresa.
+Para crar una nueva cuenta basta con pulsar el botón de ?nuevo?. Si al realizar esta opción se ha seleccionado previamente una cuenta principal, la cuenta creada
+se colocará automáticamente como subcuenta o ?cuenta hija? de dicha cuenta principal.
+Puede editar cualquier cuenta haciendo doble click sobre ella. También puede editarla selecionándola y pulsando después sobre el botón ?editar?.
+Para borrar una cuenta, seleccionelá y pulse el botón ?eliminar?. Si dicha cuenta contiene subcuentas, no podrá borrarla ya que es necesario borrar las cuentas
+inferiores previamente. Tampoco podrá borrar cuentas que tengan partidas anotadas sin haber traspasado esas partidas con anteiroridad.<BR>
+<BR>
+<!--TOC section Edición de cuentas-->
+
+<H2 CLASS="section"><A NAME="htoc21">5.2</A>&nbsp;&nbsp;Edición de cuentas</H2><!--SEC END -->
+
+Al crear una cuenta nueva o editar una cuenta existente, aparece la ventana de la imagen superior. En ella se muestran los datos de la cuenta.<BR>
+<BR>
+La pestaña Otros Datos contiene información adicional de la cuenta, como cuentas bancarias, nombres, CIF, -mails i datos de contacto que puedan ser útiles en la
+gestión de la contabilidad.
+<!--TOC section Asientos / Introducción de apuntes-->
+
+<H2 CLASS="section"><A NAME="htoc22">5.3</A>&nbsp;&nbsp;Asientos / Introducción de apuntes</H2><!--SEC END -->
+
+Esta pantalla permite la introducción de asientos y apuntes contables.<BR>
+<BR>
+La gestión de asientos es una de las partes principales del programa ya que los datos que se introducen son los que proporcionan después la visión exacta de la
+contabilidad. Es a partir de estos datos de los cuales BulmaCont obtiene la información necesaria para elaborar los diferentes informes o listados. Por ejemplo,
+el listado del diario o el libro de mayor.
+La pantalla de introducción de asientos se abre por defecto, al iniciar el programa, en el último asiento introducido. De esta forma se facilita la insercciñon de
+asientos siguiendo un orden correlativo.
+En el caso de que no haya ningún asiento introducido previamente (por ejemplo, una empresa recién creada) BulmaCont abrirá la Gestión de Asientos en el número uno
+(1).
+Para modificar un asiento existente habrña que comenzar buscar ese asiento y abrirlo mediante el botón de ?abrir asiento? con forma de candado abierto. El fondo
+de la pantalla pasará de ser coloreado a ser blanco, lo que indica que se pueden modificar los datos existentes.
+Para introducir un asiento nuevo, partiendo de un asiento previamente cerrado, puede hacerse mediante un click en el botón de ?nuevo? o bien pulsando el botón
+?siguiente? (dibujado con una flecha hacia la derecha). Si se escoge esta última opción, BulmaCont detectará que se desea consultar un asiento con orden
+correlativo al anterior que, evidentemente no existe, y le infromará de que ?No existe un asiento con el número que ha proporcionado, ¿desea crear uno?? Esto
+significa que el programa creará un nuevo asiento con el número inmediatamente posterior al último creado. Este nuevo asiento aparece abierto (con el fondo
+blanco) para que directamente se pueda comenzar a introducir datos.<BR>
+<BR>
+La introducción de asientos se puede realizar mediante la introducción libre de los datos directamente en la pantalla principal. Para agilizar el proceso, el
+programa permite cambiar de un campo a otro con el teclado y sin necesidad de recurrir al uso del ratón.
+BulmaCont le ofrece también la posibilidad de introducir los asientos en dos modalidades diferentes:
+Los Asientos Simples consisten en insertar los datos en el programa apunte por apunte, rellenando todos los campos a mano, aunque BulmaCont ofrece la opción de
+copiar cantidades o descripciones ya introducidas (con la tecla *) y de cuadrar automáticamente las cantidades introducidas.
+De la misma forma, si pulsa la tecla con el símbolo "/" en el teclado numérico el programa salda automáticamente la cuenta.
+Los Asientos Inteligentes o Predefinidos son aquellos que, habiendo establecido con anterioridad sus propiedades, facilitan la introducción de asientos
+repetitivos o usuales en la contabilidad, como por ejemplo pagos mensuales a acreedores, gestiones habituales con el banco, etc. Pueden crearse tantos asientos
+inteligentes como se desee estableciendo los valores que considere oportunos para cada uno de ellos.
+Hay diversos parámetros de esta ventana que son configurables a través del archivo de configuración del programa (vea la sección bulmages.conf). Puede cambiar la
+tipografía y los colores de la fuente y elegir si mostrar o no determinados campos.<BR>
+<BR>
+<!--TOC section Navegación a través del sistema de asientos-->
+
+<H2 CLASS="section"><A NAME="htoc23">5.4</A>&nbsp;&nbsp;Navegación a través del sistema de asientos</H2><!--SEC END -->
+
+Puede navegar a través de los asientos introducidos mediante los botones de flecha en el toolbar (barra de herramientas). De esta forma puede acceder al asiento
+siguiente y anterior y al primer y último asiento según el orden numérico de creacción. Si presiona cualquiera de estos botones estando en un asierto abierto (con
+el fondo blanco) el programa evaluará si puede cerrarlo antes de navegar a otro asiento. Aparecerá un mensaje en pantalla que le informe que el asiento actual
+está abierto y solicitándole el permiso para cerrarlo. En el caso de que el asiento esté incompleto o descuadrado, el programa lo dejará abierto para su posterior
+edición y cierre. Puede dejar tantos asientos abiertos como desee.<BR>
+<BR>
+También puede ir a un asiento determinado escribiendo su número en la parte superior de la pantalla, donde se muestra el número de asiento actual, y presionando
+?enter?.<BR>
+<BR>
+<!--TOC subsection Filtrado de asientos-->
+
+<H3 CLASS="subsection"><A NAME="htoc24">5.4.1</A>&nbsp;&nbsp;Filtrado de asientos</H3><!--SEC END -->
+
+Puede interesarle trabajar con una serie de asienteos que contengan unas características determinadas. Puede ser que su trabajo sea más sencillo si mediante la
+navegación sólo se muestran aquellos asientos que cumplan un criterio específico, como una cantidad determinada en el haber o la pertenencia a una cuenta
+concreta. Para ello, puede establecer un filtro que haga que sólo se presenten los asientos que cumplan determinadas caracterísitcas pulsando sobre el boón con el
+dibujo del embudo situado en la barra de herramientas.<BR>
+<BR>
+Inmediatamente aparaecerá la ventana reflejada en el dibujo superior que le permite determinar los criterios del filtro. Los dos iconos situados en la parte
+superior izquierda le permiten seleccionar los Canales y los Centros de Coste, respectivamente.
+Si tiene un filtro activado y desea quitarlo, en esta ventana tiene un botón de reset que desactiva todos los parámentros del filtro y muestra de nuevo todos los
+asientos existentes.<BR>
+<BR>
+<!--TOC subsection Orden de asientos-->
+
+<H3 CLASS="subsection"><A NAME="htoc25">5.4.2</A>&nbsp;&nbsp;Orden de asientos</H3><!--SEC END -->
+
+BulmaCont asigna números correlativos a los asientos según se van creando, pero este número puede alterarse manualmente, bien porque se cambie el número de
+determinados asientos, bien porque se borren asientos previamente introducidos. Mediante esta opción, que encontrará en el menú Asientos, el programa reordena
+todos los asientos existentes por la fecha, de forma que vuelvan a estar en orden correlativo y no queden números intermedios sin asignar.<BR>
+<BR>
+<!--TOC subsection Asientos de apertura-->
+
+<H3 CLASS="subsection"><A NAME="htoc26">5.4.3</A>&nbsp;&nbsp;Asientos de apertura</H3><!--SEC END -->
+
+Para crear un Asiento de Apertura manualmente, debe dirigirse a la ventana de Introducción de Asientos y abrir un asiento. Con éste en blanco, diríjase al menú
+del programa y, en el apartado de Asientos, seleccione la opción Asiento de Apertura. Sólo podrá realizar esta acción si ha insertado, primero, un asiento de
+cierre.<BR>
+<BR>
+<!--TOC subsection Asientos de cierre-->
+
+<H3 CLASS="subsection"><A NAME="htoc27">5.4.4</A>&nbsp;&nbsp;Asientos de cierre</H3><!--SEC END -->
+
+Para crear un Asiento de Cierre manualmente, debe dirigirse a la ventana de Introducción de Asientos y abrir un asiento. Con éste en blanco, diríjase al menú del
+programa y, en el apartado de Asientos, seleccione la opción Asiento de Cierre. El programa generará automáticamente el asiento.<BR>
+<BR>
+<!--TOC subsection Asientos simples-->
+
+<H3 CLASS="subsection"><A NAME="htoc28">5.4.5</A>&nbsp;&nbsp;Asientos simples</H3><!--SEC END -->
+
+Para introucir asientos simples tan sólo en necesario abrir un asiento existente o crear un nuevo asiento como se ha explicado en el apartado anteior.
+Una vez que el programa le deja modificar / introducir datos, la pantalla que muestra el asiento presenta todos los apuntes que componen el mismo en forma de
+filas de una tabla. Cada fila se corresponde a un apunte.<BR>
+<BR>
+Cada apunte se compone de los siguientes campos:<BR>
+<BR>
+FECHA:
+La fecha del apunte indica la fecha en que se realiza la transacción económica. BulmaCont pone por defecto la fecha del día en que se encuentra, pero puede
+cambiarse sin problemas. Las fechas, al contrario que el número de asiento, no tiene por qué ser correlativas. La fecha puede introducirse de las siguientes
+formas: 
+- Escribiendo la fecha en cualquiera de los siguientes formatos: DDMMAA, DDMM, DDMMAAAA, DD/MM/AA, DD/MM/AAAA, donde D es Día, M corresponde a Mes y A al año. Al
+pulsar ?enter? (después de haber introducido la fecha) se cambia el formato de fecha al formato estándar DD/MM/AAAA.
+- Otra forma de introducir la fecha es pulsando la tecla + al editar este campo. Automáticamente aparece una ventana con un calendario en el que podrá seleccionar
+la fecha deseada. Esta misma opción aparece al pulsar con el botón derecho del ratón sobre la fecha y seleccionando en el menú contextual la opción ?Seleccionar
+Valor? <BR>
+<BR>
+Por último, también puede establecer la fecha pulsando, al editar este campo, la tecla * BulmaCont colocará en este lugar el mismo valor que el campo de datos de
+la línea anterior.<BR>
+<BR>
+CUENTA O SUBCUENTA:
+La introducción de cuentas puede hacerse de diversas formas : 
+Escribiendo el número completo de cuenta mediate el teclado. También puede introducir la cuenta de forma abreviada utilizando la tecla punto (.). La cuenta
+1000004 puede introducirse de la forma "1.4," y la cuenta 1000000 se escribirá "1." El sistema convertirá ese punto en el número de dígitos que se usen por
+defecto en la contabilidad de la empresa (establecido en el apartado de Propiedades de Empresa).
+Otra forma de introducir cuentas es pulsando la tecla + o la opción elegir valor en el menú contextual. Directamente aparecerá la ventana del plan de cuentas, con
+la excepción de que al hacer doble click sobre una cuenta, esta apareceráen la casilla que se está editando.
+Editando el campo de subcuenta, si pulsa sobre la tecla * automáticamente se trasladará al campo que está edianto el mismo valor que en la línea anterior. (Note
+que las teclas seleccionadas sirven para realizar la introducción de apunters sin necesidad de dejar de utilizar el apartado de teclado numérico de su teclado).
+Si lo desea, puede accerder de forma rápida al extracto de una subcuenta que esté visualizando en la ventana de apuntes. Para ello el asiento debe estar cerrado
+(botón con candado). Pulsando el botón derecho sobre la cuenta de la que quiera ver su extracto puede seleccionar la opción ver extracto. Además, el programa le
+permite escoger entre ver un extracto total, un extracto del mes en que está introduciendo el apunte o un extracto del día de introducción del apunte.<BR>
+<BR>
+CONTRAPARTIDA:
+(Puede ser que por su configuración del programa no aparezca el campo de contrapartida. Vea la sección bulmages.conf)
+La introducción de contrapartida es similar en funciones a la introducción de subcuentas. 
+La contrapartida es semi-automática, el programa siempre elige, de forma inteligente una contrapartida para todo apunte introducido, puede ver esta contrapartida
+a través de un extracto o un diario. Puede darse el caso de que la contrapartida elegida por el programa no sea la apropiada. En este caso, puede introducir la
+contrapartida correcta en el asiento mediante este campo. El programa siempre le dará preferencia a la contrapartida que haya introducido a mano.<BR>
+<BR>
+DEBE / HABER:
+Puede introducir directamente un valor en el campo de Debe o de Haber, pero solamente en uno de ellos, el otro ha de valer obligatoriamente cero.
+Si pulsa la tecla + en uno de estos dos campos el valor de descuadre del asiento será asignado a este campo.
+Si pulsa la tecla * el campo presentará el mismo valor que el campo anteriormente introducido.<BR>
+<BR>
+CONCEPTO:
+El concepto es una descripción del apunte, no tiene más que introducir un texto explicativo del mismo. (De momento en este texto no están permitidas las teclas *
+y +).
+Si pulsa la tecla * al editar este campo, el campo pondrá el mismo valor que el de su predecesor.<BR>
+<BR>
+IVA:
+La introducción del IVA debe realizarse mediante el botón IVA y, normalmente, se hace de forma automática al cerrar el asiento. Este campo aparece aquí para
+indicar que ese apunte lleva asociada una entrada en el registro de IVA. El valor que aparece indica el porcentaje de IVA correspondiente. En España los valores
+enstándares son 0, 4, 7 y 16Puede editar los tipos de IVA aplicables en el menú del programa, en la opción Ventana, Tipos de IVA.<BR>
+<BR>
+CENTRO DE COSTE:
+Los Centros de Coste se utilizan para estructurar jerárquicamente la empresa en diversas unidades, para conseguir un cotrol contable independiente de cada una de
+las partes que la componen. Esta opción sólo estará disponible si lo ha especificado así en la configuración de BulmaCont.
+Puede editar los Centros de Coste en el menú del programa, en la opción Ventana, Centros de Coste.<BR>
+<BR>
+CANAL:
+El Canal es el mismo concepto que el de Centros de Coste pero con estructuración no jerárquica de empresas. Sólo podrá trabajar con esta opción si lo ha
+especificado así en la configuración del programa.
+Puede editar los Canales en el menú del programa, en la opción Ventana, Canales.<BR>
+<BR>
+El orden de los apuntes en el asiento puede ser alterados mediante la combinación de teclas CTRL + ARRIBA Y CTRL + ABAJO De esta forma, puede subir o bajar un
+apunte determinado. (También dispone de esta opción en el menú contextual que aparece al pulsar el botón derecho del ratón sobre el apunte)
+Puede darse la posibilidad de que necesite borrar la totalidad de un apunte determinado. Para ello, pulse con el botón derecho del ratón sobre él y seleccione la
+opción de borrar apunte.
+En determinados casos tamibén es útil duplicar apuntes. Para ello también dispone de una opción en el menú contextual.
+Es recomendable rellenar todos los datos que solicita el apunte para que, posteriormente, pueda comprender mejor los listados e informes que puede proporcionarle
+el programa.
+Si después de cerrar el asiento desea moificarlo, puede hacerlo volviendo a abrirlo con el botón de ?Abrir Asiento? representado por un candado abierto.
+En el caso de que el asiento quede descuadrado, el programale avisará cuando intente cerrar el asiento con un mensaje que le permitirá volver a la edición del
+asiento o bien guardarlo abierto para volver a él más adelante. Los asiento abiertos no se reflejan en los listados contables. Por este motivo es recomendable no
+utilizar esta opción a no ser que sea por un motivo específico, ya que en este caso los resultados que muestre BulmaCont no siempre serán reales. 
+BulmaCont le permite añadir a cada asiento tantos apuntes como considere necesarios siempre que el resultado final quede cuadrado.
+Puede ser que desee cambiar la fecha de un asiento ya introducido o escribir algún comentario sobre ese asiento (como la referencia o informaicón acerca del pago)
+o incluso cambiar el número de asiento. Para ello disopone de la ventana de edición de asientos a la que se accede mediante el botón representado con un folio y
+un lápiz. <BR>
+<BR>
+Con esta opción aparecerá la siguiente ventana de edición de asientos que le permite cambiar todas estas opciones.<BR>
+<BR>
+BulmCont dispone de un listado rápido de asientos. Con este listado puede ver todos los asientos introducidos en el sistema de forma rápida, si están abiertos o
+cerrados e incluso el slado deudor y acreedor de los mismos. Este listado puede ser útil a la hora de verificar el sistema contable. Puede acceder a él mediante
+el botón representado por un asiento o sillón.<BR>
+<BR>
+<!--TOC section Libro mayor-->
+
+<H2 CLASS="section"><A NAME="htoc29">5.5</A>&nbsp;&nbsp;Libro mayor</H2><!--SEC END -->
+
+Mediante el icono representado con el signo ?&gt;? el programa muestra el Libro Mayor y permite la posibilidad de listar los apuntes de las cuentas y subcuentas
+existentes en la base de datos del programa.<BR>
+<BR>
+En el extracto hay cuatro parámetros básicos que lo delimitan:<BR>
+<BR>
+Cuenta Inicial: La cuenta incial a partir de la cual se quiere comenzar el extracto.
+Cuenta Final: La cuenta que supondrá el final del listado del extracto.
+Fecha Inicial: Fecha inicial de los apuntes a mostrar
+Fecha Final: Fecha final a partir de la cual no se mostrarán más apuntes.<BR>
+<BR>
+Una vez introducidos los cuatros datos básicos, el extracto mostrará los apuntes referentes a cada una de las cuentas referidas. Puede navegar entre las cuentas
+mediante los botones de navegación (representados con flechas) de la barra de herramientas, accediendo ala cuenta siguiente, la cuenta anterior, la primera y la
+última cuenta.
+Si quiere actualizar la información dispone del ?botón actualizar? (representado por dos flechas en sentido circular)
+Para cada cuenta del extracto se muestra primero una información preliminar como es el código de la cuenta o su nombre y el debe, el haber y el saldo que tenía
+antes de la fecha inicial. 
+Después, en forma de tabla, se presenta información detallada con los diferentes apuntes introducidos en la contabilidad durante el periodo seleccionado y
+ordenados por la fehca del apunte.
+Al final aparecen el debe, el haber y el saldo de la cuenta en la fecha final.<BR>
+<BR>
+Los campos que aparecen son: fecha, número de asiento, descripción, contrapartida, debe, haber, saldo, centro de coste y el canal. En su versión del programa
+puede ser que no aparezcan todos los campos ya que la visualización es configurable mediante el archivo bulmages.conf (ver sección bulmages.conf).<BR>
+<BR>
+<!--TOC subsection Guardado e impresión de extractos-->
+
+<H3 CLASS="subsection"><A NAME="htoc30">5.5.1</A>&nbsp;&nbsp;Guardado e impresión de extractos</H3><!--SEC END -->
+
+Si necesita una copia de su extracto en un formato determinado, dispone del botón marcado con una impresora que hará que aparezca el siguiente cuadro de diálogo
+solicitándole las opciones de salida de datos.<BR>
+<BR>
+Los campos aparecerán rellenos con los datos que han aparecido en la pantalla y sólo tendrá que elegir el formato de salida y pulsar el botón imprimir.
+BulmaCont abrirá el editor de texto elegido o un navegador con el extracto visualizado. En este punto podrá elegir si impirmir el extracto en una impresora, o
+guardarlo en un archivo a través de los medios habituales.<BR>
+<BR>
+<!--TOC subsection Punteo y casación-->
+
+<H3 CLASS="subsection"><A NAME="htoc31">5.5.2</A>&nbsp;&nbsp;Punteo y casación</H3><!--SEC END -->
+
+Sobre el extracto puede puntear los apuntes, por ejemplo para comprobar con un extracto bancario que ha introducido correctamente todas las operaciones.
+Para realizar esta operación dispone en el extracto que sale por pantalla de casillas de verificación sobre las cuales puede pulsar para poner o quitar el punteo
+(aparecerá o se eliminará una cruz sobre estas casillas) El punteo se guarda automáticamente en la base de datos así que, si cambia de ventana, no lo perderá al
+volver al extracto.
+BulmaCont también le ofrece la función de guardar el punteo en un momento determinado para poder recuperarlo más adelante si procede. En la ventana del extracto
+dispone del botón ?guardar punteo? que le preguntará un nombre de archivo y la localización del mismo para guardar el punteo.
+Cuando quiera recuperar este punteo, presione el botón ?recuperar punteo? que le solicitará qué archivo desea restaurar.
+De esta forma puede tener guadados diversos punteos en el sistema y recuperarlos y modificarlos cuantas veces quiera.<BR>
+<BR>
+NOTA: Si después de guardar el punteo ha realizado alguna modificaicón de apuntes o ha insertado nuevos asientos contables puede ser que el resultado de recuperar
+el punteo no sea correcto para estos apuntes modificados o para las nuevas inserciones.<BR>
+<BR>
+En BulmaCont existe también la opción de puntear directamente los apuntes que tienen un par idéntica. Esto quiere decir que existe un apunte con un importe en el
+debe y otro apunte en la misma cuenta con un importe idéntico en el haber. Estos casos suelen ocurrir en aquellos tipos de apuntes que corresponden a una misma
+transacción económica que ya ha acabado y que ha dejado el saldo de la cuenta igual que estaba. Para eso existe el botón de ?casación?. Al pulsar este botón se
+puntean todas las parejas de apuntes con importes recíprocos en el extracto de la cuneta que esté visualizando.<BR>
+<BR>
+<!--TOC subsection Filtrado del extracto-->
+
+<H3 CLASS="subsection"><A NAME="htoc32">5.5.3</A>&nbsp;&nbsp;Filtrado del extracto</H3><!--SEC END -->
+
+Puede ocurrir que le sea más cómodo trabajar si el sistema omite determinados apuntes sobre los cuales no está interesado. Para eso tiene el botón de ?filtrar?
+que le permite seleccionar las caracterísitcas que deben cumplir aquellos apuntes que sí desea ver.<BR>
+<BR>
+<!--TOC section Libro diario-->
+
+<H2 CLASS="section"><A NAME="htoc33">5.6</A>&nbsp;&nbsp;Libro diario</H2><!--SEC END -->
+
+El diario tiene dos parámetros básicos que lo definen:<BR>
+<BR>
+Fecha Inicial: Fecha inicial de los apuntes a mostrar
+Fecha Final: Fecha final a partir de la cual no se mostrarán más apuntes.<BR>
+<BR>
+El libro diario muestra todos los apuntes introducidos por orden cronológico.
+Con el botón derecho del ratón podrá ver un menú contextual que permite ir al asiento correspondiente, mostrar el libro balance o un extracto de cuentas del
+apunte serelccionado.<BR>
+<BR>
+<!--TOC subsection Filtrado del diario-->
+
+<H3 CLASS="subsection"><A NAME="htoc34">5.6.1</A>&nbsp;&nbsp;Filtrado del diario</H3><!--SEC END -->
+
+Mediante esta opción puede ver sólo los apuntes que cumplan determinadas características. La opción de filtrar se utiliza pulsando el botón de ?filtrado? con
+forma de embudo.<BR>
+<BR>
+<!--TOC subsection Impresión del diario-->
+
+<H3 CLASS="subsection"><A NAME="htoc35">5.6.2</A>&nbsp;&nbsp;Impresión del diario</H3><!--SEC END -->
+ 
+Cuando se encuentre trabajando con el diario, si presiona el botón de ?imprimir?, aparecerá la siguiente ventana.<BR>
+<BR>
+Los campos aparecen rellenos con los datos que aparecen en su pantalla, con lo que sólo tendrá que elegir el formato de salida y pulsar el botón ?imprimir?<BR>
+<BR>
+BulmaCont abrirá un navegador o un editor de textos con el extracto visualizado que, en este caso, incluye una selección de formatos:<BR>
+<BR>
+El Formato Aprendizaje está diseñado con fines educativos, para mostrar el diario de la siguiente forma:<BR>
+<BR>
+El Formato Normal muestra un listado del libro diario general, como cualquier otro listado.<BR>
+<BR>
+<!--TOC section Balance de cuentas-->
+
+<H2 CLASS="section"><A NAME="htoc36">5.7</A>&nbsp;&nbsp;Balance de cuentas</H2><!--SEC END -->
+
+El balance de cuentas es un listado muy utilizado en contabilidad (Balance de Sumas y Saldos) BulmaCont ofrece este listado en dos versiones diferentes.<BR>
+<BR>
+<!--TOC subsection Balance de cuentas normal-->
+
+<H3 CLASS="subsection"><A NAME="htoc37">5.7.1</A>&nbsp;&nbsp;Balance de cuentas normal</H3><!--SEC END -->
+ 
+El balance de cuentas normal muestra las cuentas de un determinado nivel y sus saldos entre un periodo de tiempo determinado. Puede elegir el nivel de detalle que
+desea para sus cuentas y un rango de cuentas a mostrar.
+Puede suceder que cuentas de niveles superiores tengan aociados apuntes contables (aunque no es una buena práctica contable). En este caso el balance también
+mostrará estas cuentas ya que, en caso contrario, no se ofrecería una imagen fiel del estado de cuentas de la empresa.<BR>
+<BR>
+<!--TOC subsection Balance jerárquico de cuentas-->
+
+<H3 CLASS="subsection"><A NAME="htoc38">5.7.2</A>&nbsp;&nbsp;Balance jerárquico de cuentas</H3><!--SEC END -->
+
+El balance jerárquico de cuentas ofrece la misma informaciñon que el balance normal pero desde una perspectiva diferente. Mediante el balance jerárquico podrá ver
+el árbol de cunetas y los correspondientes saldos que ascienden a través del árbol. De esta forma podrá ver con claridad qué cuentas componen cada una de las
+partes de las cunetas de nivel superior.
+Puede elegir a qué nivel quiere expandir el árbol de forma que siempre pueda controlar la cantidad de información mostrada.<BR>
+<BR>
+<!--TOC subsection Impresión del balance-->
+
+<H3 CLASS="subsection"><A NAME="htoc39">5.7.3</A>&nbsp;&nbsp;Impresión del balance</H3><!--SEC END -->
+
+Puede obtener una copia impresa del balance (tanto jerárquico como normal) presionando el botón de imprimir. Inmediantamente aparecerá la ventana de impresión de
+balances.
+En esta ventana puede elegir las opciones del listado. También puede elegir el formato deseado para la salida de los datos. Cuando apriete el botón imprimir se
+abrirá el programa visor del listado.<BR>
+<BR>
+<!--TOC chapter Asientos inteligentes-->
+
+<H1 CLASS="chapter"><A NAME="htoc40">Capítulo&nbsp;6</A>&nbsp;&nbsp;Asientos inteligentes</H1><!--SEC END -->
+
+<!--TOC section Introducción de asientos inteligentes-->
+
+<H2 CLASS="section"><A NAME="htoc41">6.1</A>&nbsp;&nbsp;Introducción de asientos inteligentes</H2><!--SEC END -->
+
+Los asientos inteligentes son asientos predefinidos por el usuario que, invariablemente, siguen una pauta específica para la introducción de apuntes. Por ejemplo,
+una factura de un acreedor de servicios concreto siempre utilizará las mismas cuentas y llevará una imputación en el debe, en el haber y un registro de IVA. Si
+habitualmente se contabilizan muchas facturas iguales por el mismo concepto puede usarse un asiento inteligente que, al ejecutarlo, pregunte el importe total de
+la factura y rellene automáticamente los apuntes necesarios para que quede un asiento completo y cuadrado, listo para cerrar en breves segundos.<BR>
+<BR>
+Puede introducir un asiento completo de este tipo pulsando sobre el botón de ?Asiento Inteligente? representado con una varita mágica (es importante que no tenga
+en pantalla ningún asiento abierto en ese momento). Aparecerá entonces la siguiente pantalla:<BR>
+<BR>
+Una vez rellenados los datos, presione el ?botón aceptar? y automáticamente se crearán los apuntes que formen el asiento en un asiento nuevo.<BR>
+<BR>
+Puede introducir tantos asientos inteligentes como desee en un mismo asiento inicial.
+5.2 CONFIGURACIÓN DE LOS ASIENTOS INTELIGENTES
+Puede configurar tantos asientos inteligentes como precise para su contabilidad. Para ello dispone de la opción ?botón asiento inteligente? en la barra de
+herramientas y en el menú de la aplicación. 
+La generación de nuevos asientos inteligentes funciona igual que la introducción de un asiento simple, con la excepción de que en los campos en los que se
+deberían introducri conceptos, cuentas y demás datos, se introducen variables u operaciones con variables. <BR>
+<BR>
+Para convertir cualquiera de los campos en varible basta introducir el nombre de la variable entre signos de dólar ($). Esto hará que cuando esté trabajando con
+el asiento inteligente, el programa pregunte al usuario el concepto o la cantidad a introducir en este valor mediante lilice la variable y que será aplicada al
+usar la plantilla de asientos inteligentes. Por ejemplo, se puede especificar que apra determinado asiento siempre se calcule un IVA del 7%. Al introducir el
+asiento inteligente a un asiento abierto, el programa preguntará el proveedor, la cantidad total y, automáticamente, apuntará, gracias a las operaciones con
+variables que se han especificado al generar ese asiento, la base imponible y el IVA del 7% correspondiente a esa base.<BR>
+<BR>
+Existen variables predefinidas por el programa, que, aún siendo variables, no provocan que el sistema pregunte por ellas ya que son calculadas de forma
+automática.<BR>
+<BR>
+Por ejemplo:
+<PRE CLASS="verbatim">
+$fechaactual$ -- será sustituída por la fehca del día actual
+$fechaasiento$ -- la fecha del asiento.
+</PRE>
+Puede, al mismo tiempo que crea todo el asiento, crear entradas en el registro de IVA de forma utomática. Para ello dispone de la pestaña adicional Registro IVA.
+Note que si deja un asiento inteligente sin entradas de registro de IVA, al cerrar el asiento inicial, BulmaCont le preguntará por este.<BR>
+<BR>
+Es importante mencionar que el programa incluye la opción de importar y exportar asientos inteligentes, de forma que guardará la configuración del asiento
+inteligente elegido en formato XML para poder recuperarla después. Puede realizar estas acciones mediante los botones que aparecen en la esquina superior derecha
+de la ventana de Asientos Inteligentes.<BR>
+<BR>
+<!--TOC chapter El menú listados-->
+
+<H1 CLASS="chapter"><A NAME="htoc42">Capítulo&nbsp;7</A>&nbsp;&nbsp;El menú listados</H1><!--SEC END -->
+
+<!--TOC section Registro de iva-->
+
+<H2 CLASS="section"><A NAME="htoc43">7.1</A>&nbsp;&nbsp;Registro de iva</H2><!--SEC END -->
+ 
+En el menú del programa,en la opción de listados, puede seleccionar esta opción para obtener información completa sobre el registro del iva que lleva el programa.
+Al pulsar sobre ella, obtendrá la siguiente pantalla:<BR>
+<BR>
+En la ventana puede observar que las dos primeras pestañas que le mostrarán el iva repercutido y soportado de la empresa. Cada línea que compone este listado le
+mostrará un apunte de iva, el asiento al que pertenece, la fecha, el concepto, la Base Imponible, el número de orden y otros datos que pueden resultar de interés.
+Al final verá el total del iva.<BR>
+<BR>
+La última pestaña corresponde al Resumen, que le mostrará la combinación de datos del iva repercutido y soportado tal y como se puede observar en la imagen
+superior.<BR>
+<BR>
+Estos listados puede guardarlos, imprimirlos, actualizarlos o filtrarlos por fecha mediante los botones situados en la parte superior izquierda de la ventana.
+Mediante la opción de impresión Postscrip el programa puede generar la impresión del Modelo Oficial 347, siempre y cuando esté configurado para ello.<BR>
+<BR>
+<!--TOC section Listado de balances-->
+
+<H2 CLASS="section"><A NAME="htoc44">7.2</A>&nbsp;&nbsp;Listado de balances</H2><!--SEC END -->
+
+BulmaCont ofrecle la posibilidad de mostrar listados contables personalizables con el fin de mostrar los resultados de forma más práctica y entendible para los
+usuarios.
+El programa incluye varios listados por defecto, pero puede crear uno personalizado mediante el botón de "nuevo" representado con un "folio en blanco"<BR>
+<BR>
+En este listado, y mediante las opciones que presenta, puede elegir la composición del balance a mostrar, editar las cuentas, modificar las líneas que la componen
+y editar la masa, por ejemplo, apra obtener los resultados deseados.
+Cuando haya seleccionado todas las opciones que desee, presione el botón Visualizar y tendrá la posibilidad de elegir el formato de salida de los datos, en texto
+plano o en formato HTML.<BR>
+<BR>
+<!--TOC section Listado de masas patrimoniales-->
+
+<H2 CLASS="section"><A NAME="htoc45">7.3</A>&nbsp;&nbsp;Listado de masas patrimoniales</H2><!--SEC END -->
+
+Esta opción permite realizar lo mismo que en la opción anterior pero con las Masas Patrimoniales (Ver apartado Listado de Balances)<BR>
+<BR>
+<!--TOC chapter El menú herramientas-->
+
+<H1 CLASS="chapter"><A NAME="htoc46">Capítulo&nbsp;8</A>&nbsp;&nbsp;El menú herramientas</H1><!--SEC END -->
+
+<!--TOC section Amortizaciones-->
+
+<H2 CLASS="section"><A NAME="htoc47">8.1</A>&nbsp;&nbsp;Amortizaciones</H2><!--SEC END -->
+
+BulmaCont está preparado para gestionar automáticamente las amortizaciones. Para ello, debe acceder a la ventana de Amortizaciones en el menú superior, en
+Herramientas, eligiendo la opción Amortizaciones.<BR>
+<BR>
+Si pulsa el botón "Nueva Amortización", representado por un "folio en blanco", obtendrá la siguiente ventana.<BR>
+<BR>
+Rellene los datos que se le solicitan y el programa lo aplicará automáticamente. Puede generar tantas amortizaciones como desee.<BR>
+<BR>
+Para borrar una amortización, seleccionela de la lista y pulse el botón "borrar" representado con una "goma de borrar".<BR>
+<BR>
+<!--TOC section Sustituir cuentas-->
+
+<H2 CLASS="section"><A NAME="htoc48">8.2</A>&nbsp;&nbsp;Sustituir cuentas</H2><!--SEC END -->
+
+Esta opción se utiliza para mover todos los apuntes asignados a una cuenta origen a otra cuenta diferente denominada destino. Puede filtrar los apuntes a mover
+por fecha.<BR>
+<BR>
+<!--TOC section Bloquear fechas-->
+
+<H2 CLASS="section"><A NAME="htoc49">8.3</A>&nbsp;&nbsp;Bloquear fechas</H2><!--SEC END -->
+
+Esta ventana le permite seleccionar las fechas en las cuales no quiere que se realize ningún apunte o modificación. Puede Bloquear o Abirir periodos completos de
+años o sólo meses.<BR>
+<BR>
+<!--TOC section Centro de coste por defecto-->
+
+<H2 CLASS="section"><A NAME="htoc50">8.4</A>&nbsp;&nbsp;Centro de coste por defecto</H2><!--SEC END -->
+
+En esta opción puede seleccionar un Centro de Coste habitual para que aparezca por defecto en las operaciones más usuales con el programa. Para poder utilizar
+esta opción es necesario que haya creado Centros de Coste anteriormente. Puede que su programa no muestre los Centros de Coste si no han sido incluídos en la
+configuración general del programa.<BR>
+<BR>
+<!--TOC section Canal por defecto-->
+
+<H2 CLASS="section"><A NAME="htoc51">8.5</A>&nbsp;&nbsp;Canal por defecto</H2><!--SEC END -->
+
+De la misma forma que en Centros de Coste, puede seleccionar un Canal habitual para que aparezca marcado por defecto en aquellas operaciones que deba incluirse.
+Es necesario que haya creado canales antes de usar esta opción.<BR>
+<BR>
+<!--TOC section Recalcular saldos iniciales-->
+
+<H2 CLASS="section"><A NAME="htoc52">8.6</A>&nbsp;&nbsp;Recalcular saldos iniciales</H2><!--SEC END -->
+
+Corrige los posibles errores de acumulados en la base de datos. No utilice esta opción si no es estrictamente necesario.<BR>
+<BR>
+<!--TOC section Cobros y pagos-->
+
+<H2 CLASS="section"><A NAME="htoc53">8.7</A>&nbsp;&nbsp;Cobros y pagos</H2><!--SEC END -->
+
+BulmaCont puede llevar un control de la Gestión de Cobros y Pagos de su contabilidad. Esta opción puede ser tratada manualmente pero está pensada para funcionar
+de forma automática. Para poder utilizarla, tendrá que haber generado entradas de cobros y pagos en la introducción de asientos.<BR>
+<BR>
+Mediante la opción de Asientos Inteligentes puede utilizar una plantilla de asiento de pago o cobro de factura que, al generarse, le pedirá algunos datos
+adicionales de facturación mediante una nueva ventana emergente. Esta ventana comprende dos pestañas, la primera para los datos anteriormente citados, denominada
+Datos Factura, y la segunda denominada Cobros.
+En esta segunda pestaña deberá seleccionar la modalidad de pago específica (por ejemplo 2 recibos a 30 y 60 días) y, al pulsar el boton de la "varita" el programa
+automáticamente generará los datos necesarios para su futura gestión.
+Posteriormente, cuando se porduzca el pago o cobro, puede ir a la opción Cobros y Pagos del menú Herramientas y verá listados los dos conceptos correspondientes
+al cobro de esta factura.<BR>
+<BR>
+Al lado de cada línea, aparecerá, si aún no ha sido saldada la deuda, una casilla vacía similiar a la utilizada para el puntero de asientos. Para saldar un cobor
+o pago, marque esa casilla y presione el botón de "Generar Asiento Inteligente", representado como un "Asiento con una Bombilla" y se generará el asiento
+correspondiente (previa comprobación de datos) a esa operación, quedando esta línea sin casilla disponible. <BR>
+<BR>
+<!--TOC section Archivo documental-->
+
+<H2 CLASS="section"><A NAME="htoc54">8.8</A>&nbsp;&nbsp;Archivo documental</H2><!--SEC END -->
+
+Con BulmaCont puede anexar archivos externos al programa (como PDF, mails u hojas de cálculo) a asientos contables de forma que puedan ser consultados en
+cualquier momento. Puede asociar y desasociar tantos documentos como sea necesario, tanto a un mismo asiento como a varios a la vez.<BR>
+<BR>
+<!--TOC chapter Otras opciones-->
+
+<H1 CLASS="chapter"><A NAME="htoc55">Capítulo&nbsp;9</A>&nbsp;&nbsp;Otras opciones</H1><!--SEC END -->
+
+<!--TOC section El menú ver-->
+
+<H2 CLASS="section"><A NAME="htoc56">9.1</A>&nbsp;&nbsp;El menú ver</H2><!--SEC END -->
+
+TOOLBAR
+Muestra u oculta la barra de herramientas del progrma según esté o no seleccionada esta opción.<BR>
+<BR>
+STATUSBAR
+Muestra u oculta la barra de estatus del programa según esté o no seleccionada esta opción.<BR>
+<BR>
+CORRECCIONES
+Muestra la ventana del corrector, que detecta automáticamente los asientos en los que se ha cometido algún error.<BR>
+<BR>
+<!--TOC section El menú ayuda-->
+
+<H2 CLASS="section"><A NAME="htoc57">9.2</A>&nbsp;&nbsp;El menú ayuda</H2><!--SEC END -->
+
+AYUDA
+En esta opción visualiza una copia en formato html del manual del programa.<BR>
+<BR>
+ACERCA DE:
+Muestra la información del programa: la versión, los autores y colaboradores y las empresas y entidades que proporcionan o han proporcionado soporte al programa o
+a sus usuarios, así como algunos enlaces de interés.
+Para más información sobre cualquiera de estos puntos, por favor consulte con la web oficial de IGLES: www.glues.org o envie un mail info@iglues.org o a
+cualquiera de los desarrolladores.<BR>
+<BR>
+QUÉ ES ??
+Le permite consultar la descripción de los iconos del programa.<BR>
+<BR>
+<!--TOC chapter Plugins-->
+
+<H1 CLASS="chapter"><A NAME="htoc58">Capítulo&nbsp;10</A>&nbsp;&nbsp;Plugins</H1><!--SEC END -->
+
+No escrito todavia :-(<BR>
+<BR>
+<!--TOC chapter Importación y exportación de datos desde otras aplicaciones-->
+
+<H1 CLASS="chapter"><A NAME="htoc59">Capítulo&nbsp;11</A>&nbsp;&nbsp;Importación y exportación de datos desde otras aplicaciones</H1><!--SEC END -->
+
+No escrito todavia :-(<BR>
+<BR>
+<!--TOC chapter El archivo de configuración bulmages.conf: parámetros del selector-->
+
+<H1 CLASS="chapter"><A NAME="htoc60">Apéndice&nbsp;A</A>&nbsp;&nbsp;El archivo de configuración bulmages.conf: parámetros del selector</H1><!--SEC END -->
+
+A través de este archivo (o directamente desde la sección de parámetros del Selector) puede especificar determinados parámetros que afectan al comportamiento del
+programa.
+El archivo se compone de líneas con dos palabras. La primera palabra indica la característica a la que se desea dar valor. La segunda palabra indica el valor que
+toma dicha característica.<BR>
+<BR>
+A continuación se detallan todas las variables que pueden ser configuradas, cómo afectan al programa y los posibles valores que pueden tener. #Estos valores indican el fondo y la fuente de la ventana de apuntes.<BR>
+<BR>
+CONF_BG_APUNTES:
+Esta opción indica el color de fondo de la ventana de introducción de apuntes cuando el asiento está cerrado. Como valor acepta un color en formato RGB (#RRGGBB)<BR>
+<BR>
+CONF_FG_APUNTES: 
+Esta opción indica el color del texto de la ventana de introducción de apuntes cuando el asiento está cerrado. Como valor admite un color en formato RGB.<BR>
+<BR>
+CONF_BG_APUNTESA:
+Esta opción indica el color de fondo de la ventana de introducción de apuntes cuando el asiento está abierto. Como valor admite un color en formato RGB.<BR>
+<BR>
+CONF_FG_APUNTESA:
+Esta opción indica el color del texto de la ventana de introducción de apuntes cuando el asiento está abierto.Como valor admite un color en formato RGB.<BR>
+<BR>
+CONF_FONTSIZE_APUNTES:
+Esta opción indica el tamaño de la fuente de la pantalla de apuntes. Admite números enteros positivos. <BR>
+<BR>
+CONF_FONTFAMILY_APUNTES:
+Esta opción indica la tipografía de la fuente de la pantalla de apuntes. Admite como valor un nombre de fuente como, por ejemplo: courier, airal, estafis new
+roman, helvetica, verdana.<BR>
+<BR>
+CONF_CONTRAPARTIDA_APUNTES:
+Esta opción indica si en la pantalla de introducción de apuntes debe aparecer la columna de Contrapartida. Para que se muestre la contrapartida, debe poner el
+valor YES, minetras que si desea ocultarla tendrá que introducir el valor NO.<BR>
+<BR>
+CONF_CANAL_APUNTES:
+Esta opción indica si en la ventana de introducción de apuntes debe aparecer la columna de Canal. Como en el caso anterior, seleccione YES o NO para mostrarla u
+ocultarla.<BR>
+<BR>
+CONF_CCOSTE_APUNTES:
+Esta opción indica si en la pantalla de introducción de apuntes se mostrará la columna de Centro de Coste. De nuevo, puede asignar el valor YES o NO<BR>
+<BR>
+CONF_CONTRAPARTIDA_EXTRACTO:
+Esta opción indica si en la ventana del extracto se debe mostrar el campo de Contrapartida. Puede contener los valores YES o NO.<BR>
+<BR>
+CONF_CANAL_EXTRACTO:
+Esta opción indica si en la ventana del extracto debe aparecer el campo de Canal. Introduzca el valor YES o NO para activalra o desactivarla.<BR>
+<BR>
+CONF_CCOSTE_EXTRACTO:
+Esta opción indica si en la ventana del extracto se mostrará el campo Centro de Coste. Sus valores pueden ser YES o NO.<BR>
+<BR>
+CONF_CONTRAPARTIDA_DIAROI:
+Opción para mostrar u ocultar la columna de Contrapartida en el libro diario. Puede contener YES o NO como valores.<BR>
+<BR>
+CONF_CANAL_DIARIO:
+Mediante esta opción puede configurar si se muestra o no la columna de Canal en el Libro Diario del programa. Sus valores pueden ser YES o NO.<BR>
+<BR>
+CONF_CCOSTE_DIARIO:
+Esta opción permite mostrar la columna de Centro de Coste en el Libro Diario del Programa. Puede contener el valor YES o NO.<BR>
+<BR>
+# Estos valores indican el fondo de la ventana del Diario y las propiedades de la fuente.
+CONF_BG_DIARIO   #66CCCC
+CONF_FONTSIZE_DIARIO  12.
+CONF_FONTFAMILY_DIAROI  Arial
+CONF_FG_DIARIO1         #CC0000.
+CONF_FG_DIARIO2         #000000.<BR>
+<BR>
+# Parámetros de configuración de la ventana de Extracto
+CONF_BG_EXTRACTO #0099CC.<BR>
+<BR>
+# Parámetros de configuración de las ventanas de Balance
+CONF_BG_BALANÇ  #FFCC99.
+CONF_BG_BALANCETREE #CCCC66.<BR>
+<BR>
+# Parámetros de configuración del splash y del fondo del área de trabajo
+CONF_BACKGROUND: /usr/share/bulmages/backgrounds/universo.jpg
+CONF_SPLASH:  Esta opción indica la ruta del archivo de imagen del splash. Por ejemplo: /usr/share/bulmages/nousplash1.jpg<BR>
+<BR>
+# Parámetros de configuración de la base de datos.<BR>
+<BR>
+CONF_METABASE:
+Esta opción le permite especificar quié?cuál será la base de datos metabd del sistema. Por defecto el nombre de base de datos meta es metabd. Bajo determinadas
+circustancias puede ser interesante que la base de datos metabd tenga un nombre diferente. Escriba aquí ese nombre.<BR>
+<BR>
+CONF_SERVIDOR:
+Mediante esta opción puede indicar cuál será el servidor de bases de datos con el que el programa intentará establecer comunicación. Por defecto esta opción va en
+localhost pero, si le interesa que las bases de datos estén en un ordenador diferente, puede especificar la IP de dicho equipo aquí.<BR>
+<BR>
+CONF_PUERTO:
+Esta opción indica en qué puerto del ordenador se encuentra alojado el servidor de bases de datos postgresql. Por defecto suele ser el 5432.<BR>
+<BR>
+# por defecto suele ser el del programa<BR>
+<BR>
+CONF_EDITOR:
+Esta opción indica cuál es el editor de textos que se utilizará para mostrar los listados. Por ejemplo: kedit<BR>
+<BR>
+CONF_NAVEGADOR:
+Esta opción indica cuál es el navegador html que se utilizará para mostrar los listados y página auxiliares. Por ejemplo:<BR>
+<BR>
+<!--TOC chapter GNU Free Document License-->
+
+<H1 CLASS="chapter"><A NAME="htoc61">Apéndice&nbsp;B</A>&nbsp;&nbsp;GNU Free Document License</H1><!--SEC END -->
+
+Versión 1.2, Noviembre 2002 <BR>
+This is an unofficial translation of the GNU Free Documentation License into Spanish. It was not published by the Free Software Foundation, and does not legally
+state the distribution terms for documentation that uses the GNU FDL &ndash; only the original English text of the GNU FDL does that. However, we hope that this
+translation will help Spanish speakers understand the GNU FDL better. 
+Ésta es una traducción no oficial de la GNU Free Document License a Español (Castellano). No ha sido publicada por la Free Software Foundation y no establece
+legalmente los términos de distribución para trabajos que usen la GFDL (sólo el texto de la versión original en Inglés de la GFDL lo hace). Sin embargo, esperamos
+que esta traducción ayude los hispanohablantes a entender mejor la GFDL. La versión original de la GFDL esta disponible en la Free Software Foundation. 
+Esta traducción está basada en una de la versión 1.1 de Igor Támara y Pablo Reyes. Sin embargo la responsabilidad de su interpretación es de Joaquín Seoane. 
+Copyright (C) 2000, 2001, 2002 Free Software Foundation, Inc. 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA. Se permite la copia y distribución de copias
+literales de este documento de licencia, pero no se permiten cambios<SUP><A NAME="text2" HREF="#note2">1</A></SUP>. <BR>
+<BR>
+<!--TOC section Preámbulo-->
+
+<H2 CLASS="section"><A NAME="htoc62">B.1</A>&nbsp;&nbsp;Preámbulo</H2><!--SEC END -->
+
+El propósito de esta Licencia es permitir que un manual, libro de texto, u otro documento escrito sea libre en el sentido de libertad: asegurar a todo el mundo la
+libertad efectiva de copiarlo y redistribuirlo, con o sin modificaciones, de manera comercial o no. En segundo término, esta Licencia proporciona al autor y al
+editor<SUP><A NAME="text3" HREF="#note3">2</A></SUP> una manera de obtener reconocimiento por su trabajo, sin que se le considere responsable de las modificaciones realizadas por otros. 
+Esta Licencia es de tipo copyleft, lo que significa que los trabajos derivados del documento deben a su vez ser libres en el mismo sentido. Complementa la
+Licencia Pública General de GNU, que es una licencia tipo copyleft diseñada para el software libre. <BR>
+<BR>
+Hemos diseñado esta Licencia para usarla en manuales de software libre, ya que el software libre necesita documentación libre: un programa libre debe venir con
+manuales que ofrezcan la mismas libertades que el software. Pero esta licencia no se limita a manuales de software; puede usarse para cualquier texto, sin tener
+en cuenta su temática o si se publica como libro impreso o no. Recomendamos esta licencia principalmente para trabajos cuyo fin sea instructivo o de referencia. <BR>
+<BR>
+<!--TOC section Aplicabilidad y definiciones-->
+
+<H2 CLASS="section"><A NAME="htoc63">B.2</A>&nbsp;&nbsp;Aplicabilidad y definiciones</H2><!--SEC END -->
+
+Esta Licencia se aplica a cualquier manual u otro trabajo, en cualquier soporte, que contenga una nota del propietario de los derechos de autor que indique que
+puede ser distribuido bajo los términos de esta Licencia. Tal nota garantiza en cualquier lugar del mundo, sin pago de derechos y sin límite de tiempo, el uso de
+dicho trabajo según las condiciones aquí estipuladas. En adelante la palabra Documento se referirá a cualquiera de dichos manuales o trabajos. Cualquier persona
+es un licenciatario y será referido como Usted. Usted acepta la licencia si copia. modifica o distribuye el trabajo de cualquier modo que requiera permiso según
+la ley de propiedad intelectual. <BR>
+<BR>
+Una Versión Modificada del Documento significa cualquier trabajo que contenga el Documento o una porción del mismo, ya sea una copia literal o con modificaciones
+y/o traducciones a otro idioma. 
+Una Sección Secundaria es un apéndice con título o una sección preliminar del Documento que trata exclusivamente de la relación entre los autores o editores y el
+tema general del Documento (o temas relacionados) pero que no contiene nada que entre directamente en dicho tema general (por ejemplo, si el Documento es en parte
+un texto de matemáticas, una Sección Secundaria puede no explicar nada de matemáticas). La relación puede ser una conexión histórica con el tema o temas
+relacionados, o una opinión legal, comercial, filosófica, ética o política acerca de ellos. <BR>
+<BR>
+Las Secciones Invariantes son ciertas Secciones Secundarias cuyos títulos son designados como Secciones Invariantes en la nota que indica que el documento es
+liberado bajo esta Licencia. Si una sección no entra en la definición de Secundaria, no puede designarse como Invariante. El documento puede no tener Secciones
+Invariantes. Si el Documento no identifica las Secciones Invariantes, es que no las tiene. 
+Los Textos de Cubierta son ciertos pasajes cortos de texto que se listan como Textos de Cubierta Delantera o Textos de Cubierta Trasera en la nota que indica que
+el documento es liberado bajo esta Licencia. Un Texto de Cubierta Delantera puede tener como mucho 5 palabras, y uno de Cubierta Trasera puede tener hasta 25
+palabras. <BR>
+<BR>
+Una copia Transparente del Documento, significa una copia para lectura en máquina, representada en un formato cuya especificación está disponible al público en
+general, apto para que los contenidos puedan ser vistos y editados directamente con editores de texto genéricos o (para imágenes compuestas por puntos) con
+programas genéricos de manipulación de imágenes o (para dibujos) con algún editor de dibujos ampliamente disponible, y que sea adecuado como entrada para
+formateadores de texto o para su traducción automática a formatos adecuados para formateadores de texto. Una copia hecha en un formato definido como Transparente,
+pero cuyo marcaje o ausencia de él haya sido diseñado para impedir o dificultar modificaciones posteriores por parte de los lectores no es Transparente. Un
+formato de imagen no es Transparente si se usa para una cantidad de texto sustancial. Una copia que no es Transparente se denomina Opaca. 
+Como ejemplos de formatos adecuados para copias Transparentes están ASCII puro sin marcaje, formato de entrada de Texinfo, formato de entrada de LaTeX, SGML o XML
+usando una DTD disponible públicamente, y HTML, PostScript o PDF simples, que sigan los estándares y diseñados para que los modifiquen personas. Ejemplos de
+formatos de imagen transparentes son PNG, XCF y JPG. Los formatos Opacos incluyen formatos propietarios que pueden ser leídos y editados únicamente en
+procesadores de palabras propietarios, SGML o XML para los cuáles las DTD y/o herramientas de procesamiento no estén ampliamente disponibles, y HTML, PostScript o
+PDF generados por algunos procesadores de palabras sólo como salida. 
+La Portada significa, en un libro impreso, la página de título, más las páginas siguientes que sean necesarias para mantener legiblemente el material que esta
+Licencia requiere en la portada. Para trabajos en formatos que no tienen página de portada como tal, Portada significa el texto cercano a la aparición más
+prominente del título del trabajo, precediendo el comienzo del cuerpo del texto. 
+Una sección Titulada XYZ significa una parte del Documento cuyo título es precisamente XYZ o contiene XYZ entre paréntesis, a continuación de texto que traduce
+XYZ a otro idioma (aquí XYZ se refiere a nombres de sección específicos mencionados más abajo, como Agradecimientos, Dedicatorias , Aprobaciones o Historia.
+Conservar el Título de tal sección cuando se modifica el Documento significa que permanece una sección Titulada XYZ según esta definición<SUP><A NAME="text4" HREF="#note4">3</A></SUP>
+ . 
+El Documento puede incluir Limitaciones de Garantía cercanas a la nota donde se declara que al Documento se le aplica esta Licencia. Se considera que estas
+Limitaciones de Garantía están incluidas, por referencia, en la Licencia, pero sólo en cuanto a limitaciones de garantía: cualquier otra implicación que estas
+Limitaciones de Garantía puedan tener es nula y no tiene efecto en el significado de esta Licencia. <BR>
+<BR>
+<!--TOC section Copia literal-->
+
+<H2 CLASS="section"><A NAME="htoc64">B.3</A>&nbsp;&nbsp;Copia literal</H2><!--SEC END -->
+
+Usted puede copiar y distribuir el Documento en cualquier soporte, sea en forma comercial o no, siempre y cuando esta Licencia, las notas de copyright y la nota
+que indica que esta Licencia se aplica al Documento se reproduzcan en todas las copias y que usted no añada ninguna otra condición a las expuestas en esta
+Licencia. Usted no puede usar medidas técnicas para obstruir o controlar la lectura o copia posterior de las copias que usted haga o distribuya. Sin embargo,
+usted puede aceptar compensación a cambio de las copias. Si distribuye un número suficientemente grande de copias también deberá seguir las condiciones de la
+sección 3. 
+Usted también puede prestar copias, bajo las mismas condiciones establecidas anteriormente, y puede exhibir copias públicamente. <BR>
+<BR>
+<!--TOC section Copiado en cantidad-->
+
+<H2 CLASS="section"><A NAME="htoc65">B.4</A>&nbsp;&nbsp;Copiado en cantidad</H2><!--SEC END -->
+
+Si publica copias impresas del Documento (o copias en soportes que tengan normalmente cubiertas impresas) que sobrepasen las 100, y la nota de licencia del
+Documento exige Textos de Cubierta, debe incluir las copias con cubiertas que lleven en forma clara y legible todos esos Textos de Cubierta: Textos de Cubierta
+Delantera en la cubierta delantera y Textos de Cubierta Trasera en la cubierta trasera. Ambas cubiertas deben identificarlo a Usted clara y legiblemente como
+editor de tales copias. La cubierta debe mostrar el título completo con todas las palabras igualmente prominentes y visibles. Además puede añadir otro material en
+las cubiertas. Las copias con cambios limitados a las cubiertas, siempre que conserven el título del Documento y satisfagan estas condiciones, pueden considerarse
+como copias literales. <BR>
+<BR>
+Si los textos requeridos para la cubierta son muy voluminosos para que ajusten legiblemente, debe colocar los primeros (tantos como sea razonable colocar) en la
+verdadera cubierta y situar el resto en páginas adyacentes. <BR>
+<BR>
+Si Usted publica o distribuye copias Opacas del Documento cuya cantidad exceda las 100, debe incluir una copia Transparente, que pueda ser leída por una máquina,
+con cada copia Opaca, o bien mostrar, en cada copia Opaca, una dirección de red donde cualquier usuario de la misma tenga acceso por medio de protocolos públicos
+y estandarizados a una copia Transparente del Documento completa, sin material adicional.<BR>
+<BR>
+Si usted hace uso de la última opción, deberá tomar las medidas
+necesarias, cuando comience la distribución de las copias Opacas en cantidad, para asegurar que esta copia Transparente permanecerá accesible en el sitio
+establecido por lo menos un año después de la última vez que distribuya una copia Opaca de esa edición al público (directamente o a través de sus agentes o
+distribuidores). <BR>
+<BR>
+Se solicita, aunque no es requisito, que se ponga en contacto con los autores del Documento antes de redistribuir gran número de copias, para darles la
+oportunidad de que le proporcionen una versión actualizada del Documento. <BR>
+<BR>
+<!--TOC section Modificaciones-->
+
+<H2 CLASS="section"><A NAME="htoc66">B.5</A>&nbsp;&nbsp;Modificaciones</H2><!--SEC END -->
+
+Puede copiar y distribuir una Versión Modificada del Documento bajo las condiciones de las secciones 2 y 3 anteriores, siempre que usted libere la Versión
+Modificada bajo esta misma Licencia, con la Versión Modificada haciendo el rol del Documento, por lo tanto dando licencia de distribución y modificación de la
+Versión Modificada a quienquiera posea una copia de la misma. Además, debe hacer lo siguiente en la Versión Modificada: <BR>
+<BR>
+
+<OL CLASS="enumerate" type=1><LI CLASS="li-enumerate">Usar en la Portada (y en las cubiertas, si hay alguna) un título distinto al del Documento y de sus versiones anteriores (que deberían, si hay alguna, estar
+listadas en la sección de Historia del Documento). Puede usar el mismo título de versiones anteriores al original siempre y cuando quien las publicó originalmente
+otorgue permiso. <BR>
+<BR>
+<LI CLASS="li-enumerate">Listar en la Portada, como autores, una o más personas o entidades responsables de la autoría de las modificaciones de la Versión Modificada, junto con por
+lo menos cinco de los autores principales del Documento (todos sus autores principales, si hay menos de cinco), a menos que le eximan de tal requisito. <BR>
+<BR>
+<LI CLASS="li-enumerate">Mostrar en la Portada como editor el nombre del editor de la Versión Modificada. <BR>
+<BR>
+<LI CLASS="li-enumerate">Conservar todas las notas de copyright del Documento. <BR>
+<BR>
+<LI CLASS="li-enumerate">Añadir una nota de copyright apropiada a sus modificaciones, adyacente a las otras notas de copyright. <BR>
+<BR>
+<LI CLASS="li-enumerate">Incluir, inmediatamente después de las notas de copyright, una nota de licencia dando el permiso para usar la Versión Modificada bajo los términos de esta
+Licencia, como se muestra en la Adenda al final de este documento. <BR>
+<BR>
+<LI CLASS="li-enumerate">Conservar en esa nota de licencia el listado completo de las Secciones Invariantes y de los Textos de Cubierta que sean requeridos en la nota de Licencia
+del Documento original. <BR>
+<BR>
+<LI CLASS="li-enumerate">Incluir una copia sin modificación de esta Licencia. <BR>
+<BR>
+<LI CLASS="li-enumerate">Conservar la sección Titulada Historia, conservar su Título y añadirle un elemento que declare al menos el título, el año, los nuevos autores y el editor de
+la Versión Modificada, tal como figuran en la Portada. Si no hay una sección Titulada Historia en el Documento, crear una estableciendo el título, el año, los
+autores y el editor del Documento, tal como figuran en su Portada, añadiendo además un elemento describiendo la Versión Modificada, como se estableció en la
+oración anterior. <BR>
+<BR>
+<LI CLASS="li-enumerate">Conservar la dirección en red, si la hay, dada en el Documento para el acceso público a una copia Transparente del mismo, así como las otras direcciones de
+red dadas en el Documento para versiones anteriores en las que estuviese basado. Pueden ubicarse en la sección Historia. Se puede omitir la ubicación en red de un
+trabajo que haya sido publicado por lo menos cuatro años antes que el Documento mismo, o si el editor original de dicha versión da permiso. <BR>
+<BR>
+<LI CLASS="li-enumerate">En cualquier sección Titulada Agradecimientos o Dedicatorias, Conservar el Título de la sección y conservar en ella toda la sustancia y el tono de los
+agradecimientos y/o dedicatorias incluidas por cada contribuyente. <BR>
+<BR>
+<LI CLASS="li-enumerate">Conservar todas las Secciones Invariantes del Documento, sin alterar su texto ni sus títulos. Números de sección o el equivalente no son considerados parte
+de los títulos de la sección. <BR>
+<BR>
+<LI CLASS="li-enumerate">Borrar cualquier sección titulada Aprobaciones. Tales secciones no pueden estar incluidas en las Versiones Modificadas. <BR>
+<BR>
+<LI CLASS="li-enumerate">No cambiar el título de ninguna sección existente a Aprobaciones ni a uno que entre en conflicto con el de alguna Sección Invariante. <BR>
+<BR>
+<LI CLASS="li-enumerate">) Conservar todas las Limitaciones de Garantía. </OL>
+Si la Versión Modificada incluye secciones o apéndices nuevos que califiquen como Secciones Secundarias y contienen material no copiado del Documento, puede
+opcionalmente designar algunas o todas esas secciones como invariantes. Para hacerlo, añada sus títulos a la lista de Secciones Invariantes en la nota de licencia
+de la Versión Modificada. Tales títulos deben ser distintos de cualquier otro título de sección. 
+Puede añadir una sección titulada Aprobaciones, siempre que contenga únicamente aprobaciones de su Versión Modificada por otras fuentes &ndash;por ejemplo,
+observaciones de peritos o que el texto ha sido aprobado por una organización como la definición oficial de un estándar. 
+Puede añadir un pasaje de hasta cinco palabras como Texto de Cubierta Delantera y un pasaje de hasta 25 palabras como Texto de Cubierta Trasera en la Versión
+Modificada. Una entidad solo puede añadir (o hacer que se añada) un pasaje al Texto de Cubierta Delantera y uno al de Cubierta Trasera. Si el Documento ya incluye
+un textos de cubiertas añadidos previamente por usted o por la misma entidad que usted representa, usted no puede añadir otro; pero puede reemplazar el anterior,
+con permiso explícito del editor que agregó el texto anterior. 
+Con esta Licencia ni los autores ni los editores del Documento dan permiso para usar sus nombres para publicidad ni para asegurar o implicar aprobación de
+cualquier Versión Modificada. <BR>
+<BR>
+<!--TOC section Combinación de documentos-->
+
+<H2 CLASS="section"><A NAME="htoc67">B.6</A>&nbsp;&nbsp;Combinación de documentos</H2><!--SEC END -->
+
+Usted puede combinar el Documento con otros documentos liberados bajo esta Licencia, bajo los términos definidos en la sección 4 anterior para versiones
+modificadas, siempre que incluya en la combinación todas las Secciones Invariantes de todos los documentos originales, sin modificar, listadas todas como
+Secciones Invariantes del trabajo combinado en su nota de licencia. Así mismo debe incluir la Limitación de Garantía. 
+El trabajo combinado necesita contener solamente una copia de esta Licencia, y puede reemplazar varias Secciones Invariantes idénticas por una sola copia. Si hay
+varias Secciones Invariantes con el mismo nombre pero con contenidos diferentes, haga el título de cada una de estas secciones único añadiéndole al final del
+mismo, entre paréntesis, el nombre del autor o editor original de esa sección, si es conocido, o si no, un número único. Haga el mismo ajuste a los títulos de
+sección en la lista de Secciones Invariantes de la nota de licencia del trabajo combinado. 
+En la combinación, debe combinar cualquier sección Titulada Historia de los documentos originales, formando una sección Titulada Historia; de la misma forma
+combine cualquier sección Titulada Agradecimientos, y cualquier sección Titulada Dedicatorias. Debe borrar todas las secciones tituladas Aprobaciones. <BR>
+<BR>
+<!--TOC section Colecciones de documentos-->
+
+<H2 CLASS="section"><A NAME="htoc68">B.7</A>&nbsp;&nbsp;Colecciones de documentos</H2><!--SEC END -->
+
+Puede hacer una colección que conste del Documento y de otros documentos liberados bajo esta Licencia, y reemplazar las copias individuales de esta Licencia en
+todos los documentos por una sola copia que esté incluida en la colección, siempre que siga las reglas de esta Licencia para cada copia literal de cada uno de los
+documentos en cualquiera de los demás aspectos. 
+Puede extraer un solo documento de una de tales colecciones y distribuirlo individualmente bajo esta Licencia, siempre que inserte una copia de esta Licencia en
+el documento extraído, y siga esta Licencia en todos los demás aspectos relativos a la copia literal de dicho documento. <BR>
+<BR>
+<!--TOC section Agregación con trabajos independientes-->
+
+<H2 CLASS="section"><A NAME="htoc69">B.8</A>&nbsp;&nbsp;Agregación con trabajos independientes</H2><!--SEC END -->
+
+Una recopilación que conste del Documento o sus derivados y de otros documentos o trabajos separados e independientes, en cualquier soporte de almacenamiento o
+distribución, se denomina un agregado si el copyright resultante de la compilación no se usa para limitar los derechos de los usuarios de la misma más allá de lo
+que los de los trabajos individuales permiten. Cuando el Documento se incluye en un agregado, esta Licencia no se aplica a otros trabajos del agregado que no sean
+en sí mismos derivados del Documento. 
+Si el requisito de la sección 3 sobre el Texto de Cubierta es aplicable a estas copias del Documento y el Documento es menor que la mitad del agregado entero, los
+Textos de Cubierta del Documento pueden colocarse en cubiertas que enmarquen solamente el Documento dentro del agregado, o el equivalente electrónico de las
+cubiertas si el documento está en forma electrónica. En caso contrario deben aparecer en cubiertas impresas enmarcando todo el agregado. <BR>
+<BR>
+<!--TOC section Traducción-->
+
+<H2 CLASS="section"><A NAME="htoc70">B.9</A>&nbsp;&nbsp;Traducción</H2><!--SEC END -->
+
+La Traducción es considerada como un tipo de modificación, por lo que usted puede distribuir traducciones del Documento bajo los términos de la sección 4. El
+reemplazo las Secciones Invariantes con traducciones requiere permiso especial de los dueños de derecho de autor, pero usted puede añadir traducciones de algunas
+o todas las Secciones Invariantes a las versiones originales de las mismas. Puede incluir una traducción de esta Licencia, de todas las notas de licencia del
+documento, así como de las Limitaciones de Garantía, siempre que incluya también la versión en Inglés de esta Licencia y las versiones originales de las notas de
+licencia y Limitaciones de Garantía. En caso de desacuerdo entre la traducción y la versión original en Inglés de esta Licencia, la nota de licencia o la
+limitación de garantía, la versión original en Inglés prevalecerá. 
+Si una sección del Documento está Titulada Agradecimientos, Dedicatorias o Historia el requisito (sección 4) de Conservar su Título (Sección 1) requerirá,
+típicamente, cambiar su título. <BR>
+<BR>
+<!--TOC section Terminación-->
+
+<H2 CLASS="section"><A NAME="htoc71">B.10</A>&nbsp;&nbsp;Terminación</H2><!--SEC END -->
+
+Usted no puede copiar, modificar, sublicenciar o distribuir el Documento salvo por lo permitido expresamente por esta Licencia. Cualquier otro intento de copia,
+modificación, sublicenciamiento o distribución del Documento es nulo, y dará por terminados automáticamente sus derechos bajo esa Licencia. Sin embargo, los
+terceros que hayan recibido copias, o derechos, de usted bajo esta Licencia no verán terminadas sus licencias, siempre que permanezcan en total conformidad con
+ella. <BR>
+<BR>
+<!--TOC section Revisiones futuras de esta licencia-->
+
+<H2 CLASS="section"><A NAME="htoc72">B.11</A>&nbsp;&nbsp;Revisiones futuras de esta licencia</H2><!--SEC END -->
+
+De vez en cuando la Free Software Foundation puede publicar versiones nuevas y revisadas de la Licencia de Documentación Libre GNU. Tales versiones nuevas serán
+similares en espíritu a la presente versión, pero pueden diferir en detalles para solucionar nuevos problemas o intereses. Vea <A HREF="http://www.gnu.org/copyleft/"><TT>http://www.gnu.org/copyleft/</TT></A>. 
+Cada versión de la Licencia tiene un número de versión que la distingue. Si el Documento especifica que se aplica una versión numerada en particular de esta
+licencia o cualquier versión posterior, usted tiene la opción de seguir los términos y condiciones de la versión especificada o cualquiera posterior que haya sido
+publicada (no como borrador) por la Free Software Foundation. Si el Documento no especifica un número de versión de esta Licencia, puede escoger cualquier versión
+que haya sido publicada (no como borrador) por la Free Software Foundation. <BR>
+<BR>
+<!--BEGIN NOTES chapter-->
+<HR WIDTH="50%" SIZE=1><DL CLASS="list"><DT CLASS="dt-list"><A NAME="note2" HREF="#text2"><FONT SIZE=5>1</FONT></A><DD CLASS="dd-list">Ésta es la traducción del Copyright de la Licencia, no es el Copyright de esta
+traducción no autorizada.
+
+<DT CLASS="dt-list"><A NAME="note3" HREF="#text3"><FONT SIZE=5>2</FONT></A><DD CLASS="dd-list">La licencia original dice publisher, que es, estrictamente, quien publica, diferente de editor, que es más bien quien prepara un texto para
+publicar. En castellano editor se usa para ambas cosas.
+
+<DT CLASS="dt-list"><A NAME="note4" HREF="#text4"><FONT SIZE=5>3</FONT></A><DD CLASS="dd-list">En sentido estricto esta licencia parece exigir que los títulos sean exactamente Acknowledgements, Dedications, Endorsements e History, en inglés.
+</DL>
+<!--END NOTES-->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>Este documento ha sido convertido de L<sup>A</sup>T<sub>E</sub>X por
+</EM><A HREF="http://pauillac.inria.fr/~maranget/hevea/index.html"><EM>H<FONT SIZE=2><sup>E</sup></FONT>V<FONT SIZE=2><sup>E</sup></FONT>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>

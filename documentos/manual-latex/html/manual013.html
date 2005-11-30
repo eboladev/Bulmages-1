@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+
+
+
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">
+<META name="GENERATOR" content="hevea 1.08">
+<LINK rel="stylesheet" type="text/css" href="manual.css">
+<TITLE>
+El archivo de configuración bulmages.conf: parámetros del selector
+</TITLE>
+</HEAD>
+<BODY >
+<A HREF="manual012.html"><IMG SRC ="previous_motif.gif" ALT="Previous"></A>
+<A HREF="index.html"><IMG SRC ="contents_motif.gif" ALT="Up"></A>
+<A HREF="manual014.html"><IMG SRC ="next_motif.gif" ALT="Next"></A>
+<HR>
+
+<H1 CLASS="chapter"><A NAME="htoc60">Apéndice&nbsp;A</A>&nbsp;&nbsp;El archivo de configuración bulmages.conf: parámetros del selector</H1>
+A través de este archivo (o directamente desde la sección de parámetros del Selector) puede especificar determinados parámetros que afectan al comportamiento del
+programa.
+El archivo se compone de líneas con dos palabras. La primera palabra indica la característica a la que se desea dar valor. La segunda palabra indica el valor que
+toma dicha característica.<BR>
+<BR>
+A continuación se detallan todas las variables que pueden ser configuradas, cómo afectan al programa y los posibles valores que pueden tener. #Estos valores indican el fondo y la fuente de la ventana de apuntes.<BR>
+<BR>
+CONF_BG_APUNTES:
+Esta opción indica el color de fondo de la ventana de introducción de apuntes cuando el asiento está cerrado. Como valor acepta un color en formato RGB (#RRGGBB)<BR>
+<BR>
+CONF_FG_APUNTES: 
+Esta opción indica el color del texto de la ventana de introducción de apuntes cuando el asiento está cerrado. Como valor admite un color en formato RGB.<BR>
+<BR>
+CONF_BG_APUNTESA:
+Esta opción indica el color de fondo de la ventana de introducción de apuntes cuando el asiento está abierto. Como valor admite un color en formato RGB.<BR>
+<BR>
+CONF_FG_APUNTESA:
+Esta opción indica el color del texto de la ventana de introducción de apuntes cuando el asiento está abierto.Como valor admite un color en formato RGB.<BR>
+<BR>
+CONF_FONTSIZE_APUNTES:
+Esta opción indica el tamaño de la fuente de la pantalla de apuntes. Admite números enteros positivos. <BR>
+<BR>
+CONF_FONTFAMILY_APUNTES:
+Esta opción indica la tipografía de la fuente de la pantalla de apuntes. Admite como valor un nombre de fuente como, por ejemplo: courier, airal, estafis new
+roman, helvetica, verdana.<BR>
+<BR>
+CONF_CONTRAPARTIDA_APUNTES:
+Esta opción indica si en la pantalla de introducción de apuntes debe aparecer la columna de Contrapartida. Para que se muestre la contrapartida, debe poner el
+valor YES, minetras que si desea ocultarla tendrá que introducir el valor NO.<BR>
+<BR>
+CONF_CANAL_APUNTES:
+Esta opción indica si en la ventana de introducción de apuntes debe aparecer la columna de Canal. Como en el caso anterior, seleccione YES o NO para mostrarla u
+ocultarla.<BR>
+<BR>
+CONF_CCOSTE_APUNTES:
+Esta opción indica si en la pantalla de introducción de apuntes se mostrará la columna de Centro de Coste. De nuevo, puede asignar el valor YES o NO<BR>
+<BR>
+CONF_CONTRAPARTIDA_EXTRACTO:
+Esta opción indica si en la ventana del extracto se debe mostrar el campo de Contrapartida. Puede contener los valores YES o NO.<BR>
+<BR>
+CONF_CANAL_EXTRACTO:
+Esta opción indica si en la ventana del extracto debe aparecer el campo de Canal. Introduzca el valor YES o NO para activalra o desactivarla.<BR>
+<BR>
+CONF_CCOSTE_EXTRACTO:
+Esta opción indica si en la ventana del extracto se mostrará el campo Centro de Coste. Sus valores pueden ser YES o NO.<BR>
+<BR>
+CONF_CONTRAPARTIDA_DIAROI:
+Opción para mostrar u ocultar la columna de Contrapartida en el libro diario. Puede contener YES o NO como valores.<BR>
+<BR>
+CONF_CANAL_DIARIO:
+Mediante esta opción puede configurar si se muestra o no la columna de Canal en el Libro Diario del programa. Sus valores pueden ser YES o NO.<BR>
+<BR>
+CONF_CCOSTE_DIARIO:
+Esta opción permite mostrar la columna de Centro de Coste en el Libro Diario del Programa. Puede contener el valor YES o NO.<BR>
+<BR>
+# Estos valores indican el fondo de la ventana del Diario y las propiedades de la fuente.
+CONF_BG_DIARIO   #66CCCC
+CONF_FONTSIZE_DIARIO  12.
+CONF_FONTFAMILY_DIAROI  Arial
+CONF_FG_DIARIO1         #CC0000.
+CONF_FG_DIARIO2         #000000.<BR>
+<BR>
+# Parámetros de configuración de la ventana de Extracto
+CONF_BG_EXTRACTO #0099CC.<BR>
+<BR>
+# Parámetros de configuración de las ventanas de Balance
+CONF_BG_BALANÇ  #FFCC99.
+CONF_BG_BALANCETREE #CCCC66.<BR>
+<BR>
+# Parámetros de configuración del splash y del fondo del área de trabajo
+CONF_BACKGROUND: /usr/share/bulmages/backgrounds/universo.jpg
+CONF_SPLASH:  Esta opción indica la ruta del archivo de imagen del splash. Por ejemplo: /usr/share/bulmages/nousplash1.jpg<BR>
+<BR>
+# Parámetros de configuración de la base de datos.<BR>
+<BR>
+CONF_METABASE:
+Esta opción le permite especificar quié?cuál será la base de datos metabd del sistema. Por defecto el nombre de base de datos meta es metabd. Bajo determinadas
+circustancias puede ser interesante que la base de datos metabd tenga un nombre diferente. Escriba aquí ese nombre.<BR>
+<BR>
+CONF_SERVIDOR:
+Mediante esta opción puede indicar cuál será el servidor de bases de datos con el que el programa intentará establecer comunicación. Por defecto esta opción va en
+localhost pero, si le interesa que las bases de datos estén en un ordenador diferente, puede especificar la IP de dicho equipo aquí.<BR>
+<BR>
+CONF_PUERTO:
+Esta opción indica en qué puerto del ordenador se encuentra alojado el servidor de bases de datos postgresql. Por defecto suele ser el 5432.<BR>
+<BR>
+# por defecto suele ser el del programa<BR>
+<BR>
+CONF_EDITOR:
+Esta opción indica cuál es el editor de textos que se utilizará para mostrar los listados. Por ejemplo: kedit<BR>
+<BR>
+CONF_NAVEGADOR:
+Esta opción indica cuál es el navegador html que se utilizará para mostrar los listados y página auxiliares. Por ejemplo:<BR>
+<BR>
+<HR>
+<A HREF="manual012.html"><IMG SRC ="previous_motif.gif" ALT="Previous"></A>
+<A HREF="index.html"><IMG SRC ="contents_motif.gif" ALT="Up"></A>
+<A HREF="manual014.html"><IMG SRC ="next_motif.gif" ALT="Next"></A>
+</BODY>
+</HTML>
