@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="320.00000"
    height="320.00000"
    id="svg1"
    sodipodi:version="0.32"
-   inkscape:version="0.40"
-   sodipodi:docbase="/home/raul/arxius/iglues/nous dissenys/svg"
+   inkscape:version="0.42"
+   sodipodi:docbase="/home/raul/docs/iglues/v0.4/svg"
    sodipodi:docname="i_bulmages_monedas_mas.svg"
    version="1.0"
    x="0.0000000"
    y="0.0000000"
    inkscape:export-filename="/home/raul/arxius/iglues/nous dissenys/png/i_bulmages_monedas_mas.png"
    inkscape:export-xdpi="96.000000"
-   inkscape:export-ydpi="96.000000"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:cc="http://web.resource.org/cc/"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:xlink="http://www.w3.org/1999/xlink">
+   inkscape:export-ydpi="96.000000">
   <defs
      id="defs3">
     <linearGradient
@@ -541,41 +540,52 @@
      inkscape:guide-bbox="true" />
   <metadata
      id="metadata4">
-    <rdf:RDF
-       id="RDF5">
+    <rdf:RDF>
       <cc:Work
-         rdf:about=""
-         id="Work6">
-        <dc:format
-           id="format7">image/svg+xml</dc:format>
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
         <dc:type
-           id="type9"
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <cc:license
-           id="license1725"
            rdf:resource="http://creativecommons.org/licenses/GPL/2.0/" />
+        <dc:title>monedas mas</dc:title>
+        <dc:date>1 d'agost de 2005</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Raül Martínez i Peris</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:language>es-ES</dc:language>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Raül Martínez i Peris</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Raül Martínez i Peris</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>iconos</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
       </cc:Work>
       <cc:License
-         rdf:about="http://creativecommons.org/licenses/GPL/2.0/"
-         id="License1744">
+         rdf:about="http://creativecommons.org/licenses/GPL/2.0/">
         <cc:permits
-           rdf:resource="http://web.resource.org/cc/Reproduction"
-           id="permits1745" />
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
         <cc:permits
-           rdf:resource="http://web.resource.org/cc/Distribution"
-           id="permits1746" />
+           rdf:resource="http://web.resource.org/cc/Distribution" />
         <cc:requires
-           rdf:resource="http://web.resource.org/cc/Notice"
-           id="requires1747" />
+           rdf:resource="http://web.resource.org/cc/Notice" />
         <cc:permits
-           rdf:resource="http://web.resource.org/cc/DerivativeWorks"
-           id="permits1748" />
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
         <cc:requires
-           rdf:resource="http://web.resource.org/cc/ShareAlike"
-           id="requires1749" />
+           rdf:resource="http://web.resource.org/cc/ShareAlike" />
         <cc:requires
-           rdf:resource="http://web.resource.org/cc/SourceCode"
-           id="requires1750" />
+           rdf:resource="http://web.resource.org/cc/SourceCode" />
       </cc:License>
     </rdf:RDF>
   </metadata>
