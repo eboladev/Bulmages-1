@@ -1,0 +1,295 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>filtrardiariodlg</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>filtrardiariodlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>387</width>
+            <height>248</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Filtrado de Diario</string>
+    </property>
+    <property name="icon">
+        <pixmap>image0</pixmap>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout9</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image2</iconset>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>471</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+        <widget class="QCheckBox">
+            <property name="name">
+                <cstring>m_asAbiertos</cstring>
+            </property>
+            <property name="text">
+                <string>&amp;Incluir asientos abiertos</string>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout9</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout3</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_3</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Apuntes con saldo superior a</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>saldosuperior</cstring>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout4</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_3_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Apuntes con saldo inferior a</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>saldoinferior</cstring>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout7</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_3_2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Apuntes con contrapartida:</string>
+                    </property>
+                </widget>
+                <widget class="BusquedaCuenta">
+                    <property name="name">
+                        <cstring>m_contrapartida</cstring>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <spacer>
+            <property name="name">
+                <cstring>spacer3</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Vertical</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>21</width>
+                    <height>90</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout7</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>311</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Rese&amp;t</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>A&amp;ceptar</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>BusquedaCuenta</class>
+        <header location="local">busquedacuenta.h</header>
+        <sizehint>
+            <width>100</width>
+            <height>20</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image3</pixmap>
+        <signal>valueChanged(QString)</signal>
+        <signal>returnPressed()</signal>
+        <slot access="public" specifier="">selectAll()</slot>
+        <slot access="public" specifier="">setFocus()</slot>
+    </customwidget>
+</customwidgets>
+<images>
+    <image name="image0">
+        <data format="PNG" length="947">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000037a494441545885bd96bf8b1b4714c73f7b6c31021976c18195c170021370042e6e89c9dd828b337111dcb90beee254e72eb808760829fc07046c42c05c0afbaf305c1358190e368680cf850bab0848c5c10c9c605f31a014e35dfd58dd6957186d337c4762de7bdff9cef73d2f3bcec0023e881594af368ab7c4cadc8f9bc67eb1596476118e6fc6136a7c693ff5ea9c87057f36b3556b769c794dfe5f67f5eb66da8481ac9f797599ad305006f1010b511401eecea228e2c92f4fb87ef53a2a50742e77c86d4e4bb5c865baf66ef4e612bd88392f3bce2aea8cf7e249d00e30c6f0eacf57186b88820841e8841d5010a800e52b5aed16b9cd0955589ea3ad26f41dd6634d722b41442ac9cc6920be194fb2e3ccbbf7fdbdc98bdf5fb88a8308f185ed4bdb8815ba41174108dac13498684215cead2dd52ab1528a937f4f0a662a0c6c2dde09160461bbb30d2de85cea20565c8522042a008b4b02b78fc505b7fa429cfe9d727bfff66436ded40770190d0603f440333a1b4de95421b9cd514a61c6060033362503f8b8ca7d5779b1bf880b2dcdfac05649079f34003cfde329722a98331724b739613b9c566ea74c14c9d56122b99538866734e0a5fdb4a2ce642f990497039efdf60cf185e88b081484edb00c3eab85d9240a0de432c5bd1bbd8a49cdbd82655e1defc5932008504aa17cc5c18f0774af75e95eed3acd046a4e034a4dd53ffc6fc8f3bf9e73f8f270e953acd50bd27eea1963387a7dc4feb7fb3cfaf5110f0e1ef0e6ed1bf0c18899d34671e757bebc42bc1f73f8f290dd6f7697fac06cbca53eb0c8c4bb937730868fa71fb9fbdd5d9452e55d2e7e8f7f7ecceed7bb186db8ffc3fd732bafdd0bf021de89397a7dc4ceb51db27f32423f2ce9d656a3f8f43a0486e321e4cc054ff692c9e2ddafd4c0794c140e37eb78da688c18b4d10c3e0c78f8d3c39595379e07d27eeaf5beea55dff9582338cb7dffe17d25f8aaf3576ae03c265ab4c0426e7346a723148ae44e52bbf2026f359d64d27eeac53b31b9e4ce11c5908ff34af0bae7359a070a5cec0d65e80478664a9b6d7ade5a33a18860c4d9b4191b9455008d2aaff682869917bd40f98a918c9c093464722d0d14e663ac715d70ac51e21858673aaecc03b5306e221291b2db6d5403b3c1b4d5ee496e5203009da0e3fabdef1ad2c635504c38daba89685d0dd4ee05cb1c7171f42e06db26e72d9d8836b9aeed039f0bafa581cf89ff07e81815d2b28efed40000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="632">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000023f494441545885c557316edb30147ddfe0c05364f0112c4083bc65ccead153e12b74343aa4ea645f41c81064d4ea319b3808508fe0a1a7e020801d2452944c4aa493a67fa13f8927928fef7dd2d4d40dd00260806c2538e35f9aaf642b4783b1f9264dd47bf6aeeec5af74a75e596c0e0012f7e399bd32577b492f0a7d70704848d8f9a6ff7d492fca35aef347f148aeefd39206b26c6b16706fe4f889a7fa895cdf5f640000ce3821139973074bed264d3a663ce35e0d884c284dbf4497c79c71289e2a5179573ea532868950fc6a4eddd388517b28de5b0784a8c827a4109f87e267ebc06fd1900d8ef57908de6820719cd952347563ac158baf44459c71300d3efd3a455b2c4913d5d40ddd83df665b55898a986cbb4a255b89e38f63f00ef2e7dce0747bf876089abc7c2d01c072419fc4c414676b60a935e5ba45ef026b27a131c5d9ea5e6c7530741af031409403e050ea7b3003e5baecfcde5f44ba3dfc390c4c589bf032409443a9230009a2733803d6a4c090170fc5e07f0c8b7632304c0e287504510ea2f38809af06c0b1bfee010673eb150f4537e9c734301e9f63c075e6a37e1d0c312e188fcf3170a37e4cfaad4d303703d3c5f02806ded66f372fa3dd7517a6814e70d2b4c3e47ca48d580d94eb12fbebfe46030e06a499c40e6dc910066e6e474469c0a785f1317c96061c2e70bb415bb06322ce05a62e84d5813037cc31a07defab84b31a7095dd8185411b3e0676d7dde26d68627a17e4cf79d47b60ca40f15204e3f4a2fffb8b889aba71fe23faaa7cb5f4bafdd7f95fcc808b8d7eeebf810000000049454e44ae426082</data>
+    </image>
+    <image name="image2">
+        <data format="PNG" length="725">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000029c494441545885c5573b8edb30107d63b0d015b24580e8041608b890ba946e53a6cc2285e1725b9f22fb010cbb4c99766f20150208a773e70059607d05160426854c8a942d4bfe6497cde0892687f3e6718626552ac0001080361a9188de140fb4d1c1e45b63613f6669c6b8c250a5223f52bb7f1b16d6795ee4e44f9e6be548b27f882e2b221101c06ef1330311008d736c5ea404a057e4160b6d34802a2700c09c028840244fa63f4bc1002053e9d2d9c56cc040352ae7aa54740db5cb54baf4b66aa066c0d2899d300bb6d81eee14acca31d9e07a32600fd1c41ac0ece494c8d1ac4ac9a84e8965b655033e03af7fbf411b8d388e3b7379ee2d39a801870d10c7bf1cbef496a8e233d9e05a3540f45c6351dd0aa27a7eb3f97252c4371f9735b3022e987e1a300d46e06fda1df1ebe66b805d9afb6aa03a7138af8d06f3b817eddb1704d8a5d9bbaa832e0d840cec33153add619295358d79031784dd7f70ac0eec3310d5bf7395325c0792002bd439f7986d6800024d06fa69c039b791fa91b3aab1b7be4d030103aa1c936d28c734e09cd8486d844decd6b76b404422425ee4d47c0f5806b62f9f3c063ca6fc48a101caeac59ca3af0684057ea5cbd28cb5d1b8897fa255034dd55ba7fef70e0d540c20e3dbef09168f2b586b7f941729551570c6be06b67f3e549bedbadf51db55076e273be79e4d866103f13510162197b05ef8a00616f30569a3b198573959ccf7fbbb1c490eebc479bde0a8067c3b9d4cf71ea8cd3ab177fffbe0d65ee0e5e46e72c70082b4c834d4c4252f2500813fca8bdc81871f0fbc5eaf5dd4f61000b0fabd6a9272d668be2b4895ea5dfe111dd5401f4d5c3aee1fefa9ee8647deedbe26ae69a793296ba381bcc8a14a75d026c3849361c2aac07fb1c930e1560d2c9f967ce903b48f0d6ec17bd87f53d5c1afb38910f30000000049454e44ae426082</data>
+    </image>
+    <image name="image3">
+        <data format="PNG" length="1076">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000003fb49444154388dad955f8815551cc73fb34e766e5ce25cba0b3360b2038a4d0475c5975ddc875de821614191087a737d29227a910a71154288520982f2c1fe3c98db83788582edc1b8fbb0da7d507605979dc0a533913503bb31071aba3f63747ab873b5a594827ef0633870f8ccf777f8f2fb3a65593228c77186804d800b0c014ed50fabb2eabb4001dc29cbf2ae33001f397ce4f1c9a7265f896c34cd3a3b56ec0a356af4e811106030ff78ce6c4674335aed5eebce52f029f02b70db29cb12c77186ae7c75e590ae27efd10463bbf8754d921b7c1d90e4864007902750f7497383571f9c1bcc2f7d47e7f325dadfda13c08740e656e36c5a324bd313e31eddf823f46f864e2104c3d0f9096caa68a78242516bc2680bccbae029885318f1418605e025e01c707b007695a81d26efa2015358025fd35d80e81b61ee5a8a72410a41b99a0bdb14070f3450ad1e61138c15424f31876c051a4036548187166f2de2d7334cb64430ac695f144ebd9b3277cda2b522784ed3daeda13d88578599b70cedb390e41054f0aa6ac0e6816227d001491e11f88aee02b4cf5828607aaf4738053bb7072462d06e83d9f33dda672cedb331ad6d21eaf91a811640a85ce50c143bc61afcbac2acc1dcd71629843d7b3dc6a621dc2e185942add5f8ec6cc6c1030d5e7e5d83ab38753aa1217de50316e00c1413e88044226a794874bd8bd61e135310348524078dcfcc890cb36cc9d6e0f83b3edd4b16f3bdd0b9da23686e34f74031c61a02ad585c8dc0057f04c2004c2ea8a2c1cc9b09d1b24569c5fef1060919614b238590dc02631f00eefb1482ba824208eb600bd0e2337338c32c0b14a0eb0ab640d8045c50ae420a089aeac18aa9835580abe9c482766bcc5eecf595d615de164d1ca79c3c9630bfd02031821442305223b9ef8abe7fffaa38cd23265a70614491c6c2ecf91eafbdfa34d99ab07faa017538790ce2d594236f24486ef13c4dd802f20ddc8d8abdba222d843d2f2aa410da672ce7ceaf70fca88fd7ea313adee3d08c8fe769ec7a0a058c4d69c6766df0f1df15931b3ca5181b07acc7c7a763663f80ee25cbc4a82615484c865d97fedb22440b42e7728db0a9a87cbc015c4671c41e05712a841ac6f629a887b4bf4c889685e87adcbf5d806e6a26f76916e78524b768d5602ebe072d81f23ef866b43a7f436d1b795261722168c2e4548ffd2fb4e85c356021b1b0f39900bd3d656c17742ed7f0d44e5259c1dc00e017e00e500ed6660d97b74777aba30dbf6f291101d5b790aa7eafdcfeb0fda1fbcf612d444b42920a36e51cf009f003d5a27f04d80abc0ffcc8fd54f8b7fd33f005b00f781618beb7e8e96fa506f044f5ad512d141e5e65357e0fc8e82748762f9a1cc771814781c72ae866fe5be6fd51c17f67104d83fa3fc3f44f8c7ced5ff88c41810000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>pushButton2</sender>
+        <signal>clicked()</signal>
+        <receiver>filtrardiariodlg</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>filtrardiariodlg</receiver>
+        <slot>reset()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton2</sender>
+        <signal>clicked()</signal>
+        <receiver>filtrardiariodlg</receiver>
+        <slot>boton_canales()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton2_2</sender>
+        <signal>clicked()</signal>
+        <receiver>filtrardiariodlg</receiver>
+        <slot>boton_ccostes()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>reset()</slot>
+    <slot>buscacontrapartida()</slot>
+    <slot>boton_canales()</slot>
+    <slot>boton_ccostes()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>busquedacuenta.h</includehint>
+</includehints>
+</UI>

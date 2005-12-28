@@ -1,0 +1,175 @@
+#!/bin/bash
+#  (C) Tomeu Borras Riera y Rene Merou Setiembre 2004-Octubre 2005
+# Distribuido bajo la liencia GPL
+# Lo ejecuta un usuario con privilegios para crear bases de datos. Si no no funciona.
+#
+# Este script se encarga de crear bases de datos de bulmages.
+# para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos que ser�
+# Este script no se encarga de hacer las inserciones oportunas en la metabd.
+# Aunque es una tarea muy sencilla que puede hacer posteriormente.
+# PARAMETROS:
+#               $1 Tipo: Texto o dialogo
+#               $2 Nombre Base de Datos
+#               $3 Tipo:  0.- Base (Vacia)
+#                         1.- Plan Contable.
+#                         2.- Juego de prueba de bulmages
+#               $4 Nombre de la Empresa.
+#               $5 Ejercicio (ano)
+#
+# La diferencia entre este script y el installbulmages es que este no hace falta que se ejecute como ROOT
+# -------------------------------------------------------------------------------------------------------
+
+version="v0.5.3"
+texto="1"
+ptexto="--texto"
+
+#Buscamos el parametro para saber si es texto o no
+if [ "$1" = "--texto" ]; then
+  texto="1"
+  ptexto="--texto"
+fi
+
+if [ "$1" = "--dialog" ]; then
+  texto="0"
+  ptexto="--dialog"
+fi
+
+#Si el nmero de parametros no es el correcto salimos con un mensaje de error.
+if [ "$5" = "" ]; then
+   echo "creabulmages [--texto | --dialog] nombre [0 | 1 | 2] nomempresa ejercicio"
+   exit
+fi
+
+
+function mensaje() {
+   if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
+      echo -e "$1"
+   elif [ -e /usr/bin/xdialog ]; then
+      xdialog --title "Creacion Base de Datos $version" --backtitle "Asociacion Iglues" --msgbox "$1" 15 60
+   else
+      dialog --title "Creacion Base de Datos $version" --backtitle "Asociacion Iglues" --msgbox "$1" 15 60
+   fi
+}
+
+
+function info() {
+   if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
+      echo -e "$1"
+   elif [ -e /usr/bin/xdialog ]; then
+      xdialog  --title "Creacion Base de Datos $version" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
+   else
+      dialog  --title "Creacion Base de Datos $version" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
+   fi
+}
+
+function tiempo {
+  sleep 1.5
+}
+
+function linea {
+   if [ ! -e /usr/bin/dialog -o $texto = 1 ]; then
+     echo -e "\033[32m----------------------------------------------\033[0m\n"
+   fi
+}
+
+# Para que no se mezclen multiples ejecuciones borramos el sistema de errores.
+if [ -e /tmp/errores.txt ]; then
+    rm -f /tmp/errores.txt
+fi
+
+
+#Nos situamos en el directorio correcto. Este script no funciona si no estamos en dbmodels.
+cd /usr/share/bulmages/dbmodels
+
+
+info "Creamos la base de datos:$2 \n $4"
+linea
+tiempo
+
+LANG_PSQL=`psql -l | grep $2`
+if [ "$LANG_PSQL" != "" ]; then
+	mensaje "No se puede crear la base de datos $2 porque ya existe en el sistema"
+	exit 1
+fi;
+
+
+info "Comprobamos la existencia de PLPGSQL"
+   LANG_PSQL=`locate plpgsql.so`
+   if [ "$LANG_PSQL" = "" ]; then
+      mensaje "PostgreSQL no esta bien instalado o la distribucion no es una \n de las soportadas por el instalador. \
+   No se ha encontrado la libreria plpgsql.so necesaria para instalar las \n bases de datos
+   Por favor, localicela e intente una instalacion manual\n"
+      exit 1
+   fi
+
+
+# La creacion de las bases de datos como UNICODE da muchos problemas con los caracteres especiales
+# Por ese motivo de momento crearemos las bases de datos como SQL_ASCII
+#createdb -E UNICODE $2 2>> /tmp/errores.txt > /dev/null
+createdb -E SQL_ASCII $2 2>> /tmp/errores.txt > /dev/null
+
+
+# Si no ha salido en el exit 1 es que si ha encontrado el plpgsql y continuamos
+if [ "$3" = "1" -o "$3" = "2" -o "$3" = "0" ]; then
+	info "Importamos el esquema de base de datos de una empresa. \n"
+	tiempo
+	psql $2 < crear/bulmages/bulmages_schema.sql 2>> /tmp/errores.txt > /dev/null
+fi
+
+
+
+if [ "$3" = "1" -o "$3" = "2" ]; then
+   # Cargamos lo minimo, para dejar la empresa con un plan contable vacio.
+   info "Cargamos el conjunto minimo de datos. \n Plan contable simple. \n"
+   psql $2 < crear/bulmages/t_configuracion_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_grupo_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_cuenta_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_fpago_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_tipoiva_data.sql 2>> /tmp/errores.txt > /dev/null
+   tiempo
+fi
+
+
+if [ "$3" = "2" ]; then
+   # Cargamos todas las tablas que son de ejemplo.
+   info "Cargamos datos adicionales. \n Ejemplo. \n"
+   psql $2 < crear/bulmages/t_ejercicios_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_cuenta_data1.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_canal_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_c_coste_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_diario_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_asiento_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_apunte_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_borrador_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_registroiva_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_ainteligente_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_binteligente_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_compmasap_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_compbalance_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_balance_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_amortizacion_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_linamortizacion_data.sql 2>> /tmp/errores.txt > /dev/null
+   tiempo
+fi
+
+
+#Ponemos el nombre que corresponde
+info "Realizando configuraciones adicionales. \n"
+echo "UPDATE configuracion SET valor='$4' WHERE nombre='NombreEmpresa';" | psql $2 >/dev/null
+tiempo
+
+DBS=`cat /tmp/errores.txt | grep ERROR`
+if [ "$DBS" ]; then
+   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortaro la instalacion. Para mas informacion consulte en bulmages@bulma.net. \n"
+   dropdb $2
+   exit 1
+else
+   info "La instalacion de la base de datos $2 $4 ha sido un exito. \n"
+  if [ -e /tmp/errores.txt ]; then
+    rm -f /tmp/errores.txt
+  fi
+  if [ -e /tmp/bulmages_generica.sql ]; then
+    rm -f /tmp/bulmages_generica.sql
+  fi
+fi
+

@@ -1,0 +1,1406 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>cuentadlg</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>cuentadlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>634</width>
+            <height>407</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Cuenta</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>11</number>
+        </property>
+        <property name="spacing">
+            <number>6</number>
+        </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout39</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton1_2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image0</iconset>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>toolButton4</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>291</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+        <widget class="QTabWidget">
+            <property name="name">
+                <cstring>TabWidget2</cstring>
+            </property>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>&amp;Datos Contables</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QGroupBox" row="0" column="0" rowspan="1" colspan="3">
+                        <property name="name">
+                            <cstring>GroupBox3</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Datos de Cuenta</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>11</number>
+                            </property>
+                            <property name="spacing">
+                                <number>6</number>
+                            </property>
+                            <widget class="QLayoutWidget" row="0" column="0">
+                                <property name="name">
+                                    <cstring>Layout1</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <property name="margin">
+                                        <number>0</number>
+                                    </property>
+                                    <property name="spacing">
+                                        <number>6</number>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>Codigo</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Código</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>codigo</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget" row="0" column="1">
+                                <property name="name">
+                                    <cstring>Layout2</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <property name="margin">
+                                        <number>0</number>
+                                    </property>
+                                    <property name="spacing">
+                                        <number>6</number>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>TextLabel2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Cuenta Padre</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>codigopadre</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget" row="2" column="0" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>Layout4</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <property name="margin">
+                                        <number>0</number>
+                                    </property>
+                                    <property name="spacing">
+                                        <number>6</number>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>TextLabel5</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Grupo</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QComboBox">
+                                        <property name="name">
+                                            <cstring>combogrupos</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget" row="1" column="0" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>Layout3</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <property name="margin">
+                                        <number>0</number>
+                                    </property>
+                                    <property name="spacing">
+                                        <number>6</number>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>Codigo_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Nombre</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>descripcion</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                        </grid>
+                    </widget>
+                    <widget class="QButtonGroup" row="1" column="1">
+                        <property name="name">
+                            <cstring>buttonGroup1</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Tipo de Cuenta</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QRadioButton" row="0" column="1">
+                                <property name="name">
+                                    <cstring>cuentaingreso</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>&amp;Ingreso</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton" row="0" column="0">
+                                <property name="name">
+                                    <cstring>cuentaactivo</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>A&amp;ctivo</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton" row="2" column="0">
+                                <property name="name">
+                                    <cstring>cuentaneto</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>&amp;Neto</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton" row="1" column="0">
+                                <property name="name">
+                                    <cstring>cuentapasivo</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Pasivo</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton" row="1" column="1">
+                                <property name="name">
+                                    <cstring>cuentagasto</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>&amp;Gasto</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton" row="2" column="1">
+                                <property name="name">
+                                    <cstring>cuentasintipo</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Sin &amp;Tipo</string>
+                                </property>
+                            </widget>
+                        </grid>
+                    </widget>
+                    <widget class="QGroupBox" row="1" column="2">
+                        <property name="name">
+                            <cstring>GroupBox2</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Saldos</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>11</number>
+                            </property>
+                            <property name="spacing">
+                                <number>6</number>
+                            </property>
+                            <widget class="QLayoutWidget" row="0" column="0">
+                                <property name="name">
+                                    <cstring>Layout5</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <property name="margin">
+                                        <number>0</number>
+                                    </property>
+                                    <property name="spacing">
+                                        <number>6</number>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>TextLabel3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Debe</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>debe</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>false</bool>
+                                        </property>
+                                        <property name="palette">
+                                            <palette>
+                                                <active>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>197</red>
+                                                        <green>194</green>
+                                                        <blue>197</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>226</red>
+                                                        <green>224</green>
+                                                        <blue>226</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>98</red>
+                                                        <green>96</green>
+                                                        <blue>98</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>131</red>
+                                                        <green>129</green>
+                                                        <blue>131</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>127</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                </active>
+                                                <disabled>
+                                                    <color>
+                                                        <red>128</red>
+                                                        <green>128</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>197</red>
+                                                        <green>194</green>
+                                                        <blue>197</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>226</red>
+                                                        <green>222</green>
+                                                        <blue>226</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>98</red>
+                                                        <green>96</green>
+                                                        <blue>98</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>131</red>
+                                                        <green>129</green>
+                                                        <blue>131</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>128</red>
+                                                        <green>128</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>128</red>
+                                                        <green>128</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>127</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>0</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                </disabled>
+                                                <inactive>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>197</red>
+                                                        <green>194</green>
+                                                        <blue>197</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>226</red>
+                                                        <green>222</green>
+                                                        <blue>226</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>98</red>
+                                                        <green>96</green>
+                                                        <blue>98</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>131</red>
+                                                        <green>129</green>
+                                                        <blue>131</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>127</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>0</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                </inactive>
+                                            </palette>
+                                        </property>
+                                        <property name="alignment">
+                                            <set>AlignRight</set>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget" row="1" column="0">
+                                <property name="name">
+                                    <cstring>Layout6</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <property name="margin">
+                                        <number>0</number>
+                                    </property>
+                                    <property name="spacing">
+                                        <number>6</number>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>TextLabel3_2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Haber</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>haber</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>false</bool>
+                                        </property>
+                                        <property name="palette">
+                                            <palette>
+                                                <active>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>197</red>
+                                                        <green>194</green>
+                                                        <blue>197</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>226</red>
+                                                        <green>224</green>
+                                                        <blue>226</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>98</red>
+                                                        <green>96</green>
+                                                        <blue>98</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>131</red>
+                                                        <green>129</green>
+                                                        <blue>131</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>127</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                </active>
+                                                <disabled>
+                                                    <color>
+                                                        <red>128</red>
+                                                        <green>128</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>197</red>
+                                                        <green>194</green>
+                                                        <blue>197</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>226</red>
+                                                        <green>222</green>
+                                                        <blue>226</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>98</red>
+                                                        <green>96</green>
+                                                        <blue>98</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>131</red>
+                                                        <green>129</green>
+                                                        <blue>131</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>128</red>
+                                                        <green>128</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>128</red>
+                                                        <green>128</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>127</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>0</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                </disabled>
+                                                <inactive>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>197</red>
+                                                        <green>194</green>
+                                                        <blue>197</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>226</red>
+                                                        <green>222</green>
+                                                        <blue>226</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>98</red>
+                                                        <green>96</green>
+                                                        <blue>98</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>131</red>
+                                                        <green>129</green>
+                                                        <blue>131</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>127</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>0</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>128</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>255</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>0</red>
+                                                        <green>0</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                    <color>
+                                                        <red>255</red>
+                                                        <green>0</green>
+                                                        <blue>255</blue>
+                                                    </color>
+                                                </inactive>
+                                            </palette>
+                                        </property>
+                                        <property name="alignment">
+                                            <set>AlignRight</set>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                        </grid>
+                    </widget>
+                    <widget class="QGroupBox" row="1" column="0">
+                        <property name="name">
+                            <cstring>GroupBox1</cstring>
+                        </property>
+                        <property name="frameShape">
+                            <enum>Box</enum>
+                        </property>
+                        <property name="frameShadow">
+                            <enum>Sunken</enum>
+                        </property>
+                        <property name="title">
+                            <string>Opciones de Cuenta</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>11</number>
+                            </property>
+                            <property name="spacing">
+                                <number>6</number>
+                            </property>
+                            <widget class="QLayoutWidget" row="0" column="0">
+                                <property name="name">
+                                    <cstring>layout17</cstring>
+                                </property>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QCheckBox" row="2" column="0">
+                                        <property name="name">
+                                            <cstring>nodebe</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>nodebe</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QCheckBox" row="1" column="0">
+                                        <property name="name">
+                                            <cstring>bloqueada</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>&amp;bloqueada</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QCheckBox" row="1" column="1">
+                                        <property name="name">
+                                            <cstring>regularizacion</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Reg&amp;ularización</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QCheckBox" row="0" column="1">
+                                        <property name="name">
+                                            <cstring>nohaber</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>nohaber</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QCheckBox" row="0" column="0">
+                                        <property name="name">
+                                            <cstring>imputacion</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Imputacion</string>
+                                        </property>
+                                    </widget>
+                                </grid>
+                            </widget>
+                        </grid>
+                    </widget>
+                </grid>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Otros Datos</string>
+                </attribute>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout33</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>125</y>
+                            <width>588</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel4_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Página Web</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>web</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout32</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>153</y>
+                            <width>588</width>
+                            <height>100</height>
+                        </rect>
+                    </property>
+                    <vbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel5_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Comentarios</string>
+                            </property>
+                        </widget>
+                        <widget class="QTextEdit">
+                            <property name="name">
+                                <cstring>coments</cstring>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>Layout12</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>97</y>
+                            <width>588</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel4</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Cuenta Bancaria</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>banco</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout35</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>10</y>
+                            <width>588</width>
+                            <height>24</height>
+                        </rect>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>Layout7</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <property name="margin">
+                                    <number>0</number>
+                                </property>
+                                <property name="spacing">
+                                    <number>6</number>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>TextLabel1</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Nombre</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>nombreent</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>Layout8</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <property name="margin">
+                                    <number>0</number>
+                                </property>
+                                <property name="spacing">
+                                    <number>6</number>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>TextLabel1_2</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>CIF</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLineEdit">
+                                    <property name="name">
+                                        <cstring>cif</cstring>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout34</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>69</y>
+                            <width>588</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel3_3</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Teléfono</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>telf</cstring>
+                            </property>
+                        </widget>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel3_3_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Correo Electrónico</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>email</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout34_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>40</y>
+                            <width>588</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel3_3_3</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Dirección</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>direccion</cstring>
+                            </property>
+                        </widget>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>TextLabel3_3_2_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>C.P.</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>cp</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>5</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </widget>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>Layout14</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <spacer>
+                    <property name="name">
+                        <cstring>Spacer1</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>205</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>PushButton2</cstring>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string>Cerrar</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="1276">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000004c3494441545885ad974f681b471487bf350ae8a0821c64f0eec90bbd8cc087f816e9d4985e726a65d2434828addd5ee24b10be2424a518078a137a2c6da54269f025897a09e450c82165e54bd14252341713152256020957108317bcb03d8c77b5bb5ef94f9301f3f4bcb333effdf69b37339ad3766004e4a133ea60e6cd23be51347c0e9bd376b493fa9fc59fea8c3ab18749df281abef3d2c17a61e1bc74308a866f940cdf281a7e5affb3fa99e09f4164491f54675110acdc5ac16a58c87f25625aa42a73d278493f138d2ccd827a490e250072203133267220b1ea16d2537e329893c60dac761c0346d1f077dbbbb843170ab07a6b9527bf3f09e6a1fe4b1d312d4245025bae94492a338901cd6a5a13232c97cabef5423d5fbd1b9f3cd9ea3fd53133261daf83c8885099c5e5c55830c9798e6700300b269d61073123264e0eb0fcf5725c9919a5489499c5cf167df9b78c2933918180fece50f972208f0d2016cc972a9812a55019399064c9b2beb10e9efabc4edbd132a7a5ff38f94fa3ccc2fc02952b15cc9c89ec4b76dbbb9c2f9ef727d60188d3ffaecdf55c5ccfc5eeda54af57a93fab033095c640403f23c5c0fb68222370f75ca5c048b2565dc3693ada545a850254e6f9a34befffb4e27c11f323937d6f9f56b715024efe508189f48f4ea6ffb46d36378bbbe772ffe67d1acf1a804af6c82a88d2afe7742e7e7a9185f9055ccf850cb45fb5cf3c79962c76d70694b2abd555aca6a5a5d681a093993369f7db983993db776fab6f37902a185c048227af4efe340bf30b880b42bd3f9488825274e25e006066c793db6f6c4ccfc47eabecf257cbcc318774e5a994713d175c906f25b57bb590fed4bdc0281afeebe66b5afd5698b1f98189ecc93083b9dc1cb22fd1f33ab22fc375fdfc8fe7a9ca2ccd2f810091175cfee232e55219a7e96801f031050045e981897c2bb9f6f9b570a0cd079be0813db23131915d091ec891649f7d2e5cbc009eca38aa8cf85090258b1c486ee46fa8c1269e07003da763f76c569657f0fd708745d3b4f07775ad8ac88bb1527da98ad6a122ae701179811cc9d0d6eed5d87ab615933fc68051347ceb570bf946627ae3e2d3ebf5d00bfac460ae5ebf0a80ddb5c34c39a7ce0dd973113f417f30ef548cfe3d9541cb6d8513e8051d86c001d053d6f7fdf06febb72d3ab243e3514331705837c48c88fb09fa8320a6a2b57fd69ba5d56db1565d53191f406fd88342c21e28653800c7710058df58a7f1a8c1c6cf1b341e35c2dd530e24b56fe3f44719980ae47f5a7f8adc93e8393dcc7e7f671f1d9df64e1b1d3dd55faa2c51b9524114049bdf6df2f8c7c7a102818dd6fe64dd990ae8b7bb36baa72bba0fdbc81bd1dc6932ed4dd3dc69a6fac12e27fb8a1dd91f671e3011adfdc9bd2763e64d9ca6a319a5f1a1d2f77dda7fb6c3cead7f5a13adc808f00eb7ee91e4ce3777942227d01f0411ae82289d9aa685c1d4ea354446b03dd83e62eb3fd4b9f4f1a571e619f54e6c354ca0ffd83361d09911449579587f8898117406e35d32c83c5acc02fae5e868ed3ff3bd201a79b9548e29038499cbbee4c1f70fa87c5219d39f52fb531538ed8d06c6a7d94099edbfb6a9deac86cfc3cc13f427ef054718388d8d9eeb272913ad8069b53ff566f43e6eb969cc042dca54b27fea99f05d7cab69694edbd1a2f6b8feff01fb0981ea4dfa4e690000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="980">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000039b494441545885bd965f685b6518c67f91167ac04103ab2cb0c102f6a630b09917b67430c181d0ed4650680683352014f1c21baf8630ad57bb9e20a488d0dd28ec62ac775387d00c9426d0da4c1c24c596134d20292be4041b78bcf8bed3fc3b6dfe6d7be1f0e4e4247ccff39ce77bdf0f491c77ad6fca94c5beee8bcad1a52471ece2f6eab9aaff19748b3e99b2f45c3bc311d8ec5ce8c47a6e60fb6f9f95a4b2dc57eb40d93a9076254939575251bb031158efd7014b426edbf7aea4b2fe79a90ef855b6af617db39545ae28a9dcea447702833a605f83aa6df7394945fddb4ce0b513f7c985139f76d628781e1086f4d30aecc3ca8f29a8591c8395c7a937e44a2d361c77f59d01bfec6b90dd924a1b789832f8d5dd87022eea6564a07d376c64cd879f7e732d0957baab1e091ce7c0ede92e2c2c7e3623e59a3aa475a2d981fe33b01882bd0c7c190bfc8b770838e07d1486a74fa87c1c62f677486f55601a525b15c6983ffafd8904525b018b5f06eac0f9001287e08c02f1308eb70f7508d781ef42c44e87493f83d90b616aacf54660b6d981272b30023ca6817b19f822d6503e6a9557f6a9d40cd142dd60f6977bc42621fdcce356af0ed0ecc04c026eae361cf0f16c063e8f052baf43a40e2c25998a5f873cc4261d967b75a0230333d76132691c786416f01e013b19bc6ba140e5f9a524dc4890dff5200ad95d6f880c343b31671670e6000f1ce854fe6992e88d0414207ace81024c9d735a3230701fa8fe9c943e44d5ab48efa3f27b4897913b87f40e72ef254d3fb0cd28e7562daaa50ff49e81b672de4dc0c878b0f2f1f344e209a8406402284134e25864880c3495170f4e7bbe06eced90bf168330142ac004144a06f32586cc0098b41f04a4bd06517b1ffd3343f64a8c489856272618b00f74515eb8b2d870a00ed91a4cfd91217bc93a516a38d1dc07fa9b050be3d255241b38d9c0e9feaa79fec3aaf426da3e8b7406e934d2eb68e32d3b3b8a9db3a0e75d50fdfa83c0b497ef9bb457ed0072bf4f4a67d0c6b8597c7d0409b47dfbced1aeb8d3eb34ec380f2c4db72a7f6095fb27217f0aaeac1ae576712d2c0eef805fe59bd346f903abdc2eee3be09f0973df268df285f891f2231cfa3cf0d776abf27607fc13d1af6a511ee4c0607d6072cae068d314f400072a07c0298b973afb40e185f401bffcf97f088e0378103e051c58ac60fa40a9d107226d7d20a4a6036a4069f99b356e31cf326b8c314f8d17731ffa24f4b6a48d1309844221808b5d7c18b8ba127815f53f15bf6a244beeb0ef0000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>codigo</sender>
+        <signal>returnPressed()</signal>
+        <receiver>descripcion</receiver>
+        <slot>selectAll()</slot>
+    </connection>
+    <connection>
+        <sender>codigo</sender>
+        <signal>returnPressed()</signal>
+        <receiver>descripcion</receiver>
+        <slot>setFocus()</slot>
+    </connection>
+    <connection>
+        <sender>PushButton2</sender>
+        <signal>clicked()</signal>
+        <receiver>cuentadlg</receiver>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>codigo</sender>
+        <signal>returnPressed()</signal>
+        <receiver>cuentadlg</receiver>
+        <slot>codigo_ret()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton1_2_2</sender>
+        <signal>clicked()</signal>
+        <receiver>cuentadlg</receiver>
+        <slot>saveAccount()</slot>
+    </connection>
+    <connection>
+        <sender>toolButton4</sender>
+        <signal>clicked()</signal>
+        <receiver>cuentadlg</receiver>
+        <slot>deleteAccount()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>TabWidget2</tabstop>
+    <tabstop>codigo</tabstop>
+    <tabstop>codigopadre</tabstop>
+    <tabstop>descripcion</tabstop>
+    <tabstop>combogrupos</tabstop>
+    <tabstop>imputacion</tabstop>
+    <tabstop>bloqueada</tabstop>
+    <tabstop>nodebe</tabstop>
+    <tabstop>nohaber</tabstop>
+    <tabstop>regularizacion</tabstop>
+    <tabstop>cuentaactivo</tabstop>
+    <tabstop>cuentapasivo</tabstop>
+    <tabstop>cuentaneto</tabstop>
+    <tabstop>cuentaingreso</tabstop>
+    <tabstop>cuentagasto</tabstop>
+    <tabstop>cuentasintipo</tabstop>
+    <tabstop>debe</tabstop>
+    <tabstop>haber</tabstop>
+    <tabstop>nombreent</tabstop>
+    <tabstop>cif</tabstop>
+    <tabstop>direccion</tabstop>
+    <tabstop>cp</tabstop>
+    <tabstop>telf</tabstop>
+    <tabstop>email</tabstop>
+    <tabstop>banco</tabstop>
+    <tabstop>web</tabstop>
+    <tabstop>coments</tabstop>
+    <tabstop>PushButton2</tabstop>
+</tabstops>
+<slots>
+    <slot>cambiapadre(const QString &amp;)</slot>
+    <slot>codigo_ret()</slot>
+    <slot>close()</slot>
+    <slot>deleteAccount()</slot>
+    <slot>saveAccount()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

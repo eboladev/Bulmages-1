@@ -1,0 +1,232 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>ListSerieFacturaBase</class>
+<author>Tomeu Borrás Riera</author>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>ListSerieFacturaBase</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>326</width>
+            <height>339</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Series Factura</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
+        <property name="spacing">
+            <number>0</number>
+        </property>
+        <widget class="QFrame">
+            <property name="name">
+                <cstring>frame3</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>m_botonNuevo</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image0</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Nueva Serie</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Nueva Serie</string>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>m_botonBorrar</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image1</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Borrar Serie</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Borrar Serie</string>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>m_botonGuardar</cstring>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>image2</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Guardar Serie</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Guardar Serie</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer3</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>101</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </hbox>
+        </widget>
+        <widget class="QTable">
+            <column>
+                <property name="text">
+                    <string>Codigo Serie</string>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Descripción</string>
+                </property>
+            </column>
+            <row>
+                <property name="text">
+                    <string>0</string>
+                </property>
+            </row>
+            <row>
+                <property name="text">
+                    <string>1</string>
+                </property>
+            </row>
+            <row>
+                <property name="text">
+                    <string>2</string>
+                </property>
+            </row>
+            <row>
+                <property name="text">
+                    <string>3</string>
+                </property>
+            </row>
+            <row>
+                <property name="text">
+                    <string>4</string>
+                </property>
+            </row>
+            <row>
+                <property name="text">
+                    <string>5</string>
+                </property>
+            </row>
+            <row>
+                <property name="text">
+                    <string>6</string>
+                </property>
+            </row>
+            <row>
+                <property name="text">
+                    <string>7</string>
+                </property>
+            </row>
+            <row>
+                <property name="text">
+                    <string>8</string>
+                </property>
+            </row>
+            <row>
+                <property name="text">
+                    <string>9</string>
+                </property>
+            </row>
+            <row>
+                <property name="text">
+                    <string>10</string>
+                </property>
+            </row>
+            <property name="name">
+                <cstring>m_listado</cstring>
+            </property>
+            <property name="numRows">
+                <number>11</number>
+            </property>
+            <property name="numCols">
+                <number>2</number>
+            </property>
+            <property name="selectionMode">
+                <enum>SingleRow</enum>
+            </property>
+        </widget>
+    </vbox>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="535">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001de494441545885d595ad8edb4014466f581f645949b15f61595fa38fd1b2e26595ca0b8ab2b07006544a80a504442b0383010603024655c829f01d7bc71bcbce7adc9f91a2cf1329f1f59973af8506c122348829810068deb2f725186b24f9bf19fbee4b638d1098bdc2a54dd7b4694a4f38f545cccdb4b2727e01009cdb38d47a1d201c6f23b19c8057027b0740e5d2e398452071e096a545e0daa7ef969b4fe2d504e2f27a0ca674c9f7559316b18e039180a773a0db0354d3ddb19840d0dfec8e1eb7872fdfccd55cc781b8f418d09664df5e6f2de0e0e3c31611b94a6239814137ec8e1ecef0e3a7030f5beb383c808890df81ae0acd1ab83c9b907be0dc1358c7012550d5a12770815de9b518cfe7290259e60070a8747f6a63a7b98a03fdbb2024040e95e6c96b116105079ef73ff4f6c759546b5629812c0ec4bef77af3687f7c2b566e40a40e191d884f1e0b8dfd3f46c2a504163910cfbc2310f39c127841c291d181cb20a7483429813c0e0c49e8cd479d6858610e4c111890c83a074609441706045c93d3812902232eacebc0b01bae10c83f075ed905cbe6c018813feac03f3d07fe570736c61a29ee0ab14f568a77059fbe3eca7bb997eff2286fe45e7e499efddb0f1ba161639f6c7fbfbb425e9e89086b7da61df80bf91bc8344413e90a68a30000000049454e44ae426082</data>
+    </image>
+    <image name="image1">
+        <data format="PNG" length="940">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000373494441545885bd963f681b571cc73f36191ce86095163274688b0aa17fc0f2d4880632b81070ba1832388194a474089d3a94d2a5e0fe194ae60c05851050970c1e82ddad1d0a77434132084b2da9904c13ce708673c870128ee0dbe1bd27e99c3bcb92e5fee0f8deef1e77eff7fdbeeffbdd43a1902f140acff748e43549b1248be3e4514d7ae97b2979ff612ac63a76c4070683d0a0578b143f1e14918599952914aa1dbf0049d27303f57fed7d2cc58da39598be029155a01a48925a417239521538d203e3842d428161df8f205b89a929e022b2cbe0d582c4f356982ce2743ce01488d4f7403f97a4d6cbbb63ea0ac4f69d4a235250954a0fbd543c1d0fb8b0cb20bb255535f71bbea440fafeee86009d8a070eef864a23929e4bbffd194891b4e107aadf95004de6813092d60a23aab0d7971724bf35e89055a38e53607c0f84917413e973328b880f241d48f1d579e9328a9690eeb554a945d281e990778614982de68bd08462be88dff449e60c626f1fbe7e15ce033d606e0bbe5b24112fe02cc0a739ce769e410f723de0fedb2cf6a0ba03c50f7274d904c06ffaccfa4d1ff2f4274fe6431f6faec319e06f06f8740bbe3545745e98c23ad773b0ff8cfdaec9777b061b7ffdcae23b50fda7c30acb8021399e07fcb2f41366191cae217d55307b7d755eba82b4847409e923a40f911e94ccfb2d03c31e984d673ec81371e13a5c2c1905b62de36d60678bce8d9954e6eddb25b8f119ed271d780b1a4f3acc5905c833611ff0cb86f92ad23718d669cc7fb1cc5d570e920a9ca80fc4bf97a4ab28bec2c0ed975060270fece4ee7cd00a628b3a611f188eac35bffca61977ff803089937b60283ad7d2dddeee024f77687fb20839d8dd075e87dd3d83ed3da6e0812ce60b48ef239d47caa3fa52215589610f1cbf0f8c60befbf1ad81023d6874e1dded2d1a17ad127b032526ef0359ccd7cb66fc61d9307f03e91cd26b48afa0ca4221d303c7de05f18f2ba96e8fd68ddbdd3920785092cea1cabc99dc3b8304aaafdd31e3a112ff82f13c70bb9064fec83277272157f0bdb2616e27d7eaad4c0f8cdd07a29b05c3fc91656e27770ab83361ebe79261be7aadcfdce1c9fbc0e37a92f96105dc89e80f25989fc8035991a5804377321a5660720f1c8e510a8ce8849eef31e3f95ee23092c085a27eb8bfc90acbacb3c91ccb74994efede173328d4ccd11ef005a0d3ba467be07fc0ff00488617606a7160e20000000049454e44ae426082</data>
+    </image>
+    <image name="image2">
+        <data format="PNG" length="1229">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000494494441545885b55731685b57143ddf38e03153c0a183032ae41b6570c810c95088c69fb49817b28884d234edd27430c283713aa4b287a078282443823484481a52ff57084e97e20c86ff1a0ac601d95628c2810e3268503d84f891084e87a7ff2cd98a25d9ee83c7d515d2bfe79e77debdff8235828a608d0854804e3e0086bb97dff7e3db2f3f6501905532580ec82ab9174cb7ff777d7e37a4004cf01a292604ebcb75667359d697ebfbc01c8689be18101382d94759567355661f6559cfd5ad7f58660e44da7c18b94ccb40eb0a99d86bfb61e6408496feeafee07bd76199e9aa7ed60cfdf9e9fc81007a61c68dbafb98e959fddd18e88599b1e818d37369a6efa62d889ed57fd435161d63fa6e9a2b8515ce4ccf903573a50754450111405514e29138421f80f1df281cc7d20d0dddd028be2e62767216f79fde07000c8441e391385031419d538ea1a702c4cfc68f05801814d0ef34bc110faaa230959a02159d81bd99ab8ac958bd31fed5efafc2ffcd3f52f0d173a3d09734761a3b28bc2e986401c3f471aaff53cb8dba5c9c5fe4cd6f6e9235f2c1fc030260c73a8056f5ff432efebec8b1e818ddb32edda87b6801266f2499bc9164b01cd8e01deb00002ebd5c22374d706e900bcf16f8feaff7cc3fc91b30519733d199be82e77fca535c1356fd61bcc1560d846793f82c81176b2f7079e4320aab05780d0fc552115ec3c3f677dbf0e0c1d73ece9f3b0fddd0c020b051dae878febaa1010dc89284ffd8b7ea0fe339a1da118151ffdf84bfe6c31bf120cb12de190fb2d4b44ddf2ff9487c9e30df8f78906b122fff78090d0d0181d9d2ac0570e7dc1d94dd324444e0cc9767301e1f07159d50f04ea002cbc0787c9c0bcf16e07df4201b12d7bfbe6e1f9499cf000d406b0d0f1ea496d6dfc10eb4d6c66f689457cb961937e262e8c410f4470dffb10fe79403d6e8840c0ceea37f248162a9885bdfde02490bc0711cfb797b6a1b222250582b5806bc48d38e78d05a43440464455aeb3ff6f1f0e9c336fa51c12e03ce2987f52775482de1353c9cfee13448626b6b0bc3c3c36de7da0a26792369ce5a6b0cc1648a13003ec2668e1340eac714c6bf1847a002a735e981100900c877e68c0bba60030c0f0f035b4da76949da5d7c5ac4dbf25bc85fa5d1802b0000c2156d7e58515b2baeaa28b4ddffcd5f3699b99731d7a4b9aad56a571bbb10637a2eddd6fbc584a0b8264c23ab9199f94cdbfd6fab0300b8f97c9399b90c579eadec02d820f9815cdf58273f74f6631763ccdccb705dae5b0b80f96973eff3d37906ca149f4e5d7720acfd85d502128d04e4aadc3dec93807aa5307a7214ea95eae8875d4e968c7664c9fc5f962586300459966db57f5fd76dad80e10eb35f7cbed8d5a62fa66d9f0f5f34c2ccc3cad75afbf7f61efb3e10a8c0618d4ea002c7711c38a30eae7c7505b93f7388ff1bef68e77e9e83bea44de66bd2dc7dc0660e98ae7a3b75bb4dfdad4cf43417843b9fcbb3aeead6c62ec418e402ce4ccf58db89011cf076dcd724d30a269bcb327621c6d4648aa9a9145393a9bed4dfd35cf08939611f33a9c914971e2ef5a5fe9e67c37e99111382c96b49cb4008fad0b361dfb35e0b98701f6936fcbfed7f0f3ec69c9b6934c80000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>m_botonGuardar</sender>
+        <signal>clicked()</signal>
+        <receiver>ListSerieFacturaBase</receiver>
+        <slot>s_save()</slot>
+    </connection>
+    <connection>
+        <sender>m_botonNuevo</sender>
+        <signal>clicked()</signal>
+        <receiver>ListSerieFacturaBase</receiver>
+        <slot>s_new()</slot>
+    </connection>
+    <connection>
+        <sender>m_botonBorrar</sender>
+        <signal>clicked()</signal>
+        <receiver>ListSerieFacturaBase</receiver>
+        <slot>s_delete()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>close()</slot>
+    <slot>s_new()</slot>
+    <slot>s_delete()</slot>
+    <slot>s_save()</slot>
+</slots>
+<layoutdefaults spacing="2" margin="6"/>
+</UI>

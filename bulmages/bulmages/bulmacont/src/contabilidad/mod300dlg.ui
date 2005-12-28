@@ -1,0 +1,344 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>mod300dlg</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>mod300dlg</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>407</width>
+            <height>288</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Modelo 300</string>
+    </property>
+    <property name="icon">
+        <pixmap>image0</pixmap>
+    </property>
+    <property name="iconText">
+        <string></string>
+    </property>
+    <property name="acceptDrops">
+        <bool>false</bool>
+    </property>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>30</x>
+                <y>20</y>
+                <width>120</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Periodo a declarar</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>boton_cancelar</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>209</x>
+                <y>240</y>
+                <width>80</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Cancelar</string>
+        </property>
+    </widget>
+    <widget class="QComboBox">
+        <item>
+            <property name="text">
+                <string>1º trimestre</string>
+            </property>
+        </item>
+        <item>
+            <property name="text">
+                <string>2º trimestre</string>
+            </property>
+        </item>
+        <item>
+            <property name="text">
+                <string>3º trimestre</string>
+            </property>
+        </item>
+        <item>
+            <property name="text">
+                <string>4º trimestre</string>
+            </property>
+        </item>
+        <property name="name">
+            <cstring>trimestre</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>160</x>
+                <y>20</y>
+                <width>90</width>
+                <height>21</height>
+            </rect>
+        </property>
+        <property name="toolTip" stdset="0">
+            <string>Seleccione periodo de declaración</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>boton_vista_previa</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>310</x>
+                <y>240</y>
+                <width>80</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Vista Previa</string>
+        </property>
+    </widget>
+    <widget class="QButtonGroup">
+        <property name="name">
+            <cstring>buttonGroup1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>70</y>
+                <width>380</width>
+                <height>100</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Cuenta a devolver</string>
+        </property>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>personalButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>70</y>
+                    <width>151</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Personalizada</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>cuentaButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>30</y>
+                    <width>141</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>En el banco</string>
+            </property>
+            <property name="checked">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>dc</cstring>
+            </property>
+            <property name="enabled">
+                <bool>false</bool>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>250</x>
+                    <y>70</y>
+                    <width>30</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>12</string>
+            </property>
+            <property name="maxLength">
+                <number>2</number>
+            </property>
+            <property name="frame">
+                <bool>true</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>banco</cstring>
+            </property>
+            <property name="enabled">
+                <bool>false</bool>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>152</x>
+                    <y>70</y>
+                    <width>43</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>1234</string>
+            </property>
+            <property name="maxLength">
+                <number>4</number>
+            </property>
+            <property name="frame">
+                <bool>true</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>entidad</cstring>
+            </property>
+            <property name="enabled">
+                <bool>false</bool>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>201</x>
+                    <y>70</y>
+                    <width>43</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>1234</string>
+            </property>
+            <property name="maxLength">
+                <number>4</number>
+            </property>
+            <property name="frame">
+                <bool>true</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>cuenta</cstring>
+            </property>
+            <property name="enabled">
+                <bool>false</bool>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>286</x>
+                    <y>70</y>
+                    <width>80</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>0123456789</string>
+            </property>
+            <property name="maxLength">
+                <number>10</number>
+            </property>
+            <property name="frame">
+                <bool>true</bool>
+            </property>
+            <property name="alignment">
+                <set>AlignHCenter</set>
+            </property>
+        </widget>
+        <widget class="QComboBox">
+            <property name="name">
+                <cstring>combocuentas</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>154</x>
+                    <y>30</y>
+                    <width>212</width>
+                    <height>21</height>
+                </rect>
+            </property>
+        </widget>
+    </widget>
+    <widget class="QCheckBox">
+        <property name="name">
+            <cstring>borradorcheckbox</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>250</y>
+                <width>161</width>
+                <height>21</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Generar borrador</string>
+        </property>
+    </widget>
+</widget>
+<images>
+    <image name="image0">
+        <data format="PNG" length="1006">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000003b549444154388d95943f681b6718c67f763d28c18302169cc182d316856690c8501d5df4d149ddda2c4da6fc9992746857c7d0bd646be8126f7186602bc5d85f20a04fdbb9502c8526524c1c648183229a70ce60e41b024f8753142b76207997e79e17eee177dffb7e079fa8417ba09aab4991a486a4486a355a524f5228a923d55c4d5123929cf4a99c235573354952d48b2449bd5e6fcc4751a29d4e477afe05c1ea0cc97ad266b8f981fcbd3f44be196e1e099efc54f0fad63acc80db7214678ab8c78e83a983915f7fbccec1f4012b8f5728ce148fbc3f712c6d28eda5f6d88977287a45e8033e34ba8dc47787bedf209fce73f2ccc92339c713cf40f36d93fc741ed775e3e45d077310f6438afed07f6ed55c4d83f6606cfaea48721fcef4fd0ca24674ece08e2536a70d1bfd8d84b4eb30736644eaba87c86712f2cfaeb5ea5ab205ff29a9ce313a48b417f6b4bcb4aca83118231f23d673e9cee21d5187f5bfd7611a1acd06784775a7bf0339a86e54a9fe55e5c75fbfe7dacfd7b466d70487b6421de9f6c3450a5379ec0b87990b702f87c7f091866f1a54e62ab8377572533eb71edc22ff268fddb75cfffa0ab94bb971520da4def06675da1d6920b50e6b24b51a1d75a29e2e342ea8d56be9eee25d95bf2bcbf77cf99e2f2feda9f44d59a823dd595cd697545e79a594525e7929927e5ff843857305799eaf743a2ddff3c5f2d29785468ab4ac6b2aa8a079cd27cd8134ffcbbc3ccf179004f7c2486a2bd98270a8ede1d4db1f6d43fb900ef4e1af17b6b479bf252fed0990e7f9fa2a7726fbdbd9d9b3acfefb88d9d719aa2f2c99ee2cab2f2c99ee29569b8f12ffac4aa69b65b55925f332cba3a79613dd53dc7b7a9fd96e96c5f036cdad67c4f13e33d36926cbd932ee2518df606387c919421c2613e07004d98010479031582c41d660711433010e4b256b70711de39bd1dac6c44cd65fd729eec5d8a6c510609f590202ecae23c0e0761dc538c0ed5a4c6c70db161317134f05bb6d0928e1ba8ed430b8782e60b29c29e3520e930d08093143329331b878a8298bc95470584cb682c351ca1a6c5ca5942d275f78ba420c789ec7e5cb1712e257dd1c4bff2c91ebe759d95ea2d02fb1f26489425c62e5499542bfc0ca7695425cc20eb5be6d2953c1edd63154705b96540a6e2edce4fc0fe7272606ed8116fe5c60e5a125de3fa0326d70ef36383105bc83f25499fad406a9a137d315dc3b37f2c194c1ed5b984e71e5d2456e5cbf313176a597abcbaa3eb0bcdade190d208e93a7d15092060731c4f15ed27b1b53f8b6c0c59f2e72f5cad551deffbb344f4e4b63c0e70000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>boton_vista_previa</sender>
+        <signal>clicked()</signal>
+        <receiver>mod300dlg</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>boton_cancelar</sender>
+        <signal>clicked()</signal>
+        <receiver>mod300dlg</receiver>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>personalButton</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>mod300dlg</receiver>
+        <slot>personalButtonPressed()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>trimestre</tabstop>
+    <tabstop>cuentaButton</tabstop>
+    <tabstop>combocuentas</tabstop>
+    <tabstop>banco</tabstop>
+    <tabstop>entidad</tabstop>
+    <tabstop>dc</tabstop>
+    <tabstop>cuenta</tabstop>
+    <tabstop>boton_cancelar</tabstop>
+    <tabstop>boton_vista_previa</tabstop>
+</tabstops>
+<slots>
+    <slot>personalButtonPressed()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

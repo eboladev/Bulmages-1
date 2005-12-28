@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<DOCUMENT>
+   <ainteligente>
+      <descripcion>Amortizacion</descripcion>
+      <comentariosasiento></comentariosasiento>
+      <binteligente>
+         <fecha>$fechaasiento, Fecha$</fecha>
+         <conceptocontable>Amortización</conceptocontable>
+         <codcuenta>$cuenta, Cuenta Amortizacion$</codcuenta>
+         <descripcionb></descripcionb>
+         <debe>$cuota$</debe>
+         <haber>0</haber>
+         <contrapartida></contrapartida>
+         <comentario></comentario>
+         <canal></canal>
+         <marcaconciliacion></marcaconciliacion>
+         <idc_coste></idc_coste>
+      </binteligente>
+      <binteligente>
+         <fecha>$fechaasiento$</fecha>
+         <conceptocontable>Amortización</conceptocontable>
+         <codcuenta>$cuentabien, Cuenta Bien$</codcuenta>
+         <descripcionb></descripcionb>
+         <debe>0</debe>
+         <haber>$cuota$</haber>
+         <contrapartida></contrapartida>
+         <comentario></comentario>
+         <canal></canal>
+         <marcaconciliacion></marcaconciliacion>
+         <idc_coste></idc_coste>
+      </binteligente>
+   </ainteligente>
+</DOCUMENT>

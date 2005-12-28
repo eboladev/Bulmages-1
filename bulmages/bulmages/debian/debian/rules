@@ -1,0 +1,151 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+#Bueno, voy a ir trabajando con este fichero, os pongo aquí mis dudas y los pasos que
+#me quedan pendientes.  AL final ya los quitaré. Al final, a parte de multiples vistazos
+#generales me queda:
+
+
+#PENDIENTE:
+#1- Configurarlo para que el directorio de trabajo de la instalación para que sea
+#debian/tmp
+#2- No se si el dh_testdir está preparado para ir solo y el .pro de mi checkdir tampoco
+#me gusta nada
+#3- comprobar que el qmake trabaja en el directorio adecuado y que lo pone todo en
+#destdir y no en /usr/loque sea
+
+#He quitado el deisntallbulmages y el installbulmages del directorio installbulmages
+#porque supongo que tienen que estar en este fichero esas ordenes.
+
+# en otros ficheros:
+#A- en control las dependences se ponen en depends o en build-depends? precisar
+#B- Me falta añadir a Ramón en el fichero copiright como autor de codigo y comprobar si
+#hay otros no incluidos
+
+
+
+package=bulmages
+
+#función para comprobar que estamos en el directorio correcto 
+define checkdir
+	@test -f debian/rules -a -f bulmages.pro || \
+	(echo Not in correct source directory; exit 1)
+endef
+
+#función para comprobar si somos root
+define checkroot
+	@test $$(id -u)=0 ||  (echo You need to be root; exit 1)
+endef
+
+#Directorio superior del código fuente 
+SRCTOP =$(shell if [ "$$PWD" != ""]; then echo ""PWD; else pwd; fi)
+#Directorio destino donde se instalarán los archivos
+DESTDIR =$(SRCTOP)/debian/$(package)
+#Definición de directorios, BIN_DIR el del ejecutable, DOCS_DIR los manuales 
+#  y PIXMAP_DIR el de los iconos de los programas
+BIN_DIR =$(DESTDIR)/usr/bin
+DOC_DIR =$(DESTDIR)/usr/share/dor/bulmages
+PIXMAP_DIR =$(DESTDIR)/usr/share/pixmaps
+
+CFLAGS = -Wall -g
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+	CFLAGS += -O0
+else
+	CFLAGS += -O2
+endif
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+	$(checkdir)
+######ya veo que estoy repitiendolo, ver lista de cosas pendientes
+	
+	# Add here commands to configure the package.
+	
+	#la madre del cordero:
+	qmake
+	
+	touch configure-stamp
+
+#################################
+# Me para por hoy aquí, mañana sigo
+#
+#################################
+
+build: build-stamp
+
+build-stamp: configure-stamp 
+	dh_testdir
+
+	# Add here commands to compile the package.
+	$(MAKE)
+	#docbook-to-man debian/bulmages.sgml > bulmages.1
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
+
+	# Add here commands to clean up after the build process.
+	-$(MAKE) clean
+
+	dh_clean 
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k 
+	dh_installdirs
+
+	# Add here commands to install the package into debian/bulmages.
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/bulmages
+
+
+# Build architecture-independent files here.
+binary-indep: build install
+# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs 
+	dh_installdocs
+	dh_installexamples
+#	dh_install
+#	dh_installmenu
+#	dh_installdebconf	
+#	dh_installlogrotate
+#	dh_installemacsen
+#	dh_installpam
+#	dh_installmime
+#	dh_installinit
+#	dh_installcron
+#	dh_installinfo
+	dh_installman
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+#	dh_perl
+#	dh_python
+#	dh_makeshlibs
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure

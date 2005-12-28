@@ -1,0 +1,71 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>UInominas</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>UInominas</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>600</width>
+            <height>484</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Modulo Nominas</string>
+    </property>
+</widget>
+<menubar>
+    <property name="name">
+        <cstring>MenuBarEditor</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>600</width>
+            <height>21</height>
+        </rect>
+    </property>
+    <item text="Menu" name="PopupMenuEditor">
+    </item>
+</menubar>
+<toolbars>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>Toolbar</cstring>
+        </property>
+        <property name="label">
+            <string>Toolbar</string>
+        </property>
+        <action name="SelectorAction"/>
+    </toolbar>
+</toolbars>
+<actions>
+    <action>
+        <property name="name">
+            <cstring>SelectorAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>tux1.png</iconset>
+        </property>
+        <property name="text">
+            <string>Action</string>
+        </property>
+    </action>
+</actions>
+<connections>
+    <connection>
+        <sender>SelectorAction</sender>
+        <signal>activated()</signal>
+        <receiver>UInominas</receiver>
+        <slot>mostrar_selector()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>mostrar_selector()</slot>
+</slots>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

@@ -1,0 +1,49 @@
+/***************************************************************************
+ *   Copyright (C) 2003 by Josep Burcion                                   *
+ *   josep@burcion.com                                                     *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+#include "bmodproduccion.h"
+
+
+BModProduccion::BModProduccion(BSelector * ref, QWidget * parent, const char * name, WFlags f)
+ : UIproduccion(parent,name,f)
+{
+ctllog->add(LOG_SEG | LOG_TRA, 2,"PrdCtt009","El usuario entra en el Módulo de Producción." );
+PunteroAlSelector=ref;
+QVBox* vb = new QVBox( this );
+vb->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
+zona0 = new QWorkspace (vb);
+zona0->setScrollBarsEnabled( TRUE );
+setCentralWidget( vb );
+}
+
+
+BModProduccion::~BModProduccion()
+{
+ctllog->add(LOG_SEG | LOG_TRA, 2,"PrdDtt010","El usuario sale   del  Módulo de Producción." );
+PunteroAlSelector->ModuloVentas=NULL;
+PunteroAlSelector->showNormal();
+}
+
+void BModProduccion::mostrar_selector()
+{
+//Muestra el selector si está oculto
+PunteroAlSelector->hide();
+PunteroAlSelector->showNormal();
+}
+

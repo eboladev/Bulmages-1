@@ -1,0 +1,13 @@
+#!/bin/sh
+
+
+if [ -z "$2" ]; then
+    echo "cargaemp [host] database file"
+    exit
+fi
+
+if [ -z "$3" ]; then
+    pg_dump $1 > $2
+else
+    pg_dump -h $1 $2 > $3
+fi

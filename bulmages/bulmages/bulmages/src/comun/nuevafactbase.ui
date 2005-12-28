@@ -1,0 +1,227 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>nuevafactbase</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>nuevafactbase</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>485</width>
+            <height>150</height>
+        </rect>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>485</width>
+            <height>150</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>485</width>
+            <height>150</height>
+        </size>
+    </property>
+    <property name="caption">
+        <string>Nueva Facturación</string>
+    </property>
+    <widget class="QLayoutWidget">
+        <property name="name">
+            <cstring>layout13</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>100</y>
+                <width>460</width>
+                <height>50</height>
+            </rect>
+        </property>
+        <hbox>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <spacer>
+                <property name="name">
+                    <cstring>Spacer1</cstring>
+                </property>
+                <property name="orientation">
+                    <enum>Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                    <enum>Expanding</enum>
+                </property>
+                <property name="sizeHint">
+                    <size>
+                        <width>385</width>
+                        <height>16</height>
+                    </size>
+                </property>
+            </spacer>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>PushButton1</cstring>
+                </property>
+                <property name="text">
+                    <string>Aceptar</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>PushButton1_2</cstring>
+                </property>
+                <property name="text">
+                    <string>Cancelar</string>
+                </property>
+            </widget>
+        </hbox>
+    </widget>
+    <widget class="QGroupBox">
+        <property name="name">
+            <cstring>GroupBox1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>11</x>
+                <y>11</y>
+                <width>460</width>
+                <height>80</height>
+            </rect>
+        </property>
+        <property name="frameShape">
+            <enum>GroupBoxPanel</enum>
+        </property>
+        <property name="frameShadow">
+            <enum>Sunken</enum>
+        </property>
+        <property name="title">
+            <string>Datos Facturación</string>
+        </property>
+        <grid>
+            <property name="name">
+                <cstring>unnamed</cstring>
+            </property>
+            <widget class="QLayoutWidget" row="0" column="0">
+                <property name="name">
+                    <cstring>layout6</cstring>
+                </property>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout4</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>TextLabel1</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Nombre de la empresa</string>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit">
+                                <property name="name">
+                                    <cstring>nombreempresa</cstring>
+                                </property>
+                                <property name="frameShape">
+                                    <enum>LineEditPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                    <enum>Sunken</enum>
+                                </property>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout5</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout2</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>TextLabel3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Base de Datos</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>bdempresa</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>layout3</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>TextLabel2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Ejercicio</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit">
+                                        <property name="name">
+                                            <cstring>ejercicioempresa</cstring>
+                                        </property>
+                                    </widget>
+                                </hbox>
+                            </widget>
+                        </hbox>
+                    </widget>
+                </vbox>
+            </widget>
+        </grid>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>PushButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>nuevafactbase</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>PushButton1_2</sender>
+        <signal>clicked()</signal>
+        <receiver>nuevafactbase</receiver>
+        <slot>close()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>accept()</slot>
+    <slot>boton_lecturaaus()</slot>
+    <slot>boton_usalectura()</slot>
+    <slot>boton_usatotal()</slot>
+    <slot>boton_totalaus()</slot>
+</slots>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

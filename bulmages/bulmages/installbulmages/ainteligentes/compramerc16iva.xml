@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<DOCUMENT>
+   <ainteligente>
+      <descripcion>Factura de Compra de Mercaderias (16 %IVA)</descripcion>
+      <comentariosasiento></comentariosasiento>
+      <binteligente>
+         <fecha>$fechaasiento$</fecha>
+         <conceptocontable>FRA. $numfactura, Num Factura$</conceptocontable>
+         <codcuenta>$cproveedor, Cuenta Proveedor$</codcuenta>
+         <descripcionb></descripcionb>
+         <debe>0</debe>
+         <haber>$total, Total Factura$</haber>
+         <contrapartida></contrapartida>
+         <comentario></comentario>
+         <canal></canal>
+         <marcaconciliacion></marcaconciliacion>
+         <idc_coste></idc_coste>
+      </binteligente>
+      <binteligente>
+         <fecha>$fechaasiento$</fecha>
+         <conceptocontable>FRA. $numfactura$</conceptocontable>
+         <codcuenta>6000000</codcuenta>
+         <descripcionb></descripcionb>
+         <debe>$total$/1.16</debe>
+         <haber>0</haber>
+         <contrapartida></contrapartida>
+         <comentario></comentario>
+         <canal></canal>
+         <marcaconciliacion></marcaconciliacion>
+         <idc_coste></idc_coste>
+      </binteligente>
+      <binteligente>
+         <fecha>$fechaasiento$</fecha>
+         <conceptocontable>FRA. $numfactura$</conceptocontable>
+         <codcuenta>4720016</codcuenta>
+         <descripcionb></descripcionb>
+         <debe>$total$-$total$/1.16</debe>
+         <haber>0</haber>
+         <contrapartida></contrapartida>
+         <comentario></comentario>
+         <canal></canal>
+         <marcaconciliacion></marcaconciliacion>
+         <idc_coste></idc_coste>
+      </binteligente>
+   </ainteligente>
+</DOCUMENT>

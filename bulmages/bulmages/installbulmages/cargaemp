@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ -z "$2" ]; then
+    echo "cargaemp [host] database file"
+    exit
+fi
+
+if [ -z "$3" ]; then
+   dropdb $1
+   createdb $1
+   psql $1 < $2
+else
+   dropdb -h $1 $2
+   createdb -h $1 $2
+   psql -h $1 $2 < $3
+fi
