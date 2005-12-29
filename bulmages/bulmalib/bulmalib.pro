@@ -105,8 +105,8 @@ windows{
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
-  INCLUDEPATH += libpq
-  LIBS += libpq.dll
+  INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
+  LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
   DEFINES += WINDOWS
   DEFINES += WIN32
 }

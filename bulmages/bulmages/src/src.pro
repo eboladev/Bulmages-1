@@ -124,18 +124,19 @@ win32{
   OBJECTS_DIR = .obj
 
   LIBS += ../../bulmalib/release/libbulmalib.a \
- 	C:\Qt\4.0.0\lib\libQtXml4.a \
-	C:\Qt\4.0.0\lib\libQtXmld4.a \
-	../../bulmalib/libpq.dll
+ 	C:\Qt\4.1.0\lib\libQtXml4.a \
+	C:\Qt\4.1.0\lib\libQtXmld4.a 
 
   INCLUDEPATH += ../../bulmalib/libpq \
 			../../bulmalib \
 			../../bulmalib/.ui \
                  ../contabilidad \
 		 comun \
- 		 C:\Qt\4.0.0\include\QtXml
+ 		 C:\Qt\4.1.0\include\QtXml
 
 TARGET = ..\..\..\installbulmages\bulmages 
+  INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
+  LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
 
 }
 
