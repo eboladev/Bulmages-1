@@ -1103,6 +1103,12 @@
         <receiver>BudgetBase</receiver>
         <slot>s_trabajadorvalueChanged(QString)</slot>
     </connection>
+    <connection>
+        <sender>m_numpresupuesto</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>BudgetBase</receiver>
+        <slot>s_numpresupuestotextChanged(const QString&amp;)</slot>
+    </connection>
 </connections>
 <slots>
     <slot>budgetDateLostFocus()</slot>
@@ -1141,6 +1147,7 @@
     <slot>s_almacenvalueChanged(QString)</slot>
     <slot>s_informeReferencia()</slot>
     <slot>s_trabajadorvalueChanged(QString)</slot>
+    <slot>s_numpresupuestotextChanged(const QString &amp;)</slot>
 </slots>
 <layoutdefaults spacing="4" margin="3"/>
 <includehints>

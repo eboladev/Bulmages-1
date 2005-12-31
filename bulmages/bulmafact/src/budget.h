@@ -92,6 +92,7 @@ public slots:
     virtual void s_contactotextChanged(const QString &str) {setContractPresupuesto(str);};
     virtual void s_telpresupuestotextChanged(const QString &str) {setTelPresupuesto(str);};
     virtual void s_refpresupuestotextChanged(const QString &str) {setrefpresupuesto(str);};
+    virtual void s_numpresupuestotextChanged(const QString &str) {setNumPresupuesto(str);};
     
     virtual void s_procesadopresupuestostateChanged(int i) {
     	if (i) setprocesadopresupuesto("TRUE");

@@ -229,6 +229,7 @@ void AlbaranCliente::imprimirAlbaranCliente() {
         buff.replace("[nomcliente]",cur->valor("nomcliente"));
         buff.replace("[cifcliente]",cur->valor("cifcliente"));
         buff.replace("[idcliente]",cur->valor("idcliente"));
+        buff.replace("[cpcliente]",cur->valor("cpcliente"));
     }// end if
     delete cur;
 
