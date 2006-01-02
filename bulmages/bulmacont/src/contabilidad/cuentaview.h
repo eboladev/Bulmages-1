@@ -57,7 +57,7 @@ public:
   
 public slots:
   virtual void codigo_ret();
-  virtual void close();
+  virtual void done(int);
   virtual void saveAccount();
   virtual void deleteAccount();
 };

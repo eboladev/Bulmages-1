@@ -23,7 +23,9 @@ cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int fl):
     conexionbase = emp->bdempresa();
     numdigitos = emp->numdigitosempresa();
     inicializa();
+    dialogChanges_cargaInicial();
 }// end cuentaview
+
 
 /** Saca el formulario, crea una cuenta y devuelve su identificador
   */
@@ -99,7 +101,8 @@ void cuentaview::cuentanueva(QString cod) {
 }// end cuentanueva
 
 
-cuentaview::~cuentaview() {}// end ~cuentaview
+cuentaview::~cuentaview() {
+}// end ~cuentaview
 
 
 /*********************************************************************
@@ -133,17 +136,20 @@ void cuentaview::cambiapadre(const QString &cadena) {
  * Lo que hace es recoger los datos del formulario y hacer una insercion
  * o una modificacion de la tabla de cuentas.
  */
-void cuentaview::close() {
+void cuentaview::done(int r) {
     if (dialogChanges_hayCambios()) {
-        if ( QMessageBox::warning( this, "Guardar Cuenta",
+        int val = QMessageBox::warning( this, "Guardar Cuenta",
                                    "Desea guardar los cambios.",
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+                                   "Si","No" ,0
+                                   ) ;
+	if (val == 0) {
             saveAccount();
+	}
     }// end if
     // Liberamos memoria y terminamos.
-    done(1);
+    QDialog::done(r);
 }// end accept
+
 
 int cuentaview::inicializa() {
     cursor2 *cursorgrupos;
@@ -201,7 +207,7 @@ int cuentaview::cargacuenta(int idcuenta1) {
         regularizacion->setChecked(false);
     }// end if
     // Vamos a hacer la carga del tipocuenta
-    int tipocuenta = atoi(cursorcuenta->valor("tipocuenta").ascii());
+    int tipocuenta = cursorcuenta->valor("tipocuenta").toInt();
     switch(tipocuenta) {
     case 0:
         cuentasintipo->setChecked(TRUE);
@@ -261,18 +267,42 @@ int cuentaview::cargacuenta(int idcuenta1) {
 
 
 int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
-    // Suponiendo que las cuentas son numericas, al crear una nueva cuenta
-    // Buscamos entre las que seran sus hermanas y le asignamos el numero siguiente
-    // que le corresponda.
+    /// Suponiendo que las cuentas son numericas, al crear una nueva cuenta
+    /// Buscamos entre las que seran sus hermanas y le asignamos el numero siguiente
+    /// que le corresponda.
     QString cpadreaux;
     QString query;
-    query.sprintf("SELECT codigo FROM cuenta WHERE padre = id_cuenta('%s') ORDER BY codigo DESC",codpadre.ascii());
+    query.sprintf("SELECT * FROM cuenta WHERE padre = id_cuenta('%s') ORDER BY codigo DESC",codpadre.ascii());
     cursor2 *cur = conexionbase->cargacursor(query);
     if (!cur->eof()) {
-        long int valor = atol(cur->valor("codigo").ascii());
+        long int valor = cur->valor("codigo").toLong();
         valor ++;
         cpadreaux.setNum(valor);
         codigo->setText(cpadreaux);
+        // Vamos a hacer la carga del tipocuenta
+        int tipocuenta = cur->valor("tipocuenta").toInt();
+        switch(tipocuenta) {
+        case 0:
+            cuentasintipo->setChecked(TRUE);
+            break;
+        case 1:
+            cuentaactivo->setChecked(TRUE);
+            break;
+        case 2:
+            cuentapasivo->setChecked(TRUE);
+            break;
+        case 3:
+            cuentaneto->setChecked(TRUE);
+            break;
+        case 4:
+            cuentaingreso->setChecked(TRUE);
+            break;
+        case 5:
+            cuentagasto->setChecked(TRUE);
+            break;
+        }// end switch
+
+
     } else {
         QString codint = codpadre;
         while ((unsigned int)codint.length() < numdigitos-1) {
@@ -281,6 +311,7 @@ int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
         codint = codint+"0";
         codigo->setText(codint);
     }
+    delete cur;
 
     // Establecemos el valor del padre y del grupo.
     codigopadre->setText(codpadre);

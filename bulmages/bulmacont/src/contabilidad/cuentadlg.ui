@@ -256,6 +256,9 @@
                                 <property name="text">
                                     <string>A&amp;ctivo</string>
                                 </property>
+                                <property name="accel">
+                                    <string>Alt+C</string>
+                                </property>
                             </widget>
                             <widget class="QRadioButton" row="2" column="0">
                                 <property name="name">
@@ -270,7 +273,10 @@
                                     <cstring>cuentapasivo</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Pasivo</string>
+                                    <string>&amp;Pasivo</string>
+                                </property>
+                                <property name="accel">
+                                    <string>Alt+P</string>
                                 </property>
                             </widget>
                             <widget class="QRadioButton" row="1" column="1">
@@ -279,6 +285,9 @@
                                 </property>
                                 <property name="text">
                                     <string>&amp;Gasto</string>
+                                </property>
+                                <property name="accel">
+                                    <string>Alt+G</string>
                                 </property>
                             </widget>
                             <widget class="QRadioButton" row="2" column="1">
@@ -916,7 +925,10 @@
                                             <cstring>nodebe</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>nodebe</string>
+                                            <string>node&amp;be</string>
+                                        </property>
+                                        <property name="accel">
+                                            <string>Alt+B</string>
                                         </property>
                                     </widget>
                                     <widget class="QCheckBox" row="1" column="0">
@@ -948,7 +960,10 @@
                                             <cstring>imputacion</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Imputacion</string>
+                                            <string>&amp;Imputacion</string>
+                                        </property>
+                                        <property name="accel">
+                                            <string>Alt+I</string>
                                         </property>
                                     </widget>
                                 </grid>
@@ -1116,7 +1131,7 @@
                                         <cstring>TextLabel1</cstring>
                                     </property>
                                     <property name="text">
-                                        <string>Nombre</string>
+                                        <string>Nombre Entidad</string>
                                     </property>
                                 </widget>
                                 <widget class="QLineEdit">
@@ -1267,56 +1282,6 @@
                 </widget>
             </widget>
         </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>Layout14</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
-                </property>
-                <spacer>
-                    <property name="name">
-                        <cstring>Spacer1</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>205</width>
-                            <height>0</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>PushButton2</cstring>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>NoFocus</enum>
-                    </property>
-                    <property name="text">
-                        <string>Cerrar</string>
-                    </property>
-                    <property name="accel">
-                        <string></string>
-                    </property>
-                    <property name="autoDefault">
-                        <bool>false</bool>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
     </vbox>
 </widget>
 <images>
@@ -1341,12 +1306,6 @@
         <slot>setFocus()</slot>
     </connection>
     <connection>
-        <sender>PushButton2</sender>
-        <signal>clicked()</signal>
-        <receiver>cuentadlg</receiver>
-        <slot>close()</slot>
-    </connection>
-    <connection>
         <sender>codigo</sender>
         <signal>returnPressed()</signal>
         <receiver>cuentadlg</receiver>
@@ -1366,24 +1325,24 @@
     </connection>
 </connections>
 <tabstops>
-    <tabstop>TabWidget2</tabstop>
-    <tabstop>codigo</tabstop>
-    <tabstop>codigopadre</tabstop>
     <tabstop>descripcion</tabstop>
     <tabstop>combogrupos</tabstop>
     <tabstop>imputacion</tabstop>
-    <tabstop>bloqueada</tabstop>
-    <tabstop>nodebe</tabstop>
     <tabstop>nohaber</tabstop>
+    <tabstop>bloqueada</tabstop>
     <tabstop>regularizacion</tabstop>
+    <tabstop>nodebe</tabstop>
     <tabstop>cuentaactivo</tabstop>
-    <tabstop>cuentapasivo</tabstop>
-    <tabstop>cuentaneto</tabstop>
     <tabstop>cuentaingreso</tabstop>
+    <tabstop>cuentapasivo</tabstop>
     <tabstop>cuentagasto</tabstop>
+    <tabstop>cuentaneto</tabstop>
     <tabstop>cuentasintipo</tabstop>
     <tabstop>debe</tabstop>
     <tabstop>haber</tabstop>
+    <tabstop>codigo</tabstop>
+    <tabstop>codigopadre</tabstop>
+    <tabstop>TabWidget2</tabstop>
     <tabstop>nombreent</tabstop>
     <tabstop>cif</tabstop>
     <tabstop>direccion</tabstop>
@@ -1393,14 +1352,13 @@
     <tabstop>banco</tabstop>
     <tabstop>web</tabstop>
     <tabstop>coments</tabstop>
-    <tabstop>PushButton2</tabstop>
 </tabstops>
 <slots>
     <slot>cambiapadre(const QString &amp;)</slot>
     <slot>codigo_ret()</slot>
-    <slot>close()</slot>
+    <slot returnType="bool">close()</slot>
     <slot>deleteAccount()</slot>
     <slot>saveAccount()</slot>
 </slots>
-<layoutdefaults spacing="6" margin="11"/>
+<layoutdefaults spacing="2" margin="2"/>
 </UI>
