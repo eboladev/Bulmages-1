@@ -58,9 +58,8 @@ int main(int argc, char *argv[]) {
     QString pass=argv[4];
     /// Leemos la configuracion que luego podremos usar siempre
     confpr = new configuracion();
+    /// Inicializamos el objeto global para uso de plugins
     g_plugins = new Plugins();
-
-
 
     QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
     QApplication * mainApp = new QApplication (argc, argv);
@@ -68,20 +67,7 @@ int main(int argc, char *argv[]) {
     mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
 
 
-
-    QStringList plugins = QStringList::split( ";", confpr->valor(CONF_PLUGINS_BULMACONT) );
-    for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
-        _depura("Resolviendo la libreria: "+*it+"\n", 2);
-        QLibrary *lib= new QLibrary();
-	lib->setFileName(*it);
-	lib->load();
-        if (!lib->isLoaded()) {
-            _depura("No se ha podido cargar la libreria\n",2);
-        } else {
-//            m_lista.append(lib);
-        }// end if
-    }// end for
-
+    /// cargamos las librerias de g_plugins
     g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
 
 

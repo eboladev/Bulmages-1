@@ -21,7 +21,7 @@ Plugins::~Plugins() {}
 void Plugins::cargaLibs(QString libs) {
     /// Hacemos la carga de los plugins.
     QString cad=libs;
-    fprintf(stderr,"Carga de plugins: %s\n",cad.ascii());
+    _depura("Carga de plugins: "+cad,0);
     QStringList plugins = QStringList::split( ";", cad );
     for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
         QLibrary *lib= new QLibrary(*it);

@@ -11,6 +11,8 @@
 #include "funcaux.h"
 
 #include "fixed.h"
+#include "plugins.h"
+
 
 QApplication *theApp;
 bulmafact *bges;
@@ -84,6 +86,10 @@ int main( int argc, char ** argv ) {
         delete login1;
         bges = new bulmafact("");
     }// end if
+
+
+    /// Disparamos los plugins con entryPoint
+    g_plugins->lanza("entryPoint", bges);
 
     g_main = bges;
     theApp->setMainWidget(bges);

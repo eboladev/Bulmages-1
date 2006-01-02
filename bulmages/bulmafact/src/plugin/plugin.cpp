@@ -1,6 +1,6 @@
  #include <stdio.h>
 #include "plugin.h"
-#include "empresa.h"
+#include "company.h"
 
 #include <q3popupmenu.h>
 #include <qaction.h>
@@ -22,7 +22,7 @@ void myplugin::elslot() {
 }// end elslot
 
 
-void myplugin::inicializa(Bulmages01 *bges) {
+void myplugin::inicializa(bulmafact *bges) {
     //El menu de empresa
     Q3PopupMenu *pPluginMenu = new Q3PopupMenu();
     pPluginMenu->setCheckable(true);
@@ -36,8 +36,8 @@ void myplugin::inicializa(Bulmages01 *bges) {
 }// end inicializa
 
 
-void entryPoint(Bulmages01 *bges) {
-    fprintf(stderr,"Estoy dentro del plugin\n");
+void entryPoint(bulmafact *bges) {
+    _depura("Estoy dentro del plugin\n",2);
     myplugin *plug= new myplugin( );
     plug->inicializa(bges);
     bges->setCaption("Prueba de plugin.");

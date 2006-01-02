@@ -1,7 +1,12 @@
-SUBDIRS += src
 TEMPLATE = subdirs 
-CONFIG += release \
-          warn_on \
-          qte \
-          thread 
+
+SUBDIRS += src
+SUBDIRS += src/plugin
+
+
+
+#CONFIG += release \
+#          warn_on \
+#          qte \
+#          thread 
 
