@@ -58,6 +58,30 @@ public:
 	listadescuentos->setcompany(companyact);
     };    
     presupuesto(company *);
+
+    listlinpresupuesto* _listalineas() {return listalineas;};
+    ListDescuentoPresupuesto * _listadescuentos() {return listadescuentos;};
+    company * _company() {return companyact;};
+
+
+    QString idcliente(){return mdb_idcliente;};
+    QString idalmacen(){return mdb_idalmacen;};
+    QString numpresupuesto(){return mdb_numpresupuesto;};
+    QString fpresupuesto(){return mdb_fpresupuesto;};
+    QString vencpresupuesto(){return mdb_vencpresupuesto;};
+    QString contactpresupuesto(){return mdb_contactpresupuesto;};
+    QString telpresupuesto(){return mdb_telpresupuesto;};
+    QString comentpresupuesto(){return mdb_comentpresupuesto;};
+    QString idpresupuesto(){return mdb_idpresupuesto;};
+    QString idusuari(){return mdb_idusuari;};
+    QString procesadopresupuesto(){return mdb_procesadopresupuesto;};
+    QString descpresupuesto(){return mdb_descpresupuesto;};
+    QString refpresupuesto(){return mdb_refpresupuesto;};
+    QString idforma_pago(){return mdb_idforma_pago;};
+    QString idtrabajador(){return mdb_idtrabajador;};
+
+
+
     virtual ~presupuesto();
     virtual void chargeBudget(QString );
     void pintaPresupuesto();

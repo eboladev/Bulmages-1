@@ -34,19 +34,14 @@ protected:
     company *companyact;
 
     QString mdb_codigoserie_factura;
-
     QString mdb_idcliente;
     QString mdb_idalmacen;
     QString mdb_numfactura;
     QString mdb_ffactura;
     QString mdb_procesadafactura;
-    
-    
     QString mdb_comentfactura;
-
     QString mdb_reffactura;
     QString mdb_descfactura;
-
     QString mdb_idfactura;
     QString mdb_idusuari;
     QString mdb_idforma_pago;
@@ -62,7 +57,27 @@ public:
         listadescuentos =a;
 	listadescuentos->setcompany(companyact);
     }; 
-            
+          
+
+    ListLinFactura *_listalineas() {return listalineas;};
+    ListDescuentoFactura *_listadescuentos() {return listadescuentos;};
+
+    company *_company() {return companyact;};
+
+    QString codigoserie_factura(){return mdb_codigoserie_factura;};
+    QString idcliente(){return mdb_idcliente;};
+    QString idalmacen(){return mdb_idalmacen;};
+    QString numfactura(){return mdb_numfactura;};
+    QString ffactura(){return mdb_ffactura;};
+    QString procesadafactura(){return mdb_procesadafactura;};
+    QString comentfactura(){return mdb_comentfactura;};
+    QString reffactura(){return mdb_reffactura;};
+    QString descfactura(){return mdb_descfactura;};
+    QString idfactura(){return mdb_idfactura;};
+    QString idusuari(){return mdb_idusuari;};
+    QString idforma_pago(){return mdb_idforma_pago;};
+
+  
     ListLinFactura* getlistalineas() {return listalineas;};    
     ListDescuentoFactura* getlistadescuentos() {return listadescuentos;};
     

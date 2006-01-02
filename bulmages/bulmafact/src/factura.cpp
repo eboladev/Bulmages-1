@@ -15,6 +15,8 @@
 //Added by qt3to4:
 #include <QTextStream>
 #include "funcaux.h"
+#include "plugins.h"
+
 
 class Fixed;
 
@@ -178,6 +180,11 @@ void Factura::guardaFactura() {
 
 
 void Factura::imprimirFactura() {
+
+
+	/// Hacemos el lanzamiento de plugins para este caso.
+	int res = g_plugins->lanza("Factura_imprimirFactura",this);
+	if (res) return;
 
     base basesimp;
 

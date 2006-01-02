@@ -16,6 +16,8 @@
 #include <qtextstream.h>
 #include "fixed.h"
 #include "funcaux.h"
+#include "plugins.h"
+
 
 typedef QMap<QString, Fixed> base;
 
@@ -233,6 +235,13 @@ QString presupuesto::detalleArticulos() {
 
 
 void presupuesto::imprimirPresupuesto() {
+
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("presupuesto_imprimirPresupuesto", this);
+    if (res != 0) return;
+
+
+
     base basesimp;
 
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml";

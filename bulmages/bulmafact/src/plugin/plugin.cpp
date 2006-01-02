@@ -1,6 +1,7 @@
- #include <stdio.h>
+#include <stdio.h>
 #include "plugin.h"
 #include "company.h"
+#include "funcaux.h"
 
 #include <q3popupmenu.h>
 #include <qaction.h>

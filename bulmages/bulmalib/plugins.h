@@ -11,7 +11,7 @@ public:
 	Plugins();
 	~Plugins();
 	void cargaLibs(QString libs);
-	void lanza(QString func, void *clase);
+	int lanza(QString func, void *clase);
 };
 
 extern Plugins *g_plugins;
