@@ -16,6 +16,7 @@
 @author Tomeu Borras
 */
 
+//#include "qtable1.h"
 #include <q3table.h>
 //Added by qt3to4:
 #include <QEvent>
@@ -27,6 +28,7 @@
 
 
 
+//class ListControlStockView : public Q3Table , public ListControlStock {
 class ListControlStockView : public Q3Table , public ListControlStock {
 Q_OBJECT
 public:
@@ -37,6 +39,7 @@ public:
     virtual bool eventFilter( QObject *obj, QEvent *ev );
     ControlStock *lineaat(int);
     ControlStock *lineaact();
+
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);
     virtual QString searchArticle();

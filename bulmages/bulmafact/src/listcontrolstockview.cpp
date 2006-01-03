@@ -10,15 +10,17 @@
 //
 //
 
-#define COL_IDINVENTARIO 0
-#define COL_IDARTICULO 1
-#define COL_CODARTICULO 2
-#define COL_NOMARTICULO 3
-#define COL_IDALMACEN 4
-#define COL_CODALMACEN 5
-#define COL_NOMALMACEN 6
-#define COL_STOCKANTCONTROLSTOCK 7
-#define COL_STOCKNEWCONTROLSTOCK 8
+
+#define COL_PUNTEOCONTROLSTOCK 0
+#define COL_IDINVENTARIO 1
+#define COL_IDARTICULO 2
+#define COL_CODARTICULO 3
+#define COL_NOMARTICULO 4
+#define COL_IDALMACEN 5
+#define COL_CODALMACEN 6
+#define COL_NOMALMACEN 7
+#define COL_STOCKANTCONTROLSTOCK 8
+#define COL_STOCKNEWCONTROLSTOCK 9
 
 
 
@@ -37,7 +39,7 @@
 
 ListControlStockView::ListControlStockView(QWidget * parent, const char * name) : Q3Table(parent, name), ListControlStock() {
     /// Inicializamos la tabla de lineas de FacturaProveedor
-    setNumCols(9);
+    setNumCols(10);
     setNumRows(10000);
 
     horizontalHeader()->setLabel( COL_IDINVENTARIO, tr( "COL_IDINVENTARIO" ) );
@@ -54,6 +56,7 @@ ListControlStockView::ListControlStockView(QWidget * parent, const char * name) 
     hideColumn(COL_IDARTICULO);
     hideColumn(COL_IDALMACEN);
 
+    setColumnWidth(COL_PUNTEOCONTROLSTOCK,15);
     setColumnWidth(COL_NOMARTICULO,250);
     setColumnWidth(COL_NOMALMACEN,250);
     setColumnWidth(COL_CODARTICULO,70);
@@ -71,7 +74,6 @@ ListControlStockView::ListControlStockView(QWidget * parent, const char * name) 
     setPaletteBackgroundColor(confpr->valor(CONF_BG_LINFACTURASCLIENTE));
 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
-
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
 
     installEventFilter(this);
@@ -86,6 +88,12 @@ void ListControlStockView::pintaListControlStock() {
     _depura("ListControlStockView::pintaListControlStock",0);
     setNumRows(0);
     setNumRows(10000);
+
+   for (int j=0;j<10000;j++) {
+	Q3CheckTableItem *check = new Q3CheckTableItem(this,0);
+        setItem(j,COL_PUNTEOCONTROLSTOCK,check);
+   }// end for
+
     /// \todo Habr� que vaciar la tabla para que el pintado fuera exacto.
     ControlStock *linea;
     uint i = 0;
@@ -98,6 +106,9 @@ void ListControlStockView::pintaListControlStock() {
 	setText(i, COL_CODALMACEN, linea->codigoalmacen());
 	setText(i, COL_STOCKNEWCONTROLSTOCK, linea->stocknewcontrolstock());
 	setText(i, COL_STOCKANTCONTROLSTOCK, linea->stockantcontrolstock());
+        Q3CheckTableItem *check =(Q3CheckTableItem *) item(i,COL_PUNTEOCONTROLSTOCK);
+        if (linea->punteocontrolstock() == "TRUE" || linea->punteocontrolstock() == "t")
+            check->setChecked(TRUE);
 	adjustRow(i);
         i++;
     }// end for
@@ -131,6 +142,9 @@ void ListControlStockView::pintalinListControlStock(int pos) {
 	setText(pos, COL_CODALMACEN, linea->codigoalmacen());
 	setText(pos, COL_STOCKNEWCONTROLSTOCK, linea->stocknewcontrolstock());
 	setText(pos, COL_STOCKANTCONTROLSTOCK, linea->stockantcontrolstock());
+        Q3CheckTableItem *check =(Q3CheckTableItem *) item(pos,COL_PUNTEOCONTROLSTOCK);
+        if (linea->punteocontrolstock() == "TRUE" || linea->punteocontrolstock() == "t")
+            check->setChecked(TRUE);
 	adjustRow(pos);
 }
 
@@ -154,7 +168,7 @@ bool ListControlStockView::eventFilter( QObject *obj, QEvent *ev ) {
 
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
+            // Esto se hace porque en la ultima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
             switch (col) {
             case COL_CODARTICULO:
                 setCurrentCell(row, COL_CODALMACEN);
@@ -192,6 +206,13 @@ void ListControlStockView::valueBudgetLineChanged(int row, int col) {
         case COL_CODALMACEN:
             manageAlmacen(row);
             break;
+        case COL_PUNTEOCONTROLSTOCK: {
+                Q3CheckTableItem *check = (Q3CheckTableItem *) item(row, COL_PUNTEOCONTROLSTOCK);
+                if (check->isChecked())
+                    linea->setpunteocontrolstock("TRUE");
+                else
+                    linea->setpunteocontrolstock("FALSE");
+            }// end case
         }// end switch
         pintalinListControlStock(row);
     }// end if

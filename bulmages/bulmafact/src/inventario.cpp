@@ -113,6 +113,12 @@ void Inventario::guardaInventario() {
 }// end guardaInventario
 
 
+
+void Inventario::pregenerar() {
+	_depura("Inventario::pregenerar",0);
+	listalineas->pregenerar();
+}
+
 void Inventario::imprimirInventario() {
 /*
     /// Copiamos el archivo

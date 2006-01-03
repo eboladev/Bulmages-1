@@ -82,7 +82,7 @@ void ListControlStock::cargaListControlStock(QString idbudget) {
 
 
 void ListControlStock::guardaListControlStock() {
-    _depura("ListControlStock::guardaListControlStock()",0);
+    _depura("ListControlStock::guardaListControlStock()",2);
     ControlStock *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
@@ -122,3 +122,25 @@ void ListControlStock::borrarControlStock(int pos) {
     m_lista.remove(pos);
     pintaListControlStock();
 }// end borraControlStock
+
+
+void ListControlStock::pregenerar() {
+	_depura("pregenerar",2);
+	QString SQLQuery = "SELECT * FROM articulo, almacen ORDER BY codigoalmacen, codigocompletoarticulo";
+	cursor2 *cur = companyact->cargacursor(SQLQuery);
+	while (!cur->eof()) {
+		_depura("agregamos una nueva linea",0);
+		ControlStock *lin = new ControlStock(companyact);
+		lin->setidalmacen(cur->valor("idalmacen"));
+		lin->setcodigoalmacen(cur->valor("codigoalmacen"));
+		lin->setidarticulo(cur->valor("idarticulo"));
+		lin->setcodigocompletoarticulo(cur->valor("codigocompletoarticulo"));
+		lin->setstocknewcontrolstock("0");
+		lin->setpunteocontrolstock("FALSE");
+		lin->setidinventario(mdb_idinventario);
+		m_lista.append(lin);
+		cur->siguienteregistro();
+	}// end while
+	delete cur;
+	pintaListControlStock();
+}

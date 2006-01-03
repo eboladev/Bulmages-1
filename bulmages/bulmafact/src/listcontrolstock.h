@@ -60,8 +60,7 @@ public:
     void nuevalinea(QString idalmacen, QString idarticulo, QString stockantcontrolstock, QString stocknewcontrolstock, QString punteocontrolstock, QString codigocompletoarticulo, QString nomarticulo, QString nomalmacen, QString codigoalmacen);
 
     ControlStock *linpos(int);
-
-
+    virtual void pregenerar();
 };
 
 #endif

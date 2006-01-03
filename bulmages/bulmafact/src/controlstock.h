@@ -62,6 +62,7 @@ public:
     inline void setidinventario(QString val) {mdb_idinventario=val;};
     inline void setidalmacen(QString val) {mdb_idalmacen=val;};
     inline void setstocknewcontrolstock(QString val)  {mdb_stocknewcontrolstock=val;};
+    inline void setpunteocontrolstock(const QString val) {mdb_punteocontrolstock=val;};
 
     void setcodigocompletoarticulo(QString);
     void setcodigoalmacen(QString);

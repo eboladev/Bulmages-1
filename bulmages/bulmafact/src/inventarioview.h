@@ -53,6 +53,7 @@ public slots:
    }
 
    virtual void s_delete();
+   virtual void s_pregenerar() {pregenerar();};
 
 };
 

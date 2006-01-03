@@ -54,6 +54,7 @@ public:
     virtual void pintaidinventario(QString) {};
     virtual void pintafechainventario(QString ) {};
     virtual void pintanominventario(QString ) {};
+    virtual void pregenerar();
 
     void setidinventario(QString val) { mdb_idinventario=val; listalineas->setidinventario(val);};
     void setfechainventario(QString val) { mdb_fechainventario=val;};
