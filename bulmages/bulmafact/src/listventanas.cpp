@@ -126,7 +126,8 @@ void listventanas::sacaWindow(QObject *obj)
 {
   mapaw mapaaux;
 
-  fprintf(stderr,"listventanas::sacaWindow()\n");
+  _depura("listventanas::INIT_sacaWindow()\n",0);
+
   /// Buscamos la ventana correspondiente y la borramos.
   mapaw::iterator iterador = elmapa.begin();
   while (iterador != elmapa.end())
@@ -135,10 +136,10 @@ void listventanas::sacaWindow(QObject *obj)
     {
       elmapa.erase((*iterador).first);
       m_listBox->removeItem((*iterador).first);
+      break;
     }
     iterador++;
   }// end while
-
 
   /// Reorganizamos los elementos para que el listbox corresponda con el mapa.
   iterador = elmapa.begin();
@@ -160,6 +161,7 @@ void listventanas::sacaWindow(QObject *obj)
     iterador ++;
   }// end while
 
+  _depura("listventanas::END_sacaWindow()\n",0);
 
 }// end sacaWindow
 
