@@ -21,6 +21,7 @@ INCLUDEPATH = ../../../bulmalib \
 ../contabilidad \
 /usr/include/qt4 \
 /usr/include/qt4/Qt \
+/usr/include/QtXml \
 ../../src \
 ../contabilidad/images \
 ../../../bulmalib/.ui \

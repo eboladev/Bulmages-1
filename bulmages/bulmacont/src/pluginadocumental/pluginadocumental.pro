@@ -33,6 +33,7 @@ INCLUDEPATH = ../../../bulmalib \
 	      ../comun \
               /usr/include/qt4 \
 	      /usr/include/qt4/Qt \
+	      /usr/include/QtXml \
               ../../../bulmalib/.ui \
 	      .ui \
 	      ../.ui 
