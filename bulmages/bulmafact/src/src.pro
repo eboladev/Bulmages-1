@@ -14,14 +14,15 @@ INCLUDEPATH += ../../bulmalib  \
 	       ../../bulmalib/.moc \
 	       /usr/include/qt4 \
 	       /usr/include/qt4/Qt \
+	       /usr/include/QtXml \
 	       ..
+	       
 	       
 DEFINES = REPORTS 
 
 TARGET = ../../installbulmages/bulmafact 
 
-CONFIG += release 
-
+CONFIG += release \
 #          warn_on \
 #          qt4 \
 #          thread 
@@ -300,7 +301,8 @@ TRANSLATIONS += bulmafact_es.ts \
 unix{
 
   TARGETDEPS += ../../bulmalib/libbulmalib.a
-  LIBS += ../../bulmalib/libbulmalib.a 
+  LIBS += ../../bulmalib/libbulmalib.a \
+	  -lpq
 
   UI_DIR = .ui
   MOC_DIR = .moc

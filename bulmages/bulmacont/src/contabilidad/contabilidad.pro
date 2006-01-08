@@ -16,7 +16,8 @@ INCLUDEPATH += ../../../bulmalib \
 images \
 /usr/include/qt4 \
 /usr/include/qt4/Qt \
-../../../bulmalib/.ui
+../../../bulmalib/.ui \
+/usr/include/QtXml
 
 CONFIG += release 
 
@@ -300,7 +301,8 @@ unix{
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
 
-	LIBS += ../../../bulmalib/libbulmalib.a 
+	LIBS += ../../../bulmalib/libbulmalib.a \
+	-lpq
 
 INCLUDEPATH += ../../bulmalib \
 		../../bulmalib/.ui \
