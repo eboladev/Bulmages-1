@@ -50,12 +50,12 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery) {
     nregistros = PQntuples(result);
     ncampos = PQnfields(result);
     registroactual=0;
-	/// Depuramos todo
-	_depura("--------- RESULTADO DE QUERY ----------------");
-	QString err;
-	err.sprintf("Num. Registros: %d, Num. Campos: %d",nregistros, ncampos);
-	_depura(err);
-	_depura("--------- FIN RESULTADO DE QUERY ----------------");
+    /// Depuramos todo
+    _depura("--------- RESULTADO DE QUERY ----------------");
+    QString err;
+    err.sprintf("Num. Registros: %d, Num. Campos: %d",nregistros, ncampos);
+    _depura(err);
+    _depura("--------- FIN RESULTADO DE QUERY ----------------");
 }// end cursor2
 
 
@@ -122,7 +122,9 @@ QString cursor2::valor(int posicion, int registro) {
     if (registro == -1) {
         registro = registroactual;
     }// end if
-    return (QString::fromLatin1(PQgetvalue(result, registro, posicion)));
+    //    return (QString::fromLatin1(PQgetvalue(result, registro, posicion)));
+    return (QString::fromUtf8(PQgetvalue(result, registro, posicion)));
+
 }// end valor
 
 
@@ -140,7 +142,7 @@ QString cursor2::valor(QString campo, int registro) {
     while (i<numcampos() && campo != nomcampo(i) ) {
         i++;
     }// end while
-    return(QString::fromLatin1(PQgetvalue(result, registro, i)));
+    return(QString::fromUtf8(PQgetvalue(result, registro, i)));
 }// end valor
 
 
@@ -253,10 +255,10 @@ int postgresiface2::inicializa(QString nomdb) {
     conn = PQconnectdb(conexion.toAscii().data());
     if (PQstatus(conn) == CONNECTION_BAD)  {
         _depura("Connection to database '"+dbName+"' failed.\n",0);
-  	  if (passwd != "" && confpr->valor(CONF_ALERTAS_DB)== "Yes")
-   	     _depura(PQerrorMessage(conn),2);
-	  else
-		_depura(PQerrorMessage(conn),0);
+        if (passwd != "" && confpr->valor(CONF_ALERTAS_DB)== "Yes")
+            _depura(PQerrorMessage(conn),2);
+        else
+            _depura(PQerrorMessage(conn),0);
         return(1);
     }// end if
     _depura("La conexion con la base de datos ha ido bien, ahora vamos a por la fecha",0);
@@ -281,9 +283,9 @@ int postgresiface2::formatofecha() {
     PQclear(res);
 
     /// Establecemos la codificación por defecto a UNICODE.
-	/// Pero con los problemas que está teniendo el UNICODE lo vamos a dejar en SQL_ASCII QUE funciona bastante mejor.
+    /// Pero con los problemas que está teniendo el UNICODE lo vamos a dejar en SQL_ASCII QUE funciona bastante mejor.
 
-    query = "SET client_encoding = 'SQL_ASCII'";
+    query = "SET client_encoding = 'UTF8'";
     res = PQexec(conn, query.toAscii().data());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         _depura( "Cambio del formato de Codificación");
@@ -355,18 +357,18 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
 int postgresiface2::ejecuta(QString Query) {
 
     PGresult *result;
-/*
-    fprintf(stderr,"El decod es: %s\n", (const char *) Query.utf8());
-    fprintf(stderr,"El decod es: %s\n", Query.latin1());
-    fprintf(stderr,"El decod es: %s\n", Query.data());
-    fprintf(stderr,"El decod es: %s\n", (const char *) Query.local8Bit());
-*/
+    /*
+        fprintf(stderr,"El decod es: %s\n", (const char *) Query.utf8());
+        fprintf(stderr,"El decod es: %s\n", Query.latin1());
+        fprintf(stderr,"El decod es: %s\n", Query.data());
+        fprintf(stderr,"El decod es: %s\n", (const char *) Query.local8Bit());
+    */
 
-  //Prova de control de permisos
+    //Prova de control de permisos
     if (confpr->valor(CONF_PRIVILEGIOS_USUARIO) != "1" && (Query.left(6)=="DELETE" || Query.left(6)=="UPDATE" || Query.left(6)=="INSERT"))
         return (42501);
     //Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard
-    result = PQexec(conn,  (const char *) Query.latin1());
+    result = PQexec(conn,  (const char *) Query.utf8());
     if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
         _depura("SQL command failed: "+Query);
         fprintf(stderr,"%s\n", PQerrorMessage(conn));
@@ -785,8 +787,8 @@ QString postgresiface2::sanearCadena(QString cadena) {
     longitud = cadena.length();
     // Reservamos (la funcion de postgres lo necesita) un buffer del
     // doble de caracteres + 1 que la cadena original
-    buffer = (char *)malloc(sizeof(char)*longitud*2+1);
-    PQescapeString(buffer, cadena.toAscii().data(), longitud);
+    buffer = (char *)malloc(sizeof(char)*longitud*3);
+    PQescapeString(buffer, cadena.utf8(), strlen(cadena.utf8()));
     cadenaLimpia = buffer;
     free(buffer);
     return cadenaLimpia;

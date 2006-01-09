@@ -3,8 +3,8 @@ TEMPLATE = subdirs
 SUBDIRS += src
 SUBDIRS += src/plugin
 
-exists(src/plugingorgblau) {
-    SUBDIRS += src/plugingorgblau
+exists(src/gorgblau) {
+    SUBDIRS += src/gorgblau
 }
 
 

@@ -57,6 +57,7 @@
 #define COL_IDLINEA_PROD 16
 #define COL_CODARTICULO 17
 #define COL_STOCKARTICULO 18
+#define COL_PVPARTICULO 19
 
 void articleslist::guardaconfig() {
     QString aux = "";
@@ -79,6 +80,7 @@ void articleslist::guardaconfig() {
     mver_idlinea_prod->isChecked() ? aux += "1,":aux+="0,";
     mver_codarticulo->isChecked() ? aux += "1,":aux+="0,";
     mver_stockarticulo->isChecked() ? aux += "1,":aux+="0,";
+    mver_pvparticulo->isChecked() ? aux += "1,":aux+="0,";
 
     QFile file( confpr->valor(CONF_DIR_USER)+"/confarticleslist.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
@@ -117,6 +119,7 @@ void articleslist::cargaconfig() {
     mver_idlinea_prod->setChecked(line.at(32)=='1');
     mver_codarticulo->setChecked(line.at(34)=='1');
     mver_stockarticulo->setChecked(line.at(36)=='1');
+    mver_pvparticulo->setChecked(line.at(38)=='1');
 }// end cargaconfig
 
 
@@ -218,6 +221,11 @@ void articleslist::s_configurar() {
     else
         m_list->hideColumn(COL_STOCKARTICULO);
 
+    if(mver_pvparticulo->isChecked() )
+        m_list->showColumn(COL_PVPARTICULO);
+    else
+        m_list->hideColumn(COL_PVPARTICULO);
+
     guardaconfig();
 }// end s_configurar
 
@@ -244,7 +252,7 @@ void articleslist::inicializa() {
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setSorting( TRUE );
     m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setNumCols(19);
+    m_list->setNumCols(20);
     m_list->horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Identificador" ) );
     m_list->horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Código" ) );
     m_list->horizontalHeader()->setLabel( COL_CODCOMPLETOARTICULO, tr( "Código Completo" ) );
@@ -264,6 +272,7 @@ void articleslist::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_DESCTIPO_IVA, tr("Tipo de IVA") );
     m_list->horizontalHeader()->setLabel( COL_IDLINEA_PROD, tr("Línea de Producción") );
     m_list->horizontalHeader()->setLabel( COL_STOCKARTICULO, tr("Stock") );
+    m_list->horizontalHeader()->setLabel( COL_PVPARTICULO, tr("PVP") );
 
     m_list->setColumnWidth(COL_IDARTICULO,100);
     m_list->setColumnWidth(COL_CODARTICULO,100);
@@ -284,6 +293,7 @@ void articleslist::inicializa() {
     m_list->setColumnWidth(COL_DESCTIPO_IVA,50);
     m_list->setColumnWidth(COL_IDLINEA_PROD,50);
     m_list->setColumnWidth(COL_STOCKARTICULO,50);
+    m_list->setColumnWidth(COL_PVPARTICULO,50);
 
     //listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
@@ -300,20 +310,11 @@ void articleslist::inicializa() {
         m_list->setText(i,COL_CODCOMPLETOARTICULO, cur->valor("codigocompletoarticulo"));
         m_list->setText(i,COL_NOMARTICULO,cur->valor("nomarticulo"));
         m_list->setText(i,COL_DESCARTICULO,cur->valor("obserarticulo"));
-        //        m_list->setText(i,COL_CBARRASARTICULO,cur->valor("cbarrasarticulo"));
-        //        m_list->setText(i,COL_TIPOARTICULO,cur->valor("tipoarticulo"));
-        //        m_list->setText(i,COL_DESCUENTOARTICULO,cur->valor("descuentoarticulo"));
-        //        m_list->setText(i,COL_ESPECIFICACIONESARTICULO,cur->valor("especificacionesarticulo"));
-        //        m_list->setText(i,COL_ICONOARTICULO,cur->valor("iconoarticulo"));
-        //        m_list->setText(i,COL_FOTOARTICULO,cur->valor("fotoarticulo"));
-        //        m_list->setText(i,COL_POSTERARTICULO,cur->valor("posterarticulo"));
-        //        m_list->setText(i,COL_MARGENARTICULO,cur->valor("margenarticulo"));
-        //        m_list->setText(i,COL_SOBRECOSTEARTICULO,cur->valor("sobrecostearticulo"));
-        //        m_list->setText(i,COL_MODELOARTICULO,cur->valor("modeloarticulo"));
         m_list->setText(i,COL_IDTIPO_IVA,cur->valor("idtipo_iva"));
         m_list->setText(i,COL_DESCTIPO_IVA,cur->valor("desctipo_iva"));
-        //        m_list->setText(i,COL_IDLINEA_PROD,cur->valor("idlinea_prod"));
         m_list->setText(i,COL_STOCKARTICULO, cur->valor("stockarticulo"));
+        m_list->setText(i,COL_PVPARTICULO, cur->valor("pvparticulo"));
+
         i++;
         cur->siguienteregistro();
     }// end while
@@ -389,19 +390,12 @@ QString articleslist::formaQuery() {
 QString articleslist::detalleArticulos() {
     QString texto="";
     cursor2 *cur=companyact->cargacursor(formaQuery());
-    int i=0;
     while(!cur->eof()) {
-        i= !i;
-        if (i) {
-            texto += "<blockTable style=\"tabla1\" colWidths=\"5cm, 8cm\" rowHeights=\"5.5cm\">\n";
-        } else {
-            texto += "<blockTable style=\"tabla2\" colWidths=\"8cm, 5cm\" rowHeights=\"5.5cm\">\n";
-        }// end if
+            texto += "<blockTable style=\"tabla1\">\n";
+
         texto += "<tr>\n";
-        if (i) {
             texto += "<td><h1>"+XMLProtect(cur->valor("nomarticulo"))+"</h1>";
-            texto += "<para><pre>"+XMLProtect(cur->valor("obserarticulo"))+"</pre></para></td>\n";
-        }// end if
+            texto += "<para>"+XMLProtect(cur->valor("obserarticulo"))+"</para></td></tr><tr>\n";
         QString file = confpr->valor(CONF_DIR_IMG_ARTICLES)+XMLProtect(cur->valor("codigocompletoarticulo"))+".jpg";
         QFile f( file );
         if (f.exists() ) {
@@ -411,10 +405,6 @@ QString articleslist::detalleArticulos() {
         } else {
             texto += "<td></td>\n";
         }
-        if (!i) {
-            texto += "<td><h1>"+XMLProtect(cur->valor("nomarticulo"))+"</h1>";
-            texto += "<pre>"+XMLProtect(cur->valor("obserarticulo"))+"</pre></td>\n";
-        }// end if
         texto += "</tr>\n";
         texto += "</blockTable>";
         cur->siguienteregistro();

@@ -586,7 +586,7 @@
                 </widget>
                 <widget class="QLayoutWidget">
                     <property name="name">
-                        <cstring>layout12</cstring>
+                        <cstring>layout7</cstring>
                     </property>
                     <hbox>
                         <property name="name">
@@ -617,6 +617,20 @@
                             </property>
                             <property name="accel">
                                 <string>Alt+K</string>
+                            </property>
+                            <property name="checked">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>mver_pvparticulo</cstring>
+                            </property>
+                            <property name="text">
+                                <string>PVP</string>
+                            </property>
+                            <property name="accel">
+                                <string></string>
                             </property>
                             <property name="checked">
                                 <bool>true</bool>
@@ -951,6 +965,12 @@
         <signal>clicked()</signal>
         <receiver>articleslistbase</receiver>
         <slot>s_importar()</slot>
+    </connection>
+    <connection>
+        <sender>mver_pvparticulo</sender>
+        <signal>clicked()</signal>
+        <receiver>articleslistbase</receiver>
+        <slot>s_configurar()</slot>
     </connection>
 </connections>
 <slots>

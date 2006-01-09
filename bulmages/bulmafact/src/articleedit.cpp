@@ -122,6 +122,7 @@ void articleedit::chargeArticle(QString idArt) {
             m_nombrearticulo->setText(cur->valor("nomarticulo"));
             m_obserarticulo->setText(cur->valor("obserarticulo"));
 	    m_pvparticulo->setText(cur->valor("pvparticulo"));
+	    m_abrevarticulo->setText(cur->valor("abrevarticulo"));
             ivaType=cur->valor("idtipo_iva");
 	    m_codigocompletoarticulo->setText(cur->valor("codigocompletoarticulo"));
 	    
@@ -250,11 +251,13 @@ void articleedit::s_grabarClicked() {
 	if (idtipo_articulo == "") idtipo_articulo="NULL";
 
     QString SQLQuery;
+
     if (idArticle != "0") {
         SQLQuery = "UPDATE articulo SET codarticulo='"+companyact->sanearCadena(m_codigoarticulo->text())+"'";
         SQLQuery += " , nomarticulo='"+companyact->sanearCadena(m_nombrearticulo->text())+"'"; 
 	SQLQuery += " , idfamilia="+companyact->sanearCadena(m_familia->idfamilia());
         SQLQuery += " , obserarticulo='"+companyact->sanearCadena(m_obserarticulo->text())+"'";
+        SQLQuery += " , abrevarticulo='"+companyact->sanearCadena(m_abrevarticulo->text())+"'";
 	SQLQuery += " , pvparticulo="+companyact->sanearCadena(m_pvparticulo->text())+" ";
         SQLQuery += " , idtipo_iva="+companyact->sanearCadena(m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem()));
 	SQLQuery += " , controlstockarticulo="+companyact->sanearCadena(controlstockarticulo);
@@ -269,7 +272,7 @@ void articleedit::s_grabarClicked() {
 	}// end if
         companyact->commit();	
     } else {
-        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia, pvparticulo, presentablearticulo, controlstockarticulo, idtipo_articulo)";
+        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia, pvparticulo, presentablearticulo, controlstockarticulo, idtipo_articulo, abrevarticulo)";
         SQLQuery += " VALUES (";
         SQLQuery += " '"+companyact->sanearCadena(m_codigoarticulo->text())+"' ";
         SQLQuery += " , '"+companyact->sanearCadena(m_nombrearticulo->text())+"'";
@@ -280,6 +283,7 @@ void articleedit::s_grabarClicked() {
 	SQLQuery += " , "+companyact->sanearCadena(presentablearticulo);
 	SQLQuery += " , "+companyact->sanearCadena(controlstockarticulo);
 	SQLQuery += " , "+idtipo_articulo;
+        SQLQuery += " , '"+companyact->sanearCadena(m_abrevarticulo->text())+"'";
         SQLQuery += ")";
         companyact->begin();
         int error = companyact->ejecuta(SQLQuery);
