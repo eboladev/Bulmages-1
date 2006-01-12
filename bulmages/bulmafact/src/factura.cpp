@@ -180,8 +180,6 @@ void Factura::guardaFactura() {
 
 
 void Factura::imprimirFactura() {
-
-
 	/// Hacemos el lanzamiento de plugins para este caso.
 	int res = g_plugins->lanza("Factura_imprimirFactura",this);
 	if (res) return;

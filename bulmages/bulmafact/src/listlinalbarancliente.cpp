@@ -12,7 +12,7 @@
 #include "listlinalbarancliente.h"
 #include "company.h"
 #include "linalbarancliente.h"
-
+#include "funcaux.h"
 
 ListLinAlbaranCliente::ListLinAlbaranCliente(company *comp) {
     companyact = comp;
@@ -53,10 +53,10 @@ LinAlbaranCliente *ListLinAlbaranCliente::linpos(int pos) {
 
 // Carga l�eas de Factura
 void ListLinAlbaranCliente::cargaListLinAlbaranCliente(QString idbudget) {
+    _depura("ListLinAlbaranCliente::cargaListLinAlbaranCliente(%s)\n", 2);
     vaciar();
-    fprintf(stderr,"ListLinAlbaranCliente::cargaListLinAlbaranCliente(%s)\n", idbudget.ascii());
     mdb_idalbaran = idbudget;
-    fprintf(stderr,"Hacemos la carga del cursor\n");
+    _depura("Hacemos la carga del cursor\n",2);
     cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaran, articulo WHERE idalbaran="+mdb_idalbaran+" AND articulo.idarticulo=lalbaran.idarticulo");
     int i=0;
     while (!cur->eof())   {

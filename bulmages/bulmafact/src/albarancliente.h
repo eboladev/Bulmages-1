@@ -25,6 +25,7 @@
 @author Tomeu Borras
 */
 class AlbaranCliente{
+public:
 protected:
     ListLinAlbaranCliente *listalineas;
     ListDescuentoAlbaranCliente *listadescuentos;
@@ -50,6 +51,25 @@ protected:
 public:
     AlbaranCliente(company *);
     virtual ~AlbaranCliente();
+
+    /// Funciones de retorno de valores
+    QString idalbaran() {return mdb_idalbaran;};
+    QString numalbaran() {return mdb_numalbaran;};
+    QString fechaalbaran() {return mdb_fechaalbaran;};
+    QString comentalbaran() {return mdb_comentalbaran;};
+    QString comentprivalbaran() {return mdb_comentprivalbaran;};
+    QString idcliente() {return mdb_idcliente;};
+    QString idforma_pago() {return mdb_idforma_pago;};
+    QString idalmacen() {return mdb_idalmacen;};
+    QString refalbaran() {return mdb_refalbaran;};
+    QString descalbaran() {return mdb_descalbaran;};
+    QString numfactura() {return mdb_numfactura;};
+    QString idtrabajador() {return mdb_idtrabajador;};
+    QString procesadoalbaran() {return mdb_procesadoalbaran;};
+    QString contactalbaran() {return mdb_contactalbaran;};
+    QString telalbaran() {return mdb_telalbaran;};
+
+
     /// Establece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setListLinAlbaranCliente ( ListLinAlbaranCliente *a) {
         listalineas =a;

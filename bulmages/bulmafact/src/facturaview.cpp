@@ -34,7 +34,7 @@ using namespace std;
 
 
 FacturaView::FacturaView(company *comp, QWidget *parent, const char *name)
-: FacturaBase(parent, name, Qt::WDestructiveClose) , Factura (comp) ,dialogChanges(this) {
+        : FacturaBase(parent, name, Qt::WDestructiveClose) , Factura (comp) ,dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform2->setcompany(comp);
     m_almacen->setcompany(comp);
@@ -81,11 +81,11 @@ void FacturaView::inicialize() {
 }// end inicialize
 
 
-void   FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) { 
+void   FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalfactura->setText(total.toQString());
-    m_totalDiscounts->setText(desc.toQString());    
+    m_totalDiscounts->setText(desc.toQString());
 }// end pintatotales
 
 
@@ -116,4 +116,65 @@ void FacturaView::s_informeReferencia() {
     inf->generarinforme();
     delete inf;
 }// end s_informeReferencia
+
+
+#include "clientdelivnoteslist.h"
+#include "albarancliente.h"
+void FacturaView::s_agregaAlbaran() {
+    _depura("FacturaView::s_agregaAlbaran\n",0);
+    /// Seleccionamos el albarán.FacturaView::s_agregaAlbaran
+    // Pedimos la factura a la que agregar
+
+    ClientDelivNotesList *fac = new ClientDelivNotesList(companyact, NULL, tr("Seleccione albaran","company"),0,ClientDelivNotesList::SelectMode);
+    fac->setidcliente(mdb_idcliente);
+    fac->modoseleccion();
+
+    // Esto es convertir un QWidget en un sistema modal de dialogo.
+    this->setEnabled(false);
+    fac->show();
+    while(!fac->isHidden())
+        theApp->processEvents();
+    this->setEnabled(true);
+    QString idalbaran = fac->idCliDelivNote();
+    delete fac;
+
+    /// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operaci�
+    if (idalbaran == "")
+        return;
+
+        /// Creamos la factura.
+        AlbaranCliente *bud = new AlbaranCliente(companyact);
+        bud->cargaAlbaranCliente(idalbaran);
+
+
+	/// Agregamos a comentarios que albaran se corresponde.
+	mdb_comentfactura += "(ALBARAN: Num"+bud->numalbaran()+"Ref:"+bud->refalbaran()+"Fecha:"+bud->fechaalbaran()+")\n";
+
+
+        /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE, pero por ahora pasamos de hacerlo.
+        LinAlbaranCliente *linea;
+	for (linea = bud->getlistalineas()->m_lista.first(); linea; linea = bud->getlistalineas()->m_lista.next() ) {
+		//nuevalinea();
+		listalineas->nuevalinea(linea->desclalbaran()
+				, linea->cantlalbaran()
+				, linea->pvplalbaran()
+				, linea->descontlalbaran()
+				, linea->idarticulo()
+				, linea->codigocompletoarticulo()
+				, linea->nomarticulo()
+				, linea->ivalalbaran()
+		);
+	}// end for
+
+	delete bud;
+
+        pintaFactura();
+	show();
+
+    /// Comprobamos que el albaran se ajusta.
+
+    /// Leemos lineas e insertamos lineas.
+
+}// end agregaAlbaran
+
 

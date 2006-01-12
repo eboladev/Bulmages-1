@@ -169,6 +169,7 @@ void ClientEdit::loadClient(QString client) {
             m_clientFax->setText(cur->valor("faxcliente"));
             m_clientEmail->setText(cur->valor("mailcliente"));
             m_clientUrl->setText(cur->valor("urlcliente"));
+            m_clientComments->setText(cur->valor("comentcliente"));
 
             /// Ponemos la provincia correspondiente al cliente.
 	    m_provcliente->setProvincia(cur->valor("provcliente"));
@@ -230,6 +231,7 @@ void ClientEdit::emptyForm() {
     m_clientFax->setText("");
     m_clientEmail->setText("");
     m_clientUrl->setText("");
+    m_clientComments->setText("");
     m_provcliente->setCurrentItem(0);
     setModified(false);
 }// end newClient
@@ -259,6 +261,9 @@ void ClientEdit::saveClient() {
         SQLQuery += " , faxcliente='"+companyact->sanearCadena(m_clientFax->text())+"'";
         SQLQuery += " , mailcliente='"+companyact->sanearCadena(m_clientEmail->text())+"'";
         SQLQuery += " , provcliente='"+companyact->sanearCadena(m_provcliente->currentText())+"'";
+        SQLQuery += " , comentcliente='"+companyact->sanearCadena(m_clientComments->text())+"'";
+
+
         SQLQuery += " WHERE idcliente ="+clientId;
         companyact->begin();
         int error = companyact->ejecuta(SQLQuery);
@@ -268,7 +273,7 @@ void ClientEdit::saveClient() {
 	}// end if
         companyact->commit();
     } else {
-        SQLQuery = " INSERT INTO cliente (nomcliente, nomaltcliente, cifcliente, bancocliente, dircliente, poblcliente, cpcliente, telcliente, faxcliente, urlcliente, mailcliente, provcliente)";
+        SQLQuery = " INSERT INTO cliente (nomcliente, nomaltcliente, cifcliente, bancocliente, dircliente, poblcliente, cpcliente, telcliente, faxcliente, urlcliente, mailcliente, provcliente, comentcliente)";
         SQLQuery += " VALUES (";
         SQLQuery += "'"+companyact->sanearCadena(m_clientName->text())+"'";
         SQLQuery += ",'"+companyact->sanearCadena(m_altClientName->text())+"'";
@@ -282,6 +287,7 @@ void ClientEdit::saveClient() {
         SQLQuery += ",'"+companyact->sanearCadena(m_clientUrl->text())+"'";
         SQLQuery += ",'"+companyact->sanearCadena(m_clientEmail->text())+"'";
         SQLQuery += ",'"+companyact->sanearCadena(m_provcliente->currentText())+"'";
+        SQLQuery += ",'"+companyact->sanearCadena(m_clientComments->text())+"'";
         SQLQuery += ")";
         companyact->begin();
         int error = companyact->ejecuta(SQLQuery);

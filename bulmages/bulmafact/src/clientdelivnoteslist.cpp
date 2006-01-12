@@ -221,32 +221,32 @@ void ClientDelivNotesList::s_configurar() {
 	guardaconfig();
 }// end s_configurar
 
-ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, Qt::WFlags flag)
+ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
         : ClientDelivNotesListBase(parent, name, flag) {
     companyact = NULL;
     cargaconfig();
-    m_modo=0;
+    m_modo=editmodo;
     m_idclidelivnote="";
-    meteWindow(caption(),this);
+       if (m_modo == EditMode)  meteWindow(caption(),this);
     hideBusqueda();
 }// end providerslist
 
-ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
+ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
         : ClientDelivNotesListBase(parent, name, flag) {
     companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
     cargaconfig();
     inicializa();
-    m_modo=0;
+    m_modo=editmodo;
     m_idclidelivnote="";
-    companyact->meteWindow(caption(), this);
+        if (m_modo == EditMode) companyact->meteWindow(caption(), this);
     hideBusqueda();
     hideConfiguracion();
 }// end providerslist
 
 ClientDelivNotesList::~ClientDelivNotesList() {
-    companyact->sacaWindow(this);
+        if (m_modo == EditMode) companyact->sacaWindow(this);
 }// end ~providerslist
 
 

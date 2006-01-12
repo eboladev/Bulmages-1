@@ -125,20 +125,17 @@ void articleedit::chargeArticle(QString idArt) {
 	    m_abrevarticulo->setText(cur->valor("abrevarticulo"));
             ivaType=cur->valor("idtipo_iva");
 	    m_codigocompletoarticulo->setText(cur->valor("codigocompletoarticulo"));
-	    
 	    // Pintamos el stockable y el presentable
 	    if (cur->valor("presentablearticulo") == "t") {
 	    	m_presentablearticulo->setChecked(TRUE);
 	    } else {
 	    	m_presentablearticulo->setChecked(FALSE);
 	    }// end if
-	    
 	    if (cur->valor("controlstockarticulo") == "t") {
 	    	m_controlstockarticulo->setChecked(TRUE);
 	    } else {
 	    	m_controlstockarticulo->setChecked(FALSE);
-	    }// end if	    
-
+	    }// end if
             // Cargamos las relaciones artículo - proveedor.
             QString SQLQuery1 = "SELECT * FROM suministra, proveedor WHERE suministra.idproveedor=proveedor.idproveedor and idarticulo="+idArt;
             companyact->begin();
@@ -299,7 +296,6 @@ void articleedit::s_grabarClicked() {
 	delete cur;	
 
     }// end if */
-//    companyact->begin();
     if (m_archivoimagen != "") {
 	cursor2 *cur1 = companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo="+idArticle);
     	QString cadena = "cp "+m_archivoimagen+" "+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur1->valor("codigocompletoarticulo")+".jpg";

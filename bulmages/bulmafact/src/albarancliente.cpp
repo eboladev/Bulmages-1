@@ -1,7 +1,7 @@
 //
 // C++ Implementation: albarancliente
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
@@ -21,24 +21,25 @@ typedef QMap<QString, Fixed> base;
 
 
 AlbaranCliente::AlbaranCliente(company *comp) {
-	companyact=comp;
+    _depura("AlbaranCliente::AlbaranCliente(company *)",2);
+    companyact=comp;
+    listalineas = NULL;
+    listadescuentos = NULL;
 }
 
 
-AlbaranCliente::~AlbaranCliente()
-{
-}
+AlbaranCliente::~AlbaranCliente() {}
 
 void AlbaranCliente::borraAlbaranCliente() {
     if (mdb_idalbaran != "") {
         listalineas->borrar();
-	listadescuentos->borrar();
+        listadescuentos->borrar();
         companyact->begin();
         int error = companyact->ejecuta("DELETE FROM albaran WHERE idalbaran="+mdb_idalbaran);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
         companyact->commit();
         vaciaAlbaranCliente();
         pintaAlbaranCliente();
@@ -92,7 +93,7 @@ void AlbaranCliente::pintaAlbaranCliente() {
 
 // Esta funci� carga un AlbaranCliente.
 void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
-    fprintf(stderr,"AlbaranCliente::cargaAlbaranCliente(%s)\n",idbudget.ascii());
+    _depura("AlbaranCliente::cargaAlbaranCliente("+idbudget+")\n",0);
     mdb_idalbaran = idbudget;
     QString query = "SELECT * FROM albaran WHERE idalbaran="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
@@ -102,22 +103,27 @@ void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
         mdb_numalbaran= cur->valor("numalbaran");
         mdb_fechaalbaran= cur->valor("fechaalbaran");
         mdb_comentalbaran= cur->valor("comentalbaran");
-	mdb_comentprivalbaran = cur->valor("comentprivalbaran");
-	mdb_idforma_pago = cur->valor("idforma_pago");
-	mdb_descalbaran = cur->valor("descalbaran");
-	mdb_refalbaran = cur->valor("refalbaran");
-	mdb_idtrabajador = cur->valor("idtrabajador");
-	mdb_contactalbaran = cur->valor("contactalbaran");
-	mdb_telalbaran = cur->valor("telalbaran");
-	if (cur->valor("procesadoalbaran") == "t") 
-		mdb_procesadoalbaran = "TRUE";
-	else
-		mdb_procesadoalbaran = "FALSE";
+        mdb_comentprivalbaran = cur->valor("comentprivalbaran");
+        mdb_idforma_pago = cur->valor("idforma_pago");
+        mdb_descalbaran = cur->valor("descalbaran");
+        mdb_refalbaran = cur->valor("refalbaran");
+        mdb_idtrabajador = cur->valor("idtrabajador");
+        mdb_contactalbaran = cur->valor("contactalbaran");
+        mdb_telalbaran = cur->valor("telalbaran");
+        if (cur->valor("procesadoalbaran") == "t")
+            mdb_procesadoalbaran = "TRUE";
+        else
+            mdb_procesadoalbaran = "FALSE";
     }// end if
     delete cur;
+	/// Si no existe lista de lineas se crea una.
+	if (listalineas == NULL) listalineas = new ListLinAlbaranCliente(companyact);
     listalineas->cargaListLinAlbaranCliente(idbudget);
+	/// Si no existe lista de descuentos se crea una.
+	if (listadescuentos == NULL) listadescuentos = new ListDescuentoAlbaranCliente(companyact);
     listadescuentos->cargaDescuentos(idbudget);
     pintaAlbaranCliente();
+    _depura("Fin AlbaranCliente::cargaAlbaranCliente("+idbudget+")\n",0);
 }// end chargeBudget
 
 
@@ -125,33 +131,33 @@ void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
 void AlbaranCliente::guardaAlbaranCliente() {
     /// Todo el guardado es una transacci�
     companyact->begin();
-    if (mdb_numalbaran=="") 
-    	mdb_numalbaran="NULL";
+    if (mdb_numalbaran=="")
+        mdb_numalbaran="NULL";
     if (mdb_idtrabajador == "")
-    	mdb_idtrabajador="NULL";
+        mdb_idtrabajador="NULL";
     if (mdb_procesadoalbaran == "")
-	mdb_procesadoalbaran = "FALSE";
+        mdb_procesadoalbaran = "FALSE";
     if (mdb_idalbaran == "") {
         /// Se trata de una inserci�
         QString SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran,comentprivalbaran, idcliente, idforma_pago, idalmacen, descalbaran, refalbaran, idtrabajador, contactalbaran, telalbaran, procesadoalbaran) VALUES ("+
-	companyact->sanearCadena(mdb_numalbaran)+",'"+
-	companyact->sanearCadena(mdb_fechaalbaran)+"','"+
-	companyact->sanearCadena(mdb_comentalbaran)+"','"+
-	companyact->sanearCadena(mdb_comentprivalbaran)+"',"+
-	companyact->sanearCadena(mdb_idcliente)+","+
-	companyact->sanearCadena(mdb_idforma_pago)+","+
-	companyact->sanearCadena(mdb_idalmacen)+",'"+
-	companyact->sanearCadena(mdb_descalbaran)+"','"+
-	companyact->sanearCadena(mdb_refalbaran)+"',"+
-	companyact->sanearCadena(mdb_idtrabajador)+",'"+
-	companyact->sanearCadena(mdb_contactalbaran)+"','"+
-	companyact->sanearCadena(mdb_telalbaran)+"',"+
-	companyact->sanearCadena(mdb_procesadoalbaran)+")";
+                           companyact->sanearCadena(mdb_numalbaran)+",'"+
+                           companyact->sanearCadena(mdb_fechaalbaran)+"','"+
+                           companyact->sanearCadena(mdb_comentalbaran)+"','"+
+                           companyact->sanearCadena(mdb_comentprivalbaran)+"',"+
+                           companyact->sanearCadena(mdb_idcliente)+","+
+                           companyact->sanearCadena(mdb_idforma_pago)+","+
+                           companyact->sanearCadena(mdb_idalmacen)+",'"+
+                           companyact->sanearCadena(mdb_descalbaran)+"','"+
+                           companyact->sanearCadena(mdb_refalbaran)+"',"+
+                           companyact->sanearCadena(mdb_idtrabajador)+",'"+
+                           companyact->sanearCadena(mdb_contactalbaran)+"','"+
+                           companyact->sanearCadena(mdb_telalbaran)+"',"+
+                           companyact->sanearCadena(mdb_procesadoalbaran)+")";
         int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idalbaran) AS m FROM albaran");
         if (!cur->eof())
             setidalbaran(cur->valor("m"));
@@ -166,23 +172,23 @@ void AlbaranCliente::guardaAlbaranCliente() {
         SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente)+"";
         SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
         SQLQuery += " ,idalmacen="+companyact->sanearCadena(mdb_idalmacen);
-	SQLQuery += " ,descalbaran='"+companyact->sanearCadena(mdb_descalbaran)+"'";
-	SQLQuery += " ,refalbaran='"+companyact->sanearCadena(mdb_refalbaran)+"'";
-	SQLQuery += " ,idtrabajador="+companyact->sanearCadena(mdb_idtrabajador);
-	SQLQuery += " ,contactalbaran = '"+companyact->sanearCadena(mdb_contactalbaran)+"'";
-	SQLQuery += " ,telalbaran = '"+companyact->sanearCadena(mdb_telalbaran)+"'";
-	SQLQuery += " ,procesadoalbaran = "+companyact->sanearCadena(mdb_procesadoalbaran);
+        SQLQuery += " ,descalbaran='"+companyact->sanearCadena(mdb_descalbaran)+"'";
+        SQLQuery += " ,refalbaran='"+companyact->sanearCadena(mdb_refalbaran)+"'";
+        SQLQuery += " ,idtrabajador="+companyact->sanearCadena(mdb_idtrabajador);
+        SQLQuery += " ,contactalbaran = '"+companyact->sanearCadena(mdb_contactalbaran)+"'";
+        SQLQuery += " ,telalbaran = '"+companyact->sanearCadena(mdb_telalbaran)+"'";
+        SQLQuery += " ,procesadoalbaran = "+companyact->sanearCadena(mdb_procesadoalbaran);
         SQLQuery += " WHERE idalbaran="+companyact->sanearCadena(mdb_idalbaran);
         int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
     }// end if
-       companyact->commit();
-       listalineas->guardaListLinAlbaranCliente();
-       listadescuentos->guardaListDescuentoAlbaranCliente();
-       cargaAlbaranCliente(mdb_idalbaran);
+    companyact->commit();
+    listalineas->guardaListLinAlbaranCliente();
+    listadescuentos->guardaListDescuentoAlbaranCliente();
+    cargaAlbaranCliente(mdb_idalbaran);
 }// end guardaAlbaranCliente
 
 
@@ -195,19 +201,25 @@ void AlbaranCliente::imprimirAlbaranCliente() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
+
     archivo = "copy "+archivo+" "+archivod;
 #else
+
     archivo = "cp "+archivo+" "+archivod;
 #endif
+
     system (archivo.ascii());
 
     /// Copiamos el logo
 
 #ifdef WINDOWS
+
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #else
+
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #endif
+
     system (archivologo.ascii());
 
 
@@ -352,8 +364,8 @@ void AlbaranCliente::imprimirAlbaranCliente() {
     }
 
 
-invocaPDF("albaran");
-	
+    invocaPDF("albaran");
+
 } //end imprimirAlbaranCliente
 
 
@@ -367,14 +379,14 @@ void AlbaranCliente::calculaypintatotales() {
     /// Impresi� de los contenidos
     QString l;
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-    	Fixed cant(linea->cantlalbaran().ascii());
-	Fixed pvpund(linea->pvplalbaran().ascii());
-	Fixed desc1(linea->descontlalbaran().ascii());
-	Fixed cantpvp = cant * pvpund;
-	Fixed base = cantpvp - cantpvp * desc1 / 100;
+        Fixed cant(linea->cantlalbaran().ascii());
+        Fixed pvpund(linea->pvplalbaran().ascii());
+        Fixed desc1(linea->descontlalbaran().ascii());
+        Fixed cantpvp = cant * pvpund;
+        Fixed base = cantpvp - cantpvp * desc1 / 100;
         basesimp[linea->ivalalbaran()] =  basesimp[linea->ivalalbaran()]+ base;
     }// end for
-    
+
 
     Fixed basei("0.00");
     base::Iterator it;
@@ -386,9 +398,9 @@ void AlbaranCliente::calculaypintatotales() {
     DescuentoAlbaranCliente *linea1;
     if (listadescuentos->m_lista.first()) {
         for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
-	    Fixed propor(linea1->proporciondalbaran().ascii());
+            Fixed propor(linea1->proporciondalbaran().ascii());
             porcentt = porcentt + propor;
-        }// end for	
+        }// end for
     }// end if
 
 
@@ -400,19 +412,19 @@ void AlbaranCliente::calculaypintatotales() {
         } else {
             parbaseimp = it.data();
         }// end if
-	totbaseimp = totbaseimp + parbaseimp;
+        totbaseimp = totbaseimp + parbaseimp;
     }// end for
 
     Fixed totiva("0.00");
     Fixed pariva("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-	    Fixed piva(it.key().ascii());
+        Fixed piva(it.key().ascii());
         if (porcentt > Fixed("0.00")) {
             pariva = (it.data()-it.data()*porcentt/100)* piva/100;
         } else {
             pariva = it.data()* piva/100;
         }// end if
-	totiva = totiva + pariva;
+        totiva = totiva + pariva;
     }// end for
     pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
 

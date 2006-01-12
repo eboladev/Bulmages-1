@@ -83,6 +83,7 @@ public slots:
     virtual void cargaFactura(QString id);    
     virtual void s_deleteFactura() {borraFactura();};
     virtual void s_printFactura(){imprimirFactura();};
+    virtual void s_agregaAlbaran();
     
      /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {  
