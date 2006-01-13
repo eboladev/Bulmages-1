@@ -11,11 +11,15 @@ CONFIG += release \
 	 
 LIBS +=	 -rdynamic 	 
 
-TARGET = ../../../installbulmages/plugins/mypluginbf
-
 VERSION = 1.0.0
 
-DESTDIR = .
+# DESTDIR = .
+
+
+
+
+unix{
+TARGET = ../../../installbulmages/plugins/mypluginbf
 
 INCLUDEPATH = ../../../bulmalib \
 .. \
@@ -25,8 +29,6 @@ INCLUDEPATH = ../../../bulmalib \
 ../../src \
 ../../../bulmalib/.ui 
 
-
-unix{
 UI_DIR = .ui
 MOC_DIR = .moc
 OBJECTS_DIR = .obj
@@ -52,7 +54,28 @@ OBJECTS_DIR = .obj
   }
 }
 
+windows {
+	DEFINES += WINDOWS
+	UI_DIR=.ui
+	MOC_DIR=.moc
+	OBJECTS_DIR = .obj
+	LIBS += ../../../bulmalib/release/libbulmalib.a \
+	C:\Qt\4.1.0\lib\libQtXml4.a \
+	C:\Qt\4.1.0\lib\libQtXmld4.a 
 
+	INCLUDEPATH += .. \
+			..\.ui \
+			..\..\src \
+			..\.. \
+			..\..\.. \
+			..\..\..\bulmalib \
+			..\..\..\bulmalib\.ui \
+		C:\Qt\4.1.0\include\QtXml \
+		"C:\Archivos de programa\PostgreSQL\8.1\include"
+
+	LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
+#	TARGET = ../../../installbulmages/plugins/mypluginbf
+}
 
 SOURCES = plugin.cpp
 
