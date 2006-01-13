@@ -7,6 +7,10 @@ exists(src/gorgblau) {
     SUBDIRS += src/gorgblau
 }
 
+exists(src/mserra) {
+    SUBDIRS += src/mserra
+}
+
 
 #CONFIG += release \
 #          warn_on \

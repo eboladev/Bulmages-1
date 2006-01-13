@@ -39,7 +39,9 @@ using std::string;
 /// g_main debe estar declarado en cada una de las aplicacioones y hace referencia al QMainWindow respectivo en cada caso. Se usa para acceder a determiandos elementos especificos de la ventana como el statusBar
 #include <Q3MainWindow>
 #include <QStatusBar>
+
 extern Q3MainWindow *g_main;
+
 
 /** \brief Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.  */
 string extiendecodigo (string , unsigned int );

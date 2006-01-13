@@ -17,7 +17,6 @@
 QApplication *theApp;
 bulmafact *bges;
 QTranslator * traductor;
-Q3MainWindow *g_main=NULL;
 
 
 int main( int argc, char ** argv ) {

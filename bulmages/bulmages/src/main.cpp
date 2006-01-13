@@ -8,7 +8,7 @@
 #include "logpass.h"
 #include "postgresiface2.h"
 #include <qtextcodec.h>
-
+#include "funcaux.h"
 
 
 /// Instancia de la aplicacion. Usada en algunos casos para acceder a determinadas funcionalidades como la traducci�.
@@ -23,8 +23,6 @@ QTranslator * traductor;
   * aplicaci� con parametros o sin ellos
   */
 
-#include <Q3MainWindow>
-Q3MainWindow *g_main=NULL;
 
 int main( int argc, char ** argv ) {
     confpr = new configuracion();
