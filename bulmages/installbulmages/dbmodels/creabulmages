@@ -125,7 +125,6 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    psql $2 < crear/bulmages/t_grupo_data.sql 2>> /tmp/errores.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data.sql 2>> /tmp/errores.txt > /dev/null
    psql $2 < crear/bulmages/t_fpago_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_tipoiva_data.sql 2>> /tmp/errores.txt > /dev/null
    tiempo
 fi
 
@@ -135,6 +134,7 @@ if [ "$3" = "2" ]; then
    info "Cargamos datos adicionales. \n Ejemplo. \n"
    psql $2 < crear/bulmages/t_ejercicios_data.sql 2>> /tmp/errores.txt > /dev/null
    psql $2 < crear/bulmages/t_cuenta_data1.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmages/t_tipoiva_data.sql 2>> /tmp/errores.txt > /dev/null
    psql $2 < crear/bulmages/t_canal_data.sql 2>> /tmp/errores.txt > /dev/null
    psql $2 < crear/bulmages/t_c_coste_data.sql 2>> /tmp/errores.txt > /dev/null
    psql $2 < crear/bulmages/t_diario_data.sql 2>> /tmp/errores.txt > /dev/null

@@ -40,7 +40,6 @@
 QApplication * theApp;
 /// El traductor.
 QTranslator * traductor;
-Q3MainWindow *g_main=NULL;
 
 /// Faltan el configurador de parametros confpr y el sistema de log ctlog
 
