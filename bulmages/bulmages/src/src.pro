@@ -11,7 +11,8 @@ INCLUDEPATH += ../../bulmalib  \
 	       ../../bulmalib/.ui \
 	       ../../bulmalib/.moc \
 	       /usr/include/qt4 \
-	       /usr/include/qt4/Qt 
+	       /usr/include/qt4/Qt \
+	       /usr/include/QtXml 
 	
 TARGET = ../../installbulmages/bulmages 
 
