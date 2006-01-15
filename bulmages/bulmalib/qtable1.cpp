@@ -81,11 +81,12 @@ QWidget *QTable1::beginEdit(int row, int col, bool type) {
 }
 
 bool QTable1::eventFilter( QObject *obj, QEvent *event ) {
+    _depura("QTable1::INIT_eventFilter()\n",0);
     static bool ctrlpulsado= FALSE;
     if ( event->type() == QEvent::KeyPress ) {
         QKeyEvent *keyEvent = (QKeyEvent *) event;
         int key = keyEvent->key();
-        fprintf(stderr,"Key event %d %c\n", key, key);
+
         if ( key == Qt::Key_Plus) {
             emit pulsadomas(currentRow(), currentColumn(), key);
             return TRUE;
@@ -125,6 +126,7 @@ bool QTable1::eventFilter( QObject *obj, QEvent *event ) {
             ctrlpulsado = FALSE;
         }// end if
     }// end if
+    _depura("QTable1::END_eventFilter()\n",0);
     return Q3Table::eventFilter(obj, event);
 }// end eventFilter
 

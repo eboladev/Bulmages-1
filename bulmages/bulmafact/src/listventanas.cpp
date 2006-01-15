@@ -18,7 +18,8 @@ typedef map<int, pQObject> mapaw;
 
 mapaw elmapa;
 listventanas::listventanas(const QString & title,  QWidget *a, Qt::WFlags b): Q3DockWindow (a,title,b) {
-  //listventanas::listventanas(const QString & title,  QWidget *a, Qt::WFlags b): QDockWidget (title, a,b) {
+  _depura("listventanas::INIT_listventanas()\n",0);
+
   m_listBox = new Q3ListBox( 0 ,0 );
   m_listBox->setCaption( tr( "Ventanas Abiertas") );
   m_listBox->setGeometry(0,0,100,500);
@@ -30,6 +31,7 @@ listventanas::listventanas(const QString & title,  QWidget *a, Qt::WFlags b): Q3
   setMovingEnabled(TRUE);
   connect(m_listBox, SIGNAL(doubleClicked(Q3ListBoxItem *)), this, SLOT(dclicked()));
   connect(m_listBox, SIGNAL(clicked(Q3ListBoxItem *)), this, SLOT(clicked()));
+  _depura("listventanas::END_listventanas()\n",0);
 }// end listventanas
 
 void listventanas::dclicked() {
@@ -72,6 +74,7 @@ void listventanas::clicked()
 
 listventanas::~listventanas()
 {
+  _depura("listventanas::destructor()\n",0);
   delete m_listBox;
 }// end ~listventanas
 
@@ -81,8 +84,9 @@ listventanas::~listventanas()
  ** \param  nombre This QStrin is the name of the window that was shown in the listbox
  ** \param obj This QObject * contains the pointer of the window for furtner reference.
  */
-void  listventanas::meteWindow(QString nombre, QObject *obj)
+int  listventanas::meteWindow(QString nombre, QObject *obj)
 {
+  _depura("listventanas::INIT_meteWindow()\n",0);
   mapaw::iterator iterador = elmapa.begin();
   while (iterador != elmapa.end())
   {
@@ -93,11 +97,14 @@ void  listventanas::meteWindow(QString nombre, QObject *obj)
 
     /// Comprobamos ventanas duplicadas y las fulminamos.
     if (m_listBox->text((*iterador).first) == nombre) {
+ 	 _depura("hay una duplicada y la cerramos()\n",0);
 	((QWidget *)obj)->close();
+	 _depura("mostramos la original()\n",0);
 	((QWidget *)(*iterador).second)->hide(); 
 	((QWidget *)(*iterador).second)->show(); 
+ 	 _depura("Establecemos la nueva primaria()\n",0);
 	m_listBox->setCurrentItem((*iterador).first);
-	return;
+	return 1;
     }// end if
 
 
@@ -119,14 +126,16 @@ void  listventanas::meteWindow(QString nombre, QObject *obj)
     }// end if
     elmapa[m_listBox->count()-1]=obj;
   }// end if
+  _depura("listventanas::END_meteWindow()\n",0);
+  return 0;
 }// end meteWindow
 
 
 void listventanas::sacaWindow(QObject *obj)
 {
-  mapaw mapaaux;
-
   _depura("listventanas::INIT_sacaWindow()\n",0);
+
+  mapaw mapaaux;
 
   /// Buscamos la ventana correspondiente y la borramos.
   mapaw::iterator iterador = elmapa.begin();

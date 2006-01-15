@@ -18,6 +18,7 @@
 
 #include "articleslist.h"
 #include "listcomparticuloview.h"
+#include "funcaux.h"
 #include <q3table.h>
 #include <qmessagebox.h>
 #include <q3popupmenu.h>
@@ -27,6 +28,8 @@
 
 
 ListCompArticuloView::ListCompArticuloView(QWidget * parent, const char * name) : Q3Table(parent, name), ListCompArticulo() {
+    _depura("ListCompArticuloView::INIT_ListCompArticuloView()\n",0);
+
     /// Inicializamos la tabla de lineas de presupuesto
     setNumCols(5);
     setNumRows(100);
@@ -59,6 +62,7 @@ ListCompArticuloView::ListCompArticuloView(QWidget * parent, const char * name) 
 
     installEventFilter(this);
 
+    _depura("ListCompArticuloView::END_ListCompArticuloView()\n",0);
 }
 
 
@@ -118,7 +122,7 @@ fprintf(stderr,"pintalinlistCompArticulo(%d)\n",pos);
 
 
 bool ListCompArticuloView::eventFilter( QObject *obj, QEvent *ev ) {
-	fprintf(stderr,"eventFilter()\n");
+	_depura("ListCompArticuloView::INIT_eventFilter()\n",1);
     QString idArticle;
     CompArticulo *linea;//=m_lista.at(currentRow());
     
@@ -151,6 +155,7 @@ bool ListCompArticuloView::eventFilter( QObject *obj, QEvent *ev ) {
                 break;
             }// end switch
     }// end if
+	_depura("ListCompArticuloView::END_eventFilter()\n",1);
     return Q3Table::eventFilter( obj, ev );
 } //end eventFilter
 

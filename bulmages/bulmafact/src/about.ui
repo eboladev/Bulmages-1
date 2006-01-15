@@ -119,7 +119,7 @@
                             <cstring>TextLabel2</cstring>
                         </property>
                         <property name="text">
-                            <string>Versión 0.5.3</string>
+                            <string>Versión 0.5.9</string>
                         </property>
                     </widget>
                 </grid>

@@ -95,7 +95,7 @@ public:
   void refreshAlbaranesProveedor();
   void refreshFacturas();
   void refreshClientes();
-  void meteWindow(QString nom, QObject *obj) {m_listventanas->meteWindow(nom, obj);};
+  int meteWindow(QString nom, QObject *obj) {return m_listventanas->meteWindow(nom, obj);};
   void sacaWindow(QObject *nom) {m_listventanas->sacaWindow(nom);};
   void s_FPago();
   void s_Familias();

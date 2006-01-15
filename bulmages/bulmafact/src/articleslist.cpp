@@ -60,6 +60,8 @@
 #define COL_PVPARTICULO 19
 
 void articleslist::guardaconfig() {
+    _depura("articleslist::INIT_guardaconfig()\n",0);
+
     QString aux = "";
     mver_idarticulo->isChecked() ? aux += "1,":aux+="0,";
     mver_codcompletoarticulo->isChecked() ? aux += "1,":aux+="0,";
@@ -88,9 +90,13 @@ void articleslist::guardaconfig() {
         stream << aux << "\n";
         file.close();
     }// end if
+
+    _depura("articleslist::END_guardaconfig()\n",0);
 }// end guardaconfig()
 
 void articleslist::cargaconfig() {
+    _depura("articleslist::INIT_cargaconfig()\n",0);
+
     QFile file( confpr->valor(CONF_DIR_USER)+"/confarticleslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
@@ -120,11 +126,14 @@ void articleslist::cargaconfig() {
     mver_codarticulo->setChecked(line.at(34)=='1');
     mver_stockarticulo->setChecked(line.at(36)=='1');
     mver_pvparticulo->setChecked(line.at(38)=='1');
+
+    _depura("articleslist::END_guardaconfig()\n",0);
 }// end cargaconfig
 
 
 
 void articleslist::s_configurar() {
+    _depura("articleslist::INIT_s_configurar()\n",0);
 
     if(mver_idarticulo->isChecked() )
         m_list->showColumn(COL_IDARTICULO);
@@ -227,11 +236,15 @@ void articleslist::s_configurar() {
         m_list->hideColumn(COL_PVPARTICULO);
 
     guardaconfig();
+
+    _depura("articleslist::END_s_configurar()\n",0);
 }// end s_configurar
 
 
 articleslist::articleslist(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
         : articleslistbase(parent, name, flag)  , pgimportfiles(comp) {
+    _depura("articleslist::INIT_articleslist()\n",0);
+
     cargaconfig();
     companyact = comp;
     m_tipoarticulo->setcompany(comp);
@@ -242,10 +255,13 @@ articleslist::articleslist(company *comp, QWidget *parent, const char *name, Qt:
     hideBusqueda();
     hideConfiguracion();
 
+    _depura("articleslist::END_articleslist()\n",0);
 }// end articleslist
 
 
 void articleslist::inicializa() {
+    _depura("articleslist::INIT_inicializa()\n",0);
+
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setRowMovingEnabled( TRUE );
@@ -320,42 +336,62 @@ void articleslist::inicializa() {
     }// end while
     delete cur;
     s_configurar();
+
+    _depura("articleslist::END_inicializa()\n",0);
 } //end inicializa
 
 
 void articleslist::editArticle(int  row) {
+    _depura("articleslist::INIT_editArticle()\n",0);
+
     m_idArticle = m_list->text(row,COL_IDARTICULO);
     mdb_nomarticulo = m_list->text(row,COL_NOMARTICULO);
     mdb_codigocompletoarticulo = m_list->text(row,COL_CODCOMPLETOARTICULO);
     if (m_modo ==0 ) {
         articleedit *art = new articleedit(companyact,0,theApp->translate("Edición de Artículos", "company"));
-        art->chargeArticle(m_idArticle);
+        if (art->chargeArticle(m_idArticle)) return;
 	companyact->m_pWorkspace->addWindow(art);
         art->show();
     } else {
         close();
     }// end if
+
+    _depura("articleslist::END_editArticle()\n",0);
 }
 
 void articleslist::s_editArticle(int a, int, int, const QPoint &) {
+    _depura("articleslist::INIT_s_editArticle(int a, int, int, const QPoint &)\n",0);
+
     editArticle(a);
+
+    _depura("articleslist::END_s_editArticle(int a, int, int, const QPoint &)\n",0);
 }
 
 void articleslist::s_editArticle() {
+    _depura("articleslist::INIT_s_editArticle()\n",0);
+
     int a = m_list->currentRow();
     if (a < 0) return;
     editArticle(a);
+
+    _depura("articleslist::END_s_editArticle()\n",0);
 }
 
 
 articleslist::~articleslist() {
+    _depura("articleslist::INIT_destructor()\n",0);
+
    if(m_modo == EditMode) companyact->sacaWindow(this);
+
+    _depura("articleslist::END_destructor()\n",0);
 }// end ~articleslist
 
 
 
 
 void articleslist::removeArticle() {
+    _depura("articleslist::INIT_removeArticle()\n",0);
+
     if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artículo","Esta a punto de borrar un artículo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
         QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+m_list->text(m_list->currentRow(),COL_IDARTICULO);
         companyact->begin();
@@ -367,9 +403,13 @@ void articleslist::removeArticle() {
         companyact->commit();
         inicializa();
     }// end if
+
+    _depura("articleslist::END_removeArticle()\n",0);
 }
 
 QString articleslist::formaQuery() {
+    _depura("articleslist::INIT_formaQuery()\n",0);
+
     QString query="";
     query += "SELECT * FROM articulo LEFT JOIN tipo_iva ON articulo.idtipo_iva = tipo_iva.idtipo_iva WHERE 1=1 ";
     if(m_presentablearticulo->isChecked())
@@ -384,10 +424,14 @@ QString articleslist::formaQuery() {
     }// end if
     query +=" ORDER BY codigocompletoarticulo";
     return (query);
+
+    _depura("articleslist::END_formaQuery()\n",0);
 }// end formaQuery
 
 
 QString articleslist::detalleArticulos() {
+    _depura("articleslist::INIT_detalleArticulos()\n",0);
+
     QString texto="";
     cursor2 *cur=companyact->cargacursor(formaQuery());
     while(!cur->eof()) {
@@ -411,11 +455,14 @@ QString articleslist::detalleArticulos() {
     }// end while
     delete cur;
     return texto;
+
+    _depura("articleslist::END_detalleArticulos()\n",0);
 }// end detalleArticulos
 
 
 
 void articleslist::Imprimir() {
+    _depura("articleslist::INIT_Imprimir()\n",0);
 
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"articulos.rml";
     QString archivod = confpr->valor(CONF_DIR_TMP)+"articulos.rml";
@@ -457,10 +504,12 @@ void articleslist::Imprimir() {
 
 invocaPDF("articulos");
 
+    _depura("articleslist::END_Imprimir()\n",0);
 }// end Imprimir
 
 
 void articleslist::s_imprimir1() {
+    _depura("articleslist::INIT_s_imprimir1()\n",0);
 
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"articulos1.rml";
     QString archivod = confpr->valor(CONF_DIR_TMP)+"articulos1.rml";
@@ -595,10 +644,13 @@ void articleslist::s_imprimir1() {
 
 invocaPDF("articulos1");
 
+  _depura("articleslist::END_s_imprimir1()\n",0);
 }// end imprimir
 
 
 void articleslist::s_exportar() {
+  _depura("articleslist::INIT_s_exportar()\n",0);
+
   QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
   if(filexml.open(QIODevice::WriteOnly)) {
     bulmafact2XML(filexml, IMPORT_ARTICULOS);
@@ -606,10 +658,14 @@ void articleslist::s_exportar() {
   } else {
     _depura("ERROR AL ABRIR ARCHIVO\n",2);
   }// end if
+
+  _depura("articleslist::END_s_exportar()\n",0);
 }//
 
 
 void articleslist::s_importar() {
+  _depura("articleslist::INIT_s_importar()\n",0);
+
   QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
   if (filexml.open(QIODevice::ReadOnly))  {
 	XML2BulmaFact(filexml, IMPORT_ARTICULOS);
@@ -618,5 +674,7 @@ void articleslist::s_importar() {
   }  else  {
     _depura("ERROR AL ABRIR ARCHIVO\n",2);
   }// end if
+
+  _depura("articleslist::END_s_importar()\n",0);
 }
 

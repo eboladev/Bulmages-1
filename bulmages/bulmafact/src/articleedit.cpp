@@ -52,6 +52,9 @@
 
 articleedit::articleedit(company *comp, QWidget *parent, const char *name)
         : articleeditbase(parent, name, Qt::WDestructiveClose) {
+
+    _depura("articleedit::INIT_constructor()\n",0);
+
     companyact = comp;
     m_familia->setcompany(comp);
     m_tipoarticulo->setcompany(comp);
@@ -90,13 +93,18 @@ articleedit::articleedit(company *comp, QWidget *parent, const char *name)
     m_suministra->hideColumn(COL_SUMINISTRA_IDPROVEEDOR);
     m_suministra->setColumnReadOnly(COL_SUMINISTRA_NOMPROVEEDOR,true);
 
-    companyact->meteWindow("Articulo Edicion",this);
     m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
+    companyact->meteWindow("Articulo Edicion",this);
+
+
+    _depura("articleedit::END_constructor()\n",0);
 }// end articleedit
 
 articleedit::~articleedit() {
+    _depura("articleedit::INIT_destructor()\n",0);
     companyact->refreshArticles();
     companyact->sacaWindow(this);
+    _depura("articleedit::END_destructor()\n",0);
 }// end ~articleedit
 
 
@@ -107,7 +115,9 @@ articleedit::~articleedit() {
 * Si el parametro pasado no es un identificador válido entonces se pone *
 * la ventana de edición en modo de inserción                            *
 *************************************************************************/
-void articleedit::chargeArticle(QString idArt) {
+int articleedit::chargeArticle(QString idArt) {
+    _depura("articleedit::INIT_chargeArticle()\n",0);
+
     idArticle = idArt;
     QString ivaType="";
     fprintf(stderr,"chargeArticle activado \n");
@@ -160,13 +170,23 @@ void articleedit::chargeArticle(QString idArt) {
     
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES)+m_codigocompletoarticulo->text()+".jpg"));     
     cargarcomboiva(ivaType);
-    setCaption("Artículo "+m_codigocompletoarticulo->text());companyact->meteWindow(caption(),this);
+    setCaption("Artículo "+m_codigocompletoarticulo->text());
+    
+    int ret = companyact->meteWindow(caption(),this);
+    if (ret) {
+	_depura("articleedit::END_chargeArticle Error en la carga del articulo()\n",0);
+	return 1;
+    }
     m_componentes->cargaListCompArticulo(idArt);
     m_componentes->pintaListCompArticulo();
+    _depura("articleedit::END_chargeArticle()\n",0);
+    return 0;
 }// end chargeArticle
 
 
 void articleedit::cargarcomboiva(QString idIva) {
+    _depura("articleedit::INIT_cargacomboiva()\n",0);
+
     m_cursorcombo = NULL;
     companyact->begin();
     if (m_cursorcombo != NULL)
@@ -186,6 +206,8 @@ void articleedit::cargarcomboiva(QString idIva) {
     if (i1 != 0 ) {
         m_combotipo_iva->setCurrentItem(i1-1);
     }// end if
+
+    _depura("articleedit::END_cargacomboiva()\n",0);
 } // end cargarcomboalmacen
 
 
@@ -193,12 +215,15 @@ void articleedit::cargarcomboiva(QString idIva) {
 * Esta función se ejecuta cuando se ha pulsado sobre el botón de nuevo  *
 *************************************************************************/
 void articleedit::boton_nuevo() {
+    _depura("articleedit::INIT_boton_nuevo()\n",0);
+
     idArticle = "0";
     m_codigoarticulo->setText("");
     m_nombrearticulo->setText("");
     m_obserarticulo->setText("");
     m_pvparticulo->setText("0");
     m_combotipo_iva->setCurrentItem(0);
+    _depura("articleedit::END_boton_nuevo()\n",0);
 }// end boton_nuevo
 
 /*************************************************************************
@@ -215,6 +240,8 @@ void articleedit::accept() {
   * Esta función se ejecuta cuando se ha pulsado sobre el botón de borrar *
   */
 void articleedit::boton_borrar() {
+    _depura("articleedit::INIT_boton_borrar()\n",0);
+
     if (idArticle != "0") {
         m_componentes->borrar();
         if ( QMessageBox::question(this,tr("Borrar Articulo"),tr("Esta a punto de borrar un articulo, Desea continuar?."),tr("Si"),tr("No"),0,1,0) == 0) {
@@ -228,20 +255,26 @@ void articleedit::boton_borrar() {
             }// end if
         }// end if
     }// end if
+    _depura("articleedit::END_boton_borrar()\n",0);
 }// end boton_borrar
 
 
 void articleedit::s_findArticulo() {
+    _depura("articleedit::INIT_s_findArticulo()\n",0);
+
 	QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '"+m_codigocompletoarticulo->text()+"'";
 	cursor2 *cur = companyact->cargacursor(SQlQuery);
 	if (!cur->eof()) {
 		chargeArticle(cur->valor("idarticulo"));
 	}// end if
 	delete cur;
+    _depura("articleedit::END_s_findArticulo()\n",0);
 }// end s_findArticulo
 
 
 void articleedit::s_grabarClicked() {
+    _depura("articleedit::INIT_s_grabarClicked()\n",0);
+
 	QString presentablearticulo = m_presentablearticulo->isChecked() ? "TRUE" : "FALSE";	
 	QString controlstockarticulo = m_controlstockarticulo->isChecked() ? "TRUE" : "FALSE";	
 	QString idtipo_articulo = m_tipoarticulo->idtipo_articulo();
@@ -305,11 +338,14 @@ void articleedit::s_grabarClicked() {
     }// end if
     m_componentes->guardaListCompArticulo();
 	chargeArticle(idArticle);  
+    _depura("articleedit::END_s_grabarClicked()\n",0);
 }// end s_grabarClicked
 
 
 
 void articleedit::s_cambiarimagen() {
+    _depura("articleedit::INIT_s_cambiarimagen()\n",0);
+
     m_archivoimagen = Q3FileDialog::getOpenFileName(
                     "",
                     "Images (*.jpg)",
@@ -318,5 +354,6 @@ void articleedit::s_cambiarimagen() {
                     "Choose a file" );
     fprintf(stderr," Archivo Seleccionado: %s\n",m_archivoimagen.ascii());
     m_imagen->setPixmap(QPixmap(m_archivoimagen));   
+    _depura("articleedit::END_s_cambiarimagen()\n",0);
 }// end s_cambiarimagen
 

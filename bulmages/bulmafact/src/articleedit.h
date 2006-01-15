@@ -40,7 +40,7 @@ public:
     ~articleedit();
 	 
 public:
-   void chargeArticle(QString);
+   int chargeArticle(QString);
 	void articleedit::cargarcomboiva(QString);
 
 public slots:

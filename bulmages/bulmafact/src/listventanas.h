@@ -20,7 +20,7 @@ public:
 	listventanas(const QString & title, QWidget *a=0, Qt::WFlags b=0);
 	~listventanas();
 	public:
-	void meteWindow(QString, QObject *);
+	int meteWindow(QString, QObject *);
 	void sacaWindow(QObject *);
 public slots:
 	virtual void dclicked();
