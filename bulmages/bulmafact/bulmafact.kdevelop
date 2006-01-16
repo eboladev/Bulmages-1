@@ -70,7 +70,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir></activedir>
+      <activedir>src/plugin</activedir>
     </general>
     <make>
       <abortonerror>false</abortonerror>

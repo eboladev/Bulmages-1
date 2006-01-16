@@ -35,11 +35,14 @@
   */
 cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery) {
     conn = conn1;
+    m_error = FALSE;
+    m_query = SQLQuery;
     nomcursor = nombre;
     nregistros=0;
     registroactual=0;
     result = PQexec(conn, SQLQuery.toAscii().data());
     if (!result ) {
+        m_error = TRUE;
         _depura( PQerrorMessage(conn));
         _depura( "QUERY command failed ["+SQLQuery+"]");
         if (confpr->valor(CONF_ALERTAS_DB) == "Yes")
@@ -106,8 +109,10 @@ int cursor2::numcampo(QString campo) {
     while (i<numcampos() && campo != nomcampo(i) ) {
         i++;
     }// end while
-    if (i== numcampos())
+    if (i== numcampos()) {
+	_depura("Campo: "+campo+" no existe en la consulta: "+m_query, 2);
         return(-1);
+    }
     return(i);
 }// end numcampo
 
@@ -116,7 +121,7 @@ int cursor2::numcampo(QString campo) {
   * pasado, si se pasa -1 como registro se devuelve el registro actual
   * \param posicion El nmero de campo del que se quiere la posici�.
   * \param registro El registro del que se quiere devolver el campo. Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
-  * \return El valor de la posici�.
+  * \return El valor de la posicion.
   */
 QString cursor2::valor(int posicion, int registro) {
     if (registro == -1) {
@@ -128,37 +133,39 @@ QString cursor2::valor(int posicion, int registro) {
 }// end valor
 
 
-/** Esta funci� devuelve el valor del campo especificado (por nombre) del registro
+/** Esta funcion devuelve el valor del campo especificado (por nombre) del registro
   * pasado, si se pasa como registro -1 se devuelve el registro actual.
   * \param campo Nombre del campo a devolver
   * \param registro El registro del que se quiere devolver el campo. Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
-  * \return El valor de la posici�.
+  * \return El valor de la posicion.
   */
 QString cursor2::valor(QString campo, int registro) {
     int i=0;
     if (registro == -1) {
         registro = registroactual;
     }// end if
-    while (i<numcampos() && campo != nomcampo(i) ) {
-        i++;
-    }// end while
+
+    i = numcampo(campo);
+    if ( i == -1) 
+	return "";
+
     return(QString::fromUtf8(PQgetvalue(result, registro, i)));
 }// end valor
 
 
-/** \return Devuelve la posici� siguiente al registro que se est�recorriendo
+/** \return Devuelve la posicion siguiente al registro que se est�recorriendo
   */
 int cursor2::siguienteregistro() {
     return (++registroactual);
 }
 
-/** \return Devuelve la posici� anterior al registro que se est�recorriendo
+/** \return Devuelve la posicion anterior al registro que se est�recorriendo
   */
 int cursor2::registroanterior() {
     return (--registroactual);
 }
 
-/** \return Devuelve la posici� del primer registro de la tabla de registros
+/** \return Devuelve la posicion del primer registro de la tabla de registros
   */
 int cursor2::primerregistro() {
     registroactual=0;
@@ -166,7 +173,7 @@ int cursor2::primerregistro() {
 }// end primerregistro
 
 
-/** \return Devuelve el ltimo registro de la tabla de registros
+/** \return Devuelve el ultimo registro de la tabla de registros
   */
 int cursor2::ultimoregistro() {
     registroactual = nregistros-1;
@@ -174,7 +181,7 @@ int cursor2::ultimoregistro() {
 }// end ultimoregistro
 
 
-/** \return Devuelve TRUE si el registro est�en la posici� final, o si est�vacio
+/** \return Devuelve TRUE si el registro est�en la posicion final, o si esta vacio
   */
 bool cursor2::eof() {
     if (nregistros == 0) {
@@ -184,7 +191,7 @@ bool cursor2::eof() {
 }// end if
 
 
-/** \return Devuelve TRUE si el registro est�en la posici� inicial, o si est�vacio
+/** \return Devuelve TRUE si el registro esta en la posicion inicial, o si esta vacio
   */
 bool cursor2::bof() {
     if (nregistros == 0) {
@@ -350,19 +357,13 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
 
 /** \brief Ejecuta un comando SQL
 \param Query Comando a ejecutar. Debe ser un comando que no devuelva ningn valor (como \c select).
-\retval 0 Si la ejecuci� fue correcta
+\retval 0 Si la ejecucion fue correcta
 \retval 1 en caso contrario
 */
 #include <qtextcodec.h>
 int postgresiface2::ejecuta(QString Query) {
 
     PGresult *result;
-    /*
-        fprintf(stderr,"El decod es: %s\n", (const char *) Query.utf8());
-        fprintf(stderr,"El decod es: %s\n", Query.latin1());
-        fprintf(stderr,"El decod es: %s\n", Query.data());
-        fprintf(stderr,"El decod es: %s\n", (const char *) Query.local8Bit());
-    */
 
     //Prova de control de permisos
     if (confpr->valor(CONF_PRIVILEGIOS_USUARIO) != "1" && (Query.left(6)=="DELETE" || Query.left(6)=="UPDATE" || Query.left(6)=="INSERT"))

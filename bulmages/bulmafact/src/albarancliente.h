@@ -79,7 +79,7 @@ public:
         listadescuentos =a;
 	listadescuentos->setcompany(companyact);
     };
-    virtual void cargaAlbaranCliente(QString);
+    virtual int cargaAlbaranCliente(QString);
     void pintaAlbaranCliente();
     void guardaAlbaranCliente();
     void borraAlbaranCliente();

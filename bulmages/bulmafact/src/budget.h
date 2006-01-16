@@ -56,8 +56,6 @@ public:
     void inicialize();
     void manageArticle(int);
 
-    
-    
 void	pintaNumPresupuesto(QString id) {m_numpresupuesto->setText(id);};
 void	pintaFPresupuesto(QString id) {	m_fpresupuesto->setText(id);};
 void	pintaVencPresupuesto(QString id) {m_vencpresupuesto->setText(id);};
@@ -79,7 +77,6 @@ void   pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
 
 private:
     void generarPedidoCliente();
-//    bool close();
     virtual void closeEvent( QCloseEvent *);
 
 public slots:
@@ -88,7 +85,6 @@ public slots:
     virtual void s_removeBudget();
     virtual void s_printBudget();
     virtual void s_removeBudgetLine() {subform2->borralinpresupuestoact();};
-//    virtual bool close();
     
     virtual void s_comentariotextChanged() { setComentPresupuesto(m_comentpresupuesto->text());};
     virtual void s_contactotextChanged(const QString &str) {setContractPresupuesto(str);};

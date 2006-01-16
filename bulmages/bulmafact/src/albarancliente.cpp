@@ -21,7 +21,7 @@ typedef QMap<QString, Fixed> base;
 
 
 AlbaranCliente::AlbaranCliente(company *comp) {
-    _depura("AlbaranCliente::AlbaranCliente(company *)",2);
+    _depura("AlbaranCliente::AlbaranCliente(company *)",0);
     companyact=comp;
     listalineas = NULL;
     listadescuentos = NULL;
@@ -92,7 +92,7 @@ void AlbaranCliente::pintaAlbaranCliente() {
 
 
 // Esta funci� carga un AlbaranCliente.
-void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
+int AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
     _depura("AlbaranCliente::cargaAlbaranCliente("+idbudget+")\n",0);
     mdb_idalbaran = idbudget;
     QString query = "SELECT * FROM albaran WHERE idalbaran="+idbudget;
@@ -124,6 +124,7 @@ void AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
     listadescuentos->cargaDescuentos(idbudget);
     pintaAlbaranCliente();
     _depura("Fin AlbaranCliente::cargaAlbaranCliente("+idbudget+")\n",0);
+    return 0;
 }// end chargeBudget
 
 

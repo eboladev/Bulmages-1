@@ -58,6 +58,8 @@ private:
    int nregistros;
    /// Indica el nmero de campos que tiene el query. (La componente horizontal del query).
    int ncampos;
+   bool m_error;
+   QString m_query;
    
 public:
    /// Constructor, inicializa la estructura y realiza la consulta.
@@ -68,6 +70,7 @@ public:
    int numregistros();
    /// Devuelve el valor de una determinada posici� del query
    QString valor(int posicion, int registro=-1);
+   bool error() {return m_error;};
 public:
    /// Devuelve el valor de una determinada posici� del query
    QString valor(QString campo, int registro=-1);

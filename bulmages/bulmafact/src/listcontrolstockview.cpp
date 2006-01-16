@@ -254,7 +254,7 @@ void ListControlStockView::manageArticle(int row) {
 
 
 QString ListControlStockView::searchArticle() {
-    _depura("Busqueda de un art�ulo\n",0);
+    _depura("Busqueda de un articulo\n",0);
     articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,articleslist::SelectMode);
     // Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);

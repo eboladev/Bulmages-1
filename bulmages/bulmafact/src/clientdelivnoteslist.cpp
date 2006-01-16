@@ -218,7 +218,7 @@ void ClientDelivNotesList::s_configurar() {
     else
         m_list->hideColumn(COL_TOTALIMPUESTOS);
 
-	guardaconfig();
+    guardaconfig();
 }// end s_configurar
 
 ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
@@ -227,7 +227,8 @@ ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, Qt
     cargaconfig();
     m_modo=editmodo;
     m_idclidelivnote="";
-       if (m_modo == EditMode)  meteWindow(caption(),this);
+    if (m_modo == EditMode)
+        meteWindow(caption(),this);
     hideBusqueda();
 }// end providerslist
 
@@ -240,13 +241,15 @@ ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const
     inicializa();
     m_modo=editmodo;
     m_idclidelivnote="";
-        if (m_modo == EditMode) companyact->meteWindow(caption(), this);
+    if (m_modo == EditMode)
+        companyact->meteWindow(caption(), this);
     hideBusqueda();
     hideConfiguracion();
 }// end providerslist
 
 ClientDelivNotesList::~ClientDelivNotesList() {
-        if (m_modo == EditMode) companyact->sacaWindow(this);
+    if (m_modo == EditMode)
+        companyact->sacaWindow(this);
 }// end ~providerslist
 
 
@@ -295,7 +298,7 @@ void ClientDelivNotesList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTALBARANESCLIENTE));
     m_list->setReadOnly(TRUE);
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON  almacen.idalmacen=albaran.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago where 1=1 "+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
     while (!cur->eof()) {
@@ -312,13 +315,9 @@ void ClientDelivNotesList::inicializa() {
         m_list->setText(i,COL_COMENTALBARAN,cur->valor("comentalbaran"));
         m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
         m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
+        m_list->setText(i,COL_DESCFORMA_PAGO,cur->valor("descforma_pago"));
 
-	_depura("Pintamos la forma de pago");
-        cursor2 * cur2= companyact->cargacursor("SELECT * FROM forma_pago WHERE idforma_pago="+cur->valor("idforma_pago"));
-        m_list->setText(i,COL_DESCFORMA_PAGO,cur2->valor("descforma_pago"));
-        delete cur2;
-
-	_depura("Pintamos los totales");
+        _depura("Pintamos los totales");
         /// Calculamos el total del presupuesto y lo presentamos.
         cursor2 *cur1 = companyact->cargacursor("SELECT calctotalalbaran("+cur->valor("idalbaran")+") AS total, calcbimpalbaran("+cur->valor("idalbaran")+") AS base, calcimpuestosalbaran("+cur->valor("idalbaran")+") AS impuestos");
         m_list->setText(i,COL_TOTALALBARAN,cur1->valor("total"));
@@ -340,7 +339,7 @@ void ClientDelivNotesList::inicializa() {
 
     s_configurar();
 
-	_depura("End ClientDelivNotesList::inicializa");
+    _depura("End ClientDelivNotesList::inicializa");
 }// end inicializa
 
 
@@ -352,8 +351,12 @@ void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
     if (m_modo ==0 && m_idclidelivnote != "") {
         fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
         AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,0,theApp->translate("Edicion de Albaran de Cliente", "company"));
-	companyact->m_pWorkspace->addWindow(cDelivNote);
-        cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
+
+        int ret = cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
+        if (ret)
+            return;
+
+        companyact->m_pWorkspace->addWindow(cDelivNote);
         cDelivNote->show();
     } else {
         close();
@@ -367,9 +370,13 @@ void ClientDelivNotesList::s_edit() {
         m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
         if (m_idclidelivnote != "") {
             fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
-            AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,0,theApp->translate("Edicion de Albarán de Cliente", "company"));
-	companyact->m_pWorkspace->addWindow(cDelivNote);
-            cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
+            AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,0,theApp->translate("Edicion de Albaran de Cliente", "company"));
+
+            int ret = cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
+            if (ret)
+                return;
+
+            companyact->m_pWorkspace->addWindow(cDelivNote);
             cDelivNote->show();
         }// end if
     }// end if
@@ -427,19 +434,25 @@ void ClientDelivNotesList::imprimir() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
+
     archivo = "copy "+archivo+" "+archivod;
 #else
+
     archivo = "cp "+archivo+" "+archivod;
 #endif
+
     system (archivo.ascii());
 
     /// Copiamos el logo
 
 #ifdef WINDOWS
+
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #else
+
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #endif
+
     system (archivologo.ascii());
 
     QFile file;
@@ -453,88 +466,88 @@ void ClientDelivNotesList::imprimir() {
 
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
-/// -----------------------------------------------
+    /// -----------------------------------------------
     if(mver_refalbaran->isChecked() )
-	    fitxersortidatxt += "	<td>Referencia</td>";
+        fitxersortidatxt += "	<td>Referencia</td>";
     if(mver_codigoalmacen->isChecked() )
-	    fitxersortidatxt += "	<td>Cod.Almacen</td>";
+        fitxersortidatxt += "	<td>Cod.Almacen</td>";
     if(mver_numalbaran->isChecked() )
-	    fitxersortidatxt += "	<td>Num.</td>";
+        fitxersortidatxt += "	<td>Num.</td>";
     if(mver_fechaalbaran->isChecked() )
-	    fitxersortidatxt += "	<td>Fecha</td>";
+        fitxersortidatxt += "	<td>Fecha</td>";
     if(mver_nomcliente->isChecked() )
-	    fitxersortidatxt += "	<td>Cliente</td>";
+        fitxersortidatxt += "	<td>Cliente</td>";
     if(mver_idforma_pago->isChecked() )
-	    fitxersortidatxt += "	<td>Id. F. Pago</td>";
+        fitxersortidatxt += "	<td>Id. F. Pago</td>";
     if(mver_descforma_pago->isChecked() )
-	    fitxersortidatxt += "	<td>F. Pago</td>";
+        fitxersortidatxt += "	<td>F. Pago</td>";
     if(mver_numfactura->isChecked() )
-	    fitxersortidatxt += "	<td>Num. Factura</td>";
+        fitxersortidatxt += "	<td>Num. Factura</td>";
     if(mver_numnofactura->isChecked() )
-	    fitxersortidatxt += "	<td>N. No Factura</td>";
+        fitxersortidatxt += "	<td>N. No Factura</td>";
     if(mver_idusuario->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Usuario</td>";
+        fitxersortidatxt += "	<td>Id. Usuario</td>";
     if(mver_idcliente->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Cliente</td>";
+        fitxersortidatxt += "	<td>Id. Cliente</td>";
     if(mver_idalbaran->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Albaran</td>";
+        fitxersortidatxt += "	<td>Id. Albaran</td>";
     if(mver_comentalbaran->isChecked() )
-	    fitxersortidatxt += "	<td>Comentarios</td>";
+        fitxersortidatxt += "	<td>Comentarios</td>";
     if(mver_idalmacen->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Almacen</td>";
+        fitxersortidatxt += "	<td>Id. Almacen</td>";
     if(mver_totalalbaran->isChecked() )
-	    fitxersortidatxt += "	<td>Total</td>";
+        fitxersortidatxt += "	<td>Total</td>";
     if(mver_totalbaseimp->isChecked() )
-	    fitxersortidatxt += "	<td>Base Imp.</td>";
+        fitxersortidatxt += "	<td>Base Imp.</td>";
     if(mver_totalimpuestos->isChecked() )
-	    fitxersortidatxt += "	<td>Impuestos</td>";
-/// -----------------------------------------------
+        fitxersortidatxt += "	<td>Impuestos</td>";
+    /// -----------------------------------------------
     fitxersortidatxt += "</tr>";
 
     QString SQLQuery = "SELECT * FROM albaran, cliente, almacen where albaran.idcliente=cliente.idcliente AND albaran.idalmacen=almacen.idalmacen"+generarFiltro();
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
-/// -----------------------------------
-    if(mver_refalbaran->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("refalbaran"))+"</td>";
-    if(mver_codigoalmacen->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codigoalmacen"))+"</td>";
-    if(mver_numalbaran->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("numalbaran"))+"</td>";
-    if(mver_fechaalbaran->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fechaalbaran"))+"</td>";
-    if(mver_nomcliente->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomcliente"))+"</td>";
-    if(mver_idforma_pago->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idforma_pago"))+"</td>";
-    if(mver_descforma_pago->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descforma_pago"))+"</td>";
-    if(mver_numfactura->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("numfactura"))+"</td>";
-    if(mver_numnofactura->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("numnofactura"))+"</td>";
-    if(mver_idusuario->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idusuario"))+"</td>";
-    if(mver_idcliente->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idcliente"))+"</td>";
-    if(mver_idalbaran->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalbaran"))+"</td>";
-    if(mver_comentalbaran->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("comentalbaran"))+"</td>";
-    if(mver_idalmacen->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalmacen"))+"</td>";
+        /// -----------------------------------
+        if(mver_refalbaran->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("refalbaran"))+"</td>";
+        if(mver_codigoalmacen->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codigoalmacen"))+"</td>";
+        if(mver_numalbaran->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("numalbaran"))+"</td>";
+        if(mver_fechaalbaran->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fechaalbaran"))+"</td>";
+        if(mver_nomcliente->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomcliente"))+"</td>";
+        if(mver_idforma_pago->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idforma_pago"))+"</td>";
+        if(mver_descforma_pago->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descforma_pago"))+"</td>";
+        if(mver_numfactura->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("numfactura"))+"</td>";
+        if(mver_numnofactura->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("numnofactura"))+"</td>";
+        if(mver_idusuario->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idusuario"))+"</td>";
+        if(mver_idcliente->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idcliente"))+"</td>";
+        if(mver_idalbaran->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalbaran"))+"</td>";
+        if(mver_comentalbaran->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("comentalbaran"))+"</td>";
+        if(mver_idalmacen->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalmacen"))+"</td>";
 
         /// Calculamos el total del presupuesto y lo presentamos.
         cursor2 *cur1 = companyact->cargacursor("SELECT calctotalalbaran("+cur->valor("idalbaran")+") AS total, calcbimpalbaran("+cur->valor("idalbaran")+") AS base, calcimpuestosalbaran("+cur->valor("idalbaran")+") AS impuestos");
-    if(mver_totalalbaran->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("total"))+"</td>";
-    if(mver_totalbaseimp->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("base"))+"</td>";
-    if(mver_totalimpuestos->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("impuestos"))+"</td>";
+        if(mver_totalalbaran->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("total"))+"</td>";
+        if(mver_totalbaseimp->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("base"))+"</td>";
+        if(mver_totalimpuestos->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("impuestos"))+"</td>";
         delete cur1;
-/// -----------------------------------
+        /// -----------------------------------
         fitxersortidatxt += "</tr>";
         cur->siguienteregistro();
     }// end if

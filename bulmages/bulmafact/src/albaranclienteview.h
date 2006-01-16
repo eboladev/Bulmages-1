@@ -49,8 +49,6 @@ Q_OBJECT
 public:
 	AlbaranClienteView(company *, QWidget *, const char *);
 	~AlbaranClienteView();
-//	void inicialize();
-
 	
     void pintaIdAlbaran(QString) {};
     void pintaNumAlbaran(QString val) {m_numalbaran->setText(val);};
@@ -107,7 +105,7 @@ public slots:
     virtual void s_refalbarantextChanged(const QString &val) {setrefalbaran(val);};
     virtual void s_descalbarantextChanged(const QString &val) {setdescalbaran(val);};
     virtual void s_saveAlbaranCliente() {guardaAlbaranCliente();};
-    virtual void cargaAlbaranCliente(QString id);    
+    virtual int cargaAlbaranCliente(QString id);    
     virtual void s_deleteAlbaranCliente() {borraAlbaranCliente();};
     virtual void s_printAlbaranCliente(){};
     

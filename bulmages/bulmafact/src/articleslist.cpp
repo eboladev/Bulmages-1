@@ -349,13 +349,13 @@ void articleslist::editArticle(int  row) {
     mdb_codigocompletoarticulo = m_list->text(row,COL_CODCOMPLETOARTICULO);
     if (m_modo ==0 ) {
         articleedit *art = new articleedit(companyact,0,theApp->translate("Edición de Artículos", "company"));
+	/// Si la carga no va bien entonces terminamos.
         if (art->chargeArticle(m_idArticle)) return;
 	companyact->m_pWorkspace->addWindow(art);
         art->show();
     } else {
         close();
     }// end if
-
     _depura("articleslist::END_editArticle()\n",0);
 }
 

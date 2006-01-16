@@ -29,29 +29,29 @@ class company;
 
 
 class articleedit : public articleeditbase, public dialogChanges {
-Q_OBJECT
+    Q_OBJECT
 private:
-   company *companyact;
-   QString idArticle;
-	cursor2 *m_cursorcombo;
-   QString m_archivoimagen;
-	
+    company *companyact;
+    QString idArticle;
+    cursor2 *m_cursorcombo;
+    QString m_archivoimagen;
+
 public:
     articleedit(company *emp, QWidget *parent = 0, const char *name = 0);
     ~articleedit();
-	 
+
 public:
-   int chargeArticle(QString);
-	void articleedit::cargarcomboiva(QString);
-	void closeEvent( QCloseEvent *);
+    int chargeArticle(QString);
+    int articleedit::cargarcomboiva(QString);
+    void closeEvent( QCloseEvent *);
 
 public slots:
-   virtual void accept();
-   virtual void boton_nuevo();
-   virtual void boton_borrar();
-   virtual void s_findArticulo();
-   virtual void s_grabarClicked();
-   virtual void s_cambiarimagen();
+    virtual void accept();
+    virtual void boton_nuevo();
+    virtual void boton_borrar();
+    virtual void s_findArticulo();
+    virtual void s_grabarClicked();
+    virtual void s_cambiarimagen();
 };
 
 #endif

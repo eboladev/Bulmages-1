@@ -53,10 +53,9 @@ LinAlbaranCliente *ListLinAlbaranCliente::linpos(int pos) {
 
 // Carga l�eas de Factura
 void ListLinAlbaranCliente::cargaListLinAlbaranCliente(QString idbudget) {
-    _depura("ListLinAlbaranCliente::cargaListLinAlbaranCliente(%s)\n", 2);
+    _depura("ListLinAlbaranCliente::cargaListLinAlbaranCliente(%s)\n", 0);
     vaciar();
     mdb_idalbaran = idbudget;
-    _depura("Hacemos la carga del cursor\n",2);
     cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaran, articulo WHERE idalbaran="+mdb_idalbaran+" AND articulo.idarticulo=lalbaran.idarticulo");
     int i=0;
     while (!cur->eof())   {

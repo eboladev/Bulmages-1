@@ -38,7 +38,7 @@ void myplugin::inicializa(bulmafact *bges) {
 
 
 void entryPoint(bulmafact *bges) {
-    _depura("Estoy dentro del plugin\n",2);
+    _depura("Estoy dentro del plugin\n",0);
     myplugin *plug= new myplugin( );
     plug->inicializa(bges);
     bges->setCaption("Prueba de plugin.");

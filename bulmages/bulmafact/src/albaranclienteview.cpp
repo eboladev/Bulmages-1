@@ -66,9 +66,11 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const cha
     m_trabajador->setcompany(comp);
     setListLinAlbaranCliente(subform2);
     setListDescuentoAlbaranCliente(m_descuentos);
-//    inicialize();
+
     comp->meteWindow(caption(),this);
-    _depura("Fin de la inicializaci� de AlbaranClienteView\n");
+
+    dialogChanges_cargaInicial();
+    _depura("Fin de la inicializacion de AlbaranClienteView\n");
 }// end ClientDelivNote
 
 
@@ -226,11 +228,13 @@ void AlbaranClienteView::agregarFactura() {
 }// end generarAlbaran
 
 
-void AlbaranClienteView::cargaAlbaranCliente(QString id) {
+int AlbaranClienteView::cargaAlbaranCliente(QString id) {
     AlbaranCliente::cargaAlbaranCliente(id);
     setCaption("Albaran Cliente  "+mdb_refalbaran);
-    companyact->meteWindow(caption(),this);
+    int ret = companyact->meteWindow(caption(),this);
+    if (ret) return -1;
     dialogChanges_cargaInicial();
+    return 0;
 }
 
 

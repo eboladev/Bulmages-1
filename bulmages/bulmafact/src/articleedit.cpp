@@ -117,13 +117,16 @@ articleedit::~articleedit() {
 *************************************************************************/
 int articleedit::chargeArticle(QString idArt) {
     _depura("articleedit::INIT_chargeArticle()\n",0);
+    int error =0;
 
     idArticle = idArt;
     QString ivaType="";
-    fprintf(stderr,"chargeArticle activado \n");
     if (idArticle != "0") {
         QString SQLQuery = "SELECT * FROM articulo LEFT JOIN familia ON articulo.idfamilia = familia.idfamilia WHERE idarticulo="+idArt;
-        cursor2 *cur= companyact->cargacursor(SQLQuery, "unquery");
+        cursor2 *cur= companyact->cargacursor(SQLQuery);
+	if (cur->error())  error =1;
+
+
         if (!cur->eof()) {
             idArticle = idArt;
             m_familia->setidfamilia(cur->valor("idfamilia"));
@@ -148,9 +151,11 @@ int articleedit::chargeArticle(QString idArt) {
             }// end if
             // Cargamos las relaciones artículo - proveedor.
             QString SQLQuery1 = "SELECT * FROM suministra, proveedor WHERE suministra.idproveedor=proveedor.idproveedor and idarticulo="+idArt;
-            companyact->begin();
-            cursor2 *cur1 = companyact->cargacursor(SQLQuery1, "cargaSuministra");
-            companyact->commit();
+            cursor2 *cur1 = companyact->cargacursor(SQLQuery1);
+	    if (cur1->error()) {
+		error = 1;
+	    }// end if
+
             m_suministra->setNumRows(cur1->numregistros());
             int i=0;
             while (!cur1->eof()) {
@@ -169,31 +174,42 @@ int articleedit::chargeArticle(QString idArt) {
     }
 
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES)+m_codigocompletoarticulo->text()+".jpg"));
-    cargarcomboiva(ivaType);
-    setCaption("Artículo "+m_codigocompletoarticulo->text());
+    int ret = cargarcomboiva(ivaType);
+    if (ret) error = 1;
 
-    int ret = companyact->meteWindow(caption(),this);
-    if (ret) {
-        _depura("articleedit::END_chargeArticle Error en la carga del articulo()\n",0);
-        return 1;
-    }
+
+    setCaption(tr("Articulo ")+m_codigocompletoarticulo->text());
+
+    ret = companyact->meteWindow(caption(),this);
+    if (ret) error = 1;
+
     m_componentes->cargaListCompArticulo(idArt);
     m_componentes->pintaListCompArticulo();
     dialogChanges_cargaInicial();
+
+    /// Tratamiento de excepciones
+    if (error == 1) {
+        _depura("articleedit::END_chargeArticle Error en la carga del articulo()\n",0);
+        return -1;
+    }// end if
+
     _depura("articleedit::END_chargeArticle()\n",0);
     return 0;
 }// end chargeArticle
 
 
-void articleedit::cargarcomboiva(QString idIva) {
+/// Hace la carga del combo-box de tipos de iva para el articulo.
+int articleedit::cargarcomboiva(QString idIva) {
     _depura("articleedit::INIT_cargacomboiva()\n",0);
 
     m_cursorcombo = NULL;
-    companyact->begin();
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM tipo_iva","unquery");
-    companyact->commit();
+    m_cursorcombo = companyact->cargacursor("SELECT * FROM tipo_iva");
+    if (m_cursorcombo->error()) {
+	 delete m_cursorcombo;
+	 return -1;
+    }// end if
     int i = 0;
     int i1 = 0;
     while (!m_cursorcombo->eof()) {
@@ -209,6 +225,7 @@ void articleedit::cargarcomboiva(QString idIva) {
     }// end if
 
     _depura("articleedit::END_cargacomboiva()\n",0);
+    return 0;
 } // end cargarcomboalmacen
 
 
