@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,13 +20,13 @@
 
 // PRESUPUESTOS
 /*
--- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
--- hacemos a petición de un cliente determinado
+-- Entendemos que un presupuesto es una relaciï¿½ de materiales y trabajos cuantificada que
+-- hacemos a peticiï¿½ de un cliente determinado
 -- Numero
--- Data: Data d'emisió del presupost.
+-- Data: Data d'emisiï¿½del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
--- TelfContacte: Teléfon.
--- Venciment: Data máxima de validesa del presupost.
+-- TelfContacte: Telï¿½on.
+-- Venciment: Data mï¿½ima de validesa del presupost.
 -- Comentaris
 --  Pressupost a clients.
 CREATE TABLE presupuesto (
@@ -46,10 +46,10 @@ CREATE TABLE presupuesto (
 /*
 -- Linea de presupuesto
 -- Numero
--- Descripcio: Descripciónde l'article en el moment de ser presupostat.
+-- Descripcio: Descripciï¿½de l'article en el moment de ser presupostat.
 -- Quantitat
 -- PVP: Preu de l'article en el moment de ser pressupostat
--- Descompte: Percentatge de descompte en línia.
+-- Descompte: Percentatge de descompte en lï¿½ia.
 -- Linia de pressupost a clients.
 CREATE TABLE lpresupuesto (
    idlpresupuesto integer PRIMARY KEY,
@@ -112,7 +112,7 @@ CobroView::CobroView( company *comp , QWidget *parent, const char *name) : Cobro
     m_cliente->setcompany(comp);
     inicialize();
 //    comp->meteWindow(caption(),this);
-    fprintf(stderr,"Fin de la inicialización de CobroView\n");
+    _depura("Fin de la inicializacion de CobroView\n",0);
 }// end CobroView
 
 

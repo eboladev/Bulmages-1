@@ -43,12 +43,13 @@
 #include <qcombobox.h>
 #include <q3popupmenu.h>
 #include <qtoolbutton.h>
+#include <QCloseEvent>
 
 #include "funcaux.h"
 #include "postgresiface2.h"
 #include "listlinalbaranproveedorview.h"
 
-AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const char *name) : AlbaranProveedorBase(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp) {
+AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const char *name) : AlbaranProveedorBase(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp) ,dialogChanges(this) {
     subform2->setcompany(comp);
     m_almacen->setcompany(comp);
     m_forma_pago->setcompany(comp);
@@ -177,5 +178,15 @@ void AlbaranProveedorView::generarFactura() {
 
 
 
-
+void AlbaranProveedorView::closeEvent( QCloseEvent *e) {
+	_depura("closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, "Guardar Albaran",
+                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+	if (val == 0) 
+            guardaAlbaranProveedor();
+	if (val == 2)
+	    e->ignore();
+    }// end if	
+}
 

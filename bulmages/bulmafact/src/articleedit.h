@@ -22,12 +22,13 @@
 
 #include "articleeditbase.h"
 #include "postgresiface2.h"
+#include "dialogchanges.h"
 
 /** @author Alvaro de Miguel */
 class company;
 
 
-class articleedit : public articleeditbase {
+class articleedit : public articleeditbase, public dialogChanges {
 Q_OBJECT
 private:
    company *companyact;
@@ -42,6 +43,7 @@ public:
 public:
    int chargeArticle(QString);
 	void articleedit::cargarcomboiva(QString);
+	void closeEvent( QCloseEvent *);
 
 public slots:
    virtual void accept();

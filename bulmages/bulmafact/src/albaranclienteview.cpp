@@ -48,6 +48,8 @@
 #include <q3popupmenu.h>
 #include <qtoolbutton.h>
 
+#include <QCloseEvent>
+
 #include "funcaux.h"
 #include "postgresiface2.h"
 #include "listlinalbaranclienteview.h"
@@ -70,27 +72,10 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const cha
 }// end ClientDelivNote
 
 
-bool AlbaranClienteView::close(bool fil) {
-    if (dialogChanges_hayCambios())  {
-        if ( QMessageBox::warning( this, tr("Guardar Albaran"),
-                                   tr("Desea guardar los cambios."),
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
-            s_saveAlbaranCliente();
-    }// end if
-    return (QWidget::close(fil));
-}
-
 AlbaranClienteView::~AlbaranClienteView() {
     companyact->refreshAlbaranesCliente();
     companyact->sacaWindow(this);
 }// end ~ClientDelivNote
-
-
-/*
-void AlbaranClienteView::inicialize() {
-}// end inicialize
-*/
 
 
 void   AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
@@ -221,7 +206,7 @@ void AlbaranClienteView::agregarFactura() {
     QString idfactura = fac->idfactura();
     delete fac;
 
-	/// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operación
+	/// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operaciï¿½
 	if (idfactura == "") return;
 
     /// Creamos la factura.
@@ -258,3 +243,15 @@ void AlbaranClienteView::s_informeReferencia() {
 
 }
 
+
+void AlbaranClienteView::closeEvent( QCloseEvent *e) {
+	_depura("closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, "Guardar Albaran",
+                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+	if (val == 0) 
+            guardaAlbaranCliente();
+	if (val == 2)
+	    e->ignore();
+    }// end if	
+}

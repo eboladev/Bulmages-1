@@ -54,12 +54,16 @@ Restricciones de llave for�ea:
 #include <qwidget.h>
 #include <qcombobox.h>
 
+#include <QCloseEvent>
+
 #include "budgetslist.h"
 #include "pedidosclientelist.h"
 #include "clientdelivnoteslist.h"
 #include "cobroslist.h"
 #include "facturaslist.h"
 #include "busquedaprovincia.h"
+#include "funcaux.h"
+
 
 #define COL_DIVISION_IDDIVISION 0
 #define COL_DIVISION_DESCDIVISION 1
@@ -72,7 +76,7 @@ Restricciones de llave for�ea:
 
 #define NEW_CLIENT "0"
 ClientEdit::ClientEdit(company *comp, QWidget *parent, const char *name)
-        : ClientEditBase(parent, name, Qt::WDestructiveClose) {
+        : ClientEditBase(parent, name, Qt::WDestructiveClose) ,dialogChanges(this) {
     companyact = comp;
 
 	m_provcliente->setcompany(companyact);
@@ -127,14 +131,10 @@ ClientEdit::ClientEdit(company *comp, QWidget *parent, const char *name)
     m_divisiones->setColumnWidth(COL_DIVISION_MAILDIVISION,100);
     m_divisiones->setColumnWidth(COL_DIVISION_IDPROVEEDOR,100);
 
-    emptyForm();
     companyact->meteWindow(caption(),this);
 
-
+    dialogChanges_cargaInicial();
     fprintf(stderr,"Vamos a tratar el listado de presupuestos\n");
-
-    //   fprintf(stderr,"Vamos a ocultar la botonera\n");
-    //   m_listpresupuestos->hideBotonera();
 }// end ClientEdit
 
 ClientEdit::~ClientEdit() {
@@ -190,28 +190,13 @@ void ClientEdit::loadClient(QString client) {
             setCaption("Cliente "+cur->valor("nomcliente"));
             companyact->meteWindow(caption(),this);
 
-        } else {
-            emptyForm();
         }// end if
         delete cur;
-        setModified(false);
+
+        dialogChanges_cargaInicial();
     }// end if
 }// end loadClient
 
-
-/**
-* Toggles the status of the onscreen client modified/not modified.
-* Also performs the necesary gui actions in the window caption to reflect it.
-*/
-void ClientEdit::setModified(bool formContentsChanged) {
-    if (formContentsChanged) {
-        m_modified = true;
-        setCaption(tr("Cliente (modificado)"));
-    } else {
-        m_modified = false;
-        setCaption(tr("Cliente"));
-    }
-}// end setModified
 
 
 /**
@@ -233,7 +218,7 @@ void ClientEdit::emptyForm() {
     m_clientUrl->setText("");
     m_clientComments->setText("");
     m_provcliente->setCurrentItem(0);
-    setModified(false);
+    dialogChanges_cargaInicial();
 }// end newClient
 
 
@@ -300,7 +285,7 @@ void ClientEdit::saveClient() {
         delete cur;
         companyact->commit();
     }// end if
-    setModified(false);
+    dialogChanges_cargaInicial();
 }// end accept
 
 
@@ -322,7 +307,6 @@ void ClientEdit::deleteClient() {
 
 void ClientEdit::saveButton_clicked() {
     saveClient();
-    setModified(false);
 }
 
 void ClientEdit::deleteButton_clicked() {
@@ -337,7 +321,7 @@ void ClientEdit::deleteButton_clicked() {
     }// end if
 }
 
-
+/*
 void ClientEdit::cancelButton_clicked() {
     if (m_modified) {
         int ret = QMessageBox::warning(this,tr("Edici� de clientes"),
@@ -355,13 +339,17 @@ void ClientEdit::cancelButton_clicked() {
         close();
     }
 }
+*/
 
-void ClientEdit::close() {
-    fprintf(stderr,"ClientEdit::close\n");
-    QWidget::close();
-    delete this;
-}// end close
 
-void ClientEdit::formModified() {
-    setModified(true);
-}// end boton_newdivision
+void ClientEdit::closeEvent( QCloseEvent *e) {
+	_depura("closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, "Guardar Cliente",
+                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+	if (val == 0) 
+            saveClient();
+	if (val == 2)
+	    e->ignore();
+    }// end if	
+}

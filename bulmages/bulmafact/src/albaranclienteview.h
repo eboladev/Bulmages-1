@@ -80,10 +80,9 @@ void    pintaprocesadoalbaran(QString id) {
     void pintatotales(Fixed, Fixed, Fixed, Fixed);	
     void generarFactura();
     void agregarFactura();
-
+	void closeEvent( QCloseEvent *);
      
 public slots:
-	    virtual bool close(bool);
     virtual void s_comentalbarantextChanged() { setcomentalbaran(m_comentalbaran->text());};
     virtual void s_comentprivalbarantextChanged() {setcomentprivalbaran(m_comentprivalbaran->text());};
     virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};

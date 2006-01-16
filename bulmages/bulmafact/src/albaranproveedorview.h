@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borrï¿½ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,12 +31,13 @@
 #include "albaranproveedorbase.h"
 #include "albaranproveedor.h"
 #include "postgresiface2.h"
+#include "dialogchanges.h"
 
-/** @author Tomeu Borrás & Alvaro de Miguel */
+/** @author Tomeu Borrasï¿½ & Alvaro de Miguel */
 class company;
 
 
-class AlbaranProveedorView : public AlbaranProveedorBase, public AlbaranProveedor {
+class AlbaranProveedorView : public AlbaranProveedorBase, public AlbaranProveedor, public dialogChanges {
 Q_OBJECT
 	
 public:
@@ -62,7 +63,8 @@ public:
     void pintatotales(float, float);	
     void generarFactura();
 
-     
+	void closeEvent( QCloseEvent *);
+
 public slots:
     virtual void s_comentalbaranptextChanged() { setcomentalbaranp(m_comentalbaranp->text());};
     virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
