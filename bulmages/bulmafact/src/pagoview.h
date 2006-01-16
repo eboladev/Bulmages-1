@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,24 +27,24 @@
 #include "pago.h"
 #include "busquedaproveedor.h"
 #include "busquedafecha.h"
-
+#include "dialogchanges.h"
 
 #include <qlineedit.h>
 #include <q3textedit.h>
 #include <qlabel.h>
 #include <qcheckbox.h>
 
-/** @author Tomeu Borrás Riera */
+/** @author Tomeu Borrï¿½ Riera */
 class company;
 
-class PagoView : public PagoBase , public Pago  {
+class PagoView : public PagoBase , public Pago, public dialogChanges  {
     Q_OBJECT
 public:
     PagoView(company *, QWidget *, const char *);
     ~PagoView();
     void inicialize();
     void manageArticle(int);  
-    
+	void closeEvent( QCloseEvent *); 
 
 void	pintafechapago(QString id) {	m_fechapago->setText(id);};
 void	pintacomentpago(QString id) {m_comentpago->setText(id);};

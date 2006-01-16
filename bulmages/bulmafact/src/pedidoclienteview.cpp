@@ -32,6 +32,7 @@
 using namespace std;
 #include "funcaux.h"
 
+#include <QCloseEvent>
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char *name)
         : PedidoClienteBase(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp),dialogChanges(this) {
@@ -180,4 +181,16 @@ void PedidoClienteView::s_informeReferencia() {
     inf->generarinforme();
     delete inf;
 }// end s_informeReferencia
+
+void PedidoClienteView::closeEvent( QCloseEvent *e) {
+	_depura("closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, "Guardar Pedido Cliente",
+                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+	if (val == 0) 
+            guardaPedidoCliente();
+	if (val == 2)
+	    e->ignore();
+    }// end if	
+}
 

@@ -58,6 +58,7 @@ configuracion::configuracion() {
     QDir homedir;
     /// Cambiamos a ~/.bulmages como directorio de trabajo.
     QString dir = getenv("HOME");
+    fprintf(stderr,"\n %s \n",dir.ascii());
     dir = dir + "/.bulmages";
 #ifdef WIN32
     _depura("Es WINDOWS !!!",1);
@@ -291,6 +292,7 @@ void configuracion::saveconfig() {
   * Lee la configuraci� del fichero de configuraci� pasado y rellena la estructura.
   */
 bool configuracion::leeconfig(QString fich) {
+    fprintf(stderr,"leeconfig(%s)\n",fich.ascii());
     QFile arch(fich);
     if (arch.open(QIODevice::ReadOnly)) {
         char buff[1024];

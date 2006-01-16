@@ -19,6 +19,11 @@
 #include "funcaux.h"
 #include "informereferencia.h"
 
+#include "clientdelivnoteslist.h"
+#include "albarancliente.h"
+
+#include <QCloseEvent>
+
 #include <qmessagebox.h>
 #include <q3table.h>
 #include <qwidget.h>
@@ -55,18 +60,6 @@ FacturaView::~FacturaView() {
     companyact->sacaWindow(this);
 }
 
-
-
-bool FacturaView::close(bool fil) {
-    if (dialogChanges_hayCambios())  {
-        if ( QMessageBox::warning( this, "Guardar Factura",
-                                   "Desea guardar los cambios.",
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
-            s_saveFactura();
-    }// end if
-    return (QWidget::close(fil));
-}// end close
 
 
 void FacturaView::inicialize() {
@@ -117,9 +110,6 @@ void FacturaView::s_informeReferencia() {
     delete inf;
 }// end s_informeReferencia
 
-
-#include "clientdelivnoteslist.h"
-#include "albarancliente.h"
 void FacturaView::s_agregaAlbaran() {
     _depura("FacturaView::s_agregaAlbaran\n",0);
     /// Seleccionamos el albarán.FacturaView::s_agregaAlbaran
@@ -177,4 +167,16 @@ void FacturaView::s_agregaAlbaran() {
 
 }// end agregaAlbaran
 
+
+void FacturaView::closeEvent( QCloseEvent *e) {
+	_depura("closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, "Guardar Factura",
+                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+	if (val == 0) 
+            s_saveFactura();
+	if (val == 2)
+	    e->ignore();
+    }// end if	
+}
 

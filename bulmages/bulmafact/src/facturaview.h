@@ -62,9 +62,9 @@ void    pintaidforma_pago(QString id) {m_forma_pago->setidforma_pago(id);};
 
 
     void pintatotales(Fixed , Fixed , Fixed , Fixed );   
+	void closeEvent( QCloseEvent *);
 
 public slots:
-    virtual bool close(bool);
     virtual void s_comentfacturatextChanged() { setcomentfactura(m_comentfactura->text());};
     
     virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};

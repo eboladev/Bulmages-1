@@ -42,7 +42,9 @@ Q_OBJECT
 public:
     PedidoProveedorView(company *, QWidget *parent = 0, const char *name = 0);
     ~PedidoProveedorView();
-    
+
+    void closeEvent( QCloseEvent *);
+
     void generarAlbaran();
     
     void inicialize();

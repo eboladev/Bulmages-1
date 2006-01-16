@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,10 +20,10 @@
 
 // PRESUPUESTOS
 /*
--- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
--- hacemos a petición de un cliente determinado
+-- Entendemos que un presupuesto es una relaciï¿½ de materiales y trabajos cuantificada que
+-- hacemos a peticiï¿½ de un cliente determinado
 -- Numero
--- Data: Data d'emisió del presupost.
+-- Data: Data d'emisiï¿½del presupost.
 -- PersContacte: Nom de persona de contacte (si cal).
 -- TelfContacte: Telï¿½on.
 -- Venciment: Data mï¿½ima de validesa del presupost.
@@ -46,7 +46,7 @@ CREATE TABLE presupuesto (
 /*
 -- Linea de presupuesto
 -- Numero
--- Descripcio: Descripciónde l'article en el moment de ser presupostat.
+-- Descripcio: Descripciï¿½de l'article en el moment de ser presupostat.
 -- Quantitat
 -- PVP: Preu de l'article en el moment de ser pressupostat
 -- Descompte: Percentatge de descompte en lï¿½ia.
@@ -82,6 +82,8 @@ CREATE TABLE lpresupuesto (
 #include <qlayout.h>
 #include <qmessagebox.h>
 
+#include <QCloseEvent>
+
 #include <fstream>
 using namespace std;
 
@@ -107,12 +109,11 @@ using namespace std;
 
 #define coma "'"
 
-PagoView::PagoView( company *comp , QWidget *parent, const char *name) : PagoBase(parent, name, Qt::WDestructiveClose) , Pago(comp) {
+PagoView::PagoView( company *comp , QWidget *parent, const char *name) : PagoBase(parent, name, Qt::WDestructiveClose) , Pago(comp) ,dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     m_proveedor->setcompany(comp);
     inicialize();
-//    comp->meteWindow(caption(),this);
-    fprintf(stderr,"Fin de la inicialización de PagoView\n");
+    _depura("Fin de la inicializaciï¿½ de PagoView\n",0);
 }// end PagoView
 
 
@@ -122,10 +123,8 @@ PagoView::~PagoView() {
 
 
 void PagoView::inicialize() {
+    dialogChanges_cargaInicial();
 }// end inicialize
-
-
-
 
 
 void PagoView::s_removePagoView() {
@@ -136,6 +135,17 @@ void PagoView::s_removePagoView() {
 }// end boton_borrar
 
 
+void PagoView::closeEvent( QCloseEvent *e) {
+	_depura("closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, "Guardar Pago",
+                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+	if (val == 0) 
+            guardaPago();
+	if (val == 2)
+	    e->ignore();
+    }// end if	
+}
 
 
 

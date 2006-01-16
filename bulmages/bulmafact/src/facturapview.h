@@ -18,6 +18,7 @@
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
+#include "dialogchanges.h"
 
 #include <qlineedit.h>
 #include <q3textedit.h>
@@ -28,7 +29,7 @@
 
 /** @author Tomeu Borras */
 
-class FacturaProveedorView : public FacturaProveedorBase, public FacturaProveedor
+class FacturaProveedorView : public FacturaProveedorBase, public FacturaProveedor, public dialogChanges
 {
   Q_OBJECT
 
@@ -58,6 +59,7 @@ public:
 
 
   void    pintatotales(float base, float iva);
+  void closeEvent( QCloseEvent *);
 
 public slots:
 virtual void s_comentfacturaptextChanged() { setcomentfacturap(m_comentfacturap->text());};

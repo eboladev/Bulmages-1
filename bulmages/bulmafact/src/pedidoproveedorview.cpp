@@ -18,6 +18,8 @@
 #include "budgetslist.h"
 #include "pagoview.h"
 
+#include <QCloseEvent>
+
 #include <qmessagebox.h>
 #include <q3table.h>
 #include <qwidget.h>
@@ -184,9 +186,23 @@ void PedidoProveedorView::s_nuevoCobro() {
     bud->show();
 }// end s_nuevoCobro
 
+
 void PedidoProveedorView::cargaPedidoProveedor(QString id) {
     PedidoProveedor::cargaPedidoProveedor(id);
     setCaption("Pedido Proveedor  "+mdb_refpedidoproveedor);
     companyact->meteWindow(caption(),this);
     dialogChanges_cargaInicial();
+}
+
+
+void PedidoProveedorView::closeEvent( QCloseEvent *e) {
+	_depura("closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, "Guardar Pedido Proveedor",
+                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+	if (val == 0) 
+            guardaPedidoProveedor();
+	if (val == 2)
+	    e->ignore();
+    }// end if	
 }

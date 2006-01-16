@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borrï¿½ Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,50 +27,79 @@
 #include "cobro.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
-
+#include "dialogchanges.h"
 
 #include <qlineedit.h>
 #include <q3textedit.h>
 #include <qlabel.h>
 #include <qcheckbox.h>
 
-/** @author Tomeu Borrás Riera */
+/** @author Tomeu Borrï¿½ Riera */
 class company;
 
-class CobroView : public CobroBase , public Cobro  {
+class CobroView : public CobroBase , public Cobro, public dialogChanges  {
     Q_OBJECT
 public:
     CobroView(company *, QWidget *, const char *);
     ~CobroView();
     void inicialize();
-    void manageArticle(int);  
-    
+    void manageArticle(int);
+    void closeEvent( QCloseEvent *);
 
-void	pintafechacobro(QString id) {	m_fechacobro->setText(id);};
-void	pintacomentcobro(QString id) {m_comentcobro->setText(id);};
-void    pintaidcliente(QString id) {m_cliente->setidcliente(id);};
-void    pintarefcobro(QString id) {m_refcobro->setText(id);};
-void    pintacantcobro(QString id) {m_cantcobro->setText(id);};
-void    pintaprevisioncobro(QString id) {
-	if (id == "t" || id == "TRUE") m_previsioncobro->setChecked(TRUE);
-	else m_previsioncobro->setChecked(FALSE);
-};
+    void	pintafechacobro(QString id) {
+        m_fechacobro->setText(id);
+    };
+    void	pintacomentcobro(QString id) {
+        m_comentcobro->setText(id);
+    };
+    void    pintaidcliente(QString id) {
+        m_cliente->setidcliente(id);
+    };
+    void    pintarefcobro(QString id) {
+        m_refcobro->setText(id);
+    };
+    void    pintacantcobro(QString id) {
+        m_cantcobro->setText(id);
+    };
+    void    pintaprevisioncobro(QString id) {
+        if (id == "t" || id == "TRUE")
+            m_previsioncobro->setChecked(TRUE);
+        else
+            m_previsioncobro->setChecked(FALSE);
+    };
 
 
 public slots:
-    virtual void s_saveCobroView() {guardaCobro();};
-    virtual void s_cargaCobroView(QString id) {Cobro::cargaCobro(id);setCaption("Cobro "+mdb_refcobro);};
+    virtual void s_saveCobroView() {
+        guardaCobro();
+    };
+    virtual void s_cargaCobroView(QString id) {
+        Cobro::cargaCobro(id);
+        setCaption("Cobro "+mdb_refcobro);
+    };
     virtual void s_removeCobroView();
-    virtual void s_comentcobrotextChanged(const QString &str) {setcomentcobro(str);};
-    virtual void s_refcobrotextChanged(const QString &str) {setrefcobro(str);};
-    virtual void s_cantcobrotextChanged(const QString &str) {setcantcobro(str);};
-    
+    virtual void s_comentcobrotextChanged(const QString &str) {
+        setcomentcobro(str);
+    };
+    virtual void s_refcobrotextChanged(const QString &str) {
+        setrefcobro(str);
+    };
+    virtual void s_cantcobrotextChanged(const QString &str) {
+        setcantcobro(str);
+    };
+
     virtual void s_previsioncobrostateChanged(int i) {
-    	if (i) setprevisioncobro("TRUE");
-	else setprevisioncobro("FALSE");
-    }    
-    virtual void s_clientevalueChanged(QString id) {setidcliente(id);};
-    virtual void s_fechacobrovalueChanged(QString id) {setfechacobro(id);};
+        if (i)
+            setprevisioncobro("TRUE");
+        else
+            setprevisioncobro("FALSE");
+    }
+    virtual void s_clientevalueChanged(QString id) {
+        setidcliente(id);
+    };
+    virtual void s_fechacobrovalueChanged(QString id) {
+        setfechacobro(id);
+    };
 };
 
 #endif

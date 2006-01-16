@@ -44,6 +44,8 @@ public:
   PedidoClienteView(company *, QWidget *parent = 0, const char *name = 0);
   ~PedidoClienteView();
 
+  void closeEvent( QCloseEvent *);
+
   void generarAlbaran();
   void pintaidcliente(QString id) {m_cliente->setidcliente(id);};
   void pintaidalmacen(QString id) {m_almacen->setidalmacen(id);};

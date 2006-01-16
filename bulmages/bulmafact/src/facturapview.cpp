@@ -26,13 +26,15 @@
 #include <qtoolbutton.h>
 #include <qlayout.h>
 #include <fstream>
+
+#include <QCloseEvent>
 using namespace std;
 
 
 
 
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const char *name)
-: FacturaProveedorBase(parent, name, Qt::WDestructiveClose) , FacturaProveedor (comp) {
+: FacturaProveedorBase(parent, name, Qt::WDestructiveClose) , FacturaProveedor (comp) ,dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform2->setcompany(comp);
     m_forma_pago->setcompany(comp);
@@ -79,7 +81,19 @@ void FacturaProveedorView::s_nuevoCobro() {
     bud->setcomentcobro(mdb_descfacturap);
     bud->pintaCobro();
     bud->show();
-*/    
+*/
 }// end s_nuevoCobro
 
+
+void FacturaProveedorView::closeEvent( QCloseEvent *e) {
+	_depura("closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, "Guardar Factura Proveedor",
+                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+	if (val == 0) 
+            guardaFacturaProveedor();
+	if (val == 2)
+	    e->ignore();
+    }// end if	
+}
 
