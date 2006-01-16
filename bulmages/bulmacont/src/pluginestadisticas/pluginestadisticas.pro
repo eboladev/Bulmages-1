@@ -21,6 +21,7 @@ LIBS += -lqt-mt \
 INCLUDEPATH = ../../../bulmalib \
 ../contabilidad \
 /usr/include/qt \
+/usr/lib/qt4/include/Qt \
 ../../src \
 ../comun \
 ../contabilidad \

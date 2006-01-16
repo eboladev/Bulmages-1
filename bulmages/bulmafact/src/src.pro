@@ -15,6 +15,8 @@ INCLUDEPATH += ../../bulmalib  \
 	       /usr/include/qt4 \
 	       /usr/include/qt4/Qt \
 	       /usr/include/QtXml \
+               /usr/lib/qt4/include/Qt \
+               /usr/lib/qt4/include/QtXml \
 	       ..
 	       
 	       

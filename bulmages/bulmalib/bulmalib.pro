@@ -54,8 +54,9 @@ TEMPLATE = lib
 LANGUAGE = C++
 
 INCLUDEPATH += ../src \
-    /usr/include/qt4 \
-	/usr/include/qt4/Qt
+	/usr/include/qt4 \
+	/usr/include/qt4/Qt \
+	/usr/lib/qt4/include/Qt
 	
 
 VERSION = 0.1
