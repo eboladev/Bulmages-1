@@ -79,6 +79,8 @@ void   pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
 
 private:
     void generarPedidoCliente();
+//    bool close();
+    virtual void closeEvent( QCloseEvent *);
 
 public slots:
     virtual void s_saveBudget() {guardapresupuesto();};
@@ -86,7 +88,7 @@ public slots:
     virtual void s_removeBudget();
     virtual void s_printBudget();
     virtual void s_removeBudgetLine() {subform2->borralinpresupuestoact();};
-    virtual bool close();
+//    virtual bool close();
     
     virtual void s_comentariotextChanged() { setComentPresupuesto(m_comentpresupuesto->text());};
     virtual void s_contactotextChanged(const QString &str) {setContractPresupuesto(str);};
@@ -117,6 +119,7 @@ public slots:
     virtual void s_realizarPedidoCliente() {generarPedidoCliente();};
     
     virtual void s_informeReferencia();
+
 };
 
 #endif

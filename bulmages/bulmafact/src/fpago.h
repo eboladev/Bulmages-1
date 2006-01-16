@@ -4,7 +4,7 @@
 // Description: 
 //
 //
-// Author: Tomeu Borrás Riera, (C) 2005
+// Author: Tomeu Borrï¿½ Riera, (C) 2005
 //
 // Copyright: See COPYING file that comes with this distribution
 //
@@ -19,7 +19,7 @@
 class company;
 
 /**
-Gestión de Formas de Pago
+Gestiï¿½ de Formas de Pago
 
 @author Tomeu Borras
 */
@@ -28,8 +28,8 @@ class fpago : public fpagobase, dialogChanges
 Q_OBJECT
 private:
 	company *companyact;
-	QString m_idforma_pago; // Indica cual es el objeto que se está mostrando.
-	bool m_modoConsulta;   /// Indica si es modo consulta o modo edición. (altera el comportamiento del doble click sobre la lista)	
+	QString m_idforma_pago; // Indica cual es el objeto que se estï¿½mostrando.
+	bool m_modoConsulta;   /// Indica si es modo consulta o modo ediciï¿½. (altera el comportamiento del doble click sobre la lista)	
 private:
 	/// Se encarga de hacer la carga del query inicial y de mostrar la lista bien y presentar el elemento que se especifique.
 	void pintar();
@@ -39,9 +39,11 @@ public:
     void setModoConsulta() {m_modoConsulta = TRUE;};
     void setModoEdicion() {m_modoConsulta = FALSE;};
     bool trataModificado(); 
+    virtual void closeEvent( QCloseEvent *);
+
 private slots:
     virtual void s_lista(Q3ListViewItem *);
-    virtual void close();
+//    virtual void close();
     virtual void s_saveFPago();
     virtual void s_newFPago();
     virtual void s_deleteFPago();

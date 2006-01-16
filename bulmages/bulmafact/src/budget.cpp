@@ -45,7 +45,7 @@
 #include <qtextstream.h>
 #include <qlayout.h>
 #include <qmessagebox.h>
-
+#include <QCloseEvent>
 #include <fstream>
 using namespace std;
 
@@ -87,17 +87,19 @@ Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(
 }// end Budget
 
 
-bool Budget::close() {
-    if (dialogChanges_hayCambios())  {
-        if ( QMessageBox::warning( this, "Guardar Cuenta",
-                                   "Desea guardar los cambios.",
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
-            s_saveBudget();
-    }// end if
-    return (QWidget::close());
-}
 
+
+void Budget::closeEvent( QCloseEvent *e) {
+	_depura("closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, "Guardar Presupuesto",
+                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+	if (val == 0) 
+            s_saveBudget();
+	if (val == 2)
+	    e->ignore();
+    }// end if	
+}
 
 
 Budget::~Budget() {
@@ -225,4 +227,6 @@ void Budget::s_informeReferencia() {
     delete inf;
 
 }
+
+
 

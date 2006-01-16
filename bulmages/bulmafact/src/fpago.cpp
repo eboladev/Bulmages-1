@@ -11,11 +11,12 @@
 //
 #include "fpago.h"
 #include "company.h"
+#include "funcaux.h"
 
 #include <q3listview.h>
 #include <qlineedit.h>
 #include <qmessagebox.h>
-
+#include <QCloseEvent>
 
 #define COL_IDFPAGO   0
 #define COL_NOMFPAGO  1
@@ -72,13 +73,13 @@ void fpago::s_lista(Q3ListViewItem *it) {
 }// end s_lista
 
 
-
+/*
 void fpago::close() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     QDialog::close();
 }
-
+*/
 
 void fpago::s_saveFPago() {
     QString query = "UPDATE forma_pago SET descforma_pago='"+
@@ -95,6 +96,7 @@ void fpago::s_saveFPago() {
     it->setText(COL_NOMFPAGO, m_descforma_pago->text());
     it->setText(COL_DIASFPAGO, m_dias1tforma_pago->text());
     it->setText(COL_DESCFPAGO, m_descuentoforma_pago->text());
+    dialogChanges_cargaInicial();
 }// end if
 
 
@@ -149,3 +151,16 @@ void fpago::s_deleteFPago() {
     pintar();
 }// end s_saveTipoIVA
 
+
+
+void fpago::closeEvent( QCloseEvent *e) {
+	_depura("fpago::closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, "Guardar Forma de Pago",
+                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+	if (val == 0) 
+            s_saveFPago();
+	if (val == 2)
+	    e->ignore();
+    }// end if	
+}

@@ -31,24 +31,25 @@ QTable1::QTable1(QWidget * parent, const char * name ):Q3Table(parent, name ) {
 }
 
 void QTable1::sortColumn ( int col, bool ascending, bool) {
-    insertColumns(0,3);
-    hideColumn(0);
-    hideColumn(1);
-    hideColumn(2);
-    col +=3;
+    int lastcol = numCols();
+
+    insertColumns(lastcol,3);
+    hideColumn(lastcol);
+    hideColumn(lastcol + 1);
+    hideColumn(lastcol + 2);
      bool oknumero = TRUE;
      bool okfecha = TRUE;
 
     for (int x = 0; x < numRows(); x++) {
 		QString cad = text(x,col);
 		if (cad != "") {
-			setText(x,0,cad);
+			setText(x,lastcol+0,cad);
 			/// Comprobamos si es un número.
 			cad.toDouble(&oknumero);
 			if (oknumero) {
 				while (cad.length() < 10)
 					cad.insert(0,"0");
-				setText(x,1,cad);
+				setText(x,lastcol + 1,cad);
 			}// end if
 
 			if (okfecha) {
@@ -58,22 +59,22 @@ void QTable1::sortColumn ( int col, bool ascending, bool) {
 				} else {
 					okfecha = FALSE;
 				}// end if
-				setText(x,2,cad);
+				setText(x,lastcol + 2,cad);
 			}// end if
 		}// end if
 
     } // end for
 
 	if (oknumero)
-  		  Q3Table::sortColumn(1,ascending,true);
+  		  Q3Table::sortColumn(lastcol+1,ascending,true);
 	else if (okfecha) 
-  		  Q3Table::sortColumn(2,ascending,true);	
+  		  Q3Table::sortColumn(lastcol+2,ascending,true);	
 	else 
-  		  Q3Table::sortColumn(0,ascending,true);	
+  		  Q3Table::sortColumn(lastcol+0,ascending,true);	
 
-    removeColumn(0);
-    removeColumn(0);
-    removeColumn(0);
+    removeColumn(lastcol+2);
+    removeColumn(lastcol+1);
+    removeColumn(lastcol+0);
 }
 
 QWidget *QTable1::beginEdit(int row, int col, bool type) {
