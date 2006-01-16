@@ -272,7 +272,7 @@
                                 <cstring>textLabel1_2_2_2_2</cstring>
                             </property>
                             <property name="text">
-                                <string>Contiene Articulo</string>
+                                <string>Contiene artículo</string>
                             </property>
                         </widget>
                         <widget class="BusquedaArticulo">
@@ -342,7 +342,7 @@
                                 <cstring>textLabel1_4</cstring>
                             </property>
                             <property name="text">
-                                <string>Fecha Inicial</string>
+                                <string>Fecha inicial</string>
                             </property>
                         </widget>
                         <widget class="BusquedaFecha">
@@ -428,7 +428,10 @@
                                 <cstring>mver_idalbaranp</cstring>
                             </property>
                             <property name="text">
-                                <string>&amp;Id. Albaran Proveedor</string>
+                                <string>&amp;Id. albarán de proveedor</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+I</string>
                             </property>
                         </widget>
                         <widget class="QCheckBox">
@@ -436,7 +439,7 @@
                                 <cstring>mver_numalbaranp</cstring>
                             </property>
                             <property name="text">
-                                <string>&amp;Núm. Albaran</string>
+                                <string>&amp;Núm. albarán</string>
                             </property>
                             <property name="accel">
                                 <string>Alt+N</string>
@@ -530,7 +533,7 @@
                                 <cstring>mver_idproveedor</cstring>
                             </property>
                             <property name="text">
-                                <string>Id. Proveedor</string>
+                                <string>Id. proveedor</string>
                             </property>
                             <property name="checked">
                                 <bool>true</bool>
@@ -541,7 +544,7 @@
                                 <cstring>mver_idforma_pago</cstring>
                             </property>
                             <property name="text">
-                                <string>Id Forma PAgo</string>
+                                <string>Id. forma de pago</string>
                             </property>
                             <property name="checked">
                                 <bool>true</bool>
@@ -560,7 +563,10 @@
                                 <cstring>mver_nomproveedor</cstring>
                             </property>
                             <property name="text">
-                                <string>N&amp;om Proveedor</string>
+                                <string>N&amp;ombre de proveedor</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+O</string>
                             </property>
                         </widget>
                     </hbox>
@@ -578,7 +584,7 @@
                                 <cstring>mver_nomalmacen</cstring>
                             </property>
                             <property name="text">
-                                <string>No&amp;m Almacén</string>
+                                <string>No&amp;m almacén</string>
                             </property>
                             <property name="accel">
                                 <string>Alt+M</string>
@@ -592,7 +598,7 @@
                                 <cstring>mver_descforma_pago</cstring>
                             </property>
                             <property name="text">
-                                <string>Forma PA&amp;go</string>
+                                <string>Forma de pa&amp;go</string>
                             </property>
                             <property name="accel">
                                 <string>Alt+G</string>
@@ -606,7 +612,7 @@
                                 <cstring>mver_totalalbaranproveedor</cstring>
                             </property>
                             <property name="text">
-                                <string>Total Albaran Proveedor</string>
+                                <string>Total albarán proveedor</string>
                             </property>
                             <property name="accel">
                                 <string></string>
@@ -620,7 +626,7 @@
                                 <cstring>mver_totalbaseimp</cstring>
                             </property>
                             <property name="text">
-                                <string>Total &amp;Base Imponible</string>
+                                <string>&amp;Base imponible</string>
                             </property>
                             <property name="accel">
                                 <string>Alt+B</string>
@@ -644,7 +650,7 @@
                                 <cstring>mver_totalimpuestos</cstring>
                             </property>
                             <property name="text">
-                                <string>Total Impuestos</string>
+                                <string>Total impuestos</string>
                             </property>
                             <property name="accel">
                                 <string></string>
@@ -809,7 +815,7 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
         </sizepolicy>
-        <pixmap>image10</pixmap>
+        <pixmap>image11</pixmap>
         <signal>valueChanged(QString)</signal>
     </customwidget>
     <customwidget>
@@ -826,7 +832,7 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
         </sizepolicy>
-        <pixmap>image11</pixmap>
+        <pixmap>image12</pixmap>
         <signal>valueChanged(QString)</signal>
     </customwidget>
 </customwidgets>
@@ -859,12 +865,15 @@
         <data format="PNG" length="1331">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000004fa494441545885ad575f6813771cff64f4e1041f7e1d0eee600f5788e0490639e94393d6e18d3c48d860067cb0630f3df1c1a33e48f061e806d2f5c1850a855490a50321712059061aca608b1dc29da2eb22a52ab86145a509456209d2e641f8ec21de35adf95b17387edcbfdfe7cfeff3fbe67b6095a043b04ad88e8d6ece1191e91d23321114444010fb04e117ec653eef6237a30b3a3a6d31f5384f927c5259618564ec669ce28a41ed5888000880ddccdb15d346609264859ba08b06a56f744a331394bed6369df10b8f48bbf93b338cc88c4d994cddcd9224d3cff2b498603467d5815dd0b7605b0ebff088b475a09df2f45c814927ed81675717a85e89529ad90adcf47d97882ab574a2e39a372a1719835a6694d2c94df0aeb2d38444c70c20223376c1dca25ccbc428ae873cf09ed2dec2a9b66bcff57aca2d26283206c564a8aebe4be54de7dd46a2e53e4f67f2b49f2d906fd3ae2d66b758df4bdde8b90e34da6f3d4c507e18a5c84429c6b4aef777d78eb44a7f76ae4056c8ecea02e54c9462314d694cebb8af7b3d0702a25e4a87de96d543f542e23a10bb19afab9f35bcf5c75043291e9289807827137a50ef2a2bf57406042b55d25e59f02a1d494edc4d517e92a6b86650dc3578f65a82952ac995fafda4936e9a093da8337d384d97443b27fa6cc7f60d8787f9614c8138a2e133ed0064230e3ccaa0ac9651fbf31110dc05dcdb40e98b1a26cb33d8d81bc3d54b5f61edd747c01f65b04a9fb3e4201c08e3c0a707a8c80a245382f2930204015fd847dbb17de14018ee73eeb8759f46644a331ac5acc189759bf2f528c5e334452ecae46a81c6df26c52da3e56ed0833a8d8841dbb159b95561fc4cbca3137d2e13d7891a00ec05a66ae7a08c6928fd7615da880ce7e51c8ab797515b2aa3f6cfab96ca131713507e5730fed7380040366428f3ad9df0b14a6009400070961c0c878789880ce9483f24c8f8fee839fcf22283e2eb65d47e6e0d2ef608242f26a1bc5430fee338969f2fa35ff4c33a68e1e9eea7103704a6ca5328de2f820e7d2e9ecf766c6c5f1b8fc4de7e480119003a2bff2101655ec1f89d3a78e94509e803f6fbf7437c24101e0a63eec61c4ae5128af78b709df0b1cacd40b470024b68091e97e318f86e005a4df394975e94e0fe7649bb30e01f8075d042b156c4c0ed812d4ef46d4f65d34c006dd3aeddd3307e671c6bafd6d0bfbb1fb53d35d45ed7b0f16603d26e09cb4f9771e9cd25c88a8cb54fd6a06033133bff176bd680007c907940eb94457d50a7ea57993d9fa5fc718b8605e007ce92e3d9ee3ad0786e3bb6af51b97bdfbdde384a9284f997f3382e1d8710027803e4fecd79cbb1fd7956e97bef5abebd0e70919c989c602a92a2aaaacc5fc87b0eeca827ec65d4833ab3b92ccf7e7b96a191104343219a63e626814e3da1fbd04e9cd0833aad9316f98cb44e59545595e698c95424d5b67f68dab1f4daf1e8419de609935c25933349463f8f323412a275caf2d477dd0f3426b45be5d1c35172854c5d4eb1305da0aaaa2c4c17a8053af70fadbbd846224d98eb419d9eedab64fa4aba6ebd5fa579c2e4e8b151aa7eb56307d5a65301f5419d89c18447440fea4c0413d4833a0bd30566735972954ccda6685fb6a907752ecc2ebc03bee36f430f7850a7396672e2fc0493d349aecfae339bcb72fdf23a634763d4f669344f988c9f8e7bc0ffefb7618303c62183b12f63cc5fc8337e3a4e7bc666fc4c9cf9c97c57df82ef55075a95d35e146f1fff036ad9c373c58b34c70000000049454e44ae426082</data>
     </image>
     <image name="image9">
-        <data format="PNG" length="943">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000037649444154388db59541681c5518c77f097b780b73780b1b98810afba001473cb8a1976c9b43021e0c045a82176f6d4f22e24514c4589082075b3c690f013d04e321740b16d6436523a49b3934640b0d19a1813760610612d8070eec7718a887491ab764f560fd2e338f37fcdeeffbe6cfcc446fbbc7495d6c5d7cce2ba8de766f62e204dcb9df79bef0fa02b18be108f6dd3e55aa0c19623058ec99eb811b103f8d897622284ee19513d3decf3db497e2377dac8b98f502d2dc1268439ac72c6a03790a5e4096c72c7aa7ebcdbe25f841d3fed58d8201fab6cffc9c4f947c8bfed3d22d043305dd3fc0658a76262814d53acc36c11e09be8224834600322523e3780156a2b07984066ce1308126da82f817a1b393a12a2085a02a9abbe715d7afd650cd21611dac13425fd1e1143e7972b3fb6c97c01b60077dcc94a67d4fb8fd554667c7a1b5c2bca5695ef2d13e2407c2caa796f61aa4399863f899c6e678962650445bd05e7550c0b5cb3ee112cc4c1b52b1e84a8df58d21ed55477b2da1793e44bd5dc56881b38cadb3049ec21e42e7be430a61f1b24feb1a84d382953eeab0caf76b03ae5fadf1de871a2a8adb77526a529a8f3796986a1e123f8ed0da677e094c5d4873d004ac7c3dc0ee39068770f3cb80e881c3fe2e741f0d31f551f088b1d18add83182a103420346073411535563e4989f71c4a2b96e76aa40c089b1a2984f4195837066cb4811c8ca7a010420f5c015a02563e1b60f7040ad09e827310d6cb7e5545210598ba1a6f8c074e01154d371174a5cafabd6169ea29fc739a24c9b875236573ab466a052904d3a892fe532ab23c66be09771b8a2c11d637867cf0fe1b0c0e85e5a51a7870eb062407199f7f9422b9c3f735611378e9e58d18fb9e222b84c577155208ed55c78f1bfbdcfc22c06f0e999d1bf2f14a80ef6bdc510605b49634ad0bff9263728baf14ad39c0f97c772761fd1b881e38e6673599406a07b82329678b106f09dd8755c2bae2ef397e018e939845054926841a5a57147821ed9f52e23d217e9c944f17a0eb9a852b9add4d21cd1d5ad5e824638ce3a7319b4f148dd71436174c1d1696862cbfd3a4fbc88283d4c1cc9b063d9dd1ba00dd87557c354326fbd827a3339ee86df7ca0f7c05662f296a41192911015546481d1faf2a65b365d3e5389c83b82fa499e0b2338c2920faeda49d97afe36afcfee4d89dff589350fea3fe17f0ab86f7b67b137f01a647adcdf714bf420000000049454e44ae426082</data>
+        <data format="PNG" length="942">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000037549444154388db5953168dc5618c77f361ade81867770060952f08318aad2a167b2f888071b32d46048305dba25994a295d4a0ba56ea0043a34a1539bc1900ea6ee60728186b843cab9e04437c4f80231562186276840021bee4105f70d8274901df782af1d9a7e8bf478e2f77edfa73fd2581cc71c57abd57ac16ba8388ec7c68ec1f7efdd7f31ffe63c894be010f6dc1e356a0c18603058eca9ebbeeb933c4be86e77a13c817bc7a68f7e7e84f633826680755d66fc90acb084da9015090bda4091811f9217090bfec97ab367097fd0b47f75c360809eed31371bd04dbf43ff69e994829980ce1fe072453b17148a5a03669a600f8540419ac36408322143e3780956a2b045170dd8d261424d770b925f848ded1ce5819482f23477ce2aae5eaea39a03a20658274481628313f8f8f1cdcef31d42bf8fedf730139af65de1e6d7391bdb0ead15e61d4df37c800e20dd17963fb3b457212bc01cc14f353647b334a1a2bb05ed1507255cb918102dc2f49421138bf6eaacad0f68af38daab29cdb311ea420da3054e33b6ce12fa0a7b001bf71c520a0b17035a57209a12acf45007356eaff6b97ab9cefb1f69f014376f65d4a5321f6d2c09b5222279d245eb80b945300d212b4013b2fc4d1fbbebe81fc0f5af42ba0f1cf677a1f37880690c83878c8d56ecec27e041380991015b08aaacb3fc6946b2eb505ab1345b27a34fd4d4482964cfc1ba1160a30d14607c05a510f9e04ad012b2fc791fbb2b5082f6159c81a851f5ab3c8594601a6ab4313e3805789a4e2a68afc6dadd4165ea2b82339a34cdb9712d6373ab4e66052905335923fba754e445c25c13ee4c2af254585b1ff0e1076fd13f109616ebe0c38d6b90eee77cf17186148e20d0444de0959737641cf88abc1416de534829b4571c3faeef71fdcb90a039606676c027cb2141a071873994d05ad4b4cefd4b8e292c8152b4660117f0fdad94b56fa1fbc03137a3c90532dbc71d4a355b84644be83cac1135147fcff14b7092262c28487321d2d0baa4c08f68ff9491ec0ac993b47aba04ddd0cc5fd2ec6c0a59e1d0aace463ac2387996b0f95431f986c2168269c0fce280a5779b741e5b709039987edba0a7725ae7a0f3b046a0a6c9650ffb7478c663711c571f780f66ce2bea61152911015545481d1dafbcaad9aae96a1cce41d213b25c70f929c694d0fdedb89d57afa36af4fef8c89dff58e350fda3fe17f0eb86c7713cf617a937add30abada010000000049454e44ae426082</data>
     </image>
     <image name="image10">
-        <data format="PNG" length="889">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000034049444154388db59531681c4714863f992d9ee08a3938c10ea4d80507a442e02d54488e0ba9f39114979022312ee2903421553acb3604ecca759242244d402904e742708db1ce10eecee090133868030aac20073b20c10e6441af38708af5493e620943ec0703bb336fbefddfdb376f667afd1e13bbbc72f9396fc07afddecccc04dcd9ee3c5f9b5f23f52938d82bf75e0be2bd27dbcf18fc3680f1e97c3051faa8fd88d0e49845435e0e49a44e51e65863c935c7d62ca239d42c99afde73cdb162193ccba86f089dc73a0d0648ff4e31916138fa91a2c800259e537652c18d84e24801a1de80e54565e8c1080c1c4416b0d3919c8029212f87c838033cf19cb03330a4db9eeeae07266a84685eb876dd102f4164145742d43803bce7f6484449ffa9a0ed6dd8fcc155a89a10cf1b24807ca41cfca9dc5b77343f317cfa99101ba5539e01b6354b5166c473b03390175065f5fd90664b5888c18d151358da5bc76c6e383abf38928b1172b54e58f353e00b9387bcccb106b242e83ef027d06b5f0a0bef7adcd82387c2e6cf059f5f9fe5c6d721207cb7e11105a753dc69c5b966e085f40f8f3186664b088dc72998b1e1f67d25ddf5148770eb4e9dc1c3cab7fbd4109b69f0b4e21aa4070a28367a11fe047ad393ee7a4c43685e118ae0988544aabd074a5ecaabc1559d82ad550eb1543995d270fba692ee561f1481d97766891b40308109f63cc5d440a572ec8f1413d4696f53293542181adcc873773d67e7d73af97e95581bcd929f571599cf585e54a28bc2c15f4a7beb981b5fc41487ca475705cc2c77d7c11d78ee7d95a1aa98869024c7e0a7ffde7f72ec8166ab8a6b73c3d17e9071eb4e9d700996af147cf36d8c090dde7b74acacb542924b9caf382f338cc0ca2ae00ddf6f387ebaef183c1456970437867c3f478ff464e7ef5dcfe0892536c2e9e97cb9578c529a35181c55c774e563416b119dadaa1ad2dd5335a621345b11fdaec7ab62024847d3a9380167fb198367105a7025844669b6840f3f48e83ecde0a80a37998fb10b19c925e83eb1844188d39474380d9ee9f57b55830f20794fb01644a87a6b500d09aa4a79a965018a0482f7900e95dc29debd423163183e56869c65fa9a73955d3873e57fda05a8eea8b7027ed3f05ebf37f32fbb768650f50de9620000000049454e44ae426082</data>
+        <data format="PNG" length="887">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000033e49444154388db59531681c4714863f892d9ee08a3938c10ea4d80507a442e02b5448c485d4f9488a4b4891181771489a902a9d651b0276e53a4e219c26a014827321acc6586708ec1a1c7202076d408115e4600724d8812ce815074eb13ec9472c61b0f3606077e6cdb7ff7bfbe6cd5492248c6d7979f905efc09224999a1a831f6e3d7cb13ab74ae63370b057edbd11c47b4fbe9f93fe96c2e8743e182b7ddc7b4c680acc82a1a806b4a5495915586329b4c0362ca205342cb9afdf0b2db062499fe734d785ed273a0906c8fece30916130bc4f59e68012cf2a3b99e0864279a480d06cc1d28232f0600452079105ec642427602a28aa0132ca014f3c2beca4866ccbd3dff5c0588d10cd0957ae1ae245888ce22a885a6780f7dc1e6d51b27f6a686f0b367e7435aa21c4730609a0182a077f2a77d61c9dcf0c9f7f21c446d9aece00db86a5ac72e259d849e5255459f930a4d315e6637023c50496dee6311beb8eed5f1ced0b1172b949d8f013e0e9f143511558037929f41ff813e895af85f9f73d6ee4914361e3e7922fafce70eddb10107e58f78882d309eea4e24273f042f687c71843a72b84c6e314ccc870f3ae92ed7aca43b871ab49faa8f6ed3f33c466123ca9b801d981028a8d5e863f865ef764bb1ed3123a9784323866be2df5de03a5a8e4f5e0ba4ec1366a8758ea9c4a65b8795dc976eb0f8ac0cc7b33c42d2018c3047b9e621aa0523b2643c5044d7a5bd44a8d10860637f4dc5e2bd8f9b549b15f27d6463314e75545ee73961694e88270f097d2db3ce6da5731e5a1f2c9650133c3ed3570079e3bdfe4a82aa625b4dbc7e027ffde7f72ec814eb78e6b63ddd17b9073e356937011962e957cf77d8c090dde7b74a4ac7643da17395f7151e51881e515c01beead3b7ebaeb481f092b8b821b41b15fa0477ab2f3f7be277d6a898d707a3a5fed15c38c4e03d2a3fa982e7f2a6823627bb3ae866cf7548d69099d6e44d2f778554c00d970321527e07c3f277d0ea105574168944e57f8f8a336fd67391cd5e1b6e762ec7c4efb22f49f5ac220c469463698044f25495237f800da1f08d68208756f0dea21415d29afb42c409140f01eb2815238c5bbd72866048327ca80b34cdf70aeb6e93357ded2a6a1bea3fe17f0bb86274932f52fbe6686568ff5047b0000000049454e44ae426082</data>
     </image>
     <image name="image11">
+        <data format="PNG" length="889">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000034049444154388db59531681c4714863f992d9ee08a3938c10ea4d80507a442e02d54488e0ba9f39114979022312ee2903421553acb3604ecca759242244d402904e742708db1ce10eecee090133868030aac20073b20c10e6441af38708af5493e620943ec0703bb336fbefddfdb376f667afd1e13bbbc72f9396fc07afddecccc04dcd9ee3c5f9b5f23f52938d82bf75e0be2bd27dbcf18fc3680f1e97c3051faa8fd88d0e49845435e0e49a44e51e65863c935c7d62ca239d42c99afde73cdb162193ccba86f089dc73a0d0648ff4e31916138fa91a2c800259e537652c18d84e24801a1de80e54565e8c1080c1c4416b0d3919c8029212f87c838033cf19cb03330a4db9eeeae07266a84685eb876dd102f4164145742d43803bce7f6484449ffa9a0ed6dd8fcc155a89a10cf1b24807ca41cfca9dc5b77343f317cfa99101ba5539e01b6354b5166c473b03390175065f5fd90664b5888c18d151358da5bc76c6e383abf38928b1172b54e58f353e00b9387bcccb106b242e83ef027d06b5f0a0bef7adcd82387c2e6cf059f5f9fe5c6d721207cb7e11105a753dc69c5b966e085f40f8f3186664b088dc72998b1e1f67d25ddf5148770eb4e9dc1c3cab7fbd4109b69f0b4e21aa4070a28367a11fe047ad393ee7a4c43685e118ae0988544aabd074a5ecaabc1559d82ad550eb1543995d270fba692ee561f1481d97766891b40308109f63cc5d440a572ec8f1413d4696f53293542181adcc873773d67e7d73af97e95581bcd929f571599cf585e54a28bc2c15f4a7beb981b5fc41487ca475705cc2c77d7c11d78ee7d95a1aa98869024c7e0a7ffde7f72ec8166ab8a6b73c3d17e9071eb4e9d700996af147cf36d8c090dde7b74acacb542924b9caf382f338cc0ca2ae00ddf6f387ebaef183c1456970437867c3f478ff464e7ef5dcfe0892536c2e9e97cb9578c529a35181c55c774e563416b119dadaa1ad2dd5335a621345b11fdaec7ab62024847d3a9380167fb198367105a7025844669b6840f3f48e83ecde0a80a37998fb10b19c925e83eb1844188d39474380d9ee9f57b55830f20794fb01644a87a6b500d09aa4a79a965018a0482f7900e95dc29debd423163183e56869c65fa9a73955d3873e57fda05a8eea8b7027ed3f05ebf37f32fbb768650f50de9620000000049454e44ae426082</data>
+    </image>
+    <image name="image12">
         <data format="PNG" length="892">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000034349444154388db59531681b6714c77f361a9e40c327b8e10e1ad04102bed045214b947650a18b6807d1a9f5e4180ac5742a4987d0a1c19d42c6e2c1904c9587901812b825600512594bd1195a7c051b3e0d061dd8a06f38f01b04e970965d51db049abee9eeddbbdff77f8ffff77d73bded1ed3b8ddb8fd8e0f10bdeddedcdc141cbf8cdfb5165a242e413261900fde0be29cc3ee59fabff76172962f4d95f65ef4082a1653f7b1aecf722560e42ca11762734b6842cab90513b27b54bcdbdc125642ba892558179ebfd659304062134cd3a73ffc95f1d892a2448112ff216407c2f3230584aa07cdbad277e057a09b417405e260b69353b0a8605d1f83658c230a84f88d61f8d211ef3860aa4678b6202c2f19a843e429d641e4437c1e78703060b9a26cd902dad984ce5a56a02a42b86090128c0e94e15fca4f3f66b4be367cb324449e12bb0b14872664e452a200e2377202559a5ff8b4dac28d6b6055f125a0b3714c673d23dec8b8b550433eaf129a59f2fcf4c13a4be8417a287437dd2974f15be146e4b0ea3087c2e327635696cadcf9de0784476b8eea046c7e89629ba7947321fdd3618ca1d51642cf6173f031dc7da8a43b8ef121ac3ea8d27f55d4c67d43e4cd8267151b18ec2ba004b593f6a7d07b8e74c7613ce1ab4f8511c7447501603454ac93f3c1854f2134454124c54c8d1aeede53d29d624111e0a332910f94a63021bc4c31065ca928dc3a507ca9d2d9a4506a04df3764078ed5fb23e26e95d15e61c1a056c65ee68adda394665d79765518ee2b9d8d6356bebbcef85059fc52d04a99d5fb900d1dbfac585415e309f5fa3192eb0cf85f33ce26d06a1b003aeb19bf3ddd65f5411553876673cc0f3f8718dfe09c4327ca676d9fc64d2e576c5d8a5f814613cab9e1d15ac6e38719fd5742eb96d05118ed8dd0233dfd73d0756cbd0d883ce16c77fef3ac1826b40c74f78b6d4a5bb82335e2a7851bd29d3335c6135aed1adb5d8753c5178887b3a33805db3d4b3781da95a2add0535a6d61b1dd20eeef22aec8373ebe8eb9b64be326c46f036a1232cc07a4c92c78aeb7dd2b0ef812d43f118280c2529393654b20274e399301a04849700ed24419658acbce51cc0492d74ac245a1ef992b62fec22fff31e6a1b8a3fe17f08786f7b67b737f03c543883fa410a41f0000000049454e44ae426082</data>
     </image>
 </images>

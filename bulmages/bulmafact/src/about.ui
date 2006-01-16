@@ -51,7 +51,7 @@
                     <cstring>tab</cstring>
                 </property>
                 <attribute name="title">
-                    <string>A&amp;bout</string>
+                    <string>&amp;Sobre</string>
                 </attribute>
                 <grid>
                     <property name="name">

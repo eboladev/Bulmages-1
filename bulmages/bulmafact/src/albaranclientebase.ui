@@ -258,7 +258,7 @@
                                 <cstring>textLabel1_2_2_3_2</cstring>
                             </property>
                             <property name="text">
-                                <string>Ref.</string>
+                                <string>Referéncia</string>
                             </property>
                         </widget>
                         <widget class="QLineEdit">
@@ -369,7 +369,7 @@
                         <cstring>textLabel1_2_2_2_2</cstring>
                     </property>
                     <property name="text">
-                        <string>Tel. Contacto</string>
+                        <string>Tel. contacto</string>
                     </property>
                 </widget>
                 <widget class="QLineEdit">
@@ -392,7 +392,7 @@
                         <cstring>textLabel1_2_2_3</cstring>
                     </property>
                     <property name="text">
-                        <string>Num. Albarán</string>
+                        <string>Albarán nº</string>
                     </property>
                 </widget>
                 <widget class="QLineEdit">
@@ -405,7 +405,7 @@
                         <cstring>textLabel1_2</cstring>
                     </property>
                     <property name="text">
-                        <string>Fecha Creación</string>
+                        <string>Fecha de creación</string>
                     </property>
                 </widget>
                 <widget class="BusquedaFecha">
@@ -520,7 +520,7 @@
                         <cstring>textLabel1_3</cstring>
                     </property>
                     <property name="text">
-                        <string>Forma de Pago</string>
+                        <string>Forma de pago</string>
                     </property>
                 </widget>
                 <widget class="BusquedaFormaPago">

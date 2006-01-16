@@ -317,7 +317,7 @@
                         </sizepolicy>
                     </property>
                     <property name="text">
-                        <string>Desc Presupuesto</string>
+                        <string>Descripción del presupuesto</string>
                     </property>
                 </widget>
                 <widget class="QLineEdit">
@@ -355,7 +355,7 @@
                         </sizepolicy>
                     </property>
                     <property name="text">
-                        <string>Num. Presupuesto</string>
+                        <string>Número de presupuesto</string>
                     </property>
                 </widget>
                 <widget class="QLineEdit">
@@ -393,7 +393,7 @@
                         <cstring>textLabel1_2_2_2</cstring>
                     </property>
                     <property name="text">
-                        <string>Contacto</string>
+                        <string>Persona de contacto</string>
                     </property>
                 </widget>
                 <widget class="QLineEdit">
@@ -406,7 +406,7 @@
                         <cstring>textLabel1_2_2_2_2</cstring>
                     </property>
                     <property name="text">
-                        <string>Tel. Contacto</string>
+                        <string>Tel. contacto</string>
                     </property>
                 </widget>
                 <widget class="QLineEdit">
@@ -456,7 +456,7 @@
                         <cstring>textLabel1_3</cstring>
                     </property>
                     <property name="text">
-                        <string>Forma de Pago</string>
+                        <string>Forma de pago</string>
                     </property>
                 </widget>
                 <widget class="BusquedaFormaPago">
@@ -517,7 +517,7 @@
                         <cstring>textLabel1_2_3</cstring>
                     </property>
                     <property name="text">
-                        <string>Fecha Creación</string>
+                        <string>Fecha de creación</string>
                     </property>
                 </widget>
                 <widget class="BusquedaFecha">
@@ -530,7 +530,7 @@
                         <cstring>textLabel1_2_2_4</cstring>
                     </property>
                     <property name="text">
-                        <string>Fecha Vencimiento</string>
+                        <string>Fecha de vencimiento</string>
                     </property>
                 </widget>
                 <widget class="BusquedaFecha">
@@ -623,7 +623,7 @@
                     <cstring>tab</cstring>
                 </property>
                 <attribute name="title">
-                    <string>Datos &amp;Generales</string>
+                    <string>Datos &amp;generales</string>
                 </attribute>
                 <widget class="QTextEdit">
                     <property name="name">
@@ -869,6 +869,23 @@
         <signal>valueChanged(QString)</signal>
     </customwidget>
     <customwidget>
+        <class>BusquedaTrabajador</class>
+        <header location="local">busquedatrabajador.h</header>
+        <sizehint>
+            <width>20</width>
+            <height>50</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image9</pixmap>
+        <signal>valueChanged(QString)</signal>
+    </customwidget>
+    <customwidget>
         <class>listlinpresupuestoview</class>
         <header location="local">listlinpresupuestoview.h</header>
         <sizehint>
@@ -901,23 +918,6 @@
         </sizepolicy>
         <pixmap>image8</pixmap>
         <signal>valueChanged(int, int)</signal>
-    </customwidget>
-    <customwidget>
-        <class>BusquedaTrabajador</class>
-        <header location="local">busquedatrabajador.h</header>
-        <sizehint>
-            <width>20</width>
-            <height>50</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image9</pixmap>
-        <signal>valueChanged(QString)</signal>
     </customwidget>
 </customwidgets>
 <images>
