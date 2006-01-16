@@ -10,8 +10,6 @@ FORMS += logpassbase.ui \
          msgerrorbase.ui \
 	 busquedafechabase.ui
 	 
-#IDLS += logpassbase.ui \
-#        abreempresadlg.ui 
 	
 HEADERS += postgresiface2.h \
            configuracion.h \
@@ -55,16 +53,6 @@ TEMPLATE = lib
 
 LANGUAGE = C++
 
-CONFIG += release \
-staticlib 
-
-LIBS += -rdynamic
-
-
-#qt4 \
-#warn_on \
-#rdynamic \
-
 INCLUDEPATH += ../src \
     /usr/include/qt4 \
 	/usr/include/qt4/Qt
@@ -85,6 +73,12 @@ unix{
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
   LIBS += -lpq
+
+LIBS += -rdynamic
+
+CONFIG += release \
+staticlib 
+
   exists(/usr/include/postgresql/libpq-fe.h){
 
     DEFINES += DISTRO_DEBIAN
@@ -109,6 +103,11 @@ windows{
   LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
   DEFINES += WINDOWS
   DEFINES += WIN32
+
+  CONFIG += release \
+		dll
+
+  VERSION += 0.6
 }
 
 #The following line was inserted by qt3to4

@@ -31,6 +31,7 @@
 #include <QMainWindow>
 
 
+
 bulmafact::bulmafact(QString bd) : bulmafactbase( 0, "bulmafact", Qt::WDestructiveClose ) {
     //  QPixmap fondo;
 

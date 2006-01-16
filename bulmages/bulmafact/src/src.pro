@@ -22,10 +22,7 @@ DEFINES = REPORTS
 
 TARGET = ../../installbulmages/bulmafact 
 
-CONFIG += release \
-#          warn_on \
-#          qt4 \
-#          thread 
+CONFIG += release 
 
 LIBS += -rdynamic
 
@@ -331,7 +328,10 @@ windows{
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
-  LIBS += ../../bulmalib/release/libbulmalib.a \
+#  LIBS += ../../bulmalib/release/libbulmalib.a \
+
+
+  LIBS += ../../bulmalib/release/bulmalib0.dll \
  	C:\Qt\4.1.0\lib\libQtXml4.a \
 	C:\Qt\4.1.0\lib\libQtXmld4.a
 
