@@ -52,6 +52,34 @@ CREATE TABLE lpedidocliente (
 #include <QEvent>
 
 
+void ListLinPedidoClienteView::guardaconfig() {
+    _depura("ListLinPedidoClienteView::guardaconfig",0);
+    QString aux = "";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpedidoclienteview.cfn" );
+    if ( file.open( QIODevice::WriteOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            stream << columnWidth(i) << "\n";
+        }// end for
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void ListLinPedidoClienteView::cargaconfig() {
+	_depura("ListLinPedidoClienteView::cargaconfig",0);
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpedidoclienteview.cfn" );
+    QString line;
+    if ( file.open( QIODevice::ReadOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            QString linea = stream.readLine();
+            setColumnWidth(i, linea.toInt());
+        }// end for
+        file.close();
+    }
+}// end cargaconfig
+
 ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinPedidoCliente() {
     /// Inicializamos la tabla de lineas de Factura
     setNumCols(15);
@@ -69,19 +97,6 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget * parent, const char 
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
     horizontalHeader()->setLabel( COL_PREVLPEDIDOCLIENTE, tr( "COL_PREVLPEDIDOCLIENTE" ) );
     horizontalHeader()->setLabel( COL_IVALPEDIDOCLIENTE, tr( "COL_IVALPEDIDOCLIENTE" ) );
-
-    setColumnWidth(COL_NUMLPEDIDOCLIENTE,100);
-    setColumnWidth(COL_DESCLPEDIDOCLIENTE,300);
-    setColumnWidth(COL_CANTLPEDIDOCLIENTE,100);
-    setColumnWidth(COL_PVPLPEDIDOCLIENTE,100);
-    setColumnWidth(COL_DESCUENTOLPEDIDOCLIENTE,74);
-    setColumnWidth(COL_IDPEDIDOCLIENTE,100);
-    setColumnWidth(COL_IDARTICULO,100);
-    setColumnWidth(COL_CODARTICULO,100);
-    setColumnWidth(COL_NOMARTICULO,300);
-    setColumnWidth(COL_TASATIPO_IVA,50);
-    setColumnWidth(COL_TIPO_IVA,50);
-    setColumnWidth(COL_PUNTEO, 15);
 
     hideColumn(COL_NUMLPEDIDOCLIENTE);
     hideColumn(COL_IDPEDIDOCLIENTE);
@@ -101,11 +116,13 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget * parent, const char 
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
 
     installEventFilter(this);
-
+	cargaconfig();
 }
 
 
-ListLinPedidoClienteView::~ListLinPedidoClienteView() {}
+ListLinPedidoClienteView::~ListLinPedidoClienteView() {
+guardaconfig();
+}
 
 
 void ListLinPedidoClienteView::pintaListLinPedidoCliente() {

@@ -80,6 +80,9 @@ void PagosList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
+        for (int i = 0; i < m_list->numCols(); i++) {
+            stream << m_list->columnWidth(i) << "\n";
+        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -90,6 +93,10 @@ void PagosList::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
+        for (int i = 0; i < m_list->numCols(); i++) {
+            QString linea = stream.readLine();
+            m_list->setColumnWidth(i, linea.toInt());
+        }// end for
         file.close();
     } else
         return;
@@ -140,13 +147,13 @@ void PagosList::s_configurar() {
     else
         m_list->hideColumn(COL_COMENTPAGO);
 
-    guardaconfig();
 }
 
 
 PagosList::PagosList(QWidget *parent, const char *name, Qt::WFlags flag)
         : PagosListBase(parent, name, flag) {
     cargaconfig();
+    s_configurar();
     companyact = NULL;
     m_modo=0;
     m_idpago="";
@@ -160,8 +167,10 @@ PagosList::PagosList(company *comp, QWidget *parent, const char *name, Qt::WFlag
         : PagosListBase(parent, name, flag) {
     companyact = comp;
     m_proveedor->setcompany(comp);
-    cargaconfig();
+
     inicializa();
+    cargaconfig();
+    s_configurar();
     m_modo=0;
     m_idpago="";
     meteWindow(caption(),this);
@@ -173,6 +182,8 @@ PagosList::PagosList(company *comp, QWidget *parent, const char *name, Qt::WFlag
 
 PagosList::~PagosList() {
     companyact->sacaWindow(this);
+
+    guardaconfig();
 }// end ~providerslist
 
 
@@ -194,14 +205,6 @@ void PagosList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_REFPAGO, tr( "COL_REFPAGO" ) );
     m_list->horizontalHeader()->setLabel( COL_PREVISIONPAGO, tr( "COL_PREVISIONPAGO" ) );
     m_list->horizontalHeader()->setLabel( COL_COMENTPAGO, tr( "COL_COMENTPAGO" ) );
-
-    m_list->setColumnWidth(COL_IDPAGO,75);
-    m_list->setColumnWidth(COL_IDPROVEEDOR,75);
-    m_list->setColumnWidth(COL_FECHAPAGO,100);
-    m_list->setColumnWidth(COL_CANTPAGO,100);
-    m_list->setColumnWidth(COL_REFPAGO,200);
-    m_list->setColumnWidth(COL_PREVISIONPAGO,150);
-    m_list->setColumnWidth(COL_COMENTPAGO,300);
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");
@@ -232,7 +235,7 @@ void PagosList::inicializa() {
         delete cur;
 
     }// end if
-    s_configurar();
+
     fprintf(stderr,"end PagosList::inicializa()\n");
 }// end inicializa
 
@@ -323,19 +326,25 @@ void PagosList::imprimir() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
+
     archivo = "copy "+archivo+" "+archivod;
 #else
+
     archivo = "cp "+archivo+" "+archivod;
 #endif
+
     system (archivo.ascii());
 
     /// Copiamos el logo
 
 #ifdef WINDOWS
+
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #else
+
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #endif
+
     system (archivologo.ascii());
 
     QFile file;
@@ -348,43 +357,43 @@ void PagosList::imprimir() {
     // L�ea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
-/// ------------------------------------------------
+    /// ------------------------------------------------
     if(mver_idpago->isChecked() )
-	fitxersortidatxt += "	<td>Id.</td>";
+        fitxersortidatxt += "	<td>Id.</td>";
     if(mver_idproveedor->isChecked() )
-	fitxersortidatxt += "	<td>Id. Proveedor</td>";
+        fitxersortidatxt += "	<td>Id. Proveedor</td>";
     if(mver_fechapago->isChecked() )
-	fitxersortidatxt += "	<td>Fecha</td>";
+        fitxersortidatxt += "	<td>Fecha</td>";
     if(mver_cantpago->isChecked() )
-	fitxersortidatxt += "	<td>Cantidad</td>";
+        fitxersortidatxt += "	<td>Cantidad</td>";
     if(mver_refpago->isChecked() )
-	fitxersortidatxt += "	<td>Referencia</td>";
+        fitxersortidatxt += "	<td>Referencia</td>";
     if(mver_previsionpago->isChecked() )
-	fitxersortidatxt += "	<td>Prevision</td>";
+        fitxersortidatxt += "	<td>Prevision</td>";
     if(mver_comentpago->isChecked() )
-	fitxersortidatxt += "	<td>Comentarios</td>";
-/// ------------------------------------------------
+        fitxersortidatxt += "	<td>Comentarios</td>";
+    /// ------------------------------------------------
     fitxersortidatxt += "</tr>";
 
-        cursor2 * cur= companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
-/// -----------------------------
-    if(mver_idpago->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idpago"))+"</td>";
-    if(mver_idproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idproveedor"))+"</td>";
-    if(mver_fechapago->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fechapago"))+"</td>";
-    if(mver_cantpago->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cantpago"))+"</td>";
-    if(mver_refpago->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("refpago"))+"</td>";
-    if(mver_previsionpago->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("previsionpago"))+"</td>";
-    if(mver_comentpago->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("comentpago"))+"</td>";
-/// -----------------------------
+        /// -----------------------------
+        if(mver_idpago->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idpago"))+"</td>";
+        if(mver_idproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idproveedor"))+"</td>";
+        if(mver_fechapago->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fechapago"))+"</td>";
+        if(mver_cantpago->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cantpago"))+"</td>";
+        if(mver_refpago->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("refpago"))+"</td>";
+        if(mver_previsionpago->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("previsionpago"))+"</td>";
+        if(mver_comentpago->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("comentpago"))+"</td>";
+        /// -----------------------------
         fitxersortidatxt += "</tr>";
         cur->siguienteregistro();
     }// end if
@@ -399,9 +408,9 @@ void PagosList::imprimir() {
         file.close();
     }
 
-// Crea el pdf  y lo muestra.
-_depura("Vamos a imprimir e listado de pagos",0);
-invocaPDF("pagos");
+    // Crea el pdf  y lo muestra.
+    _depura("Vamos a imprimir e listado de pagos",0);
+    invocaPDF("pagos");
 }// end imprimir
 
 

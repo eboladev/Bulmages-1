@@ -55,6 +55,7 @@
 #define COL_TOTALIMPUESTOS 16
 
 void BudgetsList::guardaconfig() {
+    _depura("BudgetsList::guardaconfig",0);
     QString aux = "";
     mver_idpresupuesto->isChecked() ? aux += "1,":aux+="0,";
     mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
@@ -76,16 +77,24 @@ void BudgetsList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
+        for (int i = 0; i < m_list->numCols(); i++) {
+            stream << m_list->columnWidth(i) << "\n";
+        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
 
 void BudgetsList::cargaconfig() {
+    _depura("BudgetsList::cargaconfig",0);
     QFile file( confpr->valor(CONF_DIR_USER)+"/confbudgetslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
+        for (int i = 0; i < m_list->numCols(); i++) {
+            QString linea = stream.readLine();
+            m_list->setColumnWidth(i, linea.toInt());
+        }// end for
         file.close();
     } else
         return;
@@ -193,7 +202,6 @@ void BudgetsList::s_configurar() {
         m_list->hideColumn(COL_TOTALIMPUESTOS);
 
     m_list->hideColumn(COL_COMENTPRESUPUESTO);
-    guardaconfig();
 }// end s_configurar
 
 
@@ -213,8 +221,9 @@ BudgetsList::BudgetsList(company *comp, QWidget *parent, const char *name, Qt::W
     companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
-    cargaconfig();
     inicializa();
+    cargaconfig();
+    s_configurar();
     m_modo=0;
     m_idpresupuesto="";
     meteWindow(caption(),this);
@@ -223,6 +232,8 @@ BudgetsList::BudgetsList(company *comp, QWidget *parent, const char *name, Qt::W
 }// end BudgetsList
 
 BudgetsList::~BudgetsList() {
+    _depura("BudgetsList::~BudgetsList",0);
+    guardaconfig();
     companyact->sacaWindow(this);
 }// end ~providerslist
 
@@ -250,26 +261,6 @@ void BudgetsList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_TOTALPRESUPUESTO, tr("Total") );
     m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
     m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos.") );
-
-
-
-    m_list->setColumnWidth(COL_IDPRESUPUESTO,75);
-    m_list->setColumnWidth(COL_NUMPRESUPUESTO,75);
-    m_list->setColumnWidth(COL_FPRESUPUESTO,100);
-    m_list->setColumnWidth(COL_VENCPRESUPUESTO,100);
-    m_list->setColumnWidth(COL_CONTACTPRESUPUESTO,200);
-    m_list->setColumnWidth(COL_TELPRESUPUESTO,150);
-    m_list->setColumnWidth(COL_COMENTPRESUPUESTO,300);
-    m_list->setColumnWidth(COL_DESCPRESUPUESTO, 300);
-    m_list->setColumnWidth(COL_REFPRESUPUESTO,100);
-    m_list->setColumnWidth(COL_IDUSUARI,75);
-    m_list->setColumnWidth(COL_IDCLIENTE,75);
-    m_list->setColumnWidth(COL_IDALMACEN,75);
-    m_list->setColumnWidth(COL_NOMCLIENTE,200);
-    m_list->setColumnWidth(COL_CODIGOALMACEN,75);
-    m_list->setColumnWidth(COL_TOTALPRESUPUESTO,75);
-    m_list->setColumnWidth(COL_TOTALBASEIMP,75);
-    m_list->setColumnWidth(COL_TOTALIMPUESTOS,75);
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPRESUPUESTOS));
@@ -316,7 +307,7 @@ void BudgetsList::inicializa() {
         delete cur;
     }// end if
 
-    s_configurar();
+
     _depura("end BudgetsList::inicializa()\n");
 }// end inicializa
 
@@ -359,7 +350,7 @@ void BudgetsList::s_editar() {
     m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
     if (m_modo ==0 && m_idpresupuesto != "") {
         Budget *bud = new Budget(companyact,0,theApp->translate("Edicion de Presupuestos", "company"));
-	companyact->m_pWorkspace->addWindow(bud);
+        companyact->m_pWorkspace->addWindow(bud);
         bud->chargeBudget(m_idpresupuesto);
         bud->show();
     } else {
@@ -371,7 +362,7 @@ void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
     m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
     if (m_modo ==0 && m_idpresupuesto != "") {
         Budget *bud = new Budget(companyact, 0,theApp->translate("Edicion de Presupuestos", "company"));
-	companyact->m_pWorkspace->addWindow(bud);
+        companyact->m_pWorkspace->addWindow(bud);
         bud->chargeBudget(m_idpresupuesto);
         bud->show();
     } else {
@@ -405,19 +396,25 @@ void BudgetsList::imprimir() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
+
     archivo = "copy "+archivo+" "+archivod;
 #else
+
     archivo = "cp "+archivo+" "+archivod;
 #endif
+
     system (archivo.ascii());
 
     /// Copiamos el logo
 
 #ifdef WINDOWS
+
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #else
+
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #endif
+
     system (archivologo.ascii());
 
     QFile file;
@@ -432,79 +429,79 @@ void BudgetsList::imprimir() {
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
     if(mver_idpresupuesto->isChecked() )
-	    fitxersortidatxt += "	<td>Id. </td>";
+        fitxersortidatxt += "	<td>Id. </td>";
     if(mver_codigoalmacen->isChecked() )
-	    fitxersortidatxt += "	<td>Cod. Almacen</td>";
+        fitxersortidatxt += "	<td>Cod. Almacen</td>";
     if(mver_refpresupuesto->isChecked() )
-	    fitxersortidatxt += "	<td>Referencia</td>";
+        fitxersortidatxt += "	<td>Referencia</td>";
     if(mver_nomcliente->isChecked() )
-	    fitxersortidatxt += "	<td>Cliente</td>";
+        fitxersortidatxt += "	<td>Cliente</td>";
     if(mver_descpresupuesto->isChecked() )
-	    fitxersortidatxt += "	<td>Descripicon</td>";
+        fitxersortidatxt += "	<td>Descripicon</td>";
     if(mver_fechapresupuesto->isChecked() )
-	    fitxersortidatxt += "	<td>Fecha</td>";
+        fitxersortidatxt += "	<td>Fecha</td>";
     if(mver_vencpresupuesto->isChecked() )
-	    fitxersortidatxt += "	<td>Vencimiento</td>";
+        fitxersortidatxt += "	<td>Vencimiento</td>";
     if(mver_contactpresupuesto->isChecked() )
-	    fitxersortidatxt += "	<td>Contacto</td>";
+        fitxersortidatxt += "	<td>Contacto</td>";
     if(mver_numpresupuesto->isChecked() )
-	    fitxersortidatxt += "	<td>Num.</td>";
+        fitxersortidatxt += "	<td>Num.</td>";
     if(mver_telpresupuesto->isChecked() )
-	    fitxersortidatxt += "	<td>Tel.</td>";
+        fitxersortidatxt += "	<td>Tel.</td>";
     if(mver_idcliente->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Cliente</td>";
+        fitxersortidatxt += "	<td>Id. Cliente</td>";
     if(mver_idusuario->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Usuario</td>";
+        fitxersortidatxt += "	<td>Id. Usuario</td>";
     if(mver_idalmacen->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Almacen</td>";
+        fitxersortidatxt += "	<td>Id. Almacen</td>";
     if(mver_totalpresupuesto->isChecked() )
-	    fitxersortidatxt += "	<td>Total</td>";
+        fitxersortidatxt += "	<td>Total</td>";
     if(mver_totalbaseimp->isChecked() )
-	    fitxersortidatxt += "	<td>Base Imp.</td>";
+        fitxersortidatxt += "	<td>Base Imp.</td>";
     if(mver_totalimpuestos->isChecked() )
-	    fitxersortidatxt += "	<td>Impuestos</td>";
+        fitxersortidatxt += "	<td>Impuestos</td>";
     fitxersortidatxt += "</tr>";
 
     QString SQLQuery = "SELECT * FROM presupuesto, cliente, almacen where presupuesto.idcliente=cliente.idcliente AND presupuesto.idalmacen=almacen.idalmacen "+generaFiltro();
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
-    if(mver_idpresupuesto->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idpresupuesto"))+"</td>";
-    if(mver_codigoalmacen->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codigoalmacen"))+"</td>";
-    if(mver_refpresupuesto->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("refpresupuesto"))+"</td>";
-    if(mver_nomcliente->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomcliente"))+"</td>";
-    if(mver_descpresupuesto->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descpresupuesto"))+"</td>";
-    if(mver_fechapresupuesto->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fechapresupuesto"))+"</td>";
-    if(mver_vencpresupuesto->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("vencpresupuesto"))+"</td>";
-    if(mver_contactpresupuesto->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("contactpresupuesto"))+"</td>";
-    if(mver_numpresupuesto->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("numpresupuesto"))+"</td>";
-    if(mver_telpresupuesto->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("telpresupuesto"))+"</td>";
-    if(mver_idcliente->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idcliente"))+"</td>";
-    if(mver_idusuario->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idusuario"))+"</td>";
-    if(mver_idalmacen->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalmacen"))+"</td>";
+        if(mver_idpresupuesto->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idpresupuesto"))+"</td>";
+        if(mver_codigoalmacen->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codigoalmacen"))+"</td>";
+        if(mver_refpresupuesto->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("refpresupuesto"))+"</td>";
+        if(mver_nomcliente->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomcliente"))+"</td>";
+        if(mver_descpresupuesto->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descpresupuesto"))+"</td>";
+        if(mver_fechapresupuesto->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fechapresupuesto"))+"</td>";
+        if(mver_vencpresupuesto->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("vencpresupuesto"))+"</td>";
+        if(mver_contactpresupuesto->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("contactpresupuesto"))+"</td>";
+        if(mver_numpresupuesto->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("numpresupuesto"))+"</td>";
+        if(mver_telpresupuesto->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("telpresupuesto"))+"</td>";
+        if(mver_idcliente->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idcliente"))+"</td>";
+        if(mver_idusuario->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idusuario"))+"</td>";
+        if(mver_idalmacen->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalmacen"))+"</td>";
 
-            /// Calculamos el total del presupuesto y lo presentamos.
-            cursor2 *cur1 = companyact->cargacursor("SELECT calctotalpres("+cur->valor("idpresupuesto")+") AS total, calcbimppres("+cur->valor("idpresupuesto")+") AS base, calcimpuestospres("+cur->valor("idpresupuesto")+") AS impuestos");
-    if(mver_totalpresupuesto->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("total"))+"</td>";
-    if(mver_totalbaseimp->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("base"))+"</td>";
-    if(mver_totalimpuestos->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("impuestos"))+"</td>";
-	delete cur1;
+        /// Calculamos el total del presupuesto y lo presentamos.
+        cursor2 *cur1 = companyact->cargacursor("SELECT calctotalpres("+cur->valor("idpresupuesto")+") AS total, calcbimppres("+cur->valor("idpresupuesto")+") AS base, calcimpuestospres("+cur->valor("idpresupuesto")+") AS impuestos");
+        if(mver_totalpresupuesto->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("total"))+"</td>";
+        if(mver_totalbaseimp->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("base"))+"</td>";
+        if(mver_totalimpuestos->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("impuestos"))+"</td>";
+        delete cur1;
         fitxersortidatxt += "</tr>";
         cur->siguienteregistro();
     }// end if
@@ -518,7 +515,7 @@ void BudgetsList::imprimir() {
         stream << buff;
         file.close();
     }
-    
+
     invocaPDF("presupuestos");
 
 }// end imprimir

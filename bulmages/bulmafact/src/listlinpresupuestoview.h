@@ -28,7 +28,7 @@
 
 
 class listlinpresupuestoview : public Q3Table , public listlinpresupuesto {
-Q_OBJECT
+    Q_OBJECT
 public:
     listlinpresupuestoview(QWidget *parent=0, const char *name=0);
     ~listlinpresupuestoview();
@@ -37,6 +37,8 @@ public:
     virtual bool eventFilter( QObject *obj, QEvent *ev );
     linpresupuesto *lineaat(int);
     linpresupuesto *lineaact();
+    void guardaconfig();
+    void cargaconfig();
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);
     virtual QString searchArticle();

@@ -35,6 +35,38 @@
 #include <QEvent>
 
 
+
+void listlinpresupuestoview::guardaconfig() {
+    _depura("listlinpresupuestoview::guardaconfig",0);
+    QString aux = "";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpresupuestoview.cfn" );
+    if ( file.open( QIODevice::WriteOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            stream << columnWidth(i) << "\n";
+        }// end for
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void listlinpresupuestoview::cargaconfig() {
+	_depura("listlinpresupuestoview::cargaconfig",0);
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpresupuestoview.cfn" );
+    QString line;
+    if ( file.open( QIODevice::ReadOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            QString linea = stream.readLine();
+            setColumnWidth(i, linea.toInt());
+        }// end for
+        file.close();
+    }
+}// end cargaconfig
+
+
+
+
 listlinpresupuestoview::listlinpresupuestoview(QWidget * parent, const char * name) : Q3Table(parent, name), listlinpresupuesto() {
     /// Inicializamos la tabla de lineas de presupuesto
     setNumCols(12);
@@ -79,10 +111,14 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget * parent, const char * na
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
     installEventFilter(this);
+    cargaconfig();
 }
 
 
-listlinpresupuestoview::~listlinpresupuestoview() {}
+listlinpresupuestoview::~listlinpresupuestoview() {
+	_depura("listlinpresupuestoview::~listlinpresupuestoview()",0);
+	guardaconfig();
+}
 
 
 void listlinpresupuestoview::pintalistlinpresupuesto() {

@@ -90,46 +90,58 @@ QString company::searchCompany() {
 void company::createMainWindows() {
     m_articleslist = new articleslist(this, 0,theApp->translate("Artiulos","company"),0,articleslist::EditMode);
 	m_pWorkspace->addWindow(m_articleslist);
+	m_articleslist->hide();
 
     m_providerslist = new providerslist(this, 0,theApp->translate("Proveedores","company"));
 	m_pWorkspace->addWindow(m_providerslist);
+	m_providerslist->hide();
 
     m_clientsList = new ClientsList(this, 0,theApp->translate("Clientes","company"));
 	m_pWorkspace->addWindow(m_clientsList);
+	m_clientsList->hide();
 
     m_cobrosList = new CobrosList(this, 0,theApp->translate("Cobros","company"));
 	m_pWorkspace->addWindow(m_cobrosList);
+	m_cobrosList->hide();
 
     m_pagosList =  new PagosList (this, 0, theApp->translate("Pagos","company"));
 	m_pWorkspace->addWindow(m_pagosList);
+	m_pagosList->hide();
  
     m_budgetsList = new BudgetsList(this, 0,theApp->translate("Presupuestos a Clientes","company"));
 	m_pWorkspace->addWindow(m_budgetsList);
+	m_budgetsList->hide();
 
     m_pedidosclienteList = new PedidosClienteList(this, 0,theApp->translate("Pedidos de Clientes","company"));
 	m_pWorkspace->addWindow(m_pedidosclienteList);
+	m_pedidosclienteList->hide();
 
     m_clientDelivNotesList = new ClientDelivNotesList(this, 0,theApp->translate("Albaranes de Clientes","company"));
 	m_pWorkspace->addWindow(m_clientDelivNotesList);
+	m_clientDelivNotesList->hide();
 
     m_facturasList = new FacturasList(this, 0,theApp->translate("Facturas a Cliente","company"));
 	m_pWorkspace->addWindow(m_facturasList);
+	m_facturasList->hide();
 
     m_pedidosproveedorList = new PedidosProveedorList(this, 0,theApp->translate("Pedidos a Proveedor","company"));
 	m_pWorkspace->addWindow(m_pedidosproveedorList);
+	m_pedidosproveedorList->hide();
 
     m_albaranesproveedor = new AlbaranesProveedor(this, 0,theApp->translate("Albaranes Proveedor","company"));
 	m_pWorkspace->addWindow(m_albaranesproveedor);
+	m_albaranesproveedor->hide();
 
     m_facturasproveedorlist = new FacturasProveedorList(this, 0,theApp->translate("Facturas Proveedor","company"));
 	m_pWorkspace->addWindow(m_facturasproveedorlist);
+	m_facturasproveedorlist->hide();
 
-    fprintf(stderr,"Fin de createMainWindows\n");
+    _depura("Fin de createMainWindows\n",0);
 }// end createMainWindows
 
 
 company::~company() {
-	_depura("Destructor de company",1);
+	_depura("Destructor de company",0);
 	delete m_facturasproveedorlist;
 	delete m_albaranesproveedor;
 	delete m_pedidosproveedorList;
@@ -142,7 +154,7 @@ company::~company() {
 	delete m_budgetsList;
 	delete m_pedidosclienteList;
 	delete m_clientDelivNotesList;
-	_depura("END Destructor de company",1);
+	_depura("END Destructor de company",0);
 }
 
 

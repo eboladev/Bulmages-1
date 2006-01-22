@@ -95,6 +95,9 @@ void ClientDelivNotesList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
+        for (int i = 0; i < m_list->numCols(); i++) {
+            stream << m_list->columnWidth(i) << "\n";
+        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -105,6 +108,10 @@ void ClientDelivNotesList::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
+        for (int i = 0; i < m_list->numCols(); i++) {
+            QString linea = stream.readLine();
+            m_list->setColumnWidth(i, linea.toInt());
+        }// end for
         file.close();
     } else
         return;
@@ -218,13 +225,14 @@ void ClientDelivNotesList::s_configurar() {
     else
         m_list->hideColumn(COL_TOTALIMPUESTOS);
 
-    guardaconfig();
+
 }// end s_configurar
 
 ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
         : ClientDelivNotesListBase(parent, name, flag) {
     companyact = NULL;
     cargaconfig();
+    s_configurar();
     m_modo=editmodo;
     m_idclidelivnote="";
     if (m_modo == EditMode)
@@ -237,19 +245,22 @@ ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const
     companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
-    cargaconfig();
+
     inicializa();
+    cargaconfig();
+	s_configurar();
     m_modo=editmodo;
     m_idclidelivnote="";
     if (m_modo == EditMode)
         companyact->meteWindow(caption(), this);
     hideBusqueda();
     hideConfiguracion();
-}// end providerslist
+}// end ClientDelivNotesList
 
 ClientDelivNotesList::~ClientDelivNotesList() {
     if (m_modo == EditMode)
         companyact->sacaWindow(this);
+    guardaconfig();
 }// end ~providerslist
 
 
@@ -279,21 +290,6 @@ void ClientDelivNotesList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_TOTALALBARAN, tr("Total") );
     m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
     m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
-
-
-    m_list->setColumnWidth(COL_REFALBARAN,75);
-    m_list->setColumnWidth(COL_CODIGOALMACEN,75);
-    m_list->setColumnWidth(COL_NUMALBARAN,75);
-    m_list->setColumnWidth(COL_FECHAALBARAN,100);
-    m_list->setColumnWidth(COL_IDFORMA_PAGO,75);
-    m_list->setColumnWidth(COL_NUMFACTURA,75);
-    m_list->setColumnWidth(COL_NUMNOFACTURA,75);
-    m_list->setColumnWidth(COL_IDUSUARIO,75);
-    m_list->setColumnWidth(COL_IDCLIENTE,75);
-    m_list->setColumnWidth(COL_NOMCLIENTE,200);
-    m_list->setColumnWidth(COL_IDALBARAN,75);
-    m_list->setColumnWidth(COL_COMENTALBARAN,200);
-    m_list->setColumnWidth(COL_DESCFORMA_PAGO,200);
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTALBARANESCLIENTE));
@@ -335,9 +331,6 @@ void ClientDelivNotesList::inicializa() {
     cur = companyact->cargacursor("SELECT SUM(calctotalalbaran(idalbaran)) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
-
-
-    s_configurar();
 
     _depura("End ClientDelivNotesList::inicializa");
 }// end inicializa

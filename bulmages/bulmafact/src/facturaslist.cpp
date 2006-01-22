@@ -64,6 +64,10 @@ void FacturasList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
+for (int i = 0; i < m_list->numCols(); i++)
+{
+    stream << m_list->columnWidth(i) << "\n";
+}// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -74,6 +78,10 @@ void FacturasList::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
+        for (int i = 0; i < m_list->numCols(); i++) {
+            QString linea = stream.readLine();
+            m_list->setColumnWidth(i, linea.toInt());
+        }// end for
         file.close();
     } else
         return;
@@ -95,11 +103,6 @@ void FacturasList::cargaconfig() {
     mver_totalbaseimp->setChecked(line.at(28)=='1');
     mver_totalimpuestos->setChecked(line.at(30)=='1');
 }// end cargaconfig
-
-
-
-
-
 
 
 void FacturasList::s_configurar() {
@@ -183,7 +186,7 @@ void FacturasList::s_configurar() {
     else
         m_list->hideColumn(COL_TOTALIMPUESTOS);
 
-    guardaconfig();
+
 }// end s_configurar
 
 FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag)
@@ -195,6 +198,7 @@ FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag)
     hideBusqueda();
     hideConfiguracion();
     cargaconfig();
+	s_configurar();
 }// end providerslist
 
 FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
@@ -202,8 +206,10 @@ FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
     companyact = comp;
     m_cliente->setcompany(companyact);
     m_articulo->setcompany(companyact);
-    cargaconfig();
+
     inicializa();
+    cargaconfig();
+	s_configurar();
     m_modo=0;
     m_idfactura="";
     meteWindow(caption(),this);
@@ -214,6 +220,7 @@ FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
 
 FacturasList::~FacturasList() {
     companyact->sacaWindow(this);
+    guardaconfig();
 }
 
 
@@ -242,16 +249,6 @@ void FacturasList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
     m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
 
-    m_list->setColumnWidth(COL_REFFACTURA,75);
-    m_list->setColumnWidth(COL_IDFACTURA,75);
-    m_list->setColumnWidth(COL_NUMFACTURA,75);
-    m_list->setColumnWidth(COL_FFACTURA,100);
-    m_list->setColumnWidth(COL_CONTACTFACTURA,200);
-    m_list->setColumnWidth(COL_TELFACTURA,150);
-    m_list->setColumnWidth(COL_COMENTFACTURA,300);
-    m_list->setColumnWidth(COL_IDUSUARI,75);
-    m_list->setColumnWidth(COL_IDCLIENTE,75);
-
     if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
         m_list->hideColumn(COL_CODIGOALMACEN);
     }// end if
@@ -274,6 +271,7 @@ void FacturasList::inicializa() {
         m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
         m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
         m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
+        m_list->setText(i,COL_IDSERIE_FACTURA,cur->valor("codigoserie_factura"));
 
         /// Calculamos el total del presupuesto y lo presentamos.
         cursor2 *cur1 = companyact->cargacursor("SELECT calctotalfactura("+cur->valor("idfactura")+") AS total, calcbimpfactura("+cur->valor("idfactura")+") AS base, calcimpuestosfactura("+cur->valor("idfactura")+") AS impuestos");
@@ -292,8 +290,6 @@ void FacturasList::inicializa() {
     m_total->setText(cur->valor("total"));
     delete cur;
 
-
-    s_configurar();
     _depura("END FacturasList::inicializa()",1);
 }// end inicializa
 
@@ -461,7 +457,7 @@ void FacturasList::s_print() {
         if(mver_idalmacen->isChecked() )
             fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalmacen"))+"</td>";
         if(mver_idserie_factura->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idserie_factura"))+"</td>";
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codigoserie_factura"))+"</td>";
 
         /// Calculamos el total del presupuesto y lo presentamos.
         cursor2 *cur1 = companyact->cargacursor("SELECT calctotalfactura("+cur->valor("idfactura")+") AS total, calcbimpfactura("+cur->valor("idfactura")+") AS base, calcimpuestosfactura("+cur->valor("idfactura")+") AS impuestos");

@@ -35,6 +35,34 @@
 #include "funcaux.h"
 
 
+void ListLinAlbaranClienteView::guardaconfig() {
+    _depura("ListLinAlbaranClienteView::guardaconfig",0);
+    QString aux = "";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinalbaranclienteview.cfn" );
+    if ( file.open( QIODevice::WriteOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            stream << columnWidth(i) << "\n";
+        }// end for
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void ListLinAlbaranClienteView::cargaconfig() {
+	_depura("ListLinAlbaranClienteView::cargaconfig",0);
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinalbaranclienteview.cfn" );
+    QString line;
+    if ( file.open( QIODevice::ReadOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            QString linea = stream.readLine();
+            setColumnWidth(i, linea.toInt());
+        }// end for
+        file.close();
+    }
+}// end cargaconfig
+
 ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinAlbaranCliente() {
     /// Inicializamos la tabla de lineas de Factura
     setNumCols(12);
@@ -50,18 +78,6 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget * parent, const cha
     horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripci� Art�ulo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
-
-    setColumnWidth(COL_NUMLALBARAN,100);
-    setColumnWidth(COL_DESCLALBARAN,300);
-    setColumnWidth(COL_CANTLALBARAN,100);
-    setColumnWidth(COL_PVPLALBARAN,100);
-    setColumnWidth(COL_DESCONTLALBARAN,74);
-    setColumnWidth(COL_IDALBARAN,100);
-    setColumnWidth(COL_IDARTICULO,100);
-    setColumnWidth(COL_CODARTICULO,100);
-    setColumnWidth(COL_NOMARTICULO,300);
-    setColumnWidth(COL_TASATIPO_IVA,50);
-    setColumnWidth(COL_TIPO_IVA,50);
 
     hideColumn(COL_NUMLALBARAN);
     hideColumn(COL_IDALBARAN);
@@ -79,10 +95,13 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget * parent, const cha
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
     installEventFilter(this);
+	cargaconfig();
 }
 
 
-ListLinAlbaranClienteView::~ListLinAlbaranClienteView() {}
+ListLinAlbaranClienteView::~ListLinAlbaranClienteView() {
+	guardaconfig();
+}
 
 
 void ListLinAlbaranClienteView::pintaListLinAlbaranCliente() {

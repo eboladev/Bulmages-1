@@ -65,8 +65,8 @@ CREATE TABLE presupuesto (
 #define COL_REFCOBRO 4
 #define COL_PREVISIONCOBRO 5
 #define COL_COMENTCOBRO 6
-    
-    
+
+
 
 void CobrosList::guardaconfig() {
     QString aux = "";
@@ -82,6 +82,9 @@ void CobrosList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
+        for (int i = 0; i < m_list->numCols(); i++) {
+            stream << m_list->columnWidth(i) << "\n";
+        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -92,6 +95,10 @@ void CobrosList::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
+        for (int i = 0; i < m_list->numCols(); i++) {
+            QString linea = stream.readLine();
+            m_list->setColumnWidth(i, linea.toInt());
+        }// end for
         file.close();
     } else
         return;
@@ -144,14 +151,15 @@ void CobrosList::s_configurar() {
     else
         m_list->hideColumn(COL_COMENTCOBRO);
 
-	guardaconfig();
+
 
 }// end s_configurar
 
 
 CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag)
-: CobrosListBase(parent, name, flag) {
-	cargaconfig();
+        : CobrosListBase(parent, name, flag) {
+    cargaconfig();
+    s_configurar();
     companyact = NULL;
     m_modo=0;
     m_idcobro="";
@@ -161,11 +169,13 @@ CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag)
 }// end providerslist
 
 CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-: CobrosListBase(parent, name, flag) {
+        : CobrosListBase(parent, name, flag) {
     companyact = comp;
     m_cliente->setcompany(comp);
-	cargaconfig();
+
     inicializa();
+    cargaconfig();
+    s_configurar();
     m_modo=0;
     m_idcobro="";
     meteWindow(caption(),this);
@@ -175,6 +185,7 @@ CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFl
 
 CobrosList::~CobrosList() {
     companyact->sacaWindow(this);
+    guardaconfig();
 }// end ~providerslist
 
 void CobrosList::inicializa() {
@@ -186,7 +197,7 @@ void CobrosList::inicializa() {
     m_list->setSelectionMode( Q3Table::SingleRow );
     m_list->setColumnMovingEnabled( TRUE );
     m_list->setNumCols(7);
-    
+
     m_list->horizontalHeader()->setLabel( COL_IDCOBRO, tr( "COL_IDCOBRO" ) );
     m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "COL_IDCLIENTE" ) );
     m_list->horizontalHeader()->setLabel( COL_FECHACOBRO, tr( "COL_FECHACOBRO" ) );
@@ -194,14 +205,6 @@ void CobrosList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_REFCOBRO, tr( "COL_REFCOBRO" ) );
     m_list->horizontalHeader()->setLabel( COL_PREVISIONCOBRO, tr( "COL_PREVISIONCOBRO" ) );
     m_list->horizontalHeader()->setLabel( COL_COMENTCOBRO, tr( "COL_COMENTCOBRO" ) );
-    
-    m_list->setColumnWidth(COL_IDCOBRO,75);
-    m_list->setColumnWidth(COL_IDCLIENTE,75);
-    m_list->setColumnWidth(COL_FECHACOBRO,100);
-    m_list->setColumnWidth(COL_CANTCOBRO,100);
-    m_list->setColumnWidth(COL_REFCOBRO,200);
-    m_list->setColumnWidth(COL_PREVISIONCOBRO,150);
-    m_list->setColumnWidth(COL_COMENTCOBRO,300);
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");
@@ -226,12 +229,12 @@ void CobrosList::inicializa() {
         }// end while
         delete cur;
 
-	/// Hacemos el calculo del total.
-	cur = companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro where 1=1"+generaFiltro());
-	m_total->setText(cur->valor("total"));
-	delete cur;
+        /// Hacemos el calculo del total.
+        cur = companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro where 1=1"+generaFiltro());
+        m_total->setText(cur->valor("total"));
+        delete cur;
     }// end if
-    s_configurar();
+
     fprintf(stderr,"end CobrosList::inicializa()\n");
 }// end inicializa
 
@@ -254,12 +257,12 @@ QString CobrosList::generaFiltro() {
     }// end if
 
     if (m_fechain->text() != "")
-	filtro += " AND fechacobro >= '"+m_fechain->text()+"' ";
+        filtro += " AND fechacobro >= '"+m_fechain->text()+"' ";
 
-    if (m_fechafin->text() != "") 
-	filtro += " AND fechacobro <= '"+m_fechafin->text()+"' ";
+    if (m_fechafin->text() != "")
+        filtro += " AND fechacobro <= '"+m_fechafin->text()+"' ";
 
-//    filtro += " ORDER BY idcobro";
+    //    filtro += " ORDER BY idcobro";
     return (filtro);
 }// end generaFiltro
 
@@ -323,19 +326,25 @@ void CobrosList::imprimir() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
+
     archivo = "copy "+archivo+" "+archivod;
 #else
+
     archivo = "cp "+archivo+" "+archivod;
 #endif
+
     system (archivo.ascii());
 
     /// Copiamos el logo
 
 #ifdef WINDOWS
+
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #else
+
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #endif
+
     system (archivologo.ascii());
 
     QFile file;
@@ -348,43 +357,43 @@ void CobrosList::imprimir() {
     // L�ea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
-/// ------------------------------------------------
+    /// ------------------------------------------------
     if(mver_idcobro->isChecked() )
-	fitxersortidatxt += "	<td>Id.</td>";
+        fitxersortidatxt += "	<td>Id.</td>";
     if(mver_idcliente->isChecked() )
-	fitxersortidatxt += "	<td>Id. cliente</td>";
+        fitxersortidatxt += "	<td>Id. cliente</td>";
     if(mver_fechacobro->isChecked() )
-	fitxersortidatxt += "	<td>Fecha</td>";
+        fitxersortidatxt += "	<td>Fecha</td>";
     if(mver_cantcobro->isChecked() )
-	fitxersortidatxt += "	<td>Cantidad</td>";
+        fitxersortidatxt += "	<td>Cantidad</td>";
     if(mver_refcobro->isChecked() )
-	fitxersortidatxt += "	<td>Referencia</td>";
+        fitxersortidatxt += "	<td>Referencia</td>";
     if(mver_previsioncobro->isChecked() )
-	fitxersortidatxt += "	<td>Prevision</td>";
+        fitxersortidatxt += "	<td>Prevision</td>";
     if(mver_comentcobro->isChecked() )
-	fitxersortidatxt += "	<td>Comentarios</td>";
-/// ------------------------------------------------
+        fitxersortidatxt += "	<td>Comentarios</td>";
+    /// ------------------------------------------------
     fitxersortidatxt += "</tr>";
 
-        cursor2 * cur= companyact->cargacursor("SELECT * FROM cobro where 1=1"+generaFiltro());
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM cobro where 1=1"+generaFiltro());
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
-/// -----------------------------
-    if(mver_idcobro->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idcobro"))+"</td>";
-    if(mver_idcliente->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idcliente"))+"</td>";
-    if(mver_fechacobro->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fechacobro"))+"</td>";
-    if(mver_cantcobro->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cantcobro"))+"</td>";
-    if(mver_refcobro->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("refcobro"))+"</td>";
-    if(mver_previsioncobro->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("previsioncobro"))+"</td>";
-    if(mver_comentcobro->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("comentcobro"))+"</td>";
-/// -----------------------------
+        /// -----------------------------
+        if(mver_idcobro->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idcobro"))+"</td>";
+        if(mver_idcliente->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idcliente"))+"</td>";
+        if(mver_fechacobro->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fechacobro"))+"</td>";
+        if(mver_cantcobro->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cantcobro"))+"</td>";
+        if(mver_refcobro->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("refcobro"))+"</td>";
+        if(mver_previsioncobro->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("previsioncobro"))+"</td>";
+        if(mver_comentcobro->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("comentcobro"))+"</td>";
+        /// -----------------------------
         fitxersortidatxt += "</tr>";
         cur->siguienteregistro();
     }// end if
@@ -399,9 +408,9 @@ void CobrosList::imprimir() {
         file.close();
     }
 
-// Crea el pdf  y lo muestra.
-_depura("Vamos a imprimir e listado de cobros",0);
-invocaPDF("cobros");
+    // Crea el pdf  y lo muestra.
+    _depura("Vamos a imprimir e listado de cobros",0);
+    invocaPDF("cobros");
 
 
 

@@ -45,7 +45,7 @@ bulmafact::bulmafact(QString bd) : bulmafactbase( 0, "bulmafact", Qt::WDestructi
 
     pWorkspace->setScrollBarsEnabled( TRUE );
     setCentralWidget(view_back);
-    //  setCentralWidget(pWorkspace);
+   // setCentralWidget(pWorkspace);
     pWorkspace->showMaximized();
     m_company->setWorkspace(pWorkspace);
 
@@ -72,18 +72,13 @@ bulmafact::bulmafact(QString bd) : bulmafactbase( 0, "bulmafact", Qt::WDestructi
 
 
 bulmafact::~bulmafact() {
-    _depura("Destructor de BulmaFact",1);
+    _depura("Destructor de BulmaFact",2);
     // En windows no termina bien la ejecucion del programa y por eso agregamos esta salida r�ida.
 #ifdef WINDOWS
-
     exit(0);
 #endif
 
-    delete m_company;
-    delete m_list;
-    delete pWorkspace;
-    delete view_back;
-    _depura("End Destructor de BulmaFact",1);
+    _depura("End Destructor de BulmaFact",2);
 }
 
 
@@ -171,13 +166,6 @@ void bulmafact::aboutQt() {
     QMessageBox::aboutQt( this, tr("Qt Application Example") );
 }
 
-
-/*
-void bulmafact::newBudget() {
-   m_company->newBudget();
-}// end provideraction
-*/
-
 void bulmafact::newClientDelivNote() {
     m_company->newClientDelivNote();
 }// end provideraction
@@ -209,4 +197,12 @@ void bulmafact::s_About()  {
     about->exec();
     delete about;
 }// end slotHelpAbout
+
+void bulmafact::closeEvent( QCloseEvent *) {
+	_depura("closeEvent",0);
+    delete m_company;
+    delete m_list;
+    delete pWorkspace;
+    delete view_back;
+}
 

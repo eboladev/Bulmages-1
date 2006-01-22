@@ -36,6 +36,9 @@ public:
     virtual bool eventFilter( QObject *obj, QEvent *ev );
     LinAlbaranProveedor *lineaat(int);
     LinAlbaranProveedor *lineaact();
+	void cargaconfig();
+	void guardaconfig();
+
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);
     virtual QString searchArticle();

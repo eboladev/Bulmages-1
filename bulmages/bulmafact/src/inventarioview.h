@@ -32,7 +32,7 @@ public:
     InventarioView(company *, QWidget *parent = 0, const char *name = 0);
     ~InventarioView();
 
-    void	 pintaidinventario(QString id) {}
+    void	 pintaidinventario(QString) {}
     ;
     void    pintafechainventario(QString id) {
         m_fechainventario->setText(id);

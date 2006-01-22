@@ -88,6 +88,9 @@ void articleslist::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
+        for (int i = 0; i < m_list->numCols(); i++) {
+            stream << m_list->columnWidth(i) << "\n";
+        }// end for
         file.close();
     }// end if
 
@@ -102,6 +105,10 @@ void articleslist::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
+        for (int i = 0; i < m_list->numCols(); i++) {
+            QString linea = stream.readLine();
+            m_list->setColumnWidth(i, linea.toInt());
+        }// end for
         file.close();
     } else
         return;
@@ -235,7 +242,7 @@ void articleslist::s_configurar() {
     else
         m_list->hideColumn(COL_PVPARTICULO);
 
-    guardaconfig();
+
 
     _depura("articleslist::END_s_configurar()\n",0);
 }// end s_configurar
@@ -245,13 +252,16 @@ articleslist::articleslist(company *comp, QWidget *parent, const char *name, Qt:
         : articleslistbase(parent, name, flag)  , pgimportfiles(comp) {
     _depura("articleslist::INIT_articleslist()\n",0);
 
-    cargaconfig();
+
     companyact = comp;
     m_tipoarticulo->setcompany(comp);
     m_familia->setcompany(comp);
     inicializa();
+    cargaconfig();
+    s_configurar();
     m_modo=editmodo;
-    if (m_modo == EditMode) comp->meteWindow("Articulos",this);
+    if (m_modo == EditMode)
+        comp->meteWindow("Articulos",this);
     hideBusqueda();
     hideConfiguracion();
 
@@ -290,27 +300,6 @@ void articleslist::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_STOCKARTICULO, tr("Stock") );
     m_list->horizontalHeader()->setLabel( COL_PVPARTICULO, tr("PVP") );
 
-    m_list->setColumnWidth(COL_IDARTICULO,100);
-    m_list->setColumnWidth(COL_CODARTICULO,100);
-    m_list->setColumnWidth(COL_CODCOMPLETOARTICULO, 100);
-    m_list->setColumnWidth(COL_NOMARTICULO,300);
-    m_list->setColumnWidth(COL_DESCARTICULO,300);
-    m_list->setColumnWidth(COL_CBARRASARTICULO,100);
-    m_list->setColumnWidth(COL_TIPOARTICULO,100);
-    m_list->setColumnWidth(COL_DESCUENTOARTICULO,75);
-    m_list->setColumnWidth(COL_ESPECIFICACIONESARTICULO,400);
-    m_list->setColumnWidth(COL_ICONOARTICULO,75);
-    m_list->setColumnWidth(COL_FOTOARTICULO,75);
-    m_list->setColumnWidth(COL_POSTERARTICULO,75);
-    m_list->setColumnWidth(COL_MARGENARTICULO,75);
-    m_list->setColumnWidth(COL_SOBRECOSTEARTICULO,75);
-    m_list->setColumnWidth(COL_MODELOARTICULO,200);
-    m_list->setColumnWidth(COL_IDTIPO_IVA,50);
-    m_list->setColumnWidth(COL_DESCTIPO_IVA,50);
-    m_list->setColumnWidth(COL_IDLINEA_PROD,50);
-    m_list->setColumnWidth(COL_STOCKARTICULO,50);
-    m_list->setColumnWidth(COL_PVPARTICULO,50);
-
     //listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTARTICULOS));
@@ -335,7 +324,7 @@ void articleslist::inicializa() {
         cur->siguienteregistro();
     }// end while
     delete cur;
-    s_configurar();
+
 
     _depura("articleslist::END_inicializa()\n",0);
 } //end inicializa
@@ -349,9 +338,10 @@ void articleslist::editArticle(int  row) {
     mdb_codigocompletoarticulo = m_list->text(row,COL_CODCOMPLETOARTICULO);
     if (m_modo ==0 ) {
         articleedit *art = new articleedit(companyact,0,theApp->translate("Edición de Artículos", "company"));
-	/// Si la carga no va bien entonces terminamos.
-        if (art->chargeArticle(m_idArticle)) return;
-	companyact->m_pWorkspace->addWindow(art);
+        /// Si la carga no va bien entonces terminamos.
+        if (art->chargeArticle(m_idArticle))
+            return;
+        companyact->m_pWorkspace->addWindow(art);
         art->show();
     } else {
         close();
@@ -371,7 +361,8 @@ void articleslist::s_editArticle() {
     _depura("articleslist::INIT_s_editArticle()\n",0);
 
     int a = m_list->currentRow();
-    if (a < 0) return;
+    if (a < 0)
+        return;
     editArticle(a);
 
     _depura("articleslist::END_s_editArticle()\n",0);
@@ -381,8 +372,9 @@ void articleslist::s_editArticle() {
 articleslist::~articleslist() {
     _depura("articleslist::INIT_destructor()\n",0);
 
-   if(m_modo == EditMode) companyact->sacaWindow(this);
-
+    if(m_modo == EditMode)
+        companyact->sacaWindow(this);
+    guardaconfig();
     _depura("articleslist::END_destructor()\n",0);
 }// end ~articleslist
 
@@ -435,11 +427,11 @@ QString articleslist::detalleArticulos() {
     QString texto="";
     cursor2 *cur=companyact->cargacursor(formaQuery());
     while(!cur->eof()) {
-            texto += "<blockTable style=\"tabla1\">\n";
+        texto += "<blockTable style=\"tabla1\">\n";
 
         texto += "<tr>\n";
-            texto += "<td><h1>"+XMLProtect(cur->valor("nomarticulo"))+"</h1>";
-            texto += "<para>"+XMLProtect(cur->valor("obserarticulo"))+"</para></td></tr><tr>\n";
+        texto += "<td><h1>"+XMLProtect(cur->valor("nomarticulo"))+"</h1>";
+        texto += "<para>"+XMLProtect(cur->valor("obserarticulo"))+"</para></td></tr><tr>\n";
         QString file = confpr->valor(CONF_DIR_IMG_ARTICLES)+XMLProtect(cur->valor("codigocompletoarticulo"))+".jpg";
         QFile f( file );
         if (f.exists() ) {
@@ -470,19 +462,25 @@ void articleslist::Imprimir() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
+
     archivo = "copy "+archivo+" "+archivod;
 #else
+
     archivo = "cp "+archivo+" "+archivod;
 #endif
+
     system (archivo.ascii());
 
     /// Copiamos el logo
 
 #ifdef WINDOWS
+
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #else
+
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #endif
+
     system (archivologo.ascii());
 
 
@@ -502,7 +500,7 @@ void articleslist::Imprimir() {
         file.close();
     }// end if
 
-invocaPDF("articulos");
+    invocaPDF("articulos");
 
     _depura("articleslist::END_Imprimir()\n",0);
 }// end Imprimir
@@ -517,19 +515,25 @@ void articleslist::s_imprimir1() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
+
     archivo = "copy "+archivo+" "+archivod;
 #else
+
     archivo = "cp "+archivo+" "+archivod;
 #endif
+
     system (archivo.ascii());
 
     /// Copiamos el logo
 
 #ifdef WINDOWS
+
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #else
+
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
 #endif
+
     system (archivologo.ascii());
 
     QFile file;
@@ -543,91 +547,91 @@ void articleslist::s_imprimir1() {
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
 
-/// ------------------------------------------------------------------
+    /// ------------------------------------------------------------------
     if(mver_idarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Articulo</td>";
+        fitxersortidatxt += "	<td>Id. Articulo</td>";
     if(mver_codcompletoarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Codigo</td>";
+        fitxersortidatxt += "	<td>Codigo</td>";
     if(mver_nomarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Nombre</td>";
+        fitxersortidatxt += "	<td>Nombre</td>";
     if(mver_descarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Código</td>";
+        fitxersortidatxt += "	<td>Código</td>";
     if(mver_cbarrasarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Codigo Barras</td>";
+        fitxersortidatxt += "	<td>Codigo Barras</td>";
     if(mver_tipoarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Tipo</td>";
+        fitxersortidatxt += "	<td>Tipo</td>";
     if(mver_descuentoarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Descuento</td>";
+        fitxersortidatxt += "	<td>Descuento</td>";
     if(mver_especificacionesarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Especificaciones</td>";
+        fitxersortidatxt += "	<td>Especificaciones</td>";
     if(mver_iconoarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Icono</td>";
+        fitxersortidatxt += "	<td>Icono</td>";
     if(mver_fotoarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Foto</td>";
+        fitxersortidatxt += "	<td>Foto</td>";
     if(mver_posterarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Poster</td>";
+        fitxersortidatxt += "	<td>Poster</td>";
     if(mver_margenarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Margen</td>";
+        fitxersortidatxt += "	<td>Margen</td>";
     if(mver_sobrecostearticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Sobrecote</td>";
+        fitxersortidatxt += "	<td>Sobrecote</td>";
     if(mver_modeloarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Modelo</td>";
+        fitxersortidatxt += "	<td>Modelo</td>";
     if(mver_idtipo_iva->isChecked() )
-	    fitxersortidatxt += "	<td>Id. IVA</td>";
+        fitxersortidatxt += "	<td>Id. IVA</td>";
     if(mver_desctipo_iva->isChecked() )
-	    fitxersortidatxt += "	<td>IVA</td>";
+        fitxersortidatxt += "	<td>IVA</td>";
     if(mver_idlinea_prod->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Linea Prod</td>";
+        fitxersortidatxt += "	<td>Id. Linea Prod</td>";
     if(mver_codarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Codigo</td>";
+        fitxersortidatxt += "	<td>Codigo</td>";
     if(mver_stockarticulo->isChecked() )
-	    fitxersortidatxt += "	<td>Stock</td>";
-/// ------------------------------------------------------------------
+        fitxersortidatxt += "	<td>Stock</td>";
+    /// ------------------------------------------------------------------
     fitxersortidatxt += "</tr>";
 
     cursor2 *cur=companyact->cargacursor(formaQuery());
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
-/// ------------------------------------------------------------------
-    if(mver_idarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idarticulo"))+"</td>";
-    if(mver_codcompletoarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codigocompletoarticulo"))+"</td>";
-    if(mver_nomarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomarticulo"))+"</td>";
-    if(mver_descarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descarticulo"))+"</td>";
-    if(mver_cbarrasarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cbarrasarticulo"))+"</td>";
-    if(mver_tipoarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("tipoarticulo"))+"</td>";
-    if(mver_descuentoarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descuentoarticulo"))+"</td>";
-    if(mver_especificacionesarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("especificacionesarticulo"))+"</td>";
-    if(mver_iconoarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("iconoarticulo"))+"</td>";
-    if(mver_fotoarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fotoarticulo"))+"</td>";
-    if(mver_posterarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("posterarticulo"))+"</td>";
-    if(mver_margenarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("margenarticulo"))+"</td>";
-    if(mver_sobrecostearticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("sobrecostearticulo"))+"</td>";
-    if(mver_modeloarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("modeloarticulo"))+"</td>";
-    if(mver_idtipo_iva->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idtipo_iva"))+"</td>";
-    if(mver_desctipo_iva->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("desctipo_iva"))+"</td>";
-    if(mver_idlinea_prod->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idlinea_prod"))+"</td>";
-    if(mver_codarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codarticulo"))+"</td>";
-    if(mver_stockarticulo->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("stockarticulo"))+"</td>";
-/// ------------------------------------------------------------------
+        /// ------------------------------------------------------------------
+        if(mver_idarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idarticulo"))+"</td>";
+        if(mver_codcompletoarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codigocompletoarticulo"))+"</td>";
+        if(mver_nomarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomarticulo"))+"</td>";
+        if(mver_descarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descarticulo"))+"</td>";
+        if(mver_cbarrasarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cbarrasarticulo"))+"</td>";
+        if(mver_tipoarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("tipoarticulo"))+"</td>";
+        if(mver_descuentoarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descuentoarticulo"))+"</td>";
+        if(mver_especificacionesarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("especificacionesarticulo"))+"</td>";
+        if(mver_iconoarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("iconoarticulo"))+"</td>";
+        if(mver_fotoarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fotoarticulo"))+"</td>";
+        if(mver_posterarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("posterarticulo"))+"</td>";
+        if(mver_margenarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("margenarticulo"))+"</td>";
+        if(mver_sobrecostearticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("sobrecostearticulo"))+"</td>";
+        if(mver_modeloarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("modeloarticulo"))+"</td>";
+        if(mver_idtipo_iva->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idtipo_iva"))+"</td>";
+        if(mver_desctipo_iva->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("desctipo_iva"))+"</td>";
+        if(mver_idlinea_prod->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idlinea_prod"))+"</td>";
+        if(mver_codarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codarticulo"))+"</td>";
+        if(mver_stockarticulo->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("stockarticulo"))+"</td>";
+        /// ------------------------------------------------------------------
         fitxersortidatxt += "</tr>";
         cur->siguienteregistro();
     }// end if
@@ -642,39 +646,39 @@ void articleslist::s_imprimir1() {
         file.close();
     }
 
-invocaPDF("articulos1");
+    invocaPDF("articulos1");
 
-  _depura("articleslist::END_s_imprimir1()\n",0);
+    _depura("articleslist::END_s_imprimir1()\n",0);
 }// end imprimir
 
 
 void articleslist::s_exportar() {
-  _depura("articleslist::INIT_s_exportar()\n",0);
+    _depura("articleslist::INIT_s_exportar()\n",0);
 
-  QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
-  if(filexml.open(QIODevice::WriteOnly)) {
-    bulmafact2XML(filexml, IMPORT_ARTICULOS);
-    filexml.close();
-  } else {
-    _depura("ERROR AL ABRIR ARCHIVO\n",2);
-  }// end if
+    QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
+    if(filexml.open(QIODevice::WriteOnly)) {
+        bulmafact2XML(filexml, IMPORT_ARTICULOS);
+        filexml.close();
+    } else {
+        _depura("ERROR AL ABRIR ARCHIVO\n",2);
+    }// end if
 
-  _depura("articleslist::END_s_exportar()\n",0);
+    _depura("articleslist::END_s_exportar()\n",0);
 }//
 
 
 void articleslist::s_importar() {
-  _depura("articleslist::INIT_s_importar()\n",0);
+    _depura("articleslist::INIT_s_importar()\n",0);
 
-  QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
-  if (filexml.open(QIODevice::ReadOnly))  {
-	XML2BulmaFact(filexml, IMPORT_ARTICULOS);
-    filexml.close();
-    inicializa();
-  }  else  {
-    _depura("ERROR AL ABRIR ARCHIVO\n",2);
-  }// end if
+    QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
+    if (filexml.open(QIODevice::ReadOnly))  {
+        XML2BulmaFact(filexml, IMPORT_ARTICULOS);
+        filexml.close();
+        inicializa();
+    }  else  {
+        _depura("ERROR AL ABRIR ARCHIVO\n",2);
+    }// end if
 
-  _depura("articleslist::END_s_importar()\n",0);
+    _depura("articleslist::END_s_importar()\n",0);
 }
 

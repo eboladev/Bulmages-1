@@ -51,6 +51,33 @@ CREATE TABLE lpedidoproveedor (
 #include <QKeyEvent>
 #include <QEvent>
 
+void ListLinPedidoProveedorView::guardaconfig() {
+    _depura("ListLinPedidoProveedorView::guardaconfig",0);
+    QString aux = "";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpedidoproveedorview.cfn" );
+    if ( file.open( QIODevice::WriteOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            stream << columnWidth(i) << "\n";
+        }// end for
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void ListLinPedidoProveedorView::cargaconfig() {
+	_depura("ListLinPedidoProveedorView::cargaconfig",0);
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpedidoproveedorview.cfn" );
+    QString line;
+    if ( file.open( QIODevice::ReadOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            QString linea = stream.readLine();
+            setColumnWidth(i, linea.toInt());
+        }// end for
+        file.close();
+    }
+}// end cargaconfig
 
 ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinPedidoProveedor() {
     /// Inicializamos la tabla de lineas de Factura
@@ -71,19 +98,6 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget * parent, const c
     horizontalHeader()->setLabel( COL_PREVLPEDIDOPROVEEDOR, tr( "COL_PREVLPEDIDOPROVEEDOR" ) );
     horizontalHeader()->setLabel( COL_IVALPEDIDOPROVEEDOR, tr( "COL_IVALPEDIDOPROVEEDOR" ) );
 
-    setColumnWidth(COL_PUNTEO,15);
-    setColumnWidth(COL_NUMLPEDIDOPROVEEDOR,100);
-    setColumnWidth(COL_DESCLPEDIDOPROVEEDOR,300);
-    setColumnWidth(COL_CANTLPEDIDOPROVEEDOR,100);
-    setColumnWidth(COL_PVPLPEDIDOPROVEEDOR,100);
-    setColumnWidth(COL_DESCUENTOLPEDIDOPROVEEDOR,74);
-    setColumnWidth(COL_IDPEDIDOPROVEEDOR,100);
-    setColumnWidth(COL_IDARTICULO,100);
-    setColumnWidth(COL_CODARTICULO,100);
-    setColumnWidth(COL_NOMARTICULO,300);
-    setColumnWidth(COL_TASATIPO_IVA,50);
-    setColumnWidth(COL_TIPO_IVA,50);
-
     hideColumn(COL_NUMLPEDIDOPROVEEDOR);
     hideColumn(COL_IDPEDIDOPROVEEDOR);
     hideColumn(COL_IDARTICULO);
@@ -102,11 +116,13 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget * parent, const c
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
 
     installEventFilter(this);
-
+	cargaconfig();
 }
 
 
-ListLinPedidoProveedorView::~ListLinPedidoProveedorView() {}
+ListLinPedidoProveedorView::~ListLinPedidoProveedorView() {
+	guardaconfig();
+}
 
 
 void ListLinPedidoProveedorView::pintaListLinPedidoProveedor() {

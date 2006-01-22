@@ -115,6 +115,9 @@ void providerslist::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
+        for (int i = 0; i < m_list->numCols(); i++) {
+            stream << m_list->columnWidth(i) << "\n";
+        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -125,6 +128,10 @@ void providerslist::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
+        for (int i = 0; i < m_list->numCols(); i++) {
+            QString linea = stream.readLine();
+            m_list->setColumnWidth(i, linea.toInt());
+        }// end for
         file.close();
     } else
         return;
@@ -222,12 +229,13 @@ void providerslist::s_configurar() {
     else
         m_list->hideColumn(COL_CLAVEWEBPROVEEDOR);
 
-	guardaconfig();
+
 }// end s_configurar
 
 providerslist::providerslist(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
         : providerslistbase(parent, name, flag) , pgimportfiles(comp) {
     cargaconfig();
+    s_configurar();
     companyact = comp;
     hideBusqueda();
     hideConfiguracion();
@@ -259,27 +267,13 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, Q
     m_list->horizontalHeader()->setLabel( COL_EMAILPROVEEDOR, tr("Correo Electronico") );
     m_list->horizontalHeader()->setLabel( COL_URLPROVEEDOR, tr("Pagina Web") );
     m_list->horizontalHeader()->setLabel( COL_CLAVEWEBPROVEEDOR, tr("Clave propia web proveedor") );
-    m_list->setColumnWidth(COL_IDPROVEEDOR,75);
-    m_list->setColumnWidth(COL_NOMPROVEEDOR,300);
-    m_list->setColumnWidth(COL_NOMALTPROVEEDOR,300);
-    m_list->setColumnWidth(COL_CIFPROVEEDOR,75);
-    m_list->setColumnWidth(COL_CODICLIPROVEEDOR,75);
-    m_list->setColumnWidth(COL_CBANCPROVEEDOR,100);
-    m_list->setColumnWidth(COL_COMENTPROVEEDOR,1000);
-    m_list->setColumnWidth(COL_DIRPROVEEDOR,300);
-    m_list->setColumnWidth(COL_POBLPROVEEDOR,200);
-    m_list->setColumnWidth(COL_CPPROVEEDOR,75);
-    m_list->setColumnWidth(COL_TELPROVEEDOR,75);
-    m_list->setColumnWidth(COL_FAXPROVEEDOR,100);
-    m_list->setColumnWidth(COL_EMAILPROVEEDOR,300);
-    m_list->setColumnWidth(COL_URLPROVEEDOR,300);
-    m_list->setColumnWidth(COL_CLAVEWEBPROVEEDOR,300);
     inicializa();
-    s_configurar();
+
 }// end providerslist
 
 providerslist::~providerslist() {
    if (m_modo == EditMode)  companyact->sacaWindow(this);
+	guardaconfig();
 }// end ~providerslist
 
 void providerslist::inicializa() {

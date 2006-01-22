@@ -35,6 +35,34 @@
 #include <QKeyEvent>
 #include <QEvent>
 
+void ListLinFacturaProveedorView::guardaconfig() {
+    _depura("ListLinFacturaProveedorView::guardaconfig",0);
+    QString aux = "";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinfacturapview.cfn" );
+    if ( file.open( QIODevice::WriteOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            stream << columnWidth(i) << "\n";
+        }// end for
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void ListLinFacturaProveedorView::cargaconfig() {
+	_depura("ListLinFacturaProveedorView::cargaconfig",0);
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinfacturapview.cfn" );
+    QString line;
+    if ( file.open( QIODevice::ReadOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            QString linea = stream.readLine();
+            setColumnWidth(i, linea.toInt());
+        }// end for
+        file.close();
+    }
+}// end cargaconfig
+
 
 ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinFacturaProveedor() {
     /// Inicializamos la tabla de lineas de FacturaProveedor
@@ -51,18 +79,6 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget * parent, const
     horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripci� Art�ulo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
-
-    setColumnWidth(COL_IDLFACTURA,100);
-    setColumnWidth(COL_DESCLFACTURA,300);
-    setColumnWidth(COL_CANTLFACTURA,100);
-    setColumnWidth(COL_PVPLFACTURA,100);
-    setColumnWidth(COL_DESCUENTOLFACTURA,74);
-    setColumnWidth(COL_IDFACTURA,100);
-    setColumnWidth(COL_IDARTICULO,100);
-    setColumnWidth(COL_CODARTICULO,100);
-    setColumnWidth(COL_NOMARTICULO,300);
-    setColumnWidth(COL_TASATIPO_IVA,50);
-    setColumnWidth(COL_TIPO_IVA,50);
 
     hideColumn(COL_IDLFACTURA);
     hideColumn(COL_IDFACTURA);
@@ -82,11 +98,13 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget * parent, const
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
 
     installEventFilter(this);
-
+	cargaconfig();
 }
 
 
-ListLinFacturaProveedorView::~ListLinFacturaProveedorView() {}
+ListLinFacturaProveedorView::~ListLinFacturaProveedorView() {
+	guardaconfig();
+}
 
 
 void ListLinFacturaProveedorView::pintaListLinFacturaProveedor() {

@@ -35,6 +35,33 @@
 #include <QKeyEvent>
 #include <QEvent>
 
+void ListLinFacturaView::guardaconfig() {
+    _depura("ListLinFacturaView::guardaconfig",0);
+    QString aux = "";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinfacturaview.cfn" );
+    if ( file.open( QIODevice::WriteOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            stream << columnWidth(i) << "\n";
+        }// end for
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void ListLinFacturaView::cargaconfig() {
+	_depura("ListLinFacturaView::cargaconfig",0);
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinfacturaview.cfn" );
+    QString line;
+    if ( file.open( QIODevice::ReadOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            QString linea = stream.readLine();
+            setColumnWidth(i, linea.toInt());
+        }// end for
+        file.close();
+    }
+}// end cargaconfig
 
 ListLinFacturaView::ListLinFacturaView(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinFactura() {
     /// Inicializamos la tabla de lineas de Factura
@@ -51,18 +78,6 @@ ListLinFacturaView::ListLinFacturaView(QWidget * parent, const char * name) : Q3
     horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripci� Art�ulo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
-
-    setColumnWidth(COL_IDLFACTURA,100);
-    setColumnWidth(COL_DESCLFACTURA,300);
-    setColumnWidth(COL_CANTLFACTURA,100);
-    setColumnWidth(COL_PVPLFACTURA,100);
-    setColumnWidth(COL_DESCUENTOLFACTURA,74);
-    setColumnWidth(COL_IDFACTURA,100);
-    setColumnWidth(COL_IDARTICULO,100);
-    setColumnWidth(COL_CODARTICULO,100);
-    setColumnWidth(COL_NOMARTICULO,300);
-    setColumnWidth(COL_TASATIPO_IVA,50);
-    setColumnWidth(COL_TIPO_IVA,50);
 
     hideColumn(COL_IDLFACTURA);
     hideColumn(COL_IDFACTURA);
@@ -83,10 +98,13 @@ ListLinFacturaView::ListLinFacturaView(QWidget * parent, const char * name) : Q3
 
     installEventFilter(this);
 
+	cargaconfig();
 }
 
 
-ListLinFacturaView::~ListLinFacturaView() {}
+ListLinFacturaView::~ListLinFacturaView() {
+	guardaconfig();
+}
 
 
 void ListLinFacturaView::pintaListLinFactura() {

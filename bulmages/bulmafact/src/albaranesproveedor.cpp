@@ -100,6 +100,9 @@ void AlbaranesProveedor::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
+        for (int i = 0; i < m_list->numCols(); i++) {
+            stream << m_list->columnWidth(i) << "\n";
+        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -110,6 +113,11 @@ void AlbaranesProveedor::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
+for (int i = 0; i < m_list->numCols(); i++)
+{
+    QString linea = stream.readLine();
+    m_list->setColumnWidth(i, linea.toInt());
+}// end for
         file.close();
     } else
         return;
@@ -225,13 +233,13 @@ void AlbaranesProveedor::s_configurar() {
         m_list->hideColumn(COL_NOMALMACEN);
     }// end if
 
-guardaconfig();
 }
 
 
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WFlags flag)
 : AlbaranesProveedorBase(parent, name, flag) {
 	cargaconfig();
+	s_configurar();
     companyact = NULL;
     m_modo=0;
     m_idalbaranp="";
@@ -242,11 +250,13 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WF
 
 AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
 : AlbaranesProveedorBase(parent, name, flag) {
-	cargaconfig();
+
     companyact = comp;
     m_proveedor->setcompany(comp);
     m_articulo->setcompany(comp);
     inicializa();
+	cargaconfig();
+	s_configurar();
     m_modo=0;
     m_idalbaranp="";
     meteWindow(caption(),this);
@@ -257,6 +267,7 @@ AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const cha
 AlbaranesProveedor::~AlbaranesProveedor() {
     companyact->refreshAlbaranesProveedor();
     companyact->sacaWindow(this);
+	guardaconfig();
 }// end ~providerslist
 
 void AlbaranesProveedor::inicializa() {
@@ -286,23 +297,6 @@ void AlbaranesProveedor::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_TOTALALBARANPROVEEDOR, tr("Total") );
     m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
     m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
-    
-    m_list->setColumnWidth(COL_IDALBARANP,75);
-    m_list->setColumnWidth(COL_NUMALBARANP,75);
-    m_list->setColumnWidth(COL_DESCALBARANP,100);
-    m_list->setColumnWidth(COL_REFALBARANP,100);
-    m_list->setColumnWidth(COL_FECHAALBARANP,200);
-    m_list->setColumnWidth(COL_LOGINUSUARIO,150);
-    m_list->setColumnWidth(COL_COMENTALBARANP,300);
-    m_list->setColumnWidth(COL_PROCESADOALBARANP, 300);
-    m_list->setColumnWidth(COL_IDPROVEEDOR,100);
-    m_list->setColumnWidth(COL_IDFORMA_PAGO,75);
-    m_list->setColumnWidth(COL_IDALMACEN,75);
-    m_list->setColumnWidth(COL_NOMPROVEEDOR,75);
-    m_list->setColumnWidth(COL_NOMALMACEN,200);
-    m_list->setColumnWidth(COL_DESCFORMA_PAGO,75);
-
-
 
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");
@@ -349,8 +343,8 @@ void AlbaranesProveedor::inicializa() {
 	delete cur;
 
     }// end if
-    s_configurar();
-    _depura("END AlbaranesProveedor::inicializa()\n",1);
+
+    _depura("END AlbaranesProveedor::inicializa()\n",0);
 }// end inicializa
 
 

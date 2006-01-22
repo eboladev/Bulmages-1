@@ -25,6 +25,8 @@ public:
     return pWorkspace;
   };
 public slots:
+    virtual void closeEvent( QCloseEvent *);
+
   virtual void listproviders();
   virtual void s_newProveedor();
   virtual void caja();

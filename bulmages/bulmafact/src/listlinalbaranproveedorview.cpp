@@ -37,6 +37,34 @@
 #include "funcaux.h"
 
 
+void ListLinAlbaranProveedorView::guardaconfig() {
+    _depura("ListLinAlbaranProveedorView::guardaconfig",0);
+    QString aux = "";
+
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinalbaranproveedorview.cfn" );
+    if ( file.open( QIODevice::WriteOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            stream << columnWidth(i) << "\n";
+        }// end for
+        file.close();
+    }// end if
+}// end guardaconfig()
+
+void ListLinAlbaranProveedorView::cargaconfig() {
+	_depura("ListLinAlbaranProveedorView::cargaconfig",0);
+    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinalbaranproveedorview.cfn" );
+    QString line;
+    if ( file.open( QIODevice::ReadOnly ) ) {
+        QTextStream stream( &file );
+        for (int i = 0; i < numCols(); i++) {
+            QString linea = stream.readLine();
+            setColumnWidth(i, linea.toInt());
+        }// end for
+        file.close();
+    }
+}// end cargaconfig
+
 ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinAlbaranProveedor() {
     /// Inicializamos la tabla de lineas de Factura
     setNumCols(13);
@@ -53,19 +81,6 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget * parent, const
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
     horizontalHeader()->setLabel( COL_IVALALBARANP, tr( "IVA" ) );
-
-    setColumnWidth(COL_NUMLALBARANP,100);
-    setColumnWidth(COL_DESCLALBARANP,300);
-    setColumnWidth(COL_CANTLALBARANP,100);
-    setColumnWidth(COL_PVPLALBARANP,100);
-    setColumnWidth(COL_DESCONTLALBARANP,74);
-    setColumnWidth(COL_IDALBARAN,100);
-    setColumnWidth(COL_IDARTICULO,100);
-    setColumnWidth(COL_CODARTICULO,100);
-    setColumnWidth(COL_NOMARTICULO,300);
-    setColumnWidth(COL_TASATIPO_IVA,50);
-    setColumnWidth(COL_TIPO_IVA,50);
-    setColumnWidth(COL_IVALALBARANP,50);
 
     hideColumn(COL_NUMLALBARANP);
     hideColumn(COL_IDALBARAN);
@@ -85,11 +100,13 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget * parent, const
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
 
     installEventFilter(this);
-
+	cargaconfig();
 }
 
 
-ListLinAlbaranProveedorView::~ListLinAlbaranProveedorView() {}
+ListLinAlbaranProveedorView::~ListLinAlbaranProveedorView() {
+	guardaconfig();
+}
 
 
 void ListLinAlbaranProveedorView::pintaListLinAlbaranProveedor() {
