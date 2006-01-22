@@ -335,7 +335,7 @@ void PedidosClienteList::doubleclicked(int a, int , int , const QPoint &) {
 
 void PedidosClienteList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"pedidoscliente.rml";
-    QString archivod = confpr->valor(CONF_DIR_TMP)+"pedidoscliente.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"/pedidoscliente.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -353,10 +353,10 @@ void PedidosClienteList::imprimir() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #endif
 
     QFile file;

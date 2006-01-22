@@ -428,7 +428,7 @@ void AlbaranesProveedor::s_contextMenu(int, int, int button, const QPoint &poin)
 
 void AlbaranesProveedor::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albaranesproveedor.rml";
-    QString archivod = confpr->valor(CONF_DIR_TMP)+"albaranesproveedor.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"/albaranesproveedor.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -441,9 +441,9 @@ void AlbaranesProveedor::imprimir() {
 
     /// Copiamos el logo
 #ifdef WINDOWS
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #else
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #endif
 	system (archivologo.ascii());
 

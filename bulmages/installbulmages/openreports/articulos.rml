@@ -4,7 +4,7 @@
 <template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Articulos Conetxia" author="Tomeu Borras" allowSplitting="20">
 	<pageTemplate id="others">
 		<pageGraphics>
-		<image x="0cm" y="27.5cm" width="10cm" file="/tmp/logo.jpg"/>
+		<image x="0cm" y="27.5cm" width="10cm" file="logo.jpg"/>
 			<setFont name="Helvetica" size="100"/>
 			<fill color="(1,0.9,0.9)"/>
 			<stroke color="(1,0.9,0.9)"/>
@@ -26,7 +26,7 @@
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="24"/>
-		<drawString x="1cm" y="26cm">Listado de Artículos</drawString>
+		<drawString x="1cm" y="26cm">Listado de Artï¿½ulos</drawString>
 		</pageGraphics>
 	<frame id="column" x1="0cm" y1="1cm" width="15cm" height="24cm"/>
 	</pageTemplate>	

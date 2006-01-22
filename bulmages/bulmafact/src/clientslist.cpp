@@ -362,7 +362,7 @@ void ClientsList::s_findClients() {
 
 void ClientsList::s_printClients() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"clientes.rml";
-    QString archivod = confpr->valor(CONF_DIR_TMP)+"clientes.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"/clientes.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -380,10 +380,10 @@ void ClientsList::s_printClients() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #endif
 
     system (archivologo.ascii());

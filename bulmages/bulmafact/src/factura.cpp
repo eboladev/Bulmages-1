@@ -187,7 +187,7 @@ void Factura::imprimirFactura() {
     base basesimp;
 
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"facturacliente.rml";
-    QString archivod = confpr->valor(CONF_DIR_TMP)+"facturacliente.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"/facturacliente.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -205,10 +205,10 @@ void Factura::imprimirFactura() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #endif
 
     system (archivologo.ascii());

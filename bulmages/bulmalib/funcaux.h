@@ -72,7 +72,6 @@ std::string Ttos(T arg) {
 
 
 inline void _depura(QString cad, int nivel=0) {
-// # ifdef __DEBUG__
 	if (nivel == 0) {
 		if(g_main != NULL)
 			g_main->statusBar()->message(cad);
@@ -94,7 +93,7 @@ inline void _depura(QString cad, int nivel=0) {
 
 
 /// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo de la invocacion de trml2pdf
-/// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio especificado por CONF_DIR_TMP
+/// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio especificado por CONF_DIR_USER
 void invocaPDF(const QString arch);
 void generaPDF(const QString arch);
 

@@ -245,7 +245,7 @@ void presupuesto::imprimirPresupuesto() {
     base basesimp;
 
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuesto.rml";
-    QString archivod = confpr->valor(CONF_DIR_TMP)+"presupuesto.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"/presupuesto.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -263,10 +263,10 @@ void presupuesto::imprimirPresupuesto() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #endif
 
     system (archivologo.ascii());

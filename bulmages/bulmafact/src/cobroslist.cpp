@@ -321,7 +321,7 @@ void CobrosList::s_nuevoCobro() {
 
 void CobrosList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"cobros.rml";
-    QString archivod = confpr->valor(CONF_DIR_TMP)+"cobros.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"/cobros.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -339,10 +339,10 @@ void CobrosList::imprimir() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #endif
 
     system (archivologo.ascii());

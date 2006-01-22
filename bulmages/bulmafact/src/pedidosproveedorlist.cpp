@@ -315,7 +315,7 @@ QString PedidosProveedorList::generarFiltro() {
 
 void PedidosProveedorList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"pedidosproveedor.rml";
-    QString archivod = confpr->valor(CONF_DIR_TMP)+"pedidosproveedor.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"/pedidosproveedor.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -333,10 +333,10 @@ void PedidosProveedorList::imprimir() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #endif
 
     system (archivologo.ascii());

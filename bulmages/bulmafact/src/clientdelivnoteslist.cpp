@@ -422,7 +422,7 @@ void ClientDelivNotesList::s_removeClientDelivNote() {
 
 void ClientDelivNotesList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albaranescliente.rml";
-    QString archivod = confpr->valor(CONF_DIR_TMP)+"albaranescliente.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"/albaranescliente.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -440,10 +440,10 @@ void ClientDelivNotesList::imprimir() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #endif
 
     system (archivologo.ascii());

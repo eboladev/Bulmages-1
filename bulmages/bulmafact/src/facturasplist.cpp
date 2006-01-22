@@ -364,7 +364,7 @@ void FacturasProveedorList::s_borrarFacturaProveedor() {
 
 void FacturasProveedorList::s_imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"facturasproveedor.rml";
-    QString archivod = confpr->valor(CONF_DIR_TMP)+"facturasproveedor.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"/facturasproveedor.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -381,10 +381,10 @@ void FacturasProveedorList::s_imprimir() {
     /// Copiamos el logo
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #endif
 
     system (archivologo.ascii());

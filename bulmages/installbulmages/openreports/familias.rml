@@ -4,7 +4,7 @@
 <template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Bordereau acheteur" author="Tomeu Borras" allowSplitting="20">
 	<pageTemplate id="main">
 		<pageGraphics>
-		<image x="-2cm" y="24cm" file="/tmp/logo.jpg"/>
+		<image x="-2cm" y="24cm" file="logo.jpg"/>
 		
 			<setFont name="Helvetica" size="100"/>
 			<fill color="(1,0.9,0.9)"/>

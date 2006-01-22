@@ -5,7 +5,7 @@
 	<pageTemplate id="main">
 		<pageGraphics>
 		<!-- EL LOGO DE CABECERA -->
-		<image x="3cm" y="26cm" width="17cm" file="/usr/share/bulmages/openreports/logo.jpg"/>
+		<image x="3cm" y="26cm" width="17cm" file="logo.jpg"/>
 
 		<!-- EL PIE DE PAGINA -->
 		<setFont name="Helvetica" size="8"/>		

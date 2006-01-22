@@ -25,7 +25,7 @@
 #include "configuracion.h"
 #include <qstring.h>
 #include <QTextEdit>
-
+#include <QDir>
 
 /// Definimos aqui la variable global g_main para que sea accesible desde esta libreria.
 Q3MainWindow *g_main=NULL;
@@ -202,17 +202,18 @@ void reemplazaarchivo (QString archivo, QString texto1, QString texto2, QString 
 /// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo de la invocacion de trml2pdf
 /// Para evitar trabajo duplicado.
 void generaPDF(const QString arch) {
+	_depura("generaPDF"+arch,0);
 	QString cadsys;
 #ifdef WINDOWS
-	cadsys = "cd " + confpr->valor(CONF_DIR_TMP)+" & ";
-	cadsys = cadsys + confpr->valor(CONF_PYTHON)+" "+confpr->valor(CONF_PROGDATA)+"trml2pdf\\trml2pdf.py "+confpr->valor(CONF_DIR_TMP)+arch+".rml > "+confpr->valor(CONF_DIR_TMP)+arch+".pdf";
+	cadsys = "cd " + confpr->valor(CONF_DIR_USER)+" & ";
+	cadsys = cadsys + confpr->valor(CONF_PYTHON)+" "+confpr->valor(CONF_PROGDATA)+"trml2pdf\\trml2pdf.py "+arch+".rml > "+confpr->valor(CONF_DIR_USER)+"/"+arch+".pdf";
     cadsys = cadsys + " & ";
-	cadsys = cadsys + confpr->valor(CONF_FLIP)+" -u "+confpr->valor(CONF_DIR_TMP)+arch+".pdf";
-	_depura(cadsys,0);
+	cadsys = cadsys + confpr->valor(CONF_FLIP)+" -u "+confpr->valor(CONF_DIR_USER)+"/"+arch+".pdf";
 	system (cadsys.ascii());
-	_depura(cadsys,0);
 #else
-    cadsys = "trml2pdf.py "+confpr->valor(CONF_DIR_TMP)+arch+".rml > "+confpr->valor(CONF_DIR_TMP)+arch+".pdf";
+	QDir::setCurrent(confpr->valor(CONF_DIR_USER));
+
+    cadsys = "trml2pdf.py "+arch+".rml > "+arch+".pdf";
     system(cadsys.ascii());
 #endif
 }
@@ -220,13 +221,12 @@ void generaPDF(const QString arch) {
 
 void invocaPDF(const QString arch) {
     generaPDF(arch);
-    QString cadsys = confpr->valor(CONF_PDF)+" "+confpr->valor(CONF_DIR_TMP)+arch+".pdf";
+    QString cadsys = confpr->valor(CONF_PDF)+" "+confpr->valor(CONF_DIR_USER)+"/"+arch+".pdf";
     system(cadsys.ascii());
 }
 
 /// De momento no se usa, pero sirve para enviar documentos por e-mail a un destinatario.
 void mailsendPDF(const QString arch, const QString to, const QString subject, const QString message) {
-//    QString cadsys = confpr->valor(CONF_PDF)+" "+confpr->valor(CONF_DIR_TMP)+arch+".pdf";
 	QString cadsys = "mailsend -h mail.conetxia.com -d conetxia.com -f bulmages@conetxia.com -t tborras@conetxia.com -sub hola -m hola";
     system(cadsys.ascii());
 }

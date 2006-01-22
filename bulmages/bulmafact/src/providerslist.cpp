@@ -385,7 +385,7 @@ void providerslist::s_removeProvider() {
   */
 void providerslist::s_printProviders() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"proveedores.rml";
-    QString archivod = confpr->valor(CONF_DIR_TMP)+"proveedores.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"/proveedores.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -399,9 +399,9 @@ void providerslist::s_printProviders() {
     /// Copiamos el logo
 
 #ifdef WINDOWS
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #else
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_TMP)+"logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
 #endif
     system (archivologo.ascii());
 
