@@ -390,8 +390,9 @@ void BudgetsList::s_contextMenu(int, int, int button, const QPoint &poin) {
 
 
 void BudgetsList::imprimir() {
+	_depura("BudgetsList::imprimir",0);
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuestos.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"/presupuestos.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"presupuestos.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -409,10 +410,10 @@ void BudgetsList::imprimir() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 
     system (archivologo.ascii());
@@ -477,7 +478,7 @@ void BudgetsList::imprimir() {
         if(mver_descpresupuesto->isChecked() )
             fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descpresupuesto"))+"</td>";
         if(mver_fechapresupuesto->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fechapresupuesto"))+"</td>";
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fpresupuesto"))+"</td>";
         if(mver_vencpresupuesto->isChecked() )
             fitxersortidatxt += "<td>"+XMLProtect(cur->valor("vencpresupuesto"))+"</td>";
         if(mver_contactpresupuesto->isChecked() )

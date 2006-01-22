@@ -59,10 +59,10 @@ configuracion::configuracion() {
     /// Cambiamos a ~/.bulmages como directorio de trabajo.
     QString dir = getenv("HOME");
     fprintf(stderr,"\n %s \n",dir.ascii());
-    dir = dir + "/.bulmages";
+    dir = dir + "/.bulmages/";
 #ifdef WIN32
     _depura("Es WINDOWS !!!",1);
-    dir = "C:\\.bulmages";
+    dir = "C:\\.bulmages\\";
 #endif
 
     _depura("Vamos a comprobar la existencia\n",1);

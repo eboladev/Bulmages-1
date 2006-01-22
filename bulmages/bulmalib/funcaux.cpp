@@ -203,15 +203,19 @@ void reemplazaarchivo (QString archivo, QString texto1, QString texto2, QString 
 /// Para evitar trabajo duplicado.
 void generaPDF(const QString arch) {
 	_depura("generaPDF"+arch,0);
+	QDir::setCurrent(confpr->valor(CONF_DIR_USER));
 	QString cadsys;
 #ifdef WINDOWS
-	cadsys = "cd " + confpr->valor(CONF_DIR_USER)+" & ";
-	cadsys = cadsys + confpr->valor(CONF_PYTHON)+" "+confpr->valor(CONF_PROGDATA)+"trml2pdf\\trml2pdf.py "+arch+".rml > "+confpr->valor(CONF_DIR_USER)+"/"+arch+".pdf";
-    cadsys = cadsys + " & ";
-	cadsys = cadsys + confpr->valor(CONF_FLIP)+" -u "+confpr->valor(CONF_DIR_USER)+"/"+arch+".pdf";
+//	cadsys = "cd " + confpr->valor(CONF_DIR_USER)+" & ";
+
+	cadsys = confpr->valor(CONF_PYTHON)+" "+confpr->valor(CONF_PROGDATA)+"trml2pdf\\trml2pdf.py "+arch+".rml > "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
 	system (cadsys.ascii());
+	_depura(cadsys,0);
+	cadsys = confpr->valor(CONF_FLIP)+" -u "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
+	system (cadsys.ascii());
+	_depura(cadsys,0);
 #else
-	QDir::setCurrent(confpr->valor(CONF_DIR_USER));
+
 
     cadsys = "trml2pdf.py "+arch+".rml > "+arch+".pdf";
     system(cadsys.ascii());
@@ -221,7 +225,7 @@ void generaPDF(const QString arch) {
 
 void invocaPDF(const QString arch) {
     generaPDF(arch);
-    QString cadsys = confpr->valor(CONF_PDF)+" "+confpr->valor(CONF_DIR_USER)+"/"+arch+".pdf";
+    QString cadsys = confpr->valor(CONF_PDF)+" "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
     system(cadsys.ascii());
 }
 
