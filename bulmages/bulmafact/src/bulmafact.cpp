@@ -77,7 +77,6 @@ bulmafact::~bulmafact() {
 #ifdef WINDOWS
     exit(0);
 #endif
-
     _depura("End Destructor de BulmaFact",2);
 }
 
@@ -201,6 +200,9 @@ void bulmafact::s_About()  {
 void bulmafact::closeEvent( QCloseEvent *) {
 	_depura("closeEvent",0);
     delete m_company;
+#ifdef WINDOWS
+    exit(0);
+#endif
     delete m_list;
     delete pWorkspace;
     delete view_back;
