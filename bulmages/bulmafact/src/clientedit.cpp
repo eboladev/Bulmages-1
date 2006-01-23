@@ -176,7 +176,7 @@ void ClientEdit::loadClient(QString client) {
 
             /// Hacemos que el listado de presupuestos de un cliente se inicialize.
             m_listpresupuestos->setidcliente(cur->valor("idcliente"));
-            m_listpresupuestos->inicializa();
+            m_listpresupuestos->presenta();
             m_listpedidos->setidcliente(cur->valor("idcliente"));
             m_listpedidos->presenta();
             m_listalbaranes->setidcliente(cur->valor("idcliente"));

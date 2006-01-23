@@ -11,7 +11,7 @@
 
 Splash::Splash() : QDialog( 0, "", true, Qt::WStyle_NoBorder |Qt::WStyle_Customize ) {
    QPixmap image0;
-   image0.load(confpr->valor(CONF_SPLASH_BULMAFACT).ascii());
+   image0.load(confpr->valor(CONF_SPLASH_BULMAFACT));
    setBackgroundPixmap(image0);
 
    l = new QLabel( this );
@@ -19,7 +19,7 @@ Splash::Splash() : QDialog( 0, "", true, Qt::WStyle_NoBorder |Qt::WStyle_Customi
   l0->setPaletteForegroundColor(QColor("#FF0000"));
   l0->setAlignment( Qt::AlignVCenter );
   l0->setFont( QFont( "Arial", 20, QFont::Bold ) );
-  l0->setText( tr("\n                         v 0.5.3") );
+  l0->setText( tr("\n                         v 0.5.9") );
   l0->setGeometry(0,0,350,55);
 
 

@@ -190,7 +190,7 @@ void company::listarticles () {
 }
 
 void company::refreshArticles() {
-    m_articleslist->inicializa();
+    m_articleslist->presenta();
 }// end refreshOrders
 
 
@@ -283,7 +283,7 @@ void company::s_newFacturaCli() {
 }// end bud
 
 void company::refreshBudgets() {
-    m_budgetsList->inicializa();
+    m_budgetsList->presenta();
 }// end refreshBudgets
 
 void company::refreshFacturas() {
@@ -311,7 +311,7 @@ void company::refreshAlbaranesCliente() {
 }
 
 void company::refreshAlbaranesProveedor() {
-    m_albaranesproveedor->inicializa();
+    m_albaranesproveedor->presenta();
 }
 
 void company::refreshClientes() {

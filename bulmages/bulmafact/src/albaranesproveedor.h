@@ -37,12 +37,12 @@ private:
     int m_modo; // == 0 es modo edici�
     // ==1 es modo selector.
     QString m_idalbaranp;
-
+    void inicializa();
 public:
     AlbaranesProveedor(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
     AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
     ~AlbaranesProveedor();
-    void inicializa();
+
     void presenta();
     void modoseleccion() {
         m_modo=1;

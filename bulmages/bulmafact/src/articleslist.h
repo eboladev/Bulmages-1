@@ -35,10 +35,10 @@ private:
     QString m_idArticle;
     QString mdb_nomarticulo;
     QString mdb_codigocompletoarticulo;
+    void inicializa();
 
 public:
     articleslist(company *, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0, edmode editmodo=EditMode);
-    void inicializa();
     void presenta();
     void modoseleccion() {
         m_modo=SelectMode;

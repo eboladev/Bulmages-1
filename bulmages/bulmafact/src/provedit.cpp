@@ -200,7 +200,7 @@ void provedit::chargeprovider(QString idprov) {
             m_listpedidosprov->setidproveedor(cur->valor("idproveedor"));
             m_listpedidosprov->presenta();
             m_albaranesprov->setidproveedor(cur->valor("idproveedor"));
-            m_albaranesprov->inicializa();
+            m_albaranesprov->presenta();
             m_listfacturasprov->setidproveedor(cur->valor("idproveedor"));
             m_listfacturasprov->presenta();
             m_listpagosprov->setidproveedor(cur->valor("idproveedor"));
