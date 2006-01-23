@@ -41,9 +41,9 @@ public:
     void guardalistlinpresupuesto();
     void vaciar();
     virtual void pintalistlinpresupuesto() {
-        fprintf(stderr,"La función pintalistlinpresupuesto aun no ha sido implementada\n");
+        fprintf(stderr,"La funciï¿½ pintalistlinpresupuesto aun no ha sido implementada\n");
     };
-    void chargeBudgetLines(QString);
+    int chargeBudgetLines(QString);
     void borrar();
     void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString);
     linpresupuesto *linpos(int);

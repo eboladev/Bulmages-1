@@ -350,26 +350,27 @@ QString BudgetsList::generaFiltro() {
 }// end generaFiltro
 
 
-
 void BudgetsList::s_editar() {
     int a = m_list->currentRow();
     m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
     if (m_modo ==0 && m_idpresupuesto != "") {
         Budget *bud = new Budget(companyact,0,theApp->translate("Edicion de Presupuestos", "company"));
+        if (bud->chargeBudget(m_idpresupuesto))
+		return;
         companyact->m_pWorkspace->addWindow(bud);
-        bud->chargeBudget(m_idpresupuesto);
         bud->show();
     } else {
         close();
     }// end if
 }
 
+
 void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
     m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
     if (m_modo ==0 && m_idpresupuesto != "") {
         Budget *bud = new Budget(companyact, 0,theApp->translate("Edicion de Presupuestos", "company"));
+        if (bud->chargeBudget(m_idpresupuesto)) return;
         companyact->m_pWorkspace->addWindow(bud);
-        bud->chargeBudget(m_idpresupuesto);
         bud->show();
     } else {
         close();

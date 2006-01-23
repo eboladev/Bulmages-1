@@ -37,7 +37,7 @@ public:
     provedit(company *emp, QWidget *parent = 0, const char *name = 0);
     ~provedit();
 public:
-    void chargeprovider(QString);
+    int chargeprovider(QString);
 public slots:
     virtual void s_saveProvider();
     virtual void boton_nuevo();

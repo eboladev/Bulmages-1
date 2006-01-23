@@ -333,8 +333,9 @@ void PedidosClienteList::doubleclicked(int a, int , int , const QPoint &) {
    m_idpedidocliente = m_list->text(a,COL_IDPEDIDOCLIENTE);
    if (m_modo == 0 && m_idpedidocliente != "") {
       PedidoClienteView *bud = new PedidoClienteView(companyact,0,theApp->translate("Edicion de Pedidos de Clientes", "company"));
+	if (      bud->cargaPedidoCliente(m_idpedidocliente) )
+		return;
 	companyact->m_pWorkspace->addWindow(bud);
-      bud->cargaPedidoCliente(m_idpedidocliente);
       bud->show();
    } else {
       close();
@@ -508,8 +509,9 @@ void PedidosClienteList::s_editarPedidosCliente() {
     m_idpedidocliente = m_list->text(a,COL_IDPEDIDOCLIENTE);
     if (m_modo ==0 && m_idpedidocliente != "") {
         PedidoClienteView *bud = new PedidoClienteView(companyact,0,theApp->translate("Edicion de Presupuestos", "company"));
+	if (       bud->cargaPedidoCliente(m_idpedidocliente) )
+		return;
 	companyact->m_pWorkspace->addWindow(bud);
-        bud->cargaPedidoCliente(m_idpedidocliente);
         bud->show();
     } else {
         close();

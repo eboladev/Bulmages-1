@@ -211,11 +211,15 @@ void Budget::generarPedidoCliente() {
 
 
 
-void Budget::chargeBudget(QString id) {
-    presupuesto::chargeBudget(id);
+int Budget::chargeBudget(QString id) {
+    int error = 0;
+    error = presupuesto::chargeBudget(id);
+	if (error) return -1;
     setCaption("presupuesto "+mdb_refpresupuesto);
-    companyact->meteWindow(caption(),this);
+    if (companyact->meteWindow(caption(),this))
+	return -1;
     dialogChanges_cargaInicial();
+    return 0;
 }
 
 

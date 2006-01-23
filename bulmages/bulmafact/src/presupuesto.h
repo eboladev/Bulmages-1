@@ -83,7 +83,7 @@ public:
 
 
     virtual ~presupuesto();
-    virtual void chargeBudget(QString );
+    virtual int chargeBudget(QString );
     void pintaPresupuesto();
     void guardapresupuesto();
     void borraPresupuesto();

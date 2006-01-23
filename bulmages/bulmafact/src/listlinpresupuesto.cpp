@@ -12,7 +12,7 @@
 #include "listlinpresupuesto.h"
 #include "company.h"
 #include "linpresupuesto.h"
-
+#include "funcaux.h"
 
 listlinpresupuesto::listlinpresupuesto(company *comp) {
     companyact = comp;
@@ -51,13 +51,15 @@ linpresupuesto *listlinpresupuesto::linpos(int pos) {
 
 
 // Carga l�eas de presupuesto
-void listlinpresupuesto::chargeBudgetLines(QString idbudget) {
+int listlinpresupuesto::chargeBudgetLines(QString idbudget) {
+	int error=0;
     vaciar();
-    fprintf(stderr,"listlinpresupuesto::chargeBudgetLines\n");
+    _depura("listlinpresupuesto::chargeBudgetLines\n",0);
     mdb_idpresupuesto = idbudget;
-    fprintf(stderr,"Hacemos la carga del cursor\n");
+
     cursor2 * cur= companyact->cargacursor("SELECT * FROM lpresupuesto, articulo WHERE idpresupuesto="+idbudget+" AND articulo.idarticulo=lpresupuesto.idarticulo","unquery");
     int i=0;
+	if (cur->error()) error=1;
     while (!cur->eof())   {
         /// Creamos un elemento del tipo linpresupuesto y lo agregamos a la lista.
         linpresupuesto *lin = new linpresupuesto(companyact,
@@ -77,7 +79,15 @@ void listlinpresupuesto::chargeBudgetLines(QString idbudget) {
         cur->siguienteregistro();
     }// end while
     delete cur;
-    fprintf(stderr,"Fin de listlinpresupuesto::chargeBudgetLines\n");
+
+    /// Tratamiento de excepciones
+    if (error) {
+        _depura("Error en la carga de la linea de presupuesto\n",0);
+        return 1;
+    }// end if
+
+    _depura("Fin de listlinpresupuesto::chargeBudgetLines\n",0);
+	return 0;
 }// end chargeBudgetLines
 
 

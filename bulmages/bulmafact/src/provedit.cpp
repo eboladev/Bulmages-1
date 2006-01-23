@@ -81,6 +81,7 @@ CREATE TABLE proveedor (
 
 provedit::provedit(company *comp, QWidget *parent, const char *name)
  : provedit_base(parent, name, Qt::WDestructiveClose) {
+_depura("provedit::provedit",0);
    companyact = comp;
    idprovider = "0";
    
@@ -138,7 +139,7 @@ provedit::provedit(company *comp, QWidget *parent, const char *name)
    m_divisiones->setColumnWidth(COL_DIVISION_IDPROVEEDOR,100);
    companyact->meteWindow(caption(),this);
    s_releaseModificado();
-
+_depura("END provedit::provedit",0);
 }// end provedit
 
 provedit::~provedit() {
@@ -151,7 +152,9 @@ provedit::~provedit() {
 * Si el parametro pasado no es un identificador v�ido entonces se pone *
 * la ventana de edici� en modo de inserci�                            *
 *************************************************************************/
-void provedit::chargeprovider(QString idprov) {
+int provedit::chargeprovider(QString idprov) {
+	_depura("provedit::chargeprovider",0);
+	int error = 0;
    idprovider = idprov;
    fprintf(stderr,"chargeprovider activado \n");
    if (idprovider != "0") {
@@ -208,15 +211,21 @@ void provedit::chargeprovider(QString idprov) {
 
             /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
             setCaption("Proveedor "+cur->valor("nomproveedor"));
-            companyact->meteWindow(caption(),this);
+            error = companyact->meteWindow(caption(),this);
 
       } else {
          idprovider="0";
       }// end if
       delete cur;
    }// end if
+
+	if (error) return 1;
+
    s_releaseModificado();
+	_depura("END provedit::chargeprovider",0);
+	return 0;
 }// end chargeprovider
+
 
 /************************************************************************
 * Esta funci� se ejecuta cuando se ha pulsado sobre el bot� de nuevo  *

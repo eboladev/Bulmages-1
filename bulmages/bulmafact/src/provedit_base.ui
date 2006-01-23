@@ -200,7 +200,7 @@
                                             <cstring>textLabel2_5</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>CIF</string>
+                                            <string>CIF / NIF</string>
                                         </property>
                                     </widget>
                                     <widget class="QLineEdit">
@@ -1214,53 +1214,6 @@
                 <widget class="QTable">
                     <column>
                         <property name="text">
-                            <string>Número</string>
-                        </property>
-                    </column>
-                    <column>
-                        <property name="text">
-                            <string>Concepto</string>
-                        </property>
-                    </column>
-                    <column>
-                        <property name="text">
-                            <string>Fecha Inicio</string>
-                        </property>
-                    </column>
-                    <column>
-                        <property name="text">
-                            <string>Fecha Vencimiento</string>
-                        </property>
-                    </column>
-                    <column>
-                        <property name="text">
-                            <string>% Consumido</string>
-                        </property>
-                    </column>
-                    <property name="name">
-                        <cstring>table1_3_2_2_2</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>false</bool>
-                    </property>
-                    <property name="geometry">
-                        <rect>
-                            <x>10</x>
-                            <y>50</y>
-                            <width>687</width>
-                            <height>180</height>
-                        </rect>
-                    </property>
-                    <property name="numRows">
-                        <number>3</number>
-                    </property>
-                    <property name="numCols">
-                        <number>5</number>
-                    </property>
-                </widget>
-                <widget class="QTable">
-                    <column>
-                        <property name="text">
                             <string>Código</string>
                         </property>
                     </column>
@@ -1310,75 +1263,58 @@
                         <number>6</number>
                     </property>
                 </widget>
+                <widget class="QTable">
+                    <column>
+                        <property name="text">
+                            <string>Número</string>
+                        </property>
+                    </column>
+                    <column>
+                        <property name="text">
+                            <string>Concepto</string>
+                        </property>
+                    </column>
+                    <column>
+                        <property name="text">
+                            <string>Fecha Inicio</string>
+                        </property>
+                    </column>
+                    <column>
+                        <property name="text">
+                            <string>Fecha Vencimiento</string>
+                        </property>
+                    </column>
+                    <column>
+                        <property name="text">
+                            <string>% Consumido</string>
+                        </property>
+                    </column>
+                    <property name="name">
+                        <cstring>table1_3_2_2_2</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>10</x>
+                            <y>50</y>
+                            <width>687</width>
+                            <height>180</height>
+                        </rect>
+                    </property>
+                    <property name="numRows">
+                        <number>3</number>
+                    </property>
+                    <property name="numCols">
+                        <number>5</number>
+                    </property>
+                </widget>
             </widget>
         </widget>
     </vbox>
 </widget>
 <customwidgets>
-    <customwidget>
-        <class>PedidosProveedorList</class>
-        <header location="local">pedidosproveedorlist.h</header>
-        <sizehint>
-            <width>-1</width>
-            <height>-1</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image16</pixmap>
-    </customwidget>
-    <customwidget>
-        <class>AlbaranesProveedor</class>
-        <header location="local">albaranesproveedor.h</header>
-        <sizehint>
-            <width>-1</width>
-            <height>-1</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image16</pixmap>
-    </customwidget>
-    <customwidget>
-        <class>FacturasProveedorList</class>
-        <header location="local">facturasplist.h</header>
-        <sizehint>
-            <width>-1</width>
-            <height>-1</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image16</pixmap>
-    </customwidget>
-    <customwidget>
-        <class>PagosList</class>
-        <header location="local">pagoslist.h</header>
-        <sizehint>
-            <width>-1</width>
-            <height>-1</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image16</pixmap>
-    </customwidget>
     <customwidget>
         <class>BusquedaProvincia</class>
         <header location="local">busquedaprovincia.h</header>
@@ -1395,6 +1331,70 @@
         </sizepolicy>
         <pixmap>image16</pixmap>
         <signal>valueChanged(QString)</signal>
+    </customwidget>
+    <customwidget>
+        <class>PedidosProveedorList</class>
+        <header location="local">pedidosproveedorlist.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image17</pixmap>
+    </customwidget>
+    <customwidget>
+        <class>AlbaranesProveedor</class>
+        <header location="local">albaranesproveedor.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image17</pixmap>
+    </customwidget>
+    <customwidget>
+        <class>FacturasProveedorList</class>
+        <header location="local">facturasplist.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image17</pixmap>
+    </customwidget>
+    <customwidget>
+        <class>PagosList</class>
+        <header location="local">pagoslist.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image17</pixmap>
     </customwidget>
 </customwidgets>
 <images>
@@ -1447,6 +1447,9 @@
         <data format="PNG" length="1088">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000407494441545885c59731681b5718c73f950cee50f0d22143e13a7470a090d67448a71a6c300d85265b5d3a74ac8b87226b30b20771ee10640f0139607ac2084e8b2b3cb8270f292783cb7930c8018713d405a96490e851cec6a1e7d62dfc3b7cef3beb5de2f4143bf403f3d77b27e97dffdffbdef76402001c0000e02995b1bbe3f38b1d96e6ae3eb637bc5f01d065fec83be8a23fc220e22fdf6c02001c9584bba38f6b0da59bdef1a512d0566f29675b1ebfd857ce0f7ced795329f6586a1bde5f00862f45c03f68f3976db900006fdf578bf1bcaf341e1fb6b5e4ecaa7b86eae0493081403911e7aa06fcb672da4e8c93cf0f2149fcf1d2046a9baee6a8fd84e7bb41a83b6f7735026d19b7da4005b0d7dd60600256a5c616d49ee389d250e9893e1f3b97f7491dab9ab037bcdf522760571d0080b7e76bcec290578fa2482322f3edae4e48b4b86c0300ac750fa909a0c19937a50f88a348e959c271902014eaf3f6262b118dfe6702a5158b09eceb04ba171090b13c0f13ea3c74812a60ae38e912000077979b4c7ccee5dc27f75a88246b23a156c54d4fa078afa82d1a9f6f55f5f1de9f44ba63351622911a3b5b5c53e9099c018ed4807438712e7b2d0ec579f462751e620002cb9646205639e752ed173897028d944ecfe407240020bf60f2a755478b4f43b2ea8584384e86ba25a54fa449e0b5ddc73da27f88aadfd789de216afdd2a1f7df65a5b7883abd1ed19b44474747446f101d3d3d257a9d88fe262d4e9f9e12fd40d4d86ed18db789161fd4295500e00e78d2771a92d59f924036c7052d7d24d516c85d60576bc8cf99f0f63809a9fe54355006b239de46ab3ce829e80bbbea0011e0a82b39ee88c9ce2724d4f3fc1c3bb7567971a9a15acea8a62620d1dcf391cf99300ba646427abdf401ab6c637a06b056f9222bdd6775b63c60751afeb201dc33e02e8caca526900cf3db12d005f2739c8c593081e0dc3192bf07d615b9f25dd68a01c000e62e4ee21902c990f3dddce7d564eb43b50d0a08ba0180d52c9ae5297e5fab08600a61c5000a066a33cf4fe28504e2384ba89c824487740aca79c857320e4bac8a84fdd5b349a426106b8240b79f0080dac2c740750c0838098d44ce80f5a59ec49512887f0fe4ee02384f42237162a0f4d97912e90944ba3eb706fad4fc620ca88c0101df35d1611f891903e6a7c61a5e1501d1fca4f13393e02434128181fce4c8da95d74057fd6765ae383086873eca8e1b8f50ee2751023005ffbe014cbe87574a808846318ee1ecf8c8238d44c3045ab7502c14716df7718f3efce93a2d529d86e836fd49759aa7db57322622a21fe9786982c666273adb4bb7ca377b9ff4e8fa770daadfc952e7f7ce710600653299d17477e7e001a049444413343c4b37b697ae0ddd5cfc608ae667668f3fff7afe9b0c93faffe25fb6b6958fe358260f0000000049454e44ae426082</data>
     </image>
     <image name="image16">
+        <data format="PNG" length="818">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000002f949444154388db5943168dc6614c77f57343cc10d12dc20c1054e5b0e6ac875ea1dedd2ed0e3ad4e0a1052f860c69c7ae490a1d1bdc4c4d8752770a5d42132834834137f4a20b047a1e0a2ab8200f067d83411f44a03708d2413e3bcef9da42ddb7083ebdeff7fddfff7ddf6b2549c23246a3d12bae20922469b596e067f367afa228425f2ab9c9b1a5fd57102d95344d8967315aead9bab354fae8a747848140d712f615384f1267997909b8ae181c0322fcf2e40d3080be54e85af232c6960ba82b10a0762972302715e0127484f09a22ed0aad4f37b7c10b2f1e7806ce4d4ed4d7536801e293a510ff5c319f5960698dc7e086c764cb673004289aaada6bc0b6b4287aaad4e7b75fe1c1bdbc417584fedb3dc481ec48591c581607969d5b21938f5da0827a0df8dc50c85278702f0360733b623206afd3fc53f549f661ef7ec6deb71961d0673816702e36fbad1570ed123f2ecea09f6c0bd2a9400aec89103f553ef850f8ec4e04c0c31f72d40a82ac572c0e14392c9e2b41c7633206757204416dc8f75f17cc67066b02766e85c44f3d16cf2dd9a1aed47e51b1d3745f51a2eb82d70171042d7dbef9aa81f6ba1ec3f77c5c4f190c7c00ccf13f8101700145a4f1d49e9c43015c11fc50c05196d557b5ac5056c05e07c0233b52548564aacc678620f0e8f502d23f0dbb7733b23f02cc61850051af91b3d66380e81af46f78a40796641f265b1ed6060cdff5f14361f7ae92fe6eb8fd29a8b5785d21da0073fc778a6b9076c5e6478d777bf733e65365e766c83b4388ae5b3effb24faf17608d416bd8dc0a89ba50bd360256153ba0350c86b0733364efbb94dd2f32e27d8fc186db3437cb3046c1697c9d4f2b46630fd75973ddb454b4ae4e570b26db2e6130e0e18f398b996131836630094157d8dc8a984e0b8a524169be9781d3346da6541b96ad188e61f07e487a18628f9650883620ecc1681c35673996f4c51a703c8b41042f04695ba89b2b25c8799603c640661af5ae231425a42f2cf91bcdbb60c5ebf3f4bfc6250fe40ac14992b4fe17f055c3932469fd051dce4f49a767eff00000000049454e44ae426082</data>
+    </image>
+    <image name="image17">
         <data format="PNG" length="819">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000002fa49444154388db5943168246514c77f2b53bc812d66608b19d8839dee160cdc5ab9396dec76c1c2400a8534812b4e4b5b3dc1d2235ee55988b13a6c0e1504af08cc16eece1e1cb8298411224c8ac07c45603eb88179c5c0594c36b9dc665530be66e09bf7fdbefffbbfef7bad59326319b7376fbfe01a6296cc5aad253899272fa228429f2bb9c9b1a5fd57102d95344d89a7315aeaf9bab354faf887c7848140d712f615b8481267997905b8ae189c0022fcf2d32b60007daed0b5e4658c2d1750572040ed52e4604e2bc025e808e10d45da155a9f6d6e83175e3ef01c9c9b9ca8af67d002c4274b21feb9623eb5c0d21a8fc12d8ff1b6cf6008503455b5d7806d6951f44ca9cf6fbfc2c3fb7983ea08fdd77b8803d9b1b238b42c0e2dbb7743c6efbb4005f51af085a190a5f0f07e06c0d64ec478045ea7f9a7ea931cc0fe838cfdaf33c2a0cf7024e05c6ef66b2be0da25feb138877eb02348a70229b0a742fc4479e75de1a34f23001e7d97a3561064bd6271a0c861f154093a1ee311a89323086a43befdb2603e355813b07b37247ee2b1786ac98e74a5f6cb8a9da6fb8a12dd14bc0e882368e9f3d5170db4d7f518bee5e37aca60e003604efe090c800b28228da7f6f4020ae08ae087028eb2acbeaa6585b202f63a001ed9b1a22a2413653e35048147af1790fe69d8bb9791fd11608e2a04887a8d9cb51e034437a07fcb233db4240730def6b03660f8a68f1f0a7bf794f477c3271f825a8bd715a20d30277fa7b80669576cbdd778b7ff20633e5176ef84bc3184e8a6e5e3cffbf47a01d618b486aded90a80bd54b236055b1035ac36008bb7742f6bf49d9fb2c233ef0186cb84d73b30c63149cc6d7f9a46273e4e13a6bae9b968ad6d5d96ac178c7250c063cfa3e6731352ca6d00c2621e80a5bdb11934941512a28cdf72a709aa6cd946ac3b215c3110cde0e498f42ecf1120ad106843dd81c45cd598e257db6061c4f6310c10b41da16eae64a097291e58031909946bdeb084509e9334bfe4af32e59f1f23cfdaf71c503b946f02c99b5fe17f075c367c9acf5171ae64f43e2e45a0f0000000049454e44ae426082</data>
     </image>
 </images>

@@ -338,8 +338,10 @@ void FacturasList::doubleclicked(int a, int , int , const QPoint &) {
     m_idfactura = m_list->text(a,COL_IDFACTURA);
     if (m_modo ==0 && m_idfactura != "") {
         FacturaView *bud = new FacturaView(companyact,0,theApp->translate("Edicion de Facturas", "company"));
+
+	if (bud->cargaFactura(m_idfactura))
+		return;
         companyact->m_pWorkspace->addWindow(bud);
-        bud->cargaFactura(m_idfactura);
         bud->show();
     } else {
         close();

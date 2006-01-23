@@ -29,21 +29,21 @@ public:
     QString mdb_idpresupuesto;
     Q3PtrList<DescuentoPresupuesto> m_lista;
 public:
-   
+
     ListDescuentoPresupuesto(company *comp);
     ListDescuentoPresupuesto();
     void setcompany(company *c) {
-       fprintf(stderr,"ListDescuentoPresupuesto setCompany\n");
-       companyact=c;
-       fprintf(stderr,"ListDescuentoPresupuesto  fin de setCompany\n");
+        fprintf(stderr,"ListDescuentoPresupuesto setCompany\n");
+        companyact=c;
+        fprintf(stderr,"ListDescuentoPresupuesto  fin de setCompany\n");
     };
     virtual ~ListDescuentoPresupuesto();
     void guardaListDescuentoPresupuesto();
     void vaciar();
     virtual void pintaListDescuentoPresupuesto() {
-        fprintf(stderr,"La función pintaListDescuentoPresupuesto aun no ha sido implementada\n");
+        fprintf(stderr,"La funciï¿½ pintaListDescuentoPresupuesto aun no ha sido implementada\n");
     };
-    void cargaDescuentos(QString);
+    int cargaDescuentos(QString);
     void borrar();
     void nuevalinea(QString concept, QString propor);
     DescuentoPresupuesto *linpos(int);
@@ -56,7 +56,7 @@ public:
             linea->setidpresupuesto(mdb_idpresupuesto);
             i++;
         }// end for
-    };    
+    };
 };
 
 #endif

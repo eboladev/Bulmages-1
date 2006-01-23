@@ -167,11 +167,13 @@ void PedidoClienteView::s_nuevoCobro() {
     bud->show();
 }// end s_nuevoCobro
 
-void PedidoClienteView::cargaPedidoCliente(QString id) {
+int PedidoClienteView::cargaPedidoCliente(QString id) {
     PedidoCliente::cargaPedidoCliente(id);
     setCaption("Pedido Cliente  "+mdb_refpedidocliente);
-    companyact->meteWindow(caption(),this);
+    if (companyact->meteWindow(caption(),this))
+	return 1;
     dialogChanges_cargaInicial();
+	return 0;
 }
 
 /// Imprime el informe de referencia.

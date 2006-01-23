@@ -243,7 +243,8 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, Q
     m_idprovider="";
     m_cifprovider="";
     m_nomprovider="";
-    if (m_modo == EditMode) companyact->meteWindow(caption(),this);
+    if (m_modo == EditMode)
+        companyact->meteWindow(caption(),this);
 
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
@@ -272,8 +273,9 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, Q
 }// end providerslist
 
 providerslist::~providerslist() {
-   if (m_modo == EditMode)  companyact->sacaWindow(this);
-	guardaconfig();
+    if (m_modo == EditMode)
+        companyact->sacaWindow(this);
+    guardaconfig();
 }// end ~providerslist
 
 void providerslist::presenta() {
@@ -309,31 +311,34 @@ void providerslist::presenta() {
 
 
 void providerslist::doubleclicked(int a, int , int , const QPoint &) {
+	_depura("providerslist::doubleclicked()",0);
     m_idprovider = m_list->text(a,COL_IDPROVEEDOR);
     m_cifprovider = m_list->text(a,COL_CIFPROVEEDOR);
     m_nomprovider = m_list->text(a,COL_NOMPROVEEDOR);
     if (m_modo ==0 ) {
         QString idprov = m_list->text(a, COL_IDPROVEEDOR);
         provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
-	companyact->m_pWorkspace->addWindow(prov);
-        prov->chargeprovider(idprov);
+        if (prov->chargeprovider(idprov)) {
+            return;
+	}
+        companyact->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
         close();
     }// end if
+	_depura("END providerslist::doubleclicked()",0);
 }
 
 
 
 
-void providerslist::contextMenu(int , int , const QPoint &) {
-}// end contextMenuRequested
+void providerslist::contextMenu(int , int , const QPoint &) {}// end contextMenuRequested
 
 
 void providerslist::newprovider() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
     provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
-	companyact->m_pWorkspace->addWindow(prov);
+    companyact->m_pWorkspace->addWindow(prov);
     prov->show();
 }// end boton_crear
 
@@ -382,19 +387,25 @@ void providerslist::s_printProviders() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
+
     archivo = "copy "+archivo+" "+archivod;
 #else
+
     archivo = "cp "+archivo+" "+archivod;
 #endif
+
     system (archivo.ascii());
 
     /// Copiamos el logo
 
 #ifdef WINDOWS
+
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
+
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
+
     system (archivologo.ascii());
 
     QFile file;
@@ -407,75 +418,75 @@ void providerslist::s_printProviders() {
     // L�ea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
-/// -----------------------------------------------
+    /// -----------------------------------------------
     if(mver_idproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Id.</td>";
+        fitxersortidatxt += "	<td>Id.</td>";
     if(mver_nomproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Nombre</td>";
+        fitxersortidatxt += "	<td>Nombre</td>";
     if(mver_nomaltproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Nom. Alt</td>";
+        fitxersortidatxt += "	<td>Nom. Alt</td>";
     if(mver_cifproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>CIF</td>";
+        fitxersortidatxt += "	<td>CIF</td>";
     if(mver_codicliproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Cod. Cliente</td>";
+        fitxersortidatxt += "	<td>Cod. Cliente</td>";
     if(mver_cbancproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Banco</td>";
+        fitxersortidatxt += "	<td>Banco</td>";
     if(mver_comentproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Coment</td>";
+        fitxersortidatxt += "	<td>Coment</td>";
     if(mver_dirproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Direccion</td>";
+        fitxersortidatxt += "	<td>Direccion</td>";
     if(mver_poblproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Poblacion</td>";
+        fitxersortidatxt += "	<td>Poblacion</td>";
     if(mver_cpproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>CP</td>";
+        fitxersortidatxt += "	<td>CP</td>";
     if(mver_telproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Tel.</td>";
+        fitxersortidatxt += "	<td>Tel.</td>";
     if(mver_faxproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Fax</td>";
+        fitxersortidatxt += "	<td>Fax</td>";
     if(mver_emailproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>E-Mail</td>";
+        fitxersortidatxt += "	<td>E-Mail</td>";
     if(mver_urlproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>URL</td>";
+        fitxersortidatxt += "	<td>URL</td>";
     if(mver_clavewebproveedor->isChecked() )
-	    fitxersortidatxt += "	<td>Clave Web</td>";
-/// -----------------------------------------------
+        fitxersortidatxt += "	<td>Clave Web</td>";
+    /// -----------------------------------------------
     fitxersortidatxt += "</tr>";
 
     cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%"+m_filtro->text()+"%'");
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
-/// -----------------------------------------------
-    if(mver_idproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idproveedor"))+"</td>";
-    if(mver_nomproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomproveedor"))+"</td>";
-    if(mver_nomaltproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomaltproveedor"))+"</td>";
-    if(mver_cifproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cifproveedor"))+"</td>";
-    if(mver_codicliproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codicliproveedor"))+"</td>";
-    if(mver_cbancproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cbancproveedor"))+"</td>";
-    if(mver_comentproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("comentproveedor"))+"</td>";
-    if(mver_dirproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("dirproveedor"))+"</td>";
-    if(mver_poblproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("poblproveedor"))+"</td>";
-    if(mver_cpproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cpproveedor"))+"</td>";
-    if(mver_telproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("telproveedor"))+"</td>";
-    if(mver_faxproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("faxproveedor"))+"</td>";
-    if(mver_emailproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("emailproveedor"))+"</td>";
-    if(mver_urlproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("urlproveedor"))+"</td>";
-    if(mver_clavewebproveedor->isChecked() )
-        fitxersortidatxt += "<td>"+XMLProtect(cur->valor("clavewebproveedor"))+"</td>";
-/// -----------------------------------------------
+        /// -----------------------------------------------
+        if(mver_idproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idproveedor"))+"</td>";
+        if(mver_nomproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomproveedor"))+"</td>";
+        if(mver_nomaltproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomaltproveedor"))+"</td>";
+        if(mver_cifproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cifproveedor"))+"</td>";
+        if(mver_codicliproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codicliproveedor"))+"</td>";
+        if(mver_cbancproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cbancproveedor"))+"</td>";
+        if(mver_comentproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("comentproveedor"))+"</td>";
+        if(mver_dirproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("dirproveedor"))+"</td>";
+        if(mver_poblproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("poblproveedor"))+"</td>";
+        if(mver_cpproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("cpproveedor"))+"</td>";
+        if(mver_telproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("telproveedor"))+"</td>";
+        if(mver_faxproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("faxproveedor"))+"</td>";
+        if(mver_emailproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("emailproveedor"))+"</td>";
+        if(mver_urlproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("urlproveedor"))+"</td>";
+        if(mver_clavewebproveedor->isChecked() )
+            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("clavewebproveedor"))+"</td>";
+        /// -----------------------------------------------
         fitxersortidatxt += "</tr>";
         cur->siguienteregistro();
     }// end if
@@ -491,31 +502,31 @@ void providerslist::s_printProviders() {
     }
 
 
-invocaPDF("proveedores");
+    invocaPDF("proveedores");
 }// end s_printProviders.
 
 
 
 void providerslist::s_exportar() {
-  QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Proveedores (*.xml)", this, "select file", "Elija el Archivo"));
-  if(filexml.open(QIODevice::WriteOnly)) {
-    bulmafact2XML(filexml, IMPORT_PROVEEDORES);
-    filexml.close();
-  } else {
-    _depura("ERROR AL ABRIR ARCHIVO\n",2);
-  }// end if
+    QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Proveedores (*.xml)", this, "select file", "Elija el Archivo"));
+    if(filexml.open(QIODevice::WriteOnly)) {
+        bulmafact2XML(filexml, IMPORT_PROVEEDORES);
+        filexml.close();
+    } else {
+        _depura("ERROR AL ABRIR ARCHIVO\n",2);
+    }// end if
 }//
 
 
 void providerslist::s_importar() {
-  QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Proveedores (*.xml)", this, "select file", "Elija el Archivo"));
-  if (filexml.open(QIODevice::ReadOnly))  {
-	XML2BulmaFact(filexml, IMPORT_PROVEEDORES);
-    filexml.close();
-    presenta();
-  }  else  {
-    _depura("ERROR AL ABRIR ARCHIVO\n",2);
-  }// end if
+    QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Proveedores (*.xml)", this, "select file", "Elija el Archivo"));
+    if (filexml.open(QIODevice::ReadOnly))  {
+        XML2BulmaFact(filexml, IMPORT_PROVEEDORES);
+        filexml.close();
+        presenta();
+    }  else  {
+        _depura("ERROR AL ABRIR ARCHIVO\n",2);
+    }// end if
 }
 
 

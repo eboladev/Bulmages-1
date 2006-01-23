@@ -70,7 +70,7 @@ public:
 
     PedidoCliente(company *);
     virtual ~PedidoCliente();
-    virtual void cargaPedidoCliente(QString);
+    virtual int cargaPedidoCliente(QString);
     void pintaPedidoCliente();
     void guardaPedidoCliente();
     void borraPedidoCliente();

@@ -85,7 +85,7 @@ virtual void s_comentpedidoclientetextChanged() { setcomentpedidocliente(m_comen
   virtual void s_descpedidoclientetextChanged(const QString &val) {setdescpedidocliente(val);};
 
   virtual void s_savePedidoCliente() {guardaPedidoCliente();};
-  virtual void cargaPedidoCliente(QString id);
+  virtual int cargaPedidoCliente(QString id);
 
   virtual void s_deletePedidoCliente() {borraPedidoCliente();};
   virtual void s_printPedidoCliente(){imprimirPedidoCliente();};

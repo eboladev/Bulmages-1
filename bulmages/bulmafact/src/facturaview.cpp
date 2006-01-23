@@ -94,11 +94,13 @@ void FacturaView::s_nuevoCobro() {
 }// end s_nuevoCobro
 
 
-void FacturaView::cargaFactura(QString id) {
+int FacturaView::cargaFactura(QString id) {
     Factura::cargaFactura(id);
     setCaption("Factura   "+mdb_reffactura);
-    companyact->meteWindow(caption(),this);
+    if (companyact->meteWindow(caption(),this) )
+        return 1;
     dialogChanges_cargaInicial();
+    return 0;
 }// end cargaFactura
 
 
@@ -132,34 +134,34 @@ void FacturaView::s_agregaAlbaran() {
     if (idalbaran == "")
         return;
 
-        /// Creamos la factura.
-        AlbaranCliente *bud = new AlbaranCliente(companyact);
-        bud->cargaAlbaranCliente(idalbaran);
+    /// Creamos la factura.
+    AlbaranCliente *bud = new AlbaranCliente(companyact);
+    bud->cargaAlbaranCliente(idalbaran);
 
 
-	/// Agregamos a comentarios que albaran se corresponde.
-	mdb_comentfactura += "(ALBARAN: Num"+bud->numalbaran()+"Ref:"+bud->refalbaran()+"Fecha:"+bud->fechaalbaran()+")\n";
+    /// Agregamos a comentarios que albaran se corresponde.
+    mdb_comentfactura += "(ALBARAN: Num"+bud->numalbaran()+"Ref:"+bud->refalbaran()+"Fecha:"+bud->fechaalbaran()+")\n";
 
 
-        /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE, pero por ahora pasamos de hacerlo.
-        LinAlbaranCliente *linea;
-	for (linea = bud->getlistalineas()->m_lista.first(); linea; linea = bud->getlistalineas()->m_lista.next() ) {
-		//nuevalinea();
-		listalineas->nuevalinea(linea->desclalbaran()
-				, linea->cantlalbaran()
-				, linea->pvplalbaran()
-				, linea->descontlalbaran()
-				, linea->idarticulo()
-				, linea->codigocompletoarticulo()
-				, linea->nomarticulo()
-				, linea->ivalalbaran()
-		);
-	}// end for
+    /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE, pero por ahora pasamos de hacerlo.
+    LinAlbaranCliente *linea;
+    for (linea = bud->getlistalineas()->m_lista.first(); linea; linea = bud->getlistalineas()->m_lista.next() ) {
+        //nuevalinea();
+        listalineas->nuevalinea(linea->desclalbaran()
+                                , linea->cantlalbaran()
+                                , linea->pvplalbaran()
+                                , linea->descontlalbaran()
+                                , linea->idarticulo()
+                                , linea->codigocompletoarticulo()
+                                , linea->nomarticulo()
+                                , linea->ivalalbaran()
+                               );
+    }// end for
 
-	delete bud;
+    delete bud;
 
-        pintaFactura();
-	show();
+    pintaFactura();
+    show();
 
     /// Comprobamos que el albaran se ajusta.
 
@@ -169,14 +171,14 @@ void FacturaView::s_agregaAlbaran() {
 
 
 void FacturaView::closeEvent( QCloseEvent *e) {
-	_depura("closeEvent",0);
+    _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
         int val = QMessageBox::warning( this, "Guardar Factura",
-                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
-	if (val == 0) 
+                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        if (val == 0)
             s_saveFactura();
-	if (val == 2)
-	    e->ignore();
-    }// end if	
+        if (val == 2)
+            e->ignore();
+    }// end if
 }
 

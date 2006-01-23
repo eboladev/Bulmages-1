@@ -80,7 +80,7 @@ public slots:
     virtual void s_serie_facturavalueChanged(QString val) {setcodigoserie_factura(val);};
     
     virtual void s_saveFactura() {guardaFactura();};
-    virtual void cargaFactura(QString id);    
+    virtual int cargaFactura(QString id);    
     virtual void s_deleteFactura() {borraFactura();};
     virtual void s_printFactura(){imprimirFactura();};
     virtual void s_agregaAlbaran();

@@ -87,10 +87,12 @@ void presupuesto::pintaPresupuesto() {
 }// end pintaPresupuesto
 
 // Esta funci� carga un presupuesto.
-void presupuesto::chargeBudget(QString idbudget) {
+int presupuesto::chargeBudget(QString idbudget) {
     mdb_idpresupuesto = idbudget;
+	int error = 0;
     QString query = "SELECT * FROM presupuesto LEFT JOIN almacen ON  presupuesto.idalmacen = almacen.idalmacen WHERE idpresupuesto="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
+	if (cur->error())  error =1;
     if (!cur->eof()) {
         mdb_idcliente= cur->valor("idcliente");
         mdb_idalmacen= cur->valor("idalmacen");
@@ -111,10 +113,18 @@ void presupuesto::chargeBudget(QString idbudget) {
             mdb_procesadopresupuesto = "FALSE";
     }// end if
     delete cur;
-    fprintf(stderr,"Vamos a cargar las lineas\n");
-    listalineas->chargeBudgetLines(idbudget);
-    listadescuentos->cargaDescuentos(idbudget);
+
+    error += listalineas->chargeBudgetLines(idbudget);
+    error += listadescuentos->cargaDescuentos(idbudget);
+
+    /// Tratamiento de excepciones
+    if (error) {
+        _depura("Error en la carga del presupuesto\n",0);
+        return 1;
+    }// end if
+
     pintaPresupuesto();
+	return 0;
 }// end chargeBudget
 
 

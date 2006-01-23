@@ -81,7 +81,7 @@ private:
 
 public slots:
     virtual void s_saveBudget() {guardapresupuesto();};
-    virtual void chargeBudget(QString id);
+    virtual int chargeBudget(QString id);
     virtual void s_removeBudget();
     virtual void s_printBudget();
     virtual void s_removeBudgetLine() {subform2->borralinpresupuestoact();};

@@ -82,7 +82,7 @@ void Factura::pintaFactura() {
 
 
 // Esta funci� carga un Factura.
-void Factura::cargaFactura(QString idbudget) {
+int Factura::cargaFactura(QString idbudget) {
     mdb_idfactura = idbudget;
     inicialize();
     QString query = "SELECT * FROM factura  WHERE idfactura="+idbudget;
@@ -108,6 +108,7 @@ void Factura::cargaFactura(QString idbudget) {
     listalineas->cargaListLinFactura(idbudget);
     listadescuentos->cargaDescuentos(idbudget);
     pintaFactura();
+	return 0;
 }// end chargeBudget
 
 

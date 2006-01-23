@@ -83,7 +83,7 @@ public:
     
     Factura(company *);
     virtual ~Factura();
-    virtual void cargaFactura(QString );
+    virtual int cargaFactura(QString );
     void pintaFactura();
     void guardaFactura();
     void borraFactura();
