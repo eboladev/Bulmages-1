@@ -199,6 +199,7 @@ PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, Qt::WF
     m_idpedidocliente="";
     meteWindow(caption(),this);
     hideBusqueda();
+	inicializa();
     cargaconfig();
     s_configurar();
 }// end providerslist
@@ -211,6 +212,7 @@ PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const cha
     inicializa();
     cargaconfig();
     s_configurar();
+	presenta();
     m_modo=0;
     m_idpedidocliente="";
     meteWindow(caption(),this);
@@ -250,7 +252,11 @@ void PedidosClienteList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPEDIDOSCLIENTE));
     m_list->setReadOnly(TRUE);
-     
+
+}// end inicializa
+
+
+void PedidosClienteList::presenta() {
     /// Hacemos el listado y lo presentamos.
     cursor2 * cur= companyact->cargacursor("SELECT * FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
@@ -284,7 +290,10 @@ void PedidosClienteList::inicializa() {
 	m_total->setText(cur->valor("total"));
 	delete cur;
 
-}// end inicializa
+}// end presenta
+
+
+
 
 QString PedidosClienteList::generarFiltro() {
 
@@ -490,7 +499,7 @@ void PedidosClienteList::s_borrarPedidosCliente() {
             }
         }
     }
-    inicializa();
+    presenta();
 }// end boton_borrar
 
 

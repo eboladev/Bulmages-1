@@ -213,6 +213,7 @@ BudgetsList::BudgetsList(QWidget *parent, const char *name, Qt::WFlags flag)
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
+    inicializa();
     cargaconfig();
 }// end BudgetsList
 
@@ -224,6 +225,7 @@ BudgetsList::BudgetsList(company *comp, QWidget *parent, const char *name, Qt::W
     inicializa();
     cargaconfig();
     s_configurar();
+    presenta();
     m_modo=0;
     m_idpresupuesto="";
     meteWindow(caption(),this);
@@ -265,8 +267,12 @@ void BudgetsList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPRESUPUESTOS));
     m_list->setReadOnly(TRUE);
+    _depura("end BudgetsList::inicializa()\n");
+}// end inicializa
 
 
+void BudgetsList::presenta() {
+    _depura("BudgetsList::presenta()\n");
 
     if (companyact != NULL ) {
         cursor2 * cur= companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
@@ -308,8 +314,8 @@ void BudgetsList::inicializa() {
     }// end if
 
 
-    _depura("end BudgetsList::inicializa()\n");
-}// end inicializa
+    _depura("end BudgetsList::presenta()\n");
+}// end presenta
 
 
 
@@ -390,7 +396,7 @@ void BudgetsList::s_contextMenu(int, int, int button, const QPoint &poin) {
 
 
 void BudgetsList::imprimir() {
-	_depura("BudgetsList::imprimir",0);
+    _depura("BudgetsList::imprimir",0);
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuestos.rml";
     QString archivod = confpr->valor(CONF_DIR_USER)+"presupuestos.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
@@ -546,5 +552,5 @@ void BudgetsList::s_removeBudget() {
             }
         }
     }
-    inicializa();
+    presenta();
 }// end boton_borrar

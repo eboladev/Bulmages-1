@@ -305,7 +305,7 @@ void presupuesto::imprimirPresupuesto() {
 
     linpresupuesto *linea;
     /// Impresi� de la tabla de contenidos.
-    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
+    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.2cm, 1.5cm, 1.8cm, 2.25cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
     fitxersortidatxt += "	<td>Cod.</td>\n";
     fitxersortidatxt += "	<td>Concepto</td>\n";

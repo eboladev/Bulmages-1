@@ -23,17 +23,18 @@
 class PedidosProveedorList : public PedidosProveedorListBase
 {
 Q_OBJECT
-public:
+private:
    company *companyact;
    int m_modo; // == 0 es modo edici�
             // ==1 es modo selector.
    QString m_idpedidoproveedor;
-
+    void inicializa();
+public:
     PedidosProveedorList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
     PedidosProveedorList(company *, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
 
     ~PedidosProveedorList();
-    void inicializa();
+    void presenta();
     void modoseleccion() {m_modo=1;};
     void modoedicion() {m_modo=0;};
     void imprimir();
@@ -57,9 +58,9 @@ public:
 public slots:
 	virtual void doubleclicked(int, int , int , const QPoint &) ;  
 	virtual void s_printPedidosProveedor() {imprimir();};
-	virtual void s_searchPedidosProveedor() {inicializa();};
+	virtual void s_searchPedidosProveedor() {presenta();};
 	virtual void s_newPedidoProveedor() {companyact->s_newPedidoPro();};
-	virtual void s_filtrar() {inicializa();};
+	virtual void s_filtrar() {presenta();};
 	
 	virtual void s_borrarPedidosProveedor();
 	virtual void s_editarPedidosProveedor();

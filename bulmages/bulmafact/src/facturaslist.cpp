@@ -197,6 +197,7 @@ FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag)
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
+	inicializa();
     cargaconfig();
 	s_configurar();
 }// end providerslist
@@ -210,6 +211,7 @@ FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
     inicializa();
     cargaconfig();
 	s_configurar();
+	presenta();
     m_modo=0;
     m_idfactura="";
     meteWindow(caption(),this);
@@ -255,6 +257,13 @@ void FacturasList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTFACTURASCLIENTE));
     m_list->setReadOnly(TRUE);
+    _depura("END FacturasList::inicializa()",1);
+}// end inicializa
+
+
+void FacturasList::presenta() {
+    _depura("FacturasList::presenta()",1);
+
     cursor2 * cur= companyact->cargacursor("SELECT * FROM factura LEFT JOIN cliente ON factura.idcliente=cliente.idcliente LEFT JOIN  almacen ON  factura.idalmacen=almacen.idalmacen WHERE 1=1  "+generaFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -290,8 +299,9 @@ void FacturasList::inicializa() {
     m_total->setText(cur->valor("total"));
     delete cur;
 
-    _depura("END FacturasList::inicializa()",1);
+    _depura("END FacturasList::presenta()",1);
 }// end inicializa
+
 
 
 QString FacturasList::generaFiltro() {

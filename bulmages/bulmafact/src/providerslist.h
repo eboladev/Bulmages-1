@@ -41,7 +41,7 @@ private:
 public:
     providerslist(company *, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0, edmode editmode=EditMode);
     ~providerslist();
-    void inicializa();
+    void presenta();
     void modoseleccion() {m_modo=SelectMode;};
     void modoedicion() {m_modo=EditMode;};
     QString idprovider() {return m_idprovider;};
@@ -64,7 +64,7 @@ public slots:
     virtual void s_editProvider();
     virtual void s_removeProvider();
     virtual void s_printProviders();
-    virtual void s_refreshProveedores() {inicializa();};
+    virtual void s_refreshProveedores() {presenta();};
     virtual void s_exportar();
     virtual void s_importar();
 

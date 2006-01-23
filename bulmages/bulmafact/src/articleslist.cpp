@@ -259,6 +259,7 @@ articleslist::articleslist(company *comp, QWidget *parent, const char *name, Qt:
     inicializa();
     cargaconfig();
     s_configurar();
+    presenta();
     m_modo=editmodo;
     if (m_modo == EditMode)
         comp->meteWindow("Articulos",this);
@@ -300,12 +301,13 @@ void articleslist::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_STOCKARTICULO, tr("Stock") );
     m_list->horizontalHeader()->setLabel( COL_PVPARTICULO, tr("PVP") );
 
-    //listado->setPaletteBackgroundColor(QColor(150,230,230));
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
-    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTARTICULOS));
-    m_list->setReadOnly(TRUE);
-    m_list->hideColumn(COL_IDARTICULO);
-    m_list->hideColumn(COL_IDTIPO_IVA);
+    _depura("articleslist::END_inicializa()\n",0);
+} //end inicializa
+
+
+void articleslist::presenta() {
+    _depura("articleslist::INIT_presenta()\n",0);
+
     cursor2 * cur= companyact->cargacursor(formaQuery());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -326,8 +328,8 @@ void articleslist::inicializa() {
     delete cur;
 
 
-    _depura("articleslist::END_inicializa()\n",0);
-} //end inicializa
+    _depura("articleslist::END_presenta()\n",0);
+} //end presenta
 
 
 void articleslist::editArticle(int  row) {
@@ -393,7 +395,7 @@ void articleslist::removeArticle() {
             return;
         }// end if
         companyact->commit();
-        inicializa();
+        presenta();
     }// end if
 
     _depura("articleslist::END_removeArticle()\n",0);
@@ -674,7 +676,7 @@ void articleslist::s_importar() {
     if (filexml.open(QIODevice::ReadOnly))  {
         XML2BulmaFact(filexml, IMPORT_ARTICULOS);
         filexml.close();
-        inicializa();
+        presenta();
     }  else  {
         _depura("ERROR AL ABRIR ARCHIVO\n",2);
     }// end if

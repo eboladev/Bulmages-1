@@ -36,12 +36,12 @@ private:
    int m_modo; // == 0 es modo edici�
             // ==1 es modo selector.
    QString m_idcobro;
-   
+       void inicializa();
 public:
     CobrosList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
     CobrosList(company *comp = NULL, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
     ~CobrosList();
-    void inicializa();
+	void presenta();
     void modoseleccion() {m_modo=1;};
     void modoedicion() {m_modo=0;};
     void setcompany (company *comp) {companyact=comp;m_cliente->setcompany(comp);};
@@ -70,7 +70,7 @@ public slots:
     virtual void s_nuevoCobro();
     virtual void s_borrarCobro();
     virtual void s_imprimir() {imprimir();};
-    virtual void s_filtrar() {inicializa();};
+    virtual void s_filtrar() {presenta();};
     virtual void s_mostrarBusqueda() {
     	fprintf(stderr,"s_mostrarBusqueda\n");
     	if (m_busqueda->isVisible())

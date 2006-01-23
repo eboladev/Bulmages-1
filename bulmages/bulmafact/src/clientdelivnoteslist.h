@@ -32,18 +32,19 @@
 class ClientDelivNotesList : public ClientDelivNotesListBase {
     Q_OBJECT
 public:
-   enum edmode {EditMode=0, SelectMode=1};
+    enum edmode {EditMode=0, SelectMode=1};
 private:
     company *companyact;
     int m_modo; // == 0 es modo edici�
     // ==1 es modo selector.
     QString m_idclidelivnote;
-
+    void inicializa();
 public:
     ClientDelivNotesList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0, edmode editmodo=EditMode);
     ClientDelivNotesList(company *, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0, edmode editmodo=EditMode);
     ~ClientDelivNotesList();
-    void inicializa();
+
+    void presenta();
     void modoseleccion() {
         m_modo=1;
     };
@@ -64,20 +65,20 @@ public:
     void hideBusqueda() {
         m_busqueda->hide();
     };
-        
+
     void showBusqueda() {
         m_busqueda->show();
     };
-    
-    
+
+
     void hideConfiguracion() {
         m_configuracion->hide();
     };
-        
+
     void showConfiguracion() {
         m_configuracion->show();
-    };    
-    
+    };
+
     void setidcliente(QString val) {
         m_cliente->setidcliente(val);
     };
@@ -90,25 +91,27 @@ public:
     };
     QString generarFiltro();
 
-   /// Funciones que se encarga en guardar y cargar la configuracion del listado.
+    /// Funciones que se encarga en guardar y cargar la configuracion del listado.
     void guardaconfig();
     void cargaconfig();
 
 public slots:
     virtual void s_doubleclicked(int, int, int, const QPoint &);
-    virtual void s_newClientDelivNote() {companyact->s_newAlbaranCli();};
+    virtual void s_newClientDelivNote() {
+        companyact->s_newAlbaranCli();
+    };
     virtual void s_removeClientDelivNote();
     virtual void s_contextMenu(int, int, int, const QPoint &);
     virtual void s_configurar();
     virtual void s_edit();
     virtual void s_searchClientDelivNote() {
-        inicializa();
+        presenta();
     };
     virtual void s_printClientDelivNote() {
         imprimir();
     };
     virtual void s_filtrar() {
-        inicializa();
+        presenta();
     };
     virtual void s_mostrarBusqueda() {
         if (m_busqueda->isVisible())
@@ -121,7 +124,7 @@ public slots:
             hideConfiguracion();
         else
             showConfiguracion();
-    };    
+    };
 };
 
 #endif

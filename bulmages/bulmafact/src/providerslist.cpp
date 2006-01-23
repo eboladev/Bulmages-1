@@ -267,7 +267,7 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, Q
     m_list->horizontalHeader()->setLabel( COL_EMAILPROVEEDOR, tr("Correo Electronico") );
     m_list->horizontalHeader()->setLabel( COL_URLPROVEEDOR, tr("Pagina Web") );
     m_list->horizontalHeader()->setLabel( COL_CLAVEWEBPROVEEDOR, tr("Clave propia web proveedor") );
-    inicializa();
+    presenta();
 
 }// end providerslist
 
@@ -276,7 +276,7 @@ providerslist::~providerslist() {
 	guardaconfig();
 }// end ~providerslist
 
-void providerslist::inicializa() {
+void providerslist::presenta() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).ascii());
     m_list->setReadOnly(TRUE);
@@ -304,7 +304,7 @@ void providerslist::inicializa() {
         cur->siguienteregistro();
     }// end while
     delete cur;
-}// end inicializa
+}// end presenta
 
 
 
@@ -327,14 +327,6 @@ void providerslist::doubleclicked(int a, int , int , const QPoint &) {
 
 
 void providerslist::contextMenu(int , int , const QPoint &) {
-    /*
-       QString idprov = m_list->text(a, COL_IDPROVEEDOR);
-       provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
-       prov->chargeprovider(idprov);
-       prov->exec();
-       delete prov;
-       inicializa();
-    */
 }// end contextMenuRequested
 
 
@@ -347,7 +339,7 @@ void providerslist::newprovider() {
 
 
 void providerslist::s_findProvider() {
-    inicializa();
+    presenta();
 }// end s_findProvider
 
 
@@ -375,7 +367,7 @@ void providerslist::s_removeProvider() {
             return;
         }// end if
         companyact->commit();
-        inicializa();
+        presenta();
     }
 }// end s_removeProvider
 
@@ -520,7 +512,7 @@ void providerslist::s_importar() {
   if (filexml.open(QIODevice::ReadOnly))  {
 	XML2BulmaFact(filexml, IMPORT_PROVEEDORES);
     filexml.close();
-    inicializa();
+    presenta();
   }  else  {
     _depura("ERROR AL ABRIR ARCHIVO\n",2);
   }// end if

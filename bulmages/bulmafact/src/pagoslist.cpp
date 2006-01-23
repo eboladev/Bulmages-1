@@ -152,14 +152,16 @@ void PagosList::s_configurar() {
 
 PagosList::PagosList(QWidget *parent, const char *name, Qt::WFlags flag)
         : PagosListBase(parent, name, flag) {
-    cargaconfig();
-    s_configurar();
+
     companyact = NULL;
     m_modo=0;
     m_idpago="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
+	inicializa();
+    cargaconfig();
+    s_configurar();
 }// end providerslist
 
 
@@ -171,6 +173,7 @@ PagosList::PagosList(company *comp, QWidget *parent, const char *name, Qt::WFlag
     inicializa();
     cargaconfig();
     s_configurar();
+	presenta();
     m_modo=0;
     m_idpago="";
     meteWindow(caption(),this);
@@ -238,6 +241,37 @@ void PagosList::inicializa() {
 
     fprintf(stderr,"end PagosList::inicializa()\n");
 }// end inicializa
+
+
+
+void PagosList::presenta() {
+    fprintf(stderr,"PagosList::presenta()\n");
+    if (companyact != NULL ) {
+        cursor2 * cur= companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
+        m_list->setNumRows( cur->numregistros() );
+        int i=0;
+        while (!cur->eof()) {
+            m_list->setText(i,COL_IDPAGO,cur->valor("idpago"));
+            m_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
+            m_list->setText(i,COL_FECHAPAGO,cur->valor("fechapago"));
+            m_list->setText(i,COL_CANTPAGO,cur->valor("cantpago"));
+            m_list->setText(i,COL_REFPAGO,cur->valor("refpago"));
+            m_list->setText(i,COL_PREVISIONPAGO,cur->valor("previsionpago"));
+            m_list->setText(i,COL_COMENTPAGO,cur->valor("comentpago"));
+            i++;
+            cur->siguienteregistro();
+        }// end while
+        delete cur;
+
+        /// Hacemos el calculo del total.
+        cur = companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago where 1=1"+generaFiltro());
+        m_total->setText(cur->valor("total"));
+        delete cur;
+
+    }// end if
+
+    fprintf(stderr,"end PagosList::presenta()\n");
+}// end presenta
 
 
 
@@ -422,5 +456,5 @@ void PagosList::s_borrarPago() {
         bud->cargaPago(m_idpago);
         bud->borraPago();
     }// end if
-    inicializa();
+    presenta();
 }// end boton_borrar

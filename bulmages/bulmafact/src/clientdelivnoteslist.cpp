@@ -231,6 +231,7 @@ void ClientDelivNotesList::s_configurar() {
 ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
         : ClientDelivNotesListBase(parent, name, flag) {
     companyact = NULL;
+	inicializa();
     cargaconfig();
     s_configurar();
     m_modo=editmodo;
@@ -249,6 +250,7 @@ ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const
     inicializa();
     cargaconfig();
 	s_configurar();
+	presenta();
     m_modo=editmodo;
     m_idclidelivnote="";
     if (m_modo == EditMode)
@@ -294,6 +296,13 @@ void ClientDelivNotesList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTALBARANESCLIENTE));
     m_list->setReadOnly(TRUE);
+
+    _depura("End ClientDelivNotesList::inicializa");
+}// end inicializa
+
+
+void ClientDelivNotesList::presenta() {
+    _depura("ClientDelivNotesList::presenta\n");
     cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON  almacen.idalmacen=albaran.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago where 1=1 "+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -332,10 +341,8 @@ void ClientDelivNotesList::inicializa() {
     m_total->setText(cur->valor("total"));
     delete cur;
 
-    _depura("End ClientDelivNotesList::inicializa");
-}// end inicializa
-
-
+    _depura("End ClientDelivNotesList::presenta");
+}// end presenta
 
 
 
@@ -416,7 +423,7 @@ void ClientDelivNotesList::s_removeClientDelivNote() {
             }
         }
     }
-    inicializa();
+    presenta();
 }// end boton_borrar
 
 

@@ -287,7 +287,7 @@ void company::refreshBudgets() {
 }// end refreshBudgets
 
 void company::refreshFacturas() {
-    m_facturasList->inicializa();
+    m_facturasList->presenta();
 }// end refreshFacturas
 
 
@@ -304,10 +304,10 @@ void company::newClientDelivNote() {
 }// end newClientDelivNote
 
 void company::refreshClientDelivNotes() {
-    m_clientDelivNotesList->inicializa();
+    m_clientDelivNotesList->presenta();
 }
 void company::refreshAlbaranesCliente() {
-    m_clientDelivNotesList->inicializa();
+    m_clientDelivNotesList->presenta();
 }
 
 void company::refreshAlbaranesProveedor() {
@@ -315,7 +315,7 @@ void company::refreshAlbaranesProveedor() {
 }
 
 void company::refreshClientes() {
-	m_clientsList->inicializa();
+	m_clientsList->presenta();
 }
 
 
@@ -326,12 +326,12 @@ void company::newPedidoCliente() {
 }// end bud
 
 void company::refreshPedidosCliente() {
-    m_pedidosclienteList->inicializa();
+    m_pedidosclienteList->presenta();
 }// end refreshPedidosCliente
 
 
 void company::refreshPedidosProveedor() {
-    m_pedidosproveedorList->inicializa();
+    m_pedidosproveedorList->presenta();
 }// end refreshPedidosCliente
 
 /** Presenta la ventana de formas de pago y espera la ejecuci� de la misma */

@@ -238,6 +238,7 @@ void AlbaranesProveedor::s_configurar() {
 
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WFlags flag)
 : AlbaranesProveedorBase(parent, name, flag) {
+	inicializa();
 	cargaconfig();
 	s_configurar();
     companyact = NULL;
@@ -257,6 +258,7 @@ AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const cha
     inicializa();
 	cargaconfig();
 	s_configurar();
+	presenta();
     m_modo=0;
     m_idalbaranp="";
     meteWindow(caption(),this);
@@ -314,7 +316,6 @@ void AlbaranesProveedor::inicializa() {
             m_list->setText(i,COL_DESCALBARANP,cur->valor("descalbaranp"));
             m_list->setText(i,COL_REFALBARANP,cur->valor("refalbaranp"));
             m_list->setText(i,COL_FECHAALBARANP,cur->valor("fechaalbaranp"));
-//            m_list->setText(i,COL_LOGINUSUARIO,cur->valor("loginusuario"));
             m_list->setText(i,COL_COMENTALBARANP,cur->valor("comentalbaranp"));
             m_list->setText(i,COL_PROCESADOALBARANP,cur->valor("procesadoalbaranp"));
             m_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
@@ -346,6 +347,55 @@ void AlbaranesProveedor::inicializa() {
 
     _depura("END AlbaranesProveedor::inicializa()\n",0);
 }// end inicializa
+
+
+void AlbaranesProveedor::presenta() {
+    _depura("AlbaranesProveedor::presenta()\n",1);
+
+
+
+    if (companyact != NULL ) {
+        cursor2 * cur= companyact->cargacursor("SELECT * FROM albaranp LEFT JOIN proveedor ON albaranp.idproveedor = proveedor.idproveedor LEFT JOIN almacen ON   albaranp.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON albaranp.idforma_pago = forma_pago.idforma_pago WHERE 1=1 "+generaFiltro());
+        m_list->setNumRows( cur->numregistros() );
+        int i=0;
+        while (!cur->eof()) {	
+            m_list->setText(i,COL_IDALBARANP,cur->valor("idalbaranp"));
+            m_list->setText(i,COL_NUMALBARANP,cur->valor("numalbaranp"));
+            m_list->setText(i,COL_DESCALBARANP,cur->valor("descalbaranp"));
+            m_list->setText(i,COL_REFALBARANP,cur->valor("refalbaranp"));
+            m_list->setText(i,COL_FECHAALBARANP,cur->valor("fechaalbaranp"));
+//            m_list->setText(i,COL_LOGINUSUARIO,cur->valor("loginusuario"));
+            m_list->setText(i,COL_COMENTALBARANP,cur->valor("comentalbaranp"));
+            m_list->setText(i,COL_PROCESADOALBARANP,cur->valor("procesadoalbaranp"));
+            m_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
+            m_list->setText(i,COL_IDFORMA_PAGO,cur->valor("idforma_pago"));
+            m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
+            m_list->setText(i,COL_NOMPROVEEDOR,cur->valor("nomproveedor"));
+            m_list->setText(i,COL_NOMALMACEN,cur->valor("nomalmacen"));
+            m_list->setText(i,COL_DESCFORMA_PAGO,cur->valor("descforma_pago"));
+
+            /// Calculamos el total del presupuesto y lo presentamos.
+            cursor2 *cur1 = companyact->cargacursor("SELECT calctotalalbpro("+cur->valor("idalbaranp")+") AS total, calcbimpalbpro("+cur->valor("idalbaranp")+") AS base, calcimpuestosalbpro("+cur->valor("idalbaranp")+") AS impuestos");
+            m_list->setText(i,COL_TOTALALBARANPROVEEDOR,cur1->valor("total"));
+            m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
+            m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
+            delete cur1;
+
+            i++;
+            cur->siguienteregistro();
+        }// end while
+        delete cur;
+
+
+	/// Hacemos el calculo del total.
+	cur = companyact->cargacursor("SELECT SUM(calctotalalbpro(idalbaranp)) AS total FROM albaranp LEFT JOIN proveedor ON albaranp.idproveedor = proveedor.idproveedor LEFT JOIN almacen ON   albaranp.idalmacen=almacen.idalmacen WHERE 1=1 "+generaFiltro());
+	m_total->setText(cur->valor("total"));
+	delete cur;
+
+    }// end if
+
+    _depura("END AlbaranesProveedor::presenta()\n",0);
+}// end presenta
 
 
 
@@ -567,5 +617,5 @@ void AlbaranesProveedor::s_removeBudget() {
         bud->s_deleteAlbaranProveedor();
 	bud->close();
     }// end if
-    inicializa();
+    presenta();
 }// end boton_borrar

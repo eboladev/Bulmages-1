@@ -187,26 +187,26 @@ void FacturasProveedorList::s_configurar() {
 
 FacturasProveedorList::FacturasProveedorList(QWidget *parent, const char *name, Qt::WFlags flag)
         : FacturasProveedorListBase(parent, name, flag) {
-
     companyact = NULL;
     m_modo=0;
     m_idfacturap="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
+    inicializa();
     cargaconfig();
     s_configurar();
 }// end providerslist
 
 FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent, const char *name)
         : FacturasProveedorListBase(parent, name) {
-
     companyact = comp;
     m_proveedor->setcompany(companyact);
     m_articulo->setcompany(companyact);
     inicializa();
     cargaconfig();
     s_configurar();
+    presenta();
     m_modo=0;
     m_idfacturap="";
     meteWindow(caption(),this);
@@ -253,6 +253,11 @@ void FacturasProveedorList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");
     m_list->setReadOnly(TRUE);
+}// end inicializa
+
+
+void FacturasProveedorList::presenta() {
+
     cursor2 * cur= companyact->cargacursor("SELECT * FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  "+generaFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -285,7 +290,10 @@ void FacturasProveedorList::inicializa() {
     m_total->setText(cur->valor("total"));
     delete cur;
 
-}// end inicializa
+}// end presenta
+
+
+
 
 
 QString FacturasProveedorList::generaFiltro() {
@@ -358,7 +366,7 @@ void FacturasProveedorList::s_borrarFacturaProveedor() {
         bud->borraFacturaProveedor();
         delete bud;
     }// end if
-    inicializa();
+    presenta();
 }
 
 

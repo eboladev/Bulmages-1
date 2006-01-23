@@ -158,6 +158,7 @@ void CobrosList::s_configurar() {
 
 CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag)
         : CobrosListBase(parent, name, flag) {
+    inicializa();
     cargaconfig();
     s_configurar();
     companyact = NULL;
@@ -176,6 +177,7 @@ CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFl
     inicializa();
     cargaconfig();
     s_configurar();
+    presenta();
     m_modo=0;
     m_idcobro="";
     meteWindow(caption(),this);
@@ -209,9 +211,13 @@ void CobrosList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor("#EEFFFF");
     m_list->setReadOnly(TRUE);
+    fprintf(stderr,"end CobrosList::inicializa()\n");
+}// end inicializa
 
 
 
+void CobrosList::presenta() {
+    fprintf(stderr,"CobrosList::presenta()\n");
     if (companyact != NULL ) {
         cursor2 * cur= companyact->cargacursor("SELECT * FROM cobro where 1=1"+generaFiltro());
         m_list->setNumRows( cur->numregistros() );
@@ -235,8 +241,8 @@ void CobrosList::inicializa() {
         delete cur;
     }// end if
 
-    fprintf(stderr,"end CobrosList::inicializa()\n");
-}// end inicializa
+    fprintf(stderr,"end CobrosList::presenta()\n");
+}// end presenta
 
 
 
@@ -427,5 +433,5 @@ void CobrosList::s_borrarCobro() {
         bud->cargaCobro(m_idcobro);
         bud->borraCobro();
     }// end if
-    inicializa();
+    presenta();
 }// end boton_borrar

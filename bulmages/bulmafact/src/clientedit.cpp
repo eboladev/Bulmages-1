@@ -178,13 +178,13 @@ void ClientEdit::loadClient(QString client) {
             m_listpresupuestos->setidcliente(cur->valor("idcliente"));
             m_listpresupuestos->inicializa();
             m_listpedidos->setidcliente(cur->valor("idcliente"));
-            m_listpedidos->inicializa();
+            m_listpedidos->presenta();
             m_listalbaranes->setidcliente(cur->valor("idcliente"));
-            m_listalbaranes->inicializa();
+            m_listalbaranes->presenta();
             m_listfacturas->setidcliente(cur->valor("idcliente"));
-            m_listfacturas->inicializa();
+            m_listfacturas->presenta();
             m_listcobros->setidcliente(cur->valor("idcliente"));
-            m_listcobros->inicializa();
+            m_listcobros->presenta();
 
             /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
             setCaption("Cliente "+cur->valor("nomcliente"));

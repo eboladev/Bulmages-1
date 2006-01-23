@@ -277,7 +277,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::W
     m_clientList->setPaletteBackgroundColor("#DDDDFF");
     m_clientList->setReadOnly(TRUE);
 
-    inicializa();
+    presenta();
     /// Si estamos en el modo edicion metemos la ventana en el lugar apropiado.
     if (m_mode==EditMode)
         companyact->meteWindow(caption(),this);
@@ -297,7 +297,7 @@ ClientsList::~ClientsList() {
   * Iniciamos los clientes.
   * Hacemos la consulta a la base de datos y presentamos el listado.
   */
-void ClientsList::inicializa() {
+void ClientsList::presenta() {
     cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente");
     m_clientList->setNumRows( cur->numregistros() );
     int i=0;
@@ -321,7 +321,7 @@ void ClientsList::inicializa() {
         cur->siguienteregistro();
     }// end while
     delete cur;
-}// end initClients
+}// end presenta
 
 
 void ClientsList::m_clientList_clicked(int a, int , int , const QPoint &) {
@@ -356,7 +356,7 @@ void ClientsList::m_clientList_doubleClicked(int a, int , int , const QPoint &) 
 
 
 void ClientsList::s_findClients() {
-    inicializa();
+    presenta();
 }// end s_findClients
 
 
@@ -502,7 +502,7 @@ void ClientsList::s_borrarCliente() {
     if (error) {
         return;
     }// end if
-    inicializa();
+    presenta();
 }// end s_borrarCliente
 
 
@@ -522,7 +522,7 @@ void ClientsList::s_importar() {
     if (filexml.open(QIODevice::ReadOnly))  {
         XML2BulmaFact(filexml, IMPORT_CLIENTES);
         filexml.close();
-        inicializa();
+        presenta();
     }  else  {
         _depura("ERROR AL ABRIR ARCHIVO\n",2);
     }// end if

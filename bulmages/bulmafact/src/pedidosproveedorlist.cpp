@@ -188,13 +188,15 @@ void PedidosProveedorList::s_configurar() {
 
 PedidosProveedorList::PedidosProveedorList(QWidget *parent, const char *name, Qt::WFlags flag)
         : PedidosProveedorListBase(parent, name, flag) {
-    cargaconfig();
-    s_configurar();
+
     companyact = NULL;
     m_modo=0;
     m_idpedidoproveedor="";
     meteWindow(caption(),this);
     hideBusqueda();
+	inicializa();    
+cargaconfig();
+    s_configurar();
 }// end providerslist
 
 
@@ -205,6 +207,7 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const
     inicializa();
     cargaconfig();
     s_configurar();
+	presenta();
     m_modo=0;
     m_idpedidoproveedor="";
     meteWindow(caption(),this);
@@ -244,7 +247,10 @@ void PedidosProveedorList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPEDIDOSCLIENTE));
     m_list->setReadOnly(TRUE);
+}// end inicializa
 
+
+void PedidosProveedorList::presenta() {
 
     cursor2 * cur= companyact->cargacursor("SELECT * FROM pedidoproveedor LEFT JOIN  proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
@@ -276,7 +282,10 @@ void PedidosProveedorList::inicializa() {
     cur = companyact->cargacursor("SELECT SUM(calctotalpedpro(idpedidoproveedor)) AS total FROM pedidoproveedor LEFT JOIN  proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
-}// end inicializa
+}// end presenta
+
+
+
 
 QString PedidosProveedorList::generarFiltro() {
 
@@ -472,7 +481,7 @@ void PedidosProveedorList::s_borrarPedidosProveedor() {
             }
         }
     }
-    inicializa();
+    presenta();
 }// end boton_borrar
 
 

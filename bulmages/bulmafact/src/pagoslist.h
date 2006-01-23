@@ -29,37 +29,60 @@
 
 
 class PagosList : public PagosListBase {
-Q_OBJECT
+    Q_OBJECT
 private:
-   company *companyact;
-   int m_modo; // == 0 es modo edici�
-            // ==1 es modo selector.
-   QString m_idpago;
-   
+    company *companyact;
+    int m_modo; // == 0 es modo edici�
+    // ==1 es modo selector.
+    QString m_idpago;
+    void inicializa();
 public:
     PagosList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
     PagosList(company *comp = NULL, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
     ~PagosList();
-    void inicializa();
-    void modoseleccion() {m_modo=1;};
-    void modoedicion() {m_modo=0;};
-    void setcompany (company *comp) {companyact=comp;m_proveedor->setcompany(comp);};
-    QString idpago() {return m_idpago;};
-    void hideBotonera() {m_botonera->hide();};
-    void showBotonera() {m_botonera->show();};
-    void hideBusqueda() {m_busqueda->hide();};
-    void showBusqueda() {m_busqueda->show();};
-    void hideConfiguracion() {m_configuracion->hide();};
-    void showConfiguracion() {m_configuracion->show();};
-    
+    void presenta();
+    void modoseleccion() {
+        m_modo=1;
+    };
+    void modoedicion() {
+        m_modo=0;
+    };
+    void setcompany (company *comp) {
+        companyact=comp;
+        m_proveedor->setcompany(comp);
+    };
+    QString idpago() {
+        return m_idpago;
+    };
+    void hideBotonera() {
+        m_botonera->hide();
+    };
+    void showBotonera() {
+        m_botonera->show();
+    };
+    void hideBusqueda() {
+        m_busqueda->hide();
+    };
+    void showBusqueda() {
+        m_busqueda->show();
+    };
+    void hideConfiguracion() {
+        m_configuracion->hide();
+    };
+    void showConfiguracion() {
+        m_configuracion->show();
+    };
+
     void imprimir();
     void meteWindow(QString nom, QObject *obj) {
-    if (companyact != NULL)
-    companyact->meteWindow(nom, obj);
+        if (companyact != NULL)
+            companyact->meteWindow(nom, obj);
     };
-    void setidproveedor(QString val) {m_proveedor->setidproveedor(val);};
+    void setidproveedor(QString val) {
+        m_proveedor->setidproveedor(val);
+    };
     QString generaFiltro();
-   /// Funciones que se encarga en guardar y cargar la configuracion del listado.
+    /// Funciones que se encarga en guardar y cargar la configuracion del listado.
     void guardaconfig();
     void cargaconfig();
 public slots:
@@ -68,25 +91,30 @@ public slots:
     virtual void s_editar();
     virtual void s_nuevoPago();
     virtual void s_borrarPago();
-    virtual void s_imprimir() {imprimir();};
-    virtual void s_filtrar() {inicializa();};
+    virtual void s_imprimir() {
+        imprimir();
+    };
+    virtual void s_filtrar() {
+        inicializa();
+    };
     virtual void s_mostrarBusqueda() {
-    	fprintf(stderr,"s_mostrarBusqueda\n");
-    	if (m_busqueda->isVisible())
-		hideBusqueda();
-	else
-		 showBusqueda();
-	};
-	
+        fprintf(stderr,"s_mostrarBusqueda\n");
+        if (m_busqueda->isVisible())
+            hideBusqueda();
+        else
+            showBusqueda();
+    };
+
     virtual void s_mostrarConfiguracion() {
-    	fprintf(stderr,"s_mostrarConfiguracion\n");
-    	if (m_configuracion->isVisible())
-		hideConfiguracion();
-	else
-		 showConfiguracion();
-	};	
-	
-virtual void s_configurar();
+        fprintf(stderr,"s_mostrarConfiguracion\n");
+        if (m_configuracion->isVisible())
+            hideConfiguracion();
+        else
+            showConfiguracion();
+    }
+    ;
+
+    virtual void s_configurar();
 };
 
 #endif

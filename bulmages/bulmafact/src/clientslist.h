@@ -43,7 +43,7 @@ public:
     ~ClientsList();
     void selectMode() {m_mode=SelectMode;};
     void editMode() {m_mode=EditMode;};
-    void inicializa();
+    void presenta();
     QString idclient() {return m_idclient;};
     QString nomclient() {return m_nomclient;};
     QString cifclient() {return m_cifclient;};
@@ -64,7 +64,7 @@ public slots:
     virtual void m_clientList_doubleClicked(int, int, int, const QPoint &);
     virtual void s_printClients();
     virtual void s_findClients();
-    virtual void s_refreshClientes() {inicializa();};
+    virtual void s_refreshClientes() {presenta();};
     virtual void s_exportar();
     virtual void s_importar();
 
@@ -81,7 +81,7 @@ public slots:
 	else
 		 showConfiguracion();
 	};
-    virtual void s_filtrar() {inicializa();};
+    virtual void s_filtrar() {presenta();};
     virtual void s_borrarCliente();
 
     virtual void s_configurar();

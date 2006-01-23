@@ -198,13 +198,13 @@ void provedit::chargeprovider(QString idprov) {
 	/// Inicializamos el listado
 	_depura("Vamos a cargar el proveedor",0);
             m_listpedidosprov->setidproveedor(cur->valor("idproveedor"));
-            m_listpedidosprov->inicializa();
+            m_listpedidosprov->presenta();
             m_albaranesprov->setidproveedor(cur->valor("idproveedor"));
             m_albaranesprov->inicializa();
             m_listfacturasprov->setidproveedor(cur->valor("idproveedor"));
-            m_listfacturasprov->inicializa();
+            m_listfacturasprov->presenta();
             m_listpagosprov->setidproveedor(cur->valor("idproveedor"));
-            m_listpagosprov->inicializa();
+            m_listpagosprov->presenta();
 
             /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
             setCaption("Proveedor "+cur->valor("nomproveedor"));

@@ -23,17 +23,18 @@
 class PedidosClienteList : public PedidosClienteListBase
 {
 Q_OBJECT
-public:
+private:
    company *companyact;
    int m_modo; // == 0 es modo edici�
             // ==1 es modo selector.
    QString m_idpedidocliente;
-
+    void inicializa();
+public:
     PedidosClienteList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
     PedidosClienteList(company *, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
 
     ~PedidosClienteList();
-    void inicializa();
+    void presenta();
     void modoseleccion() {m_modo=1;};
     void modoedicion() {m_modo=0;};
     void imprimir();
