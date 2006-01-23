@@ -84,7 +84,7 @@ void articleslist::guardaconfig() {
     mver_stockarticulo->isChecked() ? aux += "1,":aux+="0,";
     mver_pvparticulo->isChecked() ? aux += "1,":aux+="0,";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confarticleslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confarticleslist.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
@@ -100,7 +100,7 @@ void articleslist::guardaconfig() {
 void articleslist::cargaconfig() {
     _depura("articleslist::INIT_cargaconfig()\n",0);
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confarticleslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confarticleslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
@@ -457,7 +457,7 @@ void articleslist::Imprimir() {
     _depura("articleslist::INIT_Imprimir()\n",0);
 
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"articulos.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"/articulos.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"articulos.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -475,10 +475,10 @@ void articleslist::Imprimir() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 
     system (archivologo.ascii());
@@ -510,7 +510,7 @@ void articleslist::s_imprimir1() {
     _depura("articleslist::INIT_s_imprimir1()\n",0);
 
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"articulos1.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"/articulos1.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"articulos1.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -528,10 +528,10 @@ void articleslist::s_imprimir1() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 
     system (archivologo.ascii());

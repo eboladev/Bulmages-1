@@ -111,7 +111,7 @@ void providerslist::guardaconfig() {
     mver_urlproveedor->isChecked() ? aux += "1,":aux+="0,";
     mver_clavewebproveedor->isChecked() ? aux += "1,":aux+="0,";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confproviderslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confproviderslist.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
@@ -123,7 +123,7 @@ void providerslist::guardaconfig() {
 }// end guardaconfig()
 
 void providerslist::cargaconfig() {
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confproviderslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confproviderslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
@@ -385,7 +385,7 @@ void providerslist::s_removeProvider() {
   */
 void providerslist::s_printProviders() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"proveedores.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"/proveedores.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"proveedores.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -399,9 +399,9 @@ void providerslist::s_printProviders() {
     /// Copiamos el logo
 
 #ifdef WINDOWS
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
     system (archivologo.ascii());
 

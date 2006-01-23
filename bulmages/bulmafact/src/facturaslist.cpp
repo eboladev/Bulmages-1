@@ -60,7 +60,7 @@ void FacturasList::guardaconfig() {
     mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
     mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conffacturaslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conffacturaslist.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
@@ -73,7 +73,7 @@ for (int i = 0; i < m_list->numCols(); i++)
 }// end guardaconfig()
 
 void FacturasList::cargaconfig() {
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conffacturaslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conffacturaslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
@@ -355,7 +355,7 @@ void FacturasList::s_edit() {
 void FacturasList::s_print() {
 
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"facturas.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"/facturas.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"facturas.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -373,10 +373,10 @@ void FacturasList::s_print() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 
     system (archivologo.ascii());

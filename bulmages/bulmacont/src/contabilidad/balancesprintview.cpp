@@ -44,7 +44,7 @@ balancesprintview::~balancesprintview() {}// end ~balancesprintview
  * pasar a hacer la impresión.                                                   *
  *********************************************************************************/
 void balancesprintview::accept() {
-    QString arch = confpr->valor(CONF_DIR_USER)+"/balance.txt";
+    QString arch = confpr->valor(CONF_DIR_USER)+"balance.txt";
 
     string cad;
     QString fechainicial = fechain->text();
@@ -102,7 +102,7 @@ void balancesprintview::accept() {
         fclose(mifile);
     }// end if
 
-    QString cadena = confpr->valor(CONF_EDITOR)+" "+confpr->valor(CONF_DIR_USER)+"/balance.txt &";
+    QString cadena = confpr->valor(CONF_EDITOR)+" "+confpr->valor(CONF_DIR_USER)+"balance.txt &";
     system(cadena.ascii());
 }// end accept
 

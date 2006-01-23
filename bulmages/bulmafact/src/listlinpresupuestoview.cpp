@@ -40,7 +40,7 @@ void listlinpresupuestoview::guardaconfig() {
     _depura("listlinpresupuestoview::guardaconfig",0);
     QString aux = "";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpresupuestoview.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinpresupuestoview.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         for (int i = 0; i < numCols(); i++) {
@@ -52,7 +52,7 @@ void listlinpresupuestoview::guardaconfig() {
 
 void listlinpresupuestoview::cargaconfig() {
 	_depura("listlinpresupuestoview::cargaconfig",0);
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpresupuestoview.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinpresupuestoview.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );

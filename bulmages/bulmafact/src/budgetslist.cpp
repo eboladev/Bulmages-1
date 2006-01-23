@@ -73,7 +73,7 @@ void BudgetsList::guardaconfig() {
     mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
     mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confbudgetslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confbudgetslist.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
@@ -86,7 +86,7 @@ void BudgetsList::guardaconfig() {
 
 void BudgetsList::cargaconfig() {
     _depura("BudgetsList::cargaconfig",0);
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confbudgetslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confbudgetslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );

@@ -197,7 +197,7 @@ void AlbaranCliente::imprimirAlbaranCliente() {
     base basesimp;
 
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albaran.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"/albaran.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"albaran.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -215,10 +215,10 @@ void AlbaranCliente::imprimirAlbaranCliente() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 
     system (archivologo.ascii());

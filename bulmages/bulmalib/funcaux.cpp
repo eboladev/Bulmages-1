@@ -206,8 +206,6 @@ void generaPDF(const QString arch) {
 	QDir::setCurrent(confpr->valor(CONF_DIR_USER));
 	QString cadsys;
 #ifdef WINDOWS
-//	cadsys = "cd " + confpr->valor(CONF_DIR_USER)+" & ";
-
 	cadsys = confpr->valor(CONF_PYTHON)+" "+confpr->valor(CONF_PROGDATA)+"trml2pdf\\trml2pdf.py "+arch+".rml > "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
 	system (cadsys.ascii());
 	_depura(cadsys,0);

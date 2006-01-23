@@ -78,7 +78,7 @@ void CobrosList::guardaconfig() {
     mver_previsioncobro->isChecked() ? aux += "1,":aux+="0,";
     mver_comentcobro->isChecked() ? aux += "1,":aux+="0,";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confcobroslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confcobroslist.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
@@ -90,7 +90,7 @@ void CobrosList::guardaconfig() {
 }// end guardaconfig()
 
 void CobrosList::cargaconfig() {
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confcobroslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confcobroslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
@@ -321,7 +321,7 @@ void CobrosList::s_nuevoCobro() {
 
 void CobrosList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"cobros.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"/cobros.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"cobros.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -339,10 +339,10 @@ void CobrosList::imprimir() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 
     system (archivologo.ascii());

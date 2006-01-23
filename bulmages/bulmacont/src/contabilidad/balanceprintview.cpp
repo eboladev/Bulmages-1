@@ -126,9 +126,9 @@ void BalancePrintView::presentar(char *tipus) {
     bool superiores = checksuperiores->isChecked();
 
     if (txt | html | kugar) {
-	QString archivo = confpr->valor(CONF_DIR_USER)+"/balance.txt";
-	QString archivokugar = confpr->valor(CONF_DIR_USER)+"/balance.kud";
-	QString archivohtml = confpr->valor(CONF_DIR_USER)+"/balance.html";
+	QString archivo = confpr->valor(CONF_DIR_USER)+"balance.txt";
+	QString archivokugar = confpr->valor(CONF_DIR_USER)+"balance.kud";
+	QString archivohtml = confpr->valor(CONF_DIR_USER)+"balance.html";
 	fprintf(stderr,"%s\n",archivo.ascii());
 
         ofstream fitxersortidakugar(archivokugar.ascii());   // creamos los ficheros de salida
@@ -344,15 +344,15 @@ void BalancePrintView::presentar(char *tipus) {
             fitxersortidatxt.close();
             // Dependiendo del formato de salida ejecutaremos el programa correspondiente
             if (txt) { //presentacion txt normal
-		QString cadena = confpr->valor(CONF_EDITOR)+" "+confpr->valor(CONF_DIR_USER)+"/balance.txt";
+		QString cadena = confpr->valor(CONF_EDITOR)+" "+confpr->valor(CONF_DIR_USER)+"balance.txt";
 		system (cadena.ascii());
             }// end if
             if (html) { //presentacion html normal
-		QString cadena = confpr->valor(CONF_NAVEGADOR)+" "+confpr->valor(CONF_DIR_USER)+"/balance.txt";
+		QString cadena = confpr->valor(CONF_NAVEGADOR)+" "+confpr->valor(CONF_DIR_USER)+"balance.txt";
 		system (cadena.ascii());
             }
             if (kugar) { //presentacion kugar normal
-		QString cadena = "kugar "+confpr->valor(CONF_DIR_USER)+"/balance.txt";
+		QString cadena = "kugar "+confpr->valor(CONF_DIR_USER)+"balance.txt";
 		system (cadena.ascii());
             }
 

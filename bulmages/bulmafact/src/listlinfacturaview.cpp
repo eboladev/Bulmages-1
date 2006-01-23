@@ -39,7 +39,7 @@ void ListLinFacturaView::guardaconfig() {
     _depura("ListLinFacturaView::guardaconfig",0);
     QString aux = "";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinfacturaview.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinfacturaview.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         for (int i = 0; i < numCols(); i++) {
@@ -51,7 +51,7 @@ void ListLinFacturaView::guardaconfig() {
 
 void ListLinFacturaView::cargaconfig() {
 	_depura("ListLinFacturaView::cargaconfig",0);
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinfacturaview.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinfacturaview.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );

@@ -55,7 +55,7 @@ void ListLinPedidoProveedorView::guardaconfig() {
     _depura("ListLinPedidoProveedorView::guardaconfig",0);
     QString aux = "";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpedidoproveedorview.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinpedidoproveedorview.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         for (int i = 0; i < numCols(); i++) {
@@ -67,7 +67,7 @@ void ListLinPedidoProveedorView::guardaconfig() {
 
 void ListLinPedidoProveedorView::cargaconfig() {
 	_depura("ListLinPedidoProveedorView::cargaconfig",0);
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpedidoproveedorview.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinpedidoproveedorview.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );

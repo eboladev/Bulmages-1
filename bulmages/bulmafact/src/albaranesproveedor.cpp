@@ -96,7 +96,7 @@ void AlbaranesProveedor::guardaconfig() {
     mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
     mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confalbaranesproveedor.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confalbaranesproveedor.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
@@ -108,7 +108,7 @@ void AlbaranesProveedor::guardaconfig() {
 }// end guardaconfig()
 
 void AlbaranesProveedor::cargaconfig() {
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confalbaranesproveedor.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confalbaranesproveedor.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
@@ -428,7 +428,7 @@ void AlbaranesProveedor::s_contextMenu(int, int, int button, const QPoint &poin)
 
 void AlbaranesProveedor::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albaranesproveedor.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"/albaranesproveedor.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"albaranesproveedor.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -441,9 +441,9 @@ void AlbaranesProveedor::imprimir() {
 
     /// Copiamos el logo
 #ifdef WINDOWS
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 	system (archivologo.ascii());
 

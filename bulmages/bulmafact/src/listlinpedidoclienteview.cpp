@@ -56,7 +56,7 @@ void ListLinPedidoClienteView::guardaconfig() {
     _depura("ListLinPedidoClienteView::guardaconfig",0);
     QString aux = "";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpedidoclienteview.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinpedidoclienteview.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         for (int i = 0; i < numCols(); i++) {
@@ -68,7 +68,7 @@ void ListLinPedidoClienteView::guardaconfig() {
 
 void ListLinPedidoClienteView::cargaconfig() {
 	_depura("ListLinPedidoClienteView::cargaconfig",0);
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinpedidoclienteview.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinpedidoclienteview.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );

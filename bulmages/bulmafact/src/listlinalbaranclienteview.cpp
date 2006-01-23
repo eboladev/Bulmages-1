@@ -39,7 +39,7 @@ void ListLinAlbaranClienteView::guardaconfig() {
     _depura("ListLinAlbaranClienteView::guardaconfig",0);
     QString aux = "";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinalbaranclienteview.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinalbaranclienteview.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         for (int i = 0; i < numCols(); i++) {
@@ -51,7 +51,7 @@ void ListLinAlbaranClienteView::guardaconfig() {
 
 void ListLinAlbaranClienteView::cargaconfig() {
 	_depura("ListLinAlbaranClienteView::cargaconfig",0);
-    QFile file( confpr->valor(CONF_DIR_USER)+"/conflistlinalbaranclienteview.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinalbaranclienteview.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );

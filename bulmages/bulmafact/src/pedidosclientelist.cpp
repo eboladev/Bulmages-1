@@ -60,7 +60,7 @@ void PedidosClienteList::guardaconfig() {
     mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
     mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confpedidosclientelist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confpedidosclientelist.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
@@ -72,7 +72,7 @@ void PedidosClienteList::guardaconfig() {
 }// end guardaconfig()
 
 void PedidosClienteList::cargaconfig() {
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confpedidosclientelist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confpedidosclientelist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
@@ -335,7 +335,7 @@ void PedidosClienteList::doubleclicked(int a, int , int , const QPoint &) {
 
 void PedidosClienteList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"pedidoscliente.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"/pedidoscliente.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"pedidoscliente.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -353,10 +353,10 @@ void PedidosClienteList::imprimir() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 
     QFile file;

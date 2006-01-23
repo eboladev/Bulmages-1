@@ -91,7 +91,7 @@ void ClientDelivNotesList::guardaconfig() {
     mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
     mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confclientdelivnoteslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confclientdelivnoteslist.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
@@ -103,7 +103,7 @@ void ClientDelivNotesList::guardaconfig() {
 }// end guardaconfig()
 
 void ClientDelivNotesList::cargaconfig() {
-    QFile file( confpr->valor(CONF_DIR_USER)+"/confclientdelivnoteslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confclientdelivnoteslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
@@ -422,7 +422,7 @@ void ClientDelivNotesList::s_removeClientDelivNote() {
 
 void ClientDelivNotesList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albaranescliente.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"/albaranescliente.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"albaranescliente.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
@@ -440,10 +440,10 @@ void ClientDelivNotesList::imprimir() {
 
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"/logo.jpg";
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 
     system (archivologo.ascii());
