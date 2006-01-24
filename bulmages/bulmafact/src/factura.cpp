@@ -19,7 +19,6 @@
 
 
 class Fixed;
-
 typedef QMap<QString, Fixed> base;
 
 
@@ -353,9 +352,6 @@ void Factura::imprimirFactura() {
         stream << buff;
         file.close();
     }
-
-
-
     invocaPDF("facturacliente");
 } //end imprimirPresupuesto
 

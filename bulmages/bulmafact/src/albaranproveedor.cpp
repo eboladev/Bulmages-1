@@ -90,7 +90,7 @@ void AlbaranProveedor::cargaAlbaranProveedor(QString idbudget) {
         mdb_numalbaranp= cur->valor("numalbaranp");
         mdb_fechaalbaranp= cur->valor("fechaalbaranp");
         mdb_comentalbaranp= cur->valor("comentalbaranp");
-        mdb_loginusuario = cur->valor("loginusuario");
+        mdb_loginusuario = "";
 	mdb_idforma_pago = cur->valor("idforma_pago");
 	mdb_descalbaranp = cur->valor("descalbaranp");
 	mdb_refalbaranp = cur->valor("refalbaranp");

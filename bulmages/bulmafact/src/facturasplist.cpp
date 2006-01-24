@@ -24,26 +24,23 @@
 
 #define COL_REFFACTURAP 0
 #define COL_IDFACTURAP 1
-#define COL_CODIGOALMACEN 2
-#define COL_NUMFACTURAP 3
-#define COL_NOMCLIENTE 4
-#define COL_FFACTURAP 5
-#define COL_CONTACTFACTURAP 6
-#define COL_TELFACTURAP 7
-#define COL_COMENTFACTURAP 8
-#define COL_IDUSUARI 9
-#define COL_IDCLIENTE 10
-#define COL_IDALMACEN 11
-#define COL_IDSERIE_FACTURAP 12
-#define COL_TOTALFACTURAPROVEEDOR 13
-#define COL_TOTALBASEIMP 14
-#define COL_TOTALIMPUESTOS 15
+#define COL_NUMFACTURAP 2
+#define COL_NOMCLIENTE 3
+#define COL_FFACTURAP 4
+#define COL_CONTACTFACTURAP 5
+#define COL_TELFACTURAP 6
+#define COL_COMENTFACTURAP 7
+#define COL_IDUSUARI 8
+#define COL_IDCLIENTE 9
+#define COL_IDSERIE_FACTURAP 10
+#define COL_TOTALFACTURAPROVEEDOR 11
+#define COL_TOTALBASEIMP 12
+#define COL_TOTALIMPUESTOS 13
 
 void FacturasProveedorList::guardaconfig() {
     QString aux = "";
     mver_reffacturap->isChecked() ? aux += "1,":aux+="0,";
     mver_idfacturap->isChecked() ? aux += "1,":aux+="0,";
-    mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
     mver_numfacturap->isChecked() ? aux += "1,":aux+="0,";
     mver_nomcliente->isChecked() ? aux += "1,":aux+="0,";
     mver_ffacturap->isChecked() ? aux += "1,":aux+="0,";
@@ -52,7 +49,6 @@ void FacturasProveedorList::guardaconfig() {
     mver_comentfacturap->isChecked() ? aux += "1,":aux+="0,";
     mver_idusuari->isChecked() ? aux += "1,":aux+="0,";
     mver_idcliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_idalmacen->isChecked() ? aux += "1,":aux+="0,";
     mver_idserie_facturap->isChecked() ? aux += "1,":aux+="0,";
     mver_totalfacturaproveedor->isChecked() ? aux += "1,":aux+="0,";
     mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
@@ -85,7 +81,6 @@ void FacturasProveedorList::cargaconfig() {
 
     mver_reffacturap->setChecked(line.at(0)=='1');
     mver_idfacturap->setChecked(line.at(2)=='1');
-    mver_codigoalmacen->setChecked(line.at(4)=='1');
     mver_numfacturap->setChecked(line.at(6)=='1');
     mver_nomcliente->setChecked(line.at(8)=='1');
     mver_ffacturap->setChecked(line.at(10)=='1');
@@ -94,7 +89,6 @@ void FacturasProveedorList::cargaconfig() {
     mver_comentfacturap->setChecked(line.at(16)=='1');
     mver_idusuari->setChecked(line.at(18)=='1');
     mver_idcliente->setChecked(line.at(20)=='1');
-    mver_idalmacen->setChecked(line.at(22)=='1');
     mver_idserie_facturap->setChecked(line.at(24)=='1');
     mver_totalfacturaproveedor->setChecked(line.at(26)=='1');
     mver_totalbaseimp->setChecked(line.at(28)=='1');
@@ -112,11 +106,6 @@ void FacturasProveedorList::s_configurar() {
         m_list->showColumn(COL_IDFACTURAP);
     else
         m_list->hideColumn(COL_IDFACTURAP);
-
-    if(mver_codigoalmacen->isChecked() )
-        m_list->showColumn(COL_CODIGOALMACEN);
-    else
-        m_list->hideColumn(COL_CODIGOALMACEN);
 
     if(mver_numfacturap->isChecked() )
         m_list->showColumn(COL_NUMFACTURAP);
@@ -157,11 +146,6 @@ void FacturasProveedorList::s_configurar() {
         m_list->showColumn(COL_IDCLIENTE);
     else
         m_list->hideColumn(COL_IDCLIENTE);
-
-    if(mver_idalmacen->isChecked() )
-        m_list->showColumn(COL_IDALMACEN);
-    else
-        m_list->hideColumn(COL_IDALMACEN);
 
     if(mver_idserie_facturap->isChecked() )
         m_list->showColumn(COL_IDSERIE_FACTURAP);
@@ -227,11 +211,10 @@ void FacturasProveedorList::inicializa() {
     m_list->setSelectionMode( Q3Table::SingleRow );
     m_list->setSorting( TRUE );
     m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(16);
+    m_list->setNumCols(15);
     m_list->horizontalHeader()->setLabel( COL_REFFACTURAP, tr( "Referencia" ) );
     m_list->horizontalHeader()->setLabel( COL_IDFACTURAP, tr( "COL_IDFACTURAP" ) );
     m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMFACTURAP, tr( "N Presupuesto" ) );
     m_list->horizontalHeader()->setLabel( COL_FFACTURAP, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_IDSERIE_FACTURAP, tr( "Fecha" ) );
@@ -240,14 +223,9 @@ void FacturasProveedorList::inicializa() {
     m_list->horizontalHeader()->setLabel( COL_COMENTFACTURAP, tr( "Comentarios" ) );
     m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("COL_IDUSUARI") );
     m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
-    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("COL_IDALMACEN") );
     m_list->horizontalHeader()->setLabel( COL_TOTALFACTURAPROVEEDOR, tr("Total") );
     m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
     m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
-
-    if (confpr->valor(CONF_MOSTRAR_ALMACEN)!="YES") {
-        m_list->hideColumn(COL_CODIGOALMACEN);
-    }// end if
 
     //   listado->setPaletteBackgroundColor(QColor(150,230,230));
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
@@ -413,8 +391,6 @@ void FacturasProveedorList::s_imprimir() {
         fitxersortidatxt += "	<td>Referencia</td>";
     if(mver_idfacturap->isChecked() )
         fitxersortidatxt += "	<td>Id.</td>";
-    if(mver_codigoalmacen->isChecked() )
-        fitxersortidatxt += "	<td>Cod. Almacen</td>";
     if(mver_numfacturap->isChecked() )
         fitxersortidatxt += "	<td>Num</td>";
     if(mver_nomcliente->isChecked() )
@@ -431,8 +407,6 @@ void FacturasProveedorList::s_imprimir() {
         fitxersortidatxt += "	<td>Id. Usuario</td>";
     if(mver_idcliente->isChecked() )
         fitxersortidatxt += "	<td>Id. Cliente</td>";
-    if(mver_idalmacen->isChecked() )
-        fitxersortidatxt += "	<td>Impuestos</td>";
     if(mver_idserie_facturap->isChecked() )
         fitxersortidatxt += "	<td>Id. Serie_Factura</td>";
     if(mver_totalfacturaproveedor->isChecked() )
@@ -453,8 +427,6 @@ void FacturasProveedorList::s_imprimir() {
             fitxersortidatxt += "<td>"+cur->valor("reffacturap")+"</td>";
         if(mver_idfacturap->isChecked() )
             fitxersortidatxt += "<td>"+cur->valor("idfacturap")+"</td>";
-        if(mver_codigoalmacen->isChecked() )
-            fitxersortidatxt += "<td>"+cur->valor("codigoalmacen")+"</td>";
         if(mver_numfacturap->isChecked() )
             fitxersortidatxt += "<td>"+cur->valor("numfacturap")+"</td>";
         if(mver_nomcliente->isChecked() )
@@ -471,8 +443,6 @@ void FacturasProveedorList::s_imprimir() {
             fitxersortidatxt += "<td>"+cur->valor("idusuari")+"</td>";
         if(mver_idcliente->isChecked() )
             fitxersortidatxt += "<td>"+cur->valor("idproveedor")+"</td>";
-        if(mver_idalmacen->isChecked() )
-            fitxersortidatxt += "<td>"+cur->valor("idalmacen")+"</td>";
         if(mver_idserie_facturap->isChecked() )
             fitxersortidatxt += "<td>"+cur->valor("idserie_facturap")+"</td>";
 

@@ -64,10 +64,8 @@ public:
 public slots:
 virtual void s_comentfacturaptextChanged() { setcomentfacturap(m_comentfacturap->text());};
 
-  virtual void s_almacenvalueChanged(QString val) {setidalmacen(val);};
   virtual void s_numfacturaptextChanged(const QString &val) {setnumfacturap(val);};
   virtual void s_reffacturaptextChanged(const QString &val) {setreffacturap(val);};
-  virtual void s_codigoserie_facturaptextChanged(const QString &val) {setcodigoserie_facturap(val);};
 
   virtual void s_proveedorvalueChanged(QString val) {setidproveedor(val);};
   virtual void s_fechafacturapvalueChanged(QString val) {setfechafacturap(val);};

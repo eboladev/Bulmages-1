@@ -14,6 +14,13 @@
 #include <qfile.h>
 //Added by qt3to4:
 #include <QTextStream>
+#include <funcaux.h>
+#include <plugins.h>
+#include <fixed.h>
+
+class Fixed;
+typedef QMap<QString, Fixed> base;
+
 
 FacturaProveedor::FacturaProveedor(company *comp) {
     companyact=comp;
@@ -42,13 +49,11 @@ void FacturaProveedor::borraFacturaProveedor() {
 void FacturaProveedor::vaciaFacturaProveedor() {
     mdb_idfacturap = "";
     mdb_idproveedor= "";
-    mdb_idalmacen= "";
     mdb_numfacturap= "";
     mdb_ffacturap= "";
     mdb_reffacturap = "";
     mdb_comentfacturap= "";
     mdb_procesadafacturap="FALSE";
-    mdb_codigoserie_facturap="";
     mdb_idforma_pago="";
     mdb_descfacturap="";
 }// end vaciaFacturaProveedor
@@ -56,13 +61,11 @@ void FacturaProveedor::vaciaFacturaProveedor() {
 void FacturaProveedor::pintaFacturaProveedor() {
     fprintf(stderr,"pintaFacturaProveedor\n");
     pintaidproveedor(mdb_idproveedor);
-    pintaidalmacen(mdb_idalmacen);
     pintanumfacturap(mdb_numfacturap);
     pintafechafacturap(mdb_ffacturap);
     pintareffacturap(mdb_reffacturap);
     pintacomentfacturap(mdb_comentfacturap);
     pintaprocesadafacturap(mdb_procesadafacturap);
-    pintacodigoserie_facturap(mdb_codigoserie_facturap);
     pintaidforma_pago(mdb_idforma_pago);
     pintadescfacturap(mdb_descfacturap);
     // Pinta el subformulario de detalle del FacturaProveedor.
@@ -81,10 +84,8 @@ void FacturaProveedor::cargaFacturaProveedor(QString idbudget) {
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
         mdb_idproveedor= cur->valor("idproveedor");
-        mdb_idalmacen= cur->valor("idalmacen");
         mdb_numfacturap= cur->valor("numfacturap");
         mdb_ffacturap= cur->valor("ffacturap");
-	mdb_codigoserie_facturap = cur->valor("codigoserie_facturap");
 
         mdb_comentfacturap= cur->valor("comentfacturap");
         mdb_reffacturap = cur->valor("reffacturap");
@@ -157,25 +158,52 @@ void FacturaProveedor::guardaFacturaProveedor() {
 }// end guardaFacturaProveedor
 
 
+
+
 void FacturaProveedor::imprimirFacturaProveedor() {
-    /// Copiamos el archivo
+	/// Hacemos el lanzamiento de plugins para este caso.
+	int res = g_plugins->lanza("imprimirFacturaProveedor",this);
+	if (res) return;
+
+    base basesimp;
+
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"facturap.rml";
-    archivo = "cp "+archivo+" /tmp/facturap.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"facturap.rml";
+    QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+
+    /// Copiamos el archivo
+#ifdef WINDOWS
+
+    archivo = "copy "+archivo+" "+archivod;
+#else
+
+    archivo = "cp "+archivo+" "+archivod;
+#endif
+
     system (archivo.ascii());
-    
+
     /// Copiamos el logo
-    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
-    archivo = "cp "+archivo+" /tmp/logo.jpg";
-    system (archivo.ascii());
-    
+
+#ifdef WINDOWS
+
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+#else
+
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+#endif
+
+    system (archivologo.ascii());
+
+
     QFile file;
-    file.setName( "/tmp/facturap.rml" );
+    file.setName(archivod);
     file.open( QIODevice::ReadOnly );
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
-    QString fitxersortidatxt;
+    QString fitxersortidatxt="";
     // L�ea de totales del presupuesto
+
 
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+mdb_idproveedor;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -186,61 +214,123 @@ void FacturaProveedor::imprimirFacturaProveedor() {
         buff.replace("[nomproveedor]",cur->valor("nomproveedor"));
         buff.replace("[cifproveedor]",cur->valor("cifproveedor"));
     }// end if
+    delete cur;
+
     buff.replace("[numfacturap]",mdb_numfacturap);
     buff.replace("[ffacturap]",mdb_ffacturap);
     buff.replace("[comentfacturap]",mdb_comentfacturap);
     buff.replace("[descfacturap]",mdb_descfacturap);
     buff.replace("[reffacturap]",mdb_reffacturap);
-    buff.replace("[codigoserie_facturap]",mdb_codigoserie_facturap);
-    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td>Concepto</td>";
-    fitxersortidatxt += "	<td>Cantidad</td>";
-    fitxersortidatxt += "	<td>Precio Und.</td>";
-    fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "</tr>";
 
+    /// Impresi� de la tabla de contenidos.
+    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
+    fitxersortidatxt += "<tr>\n";
+    fitxersortidatxt += "	<td>Cod.</td>\n";
+    fitxersortidatxt += "	<td>Concepto</td>\n";
+    fitxersortidatxt += "	<td>Cant.</td>\n";
+    fitxersortidatxt += "	<td>Precio</td>\n";
+    fitxersortidatxt += "	<td>Desc.</td>\n";
+    fitxersortidatxt += "	<td>Total</td>\n";
+    fitxersortidatxt += "</tr>\n";
     QString l;
+
+    int i=0;// Contador que sirve para poner lineas de más en caso de que sea preciso.
+
     LinFacturaProveedor *linea;
-    uint i = 0;
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td>"+linea->desclfacturap()+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlfacturap().toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplfacturap().toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlfacturap().toFloat() * linea->pvplfacturap().toFloat())+"</td>";
+        Fixed base = Fixed(linea->cantlfacturap().ascii()) * Fixed(linea->pvplfacturap().ascii());
+        basesimp[linea->ivalfacturap()] = basesimp[linea->ivalfacturap()] + base - base * Fixed(linea->descuentolfacturap().ascii()) /100;
+
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "	<td>"+linea->codigocompletoarticulo()+"</td>\n";
+        fitxersortidatxt += "	<td>"+linea->desclfacturap()+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->cantlfacturap().ascii())+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->pvplfacturap().ascii())+"</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",linea->descuentolfacturap().ascii())+" %</td>\n";
+        fitxersortidatxt += "	<td>"+l.sprintf("%s",(base - base * Fixed (linea->descuentolfacturap()) /100).toQString().ascii())+"</td>\n";
         fitxersortidatxt += "</tr>";
         i++;
     }// end for
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Base</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Iva</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "</blockTable>";
 
+    while (i++ < 15)
+        fitxersortidatxt += "<tr></tr>";
+
+    fitxersortidatxt += "</blockTable>\n";
     buff.replace("[story]",fitxersortidatxt);
+
+
+    Fixed basei("0.00");
+    base::Iterator it;
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        basei =basei + it.data();
+    }// end for
+
+    /// Impresi� de los descuentos
+    fitxersortidatxt = "";
+    Fixed porcentt("0.00");
+    DescuentoFacturaProv *linea1;
+    if (listadescuentos->m_lista.first()) {
+        fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "	<td>Descuento</td>\n";
+        fitxersortidatxt += "	<td>Porcentaje</td>\n";
+        fitxersortidatxt += "	<td>Total</td>\n";
+        fitxersortidatxt += "</tr>\n";
+        for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
+            porcentt = porcentt + Fixed(linea1->proporciondfacturap().ascii());
+            fitxersortidatxt += "<tr>\n";
+            fitxersortidatxt += "	<td>"+linea1->conceptdfacturap()+"</td>\n";
+            fitxersortidatxt += "	<td>"+l.sprintf("%s",linea1->proporciondfacturap().ascii())+" %</td>\n";
+            fitxersortidatxt += "	<td>"+l.sprintf("-%s",( Fixed(linea1->proporciondfacturap())*basei/100).toQString().ascii())+"</td>\n";
+            fitxersortidatxt += "</tr>";
+        }// end for
+        fitxersortidatxt += "</blockTable>\n";
+    }// end if
+    buff.replace("[descuentos]",fitxersortidatxt);
+
+    /// Impresión de los totales
+    fitxersortidatxt= "";
+    QString tr1 = "";	// Rellena el primer tr de titulares
+    QString tr2 = "";	// Rellena el segundo tr de cantidades
+    fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
+
+
+    Fixed totbaseimp("0.00");
+    Fixed parbaseimp("0.00");
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0) {
+            parbaseimp = it.data()-it.data()*porcentt/100;
+        } else {
+            parbaseimp = it.data();
+        }// end if
+        totbaseimp = totbaseimp + parbaseimp;
+        tr1 += "	<td>Base "+it.key()+" %</td>\n";
+        tr2 += "	<td>"+l.sprintf("%s",parbaseimp.toQString().ascii())+"</td>\n";
+    }// end for
+
+    Fixed totiva("0.0");
+    Fixed pariva("0.0");
+    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+        if (porcentt > 0) {
+            pariva = (it.data()-it.data()*porcentt/100)* Fixed(it.key()) /100;
+        } else {
+            pariva = it.data()* Fixed(it.key()) /100;
+        }// end if
+        totiva = totiva + pariva;
+        tr1 += "	<td>Iva "+it.key()+" %</td>\n";
+        tr2 += "	<td>"+l.sprintf("%s", pariva.toQString().ascii())+"</td>\n";
+    }// end for
+    tr1 += "	<td>Total </td>\n";
+    tr2 += "	<td>"+l.sprintf("%s",(totiva+totbaseimp).toQString().ascii())+"</td>\n";
+    fitxersortidatxt += "<tr>"+tr1+"</tr><tr>"+tr2+"</tr></blockTable>\n";
+    buff.replace("[totales]",fitxersortidatxt);
+
+
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << buff;
         file.close();
-    }// end if
-    system("trml2pdf.py /tmp/facturap.rml > /tmp/facturap.pdf");
-    system("kpdf /tmp/facturap.pdf");
+    }
+    invocaPDF("facturap");
 } //end imprimirFacturaProveedor
-
-
 

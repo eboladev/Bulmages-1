@@ -85,7 +85,7 @@ configuracion::configuracion() {
 #ifndef WIN32
     QString dir1 = getenv("HOME");
     dir1 = dir1 + "/"+ CONFLOCAL;
-    leeconfig (dir1.toAscii().data());
+    leeconfig (dir1);
 #endif
 
     setValor(CONF_DIR_USER,dir);

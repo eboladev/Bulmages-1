@@ -16,6 +16,7 @@
 #include <QTextStream>
 
 #include "fixed.h"
+#include "funcaux.h"
 
 typedef QMap<QString, Fixed> base;
 
@@ -284,7 +285,7 @@ void PedidoProveedor::imprimirPedidoProveedor() {
 
 
 void PedidoProveedor::calculaypintatotales() {
-    fprintf(stderr,"calculaypintatotales \n");
+    _depura("calculaypintatotales \n",0);
     base basesimp;
     LinPedidoProveedor *linea;
     /// Impresi� de los contenidos
@@ -338,4 +339,5 @@ void PedidoProveedor::calculaypintatotales() {
         }// end if
 	totiva = totiva + pariva;
     }// end for
-    pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);}// end calculaypintatotales
+    pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
+}// end calculaypintatotales

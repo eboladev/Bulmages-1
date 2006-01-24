@@ -118,15 +118,16 @@ void PedidoProveedorView::s_verpresupuesto() {
 
 
 #include "albaranproveedorview.h"
-/// Se encarga de generar un pedido a partir del presupuesto.
+/// Se encarga de generar un albaran a partir del pedido.
 void PedidoProveedorView::generarAlbaran() {
-/*
+
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funci�.
-    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='"+mdb_refpedidoproveedor+"'";
+    QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp='"+mdb_refpedidoproveedor+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Albaranes de Proveedors", "company"));
-        bud->cargaAlbaranProveedor(cur->valor("idalbaran"));
+        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,NULL,theApp->translate("Edicion de Albaranes de Proveedores", "company"));
+		companyact->m_pWorkspace->addWindow(bud);
+        bud->cargaAlbaranProveedor(cur->valor("idalbaranp"));
         bud->show();
         return;
     }
@@ -145,20 +146,33 @@ void PedidoProveedorView::generarAlbaran() {
 
 
     /// Creamos el pedido.
-    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Proveedors", "company"));
+    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,NULL,theApp->translate("Edicion de Albaranes de Proveedores", "company"));
+	companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaAlbaranProveedor();
-    bud->setcomentalbaran(mdb_comentpedidoproveedor);
-    bud->setdescalbaran(mdb_descpedidoproveedor);
-    bud->setfechaalbaran(mdb_fechapedidoproveedor);
+
+    bud->setcomentalbaranp(mdb_comentpedidoproveedor);
+    bud->setdescalbaranp(mdb_descpedidoproveedor);
+    bud->setfechaalbaranp(mdb_fechapedidoproveedor);
     bud->setidforma_pago(mdb_idforma_pago);
-    bud->setrefalbaran(mdb_refpedidoproveedor);
+    bud->setrefalbaranp(mdb_refpedidoproveedor);
     bud->setidproveedor(mdb_idproveedor);
     bud->setidalmacen(mdb_idalmacen);
+
     QString l;
     LinPedidoProveedor *linea;
     uint i = 0;
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        bud->getlistalineas()->nuevalinea(linea->desclpedidoproveedor(), linea->cantlpedidoproveedor(), linea->pvplpedidoproveedor(),linea->descuentolpedidoproveedor(),  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(), linea->ivalpedidoproveedor());
+
+        bud->getlistalineas()->nuevalinea(
+		linea->desclpedidoproveedor(),
+		linea->cantlpedidoproveedor(),
+		linea->pvplpedidoproveedor(),
+		linea->descuentolpedidoproveedor(),
+		linea->idarticulo(),
+		linea->codigocompletoarticulo(),
+		linea->nomarticulo(),
+		linea->ivalpedidoproveedor()
+	);
         i++;
     }// end for
 
@@ -171,9 +185,8 @@ void PedidoProveedorView::generarAlbaran() {
 
     bud->pintaAlbaranProveedor();
     bud->show();
-    
-*/    
 }// end generarAlbaran
+
 
 
 void PedidoProveedorView::s_nuevoCobro() {

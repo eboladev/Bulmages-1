@@ -310,9 +310,6 @@ void AlbaranesProveedor::inicializa() {
 
 void AlbaranesProveedor::presenta() {
     _depura("AlbaranesProveedor::presenta()\n",1);
-
-
-
     if (companyact != NULL ) {
         cursor2 * cur= companyact->cargacursor("SELECT * FROM albaranp LEFT JOIN proveedor ON albaranp.idproveedor = proveedor.idproveedor LEFT JOIN almacen ON   albaranp.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON albaranp.idforma_pago = forma_pago.idforma_pago WHERE 1=1 "+generaFiltro());
         m_list->setNumRows( cur->numregistros() );
@@ -520,7 +517,7 @@ void AlbaranesProveedor::imprimir() {
     if(mver_fechaalbaranp->isChecked() )
         fitxersortidatxt += "<td>"+cur->valor("fechaalbaranp")+"</td>";
     if(mver_loginusuario->isChecked() )
-        fitxersortidatxt += "<td>"+cur->valor("loginusuario")+"</td>";
+        fitxersortidatxt += "<td>"+cur->valor("idtrabajador")+"</td>";
     if(mver_comentalbaranp->isChecked() )
         fitxersortidatxt += "<td>"+cur->valor("comentalbaranp")+"</td>";
     if(mver_procesadoalbaranp->isChecked() )
