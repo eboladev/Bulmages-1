@@ -50,14 +50,14 @@ linpresupuesto *listlinpresupuesto::linpos(int pos) {
 }// end linpos
 
 
-// Carga l�eas de presupuesto
+// Carga lineas de presupuesto
 int listlinpresupuesto::chargeBudgetLines(QString idbudget) {
 	int error=0;
     vaciar();
     _depura("listlinpresupuesto::chargeBudgetLines\n",0);
     mdb_idpresupuesto = idbudget;
 
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM lpresupuesto, articulo WHERE idpresupuesto="+idbudget+" AND articulo.idarticulo=lpresupuesto.idarticulo","unquery");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM lpresupuesto, articulo WHERE idpresupuesto="+idbudget+" AND articulo.idarticulo=lpresupuesto.idarticulo ORDER BY idlpresupuesto");
     int i=0;
 	if (cur->error()) error=1;
     while (!cur->eof())   {

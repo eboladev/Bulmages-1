@@ -93,7 +93,7 @@ void Inventario::guardaInventario() {
         if (!cur->eof())
             setidinventario (cur->valor("m"));
         delete cur;
-        companyact->commit();
+
     } else {
         /// Se trata de una modificacion
         QString SQLQuery = "UPDATE inventario SET ";
@@ -106,9 +106,9 @@ void Inventario::guardaInventario() {
 		companyact->rollback();
 		return;
 	}// end if
-        companyact->commit();
     }// end if
     listalineas->guardaListControlStock();
+        companyact->commit();
     cargaInventario(mdb_idinventario);
 }// end guardaInventario
 

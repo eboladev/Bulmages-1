@@ -251,8 +251,6 @@ void articleslist::s_configurar() {
 articleslist::articleslist(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
         : articleslistbase(parent, name, flag)  , pgimportfiles(comp) {
     _depura("articleslist::INIT_articleslist()\n",0);
-
-
     companyact = comp;
     m_tipoarticulo->setcompany(comp);
     m_familia->setcompany(comp);
@@ -307,7 +305,6 @@ void articleslist::inicializa() {
 
 void articleslist::presenta() {
     _depura("articleslist::INIT_presenta()\n",0);
-
     cursor2 * cur= companyact->cargacursor(formaQuery());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -321,13 +318,10 @@ void articleslist::presenta() {
         m_list->setText(i,COL_DESCTIPO_IVA,cur->valor("desctipo_iva"));
         m_list->setText(i,COL_STOCKARTICULO, cur->valor("stockarticulo"));
         m_list->setText(i,COL_PVPARTICULO, cur->valor("pvparticulo"));
-
         i++;
         cur->siguienteregistro();
     }// end while
     delete cur;
-
-
     _depura("articleslist::END_presenta()\n",0);
 } //end presenta
 
@@ -408,8 +402,17 @@ QString articleslist::formaQuery() {
     query += "SELECT * FROM articulo LEFT JOIN tipo_iva ON articulo.idtipo_iva = tipo_iva.idtipo_iva WHERE 1=1 ";
     if(m_presentablearticulo->isChecked())
         query += " AND presentablearticulo ";
+    if(m_usadoarticulo->isChecked())
+        query += " AND idarticulo IN (SELECT DISTINCT idarticulo FROM lpresupuesto"
+		" UNION SELECT DISTINCT idarticulo FROM lpedidocliente"
+		" UNION SELECT DISTINCT idarticulo FROM lalbaran"
+		" UNION SELECT DISTINCT idarticulo FROM lfactura"
+		" UNION SELECT DISTINCT idarticulo FROM lpedidoproveedor"
+		" UNION SELECT DISTINCT idarticulo FROM lalbaranp"
+		" UNION SELECT DISTINCT idarticulo FROM lfacturap"
+		") ";
     if(m_filtro->text() != "")
-        query += " AND nomarticulo LIKE '%"+m_filtro->text()+"%' ";
+        query += " AND lower(nomarticulo) LIKE lower('%"+m_filtro->text()+"%') ";
     if(m_familia->idfamilia() != "" ) {
         query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '"+m_familia->codigocompletofamilia()+"%')";
     }// end if

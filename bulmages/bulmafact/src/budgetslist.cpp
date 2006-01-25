@@ -293,22 +293,16 @@ void BudgetsList::presenta() {
             m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
             m_list->setText(i,COL_REFPRESUPUESTO,cur->valor("refpresupuesto"));
             m_list->setText(i,COL_DESCPRESUPUESTO,cur->valor("descpresupuesto"));
-
-            /// Calculamos el total del presupuesto y lo presentamos.
-            cursor2 *cur1 = companyact->cargacursor("SELECT calctotalpres("+cur->valor("idpresupuesto")+") AS total, calcbimppres("+cur->valor("idpresupuesto")+") AS base, calcimpuestospres("+cur->valor("idpresupuesto")+") AS impuestos");
-            m_list->setText(i,COL_TOTALPRESUPUESTO,cur1->valor("total"));
-            m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
-            m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
-            delete cur1;
-
+            m_list->setText(i,COL_TOTALPRESUPUESTO,cur->valor("totalpresupuesto"));
+            m_list->setText(i,COL_TOTALBASEIMP, cur->valor("bimppresupuesto"));
+            m_list->setText(i,COL_TOTALIMPUESTOS, cur->valor("imppresupuesto"));
             i++;
             cur->siguienteregistro();
         }// end while
         delete cur;
 
-
         /// Hacemos el calculo del total.
-        cur = companyact->cargacursor("SELECT SUM(calctotalpres(idpresupuesto)) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
+        cur = companyact->cargacursor("SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
     }// end if

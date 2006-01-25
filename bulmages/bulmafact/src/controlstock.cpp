@@ -94,7 +94,10 @@ void ControlStock::borrar() {
 
 void ControlStock::guardaControlStock() {
     QString SQLQuery;
-    companyact->begin();
+
+/// Como se ejecuta dentro de una transaccion mayor no lo ponemos en una 
+/// Transaccion.
+//    companyact->begin();
     if (mdb_idinventariooriginal == "") {
         SQLQuery = "INSERT INTO controlstock (idinventario , idalmacen , idarticulo , stocknewcontrolstock , punteocontrolstock) VALUES ("+
                            companyact->sanearCadena(mdb_idinventario)+","+
@@ -116,10 +119,11 @@ void ControlStock::guardaControlStock() {
 
     int error = companyact->ejecuta(SQLQuery);
     if (error) {
-        companyact->rollback();
+//        companyact->rollback();
         return;
     }// end if
-    companyact->commit();
+ //   companyact->commit();
+
 }// end guardaControlStock
 
 

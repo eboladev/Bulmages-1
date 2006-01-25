@@ -564,7 +564,10 @@ CREATE TABLE presupuesto (
    idcliente integer REFERENCES cliente(idcliente),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
    idforma_pago integer NOT NULL REFERENCES forma_pago(idforma_pago),
-   idtrabajador integer REFERENCES trabajador(idtrabajador),   
+   idtrabajador integer REFERENCES trabajador(idtrabajador),
+   bimppresupuesto numeric(12,2) DEFAULT 0,
+   imppresupuesto  numeric(12,2) DEFAULT 0,
+   totalpresupuesto numeric(12,2) DEFAULT 0,
    UNIQUE (idalmacen, numpresupuesto)
 );
 
@@ -633,6 +636,59 @@ CREATE TABLE lpresupuesto (
 );
 
 -- Falta poner por defecto el pvp y el iva
+
+
+CREATE OR REPLACE FUNCTION actualizatotpres() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalpres(NEW.idpresupuesto);
+	bimp := calcbimppres(NEW.idpresupuesto);
+	imp := calcimpuestospres(NEW.idpresupuesto);
+	UPDATE presupuesto SET totalpresupuesto = tot, bimppresupuesto = bimp, imppresupuesto = imp WHERE idpresupuesto = NEW.idpresupuesto;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER restriccionespedidoclientetrigger
+    AFTER INSERT OR UPDATE ON lpresupuesto
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpres();
+
+CREATE TRIGGER restriccionespedidoclientetrigger1
+    AFTER INSERT OR UPDATE ON dpresupuesto
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpres();
+
+CREATE OR REPLACE FUNCTION actualizatotpresb() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalpres(OLD.idpresupuesto);
+	bimp := calcbimppres(OLD.idpresupuesto);
+	imp := calcimpuestospres(OLD.idpresupuesto);
+	UPDATE presupuesto SET totalpresupuesto = tot, bimppresupuesto = bimp, imppresupuesto = imp WHERE idpresupuesto = OLD.idpresupuesto;
+	RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER restriccionespedidoclientetriggerd
+    AFTER DELETE OR UPDATE ON lpresupuesto
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpresb();
+
+CREATE TRIGGER restriccionespedidoclientetriggerd1
+    AFTER DELETE OR UPDATE ON dpresupuesto
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpresb();
+
+
 
 
 -- Any: Any en que s'efectua la comanda.

@@ -149,6 +149,8 @@ int articleedit::chargeArticle(QString idArt) {
             } else {
                 m_controlstockarticulo->setChecked(FALSE);
             }// end if
+
+/*
             // Cargamos las relaciones artículo - proveedor.
             QString SQLQuery1 = "SELECT * FROM suministra, proveedor WHERE suministra.idproveedor=proveedor.idproveedor and idarticulo="+idArt;
             cursor2 *cur1 = companyact->cargacursor(SQLQuery1);
@@ -167,6 +169,7 @@ int articleedit::chargeArticle(QString idArt) {
                 cur1->siguienteregistro();
             }// end while
             delete cur1;
+*/
         } else {
             idArticle="0";
         }// end if
