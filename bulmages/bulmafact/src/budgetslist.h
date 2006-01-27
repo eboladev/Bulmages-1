@@ -43,6 +43,9 @@ public:
     BudgetsList(company *comp = NULL, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
     ~BudgetsList();
     void presenta();
+    int modo() {return m_modo;};
+    company *getcompany() {return companyact;};
+    QString idpresupuesto() {return m_idpresupuesto;};
     void modoseleccion() {
         m_modo=1;
     };
@@ -53,9 +56,6 @@ public:
         companyact=comp;
         m_cliente->setcompany(comp);
         m_articulo->setcompany(comp);
-    };
-    QString idpresupuesto() {
-        return m_idpresupuesto;
     };
     void hideBotonera() {
         m_botonera->hide();

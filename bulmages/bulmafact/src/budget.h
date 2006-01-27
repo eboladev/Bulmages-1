@@ -43,7 +43,7 @@
 
 #include "dialogchanges.h"
 
-/** @author Tomeu Borr� Riera */
+/** @author Tomeu Borras Riera */
 class company;
 
 class Budget : public BudgetBase , public presupuesto, public dialogChanges  {
@@ -79,7 +79,7 @@ private:
     void generarPedidoCliente();
     virtual void closeEvent( QCloseEvent *);
 
-public slots:
+public slots://
     virtual void s_saveBudget() {guardapresupuesto();};
     virtual int chargeBudget(QString id);
     virtual void s_removeBudget();

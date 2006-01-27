@@ -24,6 +24,7 @@
 #include "budget.h"
 #include "qtable1.h"
 #include "funcaux.h"
+#include "plugins.h"
 
 #include <qmessagebox.h>
 #include <q3popupmenu.h>
@@ -360,7 +361,13 @@ void BudgetsList::s_editar() {
 
 
 void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
+    /// Ponemos los parametros que nos interesa en el lugar adecuado.
     m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
+
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("BudgetsList_doubleclicked", this);
+    if (res != 0) return;
+
     if (m_modo ==0 && m_idpresupuesto != "") {
         Budget *bud = new Budget(companyact, 0,theApp->translate("Edicion de Presupuestos", "company"));
         if (bud->chargeBudget(m_idpresupuesto)) return;

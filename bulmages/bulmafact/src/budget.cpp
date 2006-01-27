@@ -32,6 +32,8 @@
 #include "busquedaformapago.h"
 
 #include "informereferencia.h"
+#include <plugins.h>
+
 
 #include <qmessagebox.h>
 
@@ -72,6 +74,11 @@ using namespace std;
 #define coma "'"
 
 Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) , presupuesto(comp) ,dialogChanges(this) {
+    _depura("Inicializacion de Budget\n",0);
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("Budget_Budget", this);
+    if (res != 0) return;
+
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform2->setcompany(comp);
     m_descuentos->setcompany(comp);
@@ -83,6 +90,9 @@ Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(
     setlisdescpresupuesto(m_descuentos);
     inicialize();
     comp->meteWindow(caption(),this);
+
+    /// Disparamos los plugins por flanco descendente.
+    g_plugins->lanza("Budget_Budget_Post", this);
     _depura("Fin de la inicializacion de Budget\n",0);
 }// end Budget
 
