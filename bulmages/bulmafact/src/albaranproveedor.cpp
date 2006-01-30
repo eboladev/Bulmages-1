@@ -1,7 +1,7 @@
 //
 // C++ Implementation: albaranpproveedor
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
@@ -17,24 +17,22 @@
 
 
 AlbaranProveedor::AlbaranProveedor(company *comp) {
-	companyact=comp;
+    companyact=comp;
 }
 
 
-AlbaranProveedor::~AlbaranProveedor()
-{
-}
+AlbaranProveedor::~AlbaranProveedor() {}
 
 void AlbaranProveedor::borraAlbaranProveedor() {
     if (mdb_idalbaranp != "") {
         listalineas->borrar();
-	listadescuentos->borrar();
+        listadescuentos->borrar();
         companyact->begin();
         int error = companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp="+mdb_idalbaranp);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
         companyact->commit();
         vaciaAlbaranProveedor();
         pintaAlbaranProveedor();
@@ -79,7 +77,7 @@ void AlbaranProveedor::pintaAlbaranProveedor() {
 
 
 // Esta funci� carga un AlbaranProveedor.
-void AlbaranProveedor::cargaAlbaranProveedor(QString idbudget) {
+int AlbaranProveedor::cargaAlbaranProveedor(QString idbudget) {
     fprintf(stderr,"AlbaranProveedor::cargaAlbaranProveedor(%s)\n",idbudget.ascii());
     mdb_idalbaranp = idbudget;
     QString query = "SELECT * FROM albaranp WHERE idalbaranp="+idbudget;
@@ -91,14 +89,15 @@ void AlbaranProveedor::cargaAlbaranProveedor(QString idbudget) {
         mdb_fechaalbaranp= cur->valor("fechaalbaranp");
         mdb_comentalbaranp= cur->valor("comentalbaranp");
         mdb_loginusuario = "";
-	mdb_idforma_pago = cur->valor("idforma_pago");
-	mdb_descalbaranp = cur->valor("descalbaranp");
-	mdb_refalbaranp = cur->valor("refalbaranp");
+        mdb_idforma_pago = cur->valor("idforma_pago");
+        mdb_descalbaranp = cur->valor("descalbaranp");
+        mdb_refalbaranp = cur->valor("refalbaranp");
     }// end if
     delete cur;
     listalineas->cargaListLinAlbaranProveedor(idbudget);
     listadescuentos->cargaDescuentos(idbudget);
     pintaAlbaranProveedor();
+    return 0;
 }// end chargeBudget
 
 
@@ -107,19 +106,19 @@ void AlbaranProveedor::guardaAlbaranProveedor() {
     /// Todo el guardado es una transacci�
     companyact->begin();
     if (mdb_loginusuario=="")
-    	mdb_loginusuario="NULL";
+        mdb_loginusuario="NULL";
     else
-    	mdb_loginusuario="'"+mdb_loginusuario+"'";
-    if (mdb_numalbaranp=="") 
-    	mdb_numalbaranp="NULL";
+        mdb_loginusuario="'"+mdb_loginusuario+"'";
+    if (mdb_numalbaranp=="")
+        mdb_numalbaranp="NULL";
     if (mdb_idalbaranp == "") {
         /// Se trata de una inserci�
         QString SQLQuery = "INSERT INTO albaranp (numalbaranp, fechaalbaranp, comentalbaranp, idproveedor, idforma_pago, idalmacen, descalbaranp, refalbaranp) VALUES ("+mdb_numalbaranp+",'"+mdb_fechaalbaranp+"','"+mdb_comentalbaranp+"',"+mdb_idproveedor+","+mdb_idforma_pago+","+mdb_idalmacen+",'"+mdb_descalbaranp+"','"+mdb_refalbaranp+"')";
         int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
         cursor2 *cur = companyact->cargacursor("SELECT MAX(idalbaranp) AS m FROM albaranp");
         if (!cur->eof())
             setidalbaranp(cur->valor("m"));
@@ -133,19 +132,19 @@ void AlbaranProveedor::guardaAlbaranProveedor() {
         SQLQuery += " ,idproveedor="+mdb_idproveedor+"";
         SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
         SQLQuery += " ,idalmacen="+mdb_idalmacen;
-	SQLQuery += " ,descalbaranp='"+mdb_descalbaranp+"'";
-	SQLQuery += " ,refalbaranp='"+mdb_refalbaranp+"'";
+        SQLQuery += " ,descalbaranp='"+mdb_descalbaranp+"'";
+        SQLQuery += " ,refalbaranp='"+mdb_refalbaranp+"'";
         SQLQuery += " WHERE idalbaranp="+mdb_idalbaranp;
         int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
     }// end if
-       companyact->commit();
-       listalineas->guardaListLinAlbaranProveedor();
-       listadescuentos->guardaListDescuentoAlbaranProv();
-       cargaAlbaranProveedor(mdb_idalbaranp);
+    companyact->commit();
+    listalineas->guardaListLinAlbaranProveedor();
+    listadescuentos->guardaListDescuentoAlbaranProv();
+    cargaAlbaranProveedor(mdb_idalbaranp);
 }// end guardaAlbaranProveedor
 
 
@@ -154,13 +153,13 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albaranpproveedor.rml";
     archivo = "cp "+archivo+" /tmp/albaranpproveedor.rml";
     system (archivo.ascii());
-    
+
     /// Copiamos el logo
     archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
     archivo = "cp "+archivo+" /tmp/logo.jpg";
     system (archivo.ascii());
-    
-    
+
+
     QFile file;
     file.setName( "/tmp/albaranpproveedor.rml" );
     file.open( QIODevice::ReadOnly );

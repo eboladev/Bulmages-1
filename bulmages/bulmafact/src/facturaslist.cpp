@@ -330,21 +330,17 @@ QString FacturasList::generaFiltro() {
     if (m_fechafin->text() != "") {
         filtro += " AND ffactura <= '"+m_fechafin->text()+"' ";
     }// end if
-
-    //    filtro += " ORDER BY numfactura";
     return (filtro);
 }// end generaFiltro
 
+
 void FacturasList::doubleclicked(int a, int , int , const QPoint &) {
     m_idfactura = m_list->text(a,COL_IDFACTURA);
-
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("FacturasList_doubleclicked", this);
     if (res != 0) return;
-
     if (m_modo ==0 && m_idfactura != "") {
-        FacturaView *bud = new FacturaView(companyact,0,theApp->translate("Edicion de Facturas", "company"));
-
+        FacturaView *bud = companyact->newFacturaView();
 	if (bud->cargaFactura(m_idfactura))
 		return;
         companyact->m_pWorkspace->addWindow(bud);
@@ -357,16 +353,7 @@ void FacturasList::doubleclicked(int a, int , int , const QPoint &) {
 
 void FacturasList::s_edit() {
     int a = m_list->currentRow();
-    if (a >= 0) {
-        m_idfactura = m_list->text(a,COL_IDFACTURA);
-        if (m_idfactura != "") {
-            fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
-            FacturaView *fac = new FacturaView(companyact,0,theApp->translate("Edicion de Factura de Cliente", "company"));
-            companyact->m_pWorkspace->addWindow(fac);
-            fac->cargaFactura(m_idfactura);
-            fac->show();
-        }// end if
-    }// end if
+    doubleclicked(a,0,0, QPoint());
 }// end s_edit
 
 

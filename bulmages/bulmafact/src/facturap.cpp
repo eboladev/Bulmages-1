@@ -77,7 +77,7 @@ void FacturaProveedor::pintaFacturaProveedor() {
 
 
 // Esta funci� carga un FacturaProveedor.
-void FacturaProveedor::cargaFacturaProveedor(QString idbudget) {
+int FacturaProveedor::cargaFacturaProveedor(QString idbudget) {
     mdb_idfacturap = idbudget;
     inicialize();
     QString query = "SELECT * FROM facturap  WHERE idfacturap="+idbudget;
@@ -101,6 +101,7 @@ void FacturaProveedor::cargaFacturaProveedor(QString idbudget) {
     listalineas->cargaListLinFacturaProveedor(idbudget);
     listadescuentos->cargaDescuentos(idbudget);
     pintaFacturaProveedor();
+    return 0;
 }// end chargeBudget
 
 
@@ -135,7 +136,7 @@ void FacturaProveedor::guardaFacturaProveedor() {
     } else {
         /// Se trata de una modificaci�
         QString SQLQuery = "UPDATE facturap SET ";
-        SQLQuery += " numfacturap="+companyact->sanearCadena(mdb_numfacturap);
+        SQLQuery += " numfacturap='"+companyact->sanearCadena(mdb_numfacturap)+"'";
         SQLQuery += " ,ffacturap='"+companyact->sanearCadena(mdb_ffacturap)+"'";
         SQLQuery += " ,comentfacturap='"+companyact->sanearCadena(mdb_comentfacturap)+"'";
         SQLQuery += " ,idproveedor="+companyact->sanearCadena(mdb_idproveedor);

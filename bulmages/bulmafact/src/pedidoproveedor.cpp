@@ -92,7 +92,7 @@ void PedidoProveedor::pintaPedidoProveedor() {
 
 
 // Esta funci� carga un PedidoProveedor.
-void PedidoProveedor::cargaPedidoProveedor(QString idbudget) {
+int PedidoProveedor::cargaPedidoProveedor(QString idbudget) {
     fprintf(stderr,"cargaPedidoProveedor(%s)\n",idbudget.ascii());
     mdb_idpedidoproveedor = idbudget;
     QString query = "SELECT * FROM pedidoproveedor WHERE idpedidoproveedor="+mdb_idpedidoproveedor;
@@ -122,6 +122,7 @@ void PedidoProveedor::cargaPedidoProveedor(QString idbudget) {
     listadescuentos->cargaDescuentos(idbudget);
     fprintf(stderr,"vamos a hacer el pintado de la LineaPedido\n");
     pintaPedidoProveedor();
+    return 0;
 }// end chargeBudget
 
 

@@ -96,83 +96,14 @@ void   AlbaranProveedorView::pintatotales(float base, float iva) {
 
 
 void AlbaranProveedorView::s_verpedidoproveedor() {
-/*
-    QString SQLQuery= "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor='"+mdb_refalbaranp+"'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if (cur->numregistros() > 1) {
-        PedidosProveedorList *list = new PedidosProveedorList(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
-        list->modoseleccion();
-        list->show();
-        while(!list->isHidden())
-            theApp->processEvents();
-        this->setEnabled(true);
-        if (list->idpedidoproveedor() !="" && list->idpedidoproveedor() !=NULL) {
-            PedidoProveedorView *bud = new PedidoProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
-            bud->cargaPedidoProveedor(list->idpedidoproveedor());
-            bud->show();
-        }// end if
-    } else if (!cur->eof()) {
-        PedidoProveedorView *bud = new PedidoProveedorView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
-        bud->cargaPedidoProveedor(cur->valor("idpedidoproveedor"));
-        bud->show();
-    }// end if
-    delete cur;
-*/
+	_depura("Funcion aun no implementada",2);
 }// end s_verpedidoproveedor
 
 
 #include "facturaview.h"
-/// Se encarga de generar un pedido a partir del presupuesto.
+/// Se encarga de generar una facturap a partir del albaranp
 void AlbaranProveedorView::generarFactura() {
-/*
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funci�.
-    QString SQLQuery = "SELECT * FROM factura WHERE reffactura='"+mdb_refalbaranp+"'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
-      FacturaView *bud = new FacturaView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Facturas de Proveedors", "company"));
-      bud->cargaFactura(cur->valor("idfactura"));
-      bud->show();
-      return;
-    }
-    delete cur;
-
-
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funci�.
-    if (QMessageBox::question(
-            this,
-            tr("Factura Inexistente"),
-            tr("No existe una factura asociada a este albaranp."
-                "Desea Crearla ?"),
-            tr("&Yes"), tr("&No"),
-            QString::null, 0, 1 ) )
-        return;
-    
-	
-    /// Creamos la factura.
-    FacturaView *bud = new FacturaView(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Pedidos de Proveedors", "company"));
-    bud->vaciaFactura();
-//    bud->setcodigoalmacen(mdb_codigoalmacen);
-    bud->setcomentfactura(mdb_comentalbaranp);
-//    bud->setdescfactura(mdb_descalbaranp);
-    bud->setfechafactura(mdb_fechaalbaranp);
-    bud->setidforma_pago(mdb_idforma_pago);
-    bud->setreffactura(mdb_refalbaranp);
-    bud->setidproveedor(mdb_idproveedor);
-    bud->setidalmacen(mdb_idalmacen);
-    QString l;
-    LinAlbaranProveedor *linea;
-    
-//    QString desclfactura, QString cantlfactura, QString pvplfactura, QString descuentolfactura, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString ivalfactura
-    
-    
-    uint i = 0;
-    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        bud->getlistalineas()->nuevalinea(linea->desclalbaranp(), linea->cantlalbaranp(), linea->pvplalbaranp(),"0",  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(),"0");
-        i++;
-    }// end for
-    bud->pintaFactura();
-    bud->show();
-*/
+	_depura("Funcion aun no implementada",2);
 }// end generarAlbaran
 
 
@@ -188,5 +119,13 @@ void AlbaranProveedorView::closeEvent( QCloseEvent *e) {
 	if (val == 2)
 	    e->ignore();
     }// end if	
+}
+
+
+int AlbaranProveedorView::cargaAlbaranProveedor(QString id) {
+	AlbaranProveedor::cargaAlbaranProveedor(id);
+	setCaption("Albaran Proveedor  "+mdb_refalbaranp);
+	if(companyact->meteWindow(caption(),this)) return -1;
+	return 0;
 }
 

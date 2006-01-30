@@ -60,9 +60,9 @@ public:
 public slots:
 	virtual void doubleclicked(int, int , int , const QPoint &) ;  
 	virtual void s_printPedidosCliente() {imprimir();};
-	virtual void s_searchPedidosCliente() {inicializa();};
+	virtual void s_searchPedidosCliente() {presenta();};
 	virtual void s_newPedidoCliente() {companyact->s_newPedidoCli();};
-	virtual void s_filtrar() {inicializa();};
+	virtual void s_filtrar() {presenta();};
 	
 	virtual void s_borrarPedidosCliente();
 	virtual void s_editarPedidosCliente();

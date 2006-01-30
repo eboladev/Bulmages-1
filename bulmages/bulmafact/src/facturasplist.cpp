@@ -308,8 +308,8 @@ void FacturasProveedorList::doubleclicked(int a, int , int , const QPoint &) {
     m_idfacturap = m_list->text(a,COL_IDFACTURAP);
     if (m_modo ==0 && m_idfacturap != "") {
         FacturaProveedorView *bud = new FacturaProveedorView(companyact,0,theApp->translate("Edicion de FacturasProveedor", "company"));
+        if(bud->cargaFacturaProveedor(m_idfacturap)) return;
         companyact->m_pWorkspace->addWindow(bud);
-        bud->cargaFacturaProveedor(m_idfacturap);
         bud->show();
     } else {
         close();

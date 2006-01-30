@@ -85,14 +85,14 @@ void PedidoClienteView::s_verpresupuesto() {
             theApp->processEvents();
         this->setEnabled(true);
         if (list->idpresupuesto() !="") {
-            Budget *bud = new Budget(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
-			companyact->m_pWorkspace->addWindow(bud);
+            Budget *bud = companyact->newBudget();
+            companyact->m_pWorkspace->addWindow(bud);
             bud->chargeBudget(list->idpresupuesto());
             bud->show();
         }// end if
     } else if (!cur->eof()) {
-        Budget *bud = new Budget(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
-		companyact->m_pWorkspace->addWindow(bud);
+        Budget *bud = companyact->newBudget();
+        companyact->m_pWorkspace->addWindow(bud);
         bud->chargeBudget(cur->valor("idpresupuesto"));
         bud->show();
     }// end if
@@ -107,7 +107,7 @@ void PedidoClienteView::generarAlbaran() {
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         AlbaranClienteView *bud = new AlbaranClienteView(companyact,NULL,theApp->translate("Edicion de Albaranes de Clientes", "company"));
-		companyact->m_pWorkspace->addWindow(bud);
+        companyact->m_pWorkspace->addWindow(bud);
         bud->cargaAlbaranCliente(cur->valor("idalbaran"));
         bud->show();
         return;
@@ -128,7 +128,7 @@ void PedidoClienteView::generarAlbaran() {
 
     /// Creamos el pedido.
     AlbaranClienteView *bud = new AlbaranClienteView(companyact,NULL,theApp->translate("Edicion de Pedidos de Clientes", "company"));
-	companyact->m_pWorkspace->addWindow(bud);
+    companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaAlbaranCliente();
     bud->setcomentalbaran(mdb_comentpedidocliente);
     bud->setdescalbaran(mdb_descpedidocliente);
@@ -171,9 +171,9 @@ int PedidoClienteView::cargaPedidoCliente(QString id) {
     PedidoCliente::cargaPedidoCliente(id);
     setCaption("Pedido Cliente  "+mdb_refpedidocliente);
     if (companyact->meteWindow(caption(),this))
-	return 1;
+        return 1;
     dialogChanges_cargaInicial();
-	return 0;
+    return 0;
 }
 
 /// Imprime el informe de referencia.
@@ -185,14 +185,14 @@ void PedidoClienteView::s_informeReferencia() {
 }// end s_informeReferencia
 
 void PedidoClienteView::closeEvent( QCloseEvent *e) {
-	_depura("closeEvent",0);
+    _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
         int val = QMessageBox::warning( this, "Guardar Pedido Cliente",
-                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
-	if (val == 0) 
+                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        if (val == 0)
             guardaPedidoCliente();
-	if (val == 2)
-	    e->ignore();
-    }// end if	
+        if (val == 2)
+            e->ignore();
+    }// end if
 }
 

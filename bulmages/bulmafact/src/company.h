@@ -47,6 +47,8 @@ class CobrosList;
 class FacturasProveedorList;
 class PagosList;
 
+class Budget;
+class FacturaView;
 
 class company : public postgresiface2
 {
@@ -108,9 +110,11 @@ public:
   void s_newFacturaPro();
   void s_newAlbaranPro();
   void s_newPedidoPro();
+  Budget *newBudget();
   void s_newPresupuestoCli();
   void s_newPedidoCli();
   void s_newAlbaranCli();
+  FacturaView *newFacturaView();
   void s_newFacturaCli();
   void s_newArticulo();
   void s_provincias();

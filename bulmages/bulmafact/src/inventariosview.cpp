@@ -84,8 +84,9 @@ void InventariosView::doubleclicked(int a, int , int , const QPoint &) {
     QString idinventario = m_list->text(a,COL_IDINVENTARIO);
     if ( idinventario != "") {
         InventarioView *bud = new InventarioView(companyact,0,theApp->translate("Edicion Inventario", "company"));
+        if (bud->cargaInventario(idinventario)) return;
+
         companyact->m_pWorkspace->addWindow(bud);
-        bud->cargaInventario(idinventario);
         bud->show();
     } else {
         close();
@@ -96,13 +97,7 @@ void InventariosView::doubleclicked(int a, int , int , const QPoint &) {
 void InventariosView::s_edit() {
     int a = m_list->currentRow();
     if (a >= 0) {
-        QString idinventario = m_list->text(a,COL_IDINVENTARIO);
-        if (idinventario != "") {
-            InventarioView *inv = new InventarioView(companyact,0,theApp->translate("Edicion Inventario", "company"));
-            companyact->m_pWorkspace->addWindow(inv);
-            inv->cargaInventario(idinventario);
-            inv->show();
-        }// end if
+	doubleclicked(a,0,0,QPoint());
     }// end if
 }// end s_edit
 

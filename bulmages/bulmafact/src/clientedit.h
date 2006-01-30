@@ -43,7 +43,7 @@ public:
     ~ClientEdit();
     
 public:
-   void loadClient(QString client);
+   int loadClient(QString client);
    void saveClient();
    void deleteClient();
 	void closeEvent( QCloseEvent *);

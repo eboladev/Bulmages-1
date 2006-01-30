@@ -10,6 +10,10 @@
 typedef int (*MyPrototype)(void *);
 MyPrototype myFunction;
 
+
+typedef int (*MyPrototype1)(void *, void **);
+MyPrototype1 myFunction1;
+
 Plugins *g_plugins;
 
 
@@ -44,6 +48,24 @@ int Plugins::lanza(QString func, void *clase) {
         if ( myFunction ) {
 	    _depura("Encontrada una funcion correspondiente con el prototipo",0);
             a = myFunction(clase);
+        } else {
+            _depura("No ha entrado la libreria\n",0);
+        }// end if
+    }
+
+    return a;
+}
+
+
+int Plugins::lanza(QString func, void *clase, void **ret) {
+
+    int a=0;
+
+    for (int i = 0; i < m_lista.size(); ++i) {
+        myFunction1 = (MyPrototype1) m_lista.at(i)->resolve( func );
+        if ( myFunction1 ) {
+	    _depura("Encontrada una funcion correspondiente con el prototipo",0);
+            a = myFunction1(clase, ret);
         } else {
             _depura("No ha entrado la libreria\n",0);
         }// end if

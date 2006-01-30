@@ -40,7 +40,7 @@ public:
 
   void	pintaidproveedor(QString id) {m_proveedor->setidproveedor(id);}
   ;
-  void	pintaNumFacturaProveedor(QString id) {m_numfacturap->setText(id);};
+  void	pintanumfacturap(QString id) {m_numfacturap->setText(id);};
 
   void    pintafechafacturap(QString id) {m_fechafacturap->setText(id);};
   void    pintadescfacturap(QString id) {m_descfacturap->setText(id);};
@@ -74,9 +74,7 @@ virtual void s_comentfacturaptextChanged() { setcomentfacturap(m_comentfacturap-
   virtual void s_forma_pagovalueChanged(QString val) {setidforma_pago(val);};
 
   virtual void s_saveFacturaProveedor() {guardaFacturaProveedor();};
-  virtual void cargaFacturaProveedor(QString id) {FacturaProveedor::cargaFacturaProveedor(id);setCaption("FacturaProveedor   "+mdb_reffacturap);companyact->meteWindow(caption(),this);};
-  virtual void s_deleteFacturaProveedor() {borraFacturaProveedor();};
-  virtual void s_printFacturaProveedor(){imprimirFacturaProveedor();};
+  virtual int cargaFacturaProveedor(QString id);
 
   /// Este slot se activa cuando hay cambios en los subformularios.
   virtual void s_pintaTotales()

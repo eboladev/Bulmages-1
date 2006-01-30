@@ -137,7 +137,7 @@ _depura("provedit::provedit",0);
    m_divisiones->setColumnWidth(COL_DIVISION_FAXDIVISION,100);
    m_divisiones->setColumnWidth(COL_DIVISION_MAILDIVISION,100);
    m_divisiones->setColumnWidth(COL_DIVISION_IDPROVEEDOR,100);
-   companyact->meteWindow(caption(),this);
+   if (companyact->meteWindow(caption(),this)) return;
    s_releaseModificado();
 _depura("END provedit::provedit",0);
 }// end provedit

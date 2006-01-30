@@ -328,16 +328,16 @@ void articleslist::presenta() {
 
 void articleslist::editArticle(int  row) {
     _depura("articleslist::INIT_editArticle()\n",0);
-
     m_idArticle = m_list->text(row,COL_IDARTICULO);
     mdb_nomarticulo = m_list->text(row,COL_NOMARTICULO);
     mdb_codigocompletoarticulo = m_list->text(row,COL_CODCOMPLETOARTICULO);
     if (m_modo ==0 ) {
         articleedit *art = new articleedit(companyact,0,theApp->translate("Edición de Artículos", "company"));
+        companyact->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
         if (art->chargeArticle(m_idArticle))
             return;
-        companyact->m_pWorkspace->addWindow(art);
+	art->hide();
         art->show();
     } else {
         close();

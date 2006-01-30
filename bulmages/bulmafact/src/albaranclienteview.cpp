@@ -99,13 +99,12 @@ void AlbaranClienteView::s_verpresupuesto() {
             theApp->processEvents();
         this->setEnabled(true);
         if (list->idpresupuesto() !=QString("")) {
-//&& list->idpresupuesto() !=NULL
-            Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+            Budget *bud = companyact->newBudget();
             bud->chargeBudget(list->idpresupuesto());
             bud->show();
         }// end if
     } else if (!cur->eof()) {
-        Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+        Budget *bud = companyact->newBudget();
         bud->chargeBudget(cur->valor("idpresupuesto"));
         bud->show();
     }// end if
@@ -148,7 +147,7 @@ void AlbaranClienteView::generarFactura() {
     QString SQLQuery = "SELECT * FROM factura WHERE reffactura='"+mdb_refalbaran+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        FacturaView *bud = new FacturaView(companyact,NULL,theApp->translate("Edicion de Facturas de Clientes", "company"));
+        FacturaView *bud = companyact->newFacturaView();
 		companyact->m_pWorkspace->addWindow(bud);
         bud->cargaFactura(cur->valor("idfactura"));
         bud->show();
@@ -166,7 +165,7 @@ void AlbaranClienteView::generarFactura() {
         return;
 
     /// Creamos la factura.
-    FacturaView *bud = new FacturaView(companyact,NULL,theApp->translate("Edicion de Pedidos de Clientes", "company"));
+    FacturaView *bud = companyact->newFacturaView();
 	companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaFactura();
     //    bud->setcodigoalmacen(mdb_codigoalmacen);
@@ -212,7 +211,7 @@ void AlbaranClienteView::agregarFactura() {
 	if (idfactura == "") return;
 
     /// Creamos la factura.
-    FacturaView *bud = new FacturaView(companyact,NULL,theApp->translate("Edicion de Pedidos de Clientes", "company"));
+    FacturaView *bud = companyact->newFacturaView();
     bud->cargaFactura(idfactura);
 	companyact->m_pWorkspace->addWindow(bud);
     /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE, pero por ahora pasamos de hacerlo.
@@ -231,12 +230,10 @@ void AlbaranClienteView::agregarFactura() {
 int AlbaranClienteView::cargaAlbaranCliente(QString id) {
     AlbaranCliente::cargaAlbaranCliente(id);
     setCaption("Albaran Cliente  "+mdb_refalbaran);
-    int ret = companyact->meteWindow(caption(),this);
-    if (ret) return -1;
+    if (companyact->meteWindow(caption(),this)) return -1;
     dialogChanges_cargaInicial();
     return 0;
 }
-
 
 
 void AlbaranClienteView::s_informeReferencia() {

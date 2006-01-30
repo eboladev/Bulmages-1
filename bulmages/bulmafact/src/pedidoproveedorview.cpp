@@ -34,7 +34,7 @@ using namespace std;
 
 
 PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const char *name)
-: PedidoProveedorBase(parent, name, Qt::WDestructiveClose) , PedidoProveedor (comp),dialogChanges(this) {
+        : PedidoProveedorBase(parent, name, Qt::WDestructiveClose) , PedidoProveedor (comp),dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform3->setcompany(comp);
     m_proveedor->setcompany(comp);
@@ -102,13 +102,13 @@ void PedidoProveedorView::s_verpresupuesto() {
             theApp->processEvents();
         this->setEnabled(true);
         if (list->idpresupuesto() !="") {
-// && list->idpresupuesto() !=NULL
-            Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+            // && list->idpresupuesto() !=NULL
+            Budget *bud =companyact->newBudget();
             bud->chargeBudget(list->idpresupuesto());
             bud->show();
         }// end if
     } else if (!cur->eof()) {
-        Budget *bud = new Budget(companyact,companyact->m_pWorkspace,theApp->translate("Edicion de Presupuestos", "company"));
+        Budget *bud = companyact->newBudget();
         bud->chargeBudget(cur->valor("idpresupuesto"));
         bud->show();
     }// end if
@@ -126,7 +126,7 @@ void PedidoProveedorView::generarAlbaran() {
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,NULL,theApp->translate("Edicion de Albaranes de Proveedores", "company"));
-		companyact->m_pWorkspace->addWindow(bud);
+        companyact->m_pWorkspace->addWindow(bud);
         bud->cargaAlbaranProveedor(cur->valor("idalbaranp"));
         bud->show();
         return;
@@ -147,7 +147,7 @@ void PedidoProveedorView::generarAlbaran() {
 
     /// Creamos el pedido.
     AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,NULL,theApp->translate("Edicion de Albaranes de Proveedores", "company"));
-	companyact->m_pWorkspace->addWindow(bud);
+    companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaAlbaranProveedor();
 
     bud->setcomentalbaranp(mdb_comentpedidoproveedor);
@@ -164,15 +164,15 @@ void PedidoProveedorView::generarAlbaran() {
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
 
         bud->getlistalineas()->nuevalinea(
-		linea->desclpedidoproveedor(),
-		linea->cantlpedidoproveedor(),
-		linea->pvplpedidoproveedor(),
-		linea->descuentolpedidoproveedor(),
-		linea->idarticulo(),
-		linea->codigocompletoarticulo(),
-		linea->nomarticulo(),
-		linea->ivalpedidoproveedor()
-	);
+            linea->desclpedidoproveedor(),
+            linea->cantlpedidoproveedor(),
+            linea->pvplpedidoproveedor(),
+            linea->descuentolpedidoproveedor(),
+            linea->idarticulo(),
+            linea->codigocompletoarticulo(),
+            linea->nomarticulo(),
+            linea->ivalpedidoproveedor()
+        );
         i++;
     }// end for
 
@@ -200,22 +200,24 @@ void PedidoProveedorView::s_nuevoCobro() {
 }// end s_nuevoCobro
 
 
-void PedidoProveedorView::cargaPedidoProveedor(QString id) {
+int PedidoProveedorView::cargaPedidoProveedor(QString id) {
     PedidoProveedor::cargaPedidoProveedor(id);
     setCaption("Pedido Proveedor  "+mdb_refpedidoproveedor);
-    companyact->meteWindow(caption(),this);
+    if (companyact->meteWindow(caption(),this))
+        return -1;
     dialogChanges_cargaInicial();
+    return 0;
 }
 
 
 void PedidoProveedorView::closeEvent( QCloseEvent *e) {
-	_depura("closeEvent",0);
+    _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
         int val = QMessageBox::warning( this, "Guardar Pedido Proveedor",
-                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
-	if (val == 0) 
+                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        if (val == 0)
             guardaPedidoProveedor();
-	if (val == 2)
-	    e->ignore();
-    }// end if	
+        if (val == 2)
+            e->ignore();
+    }// end if
 }

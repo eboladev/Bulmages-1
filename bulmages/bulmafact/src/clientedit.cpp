@@ -151,9 +151,9 @@ ClientEdit::~ClientEdit() {
 * Otherwise it empties the form and sets it so that we can add
 * a new client
 */
-void ClientEdit::loadClient(QString client) {
+int ClientEdit::loadClient(QString client) {
     clientId = client;
-
+    int error=0;
     if (clientId != "0") {
         QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+clientId;
         cursor2 *cur= companyact->cargacursor(SQLQuery);
@@ -188,13 +188,14 @@ void ClientEdit::loadClient(QString client) {
 
             /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
             setCaption("Cliente "+cur->valor("nomcliente"));
-            companyact->meteWindow(caption(),this);
+            error = companyact->meteWindow(caption(),this);
 
         }// end if
         delete cur;
 
         dialogChanges_cargaInicial();
     }// end if
+    return error;
 }// end loadClient
 
 

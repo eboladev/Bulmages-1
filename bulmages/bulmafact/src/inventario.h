@@ -45,7 +45,7 @@ public:
 
     Inventario(company *);
     virtual ~Inventario();
-    virtual void cargaInventario(QString );
+    virtual int cargaInventario(QString );
     void pintaInventario();
     void guardaInventario();
     void borraInventario();

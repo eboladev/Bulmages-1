@@ -64,7 +64,7 @@ public:
 
     FacturaProveedor(company *);
     virtual ~FacturaProveedor();
-    virtual void cargaFacturaProveedor(QString );
+    virtual int cargaFacturaProveedor(QString );
     void pintaFacturaProveedor();
     void guardaFacturaProveedor();
     void borraFacturaProveedor();

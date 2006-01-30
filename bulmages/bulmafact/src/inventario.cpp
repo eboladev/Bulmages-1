@@ -61,7 +61,7 @@ void Inventario::pintaInventario() {
 
 
 // Esta funci� carga un Inventario.
-void Inventario::cargaInventario(QString idbudget) {
+int Inventario::cargaInventario(QString idbudget) {
     mdb_idinventario = idbudget;
     QString query = "SELECT * FROM inventario  WHERE idinventario="+mdb_idinventario;
     cursor2 * cur= companyact->cargacursor(query);
@@ -72,6 +72,7 @@ void Inventario::cargaInventario(QString idbudget) {
     delete cur;
     listalineas->cargaListControlStock(idbudget);
     pintaInventario();
+	return 0;
 }// end chargeBudget
 
 

@@ -71,7 +71,7 @@ public:
         
     PedidoProveedor(company *);
     virtual ~PedidoProveedor();
-    virtual void cargaPedidoProveedor(QString);
+    virtual int cargaPedidoProveedor(QString);
     void pintaPedidoProveedor();
     void guardaPedidoProveedor();
     void borraPedidoProveedor();

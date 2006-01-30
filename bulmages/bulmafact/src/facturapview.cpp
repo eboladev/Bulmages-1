@@ -34,7 +34,7 @@ using namespace std;
 
 
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const char *name)
-: FacturaProveedorBase(parent, name, Qt::WDestructiveClose) , FacturaProveedor (comp) ,dialogChanges(this) {
+        : FacturaProveedorBase(parent, name, Qt::WDestructiveClose) , FacturaProveedor (comp) ,dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform2->setcompany(comp);
     m_forma_pago->setcompany(comp);
@@ -49,7 +49,7 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const
 
 
 FacturaProveedorView::~FacturaProveedorView() {
-//    companyact->refreshFacturaProveedors();
+    //    companyact->refreshFacturaProveedors();
     companyact->sacaWindow(this);
 }
 
@@ -73,27 +73,37 @@ void   FacturaProveedorView::pintatotales(float base, float iva) {
 
 
 void FacturaProveedorView::s_nuevoCobro() {
-/*
-    CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
-    bud->setidproveedor(mdb_idproveedor);
-    bud->setcantcobro(m_totalfacturap->text());
-    bud->setrefcobro(mdb_reffacturap);
-    bud->setcomentcobro(mdb_descfacturap);
-    bud->pintaCobro();
-    bud->show();
-*/
+    /*
+        CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
+        bud->setidproveedor(mdb_idproveedor);
+        bud->setcantcobro(m_totalfacturap->text());
+        bud->setrefcobro(mdb_reffacturap);
+        bud->setcomentcobro(mdb_descfacturap);
+        bud->pintaCobro();
+        bud->show();
+    */
 }// end s_nuevoCobro
 
 
 void FacturaProveedorView::closeEvent( QCloseEvent *e) {
-	_depura("closeEvent",0);
+    _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
         int val = QMessageBox::warning( this, "Guardar Factura Proveedor",
-                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
-	if (val == 0) 
+                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        if (val == 0)
             guardaFacturaProveedor();
-	if (val == 2)
-	    e->ignore();
-    }// end if	
+        if (val == 2)
+            e->ignore();
+    }// end if
 }
+
+int FacturaProveedorView::cargaFacturaProveedor(QString id) {
+    FacturaProveedor::cargaFacturaProveedor(id);
+    setCaption("FacturaProveedor   "+mdb_reffacturap);
+    if (companyact->meteWindow(caption(),this))
+        return -1;
+    return 0;
+}
+
+
 

@@ -56,7 +56,7 @@ public:
 
 
 
-    virtual void cargaAlbaranProveedor(QString);
+    virtual int cargaAlbaranProveedor(QString);
     void pintaAlbaranProveedor();
     void guardaAlbaranProveedor();
     void borraAlbaranProveedor();

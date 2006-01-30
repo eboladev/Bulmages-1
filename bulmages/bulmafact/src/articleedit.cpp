@@ -94,7 +94,7 @@ articleedit::articleedit(company *comp, QWidget *parent, const char *name)
     m_suministra->setColumnReadOnly(COL_SUMINISTRA_NOMPROVEEDOR,true);
 
     m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
-    companyact->meteWindow("Articulo Edicion",this);
+    if (companyact->meteWindow("Articulo Edicion",this)) return;
 
     dialogChanges_cargaInicial();
     _depura("articleedit::END_constructor()\n",0);

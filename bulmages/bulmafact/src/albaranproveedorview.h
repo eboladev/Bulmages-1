@@ -78,7 +78,7 @@ public slots:
     virtual void s_refalbaranptextChanged(const QString &val) {setrefalbaranp(val);};
     virtual void s_descalbaranptextChanged(const QString &val) {setdescalbaranp(val);};
     virtual void s_saveAlbaranProveedor() {guardaAlbaranProveedor();};
-    virtual void cargaAlbaranProveedor(QString id) {AlbaranProveedor::cargaAlbaranProveedor(id);setCaption("Albaran Proveedor  "+mdb_refalbaranp);companyact->meteWindow(caption(),this);};    
+    virtual int cargaAlbaranProveedor(QString id);
     virtual void s_deleteAlbaranProveedor() {borraAlbaranProveedor();};
     virtual void s_printAlbaranProveedor(){};
     

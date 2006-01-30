@@ -370,9 +370,7 @@ void ClientDelivNotesList::s_edit() {
         if (m_idclidelivnote != "") {
             fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
             AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,0,theApp->translate("Edicion de Albaran de Cliente", "company"));
-
-            int ret = cDelivNote->cargaAlbaranCliente(m_idclidelivnote);
-            if (ret)
+            if (cDelivNote->cargaAlbaranCliente(m_idclidelivnote))
                 return;
 
             companyact->m_pWorkspace->addWindow(cDelivNote);

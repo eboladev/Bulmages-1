@@ -88,7 +88,7 @@ public slots:
     virtual void s_descpedidoproveedortextChanged(const QString &val) {setdescpedidoproveedor(val);};
 
     virtual void s_savePedidoProveedor() {guardaPedidoProveedor();};
-    virtual void cargaPedidoProveedor(QString id);
+    virtual int cargaPedidoProveedor(QString id);
     
     virtual void s_deletePedidoProveedor() {borraPedidoProveedor();};
     virtual void s_printPedidoProveedor(){imprimirPedidoProveedor();};

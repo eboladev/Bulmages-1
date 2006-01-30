@@ -504,7 +504,7 @@ void PedidosProveedorList::doubleclicked(int a, int , int , const QPoint &) {
     if (m_modo == 0 && m_idpedidoproveedor != "") {
         PedidoProveedorView *bud = new PedidoProveedorView(companyact,0,theApp->translate("Edicion de Pedidos de Proveedors", "company"));
         companyact->m_pWorkspace->addWindow(bud);
-        bud->cargaPedidoProveedor(m_idpedidoproveedor);
+        if (bud->cargaPedidoProveedor(m_idpedidoproveedor)) return;
         bud->show();
     } else {
         close();

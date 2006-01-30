@@ -347,16 +347,8 @@ QString BudgetsList::generaFiltro() {
 
 void BudgetsList::s_editar() {
     int a = m_list->currentRow();
-    m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
-    if (m_modo ==0 && m_idpresupuesto != "") {
-        Budget *bud = new Budget(companyact,0,theApp->translate("Edicion de Presupuestos", "company"));
-        if (bud->chargeBudget(m_idpresupuesto))
-		return;
-        companyact->m_pWorkspace->addWindow(bud);
-        bud->show();
-    } else {
-        close();
-    }// end if
+
+    doubleclicked(a,0,0, QPoint());
 }
 
 
@@ -369,7 +361,7 @@ void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
     if (res != 0) return;
 
     if (m_modo ==0 && m_idpresupuesto != "") {
-        Budget *bud = new Budget(companyact, 0,theApp->translate("Edicion de Presupuestos", "company"));
+	Budget *bud = companyact->newBudget();
         if (bud->chargeBudget(m_idpresupuesto)) return;
         companyact->m_pWorkspace->addWindow(bud);
         bud->show();
@@ -531,7 +523,7 @@ void BudgetsList::imprimir() {
 
 
 void BudgetsList::s_removeBudget() {
-    fprintf(stderr,"Iniciamos el boton_borrar\n");
+    _depura("Iniciamos el boton_borrar\n",0);
     if (m_list->currentRow() >= 0) {
         if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar el presupuesto seleccionado", "Si", "No") == 0) {
             companyact->begin();
