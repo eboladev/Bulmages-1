@@ -45,6 +45,11 @@ public:
         if (companyact != NULL)
             companyact->meteWindow(nom, obj);
     };
+
+    company *getcompany() {return companyact;};
+
+    int modo() {return m_modo;};
+
     void modoseleccion() {
         m_modo=1;
     };

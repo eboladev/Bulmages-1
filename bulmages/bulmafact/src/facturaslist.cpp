@@ -23,6 +23,7 @@
 #include "configuracion.h"
 #include "facturaview.h"
 #include "funcaux.h"
+#include "plugins.h"
 
 #define COL_REFFACTURA 0
 #define COL_IDFACTURA 1
@@ -336,6 +337,11 @@ QString FacturasList::generaFiltro() {
 
 void FacturasList::doubleclicked(int a, int , int , const QPoint &) {
     m_idfactura = m_list->text(a,COL_IDFACTURA);
+
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("FacturasList_doubleclicked", this);
+    if (res != 0) return;
+
     if (m_modo ==0 && m_idfactura != "") {
         FacturaView *bud = new FacturaView(companyact,0,theApp->translate("Edicion de Facturas", "company"));
 
