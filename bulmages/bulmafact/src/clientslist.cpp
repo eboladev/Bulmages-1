@@ -113,6 +113,7 @@ void ClientsList::guardaconfig() {
         QTextStream stream( &file );
         stream << aux << "\n";
         for (int i = 0; i < m_clientList->numCols(); i++) {
+            m_clientList->showColumn(i);
             stream << m_clientList->columnWidth(i) << "\n";
         }// end for
         file.close();

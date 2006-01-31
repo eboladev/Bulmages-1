@@ -81,6 +81,7 @@ void PagosList::guardaconfig() {
         QTextStream stream( &file );
         stream << aux << "\n";
         for (int i = 0; i < m_list->numCols(); i++) {
+            m_list->showColumn(i);
             stream << m_list->columnWidth(i) << "\n";
         }// end for
         file.close();
@@ -159,7 +160,7 @@ PagosList::PagosList(QWidget *parent, const char *name, Qt::WFlags flag)
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-	inicializa();
+    inicializa();
     cargaconfig();
     s_configurar();
 }// end providerslist
@@ -173,7 +174,7 @@ PagosList::PagosList(company *comp, QWidget *parent, const char *name, Qt::WFlag
     inicializa();
     cargaconfig();
     s_configurar();
-	presenta();
+    presenta();
     m_modo=0;
     m_idpago="";
     meteWindow(caption(),this);

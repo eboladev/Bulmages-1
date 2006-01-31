@@ -13,6 +13,11 @@
 #include "fixed.h"
 #include "plugins.h"
 
+#ifdef WIN32
+#define CONFGLOBAL "C:\\bulmages_"
+#else
+#define CONFGLOBAL "/etc/bulmages_"
+#endif
 
 QApplication *theApp;
 bulmafact *bges;
@@ -33,10 +38,6 @@ int main( int argc, char ** argv ) {
 
 
     theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
-
-
-    /// Hacemos la carga de las librerias que contienen los plugins.
-    g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMAFACT));
 
     /// Cargamos el sistema de traducciones
     traductor = new QTranslator ( 0 );
@@ -85,6 +86,13 @@ int main( int argc, char ** argv ) {
         delete login1;
         bges = new bulmafact("");
     }// end if
+
+    /// Leemos la configuración específica de la base de datos que se ha abierto.
+    QString confesp = CONFGLOBAL+bges->getcompany()->nameDB()+".conf";
+    confpr->leeconfig(confesp);
+
+    /// Hacemos la carga de las librerias que contienen los plugins.
+    g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMAFACT));
 
 
     /// Disparamos los plugins con entryPoint

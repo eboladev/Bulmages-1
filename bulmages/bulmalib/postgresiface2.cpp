@@ -25,6 +25,7 @@
 #include "msgerror.h"
 #include "funcaux.h"
 
+
 /** Constructor de la clase
   * Realiza la consulta en la base de datos y almacena el resultado en las variables de clase para poder ser manupuladas.
   * Tambi� almacena en variables globales algunos resultados para poder acelerar las consultas (nregistros y ncampos).
@@ -247,8 +248,10 @@ int postgresiface2::inicializa(QString nomdb) {
     QString user = confpr->valor(CONF_LOGIN_USER);
     QString passwd = confpr->valor(CONF_PASSWORD_USER);
 
+
+
     /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
-    /// Ahora si se pone -- se considera conexi� local.
+    /// Ahora si se pone -- se considera conexion� local.
     if (pghost != "--")
         conexion = "host="+pghost;
     conexion += " port="+pgport;

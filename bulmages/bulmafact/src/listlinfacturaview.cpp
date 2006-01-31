@@ -43,6 +43,7 @@ void ListLinFacturaView::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         for (int i = 0; i < numCols(); i++) {
+            showColumn(i);
             stream << columnWidth(i) << "\n";
         }// end for
         file.close();
@@ -50,7 +51,7 @@ void ListLinFacturaView::guardaconfig() {
 }// end guardaconfig()
 
 void ListLinFacturaView::cargaconfig() {
-	_depura("ListLinFacturaView::cargaconfig",0);
+    _depura("ListLinFacturaView::cargaconfig",0);
     QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinfacturaview.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
@@ -98,12 +99,12 @@ ListLinFacturaView::ListLinFacturaView(QWidget * parent, const char * name) : Q3
 
     installEventFilter(this);
 
-	cargaconfig();
+    cargaconfig();
 }
 
 
 ListLinFacturaView::~ListLinFacturaView() {
-	guardaconfig();
+    guardaconfig();
 }
 
 
@@ -127,7 +128,7 @@ void ListLinFacturaView::pintaListLinFactura() {
         setText(i, COL_TASATIPO_IVA, linea->ivalfactura()+"%");
         setText(i, COL_TIPO_IVA, linea->idlfactura());
         setText(i, COL_PVPLFACTURA, linea->pvplfactura());
-	adjustRow(i);
+        adjustRow(i);
         i++;
     }// end for
     fprintf(stderr,"FIN de pintaListLinFactura\n");
@@ -185,11 +186,11 @@ bool ListLinFacturaView::eventFilter( QObject *obj, QEvent *ev ) {
         int row=currentRow();
         switch (k->key()) {
         case Qt::Key_Plus:
-		if (col == COL_DESCLFACTURA) {
+            if (col == COL_DESCLFACTURA) {
                 setText(row,col,editaTexto(text(row,col)));
-		valueBudgetLineChanged(row,col);
+                valueBudgetLineChanged(row,col);
                 return TRUE;
-		}// end if
+            }// end if
             break;
         case Qt::Key_Asterisk:
             linea = lineaact();

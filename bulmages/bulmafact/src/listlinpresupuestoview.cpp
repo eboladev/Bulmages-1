@@ -44,6 +44,7 @@ void listlinpresupuestoview::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         for (int i = 0; i < numCols(); i++) {
+            showColumn(i);
             stream << columnWidth(i) << "\n";
         }// end for
         file.close();
@@ -51,7 +52,7 @@ void listlinpresupuestoview::guardaconfig() {
 }// end guardaconfig()
 
 void listlinpresupuestoview::cargaconfig() {
-	_depura("listlinpresupuestoview::cargaconfig",0);
+    _depura("listlinpresupuestoview::cargaconfig",0);
     QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinpresupuestoview.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
@@ -116,8 +117,8 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget * parent, const char * na
 
 
 listlinpresupuestoview::~listlinpresupuestoview() {
-	_depura("listlinpresupuestoview::~listlinpresupuestoview()",0);
-	guardaconfig();
+    _depura("listlinpresupuestoview::~listlinpresupuestoview()",0);
+    guardaconfig();
 }
 
 
@@ -141,7 +142,7 @@ void listlinpresupuestoview::pintalistlinpresupuesto() {
         setText(i, COL_TASATIPO_IVA, linea->ivalpresupuesto()+"%");
         setText(i, COL_TIPO_IVA, linea->idlpresupuesto());
         setText(i, COL_PVPLPRESUPUESTO, linea->pvplpresupuesto());
-	adjustRow(i);
+        adjustRow(i);
         i++;
     }// end for
     _depura("FIN de pintalistlinpresupuesto\n",0);
@@ -184,7 +185,7 @@ void listlinpresupuestoview::pintalinlistlinpresupuesto(int pos) {
     setText(pos, COL_TASATIPO_IVA, linea->ivalpresupuesto()+"%");
     setText(pos, COL_TIPO_IVA, linea->idlpresupuesto());
     setText(pos, COL_PVPLPRESUPUESTO, linea->pvplpresupuesto());
-	adjustRow(pos);
+    adjustRow(pos);
 
 }
 
@@ -201,11 +202,11 @@ bool listlinpresupuestoview::eventFilter( QObject *obj, QEvent *ev ) {
         int row=currentRow();
         switch (k->key()) {
         case Qt::Key_Plus:
-		if (col == COL_DESCLPRESUPUESTO) {
+            if (col == COL_DESCLPRESUPUESTO) {
                 setText(row,col,editaTexto(text(row,col)));
-		valueBudgetLineChanged(row,col);
+                valueBudgetLineChanged(row,col);
                 return TRUE;
-		}// end if
+            }// end if
             break;
         case Qt::Key_Asterisk:
             linea = lineaact();

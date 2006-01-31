@@ -24,6 +24,8 @@ public:
   {
     return pWorkspace;
   };
+
+  company *getcompany() {return m_company;};
 public slots:
     virtual void closeEvent( QCloseEvent *);
 

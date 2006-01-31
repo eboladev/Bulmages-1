@@ -41,7 +41,6 @@ bulmafact::bulmafact(QString bd) : bulmafactbase( 0, "bulmafact", Qt::WDestructi
     view_back = new Q3VBox( this);
     view_back->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
     pWorkspace = new QWorkspace( view_back, "WorkSpace" );
-    //  pWorkspace = new QWorkspace( 0, "WorkSpace" );
 
     pWorkspace->setScrollBarsEnabled( TRUE );
     setCentralWidget(view_back);

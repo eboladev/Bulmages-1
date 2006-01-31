@@ -43,6 +43,7 @@ void ListLinFacturaProveedorView::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         for (int i = 0; i < numCols(); i++) {
+            showColumn(i);
             stream << columnWidth(i) << "\n";
         }// end for
         file.close();
@@ -50,7 +51,7 @@ void ListLinFacturaProveedorView::guardaconfig() {
 }// end guardaconfig()
 
 void ListLinFacturaProveedorView::cargaconfig() {
-	_depura("ListLinFacturaProveedorView::cargaconfig",0);
+    _depura("ListLinFacturaProveedorView::cargaconfig",0);
     QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinfacturapview.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
@@ -98,12 +99,12 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget * parent, const
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
 
     installEventFilter(this);
-	cargaconfig();
+    cargaconfig();
 }
 
 
 ListLinFacturaProveedorView::~ListLinFacturaProveedorView() {
-	guardaconfig();
+    guardaconfig();
 }
 
 
@@ -127,7 +128,7 @@ void ListLinFacturaProveedorView::pintaListLinFacturaProveedor() {
         setText(i, COL_TASATIPO_IVA, linea->ivalfacturap()+"%");
         setText(i, COL_TIPO_IVA, linea->idlfacturap());
         setText(i, COL_PVPLFACTURA, linea->pvplfacturap());
-	adjustRow(i);
+        adjustRow(i);
         i++;
     }// end for
     fprintf(stderr,"FIN de pintaListLinFacturaProveedor\n");
@@ -170,7 +171,7 @@ void ListLinFacturaProveedorView::pintalinListLinFacturaProveedor(int pos) {
     setText(pos, COL_TASATIPO_IVA, linea->ivalfacturap()+"%");
     setText(pos, COL_TIPO_IVA, linea->idlfacturap());
     setText(pos, COL_PVPLFACTURA, linea->pvplfacturap());
-	adjustRow(pos);
+    adjustRow(pos);
 }
 
 
@@ -184,11 +185,11 @@ bool ListLinFacturaProveedorView::eventFilter( QObject *obj, QEvent *ev ) {
         int row=currentRow();
         switch (k->key()) {
         case Qt::Key_Plus:
-		if (col == COL_DESCLFACTURA) {
+            if (col == COL_DESCLFACTURA) {
                 setText(row,col,editaTexto(text(row,col)));
-		valueBudgetLineChanged(row,col);
+                valueBudgetLineChanged(row,col);
                 return TRUE;
-		}// end if
+            }// end if
             break;
         case Qt::Key_Asterisk:
             linea = lineaact();

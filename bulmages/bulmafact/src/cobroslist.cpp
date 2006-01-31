@@ -83,6 +83,7 @@ void CobrosList::guardaconfig() {
         QTextStream stream( &file );
         stream << aux << "\n";
         for (int i = 0; i < m_list->numCols(); i++) {
+            m_list->showColumn(i);
             stream << m_list->columnWidth(i) << "\n";
         }// end for
         file.close();

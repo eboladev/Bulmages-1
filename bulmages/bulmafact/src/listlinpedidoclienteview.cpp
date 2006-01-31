@@ -60,6 +60,7 @@ void ListLinPedidoClienteView::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         for (int i = 0; i < numCols(); i++) {
+            showColumn(i);
             stream << columnWidth(i) << "\n";
         }// end for
         file.close();

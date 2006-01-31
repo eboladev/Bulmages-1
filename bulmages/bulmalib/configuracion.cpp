@@ -295,11 +295,12 @@ bool configuracion::leeconfig(QString fich) {
     fprintf(stderr,"leeconfig(%s)\n",fich.ascii());
     QFile arch(fich);
     if (arch.open(QIODevice::ReadOnly)) {
-        char buff[1024];
-        while (arch.readLine(buff, sizeof(buff)) != -1) {
-            QString cad = buff;
+	QTextStream in(&arch);
+        while (!in.atEnd()) {
+            QString cad = in.readLine();
             for (int i=0;i<1000;i++) {
-                if (cad.startsWith(nombre(i))) {
+                if (cad.startsWith(nombre(i)) && nombre(i) != "") {
+		    _depura("["+nombre(i)+"]"+"--->"+cad,1);
                     cad = cad.right(cad.length() - nombre(i).length());
                     cad = cad.trimmed();
                     m_valores[i]=cad;

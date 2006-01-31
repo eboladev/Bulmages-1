@@ -59,6 +59,7 @@ void ListLinPedidoProveedorView::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         for (int i = 0; i < numCols(); i++) {
+            showColumn(i);
             stream << columnWidth(i) << "\n";
         }// end for
         file.close();
@@ -66,7 +67,7 @@ void ListLinPedidoProveedorView::guardaconfig() {
 }// end guardaconfig()
 
 void ListLinPedidoProveedorView::cargaconfig() {
-	_depura("ListLinPedidoProveedorView::cargaconfig",0);
+    _depura("ListLinPedidoProveedorView::cargaconfig",0);
     QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinpedidoproveedorview.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
@@ -116,12 +117,12 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget * parent, const c
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
 
     installEventFilter(this);
-	cargaconfig();
+    cargaconfig();
 }
 
 
 ListLinPedidoProveedorView::~ListLinPedidoProveedorView() {
-	guardaconfig();
+    guardaconfig();
 }
 
 
@@ -130,10 +131,10 @@ void ListLinPedidoProveedorView::pintaListLinPedidoProveedor() {
     setNumRows(0);
     setNumRows(100);
 
-   for (int j=0;j<100;j++) {
-	Q3CheckTableItem *check = new Q3CheckTableItem(this,0);
+    for (int j=0;j<100;j++) {
+        Q3CheckTableItem *check = new Q3CheckTableItem(this,0);
         setItem(j,COL_PUNTEO,check);
-   }// end for
+    }// end for
 
     /// \todo Habr� que vaciar la tabla para que el pintado fuera exacto.
     LinPedidoProveedor *linea;
@@ -151,14 +152,14 @@ void ListLinPedidoProveedorView::pintaListLinPedidoProveedor() {
         setText(i, COL_TASATIPO_IVA, "XX");
         setText(i, COL_TIPO_IVA, "XX");
         setText(i, COL_PVPLPEDIDOPROVEEDOR, linea->pvplpedidoproveedor());
-	setText(i, COL_PREVLPEDIDOPROVEEDOR, linea->prevlpedidoproveedor());
-	setText(i, COL_IVALPEDIDOPROVEEDOR, linea->ivalpedidoproveedor());
+        setText(i, COL_PREVLPEDIDOPROVEEDOR, linea->prevlpedidoproveedor());
+        setText(i, COL_IVALPEDIDOPROVEEDOR, linea->ivalpedidoproveedor());
 
         /// Ponemos un checkbox para el punteo.
         Q3CheckTableItem *check =(Q3CheckTableItem *) item(i,COL_PUNTEO);
         if (linea->puntlpedidoproveedor() == "TRUE")
             check->setChecked(TRUE);
-	adjustRow(i);
+        adjustRow(i);
         i++;
     }// end for
     _depura("FIN de pintaListLinPedidoProveedor\n");
@@ -186,78 +187,78 @@ void ListLinPedidoProveedorView::borraLinPedidoProveedoract() {
 
 
 void ListLinPedidoProveedorView::pintalinListLinPedidoProveedor(int pos) {
-fprintf(stderr,"pintalinListLinPedidoProveedor(%d)\n",pos);
+    fprintf(stderr,"pintalinListLinPedidoProveedor(%d)\n",pos);
     LinPedidoProveedor *linea;
     linea = m_lista.at(pos);
-        setText(pos, COL_NUMLPEDIDOPROVEEDOR, linea->numlpedidoproveedor());
-        setText(pos, COL_IDARTICULO, linea->idarticulo());
-        setText(pos, COL_CODARTICULO, linea->codigocompletoarticulo());
-        setText(pos, COL_NOMARTICULO, linea->nomarticulo());
-        setText(pos, COL_DESCLPEDIDOPROVEEDOR, linea->desclpedidoproveedor());
-        setText(pos, COL_CANTLPEDIDOPROVEEDOR, linea->cantlpedidoproveedor());
-        setText(pos, COL_DESCUENTOLPEDIDOPROVEEDOR, linea->descuentolpedidoproveedor());
-        setText(pos, COL_IDPEDIDOPROVEEDOR, linea->idpedidoproveedor());
-        setText(pos, COL_REMOVE, "XX");
-        setText(pos, COL_TASATIPO_IVA, "XX");
-        setText(pos, COL_TIPO_IVA, "XX");
-        setText(pos, COL_PVPLPEDIDOPROVEEDOR, linea->pvplpedidoproveedor());
-	setText(pos, COL_PREVLPEDIDOPROVEEDOR, linea->prevlpedidoproveedor());
-	setText(pos, COL_IVALPEDIDOPROVEEDOR, linea->ivalpedidoproveedor());
+    setText(pos, COL_NUMLPEDIDOPROVEEDOR, linea->numlpedidoproveedor());
+    setText(pos, COL_IDARTICULO, linea->idarticulo());
+    setText(pos, COL_CODARTICULO, linea->codigocompletoarticulo());
+    setText(pos, COL_NOMARTICULO, linea->nomarticulo());
+    setText(pos, COL_DESCLPEDIDOPROVEEDOR, linea->desclpedidoproveedor());
+    setText(pos, COL_CANTLPEDIDOPROVEEDOR, linea->cantlpedidoproveedor());
+    setText(pos, COL_DESCUENTOLPEDIDOPROVEEDOR, linea->descuentolpedidoproveedor());
+    setText(pos, COL_IDPEDIDOPROVEEDOR, linea->idpedidoproveedor());
+    setText(pos, COL_REMOVE, "XX");
+    setText(pos, COL_TASATIPO_IVA, "XX");
+    setText(pos, COL_TIPO_IVA, "XX");
+    setText(pos, COL_PVPLPEDIDOPROVEEDOR, linea->pvplpedidoproveedor());
+    setText(pos, COL_PREVLPEDIDOPROVEEDOR, linea->prevlpedidoproveedor());
+    setText(pos, COL_IVALPEDIDOPROVEEDOR, linea->ivalpedidoproveedor());
     Q3CheckTableItem *check = (Q3CheckTableItem *) item(pos, COL_PUNTEO);
     if (linea->puntlpedidoproveedor() == "TRUE")
         check->setChecked(TRUE);
     else
         check->setChecked(FALSE);
-	adjustRow(pos);
+    adjustRow(pos);
 }
 
 
 bool ListLinPedidoProveedorView::eventFilter( QObject *obj, QEvent *ev ) {
-	fprintf(stderr,"eventFilter()\n");
+    fprintf(stderr,"eventFilter()\n");
     QString idArticle;
-//    LinPedidoProveedor *linea=lineaact();
+    //    LinPedidoProveedor *linea=lineaact();
     LinPedidoProveedor *linea;//=m_lista.at(currentRow());
-    
-        if ( ev->type() == QEvent::KeyRelease ) {
-//        if ( ev->type() == QEvent::KeyPress ) {
-            QKeyEvent *k = (QKeyEvent *)ev;
-            int col=currentColumn();
-            int row=currentRow();
-            switch (k->key()) {
-            case Qt::Key_Plus:
-		if (col == COL_DESCLPEDIDOPROVEEDOR) {
+
+    if ( ev->type() == QEvent::KeyRelease ) {
+        //        if ( ev->type() == QEvent::KeyPress ) {
+        QKeyEvent *k = (QKeyEvent *)ev;
+        int col=currentColumn();
+        int row=currentRow();
+        switch (k->key()) {
+        case Qt::Key_Plus:
+            if (col == COL_DESCLPEDIDOPROVEEDOR) {
                 setText(row,col,editaTexto(text(row,col)));
-		valueBudgetLineChanged(row,col);
+                valueBudgetLineChanged(row,col);
                 return TRUE;
-		}// end if
+            }// end if
+            break;
+        case Qt::Key_Asterisk:
+            linea = lineaact();
+            idArticle = searchArticle();
+            linea->setidarticulo(idArticle);
+            pintalinListLinPedidoProveedor(currentRow());
+            return TRUE;
+            break;
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
+            switch (col) {
+            case COL_CODARTICULO:
+                setCurrentCell(row, COL_DESCLPEDIDOPROVEEDOR);
                 break;
-            case Qt::Key_Asterisk:
-	    	linea = lineaact();
-                idArticle = searchArticle();
-                linea->setidarticulo(idArticle);
-                pintalinListLinPedidoProveedor(currentRow());
-		return TRUE;
+            case COL_DESCLPEDIDOPROVEEDOR:
+                setCurrentCell(row, COL_CANTLPEDIDOPROVEEDOR);
                 break;
-            case Qt::Key_Return:
-            case Qt::Key_Enter:
-                // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
-                switch (col) {
-                case COL_CODARTICULO:
-                    setCurrentCell(row, COL_DESCLPEDIDOPROVEEDOR);
-                    break;
-                case COL_DESCLPEDIDOPROVEEDOR:
-                    setCurrentCell(row, COL_CANTLPEDIDOPROVEEDOR);
-                    break;
-                case COL_CANTLPEDIDOPROVEEDOR:
-                    setCurrentCell(row, COL_PVPLPEDIDOPROVEEDOR);
-                    break;
-                case COL_PVPLPEDIDOPROVEEDOR:
-                    setCurrentCell(row+1, COL_CODARTICULO);
-                    break;
-                }// end switch
-                return TRUE;
+            case COL_CANTLPEDIDOPROVEEDOR:
+                setCurrentCell(row, COL_PVPLPEDIDOPROVEEDOR);
+                break;
+            case COL_PVPLPEDIDOPROVEEDOR:
+                setCurrentCell(row+1, COL_CODARTICULO);
                 break;
             }// end switch
+            return TRUE;
+            break;
+        }// end switch
     }// end if
     return Q3Table::eventFilter( obj, ev );
 } //end eventFilter
@@ -322,14 +323,14 @@ LinPedidoProveedor *ListLinPedidoProveedorView::lineaat(int row) {
     LinPedidoProveedor *linea;
     if (row >=0) {
         while (m_lista.at(row) == 0 ) {
-	    fprintf(stderr,"Creamos la linea\n");
+            fprintf(stderr,"Creamos la linea\n");
             linea=new LinPedidoProveedor(companyact);
             linea->setidpedidoproveedor(mdb_idpedidoproveedor);
-            m_lista.append(linea);  
-        }// end while	
-	      return(m_lista.at(row));
+            m_lista.append(linea);
+        }// end while
+        return(m_lista.at(row));
     } else {
-    	fprintf(stderr,"Linea inexistente\n");
+        fprintf(stderr,"Linea inexistente\n");
         return NULL;
     }// end if
 
@@ -337,7 +338,7 @@ LinPedidoProveedor *ListLinPedidoProveedorView::lineaat(int row) {
 
 
 void ListLinPedidoProveedorView::manageArticle(int row) {
-	fprintf(stderr,"manageArticle(%d)\n",row);
+    fprintf(stderr,"manageArticle(%d)\n",row);
     LinPedidoProveedor *linea= lineaat(row);
     QString articleCode = text(row, COL_CODARTICULO);
     linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));

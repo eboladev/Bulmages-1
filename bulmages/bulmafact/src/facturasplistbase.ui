@@ -623,17 +623,6 @@
                         </property>
                         <widget class="QCheckBox">
                             <property name="name">
-                                <cstring>mver_idserie_facturap</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Id. Serie Facturap</string>
-                            </property>
-                            <property name="accel">
-                                <string></string>
-                            </property>
-                        </widget>
-                        <widget class="QCheckBox">
-                            <property name="name">
                                 <cstring>mver_idusuari</cstring>
                             </property>
                             <property name="text">
@@ -802,7 +791,7 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
         </sizepolicy>
-        <pixmap>image11</pixmap>
+        <pixmap>image9</pixmap>
         <signal>valueChanged(QString)</signal>
     </customwidget>
     <customwidget>
@@ -819,7 +808,7 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
         </sizepolicy>
-        <pixmap>image12</pixmap>
+        <pixmap>image11</pixmap>
         <signal>valueChanged(QString)</signal>
     </customwidget>
 </customwidgets>
@@ -858,10 +847,7 @@
         <data format="PNG" length="942">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000037549444154388db5953168dc5618c77f361ade81867770060952f08318aad2a167b2f888071b32d46048305dba25994a295d4a0ba56ea0043a34a1539bc1900ea6ee60728186b843cab9e04437c4f80231562186276840021bee4105f70d8274901df782af1d9a7e8bf478e2f77edfa73fd2581cc71c57abd57ac16ba8388ec7c68ec1f7efdd7f31ffe63c894be010f6dc1e356a0c18603058eca9ebbeeb933c4be86e77a13c817bc7a68f7e7e84f633826680755d66fc90acb084da9015090bda4091811f9217090bfec97ab367097fd0b47f75c360809eed31371bd04dbf43ff69e994829980ce1fe072453b17148a5a03669a600f8540419ac36408322143e3780956a2b045170dd8d261424d770b925f848ded1ce5819482f23477ce2aae5eaea39a03a20658274481628313f8f8f1cdcef31d42bf8fedf730139af65de1e6d7391bdb0ead15e61d4df37c800e20dd17963fb3b457212bc01cc14f353647b334a1a2bb05ed1507255cb918102dc2f49421138bf6eaacad0f68af38daab29cdb311ea420da3054e33b6ce12fa0a7b001bf71c520a0b17035a57209a12acf45007356eaff6b97ab9cefb1f69f014376f65d4a5321f6d2c09b5222279d245eb80b945300d212b4013b2fc4d1fbbebe81fc0f5af42ba0f1cf677a1f37880690c83878c8d56ecec27e041380991015b08aaacb3fc6946b2eb505ab1345b27a34fd4d4482964cfc1ba1160a30d14607c05a510f9e04ad012b2fc791fbb2b5082f6159c81a851f5ab3c8594601a6ab4313e3805789a4e2a68afc6dadd4165ea2b82339a34cdb9712d6373ab4e66052905335923fba754e445c25c13ee4c2af254585b1ff0e1076fd13f109616ebe0c38d6b90eee77cf17186148e20d0444de0959737641cf88abc1416de534829b4571c3faeef71fdcb90a039606676c027cb2141a071873994d05ad4b4cefd4b8e292c8152b4660117f0fdad94b56fa1fbc03137a3c90532dbc71d4a355b84644be83cac1135147fcff14b7092262c28487321d2d0baa4c08f68ff9491ec0ac993b47aba04ddd0cc5fd2ec6c0a59e1d0aace463ac2387996b0f95431f986c2168269c0fce280a5779b741e5b709039987edba0a7725ae7a0f3b046a0a6c9650ffb7478c663711c571f780f66ce2bea61152911015545481d1dafbcaad9aae96a1cce41d213b25c70f929c694d0fdedb89d57afa36af4fef8c89dff58e350fda3fe17f0eb86c7713cf617a937add30abada010000000049454e44ae426082</data>
     </image>
     <image name="image11">
-        <data format="PNG" length="889">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000034049444154388db59531681c4714863f992d9ee08a3938c10ea4d80507a442e02d54488e0ba9f39114979022312ee2903421553acb3604ecca759242244d402904e742708db1ce10eecee090133868030aac20073b20c10e6441af38708af5493e620943ec0703bb336fbefddfdb376f667afd1e13bbbc72f9396fc07afddecccc04dcd9ee3c5f9b5f23f52938d82bf75e0be2bd27dbcf18fc3680f1e97c3051faa8fd88d0e49845435e0e49a44e51e65863c935c7d62ca239d42c99afde73cdb162193ccba86f089dc73a0d0648ff4e31916138fa91a2c800259e537652c18d84e24801a1de80e54565e8c1080c1c4416b0d3919c8029212f87c838033cf19cb03330a4db9eeeae07266a84685eb876dd102f4164145742d43803bce7f6484449ffa9a0ed6dd8fcc155a89a10cf1b24807ca41cfca9dc5b77343f317cfa99101ba5539e01b6354b5166c473b03390175065f5fd90664b5888c18d151358da5bc76c6e383abf38928b1172b54e58f353e00b9387bcccb106b242e83ef027d06b5f0a0bef7adcd82387c2e6cf059f5f9fe5c6d721207cb7e11105a753dc69c5b966e085f40f8f3186664b088dc72998b1e1f67d25ddf5148770eb4e9dc1c3cab7fbd4109b69f0b4e21aa4070a28367a11fe047ad393ee7a4c43685e118ae0988544aabd074a5ecaabc1559d82ad550eb1543995d270fba692ee561f1481d97766891b40308109f63cc5d440a572ec8f1413d4696f53293542181adcc873773d67e7d73af97e95581bcd929f571599cf585e54a28bc2c15f4a7beb981b5fc41487ca475705cc2c77d7c11d78ee7d95a1aa98869024c7e0a7ffde7f72ec8166ab8a6b73c3d17e9071eb4e9d700996af147cf36d8c090dde7b74acacb542924b9caf382f338cc0ca2ae00ddf6f387ebaef183c1456970437867c3f478ff464e7ef5dcfe0892536c2e9e97cb9578c529a35181c55c774e563416b119dadaa1ad2dd5335a621345b11fdaec7ab62024847d3a9380167fb198367105a7025844669b6840f3f48e83ecde0a80a37998fb10b19c925e83eb1844188d39474380d9ee9f57b55830f20794fb01644a87a6b500d09aa4a79a965018a0482f7900e95dc29debd423163183e56869c65fa9a73955d3873e57fda05a8eea8b7027ed3f05ebf37f32fbb768650f50de9620000000049454e44ae426082</data>
-    </image>
-    <image name="image12">
-        <data format="PNG" length="892">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000034349444154388db59531681b6714c77f361a9e40c327b8e10e1ad04102bed045214b947650a18b6807d1a9f5e4180ac5742a4987d0a1c19d42c6e2c1904c9587901812b825600512594bd1195a7c051b3e0d061dd8a06f38f01b04e970965d51db049abee9eeddbbdff77f8ffff77d73bded1ed3b8ddb8fd8e0f10bdeddedcdc141cbf8cdfb5165a242e413261900fde0be29cc3ee59fabff76172962f4d95f65ef4082a1653f7b1aecf722560e42ca11762734b6842cab90513b27b54bcdbdc125642ba892558179ebfd659304062134cd3a73ffc95f1d892a2448112ff216407c2f3230584aa07cdbad277e057a09b417405e260b69353b0a8605d1f83658c230a84f88d61f8d211ef3860aa4678b6202c2f19a843e429d641e4437c1e78703060b9a26cd902dad984ce5a56a02a42b86090128c0e94e15fca4f3f66b4be367cb324449e12bb0b14872664e452a200e2377202559a5ff8b4dac28d6b6055f125a0b3714c673d23dec8b8b550433eaf129a59f2fcf4c13a4be8417a287437dd2974f15be146e4b0ea3087c2e327635696cadcf9de0784476b8eea046c7e89629ba7947321fdd3618ca1d51642cf6173f031dc7da8a43b8ef121ac3ea8d27f55d4c67d43e4cd8267151b18ec2ba004b593f6a7d07b8e74c7613ce1ab4f8511c7447501603454ac93f3c1854f2134454124c54c8d1aeede53d29d624111e0a332910f94a63021bc4c31065ca928dc3a507ca9d2d9a4506a04df3764078ed5fb23e26e95d15e61c1a056c65ee68adda394665d79765518ee2b9d8d6356bebbcef85059fc52d04a99d5fb900d1dbfac585415e309f5fa3192eb0cf85f33ce26d06a1b003aeb19bf3ddd65f5411553876673cc0f3f8718dfe09c4327ca676d9fc64d2e576c5d8a5f814613cab9e1d15ac6e38719fd5742eb96d05118ed8dd0233dfd73d0756cbd0d883ce16c77fef3ac1826b40c74f78b6d4a5bb82335e2a7851bd29d3335c6135aed1adb5d8753c5178887b3a33805db3d4b3781da95a2add0535a6d61b1dd20eeef22aec8373ebe8eb9b64be326c46f036a1232cc07a4c92c78aeb7dd2b0ef812d43f118280c2529393654b20274e399301a04849700ed24419658acbce51cc0492d74ac245a1ef992b62fec22fff31e6a1b8a3fe17f08786f7b67b737f03c543883fa410a41f0000000049454e44ae426082</data>
+        <data format="PNG" length="891">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000034249444154388db59531681b6714c77f321a9e40c327b8e10e1ad04103bed045214b443ba8d045b483e8d47a720c85623a95a443e8d0e04e2163f16048a6ca43480c0db9256005929c96a233b4f80a367c1a0c3ab041df20f01b04e970965d51db049abee9eeddbbdff77f8ffff77da524499845b3d97ccb7b8824494aa519f8f9b3e76fdb8b6d529722b930980cde09e29cc3ee59fabff7617a962fcf94bef9ed0d41d5621a3ed6f559a9068c9c25f442ecc4129a90cac48209d93d2adeedc41256437aa925d8109ebed47930406a534ccba73ffc85f1d892a1448112ff21e407c2d32305849a07ad86d277e057a197437405e260be9353b0a8605d1f83658c230a84f89561f8cc11ef3860a64678b228ac2c1b6840e429d641e4437c1e78703060a5aa6cdb02dadd82ee7a5ea0aa42b86890328c0e94e15fca8f3fe4b4bf327cbd2c449e12bb0b14872664e432a200e2577202555a9ffbb43bc2f5ab6055f125a0bb794c772327deccb9b958473eab119a79f2c2ecc13a4be8417628f4b6dc2974e91be17ae4b0ea3087c2c3476356972bdcface078407eb8eda14ece412c57692519908d99f0e630ced8e107a0e3b011fc3edfb4ab6e3181fc2dabd1afd17456ddc3744de3c785eb181c1be024a503f697f06bde3c8761cc613befc4418714cd410004643c53a391f5cf8144253144452ccd4a8e1f61d25db291614013ea810f940790613c2cb1463c0958bc2ed03c5971add2d0aa546f07d437ee058bb3b22eed518ed15160cea15ec65aed83dca683594271f0ac37da5bb79cceab7d7181f2a4b5f085aadb07617f2a1e3e7558baa623ca1d13846263a07fed78cf329b43b0680ee46ceaf8f7759bb57c334a0d51af3fd4f21c63738e7d0a9f269c7a77983cb155b97e157a1d982cac4f0603de7e1fd9cfe0ba17d53e82a8cf646e8919efe39e839b65f07449e70b63bff79560c53da067afbc536a523dc923af1e3c20dd9ce991ae309ed4e9da4e770aaf802f1707e14a760bb67e9a550bf52b4157a4abb232c759ac4fd5dc415f9e647d730577769de80f875405d42869301593a0f2e2549521cf065687c2c040185a5a627cb96414e9c7226034091b2e01c64a932ca15979fa39829a42f95948b42df3157c4c2855ffe632c407147fd2fe0f70d4f92a4f437c83388451e74c2930000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
@@ -939,85 +925,85 @@
     </connection>
     <connection>
         <sender>mver_idfacturap</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_numfacturap</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_nomcliente</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_ffacturap</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_contactfacturap</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_telfacturap</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_comentfacturap</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_idusuari</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_idcliente</sender>
-        <signal>clicked()</signal>
-        <receiver>FacturasProveedorListBase</receiver>
-        <slot>s_configurar()</slot>
-    </connection>
-    <connection>
-        <sender>mver_idserie_facturap</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_totalfacturaproveedor</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_totalimpuestos</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_totalbaseimp</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
         <sender>mver_reffacturap</sender>
-        <signal>clicked()</signal>
+        <signal>stateChanged(int)</signal>
+        <receiver>FacturasProveedorListBase</receiver>
+        <slot>s_configurar()</slot>
+    </connection>
+    <connection>
+        <sender>mver_comentfacturap</sender>
+        <signal>stateChanged(int)</signal>
         <receiver>FacturasProveedorListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>

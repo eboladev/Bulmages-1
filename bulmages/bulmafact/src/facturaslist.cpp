@@ -65,10 +65,10 @@ void FacturasList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
-for (int i = 0; i < m_list->numCols(); i++)
-{
-    stream << m_list->columnWidth(i) << "\n";
-}// end for
+        for (int i = 0; i < m_list->numCols(); i++) {
+            m_list->showColumn(i);
+            stream << m_list->columnWidth(i) << "\n";
+        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -198,9 +198,9 @@ FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag)
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-	inicializa();
+    inicializa();
     cargaconfig();
-	s_configurar();
+    s_configurar();
 }// end providerslist
 
 FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
@@ -211,8 +211,8 @@ FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
 
     inicializa();
     cargaconfig();
-	s_configurar();
-	presenta();
+    s_configurar();
+    presenta();
     m_modo=0;
     m_idfactura="";
     meteWindow(caption(),this);
@@ -338,11 +338,12 @@ void FacturasList::doubleclicked(int a, int , int , const QPoint &) {
     m_idfactura = m_list->text(a,COL_IDFACTURA);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("FacturasList_doubleclicked", this);
-    if (res != 0) return;
+    if (res != 0)
+        return;
     if (m_modo ==0 && m_idfactura != "") {
         FacturaView *bud = companyact->newFacturaView();
-	if (bud->cargaFactura(m_idfactura))
-		return;
+        if (bud->cargaFactura(m_idfactura))
+            return;
         companyact->m_pWorkspace->addWindow(bud);
         bud->show();
     } else {

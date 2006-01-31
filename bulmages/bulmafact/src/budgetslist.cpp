@@ -79,6 +79,7 @@ void BudgetsList::guardaconfig() {
         QTextStream stream( &file );
         stream << aux << "\n";
         for (int i = 0; i < m_list->numCols(); i++) {
+            m_list->showColumn(i);
             stream << m_list->columnWidth(i) << "\n";
         }// end for
         file.close();
@@ -358,11 +359,13 @@ void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("BudgetsList_doubleclicked", this);
-    if (res != 0) return;
+    if (res != 0)
+        return;
 
     if (m_modo ==0 && m_idpresupuesto != "") {
-	Budget *bud = companyact->newBudget();
-        if (bud->chargeBudget(m_idpresupuesto)) return;
+        Budget *bud = companyact->newBudget();
+        if (bud->chargeBudget(m_idpresupuesto))
+            return;
         companyact->m_pWorkspace->addWindow(bud);
         bud->show();
     } else {

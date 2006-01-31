@@ -195,8 +195,16 @@ void company::refreshArticles() {
 }// end refreshOrders
 
 
+FacturaProveedorView * company::newFacturaProveedorView() {
+    /// Lanzamos los plugins necesarios.
+    FacturaProveedorView *bud;
+    if (g_plugins->lanza("company_newFacturaProveedorView", this, (void **)&bud) )
+        return bud;
+    bud = new FacturaProveedorView(this , 0,theApp->translate("Edicion de Facturas Proveedor", "company"));
+    return bud;
+}// end FacturaProveedorView
 void company::s_newFacturaPro() {
-    FacturaProveedorView *bud = new FacturaProveedorView(this,0,theApp->translate("Edicion de FacturasProveedor", "company"));
+    FacturaProveedorView *bud = newFacturaProveedorView();
     m_pWorkspace->addWindow(bud);
     bud->pintaFacturaProveedor();
     bud->show();
