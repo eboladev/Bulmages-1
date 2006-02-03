@@ -864,6 +864,45 @@ CREATE TABLE lfactura (
    idarticulo integer REFERENCES articulo(idarticulo)
 );
 
+CREATE FUNCTION restriccioneslfactura() RETURNS "trigger"
+    AS $$
+DECLARE
+asd RECORD;
+reg RECORD;
+BEGIN
+	IF NEW.idarticulo IS NULL THEN
+	RAISE EXCEPTION 'ARTICULO INVALIDO';
+	return OLD;
+	END IF;
+
+	FOR asd IN SELECT * FROM articulo WHERE idarticulo=NEW.idarticulo LOOP
+        	IF NEW.desclfactura IS NULL THEN
+			NEW.desclfactura := asd.nomarticulo;
+		END IF;
+		IF NEW.cantlfactura IS NULL THEN
+			NEW.cantlfactura := 1;
+		END IF;
+		IF NEW.descuentolfactura IS NULL THEN
+			NEW.descuentolfactura := 0;
+		END IF;
+		IF NEW.pvplfactura IS NULL THEN
+			SELECT INTO reg pvparticulo(NEW.idarticulo) AS precio;
+			NEW.pvplfactura := reg.precio;
+		END IF;
+		IF NEW.ivalfactura IS NULL then
+			SELECT INTO reg ivaarticulo(NEW.idarticulo) AS iva;
+			NEW.ivalfactura := reg.iva;
+		END IF;
+	END LOOP;	
+        RETURN NEW;
+END;
+$$
+    LANGUAGE plpgsql;
+
+CREATE TRIGGER restriccionesalfacturatrigger
+    BEFORE INSERT OR UPDATE ON lfactura
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccioneslfactura();
 
 -- -------------------------------------------------------------------------------------------
 -- FACTURACIO>Albarans:

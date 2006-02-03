@@ -82,7 +82,6 @@ void ClientDelivNotesList::guardaconfig() {
     mver_numfactura->isChecked() ? aux += "1,":aux+="0,";
     mver_numnofactura->isChecked() ? aux += "1,":aux+="0,";
     mver_idusuario->isChecked() ? aux += "1,":aux+="0,";
-    //	mver_comentpresupuesto->isChecked() ? aux += "1,":aux+="0,";
     mver_idcliente->isChecked() ? aux += "1,":aux+="0,";
     mver_idalbaran->isChecked() ? aux += "1,":aux+="0,";
     mver_comentalbaran->isChecked() ? aux += "1,":aux+="0,";
@@ -229,6 +228,7 @@ void ClientDelivNotesList::s_configurar() {
 
 }// end s_configurar
 
+
 ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
         : ClientDelivNotesListBase(parent, name, flag) {
     companyact = NULL;
@@ -241,6 +241,7 @@ ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, Qt
         meteWindow(caption(),this);
     hideBusqueda();
 }// end providerslist
+
 
 ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
         : ClientDelivNotesListBase(parent, name, flag) {
@@ -265,7 +266,6 @@ ClientDelivNotesList::~ClientDelivNotesList() {
         companyact->sacaWindow(this);
     guardaconfig();
 }// end ~providerslist
-
 
 
 void ClientDelivNotesList::inicializa() {
