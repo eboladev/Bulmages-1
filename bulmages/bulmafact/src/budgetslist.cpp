@@ -348,8 +348,10 @@ QString BudgetsList::generaFiltro() {
 
 void BudgetsList::s_editar() {
     int a = m_list->currentRow();
-
-    doubleclicked(a,0,0, QPoint());
+    if (a >=0 )
+        doubleclicked(a,0,0, QPoint());
+    else
+        _depura("Debe seleccionar una linea",2);
 }
 
 
@@ -364,9 +366,10 @@ void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
 
     if (m_modo ==0 && m_idpresupuesto != "") {
         Budget *bud = companyact->newBudget();
+        companyact->m_pWorkspace->addWindow(bud);
+        bud->show();
         if (bud->chargeBudget(m_idpresupuesto))
             return;
-        companyact->m_pWorkspace->addWindow(bud);
         bud->show();
     } else {
         close();

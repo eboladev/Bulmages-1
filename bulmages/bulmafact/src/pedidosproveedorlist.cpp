@@ -488,15 +488,10 @@ void PedidosProveedorList::s_borrarPedidosProveedor() {
 
 void PedidosProveedorList::s_editarPedidosProveedor() {
     int a = m_list->currentRow();
-    m_idpedidoproveedor = m_list->text(a,COL_IDPEDIDOPROVEEDOR);
-    if (m_modo ==0 && m_idpedidoproveedor != "") {
-        PedidoProveedorView *bud = new PedidoProveedorView(companyact,0,theApp->translate("Edicion de Presupuestos", "company"));
-        companyact->m_pWorkspace->addWindow(bud);
-        bud->cargaPedidoProveedor(m_idpedidoproveedor);
-        bud->show();
-    } else {
-        close();
-    }// end if
+	if (a >=0 ) 
+    	doubleclicked(a,0,0, QPoint());
+	else
+	_depura("Debe seleccionar una linea",2);
 }
 
 void PedidosProveedorList::doubleclicked(int a, int , int , const QPoint &) {

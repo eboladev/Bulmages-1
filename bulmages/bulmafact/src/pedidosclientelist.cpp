@@ -343,6 +343,15 @@ void PedidosClienteList::doubleclicked(int a, int , int , const QPoint &) {
    }// end if
 }
 
+void PedidosClienteList::s_editarPedidosCliente() {
+    int a = m_list->currentRow();
+	if (a >=0 ) 
+    	doubleclicked(a,0,0, QPoint());
+	else
+	_depura("Debe seleccionar una linea",2);
+}
+
+
 
 void PedidosClienteList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"pedidoscliente.rml";
@@ -505,17 +514,5 @@ void PedidosClienteList::s_borrarPedidosCliente() {
 }// end boton_borrar
 
 
-void PedidosClienteList::s_editarPedidosCliente() {
-    int a = m_list->currentRow();
-    m_idpedidocliente = m_list->text(a,COL_IDPEDIDOCLIENTE);
-    if (m_modo ==0 && m_idpedidocliente != "") {
-        PedidoClienteView *bud = new PedidoClienteView(companyact,0,theApp->translate("Edicion de Presupuestos", "company"));
-	if (       bud->cargaPedidoCliente(m_idpedidocliente) )
-		return;
-	companyact->m_pWorkspace->addWindow(bud);
-        bud->show();
-    } else {
-        close();
-    }// end if
-}
+
 

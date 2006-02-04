@@ -9,8 +9,7 @@ FORMS += logpassbase.ui \
          abreempresadlg.ui \
          msgerrorbase.ui \
 	 busquedafechabase.ui
-	 
-	
+
 HEADERS += postgresiface2.h \
            configuracion.h \
            numerocuenta.h \
@@ -25,8 +24,8 @@ HEADERS += postgresiface2.h \
 	   busquedafecha.h \
 	   qtable1.h \
 	   pgimportfiles.h  \
-	   plugins.h
-	   
+	   plugins.h \
+	   dbrecord.h
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp \
@@ -41,7 +40,8 @@ SOURCES += postgresiface2.cpp \
 	   busquedafecha.cpp \
 	   qtable1.cpp \
 	   pgimportfiles.cpp \
-	   plugins.cpp
+	   plugins.cpp \
+	   dbrecord.cpp
 
 TRANSLATIONS += bulmalib_es.ts \
                 bulmalib_ca.ts \

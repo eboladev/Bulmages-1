@@ -132,7 +132,6 @@ void PedidoClienteView::generarAlbaran() {
     bud->vaciaAlbaranCliente();
     bud->setcomentalbaran(mdb_comentpedidocliente);
     bud->setdescalbaran(mdb_descpedidocliente);
-    bud->setfechaalbaran(mdb_fechapedidocliente);
     bud->setidforma_pago(mdb_idforma_pago);
     bud->setrefalbaran(mdb_refpedidocliente);
     bud->setidcliente(mdb_idcliente);

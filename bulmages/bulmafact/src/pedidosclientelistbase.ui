@@ -842,76 +842,16 @@
         <data format="PNG" length="1357">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000514494441545885a5965168535718c7ff111f6ea00f27e0c60df8703b3230a3428e5430a983dd910d17e6c3e293c13d18f1c14c9fc21ea465308a0f5da820a483413290a57d905861161f9c6dc7e05ea59b66cc61c195a4c4d2944c621ec45ea4f0df43cc6dd2e626a90b5c0ee7dedcf3ffbedff9ceff7e6095a049b04a18a6817ee608abb4afe32a1110c490200e09c227b897f5ec9bfd8c4dd1d8b504334fe74892c5da3a8baf5f31ba90a4b8aed37f3a480004c07ed6ed2bd2566192648ddba24b3a95cb92ca6492ca97fe6d323e6107d26dfdde1186554627e3cc2ce54992b9f21c13af538ccc261ac24dd137626d974fd8817425d02df3f46c9e6933678b67caf3d4ae47a84cb60b777cbf1988a63892e8b9e7ad998b699dfee918950bdbe27dd54e87207ad600c22aa313f1b6ccfdd3518a1b415b7c4fd5ee40aaebded76aaf58acad33f13a4531ad535c0936b2ef33f38eebee08c2f19ca7b3391ae587ac918c2e24e95fcab4a1df8b6fecd9075af1279ea4a83e8a504c4728cefafb3edf7d1371aafecc6c9eac9199f23cd5e908c5529aca597fcf73bdd73930241a567aec8dad7ed430922681e842b2917d56b7f71fc75aacf8984a0c895d352103b2af5a6954e79060b15aa3b1fed0763a921c5fca507d92a6b8a153fca673f4468ac56a8d5c6f3c4f9bb98e35210392e913693683e84662bf611aae91d008df8b7d00f1851f1ffb8f403d1e0796ef6043dd80f5601938e4061e6fa2f28985a9fa0c36351d33df5f44fdd632706f03acd265ae9808f94238f2e9117a552fd4b80aef8f5e2000b8422e1aa6e10af94268feaf39b69fd3b04a65d24f91d599accd51fd3942f1579a6236c2f1729efaa338c55dddf134c880a41ed66998068b778b4c7e9dec49627f339226090b00de07b2d624bca7fda8fc7a07fe6115cb2fefa370bf04ebef0d58ffbc70cc3c753505f72f6e8cfd310600507515de4567122e5609ac00f001e68a8991d0081156a17ce681a2a8489efc0a0bcfefa0f0bc04eb96b3b8382090be9a867bcd8db19fc6507a56824778103b1a43fd401db80d6437b228fc59004dba9a7afb77eec94e1293980280de997f97827bd18db1070df1ca5a05958d0a66b66620de11089d0cc17b7b370917abdc2e0807125881a3f839f51ce43712debad7cebcb25641f3e756dc18f40d22763486124af0dcf7b491d845a02309a07bb5ffeec5d88331d45fd4e119f0c03a60c17a6961736b13ca8082d26a09335b3350bd2aea87ebf0629bc4db7fc53a3520008dacc1c4a504e5b0a4e6d398b99ca17ad0a16101b8cf5c316dec4d02ad73c3345cad99379f37efb78e8aa2a0f0b28053ca290821802d60616dc1de8e9dff6795aeffede53b7da0b654e3f89571a6c2296a9ac6dcb7399b40a7f7f73965fe56733432b62c0bb3d62cbcaa170babdb043abdbfab877b5b12322099b890209f92894b096a9ac6f8d93853e154d7fea163c7b2d78e470624e3e7e364994c4fa519f93cc2e0f12013971236febefb81d60aed37f3c889085924333f64989fc853d334e627f2f40ff5ee1f9cbbd8d6403a442e039236f63299bb9e6ba0f7698c9f8f33763a46cda7f5eca0ba742aa01c961c1d1eb5039101c9d1c0286540323f91677e364f96c94c36c3b96b739401c9f9a9f95de2dd48ba0cd3e8e884b61d0390c312f2b0c4a036088ff0203a1085e93111fa37848bf72e62f9f132821f06e119f0e0e6ed9b585d59b5cfbd93d3b67d0d3b7d0b5ae7ae775d8d40021242884610328a42bd00fda08ec58d454845e2ccf819000d93eab65edb7c2fd5ee64a7dd6aa5d7f81f35774a0253fe8fc60000000049454e44ae426082</data>
     </image>
     <image name="image9">
-        <data format="PNG" length="943">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000037649444154388db59541681c5518c77f097b780b73780b1b98810afba001473cb8a1976c9b43021e0c045a82176f6d4f22e24514c4589082075b3c690f013d04e321740b16d6436523a49b3934640b0d19a1813760610612d8070eec7718a887491ab764f560fd2e338f37fcdeeffbe6cfcc446fbbc7495d6c5d7cce2ba8de766f62e204dcb9df79bef0fa02b18be108f6dd3e55aa0c19623058ec99eb811b103f8d897622284ee19513d3decf3db497e2377dac8b98f502d2dc1268439ac72c6a03790a5e4096c72c7aa7ebcdbe25f841d3fed58d8201fab6cffc9c4f947c8bfed3d22d043305dd3fc0658a76262814d53acc36c11e09be8224834600322523e3780156a2b07984066ce1308126da82f817a1b393a12a2085a02a9abbe715d7afd650cd21611dac13425fd1e1143e7972b3fb6c97c01b60077dcc94a67d4fb8fd554667c7a1b5c2bca5695ef2d13e2407c2caa796f61aa4399863f899c6e678962650445bd05e7550c0b5cb3ee112cc4c1b52b1e84a8df58d21ed55477b2da1793e44bd5dc56881b38cadb3049ec21e42e7be430a61f1b24feb1a84d382953eeab0caf76b03ae5fadf1de871a2a8adb77526a529a8f3796986a1e123f8ed0da677e094c5d4873d004ac7c3dc0ee39068770f3cb80e881c3fe2e741f0d31f551f088b1d18add83182a103420346073411535563e4989f71c4a2b96e76aa40c089b1a2984f4195837066cb4811c8ca7a010420f5c015a02563e1b60f7040ad09e827310d6cb7e5545210598ba1a6f8c074e01154d371174a5cafabd6169ea29fc739a24c9b875236573ab466a052904d3a892fe532ab23c66be09771b8a2c11d637867cf0fe1b0c0e85e5a51a7870eb062407199f7f9422b9c3f735611378e9e58d18fb9e222b84c577155208ed55c78f1bfbdcfc22c06f0e999d1bf2f14a80ef6bdc510605b49634ad0bff9263728baf14ad39c0f97c772761fd1b881e38e6673599406a07b82329678b106f09dd8755c2bae2ef397e018e939845054926841a5a57147821ed9f52e23d217e9c944f17a0eb9a852b9add4d21cd1d5ad5e824638ce3a7319b4f148dd71436174c1d1696862cbfd3a4fbc88283d4c1cc9b063d9dd1ba00dd87557c354326fbd827a3339ee86df7ca0f7c05662f296a41192911015546481d1faf2a65b365d3e5389c83b82fa499e0b2338c2920faeda49d97afe36afcfee4d89dff589350fea3fe17f0ab86f7b67b137f01a647adcdf714bf420000000049454e44ae426082</data>
+        <data format="PNG" length="942">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000037549444154388db5953168dc5618c77f361ade81867770060952f08318aad2a167b2f888071b32d46048305dba25994a295d4a0ba56ea0043a34a1539bc1900ea6ee60728186b843cab9e04437c4f80231562186276840021bee4105f70d8274901df782af1d9a7e8bf478e2f77edfa73fd2581cc71c57abd57ac16ba8388ec7c68ec1f7efdd7f31ffe63c894be010f6dc1e356a0c18603058eca9ebbeeb933c4be86e77a13c817bc7a68f7e7e84f633826680755d66fc90acb084da9015090bda4091811f9217090bfec97ab367097fd0b47f75c360809eed31371bd04dbf43ff69e994829980ce1fe072453b17148a5a03669a600f8540419ac36408322143e3780956a2b045170dd8d261424d770b925f848ded1ce5819482f23477ce2aae5eaea39a03a20658274481628313f8f8f1cdcef31d42bf8fedf730139af65de1e6d7391bdb0ead15e61d4df37c800e20dd17963fb3b457212bc01cc14f353647b334a1a2bb05ed1507255cb918102dc2f49421138bf6eaacad0f68af38daab29cdb311ea420da3054e33b6ce12fa0a7b001bf71c520a0b17035a57209a12acf45007356eaff6b97ab9cefb1f69f014376f65d4a5321f6d2c09b5222279d245eb80b945300d212b4013b2fc4d1fbbebe81fc0f5af42ba0f1cf677a1f37880690c83878c8d56ecec27e041380991015b08aaacb3fc6946b2eb505ab1345b27a34fd4d4482964cfc1ba1160a30d14607c05a510f9e04ad012b2fc791fbb2b5082f6159c81a851f5ab3c8594601a6ab4313e3805789a4e2a68afc6dadd4165ea2b82339a34cdb9712d6373ab4e66052905335923fba754e445c25c13ee4c2af254585b1ff0e1076fd13f109616ebe0c38d6b90eee77cf17186148e20d0444de0959737641cf88abc1416de534829b4571c3faeef71fdcb90a039606676c027cb2141a071873994d05ad4b4cefd4b8e292c8152b4660117f0fdad94b56fa1fbc03137a3c90532dbc71d4a355b84644be83cac1135147fcff14b7092262c28487321d2d0baa4c08f68ff9491ec0ac993b47aba04ddd0cc5fd2ec6c0a59e1d0aace463ac2387996b0f95431f986c2168269c0fce280a5779b741e5b709039987edba0a7725ae7a0f3b046a0a6c9650ffb7478c663711c571f780f66ce2bea61152911015545481d1dafbcaad9aae96a1cce41d213b25c70f929c694d0fdedb89d57afa36af4fef8c89dff58e350fda3fe17f0eb86c7713cf617a937add30abada010000000049454e44ae426082</data>
     </image>
     <image name="image10">
-        <data format="PNG" length="889">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000034049444154388db59531681c4714863f992d9ee08a3938c10ea4d80507a442e02d54488e0ba9f39114979022312ee2903421553acb3604ecca759242244d402904e742708db1ce10eecee090133868030aac20073b20c10e6441af38708af5493e620943ec0703bb336fbefddfdb376f667afd1e13bbbc72f9396fc07afddecccc04dcd9ee3c5f9b5f23f52938d82bf75e0be2bd27dbcf18fc3680f1e97c3051faa8fd88d0e49845435e0e49a44e51e65863c935c7d62ca239d42c99afde73cdb162193ccba86f089dc73a0d0648ff4e31916138fa91a2c800259e537652c18d84e24801a1de80e54565e8c1080c1c4416b0d3919c8029212f87c838033cf19cb03330a4db9eeeae07266a84685eb876dd102f4164145742d43803bce7f6484449ffa9a0ed6dd8fcc155a89a10cf1b24807ca41cfca9dc5b77343f317cfa99101ba5539e01b6354b5166c473b03390175065f5fd90664b5888c18d151358da5bc76c6e383abf38928b1172b54e58f353e00b9387bcccb106b242e83ef027d06b5f0a0bef7adcd82387c2e6cf059f5f9fe5c6d721207cb7e11105a753dc69c5b966e085f40f8f3186664b088dc72998b1e1f67d25ddf5148770eb4e9dc1c3cab7fbd4109b69f0b4e21aa4070a28367a11fe047ad393ee7a4c43685e118ae0988544aabd074a5ecaabc1559d82ad550eb1543995d270fba692ee561f1481d97766891b40308109f63cc5d440a572ec8f1413d4696f53293542181adcc873773d67e7d73af97e95581bcd929f571599cf585e54a28bc2c15f4a7beb981b5fc41487ca475705cc2c77d7c11d78ee7d95a1aa98869024c7e0a7ffde7f72ec8166ab8a6b73c3d17e9071eb4e9d700996af147cf36d8c090dde7b74acacb542924b9caf382f338cc0ca2ae00ddf6f387ebaef183c1456970437867c3f478ff464e7ef5dcfe0892536c2e9e97cb9578c529a35181c55c774e563416b119dadaa1ad2dd5335a621345b11fdaec7ab62024847d3a9380167fb198367105a7025844669b6840f3f48e83ecde0a80a37998fb10b19c925e83eb1844188d39474380d9ee9f57b55830f20794fb01644a87a6b500d09aa4a79a965018a0482f7900e95dc29debd423163183e56869c65fa9a73955d3873e57fda05a8eea8b7027ed3f05ebf37f32fbb768650f50de9620000000049454e44ae426082</data>
+        <data format="PNG" length="887">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000033e49444154388db59531681c4714863f892d9ee08a3938c10ea4d80507a442e02b5448c485d4f9488a4b4891181771489a902a9d651b0276e53a4e219c26a014827321acc6586708ec1a1c7202076d408115e4600724d8812ce815074eb13ec9472c61b0f3606077e6cdb7ff7bfbe6cd5492248c6d7979f905efc09224999a1a831f6e3d7cb13ab74ae63370b057edbd11c47b4fbe9f93fe96c2e8743e182b7ddc7b4c680acc82a1a806b4a5495915586329b4c0362ca205342cb9afdf0b2db062499fe734d785ed273a0906c8fece30916130bc4f59e68012cf2a3b99e0864279a480d06cc1d28232f0600452079105ec642427602a28aa0132ca014f3c2beca4866ccbd3dff5c0588d10cd0957ae1ae245888ce22a885a6780f7dc1e6d51b27f6a686f0b367e7435aa21c4730609a0182a077f2a77d61c9dcf0c9f7f21c446d9aece00db86a5ac72e259d849e5255459f930a4d315e6637023c50496dee6311beb8eed5f1ced0b1172b949d8f013e0e9f143511558037929f41ff813e895af85f9f73d6ee4914361e3e7922fafce70eddb10107e58f78882d309eea4e24273f042f687c71843a72b84c6e314ccc870f3ae92ed7aca43b871ab49faa8f6ed3f33c466123ca9b801d981028a8d5e863f865ef764bb1ed3123a9784323866be2df5de03a5a8e4f5e0ba4ec1366a8758ea9c4a65b8795dc976eb0f8ac0cc7b33c42d2018c3047b9e621aa0523b2643c5044d7a5bd44a8d10860637f4dc5e2bd8f9b549b15f27d6463314e75545ee73961694e88270f097d2db3ce6da5731e5a1f2c9650133c3ed3570079e3bdfe4a82aa625b4dbc7e027ffde7f72ec814eb78e6b63ddd17b9073e356937011962e957cf77d8c090dde7b74a4ac7643da17395f7151e51881e515c01beead3b7ebaeb481f092b8b821b41b15fa0477ab2f3f7be277d6a898d707a3a5fed15c38c4e03d2a3fa982e7f2a6823627bb3ae866cf7548d69099d6e44d2f778554c00d970321527e07c3f277d0ea105574168944e57f8f8a336fd67391cd5e1b6e762ec7c4efb22f49f5ac220c469463698044f25495237f800da1f08d68208756f0dea21415d29afb42c409140f01eb2815238c5bbd72866048327ca80b34cdf70aeb6e93357ded2a6a1bea3fe17f0bb86274932f52fbe6686568ff5047b0000000049454e44ae426082</data>
     </image>
     <image name="image11">
-        <data format="PNG" length="892">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000034349444154388db59531681b6714c77f361a9e40c327b8e10e1ad04102bed045214b947650a18b6807d1a9f5e4180ac5742a4987d0a1c19d42c6e2c1904c9587901812b825600512594bd1195a7c051b3e0d061dd8a06f38f01b04e970965d51db049abee9eeddbbdff77f8ffff77d73bded1ed3b8ddb8fd8e0f10bdeddedcdc141cbf8cdfb5165a242e413261900fde0be29cc3ee59fabff76172962f4d95f65ef4082a1653f7b1aecf722560e42ca11762734b6842cab90513b27b54bcdbdc125642ba892558179ebfd659304062134cd3a73ffc95f1d892a2448112ff216407c2f3230584aa07cdbad277e057a09b417405e260b69353b0a8605d1f83658c230a84f88d61f8d211ef3860aa4678b6202c2f19a843e429d641e4437c1e78703060b9a26cd902dad984ce5a56a02a42b86090128c0e94e15fca4f3f66b4be367cb324449e12bb0b14872664e452a200e2377202559a5ff8b4dac28d6b6055f125a0b3714c673d23dec8b8b550433eaf129a59f2fcf4c13a4be8417a287437dd2974f15be146e4b0ea3087c2e327635696cadcf9de0784476b8eea046c7e89629ba7947321fdd3618ca1d51642cf6173f031dc7da8a43b8ef121ac3ea8d27f55d4c67d43e4cd8267151b18ec2ba004b593f6a7d07b8e74c7613ce1ab4f8511c7447501603454ac93f3c1854f2134454124c54c8d1aeede53d29d624111e0a332910f94a63021bc4c31065ca928dc3a507ca9d2d9a4506a04df3764078ed5fb23e26e95d15e61c1a056c65ee68adda394665d79765518ee2b9d8d6356bebbcef85059fc52d04a99d5fb900d1dbfac585415e309f5fa3192eb0cf85f33ce26d06a1b003aeb19bf3ddd65f5411553876673cc0f3f8718dfe09c4327ca676d9fc64d2e576c5d8a5f814613cab9e1d15ac6e38719fd5742eb96d05118ed8dd0233dfd73d0756cbd0d883ce16c77fef3ac1826b40c74f78b6d4a5bb82335e2a7851bd29d3335c6135aed1adb5d8753c5178887b3a33805db3d4b3781da95a2add0535a6d61b1dd20eeef22aec8373ebe8eb9b64be326c46f036a1232cc07a4c92c78aeb7dd2b0ef812d43f118280c2529393654b20274e399301a04849700ed24419658acbce51cc0492d74ac245a1ef992b62fec22fff31e6a1b8a3fe17f08786f7b67b737f03c543883fa410a41f0000000049454e44ae426082</data>
+        <data format="PNG" length="891">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000034249444154388db59531681b6714c77f321a9e40c327b8e10e1ad04103bed045214b443ba8d045b483e8d47a720c85623a95a443e8d0e04e2163f16048a6ca43480c0db9256005929c96a233b4f80a367c1a0c3ab041df20f01b04e970965d51db049abee9eeddbbdff77f8ffff77da524499845b3d97ccb7b8824494aa519f8f9b3e76fdb8b6d529722b930980cde09e29cc3ee59fabff7617a962fcf94bef9ed0d41d5621a3ed6f559a9068c9c25f442ecc4129a90cac48209d93d2adeedc41256437aa925d8109ebed47930406a534ccba73ffc85f1d892a1448112ff21e407c2d32305849a07ad86d277e057a197437405e260be9353b0a8605d1f83658c230a84f89561f8cc11ef3860a64678b228ac2c1b6840e429d641e4437c1e78703060a5aa6cdb02dadd82ee7a5ea0aa42b86890328c0e94e15fca8f3fe4b4bf327cbd2c449e12bb0b14872664e432a200e2577202555a9ffbb43bc2f5ab6055f125a0bb794c772327deccb9b958473eab119a79f2c2ecc13a4be8417628f4b6dc2974e91be17ae4b0ea3087c2c3476356972bdcface078407eb8eda14ece412c57692519908d99f0e630ced8e107a0e3b011fc3edfb4ab6e3181fc2dabd1afd17456ddc3744de3c785eb181c1be024a503f697f06bde3c8761cc613befc4418714cd410004643c53a391f5cf8144253144452ccd4a8e1f61d25db291614013ea810f940790613c2cb1463c0958bc2ed03c5971add2d0aa546f07d437ee058bb3b22eed518ed15160cea15ec65aed83dca683594271f0ac37da5bb79cceab7d7181f2a4b5f085aadb07617f2a1e3e7558baa623ca1d13846263a07fed78cf329b43b0680ee46ceaf8f7759bb57c334a0d51af3fd4f21c63738e7d0a9f269c7a77983cb155b97e157a1d982cac4f0603de7e1fd9cfe0ba17d53e82a8cf646e8919efe39e839b65f07449e70b63bff79560c53da067afbc536a523dc923af1e3c20dd9ce991ae309ed4e9da4e770aaf802f1707e14a760bb67e9a550bf52b4157a4abb232c759ac4fd5dc415f9e647d730577769de80f875405d42869301593a0f2e2549521cf065687c2c040185a5a627cb96414e9c7226034091b2e01c64a932ca15979fa39829a42f95948b42df3157c4c2855ffe632c407147fd2fe0f70d4f92a4f437c83388451e74c2930000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
-    <connection>
-        <sender>botonimprimir</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_printPedidosCliente()</slot>
-    </connection>
-    <connection>
-        <sender>botonfiltrar</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_searchPedidosCliente()</slot>
-    </connection>
-    <connection>
-        <sender>m_new</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_newPedidoCliente()</slot>
-    </connection>
-    <connection>
-        <sender>m_filtro</sender>
-        <signal>returnPressed()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_filtrar()</slot>
-    </connection>
-    <connection>
-        <sender>botonfiltrar</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_mostrarBusqueda()</slot>
-    </connection>
-    <connection>
-        <sender>m_procesados</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_filtrar()</slot>
-    </connection>
-    <connection>
-        <sender>m_cliente</sender>
-        <signal>valueChanged(QString)</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_filtrar()</slot>
-    </connection>
-    <connection>
-        <sender>botonfiltrar_3_2</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_mostrarConfiguracion()</slot>
-    </connection>
-    <connection>
-        <sender>m_articulo</sender>
-        <signal>valueChanged(QString)</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_filtrar()</slot>
-    </connection>
-    <connection>
-        <sender>botonfiltrar_3_2_2</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_filtrar()</slot>
-    </connection>
     <connection>
         <sender>botonborrar</sender>
         <signal>clicked()</signal>
@@ -922,7 +862,55 @@
         <sender>botoneditar</sender>
         <signal>clicked()</signal>
         <receiver>PedidosClienteListBase</receiver>
-        <slot>s_borrarPedidosCliente()</slot>
+        <slot>s_editarPedidosCliente()</slot>
+    </connection>
+    <connection>
+        <sender>botonfiltrar</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_searchPedidosCliente()</slot>
+    </connection>
+    <connection>
+        <sender>botonfiltrar</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_mostrarBusqueda()</slot>
+    </connection>
+    <connection>
+        <sender>botonfiltrar_3_2</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_mostrarConfiguracion()</slot>
+    </connection>
+    <connection>
+        <sender>botonfiltrar_3_2_2</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_filtrar()</slot>
+    </connection>
+    <connection>
+        <sender>botonimprimir</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_printPedidosCliente()</slot>
+    </connection>
+    <connection>
+        <sender>m_articulo</sender>
+        <signal>valueChanged(QString)</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_filtrar()</slot>
+    </connection>
+    <connection>
+        <sender>m_cliente</sender>
+        <signal>valueChanged(QString)</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_filtrar()</slot>
+    </connection>
+    <connection>
+        <sender>m_filtro</sender>
+        <signal>returnPressed()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_filtrar()</slot>
     </connection>
     <connection>
         <sender>m_list</sender>
@@ -931,55 +919,19 @@
         <slot>doubleclicked(int,int,int,const QPoint&amp;)</slot>
     </connection>
     <connection>
-        <sender>mver_idpedidocliente</sender>
+        <sender>m_new</sender>
         <signal>clicked()</signal>
         <receiver>PedidosClienteListBase</receiver>
-        <slot>s_configurar()</slot>
+        <slot>s_newPedidoCliente()</slot>
+    </connection>
+    <connection>
+        <sender>m_procesados</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_filtrar()</slot>
     </connection>
     <connection>
         <sender>mver_codigoalmacen</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_configurar()</slot>
-    </connection>
-    <connection>
-        <sender>mver_refpedidocliente</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_configurar()</slot>
-    </connection>
-    <connection>
-        <sender>mver_numpedidocliente</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_configurar()</slot>
-    </connection>
-    <connection>
-        <sender>mver_descpedidocliente</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_configurar()</slot>
-    </connection>
-    <connection>
-        <sender>mver_nomcliente</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_configurar()</slot>
-    </connection>
-    <connection>
-        <sender>mver_fechapedidocliente</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_configurar()</slot>
-    </connection>
-    <connection>
-        <sender>mver_contactpedidocliente</sender>
-        <signal>clicked()</signal>
-        <receiver>PedidosClienteListBase</receiver>
-        <slot>s_configurar()</slot>
-    </connection>
-    <connection>
-        <sender>mver_telpedidocliente</sender>
         <signal>clicked()</signal>
         <receiver>PedidosClienteListBase</receiver>
         <slot>s_configurar()</slot>
@@ -991,13 +943,19 @@
         <slot>s_configurar()</slot>
     </connection>
     <connection>
-        <sender>mver_idusuari</sender>
+        <sender>mver_contactpedidocliente</sender>
         <signal>clicked()</signal>
         <receiver>PedidosClienteListBase</receiver>
         <slot>s_configurar()</slot>
     </connection>
     <connection>
-        <sender>mver_idcliente</sender>
+        <sender>mver_descpedidocliente</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_configurar()</slot>
+    </connection>
+    <connection>
+        <sender>mver_fechapedidocliente</sender>
         <signal>clicked()</signal>
         <receiver>PedidosClienteListBase</receiver>
         <slot>s_configurar()</slot>
@@ -1009,7 +967,43 @@
         <slot>s_configurar()</slot>
     </connection>
     <connection>
-        <sender>mver_totalpedidocliente</sender>
+        <sender>mver_idcliente</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_configurar()</slot>
+    </connection>
+    <connection>
+        <sender>mver_idpedidocliente</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_configurar()</slot>
+    </connection>
+    <connection>
+        <sender>mver_idusuari</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_configurar()</slot>
+    </connection>
+    <connection>
+        <sender>mver_nomcliente</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_configurar()</slot>
+    </connection>
+    <connection>
+        <sender>mver_numpedidocliente</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_configurar()</slot>
+    </connection>
+    <connection>
+        <sender>mver_refpedidocliente</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_configurar()</slot>
+    </connection>
+    <connection>
+        <sender>mver_telpedidocliente</sender>
         <signal>clicked()</signal>
         <receiver>PedidosClienteListBase</receiver>
         <slot>s_configurar()</slot>
@@ -1022,6 +1016,12 @@
     </connection>
     <connection>
         <sender>mver_totalimpuestos</sender>
+        <signal>clicked()</signal>
+        <receiver>PedidosClienteListBase</receiver>
+        <slot>s_configurar()</slot>
+    </connection>
+    <connection>
+        <sender>mver_totalpedidocliente</sender>
         <signal>clicked()</signal>
         <receiver>PedidosClienteListBase</receiver>
         <slot>s_configurar()</slot>

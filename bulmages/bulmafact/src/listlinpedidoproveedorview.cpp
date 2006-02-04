@@ -85,15 +85,15 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget * parent, const c
     setNumCols(15);
     setNumRows(100);
     horizontalHeader()->setLabel( COL_PUNTEO, tr( "P" ) );
-    horizontalHeader()->setLabel( COL_NUMLPEDIDOPROVEEDOR, tr( "N L�ea" ) );
-    horizontalHeader()->setLabel( COL_DESCLPEDIDOPROVEEDOR, tr( "Descripci�" ) );
+    horizontalHeader()->setLabel( COL_NUMLPEDIDOPROVEEDOR, tr( "N Linea" ) );
+    horizontalHeader()->setLabel( COL_DESCLPEDIDOPROVEEDOR, tr( "Descripcion" ) );
     horizontalHeader()->setLabel( COL_CANTLPEDIDOPROVEEDOR, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_PVPLPEDIDOPROVEEDOR, tr( "Precio" ) );
     horizontalHeader()->setLabel( COL_DESCUENTOLPEDIDOPROVEEDOR, tr( "Descuento" ) );
     horizontalHeader()->setLabel( COL_IDPEDIDOPROVEEDOR, tr( "N Pedido" ) );
-    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Art�ulo" ) );
-    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "C�igo Art�o" ) );
-    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripci� Art�ulo" ) );
+    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Articulo" ) );
+    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "Codigo Articulo" ) );
+    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripcion Articulo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
     horizontalHeader()->setLabel( COL_PREVLPEDIDOPROVEEDOR, tr( "COL_PREVLPEDIDOPROVEEDOR" ) );
@@ -312,14 +312,14 @@ void ListLinPedidoProveedorView::valueBudgetLineChanged(int row, int col) {
 
 /// Devuelve la linea que se esta tratando actualmente
 LinPedidoProveedor *ListLinPedidoProveedorView::lineaact() {
-    fprintf(stderr,"ListLinPedidoProveedorView::lineaact()\n");
+    _depura("ListLinPedidoProveedorView::lineaact()\n",0);
     return lineaat(currentRow());
 }// end lineaact
 
 
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
 LinPedidoProveedor *ListLinPedidoProveedorView::lineaat(int row) {
-    fprintf(stderr,"ListLinPedidoProveedor::lineaat(%d)\n", row);
+    _depura("ListLinPedidoProveedorView::lineaat\n", 0);
     LinPedidoProveedor *linea;
     if (row >=0) {
         while (m_lista.at(row) == 0 ) {
@@ -338,7 +338,7 @@ LinPedidoProveedor *ListLinPedidoProveedorView::lineaat(int row) {
 
 
 void ListLinPedidoProveedorView::manageArticle(int row) {
-    fprintf(stderr,"manageArticle(%d)\n",row);
+    _depura("ListLinPedidoProveedorView::manageArticle\n",0);
     LinPedidoProveedor *linea= lineaat(row);
     QString articleCode = text(row, COL_CODARTICULO);
     linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));
@@ -347,7 +347,7 @@ void ListLinPedidoProveedorView::manageArticle(int row) {
 
 
 QString ListLinPedidoProveedorView::searchArticle() {
-    fprintf(stderr,"Busqueda de un art�ulo\n");
+    _depura("ListLinPedidoProveedorView::searchArticle\n",0);
     articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,articleslist::SelectMode);
     // Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);

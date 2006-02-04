@@ -366,18 +366,10 @@ void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
 
 void ClientDelivNotesList::s_edit() {
     int a = m_list->currentRow();
-    if (a >= 0) {
-        m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
-        if (m_idclidelivnote != "") {
-            fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
-            AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,0,theApp->translate("Edicion de Albaran de Cliente", "company"));
-            if (cDelivNote->cargaAlbaranCliente(m_idclidelivnote))
-                return;
-
-            companyact->m_pWorkspace->addWindow(cDelivNote);
-            cDelivNote->show();
-        }// end if
-    }// end if
+	if (a >=0 ) 
+    	s_doubleclicked(a,0,0, QPoint());
+	else
+	_depura("Debe seleccionar una linea",2);
 }
 
 

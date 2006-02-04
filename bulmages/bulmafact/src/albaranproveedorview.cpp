@@ -88,13 +88,6 @@ void   AlbaranProveedorView::pintatotales(float base, float iva) {
 }// end pintatotales
 
 
-
-
-
-
-
-
-
 void AlbaranProveedorView::s_verpedidoproveedor() {
 	_depura("Funcion aun no implementada",2);
 }// end s_verpedidoproveedor

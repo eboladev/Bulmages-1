@@ -354,7 +354,10 @@ void FacturasList::doubleclicked(int a, int , int , const QPoint &) {
 
 void FacturasList::s_edit() {
     int a = m_list->currentRow();
-    doubleclicked(a,0,0, QPoint());
+	if (a >=0 ) 
+    	doubleclicked(a,0,0, QPoint());
+	else
+	_depura("Debe seleccionar una linea",2);
 }// end s_edit
 
 

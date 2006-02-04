@@ -1,0 +1,116 @@
+#include "dbrecord.h"
+#include "funcaux.h"
+
+
+DBRecord::DBRecord(postgresiface2 *con) {
+    conexionbase = con;
+}
+
+
+DBRecord::~DBRecord() {}
+
+int DBRecord::DBload(cursor2 *cur) {
+    _depura("DBRecord::DBload",0);
+    DBCampo *linea;
+    int error = 0;
+    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+        QString nom =linea->nomcampo();
+        QString val = cur->valor(nom);
+        error += linea->set(val);
+    }// end for
+    _depura("END DBRecord::DBload",0);
+    return error;
+}// end DBload
+
+void DBRecord::DBclear() {
+    _depura("DBRecord::DBclear",0);
+    DBCampo *linea;
+    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+        linea->set
+        ("");
+    }// end for
+    _depura("END DBRecord::DBclear",0);
+}// end DBload
+
+
+int DBRecord::DBsave(QString &id) {
+    _depura("DBRecord::DBsave",2);
+    DBCampo *linea;
+    QString listcampos="";
+    QString listvalores="";
+    QString queryupdate="";
+    QString separador = "";
+    QString separadorwhere = "";
+    QString querywhere = "";
+    bool esinsert = TRUE;
+    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+        if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
+            if (linea->nomcampo() == m_campoid)
+                id = linea->valorcampo();
+            if (linea->valorcampo() != "") {
+                esinsert = FALSE;
+            }
+            querywhere += linea->nomcampo() + " = " + linea->valorcampoprep();
+            separadorwhere = " AND ";
+        } else {
+            listcampos += separador + linea->nomcampo();
+            listvalores += separador + linea->valorcampoprep();
+            queryupdate += separador + linea->nomcampo() + "=" + linea->valorcampoprep();
+            separador = ", ";
+        }
+    }// end for
+    if (esinsert) {
+        QString query = "INSERT INTO "+m_tablename+" ("+listcampos+") VALUES ("+listvalores+")";
+        _depura(query,2);
+        conexionbase->ejecuta(query);
+        cursor2 *cur = conexionbase->cargacursor("SELECT "+m_campoid+" FROM "+m_tablename+" ORDER BY "+m_campoid+" DESC LIMIT 1");
+        id = cur->valor(m_campoid);
+        delete cur;
+    } else {
+        QString query = "UPDATE "+m_tablename+" SET "+queryupdate + " WHERE "+ querywhere;
+        conexionbase->ejecuta(query);
+        _depura(query,2);
+    }// end if
+    return 0;
+}
+
+int DBRecord::setDBvalue(QString nomb, QString valor) {
+	_depura("DBRecord::setDBvalue",0);
+    DBCampo *linea;
+    int error = 0;
+    linea = m_lista.first();
+    while (linea && linea->nomcampo() != nomb)
+        linea = m_lista.next();
+    if (!linea) {
+        _depura("Campo "+nomb+" no encontrado",2);
+        return -1;
+    }// end if
+    if ( linea->nomcampo() == nomb)
+        error = linea->set(valor);
+
+    return error;
+}
+
+QString DBRecord::DBvalue(QString nomb) {
+    _depura("DBRecord::value",0);
+    DBCampo *linea;
+    linea = m_lista.first();
+    while (linea && linea->nomcampo()!= nomb)
+        linea = m_lista.next();
+    if (!linea) {
+        _depura("Campo "+nomb+" no encontrado",2);
+        return "";
+    }// end if
+    if ( linea->nomcampo() == nomb) {
+        return linea->valorcampo();
+    }
+    return "";
+}
+
+int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, DBCampo::dbrestrict res, QString nomp="") {
+    DBCampo *camp = new DBCampo(conexionbase, nom, typ, res, nomp);
+    camp->set("");
+    m_lista.append(camp);
+    return 0;
+}
+

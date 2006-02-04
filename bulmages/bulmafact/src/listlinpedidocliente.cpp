@@ -59,7 +59,7 @@ void ListLinPedidoCliente::cargaListLinPedidoCliente(QString idbudget) {
     fprintf(stderr,"ListLinPedidoCliente::cargaListLinPedidoCliente(%s)\n", idbudget.ascii());
     mdb_idpedidocliente = idbudget;
     fprintf(stderr,"Hacemos la carga del cursor\n");
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedidocliente, articulo WHERE idpedidocliente="+mdb_idpedidocliente+" AND articulo.idarticulo=lpedidocliente.idarticulo");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedidocliente, articulo WHERE idpedidocliente="+mdb_idpedidocliente+" AND articulo.idarticulo=lpedidocliente.idarticulo ORDER BY numlpedidocliente");
     int i=0;
     while (!cur->eof())   {
         /// Creamos un elemento del tipo LinPedidoCliente y lo agregamos a la lista.

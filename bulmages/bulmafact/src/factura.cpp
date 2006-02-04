@@ -112,6 +112,7 @@ int Factura::cargaFactura(QString idbudget) {
 
 
 void Factura::guardaFactura() {
+	QString fecha;
     companyact->begin();
     if (mdb_numfactura == "") {
         QString SQLQueryn = "SELECT MAX(numFactura)+1 as num FROM Factura";
@@ -124,6 +125,10 @@ void Factura::guardaFactura() {
         mdb_idusuari="NULL";
     if (mdb_idforma_pago == "")
         mdb_idforma_pago = "NULL";
+	if (mdb_ffactura == "")
+		fecha = "NULL";
+	else
+		fecha = "'"+companyact->sanearCadena(mdb_ffactura)+"'";
     if (mdb_idfactura == "") {
         /// Se trata de una inserci�
         QString SQLQuery = "INSERT INTO factura (descfactura, codigoserie_factura, procesadafactura, reffactura, numfactura, ffactura, comentfactura, idusuari, idcliente, idalmacen, idforma_pago) VALUES ('"+
@@ -131,8 +136,8 @@ void Factura::guardaFactura() {
                            companyact->sanearCadena(mdb_codigoserie_factura)+"',"+
                            companyact->sanearCadena(mdb_procesadafactura)+",'"+
                            companyact->sanearCadena(mdb_reffactura)+"',"+
-                           companyact->sanearCadena(mdb_numfactura)+",'"+
-                           companyact->sanearCadena(mdb_ffactura)+"','"+
+                           companyact->sanearCadena(mdb_numfactura)+","+
+                           fecha+",'"+
                            companyact->sanearCadena(mdb_comentfactura)+"',"+
                            companyact->sanearCadena(mdb_idusuari)+","+
                            companyact->sanearCadena(mdb_idcliente)+","+
@@ -153,7 +158,7 @@ void Factura::guardaFactura() {
         /// Se trata de una modificaci�
         QString SQLQuery = "UPDATE Factura SET ";
         SQLQuery += " numFactura="+companyact->sanearCadena(mdb_numfactura);
-        SQLQuery += " ,fFactura='"+companyact->sanearCadena(mdb_ffactura)+"'";
+        SQLQuery += " ,ffactura="+fecha;
         SQLQuery += " ,comentFactura='"+companyact->sanearCadena(mdb_comentfactura)+"'";
         SQLQuery += " ,idusuari="+companyact->sanearCadena(mdb_idusuari);
         SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente);

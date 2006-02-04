@@ -3483,7 +3483,7 @@ Quiere guardar los cambios?</source>
     <name>ListLinPedidoProveedorView</name>
     <message>
         <source>Cantidad</source>
-        <translation>Tipo IVA</translation>
+        <translation>Cantidad</translation>
     </message>
     <message>
         <source>Precio</source>

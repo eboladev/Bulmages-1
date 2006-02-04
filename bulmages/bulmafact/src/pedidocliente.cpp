@@ -128,19 +128,24 @@ int PedidoCliente::cargaPedidoCliente(QString idbudget) {
 
 void PedidoCliente::guardaPedidoCliente() {
     companyact->begin();
+	QString fecha;
     if (mdb_idforma_pago == "")
         mdb_idforma_pago = "NULL";
     if (mdb_numpedidocliente == "")
         mdb_numpedidocliente = "NULL";
     if (mdb_idtrabajador == "")
         mdb_idtrabajador = "NULL";
+if (mdb_fechapedidocliente == "")
+    fecha = "NULL";
+else
+    fecha = "'"+companyact->sanearCadena(mdb_fechapedidocliente)+"'";
     if (mdb_idpedidocliente == "") {
-        /// Se trata de una inserci�
+        /// Se trata de una insercion
         QString SQLQuery = "INSERT INTO pedidocliente (contactpedidocliente, telpedidocliente, numpedidocliente, fechapedidocliente, idcliente, idalmacen, idforma_pago, refpedidocliente, procesadopedidocliente, descpedidocliente, comentpedidocliente, idtrabajador) VALUES ('"+
                            companyact->sanearCadena(mdb_contactpedidocliente)+"','"+
                            companyact->sanearCadena(mdb_telpedidocliente)+"',"+
-                           companyact->sanearCadena(mdb_numpedidocliente)+",'"+
-                           companyact->sanearCadena(mdb_fechapedidocliente)+"',"+
+                           companyact->sanearCadena(mdb_numpedidocliente)+","+
+                           fecha+","+
                            companyact->sanearCadena(mdb_idcliente)+","+
                            companyact->sanearCadena(mdb_idalmacen)+","+
                            companyact->sanearCadena(mdb_idforma_pago)+",'"+
@@ -162,8 +167,8 @@ void PedidoCliente::guardaPedidoCliente() {
     } else {
         /// Se trata de una modificaci�
         QString SQLQuery = "UPDATE pedidocliente SET ";
-        SQLQuery += " numpedidocliente="+companyact->sanearCadena(mdb_numpedidocliente)+"";
-        SQLQuery += " ,fechapedidocliente='"+companyact->sanearCadena(mdb_fechapedidocliente)+"'";
+        SQLQuery += " numpedidocliente="+companyact->sanearCadena(mdb_numpedidocliente);
+        SQLQuery += " ,fechapedidocliente="+fecha;
         SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente);
         SQLQuery += " ,idalmacen="+companyact->sanearCadena(mdb_idalmacen);
         SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);

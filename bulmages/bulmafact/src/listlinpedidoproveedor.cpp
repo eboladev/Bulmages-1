@@ -59,7 +59,7 @@ void ListLinPedidoProveedor::cargaListLinPedidoProveedor(QString idbudget) {
     fprintf(stderr,"ListLinPedidoProveedor::cargaListLinPedidoProveedor(%s)\n", idbudget.ascii());
     mdb_idpedidoproveedor = idbudget;
     fprintf(stderr,"Hacemos la carga del cursor\n");
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedidoproveedor, articulo WHERE idpedidoproveedor="+mdb_idpedidoproveedor+" AND articulo.idarticulo=lpedidoproveedor.idarticulo");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM lpedidoproveedor, articulo WHERE idpedidoproveedor="+mdb_idpedidoproveedor+" AND articulo.idarticulo=lpedidoproveedor.idarticulo ORDER BY numlpedidoproveedor");
     int i=0;
     while (!cur->eof())   {
         /// Creamos un elemento del tipo LinPedidoProveedor y lo agregamos a la lista.

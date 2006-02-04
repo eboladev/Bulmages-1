@@ -21,19 +21,38 @@
 
 typedef QMap<QString, Fixed> base;
 
-presupuesto::presupuesto(company *comp) {
+presupuesto::presupuesto(company *comp) : DBRecord(comp) {
     companyact=comp;
+
+    setDBTableName("presupuesto");
+    setDBCampoId("idpresupuesto");
+    addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("fpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("vencpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idusuari", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+
     vaciaPresupuesto();
-}
+}// end presupuesto
 
 presupuesto::~presupuesto() {}
 
 
 void presupuesto::borraPresupuesto() {
-    if (mdb_idpresupuesto != "") {
+    if (DBvalue("idpresupuesto") != "") {
         listalineas->borrar();
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
+        int error = companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto="+DBvalue("idpresupuesto"));
         if (error) {
             companyact->rollback();
             return;
@@ -46,38 +65,24 @@ void presupuesto::borraPresupuesto() {
 
 
 void presupuesto::vaciaPresupuesto() {
-    mdb_idpresupuesto = "";
-    mdb_idcliente= "";
-    mdb_idalmacen= "";
-    mdb_numpresupuesto= "";
-    mdb_fpresupuesto= "";
-    mdb_vencpresupuesto= "";
-    mdb_contactpresupuesto= "";
-    mdb_telpresupuesto= "";
-    mdb_comentpresupuesto= "";
-    mdb_procesadopresupuesto = "FALSE";
-    mdb_descpresupuesto = "";
-    mdb_refpresupuesto = "";
-    mdb_idforma_pago = "";
-    mdb_idtrabajador = "";
-    //    listalineas->vaciar();
+    DBclear();
 }// end vaciaPresupuesto
 
 void presupuesto::pintaPresupuesto() {
-    pintaidcliente(mdb_idcliente);
-    pintaIdAlmacen(mdb_idalmacen);
-    pintaNumPresupuesto(mdb_numpresupuesto);
-    pintaFPresupuesto(mdb_fpresupuesto);
-    pintaVencPresupuesto(mdb_vencpresupuesto);
-    pintaContractPresupuesto(mdb_contactpresupuesto);
-    pintaTelPresupuesto(mdb_telpresupuesto);
-    pintaComentPresupuesto(mdb_comentpresupuesto);
-    pintaprocesadopresupuesto(mdb_procesadopresupuesto);
-    pintadescpresupuesto(mdb_descpresupuesto);
-    pintarefpresupuesto(mdb_refpresupuesto);
-    pintaidforma_pago(mdb_idforma_pago);
-    pintaidalmacen(mdb_idalmacen);
-    pintaidtrabajador(mdb_idtrabajador);
+    pintaidcliente(DBvalue("idcliente"));
+    pintaIdAlmacen(DBvalue("idalmacen"));
+    pintaNumPresupuesto(DBvalue("numpresupuesto"));
+    pintaFPresupuesto(DBvalue("fpresupuesto"));
+    pintaVencPresupuesto(DBvalue("vencpresupuesto"));
+    pintaContractPresupuesto(DBvalue("contactpresupuesto"));
+    pintaTelPresupuesto(DBvalue("telpresupuesto"));
+    pintaComentPresupuesto(DBvalue("comentpresupuesto"));
+    pintaprocesadopresupuesto(DBvalue("procesadopresupuesto"));
+    pintadescpresupuesto(DBvalue("descpresupuesto"));
+    pintarefpresupuesto(DBvalue("refpresupuesto"));
+    pintaidforma_pago(DBvalue("idforma_pago"));
+    pintaidalmacen(DBvalue("idalmacen"));
+    pintaidtrabajador(DBvalue("idtrabajador"));
     // Pinta el subformulario de detalle del presupuesto.
     listalineas->pintalistlinpresupuesto();
     // Pinta el subformulario de descuentos del presupuesto
@@ -88,29 +93,13 @@ void presupuesto::pintaPresupuesto() {
 
 // Esta funci� carga un presupuesto.
 int presupuesto::chargeBudget(QString idbudget) {
-    mdb_idpresupuesto = idbudget;
-	int error = 0;
-    QString query = "SELECT * FROM presupuesto LEFT JOIN almacen ON  presupuesto.idalmacen = almacen.idalmacen WHERE idpresupuesto="+idbudget;
+    int error = 0;
+    QString query = "SELECT * FROM presupuesto WHERE idpresupuesto="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
-	if (cur->error())  error =1;
+    if (cur->error())
+        error =1;
     if (!cur->eof()) {
-        mdb_idcliente= cur->valor("idcliente");
-        mdb_idalmacen= cur->valor("idalmacen");
-        mdb_numpresupuesto= cur->valor("numpresupuesto");
-        mdb_fpresupuesto= cur->valor("fpresupuesto");
-        mdb_vencpresupuesto= cur->valor("vencpresupuesto");
-        mdb_contactpresupuesto= cur->valor("contactpresupuesto");
-        mdb_telpresupuesto= cur->valor("telpresupuesto");
-        mdb_comentpresupuesto= cur->valor("comentpresupuesto");
-        mdb_idusuari = cur->valor("idusuari");
-        mdb_descpresupuesto = cur->valor("descpresupuesto");
-        mdb_refpresupuesto = cur->valor("refpresupuesto");
-        mdb_idforma_pago = cur->valor("idforma_pago");
-        mdb_idtrabajador = cur->valor("idtrabajador");
-        if (cur->valor("procesadopresupuesto") == "t")
-            mdb_procesadopresupuesto = "TRUE";
-        else
-            mdb_procesadopresupuesto = "FALSE";
+        DBload(cur);
     }// end if
     delete cur;
 
@@ -124,87 +113,30 @@ int presupuesto::chargeBudget(QString idbudget) {
     }// end if
 
     pintaPresupuesto();
-	return 0;
+    return 0;
 }// end chargeBudget
 
 
 void presupuesto::guardapresupuesto() {
+    QString id;
     companyact->begin();
-    if (mdb_numpresupuesto == "")
-        mdb_numpresupuesto = "NULL";
-    if (mdb_idusuari=="")
-        mdb_idusuari="NULL";
-    if (mdb_idforma_pago == "")
-        mdb_idforma_pago = "NULL";
-    if (mdb_idtrabajador== "")
-        mdb_idtrabajador = "NULL";
-    if(mdb_idalmacen == "")
-        mdb_idalmacen = "NULL";
-    if (mdb_idcliente == "")
-        mdb_idcliente = "NULL";
-    if (mdb_idpresupuesto == "") {
-        /// Se trata de una inserci�
-        QString SQLQuery = "INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, procesadopresupuesto, descpresupuesto, refpresupuesto, idforma_pago, idtrabajador) VALUES ("+
-                           companyact->sanearCadena(mdb_numpresupuesto)+",'"+
-                           companyact->sanearCadena(mdb_fpresupuesto)+"','"+
-                           companyact->sanearCadena(mdb_contactpresupuesto)+"','"+
-                           companyact->sanearCadena(mdb_telpresupuesto)+"','"+
-                           companyact->sanearCadena(mdb_vencpresupuesto)+"','"+
-                           companyact->sanearCadena(mdb_comentpresupuesto)+"',"+
-                           companyact->sanearCadena(mdb_idusuari)+","+
-                           companyact->sanearCadena(mdb_idcliente)+","+
-                           companyact->sanearCadena(mdb_idalmacen)+","+
-                           companyact->sanearCadena(mdb_procesadopresupuesto)+",'"+
-                           companyact->sanearCadena(mdb_descpresupuesto)+"','"+
-                           companyact->sanearCadena(mdb_refpresupuesto)+"',"+
-                           companyact->sanearCadena(mdb_idforma_pago)+","+
-                           companyact->sanearCadena(mdb_idtrabajador)+")";
-        int error = companyact->ejecuta(SQLQuery);
-        if (error ) {
-            companyact->rollback();
-            return;
-        }// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(idpresupuesto) AS m FROM presupuesto");
-        if (!cur->eof())
-            setidpresupuesto(cur->valor("m"));
-        delete cur;
-        companyact->commit();
-    } else {
-        /// Se trata de una modificaci�
-        QString SQLQuery = "UPDATE presupuesto SET ";
-        SQLQuery += " numpresupuesto="+companyact->sanearCadena(mdb_numpresupuesto);
-        SQLQuery += " ,fpresupuesto='"+companyact->sanearCadena(mdb_fpresupuesto)+"'";
-        SQLQuery += " ,contactpresupuesto='"+companyact->sanearCadena(mdb_contactpresupuesto)+"'";
-        SQLQuery += " ,telpresupuesto='"+companyact->sanearCadena(mdb_telpresupuesto)+"'";
-        SQLQuery += " ,vencpresupuesto='"+companyact->sanearCadena(mdb_vencpresupuesto)+"'";
-        SQLQuery += " ,comentpresupuesto='"+companyact->sanearCadena(mdb_comentpresupuesto)+"'";
-        SQLQuery += " ,idusuari="+companyact->sanearCadena(mdb_idusuari);
-        SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente);
-        SQLQuery += " ,idalmacen="+companyact->sanearCadena(mdb_idalmacen);
-        SQLQuery += " ,procesadopresupuesto="+companyact->sanearCadena(mdb_procesadopresupuesto);
-        SQLQuery += " ,descpresupuesto='"+companyact->sanearCadena(mdb_descpresupuesto)+"'";
-        SQLQuery += " ,refpresupuesto= '"+companyact->sanearCadena(mdb_refpresupuesto)+"'";
-        SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
-        SQLQuery += " ,idtrabajador="+companyact->sanearCadena(mdb_idtrabajador);
-        SQLQuery += " WHERE idpresupuesto="+companyact->sanearCadena(mdb_idpresupuesto);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        companyact->commit();
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
+    setidpresupuesto(id);
+    companyact->commit();
     listalineas->guardalistlinpresupuesto();
     listadescuentos->guardaListDescuentoPresupuesto();
-    chargeBudget(mdb_idpresupuesto);
+    chargeBudget(id);
 }// end guardapresupuesto
 
 
 QString presupuesto::detalleArticulos() {
     QString texto="";
 
-    cursor2 *cur=companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto="+mdb_idpresupuesto);
+    cursor2 *cur=companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto="+DBvalue("idpresupuesto"));
     int i=0;
     while(!cur->eof()) {
         i= !i;
@@ -248,7 +180,8 @@ void presupuesto::imprimirPresupuesto() {
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("presupuesto_imprimirPresupuesto", this);
-    if (res != 0) return;
+    if (res != 0)
+        return;
 
 
 
@@ -290,7 +223,7 @@ void presupuesto::imprimirPresupuesto() {
     QString fitxersortidatxt="";
     // L�ea de totales del presupuesto
 
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dircliente]",cur->valor("dircliente"));
@@ -303,18 +236,18 @@ void presupuesto::imprimirPresupuesto() {
     }// end if
     delete cur;
 
-    buff.replace("[numpresupuesto]",mdb_numpresupuesto);
-    buff.replace("[fpresupuesto]",mdb_fpresupuesto);
-    buff.replace("[vencpresupuesto]",mdb_vencpresupuesto);
-    buff.replace("[contactpresupuesto]",mdb_contactpresupuesto);
-    buff.replace("[telpresupuesto]",mdb_telpresupuesto);
-    buff.replace("[comentpresupuesto]",mdb_comentpresupuesto);
-    buff.replace("[descpresupuesto]",mdb_descpresupuesto);
-    buff.replace("[refpresupuesto]",mdb_refpresupuesto);
+    buff.replace("[numpresupuesto]",DBvalue("numpresupuesto"));
+    buff.replace("[fpresupuesto]",DBvalue("fpresupuesto"));
+    buff.replace("[vencpresupuesto]",DBvalue("vencpresupuesto"));
+    buff.replace("[contactpresupuesto]",DBvalue("contactpresupuesto"));
+    buff.replace("[telpresupuesto]",DBvalue("telpresupuesto"));
+    buff.replace("[comentpresupuesto]",DBvalue("comentpresupuesto"));
+    buff.replace("[descpresupuesto]",DBvalue("descpresupuesto"));
+    buff.replace("[refpresupuesto]",DBvalue("refpresupuesto"));
 
 
     linpresupuesto *linea;
-    /// Impresi� de la tabla de contenidos.
+    /// Impresion de la tabla de contenidos.
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.2cm, 1.5cm, 1.8cm, 2.25cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
     fitxersortidatxt += "	<td>Cod.</td>\n";

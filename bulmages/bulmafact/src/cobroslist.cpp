@@ -277,14 +277,12 @@ QString CobrosList::generaFiltro() {
 
 void CobrosList::s_editar() {
     int a = m_list->currentRow();
-    m_idcobro = m_list->text(a,COL_IDCOBRO);
-    if (m_modo ==0 && m_idcobro != "") {
-        CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
-        bud->cargaCobro(m_idcobro);
-        bud->show();
-    } else {
-        close();
-    }// end if
+	if (a >=0 ) 
+    	doubleclicked(a,0,0, QPoint());
+	else
+	_depura("Debe seleccionar una linea,2");
+
+
 }
 
 void CobrosList::doubleclicked(int a, int , int , const QPoint &) {

@@ -57,7 +57,7 @@ void ListLinAlbaranProveedor::cargaListLinAlbaranProveedor(QString idbudget) {
     fprintf(stderr,"ListLinAlbaranProveedor::cargaListLinAlbaranProveedor(%s)\n", idbudget.ascii());
     mdb_idalbaranp = idbudget;
     fprintf(stderr,"Hacemos la carga del cursor\n");
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaranp, articulo WHERE idalbaranp="+mdb_idalbaranp+" AND articulo.idarticulo=lalbaranp.idarticulo");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaranp, articulo WHERE idalbaranp="+mdb_idalbaranp+" AND articulo.idarticulo=lalbaranp.idarticulo ORDER BY numlalbaranp");
     int i=0;
     while (!cur->eof())   {
         /// Creamos un elemento del tipo LinAlbaran y lo agregamos a la lista.

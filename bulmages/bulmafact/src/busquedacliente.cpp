@@ -26,6 +26,7 @@ BusquedaCliente::BusquedaCliente(QWidget *parent, const char *name)
 BusquedaCliente::~BusquedaCliente() {}
 
 void BusquedaCliente::setidcliente(QString val) {
+	_depura("BusquedaCliente::setidcliente",0);
     mdb_idcliente=val;
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente='"+mdb_idcliente+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -40,7 +41,7 @@ void BusquedaCliente::setidcliente(QString val) {
     delete cur;
     m_cifcliente->setText(mdb_cifcliente);
     m_nomcliente->setText(mdb_nomcliente);
-
+	_depura("END BusquedaCliente::setidcliente",0);
 }
 
 

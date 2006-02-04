@@ -163,7 +163,7 @@ void   Budget::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
 /// Se encarga de generar un pedido a partir del presupuesto.
 void Budget::generarPedidoCliente() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funci�.
-    QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='"+mdb_refpresupuesto+"'";
+    QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='"+DBvalue("refpresupuesto")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         PedidoClienteView *bud = new PedidoClienteView(companyact,NULL,theApp->translate("Edicion de Pedidos de Clientes", "company"));
@@ -189,16 +189,16 @@ void Budget::generarPedidoCliente() {
     PedidoClienteView *bud = new PedidoClienteView(companyact,0,theApp->translate("Edicion de Pedidos de Clientes", "company"));
     bud->vaciaPedidoCliente();
 	companyact->m_pWorkspace->addWindow(bud);
-    bud->setidcliente(mdb_idcliente);
-    bud->setcomentpedidocliente(mdb_comentpresupuesto);
-    bud->setdescpedidocliente(mdb_descpresupuesto);
-    bud->setfechapedidocliente(mdb_fpresupuesto);
-    bud->setidforma_pago(mdb_idforma_pago);
-    bud->setrefpedidocliente(mdb_refpresupuesto);
-    bud->setprocesadopedidocliente(mdb_procesadopresupuesto);
-    bud->setidalmacen(mdb_idalmacen);
-    bud->setcontactpedidocliente(mdb_contactpresupuesto);
-    bud->settelpedidocliente(mdb_telpresupuesto);
+    bud->setidcliente(DBvalue("idcliente"));
+    bud->setcomentpedidocliente(DBvalue("comentpresupuesto"));
+    bud->setdescpedidocliente(DBvalue("descpresupuesto"));
+    bud->setfechapedidocliente(DBvalue("fpresupuesto"));
+    bud->setidforma_pago(DBvalue("idforma_pago"));
+    bud->setrefpedidocliente(DBvalue("refpresupuesto"));
+    bud->setprocesadopedidocliente(DBvalue("procesadopresupuesto"));
+    bud->setidalmacen(DBvalue("idalmacen"));
+    bud->setcontactpedidocliente(DBvalue("contactpresupuesto"));
+    bud->settelpedidocliente(DBvalue("telpresupuesto"));
     QString l;
     linpresupuesto *linea;
     uint i = 0;
@@ -225,7 +225,7 @@ int Budget::chargeBudget(QString id) {
     int error = 0;
     error = presupuesto::chargeBudget(id);
 	if (error) return -1;
-    setCaption("presupuesto "+mdb_refpresupuesto);
+    setCaption("presupuesto "+DBvalue("refpresupuesto"));
     if (companyact->meteWindow(caption(),this))
 	return -1;
     dialogChanges_cargaInicial();
@@ -236,7 +236,7 @@ int Budget::chargeBudget(QString id) {
 
 void Budget::s_informeReferencia() {
     InformeReferencia *inf = new InformeReferencia(companyact);
-    inf->setreferencia(mdb_refpresupuesto);
+    inf->setreferencia(DBvalue("refpresupuesto"));
     inf->generarinforme();
     delete inf;
 

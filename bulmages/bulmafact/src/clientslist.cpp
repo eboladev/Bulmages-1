@@ -331,11 +331,12 @@ void ClientsList::m_clientList_clicked(int a, int , int , const QPoint &) {
 
 
 void ClientsList::editClient() {
-    m_idclient = m_clientList->text(m_clientList->currentRow(),COL_IDCLIENTE);
-    ClientEdit *cli = new ClientEdit(companyact,0,theApp->translate("Edicion de Clientes", "company"));
-    cli->loadClient(m_idclient);
-    companyact->m_pWorkspace->addWindow(cli);
-    cli->show();
+    if (m_clientList->currentRow() < 0) {
+        _depura("Debe seleccionar un elemento",2);
+        return;
+    }// end if
+    m_clientList_doubleClicked(m_clientList->currentRow(), 0, 0, QPoint());
+
 }// end editClient
 
 /**
@@ -347,7 +348,8 @@ void ClientsList::m_clientList_doubleClicked(int a, int , int , const QPoint &) 
     m_nomclient = m_clientList->text(a, COL_NOMCLIENTE);
     if (m_mode == EDIT_MODE ) {
         ClientEdit *cli = new ClientEdit(companyact,0,theApp->translate("Edicion de Clientes", "company"));
-        cli->loadClient(m_idclient);
+        if(cli->loadClient(m_idclient))
+            return;
         companyact->m_pWorkspace->addWindow(cli);
         cli->show();
     } else {

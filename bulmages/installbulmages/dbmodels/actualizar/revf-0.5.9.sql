@@ -381,6 +381,12 @@ BEGIN
 		ALTER TABLE presupuesto ALTER COLUMN imppresupuesto SET DEFAULT 0;
 	END IF;
 
+	ALTER TABLE pedidocliente ALTER COLUMN fechapedidocliente SET DEFAULT now();
+	ALTER TABLE albaran ALTER COLUMN fechaalbaran SET DEFAULT now();
+	ALTER TABLE presupuesto ALTER COLUMN fpresupuesto SET DEFAULT now();
+	ALTER TABLE factura ALTER COLUMN ffactura SET DEFAULT now();
+
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -500,9 +506,236 @@ CREATE TRIGGER restriccionesalfacturatrigger
 
 
 
+SELECT drop_if_exists_proc ('restriccionespedidocliente','');
+CREATE FUNCTION restriccionespedidocliente () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+	IF NEW.fechapedidocliente IS NULL THEN
+		NEW.fechapedidocliente := now();
+	END IF;
+        IF NEW.numpedidocliente IS NULL THEN
+                SELECT INTO asd max(numpedidocliente) AS m FROM pedidocliente;
+		IF asd.m IS NOT NULL THEN
+			NEW.numpedidocliente := asd.m + 1;
+		ELSE
+			NEW.numpedidocliente := 1;
+		END IF;
+        END IF;
+	IF NEW.refpedidocliente IS NULL OR NEW.refpedidocliente = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.refpedidocliente := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionespedidoclientetrigger
+    BEFORE INSERT OR UPDATE ON pedidocliente
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionespedidocliente();
+
+\echo "Creamos restricciones para pedidos a cliente"
+
+
+SELECT drop_if_exists_proc ('restriccionespresupuesto','');
+CREATE FUNCTION restriccionespresupuesto () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+	IF NEW.fpresupuesto IS NULL THEN
+		NEW.fpresupuesto := now();
+	END IF;
+        IF NEW.numpresupuesto IS NULL THEN
+                SELECT INTO asd max(numpresupuesto) AS m FROM presupuesto;
+		IF asd.m IS NOT NULL THEN	
+			NEW.numpresupuesto := asd.m + 1;
+		ELSE
+
+			NEW.numpresupuesto := 1;
+		END IF;			
+        END IF;
+	IF NEW.refpresupuesto IS NULL OR NEW.refpresupuesto = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.refpresupuesto := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionespresupuestotrigger
+    BEFORE INSERT OR UPDATE ON presupuesto
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionespresupuesto();
+
+\echo "Creamos restricciones para presupuestos a cliente"
+
+SELECT drop_if_exists_proc ('restriccionesalbaran','');
+CREATE FUNCTION restriccionesalbaran () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+	IF NEW.fechaalbaran IS NULL THEN
+		NEW.fechaalbaran := now();
+	END IF;
+        IF NEW.numalbaran IS NULL THEN
+                SELECT INTO asd max(numalbaran) AS m FROM albaran;
+		IF asd.m IS NOT NULL THEN
+			NEW.numalbaran := asd.m + 1;
+		ELSE
+			NEW.numalbaran := 1;
+		END IF;
+        END IF;
+	IF NEW.refalbaran IS NULL OR NEW.refalbaran = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.refalbaran := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionesalbarantrigger
+    BEFORE INSERT OR UPDATE ON albaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesalbaran();
+\echo "Creamos restricciones para albaranes a cliente"
+
+
+SELECT drop_if_exists_proc ('restriccionesfactura','');
+CREATE FUNCTION restriccionesfactura () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+	IF NEW.ffactura IS NULL THEN
+		NEW.ffactura := now();
+	END IF;
+        IF NEW.numfactura IS NULL THEN
+                SELECT INTO asd max(numfactura) AS m FROM factura WHERE idserie_factura=NEW.idserie_factura AND idalmacen = NEW.idalmacen;
+		IF asd.m IS NOT NULL THEN
+			NEW.numfactura := asd.m + 1;
+		ELSE
+			NEW.numfactura := 1;
+		END IF;
+        END IF;
+	IF NEW.reffactura IS NULL OR NEW.reffactura = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.reffactura := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+CREATE TRIGGER restriccionesfacturatrigger
+    BEFORE INSERT OR UPDATE ON factura
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesfactura();
+\echo "Creamos restricciones para facturas a cliente"
+
+
+SELECT drop_if_exists_proc ('restriccionespedidoproveedor','');
+CREATE FUNCTION restriccionespedidoproveedor () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+	IF NEW.fechapedidoproveedor IS NULL THEN
+		NEW.fechapedidoproveedor := now();
+	END IF;
+        IF NEW.numpedidoproveedor IS NULL THEN
+                SELECT INTO asd max(numpedidoproveedor) AS m FROM pedidoproveedor;
+		IF asd.m IS NOT NULL THEN
+			NEW.numpedidoproveedor := asd.m + 1;
+		ELSE
+			NEW.numpedidoproveedor := 1;
+		END IF;
+        END IF;
+	IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.refpedidoproveedor := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+CREATE TRIGGER restriccionespedidoproveedortrigger
+    BEFORE INSERT OR UPDATE ON pedidoproveedor
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionespedidoproveedor();
+\echo "Creamos restricciones para pedidos a proveedores"
 
 
 
+SELECT drop_if_exists_proc ('restriccionesalbaranp','');
+CREATE FUNCTION restriccionesalbaranp () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+	IF NEW.fechaalbaranp IS NULL THEN
+		NEW.fechaalbaranp := now();
+	END IF;
+        IF NEW.numalbaranp IS NULL THEN
+                SELECT INTO asd max(numalbaranp) AS m FROM albaranp;
+		IF asd.m IS NOT NULL THEN
+			NEW.numalbaranp := asd.m + 1;
+		ELSE
+			NEW.numalbaranp := 1;
+		END IF;
+        END IF;
+	IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.refalbaranp := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+CREATE TRIGGER restriccionesalbaranptrigger
+    BEFORE INSERT OR UPDATE ON albaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesalbaranp();
+\echo "Creamos restricciones para albaranes a proveedores"
+
+
+SELECT drop_if_exists_proc ('restriccionesfacturap','');
+CREATE FUNCTION restriccionesfacturap () RETURNS "trigger"
+AS '
+DECLARE
+asd RECORD;
+BEGIN
+	IF NEW.ffacturap IS NULL THEN
+		NEW.ffacturap := now();
+	END IF;
+	IF NEW.reffacturap IS NULL OR NEW.reffacturap = '''' THEN
+		SELECT INTO asd crearef() AS m;
+		IF FOUND THEN
+			NEW.reffacturap := asd.m;
+		END IF;
+	END IF;
+        RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+CREATE TRIGGER restriccionesfacturaptrigger
+    BEFORE INSERT OR UPDATE ON facturap
+    FOR EACH ROW
+    EXECUTE PROCEDURE restriccionesfacturap();
+\echo "Creamos restricciones para facturas a proveedores"
 
 -- Agregamos nuevos parametros de configuraci�.
 --
@@ -522,7 +755,6 @@ END;
 SELECT actualizarevision();
 DROP FUNCTION actualizarevision() CASCADE;
 \echo "Actualizada la revision de la base de datos a la version 0.5.9"
-
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
 DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;

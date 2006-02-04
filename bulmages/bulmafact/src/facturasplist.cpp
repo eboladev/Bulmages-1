@@ -312,7 +312,11 @@ void FacturasProveedorList::doubleclicked(int a, int , int , const QPoint &) {
 
 
 void FacturasProveedorList::s_editarFacturaProveedor() {
-    doubleclicked(m_list->currentRow(),0,0,QPoint());
+    int a = m_list->currentRow();
+	if (a >=0 ) 
+    	doubleclicked(a,0,0, QPoint());
+	else
+	_depura("Debe seleccionar una linea",2);
 }
 
 

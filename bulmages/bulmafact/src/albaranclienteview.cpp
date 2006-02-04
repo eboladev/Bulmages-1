@@ -171,7 +171,7 @@ void AlbaranClienteView::generarFactura() {
     //    bud->setcodigoalmacen(mdb_codigoalmacen);
     bud->setcomentfactura(mdb_comentalbaran);
     //    bud->setdescfactura(mdb_descalbaran);
-    bud->setfechafactura(mdb_fechaalbaran);
+    //bud->setfechafactura(mdb_fechaalbaran);
     bud->setidforma_pago(mdb_idforma_pago);
     bud->setreffactura(mdb_refalbaran);
     bud->setidcliente(mdb_idcliente);

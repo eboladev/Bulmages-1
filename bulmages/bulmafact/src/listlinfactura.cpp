@@ -57,7 +57,7 @@ void ListLinFactura::cargaListLinFactura(QString idbudget) {
     vaciar();
     mdb_idfactura = idbudget;
     fprintf(stderr,"Hacemos la carga del cursor\n");
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM lfactura, articulo WHERE idfactura="+idbudget+" AND articulo.idarticulo=lfactura.idarticulo");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM lfactura, articulo WHERE idfactura="+idbudget+" AND articulo.idarticulo=lfactura.idarticulo ORDER BY idlfactura");
     int i=0;
     while (!cur->eof())   {
         /// Creamos un elemento del tipo LinFactura y lo agregamos a la lista.

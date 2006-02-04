@@ -152,7 +152,7 @@ void PedidoProveedorView::generarAlbaran() {
 
     bud->setcomentalbaranp(mdb_comentpedidoproveedor);
     bud->setdescalbaranp(mdb_descpedidoproveedor);
-    bud->setfechaalbaranp(mdb_fechapedidoproveedor);
+    //    bud->setfechaalbaranp(mdb_fechapedidoproveedor);
     bud->setidforma_pago(mdb_idforma_pago);
     bud->setrefalbaranp(mdb_refpedidoproveedor);
     bud->setidproveedor(mdb_idproveedor);

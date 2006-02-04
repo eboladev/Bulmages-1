@@ -391,15 +391,10 @@ QString AlbaranesProveedor::generaFiltro() {
 
 void AlbaranesProveedor::s_editar() {
     int a = m_list->currentRow();
-    m_idalbaranp = m_list->text(a,COL_IDALBARANP);
-    if (m_modo ==0 && m_idalbaranp != "") {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,0,theApp->translate("Edición de Albaranes de Proveedores", "company"));
-	companyact->m_pWorkspace->addWindow(bud);
-        bud->cargaAlbaranProveedor(m_idalbaranp);
-        bud->show();
-    } else {
-        close();
-    }// end if
+	if (a >=0 ) 
+    	doubleclicked(a,0,0, QPoint());
+	else
+	_depura("Debe seleccionar una linea",2);
 }
 
 void AlbaranesProveedor::doubleclicked(int a, int , int , const QPoint &) {

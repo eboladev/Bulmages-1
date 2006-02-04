@@ -56,7 +56,7 @@ void ListLinAlbaranCliente::cargaListLinAlbaranCliente(QString idbudget) {
     _depura("ListLinAlbaranCliente::cargaListLinAlbaranCliente(%s)\n", 0);
     vaciar();
     mdb_idalbaran = idbudget;
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaran, articulo WHERE idalbaran="+mdb_idalbaran+" AND articulo.idarticulo=lalbaran.idarticulo");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM lalbaran, articulo WHERE idalbaran="+mdb_idalbaran+" AND articulo.idarticulo=lalbaran.idarticulo ORDER BY numlalbaran");
     int i=0;
     while (!cur->eof())   {
         /// Creamos un elemento del tipo LinAlbaran y lo agregamos a la lista.

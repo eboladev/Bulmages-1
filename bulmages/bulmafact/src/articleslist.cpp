@@ -333,12 +333,12 @@ void articleslist::editArticle(int  row) {
     mdb_nomarticulo = m_list->text(row,COL_NOMARTICULO);
     mdb_codigocompletoarticulo = m_list->text(row,COL_CODCOMPLETOARTICULO);
     if (m_modo ==0 ) {
-        articleedit *art = new articleedit(companyact,0,theApp->translate("Edición de Artículos", "company"));
+        articleedit *art = new articleedit(companyact,0,theApp->translate("Edicion de Articulos", "company"));
         companyact->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
         if (art->chargeArticle(m_idArticle))
             return;
-	art->hide();
+        art->hide();
         art->show();
     } else {
         close();
@@ -356,12 +356,12 @@ void articleslist::s_editArticle(int a, int, int, const QPoint &) {
 
 void articleslist::s_editArticle() {
     _depura("articleslist::INIT_s_editArticle()\n",0);
-
     int a = m_list->currentRow();
-    if (a < 0)
+    if (a < 0) {
+        _depura("Debe seleccionar una linea",2);
         return;
+    }// end if
     editArticle(a);
-
     _depura("articleslist::END_s_editArticle()\n",0);
 }
 
@@ -405,13 +405,13 @@ QString articleslist::formaQuery() {
         query += " AND presentablearticulo ";
     if(m_usadoarticulo->isChecked())
         query += " AND idarticulo IN (SELECT DISTINCT idarticulo FROM lpresupuesto"
-		" UNION SELECT DISTINCT idarticulo FROM lpedidocliente"
-		" UNION SELECT DISTINCT idarticulo FROM lalbaran"
-		" UNION SELECT DISTINCT idarticulo FROM lfactura"
-		" UNION SELECT DISTINCT idarticulo FROM lpedidoproveedor"
-		" UNION SELECT DISTINCT idarticulo FROM lalbaranp"
-		" UNION SELECT DISTINCT idarticulo FROM lfacturap"
-		") ";
+                 " UNION SELECT DISTINCT idarticulo FROM lpedidocliente"
+                 " UNION SELECT DISTINCT idarticulo FROM lalbaran"
+                 " UNION SELECT DISTINCT idarticulo FROM lfactura"
+                 " UNION SELECT DISTINCT idarticulo FROM lpedidoproveedor"
+                 " UNION SELECT DISTINCT idarticulo FROM lalbaranp"
+                 " UNION SELECT DISTINCT idarticulo FROM lfacturap"
+                 ") ";
     if(m_filtro->text() != "")
         query += " AND lower(nomarticulo) LIKE lower('%"+m_filtro->text()+"%') ";
     if(m_familia->idfamilia() != "" ) {

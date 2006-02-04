@@ -305,14 +305,10 @@ QString PagosList::generaFiltro() {
 
 void PagosList::s_editar() {
     int a = m_list->currentRow();
-    m_idpago = m_list->text(a,COL_IDPAGO);
-    if (m_modo ==0 && m_idpago != "") {
-        PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
-        bud->cargaPago(m_idpago);
-        bud->show();
-    } else {
-        close();
-    }// end if
+	if (a >=0 ) 
+    	doubleclicked(a,0,0, QPoint());
+	else
+	_depura("Debe seleccionar una linea",2);
 }
 
 void PagosList::doubleclicked(int a, int , int , const QPoint &) {

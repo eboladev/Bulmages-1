@@ -39,8 +39,10 @@ void BusquedaFecha::s_fechatextChanged(const QString &texto) {
     if (texto=="*")
         m_fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
     m_fecha->setText(normalizafecha(texto).toString("dd/MM/yyyy"));
+    if (texto == "") m_fecha->setText("");
     emit(valueChanged(m_fecha->text()));
 }
+
 
 void BusquedaFecha::s_fechalostFocus() {
 	QString fech = m_fecha->text();

@@ -1,4 +1,4 @@
--- ----------------------------------------------------------------------------------------
+-- -- ----------------------------------------------------------------------------------------
 -- (C)  Joan Miquel Torres Rigo & Tomeu Borras Riera & Mateu Borras Marco, Agosto 2004
 --  joanmi@bulma.net, tborras@conetxia.com mborras@conetxia.com
 -- Este documento esta licenciado bajo licencia GPL, el cual no escribimos aqui por pereza.
@@ -553,7 +553,7 @@ CREATE TABLE presupuesto (
    idpresupuesto serial PRIMARY KEY,
    numpresupuesto integer NOT NULL UNIQUE,
    refpresupuesto character varying(12) NOT NULL,
-   fpresupuesto date,
+   fpresupuesto date DEFAULT now(),
    descpresupuesto character varying(150),
    contactpresupuesto character varying(90),
    telpresupuesto character varying(20),
@@ -576,6 +576,9 @@ AS '
 DECLARE
 asd RECORD;
 BEGIN
+	IF NEW.fpresupuesto IS NULL THEN
+		NEW.fpresupuesto := now();
+	END IF;
         IF NEW.numpresupuesto IS NULL THEN
                 SELECT INTO asd max(numpresupuesto) AS m FROM presupuesto;
 		IF asd.m IS NOT NULL THEN	
@@ -698,7 +701,7 @@ CREATE TRIGGER restriccionespedidoclientetriggerd1
 CREATE TABLE pedidocliente (
    idpedidocliente serial PRIMARY KEY,
    numpedidocliente integer UNIQUE NOT NULL,
-   fechapedidocliente date,
+   fechapedidocliente date DEFAULT now(),
    refpedidocliente character varying(12) NOT NULL,   
    descpedidocliente character varying(500),
    comentpedidocliente character varying(3000),
@@ -718,6 +721,9 @@ AS '
 DECLARE
 asd RECORD;
 BEGIN
+	IF NEW.fechapedidocliente IS NULL THEN
+		NEW.fechapedidocliente := now();
+	END IF;
         IF NEW.numpedidocliente IS NULL THEN
                 SELECT INTO asd max(numpedidocliente) AS m FROM pedidocliente;
 		IF asd.m IS NOT NULL THEN
@@ -788,7 +794,7 @@ CREATE TABLE factura (
    codigoserie_factura character varying (6) NOT NULL REFERENCES serie_factura(codigoserie_factura),
    numfactura integer NOT NULL,
    reffactura character varying(15) NOT NULL,
-   ffactura date,
+   ffactura date DEFAULT now(),
    descfactura character varying(500),   
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
    contactfactura character varying(90),
@@ -807,6 +813,9 @@ AS '
 DECLARE
 asd RECORD;
 BEGIN
+	IF NEW.ffactura IS NULL THEN
+		NEW.ffactura := now();
+	END IF;
         IF NEW.numfactura IS NULL THEN
                 SELECT INTO asd max(numfactura) AS m FROM factura WHERE idserie_factura=NEW.idserie_factura AND idalmacen = NEW.idalmacen;
 		IF asd.m IS NOT NULL THEN
@@ -914,7 +923,7 @@ CREATE TABLE facturap (
    idfacturap serial PRIMARY KEY,
    numfacturap character varying (20) NOT NULL UNIQUE,
    reffacturap character varying(15) NOT NULL,
-   ffacturap date,
+   ffacturap date DEFAULT now(),
    descfacturap character varying(500),   
    contactfacturap character varying(90),
    telfacturap character varying(20),
@@ -931,6 +940,9 @@ AS '
 DECLARE
 asd RECORD;
 BEGIN
+	IF NEW.ffacturap IS NULL THEN
+		NEW.ffacturap := now();
+	END IF;
 	IF NEW.reffacturap IS NULL OR NEW.reffacturap = '''' THEN
 		SELECT INTO asd crearef() AS m;
 		IF FOUND THEN
@@ -1033,6 +1045,9 @@ AS '
 DECLARE
 asd RECORD;
 BEGIN
+	IF NEW.fechaalbaranp IS NULL THEN
+		NEW.fechaalbaranp := now();
+	END IF;
         IF NEW.numalbaranp IS NULL THEN
                 SELECT INTO asd max(numalbaranp) AS m FROM albaranp;
 		IF asd.m IS NOT NULL THEN
@@ -1090,7 +1105,7 @@ CREATE TABLE albaran (
    numalbaran integer NOT NULL UNIQUE,
    descalbaran character varying(150),
    refalbaran character varying(12) NOT NULL,
-   fechaalbaran date,
+   fechaalbaran date DEFAULT now(),
 --   loginusuario character varying(15) REFERENCES usuario(loginusuario),
    comentalbaran character varying(3000),
    comentprivalbaran character varying(3000),
@@ -1107,30 +1122,14 @@ CREATE TABLE albaran (
    UNIQUE (idalmacen, numalbaran)
 );
 
--- Descuento albaran proveedor
--- Numero
--- Concepte: Descripci�del motiu de descompte.
--- Proporcio: Percentatge a descomptar.
--- Descompte d'albar�a clients.
-CREATE TABLE dalbaranp (
-   iddalbaranp serial PRIMARY KEY,
-   conceptdalbaranp character varying(500),
-   proporciondalbaranp numeric(12,2),
-   idalbaranp integer NOT NULL REFERENCES albaran(idalbaran)
-);
-
-
-
-
--- **********************************************************************
--- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCI� DE ERRORES.
--- **********************************************************************
--- **********************************************************************
 CREATE FUNCTION restriccionesalbaran () RETURNS "trigger"
 AS '
 DECLARE
 asd RECORD;
 BEGIN
+	IF NEW.fechaalbaran IS NULL THEN
+		NEW.fechaalbaran := now();
+	END IF;
         IF NEW.numalbaran IS NULL THEN
                 SELECT INTO asd max(numalbaran) AS m FROM albaran;
 		IF asd.m IS NOT NULL THEN
@@ -1154,6 +1153,28 @@ CREATE TRIGGER restriccionesalbarantrigger
     BEFORE INSERT OR UPDATE ON albaran
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesalbaran();
+
+
+
+-- Descuento albaran proveedor
+-- Numero
+-- Concepte: Descripci�del motiu de descompte.
+-- Proporcio: Percentatge a descomptar.
+-- Descompte d'albar�a clients.
+CREATE TABLE dalbaranp (
+   iddalbaranp serial PRIMARY KEY,
+   conceptdalbaranp character varying(500),
+   proporciondalbaranp numeric(12,2),
+   idalbaranp integer NOT NULL REFERENCES albaran(idalbaran)
+);
+
+
+
+
+-- **********************************************************************
+-- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCI� DE ERRORES.
+-- **********************************************************************
+-- **********************************************************************
 
     
 CREATE FUNCTION random_string(int4) RETURNS "varchar" AS '
@@ -1405,7 +1426,7 @@ END;
 CREATE TABLE pedidoproveedor (
    idpedidoproveedor serial PRIMARY KEY,
    numpedidoproveedor integer UNIQUE NOT NULL,
-   fechapedidoproveedor date,
+   fechapedidoproveedor date DEFAULT now(),
    refpedidoproveedor character varying(12) NOT NULL,   
    descpedidoproveedor character varying(500),
    comentpedidoproveedor character varying(3000),
@@ -1423,6 +1444,9 @@ AS '
 DECLARE
 asd RECORD;
 BEGIN
+	IF NEW.fechapedidoproveedor IS NULL THEN
+		NEW.fechapedidoproveedor := now();
+	END IF;
         IF NEW.numpedidoproveedor IS NULL THEN
                 SELECT INTO asd max(numpedidoproveedor) AS m FROM pedidoproveedor;
 		IF asd.m IS NOT NULL THEN

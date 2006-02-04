@@ -131,6 +131,7 @@ int AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
 
 void AlbaranCliente::guardaAlbaranCliente() {
     /// Todo el guardado es una transacci�
+	QString fecha;
     companyact->begin();
     if (mdb_numalbaran=="")
         mdb_numalbaran="NULL";
@@ -138,11 +139,15 @@ void AlbaranCliente::guardaAlbaranCliente() {
         mdb_idtrabajador="NULL";
     if (mdb_procesadoalbaran == "")
         mdb_procesadoalbaran = "FALSE";
+	if (mdb_fechaalbaran == "")
+		fecha = "NULL";
+	else
+		fecha = "'"+companyact->sanearCadena(mdb_fechaalbaran)+"'";
     if (mdb_idalbaran == "") {
         /// Se trata de una inserci�
         QString SQLQuery = "INSERT INTO albaran (numalbaran, fechaalbaran, comentalbaran,comentprivalbaran, idcliente, idforma_pago, idalmacen, descalbaran, refalbaran, idtrabajador, contactalbaran, telalbaran, procesadoalbaran) VALUES ("+
-                           companyact->sanearCadena(mdb_numalbaran)+",'"+
-                           companyact->sanearCadena(mdb_fechaalbaran)+"','"+
+                           companyact->sanearCadena(mdb_numalbaran)+","+
+                           fecha+",'"+
                            companyact->sanearCadena(mdb_comentalbaran)+"','"+
                            companyact->sanearCadena(mdb_comentprivalbaran)+"',"+
                            companyact->sanearCadena(mdb_idcliente)+","+
@@ -167,7 +172,7 @@ void AlbaranCliente::guardaAlbaranCliente() {
         /// Se trata de una modificacion
         QString SQLQuery = "UPDATE albaran SET ";
         SQLQuery += " numalbaran="+companyact->sanearCadena(mdb_numalbaran);
-        SQLQuery += " ,fechaalbaran='"+companyact->sanearCadena(mdb_fechaalbaran)+"'";
+        SQLQuery += " ,fechaalbaran="+fecha;
         SQLQuery += " ,comentalbaran='"+companyact->sanearCadena(mdb_comentalbaran)+"'";
         SQLQuery += " ,comentprivalbaran='"+companyact->sanearCadena(mdb_comentprivalbaran)+"'";
         SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente)+"";

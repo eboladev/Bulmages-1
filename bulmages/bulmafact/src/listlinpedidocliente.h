@@ -22,6 +22,7 @@
 
 #include "company.h"
 #include "linpedidocliente.h"
+#include "funcaux.h"
 
 class ListLinPedidoCliente {
 public:
@@ -33,9 +34,7 @@ public:
     ListLinPedidoCliente(company *comp);
     ListLinPedidoCliente();
     void setcompany(company *c) {
-        fprintf(stderr,"ListLinPedidoCliente setCompany\n");
         companyact=c;
-        fprintf(stderr,"ListLinPedidoCliente  fin de setCompany\n");
     };
     virtual ~ListLinPedidoCliente();
     void guardaListLinPedidoCliente();
@@ -50,7 +49,7 @@ public:
         }// end for
     };
     virtual void pintaListLinPedidoCliente() {
-        fprintf(stderr,"La funci� pintaListLinPedidoCliente aun no ha sido implementada\n");
+        _depura("La funcion pintaListLinPedidoCliente aun no ha sido implementada\n",2);
     };
     void cargaListLinPedidoCliente(QString);
     void borrar();

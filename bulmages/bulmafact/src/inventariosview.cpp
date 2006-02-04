@@ -96,9 +96,10 @@ void InventariosView::doubleclicked(int a, int , int , const QPoint &) {
 
 void InventariosView::s_edit() {
     int a = m_list->currentRow();
-    if (a >= 0) {
-	doubleclicked(a,0,0,QPoint());
-    }// end if
+	if (a >=0 ) 
+    	doubleclicked(a,0,0, QPoint());
+	else
+	_depura("Debe seleccionar una linea",2);
 }// end s_edit
 
 

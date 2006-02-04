@@ -40,6 +40,8 @@
 
 #include "configuracion.h"
 
+
+
 /** Esta clase provee toda la interacci� necesaria con las consultas de base de datos
   * Se carga normalmente a partir de la clase \ref postgresiface2 con el m�odo \ref cargacursor
   * Y crea las estructuras necesarias para recorrer un recordset de postgres

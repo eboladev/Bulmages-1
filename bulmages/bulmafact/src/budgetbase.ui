@@ -207,7 +207,7 @@
                                 <bool>true</bool>
                             </property>
                             <property name="toolTip" stdset="0">
-                                <string>Convertir en Pedido Cliente</string>
+                                <string>Pasar a Pedido Cliente</string>
                             </property>
                             <property name="whatsThis" stdset="0">
                                 <string>Convertir en Pedido Cliente</string>
@@ -869,23 +869,6 @@
         <signal>valueChanged(QString)</signal>
     </customwidget>
     <customwidget>
-        <class>BusquedaTrabajador</class>
-        <header location="local">busquedatrabajador.h</header>
-        <sizehint>
-            <width>20</width>
-            <height>50</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image9</pixmap>
-        <signal>valueChanged(QString)</signal>
-    </customwidget>
-    <customwidget>
         <class>listlinpresupuestoview</class>
         <header location="local">listlinpresupuestoview.h</header>
         <sizehint>
@@ -918,6 +901,23 @@
         </sizepolicy>
         <pixmap>image8</pixmap>
         <signal>valueChanged(int, int)</signal>
+    </customwidget>
+    <customwidget>
+        <class>BusquedaTrabajador</class>
+        <header location="local">busquedatrabajador.h</header>
+        <sizehint>
+            <width>20</width>
+            <height>50</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image9</pixmap>
+        <signal>valueChanged(QString)</signal>
     </customwidget>
 </customwidgets>
 <images>

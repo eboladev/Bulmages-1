@@ -22,6 +22,7 @@
 
 #include "company.h"
 #include "linpresupuesto.h"
+#include "funcaux.h"
 
 class listlinpresupuesto {
 public:
@@ -41,7 +42,7 @@ public:
     void guardalistlinpresupuesto();
     void vaciar();
     virtual void pintalistlinpresupuesto() {
-        fprintf(stderr,"La funci� pintalistlinpresupuesto aun no ha sido implementada\n");
+        _depura("Esta funcion aun no ha sido implementada\n",2);
     };
     int chargeBudgetLines(QString);
     void borrar();

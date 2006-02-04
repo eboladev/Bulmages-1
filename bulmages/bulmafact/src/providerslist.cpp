@@ -350,8 +350,11 @@ void providerslist::s_findProvider() {
 
 
 void providerslist::s_editProvider() {
-    QPoint a;
-    doubleclicked(m_list->currentRow(), 0,0, a);
+    int a = m_list->currentRow();
+	if (a >=0 ) 
+    	doubleclicked(a,0,0, QPoint());
+	else
+	_depura("Debe seleccionar una linea",2);
 }// end s_editProvider
 
 
