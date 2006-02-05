@@ -33,24 +33,6 @@ protected:
     listlinpresupuesto *listalineas;
     ListDescuentoPresupuesto *listadescuentos;
     company *companyact;
-/*
-    QString mdb_idcliente;
-    QString mdb_idalmacen;
-    QString mdb_numpresupuesto;
-    QString mdb_fpresupuesto;
-    QString mdb_vencpresupuesto;
-    QString mdb_contactpresupuesto;
-    QString mdb_telpresupuesto;
-    QString mdb_comentpresupuesto;
-    QString mdb_idpresupuesto;
-    QString mdb_idusuari;
-    QString mdb_procesadopresupuesto;
-    QString mdb_descpresupuesto;
-    QString mdb_refpresupuesto;
-    QString mdb_idforma_pago;
-    QString mdb_idtrabajador;
-*/
-
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setlislinpresupuesto ( listlinpresupuesto *a) {

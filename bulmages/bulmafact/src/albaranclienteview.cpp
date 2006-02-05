@@ -89,7 +89,7 @@ void   AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixe
 
 
 void AlbaranClienteView::s_verpresupuesto() {
-    QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='"+mdb_refalbaran+"'";
+    QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='"+DBvalue("refalbaran")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (cur->numregistros() > 1) {
         BudgetsList *list = new BudgetsList(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
@@ -114,7 +114,7 @@ void AlbaranClienteView::s_verpresupuesto() {
 
 
 void AlbaranClienteView::s_verpedidocliente() {
-    QString SQLQuery= "SELECT * FROM pedidocliente WHERE refpedidocliente='"+mdb_refalbaran+"'";
+    QString SQLQuery= "SELECT * FROM pedidocliente WHERE refpedidocliente='"+DBvalue("refalbaran")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (cur->numregistros() > 1) {
         PedidosClienteList *list = new PedidosClienteList(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
@@ -144,7 +144,7 @@ void AlbaranClienteView::s_verpedidocliente() {
 /// Se encarga de generar una factura a partir de un albar�
 void AlbaranClienteView::generarFactura() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funci�.
-    QString SQLQuery = "SELECT * FROM factura WHERE reffactura='"+mdb_refalbaran+"'";
+    QString SQLQuery = "SELECT * FROM factura WHERE reffactura='"+DBvalue("refalbaran")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         FacturaView *bud = companyact->newFacturaView();
@@ -168,14 +168,11 @@ void AlbaranClienteView::generarFactura() {
     FacturaView *bud = companyact->newFacturaView();
 	companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaFactura();
-    //    bud->setcodigoalmacen(mdb_codigoalmacen);
-    bud->setcomentfactura(mdb_comentalbaran);
-    //    bud->setdescfactura(mdb_descalbaran);
-    //bud->setfechafactura(mdb_fechaalbaran);
-    bud->setidforma_pago(mdb_idforma_pago);
-    bud->setreffactura(mdb_refalbaran);
-    bud->setidcliente(mdb_idcliente);
-    bud->setidalmacen(mdb_idalmacen);
+    bud->setcomentfactura(DBvalue("comentalbaran"));
+    bud->setidforma_pago(DBvalue("idforma_pago"));
+    bud->setreffactura(DBvalue("refalbaran"));
+    bud->setidcliente(DBvalue("idcliente"));
+    bud->setidalmacen(DBvalue("idalmacen"));
     QString l;
     LinAlbaranCliente *linea;
     uint i = 0;
@@ -229,7 +226,7 @@ void AlbaranClienteView::agregarFactura() {
 
 int AlbaranClienteView::cargaAlbaranCliente(QString id) {
     AlbaranCliente::cargaAlbaranCliente(id);
-    setCaption("Albaran Cliente  "+mdb_refalbaran);
+    setCaption("Albaran Cliente  "+DBvalue("refalbaran"));
     if (companyact->meteWindow(caption(),this)) return -1;
     dialogChanges_cargaInicial();
     return 0;
@@ -238,7 +235,7 @@ int AlbaranClienteView::cargaAlbaranCliente(QString id) {
 
 void AlbaranClienteView::s_informeReferencia() {
     InformeReferencia *inf = new InformeReferencia(companyact);
-    inf->setreferencia(mdb_refalbaran);
+    inf->setreferencia(DBvalue("refalbaran"));
     inf->generarinforme();
     delete inf;
 

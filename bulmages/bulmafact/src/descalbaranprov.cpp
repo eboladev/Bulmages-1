@@ -11,33 +11,43 @@
 //
 #include "descalbaranprov.h"
 
+void DescuentoAlbaranProv::definetabla() {
 
-DescuentoAlbaranProv::DescuentoAlbaranProv(company *comp) {
+    setDBTableName("dalbaranp");
+    setDBCampoId("iddalbaranp");
+    addDBCampo("iddalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Linea Presupuesto");
+    addDBCampo("conceptdalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, "Descripcion");
+    addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("proporciondalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, "Proporcion");
+
+}// end definetabla
+
+
+DescuentoAlbaranProv::DescuentoAlbaranProv(company *comp) : DBRecord(comp) {
     companyact = comp;
-    vaciaDescuentoAlbaranProv();
+    definetabla();
 }
 
-DescuentoAlbaranProv::DescuentoAlbaranProv(company *comp, QString id) {
+DescuentoAlbaranProv::DescuentoAlbaranProv(company *comp, QString id) :DBRecord(comp) {
     companyact = comp;
+    definetabla();
     QString SQLQuery = "SELECT * FROM dalbaranp WHERE  iddalbaranp="+id;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        mdb_iddalbaranp = cur->valor("iddalbaranp");
-        mdb_conceptdalbaranp = cur->valor("conceptdalbaranp");
-        mdb_proporciondalbaranp = cur->valor("proporciondalbaranp");
-        mdb_idalbaranp = cur->valor("idalbaranp");
+        DBload(cur);
     } else {
         vaciaDescuentoAlbaranProv();
     }// end if
 }// end DescuentoAlbaranProv
 
 
-DescuentoAlbaranProv::DescuentoAlbaranProv(company *comp, QString a, QString b, QString c, QString d) {
+DescuentoAlbaranProv::DescuentoAlbaranProv(company *comp, QString a, QString b, QString c, QString d) : DBRecord(comp) {
     companyact = comp;
-    mdb_iddalbaranp = a;
-    mdb_conceptdalbaranp = b;
-    mdb_proporciondalbaranp = c;
-    mdb_idalbaranp =d;
+    definetabla();
+    setDBvalue("iddalbaranp", a);
+    setDBvalue("conceptdalbaranp", b);
+    setDBvalue("proporciondalbaranp", c);
+    setDBvalue("idalbaranp",d);
 }// end DescuentoAlbaranProv
 
 
@@ -45,58 +55,33 @@ DescuentoAlbaranProv::~DescuentoAlbaranProv() {}
 
 
 void DescuentoAlbaranProv::vaciaDescuentoAlbaranProv() {
-    mdb_iddalbaranp = "";
-    mdb_conceptdalbaranp = "";
-    mdb_proporciondalbaranp = "";
-    mdb_idalbaranp ="";
+    DBclear();
 }
 
 
 void DescuentoAlbaranProv::borrar() {
-    if (mdb_iddalbaranp != "") {
+    if (DBvalue("iddalbaranp") != "") {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM dalbaranp WHERE iddalbaranp="+mdb_iddalbaranp);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        int error = companyact->ejecuta("DELETE FROM dalbaranp WHERE iddalbaranp="+DBvalue("iddalbaranp"));
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
         companyact->commit();
         vaciaDescuentoAlbaranProv();
     }// end if
 }// end delete
 
 void DescuentoAlbaranProv::guardaDescuentoAlbaranProv() {
-    /// Segun est�la linea en la base de datos o no se hace una cosa u otra.
-    if (mdb_iddalbaranp == "") {
-        QString SQLQuery = "INSERT INTO dalbaranp (conceptdalbaranp, proporciondalbaranp, idalbaranp) VALUES ('"+
-	companyact->sanearCadena(mdb_conceptdalbaranp)+"',"+
-	companyact->sanearCadena(mdb_proporciondalbaranp)+","+
-	companyact->sanearCadena(mdb_idalbaranp)+")";
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(iddalbaranp) AS m FROM dalbaranp ");
-        if(!cur->eof())
-            mdb_iddalbaranp = cur->valor("m");
-        delete cur;
-        companyact->commit();
-    } else {
-        QString SQLQuery = "UPDATE dalbaranp SET ";
-        SQLQuery += " conceptdalbaranp = '"+companyact->sanearCadena(mdb_conceptdalbaranp)+"' ";
-        SQLQuery += " ,proporciondalbaranp = "+companyact->sanearCadena(mdb_proporciondalbaranp)+" ";
-        SQLQuery += " ,idalbaranp = "+companyact->sanearCadena(mdb_idalbaranp)+" ";
-        SQLQuery += " WHERE iddalbaranp = "+companyact->sanearCadena(mdb_iddalbaranp);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        companyact->commit();
+    QString id;
+    companyact->begin();
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
+    setDBvalue("iddalbaranp",id);
+    companyact->commit();
 }// end guardaDescuentoAlbaranProv
 
 

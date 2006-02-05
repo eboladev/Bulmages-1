@@ -17,29 +17,19 @@
 #include <q3ptrlist.h>
 
 #include "company.h"
+#include "dbrecord.h"
+
 #include "listlinalbaranproveedor.h"
 #include "listdescalbaranprov.h"
 /**
 @author Tomeu Borras
 */
-class AlbaranProveedor{
+class AlbaranProveedor : public DBRecord {
 protected:
     ListLinAlbaranProveedor *listalineas;
     ListDescuentoAlbaranProv *listadescuentos;
 
     company *companyact;
-
-    QString mdb_idalbaranp;
-    QString mdb_numalbaranp;
-    QString mdb_fechaalbaranp;
-    QString mdb_loginusuario;
-    QString mdb_comentalbaranp;
-    QString mdb_idproveedor;
-    QString mdb_idforma_pago;
-    QString mdb_idalmacen;
-    QString mdb_refalbaranp;
-    QString mdb_descalbaranp;
-    QString mdb_numfactura;
 
 public:
     AlbaranProveedor(company *);
@@ -66,7 +56,6 @@ public:
     virtual void pintaidalbaranp(QString) {};
     virtual void pintanumalbaranp(QString) {};
     virtual void pintafechaalbaranp(QString) {};
-    virtual void pintaloginusuario(QString) {};
     virtual void pintacomentalbaranp(QString) {};
     virtual void pintaidproveedor(QString ) {};
     virtual void pintaidforma_pago(QString) {};
@@ -75,16 +64,16 @@ public:
     virtual void pintarefalbaranp(QString) {};
     virtual void pintatotales(float, float) {};
 
-    void setidalbaranp(QString val) { mdb_idalbaranp=val;listalineas->setidalbaranp(val);listadescuentos->setidalbaranp(val);};
-    void setnumalbaranp(QString val) { mdb_numalbaranp=val;};
-    void setfechaalbaranp(QString val) { mdb_fechaalbaranp=val;};
-    void setloginusuario(QString val) { mdb_loginusuario=val;};
-    void setcomentalbaranp(QString val) { mdb_comentalbaranp=val;};
-    void setidproveedor(QString val) { mdb_idproveedor=val;};
-    void setidforma_pago(QString val) { mdb_idforma_pago=val;};
-    void setidalmacen(QString val) {mdb_idalmacen=val;};
-    void setrefalbaranp(QString val) {mdb_refalbaranp=val;};
-    void setdescalbaranp(QString val) {mdb_descalbaranp=val;};  
+    void setidalbaranp(QString val) { setDBvalue("idalbaranp",val);listalineas->setidalbaranp(val);listadescuentos->setidalbaranp(val);};
+    void setnumalbaranp(QString val) { setDBvalue("numalbaranp",val);};
+    void setfechaalbaranp(QString val) { setDBvalue("fechaalbaranp",val);};
+    void setloginusuario(QString val) { setDBvalue("loginusuario",val);};
+    void setcomentalbaranp(QString val) { setDBvalue("comentalbaranp",val);};
+    void setidproveedor(QString val) { setDBvalue("idproveedor",val);};
+    void setidforma_pago(QString val) { setDBvalue("idforma_pago",val);};
+    void setidalmacen(QString val) {setDBvalue("idalmacen",val);};
+    void setrefalbaranp(QString val) {setDBvalue("refalbaranp",val);};
+    void setdescalbaranp(QString val) {setDBvalue("descalbaranp",val);};  
     void imprimirAlbaranProveedor();
     void vaciaAlbaranProveedor();    
 };

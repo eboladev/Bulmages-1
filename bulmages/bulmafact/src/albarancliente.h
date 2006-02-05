@@ -20,54 +20,37 @@
 #include "listlinalbarancliente.h"
 #include "listdescalbarancliente.h"
 #include "fixed.h"
+#include "dbrecord.h"
 
 /**
 @author Tomeu Borras
 */
-class AlbaranCliente{
+class AlbaranCliente : public DBRecord {
 public:
 protected:
     ListLinAlbaranCliente *listalineas;
     ListDescuentoAlbaranCliente *listadescuentos;
-
     company *companyact;
-
-    QString mdb_idalbaran;
-    QString mdb_numalbaran;
-    QString mdb_fechaalbaran;
-    QString mdb_comentalbaran;
-    QString mdb_comentprivalbaran;
-    QString mdb_idcliente;
-    QString mdb_idforma_pago;
-    QString mdb_idalmacen;
-    QString mdb_refalbaran;
-    QString mdb_descalbaran;
-    QString mdb_numfactura;
-    QString mdb_idtrabajador;
-    QString mdb_procesadoalbaran;
-    QString mdb_contactalbaran;
-    QString mdb_telalbaran;
-
 public:
     AlbaranCliente(company *);
     virtual ~AlbaranCliente();
 
     /// Funciones de retorno de valores
-    QString idalbaran() {return mdb_idalbaran;};
-    QString numalbaran() {return mdb_numalbaran;};
-    QString fechaalbaran() {return mdb_fechaalbaran;};
-    QString comentalbaran() {return mdb_comentalbaran;};
-    QString comentprivalbaran() {return mdb_comentprivalbaran;};
-    QString idcliente() {return mdb_idcliente;};
-    QString idforma_pago() {return mdb_idforma_pago;};
-    QString idalmacen() {return mdb_idalmacen;};
-    QString refalbaran() {return mdb_refalbaran;};
-    QString descalbaran() {return mdb_descalbaran;};
-    QString numfactura() {return mdb_numfactura;};
-    QString idtrabajador() {return mdb_idtrabajador;};
-    QString procesadoalbaran() {return mdb_procesadoalbaran;};
-    QString contactalbaran() {return mdb_contactalbaran;};
-    QString telalbaran() {return mdb_telalbaran;};
+    QString idalbaran() {return DBvalue("idalbaran");};
+    QString numalbaran() {return DBvalue("numalbaran");};
+    QString fechaalbaran() {return DBvalue("fechaalbaran");};
+    QString comentalbaran() {return DBvalue("comentalbaran");};
+    QString comentprivalbaran() {return DBvalue("comentprivalbaran");};
+    QString idcliente() {return DBvalue("idcliente");};
+    QString idforma_pago() {return DBvalue("idforma_pago");};
+    QString idalmacen() {return DBvalue("idalmacen");};
+    QString refalbaran() {return DBvalue("refalbaran");};
+    QString descalbaran() {return DBvalue("descalbaran");};
+    QString numfactura() {return DBvalue("numfactura");};
+    QString idtrabajador() {return DBvalue("idtrabajador");};
+    QString procesadoalbaran() {return DBvalue("procesadoalbaran");};
+    QString contactalbaran() {return DBvalue("contactalbaran");};
+    QString telalbaran() {return DBvalue("telalbaran");};
 
 
     /// Establece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
@@ -106,21 +89,21 @@ public:
     
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {};
 
-    void setidalbaran(QString val) { mdb_idalbaran=val;listalineas->setidalbaran(val);listadescuentos->setidalbaran(val);};
-    void setNumAlbaran(QString val) { mdb_numalbaran=val;};
-    void setfechaalbaran(QString val) { mdb_fechaalbaran=val;};
-    void setcomentalbaran(QString val) { mdb_comentalbaran=val;};
-    void setcomentprivalbaran(QString val) {mdb_comentprivalbaran=val;};
-    void setidcliente(QString val) { mdb_idcliente=val;};
-    void setidforma_pago(QString val) { mdb_idforma_pago=val;};
-    void setidtrabajador(QString val) {mdb_idtrabajador=val;};
-    void setidalmacen(QString val) {mdb_idalmacen=val;};
-    void setNumFactura(QString val) {mdb_numfactura=val;};
-    void setrefalbaran(QString val) {mdb_refalbaran=val;};
-    void setdescalbaran(QString val) {mdb_descalbaran=val;};
-    void setcontactalbaran(QString val) {mdb_contactalbaran=val;};
-    void settelalbaran(QString val) {mdb_telalbaran=val;};
-    void setprocesadoalbaran(QString val) {mdb_procesadoalbaran=val;};
+    void setidalbaran(QString val) { setDBvalue("idalbaran",val);listalineas->setidalbaran(val);listadescuentos->setidalbaran(val);};
+    void setNumAlbaran(QString val) { setDBvalue("numalbaran",val);};
+    void setfechaalbaran(QString val) { setDBvalue("fechaalbaran",val);};
+    void setcomentalbaran(QString val) { setDBvalue("comentalbaran",val);};
+    void setcomentprivalbaran(QString val) {setDBvalue("comentprivalbaran",val);};
+    void setidcliente(QString val) { setDBvalue("idcliente",val);};
+    void setidforma_pago(QString val) { setDBvalue("idforma_pago",val);};
+    void setidtrabajador(QString val) {setDBvalue("idtrabajador",val);};
+    void setidalmacen(QString val) {setDBvalue("idalmacen",val);};
+    void setNumFactura(QString val) {setDBvalue("numfactura",val);};
+    void setrefalbaran(QString val) {setDBvalue("refalbaran",val);};
+    void setdescalbaran(QString val) {setDBvalue("descalbaran",val);};
+    void setcontactalbaran(QString val) {setDBvalue("contactalbaran",val);};
+    void settelalbaran(QString val) {setDBvalue("telalbaran",val);};
+    void setprocesadoalbaran(QString val) {setDBvalue("procesadoalbaran",val);};
     void imprimirAlbaranCliente();
     void vaciaAlbaranCliente();    
 };

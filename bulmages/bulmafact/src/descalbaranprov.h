@@ -1,7 +1,7 @@
 //
 // C++ Interface: DescuentoAlbaranProv
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
@@ -30,33 +30,48 @@ CREATE TABLE dalbaranpp (
 @author Tomeu Borras
 */
 #include "company.h"
+#include "dbrecord.h"
 
-class DescuentoAlbaranProv {
+class DescuentoAlbaranProv : public DBRecord {
 private:
-    QString mdb_iddalbaranp;
-    QString mdb_conceptdalbaranp;
-    QString mdb_proporciondalbaranp;
-    QString mdb_idalbaranp;  
     company *companyact;
+    void definetabla();
 public:
     DescuentoAlbaranProv(company *);
     DescuentoAlbaranProv(company *, QString );
     /// La carga rapida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
     DescuentoAlbaranProv(company *, QString , QString , QString , QString);
     virtual ~DescuentoAlbaranProv();
-    virtual void pintaDescuentoAlbaranProv() {};
+    virtual void pintaDescuentoAlbaranProv() {}
+    ;
     void guardaDescuentoAlbaranProv();
     void vaciaDescuentoAlbaranProv();
 
-    inline QString iddalbaranp() {return mdb_iddalbaranp;};
-    inline QString conceptdalbaranp() {return mdb_conceptdalbaranp;};
-    inline QString proporciondalbaranp() {return mdb_proporciondalbaranp;};
-    inline QString idalbaranp()  {return mdb_idalbaranp;};
-    inline void setiddalbaranp(QString val) {mdb_iddalbaranp=val;};
-    inline void setconceptdalbaranp(QString val) {mdb_conceptdalbaranp=val;};
-    inline void setproporciondalbaranp(QString val) {mdb_proporciondalbaranp=val;};
-    inline void setidalbaranp(QString val)  {mdb_idalbaranp=val;};
-    void borrar();  
+    inline QString iddalbaranp() {
+        return DBvalue("iddalbaranp");
+    };
+    inline QString conceptdalbaranp() {
+        return DBvalue("conceptdalbaranp");
+    };
+    inline QString proporciondalbaranp() {
+        return DBvalue("proporciondalbaranp");
+    };
+    inline QString idalbaranp()  {
+        return DBvalue("idalbaranp");
+    };
+    inline void setiddalbaranp(QString val) {
+        setDBvalue("iddalbaranp",val);
+    };
+    inline void setconceptdalbaranp(QString val) {
+        setDBvalue("conceptdalbaranp",val);
+    };
+    inline void setproporciondalbaranp(QString val) {
+        setDBvalue("proporciondalbaranp",val);
+    };
+    inline void setidalbaranp(QString val)  {
+        setDBvalue("idalbaranp",val);
+    };
+    void borrar();
 };
 
 #endif

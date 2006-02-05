@@ -311,7 +311,7 @@ void ClientEdit::saveButton_clicked() {
 }
 
 void ClientEdit::deleteButton_clicked() {
-    int ret = QMessageBox::warning(this,tr("Edici� de clientes"),
+    int ret = QMessageBox::warning(this,tr("Edicion de clientes"),
                                    tr("Est�a punto de borrar un cliente.\n"
                                       "Est�seguro de que quiere borrarlo?"),
                                    QMessageBox::Yes | QMessageBox::Default,
@@ -321,27 +321,6 @@ void ClientEdit::deleteButton_clicked() {
         deleteClient();
     }// end if
 }
-
-/*
-void ClientEdit::cancelButton_clicked() {
-    if (m_modified) {
-        int ret = QMessageBox::warning(this,tr("Edici� de clientes"),
-                                       tr("El cliente ha sido modificado.\n"
-                                          "Quiere guardar los cambios?"),
-                                       QMessageBox::Yes | QMessageBox::Default,
-                                       QMessageBox::No,
-                                       QMessageBox::Cancel | QMessageBox::Escape);
-        if (ret == QMessageBox::Yes) {
-            saveClient();
-            close();
-        } else if (ret == QMessageBox::No)
-            close();
-    } else {
-        close();
-    }
-}
-*/
-
 
 void ClientEdit::closeEvent( QCloseEvent *e) {
 	_depura("closeEvent",0);

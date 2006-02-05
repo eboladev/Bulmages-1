@@ -75,7 +75,7 @@ public slots:
     };
     virtual void s_cargaCobroView(QString id) {
         Cobro::cargaCobro(id);
-        setCaption("Cobro "+mdb_refcobro);
+        setCaption("Cobro "+DBvalue("refcobro"));
     };
     virtual void s_removeCobroView();
     virtual void s_comentcobrotextChanged(const QString &str) {

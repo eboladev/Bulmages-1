@@ -16,19 +16,31 @@
 #include <QTextStream>
 
 
-AlbaranProveedor::AlbaranProveedor(company *comp) {
+AlbaranProveedor::AlbaranProveedor(company *comp) : DBRecord(comp) {
     companyact=comp;
+
+    setDBTableName("albaranp");
+    setDBCampoId("idalbaranp");
+    addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
+    addDBCampo("numalbaranp", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
 }
 
 
 AlbaranProveedor::~AlbaranProveedor() {}
 
 void AlbaranProveedor::borraAlbaranProveedor() {
-    if (mdb_idalbaranp != "") {
+    if (DBvalue("idalbaranp") != "") {
         listalineas->borrar();
         listadescuentos->borrar();
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp="+mdb_idalbaranp);
+        int error = companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp="+DBvalue("idalbaranp"));
         if (error) {
             companyact->rollback();
             return;
@@ -41,32 +53,21 @@ void AlbaranProveedor::borraAlbaranProveedor() {
 
 
 void AlbaranProveedor::vaciaAlbaranProveedor() {
-    mdb_idalbaranp="";
-    mdb_numalbaranp="";
-    mdb_fechaalbaranp="";
-    mdb_loginusuario="";
-    mdb_comentalbaranp="";
-    mdb_idproveedor="";
-    mdb_idforma_pago="";
-    mdb_idalmacen="";
-    mdb_numfactura="";
-    mdb_descalbaranp="";
-    mdb_refalbaranp="";
+    DBclear();
 }// end vaciaAlbaranProveedor
 
 
 void AlbaranProveedor::pintaAlbaranProveedor() {
-    fprintf(stderr,"pintaAlbaranProveedor\n");
-    pintaidalbaranp(mdb_idalbaranp);
-    pintanumalbaranp(mdb_numalbaranp);
-    pintafechaalbaranp(mdb_fechaalbaranp);
-    pintaloginusuario(mdb_loginusuario);
-    pintacomentalbaranp(mdb_comentalbaranp);
-    pintaidproveedor(mdb_idproveedor);
-    pintaidforma_pago(mdb_idforma_pago);
-    pintaidalmacen(mdb_idalmacen);
-    pintarefalbaranp(mdb_refalbaranp);
-    pintadescalbaranp(mdb_descalbaranp);
+    _depura("pintaAlbaranProveedor\n",0);
+    pintaidalbaranp(DBvalue("idalbaranp"));
+    pintanumalbaranp(DBvalue("numalbaranp"));
+    pintafechaalbaranp(DBvalue("fechaalbaranp"));
+    pintacomentalbaranp(DBvalue("comentalbaranp"));
+    pintaidproveedor(DBvalue("idproveedor"));
+    pintaidforma_pago(DBvalue("idforma_pago"));
+    pintaidalmacen(DBvalue("idalmacen"));
+    pintarefalbaranp(DBvalue("refalbaranp"));
+    pintadescalbaranp(DBvalue("descalbaranp"));
     /// Pinta el subformulario de detalle del AlbaranProveedor.
     listalineas->pintaListLinAlbaranProveedor();
     listadescuentos->pintaListDescuentoAlbaranProv();
@@ -78,20 +79,11 @@ void AlbaranProveedor::pintaAlbaranProveedor() {
 
 // Esta funci� carga un AlbaranProveedor.
 int AlbaranProveedor::cargaAlbaranProveedor(QString idbudget) {
-    fprintf(stderr,"AlbaranProveedor::cargaAlbaranProveedor(%s)\n",idbudget.ascii());
-    mdb_idalbaranp = idbudget;
+    _depura("AlbaranProveedor::cargaAlbaranProveedor()\n",0);
     QString query = "SELECT * FROM albaranp WHERE idalbaranp="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
-        mdb_idproveedor= cur->valor("idproveedor");
-        mdb_idalmacen= cur->valor("idalmacen");
-        mdb_numalbaranp= cur->valor("numalbaranp");
-        mdb_fechaalbaranp= cur->valor("fechaalbaranp");
-        mdb_comentalbaranp= cur->valor("comentalbaranp");
-        mdb_loginusuario = "";
-        mdb_idforma_pago = cur->valor("idforma_pago");
-        mdb_descalbaranp = cur->valor("descalbaranp");
-        mdb_refalbaranp = cur->valor("refalbaranp");
+        DBload(cur);
     }// end if
     delete cur;
     listalineas->cargaListLinAlbaranProveedor(idbudget);
@@ -103,48 +95,18 @@ int AlbaranProveedor::cargaAlbaranProveedor(QString idbudget) {
 
 
 void AlbaranProveedor::guardaAlbaranProveedor() {
-    /// Todo el guardado es una transacci�
+    QString id;
     companyact->begin();
-    if (mdb_loginusuario=="")
-        mdb_loginusuario="NULL";
-    else
-        mdb_loginusuario="'"+mdb_loginusuario+"'";
-    if (mdb_numalbaranp=="")
-        mdb_numalbaranp="NULL";
-    if (mdb_idalbaranp == "") {
-        /// Se trata de una inserci�
-        QString SQLQuery = "INSERT INTO albaranp (numalbaranp, fechaalbaranp, comentalbaranp, idproveedor, idforma_pago, idalmacen, descalbaranp, refalbaranp) VALUES ("+mdb_numalbaranp+",'"+mdb_fechaalbaranp+"','"+mdb_comentalbaranp+"',"+mdb_idproveedor+","+mdb_idforma_pago+","+mdb_idalmacen+",'"+mdb_descalbaranp+"','"+mdb_refalbaranp+"')";
-        int error = companyact->ejecuta(SQLQuery);
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(idalbaranp) AS m FROM albaranp");
-        if (!cur->eof())
-            setidalbaranp(cur->valor("m"));
-        delete cur;
-    } else {
-        /// Se trata de una modificacion
-        QString SQLQuery = "UPDATE albaranp SET ";
-        SQLQuery += " numalbaranp="+mdb_numalbaranp;
-        SQLQuery += " ,fechaalbaranp='"+mdb_fechaalbaranp+"'";
-        SQLQuery += " ,comentalbaranp='"+mdb_comentalbaranp+"'";
-        SQLQuery += " ,idproveedor="+mdb_idproveedor+"";
-        SQLQuery += " ,idforma_pago="+mdb_idforma_pago;
-        SQLQuery += " ,idalmacen="+mdb_idalmacen;
-        SQLQuery += " ,descalbaranp='"+mdb_descalbaranp+"'";
-        SQLQuery += " ,refalbaranp='"+mdb_refalbaranp+"'";
-        SQLQuery += " WHERE idalbaranp="+mdb_idalbaranp;
-        int error = companyact->ejecuta(SQLQuery);
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
     companyact->commit();
+	setidalbaranp(id);
     listalineas->guardaListLinAlbaranProveedor();
     listadescuentos->guardaListDescuentoAlbaranProv();
-    cargaAlbaranProveedor(mdb_idalbaranp);
+    cargaAlbaranProveedor(id);
 }// end guardaAlbaranProveedor
 
 
@@ -169,7 +131,7 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
     QString fitxersortidatxt;
     // L�ea de totales del presupuesto
 
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+mdb_idproveedor;
+    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+DBvalue("idproveedor");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dirproveedor]",cur->valor("dirproveedor"));
@@ -179,11 +141,11 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
         buff.replace("[cifproveedor]",cur->valor("cifproveedor"));
     }// end if
 
-    buff.replace("[numalbaranp]",mdb_numalbaranp);
-    buff.replace("[fechaalbaranp]",mdb_fechaalbaranp);
-    buff.replace("[comentalbaranp]",mdb_comentalbaranp);
-    buff.replace("[descalbaranp]",mdb_descalbaranp);
-    buff.replace("[refalbaranp]",mdb_refalbaranp);
+    buff.replace("[numalbaranp]",DBvalue("numalbaranp"));
+    buff.replace("[fechaalbaranp]",DBvalue("fechaalbaranp"));
+    buff.replace("[comentalbaranp]",DBvalue("comentalbaranp"));
+    buff.replace("[descalbaranp]",DBvalue("descalbaranp"));
+    buff.replace("[refalbaranp]",DBvalue("refalbaranp"));
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";

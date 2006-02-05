@@ -26,32 +26,42 @@ CREATE TABLE dpresupuesto (
 );
 */
 
-DescuentoPresupuesto::DescuentoPresupuesto(company *comp) {
+
+void DescuentoPresupuesto::definetabla() {
+    setDBTableName("dpresupuesto");
+    setDBCampoId("iddpresupuesto");
+    addDBCampo("iddpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Linea Presupuesto");
+    addDBCampo("conceptdpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Descripcion");
+    addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("proporciondpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, "Proporcion");
+}// end definetabla
+
+
+DescuentoPresupuesto::DescuentoPresupuesto(company *comp) : DBRecord(comp) {
     companyact = comp;
-    vaciaDescuentoPresupuesto();
+    definetabla();
 }
 
-DescuentoPresupuesto::DescuentoPresupuesto(company *comp, QString id) {
+DescuentoPresupuesto::DescuentoPresupuesto(company *comp, QString id) : DBRecord(comp) {
     companyact = comp;
+    definetabla();
     QString SQLQuery = "SELECT * FROM dpresupuesto WHERE  iddpresupuesto="+id;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        mdb_iddpresupuesto = cur->valor("iddpresupuesto");
-        mdb_conceptdpresupuesto = cur->valor("conceptdpresupuesto");
-        mdb_proporciondpresupuesto = cur->valor("proporciondpresupuesto");
-        mdb_idpresupuesto = cur->valor("idpresupuesto");
+        DBload(cur);
     } else {
         vaciaDescuentoPresupuesto();
     }// end if
 }// end DescuentoPresupuesto
 
 
-DescuentoPresupuesto::DescuentoPresupuesto(company *comp, QString a, QString b, QString c, QString d) {
+DescuentoPresupuesto::DescuentoPresupuesto(company *comp, QString a, QString b, QString c, QString d) : DBRecord(comp) {
     companyact = comp;
-    mdb_iddpresupuesto = a;
-    mdb_conceptdpresupuesto = b;
-    mdb_proporciondpresupuesto = c;
-    mdb_idpresupuesto =d;
+    definetabla();
+    setDBvalue("iddpresupuesto", a);
+    setDBvalue("conceptdpresupuesto", b);
+    setDBvalue("proporciondpresupuesto", c);
+    setDBvalue("idpresupuesto",d);
 }// end DescuentoPresupuesto
 
 
@@ -59,58 +69,33 @@ DescuentoPresupuesto::~DescuentoPresupuesto() {}
 
 
 void DescuentoPresupuesto::vaciaDescuentoPresupuesto() {
-    mdb_iddpresupuesto = "";
-    mdb_conceptdpresupuesto = "";
-    mdb_proporciondpresupuesto = "";
-    mdb_idpresupuesto ="";
+    DBclear();
 }
 
 
 void DescuentoPresupuesto::borrar() {
-    if (mdb_iddpresupuesto != "") {
+    if (DBvalue("iddpresupuesto") != "") {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM dpresupuesto WHERE iddpresupuesto="+mdb_iddpresupuesto);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        int error = companyact->ejecuta("DELETE FROM dpresupuesto WHERE iddpresupuesto="+DBvalue("iddpresupuesto"));
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
         companyact->commit();
         vaciaDescuentoPresupuesto();
     }// end if
 }// end delete
 
 void DescuentoPresupuesto::guardaDescuentoPresupuesto() {
-    /// Segun est�la linea en la base de datos o no se hace una cosa u otra.
-    if (mdb_iddpresupuesto == "") {
-        QString SQLQuery = "INSERT INTO dpresupuesto (conceptdpresupuesto, proporciondpresupuesto, idpresupuesto) VALUES ('"+
-	companyact->sanearCadena(mdb_conceptdpresupuesto)+"',"+
-	companyact->sanearCadena(mdb_proporciondpresupuesto)+","+
-	companyact->sanearCadena(mdb_idpresupuesto)+")";
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(iddpresupuesto) AS m FROM dpresupuesto ");
-        if(!cur->eof())
-            mdb_iddpresupuesto = cur->valor("m");
-        delete cur;
-        companyact->commit();
-    } else {
-        QString SQLQuery = "UPDATE dpresupuesto SET ";
-        SQLQuery += " conceptdpresupuesto = '"+companyact->sanearCadena(mdb_conceptdpresupuesto)+"' ";
-        SQLQuery += " ,proporciondpresupuesto = "+companyact->sanearCadena(mdb_proporciondpresupuesto)+" ";
-        SQLQuery += " ,idpresupuesto = "+companyact->sanearCadena(mdb_idpresupuesto)+" ";
-        SQLQuery += " WHERE iddpresupuesto = "+companyact->sanearCadena(mdb_iddpresupuesto);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        companyact->commit();
+    QString id;
+    companyact->begin();
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
+    setDBvalue("iddpresupuesto",id);
+    companyact->commit();
 }// end guardaDescuentoPresupuesto
 
 

@@ -1,7 +1,7 @@
 //
 // C++ Interface: DescuentoFacturaProv
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
@@ -34,34 +34,51 @@ CREATE TABLE dfacturap (
 @author Tomeu Borras
 */
 #include "company.h"
+#include "dbrecord.h"
 
-class DescuentoFacturaProv {
+
+class DescuentoFacturaProv : public DBRecord {
 private:
-    QString mdb_iddfacturap;
-    QString mdb_conceptdfacturap;
-    QString mdb_proporciondfacturap;
-    QString mdb_idfacturap;
+
     company *companyact;
+    void definetabla();
 public:
     DescuentoFacturaProv(company *);
     DescuentoFacturaProv(company *, QString );
     /// La carga rapida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
     DescuentoFacturaProv(company *, QString , QString , QString , QString);
     virtual ~DescuentoFacturaProv();
-    virtual void pintaDescuentoFacturaProv() {};
+    virtual void pintaDescuentoFacturaProv() {}
+    ;
     void guardaDescuentoFacturaProv();
     void vaciaDescuentoFacturaProv();
 
-    inline QString iddfacturap() {return mdb_iddfacturap;};
-    inline QString conceptdfacturap() {return mdb_conceptdfacturap;};
-    inline QString proporciondfacturap() {return mdb_proporciondfacturap;};
-    inline QString idfacturap()  {return mdb_idfacturap;};
+    inline QString iddfacturap() {
+        return DBvalue("iddfacturap");
+    };
+    inline QString conceptdfacturap() {
+        return DBvalue("conceptdfacturap");
+    };
+    inline QString proporciondfacturap() {
+        return DBvalue("proporciondfacturap");
+    };
+    inline QString idfacturap()  {
+        return DBvalue("idfacturap");
+    };
 
-    inline void setiddfacturap(QString val) {mdb_iddfacturap=val;};
-    inline void setconceptdfacturap(QString val) {mdb_conceptdfacturap=val;};
-    inline void setproporciondfacturap(QString val) {mdb_proporciondfacturap=val;};
-    inline void setidfacturap(QString val)  {mdb_idfacturap=val;};
-    void borrar();  
+    inline void setiddfacturap(QString val) {
+        setDBvalue("iddfacturap",val);
+    };
+    inline void setconceptdfacturap(QString val) {
+        setDBvalue("conceptdfacturap",val);
+    };
+    inline void setproporciondfacturap(QString val) {
+        setDBvalue("proporciondfacturap",val);
+    };
+    inline void setidfacturap(QString val)  {
+        setDBvalue("idfacturap",val);
+    };
+    void borrar();
 };
 
 #endif

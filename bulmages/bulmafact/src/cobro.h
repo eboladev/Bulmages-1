@@ -18,19 +18,11 @@
   * \brief Clase que hace de intermediaria entre la tabla de Cobro de la base de datos y el programa.
 */
 #include "company.h"
+#include "dbrecord.h"
 
-
-class Cobro {
+class Cobro : public DBRecord {
 protected:
     company *companyact;
-    QString mdb_idcobro;
-    QString mdb_idcliente;
-    QString mdb_fechacobro;
-    QString mdb_cantcobro;
-    QString mdb_refcobro;
-    QString mdb_previsioncobro;
-    QString mdb_comentcobro;
-
 public:
     Cobro(company *);
     virtual ~Cobro();
@@ -48,12 +40,12 @@ public:
     virtual void pintaprevisioncobro(QString) {};
     virtual void pintacomentcobro(QString) {};
 
-    void setidcobro(QString val) { mdb_idcobro=val;};
-    void setidcliente(QString val) {mdb_idcliente=val;};
-    void setfechacobro(QString val) { mdb_fechacobro=val;};
-    void setcantcobro(QString val) { mdb_cantcobro=val;};
-    void setrefcobro(QString val) { mdb_refcobro=val;};
-    void setprevisioncobro(QString val) { mdb_previsioncobro=val;};
-    void setcomentcobro(QString val) { mdb_comentcobro=val;};
+    void setidcobro(QString val) { setDBvalue("idcobro",val);};
+    void setidcliente(QString val) {setDBvalue("idcliente",val);};
+    void setfechacobro(QString val) { setDBvalue("fechacobro",val);};
+    void setcantcobro(QString val) { setDBvalue("cantcobro",val);};
+    void setrefcobro(QString val) { setDBvalue("refcobro",val);};
+    void setprevisioncobro(QString val) { setDBvalue("previsioncobro",val);};
+    void setcomentcobro(QString val) { setDBvalue("comentcobro",val);};
 };
 #endif

@@ -1,7 +1,7 @@
 //
 // C++ Interface: DescuentoPedidoProveedor
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
@@ -17,39 +17,52 @@
 @author Tomeu Borras
 */
 #include "company.h"
+#include "dbrecord.h"
 
-class DescuentoPedidoProveedor {
+class DescuentoPedidoProveedor : public DBRecord {
 private:
-    QString mdb_iddpedidoproveedor;
-    QString mdb_conceptdpedidoproveedor;
-    QString mdb_proporciondpedidoproveedor;
-    QString mdb_idpedidoproveedor;  
+
     company *companyact;
+    void definetabla();
 public:
     DescuentoPedidoProveedor(company *);
     DescuentoPedidoProveedor(company *, QString );
-    /// La carga rápida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
+    /// La carga rï¿½ida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
     DescuentoPedidoProveedor(company *, QString , QString , QString , QString);
     virtual ~DescuentoPedidoProveedor();
-    virtual void pintaDescuentoPedidoProveedor() {};
+    virtual void pintaDescuentoPedidoProveedor() {}
+    ;
     void guardaDescuentoPedidoProveedor();
     void vaciaDescuentoPedidoProveedor();
 
 
-    inline QString iddpedidoproveedor() {return mdb_iddpedidoproveedor;};
-    inline QString conceptdpedidoproveedor() {return mdb_conceptdpedidoproveedor;};
-    inline QString proporciondpedidoproveedor() {return mdb_proporciondpedidoproveedor;};
-    inline QString idpedidoproveedor()  {return mdb_idpedidoproveedor;};
+    inline QString iddpedidoproveedor() {
+        return DBvalue("iddpedidoproveedor");
+    };
+    inline QString conceptdpedidoproveedor() {
+        return DBvalue("conceptdpedidoproveedor");
+    };
+    inline QString proporciondpedidoproveedor() {
+        return DBvalue("proporciondpedidoproveedor");
+    };
+    inline QString idpedidoproveedor()  {
+        return DBvalue("idpedidoproveedor");
+    };
 
+    inline void setiddpedidoproveedor(QString val) {
+        setDBvalue("iddpedidoproveedor",val);
+    };
+    inline void setconceptdpedidoproveedor(QString val) {
+        setDBvalue("conceptdpedidoproveedor",val);
+    };
+    inline void setproporciondpedidoproveedor(QString val) {
+        setDBvalue("proporciondpedidoproveedor",val);
+    };
+    inline void setidpedidoproveedor(QString val)  {
+        setDBvalue("idpedidoproveedor",val);
+    };
 
-    
-    inline void setiddpedidoproveedor(QString val) {mdb_iddpedidoproveedor=val;};
-    inline void setconceptdpedidoproveedor(QString val) {mdb_conceptdpedidoproveedor=val;};
-    inline void setproporciondpedidoproveedor(QString val) {mdb_proporciondpedidoproveedor=val;};
-    inline void setidpedidoproveedor(QString val)  {mdb_idpedidoproveedor=val;};
-
-    void borrar();  
-        
+    void borrar();
 };
 
 #endif

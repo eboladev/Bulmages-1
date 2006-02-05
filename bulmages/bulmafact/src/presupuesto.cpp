@@ -41,8 +41,6 @@ presupuesto::presupuesto(company *comp) : DBRecord(comp) {
     addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-
-    vaciaPresupuesto();
 }// end presupuesto
 
 presupuesto::~presupuesto() {}

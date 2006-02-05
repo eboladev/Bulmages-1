@@ -117,7 +117,7 @@ void AlbaranProveedorView::closeEvent( QCloseEvent *e) {
 
 int AlbaranProveedorView::cargaAlbaranProveedor(QString id) {
 	AlbaranProveedor::cargaAlbaranProveedor(id);
-	setCaption("Albaran Proveedor  "+mdb_refalbaranp);
+	setCaption("Albaran Proveedor  "+DBvalue("refalbaranp"));
 	if(companyact->meteWindow(caption(),this)) return -1;
 	return 0;
 }

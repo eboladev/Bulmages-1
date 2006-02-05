@@ -11,32 +11,41 @@
 //
 #include "descpedidocliente.h"
 
-DescuentoPedidoCliente::DescuentoPedidoCliente(company *comp) {
+void DescuentoPedidoCliente::definetabla() {
+    setDBTableName("dpedidocliente");
+    setDBCampoId("iddpedidocliente");
+    addDBCampo("iddpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Linea Presupuesto");
+    addDBCampo("conceptdpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Descripcion");
+    addDBCampo("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("proporciondpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, "Proporcion");
+}// end definetabla
+
+
+DescuentoPedidoCliente::DescuentoPedidoCliente(company *comp) : DBRecord(comp) {
     companyact = comp;
-    vaciaDescuentoPedidoCliente();
+    definetabla();
 }
 
-DescuentoPedidoCliente::DescuentoPedidoCliente(company *comp, QString id) {
+DescuentoPedidoCliente::DescuentoPedidoCliente(company *comp, QString id) : DBRecord(comp) {
     companyact = comp;
+    definetabla();
     QString SQLQuery = "SELECT * FROM dpedidocliente WHERE  iddpedidocliente="+id;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        mdb_iddpedidocliente = cur->valor("iddpedidocliente");
-        mdb_conceptdpedidocliente = cur->valor("conceptdpedidocliente");
-        mdb_proporciondpedidocliente = cur->valor("proporciondpedidocliente");
-        mdb_idpedidocliente = cur->valor("idpedidocliente");
+        DBload(cur);
     } else {
         vaciaDescuentoPedidoCliente();
     }// end if
 }// end DescuentoPedidoCliente
 
 
-DescuentoPedidoCliente::DescuentoPedidoCliente(company *comp, QString a, QString b, QString c, QString d) {
+DescuentoPedidoCliente::DescuentoPedidoCliente(company *comp, QString a, QString b, QString c, QString d) : DBRecord(comp) {
     companyact = comp;
-    mdb_iddpedidocliente = a;
-    mdb_conceptdpedidocliente = b;
-    mdb_proporciondpedidocliente = c;
-    mdb_idpedidocliente =d;
+    definetabla();
+    setDBvalue("iddpedidocliente", a);
+    setDBvalue("conceptdpedidocliente", b);
+    setDBvalue("proporciondpedidocliente", c);
+    setDBvalue("idpedidocliente",d);
 }// end DescuentoPedidoCliente
 
 
@@ -44,58 +53,33 @@ DescuentoPedidoCliente::~DescuentoPedidoCliente() {}
 
 
 void DescuentoPedidoCliente::vaciaDescuentoPedidoCliente() {
-    mdb_iddpedidocliente = "";
-    mdb_conceptdpedidocliente = "";
-    mdb_proporciondpedidocliente = "";
-    mdb_idpedidocliente ="";
+    DBclear();
 }
 
 
 void DescuentoPedidoCliente::borrar() {
-    if (mdb_iddpedidocliente != "") {
+    if (DBvalue("iddpedidocliente") != "") {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM dpedidocliente WHERE iddpedidocliente="+mdb_iddpedidocliente);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        int error = companyact->ejecuta("DELETE FROM dpedidocliente WHERE iddpedidocliente="+DBvalue("iddpedidocliente"));
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
         companyact->commit();
         vaciaDescuentoPedidoCliente();
     }// end if
 }// end delete
 
 void DescuentoPedidoCliente::guardaDescuentoPedidoCliente() {
-    /// Segun est�la linea en la base de datos o no se hace una cosa u otra.
-    if (mdb_iddpedidocliente == "") {
-        QString SQLQuery = "INSERT INTO dpedidocliente (conceptdpedidocliente, proporciondpedidocliente, idpedidocliente) VALUES ('"+
-	companyact->sanearCadena(mdb_conceptdpedidocliente)+"',"+
-	companyact->sanearCadena(mdb_proporciondpedidocliente)+","+
-	companyact->sanearCadena(mdb_idpedidocliente)+")";
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(iddpedidocliente) AS m FROM dpedidocliente ");
-        if(!cur->eof())
-            mdb_iddpedidocliente = cur->valor("m");
-        delete cur;
-        companyact->commit();
-    } else {
-        QString SQLQuery = "UPDATE dpedidocliente SET ";
-        SQLQuery += " conceptdpedidocliente = '"+companyact->sanearCadena(mdb_conceptdpedidocliente)+"' ";
-        SQLQuery += " ,proporciondpedidocliente = "+companyact->sanearCadena(mdb_proporciondpedidocliente)+" ";
-        SQLQuery += " ,idpedidocliente = "+companyact->sanearCadena(mdb_idpedidocliente)+" ";
-        SQLQuery += " WHERE iddpedidocliente = "+companyact->sanearCadena(mdb_iddpedidocliente);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        companyact->commit();
+    QString id;
+    companyact->begin();
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
+    setDBvalue("iddpedidocliente",id);
+    companyact->commit();
 }// end guardaDescuentoPedidoCliente
 
 

@@ -10,33 +10,42 @@
 //
 //
 #include "descfacturaprov.h"
+void DescuentoFacturaProv::definetabla() {
 
-DescuentoFacturaProv::DescuentoFacturaProv(company *comp) {
+    setDBTableName("dfacturap");
+    setDBCampoId("iddfacturap");
+    addDBCampo("iddfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Linea Presupuesto");
+    addDBCampo("conceptdfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, "Descripcion");
+    addDBCampo("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("proporciondfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, "Proporcion");
+}// end definetabla
+
+
+DescuentoFacturaProv::DescuentoFacturaProv(company *comp) : DBRecord(comp) {
     companyact = comp;
-    vaciaDescuentoFacturaProv();
+    definetabla();
 }
 
-DescuentoFacturaProv::DescuentoFacturaProv(company *comp, QString id) {
+DescuentoFacturaProv::DescuentoFacturaProv(company *comp, QString id) : DBRecord(comp) {
     companyact = comp;
+    definetabla();
     QString SQLQuery = "SELECT * FROM dfacturap WHERE  iddfacturap="+id;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        mdb_iddfacturap = cur->valor("iddfacturap");
-        mdb_conceptdfacturap = cur->valor("conceptdfacturap");
-        mdb_proporciondfacturap = cur->valor("proporciondfacturap");
-        mdb_idfacturap = cur->valor("idfacturap");
+        DBload(cur);
     } else {
         vaciaDescuentoFacturaProv();
     }// end if
 }// end DescuentoFacturaProv
 
 
-DescuentoFacturaProv::DescuentoFacturaProv(company *comp, QString a, QString b, QString c, QString d) {
+DescuentoFacturaProv::DescuentoFacturaProv(company *comp, QString a, QString b, QString c, QString d) : DBRecord(comp) {
     companyact = comp;
-    mdb_iddfacturap = a;
-    mdb_conceptdfacturap = b;
-    mdb_proporciondfacturap = c;
-    mdb_idfacturap =d;
+    definetabla();
+    setDBvalue("iddfacturap", a);
+    setDBvalue("conceptdfacturap", b);
+    setDBvalue("proporciondfacturap", c);
+    setDBvalue("idfacturap",d);
 }// end DescuentoFacturaProv
 
 
@@ -44,58 +53,34 @@ DescuentoFacturaProv::~DescuentoFacturaProv() {}
 
 
 void DescuentoFacturaProv::vaciaDescuentoFacturaProv() {
-    mdb_iddfacturap = "";
-    mdb_conceptdfacturap = "";
-    mdb_proporciondfacturap = "";
-    mdb_idfacturap ="";
+    DBclear();
 }
 
 
 void DescuentoFacturaProv::borrar() {
-    if (mdb_iddfacturap != "") {
+    if (DBvalue("iddfacturap") != "") {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM dfacturap WHERE iddfacturap="+mdb_iddfacturap);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        int error = companyact->ejecuta("DELETE FROM dfacturap WHERE iddfacturap="+DBvalue("iddfacturap"));
+        if (error) {
+            companyact->rollback()
+            ;
+            return;
+        }// end if
         companyact->commit();
         vaciaDescuentoFacturaProv();
     }// end if
 }// end delete
 
 void DescuentoFacturaProv::guardaDescuentoFacturaProv() {
-    /// Segun est�la linea en la base de datos o no se hace una cosa u otra.
-    if (mdb_iddfacturap == "") {
-        QString SQLQuery = "INSERT INTO dfacturap (conceptdfacturap, proporciondfacturap, idfacturap) VALUES ('"+
-	companyact->sanearCadena(mdb_conceptdfacturap)+"',"+
-	companyact->sanearCadena(mdb_proporciondfacturap)+","+
-	companyact->sanearCadena(mdb_idfacturap)+")";
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(iddfacturap) AS m FROM dfacturap ");
-        if(!cur->eof())
-            mdb_iddfacturap = cur->valor("m");
-        delete cur;
-        companyact->commit();
-    } else {
-        QString SQLQuery = "UPDATE dfacturap SET ";
-        SQLQuery += " conceptdfacturap = '"+companyact->sanearCadena(mdb_conceptdfacturap)+"' ";
-        SQLQuery += " ,proporciondfacturap = "+companyact->sanearCadena(mdb_proporciondfacturap)+" ";
-        SQLQuery += " ,idfacturap = "+companyact->sanearCadena(mdb_idfacturap)+" ";
-        SQLQuery += " WHERE iddfacturap = "+companyact->sanearCadena(mdb_iddfacturap);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        companyact->commit();
+    QString id;
+    companyact->begin();
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
+    setDBvalue("iddfacturap",id);
+    companyact->commit();
 }// end guardaDescuentoFacturaProv
 
 

@@ -12,45 +12,37 @@
 #ifndef DESCFACTURA_H
 #define DESCFACTURA_H
 
-
-
 /**
 @author Tomeu Borras
 */
 #include "company.h"
+#include "dbrecord.h"
 
-class DescuentoFactura {
+class DescuentoFactura : public DBRecord {
 private:
-    QString mdb_iddfactura;
-    QString mdb_conceptdfactura;
-    QString mdb_proporciondfactura;
-    QString mdb_idfactura;  
     company *companyact;
+	void definetabla();
 public:
     DescuentoFactura(company *);
     DescuentoFactura(company *, QString );
-    /// La carga rápida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
+    /// La carga rï¿½ida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
     DescuentoFactura(company *, QString , QString , QString , QString);
     virtual ~DescuentoFactura();
     virtual void pintaDescuentoFactura() {};
     void guardaDescuentoFactura();
     void vaciaDescuentoFactura();
 
+    inline QString iddfactura() {return DBvalue("iddfactura");};
+    inline QString conceptdfactura() {return DBvalue("conceptdfactura");};
+    inline QString proporciondfactura() {return DBvalue("proporciondfactura");};
+    inline QString idfactura()  {return DBvalue("idfactura");};
 
-    inline QString iddfactura() {return mdb_iddfactura;};
-    inline QString conceptdfactura() {return mdb_conceptdfactura;};
-    inline QString proporciondfactura() {return mdb_proporciondfactura;};
-    inline QString idfactura()  {return mdb_idfactura;};
-
-
-    
-    inline void setiddfactura(QString val) {mdb_iddfactura=val;};
-    inline void setconceptdfactura(QString val) {mdb_conceptdfactura=val;};
-    inline void setproporciondfactura(QString val) {mdb_proporciondfactura=val;};
-    inline void setidfactura(QString val)  {mdb_idfactura=val;};
+    inline void setiddfactura(QString val) {setDBvalue("iddfactura",val);};
+    inline void setconceptdfactura(QString val) {setDBvalue("conceptdfactura",val);};
+    inline void setproporciondfactura(QString val) {setDBvalue("proporciondfactura",val);};
+    inline void setidfactura(QString val)  {setDBvalue("idfactura",val);};
 
     void borrar();  
-        
 };
 
 #endif

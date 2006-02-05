@@ -11,134 +11,114 @@
 //
 #include "linpresupuesto.h"
 
-linpresupuesto::linpresupuesto(company *comp) {
+void linpresupuesto::definetabla() {
+
+    setDBTableName("lpresupuesto");
+    setDBCampoId("idlpresupuesto");
+    addDBCampo("idlpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Linea Presupuesto");
+    addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("desclpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Descripcion");
+    addDBCampo("cantlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, "Cantidad");
+    addDBCampo("pvplpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, "Precio Linea Presupuesto");
+    addDBCampo("descuentolpresupuesto", DBCampo::DBnumeric, DBCampo::DBNothing, "Descuento Linea Presupuesto");
+    addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBNothing, "Articulo Presupuesto");
+    addDBCampo("ivalpresupuesto", DBCampo::DBnumeric, DBCampo::DBNothing, "IVA linea Presupuesto");
+    addDBCampo("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Codigo Articulo");
+    addDBCampo("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre 	Articulo");
+}// end definetabla
+
+linpresupuesto::linpresupuesto(company *comp) : DBRecord(comp) {
     companyact = comp;
-    vacialinpresupuesto();
+    definetabla();
 }
 
-linpresupuesto::linpresupuesto(company *comp, QString idlinpresupuesto) {
+linpresupuesto::linpresupuesto(company *comp, QString idlinpresupuesto) : DBRecord(comp) {
     companyact = comp;
+    definetabla();
     QString SQLQuery = "SELECT * FROM lpresupuesto, articulo WHERE lpresupuesto.idarticulo=articulo.idarticulo AND idlpresupuesto="+idlinpresupuesto;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        mdb_idlpresupuesto = cur->valor("idlpresupuesto");
-        mdb_desclpresupuesto = cur->valor("desclpresupuesto");
-        mdb_cantlpresupuesto = cur->valor("cantlpresupuesto");
-        mdb_pvplpresupuesto = cur->valor("pvplpresupuesto");
-        mdb_descuentolpresupuesto = cur->valor("descuentolpresupuesto");
-        mdb_idpresupuesto = cur->valor("idpresupuesto");
-        mdb_idarticulo = cur->valor("idarticulo");
-        mdb_codigocompletoarticulo = cur->valor("codigocompletoarticulo");
-        mdb_nomarticulo = cur->valor("nomarticulo");
-        mdb_ivalpresupuesto = cur->valor("ivalpresupuesto");
+        DBload(cur);
+
     } else {
         vacialinpresupuesto();
     }// end if
 }// end linpresupuesto
 
 
-linpresupuesto::linpresupuesto(company *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j) {
+
+linpresupuesto::linpresupuesto(company *comp, QString a, QString b, QString c, QString d, QString e, QString f, QString g, QString h, QString i, QString j) : DBRecord(comp) {
     companyact = comp;
-    mdb_idlpresupuesto = a;
-    mdb_desclpresupuesto = b;
-    mdb_cantlpresupuesto = c;
-    mdb_pvplpresupuesto =d;
-    mdb_descuentolpresupuesto = e;
-    mdb_idpresupuesto = f;
-    mdb_idarticulo = g;
-    mdb_codigocompletoarticulo = h;
-    mdb_nomarticulo = i;
-    mdb_ivalpresupuesto = j;
+    definetabla();
+    setDBvalue("idlpresupuesto", a);
+    setDBvalue("desclpresupuesto", b);
+    setDBvalue("cantlpresupuesto", c);
+    setDBvalue("pvplpresupuesto",d);
+    setDBvalue("descuentolpresupuesto", e);
+    setDBvalue("idpresupuesto", f);
+    setDBvalue("idarticulo", g);
+    setDBvalue("codigocompletoarticulo", h);
+    setDBvalue("nomarticulo", i);
+    setDBvalue("ivalpresupuesto", j);
 }// end linpresupuesto
+
+
+linpresupuesto::linpresupuesto(company *comp, cursor2 *cur) : DBRecord(comp) {
+    companyact = comp;
+    definetabla();
+    DBload(cur);
+}
 
 
 linpresupuesto::~linpresupuesto() {}
 
 
 void linpresupuesto::vacialinpresupuesto() {
-    mdb_idlpresupuesto = "";
-    mdb_desclpresupuesto = "";
-    mdb_cantlpresupuesto = "";
-    mdb_pvplpresupuesto ="";
-    mdb_descuentolpresupuesto = "";
-    mdb_idpresupuesto = "";
-    mdb_idarticulo = "";
-    mdb_codigocompletoarticulo = "";
-    mdb_nomarticulo = "";
-    mdb_ivalpresupuesto="";
+    DBclear();
 }
 
 
 void linpresupuesto::borrar() {
-    if (mdb_idlpresupuesto != "") {
+    if (DBvalue("idlpresupuesto") != "") {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM lpresupuesto WHERE idlpresupuesto="+mdb_idlpresupuesto);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        int error = companyact->ejecuta("DELETE FROM lpresupuesto WHERE idlpresupuesto="+DBvalue("idlpresupuesto"));
+        if (error) {
+            companyact->rollback();
+            return;
+        }// end if
         companyact->commit();
         vacialinpresupuesto();
     }// end if
 }// end delete
 
 void linpresupuesto::guardalinpresupuesto() {
-    /// Segun est�la linea en la base de datos o no se hace una cosa u otra.
-    if (mdb_idlpresupuesto == "") {
-        QString SQLQuery = "INSERT INTO lpresupuesto (desclpresupuesto, cantlpresupuesto, pvplpresupuesto, descuentolpresupuesto, idpresupuesto, idarticulo, ivalpresupuesto) VALUES ('"+
-	companyact->sanearCadena(mdb_desclpresupuesto)+"',"+
-	companyact->sanearCadena(mdb_cantlpresupuesto)+","+
-	companyact->sanearCadena(mdb_pvplpresupuesto)+","+
-	companyact->sanearCadena(mdb_descuentolpresupuesto)+","+
-	companyact->sanearCadena(mdb_idpresupuesto)+","+
-	companyact->sanearCadena(mdb_idarticulo)+", "+
-	companyact->sanearCadena(mdb_ivalpresupuesto)+")";
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(idlpresupuesto) AS m FROM lpresupuesto ");
-        if(!cur->eof())
-            mdb_idlpresupuesto = cur->valor("m");
-        delete cur;
-        companyact->commit();
-    } else {
-        QString SQLQuery = "UPDATE lpresupuesto SET ";
-        SQLQuery += " desclpresupuesto = '"+companyact->sanearCadena(mdb_desclpresupuesto)+"' ";
-        SQLQuery += " ,cantlpresupuesto = "+companyact->sanearCadena(mdb_cantlpresupuesto)+" ";
-        SQLQuery += " ,pvplpresupuesto = "+companyact->sanearCadena(mdb_pvplpresupuesto)+" ";
-        SQLQuery += " ,descuentolpresupuesto = "+companyact->sanearCadena(mdb_descuentolpresupuesto)+" ";
-        SQLQuery += " ,idpresupuesto = "+companyact->sanearCadena(mdb_idpresupuesto)+" ";
-        SQLQuery += " ,idarticulo = "+companyact->sanearCadena(mdb_idarticulo)+" ";
-        SQLQuery += " ,ivalpresupuesto = "+companyact->sanearCadena(mdb_ivalpresupuesto)+" ";
-        SQLQuery += " WHERE idlpresupuesto = "+companyact->sanearCadena(mdb_idlpresupuesto);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        companyact->commit();
+    /// Segun esta la linea en la base de datos o no se hace una cosa u otra.
+    QString id;
+    companyact->begin();
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
+    setDBvalue("idlpresupuesto",id);
+    companyact->commit();
 }// end guardalinpresupuesto
 
 
 void linpresupuesto::setcodigocompletoarticulo(QString val) {
-    fprintf(stderr,"setcodigocompletoarticulo(%s)\n", val.ascii());
-    mdb_codigocompletoarticulo=val;
-    QString SQLQuery = "SELECT nomarticulo, idarticulo, pvparticulo(idarticulo) AS pvp, ivaarticulo(idarticulo) AS iva FROM articulo WHERE codigocompletoarticulo='"+mdb_codigocompletoarticulo+"'";
+    _depura("setcodigocompletoarticulo()\n", 0);
+    setDBvalue("codigocompletoarticulo",val);
+    QString SQLQuery = "SELECT nomarticulo, idarticulo, pvparticulo(idarticulo) AS pvp, ivaarticulo(idarticulo) AS iva FROM articulo WHERE codigocompletoarticulo='"+val+"'";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        mdb_nomarticulo=cur->valor("nomarticulo");
-        mdb_desclpresupuesto = mdb_nomarticulo;
-        mdb_idarticulo= cur->valor("idarticulo");
-        mdb_pvplpresupuesto = cur->valor("pvp");
-        mdb_ivalpresupuesto = cur->valor("iva");
-        if (mdb_cantlpresupuesto == "") {
-            mdb_cantlpresupuesto = "1";
-            mdb_descuentolpresupuesto = "0";
+        setDBvalue("nomarticulo",cur->valor("nomarticulo"));
+        setDBvalue("desclpresupuesto",cur->valor("nomarticulo"));
+        setDBvalue("idarticulo", cur->valor("idarticulo"));
+        setDBvalue("pvplpresupuesto",cur->valor("pvp"));
+        setDBvalue("ivalpresupuesto", cur->valor("iva"));
+        if (DBvalue("cantlpresupuesto") == "") {
+            setDBvalue("cantlpresupuesto" , "1");
+            setDBvalue("descuentolpresupuesto" , "0");
         }// end if
     }// end if
     delete cur;
@@ -146,42 +126,42 @@ void linpresupuesto::setcodigocompletoarticulo(QString val) {
 
 
 void linpresupuesto::setidarticulo(QString val) {
-    fprintf(stderr,"setidarticulo(%s)\n", val.ascii());
-    mdb_idarticulo=val;
-    QString SQLQuery = "SELECT nomarticulo, codigocompletoarticulo, pvparticulo(idarticulo) AS pvp, ivaarticulo(idarticulo) AS iva FROM articulo WHERE idarticulo="+mdb_idarticulo+"";
+    _depura("setidarticulo()\n", 0);
+    setDBvalue("idarticulo",val);
+    QString SQLQuery = "SELECT nomarticulo, codigocompletoarticulo, pvparticulo(idarticulo) AS pvp, ivaarticulo(idarticulo) AS iva FROM articulo WHERE idarticulo="+val+"";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        mdb_nomarticulo=cur->valor("nomarticulo");
-        mdb_desclpresupuesto = mdb_nomarticulo;
-        mdb_codigocompletoarticulo= cur->valor("codigocompletoarticulo");
-        mdb_pvplpresupuesto = cur->valor("pvp");
-        mdb_ivalpresupuesto = cur->valor("iva");
-        if (mdb_cantlpresupuesto == "") {
-            mdb_cantlpresupuesto = "1";
-            mdb_descuentolpresupuesto = "0";
+        setDBvalue("nomarticulo" ,cur->valor("nomarticulo"));
+        setDBvalue("desclpresupuesto",cur->valor("nomarticulo"));
+        setDBvalue("codigocompletoarticulo",cur->valor("codigocompletoarticulo"));
+        setDBvalue("pvplpresupuesto", cur->valor("pvp"));
+        setDBvalue("ivalpresupuesto", cur->valor("iva"));
+        if (DBvalue("cantlpresupuesto") == "") {
+            setDBvalue("cantlpresupuesto", "1");
+            setDBvalue("descuentolpresupuesto", "0");
         }// end if
     }// end if
     delete cur;
-    fprintf(stderr,"end setidarticulo\n");
+    _depura("end setidarticulo\n",0);
 }// end setidarticulo
 
 float linpresupuesto::calculabase() {
-    fprintf(stderr,"calculabase()\n");
+    _depura("calculabase()\n",0);
     float cant=0;
-    if (mdb_cantlpresupuesto != "" && mdb_pvplpresupuesto != "" && mdb_desclpresupuesto != "") {
-        cant = mdb_cantlpresupuesto.toFloat() * mdb_pvplpresupuesto.toFloat();
-        cant = cant - (cant* mdb_desclpresupuesto.toFloat());
+    if (DBvalue("cantlpresupuesto") != "" && DBvalue("pvplpresupuesto") != "" && DBvalue("desclpresupuesto") != "") {
+        cant = DBvalue("cantlpresupuesto").toFloat() * DBvalue("pvplpresupuesto").toFloat();
+        cant = cant - (cant* DBvalue("desclpresupuesto").toFloat());
     }// end if
     return cant;
 }// end calculabase
 
 float linpresupuesto::calculaiva() {
-    fprintf(stderr,"calculaiva()\n");
+    _depura("calculaiva()\n",0);
     float cant=0;
-    if (mdb_cantlpresupuesto != "" && mdb_pvplpresupuesto != "" && mdb_desclpresupuesto != "" && mdb_ivalpresupuesto != "") {
-        cant = mdb_cantlpresupuesto.toFloat() * mdb_pvplpresupuesto.toFloat();
-        cant = cant - (cant* mdb_desclpresupuesto.toFloat()/100);
-        cant = cant * mdb_ivalpresupuesto.toFloat()/100;
+    if (DBvalue("cantlpresupuesto") != "" && DBvalue("pvplpresupuesto") != "" && DBvalue("desclpresupuesto") != "" && DBvalue("ivalpresupuesto") != "") {
+        cant = DBvalue("cantlpresupuesto").toFloat() * DBvalue("pvplpresupuesto").toFloat();
+        cant = cant - (cant* DBvalue("desclpresupuesto").toFloat()/100);
+        cant = cant * DBvalue("ivalpresupuesto").toFloat()/100;
     }// end if
     return cant;
 }// end calculabase

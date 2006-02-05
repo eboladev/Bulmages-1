@@ -1,7 +1,7 @@
 //
 // C++ Interface: DescuentoPresupuesto
 //
-// Description: 
+// Description:
 //
 //
 // Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
@@ -12,45 +12,54 @@
 #ifndef DESCPRESUPUESTO_H
 #define DESCPRESUPUESTO_H
 
-
-
 /**
 @author Tomeu Borras
 */
 #include "company.h"
+#include "dbrecord.h"
 
-class DescuentoPresupuesto {
+class DescuentoPresupuesto : DBRecord {
 private:
-    QString mdb_iddpresupuesto;
-    QString mdb_conceptdpresupuesto;
-    QString mdb_proporciondpresupuesto;
-    QString mdb_idpresupuesto;  
     company *companyact;
+    void definetabla();
 public:
     DescuentoPresupuesto(company *);
     DescuentoPresupuesto(company *, QString );
-    /// La carga rápida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
+    /// La carga rï¿½ida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
     DescuentoPresupuesto(company *, QString , QString , QString , QString);
     virtual ~DescuentoPresupuesto();
-    virtual void pintaDescuentoPresupuesto() {};
+    virtual void pintaDescuentoPresupuesto() {}
+    ;
     void guardaDescuentoPresupuesto();
     void vaciaDescuentoPresupuesto();
 
+    inline QString iddpresupuesto() {
+        return DBvalue("iddpresupuesto");
+    };
+    inline QString conceptdpresupuesto() {
+        return DBvalue("conceptdpresupuesto");
+    };
+    inline QString proporciondpresupuesto() {
+        return DBvalue("proporciondpresupuesto");
+    };
+    inline QString idpresupuesto()  {
+        return DBvalue("idpresupuesto");
+    };
 
-    inline QString iddpresupuesto() {return mdb_iddpresupuesto;};
-    inline QString conceptdpresupuesto() {return mdb_conceptdpresupuesto;};
-    inline QString proporciondpresupuesto() {return mdb_proporciondpresupuesto;};
-    inline QString idpresupuesto()  {return mdb_idpresupuesto;};
+    inline void setiddpresupuesto(QString val) {
+        setDBvalue("iddpresupuesto",val);
+    };
+    inline void setconceptdpresupuesto(QString val) {
+        setDBvalue("conceptdpresupuesto",val);
+    };
+    inline void setproporciondpresupuesto(QString val) {
+        setDBvalue("proporciondpresupuesto",val);
+    };
+    inline void setidpresupuesto(QString val)  {
+        setDBvalue("idpresupuesto",val);
+    };
 
-
-    
-    inline void setiddpresupuesto(QString val) {mdb_iddpresupuesto=val;};
-    inline void setconceptdpresupuesto(QString val) {mdb_conceptdpresupuesto=val;};
-    inline void setproporciondpresupuesto(QString val) {mdb_proporciondpresupuesto=val;};
-    inline void setidpresupuesto(QString val)  {mdb_idpresupuesto=val;};
-
-    void borrar();  
-        
+    void borrar();
 };
 
 #endif
