@@ -16,20 +16,26 @@
 #include <qfile.h>
 #include <qtextstream.h>
 
-
-
-Pago::Pago(company *comp) {
+Pago::Pago(company *comp) : DBRecord(comp) {
     companyact=comp;
-    vaciaPago();
+    setDBTableName("pago");
+    setDBCampoId("idpago");
+    addDBCampo("idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("previsionpago", DBCampo::DBboolean, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("fechapago", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("refpago", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
 }
 
 Pago::~Pago() {}
 
 
 void Pago::borraPago() {
-    if (mdb_idpago != "") {
+    if (DBvalue("idpago") != "") {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM pago WHERE idpago="+mdb_idpago);
+        int error = companyact->ejecuta("DELETE FROM pago WHERE idpago="+DBvalue("idpago"));
 	if (error) {
 		companyact->rollback();
 		return;
@@ -42,89 +48,43 @@ void Pago::borraPago() {
 
 
 void Pago::vaciaPago() {
-    mdb_idpago = "";
-    mdb_idproveedor = "";
-    mdb_fechapago = "";
-    mdb_cantpago = "";
-    mdb_refpago = "";
-    mdb_previsionpago = "FALSE";
-    mdb_comentpago = "";
+    DBclear();
 }// end vaciaPago
 
 void Pago::pintaPago() {
-    pintaidpago(mdb_idpago);
-    pintaidproveedor(mdb_idproveedor);
-    pintafechapago(mdb_fechapago);
-    pintacantpago(mdb_cantpago);
-    pintarefpago(mdb_refpago);
-    pintaprevisionpago(mdb_previsionpago);
-    pintacomentpago(mdb_comentpago);
+    pintaidpago(DBvalue("idpago"));
+    pintaidproveedor(DBvalue("idproveedor"));
+    pintafechapago(DBvalue("fechapago"));
+    pintacantpago(DBvalue("cantpago"));
+    pintarefpago(DBvalue("refpago"));
+    pintaprevisionpago(DBvalue("previsionpago"));
+    pintacomentpago(DBvalue("comentpago"));
 }// end pintaPago
 
 
 // Esta funci� carga un Pago.
 void Pago::cargaPago(QString idbudget) {
-    mdb_idpago = idbudget;
     QString query = "SELECT * FROM pago WHERE idPago="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
-        mdb_idproveedor= cur->valor("idproveedor");
-        mdb_fechapago= cur->valor("fechapago");
-        mdb_cantpago= cur->valor("cantpago");
-        mdb_refpago= cur->valor("refpago");
-        mdb_comentpago= cur->valor("comentpago");
-
-        if (cur->valor("previsionpago") == "t")
-            mdb_previsionpago = "TRUE";
-        else
-            mdb_previsionpago = "FALSE";
+        DBload(cur);
     }// end if
     delete cur;
-    fprintf(stderr,"Vamos a cargar las lineas\n");
     pintaPago();
 }// end chargeBudget
 
 
 void Pago::guardaPago() {
+    QString id;
     companyact->begin();
-    if (mdb_idpago == "") {
-        /// Se trata de una inserci�
-        QString SQLQuery = "INSERT INTO pago (idproveedor, fechapago, cantpago, refpago, comentpago, previsionpago) VALUES ("+
-	companyact->sanearCadena(mdb_idproveedor)+",'"+
-	companyact->sanearCadena(mdb_fechapago)+"',"+
-	companyact->sanearCadena(mdb_cantpago)+",'"+
-	companyact->sanearCadena(mdb_refpago)+"','"+
-	companyact->sanearCadena(mdb_comentpago)+"',"+
-	companyact->sanearCadena(mdb_previsionpago)+")";
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(idpago) AS m FROM pago");
-        if (!cur->eof())
-            setidpago(cur->valor("m"));
-        delete cur;
-        companyact->commit();
-    } else {
-        /// Se trata de una modificaci�
-        QString SQLQuery = "UPDATE pago SET ";
-        SQLQuery += " idproveedor="+companyact->sanearCadena(mdb_idproveedor);
-        SQLQuery += " ,fechapago='"+companyact->sanearCadena(mdb_fechapago)+"'";
-        SQLQuery += " ,cantpago='"+companyact->sanearCadena(mdb_cantpago)+"'";
-        SQLQuery += " ,refpago='"+companyact->sanearCadena(mdb_refpago)+"'";
-        SQLQuery += " ,comentpago='"+companyact->sanearCadena(mdb_comentpago)+"'";
-        SQLQuery += " ,previsionpago='"+companyact->sanearCadena(mdb_previsionpago)+"'";
-        SQLQuery += " WHERE idpago="+companyact->sanearCadena(mdb_idpago);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// en dif
-        companyact->commit();
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
-    cargaPago(mdb_idpago);
+    setidpago(id);
+    companyact->commit();
+    cargaPago(id);
 }// end guardaPago
 
 

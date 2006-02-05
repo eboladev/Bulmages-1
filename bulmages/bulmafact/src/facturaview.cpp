@@ -85,10 +85,10 @@ void   FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc)
 /// Crea un nuevo cobro para la factura seleccionada.
 void FacturaView::s_nuevoCobro() {
     CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
-    bud->setidcliente(mdb_idcliente);
+    bud->setidcliente(DBvalue("idcliente"));
     bud->setcantcobro(m_totalfactura->text());
-    bud->setrefcobro(mdb_reffactura);
-    bud->setcomentcobro(mdb_descfactura);
+    bud->setrefcobro(DBvalue("reffactura"));
+    bud->setcomentcobro(DBvalue("descfactura"));
     bud->pintaCobro();
     bud->show();
 }// end s_nuevoCobro
@@ -96,7 +96,7 @@ void FacturaView::s_nuevoCobro() {
 
 int FacturaView::cargaFactura(QString id) {
     Factura::cargaFactura(id);
-    setCaption("Factura   "+mdb_reffactura);
+    setCaption("Factura   "+DBvalue("reffactura"));
     if (companyact->meteWindow(caption(),this) )
         return 1;
     dialogChanges_cargaInicial();
@@ -107,7 +107,7 @@ int FacturaView::cargaFactura(QString id) {
 /// Imprime el informe de referencia.
 void FacturaView::s_informeReferencia() {
     InformeReferencia *inf = new InformeReferencia(companyact);
-    inf->setreferencia(mdb_reffactura);
+    inf->setreferencia(DBvalue("reffactura"));
     inf->generarinforme();
     delete inf;
 }// end s_informeReferencia
@@ -118,7 +118,7 @@ void FacturaView::s_agregaAlbaran() {
     // Pedimos la factura a la que agregar
 
     ClientDelivNotesList *fac = new ClientDelivNotesList(companyact, NULL, tr("Seleccione albaran","company"),0,ClientDelivNotesList::SelectMode);
-    fac->setidcliente(mdb_idcliente);
+    fac->setidcliente(DBvalue("idcliente"));
     fac->modoseleccion();
 
     // Esto es convertir un QWidget en un sistema modal de dialogo.
@@ -140,8 +140,9 @@ void FacturaView::s_agregaAlbaran() {
 
 
     /// Agregamos a comentarios que albaran se corresponde.
-    mdb_comentfactura += "(ALBARAN: Num"+bud->numalbaran()+"Ref:"+bud->refalbaran()+"Fecha:"+bud->fechaalbaran()+")\n";
+ 	QString comm = DBvalue("comentfactura")+"(ALBARAN: Num"+bud->numalbaran()+"Ref:"+bud->refalbaran()+"Fecha:"+bud->fechaalbaran()+")\n";
 
+    setDBvalue("comentfactura", comm);
 
     /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE, pero por ahora pasamos de hacerlo.
     LinAlbaranCliente *linea;

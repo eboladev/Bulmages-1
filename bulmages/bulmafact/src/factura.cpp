@@ -22,19 +22,32 @@ class Fixed;
 typedef QMap<QString, Fixed> base;
 
 
-Factura::Factura(company *comp) {
+Factura::Factura(company *comp) : DBRecord(comp) {
     companyact=comp;
-    vaciaFactura();
+    setDBTableName("factura");
+    setDBCampoId("idfactura");
+    addDBCampo("idfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("numfactura", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("ffactura", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("procesadafactura", DBCampo::DBboolean, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("comentfactura", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("reffactura", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("descfactura", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idusuari", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
 }
 
 Factura::~Factura() {}
 
 
 void Factura::borraFactura() {
-    if (mdb_idfactura != "") {
+    if (DBvalue("idfactura") != "") {
         listalineas->borrar();
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM factura WHERE idfactura="+mdb_idfactura);
+        int error = companyact->ejecuta("DELETE FROM factura WHERE idfactura="+DBvalue("idfactura"));
         if (error) {
             companyact->rollback();
             return;
@@ -47,147 +60,74 @@ void Factura::borraFactura() {
 
 
 void Factura::vaciaFactura() {
-    mdb_idfactura = "";
-    mdb_idcliente= "";
-    mdb_idalmacen= "";
-    mdb_numfactura= "";
-    mdb_ffactura= "";
-    mdb_reffactura = "";
-    mdb_comentfactura= "";
-    mdb_procesadafactura="FALSE";
-    mdb_codigoserie_factura="";
-    mdb_idforma_pago="";
-    mdb_descfactura="";
+    DBclear();
 }// end vaciaFactura
 
 void Factura::pintaFactura() {
-    fprintf(stderr,"pintaFactura\n");
-    pintaidcliente(mdb_idcliente);
-    pintaidalmacen(mdb_idalmacen);
-    pintaNumFactura(mdb_numfactura);
-    pintafechafactura(mdb_ffactura);
-    pintareffactura(mdb_reffactura);
-    pintaComentFactura(mdb_comentfactura);
-    pintaprocesadafactura(mdb_procesadafactura);
-    pintacodigoserie_factura(mdb_codigoserie_factura);
-    pintaidforma_pago(mdb_idforma_pago);
-    pintadescfactura(mdb_descfactura);
-    // Pinta el subformulario de detalle del Factura.
+    _depura("pintaFactura\n",2);
+    pintaidcliente(DBvalue("idcliente"));
+    pintaidalmacen(DBvalue("idalmacen"));
+    pintaNumFactura(DBvalue("numfactura"));
+    pintafechafactura(DBvalue("ffactura"));
+    pintareffactura(DBvalue("reffactura"));
+    pintaComentFactura(DBvalue("comentfactura"));
+    pintaprocesadafactura(DBvalue("procesadafactura"));
+    pintacodigoserie_factura(DBvalue("codigoserie_factura"));
+    pintaidforma_pago(DBvalue("idforma_pago"));
+    pintadescfactura(DBvalue("descfactura"));
+    /// Pinta el subformulario de detalle del Factura.
     listalineas->pintaListLinFactura();
     listadescuentos->pintaListDescuentoFactura();
-
     calculaypintatotales();
 }// end pintaFactura
 
 
 // Esta funci� carga un Factura.
 int Factura::cargaFactura(QString idbudget) {
-    mdb_idfactura = idbudget;
     inicialize();
     QString query = "SELECT * FROM factura  WHERE idfactura="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
-        mdb_idcliente= cur->valor("idcliente");
-        mdb_idalmacen= cur->valor("idalmacen");
-        mdb_numfactura= cur->valor("numfactura");
-        mdb_ffactura= cur->valor("ffactura");
-        mdb_codigoserie_factura = cur->valor("codigoserie_factura");
-
-        mdb_comentfactura= cur->valor("comentfactura");
-        mdb_reffactura = cur->valor("reffactura");
-        if (cur->valor("procesadafactura") == "t")
-            mdb_procesadafactura = "TRUE";
-        else
-            mdb_procesadafactura = "FALSE";
-        mdb_idusuari = cur->valor("idusuari");
-        mdb_idforma_pago = cur->valor("idforma_pago");
-        mdb_descfactura  = cur->valor("descfactura");
+        DBload(cur);
     }// end if
     delete cur;
     listalineas->cargaListLinFactura(idbudget);
     listadescuentos->cargaDescuentos(idbudget);
     pintaFactura();
-	return 0;
+    return 0;
 }// end chargeBudget
 
 
 void Factura::guardaFactura() {
-	QString fecha;
-    companyact->begin();
-    if (mdb_numfactura == "") {
+    QString fecha;
+    if (DBvalue("numfactura") == "") {
         QString SQLQueryn = "SELECT MAX(numFactura)+1 as num FROM Factura";
         cursor2 *cur= companyact->cargacursor(SQLQueryn);
         if (!cur->eof())
-            mdb_numfactura = cur->valor("num");
+            setDBvalue("numfactura", cur->valor("num"));
         delete cur;
     }// end if
-    if (mdb_idusuari=="")
-        mdb_idusuari="NULL";
-    if (mdb_idforma_pago == "")
-        mdb_idforma_pago = "NULL";
-	if (mdb_ffactura == "")
-		fecha = "NULL";
-	else
-		fecha = "'"+companyact->sanearCadena(mdb_ffactura)+"'";
-    if (mdb_idfactura == "") {
-        /// Se trata de una inserci�
-        QString SQLQuery = "INSERT INTO factura (descfactura, codigoserie_factura, procesadafactura, reffactura, numfactura, ffactura, comentfactura, idusuari, idcliente, idalmacen, idforma_pago) VALUES ('"+
-                           companyact->sanearCadena(mdb_descfactura)+"','"+
-                           companyact->sanearCadena(mdb_codigoserie_factura)+"',"+
-                           companyact->sanearCadena(mdb_procesadafactura)+",'"+
-                           companyact->sanearCadena(mdb_reffactura)+"',"+
-                           companyact->sanearCadena(mdb_numfactura)+","+
-                           fecha+",'"+
-                           companyact->sanearCadena(mdb_comentfactura)+"',"+
-                           companyact->sanearCadena(mdb_idusuari)+","+
-                           companyact->sanearCadena(mdb_idcliente)+","+
-                           companyact->sanearCadena(mdb_idalmacen)+","+
-                           companyact->sanearCadena(mdb_idforma_pago)+")";
-
-        int error = companyact->ejecuta(SQLQuery);
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(idFactura) AS m FROM Factura");
-        if (!cur->eof())
-            setidfactura (cur->valor("m"));
-        delete cur;
-        companyact->commit();
-    } else {
-        /// Se trata de una modificaci�
-        QString SQLQuery = "UPDATE Factura SET ";
-        SQLQuery += " numFactura="+companyact->sanearCadena(mdb_numfactura);
-        SQLQuery += " ,ffactura="+fecha;
-        SQLQuery += " ,comentFactura='"+companyact->sanearCadena(mdb_comentfactura)+"'";
-        SQLQuery += " ,idusuari="+companyact->sanearCadena(mdb_idusuari);
-        SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente);
-        SQLQuery += " ,idalmacen="+companyact->sanearCadena(mdb_idalmacen);
-        SQLQuery += " ,reffactura='"+companyact->sanearCadena(mdb_reffactura)+"'";
-        SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
-        SQLQuery += " ,procesadafactura="+companyact->sanearCadena(mdb_procesadafactura);
-        SQLQuery += " ,codigoserie_factura='"+companyact->sanearCadena(mdb_codigoserie_factura)+"'";
-        SQLQuery += " ,descfactura='"+companyact->sanearCadena(mdb_descfactura)+"'";
-        SQLQuery += " WHERE idFactura="+companyact->sanearCadena(mdb_idfactura);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        companyact->commit();
+    QString id;
+    companyact->begin();
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
+    setidfactura(id);
+    companyact->commit();
     listalineas->guardaListLinFactura();
     listadescuentos->guardaListDescuentoFactura();
-    cargaFactura(mdb_idfactura);
+    cargaFactura(DBvalue("idfactura"));
 }// end guardaFactura
 
 
 
 void Factura::imprimirFactura() {
-	/// Hacemos el lanzamiento de plugins para este caso.
-	int res = g_plugins->lanza("Factura_imprimirFactura",this);
-	if (res) return;
+    /// Hacemos el lanzamiento de plugins para este caso.
+    int res = g_plugins->lanza("Factura_imprimirFactura",this);
+    if (res)
+        return;
 
     base basesimp;
 
@@ -228,7 +168,7 @@ void Factura::imprimirFactura() {
     QString fitxersortidatxt="";
     // L�ea de totales del presupuesto
 
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dircliente]",cur->valor("dircliente"));
@@ -241,12 +181,12 @@ void Factura::imprimirFactura() {
     }// end if
     delete cur;
 
-    buff.replace("[numfactura]",mdb_numfactura);
-    buff.replace("[ffactura]",mdb_ffactura);
-    buff.replace("[comentfactura]",mdb_comentfactura);
-    buff.replace("[descfactura]",mdb_descfactura);
-    buff.replace("[reffactura]",mdb_reffactura);
-    buff.replace("[codigoserie_factura]", mdb_codigoserie_factura);
+    buff.replace("[numfactura]",DBvalue("numfactura"));
+    buff.replace("[ffactura]",DBvalue("ffactura"));
+    buff.replace("[comentfactura]",DBvalue("comentfactura"));
+    buff.replace("[descfactura]",DBvalue("descfactura"));
+    buff.replace("[reffactura]",DBvalue("reffactura"));
+    buff.replace("[codigoserie_factura]", DBvalue("codigoserie_factura"));
 
     LinFactura *linea;
     /// Impresi� de la tabla de contenidos.

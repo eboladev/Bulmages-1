@@ -16,21 +16,20 @@
 #include "company.h"
 #include "controlstock.h"
 #include "funcaux.h"
+#include "dbrecord.h"
 
 /** @author Tomeu Borras & Alvaro de Miguel
   * \brief Clase que hace de intermediaria entre la tabla de facturap de la base de datos y el programa.
 */
 
 
-class Inventario {
+class Inventario : public DBRecord {
 protected:
     ListControlStock *listalineas;
 
     company *companyact;
 
-    QString mdb_idinventario;
-    QString mdb_nominventario;
-    QString mdb_fechainventario;
+
 
 
 public:
@@ -56,9 +55,9 @@ public:
     virtual void pintanominventario(QString ) {};
     virtual void pregenerar();
 
-    void setidinventario(QString val) { mdb_idinventario=val; listalineas->setidinventario(val);};
-    void setfechainventario(QString val) { mdb_fechainventario=val;};
-    void setnominventario(QString val) {mdb_nominventario=val;};
+    void setidinventario(QString val) { setDBvalue("idinventario",val); listalineas->setidinventario(val);};
+    void setfechainventario(QString val) { setDBvalue("fechainventario",val);};
+    void setnominventario(QString val) {setDBvalue("nominventario",val);};
 
     void vaciaInventario();
 

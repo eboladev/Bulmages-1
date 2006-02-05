@@ -21,33 +21,18 @@
 #include "linfacturap.h"
 #include "listdescfacturaprov.h"
 
+#include "dbrecord.h"
+
 /** @author Tomeu Borras & Alvaro de Miguel
   * \brief Clase que hace de intermediaria entre la tabla de facturap de la base de datos y el programa.
 */
 
 
-class FacturaProveedor {
+class FacturaProveedor : public DBRecord {
 protected:
     ListLinFacturaProveedor *listalineas;
     ListDescuentoFacturaProv *listadescuentos;
-
     company *companyact;
-
-    QString mdb_idproveedor;
-    QString mdb_numfacturap;
-    QString mdb_ffacturap;
-    QString mdb_procesadafacturap;
-    
-    
-    QString mdb_comentfacturap;
-
-    QString mdb_reffacturap;
-    QString mdb_descfacturap;
-
-    QString mdb_idfacturap;
-    QString mdb_idusuari;
-    QString mdb_idforma_pago;
-
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setListLinFacturaProveedor ( ListLinFacturaProveedor *a) {
@@ -81,17 +66,17 @@ public:
     virtual void pintaprocesadafacturap(QString) {};
     virtual void pintatotales(float, float) {};
 
-    void setidproveedor(QString val) { mdb_idproveedor=val;};
-    void setreffacturap(QString val) {mdb_reffacturap=val;};
-    void setnumfacturap(QString val) { mdb_numfacturap=val;};
-    void setfechafacturap(QString val) { mdb_ffacturap=val;};
-    void setdescfacturap(QString val) {mdb_descfacturap=val;};
-    void setcomentfacturap(QString val) { mdb_comentfacturap=val;};
+    void setidproveedor(QString val) { setDBvalue("idproveedor",val);};
+    void setreffacturap(QString val) {setDBvalue("reffacturap",val);};
+    void setnumfacturap(QString val) { setDBvalue("numfacturap",val);};
+    void setfechafacturap(QString val) { setDBvalue("ffacturap",val);};
+    void setdescfacturap(QString val) {setDBvalue("descfacturap",val);};
+    void setcomentfacturap(QString val) { setDBvalue("comentfacturap",val);};
 
-    void setidfacturap(QString val) {mdb_idfacturap=val;listalineas->setidfacturap(val);listadescuentos->setidfacturap(val);};
-    void setIdUsuari(QString val) {mdb_idusuari=val;};
-    void setidforma_pago(QString val) {mdb_idforma_pago=val;};
-    void setprocesadafacturap(QString val) {mdb_procesadafacturap=val;};
+    void setidfacturap(QString val) {setDBvalue("idfacturap",val);listalineas->setidfacturap(val);listadescuentos->setidfacturap(val);};
+    void setIdUsuari(QString val) {setDBvalue("idusuari",val);};
+    void setidforma_pago(QString val) {setDBvalue("idforma_pago",val);};
+    void setprocesadafacturap(QString val) {setDBvalue("procesadafacturap",val);};
     void vaciaFacturaProveedor();
 
     virtual void cargaFacturaProveedorDescuentas(QString) {};

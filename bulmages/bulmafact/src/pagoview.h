@@ -59,7 +59,7 @@ void    pintaprevisionpago(QString id) {
 
 public slots:
     virtual void s_savePagoView() {guardaPago();};
-    virtual void s_cargaPagoView(QString id) {Pago::cargaPago(id);setCaption("Pago "+mdb_refpago);};
+    virtual void s_cargaPagoView(QString id) {Pago::cargaPago(id);setCaption("Pago "+DBvalue("refpago"));};
     virtual void s_removePagoView();
     virtual void s_comentpagotextChanged(const QString &str) {setcomentpago(str);};
     virtual void s_refpagotextChanged(const QString &str) {setrefpago(str);};

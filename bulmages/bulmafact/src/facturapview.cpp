@@ -99,7 +99,7 @@ void FacturaProveedorView::closeEvent( QCloseEvent *e) {
 
 int FacturaProveedorView::cargaFacturaProveedor(QString id) {
     FacturaProveedor::cargaFacturaProveedor(id);
-    setCaption("FacturaProveedor   "+mdb_reffacturap);
+    setCaption("FacturaProveedor   "+DBvalue("reffacturap"));
     if (companyact->meteWindow(caption(),this))
         return -1;
     return 0;

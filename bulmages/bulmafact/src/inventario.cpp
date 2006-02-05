@@ -16,22 +16,28 @@
 #include <QTextStream>
 #include "funcaux.h"
 
-Inventario::Inventario(company *comp) {
+
+Inventario::Inventario(company *comp) : DBRecord(comp) {
     _depura("Inventario::Inventario",0);
     companyact=comp;
-    vaciaInventario();
+
+    setDBTableName("inventario");
+    setDBCampoId("idinventario");
+    addDBCampo("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
+    addDBCampo("fechainventario", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
 }
 
 Inventario::~Inventario() {}
 
 
 void Inventario::borraInventario() {
-    if (mdb_idinventario != "") {
+    if (DBvalue("idinventario") != "") {
 	_depura("vamos a borrar las lineas del inventario",0);
         listalineas->borrarListControlStock();
 	_depura("Vamos a borrar el resto",0);
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM inventario WHERE idinventario="+mdb_idinventario);
+        int error = companyact->ejecuta("DELETE FROM inventario WHERE idinventario="+DBvalue("idinventario"));
 	if (error) {
 		companyact->rollback();
 		return;
@@ -44,17 +50,15 @@ void Inventario::borraInventario() {
 
 
 void Inventario::vaciaInventario() {
-    mdb_idinventario = "";
-    mdb_nominventario = "";
-    mdb_fechainventario = "";
+    DBclear();
 
 }// end vaciaInventario
 
 void Inventario::pintaInventario() {
     _depura("pintaInventario\n",0);
-    pintaidinventario(mdb_idinventario);
-    pintanominventario(mdb_nominventario);
-    pintafechainventario(mdb_fechainventario);
+    pintaidinventario(DBvalue("idinventario"));
+    pintanominventario(DBvalue("nominventario"));
+    pintafechainventario(DBvalue("fechainventario"));
     // Pinta el subformulario de detalle del Inventario.
     listalineas->pintaListControlStock();
 }// end pintaInventario
@@ -62,12 +66,10 @@ void Inventario::pintaInventario() {
 
 // Esta funci� carga un Inventario.
 int Inventario::cargaInventario(QString idbudget) {
-    mdb_idinventario = idbudget;
-    QString query = "SELECT * FROM inventario  WHERE idinventario="+mdb_idinventario;
+    QString query = "SELECT * FROM inventario  WHERE idinventario="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
-        mdb_nominventario  = cur->valor("nominventario");
-        mdb_fechainventario = cur->valor("fechainventario");
+        DBload(cur);
     }// end if
     delete cur;
     listalineas->cargaListControlStock(idbudget);
@@ -78,39 +80,16 @@ int Inventario::cargaInventario(QString idbudget) {
 
 void Inventario::guardaInventario() {
     _depura("Inventario::guardaInventario()",0);
+    QString id;
     companyact->begin();
-    if (mdb_idinventario == "") {
-        /// Se trata de una insercion
-        QString SQLQuery = "INSERT INTO inventario (nominventario, fechainventario) VALUES ('"+
-	companyact->sanearCadena(mdb_nominventario)+"',"+
-	"'"+companyact->sanearCadena(mdb_fechainventario)+"')";
-
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(idinventario) AS m FROM inventario");
-        if (!cur->eof())
-            setidinventario (cur->valor("m"));
-        delete cur;
-
-    } else {
-        /// Se trata de una modificacion
-        QString SQLQuery = "UPDATE inventario SET ";
-        SQLQuery += " nominventario='"+companyact->sanearCadena(mdb_nominventario)+"'";
-        SQLQuery += " ,fechainventario='"+companyact->sanearCadena(mdb_fechainventario)+"'";
-        SQLQuery += " WHERE idinventario="+companyact->sanearCadena(mdb_idinventario);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
-    listalineas->guardaListControlStock();
-        companyact->commit();
-    cargaInventario(mdb_idinventario);
+    setidinventario(id);
+    companyact->commit();
+    cargaInventario(DBvalue("idinventario"));
 }// end guardaInventario
 
 

@@ -32,19 +32,12 @@ CREATE TABLE pago (
   * \brief Clase que hace de intermediaria entre la tabla de Pago de la base de datos y el programa.
 */
 #include "company.h"
+#include "dbrecord.h"
 
 
-
-class Pago {
+class Pago : public DBRecord {
 protected:
     company *companyact;
-    QString mdb_idpago;
-    QString mdb_idproveedor;
-    QString mdb_fechapago;
-    QString mdb_cantpago;
-    QString mdb_refpago;
-    QString mdb_previsionpago;
-    QString mdb_comentpago;
 
 public:
     Pago(company *);
@@ -63,12 +56,12 @@ public:
     virtual void pintaprevisionpago(QString) {};
     virtual void pintacomentpago(QString) {};
 
-    void setidpago(QString val) { mdb_idpago=val;};
-    void setidproveedor(QString val) {mdb_idproveedor=val;};
-    void setfechapago(QString val) { mdb_fechapago=val;};
-    void setcantpago(QString val) { mdb_cantpago=val;};
-    void setrefpago(QString val) { mdb_refpago=val;};
-    void setprevisionpago(QString val) { mdb_previsionpago=val;};
-    void setcomentpago(QString val) { mdb_comentpago=val;};
+    void setidpago(QString val) { setDBvalue("idpago",val);};
+    void setidproveedor(QString val) {setDBvalue("idproveedor",val);};
+    void setfechapago(QString val) { setDBvalue("fechapago",val);};
+    void setcantpago(QString val) { setDBvalue("cantpago",val);};
+    void setrefpago(QString val) { setDBvalue("refpago",val);};
+    void setprevisionpago(QString val) { setDBvalue("previsionpago",val);};
+    void setcomentpago(QString val) { setDBvalue("comentpago",val);};
 };
 #endif

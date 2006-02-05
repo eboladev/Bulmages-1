@@ -22,19 +22,31 @@ class Fixed;
 typedef QMap<QString, Fixed> base;
 
 
-FacturaProveedor::FacturaProveedor(company *comp) {
+FacturaProveedor::FacturaProveedor(company *comp) : DBRecord(comp) {
     companyact=comp;
-    vaciaFacturaProveedor();
+
+    setDBTableName("facturap");
+    setDBCampoId("idfacturap");
+    addDBCampo("idfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("numfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("ffacturap", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("procesadafacturap", DBCampo::DBboolean, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("comentfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("reffacturap", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("descfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idusuari", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
 }
 
 FacturaProveedor::~FacturaProveedor() {}
 
 
 void FacturaProveedor::borraFacturaProveedor() {
-    if (mdb_idfacturap != "") {
+    if (DBvalue("idfacturap") != "") {
         listalineas->borrar();
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM facturap WHERE idfacturap="+mdb_idfacturap);
+        int error = companyact->ejecuta("DELETE FROM facturap WHERE idfacturap="+DBvalue("idfacturap"));
 	if (error) {
 		companyact->rollback();
 		return;
@@ -47,55 +59,33 @@ void FacturaProveedor::borraFacturaProveedor() {
 
 
 void FacturaProveedor::vaciaFacturaProveedor() {
-    mdb_idfacturap = "";
-    mdb_idproveedor= "";
-    mdb_numfacturap= "";
-    mdb_ffacturap= "";
-    mdb_reffacturap = "";
-    mdb_comentfacturap= "";
-    mdb_procesadafacturap="FALSE";
-    mdb_idforma_pago="";
-    mdb_descfacturap="";
+    DBclear();
 }// end vaciaFacturaProveedor
 
 void FacturaProveedor::pintaFacturaProveedor() {
     fprintf(stderr,"pintaFacturaProveedor\n");
-    pintaidproveedor(mdb_idproveedor);
-    pintanumfacturap(mdb_numfacturap);
-    pintafechafacturap(mdb_ffacturap);
-    pintareffacturap(mdb_reffacturap);
-    pintacomentfacturap(mdb_comentfacturap);
-    pintaprocesadafacturap(mdb_procesadafacturap);
-    pintaidforma_pago(mdb_idforma_pago);
-    pintadescfacturap(mdb_descfacturap);
+    pintaidproveedor(DBvalue("idproveedor"));
+    pintanumfacturap(DBvalue("numfacturap"));
+    pintafechafacturap(DBvalue("ffacturap"));
+    pintareffacturap(DBvalue("reffacturap"));
+    pintacomentfacturap(DBvalue("comentfacturap"));
+    pintaprocesadafacturap(DBvalue("procesadafacturap"));
+    pintaidforma_pago(DBvalue("idforma_pago"));
+    pintadescfacturap(DBvalue("descfacturap"));
     // Pinta el subformulario de detalle del FacturaProveedor.
     listalineas->pintaListLinFacturaProveedor();
     listadescuentos->pintaListDescuentoFacturaProv();
-
     pintatotales(listalineas->calculabase(), listalineas->calculaiva());
 }// end pintaFacturaProveedor
 
 
 // Esta funci� carga un FacturaProveedor.
 int FacturaProveedor::cargaFacturaProveedor(QString idbudget) {
-    mdb_idfacturap = idbudget;
     inicialize();
     QString query = "SELECT * FROM facturap  WHERE idfacturap="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
-        mdb_idproveedor= cur->valor("idproveedor");
-        mdb_numfacturap= cur->valor("numfacturap");
-        mdb_ffacturap= cur->valor("ffacturap");
-
-        mdb_comentfacturap= cur->valor("comentfacturap");
-        mdb_reffacturap = cur->valor("reffacturap");
-        if (cur->valor("procesadafacturap") == "t")
-            mdb_procesadafacturap = "TRUE";
-        else
-            mdb_procesadafacturap = "FALSE";
-        mdb_idusuari = cur->valor("idusuari");
-        mdb_idforma_pago = cur->valor("idforma_pago");
-	mdb_descfacturap  = cur->valor("descfacturap");
+        DBload(cur);
     }// end if
     delete cur;
     listalineas->cargaListLinFacturaProveedor(idbudget);
@@ -106,56 +96,18 @@ int FacturaProveedor::cargaFacturaProveedor(QString idbudget) {
 
 
 void FacturaProveedor::guardaFacturaProveedor() {
+    QString id;
     companyact->begin();
-    if (mdb_idusuari=="")
-        mdb_idusuari="NULL";
-    if (mdb_idforma_pago == "")
-        mdb_idforma_pago = "NULL";
-    if (mdb_idfacturap == "") {
-        /// Se trata de una inserci�
-        QString SQLQuery = "INSERT INTO facturap (descfacturap, procesadafacturap, reffacturap, numfacturap, ffacturap, comentfacturap, idproveedor, idforma_pago) VALUES ('"+
-	companyact->sanearCadena(mdb_descfacturap)+"',"+
-	companyact->sanearCadena(mdb_procesadafacturap)+",'"+
-	companyact->sanearCadena(mdb_reffacturap)+"','"+
-	companyact->sanearCadena(mdb_numfacturap)+"','"+
-	companyact->sanearCadena(mdb_ffacturap)+"','"+
-	companyact->sanearCadena(mdb_comentfacturap)+"',"+
-	companyact->sanearCadena(mdb_idproveedor)+","+
-	companyact->sanearCadena(mdb_idforma_pago)+")";
-
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(idfacturap) AS m FROM facturap");
-        if (!cur->eof())
-            setidfacturap (cur->valor("m"));
-        delete cur;
-        companyact->commit();
-    } else {
-        /// Se trata de una modificaci�
-        QString SQLQuery = "UPDATE facturap SET ";
-        SQLQuery += " numfacturap='"+companyact->sanearCadena(mdb_numfacturap)+"'";
-        SQLQuery += " ,ffacturap='"+companyact->sanearCadena(mdb_ffacturap)+"'";
-        SQLQuery += " ,comentfacturap='"+companyact->sanearCadena(mdb_comentfacturap)+"'";
-        SQLQuery += " ,idproveedor="+companyact->sanearCadena(mdb_idproveedor);
-        SQLQuery += " ,reffacturap='"+companyact->sanearCadena(mdb_reffacturap)+"'";
-        SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
-        SQLQuery += " ,procesadafacturap="+companyact->sanearCadena(mdb_procesadafacturap);
-	SQLQuery += " ,descfacturap='"+companyact->sanearCadena(mdb_descfacturap)+"'";
-        SQLQuery += " WHERE idfacturap="+companyact->sanearCadena(mdb_idfacturap);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
-        companyact->commit();
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
+    setidfacturap(id);
+    companyact->commit();
     listalineas->guardaListLinFacturaProveedor();
     listadescuentos->guardaListDescuentoFacturaProv();
-    cargaFacturaProveedor(mdb_idfacturap);
+    cargaFacturaProveedor(DBvalue("idfacturap"));
 }// end guardaFacturaProveedor
 
 
@@ -206,7 +158,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     // L�ea de totales del presupuesto
 
 
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+mdb_idproveedor;
+    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+DBvalue("idproveedor");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dirproveedor]",cur->valor("dirproveedor"));
@@ -217,11 +169,11 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     }// end if
     delete cur;
 
-    buff.replace("[numfacturap]",mdb_numfacturap);
-    buff.replace("[ffacturap]",mdb_ffacturap);
-    buff.replace("[comentfacturap]",mdb_comentfacturap);
-    buff.replace("[descfacturap]",mdb_descfacturap);
-    buff.replace("[reffacturap]",mdb_reffacturap);
+    buff.replace("[numfacturap]",DBvalue("numfacturap"));
+    buff.replace("[ffacturap]",DBvalue("ffacturap"));
+    buff.replace("[comentfacturap]",DBvalue("comentfacturap"));
+    buff.replace("[descfacturap]",DBvalue("descfacturap"));
+    buff.replace("[reffacturap]",DBvalue("reffacturap"));
 
     /// Impresi� de la tabla de contenidos.
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";

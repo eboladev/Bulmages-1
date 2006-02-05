@@ -42,7 +42,7 @@ InventarioView::~InventarioView() {
   * Esta función se ejecuta cuando se ha pulsado sobre el botón de borrar *
   */
 void InventarioView::s_delete() {
-    if (mdb_idinventario != "") {
+    if (DBvalue("idinventario") != "") {
         if ( QMessageBox::question(this,tr("Borrar Inventario"),tr("Esta a punto de borrar un Inventario, Desea continuar?."),tr("Si"),tr("No"),0,1,0) == 0) {
             borraInventario();
         }// end if

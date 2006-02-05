@@ -12,7 +12,6 @@
 #include "linpresupuesto.h"
 
 void linpresupuesto::definetabla() {
-
     setDBTableName("lpresupuesto");
     setDBCampoId("idlpresupuesto");
     addDBCampo("idlpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Linea Presupuesto");
@@ -27,10 +26,12 @@ void linpresupuesto::definetabla() {
     addDBCampo("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre 	Articulo");
 }// end definetabla
 
+
 linpresupuesto::linpresupuesto(company *comp) : DBRecord(comp) {
     companyact = comp;
     definetabla();
 }
+
 
 linpresupuesto::linpresupuesto(company *comp, QString idlinpresupuesto) : DBRecord(comp) {
     companyact = comp;
@@ -91,8 +92,8 @@ void linpresupuesto::borrar() {
     }// end if
 }// end delete
 
+
 void linpresupuesto::guardalinpresupuesto() {
-    /// Segun esta la linea en la base de datos o no se hace una cosa u otra.
     QString id;
     companyact->begin();
     int error = DBsave(id);
@@ -145,6 +146,7 @@ void linpresupuesto::setidarticulo(QString val) {
     _depura("end setidarticulo\n",0);
 }// end setidarticulo
 
+
 float linpresupuesto::calculabase() {
     _depura("calculabase()\n",0);
     float cant=0;
@@ -154,6 +156,7 @@ float linpresupuesto::calculabase() {
     }// end if
     return cant;
 }// end calculabase
+
 
 float linpresupuesto::calculaiva() {
     _depura("calculaiva()\n",0);
