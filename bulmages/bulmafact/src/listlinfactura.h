@@ -13,8 +13,8 @@
 #define LISTLINFACTURA_H
 
 #include <qobject.h>
-//Added by qt3to4:
 #include <Q3PtrList>
+#include "funcaux.h"
 
 /**
 @author Tomeu Borras
@@ -41,17 +41,15 @@ public:
             i++;
         }// end for
     }; 
-    
+
     void setcompany(company *c) {
-       fprintf(stderr,"ListLinFactura setCompany\n");
        companyact=c;
-       fprintf(stderr,"ListLinFactura  fin de setCompany\n");
     };
     virtual ~ListLinFactura();
     void guardaListLinFactura();
     void vaciar();
     virtual void pintaListLinFactura() {
-        fprintf(stderr,"La función pintaListLinFactura aun no ha sido implementada\n");
+        _depura("La funciï¿½ pintaListLinFactura aun no ha sido implementada\n",2);
     };
     void cargaListLinFactura(QString);
     void borrar();

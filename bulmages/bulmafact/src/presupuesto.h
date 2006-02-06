@@ -67,12 +67,12 @@ public:
 
     virtual ~presupuesto();
     virtual int chargeBudget(QString );
-    void pintaPresupuesto();
-    void guardapresupuesto();
-    void borraPresupuesto();
-    void imprimirPresupuesto();
-    void calculaypintatotales();
-    QString detalleArticulos();
+    virtual void pintaPresupuesto();
+    virtual void guardapresupuesto();
+    virtual void borraPresupuesto();
+    virtual void imprimirPresupuesto();
+    virtual void calculaypintatotales();
+    virtual QString detalleArticulos();
     virtual void pintaidcliente(QString) {};
     virtual void pintaIdAlmacen(QString) {};
     virtual void pintaNumPresupuesto(QString) {};

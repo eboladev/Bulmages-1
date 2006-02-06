@@ -36,7 +36,9 @@ private:
 public:
     LinFactura(company *);
     LinFactura(company *, QString );
-    /// La carga rápida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
+    LinFactura(company *, cursor2 * );
+
+    /// La carga rï¿½ida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
     LinFactura(company *comp, QString idlfactura, QString desclfactura, QString cantlfactura, QString pvplfactura, QString descuentolfactura, QString idfactura, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString ivalfactura);
     virtual ~LinFactura();
     virtual void pintaLinFactura() {};
@@ -69,9 +71,9 @@ public:
     /// EStas funciones no estan como debe, el uso de cada una de ellas debe hacer cambios sobre la base de datos.
     void setidarticulo(QString);    
     inline void setnomarticulo(QString val) {mdb_nomarticulo=val;};
-    /// Hace el calculo de la base imponible de la línea  
+    /// Hace el calculo de la base imponible de la lï¿½ea  
     float calculabase();
-    /// Hace el calculo del IVA de la línea.
+    /// Hace el calculo del IVA de la lï¿½ea.
     float calculaiva();
     void borrar();  
         

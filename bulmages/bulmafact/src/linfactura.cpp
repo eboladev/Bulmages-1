@@ -37,6 +37,22 @@ LinFactura::LinFactura(company *comp, QString idLinFactura) {
 }// end LinFactura
 
 
+LinFactura::LinFactura(company *comp, cursor2 *cur) {
+    companyact = comp;
+
+        mdb_idlfactura = cur->valor("idlfactura");
+        mdb_desclfactura = cur->valor("desclfactura");
+        mdb_cantlfactura = cur->valor("cantlfactura");
+        mdb_pvplfactura = cur->valor("pvplfactura");
+        mdb_descuentolfactura = cur->valor("descuentolfactura");
+        mdb_idfactura = cur->valor("idfactura");
+        mdb_idarticulo = cur->valor("idarticulo");
+        mdb_codigocompletoarticulo = cur->valor("codigocompletoarticulo");
+        mdb_nomarticulo = cur->valor("nomarticulo");
+        mdb_ivalfactura = cur->valor("ivalfactura");
+}// end LinFactura
+
+
 LinFactura::LinFactura(company *comp, QString idlfactura, QString desclfactura, QString cantlfactura, QString pvplfactura, QString descuentolfactura, QString idfactura, QString idarticulo, QString codigocompletoarticulo, QString nomarticulo, QString ivalfactura) {
     companyact = comp;
     mdb_idlfactura = idlfactura;

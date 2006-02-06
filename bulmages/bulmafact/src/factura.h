@@ -46,11 +46,7 @@ public:
         listadescuentos =a;
         listadescuentos->setcompany(companyact);
     };
-/*
-    ListDescuentoFactura *listadescuentos() {
-        return listadescuentos;
-    };
-*/
+
     company *_company() {
         return companyact;
     };

@@ -48,6 +48,7 @@
 #include "funcaux.h"
 #include "postgresiface2.h"
 #include "listlinalbaranproveedorview.h"
+#include "facturapview.h"
 
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const char *name) : AlbaranProveedorBase(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp) ,dialogChanges(this) {
     subform2->setcompany(comp);
@@ -96,7 +97,55 @@ void AlbaranProveedorView::s_verpedidoproveedor() {
 #include "facturaview.h"
 /// Se encarga de generar una facturap a partir del albaranp
 void AlbaranProveedorView::generarFactura() {
-	_depura("Funcion aun no implementada",2);
+	_depura("AlbaranProveedorView::generarFactura",0);
+
+    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funci�.
+    QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap='"+DBvalue("refalbaranp")+"'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if(!cur->eof()) {
+        FacturaProveedorView *bud = companyact->newFacturaProveedorView();
+		companyact->m_pWorkspace->addWindow(bud);
+        bud->cargaFacturaProveedor(cur->valor("idfacturap"));
+        bud->show();
+        return;
+    }
+    delete cur;
+    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funci�.
+    if (QMessageBox::question(
+                this,
+                tr("Factura Inexistente"),
+                tr("No existe una factura asociada a este albaran."
+                   "Desea Crearla ?"),
+                tr("&Yes"), tr("&No"),
+                QString::null, 0, 1 ) )
+        return;
+
+    /// Creamos la factura.
+    FacturaProveedorView *bud = companyact->newFacturaProveedorView();
+	companyact->m_pWorkspace->addWindow(bud);
+    bud->vaciaFacturaProveedor();
+    bud->setcomentfacturap(DBvalue("comentalbaranp"));
+    bud->setidforma_pago(DBvalue("idforma_pago"));
+    bud->setreffacturap(DBvalue("refalbaranp"));
+    bud->setidproveedor(DBvalue("idproveedor"));
+    LinAlbaranProveedor *linea;
+    uint i = 0;
+    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+        bud->getlistalineas()->nuevalinea(
+		linea->desclalbaranp(),
+		linea->cantlalbaranp(),
+		linea->pvplalbaranp(),
+		linea->descontlalbaranp(),
+		linea->idarticulo(),
+		linea->codigocompletoarticulo(),
+		linea->nomarticulo(),
+		linea->ivalalbaranp()
+	);
+        i++;
+    }// end for
+    bud->pintaFacturaProveedor();
+    bud->show();
+
 }// end generarAlbaran
 
 
