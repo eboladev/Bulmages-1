@@ -62,13 +62,14 @@
 #define COL_IDCCOSTE        15
 #define COL_ORDEN	    16
 
-
+/*
 /// Usar esta macro es peligroso ya que el cursor puede estar vacio.
 /// es preferible usar la función idAsiento() que hace la comprobación.
 #define IDASIENTO cursorasientos->valor("idasiento").ascii()
 #define QS_IDASIENTO cursorasientos->valor("idasiento")
 #define ORDENASIENTO cursorasientos->valor("ordenasiento").ascii()
 #define ROWACTUAL tapunts3->currentRow()
+*/
 
 /// Define el número de filas que va a tener la tabla de apuntes.
 #define TAPUNTS_NUM_ROWS 10000
@@ -77,21 +78,19 @@
   *
   *  Si no hay ningún asiento viendose devuelve "-1"
   */
-QString Asiento1View::idAsiento() {
-    if (cursorasientos->eof())
-        return "-1";
-    return IDASIENTO;
-}
+
 
 /** \brief Constructor de la clase, inicializa los componentes
   * \param emp empresa que llama al objeto 
   * \param parent widget padre de éste
   * \param nam Nombre que recibe el widget o ventana
   */
-Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  ) : Asiento1Dlg (parent,name) ,  Asiento1(emp) {
+Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  ) : Asiento1Dlg (parent,name) ,  Asiento1(emp) , ListAsientos(emp) {
     _depura("Constructor de Asiento1View\n",0);
     companyact = emp;
     setListLinAsiento1(subform2);
+	/// Hacemos la carga del listado de asientos.
+    cargaasientos();
 
     _depura("FIN del Constructor de Asiento1View\n",0);
 }// end intapunts3view
@@ -102,11 +101,172 @@ Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  
   * Destruye los objetos creados y libera la memoria
   */
 Asiento1View::~Asiento1View() {
-    delete filt;
-    if (cursorasientos != NULL ) {
-        delete cursorasientos;
-    }// end if
+
 }// end intapunts3view
 
 
 
+
+
+/**************************************************************************************************************************
+***************************************************************************************************************************
+		IMPLEMENTACION DE LISTASIENTOS
+***************************************************************************************************************************/
+
+ListAsientos::ListAsientos(empresa *emp) {
+	companyact = emp;
+	cursorasientos = NULL;
+    /// Creamos el objeto de filtrado de asientos para que el filtro funcione siempre bien desde esta ventana.
+    filt = new filtrarasientosview(companyact,0,"");
+	
+}// end ListAsientos
+
+ListAsientos::~ListAsientos() {
+    delete filt;
+    if (cursorasientos != NULL ) {
+        delete cursorasientos;
+    }// end if
+}// end ~ListAsientos
+
+/** \brief Prepara el cursor que sirve para recorrer los asientos uno a uno.
+ * Carga el cursor que sirve para hacer todo *
+ * el recorrido a través de los asientos.                 *
+ * numasiento: 0 indica el primer asiento
+ *            -1 indica el último asiento.
+           otros indica el asiento o el inmediatamente más bajo
+ 
+  Esta función no hace cambios en la presentación, solo realiza una
+  carga del cursor que sirve para recorrer los asientos.
+ */
+void ListAsientos::cargaasientos() {
+_depura("ListAsientos::cargaasientos",2);
+    QString cantapunt ="";
+    QString saldototal = "";
+    QString nombreasiento = "";
+    QString query;
+    QString cadwhere;
+    QString textsaldototal = "";
+    QString textcantapunt = "";
+    QString textnombreasiento= "";
+    QString textejercicio="";
+    QString ejercicio = "";
+
+    cantapunt = companyact->sanearCadena(filt->cantidadapunte->text());
+    saldototal = companyact->sanearCadena(filt->saldoasiento->text());
+    nombreasiento = companyact->sanearCadena(filt->nombreasiento->text());
+    ejercicio = companyact->sanearCadena(filt->ejercicio());
+
+
+    if (cursorasientos != NULL ) {
+        delete cursorasientos;
+    }// end if
+
+    int pand=0; /// Indica si se tiene que agregar el AND o no en el select
+    if (saldototal != "") {
+        cadwhere = " WHERE ";
+        textsaldototal = " idasiento IN (SELECT idasiento FROM (SELECT idasiento, sum(debe) AS total from apunte GROUP BY idasiento) AS foo WHERE foo.total="+saldototal+")";
+        pand = 1;
+    }// end if
+    if (cantapunt != "" ) {
+        cadwhere = " WHERE ";
+        if (pand)
+            textcantapunt = " AND ";
+        textcantapunt += " idasiento IN (SELECT idasiento FROM apunte where debe="+cantapunt+" OR haber = "+cantapunt+")";
+        pand = 1;
+    }// end if
+    if (nombreasiento != "") {
+        cadwhere = " WHERE ";
+        if (pand)
+            textnombreasiento = " AND ";
+        textnombreasiento += " idasiento in (SELECT idasiento FROM apunte WHERE conceptocontable LIKE '%"+nombreasiento+"%' )";
+        pand = 1;
+    }// end if
+
+
+    /// Los ejercicios los pondremos como filtraje de la introducción de asientos
+    if (ejercicio != "--") {
+        if (pand)
+            textejercicio = " AND EXTRACT(YEAR FROM fecha)='"+ ejercicio +"'";
+        else
+            textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ ejercicio +"'";
+    }// end if
+
+    /// Se ordenan los asientos por año y por numero de orden.
+    query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY EXTRACT (YEAR FROM fecha), ordenasiento";
+    //   }// end if
+
+    cursorasientos = companyact->cargacursor(query);
+    if (cursorasientos->eof()) {
+        QMessageBox::warning(0, "No existe asiento", "No existe ningun asiento para mostrar.", "Cerrar",0,0,0);
+        return;
+    }// end if
+    _depura("End cargaasientos\n",2);
+}// end cargaasientos
+
+
+
+
+
+/** \brief Slot que responde a la pulsación del botón de inicio
+  *
+  * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al primer registro y lo muestra.
+  * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
+  */
+void ListAsientos::boton_inicio() {
+    if (cursorasientos->numregistros() != 0) {
+        cursorasientos->primerregistro();
+        muestraasiento(cursorasientos->valor("idasiento"));
+    }// end if
+}
+
+
+/** \brief Slot que responde a la pulsación del botón de fin
+  *
+  * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al ultimo registro y lo muestra.
+  * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
+  */
+void ListAsientos::boton_fin() {
+    if (cursorasientos->numregistros() != 0 ) {
+        cursorasientos->ultimoregistro();
+        muestraasiento(cursorasientos->valor("idasiento"));
+    }// end if
+}
+
+/** \brief Slot que responde a la pulsación del botón de siguiente registro
+  *
+  * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al siguiente registro y lo muestra.
+  * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
+  */
+void ListAsientos::boton_siguiente() {
+    ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
+    if (cursorasientos->numregistros() == 0) {
+        return;
+    }// end if
+    if (!cursorasientos->esultimoregistro()) {
+        cursorasientos->siguienteregistro();
+        muestraasiento(cursorasientos->valor("idasiento"));
+    }// end if
+}
+
+/** \brief Slot que responde a la pulsación del botón de anterior registro
+  *
+  * Comprueba que existen registros en el cursor de asientos a mostrar y si existen se desplaza al registro anterior y lo muestra.
+  * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
+  */
+void ListAsientos::boton_anterior() {
+    ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
+    if (cursorasientos->numregistros() == 0) {
+        return;
+    }// end if
+    if (!cursorasientos->esprimerregistro()) {
+        cursorasientos->registroanterior();
+        muestraasiento(cursorasientos->valor("idasiento"));
+    }// end if
+}
+
+
+QString ListAsientos::idAsiento() {
+    if (cursorasientos->eof())
+        return "-1";
+    return cursorasientos->valor("idasiento");
+}

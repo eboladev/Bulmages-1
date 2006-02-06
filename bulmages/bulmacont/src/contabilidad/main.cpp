@@ -20,7 +20,6 @@
 #include <qtextcodec.h>
 #include <qtranslator.h>
 #include <qlibrary.h>
-// #include <QPluginLoader>
 
 
 #ifndef WIN32

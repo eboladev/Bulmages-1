@@ -303,7 +303,6 @@ int empresa::ainteligentes() {
 int empresa::mpatrimoniales() {
    mpatrimonialesview * nuevae = new mpatrimonialesview(0,"mpatrimoniales",true);
    nuevae->inicializa(this);
-//   nuevae->setmodoselector();
    nuevae->exec();
    delete nuevae;
   return(0);
