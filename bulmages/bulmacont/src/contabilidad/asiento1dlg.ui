@@ -1,11 +1,11 @@
 <!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>asiento1dlg</class>
+<class>Asiento1Dlg</class>
 <comment>Este formulario sirve para la introducción de Apuntes Contables en la contabilidad.
 </comment>
 <author>Tomeu Borras</author>
 <widget class="QWidget">
     <property name="name">
-        <cstring>asiento1dlg</cstring>
+        <cstring>Asiento1Dlg</cstring>
     </property>
     <property name="geometry">
         <rect>
@@ -635,9 +635,9 @@
                 </widget>
             </hbox>
         </widget>
-        <widget class="QTable1">
+        <widget class="ListLinAsiento1View">
             <property name="name">
-                <cstring>tapunts3</cstring>
+                <cstring>subform2</cstring>
             </property>
         </widget>
         <widget class="QLayoutWidget">
@@ -1302,32 +1302,6 @@
 </widget>
 <customwidgets>
     <customwidget>
-        <class>QTable1</class>
-        <header location="local">../../../bulmalib/qtable1.h</header>
-        <sizehint>
-            <width>50</width>
-            <height>50</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image10</pixmap>
-        <signal>pulsadomas(int, int, int)</signal>
-        <signal>currentChanged(int, int)</signal>
-        <signal>clicked(int, int, int, const QPoint &amp;)</signal>
-        <signal>doubleClicked(int, int, int, const QPoint &amp;)</signal>
-        <signal>pressed(int, int, int, const QPoint &amp;)</signal>
-        <signal>selectionChanged()</signal>
-        <signal>valueChanged(int, int)</signal>
-        <signal>dropped( QDropEvent *)</signal>
-        <signal>contextMenuRequested(int, int, int,  const QPoint &amp;)</signal>
-        <signal>contextMenuRequested(int, int, const QPoint &amp;)</signal>
-    </customwidget>
-    <customwidget>
         <class>BusquedaFecha</class>
         <header location="local">../../../bulmalib/busquedafecha.h</header>
         <sizehint>
@@ -1341,11 +1315,27 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
         </sizepolicy>
-        <pixmap>image11</pixmap>
+        <pixmap>image10</pixmap>
         <signal>valueChanged(QString)</signal>
         <signal>returnPressed()</signal>
         <signal>valueChanged()</signal>
         <slot access="public" specifier="">selectAll()</slot>
+    </customwidget>
+    <customwidget>
+        <class>ListLinAsiento1View</class>
+        <header location="global">listlinasiento1view.h</header>
+        <sizehint>
+            <width>50</width>
+            <height>50</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image11</pixmap>
     </customwidget>
 </customwidgets>
 <images>
@@ -1380,101 +1370,77 @@
         <data format="PNG" length="598">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000021d494441545885d5953d6edb4010853f06be4c3ad1969ad4aed226bc00151af0890cca5680d491da54be01a5654e900039416ef052ec2eb9fc911393cb220f1046b39ce5cc9b37bb84ff1d2a900ad4f725a472fc59b8ffcdec0ad623be5f3b5d781ee06a4eee86cd0e84fb1f265d5b3f8c6367fde49104627460d3be983570df7b7eefd67dcc6676c62e5438ad8dd3dd5ba55ddf0c67225e1161014232a924396bd77e7cb105c44dec27be700982e4679dbb4598367676179ab697636d0f31528482bd530be99cf5b0f5cadba403db8b8fda894e313e61d0851798cf3e86fb07a0c21eb114a83f015bc0585bdfd8f59ddb709a9b31400e122372189cf6ad7f083a10be23999258a02db0074c01d76bec0553b980bb20b80efe57341df037e1241c3cf355ef92f16be550f3ce5d3167067277e71f01be63d93eb81f56f98ecea7c05674bbf35a78e64d073ce3703de8c0b9e86aae62e20c78cddf3bffc348ccd1d96fc0e789b37511f918737acc9d7dedbbff5a690efa57e67bfbc298eca50352be4a5f649e4f60ee71e114f81cf03103366610710c6c74cd9b0232e9ed2f292f9ea233f718a9dc322783f4d6aea4c0bb9361fb78b3bce6642df3b4b4577a5a3a7ff5247188c2dc2369127b64c02de4c0ef3bf8e9be62f533f0b5d9b6b0e6a5fdaa7be664e108c44532aaf9c640754d4d9f39c467dfd37cc03c5b86b9474229a5d8491f680e8e7d74cd5b9ce53437d62ead791f495e4a97a71d16650ffc011cd8adc63d706b320000000049454e44ae426082</data>
     </image>
     <image name="image10">
-        <data format="PNG" length="942">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000037549444154388db5953168dc5618c77f361ade81867770060952f08318aad2a167b2f888071b32d46048305dba25994a295d4a0ba56ea0043a34a1539bc1900ea6ee60728186b843cab9e04437c4f80231562186276840021bee4105f70d8274901df782af1d9a7e8bf478e2f77edfa73fd2581cc71c57abd57ac16ba8388ec7c68ec1f7efdd7f31ffe63c894be010f6dc1e356a0c18603058eca9ebbeeb933c4be86e77a13c817bc7a68f7e7e84f633826680755d66fc90acb084da9015090bda4091811f9217090bfec97ab367097fd0b47f75c360809eed31371bd04dbf43ff69e994829980ce1fe072453b17148a5a03669a600f8540419ac36408322143e3780956a2b045170dd8d261424d770b925f848ded1ce5819482f23477ce2aae5eaea39a03a20658274481628313f8f8f1cdcef31d42bf8fedf730139af65de1e6d7391bdb0ead15e61d4df37c800e20dd17963fb3b457212bc01cc14f353647b334a1a2bb05ed1507255cb918102dc2f49421138bf6eaacad0f68af38daab29cdb311ea420da3054e33b6ce12fa0a7b001bf71c520a0b17035a57209a12acf45007356eaff6b97ab9cefb1f69f014376f65d4a5321f6d2c09b5222279d245eb80b945300d212b4013b2fc4d1fbbebe81fc0f5af42ba0f1cf677a1f37880690c83878c8d56ecec27e041380991015b08aaacb3fc6946b2eb505ab1345b27a34fd4d4482964cfc1ba1160a30d14607c05a510f9e04ad012b2fc791fbb2b5082f6159c81a851f5ab3c8594601a6ab4313e3805789a4e2a68afc6dadd4165ea2b82339a34cdb9712d6373ab4e66052905335923fba754e445c25c13ee4c2af254585b1ff0e1076fd13f109616ebe0c38d6b90eee77cf17186148e20d0444de0959737641cf88abc1416de534829b4571c3faeef71fdcb90a039606676c027cb2141a071873994d05ad4b4cefd4b8e292c8152b4660117f0fdad94b56fa1fbc03137a3c90532dbc71d4a355b84644be83cac1135147fcff14b7092262c28487321d2d0baa4c08f68ff9491ec0ac993b47aba04ddd0cc5fd2ec6c0a59e1d0aace463ac2387996b0f95431f986c2168269c0fce280a5779b741e5b709039987edba0a7725ae7a0f3b046a0a6c9650ffb7478c663711c571f780f66ce2bea61152911015545481d1dafbcaad9aae96a1cce41d213b25c70f929c694d0fdedb89d57afa36af4fef8c89dff58e350fda3fe17f0eb86c7713cf617a937add30abada010000000049454e44ae426082</data>
+        <data format="PNG" length="887">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000033e49444154388db59531681c4714863f892d9ee08a3938c10ea4d80507a442e02b5448c485d4f9488a4b4891181771489a902a9d651b0276e53a4e219c26a014827321acc6586708ec1a1c7202076d408115e4600724d8812ce815074eb13ec9472c61b0f3606077e6cdb7ff7bfbe6cd5492248c6d7979f905efc09224999a1a831f6e3d7cb13ab74ae63370b057edbd11c47b4fbe9f93fe96c2e8743e182b7ddc7b4c680acc82a1a806b4a5495915586329b4c0362ca205342cb9afdf0b2db062499fe734d785ed273a0906c8fece30916130bc4f59e68012cf2a3b99e0864279a480d06cc1d28232f0600452079105ec642427602a28aa0132ca014f3c2beca4866ccbd3dff5c0588d10cd0957ae1ae245888ce22a885a6780f7dc1e6d51b27f6a686f0b367e7435aa21c4730609a0182a077f2a77d61c9dcf0c9f7f21c446d9aece00db86a5ac72e259d849e5255459f930a4d315e6637023c50496dee6311beb8eed5f1ced0b1172b949d8f013e0e9f143511558037929f41ff813e895af85f9f73d6ee4914361e3e7922fafce70eddb10107e58f78882d309eea4e24273f042f687c71843a72b84c6e314ccc870f3ae92ed7aca43b871ab49faa8f6ed3f33c466123ca9b801d981028a8d5e863f865ef764bb1ed3123a9784323866be2df5de03a5a8e4f5e0ba4ec1366a8758ea9c4a65b8795dc976eb0f8ac0cc7b33c42d2018c3047b9e621aa0523b2643c5044d7a5bd44a8d10860637f4dc5e2bd8f9b549b15f27d6463314e75545ee73961694e88270f097d2db3ce6da5731e5a1f2c9650133c3ed3570079e3bdfe4a82aa625b4dbc7e027ffde7f72ec814eb78e6b63ddd17b9073e356937011962e957cf77d8c090dde7b74a4ac7643da17395f7151e51881e515c01beead3b7ebaeb481f092b8b821b41b15fa0477ab2f3f7be277d6a898d707a3a5fed15c38c4e03d2a3fa982e7f2a6823627bb3ae866cf7548d69099d6e44d2f778554c00d970321527e07c3f277d0ea105574168944e57f8f8a336fd67391cd5e1b6e762ec7c4efb22f49f5ac220c469463698044f25495237f800da1f08d68208756f0dea21415d29afb42c409140f01eb2815238c5bbd72866048327ca80b34cdf70aeb6e93357ded2a6a1bea3fe17f0bb86274932f52fbe6686568ff5047b0000000049454e44ae426082</data>
     </image>
     <image name="image11">
-        <data format="PNG" length="887">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000033e49444154388db59531681c4714863f892d9ee08a3938c10ea4d80507a442e02b5448c485d4f9488a4b4891181771489a902a9d651b0276e53a4e219c26a014827321acc6586708ec1a1c7202076d408115e4600724d8812ce815074eb13ec9472c61b0f3606077e6cdb7ff7bfbe6cd5492248c6d7979f905efc09224999a1a831f6e3d7cb13ab74ae63370b057edbd11c47b4fbe9f93fe96c2e8743e182b7ddc7b4c680acc82a1a806b4a5495915586329b4c0362ca205342cb9afdf0b2db062499fe734d785ed273a0906c8fece30916130bc4f59e68012cf2a3b99e0864279a480d06cc1d28232f0600452079105ec642427602a28aa0132ca014f3c2beca4866ccbd3dff5c0588d10cd0957ae1ae245888ce22a885a6780f7dc1e6d51b27f6a686f0b367e7435aa21c4730609a0182a077f2a77d61c9dcf0c9f7f21c446d9aece00db86a5ac72e259d849e5255459f930a4d315e6637023c50496dee6311beb8eed5f1ced0b1172b949d8f013e0e9f143511558037929f41ff813e895af85f9f73d6ee4914361e3e7922fafce70eddb10107e58f78882d309eea4e24273f042f687c71843a72b84c6e314ccc870f3ae92ed7aca43b871ab49faa8f6ed3f33c466123ca9b801d981028a8d5e863f865ef764bb1ed3123a9784323866be2df5de03a5a8e4f5e0ba4ec1366a8758ea9c4a65b8795dc976eb0f8ac0cc7b33c42d2018c3047b9e621aa0523b2643c5044d7a5bd44a8d10860637f4dc5e2bd8f9b549b15f27d6463314e75545ee73961694e88270f097d2db3ce6da5731e5a1f2c9650133c3ed3570079e3bdfe4a82aa625b4dbc7e027ffde7f72ec814eb78e6b63ddd17b9073e356937011962e957cf77d8c090dde7b74a4ac7643da17395f7151e51881e515c01beead3b7ebaeb481f092b8b821b41b15fa0477ab2f3f7be277d6a898d707a3a5fed15c38c4e03d2a3fa982e7f2a6823627bb3ae866cf7548d69099d6e44d2f778554c00d970321527e07c3f277d0ea105574168944e57f8f8a336fd67391cd5e1b6e762ec7c4efb22f49f5ac220c469463698044f25495237f800da1f08d68208756f0dea21415d29afb42c409140f01eb2815238c5bbd72866048327ca80b34cdf70aeb6e93357ded2a6a1bea3fe17f0bb86274932f52fbe6686568ff5047b0000000049454e44ae426082</data>
+        <data format="PNG" length="1884">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000723494441545885bd975d6c54c715c77f3373efddb5c16b6cecb8c59098d8840089c04a4a532b4a034993a86a05559e52a98faddabea40f2d6985501f1a27525314f5a1a9fa145a4545491b84948f4a2989685a2ca04df868498098b806db597bbd78bd77f7debb1f33d387bb6b16768128917aa491ee9d997be77ffee763ce116363635c2bf99f8cd864cf0a566c1ca677d3004efe2d5434cdf9fbc644d3e6cf29ceb513feee117beb8e27b8ed9bdfa37d702bb817894e1de5d8891da42f4eda789705ea581a9f69988b250c230e1d7a9b5c2ec7eeddbb9b14b80a407ed7885df3c8d7d9f0e4f350b90cd3bf07f34b92b7fd97e19924deb6bd586b91d2c1180d80940a63aa0821e3a3ad4108a7b666999818e7cd37fff2291950a072e3f0d7a7c03d03ea3d68b3b04290587592c97ffc86a0673b201002444d1f632c523633e2ba2e99cc3c4a498c312d01c8c697d4b36362f6ec38c199c390ce80911009c881d70f9de12b2834524aa494582b0189526a690ed4d25c3c1cb4d6ecd9b3a7a5ff34f940101866a6028656ae82d087940ff30ab1b244aaf738274f1f605eae474ab016ac01e540cd222004522ac22802244150404ac94b2ffdc17a9e87310621c0f312a4d3b38856515079e6013bf2d87a9c8e0a0cccc65a0d14b0ed9a89435b39ddbdb7259d008e0b1fbc7f8ce1bb37e025120821705df72a13580bf3f319f6efdfdfcc004058a872e9c23c6b37f74350828e32645d446740dfed17688f2cb9d4484b003a014ec7251e7e681bf942096b2d60114262adc15a8be725181f3f47b5aa5b03483d33263e796ebb5db5ae9f44d00b9d59282b28b8b40d687adefd1dff2eb706205c08cb06dff799bc3885b516a514f64a64e2791eb95c1e29c5d54ed828fe42c4dcd422e81494522012904f219775b2beff1dba823350a57954002bb0d6228483b506ad355a57304663adc6188bb5b1d3b464a0cec2c55f3d6cfbef1a44063db07c110209a1a66d3049cfb1bd1c9c7aaed90456b1a1a34a6e21c3e177de2299f49af31492288a705deffa00000a0b01b393f37cf1ee41a81a4856212791fd8a87be74923bbe364bb5ed56a096fbac05a138fe37836ceb63e8bec7715533c98e0b99e949cc91233706901a1d13e75ffeb1eddba890512fb45f86c88540d236a4e839f36bc2c15d186331d662ad25e1257009299a655c2875936871823410564224e6c6000072abef677ef29fdcb2791d680d4a43d141f67691f4ce3297fe9072623520b016bc92a65ad5686bf14328bbcdff140aaa658d102047467e689bb75c113d700fe9c50e4cc5814a17c8048409d06db4adfd02dedc1bf87e11dff72914f2f8fe225a57d11541711ec2cbcd23c842b92011a2e684751063632f34df569e4736b581dcd44774dfb9ae66670bbe83ea1d6065fb110effe738153ce2781784c53c7ebeccbf8e67e9686ff6018da2cbc9e23812015b9a186804323575c9eedcb19373cfeee0ae6f7c055c1f9615417ad09742e7b284d37d98f53fc218504a72f0e001767eeb71b4952d2f6d21251f8f9fe7e95ffcbcb50f343222a5200823ccd0761626ced2b5e94eb0997863a0503d839889634c4d7c48552c239148108611ba5a2193c9a2ab25a4721022beb6ad3124dbda2916f20821af9f88ea40a2a842a55226bcfd7efc8b97c1b84037280f4a12448ab6ae5e54f67d8c89930e80b5967239a4522d532e47944a45cae568e9bd7e37dc340aa2a8ccf8f82479df677ca19f6f2fcc21d6ac05abe3cfabebd0618eccec1c8be1251cc721080a54ab55e6e6e69052624c5c3b48191bc375932c2ee69152de1c80948ad9d934939313c8ee21de7bed4fdcf3837b119d433113acc2aa0b14c24572e6324208dadbdb191d7d9a5229424a4532994488abfd5b088152eae6002a95325bb77e99e1e16112098f0b273672fe957ddcf19da7105db7001a233c46461e24b1f601c0a2b566dfbe17114290cfe7397af428a552a956b0342a2771c6c65e1037ca054248b2d92ce9f427482968eb5cc1c7eb9f60e1f99f72eff77f86b37a13d39359025541553ea87fc5a38f3e82e779a4d3739c3c79825dbb76b5ac8824c4dede2a07d4c55a5bbb4e054110b1bc7b25fe834ff2ee8bbfe5ed97ffccd153d3186d1042d4068461401816299502004647475b2a7995091a41d459f13c97999969c6c7cfe33857b6bbae835db30d67ec353a3b9673eaa34e964567aea1581145659452d7d3edfa3e50073333336dfbfa7a28167d8c89f109112744a504eab1ef523cfc47cab28381debe26e63299cc750fbf2180ba68add9b26533838383282530c6d6b4036362baf5b6af020aa504f5a6c4dab82c3f77ee1cafbe7ae0b3039052e2fb3e13131380a9d578d40e72960eac4799b566693d9168279f5f6ce8193e0380b8e657b58e48506f2584b0686da94756dd2cf50e2906646a65f8e70090cf2f72e4c8df49a76790d26968c174ad2d33c42cd8a5960c2cd61aa49494cb555cb74551f069019c3e7d9ad75f7f03cff36aa1583741ddde8dda35aec522655cff5d9b84ead2b231f97fcaff00c9b45cb9420a89ed0000000049454e44ae426082</data>
     </image>
 </images>
 <connections>
     <connection>
         <sender>botonabrirasiento</sender>
         <signal>clicked()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>boton_abrirasiento()</slot>
     </connection>
     <connection>
         <sender>botoncerrarasiento</sender>
         <signal>clicked()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>boton_cerrarasiento()</slot>
     </connection>
     <connection>
         <sender>botonborrarasiento</sender>
         <signal>clicked()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>boton_borrar_asiento()</slot>
     </connection>
     <connection>
         <sender>nuevoasiento</sender>
         <signal>clicked()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>boton_nuevoasiento()</slot>
     </connection>
     <connection>
         <sender>ToolButton17</sender>
         <signal>clicked()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>boton_cargarasiento()</slot>
     </connection>
     <connection>
         <sender>ToolButton11_2</sender>
         <signal>clicked()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>editarasiento()</slot>
     </connection>
     <connection>
         <sender>botoniva</sender>
         <signal>clicked()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>boton_iva()</slot>
     </connection>
     <connection>
         <sender>idasiento1</sender>
         <signal>returnPressed()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>eturn_numasiento()</slot>
     </connection>
     <connection>
         <sender>botoninteligente</sender>
         <signal>clicked()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>boton_inteligente()</slot>
     </connection>
     <connection>
         <sender>botoninteligente_2</sender>
         <signal>clicked()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>boton_duplicarasiento()</slot>
-    </connection>
-    <connection>
-        <sender>tapunts3</sender>
-        <signal>contextMenuRequested(int,int,const QPoint&amp;)</signal>
-        <receiver>asiento1dlg</receiver>
-        <slot>contextmenu(int,int,const QPoint&amp;)</slot>
-    </connection>
-    <connection>
-        <sender>tapunts3</sender>
-        <signal>pulsadomas(int,int,int)</signal>
-        <receiver>asiento1dlg</receiver>
-        <slot>pulsadomas(int,int,int)</slot>
-    </connection>
-    <connection>
-        <sender>tapunts3</sender>
-        <signal>selectionChanged()</signal>
-        <receiver>asiento1dlg</receiver>
-        <slot>tcambiaseleccion()</slot>
-    </connection>
-    <connection>
-        <sender>tapunts3</sender>
-        <signal>valueChanged(int,int)</signal>
-        <receiver>asiento1dlg</receiver>
-        <slot>apuntecambiadogrid(int,int)</slot>
     </connection>
     <connection>
         <sender>m_fecha</sender>
         <signal>returnPressed()</signal>
-        <receiver>asiento1dlg</receiver>
+        <receiver>Asiento1Dlg</receiver>
         <slot>eturn_fechaasiento()</slot>
     </connection>
 </connections>
@@ -1520,9 +1486,9 @@
     <slot>boton_adjuntar()</slot>
     <slot>pulsadomas(int, int, int)</slot>
 </slots>
-<layoutdefaults spacing="0" margin="0"/>
+<layoutdefaults spacing="2" margin="5"/>
 <includehints>
     <includehint>busquedafecha.h</includehint>
-    <includehint>qtable1.h</includehint>
+    <includehint>listlinasiento1view.h</includehint>
 </includehints>
 </UI>

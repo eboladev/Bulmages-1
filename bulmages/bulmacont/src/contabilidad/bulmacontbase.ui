@@ -84,7 +84,7 @@
         <action name="a_statusbar"/>
         <action name="a_toolbar"/>
         <action name="verToolBarsAction"/>
-        <item text="ToolBars" name="PopupMenuEditor_42" accel="">
+        <item text="ToolBars" name="popupMenu_48" accel="">
             <action name="verToolBarsEmpresaAction"/>
             <action name="verToolBarsVentanasAction"/>
             <action name="verToolBarsNavegacinAction"/>
@@ -112,9 +112,13 @@
         <property name="name">
             <cstring>ventToolbar</cstring>
         </property>
+        <property name="resizeEnabled">
+            <bool>true</bool>
+        </property>
         <property name="label">
             <string>Ventanas</string>
         </property>
+        <action name="a_asiento1"/>
         <action name="a_intapunts"/>
         <action name="a_diario"/>
         <action name="a_mayor"/>
@@ -171,7 +175,7 @@
             <string>Primero</string>
         </property>
         <property name="accel">
-            <string>Alt+Arriba</string>
+            <string>Alt+</string>
         </property>
     </action>
     <action>
@@ -185,7 +189,7 @@
             <string>Anterior</string>
         </property>
         <property name="accel">
-            <string>Alt+Izquierda</string>
+            <string>Alt+</string>
         </property>
     </action>
     <action>
@@ -199,7 +203,7 @@
             <string>Siguiente</string>
         </property>
         <property name="accel">
-            <string>Alt+Derecha</string>
+            <string>Alt+</string>
         </property>
     </action>
     <action>
@@ -744,6 +748,17 @@
             <string>w item</string>
         </property>
     </action>
+    <action>
+        <property name="name">
+            <cstring>a_asiento1</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>image21</iconset>
+        </property>
+        <property name="text">
+            <string>Action_7</string>
+        </property>
+    </action>
 </actions>
 <images>
     <image name="image0">
@@ -808,6 +823,9 @@
     </image>
     <image name="image20">
         <data format="PNG" length="1345">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000508494441545885c5974f489c4718c67f1b3c7c0b5bf884f420e4b0420e2a29acb965c96177d342ba5268353d440ffde3adb62490a650529a95945e24875273aadb26d47808ae07510fa1aea145034dcd4aa14608ac4b09abb4b2fb51655d52e1e961befd1b5737fd435f987df866e69de7997766df99f148e2ffb416008fc7d3b4c322f883e05f8250105802824012ee4520e3814cb36349727f0eb165b0051705298116c1b8baa5ee3b356ffadaff8a80658809f2cb2e41dac5dc896e291456e1f429291456d6ad9f777106f282d8df1620b097dd1997cbf97ee9c782f4878cd5e3f78b527c513ae62f89902035d3201a0d050802cb660666c62f47a5a54543f26b567a2ae5e263d28db40ad333d2aa54989ba9b44bd207ef49b6ad4923223f0981a604b833cf0b249f2ddd59967efe457a2ae9aea4b9b434ed92d5db5d49bfa9d2ffcea4d4d1592dc23e544029ec5990e23913d6ac54888f49d7d3fb13ef67ae9fa667a4e37e4d820a903a5080bbe14cf517f3c67955d2ed7169fa39c825b32f4afed747259fad712322562de04815b97d122e3c040874836f1df241b81f879fdae0b5f6da057cbc0e1379f83a0ea95dc8e7eb5678b7e27fb41fdeec650098820bb9aaa5280b38096f6344c0ab517831025b7183c71fd58ebd0dac019b6efbc20df86ec3d497ec052fec4c54c679e313b06da260cf19ae5a010fe12d80dd139d263fde8f831331e8ebaf1590a96b771c767fb8013b7541b0fadd08a6e0f301009240d4e50237150bfcb87f13efb121d85a858e28acc5a1a30f9c0960a832f0371f823f5c695f4be0b583d05627e0cb33b0f6088ac572551f108740d670663c92c0e3092dc14210e0f55ef05a3c63816e7865c8906f39b56d7b45f21f5fa1b5fb64a56e21099133ec025e28e32ad00acc417850ba7704a074b0d0021423f0bb633650352e78e1a373f0b8abb67e3b02f1442df936f0ee20b8a4d5d865c8894208a01481d8125c0dfa6ce868072ca07838fa6c984a406b6b853c9f37335f49d5ccbc1a1d600a8687a458791306dd50e244606b039ca28b077c4f276bc9b781c87570c9f78b80d790d35bf2918420563ac5e4b325db967c968bfb7fa787afd5269e745a0a74abe08ed308b3eef9320ab172269c87503903b65887a0db2f5b97f902576aee080795512322541620f0cf37e95c2ab9e46285bca0a6fde6dd088c80bfe62c10a4ea6f3a0796a55c45c0f0b5e6859b08a44acbdf52da0bb370ab07021b2dd0d6b24f1ea8b7de2e7867d06cc86f27c06ac2670fe27b45fae056a9aa2ca0076ecec2d51e2c1b9fc5e17f45c06741f725789082271b87f4b7886f6dd2074e026e96783d92cab762416c16aef6d836d807dc298b45f273f3b4767755ea5eea829ddd862e4b5b0e6d3b0e0918beec1ec935c7318007623db032eb38b007f8bce01b70b1b5f26d59b5e400e7af35ee5f2c96c8572ed75d548f50670908f7809378923133b29226e359b89804bb15b6eb66fb60a2d25ed57f75e736eb9b9b244c020cd7f33d23e09c59a370149c4426633699cf027bd0c501386ac35749b80ffc097cfa19ec442aeda5fe9b1b78331912e0f441f8b2115163357ba0dac6c1ee858529080c5816eb1d9db4fbdb4dba6eb10ec6271bc4d71e11291649c00a0dc89fb913ee6705888d433e079af45952c725e9f429e9eca879270c4f4a67a3d2e9b0168f772ae7b34b992e3ff24f1e26d596037b0c2e662135e6e6f3d12a4c57e108a4d27071a4c9a759c325686459f0cf813f0aa129204af97cbf370799f79ff371ea692602ffa5fd05806f8683da7718f20000000049454e44ae426082</data>
+    </image>
+    <image name="image21">
+        <data format="XPM.GZ" length="8129">789ced98c96e1c391286ef7e0ac1713306d19964ae68ccc1fb26db92777b30872099d46ec9d6aec1bc7b47fdc1aae9056897ad72a30f53b40f5f91e21f8c8d59f9d3adb5f71bcfd66efd74e3f8444e76e25adc962f6bb7d2e9c1c1e5bffefdcfffdcb8d90c6bfacf55ed9abbf98f1b37a55f8b6b54cd3ef58c791d5cebb0f94db0af5cd5cd982670a3dc83ef16f685d7173c801f805bfd46c057e04e39406f03dceb8a84f9b4e009bc0d1e9433d67f048f5557c35ed959b0d9cb60a9fadacf38e4c262ebc9834335d42dd61f82a3b2d9df815335d62358160cfb790067dd0ff6aa7795ebaa0ab5d9f70e5c57d1997d6fc1ae4a0ef6d0de821bf02bb09fb35c809b6a7266cf63b09edec11e3901f71a9e8879d31beada993dfb0b86fff825586ae72bac3f0787da7bd33f024765f883360a37c6f26cc1167ff8bf9eead6c33e3e2d3c79c453ee81b3ce83097fefaabaf3b08f9f16ee3dfc298fc075dd37661ffce95c3d78d82fa7736e105ffa0c6e6b69905f8cfc74dd9c05fe727d9d1af39fcd8f756c2c9faac2a941bce83958eadcc0de30193b69605f403ebae082b120bfdde47c8b780ae2e7b2ab5bcbe747857d6bf61e166e0a9fcdd8d7ae6dcddf0eec74bdd98378f9c6351de2c3efc1bdeb3a8bff5e6169cd3fc7e0c1f59de93785539947fefbe0c6def29f166cf5621c9df4769e4fe0e4428f78cba5b1af3a8b3ff24bcbdb9b9ea03e1beff260fba31e9b56cbdff2e721b8f3f580bf675f782c7ab7c1fd9c19fda8197dd127e837e2fd60f97d1f1c7c33225f640b9c7c3b5a7df585736ff581fad3f6e37af32ff2b3757e1c6dbfb3059bbfe0ffd67b196d7d0dd66c16c423ec1aeb07fb0bfa5fdbf958e6778c75d83cf2abed75defc29c6cd30587fc479d4f849cc9fc8bf36f82cd64f2ae326d9f909f16da3b64febd71fc0a9a9839dbf9db1b6571fac3ec6055bfedc01d773269ca7734d134cff7cc166ffc1824d1ffda9f34d5b98176cfe4bc66d335abce1df993b3aac0f885737fb583f7801eedb71347b902f9db4a1c403f37ddbf562f7c713f0d805817d8cfed2876e0ad63f70be7eeaab60fd0dfd66a87a17ccff4d612d01b02fdc98ff04f1d6cba02d8c7e87f232463d0ebeef6d7f817f8746d9facf9bc283cdf389f1d064c433a0de8656e7b13ec07f43d78f255e38ffd0f762f1e073e3a1b7bf67f85f93673026d4f7207d0a60c17d3b6afb8cd6ffa03ffaa18dd68f6f17eea2e503fafda8e918cd7ee4c3d8eabced1fc1e3108d03facf28a388f533c4538dcfc9ea1ffe102de7047dc1fd22c39892d5630047bd3e6d7fc437d4d24d161ff4f7e06498cc7f6f0acb84f832ea599b7198ac7fbe06f79226bb8f70fe30489eacbed08fc318aa09e7e5d7856b5b2fb8cf430cadad67d34f2199fd84788729f413ec0ff047d4078664cf03e8ffd1853099ff517fd12fd8158e85bb3967eb5fa8efa8d555f843e1c9988cdb39cbbbc2395bfda31ee2187db678e03e88129b6cf98af3c618fb6cfe3c2a1c4b3ee17e8a29a6929fe8e7718a53b2fa3c9eb3cd8be9e528d9ea1bf775aa536df121dc1fc9e97a8bc7e3c2395bbe07e3e44afee27e4f7e3e2f4f8d5365cce88fa94f6d367fc3bfda0c3b63427f4a63eab3d5cbbdc263390ffa6d92349479c443c33b66eb6f5785c598111f754761427e24cdde6cfd0ef998d43bc662e7c969caf6bc5517cec6827c99aaa92af3cf176cfec7fda18f4f7561f86fd2078cc2e867934c5218f7efa4095918f5a8e199c713e799d4c0c2a8e7493f8551ff591fd00ac37f591f500aa39eb3d7618cfe929b5cfa17233f72abc318f755ee7418e3fecb432efd89711fe431977830ee73bddce6e7817f72c8f3f3c09f5913ac30e297e15030fa67566f1b6fa2bf657c8c374f985838705ce910a6d9dea6a10a8927cebcb5c291799b77662a764e55d8e25ddee3fd158e3dddf1407726f3ad9e61973ff1211fad701cf267fea267b17a0b7aae3d3ee693158f533ed39358cd46f5d4be2a9ff0395fac649ceb986b5cfe4ee382aff474d71ffb7faab13dcbb6eb0ef5fd5734f8f6b573ead35735eef0dd6b8e7b7f538dfbfce0876b3ce447fcf8876a3ce1a7bccecf7ea0c6737ec11bbcc92ff9d5afbe7dcd6f56a8f196dff17bfec01fb9e2ba7ce7d873c3ed8a343aee79e091988884827d4b91124d9457a3415bb44d3baac0b44b7bb44f07fadd273aa423fa4c5fe878ee4f3aa1d3efd3a0533aa373ba8006d3255dd16dfdf60edda57b749f1ed0c3b2ee113da627dfa9f194d675375e8c67f49c5ed0066d825ed22b7aadabded05b5ea777f4fedb35e8037da4ea570a4cb56a3af2d4805aeaa8a7417faab090fe1709dfa6a1bf51923e384ebfd160c9fae3746b41dbb223bbb227fb72209fe4508ebe51e3b37c91e3df2afc615cc8899caa2567aa772e177239cb896535e44a6eabc69daf68b0dc957b25ef58340be4c1f21ab30a90875f53f883e223792c4f96d390a7b22ecfbe5541359ed3babc5852634336e5e5b76ba8ca2bda90d74b69bcd1eafe0e051d3bf256de2da5f1fe5a1a1f96d2f8782d8d6a298dfa5a1a6e290d7f1d0dbdcb96d168feaff1d76848fb176874cb6948af37e9f78cbb4bfb6a903170a0ef19fa835bfeb6cfd4abd5d8e78c35d71a21fc89c6f90ac7ef35b26a1cfea0dfce97e51dc036ef86185298563852c861f64623fcef5d46d80e3b6177856347c7deec8dc9e29dcc8e9e654b4fb6ca91755799bff781caeccdd2e54a4728ef96fefbf38d5f004aa1bc42</data>
     </image>
 </images>
 <connections>
@@ -1081,6 +1099,12 @@
         <receiver>BulmaContBase</receiver>
         <slot>close()</slot>
     </connection>
+    <connection>
+        <sender>a_asiento1</sender>
+        <signal>activated()</signal>
+        <receiver>BulmaContBase</receiver>
+        <slot>s_asiento1()</slot>
+    </connection>
 </connections>
 <slots>
     <slot>slotPrimero()</slot>
@@ -1128,6 +1152,7 @@
     <slot>slotViewFullScreen(bool)</slot>
     <slot>slotViewStatusBar(bool)</slot>
     <slot>slotViewToolBar(bool)</slot>
+    <slot>s_asiento1()</slot>
 </slots>
 <layoutdefaults spacing="2" margin="5"/>
 </UI>

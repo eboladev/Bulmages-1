@@ -138,6 +138,8 @@ public:
     void slotCobPag();
     void slotTiposIVA();
     void slotFPago();
+
+	virtual void s_asiento1() {empresaactual.s_asiento1();};
        
 
     /** toggle the toolbar*/

@@ -42,7 +42,16 @@
 #include <sys/wait.h>
 #endif
 
+
+#include "asiento1view.h"
+
 // #define __DEBUG__
+void empresa::s_asiento1(){
+	_depura("empresa::s_asiento1",0);
+	Asiento1View * as = new Asiento1View(this);
+	pWorkspace->addWindow(as);
+	as->show();
+}
 
 
 empresa::empresa(){

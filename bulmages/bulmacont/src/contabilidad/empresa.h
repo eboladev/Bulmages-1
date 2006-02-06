@@ -71,7 +71,7 @@ public:
 
 public:
     empresa();
-    ~empresa();
+    virtual ~empresa();
 
     void init(QString);
     /// Returns a pointer to the database class
@@ -143,5 +143,7 @@ public:
     selectcanalview *getselcanales();
     void recalculasaldos();
     void cobPag();  // Gestion de cobros y pagos
+	virtual void s_asiento1();
+
 };
 #endif

@@ -233,7 +233,10 @@ HEADERS += splashscreen.h \
 	   listlinprevcobroview.h \
 	   linprevcobro.h \
 	   asiento1.h \
-	   asiento1view.h
+	   asiento1view.h \
+	   linasiento1.h \
+	   listlinasiento1.h \
+	   listlinasiento1view.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -295,7 +298,10 @@ SOURCES += main.cpp \
 	   listlinprevcobroview.cpp \
 	   linprevcobro.cpp \
 	   asiento1.cpp \
-	   asiento1view.cpp
+	   asiento1view.cpp \
+	   linasiento1.cpp \
+	   listlinasiento1.cpp \
+	   listlinasiento1view.cpp
 	 
 	 
 

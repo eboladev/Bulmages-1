@@ -38,16 +38,6 @@
 
 Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QString DB)
         : BulmaContBase(parent,name,f) {
-
-/*
-    if (DB != NULL) {
-        DBName=*DB;
-    } else {
-        DBName= "";
-        while (DBName == "")
-            DBName = empresaactual.searchCompany();
-    }// end if
-*/
 	empresaactual.init(DB);
 
     setCaption(tr("BulmaCont -- ") + DBName +" --");
