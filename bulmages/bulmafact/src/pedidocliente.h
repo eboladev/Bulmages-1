@@ -33,29 +33,19 @@ CREATE TABLE pedidocliente (
 
 #include "company.h"
 #include "linpedidocliente.h"
+#include "dbrecord.h"
+
 /** @author Tomeu Borras & Alvaro de Miguel
   * \brief Clase que hace de intermediaria entre la tabla de factura de la base de datos y el programa.
 */
 
 
-class PedidoCliente {
+class PedidoCliente : public DBRecord {
 protected:
     ListLinPedidoCliente *listalineas;
     ListDescuentoPedidoCliente *listadescuentos;
     company *companyact;
-    QString mdb_idcliente;
-    QString mdb_idalmacen;
-    QString mdb_idpedidocliente;
-    QString mdb_numpedidocliente;
-    QString mdb_fechapedidocliente;
-    QString mdb_descpedidocliente;
-    QString mdb_idforma_pago;
-    QString mdb_comentpedidocliente;
-    QString mdb_refpedidocliente;
-    QString mdb_procesadopedidocliente;
-    QString mdb_idtrabajador;
-    QString mdb_contactpedidocliente;
-    QString mdb_telpedidocliente;
+
 
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
@@ -125,45 +115,45 @@ public:
 
 
     void setidcliente(QString val) {
-        mdb_idcliente=val;
+        setDBvalue("idcliente",val);
     };
     void setidalmacen(QString val) {
-        mdb_idalmacen=val;
+        setDBvalue("idalmacen",val);
     };
     void setidpedidocliente(QString val) {
-        mdb_idpedidocliente=val;
+        setDBvalue("idpedidocliente",val);
         listalineas->setidpedidocliente(val);
         listadescuentos->setidpedidocliente(val);
     };
     void setnumpedidocliente(QString val) {
-        mdb_numpedidocliente=val;
+        setDBvalue("numpedidocliente",val);
     };
     void setfechapedidocliente(QString val) {
-        mdb_fechapedidocliente=val;
+        setDBvalue("fechapedidocliente",val);
     };
     void setdescpedidocliente(QString val) {
-        mdb_descpedidocliente=val;
+        setDBvalue("descpedidocliente",val);
     };
     void setidforma_pago(QString val) {
-        mdb_idforma_pago=val;
+        setDBvalue("idforma_pago",val);
     };
     void setcomentpedidocliente(QString val) {
-        mdb_comentpedidocliente=val;
+        setDBvalue("comentpedidocliente",val);
     };
     void setrefpedidocliente(QString val) {
-        mdb_refpedidocliente=val;
+        setDBvalue("refpedidocliente",val);
     };
     void setprocesadopedidocliente(QString val) {
-        mdb_procesadopedidocliente=val;
+        setDBvalue("procesadopedidocliente",val);
     };
     void setcontactpedidocliente(QString val) {
-        mdb_contactpedidocliente=val;
+        setDBvalue("contactpedidocliente",val);
     };
     void settelpedidocliente(QString val) {
-        mdb_telpedidocliente=val;
+        setDBvalue("telpedidocliente",val);
     };
     void setidtrabajador(QString val) {
-        mdb_idtrabajador=val;
+        setDBvalue("idtrabajador",val);
     };
 
     void vaciaPedidoCliente();

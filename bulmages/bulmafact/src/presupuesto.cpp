@@ -23,7 +23,6 @@ typedef QMap<QString, Fixed> base;
 
 presupuesto::presupuesto(company *comp) : DBRecord(comp) {
     companyact=comp;
-
     setDBTableName("presupuesto");
     setDBCampoId("idpresupuesto");
     addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");

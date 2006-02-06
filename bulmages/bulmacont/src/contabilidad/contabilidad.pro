@@ -77,7 +77,8 @@ FORMS += uiselector.ui \
          cobropagodlg.ui \
          tipoivadlg.ui \
          fpagodlg.ui \
-	 busquedacuentabase.ui
+	 busquedacuentabase.ui \
+	 asiento1dlg.ui
 
 TRANSLATIONS += bulmages_es.ts \
                 bulmages_ca.ts \
@@ -230,7 +231,9 @@ HEADERS += splashscreen.h \
 	   busquedacuenta.h \
 	   listlinprevcobro.h \
 	   listlinprevcobroview.h \
-	   linprevcobro.h
+	   linprevcobro.h \
+	   asiento1.h \
+	   asiento1view.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -290,11 +293,13 @@ SOURCES += main.cpp \
 	   busquedacuenta.cpp \
 	   listlinprevcobro.cpp \
 	   listlinprevcobroview.cpp \
-	   linprevcobro.cpp
-	   
+	   linprevcobro.cpp \
+	   asiento1.cpp \
+	   asiento1view.cpp
+	 
 	 
 
-  
+ 
 
 unix{
   UI_DIR = .ui

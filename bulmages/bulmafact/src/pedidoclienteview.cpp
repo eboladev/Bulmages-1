@@ -75,7 +75,7 @@ void   PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed
 
 
 void PedidoClienteView::s_verpresupuesto() {
-    QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='"+mdb_refpedidocliente+"'";
+    QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='"+DBvalue("refpedidocliente")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (cur->numregistros() > 1) {
         BudgetsList *list = new BudgetsList(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
@@ -103,7 +103,7 @@ void PedidoClienteView::s_verpresupuesto() {
 /// Se encarga de generar un albaran a partir del pedido.
 void PedidoClienteView::generarAlbaran() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funci�.
-    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='"+mdb_refpedidocliente+"'";
+    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='"+DBvalue("refpedidocliente")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         AlbaranClienteView *bud = new AlbaranClienteView(companyact,NULL,theApp->translate("Edicion de Albaranes de Clientes", "company"));
@@ -130,12 +130,12 @@ void PedidoClienteView::generarAlbaran() {
     AlbaranClienteView *bud = new AlbaranClienteView(companyact,NULL,theApp->translate("Edicion de Pedidos de Clientes", "company"));
     companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaAlbaranCliente();
-    bud->setcomentalbaran(mdb_comentpedidocliente);
-    bud->setdescalbaran(mdb_descpedidocliente);
-    bud->setidforma_pago(mdb_idforma_pago);
-    bud->setrefalbaran(mdb_refpedidocliente);
-    bud->setidcliente(mdb_idcliente);
-    bud->setidalmacen(mdb_idalmacen);
+    bud->setcomentalbaran(DBvalue("comentpedidocliente"));
+    bud->setdescalbaran(DBvalue("descpedidocliente"));
+    bud->setidforma_pago(DBvalue("idforma_pago"));
+    bud->setrefalbaran(DBvalue("refpedidocliente"));
+    bud->setidcliente(DBvalue("idcliente"));
+    bud->setidalmacen(DBvalue("idalmacen"));
     QString l;
     LinPedidoCliente *linea;
     uint i = 0;
@@ -158,17 +158,17 @@ void PedidoClienteView::generarAlbaran() {
 
 void PedidoClienteView::s_nuevoCobro() {
     CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
-    bud->setidcliente(mdb_idcliente);
+    bud->setidcliente(DBvalue("idcliente"));
     bud->setcantcobro(m_totalpedidocliente->text());
-    bud->setrefcobro(mdb_refpedidocliente);
-    bud->setcomentcobro(mdb_descpedidocliente);
+    bud->setrefcobro(DBvalue("refpedidocliente"));
+    bud->setcomentcobro(DBvalue("descpedidocliente"));
     bud->pintaCobro();
     bud->show();
 }// end s_nuevoCobro
 
 int PedidoClienteView::cargaPedidoCliente(QString id) {
     PedidoCliente::cargaPedidoCliente(id);
-    setCaption("Pedido Cliente  "+mdb_refpedidocliente);
+    setCaption("Pedido Cliente  "+DBvalue("refpedidocliente"));
     if (companyact->meteWindow(caption(),this))
         return 1;
     dialogChanges_cargaInicial();
@@ -178,7 +178,7 @@ int PedidoClienteView::cargaPedidoCliente(QString id) {
 /// Imprime el informe de referencia.
 void PedidoClienteView::s_informeReferencia() {
     InformeReferencia *inf = new InformeReferencia(companyact);
-    inf->setreferencia(mdb_refpedidocliente);
+    inf->setreferencia(DBvalue("refpedidocliente"));
     inf->generarinforme();
     delete inf;
 }// end s_informeReferencia

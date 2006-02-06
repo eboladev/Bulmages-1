@@ -100,10 +100,10 @@ int main(int argc, char *argv[]) {
     if (argc == 5) {
         confpr->setValor(CONF_LOGIN_USER, us);
         confpr->setValor(CONF_PASSWORD_USER, pass);
-        bges = new Bulmages01(NULL, "bulmages",0, &db);
+        bges = new Bulmages01(NULL, "bulmages",0, db);
     } else if (argc == 3) {
         QString db= argv[2];
-        bges = new Bulmages01(NULL, "bulmages",0, &db);
+        bges = new Bulmages01(NULL, "bulmages",0, db);
     } else {
         logpass *login1 = new logpass(0,"");
         if (!login1->authOK())
@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
 	   if (!login1->authOK())
 		 exit(1);
 	   delete login1;
-        bges = new Bulmages01(NULL, "bulmages",0, NULL);
+        bges = new Bulmages01(NULL, "bulmages",0, "");
     }// end if
 
 

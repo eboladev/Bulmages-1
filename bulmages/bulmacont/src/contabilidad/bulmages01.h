@@ -61,7 +61,7 @@ public:
     empresa empresaactual;  
     Q3DockWindow *doc;
 public:
-    Bulmages01(QWidget * parent = 0, const char * name = 0, Qt::WFlags f = Qt::WType_TopLevel, QString * DB=0);
+    Bulmages01(QWidget * parent = 0, const char * name = 0, Qt::WFlags f = Qt::WType_TopLevel, QString  DB="");
     ~Bulmages01();
 
   protected:

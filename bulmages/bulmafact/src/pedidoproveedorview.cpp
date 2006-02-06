@@ -92,7 +92,7 @@ void   PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fix
 
 
 void PedidoProveedorView::s_verpresupuesto() {
-    QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='"+mdb_refpedidoproveedor+"'";
+    QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='"+DBvalue("refpedidoproveedor")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (cur->numregistros() > 1) {
         BudgetsList *list = new BudgetsList(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
@@ -122,7 +122,7 @@ void PedidoProveedorView::s_verpresupuesto() {
 void PedidoProveedorView::generarAlbaran() {
 
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funci�.
-    QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp='"+mdb_refpedidoproveedor+"'";
+    QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp='"+DBvalue("refpedidoproveedor")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,NULL,theApp->translate("Edicion de Albaranes de Proveedores", "company"));
@@ -150,13 +150,13 @@ void PedidoProveedorView::generarAlbaran() {
     companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaAlbaranProveedor();
 
-    bud->setcomentalbaranp(mdb_comentpedidoproveedor);
-    bud->setdescalbaranp(mdb_descpedidoproveedor);
+    bud->setcomentalbaranp(DBvalue("comentpedidoproveedor"));
+    bud->setdescalbaranp(DBvalue("descpedidoproveedor"));
     //    bud->setfechaalbaranp(mdb_fechapedidoproveedor);
-    bud->setidforma_pago(mdb_idforma_pago);
-    bud->setrefalbaranp(mdb_refpedidoproveedor);
-    bud->setidproveedor(mdb_idproveedor);
-    bud->setidalmacen(mdb_idalmacen);
+    bud->setidforma_pago(DBvalue("idforma_pago"));
+    bud->setrefalbaranp(DBvalue("refpedidoproveedor"));
+    bud->setidproveedor(DBvalue("idproveedor"));
+    bud->setidalmacen(DBvalue("idalmacen"));
 
     QString l;
     LinPedidoProveedor *linea;
@@ -191,10 +191,10 @@ void PedidoProveedorView::generarAlbaran() {
 
 void PedidoProveedorView::s_nuevoCobro() {
     PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
-    bud->setidproveedor(mdb_idproveedor);
+    bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(m_totalpedidoproveedor->text());
-    bud->setrefpago(mdb_refpedidoproveedor);
-    bud->setcomentpago(mdb_descpedidoproveedor);
+    bud->setrefpago(DBvalue("refpedidoproveedor"));
+    bud->setcomentpago(DBvalue("descpedidoproveedor"));
     bud->pintaPago();
     bud->show();
 }// end s_nuevoCobro
@@ -202,7 +202,7 @@ void PedidoProveedorView::s_nuevoCobro() {
 
 int PedidoProveedorView::cargaPedidoProveedor(QString id) {
     PedidoProveedor::cargaPedidoProveedor(id);
-    setCaption("Pedido Proveedor  "+mdb_refpedidoproveedor);
+    setCaption("Pedido Proveedor  "+DBvalue("refpedidoproveedor"));
     if (companyact->meteWindow(caption(),this))
         return -1;
     dialogChanges_cargaInicial();

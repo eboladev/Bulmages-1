@@ -54,8 +54,6 @@ empresa::empresa(){
    selccostes  = NULL;
    selcanales = NULL;
    nombre = "";
-   conexionbase2 = new postgresiface2();
-   conexionanterior2 = NULL;
 }// end empresa
 
 
@@ -65,28 +63,17 @@ empresa::~empresa(){
   if (balance1) delete balance1;
   if (balance) delete balance;
   if (introapunts1) delete introapunts1;
-  if (conexionbase2) delete conexionbase2;
-  if (conexionanterior2) delete conexionanterior2;
   if (selccostes) delete selccostes;
   if (selcanales) delete selcanales;
 }// end ~empresa
 
 /** \brief inicializa la clase con el nombre de la base de datos y con el workspace.
   */
-int empresa::inicializa1(QString nombreDB, QWorkspace *space) {
-   fprintf(stderr,"EMPRESA::inicializa1()\n");
-   pWorkspace = space;
-
-   fprintf(stderr,"conexionbase->inicializa\n");
-   conexionbase2->inicializa(nombreDB);
-   fprintf(stderr,"fin de conexionbase->inicializa\n");
-
+int empresa::inicializa1() {
   
-  // Calculamos el nmero de d�itos que tiene el nivel ltimo de la empresa. 
-   conexionbase2->begin();
+  // Calculamos el numero de digitos que tiene el nivel ultimo de la empresa. 
    QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-   cursor2 *cursoraux1 = conexionbase2->cargacursor(query,"codcuenta");
-   conexionbase2->commit();
+   cursor2 *cursoraux1 = cargacursor(query,"codcuenta");
    numdigitos=cursoraux1->valor(2).length();
    delete cursoraux1;       
 
@@ -139,19 +126,29 @@ void empresa::maximiza() {
 }// end maximiza
 
 
+void empresa::init(QString bd) {
+    if (bd == "")
+        bd = searchCompany();
+    inicializa(bd);
+}// end init
+
+
 /** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
-  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializaci� de clases a partir de dicha inicializaci�.
+  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de clases a partir de dicha inicializaci�.
   */
 QString empresa::searchCompany() {
-//El cambio de empresa se realiza desde el selector.
-  fprintf(stderr,"empresa::searchCompany vamos a mostrar el abreempresaview\n");
-  abreempresaview *nuevae = new abreempresaview(0,"BulmaCont" );
-  nuevae->exec();
-   fprintf(stderr,"Vamos a cambiar la empresa \n");
-   QString bd= nuevae->nomDB();
-   fprintf(stderr,"Empresa cambiada a %s\n", bd.ascii());
-   delete nuevae;
-  return(bd);
+    //El cambio de empresa se realiza desde el selector.
+    _depura("empresa::searchCompany vamos a mostrar el abreempresaview\n",0);
+    abreempresaview *nuevae = new abreempresaview(0,"BulmaCont" );
+    nuevae->exec();
+    _depura("Vamos a cambiar la empresa \n",0);
+    QString bd= nuevae->nomDB();
+    _depura("Empresa cambiada a"+bd,0);
+    delete nuevae;
+    /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
+    if (bd == "")
+        exit(1);
+    return(bd);
 }// end searchCompany
 
 
@@ -253,7 +250,7 @@ int empresa::muestraapuntes1() {
 
 int empresa::muestraasientos() {
   asientosview *nuevae = new asientosview(this, 0,"",true);
-  nuevae->inicializa(conexionbase2, introapunts1);
+  nuevae->inicializa(this, introapunts1);
   nuevae->exec();
   delete nuevae;
   return(0);
@@ -262,7 +259,7 @@ int empresa::muestraasientos() {
 
 int empresa::propiedadempresa() {
    propiedadesempresa * nuevae = new propiedadesempresa(0,"",true);
-   nuevae->inicializa(conexionbase2);
+   nuevae->inicializa(this);
    nuevae->exec();
    delete nuevae;
    return(0);
@@ -296,7 +293,7 @@ int empresa::ainteligentes() {
  *******************************************************************/
 int empresa::mpatrimoniales() {
    mpatrimonialesview * nuevae = new mpatrimonialesview(0,"mpatrimoniales",true);
-   nuevae->inicializa(conexionbase2);
+   nuevae->inicializa(this);
 //   nuevae->setmodoselector();
    nuevae->exec();
    delete nuevae;
@@ -442,9 +439,7 @@ int empresa::librobalancetree() {
 
 
 void empresa::Abrirasientos() {
-   conexionbase2->begin();
-   cursor2 *cur = conexionbase2->cargacursor("SELECT abreasientos()");
-   conexionbase2->commit();
+   cursor2 *cur = cargacursor("SELECT abreasientos()");
    delete cur;   
    introapunts1->cargarcursor();
    introapunts1->boton_fin();
@@ -455,9 +450,7 @@ void empresa::Abrirasientos() {
 void empresa::Ordenarasientos() {
 
    QString query= "SELECT reordenaasientosall()";
-   conexionbase2->begin();
-   cursor2 * cur = conexionbase2->cargacursor(query, "hola");
-   conexionbase2->commit();
+   cursor2 * cur = cargacursor(query, "hola");
    delete cur;
    introapunts1->cargarcursor();
    introapunts1->boton_fin();
@@ -466,7 +459,6 @@ void empresa::Ordenarasientos() {
 
 
 int empresa::registroiva() {
-//   listivaview *perd = new listivaview(this, EjercicioActual.ascii());
    listivaview *perd = new listivaview(this, "0");
    perd->inicializa(introapunts1);
    perd->exec();
@@ -475,9 +467,7 @@ int empresa::registroiva() {
 }// end registroiva
 
 int empresa::modelo347() {
-//   BModelo347 *dlg347 = new BModelo347(conexionbase2,EjercicioActual.ascii());
-   BModelo347 *dlg347 = new BModelo347(conexionbase2,"0");
-   //dlg347->inicializa(conexionbase2, introapunts1);
+   BModelo347 *dlg347 = new BModelo347(this,"0");
    dlg347->exec();
    delete dlg347;
    return(0);
@@ -540,9 +530,7 @@ void empresa::reemplazacuentaenasientos() {
 
 // Esta funci� recalcula los saldos parciales del plan contable.
 void empresa::recalculasaldos() {
-   conexionbase2->begin();
-   conexionbase2->ejecuta("SELECT recalculasaldos()");
-   conexionbase2->commit();
+   ejecuta("SELECT recalculasaldos()");
 }// end recalculasaldos
 
 

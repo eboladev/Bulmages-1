@@ -20,20 +20,35 @@
 
 typedef QMap<QString, Fixed> base;
 
-PedidoCliente::PedidoCliente(company *comp) {
+PedidoCliente::PedidoCliente(company *comp) : DBRecord(comp) {
     companyact=comp;
-    vaciaPedidoCliente();
+
+    setDBTableName("pedidocliente");
+    setDBCampoId("idpedidocliente");
+    addDBCampo("idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
+    addDBCampo("numpedidocliente", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("fechapedidocliente", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("descpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("contactpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("telpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("procesadopedidocliente", DBCampo::DBboolean, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
 }
 
 PedidoCliente::~PedidoCliente() {}
 
 
 void PedidoCliente::borraPedidoCliente() {
-    if (mdb_idpedidocliente != "") {
+    if (DBvalue("idpedidocliente") != "") {
         listalineas->borrar();
         listadescuentos->borrar();
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM pedidocliente WHERE idpedidocliente="+mdb_idpedidocliente);
+        int error = companyact->ejecuta("DELETE FROM pedidocliente WHERE idpedidocliente="+DBvalue("idpedidocliente"));
         if (error) {
             companyact->rollback();
             return;
@@ -46,151 +61,63 @@ void PedidoCliente::borraPedidoCliente() {
 
 
 void PedidoCliente::vaciaPedidoCliente() {
-    mdb_idcliente = "";
-    mdb_idalmacen = "";
-    mdb_idpedidocliente = "";
-    mdb_numpedidocliente = "";
-    mdb_fechapedidocliente = "";
-    mdb_descpedidocliente = "";
-
-    mdb_idforma_pago = "";
-    mdb_comentpedidocliente = "";
-    mdb_refpedidocliente = "";
-    mdb_procesadopedidocliente = "FALSE";
-    mdb_contactpedidocliente = "";
-    mdb_telpedidocliente = "";
-    mdb_idtrabajador = "";
-    //    listalineas->vaciar();
+    DBclear();
 }// end vaciaPedidoCliente
 
 void PedidoCliente::pintaPedidoCliente() {
-    fprintf(stderr,"PedidoCliente::pintaPedidoCliente\n");
-    pintaidcliente(mdb_idcliente);
-    pintaidalmacen(mdb_idalmacen);
-    pintaidpedidocliente(mdb_idpedidocliente);
-    pintanumpedidocliente(mdb_numpedidocliente);
-    pintafechapedidocliente(mdb_fechapedidocliente);
-    pintadescpedidocliente(mdb_descpedidocliente);
-
-    pintaidforma_pago(mdb_idforma_pago);
-
-    pintacomentpedidocliente(mdb_comentpedidocliente);
-
-    pintarefpedidocliente(mdb_refpedidocliente);
-    pintaprocesadopedidocliente(mdb_procesadopedidocliente);
-    pintacontactpedidocliente(mdb_contactpedidocliente);
-    pintatelpedidocliente(mdb_telpedidocliente);
-    pintaidtrabajador(mdb_idtrabajador);
+    _depura("PedidoCliente::pintaPedidoCliente\n",0);
+    pintaidcliente(DBvalue("idcliente"));
+    pintaidalmacen(DBvalue("idalmacen"));
+    pintaidpedidocliente(DBvalue("idpedidocliente"));
+    pintanumpedidocliente(DBvalue("numpedidocliente"));
+    pintafechapedidocliente(DBvalue("fechapedidocliente"));
+    pintadescpedidocliente(DBvalue("descpedidocliente"));
+    pintaidforma_pago(DBvalue("idforma_pago"));
+    pintacomentpedidocliente(DBvalue("comentpedidocliente"));
+    pintarefpedidocliente(DBvalue("refpedidocliente"));
+    pintaprocesadopedidocliente(DBvalue("procesadopedidocliente"));
+    pintacontactpedidocliente(DBvalue("contactpedidocliente"));
+    pintatelpedidocliente(DBvalue("telpedidocliente"));
+    pintaidtrabajador(DBvalue("idtrabajador"));
 
     /// Pinta el subformulario de detalle del PedidoCliente.
     listalineas->pintaListLinPedidoCliente();
-    // Pinta el subformulario de descuentos del pedidocliente
+    /// Pinta el subformulario de descuentos del pedidocliente
     listadescuentos->pintaListDescuentoPedidoCliente();
     calculaypintatotales();
-    fprintf(stderr,"FIN PedidoCliente::pintaPedidoCliente()\n");
+    _depura("FIN PedidoCliente::pintaPedidoCliente()\n",0);
 }// end pintaPedidoCliente
 
 
 // Esta funci� carga un PedidoCliente.
 int PedidoCliente::cargaPedidoCliente(QString idbudget) {
-    fprintf(stderr,"cargaPedidoCliente(%s)\n",idbudget.ascii());
-    mdb_idpedidocliente = idbudget;
-    QString query = "SELECT * FROM pedidocliente WHERE idpedidocliente="+mdb_idpedidocliente;
+    _depura("cargaPedidoCliente()\n",0);
+    QString query = "SELECT * FROM pedidocliente WHERE idpedidocliente="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
-        mdb_idcliente = cur->valor("idcliente");
-        mdb_idalmacen = cur->valor("idalmacen");
-        mdb_idpedidocliente = cur->valor("idpedidocliente");
-        mdb_numpedidocliente = cur->valor("numpedidocliente");
-        mdb_fechapedidocliente = cur->valor("fechapedidocliente");
-        mdb_descpedidocliente = cur->valor("descpedidocliente");
-        mdb_idforma_pago = cur->valor("idforma_pago");
-        mdb_refpedidocliente = cur->valor("refpedidocliente");
-        mdb_contactpedidocliente = cur->valor("contactpedidocliente");
-        mdb_telpedidocliente = cur->valor("telpedidocliente");
-        mdb_idtrabajador = cur->valor("idtrabajador");
-        if (cur->valor("procesadopedidocliente") == "t")
-            mdb_procesadopedidocliente = "TRUE";
-        else
-            mdb_procesadopedidocliente = "FALSE";
-
-        mdb_comentpedidocliente = cur->valor("comentpedidocliente");
+        DBload(cur);
     }// end if
     delete cur;
-    fprintf(stderr,"Vamos a cargar las lineas\n");
     listalineas->cargaListLinPedidoCliente(idbudget);
     listadescuentos->cargaDescuentos(idbudget);
-    fprintf(stderr,"vamos a hacer el pintado de la LineaPedido\n");
     pintaPedidoCliente();
 	return 0;
 }// end chargeBudget
 
 
 void PedidoCliente::guardaPedidoCliente() {
+    QString id;
     companyact->begin();
-	QString fecha;
-    if (mdb_idforma_pago == "")
-        mdb_idforma_pago = "NULL";
-    if (mdb_numpedidocliente == "")
-        mdb_numpedidocliente = "NULL";
-    if (mdb_idtrabajador == "")
-        mdb_idtrabajador = "NULL";
-if (mdb_fechapedidocliente == "")
-    fecha = "NULL";
-else
-    fecha = "'"+companyact->sanearCadena(mdb_fechapedidocliente)+"'";
-    if (mdb_idpedidocliente == "") {
-        /// Se trata de una insercion
-        QString SQLQuery = "INSERT INTO pedidocliente (contactpedidocliente, telpedidocliente, numpedidocliente, fechapedidocliente, idcliente, idalmacen, idforma_pago, refpedidocliente, procesadopedidocliente, descpedidocliente, comentpedidocliente, idtrabajador) VALUES ('"+
-                           companyact->sanearCadena(mdb_contactpedidocliente)+"','"+
-                           companyact->sanearCadena(mdb_telpedidocliente)+"',"+
-                           companyact->sanearCadena(mdb_numpedidocliente)+","+
-                           fecha+","+
-                           companyact->sanearCadena(mdb_idcliente)+","+
-                           companyact->sanearCadena(mdb_idalmacen)+","+
-                           companyact->sanearCadena(mdb_idforma_pago)+",'"+
-                           companyact->sanearCadena(mdb_refpedidocliente)+"',"+
-                           companyact->sanearCadena(mdb_procesadopedidocliente)+",'"+
-                           companyact->sanearCadena(mdb_descpedidocliente)+"','"+
-                           companyact->sanearCadena(mdb_comentpedidocliente)+"', "+
-                           companyact->sanearCadena(mdb_idtrabajador)+")";
-        int error = companyact->ejecuta(SQLQuery);
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        cursor2 *cur = companyact->cargacursor("SELECT MAX(idpedidocliente) AS m FROM pedidocliente");
-        if (!cur->eof())
-            setidpedidocliente(cur->valor("m"));
-        delete cur;
-        companyact->commit();
-    } else {
-        /// Se trata de una modificaci�
-        QString SQLQuery = "UPDATE pedidocliente SET ";
-        SQLQuery += " numpedidocliente="+companyact->sanearCadena(mdb_numpedidocliente);
-        SQLQuery += " ,fechapedidocliente="+fecha;
-        SQLQuery += " ,idcliente="+companyact->sanearCadena(mdb_idcliente);
-        SQLQuery += " ,idalmacen="+companyact->sanearCadena(mdb_idalmacen);
-        SQLQuery += " ,idforma_pago="+companyact->sanearCadena(mdb_idforma_pago);
-        SQLQuery += " ,refpedidocliente='"+companyact->sanearCadena(mdb_refpedidocliente)+"'";
-        SQLQuery += " ,procesadopedidocliente="+companyact->sanearCadena(mdb_procesadopedidocliente);
-        SQLQuery += " ,descpedidocliente='"+companyact->sanearCadena(mdb_descpedidocliente)+"'";
-        SQLQuery += " ,comentpedidocliente='"+companyact->sanearCadena(mdb_comentpedidocliente)+"'";
-        SQLQuery += " ,contactpedidocliente='"+companyact->sanearCadena(mdb_contactpedidocliente)+"'";
-        SQLQuery += " ,telpedidocliente='"+companyact->sanearCadena(mdb_telpedidocliente)+"'";
-        SQLQuery += " ,idtrabajador ="+companyact->sanearCadena(mdb_idtrabajador);
-        SQLQuery += " WHERE idpedidocliente="+companyact->sanearCadena(mdb_idpedidocliente);
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        companyact->commit();
+    int error = DBsave(id);
+    if (error ) {
+        companyact->rollback();
+        return;
     }// end if
+    setidpedidocliente(id);
+    companyact->commit();
     listalineas->guardaListLinPedidoCliente();
     listadescuentos->guardaListDescuentoPedidoCliente();
-    cargaPedidoCliente(mdb_idpedidocliente);
+    cargaPedidoCliente(id);
 }// end guardaPedidoCliente
 
 
@@ -235,7 +162,7 @@ void PedidoCliente::imprimirPedidoCliente() {
     QString fitxersortidatxt="";
     // L�ea de totales del presupuesto
 
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+mdb_idcliente;
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dircliente]",cur->valor("dircliente"));
@@ -248,13 +175,13 @@ void PedidoCliente::imprimirPedidoCliente() {
     }// end if
     delete cur;
 
-    buff.replace("[numpedidocliente]",mdb_numpedidocliente);
-    buff.replace("[fechapedidocliente]",mdb_fechapedidocliente);
-    buff.replace("[contactpedidocliente]",mdb_contactpedidocliente);
-    buff.replace("[telpedidocliente]",mdb_telpedidocliente);
-    buff.replace("[comentpedidocliente]",mdb_comentpedidocliente);
-    buff.replace("[descpedidocliente]",mdb_descpedidocliente);
-    buff.replace("[refpedidocliente]",mdb_refpedidocliente);
+    buff.replace("[numpedidocliente]",DBvalue("numpedidocliente"));
+    buff.replace("[fechapedidocliente]",DBvalue("fechapedidocliente"));
+    buff.replace("[contactpedidocliente]",DBvalue("contactpedidocliente"));
+    buff.replace("[telpedidocliente]",DBvalue("telpedidocliente"));
+    buff.replace("[comentpedidocliente]",DBvalue("comentpedidocliente"));
+    buff.replace("[descpedidocliente]",DBvalue("descpedidocliente"));
+    buff.replace("[refpedidocliente]",DBvalue("refpedidocliente"));
 
 
     LinPedidoCliente *linea;

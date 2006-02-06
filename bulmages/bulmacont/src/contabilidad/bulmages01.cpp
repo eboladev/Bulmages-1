@@ -36,8 +36,10 @@
 // Inclusiones para el log
 #include "log.h"
 
-Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QString * DB)
+Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QString DB)
         : BulmaContBase(parent,name,f) {
+
+/*
     if (DB != NULL) {
         DBName=*DB;
     } else {
@@ -45,6 +47,9 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
         while (DBName == "")
             DBName = empresaactual.searchCompany();
     }// end if
+*/
+	empresaactual.init(DB);
+
     setCaption(tr("BulmaCont -- ") + DBName +" --");
     initView();
     initActions();
@@ -102,7 +107,9 @@ void Bulmages01::initView() {
 
 
 void Bulmages01::showView() {
-    empresaactual.inicializa1(DBName, pWorkspace);
+//    empresaactual.inicializa1(DBName, pWorkspace);
+	empresaactual.setWorkspace(pWorkspace);
+	empresaactual.inicializa1();
     showMaximized();
     empresaactual.maximiza();
 }// end initView

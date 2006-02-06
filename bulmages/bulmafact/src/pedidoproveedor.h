@@ -33,30 +33,18 @@ CREATE TABLE pedidoproveedor (
 
 #include "company.h"
 #include "linpedidoproveedor.h"
+#include "dbrecord.h"
 /** @author Tomeu Borras & Alvaro de Miguel
   * \brief Clase que hace de intermediaria entre la tabla de factura de la base de datos y el programa.
 */
 
 
-class PedidoProveedor {
+class PedidoProveedor : public DBRecord {
 protected:
     ListLinPedidoProveedor *listalineas;
     ListDescuentoPedidoProveedor *listadescuentos;
     company *companyact;
-    QString mdb_idproveedor;
-    QString mdb_idalmacen;
-    QString mdb_idpedidoproveedor;
-    QString mdb_numpedidoproveedor;
-    QString mdb_fechapedidoproveedor;
-    QString mdb_descpedidoproveedor;
-    QString mdb_idforma_pago;
-    QString mdb_comentpedidoproveedor;
-    QString mdb_refpedidoproveedor;
-    QString mdb_procesadopedidoproveedor;
-    QString mdb_idtrabajador;
-    
-    QString mdb_contactpedidoproveedor;
-    QString mdb_telpedidoproveedor;
+
     
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
@@ -102,19 +90,19 @@ public:
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {};
 
 
-    void setidproveedor(QString val) { mdb_idproveedor=val;};
-    void setidalmacen(QString val) { mdb_idalmacen=val;};
-    void setidpedidoproveedor(QString val) { mdb_idpedidoproveedor=val;listalineas->setidpedidoproveedor(val);listadescuentos->setidpedidoproveedor(val);};
-    void setnumpedidoproveedor(QString val) { mdb_numpedidoproveedor=val;};
-    void setfechapedidoproveedor(QString val) { mdb_fechapedidoproveedor=val;};
-    void setdescpedidoproveedor(QString val) { mdb_descpedidoproveedor=val;};
-    void setidforma_pago(QString val) {mdb_idforma_pago=val;};
-    void setcomentpedidoproveedor(QString val) {mdb_comentpedidoproveedor=val;};
-    void setrefpedidoproveedor(QString val) {mdb_refpedidoproveedor=val;};
-    void setprocesadopedidoproveedor(QString val) {mdb_procesadopedidoproveedor=val;};
-    void setcontactpedidoproveedor(QString val) {mdb_contactpedidoproveedor=val;};
-    void settelpedidoproveedor(QString val) {mdb_telpedidoproveedor=val;};
-    void setidtrabajador(QString val) {mdb_idtrabajador=val;};
+    void setidproveedor(QString val) { setDBvalue("idproveedor",val);};
+    void setidalmacen(QString val) { setDBvalue("idalmacen",val);};
+    void setidpedidoproveedor(QString val) { setDBvalue("idpedidoproveedor",val);listalineas->setidpedidoproveedor(val);listadescuentos->setidpedidoproveedor(val);};
+    void setnumpedidoproveedor(QString val) { setDBvalue("numpedidoproveedor",val);};
+    void setfechapedidoproveedor(QString val) { setDBvalue("fechapedidoproveedor",val);};
+    void setdescpedidoproveedor(QString val) { setDBvalue("descpedidoproveedor",val);};
+    void setidforma_pago(QString val) {setDBvalue("idforma_pago",val);};
+    void setcomentpedidoproveedor(QString val) {setDBvalue("comentpedidoproveedor",val);};
+    void setrefpedidoproveedor(QString val) {setDBvalue("refpedidoproveedor",val);};
+    void setprocesadopedidoproveedor(QString val) {setDBvalue("procesadopedidoproveedor",val);};
+    void setcontactpedidoproveedor(QString val) {setDBvalue("contactpedidoproveedor",val);};
+    void settelpedidoproveedor(QString val) {setDBvalue("telpedidoproveedor",val);};
+    void setidtrabajador(QString val) {setDBvalue("idtrabajador",val);};
     
     void vaciaPedidoProveedor();
 };
