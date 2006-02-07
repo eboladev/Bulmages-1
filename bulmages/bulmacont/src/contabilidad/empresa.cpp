@@ -48,9 +48,8 @@
 // #define __DEBUG__
 void empresa::s_asiento1(){
 	_depura("empresa::s_asiento1",0);
-	Asiento1View * as = new Asiento1View(this);
-	pWorkspace->addWindow(as);
-	as->show();
+  introapunts2->setWindowState(introapunts2->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
+
 }
 
 
@@ -112,6 +111,9 @@ int empresa::inicializa1() {
   introapunts1 = new intapunts3view(this, 0,"introapunts2");
   pWorkspace->addWindow(introapunts1);
   
+  introapunts2 = new Asiento1View(this, 0,"introapunts2");
+  pWorkspace->addWindow(introapunts2);
+
   /// Pasamos parametros a las ventanas para que puedan coordinarse entre si.\todo El paso de mensajes deber� pasar por la clase \ref empresa siempre.
   introapunts1->inicializa1(extracto, diario, balance);
   extracto->inicializa2(introapunts1, diario, balance);
@@ -339,6 +341,8 @@ int empresa::boton_siguiente() {
 //    diario->boton_siguiente();
   } else if (widget == extracto) {
     extracto->boton_siguiente();
+  } else if (widget == introapunts2) {
+    introapunts2->boton_siguiente();
   }// end if
   return(0);  
 }// end boton_siguiente
@@ -355,6 +359,8 @@ int empresa::boton_anterior() {
 //      introapunts1->boton_anterior();
   } else if (widget == extracto){
     extracto->boton_anterior();
+  } else if (widget == introapunts2){
+    introapunts2->boton_anterior();
   }// end if
   return(0);
 }// end boton_siguiente
@@ -408,6 +414,8 @@ int empresa::boton_primero() {
   widget = pWorkspace->activeWindow ();
   if (widget == introapunts1) {
     introapunts1->boton_inicio();
+  } else if (widget == introapunts2) {
+    introapunts2->boton_inicio();
   } else if (widget == diario){
   } else if (widget == extracto) {
     extracto->boton_inicio();
@@ -420,6 +428,8 @@ int empresa::boton_ultimo() {
   widget = pWorkspace->activeWindow ();
   if (widget == introapunts1) {
     introapunts1->boton_fin();
+  } else if (widget == introapunts2) {
+    introapunts2->boton_fin();
   } else if (widget == diario){
   } else if (widget == extracto) {
     extracto->boton_fin();
@@ -456,7 +466,6 @@ void empresa::Abrirasientos() {
 
 
 void empresa::Ordenarasientos() {
-
    QString query= "SELECT reordenaasientosall()";
    cursor2 * cur = cargacursor(query, "hola");
    delete cur;

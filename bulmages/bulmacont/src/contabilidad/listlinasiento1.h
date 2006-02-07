@@ -40,13 +40,13 @@ public:
             linea->setidasiento(mdb_idasiento);
             i++;
         }// end for
-    }; 
+    };
 
     void setcompany(empresa *c) {
-       companyact=c;
+        companyact=c;
     };
     virtual ~ListLinAsiento1();
-    void guardaListLinAsiento1();
+    virtual void guardaListLinAsiento1();
     void vaciar();
     virtual void pintaListLinAsiento1() {
         _depura("La funci� pintaListLinFactura aun no ha sido implementada\n",2);
@@ -55,6 +55,8 @@ public:
     void borrar();
     LinAsiento1 *linpos(int);
     void borraLinAsiento1(int);
+    Fixed totaldebe();
+    Fixed totalhaber();
 };
 
 #endif

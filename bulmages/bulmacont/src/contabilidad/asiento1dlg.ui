@@ -303,7 +303,7 @@
                 </widget>
                 <widget class="QLineEdit">
                     <property name="name">
-                        <cstring>idasiento1</cstring>
+                        <cstring>m_ordenasiento</cstring>
                     </property>
                     <property name="sizePolicy">
                         <sizepolicy>
@@ -341,7 +341,7 @@
                 </widget>
                 <widget class="QLineEdit">
                     <property name="name">
-                        <cstring>descuadre</cstring>
+                        <cstring>m_descuadre</cstring>
                     </property>
                     <property name="enabled">
                         <bool>false</bool>
@@ -741,7 +741,7 @@
                 </widget>
                 <widget class="QLineEdit">
                     <property name="name">
-                        <cstring>totaldebe1</cstring>
+                        <cstring>m_totaldebe</cstring>
                     </property>
                     <property name="enabled">
                         <bool>false</bool>
@@ -1016,7 +1016,7 @@
                 </widget>
                 <widget class="QLineEdit">
                     <property name="name">
-                        <cstring>totalhaber1</cstring>
+                        <cstring>m_totalhaber</cstring>
                     </property>
                     <property name="enabled">
                         <bool>false</bool>
@@ -1336,6 +1336,7 @@
             <verstretch>0</verstretch>
         </sizepolicy>
         <pixmap>image11</pixmap>
+        <signal>valueChanged(int, int)</signal>
     </customwidget>
 </customwidgets>
 <images>
@@ -1420,7 +1421,7 @@
         <slot>boton_iva()</slot>
     </connection>
     <connection>
-        <sender>idasiento1</sender>
+        <sender>m_ordenasiento</sender>
         <signal>returnPressed()</signal>
         <receiver>Asiento1Dlg</receiver>
         <slot>eturn_numasiento()</slot>
@@ -1443,12 +1444,18 @@
         <receiver>Asiento1Dlg</receiver>
         <slot>eturn_fechaasiento()</slot>
     </connection>
+    <connection>
+        <sender>subform2</sender>
+        <signal>valueChanged(int,int)</signal>
+        <receiver>Asiento1Dlg</receiver>
+        <slot>s_lineaValueChanged()</slot>
+    </connection>
 </connections>
 <tabstops>
-    <tabstop>idasiento1</tabstop>
-    <tabstop>descuadre</tabstop>
-    <tabstop>totaldebe1</tabstop>
-    <tabstop>totalhaber1</tabstop>
+    <tabstop>m_ordenasiento</tabstop>
+    <tabstop>m_descuadre</tabstop>
+    <tabstop>m_totaldebe</tabstop>
+    <tabstop>m_totalhaber</tabstop>
 </tabstops>
 <slots>
     <slot>apuntecambiadogrid( int, int )</slot>
@@ -1467,7 +1474,6 @@
     <slot>prueba()</slot>
     <slot>boton_cargarasiento()</slot>
     <slot>boton_primerasiento()</slot>
-    <slot>boton_siguiente()</slot>
     <slot>boton_ultimoasiento()</slot>
     <slot>return_cuenta()</slot>
     <slot>return_contrapartida()</slot>
@@ -1485,6 +1491,7 @@
     <slot>boton_nuevoasientodocumental()</slot>
     <slot>boton_adjuntar()</slot>
     <slot>pulsadomas(int, int, int)</slot>
+    <slot>s_lineaValueChanged()</slot>
 </slots>
 <layoutdefaults spacing="2" margin="5"/>
 <includehints>

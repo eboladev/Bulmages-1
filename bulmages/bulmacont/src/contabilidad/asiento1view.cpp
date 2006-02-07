@@ -76,7 +76,7 @@
 
 /** \brief Devuelve en un QString el valor del asiento que se está visualizando
   *
-  *  Si no hay ningún asiento viendose devuelve "-1"
+  *  Si no hay ningún asiento viéndose devuelve "-1"
   */
 
 
@@ -91,7 +91,8 @@ Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  
     setListLinAsiento1(subform2);
 	/// Hacemos la carga del listado de asientos.
     cargaasientos();
-
+	/// Desplazamos hasta el último asiento.
+	boton_fin();
     _depura("FIN del Constructor de Asiento1View\n",0);
 }// end intapunts3view
 
@@ -104,7 +105,12 @@ Asiento1View::~Asiento1View() {
 
 }// end intapunts3view
 
-
+void Asiento1View::calculaypintatotales() {
+	m_totaldebe->setText(totaldebe().toQString());
+	m_totalhaber->setText(totalhaber().toQString());
+	Fixed desc = totaldebe() - totalhaber();
+	m_descuadre->setText(desc.toQString());
+}// end calculaypintatotales
 
 
 
@@ -139,7 +145,7 @@ ListAsientos::~ListAsientos() {
   carga del cursor que sirve para recorrer los asientos.
  */
 void ListAsientos::cargaasientos() {
-_depura("ListAsientos::cargaasientos",2);
+_depura("ListAsientos::cargaasientos",0);
     QString cantapunt ="";
     QString saldototal = "";
     QString nombreasiento = "";
@@ -200,7 +206,7 @@ _depura("ListAsientos::cargaasientos",2);
         QMessageBox::warning(0, "No existe asiento", "No existe ningun asiento para mostrar.", "Cerrar",0,0,0);
         return;
     }// end if
-    _depura("End cargaasientos\n",2);
+    _depura("End cargaasientos\n",0);
 }// end cargaasientos
 
 
@@ -270,3 +276,6 @@ QString ListAsientos::idAsiento() {
         return "-1";
     return cursorasientos->valor("idasiento");
 }
+
+
+

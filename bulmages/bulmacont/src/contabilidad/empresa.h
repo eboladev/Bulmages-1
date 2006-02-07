@@ -36,6 +36,7 @@
 class selectccosteview;
 class selectcanalview;
 class balance1view;
+class Asiento1View;
 
 /**
  * @author Tomeu Borras Riera
@@ -60,6 +61,7 @@ private:
     extractoview1 *extracto;
     balanceview *balance;
     intapunts3view *introapunts1; // introapunts.
+    Asiento1View *introapunts2;
     unsigned int numdigitos;  // El numero de digitos que tienen las cuentas.
 
     // Hay unos selectores generales, que van a ser estos y que indican con que se trabaja, luego
@@ -80,6 +82,9 @@ public:
     }
     intapunts3view *intapuntsempresa() {
         return(introapunts1);
+    }
+    Asiento1View *intapuntsempresa2() {
+        return(introapunts2);
     }
     int numdigitosempresa() {
         return(numdigitos);

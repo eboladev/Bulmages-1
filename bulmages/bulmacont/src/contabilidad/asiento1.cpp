@@ -22,29 +22,22 @@
 Asiento1::Asiento1(empresa *comp) : DBRecord (comp) {
     _depura("Asiento1::Asiento1(empresa *)",0);
     companyact=comp;
-
-
     setDBTableName("asiento");
     setDBCampoId("idasiento");
     addDBCampo("idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Asiento");
-    addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, "Descripcion Asiento");
+    addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, "Descripcion Asiento");
     addDBCampo("fecha", DBCampo::DBdate, DBCampo::DBNothing, "Fecha Asiento");
-    addDBCampo("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNothing, "Comentarios Asiento");
+    addDBCampo("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, "Comentarios Asiento");
     addDBCampo("ordenasiento", DBCampo::DBint, DBCampo::DBNotNull, "Orden Asiento");
-    addDBCampo("clase", DBCampo::DBint, DBCampo::DBNotNull, "Tipo Asiento");
-
-/*
+    addDBCampo("clase", DBCampo::DBint, DBCampo::DBNoSave, "Tipo Asiento");
     listalineas = NULL;
-    listadescuentos = NULL;
-*/
-
 }
 
 
 Asiento1::~Asiento1() {}
 
 /*
-
+ 
 void AlbaranCliente::borraAlbaranCliente() {
     if (DBvalue("idalbaran") != "") {
         listalineas->borrar();
@@ -60,61 +53,77 @@ void AlbaranCliente::borraAlbaranCliente() {
         pintaAlbaranCliente();
     }// end if
 }// end borraAlbaranCliente
+ 
+*/
 
-
-void AlbaranCliente::vaciaAlbaranCliente() {
-	DBclear();
+void Asiento1::vaciaAsiento1() {
+    DBclear();
 }// end vaciaAlbaranCliente
 
 
-void AlbaranCliente::pintaAlbaranCliente() {
+
+void Asiento1::pintaAsiento1() {
     _depura("pintaAlbaranCliente\n",0);
-    pintaIdAlbaran(DBvalue("idalbaran"));
-    pintaNumAlbaran(DBvalue("numalbaran"));
-    pintafechaalbaran(DBvalue("fechaalbaran"));
-    pintaComentAlbaran(DBvalue("comentalbaran"));
-    pintaComentPrivAlbaran(DBvalue("comentprivalbaran"));
-    pintaidcliente(DBvalue("idcliente"));
-    pintaidforma_pago(DBvalue("idforma_pago"));
-    pintaidalmacen(DBvalue("idalmacen"));
-    pintarefalbaran(DBvalue("refalbaran"));
-    pintadescalbaran(DBvalue("descalbaran"));
-    pintaidtrabajador(DBvalue("idtrabajador"));
-    pintacontactalbaran(DBvalue("contactalbaran"));
-    pintatelalbaran(DBvalue("telalbaran"));
-    pintaprocesadoalbaran(DBvalue("procesadoalbaran"));
+    pintaidasiento(DBvalue("idasiento"));
+    pintadescripcion(DBvalue("descripcion"));
+    pintafecha(DBvalue("fecha"));
+    pintacomentariosasiento(DBvalue("comentariosasiento"));
+    pintaordenasiento(DBvalue("ordenasiento"));
+    pintaclase(DBvalue("clase"));
     /// Pinta el subformulario de detalle del AlbaranCliente.
-    listalineas->pintaListLinAlbaranCliente();
-    listadescuentos->pintaListDescuentoAlbaranCliente();
+    listalineas->pintaListLinAsiento1();
     /// Pintamos los totales
     calculaypintatotales();
 }// end pintaAlbaranCliente
 
 
-
-// Esta funci� carga un AlbaranCliente.
-int AlbaranCliente::cargaAlbaranCliente(QString idbudget) {
-    _depura("AlbaranCliente::cargaAlbaranCliente("+idbudget+")\n",0);
-    QString query = "SELECT * FROM albaran WHERE idalbaran="+idbudget;
+// Esta funci� carga un Asiento.
+int Asiento1::cargaAsiento1(QString idbudget) {
+    _depura("Asiento1::cargaAsiento1("+idbudget+")\n",0);
+    QString query = "SELECT * FROM asiento WHERE idasiento="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     }// end if
     delete cur;
-	/// Si no existe lista de lineas se crea una.
-	if (listalineas == NULL) listalineas = new ListLinAlbaranCliente(companyact);
-    listalineas->cargaListLinAlbaranCliente(idbudget);
-	/// Si no existe lista de descuentos se crea una.
-	if (listadescuentos == NULL) listadescuentos = new ListDescuentoAlbaranCliente(companyact);
-    listadescuentos->cargaDescuentos(idbudget);
-    pintaAlbaranCliente();
+    /// Si no existe lista de lineas se crea una.
+    if (listalineas == NULL)
+        listalineas = new ListLinAsiento1(companyact);
+    listalineas->cargaListLinAsiento1(idbudget);
+    /// Si no existe lista de descuentos se crea una.
+    pintaAsiento1();
     _depura("Fin AlbaranCliente::cargaAlbaranCliente("+idbudget+")\n",0);
     return 0;
 }// end chargeBudget
 
 
+void Asiento1::abreAsiento1() {
+	_depura("Asiento1::abreAsiento1",2);
+	QString id= DBvalue("idasiento");
+	if (id == "") {
+		_depura("No hay asiento");
+		return;
+	}
+	companyact->abreasiento(id.toInt());
+}
 
-void AlbaranCliente::guardaAlbaranCliente() {
+void Asiento1::cierraAsiento1() {
+	_depura("Asiento1::cierraAsiento1",2);
+	guardaAsiento1();
+	QString id= DBvalue("idasiento");
+	if (id == "") {
+		_depura("No hay asiento");
+		return;
+	}
+	companyact->cierraasiento(id.toInt());
+}
+
+int  estadoAsiento1() {
+	return 0;
+}
+
+ 
+void Asiento1::guardaAsiento1() {
     /// Todo el guardado es una transacci�
     QString id;
     companyact->begin();
@@ -123,12 +132,11 @@ void AlbaranCliente::guardaAlbaranCliente() {
         companyact->rollback();
         return;
     }// end if
-    setidalbaran(id);
+    setidasiento(id);
     companyact->commit();
-    listalineas->guardaListLinAlbaranCliente();
-    listadescuentos->guardaListDescuentoAlbaranCliente();
-    cargaAlbaranCliente(id);
+    listalineas->guardaListLinAsiento1();
+    cargaAsiento1(id);
 }// end guardaAlbaranCliente
+ 
+ 
 
-
-*/

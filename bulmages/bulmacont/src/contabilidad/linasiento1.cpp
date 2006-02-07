@@ -56,6 +56,12 @@ void LinAsiento1::definetabla() {
     addDBCampo("idapunte", DBCampo::DBint, DBCampo::DBNothing, "Nombre 	Articulo");
     addDBCampo("idtipoiva", DBCampo::DBint, DBCampo::DBNothing, "Nombre 	Articulo");
     addDBCampo("orden", DBCampo::DBint, DBCampo::DBNothing, "Nombre 	Articulo");
+    addDBCampo("descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, "Descripcion Cuenta");
+    addDBCampo("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Codigo Cuenta");
+    addDBCampo("descripcioncanal", DBCampo::DBvarchar, DBCampo::DBNoSave, "Descripcion Canal");
+    addDBCampo("nombrecanal", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre Canal");
+    addDBCampo("descripcionc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, "Descripcion Canal");
+    addDBCampo("nombrec_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre Canal");
 }// end definetabla
 
 
@@ -68,11 +74,14 @@ LinAsiento1::LinAsiento1(empresa *comp) : DBRecord(comp) {
 LinAsiento1::LinAsiento1(empresa *comp, QString idborrador) : DBRecord(comp) {
     companyact = comp;
     definetabla();
-    QString SQLQuery = "SELECT * FROM borrador, cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND idborrador="+idborrador;
+    QString SQLQuery = "SELECT * FROM borrador ";
+	SQLQuery += " LEFT JOIN (SELECT codigo, descripcion AS descripcionc, idcuenta  FROM cuenta) AS t1 ON borrador.idcuenta=t1.idcuenta ";
+	SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
+	SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
+	SQLQuery += "WHERE  idborrador="+idborrador;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         DBload(cur);
-
     } else {
         vaciaLinAsiento1();
     }// end if
@@ -121,59 +130,107 @@ void LinAsiento1::guardaLinAsiento1() {
 }// end guardalinpresupuesto
 
 
-/*
-void linpresupuesto::setcodigocompletoarticulo(QString val) {
-    _depura("setcodigocompletoarticulo()\n", 0);
-    setDBvalue("codigocompletoarticulo",val);
-    QString SQLQuery = "SELECT nomarticulo, idarticulo, pvparticulo(idarticulo) AS pvp, ivaarticulo(idarticulo) AS iva FROM articulo WHERE codigocompletoarticulo='"+val+"'";
+
+void LinAsiento1::setcodigo(QString val) {
+    _depura("LinAsiento1::setcodigocuenta()\n", 0);
+    setDBvalue("codigo",val);
+    QString SQLQuery = "SELECT descripcion, idcuenta FROM cuenta WHERE codigo='"+val+"'";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        setDBvalue("nomarticulo",cur->valor("nomarticulo"));
-        setDBvalue("desclpresupuesto",cur->valor("nomarticulo"));
-        setDBvalue("idarticulo", cur->valor("idarticulo"));
-        setDBvalue("pvplpresupuesto",cur->valor("pvp"));
-        setDBvalue("ivalpresupuesto", cur->valor("iva"));
-        if (DBvalue("cantlpresupuesto") == "") {
-            setDBvalue("cantlpresupuesto" , "1");
-            setDBvalue("descuentolpresupuesto" , "0");
-        }// end if
+        setDBvalue("descripcioncuenta",cur->valor("descripcion"));
+        setDBvalue("idcuenta",cur->valor("idcuenta"));
     }// end if
     delete cur;
-}// end setcodigocompletoarticulo
+}// end setcodigocuenta
 
-
-void linpresupuesto::setidarticulo(QString val) {
-    _depura("setidarticulo()\n", 0);
-    setDBvalue("idarticulo",val);
-    QString SQLQuery = "SELECT nomarticulo, codigocompletoarticulo, pvparticulo(idarticulo) AS pvp, ivaarticulo(idarticulo) AS iva FROM articulo WHERE idarticulo="+val+"";
+void LinAsiento1::setidcuenta(QString val) {
+    _depura("LinAsiento1::setidcuenta()\n", 0);
+    setDBvalue("idcuenta",val);
+    QString SQLQuery = "SELECT descripcion, codigo FROM cuenta WHERE idcuenta="+val+"";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        setDBvalue("nomarticulo" ,cur->valor("nomarticulo"));
-        setDBvalue("desclpresupuesto",cur->valor("nomarticulo"));
-        setDBvalue("codigocompletoarticulo",cur->valor("codigocompletoarticulo"));
-        setDBvalue("pvplpresupuesto", cur->valor("pvp"));
-        setDBvalue("ivalpresupuesto", cur->valor("iva"));
-        if (DBvalue("cantlpresupuesto") == "") {
-            setDBvalue("cantlpresupuesto", "1");
-            setDBvalue("descuentolpresupuesto", "0");
-        }// end if
+        setDBvalue("descripcioncuenta" ,cur->valor("descripcion"));
+        setDBvalue("idcuenta",cur->valor("idcuenta"));
     }// end if
     delete cur;
-    _depura("end setidarticulo\n",0);
+    _depura("end LinAsiento1::setidcuenta\n",0);
 }// end setidarticulo
 
 
-float linpresupuesto::calculabase() {
-    _depura("calculabase()\n",0);
-    float cant=0;
-    if (DBvalue("cantlpresupuesto") != "" && DBvalue("pvplpresupuesto") != "" && DBvalue("desclpresupuesto") != "") {
-        cant = DBvalue("cantlpresupuesto").toFloat() * DBvalue("pvplpresupuesto").toFloat();
-        cant = cant - (cant* DBvalue("desclpresupuesto").toFloat());
+
+void LinAsiento1::setidcanal(QString val) {
+    _depura("LinAsiento1::setidcanal()\n", 0);
+    setDBvalue("idcanal",val);
+    QString SQLQuery = "SELECT nombre, descripcion FROM canal WHERE idcanal="+val+"";
+    cursor2 *cur=companyact->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+        setDBvalue("descripcioncanal" ,cur->valor("descripcion"));
+        setDBvalue("nombrecanal",cur->valor("nombre"));
+    }// end if
+    delete cur;
+    _depura("end LinAsiento1::setidcanal\n",0);
+}// end setidarticulo
+
+
+void LinAsiento1::setidc_coste(QString val) {
+    _depura("LinAsiento1::setidc_coste()\n", 0);
+    setDBvalue("idc_coste",val);
+    QString SQLQuery = "SELECT nombre, descripcion FROM c_coste WHERE idc_coste="+val+"";
+    cursor2 *cur=companyact->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+        setDBvalue("descripcionc_coste" ,cur->valor("descripcion"));
+        setDBvalue("nombrec_coste",cur->valor("nombre"));
+    }// end if
+    delete cur;
+    _depura("end LinAsiento1::setidc_coste\n",0);
+}// end setidarticulo
+
+
+void LinAsiento1::setnombrecanal(QString val) {
+    _depura("LinAsiento1::setnombrecanal()\n", 0);
+    setDBvalue("nombrecanal",val);
+    QString SQLQuery = "SELECT * FROM canal WHERE nombre='"+val+"'";
+    cursor2 *cur=companyact->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+        setDBvalue("idcanal",cur->valor("idcanal"));
+        setDBvalue("descripcioncanal",cur->valor("descripcion"));
+    }// end if
+    delete cur;
+}// end setcodigocuenta
+
+
+void LinAsiento1::setnombrec_coste(QString val) {
+    _depura("LinAsiento1::setnombrec_coste()\n", 0);
+    setDBvalue("nombrec_coste",val);
+    QString SQLQuery = "SELECT * FROM c_coste WHERE nombre='"+val+"'";
+    cursor2 *cur=companyact->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+        setDBvalue("idc_coste",cur->valor("idc_coste"));
+        setDBvalue("descripcionc_coste",cur->valor("descripcion"));
+    }// end if
+    delete cur;
+}// end setcodigocuenta
+
+
+Fixed LinAsiento1::calculadebe() {
+    _depura("calculadebe()\n",0);
+    Fixed cant=Fixed("0.0");
+    if (DBvalue("debe") != "" ) {
+        cant = Fixed(DBvalue("debe"));
     }// end if
     return cant;
-}// end calculabase
+}// end calculadebe
 
+Fixed LinAsiento1::calculahaber() {
+    _depura("calculadebe()\n",0);
+    Fixed cant=Fixed("0.0");
+    if (DBvalue("haber") != "" ) {
+        cant = Fixed(DBvalue("haber"));
+    }// end if
+    return cant;
+}// end calculadebe
 
+/*
 float linpresupuesto::calculaiva() {
     _depura("calculaiva()\n",0);
     float cant=0;

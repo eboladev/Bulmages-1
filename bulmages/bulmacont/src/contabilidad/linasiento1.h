@@ -17,6 +17,7 @@
 */
 #include "empresa.h"
 #include "dbrecord.h"
+#include "fixed.h"
 
 class LinAsiento1 : public DBRecord {
 private:
@@ -38,6 +39,8 @@ public:
     ;
     void guardaLinAsiento1();
     void vaciaLinAsiento1();
+	Fixed calculadebe();
+	Fixed calculahaber();
 
 
     inline QString idborrador() {
@@ -94,10 +97,16 @@ public:
     inline QString orden() {
         return DBvalue("orden");
     };
-
-
-
-
+    inline QString codigo() {
+        return DBvalue("codigo");
+    };
+    inline QString descripcioncuenta() {
+        return DBvalue("descripcioncuenta");
+    };
+    inline QString nombrecanal() { return DBvalue("nombrecanal");};
+    inline QString descripcioncanal() { return DBvalue("descripcioncanal");};
+    inline QString nombrec_coste() { return DBvalue("nombrec_coste");};
+    inline QString descripcionc_coste() { return DBvalue("descripcionc_coste");};
 
     inline void setidborrador(QString val) {
         setDBvalue("idborrador",val);
@@ -117,9 +126,6 @@ public:
     inline void setconceptocontable(QString val) {
         setDBvalue("conceptocontable",val);
     };
-    inline void setidcuenta(QString val) {
-        setDBvalue("idcuenta",val);
-    };
     inline void setdescripcion(QString val) {
         setDBvalue("descripcion",val);
     };
@@ -135,14 +141,8 @@ public:
     inline void setcomentario(QString val) {
         setDBvalue("comentario",val);
     };
-    inline void setidcanal(QString val) {
-        setDBvalue("idcanal",val);
-    };
     inline void setmarcaconciliacion(QString val) {
         setDBvalue("marcaconciliacion",val);
-    };
-    inline void setidc_coste(QString val) {
-        setDBvalue("idc_coste",val);
     };
     inline void setidapunte(QString val) {
         setDBvalue("idapunte",val);
@@ -153,7 +153,12 @@ public:
     inline void setorden(QString val) {
         setDBvalue("orden",val);
     };
-
+    void setcodigo(QString val);
+    void setnombrecanal(QString);
+    void setnombrec_coste(QString );
+    inline void setidcuenta(QString );
+    inline void setidcanal(QString );
+    inline void setidc_coste(QString );
 
 
     void borrar();

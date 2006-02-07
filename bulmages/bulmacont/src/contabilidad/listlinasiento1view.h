@@ -21,7 +21,6 @@
 #include <QEvent>
 
 #include "listlinasiento1.h"
-#include "empresa.h"
 #include "linasiento1.h"
 
 
@@ -39,6 +38,8 @@ public:
     LinAsiento1 *lineaact();
 	void cargaconfig();
 	void guardaconfig();
+    virtual void guardaListLinAsiento1();
+
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);
 //    virtual QString searchArticle();
