@@ -64,7 +64,7 @@ void Factura::vaciaFactura() {
 }// end vaciaFactura
 
 void Factura::pintaFactura() {
-    _depura("pintaFactura\n",2);
+    _depura("pintaFactura\n",0);
     pintaidcliente(DBvalue("idcliente"));
     pintaidalmacen(DBvalue("idalmacen"));
     pintaNumFactura(DBvalue("numfactura"));

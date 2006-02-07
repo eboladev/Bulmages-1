@@ -49,7 +49,7 @@ public:
     virtual void guardaListLinAsiento1();
     void vaciar();
     virtual void pintaListLinAsiento1() {
-        _depura("La funci� pintaListLinFactura aun no ha sido implementada\n",2);
+        _depura("La funcion pintaListLinFactura aun no ha sido implementada\n",2);
     };
     void cargaListLinAsiento1(QString);
     void borrar();

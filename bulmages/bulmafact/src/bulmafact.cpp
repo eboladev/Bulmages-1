@@ -71,12 +71,12 @@ bulmafact::bulmafact(QString bd) : bulmafactbase( 0, "bulmafact", Qt::WDestructi
 
 
 bulmafact::~bulmafact() {
-    _depura("Destructor de BulmaFact",2);
+    _depura("Destructor de BulmaFact",0);
     // En windows no termina bien la ejecucion del programa y por eso agregamos esta salida r�ida.
 #ifdef WINDOWS
     exit(0);
 #endif
-    _depura("End Destructor de BulmaFact",2);
+    _depura("End Destructor de BulmaFact",0);
 }
 
 

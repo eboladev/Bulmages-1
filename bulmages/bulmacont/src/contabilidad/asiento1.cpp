@@ -98,7 +98,7 @@ int Asiento1::cargaAsiento1(QString idbudget) {
 
 
 void Asiento1::abreAsiento1() {
-	_depura("Asiento1::abreAsiento1",2);
+	_depura("Asiento1::abreAsiento1",0);
 	QString id= DBvalue("idasiento");
 	if (id == "") {
 		_depura("No hay asiento");
@@ -108,7 +108,7 @@ void Asiento1::abreAsiento1() {
 }
 
 void Asiento1::cierraAsiento1() {
-	_depura("Asiento1::cierraAsiento1",2);
+	_depura("Asiento1::cierraAsiento1",0);
 	guardaAsiento1();
 	QString id= DBvalue("idasiento");
 	if (id == "") {
