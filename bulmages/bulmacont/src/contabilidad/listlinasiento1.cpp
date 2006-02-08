@@ -56,13 +56,16 @@ void ListLinAsiento1::cargaListLinAsiento1(QString idbudget) {
 }// end chargeBudgetLines
 
 
-void ListLinAsiento1::guardaListLinAsiento1() {
+int ListLinAsiento1::guardaListLinAsiento1() {
     LinAsiento1 *linea;
     uint i = 0;
+    int error = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        linea->guardaLinAsiento1();
+        error = linea->guardaLinAsiento1();
+	if (error) return error;
         i++;
     }// end for
+	return error;
 }// en guardaListLinAsiento1
 
 

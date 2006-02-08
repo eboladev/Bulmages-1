@@ -103,6 +103,10 @@ public:
         m_fecha->setText(val);
     };
 
+	virtual void trataestadoAsiento1();
+    void asientoabiertop();
+    void asientocerradop();
+
     Asiento1View(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
     ~Asiento1View();
 public slots:

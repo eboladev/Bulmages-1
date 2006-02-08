@@ -1,7 +1,7 @@
 /***************************************************************************
                           intapunts3view.cpp  -  description
                              -------------------
-    begin                : mar may 27 2003
+    begin                : mar may 27 2006
     copyright            : (C) 2003 by Tomeu Borrás Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
@@ -29,19 +29,6 @@
 #include <qlabel.h>
 
 #include "asiento1view.h"
-
-/*
-#include "asientoview.h"
-#include "calendario.h"
-#include "ivaview.h"
-#include "aplinteligentesview.h"
-#include "listcuentasview1.h"
-#include "cuentaview.h"
-#include "duplicarasientoview.h"
-#include "selectccosteview.h"
-#include "selectcanalview.h"
-*/
-
 #include "busquedafecha.h"
 
 #define COL_FECHA       0
@@ -112,6 +99,53 @@ void Asiento1View::calculaypintatotales() {
 	m_descuadre->setText(desc.toQString());
 }// end calculaypintatotales
 
+
+void Asiento1View::trataestadoAsiento1() {
+	_depura("Asiento1View::trataestadoAsiento1",0);
+	if (estadoAsiento1() == ASCerrado) {
+   	   asientocerradop();
+	} else {
+  	    asientoabiertop();
+	}// end if
+	_depura("END Asiento1View::trataestadoAsiento1",0);
+}// end calculaypintatotales
+
+
+
+/** \brief Pone la pantalla en el modo de asiento abierto
+  * Activa los botones de cierre y pone los elementos como estan configurados
+  */
+void Asiento1View::asientoabiertop() {
+	_depura("Asiento1View::asientoabiertop",0);
+    m_descuadre->setEnabled(TRUE);
+    nuevoasiento->setEnabled(TRUE);
+    botonabrirasiento->setEnabled(FALSE);
+    botoncerrarasiento->setEnabled(TRUE);
+    subform2->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTESA));
+    subform2->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTESA));
+    subform2->setReadOnly(FALSE);
+    botonborrarasiento->setEnabled(TRUE);
+    botoniva->setEnabled(TRUE);
+    botoninteligente->setEnabled(TRUE);
+}// end asientoabiertop
+
+
+/** \brief Pone la pantalla en el modo de asiento cerrado
+  * Activa los botones de apertura y pone los elementos como estan configurados
+  */
+void Asiento1View::asientocerradop() {
+	_depura("Asiento1View::asientocerradop",0);
+    m_descuadre->setEnabled(TRUE);
+    nuevoasiento->setEnabled(TRUE);
+    botonabrirasiento->setEnabled(TRUE);
+    botoncerrarasiento->setEnabled(FALSE);
+    subform2->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTES));
+    subform2->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTES));
+    subform2->setReadOnly(TRUE);
+    botonborrarasiento->setEnabled(TRUE);
+    botoniva->setEnabled(FALSE);
+    botoninteligente->setEnabled(TRUE);
+}// end asientocerradop
 
 
 /**************************************************************************************************************************

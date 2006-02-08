@@ -27,6 +27,7 @@ class empresa;
 */
 class Asiento1 : public DBRecord {
 public:
+	enum estadoasiento {ASVacio=0, ASAbierto=1, ASCerrado=2};
 protected:
     ListLinAsiento1 *listalineas;
     empresa *companyact;
@@ -39,8 +40,8 @@ public:
     void vaciaAsiento1();
 	void abreAsiento1();
 	void cierraAsiento1();
-	int  estadoAsiento1();
-	void guardaAsiento1();
+	estadoasiento  estadoAsiento1();
+	int guardaAsiento1();
 	void setidasiento(QString val) {setDBvalue("idasiento",val);};
 
     /// Establece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
@@ -49,16 +50,18 @@ public:
         listalineas->setcompany(companyact);
     };
 
-    virtual void pintaidasiento(QString){_depura("funcion no implementada");};
-    virtual void pintadescripcion(QString){_depura("funcion no implementada");};
-    virtual void pintafecha(QString){_depura("funcion no implementada");};
-    virtual void pintacomentariosasiento(QString){_depura("funcion no implementada");};
-    virtual void pintaordenasiento(QString){_depura("funcion no implementada");};
-    virtual void pintaclase(QString){_depura("funcion no implementada");};
+    virtual void pintaidasiento(QString){_depura("funcion no implementada pintaidasiento");};
+    virtual void pintadescripcion(QString){_depura("funcion no implementada pintadescripcion");};
+    virtual void pintafecha(QString){_depura("funcion no implementada pintafecha");};
+    virtual void pintacomentariosasiento(QString){_depura("funcion no implementada pintacomentariosasiento");};
+    virtual void pintaordenasiento(QString){_depura("funcion no implementada pintaordenasiento");};
+    virtual void pintaclase(QString){_depura("funcion no implementada pintaclase");};
 
 
-    virtual void calculaypintatotales() {_depura("funcion no implementada");};
+    virtual void calculaypintatotales() {_depura("funcion no implementada calculaypintatotales");};
     virtual void pintaAsiento1();
+    virtual void trataestadoAsiento1(){_depura("funcion no implementada trataestadoAsiento1");};
+
 
 };
 

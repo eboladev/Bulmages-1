@@ -95,10 +95,19 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget * parent, const char * name) : 
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
     setPaletteBackgroundColor("#DDAAAA");
 
-    connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
+    setRowMovingEnabled( TRUE );
+    setColumnMovingEnabled( TRUE );
+    setSorting( TRUE );
+    setSelectionMode( Q3Table::SingleRow );
 
+    QFont tapunts_font(  font() );
+    tapunts_font.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_APUNTES)));
+    tapunts_font.setFamily(confpr->valor(CONF_FONTFAMILY_APUNTES));
+    setFont( tapunts_font );
+
+    connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
-    installEventFilter(this);
+
     cargaconfig();
 }
 
@@ -171,53 +180,76 @@ void ListLinAsiento1View::pintalinListLinAsiento1(int pos) {
 
 
 bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
-    /*
-        fprintf(stderr,"eventFilter()\n");
-        QString idArticle;
-        LinAsiento1 *linea;
-        if ( ev->type() == QEvent::KeyRelease ) {
-            QKeyEvent *k = (QKeyEvent *)ev;
-            int col=currentColumn();
-            int row=currentRow();
-            switch (k->key()) {
-            case Qt::Key_Plus:
-                if (col == COL_DESCLFACTURA) {
-                    setText(row,col,editaTexto(text(row,col)));
-                    valueBudgetLineChanged(row,col);
-                    return TRUE;
-                }// end if
-                break;
-            case Qt::Key_Asterisk:
+    _depura("eventFilter()\n",0);
+    LinAsiento1 *linea;
+    if ( ev->type() == QEvent::KeyRelease ) {
+        QKeyEvent *k = (QKeyEvent *)ev;
+        int col=currentColumn();
+        int row=currentRow();
+        switch (k->key()) {
+        case Qt::Key_Plus:
+            switch(col) {
+            case COL_CODIGO:
+                BusquedaCuenta *cuent = new BusquedaCuenta(0,"Busca Cuenta");
+                cuent->setempresa(companyact);
+                cuent->s_searchCuenta();
                 linea = lineaact();
-                idArticle = searchArticle();
-                linea->setidarticulo(idArticle);
+                linea->setidcuenta(cuent->idcuenta());
+                delete cuent;
                 pintalinListLinAsiento1(currentRow());
                 return TRUE;
                 break;
-            case Qt::Key_Return:
-            case Qt::Key_Enter:
-                // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
-                switch (col) {
-                case COL_CODARTICULO:
-                    setCurrentCell(row, COL_DESCLFACTURA);
-                    break;
-                case COL_DESCLFACTURA:
-                    setCurrentCell(row, COL_CANTLFACTURA);
-                    break;
-                case COL_CANTLFACTURA:
-                    setCurrentCell(row, COL_PVPLFACTURA);
-                    break;
-                case COL_PVPLFACTURA:
-                    setCurrentCell(row+1, COL_CODARTICULO);
-                    break;
-                }// end switch
+            }// end switch
+            break;
+        case Qt::Key_Asterisk:
+            switch(col) {
+            case COL_CONCEPTO:
+                if (row > 0) {
+                    LinAsiento1 *linant = lineaat(row-1);
+                    linea = lineaact();
+                    linea->setconceptocontable(linant->conceptocontable());
+                    pintalinListLinAsiento1(currentRow());
+                    setText(row,col, linant->conceptocontable());
+                }// end if
                 return TRUE;
                 break;
             }// end switch
-        }// end if
-    */
+            break;
+
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
+            switch (col) {
+            case COL_FECHA:
+                setCurrentCell(row, COL_CODIGO);
+                break;
+            case COL_CODIGO:
+                setCurrentCell(row, COL_CONTRAPARTIDA);
+                break;
+            case COL_CONTRAPARTIDA:
+                setCurrentCell(row, COL_DEBE);
+                break;
+            case COL_DEBE:
+                setCurrentCell(row, COL_HABER);
+                break;
+            case COL_HABER:
+                setCurrentCell(row, COL_CONCEPTO);
+                break;
+            case COL_CONCEPTO:
+                setCurrentCell(row+1, COL_FECHA);
+                break;
+
+            }// end switch
+            return TRUE;
+
+            break;
+        }// end switch
+    }// end if
+    _depura("fin del eventFilter");
     return Q3Table::eventFilter( obj, ev );
 } //end eventFilter
+
+
 
 
 
@@ -231,7 +263,14 @@ void ListLinAsiento1View::valueBudgetLineChanged(int row, int col) {
             linea->setfecha(normalizafecha(text(row,COL_FECHA)).toString("dd/MM/yyyy"));
             break;
         case COL_CODIGO:
-            linea->setcodigo(text(row, COL_CODIGO));
+            if (text(row,col) == QString("*")) {
+                if (row > 0) {
+                    LinAsiento1 *linant = lineaat(row-1);
+                    linea->setcodigo(linant->codigo());
+                    //                    setText(row,COL_CODIGO, linant->codigo());
+                }// end if
+            } else
+                linea->setcodigo(text(row, COL_CODIGO));
             break;
         case COL_DEBE: {
                 Fixed val = Fixed(text(row, COL_DEBE));
@@ -247,8 +286,16 @@ void ListLinAsiento1View::valueBudgetLineChanged(int row, int col) {
             linea->setnombrecanal(text(row, COL_NOMBRECANAL));
             break;
         case COL_CONCEPTO:
+            if (text(row,col) == QString("*")) {
+                if (row > 0) {
+                    LinAsiento1 *linant = lineaat(row-1);
+                    linea->setdescripcion(linant->descripcion());
+                    linea->setconceptocontable(linant->conceptocontable());
+                }// end if
+            } else {
             linea->setdescripcion(text(row, COL_CONCEPTO));
             linea->setconceptocontable(text(row, COL_CONCEPTO));
+		}// end if
             break;
         case COL_NOMBREC_COSTE:
             linea->setnombrec_coste(text(row, COL_NOMBREC_COSTE));
@@ -285,14 +332,14 @@ LinAsiento1 *ListLinAsiento1View::lineaat(int row) {
 }// end lineaat
 
 
-void ListLinAsiento1View::guardaListLinAsiento1() {
+int ListLinAsiento1View::guardaListLinAsiento1() {
     LinAsiento1 *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
         linea->setDBvalue("orden",QString::number(i));
         i++;
     }// end for
-    ListLinAsiento1::guardaListLinAsiento1();
+    return  ListLinAsiento1::guardaListLinAsiento1();
 }
 
 /*

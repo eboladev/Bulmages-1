@@ -75,10 +75,10 @@ LinAsiento1::LinAsiento1(empresa *comp, QString idborrador) : DBRecord(comp) {
     companyact = comp;
     definetabla();
     QString SQLQuery = "SELECT * FROM borrador ";
-	SQLQuery += " LEFT JOIN (SELECT codigo, descripcion AS descripcionc, idcuenta  FROM cuenta) AS t1 ON borrador.idcuenta=t1.idcuenta ";
-	SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
-	SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
-	SQLQuery += "WHERE  idborrador="+idborrador;
+    SQLQuery += " LEFT JOIN (SELECT codigo, descripcion AS descripcionc, idcuenta  FROM cuenta) AS t1 ON borrador.idcuenta=t1.idcuenta ";
+    SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
+    SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
+    SQLQuery += "WHERE  idborrador="+idborrador;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         DBload(cur);
@@ -117,16 +117,18 @@ void LinAsiento1::borrar() {
 }// end delete
 
 
-void LinAsiento1::guardaLinAsiento1() {
+int LinAsiento1::guardaLinAsiento1() {
+	_depura("LinAsiento1::guardaLinAsiento1",0);
     QString id;
     companyact->begin();
     int error = DBsave(id);
     if (error ) {
         companyact->rollback();
-        return;
+        return -1;
     }// end if
     setDBvalue("idborrador",id);
     companyact->commit();
+    return 0;
 }// end guardalinpresupuesto
 
 
@@ -146,11 +148,12 @@ void LinAsiento1::setcodigo(QString val) {
 void LinAsiento1::setidcuenta(QString val) {
     _depura("LinAsiento1::setidcuenta()\n", 0);
     setDBvalue("idcuenta",val);
-    QString SQLQuery = "SELECT descripcion, codigo FROM cuenta WHERE idcuenta="+val+"";
+    QString SQLQuery = "SELECT idcuenta, descripcion, codigo FROM cuenta WHERE idcuenta="+val+"";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         setDBvalue("descripcioncuenta" ,cur->valor("descripcion"));
         setDBvalue("idcuenta",cur->valor("idcuenta"));
+	setDBvalue("codigo",cur->valor("codigo"));
     }// end if
     delete cur;
     _depura("end LinAsiento1::setidcuenta\n",0);
@@ -161,7 +164,7 @@ void LinAsiento1::setidcuenta(QString val) {
 void LinAsiento1::setidcanal(QString val) {
     _depura("LinAsiento1::setidcanal()\n", 0);
     setDBvalue("idcanal",val);
-    QString SQLQuery = "SELECT nombre, descripcion FROM canal WHERE idcanal="+val+"";
+    QString SQLQuery = "SELECT idcanal, nombre, descripcion FROM canal WHERE idcanal="+val+"";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         setDBvalue("descripcioncanal" ,cur->valor("descripcion"));
@@ -175,7 +178,7 @@ void LinAsiento1::setidcanal(QString val) {
 void LinAsiento1::setidc_coste(QString val) {
     _depura("LinAsiento1::setidc_coste()\n", 0);
     setDBvalue("idc_coste",val);
-    QString SQLQuery = "SELECT nombre, descripcion FROM c_coste WHERE idc_coste="+val+"";
+    QString SQLQuery = "SELECT idc_coste, nombre, descripcion FROM c_coste WHERE idc_coste="+val+"";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         setDBvalue("descripcionc_coste" ,cur->valor("descripcion"));

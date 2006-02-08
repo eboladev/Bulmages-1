@@ -46,7 +46,7 @@ public:
         companyact=c;
     };
     virtual ~ListLinAsiento1();
-    virtual void guardaListLinAsiento1();
+    virtual int guardaListLinAsiento1();
     void vaciar();
     virtual void pintaListLinAsiento1() {
         _depura("La funcion pintaListLinFactura aun no ha sido implementada\n",2);

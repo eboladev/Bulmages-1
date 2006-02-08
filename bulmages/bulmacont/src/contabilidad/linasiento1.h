@@ -37,7 +37,7 @@ public:
     virtual ~LinAsiento1();
     virtual void pintaLinAsiento1() {}
     ;
-    void guardaLinAsiento1();
+    int guardaLinAsiento1();
     void vaciaLinAsiento1();
 	Fixed calculadebe();
 	Fixed calculahaber();
@@ -156,9 +156,9 @@ public:
     void setcodigo(QString val);
     void setnombrecanal(QString);
     void setnombrec_coste(QString );
-    inline void setidcuenta(QString );
-    inline void setidcanal(QString );
-    inline void setidc_coste(QString );
+    void setidcuenta(QString );
+    void setidcanal(QString );
+    void setidc_coste(QString );
 
 
     void borrar();

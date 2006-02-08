@@ -24,8 +24,6 @@
 #include "linasiento1.h"
 
 
-
-
 class ListLinAsiento1View : public Q3Table , public ListLinAsiento1 {
 Q_OBJECT
 public:
@@ -38,12 +36,10 @@ public:
     LinAsiento1 *lineaact();
 	void cargaconfig();
 	void guardaconfig();
-    virtual void guardaListLinAsiento1();
+    virtual int guardaListLinAsiento1();
 
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);
-//    virtual QString searchArticle();
-//    virtual void manageArticle(int row);
     virtual void contextMenu ( int , int , const QPoint &  );
     virtual void borraLinAsiento1act();
 };

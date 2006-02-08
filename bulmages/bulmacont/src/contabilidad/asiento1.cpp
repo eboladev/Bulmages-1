@@ -74,6 +74,7 @@ void Asiento1::pintaAsiento1() {
     listalineas->pintaListLinAsiento1();
     /// Pintamos los totales
     calculaypintatotales();
+    trataestadoAsiento1();
 }// end pintaAlbaranCliente
 
 
@@ -98,45 +99,66 @@ int Asiento1::cargaAsiento1(QString idbudget) {
 
 
 void Asiento1::abreAsiento1() {
-	_depura("Asiento1::abreAsiento1",0);
-	QString id= DBvalue("idasiento");
-	if (id == "") {
-		_depura("No hay asiento");
-		return;
-	}
-	companyact->abreasiento(id.toInt());
+    _depura("Asiento1::abreAsiento1",0);
+    QString id= DBvalue("idasiento");
+    if (id == "") {
+        _depura("No hay asiento");
+        return;
+    }
+    companyact->abreasiento(id.toInt());
+    trataestadoAsiento1();
 }
 
 void Asiento1::cierraAsiento1() {
-	_depura("Asiento1::cierraAsiento1",0);
-	guardaAsiento1();
-	QString id= DBvalue("idasiento");
-	if (id == "") {
-		_depura("No hay asiento");
-		return;
-	}
-	companyact->cierraasiento(id.toInt());
+    _depura("Asiento1::cierraAsiento1",0);
+    if (guardaAsiento1())
+        return;
+    QString id= DBvalue("idasiento");
+    if (id == "") {
+        _depura("No hay asiento");
+        return;
+    }
+    companyact->cierraasiento(id.toInt());
+    trataestadoAsiento1();
+    _depura("END Asiento1::cierraasiento1",0);
+}// end cierraAsiento1
+
+Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
+    QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento="+DBvalue("idasiento");
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    QString numborr = cur->valor("cuenta");
+    delete cur;
+
+    SQLQuery = "SELECT count(idapunte) AS cuenta FROM apunte WHERE idasiento="+DBvalue("idasiento");
+    cur = companyact->cargacursor(SQLQuery);
+    QString numap = cur->valor("cuenta");
+    delete cur;
+
+    if (numborr == "0")
+        return ASVacio;
+    if (numborr == numap)
+        return ASCerrado;
+    return ASAbierto;
 }
 
-int  estadoAsiento1() {
-	return 0;
-}
 
- 
-void Asiento1::guardaAsiento1() {
+int Asiento1::guardaAsiento1() {
     /// Todo el guardado es una transacci�
     QString id;
     companyact->begin();
     int error = DBsave(id);
     if (error ) {
         companyact->rollback();
-        return;
+        return -1;
     }// end if
     setidasiento(id);
     companyact->commit();
-    listalineas->guardaListLinAsiento1();
-    cargaAsiento1(id);
+    error = listalineas->guardaListLinAsiento1();
+    if (error)
+        return -1;
+//    cargaAsiento1(id);
+    return 0;
 }// end guardaAlbaranCliente
- 
- 
+
+
 
