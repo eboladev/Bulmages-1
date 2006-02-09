@@ -116,13 +116,6 @@ int empresa::inicializa1() {
   
   introapunts2 = new Asiento1View(this, 0,"introapunts2");
   pWorkspace->addWindow(introapunts2);
-
-  /// Pasamos parametros a las ventanas para que puedan coordinarse entre si.\todo El paso de mensajes deber� pasar por la clase \ref empresa siempre.
-  introapunts1->inicializa1(extracto, diario, balance);
-  extracto->inicializa2(introapunts1, diario, balance);
-  diario->inicializa2(introapunts1,extracto, balance);
-  balance->inicializa2(introapunts1, diario, extracto);
-  balance1->inicializa2(introapunts1, diario, extracto);  
   
   return(0);
 }// end inicializa1

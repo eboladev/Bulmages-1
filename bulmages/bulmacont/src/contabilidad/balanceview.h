@@ -27,9 +27,6 @@
 #include "configuracion.h"
 #include "listcuentasview1.h"
 
-class intapunts3view;
-class diarioview1;
-class extractoview1;
 class empresa;
 
 /**
@@ -47,13 +44,7 @@ class balanceview : public balancedlg  {
   Q_OBJECT
 private:
 /// Empresa con la que se ha inicializado la clase
-  empresa *empresaactual;
-/// Base de datos con la que trabaja la conexión
-  postgresiface2* conexionbase;
-/// Estas tres clases deben ser sustituidas por algo en la clase empresa
-  intapunts3view *introapunts;
-  diarioview1 *diario;
-  extractoview1 *extracto;
+  empresa *companyact;
 /// Cursor para recorrer las cuentas
   cursor2 *cursorcta;
 /// El nmero de dígitos que tienen las cuentas de la empresa
@@ -63,7 +54,6 @@ private:
 public: 
   balanceview(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
   void inicializa1(QString, QString, QString, QString, int);
-  void inicializa2(intapunts3view *, diarioview1 *, extractoview1 *);
   ~balanceview();
   void cargacostes();
 private:

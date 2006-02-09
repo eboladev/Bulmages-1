@@ -62,9 +62,8 @@
   * Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
   */
 balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int  ) : balancedlg(parent,name) {
-   empresaactual = emp;
-   conexionbase = empresaactual->bdempresa();
-   numdigitos = empresaactual->numdigitosempresa();
+   companyact = emp;
+   numdigitos = companyact->numdigitosempresa();
 	m_codigoinicial->setempresa(emp);
 	m_codigofinal->setempresa(emp);
 
@@ -130,14 +129,6 @@ balanceview::~balanceview(){
 
 
 
-
-void balanceview::inicializa2(intapunts3view *inta, diarioview1 *diar, extractoview1 *extract) {
-  introapunts = inta;
-  diario = diar;
-  extracto = extract;
-}// end inicializa2
-
-
 /** \brief Esta función se encarga de cargar el combo box de centros de coste para que se pueda seleccionar uno
   * \bug Debe eliminarse el array ccoste.
   */
@@ -145,9 +136,9 @@ void balanceview::cargacostes() {
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
    combocoste->clear();
    QString query="SELECT * FROM c_coste ORDER BY nombre";
-   conexionbase->begin();
-   cursor2 *cursorcoste = conexionbase->cargacursor(query,"costes");
-   conexionbase->commit();
+   companyact->begin();
+   cursor2 *cursorcoste = companyact->cargacursor(query,"costes");
+   companyact->commit();
    combocoste->insertItem("--",0);
    ccostes[0]=0;
    int i=1;
@@ -191,10 +182,10 @@ void balanceview::boton_extracto1(int tipo) {
 				fecha2.setYMD(fechaact.year(), 12, 31);
 			break;
 		}// end switch
- 		  extracto->inicializa1( m_listado->text(m_listado->currentRow(), CUENTA), m_listado->text(m_listado->currentRow(), CUENTA),fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"),  ccostes[combocoste->currentItem()]);
+ 		  companyact->extractoempresa()->inicializa1( m_listado->text(m_listado->currentRow(), CUENTA), m_listado->text(m_listado->currentRow(), CUENTA),fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"),  ccostes[combocoste->currentItem()]);
    }// end if
-   extracto->accept();
-   empresaactual->libromayor();
+   companyact->extractoempresa()->accept();
+   companyact->libromayor();
 }// end boton_extracto1
 
 
@@ -224,17 +215,14 @@ void balanceview::boton_diario1(int tipo) {
 				fecha2.setYMD(fechaact.year(), 12, 31);
 			break;
 		}// end switch
-   	diario->inicializa1(fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+   	companyact->diarioempresa()->inicializa1(fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
    }// end if
-   diario->accept();
-   empresaactual->librodiario();
+   companyact->diarioempresa()->accept();
+   companyact->librodiario();
 }// end boton_diario1
 
-
-
-
 void balanceview::boton_asiento() {
-  empresaactual->muestraapuntes1();
+  companyact->muestraapuntes1();
 }// end if
 
 
@@ -280,69 +268,69 @@ void balanceview::presentar() {
       // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
 	// Causar problemas con el motor de base de datos.
 	fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
-        conexionbase->begin();		
+        companyact->begin();		
 	query= "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo, ejdebe, ejhaber, (ejdebe-ejhaber) AS ejsaldo FROM cuenta";
 	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '"+finicial+"' AND fecha<= '"+ffinal+"' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta";
 	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta";
 	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '"+ejercicio+"' GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";
 
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET padre=0 WHERE padre ISNULL");
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       query.sprintf("DELETE FROM balancetemp WHERE debe=0 AND haber =0");
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
 
       // Vamos a implementar el tema del código
       if (cinicial != "") {
          query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'",cinicial.ascii());
-         conexionbase->ejecuta(query);
+         companyact->ejecuta(query);
       }// end if
       if (cfinal != "") {
          query.sprintf("DELETE FROM balancetemp WHERE codigo > '%s'",cfinal.ascii());
-         conexionbase->ejecuta(query);
+         companyact->ejecuta(query);
       }// end if      
 
       // Para evitar problemas con los nulls hacemos algunos updates
       query.sprintf("UPDATE balancetemp SET tsaldo=0 WHERE tsaldo ISNULL");
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET tdebe=0 WHERE tdebe ISNULL");
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET thaber=0 WHERE thaber ISNULL");
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET asaldo=0 WHERE asaldo ISNULL");
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET ejsaldo=0 WHERE ejsaldo ISNULL");
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET ejdebe=0 WHERE ejdebe ISNULL");
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET ejhaber=0 WHERE ejhaber ISNULL");
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       query.sprintf( "SELECT idcuenta FROM balancetemp ORDER BY padre DESC");
-      cursorapt = conexionbase->cargacursor(query,"Balance1view");
+      cursorapt = companyact->cargacursor(query,"Balance1view");
       while (!cursorapt->eof())  {
          query.sprintf("SELECT * FROM balancetemp WHERE idcuenta=%s",cursorapt->valor("idcuenta").ascii());
-         cursor2 *mycur = conexionbase->cargacursor(query,"cursorrefresco");
+         cursor2 *mycur = companyact->cargacursor(query,"cursorrefresco");
          if (!mycur->eof()) {
             query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo= asaldo+(%2.2f), ejdebe = ejdebe + (%2.2f), ejhaber = ejhaber +(%2.2f), ejsaldo = ejsaldo + (%2.2f) WHERE idcuenta = %d",atof(mycur->valor("tsaldo").ascii()), atof(mycur->valor("tdebe").ascii()), atof(mycur->valor("thaber").ascii()),atof(mycur->valor("asaldo").ascii()),atof(mycur->valor("ejdebe").ascii()), atof(mycur->valor("ejhaber").ascii()), 
 	    atof(mycur->valor("ejsaldo").ascii()),  atoi(mycur->valor("padre").ascii()));
-            conexionbase->ejecuta(query);
+            companyact->ejecuta(query);
          }// end if
          delete mycur;
          cursorapt->siguienteregistro();
       }// end while
       delete cursorapt;
 
-      conexionbase->commit();
-      conexionbase->begin();
+      companyact->commit();
+      companyact->begin();
       // Borramos todo lo que no es de este nivel
       query.sprintf("DELETE FROM balancetemp where nivel(codigo)>%s",combonivel->text(combonivel->currentItem()).ascii());
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       
       //Borramos todo lo que tiene un hijo en el balance
       query.sprintf("DELETE FROM balancetemp WHERE idcuenta IN (SELECT padre FROM balancetemp)");
-      conexionbase->ejecuta(query);
+      companyact->ejecuta(query);
       query.sprintf("SELECT * FROM balancetemp WHERE debe <> 0  OR haber <> 0 ORDER BY codigo");
-      cursorapt = conexionbase->cargacursor(query,"mycursor");
+      cursorapt = companyact->cargacursor(query,"mycursor");
       
       // Calculamos cuantos registros van a crearse y dimensionamos la tabla.
       num1 = cursorapt->numregistros();
@@ -389,8 +377,8 @@ void balanceview::presentar() {
       delete cursorapt;
 
       query.sprintf("DROP TABLE balancetemp");
-      conexionbase->ejecuta(query);
-      conexionbase->commit();
+      companyact->ejecuta(query);
+      companyact->commit();
       
       // Hacemos la actualizacion de los saldos totales
       totalsaldoant->setText(QString::number(tsaldoant,'f',2));
@@ -461,7 +449,7 @@ void balanceview::nivelactivated (int) {
   * Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del balance y lo ejecuta en modo Modal.
   */
 void balanceview::boton_imprimir() {
-   BalancePrintView * balan = new BalancePrintView(empresaactual);
+   BalancePrintView * balan = new BalancePrintView(companyact);
    balan->inicializa1(m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), FALSE);
    balan->exec();
 }// end boton_imprimir.

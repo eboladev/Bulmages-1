@@ -80,6 +80,19 @@ public:
     postgresiface2 *bdempresa() {
         return (this);
     }
+
+	balanceview *balanceempresa() {
+		return balance;
+	}
+	extractoview1 *extractoempresa() {
+		return extracto;
+	}
+	diarioview1 *diarioempresa() {
+		return diario;
+	}
+	balance1view *balnace1empresa() {
+		return balance1;
+	}
     intapunts3view *intapuntsempresa() {
         return(introapunts1);
     }
@@ -148,7 +161,7 @@ public:
     selectcanalview *getselcanales();
     void recalculasaldos();
     void cobPag();  // Gestion de cobros y pagos
-	virtual void s_asiento1();
+    virtual void s_asiento1();
 
 };
 #endif

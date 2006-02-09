@@ -60,9 +60,8 @@
 
 extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, int  ) : extractodlg1(parent,name) {
     fprintf(stderr,"Constructor de extractoview1\n");
-    empresaactual = emp;
-    conexionbase = empresaactual->bdempresa();
-    numdigitos = empresaactual->numdigitosempresa();
+    companyact = emp;
+    numdigitos = companyact->numdigitosempresa();
     m_codigoinicial->setempresa(emp);
     m_codigofinal->setempresa(emp);
     m_codigoinicial->hideNombre();
@@ -142,7 +141,7 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
     cursorcta=NULL;
 
     // Inicializamos la ventana de filtrado
-    filt = new filtrarextractosview(empresaactual,0,0);
+    filt = new filtrarextractosview(companyact,0,0);
     fprintf(stderr,"fin del constructor de extractoview1\n");
 }// end estractoview1
 
@@ -152,13 +151,6 @@ extractoview1::~extractoview1() {
     delete cursorcta;
     delete filt;
 }// end ~extractoview1
-
-
-void extractoview1::inicializa2(intapunts3view *inta, diarioview1 *diar, balanceview *balan) {
-    introapunts = inta;
-    diario = diar;
-    balance = balan;
-}// end inicializa2
 
 
 /** \brief Esta función carga el cursor de cuentas que forman el todo por el todo.
@@ -180,7 +172,7 @@ void extractoview1::accept() {
     if (cursorcta != NULL) {
         delete cursorcta;
     }// end if
-    cursorcta = conexionbase->cargacursor(query,"cursorcuenta");
+    cursorcta = companyact->cargacursor(query,"cursorcuenta");
     presentar();
 }// end extractoview1
 
@@ -190,10 +182,10 @@ void extractoview1::boton_asiento() {
         QString text = listado->text(listado->currentRow(),NUM_ASIENTO);
         int numasiento = atoi((char *)text.ascii());
         if (numasiento != 0) {
-            introapunts->muestraasiento(numasiento);
+            companyact->intapuntsempresa()->muestraasiento(numasiento);
         }// end if
     }// end if
-    empresaactual->muestraapuntes1();
+    companyact->muestraapuntes1();
 }// end if
 
 
@@ -220,10 +212,10 @@ void extractoview1::boton_diario1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         }// end switch
-        diario->inicializa1((char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
+        companyact->diarioempresa()->inicializa1((char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
     }// end if
-    diario->accept();
-    empresaactual->librodiario();
+    companyact->diarioempresa()->accept();
+    companyact->librodiario();
 }// end boton_diario1
 
 
@@ -250,10 +242,10 @@ void extractoview1::boton_balance1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         }// end switch
-        balance->inicializa1(m_codigoinicial->text(),m_codigofinal->text(), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        companyact->balanceempresa()->inicializa1(m_codigoinicial->text(),m_codigofinal->text(), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
-    balance->accept();
-    empresaactual->librobalance();
+    companyact->balanceempresa()->accept();
+    companyact->librobalance();
 }// end boton_balance1
 
 
@@ -300,7 +292,7 @@ void extractoview1::boton_fin() {
 
 
 void extractoview1::boton_imprimir() {
-    ExtractoPrintView *print = new ExtractoPrintView(empresaactual, 0,0);
+    ExtractoPrintView *print = new ExtractoPrintView(companyact, 0,0);
     print->inicializa1(m_fechainicial1->text(), m_fechafinal1->text(), m_codigoinicial->text(), m_codigofinal->text());
     print->setFiltro(filt);
     print->exec();
@@ -313,7 +305,7 @@ void extractoview1::boton_guardar() {
         libromayorprint libromayor;
         QString finicial = m_fechainicial1->text().ascii();
         QString ffinal = m_fechafinal1->text().ascii();
-        libromayor.inicializa(conexionbase);
+        libromayor.inicializa(companyact);
         libromayor.inicializa1(m_codigoinicial->text(), m_codigofinal->text(), finicial, ffinal);
         libromayor.inicializa2((char *) fn.ascii());
         libromayor.accept();
@@ -384,8 +376,8 @@ void extractoview1::presentar() {
         // Hacemos la consulta de los apuntes a listar en la base de datos.
         QString query="";
         // Al igual que en el caso anterior los centros de coste han cambiado y aun no se pueden implementar.
-        selectcanalview *scanal=empresaactual->getselcanales();
-        selectccosteview *scoste=empresaactual->getselccostes();
+        selectcanalview *scanal=companyact->getselcanales();
+        selectccosteview *scoste=companyact->getselccostes();
         QString ccostes = scoste->cadcoste();
         if (ccostes != "")
             ccostes.sprintf(" AND idc_coste IN (%s) ", ccostes.ascii());
@@ -404,7 +396,7 @@ void extractoview1::presentar() {
 
         fprintf(stderr,"%s\n",query.ascii());
 
-        cursorapt=conexionbase->cargacursor(query,"cargasaldoscuentafecha");
+        cursorapt=companyact->cargacursor(query,"cargasaldoscuentafecha");
 
         num1 = cursorapt->numregistros();
         if (!cursorapt->eof()) {
@@ -414,7 +406,7 @@ void extractoview1::presentar() {
             cursor2* cursoraux;
 
             query.sprintf("SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta=%d AND fecha <'%s'",idcuenta, finicial.ascii());
-            cursoraux = conexionbase->cargacursor(query, "saldos_iniciales");
+            cursoraux = companyact->cargacursor(query, "saldos_iniciales");
 
             if (!cursoraux->eof()) {
                 debeinicial = atof(cursoraux->valor("tdebe").ascii());
@@ -461,7 +453,7 @@ void extractoview1::presentar() {
                 int ccoste = atoi(cursorapt->valor("idc_coste").ascii());
                 query.sprintf( "SELECT * FROM c_coste WHERE idc_coste=%d",ccoste);
 
-                cursorcoste=conexionbase->cargacursor(query,"ccoste");
+                cursorcoste=companyact->cargacursor(query,"ccoste");
 
                 if (!cursorcoste->eof()) {
                     cadaux.sprintf("%s",cursorcoste->valor("nombre").ascii());
@@ -473,7 +465,7 @@ void extractoview1::presentar() {
                 int canal = atoi(cursorapt->valor("idcanal").ascii());
                 query.sprintf( "SELECT * FROM canal WHERE idcanal=%d",canal);
 
-                cursorcanal=conexionbase->cargacursor(query,"canal");
+                cursorcanal=companyact->cargacursor(query,"canal");
 
                 if (!cursorcanal->eof()) {
                     cadaux.sprintf("%s",cursorcanal->valor("nombre").ascii());
@@ -486,7 +478,7 @@ void extractoview1::presentar() {
                     query.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursorapt->valor("contrapartida").ascii());
                     fprintf(stderr,"%s\n",query.ascii());
 
-                    cursoraux1=conexionbase->cargacursor(query,"contrapartida");
+                    cursoraux1=companyact->cargacursor(query,"contrapartida");
 
                     if (!cursoraux1->eof()) {
                         listado->setText(j,CONTRAPARTIDA,cursoraux1->valor("codigo"));
@@ -587,9 +579,9 @@ void extractoview1::apuntecambiadogrid(int row,int col) {
     } else {
         query.sprintf("UPDATE APUNTE SET punteo = FALSE WHERE idapunte=%s",listado->text(row,IDAPUNTE).ascii());
     }// end if
-    conexionbase->begin();
-    conexionbase->ejecuta(query.ascii());
-    conexionbase->commit();
+    companyact->begin();
+    companyact->ejecuta(query.ascii());
+    companyact->commit();
 }// end if
 
 void extractoview1::boton_filtrar() {
@@ -600,21 +592,21 @@ void extractoview1::boton_filtrar() {
 void extractoview1::boton_casacion() {
     QString query;
     query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND haber <>0  AND idcuenta=%s ORDER BY fecha",cursorcta->valor("idcuenta").ascii());
-    conexionbase->begin();
-    cursor2 *curshaber = conexionbase->cargacursor(query, "curshaber");
-    conexionbase->commit();
+    companyact->begin();
+    cursor2 *curshaber = companyact->cargacursor(query, "curshaber");
+    companyact->commit();
     while (!curshaber->eof()) {
         query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor("haber").ascii(), cursorcta->valor("idcuenta").ascii());
-        conexionbase->begin();
-        cursor2 *cursdebe = conexionbase->cargacursor(query.ascii(), "cursdebe");
-        conexionbase->commit();
+        companyact->begin();
+        cursor2 *cursdebe = companyact->cargacursor(query.ascii(), "cursdebe");
+        companyact->commit();
         if (!cursdebe->eof()) {
             query.sprintf("UPDATE apunte set punteo=TRUE WHERE idapunte=%s",curshaber->valor("idapunte").ascii());
-            conexionbase->begin();
-            conexionbase->ejecuta(query);
+            companyact->begin();
+            companyact->ejecuta(query);
             query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",cursdebe->valor("idapunte").ascii());
-            conexionbase->ejecuta(query);
-            conexionbase->commit();
+            companyact->ejecuta(query);
+            companyact->commit();
         }// end if
         delete cursdebe;
         curshaber->siguienteregistro();
@@ -631,7 +623,7 @@ void extractoview1::boton_guardarpunteo() {
         if (mifile != NULL) {
             QString query;
             query = "SELECT * FROM apunte WHERE punteo=TRUE";
-            cursor2 *cursp = conexionbase->cargacursor(query,"punteos");
+            cursor2 *cursp = companyact->cargacursor(query,"punteos");
             while (!cursp->eof()) {
                 fprintf(mifile,"%s\n", cursp->valor("idapunte").ascii());
                 cursp->siguienteregistro();
@@ -651,9 +643,9 @@ void extractoview1::boton_guardarpunteo() {
 void extractoview1::boton_borrapunteo() {
     int valor = QMessageBox::warning( 0, tr("Borrar Punteo"), "Se dispone a borrar el punteo. Este cambio es irrecuperable si no ha guardado su el punte. Desea continuar?", QMessageBox::Yes, QMessageBox::No);
     if (valor == QMessageBox::Yes) {
-        conexionbase->begin();
-        conexionbase->ejecuta("UPDATE apunte SET punteo=FALSE");
-        conexionbase->commit();
+        companyact->begin();
+        companyact->ejecuta("UPDATE apunte SET punteo=FALSE");
+        companyact->commit();
         presentar();
     }// end if
 }// end boton_cargarpunteo
@@ -669,16 +661,16 @@ void extractoview1::boton_cargarpunteos() {
     if (!fn.isEmpty()) {
         ifstream filestr((char *) fn.ascii());
         string a;
-        conexionbase->begin();
-        conexionbase->ejecuta("UPDATE apunte SET punteo=FALSE");
-        conexionbase->commit();
+        companyact->begin();
+        companyact->ejecuta("UPDATE apunte SET punteo=FALSE");
+        companyact->commit();
         while (filestr.good()) {
             filestr >> a;
             QString query;
             query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",a.c_str());
-            conexionbase->begin();
-            conexionbase->ejecuta(query);
-            conexionbase->commit();
+            companyact->begin();
+            companyact->ejecuta(query);
+            companyact->commit();
         }// end while
         filestr.close();
     }// end if

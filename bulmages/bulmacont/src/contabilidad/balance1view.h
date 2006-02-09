@@ -55,19 +55,10 @@ class balance1view : public balance1dlg  {
    Q_OBJECT
 private:
 /// Empresa con la que trabaja la clase.
-  empresa *empresaactual;
-/// Base de datos con la que trabaja la empresa
-  postgresiface2 *conexionbase;
+  empresa *companyact;
 /// Indica el número de dígitos que tienen por defecto las cuentas.
   int numdigitos;
   
-/// Puntero a una clase amiga que se podra acceder de otra forma  
-  intapunts3view *introapunts;
-/// Puntero a una clase amiga que se podra acceder de otra forma  
-  diarioview1 *diario;
-/// Puntero a una clase amiga que se podra acceder de otra forma  
-  extractoview1 *extracto;
-
 /// Este array contiene los centros de coste por defecto  
   int ccostes[200];
 
@@ -88,7 +79,6 @@ public:
   balance1view(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
   void inicializa1(QString, QString, QString, QString, int);
   ~balance1view();
-  void inicializa2(intapunts3view *, diarioview1 *, extractoview1 *);
 private:  
   void cargacostes();
   void presentar();

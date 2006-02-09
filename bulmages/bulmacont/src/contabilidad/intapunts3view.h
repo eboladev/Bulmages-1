@@ -33,13 +33,9 @@
 #include "qtable1.h"
 #include "postgresiface2.h"
 #include "configuracion.h"
-
 #include "fixed.h"
 #include "busquedafecha.h"
 
-class extractoview1;
-class diarioview1;
-class balanceview;
 class empresa;
 
 /**
@@ -61,13 +57,9 @@ private:
     /// Indica que el asiento esta abierto.
     int abierto;
     /// Puntero a la clase amiga \ref extractoview1 \todo el paso de mensajes debería hacerse a traves de la clase empresa.
-    extractoview1 *extracto;
-    /// Puntero a la clase amiga \ref diarioview1 \todo el paso de mensajes debería hacerse a través de la clase empresa y este puntero debe desaparacer.
-    diarioview1 *diario;
-    /// Puntero a la clase amiga \ref balanceview \todo el paso de mensajes debería hacerse a través de la clase empresa.
-    balanceview *balance;
+
     /// Puntero a la conexión de la base de datos abierta actualmente.
-    postgresiface2 *conexionbase;
+    empresa *companyact;
     /// Indica el nmero de dígitos que usan por defecto las cuentas. Es un parametro sacado de la configuración de la empresa.
     unsigned int numdigitos;
 public:
@@ -76,8 +68,6 @@ public:
     cursor2 *cursorasientos;
     /// Este objeto contiene todas las opciones de filtraje necesarias para funcionar. es un objeto del tipo \ref filtrarasientosview
     filtrarasientosview *filt;
-    /// ESte puntero del tipo \ref empresa contiene la referencia a la clase que ha inicializado este objeto.
-    empresa *empresaactual;
     ///Para poder enganchar plugins a esta ventana se ha habilitado este layout.
     QHBoxLayout *layoutPlugins;
 public:
@@ -86,7 +76,6 @@ public:
     QString idAsiento();
     intapunts3view(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
     ~intapunts3view();
-    int inicializa1(extractoview1 *, diarioview1 *, balanceview *);
     void cargarcursor();
     void repinta(int);
     void muestraasiento(int);

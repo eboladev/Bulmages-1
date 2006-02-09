@@ -23,9 +23,6 @@
 #include "postgresiface2.h"
 
 class empresa;
-class intapunts3view;
-class extractoview1;
-class balanceview;
 class filtrardiarioview;
 
 /**
@@ -40,23 +37,22 @@ class diarioview1 : public diariodlg1  {
    Q_OBJECT
 private:
 /// Estas tres variables son las clases sobre las que trabaja. Deberian estar en la empresa.
+/*
    intapunts3view *introapunts;
    extractoview1 *extracto;
    balanceview *balance;
-/// Base de datos con la que trabaja esta clase.
-   postgresiface2 *conexionbase;
+*/
+
 /// Clase adyacente a esta que se encarga de toda la parte de filtrado y que ayuda en la composición del query del listado pasandole parámetros.
    filtrardiarioview *filt;
 /// Empresa con la que esta trabajando esta clase.
-   empresa *empresaactual;
+   empresa *companyact;
 public:
    diarioview1(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
    ~diarioview1();
    void accept();
 /// Inicializa la clase con las fechas inicial y final. El ltimo parametro no se usa.  
    void inicializa1(QString, QString, int);
-/// Inicializa la clase indicandole cuales son las clases amigas a esta para que pueda mandarles mensajes. (Esta función está pendiente de ser olvidada y de ser todo pasado a la clase \ref empresa.)   
-   void inicializa2(intapunts3view *, extractoview1 *, balanceview *);
 private:
 /// Muestra en pantalla los resultados para los datos introducidos.
    void presentar();

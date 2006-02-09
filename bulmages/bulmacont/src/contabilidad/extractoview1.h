@@ -26,9 +26,6 @@
 
 
 
-class intapunts3view;
-class diarioview1;
-class balanceview;
 class empresa;
 class filtrarextractosview;
 
@@ -50,15 +47,7 @@ public:
     /// El extracto se realiza sobre un cursor que siempre esté en memoria.
     cursor2 *cursorcta;
     /// Siempre se propaga la empresa a estos objetos.
-    empresa *empresaactual;
-    /// Este objeto debería pasar por la empresa para no tener problemas (Que es quien debería hacer el paso de mensajes).
-    diarioview1 *diario;
-    /// Este puntero debería estar ubicado en la clase empresa (Que es quien debería hacer el paso de mensajes).
-    intapunts3view *introapunts;
-    /// Este puntero debería estar ubicado en la clase empresa (Que es quien debería hacer el paso de mensajes).
-    balanceview *balance;
-    /// Base de datos con la que se inicializa la clase para hacer todas sus operaciones
-    postgresiface2* conexionbase;
+    empresa *companyact;
     /// Tabla auxiliar que almacena los centros de coste (DEBERIA CAMBIARSE POR UN QMap)
     int ccostes[200];
     /// Esta clase es el filtro que se puede aplicar sobre los extractos. Es un dialog Qt separado
@@ -67,7 +56,6 @@ public:
     extractoview1(empresa *,QWidget *parent=0, const char *name=0, int flags=0);
     ~extractoview1();
     void inicializa1(QString, QString, QString, QString, int);
-    void inicializa2(intapunts3view *, diarioview1 *, balanceview *);
     void vaciar();
     void presentar();
     void ajustes();
