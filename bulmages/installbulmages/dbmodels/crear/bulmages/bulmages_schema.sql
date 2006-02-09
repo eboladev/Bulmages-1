@@ -237,7 +237,7 @@ CREATE TABLE borrador (
  -- El campo idapunte no se utiliza, existe la combinacion idasiento, orden que lo sustituye.
     idapunte integer,
     idtipoiva integer,
-    orden integer NOT NULL
+    orden integer
 );
 
 
@@ -1874,11 +1874,6 @@ BEGIN
 	ELSE
 		RAISE EXCEPTION '' Cuenta inexistente '';
         END IF;
-	
-	SELECT INTO ord * FROM borrador WHERE idasiento = NEW.idasiento AND orden=NEW.orden AND idborrador <> NEW.idborrador;
-	IF FOUND THEN
-		RAISE EXCEPTION '' El campo orden está duplicado '';
-	END IF;
 	
 	SELECT INTO  ej  * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo =0;
 	IF FOUND THEN

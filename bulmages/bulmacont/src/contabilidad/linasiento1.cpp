@@ -118,7 +118,7 @@ void LinAsiento1::borrar() {
 
 
 int LinAsiento1::guardaLinAsiento1() {
-	_depura("LinAsiento1::guardaLinAsiento1",0);
+    _depura("LinAsiento1::guardaLinAsiento1",0);
     QString id;
     companyact->begin();
     int error = DBsave(id);
@@ -135,6 +135,7 @@ int LinAsiento1::guardaLinAsiento1() {
 
 void LinAsiento1::setcodigo(QString val) {
     _depura("LinAsiento1::setcodigocuenta()\n", 0);
+    val = extiendecodigo(val,companyact->numdigitosempresa());
     setDBvalue("codigo",val);
     QString SQLQuery = "SELECT descripcion, idcuenta FROM cuenta WHERE codigo='"+val+"'";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
@@ -153,7 +154,7 @@ void LinAsiento1::setidcuenta(QString val) {
     if (!cur->eof()) {
         setDBvalue("descripcioncuenta" ,cur->valor("descripcion"));
         setDBvalue("idcuenta",cur->valor("idcuenta"));
-	setDBvalue("codigo",cur->valor("codigo"));
+        setDBvalue("codigo",cur->valor("codigo"));
     }// end if
     delete cur;
     _depura("end LinAsiento1::setidcuenta\n",0);
@@ -169,6 +170,10 @@ void LinAsiento1::setidcanal(QString val) {
     if (!cur->eof()) {
         setDBvalue("descripcioncanal" ,cur->valor("descripcion"));
         setDBvalue("nombrecanal",cur->valor("nombre"));
+    } else {
+        setDBvalue("descripcioncanal" ,"");
+        setDBvalue("nombrecanal","");
+        setDBvalue("idcanal","");
     }// end if
     delete cur;
     _depura("end LinAsiento1::setidcanal\n",0);
@@ -183,6 +188,10 @@ void LinAsiento1::setidc_coste(QString val) {
     if (!cur->eof()) {
         setDBvalue("descripcionc_coste" ,cur->valor("descripcion"));
         setDBvalue("nombrec_coste",cur->valor("nombre"));
+    } else {
+        setDBvalue("descripcionc_coste" ,"");
+        setDBvalue("nombrec_coste","");
+        setDBvalue("idc_coste","");
     }// end if
     delete cur;
     _depura("end LinAsiento1::setidc_coste\n",0);
@@ -197,6 +206,10 @@ void LinAsiento1::setnombrecanal(QString val) {
     if (!cur->eof()) {
         setDBvalue("idcanal",cur->valor("idcanal"));
         setDBvalue("descripcioncanal",cur->valor("descripcion"));
+    } else {
+        setDBvalue("idcanal","");
+        setDBvalue("descripcioncanal","");
+        setDBvalue("nombrecanal","");
     }// end if
     delete cur;
 }// end setcodigocuenta
@@ -210,6 +223,10 @@ void LinAsiento1::setnombrec_coste(QString val) {
     if (!cur->eof()) {
         setDBvalue("idc_coste",cur->valor("idc_coste"));
         setDBvalue("descripcionc_coste",cur->valor("descripcion"));
+    } else {
+        setDBvalue("idc_coste","");
+        setDBvalue("descripcionc_coste","");
+        setDBvalue("nombrec_coste","");
     }// end if
     delete cur;
 }// end setcodigocuenta

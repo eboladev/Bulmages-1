@@ -56,17 +56,17 @@
   * @version KDevelop version 1.3 code generation
   */
 class Bulmages01 : public BulmaContBase    {
-  Q_OBJECT
+    Q_OBJECT
 public:
-    empresa empresaactual;  
+    empresa *empresaactual;
     Q3DockWindow *doc;
 public:
     Bulmages01(QWidget * parent = 0, const char * name = 0, Qt::WFlags f = Qt::WType_TopLevel, QString  DB="");
     ~Bulmages01();
 
-  protected:
+protected:
     /** overloaded for Message box on last window exit */
-   // bool queryExit();
+    // bool queryExit();
     /** event filter to catch close events for MDI child windows and is installed in createClient() on every child window.
       * Closing a window calls the eventFilter first which removes the view from the connected documents' view list. If the
       * last view is going to be closed, the eventFilter() tests if the document is modified; if yes, it asks the user to
@@ -74,10 +74,10 @@ public:
       */
     virtual bool eventFilter(QObject* object, QEvent* event);
 
-  private slots:
+private slots:
 
-	virtual void tile();
-	virtual void cascade();
+    virtual void tile();
+    virtual void cascade();
 
     /** reverts the last editing action */
     void slotEditUndo();
@@ -139,8 +139,10 @@ public:
     void slotTiposIVA();
     void slotFPago();
 
-	virtual void s_asiento1() {empresaactual.s_asiento1();};
-       
+    virtual void s_asiento1() {
+        empresaactual->s_asiento1();
+    };
+    void closeEvent( QCloseEvent *);
 
     /** toggle the toolbar*/
     void slotViewToolBar(bool toggle);
@@ -153,9 +155,9 @@ public:
     /** change the status message of the whole statusbar temporary */
     void slotStatusHelpMsg(const QString &text);
     /** gets called when the window menu is activated; recreates the window menu with all opened window titles. */
-    void windowMenuAboutToShow();    
-    
-  private:
+    void windowMenuAboutToShow();
+
+private:
     /// the name used
     QString DBName;
     /** initializes all QActions of the application */
@@ -171,18 +173,24 @@ public:
     void initView();
     void showView();
 
-    Q3VBox *view_back; 
-    public:
-	/// Para los plugins es interesante crear las funciones de acceso a los distintos elementos.
+    Q3VBox *view_back;
+public:
+    /// Para los plugins es interesante crear las funciones de acceso a los distintos elementos.
 
-//	Q3PopupMenu *pHerramientas() {return Herramientas;};
-//	Q3PopupMenu *pVerMenu() {return Ver;};
-//	Q3PopupMenu *pAyudaMenu() {return Ayuda;};
-	QMenu *pHerramientas() {return Herramientas;};
-	QMenu *pVerMenu() {return Ver;};
-	QMenu *pAyudaMenu() {return Ayuda;};
+    //	Q3PopupMenu *pHerramientas() {return Herramientas;};
+    //	Q3PopupMenu *pVerMenu() {return Ver;};
+    //	Q3PopupMenu *pAyudaMenu() {return Ayuda;};
+    QMenu *pHerramientas() {
+        return Herramientas;
+    };
+    QMenu *pVerMenu() {
+        return Ver;
+    };
+    QMenu *pAyudaMenu() {
+        return Ayuda;
+    };
 
-    private:
+private:
     /** pWorkspace is the MDI frame widget that handles MDI child widgets. Inititalized in
       * initView()
       */

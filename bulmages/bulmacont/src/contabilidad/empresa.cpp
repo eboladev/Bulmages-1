@@ -61,11 +61,13 @@ empresa::empresa(){
    introapunts1 = NULL;
    selccostes  = NULL;
    selcanales = NULL;
+   introapunts2 = NULL;
    nombre = "";
 }// end empresa
 
 
 empresa::~empresa(){
+	_depura("~empresa",0);
   if (diario) delete diario;
   if (extracto) delete extracto;
   if (balance1) delete balance1;
@@ -73,6 +75,7 @@ empresa::~empresa(){
   if (introapunts1) delete introapunts1;
   if (selccostes) delete selccostes;
   if (selcanales) delete selcanales;
+  if (introapunts2) delete introapunts2;
 }// end ~empresa
 
 /** \brief inicializa la clase con el nombre de la base de datos y con el workspace.

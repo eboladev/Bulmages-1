@@ -25,7 +25,7 @@
 
 
 class ListLinAsiento1View : public Q3Table , public ListLinAsiento1 {
-Q_OBJECT
+    Q_OBJECT
 public:
     ListLinAsiento1View(QWidget *parent=0, const char *name=0);
     ~ListLinAsiento1View();
@@ -34,9 +34,8 @@ public:
     virtual bool eventFilter( QObject *obj, QEvent *ev );
     LinAsiento1 *lineaat(int);
     LinAsiento1 *lineaact();
-	void cargaconfig();
-	void guardaconfig();
-    virtual int guardaListLinAsiento1();
+    void cargaconfig();
+    void guardaconfig();
 
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);

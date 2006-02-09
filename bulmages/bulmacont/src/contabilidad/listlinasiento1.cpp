@@ -60,12 +60,20 @@ int ListLinAsiento1::guardaListLinAsiento1() {
     LinAsiento1 *linea;
     uint i = 0;
     int error = 0;
+    Fixed descuadre=totaldebe();
+    descuadre = descuadre - totalhaber();
+    if (descuadre != 0) {
+        _depura("Asiento descuadrado, no puede ser cerrado",2);
+        return -1;
+    }// end if
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+        linea->setDBvalue("orden",QString::number(i));
         error = linea->guardaLinAsiento1();
-	if (error) return error;
+        if (error)
+            return error;
         i++;
     }// end for
-	return error;
+    return error;
 }// en guardaListLinAsiento1
 
 

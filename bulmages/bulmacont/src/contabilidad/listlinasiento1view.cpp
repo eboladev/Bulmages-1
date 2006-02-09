@@ -28,7 +28,7 @@
 #define COL_IDCCOSTE        15
 #define COL_ORDEN	    16
 
-
+#include "calendario.h"
 #include "listlinasiento1view.h"
 #include "funcaux.h"
 
@@ -42,7 +42,6 @@
 void ListLinAsiento1View::guardaconfig() {
     _depura("ListLinAsiento1View::guardaconfig",0);
     QString aux = "";
-
     QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinasiento1view.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
@@ -53,6 +52,7 @@ void ListLinAsiento1View::guardaconfig() {
         file.close();
     }// end if
 }// end guardaconfig()
+
 
 void ListLinAsiento1View::cargaconfig() {
     _depura("ListLinAsiento1View::cargaconfig",0);
@@ -67,6 +67,7 @@ void ListLinAsiento1View::cargaconfig() {
         file.close();
     }
 }// end cargaconfig
+
 
 ListLinAsiento1View::ListLinAsiento1View(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinAsiento1() {
     /// Inicializamos la tabla de lineas de Borrador
@@ -89,12 +90,10 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget * parent, const char * name) : 
     horizontalHeader()->setLabel( COL_IDCANAL, tr( "COL_IDCANAL" ) );
     horizontalHeader()->setLabel( COL_IDCCOSTE, tr( "COL_IDCCOSTE" ) );
     horizontalHeader()->setLabel( COL_ORDEN, tr( "COL_ORDEN" ) );
-
     setSelectionMode( Q3Table::SingleRow );
     setColumnReadOnly(COL_NOMCUENTA,true);
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
     setPaletteBackgroundColor("#DDAAAA");
-
     setRowMovingEnabled( TRUE );
     setColumnMovingEnabled( TRUE );
     setSorting( TRUE );
@@ -105,11 +104,18 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget * parent, const char * name) : 
     tapunts_font.setFamily(confpr->valor(CONF_FONTFAMILY_APUNTES));
     setFont( tapunts_font );
 
+    hideColumn(COL_IDBORRADOR);
+    hideColumn(COL_TIPOIVA);
+    hideColumn(COL_IDCUENTA);
+    hideColumn(COL_IDCONTRAPARTIDA);
+    hideColumn(COL_IDCANAL);
+    hideColumn(COL_IDCCOSTE);
+    hideColumn(COL_ORDEN);
+
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
-
     cargaconfig();
-}
+}// ListLinAsiento1View
 
 
 ListLinAsiento1View::~ListLinAsiento1View() {
@@ -134,18 +140,325 @@ void ListLinAsiento1View::pintaListLinAsiento1() {
 
 
 
-void ListLinAsiento1View::contextMenu ( int row, int, const QPoint & pos ) {
+void ListLinAsiento1View::contextMenu ( int row, int col, const QPoint & pos ) {
+    LinAsiento1 *linea = lineaact();
     Q3PopupMenu *popup;
+    QString query;
     int opcion;
+
+    /// Confeccionamos el menu dependiendo del estado y de la casilla pulsada.
     popup = new Q3PopupMenu;
-    popup->insertItem(tr(tr("Borrar Linea")),1);
+    Q3PopupMenu *menucanal = new Q3PopupMenu( this );
+    Q3PopupMenu *menucoste = new Q3PopupMenu( this );
+    popup->insertItem(tr("Borrar Linea"),1);
+    popup->insertItem(tr("Subir"),2);
+    popup->insertItem(tr("Bajar"),3);
+    popup->insertItem(tr("Igual que la anterior (*)"),4);
+
+    switch (col) {
+    case COL_NOMBRECANAL:
+        query = "SELECT * FROM canal";
+        cursor2 *cur = companyact->cargacursor(query,"canales");
+        menucanal->insertItem(tr("Ninguno"), 1000);
+        while (!cur->eof()) {
+            menucanal->insertItem(cur->valor("nombre"),1000+atoi(cur->valor("idcanal")));
+            cur->siguienteregistro();
+        }// end while
+        delete cur;
+        popup->insertItem(tr("&Seleccionar Canal"),menucanal);
+        break;
+    }// end switch
     opcion = popup->exec(pos);
-    delete popup;
+
+    /// Dependiendo de la opcion que hayamos seleccionado actuamos.
     switch(opcion) {
     case 1:
         borraLinAsiento1(row);
+        break;
+    case 2:
+        if (row > 0) {
+            LinAsiento1 *linea1= m_lista.take(row-1);
+            LinAsiento1 *linea = m_lista.take(row-1);
+            m_lista.insert(row-1, linea1);
+            m_lista.insert(row-1, linea);
+            pintaListLinAsiento1();
+        }// end if
+        break;
+    case 3:
+        if (row < (int)m_lista.count()-1) {
+            LinAsiento1 *linea1= m_lista.take(row);
+            LinAsiento1 *linea = m_lista.take(row);
+            m_lista.insert(row, linea1);
+            m_lista.insert(row, linea);
+            pintaListLinAsiento1();
+        }// end if
+        break;
+
+    default:
+        switch(col) {
+        case COL_NOMBRECANAL:
+            if (opcion == 1000) {
+                linea->setidcanal("");
+            }// end if
+            if (opcion > 1000) {
+                QString query1;
+                opcion -= 1000;
+                query1.sprintf("SELECT * FROM canal WHERE idcanal=%d", opcion);
+                cursor2 *cur = companyact->cargacursor(query1);
+                if (!cur->eof()) {
+                    linea->setidcanal(cur->valor("idcanal"));
+                }// end if
+                delete cur;
+            }// end if
+            pintalinListLinAsiento1(row);
+            break;
+        }// end switch
+        break;
     }// end switch
+    delete popup;
+    delete menucoste;
+    delete menucanal;
 }// end contextMenuRequested
+
+
+/*
+        QString query;
+        popup = new Q3PopupMenu;
+        popup->insertItem(tr(tr("Igual que la anterior (*)")),4);
+        switch (col) {
+        case COL_CANAL:
+            query = "SELECT * FROM canal";
+            conexionbase->begin();
+            cur = conexionbase->cargacursor(query,"canales");
+            menucanal->insertItem(tr("Ninguno"), 1000);
+            conexionbase->commit();
+            while (!cur->eof()) {
+                menucanal->insertItem(cur->valor("nombre"),1000+atoi(cur->valor("idcanal").ascii()));
+                cur->siguienteregistro();
+            }// end while
+            delete cur;
+            popup->insertItem(tr("&Seleccionar Canal"),menucanal);
+            break;
+        case COL_CCOSTE:
+            query = "SELECT * FROM c_coste";
+            conexionbase->begin();
+            cur  = conexionbase->cargacursor(query,"costes");
+            menucoste->insertItem(tr("Ninguno"), 1000);
+            conexionbase->commit();
+            while (!cur->eof()) {
+                menucoste->insertItem(cur->valor("nombre"), 1000+atoi(cur->valor("idc_coste").ascii()));
+                cur->siguienteregistro();
+            }// end while
+            delete cur;
+            popup->insertItem(tr("&Seleccionar Centro de Coste"),menucoste);
+            break;
+        case COL_SUBCUENTA:
+        case COL_CONTRAPARTIDA:
+        case COL_FECHA:
+        case COL_NOMCUENTA:
+            popup->insertItem(tr("Seleccionar Valor (+)"),5);
+            break;
+        case COL_DEBE:
+        case COL_HABER:
+            popup->insertItem(tr("Introducir Descuadre (+)"),5);
+            break;
+        }// end switch
+        popup->insertSeparator();
+        popup->insertItem(tr("Duplicar Apunte"),1);
+        popup->insertItem(tr("Borrar Apunte"),6);
+        popup->insertItem(tr("Vaciar Asiento"),7);
+        popup->insertSeparator();
+        popup->insertItem(tr("Subir (Ctrl Arriba)"),2);
+        popup->insertItem(tr("Bajar (Ctrl Abajo)"),3);
+        opcion = popup->exec(poin);
+        delete popup;
+        delete menucanal;
+        delete menucoste;
+ 
+        switch(opcion) {
+        case 1:
+            duplicarapunte();
+            break;
+        case 2:
+            subirapunte(row);
+            repinta(idAsiento().toInt());
+            tapunts3->setCurrentCell(row-1,col);
+            break;
+        case 3:
+            bajarapunte(row);
+            repinta(idAsiento().toInt());
+            tapunts3->setCurrentCell(row+1,col);
+            break;
+        case 4:
+            duplicar(col);
+            break;
+        case 5:
+            switch(col) {
+            case COL_FECHA: {
+                    int dia, mes, ano;
+                    Q3PtrList<QDate> a;
+                    QString cadena;
+                    calendario *cal = new calendario(0,0);
+                    cal->exec();
+                    a = cal->dn->selectedDates();
+                    dia = a.first()->day();
+                    mes = a.first()->month();
+                    ano = a.first()->year();
+                    cadena.sprintf("%2.2d/%2.2d/%d",dia, mes, ano);
+                    fprintf(stderr,"Se ha pulsado:%s\n", cadena.ascii());
+                    tapunts3->setText(row, COL_FECHA, cadena);
+                    delete cal;
+                    break;
+                }// end case
+            case COL_NOMCUENTA:
+            case COL_SUBCUENTA:
+                // Hacemos aparecer la ventana de cuentas
+                tapunts3->setText(row,COL_SUBCUENTA,"");
+                cambiadasubcuenta(row);
+                break;
+            case COL_CONTRAPARTIDA:
+                tapunts3->setText(row,COL_CONTRAPARTIDA,"");
+                cambiadacontrapartida(row);
+                break;
+            case COL_DEBE:
+                tapunts3->setText(row,COL_DEBE, descuadre->text());
+                calculadescuadre();
+                break;
+            case COL_HABER:
+                tapunts3->setText(row,COL_HABER, descuadre->text());
+                calculadescuadre();
+                break;
+            }// end switch
+            break;
+        case 6:
+            borraborrador(row);
+            break;
+        case 7:
+            if(QMessageBox::question(this, tr("Cuidado!"), tr("Seguro que quiere borrar todos los apuntes del asiento?"),tr("&NO"), tr("&SI"), QString::null, 1, 0)) {
+                for(; tapunts3->text(0,COL_IDBORRADOR) != ""; borraborrador(0))
+                    ;
+            }// end if
+            break;
+        default:
+            switch(col) {
+            case COL_CANAL:
+                if (opcion == 1000) {
+                    tapunts3->setText(row, COL_CANAL, "");
+                    tapunts3->setText(row, COL_IDCANAL, "");
+                }// end if
+                if (opcion > 1000) {
+                    QString query1;
+                    opcion -= 1000;
+                    query1.sprintf("SELECT * FROM canal WHERE idcanal=%d", opcion);
+                    conexionbase->begin();
+                    cur = conexionbase->cargacursor(query1.ascii(),"canales1");
+                    conexionbase->commit();
+                    if (!cur->eof()) {
+                        tapunts3->setText(row,COL_CANAL, cur->valor("nombre"));
+                        tapunts3->setText(row,COL_IDCANAL, cur->valor("idcanal"));
+                    }// end if
+                    delete cur;
+                }// end if
+                break;
+            case COL_CCOSTE:
+                if (opcion == 1000) {
+                    tapunts3->setText(row, COL_CCOSTE, "");
+                    tapunts3->setText(row, COL_IDCCOSTE, "");
+                }// end if
+                if (opcion > 1000) {
+                    QString query1;
+                    opcion -= 1000;
+                    query1.sprintf("SELECT * FROM c_coste WHERE idc_coste=%d", opcion);
+                    conexionbase->begin();
+                    cur = conexionbase->cargacursor(query1.ascii(),"canales1");
+                    conexionbase->commit();
+                    if (!cur->eof()) {
+                        tapunts3->setText(row,COL_CCOSTE, cur->valor("nombre"));
+                        tapunts3->setText(row,COL_IDCCOSTE, cur->valor("idc_coste"));
+                    }// end if
+                    delete cur;
+                }// end if
+                break;
+            }// end switch
+            break;
+        }// end switch
+    } else {
+        // Si el asiento esta cerrado el menú a mostrar es diferente
+        popup = new Q3PopupMenu;
+        popup->insertItem(tr("Ver Diario (Este día)"),101);
+        popup->insertItem(tr("Ver Diario (Este mes)"),103);
+        popup->insertItem(tr("Ver Diario (Este año)"),104);
+        popup->insertSeparator();
+        popup->insertItem(tr("Ver Extracto (Este día)"),111);
+        popup->insertItem(tr("Ver Extracto (Este mes)"),113);
+        popup->insertItem(tr("Ver Extracto (Este año)"),114);
+        popup->insertSeparator();
+        popup->insertItem(tr("Ver Balance (Este día)"),121);
+        popup->insertItem(tr("Ver Balance (Este mes)"),123);
+        popup->insertItem(tr("Ver Balance (Este año)"),124);
+        popup->insertSeparator();
+        if (col == COL_NOMCUENTA || col == COL_CONTRAPARTIDA || col == COL_SUBCUENTA) {
+            popup->insertItem(tr("Editar Cuenta"),130);
+            popup->insertItem(tr("Sustituir Cuenta"), 140);
+        }// end if
+        opcion = popup->exec(poin);
+        switch(opcion) {
+ 
+        case 101:
+            boton_diario1(0);
+            break;
+        case 103:
+            boton_diario1(1);
+            break;
+        case 104:
+            boton_diario1(2);
+            break;
+        case 111:
+            boton_extracto1(0);
+            break;
+        case 113:
+            boton_extracto1(1);
+            break;
+        case 114:
+            boton_extracto1(2);
+            break;
+        case 121:
+            boton_balance1(0);
+            break;
+        case 123:
+            boton_balance1(1);
+            break;
+        case 124:
+            boton_balance1(2);
+            break;
+        case 140:
+            /// Aun no esta implementada la sustitución de cuentas desde el menú contextual.
+            fprintf(stderr,"Aun no esta implementada la sustitución de cuentas desde el menú contextual\n");
+            break;
+        case 130:
+            // Se ha elegido la opción de editar cuenta.
+            // Abrimos la ventana de edición de cuentas.
+            QString idcuenta;
+            if (col == COL_SUBCUENTA || col == COL_NOMCUENTA)
+                idcuenta = tapunts3->text(row,COL_IDCUENTA);
+            else
+                idcuenta = tapunts3->text(row,COL_IDCONTRAPARTIDA);
+            cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
+            nuevae->cargacuenta(atoi(idcuenta.ascii()));
+            nuevae->exec();
+            delete nuevae;
+            repinta(idAsiento().toInt());
+            break;
+        }// end switch
+        delete popup;
+    }// end if
+}// end contextmenu
+ 
+ 
+ 
+ 
+*/
+
 
 
 void ListLinAsiento1View::borraLinAsiento1act() {
@@ -186,6 +499,7 @@ bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
         QKeyEvent *k = (QKeyEvent *)ev;
         int col=currentColumn();
         int row=currentRow();
+        linea = lineaact();
         switch (k->key()) {
         case Qt::Key_Plus:
             switch(col) {
@@ -193,26 +507,26 @@ bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
                 BusquedaCuenta *cuent = new BusquedaCuenta(0,"Busca Cuenta");
                 cuent->setempresa(companyact);
                 cuent->s_searchCuenta();
-                linea = lineaact();
                 linea->setidcuenta(cuent->idcuenta());
                 delete cuent;
                 pintalinListLinAsiento1(currentRow());
                 return TRUE;
-                break;
-            }// end switch
-            break;
-        case Qt::Key_Asterisk:
-            switch(col) {
-            case COL_CONCEPTO:
-                if (row > 0) {
-                    LinAsiento1 *linant = lineaat(row-1);
-                    linea = lineaact();
-                    linea->setconceptocontable(linant->conceptocontable());
+            case COL_FECHA: {
+                    int dia, mes, ano;
+                    Q3PtrList<QDate> a;
+                    QString cadena;
+                    calendario *cal = new calendario(0,0);
+                    cal->exec();
+                    a = cal->dn->selectedDates();
+                    dia = a.first()->day();
+                    mes = a.first()->month();
+                    ano = a.first()->year();
+                    cadena.sprintf("%2.2d/%2.2d/%d",dia, mes, ano);
+                    linea->setfecha(cadena);
+                    delete cal;
                     pintalinListLinAsiento1(currentRow());
-                    setText(row,col, linant->conceptocontable());
-                }// end if
-                return TRUE;
-                break;
+                    return TRUE;
+                }// end case
             }// end switch
             break;
 
@@ -260,30 +574,56 @@ void ListLinAsiento1View::valueBudgetLineChanged(int row, int col) {
     if (linea != NULL) {
         switch (col) {
         case COL_FECHA:
-            linea->setfecha(normalizafecha(text(row,COL_FECHA)).toString("dd/MM/yyyy"));
+            if (text(row,col) == QString("*")) {
+                if (row > 0) {
+                    LinAsiento1 *linant = lineaat(row-1);
+                    linea->setfecha(linant->fecha());
+                }// end if
+            } else
+                linea->setfecha(normalizafecha(text(row,COL_FECHA)).toString("dd/MM/yyyy"));
             break;
         case COL_CODIGO:
             if (text(row,col) == QString("*")) {
                 if (row > 0) {
                     LinAsiento1 *linant = lineaat(row-1);
                     linea->setcodigo(linant->codigo());
-                    //                    setText(row,COL_CODIGO, linant->codigo());
                 }// end if
             } else
                 linea->setcodigo(text(row, COL_CODIGO));
             break;
         case COL_DEBE: {
-                Fixed val = Fixed(text(row, COL_DEBE));
-                linea->setdebe(val.toQString());
-                break;
-            }
+                if (text(row,col) == QString("*")) {
+                    if (row > 0) {
+                        LinAsiento1 *linant = lineaat(row-1);
+                        linea->setdebe(linant->debe());
+                    }// end if
+                } else {
+                    Fixed val = Fixed(text(row, COL_DEBE));
+                    linea->setdebe(val.toQString());
+                    break;
+                }// end if
+            }// end case
         case COL_HABER: {
-                Fixed val = Fixed(text(row, COL_HABER));
-                linea->sethaber(val.toQString());
+                if (text(row,col) == QString("*")) {
+                    if (row > 0) {
+                        LinAsiento1 *linant = lineaat(row-1);
+                        linea->sethaber(linant->haber());
+                    }// end if
+                } else {
+                    Fixed val = Fixed(text(row, COL_HABER));
+                    linea->sethaber(val.toQString());
+                }// end if
                 break;
-            }
+            }// end case
         case COL_NOMBRECANAL:
-            linea->setnombrecanal(text(row, COL_NOMBRECANAL));
+            if (text(row,col) == QString("*")) {
+                if (row > 0) {
+                    LinAsiento1 *linant = lineaat(row-1);
+                    linea->setidcanal(linant->idcanal());
+                }// end if
+            } else {
+                linea->setnombrecanal(text(row, COL_NOMBRECANAL));
+            }
             break;
         case COL_CONCEPTO:
             if (text(row,col) == QString("*")) {
@@ -293,12 +633,19 @@ void ListLinAsiento1View::valueBudgetLineChanged(int row, int col) {
                     linea->setconceptocontable(linant->conceptocontable());
                 }// end if
             } else {
-            linea->setdescripcion(text(row, COL_CONCEPTO));
-            linea->setconceptocontable(text(row, COL_CONCEPTO));
-		}// end if
+                linea->setdescripcion(text(row, COL_CONCEPTO));
+                linea->setconceptocontable(text(row, COL_CONCEPTO));
+            }// end if
             break;
         case COL_NOMBREC_COSTE:
-            linea->setnombrec_coste(text(row, COL_NOMBREC_COSTE));
+            if (text(row,col) == QString("*")) {
+                if (row > 0) {
+                    LinAsiento1 *linant = lineaat(row-1);
+                    linea->setidc_coste(linant->idc_coste());
+                }// end if
+            } else {
+                linea->setnombrec_coste(text(row, COL_NOMBREC_COSTE));
+            }// end if
             break;
         }// end switch
         pintalinListLinAsiento1(row);
@@ -330,41 +677,4 @@ LinAsiento1 *ListLinAsiento1View::lineaat(int row) {
         return NULL;
     }// end if
 }// end lineaat
-
-
-int ListLinAsiento1View::guardaListLinAsiento1() {
-    LinAsiento1 *linea;
-    uint i = 0;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        linea->setDBvalue("orden",QString::number(i));
-        i++;
-    }// end for
-    return  ListLinAsiento1::guardaListLinAsiento1();
-}
-
-/*
- 
-void ListLinAsiento1View::manageArticle(int row) {
-    fprintf(stderr,"manageArticle(%d)\n",row);
-    LinAsiento1 *linea= lineaat(row);
-    QString articleCode = text(row, COL_CODARTICULO);
-    linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));
-    pintalinListLinAsiento1(row);
-} //end manageArticle
- 
- 
-QString ListLinAsiento1View::searchArticle() {
-    fprintf(stderr,"Busqueda de un art�ulo\n");
-    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,articleslist::SelectMode);
-    // Esto es convertir un QWidget en un sistema modal de dialogo.
-    this->setEnabled(false);
-    artlist->show();
-    while(!artlist->isHidden())
-        theApp->processEvents();
-    this->setEnabled(true);
-    QString idArticle = artlist->idArticle();
-    delete artlist;
-    return idArticle;
-}// end searchArticle
-*/
 

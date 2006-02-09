@@ -38,7 +38,10 @@
 
 Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QString DB)
         : BulmaContBase(parent,name,f) {
-	empresaactual.init(DB);
+
+	empresaactual = new empresa();
+
+	empresaactual->init(DB);
 
     setCaption(tr("BulmaCont -- ") + DBName +" --");
     initView();
@@ -48,13 +51,14 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
     initStatusBar();
     showView();
 
-    ctllog->setempresa(&empresaactual);
+    ctllog->setempresa(empresaactual);
     ctllog->add
     (LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario ha entrado en bulmacont");
 }// end Bulmages01
 
 
 Bulmages01::~Bulmages01() {
+	_depura("~Bulmages01",2);
     //En el constructor asignamos un puntero a empresa { ctllog->setempresa(&empresaactual); }
     //Al destruir la clase empresa no podemos seguir apuntando a un objeto que ya no existe.
     //es necesario eliminar la referencia a este objeto, por ejemplo aquí
@@ -97,11 +101,11 @@ void Bulmages01::initView() {
 
 
 void Bulmages01::showView() {
-//    empresaactual.inicializa1(DBName, pWorkspace);
-	empresaactual.setWorkspace(pWorkspace);
-	empresaactual.inicializa1();
+//    empresaactual->inicializa1(DBName, pWorkspace);
+	empresaactual->setWorkspace(pWorkspace);
+	empresaactual->inicializa1();
     showMaximized();
-    empresaactual.maximiza();
+    empresaactual->maximiza();
 }// end initView
 
 
@@ -120,7 +124,7 @@ void Bulmages01::slotEditUndo()  {
 }//end slotEditUndo
 
 void Bulmages01::slotAmortizaciones() {
-    empresaactual.amortizaciones();
+    empresaactual->amortizaciones();
 }// end amortizaciones
 
 
@@ -222,7 +226,7 @@ void Bulmages01::slotStatusHelpMsg(const QString &text) {
 
 void Bulmages01::slotPlanCuentas()  {
     statusBar()->message(tr("Plan de Cuentas"));
-    empresaactual.muestracuentas();
+    empresaactual->muestracuentas();
 }// end slotPlanCuentas
 
 
@@ -233,147 +237,147 @@ void Bulmages01::slotListadoCuentas()  {
 
 void Bulmages01::slotAsientosInteligentes()  {
     statusBar()->message(tr("Asientos Inteligentes"));
-    empresaactual.ainteligentes();
+    empresaactual->ainteligentes();
 }// end slotAsientosInteligentes
 
 
 void Bulmages01::slotIntroducirApuntes()  {
     statusBar()->message(tr("Introducción de Apuntes"));
-    empresaactual.muestraapuntes();
+    empresaactual->muestraapuntes();
 }// end slotIntroducirApuntes
 
 void Bulmages01::slotIntroducirApuntes1()  {
     statusBar()->message(tr("Introducción de Borrador"));
-    empresaactual.muestraapuntes1();
+    empresaactual->muestraapuntes1();
 }// end slotIntroducirApuntes1
 
 void Bulmages01::slotListarApuntes() {
-    empresaactual.muestraasientos();
+    empresaactual->muestraasientos();
 }// end slotListarApuntes
 
 void Bulmages01::slotAsientos()  {
-    empresaactual.muestraasientos();
+    empresaactual->muestraasientos();
 }// end slotAsientos
 
 void Bulmages01::slotCentrosCoste() {
-    empresaactual.ccostes();
+    empresaactual->ccostes();
 }
 
 void Bulmages01::slotCanales() {
-    empresaactual.canales();
+    empresaactual->canales();
 }
 
 void Bulmages01::slotMPatrimoniales() {
-    empresaactual.mpatrimoniales();
+    empresaactual->mpatrimoniales();
 }
 
 void Bulmages01::slotPropiedadesEmpresa()  {
     statusBar()->message(tr("Propiedades Empresa"));
-    empresaactual.propiedadempresa();
+    empresaactual->propiedadempresa();
 }// end slotPropiedadesEmpresa
 
 
 void Bulmages01::slotLibroMayor() {
     statusBar()->message(tr("Libro Mayor"));
-    empresaactual.libromayor();
+    empresaactual->libromayor();
 }
 
 void Bulmages01::slotLibroDiario()  {
     statusBar()->message(tr("Libro Diario"));
-    empresaactual.librodiario();
+    empresaactual->librodiario();
 }// end slotLibroDiario
 
 
 void Bulmages01::slotSiguiente() {
-    empresaactual.boton_siguiente();
+    empresaactual->boton_siguiente();
 }// end slotSiguiente
 
 
 void Bulmages01::slotCompBalance() {
-    empresaactual.compbalance();
+    empresaactual->compbalance();
 }// end slotCompBalance
 
 
 void Bulmages01::slotAnterior() {
-    empresaactual.boton_anterior();
+    empresaactual->boton_anterior();
 }//end slotAnterior
 
 void Bulmages01::slotUltimo() {
-    empresaactual.boton_ultimo();
+    empresaactual->boton_ultimo();
 }// end slotUltimo
 
 void Bulmages01::slotPrimero() {
-    empresaactual.boton_primero();
+    empresaactual->boton_primero();
 }// end slotPrimero
 
 void Bulmages01::slotPerdidas() {}// end slotPerdidas
 
 void Bulmages01::slot347() {
-    empresaactual.modelo347();
+    empresaactual->modelo347();
 }// end slot347
 
 void Bulmages01::slotBalan() {}// end slotBalan
 
 void Bulmages01::slotRegistroIva() {
-    empresaactual.registroiva();
+    empresaactual->registroiva();
 }// end slotRegistroIva
 
 
 void Bulmages01::slotReload() {
-    empresaactual.boton_reload();
+    empresaactual->boton_reload();
 }// end slotReload
 
 
 void Bulmages01::slotBalance() {
-    empresaactual.librobalance();
+    empresaactual->librobalance();
 }// end slotBalance
 
 void Bulmages01::slotBalanceTree() {
-    empresaactual.librobalancetree();
+    empresaactual->librobalancetree();
 }// end slotBalance
 
 void Bulmages01::slotGuardar() {
-    empresaactual.boton_guardar();
+    empresaactual->boton_guardar();
 }// end slotGuardar
 
 
 void Bulmages01::slotcierraEmpresa() {
-    empresaactual.cierraempresa();
+    empresaactual->cierraempresa();
 }// end slotGuardar
 
 
 void Bulmages01::slotabreEmpresa() {
-    empresaactual.abreempresa();
+    empresaactual->abreempresa();
 }// end slotabreEmpresa
 
 void Bulmages01::slotregularizaEmpresa() {
-    empresaactual.regularizaempresa();
+    empresaactual->regularizaempresa();
 }// end slotregularizaEmpresa
 
 
 void Bulmages01::slotImprimir() {
-    empresaactual.boton_imprimir();
+    empresaactual->boton_imprimir();
 }// end slotImprimir
 
 
 
 void Bulmages01::slotAbrirasientos() {
-    empresaactual.Abrirasientos();
+    empresaactual->Abrirasientos();
 }// end slotAbrirasientos
 
 void Bulmages01::slotOrdenarasientos() {
-    empresaactual.Ordenarasientos();
+    empresaactual->Ordenarasientos();
 }// end slotOrdenarasientos
 
 
 
 void Bulmages01::slotCobPag() {
-    empresaactual.cobPag();
+    empresaactual->cobPag();
 }// end cobPag
 
 
 void Bulmages01::slotFiltro() {
-    empresaactual.Filtro();
+    empresaactual->Filtro();
 }// end slotFiltro
 
 void Bulmages01::windowMenuAboutToShow()  {}// end windowMenuAboutToShow
@@ -389,30 +393,41 @@ void Bulmages01::slotAyuda() {
 }// end slotAyuda
 
 void Bulmages01::slotSCuentas() {
-    empresaactual.reemplazacuentaenasientos();
+    empresaactual->reemplazacuentaenasientos();
 }// end slotNEjercicio
 
 
 void Bulmages01::slotRecSald() {
-    // empresaactual.recalculasaldos();
+    // empresaactual->recalculasaldos();
 }
 
 void Bulmages01::slotCCosteDef() {
-    empresaactual.centrocostedefecto();
+    empresaactual->centrocostedefecto();
 }// end slotNEjercicio
 
 void Bulmages01::slotCanalDef() {
-    empresaactual.canaldefecto();
+    empresaactual->canaldefecto();
 }// end slotNEjercicio
 
 
 void Bulmages01::slotTiposIVA() {
-    empresaactual.tiposIVA();
+    empresaactual->tiposIVA();
 }
 
 
 void Bulmages01::slotFPago() {
-    empresaactual.fPago();
+    empresaactual->fPago();
+}
+
+
+void Bulmages01::closeEvent( QCloseEvent *) {
+	_depura("closeEvent",0);
+    delete empresaactual;
+#ifdef WINDOWS
+    exit(0);
+#endif
+    delete pWorkspace;
+    delete view_back;
 }
 
 

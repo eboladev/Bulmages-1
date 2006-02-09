@@ -76,10 +76,10 @@ Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  
     _depura("Constructor de Asiento1View\n",0);
     companyact = emp;
     setListLinAsiento1(subform2);
-	/// Hacemos la carga del listado de asientos.
+    /// Hacemos la carga del listado de asientos.
     cargaasientos();
-	/// Desplazamos hasta el último asiento.
-	boton_fin();
+    /// Desplazamos hasta el último asiento.
+    boton_fin();
     _depura("FIN del Constructor de Asiento1View\n",0);
 }// end intapunts3view
 
@@ -89,25 +89,24 @@ Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  
   * Destruye los objetos creados y libera la memoria
   */
 Asiento1View::~Asiento1View() {
-
 }// end intapunts3view
 
 void Asiento1View::calculaypintatotales() {
-	m_totaldebe->setText(totaldebe().toQString());
-	m_totalhaber->setText(totalhaber().toQString());
-	Fixed desc = totaldebe() - totalhaber();
-	m_descuadre->setText(desc.toQString());
+    m_totaldebe->setText(totaldebe().toQString());
+    m_totalhaber->setText(totalhaber().toQString());
+    Fixed desc = totaldebe() - totalhaber();
+    m_descuadre->setText(desc.toQString());
 }// end calculaypintatotales
 
 
 void Asiento1View::trataestadoAsiento1() {
-	_depura("Asiento1View::trataestadoAsiento1",0);
-	if (estadoAsiento1() == ASCerrado) {
-   	   asientocerradop();
-	} else {
-  	    asientoabiertop();
-	}// end if
-	_depura("END Asiento1View::trataestadoAsiento1",0);
+    _depura("Asiento1View::trataestadoAsiento1",0);
+    if (estadoAsiento1() == ASCerrado) {
+        asientocerradop();
+    } else {
+        asientoabiertop();
+    }// end if
+    _depura("END Asiento1View::trataestadoAsiento1",0);
 }// end calculaypintatotales
 
 
@@ -116,7 +115,7 @@ void Asiento1View::trataestadoAsiento1() {
   * Activa los botones de cierre y pone los elementos como estan configurados
   */
 void Asiento1View::asientoabiertop() {
-	_depura("Asiento1View::asientoabiertop",0);
+    _depura("Asiento1View::asientoabiertop",0);
     m_descuadre->setEnabled(TRUE);
     nuevoasiento->setEnabled(TRUE);
     botonabrirasiento->setEnabled(FALSE);
@@ -134,7 +133,7 @@ void Asiento1View::asientoabiertop() {
   * Activa los botones de apertura y pone los elementos como estan configurados
   */
 void Asiento1View::asientocerradop() {
-	_depura("Asiento1View::asientocerradop",0);
+    _depura("Asiento1View::asientocerradop",0);
     m_descuadre->setEnabled(TRUE);
     nuevoasiento->setEnabled(TRUE);
     botonabrirasiento->setEnabled(TRUE);
@@ -154,11 +153,11 @@ void Asiento1View::asientocerradop() {
 ***************************************************************************************************************************/
 
 ListAsientos::ListAsientos(empresa *emp) {
-	companyact = emp;
-	cursorasientos = NULL;
+    companyact = emp;
+    cursorasientos = NULL;
     /// Creamos el objeto de filtrado de asientos para que el filtro funcione siempre bien desde esta ventana.
     filt = new filtrarasientosview(companyact,0,"");
-	
+
 }// end ListAsientos
 
 ListAsientos::~ListAsientos() {
@@ -179,7 +178,7 @@ ListAsientos::~ListAsientos() {
   carga del cursor que sirve para recorrer los asientos.
  */
 void ListAsientos::cargaasientos() {
-_depura("ListAsientos::cargaasientos",0);
+    _depura("ListAsientos::cargaasientos",0);
     QString cantapunt ="";
     QString saldototal = "";
     QString nombreasiento = "";
