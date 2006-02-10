@@ -11,10 +11,10 @@
 //
 #include "busquedaalmacen.h"
 #include "company.h"
-#include <qcombobox.h>
+#include <Q3ComboBox>
 
 BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *name)
-: QComboBox(parent, name) {
+: Q3ComboBox(parent, name) {
     companyact=NULL;
     m_cursorcombo=NULL;
     

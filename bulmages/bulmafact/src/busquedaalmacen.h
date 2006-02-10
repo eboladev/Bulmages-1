@@ -1,7 +1,7 @@
 #ifndef BUSQUEDAALMACEN_H
 #define BUSQUEDAALMACEN_H
 
-#include <qcombobox.h>
+#include <Q3ComboBox>
 
 #include "company.h"
 #include "postgresiface2.h"
@@ -10,7 +10,7 @@
 @author Tomeu Borras
 */
 
-class BusquedaAlmacen : public QComboBox {
+class BusquedaAlmacen : public Q3ComboBox {
 Q_OBJECT
 private:
 company *companyact;

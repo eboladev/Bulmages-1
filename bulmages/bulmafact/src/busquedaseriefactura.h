@@ -1,7 +1,7 @@
 #ifndef BUSQUEDASERIEFACTURA_H
 #define BUSQUEDASERIEFACTURA_H
 
-#include <qcombobox.h>
+#include <Q3ComboBox>
 
 #include "company.h"
 #include "postgresiface2.h"
@@ -10,7 +10,7 @@
 @author Tomeu Borras
 */
 
-class BusquedaSerieFactura : public QComboBox {
+class BusquedaSerieFactura : public Q3ComboBox {
 Q_OBJECT
 private:
 company *companyact;

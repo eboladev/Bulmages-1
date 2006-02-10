@@ -11,10 +11,10 @@
 //
 #include "busquedaseriefactura.h"
 #include "company.h"
-#include <qcombobox.h>
+#include <Q3ComboBox>
 
 BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent, const char *name)
-: QComboBox(parent, name) {
+: Q3ComboBox(parent, name) {
     companyact=NULL;
     m_cursorcombo=NULL;
     

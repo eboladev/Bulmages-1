@@ -1,7 +1,7 @@
 #ifndef BUSQUEDATRABAJADOR_H
 #define BUSQUEDATRABAJADOR_H
 
-#include <qcombobox.h>
+#include <Q3ComboBox>
 
 #include "company.h"
 #include "postgresiface2.h"
@@ -10,7 +10,7 @@
 @author Tomeu Borras
 */
 
-class BusquedaTrabajador : public QComboBox {
+class BusquedaTrabajador : public Q3ComboBox {
 Q_OBJECT
 private:
 company *companyact;

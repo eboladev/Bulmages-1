@@ -1,7 +1,7 @@
 #ifndef BUSQUEDAFORMA_PAGO_H
 #define BUSQUEDAFORMA_PAGO_H
 
-#include <qcombobox.h>
+#include <Q3ComboBox>
 
 #include "company.h"
 #include "postgresiface2.h"
@@ -10,7 +10,7 @@
 @author Tomeu Borras
 */
 
-class BusquedaFormaPago : public QComboBox {
+class BusquedaFormaPago : public Q3ComboBox {
 Q_OBJECT
 private:
 company *companyact;
