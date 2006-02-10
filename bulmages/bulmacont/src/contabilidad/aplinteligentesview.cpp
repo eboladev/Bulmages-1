@@ -17,6 +17,8 @@
 #include "images/find.xpm"
 #include "calendario.h"
 #include "empresa.h"
+#include "asiento1view.h"
+
 //Added by qt3to4:
 #include <QPixmap>
 #include <QLabel>
@@ -37,8 +39,7 @@
 #define VAR_PRED_FECHAASIENTO 1
 
 aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent, const char *name ) : aplinteligentesdlg(parent,name) {
-    empresaactual = emp;
-    conexionbase = emp->bdempresa();
+    companyact = emp;
     // iniciamos los contadores de variables para que no haya problemas.
     indvariablescta=0;
     indvariablesfecha=0;
@@ -56,17 +57,16 @@ aplinteligentesview::~aplinteligentesview() {
 }// end aplinteligentesview
 
 
-void aplinteligentesview::inicializa(int idasiento, intapunts3view *inta) {
-    intapunts = inta;
+void aplinteligentesview::inicializa(int idasiento) {
     int i=0;
     numasiento = idasiento;
     inicializavariables();
     QString query;
     //Cargamos el combobox con la lista de asientos inteligentes.
     query.sprintf("SELECT * FROM ainteligente");
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(query,"unsuperquery");
-    conexionbase->commit();
+    companyact->begin();
+    cursor2 *cur = companyact->cargacursor(query,"unsuperquery");
+    companyact->commit();
     while (!cur->eof()) {
         fprintf(stderr,"%2.2s %s\n",cur->valor("idainteligente").ascii(), cur->valor("descripcion").ascii());
         comboainteligentes->insertItem(cur->valor("descripcion").ascii(),-1);
@@ -75,11 +75,11 @@ void aplinteligentesview::inicializa(int idasiento, intapunts3view *inta) {
     }// end while
     delete cur;
     // Calculamos el número de dígitos que tiene una cuenta.
-    conexionbase->begin();
+    companyact->begin();
     QString query1 = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-    cursor2 *cursoraux1 = conexionbase->cargacursor(query1,"codcuenta");
+    cursor2 *cursoraux1 = companyact->cargacursor(query1,"codcuenta");
     numdigitos=cursoraux1->valor(2).length();
-    conexionbase->commit();
+    companyact->commit();
     delete cursoraux1;
     cambiada_plantilla(0);
 }// end inicializa
@@ -96,9 +96,9 @@ void aplinteligentesview::inicializavariables() {
     variablespredefinidas[VAR_PRED_FECHAACTUAL][0]="$fechaactual$";
     variablespredefinidas[VAR_PRED_FECHAACTUAL][1]=subcadena;
     buffer.sprintf("SELECT * FROM asiento WHERE idasiento=%d",numasiento);
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(buffer,"cargaasiento");
-    conexionbase->commit();
+    companyact->begin();
+    cursor2 *cur = companyact->cargacursor(buffer,"cargaasiento");
+    companyact->commit();
     if (!cur->eof()) {
         variablespredefinidas[VAR_PRED_FECHAASIENTO][0]="$fechaasiento$";
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1]=cur->valor("fecha");
@@ -120,15 +120,15 @@ void aplinteligentesview::inicializavariablesapunte(int idborrador) {
     QString query;
     query.sprintf("SELECT * FROM borrador WHERE idborrador=%d",idborrador);
     fprintf(stderr,"%s\n",query.ascii());
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(query,"cursor");
-    conexionbase->commit();
+    companyact->begin();
+    cursor2 *cur = companyact->cargacursor(query,"cursor");
+    companyact->commit();
     if (!cur->eof()) {
         query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%s",cur->valor("idcuenta").ascii());
         fprintf(stderr,"%s\n", query.ascii());
-        conexionbase->begin();
-        cursor2 *cur1 = conexionbase->cargacursor(query,"cursor2");
-        conexionbase->commit();
+        companyact->begin();
+        cursor2 *cur1 = companyact->cargacursor(query,"cursor2");
+        companyact->commit();
         variablesapunte[0][0] ="$cifcuenta$";
         variablesapunte[0][1] = cur1->valor("cifent_cuenta");
         fprintf(stderr,"variable de APUNTE %s\n",cur1->valor("cifent_cuenta").ascii());
@@ -148,9 +148,9 @@ void aplinteligentesview::cifcuenta(int idcuenta) {
     QString query;
     query.sprintf("SELECT * FROM cuenta WHERE idcuenta=%d", idcuenta);
     fprintf(stderr,"cifcuenta: %s\n",query.ascii());
-    conexionbase->begin();
-    cursor2 * cur = conexionbase->cargacursor(query,"cursor");
-    conexionbase->commit();
+    companyact->begin();
+    cursor2 * cur = companyact->cargacursor(query,"cursor");
+    companyact->commit();
     if (!cur->eof()) {
         variablesapunte[VAR_APUNT_CIFCUENTA][1] = cur->valor("cifent_cuenta");
     } else {
@@ -172,9 +172,9 @@ void aplinteligentesview::return_cta() {
     QString cad = cuenta->text();
     if (cad != "") {
         cad = extiendecodigo(cad,numdigitos);
-        conexionbase->begin();
-        cursor2 *cursorcta = conexionbase->cargacuenta(0, cad );
-        conexionbase->commit();
+        companyact->begin();
+        cursor2 *cursorcta = companyact->cargacuenta(0, cad );
+        companyact->commit();
         int num = cursorcta->numregistros();
         if (num >0) {
             cuenta->setText(cursorcta->valor("codigo"));
@@ -213,7 +213,7 @@ void aplinteligentesview::boton_buscacuenta() {
             lineaeditada = varcta[i];
         }// end if
     }// end for
-    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
+    listcuentasview1 *listcuentas = new listcuentasview1(companyact);
     listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
@@ -250,18 +250,20 @@ void aplinteligentesview::boton_crear() {
     if (numasiento != 0) {
         recogevalores();
         creaasiento();
-        intapunts->repinta(numasiento);
+//        companyact->intapuntsempresa()->repinta(numasiento);
+        companyact->intapuntsempresa()->muestraasiento(numasiento);
         selectfirst();
     } else {
         // Se está insertando de forma sistemática asientos inteligentes
         // Asi que debemos facilitar las cosas al máximo.
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1]=fechaasiento->text().ascii();
-        intapunts->setFecha(fechaasiento->text());
-        intapunts->iniciar_asiento_nuevo();
-        numasiento= intapunts->cursorasientos->valor("idasiento").toInt();
+        companyact->intapuntsempresa()->setFecha(fechaasiento->text());
+//        companyact->intapuntsempresa()->iniciar_asiento_nuevo();
+        companyact->intapuntsempresa()->vaciaAsiento1();
+        numasiento= companyact->intapuntsempresa()->idasiento().toInt();
         recogevalores();
         creaasiento();
-        intapunts->boton_cerrarasiento();
+        companyact->intapuntsempresa()->boton_cerrarasiento();
         numasiento = 0;
         fechaasiento->selectAll();
         fechaasiento->setFocus();
@@ -295,9 +297,9 @@ void aplinteligentesview::mostrarplantilla() {
 
     // Vamos a ver que tal se nos da el recoger variables de la plantilla apuntes
     query.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d",numainteligente);
-    conexionbase->begin();
-    cursor2 *cur= conexionbase->cargacursor(query,"superquery");
-    conexionbase->commit();
+    companyact->begin();
+    cursor2 *cur= companyact->cargacursor(query,"superquery");
+    companyact->commit();
     while (!cur->eof()) {
         recogevariables(cur->valor("codcuenta"),TIPO_CTA);
         recogevariables(cur->valor("contrapartida"),TIPO_CTA);
@@ -442,12 +444,12 @@ void aplinteligentesview::creaasiento() {
     cursor2 *cur1;
     
     query.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d",numainteligente);
-    cur= conexionbase->cargacursor(query);
+    cur= companyact->cargacursor(query);
 
     /// Calculamos a partir de que orden debemos empezar.
     int orden=0;
     query = "SELECT max(orden) AS ordmax FROM borrador WHERE idasiento ="+QString::number(numasiento);
-    cur1 = conexionbase->cargacursor(query);
+    cur1 = companyact->cargacursor(query);
     if (!cur1->eof()) {
 	orden = cur1->valor("ordmax").toInt() +1;
     }// end if
@@ -457,18 +459,18 @@ void aplinteligentesview::creaasiento() {
     while (!cur->eof()) {
         codcuenta = aplicavariable(cur->valor("codcuenta"));
         query.sprintf("SELECT * FROM cuenta where codigo='%s'",codcuenta.ascii());
-        conexionbase->begin();
-        cur1 = conexionbase->cargacursor(query,"buscacodigo");
-        conexionbase->commit();
+        companyact->begin();
+        cur1 = companyact->cargacursor(query,"buscacodigo");
+        companyact->commit();
         if (!cur1->eof()) {
             idcuenta = atoi(cur1->valor("idcuenta").ascii());
         }// end if
         delete cur1;
         contrapartida = aplicavariable(cur->valor("contrapartida"));
         query.sprintf("SELECT * FROM cuenta where codigo='%s'",contrapartida.ascii());
-        conexionbase->begin();
-        cur1 = conexionbase->cargacursor(query,"buscacodigo");
-        conexionbase->commit();
+        companyact->begin();
+        cur1 = companyact->cargacursor(query,"buscacodigo");
+        companyact->commit();
         if (!cur1->eof()) {
             idcontrapartida = cur1->valor("idcuenta");
         } else {
@@ -481,9 +483,9 @@ void aplinteligentesview::creaasiento() {
         conceptocontable = aplicavariable(cur->valor("conceptocontable"));
         descripcion = aplicavariable(cur->valor("descripcion"));
         query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)",numasiento,idcuenta,idcontrapartida.ascii(), debe.ascii(), haber.ascii(), fecha.ascii(), conceptocontable.ascii(), descripcion.ascii(), orden++);
-        conexionbase->begin();
-        conexionbase->ejecuta(query);
-        conexionbase->commit();
+        companyact->begin();
+        companyact->ejecuta(query);
+        companyact->commit();
         // Borramos las variables creadas para este apunte
         cur->siguienteregistro();
     }// end while
@@ -787,7 +789,7 @@ void aplinteligentesview::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
+        listcuentasview1 *listcuentas = new listcuentasview1(companyact);
         listcuentas->setModoLista();
         listcuentas->inicializa();
         listcuentas->exec();

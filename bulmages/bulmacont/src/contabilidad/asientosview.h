@@ -2,7 +2,7 @@
                           asientosview.h  -  description
                              -------------------
     begin                : Sat Dec 21 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 
@@ -26,21 +26,21 @@
 #include "filtrarasientosview.h"
 #include "empresa.h"
 
-/** @author Tomeu Borrás Riera 
+/** @author Tomeu Borrï¿½ Riera 
   * \brief Muestra un listado de todos los asientos existentes e informa de si estan abiertos o cerrados.
 */
 
 class asientosview : public asientosdlg  {
    Q_OBJECT
 public:
-  postgresiface2 *conexionbase;
-  intapunts3view *introapunts;
+  empresa *companyact;
+
   filtrarasientosview *filt ; // Este objeto contiene todas las opciones de filtraje necesarias para funcionar.
   empresa *empresaactual;
 public: 
   asientosview(empresa *emp, QWidget *parent=0, const char *name=0, bool=true);
   ~asientosview();
-  void inicializa(postgresiface2 *, intapunts3view *);
+	void inicializa();
 public slots:
   virtual void pulsado(int, int, int,const QPoint &);
   virtual void boton_filtrar();

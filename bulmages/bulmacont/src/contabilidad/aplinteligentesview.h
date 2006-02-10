@@ -2,7 +2,7 @@
                           aplinteligentesview.h  -  description
                              -------------------
     begin                : Mon Feb 10 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -38,24 +38,23 @@
 
 class empresa;
 /** 
-  * @author Tomeu Borrás Riera 
+  * @author Tomeu Borrï¿½ Riera 
   * \class aplinteligentesview aplinteligentesview.h
-  * \brief Formularió para la introducción de asientos mediante las plantillas.
+  * \brief Formulariï¿½para la introducciï¿½ de asientos mediante las plantillas.
   * Clase que sirve para introducir asientos en el sistema mediante el uso de plantillas predefinidas, o asientos plantilla (\ref ainteligentesview).
   
- A partir de la plantilla se genera el formulario de forma dinámica. Y una vez introducidos los datos se hacen calculos en un bucle resolvedor de incognitas recursivas. Si no hay bucles infinitos al final se obtienen todos los campos necesarios para hacer la introducción de asientos y esta se efectua.
+ A partir de la plantilla se genera el formulario de forma dinï¿½ica. Y una vez introducidos los datos se hacen calculos en un bucle resolvedor de incognitas recursivas. Si no hay bucles infinitos al final se obtienen todos los campos necesarios para hacer la introducciï¿½ de asientos y esta se efectua.
  
  	La clase tiene dos modos de actuar dependiendo de si estamos trabajando con un asiento abierto o con uno cerrado. En el primer caso el comportamiento es de todo lo introducido al asiento abierto.
-	En el segundo caso se genera un asiento nuevo por cada introducción de plantilla.
+	En el segundo caso se genera un asiento nuevo por cada introducciï¿½ de plantilla.
   */
 
 class aplinteligentesview : public aplinteligentesdlg  {
    Q_OBJECT
 private:
 /// LA empresa del programa.
-  empresa *empresaactual;
-/// La base de datos con la que trabaja la clase.
-  postgresiface2 *conexionbase;
+  empresa *companyact;
+
   QString variablescta[100][3];
   QString variablesfecha[100][3];
   QString variablesnumero[100][3];
@@ -69,11 +68,10 @@ private:
   int indvariablestexto;
   int indvariablespredefinidas;
   int indvariablesapunte;					// El indice a las variables de apunte
-  intapunts3view *intapunts;
   
-  int modo; // Si modo==0 entonces es modo normal. Si modo==1 entonces es modo 1 ejecución. 
+  int modo; // Si modo==0 entonces es modo normal. Si modo==1 entonces es modo 1 ejecuciï¿½. 
            // El modo provoca que la plantilla de asiento inteligente se cierre tras haber pulsado
-           // El botón de aceptar y asi permite recuperar el control a otros estamentos.
+           // El botï¿½ de aceptar y asi permite recuperar el control a otros estamentos.
            // Por defecto el modo es 0.
 
   QLabel    *labelcta[100];
@@ -95,7 +93,7 @@ private:
 public: 
   aplinteligentesview(empresa *, QWidget *parent=0, const char *name=0);
   ~aplinteligentesview();
-  void inicializa(int, intapunts3view *);
+  void inicializa(int);
   void mostrarplantilla();
   void recogevalores();
   void creaasiento();
@@ -112,7 +110,7 @@ public:
   void setfechaasiento(QString fecha) {fechaasiento->setText(fecha);}
   
   // La funcion sirve para especificar el modo de funcionamiento de los asientos intelgientes.
-  // Consultar la variable método para más detalles.
+  // Consultar la variable mï¿½odo para mï¿½ detalles.
   void setmodo(int i) { modo=i;}
   
 public slots:

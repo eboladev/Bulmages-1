@@ -33,6 +33,7 @@ copyright            : (C) 2003 by Tomeu Borrás Riera
 
 #include <busquedafecha.h>
 #include "busquedacuenta.h"
+#include "asiento1view.h"
 
 
 #define CUENTA           m_ccuenta

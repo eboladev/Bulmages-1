@@ -1590,7 +1590,7 @@ void intapunts3view::boton_inteligente() {
         numasiento = 0;
     }// end if
     aplinteligentesview *nueva=new aplinteligentesview(companyact, 0,"");
-    nueva->inicializa(numasiento, this);
+    nueva->inicializa(numasiento);
     nueva->exec();
     delete nueva;
 }// end boton_inteligente

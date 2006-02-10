@@ -29,9 +29,7 @@ class amortizacionview : public amortizaciondlg , dialogChanges {
 Q_OBJECT
 public:
 /// Empresa con la que se trabaja
-empresa *empresaactual;
-/// Base de datos con la que se trabaja  
-postgresiface2 *conexionbase;
+empresa *companyact;
 /// Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
 QString idctaactivo; 
  /// Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".

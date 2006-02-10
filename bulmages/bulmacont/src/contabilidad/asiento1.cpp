@@ -36,25 +36,22 @@ Asiento1::Asiento1(empresa *comp) : DBRecord (comp) {
 
 Asiento1::~Asiento1() {}
 
-/*
- 
-void AlbaranCliente::borraAlbaranCliente() {
-    if (DBvalue("idalbaran") != "") {
+
+void Asiento1::borraAsiento1() {
+    if (DBvalue("idasiento") != "") {
         listalineas->borrar();
-        listadescuentos->borrar();
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM albaran WHERE idalbaran="+DBvalue("idalbaran"));
+        int error = companyact->ejecuta("DELETE FROM asiento WHERE idasiento="+DBvalue("idasiento"));
         if (error) {
             companyact->rollback();
             return;
         }// end if
         companyact->commit();
-        vaciaAlbaranCliente();
-        pintaAlbaranCliente();
+        vaciaAsiento1();
+        pintaAsiento1();
     }// end if
 }// end borraAlbaranCliente
  
-*/
 
 void Asiento1::vaciaAsiento1() {
     DBclear();

@@ -36,6 +36,7 @@
 
 #include "filtrardiarioview.h"
 #include "intapunts3view.h"
+#include "asiento1view.h"
 #include "extractoview1.h"
 #include "balanceview.h"
 #include "selectccosteview.h"
@@ -264,6 +265,7 @@ void diarioview1::boton_balance1(int tipo) {
 
 
 void diarioview1::boton_asiento() {
+	_depura("diarioview1::boton_asiento",0);
     if (m_listado->currentRow()!= -1) {
         QString text = m_listado->text(m_listado->currentRow(),COL_NUMASIENTO);
         int numasiento = atoi((char *)text.ascii());
@@ -272,6 +274,7 @@ void diarioview1::boton_asiento() {
         }// end if
     }// end if
     companyact->muestraapuntes1();
+	_depura("END diarioview1::boton_asiento",0);
 }// end if
 
 

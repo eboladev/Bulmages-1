@@ -12,6 +12,8 @@
 #include "linprevcobro.h"
 
 #include "aplinteligentesview.h"
+#include "asiento1view.h"
+
 
 linprevcobro::linprevcobro(empresa *comp) {
     empresaactual = comp;
@@ -229,13 +231,13 @@ if (tipo == "t") {
 }// end if
 
 	/// PAra saber si al final se ha hecho el asiento o no almacenamos el valor actual del asiento para ver después cual es el número de asiento y comprobar si ha cambiado o no.
-    QString idasiento = empresaactual->intapuntsempresa()->cursorasientos->valor("idasiento");
+    QString idasiento = empresaactual->intapuntsempresa()->idasiento();
 
 
     /// Se va a generar el asiento
     int numasiento = 0;
     aplinteligentesview *nueva=new aplinteligentesview(empresaactual, 0,"");
-    nueva->inicializa(numasiento, empresaactual->intapuntsempresa());
+    nueva->inicializa(numasiento);
     nueva->muestraplantilla(idainteligente.toInt());
     nueva->setfechaasiento(fecha);
     nueva->setvalores("$fecha$",fecha);
@@ -246,7 +248,7 @@ if (tipo == "t") {
     nueva->exec();
     delete nueva;
 
-    QString idasiento1 = empresaactual->intapuntsempresa()->cursorasientos->valor("idasiento");
+    QString idasiento1 = empresaactual->intapuntsempresa()->idasiento();
     if (idasiento1 == idasiento) {
         return 0;
     }// end if

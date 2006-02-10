@@ -57,7 +57,7 @@
 #include <QEvent>
 #include "configuracion.h"
 #include "calendario.h"
-
+#include "asiento1view.h"
 
 void listlinprevcobroview::presentacionFactura() {
     hideColumn(COL_SELECCION);

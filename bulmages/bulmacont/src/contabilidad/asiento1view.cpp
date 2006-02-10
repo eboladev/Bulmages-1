@@ -254,7 +254,7 @@ void ListAsientos::cargaasientos() {
 void ListAsientos::boton_inicio() {
     if (cursorasientos->numregistros() != 0) {
         cursorasientos->primerregistro();
-        muestraasiento(cursorasientos->valor("idasiento"));
+        pintaasiento(cursorasientos->valor("idasiento"));
     }// end if
 }
 
@@ -267,7 +267,7 @@ void ListAsientos::boton_inicio() {
 void ListAsientos::boton_fin() {
     if (cursorasientos->numregistros() != 0 ) {
         cursorasientos->ultimoregistro();
-        muestraasiento(cursorasientos->valor("idasiento"));
+        pintaasiento(cursorasientos->valor("idasiento"));
     }// end if
 }
 
@@ -283,7 +283,7 @@ void ListAsientos::boton_siguiente() {
     }// end if
     if (!cursorasientos->esultimoregistro()) {
         cursorasientos->siguienteregistro();
-        muestraasiento(cursorasientos->valor("idasiento"));
+        pintaasiento(cursorasientos->valor("idasiento"));
     }// end if
 }
 
@@ -299,16 +299,16 @@ void ListAsientos::boton_anterior() {
     }// end if
     if (!cursorasientos->esprimerregistro()) {
         cursorasientos->registroanterior();
-        muestraasiento(cursorasientos->valor("idasiento"));
+        pintaasiento(cursorasientos->valor("idasiento"));
     }// end if
 }
 
 
-QString ListAsientos::idAsiento() {
-    if (cursorasientos->eof())
-        return "-1";
-    return cursorasientos->valor("idasiento");
-}
-
-
+void ListAsientos::situarasiento(QString numasiento) {
+	_depura("ListAsientos::situarasiento"+numasiento,0);
+    cursorasientos->primerregistro();
+    while (cursorasientos->valor("idasiento") != numasiento && !cursorasientos->esultimoregistro())
+        cursorasientos->siguienteregistro();
+	_depura("ListAsientos::situarasiento"+cursorasientos->valor("idasiento"),0);
+}// end situarasiento
 

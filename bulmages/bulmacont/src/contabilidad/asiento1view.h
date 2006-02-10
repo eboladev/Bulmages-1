@@ -54,6 +54,9 @@ private:
     filtrarasientosview *filt;
 
 public:
+    filtrarasientosview *filtro() {
+        return filt;
+    };
     ListAsientos(empresa *);
     virtual ~ListAsientos();
     void cargaasientos();
@@ -61,11 +64,18 @@ public:
     void boton_fin();
     void boton_siguiente();
     void boton_anterior();
+    void boton_filtrar() {
+        filt->exec();
+        cargaasientos();
+        boton_inicio();
+    }
     virtual void muestraasiento(QString v) {
         _depura("Funcion no implementada."+v);
     };
-    QString idAsiento();
-
+    virtual void pintaasiento(QString v) {
+        _depura("Funcion no implementada."+v);
+    };
+    void situarasiento(QString);
 };
 
 
@@ -84,15 +94,25 @@ private:
         m_ordenasiento->setText(val);
     };
 
-    void muestraasiento(QString v) {
-	cargaAsiento1(v);
-    };
+
 
     virtual void calculaypintatotales();
 
-    /// Indica el nmero de dígitos que usan por defecto las cuentas. Es un parametro sacado de la configuración de la empresa.
-    //    unsigned int numdigitos;
 public:
+    void pintaasiento(QString v) {
+        _depura("muestraasiento"+v,0);
+        cargaAsiento1(v);
+    };
+
+    void muestraasiento(QString v) {
+        _depura("muestraasiento"+v,0);
+        situarasiento(v);
+        pintaasiento(v);
+    };
+
+    void muestraasiento(int v) {
+        muestraasiento(QString::number(v));
+    }// end muestraasiento
 
     ///Para poder enganchar plugins a esta ventana se ha habilitado este layout.
     QHBoxLayout *layoutPlugins;
@@ -103,16 +123,22 @@ public:
         m_fecha->setText(val);
     };
 
-	virtual void trataestadoAsiento1();
+    virtual void trataestadoAsiento1();
     void asientoabiertop();
     void asientocerradop();
 
     Asiento1View(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
     ~Asiento1View();
 public slots:
-	virtual void s_lineaValueChanged() {calculaypintatotales();};
-    virtual void boton_abrirasiento(){abreAsiento1();};
-    virtual void boton_cerrarasiento(){cierraAsiento1();};
+    virtual void s_lineaValueChanged() {
+        calculaypintatotales();
+    };
+    virtual void boton_abrirasiento() {
+        abreAsiento1();
+    };
+    virtual void boton_cerrarasiento() {
+        cierraAsiento1();
+    };
 };
 
 #endif

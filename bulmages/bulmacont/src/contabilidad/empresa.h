@@ -93,9 +93,18 @@ public:
 	balance1view *balnace1empresa() {
 		return balance1;
 	}
+
+/*
     intapunts3view *intapuntsempresa() {
         return(introapunts1);
     }
+*/
+    Asiento1View *intapuntsempresa() {
+        return(introapunts2);
+    }
+
+
+
     Asiento1View *intapuntsempresa2() {
         return(introapunts2);
     }

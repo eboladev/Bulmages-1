@@ -58,7 +58,7 @@ empresa::empresa(){
    extracto = NULL;
    balance1 = NULL;
    balance = NULL; 
-   introapunts1 = NULL;
+//   introapunts1 = NULL;
    selccostes  = NULL;
    selcanales = NULL;
    introapunts2 = NULL;
@@ -72,7 +72,7 @@ empresa::~empresa(){
   if (extracto) delete extracto;
   if (balance1) delete balance1;
   if (balance) delete balance;
-  if (introapunts1) delete introapunts1;
+//  if (introapunts1) delete introapunts1;
   if (selccostes) delete selccostes;
   if (selcanales) delete selcanales;
   if (introapunts2) delete introapunts2;
@@ -93,7 +93,7 @@ int empresa::inicializa1() {
          delete diario;
          delete balance;
          delete balance1;
-         delete introapunts1;
+//         delete introapunts1;
          delete selccostes;
          delete selcanales;
    }// end if  
@@ -111,9 +111,11 @@ int empresa::inicializa1() {
   pWorkspace->addWindow(balance);
   balance1 = new balance1view(this, 0,"balance2");
   pWorkspace->addWindow(balance1);
+/*
   introapunts1 = new intapunts3view(this, 0,"introapunts2");
   pWorkspace->addWindow(introapunts1);
-  
+*/
+
   introapunts2 = new Asiento1View(this, 0,"introapunts2");
   pWorkspace->addWindow(introapunts2);
   
@@ -129,7 +131,7 @@ void empresa::maximiza() {
   extracto->showMaximized();
   balance1->showMaximized();
   balance->showMaximized();
-  introapunts1->showMaximized();
+//  introapunts1->showMaximized();
 }// end maximiza
 
 
@@ -221,8 +223,8 @@ int empresa::fPago() {
 
 int empresa::cambioejercicio() {
 //El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio
-  introapunts1->cargarcursor();
-  introapunts1->boton_fin();
+  introapunts2->cargaasientos();
+  introapunts2->boton_fin();
   return(0);
 }// end cambioejercicio
 
@@ -250,14 +252,14 @@ int empresa::muestraapuntes() {
 
 
 int empresa::muestraapuntes1() {
-  introapunts1->setWindowState(introapunts1->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
+  introapunts2->setWindowState(introapunts2->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
   return(0);
 }// end muestraapuntes1
 
 
 int empresa::muestraasientos() {
   asientosview *nuevae = new asientosview(this, 0,"",true);
-  nuevae->inicializa(this, introapunts1);
+  nuevae->inicializa();
   nuevae->exec();
   delete nuevae;
   return(0);
@@ -331,9 +333,12 @@ int empresa::libromayor() {
 int empresa::boton_siguiente() {
   QWidget *widget;
   widget = pWorkspace->activeWindow ();
+/*
   if (widget == introapunts1) {
     introapunts1->boton_siguiente();
-  } else if (widget == diario){
+  } else
+*/
+ if (widget == diario){
 //    diario->boton_siguiente();
   } else if (widget == extracto) {
     extracto->boton_siguiente();
@@ -347,9 +352,13 @@ int empresa::boton_siguiente() {
 int empresa::boton_anterior() {
   QWidget *widget;
   widget = pWorkspace->activeWindow ();
+/*
   if (widget == introapunts1) {
     introapunts1->boton_anterior();
-  } else if (widget == diario){
+  } else 
+*/
+
+if (widget == diario){
 // diario->boton_siguiente
 //  } else if (widget == introapunts1) {
 //      introapunts1->boton_anterior();
@@ -365,8 +374,11 @@ int empresa::boton_anterior() {
 int empresa::boton_guardar() {
   QWidget *widget;
   widget = pWorkspace->activeWindow ();
+/*
   if (widget == introapunts1) {
-  } else if (widget == diario){
+  } else 
+*/
+if (widget == diario){
     diario->boton_guardar();
   } else {
     extracto->boton_guardar();
@@ -376,8 +388,11 @@ int empresa::boton_guardar() {
 
 int empresa::boton_imprimir() {
   QWidget *widget = pWorkspace->activeWindow ();
+/*
   if (widget == introapunts1) {
-  } else if (widget == diario){
+  } else 
+*/
+if (widget == diario){
     diario->boton_imprimir();
   } else if(widget == balance1){
      balance1->boton_imprimir();
@@ -392,8 +407,11 @@ int empresa::boton_imprimir() {
 int empresa::boton_reload() {
   QWidget *widget;
   widget = pWorkspace->activeWindow ();
+/*
   if (widget == introapunts1) {
-  } else if (widget == diario){
+  } else 
+*/
+if (widget == diario){
     diario->accept();
   } else if(widget == extracto){
     extracto->accept();
@@ -408,9 +426,13 @@ int empresa::boton_reload() {
 int empresa::boton_primero() {
   QWidget *widget;
   widget = pWorkspace->activeWindow ();
+/*
   if (widget == introapunts1) {
     introapunts1->boton_inicio();
-  } else if (widget == introapunts2) {
+  } else 
+*/
+
+if (widget == introapunts2) {
     introapunts2->boton_inicio();
   } else if (widget == diario){
   } else if (widget == extracto) {
@@ -422,9 +444,12 @@ int empresa::boton_primero() {
 int empresa::boton_ultimo() {
   QWidget *widget;
   widget = pWorkspace->activeWindow ();
+/*
   if (widget == introapunts1) {
     introapunts1->boton_fin();
-  } else if (widget == introapunts2) {
+  } else 
+*/
+if (widget == introapunts2) {
     introapunts2->boton_fin();
   } else if (widget == diario){
   } else if (widget == extracto) {
@@ -455,9 +480,9 @@ int empresa::librobalancetree() {
 void empresa::Abrirasientos() {
    cursor2 *cur = cargacursor("SELECT abreasientos()");
    delete cur;   
-   introapunts1->cargarcursor();
-   introapunts1->boton_fin();
-   introapunts1->show();
+   introapunts2->cargaasientos();
+   introapunts2->boton_fin();
+   introapunts2->show();
 }// end Abrirasientos
 
 
@@ -465,15 +490,15 @@ void empresa::Ordenarasientos() {
    QString query= "SELECT reordenaasientosall()";
    cursor2 * cur = cargacursor(query, "hola");
    delete cur;
-   introapunts1->cargarcursor();
-   introapunts1->boton_fin();
-   introapunts1->show();
+   introapunts2->cargaasientos();
+   introapunts2->boton_fin();
+   introapunts2->show();
 }// end Abrirasientos
 
 
 int empresa::registroiva() {
    listivaview *perd = new listivaview(this, "0");
-   perd->inicializa(introapunts1);
+   perd->inicializa();
    perd->exec();
    delete perd;
    return(0);
@@ -502,34 +527,32 @@ void empresa::nuevoejercicio() {
 }// end nuevoejercicio
 
 void empresa::cierraempresa() {
-  introapunts1->show();
-  introapunts1->asiento_cierre();
+  introapunts2->show();
+  introapunts2->asiento_cierre();
 }// end cierraempresa
 
 
 void empresa::abreempresa() {
-  introapunts1->show();
-  introapunts1->asiento_apertura();
+  introapunts2->show();
+  introapunts2->asiento_apertura();
 }// end abreempresa
 
 
 void empresa::regularizaempresa() {
-  introapunts1->show();
-  introapunts1->asiento_regularizacion();
+  introapunts2->show();
+  introapunts2->asiento_regularizacion();
 }// end regularizaempresa
 
 
 void empresa::Filtro() {
   QWidget *widget;
   widget = pWorkspace->activeWindow ();
-  if (widget == introapunts1) {
-    introapunts1->boton_filtrar();
-  } else if (widget == extracto){
+if (widget == extracto){
      extracto->boton_filtrar();
   } else if (widget == diario) {
      diario->boton_filtrar();
-  } else {
-//    extracto->boton_filtrar();
+  } else if (widget == introapunts2) {
+	introapunts2->boton_filtrar();
   }// end if
 }// end Filtro
 

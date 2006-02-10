@@ -21,6 +21,9 @@
 #include "calendario.h"
 //Added by qt3to4:
 #include <Q3PopupMenu>
+#include "asiento1view.h"
+
+
 
 //Tabla Soportado
 #define  S_COL_FECHA 0
@@ -65,8 +68,7 @@
 
 Mod300ps *modelo;
 listivaview::listivaview(empresa * emp, QString, QWidget *parent, const char *name ) : listivadlg(parent,name) {
-    empresaactual = emp;
-    conexionbase = emp->bdempresa();
+    companyact = emp;
     finicial->setText(normalizafecha("01/01").toString("dd/MM/yyyy"));
     ffinal->setText(normalizafecha("31/12").toString("dd/MM/yyyy"));
     modelo=new Mod300ps(this->parentWidget());
@@ -83,9 +85,11 @@ listivaview::~listivaview() {}// end ~lisivaview
 void listivaview::doble_click_soportado(int a, int, int, const QPoint &punto) {
     int idasiento;
     idasiento = atoi(tablasoportado->text(a,S_COL_IDASIENTO).ascii());
-    introapunts->flashAsiento(idasiento);
-    introapunts->show();
-    introapunts->setFocus();
+//    companyact->intapuntsempresa()->flashAsiento(idasiento);
+    companyact->intapuntsempresa()->muestraasiento(idasiento);
+
+    companyact->intapuntsempresa()->show();
+    companyact->intapuntsempresa()->setFocus();
     done(1);
     punto.isNull();
 }// end doble_click_soportado
@@ -98,15 +102,17 @@ void listivaview::doble_click_soportado(int a, int, int, const QPoint &punto) {
 void listivaview::doble_click_repercutido(int a, int , int , const QPoint &) {
     int idasiento;
     idasiento = atoi(tablarepercutido->text(a,R_COL_IDASIENTO).ascii());
-    introapunts->flashAsiento(idasiento);
-    introapunts->show();
-    introapunts->setFocus();
+//    companyact->intapuntsempresa()->flashAsiento(idasiento);
+    companyact->intapuntsempresa()->muestraasiento(idasiento);
+
+    companyact->intapuntsempresa()->show();
+    companyact->intapuntsempresa()->setFocus();
     done(1);
 }// end doble_click_repercutido
 
 
 void listivaview::boton_print() {
-    regivaprintview *print = new regivaprintview(empresaactual,0,0);
+    regivaprintview *print = new regivaprintview(companyact,0,0);
     print->inicializa1(finicial->text(), ffinal->text());
     print->exec();
     delete print;
@@ -114,7 +120,7 @@ void listivaview::boton_print() {
 
 
 void listivaview::boton_reload() {
-    inicializa(introapunts);
+    inicializa();
 }// end boton_reload
 
 
@@ -122,8 +128,7 @@ void listivaview::boton_reload() {
  * 
  * @param inta 
  */
-void listivaview::inicializa( intapunts3view *inta) {
-    introapunts = inta;
+void listivaview::inicializa() {
     QString query;
     QString sbaseimp, siva;
     QString   cbaseimp, civa, ctotal;
@@ -141,9 +146,9 @@ void listivaview::inicializa( intapunts3view *inta) {
     m_listRepercutido->horizontalHeader()->setLabel( RES_BASEREPERCUTIDO, tr("BASESOPORTADO"));
 
     QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva, sum(ivaiva) AS tivaiva FROM iva  WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"' AND factemitida) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta";
-    conexionbase->begin();
-    cursor2 *cur = conexionbase->cargacursor(SQLQuery, "elcursor");
-    conexionbase->commit();
+    companyact->begin();
+    cursor2 *cur = companyact->cargacursor(SQLQuery, "elcursor");
+    companyact->commit();
     m_listSoportado->setNumRows(cur->numregistros());
     int j =0;
     while (! cur->eof() ) {	
@@ -156,9 +161,9 @@ void listivaview::inicializa( intapunts3view *inta) {
     delete cur;
 
     SQLQuery = "SELECT * FROM cuenta, tipoiva  LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva, SUM(ivaiva) AS tivaiva FROM iva WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"' AND NOT factemitida) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta";
-    conexionbase->begin();
-    cur = conexionbase->cargacursor(SQLQuery, "elcursor");
-    conexionbase->commit();
+    companyact->begin();
+    cur = companyact->cargacursor(SQLQuery, "elcursor");
+    companyact->commit();
     m_listRepercutido->setNumRows(cur->numregistros());
     j =0;
     while (! cur->eof() ) {
@@ -172,13 +177,13 @@ void listivaview::inicializa( intapunts3view *inta) {
 
     SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE factemitida AND ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"'"; 
     
-    cur = conexionbase->cargacursor(SQLQuery);
+    cur = companyact->cargacursor(SQLQuery);
     m_baseimps->setText(cur->valor("tbaseimp"));
     m_ivas->setText(cur->valor("tbaseiva"));
     delete cur;
     
     SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE NOT factemitida AND ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"'"; 
-    cur = conexionbase->cargacursor(SQLQuery);
+    cur = companyact->cargacursor(SQLQuery);
     m_baseimpr->setText(cur->valor("tbaseimp"));
     m_ivar->setText(cur->valor("tbaseiva"));
     delete cur;
@@ -209,17 +214,17 @@ void listivaview::inicializa( intapunts3view *inta) {
 
 
     query.sprintf("SELECT *, (registroiva.baseimp+registroiva.iva) AS totalfactura FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND factemitida AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
-    conexionbase->begin();
-    cursor2 *cursorreg = conexionbase->cargacursor(query,"cmquery");
-    conexionbase->commit();
+    companyact->begin();
+    cursor2 *cursorreg = companyact->cargacursor(query,"cmquery");
+    companyact->commit();
     int i =0;
     cursor2 *cursorcontra;
     tablasoportado->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
         query.sprintf("SELECT * FROM cuenta WHERE cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
-        conexionbase->begin();
-        cursorcontra = conexionbase->cargacursor(query,"contra");
-        conexionbase->commit();
+        companyact->begin();
+        cursorcontra = companyact->cargacursor(query,"contra");
+        companyact->commit();
         if (!cursorcontra->eof()) {
             tablasoportado->setText(i,S_COL_CONTRAPARTIDA,cursorcontra->valor("codigo"));
             tablasoportado->setText(i,S_COL_DESCRIPCION,cursorcontra->valor("descripcion"));
@@ -270,16 +275,16 @@ void listivaview::inicializa( intapunts3view *inta) {
 
     // Hacemos el c�culo de los que no pertenecen a iva soportado pq as�entran todos.
     query.sprintf("SELECT *, (registroiva.baseimp+registroiva.iva) AS totalfactura FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND NOT factemitida AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha",finicial->text().ascii(), ffinal->text().ascii());
-    conexionbase->begin();
-    cursorreg = conexionbase->cargacursor(query,"cmquery");
-    conexionbase->commit();
+    companyact->begin();
+    cursorreg = companyact->cargacursor(query,"cmquery");
+    companyact->commit();
     i =0;
     tablarepercutido->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
         query.sprintf("SELECT * FROM cuenta WHERE cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
-        conexionbase->begin();
-        cursorcontra = conexionbase->cargacursor(query,"contra");
-        conexionbase->commit();
+        companyact->begin();
+        cursorcontra = companyact->cargacursor(query,"contra");
+        companyact->commit();
         if (!cursorcontra->eof()) {
             tablarepercutido->setText(i,R_COL_CONTRAPARTIDA,cursorcontra->valor("codigo"));
             tablarepercutido->setText(i,R_COL_DESCRIPCION,cursorcontra->valor("descripcion"));
@@ -321,15 +326,16 @@ void listivaview::menu_contextual(int row, int , const QPoint &poin) {
     case 0:
         int idasiento;
         idasiento = atoi(tablasoportado->text(row,S_COL_IDASIENTO).ascii());
-        introapunts->flashAsiento(idasiento);
-        introapunts->show();
-        introapunts->setFocus();
+//        companyact->intapuntsempresa()->flashAsiento(idasiento);
+        companyact->intapuntsempresa()->muestraasiento(idasiento);
+        companyact->intapuntsempresa()->show();
+        companyact->intapuntsempresa()->setFocus();
         done(1);
         break;
     case 101:
         idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            ivaview *nuevae=new ivaview(empresaactual,0,"");
+            ivaview *nuevae=new ivaview(companyact,0,"");
             nuevae->inicializa1(idborrador);
             nuevae->exec();
             delete nuevae;
@@ -338,7 +344,7 @@ void listivaview::menu_contextual(int row, int , const QPoint &poin) {
     case 103:
         idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            ivaview *nuevae=new ivaview(empresaactual,0,"");
+            ivaview *nuevae=new ivaview(companyact,0,"");
             nuevae->inicializa1(idborrador);
             nuevae->boton_borrar();
             delete nuevae;
@@ -366,15 +372,15 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
     case 0:
         int idasiento;
         idasiento = atoi(tablarepercutido->text(row,R_COL_IDASIENTO).ascii());
-        introapunts->flashAsiento(idasiento);
-        introapunts->show();
-        introapunts->setFocus();
+        companyact->intapuntsempresa()->muestraasiento(idasiento);
+        companyact->intapuntsempresa()->show();
+        companyact->intapuntsempresa()->setFocus();
         done(1);
         break;
     case 101:
         idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            ivaview *nuevae=new ivaview(empresaactual, 0,"");
+            ivaview *nuevae=new ivaview(companyact, 0,"");
             nuevae->inicializa1(idborrador);
             nuevae->exec();
             delete nuevae;
@@ -383,7 +389,7 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
     case 103:
         idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            ivaview *nuevae=new ivaview(empresaactual, 0,"");
+            ivaview *nuevae=new ivaview(companyact, 0,"");
             nuevae->inicializa1(idborrador);
             nuevae->boton_borrar();
             delete nuevae;

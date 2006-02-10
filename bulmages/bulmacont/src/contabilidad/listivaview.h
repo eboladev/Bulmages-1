@@ -2,7 +2,7 @@
                           listivaview.h  -  description
                              -------------------
     begin                : Thu Jan 30 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -40,21 +40,19 @@
 #include "postgresiface2.h"
 #include "intapunts3view.h"
 
-/** *@author Tomeu Borrás Riera */
+/** *@author Tomeu Borrï¿½ Riera */
 
 class empresa;
 
 class listivaview : public listivadlg  {
    Q_OBJECT
 public:
-  empresa *empresaactual;
-  postgresiface2 *conexionbase;
-  intapunts3view *introapunts;
+  empresa *companyact;
 
 public: 
 	listivaview(empresa *, QString ejerActual="",QWidget *parent=0, const char *name=0);
 	~listivaview();
-  void inicializa(intapunts3view *);
+  void inicializa();
 public slots:
   virtual void doble_click_soportado(int,int,int, const QPoint &);
   virtual void doble_click_repercutido(int,int,int, const QPoint &);

@@ -16,6 +16,8 @@
 
 #include "asientosview.h"
 //#include <qsqldatabase.h>
+#include "asiento1view.h"
+
 
 #define COL_IDASIENTO 5
 #define COL_FECHA 1
@@ -29,7 +31,7 @@
   * de la pantalla.
   */
 asientosview::asientosview(empresa *emp,QWidget *parent, const char *name, bool modal) : asientosdlg(parent,name,modal) {
-    empresaactual=emp;
+    companyact=emp;
     tablaasientos->setNumCols(6);
     tablaasientos->horizontalHeader()->setLabel( COL_IDASIENTO, tr( "Num." ) );
     tablaasientos->horizontalHeader()->setLabel( COL_FECHA, tr( "Fecha" ) );
@@ -55,16 +57,14 @@ asientosview::asientosview(empresa *emp,QWidget *parent, const char *name, bool 
 asientosview::~asientosview() {}// end ~asientosview
 
 
-/** Se ha pulsado sobre la tabla de asientos, con lo que se carga en introapunts
+/** Se ha pulsado sobre la tabla de asientos, con lo que se carga en companyact->intapuntsempresa()
   * el asiento seleccionado y se cierra la ventana.
   */
 void asientosview::pulsado(int a, int , int ,const QPoint &) {
-    int idasiento;
-    idasiento = atoi(tablaasientos->text(a,COL_IDASIENTO).ascii());
-    introapunts->cargarcursor();
-    introapunts->muestraasiento(idasiento);
-    introapunts->show();
-    introapunts->setFocus();
+    QString idasiento = tablaasientos->text(a,COL_IDASIENTO);
+    companyact->intapuntsempresa()->muestraasiento(idasiento);
+    companyact->intapuntsempresa()->show();
+    companyact->intapuntsempresa()->setFocus();
     done(1);
 }// end pulsado
 
@@ -72,11 +72,9 @@ void asientosview::pulsado(int a, int , int ,const QPoint &) {
 /** Inicializa la ventana, haciendo la consulta pertinente a la base de datos
   * y presentando los resultados en pantalla.
   */
-void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
-    introapunts = inta;
-    conexionbase = conn;
+void asientosview::inicializa() {
     /// Hacemos que tengan tanto introapuntes como asientosview el mismo filtro asi son compatibles uno con otro.
-    filt = inta->filt;
+    filt = companyact->intapuntsempresa()->filtro();
     QString cantapunt = filt->cantidadapunte->text().ascii();
     QString saldototal = filt->saldoasiento->text().ascii();
     QString nombreasiento = filt->nombreasiento->text().ascii();
@@ -115,7 +113,7 @@ void asientosview::inicializa(postgresiface2 *conn, intapunts3view *inta) {
             textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ ejercicio +"'";
     }// end if
     query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha,  totaldebe, totalhaber, numap, numborr   from asiento  LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) as foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT sum(debe) as totaldebe, sum(haber) as totalhaber, count(idapunte) as numap, idasiento from apunte group by idasiento) as fula ON asiento.idasiento = fula.idasiento   "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
-    cursor2 *cursoraux= conexionbase->cargacursor(query);
+    cursor2 *cursoraux= companyact->cargacursor(query);
     int numreg = cursoraux->numregistros();
     tablaasientos->setNumRows(numreg);
     int i =0;
@@ -149,5 +147,5 @@ void asientosview::boton_filtrar() {
     //   char *cadena;
     filt->exec();
     //   cadena = (char *) filt->cantidadapunte->text().ascii();
-    inicializa(conexionbase, introapunts);
+    inicializa();
 }// end boton_filtrar
