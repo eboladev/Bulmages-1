@@ -5,10 +5,10 @@
 
 QT += qt3support
 
-FORMS += logpassbase.ui \
-         abreempresadlg.ui \
-         msgerrorbase.ui \
-	 busquedafechabase.ui
+FORMS3 += logpassbase.ui \
+          abreempresadlg.ui \
+          msgerrorbase.ui \
+ 	  busquedafechabase.ui
 
 HEADERS += postgresiface2.h \
            configuracion.h \

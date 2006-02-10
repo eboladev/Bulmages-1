@@ -30,46 +30,46 @@ LIBS += -rdynamic
 
 TEMPLATE = app 
 
-FORMS += bulmafactbase.ui \
-         providerslistbase.ui \
-         provedit_base.ui \
-         clientslistbase.ui \
-         clienteditbase.ui \
-         articleslistbase.ui \
-         divisionbase.ui \
-         budgetbase.ui \
-         budgetslistbase.ui \
-         articleeditbase.ui \
-         clientdelivnoteslistbase.ui \
-         albaranclientebase.ui \
-         fpagobase.ui \
-         familiasdlg.ui \
-         tiposarticulodlg.ui \
-         facturaslistbase.ui \
-         facturabase.ui \
-         pedidosclientelistbase.ui \
-         pedidoclientebase.ui \
-         busquedaclientebase.ui \
-         busquedaarticulobase.ui \
-         busquedaproveedorbase.ui \
-         albaranproveedorbase.ui \
-         albaranesproveedorbase.ui \
-         busquedafamiliabase.ui \
-         busquedatipoarticulobase.ui \
-         cobrobase.ui \
-         cobroslistbase.ui \
-         facturasplistbase.ui \
-         facturapbase.ui \
-	 trabajadorbase.ui \
-	 pagobase.ui \
-	 pagoslistbase.ui \
-	 pedidosproveedorlistbase.ui \
-	 pedidoproveedorbase.ui \
-	 listseriefacturabase.ui \
-	 about.ui \
-	 listprovinciasbase.ui \
-	 inventariosbase.ui \
-	 inventariobase.ui
+FORMS3 += bulmafactbase.ui \
+          providerslistbase.ui \
+          provedit_base.ui \
+          clientslistbase.ui \
+          clienteditbase.ui \
+          articleslistbase.ui \
+          divisionbase.ui \
+          budgetbase.ui \
+          budgetslistbase.ui \
+          articleeditbase.ui \
+          clientdelivnoteslistbase.ui \
+          albaranclientebase.ui \
+          fpagobase.ui \
+          familiasdlg.ui \
+          tiposarticulodlg.ui \
+          facturaslistbase.ui \
+          facturabase.ui \
+          pedidosclientelistbase.ui \
+          pedidoclientebase.ui \
+          busquedaclientebase.ui \
+          busquedaarticulobase.ui \
+          busquedaproveedorbase.ui \
+          albaranproveedorbase.ui \
+          albaranesproveedorbase.ui \
+          busquedafamiliabase.ui \
+          busquedatipoarticulobase.ui \
+          cobrobase.ui \
+          cobroslistbase.ui \
+          facturasplistbase.ui \
+          facturapbase.ui \
+ 	  trabajadorbase.ui \
+ 	  pagobase.ui \
+	  pagoslistbase.ui \
+	  pedidosproveedorlistbase.ui \
+	  pedidoproveedorbase.ui \
+	  listseriefacturabase.ui \
+	  about.ui \
+	  listprovinciasbase.ui \
+	  inventariosbase.ui \
+	  inventariobase.ui
 
 HEADERS += bulmafact.h \
            company.h \
