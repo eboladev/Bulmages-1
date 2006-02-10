@@ -21,7 +21,8 @@
   *
   * En realidad no hace nada pq el dialogo sólo requiere visualización y no realiza acciones.
   */
-aboutview::aboutview(QWidget *parent, const char *name ) : aboutdlg(parent,name,false,0) {
+aboutview::aboutview(QDialog *parent) : QDialog(parent) {
+    setupUi(this);
 }
 
 /** \brief Destructor de la clase

@@ -30,6 +30,14 @@ LIBS += -rdynamic
 
 TEMPLATE = app 
 
+# Estos formularios hay que generarlos de forma manual porque, o se usa FORMS o FORMS3.
+# Mientras se hace la migracion se tiene que hacer: uic about.ui -o ./.ui/about.h
+# etc.
+#
+FORMS += about.ui
+
+# uic3 los convierte de forma automatica.
+#
 FORMS3 += bulmafactbase.ui \
           providerslistbase.ui \
           provedit_base.ui \
@@ -66,7 +74,6 @@ FORMS3 += bulmafactbase.ui \
 	  pedidosproveedorlistbase.ui \
 	  pedidoproveedorbase.ui \
 	  listseriefacturabase.ui \
-	  about.ui \
 	  listprovinciasbase.ui \
 	  inventariosbase.ui \
 	  inventariobase.ui

@@ -191,7 +191,7 @@ void bulmafact::s_ventanaCompleta() {
 
 
 void bulmafact::s_About()  {
-    aboutview *about=new aboutview(0,0);
+    aboutview *about=new aboutview();
     about->exec();
     delete about;
 }// end slotHelpAbout

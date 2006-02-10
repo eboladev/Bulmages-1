@@ -18,7 +18,7 @@
 #ifndef ABOUTVIEW_H
 #define ABOUTVIEW_H
 
-#include <qwidget.h>
+#include <QDialog>
 #include <about.h>
 
 /**
@@ -30,11 +30,11 @@
  * this class presents the about of the program.
  */
 
-class aboutview : public aboutdlg  {
-   Q_OBJECT
+class aboutview : public QDialog, public Ui::aboutdlg  {
 public: 
-	aboutview(QWidget *parent=0, const char *name=0);	/// Constructor de la clase
-	~aboutview();						/// Destructor de la clase
+	aboutview(QDialog *parent=0);// : QDialog(parent);          /// Constructor de la clase
+	//{ setupUi(this); }
+	~aboutview();
 };
 
 #endif
