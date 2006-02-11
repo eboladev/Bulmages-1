@@ -23,6 +23,8 @@
 #include "listlinasiento1.h"
 #include "linasiento1.h"
 
+#include "selectccosteview.h"
+#include "selectcanalview.h"
 
 class ListLinAsiento1View : public Q3Table , public ListLinAsiento1 {
     Q_OBJECT
@@ -36,6 +38,7 @@ public:
     LinAsiento1 *lineaact();
     void cargaconfig();
     void guardaconfig();
+    void iniciar_asiento_nuevo(QString);
 
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);

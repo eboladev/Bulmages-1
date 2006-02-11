@@ -126,6 +126,7 @@ public:
     virtual void trataestadoAsiento1();
     void asientoabiertop();
     void asientocerradop();
+    void iniciar_asiento_nuevo();
 
     Asiento1View(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
     ~Asiento1View();
@@ -139,6 +140,7 @@ public slots:
     virtual void boton_cerrarasiento() {
         cierraAsiento1();
     };
+    virtual void boton_nuevoasiento();
 };
 
 #endif

@@ -494,10 +494,10 @@ void ListLinAsiento1View::pintalinListLinAsiento1(int pos) {
 
 bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
     _depura("eventFilter()\n",0);
-	int dia, mes, ano;
-	calendario *cal;
+    int dia, mes, ano;
+    calendario *cal;
     LinAsiento1 *linea;
-	BusquedaCuenta *cuent;
+    BusquedaCuenta *cuent;
     if ( ev->type() == QEvent::KeyRelease ) {
         QKeyEvent *k = (QKeyEvent *)ev;
         int col=currentColumn();
@@ -515,19 +515,19 @@ bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
                 pintalinListLinAsiento1(currentRow());
                 return TRUE;
             case COL_FECHA:
-                    Q3PtrList<QDate> a;
-                    QString cadena;
-                    cal = new calendario(0,0);
-                    cal->exec();
-                    a = cal->dn->selectedDates();
-                    dia = a.first()->day();
-                    mes = a.first()->month();
-                    ano = a.first()->year();
-                    cadena.sprintf("%2.2d/%2.2d/%d",dia, mes, ano);
-                    linea->setfecha(cadena);
-                    delete cal;
-                    pintalinListLinAsiento1(currentRow());
-                    return TRUE;
+                Q3PtrList<QDate> a;
+                QString cadena;
+                cal = new calendario(0,0);
+                cal->exec();
+                a = cal->dn->selectedDates();
+                dia = a.first()->day();
+                mes = a.first()->month();
+                ano = a.first()->year();
+                cadena.sprintf("%2.2d/%2.2d/%d",dia, mes, ano);
+                linea->setfecha(cadena);
+                delete cal;
+                pintalinListLinAsiento1(currentRow());
+                return TRUE;
             }// end switch
             break;
 
@@ -678,4 +678,28 @@ LinAsiento1 *ListLinAsiento1View::lineaat(int row) {
         return NULL;
     }// end if
 }// end lineaat
+
+/**
+ * Esta función se encarga de hacer las inicializaciones en un asiento nuevo
+ */
+void ListLinAsiento1View::iniciar_asiento_nuevo(QString fecha) {
+    LinAsiento1 *linea = lineaat(0);
+    linea->setDBvalue("fecha",fecha);
+    /// Comprobamos si existe un centro de coste por defecto y lo usamos
+    selectccosteview *selccostes = companyact->getselccostes();
+    QString ccoste = QString::number(selccostes->firstccoste());
+    if ( ccoste != "0") {
+        linea->setDBvalue("idc_coste", ccoste);
+    }// end if
+
+    /// Comprobamos si existe un canal por defecto y lo usamos
+    selectcanalview *selcanales = companyact->getselcanales();
+    QString idcanal = QString::number(selcanales->firstcanal());
+    if ( idcanal != "0") {
+        linea->setDBvalue("idcanal",idcanal);
+    }// end if
+    pintaListLinAsiento1();
+    setCurrentCell(0,0);
+    setFocus();
+}// end iniciar_asiento_nuevo
 

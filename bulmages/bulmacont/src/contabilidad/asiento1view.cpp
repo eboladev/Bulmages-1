@@ -30,9 +30,12 @@
 
 #include "asiento1view.h"
 #include "busquedafecha.h"
+#include "asientoview.h"
+
+#include "listlinasiento1view.h"
 
 #define COL_FECHA       0
-#define COL_SUBCUENTA   1
+#define COL_CODIGO   1
 #define COL_CONCEPTO    6
 #define COL_DEBE        4
 #define COL_HABER       5
@@ -41,8 +44,8 @@
 #define COL_IDBORRADOR    7
 #define COL_TIPOIVA       8
 #define COL_IVA           9
-#define COL_CCOSTE       10
-#define COL_CANAL        11
+#define COL_NOMBREC_COSTE       10
+#define COL_NOMBRECANAL        11
 #define COL_IDCUENTA     12
 #define COL_IDCONTRAPARTIDA 13
 #define COL_IDCANAL         14
@@ -58,14 +61,8 @@
 #define ROWACTUAL tapunts3->currentRow()
 */
 
-/// Define el número de filas que va a tener la tabla de apuntes.
+/// Define el numero de filas que va a tener la tabla de apuntes.
 #define TAPUNTS_NUM_ROWS 10000
-
-/** \brief Devuelve en un QString el valor del asiento que se está visualizando
-  *
-  *  Si no hay ningún asiento viéndose devuelve "-1"
-  */
-
 
 /** \brief Constructor de la clase, inicializa los componentes
   * \param emp empresa que llama al objeto 
@@ -145,6 +142,32 @@ void Asiento1View::asientocerradop() {
     botoniva->setEnabled(FALSE);
     botoninteligente->setEnabled(TRUE);
 }// end asientocerradop
+
+
+
+
+/**
+ * Esta funcion se activa cuando se pulsa sobre el boton nuevo asiento del
+ * formulario
+ */
+void Asiento1View::boton_nuevoasiento() {
+    m_fecha->setText(QDate::currentDate().toString("dd/MM/yyyy"));
+    iniciar_asiento_nuevo();
+}// end boton_nuevoasiento
+
+/**
+ * Esta función se encarga de hacer las inicializaciones en un asiento nuevo
+ */
+void Asiento1View::iniciar_asiento_nuevo() {
+    asientoview *nuevoasiento = new asientoview(companyact);
+    nuevoasiento->inicializa(companyact);
+    int idasiento = nuevoasiento->creaasiento( m_fecha->text(), m_fecha->text(),0,1);
+    delete nuevoasiento;
+    cargaasientos();
+    muestraasiento(idasiento);
+    boton_abrirasiento();
+    subform2->iniciar_asiento_nuevo(m_fecha->text());
+}// end iniciar_asiento_nuevo
 
 
 /**************************************************************************************************************************
