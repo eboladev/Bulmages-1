@@ -494,7 +494,10 @@ void ListLinAsiento1View::pintalinListLinAsiento1(int pos) {
 
 bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
     _depura("eventFilter()\n",0);
+	int dia, mes, ano;
+	calendario *cal;
     LinAsiento1 *linea;
+	BusquedaCuenta *cuent;
     if ( ev->type() == QEvent::KeyRelease ) {
         QKeyEvent *k = (QKeyEvent *)ev;
         int col=currentColumn();
@@ -504,18 +507,17 @@ bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
         case Qt::Key_Plus:
             switch(col) {
             case COL_CODIGO:
-                BusquedaCuenta *cuent = new BusquedaCuenta(0,"Busca Cuenta");
+                cuent = new BusquedaCuenta(0,"Busca Cuenta");
                 cuent->setempresa(companyact);
                 cuent->s_searchCuenta();
                 linea->setidcuenta(cuent->idcuenta());
                 delete cuent;
                 pintalinListLinAsiento1(currentRow());
                 return TRUE;
-            case COL_FECHA: {
-                    int dia, mes, ano;
+            case COL_FECHA:
                     Q3PtrList<QDate> a;
                     QString cadena;
-                    calendario *cal = new calendario(0,0);
+                    cal = new calendario(0,0);
                     cal->exec();
                     a = cal->dn->selectedDates();
                     dia = a.first()->day();
@@ -526,7 +528,6 @@ bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
                     delete cal;
                     pintalinListLinAsiento1(currentRow());
                     return TRUE;
-                }// end case
             }// end switch
             break;
 
