@@ -1,4 +1,4 @@
-#include <qapplication.h>
+#include <QApplication>
 #include <qtranslator.h>
 #include "configuracion.h"
 #include "plugins.h"

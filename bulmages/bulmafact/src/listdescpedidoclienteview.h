@@ -16,7 +16,7 @@
 @author Tomeu Borras
 */
 
-#include <q3table.h>
+#include <Q3Table>
 
 #include "listdescpedidocliente.h"
 #include "company.h"

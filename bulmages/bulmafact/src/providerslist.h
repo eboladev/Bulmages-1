@@ -21,7 +21,7 @@
 #define PROVIDERSLIST_H
 
 #include "providerslistbase.h"
-#include <q3frame.h>
+#include <Q3Frame>
 #include "pgimportfiles.h"
 
 class company;

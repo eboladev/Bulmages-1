@@ -3,7 +3,7 @@
 #include "qdialog.h"
 #include "qlayout.h"
 #include "qcolor.h"
-#include <qobject.h>
+#include <QObject>
 #include <qevent.h>
 //Added by qt3to4:
 #include <QPixmap>

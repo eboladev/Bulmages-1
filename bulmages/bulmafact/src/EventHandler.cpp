@@ -1,7 +1,7 @@
 #include "EventHandler.h"
-#include <qwidget.h>
-#include <q3table.h>
-#include <qlineedit.h>
+#include <QWidget>
+#include <Q3Table>
+#include <QLineEdit>
 //Added by qt3to4:
 #include <QKeyEvent>
 #include <QEvent>

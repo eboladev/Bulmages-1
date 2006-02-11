@@ -23,9 +23,9 @@ CREATE TABLE pedidocliente (
 );
 */
 
-#include <qstring.h>
-#include <q3table.h>
-#include <q3ptrlist.h>
+#include <QString>
+#include <Q3Table>
+#include <Q3PtrList>
 
 #include "listlinpedidocliente.h"
 #include "listdescpedidocliente.h"

@@ -12,7 +12,7 @@
 #ifndef COBRO_H
 #define COBRO_H
 
-#include <qstring.h>
+#include <QString>
 
 /** @author Tomeu Borras
   * \brief Clase que hace de intermediaria entre la tabla de Cobro de la base de datos y el programa.

@@ -16,10 +16,10 @@
 #include "inventario.h"
 #include "busquedafecha.h"
 
-#include <qlineedit.h>
-#include <q3textedit.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
+#include <QLineEdit>
+#include <Q3TextEdit>
+#include <QLabel>
+#include <QCheckBox>
 
 #include "postgresiface2.h"
 

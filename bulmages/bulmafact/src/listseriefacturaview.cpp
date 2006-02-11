@@ -24,15 +24,15 @@
 #include "configuracion.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
-#include <qmessagebox.h>
-#include <q3table.h>
-#include <qwidget.h>
-#include <qcombobox.h>
-#include <q3popupmenu.h>
-#include <qtoolbutton.h>
-#include <qtextstream.h>
-#include <qlayout.h>
-#include <qmessagebox.h>
+#include <QMessageBox>
+#include <Q3Table>
+#include <QWidget>
+#include <QComboBox>
+#include <Q3PopupMenu>
+#include <QToolButton>
+#include <QTextStream>
+#include <QLayout>
+#include <QMessageBox>
 #include <fstream>
 using namespace std;
 #include "funcaux.h"

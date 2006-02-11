@@ -26,8 +26,8 @@
 #include "company.h"
 #include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
-#include <qlineedit.h>
-#include <q3table.h>
+#include <QLineEdit>
+#include <Q3Table>
 
 
 class AlbaranesProveedor : public AlbaranesProveedorBase {

@@ -21,9 +21,9 @@
 #define ALBARANCLIENTEVIEW_H
 
 // ALBARANES.
-#include <qlineedit.h>
-#include <q3textedit.h>
-#include <qlabel.h>
+#include <QLineEdit>
+#include <Q3TextEdit>
+#include <QLabel>
 #include "listdescalbarancliente.h"
 #include "dialogchanges.h"
 
@@ -37,7 +37,7 @@
 #include "albaranclientebase.h"
 #include "albarancliente.h"
 #include "postgresiface2.h"
-#include <qcheckbox.h>
+#include <QCheckBox>
 
 /** @author Tomeu Borr� & Alvaro de Miguel */
 class company;

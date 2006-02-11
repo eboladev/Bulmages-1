@@ -16,7 +16,7 @@
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 
-#include <q3frame.h>
+#include <Q3Frame>
 
 /**
 @author Tomeu Borras

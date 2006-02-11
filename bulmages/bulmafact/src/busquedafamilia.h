@@ -13,8 +13,8 @@
 #define BUSQUEDAFAMILIA_H
 
 #include <busquedafamiliabase.h>
-#include <qlineedit.h>
-#include <qlabel.h>
+#include <QLineEdit>
+#include <QLabel>
 
 class company;
 /**

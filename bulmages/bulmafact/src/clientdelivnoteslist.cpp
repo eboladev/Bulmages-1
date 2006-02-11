@@ -44,10 +44,10 @@ CREATE TABLE albaran (
 #include "company.h"
 #include "albaranclienteview.h"
 #include "qtable1.h"
-#include <qmessagebox.h>
-#include <q3popupmenu.h>
-#include <qfile.h>
-#include <qcheckbox.h>
+#include <QMessageBox>
+#include <Q3PopupMenu>
+#include <QFile>
+#include <QCheckBox>
 //Added by qt3to4:
 #include <QTextStream>
 #include "funcaux.h"

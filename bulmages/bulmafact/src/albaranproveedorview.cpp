@@ -33,16 +33,16 @@
 //#include "pedidosproveedorlist.h"
 //#include "pedidoproveedorview.h"
 
-#include <qlineedit.h>
-#include <q3textedit.h>
-#include <qmessagebox.h>
-#include <qlabel.h>
-#include <q3table.h>
-#include <qwidget.h>
-#include <qobject.h>
-#include <qcombobox.h>
-#include <q3popupmenu.h>
-#include <qtoolbutton.h>
+#include <QLineEdit>
+#include <Q3TextEdit>
+#include <QMessageBox>
+#include <QLabel>
+#include <Q3Table>
+#include <QWidget>
+#include <QObject>
+#include <QComboBox>
+#include <Q3PopupMenu>
+#include <QToolButton>
 #include <QCloseEvent>
 
 #include "funcaux.h"

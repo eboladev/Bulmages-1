@@ -24,15 +24,15 @@
 #include "familiasview.h"
 #include "tiposarticuloview.h"
 
-#include <qlineedit.h>
-#include <qmessagebox.h>
-#include <q3table.h>
-#include <qcombobox.h>
-#include <q3textedit.h>
-#include <qlabel.h>
-#include <qpixmap.h>
-#include <qcheckbox.h>
-#include <q3filedialog.h>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <Q3Table>
+#include <QComboBox>
+#include <Q3TextEdit>
+#include <QLabel>
+#include <QPixmap>
+#include <QCheckBox>
+#include <Q3FileDialog>
 #include <QCloseEvent>
 
 #include "busquedafamilia.h"

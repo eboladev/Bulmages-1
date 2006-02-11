@@ -16,7 +16,7 @@
 @author Tomeu Borras
 */
 
-#include <q3table.h>
+#include <Q3Table>
 //Added by qt3to4:
 #include <QEvent>
 #include "linalbaranproveedor.h"

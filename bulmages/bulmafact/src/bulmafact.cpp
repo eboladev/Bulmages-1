@@ -1,29 +1,29 @@
 #include "bulmafact.h"
 
-#include <qimage.h>
-#include <qpixmap.h>
-#include <q3toolbar.h>
-#include <qtoolbutton.h>
-#include <q3popupmenu.h>
-#include <qmenubar.h>
-#include <q3textedit.h>
-#include <qfile.h>
-#include <q3filedialog.h>
-#include <qstatusbar.h>
-#include <qmessagebox.h>
-#include <qprinter.h>
-#include <qapplication.h>
-#include <q3accel.h>
-#include <qtextstream.h>
-#include <qpainter.h>
-#include <q3paintdevicemetrics.h>
-#include <q3whatsthis.h>
+#include <QImage>
+#include <QPixmap>
+#include <Q3ToolBar>
+#include <QToolButton>
+#include <Q3PopupMenu>
+#include <QMenuBar>
+#include <Q3TextEdit>
+#include <QFile>
+#include <Q3FileDialog>
+#include <QStatusBar>
+#include <QMessageBox>
+#include <QPrinter>
+#include <QApplication>
+#include <Q3Accel>
+#include <QTextStream>
+#include <QPainter>
+#include <Q3PaintDeviceMetrics>
+#include <Q3WhatsThis>
 
-#include <qworkspace.h>
-#include <q3vbox.h>
+#include <QWorkspace>
+#include <Q3VBox>
 
 
-#include <q3listbox.h>
+#include <Q3ListBox>
 #include "listventanas.h"
 #include "funcaux.h"
 #include "aboutview.h"

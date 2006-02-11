@@ -17,14 +17,14 @@
 #include "cobroview.h"
 #include "funcaux.h"
 
-#include <qmessagebox.h>
-#include <q3table.h>
-#include <qwidget.h>
-#include <qobject.h>
-#include <qcombobox.h>
-#include <q3popupmenu.h>
-#include <qtoolbutton.h>
-#include <qlayout.h>
+#include <QMessageBox>
+#include <Q3Table>
+#include <QWidget>
+#include <QObject>
+#include <QComboBox>
+#include <Q3PopupMenu>
+#include <QToolButton>
+#include <QLayout>
 #include <fstream>
 
 #include <QCloseEvent>

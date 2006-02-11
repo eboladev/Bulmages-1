@@ -1,8 +1,8 @@
 #ifndef EVENTHANDLER_H
 #define EVENTHANDLER_H
 
-#include <qobject.h>
-#include <q3table.h>
+#include <QObject>
+#include <Q3Table>
 //Added by qt3to4:
 #include <QEvent>
 

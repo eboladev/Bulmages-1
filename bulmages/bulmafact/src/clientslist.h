@@ -21,7 +21,7 @@
 #define clientslist_H
 
 #include "clientslistbase.h"
-#include <q3frame.h>
+#include <Q3Frame>
 #include "pgimportfiles.h"
 
 #include "company.h"

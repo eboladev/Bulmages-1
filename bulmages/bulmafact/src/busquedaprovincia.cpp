@@ -11,7 +11,7 @@
 //
 #include "busquedaprovincia.h"
 #include "company.h"
-#include <qcombobox.h>
+#include <QComboBox>
 
 BusquedaProvincia::BusquedaProvincia(QWidget *parent, const char *name)
 : QComboBox(parent, name) {

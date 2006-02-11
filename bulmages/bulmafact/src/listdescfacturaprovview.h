@@ -16,7 +16,7 @@
 @author Tomeu Borras
 */
 
-#include <q3table.h>
+#include <Q3Table>
 
 #include "listdescfacturaprov.h"
 #include "company.h"

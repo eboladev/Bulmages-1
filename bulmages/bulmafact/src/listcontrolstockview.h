@@ -17,7 +17,7 @@
 */
 
 //#include "qtable1.h"
-#include <q3table.h>
+#include <Q3Table>
 //Added by qt3to4:
 #include <QEvent>
 

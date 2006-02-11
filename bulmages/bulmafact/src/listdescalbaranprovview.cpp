@@ -17,9 +17,9 @@
 
 
 #include "listdescalbaranprovview.h"
-#include <q3table.h>
-#include <qmessagebox.h>
-#include <q3popupmenu.h>
+#include <Q3Table>
+#include <QMessageBox>
+#include <Q3PopupMenu>
 
 
 ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView(QWidget * parent, const char * name) : Q3Table(parent, name), ListDescuentoAlbaranProv() {

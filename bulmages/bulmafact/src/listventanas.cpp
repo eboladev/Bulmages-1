@@ -1,10 +1,10 @@
 #include <listventanas.h>
-#include <qobject.h>
+#include <QObject>
 //Added by qt3to4:
 #include <QPixmap>
 
 #include <map>
-#include <q3ptrlist.h>
+#include <Q3PtrList>
 
 #include "bulmafact.h"
 #include "funcaux.h"
@@ -78,7 +78,7 @@ listventanas::~listventanas()
   delete m_listBox;
 }// end ~listventanas
 
-#include <qimage.h>
+#include <QImage>
 
 /** \brief This function provides the ability of push a window in the dock window
  ** \param  nombre This QStrin is the name of the window that was shown in the listbox

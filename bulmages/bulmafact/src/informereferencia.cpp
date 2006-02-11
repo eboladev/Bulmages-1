@@ -1,8 +1,8 @@
 #include "informereferencia.h"
 #include "company.h"
 #include "postgresiface2.h"
-#include <qstring.h>
-#include <qfile.h>
+#include <QString>
+#include <QFile>
 //Added by qt3to4:
 #include <QTextStream>
 #include "funcaux.h"

@@ -13,8 +13,8 @@
 #define BUSQUEDAARTICULO_H
 
 #include <busquedaarticulobase.h>
-#include <qlineedit.h>
-#include <qlabel.h>
+#include <QLineEdit>
+#include <QLabel>
 
 class company;
 /**

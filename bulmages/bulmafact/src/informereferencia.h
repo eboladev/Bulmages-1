@@ -4,7 +4,7 @@
 #define __INFORMEREFERENCIA__
 
 
-#include <qstring.h>
+#include <QString>
 class company;
 
 

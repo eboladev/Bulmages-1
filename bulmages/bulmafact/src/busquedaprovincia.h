@@ -1,7 +1,7 @@
 #ifndef BUSQUEDAPROVINCIA_H
 #define BUSQUEDAPROVINCIA_H
 
-#include <qcombobox.h>
+#include <QComboBox>
 
 #include "company.h"
 #include "postgresiface2.h"

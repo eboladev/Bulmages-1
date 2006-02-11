@@ -26,7 +26,7 @@ CREATE TABLE pago (
 */
 
 
-#include <qstring.h>
+#include <QString>
 
 /** @author Tomeu Borras
   * \brief Clase que hace de intermediaria entre la tabla de Pago de la base de datos y el programa.

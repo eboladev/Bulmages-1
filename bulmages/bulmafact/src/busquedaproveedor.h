@@ -13,8 +13,8 @@
 #define BUSQUEDAPROVEEDOR_H
 
 #include <busquedaproveedorbase.h>
-#include <qlineedit.h>
-#include <qlabel.h>
+#include <QLineEdit>
+#include <QLabel>
 
 class company;
 /**

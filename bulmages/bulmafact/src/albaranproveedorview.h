@@ -21,9 +21,9 @@
 #define ALBARANPROVEEDORVIEW_H
 
 // ALBARANES.
-#include <qlineedit.h>
-#include <q3textedit.h>
-#include <qlabel.h>
+#include <QLineEdit>
+#include <Q3TextEdit>
+#include <QLabel>
 #include "busquedaproveedor.h"
 #include "busquedafecha.h"
 #include "busquedaformapago.h"

@@ -44,9 +44,9 @@ CREATE TABLE lpedidoproveedor (
 #include "listlinpedidoproveedorview.h"
 #include "linpedidoproveedor.h"
 #include "funcaux.h"
-#include <q3table.h>
-#include <qmessagebox.h>
-#include <q3popupmenu.h>
+#include <Q3Table>
+#include <QMessageBox>
+#include <Q3PopupMenu>
 //Added by qt3to4:
 #include <QKeyEvent>
 #include <QEvent>

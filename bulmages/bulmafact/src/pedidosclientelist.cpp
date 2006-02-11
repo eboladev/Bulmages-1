@@ -14,9 +14,9 @@
 #include "company.h"
 #include "qtable1.h"
 #include "funcaux.h"
-#include <qmessagebox.h>
-#include <q3popupmenu.h>
-#include <qfile.h>
+#include <QMessageBox>
+#include <Q3PopupMenu>
+#include <QFile>
 //Added by qt3to4:
 #include <QTextStream>
 

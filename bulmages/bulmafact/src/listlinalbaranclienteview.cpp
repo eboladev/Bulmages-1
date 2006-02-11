@@ -23,9 +23,9 @@
 #define COL_TASATIPO_IVA 10
 #define COL_TIPO_IVA 11
 
-#include <q3table.h>
-#include <qmessagebox.h>
-#include <q3popupmenu.h>
+#include <Q3Table>
+#include <QMessageBox>
+#include <Q3PopupMenu>
 //Added by qt3to4:
 #include <QKeyEvent>
 #include <QEvent>

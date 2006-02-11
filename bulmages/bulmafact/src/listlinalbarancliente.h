@@ -12,7 +12,7 @@
 #ifndef LISTLINALBARANCLIENTE_H
 #define LISTLINALBARANCLIENTE_H
 
-#include <qobject.h>
+#include <QObject>
 //Added by qt3to4:
 #include <Q3PtrList>
 

@@ -21,9 +21,9 @@
  
 #include "division.h"
 #include "company.h"
-#include <qlineedit.h>
-#include <qmessagebox.h>
-#include <q3table.h>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <Q3Table>
 
 #define COL_DIVISION_IDDIVISION 0
 #define COL_DIVISION_DESCDIVISION 1

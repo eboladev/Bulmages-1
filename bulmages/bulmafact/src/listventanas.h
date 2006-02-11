@@ -5,7 +5,7 @@
 #include <q3dockwindow.h>
 //#include <QDockWidget>
 
-#include <q3listbox.h>
+#include <Q3ListBox>
 
 
 /** \brief Provides the dock window to list all windows in BulmaFact

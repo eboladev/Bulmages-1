@@ -11,7 +11,7 @@
 //
 #include "inventario.h"
 #include "company.h"
-#include <qfile.h>
+#include <QFile>
 //Added by qt3to4:
 #include <QTextStream>
 #include "funcaux.h"

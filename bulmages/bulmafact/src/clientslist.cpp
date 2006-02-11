@@ -60,15 +60,15 @@ CREATE TABLE cliente (
 #include "clientslist.h"
 #include "clientedit.h"
 #include "company.h"
-#include <qmessagebox.h>
+#include <QMessageBox>
 #include "qtable1.h"
 #include "funcaux.h"
-#include <qlineedit.h>
+#include <QLineEdit>
 //Added by qt3to4:
 #include <QTextStream>
 #include "pgimportfiles.h"
-#include <q3filedialog.h>
-#include <qcheckbox.h>
+#include <Q3FileDialog>
+#include <QCheckBox>
 
 #define COL_IDCLIENTE 0
 #define COL_NOMCLIENTE 1

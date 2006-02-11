@@ -13,9 +13,9 @@
 #include "company.h"
 #include "funcaux.h"
 
-#include <q3listview.h>
-#include <qlineedit.h>
-#include <qmessagebox.h>
+#include <Q3ListView>
+#include <QLineEdit>
+#include <QMessageBox>
 #include <QCloseEvent>
 
 #define COL_IDFPAGO   0

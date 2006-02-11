@@ -20,9 +20,9 @@
 #ifndef COMPANY_H
 #define COMPANY_H
 
-#include <qworkspace.h>
+#include <QWorkspace>
 #include "postgresiface2.h"
-#include <qobject.h>
+#include <QObject>
 
 #include "listventanas.h"
 

@@ -47,12 +47,12 @@ Restricciones de llave for�ea:
 #include "clientedit.h"
 #include "company.h"
 #include "division.h"
-#include <qlineedit.h>
-#include <qmessagebox.h>
-#include <q3table.h>
-#include <qtoolbutton.h>
-#include <qwidget.h>
-#include <qcombobox.h>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <Q3Table>
+#include <QToolButton>
+#include <QWidget>
+#include <QComboBox>
 
 #include <QCloseEvent>
 

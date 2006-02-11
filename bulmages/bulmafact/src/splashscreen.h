@@ -17,18 +17,18 @@
 #define _SPLASH_H
 
 #include <qdialog.h>
-#include <qpixmap.h>
-#include <qstring.h>
+#include <QPixmap>
+#include <QString>
 #include <q3progressbar.h>
-#include <qlabel.h>
+#include <QLabel>
 //Added by qt3to4:
 #include <QEvent>
 #include <stdio.h>
-#include <qlayout.h>
-#include <qlabel.h>
+#include <QLayout>
+#include <QLabel>
 #include <q3progressbar.h>
-#include <qmessagebox.h>
-#include <qpixmap.h>
+#include <QMessageBox>
+#include <QPixmap>
 #include <stdlib.h>
 #include <qtimer.h>
 #include <q3textbrowser.h>

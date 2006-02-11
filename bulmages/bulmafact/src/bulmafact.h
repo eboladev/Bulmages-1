@@ -1,9 +1,9 @@
 #ifndef BULMAFACT_H
 #define BULMAFACT_H
 
-#include <q3mainwindow.h>
-#include <qworkspace.h>
-#include <q3vbox.h>
+#include <Q3MainWindow>
+#include <QWorkspace>
+#include <Q3VBox>
 #include "bulmafactbase.h"
 #include "company.h"
 #include "listventanas.h"

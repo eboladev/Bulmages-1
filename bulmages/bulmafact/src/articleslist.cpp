@@ -19,17 +19,17 @@
  ***************************************************************************/
 
 #include "articleslist.h"
-#include <q3table.h>
-#include <qmessagebox.h>
-#include <qfile.h>
-#include <qlineedit.h>
-#include <qcheckbox.h>
-#include <qcombobox.h>
+#include <Q3Table>
+#include <QMessageBox>
+#include <QFile>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QComboBox>
 //Added by qt3to4:
 #include <QTextStream>
 #include "pgimportfiles.h"
 
-#include <q3filedialog.h>
+#include <Q3FileDialog>
 #include "company.h"
 #include "articleedit.h"
 

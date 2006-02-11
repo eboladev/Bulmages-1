@@ -12,7 +12,7 @@
 #ifndef LISTLINFACTURA_H
 #define LISTLINFACTURA_H
 
-#include <qobject.h>
+#include <QObject>
 #include <Q3PtrList>
 #include "funcaux.h"
 

@@ -48,11 +48,11 @@ CREATE TABLE presupuesto (
 #include "qtable1.h"
 #include "funcaux.h"
 
-#include <qmessagebox.h>
-#include <q3popupmenu.h>
-#include <qcheckbox.h>
-#include <qfile.h>
-#include <qcheckbox.h>
+#include <QMessageBox>
+#include <Q3PopupMenu>
+#include <QCheckBox>
+#include <QFile>
+#include <QCheckBox>
 //Added by qt3to4:
 #include <QTextStream>
 

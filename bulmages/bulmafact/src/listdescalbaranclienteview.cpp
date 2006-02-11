@@ -17,9 +17,9 @@
 
 
 #include "listdescalbaranclienteview.h"
-#include <q3table.h>
-#include <qmessagebox.h>
-#include <q3popupmenu.h>
+#include <Q3Table>
+#include <QMessageBox>
+#include <Q3PopupMenu>
 
 
 ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView(QWidget * parent, const char * name) : Q3Table(parent, name), ListDescuentoAlbaranCliente() {

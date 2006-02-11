@@ -21,7 +21,7 @@
 #define ARTICLESLIST_H
 
 #include "articleslistbase.h"
-#include <q3frame.h>
+#include <Q3Frame>
 #include "company.h"
 #include "pgimportfiles.h"
 

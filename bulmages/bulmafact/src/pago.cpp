@@ -13,8 +13,8 @@
 #include "pago.h"
 #include "company.h"
 #include "configuracion.h"
-#include <qfile.h>
-#include <qtextstream.h>
+#include <QFile>
+#include <QTextStream>
 
 Pago::Pago(company *comp) : DBRecord(comp) {
     companyact=comp;

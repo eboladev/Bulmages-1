@@ -28,12 +28,12 @@ CREATE TABLE trabajador (
 #include "trabajador.h"
 #include "company.h"
 
-#include <q3listview.h>
-#include <qlineedit.h>
-#include <qmessagebox.h>
-#include <q3filedialog.h>
-#include <qpixmap.h>
-#include <qlabel.h>
+#include <Q3ListView>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <Q3FileDialog>
+#include <QPixmap>
+#include <QLabel>
 #include <qdialog.h>
 
 #define COL_IDTRABAJADOR   0
@@ -95,7 +95,7 @@ void Trabajador::pintar() {
 
 Trabajador::~Trabajador() {}
 
-#include <qcheckbox.h>
+#include <QCheckBox>
 void Trabajador::s_lista(Q3ListViewItem *it) {
     if (it != NULL) {
         /// Si se ha modificado el contenido advertimos y guardamos.

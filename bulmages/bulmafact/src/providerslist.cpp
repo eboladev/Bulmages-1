@@ -65,11 +65,11 @@ CREATE TABLE proveedor (
 #include "qtable1.h"
 #include "funcaux.h"
 
-#include <qlineedit.h>
-#include <qmessagebox.h>
-#include <qcheckbox.h>
-#include <qfile.h>
-#include <q3filedialog.h>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QCheckBox>
+#include <QFile>
+#include <Q3FileDialog>
 //Added by qt3to4:
 #include <QTextStream>
 

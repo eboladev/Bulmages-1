@@ -12,7 +12,7 @@
 #ifndef LISTCOMPARTICULO_H
 #define LISTCOMPARTICULO_H
 
-#include <qobject.h>
+#include <QObject>
 //Added by qt3to4:
 #include <Q3PtrList>
 

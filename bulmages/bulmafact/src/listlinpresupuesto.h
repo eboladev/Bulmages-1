@@ -12,7 +12,7 @@
 #ifndef LISTLINPRESUPUESTO_H
 #define LISTLINPRESUPUESTO_H
 
-#include <qobject.h>
+#include <QObject>
 //Added by qt3to4:
 #include <Q3PtrList>
 

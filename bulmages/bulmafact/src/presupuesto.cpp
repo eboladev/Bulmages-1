@@ -12,8 +12,8 @@
 #include "presupuesto.h"
 #include "company.h"
 #include "configuracion.h"
-#include <qfile.h>
-#include <qtextstream.h>
+#include <QFile>
+#include <QTextStream>
 #include "fixed.h"
 #include "funcaux.h"
 #include "plugins.h"

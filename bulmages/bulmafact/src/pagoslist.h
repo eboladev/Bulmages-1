@@ -24,8 +24,8 @@
 #include "pagoslistbase.h"
 #include "company.h"
 #include "busquedaproveedor.h"
-#include <qlineedit.h>
-#include <q3table.h>
+#include <QLineEdit>
+#include <Q3Table>
 
 
 class PagosList : public PagosListBase {

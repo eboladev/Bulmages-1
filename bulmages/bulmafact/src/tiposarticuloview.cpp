@@ -11,11 +11,11 @@
 //
 #include "tiposarticuloview.h"
 #include "company.h"
-#include <q3listview.h>
-#include <qmap.h>
-#include <qlineedit.h>
-#include <q3textedit.h>
-#include <qmessagebox.h>
+#include <Q3ListView>
+#include <QMap>
+#include <QLineEdit>
+#include <Q3TextEdit>
+#include <QMessageBox>
 
 #define COL_IDTIPOARTICULO 0
 #define COL_CODTIPOARTICULO 1

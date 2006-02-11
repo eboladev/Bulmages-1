@@ -35,18 +35,18 @@
 #include <plugins.h>
 
 
-#include <qmessagebox.h>
+#include <QMessageBox>
 
-#include <q3table.h>
-#include <qwidget.h>
-#include <qobject.h>
-#include <qcombobox.h>
-#include <q3popupmenu.h>
-#include <qtoolbutton.h>
-#include <qfile.h>
-#include <qtextstream.h>
-#include <qlayout.h>
-#include <qmessagebox.h>
+#include <Q3Table>
+#include <QWidget>
+#include <QObject>
+#include <QComboBox>
+#include <Q3PopupMenu>
+#include <QToolButton>
+#include <QFile>
+#include <QTextStream>
+#include <QLayout>
+#include <QMessageBox>
 #include <QCloseEvent>
 #include <fstream>
 using namespace std;

@@ -14,7 +14,7 @@
 
 #include "inventariosbase.h"
 
-#include <q3frame.h>
+#include <Q3Frame>
 
 /**
 @author Tomeu Borras
