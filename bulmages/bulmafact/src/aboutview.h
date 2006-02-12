@@ -32,8 +32,7 @@
 
 class aboutview : public QDialog, public Ui::aboutdlg  {
 public: 
-	aboutview(QDialog *parent=0);// : QDialog(parent);          /// Constructor de la clase
-	//{ setupUi(this); }
+	aboutview(QDialog *parent=0);  /// Constructor de la clase
 	~aboutview();
 };
 
