@@ -1,0 +1,35 @@
+#!/bin/bash
+#----------------------------------------------------------------------
+# Description: Script para generar los archivos .h desde los .ui
+#              con formato QT4. No lo hace de forma automatica
+#              porque qmake solo lo hace de una sola manera, QT3 o QT4.
+#              Bajo FORMS3 los genera qmake
+#              Bajo FORMS los genera esta script.
+#
+#              Este script es necesario solamente durante el proceso
+#              de migracion de los .ui a QT4.
+#
+# Author: Fco. Javier M. C. <fcojavmc@todo-redes.com>
+# Created at: Sat Feb 12 19:02:00 CET 2006
+#    
+# Copyright (c) 2006 Fco. Javier M. C.  All rights reserved.
+#
+#----------------------------------------------------------------------
+
+
+# Ruta ABSOLUTA al directorio donde estan los uis.
+
+cd `pwd`
+cd ../bulmafact/src
+rutauis=`pwd`
+
+# Lista con los uis que se tienen que incluir en la clausula FORMS y quitarlos de FORMS3
+uis[1]="about"
+
+for ((it1=1; it1<2; it1++)); do
+    uic $rutauis/${uis[$it1]}.ui -o $rutauis/.ui/${uis[$it1]}.h
+    echo "Generado ${uis[$it1]}.h - OK"
+done
+
+
+
