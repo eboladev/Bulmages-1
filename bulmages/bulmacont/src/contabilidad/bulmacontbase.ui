@@ -113,7 +113,7 @@
             <cstring>ventToolbar</cstring>
         </property>
         <property name="resizeEnabled">
-            <bool>true</bool>
+            <bool>false</bool>
         </property>
         <property name="label">
             <string>Ventanas</string>
@@ -175,7 +175,7 @@
             <string>Primero</string>
         </property>
         <property name="accel">
-            <string>Alt+</string>
+            <string></string>
         </property>
     </action>
     <action>
@@ -189,7 +189,7 @@
             <string>Anterior</string>
         </property>
         <property name="accel">
-            <string>Alt+</string>
+            <string></string>
         </property>
     </action>
     <action>
@@ -203,7 +203,7 @@
             <string>Siguiente</string>
         </property>
         <property name="accel">
-            <string>Alt+</string>
+            <string></string>
         </property>
     </action>
     <action>
@@ -471,7 +471,7 @@
             <cstring>a_balances</cstring>
         </property>
         <property name="text">
-            <string>Balances</string>
+            <string>Cuentas Anuales</string>
         </property>
     </action>
     <action>

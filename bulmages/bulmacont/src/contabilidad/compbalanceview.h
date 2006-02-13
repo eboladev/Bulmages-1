@@ -26,31 +26,31 @@
 #include "empresa.h"
 
 class compbalanceview : public compbalancedlg  {
-   Q_OBJECT
+    Q_OBJECT
 public:
-   empresa *empresaactual;
-   postgresiface2 *conexionbase;
-   QString idbalance;    // Esta variable indica cual es el balance que se esta modificando/visualizando
-public: 
-	compbalanceview(empresa *, QWidget *parent=0, const char *name=0);
-	~compbalanceview();
-   void inicializa1(QString);
-   QString mdb_idmpatrimonial;   //este campo acompa� a la descripc� de la masa, pero no aparece pq no puede editarse.
+    empresa *empresaactual;
+    postgresiface2 *conexionbase;
+    QString idbalance;    // Esta variable indica cual es el balance que se esta modificando/visualizando
+public:
+    compbalanceview(empresa *, QWidget *parent=0, const char *name=0);
+    ~compbalanceview();
+    void inicializa1(QString);
+    QString mdb_idmpatrimonial;   //este campo acompa� a la descripc� de la masa, pero no aparece pq no puede editarse.
 
 public slots:
-   virtual void agregalinea();
-   virtual void borralinea();
-   virtual void botonizq();
-   virtual void botondrcha();
-   virtual void botonarriba();
-   virtual void botonabajo();
-   virtual void listadopulsado(int, int, int, const QPoint &);
-   virtual void listadodpulsado(int, int, int, const QPoint &);
-   virtual void modificamasa();
-   virtual void modificalinea();
-   virtual void botonimprimir();
-   virtual void cambiado(int, int);
-   virtual void accept();
+    virtual void agregalinea();
+    virtual void borralinea();
+    virtual void botonizq();
+    virtual void botondrcha();
+    virtual void botonarriba();
+    virtual void botonabajo();
+    virtual void listadopulsado(int, int, int, const QPoint &);
+    virtual void listadodpulsado(int, int, int, const QPoint &);
+    virtual void modificamasa();
+    virtual void modificalinea();
+    virtual void botonimprimir();
+    virtual void cambiado(int, int);
+    virtual void s_save();
 };
 
 #endif

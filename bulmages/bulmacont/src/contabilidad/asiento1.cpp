@@ -14,6 +14,7 @@
 #include <qfile.h>
 //Added by qt3to4:
 #include <QTextStream>
+#include <qmessagebox.h>
 #include "fixed.h"
 #include "funcaux.h"
 #include "ivaview.h"
@@ -40,17 +41,26 @@ Asiento1::~Asiento1() {}
 void Asiento1::borraAsiento1() {
     _depura("Asiento1::borraAsiento1",0);
     if (DBvalue("idasiento") != "") {
-        listalineas->borrar();
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM apunte WHERE idasiento="+DBvalue("idasiento"));
-        error += companyact->ejecuta("DELETE FROM asiento WHERE idasiento="+DBvalue("idasiento"));
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        companyact->commit();
-        vaciaAsiento1();
-        //        pintaAsiento1();
+        switch( QMessageBox::warning( 0, "Borrar Asento",
+                                      "Se va a borrar el asiento,\n"
+                                      "Esta seguro?\n",
+                                      QMessageBox::Ok ,
+                                      QMessageBox::Cancel )) {
+        case QMessageBox::Ok: // Retry clicked or Enter pressed
+            listalineas->borrar();
+            companyact->begin();
+            int error = companyact->ejecuta("DELETE FROM apunte WHERE idasiento="+DBvalue("idasiento"));
+            error += companyact->ejecuta("DELETE FROM asiento WHERE idasiento="+DBvalue("idasiento"));
+            if (error) {
+                companyact->rollback();
+                return;
+            }// end if
+            companyact->commit();
+            vaciaAsiento1();
+            break;
+        case QMessageBox::Cancel: // Abort clicked or Escape pressed
+            break;
+        }// end switch
     }// end if
 }// end borraAlbaranCliente
 
@@ -120,7 +130,9 @@ void Asiento1::cierraAsiento1() {
         return;
     }
     companyact->cierraasiento(id.toInt());
-    trataestadoAsiento1();
+    QString idasiento = DBvalue("idasiento");
+    vaciaAsiento1();
+    cargaAsiento1(idasiento);
     _depura("END Asiento1::cierraasiento1",0);
 }// end cierraAsiento1
 

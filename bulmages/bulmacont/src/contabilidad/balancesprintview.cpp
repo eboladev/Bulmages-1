@@ -72,9 +72,7 @@ void balancesprintview::accept() {
         progreso->setProgress(1);
         while (!cursor->eof()) {
             QString query = "SELECT saldompatrimonial("+cursor->valor("idmpatrimonial")+",'"+fechainicial+"','"+fechafinal+"') AS saldot";
-            conexionbase->begin();
             cursor2 *mycursor = conexionbase->cargacursor(query);
-            conexionbase->commit();
             int i=0;
             Fixed valor("0");
             while (!mycursor->eof()) {

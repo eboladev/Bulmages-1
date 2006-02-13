@@ -56,7 +56,7 @@ public:
         return DBvalue("iddiario");
     };
     inline QString fecha() {
-        return DBvalue("fecha");
+        return DBvalue("fecha").left(10);
     };
     inline QString conceptocontable() {
         return DBvalue("conceptocontable");
@@ -107,6 +107,12 @@ public:
     inline QString descripcioncanal() { return DBvalue("descripcioncanal");};
     inline QString nombrec_coste() { return DBvalue("nombrec_coste");};
     inline QString descripcionc_coste() { return DBvalue("descripcionc_coste");};
+
+    inline QString idregistroiva() { return DBvalue("idregistroiva");};
+    inline QString factura() { return DBvalue("factura");};
+    inline QString ffactura() { return DBvalue("ffactura");};
+
+
 
     inline void setidborrador(QString val) {
         setDBvalue("idborrador",val);

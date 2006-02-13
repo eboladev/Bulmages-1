@@ -44,6 +44,7 @@ void ListLinAsiento1::cargaListLinAsiento1(QString idbudget) {
     SQLQuery+= " LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta  FROM  cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta ";
     SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
     SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
+    SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador  FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador ";
     SQLQuery+= "WHERE idasiento="+idbudget+" ORDER BY orden";
     cursor2 * cur= companyact->cargacursor(SQLQuery);
     while (!cur->eof())   {

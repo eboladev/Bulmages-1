@@ -62,6 +62,9 @@ void LinAsiento1::definetabla() {
     addDBCampo("nombrecanal", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre Canal");
     addDBCampo("descripcionc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, "Descripcion Canal");
     addDBCampo("nombrec_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre Canal");
+    addDBCampo("idregistroiva", DBCampo::DBint, DBCampo::DBNoSave, "IVA");
+    addDBCampo("ffactura", DBCampo::DBdate, DBCampo::DBNoSave, "Fecha factura");
+    addDBCampo("factura", DBCampo::DBint, DBCampo::DBNoSave, "Factura");
 }// end definetabla
 
 
@@ -78,6 +81,7 @@ LinAsiento1::LinAsiento1(empresa *comp, QString idborrador) : DBRecord(comp) {
     SQLQuery += " LEFT JOIN (SELECT codigo, descripcion AS descripcionc, idcuenta  FROM cuenta) AS t1 ON borrador.idcuenta=t1.idcuenta ";
     SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
     SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
+    SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador  FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador ";
     SQLQuery += "WHERE  idborrador="+idborrador;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {

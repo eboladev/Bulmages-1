@@ -45,7 +45,12 @@ public:
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);
     virtual void contextMenu ( int , int , const QPoint &  );
+    virtual void contextMenuCerrado ( int , int , const QPoint &  );
     virtual void borraLinAsiento1act();
+
+    virtual void boton_extracto1(int);
+    virtual void boton_diario1(int);
+    virtual void boton_balance1(int);
 };
 
 #endif

@@ -18,7 +18,7 @@
 #define COL_NOMCUENTA   2
 #define COL_CONTRAPARTIDA 3
 #define COL_IDBORRADOR    7
-#define COL_TIPOIVA       8
+#define COL_IDREGISTROIVA       8
 #define COL_IVA           9
 #define COL_NOMBREC_COSTE       10
 #define COL_NOMBRECANAL        11
@@ -32,6 +32,8 @@
 #include "listlinasiento1view.h"
 #include "funcaux.h"
 #include "ivaview.h"
+#include "asiento1view.h"
+#include "cuentaview.h"
 
 #include <q3table.h>
 #include <qmessagebox.h>
@@ -82,7 +84,7 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget * parent, const char * name) : 
     horizontalHeader()->setLabel( COL_NOMCUENTA, tr( "COL_NOMCUENTA" ) );
     horizontalHeader()->setLabel( COL_CONTRAPARTIDA, tr( "COL_CONTRAPARTIDA" ) );
     horizontalHeader()->setLabel( COL_IDBORRADOR, tr( "COL_IDBORRADOR" ) );
-    horizontalHeader()->setLabel( COL_TIPOIVA, tr( "COL_TIPOIVA" ) );
+    horizontalHeader()->setLabel( COL_IDREGISTROIVA, tr( "COL_IDREGISTROIVA" ) );
     horizontalHeader()->setLabel( COL_IVA, tr( "COL_IVA" ) );
     horizontalHeader()->setLabel( COL_NOMBREC_COSTE, tr( "COL_NOMBREC_COSTE" ) );
     horizontalHeader()->setLabel( COL_NOMBRECANAL, tr( "COL_NOMBRECANAL" ) );
@@ -106,7 +108,7 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget * parent, const char * name) : 
     setFont( tapunts_font );
 
     hideColumn(COL_IDBORRADOR);
-    hideColumn(COL_TIPOIVA);
+    hideColumn(COL_IDREGISTROIVA);
     hideColumn(COL_IDCUENTA);
     hideColumn(COL_IDCONTRAPARTIDA);
     hideColumn(COL_IDCANAL);
@@ -142,10 +144,16 @@ void ListLinAsiento1View::pintaListLinAsiento1() {
 
 
 void ListLinAsiento1View::contextMenu ( int row, int col, const QPoint & pos ) {
+    _depura("ListLinAsiento1View::contextMenu",0);
+    if (companyact->intapuntsempresa()->estadoAsiento1() == Asiento1::ASCerrado) {
+        contextMenuCerrado(row, col, pos);
+        return;
+    }
     LinAsiento1 *linea = lineaact();
     Q3PopupMenu *popup;
     QString query;
     int opcion;
+
 
     /// Confeccionamos el menu dependiendo del estado y de la casilla pulsada.
     popup = new Q3PopupMenu;
@@ -384,81 +392,88 @@ void ListLinAsiento1View::contextMenu ( int row, int col, const QPoint & pos ) {
             break;
         }// end switch
     } else {
-        // Si el asiento esta cerrado el menú a mostrar es diferente
-        popup = new Q3PopupMenu;
-        popup->insertItem(tr("Ver Diario (Este día)"),101);
-        popup->insertItem(tr("Ver Diario (Este mes)"),103);
-        popup->insertItem(tr("Ver Diario (Este año)"),104);
-        popup->insertSeparator();
-        popup->insertItem(tr("Ver Extracto (Este día)"),111);
-        popup->insertItem(tr("Ver Extracto (Este mes)"),113);
-        popup->insertItem(tr("Ver Extracto (Este año)"),114);
-        popup->insertSeparator();
-        popup->insertItem(tr("Ver Balance (Este día)"),121);
-        popup->insertItem(tr("Ver Balance (Este mes)"),123);
-        popup->insertItem(tr("Ver Balance (Este año)"),124);
-        popup->insertSeparator();
-        if (col == COL_NOMCUENTA || col == COL_CONTRAPARTIDA || col == COL_SUBCUENTA) {
-            popup->insertItem(tr("Editar Cuenta"),130);
-            popup->insertItem(tr("Sustituir Cuenta"), 140);
-        }// end if
-        opcion = popup->exec(poin);
-        switch(opcion) {
- 
-        case 101:
-            boton_diario1(0);
-            break;
-        case 103:
-            boton_diario1(1);
-            break;
-        case 104:
-            boton_diario1(2);
-            break;
-        case 111:
-            boton_extracto1(0);
-            break;
-        case 113:
-            boton_extracto1(1);
-            break;
-        case 114:
-            boton_extracto1(2);
-            break;
-        case 121:
-            boton_balance1(0);
-            break;
-        case 123:
-            boton_balance1(1);
-            break;
-        case 124:
-            boton_balance1(2);
-            break;
-        case 140:
-            /// Aun no esta implementada la sustitución de cuentas desde el menú contextual.
-            fprintf(stderr,"Aun no esta implementada la sustitución de cuentas desde el menú contextual\n");
-            break;
-        case 130:
-            // Se ha elegido la opción de editar cuenta.
-            // Abrimos la ventana de edición de cuentas.
-            QString idcuenta;
-            if (col == COL_SUBCUENTA || col == COL_NOMCUENTA)
-                idcuenta = tapunts3->text(row,COL_IDCUENTA);
-            else
-                idcuenta = tapunts3->text(row,COL_IDCONTRAPARTIDA);
-            cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
-            nuevae->cargacuenta(atoi(idcuenta.ascii()));
-            nuevae->exec();
-            delete nuevae;
-            repinta(idAsiento().toInt());
-            break;
-        }// end switch
-        delete popup;
-    }// end if
-}// end contextmenu
- 
- 
  
  
 */
+
+void ListLinAsiento1View::contextMenuCerrado ( int , int col, const QPoint & pos ) {
+    LinAsiento1 *linea = lineaact();
+    Q3PopupMenu *popup;
+    QString query;
+    int opcion;
+
+    // Si el asiento esta cerrado el menú a mostrar es diferente
+    popup = new Q3PopupMenu;
+    popup->insertItem(tr("Ver Diario (Este día)"),101);
+    popup->insertItem(tr("Ver Diario (Este mes)"),103);
+    popup->insertItem(tr("Ver Diario (Este año)"),104);
+    popup->insertSeparator();
+    popup->insertItem(tr("Ver Extracto (Este día)"),111);
+    popup->insertItem(tr("Ver Extracto (Este mes)"),113);
+    popup->insertItem(tr("Ver Extracto (Este año)"),114);
+    popup->insertSeparator();
+    popup->insertItem(tr("Ver Balance (Este día)"),121);
+    popup->insertItem(tr("Ver Balance (Este mes)"),123);
+    popup->insertItem(tr("Ver Balance (Este año)"),124);
+    popup->insertSeparator();
+    if (col == COL_NOMCUENTA || col == COL_CONTRAPARTIDA || col == COL_CODIGO) {
+        popup->insertItem(tr("Editar Cuenta"),130);
+        ///            popup->insertItem(tr("Sustituir Cuenta"), 140);
+    }// end if
+    opcion = popup->exec(pos);
+    switch(opcion) {
+
+    case 101:
+        boton_diario1(0);
+        break;
+    case 103:
+        boton_diario1(1);
+        break;
+    case 104:
+        boton_diario1(2);
+        break;
+    case 111:
+        boton_extracto1(0);
+        break;
+    case 113:
+        boton_extracto1(1);
+        break;
+    case 114:
+        boton_extracto1(2);
+        break;
+    case 121:
+        boton_balance1(0);
+        break;
+    case 123:
+        boton_balance1(1);
+        break;
+    case 124:
+        boton_balance1(2);
+        break;
+    case 140:
+        /// Aun no esta implementada la sustitución de cuentas desde el menú contextual.
+        fprintf(stderr,"Aun no esta implementada la sustitución de cuentas desde el menú contextual\n");
+        break;
+    case 130:
+        // Se ha elegido la opción de editar cuenta.
+        // Abrimos la ventana de edición de cuentas.
+        QString idcuenta;
+        if (col == COL_CODIGO || col == COL_NOMCUENTA)
+            idcuenta = linea->idcuenta();
+        else
+            idcuenta = linea->contrapartida();
+        cuentaview *nuevae = new cuentaview(companyact,0,"",true);
+        nuevae->cargacuenta(idcuenta.toInt());
+        nuevae->exec();
+        delete nuevae;
+        pintaListLinAsiento1();
+        break;
+    }// end switch
+    delete popup;
+}// end contextmenu
+
+
+
 
 
 
@@ -479,7 +494,7 @@ void ListLinAsiento1View::pintalinListLinAsiento1(int pos) {
     setText(pos, COL_NOMCUENTA, linea->descripcioncuenta());
     setText(pos, COL_CONTRAPARTIDA, linea->contrapartida());
     setText(pos, COL_IDBORRADOR, linea->idborrador());
-    setText(pos, COL_TIPOIVA, linea->idtipoiva());
+    setText(pos, COL_IDREGISTROIVA, linea->idregistroiva());
     setText(pos, COL_IVA, linea->idtipoiva());
     setText(pos, COL_NOMBREC_COSTE, linea->nombrec_coste());
     setText(pos, COL_NOMBRECANAL, linea->nombrecanal());
@@ -488,6 +503,8 @@ void ListLinAsiento1View::pintalinListLinAsiento1(int pos) {
     setText(pos, COL_IDCANAL, linea->idcanal());
     setText(pos, COL_IDCCOSTE, linea->idc_coste());
     setText(pos, COL_ORDEN, linea->orden());
+    if (linea->idregistroiva() != "")
+        setText(pos, COL_IVA, "Fact: "+linea->factura()+" Fecha: "+linea->ffactura());
     adjustRow(pos);
 
 }
@@ -499,11 +516,13 @@ bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
     calendario *cal;
     LinAsiento1 *linea;
     BusquedaCuenta *cuent;
+    QString cadena;
     if ( ev->type() == QEvent::KeyRelease ) {
         QKeyEvent *k = (QKeyEvent *)ev;
         int col=currentColumn();
         int row=currentRow();
         linea = lineaact();
+        Q3PtrList<QDate> a;
         switch (k->key()) {
         case Qt::Key_Plus:
             switch(col) {
@@ -516,8 +535,6 @@ bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
                 pintalinListLinAsiento1(currentRow());
                 return TRUE;
             case COL_FECHA:
-                Q3PtrList<QDate> a;
-                QString cadena;
                 cal = new calendario(0,0);
                 cal->exec();
                 a = cal->dn->selectedDates();
@@ -573,6 +590,7 @@ void ListLinAsiento1View::valueBudgetLineChanged(int row, int col) {
     _depura("valueBudgetLineChanged \n",0);
     LinAsiento1 *linea;
     linea = lineaat(row);
+    Fixed descuadre;
     if (linea != NULL) {
         switch (col) {
         case COL_FECHA:
@@ -599,9 +617,23 @@ void ListLinAsiento1View::valueBudgetLineChanged(int row, int col) {
                         LinAsiento1 *linant = lineaat(row-1);
                         linea->setdebe(linant->debe());
                     }// end if
+                } else if (text(row,col) == "+") {
+                    linea->setdebe("0.00");
+                    linea->sethaber("0.00");
+                    descuadre = totaldebe() - totalhaber();
+                    if (descuadre < 0) {
+                        descuadre = -descuadre;
+                        linea->setdebe(descuadre.toQString());
+                        linea->sethaber("0.00");
+                    } else {
+                        linea->setdebe("0.00");
+                        linea->sethaber(descuadre.toQString());
+                    }// end if
                 } else {
                     Fixed val = Fixed(text(row, COL_DEBE));
                     linea->setdebe(val.toQString());
+                    if (val != 0)
+                        linea->sethaber("0.00");
                     break;
                 }// end if
             }// end case
@@ -611,9 +643,23 @@ void ListLinAsiento1View::valueBudgetLineChanged(int row, int col) {
                         LinAsiento1 *linant = lineaat(row-1);
                         linea->sethaber(linant->haber());
                     }// end if
+                } else  if (text(row,col) == "+") {
+                    linea->setdebe("0.00");
+                    linea->sethaber("0.00");
+                    descuadre = totaldebe() - totalhaber();
+                    if (descuadre < 0) {
+                        descuadre = -descuadre;
+                        linea->setdebe(descuadre.toQString());
+                        linea->sethaber("0.00");
+                    } else {
+                        linea->setdebe("0.00");
+                        linea->sethaber(descuadre.toQString());
+                    }// end if
                 } else {
                     Fixed val = Fixed(text(row, COL_HABER));
                     linea->sethaber(val.toQString());
+                    if (val != 0)
+                        linea->setdebe("0.00");
                 }// end if
                 break;
             }// end case
@@ -721,4 +767,107 @@ void ListLinAsiento1View::boton_iva() {
         pintaListLinAsiento1();
     }// end if
 }// end boton_iva
+
+
+
+
+/**
+  * Si el parametro pasado es un:
+  * 0 -> del día actual
+  * 1 -> del mes actual
+  * 2 -> del año actual
+  */
+void ListLinAsiento1View::boton_extracto1(int tipo) {
+    _depura("ListLinAsiento1View::boton_extracto1",0);
+    QDate fecha1, fecha2, fechaact;
+    LinAsiento1 *linea = lineaact();
+    if(linea->fecha() != "") {
+        fechaact = normalizafecha(linea->fecha());
+        switch(tipo) {
+        case 0:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.day());
+            break;
+        case 1:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
+            break;
+        case 2:
+            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha2.setYMD(fechaact.year(), 12, 31);
+            break;
+        }// end switch
+        companyact->extractoempresa()->inicializa1(linea->codigo(), linea->codigo(),fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        companyact->extractoempresa()->accept();
+        companyact->libromayor();
+    }// end if
+
+}// end boton_extracto1
+
+
+/**
+  * Si el parametro pasado es un:
+  * 0 -> del día actual
+  * 1 -> del mes actual
+  * 2 -> del año actual
+  */
+void ListLinAsiento1View::boton_diario1(int tipo) {
+    QDate fecha1, fecha2, fechaact;
+    LinAsiento1 *linea = lineaact();
+    if(linea->fecha() != "") {
+        fechaact = normalizafecha(linea->fecha());
+        switch(tipo) {
+        case 0:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.day());
+            break;
+        case 1:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
+            break;
+        case 2:
+            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha2.setYMD(fechaact.year(), 12, 31);
+            break;
+        }// end switch
+        companyact->diarioempresa()->inicializa1( fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        companyact->diarioempresa()->accept();
+        companyact->librodiario();
+    }// end if
+
+}// end boton_diario1
+
+
+/**
+  * Si el parametro pasado es un:
+  * 0 -> del día actual
+  * 1 -> del mes actual
+  * 2 -> del año actual
+  */
+void ListLinAsiento1View::boton_balance1(int tipo) {
+    QDate fecha1, fecha2, fechaact;
+    LinAsiento1 *linea = lineaact();
+    if(	linea->fecha() != "") {
+        fechaact = normalizafecha(linea->fecha());
+        switch(tipo) {
+        case 0:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.day());
+            break;
+        case 1:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
+            break;
+        case 2:
+            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha2.setYMD(fechaact.year(), 12, 31);
+            break;
+        }// end switch
+        companyact->balanceempresa()->inicializa1(linea->codigo(), linea->codigo(), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        companyact->balanceempresa()->accept();
+        // La presentación que la haga la clase empresa. Que es quien se encarga de ello.
+        companyact->librobalance();
+    }// end if
+
+}// end boton_balance1
 
