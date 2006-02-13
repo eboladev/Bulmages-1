@@ -26,6 +26,7 @@
 #include "selectccosteview.h"
 #include "selectcanalview.h"
 
+
 class ListLinAsiento1View : public Q3Table , public ListLinAsiento1 {
     Q_OBJECT
 public:
@@ -39,6 +40,7 @@ public:
     void cargaconfig();
     void guardaconfig();
     void iniciar_asiento_nuevo(QString);
+    void boton_iva();
 
 public slots:
     virtual void valueBudgetLineChanged(int row, int col);

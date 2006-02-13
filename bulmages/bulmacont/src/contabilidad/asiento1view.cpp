@@ -31,9 +31,13 @@
 #include "asiento1view.h"
 #include "busquedafecha.h"
 #include "asientoview.h"
+#include "duplicarasientoview.h"
+#include "aplinteligentesview.h"
 
 #include "listlinasiento1view.h"
+#include "empresa.h"
 
+/*
 #define COL_FECHA       0
 #define COL_CODIGO   1
 #define COL_CONCEPTO    6
@@ -51,6 +55,7 @@
 #define COL_IDCANAL         14
 #define COL_IDCCOSTE        15
 #define COL_ORDEN	    16
+*/
 
 /*
 /// Usar esta macro es peligroso ya que el cursor puede estar vacio.
@@ -163,11 +168,99 @@ void Asiento1View::iniciar_asiento_nuevo() {
     nuevoasiento->inicializa(companyact);
     int idasiento = nuevoasiento->creaasiento( m_fecha->text(), m_fecha->text(),0,1);
     delete nuevoasiento;
+	if (idasiento <= 0) {
+		_depura("No se pudo crear el asiento",2);
+		return;
+	}// end if
     cargaasientos();
     muestraasiento(idasiento);
     boton_abrirasiento();
     subform2->iniciar_asiento_nuevo(m_fecha->text());
 }// end iniciar_asiento_nuevo
+
+void Asiento1View::eturn_fechaasiento() {
+    QString query;
+    if (estadoAsiento1() != Asiento1::ASCerrado) { //cambiar la fecha del asiento
+        setDBvalue("fecha",m_fecha->text());
+        guardaAsiento1();
+    } else {
+        iniciar_asiento_nuevo();
+    }
+}// end return_fechaasiento
+
+
+/** \brief Se ha pulsado sobre el botón de duplicar asiento
+  *
+  * Inicializa el dialogo de duplicación de asientos y lo presenta.
+  * Cuando se ha terminado carga el cursor de presentación y repinta el asiento
+  * para que actualize los cambios
+  */
+void Asiento1View::boton_duplicarasiento() {
+    duplicarasientoview *dupli= new duplicarasientoview(companyact,0,"",true);
+    // Establecemos los parametros para el nuevo asiento a duplicar
+    dupli->inicializa(idasiento(), idasiento());
+    dupli->exec();
+    cargaasientos();
+    boton_fin();
+    delete dupli;
+}// end boton_duplicarasiento
+
+
+/**
+  * Esta se encarga de la edicion de asientos.
+  */
+void Asiento1View::editarasiento() {
+	_depura("editarasiento",2);
+    guardaAsiento1();
+    asientoview *nuevoasiento= new asientoview(companyact,0,"",true);
+    nuevoasiento->inicializa(companyact);
+    nuevoasiento->cargaasiento(idasiento().toInt());
+    nuevoasiento->exec();
+    cargaasientos();
+//    repinta(idAsiento().toInt());
+	pintaAsiento1();
+}// end editarasiento
+
+
+
+/** Se ha pulsado sobre el botón de generar asientos inteligentes. Se inicializa la clase \ref aplinteligentesview y se muestra ese diálogo para que se opere con los asientos plantilla
+*/
+void Asiento1View::boton_inteligente() {
+    int numasiento;
+    if (estadoasiento() != Asiento1::ASCerrado) {
+        // El asiento esta abierto y por tanto se muestra como abierto
+        asientoabiertop();
+        numasiento = idasiento().toInt();
+    } else {
+        numasiento = 0;
+    }// end if
+    aplinteligentesview *nueva=new aplinteligentesview(companyact, 0,"");
+    nueva->inicializa(numasiento);
+    nueva->exec();
+    delete nueva;
+}// end boton_inteligente
+
+/**
+  * Se ha pulsado sobre el boton de cargar asiento con lo
+  * que debemos comprobar que el numero introducido es correcto
+  * y hacer las gestiones oportunas para mostrar el asiento en
+  * pantalla o crearlo si hace falta.
+  */
+void Asiento1View::boton_cargarasiento() {
+    QString idas="";
+    QString query = "SELECT idasiento FROM asiento WHERE ordenasiento = "+m_ordenasiento->text()+" ORDER BY ordenasiento DESC";
+    cursor2 *curs = companyact->cargacursor(query);
+    if (!curs->eof()) {
+        idas = curs->valor("idasiento");
+        cargaasientos();
+        muestraasiento(idas);
+    } else {
+	_depura("Asiento inexistente",2);
+	pintaAsiento1();
+	}// end if
+    delete curs;
+}// end boton_cargarasiento
+
 
 
 /**************************************************************************************************************************

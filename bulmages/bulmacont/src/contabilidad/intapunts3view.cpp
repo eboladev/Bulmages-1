@@ -663,7 +663,6 @@ void intapunts3view::buscaFactura() {
     cuentas.truncate(cuentas.length()-1); // Le quitamos el último '|' que nos sobra
 
     /// Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
-    /// Esta versión se basa en la base de datos pq es mejor ya que así somos más eficaces.
     QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+QString::number(idAsiento().toInt())+" AND codigo SIMILAR TO '"+companyact->sanearCadena(cuentas.ascii())+"' GROUP BY contra";
 
     cursor2 *cursborr= companyact->cargacursor(SQLQuery);

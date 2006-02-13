@@ -57,6 +57,7 @@ public:
     void borraLinAsiento1(int);
     Fixed totaldebe();
     Fixed totalhaber();
+
 };
 
 #endif

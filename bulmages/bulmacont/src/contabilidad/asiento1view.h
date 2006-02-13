@@ -76,6 +76,35 @@ public:
         _depura("Funcion no implementada."+v);
     };
     void situarasiento(QString);
+    bool esprimerasiento() {
+        return cursorasientos->esprimerregistro();
+    };
+    bool esultimoasiento() {
+        return cursorasientos->esultimoregistro();
+    };
+
+    QString idasientoanterior() {
+        if (!cursorasientos->esprimerregistro()) {
+            cursorasientos->registroanterior();
+            QString id = cursorasientos->valor("idasiento");
+            cursorasientos->siguienteregistro();
+            return id;
+        } else {
+            return "";
+        }
+    };
+
+    QString idasientosiguiente() {
+        if (!cursorasientos->esultimoregistro()) {
+            cursorasientos->siguienteregistro();
+            QString id = cursorasientos->valor("idasiento");
+            cursorasientos->registroanterior();
+            return id;
+        } else {
+            return "";
+        }
+    };
+
 };
 
 
@@ -93,9 +122,6 @@ private:
     void pintaordenasiento(QString val) {
         m_ordenasiento->setText(val);
     };
-
-
-
     virtual void calculaypintatotales();
 
 public:
@@ -141,6 +167,36 @@ public slots:
         cierraAsiento1();
     };
     virtual void boton_nuevoasiento();
+    virtual void eturn_fechaasiento();
+    virtual void boton_borrar_asiento() {
+        QString idasiento = idasientosiguiente();
+        borraAsiento1();
+        cargaasientos();
+        if (idasiento != "")
+            muestraasiento(idasiento);
+        else {
+            vaciaAsiento1();
+            pintaAsiento1();
+        }// end if
+    };
+    virtual void boton_duplicarasiento();
+    virtual void editarasiento();
+    virtual void boton_inteligente();
+    /** \brief SLOT que responde a la pulsación del botón de iva.
+      * Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se presente con los datos ya introducidos.
+      * La clase ivaview hace una inserción o una modificación segun exista o no una entrada de iva para dicho borrador.
+      */
+    virtual void boton_iva() {
+        subform2->boton_iva();
+    }// end boton_iva
+
+    /** Al pulsar return sobre el número de asiento se procede como si fuese una
+      * carga de dicho asiento.
+      */
+    void eturn_numasiento() {
+        boton_cargarasiento();
+    }// end return_cuenta
+    virtual void boton_cargarasiento();
 };
 
 #endif

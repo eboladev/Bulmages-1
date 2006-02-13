@@ -2,7 +2,7 @@
                           asientoview.cpp  -  description
                              -------------------
     begin                : Thu Dec 19 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -96,7 +96,7 @@ void asientoview::close() {
 
 
 
-/** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
+/** SLOT que responde a la pulsaciï¿½ del botï¿½ de guardar el tipo de iva que se estï¿½editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void asientoview::s_saveAsiento() {
@@ -126,7 +126,7 @@ int asientoview::creaasiento(QString texto, QString fecha, int numasiento, int c
    conexionbase->begin();
    val = conexionbase->nuevoasiento(texto, fecha, numasiento,clase);
    conexionbase->commit();
-   return(val);
+   return val;
 }// end creaasiento
 
 

@@ -13,6 +13,7 @@
 #include "empresa.h"
 
 
+
 ListLinAsiento1::ListLinAsiento1(empresa *comp) {
     companyact = comp;
     m_lista.setAutoDelete(TRUE);
@@ -85,9 +86,10 @@ void ListLinAsiento1::vaciar() {
 
 
 void ListLinAsiento1::borrar() {
+    _depura("ListLinAsiento1::borrar"+mdb_idasiento,0);
     if (mdb_idasiento != "")  {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM borrador WHERE idborrador="+mdb_idasiento);
+        int error = companyact->ejecuta("DELETE FROM borrador WHERE idasiento="+mdb_idasiento);
         if (error) {
             companyact->rollback();
             return;
@@ -107,6 +109,7 @@ void ListLinAsiento1::borraLinAsiento1(int pos) {
 
 
 Fixed ListLinAsiento1::totaldebe() {
+    _depura("ListLinAsiento1::totaldebe",0);
     LinAsiento1 *linea;
     Fixed total=Fixed("0.0");
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
@@ -116,6 +119,7 @@ Fixed ListLinAsiento1::totaldebe() {
 };
 
 Fixed ListLinAsiento1::totalhaber() {
+    _depura("ListLinAsiento1::totalhaber",0);
     LinAsiento1 *linea;
     Fixed total=Fixed("0.0");
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
@@ -123,3 +127,6 @@ Fixed ListLinAsiento1::totalhaber() {
     }// end for
     return total;
 };
+
+
+

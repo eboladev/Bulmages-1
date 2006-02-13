@@ -16,7 +16,7 @@
 #include <QTextStream>
 #include "fixed.h"
 #include "funcaux.h"
-
+#include "ivaview.h"
 
 
 Asiento1::Asiento1(empresa *comp) : DBRecord (comp) {
@@ -38,23 +38,27 @@ Asiento1::~Asiento1() {}
 
 
 void Asiento1::borraAsiento1() {
+    _depura("Asiento1::borraAsiento1",0);
     if (DBvalue("idasiento") != "") {
         listalineas->borrar();
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM asiento WHERE idasiento="+DBvalue("idasiento"));
+        int error = companyact->ejecuta("DELETE FROM apunte WHERE idasiento="+DBvalue("idasiento"));
+        error += companyact->ejecuta("DELETE FROM asiento WHERE idasiento="+DBvalue("idasiento"));
         if (error) {
             companyact->rollback();
             return;
         }// end if
         companyact->commit();
         vaciaAsiento1();
-        pintaAsiento1();
+        //        pintaAsiento1();
     }// end if
 }// end borraAlbaranCliente
- 
+
 
 void Asiento1::vaciaAsiento1() {
+    _depura("Asiento1::vaciaAsiento1",0);
     DBclear();
+    listalineas->vaciar();
 }// end vaciaAlbaranCliente
 
 
@@ -121,6 +125,9 @@ void Asiento1::cierraAsiento1() {
 }// end cierraAsiento1
 
 Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
+    if (DBvalue("idasiento") == "")
+        return ASVacio;
+
     QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento="+DBvalue("idasiento");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     QString numborr = cur->valor("cuenta");
@@ -153,9 +160,39 @@ int Asiento1::guardaAsiento1() {
     error = listalineas->guardaListLinAsiento1();
     if (error)
         return -1;
-//    cargaAsiento1(id);
+    buscaFactura();
     return 0;
 }// end guardaAlbaranCliente
 
+
+
+/**
+  * Buscamos en el asiento si hay indicios de una factura y actuamos en consecuencia.
+  */
+void Asiento1::buscaFactura() {
+    QString cuentas="";
+    QString query = "SELECT valor FROM configuracion WHERE nombre='RegistroEmitida' OR nombre='RegistroSoportada'";
+    cursor2 *curvalor = companyact->cargacursor(query);
+    while (!curvalor->eof()) {
+        cuentas += curvalor->valor("valor")+"%|"; // Preparamos una expresión regular para usar en la consulta
+        curvalor->siguienteregistro();
+    }// end while
+    delete curvalor;
+    cuentas.truncate(cuentas.length()-1); // Le quitamos el último '|' que nos sobra
+
+    /// Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
+    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+DBvalue("idasiento")+" AND codigo SIMILAR TO '"+companyact->sanearCadena(cuentas.ascii())+"' GROUP BY contra";
+
+    cursor2 *cursborr= companyact->cargacursor(SQLQuery);
+    while (!cursborr->eof()) {
+        int idborrador = cursborr->valor("contra").toInt();
+        ivaview *regivaview=new ivaview(companyact,0,"");
+        regivaview->inicializa1(idborrador);
+        regivaview->exec();
+        delete regivaview;
+        cursborr->siguienteregistro();
+    }// end while
+    delete cursborr;
+}// end buscaFactura
 
 

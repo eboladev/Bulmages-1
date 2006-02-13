@@ -31,6 +31,7 @@
 #include "calendario.h"
 #include "listlinasiento1view.h"
 #include "funcaux.h"
+#include "ivaview.h"
 
 #include <q3table.h>
 #include <qmessagebox.h>
@@ -702,4 +703,22 @@ void ListLinAsiento1View::iniciar_asiento_nuevo(QString fecha) {
     setCurrentCell(0,0);
     setFocus();
 }// end iniciar_asiento_nuevo
+
+
+/** \brief SLOT que responde a la pulsación del botón de iva.
+  * Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se presente con los datos ya introducidos.
+  * La clase ivaview hace una inserción o una modificación segun exista o no una entrada de iva para dicho borrador.
+  */
+void ListLinAsiento1View::boton_iva() {
+    guardaListLinAsiento1();
+    LinAsiento1 *linea = lineaact();
+    if (linea->DBvalue("idborrador") != "") {
+        int idborrador = linea->DBvalue("idborrador").toInt();
+        ivaview *nuevae=new ivaview(companyact, 0,"");
+        nuevae->inicializa1(idborrador);
+        nuevae->exec();
+        delete nuevae;
+        pintaListLinAsiento1();
+    }// end if
+}// end boton_iva
 
