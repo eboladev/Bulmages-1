@@ -766,7 +766,8 @@ int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento, 
                   sanearCadena(fecha).toAscii().data(),
                   ordenasiento,
                   clase);
-    ejecuta(query);
+    int error = ejecuta(query);
+    if (error) return -1;
     return(val);
 }// end nuevoasiento
 
