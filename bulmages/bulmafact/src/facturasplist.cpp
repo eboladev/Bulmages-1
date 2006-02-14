@@ -209,7 +209,7 @@ void FacturasProveedorList::inicializa() {
     m_list->setNumCols(13);
     m_list->horizontalHeader()->setLabel( COL_REFFACTURAP, tr( "Referencia" ) );
     m_list->horizontalHeader()->setLabel( COL_IDFACTURAP, tr( "COL_IDFACTURAP" ) );
-    m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
+    m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Proveedor" ) );
     m_list->horizontalHeader()->setLabel( COL_NUMFACTURAP, tr( "N Factura" ) );
     m_list->horizontalHeader()->setLabel( COL_FFACTURAP, tr( "Fecha" ) );
     m_list->horizontalHeader()->setLabel( COL_CONTACTFACTURAP, tr( "Persona Contacto" ) );

@@ -500,10 +500,10 @@
                                 <cstring>mver_nomcliente</cstring>
                             </property>
                             <property name="text">
-                                <string>&amp;Cliente</string>
+                                <string>&amp;Proveedor</string>
                             </property>
                             <property name="accel">
-                                <string>Alt+C</string>
+                                <string>Alt+P</string>
                             </property>
                             <property name="checked">
                                 <bool>true</bool>
