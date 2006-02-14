@@ -300,7 +300,7 @@ CREATE TABLE registroiva (
     iva numeric(12,2),		-- De solo lectura
     ffactura date,
     factura character varying(70),
-    idborrador integer,
+    idborrador integer NOT NULL REFERENCES borrador(idborrador),
     incregistro boolean,
     regularizacion boolean,
     plan349 boolean,

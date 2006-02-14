@@ -3,119 +3,91 @@
     <name>AlbaranClienteBase</name>
     <message encoding="UTF-8">
         <source>Albarán</source>
-        <translation>Albarán</translation>
+        <translation type="obsolete">Albarán</translation>
     </message>
     <message>
         <source>Ref.</source>
-        <translation>Ref.</translation>
+        <translation type="obsolete">Ref.</translation>
     </message>
     <message encoding="UTF-8">
         <source>Descripción</source>
-        <translation>Descripción</translation>
+        <translation type="obsolete">Descripción</translation>
     </message>
     <message>
         <source>Contacto</source>
-        <translation>Contacto</translation>
+        <translation type="obsolete">Contacto</translation>
     </message>
     <message>
         <source>Tel. Contacto</source>
-        <translation>Tel. Contacto</translation>
+        <translation type="obsolete">Tel. Contacto</translation>
     </message>
     <message encoding="UTF-8">
         <source>Num. Albarán</source>
-        <translation>Num. Albarán</translation>
+        <translation type="obsolete">Num. Albarán</translation>
     </message>
     <message encoding="UTF-8">
         <source>Fecha Creación</source>
-        <translation>Fecha Creación</translation>
+        <translation type="obsolete">Fecha Creación</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message>
         <source>Trabajador</source>
-        <translation>Trabajador</translation>
+        <translation type="obsolete">Trabajador</translation>
     </message>
     <message>
         <source>Forma de Pago</source>
-        <translation>Forma de Pago</translation>
+        <translation type="obsolete">Forma de Pago</translation>
     </message>
     <message encoding="UTF-8">
         <source>Almacén</source>
-        <translation>Almacén</translation>
+        <translation type="obsolete">Almacén</translation>
     </message>
     <message>
         <source>Procesado</source>
-        <translation>Procesado</translation>
+        <translation type="obsolete">Procesado</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation>&amp;Detalle</translation>
+        <translation type="obsolete">&amp;Detalle</translation>
     </message>
     <message>
         <source>Desc&amp;uentos</source>
-        <translation>Desc&amp;uentos</translation>
+        <translation type="obsolete">Desc&amp;uentos</translation>
     </message>
     <message>
         <source>&amp;Comentarios</source>
-        <translation>&amp;Comentarios</translation>
+        <translation type="obsolete">&amp;Comentarios</translation>
     </message>
     <message>
         <source>Total bases Imponibles</source>
-        <translation>Total Base Imponible</translation>
+        <translation type="obsolete">Total Base Imponible</translation>
     </message>
     <message>
         <source>Total descuentos</source>
-        <translation>Total Descuentos</translation>
+        <translation type="obsolete">Total Descuentos</translation>
     </message>
     <message>
         <source>Total impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message encoding="UTF-8">
         <source>Total albarán</source>
-        <translation>Total Albarán</translation>
+        <translation type="obsolete">Total Albarán</translation>
     </message>
     <message encoding="UTF-8">
         <source>Comentarios Públicos</source>
-        <translation>Comentarios Públicos</translation>
+        <translation type="obsolete">Comentarios Públicos</translation>
     </message>
     <message>
         <source>Comentarios Privados</source>
-        <translation>Comentarios Privados</translation>
+        <translation type="obsolete">Comentarios Privados</translation>
     </message>
     <message>
         <source>0.00</source>
-        <translation>0.00</translation>
-    </message>
-    <message>
-        <source>Imprimir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ver Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pasar a Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Agregar a Factura Existente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por Referencia</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">0.00</translation>
     </message>
 </context>
 <context>
@@ -143,90 +115,93 @@
     </message>
     <message>
         <source>Guardar Albaran</source>
-        <translation>Guardar Albarán</translation>
+        <translation type="obsolete">Guardar Albarán</translation>
     </message>
     <message>
         <source>Desea guardar los cambios.</source>
-        <translation>¿Desea guardar los cambios?.</translation>
+        <translation type="obsolete">¿Desea guardar los cambios?.</translation>
     </message>
 </context>
 <context>
     <name>AlbaranProveedorBase</name>
     <message encoding="UTF-8">
         <source>Albarán de Proveedor</source>
-        <translation>Albarán de Proveedor</translation>
+        <translation type="obsolete">Albarán de Proveedor</translation>
     </message>
     <message>
         <source>Ref.</source>
-        <translation>Ref.</translation>
+        <translation type="obsolete">Ref.</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Nombre</translation>
+        <translation type="obsolete">Nombre</translation>
     </message>
     <message encoding="UTF-8">
         <source>Num. Albarán</source>
-        <translation>Num. Albarán</translation>
+        <translation type="obsolete">Num. Albarán</translation>
     </message>
     <message encoding="UTF-8">
         <source>Fecha Creación</source>
-        <translation>Fecha Creación</translation>
+        <translation type="obsolete">Fecha Creación</translation>
     </message>
     <message>
         <source>Proveedor</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message>
         <source>Forma de Pago</source>
-        <translation>Forma de Pago</translation>
+        <translation type="obsolete">Forma de Pago</translation>
     </message>
     <message encoding="UTF-8">
         <source>Almacén</source>
-        <translation>Almacén</translation>
+        <translation type="obsolete">Almacén</translation>
     </message>
     <message>
         <source>Total bases Imponibles</source>
-        <translation>Total Base Imponible</translation>
+        <translation type="obsolete">Total Base Imponible</translation>
     </message>
     <message>
         <source>Total descuentos</source>
-        <translation>Total Descuentos</translation>
+        <translation type="obsolete">Total Descuentos</translation>
     </message>
     <message>
         <source>Total impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message encoding="UTF-8">
         <source>Total albarán</source>
-        <translation>Total Albarán</translation>
+        <translation type="obsolete">Total Albarán</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation>&amp;Detalle</translation>
+        <translation type="obsolete">&amp;Detalle</translation>
     </message>
     <message>
         <source>Desc&amp;uentos</source>
-        <translation>Desc&amp;uentos</translation>
+        <translation type="obsolete">Desc&amp;uentos</translation>
     </message>
     <message>
         <source>&amp;Comentarios</source>
-        <translation>&amp;Comentarios</translation>
+        <translation type="obsolete">&amp;Comentarios</translation>
+    </message>
+</context>
+<context>
+    <name>AlbaranProveedorView</name>
+    <message>
+        <source>Factura Inexistente</source>
+        <translation>Albarán Inexistente</translation>
     </message>
     <message>
-        <source>Guardar</source>
-        <translation type="unfinished"></translation>
+        <source>No existe una factura asociada a este albaran.Desea Crearla ?</source>
+        <translation>No existe una factura asociada a este albarán. Dese crear una ?</translation>
     </message>
     <message>
-        <source>Borrar</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Yes</source>
+        <translation>&amp;Si</translation>
     </message>
     <message>
-        <source>Ver Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pasar a Factura</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;No</source>
+        <translation>&amp;No</translation>
     </message>
 </context>
 <context>
@@ -322,151 +297,103 @@
     <name>AlbaranesProveedorBase</name>
     <message>
         <source>Albaranes de Proveedor</source>
-        <translation>Albaranes de Proveedor</translation>
+        <translation type="obsolete">Albaranes de Proveedor</translation>
     </message>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message>
         <source>Procesados</source>
-        <translation>Procesados</translation>
+        <translation type="obsolete">Procesados</translation>
     </message>
     <message>
         <source>Contiene Articulo</source>
-        <translation>Contiene Artículo</translation>
+        <translation type="obsolete">Contiene Artículo</translation>
     </message>
     <message>
         <source>Proveedor</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message>
         <source>&amp;Id. Albaran Proveedor</source>
-        <translation>&amp;Id. Albarán Proveedor</translation>
+        <translation type="obsolete">&amp;Id. Albarán Proveedor</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>&amp;Fecha</source>
-        <translation>&amp;Fecha</translation>
+        <translation type="obsolete">&amp;Fecha</translation>
     </message>
     <message>
         <source>&amp;Usuario</source>
-        <translation>&amp;Usuario</translation>
+        <translation type="obsolete">&amp;Usuario</translation>
     </message>
     <message>
         <source>&amp;Comentarios</source>
-        <translation>&amp;Comentarios</translation>
+        <translation type="obsolete">&amp;Comentarios</translation>
     </message>
     <message>
         <source>Procesado</source>
-        <translation>Procesado</translation>
+        <translation type="obsolete">Procesado</translation>
     </message>
     <message>
         <source>Id. Proveedor</source>
-        <translation>Id. Proveedor</translation>
+        <translation type="obsolete">Id. Proveedor</translation>
     </message>
     <message>
         <source>Id Forma PAgo</source>
-        <translation>Id. Forma Pago</translation>
+        <translation type="obsolete">Id. Forma Pago</translation>
     </message>
     <message>
         <source>Forma PA&amp;go</source>
-        <translation>Forma Pa&amp;go</translation>
+        <translation type="obsolete">Forma Pa&amp;go</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Núm. Albaran</source>
-        <translation>&amp;Num. Albarán</translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Num. Albarán</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Descripción</source>
-        <translation>&amp;Descripción</translation>
-    </message>
-    <message>
-        <source>Alt+D</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Descripción</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation>Fecha Inicial</translation>
+        <translation type="obsolete">Fecha Inicial</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation>Fecha Final</translation>
+        <translation type="obsolete">Fecha Final</translation>
     </message>
     <message encoding="UTF-8">
         <source>Id. almac&amp;én</source>
-        <translation>Id. Almac&amp;én</translation>
+        <translation type="obsolete">Id. Almac&amp;én</translation>
     </message>
     <message>
         <source>N&amp;om Proveedor</source>
-        <translation>N&amp;om Proveedor</translation>
+        <translation type="obsolete">N&amp;om Proveedor</translation>
     </message>
     <message encoding="UTF-8">
         <source>No&amp;m Almacén</source>
-        <translation>N&amp;om Almacén</translation>
-    </message>
-    <message>
-        <source>Alt+M</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+G</source>
-        <translation></translation>
+        <translation type="obsolete">N&amp;om Almacén</translation>
     </message>
     <message>
         <source>Total Albaran Proveedor</source>
-        <translation>Total Albarán Proveedor</translation>
+        <translation type="obsolete">Total Albarán Proveedor</translation>
     </message>
     <message>
         <source>Total &amp;Base Imponible</source>
-        <translation>Total &amp;Base Imponible</translation>
-    </message>
-    <message>
-        <source>Alt+B</source>
-        <translation></translation>
+        <translation type="obsolete">Total &amp;Base Imponible</translation>
     </message>
     <message>
         <source>Total Impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation>Total</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Nuevo Albarán Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Total</translation>
     </message>
 </context>
 <context>
@@ -506,107 +433,83 @@
     <name>BudgetBase</name>
     <message>
         <source>Presupuesto</source>
-        <translation>Presupuesto</translation>
+        <translation type="obsolete">Presupuesto</translation>
     </message>
     <message>
         <source>Num. Presupuesto</source>
-        <translation>Num. Presupuesto</translation>
+        <translation type="obsolete">Num. Presupuesto</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message encoding="UTF-8">
         <source>Fecha Creación</source>
-        <translation>Fecha Creación</translation>
+        <translation type="obsolete">Fecha Creación</translation>
     </message>
     <message>
         <source>Fecha Vencimiento</source>
-        <translation>Vencimiento</translation>
+        <translation type="obsolete">Vencimiento</translation>
     </message>
     <message>
         <source>Forma de Pago</source>
-        <translation>Forma de Pago</translation>
+        <translation type="obsolete">Forma de Pago</translation>
     </message>
     <message>
         <source>Contacto</source>
-        <translation>Contacto</translation>
+        <translation type="obsolete">Contacto</translation>
     </message>
     <message>
         <source>Tel. Contacto</source>
-        <translation>Tel. Contacto</translation>
+        <translation type="obsolete">Tel. Contacto</translation>
     </message>
     <message>
         <source>Total bases Imponibles</source>
-        <translation>Total Base Imponible</translation>
+        <translation type="obsolete">Total Base Imponible</translation>
     </message>
     <message>
         <source>Total descuentos</source>
-        <translation>Total Descuentos</translation>
+        <translation type="obsolete">Total Descuentos</translation>
     </message>
     <message>
         <source>Total impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message>
         <source>Total presupuesto</source>
-        <translation>Total Presupuesto</translation>
+        <translation type="obsolete">Total Presupuesto</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>Desc Presupuesto</source>
-        <translation>Desc. Presupuesto</translation>
+        <translation type="obsolete">Desc. Presupuesto</translation>
     </message>
     <message>
         <source>Trabajador</source>
-        <translation>Trabajador</translation>
+        <translation type="obsolete">Trabajador</translation>
     </message>
     <message>
         <source>Pro&amp;cesado</source>
-        <translation>Pr&amp;ocesado</translation>
+        <translation type="obsolete">Pr&amp;ocesado</translation>
     </message>
     <message encoding="UTF-8">
         <source>Almacén</source>
-        <translation>Almacén</translation>
+        <translation type="obsolete">Almacén</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation>&amp;Detalle</translation>
+        <translation type="obsolete">&amp;Detalle</translation>
     </message>
     <message>
         <source>Desc&amp;uentos</source>
-        <translation>Desc&amp;uentos</translation>
+        <translation type="obsolete">Desc&amp;uentos</translation>
     </message>
     <message>
         <source>Datos &amp;Generales</source>
-        <translation>Datos &amp;Generales</translation>
-    </message>
-    <message>
-        <source>Guardar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Duplicar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Convertir en Pedido Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por Referencia</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Datos &amp;Generales</translation>
     </message>
 </context>
 <context>
@@ -704,135 +607,103 @@
     <name>BudgetsListBase</name>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message>
         <source>Presupuestos a Clientes</source>
-        <translation>Presupuestos a Clientes</translation>
+        <translation type="obsolete">Presupuestos a Clientes</translation>
     </message>
     <message>
         <source>Procesados</source>
-        <translation>Procesados</translation>
+        <translation type="obsolete">Procesados</translation>
     </message>
     <message>
         <source>Contiene Articulo</source>
-        <translation>Contiene Artículo</translation>
+        <translation type="obsolete">Contiene Artículo</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message>
         <source>&amp;Id. Presupuesto</source>
-        <translation>&amp;Id. Presupuesto</translation>
+        <translation type="obsolete">&amp;Id. Presupuesto</translation>
     </message>
     <message>
         <source>&amp;Codigo Almacen</source>
-        <translation>&amp;Código Almacén</translation>
+        <translation type="obsolete">&amp;Código Almacén</translation>
     </message>
     <message>
         <source>Referencia Presupuesto</source>
-        <translation>Referencia Presupuesto</translation>
+        <translation type="obsolete">Referencia Presupuesto</translation>
     </message>
     <message>
         <source>&amp;Nombre Cliente</source>
-        <translation>&amp;Nombre Cliente</translation>
+        <translation type="obsolete">&amp;Nombre Cliente</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Descripción</source>
-        <translation>&amp;Descripción</translation>
+        <translation type="obsolete">&amp;Descripción</translation>
     </message>
     <message>
         <source>&amp;Fecha</source>
-        <translation>&amp;Fecha</translation>
+        <translation type="obsolete">&amp;Fecha</translation>
     </message>
     <message>
         <source>Vencimiento</source>
-        <translation>Vencimiento</translation>
+        <translation type="obsolete">Vencimiento</translation>
     </message>
     <message>
         <source>C&amp;ontacto</source>
-        <translation>C&amp;ontacto</translation>
+        <translation type="obsolete">C&amp;ontacto</translation>
     </message>
     <message>
         <source>Nu&amp;m. Presupuesto</source>
-        <translation>Nu&amp;m. Presupuesto</translation>
+        <translation type="obsolete">Nu&amp;m. Presupuesto</translation>
     </message>
     <message>
         <source>&amp;Telefono</source>
-        <translation>&amp;Teléfono</translation>
+        <translation type="obsolete">&amp;Teléfono</translation>
     </message>
     <message>
         <source>Id. Cliente</source>
-        <translation>Id. Cliente</translation>
+        <translation type="obsolete">Id. Cliente</translation>
     </message>
     <message>
         <source>Id. &amp;Usuario</source>
-        <translation>Id. &amp;Usuario</translation>
+        <translation type="obsolete">Id. &amp;Usuario</translation>
     </message>
     <message>
         <source>Id. Almacen</source>
-        <translation>Id. Almacén</translation>
+        <translation type="obsolete">Id. Almacén</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation>Fecha Inicial</translation>
+        <translation type="obsolete">Fecha Inicial</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation>Fecha Final</translation>
-    </message>
-    <message>
-        <source>Alt+C</source>
-        <translation></translation>
+        <translation type="obsolete">Fecha Final</translation>
     </message>
     <message>
         <source>Total Presupuesto</source>
-        <translation>Total Presupuesto</translation>
+        <translation type="obsolete">Total Presupuesto</translation>
     </message>
     <message>
         <source>Total &amp;Base Imponible</source>
-        <translation>Total &amp;Base Imponible</translation>
-    </message>
-    <message>
-        <source>Alt+B</source>
-        <translation></translation>
+        <translation type="obsolete">Total &amp;Base Imponible</translation>
     </message>
     <message>
         <source>Total Impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation>Total</translation>
-    </message>
-    <message>
-        <source>Nuevo Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Presupuesto</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Total</translation>
     </message>
     <message>
         <source>Borrar Presupuesto</source>
-        <translation type="unfinished">Borrar Presupuesto</translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Presupuestos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Borrar Presupuesto</translation>
     </message>
 </context>
 <context>
@@ -847,11 +718,11 @@
     <name>BusquedaArticuloBase</name>
     <message>
         <source>Form1</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message encoding="UTF-8">
         <source>Artículo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
 </context>
 <context>
@@ -866,22 +737,18 @@
     <name>BusquedaClienteBase</name>
     <message>
         <source>Form1</source>
-        <translation>Cliente</translation>
-    </message>
-    <message>
-        <source>Cliente</source>
-        <translation></translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
 </context>
 <context>
     <name>BusquedaFamiliaBase</name>
     <message>
         <source>Form1</source>
-        <translation>Família</translation>
+        <translation type="obsolete">Família</translation>
     </message>
     <message>
         <source>Familia</source>
-        <translation>Família</translation>
+        <translation type="obsolete">Família</translation>
     </message>
 </context>
 <context>
@@ -896,22 +763,22 @@
     <name>BusquedaProveedorBase</name>
     <message>
         <source>Form1</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message>
         <source>Proveedor</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
 </context>
 <context>
     <name>BusquedaTipoArticuloBase</name>
     <message>
         <source>Form1</source>
-        <translation>Tipo Artículo</translation>
+        <translation type="obsolete">Tipo Artículo</translation>
     </message>
     <message encoding="UTF-8">
         <source>Tipo Artículo</source>
-        <translation>Tipo Artículo</translation>
+        <translation type="obsolete">Tipo Artículo</translation>
     </message>
 </context>
 <context>
@@ -1009,183 +876,107 @@
     <name>ClientDelivNotesListBase</name>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message>
         <source>Albaranes a Clientes</source>
-        <translation>Albaranes a Clientes</translation>
+        <translation type="obsolete">Albaranes a Clientes</translation>
     </message>
     <message>
         <source>Procesados</source>
-        <translation>Procesados</translation>
+        <translation type="obsolete">Procesados</translation>
     </message>
     <message encoding="UTF-8">
         <source>Artículo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Num. Albarán</source>
-        <translation>&amp;Num. Albarán</translation>
+        <translation type="obsolete">&amp;Num. Albarán</translation>
     </message>
     <message>
         <source>&amp;Id. Forma Pago</source>
-        <translation>&amp;Id. Forma Pago</translation>
+        <translation type="obsolete">&amp;Id. Forma Pago</translation>
     </message>
     <message>
         <source>Num. No Factura</source>
-        <translation>Num. No Factura</translation>
+        <translation type="obsolete">Num. No Factura</translation>
     </message>
     <message>
         <source>Id. &amp;Usuario</source>
-        <translation>Id. &amp;Usuario</translation>
+        <translation type="obsolete">Id. &amp;Usuario</translation>
     </message>
     <message>
         <source>Comen&amp;tarios</source>
-        <translation>Comen&amp;tarios</translation>
+        <translation type="obsolete">Comen&amp;tarios</translation>
     </message>
     <message encoding="UTF-8">
         <source>Id. Almac&amp;én</source>
-        <translation>Id. Almac&amp;én</translation>
+        <translation type="obsolete">Id. Almac&amp;én</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Codigo Almacén</source>
-        <translation>&amp;Código Almacén</translation>
-    </message>
-    <message>
-        <source>Alt+C</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Código Almacén</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Fecha Albarán</source>
-        <translation>&amp;Fecha Albarán</translation>
-    </message>
-    <message>
-        <source>Alt+F</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+B</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Fecha Albarán</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation>Fecha Inicial</translation>
+        <translation type="obsolete">Fecha Inicial</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation>Fecha Final</translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
+        <translation type="obsolete">Fecha Final</translation>
     </message>
     <message>
         <source>N&amp;om. Cliente</source>
-        <translation>N&amp;om. Cliente</translation>
-    </message>
-    <message>
-        <source>Alt+O</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+I</source>
-        <translation></translation>
+        <translation type="obsolete">N&amp;om. Cliente</translation>
     </message>
     <message>
         <source>Forma Pa&amp;go</source>
-        <translation>Forma Pa&amp;go</translation>
-    </message>
-    <message>
-        <source>Alt+G</source>
-        <translation></translation>
+        <translation type="obsolete">Forma Pa&amp;go</translation>
     </message>
     <message>
         <source>Nu&amp;m. Factura</source>
-        <translation>Nu&amp;m. Factura</translation>
-    </message>
-    <message>
-        <source>Alt+M</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+U</source>
-        <translation></translation>
+        <translation type="obsolete">Nu&amp;m. Factura</translation>
     </message>
     <message>
         <source>I&amp;d. Cliente</source>
-        <translation>I&amp;d. Cliente</translation>
-    </message>
-    <message>
-        <source>Alt+D</source>
-        <translation></translation>
+        <translation type="obsolete">I&amp;d. Cliente</translation>
     </message>
     <message encoding="UTF-8">
         <source>Id. Albar&amp;án</source>
-        <translation>Id. Albar&amp;án</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Alt+á</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+T</source>
-        <translation></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Alt+é</source>
-        <translation></translation>
+        <translation type="obsolete">Id. Albar&amp;án</translation>
     </message>
     <message>
         <source>Total Albaran</source>
-        <translation>Total Albarán</translation>
+        <translation type="obsolete">Total Albarán</translation>
     </message>
     <message>
         <source>Total &amp;Base Imponible</source>
-        <translation>Total &amp;Base Imponible</translation>
+        <translation type="obsolete">Total &amp;Base Imponible</translation>
     </message>
     <message>
         <source>Total Impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation>Total</translation>
+        <translation type="obsolete">Total</translation>
     </message>
     <message encoding="UTF-8">
         <source>Nuevo Albarán</source>
-        <translation type="unfinished">Nuevo Albarán</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Editar Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Borrar Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Albaranes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Nuevo Albarán</translation>
     </message>
 </context>
 <context>
@@ -1220,11 +1011,11 @@
     </message>
     <message>
         <source>Cliente (modificado)</source>
-        <translation>Cliente (modificado)</translation>
+        <translation type="obsolete">Cliente (modificado)</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message>
         <source>Descripci&#xef;&#xbf;&#xbd;</source>
@@ -1232,7 +1023,7 @@
     </message>
     <message>
         <source>Edici&#xef;&#xbf;&#xbd; de clientes</source>
-        <translation>Edición de Clientes</translation>
+        <translation type="obsolete">Edición de Clientes</translation>
     </message>
     <message>
         <source>Est&#xef;&#xbf;&#xbd;a punto de borrar un cliente.
@@ -1243,418 +1034,182 @@ Est&#xef;&#xbf;&#xbd;seguro de que quiere borrarlo?</source>
     <message>
         <source>El cliente ha sido modificado.
 Quiere guardar los cambios?</source>
-        <translation>El cliente ha sido modificado. Desea guardar los cambios ?</translation>
+        <translation type="obsolete">El cliente ha sido modificado. Desea guardar los cambios ?</translation>
+    </message>
+    <message>
+        <source>Edicion de clientes</source>
+        <translation>Edición de Clientes</translation>
     </message>
 </context>
 <context>
     <name>ClientEditBase</name>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message encoding="UTF-8">
         <source>Código</source>
-        <translation>Código</translation>
+        <translation type="obsolete">Código</translation>
     </message>
     <message encoding="UTF-8">
         <source>Dirección</source>
-        <translation>Dirección</translation>
-    </message>
-    <message>
-        <source>CP</source>
-        <translation></translation>
+        <translation type="obsolete">Dirección</translation>
     </message>
     <message encoding="UTF-8">
         <source>Población</source>
-        <translation>Población</translation>
+        <translation type="obsolete">Población</translation>
     </message>
     <message encoding="UTF-8">
         <source>Província</source>
-        <translation>Província</translation>
-    </message>
-    <message>
-        <source>Barcelona</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tarragona</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Madrid</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Vizcaya</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Álava</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>La Rioja</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pontevedra</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Província</translation>
     </message>
     <message encoding="UTF-8">
         <source>Teléfono</source>
-        <translation>Teléfono</translation>
+        <translation type="obsolete">Teléfono</translation>
     </message>
     <message>
         <source>Fax</source>
-        <translation>Fax</translation>
+        <translation type="obsolete">Fax</translation>
     </message>
     <message>
         <source>Email</source>
-        <translation>E-mail</translation>
+        <translation type="obsolete">E-mail</translation>
     </message>
     <message>
         <source>Nombre comercial</source>
-        <translation>Nombre comercial</translation>
+        <translation type="obsolete">Nombre comercial</translation>
     </message>
     <message>
         <source>Datos Bancarios</source>
-        <translation>Datos Bancarios</translation>
+        <translation type="obsolete">Datos Bancarios</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>Comentarios</translation>
+        <translation type="obsolete">Comentarios</translation>
     </message>
     <message>
         <source>Datos eComercio</source>
-        <translation>Datos eComercio</translation>
+        <translation type="obsolete">Datos eComercio</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Nombre</translation>
+        <translation type="obsolete">Nombre</translation>
     </message>
     <message encoding="UTF-8">
         <source>Corporación</source>
-        <translation>Corporación</translation>
+        <translation type="obsolete">Corporación</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation type="obsolete">Área</translation>
     </message>
     <message>
         <source>Pers. Contacto</source>
-        <translation>Pers. Contacto</translation>
+        <translation type="obsolete">Pers. Contacto</translation>
     </message>
     <message encoding="UTF-8">
         <source>Artículo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>Ref. Pro</source>
-        <translation>Referencia Proveedor</translation>
-    </message>
-    <message>
-        <source>PVD</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>%</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>+</source>
-        <translation></translation>
+        <translation type="obsolete">Referencia Proveedor</translation>
     </message>
     <message>
         <source>Ver</source>
-        <translation>Ver</translation>
+        <translation type="obsolete">Ver</translation>
     </message>
     <message>
         <source>Vigentes</source>
-        <translation>Vigentes</translation>
+        <translation type="obsolete">Vigentes</translation>
     </message>
     <message>
         <source>Vencidos</source>
-        <translation>Vencidos</translation>
+        <translation type="obsolete">Vencidos</translation>
     </message>
     <message>
         <source>Todos</source>
-        <translation>Todos</translation>
+        <translation type="obsolete">Todos</translation>
     </message>
     <message encoding="UTF-8">
         <source>Resumen por artículos</source>
-        <translation>Resumen por artículos</translation>
+        <translation type="obsolete">Resumen por artículos</translation>
     </message>
     <message encoding="UTF-8">
         <source>Número</source>
-        <translation>Número</translation>
+        <translation type="obsolete">Número</translation>
     </message>
     <message>
         <source>Concepto</source>
-        <translation>Concepto</translation>
+        <translation type="obsolete">Concepto</translation>
     </message>
     <message>
         <source>Fecha Inicio</source>
-        <translation>Fecha Inicio</translation>
+        <translation type="obsolete">Fecha Inicio</translation>
     </message>
     <message>
         <source>Fecha Vencimiento</source>
-        <translation>Fecha Vencimiento</translation>
+        <translation type="obsolete">Fecha Vencimiento</translation>
     </message>
     <message>
         <source>% Consumido</source>
-        <translation>% Consumido</translation>
+        <translation type="obsolete">% Consumido</translation>
     </message>
     <message>
         <source>%Descuento</source>
-        <translation>%Descuento</translation>
+        <translation type="obsolete">%Descuento</translation>
     </message>
     <message>
         <source>Consumidos</source>
-        <translation>Consumidos</translation>
+        <translation type="obsolete">Consumidos</translation>
     </message>
     <message>
         <source>Pendientes</source>
-        <translation>Pendientes</translation>
-    </message>
-    <message>
-        <source>Ctrl+S</source>
-        <translation></translation>
+        <translation type="obsolete">Pendientes</translation>
     </message>
     <message>
         <source>&amp;Datos Generales</source>
-        <translation>&amp;Datos Generales</translation>
+        <translation type="obsolete">&amp;Datos Generales</translation>
     </message>
     <message>
         <source>&amp;CIF</source>
-        <translation>&amp;CIF</translation>
-    </message>
-    <message>
-        <source>Albacete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Alicante</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Almería</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Asturias</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Avila</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Badajoz</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Burgos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Cáceres</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Cádiz</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cantabria</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Castellón</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ceuta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ciudad Real</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Córdoba</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cuenca</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Gerona</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Granada</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guadalajara</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Guipúzcoa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Huelva</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Huesca</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Islas Baleares</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Jaén</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>La Coruña</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Las Palmas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>León</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Lérida</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lugo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Málaga</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Melilla</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Murcia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Navarra</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Orense</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Palencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Salamanca</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Segovia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sevilla</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Soria</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tenerife</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Teruel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Toledo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Valencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Valladolid</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Zamora</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Zaragoza</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">&amp;CIF</translation>
     </message>
     <message>
         <source>&amp;WEB</source>
-        <translation>&amp;WEB</translation>
+        <translation type="obsolete">&amp;WEB</translation>
     </message>
     <message>
         <source>Co&amp;bros</source>
-        <translation>Co&amp;bros</translation>
+        <translation type="obsolete">Co&amp;bros</translation>
     </message>
     <message>
         <source>Pres&amp;upuestos</source>
-        <translation>Pres&amp;upuestos</translation>
+        <translation type="obsolete">Pres&amp;upuestos</translation>
     </message>
     <message>
         <source>Pedidos</source>
-        <translation>Pedidos</translation>
+        <translation type="obsolete">Pedidos</translation>
     </message>
     <message>
         <source>Albaranes</source>
-        <translation>Albaranes</translation>
+        <translation type="obsolete">Albaranes</translation>
     </message>
     <message>
         <source>&amp;Facturas</source>
-        <translation>&amp;Facturas</translation>
+        <translation type="obsolete">&amp;Facturas</translation>
     </message>
     <message>
         <source>Co&amp;ntratos</source>
-        <translation>Co&amp;ntratos</translation>
+        <translation type="obsolete">Co&amp;ntratos</translation>
     </message>
     <message>
         <source>D&amp;ivisiones</source>
-        <translation>D&amp;ivisiones</translation>
+        <translation type="obsolete">D&amp;ivisiones</translation>
     </message>
     <message>
         <source>Produ&amp;ctos Suministrados</source>
-        <translation>Produ&amp;ctos Suministrados</translation>
-    </message>
-    <message>
-        <source>Guardar Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Cliente</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Produ&amp;ctos Suministrados</translation>
     </message>
 </context>
 <context>
@@ -1813,210 +1368,122 @@ Quiere guardar los cambios?</source>
     <name>ClientsListBase</name>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message>
         <source>Clientes</source>
-        <translation>Clientes</translation>
+        <translation type="obsolete">Clientes</translation>
     </message>
     <message>
         <source>Exportar</source>
-        <translation>Exportar</translation>
+        <translation type="obsolete">Exportar</translation>
     </message>
     <message>
         <source>Importar</source>
-        <translation>Importar</translation>
+        <translation type="obsolete">Importar</translation>
     </message>
     <message>
         <source>&amp;Telefono</source>
-        <translation>&amp;Teléfono</translation>
+        <translation type="obsolete">&amp;Teléfono</translation>
     </message>
     <message>
         <source>Pro&amp;cesados</source>
-        <translation>Pro&amp;cesados</translation>
+        <translation type="obsolete">Pro&amp;cesados</translation>
     </message>
     <message>
         <source>&amp;Id. Cliente</source>
-        <translation>&amp;Id. Cliente</translation>
-    </message>
-    <message>
-        <source>Alt+I</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Id. Cliente</translation>
     </message>
     <message>
         <source>&amp;Nombre</source>
-        <translation>&amp;Nombre</translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Nombre</translation>
     </message>
     <message>
         <source>Nom&amp;bre Alternativo</source>
-        <translation>Nom&amp;bre Alternativo</translation>
+        <translation type="obsolete">Nom&amp;bre Alternativo</translation>
     </message>
     <message>
         <source>CI&amp;F</source>
-        <translation>CI&amp;F</translation>
-    </message>
-    <message>
-        <source>Alt+F</source>
-        <translation></translation>
+        <translation type="obsolete">CI&amp;F</translation>
     </message>
     <message>
         <source>Banco</source>
-        <translation>Banco</translation>
+        <translation type="obsolete">Banco</translation>
     </message>
     <message encoding="UTF-8">
         <source>Direcci&amp;ón</source>
-        <translation>Direcci&amp;ón</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Alt+ó</source>
-        <translation></translation>
+        <translation type="obsolete">Direcci&amp;ón</translation>
     </message>
     <message encoding="UTF-8">
         <source>P&amp;oblación</source>
-        <translation>P&amp;oblación</translation>
+        <translation type="obsolete">P&amp;oblación</translation>
     </message>
     <message>
         <source>Codi&amp;go Postal</source>
-        <translation>Códi&amp;go Postal</translation>
-    </message>
-    <message>
-        <source>Alt+G</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+T</source>
-        <translation></translation>
+        <translation type="obsolete">Códi&amp;go Postal</translation>
     </message>
     <message>
         <source>Fa&amp;x</source>
-        <translation>Fa&amp;x</translation>
-    </message>
-    <message>
-        <source>Alt+X</source>
-        <translation></translation>
+        <translation type="obsolete">Fa&amp;x</translation>
     </message>
     <message>
         <source>e-&amp;mail</source>
-        <translation>e-&amp;mail</translation>
-    </message>
-    <message>
-        <source>Alt+M</source>
-        <translation></translation>
+        <translation type="obsolete">e-&amp;mail</translation>
     </message>
     <message>
         <source>&amp;URL</source>
-        <translation>&amp;URL</translation>
-    </message>
-    <message>
-        <source>Alt+U</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;URL</translation>
     </message>
     <message>
         <source>Fecha Alta</source>
-        <translation>Fecha Alta</translation>
+        <translation type="obsolete">Fecha Alta</translation>
     </message>
     <message>
         <source>Fecha Ba&amp;ja</source>
-        <translation>Fecha Ba&amp;ja</translation>
-    </message>
-    <message>
-        <source>Alt+J</source>
-        <translation></translation>
+        <translation type="obsolete">Fecha Ba&amp;ja</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>Comentarios</translation>
+        <translation type="obsolete">Comentarios</translation>
     </message>
     <message>
         <source>I&amp;d. Recargo</source>
-        <translation>I&amp;d. Recargo</translation>
-    </message>
-    <message>
-        <source>Alt+D</source>
-        <translation></translation>
+        <translation type="obsolete">I&amp;d. Recargo</translation>
     </message>
     <message>
         <source>Nuevo Cliente</source>
-        <translation type="unfinished">Nuevo Cliente</translation>
-    </message>
-    <message>
-        <source>Editar Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ccoonfigurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Exportar Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Importar Clientes</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Nuevo Cliente</translation>
     </message>
 </context>
 <context>
     <name>CobroBase</name>
     <message>
         <source>Cobro</source>
-        <translation>Cobro</translation>
+        <translation type="obsolete">Cobro</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>Desc Presupuesto</source>
-        <translation>Desc Presupuesto</translation>
+        <translation type="obsolete">Desc Presupuesto</translation>
     </message>
     <message>
         <source>Fecha Cobro</source>
-        <translation>Fecha Cobro</translation>
+        <translation type="obsolete">Fecha Cobro</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message encoding="UTF-8">
         <source>Previsión</source>
-        <translation>Previsión</translation>
+        <translation type="obsolete">Previsión</translation>
     </message>
     <message>
         <source>Total Cobro</source>
-        <translation>Total Cobro</translation>
-    </message>
-    <message>
-        <source>Guardar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Cobro</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Total Cobro</translation>
     </message>
 </context>
 <context>
@@ -2065,107 +1532,59 @@ Quiere guardar los cambios?</source>
     <name>CobrosListBase</name>
     <message>
         <source>Cobros</source>
-        <translation>Cobros</translation>
+        <translation type="obsolete">Cobros</translation>
     </message>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message>
         <source>&amp;Fecha</source>
-        <translation>&amp;Fecha</translation>
-    </message>
-    <message>
-        <source>Alt+C</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Fecha</translation>
     </message>
     <message>
         <source>Procesa&amp;dos</source>
-        <translation>Procesa&amp;dos</translation>
+        <translation type="obsolete">Procesa&amp;dos</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation>Fecha Inicial</translation>
+        <translation type="obsolete">Fecha Inicial</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation>Fecha Final</translation>
+        <translation type="obsolete">Fecha Final</translation>
     </message>
     <message>
         <source>&amp;Id. Cobro</source>
-        <translation>&amp;Id. Cobro</translation>
-    </message>
-    <message>
-        <source>Alt+I</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Id. Cobro</translation>
     </message>
     <message>
         <source>Id. &amp;Cliente</source>
-        <translation>Id. &amp;Cliente</translation>
-    </message>
-    <message>
-        <source>Alt+F</source>
-        <translation></translation>
+        <translation type="obsolete">Id. &amp;Cliente</translation>
     </message>
     <message>
         <source>Ca&amp;ntidad</source>
-        <translation>Ca&amp;ntidad</translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
+        <translation type="obsolete">Ca&amp;ntidad</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>Prevision</source>
-        <translation>Previsión</translation>
+        <translation type="obsolete">Previsión</translation>
     </message>
     <message>
         <source>C&amp;omentarios</source>
-        <translation>C&amp;omentarios</translation>
-    </message>
-    <message>
-        <source>Alt+O</source>
-        <translation></translation>
+        <translation type="obsolete">C&amp;omentarios</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation>Total</translation>
-    </message>
-    <message>
-        <source>Nuevo Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Cobros</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Total</translation>
     </message>
 </context>
 <context>
@@ -2173,6 +1592,13 @@ Quiere guardar los cambios?</source>
     <message>
         <source>company</source>
         <translation type="obsolete">Empresa</translation>
+    </message>
+</context>
+<context>
+    <name>Edicion Inventario</name>
+    <message>
+        <source>company</source>
+        <translation>Empresa</translation>
     </message>
 </context>
 <context>
@@ -2211,6 +1637,13 @@ Quiere guardar los cambios?</source>
     </message>
 </context>
 <context>
+    <name>Edicion de Albaranes de Proveedores</name>
+    <message>
+        <source>company</source>
+        <translation>Empresa</translation>
+    </message>
+</context>
+<context>
     <name>Edicion de Albaran&#xef;&#xbf;&#xbd; de Cliente</name>
     <message>
         <source>company</source>
@@ -2221,7 +1654,7 @@ Quiere guardar los cambios?</source>
     <name>Edicion de Albar&#xc3;&#xa1;n de Cliente</name>
     <message>
         <source>company</source>
-        <translation>Empresa</translation>
+        <translation type="obsolete">Empresa</translation>
     </message>
 </context>
 <context>
@@ -2229,6 +1662,13 @@ Quiere guardar los cambios?</source>
     <message>
         <source>company</source>
         <translation type="obsolete">Empresa</translation>
+    </message>
+</context>
+<context>
+    <name>Edicion de Articulos</name>
+    <message>
+        <source>company</source>
+        <translation>Empresa</translation>
     </message>
 </context>
 <context>
@@ -2256,11 +1696,18 @@ Quiere guardar los cambios?</source>
     <name>Edicion de Factura de Cliente</name>
     <message>
         <source>company</source>
-        <translation>Empresa</translation>
+        <translation type="obsolete">Empresa</translation>
     </message>
 </context>
 <context>
     <name>Edicion de Facturas</name>
+    <message>
+        <source>company</source>
+        <translation type="obsolete">Empresa</translation>
+    </message>
+</context>
+<context>
+    <name>Edicion de Facturas Proveedor</name>
     <message>
         <source>company</source>
         <translation>Empresa</translation>
@@ -2270,14 +1717,14 @@ Quiere guardar los cambios?</source>
     <name>Edicion de Facturas de Clientes</name>
     <message>
         <source>company</source>
-        <translation>Empresa</translation>
+        <translation type="obsolete">Empresa</translation>
     </message>
 </context>
 <context>
     <name>Edicion de FacturasProveedor</name>
     <message>
         <source>company</source>
-        <translation>Empresa</translation>
+        <translation type="obsolete">Empresa</translation>
     </message>
 </context>
 <context>
@@ -2351,6 +1798,13 @@ Quiere guardar los cambios?</source>
     </message>
 </context>
 <context>
+    <name>Editar/Anadir proveedor</name>
+    <message>
+        <source>company</source>
+        <translation>Empresa</translation>
+    </message>
+</context>
+<context>
     <name>Editar/A&#xef;&#xbf;&#xbd;dir cliente</name>
     <message>
         <source>company</source>
@@ -2361,182 +1815,146 @@ Quiere guardar los cambios?</source>
     <name>FacturaBase</name>
     <message>
         <source>Factura</source>
-        <translation>Factura</translation>
+        <translation type="obsolete">Factura</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message encoding="UTF-8">
         <source>Descripción</source>
-        <translation>Descripción</translation>
+        <translation type="obsolete">Descripción</translation>
     </message>
     <message>
         <source>Serie</source>
-        <translation>Serie</translation>
+        <translation type="obsolete">Serie</translation>
     </message>
     <message>
         <source>Num. Factura</source>
-        <translation>Num. Factura</translation>
+        <translation type="obsolete">Num. Factura</translation>
     </message>
     <message>
         <source>Forma de Pago</source>
-        <translation>Forma de Pago</translation>
+        <translation type="obsolete">Forma de Pago</translation>
     </message>
     <message encoding="UTF-8">
         <source>Fecha Creación</source>
-        <translation>Fecha Creación</translation>
+        <translation type="obsolete">Fecha Creación</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message>
         <source>Procesada</source>
-        <translation>Procesada</translation>
+        <translation type="obsolete">Procesada</translation>
     </message>
     <message encoding="UTF-8">
         <source>Almacén</source>
-        <translation>Almacén</translation>
+        <translation type="obsolete">Almacén</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>Comentarios</translation>
+        <translation type="obsolete">Comentarios</translation>
     </message>
     <message>
         <source>Total bases Imponibles</source>
-        <translation>Total Base Imponible</translation>
+        <translation type="obsolete">Total Base Imponible</translation>
     </message>
     <message>
         <source>Total descuentos</source>
-        <translation>Total descuentos</translation>
+        <translation type="obsolete">Total descuentos</translation>
     </message>
     <message>
         <source>Total impuestos</source>
-        <translation>Total impuestos</translation>
+        <translation type="obsolete">Total impuestos</translation>
     </message>
     <message>
         <source>Total Factura</source>
-        <translation>Total Factura</translation>
+        <translation type="obsolete">Total Factura</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation>&amp;Detalle</translation>
+        <translation type="obsolete">&amp;Detalle</translation>
     </message>
     <message>
         <source>Desc&amp;uentos</source>
-        <translation>Desc&amp;uentos</translation>
+        <translation type="obsolete">Desc&amp;uentos</translation>
     </message>
     <message>
         <source>&amp;Comentarios</source>
-        <translation>&amp;Comentarios</translation>
-    </message>
-    <message>
-        <source>Imprimir Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Ver Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Realizar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por Referencia</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">&amp;Comentarios</translation>
     </message>
 </context>
 <context>
     <name>FacturaProveedorBase</name>
     <message>
         <source>Factura de Proveedor</source>
-        <translation>Factura de Proveedor</translation>
+        <translation type="obsolete">Factura de Proveedor</translation>
     </message>
     <message encoding="UTF-8">
         <source>Descripción</source>
-        <translation>Descripción</translation>
+        <translation type="obsolete">Descripción</translation>
     </message>
     <message>
         <source>Num. Factura</source>
-        <translation>Num. Factura</translation>
+        <translation type="obsolete">Num. Factura</translation>
     </message>
     <message>
         <source>Forma de Pago</source>
-        <translation>Forma de Pago</translation>
+        <translation type="obsolete">Forma de Pago</translation>
     </message>
     <message encoding="UTF-8">
         <source>Fecha Creación</source>
-        <translation>Fecha Creación</translation>
+        <translation type="obsolete">Fecha Creación</translation>
     </message>
     <message>
         <source>Proveedor</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message>
         <source>Procesada</source>
-        <translation>Procesada</translation>
+        <translation type="obsolete">Procesada</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>Comentarios</translation>
+        <translation type="obsolete">Comentarios</translation>
     </message>
     <message>
         <source>Total bases Imponibles</source>
-        <translation>Total Bases Imponible</translation>
+        <translation type="obsolete">Total Bases Imponible</translation>
     </message>
     <message>
         <source>Total descuentos</source>
-        <translation>Total descuentos</translation>
+        <translation type="obsolete">Total descuentos</translation>
     </message>
     <message>
         <source>Total impuestos</source>
-        <translation>Total impuestos</translation>
+        <translation type="obsolete">Total impuestos</translation>
     </message>
     <message>
         <source>Total Factura</source>
-        <translation>Total Factura</translation>
+        <translation type="obsolete">Total Factura</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation>&amp;Detalle</translation>
+        <translation type="obsolete">&amp;Detalle</translation>
     </message>
     <message>
         <source>Desc&amp;uentos</source>
-        <translation>Desc&amp;uentos</translation>
+        <translation type="obsolete">Desc&amp;uentos</translation>
     </message>
     <message>
         <source>&amp;Comentarios</source>
-        <translation>&amp;Comentarios</translation>
+        <translation type="obsolete">&amp;Comentarios</translation>
     </message>
+</context>
+<context>
+    <name>FacturaView</name>
     <message>
-        <source>Guardar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Ver Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Efectuar Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe Por Referencia</source>
-        <translation type="unfinished"></translation>
+        <source>Seleccione albaran</source>
+        <comment>company</comment>
+        <translation>Seleccione Albarán</translation>
     </message>
 </context>
 <context>
@@ -2620,167 +2038,95 @@ Quiere guardar los cambios?</source>
     <name>FacturasListBase</name>
     <message>
         <source>Facturas a Clientes</source>
-        <translation>Facturas a Clientes</translation>
+        <translation type="obsolete">Facturas a Clientes</translation>
     </message>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message encoding="UTF-8">
         <source>Contiene Artículo</source>
-        <translation>Contiene Artículo</translation>
+        <translation type="obsolete">Contiene Artículo</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message>
         <source>&amp;Fecha</source>
-        <translation>&amp;Fecha</translation>
+        <translation type="obsolete">&amp;Fecha</translation>
     </message>
     <message>
         <source>&amp;Telefono</source>
-        <translation>&amp;Teléfono</translation>
+        <translation type="obsolete">&amp;Teléfono</translation>
     </message>
     <message>
         <source>Id. &amp;Usuario</source>
-        <translation>Id. &amp;Usuario</translation>
+        <translation type="obsolete">Id. &amp;Usuario</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>Pro&amp;cesada</source>
-        <translation>Pro&amp;cesada</translation>
-    </message>
-    <message>
-        <source>Alt+C</source>
-        <translation></translation>
+        <translation type="obsolete">Pro&amp;cesada</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation>Fecha Inicial</translation>
+        <translation type="obsolete">Fecha Inicial</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation>Fecha Final</translation>
+        <translation type="obsolete">Fecha Final</translation>
     </message>
     <message>
         <source>I&amp;d. Factura</source>
-        <translation>I&amp;d. Factura</translation>
-    </message>
-    <message>
-        <source>Alt+D</source>
-        <translation></translation>
+        <translation type="obsolete">I&amp;d. Factura</translation>
     </message>
     <message encoding="UTF-8">
         <source>Almac&amp;én</source>
-        <translation>Almac&amp;én</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Alt+é</source>
-        <translation></translation>
+        <translation type="obsolete">Almac&amp;én</translation>
     </message>
     <message>
         <source>&amp;Num. Factura</source>
-        <translation>&amp;Num. Factura</translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+F</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Num. Factura</translation>
     </message>
     <message>
         <source>C&amp;ontacto</source>
-        <translation>C&amp;ontacto</translation>
-    </message>
-    <message>
-        <source>Alt+T</source>
-        <translation></translation>
+        <translation type="obsolete">C&amp;ontacto</translation>
     </message>
     <message>
         <source>Co&amp;mentarios</source>
-        <translation>Co&amp;mentarios</translation>
-    </message>
-    <message>
-        <source>Alt+M</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+U</source>
-        <translation></translation>
+        <translation type="obsolete">Co&amp;mentarios</translation>
     </message>
     <message>
         <source>&amp;Id. Cliente</source>
-        <translation>&amp;Id. Cliente</translation>
-    </message>
-    <message>
-        <source>Alt+I</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Id. Cliente</translation>
     </message>
     <message encoding="UTF-8">
         <source>Id. &amp;Almacén</source>
-        <translation>Id. &amp;Almacén</translation>
-    </message>
-    <message>
-        <source>Alt+A</source>
-        <translation></translation>
+        <translation type="obsolete">Id. &amp;Almacén</translation>
     </message>
     <message>
         <source>Serie</source>
-        <translation>Serie</translation>
+        <translation type="obsolete">Serie</translation>
     </message>
     <message>
         <source>Total Factura</source>
-        <translation>Total Factura</translation>
+        <translation type="obsolete">Total Factura</translation>
     </message>
     <message>
         <source>Total &amp;Base Imponible</source>
-        <translation>Total &amp;Base Imponible</translation>
-    </message>
-    <message>
-        <source>Alt+B</source>
-        <translation></translation>
+        <translation type="obsolete">Total &amp;Base Imponible</translation>
     </message>
     <message>
         <source>Total Impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation>Total</translation>
-    </message>
-    <message>
-        <source>Nueva Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Facturas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Total</translation>
     </message>
 </context>
 <context>
@@ -2791,11 +2137,11 @@ Quiere guardar los cambios?</source>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message>
         <source>N Presupuesto</source>
-        <translation>Num. Presupuesto</translation>
+        <translation type="obsolete">Num. Presupuesto</translation>
     </message>
     <message>
         <source>Fecha</source>
@@ -2819,11 +2165,11 @@ Quiere guardar los cambios?</source>
     </message>
     <message>
         <source>COL_IDALMACEN</source>
-        <translation>Id. Almacén</translation>
+        <translation type="obsolete">Id. Almacén</translation>
     </message>
     <message>
         <source>Almac&#xc3;&#xa9;n</source>
-        <translation>Almacén</translation>
+        <translation type="obsolete">Almacén</translation>
     </message>
     <message>
         <source>Tel&#xc3;&#xa9;fono</source>
@@ -2845,176 +2191,112 @@ Quiere guardar los cambios?</source>
         <source>Impuestos</source>
         <translation>Impuestos</translation>
     </message>
-</context>
-<context>
-    <name>FacturasProveedorListBase</name>
-    <message>
-        <source>Facturas de Proveedores</source>
-        <translation>Facturas de Proveedores</translation>
-    </message>
-    <message>
-        <source>Buscar</source>
-        <translation>Buscar</translation>
-    </message>
-    <message>
-        <source>Procesa&amp;da</source>
-        <translation>Procesa&amp;da</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Contiene Artículo</source>
-        <translation>Contiene Artículo</translation>
-    </message>
     <message>
         <source>Proveedor</source>
         <translation>Proveedor</translation>
     </message>
     <message>
-        <source>Alt+D</source>
-        <translation></translation>
+        <source>N Factura</source>
+        <translation>Num. Factura</translation>
+    </message>
+</context>
+<context>
+    <name>FacturasProveedorListBase</name>
+    <message>
+        <source>Facturas de Proveedores</source>
+        <translation type="obsolete">Facturas de Proveedores</translation>
+    </message>
+    <message>
+        <source>Buscar</source>
+        <translation type="obsolete">Buscar</translation>
+    </message>
+    <message>
+        <source>Procesa&amp;da</source>
+        <translation type="obsolete">Procesa&amp;da</translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Contiene Artículo</source>
+        <translation type="obsolete">Contiene Artículo</translation>
+    </message>
+    <message>
+        <source>Proveedor</source>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation>Fecha Inicial</translation>
+        <translation type="obsolete">Fecha Inicial</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation>Fecha Final</translation>
+        <translation type="obsolete">Fecha Final</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>&amp;Id. Factura</source>
-        <translation>&amp;Id. Factura</translation>
-    </message>
-    <message>
-        <source>Alt+I</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Id. Factura</translation>
     </message>
     <message>
         <source>Codi&amp;go Almacen</source>
-        <translation>Codi&amp;go Almacén</translation>
-    </message>
-    <message>
-        <source>Alt+G</source>
-        <translation></translation>
+        <translation type="obsolete">Codi&amp;go Almacén</translation>
     </message>
     <message>
         <source>&amp;Num. Factura</source>
-        <translation>&amp;Num. Factura</translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Num. Factura</translation>
     </message>
     <message>
         <source>&amp;Cliente</source>
-        <translation>&amp;Cliente</translation>
-    </message>
-    <message>
-        <source>Alt+C</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Cliente</translation>
     </message>
     <message>
         <source>&amp;Fecha</source>
-        <translation>&amp;Fecha</translation>
-    </message>
-    <message>
-        <source>Alt+F</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Fecha</translation>
     </message>
     <message>
         <source>C&amp;ontacto</source>
-        <translation>C&amp;ontacto</translation>
-    </message>
-    <message>
-        <source>Alt+O</source>
-        <translation></translation>
+        <translation type="obsolete">C&amp;ontacto</translation>
     </message>
     <message>
         <source>&amp;Telefono</source>
-        <translation>&amp;Teléfono</translation>
-    </message>
-    <message>
-        <source>Alt+T</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Teléfono</translation>
     </message>
     <message>
         <source>Co&amp;mentarios</source>
-        <translation>Co&amp;mentarios</translation>
-    </message>
-    <message>
-        <source>Alt+M</source>
-        <translation></translation>
+        <translation type="obsolete">Co&amp;mentarios</translation>
     </message>
     <message>
         <source>Id. &amp;Usuario</source>
-        <translation>Id. &amp;Usuario</translation>
-    </message>
-    <message>
-        <source>Alt+U</source>
-        <translation></translation>
+        <translation type="obsolete">Id. &amp;Usuario</translation>
     </message>
     <message>
         <source>Id. Cliente</source>
-        <translation>Id. Cliente</translation>
+        <translation type="obsolete">Id. Cliente</translation>
     </message>
     <message>
         <source>Id. Almacen</source>
-        <translation>Id. Almacén</translation>
+        <translation type="obsolete">Id. Almacén</translation>
     </message>
     <message>
         <source>Id. Serie Facturap</source>
-        <translation>Id. Serie Facturap</translation>
+        <translation type="obsolete">Id. Serie Facturap</translation>
     </message>
     <message>
         <source>&amp;Total Factura Proveedor</source>
-        <translation>&amp;Total Factura Proveedor</translation>
+        <translation type="obsolete">&amp;Total Factura Proveedor</translation>
     </message>
     <message>
         <source>Total Impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message>
         <source>Total &amp;Base Imponible</source>
-        <translation>Total &amp;Base Imponible</translation>
-    </message>
-    <message>
-        <source>Alt+B</source>
-        <translation></translation>
+        <translation type="obsolete">Total &amp;Base Imponible</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation>Total</translation>
-    </message>
-    <message>
-        <source>Nueva Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Facturas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Total</translation>
     </message>
 </context>
 <context>
@@ -3022,6 +2304,40 @@ Quiere guardar los cambios?</source>
     <message>
         <source>company</source>
         <translation>Empresa</translation>
+    </message>
+</context>
+<context>
+    <name>InventarioView</name>
+    <message>
+        <source>Borrar Inventario</source>
+        <translation>Borrar Inventario</translation>
+    </message>
+    <message>
+        <source>Esta a punto de borrar un Inventario, Desea continuar?.</source>
+        <translation>Esta a punto de borrar un Inventario, Desea continuar?.</translation>
+    </message>
+    <message>
+        <source>Si</source>
+        <translation>Si</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>No</translation>
+    </message>
+</context>
+<context>
+    <name>InventariosView</name>
+    <message>
+        <source>COL_IDINVENTARIO</source>
+        <translation>Id</translation>
+    </message>
+    <message>
+        <source>COL_NOMINVENTARIO</source>
+        <translation>Nombre</translation>
+    </message>
+    <message>
+        <source>COL_FECHAINVENTARIO</source>
+        <translation>Fecha</translation>
     </message>
 </context>
 <context>
@@ -3049,6 +2365,49 @@ Quiere guardar los cambios?</source>
     <message>
         <source>Borrar Linea</source>
         <translation>Borrar Linea</translation>
+    </message>
+</context>
+<context>
+    <name>ListControlStockView</name>
+    <message>
+        <source>COL_IDINVENTARIO</source>
+        <translation>Id</translation>
+    </message>
+    <message>
+        <source>COL_IDARTICULO</source>
+        <translation>Identificador Artículo</translation>
+    </message>
+    <message>
+        <source>COL_CODARTICULO</source>
+        <translation>Código Artículo</translation>
+    </message>
+    <message>
+        <source>COL_NOMARTICULO</source>
+        <translation>Artículo</translation>
+    </message>
+    <message>
+        <source>COL_IDALMACEN</source>
+        <translation>Id. Almacén</translation>
+    </message>
+    <message>
+        <source>COL_STOCKNEWCONTROLSTOCK</source>
+        <translation>Stock Nuevo</translation>
+    </message>
+    <message>
+        <source>COL_CODALMACEN</source>
+        <translation>Código Almacén</translation>
+    </message>
+    <message>
+        <source>COL_STOCKANTCONTROLSTOCK</source>
+        <translation>Stock Anterior</translation>
+    </message>
+    <message>
+        <source>COL_NOMALMACEN</source>
+        <translation>Almacén</translation>
+    </message>
+    <message>
+        <source>Borrar Linea</source>
+        <translation>Borrar Línea</translation>
     </message>
 </context>
 <context>
@@ -3267,11 +2626,11 @@ Quiere guardar los cambios?</source>
     <name>ListLinAlbaranProveedorView</name>
     <message>
         <source>N L&#xed;nea</source>
-        <translation>Num. Línea</translation>
+        <translation type="obsolete">Num. Línea</translation>
     </message>
     <message>
         <source>Descripci&#xf3;n</source>
-        <translation>Descripción</translation>
+        <translation type="obsolete">Descripción</translation>
     </message>
     <message>
         <source>Cantidad</source>
@@ -3291,15 +2650,15 @@ Quiere guardar los cambios?</source>
     </message>
     <message>
         <source>Art&#xed;culo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>C&#xf3;digo Art&#xed;culo</source>
-        <translation>Código Artículo</translation>
+        <translation type="obsolete">Código Artículo</translation>
     </message>
     <message>
         <source>Descripci&#xf3;n Art&#xed;culo</source>
-        <translation>Descripción Artículo</translation>
+        <translation type="obsolete">Descripción Artículo</translation>
     </message>
     <message>
         <source>% IVA</source>
@@ -3317,16 +2676,36 @@ Quiere guardar los cambios?</source>
         <source>Borrar Linea</source>
         <translation>Borrar Linea</translation>
     </message>
+    <message>
+        <source>N L&#xef;&#xbf;&#xbd;ea</source>
+        <translation>Num. Línea</translation>
+    </message>
+    <message>
+        <source>Descripci&#xef;&#xbf;&#xbd;</source>
+        <translation>Descripción</translation>
+    </message>
+    <message>
+        <source>Art&#xef;&#xbf;&#xbd;ulo</source>
+        <translation>Artículo</translation>
+    </message>
+    <message>
+        <source>C&#xef;&#xbf;&#xbd;igo Art&#xef;&#xbf;&#xbd;ulo</source>
+        <translation>Código Artículo</translation>
+    </message>
+    <message>
+        <source>Descripci&#xef;&#xbf;&#xbd; Art&#xef;&#xbf;&#xbd;ulo</source>
+        <translation>Descripción Artículo</translation>
+    </message>
 </context>
 <context>
     <name>ListLinFacturaProveedorView</name>
     <message>
         <source>N L&#xed;nea</source>
-        <translation>Num. Línea</translation>
+        <translation type="obsolete">Num. Línea</translation>
     </message>
     <message>
         <source>Descripci&#xf3;n</source>
-        <translation>Descripción</translation>
+        <translation type="obsolete">Descripción</translation>
     </message>
     <message>
         <source>Cantidad</source>
@@ -3346,15 +2725,15 @@ Quiere guardar los cambios?</source>
     </message>
     <message>
         <source>Art&#xed;culo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>C&#xf3;digo Art&#xed;culo</source>
-        <translation>Código Artículo</translation>
+        <translation type="obsolete">Código Artículo</translation>
     </message>
     <message>
         <source>Descripci&#xf3;n Art&#xed;culo</source>
-        <translation>Descripción Artículo</translation>
+        <translation type="obsolete">Descripción Artículo</translation>
     </message>
     <message>
         <source>% IVA</source>
@@ -3367,17 +2746,37 @@ Quiere guardar los cambios?</source>
     <message>
         <source>Borrar Linea</source>
         <translation>Borrar Linea</translation>
+    </message>
+    <message>
+        <source>N L&#xef;&#xbf;&#xbd;ea</source>
+        <translation>Num. Línea</translation>
+    </message>
+    <message>
+        <source>Descripci&#xef;&#xbf;&#xbd;</source>
+        <translation>Descripción</translation>
+    </message>
+    <message>
+        <source>Art&#xef;&#xbf;&#xbd;ulo</source>
+        <translation>Artículo</translation>
+    </message>
+    <message>
+        <source>C&#xef;&#xbf;&#xbd;igo Art&#xef;&#xbf;&#xbd;ulo</source>
+        <translation>Código Artículo</translation>
+    </message>
+    <message>
+        <source>Descripci&#xef;&#xbf;&#xbd; Art&#xef;&#xbf;&#xbd;ulo</source>
+        <translation>Descripción Artículo</translation>
     </message>
 </context>
 <context>
     <name>ListLinFacturaView</name>
     <message>
         <source>N L&#xed;nea</source>
-        <translation>Num. Línea</translation>
+        <translation type="obsolete">Num. Línea</translation>
     </message>
     <message>
         <source>Descripci&#xf3;n</source>
-        <translation>Descripción</translation>
+        <translation type="obsolete">Descripción</translation>
     </message>
     <message>
         <source>Cantidad</source>
@@ -3397,15 +2796,15 @@ Quiere guardar los cambios?</source>
     </message>
     <message>
         <source>Art&#xed;culo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>C&#xf3;digo Art&#xed;culo</source>
-        <translation>Código Artículo</translation>
+        <translation type="obsolete">Código Artículo</translation>
     </message>
     <message>
         <source>Descripci&#xf3;n Art&#xed;culo</source>
-        <translation>Descripción Artículo</translation>
+        <translation type="obsolete">Descripción Artículo</translation>
     </message>
     <message>
         <source>% IVA</source>
@@ -3418,6 +2817,26 @@ Quiere guardar los cambios?</source>
     <message>
         <source>Borrar Linea</source>
         <translation>Borrar Linea</translation>
+    </message>
+    <message>
+        <source>N L&#xef;&#xbf;&#xbd;ea</source>
+        <translation>Num. Línea</translation>
+    </message>
+    <message>
+        <source>Descripci&#xef;&#xbf;&#xbd;</source>
+        <translation>Descripción</translation>
+    </message>
+    <message>
+        <source>Art&#xef;&#xbf;&#xbd;ulo</source>
+        <translation>Artículo</translation>
+    </message>
+    <message>
+        <source>C&#xef;&#xbf;&#xbd;igo Art&#xef;&#xbf;&#xbd;ulo</source>
+        <translation>Código Artículo</translation>
+    </message>
+    <message>
+        <source>Descripci&#xef;&#xbf;&#xbd; Art&#xef;&#xbf;&#xbd;ulo</source>
+        <translation>Descripción Artículo</translation>
     </message>
 </context>
 <context>
@@ -3523,94 +2942,65 @@ Quiere guardar los cambios?</source>
     </message>
     <message>
         <source>N L&#xef;&#xbf;&#xbd;ea</source>
-        <translation>Num. Línea</translation>
+        <translation type="obsolete">Num. Línea</translation>
     </message>
     <message>
         <source>Descripci&#xef;&#xbf;&#xbd;</source>
-        <translation>Descripción</translation>
+        <translation type="obsolete">Descripción</translation>
     </message>
     <message>
         <source>Art&#xef;&#xbf;&#xbd;ulo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>C&#xef;&#xbf;&#xbd;igo Art&#xef;&#xbf;&#xbd;o</source>
-        <translation>Código Artículo</translation>
+        <translation type="obsolete">Código Artículo</translation>
     </message>
     <message>
         <source>Descripci&#xef;&#xbf;&#xbd; Art&#xef;&#xbf;&#xbd;ulo</source>
-        <translation>Descripción Artículo</translation>
+        <translation type="obsolete">Descripción Artículo</translation>
+    </message>
+    <message>
+        <source>N Linea</source>
+        <translation>Num. Línea</translation>
+    </message>
+    <message>
+        <source>Descripcion</source>
+        <translation>Descripción</translation>
+    </message>
+    <message>
+        <source>Articulo</source>
+        <translation>Artículo</translation>
+    </message>
+    <message>
+        <source>Codigo Articulo</source>
+        <translation>Código Artículo</translation>
+    </message>
+    <message>
+        <source>Descripcion Articulo</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>ListProvinciasView</name>
+    <message>
+        <source>Provincia</source>
+        <translation>Provincia</translation>
     </message>
 </context>
 <context>
     <name>ListSerieFacturaBase</name>
     <message>
         <source>Series Factura</source>
-        <translation>Series Factura</translation>
+        <translation type="obsolete">Series Factura</translation>
     </message>
     <message>
         <source>Codigo Serie</source>
-        <translation>Código Serie</translation>
+        <translation type="obsolete">Código Serie</translation>
     </message>
     <message encoding="UTF-8">
         <source>Descripción</source>
-        <translation>Descripción</translation>
-    </message>
-    <message>
-        <source>0</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>3</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>4</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>5</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>6</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>7</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>8</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>9</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>10</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Nueva Serie</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Serie</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar Serie</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Descripción</translation>
     </message>
 </context>
 <context>
@@ -3629,6 +3019,20 @@ Quiere guardar los cambios?</source>
     </message>
 </context>
 <context>
+    <name>Listado de Inventarios</name>
+    <message>
+        <source>company</source>
+        <translation>Empresa</translation>
+    </message>
+</context>
+<context>
+    <name>Nuevo Inventario</name>
+    <message>
+        <source>company</source>
+        <translation>Empresa</translation>
+    </message>
+</context>
+<context>
     <name>Nuevo Pedido</name>
     <message>
         <source>company</source>
@@ -3639,39 +3043,35 @@ Quiere guardar los cambios?</source>
     <name>PagoBase</name>
     <message>
         <source>Pago</source>
-        <translation>Pago</translation>
+        <translation type="obsolete">Pago</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>Desc Presupuesto</source>
-        <translation>Desc. Presupuesto</translation>
+        <translation type="obsolete">Desc. Presupuesto</translation>
     </message>
     <message>
         <source>Fecha Pago</source>
-        <translation>Fecha Pago</translation>
+        <translation type="obsolete">Fecha Pago</translation>
     </message>
     <message>
         <source>Proveedor</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message encoding="UTF-8">
         <source>Previsión</source>
-        <translation>Previsión</translation>
+        <translation type="obsolete">Previsión</translation>
     </message>
     <message>
         <source>Total Pago</source>
-        <translation>Total Pago</translation>
-    </message>
-    <message>
-        <source>Guardar Pago</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Total Pago</translation>
     </message>
     <message>
         <source>Borrar Pago</source>
-        <translation type="unfinished">Borrar Pago</translation>
+        <translation type="obsolete">Borrar Pago</translation>
     </message>
 </context>
 <context>
@@ -3720,107 +3120,63 @@ Quiere guardar los cambios?</source>
     <name>PagosListBase</name>
     <message>
         <source>Pagos</source>
-        <translation>Pagos</translation>
+        <translation type="obsolete">Pagos</translation>
     </message>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message>
         <source>Proveedor</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message>
         <source>&amp;Fecha</source>
-        <translation>&amp;Fecha</translation>
+        <translation type="obsolete">&amp;Fecha</translation>
     </message>
     <message>
         <source>Pr&amp;ocesados</source>
-        <translation>Pr&amp;ocesados</translation>
+        <translation type="obsolete">Pr&amp;ocesados</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation>Fecha Inicial</translation>
+        <translation type="obsolete">Fecha Inicial</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation>Fecha Final</translation>
+        <translation type="obsolete">Fecha Final</translation>
     </message>
     <message>
         <source>&amp;Id. Pago</source>
-        <translation>&amp;Id. Pago</translation>
-    </message>
-    <message>
-        <source>Alt+I</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Id. Pago</translation>
     </message>
     <message>
         <source>I&amp;d. Proveedor</source>
-        <translation>I&amp;d. Proveedor</translation>
-    </message>
-    <message>
-        <source>Alt+D</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+F</source>
-        <translation></translation>
+        <translation type="obsolete">I&amp;d. Proveedor</translation>
     </message>
     <message>
         <source>&amp;Cantidad</source>
-        <translation>&amp;Cantidad</translation>
-    </message>
-    <message>
-        <source>Alt+C</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Cantidad</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>Prevision</source>
-        <translation>Previsión</translation>
+        <translation type="obsolete">Previsión</translation>
     </message>
     <message>
         <source>Come&amp;ntarios</source>
-        <translation>Come&amp;ntarios</translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
+        <translation type="obsolete">Come&amp;ntarios</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation>Total</translation>
-    </message>
-    <message>
-        <source>Nuevo Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Pago</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Total</translation>
     </message>
     <message>
         <source>Borrar Pago</source>
-        <translation type="unfinished">Borrar Pago</translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Pagos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Borrar Pago</translation>
     </message>
 </context>
 <context>
@@ -3834,119 +3190,87 @@ Quiere guardar los cambios?</source>
     <name>PedidoClienteBase</name>
     <message>
         <source>Pedido de Cliente</source>
-        <translation>Pedido de Cliente</translation>
+        <translation type="obsolete">Pedido de Cliente</translation>
     </message>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>Desc Pedido</source>
-        <translation>Desc Pedido</translation>
+        <translation type="obsolete">Desc Pedido</translation>
     </message>
     <message>
         <source>Contacto</source>
-        <translation>Contacto</translation>
+        <translation type="obsolete">Contacto</translation>
     </message>
     <message>
         <source>Tel. Contacto</source>
-        <translation>Tel. Contacto</translation>
+        <translation type="obsolete">Tel. Contacto</translation>
     </message>
     <message>
         <source>Num. Pedido Cliente</source>
-        <translation>Num. Pedido Cliente</translation>
+        <translation type="obsolete">Num. Pedido Cliente</translation>
     </message>
     <message>
         <source>Foma de Pago</source>
-        <translation>Foma de Pago</translation>
+        <translation type="obsolete">Foma de Pago</translation>
     </message>
     <message>
         <source>Trabajador</source>
-        <translation>Trabajador</translation>
+        <translation type="obsolete">Trabajador</translation>
     </message>
     <message>
         <source>Procesado</source>
-        <translation>Procesado</translation>
+        <translation type="obsolete">Procesado</translation>
     </message>
     <message encoding="UTF-8">
         <source>Fecha Creación</source>
-        <translation>Fecha Creación</translation>
+        <translation type="obsolete">Fecha Creación</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message encoding="UTF-8">
         <source>Almacén</source>
-        <translation>Almacén</translation>
+        <translation type="obsolete">Almacén</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation>&amp;Detalle</translation>
+        <translation type="obsolete">&amp;Detalle</translation>
     </message>
     <message>
         <source>Desc&amp;uentos</source>
-        <translation>Desc&amp;uentos</translation>
+        <translation type="obsolete">Desc&amp;uentos</translation>
     </message>
     <message>
         <source>&amp;Comentarios</source>
-        <translation>&amp;Comentarios</translation>
+        <translation type="obsolete">&amp;Comentarios</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>Comentarios</translation>
+        <translation type="obsolete">Comentarios</translation>
     </message>
     <message>
         <source>Total bases Imponibles</source>
-        <translation>Total Base Imponible</translation>
+        <translation type="obsolete">Total Base Imponible</translation>
     </message>
     <message>
         <source>Total descuentos</source>
-        <translation>Total Descuentos</translation>
+        <translation type="obsolete">Total Descuentos</translation>
     </message>
     <message>
         <source>Total impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message>
         <source>Total Pedido</source>
-        <translation>Total Pedido</translation>
+        <translation type="obsolete">Total Pedido</translation>
     </message>
     <message>
         <source>0.00</source>
-        <translation>0.00</translation>
-    </message>
-    <message>
-        <source>Imprimir Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ver Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Pasar a Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Efectuar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Efecturar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por Referencia</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">0.00</translation>
     </message>
 </context>
 <context>
@@ -3972,107 +3296,106 @@ Quiere guardar los cambios?</source>
     <name>PedidoProveedorBase</name>
     <message>
         <source>Referencia</source>
-        <translation>Referencia</translation>
+        <translation type="obsolete">Referencia</translation>
     </message>
     <message>
         <source>Desc Pedido</source>
-        <translation>Desc Pedido</translation>
+        <translation type="obsolete">Desc Pedido</translation>
     </message>
     <message>
         <source>Contacto</source>
-        <translation>Contacto</translation>
+        <translation type="obsolete">Contacto</translation>
     </message>
     <message>
         <source>Tel. Contacto</source>
-        <translation>Tel. Contacto</translation>
+        <translation type="obsolete">Tel. Contacto</translation>
     </message>
     <message>
         <source>Foma de Pago</source>
-        <translation>Foma de Pago</translation>
+        <translation type="obsolete">Foma de Pago</translation>
     </message>
     <message>
         <source>Trabajador</source>
-        <translation>Trabajador</translation>
+        <translation type="obsolete">Trabajador</translation>
     </message>
     <message encoding="UTF-8">
         <source>Fecha Creación</source>
-        <translation>Fecha Creación</translation>
+        <translation type="obsolete">Fecha Creación</translation>
     </message>
     <message>
         <source>Proveedor</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message encoding="UTF-8">
         <source>Almacén</source>
-        <translation>Almacén</translation>
+        <translation type="obsolete">Almacén</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>Comentarios</translation>
+        <translation type="obsolete">Comentarios</translation>
     </message>
     <message>
         <source>Total bases Imponibles</source>
-        <translation>Total Bases Imponible</translation>
+        <translation type="obsolete">Total Bases Imponible</translation>
     </message>
     <message>
         <source>Total descuentos</source>
-        <translation>Total Descuento</translation>
+        <translation type="obsolete">Total Descuento</translation>
     </message>
     <message>
         <source>Total impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message>
         <source>Total Pedido</source>
-        <translation>Total Pedido</translation>
+        <translation type="obsolete">Total Pedido</translation>
     </message>
     <message>
         <source>Pedido de Proveedor</source>
-        <translation>Pedido de Proveedor</translation>
+        <translation type="obsolete">Pedido de Proveedor</translation>
     </message>
     <message>
         <source>Num. Pedido Proveedor</source>
-        <translation>Num. Pedido Proveedor</translation>
+        <translation type="obsolete">Num. Pedido Proveedor</translation>
     </message>
     <message>
         <source>Pr&amp;ocesado</source>
-        <translation>Pr&amp;ocesado</translation>
+        <translation type="obsolete">Pr&amp;ocesado</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation>&amp;Detalle</translation>
+        <translation type="obsolete">&amp;Detalle</translation>
     </message>
     <message>
         <source>Desc&amp;uentos</source>
-        <translation>Desc&amp;uentos</translation>
+        <translation type="obsolete">Desc&amp;uentos</translation>
     </message>
     <message>
         <source>&amp;Comentarios</source>
-        <translation>&amp;Comentarios</translation>
+        <translation type="obsolete">&amp;Comentarios</translation>
     </message>
     <message>
         <source>0.00</source>
-        <translation>0.00</translation>
+        <translation type="obsolete">0.00</translation>
+    </message>
+</context>
+<context>
+    <name>PedidoProveedorView</name>
+    <message>
+        <source>Albaran Proveedor Inexistente</source>
+        <translation>Albarán Proveedor Inexistente</translation>
     </message>
     <message>
-        <source>Imprimir Pedido</source>
-        <translation type="unfinished"></translation>
+        <source>No existe un albaran asociado a este pedido.Desea Crearlo ?</source>
+        <translation>No existe un albarán asociado a este pedido.Desea Crearlo ?</translation>
     </message>
     <message>
-        <source>Guardar Pedido</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Yes</source>
+        <translation>&amp;Si</translation>
     </message>
     <message>
-        <source>Borrar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Pasar a Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Efectuar Pago</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;No</source>
+        <translation>&amp;No</translation>
     </message>
 </context>
 <context>
@@ -4160,167 +3483,103 @@ Quiere guardar los cambios?</source>
     <name>PedidosClienteListBase</name>
     <message>
         <source>Pedidos de Clientes</source>
-        <translation>Pedidos de Clientes</translation>
+        <translation type="obsolete">Pedidos de Clientes</translation>
     </message>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message>
         <source>Procesados</source>
-        <translation>Procesados</translation>
+        <translation type="obsolete">Procesados</translation>
     </message>
     <message encoding="UTF-8">
         <source>Artículo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>Cliente</source>
-        <translation>Cliente</translation>
+        <translation type="obsolete">Cliente</translation>
     </message>
     <message>
         <source>&amp;Codigo Almacen</source>
-        <translation>&amp;Codigo Almacen</translation>
+        <translation type="obsolete">&amp;Codigo Almacen</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Descripción</source>
-        <translation>&amp;Descripción</translation>
+        <translation type="obsolete">&amp;Descripción</translation>
     </message>
     <message>
         <source>&amp;Telefono</source>
-        <translation>&amp;Teléfono</translation>
+        <translation type="obsolete">&amp;Teléfono</translation>
     </message>
     <message>
         <source>Id. Cliente</source>
-        <translation>Id. Cliente</translation>
+        <translation type="obsolete">Id. Cliente</translation>
     </message>
     <message>
         <source>Id. &amp;Usuario</source>
-        <translation>Id. &amp;Usuario</translation>
+        <translation type="obsolete">Id. &amp;Usuario</translation>
     </message>
     <message>
         <source>Fecha</source>
-        <translation>Fecha</translation>
+        <translation type="obsolete">Fecha</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation>Fecha Inicial</translation>
+        <translation type="obsolete">Fecha Inicial</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation>Fecha Final</translation>
+        <translation type="obsolete">Fecha Final</translation>
     </message>
     <message>
         <source>&amp;Id. PedidoCliente</source>
-        <translation>&amp;Id. PedidoCliente</translation>
-    </message>
-    <message>
-        <source>Alt+I</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+C</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Id. PedidoCliente</translation>
     </message>
     <message>
         <source>Re&amp;ferencia Pedido</source>
-        <translation>Re&amp;ferencia Pedido</translation>
+        <translation type="obsolete">Re&amp;ferencia Pedido</translation>
     </message>
     <message>
         <source>&amp;Num. Pedido</source>
-        <translation>&amp;Num. Pedido</translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+D</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Num. Pedido</translation>
     </message>
     <message>
         <source>&amp;Cliente</source>
-        <translation>&amp;Cliente</translation>
+        <translation type="obsolete">&amp;Cliente</translation>
     </message>
     <message>
         <source>C&amp;ontacto</source>
-        <translation>C&amp;ontacto</translation>
-    </message>
-    <message>
-        <source>Alt+O</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+T</source>
-        <translation></translation>
+        <translation type="obsolete">C&amp;ontacto</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>Comentarios</translation>
-    </message>
-    <message>
-        <source>Alt+U</source>
-        <translation></translation>
+        <translation type="obsolete">Comentarios</translation>
     </message>
     <message>
         <source>Id. Al&amp;macen</source>
-        <translation>Id. Al&amp;macén</translation>
-    </message>
-    <message>
-        <source>Alt+M</source>
-        <translation></translation>
+        <translation type="obsolete">Id. Al&amp;macén</translation>
     </message>
     <message>
         <source>Total Presupuesto</source>
-        <translation>Total Presupuesto</translation>
+        <translation type="obsolete">Total Presupuesto</translation>
     </message>
     <message>
         <source>Total &amp;Base Imponible</source>
-        <translation>Total &amp;Base Imponible</translation>
-    </message>
-    <message>
-        <source>Alt+B</source>
-        <translation></translation>
+        <translation type="obsolete">Total &amp;Base Imponible</translation>
     </message>
     <message>
         <source>Total Impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation>Total</translation>
+        <translation type="obsolete">Total</translation>
     </message>
     <message>
         <source>Nuevo Pedido</source>
-        <translation type="unfinished">Nuevo Pedido</translation>
-    </message>
-    <message>
-        <source>Editar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Pedidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>FiltrarPedidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Nuevo Pedido</translation>
     </message>
 </context>
 <context>
@@ -4394,167 +3653,99 @@ Quiere guardar los cambios?</source>
     <name>PedidosProveedorListBase</name>
     <message>
         <source>Pedidos a Proveedores</source>
-        <translation>Pedidos a Proveedores</translation>
+        <translation type="obsolete">Pedidos a Proveedores</translation>
     </message>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message>
         <source>Procesados</source>
-        <translation>Procesados</translation>
+        <translation type="obsolete">Procesados</translation>
     </message>
     <message encoding="UTF-8">
         <source>Artículo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>Proveedor</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message>
         <source>&amp;Codigo Almacen</source>
-        <translation>&amp;Codigo Almacén</translation>
+        <translation type="obsolete">&amp;Codigo Almacén</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Descripción</source>
-        <translation>&amp;Descripción</translation>
+        <translation type="obsolete">&amp;Descripción</translation>
     </message>
     <message>
         <source>Id. &amp;Usuario</source>
-        <translation>Id. &amp;Usuario</translation>
+        <translation type="obsolete">Id. &amp;Usuario</translation>
     </message>
     <message>
         <source>Fecha</source>
-        <translation>Fecha</translation>
-    </message>
-    <message>
-        <source>Alt+T</source>
-        <translation></translation>
+        <translation type="obsolete">Fecha</translation>
     </message>
     <message>
         <source>Fecha Inicial</source>
-        <translation>Fecha Inicial</translation>
+        <translation type="obsolete">Fecha Inicial</translation>
     </message>
     <message>
         <source>Fecha Final</source>
-        <translation>Fecha Final</translation>
+        <translation type="obsolete">Fecha Final</translation>
     </message>
     <message>
         <source>&amp;Id. Pedido</source>
-        <translation>&amp;Id. Pedido</translation>
-    </message>
-    <message>
-        <source>Alt+I</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+C</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Id. Pedido</translation>
     </message>
     <message>
         <source>Re&amp;ferencia</source>
-        <translation>Re&amp;ferencia</translation>
-    </message>
-    <message>
-        <source>Alt+F</source>
-        <translation></translation>
+        <translation type="obsolete">Re&amp;ferencia</translation>
     </message>
     <message>
         <source>&amp;Num. Pedido</source>
-        <translation>&amp;Num. Pedido</translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+D</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Num. Pedido</translation>
     </message>
     <message>
         <source>C&amp;ontacto</source>
-        <translation>C&amp;ontacto</translation>
-    </message>
-    <message>
-        <source>Alt+O</source>
-        <translation></translation>
+        <translation type="obsolete">C&amp;ontacto</translation>
     </message>
     <message>
         <source>&amp;Telefono</source>
-        <translation>&amp;Teléfono</translation>
+        <translation type="obsolete">&amp;Teléfono</translation>
     </message>
     <message>
         <source>Co&amp;mentarios</source>
-        <translation>Co&amp;mentarios</translation>
-    </message>
-    <message>
-        <source>Alt+M</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+U</source>
-        <translation></translation>
+        <translation type="obsolete">Co&amp;mentarios</translation>
     </message>
     <message>
         <source>Id. Proveedor</source>
-        <translation>Id. Proveedor</translation>
+        <translation type="obsolete">Id. Proveedor</translation>
     </message>
     <message encoding="UTF-8">
         <source>Id. Almac&amp;én</source>
-        <translation>Id. Almac&amp;én</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Alt+é</source>
-        <translation></translation>
+        <translation type="obsolete">Id. Almac&amp;én</translation>
     </message>
     <message>
         <source>Total Pedido Proveedor</source>
-        <translation>Total Pedido Proveedor</translation>
+        <translation type="obsolete">Total Pedido Proveedor</translation>
     </message>
     <message>
         <source>Total &amp;Base Imponible</source>
-        <translation>Total &amp;Base Imponible</translation>
-    </message>
-    <message>
-        <source>Alt+B</source>
-        <translation></translation>
+        <translation type="obsolete">Total &amp;Base Imponible</translation>
     </message>
     <message>
         <source>Total Impuestos</source>
-        <translation>Total Impuestos</translation>
+        <translation type="obsolete">Total Impuestos</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation>Total</translation>
+        <translation type="obsolete">Total</translation>
     </message>
     <message>
         <source>Nuevo Pedido</source>
-        <translation type="unfinished">Nuevo Pedido</translation>
-    </message>
-    <message>
-        <source>Editar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Pedidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Nuevo Pedido</translation>
     </message>
 </context>
 <context>
@@ -4582,7 +3773,7 @@ Quiere guardar los cambios?</source>
     <name>Seleccione Art&#xed;culo</name>
     <message>
         <source>company</source>
-        <translation>Empresa</translation>
+        <translation type="obsolete">Empresa</translation>
     </message>
 </context>
 <context>
@@ -4603,11 +3794,11 @@ Quiere guardar los cambios?</source>
     <name>Splash</name>
     <message>
         <source>BulmaFact</source>
-        <translation>BulmaFact</translation>
+        <translation type="obsolete">BulmaFact</translation>
     </message>
     <message>
         <source>v 0.0.1</source>
-        <translation>v 0.5.3</translation>
+        <translation type="obsolete">v 0.5.3</translation>
     </message>
     <message>
         <source>Calibrando los lasers del lector de CD</source>
@@ -4661,6 +3852,16 @@ Quiere guardar los cambios?</source>
         <source>Crackeando BulmaG&#xef;&#xbf;&#xbd;</source>
         <translation>Comprobando sistema de Listados</translation>
     </message>
+    <message>
+        <source>
+                         v 0.5.9</source>
+        <translation>                         v 0.5.9</translation>
+    </message>
+    <message>
+        <source>
+BulmaFact</source>
+        <translation>BulmaFact</translation>
+    </message>
 </context>
 <context>
     <name>Trabajador</name>
@@ -4677,59 +3878,47 @@ Quiere guardar los cambios?</source>
     <name>Trabajadorbase</name>
     <message>
         <source>Trabajadores</source>
-        <translation>Trabajadores</translation>
+        <translation type="obsolete">Trabajadores</translation>
     </message>
     <message encoding="UTF-8">
         <source>Información de la Forma de Pago</source>
-        <translation>Información de la Forma de Pago</translation>
+        <translation type="obsolete">Información de la Forma de Pago</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Nombre</translation>
+        <translation type="obsolete">Nombre</translation>
     </message>
     <message>
         <source>Apellidos</source>
-        <translation>Apellidos</translation>
+        <translation type="obsolete">Apellidos</translation>
     </message>
     <message encoding="UTF-8">
         <source>Dirección</source>
-        <translation>Dirección</translation>
+        <translation type="obsolete">Dirección</translation>
     </message>
     <message encoding="UTF-8">
         <source>Teléfono</source>
-        <translation>Teléfono</translation>
+        <translation type="obsolete">Teléfono</translation>
     </message>
     <message encoding="UTF-8">
         <source>Móvil</source>
-        <translation>Móvil</translation>
+        <translation type="obsolete">Móvil</translation>
     </message>
     <message>
         <source>NSS</source>
-        <translation>NSS</translation>
+        <translation type="obsolete">NSS</translation>
     </message>
     <message>
         <source>e-mail</source>
-        <translation>E-mail</translation>
+        <translation type="obsolete">E-mail</translation>
     </message>
     <message>
         <source>Activo</source>
-        <translation>Activo</translation>
+        <translation type="obsolete">Activo</translation>
     </message>
     <message>
         <source>Cambiar Imagen</source>
-        <translation>Cambiar Imagen</translation>
-    </message>
-    <message>
-        <source>Nuevo Trabajador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Trabajador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar Trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Cambiar Imagen</translation>
     </message>
 </context>
 <context>
@@ -4739,412 +3928,43 @@ Quiere guardar los cambios?</source>
         <translation>Empresa</translation>
     </message>
 </context>
-<context encoding="UTF-8">
+<context>
     <name>aboutdlg</name>
     <message>
         <source>Acerca de BulmaFact</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A&amp;bout</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Alt+F</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de BulmaFact</translation>
     </message>
     <message>
         <source>BulmaFact</source>
-        <translation type="unfinished">BulmaFact</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Facturación para Linux&lt;/b&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Versión 0.5.3</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">BulmaFact</translation>
     </message>
     <message>
         <source>A&amp;utores</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot;font-size:-1pt;font-family:helvetica&quot; bgcolor=&quot;#FFFFFF&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot;margin-top:18px&quot;&gt;&lt;span style=&quot;font-weight:600&quot;&gt;BulmaFact&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot;&gt;&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;Programación&lt;/span&gt; &lt;br /&gt;Tomeu Borrás &lt;a href=&quot;mailto:tborras@conetxia.com&quot;&gt;tborras@conetxia.com&lt;/a&gt; &lt;br /&gt;
-
-
- &lt;br /&gt;
-&lt;br /&gt;&lt;span style=&quot;font-weight:600;text-decoration:underline&quot;&gt;Depuracion y manuales&lt;/span&gt; &lt;br /&gt;Cristina Marco &lt;a href=&quot;cmarco@conetxia.com&quot;&gt;cmarco@conetxia.com&lt;/a&gt; &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;
-</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;utores</translation>
     </message>
     <message>
         <source>Sopor&amp;te</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot;font-size:-1pt;font-family:helvetica&quot; bgcolor=&quot;#FFFFFF&quot;&gt;
-&lt;p style=&quot;margin-top:14px&quot;&gt;&lt;span style=&quot;font-weight:600&quot;&gt;Entidades que dan soporte al programa:&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot;&gt;
-&lt;img src=/usr/share/bulmages/logopeq.png &gt;&lt;br /&gt;&lt;a href=&quot;http://www.conetxia.com&quot;&gt;http://www.conetxia.com&lt;/a&gt; &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>L&amp;icencia</source>
-        <translation type="unfinished"></translation>
+        <translation>Sopor&amp;te</translation>
     </message>
     <message encoding="UTF-8">
-        <source>&lt;PRE&gt;
-Este programa está distribuido bajo los términos de GPL v2.
-
-<byte value="x9"/><byte value="x9"/>    GNU GENERAL PUBLIC LICENSE
-<byte value="x9"/><byte value="x9"/>       Version 2, June 1991
-
- Copyright (C) 1989, 1991 Free Software Foundation, Inc.
-                          675 Mass Ave, Cambridge, MA 02139, USA
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.
-
-<byte value="x9"/><byte value="x9"/><byte value="x9"/>    Preamble
-
-  The licenses for most software are designed to take away your
-freedom to share and change it.  By contrast, the GNU General Public
-License is intended to guarantee your freedom to share and change free
-software--to make sure the software is free for all its users.  This
-General Public License applies to most of the Free Software
-Foundation&apos;s software and to any other program whose authors commit to
-using it.  (Some other Free Software Foundation software is covered by
-the GNU Library General Public License instead.)  You can apply it to
-your programs, too.
-
-  When we speak of free software, we are referring to freedom, not
-price.  Our General Public Licenses are designed to make sure that you
-have the freedom to distribute copies of free software (and charge for
-this service if you wish), that you receive source code or can get it
-if you want it, that you can change the software or use pieces of it
-in new free programs; and that you know you can do these things.
-
-  To protect your rights, we need to make restrictions that forbid
-anyone to deny you these rights or to ask you to surrender the rights.
-These restrictions translate to certain responsibilities for you if you
-distribute copies of the software, or if you modify it.
-
-  For example, if you distribute copies of such a program, whether
-gratis or for a fee, you must give the recipients all the rights that
-you have.  You must make sure that they, too, receive or can get the
-source code.  And you must show them these terms so they know their
-rights.
-
-  We protect your rights with two steps: (1) copyright the software, and
-(2) offer you this license which gives you legal permission to copy,
-distribute and/or modify the software.
-
-  Also, for each author&apos;s protection and ours, we want to make certain
-that everyone understands that there is no warranty for this free
-software.  If the software is modified by someone else and passed on, we
-want its recipients to know that what they have is not the original, so
-that any problems introduced by others will not reflect on the original
-authors&apos; reputations.
-
-  Finally, any free program is threatened constantly by software
-patents.  We wish to avoid the danger that redistributors of a free
-program will individually obtain patent licenses, in effect making the
-program proprietary.  To prevent this, we have made it clear that any
-patent must be licensed for everyone&apos;s free use or not licensed at all.
-
-  The precise terms and conditions for copying, distribution and
-modification follow.
- 
-<byte value="x9"/><byte value="x9"/>    GNU GENERAL PUBLIC LICENSE
-   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-
-  0. This License applies to any program or other work which contains
-a notice placed by the copyright holder saying it may be distributed
-under the terms of this General Public License.  The &quot;Program&quot;, below,
-refers to any such program or work, and a &quot;work based on the Program&quot;
-means either the Program or any derivative work under copyright law:
-that is to say, a work containing the Program or a portion of it,
-either verbatim or with modifications and/or translated into another
-language.  (Hereinafter, translation is included without limitation in
-the term &quot;modification&quot;.)  Each licensee is addressed as &quot;you&quot;.
-
-Activities other than copying, distribution and modification are not
-covered by this License; they are outside its scope.  The act of
-running the Program is not restricted, and the output from the Program
-is covered only if its contents constitute a work based on the
-Program (independent of having been made by running the Program).
-Whether that is true depends on what the Program does.
-
-  1. You may copy and distribute verbatim copies of the Program&apos;s
-source code as you receive it, in any medium, provided that you
-conspicuously and appropriately publish on each copy an appropriate
-copyright notice and disclaimer of warranty; keep intact all the
-notices that refer to this License and to the absence of any warranty;
-and give any other recipients of the Program a copy of this License
-along with the Program.
-
-You may charge a fee for the physical act of transferring a copy, and
-you may at your option offer warranty protection in exchange for a fee.
-
-  2. You may modify your copy or copies of the Program or any portion
-of it, thus forming a work based on the Program, and copy and
-distribute such modifications or work under the terms of Section 1
-above, provided that you also meet all of these conditions:
-
-    a) You must cause the modified files to carry prominent notices
-    stating that you changed the files and the date of any change.
-
-    b) You must cause any work that you distribute or publish, that in
-    whole or in part contains or is derived from the Program or any
-    part thereof, to be licensed as a whole at no charge to all third
-    parties under the terms of this License.
-
-    c) If the modified program normally reads commands interactively
-    when run, you must cause it, when started running for such
-    interactive use in the most ordinary way, to print or display an
-    announcement including an appropriate copyright notice and a
-    notice that there is no warranty (or else, saying that you provide
-    a warranty) and that users may redistribute the program under
-    these conditions, and telling the user how to view a copy of this
-    License.  (Exception: if the Program itself is interactive but
-    does not normally print such an announcement, your work based on
-    the Program is not required to print an announcement.)
- 
-These requirements apply to the modified work as a whole.  If
-identifiable sections of that work are not derived from the Program,
-and can be reasonably considered independent and separate works in
-themselves, then this License, and its terms, do not apply to those
-sections when you distribute them as separate works.  But when you
-distribute the same sections as part of a whole which is a work based
-on the Program, the distribution of the whole must be on the terms of
-this License, whose permissions for other licensees extend to the
-entire whole, and thus to each and every part regardless of who wrote it.
-
-Thus, it is not the intent of this section to claim rights or contest
-your rights to work written entirely by you; rather, the intent is to
-exercise the right to control the distribution of derivative or
-collective works based on the Program.
-
-In addition, mere aggregation of another work not based on the Program
-with the Program (or with a work based on the Program) on a volume of
-a storage or distribution medium does not bring the other work under
-the scope of this License.
-
-  3. You may copy and distribute the Program (or a work based on it,
-under Section 2) in object code or executable form under the terms of
-Sections 1 and 2 above provided that you also do one of the following:
-
-    a) Accompany it with the complete corresponding machine-readable
-    source code, which must be distributed under the terms of Sections
-    1 and 2 above on a medium customarily used for software interchange; or,
-
-    b) Accompany it with a written offer, valid for at least three
-    years, to give any third party, for a charge no more than your
-    cost of physically performing source distribution, a complete
-    machine-readable copy of the corresponding source code, to be
-    distributed under the terms of Sections 1 and 2 above on a medium
-    customarily used for software interchange; or,
-
-    c) Accompany it with the information you received as to the offer
-    to distribute corresponding source code.  (This alternative is
-    allowed only for noncommercial distribution and only if you
-    received the program in object code or executable form with such
-    an offer, in accord with Subsection b above.)
-
-The source code for a work means the preferred form of the work for
-making modifications to it.  For an executable work, complete source
-code means all the source code for all modules it contains, plus any
-associated interface definition files, plus the scripts used to
-control compilation and installation of the executable.  However, as a
-special exception, the source code distributed need not include
-anything that is normally distributed (in either source or binary
-form) with the major components (compiler, kernel, and so on) of the
-operating system on which the executable runs, unless that component
-itself accompanies the executable.
-
-If distribution of executable or object code is made by offering
-access to copy from a designated place, then offering equivalent
-access to copy the source code from the same place counts as
-distribution of the source code, even though third parties are not
-compelled to copy the source along with the object code.
- 
-  4. You may not copy, modify, sublicense, or distribute the Program
-except as expressly provided under this License.  Any attempt
-otherwise to copy, modify, sublicense or distribute the Program is
-void, and will automatically terminate your rights under this License.
-However, parties who have received copies, or rights, from you under
-this License will not have their licenses terminated so long as such
-parties remain in full compliance.
-
-  5. You are not required to accept this License, since you have not
-signed it.  However, nothing else grants you permission to modify or
-distribute the Program or its derivative works.  These actions are
-prohibited by law if you do not accept this License.  Therefore, by
-modifying or distributing the Program (or any work based on the
-Program), you indicate your acceptance of this License to do so, and
-all its terms and conditions for copying, distributing or modifying
-the Program or works based on it.
-
-  6. Each time you redistribute the Program (or any work based on the
-Program), the recipient automatically receives a license from the
-original licensor to copy, distribute or modify the Program subject to
-these terms and conditions.  You may not impose any further
-restrictions on the recipients&apos; exercise of the rights granted herein.
-You are not responsible for enforcing compliance by third parties to
-this License.
-
-  7. If, as a consequence of a court judgment or allegation of patent
-infringement or for any other reason (not limited to patent issues),
-conditions are imposed on you (whether by court order, agreement or
-otherwise) that contradict the conditions of this License, they do not
-excuse you from the conditions of this License.  If you cannot
-distribute so as to satisfy simultaneously your obligations under this
-License and any other pertinent obligations, then as a consequence you
-may not distribute the Program at all.  For example, if a patent
-license would not permit royalty-free redistribution of the Program by
-all those who receive copies directly or indirectly through you, then
-the only way you could satisfy both it and this License would be to
-refrain entirely from distribution of the Program.
-
-If any portion of this section is held invalid or unenforceable under
-any particular circumstance, the balance of the section is intended to
-apply and the section as a whole is intended to apply in other
-circumstances.
-
-It is not the purpose of this section to induce you to infringe any
-patents or other property right claims or to contest validity of any
-such claims; this section has the sole purpose of protecting the
-integrity of the free software distribution system, which is
-implemented by public license practices.  Many people have made
-generous contributions to the wide range of software distributed
-through that system in reliance on consistent application of that
-system; it is up to the author/donor to decide if he or she is willing
-to distribute software through any other system and a licensee cannot
-impose that choice.
-
-This section is intended to make thoroughly clear what is believed to
-be a consequence of the rest of this License.
- 
-  8. If the distribution and/or use of the Program is restricted in
-certain countries either by patents or by copyrighted interfaces, the
-original copyright holder who places the Program under this License
-may add an explicit geographical distribution limitation excluding
-those countries, so that distribution is permitted only in or among
-countries not thus excluded.  In such case, this License incorporates
-the limitation as if written in the body of this License.
-
-  9. The Free Software Foundation may publish revised and/or new versions
-of the General Public License from time to time.  Such new versions will
-be similar in spirit to the present version, but may differ in detail to
-address new problems or concerns.
-
-Each version is given a distinguishing version number.  If the Program
-specifies a version number of this License which applies to it and &quot;any
-later version&quot;, you have the option of following the terms and conditions
-either of that version or of any later version published by the Free
-Software Foundation.  If the Program does not specify a version number of
-this License, you may choose any version ever published by the Free Software
-Foundation.
-
-  10. If you wish to incorporate parts of the Program into other free
-programs whose distribution conditions are different, write to the author
-to ask for permission.  For software which is copyrighted by the Free
-Software Foundation, write to the Free Software Foundation; we sometimes
-make exceptions for this.  Our decision will be guided by the two goals
-of preserving the free status of all derivatives of our free software and
-of promoting the sharing and reuse of software generally.
-
-<byte value="x9"/><byte value="x9"/><byte value="x9"/>    NO WARRANTY
-
-  11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
-FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN
-OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
-PROVIDE THE PROGRAM &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED
-OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS
-TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE
-PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING,
-REPAIR OR CORRECTION.
-
-  12. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
-WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
-REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,
-INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING
-OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED
-TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY
-YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
-PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGES.
-
-<byte value="x9"/><byte value="x9"/>     END OF TERMS AND CONDITIONS
-
-
-<byte value="x9"/>    How to Apply These Terms to Your New Programs
-
-  If you develop a new program, and you want it to be of the greatest
-possible use to the public, the best way to achieve this is to make it
-free software which everyone can redistribute and change under these terms.
-
-  To do so, attach the following notices to the program.  It is safest
-to attach them to the start of each source file to most effectively
-convey the exclusion of warranty; and each file should have at least
-the &quot;copyright&quot; line and a pointer to where the full notice is found.
-
-    &lt;one line to give the program&apos;s name and a brief idea of what it does.&gt;
-    Copyright (C) 19yy  &lt;name of author&gt;
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-
-Also add information on how to contact you by electronic and paper mail.
-
-If the program is interactive, make it output a short notice like this
-when it starts in an interactive mode:
-
-    Gnomovision version 69, Copyright (C) 19yy name of author
-    Gnomovision comes with ABSOLUTELY NO WARRANTY; for details type `show w&apos;.
-    This is free software, and you are welcome to redistribute it
-    under certain conditions; type `show c&apos; for details.
-
-The hypothetical commands `show w&apos; and `show c&apos; should show the appropriate
-parts of the General Public License.  Of course, the commands you use may
-be called something other than `show w&apos; and `show c&apos;; they could even be
-mouse-clicks or menu items--whatever suits your program.
-
-You should also get your employer (if you work as a programmer) or your
-school, if any, to sign a &quot;copyright disclaimer&quot; for the program, if
-necessary.  Here is a sample; alter the names:
-
-  Yoyodyne, Inc., hereby disclaims all copyright interest in the program
-  `Gnomovision&apos; (which makes passes at compilers) written by James Hacker.
-
-  &lt;signature of Ty Coon&gt;, 1 April 1989
-  Ty Coon, President of Vice
-
-This General Public License does not permit incorporating your program into
-proprietary programs.  If your program is a subroutine library, you may
-consider it more useful to permit linking proprietary applications with the
-library.  If this is what you want to do, use the GNU Library General
-Public License instead of this License.
-&lt;/PRE&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Facturación GPL&lt;/span&gt; - &lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Versión 0.5.9&lt;/span&gt; - &lt;span style=&quot; font-style:italic;&quot;&gt;Usando QT4.1.0&lt;/span&gt; -&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Facturación GPL&lt;/span&gt; - &lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Versión 0.5.9&lt;/span&gt; - &lt;span style=&quot; font-style:italic;&quot;&gt;Usando QT4.1.0&lt;/span&gt; -&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&amp;Acerca de</source>
+        <translation>&amp;Acerca de</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Acuerdo de &amp;licencia</source>
+        <translation>Acuerdo de &amp;licencia</translation>
+    </message>
+    <message>
+        <source>&amp;Cerrar</source>
+        <translation>&amp;Cerrar</translation>
     </message>
 </context>
 <context>
@@ -5169,159 +3989,159 @@ Public License instead of this License.
         <source>Es de Referencia</source>
         <translation>Es de Referencia</translation>
     </message>
+    <message>
+        <source>Articulo </source>
+        <translation> Artículo</translation>
+    </message>
+    <message>
+        <source>Borrar Articulo</source>
+        <translation>Borrar Artículo</translation>
+    </message>
+    <message>
+        <source>Esta a punto de borrar un articulo, Desea continuar?.</source>
+        <translation>Esta a punto de borrar un artículo, Desea continuar?.</translation>
+    </message>
+    <message>
+        <source>Si</source>
+        <translation>Si</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>No</translation>
+    </message>
 </context>
 <context>
     <name>articleeditbase</name>
     <message encoding="UTF-8">
         <source>Artículo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Nombre</translation>
+        <translation type="obsolete">Nombre</translation>
     </message>
     <message encoding="UTF-8">
         <source>Código de Barras</source>
-        <translation>Código de Barras</translation>
+        <translation type="obsolete">Código de Barras</translation>
     </message>
     <message encoding="UTF-8">
         <source>Tipo de Artículo</source>
-        <translation>Tipo de Artículo</translation>
+        <translation type="obsolete">Tipo de Artículo</translation>
     </message>
     <message>
         <source>Tipo de IVA</source>
-        <translation>Tipo de IVA</translation>
+        <translation type="obsolete">Tipo de IVA</translation>
     </message>
     <message>
         <source>Proveedores</source>
-        <translation>Proveedores</translation>
+        <translation type="obsolete">Proveedores</translation>
     </message>
     <message>
         <source>Proveedor</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message>
         <source>Ref. Pro</source>
-        <translation>Ref. Proveedor</translation>
-    </message>
-    <message>
-        <source>+</source>
-        <translation></translation>
+        <translation type="obsolete">Ref. Proveedor</translation>
     </message>
     <message>
         <source>Codigo Completo Articulo</source>
-        <translation>Código Completo Artículo</translation>
+        <translation type="obsolete">Código Completo Artículo</translation>
     </message>
     <message encoding="UTF-8">
         <source>SubCódigo</source>
-        <translation>SubCódigo</translation>
+        <translation type="obsolete">SubCódigo</translation>
     </message>
     <message>
         <source>&amp;Datos Generales</source>
-        <translation>&amp;Datos Generales</translation>
+        <translation type="obsolete">&amp;Datos Generales</translation>
     </message>
     <message encoding="UTF-8">
         <source>Descripción Abreviada</source>
-        <translation>Descripción Abreviada</translation>
+        <translation type="obsolete">Descripción Abreviada</translation>
     </message>
     <message>
         <source>Familia</source>
-        <translation>Familia</translation>
+        <translation type="obsolete">Familia</translation>
     </message>
     <message>
         <source>&amp;Incluir en Detalles</source>
-        <translation>&amp;Incluir en Detalles</translation>
+        <translation type="obsolete">&amp;Incluir en Detalles</translation>
     </message>
     <message>
         <source>&amp;Control de Stock</source>
-        <translation>&amp;Control de Stock</translation>
+        <translation type="obsolete">&amp;Control de Stock</translation>
     </message>
     <message>
         <source>PVP Recomendado</source>
-        <translation>PVP Recomendado</translation>
+        <translation type="obsolete">PVP Recomendado</translation>
     </message>
     <message>
         <source>Cam&amp;biar Imagen</source>
-        <translation>Cam&amp;biar Imagen</translation>
+        <translation type="obsolete">Cam&amp;biar Imagen</translation>
     </message>
     <message>
         <source>C&amp;omponentes</source>
-        <translation>C&amp;omponentes</translation>
+        <translation type="obsolete">C&amp;omponentes</translation>
     </message>
     <message encoding="UTF-8">
         <source>Descripci&amp;ón</source>
-        <translation>Descripci&amp;ón</translation>
+        <translation type="obsolete">Descripci&amp;ón</translation>
     </message>
     <message>
         <source>Alias</source>
-        <translation>Alias</translation>
+        <translation type="obsolete">Alias</translation>
     </message>
     <message>
         <source>Tipo Alias</source>
-        <translation>Tipo Alias</translation>
+        <translation type="obsolete">Tipo Alias</translation>
     </message>
     <message>
         <source>Precios de Venta</source>
-        <translation>Precios de Venta</translation>
+        <translation type="obsolete">Precios de Venta</translation>
     </message>
     <message>
         <source>Tarifa</source>
-        <translation>Tarifa</translation>
+        <translation type="obsolete">Tarifa</translation>
     </message>
     <message encoding="UTF-8">
         <source>Almacén/Tienda</source>
-        <translation>Almacén/Tienda</translation>
+        <translation type="obsolete">Almacén/Tienda</translation>
     </message>
     <message>
         <source>Fecha inicial</source>
-        <translation>Fecha inicial</translation>
+        <translation type="obsolete">Fecha inicial</translation>
     </message>
     <message>
         <source>Fecha final</source>
-        <translation>Fecha final</translation>
+        <translation type="obsolete">Fecha final</translation>
     </message>
     <message>
         <source>Precio</source>
-        <translation>Precio</translation>
+        <translation type="obsolete">Precio</translation>
     </message>
     <message>
         <source>Precios de Co&amp;mpra</source>
-        <translation>Precios de Co&amp;mpra</translation>
+        <translation type="obsolete">Precios de Co&amp;mpra</translation>
     </message>
     <message encoding="UTF-8">
         <source>Almacén</source>
-        <translation>Almacén</translation>
+        <translation type="obsolete">Almacén</translation>
     </message>
     <message>
         <source>Fecha</source>
-        <translation>Fecha</translation>
+        <translation type="obsolete">Fecha</translation>
     </message>
     <message>
         <source>EA&amp;Ns</source>
-        <translation>EA&amp;Ns</translation>
-    </message>
-    <message>
-        <source>Nuevo Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">EA&amp;Ns</translation>
     </message>
 </context>
 <context>
     <name>articleslist</name>
     <message>
         <source>Identificador</source>
-        <translation>Id.</translation>
+        <translation>Id</translation>
     </message>
     <message>
         <source>Descuento</source>
@@ -5391,148 +4211,108 @@ Public License instead of this License.
         <source>L&#xc3;&#xad;nea de Producci&#xc3;&#xb3;n</source>
         <translation>Línea de Producción</translation>
     </message>
+    <message>
+        <source>PVP</source>
+        <translation>PVP</translation>
+    </message>
 </context>
 <context>
     <name>articleslistbase</name>
     <message encoding="UTF-8">
         <source>Listado Artículos</source>
-        <translation>Listado Artículos</translation>
+        <translation type="obsolete">Listado Artículos</translation>
     </message>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message encoding="UTF-8">
         <source>S&amp;ólo Presentables</source>
-        <translation>S&amp;ólo Presentables</translation>
+        <translation type="obsolete">S&amp;ólo Presentables</translation>
     </message>
     <message>
         <source>Tipo</source>
-        <translation>Tipo</translation>
+        <translation type="obsolete">Tipo</translation>
     </message>
     <message>
         <source>Familia</source>
-        <translation>Familia</translation>
+        <translation type="obsolete">Familia</translation>
     </message>
     <message>
         <source>&amp;Codigo Completo</source>
-        <translation>&amp;Código Completo</translation>
+        <translation type="obsolete">&amp;Código Completo</translation>
     </message>
     <message>
         <source>&amp;Nombre</source>
-        <translation>&amp;Nombre</translation>
+        <translation type="obsolete">&amp;Nombre</translation>
     </message>
     <message encoding="UTF-8">
         <source>Código de &amp;Barras</source>
-        <translation>Código de &amp;Barras</translation>
+        <translation type="obsolete">Código de &amp;Barras</translation>
     </message>
     <message>
         <source>&amp;Tipo</source>
-        <translation>&amp;Tipo</translation>
+        <translation type="obsolete">&amp;Tipo</translation>
     </message>
     <message>
         <source>Desc&amp;uento</source>
-        <translation>Desc&amp;uento</translation>
+        <translation type="obsolete">Desc&amp;uento</translation>
     </message>
     <message>
         <source>Especificaciones</source>
-        <translation>Especificaciones</translation>
+        <translation type="obsolete">Especificaciones</translation>
     </message>
     <message>
         <source>Icono</source>
-        <translation>Icono</translation>
+        <translation type="obsolete">Icono</translation>
     </message>
     <message>
         <source>&amp;Foto</source>
-        <translation>&amp;Foto</translation>
+        <translation type="obsolete">&amp;Foto</translation>
     </message>
     <message>
         <source>P&amp;oster</source>
-        <translation>P&amp;óster</translation>
+        <translation type="obsolete">P&amp;óster</translation>
     </message>
     <message>
         <source>Mar&amp;gen</source>
-        <translation>Mar&amp;gen</translation>
+        <translation type="obsolete">Mar&amp;gen</translation>
     </message>
     <message>
         <source>Sobrecoste</source>
-        <translation>Sobrecoste</translation>
+        <translation type="obsolete">Sobrecoste</translation>
     </message>
     <message>
         <source>&amp;Modelo</source>
-        <translation>&amp;Modelo</translation>
+        <translation type="obsolete">&amp;Modelo</translation>
     </message>
     <message>
         <source>Tipo IVA</source>
-        <translation>Tipo IVA</translation>
+        <translation type="obsolete">Tipo IVA</translation>
     </message>
     <message>
         <source>Des IVA</source>
-        <translation>Des IVA</translation>
+        <translation type="obsolete">Des IVA</translation>
     </message>
     <message>
         <source>Cod. Articulo</source>
-        <translation>Cod. Articulo</translation>
+        <translation type="obsolete">Cod. Articulo</translation>
     </message>
     <message>
         <source>Stoc&amp;k</source>
-        <translation>Stoc&amp;k</translation>
-    </message>
-    <message>
-        <source>Alt+K</source>
-        <translation></translation>
+        <translation type="obsolete">Stoc&amp;k</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Id. Artículo</source>
-        <translation>&amp;Id. Artículo</translation>
-    </message>
-    <message>
-        <source>Alt+I</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Id. Artículo</translation>
     </message>
     <message encoding="UTF-8">
         <source>&amp;Descripción</source>
-        <translation>&amp;Descripción</translation>
-    </message>
-    <message>
-        <source>Alt+D</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Descripción</translation>
     </message>
     <message encoding="UTF-8">
         <source>Id. Línea Prod</source>
-        <translation>Id. Línea Prod</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Nuevo Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Borrar Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Imprimir Catálogo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Filtrar Artículos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Id. Línea Prod</translation>
     </message>
 </context>
 <context>
@@ -5555,27 +4335,27 @@ QMenuBar and QToolBar.</source>
     <name>bulmafactbase</name>
     <message>
         <source>BulmaFact</source>
-        <translation>BulmaFact</translation>
+        <translation type="obsolete">BulmaFact</translation>
     </message>
     <message>
         <source>Ventas</source>
-        <translation>Ventas</translation>
+        <translation type="obsolete">Ventas</translation>
     </message>
     <message>
         <source>Compras</source>
-        <translation>Compras</translation>
+        <translation type="obsolete">Compras</translation>
     </message>
     <message>
         <source>Maestro</source>
-        <translation>Maestro</translation>
+        <translation type="obsolete">Maestro</translation>
     </message>
     <message encoding="UTF-8">
         <source>Artículos</source>
-        <translation>Artículos</translation>
+        <translation type="obsolete">Artículos</translation>
     </message>
     <message>
         <source>Ayuda</source>
-        <translation>Ayuda</translation>
+        <translation type="obsolete">Ayuda</translation>
     </message>
     <message>
         <source>Toolbar</source>
@@ -5599,191 +4379,147 @@ QMenuBar and QToolBar.</source>
     </message>
     <message>
         <source>Listado de Proveedores</source>
-        <translation>Listado de Proveedores</translation>
+        <translation type="obsolete">Listado de Proveedores</translation>
     </message>
     <message>
         <source>Emitir Factura</source>
-        <translation>Emitir Facturas</translation>
+        <translation type="obsolete">Emitir Facturas</translation>
     </message>
     <message>
         <source>Nuevo Cliente</source>
-        <translation>Nuevo Cliente</translation>
+        <translation type="obsolete">Nuevo Cliente</translation>
     </message>
     <message>
         <source>Nuevo Proveedor</source>
-        <translation>Nuevo Proveedor</translation>
+        <translation type="obsolete">Nuevo Proveedor</translation>
     </message>
     <message>
         <source>Nueva Factura Recibida</source>
-        <translation>Nueva Factura Recibida</translation>
+        <translation type="obsolete">Nueva Factura Recibida</translation>
     </message>
     <message>
         <source>Caja</source>
-        <translation>Caja</translation>
+        <translation type="obsolete">Caja</translation>
     </message>
     <message>
         <source>Bancos</source>
-        <translation>Bancos</translation>
+        <translation type="obsolete">Bancos</translation>
     </message>
     <message>
         <source>Cobrar</source>
-        <translation>Cobrar</translation>
+        <translation type="obsolete">Cobrar</translation>
     </message>
     <message>
         <source>Pagar</source>
-        <translation>Pagar</translation>
+        <translation type="obsolete">Pagar</translation>
     </message>
     <message>
         <source>Facturar</source>
-        <translation>Facturar</translation>
+        <translation type="obsolete">Facturar</translation>
     </message>
     <message>
         <source>Articulo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>Listado de clientes</source>
-        <translation>Listado de Clientes</translation>
+        <translation type="obsolete">Listado de Clientes</translation>
     </message>
     <message encoding="UTF-8">
         <source>Listado de Artículos</source>
-        <translation>Listado de Artículos</translation>
+        <translation type="obsolete">Listado de Artículos</translation>
     </message>
     <message>
         <source>Pedidos </source>
-        <translation>Pedidos</translation>
+        <translation type="obsolete">Pedidos</translation>
     </message>
     <message>
         <source>Listado de Pedidos</source>
-        <translation>Listado de Pedidos</translation>
+        <translation type="obsolete">Listado de Pedidos</translation>
     </message>
     <message>
         <source>Listado de Albaranes</source>
-        <translation>Listado de Albaranes</translation>
+        <translation type="obsolete">Listado de Albaranes</translation>
     </message>
     <message>
         <source>Presupuesto</source>
-        <translation>Presupuesto</translation>
+        <translation type="obsolete">Presupuesto</translation>
     </message>
     <message>
         <source>new item</source>
-        <translation>Nuevo Item</translation>
+        <translation type="obsolete">Nuevo Item</translation>
     </message>
     <message>
         <source>Facturas Recibidas</source>
-        <translation>Facturas Recibidas</translation>
+        <translation type="obsolete">Facturas Recibidas</translation>
     </message>
     <message>
         <source>Nuevo Pedido</source>
-        <translation>Nuevo Pedido</translation>
+        <translation type="obsolete">Nuevo Pedido</translation>
     </message>
     <message encoding="UTF-8">
         <source>Nuevo Albarán</source>
-        <translation>Nuevo Albarán</translation>
+        <translation type="obsolete">Nuevo Albarán</translation>
     </message>
     <message encoding="UTF-8">
         <source>Facturacion Automática</source>
-        <translation>Facturación Automática</translation>
+        <translation type="obsolete">Facturación Automática</translation>
     </message>
     <message encoding="UTF-8">
         <source>Facturación Automática</source>
-        <translation>Facturación Automática</translation>
+        <translation type="obsolete">Facturación Automática</translation>
     </message>
     <message>
         <source>Facturas Emitidas</source>
-        <translation>Facturas Emitidas</translation>
+        <translation type="obsolete">Facturas Emitidas</translation>
     </message>
     <message>
         <source>Entrega de Presupuesto</source>
-        <translation>Entrega de Presupuesto</translation>
+        <translation type="obsolete">Entrega de Presupuesto</translation>
     </message>
     <message>
         <source>Listado de Presupuestos</source>
-        <translation>Listado de Presupuestos</translation>
+        <translation type="obsolete">Listado de Presupuestos</translation>
     </message>
     <message>
         <source>Ventana</source>
-        <translation>Ventana</translation>
-    </message>
-    <message>
-        <source>Alt+A</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+D</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
+        <translation type="obsolete">Ventana</translation>
     </message>
     <message>
         <source>Crear Presupuesto</source>
-        <translation>Crear Presupuesto</translation>
-    </message>
-    <message>
-        <source>Alt+W</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+C</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+E</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+P</source>
-        <translation></translation>
+        <translation type="obsolete">Crear Presupuesto</translation>
     </message>
     <message encoding="UTF-8">
         <source>Emitir Albarán</source>
-        <translation>Emitir Albarán</translation>
+        <translation type="obsolete">Emitir Albarán</translation>
     </message>
     <message>
         <source>Formas de Pago</source>
-        <translation>Formas de Pago</translation>
+        <translation type="obsolete">Formas de Pago</translation>
     </message>
     <message encoding="UTF-8">
         <source>Gestión Familias</source>
-        <translation>Gestión Famílias</translation>
-    </message>
-    <message>
-        <source>Alt+F</source>
-        <translation></translation>
+        <translation type="obsolete">Gestión Famílias</translation>
     </message>
     <message>
         <source>Trabajadores</source>
-        <translation>Trabajadores</translation>
+        <translation type="obsolete">Trabajadores</translation>
     </message>
     <message>
         <source>Ventana Completa</source>
-        <translation>Ventana Completa</translation>
+        <translation type="obsolete">Ventana Completa</translation>
     </message>
     <message encoding="UTF-8">
         <source>Artículo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>Series Factura</source>
-        <translation>Series de Factura</translation>
+        <translation type="obsolete">Series de Factura</translation>
     </message>
     <message>
         <source>Indexador</source>
-        <translation>Indexador</translation>
-    </message>
-    <message>
-        <source>Cobros / Pagos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Personal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Acerca de ...</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Indexador</translation>
     </message>
 </context>
 <context>
@@ -5856,157 +4592,125 @@ QMenuBar and QToolBar.</source>
     <name>divisionbase</name>
     <message>
         <source>Division</source>
-        <translation>División</translation>
+        <translation type="obsolete">División</translation>
     </message>
     <message encoding="UTF-8">
         <source>Dirección</source>
-        <translation>Dirección</translation>
+        <translation type="obsolete">Dirección</translation>
     </message>
     <message encoding="UTF-8">
         <source>Teléfono</source>
-        <translation>Teléfono</translation>
+        <translation type="obsolete">Teléfono</translation>
     </message>
     <message encoding="UTF-8">
         <source>Población</source>
-        <translation>Población</translation>
+        <translation type="obsolete">Población</translation>
     </message>
     <message encoding="UTF-8">
         <source>Código</source>
-        <translation>Código</translation>
+        <translation type="obsolete">Código</translation>
     </message>
     <message>
         <source>CIF</source>
-        <translation>CIF</translation>
+        <translation type="obsolete">CIF</translation>
     </message>
     <message encoding="UTF-8">
         <source>Nuestro código de cliente</source>
-        <translation>Nuestro código de cliente</translation>
+        <translation type="obsolete">Nuestro código de cliente</translation>
     </message>
     <message>
         <source>Nombre comercial</source>
-        <translation>Nombre comercial</translation>
+        <translation type="obsolete">Nombre comercial</translation>
     </message>
     <message>
         <source>Fax</source>
-        <translation>Fax</translation>
+        <translation type="obsolete">Fax</translation>
     </message>
     <message>
         <source>Email</source>
-        <translation>E-mail</translation>
+        <translation type="obsolete">E-mail</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>Comentarios</translation>
+        <translation type="obsolete">Comentarios</translation>
     </message>
     <message>
         <source>Datos eComercio</source>
-        <translation>Datos eComercio</translation>
+        <translation type="obsolete">Datos eComercio</translation>
     </message>
     <message>
         <source>Datos Bancarios</source>
-        <translation>Datos Bancarios</translation>
+        <translation type="obsolete">Datos Bancarios</translation>
     </message>
 </context>
-<context encoding="UTF-8">
+<context>
     <name>familiasdlg</name>
     <message>
         <source>Familias</source>
-        <translation>Familias</translation>
+        <translation type="obsolete">Familias</translation>
     </message>
     <message>
         <source>Contenido de la familia</source>
-        <translation>Contenido de la familia</translation>
+        <translation type="obsolete">Contenido de la familia</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Nombre</translation>
+        <translation type="obsolete">Nombre</translation>
     </message>
     <message encoding="UTF-8">
         <source>Código</source>
-        <translation>Código</translation>
+        <translation type="obsolete">Código</translation>
     </message>
     <message encoding="UTF-8">
         <source>Código Completo</source>
-        <translation>Código Completo</translation>
+        <translation type="obsolete">Código Completo</translation>
     </message>
     <message encoding="UTF-8">
         <source>Descripción</source>
-        <translation>Descripción</translation>
-    </message>
-    <message>
-        <source>Nueva Familia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Nueva Família</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Borrar Família</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Guardar Família</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Imprimir Famílias</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Descripción</translation>
     </message>
 </context>
 <context>
     <name>fpagobase</name>
     <message>
         <source>Formas de Pago</source>
-        <translation>Formas de Pago</translation>
+        <translation type="obsolete">Formas de Pago</translation>
     </message>
     <message encoding="UTF-8">
         <source>Información de la Forma de Pago</source>
-        <translation>Información de la Forma de Pago</translation>
+        <translation type="obsolete">Información de la Forma de Pago</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Nombre</translation>
+        <translation type="obsolete">Nombre</translation>
     </message>
     <message>
         <source>Descuento</source>
-        <translation>Descuento</translation>
+        <translation type="obsolete">Descuento</translation>
     </message>
     <message encoding="UTF-8">
         <source>Número de Plazos</source>
-        <translation>Número de Plazos</translation>
+        <translation type="obsolete">Número de Plazos</translation>
     </message>
     <message>
         <source>tipoplazoprimerpago</source>
-        <translation>Tipo Plazo Primer Pago</translation>
+        <translation type="obsolete">Tipo Plazo Primer Pago</translation>
     </message>
     <message>
         <source>tipoplazoentrerecibofpago</source>
-        <translation>Tipo Plazo Entre Recibos</translation>
+        <translation type="obsolete">Tipo Plazo Entre Recibos</translation>
     </message>
     <message>
         <source>Salir</source>
-        <translation>Salir</translation>
+        <translation type="obsolete">Salir</translation>
     </message>
     <message encoding="UTF-8">
         <source>Plazo primer Recibo (días)</source>
-        <translation>Plazo primer Recibo (días)</translation>
+        <translation type="obsolete">Plazo primer Recibo (días)</translation>
     </message>
     <message encoding="UTF-8">
         <source>Plazo entre Recibos (días)</source>
-        <translation>Plazo entre Recibos (días)</translation>
-    </message>
-    <message>
-        <source>Nueva Forma de Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Forma de Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar Forma de Pago</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Plazo entre Recibos (días)</translation>
     </message>
 </context>
 <context>
@@ -6334,411 +5038,179 @@ QMenuBar and QToolBar.</source>
     <name>provedit_base</name>
     <message>
         <source>Proveedor</source>
-        <translation>Proveedor</translation>
+        <translation type="obsolete">Proveedor</translation>
     </message>
     <message>
         <source>Datos Generales</source>
-        <translation>Datos Generales</translation>
+        <translation type="obsolete">Datos Generales</translation>
     </message>
     <message encoding="UTF-8">
         <source>Código</source>
-        <translation>Código</translation>
+        <translation type="obsolete">Código</translation>
     </message>
     <message>
         <source>CIF</source>
-        <translation>CIF</translation>
+        <translation type="obsolete">CIF</translation>
     </message>
     <message encoding="UTF-8">
         <source>Nuestro código de cliente</source>
-        <translation>Nuestro código de cliente</translation>
+        <translation type="obsolete">Nuestro código de cliente</translation>
     </message>
     <message encoding="UTF-8">
         <source>Dirección</source>
-        <translation>Dirección</translation>
+        <translation type="obsolete">Dirección</translation>
     </message>
     <message>
         <source>CP</source>
-        <translation>CP</translation>
+        <translation type="obsolete">CP</translation>
     </message>
     <message encoding="UTF-8">
         <source>Población</source>
-        <translation>Población</translation>
+        <translation type="obsolete">Población</translation>
     </message>
     <message encoding="UTF-8">
         <source>Província</source>
-        <translation>Província</translation>
-    </message>
-    <message>
-        <source>Barcelona</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tarragona</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Província</translation>
     </message>
     <message encoding="UTF-8">
         <source>Teléfono</source>
-        <translation>Teléfono</translation>
+        <translation type="obsolete">Teléfono</translation>
     </message>
     <message>
         <source>WEB</source>
-        <translation>WEB</translation>
+        <translation type="obsolete">WEB</translation>
     </message>
     <message>
         <source>Fax</source>
-        <translation>Fax</translation>
+        <translation type="obsolete">Fax</translation>
     </message>
     <message>
         <source>Email</source>
-        <translation>E-mail</translation>
+        <translation type="obsolete">E-mail</translation>
     </message>
     <message>
         <source>Nombre comercial</source>
-        <translation>Nombre comercial</translation>
+        <translation type="obsolete">Nombre comercial</translation>
     </message>
     <message>
         <source>Datos Bancarios</source>
-        <translation>Datos Bancarios</translation>
+        <translation type="obsolete">Datos Bancarios</translation>
     </message>
     <message>
         <source>Comentarios</source>
-        <translation>Comentarios</translation>
+        <translation type="obsolete">Comentarios</translation>
     </message>
     <message>
         <source>Datos eComercio</source>
-        <translation>Datos eComercio</translation>
+        <translation type="obsolete">Datos eComercio</translation>
     </message>
     <message>
         <source>Nombre</source>
-        <translation>Nombre</translation>
+        <translation type="obsolete">Nombre</translation>
     </message>
     <message encoding="UTF-8">
         <source>Corporación</source>
-        <translation>Corporación</translation>
+        <translation type="obsolete">Corporación</translation>
     </message>
     <message>
         <source>Divisiones</source>
-        <translation>Divisiones</translation>
+        <translation type="obsolete">Divisiones</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation type="obsolete">Área</translation>
     </message>
     <message>
         <source>Pers. Contacto</source>
-        <translation>Pers. Contacto</translation>
+        <translation type="obsolete">Pers. Contacto</translation>
     </message>
     <message>
         <source>Productos Suministrados</source>
-        <translation>Productos Suministrados</translation>
+        <translation type="obsolete">Productos Suministrados</translation>
     </message>
     <message encoding="UTF-8">
         <source>Artículo</source>
-        <translation>Artículo</translation>
+        <translation type="obsolete">Artículo</translation>
     </message>
     <message>
         <source>Ref. Pro</source>
-        <translation>Ref. Pro</translation>
+        <translation type="obsolete">Ref. Pro</translation>
     </message>
     <message>
         <source>PVD</source>
-        <translation>PVD</translation>
-    </message>
-    <message>
-        <source>%</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>+</source>
-        <translation></translation>
+        <translation type="obsolete">PVD</translation>
     </message>
     <message>
         <source>Contratos</source>
-        <translation>Contratos</translation>
+        <translation type="obsolete">Contratos</translation>
     </message>
     <message>
         <source>Ver</source>
-        <translation>Ver</translation>
+        <translation type="obsolete">Ver</translation>
     </message>
     <message>
         <source>Vigentes</source>
-        <translation>Vigentes</translation>
+        <translation type="obsolete">Vigentes</translation>
     </message>
     <message>
         <source>Vencidos</source>
-        <translation>Vencidos</translation>
+        <translation type="obsolete">Vencidos</translation>
     </message>
     <message>
         <source>Todos</source>
-        <translation>Todos</translation>
+        <translation type="obsolete">Todos</translation>
     </message>
     <message encoding="UTF-8">
         <source>Resumen por artículos</source>
-        <translation>Resumen por artículos</translation>
+        <translation type="obsolete">Resumen por artículos</translation>
     </message>
     <message encoding="UTF-8">
         <source>Número</source>
-        <translation>Número</translation>
+        <translation type="obsolete">Número</translation>
     </message>
     <message>
         <source>Concepto</source>
-        <translation>Concepto</translation>
+        <translation type="obsolete">Concepto</translation>
     </message>
     <message>
         <source>Fecha Inicio</source>
-        <translation>Fecha Inicio</translation>
+        <translation type="obsolete">Fecha Inicio</translation>
     </message>
     <message>
         <source>Fecha Vencimiento</source>
-        <translation>Fecha Vencimiento</translation>
+        <translation type="obsolete">Fecha Vencimiento</translation>
     </message>
     <message>
         <source>% Consumido</source>
-        <translation>% Consumido</translation>
+        <translation type="obsolete">% Consumido</translation>
     </message>
     <message>
         <source>%Descuento</source>
-        <translation>%Descuento</translation>
+        <translation type="obsolete">%Descuento</translation>
     </message>
     <message>
         <source>Consumidos</source>
-        <translation>Consumidos</translation>
+        <translation type="obsolete">Consumidos</translation>
     </message>
     <message>
         <source>Pendientes</source>
-        <translation>Pendientes</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Álava</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Albacete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Alicante</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Almería</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Asturias</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Avila</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Badajoz</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Burgos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Cáceres</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Cádiz</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cantabria</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Castellón</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ceuta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ciudad Real</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Córdoba</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cuenca</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Gerona</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Granada</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guadalajara</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Guipúzcoa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Huelva</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Huesca</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Islas Baleares</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Jaén</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>La Coruña</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>La Rioja</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Las Palmas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>León</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Lérida</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lugo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Madrid</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Málaga</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Melilla</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Murcia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Navarra</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Orense</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Palencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pontevedra</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Salamanca</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Segovia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sevilla</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Soria</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tenerife</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Teruel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Toledo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Valencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Valladolid</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Vizcaya</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Zamora</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Zaragoza</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Pendientes</translation>
     </message>
     <message>
         <source>Pedidos</source>
-        <translation type="unfinished">Pedidos</translation>
+        <translation type="obsolete">Pedidos</translation>
     </message>
     <message>
         <source>Albaranes</source>
-        <translation type="unfinished">Albaranes</translation>
-    </message>
-    <message>
-        <source>Facturas</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Albaranes</translation>
     </message>
     <message>
         <source>Pagos</source>
-        <translation type="unfinished">Pagos</translation>
+        <translation type="obsolete">Pagos</translation>
     </message>
     <message>
         <source>Nuevo Proveedor</source>
-        <translation type="unfinished">Nuevo Proveedor</translation>
-    </message>
-    <message>
-        <source>Guardar Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Nuevo Proveedor</translation>
     </message>
 </context>
 <context>
@@ -6808,190 +5280,98 @@ QMenuBar and QToolBar.</source>
     <name>providerslistbase</name>
     <message>
         <source>Buscar</source>
-        <translation>Buscar</translation>
+        <translation type="obsolete">Buscar</translation>
     </message>
     <message>
         <source>Proveedores</source>
-        <translation>Proveedores</translation>
+        <translation type="obsolete">Proveedores</translation>
     </message>
     <message>
         <source>&amp;Telefono</source>
-        <translation>&amp;Teléfono</translation>
+        <translation type="obsolete">&amp;Teléfono</translation>
     </message>
     <message>
         <source>Procesa&amp;dos</source>
-        <translation>Procesa&amp;dos</translation>
+        <translation type="obsolete">Procesa&amp;dos</translation>
     </message>
     <message>
         <source>&amp;Id. Proveedor</source>
-        <translation>&amp;Id. Proveedor</translation>
-    </message>
-    <message>
-        <source>Alt+I</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Id. Proveedor</translation>
     </message>
     <message>
         <source>Nom&amp;bre</source>
-        <translation>Nom&amp;bre</translation>
-    </message>
-    <message>
-        <source>Alt+B</source>
-        <translation></translation>
+        <translation type="obsolete">Nom&amp;bre</translation>
     </message>
     <message>
         <source>&amp;Nombre Alternativo</source>
-        <translation>&amp;Nombre Alternativo</translation>
-    </message>
-    <message>
-        <source>Alt+N</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CI&amp;F</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+F</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Nombre Alternativo</translation>
     </message>
     <message>
         <source>Codi&amp;go Cliente</source>
-        <translation>Códi&amp;go Cliente</translation>
-    </message>
-    <message>
-        <source>Alt+G</source>
-        <translation></translation>
+        <translation type="obsolete">Códi&amp;go Cliente</translation>
     </message>
     <message>
         <source>Banco</source>
-        <translation>Banco</translation>
+        <translation type="obsolete">Banco</translation>
     </message>
     <message>
         <source>C&amp;omentarios</source>
-        <translation>C&amp;omentarios</translation>
-    </message>
-    <message>
-        <source>Alt+O</source>
-        <translation></translation>
+        <translation type="obsolete">C&amp;omentarios</translation>
     </message>
     <message encoding="UTF-8">
         <source>Direcci&amp;ón</source>
-        <translation>Direcci&amp;ón</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Alt+ó</source>
-        <translation></translation>
+        <translation type="obsolete">Direcci&amp;ón</translation>
     </message>
     <message>
         <source>Poblacion</source>
-        <translation>Poblacion</translation>
+        <translation type="obsolete">Poblacion</translation>
     </message>
     <message>
         <source>&amp;Codigo Postal</source>
-        <translation>&amp;Codigo Postal</translation>
-    </message>
-    <message>
-        <source>Alt+C</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Alt+T</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;Codigo Postal</translation>
     </message>
     <message>
         <source>Fa&amp;x</source>
-        <translation>Fa&amp;x</translation>
-    </message>
-    <message>
-        <source>Alt+X</source>
-        <translation></translation>
+        <translation type="obsolete">Fa&amp;x</translation>
     </message>
     <message>
         <source>e-&amp;mail</source>
-        <translation>E-&amp;mail</translation>
-    </message>
-    <message>
-        <source>Alt+M</source>
-        <translation></translation>
+        <translation type="obsolete">E-&amp;mail</translation>
     </message>
     <message>
         <source>&amp;URL</source>
-        <translation>&amp;URL</translation>
-    </message>
-    <message>
-        <source>Alt+U</source>
-        <translation></translation>
+        <translation type="obsolete">&amp;URL</translation>
     </message>
     <message>
         <source>Clave &amp;Web</source>
-        <translation>Clave &amp;Web</translation>
-    </message>
-    <message>
-        <source>Alt+W</source>
-        <translation></translation>
+        <translation type="obsolete">Clave &amp;Web</translation>
     </message>
     <message>
         <source>Nuevo Proveedor</source>
-        <translation type="unfinished">Nuevo Proveedor</translation>
-    </message>
-    <message>
-        <source>Editar Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Proveedores</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Nuevo Proveedor</translation>
     </message>
 </context>
-<context encoding="UTF-8">
+<context>
     <name>tiposarticulodlg</name>
     <message>
         <source>Tipos Articulo</source>
-        <translation>Tipos Artículo</translation>
+        <translation type="obsolete">Tipos Artículo</translation>
     </message>
     <message>
         <source>Contenido de la familia</source>
-        <translation>Contenido de la familia</translation>
+        <translation type="obsolete">Contenido de la familia</translation>
     </message>
     <message>
         <source>Salir</source>
-        <translation>Salir</translation>
+        <translation type="obsolete">Salir</translation>
     </message>
     <message encoding="UTF-8">
         <source>Código</source>
-        <translation>Código</translation>
+        <translation type="obsolete">Código</translation>
     </message>
     <message encoding="UTF-8">
         <source>Descripción</source>
-        <translation>Descripción</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Nuevo Tipo Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Borrar Tipo Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Guardar Tipo Artículo</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Descripción</translation>
     </message>
 </context>
 </TS>

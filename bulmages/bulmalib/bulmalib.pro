@@ -5,7 +5,7 @@
 
 QT += qt3support
 
-FORMS3 += logpassbase.ui \
+FORMS += logpassbase.ui \
           abreempresadlg.ui \
           msgerrorbase.ui \
  	  busquedafechabase.ui

@@ -52,6 +52,9 @@ CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER
 AS '
 BEGIN
 	ALTER TABLE borrador ALTER COLUMN orden DROP NOT NULL;
+	ALTER TABLE registroiva ALTER COLUMN idborrador SET NOT NULL;
+	ALTER TABLE registroiva ADD FOREIGN KEY (idborrador) REFERENCES borrador(idborrador);
+
 	RETURN 0;
 END;
 ' LANGUAGE 'plpgsql';
