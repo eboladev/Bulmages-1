@@ -874,13 +874,13 @@ CREATE TABLE lfactura (
 );
 
 CREATE FUNCTION restriccioneslfactura() RETURNS "trigger"
-    AS $$
+    AS '
 DECLARE
 asd RECORD;
 reg RECORD;
 BEGIN
 	IF NEW.idarticulo IS NULL THEN
-	RAISE EXCEPTION 'ARTICULO INVALIDO';
+	RAISE EXCEPTION ''ARTICULO INVALIDO'';
 	return OLD;
 	END IF;
 
@@ -905,7 +905,7 @@ BEGIN
 	END LOOP;	
         RETURN NEW;
 END;
-$$
+'
     LANGUAGE plpgsql;
 
 CREATE TRIGGER restriccionesalfacturatrigger

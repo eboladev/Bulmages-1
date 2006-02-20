@@ -36,13 +36,6 @@ INSERT INTO proveedor (nomproveedor, cifproveedor, cpproveedor) VALUES ('Cristin
 INSERT INTO proveedor (nomproveedor, cifproveedor, cpproveedor) VALUES ('Marco Aurelio', '45668998D', '07008');
 INSERT INTO proveedor (nomproveedor, cifproveedor, cpproveedor) VALUES ('Torrijas', '45678995D', '07008');
 
-INSERT INTO division (idproveedor, descdivision) VALUES (1, 'division 1 de mateu');
-INSERT INTO division (idproveedor, descdivision) VALUES (1, 'division 2 de mateu');
-INSERT INTO division (idproveedor, descdivision) VALUES (2, 'division 1 de cristina');
-INSERT INTO division (idproveedor, descdivision) VALUES (2, 'division 2 de cristina');
-INSERT INTO division (idproveedor, descdivision) VALUES (2, 'division 3 de cristina');
-INSERT INTO division (idproveedor, descdivision) VALUES (4, 'division 1 de Torrijas');
-
 
 INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Jorge Gutiérrez', '39881444W', '971998877', 'Palma de Mallorca');
 INSERT INTO cliente (nomcliente, cifcliente, telcliente, poblcliente) VALUES('Carlos Santana', '43881555Z', '871998877', 'Campos');
@@ -74,24 +67,7 @@ INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfam
 INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia) VALUES('4', 'Nestcafé', 'Bote 400 gramos café soluble natural', 1, 5);
 \echo "Hemos insertado los articulos"
 
-INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-1', '25/10/2004', 'Pedido semanal de carne y pescado', 1, 1);
-INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-2', '30/10/2004', 'Pedido especial noche halloween', 2, 3);
-INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-3', '02/11/2004', 'Frutos secos de temporada', 3, 2);
-INSERT INTO pedido (numpedido, fechapedido, descpedido, iddivision, idalmacen) VALUES('P-4', '02/10/2004', 'Pedido semanal de lencería', 6, 1);
-\echo "Hemos insertado los pedidos"
 
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 10, 1.2, '30/10/2004', 1, 1);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 100, 2.23, '02/11/2004', 1, 2);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 15, 3.34, '30/10/2004', 1, 3);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 34, 11.20, '05/11/2004', 2, 1);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 45, 2.55, '05/11/2004', 2, 3);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 1, 4.28, '10/11/2004', 2, 4);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 34, 1.7, '31/12/2004', 3, 2);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 11, 1.3, '30/12/2004', 3, 3);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 28, 2.2, '30/12/2004', 3, 4);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 15, 3.2, '15/11/2004', 4, 1);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 10, 8.59, '10/11/2004', 4, 2);
-INSERT INTO lpedido (desclpedido, cantlpedido, pvdlpedido, prevlpedido, idpedido, idarticulo) VALUES (' ', 6, 6.15, '25/11/2004', 4, 3);
 
 
 
@@ -121,16 +97,6 @@ INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, come
 INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES ( 2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', 'Sin comentarios', 1, 1);
 INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES ( 3, '10/11/2004', 'Tercer Contacto', '971 29 06 29',  'Sin comentarios', 1, 2);
 
-
-
-
-INSERT INTO suministra (idarticulo, idproveedor) VALUES (1, 1);
-INSERT INTO suministra (idarticulo, idproveedor) VALUES (2, 1);
-INSERT INTO suministra (idarticulo, idproveedor) VALUES (3, 2);
-INSERT INTO suministra (idarticulo, idproveedor) VALUES (4, 2);
-INSERT INTO suministra (idarticulo, idproveedor) VALUES (2, 3);
-INSERT INTO suministra (idarticulo, idproveedor) VALUES (3, 3);
-INSERT INTO suministra (idarticulo, idproveedor) VALUES (4, 1);
 
 
 

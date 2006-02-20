@@ -73,86 +73,32 @@ linea
 tiempo
 
 dropdb  $2 2>> /tmp/error.txt > /dev/null
-# La creacion de bases de datos con unicode da muchos problemas con los caracteres especiales.
-#createdb -E UNICODE $2 2>> /tmp/errores.txt > /dev/null
-createdb -E SQL_ASCII $2 2>> /tmp/errores.txt > /dev/null
+createdb -E UNICODE $2 2>> /tmp/errores.txt > /dev/null
 
 # Creamos la base
 if [ "$3" = "1" -o "$3" = "2" ]; then
    info "Importamos el esquema de base de datos de una empresa. \n"
    tiempo
    psql $2 < crear/bulmafact/bulmafact_schema.sql 2>> /tmp/errores.txt > /dev/null
-else
-   info "Importamos el esquema de la metabd. \n"
-   tiempo
-   psql $2 < crear/metabd/metabd_schema.pgdump 2>> /tmp/errores.txt > /dev/null
 fi
 
 
-#if [ "$3" = "3" ]; then
-   # Cargamos la metabase
-#   info "Cargamos la metabase. \n"
-#   tiempo
-#   psql $2 < crear/metabd/metabd_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#fi
 
 
-if [ "$3" = "1" -o "$3" = "2" ]; then
-   # Cargamos lo minimo
    info "Cargamos el conjunto minimo de datos. \n"
    tiempo
    psql $2 < crear/bulmafact/bulmafact_data.sql 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_configuracion_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_tiposiva_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_grupo_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_cuenta_data.pgdump 2>> /tmp/errores.txt > /dev/null
-fi
+
 
 
 if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
    info "Cargamos datos adicionales. \n"
    tiempo
-#   psql $2 < crear/bulmafact/t_canal_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_c_coste_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_diario_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_asiento_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_apunte_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_borrador_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_registroiva_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_ainteligente_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_binteligente_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_ivainteligente_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_compmasap_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_compbalance_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_balance_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_amortizacion_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_linamortizacion_data.pgdump 2>> /tmp/errores.txt > /dev/null
-#   psql $2 < crear/bulmafact/t_ejercicios_data.pgdump 2>> /tmp/errores.txt > /dev/null
 fi
 
 
-#VAmos a hacer la insercion en la metabase de los datos necesarios.
-#if [ "$3" = "1" -o "$3" = "2" ]; then
-   # Cargamos lo minimo
-#   info "Creamos la empresa en la MetaBase. \n"
-#   tiempo
-#   echo -e " INSERT INTO empresafact (nombre, ano, nombredb) VALUES ('$4', $5, '$2')" | psql $6 2>> /tmp/errores.txt   > /dev/null
-   #  Hacemos una actualizacion de las bases de datos.
-#   echo -e "\\pset tuples_only \n select MAX(idempresafact) from empresafact ;" | psql metabd > /tmp/listdb.lst
-#   for x in `tail +2 /tmp/listdb.lst`
-#   do
-#      info "Creamos los permisos necesarios. \n"
-#      tiempo
-#      echo -e "\\pset tuples_only \n select idusuario FROM usuario ;" | psql metabd > /tmp/listuser.lst
-#      for y in `tail +2 /tmp/listuser.lst`
-#      do
-#	    echo "INSERT INTO usuario_empresafact (idusuario,idempresafact, permisos) VALUES ($y, $x, 1)" | psql $6   2>> /tmp/errores.txt >> /tmp/errores.txt
-#	    info "Damos permisos a $y, $x. \n"
-#      done
-#      linea
-#   done
-#fi
+
 
 if [ -e /tmp/errores.txt ]; then
    DBS=`cat /tmp/errores.txt | grep ERROR`
