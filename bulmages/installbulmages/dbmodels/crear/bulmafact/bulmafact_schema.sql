@@ -855,7 +855,7 @@ CREATE TABLE dfactura (
 ); 
     
 
--- Linea de presupuesto
+-- Linea de factura
 -- Numero
 -- Descripcio: Descripci�de l'article en el moment de ser presupostat.
 -- Quantitat
