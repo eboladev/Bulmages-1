@@ -89,6 +89,7 @@ Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(
     setlislinpresupuesto(subform2);
     setlisdescpresupuesto(m_descuentos);
     inicialize();
+	_depura("vamos a meter la ventana",0);
     comp->meteWindow(caption(),this);
 
     /// Disparamos los plugins por flanco descendente.
