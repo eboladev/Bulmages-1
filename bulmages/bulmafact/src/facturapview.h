@@ -58,7 +58,7 @@ public:
   };
 
 
-  void    pintatotales(float base, float iva);
+  virtual void    pintatotales(float base, float iva);
   void closeEvent( QCloseEvent *);
 
 public slots:

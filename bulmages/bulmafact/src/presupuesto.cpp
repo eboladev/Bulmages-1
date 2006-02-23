@@ -363,7 +363,13 @@ void presupuesto::imprimirPresupuesto() {
 
 
 void presupuesto::calculaypintatotales() {
-    fprintf(stderr,"calculaypintatotales \n");
+    _depura("calculaypintatotales \n",0);
+	
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("presupuesto_calculaypintatotales", this);
+    if (res != 0)
+        return;
+		
     base basesimp;
     linpresupuesto *linea;
     /// Impresi� de los contenidos

@@ -102,8 +102,8 @@ public:
     void pintaFactura();
     void guardaFactura();
     void borraFactura();
-    void imprimirFactura();
-    void calculaypintatotales();
+    virtual void imprimirFactura();
+    virtual void calculaypintatotales();
 
     virtual void pintaidcliente(QString ) {}
     ;

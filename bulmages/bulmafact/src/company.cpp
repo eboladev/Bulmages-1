@@ -203,6 +203,7 @@ FacturaProveedorView * company::newFacturaProveedorView() {
     bud = new FacturaProveedorView(this , 0,theApp->translate("Edicion de Facturas Proveedor", "company"));
     return bud;
 }// end FacturaProveedorView
+
 void company::s_newFacturaPro() {
     FacturaProveedorView *bud = newFacturaProveedorView();
     m_pWorkspace->addWindow(bud);

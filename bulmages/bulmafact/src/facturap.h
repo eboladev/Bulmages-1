@@ -50,10 +50,10 @@ public:
     FacturaProveedor(company *);
     virtual ~FacturaProveedor();
     virtual int cargaFacturaProveedor(QString );
-    void pintaFacturaProveedor();
-    void guardaFacturaProveedor();
+    virtual void pintaFacturaProveedor();
+    virtual void guardaFacturaProveedor();
     void borraFacturaProveedor();
-    void imprimirFacturaProveedor();
+    virtual void imprimirFacturaProveedor();
     
     virtual void pintaidproveedor(QString ) {};
 
