@@ -153,6 +153,7 @@ void ListLinAsiento1View::contextMenu ( int row, int col, const QPoint & pos ) {
     Q3PopupMenu *popup;
     QString query;
     int opcion;
+    cursor2 *cur;
 
 
     /// Confeccionamos el menu dependiendo del estado y de la casilla pulsada.
@@ -167,7 +168,7 @@ void ListLinAsiento1View::contextMenu ( int row, int col, const QPoint & pos ) {
     switch (col) {
     case COL_NOMBRECANAL:
         query = "SELECT * FROM canal";
-        cursor2 *cur = companyact->cargacursor(query,"canales");
+        cur = companyact->cargacursor(query,"canales");
         menucanal->insertItem(tr("Ninguno"), 1000);
         while (!cur->eof()) {
             menucanal->insertItem(cur->valor("nombre"),1000+atoi(cur->valor("idcanal")));
@@ -176,6 +177,19 @@ void ListLinAsiento1View::contextMenu ( int row, int col, const QPoint & pos ) {
         delete cur;
         popup->insertItem(tr("&Seleccionar Canal"),menucanal);
         break;
+
+    case COL_NOMBREC_COSTE:
+        query = "SELECT * FROM c_coste";
+        cur = companyact->cargacursor(query,"canales");
+        menucoste->insertItem(tr("Ninguno"), 1100);
+        while (!cur->eof()) {
+            menucoste->insertItem(cur->valor("nombre"),1100+atoi(cur->valor("idc_coste")));
+            cur->siguienteregistro();
+        }// end while
+        delete cur;
+        popup->insertItem(tr("&Seleccionar Centro Coste"),menucoste);
+        break;
+
     }// end switch
     opcion = popup->exec(pos);
 
@@ -216,6 +230,22 @@ void ListLinAsiento1View::contextMenu ( int row, int col, const QPoint & pos ) {
                 cursor2 *cur = companyact->cargacursor(query1);
                 if (!cur->eof()) {
                     linea->setidcanal(cur->valor("idcanal"));
+                }// end if
+                delete cur;
+            }// end if
+            pintalinListLinAsiento1(row);
+            break;
+        case COL_NOMBREC_COSTE:
+            if (opcion == 1100) {
+                linea->setidcanal("");
+            }// end if
+            if (opcion > 1100) {
+                QString query1;
+                opcion -= 1100;
+                query1.sprintf("SELECT * FROM c_coste WHERE idc_coste=%d", opcion);
+                cursor2 *cur = companyact->cargacursor(query1);
+                if (!cur->eof()) {
+                    linea->setidc_coste(cur->valor("idc_coste"));
                 }// end if
                 delete cur;
             }// end if

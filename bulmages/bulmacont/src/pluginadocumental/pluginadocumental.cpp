@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "pluginadocumental.h"
 #include "empresa.h"
-#include "intapunts3view.h"
+#include "asiento1view.h"
 #include "adocumental.h"
 
 /// Inclusión de imágenes
@@ -25,8 +25,8 @@ void entryPoint(Bulmages01 *bges) {
     QPixmap *img = new QPixmap(napuntedoc);
     QPixmap *img1 = new QPixmap(ndoc);
 
-    empresa *emp = &(bges->empresaactual);
-    intapunts3view* intapunts = emp->intapuntsempresa();
+    empresa *emp = bges->empresaactual();
+    Asiento1View* intapunts = emp->intapuntsempresa();
     myplugin1 *pub = new myplugin1(emp);
     intapunts->hide();
     QHBoxLayout *layoutPlugins = intapunts->layoutPlugins;

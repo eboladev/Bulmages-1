@@ -18,7 +18,7 @@
 #include "empresa.h"
 
 #include <q3textbrowser.h>
-
+#include "asiento1view.h"
 
 
 #define COL_IDADOCUMENTAL 0
@@ -42,9 +42,9 @@ void myplugin1::boton_nuevoasientodocumental() {
     fprintf(stderr,"boton_nuevoasientodocumental\n");
     adocumental *adoc= new adocumental(empresaactual,0,"adjuntar documento");
     adoc->presentaprimervacio();
-    intapunts3view *intapunts = empresaactual->intapuntsempresa();
+    Asiento1View *intapunts = empresaactual->intapuntsempresa();
     intapunts->iniciar_asiento_nuevo();
-    adoc->asociaasiento(intapunts->idAsiento());
+    adoc->asociaasiento(intapunts->idasiento());
     delete adoc;
 }// end boton_nuevoasientodocumental
 
@@ -54,9 +54,9 @@ void myplugin1::boton_adjuntar() {
     adoc->setmodoconsulta();
     adoc->exec();
     /// FAlta por resolver esta salvedad
-    intapunts3view *intapunts = empresaactual->intapuntsempresa();
-    if (intapunts->idAsiento() != "-1")
-    	adoc->asociaasiento(intapunts->idAsiento());
+    Asiento1View *intapunts = empresaactual->intapuntsempresa();
+    if (intapunts->idasiento() != "-1")
+    	adoc->asociaasiento(intapunts->idasiento());
     delete adoc;
 }// end boton_adjuntar
 

@@ -34,6 +34,15 @@
 #include "logpass.h"
 #include "plugins.h"
 
+
+#ifdef WIN32
+#define CONFGLOBAL "C:\\bulmages_"
+#else
+#define CONFGLOBAL "/etc/bulmages_"
+#endif
+
+
+
 /// Estas son las variables globales de la aplicación.
 /// El puntero de la aplicación
 QApplication * theApp;
@@ -63,10 +72,6 @@ int main(int argc, char *argv[]) {
     QApplication * mainApp = new QApplication (argc, argv);
     theApp = mainApp;
     mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
-
-
-    /// cargamos las librerias de g_plugins
-    g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
 
 
 
@@ -113,6 +118,13 @@ int main(int argc, char *argv[]) {
         bges = new Bulmages01(NULL, "bulmages",0, "");
     }// end if
 
+
+    /// Leemos la configuración específica de la base de datos que se ha abierto.
+    QString confesp = CONFGLOBAL+bges->empresaactual()->nameDB()+".conf";
+    confpr->leeconfig(confesp);
+
+    /// cargamos las librerias de g_plugins
+    g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
 
 	g_plugins->lanza("entryPoint", bges);
 	

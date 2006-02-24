@@ -16,8 +16,9 @@
 #include <q3table.h>
 #include <q3header.h>
 #include <q3textbrowser.h>
+#include "asiento1view.h"
 
-/** \brief Inicialización de la clase,
+/** \brief Inicializaciï¿½ de la clase,
   *
   * En el constructor del corrector no se hacen tareas especiales.
   */
@@ -29,20 +30,20 @@ correctorwidget::correctorwidget( QWidget* parent, const char* name, Qt::WFlags 
 correctorwidget::~correctorwidget() {}
 
 
-/** \brief Detecta la pulsación de un enlace en el widget de resultados
+/** \brief Detecta la pulsaciï¿½ de un enlace en el widget de resultados
   * 
-  * Se activa esta función cuando se ha pulsado un link en el Widget de resultados.
-  * De esta forma la aplicación puede interactuar con la página web que se muestra
+  * Se activa esta funciï¿½ cuando se ha pulsado un link en el Widget de resultados.
+  * De esta forma la aplicaciï¿½ puede interactuar con la pï¿½ina web que se muestra
   */
 void correctorwidget::link(const QString &linker) {
     fprintf(stderr,"Link Pulsado: %s\n", linker.ascii());
 }// end link
 
 
-/** \brief Detecta la pulsación de un enlace en el widget de resultados
+/** \brief Detecta la pulsaciï¿½ de un enlace en el widget de resultados
   * 
-  * Se activa esta función cuando se ha pulsado un link en el Widget de resultados QTextBrowser.
-  * De esta forma la aplicación puede interactuar con la página web que se muestra
+  * Se activa esta funciï¿½ cuando se ha pulsado un link en el Widget de resultados QTextBrowser.
+  * De esta forma la aplicaciï¿½ puede interactuar con la pï¿½ina web que se muestra
   */
 void correctorwidget::alink(const QString &linker, const QString &l) {
     fprintf(stderr,"Anchor pulsado: %s, %s\n", linker.ascii(), l.ascii());
@@ -50,11 +51,11 @@ void correctorwidget::alink(const QString &linker, const QString &l) {
         empresaactual->muestracuentas();
     } else if (linker== "asiento") {
         QString ordenasiento = l.right(l.length()-2);
-        intapunts3view *view = empresaactual->intapuntsempresa();
+        Asiento1View *view = empresaactual->intapuntsempresa();
         bool ok;
         view->muestraasiento(ordenasiento.toInt(&ok));
     } else {
-        QMessageBox::warning(0,tr("Opción no implementada"),tr("No se puede acceder al error"),0,1,2);
+        QMessageBox::warning(0,tr("Opcionï¿½ no implementada"),tr("No se puede acceder al error"),0,1,2);
     }// endif
 }// end link
 
@@ -70,7 +71,7 @@ void correctorwidget::agregarError(QString texto, QString texto1, QString texto2
 
 
 /** \brief SE encarga de llevar a cabo las diferentes pruebas y generar el informe. 
-  *Esta función es el disparador del corrector, que se encarga de hacer los tests a la empresa
+  *Esta funciï¿½ es el disparador del corrector, que se encarga de hacer los tests a la empresa
   * Y sacar la ventana de resultados.
   */
 void correctorwidget::corregir() {
@@ -83,13 +84,13 @@ void correctorwidget::corregir() {
     cur = conexionbase->cargacursor(query);
     while (!cur->eof()) {
         QString cadena;
-        cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> está abierto, esto causa que el asiento no modifique el estado de las cuentas.</FONT>", cur->valor("ordenasiento").ascii());
+        cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> estï¿½abierto, esto causa que el asiento no modifique el estado de las cuentas.</FONT>", cur->valor("ordenasiento").ascii());
         agregarError(cadena, "asiento",cur->valor("idasiento").ascii());
         cur->siguienteregistro();
     }// end while
     delete(cur);
 
-    /// Cálculo de inserción en cuentas intermedias (con hijos)
+    /// Cï¿½culo de inserciï¿½ en cuentas intermedias (con hijos)
     //--------------------------------------------------------
     query.sprintf("SELECT * FROM asiento, apunte, cuenta WHERE apunte.idcuenta = cuenta.idcuenta AND cuenta.idcuenta IN (SELECT padre FROM cuenta) AND apunte.idasiento=asiento.idasiento");
     cur = conexionbase->cargacursor(query);
@@ -101,7 +102,7 @@ void correctorwidget::corregir() {
     }// end while
     delete(cur);
 
-    /// Cálculo de la ecuación fundamental contable A+I= P+N+G
+    /// Cï¿½culo de la ecuaciï¿½ fundamental contable A+I= P+N+G
     //--------------------------------------------------------
     query = " SELECT asiento.idasiento AS idasiento, asiento.ordenasiento AS ordenasiento, ingresos,activos, gastos, netos, pasivos FROM asiento ";
     query += " LEFT JOIN (SELECT idasiento, sum(apunte.debe)-sum(apunte.haber) AS ingresos  FROM cuenta,apunte WHERE  apunte.idcuenta=cuenta.idcuenta AND cuenta.tipocuenta=4 GROUP BY idasiento) AS ing ON asiento.idasiento = ing.idasiento ";
@@ -120,7 +121,7 @@ void correctorwidget::corregir() {
         net = cur->valor("netos").toFloat();
         if (-act-gas-pas-net+ing>0.01) {
             QString cadena;
-            cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> no cumple la ecuación fundamental.%2.2f+%2.2f=%2.2f+%2.2f+%2.2f</FONT>", cur->valor("ordenasiento").ascii(), act,gas,pas,net,ing);
+            cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_critical.png'>&nbsp;&nbsp;<B><I>Critial Error:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> no cumple la ecuaciï¿½ fundamental.%2.2f+%2.2f=%2.2f+%2.2f+%2.2f</FONT>", cur->valor("ordenasiento").ascii(), act,gas,pas,net,ing);
             agregarError(cadena, "asiento",cur->valor("idasiento").ascii());
         }// end if
         cur->siguienteregistro();
@@ -134,7 +135,7 @@ void correctorwidget::corregir() {
     cur = conexionbase->cargacursor(query,"hola1");
     while (!cur->eof()) {
         QString cadena;
-        cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene una inserción en el debe de la cuenta <B>%s</B> que no permite inserciones en el debe de dicha cuenta.</FONT>", cur->valor("ordenasiento").ascii(), cur->valor("codigo").ascii());
+        cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene una inserciï¿½ en el debe de la cuenta <B>%s</B> que no permite inserciones en el debe de dicha cuenta.</FONT>", cur->valor("ordenasiento").ascii(), cur->valor("codigo").ascii());
         agregarError(cadena, "asiento",cur->valor("idasiento").ascii());
         cur->siguienteregistro();
     }// end while
@@ -147,7 +148,7 @@ void correctorwidget::corregir() {
     cur = conexionbase->cargacursor(query);
     while (!cur->eof()) {
         QString cadena;
-        cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene una inserción en el haber de la cuenta <B>%s</B> que no permite inserciones en el haber de dicha cuenta.</FONT>", cur->valor("ordenasiento").ascii(), cur->valor("codigo").ascii());
+        cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene una inserciï¿½ en el haber de la cuenta <B>%s</B> que no permite inserciones en el haber de dicha cuenta.</FONT>", cur->valor("ordenasiento").ascii(), cur->valor("codigo").ascii());
         agregarError(cadena, "asiento",cur->valor("idasiento").ascii());
         cur->siguienteregistro();
     }// end while
@@ -162,8 +163,7 @@ void correctorwidget::corregir() {
         cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>La amortizacion num. <B>%s</B> tiene un plazo expirado <B>%s</B>.</FONT>", cur->valor("idamortizacion").ascii(), cur->valor("fechaprevista").ascii());
         agregarError(cadena, "amortizacion",cur->valor("idamortizacion").ascii());
         cur->siguienteregistro();
-    }// end whileç
-    delete (cur);
+    }// end whileï¿½    delete (cur);
 
 
     /// Calculo de asientos con IVA y sin facturas asociadas
@@ -172,7 +172,7 @@ void correctorwidget::corregir() {
     cur = conexionbase->cargacursor(query);
     while (!cur->eof()) {
         QString cadena;
-        cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene una inserción en cuentas de IVA (%s) sin que haya una factura asociada.</FONT>", cur->valor("ordenasiento").ascii(), cur->valor("codigo").ascii());
+        cadena.sprintf("<font face='Arial' size=2><img src='/usr/share/bulmages/icons/messagebox_warning.png'>&nbsp;&nbsp;<B><I>Warning:</I></B></FONT><font face='Arial' size=1><BR>El asiento num. <B>%s</B> tiene una inserciï¿½ en cuentas de IVA (%s) sin que haya una factura asociada.</FONT>", cur->valor("ordenasiento").ascii(), cur->valor("codigo").ascii());
         agregarError(cadena, "asiento",cur->valor("idasiento").ascii());
         cur->siguienteregistro();
     }// end while
@@ -183,9 +183,9 @@ void correctorwidget::corregir() {
 }// end corregir
 
 
-/** \brief Se ha pulsado sobre el botón de configuración de reglas
+/** \brief Se ha pulsado sobre el botï¿½ de configuraciï¿½ de reglas
   * 
-  * Activa la ventana de correción de reglas \ref confreglasview
+  * Activa la ventana de correciï¿½ de reglas \ref confreglasview
   */
 void correctorwidget::s_configurarReglas() {
     confreglasview *conf = new confreglasview(0,0);

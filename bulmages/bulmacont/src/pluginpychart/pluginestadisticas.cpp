@@ -20,7 +20,7 @@ void entryPoint(Bulmages01 *bges) {
     QPixmap *estadisticasIcon = new QPixmap(estadisticas);
     myplugin *plug= new myplugin();
 
-    plug->empresaactual = &(bges->empresaactual);
+    plug->empresaactual = bges->empresaactual();
     plug->conexionbase = plug->empresaactual->bdempresa();
     //El menu de empresa
     Q3PopupMenu *pPluginMenu = new Q3PopupMenu();

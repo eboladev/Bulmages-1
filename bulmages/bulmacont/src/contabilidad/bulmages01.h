@@ -57,13 +57,13 @@
   */
 class Bulmages01 : public BulmaContBase    {
     Q_OBJECT
-public:
-    empresa *empresaactual;
+private:
+    empresa *m_empresaactual;
     Q3DockWindow *doc;
 public:
     Bulmages01(QWidget * parent = 0, const char * name = 0, Qt::WFlags f = Qt::WType_TopLevel, QString  DB="");
     ~Bulmages01();
-
+	empresa *empresaactual() {return m_empresaactual;};
 protected:
     /** overloaded for Message box on last window exit */
     // bool queryExit();
@@ -140,7 +140,7 @@ private slots:
     void slotFPago();
 
     virtual void s_asiento1() {
-        empresaactual->s_asiento1();
+        m_empresaactual->s_asiento1();
     };
     void closeEvent( QCloseEvent *);
 

@@ -10,6 +10,4 @@
 #include "empresa.h"
 
 
-
-
 extern "C" MY_EXPORT void entryPoint(Bulmages01 *);
