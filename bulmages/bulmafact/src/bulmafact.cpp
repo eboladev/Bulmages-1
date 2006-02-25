@@ -191,9 +191,10 @@ void bulmafact::s_ventanaCompleta() {
 
 
 void bulmafact::s_About()  {
-    aboutview *about=new aboutview();
-    about->exec();
-    delete about;
+    //aboutview *about=new aboutview();
+    aboutview about;
+    about.exec();
+    //delete about;
 }// end slotHelpAbout
 
 void bulmafact::closeEvent( QCloseEvent *) {

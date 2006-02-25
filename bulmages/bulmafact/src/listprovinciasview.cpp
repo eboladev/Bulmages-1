@@ -1,6 +1,8 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borr� Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C. (Porting to QT4)              *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -25,14 +27,16 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include <QMessageBox>
-#include <Q3Table>
-#include <QWidget>
+#include <QTableWidget>
+#include <QTableWidgetItem>
+#include <QStringList>
+#include <QDialog>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QTextStream>
 #include <QLayout>
 #include <QMessageBox>
+#include <QString>
 #include <fstream>
 using namespace std;
 #include "funcaux.h"
@@ -41,14 +45,14 @@ using namespace std;
 #define COL_ORIGINALPROVINCIA 1
 
 
-ListProvinciasView::ListProvinciasView( company *comp , QWidget *parent, const char *name) : ListProvinciasBase(parent, name, Qt::WDestructiveClose) {
+ListProvinciasView::ListProvinciasView(company *comp, QDialog *parent) : QDialog (parent) {
+	_depura("INIT_ListProvinciasView::ListProvinciasView",1);
+
+	setupUi(this);
 	companyact = comp;
-	m_listado->setNumCols(2);
-	m_listado->horizontalHeader()->setLabel( COL_PROVINCIA, tr( "Provincia" ) );
-	m_listado->horizontalHeader()->setLabel( COL_ORIGINALPROVINCIA, tr( "Provincia" ) );
-	m_listado->setColumnWidth(COL_PROVINCIA,175);
-	m_listado->hideColumn(COL_ORIGINALPROVINCIA);
 	inicializa();
+
+	_depura("END_ListProvinciasView::ListProvinciasView",1);
 }// end ListSerieFacturaView
 
 
@@ -56,37 +60,60 @@ ListProvinciasView::~ListProvinciasView() {
 }// end ~ListSerieFacturaView
 
 
-
 void ListProvinciasView::inicializa() {
-	m_listado->setNumRows(0);
+	_depura("INIT_ListProvinciasView::inicializa",1);
+
+	m_listado->clear();
+	m_listado->setColumnCount(2);
+
+	QStringList headerlabels;
+	headerlabels << tr("Provincia") << tr("Provincia");
+
+	m_listado->setHorizontalHeaderLabels( headerlabels );
+
+	m_listado->setColumnWidth(COL_PROVINCIA,175);
+	m_listado->hideColumn(COL_ORIGINALPROVINCIA);
 
 	QString SQLQuery = "SELECT * FROM provincia";
+
 	cursor2 *cur = companyact->cargacursor(SQLQuery);
 
-	m_listado->setNumRows(cur->numregistros());
+	m_listado->setRowCount(cur->numregistros());
 	int i=0;
+
 	while (!cur->eof()) {
-		m_listado->setText(i,COL_PROVINCIA,cur->valor("provincia"));
-		m_listado->setText(i,COL_ORIGINALPROVINCIA,cur->valor("provincia"));
+		QTableWidgetItem *newItem1 = new QTableWidgetItem(cur->valor("provincia"),0);
+		QTableWidgetItem *newItem2 = new QTableWidgetItem(cur->valor("provincia"),0);
+		m_listado->setItem(i,COL_PROVINCIA, newItem1);
+		m_listado->setItem(i,COL_ORIGINALPROVINCIA, newItem2);
 		i++;
 		cur->siguienteregistro();
 	}// end while
+
+	_depura("END_ListProvinciasView::inicializa",1);
 }// end inicializa
 
 
-void ListProvinciasView::s_new() {
+void ListProvinciasView::on_botonnew_clicked() {
+	_depura("INIT_ListProvinciasView::s_new",1);
+
 	QString SQLQuery = "INSERT INTO provincia (provincia) VALUES ('--')";
 	int error = companyact->ejecuta(SQLQuery);
 	if (error) {
 		return;
 	}// end if
 	inicializa();
+
+	_depura("END_ListProvinciasView::s_view",1);
 }// end s_new
 
-void ListProvinciasView::s_save() {
+
+void ListProvinciasView::on_botonsave_clicked() {
+	_depura("INIT_ListProvinciasView::s_save",1);
+
 	companyact->begin();
 	int i = 0;
-	while (i < m_listado->numRows()) {
+	while (i < m_listado->rowCount()) {
 		int error = guardalinea(i);
 		if (error) {
 			companyact->rollback();
@@ -96,22 +123,38 @@ void ListProvinciasView::s_save() {
 	}// end while
 	companyact->commit();
 	inicializa();
+
+	_depura("END_ListProvinciasView::s_save",1);
 }// end s_save
 
-void ListProvinciasView::s_delete() {
+void ListProvinciasView::on_botondelete_clicked() {
+	_depura("INIT_ListProvinciasView::s_delete",1);
+
+	QTableWidgetItem *newItem = new QTableWidgetItem("",0);
+
 	int row = m_listado->currentRow();
 	if (row < 0) return;
-	QString codigooriginal = m_listado->text(row, COL_ORIGINALPROVINCIA);
+	newItem = m_listado->item(row, COL_ORIGINALPROVINCIA);
+	QString codigooriginal = newItem->text();
 	QString SQLQuery = "DELETE FROM provincia WHERE provincia='"+codigooriginal+"'";
 	int error = companyact->ejecuta(SQLQuery);
 	if (error) return;
 	inicializa();
+
+	_depura("END_ListProvinciasView::s_delete",1);
 }// end s_delete
 
 
 int ListProvinciasView::guardalinea(int row) {
-	QString codigooriginal = m_listado->text(row, COL_ORIGINALPROVINCIA);
-	QString codigo = m_listado->text(row, COL_PROVINCIA);
+	_depura("INIT_ListProvinciasView::guardalinea",1);
+
+	QTableWidgetItem *newItem1 = new QTableWidgetItem("",0);
+	QTableWidgetItem *newItem2 = new QTableWidgetItem("",0);
+	newItem1 = m_listado->item(row, COL_ORIGINALPROVINCIA);
+	newItem2 = m_listado->item(row, COL_PROVINCIA);
+
+	QString codigooriginal = newItem1->text();
+	QString codigo = newItem2->text();
 
 	QString SQLQuery = "UPDATE provincia SET provincia='"+codigo+"' WHERE provincia= '"+codigooriginal+"'";
 	int error = companyact->ejecuta(SQLQuery);
@@ -119,4 +162,7 @@ int ListProvinciasView::guardalinea(int row) {
 		return 1;
 	}// end if
 	return 0;
+
+	_depura("END_ListProvinciasView::guardalinea",1);
 }// end guardalinea
+

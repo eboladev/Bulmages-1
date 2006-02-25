@@ -26,7 +26,7 @@
 #include "albaranclienteview.h"
 #include "providerslist.h"
 #include "provedit.h"
-#include "qobject.h"
+#include "QObject"
 #include "clientslist.h"
 #include "clientedit.h"
 #include "articleslist.h"
@@ -57,6 +57,7 @@
 #include "inventariosview.h"
 #include "inventarioview.h"
 #include "plugins.h"
+#include "Qt"
 
 company::company() {}// end company
 
@@ -225,8 +226,6 @@ void company::s_newPedidoPro() {
     bud->show();
 }// end s_newAlbaranProveedor
 
-
-
 void company::lAlbaranesProveedor () {
     m_albaranesproveedor->hide();
     m_albaranesproveedor->showMaximized();
@@ -244,8 +243,6 @@ void company::s_listPedidosPro () {
     m_pedidosproveedorList->showMaximized();
     m_pedidosproveedorList->setActiveWindow();
 }// end s_listPedidosPro
-
-
 
 void company::s_listFacturasCli () {
     m_facturasList->hide();
@@ -265,9 +262,6 @@ void company::listBudgets() {
     m_budgetsList->setActiveWindow();
 }// end listbudgets
 
-
-
-
 Budget * company::newBudget() {
     /// Lanzamos los plugins necesarios.
     Budget *bud;
@@ -276,6 +270,7 @@ Budget * company::newBudget() {
     bud = new Budget(this , 0,theApp->translate("Edicion de Proveedores", "company"));
     return bud;
 }
+
 void company::s_newPresupuestoCli() {
     /// Lanzamos los plugins necesarios.
     if (g_plugins->lanza("company_s_newPresupuestoCli",this) )
@@ -284,7 +279,6 @@ void company::s_newPresupuestoCli() {
     m_pWorkspace->addWindow(bud);
     bud->show();
 }// end bud
-
 
 void company::s_newPedidoCli() {
     PedidoClienteView *bud = new PedidoClienteView(this , 0,theApp->translate("Pedido Cliente", "company"));
@@ -300,7 +294,6 @@ void company::s_newAlbaranCli() {
     bud->show();
 }// end bud
 
-
 FacturaView * company::newFacturaView() {
     /// Lanzamos los plugins necesarios.
     FacturaView *bud;
@@ -309,6 +302,7 @@ FacturaView * company::newFacturaView() {
     bud = new FacturaView(this , 0,theApp->translate("Edicion de Factura", "company"));
     return bud;
 }
+
 void company::s_newFacturaCli() {
     /// Lanzamos los plugins necesarios.
     if (g_plugins->lanza("company_s_newFacturaCli",this) )
@@ -319,9 +313,6 @@ void company::s_newFacturaCli() {
     bud->show();
 }// end bud
 
-
-
-
 void company::refreshBudgets() {
     m_budgetsList->presenta();
 }// end refreshBudgets
@@ -329,7 +320,6 @@ void company::refreshBudgets() {
 void company::refreshFacturas() {
     m_facturasList->presenta();
 }// end refreshFacturas
-
 
 void company::listClientDelivNotes() {
     m_clientDelivNotesList->hide();
@@ -358,7 +348,6 @@ void company::refreshClientes() {
     m_clientsList->presenta();
 }
 
-
 void company::newPedidoCliente() {
     PedidoClienteView *bud = new PedidoClienteView(this ,0,theApp->translate("Edicion de Pedidos de Cliente", "company"));
     m_pWorkspace->addWindow(bud);
@@ -368,7 +357,6 @@ void company::newPedidoCliente() {
 void company::refreshPedidosCliente() {
     m_pedidosclienteList->presenta();
 }// end refreshPedidosCliente
-
 
 void company::refreshPedidosProveedor() {
     m_pedidosproveedorList->presenta();
@@ -380,7 +368,6 @@ void company::s_FPago() {
     f->exec();
     delete f;
 }// end newOrder
-
 
 void company::s_trabajadores() {
     Trabajador *t = new Trabajador(this, NULL, theApp->translate("Trabajadores", "company"));
@@ -403,9 +390,13 @@ void company::s_seriesFactura() {
 
 
 void company::s_provincias() {
-    ListProvinciasView *lser = new ListProvinciasView(this, 0,0);
-    lser->exec();
-    delete lser;
+	_depura("INIT_company::s_provincias",1);
+
+	ListProvinciasView lser(this,0);
+
+	lser.exec();
+
+	_depura("END_company::s_provincias",1);
 }// end s_seriesFactura
 
 void company::s_newArticulo() {

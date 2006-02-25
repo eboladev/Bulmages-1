@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borr� Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,7 +28,7 @@
 
 /**
 Company class gives the application something like a standard interface to access each company in the same way.
-@author Tomeu Borr�
+@author Tomeu Borras
 */
 
 class providerslist;

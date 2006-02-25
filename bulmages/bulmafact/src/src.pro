@@ -34,7 +34,8 @@ TEMPLATE = app
 # Mientras se hace la migracion se tiene que hacer: uic about.ui -o ./.ui/about.h
 # etc.
 #
-FORMS += about.ui
+FORMS += about.ui \
+	 listprovincias.ui
 
 # uic3 los convierte de forma automatica.
 #
@@ -74,7 +75,6 @@ FORMS3 += bulmafactbase.ui \
 	  pedidosproveedorlistbase.ui \
 	  pedidoproveedorbase.ui \
 	  listseriefacturabase.ui \
-	  listprovinciasbase.ui \
 	  inventariosbase.ui \
 	  inventariobase.ui
 

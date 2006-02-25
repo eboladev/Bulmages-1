@@ -19,7 +19,7 @@
 #define ABOUTVIEW_H
 
 #include <QDialog>
-#include <about.h>
+#include <ui_about.h>
 
 /**
   *@author Tomeu Borrás Riera
@@ -30,7 +30,8 @@
  * this class presents the about of the program.
  */
 
-class aboutview : public QDialog, public Ui::aboutdlg  {
+class aboutview : public QDialog, private Ui::aboutdlg  {
+	Q_OBJECT
 public: 
 	aboutview(QDialog *parent=0);  /// Constructor de la clase
 	~aboutview();

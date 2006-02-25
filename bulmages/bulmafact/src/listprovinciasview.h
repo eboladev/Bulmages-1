@@ -1,6 +1,8 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borr� Riera                              *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C. (Porting to QT4)              *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,34 +24,35 @@
 
 // PROVINCIAS
 
-#include "listprovinciasbase.h"
+#include "ui_listprovincias.h"
 #include "postgresiface2.h"
 #include "cobro.h"
 
-
+#include <QObject>
 #include <QLineEdit>
 #include <Q3TextEdit>
 #include <QLabel>
 #include <QCheckBox>
+#include <QDialog>
 
-/** @author Tomeu Borr� Riera */
+/** @author Tomeu Borras Riera */
 class company;
 
-class ListProvinciasView : public ListProvinciasBase  {
-    Q_OBJECT
+class ListProvinciasView : public QDialog, private Ui::ListProvinciasBase {
+	Q_OBJECT
 public:
 	company *companyact;
 public:
-    ListProvinciasView(company *, QWidget *, const char *);
-    ~ListProvinciasView();
+	ListProvinciasView(company *, QDialog *parent=0);
+	~ListProvinciasView();
 
 	void inicializa();
 	int guardalinea(int);
 
 public slots:
-	virtual void s_new();
-	virtual void s_save();
-	virtual void s_delete();
+	virtual void on_botonnew_clicked();
+	virtual void on_botonsave_clicked();
+	virtual void on_botondelete_clicked();
 };
 
 #endif
