@@ -25,17 +25,8 @@
 // PROVINCIAS
 
 #include "ui_listprovincias.h"
-#include "postgresiface2.h"
-#include "cobro.h"
 
-#include <QObject>
-#include <QLineEdit>
-#include <Q3TextEdit>
-#include <QLabel>
-#include <QCheckBox>
-#include <QDialog>
-
-/** @author Tomeu Borras Riera */
+/** @author Tomeu Borras Riera & Fco. Javier M. C. */
 class company;
 
 class ListProvinciasView : public QDialog, private Ui::ListProvinciasBase {
