@@ -23,45 +23,38 @@
 
 #include "listprovinciasview.h"
 #include "company.h"
-#include "configuracion.h"
-#include "busquedacliente.h"
-#include "busquedafecha.h"
-#include <QMessageBox>
-#include <QTableWidget>
-#include <QTableWidgetItem>
-#include <QStringList>
-#include <QDialog>
-#include <QComboBox>
-#include <QToolButton>
-#include <QTextStream>
-#include <QLayout>
-#include <QMessageBox>
-#include <QString>
-#include <fstream>
+
 using namespace std;
 #include "funcaux.h"
 
 #define COL_PROVINCIA 0
 #define COL_ORIGINALPROVINCIA 1
 
+// DEBUGMODE => 0 = Disabled; 1 = Enabled;
+#define DEBUGMODE 1
 
 ListProvinciasView::ListProvinciasView(company *comp, QDialog *parent) : QDialog (parent) {
-	_depura("INIT_ListProvinciasView::ListProvinciasView",1);
+	_depura("INIT_ListProvinciasView::ListProvinciasView", DEBUGMODE);
 
 	setupUi(this);
 	companyact = comp;
+
+	m_listado->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_listado->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_listado->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
 	inicializa();
 
-	_depura("END_ListProvinciasView::ListProvinciasView",1);
-}// end ListSerieFacturaView
+	_depura("END_ListProvinciasView::ListProvinciasView", DEBUGMODE);
+}// end ListProvinciasView
 
 
 ListProvinciasView::~ListProvinciasView() {
-}// end ~ListSerieFacturaView
+}// end ~ListProvinciasView
 
 
 void ListProvinciasView::inicializa() {
-	_depura("INIT_ListProvinciasView::inicializa",1);
+	_depura("INIT_ListProvinciasView::inicializa", DEBUGMODE);
 
 	m_listado->clear();
 	m_listado->setColumnCount(2);
@@ -71,7 +64,7 @@ void ListProvinciasView::inicializa() {
 
 	m_listado->setHorizontalHeaderLabels( headerlabels );
 
-	m_listado->setColumnWidth(COL_PROVINCIA,175);
+	m_listado->setColumnWidth(COL_PROVINCIA, 290 );
 	m_listado->hideColumn(COL_ORIGINALPROVINCIA);
 
 	QString SQLQuery = "SELECT * FROM provincia";
@@ -79,8 +72,8 @@ void ListProvinciasView::inicializa() {
 	cursor2 *cur = companyact->cargacursor(SQLQuery);
 
 	m_listado->setRowCount(cur->numregistros());
-	int i=0;
 
+	int i=0;
 	while (!cur->eof()) {
 		QTableWidgetItem *newItem1 = new QTableWidgetItem(cur->valor("provincia"),0);
 		QTableWidgetItem *newItem2 = new QTableWidgetItem(cur->valor("provincia"),0);
@@ -90,28 +83,31 @@ void ListProvinciasView::inicializa() {
 		cur->siguienteregistro();
 	}// end while
 
-	_depura("END_ListProvinciasView::inicializa",1);
+	_depura("END_ListProvinciasView::inicializa", DEBUGMODE);
 }// end inicializa
 
 
 void ListProvinciasView::on_botonnew_clicked() {
-	_depura("INIT_ListProvinciasView::s_new",1);
+	_depura("INIT_ListProvinciasView::on_botonnew_clicked", DEBUGMODE);
 
 	QString SQLQuery = "INSERT INTO provincia (provincia) VALUES ('--')";
+
 	int error = companyact->ejecuta(SQLQuery);
 	if (error) {
 		return;
 	}// end if
+
 	inicializa();
 
-	_depura("END_ListProvinciasView::s_view",1);
-}// end s_new
+	_depura("END_ListProvinciasView::on_botonnew_clicked", DEBUGMODE);
+}// end on_botonnew_clicked
 
 
 void ListProvinciasView::on_botonsave_clicked() {
-	_depura("INIT_ListProvinciasView::s_save",1);
+	_depura("INIT_ListProvinciasView::on_botonsave_clicked", DEBUGMODE);
 
 	companyact->begin();
+
 	int i = 0;
 	while (i < m_listado->rowCount()) {
 		int error = guardalinea(i);
@@ -121,32 +117,38 @@ void ListProvinciasView::on_botonsave_clicked() {
 		}// end if
 		i++;
 	}// end while
+
 	companyact->commit();
 	inicializa();
 
-	_depura("END_ListProvinciasView::s_save",1);
-}// end s_save
+	_depura("END_ListProvinciasView::on_botonsave_clicked", DEBUGMODE);
+}// end on_botonsave_clicked
+
 
 void ListProvinciasView::on_botondelete_clicked() {
-	_depura("INIT_ListProvinciasView::s_delete",1);
+	_depura("INIT_ListProvinciasView::on_botondelete_clicked", DEBUGMODE);
 
 	QTableWidgetItem *newItem = new QTableWidgetItem("",0);
 
 	int row = m_listado->currentRow();
+
 	if (row < 0) return;
+
 	newItem = m_listado->item(row, COL_ORIGINALPROVINCIA);
 	QString codigooriginal = newItem->text();
 	QString SQLQuery = "DELETE FROM provincia WHERE provincia='"+codigooriginal+"'";
+
 	int error = companyact->ejecuta(SQLQuery);
 	if (error) return;
+
 	inicializa();
 
-	_depura("END_ListProvinciasView::s_delete",1);
-}// end s_delete
+	_depura("END_ListProvinciasView::on_botondelete_clicked", DEBUGMODE);
+}// end on_botondelete_clicked
 
 
 int ListProvinciasView::guardalinea(int row) {
-	_depura("INIT_ListProvinciasView::guardalinea",1);
+	_depura("INIT_ListProvinciasView::guardalinea", DEBUGMODE);
 
 	QTableWidgetItem *newItem1 = new QTableWidgetItem("",0);
 	QTableWidgetItem *newItem2 = new QTableWidgetItem("",0);
@@ -157,12 +159,11 @@ int ListProvinciasView::guardalinea(int row) {
 	QString codigo = newItem2->text();
 
 	QString SQLQuery = "UPDATE provincia SET provincia='"+codigo+"' WHERE provincia= '"+codigooriginal+"'";
+
 	int error = companyact->ejecuta(SQLQuery);
-	if (error) {
-		return 1;
-	}// end if
+	if (error) return 1;
+
 	return 0;
 
-	_depura("END_ListProvinciasView::guardalinea",1);
+	_depura("END_ListProvinciasView::guardalinea", DEBUGMODE);
 }// end guardalinea
-
