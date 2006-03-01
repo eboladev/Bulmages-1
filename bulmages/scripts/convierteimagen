@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Este script utiliza el paquete imagemagic para cambiar el tamaño de todas las imagenes
+# del directorio.
+
+# Uso:
+# -----
+#
+# ./convierteimagen *.png
+#
+
+geometry="16x16"
+extension="png"
+
+for file in $* ;do
+ convert -resize $geometry $file ${file%$extension}$geometry.$extension
+ rm $file
+done
+# end of script
