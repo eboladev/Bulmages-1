@@ -28,7 +28,6 @@ uis[1]="about"
 uis[2]="listprovincias"
 
 for ((it1=1; it1<3; it1++)); do
-    #uic $rutauis/${uis[$it1]}.ui -o $rutauis/.ui/${uis[$it1]}.h
     uic $rutauis/${uis[$it1]}.ui -o $rutauis/.ui/ui_${uis[$it1]}.h
     echo "Generado ${uis[$it1]}.h - OK"
 done
