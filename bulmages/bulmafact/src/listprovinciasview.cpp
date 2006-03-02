@@ -30,7 +30,6 @@ using namespace std;
 #define COL_PROVINCIA 0
 #define COL_ORIGINALPROVINCIA 1
 
-// DEBUGMODE => 0 = Disabled; 1 = Enabled;
 #define DEBUGMODE 1
 
 ListProvinciasView::ListProvinciasView(company *comp, QDialog *parent) : QDialog (parent) {

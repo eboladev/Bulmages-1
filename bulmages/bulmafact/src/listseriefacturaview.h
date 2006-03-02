@@ -1,6 +1,8 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borr� Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C. (Porting to QT4)              *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -34,16 +36,16 @@
 #include <QLabel>
 #include <QCheckBox>
 
-/** @author Tomeu Borr� Riera */
+/** @author Tomeu Borras Riera & Fco. Javier M. C. */
 class company;
 
 class ListSerieFacturaView : public ListSerieFacturaBase  {
-    Q_OBJECT
+	Q_OBJECT
 public:
 	company *companyact;
 public:
-    ListSerieFacturaView(company *, QWidget *, const char *);
-    ~ListSerieFacturaView();
+	ListSerieFacturaView(company *, QWidget *, const char *);
+	~ListSerieFacturaView();
 
 	void inicializa();
 	int guardalinea(int);
