@@ -54,13 +54,41 @@ BEGIN
 	ALTER TABLE borrador ALTER COLUMN orden DROP NOT NULL;
 	ALTER TABLE registroiva ALTER COLUMN idborrador SET NOT NULL;
 	ALTER TABLE registroiva ADD FOREIGN KEY (idborrador) REFERENCES borrador(idborrador);
-
 	RETURN 0;
 END;
 ' LANGUAGE 'plpgsql';
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
 \echo "Quita restricciones en el campo orden"
+
+
+
+
+--
+-- Agregamos el campo fractemitida que indica si es una factura emitida o recibida
+--
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''femisionregistroiva'';
+	IF NOT FOUND THEN
+		ALTER TABLE registroiva ADD COLUMN femisionregistroiva date;
+	END IF;
+
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''serieregistroiva'';
+	IF NOT FOUND THEN
+		ALTER TABLE registroiva ADD COLUMN serieregistroiva character varying(40);
+	END IF;
+
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregamos el campo de Fecha de emision de registroiva"
+
+
 
 
 SELECT drop_if_exists_proc ('restriccionesborrador','');

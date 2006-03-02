@@ -299,7 +299,9 @@ CREATE TABLE registroiva (
     baseimp numeric(12,2),
     iva numeric(12,2),		-- De solo lectura
     ffactura date,
+    femisionregistroiva date,
     factura character varying(70),
+    serieregistroiva character varying(40),
     idborrador integer NOT NULL REFERENCES borrador(idborrador),
     incregistro boolean,
     regularizacion boolean,
