@@ -136,19 +136,19 @@ void bulmafact::s_listPedidosCli() {
 void bulmafact::listarticles() {
 	_depura("listarticlesaction activado",0);
 	m_company->listarticles();
-}// end listararticlesaction
+}// end listararticles
 
 
 void bulmafact::listdelivnotes() {
 	_depura("listdelivnotes activado",0);
 	m_company->lAlbaranesProveedor();
-}// end listdelivnotesaction
+}// end listdelivnotes
 
 
 void bulmafact::s_newProveedor() {
 	_depura("provideraction activado",0);
 	m_company->s_newProveedor();
-}// end provideraction
+}// end s_newProveedor
 
 
 void bulmafact::caja() {
@@ -189,7 +189,7 @@ void bulmafact::aboutQt() {
 
 void bulmafact::newClientDelivNote() {
 	m_company->newClientDelivNote();
-}// end provideraction
+}// end newClientDelivNote
 
 
 void bulmafact::s_FPago() {
@@ -204,7 +204,7 @@ void bulmafact::s_Familias() {
 
 void bulmafact::s_seriesFactura() {
 	m_company->s_seriesFactura();
-}// end s_Familias
+}// end s_seriesFactura
 
 
 void bulmafact::s_ventanaCompleta() {
@@ -219,7 +219,7 @@ void bulmafact::s_ventanaCompleta() {
 void bulmafact::s_About()  {
 	aboutview about;
 	about.exec();
-}// end slotHelpAbout
+}// end s_About
 
 
 void bulmafact::closeEvent( QCloseEvent *) {
