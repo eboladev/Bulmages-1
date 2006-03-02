@@ -30,8 +30,9 @@ public:
     enum estadoasiento {ASVacio=0, ASAbierto=1, ASCerrado=2};
 protected:
     ListLinAsiento1 *listalineas;
-    empresa *companyact;
+    empresa *m_companyact;
 public:
+    empresa *companyact() {return m_companyact;};
     Asiento1(empresa *);
     virtual ~Asiento1();
     int cargaAsiento1(QString );
@@ -57,7 +58,7 @@ public:
     /// Establece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setListLinAsiento1 ( ListLinAsiento1 *a) {
         listalineas =a;
-        listalineas->setcompany(companyact);
+        listalineas->setcompany(m_companyact);
     };
     void borraAsiento1();
 

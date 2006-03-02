@@ -1,5 +1,5 @@
 //
-// C++ Implementation: listlinprevcobro
+// C++ Implementation: ListLinPrevCobro
 //
 // Description:
 //
@@ -13,9 +13,8 @@
 #include "empresa.h"
 #include "linprevcobro.h"
 
-void listlinprevcobro::inicializaVariables() {
-    empresaactual=NULL;
-    conexionbase = NULL;
+void ListLinPrevCobro::inicializaVariables() {
+    m_companyact=NULL;
     mdb_idregistroiva = "";
     mfilt_idregistroiva = "";
     mfilt_tipoprevcobro = "";
@@ -26,21 +25,20 @@ void listlinprevcobro::inicializaVariables() {
 }
 
 
-listlinprevcobro::listlinprevcobro(empresa *comp) {
+ListLinPrevCobro::ListLinPrevCobro(empresa *comp) {
     inicializaVariables();
-    empresaactual = comp;
-    conexionbase = comp->bdempresa();
-}// end listlinprevcobro
+    m_companyact = comp;
+}// end ListLinPrevCobro
 
-listlinprevcobro::listlinprevcobro() {
+ListLinPrevCobro::ListLinPrevCobro() {
     inicializaVariables();
-}// end listlinprevcobro
+}// end ListLinPrevCobro
 
-listlinprevcobro::~listlinprevcobro() {}
+ListLinPrevCobro::~ListLinPrevCobro() {}
 
 
-void listlinprevcobro::nuevalinea(QString desc, QString cantl, QString pvpl, QString descl,QString idart, QString codart, QString nomart, QString ivapres, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente) {
-    linprevcobro *lin = new linprevcobro(empresaactual,
+void ListLinPrevCobro::nuevalinea(QString desc, QString cantl, QString pvpl, QString descl,QString idart, QString codart, QString nomart, QString ivapres, QString k, QString l, QString m, QString idctacliente, QString codigoctacliente, QString nomctacliente) {
+    linprevcobro *lin = new linprevcobro(m_companyact,
                                          "",
                                          desc,
                                          cantl,
@@ -60,16 +58,16 @@ void listlinprevcobro::nuevalinea(QString desc, QString cantl, QString pvpl, QSt
     m_lista.append(lin);
 }// end nuevalinea
 
-linprevcobro *listlinprevcobro::linpos(int pos) {
+linprevcobro *ListLinPrevCobro::linpos(int pos) {
     return (m_lista.at(pos));
 }// end linpos
 
 
 // Carga l�eas de una factura.
-void listlinprevcobro::chargeBudgetLines() {
+int ListLinPrevCobro::chargeBudgetLines() {
     QString cadwhere = "";
     vaciar();
-    fprintf(stderr,"listlinprevcobro::chargeBudgetLines\n");
+    fprintf(stderr,"ListLinPrevCobro::chargeBudgetLines\n");
     fprintf(stderr,"Hacemos la carga del cursor\n");
     if (mfilt_idregistroiva != "")
         cadwhere = " AND idregistroiva = "+mfilt_idregistroiva;
@@ -84,7 +82,7 @@ void listlinprevcobro::chargeBudgetLines() {
     if (mfilt_procesado == "NO PROCESADO")
         cadwhere += " AND idasiento IS NULL ";
 
-    cursor2 * cur= conexionbase->cargacursor("SELECT * FROM prevcobro "
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM prevcobro "
                    " LEFT JOIN cuenta ON cuenta.idcuenta=prevcobro.idcuenta "
                    " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
                    " WHERE 1=1 "+ cadwhere+ " ORDER BY fcobroprevcobro ");
@@ -92,7 +90,7 @@ void listlinprevcobro::chargeBudgetLines() {
     int i=0;
     while (!cur->eof())   {
         /// Creamos un elemento del tipo linprevcobro y lo agregamos a la lista.
-        linprevcobro *lin = new linprevcobro(empresaactual,
+        linprevcobro *lin = new linprevcobro(m_companyact,
                                              cur->valor("idprevcobro"),
                                              cur->valor("fprevistaprevcobro"),
                                              cur->valor("fcobroprevcobro"),
@@ -115,46 +113,47 @@ void listlinprevcobro::chargeBudgetLines() {
         cur->siguienteregistro();
     }// end while
     delete cur;
-    fprintf(stderr,"Fin de listlinprevcobro::chargeBudgetLines\n");
+    _depura("END de ListLinPrevCobro::chargeBudgetLines\n");
+    return 0;
 }// end chargeBudgetLines
 
 
-void listlinprevcobro::guardalistlinprevcobro() {
-    _depura("guardalistlinprevcobro()");
+void ListLinPrevCobro::guardaListLinPrevCobro() {
+    _depura("guardaListLinPrevCobro()");
     linprevcobro *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
         linea->guardalinprevcobro();
         i++;
     }// end for
-}// en guardalistlinprevcobro
+}// en guardaListLinPrevCobro
 
 
-void listlinprevcobro::vaciar() {
+void ListLinPrevCobro::vaciar() {
     //    mdb_idregistroiva = "";
     m_lista.clear();
-}// end guardalistlinprevcobro
+}// end guardaListLinPrevCobro
 
 
-void listlinprevcobro::borrar() {
+void ListLinPrevCobro::borrar() {
     if (mdb_idregistroiva != "")  {
-        conexionbase->begin();
-        conexionbase->ejecuta("DELETE FROM prevcobro WHERE idregistroiva="+mdb_idregistroiva);
-        conexionbase->commit();
+        m_companyact->begin();
+        m_companyact->ejecuta("DELETE FROM prevcobro WHERE idregistroiva="+mdb_idregistroiva);
+        m_companyact->commit();
     }// end if
 }// end borrar
 
 
-void listlinprevcobro::borralinprevcobro(int pos) {
+void ListLinPrevCobro::borralinprevcobro(int pos) {
     linprevcobro *linea;
     linea = m_lista.at(pos);
     linea->borrar();
     m_lista.remove(pos);
-    pintalistlinprevcobro();
+    pintaListLinPrevCobro();
 }// end borralinprevcobro
 
 
-Fixed listlinprevcobro::totalCobro() {
+Fixed ListLinPrevCobro::totalCobro() {
     linprevcobro *linea;
     Fixed tcobro("0");
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
@@ -164,7 +163,7 @@ Fixed listlinprevcobro::totalCobro() {
     return tcobro;
 }// end totalCobro
 
-Fixed listlinprevcobro::totalPago() {
+Fixed ListLinPrevCobro::totalPago() {
     linprevcobro *linea;
     Fixed tpago("0");
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {

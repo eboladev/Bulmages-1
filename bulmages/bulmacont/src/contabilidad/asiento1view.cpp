@@ -37,25 +37,7 @@
 #include "listlinasiento1view.h"
 #include "empresa.h"
 
-/*
-#define COL_FECHA       0
-#define COL_CODIGO   1
-#define COL_CONCEPTO    6
-#define COL_DEBE        4
-#define COL_HABER       5
-#define COL_NOMCUENTA   2
-#define COL_CONTRAPARTIDA 3
-#define COL_IDBORRADOR    7
-#define COL_TIPOIVA       8
-#define COL_IVA           9
-#define COL_NOMBREC_COSTE       10
-#define COL_NOMBRECANAL        11
-#define COL_IDCUENTA     12
-#define COL_IDCONTRAPARTIDA 13
-#define COL_IDCANAL         14
-#define COL_IDCCOSTE        15
-#define COL_ORDEN	    16
-*/
+
 
 /*
 /// Usar esta macro es peligroso ya que el cursor puede estar vacio.

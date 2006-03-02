@@ -22,6 +22,7 @@
 
 // Hacemos algunas pruebas con una docwindow. Para el corrector de contabilidad
 #include <q3dockwindow.h>
+
 //Added by qt3to4:
 #include <QPixmap>
 #include <Q3Frame>
@@ -40,7 +41,6 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
         : BulmaContBase(parent,name,f) {
 
 	m_empresaactual = new empresa();
-
 	m_empresaactual->init(DB);
 
     setCaption(tr("BulmaCont -- ") + DBName +" --");
@@ -52,13 +52,12 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
     showView();
 
     ctllog->setempresa(m_empresaactual);
-    ctllog->add
-    (LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario ha entrado en bulmacont");
+    ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario ha entrado en bulmacont");
 }// end Bulmages01
 
 
 Bulmages01::~Bulmages01() {
-	_depura("~Bulmages01",2);
+	_depura("~Bulmages01",0);
     //En el constructor asignamos un puntero a empresa { ctllog->setempresa(&empresaactual); }
     //Al destruir la clase empresa no podemos seguir apuntando a un objeto que ya no existe.
     //es necesario eliminar la referencia a este objeto, por ejemplo aquí
@@ -90,19 +89,15 @@ void Bulmages01::initStatusBar() {
 
 
 void Bulmages01::initView() {
-//    QPixmap fondo;
-    view_back = new Q3VBox( this);
-    view_back->setFrameStyle( Q3Frame::StyledPanel | Q3Frame::Sunken );
-    pWorkspace = new QWorkspace( view_back );
-    setCentralWidget(view_back);
-//    fondo.load(confpr->valor(CONF_BACKGROUND).ascii());
-//    pWorkspace->setBackgroundPixmap (fondo);
+    m_view_back = new Q3VBox( this);
+    m_view_back->setFrameStyle( Q3Frame::StyledPanel | Q3Frame::Sunken );
+    m_pWorkspace = new QWorkspace( m_view_back );
+    setCentralWidget(m_view_back);
 }// end initView
 
 
 void Bulmages01::showView() {
-//    empresaactual->inicializa1(DBName, pWorkspace);
-	m_empresaactual->setWorkspace(pWorkspace);
+	m_empresaactual->setWorkspace(m_pWorkspace);
 	m_empresaactual->inicializa1();
     showMaximized();
     m_empresaactual->maximiza();
@@ -169,11 +164,11 @@ void Bulmages01::slotViewToolBar(bool toggle)  {
 }// end slotViewToolBar
 
 void Bulmages01::tile() {
-	pWorkspace->tile();
+	m_pWorkspace->tile();
 }// end tile
 
 void Bulmages01::cascade() {
-	pWorkspace->cascade();
+	m_pWorkspace->cascade();
 }// end tile
 
 
@@ -426,8 +421,8 @@ void Bulmages01::closeEvent( QCloseEvent *) {
 #ifdef WINDOWS
     exit(0);
 #endif
-    delete pWorkspace;
-    delete view_back;
+    delete m_pWorkspace;
+    delete m_view_back;
 }
 
 

@@ -1,5 +1,5 @@
 //
-// C++ Interface: listlinprevcobroview
+// C++ Interface: ListLinPrevCobroView
 //
 // Description:
 //
@@ -9,8 +9,8 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#ifndef LISTLINPREVCOBROVIEW_H
-#define LISTLINPREVCOBROVIEW_H
+#ifndef LISTLINPREVCOBROVIEW1_H
+#define LISTLINPREVCOBROVIEW1_H
 
 /**
 @author Tomeu Borras
@@ -25,11 +25,11 @@
 #include "linprevcobro.h"
 
 
-class listlinprevcobroview : public Q3Table , public listlinprevcobro {
+class ListLinPrevCobroView : public Q3Table , public ListLinPrevCobro {
     Q_OBJECT
 public:
-    listlinprevcobroview(QWidget *parent=0, const char *name=0);
-    ~listlinprevcobroview();
+    ListLinPrevCobroView(QWidget *parent=0, const char *name=0);
+    ~ListLinPrevCobroView();
     virtual void pintalistlinprevcobro();
     virtual void pintalinlistlinprevcobro(int);
     virtual bool eventFilter( QObject *obj, QEvent *ev );

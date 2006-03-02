@@ -59,7 +59,12 @@ class Bulmages01 : public BulmaContBase    {
     Q_OBJECT
 private:
     empresa *m_empresaactual;
-    Q3DockWindow *doc;
+    Q3VBox *m_view_back;
+    /** m_pWorkspace is the MDI frame widget that handles MDI child widgets. Inititalized in
+      * initView()
+      */
+    QWorkspace *m_pWorkspace;
+
 public:
     Bulmages01(QWidget * parent = 0, const char * name = 0, Qt::WFlags f = Qt::WType_TopLevel, QString  DB="");
     ~Bulmages01();
@@ -173,13 +178,9 @@ private:
     void initView();
     void showView();
 
-    Q3VBox *view_back;
+
 public:
     /// Para los plugins es interesante crear las funciones de acceso a los distintos elementos.
-
-    //	Q3PopupMenu *pHerramientas() {return Herramientas;};
-    //	Q3PopupMenu *pVerMenu() {return Ver;};
-    //	Q3PopupMenu *pAyudaMenu() {return Ayuda;};
     QMenu *pHerramientas() {
         return Herramientas;
     };
@@ -190,15 +191,7 @@ public:
         return Ayuda;
     };
 
-private:
-    /** pWorkspace is the MDI frame widget that handles MDI child widgets. Inititalized in
-      * initView()
-      */
-    QWorkspace *pWorkspace;
-    /** the printer instance */
-    QPrinter *printer;
-    /** a counter that gets increased each time the user creates a new document with "File"->"New" */
-    int untitledCount;
+
 };
 #endif
 

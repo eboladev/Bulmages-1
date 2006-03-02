@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>759</width>
-            <height>511</height>
+            <width>124</width>
+            <height>273</height>
         </rect>
     </property>
     <property name="caption">
@@ -118,7 +118,6 @@
         <property name="label">
             <string>Ventanas</string>
         </property>
-        <action name="a_asiento1"/>
         <action name="a_intapunts"/>
         <action name="a_diario"/>
         <action name="a_mayor"/>
@@ -143,15 +142,6 @@
     </toolbar>
     <toolbar dock="2">
         <property name="name">
-            <cstring>fileToolbar</cstring>
-        </property>
-        <property name="label">
-            <string>Ayuda</string>
-        </property>
-        <action name="a_ayuda"/>
-    </toolbar>
-    <toolbar dock="2">
-        <property name="name">
             <cstring>gestionToolbar</cstring>
         </property>
         <property name="label">
@@ -161,6 +151,15 @@
         <action name="a_guardar"/>
         <action name="a_actualizar"/>
         <action name="a_filtro"/>
+    </toolbar>
+    <toolbar dock="2">
+        <property name="name">
+            <cstring>fileToolbar</cstring>
+        </property>
+        <property name="label">
+            <string>Ayuda</string>
+        </property>
+        <action name="a_ayuda"/>
     </toolbar>
 </toolbars>
 <actions>

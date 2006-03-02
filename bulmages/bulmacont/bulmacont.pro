@@ -11,3 +11,5 @@ SUBDIRS += src/pluginadocumental
 # SUBDIRS += src/pluginestadisticas
 SUBDIRS += src/pluginonline
 SUBDIRS += src/pluginpychart
+SUBDIRS += src/pluginregistroiva
+

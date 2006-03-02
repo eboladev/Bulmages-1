@@ -1,5 +1,5 @@
 //
-// C++ Interface: listlinprevcobro
+// C++ Interface: ListLinPrevCobro
 //
 // Description:
 //
@@ -22,10 +22,9 @@
 #include "postgresiface2.h"
 #include "linprevcobro.h"
 
-class listlinprevcobro {
+class ListLinPrevCobro {
 public:
-    empresa *empresaactual;
-    postgresiface2 *conexionbase;
+    empresa *m_companyact;
 
     /// Opciones para filtrado y otros.
 protected:
@@ -42,22 +41,19 @@ public:
 
     Fixed totalCobro();
     Fixed totalPago();
-    listlinprevcobro(empresa *comp);
-    listlinprevcobro();
+    ListLinPrevCobro(empresa *comp);
+    ListLinPrevCobro();
     void inicializaVariables();
     void setcompany(empresa *c) {
-        fprintf(stderr,"listlinprevcobro setCompany\n");
-        empresaactual=c;
-        conexionbase = c->bdempresa();
-        fprintf(stderr,"listlinprevcobro  fin de setCompany\n");
+        m_companyact=c;
     };
-    virtual ~listlinprevcobro();
-    void guardalistlinprevcobro();
+    virtual ~ListLinPrevCobro();
+    void guardaListLinPrevCobro();
     void vaciar();
-    virtual void pintalistlinprevcobro() {
-        fprintf(stderr,"La funci� pintalistlinprevcobro aun no ha sido implementada\n");
+    virtual void pintaListLinPrevCobro() {
+        fprintf(stderr,"La funci� pintaListLinPrevCobro aun no ha sido implementada\n");
     };
-    void chargeBudgetLines();
+    int chargeBudgetLines();
     void borrar();
     void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
     linprevcobro *linpos(int);

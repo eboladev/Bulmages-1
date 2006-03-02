@@ -1,5 +1,5 @@
 //
-// C++ Implementation: listlinprevcobroview
+// C++ Implementation: ListLinPrevCobroView
 //
 // Description:
 //
@@ -24,7 +24,8 @@
 #include "images/cingresos.xpm"
 #include "images/cgastos.xpm"
 
-#include "ivaview.h"
+#include "registroivaview.h"
+
 
 #define COL_SELECCION 0
 #define COL_FCOBROPREVCOBRO 1
@@ -59,7 +60,7 @@
 #include "calendario.h"
 #include "asiento1view.h"
 
-void listlinprevcobroview::presentacionFactura() {
+void ListLinPrevCobroView::presentacionFactura() {
     hideColumn(COL_SELECCION);
     hideColumn(COL_IDPREVCOBRO);
     hideColumn(COL_IDFPAGO);
@@ -72,7 +73,7 @@ void listlinprevcobroview::presentacionFactura() {
 }// end presentacionFactura
 
 
-void listlinprevcobroview::presentacionListado() {
+void ListLinPrevCobroView::presentacionListado() {
     showColumn(COL_SELECCION);
     hideColumn(COL_IDPREVCOBRO);
     hideColumn(COL_IDFPAGO);
@@ -85,7 +86,7 @@ void listlinprevcobroview::presentacionListado() {
 }// end presentacionListado
 
 
-listlinprevcobroview::listlinprevcobroview(QWidget * parent, const char * name) : Q3Table(parent, name), listlinprevcobro() {
+ListLinPrevCobroView::ListLinPrevCobroView(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinPrevCobro() {
     /// Inicializamos la tabla de lineas de presupuesto
     setNumCols(17);
     setNumRows(10000);
@@ -137,10 +138,10 @@ listlinprevcobroview::listlinprevcobroview(QWidget * parent, const char * name) 
 }
 
 
-listlinprevcobroview::~listlinprevcobroview() {}
+ListLinPrevCobroView::~ListLinPrevCobroView() {}
 
 
-void listlinprevcobroview::pintalistlinprevcobro(linprevcobro *linea, int pos) {
+void ListLinPrevCobroView::pintalistlinprevcobro(linprevcobro *linea, int pos) {
     setText(pos, COL_IDPREVCOBRO, linea->idprevcobro());
     setText(pos, COL_FPREVISTAPREVCOBRO, linea->fprevistaprevcobro());
     setText(pos, COL_FCOBROPREVCOBRO, linea->fcobroprevcobro());
@@ -168,7 +169,7 @@ void listlinprevcobroview::pintalistlinprevcobro(linprevcobro *linea, int pos) {
     setText(pos, COL_DOCPREVCOBRO, linea->docprevcobro());
 
     /// Ponemos los iconos para que la cosa parezca mas guay.
-    cursor2 *cursoraux1= conexionbase->cargacursor("SELECT tipocuenta FROM cuenta WHERE idcuenta="+linea->idcuenta());
+    cursor2 *cursoraux1= m_companyact->cargacursor("SELECT tipocuenta FROM cuenta WHERE idcuenta="+linea->idcuenta());
     if (!cursoraux1->eof()) {
 
         if (cursoraux1->valor("tipocuenta") == "1")
@@ -186,7 +187,7 @@ void listlinprevcobroview::pintalistlinprevcobro(linprevcobro *linea, int pos) {
 
 
     /// Ponemos los iconos para que la cosa parezca mas guay.
-    cursoraux1= conexionbase->cargacursor("SELECT tipocuenta FROM cuenta WHERE idcuenta="+linea->idctacliente());
+    cursoraux1= m_companyact->cargacursor("SELECT tipocuenta FROM cuenta WHERE idcuenta="+linea->idctacliente());
     if (!cursoraux1->eof()) {
         if (cursoraux1->valor("tipocuenta") == "1")
             setPixmap(pos, COL_CODIGOCTACLIENTE, QPixmap(cactivo));
@@ -203,7 +204,7 @@ void listlinprevcobroview::pintalistlinprevcobro(linprevcobro *linea, int pos) {
 
 }
 
-void listlinprevcobroview::pintalistlinprevcobro() {
+void ListLinPrevCobroView::pintalistlinprevcobro() {
     fprintf(stderr,"INICIO de pintalistlinprevcobro\n");
     setNumRows(0);
     setNumRows(100);
@@ -217,7 +218,7 @@ void listlinprevcobroview::pintalistlinprevcobro() {
     fprintf(stderr,"FIN de pintalistlinprevcobro\n");
 }
 
-void listlinprevcobroview::contextMenu ( int row, int col, const QPoint & pos ) {
+void ListLinPrevCobroView::contextMenu ( int row, int col, const QPoint & pos ) {
     Q3PopupMenu *popup;
     int opcion;
     cursor2 *cur;
@@ -258,21 +259,21 @@ QString query;
     case 3:
         if(linea->idasiento() != "") {
             query = "UPDATE prevcobro SET idasiento = NULL WHERE idprevcobro="+linea->idprevcobro();
-            conexionbase->ejecuta(query);
+            m_companyact->ejecuta(query);
             linea->setidasiento("");
             pintalistlinprevcobro();
         }// end if
         break;
     case 4:
         if (linea->idasiento() != "") {
-            empresaactual->intapuntsempresa()->muestraasiento(linea->idasiento().toInt());
+            m_companyact->intapuntsempresa()->muestraasiento(linea->idasiento().toInt());
         }// end if
         break;
     case 5:
         query = "SELECT idborrador FROM registroiva WHERE idregistroiva = "+linea->idregistroiva();
-        cur = conexionbase->cargacursor(query);
+        cur = m_companyact->cargacursor(query);
         if (linea->idregistroiva() != "") {
-            ivaview *iva = new ivaview(empresaactual, NULL, "iva");
+            RegistroIvaView *iva = new RegistroIvaView(m_companyact, NULL, "iva");
             iva->inicializa1(cur->valor("idborrador").toInt());
             iva->exec();
             delete iva;
@@ -291,12 +292,12 @@ QString query;
 }// end contextMenuRequested
 
 
-void listlinprevcobroview::borralinprevcobroact() {
+void ListLinPrevCobroView::borralinprevcobroact() {
     borralinprevcobro(currentRow());
 }// end borralinprevcobroact
 
 
-void listlinprevcobroview::pintalinlistlinprevcobro(int pos) {
+void ListLinPrevCobroView::pintalinlistlinprevcobro(int pos) {
     fprintf(stderr,"pintalinlistlinprevcobro(%d)\n",pos);
     linprevcobro *linea;
     linea = m_lista.at(pos);
@@ -304,7 +305,7 @@ void listlinprevcobroview::pintalinlistlinprevcobro(int pos) {
 }
 
 
-bool listlinprevcobroview::eventFilter( QObject *obj, QEvent *ev ) {
+bool ListLinPrevCobroView::eventFilter( QObject *obj, QEvent *ev ) {
     QString idcuenta;
     linprevcobro *linea;
     if ( ev->type() == QEvent::KeyRelease ) {
@@ -390,7 +391,7 @@ bool listlinprevcobroview::eventFilter( QObject *obj, QEvent *ev ) {
 
 /// Este método se encarga de asegurar que la posición del foco es la correcta para la tabla.
 
-void listlinprevcobroview::arreglaPosicion(int row, int col) {
+void ListLinPrevCobroView::arreglaPosicion(int row, int col) {
     int newcol = col;
     int newrow = row;
     switch (col) {
@@ -411,7 +412,7 @@ void listlinprevcobroview::arreglaPosicion(int row, int col) {
     setCurrentCell(newrow,newcol);
 }
 
-void listlinprevcobroview::valueLineChanged(int row, int col) {
+void ListLinPrevCobroView::valueLineChanged(int row, int col) {
     fprintf(stderr,"valueLineChanged \n");
     QString valor = text(row,col);
     linprevcobro *linea;
@@ -470,19 +471,19 @@ void listlinprevcobroview::valueLineChanged(int row, int col) {
 
 
 /// Devuelve la linea que se esta tratando actualmente
-linprevcobro *listlinprevcobroview::lineaact() {
-    fprintf(stderr,"listlinprevcobroview::lineaact()\n");
+linprevcobro *ListLinPrevCobroView::lineaact() {
+    fprintf(stderr,"ListLinPrevCobroView::lineaact()\n");
     return lineaat(currentRow());
 }// end lineaact
 
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
-linprevcobro *listlinprevcobroview::lineaat(int row) {
+linprevcobro *ListLinPrevCobroView::lineaat(int row) {
     fprintf(stderr,"listlinprevcobro::lineaat(%d)\n", row);
     linprevcobro *linea;
     if (row >=0) {
         while (m_lista.at(row) == 0 ) {
             fprintf(stderr,"Creamos la linea\n");
-            linea=new linprevcobro(empresaactual);
+            linea=new linprevcobro(m_companyact);
             linea->setidregistroiva(mdb_idregistroiva);
             m_lista.append(linea);
         }// end while
@@ -494,10 +495,10 @@ linprevcobro *listlinprevcobroview::lineaat(int row) {
 
 }// end lineaat
 
-QString listlinprevcobroview::searchCuenta() {
+QString ListLinPrevCobroView::searchCuenta() {
     QString idcuenta;
     fprintf(stderr,"Busqueda de una cuenta\n");
-    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
+    listcuentasview1 *listcuentas = new listcuentasview1(m_companyact);
     listcuentas->setModoLista();
     listcuentas->inicializa();
     listcuentas->exec();
@@ -515,7 +516,7 @@ QString listlinprevcobroview::searchCuenta() {
   * 3.- Cargamos la plantilla de cobro o pago y le metemos los valores necesarios
   * 4.- Generamos el asiento a partir del asiento inteligente.
   */
-void listlinprevcobroview::s_creaPago() {
+void ListLinPrevCobroView::s_creaPago() {
     /// Calculamos los campos necesarios.
     /* El cálculo de los campos requeridos es una iteración por la tabla. */
 

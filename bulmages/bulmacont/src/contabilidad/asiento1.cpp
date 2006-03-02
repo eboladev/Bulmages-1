@@ -18,179 +18,168 @@
 #include "fixed.h"
 #include "funcaux.h"
 #include "ivaview.h"
+#include "plugins.h"
 
 
-Asiento1::Asiento1(empresa *comp) : DBRecord (comp)
-{
-  _depura("Asiento1::Asiento1(empresa *)",0);
-  companyact=comp;
-  setDBTableName("asiento");
-  setDBCampoId("idasiento");
-  addDBCampo("idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Asiento");
-  addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, "Descripcion Asiento");
-  addDBCampo("fecha", DBCampo::DBdate, DBCampo::DBNothing, "Fecha Asiento");
-  addDBCampo("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, "Comentarios Asiento");
-  addDBCampo("ordenasiento", DBCampo::DBint, DBCampo::DBNotNull, "Orden Asiento");
-  addDBCampo("clase", DBCampo::DBint, DBCampo::DBNoSave, "Tipo Asiento");
-  listalineas = NULL;
+Asiento1::Asiento1(empresa *comp) : DBRecord (comp) {
+    _depura("Asiento1::Asiento1(empresa *)",0);
+    m_companyact=comp;
+    setDBTableName("asiento");
+    setDBCampoId("idasiento");
+    addDBCampo("idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Asiento");
+    addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, "Descripcion Asiento");
+    addDBCampo("fecha", DBCampo::DBdate, DBCampo::DBNothing, "Fecha Asiento");
+    addDBCampo("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, "Comentarios Asiento");
+    addDBCampo("ordenasiento", DBCampo::DBint, DBCampo::DBNotNull, "Orden Asiento");
+    addDBCampo("clase", DBCampo::DBint, DBCampo::DBNoSave, "Tipo Asiento");
+    listalineas = NULL;
 }
 
 
 Asiento1::~Asiento1() {}
 
 
-void Asiento1::borraAsiento1()
-{
-  _depura("Asiento1::borraAsiento1",0);
-  int error;
-  if (DBvalue("idasiento") != "")
-  {
-    switch( QMessageBox::warning( 0, "Borrar Asento",
-                                  "Se va a borrar el asiento,\n"
-                                  "Esta seguro?\n",
-                                  QMessageBox::Ok ,
-                                  QMessageBox::Cancel ))
-    {
-    case QMessageBox::Ok: // Retry clicked or Enter pressed
-      listalineas->borrar();
-      companyact->begin();
-      error = companyact->ejecuta("DELETE FROM apunte WHERE idasiento="+DBvalue("idasiento"));
-      error += companyact->ejecuta("DELETE FROM asiento WHERE idasiento="+DBvalue("idasiento"));
-      if (error)
-      {
-        companyact->rollback();
-        return;
-      }// end if
-      companyact->commit();
-      vaciaAsiento1();
-      break;
-    case QMessageBox::Cancel: // Abort clicked or Escape pressed
-      break;
-    }// end switch
-  }// end if
+void Asiento1::borraAsiento1() {
+    _depura("Asiento1::borraAsiento1",0);
+    int error;
+    if (DBvalue("idasiento") != "") {
+        switch( QMessageBox::warning( 0, "Borrar Asento",
+                                      "Se va a borrar el asiento,\n"
+                                      "Esta seguro?\n",
+                                      QMessageBox::Ok ,
+                                      QMessageBox::Cancel )) {
+        case QMessageBox::Ok: // Retry clicked or Enter pressed
+            listalineas->borrar();
+            m_companyact->begin();
+            error = m_companyact->ejecuta("DELETE FROM apunte WHERE idasiento="+DBvalue("idasiento"));
+            error += m_companyact->ejecuta("DELETE FROM asiento WHERE idasiento="+DBvalue("idasiento"));
+            if (error) {
+                m_companyact->rollback();
+                return;
+            }// end if
+            m_companyact->commit();
+            vaciaAsiento1();
+            break;
+        case QMessageBox::Cancel: // Abort clicked or Escape pressed
+            break;
+        }// end switch
+    }// end if
 }// end borraAlbaranCliente
 
 
-void Asiento1::vaciaAsiento1()
-{
-  _depura("Asiento1::vaciaAsiento1",0);
-  DBclear();
-  listalineas->vaciar();
+void Asiento1::vaciaAsiento1() {
+    _depura("Asiento1::vaciaAsiento1",0);
+    DBclear();
+    listalineas->vaciar();
 }// end vaciaAlbaranCliente
 
 
 
-void Asiento1::pintaAsiento1()
-{
-  _depura("pintaAlbaranCliente\n",0);
-  pintaidasiento(DBvalue("idasiento"));
-  pintadescripcion(DBvalue("descripcion"));
-  pintafecha(DBvalue("fecha"));
-  pintacomentariosasiento(DBvalue("comentariosasiento"));
-  pintaordenasiento(DBvalue("ordenasiento"));
-  pintaclase(DBvalue("clase"));
-  /// Pinta el subformulario de detalle del AlbaranCliente.
-  listalineas->pintaListLinAsiento1();
-  /// Pintamos los totales
-  calculaypintatotales();
-  trataestadoAsiento1();
+void Asiento1::pintaAsiento1() {
+    _depura("pintaAlbaranCliente\n",0);
+    pintaidasiento(DBvalue("idasiento"));
+    pintadescripcion(DBvalue("descripcion"));
+    pintafecha(DBvalue("fecha"));
+    pintacomentariosasiento(DBvalue("comentariosasiento"));
+    pintaordenasiento(DBvalue("ordenasiento"));
+    pintaclase(DBvalue("clase"));
+    /// Pinta el subformulario de detalle del AlbaranCliente.
+    listalineas->pintaListLinAsiento1();
+    /// Pintamos los totales
+    calculaypintatotales();
+    trataestadoAsiento1();
 }// end pintaAlbaranCliente
 
 
 // Esta funci� carga un Asiento.
-int Asiento1::cargaAsiento1(QString idbudget)
-{
-  _depura("Asiento1::cargaAsiento1("+idbudget+")\n",0);
-  QString query = "SELECT * FROM asiento WHERE idasiento="+idbudget;
-  cursor2 * cur= companyact->cargacursor(query);
-  if (!cur->eof())
-  {
-    DBload(cur);
-  }// end if
-  delete cur;
-  /// Si no existe lista de lineas se crea una.
-  if (listalineas == NULL)
-    listalineas = new ListLinAsiento1(companyact);
-  listalineas->cargaListLinAsiento1(idbudget);
-  /// Si no existe lista de descuentos se crea una.
-  pintaAsiento1();
-  _depura("Fin AlbaranCliente::cargaAlbaranCliente("+idbudget+")\n",0);
-  return 0;
+int Asiento1::cargaAsiento1(QString idbudget) {
+    _depura("Asiento1::cargaAsiento1("+idbudget+")\n",0);
+    QString query = "SELECT * FROM asiento WHERE idasiento="+idbudget;
+    cursor2 * cur= m_companyact->cargacursor(query);
+    if (!cur->eof()) {
+        DBload(cur);
+    }// end if
+    delete cur;
+    /// Si no existe lista de lineas se crea una.
+    if (listalineas == NULL)
+        listalineas = new ListLinAsiento1(m_companyact);
+    listalineas->cargaListLinAsiento1(idbudget);
+    /// Si no existe lista de descuentos se crea una.
+    pintaAsiento1();
+    _depura("Fin AlbaranCliente::cargaAlbaranCliente("+idbudget+")\n",0);
+    return 0;
 }// end chargeBudget
 
 
-void Asiento1::abreAsiento1()
-{
-  _depura("Asiento1::abreAsiento1",0);
-  QString id= DBvalue("idasiento");
-  if (id == "")
-  {
-    _depura("No hay asiento");
-    return;
-  }
-  companyact->abreasiento(id.toInt());
-  trataestadoAsiento1();
+void Asiento1::abreAsiento1() {
+    _depura("Asiento1::abreAsiento1",0);
+    QString id= DBvalue("idasiento");
+    if (id == "") {
+        _depura("No hay asiento");
+        return;
+    }
+    m_companyact->abreasiento(id.toInt());
+    trataestadoAsiento1();
 }
 
-void Asiento1::cierraAsiento1()
-{
-  _depura("Asiento1::cierraAsiento1",0);
-  if (guardaAsiento1())
-    return;
-  QString id= DBvalue("idasiento");
-  if (id == "")
-  {
-    _depura("No hay asiento");
-    return;
-  }
-  companyact->cierraasiento(id.toInt());
-  QString idasiento = DBvalue("idasiento");
-  vaciaAsiento1();
-  cargaAsiento1(idasiento);
-  _depura("END Asiento1::cierraasiento1",0);
+void Asiento1::cierraAsiento1() {
+    _depura("Asiento1::cierraAsiento1",0);
+    if (guardaAsiento1())
+        return;
+    QString id= DBvalue("idasiento");
+    if (id == "") {
+        _depura("No hay asiento");
+        return;
+    }
+    m_companyact->cierraasiento(id.toInt());
+    QString idasiento = DBvalue("idasiento");
+    vaciaAsiento1();
+    cargaAsiento1(idasiento);
+    _depura("END Asiento1::cierraasiento1",0);
 }// end cierraAsiento1
 
-Asiento1::estadoasiento  Asiento1::estadoAsiento1()
-{
-  if (DBvalue("idasiento") == "")
-    return ASVacio;
+Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
+    if (DBvalue("idasiento") == "")
+        return ASVacio;
 
-  QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento="+DBvalue("idasiento");
-  cursor2 *cur = companyact->cargacursor(SQLQuery);
-  QString numborr = cur->valor("cuenta");
-  delete cur;
+    QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento="+DBvalue("idasiento");
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    QString numborr = cur->valor("cuenta");
+    delete cur;
 
-  SQLQuery = "SELECT count(idapunte) AS cuenta FROM apunte WHERE idasiento="+DBvalue("idasiento");
-  cur = companyact->cargacursor(SQLQuery);
-  QString numap = cur->valor("cuenta");
-  delete cur;
+    SQLQuery = "SELECT count(idapunte) AS cuenta FROM apunte WHERE idasiento="+DBvalue("idasiento");
+    cur = m_companyact->cargacursor(SQLQuery);
+    QString numap = cur->valor("cuenta");
+    delete cur;
 
-  if (numborr == "0")
-    return ASVacio;
-  if (numborr == numap)
-    return ASCerrado;
-  return ASAbierto;
+    if (numborr == "0")
+        return ASVacio;
+    if (numborr == numap)
+        return ASCerrado;
+    return ASAbierto;
 }
 
 
-int Asiento1::guardaAsiento1()
-{
-  /// Todo el guardado es una transacci�
-  QString id;
-  companyact->begin();
-  int error = DBsave(id);
-  if (error )
-  {
-    companyact->rollback();
-    return -1;
-  }// end if
-  setidasiento(id);
-  companyact->commit();
-  error = listalineas->guardaListLinAsiento1();
-  if (error)
-    return -1;
-  buscaFactura();
-  return 0;
+int Asiento1::guardaAsiento1() {
+	_depura("Asiento1::guardaAsiento1",0);
+    /// Todo el guardado es una transacci�
+    QString id;
+    m_companyact->begin();
+    int error = DBsave(id);
+    if (error ) {
+        m_companyact->rollback();
+        return -1;
+    }// end if
+    setidasiento(id);
+    m_companyact->commit();
+    error = listalineas->guardaListLinAsiento1();
+    if (error)
+        return -1;
+//    buscaFactura();
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
+	_depura("END Asiento1::guardaAsiento1",0);
+    return 0;
 }// end guardaAlbaranCliente
 
 
@@ -198,33 +187,30 @@ int Asiento1::guardaAsiento1()
 /**
   * Buscamos en el asiento si hay indicios de una factura y actuamos en consecuencia.
   */
-void Asiento1::buscaFactura()
-{
-  QString cuentas="";
-  QString query = "SELECT valor FROM configuracion WHERE nombre='RegistroEmitida' OR nombre='RegistroSoportada'";
-  cursor2 *curvalor = companyact->cargacursor(query);
-  while (!curvalor->eof())
-  {
-    cuentas += curvalor->valor("valor")+"%|"; // Preparamos una expresión regular para usar en la consulta
-    curvalor->siguienteregistro();
-  }// end while
-  delete curvalor;
-  cuentas.truncate(cuentas.length()-1); // Le quitamos el último '|' que nos sobra
+void Asiento1::buscaFactura() {
+    QString cuentas="";
+    QString query = "SELECT valor FROM configuracion WHERE nombre='RegistroEmitida' OR nombre='RegistroSoportada'";
+    cursor2 *curvalor = m_companyact->cargacursor(query);
+    while (!curvalor->eof()) {
+        cuentas += curvalor->valor("valor")+"%|"; // Preparamos una expresión regular para usar en la consulta
+        curvalor->siguienteregistro();
+    }// end while
+    delete curvalor;
+    cuentas.truncate(cuentas.length()-1); // Le quitamos el último '|' que nos sobra
 
-  /// Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
-  QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+DBvalue("idasiento")+" AND codigo SIMILAR TO '"+companyact->sanearCadena(cuentas.ascii())+"' GROUP BY contra";
+    /// Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
+    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+DBvalue("idasiento")+" AND codigo SIMILAR TO '"+m_companyact->sanearCadena(cuentas.ascii())+"' GROUP BY contra";
 
-  cursor2 *cursborr= companyact->cargacursor(SQLQuery);
-  while (!cursborr->eof())
-  {
-    int idborrador = cursborr->valor("contra").toInt();
-    ivaview *regivaview=new ivaview(companyact,0,"");
-    regivaview->inicializa1(idborrador);
-    regivaview->exec();
-    delete regivaview;
-    cursborr->siguienteregistro();
-  }// end while
-  delete cursborr;
+    cursor2 *cursborr= m_companyact->cargacursor(SQLQuery);
+    while (!cursborr->eof()) {
+        int idborrador = cursborr->valor("contra").toInt();
+        ivaview *regivaview=new ivaview(m_companyact,0,"");
+        regivaview->inicializa1(idborrador);
+        regivaview->exec();
+        delete regivaview;
+        cursborr->siguienteregistro();
+    }// end while
+    delete cursborr;
 }// end buscaFactura
 
 
