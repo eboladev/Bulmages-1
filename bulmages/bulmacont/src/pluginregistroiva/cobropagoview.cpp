@@ -107,7 +107,7 @@ void cobropagoview::s_actualizar() {
 
 
 void cobropagoview::s_guardar() {
-    m_listprevcobro->guardalistlinprevcobro();
+    m_listprevcobro->guardaListLinPrevCobro();
 }// end s_guardar
 
 

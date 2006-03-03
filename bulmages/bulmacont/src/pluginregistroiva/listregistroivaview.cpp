@@ -1,5 +1,5 @@
 /***************************************************************************
-                          listivaview.cpp  -  description
+                          ListRegistroIvaView.cpp  -  description
                              -------------------
     begin                : Thu Jan 30 2003
     copyright            : (C) 2003 by Tomeu Borr� Riera
@@ -13,10 +13,9 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#include "listivaview.h"
+#include "listregistroivaview.h"
 #include "regivaprintview.h"
-#include "ivaview.h"
-#include "modelo300.h"
+#include "registroivaview.h"
 #include "empresa.h"
 #include "calendario.h"
 //Added by qt3to4:
@@ -66,30 +65,26 @@
 #define RES_BASEREPERCUTIDO 2
 
 
-Mod300ps *modelo;
-listivaview::listivaview(empresa * emp, QString, QWidget *parent, const char *name ) : listivadlg(parent,name) {
-    companyact = emp;
+ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent, const char *name ) : ListRegistroIvaDlg(parent,name) {
+    m_companyact = emp;
     finicial->setText(normalizafecha("01/01").toString("dd/MM/yyyy"));
     ffinal->setText(normalizafecha("31/12").toString("dd/MM/yyyy"));
-    modelo=new Mod300ps(this->parentWidget());
-}// end listivaview
+}// end ListRegistroIvaView
 
 
-listivaview::~listivaview() {}// end ~lisivaview
+ListRegistroIvaView::~ListRegistroIvaView() {}// end ~lisivaview
 
 
 /**
  * Al hacer doble click sobre la tabla de ivas se accede al asiento 
  * que tiene dicha entrada
  */
-void listivaview::doble_click_soportado(int a, int, int, const QPoint &punto) {
+void ListRegistroIvaView::doble_click_soportado(int a, int, int, const QPoint &punto) {
     int idasiento;
     idasiento = atoi(tablasoportado->text(a,S_COL_IDASIENTO).ascii());
-//    companyact->intapuntsempresa()->flashAsiento(idasiento);
-    companyact->intapuntsempresa()->muestraasiento(idasiento);
-
-    companyact->intapuntsempresa()->show();
-    companyact->intapuntsempresa()->setFocus();
+    m_companyact->intapuntsempresa()->muestraasiento(idasiento);
+    m_companyact->intapuntsempresa()->show();
+    m_companyact->intapuntsempresa()->setFocus();
     done(1);
     punto.isNull();
 }// end doble_click_soportado
@@ -99,27 +94,25 @@ void listivaview::doble_click_soportado(int a, int, int, const QPoint &punto) {
  * Al hacer doble click sobre la tabla de ivas se accede al asiento
  * que tiene dicha entrada
  */
-void listivaview::doble_click_repercutido(int a, int , int , const QPoint &) {
+void ListRegistroIvaView::doble_click_repercutido(int a, int , int , const QPoint &) {
     int idasiento;
     idasiento = atoi(tablarepercutido->text(a,R_COL_IDASIENTO).ascii());
-//    companyact->intapuntsempresa()->flashAsiento(idasiento);
-    companyact->intapuntsempresa()->muestraasiento(idasiento);
-
-    companyact->intapuntsempresa()->show();
-    companyact->intapuntsempresa()->setFocus();
+    m_companyact->intapuntsempresa()->muestraasiento(idasiento);
+    m_companyact->intapuntsempresa()->show();
+    m_companyact->intapuntsempresa()->setFocus();
     done(1);
 }// end doble_click_repercutido
 
 
-void listivaview::boton_print() {
-    regivaprintview *print = new regivaprintview(companyact,0,0);
+void ListRegistroIvaView::boton_print() {
+    regivaprintview *print = new regivaprintview(m_companyact,0,0);
     print->inicializa1(finicial->text(), ffinal->text());
     print->exec();
     delete print;
 }// end boton_imprimir
 
 
-void listivaview::boton_reload() {
+void ListRegistroIvaView::boton_reload() {
     inicializa();
 }// end boton_reload
 
@@ -128,7 +121,7 @@ void listivaview::boton_reload() {
  * 
  * @param inta 
  */
-void listivaview::inicializa() {
+void ListRegistroIvaView::inicializa() {
     QString query;
     QString sbaseimp, siva;
     QString   cbaseimp, civa, ctotal;
@@ -146,9 +139,9 @@ void listivaview::inicializa() {
     m_listRepercutido->horizontalHeader()->setLabel( RES_BASEREPERCUTIDO, tr("BASESOPORTADO"));
 
     QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva, sum(ivaiva) AS tivaiva FROM iva  WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"' AND factemitida) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta";
-    companyact->begin();
-    cursor2 *cur = companyact->cargacursor(SQLQuery, "elcursor");
-    companyact->commit();
+    m_companyact->begin();
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery, "elcursor");
+    m_companyact->commit();
     m_listSoportado->setNumRows(cur->numregistros());
     int j =0;
     while (! cur->eof() ) {	
@@ -161,9 +154,9 @@ void listivaview::inicializa() {
     delete cur;
 
     SQLQuery = "SELECT * FROM cuenta, tipoiva  LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva, SUM(ivaiva) AS tivaiva FROM iva WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"' AND NOT factemitida) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta";
-    companyact->begin();
-    cur = companyact->cargacursor(SQLQuery, "elcursor");
-    companyact->commit();
+    m_companyact->begin();
+    cur = m_companyact->cargacursor(SQLQuery, "elcursor");
+    m_companyact->commit();
     m_listRepercutido->setNumRows(cur->numregistros());
     j =0;
     while (! cur->eof() ) {
@@ -177,13 +170,13 @@ void listivaview::inicializa() {
 
     SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE factemitida AND ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"'"; 
     
-    cur = companyact->cargacursor(SQLQuery);
+    cur = m_companyact->cargacursor(SQLQuery);
     m_baseimps->setText(cur->valor("tbaseimp"));
     m_ivas->setText(cur->valor("tbaseiva"));
     delete cur;
     
     SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE NOT factemitida AND ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"'"; 
-    cur = companyact->cargacursor(SQLQuery);
+    cur = m_companyact->cargacursor(SQLQuery);
     m_baseimpr->setText(cur->valor("tbaseimp"));
     m_ivar->setText(cur->valor("tbaseiva"));
     delete cur;
@@ -214,17 +207,17 @@ void listivaview::inicializa() {
 
 
     query.sprintf("SELECT *, (registroiva.baseimp+registroiva.iva) AS totalfactura FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND factemitida AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
-    companyact->begin();
-    cursor2 *cursorreg = companyact->cargacursor(query,"cmquery");
-    companyact->commit();
+    m_companyact->begin();
+    cursor2 *cursorreg = m_companyact->cargacursor(query,"cmquery");
+    m_companyact->commit();
     int i =0;
     cursor2 *cursorcontra;
     tablasoportado->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
         query.sprintf("SELECT * FROM cuenta WHERE cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
-        companyact->begin();
-        cursorcontra = companyact->cargacursor(query,"contra");
-        companyact->commit();
+        m_companyact->begin();
+        cursorcontra = m_companyact->cargacursor(query,"contra");
+        m_companyact->commit();
         if (!cursorcontra->eof()) {
             tablasoportado->setText(i,S_COL_CONTRAPARTIDA,cursorcontra->valor("codigo"));
             tablasoportado->setText(i,S_COL_DESCRIPCION,cursorcontra->valor("descripcion"));
@@ -275,16 +268,16 @@ void listivaview::inicializa() {
 
     // Hacemos el c�culo de los que no pertenecen a iva soportado pq as�entran todos.
     query.sprintf("SELECT *, (registroiva.baseimp+registroiva.iva) AS totalfactura FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND NOT factemitida AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha",finicial->text().ascii(), ffinal->text().ascii());
-    companyact->begin();
-    cursorreg = companyact->cargacursor(query,"cmquery");
-    companyact->commit();
+    m_companyact->begin();
+    cursorreg = m_companyact->cargacursor(query,"cmquery");
+    m_companyact->commit();
     i =0;
     tablarepercutido->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
         query.sprintf("SELECT * FROM cuenta WHERE cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
-        companyact->begin();
-        cursorcontra = companyact->cargacursor(query,"contra");
-        companyact->commit();
+        m_companyact->begin();
+        cursorcontra = m_companyact->cargacursor(query,"contra");
+        m_companyact->commit();
         if (!cursorcontra->eof()) {
             tablarepercutido->setText(i,R_COL_CONTRAPARTIDA,cursorcontra->valor("codigo"));
             tablarepercutido->setText(i,R_COL_DESCRIPCION,cursorcontra->valor("descripcion"));
@@ -313,7 +306,7 @@ void listivaview::inicializa() {
 
 
 
-void listivaview::menu_contextual(int row, int , const QPoint &poin) {
+void ListRegistroIvaView::menu_contextual(int row, int , const QPoint &poin) {
     // Si el asiento esta cerrado el menu a mostrar es diferente
     int idborrador =0;
     Q3PopupMenu *popup = new Q3PopupMenu;
@@ -326,16 +319,16 @@ void listivaview::menu_contextual(int row, int , const QPoint &poin) {
     case 0:
         int idasiento;
         idasiento = atoi(tablasoportado->text(row,S_COL_IDASIENTO).ascii());
-//        companyact->intapuntsempresa()->flashAsiento(idasiento);
-        companyact->intapuntsempresa()->muestraasiento(idasiento);
-        companyact->intapuntsempresa()->show();
-        companyact->intapuntsempresa()->setFocus();
+//        m_companyact->intapuntsempresa()->flashAsiento(idasiento);
+        m_companyact->intapuntsempresa()->muestraasiento(idasiento);
+        m_companyact->intapuntsempresa()->show();
+        m_companyact->intapuntsempresa()->setFocus();
         done(1);
         break;
     case 101:
         idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            ivaview *nuevae=new ivaview(companyact,0,"");
+            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0,"");
             nuevae->inicializa1(idborrador);
             nuevae->exec();
             delete nuevae;
@@ -344,7 +337,7 @@ void listivaview::menu_contextual(int row, int , const QPoint &poin) {
     case 103:
         idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            ivaview *nuevae=new ivaview(companyact,0,"");
+            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0,"");
             nuevae->inicializa1(idborrador);
             nuevae->boton_borrar();
             delete nuevae;
@@ -359,7 +352,7 @@ void listivaview::menu_contextual(int row, int , const QPoint &poin) {
 }// end contextmenu
 
 
-void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
+void ListRegistroIvaView::menu_contextual1(int row, int , const QPoint &poin) {
     // Si el asiento esta cerrado el menu a mostrar es diferente
     int idborrador=0;
     Q3PopupMenu *popup = new Q3PopupMenu;
@@ -372,15 +365,15 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
     case 0:
         int idasiento;
         idasiento = atoi(tablarepercutido->text(row,R_COL_IDASIENTO).ascii());
-        companyact->intapuntsempresa()->muestraasiento(idasiento);
-        companyact->intapuntsempresa()->show();
-        companyact->intapuntsempresa()->setFocus();
+        m_companyact->intapuntsempresa()->muestraasiento(idasiento);
+        m_companyact->intapuntsempresa()->show();
+        m_companyact->intapuntsempresa()->setFocus();
         done(1);
         break;
     case 101:
         idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            ivaview *nuevae=new ivaview(companyact, 0,"");
+            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact, 0,"");
             nuevae->inicializa1(idborrador);
             nuevae->exec();
             delete nuevae;
@@ -389,7 +382,7 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
     case 103:
         idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            ivaview *nuevae=new ivaview(companyact, 0,"");
+            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact, 0,"");
             nuevae->inicializa1(idborrador);
             nuevae->boton_borrar();
             delete nuevae;
@@ -402,12 +395,12 @@ void listivaview::menu_contextual1(int row, int , const QPoint &poin) {
 
 /** \brief ESta funcion responde a la pulsaci� del bot� de busqueda de fecha inicial
 **/
-void listivaview::boton_finicial() {
+void ListRegistroIvaView::boton_finicial() {
     finicial->setText("+");
 }// end boton_finicial
 
 
-void listivaview::finicial_textChanged( const QString & texto ) {
+void ListRegistroIvaView::finicial_textChanged( const QString & texto ) {
     if (texto=="+") {
         Q3PtrList<QDate> a;
         finicial->setText("");
@@ -424,12 +417,12 @@ void listivaview::finicial_textChanged( const QString & texto ) {
 
 /** Esta funci� responde a la pulsaci� del boton de busqueda de fecha final
 **/
-void listivaview::boton_ffinal() {
+void ListRegistroIvaView::boton_ffinal() {
     ffinal->setText("+");
 }// end boton_ffinal
 
 
-void listivaview::ffinal_textChanged( const QString & texto ) {
+void ListRegistroIvaView::ffinal_textChanged( const QString & texto ) {
     if (texto=="+") {
         Q3PtrList<QDate> a;
         ffinal->setText("");
@@ -444,11 +437,11 @@ void listivaview::ffinal_textChanged( const QString & texto ) {
 }//fin fechaasiento1_textChanged
 
 
-void listivaview::finicial_lostFocus() {
+void ListRegistroIvaView::finicial_lostFocus() {
     finicial->setText(normalizafecha(finicial->text()).toString("dd/MM/yyyy"));
 }// end return_fechainicial
 
-void listivaview::ffinal_lostFocus() {
+void ListRegistroIvaView::ffinal_lostFocus() {
     ffinal->setText(normalizafecha(ffinal->text()).toString("dd/MM/yyyy"));
 }// end return_fechainicial
 

@@ -47,9 +47,9 @@ FORMS += uiselector.ui \
          aplinteligentesdlg.ui \
          filtrarasientosdlg.ui \
          asientosdlg.ui \
-         listivadlg.ui \
+#         listivadlg.ui \
          regivaprintdlg.ui \
-         ivadlg.ui \
+#         ivadlg.ui \
          compbalancedlg.ui \
          mpatrimonialdlg.ui \
          mpatrimonialesdlg.ui \
@@ -74,7 +74,7 @@ FORMS += uiselector.ui \
          selectccostedlg.ui \
          selectcanaldlg.ui \
          mod300dlg.ui \
-         cobropagodlg.ui \
+#         cobropagodlg.ui \
          tipoivadlg.ui \
          fpagodlg.ui \
 	 busquedacuentabase.ui \
@@ -187,14 +187,14 @@ HEADERS += splashscreen.h \
            balance1view.h \
            qlistviewitem1.h \
            balanceview.h \
-           intapunts3view.h \
+#           intapunts3view.h \
            asientoview.h \
            aplinteligentesview.h \
            filtrarasientosview.h \
            asientosview.h \
-           listivaview.h \
+#           listivaview.h \
            regivaprintview.h \
-           ivaview.h \
+#           ivaview.h \
            compbalanceview.h \
            mpatrimonialview.h \
            mpatrimonialesview.h \
@@ -223,15 +223,15 @@ HEADERS += splashscreen.h \
            modelo300.h \
            importainteligente.h \
            importbalance.h \
-           cobropagoview.h \
+#           cobropagoview.h \
            bbloqfecha.h \
            tipoivaview.h \
            fpagoview.h \
            arbol.h \
 	   busquedacuenta.h \
-	   listlinprevcobro.h \
-	   listlinprevcobroview.h \
-	   linprevcobro.h \
+#	   listlinprevcobro.h \
+#	   listlinprevcobroview.h \
+#	   linprevcobro.h \
 	   asiento1.h \
 	   asiento1view.h \
 	   linasiento1.h \
@@ -252,14 +252,14 @@ SOURCES += main.cpp \
            balance1view.cpp \
            qlistviewitem1.cpp \
            balanceview.cpp \
-           intapunts3view.cpp \
+#           intapunts3view.cpp \
            asientoview.cpp \
            aplinteligentesview.cpp \
            filtrarasientosview.cpp \
            asientosview.cpp \
-           listivaview.cpp \
+#           listivaview.cpp \
            regivaprintview.cpp \
-           ivaview.cpp \
+#           ivaview.cpp \
            compbalanceview.cpp \
            mpatrimonialview.cpp \
            mpatrimonialesview.cpp \
@@ -288,15 +288,15 @@ SOURCES += main.cpp \
            modelo300.cpp \
            importainteligente.cpp \
            importbalance.cpp \
-           cobropagoview.cpp \
+#           cobropagoview.cpp \
            bbloqfecha.cpp \
            tipoivaview.cpp \
            fpagoview.cpp \
            arbol.cpp \
 	   busquedacuenta.cpp \
-	   listlinprevcobro.cpp \
-	   listlinprevcobroview.cpp \
-	   linprevcobro.cpp \
+#	   listlinprevcobro.cpp \
+#	   listlinprevcobroview.cpp \
+#	   linprevcobro.cpp \
 	   asiento1.cpp \
 	   asiento1view.cpp \
 	   linasiento1.cpp \

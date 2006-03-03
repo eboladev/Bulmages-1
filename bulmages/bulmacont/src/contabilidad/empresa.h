@@ -25,7 +25,6 @@
 #include <qsizepolicy.h>
 
 
-#include "intapunts3view.h"
 #include "balanceview.h"
 #include "diarioview1.h"
 #include "extractoview1.h"
@@ -60,7 +59,6 @@ private:
     diarioview1 *diario;
     extractoview1 *extracto;
     balanceview *balance;
-    intapunts3view *introapunts1; // introapunts.
     Asiento1View *introapunts2;
     unsigned int numdigitos;  // El numero de digitos que tienen las cuentas.
 

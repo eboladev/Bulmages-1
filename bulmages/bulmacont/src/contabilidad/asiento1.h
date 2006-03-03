@@ -53,7 +53,7 @@ public:
     QString idasiento() {
         return DBvalue("idasiento");
     };
-	void buscaFactura();
+//	void buscaFactura();
 
     /// Establece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
     void setListLinAsiento1 ( ListLinAsiento1 *a) {

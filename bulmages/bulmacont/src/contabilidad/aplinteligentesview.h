@@ -34,7 +34,6 @@
 #include "listcuentasview1.h"
 #include "funcaux.h"
 #include "postgresiface2.h"
-#include "intapunts3view.h"
 
 class empresa;
 /** 

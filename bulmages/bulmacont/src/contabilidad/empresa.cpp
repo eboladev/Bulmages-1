@@ -18,7 +18,6 @@
 #include "abreempresaview.h"
 #include "listcuentasview1.h"
 #include "cuentaview.h"
-#include "listivaview.h"
 #include "asientosview.h"
 #include "balancesview.h"
 #include "mpatrimonialesview.h"
@@ -28,12 +27,12 @@
 #include "propiedadesempresa.h"
 #include "cambiactaview.h"
 #include "amortizacionesview.h"
-#include "cobropagoview.h"
 #include "tipoivaview.h"
 #include "fpagoview.h"
 #include "balance1view.h"
 #include "selectccosteview.h"
 #include "selectcanalview.h"
+#include "plugins.h"
 
 #include <qobject.h>
 #ifndef WIN32
@@ -497,11 +496,17 @@ void empresa::Ordenarasientos() {
 
 
 int empresa::registroiva() {
+
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("empresa_registroiva", this);
+
+/*
    listivaview *perd = new listivaview(this, "0");
    perd->inicializa();
    perd->exec();
    delete perd;
-   return(0);
+*/
+   return 0;
 }// end registroiva
 
 int empresa::modelo347() {
@@ -576,9 +581,8 @@ void empresa::recalculasaldos() {
 /** Esta funci� se dispara para poner en marcha la gesti� de cobros y pagos
   */
 void empresa::cobPag() {
-   cobropagoview *adoc= new cobropagoview(this,0,"hola");
-   adoc->exec();
-   delete adoc;
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("empresa_cobPag", this);
 }// cobPag
 
 selectccosteview *empresa::getselccostes() {return selccostes;}

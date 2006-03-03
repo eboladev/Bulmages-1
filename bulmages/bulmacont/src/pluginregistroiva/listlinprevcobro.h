@@ -21,6 +21,7 @@
 #include "empresa.h"
 #include "postgresiface2.h"
 #include "linprevcobro.h"
+#include "fixed.h"
 
 class ListLinPrevCobro {
 public:

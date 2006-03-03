@@ -36,7 +36,6 @@
 #include "empresa.h"
 #include <q3filedialog.h>
 #include <qcheckbox.h>
-#include "intapunts3view.h"
 #include "asiento1view.h"
 #include "balanceview.h"
 #include "diarioview1.h"

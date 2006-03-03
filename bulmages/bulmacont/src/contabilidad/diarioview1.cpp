@@ -35,7 +35,6 @@
 #include "calendario.h"
 
 #include "filtrardiarioview.h"
-#include "intapunts3view.h"
 #include "asiento1view.h"
 #include "extractoview1.h"
 #include "balanceview.h"

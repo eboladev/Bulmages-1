@@ -17,7 +17,6 @@
  ***************************************************************************/
 
 #include "regivaprintview.h"
-#include "listivaview.h"
 #include "empresa.h"
 
 #include "modelo300.h"
@@ -53,7 +52,7 @@ void regivaprintview::accept() {
     if (radioPS->isChecked()) {
         //Lanza dialogo de generacion de modelo 300
         //Deberia revisarse el Widget parent de la variable modelo (listivaview--->modelo, en vez de regivaprintview--->modelo)
-        modelo->exec();
+//        modelo->exec();
     }// end if
 }// end accept
 

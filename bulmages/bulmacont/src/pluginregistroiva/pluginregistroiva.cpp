@@ -1,9 +1,13 @@
-#include <stdio.h>
-#include "pluginregistroiva.h"
-#include "registroivaview.h"
-#include "empresa.h"
-#include "asiento1.h"
 
+#include "pluginregistroiva.h"
+#include "empresa.h"
+#include "registroivaview.h"
+#include "cobropagoview.h"
+#include "asiento1.h"
+#include "listlinasiento1view.h"
+#include "listregistroivaview.h"
+
+#include <stdio.h>
 #include <q3popupmenu.h>
 #include <qaction.h>
 #include <qobject.h>
@@ -11,8 +15,6 @@
 #include <q3dockwindow.h>
 #include <q3mainwindow.h>
 
-
-//#include <qwidgetplugin.h>
 #include <qstringlist.h>
 #include <qwidget.h>
 #include <qicon.h>
@@ -21,62 +23,13 @@
 #include <q3dockwindow.h>
 
 
-
-myplugin:: myplugin() {}
-myplugin::~myplugin() {}
-
-
-void myplugin::elslot() {
-    _depura("SE ha activado el slot\n",0);
-	RegistroIvaView * reg = new RegistroIvaView(companyact,0,0);
-	reg->exec();
-	delete reg;
-}// end elslot
-
-
-void myplugin::inicializa(Bulmages01 *bges) {
-    //El menu de empresa
-	companyact = bges->empresaactual();
-    Q3PopupMenu *pRIVAMenu = new Q3PopupMenu();
-    pRIVAMenu->setCheckable(true);
-    bges->menuBar()->insertItem("&RegistroIVA",pRIVAMenu);
-    QAction *planCuentas = new QAction("&Prueba de Plugin", 0);
-    planCuentas->setStatusTip("Muestra el plan contable");
-    planCuentas->setWhatsThis("Muestra el plan contable");
-    planCuentas->addTo(pRIVAMenu);
-
-    connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
-}// end inicializa
-
-
-
-
-
-void entryPoint(Bulmages01 *bges) {
-    _depura("Estoy dentro del plugin\n",0);
-  // Vamos a probar con un docwindow.
-    myplugin *plug= new myplugin( );
-    plug->inicializa(bges);
-    bges->setCaption("Prueba de plugin.");
-
-
-/*	
-    //El menu de empresa
-  QAction  *viewCorrector = new QAction( "&RegistroIvaView", 0);
-  QObject::connect(viewCorrector, SIGNAL(toggled(bool)), corr, SLOT(cambia(bool)));
-  viewCorrector->addTo(bges->pVerMenu());
-*/
-   _depura("END entryPoint\n",0);
-}
-
-
-
 /**
   * Buscamos en el asiento si hay indicios de una factura y actuamos en consecuencia.
   */
+
 int Asiento1_guardaAsiento1_post(Asiento1 *as) {
-	_depura("Asiento1_guardaAsiento1_post",0);
-	empresa *companyact = as->companyact();
+    _depura("Asiento1_guardaAsiento1_post",0);
+    empresa *companyact = as->companyact();
     QString cuentas="";
     QString query = "SELECT valor FROM configuracion WHERE nombre='RegistroEmitida' OR nombre='RegistroSoportada'";
     cursor2 *curvalor = companyact->cargacursor(query);
@@ -93,13 +46,41 @@ int Asiento1_guardaAsiento1_post(Asiento1 *as) {
     cursor2 *cursborr= companyact->cargacursor(SQLQuery);
     while (!cursborr->eof()) {
         int idborrador = cursborr->valor("contra").toInt();
-	RegistroIvaView * reg = new RegistroIvaView(companyact,0,0);
-	reg->inicializa1( idborrador);
-	reg->exec();
-	delete reg;
+        RegistroIvaView * reg = new RegistroIvaView(companyact,0,0);
+        reg->inicializa1( idborrador);
+        reg->exec();
+        delete reg;
         cursborr->siguienteregistro();
     }// end while
     delete cursborr;
     return 0;
 }// end buscaFactura
 
+
+
+int empresa_cobPag(empresa *emp) {
+    cobropagoview *adoc= new cobropagoview(emp,0,"");
+    adoc->exec();
+    delete adoc;
+}
+
+int empresa_registroiva(empresa *emp) {
+    ListRegistroIvaView *perd = new ListRegistroIvaView(emp, "0");
+    perd->inicializa();
+    perd->exec();
+    delete perd;
+}
+
+
+int ListLinAsiento1View_boton_iva(ListLinAsiento1View *as) {
+    as->guardaListLinAsiento1();
+    LinAsiento1 *linea = as->lineaact();
+    if (linea->DBvalue("idborrador") != "") {
+        int idborrador = linea->DBvalue("idborrador").toInt();
+        RegistroIvaView *nuevae=new RegistroIvaView(as->companyact, 0,"");
+        nuevae->inicializa1(idborrador);
+        nuevae->exec();
+        delete nuevae;
+        as->pintaListLinAsiento1();
+    }// end if
+}

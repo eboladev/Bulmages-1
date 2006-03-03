@@ -23,6 +23,7 @@
 #include "empresa.h"
 #include "iva.h"
 #include "funcaux.h"
+#include "fixed.h"
 
 class ListIva {
 public:

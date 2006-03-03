@@ -18,7 +18,6 @@
 #define BALANCEVIEW_H
 
 #include "balancedlg.h"
-#include "intapunts3view.h"
 #include "diarioview1.h"
 #include "extractoview1.h"
 #include "qtable1.h"

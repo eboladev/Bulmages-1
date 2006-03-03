@@ -34,7 +34,9 @@ INCLUDEPATH = ../../../bulmalib \
 ../.ui
 
 #The following line was changed from FORMS to FORMS3 by qt3to4
-FORMS += registroivadlg.ui
+FORMS += registroivadlg.ui \
+	 cobropagodlg.ui\
+	 listregistroivadlg.ui
 	 
 HEADERS += registroiva.h \
 	   iva.h \
@@ -44,7 +46,9 @@ HEADERS += registroiva.h \
 	   pluginregistroiva.h \
 	   linprevcobro.h \
 	   listlinprevcobro.h \
-	   listlinprevcobroview.h
+	   listlinprevcobroview.h \
+	   cobropagoview.h \
+	   listregistroivaview.h
 	   
 SOURCES += registroiva.cpp \
 	   iva.cpp \
@@ -54,7 +58,9 @@ SOURCES += registroiva.cpp \
 	   pluginregistroiva.cpp \
 	   linprevcobro.cpp \
 	   listlinprevcobro.cpp \
-	   listlinprevcobroview.cpp
+	   listlinprevcobroview.cpp \
+	   cobropagoview.cpp \
+	   listregistroivaview.cpp
 
 unix{
   UI_DIR = .ui

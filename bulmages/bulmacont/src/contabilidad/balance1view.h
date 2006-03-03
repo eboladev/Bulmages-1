@@ -27,7 +27,6 @@
 #include <q3table.h>
 #include <qtoolbutton.h>
 
-#include "intapunts3view.h"
 #include "listcuentasview1.h"
 #include "diarioview1.h"
 #include "extractoview1.h"

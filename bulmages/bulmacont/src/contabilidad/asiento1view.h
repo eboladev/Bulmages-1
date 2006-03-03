@@ -33,6 +33,7 @@
 #include "busquedafecha.h"
 #include "asiento1dlg.h"
 #include "asiento1.h"
+#include "filtrarasientosview.h"
 
 class empresa;
 

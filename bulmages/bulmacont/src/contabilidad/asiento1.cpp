@@ -17,7 +17,6 @@
 #include <qmessagebox.h>
 #include "fixed.h"
 #include "funcaux.h"
-#include "ivaview.h"
 #include "plugins.h"
 
 
@@ -187,6 +186,7 @@ int Asiento1::guardaAsiento1() {
 /**
   * Buscamos en el asiento si hay indicios de una factura y actuamos en consecuencia.
   */
+/*
 void Asiento1::buscaFactura() {
     QString cuentas="";
     QString query = "SELECT valor FROM configuracion WHERE nombre='RegistroEmitida' OR nombre='RegistroSoportada'";
@@ -213,4 +213,4 @@ void Asiento1::buscaFactura() {
     delete cursborr;
 }// end buscaFactura
 
-
+*/

@@ -31,9 +31,9 @@
 #include "calendario.h"
 #include "listlinasiento1view.h"
 #include "funcaux.h"
-#include "ivaview.h"
 #include "asiento1view.h"
 #include "cuentaview.h"
+#include "plugins.h"
 
 #include <q3table.h>
 #include <qmessagebox.h>
@@ -786,6 +786,8 @@ void ListLinAsiento1View::iniciar_asiento_nuevo(QString fecha) {
   * La clase ivaview hace una inserción o una modificación segun exista o no una entrada de iva para dicho borrador.
   */
 void ListLinAsiento1View::boton_iva() {
+    int res = g_plugins->lanza("ListLinAsiento1View_boton_iva", this);
+/*
     guardaListLinAsiento1();
     LinAsiento1 *linea = lineaact();
     if (linea->DBvalue("idborrador") != "") {
@@ -796,6 +798,7 @@ void ListLinAsiento1View::boton_iva() {
         delete nuevae;
         pintaListLinAsiento1();
     }// end if
+*/
 }// end boton_iva
 
 
