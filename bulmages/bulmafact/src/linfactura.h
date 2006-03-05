@@ -49,7 +49,6 @@ public:
 	LinFactura(company *);
 	LinFactura(company *, QString);
 	LinFactura(company *, cursor2 *);
-
 	/// La carga rapida tiene un comportamiento poco restrictivo para aumentar
 	/// la eficiencia.
 	LinFactura(company *comp, QString idlfactura, QString desclfactura,
