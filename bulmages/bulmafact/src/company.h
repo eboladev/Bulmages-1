@@ -17,26 +17,22 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef COMPANY_H
 #define COMPANY_H
 
-#include <QWorkspace>
-#include "postgresiface2.h"
 #include <QObject>
+#include <QWorkspace>
 
+#include "postgresiface2.h"
 #include "listventanas.h"
 
-/**
-Company class gives the application something like a standard interface to access each company in the same way.
-@author Tomeu Borras
-*/
 
 class providerslist;
 class ClientsList;
 class ClientEdit;
 class articleslist;
 class orderslist;
-// class delivnoteslist;
 class BudgetsList;
 class ClientDelivNotesList;
 class FacturasList;
@@ -46,84 +42,96 @@ class AlbaranesProveedor;
 class CobrosList;
 class FacturasProveedorList;
 class PagosList;
-
 class Budget;
 class FacturaView;
 class FacturaProveedorView;
 
 class company : public postgresiface2
 {
-private:
-  providerslist *m_providerslist;
-  ClientsList *m_clientsList;
-  articleslist *m_articleslist;
-  BudgetsList *m_budgetsList;
-  ClientDelivNotesList *m_clientDelivNotesList;
-  FacturasList *m_facturasList;
-  PedidosClienteList *m_pedidosclienteList;
-  PedidosProveedorList *m_pedidosproveedorList;
-  listventanas *m_listventanas;
-  AlbaranesProveedor *m_albaranesproveedor;
-  CobrosList *m_cobrosList;
-  FacturasProveedorList *m_facturasproveedorlist;
-  PagosList *m_pagosList;
-public:
-  //   QWidget *m_pWorkspace;
-  QWorkspace *m_pWorkspace;
-public:
-  company();
-  ~company();
-  void init(QString);
-  void setListVentanas(listventanas *doc) {m_listventanas= doc;};
-  void listproviders();
-  void listClients();
-  void newClient();
-  void s_newProveedor();
-  void listarticles();
-  void listorders();
-  void lAlbaranesProveedor();
-  void listBudgets();
-  void listClientDelivNotes();
-  void setWorkspace(QWorkspace *qw) {m_pWorkspace=qw;}
-  void newClientDelivNote();
-  void newPedidoCliente();
-  void newPedidoProveedor();
-  void createMainWindows();
-  void refreshArticles();
-  void refreshBudgets();
-  void refreshPedidosCliente();
-  void refreshPedidosProveedor();
-  void refreshClientDelivNotes();
-  void refreshAlbaranesCliente();
-  void refreshAlbaranesProveedor();
-  void refreshFacturas();
-  void refreshClientes();
-  int meteWindow(QString nom, QObject *obj) {return m_listventanas->meteWindow(nom, obj);};
-  void sacaWindow(QObject *nom) {m_listventanas->sacaWindow(nom);};
-  void s_FPago();
-  void s_Familias();
-  void s_trabajadores();
-  void s_seriesFactura();
-  void s_listPedidosCli();
-  void s_listFacturasCli();
-  void s_listPedidosPro();
-  void s_listFacturasPro();
 
-FacturaProveedorView* newFacturaProveedorView();
-  void s_newFacturaPro();
-  void s_newAlbaranPro();
-  void s_newPedidoPro();
-  Budget *newBudget();
-  void s_newPresupuestoCli();
-  void s_newPedidoCli();
-  void s_newAlbaranCli();
-  FacturaView *newFacturaView();
-  void s_newFacturaCli();
-  void s_newArticulo();
-  void s_provincias();
-  void s_inventarios();
-  void s_newInventario();
-  QString searchCompany();
+private:
+	providerslist *m_providerslist;
+	ClientsList *m_clientsList;
+	articleslist *m_articleslist;
+	BudgetsList *m_budgetsList;
+	ClientDelivNotesList *m_clientDelivNotesList;
+	FacturasList *m_facturasList;
+	PedidosClienteList *m_pedidosclienteList;
+	PedidosProveedorList *m_pedidosproveedorList;
+	listventanas *m_listventanas;
+	AlbaranesProveedor *m_albaranesproveedor;
+	CobrosList *m_cobrosList;
+	FacturasProveedorList *m_facturasproveedorlist;
+	PagosList *m_pagosList;
+
+public:
+	QWorkspace *m_pWorkspace;
+
+public:
+	company();
+	~company();
+	void init(QString);
+	void setListVentanas(listventanas *doc)
+	{
+		m_listventanas = doc;
+	};
+	void listproviders();
+	void listClients();
+	void newClient();
+	void s_newProveedor();
+	void listarticles();
+	void listorders();
+	void lAlbaranesProveedor();
+	void listBudgets();
+	void listClientDelivNotes();
+	void setWorkspace(QWorkspace *qw)
+	{
+		m_pWorkspace = qw;
+	}
+	void newClientDelivNote();
+	void newPedidoCliente();
+	void newPedidoProveedor();
+	void createMainWindows();
+	void refreshArticles();
+	void refreshBudgets();
+	void refreshPedidosCliente();
+	void refreshPedidosProveedor();
+	void refreshClientDelivNotes();
+	void refreshAlbaranesCliente();
+	void refreshAlbaranesProveedor();
+	void refreshFacturas();
+	void refreshClientes();
+	int meteWindow(QString nom, QObject *obj)
+	{
+		return m_listventanas->meteWindow(nom, obj);
+	};
+	void sacaWindow(QObject *nom)
+	{
+		m_listventanas->sacaWindow(nom);
+	};
+	void s_FPago();
+	void s_Familias();
+	void s_trabajadores();
+	void s_seriesFactura();
+	void s_listPedidosCli();
+	void s_listFacturasCli();
+	void s_listPedidosPro();
+	void s_listFacturasPro();
+	void s_newFacturaPro();
+	void s_newAlbaranPro();
+	void s_newPedidoPro();
+	void s_newPresupuestoCli();
+	void s_newPedidoCli();
+	void s_newAlbaranCli();
+	void s_newFacturaCli();
+	void s_newArticulo();
+	void s_provincias();
+	void s_inventarios();
+	void s_newInventario();
+	QString searchCompany();
+	FacturaProveedorView* newFacturaProveedorView();
+	Budget *newBudget();
+	FacturaView *newFacturaView();
 };
 
 #endif

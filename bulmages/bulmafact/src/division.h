@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás Riera                           *
- *   tborras@conetxia.com                                                     *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,17 +22,19 @@
 
 #include "divisionbase.h"
 
-/** @author Tomeu Borrás Riera */
+
 class company;
 
+class division : public divisionbase
+{
+	Q_OBJECT
 
-class division : public divisionbase {
-Q_OBJECT
 private:
-   company *companyact;
+	company *companyact;
+
 public:
-    division(company *emp, QWidget *parent = 0, const char *name = 0);
-    ~division();
+	division(company *emp, QWidget *parent = 0, const char *name = 0);
+	~division();
 };
 
 #endif

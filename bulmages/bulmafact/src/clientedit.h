@@ -17,40 +17,38 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- /** \file clientedit.h
-   * Este finchero tiene la implementaci� de la clase \ref ClientEdit que se encarga
-   * de la ventana de edici� de clientes
-   */
+
 #ifndef CLIENTEDIT_H
 #define CLIENTEDIT_H
 
 #include "clienteditbase.h"
 #include "dialogchanges.h"
 
-/**
-*    @author M. Mezo
-*/
+
 class company;
 
-class ClientEdit : public ClientEditBase, public dialogChanges {
-Q_OBJECT
+class ClientEdit : public ClientEditBase, public dialogChanges
+{
+	Q_OBJECT
+
 private:
-   company *companyact;
-   QString clientId;
-   
+	company *companyact;
+	QString clientId;
+
 public:
-    ClientEdit(company *emp, QWidget *parent = 0, const char *name = 0);
-    ~ClientEdit();
+	ClientEdit(company *emp, QWidget *parent = 0, const char *name = 0);
+	~ClientEdit();
     
 public:
-   int loadClient(QString client);
-   void saveClient();
-   void deleteClient();
+	int loadClient(QString client);
+	void saveClient();
+	void deleteClient();
 	void closeEvent( QCloseEvent *);
-   void emptyForm();
+	void emptyForm();
+
 public slots:
-   virtual void saveButton_clicked();
-   virtual void deleteButton_clicked();
+	virtual void saveButton_clicked();
+	virtual void deleteButton_clicked();
 };
 
 #endif

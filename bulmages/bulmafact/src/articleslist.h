@@ -71,7 +71,7 @@ public:
 	void presenta();
 	void Imprimir();
 	void editArticle(int);
-	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
+	/// Funciones que se encargan en guardar y cargar la configuracion del listado.
 	void guardaconfig();
 	void cargaconfig();
 	/// --
