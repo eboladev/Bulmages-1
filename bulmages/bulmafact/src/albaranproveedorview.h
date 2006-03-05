@@ -48,7 +48,9 @@ public:
 	AlbaranProveedorView(company *, QWidget *, const char *);
 	~AlbaranProveedorView();
 	void inicialize();
-	void pintaidalbaranp(QString);
+	void pintaidalbaranp(QString)
+	{
+	};
 	void pintanumalbaranp(QString val)
 	{
 		m_numalbaranp->setText(val);
@@ -135,7 +137,9 @@ public slots:
 	{
 		borraAlbaranProveedor();
 	};
-	virtual void s_printAlbaranProveedor();
+	virtual void s_printAlbaranProveedor()
+	{
+	};
 
 	/// Este slot se activa cuando hay cambios en los subformularios.
 	virtual void s_pintaTotales()

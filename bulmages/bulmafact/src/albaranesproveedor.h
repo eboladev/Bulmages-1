@@ -28,6 +28,7 @@
 #include "company.h"
 #include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
+#include "funcaux.h"
 
 
 class AlbaranesProveedor : public AlbaranesProveedorBase

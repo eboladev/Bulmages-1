@@ -111,6 +111,12 @@ public:
 	{
 		return listadescuentos;
 	};
+	void pintaAlbaranCliente();
+	void guardaAlbaranCliente();
+	void borraAlbaranCliente();
+	void calculaypintatotales();
+	void imprimirAlbaranCliente();
+	void vaciaAlbaranCliente();
 
 	/// Establece cual es la lista subformulario del presupuesto.
 	/// Normalmente para apuntar listlinpresupuestoview.
@@ -124,10 +130,6 @@ public:
 		listadescuentos = a;
 		listadescuentos->setcompany(companyact);
 	};
-	void pintaAlbaranCliente();
-	void guardaAlbaranCliente();
-	void borraAlbaranCliente();
-	void calculaypintatotales();
 	void setidalbaran(QString val)
 	{
 		setDBvalue("idalbaran",val);
@@ -190,27 +192,58 @@ public:
 	{
 		setDBvalue("procesadoalbaran",val);
 	};
-	void imprimirAlbaranCliente();
-	void vaciaAlbaranCliente();
-
 	virtual int cargaAlbaranCliente(QString);
-	virtual void pintaIdAlbaran(QString);
-	virtual void pintaNumAlbaran(QString);
-	virtual void pintafechaalbaran(QString);
-	virtual void pintaComentAlbaran(QString);
-	virtual void pintaComentPrivAlbaran(QString);
-	virtual void pintaidcliente(QString);
-	virtual void pintaidforma_pago(QString);
-	virtual void pintaIdFactura(QString);
-	virtual void pintaidalmacen(QString);
-	virtual void pintaNumFactura(QString);
-	virtual void pintadescalbaran(QString);
-	virtual void pintarefalbaran(QString);
-	virtual void pintaidtrabajador(QString);
-	virtual void pintacontactalbaran(QString);
-	virtual void pintatelalbaran(QString);
-	virtual void pintaprocesadoalbaran(QString);
-	virtual void pintatotales(Fixed, Fixed, Fixed, Fixed);
+	virtual void pintaIdAlbaran(QString)
+	{
+	};
+	virtual void pintaNumAlbaran(QString)
+	{
+	};
+	virtual void pintafechaalbaran(QString)
+	{
+	};
+	virtual void pintaComentAlbaran(QString)
+	{
+	};
+	virtual void pintaComentPrivAlbaran(QString)
+	{
+	};
+	virtual void pintaidcliente(QString)
+	{
+	};
+	virtual void pintaidforma_pago(QString)
+	{
+	};
+	virtual void pintaIdFactura(QString)
+	{
+	};
+	virtual void pintaidalmacen(QString)
+	{
+	};
+	virtual void pintaNumFactura(QString)
+	{
+	};
+	virtual void pintadescalbaran(QString)
+	{
+	};
+	virtual void pintarefalbaran(QString)
+	{
+	};
+	virtual void pintaidtrabajador(QString)
+	{
+	};
+	virtual void pintacontactalbaran(QString)
+	{
+	};
+	virtual void pintatelalbaran(QString)
+	{
+	};
+	virtual void pintaprocesadoalbaran(QString)
+	{
+	};
+	virtual void pintatotales(Fixed, Fixed, Fixed, Fixed)
+	{
+	};
 };
 
 #endif

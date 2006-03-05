@@ -51,7 +51,9 @@ class AlbaranClienteView : public AlbaranClienteBase, public AlbaranCliente,
 public:
 	AlbaranClienteView(company *, QWidget *, const char *);
 	~AlbaranClienteView();
-	void pintaIdAlbaran(QString);
+	void pintaIdAlbaran(QString)
+	{
+	};
 	void pintaNumAlbaran(QString val)
 	{
 		m_numalbaran->setText(val);
@@ -60,7 +62,9 @@ public:
 	{
 		m_fechaalbaran->setText(val);
 	};
-	void pintaIdUsuario(QString);
+	void pintaIdUsuario(QString)
+	{
+	};
 	void pintaComentAlbaran(QString val)
 	{
 		m_comentalbaran->setText(val);
@@ -77,7 +81,9 @@ public:
 	{
 		m_forma_pago->setidforma_pago(val);
 	};
-	void pintaIdFactura(QString);
+	void pintaIdFactura(QString)
+	{
+	};
 	void pintaidalmacen(QString id)
 	{
 		m_almacen->setidalmacen(id);
@@ -111,7 +117,9 @@ public:
 			m_procesadoalbaran->setChecked(FALSE);
 		}
 	};
-	void pintaNumFactura(QString);
+	void pintaNumFactura(QString)
+	{
+	};
 	void pintatotales(Fixed, Fixed, Fixed, Fixed);	
 	void generarFactura();
 	void agregarFactura();
@@ -185,7 +193,9 @@ public slots:
 	{
 		borraAlbaranCliente();
 	};
-	virtual void s_printAlbaranCliente();
+	virtual void s_printAlbaranCliente()
+	{
+	};
 
 	/// Este slot se activa cuando hay cambios en los subformularios.
 	virtual void s_pintaTotales()

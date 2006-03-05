@@ -66,16 +66,36 @@ public:
 		return listadescuentos;
 	};
 	virtual int cargaAlbaranProveedor(QString);
-	virtual void pintaidalbaranp(QString);
-	virtual void pintanumalbaranp(QString);
-	virtual void pintafechaalbaranp(QString);
-	virtual void pintacomentalbaranp(QString);
-	virtual void pintaidproveedor(QString);
-	virtual void pintaidforma_pago(QString);
-	virtual void pintaidalmacen(QString);
-	virtual void pintadescalbaranp(QString);
-	virtual void pintarefalbaranp(QString);
-	virtual void pintatotales(float, float);
+	virtual void pintaidalbaranp(QString)
+	{
+	};
+	virtual void pintanumalbaranp(QString)
+	{
+	};
+	virtual void pintafechaalbaranp(QString)
+	{
+	};
+	virtual void pintacomentalbaranp(QString)
+	{
+	};
+	virtual void pintaidproveedor(QString)
+	{
+	};
+	virtual void pintaidforma_pago(QString)
+	{
+	};
+	virtual void pintaidalmacen(QString)
+	{
+	};
+	virtual void pintadescalbaranp(QString)
+	{
+	};
+	virtual void pintarefalbaranp(QString)
+	{
+	};
+	virtual void pintatotales(float, float)
+	{
+	};
 	void setidalbaranp(QString val)
 	{
 		setDBvalue("idalbaranp",val);
