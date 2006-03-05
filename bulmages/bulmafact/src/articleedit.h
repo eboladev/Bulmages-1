@@ -17,6 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef ARTICLEEDIT_H
 #define ARTICLEEDIT_H
 
@@ -24,34 +25,35 @@
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 
-/** @author Alvaro de Miguel */
+
 class company;
 
+class articleedit : public articleeditbase, public dialogChanges
+{
+	Q_OBJECT
 
-class articleedit : public articleeditbase, public dialogChanges {
-    Q_OBJECT
 private:
-    company *companyact;
-    QString idArticle;
-    cursor2 *m_cursorcombo;
-    QString m_archivoimagen;
+	QString idArticle;
+	QString m_archivoimagen;
+	company *companyact;
+	cursor2 *m_cursorcombo;
 
 public:
-    articleedit(company *emp, QWidget *parent = 0, const char *name = 0);
-    ~articleedit();
+	articleedit(company *emp, QWidget *parent = 0, const char *name = 0);
+	~articleedit();
 
 public:
-    int chargeArticle(QString);
-    int articleedit::cargarcomboiva(QString);
-    void closeEvent( QCloseEvent *);
+	int chargeArticle(QString);
+	int articleedit::cargarcomboiva(QString);
+	void closeEvent( QCloseEvent *);
 
 public slots:
-    virtual void accept();
-    virtual void boton_nuevo();
-    virtual void boton_borrar();
-    virtual void s_findArticulo();
-    virtual void s_grabarClicked();
-    virtual void s_cambiarimagen();
+	virtual void accept();
+	virtual void boton_nuevo();
+	virtual void boton_borrar();
+	virtual void s_findArticulo();
+	virtual void s_grabarClicked();
+	virtual void s_cambiarimagen();
 };
 
 #endif

@@ -17,101 +17,127 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef ARTICLESLIST_H
 #define ARTICLESLIST_H
 
-#include "articleslistbase.h"
 #include <Q3Frame>
+
+#include "articleslistbase.h"
 #include "company.h"
 #include "pgimportfiles.h"
 
-class articleslist : public articleslistbase, public pgimportfiles {
-    Q_OBJECT
+
+class articleslist : public articleslistbase, public pgimportfiles
+{
+	Q_OBJECT
+
 public:
-    enum edmode {EditMode=0, SelectMode=1};
+	enum edmode
+	{
+		EditMode = 0, SelectMode = 1
+	};
+
 private:
-    company *companyact;
-    edmode m_modo;
-    QString m_idArticle;
-    QString mdb_nomarticulo;
-    QString mdb_codigocompletoarticulo;
-    void inicializa();
+	QString m_idArticle;
+	QString mdb_nomarticulo;
+	QString mdb_codigocompletoarticulo;
+	company *companyact;
+	edmode m_modo;
+	void inicializa();
 
 public:
-    articleslist(company *, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0, edmode editmodo=EditMode);
-    void presenta();
-    void modoseleccion() {
-        m_modo=SelectMode;
-    };
-    void modoedicion() {
-        m_modo=EditMode;
-    };
-    QString idArticle() {
-        return m_idArticle;
-    };
-    QString idarticulo() {
-        return m_idArticle;
-    };
-    QString nomarticulo() {
-        return mdb_nomarticulo;
-    };
-    QString codigocompletoarticulo() {
-        return mdb_codigocompletoarticulo;
-    };
-    ~articleslist();
-    void Imprimir();
-    QString formaQuery();
-    QString detalleArticulos();
-    void hideBusqueda() {
-        m_busqueda->hide();
-    };
-    void showBusqueda() {
-        m_busqueda->show();
-    };
-    void hideConfiguracion() {
-        m_configuracion->hide();
-    };
-    void showConfiguracion() {
-        m_configuracion->show();
-    };
-    void editArticle(int);
-    /// Funciones que se encarga en guardar y cargar la configuracion del listado.
-    void guardaconfig();
-    void cargaconfig();
+	articleslist(company *, QWidget *parent = 0, const char *name = 0,
+		Qt::WFlags flag = 0, edmode editmodo = EditMode);
+	~articleslist();
+	QString formaQuery();
+	QString detalleArticulos();
+	QString idArticle()
+	{
+		return m_idArticle;
+	};
+	QString idarticulo()
+	{
+		return m_idArticle;
+	};
+	QString nomarticulo()
+	{
+		return mdb_nomarticulo;
+	};
+	QString codigocompletoarticulo()
+	{
+		return mdb_codigocompletoarticulo;
+	};
+	void presenta();
+	void Imprimir();
+	void editArticle(int);
+	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
+	void guardaconfig();
+	void cargaconfig();
+	/// --
+	void modoseleccion()
+	{
+		m_modo = SelectMode;
+	};
+	void modoedicion()
+	{
+		m_modo = EditMode;
+	};
+	void hideBusqueda()
+	{
+		m_busqueda->hide();
+	};
+	void showBusqueda()
+	{
+		m_busqueda->show();
+	};
+	void hideConfiguracion()
+	{
+		m_configuracion->hide();
+	};
+	void showConfiguracion()
+	{
+		m_configuracion->show();
+	};
+
 public slots:
-
-    virtual void newArticle() {
-        companyact->s_newArticulo();
-    };
-    virtual void removeArticle();
-    virtual void s_imprimir() {
-        Imprimir();
-    };
-    virtual void s_filtrar() {
-        presenta();
-    };
-    virtual void s_configurar();
-    virtual void s_imprimir1();
-    virtual void s_editArticle(int, int, int, const QPoint &);
-    virtual void s_editArticle();
-
-    virtual void s_importar();
-    virtual void s_exportar();
-
-    virtual void s_mostrarBusqueda() {
-        if (m_busqueda->isVisible())
-            hideBusqueda();
-        else
-            showBusqueda();
-    }
-    ;
-    virtual void s_mostrarConfiguracion() {
-        if (m_configuracion->isVisible())
-            hideConfiguracion();
-        else
-            showConfiguracion();
-    }
-    ;
+	virtual void s_configurar();
+	virtual void s_imprimir1();
+	virtual void s_editArticle(int, int, int, const QPoint &);
+	virtual void s_editArticle();
+	virtual void s_importar();
+	virtual void s_exportar();
+	virtual void removeArticle();
+	virtual void newArticle()
+	{
+		companyact->s_newArticulo();
+	};
+	virtual void s_imprimir()
+	{
+		Imprimir();
+	};
+	virtual void s_filtrar()
+	{
+		presenta();
+	};
+	virtual void s_mostrarBusqueda()
+	{
+		if (m_busqueda->isVisible())
+		{
+			hideBusqueda();
+		} else {
+			showBusqueda();
+		}
+	};
+	virtual void s_mostrarConfiguracion()
+	{
+		if (m_configuracion->isVisible())
+		{
+			hideConfiguracion();
+		} else {
+			showConfiguracion();
+		}
+	};
 };
 
 #endif
