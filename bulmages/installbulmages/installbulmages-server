@@ -16,7 +16,7 @@
 #db_input low foo/bar || true
 #db_go || true
 
-version="v0.5.1 - server"
+version="v0.5.9 - server"
 direj=$(pwd)
 
 
