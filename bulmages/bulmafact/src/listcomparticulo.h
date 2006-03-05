@@ -51,7 +51,7 @@ public:
 	void vaciar();
 	virtual void pintaListCompArticulo()
 	{
-		_depura("La funcion pintaListCompArticulo aun no ha sido implementada." 0);
+		_depura("La funcion pintaListCompArticulo aun no ha sido implementada.", 0);
 	};
 	void cargaListCompArticulo(QString);
 	void borrar();

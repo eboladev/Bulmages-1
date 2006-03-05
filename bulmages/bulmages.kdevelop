@@ -77,7 +77,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmacont/src/contabilidad</activedir>
+      <activedir>bulmacont/src/pluginregistroiva</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

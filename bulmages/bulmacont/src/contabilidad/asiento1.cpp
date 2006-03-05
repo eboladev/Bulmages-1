@@ -174,7 +174,6 @@ int Asiento1::guardaAsiento1() {
     error = listalineas->guardaListLinAsiento1();
     if (error)
         return -1;
-//    buscaFactura();
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
 	_depura("END Asiento1::guardaAsiento1",0);
@@ -183,34 +182,4 @@ int Asiento1::guardaAsiento1() {
 
 
 
-/**
-  * Buscamos en el asiento si hay indicios de una factura y actuamos en consecuencia.
-  */
-/*
-void Asiento1::buscaFactura() {
-    QString cuentas="";
-    QString query = "SELECT valor FROM configuracion WHERE nombre='RegistroEmitida' OR nombre='RegistroSoportada'";
-    cursor2 *curvalor = m_companyact->cargacursor(query);
-    while (!curvalor->eof()) {
-        cuentas += curvalor->valor("valor")+"%|"; // Preparamos una expresión regular para usar en la consulta
-        curvalor->siguienteregistro();
-    }// end while
-    delete curvalor;
-    cuentas.truncate(cuentas.length()-1); // Le quitamos el último '|' que nos sobra
 
-    /// Recorremos la tabla en busca de entradas de factura no introducidas y las preguntamos antes de cerrar nada.
-    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta WHERE idasiento="+DBvalue("idasiento")+" AND codigo SIMILAR TO '"+m_companyact->sanearCadena(cuentas.ascii())+"' GROUP BY contra";
-
-    cursor2 *cursborr= m_companyact->cargacursor(SQLQuery);
-    while (!cursborr->eof()) {
-        int idborrador = cursborr->valor("contra").toInt();
-        ivaview *regivaview=new ivaview(m_companyact,0,"");
-        regivaview->inicializa1(idborrador);
-        regivaview->exec();
-        delete regivaview;
-        cursborr->siguienteregistro();
-    }// end while
-    delete cursborr;
-}// end buscaFactura
-
-*/

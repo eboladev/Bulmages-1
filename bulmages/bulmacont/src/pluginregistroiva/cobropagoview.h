@@ -20,7 +20,7 @@
 #ifndef COBROPAGOVIEW_H
 #define COBROPAGOVIEW_H
 
-#include <cobropagodlg.h>
+#include "cobropagodlg.h"
 
 /**
   * @author Tomeu Borrás Riera 

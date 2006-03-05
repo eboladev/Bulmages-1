@@ -58,7 +58,7 @@ public:
 	};
 	void setcompany(company *c)
 	{
-		_depura("ListControlStock setCompany." 0);
+		_depura("ListControlStock setCompany.", 0);
 		companyact = c;
 		_depura("ListControlStock fin de setCompany.", 0);
 	};
