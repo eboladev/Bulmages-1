@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borr� Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,11 +17,16 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef PAGOVIEW_H
 #define PAGOVIEW_H
 
-// PRESUPUESTOS.
+#include <QLineEdit>
+#include <Q3TextEdit>
+#include <QLabel>
+#include <QCheckBox>
 
+// Presupuestos.
 #include "pagobase.h"
 #include "postgresiface2.h"
 #include "pago.h"
@@ -29,48 +34,89 @@
 #include "busquedafecha.h"
 #include "dialogchanges.h"
 
-#include <QLineEdit>
-#include <Q3TextEdit>
-#include <QLabel>
-#include <QCheckBox>
 
-/** @author Tomeu Borr� Riera */
 class company;
 
-class PagoView : public PagoBase , public Pago, public dialogChanges  {
-    Q_OBJECT
+class PagoView : public PagoBase, public Pago, public dialogChanges
+{
+	Q_OBJECT
+
 public:
-    PagoView(company *, QWidget *, const char *);
-    ~PagoView();
-    void inicialize();
-    void manageArticle(int);  
-	void closeEvent( QCloseEvent *); 
-
-void	pintafechapago(QString id) {	m_fechapago->setText(id);};
-void	pintacomentpago(QString id) {m_comentpago->setText(id);};
-void    pintaidproveedor(QString id) {m_proveedor->setidproveedor(id);};
-void    pintarefpago(QString id) {m_refpago->setText(id);};
-void    pintacantpago(QString id) {m_cantpago->setText(id);};
-void    pintaprevisionpago(QString id) {
-	if (id == "t" || id == "TRUE") m_previsionpago->setChecked(TRUE);
-	else m_previsionpago->setChecked(FALSE);
-};
-
+	PagoView(company *, QWidget *, const char *);
+	~PagoView();
+	void inicialize();
+	void manageArticle(int);  
+	void closeEvent(QCloseEvent *);
+	void pintafechapago(QString id)
+	{
+		m_fechapago->setText(id);
+	};
+	void pintacomentpago(QString id)
+	{
+		m_comentpago->setText(id);
+	};
+	void pintaidproveedor(QString id)
+	{
+		m_proveedor->setidproveedor(id);
+	};
+	void pintarefpago(QString id)
+	{
+		m_refpago->setText(id);
+	};
+	void pintacantpago(QString id)
+	{
+		m_cantpago->setText(id);
+	};
+	void pintaprevisionpago(QString id)
+	{
+		if (id == "t" || id == "TRUE")
+		{
+			m_previsionpago->setChecked(TRUE);
+		} else {
+			m_previsionpago->setChecked(FALSE);
+		}
+	};
 
 public slots:
-    virtual void s_savePagoView() {guardaPago();};
-    virtual void s_cargaPagoView(QString id) {Pago::cargaPago(id);setCaption("Pago "+DBvalue("refpago"));};
-    virtual void s_removePagoView();
-    virtual void s_comentpagotextChanged(const QString &str) {setcomentpago(str);};
-    virtual void s_refpagotextChanged(const QString &str) {setrefpago(str);};
-    virtual void s_cantpagotextChanged(const QString &str) {setcantpago(str);};
-    
-    virtual void s_previsionpagostateChanged(int i) {
-    	if (i) setprevisionpago("TRUE");
-	else setprevisionpago("FALSE");
-    }    
-    virtual void s_proveedorvalueChanged(QString id) {setidproveedor(id);};
-    virtual void s_fechapagovalueChanged(QString id) {setfechapago(id);};
+	virtual void s_savePagoView()
+	{
+		guardaPago();
+	};
+	virtual void s_cargaPagoView(QString id)
+	{
+		Pago::cargaPago(id);
+		setCaption("Pago " + DBvalue("refpago"));
+	};
+	virtual void s_removePagoView();
+	virtual void s_comentpagotextChanged(const QString &str)
+	{
+		setcomentpago(str);
+	};
+	virtual void s_refpagotextChanged(const QString &str)
+	{
+		setrefpago(str);
+	};
+	virtual void s_cantpagotextChanged(const QString &str)
+	{
+		setcantpago(str);
+	};
+	virtual void s_previsionpagostateChanged(int i)
+	{
+		if (i)
+		{
+			setprevisionpago("TRUE");
+		} else {
+			setprevisionpago("FALSE");
+		}
+	}
+	virtual void s_proveedorvalueChanged(QString id)
+	{
+		setidproveedor(id);
+	};
+	virtual void s_fechapagovalueChanged(QString id)
+	{
+		setfechapago(id);
+	};
 };
 
 #endif
