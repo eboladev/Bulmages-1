@@ -1,23 +1,27 @@
-//
-// C++ Interface: ListLinFacturaProveedorView
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #ifndef LISTLINFACTURAPVIEW_H
 #define LISTLINFACTURAPVIEW_H
 
-/**
-@author Tomeu Borras
-*/
-
 #include <Q3Table>
-//Added by qt3to4:
 #include <QEvent>
 
 #include "listlinfacturap.h"
@@ -25,27 +29,27 @@
 #include "linfacturap.h"
 
 
+class ListLinFacturaProveedorView : public Q3Table , public ListLinFacturaProveedor
+{
+	Q_OBJECT
 
-
-class ListLinFacturaProveedorView : public Q3Table , public ListLinFacturaProveedor {
-Q_OBJECT
 public:
-    ListLinFacturaProveedorView(QWidget *parent=0, const char *name=0);
-    ~ListLinFacturaProveedorView();
-    virtual void pintaListLinFacturaProveedor();
-    virtual void pintalinListLinFacturaProveedor(int);
-    virtual bool eventFilter( QObject *obj, QEvent *ev );
-    LinFacturaProveedor *lineaat(int);
-    LinFacturaProveedor *lineaact();
+	ListLinFacturaProveedorView(QWidget *parent = 0, const char *name = 0);
+	~ListLinFacturaProveedorView();
+	virtual void pintaListLinFacturaProveedor();
+	virtual void pintalinListLinFacturaProveedor(int);
+	virtual bool eventFilter(QObject *obj, QEvent *ev);
+	LinFacturaProveedor *lineaat(int);
+	LinFacturaProveedor *lineaact();
 	void cargaconfig();
 	void guardaconfig();
 
 public slots:
-    virtual void valueBudgetLineChanged(int row, int col);
-    virtual QString searchArticle();
-    virtual void manageArticle(int row);
-    virtual void contextMenu ( int , int , const QPoint &  );
-    virtual void borraLinFacturaProveedoract();
+	virtual void valueBudgetLineChanged(int row, int col);
+	virtual QString searchArticle();
+	virtual void manageArticle(int row);
+	virtual void contextMenu (int, int, const QPoint &);
+	virtual void borraLinFacturaProveedoract();
 };
 
 #endif

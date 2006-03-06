@@ -1,67 +1,95 @@
-//
-// C++ Interface: Pago
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #ifndef PAGO_H
 #define PAGO_H
 
-/*
-CREATE TABLE pago (
-   idpago serial PRIMARY KEY,
-   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
-   fechapago date DEFAULT NOW(),
-   cantpago numeric(12,2) DEFAULT 0,
-   refpago character varying(12) NOT NULL,
-   previsionpago boolean DEFAULT FALSE,
-   comentpago character varying(500),
-   idtrabajador integer REFERENCES trabajador(idtrabajador)   
-);
-*/
-
-
 #include <QString>
 
-/** @author Tomeu Borras
-  * \brief Clase que hace de intermediaria entre la tabla de Pago de la base de datos y el programa.
-*/
 #include "company.h"
 #include "dbrecord.h"
 
 
-class Pago : public DBRecord {
+class Pago : public DBRecord
+{
+
 protected:
-    company *companyact;
+	company *companyact;
 
 public:
-    Pago(company *);
-    virtual ~Pago();
-    virtual void cargaPago(QString );
-    void pintaPago();
-    void guardaPago();
-    void borraPago();
-     void vaciaPago();   
-    
-    virtual void pintaidpago(QString) {};
-    virtual void pintaidproveedor(QString) {};
-    virtual void pintafechapago(QString) {};
-    virtual void pintacantpago(QString) {};
-    virtual void pintarefpago(QString) {};
-    virtual void pintaprevisionpago(QString) {};
-    virtual void pintacomentpago(QString) {};
-
-    void setidpago(QString val) { setDBvalue("idpago",val);};
-    void setidproveedor(QString val) {setDBvalue("idproveedor",val);};
-    void setfechapago(QString val) { setDBvalue("fechapago",val);};
-    void setcantpago(QString val) { setDBvalue("cantpago",val);};
-    void setrefpago(QString val) { setDBvalue("refpago",val);};
-    void setprevisionpago(QString val) { setDBvalue("previsionpago",val);};
-    void setcomentpago(QString val) { setDBvalue("comentpago",val);};
+	Pago(company *);
+	virtual ~Pago();
+	virtual void cargaPago(QString);
+	void pintaPago();
+	void guardaPago();
+	void borraPago();
+	void vaciaPago();   
+	virtual void pintaidpago(QString)
+	{
+	};
+	virtual void pintaidproveedor(QString)
+	{
+	};
+	virtual void pintafechapago(QString)
+	{
+	};
+	virtual void pintacantpago(QString)
+	{
+	};
+	virtual void pintarefpago(QString)
+	{
+	};
+	virtual void pintaprevisionpago(QString)
+	{
+	};
+	virtual void pintacomentpago(QString)
+	{
+	};
+	void setidpago(QString val)
+	{
+		setDBvalue("idpago", val);
+	};
+	void setidproveedor(QString val)
+	{
+		setDBvalue("idproveedor", val);
+	};
+	void setfechapago(QString val)
+	{
+		setDBvalue("fechapago", val);
+	};
+	void setcantpago(QString val)
+	{
+		setDBvalue("cantpago", val);
+	};
+	void setrefpago(QString val)
+	{
+		setDBvalue("refpago", val);
+	};
+	void setprevisionpago(QString val)
+	{
+		setDBvalue("previsionpago", val);
+	};
+	void setcomentpago(QString val)
+	{
+		setDBvalue("comentpago", val);
+	};
 };
+
 #endif

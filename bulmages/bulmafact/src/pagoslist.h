@@ -17,15 +17,17 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef PAGOSLIST_H
 #define PAGOSLIST_H
+
+#include <QLineEdit>
+#include <Q3Table>
 
 // Listado de presupuestos.
 #include "pagoslistbase.h"
 #include "company.h"
 #include "busquedaproveedor.h"
-#include <QLineEdit>
-#include <Q3Table>
 
 
 class PagosList : public PagosListBase {

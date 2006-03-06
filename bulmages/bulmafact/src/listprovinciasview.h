@@ -19,24 +19,25 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef LISTPROVINCIASVIEW_H
 #define LISTPROVINCIASVIEW_H
 
-// PROVINCIAS
-
 #include "ui_listprovincias.h"
 
-/** @author Tomeu Borras Riera & Fco. Javier M. C. */
+
 class company;
 
-class ListProvinciasView : public QDialog, private Ui::ListProvinciasBase {
+class ListProvinciasView : public QDialog, private Ui::ListProvinciasBase
+{
 	Q_OBJECT
+
 public:
 	company *companyact;
-public:
-	ListProvinciasView(company *, QDialog *parent=0);
-	~ListProvinciasView();
 
+public:
+	ListProvinciasView(company *, QDialog *parent = 0);
+	~ListProvinciasView();
 	void inicializa();
 	int guardalinea(int);
 

@@ -1,66 +1,132 @@
-// (C) Tomeu Borr� Riera, Febrero 2005
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 #ifndef __LISTVENTANAS__
 #define __LISTVENTANAS__
+
 #include <q3dockwindow.h>
 //#include <QDockWidget>
-
 #include <Q3ListBox>
 #include <Q3ListBoxItem>
 
 
+class Q3ListBox1 : public Q3ListBox
+{
+	Q_OBJECT
 
-class Q3ListBox1 : public Q3ListBox {
-Q_OBJECT
 public:
-	Q3ListBox1 ( QWidget * parent = 0, const char * name = 0, Qt::WFlags f = 0 ) : Q3ListBox (parent, name, f) {};
-	~Q3ListBox1(){};
-	void pintaitem(int i) {updateItem(i);};
-	void pintaitem(Q3ListBoxItem *j) {updateItem(j);};
+	Q3ListBox1 (QWidget * parent = 0, const char * name = 0, Qt::WFlags f = 0):
+			Q3ListBox (parent, name, f)
+	{
+	};
+	~Q3ListBox1()
+	{
+	};
+	void pintaitem(int i)
+	{
+		updateItem(i);
+	};
+	void pintaitem(Q3ListBoxItem *j)
+	{
+		updateItem(j);
+	};
 };
 
 
-class Q3ListBoxItem1 : public Q3ListBoxPixmap {
+class Q3ListBoxItem1 : public Q3ListBoxPixmap
+{
+
 private:
 	QObject *m_obj;
 	QString m_nombre;
 	Q3ListBox1 *m_list;
+
 public:
-	Q3ListBoxItem1(Q3ListBox1 *l,QPixmap &p) : Q3ListBoxPixmap(l,p) {m_list=l;};
-	~Q3ListBoxItem1(){};
-	void setObject(QObject *m) {m_obj=m;};
-	void setNombre(QString m) {m_nombre=m;setText(m);m_list->pintaitem(this);};
-	QObject *object() {return m_obj;};
-	QString nombre() {return m_nombre;};
-	void paint ( QPainter * p ){Q3ListBoxPixmap::paint ( p );};
-	int height ( const Q3ListBox * lb ) {return Q3ListBoxPixmap::height ( lb );};
-	int width ( const Q3ListBox * lb ) {return Q3ListBoxPixmap::width ( lb );};
+	Q3ListBoxItem1(Q3ListBox1 *l, QPixmap &p): Q3ListBoxPixmap(l, p)
+	{
+		m_list = l;
+	};
+	~Q3ListBoxItem1()
+	{
+	};
+	void setObject(QObject *m)
+	{
+		m_obj = m;
+	};
+	void setNombre(QString m)
+	{
+		m_nombre = m;
+		setText(m);
+		m_list->pintaitem(this);
+	};
+	QObject *object()
+	{
+		return m_obj;
+	};
+	QString nombre()
+	{
+		return m_nombre;
+	};
+	void paint(QPainter * p)
+	{
+		Q3ListBoxPixmap::paint(p);
+	};
+	int height(const Q3ListBox * lb)
+	{
+		return Q3ListBoxPixmap::height(lb);
+	};
+	int width(const Q3ListBox * lb)
+	{
+		return Q3ListBoxPixmap::width(lb);
+	};
 };
 
 
 /** \brief Provides the dock window to list all windows in BulmaFact
- ** \param m_listBox this variable is the listBox that contains all titles of the diferent windows.
+ ** \param m_listBox this variable is the listBox that contains all \
+			titles of the diferent windows.
 */
-class listventanas : public Q3DockWindow {
+class listventanas : public Q3DockWindow
+{
 //class listventanas : public QDockWidget {
-Q_OBJECT
+	Q_OBJECT
+
 private:
-	Q3ListBox1 *m_listBox ;
+	Q3ListBox1 *m_listBox;
+
 public:
-	listventanas(const QString & title, QWidget *a=0, Qt::WFlags b=0);
+	listventanas(const QString & title, QWidget *a = 0, Qt::WFlags b = 0);
 	~listventanas();
-	public:
+
+public:
 	int meteWindow(QString, QObject *);
 	void sacaWindow(QObject *);
+
 public slots:
 	virtual void dclicked();
 	virtual void clicked();
-//	virtual bool close() {hide();return FALSE ;};
+	//virtual bool close()
+	//{
+	//	hide();
+	//	return FALSE ;
+	//};
 };
 
-
-
-
-
 #endif
-

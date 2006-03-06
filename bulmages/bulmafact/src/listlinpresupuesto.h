@@ -1,65 +1,76 @@
-//
-// C++ Interface: listlinpresupuesto
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #ifndef LISTLINPRESUPUESTO_H
 #define LISTLINPRESUPUESTO_H
 
 #include <QObject>
-//Added by qt3to4:
 #include <Q3PtrList>
-
-/**
-@author Tomeu Borras
-*/
 
 #include "company.h"
 #include "linpresupuesto.h"
 #include "funcaux.h"
 
-class listlinpresupuesto {
+
+class listlinpresupuesto
+{
+
 public:
-    company *companyact;
-    QString mdb_idpresupuesto;
-    Q3PtrList<linpresupuesto> m_lista;
+	company *companyact;
+	QString mdb_idpresupuesto;
+	Q3PtrList<linpresupuesto> m_lista;
+
 public:
-   
-    listlinpresupuesto(company *comp);
-    listlinpresupuesto();
-    void setcompany(company *c) {
-       fprintf(stderr,"listlinpresupuesto setCompany\n");
-       companyact=c;
-       fprintf(stderr,"listlinpresupuesto  fin de setCompany\n");
-    };
-    virtual ~listlinpresupuesto();
-    void guardalistlinpresupuesto();
-    void vaciar();
-    virtual void pintalistlinpresupuesto() {
-        _depura("Esta funcion aun no ha sido implementada\n",2);
-    };
-    int chargeBudgetLines(QString);
-    void borrar();
-    void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString);
-    linpresupuesto *linpos(int);
-    float calculabase();
-    float calculaiva();
-    void borralinpresupuesto(int);
-    void setidpresupuesto(QString id) {
-        mdb_idpresupuesto=id;
-        linpresupuesto *linea;
-        uint i = 0;
-        for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-            linea->setidpresupuesto(mdb_idpresupuesto);
-            i++;
-        }// end for
-    };    
+	listlinpresupuesto(company *comp);
+	listlinpresupuesto();
+	virtual ~listlinpresupuesto();
+	void setcompany(company *c)
+	{
+		_depura("listlinpresupuesto setCompany.", 0);
+		companyact = c;
+		_depura("listlinpresupuesto fin de setCompany.", 0);
+	};
+	void guardalistlinpresupuesto();
+	void vaciar();
+	virtual void pintalistlinpresupuesto()
+	{
+		_depura("Esta funcion aun no ha sido implementada\n", 2);
+	};
+	int chargeBudgetLines(QString);
+	void borrar();
+	void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString);
+	linpresupuesto *linpos(int);
+	float calculabase();
+	float calculaiva();
+	void borralinpresupuesto(int);
+	void setidpresupuesto(QString id)
+	{
+		mdb_idpresupuesto = id;
+		linpresupuesto *linea;
+		uint i = 0;
+		for (linea = m_lista.first(); linea; linea = m_lista.next())
+		{
+			linea->setidpresupuesto(mdb_idpresupuesto);
+			i++;
+		};
+	};
 };
 
 #endif

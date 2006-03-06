@@ -1,62 +1,74 @@
-//
-// C++ Interface: ListDescuentoPresupuesto
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #ifndef LISTDESCPRESUPUESTO_H
 #define LISTDESCPRESUPUESTO_H
 
 #include <QObject>
-//Added by qt3to4:
 #include <Q3PtrList>
-
-/**
-@author Tomeu Borras
-*/
 
 #include "company.h"
 #include "descpresupuesto.h"
+#include "funcaux.h"
 
-class ListDescuentoPresupuesto {
-public:
-    company *companyact;
-    QString mdb_idpresupuesto;
-    Q3PtrList<DescuentoPresupuesto> m_lista;
-public:
+class ListDescuentoPresupuesto
+{
 
-    ListDescuentoPresupuesto(company *comp);
-    ListDescuentoPresupuesto();
-    void setcompany(company *c) {
-        fprintf(stderr,"ListDescuentoPresupuesto setCompany\n");
-        companyact=c;
-        fprintf(stderr,"ListDescuentoPresupuesto  fin de setCompany\n");
-    };
-    virtual ~ListDescuentoPresupuesto();
-    void guardaListDescuentoPresupuesto();
-    void vaciar();
-    virtual void pintaListDescuentoPresupuesto() {
-        fprintf(stderr,"La funci� pintaListDescuentoPresupuesto aun no ha sido implementada\n");
-    };
-    int cargaDescuentos(QString);
-    void borrar();
-    void nuevalinea(QString concept, QString propor);
-    DescuentoPresupuesto *linpos(int);
-    void borraDescuentoPresupuesto(int);
-    void setidpresupuesto(QString id) {
-        mdb_idpresupuesto=id;
-        DescuentoPresupuesto *linea;
-        uint i = 0;
-        for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-            linea->setidpresupuesto(mdb_idpresupuesto);
-            i++;
-        }// end for
-    };
+public:
+	company *companyact;
+	QString mdb_idpresupuesto;
+	Q3PtrList<DescuentoPresupuesto> m_lista;
+
+public:
+	ListDescuentoPresupuesto(company *comp);
+	ListDescuentoPresupuesto();
+	virtual ~ListDescuentoPresupuesto();
+	void setcompany(company *c)
+	{
+		_depura("ListDescuentoPresupuesto setCompany.", 0);
+		companyact = c;
+		_depura("ListDescuentoPresupuesto fin de setCompany.", 0);
+	};
+	void guardaListDescuentoPresupuesto();
+	void vaciar();
+	virtual void pintaListDescuentoPresupuesto()
+	{
+		_depura("La funcion pintaListDescuentoPresupuesto aun \
+				no ha sido implementada.", 0);
+	};
+	int cargaDescuentos(QString);
+	void borrar();
+	void nuevalinea(QString concept, QString propor);
+	DescuentoPresupuesto *linpos(int);
+	void borraDescuentoPresupuesto(int);
+	void setidpresupuesto(QString id)
+	{
+		mdb_idpresupuesto = id;
+		DescuentoPresupuesto *linea;
+		uint i = 0;
+		for (linea = m_lista.first(); linea; linea = m_lista.next())
+		{
+			linea->setidpresupuesto(mdb_idpresupuesto);
+			i++;
+		};
+	};
 };
 
 #endif
