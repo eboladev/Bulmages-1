@@ -463,13 +463,13 @@ DROP FUNCTION aux() CASCADE;
 
 SELECT drop_if_exists_proc ('restriccioneslfactura','');
 CREATE OR REPLACE FUNCTION restriccioneslfactura() RETURNS "trigger"
-    AS $$
+AS '
 DECLARE
 asd RECORD;
 reg RECORD;
 BEGIN
 	IF NEW.idarticulo IS NULL THEN
-	RAISE EXCEPTION 'ARTICULO INVALIDO';
+	RAISE EXCEPTION ''ARTICULO INVALIDO'';
 	return OLD;
 	END IF;
 
@@ -494,7 +494,7 @@ BEGIN
 	END LOOP;	
         RETURN NEW;
 END;
-$$
+'
     LANGUAGE plpgsql;
 
 CREATE TRIGGER restriccionesalfacturatrigger
@@ -736,6 +736,81 @@ CREATE TRIGGER restriccionesfacturaptrigger
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesfacturap();
 \echo "Creamos restricciones para facturas a proveedores"
+
+
+-- ================================== MODULO DE TARIFAS ================================
+-- =====================================================================================
+
+SELECT drop_if_exists_proc ('restriccionestarifa','');
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_tables  WHERE tablename=''tipo_tarifa'';
+	IF FOUND THEN
+		DROP TABLE tipo_tarifa CASCADE;
+		DROP TABLE tarifa CASCADE;
+	END IF;
+
+	SELECT INTO as * FROM pg_tables  WHERE tablename=''tarifa'';
+	IF NOT FOUND THEN
+		CREATE TABLE tarifa (
+			idtarifa serial PRIMARY KEY,
+			nomtarifa varchar(60),
+			finiciotarifa date,
+			ffintarifa date
+		);
+		CREATE TABLE ltarifa (
+			idltarifa serial PRIMARY KEY,
+			idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+			idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+			idtarifa integer NOT NULL REFERENCES tarifa(idtarifa),
+			pvpltarifa numeric(13, 4)
+		);
+
+		CREATE UNIQUE INDEX indice_ltarifa ON ltarifa (idalmacen, idarticulo, idtarifa);
+
+		ALTER TABLE cliente ADD COLUMN idtarifa integer;
+		ALTER TABLE cliente ADD CONSTRAINT idtarifafk FOREIGN KEY (idtarifa) REFERENCES tarifa(idtarifa);
+
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+
+
+
+CREATE OR REPLACE FUNCTION pvparticuloclial(integer, integer, integer) RETURNS numeric(12,2)
+AS'
+DECLARE
+	idarticulo ALIAS FOR $1;
+	idclient ALIAS FOR $2;
+	idalmacen ALIAS FOR $3;
+	as RECORD;
+BEGIN
+	SELECT INTO AS pvpltarifa FROM ltarifa WHERE ltarifa.idarticulo = idarticulo AND ltarifa.idalmacen = idalmacen AND idtarifa IN (SELECT idtarifa FROM cliente WHERE idcliente=idclient);
+	IF FOUND THEN
+		RETURN as.pvpltarifa;
+	END IF;
+
+
+	SELECT INTO AS pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
+	IF FOUND THEN
+		RETURN as.pvparticulo;
+	END IF;
+	RETURN 0.0;
+END;
+' LANGUAGE plpgsql;
+\echo "Aderezamos las tablas de tarifas."
+
+
+
+
+
+-- ================================== ACTUALIZACION  ===================================
+-- =====================================================================================
 
 -- Agregamos nuevos parametros de configuraci�.
 --

@@ -257,7 +257,7 @@ CREATE TABLE articulo (
     stockarticulo numeric(12,2) DEFAULT 0,    
     inactivoarticulo character(1),
     -- ATENCION, este campo no da el pvp real del art�ulo, solo es una de las multiples formas de acceder al precio del articulo.
-    -- Para obtener el precio de un art�ulo se debe usar la funcion pvparticulo.
+    -- Para obtener el precio de un art�ulo se debe usar la funcion articulo.
     -- Para saber el iva correspondiente a un articulo se debe usar la funci� ivaarticulo.
     pvparticulo numeric(12,2) NOT NULL DEFAULT 0
 );
@@ -330,6 +330,72 @@ CREATE TABLE comparticulo (
 	idcomponente integer NOT NULL REFERENCES articulo(idarticulo),
 	PRIMARY KEY (idarticulo, idcomponente)
 );
+
+
+
+
+
+-- ================================== MODULO DE TARIFAS ================================
+-- =====================================================================================
+-- La tabla tarifa contiene los precios de venta y oferta incluidas las ofertas MxN.
+-- idalmacen: Almac� o tienda a la que corresponden los precios.
+-- idarticulo: idetificador del articulo al que corresponde el precio.
+-- finicio: fecha de inicio vigencia del precio
+-- ffin: fecha de finalizaci� de vigencia del precio.
+-- esoferta: indica si el precio es de oferta.
+-- esmxn: indica si la oferta es mxn (p.e. 3x2).
+-- cantidadm: cantidad de unidades para primer valor en oferta mxn (valor de unidades llevadas).
+-- cantidadn: cantidad de unidades para segundo valor en oferta mxn (valor de unidades pagadas).
+-- FALTA DEFINIR LAS REGLAS PARA EVITAR SOLAPAMIENTOS ENTRE OFERTAS.
+
+CREATE TABLE tarifa (
+	idtarifa serial PRIMARY KEY,
+	nomtarifa varchar(60),
+	finiciotarifa date,
+	ffintarifa date
+);
+
+
+
+CREATE TABLE ltarifa (
+	idltarifa serial PRIMARY KEY,
+   	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+	idtarifa integer NOT NULL REFERENCES tarifa(idtarifa),
+	pvpltarifa numeric(12, 2)
+);
+
+
+CREATE UNIQUE INDEX indice_ltarifa ON ltarifa (idalmacen, idarticulo, idtarifa);
+
+
+CREATE OR REPLACE FUNCTION pvparticuloclial(integer, integer, integer) RETURNS numeric(12,2)
+AS'
+DECLARE
+	idarticulo ALIAS FOR $1;
+	idclient ALIAS FOR $2;
+	idalmacen ALIAS FOR $3;
+	as RECORD;
+BEGIN
+	SELECT INTO AS pvpltarifa FROM ltarifa WHERE ltarifa.idarticulo = idarticulo AND ltarifa.idalmacen = idalmacen AND idtarifa IN (SELECT idtarifa FROM cliente WHERE idcliente=idclient);
+	IF FOUND THEN
+		RETURN as.pvpltarifa;
+	END IF;
+
+
+	SELECT INTO AS pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
+	IF FOUND THEN
+		RETURN as.pvparticulo;
+	END IF;
+	RETURN 0.0;
+END;
+' LANGUAGE plpgsql;
+
+-- ================================== MODULO DE TARIFAS ================================
+-- =====================================================================================
+
+
+
 
 
 -- Los proveedores son los que nos suminstran articulos y/o servicios.
@@ -429,7 +495,8 @@ CREATE TABLE cliente (
    fbajacliente date,
    comentcliente character varying(2000),
    inactivocliente character(1),
-   provcliente character varying
+   provcliente character varying,
+   idtarifa integer references tarifa(idtarifa)
 );
 
 
@@ -1283,90 +1350,10 @@ CREATE TABLE suministra (
 
 
 
--- Los tipos de tarifa permiten tener diferentes precios para un mismo art�ulo en funci� de alguna variable que queramos definir (para un cliente, para una zona, si es para un minorista, tienda propia franquiciada ...
--- codigo: es un identificador pnemot�nico de la tarifa.
--- desc: es un texto descriptivo del tipo de tarifa.
-
-CREATE TABLE tipo_tarifa ( 
-	idtipo_tarifa serial PRIMARY KEY,
-	codtipo_tarifa character varying(10) NOT NULL UNIQUE,
-	desctipo_tarifa character varying(50)
-);
-
-
--- La tabla tarifa contiene los precios de venta y oferta incluidas las ofertas MxN.
--- idalmacen: Almac� o tienda a la que corresponden los precios.
--- idarticulo: idetificador del articulo al que corresponde el precio.
--- finicio: fecha de inicio vigencia del precio
--- ffin: fecha de finalizaci� de vigencia del precio.
--- esoferta: indica si el precio es de oferta.
--- esmxn: indica si la oferta es mxn (p.e. 3x2).
--- cantidadm: cantidad de unidades para primer valor en oferta mxn (valor de unidades llevadas).
--- cantidadn: cantidad de unidades para segundo valor en oferta mxn (valor de unidades pagadas).
--- FALTA DEFINIR LAS REGLAS PARA EVITAR SOLAPAMIENTOS ENTRE OFERTAS.
-
-CREATE TABLE tarifa (
-	idtarifa serial PRIMARY KEY,
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-	idtipo_tarifa integer NOT NULL REFERENCES tipo_tarifa(idtipo_tarifa),
-	finiciotarifa date,
-	ffintarifa date,
-	preciotarifa numeric(13, 4),
-	esofertatarifa character(1) NOT NULL CHECK(esofertatarifa='S' OR esofertatarifa='N'),
-	esmxntarifa character(1),
-	cantidadmtarifa numeric(5, 0),
-	cantidadntarifa numeric(5, 0)	
-);
-
-
-
 -- Vemos la tabla de provincias.
 CREATE TABLE provincia (
     provincia character varying(500)
 );
-
-
--- Restricciones para la tabla tarifa:
--- Para un mismo almac�, art�ulo y tarifa, no puede haber m� de un precio a una misma fecha
--- Para un mismo almac�, art�ulo y tarifa, no puede haber m� de una oferta precio a una misma fecha
--- S�que se permite que haya solapamiento entre la tarifa normal y una oferta. Prevalece siempre la oferta.
-
---DROP TRIGGER restriccionestarifatrigger ON cuenta CASCADE;
---DROP FUNCTION restriccionestarifa();
-
-CREATE FUNCTION restriccionestarifa () RETURNS "trigger"
-AS '
-DECLARE
-	cont INTEGER;
-BEGIN
-
-RAISE NOTICE '' IDTARIFA = % '',NEW.idtarifa;
-	 SELECT count(*) INTO cont FROM tarifa 
-		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
-			tarifa.idtarifa != NEW.idtarifa AND tarifa.finiciotarifa <= NEW.finiciotarifa AND tarifa.ffintarifa >= NEW.finiciotarifa;
-				if (NOT(cont ISNULL) AND cont > 0) THEN
- 					RAISE EXCEPTION '' Solapamiento de fechas en fecha inicio '';
-				END IF;
-	RAISE NOTICE '' CONTADOR = % '', cont;
-
- 	SELECT count(*) INTO cont FROM tarifa 
-		WHERE tarifa.idtipo_tarifa = NEW.idtipo_tarifa AND tarifa.idarticulo = NEW.idarticulo AND tarifa.idalmacen = NEW.idalmacen AND tarifa.esofertatarifa = NEW.esofertatarifa AND
-			tarifa.idtarifa != NEW.idtarifa AND tarifa.finiciotarifa <= NEW.ffintarifa AND tarifa.ffintarifa >= NEW.ffintarifa;
-				if (NOT(cont ISNULL) AND cont > 0) THEN
- 					RAISE EXCEPTION '' Solapamiento de fechas en fecha fin '';
-				END IF;
-	RAISE NOTICE '' CONTADOR = % '', cont;
-
-        RETURN NEW;
-END;
-' LANGUAGE plpgsql;
-
-
-CREATE TRIGGER restriccionestarifatrigger
-    BEFORE INSERT OR UPDATE ON tarifa
-    FOR EACH ROW
-    EXECUTE PROCEDURE restriccionestarifa();
 
 CREATE TABLE precio_compra (
 	idprecio_compra serial PRIMARY KEY,
