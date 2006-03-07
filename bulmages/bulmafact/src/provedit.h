@@ -17,39 +17,46 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef PROVEDIT_H
 #define PROVEDIT_H
 
 #include "provedit_base.h"
 
-/** @author J. M. Torres Rigo */
+
 class company;
 
+class provedit : public provedit_base
+{
+	Q_OBJECT
 
-class provedit : public provedit_base {
-    Q_OBJECT
 private:
-    company *companyact;
-    QString idprovider;
-    bool m_modificado; /// Indica si se han producido cambios.
+	company *companyact;
+	QString idprovider;
+	/// Indica si se han producido cambios.
+	bool m_modificado;
 
 public:
-    provedit(company *emp, QWidget *parent = 0, const char *name = 0);
-    ~provedit();
+	provedit(company *emp, QWidget *parent = 0, const char *name = 0);
+	~provedit();
+
 public:
-    int chargeprovider(QString);
+	int chargeprovider(QString);
+
 public slots:
-    virtual void s_saveProvider();
-    virtual void boton_nuevo();
-    virtual void boton_borrar();
-    virtual void boton_newdivision();
-    virtual void s_setModificado() {
-        m_modificado = TRUE;
-    };
-    virtual void s_releaseModificado() {
-        m_modificado = FALSE;
-    };
-    virtual void close();
+	virtual void s_saveProvider();
+	virtual void boton_nuevo();
+	virtual void boton_borrar();
+	virtual void boton_newdivision();
+	virtual void s_setModificado()
+	{
+		m_modificado = TRUE;
+	};
+	virtual void s_releaseModificado()
+	{
+		m_modificado = FALSE;
+	};
+	virtual void close();
 };
 
 #endif

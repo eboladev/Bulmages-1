@@ -17,71 +17,120 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef PROVIDERSLIST_H
 #define PROVIDERSLIST_H
 
-#include "providerslistbase.h"
 #include <Q3Frame>
+#include "providerslistbase.h"
 #include "pgimportfiles.h"
+
 
 class company;
 
+class providerslist : public providerslistbase, public pgimportfiles
+{
+	Q_OBJECT
 
-class providerslist : public providerslistbase, public pgimportfiles {
- Q_OBJECT
 public:
-   enum edmode {EditMode=0, SelectMode=1};
-private:
-   company *companyact;
-   edmode m_modo;
-   QString m_idprovider;
-   QString m_cifprovider;
-   QString m_nomprovider;
-   
-public:
-    providerslist(company *, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0, edmode editmode=EditMode);
-    ~providerslist();
-    void presenta();
-    void modoseleccion() {m_modo=SelectMode;};
-    void modoedicion() {m_modo=EditMode;};
-    QString idprovider() {return m_idprovider;};
-    QString cifprovider() {return m_cifprovider;};
-    QString nomprovider() {return m_nomprovider;};
-    void hideBotonera() {m_botonera->hide();};
-    void showBotonera() {m_botonera->show();};
-    void hideBusqueda() {m_busqueda->hide();};
-    void showBusqueda() {m_busqueda->show();};
-    void hideConfiguracion() {m_configuracion->hide();};
-    void showConfiguracion() {m_configuracion->show();};
-   /// Funciones que se encarga en guardar y cargar la configuracion del listado.
-    void guardaconfig();
-    void cargaconfig();
-public slots:
-    virtual void doubleclicked(int, int, int, const QPoint &);
-    virtual void contextMenu(int, int, const QPoint &);
-    virtual void newprovider();
-    virtual void s_findProvider();
-    virtual void s_editProvider();
-    virtual void s_removeProvider();
-    virtual void s_printProviders();
-    virtual void s_refreshProveedores() {presenta();};
-    virtual void s_exportar();
-    virtual void s_importar();
-
-    virtual void s_mostrarBusqueda() {
-    	if (m_busqueda->isVisible())
-		hideBusqueda();
-	else
-		 showBusqueda();
+	enum edmode
+	{
+		EditMode = 0,
+		SelectMode = 1
 	};
-	
-    virtual void s_mostrarConfiguracion() {
-    	if (m_configuracion->isVisible())
-		hideConfiguracion();
-	else
-		 showConfiguracion();
-	};      
 
+private:
+	company *companyact;
+	edmode m_modo;
+	QString m_idprovider;
+	QString m_cifprovider;
+	QString m_nomprovider;
+
+public:
+	providerslist(company *, QWidget *parent = 0, const char *name = 0,
+			Qt::WFlags flag = 0, edmode editmode = EditMode);
+	~providerslist();
+	void presenta();
+	void modoseleccion()
+	{
+		m_modo = SelectMode;
+	};
+	void modoedicion()
+	{
+		m_modo = EditMode;
+	};
+	QString idprovider()
+	{
+		return m_idprovider;
+	};
+	QString cifprovider()
+	{
+		return m_cifprovider;
+	};
+	QString nomprovider()
+	{
+		return m_nomprovider;
+	};
+	void hideBotonera()
+	{
+		m_botonera->hide();
+	};
+	void showBotonera()
+	{
+		m_botonera->show();
+	};
+	void hideBusqueda()
+	{
+		m_busqueda->hide();
+	};
+	void showBusqueda()
+	{
+		m_busqueda->show();
+	};
+	void hideConfiguracion()
+	{
+		m_configuracion->hide();
+	};
+	void showConfiguracion()
+	{
+		m_configuracion->show();
+	};
+	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
+	void guardaconfig();
+	void cargaconfig();
+
+public slots:
+	virtual void doubleclicked(int, int, int, const QPoint &);
+	virtual void contextMenu(int, int, const QPoint &);
+	virtual void newprovider();
+	virtual void s_findProvider();
+	virtual void s_editProvider();
+	virtual void s_removeProvider();
+	virtual void s_printProviders();
+	virtual void s_refreshProveedores()
+	{
+		presenta();
+	};
+	virtual void s_exportar();
+	virtual void s_importar();
+	virtual void s_mostrarBusqueda()
+	{
+		if (m_busqueda->isVisible())
+		{
+			hideBusqueda();
+		} else {
+			showBusqueda();
+		}
+	};
+	virtual void s_mostrarConfiguracion()
+	{
+		if (m_configuracion->isVisible())
+		{
+			hideConfiguracion();
+		} else {
+			showConfiguracion();
+		}
+	};
 	virtual void s_configurar();
 };
 
