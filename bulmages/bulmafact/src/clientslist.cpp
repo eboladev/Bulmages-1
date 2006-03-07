@@ -58,7 +58,7 @@ CREATE TABLE cliente (
 */
 
 #include "clientslist.h"
-#include "clientedit.h"
+#include "clienteview.h"
 #include "company.h"
 #include <QMessageBox>
 #include "qtable1.h"
@@ -347,7 +347,8 @@ void ClientsList::m_clientList_doubleClicked(int a, int , int , const QPoint &) 
     m_cifclient = m_clientList->text(a,COL_CIFCLIENTE);
     m_nomclient = m_clientList->text(a, COL_NOMCLIENTE);
     if (m_mode == EDIT_MODE ) {
-        ClientEdit *cli = new ClientEdit(companyact,0,theApp->translate("Edicion de Clientes", "company"));
+//        ClientEdit *cli = new ClientEdit(companyact,0,theApp->translate("Edicion de Clientes", "company"));
+	ClienteView *cli = companyact->newClienteView();
         if(cli->loadClient(m_idclient))
             return;
         companyact->m_pWorkspace->addWindow(cli);

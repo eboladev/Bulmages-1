@@ -109,7 +109,7 @@ void bulmafact::listClients() {
 * This action opens the edit/new client window
 */
 void bulmafact::newClient() {
-	m_company->newClient();
+	m_company->s_newClienteView();
 }
 
 

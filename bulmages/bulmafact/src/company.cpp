@@ -28,7 +28,7 @@
 #include "provedit.h"
 #include "QObject"
 #include "clientslist.h"
-#include "clientedit.h"
+#include "clienteview.h"
 #include "articleslist.h"
 #include "budgetslist.h"
 #include "clientdelivnoteslist.h"
@@ -172,12 +172,6 @@ void company::listClients () {
     m_clientsList->setActiveWindow();
 }
 
-void company::newClient() {
-    ClientEdit *mclientEdit = new ClientEdit(this,0,theApp->translate("Editar/A�dir cliente","company"));
-    m_pWorkspace->addWindow(mclientEdit);
-    mclientEdit->showMaximized();
-}// end newClient
-
 
 void company::s_newProveedor() {
     provedit *prov = new provedit(this,0,theApp->translate("Editar/Anadir proveedor","company"));
@@ -195,6 +189,22 @@ void company::refreshArticles() {
     m_articleslist->presenta();
 }// end refreshOrders
 
+
+ClienteView * company::newClienteView() {
+    /// Lanzamos los plugins necesarios.
+    ClienteView *bud;
+    if (g_plugins->lanza("company_newClienteView", this, (void **)&bud) )
+        return bud;
+    bud = new ClienteView(this , 0,theApp->translate("Edicion de Clientes", "company"));
+    return bud;
+}// end FacturaProveedorView
+
+void company::s_newClienteView() {
+    ClienteView *bud = newClienteView();
+    m_pWorkspace->addWindow(bud);
+    bud->pintaCliente();
+    bud->show();
+}// end s_newClienteView
 
 FacturaProveedorView * company::newFacturaProveedorView() {
     /// Lanzamos los plugins necesarios.

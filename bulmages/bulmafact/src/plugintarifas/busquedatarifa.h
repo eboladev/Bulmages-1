@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Marcos Mezo                                     *
- *   mmezo@selexco.net                                                     *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,37 +18,45 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CLIENTEDIT_H
-#define CLIENTEDIT_H
+#ifndef BUSQUEDATARIFA_H
+#define BUSQUEDATARIFA_H
 
-#include "clienteditbase.h"
-#include "dialogchanges.h"
+#include <Q3ComboBox>
+
+#include "company.h"
+#include "postgresiface2.h"
 
 
-class company;
-
-class ClientEdit : public ClientEditBase, public dialogChanges
+class BusquedaTarifa : public Q3ComboBox
 {
 	Q_OBJECT
 
 private:
 	company *companyact;
-	QString clientId;
+	cursor2 *m_cursorcombo;
 
 public:
-	ClientEdit(company *emp, QWidget *parent = 0, const char *name = 0);
-	~ClientEdit();
-    
-public:
-	int loadClient(QString client);
-	void saveClient();
-	void deleteClient();
-	void closeEvent( QCloseEvent *);
-	void emptyForm();
+	BusquedaTarifa(QWidget *parent = 0, const char *name = 0);
+	~BusquedaTarifa();
+	void setcompany(company *comp)
+	{
+		companyact = comp;
+	};
+	virtual void setidtarifa(QString idtarifa);
 
 public slots:
-	virtual void saveButton_clicked();
-	virtual void deleteButton_clicked();
+	void m_activated(int index)
+	{
+		if (index > 0)
+		{
+			emit(valueChanged(m_cursorcombo->valor("idtarifa", index - 1)));
+		} else {
+			emit(valueChanged(""));
+		}
+	};
+
+signals:
+	void valueChanged(QString);
 };
 
 #endif

@@ -43,7 +43,6 @@ FORMS3 += bulmafactbase.ui \
           providerslistbase.ui \
           provedit_base.ui \
           clientslistbase.ui \
-          clienteditbase.ui \
           articleslistbase.ui \
           divisionbase.ui \
           budgetbase.ui \
@@ -76,7 +75,8 @@ FORMS3 += bulmafactbase.ui \
 	  pedidoproveedorbase.ui \
 	  listseriefacturabase.ui \
 	  inventariosbase.ui \
-	  inventariobase.ui
+	  inventariobase.ui \
+	  clientebase.ui
 
 HEADERS += bulmafact.h \
            company.h \
@@ -84,7 +84,6 @@ HEADERS += bulmafact.h \
            provedit.h \
            splashscreen.h \
            clientslist.h \
-           clientedit.h \
            articleslist.h \
            division.h \
            budget.h \
@@ -185,7 +184,9 @@ HEADERS += bulmafact.h \
 	   inventario.h \
 	   controlstock.h \
 	   listcontrolstock.h \
-	   listcontrolstockview.h
+	   listcontrolstockview.h \
+	   cliente.h \
+	   clienteview.h
 
 	   
 SOURCES += bulmafact.cpp \
@@ -195,7 +196,6 @@ SOURCES += bulmafact.cpp \
            provedit.cpp \
            splashscreen.cpp \
            clientslist.cpp \
-           clientedit.cpp \
            articleslist.cpp \
            division.cpp \
            budget.cpp \
@@ -296,7 +296,9 @@ SOURCES += bulmafact.cpp \
 	   inventario.cpp \
 	   controlstock.cpp \
 	   listcontrolstock.cpp \
-	   listcontrolstockview.cpp
+	   listcontrolstockview.cpp \
+	   cliente.cpp \
+	   clienteview.cpp
 
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \

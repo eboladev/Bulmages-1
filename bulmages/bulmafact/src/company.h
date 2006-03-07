@@ -30,7 +30,7 @@
 
 class providerslist;
 class ClientsList;
-class ClientEdit;
+class ClienteView;
 class articleslist;
 class orderslist;
 class BudgetsList;
@@ -77,7 +77,6 @@ public:
 	};
 	void listproviders();
 	void listClients();
-	void newClient();
 	void s_newProveedor();
 	void listarticles();
 	void listorders();
@@ -91,6 +90,7 @@ public:
 	void newClientDelivNote();
 	void newPedidoCliente();
 	void newPedidoProveedor();
+	ClienteView * newClienteView();
 	void createMainWindows();
 	void refreshArticles();
 	void refreshBudgets();
@@ -125,6 +125,7 @@ public:
 	void s_newAlbaranCli();
 	void s_newFacturaCli();
 	void s_newArticulo();
+	void s_newClienteView();
 	void s_provincias();
 	void s_inventarios();
 	void s_newInventario();

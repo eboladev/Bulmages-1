@@ -104,7 +104,7 @@ public:
 public slots:
 	virtual void newClient()
 	{
-		companyact->newClient();
+		companyact->s_newClienteView();
 	};
 	virtual void editClient();
 	virtual void m_clientList_clicked(int, int, int, const QPoint &);

@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += src
 SUBDIRS += src/plugin
+SUBDIRS += src/plugintarifas
 
 exists(src/gorgblau) {
     SUBDIRS += src/gorgblau
