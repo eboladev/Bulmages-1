@@ -96,7 +96,6 @@ public:
 	{
 		m_configuracion->show();
 	};
-
 	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
 	void guardaconfig();
 	void cargaconfig();
