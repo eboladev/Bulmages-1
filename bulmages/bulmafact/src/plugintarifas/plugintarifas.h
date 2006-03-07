@@ -7,6 +7,8 @@
 
 #include "bulmafact.h"
 #include "postgresiface2.h"
+#include "clienteview.h"
+
 
 #include <qstringlist.h>
 #include <qwidget.h>
@@ -15,6 +17,9 @@
 #include <qobject.h>
 
 extern "C" MY_EXPORT void entryPoint(bulmafact *);
+extern "C" MY_EXPORT int ClienteView_ClienteView(ClienteView *);
+extern "C" MY_EXPORT int ClienteView_saveClient(ClienteView *);
+extern "C" MY_EXPORT int Cliente_pintaCliente(Cliente *);
 
 
 

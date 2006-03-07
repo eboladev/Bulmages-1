@@ -518,6 +518,28 @@
                             </widget>
                         </hbox>
                     </widget>
+                    <widget class="QFrame">
+                        <property name="name">
+                            <cstring>m_frameplugin</cstring>
+                        </property>
+                        <property name="minimumSize">
+                            <size>
+                                <width>0</width>
+                                <height>0</height>
+                            </size>
+                        </property>
+                        <property name="frameShape">
+                            <enum>StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                            <enum>Raised</enum>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                        </vbox>
+                    </widget>
                     <widget class="QLayoutWidget">
                         <property name="name">
                             <cstring>layout47</cstring>

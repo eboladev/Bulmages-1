@@ -12,6 +12,8 @@
 #include "cliente.h"
 #include "company.h"
 #include "configuracion.h"
+#include "plugins.h"
+
 #include <QFile>
 #include <QTextStream>
 
@@ -63,6 +65,11 @@ void Cliente::vaciaCliente() {
 
 void Cliente::pintaCliente() {
 	_depura("Cliente::pintaCliente",0);
+
+	    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("Cliente_pintaCliente", this);
+    if (res != 0) return;
+
 	pintaidcliente(DBvalue("idcliente"));
         pintanomcliente (DBvalue("nomcliente"));
         pintanomaltcliente (DBvalue("nomaltcliente"));

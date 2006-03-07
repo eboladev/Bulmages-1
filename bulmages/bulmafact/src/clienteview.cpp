@@ -63,9 +63,15 @@ Restricciones de llave for�ea:
 #include "facturaslist.h"
 #include "busquedaprovincia.h"
 #include "funcaux.h"
+#include "plugins.h"
 
 ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
         :  ClienteBase(parent, name, Qt::WDestructiveClose) , Cliente(comp), dialogChanges(this) {
+	_depura("ClienteView::ClienteView",0);
+	    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("ClienteView_ClienteView", this);
+    if (res != 0) return;
+
 
 	m_provcliente->setcompany(m_companyact);
 	m_provcliente->setProvincia("");
@@ -153,7 +159,9 @@ void ClienteView::emptyForm() {
 * it is an existing one that has to be modified
 */
 void ClienteView::saveClient() {
-
+	    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("ClienteView_saveClient", this);
+    if (res != 0) return;
 	setDBvalue("nomcliente",m_nomcliente->text());
 	setDBvalue("nomaltcliente",m_nomaltcliente->text());
 	setDBvalue("cifcliente", m_cifcliente->text());

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,6 +34,7 @@ class BusquedaTarifa : public Q3ComboBox
 private:
 	company *companyact;
 	cursor2 *m_cursorcombo;
+	QString mdb_idtarifa;
 
 public:
 	BusquedaTarifa(QWidget *parent = 0, const char *name = 0);
@@ -43,15 +44,18 @@ public:
 		companyact = comp;
 	};
 	virtual void setidtarifa(QString idtarifa);
+	QString idtarifa() {return mdb_idtarifa;};
 
 public slots:
 	void m_activated(int index)
 	{
 		if (index > 0)
 		{
+			mdb_idtarifa=m_cursorcombo->valor("idtarifa", index - 1);
 			emit(valueChanged(m_cursorcombo->valor("idtarifa", index - 1)));
 		} else {
 			emit(valueChanged(""));
+			mdb_idtarifa="";
 		}
 	};
 
