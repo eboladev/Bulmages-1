@@ -412,7 +412,7 @@ void company::s_provincias() {
 void company::s_newArticulo() {
     QString idArt = "0";
     articleedit *art = new articleedit(this,0,theApp->translate("Edición de Artículos", "company"));
-    art->chargeArticle(idArt);
+    art->cargar(idArt);
     m_pWorkspace->addWindow(art);
     art->show();
 }

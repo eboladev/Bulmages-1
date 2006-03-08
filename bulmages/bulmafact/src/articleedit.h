@@ -28,23 +28,25 @@
 
 class company;
 
-class articleedit : public articleeditbase, public dialogChanges
+class ArticuloView : public ArticuloViewbase, public dialogChanges
 {
 	Q_OBJECT
 
 private:
-	QString idArticle;
+	QString mdb_idarticulo;
 	QString m_archivoimagen;
-	company *companyact;
+	company *m_companyact;
 	cursor2 *m_cursorcombo;
 
 public:
-	articleedit(company *emp, QWidget *parent = 0, const char *name = 0);
-	~articleedit();
+	ArticuloView(company *emp, QWidget *parent = 0, const char *name = 0);
+	~ArticuloView();
+	company *companyact() {return m_companyact;};
+	QString idarticulo() {return mdb_idarticulo;};
 
 public:
-	int chargeArticle(QString);
-	int articleedit::cargarcomboiva(QString);
+	int cargar(QString);
+	int ArticuloView::cargarcomboiva(QString);
 	void closeEvent( QCloseEvent *);
 
 public slots:

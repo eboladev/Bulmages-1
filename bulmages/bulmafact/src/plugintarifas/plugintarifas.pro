@@ -78,10 +78,16 @@ windows {
 }
 
 SOURCES = busquedatarifa.cpp \
-	  plugintarifas.cpp
+	  plugintarifas.cpp \
+	  ltarifa.cpp \
+	  listltarifa.cpp \
+	  listltarifaview.cpp
 
 HEADERS = busquedatarifa.h \
-	  plugintarifas.h
+	  plugintarifas.h \
+	  ltarifa.h \
+	  listltarifa.h \
+	  listltarifaview.h
 
 #The following line was inserted by qt3to4
 QT += qt3support

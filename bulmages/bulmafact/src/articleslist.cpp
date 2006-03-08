@@ -336,7 +336,7 @@ void articleslist::editArticle(int  row) {
         articleedit *art = new articleedit(companyact,0,theApp->translate("Edicion de Articulos", "company"));
         companyact->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
-        if (art->chargeArticle(m_idArticle))
+        if (art->cargar(m_idArticle))
             return;
         art->hide();
         art->show();
