@@ -24,7 +24,7 @@
 #define COL_TIPO_IVA 11
 
 
-#include "articleslist.h"
+#include "articulolist.h"
 #include "listlinfacturapview.h"
 #include "funcaux.h"
 

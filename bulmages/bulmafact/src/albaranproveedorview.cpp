@@ -26,7 +26,7 @@
 
 #include "company.h"
 #include "division.h"
-#include "articleslist.h"
+#include "articulolist.h"
 #include "configuracion.h"
 #include "budgetslist.h"
 #include "budget.h"

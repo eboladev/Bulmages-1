@@ -85,13 +85,13 @@ void PedidoClienteView::s_verpresupuesto() {
             theApp->processEvents();
         this->setEnabled(true);
         if (list->idpresupuesto() !="") {
-            Budget *bud = companyact->newBudget();
+            PresupuestoView *bud = companyact->newBudget();
             companyact->m_pWorkspace->addWindow(bud);
             bud->chargeBudget(list->idpresupuesto());
             bud->show();
         }// end if
     } else if (!cur->eof()) {
-        Budget *bud = companyact->newBudget();
+        PresupuestoView *bud = companyact->newBudget();
         companyact->m_pWorkspace->addWindow(bud);
         bud->chargeBudget(cur->valor("idpresupuesto"));
         bud->show();

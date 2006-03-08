@@ -10,7 +10,7 @@
 //
 //
 #include "busquedaarticulo.h"
-#include "articleslist.h"
+#include "articulolist.h"
 #include "company.h"
 #include "funcaux.h"
 

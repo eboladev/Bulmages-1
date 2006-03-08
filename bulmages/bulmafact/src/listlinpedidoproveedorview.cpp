@@ -40,7 +40,7 @@ CREATE TABLE lpedidoproveedor (
 #define COL_PREVLPEDIDOPROVEEDOR 13
 #define COL_IVALPEDIDOPROVEEDOR 14
 
-#include "articleslist.h"
+#include "articulolist.h"
 #include "listlinpedidoproveedorview.h"
 #include "linpedidoproveedor.h"
 #include "funcaux.h"

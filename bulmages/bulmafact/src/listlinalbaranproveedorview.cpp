@@ -33,7 +33,7 @@
 #include <QEvent>
 
 #include "listlinalbaranproveedorview.h"
-#include "articleslist.h"
+#include "articulolist.h"
 #include "funcaux.h"
 
 

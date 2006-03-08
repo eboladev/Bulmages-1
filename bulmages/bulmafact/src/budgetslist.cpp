@@ -365,7 +365,7 @@ void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
         return;
 
     if (m_modo ==0 && m_idpresupuesto != "") {
-        Budget *bud = companyact->newBudget();
+        PresupuestoView *bud = companyact->newBudget();
         companyact->m_pWorkspace->addWindow(bud);
         bud->show();
         if (bud->chargeBudget(m_idpresupuesto))

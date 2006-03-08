@@ -42,7 +42,7 @@ class AlbaranesProveedor;
 class CobrosList;
 class FacturasProveedorList;
 class PagosList;
-class Budget;
+class PresupuestoView;
 class FacturaView;
 class FacturaProveedorView;
 class ArticuloView;
@@ -133,7 +133,7 @@ public:
 	void s_newInventario();
 	QString searchCompany();
 	FacturaProveedorView* newFacturaProveedorView();
-	Budget *newBudget();
+	PresupuestoView *newBudget();
 	FacturaView *newFacturaView();
 };
 

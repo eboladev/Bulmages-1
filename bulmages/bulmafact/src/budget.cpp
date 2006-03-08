@@ -18,25 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "listlinpresupuestoview.h"
 
-#include "budget.h"
-#include "company.h"
-#include "division.h"
-#include "clientslist.h"
-#include "articleslist.h"
-#include "configuracion.h"
-#include "pedidoclienteview.h"
-#include "albaranclienteview.h"
-#include "busquedacliente.h"
-#include "busquedaformapago.h"
-
-#include "informereferencia.h"
-#include <plugins.h>
 
 
 #include <QMessageBox>
-
 #include <Q3Table>
 #include <QWidget>
 #include <QObject>
@@ -52,6 +37,20 @@
 using namespace std;
 
 #include "funcaux.h"
+#include "listlinpresupuestoview.h"
+#include "budget.h"
+#include "company.h"
+#include "division.h"
+#include "clientslist.h"
+#include "articulolist.h"
+#include "configuracion.h"
+#include "pedidoclienteview.h"
+#include "albaranclienteview.h"
+#include "busquedacliente.h"
+#include "busquedaformapago.h"
+#include "informereferencia.h"
+#include "plugins.h"
+
 
 #define COL_IDLPRESUPUESTO 0
 #define COL_IDARTICULO 1
@@ -73,10 +72,10 @@ using namespace std;
 
 #define coma "'"
 
-Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) , presupuesto(comp) ,dialogChanges(this) {
-    _depura("Inicializacion de Budget\n",0);
+PresupuestoView::PresupuestoView( company *comp , QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) , presupuesto(comp) ,dialogChanges(this) {
+    _depura("Inicializacion de PresupuestoView\n",0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
-    int res = g_plugins->lanza("Budget_Budget", this);
+    int res = g_plugins->lanza("PresupuestoView_PresupuestoView", this);
     if (res != 0) return;
 
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
@@ -93,14 +92,14 @@ Budget::Budget( company *comp , QWidget *parent, const char *name) : BudgetBase(
     comp->meteWindow(caption(),this);
 
     /// Disparamos los plugins por flanco descendente.
-    g_plugins->lanza("Budget_Budget_Post", this);
-    _depura("Fin de la inicializacion de Budget\n",0);
-}// end Budget
+    g_plugins->lanza("PresupuestoView_PresupuestoView_Post", this);
+    _depura("Fin de la inicializacion de PresupuestoView\n",0);
+}// end PresupuestoView
 
 
 
 
-void Budget::closeEvent( QCloseEvent *e) {
+void PresupuestoView::closeEvent( QCloseEvent *e) {
 	_depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
         int val = QMessageBox::warning( this, "Guardar Presupuesto",
@@ -113,13 +112,13 @@ void Budget::closeEvent( QCloseEvent *e) {
 }
 
 
-Budget::~Budget() {
+PresupuestoView::~PresupuestoView() {
     companyact->refreshBudgets();
     companyact->sacaWindow(this);
-}// end ~Budget
+}// end ~PresupuestoView
 
 
-void Budget::inicialize() {
+void PresupuestoView::inicialize() {
 
     m_totalBases->setReadOnly(TRUE);
     m_totalBases->setAlignment(Qt::AlignRight);
@@ -137,21 +136,21 @@ void Budget::inicialize() {
 
 
 
-void Budget::s_printBudget() {
+void PresupuestoView::s_printBudget() {
     imprimirPresupuesto();
-}//end s_printBudget
+}//end s_printPresupuestoView
 
 
 
 
-void Budget::s_removeBudget() {
+void PresupuestoView::s_removeBudget() {
     fprintf(stderr,"Iniciamos el boton_borrar\n");
     if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "Si", "No") == 0) {
         borraPresupuesto();
     }// end if
 }// end boton_borrar
 
-void   Budget::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+void   PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
     fprintf(stderr,"pintatotales()\n");
     m_totalBases->setText(QString(base.toQString()));
     m_totalTaxes->setText(QString(iva.toQString()));
@@ -162,7 +161,7 @@ void   Budget::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
 
 
 /// Se encarga de generar un pedido a partir del presupuesto.
-void Budget::generarPedidoCliente() {
+void PresupuestoView::generarPedidoCliente() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funci�.
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='"+DBvalue("refpresupuesto")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -222,7 +221,7 @@ void Budget::generarPedidoCliente() {
 
 
 
-int Budget::chargeBudget(QString id) {
+int PresupuestoView::chargeBudget(QString id) {
     int error = 0;
     error = presupuesto::chargeBudget(id);
 	if (error) return -1;
@@ -235,7 +234,7 @@ int Budget::chargeBudget(QString id) {
 
 
 
-void Budget::s_informeReferencia() {
+void PresupuestoView::s_informeReferencia() {
     InformeReferencia *inf = new InformeReferencia(companyact);
     inf->setreferencia(DBvalue("refpresupuesto"));
     inf->generarinforme();

@@ -31,7 +31,7 @@
 #include <QEvent>
 
 #include "listlinalbaranclienteview.h"
-#include "articleslist.h"
+#include "articulolist.h"
 #include "funcaux.h"
 
 

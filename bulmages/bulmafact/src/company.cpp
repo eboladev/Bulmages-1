@@ -20,6 +20,7 @@
 
 #include <qnamespace.h>
 #include <Qt>
+#include <QObject>
 
 #include "company.h"
 #include "stdio.h"
@@ -27,10 +28,9 @@
 #include "albaranclienteview.h"
 #include "providerslist.h"
 #include "provedit.h"
-#include "QObject"
 #include "clientslist.h"
 #include "clienteview.h"
-#include "articleslist.h"
+#include "articulolist.h"
 #include "budgetslist.h"
 #include "clientdelivnoteslist.h"
 #include "abreempresaview.h"
@@ -272,12 +272,12 @@ void company::listBudgets() {
     m_budgetsList->setActiveWindow();
 }// end listbudgets
 
-Budget * company::newBudget() {
+PresupuestoView * company::newBudget() {
     /// Lanzamos los plugins necesarios.
-    Budget *bud;
+    PresupuestoView *bud;
     if (g_plugins->lanza("company_newBudget", this, (void **)&bud) )
         return bud;
-    bud = new Budget(this , 0,theApp->translate("Edicion de Proveedores", "company"));
+    bud = new PresupuestoView(this , 0,theApp->translate("Edicion de Proveedores", "company"));
     return bud;
 }
 
@@ -285,7 +285,7 @@ void company::s_newPresupuestoCli() {
     /// Lanzamos los plugins necesarios.
     if (g_plugins->lanza("company_s_newPresupuestoCli",this) )
         return;
-    Budget *bud = newBudget();
+    PresupuestoView *bud = newBudget();
     m_pWorkspace->addWindow(bud);
     bud->show();
 }// end bud

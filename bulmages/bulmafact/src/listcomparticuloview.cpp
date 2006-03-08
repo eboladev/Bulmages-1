@@ -16,7 +16,7 @@
 #define COL_NOMCOMPONENTE 3
 #define COL_CANTCOMPARTICULO 4
 
-#include "articleslist.h"
+#include "articulolist.h"
 #include "listcomparticuloview.h"
 #include "funcaux.h"
 #include <Q3Table>

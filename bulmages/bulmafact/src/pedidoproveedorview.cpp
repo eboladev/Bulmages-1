@@ -103,12 +103,12 @@ void PedidoProveedorView::s_verpresupuesto() {
         this->setEnabled(true);
         if (list->idpresupuesto() !="") {
             // && list->idpresupuesto() !=NULL
-            Budget *bud =companyact->newBudget();
+            PresupuestoView *bud =companyact->newBudget();
             bud->chargeBudget(list->idpresupuesto());
             bud->show();
         }// end if
     } else if (!cur->eof()) {
-        Budget *bud = companyact->newBudget();
+        PresupuestoView *bud = companyact->newBudget();
         bud->chargeBudget(cur->valor("idpresupuesto"));
         bud->show();
     }// end if

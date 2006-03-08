@@ -27,7 +27,7 @@
 #include "company.h"
 #include "division.h"
 #include "clientslist.h"
-#include "articleslist.h"
+#include "articulolist.h"
 #include "configuracion.h"
 #include "budgetslist.h"
 #include "budget.h"
@@ -99,12 +99,12 @@ void AlbaranClienteView::s_verpresupuesto() {
             theApp->processEvents();
         this->setEnabled(true);
         if (list->idpresupuesto() !=QString("")) {
-            Budget *bud = companyact->newBudget();
+            PresupuestoView *bud = companyact->newBudget();
             bud->chargeBudget(list->idpresupuesto());
             bud->show();
         }// end if
     } else if (!cur->eof()) {
-        Budget *bud = companyact->newBudget();
+        PresupuestoView *bud = companyact->newBudget();
         bud->chargeBudget(cur->valor("idpresupuesto"));
         bud->show();
     }// end if

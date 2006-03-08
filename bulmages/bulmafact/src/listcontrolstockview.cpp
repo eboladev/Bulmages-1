@@ -24,7 +24,7 @@
 
 
 
-#include "articleslist.h"
+#include "articulolist.h"
 #include "listcontrolstockview.h"
 #include "listcontrolstock.h"
 #include "funcaux.h"

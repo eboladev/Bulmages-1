@@ -44,7 +44,7 @@
 
 class company;
 
-class Budget : public BudgetBase , public presupuesto, public dialogChanges
+class PresupuestoView : public BudgetBase , public presupuesto, public dialogChanges
 {
 	Q_OBJECT
 
@@ -52,8 +52,8 @@ private:
 	cursor2 *m_cursorcombo;
 
 public:
-	Budget(company *, QWidget *, const char *);
-	~Budget();
+	PresupuestoView(company *, QWidget *, const char *);
+	~PresupuestoView();
 	void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
 	void inicialize();
 	void manageArticle(int);
@@ -128,7 +128,7 @@ public slots:
 	{
 		guardapresupuesto();
 	};
-	virtual void s_removeBudgetLine()
+	virtual void s_removePresupuestoViewLine()
 	{
 		subform2->borralinpresupuestoact();
 	};

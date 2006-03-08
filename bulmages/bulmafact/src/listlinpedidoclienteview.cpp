@@ -40,7 +40,7 @@ CREATE TABLE lpedidocliente (
 #define COL_PREVLPEDIDOCLIENTE 13
 #define COL_IVALPEDIDOCLIENTE 14
 
-#include "articleslist.h"
+#include "articulolist.h"
 #include "listlinpedidoclienteview.h"
 #include "linpedidocliente.h"
 #include "funcaux.h"
