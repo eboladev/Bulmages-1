@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef ARTICLEEDIT_H
-#define ARTICLEEDIT_H
+#ifndef ARTICULOVIEW_H
+#define ARTICULOVIEW_H
 
 #include "articleeditbase.h"
 #include "postgresiface2.h"
@@ -28,7 +28,7 @@
 
 class company;
 
-class ArticuloView : public ArticuloViewbase, public dialogChanges
+class ArticuloView : public articleeditbase, public dialogChanges
 {
 	Q_OBJECT
 

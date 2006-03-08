@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "articuloview.h"
-#include "company.h"
-#include "division.h"
-#include "familiasview.h"
-#include "tiposarticuloview.h"
-
 #include <QLineEdit>
 #include <QMessageBox>
 #include <Q3Table>
@@ -35,9 +29,14 @@
 #include <Q3FileDialog>
 #include <QCloseEvent>
 
+
+#include "articuloview.h"
+#include "company.h"
+#include "division.h"
+#include "familiasview.h"
+#include "tiposarticuloview.h"
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
-
 #include "listcomparticuloview.h"
 #include "listcomparticulo.h"
 #include "funcaux.h"
@@ -52,7 +51,7 @@
 
 
 ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
-        : ArticuloViewbase(parent, name, Qt::WDestructiveClose) ,dialogChanges(this) {
+        : articleeditbase(parent, name, Qt::WDestructiveClose) ,dialogChanges(this) {
 
     _depura("ArticuloView::INIT_constructor()\n",0);
     m_companyact = comp;

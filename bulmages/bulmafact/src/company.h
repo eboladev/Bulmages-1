@@ -45,6 +45,7 @@ class PagosList;
 class Budget;
 class FacturaView;
 class FacturaProveedorView;
+class ArticuloView;
 
 class company : public postgresiface2
 {
@@ -91,6 +92,7 @@ public:
 	void newPedidoCliente();
 	void newPedidoProveedor();
 	ClienteView * newClienteView();
+	ArticuloView * newArticuloView();
 	void createMainWindows();
 	void refreshArticles();
 	void refreshBudgets();

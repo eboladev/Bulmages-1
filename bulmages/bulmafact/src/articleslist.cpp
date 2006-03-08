@@ -27,12 +27,12 @@
 #include <QComboBox>
 //Added by qt3to4:
 #include <QTextStream>
-#include "pgimportfiles.h"
-
 #include <Q3FileDialog>
-#include "company.h"
-#include "articleedit.h"
 
+
+#include "pgimportfiles.h"
+#include "company.h"
+#include "articuloview.h"
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
 #include "qtable1.h"
@@ -333,7 +333,7 @@ void articleslist::editArticle(int  row) {
     mdb_nomarticulo = m_list->text(row,COL_NOMARTICULO);
     mdb_codigocompletoarticulo = m_list->text(row,COL_CODCOMPLETOARTICULO);
     if (m_modo ==0 ) {
-        articleedit *art = new articleedit(companyact,0,theApp->translate("Edicion de Articulos", "company"));
+	ArticuloView *art = companyact->newArticuloView();
         companyact->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
         if (art->cargar(m_idArticle))

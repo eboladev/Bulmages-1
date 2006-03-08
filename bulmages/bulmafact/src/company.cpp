@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <qnamespace.h>
+#include <Qt>
 
 #include "company.h"
 #include "stdio.h"
@@ -52,12 +53,11 @@
 #include "pedidoclienteview.h"
 #include "albaranclienteview.h"
 #include "facturaview.h"
-#include "articleedit.h"
+#include "articuloview.h"
 #include "funcaux.h"
 #include "inventariosview.h"
 #include "inventarioview.h"
 #include "plugins.h"
-#include "Qt"
 
 company::company() {}// end company
 
@@ -409,10 +409,22 @@ void company::s_provincias() {
 	_depura("END_company::s_provincias",1);
 }// end s_seriesFactura
 
+
+
+ArticuloView * company::newArticuloView() {
+    /// Lanzamos los plugins necesarios.
+    ArticuloView *bud;
+    if (g_plugins->lanza("company_newArticuloView", this, (void **)&bud) )
+        return bud;
+    bud = new ArticuloView(this , 0,theApp->translate("Edicion de Articulos", "company"));
+    return bud;
+}// end newArticuloView
+
+
 void company::s_newArticulo() {
-    QString idArt = "0";
-    articleedit *art = new articleedit(this,0,theApp->translate("Edición de Artículos", "company"));
-    art->cargar(idArt);
+//    QString idArt = "0";
+    ArticuloView *art = newArticuloView();
+//    art->cargar(idArt);
     m_pWorkspace->addWindow(art);
     art->show();
 }

@@ -59,8 +59,8 @@ int Cliente_pintaCliente(Cliente *cli) {
 
 
 
-int articleedit_articleedit(articleedit *art) {
-    _depura("articleedit_articleedit",0);
+int ArticuloView_ArticuloView(ArticuloView *art) {
+    _depura("ArticuloView_ArticuloView",0);
     ListLTarifaView *l = new ListLTarifaView(art);
     l->setObjectName(QString::fromUtf8("ltarifas"));
     l->setcompany( art->companyact());
@@ -69,8 +69,8 @@ int articleedit_articleedit(articleedit *art) {
 }
 
 
-int articleedit_cargar(articleedit *art) {
-    _depura("articleedit_cargar",0);
+int ArticuloView_cargar(ArticuloView *art) {
+    _depura("ArticuloView_cargar",0);
     ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
     l->cargarParaArticulo(art->idarticulo());
     l->pintar();
