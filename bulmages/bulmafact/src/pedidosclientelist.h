@@ -28,9 +28,8 @@
 #include "funcaux.h"
 
 
-class PedidosClienteList : public PedidosClienteListBase
-{
-	Q_OBJECT
+class PedidosClienteList : public PedidosClienteListBase {
+Q_OBJECT
 
 private:
 	company *companyact;
@@ -133,6 +132,7 @@ public slots:
 			hideBusqueda();
 		} else {
 			showBusqueda();
+		}
 	};
 	virtual void s_mostrarConfiguracion()
 	{
