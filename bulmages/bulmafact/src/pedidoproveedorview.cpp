@@ -14,7 +14,7 @@
 #include "listlinpedidoproveedorview.h"
 #include "pedidoproveedor.h"
 #include "providerslist.h"
-#include "budget.h"
+#include "presupuestoview.h"
 #include "budgetslist.h"
 #include "pagoview.h"
 

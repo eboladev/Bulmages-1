@@ -29,7 +29,7 @@
 #include "articulolist.h"
 #include "configuracion.h"
 #include "budgetslist.h"
-#include "budget.h"
+#include "presupuestoview.h"
 //#include "pedidosproveedorlist.h"
 //#include "pedidoproveedorview.h"
 

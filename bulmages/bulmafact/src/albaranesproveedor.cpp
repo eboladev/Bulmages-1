@@ -45,7 +45,7 @@ CREATE TABLE albaranp (
 #include "albaranesproveedor.h"
 #include "albaranproveedorview.h"
 #include "company.h"
-#include "budget.h"
+#include "presupuestoview.h"
 #include "qtable1.h"
 #include <QMessageBox>
 #include <Q3PopupMenu>

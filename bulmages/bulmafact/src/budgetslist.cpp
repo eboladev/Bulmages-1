@@ -21,7 +21,7 @@
 // Implementaci� del listado de presupuestos.
 #include "budgetslist.h"
 #include "company.h"
-#include "budget.h"
+#include "presupuestoview.h"
 #include "qtable1.h"
 #include "funcaux.h"
 #include "plugins.h"

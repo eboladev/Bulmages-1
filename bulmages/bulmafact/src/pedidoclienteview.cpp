@@ -14,7 +14,7 @@
 #include "listlinpedidoclienteview.h"
 #include "pedidocliente.h"
 #include "clientslist.h"
-#include "budget.h"
+#include "presupuestoview.h"
 #include "budgetslist.h"
 #include "cobroview.h"
 #include "albaranclienteview.h"

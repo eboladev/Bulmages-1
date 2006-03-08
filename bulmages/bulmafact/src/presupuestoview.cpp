@@ -38,7 +38,7 @@ using namespace std;
 
 #include "funcaux.h"
 #include "listlinpresupuestoview.h"
-#include "budget.h"
+#include "presupuestoview.h"
 #include "company.h"
 #include "division.h"
 #include "clientslist.h"

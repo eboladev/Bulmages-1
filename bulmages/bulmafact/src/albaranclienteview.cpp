@@ -30,7 +30,7 @@
 #include "articulolist.h"
 #include "configuracion.h"
 #include "budgetslist.h"
-#include "budget.h"
+#include "presupuestoview.h"
 #include "pedidosclientelist.h"
 #include "pedidoclienteview.h"
 #include "facturaview.h"

@@ -24,7 +24,7 @@
 
 #include "company.h"
 #include "stdio.h"
-#include "budget.h"
+#include "presupuestoview.h"
 #include "albaranclienteview.h"
 #include "providerslist.h"
 #include "provedit.h"
