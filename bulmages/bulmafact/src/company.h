@@ -31,7 +31,7 @@
 class providerslist;
 class ClientsList;
 class ClienteView;
-class articleslist;
+class ArticuloList;
 class orderslist;
 class BudgetsList;
 class ClientDelivNotesList;
@@ -53,7 +53,7 @@ class company : public postgresiface2
 private:
 	providerslist *m_providerslist;
 	ClientsList *m_clientsList;
-	articleslist *m_articleslist;
+	ArticuloList *m_articleslist;
 	BudgetsList *m_budgetsList;
 	ClientDelivNotesList *m_clientDelivNotesList;
 	FacturasList *m_facturasList;

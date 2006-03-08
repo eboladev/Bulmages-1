@@ -12,6 +12,7 @@
 #include "busquedaarticulo.h"
 #include "articleslist.h"
 #include "company.h"
+#include "funcaux.h"
 
 BusquedaArticulo::BusquedaArticulo(QWidget *parent, const char *name)
 : BusquedaArticuloBase(parent, name) {
@@ -62,8 +63,8 @@ void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
 
 // Bsqueda de Clientes.
 void BusquedaArticulo::s_searchArticulo() {
-    fprintf(stderr,"Busqueda de un client\n");
-    articleslist *articulos = new articleslist(companyact, NULL, tr("Seleccione articulo","company"),0,articleslist::SelectMode);
+    _depura("BusquedaArticulo::s_searchArticulo",0);
+    ArticuloList *articulos = new ArticuloList(companyact, NULL, tr("Seleccione articulo","company"),0,ArticuloList::SelectMode);
     // Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
     articulos->show();

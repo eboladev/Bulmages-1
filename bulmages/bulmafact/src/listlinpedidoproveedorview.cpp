@@ -348,7 +348,7 @@ void ListLinPedidoProveedorView::manageArticle(int row) {
 
 QString ListLinPedidoProveedorView::searchArticle() {
     _depura("ListLinPedidoProveedorView::searchArticle\n",0);
-    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,articleslist::SelectMode);
+    ArticuloList *artlist = new ArticuloList(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,ArticuloList::SelectMode);
     // Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
     artlist->show();

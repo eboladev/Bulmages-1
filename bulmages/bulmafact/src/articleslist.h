@@ -28,7 +28,7 @@
 #include "pgimportfiles.h"
 
 
-class articleslist : public articleslistbase, public pgimportfiles
+class ArticuloList : public articleslistbase, public pgimportfiles
 {
 	Q_OBJECT
 
@@ -39,26 +39,26 @@ public:
 	};
 
 private:
-	QString m_idArticle;
+	QString mdb_idarticulo;
 	QString mdb_nomarticulo;
 	QString mdb_codigocompletoarticulo;
-	company *companyact;
+	company *m_companyact;
 	edmode m_modo;
 	void inicializa();
 
 public:
-	articleslist(company *, QWidget *parent = 0, const char *name = 0,
+	ArticuloList(company *, QWidget *parent = 0, const char *name = 0,
 		Qt::WFlags flag = 0, edmode editmodo = EditMode);
-	~articleslist();
+	~ArticuloList();
 	QString formaQuery();
 	QString detalleArticulos();
 	QString idArticle()
 	{
-		return m_idArticle;
+		return mdb_idarticulo;
 	};
 	QString idarticulo()
 	{
-		return m_idArticle;
+		return mdb_idarticulo;
 	};
 	QString nomarticulo()
 	{
@@ -110,7 +110,7 @@ public slots:
 	virtual void removeArticle();
 	virtual void newArticle()
 	{
-		companyact->s_newArticulo();
+		m_companyact->s_newArticulo();
 	};
 	virtual void s_imprimir()
 	{

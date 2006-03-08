@@ -90,7 +90,7 @@ QString company::searchCompany() {
 
 
 void company::createMainWindows() {
-    m_articleslist = new articleslist(this, 0,theApp->translate("Artiulos","company"),0,articleslist::EditMode);
+    m_articleslist = new ArticuloList(this, 0,theApp->translate("Artiulos","company"),0,ArticuloList::EditMode);
     m_pWorkspace->addWindow(m_articleslist);
     m_articleslist->hide();
 

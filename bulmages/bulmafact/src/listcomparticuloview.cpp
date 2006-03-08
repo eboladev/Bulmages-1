@@ -218,8 +218,8 @@ void ListCompArticuloView::manageArticle(int row) {
 
 
 QString ListCompArticuloView::searchArticle() {
-    fprintf(stderr,"Busqueda de un art�ulo\n");
-    articleslist *artlist = new articleslist(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,articleslist::SelectMode);
+    _depura("ListCompArticuloView::searchArticle",0);
+    ArticuloList *artlist = new ArticuloList(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,ArticuloList::SelectMode);
     // Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
     artlist->show();
