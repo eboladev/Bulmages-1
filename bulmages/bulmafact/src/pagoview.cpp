@@ -128,7 +128,7 @@ void PagoView::inicialize() {
 }// end inicialize
 
 
-void PagoView::s_removePagoView() {
+void PagoView::on_mui_borrar_clicked() {
     fprintf(stderr,"Iniciamos el boton_borrar\n");
     if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "Si", "No") == 0) {
         borraPago();

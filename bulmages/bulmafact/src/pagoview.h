@@ -37,7 +37,7 @@
 
 class company;
 
-class PagoView : public QDialog, public Ui_PagoBase, public Pago, public dialogChanges
+class PagoView : public QDialog, private Ui_PagoBase, public Pago, public dialogChanges
 {
 	Q_OBJECT
 
@@ -85,7 +85,7 @@ public slots:
 		Pago::cargaPago(id);
 		setCaption("Pago " + DBvalue("refpago"));
 	};
-	virtual void s_removePagoView();
+	virtual void on_mui_borrar_clicked();
 
 	virtual void  on_mui_comentpago_textChanged(const QString &str) {
 		setcomentpago(str);

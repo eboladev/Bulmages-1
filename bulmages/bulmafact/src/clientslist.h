@@ -140,6 +140,10 @@ public slots:
 	};
 	virtual void s_borrarCliente();
 	virtual void s_configurar();
+
+signals:
+	void selected(QString);
+
 };
 
 #endif

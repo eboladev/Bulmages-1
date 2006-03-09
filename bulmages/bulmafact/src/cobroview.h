@@ -27,7 +27,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "cobrobase.h"
+#include "ui_cobrobase.h"
 #include "postgresiface2.h"
 #include "cobro.h"
 #include "busquedacliente.h"
@@ -37,7 +37,7 @@
 
 class company;
 
-class CobroView : public CobroBase , public Cobro, public dialogChanges
+class CobroView : public QDialog, private Ui_CobroBase, public Cobro, public dialogChanges
 {
 	Q_OBJECT
 
@@ -49,36 +49,36 @@ public:
 	void closeEvent(QCloseEvent *);
 	void pintafechacobro(QString id)
 	{
-		m_fechacobro->setText(id);
+		mui_fechacobro->setText(id);
 	};
 	void pintacomentcobro(QString id)
 	{
-		m_comentcobro->setText(id);
+		mui_comentcobro->setText(id);
 	};
 	void pintaidcliente(QString id)
 	{
-		m_cliente->setidcliente(id);
+		mui_cliente->setidcliente(id);
 	};
 	void pintarefcobro(QString id)
 	{
-		m_refcobro->setText(id);
+		mui_refcobro->setText(id);
 	};
 	void pintacantcobro(QString id)
 	{
-		m_cantcobro->setText(id);
+		mui_cantcobro->setText(id);
 	};
 	void pintaprevisioncobro(QString id)
 	{
 		if (id == "t" || id == "TRUE")
 		{
-			m_previsioncobro->setChecked(TRUE);
+			mui_previsioncobro->setChecked(TRUE);
 		} else {
-			m_previsioncobro->setChecked(FALSE);
+			mui_previsioncobro->setChecked(FALSE);
 		}
 	};
 
 public slots:
-	virtual void s_saveCobroView()
+	virtual void on_mui_guardar_clicked()
 	{
 		guardaCobro();
 	};
@@ -87,20 +87,22 @@ public slots:
 		Cobro::cargaCobro(id);
 		setCaption("Cobro " + DBvalue("refcobro"));
 	};
-	virtual void s_removeCobroView();
-	virtual void s_comentcobrotextChanged(const QString &str)
+	virtual void on_mui_borrar_clicked();
+
+
+	virtual void on_mui_comentcobro_textChanged(const QString &str)
 	{
 		setcomentcobro(str);
 	};
-	virtual void s_refcobrotextChanged(const QString &str)
+	virtual void on_mui_refcobro_textChanged(const QString &str)
 	{
 		setrefcobro(str);
 	};
-	virtual void s_cantcobrotextChanged(const QString &str)
+	virtual void on_mui_cantcobro_textChanged(const QString &str)
 	{
 		setcantcobro(str);
 	};
-	virtual void s_previsioncobrostateChanged(int i)
+	virtual void on_mui_previsioncobro_stateChanged(int i)
 	{
 		if (i)
 		{
@@ -109,11 +111,11 @@ public slots:
 			setprevisioncobro("FALSE");
 		}
 	}
-	virtual void s_clientevalueChanged(QString id)
+	virtual void on_mui_cliente_valueChanged(QString id)
 	{
 		setidcliente(id);
 	};
-	virtual void s_fechacobrovalueChanged(QString id)
+	virtual void on_mui_fechacobro_valueChanged(QString id)
 	{
 		setfechacobro(id);
 	};

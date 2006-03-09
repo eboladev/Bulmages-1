@@ -347,14 +347,13 @@ void ClientsList::m_clientList_doubleClicked(int a, int , int , const QPoint &) 
     m_cifclient = m_clientList->text(a,COL_CIFCLIENTE);
     m_nomclient = m_clientList->text(a, COL_NOMCLIENTE);
     if (m_mode == EDIT_MODE ) {
-//        ClientEdit *cli = new ClientEdit(companyact,0,theApp->translate("Edicion de Clientes", "company"));
 	ClienteView *cli = companyact->newClienteView();
         if(cli->loadClient(m_idclient))
             return;
         companyact->m_pWorkspace->addWindow(cli);
         cli->show();
     } else {
-        close();
+	emit(selected(m_idclient));
     }// end if
 }// end doubleClicked
 

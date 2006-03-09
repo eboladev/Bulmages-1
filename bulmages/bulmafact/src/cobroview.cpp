@@ -109,9 +109,10 @@ using namespace std;
 
 #define coma "'"
 
-CobroView::CobroView( company *comp , QWidget *parent, const char *name) : CobroBase(parent, name, Qt::WDestructiveClose) , Cobro(comp) ,dialogChanges(this) {
+CobroView::CobroView( company *comp , QWidget *parent, const char *name) : QDialog(parent, name, Qt::WDestructiveClose) , Cobro(comp) ,dialogChanges(this) {
+	setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    m_cliente->setcompany(comp);
+    mui_cliente->setcompany(comp);
     inicialize();
     dialogChanges_cargaInicial();
     _depura("Fin de la inicializacion de CobroView\n",0);
@@ -128,7 +129,7 @@ void CobroView::inicialize() {
 
 
 
-void CobroView::s_removeCobroView() {
+void CobroView::on_mui_borrar_clicked() {
     fprintf(stderr,"Iniciamos el boton_borrar\n");
     if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "Si", "No") == 0) {
         borraCobro();
@@ -143,7 +144,7 @@ void CobroView::closeEvent( QCloseEvent *e) {
         int val = QMessageBox::warning( this, "Guardar Cobro",
                                    "Desea guardar los cambios.","Si","No","Cancelar",0,2);
 	if (val == 0) 
-            s_saveCobroView();
+            on_mui_guardar_clicked();
 	if (val == 2)
 	    e->ignore();
     }// end if	
