@@ -15,7 +15,7 @@
 #include "pedidoproveedor.h"
 #include "providerslist.h"
 #include "presupuestoview.h"
-#include "budgetslist.h"
+#include "presupuestolist.h"
 #include "pagoview.h"
 
 #include <QCloseEvent>

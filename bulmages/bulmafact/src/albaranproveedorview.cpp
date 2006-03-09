@@ -28,7 +28,7 @@
 #include "division.h"
 #include "articulolist.h"
 #include "configuracion.h"
-#include "budgetslist.h"
+#include "presupuestolist.h"
 #include "presupuestoview.h"
 //#include "pedidosproveedorlist.h"
 //#include "pedidoproveedorview.h"

@@ -87,7 +87,7 @@ HEADERS += bulmafact.h \
            articulolist.h \
            division.h \
            presupuestoview.h \
-           budgetslist.h \
+           presupuestolist.h \
            articuloview.h \
            EventHandler.h \
            clientdelivnoteslist.h \
@@ -199,7 +199,7 @@ SOURCES += bulmafact.cpp \
            articulolist.cpp \
            division.cpp \
            presupuestoview.cpp \
-           budgetslist.cpp \
+           presupuestolist.cpp \
            articuloview.cpp \
            EventHandler.cpp \
            clientdelivnoteslist.cpp \

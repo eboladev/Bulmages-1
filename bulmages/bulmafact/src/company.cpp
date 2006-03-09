@@ -31,7 +31,7 @@
 #include "clientslist.h"
 #include "clienteview.h"
 #include "articulolist.h"
-#include "budgetslist.h"
+#include "presupuestolist.h"
 #include "clientdelivnoteslist.h"
 #include "abreempresaview.h"
 #include "fpago.h"

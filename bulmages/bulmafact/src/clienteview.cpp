@@ -56,7 +56,7 @@ Restricciones de llave for�ea:
 
 #include <QCloseEvent>
 
-#include "budgetslist.h"
+#include "presupuestolist.h"
 #include "pedidosclientelist.h"
 #include "clientdelivnoteslist.h"
 #include "cobroslist.h"

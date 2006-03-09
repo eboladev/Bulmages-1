@@ -19,13 +19,6 @@
  ***************************************************************************/
 
 // Implementaci� del listado de presupuestos.
-#include "budgetslist.h"
-#include "company.h"
-#include "presupuestoview.h"
-#include "qtable1.h"
-#include "funcaux.h"
-#include "plugins.h"
-
 #include <QMessageBox>
 #include <Q3PopupMenu>
 #include <QCheckBox>
@@ -34,8 +27,14 @@
 //Added by qt3to4:
 #include <QTextStream>
 
-#include "configuracion.h"
+
+#include "presupuestolist.h"
+#include "company.h"
+#include "presupuestoview.h"
+#include "qtable1.h"
 #include "funcaux.h"
+#include "plugins.h"
+#include "configuracion.h"
 
 #define COL_IDPRESUPUESTO 0
 #define COL_CODIGOALMACEN 1
@@ -220,7 +219,7 @@ PresupuestoList::PresupuestoList(QWidget *parent, const char *name, Qt::WFlags f
 }// end PresupuestoList
 
 PresupuestoList::PresupuestoList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : PresupuestoListBase(parent, name, flag) {
+        : BudgetsListBase(parent, name, flag) {
     m_companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
