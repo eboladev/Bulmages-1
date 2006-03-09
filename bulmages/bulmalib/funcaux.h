@@ -14,12 +14,12 @@
  *                                                                         *
  ***************************************************************************/
  /** \file funcaux.h
-  * Fichero de definici� de funciones auxiliares que no es preciso encapsular<BR>
+  * Fichero de definicion de funciones auxiliares que no es preciso encapsular<BR>
   * <P>En este fichero se definen todas aquellas funciones que por su brevedad o aislamiento son
   * utilizadas de forma regular en el programa. Implementadas en \ref funcaux.cpp </P>
   * <P>Dichas funciones normalmente son de uso general, por lo que es normal ver este archivo incluido
-  * en la pr�tica totalidad de los dem� ficheros</P>
-  * \author Tomeu Borr� Riera
+  * en la practica totalidad de los demas ficheros</P>
+  * \author Tomeu Borras Riera
   */
 #ifndef FUNCAUX_H
 #define FUNCAUX_H
@@ -35,6 +35,7 @@ using std::string;
 
 
 #define __DEBUG__
+
 
 /// g_main debe estar declarado en cada una de las aplicacioones y hace referencia al QMainWindow respectivo en cada caso. Se usa para acceder a determiandos elementos especificos de la ventana como el statusBar
 #include <Q3MainWindow>
