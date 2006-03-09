@@ -109,9 +109,10 @@ using namespace std;
 
 #define coma "'"
 
-PagoView::PagoView( company *comp , QWidget *parent, const char *name) : PagoBase(parent, name, Qt::WDestructiveClose) , Pago(comp) ,dialogChanges(this) {
+PagoView::PagoView( company *comp , QWidget *parent, const char *name) : QDialog (parent, name, Qt::WDestructiveClose) , Pago(comp) ,dialogChanges(this) {
+	setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    m_proveedor->setcompany(comp);
+    mui_proveedor->setcompany(comp);
     inicialize();
     _depura("Fin de la inicializaci� de PagoView\n",0);
 }// end PagoView

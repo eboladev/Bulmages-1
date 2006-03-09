@@ -27,7 +27,7 @@
 #include <QCheckBox>
 
 // Presupuestos.
-#include "pagobase.h"
+#include "ui_pagobase.h"
 #include "postgresiface2.h"
 #include "pago.h"
 #include "busquedaproveedor.h"
@@ -37,7 +37,7 @@
 
 class company;
 
-class PagoView : public PagoBase, public Pago, public dialogChanges
+class PagoView : public QDialog, public Ui_PagoBase, public Pago, public dialogChanges
 {
 	Q_OBJECT
 
@@ -49,58 +49,55 @@ public:
 	void closeEvent(QCloseEvent *);
 	void pintafechapago(QString id)
 	{
-		m_fechapago->setText(id);
+		mui_fechapago->setText(id);
 	};
 	void pintacomentpago(QString id)
 	{
-		m_comentpago->setText(id);
+		mui_comentpago->setText(id);
 	};
 	void pintaidproveedor(QString id)
 	{
-		m_proveedor->setidproveedor(id);
+		mui_proveedor->setidproveedor(id);
 	};
 	void pintarefpago(QString id)
 	{
-		m_refpago->setText(id);
+		mui_refpago->setText(id);
 	};
 	void pintacantpago(QString id)
 	{
-		m_cantpago->setText(id);
+		mui_cantpago->setText(id);
 	};
 	void pintaprevisionpago(QString id)
 	{
 		if (id == "t" || id == "TRUE")
 		{
-			m_previsionpago->setChecked(TRUE);
+			mui_previsionpago->setChecked(TRUE);
 		} else {
-			m_previsionpago->setChecked(FALSE);
+			mui_previsionpago->setChecked(FALSE);
 		}
 	};
 
 public slots:
-	virtual void s_savePagoView()
-	{
-		guardaPago();
-	};
+	virtual void on_mui_guardar_clicked() {guardaPago();};
+
 	virtual void s_cargaPagoView(QString id)
 	{
 		Pago::cargaPago(id);
 		setCaption("Pago " + DBvalue("refpago"));
 	};
 	virtual void s_removePagoView();
-	virtual void s_comentpagotextChanged(const QString &str)
-	{
+
+	virtual void  on_mui_comentpago_textChanged(const QString &str) {
 		setcomentpago(str);
 	};
-	virtual void s_refpagotextChanged(const QString &str)
-	{
+
+	virtual void on_mui_refpago_textChanged(const QString &str)	{
 		setrefpago(str);
 	};
-	virtual void s_cantpagotextChanged(const QString &str)
-	{
+	virtual void on_mui_cantpago_textChanged(const QString &str) {
 		setcantpago(str);
 	};
-	virtual void s_previsionpagostateChanged(int i)
+	virtual void on_mui_previsionpago_stateChanged(int i)
 	{
 		if (i)
 		{
@@ -109,11 +106,11 @@ public slots:
 			setprevisionpago("FALSE");
 		}
 	}
-	virtual void s_proveedorvalueChanged(QString id)
+	virtual void on_mui_proveedor_valueChanged(QString id)
 	{
 		setidproveedor(id);
 	};
-	virtual void s_fechapagovalueChanged(QString id)
+	virtual void on_mui_fechapago_valueChanged(QString id)
 	{
 		setfechapago(id);
 	};

@@ -9,9 +9,12 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
+#include <QDialog>
+
 #include "busquedaproveedor.h"
 #include "providerslist.h"
 #include "company.h"
+#include "funcaux.h"
 
 BusquedaProveedor::BusquedaProveedor(QWidget *parent, const char *name)
 : BusquedaProveedorBase(parent, name) {
@@ -62,14 +65,20 @@ void BusquedaProveedor::setcifproveedor(QString val) {
 
 // Bsqueda de Proveedors.
 void BusquedaProveedor::s_searchProveedor() {
-    fprintf(stderr,"Busqueda de un provider\n");
-    providerslist *providers = new providerslist(companyact, NULL, tr("Seleccione proveedor","company"),0,providerslist::SelectMode);
+    _depura("Busqueda de un provider\n",0);
+
     // Esto es convertir un QWidget en un sistema modal de dialogo.
-    this->setEnabled(false);
-    providers->show();
-    while(!providers->isHidden())
-        theApp->processEvents();
-    this->setEnabled(true);
+
+	QDialog *diag=new QDialog(0);
+	diag->setModal(true);
+
+    providerslist *providers = new providerslist(companyact, diag, tr("Seleccione proveedor","company"),0,providerslist::SelectMode);
+
+	connect(providers, SIGNAL(selected(QString)), diag, SLOT(accept()));
+	diag->exec();
+
+
+
     if (providers->cifprovider() !="") {
         m_cifproveedor->setText(providers->cifprovider());
         mdb_cifproveedor = providers->cifprovider();
@@ -78,6 +87,7 @@ void BusquedaProveedor::s_searchProveedor() {
         mdb_idproveedor = providers->idprovider();
     }// end if
     delete providers;
+	delete diag;
 }// end searchClient
 
 

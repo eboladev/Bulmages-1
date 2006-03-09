@@ -63,7 +63,7 @@ private:
     QString m_campoid;
 public:
 	DBRecord(postgresiface2 *);
-	~DBRecord();
+	virtual ~DBRecord();
 	int DBload(cursor2 *);
 	int DBsave(QString &id);
 	int setDBvalue(QString, QString);
@@ -73,6 +73,10 @@ public:
 	void setDBCampoId(QString nom) {m_campoid = nom;};
 	int addDBCampo(QString, DBCampo::dbtype, DBCampo::dbrestrict, QString);
 	void DBclear();
+
+	virtual void borrar();
+	virtual void guardar();
+	virtual void vaciar() {DBclear();};
 };
 
 

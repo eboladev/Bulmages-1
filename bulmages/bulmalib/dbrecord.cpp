@@ -111,7 +111,7 @@ QString DBRecord::DBvalue(QString nomb) {
 }
 
 QString DBRecord::DBvalueprep(QString nomb) {
-    _depura("DBRecord::value",0);
+    _depura("DBRecord::DBvalueprep",0);
     DBCampo *linea;
     linea = m_lista.first();
     while (linea && linea->nomcampo()!= nomb)
@@ -133,4 +133,34 @@ int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, DBCampo::dbrestrict r
     m_lista.append(camp);
     return 0;
 }
+
+
+
+void DBRecord::borrar() {
+    _depura("DBRecord::borrar",0);
+    if (DBvalue(m_campoid) != "") {
+        conexionbase->begin();
+        int error = conexionbase->ejecuta("DELETE FROM "+m_tablename+" WHERE idltarifa="+DBvalue(m_campoid));
+        if (error) {
+            conexionbase->rollback();
+            return;
+        }// end if
+        conexionbase->commit();
+        DBclear();
+    }// end if
+}// end borrar
+
+
+void DBRecord::guardar() {
+    _depura("DBRecord::guardar",0);
+    QString id;
+    conexionbase->begin();
+    int error = DBsave(id);
+    if (error ) {
+        conexionbase->rollback();
+        return;
+    }// end if
+    setDBvalue(m_campoid,id);
+    conexionbase->commit();
+}// end guardar
 

@@ -35,6 +35,7 @@ TEMPLATE = app
 # etc.
 #
 FORMS += about.ui \
+ 	 pagobase.ui \
 	 listprovincias.ui
 
 # uic3 los convierte de forma automatica.
@@ -69,7 +70,6 @@ FORMS3 += bulmafactbase.ui \
           facturasplistbase.ui \
           facturapbase.ui \
  	  trabajadorbase.ui \
- 	  pagobase.ui \
 	  pagoslistbase.ui \
 	  pedidosproveedorlistbase.ui \
 	  pedidoproveedorbase.ui \

@@ -46,7 +46,6 @@
 #define COL_IDCTACLIENTE 16
 
 
-//#include "articleslist.h"
 #include "listlinprevcobroview.h"
 #include <q3table.h>
 #include "qtable1.h"

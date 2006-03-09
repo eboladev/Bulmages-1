@@ -325,7 +325,8 @@ void providerslist::doubleclicked(int a, int , int , const QPoint &) {
         companyact->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
-        close();
+	emit(selected(m_idprovider));
+        // close();
     }// end if
 	_depura("END providerslist::doubleclicked()",0);
 }
