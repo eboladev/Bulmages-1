@@ -110,7 +110,7 @@ void company::createMainWindows() {
     m_pWorkspace->addWindow(m_pagosList);
     m_pagosList->hide();
 
-    m_budgetsList = new BudgetsList(this, 0,theApp->translate("Presupuestos a Clientes","company"));
+    m_budgetsList = new PresupuestoList(this, 0,theApp->translate("Presupuestos a Clientes","company"));
     m_pWorkspace->addWindow(m_budgetsList);
     m_budgetsList->hide();
 

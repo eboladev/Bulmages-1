@@ -31,12 +31,12 @@
 #include "busquedaarticulo.h"
 
 
-class BudgetsList : public BudgetsListBase
+class PresupuestoList : public BudgetsListBase
 {
 	Q_OBJECT
 
 private:
-	company *companyact;
+	company *m_companyact;
 	/// m_modo == 0 es modo edicion
 	/// m_modo == 1 es modo selector.
 	int m_modo;
@@ -44,10 +44,10 @@ private:
  	void inicializa();
 
 public:
-	BudgetsList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-	BudgetsList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
+	PresupuestoList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
+	PresupuestoList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
 			Qt::WFlags flag = 0);
-	~BudgetsList();
+	~PresupuestoList();
 	void presenta();
 	int modo()
 	{
@@ -55,7 +55,7 @@ public:
 	};
 	company *getcompany()
 	{
-		return companyact;
+		return m_companyact;
 	};
 	QString idpresupuesto()
 	{
@@ -71,7 +71,7 @@ public:
 	};
 	void setcompany (company *comp)
 	{
-		companyact = comp;
+		m_companyact = comp;
 		m_cliente->setcompany(comp);
 		m_articulo->setcompany(comp);
 	};
@@ -102,9 +102,9 @@ public:
 	void imprimir();
 	void meteWindow(QString nom, QObject *obj)
 	{
-		if (companyact != NULL)
+		if (m_companyact != NULL)
 		{
-			companyact->meteWindow(nom, obj);
+			m_companyact->meteWindow(nom, obj);
 		}
 	};
 	void setidcliente(QString val)
@@ -127,7 +127,7 @@ public slots:
 	virtual void s_editar();
 	virtual void newBudget()
 	{
-		companyact->s_newPresupuestoCli();
+		m_companyact->s_newPresupuestoCli();
 	};
 	virtual void s_removeBudget();
 	virtual void s_imprimir()

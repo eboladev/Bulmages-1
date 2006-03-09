@@ -92,7 +92,7 @@ void AlbaranClienteView::s_verpresupuesto() {
     QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='"+DBvalue("refalbaran")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (cur->numregistros() > 1) {
-        BudgetsList *list = new BudgetsList(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
+        PresupuestoList *list = new PresupuestoList(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
         list->modoseleccion();
         list->show();
         while(!list->isHidden())

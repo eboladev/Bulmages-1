@@ -654,7 +654,7 @@
                     <property name="name">
                         <cstring>unnamed</cstring>
                     </property>
-                    <widget class="BudgetsList">
+                    <widget class="PresupuestoList">
                         <property name="name">
                             <cstring>m_listpresupuestos</cstring>
                         </property>
@@ -1235,8 +1235,8 @@
 </widget>
 <customwidgets>
     <customwidget>
-        <class>BudgetsList</class>
-        <header location="local">budgetslist.h</header>
+        <class>PresupuestoList</class>
+        <header location="local">presupuestolist.h</header>
         <sizehint>
             <width>-1</width>
             <height>-1</height>
@@ -1512,7 +1512,7 @@
 <layoutdefaults spacing="2" margin="5"/>
 <includehints>
     <includehint>busquedaprovincia.h</includehint>
-    <includehint>budgetslist.h</includehint>
+    <includehint>presupuestolist.h</includehint>
     <includehint>pedidosclientelist.h</includehint>
     <includehint>clientdelivnoteslist.h</includehint>
     <includehint>facturaslist.h</includehint>

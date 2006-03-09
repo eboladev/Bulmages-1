@@ -55,8 +55,8 @@
 #define COL_TOTALBASEIMP 15
 #define COL_TOTALIMPUESTOS 16
 
-void BudgetsList::guardaconfig() {
-    _depura("BudgetsList::guardaconfig",0);
+void PresupuestoList::guardaconfig() {
+    _depura("PresupuestoList::guardaconfig",0);
     QString aux = "";
     mver_idpresupuesto->isChecked() ? aux += "1,":aux+="0,";
     mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
@@ -86,8 +86,8 @@ void BudgetsList::guardaconfig() {
     }// end if
 }// end guardaconfig()
 
-void BudgetsList::cargaconfig() {
-    _depura("BudgetsList::cargaconfig",0);
+void PresupuestoList::cargaconfig() {
+    _depura("PresupuestoList::cargaconfig",0);
     QFile file( confpr->valor(CONF_DIR_USER)+"confbudgetslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
@@ -119,7 +119,7 @@ void BudgetsList::cargaconfig() {
 }// end cargaconfig
 
 
-void BudgetsList::s_configurar() {
+void PresupuestoList::s_configurar() {
 
     if(mver_idpresupuesto->isChecked() )
         m_list->showColumn(COL_IDPRESUPUESTO);
@@ -207,9 +207,9 @@ void BudgetsList::s_configurar() {
 }// end s_configurar
 
 
-BudgetsList::BudgetsList(QWidget *parent, const char *name, Qt::WFlags flag)
+PresupuestoList::PresupuestoList(QWidget *parent, const char *name, Qt::WFlags flag)
         : BudgetsListBase(parent, name, flag) {
-    companyact = NULL;
+    m_companyact = NULL;
     m_modo=0;
     m_idpresupuesto="";
     meteWindow(caption(),this);
@@ -217,11 +217,11 @@ BudgetsList::BudgetsList(QWidget *parent, const char *name, Qt::WFlags flag)
     hideConfiguracion();
     inicializa();
     cargaconfig();
-}// end BudgetsList
+}// end PresupuestoList
 
-BudgetsList::BudgetsList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : BudgetsListBase(parent, name, flag) {
-    companyact = comp;
+PresupuestoList::PresupuestoList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
+        : PresupuestoListBase(parent, name, flag) {
+    m_companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
     inicializa();
@@ -233,16 +233,16 @@ BudgetsList::BudgetsList(company *comp, QWidget *parent, const char *name, Qt::W
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-}// end BudgetsList
+}// end PresupuestoList
 
-BudgetsList::~BudgetsList() {
-    _depura("BudgetsList::~BudgetsList",0);
+PresupuestoList::~PresupuestoList() {
+    _depura("PresupuestoList::~PresupuestoList",0);
     guardaconfig();
-    companyact->sacaWindow(this);
+    m_companyact->sacaWindow(this);
 }// end ~providerslist
 
-void BudgetsList::inicializa() {
-    _depura("BudgetsList::inicializa()\n");
+void PresupuestoList::inicializa() {
+    _depura("PresupuestoList::inicializa()\n");
     m_list->setNumRows( 0 );
     m_list->setSorting( TRUE );
     m_list->setSelectionMode( Q3Table::SingleRow );
@@ -269,15 +269,15 @@ void BudgetsList::inicializa() {
     // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPRESUPUESTOS));
     m_list->setReadOnly(TRUE);
-    _depura("end BudgetsList::inicializa()\n");
+    _depura("end PresupuestoList::inicializa()\n");
 }// end inicializa
 
 
-void BudgetsList::presenta() {
-    _depura("BudgetsList::presenta()\n");
+void PresupuestoList::presenta() {
+    _depura("PresupuestoList::presenta()\n");
 
-    if (companyact != NULL ) {
-        cursor2 * cur= companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
+    if (m_companyact != NULL ) {
+        cursor2 * cur= m_companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
         m_list->setNumRows( cur->numregistros() );
         int i=0;
         while (!cur->eof()) {
@@ -304,18 +304,18 @@ void BudgetsList::presenta() {
         delete cur;
 
         /// Hacemos el calculo del total.
-        cur = companyact->cargacursor("SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
+        cur = m_companyact->cargacursor("SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
     }// end if
 
 
-    _depura("end BudgetsList::presenta()\n");
+    _depura("end PresupuestoList::presenta()\n");
 }// end presenta
 
 
 
-QString BudgetsList::generaFiltro() {
+QString PresupuestoList::generaFiltro() {
     /// Tratamiento de los filtros.
     QString filtro="";
     if (m_filtro->text() != "") {
@@ -346,7 +346,7 @@ QString BudgetsList::generaFiltro() {
 }// end generaFiltro
 
 
-void BudgetsList::s_editar() {
+void PresupuestoList::s_editar() {
     int a = m_list->currentRow();
     if (a >=0 )
         doubleclicked(a,0,0, QPoint());
@@ -355,18 +355,18 @@ void BudgetsList::s_editar() {
 }
 
 
-void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
+void PresupuestoList::doubleclicked(int a, int , int , const QPoint &) {
     /// Ponemos los parametros que nos interesa en el lugar adecuado.
     m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
-    int res = g_plugins->lanza("BudgetsList_doubleclicked", this);
+    int res = g_plugins->lanza("PresupuestoList_doubleclicked", this);
     if (res != 0)
         return;
 
     if (m_modo ==0 && m_idpresupuesto != "") {
-        PresupuestoView *bud = companyact->newBudget();
-        companyact->m_pWorkspace->addWindow(bud);
+        PresupuestoView *bud = m_companyact->newBudget();
+        m_companyact->m_pWorkspace->addWindow(bud);
         bud->show();
         if (bud->chargeBudget(m_idpresupuesto))
             return;
@@ -377,7 +377,7 @@ void BudgetsList::doubleclicked(int a, int , int , const QPoint &) {
 }
 
 
-void BudgetsList::s_contextMenu(int, int, int button, const QPoint &poin) {
+void PresupuestoList::s_contextMenu(int, int, int button, const QPoint &poin) {
     qDebug("button = %d", button);
     if (button == 2) {
         Q3PopupMenu *popup;
@@ -395,8 +395,8 @@ void BudgetsList::s_contextMenu(int, int, int button, const QPoint &poin) {
 }// end contextmenu
 
 
-void BudgetsList::imprimir() {
-    _depura("BudgetsList::imprimir",0);
+void PresupuestoList::imprimir() {
+    _depura("PresupuestoList::imprimir",0);
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuestos.rml";
     QString archivod = confpr->valor(CONF_DIR_USER)+"presupuestos.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
@@ -470,7 +470,7 @@ void BudgetsList::imprimir() {
     fitxersortidatxt += "</tr>";
 
     QString SQLQuery = "SELECT * FROM presupuesto, cliente, almacen where presupuesto.idcliente=cliente.idcliente AND presupuesto.idalmacen=almacen.idalmacen "+generaFiltro();
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
         if(mver_idpresupuesto->isChecked() )
@@ -501,7 +501,7 @@ void BudgetsList::imprimir() {
             fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalmacen"))+"</td>";
 
         /// Calculamos el total del presupuesto y lo presentamos.
-        cursor2 *cur1 = companyact->cargacursor("SELECT calctotalpres("+cur->valor("idpresupuesto")+") AS total, calcbimppres("+cur->valor("idpresupuesto")+") AS base, calcimpuestospres("+cur->valor("idpresupuesto")+") AS impuestos");
+        cursor2 *cur1 = m_companyact->cargacursor("SELECT calctotalpres("+cur->valor("idpresupuesto")+") AS total, calcbimppres("+cur->valor("idpresupuesto")+") AS base, calcimpuestospres("+cur->valor("idpresupuesto")+") AS impuestos");
         if(mver_totalpresupuesto->isChecked() )
             fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("total"))+"</td>";
         if(mver_totalbaseimp->isChecked() )
@@ -528,27 +528,27 @@ void BudgetsList::imprimir() {
 }// end imprimir
 
 
-void BudgetsList::s_removeBudget() {
+void PresupuestoList::s_removeBudget() {
     _depura("Iniciamos el boton_borrar\n",0);
     if (m_list->currentRow() >= 0) {
         if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar el presupuesto seleccionado", "Si", "No") == 0) {
-            companyact->begin();
+            m_companyact->begin();
             QString SQLQuery = "DELETE FROM lpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-            if (companyact->ejecuta(SQLQuery)==0) {
+            if (m_companyact->ejecuta(SQLQuery)==0) {
                 QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-                if (companyact->ejecuta(SQLQuery)==0) {
+                if (m_companyact->ejecuta(SQLQuery)==0) {
                     QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-                    if (companyact->ejecuta(SQLQuery)==0) {
-                        companyact->commit();
+                    if (m_companyact->ejecuta(SQLQuery)==0) {
+                        m_companyact->commit();
                     } else {
-                        companyact->rollback();
+                        m_companyact->rollback();
                     }
 
                 } else {
-                    companyact->rollback();
+                    m_companyact->rollback();
                 }
             } else {
-                companyact->rollback();
+                m_companyact->rollback();
             }
         }
     }

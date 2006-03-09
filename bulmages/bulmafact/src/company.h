@@ -33,7 +33,7 @@ class ClientsList;
 class ClienteView;
 class ArticuloList;
 class orderslist;
-class BudgetsList;
+class PresupuestoList;
 class ClientDelivNotesList;
 class FacturasList;
 class PedidosClienteList;
@@ -54,7 +54,7 @@ private:
 	providerslist *m_providerslist;
 	ClientsList *m_clientsList;
 	ArticuloList *m_articleslist;
-	BudgetsList *m_budgetsList;
+	PresupuestoList *m_budgetsList;
 	ClientDelivNotesList *m_clientDelivNotesList;
 	FacturasList *m_facturasList;
 	PedidosClienteList *m_pedidosclienteList;
