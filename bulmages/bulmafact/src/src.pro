@@ -30,6 +30,10 @@ LIBS += -rdynamic
 
 TEMPLATE = app 
 
+
+RESOURCES = ../../bulmages-recursos-graficos.qrc
+
+
 # Estos formularios hay que generarlos de forma manual porque, o se usa FORMS o FORMS3.
 # Mientras se hace la migracion se tiene que hacer: uic about.ui -o ./.ui/about.h
 # etc.

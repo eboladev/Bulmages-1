@@ -51,7 +51,13 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset>image1</iconset>
+        <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -73,7 +79,13 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset>image2</iconset>
+        <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -578,16 +590,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaProveedor</class>
    <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>busquedaproveedor.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaProveedor</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>busquedaproveedor.h</header>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -600,6 +612,8 @@
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_borrar</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../../bulmages-recursos-graficos.qrc" />
+ </resources>
  <connections/>
 </ui>
