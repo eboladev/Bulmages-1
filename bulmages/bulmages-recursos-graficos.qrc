@@ -650,8 +650,14 @@
     </qresource>
     <qresource prefix="/Genericos16x16" />
     <qresource prefix="/Genericos32x32" >
+        <file>images/pendientes/i_configuracion.xpm</file>
+        <file>images/pendientes/i_edit.png</file>
         <file>images/pendientes/i_editDelete.png</file>
         <file>images/pendientes/i_fileNew.xpm</file>
+        <file>images/pendientes/i_filePrint.xpm</file>
+        <file>images/pendientes/i_find.png</file>
+        <file>images/pendientes/i_packageSettings.png</file>
+        <file>images/pendientes/i_reload.png</file>
         <file>images/pendientes/i_save.xpm</file>
     </qresource>
     <qresource prefix="/Genericos48x48" />

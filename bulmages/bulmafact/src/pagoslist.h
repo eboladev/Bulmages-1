@@ -21,17 +21,18 @@
 #ifndef PAGOSLIST_H
 #define PAGOSLIST_H
 
+
 #include <QLineEdit>
 #include <Q3Table>
 
 // Listado de presupuestos.
-#include "pagoslistbase.h"
+#include "ui_pagoslistbase.h"
 #include "company.h"
 #include "busquedaproveedor.h"
 #include "funcaux.h"
 
 
-class PagosList : public PagosListBase
+class PagosList : public QWidget, private Ui_PagosListBase
 {
 	Q_OBJECT
 
@@ -108,12 +109,14 @@ public:
 	void cargaconfig();
 
 public slots:
-	virtual void doubleclicked(int, int, int, const QPoint &);
-	virtual void s_contextMenu(int, int, int, const QPoint &);
-	virtual void s_editar();
-	virtual void s_nuevoPago();
-	virtual void s_borrarPago();
-	virtual void s_imprimir()
+	virtual void on_m_list_doubleClicked(int, int, int, const QPoint &);
+
+	virtual void on_m_list_contextMenuRequested(int, int, const QPoint &);
+//	virtual void s_contextMenu(int, int, int, const QPoint &);
+	virtual void on_mui_editar_clicked();
+	virtual void on_mui_crear_clicked();
+	virtual void on_mui_borrar_clicked();
+	virtual void on_mui_imprimir_clicked()
 	{
 		imprimir();
 	};
@@ -121,26 +124,8 @@ public slots:
 	{
 		inicializa();
 	};
-	virtual void s_mostrarBusqueda()
-	{
-		_depura("s_mostrarBusqueda.", 0);
-		if (m_busqueda->isVisible())
-		{
-			hideBusqueda();
-		} else {
-			showBusqueda();
-		}
-	};
-	virtual void s_mostrarConfiguracion()
-	{
-		_depura("s_mostrarConfiguracion.", 0);
-		if (m_configuracion->isVisible())
-		{
-			hideConfiguracion();
-		} else {
-			showConfiguracion();
-		}
-	};
+
+	virtual void on_mui_actualizar_clicked() {presenta();};
 	virtual void s_configurar();
 };
 

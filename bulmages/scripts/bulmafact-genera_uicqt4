@@ -30,6 +30,7 @@ uis[3]="pagobase"
 uis[4]="cobrobase"
 uis[5]="trabajadorbase"
 uis[6]="fpagobase"
+uis[7]="pagoslistbase"
 
 for ((it1=1; it1<3; it1++)); do
     uic $rutauis/${uis[$it1]}.ui -o $rutauis/.ui/ui_${uis[$it1]}.h

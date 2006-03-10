@@ -53,6 +53,7 @@ CREATE TABLE presupuesto (
 #include <QCheckBox>
 #include <QFile>
 #include <QCheckBox>
+#include <QMenu>
 //Added by qt3to4:
 #include <QTextStream>
 
@@ -113,6 +114,7 @@ void PagosList::cargaconfig() {
 
 
 void PagosList::s_configurar() {
+	_depura("PagosList::s_configurar",0);
     if(mver_idpago->isChecked() )
         m_list->showColumn(COL_IDPAGO);
     else
@@ -152,9 +154,11 @@ void PagosList::s_configurar() {
 
 
 PagosList::PagosList(QWidget *parent, const char *name, Qt::WFlags flag)
-        : PagosListBase(parent, name, flag) {
+        : QWidget(parent, name, flag) {
 
     companyact = NULL;
+
+    setupUi(this);
     m_modo=0;
     m_idpago="";
     meteWindow(caption(),this);
@@ -162,18 +166,19 @@ PagosList::PagosList(QWidget *parent, const char *name, Qt::WFlags flag)
     hideConfiguracion();
     inicializa();
     cargaconfig();
-    s_configurar();
 }// end providerslist
 
 
 PagosList::PagosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : PagosListBase(parent, name, flag) {
+        : QWidget(parent, name, flag) {
     companyact = comp;
+
+    setupUi(this);
+
     m_proveedor->setcompany(comp);
 
     inicializa();
     cargaconfig();
-    s_configurar();
     presenta();
     m_modo=0;
     m_idpago="";
@@ -186,7 +191,6 @@ PagosList::PagosList(company *comp, QWidget *parent, const char *name, Qt::WFlag
 
 PagosList::~PagosList() {
     companyact->sacaWindow(this);
-
     guardaconfig();
 }// end ~providerslist
 
@@ -246,7 +250,10 @@ void PagosList::inicializa() {
 
 
 void PagosList::presenta() {
-    fprintf(stderr,"PagosList::presenta()\n");
+    _depura("PagosList::presenta()\n",0);
+	s_filtrar();
+	
+
     if (companyact != NULL ) {
         cursor2 * cur= companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
         m_list->setNumRows( cur->numregistros() );
@@ -270,8 +277,9 @@ void PagosList::presenta() {
         delete cur;
 
     }// end if
+	s_configurar();
 
-    fprintf(stderr,"end PagosList::presenta()\n");
+    _depura("END PagosList::presenta()\n",0);
 }// end presenta
 
 
@@ -303,15 +311,15 @@ QString PagosList::generaFiltro() {
 
 
 
-void PagosList::s_editar() {
+void PagosList::on_mui_editar_clicked() {
     int a = m_list->currentRow();
 	if (a >=0 ) 
-    	doubleclicked(a,0,0, QPoint());
+    	on_m_list_doubleClicked(a,0,0, QPoint());
 	else
 	_depura("Debe seleccionar una linea",2);
 }
 
-void PagosList::doubleclicked(int a, int , int , const QPoint &) {
+void PagosList::on_m_list_doubleClicked(int a, int , int , const QPoint &) {
     m_idpago = m_list->text(a,COL_IDPAGO);
     if (m_modo ==0 && m_idpago != "") {
         PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
@@ -323,25 +331,17 @@ void PagosList::doubleclicked(int a, int , int , const QPoint &) {
 }
 
 
-void PagosList::s_contextMenu(int, int, int button, const QPoint &poin) {
-    qDebug("button = %d", button);
-    if (button == 2) {
-        Q3PopupMenu *popup;
-        popup = new Q3PopupMenu;
-        popup->insertItem(tr("Borrar Pago"),101);
-        //popup->insertSeparator();
-        int opcion = popup->exec(m_list->mapToGlobal(poin));
-        switch(opcion) {
-        case 101:
-            s_borrarPago();
-            break;
-        }// end switch
+void PagosList::on_m_list_contextMenuRequested(int, int, const QPoint &poin) {
+        QMenu *popup = new QMenu(this);
+	QAction *del = popup->addAction(tr("Borrar Pago"));
+        QAction *opcion = popup->exec(QCursor::pos());
+        if (opcion == del) 
+            on_mui_borrar_clicked();
         delete popup;
-    }
 }// end contextmenu
 
 
-void PagosList::s_nuevoPago() {
+void PagosList::on_mui_crear_clicked() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
     PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
     bud->show();
@@ -445,7 +445,7 @@ void PagosList::imprimir() {
 }// end imprimir
 
 
-void PagosList::s_borrarPago() {
+void PagosList::on_mui_borrar_clicked() {
     int a = m_list->currentRow();
     m_idpago = m_list->text(a,COL_IDPAGO);
     if (m_modo ==0 && m_idpago != "") {
