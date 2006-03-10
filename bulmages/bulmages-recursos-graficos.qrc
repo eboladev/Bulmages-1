@@ -648,4 +648,11 @@
         <file>images/png/48x48/i_bulmages_ventas_presupuestos_mas.48x48.png</file>
         <file>images/png/48x48/i_bulmages_ventas_presupuestos_menos.48x48.png</file>
     </qresource>
+    <qresource prefix="/Genericos16x16" />
+    <qresource prefix="/Genericos32x32" >
+        <file>images/pendientes/i_editDelete.png</file>
+        <file>images/pendientes/i_fileNew.xpm</file>
+        <file>images/pendientes/i_save.xpm</file>
+    </qresource>
+    <qresource prefix="/Genericos48x48" />
 </RCC>

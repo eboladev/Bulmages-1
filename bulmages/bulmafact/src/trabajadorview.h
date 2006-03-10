@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef TRABAJADOR_H
-#define TRABAJADOR_H
+#ifndef TRABAJADORVIEW_H
+#define TRABAJADORVIEW_H
 
 #include <ui_trabajadorbase.h>
 #include "dialogchanges.h"

@@ -155,7 +155,7 @@ HEADERS += bulmafact.h \
 	   listdescfactura.h \
 	   listdescfacturaview.h \
 	   informereferencia.h \
-	   trabajador.h \
+	   trabajadorview.h \
 	   busquedatrabajador.h \
 	   comparticulo.h \
 	   listcomparticulo.h \
@@ -267,7 +267,7 @@ SOURCES += bulmafact.cpp \
 	   listdescfactura.cpp \
 	   listdescfacturaview.cpp \
 	   informereferencia.cpp \
-	   trabajador.cpp \
+	   trabajadorview.cpp \
 	   busquedatrabajador.cpp \
 	   comparticulo.cpp \
 	   listcomparticulo.cpp \

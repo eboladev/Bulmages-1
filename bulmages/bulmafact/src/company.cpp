@@ -44,7 +44,7 @@
 #include "albaranesproveedor.h"
 #include "facturasplist.h"
 #include "cobroslist.h"
-#include "trabajador.h"
+#include "trabajadorview.h"
 #include "pagoslist.h"
 #include "listseriefacturaview.h"
 #include "listprovinciasview.h"

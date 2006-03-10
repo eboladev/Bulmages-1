@@ -1,14 +1,22 @@
-//
-// C++ Implementation: %{MODULE}
-//
-// Description:
-//
-//
-// Author: Tomeu Borr� Riera, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 /*
 CREATE TABLE trabajador (
@@ -35,7 +43,7 @@ CREATE TABLE trabajador (
 #include <qdialog.h>
 #include <QCheckBox>
 
-#include "trabajador.h"
+#include "trabajadorview.h"
 #include "company.h"
 #include "funcaux.h"
 
@@ -55,17 +63,11 @@ TrabajadorView::TrabajadorView(company *emp,QWidget *parent, const char *name)
 /** Carga el query de la base de datos y carga el qlistview */
 void TrabajadorView::pintar() {
     mui_lista->clear();
-
     if (m_cursortrabajadores != NULL)
         delete m_cursortrabajadores;
     m_cursortrabajadores = m_companyact->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
     while (!m_cursortrabajadores->eof()) {
-
-        //	mui_lista->addItem(m_cursortrabajadores->valor("nomtrabajador"));
-        //	mui_lista->addItem("hay que joderse");
         new QListWidgetItem(m_cursortrabajadores->valor("apellidostrabajador")+" "+m_cursortrabajadores->valor("nomtrabajador"), mui_lista);
-
-
         m_cursortrabajadores->siguienteregistro ();
     }// end while
 
@@ -84,8 +86,6 @@ TrabajadorView::~TrabajadorView() {
 
 
 void TrabajadorView::on_mui_lista_currentRowChanged(int row) {
-    //	row = m_cursortrabajadores->numregistros() -row -1;
-
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     m_nomtrabajador->setText(m_cursortrabajadores->valor("nomtrabajador",row));
@@ -102,11 +102,9 @@ void TrabajadorView::on_mui_lista_currentRowChanged(int row) {
         m_activotrabajador->setChecked(FALSE);
     }// end if
 
-
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_PERSONAL)+mdb_idtrabajador+".jpg"));
-
 }// end s_lista
 
 
@@ -114,10 +112,8 @@ void TrabajadorView::on_mui_lista_currentRowChanged(int row) {
 
 void TrabajadorView::on_mui_guardar_clicked() {
     QString m_textactivotrabajador = "FALSE";
-
     if (m_activotrabajador->isChecked())
         m_textactivotrabajador = "TRUE";
-
     QString query = "UPDATE trabajador SET ";
     query += "  nomtrabajador='"+m_companyact->sanearCadena(m_nomtrabajador->text())+"'";
     query += ", apellidostrabajador= '"+m_companyact->sanearCadena(m_apellidostrabajador->text())+"'";
