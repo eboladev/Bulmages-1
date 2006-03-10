@@ -19,7 +19,7 @@
  ***************************************************************************/
 //
 //
-#include "fpago.h"
+#include "fpagoview.h"
 #include "company.h"
 #include "funcaux.h"
 

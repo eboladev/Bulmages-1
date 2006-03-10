@@ -97,7 +97,7 @@ HEADERS += bulmafact.h \
            clientdelivnoteslist.h \
            albaranclienteview.h \
            listventanas.h \
-           fpago.h \
+           fpagoview.h \
            familiasview.h \
            tiposarticuloview.h \
            presupuesto.h \
@@ -209,7 +209,7 @@ SOURCES += bulmafact.cpp \
            clientdelivnoteslist.cpp \
            albaranclienteview.cpp \
            listventanas.cpp \
-           fpago.cpp \
+           fpagoview.cpp \
            familiasview.cpp \
            tiposarticuloview.cpp \
            presupuesto.cpp \

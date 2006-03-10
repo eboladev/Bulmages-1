@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef FPAGO_H
-#define FPAGO_H
+#ifndef FPAGOVIEW_H
+#define FPAGOVIEW_H
 
 #include "ui_fpagobase.h"
 #include "dialogchanges.h"
