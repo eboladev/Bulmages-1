@@ -1,458 +1,454 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>fpagobase</class>
-<widget class="QDialog">
-    <property name="name">
-        <cstring>fpagodlg</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>735</width>
-            <height>586</height>
-        </rect>
-    </property>
-    <property name="caption">
-        <string>Formas de Pago</string>
-    </property>
-    <vbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>FPagoBase</class>
+ <widget class="QDialog" name="FPagoBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>512</width>
+    <height>405</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Formas de Pago</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>2</number>
+   </property>
+   <item row="2" column="1" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton" >
+       <property name="text" >
+        <string>Cerrar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1" >
+    <widget class="Q3GroupBox" name="groupBox1" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title" >
+      <string>Información de la Forma de Pago</string>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
         </property>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout6</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>0</number>
-                </property>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>toolButton1</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image0</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Nueva Forma de Pago</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Nueva Forma de Pago</string>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>toolButton1_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image1</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Borrar Forma de Pago</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Borrar Forma de Pago</string>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>toolButton1_2_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image2</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Guardar Forma de Pago</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Guardar Forma de Pago</string>
-                    </property>
-                </widget>
-                <spacer>
-                    <property name="name">
-                        <cstring>spacer1</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>300</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-            </hbox>
-        </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout19</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QListView">
-                    <property name="name">
-                        <cstring>m_listFPago</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>5</hsizetype>
-                            <vsizetype>7</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                        <size>
-                            <width>150</width>
-                            <height>0</height>
-                        </size>
-                    </property>
-                    <property name="selectionMode">
-                        <enum>Single</enum>
-                    </property>
-                    <property name="allColumnsShowFocus">
-                        <bool>true</bool>
-                    </property>
-                    <property name="showSortIndicator">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <widget class="QGroupBox">
-                    <property name="name">
-                        <cstring>groupBox1</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>5</hsizetype>
-                            <vsizetype>7</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="title">
-                        <string>Información de la Forma de Pago</string>
-                    </property>
-                    <vbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout3</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel1</cstring>
-                                    </property>
-                                    <property name="text">
-                                        <string>Nombre</string>
-                                    </property>
-                                </widget>
-                                <widget class="QLineEdit">
-                                    <property name="name">
-                                        <cstring>m_descforma_pago</cstring>
-                                    </property>
-                                    <property name="frameShape">
-                                        <enum>LineEditPanel</enum>
-                                    </property>
-                                    <property name="frameShadow">
-                                        <enum>Sunken</enum>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout22_2</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel1_2_2_2</cstring>
-                                    </property>
-                                    <property name="sizePolicy">
-                                        <sizepolicy>
-                                            <hsizetype>7</hsizetype>
-                                            <vsizetype>5</vsizetype>
-                                            <horstretch>0</horstretch>
-                                            <verstretch>0</verstretch>
-                                        </sizepolicy>
-                                    </property>
-                                    <property name="text">
-                                        <string>Plazo primer Recibo (días)</string>
-                                    </property>
-                                </widget>
-                                <widget class="QLineEdit">
-                                    <property name="name">
-                                        <cstring>m_dias1tforma_pago</cstring>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout22_2_2</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel1_2_2_2_2</cstring>
-                                    </property>
-                                    <property name="sizePolicy">
-                                        <sizepolicy>
-                                            <hsizetype>7</hsizetype>
-                                            <vsizetype>5</vsizetype>
-                                            <horstretch>0</horstretch>
-                                            <verstretch>0</verstretch>
-                                        </sizepolicy>
-                                    </property>
-                                    <property name="text">
-                                        <string>Descuento</string>
-                                    </property>
-                                </widget>
-                                <widget class="QLineEdit">
-                                    <property name="name">
-                                        <cstring>m_descuentoforma_pago</cstring>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout22</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel1_2_2</cstring>
-                                    </property>
-                                    <property name="sizePolicy">
-                                        <sizepolicy>
-                                            <hsizetype>7</hsizetype>
-                                            <vsizetype>5</vsizetype>
-                                            <horstretch>0</horstretch>
-                                            <verstretch>0</verstretch>
-                                        </sizepolicy>
-                                    </property>
-                                    <property name="text">
-                                        <string>Número de Plazos</string>
-                                    </property>
-                                </widget>
-                                <widget class="QLineEdit">
-                                    <property name="name">
-                                        <cstring>m_nPlazosFPago</cstring>
-                                    </property>
-                                    <property name="enabled">
-                                        <bool>false</bool>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout22_3</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel1_2_2_3</cstring>
-                                    </property>
-                                    <property name="sizePolicy">
-                                        <sizepolicy>
-                                            <hsizetype>7</hsizetype>
-                                            <vsizetype>5</vsizetype>
-                                            <horstretch>0</horstretch>
-                                            <verstretch>0</verstretch>
-                                        </sizepolicy>
-                                    </property>
-                                    <property name="text">
-                                        <string>tipoplazoprimerpago</string>
-                                    </property>
-                                </widget>
-                                <widget class="QLineEdit">
-                                    <property name="name">
-                                        <cstring>m_tipoPlazoPrimerPago</cstring>
-                                    </property>
-                                    <property name="enabled">
-                                        <bool>false</bool>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout22_3_2</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel1_2_2_3_2</cstring>
-                                    </property>
-                                    <property name="sizePolicy">
-                                        <sizepolicy>
-                                            <hsizetype>7</hsizetype>
-                                            <vsizetype>5</vsizetype>
-                                            <horstretch>0</horstretch>
-                                            <verstretch>0</verstretch>
-                                        </sizepolicy>
-                                    </property>
-                                    <property name="text">
-                                        <string>Plazo entre Recibos (días)</string>
-                                    </property>
-                                </widget>
-                                <widget class="QLineEdit">
-                                    <property name="name">
-                                        <cstring>m_plazoEntreReciboFPago</cstring>
-                                    </property>
-                                    <property name="enabled">
-                                        <bool>false</bool>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout22_3_3</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel1_2_2_3_3</cstring>
-                                    </property>
-                                    <property name="sizePolicy">
-                                        <sizepolicy>
-                                            <hsizetype>7</hsizetype>
-                                            <vsizetype>5</vsizetype>
-                                            <horstretch>0</horstretch>
-                                            <verstretch>0</verstretch>
-                                        </sizepolicy>
-                                    </property>
-                                    <property name="text">
-                                        <string>tipoplazoentrerecibofpago</string>
-                                    </property>
-                                </widget>
-                                <widget class="QLineEdit">
-                                    <property name="name">
-                                        <cstring>m_tipoPlazoEntreReciboFPago</cstring>
-                                    </property>
-                                    <property name="enabled">
-                                        <bool>false</bool>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                        <spacer>
-                            <property name="name">
-                                <cstring>spacer5</cstring>
-                            </property>
-                            <property name="orientation">
-                                <enum>Vertical</enum>
-                            </property>
-                            <property name="sizeType">
-                                <enum>Expanding</enum>
-                            </property>
-                            <property name="sizeHint">
-                                <size>
-                                    <width>41</width>
-                                    <height>140</height>
-                                </size>
-                            </property>
-                        </spacer>
-                    </vbox>
-                </widget>
-            </hbox>
-        </widget>
-    </vbox>
-</widget>
-<images>
-    <image name="image0">
-        <data format="PNG" length="504">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001bf494441545885d595a16ec33010862f6cafd4bc421f65af30b6b2e10eed09865b38e84c9a948248290830083008080888a6927fc07799ec364adad8d57652f5d701b9cb77ff9d09002103012055c006eb55e71e509922e77d33cec343d6d9d19fac9a468a69adbaef9b54b7b202d74567a5aca52a00a7eb482c27d032818301006803a71db3089c79606e701130de7383d9246e2620d1721b54e156a11bb788381e1002dc06f4de5963723a1613e839697e6c810e787b5717358e0724b80de091c4c1ca2eb3fabcdd81882e92584ec09b86fc68ff7c7c192ec2005b808880e01e18aa60e57d3090641242208e079880ae6d15422097cd58b4789922106a0f949acf95959c358a077eef02fbe542a0d4ac1593a8fa081ef0e75fdc2fbb48ee062612d40332f72d2717f7cbada88d47a4ee037a40be5c5c2ff33f46c2b8041679407a3e1010ed5c0267240c027ae0e4e91489c62510c6033e094e3eea890611f6c014018f44d03d304a40bce011300d22ee019fc08817e27ac09f860b04c2ef811ba760d91e182370570ffce93df05f3d90a84c51ba4a29fbcc285da5d8bceee989d6b4a13d3dd09abe29cc39794c0840c279241f9df78408b17e733c7077fd01fbcd550ba04535d10000000049454e44ae426082</data>
-    </image>
-    <image name="image1">
-        <data format="PNG" length="750">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000002b5494441545885b596214c1c411885df25151515880a444505a2a282754010080409a826886b52712488a6aaa2ae0852aad034697208923b83401090ad68b2dba4c92148168158815871620562d360be8a99b9b2cbeedd71bbf7279bb7b39bccffbf376ffe1901224080fcc057667c89098b8f1aa7f060be82f1e063098e1de99dc1b8ef8a490c0e9f5fa5950172ccc68e5b03e18dab0ab81bae44fd0a2456818b18802826b31c850a8cf4c0b8618b20ce7d8f2955a236055c247619fccb6c15513f5bc4743ce014b0cb409a1b473cd81db52b90daa4bdab046ea17dec17e2743ce0c22e03764b7261e02c30f8e5e00c494cc503f9ddd0bb322f3ffec4b688180e40124cec815d6f4415163f2e42ff5e87b44a380526f3404bb0add2229c02e9e60cac89645570083dd7192f13f6f30a8ced8196e044ff315f84db05cd19d810ac0a5604cb825be85d6715789c0782b661ee1470b8e395335f11f1b2604184dd0e00bdebb48207824e568196a02bf8e495335f101cb5cdff28abc0641e704abc334fba29d814e9860a9947367974639c19dea4153c705f89aea0293894615dc4bc6b99bbae1c57f1402ed29feda1cc639bdcdd0fa238b5480d7dc045d99aafbd34ffdd19d0cf62350f38059ac56e8fe605af45b4618ce93ae240893e3578a08cb94dce2bc19c0857bd42252a79a08c79bcb36598cfd9e42f04b3225cf6320ac47d2a78a08cf98969321c7732c9792e78267af35ea1028ff240faf54d21f3e4c4b8dddd03e2a336cc8ade8c49ee3f114884bbfb030526f7c07b2fcbfcd4327767803b050f3b86b94d4e73ab3e0f242dcf303fb5ccdd196093bb3b61f4bd6d9837df0e980fb0721fb80eb3ccf30ab81bd12f32cc6bed032eca147098ef03d53c908f510a8ce8847ee0abe107be96169714fc0e8a90bd6fe7faac75ede95c4fb5aebfaa67dcf8d010d018ee810049625acf381e983afe03d1b85792664d14c00000000049454e44ae426082</data>
-    </image>
-    <image name="image2">
-        <data format="PNG" length="947">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000037a494441545885b597bf6bdc4814c7bf8233f85f707f85056a045b446bc8df6064b6888839e290c6870b33b8086b17667111848b805304568561dd98cd1d0493e2c029164681401208c4ee52ae21858a148e8817be29463396f68756bbbe3c18de8e58e9bdf9cc57ef8d40128c099290b1c4b83900ea51e5ffb3cccdc5493e0b4ad993a4ba504866dafd539f3f2d530026b8bfea937db21db5c9fe6832f390988980bfeab3fdb24d461cf1f39229cd5407678fb70472a6490cfb59c894663882bfc4e6253355fd1a7f1225a5095421633bf60899caea9f46a00a19d771d93a68b1b5df32495457ff1dcd755cb6f65be47bb2f9b449151dd5d57f57b3976d36f79a143b8224191e862a01cea1fe794c3a92625b90ff9132966a0b2669e0ffc66f3b36c596e0e6d626379e6c9064b906e6557f59027c4d6e3c52c18f0e8f088063ebc0b0facfde9cd1755cdacbb67ad01ce63a2e83f580c17a40d9932638c7d501003c7f7b6e82f327d93ded9209d939eea8641c9bd29133054f8e13fa0db59da5754013387b7d465e939d930e799c159397e4d1f323f239193e0b2b91b1976d068dc06849ab7f6c2fd0c1bbff74c9ef59f06f5931f99a05bf20c38390fc4836f79a648f14db622219e948fa0d9f499414d4af176dc958a2eed511bf8bb1525f61f7b48bb59b359c0c4ef0f0af87d0161e86c00048d314bbd8c56eba6be63ff003699aaaf920c5e5a74ba48314f803b0ffb4b1b8b088f426c5ab7f5fc1b22c90b4e27731ea5e1da3f81385dbd482ccf24d45ec08f22db9b9b569d47d7d7acde041c0244acc8af39e2caa5f9337042ccb228f89288df078f018d6df1648e2eaea0a4b4b4bc89b6559e677b01e00502416a1568a050037302bc70220b60456eeaf40c6d2d2c40d01adfef60bb5d75a28c6fa437e888c57f30860eccaf304c69d0f8af83375e783f7fbfda9deab796c1db40adbe4affaf41bfe44f517de020005759b042e94fb72f165e2dcbbe7317c16929f693c80028171ea67be0e0050ad725fb5ca3c015d112779b776dbe37940d3ebfd55bff0fe979e88b40672a715f267568ca6f80ff73e983e6f825750ff880686bba11eeda87d5b0987bc57f3d4e1624f916bee297a7ae57ec31fa9fd737d17e8d1895465d4deab79642f3be1f46eb7af8afa0b1a18975915325ecda3d816143b82625bcca4fe4adf05134e4a2364f4496716f5976a60563ffcfe57517f650dcc3acf27a3c79dbe0d7fb7ff053954f67759eef6130000000049454e44ae426082</data>
-    </image>
-</images>
-<connections>
-    <connection>
-        <sender>toolButton1_2_2</sender>
-        <signal>clicked()</signal>
-        <receiver>fpagodlg</receiver>
-        <slot>s_saveFPago()</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1_2</sender>
-        <signal>clicked()</signal>
-        <receiver>fpagodlg</receiver>
-        <slot>s_deleteFPago()</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1</sender>
-        <signal>clicked()</signal>
-        <receiver>fpagodlg</receiver>
-        <slot>s_newFPago()</slot>
-    </connection>
-    <connection>
-        <sender>m_listFPago</sender>
-        <signal>clicked(QListViewItem*)</signal>
-        <receiver>fpagodlg</receiver>
-        <slot>s_lista(QListViewItem*)</slot>
-    </connection>
-</connections>
-<slots>
-    <slot>cambiacombo( int )</slot>
-    <slot>s_saveFPago()</slot>
-    <slot>s_deleteFPago()</slot>
-    <slot>s_newFPago()</slot>
-    <slot>s_setModificado()</slot>
-    <slot>close()</slot>
-    <slot>s_lista(QListViewItem *)</slot>
-</slots>
-<layoutdefaults spacing="6" margin="11"/>
-</UI>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1" >
+          <property name="text" >
+           <string>Nombre</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_descforma_pago" >
+          <property name="minimumSize" >
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1_2_2_2" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Plazo primer Recibo (días)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_dias1tforma_pago" />
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1_2_2_2_2" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Descuento</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_descuentoforma_pago" />
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1_2_2" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Número de Plazos</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_nPlazosFPago" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1_2_2_3" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>tipoplazoprimerpago</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_tipoPlazoPrimerPago" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1_2_2_3_2" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Plazo entre Recibos (días)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_plazoEntreReciboFPago" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1_2_2_3_3" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>tipoplazoentrerecibofpago</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_tipoPlazoEntreReciboFPago" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>41</width>
+          <height>140</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QToolButton" name="mui_crear" >
+       <property name="toolTip" >
+        <string>Nueva Forma de Pago</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Nueva Forma de Pago</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="mui_guardar" >
+       <property name="toolTip" >
+        <string>Borrar Forma de Pago</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Borrar Forma de Pago</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="muy_borrar" >
+       <property name="toolTip" >
+        <string>Guardar Forma de Pago</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Guardar Forma de Pago</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>300</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item rowspan="2" row="1" column="0" >
+    <widget class="QDockWidget" name="dockWidget" >
+     <property name="features" >
+      <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable|QDockWidget::NoDockWidgetFeatures</set>
+     </property>
+     <widget class="QWidget" name="dockWidgetContents" >
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QListWidget" name="mui_lista" />
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends></extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../bulmages-recursos-graficos.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>FPagoBase</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>460</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>467</x>
+     <y>12</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

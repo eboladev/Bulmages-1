@@ -40,6 +40,7 @@ private:
 	/// doble click sobre la lista)
 	bool m_modoConsulta;
 	QString m_archivoimagen;
+	QListWidgetItem *m_item;
 
 private:
 	/// Se encarga de hacer la carga del query inicial y de mostrar la lista bien
@@ -60,7 +61,7 @@ public:
 	bool trataModificado();
 
 private slots:
-	virtual void on_mui_lista_currentRowChanged(int);
+	virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);
 	virtual void on_mui_guardar_clicked();
 	virtual void on_mui_nuevo_clicked();
 	virtual void on_mui_borrar_clicked();

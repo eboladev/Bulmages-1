@@ -21,23 +21,26 @@
 #ifndef FPAGO_H
 #define FPAGO_H
 
-#include <fpagobase.h>
+#include "ui_fpagobase.h"
 #include "dialogchanges.h"
+#include "postgresiface2.h"
 
 
 class company;
 
-class fpago : public fpagobase, dialogChanges
+class FPagoView : public QDialog, private Ui_FPagoBase, dialogChanges
 {
 	Q_OBJECT
 
 private:
-	company *companyact;
+	company *m_companyact;
+	cursor2 *m_cursorFPagoView;
 	/// Indica cual es el objeto que se esta mostrando.
-	QString m_idforma_pago;
+	QString mdb_idforma_pago;
 	/// Indica si es modo consulta o modo edicion. (altera el comportamiento
 	/// del doble click sobre la lista)
 	bool m_modoConsulta;
+	QListWidgetItem *m_item;
 
 private:
 	/// Se encarga de hacer la carga de la consulta (query) inicial y de mostrar la
@@ -45,8 +48,8 @@ private:
 	void pintar();
 
 public:
-	fpago(company * emp, QWidget *parent = 0, const char *name = 0);
-	~fpago();
+	FPagoView(company * emp, QWidget *parent = 0, const char *name = 0);
+	~FPagoView();
 	void setModoConsulta()
 	{
 		m_modoConsulta = TRUE;
@@ -59,10 +62,11 @@ public:
 	virtual void closeEvent(QCloseEvent *);
 
 private slots:
-	virtual void s_lista(Q3ListViewItem *);
-	virtual void s_saveFPago();
-	virtual void s_newFPago();
-	virtual void s_deleteFPago();
+	virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);
+	virtual void on_mui_guardar_clicked();
+	virtual void on_mui_crear_clicked();
+	virtual void on_mui_borrar_clicked();
+
 };
 
 #endif

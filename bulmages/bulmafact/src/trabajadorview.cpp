@@ -56,6 +56,7 @@ TrabajadorView::TrabajadorView(company *emp,QWidget *parent, const char *name)
     m_archivoimagen="";
     setModoEdicion();
     m_cursortrabajadores=NULL;
+    m_item=NULL;
     pintar();
 }
 
@@ -83,10 +84,10 @@ TrabajadorView::~TrabajadorView() {
 }
 
 
+void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev) {
+    _depura("on_mui_lista_currentItemChanged",0);
 
-
-void TrabajadorView::on_mui_lista_currentRowChanged(int row) {
-    /// Si se ha modificado el contenido advertimos y guardamos.
+    int row = mui_lista->row(cur);
     trataModificado();
     m_nomtrabajador->setText(m_cursortrabajadores->valor("nomtrabajador",row));
     mdb_idtrabajador= m_cursortrabajadores->valor("idtrabajador",row);
@@ -101,11 +102,14 @@ void TrabajadorView::on_mui_lista_currentRowChanged(int row) {
     } else {
         m_activotrabajador->setChecked(FALSE);
     }// end if
+    m_item = cur;
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_PERSONAL)+mdb_idtrabajador+".jpg"));
-}// end s_lista
+}// end if
+
+
 
 
 
@@ -131,10 +135,15 @@ void TrabajadorView::on_mui_guardar_clicked() {
         return;
     }// end if
 
-    QListWidgetItem *item = mui_lista->currentItem();
-    if (item) {
-        item->setText (m_apellidostrabajador->text()+m_nomtrabajador->text());
-    }// end if
+
+    if (m_cursortrabajadores != NULL)
+        delete m_cursortrabajadores;
+    m_cursortrabajadores = m_companyact->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
+
+
+    if(m_item)
+        m_item->setText(m_apellidostrabajador->text()+m_nomtrabajador->text());
+
 
     if (m_archivoimagen != "") {
         QString cadena = "cp "+m_archivoimagen+" "+confpr->valor(CONF_DIR_IMG_PERSONAL)+mdb_idtrabajador+".jpg";
