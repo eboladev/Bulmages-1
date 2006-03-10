@@ -41,6 +41,7 @@ RESOURCES = ../../bulmages-recursos-graficos.qrc
 FORMS += about.ui \
  	 pagobase.ui \
          cobrobase.ui \
+ 	 trabajadorbase.ui \
 	 listprovincias.ui
 
 # uic3 los convierte de forma automatica.
@@ -73,7 +74,6 @@ FORMS3 += bulmafactbase.ui \
           cobroslistbase.ui \
           facturasplistbase.ui \
           facturapbase.ui \
- 	  trabajadorbase.ui \
 	  pagoslistbase.ui \
 	  pedidosproveedorlistbase.ui \
 	  pedidoproveedorbase.ui \

@@ -21,20 +21,21 @@
 #ifndef TRABAJADOR_H
 #define TRABAJADOR_H
 
-#include <trabajadorbase.h>
+#include <ui_trabajadorbase.h>
 #include "dialogchanges.h"
-
+#include "postgresiface2.h"
 
 class company;
 
-class Trabajador : public Trabajadorbase, dialogChanges
+class TrabajadorView : public QDialog, private Ui_TrabajadorBase, dialogChanges
 {
 	Q_OBJECT
 
 private:
-	company *companyact;
+	company *m_companyact;
+	cursor2 *m_cursortrabajadores;
 	/// Indica cual es el objeto que se esta mostrando.
-	QString m_idtrabajador;
+	QString mdb_idtrabajador;
 	/// Indica si es modo consulta o modo edicion. (altera el comportamiento del
 	/// doble click sobre la lista)
 	bool m_modoConsulta;
@@ -46,8 +47,8 @@ private:
 	void pintar();
 
 public:
-	Trabajador(company * emp, QWidget *parent = 0, const char *name = 0);
-	~Trabajador();
+	TrabajadorView(company * emp, QWidget *parent = 0, const char *name = 0);
+	~TrabajadorView();
 	void setModoConsulta()
 	{
 		m_modoConsulta = TRUE;
@@ -59,12 +60,11 @@ public:
 	bool trataModificado();
 
 private slots:
-	virtual void s_lista(Q3ListViewItem *);
-	virtual bool close(bool);
-	virtual void s_saveTrabajador();
-	virtual void s_newTrabajador();
-	virtual void s_deleteTrabajador();
-	virtual void s_cambiarImagen();
+	virtual void on_mui_lista_currentRowChanged(int);
+	virtual void on_mui_guardar_clicked();
+	virtual void on_mui_nuevo_clicked();
+	virtual void on_mui_borrar_clicked();
+	virtual void on_mui_imagen_clicked();
 };
 
 #endif

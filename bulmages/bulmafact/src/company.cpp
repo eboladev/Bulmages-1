@@ -380,7 +380,7 @@ void company::s_FPago() {
 }// end newOrder
 
 void company::s_trabajadores() {
-    Trabajador *t = new Trabajador(this, NULL, theApp->translate("Trabajadores", "company"));
+    TrabajadorView *t = new TrabajadorView(this, NULL, theApp->translate("Trabajadores", "company"));
     t->exec();
     delete t;
 }
