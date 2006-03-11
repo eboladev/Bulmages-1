@@ -23,6 +23,7 @@ HEADERS += postgresiface2.h \
            msgerror.h \
 	   busquedafecha.h \
 	   qtable1.h \
+	   qtable2.h \
 	   pgimportfiles.h  \
 	   plugins.h \
 	   dbrecord.h
@@ -39,6 +40,7 @@ SOURCES += postgresiface2.cpp \
            msgerror.cpp \
 	   busquedafecha.cpp \
 	   qtable1.cpp \
+	   qtable2.cpp \
 	   pgimportfiles.cpp \
 	   plugins.cpp \
 	   dbrecord.cpp

@@ -109,10 +109,8 @@ public:
 	void cargaconfig();
 
 public slots:
-	virtual void on_m_list_doubleClicked(int, int, int, const QPoint &);
-
-	virtual void on_m_list_contextMenuRequested(int, int, const QPoint &);
-//	virtual void s_contextMenu(int, int, int, const QPoint &);
+	virtual void on_mui_list_cellDoubleClicked(int , int);
+	virtual void on_mui_list_customContextMenuRequested(const QPoint &);
 	virtual void on_mui_editar_clicked();
 	virtual void on_mui_crear_clicked();
 	virtual void on_mui_borrar_clicked();

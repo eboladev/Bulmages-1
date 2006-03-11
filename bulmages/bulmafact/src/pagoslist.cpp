@@ -81,9 +81,9 @@ void PagosList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
-        for (int i = 0; i < m_list->numCols(); i++) {
-            m_list->showColumn(i);
-            stream << m_list->columnWidth(i) << "\n";
+        for (int i = 0; i < mui_list->columnCount(); i++) {
+            mui_list->showColumn(i);
+            stream << mui_list->columnWidth(i) << "\n";
         }// end for
         file.close();
     }// end if
@@ -95,9 +95,9 @@ void PagosList::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
-        for (int i = 0; i < m_list->numCols(); i++) {
+        for (int i = 0; i < mui_list->columnCount(); i++) {
             QString linea = stream.readLine();
-            m_list->setColumnWidth(i, linea.toInt());
+            mui_list->setColumnWidth(i, linea.toInt());
         }// end for
         file.close();
     } else
@@ -113,44 +113,47 @@ void PagosList::cargaconfig() {
 }// end cargaconfig
 
 
+
+
 void PagosList::s_configurar() {
 	_depura("PagosList::s_configurar",0);
     if(mver_idpago->isChecked() )
-        m_list->showColumn(COL_IDPAGO);
+        mui_list->showColumn(COL_IDPAGO);
     else
-        m_list->hideColumn(COL_IDPAGO);
+        mui_list->hideColumn(COL_IDPAGO);
 
     if(mver_idproveedor->isChecked() )
-        m_list->showColumn(COL_IDPROVEEDOR);
+        mui_list->showColumn(COL_IDPROVEEDOR);
     else
-        m_list->hideColumn(COL_IDPROVEEDOR);
+        mui_list->hideColumn(COL_IDPROVEEDOR);
 
     if(mver_fechapago->isChecked() )
-        m_list->showColumn(COL_FECHAPAGO);
+        mui_list->showColumn(COL_FECHAPAGO);
     else
-        m_list->hideColumn(COL_FECHAPAGO);
+        mui_list->hideColumn(COL_FECHAPAGO);
 
     if(mver_cantpago->isChecked() )
-        m_list->showColumn(COL_CANTPAGO);
+        mui_list->showColumn(COL_CANTPAGO);
     else
-        m_list->hideColumn(COL_CANTPAGO);
+        mui_list->hideColumn(COL_CANTPAGO);
 
     if(mver_refpago->isChecked() )
-        m_list->showColumn(COL_REFPAGO);
+        mui_list->showColumn(COL_REFPAGO);
     else
-        m_list->hideColumn(COL_REFPAGO);
+        mui_list->hideColumn(COL_REFPAGO);
 
     if(mver_previsionpago->isChecked() )
-        m_list->showColumn(COL_PREVISIONPAGO);
+        mui_list->showColumn(COL_PREVISIONPAGO);
     else
-        m_list->hideColumn(COL_PREVISIONPAGO);
+        mui_list->hideColumn(COL_PREVISIONPAGO);
 
     if(mver_comentpago->isChecked() )
-        m_list->showColumn(COL_COMENTPAGO);
+        mui_list->showColumn(COL_COMENTPAGO);
     else
-        m_list->hideColumn(COL_COMENTPAGO);
+        mui_list->hideColumn(COL_COMENTPAGO);
 
 }
+
 
 
 PagosList::PagosList(QWidget *parent, const char *name, Qt::WFlags flag)
@@ -197,54 +200,18 @@ PagosList::~PagosList() {
 
 
 void PagosList::inicializa() {
-    fprintf(stderr,"PagosList::inicializa()\n");
-    m_list->setNumRows( 0 );
-    m_list->setNumCols( 0 );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setSorting( TRUE );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(7);
+    _depura("PagosList::inicializa()\n",0);
+    mui_list->setRowCount(0);
+	mui_list->setColumnCount(7);
 
-    m_list->horizontalHeader()->setLabel( COL_IDPAGO, tr( "COL_IDPAGO" ) );
-    m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr( "COL_IDPROVEEDOR" ) );
-    m_list->horizontalHeader()->setLabel( COL_FECHAPAGO, tr( "COL_FECHAPAGO" ) );
-    m_list->horizontalHeader()->setLabel( COL_CANTPAGO, tr( "COL_CANTPAGO" ) );
-    m_list->horizontalHeader()->setLabel( COL_REFPAGO, tr( "COL_REFPAGO" ) );
-    m_list->horizontalHeader()->setLabel( COL_PREVISIONPAGO, tr( "COL_PREVISIONPAGO" ) );
-    m_list->horizontalHeader()->setLabel( COL_COMENTPAGO, tr( "COL_COMENTPAGO" ) );
+	QStringList headers;
+	headers << tr( "COL_IDPAGO" ) << tr( "COL_IDPROVEEDOR" ) << tr( "COL_FECHAPAGO" ) << tr( "COL_CANTPAGO" ) << tr( "COL_REFPAGO" ) << tr( "COL_PREVISIONPAGO" ) << tr( "COL_COMENTPAGO" );
 
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#EEFFFF");
-    m_list->setReadOnly(TRUE);
+	mui_list->setHorizontalHeaderLabels (headers);
 
 
 
-    if (companyact != NULL ) {
-        cursor2 * cur= companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
-        m_list->setNumRows( cur->numregistros() );
-        int i=0;
-        while (!cur->eof()) {
-            m_list->setText(i,COL_IDPAGO,cur->valor("idpago"));
-            m_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
-            m_list->setText(i,COL_FECHAPAGO,cur->valor("fechapago"));
-            m_list->setText(i,COL_CANTPAGO,cur->valor("cantpago"));
-            m_list->setText(i,COL_REFPAGO,cur->valor("refpago"));
-            m_list->setText(i,COL_PREVISIONPAGO,cur->valor("previsionpago"));
-            m_list->setText(i,COL_COMENTPAGO,cur->valor("comentpago"));
-            i++;
-            cur->siguienteregistro();
-        }// end while
-        delete cur;
-
-        /// Hacemos el calculo del total.
-        cur = companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago where 1=1"+generaFiltro());
-        m_total->setText(cur->valor("total"));
-        delete cur;
-
-    }// end if
-
-    fprintf(stderr,"end PagosList::inicializa()\n");
+    _depura("end PagosList::inicializa()\n",0);
 }// end inicializa
 
 
@@ -252,20 +219,20 @@ void PagosList::inicializa() {
 void PagosList::presenta() {
     _depura("PagosList::presenta()\n",0);
 	s_filtrar();
-	
 
     if (companyact != NULL ) {
         cursor2 * cur= companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
-        m_list->setNumRows( cur->numregistros() );
+	mui_list->setRowCount( cur->numregistros() );
         int i=0;
         while (!cur->eof()) {
-            m_list->setText(i,COL_IDPAGO,cur->valor("idpago"));
-            m_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
-            m_list->setText(i,COL_FECHAPAGO,cur->valor("fechapago"));
-            m_list->setText(i,COL_CANTPAGO,cur->valor("cantpago"));
-            m_list->setText(i,COL_REFPAGO,cur->valor("refpago"));
-            m_list->setText(i,COL_PREVISIONPAGO,cur->valor("previsionpago"));
-            m_list->setText(i,COL_COMENTPAGO,cur->valor("comentpago"));
+	    mui_list->setText(i, COL_IDPAGO, cur->valor("idpago"));
+            mui_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
+            mui_list->setText(i,COL_FECHAPAGO,cur->valor("fechapago"));
+            mui_list->setText(i,COL_CANTPAGO,cur->valor("cantpago"));
+            mui_list->setText(i,COL_REFPAGO,cur->valor("refpago"));
+            mui_list->setText(i,COL_PREVISIONPAGO,cur->valor("previsionpago"));
+            mui_list->setText(i,COL_COMENTPAGO,cur->valor("comentpago"));
+
             i++;
             cur->siguienteregistro();
         }// end while
@@ -285,8 +252,7 @@ void PagosList::presenta() {
 
 
 QString PagosList::generaFiltro() {
-    /// Tratamiento de los filtros.
-    fprintf(stderr,"Tratamos el filtro \n");
+    _depura("PagosList::generaFiltro",0);
     QString filtro="";
     if (m_filtro->text() != "") {
         filtro = " AND ( descpago LIKE '%"+m_filtro->text()+"%' ";
@@ -312,15 +278,15 @@ QString PagosList::generaFiltro() {
 
 
 void PagosList::on_mui_editar_clicked() {
-    int a = m_list->currentRow();
+    int a = mui_list->currentRow();
 	if (a >=0 ) 
-    	on_m_list_doubleClicked(a,0,0, QPoint());
+    	on_mui_list_cellDoubleClicked(a,0);
 	else
 	_depura("Debe seleccionar una linea",2);
 }
 
-void PagosList::on_m_list_doubleClicked(int a, int , int , const QPoint &) {
-    m_idpago = m_list->text(a,COL_IDPAGO);
+void PagosList::on_mui_list_cellDoubleClicked(int a, int ) {
+    m_idpago = mui_list->item(a,COL_IDPAGO)->text();
     if (m_modo ==0 && m_idpago != "") {
         PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
         bud->cargaPago(m_idpago);
@@ -331,14 +297,21 @@ void PagosList::on_m_list_doubleClicked(int a, int , int , const QPoint &) {
 }
 
 
-void PagosList::on_m_list_contextMenuRequested(int, int, const QPoint &poin) {
+
+
+void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
+	_depura("PagosList::on_mui_list_customContextMenuRequested",0);
+    int a = mui_list->currentRow();
+	if ( a < 0) return;
         QMenu *popup = new QMenu(this);
 	QAction *del = popup->addAction(tr("Borrar Pago"));
         QAction *opcion = popup->exec(QCursor::pos());
         if (opcion == del) 
             on_mui_borrar_clicked();
         delete popup;
-}// end contextmenu
+}
+
+
 
 
 void PagosList::on_mui_crear_clicked() {
@@ -446,8 +419,8 @@ void PagosList::imprimir() {
 
 
 void PagosList::on_mui_borrar_clicked() {
-    int a = m_list->currentRow();
-    m_idpago = m_list->text(a,COL_IDPAGO);
+    int a = mui_list->currentRow();
+    m_idpago = mui_list->item(a,COL_IDPAGO)->text();
     if (m_modo ==0 && m_idpago != "") {
         PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
         bud->cargaPago(m_idpago);
