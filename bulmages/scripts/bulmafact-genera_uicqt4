@@ -4,7 +4,7 @@
 #              con formato QT4. No lo hace de forma automatica
 #              porque qmake solo lo hace de una sola manera, QT3 o QT4.
 #              Bajo FORMS3 los genera qmake
-#              Bajo FORMS los genera esta script.
+#              Bajo FORMS los genera este script.
 #
 #              Este script es necesario solamente durante el proceso
 #              de migracion de los .ui a QT4.
@@ -32,7 +32,11 @@ uis[5]="trabajadorbase"
 uis[6]="fpagobase"
 uis[7]="pagoslistbase"
 
-for ((it1=1; it1<3; it1++)); do
+
+# Hay que poner el numero de datos en el array uis + 1 (hasta que descubra como calcularlo
+# automaticamente.
+
+for ((it1=1; it1<8; it1++)); do
     uic $rutauis/${uis[$it1]}.ui -o $rutauis/.ui/ui_${uis[$it1]}.h
     echo "Generado ${uis[$it1]}.h - OK"
 done
